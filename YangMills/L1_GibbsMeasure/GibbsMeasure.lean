@@ -60,9 +60,22 @@ noncomputable instance instMeasurableSpaceGaugeConfig :
     MeasurableSpace (GaugeConfig d N G) :=
   MeasurableSpace.comap gaugeConfigEquiv.symm inferInstance
 
+lemma measurable_gaugeConfigEquiv :
+    Measurable (gaugeConfigEquiv (d:=d) (N:=N) (G:=G)) := by
+  rw [measurable_iff_comap_le]
+  simp only [instMeasurableSpaceGaugeConfig]
+  rw [MeasurableSpace.comap_comp]
+  simp [MeasurableSpace.comap_id]
+
 /-- Product Haar measure on gauge configurations via positive-edge coordinates. -/
 noncomputable def gaugeMeasureFrom (μ : Measure G) : Measure (GaugeConfig d N G) :=
   Measure.map gaugeConfigEquiv (Measure.pi (fun _ : PosEdge d N => μ))
+
+instance gaugeMeasureFrom_isProbability (μ : Measure G) [IsProbabilityMeasure μ] :
+    IsProbabilityMeasure (gaugeMeasureFrom (d:=d) (N:=N) μ) := by
+  unfold gaugeMeasureFrom
+  apply Measure.isProbabilityMeasure_map
+  exact measurable_gaugeConfigEquiv.aemeasurable
 
 /-! ## L1.1 / L1.2: Partition function and Gibbs measure -/
 
@@ -72,7 +85,7 @@ noncomputable def partitionFunction (μ : Measure G)
   ∫ U : GaugeConfig d N G, Real.exp (-β * wilsonAction plaquetteEnergy U)
     ∂(gaugeMeasureFrom μ)
 
-/-- Gibbs measure: Boltzmann-weighted gauge measure (stub — normalization pending). -/
+/-- Gibbs measure: Boltzmann-weighted gauge measure (normalization pending). -/
 noncomputable def gibbsMeasure (μ : Measure G)
     (plaquetteEnergy : G → ℝ) (β : ℝ) : Measure (GaugeConfig d N G) :=
   gaugeMeasureFrom μ
