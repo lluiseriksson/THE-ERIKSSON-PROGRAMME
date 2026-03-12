@@ -1,0 +1,41 @@
+critical_paths:
+  - id: CP-001
+    title: Minimal target path to final theorem
+    nodes:
+      - L0.1
+      - L0.2
+      - L0.4
+      - L0.5
+      - L0.7
+      - L1.1
+      - L1.2
+      - L4.2
+      - L5.1
+      - L6.2
+      - L7.3
+      - L8.3
+      - L8.4
+
+  - id: CP-002
+    title: Polymer route into mass-gap infrastructure
+    nodes:
+      - L0.1
+      - L3.1
+      - L3.2
+      - L3.3
+      - L3.4
+      - L3.5
+
+  - id: CP-003
+    title: Finite-volume observable route
+    nodes:
+      - L0.1
+      - L0.2
+      - L0.4
+      - L0.3
+      - L0.5
+      - L0.6
+      - L0.7
+      - L1.1
+      - L1.2
+      - L1.3

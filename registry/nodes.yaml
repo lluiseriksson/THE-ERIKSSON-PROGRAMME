@@ -1,0 +1,334 @@
+nodes:
+  - id: L0.1
+    title: Definición de lattice finito Λ_L (FinBox)
+    layer: L0
+    status: FORMALIZED
+    kind: infrastructure
+    depends_on: []
+    blocks: ["L0.2", "L0.7", "L1.1"]
+    evidence: "YangMills/L0_Lattice/FiniteLattice.lean (card_finBox + inhabited + Fintype instances)"
+    risk: LOW
+    blocker: NONE
+    lean_files:
+      - YangMills/L0_Lattice/FiniteLattice.lean
+    mathlib_gap: null
+    next_step: none (closed)
+    definition_of_done: theorem card_finBox + Inhabited + Fintype cerrado en kernel
+    anti_vacuity_note: Not applicable
+
+  - id: L0.2
+    title: Oriented edges and plaquettes (ConcreteEdge signed)
+    layer: L0
+    status: PARTIAL
+    kind: infrastructure
+    depends_on: ["L0.1"]
+    blocks: ["L0.3", "L0.4", "L0.5"]
+    evidence: "ConcreteEdge + shift/shiftBack + finBoxGeometry instance (reverse_involutive + plaquette_gauge_telescope closed)"
+    lean_files:
+      - YangMills/L0_Lattice/FiniteLatticeGeometryInstance.lean
+    next_step: none (closed)
+    anti_vacuity_note: Must model actual oriented combinatorics, not placeholders
+
+  - id: L0.3
+    title: Wilson loops as observables
+    layer: L0
+    kind: target
+    status: OPEN
+    evidence: PAPER_ONLY
+    risk: MEDIUM
+    blocker: NONE
+    depends_on: [L0.2, L0.4]
+    blocks: [L1.3, L8.4]
+    lean_files: [YangMills/L0_Lattice/WilsonAction.lean]
+    mathlib_gap: null
+    next_step: Define loops and gauge-invariant Wilson observables
+    definition_of_done: Wilson observables are formally defined and gauge invariance is proved in finite volume
+    anti_vacuity_note: Observable must be mathematically real, not a placeholder scalar
+
+  - id: L0.4
+    title: Definición de la acción de Wilson (plaquetteProduct + WilsonAction)
+    layer: L0
+    status: PARTIAL
+    kind: infrastructure
+    depends_on: ["L0.3"]
+    blocks: ["L0.5", "L1.1"]
+    evidence: FORMALIZED_WEAK
+    evidence_detail: "Abstract wilsonAction over FiniteLatticeGeometry"
+    lean_files:
+      - YangMills/L0_Lattice/WilsonAction.lean
+    risk: MEDIUM
+    blocker: NONE
+    mathlib_gap: null
+    next_step: none (closed)
+    definition_of_done: Exact action is defined and basic positivity/boundedness lemmas are kernel-certified
+    anti_vacuity_note: No constant placeholder action allowed
+
+  - id: L0.5
+    title: Holonomía de plaqueta y acción de Wilson abstracta
+    layer: L0
+    status: PARTIAL
+    kind: infrastructure
+    depends_on: ["L0.4"]
+    blocks: ["L1.1"]
+    evidence: "plaquetteHolonomy + wilsonAction + instancia finBoxGeometry"
+    lean_files:
+      - YangMills/L0_Lattice/FiniteLatticeGeometryInstance.lean
+    next_step: none (closed)
+    anti_vacuity_note: No constant placeholder action allowed
+
+  - id: L0.6
+    title: Invariancia gauge de la acción
+    layer: L0
+    status: PARTIAL
+    kind: infrastructure
+    depends_on: ["L0.4", "L0.5"]
+    blocks: ["L1.2", "L1.3"]
+    evidence: "wilsonAction_gaugeInvariant + plaquette_gauge_telescope (kernel cerrado)"
+    lean_files:
+      - YangMills/L0_Lattice/FiniteLatticeGeometryInstance.lean
+    next_step: none (closed)
+    anti_vacuity_note: Actual action of a gauge group required
+
+  - id: L0.7
+    title: Gauge measure (producto de Haar normalizado)
+    layer: L0
+    status: FORMALIZED
+    kind: infrastructure
+    depends_on: ["L0.1"]
+    blocks: ["L1.1", "L1.2"]
+    evidence: FORMALIZED_KERNEL
+    evidence_detail: "gaugeMeasure + gaugeMeasure_isProbability + gaugeMeasure_isLeftInvariant (M01 closed)"
+    risk: HIGH
+    blocker: NEEDS_LIE_GROUPS
+    lean_files:
+      - YangMills/L0_Lattice/FiniteLattice.lean
+    mathlib_gap: null
+    next_step: none (closed)
+    definition_of_done: Finite-volume integration over gauge configurations is usable in kernel-certified statements
+    anti_vacuity_note: Must not collapse integration to an opaque scalar parameter
+
+  - id: L1.1
+    title: Finite-volume partition function
+    layer: L1
+    status: PARTIAL
+    kind: target
+    depends_on: ["L0.5", "L0.7"]
+    blocks: ["L1.2"]
+    evidence: "partitionFunction + partitionFunction_pos + partitionFunction_finite (kernel-certified)"
+    lean_files: [YangMills/L1_GibbsMeasure/GibbsMeasure.lean]
+    risk: LOW
+    blocker: NONE
+    next_step: none (closed)
+
+  - id: L1.2
+    title: Finite-volume Gibbs measure
+    layer: L1
+    status: PARTIAL
+    kind: target
+    depends_on: ["L0.6", "L1.1"]
+    blocks: ["L1.3", "L6.2"]
+    evidence: "gibbsMeasure + IsProbabilityMeasure + gibbsMeasure_gauge_invariant"
+    lean_files: [YangMills/L1_GibbsMeasure/GibbsMeasure.lean]
+    risk: LOW
+    blocker: NONE
+    next_step: none (closed)
+
+  - id: L1.3
+    title: Finite-volume correlations (Wilson loop expectations)
+    layer: L1
+    status: PARTIAL
+    kind: target
+    depends_on: ["L0.3", "L1.2"]
+    blocks: ["L1.6", "L8.1"]
+    evidence: FORMALIZED_WEAK
+    evidence_detail: "wilsonLoop + wilsonLoopExpectation + gauge_invariant + real (abstract, awaits lake build)"
+    lean_files: [YangMills/L1_GibbsMeasure/Correlations.lean]
+    next_step: Run lake build on L0 first, then certify
+
+  - id: L2.1
+    title: Balaban small/large-field decomposition
+    layer: L2
+    status: PARTIAL
+    kind: infrastructure
+    depends_on: ["L1.2"]
+    blocks: ["L2.2", "L2.3", "L4.2"]
+    evidence: FORMALIZED_WEAK
+    evidence_detail: "Abstract splitting draft – awaits lake build on L0"
+    lean_files: [YangMills/L2_Balaban/SmallLargeDecomposition.lean]
+    next_step: Run lake build first
+
+  - id: L3.1
+    title: Abstract polymer system
+    layer: L3
+    kind: infrastructure
+    status: OPEN
+    evidence: PAPER_ONLY
+    risk: MEDIUM
+    blocker: NONE
+    depends_on: [L0.1]
+    blocks: [L3.2, L3.3, L3.4]
+    lean_files: [YangMills/L3_Polymers/PolymerSystem.lean]
+    mathlib_gap: null
+    next_step: Define polymers, compatibility, connectedness
+    definition_of_done: Nontrivial abstract polymer system API is kernel-certified
+    anti_vacuity_note: Empty-only systems do not count as closure
+
+  - id: L3.2
+    title: Polymer incompatibility relation
+    layer: L3
+    kind: infrastructure
+    status: OPEN
+    evidence: PAPER_ONLY
+    risk: MEDIUM
+    blocker: NONE
+    depends_on: [L3.1]
+    blocks: [L3.4]
+    lean_files: [YangMills/L3_Polymers/Incompatibility.lean]
+    mathlib_gap: null
+    next_step: Define symmetric incompatibility relation and local neighborhood machinery
+    definition_of_done: Compatibility lemmas required by KP are kernel-certified
+    anti_vacuity_note: Must support nonempty local neighborhoods
+
+  - id: L3.3
+    title: Polymer activities
+    layer: L3
+    kind: infrastructure
+    status: OPEN
+    evidence: PAPER_ONLY
+    risk: MEDIUM
+    blocker: NONE
+    depends_on: [L3.1]
+    blocks: [L3.4, L3.5]
+    lean_files: [YangMills/L3_Polymers/Activities.lean]
+    mathlib_gap: null
+    next_step: Define activities and quantitative bounds
+    definition_of_done: Activities and bound interface are formalized without trivial witness shortcuts
+    anti_vacuity_note: Constant-zero activities do not close the target bridge
+
+  - id: L3.4
+    title: Kotecký–Preiss criterion
+    layer: L3
+    kind: infrastructure
+    status: OPEN
+    evidence: PAPER_ONLY
+    risk: HIGH
+    blocker: NEEDS_NEW_ANALYSIS
+    depends_on: [L3.1, L3.2, L3.3]
+    blocks: [L3.5, L3.6, L5.4]
+    lean_files: [YangMills/L3_Polymers/KP_Criterion.lean]
+    mathlib_gap: null
+    next_step: Formalize the compatibility-sum inequality needed for KP
+    definition_of_done: KP convergence theorem is kernel-certified in a non-vacuous abstract setting
+    anti_vacuity_note: Empty polymer domains or zero-only activities do not count
+
+  - id: L3.5
+    title: Cluster expansion for log partition function
+    layer: L3
+    kind: infrastructure
+    status: BLOCKED
+    evidence: PAPER_ONLY
+    risk: HIGH
+    blocker: NONE
+    depends_on: [L3.4]
+    blocks: [L3.6, L8.1]
+    lean_files: [YangMills/L3_Polymers/ClusterExpansion.lean]
+    mathlib_gap: null
+    next_step: Wait for KP theorem, then formalize log Z expansion
+    definition_of_done: Convergent cluster expansion theorem is kernel-certified
+    anti_vacuity_note: Must produce meaningful expansion, not packaging-only output
+
+  - id: L4.2
+    title: Large-field suppression
+    layer: L4
+    kind: target
+    status: BLACKBOX
+    evidence: PAPER_ONLY
+    risk: EXTREME
+    blocker: NEEDS_REWRITE_OF_ARGUMENT
+    depends_on: [L2.2, L2.4]
+    blocks: [L5.1, L5.2]
+    lean_files: [YangMills/L4_LargeField/Suppression.lean]
+    mathlib_gap: null
+    next_step: Write exact target statement and isolate minimum imported interface
+    definition_of_done: Nontrivial large-field contribution bound is kernel-certified or isolated as explicit imported theorem
+    anti_vacuity_note: Parameter-passing or empty-event arguments do not count
+
+  - id: L5.1
+    title: One-step RG induction theorem
+    layer: L5
+    kind: target
+    status: BLACKBOX
+    evidence: PAPER_ONLY
+    risk: EXTREME
+    blocker: NEEDS_REWRITE_OF_ARGUMENT
+    depends_on: [L2.3, L2.4, L4.2]
+    blocks: [L5.2, L5.4]
+    lean_files: [YangMills/L5_MultiScaleRG/OneStepRG.lean]
+    mathlib_gap: null
+    next_step: Split the RG step into invariant families and monotonic subclaims
+    definition_of_done: The inductive scale step is formalized with explicit invariants and no undocumented axioms
+    anti_vacuity_note: No record packaging of already assumed outputs
+
+  - id: L6.2
+    title: Reflection positivity
+    layer: L6
+    kind: target
+    status: BLACKBOX
+    evidence: PAPER_ONLY
+    risk: EXTREME
+    blocker: NEEDS_OPERATOR_THEORY
+    depends_on: [L1.2, L6.1]
+    blocks: [L7.2]
+    lean_files: [YangMills/L6_OS_Axioms/ReflectionPositivity.lean]
+    mathlib_gap: May require operator-theoretic infrastructure beyond current local scope
+    next_step: Specify exact positivity statement and finite-volume precursor
+    definition_of_done: Reflection positivity theorem is represented exactly and closed or explicitly imported
+    anti_vacuity_note: Placeholder positivity margins do not count
+
+  - id: L7.3
+    title: OS to Wightman reconstruction
+    layer: L7
+    kind: infrastructure
+    status: BLACKBOX
+    evidence: PAPER_ONLY
+    risk: EXTREME
+    blocker: NEEDS_OPERATOR_THEORY
+    depends_on: [L7.1, L7.2]
+    blocks: [L8.2, L8.3]
+    lean_files: [YangMills/L7_Wightman/Reconstruction.lean]
+    mathlib_gap: Likely substantial operator/distribution infrastructure needed
+    next_step: Formalize abstract statement before any target instantiation
+    definition_of_done: Reconstruction theorem exists as a real Lean theorem, not a placeholder package
+    anti_vacuity_note: No bare record of fields, Hilbert space, or spectrum witnesses
+
+  - id: L8.3
+    title: Positive spectral mass gap
+    layer: L8
+    kind: target
+    status: BLOCKED
+    evidence: PAPER_ONLY
+    risk: EXTREME
+    blocker: PLACEHOLDER_DEPENDENCY
+    depends_on: [L5.4, L7.3, L8.2]
+    blocks: [L8.4]
+    lean_files: [YangMills/L8_MassGap/PositiveGap.lean]
+    mathlib_gap: null
+    next_step: Keep blocked until abstract spectral bridge and nontrivial Euclidean clustering are precise
+    definition_of_done: Strictly positive physical mass gap is kernel-certified on the true target path
+    anti_vacuity_note: Passing in a positive parameter is not proof of a mass gap
+
+  - id: L8.4
+    title: Final unconditional target theorem
+    layer: L8
+    kind: target
+    status: BLOCKED
+    evidence: PAPER_ONLY
+    risk: EXTREME
+    blocker: PLACEHOLDER_DEPENDENCY
+    depends_on: [L8.3]
+    blocks: []
+    lean_files: [YangMills/L8_MassGap/MainTheorem.lean]
+    mathlib_gap: null
+    next_step: None until critical path becomes real
+    definition_of_done: Final theorem is kernel-certified with no undocumented axioms on the critical path
+    anti_vacuity_note: Must match the real mathematical target, not a weakened package statement

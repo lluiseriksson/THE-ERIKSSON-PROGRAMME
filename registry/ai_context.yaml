@@ -1,0 +1,20 @@
+ai_context:
+  project_name: programa-eriksson
+  mission: Formal dependency architecture for the 4D Yang-Mills mass gap in Lean 4
+  source_of_truth:
+    - registry/nodes.yaml
+    - registry/dependencies.yaml
+    - registry/critical_paths.yaml
+    - registry/labels.yaml
+  current_phase: "Phase 0 — Sanitation and architecture"
+  primary_focus_node: L0.1
+  forbidden_assumptions:
+    - "A passing external audit implies a Lean proof"
+    - "A black-box interface is already mathematically realized"
+    - "A placeholder package closes a critical node"
+    - "Chat memory is an acceptable source of project state"
+  rules:
+    - "Only FORMALIZED_KERNEL closes a critical node"
+    - "All axioms must be registered"
+    - "No undocumented placeholders on critical paths"
+    - "Anti-vacuity checks are mandatory"

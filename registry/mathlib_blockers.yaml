@@ -1,0 +1,12 @@
+mathlib_blockers:
+  - id: M01
+    title: Finite-product Haar integration support for the required compact-group interface
+    impacts: [L0.7, L1.1, L1.2]
+    status: OPEN
+    next_step: Write minimal required API and determine whether local implementation or upstream contribution is preferable
+
+  - id: M02
+    title: Operator-theoretic infrastructure needed for OS/Wightman reconstruction
+    impacts: [L6.2, L7.3, L8.3]
+    status: OPEN
+    next_step: Isolate exact abstract theorem dependencies before attempting implementation

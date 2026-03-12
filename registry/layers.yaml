@@ -1,0 +1,45 @@
+layers:
+  - id: L0
+    title: Foundations on finite lattice
+    description: Finite lattice structures, edges, plaquettes, Wilson observables, finite Haar product measures
+    track: [target, infrastructure]
+
+  - id: L1
+    title: Finite-volume Gibbs theory
+    description: Partition function, finite-volume Gibbs measure, finite correlations, thermodynamic-limit interfaces
+    track: [target, infrastructure]
+
+  - id: L2
+    title: Balaban decomposition
+    description: Norms, field decomposition, one-step RG interfaces, local decomposition technology
+    track: [target]
+
+  - id: L3
+    title: Polymer expansion / Kotecký–Preiss
+    description: Abstract polymers, compatibility, activities, KP criterion, cluster expansion, truncated correlations
+    track: [target, infrastructure]
+
+  - id: L4
+    title: Large-field control
+    description: Large-field suppression, Gaussian dominance interfaces, scale-to-scale control of rare regions
+    track: [target]
+
+  - id: L5
+    title: Multiscale RG
+    description: RG iteration, scale-uniform control, flow stability, terminal extraction
+    track: [target]
+
+  - id: L6
+    title: Reflection positivity / lattice OS
+    description: Reflection operator, reflection positivity, lattice Euclidean structure, continuum interface
+    track: [target, infrastructure]
+
+  - id: L7
+    title: OS axioms and Wightman reconstruction
+    description: Formal OS axioms, verification interfaces, reconstruction of Hilbert space and fields
+    track: [target, infrastructure]
+
+  - id: L8
+    title: Mass gap
+    description: Euclidean clustering, spectral bridge, positive physical gap, nontriviality
+    track: [target]

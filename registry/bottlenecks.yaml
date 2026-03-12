@@ -1,0 +1,56 @@
+bottlenecks:
+  - id: B01
+    title: Abstract Kotecký–Preiss theorem in usable quantitative form
+    layer: L3
+    status: OPEN
+    risk: HIGH
+    related_nodes: [L3.4, L3.5]
+    note: Must be non-vacuous and reusable
+
+  - id: B02
+    title: Finite-product Haar integration interface over gauge configurations
+    layer: L0
+    status: OPEN
+    risk: HIGH
+    related_nodes: [L0.7, L1.1, L1.2]
+    note: Measure-theoretic exactness needed early
+
+  - id: B03
+    title: Large-field suppression
+    layer: L4
+    status: BLACKBOX
+    risk: EXTREME
+    related_nodes: [L4.2, L5.1]
+    note: Red node on the critical path
+
+  - id: B04
+    title: One-step RG induction theorem
+    layer: L5
+    status: BLACKBOX
+    risk: EXTREME
+    related_nodes: [L5.1]
+    note: Needs decomposition into explicit invariant families
+
+  - id: B05
+    title: Reflection positivity at the needed level
+    layer: L6
+    status: BLACKBOX
+    risk: EXTREME
+    related_nodes: [L6.2, L7.3]
+    note: Must not remain a packaging theorem
+
+  - id: B06
+    title: Abstract OS to Wightman reconstruction
+    layer: L7
+    status: BLACKBOX
+    risk: EXTREME
+    related_nodes: [L7.3, L8.3]
+    note: Better treated as reusable infrastructure track first
+
+  - id: B07
+    title: Positive physical mass gap without parameter passing
+    layer: L8
+    status: BLOCKED
+    risk: EXTREME
+    related_nodes: [L8.3, L8.4]
+    note: Strictly positive gap must be proved, not inserted
