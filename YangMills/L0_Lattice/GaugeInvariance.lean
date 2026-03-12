@@ -1,6 +1,6 @@
 import YangMills.L0_Lattice.WilsonAction
 
-import Mathlib.Algebra.BigOperators.Basic
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Data.Fintype.Basic
 
 open scoped BigOperators
