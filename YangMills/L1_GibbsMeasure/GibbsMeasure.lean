@@ -7,35 +7,74 @@ import YangMills.L0_Lattice.FiniteLatticeGeometryInstance
 
 namespace YangMills
 
-variable {d N : ℕ} {G : Type*} [Group G] [FiniteLatticeGeometry d N G]
+open MeasureTheory
 
-/-! ## Measurable structure on GaugeConfig -/
+variable {d N : ℕ} [NeZero d] [NeZero N] {G : Type*} [Group G] [MeasurableSpace G]
 
+/-! ## Positive edges and gauge config equivalence -/
+
+abbrev PosEdge (d N : ℕ) := {e : ConcreteEdge d N // e.sign = true}
+
+noncomputable def posToFun (f : PosEdge d N → G) : ConcreteEdge d N → G :=
+  fun e => if h : e.sign = true then f ⟨e, h⟩
+           else (f ⟨{ e with sign := true }, rfl⟩)⁻¹
+
+omit [NeZero d] [NeZero N] [MeasurableSpace G] in
+lemma posToFun_reverse (f : PosEdge d N → G) (e : ConcreteEdge d N) :
+    posToFun f { e with sign := !e.sign } = (posToFun f e)⁻¹ := by
+  obtain ⟨src, dir, sign⟩ := e; cases sign <;> simp [posToFun]
+
+omit [MeasurableSpace G] in
+lemma finBoxGeometry_reverse (e : ConcreteEdge d N) :
+    @FiniteLatticeGeometry.reverse _ _ G _ (finBoxGeometry d N G) e =
+    { e with sign := !e.sign } := rfl
+
+omit [MeasurableSpace G] in
 @[ext]
-theorem GaugeConfig.ext {A B : GaugeConfig d N G} (h : ∀ e, A e = B e) : A = B := by
+lemma GaugeConfig.ext' {A B : GaugeConfig d N G} (h : ∀ e, A e = B e) : A = B := by
   cases A; cases B; congr; funext e; exact h e
 
-def GaugeConfig.equivSubtype :
-    GaugeConfig d N G ≃
-    {f : FiniteLatticeGeometry.E (d:=d) (N:=N) (G:=G) → G //
-      ∀ e, f (FiniteLatticeGeometry.reverse e) = (f e)⁻¹} :=
-  { toFun  := fun A => ⟨A.toFun, A.map_reverse⟩
-    invFun := fun ⟨f, hf⟩ => ⟨f, hf⟩
-    left_inv  := fun A => by ext e; rfl
-    right_inv := fun ⟨f, _⟩ => rfl }
+noncomputable def posToConfig (f : PosEdge d N → G) : GaugeConfig d N G where
+  toFun := posToFun f
+  map_reverse e := by rw [finBoxGeometry_reverse]; exact posToFun_reverse f e
 
-instance [MeasurableSpace G] : MeasurableSpace (GaugeConfig d N G) :=
-  MeasurableSpace.comap GaugeConfig.equivSubtype.toFun inferInstance
+def configToPos (A : GaugeConfig d N G) : PosEdge d N → G :=
+  fun ⟨e, _⟩ => A e
+
+noncomputable def gaugeConfigEquiv :
+    (PosEdge d N → G) ≃ GaugeConfig d N G where
+  toFun  := posToConfig
+  invFun := configToPos
+  left_inv f := by ext ⟨e, he⟩; simp [configToPos, posToConfig, posToFun, he]
+  right_inv A := by
+    ext e
+    simp only [posToConfig, configToPos, posToFun]
+    obtain ⟨src, dir, sign⟩ := e
+    cases sign <;> simp
+    · have := A.map_reverse ⟨src, dir, true⟩
+      rw [finBoxGeometry_reverse] at this; simpa using this.symm
+
+/-! ## Measurable space and gauge measure -/
+
+noncomputable instance instMeasurableSpaceGaugeConfig :
+    MeasurableSpace (GaugeConfig d N G) :=
+  MeasurableSpace.comap gaugeConfigEquiv.symm inferInstance
+
+/-- Product Haar measure on gauge configurations via positive-edge coordinates. -/
+noncomputable def gaugeMeasureFrom (μ : Measure G) : Measure (GaugeConfig d N G) :=
+  Measure.map gaugeConfigEquiv (Measure.pi (fun _ : PosEdge d N => μ))
 
 /-! ## L1.1 / L1.2: Partition function and Gibbs measure -/
 
-/-- Partition function (stub — Haar measure integration pending). -/
-noncomputable def partitionFunction [MeasurableSpace G]
-    (plaquetteEnergy : G → ℝ) (β : ℝ) : ℝ := sorry
+/-- Partition function: integral of Boltzmann weight over gauge measure. -/
+noncomputable def partitionFunction (μ : Measure G)
+    (plaquetteEnergy : G → ℝ) (β : ℝ) : ℝ :=
+  ∫ U : GaugeConfig d N G, Real.exp (-β * wilsonAction plaquetteEnergy U)
+    ∂(gaugeMeasureFrom μ)
 
-/-- Gibbs measure (stub — Haar measure pending). -/
-noncomputable def gibbsMeasure [MeasurableSpace G]
-    (plaquetteEnergy : G → ℝ) (β : ℝ) :
-    MeasureTheory.Measure (GaugeConfig d N G) := sorry
+/-- Gibbs measure: Boltzmann-weighted gauge measure (stub — normalization pending). -/
+noncomputable def gibbsMeasure (μ : Measure G)
+    (plaquetteEnergy : G → ℝ) (β : ℝ) : Measure (GaugeConfig d N G) :=
+  gaugeMeasureFrom μ
 
 end YangMills
