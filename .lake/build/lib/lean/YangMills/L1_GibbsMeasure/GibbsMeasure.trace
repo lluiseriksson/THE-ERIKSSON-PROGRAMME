@@ -1,18 +1,18 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["99377e4a7c6fd6d6.olean"],
-  "i": "4c667273c8f9a6b7.ilean",
-  "c": "692a40ecbc76afd7.c"},
+ {"o": ["5a480a255f8c0df2.olean"],
+  "i": "a76389947f742978.ilean",
+  "c": "b2e460aaa473069a.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=/content/repo/.lake/packages/Cli/.lake/build/lib/lean:/content/repo/.lake/packages/batteries/.lake/build/lib/lean:/content/repo/.lake/packages/Qq/.lake/build/lib/lean:/content/repo/.lake/packages/aesop/.lake/build/lib/lean:/content/repo/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/repo/.lake/packages/importGraph/.lake/build/lib/lean:/content/repo/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/repo/.lake/packages/plausible/.lake/build/lib/lean:/content/repo/.lake/packages/mathlib/.lake/build/lib/lean:/content/repo/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/repo/YangMills/L1_GibbsMeasure/GibbsMeasure.lean -o /content/repo/.lake/build/lib/lean/YangMills/L1_GibbsMeasure/GibbsMeasure.olean -i /content/repo/.lake/build/lib/lean/YangMills/L1_GibbsMeasure/GibbsMeasure.ilean -c /content/repo/.lake/build/ir/YangMills/L1_GibbsMeasure/GibbsMeasure.c --setup /content/repo/.lake/build/ir/YangMills/L1_GibbsMeasure/GibbsMeasure.setup.json --json",
    "level": "trace"},
   {"message":
-   "YangMills/L1_GibbsMeasure/GibbsMeasure.lean:16:18: declaration uses `sorry`",
+   "YangMills/L1_GibbsMeasure/GibbsMeasure.lean:33:18: declaration uses `sorry`",
    "level": "warning"},
   {"message":
-   "YangMills/L1_GibbsMeasure/GibbsMeasure.lean:20:18: declaration uses `sorry`",
+   "YangMills/L1_GibbsMeasure/GibbsMeasure.lean:37:18: declaration uses `sorry`",
    "level": "warning"}],
  "inputs":
  [["YangMills.L1_GibbsMeasure.GibbsMeasure:deps",
@@ -49,10 +49,10 @@
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
   ["/content/repo/YangMills/L1_GibbsMeasure/GibbsMeasure.lean",
-   "0f4e651071b1e77d"],
+   "5849f4d153f45b05"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.L1_GibbsMeasure.GibbsMeasure", "9a857467f9fe5fb9"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "11efcd9d8c0e4a8b"}
+ "depHash": "2f48187c594734e0"}
