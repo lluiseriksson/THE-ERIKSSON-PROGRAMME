@@ -12,6 +12,8 @@
   ["/content/repo/.lake/build/lib/lean/YangMills/L2_Balaban/Measurability.olean"],
   "YangMills.L1_GibbsMeasure.GibbsMeasure":
   ["/content/repo/.lake/build/lib/lean/YangMills/L1_GibbsMeasure/GibbsMeasure.olean"],
+  "YangMills.L1_GibbsMeasure.Expectation":
+  ["/content/repo/.lake/build/lib/lean/YangMills/L1_GibbsMeasure/Expectation.olean"],
   "YangMills.L0_Lattice.WilsonAction":
   ["/content/repo/.lake/build/lib/lean/YangMills/L0_Lattice/WilsonAction.olean"],
   "YangMills.L0_Lattice.GaugeInvariance":
