@@ -1,8 +1,8 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["7cb1ab0a6348967a.olean"],
-  "i": "ee37c28682026808.ilean",
+ {"o": ["31169ddee7c170fa.olean"],
+  "i": "fbfde6d0e91cd19d.ilean",
   "c": "900c19932456a6aa.c"},
  "log":
  [{"message":
@@ -43,10 +43,10 @@
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
   ["/content/repo/YangMills/L1_GibbsMeasure/GibbsMeasure.lean",
-   "6eacd951153a12fe"],
+   "b42b82acc73ac7e7"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.L1_GibbsMeasure.GibbsMeasure", "9a857467f9fe5fb9"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "70246f7898ef503f"}
+ "depHash": "f841ed36c22b8f13"}

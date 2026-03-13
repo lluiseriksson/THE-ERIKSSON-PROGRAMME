@@ -106,7 +106,7 @@ noncomputable def gibbsMeasure (μ : Measure G)
     (fun U => -β * wilsonAction plaquetteEnergy U)
 
 /-- Gibbs measure is a probability measure given integrability. -/
-instance gibbsMeasure_isProbability (μ : Measure G) [IsProbabilityMeasure μ]
+theorem gibbsMeasure_isProbability (d N : ℕ) [NeZero d] [NeZero N] {G : Type*} [Group G] [MeasurableSpace G] (μ : Measure G) [IsProbabilityMeasure μ]
     (plaquetteEnergy : G → ℝ) (β : ℝ)
     (h_int : Integrable
       (fun U : GaugeConfig d N G => Real.exp (-β * wilsonAction plaquetteEnergy U))

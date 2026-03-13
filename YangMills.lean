@@ -5,6 +5,8 @@ import YangMills.L0_Lattice.GaugeInvariance
 import YangMills.L0_Lattice.SU2Basic
 import YangMills.L0_Lattice.FiniteLatticeGeometryInstance
 import YangMills.L1_GibbsMeasure.GibbsMeasure
+import YangMills.L1_GibbsMeasure.Expectation
+import YangMills.L1_GibbsMeasure.Correlations
 import YangMills.L2_Balaban.SmallLargeDecomposition
 import YangMills.L2_Balaban.RGFlow
 import YangMills.L2_Balaban.Measurability

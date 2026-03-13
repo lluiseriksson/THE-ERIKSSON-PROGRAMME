@@ -1,6 +1,6 @@
 // Lean compiler output
 // Module: YangMills
-// Imports: public import Init public import YangMills.L0_Lattice.FiniteLattice public import YangMills.L0_Lattice.GaugeConfigurations public import YangMills.L0_Lattice.WilsonAction public import YangMills.L0_Lattice.GaugeInvariance public import YangMills.L0_Lattice.SU2Basic public import YangMills.L0_Lattice.FiniteLatticeGeometryInstance public import YangMills.L1_GibbsMeasure.GibbsMeasure public import YangMills.L2_Balaban.SmallLargeDecomposition public import YangMills.L2_Balaban.RGFlow public import YangMills.L2_Balaban.Measurability
+// Imports: public import Init public import YangMills.L0_Lattice.FiniteLattice public import YangMills.L0_Lattice.GaugeConfigurations public import YangMills.L0_Lattice.WilsonAction public import YangMills.L0_Lattice.GaugeInvariance public import YangMills.L0_Lattice.SU2Basic public import YangMills.L0_Lattice.FiniteLatticeGeometryInstance public import YangMills.L1_GibbsMeasure.GibbsMeasure public import YangMills.L1_GibbsMeasure.Expectation public import YangMills.L1_GibbsMeasure.Correlations public import YangMills.L2_Balaban.SmallLargeDecomposition public import YangMills.L2_Balaban.RGFlow public import YangMills.L2_Balaban.Measurability
 #include <lean/lean.h>
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -21,6 +21,8 @@ lean_object* initialize_YangMills_YangMills_L0__Lattice_GaugeInvariance(uint8_t 
 lean_object* initialize_YangMills_YangMills_L0__Lattice_SU2Basic(uint8_t builtin);
 lean_object* initialize_YangMills_YangMills_L0__Lattice_FiniteLatticeGeometryInstance(uint8_t builtin);
 lean_object* initialize_YangMills_YangMills_L1__GibbsMeasure_GibbsMeasure(uint8_t builtin);
+lean_object* initialize_YangMills_YangMills_L1__GibbsMeasure_Expectation(uint8_t builtin);
+lean_object* initialize_YangMills_YangMills_L1__GibbsMeasure_Correlations(uint8_t builtin);
 lean_object* initialize_YangMills_YangMills_L2__Balaban_SmallLargeDecomposition(uint8_t builtin);
 lean_object* initialize_YangMills_YangMills_L2__Balaban_RGFlow(uint8_t builtin);
 lean_object* initialize_YangMills_YangMills_L2__Balaban_Measurability(uint8_t builtin);
@@ -51,6 +53,12 @@ res = initialize_YangMills_YangMills_L0__Lattice_FiniteLatticeGeometryInstance(b
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 res = initialize_YangMills_YangMills_L1__GibbsMeasure_GibbsMeasure(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_YangMills_YangMills_L1__GibbsMeasure_Expectation(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_YangMills_YangMills_L1__GibbsMeasure_Correlations(builtin);
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 res = initialize_YangMills_YangMills_L2__Balaban_SmallLargeDecomposition(builtin);

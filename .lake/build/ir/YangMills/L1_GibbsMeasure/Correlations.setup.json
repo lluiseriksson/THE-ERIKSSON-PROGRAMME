@@ -1,25 +1,15 @@
 {"plugins": [],
  "package": "YangMills",
  "options": {},
- "name": "YangMills",
+ "name": "YangMills.L1_GibbsMeasure.Correlations",
  "isModule": false,
  "importArts":
- {"YangMills.L2_Balaban.SmallLargeDecomposition":
-  ["/content/repo/.lake/build/lib/lean/YangMills/L2_Balaban/SmallLargeDecomposition.olean"],
-  "YangMills.L2_Balaban.RGFlow":
-  ["/content/repo/.lake/build/lib/lean/YangMills/L2_Balaban/RGFlow.olean"],
-  "YangMills.L2_Balaban.Measurability":
-  ["/content/repo/.lake/build/lib/lean/YangMills/L2_Balaban/Measurability.olean"],
-  "YangMills.L1_GibbsMeasure.GibbsMeasure":
+ {"YangMills.L1_GibbsMeasure.GibbsMeasure":
   ["/content/repo/.lake/build/lib/lean/YangMills/L1_GibbsMeasure/GibbsMeasure.olean"],
   "YangMills.L1_GibbsMeasure.Expectation":
   ["/content/repo/.lake/build/lib/lean/YangMills/L1_GibbsMeasure/Expectation.olean"],
-  "YangMills.L1_GibbsMeasure.Correlations":
-  ["/content/repo/.lake/build/lib/lean/YangMills/L1_GibbsMeasure/Correlations.olean"],
   "YangMills.L0_Lattice.WilsonAction":
   ["/content/repo/.lake/build/lib/lean/YangMills/L0_Lattice/WilsonAction.olean"],
-  "YangMills.L0_Lattice.SU2Basic":
-  ["/content/repo/.lake/build/lib/lean/YangMills/L0_Lattice/SU2Basic.olean"],
   "YangMills.L0_Lattice.GaugeInvariance":
   ["/content/repo/.lake/build/lib/lean/YangMills/L0_Lattice/GaugeInvariance.olean"],
   "YangMills.L0_Lattice.GaugeConfigurations":

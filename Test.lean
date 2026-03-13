@@ -1,28 +1,20 @@
 import Mathlib
-import YangMills.L2_Balaban.SmallLargeDecomposition
 import YangMills.L1_GibbsMeasure.GibbsMeasure
 
-open YangMills MeasureTheory Set
+open YangMills MeasureTheory
 
-variable {d N : ℕ} [NeZero d] [NeZero N] {G : Type*} [Group G] [MeasurableSpace G]
+-- Option 3: explicit d N in definition
+noncomputable def expectation' (d N : ℕ) [NeZero d] [NeZero N] {G : Type*}
+    [Group G] [MeasurableSpace G]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ)
+    (O : GaugeConfig d N G → ℝ) : ℝ :=
+  ∫ U, O U ∂(gibbsMeasure (d:=d) (N:=N) μ plaquetteEnergy β)
 
--- Test 1: measurability of gaugeConfigEquiv.symm
-example : Measurable (gaugeConfigEquiv (d:=d) (N:=N) (G:=G)).symm := by
-  apply Measurable.of_comap_le
-  simp [instMeasurableSpaceGaugeConfig]
-
--- Test 2: MeasurableSet {U | f U ≤ κ}
-example (f : GaugeConfig d N G → ℝ) (hf : Measurable f) (κ : ℝ) :
-    MeasurableSet {U | f U ≤ κ} :=
-  measurableSet_le hf measurable_const
-
--- Test 3: evaluation of positive edge is measurable
-example (e : PosEdge d N) :
-    Measurable (fun U : GaugeConfig d N G => U.toFun e.val) := by
-  have h_symm : Measurable (gaugeConfigEquiv (d:=d) (N:=N) (G:=G)).symm :=
-    Measurable.of_comap_le (by simp [instMeasurableSpaceGaugeConfig])
-  have h_eq : (fun U : GaugeConfig d N G => U.toFun e.val) =
-      (fun f : PosEdge d N → G => f e) ∘ gaugeConfigEquiv.symm := by
-    ext U; simp [gaugeConfigEquiv, configToPos]
-  rw [h_eq]
-  exact (measurable_pi_apply e).comp h_symm
+example (d N : ℕ) [NeZero d] [NeZero N] {G : Type*} [Group G] [MeasurableSpace G]
+    (μ : Measure G) [IsProbabilityMeasure μ] (plaquetteEnergy : G → ℝ) (β : ℝ)
+    (h_int : Integrable (fun U : GaugeConfig d N G =>
+      Real.exp (-β * wilsonAction plaquetteEnergy U)) (gaugeMeasureFrom (d:=d) (N:=N) μ))
+    (c : ℝ) : expectation' d N μ plaquetteEnergy β (fun _ => c) = c := by
+  haveI : IsProbabilityMeasure (gibbsMeasure (d:=d) (N:=N) μ plaquetteEnergy β) :=
+    gibbsMeasure_isProbability d N μ plaquetteEnergy β h_int
+  simp [expectation']
