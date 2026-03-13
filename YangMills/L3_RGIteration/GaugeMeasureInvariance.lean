@@ -38,18 +38,21 @@ private lemma pi_map_mul_conj [MeasurableMul₂ G] (μ : Measure G)
       map_mul_conj_eq_self μ (a i) (b i)]
 
 private lemma gaugeAct_comm_equiv [MeasurableMul₂ G] (u : GaugeTransform d N G) :
-    (fun f : PosEdge d N → G => GaugeConfig.gaugeAct u (gaugeConfigEquiv f)) =
-    (fun f : PosEdge d N → G => gaugeConfigEquiv (fun i =>
-        u (i.val.srcV) * f i * (u (i.val.dstV))⁻¹)) := by
-  ext f ⟨src, dir, sign⟩
+    GaugeConfig.gaugeAct u ∘ ⇑(gaugeConfigEquiv (d:=d) (N:=N) (G:=G)) =
+    ⇑(gaugeConfigEquiv (d:=d) (N:=N) (G:=G)) ∘
+    (fun f : PosEdge d N → G => fun i => u (i.val.srcV) * f i * (u (i.val.dstV))⁻¹) := by
+  funext f
+  apply GaugeConfig.ext'
+  intro ⟨src, dir, sign⟩
   cases sign
-  · simp only [GaugeConfig.gaugeAct, gaugeConfigEquiv, Equiv.coe_fn_mk, posToConfig, posToFun,
-               dif_neg Bool.false_ne_true, ConcreteEdge.srcV, ConcreteEdge.dstV,
+  · simp only [Function.comp, GaugeConfig.gaugeAct, gaugeConfigEquiv, Equiv.coe_fn_mk,
+               posToConfig, posToFun, dif_neg Bool.false_ne_true,
+               ConcreteEdge.srcV, ConcreteEdge.dstV,
                FiniteLatticeGeometry.src, FiniteLatticeGeometry.dst, finBoxGeometry, if_true]
     simp only [Bool.false_eq_true, if_false]
     group
-  · simp only [GaugeConfig.gaugeAct, gaugeConfigEquiv, Equiv.coe_fn_mk, posToConfig, posToFun,
-               ConcreteEdge.srcV, ConcreteEdge.dstV,
+  · simp only [Function.comp, GaugeConfig.gaugeAct, gaugeConfigEquiv, Equiv.coe_fn_mk,
+               posToConfig, posToFun, ConcreteEdge.srcV, ConcreteEdge.dstV,
                FiniteLatticeGeometry.src, FiniteLatticeGeometry.dst, finBoxGeometry,
                dite_true, if_true]
 
@@ -64,8 +67,9 @@ theorem gaugeMeasureFrom_gauge_invariant [MeasurableMul₂ G]
   set b := fun i : PosEdge d N => u (i.val.dstV)
   set C := fun f : PosEdge d N → G => fun i => a i * f i * (b i)⁻¹
   have hC : Measurable C := by fun_prop
-  have hcomm : GaugeConfig.gaugeAct u ∘ gaugeConfigEquiv = gaugeConfigEquiv ∘ C := by
-    ext f; exact congr_fun (gaugeAct_comm_equiv u) f
+  have hcomm : GaugeConfig.gaugeAct u ∘ ⇑(gaugeConfigEquiv (d:=d) (N:=N) (G:=G)) =
+               ⇑(gaugeConfigEquiv (d:=d) (N:=N) (G:=G)) ∘ C :=
+    gaugeAct_comm_equiv u
   calc Measure.map (GaugeConfig.gaugeAct u)
           (Measure.map gaugeConfigEquiv (Measure.pi (fun _ => μ)))
       = Measure.map (GaugeConfig.gaugeAct u ∘ gaugeConfigEquiv)

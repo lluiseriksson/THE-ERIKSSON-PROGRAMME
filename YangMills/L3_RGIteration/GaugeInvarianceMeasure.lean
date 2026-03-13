@@ -65,7 +65,8 @@ private lemma tilted_preimage_eq
   rw [tilted_apply' _ _ (e.measurable hs), tilted_apply' _ _ hs]
   apply lintegral_restrict_invariant' ν e s hs _ hbase
   ext x
-  simp [congr_fun hf x]
+  have hfx : f (e x) = f x := congr_fun hf x
+  simp only [Function.comp, hfx]
 
 /-- The Gibbs measure is gauge invariant.
     - hbase: Measure.map e (gaugeMeasureFrom μ) = gaugeMeasureFrom μ
