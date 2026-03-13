@@ -7,17 +7,19 @@ import YangMills.P8_PhysicalGap.LSItoSpectralGap
 /-!
 # P8.1: Feynman-Kac Bridge
 
-Connects HasSpectralGap to TransferWilsonBridge via the Feynman-Kac formula.
+Connects HasSpectralGap to hbound via the Feynman-Kac formula.
 -/
 
 namespace YangMills
 
 open MeasureTheory Real
 
+-- Open inner product notation for ⟪·,·⟫_ℝ
+open scoped InnerProductSpace
+
 variable {d : ℕ} [NeZero d]
-variable {G : Type*} [Group G] [MeasurableSpace G]
-variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
-  [CompleteSpace H]
+variable {G : Type*} [Group G] [MeasurableSpace G] [TopologicalSpace G]
+variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
 
 /-! ## Feynman-Kac hypothesis -/
 
@@ -30,7 +32,7 @@ def FeynmanKacFormula
   ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
     ∃ n : ℕ, distP N p q = n ∧
     @wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q =
-      ⟪ψ_obs N p, (T ^ n - P₀) (ψ_obs N q)⟫_ℝ
+      @inner ℝ H _ (ψ_obs N p) ((T ^ n - P₀) (ψ_obs N q))
 
 /-- State norm bounds. -/
 def StateNormBound
@@ -41,7 +43,7 @@ def StateNormBound
 
 /-! ## Main bridge theorem -/
 
-/-- Feynman-Kac + spectral gap → hbound for eriksson_programme_phase7. -/
+/-- Feynman-Kac + spectral gap → hbound. -/
 theorem feynmanKac_hbound
     (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
     (T P₀ : H →L[ℝ] H) (γ C C_ψ : ℝ)
@@ -59,9 +61,9 @@ theorem feynmanKac_hbound
   have hψ_p := hψ.2 N' p
   have hψ_q := hψ.2 N' q
   have hTS := transferMatrix_spectral_gap T P₀ γ C hgap n
-  calc |⟪ψ_obs N' p, (T ^ n - P₀) (ψ_obs N' q)⟫_ℝ|
+  calc |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))|
       ≤ ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ :=
-          abs_real_inner_le_norm _ _
+          real_inner_le_norm _ _
     _ ≤ ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) :=
           mul_le_mul_of_nonneg_left
             (ContinuousLinearMap.le_opNorm _ _) (norm_nonneg _)
@@ -69,7 +71,7 @@ theorem feynmanKac_hbound
           apply mul_le_mul hψ_p _ (by positivity) hψ.1
           exact mul_le_mul hTS hψ_q (norm_nonneg _) (by linarith [hgap.2.1])
     _ ≤ C_ψ ^ 2 * C := by
-          have hexp : Real.exp (-γ * n) ≤ 1 :=
+          have hexp : Real.exp (-γ * ↑n) ≤ 1 :=
             Real.exp_le_one_of_nonpos (by nlinarith [hgap.1, Nat.cast_nonneg n])
           nlinarith [hψ.1, hgap.2.1]
 
@@ -90,7 +92,7 @@ theorem feynmanKac_to_clay
     (hcont : Continuous plaquetteEnergy) (hβ : 0 ≤ β)
     (T P₀ : H →L[ℝ] H) (γ C C_ψ : ℝ)
     (hgap : HasSpectralGap T P₀ γ C)
-    (hC : 0 ≤ C) (hC_ψ : 0 ≤ C_ψ)
+    (hC_ψ : 0 ≤ C_ψ)
     (ψ_obs : (N : ℕ) → ConcretePlaquette d N → H)
     (hψ : StateNormBound ψ_obs C_ψ)
     (hFK : FeynmanKacFormula μ plaquetteEnergy β F
