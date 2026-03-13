@@ -4,6 +4,7 @@ import YangMills.L0_Lattice.GaugeConfigurations
 import YangMills.L0_Lattice.WilsonAction
 import YangMills.L1_GibbsMeasure.GibbsMeasure
 import YangMills.L2_Balaban.SmallLargeDecomposition
+import YangMills.L2_Balaban.Measurability
 
 namespace YangMills
 
@@ -87,5 +88,38 @@ theorem largeField_suppression (μ : Measure G) [IsProbabilityMeasure μ]
           apply Real.exp_le_exp.mpr; nlinarith
         · simp; exact (Real.exp_pos _).le
     _ = Real.exp (-β * κ) := by simp
+/-! ## L2.2b: Strengthened versions using Measurability -/
+
+/-- partitionFunction_split with measurability derived automatically. -/
+theorem partitionFunction_split' [MeasurableInv G] [MeasurableMul₂ G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (h_energy : Measurable plaquetteEnergy)
+    (h_int : Integrable (fun U : GaugeConfig d N G =>
+      Real.exp (-β * wilsonAction plaquetteEnergy U)) (gaugeMeasureFrom (d:=d) (N:=N) μ)) :
+    partitionFunction (d:=d) (N:=N) μ plaquetteEnergy β =
+    (∫ U : GaugeConfig d N G,
+      χ_small κ plaquetteEnergy U * Real.exp (-β * wilsonAction plaquetteEnergy U)
+      ∂(gaugeMeasureFrom (d:=d) (N:=N) μ)) +
+    (∫ U : GaugeConfig d N G,
+      χ_large κ plaquetteEnergy U * Real.exp (-β * wilsonAction plaquetteEnergy U)
+      ∂(gaugeMeasureFrom (d:=d) (N:=N) μ)) :=
+  partitionFunction_split κ plaquetteEnergy β μ
+    (measurableSet_smallFieldSet plaquetteEnergy h_energy κ)
+    (measurableSet_largeFieldSet plaquetteEnergy h_energy κ)
+    h_int
+
+/-- largeField_suppression with measurability derived automatically. -/
+theorem largeField_suppression' [MeasurableInv G] [MeasurableMul₂ G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (h_energy : Measurable plaquetteEnergy)
+    (hβ : 0 ≤ β)
+    (h_int : Integrable (fun U : GaugeConfig d N G =>
+      Real.exp (-β * wilsonAction plaquetteEnergy U)) (gaugeMeasureFrom (d:=d) (N:=N) μ)) :
+    ∫ U : GaugeConfig d N G,
+      χ_large κ plaquetteEnergy U * Real.exp (-β * wilsonAction plaquetteEnergy U)
+      ∂(gaugeMeasureFrom (d:=d) (N:=N) μ) ≤ Real.exp (-β * κ) :=
+  largeField_suppression κ plaquetteEnergy β μ
+    (measurableSet_largeFieldSet plaquetteEnergy h_energy κ)
+    hβ h_int
 
 end YangMills

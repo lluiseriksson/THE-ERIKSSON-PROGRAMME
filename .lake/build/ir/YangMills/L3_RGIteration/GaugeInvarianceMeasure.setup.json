@@ -1,14 +1,10 @@
 {"plugins": [],
  "package": "YangMills",
  "options": {},
- "name": "YangMills.L2_Balaban.RGFlow",
+ "name": "YangMills.L3_RGIteration.GaugeInvarianceMeasure",
  "isModule": false,
  "importArts":
- {"YangMills.L2_Balaban.SmallLargeDecomposition":
-  ["/content/repo/.lake/build/lib/lean/YangMills/L2_Balaban/SmallLargeDecomposition.olean"],
-  "YangMills.L2_Balaban.Measurability":
-  ["/content/repo/.lake/build/lib/lean/YangMills/L2_Balaban/Measurability.olean"],
-  "YangMills.L1_GibbsMeasure.GibbsMeasure":
+ {"YangMills.L1_GibbsMeasure.GibbsMeasure":
   ["/content/repo/.lake/build/lib/lean/YangMills/L1_GibbsMeasure/GibbsMeasure.olean"],
   "YangMills.L0_Lattice.WilsonAction":
   ["/content/repo/.lake/build/lib/lean/YangMills/L0_Lattice/WilsonAction.olean"],
