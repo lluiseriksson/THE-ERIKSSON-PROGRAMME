@@ -35,3 +35,7 @@ import YangMills.P3_BalabanRG.LatticeMassExtraction
 import YangMills.P3_BalabanRG.LatticeMassExtraction
 import YangMills.P3_BalabanRG.Phase3Assembly
 import YangMills.P3_BalabanRG.Phase3Assembly
+import YangMills.P4_Continuum.ContinuumBridge
+import YangMills.P4_Continuum.Phase4Assembly
+import YangMills.P4_Continuum.ContinuumBridge
+import YangMills.P4_Continuum.Phase4Assembly
