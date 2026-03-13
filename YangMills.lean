@@ -26,3 +26,5 @@ import YangMills.P2_MaxEntClustering.LocalObservableAlgebras
 import YangMills.P2_MaxEntClustering.MaxEntStates
 import YangMills.P2_MaxEntClustering.RecoveryChannels
 import YangMills.P2_MaxEntClustering.ClusteringBridge
+import YangMills.P3_BalabanRG.CorrelationNorms
+import YangMills.P3_BalabanRG.CorrelationNorms
