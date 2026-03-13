@@ -85,14 +85,20 @@ nodes:
     notes: requires MeasurableInv G, MeasurableMul2 G
 
   L3.1:
-    status: OPEN
-    files: []
-    notes: Block-spin RG integration — Balaban iterate
+    status: FORMALIZED_KERNEL
+    files: [YangMills/L3_RGIteration/BlockSpin.lean]
+    build_confirmed: true
+    theorems: [effectiveAction, rg_coupling_monotone, rg_large_field_condition,
+               rg_small_field_nonneg, rg_step_bound, rg_iterate_bound]
 
   L3.2:
-    status: OPEN
-    files: []
-    notes: RG flow bounds — effective action estimates
+    status: FORMALIZED_KERNEL
+    files: [YangMills/L3_RGIteration/GaugeInvarianceMeasure.lean]
+    build_confirmed: true
+    theorems: [gibbsWeight_gauge_invariant, gibbsTilt_gauge_invariant,
+               gibbsMeasure_gauge_invariant, lintegral_restrict_map_equiv,
+               lintegral_restrict_invariant, tilted_preimage_eq]
+    notes: hbase hypothesis — base measure invariance requires Haar (L3.3)
 
   L4.1:
     status: OPEN
