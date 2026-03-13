@@ -6,7 +6,7 @@
   "c": "cca9861a316ba6ec.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=/content/repo/.lake/packages/Cli/.lake/build/lib/lean:/content/repo/.lake/packages/batteries/.lake/build/lib/lean:/content/repo/.lake/packages/Qq/.lake/build/lib/lean:/content/repo/.lake/packages/aesop/.lake/build/lib/lean:/content/repo/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/repo/.lake/packages/importGraph/.lake/build/lib/lean:/content/repo/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/repo/.lake/packages/plausible/.lake/build/lib/lean:/content/repo/.lake/packages/mathlib/.lake/build/lib/lean:/content/repo/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/repo/YangMills/L5_MassGap/MassGap.lean -o /content/repo/.lake/build/lib/lean/YangMills/L5_MassGap/MassGap.olean -i /content/repo/.lake/build/lib/lean/YangMills/L5_MassGap/MassGap.ilean -c /content/repo/.lake/build/ir/YangMills/L5_MassGap/MassGap.c --setup /content/repo/.lake/build/ir/YangMills/L5_MassGap/MassGap.setup.json --json",
+   ".> LEAN_PATH=/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Cli/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/batteries/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Qq/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/aesop/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/importGraph/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/plausible/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/mathlib/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/THE-ERIKSSON-PROGRAMME/YangMills/L5_MassGap/MassGap.lean -o /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/L5_MassGap/MassGap.olean -i /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/L5_MassGap/MassGap.ilean -c /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/L5_MassGap/MassGap.c --setup /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/L5_MassGap/MassGap.setup.json --json",
    "level": "trace"}],
  "inputs":
  [["YangMills.L5_MassGap.MassGap:deps",
@@ -14,14 +14,14 @@
      [["YangMills/YangMills:extraDep",
        [["@YangMills:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["Mathlib transitive imports (legacy)", "7a3af43bd648dbee"],
-        ["Mathlib:importAllArts", "4aa2e4f9918fd2f2"],
+       [["Mathlib transitive imports (legacy)", "00f202dff5f0ba80"],
+        ["Mathlib:importAllArts", "5f5aa85696b12d33"],
         ["YangMills.L4_WilsonLoops.WilsonLoop transitive imports (legacy)",
-         "10104c3ee2e7a290"],
+         "3849259fb2e217ad"],
         ["YangMills.L4_WilsonLoops.WilsonLoop:importAllArts",
          "5a8c9443d289909e"],
         ["YangMills.L4_TransferMatrix.TransferMatrix transitive imports (legacy)",
-         "7816f7fecd079492"],
+         "41bab83ac508e6d5"],
         ["YangMills.L4_TransferMatrix.TransferMatrix:importAllArts",
          "88383bac84968879"]]]]],
     ["libs",
@@ -31,10 +31,11 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
-  ["/content/repo/YangMills/L5_MassGap/MassGap.lean", "11a03913cb2d7070"],
+  ["/content/THE-ERIKSSON-PROGRAMME/YangMills/L5_MassGap/MassGap.lean",
+   "11a03913cb2d7070"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.L5_MassGap.MassGap", "4055bdd021f17988"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "c3d41369b19cc3cf"}
+ "depHash": "54271f1b5f373292"}

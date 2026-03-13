@@ -6,7 +6,7 @@
   "c": "aa47523cff4cb313.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=/content/repo/.lake/packages/Cli/.lake/build/lib/lean:/content/repo/.lake/packages/batteries/.lake/build/lib/lean:/content/repo/.lake/packages/Qq/.lake/build/lib/lean:/content/repo/.lake/packages/aesop/.lake/build/lib/lean:/content/repo/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/repo/.lake/packages/importGraph/.lake/build/lib/lean:/content/repo/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/repo/.lake/packages/plausible/.lake/build/lib/lean:/content/repo/.lake/packages/mathlib/.lake/build/lib/lean:/content/repo/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/repo/YangMills/L1_GibbsMeasure/Correlations.lean -o /content/repo/.lake/build/lib/lean/YangMills/L1_GibbsMeasure/Correlations.olean -i /content/repo/.lake/build/lib/lean/YangMills/L1_GibbsMeasure/Correlations.ilean -c /content/repo/.lake/build/ir/YangMills/L1_GibbsMeasure/Correlations.c --setup /content/repo/.lake/build/ir/YangMills/L1_GibbsMeasure/Correlations.setup.json --json",
+   ".> LEAN_PATH=/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Cli/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/batteries/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Qq/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/aesop/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/importGraph/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/plausible/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/mathlib/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/THE-ERIKSSON-PROGRAMME/YangMills/L1_GibbsMeasure/Correlations.lean -o /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/L1_GibbsMeasure/Correlations.olean -i /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/L1_GibbsMeasure/Correlations.ilean -c /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/L1_GibbsMeasure/Correlations.c --setup /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/L1_GibbsMeasure/Correlations.setup.json --json",
    "level": "trace"}],
  "inputs":
  [["YangMills.L1_GibbsMeasure.Correlations:deps",
@@ -15,7 +15,7 @@
        [["@YangMills:extraDep", "00000000000006bb"]]],
       ["imports",
        [["YangMills.L1_GibbsMeasure.Expectation transitive imports (legacy)",
-         "c3c3fda45a290019"],
+         "28f00cba42998afa"],
         ["YangMills.L1_GibbsMeasure.Expectation:importAllArts",
          "f63f67bbe0883e86"]]]]],
     ["libs",
@@ -25,11 +25,11 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
-  ["/content/repo/YangMills/L1_GibbsMeasure/Correlations.lean",
+  ["/content/THE-ERIKSSON-PROGRAMME/YangMills/L1_GibbsMeasure/Correlations.lean",
    "cdd1b53a27f86cf4"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.L1_GibbsMeasure.Correlations", "715d04e0ba3ada6e"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "a716d1d8bb22fcfe"}
+ "depHash": "cd47485837d175e5"}

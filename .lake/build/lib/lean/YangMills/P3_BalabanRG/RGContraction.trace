@@ -6,7 +6,7 @@
   "c": "a9b7edf0163f1fd0.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=/content/repo/.lake/packages/Cli/.lake/build/lib/lean:/content/repo/.lake/packages/batteries/.lake/build/lib/lean:/content/repo/.lake/packages/Qq/.lake/build/lib/lean:/content/repo/.lake/packages/aesop/.lake/build/lib/lean:/content/repo/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/repo/.lake/packages/importGraph/.lake/build/lib/lean:/content/repo/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/repo/.lake/packages/plausible/.lake/build/lib/lean:/content/repo/.lake/packages/mathlib/.lake/build/lib/lean:/content/repo/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/repo/YangMills/P3_BalabanRG/RGContraction.lean -o /content/repo/.lake/build/lib/lean/YangMills/P3_BalabanRG/RGContraction.olean -i /content/repo/.lake/build/lib/lean/YangMills/P3_BalabanRG/RGContraction.ilean -c /content/repo/.lake/build/ir/YangMills/P3_BalabanRG/RGContraction.c --setup /content/repo/.lake/build/ir/YangMills/P3_BalabanRG/RGContraction.setup.json --json",
+   ".> LEAN_PATH=/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Cli/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/batteries/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Qq/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/aesop/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/importGraph/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/plausible/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/mathlib/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/THE-ERIKSSON-PROGRAMME/YangMills/P3_BalabanRG/RGContraction.lean -o /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P3_BalabanRG/RGContraction.olean -i /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P3_BalabanRG/RGContraction.ilean -c /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P3_BalabanRG/RGContraction.c --setup /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P3_BalabanRG/RGContraction.setup.json --json",
    "level": "trace"},
   {"message":
    "YangMills/P3_BalabanRG/RGContraction.lean:131:5: unused variable `n`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
@@ -17,12 +17,12 @@
      [["YangMills/YangMills:extraDep",
        [["@YangMills:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["Mathlib transitive imports (legacy)", "7a3af43bd648dbee"],
-        ["Mathlib:importAllArts", "4aa2e4f9918fd2f2"],
+       [["Mathlib transitive imports (legacy)", "00f202dff5f0ba80"],
+        ["Mathlib:importAllArts", "5f5aa85696b12d33"],
         ["YangMills.P3_BalabanRG.CorrelationNorms transitive imports (legacy)",
-         "1b33221d90f37713"],
+         "4501df13eb5c2435"],
         ["YangMills.P3_BalabanRG.CorrelationNorms:importAllArts",
-         "035c963618bc8172"]]]]],
+         "88280b3d12241ff9"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -30,11 +30,11 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
-  ["/content/repo/YangMills/P3_BalabanRG/RGContraction.lean",
+  ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P3_BalabanRG/RGContraction.lean",
    "a9fdde20be59a73c"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.P3_BalabanRG.RGContraction", "16b38c6bfdd89ee1"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "e2b2bf62b1e4b5f4"}
+ "depHash": "bdc119ab479413a7"}

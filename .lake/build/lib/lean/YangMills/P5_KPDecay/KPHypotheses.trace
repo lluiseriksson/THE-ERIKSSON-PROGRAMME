@@ -6,7 +6,7 @@
   "c": "8e0412a932718ea0.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=/content/repo/.lake/packages/Cli/.lake/build/lib/lean:/content/repo/.lake/packages/batteries/.lake/build/lib/lean:/content/repo/.lake/packages/Qq/.lake/build/lib/lean:/content/repo/.lake/packages/aesop/.lake/build/lib/lean:/content/repo/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/repo/.lake/packages/importGraph/.lake/build/lib/lean:/content/repo/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/repo/.lake/packages/plausible/.lake/build/lib/lean:/content/repo/.lake/packages/mathlib/.lake/build/lib/lean:/content/repo/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/repo/YangMills/P5_KPDecay/KPHypotheses.lean -o /content/repo/.lake/build/lib/lean/YangMills/P5_KPDecay/KPHypotheses.olean -i /content/repo/.lake/build/lib/lean/YangMills/P5_KPDecay/KPHypotheses.ilean -c /content/repo/.lake/build/ir/YangMills/P5_KPDecay/KPHypotheses.c --setup /content/repo/.lake/build/ir/YangMills/P5_KPDecay/KPHypotheses.setup.json --json",
+   ".> LEAN_PATH=/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Cli/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/batteries/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Qq/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/aesop/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/importGraph/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/plausible/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/mathlib/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/THE-ERIKSSON-PROGRAMME/YangMills/P5_KPDecay/KPHypotheses.lean -o /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P5_KPDecay/KPHypotheses.olean -i /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P5_KPDecay/KPHypotheses.ilean -c /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P5_KPDecay/KPHypotheses.c --setup /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P5_KPDecay/KPHypotheses.setup.json --json",
    "level": "trace"},
   {"message":
    "YangMills/P5_KPDecay/KPHypotheses.lean:46:13: unused variable `hκ`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
@@ -23,10 +23,10 @@
      [["YangMills/YangMills:extraDep",
        [["@YangMills:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["Mathlib transitive imports (legacy)", "7a3af43bd648dbee"],
-        ["Mathlib:importAllArts", "4aa2e4f9918fd2f2"],
+       [["Mathlib transitive imports (legacy)", "00f202dff5f0ba80"],
+        ["Mathlib:importAllArts", "5f5aa85696b12d33"],
         ["YangMills.P4_Continuum.Phase4Assembly transitive imports (legacy)",
-         "6a5290e00c3049d9"],
+         "2739d78a4acb54b5"],
         ["YangMills.P4_Continuum.Phase4Assembly:importAllArts",
          "61d730300d7108d3"]]]]],
     ["libs",
@@ -36,10 +36,11 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
-  ["/content/repo/YangMills/P5_KPDecay/KPHypotheses.lean", "170facac566072ec"],
+  ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P5_KPDecay/KPHypotheses.lean",
+   "170facac566072ec"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.P5_KPDecay.KPHypotheses", "ba8c61c2f8e8d359"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "28552510c34ccd39"}
+ "depHash": "554fd2a73793253d"}

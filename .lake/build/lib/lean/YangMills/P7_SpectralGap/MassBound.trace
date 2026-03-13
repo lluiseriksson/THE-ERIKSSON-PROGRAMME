@@ -6,7 +6,7 @@
   "c": "595199f8bf88cdd2.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=/content/repo/.lake/packages/Cli/.lake/build/lib/lean:/content/repo/.lake/packages/batteries/.lake/build/lib/lean:/content/repo/.lake/packages/Qq/.lake/build/lib/lean:/content/repo/.lake/packages/aesop/.lake/build/lib/lean:/content/repo/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/repo/.lake/packages/importGraph/.lake/build/lib/lean:/content/repo/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/repo/.lake/packages/plausible/.lake/build/lib/lean:/content/repo/.lake/packages/mathlib/.lake/build/lib/lean:/content/repo/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/repo/YangMills/P7_SpectralGap/MassBound.lean -o /content/repo/.lake/build/lib/lean/YangMills/P7_SpectralGap/MassBound.olean -i /content/repo/.lake/build/lib/lean/YangMills/P7_SpectralGap/MassBound.ilean -c /content/repo/.lake/build/ir/YangMills/P7_SpectralGap/MassBound.c --setup /content/repo/.lake/build/ir/YangMills/P7_SpectralGap/MassBound.setup.json --json",
+   ".> LEAN_PATH=/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Cli/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/batteries/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Qq/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/aesop/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/importGraph/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/plausible/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/mathlib/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/THE-ERIKSSON-PROGRAMME/YangMills/P7_SpectralGap/MassBound.lean -o /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P7_SpectralGap/MassBound.olean -i /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P7_SpectralGap/MassBound.ilean -c /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P7_SpectralGap/MassBound.c --setup /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P7_SpectralGap/MassBound.setup.json --json",
    "level": "trace"}],
  "inputs":
  [["YangMills.P7_SpectralGap.MassBound:deps",
@@ -14,10 +14,10 @@
      [["YangMills/YangMills:extraDep",
        [["@YangMills:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["Mathlib transitive imports (legacy)", "7a3af43bd648dbee"],
-        ["Mathlib:importAllArts", "4aa2e4f9918fd2f2"],
+       [["Mathlib transitive imports (legacy)", "00f202dff5f0ba80"],
+        ["Mathlib:importAllArts", "5f5aa85696b12d33"],
         ["YangMills.P7_SpectralGap.WilsonDistanceBridge transitive imports (legacy)",
-         "81072b28ef2a08ed"],
+         "74a6133fa5c3ea32"],
         ["YangMills.P7_SpectralGap.WilsonDistanceBridge:importAllArts",
          "1752fc298d8e888a"]]]]],
     ["libs",
@@ -27,10 +27,11 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
-  ["/content/repo/YangMills/P7_SpectralGap/MassBound.lean", "4b35c571b138d699"],
+  ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P7_SpectralGap/MassBound.lean",
+   "4b35c571b138d699"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.P7_SpectralGap.MassBound", "d8e5a3e9ac5b9c48"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "9404165349ba7cc9"}
+ "depHash": "858007c27eb3f361"}

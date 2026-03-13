@@ -6,7 +6,7 @@
   "c": "65a91284be3f07b0.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=/content/repo/.lake/packages/Cli/.lake/build/lib/lean:/content/repo/.lake/packages/batteries/.lake/build/lib/lean:/content/repo/.lake/packages/Qq/.lake/build/lib/lean:/content/repo/.lake/packages/aesop/.lake/build/lib/lean:/content/repo/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/repo/.lake/packages/importGraph/.lake/build/lib/lean:/content/repo/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/repo/.lake/packages/plausible/.lake/build/lib/lean:/content/repo/.lake/packages/mathlib/.lake/build/lib/lean:/content/repo/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/repo/YangMills/P3_BalabanRG/LatticeMassExtraction.lean -o /content/repo/.lake/build/lib/lean/YangMills/P3_BalabanRG/LatticeMassExtraction.olean -i /content/repo/.lake/build/lib/lean/YangMills/P3_BalabanRG/LatticeMassExtraction.ilean -c /content/repo/.lake/build/ir/YangMills/P3_BalabanRG/LatticeMassExtraction.c --setup /content/repo/.lake/build/ir/YangMills/P3_BalabanRG/LatticeMassExtraction.setup.json --json",
+   ".> LEAN_PATH=/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Cli/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/batteries/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Qq/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/aesop/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/importGraph/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/plausible/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/mathlib/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/THE-ERIKSSON-PROGRAMME/YangMills/P3_BalabanRG/LatticeMassExtraction.lean -o /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P3_BalabanRG/LatticeMassExtraction.olean -i /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P3_BalabanRG/LatticeMassExtraction.ilean -c /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P3_BalabanRG/LatticeMassExtraction.c --setup /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P3_BalabanRG/LatticeMassExtraction.setup.json --json",
    "level": "trace"},
   {"message":
    "YangMills/P3_BalabanRG/LatticeMassExtraction.lean:53:14: unused variable `hdm`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
@@ -20,10 +20,10 @@
      [["YangMills/YangMills:extraDep",
        [["@YangMills:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["Mathlib transitive imports (legacy)", "7a3af43bd648dbee"],
-        ["Mathlib:importAllArts", "4aa2e4f9918fd2f2"],
+       [["Mathlib transitive imports (legacy)", "00f202dff5f0ba80"],
+        ["Mathlib:importAllArts", "5f5aa85696b12d33"],
         ["YangMills.P3_BalabanRG.MultiscaleDecay transitive imports (legacy)",
-         "ca3c89750ee2bd1e"],
+         "6e5028f99e08feb9"],
         ["YangMills.P3_BalabanRG.MultiscaleDecay:importAllArts",
          "bfa209c129d0bebe"]]]]],
     ["libs",
@@ -33,7 +33,7 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
-  ["/content/repo/YangMills/P3_BalabanRG/LatticeMassExtraction.lean",
+  ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P3_BalabanRG/LatticeMassExtraction.lean",
    "033b3ae4ccb54589"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
@@ -41,4 +41,4 @@
    "1fd4022b8a594e04"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "21851f2d59210736"}
+ "depHash": "6e1476b6fa18d058"}

@@ -6,7 +6,7 @@
   "c": "069bf7b8c6cddfce.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=/content/repo/.lake/packages/Cli/.lake/build/lib/lean:/content/repo/.lake/packages/batteries/.lake/build/lib/lean:/content/repo/.lake/packages/Qq/.lake/build/lib/lean:/content/repo/.lake/packages/aesop/.lake/build/lib/lean:/content/repo/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/repo/.lake/packages/importGraph/.lake/build/lib/lean:/content/repo/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/repo/.lake/packages/plausible/.lake/build/lib/lean:/content/repo/.lake/packages/mathlib/.lake/build/lib/lean:/content/repo/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/repo/YangMills/P7_SpectralGap/TransferMatrixGap.lean -o /content/repo/.lake/build/lib/lean/YangMills/P7_SpectralGap/TransferMatrixGap.olean -i /content/repo/.lake/build/lib/lean/YangMills/P7_SpectralGap/TransferMatrixGap.ilean -c /content/repo/.lake/build/ir/YangMills/P7_SpectralGap/TransferMatrixGap.c --setup /content/repo/.lake/build/ir/YangMills/P7_SpectralGap/TransferMatrixGap.setup.json --json",
+   ".> LEAN_PATH=/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Cli/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/batteries/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Qq/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/aesop/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/importGraph/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/plausible/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/mathlib/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/THE-ERIKSSON-PROGRAMME/YangMills/P7_SpectralGap/TransferMatrixGap.lean -o /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P7_SpectralGap/TransferMatrixGap.olean -i /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P7_SpectralGap/TransferMatrixGap.ilean -c /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P7_SpectralGap/TransferMatrixGap.c --setup /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P7_SpectralGap/TransferMatrixGap.setup.json --json",
    "level": "trace"},
   {"message":
    "YangMills/P7_SpectralGap/TransferMatrixGap.lean:23:0: automatically included section variable(s) unused in theorem `YangMills.transferKernel_lowerBound`:\n  [MeasurableSpace G]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [MeasurableSpace G] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
@@ -38,10 +38,10 @@
      [["YangMills/YangMills:extraDep",
        [["@YangMills:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["Mathlib transitive imports (legacy)", "7a3af43bd648dbee"],
-        ["Mathlib:importAllArts", "4aa2e4f9918fd2f2"],
+       [["Mathlib transitive imports (legacy)", "00f202dff5f0ba80"],
+        ["Mathlib:importAllArts", "5f5aa85696b12d33"],
         ["YangMills.P5_KPDecay.KPTerminalBound transitive imports (legacy)",
-         "66c9d26315f243c6"],
+         "d2b3efd3df04fb61"],
         ["YangMills.P5_KPDecay.KPTerminalBound:importAllArts",
          "cb52a8a7b804a8c9"]]]]],
     ["libs",
@@ -51,7 +51,7 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
-  ["/content/repo/YangMills/P7_SpectralGap/TransferMatrixGap.lean",
+  ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P7_SpectralGap/TransferMatrixGap.lean",
    "5c8bcaaba0aa786c"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
@@ -59,4 +59,4 @@
    "2563c59b527fccc7"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "35edc25ef0236765"}
+ "depHash": "5175abc539de9033"}
