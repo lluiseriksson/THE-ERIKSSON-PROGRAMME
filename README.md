@@ -1,30 +1,94 @@
-# programa-eriksson
+# The Eriksson Programme
 
-**Formal dependency architecture and Lean 4 research program**  
-**4D SU(N) Yang–Mills existence and mass gap (Eriksson programme)**
+**Formal dependency architecture and Lean 4 research program**
+**4D SU(N) Yang–Mills existence and mass gap**
 
-Lema interno:  
-**No black box counts as proof. No chat memory counts as state.**
+> **Internal lemma**: No black box counts as proof. No chat memory counts as state.
 
-## Estado auditado actual (12 marzo 2026)
-- Repositorios anteriores: solo scaffolds de auditoría (0 teoremas cerrados en Lean kernel).
-- Este repo: máquina de estado investigadora de 10–15 años.
-- Objetivo terminal: cerrar la cadena crítica L0 → L8 sin axiomas no registrados.
+---
 
-## Arquitectura
-- Capas L0–L8 (ver `docs/02_research_program/00_master_openings_tree.md`)
-- Registro máquina-legible: `registry/nodes.yaml`
-- Dashboard generado automáticamente
-- CI que falla si aparece `sorry`, `axiom` no registrado o estado inconsistente
+## Current audited state (March 2026)
 
-## Qué cuenta como prueba
-- Solo `theorem … := by …` cerrado en el kernel Lean sin `sorry` ni axiomas externos no registrados.
-- IMPORTED desde Mathlib cuenta.
-- BLACKBOX debe estar registrado en `nodes.yaml`.
+| Layer | Status | Notes |
+|-------|--------|-------|
+| L0 (Lattice foundations) | ✅ FORMALIZED_KERNEL | 6 files, zero sorry |
+| L1 (Gibbs measure) | ✅ FORMALIZED_KERNEL | gibbsMeasure, expectation, correlations |
+| L2 (Bałaban decomposition) | ✅ FORMALIZED_KERNEL | small/large field split, measurability |
+| L3–L8 | OPEN / BLACKBOX | Hard analysis pending |
 
-## Cómo empezar (IA o humano)
-1. Lee `AI_ONBOARDING.md`
-2. Mira `dashboard/current_focus.json`
-3. Ejecuta `scripts/validate_registry.py`
+**Progress estimate: ~12% toward unconditional Yang–Mills.**
 
-Ver `ROADMAP_MASTER.md` y `STATE_OF_THE_PROJECT.md` para detalles.
+---
+
+## What counts as proof
+
+- Only `theorem … := by …` closed in the Lean kernel **without `sorry`** and without unregistered axioms.
+- Imports from Mathlib count.
+- BLACKBOX nodes must be registered in `registry/nodes.yaml`.
+
+---
+
+## Architecture
+
+The program is organized in layers L0–L8, each corresponding to a major mathematical component:
+
+- **L0** — Finite lattice geometry, gauge configurations, Wilson action, SU(2) basics
+- **L1** — Gibbs measure, partition function, expectation values, correlations
+- **L2** — Bałaban small/large-field decomposition, RG flow, measurability
+- **L3** — Block-spin renormalization group iteration
+- **L4** — Large-field suppression bounds
+- **L5** — Continuum limit infrastructure
+- **L6** — Osterwalder–Schrader reconstruction
+- **L7** — Spectral gap / mass gap
+- **L8** — Final Yang–Mills existence and mass gap theorem
+
+Full dependency graph: `docs/02_research_program/00_master_openings_tree.md`
+
+---
+
+## Repository structure
+```
+YangMills/
+  L0_Lattice/          # Finite lattice, gauge configs, Wilson action, SU(2)
+  L1_GibbsMeasure/     # Gibbs measure, expectation, correlations
+  L2_Balaban/          # Small/large decomposition, RG flow, measurability
+  L4_LargeField/       # Large-field suppression (stub)
+registry/
+  nodes.yaml           # Machine-readable node status
+  critical_paths.yaml
+scripts/
+  validate_registry.py
+dashboard/
+  current_focus.json
+```
+
+---
+
+## Getting started (AI or human)
+
+1. Read `AI_ONBOARDING.md`
+2. Check `dashboard/current_focus.json` for current focus
+3. Run `scripts/validate_registry.py` to verify registry consistency
+4. See `ROADMAP_MASTER.md` and `STATE_OF_THE_PROJECT.md` for full details
+
+---
+
+## Governance
+
+- **CI fails** if any `sorry`, unregistered `axiom`, or inconsistent registry state is detected
+- **No chat memory counts as state** — all state lives in `registry/nodes.yaml` and source files
+- **No black box counts as proof** — every node must be either FORMALIZED_KERNEL or explicitly registered as BLACKBOX with justification
+
+---
+
+## Toolchain
+
+- Lean 4 (`leanprover/lean4:v4.29.0-rc6`)
+- Mathlib v4.29
+- Lake build system
+
+---
+
+## License
+
+Research program by Lluis Eriksson. All Lean proofs are verifiable in the Lean 4 kernel.
