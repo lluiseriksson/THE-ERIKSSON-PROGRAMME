@@ -9,3 +9,12 @@ require mathlib from git
 
 lean_lib «YangMills» where
   roots := #[`YangMills]
+
+-- Modules (in dependency order):
+-- YangMills.Foundations.BalabanAxioms
+-- YangMills.Foundations.ScaleCancellation
+-- YangMills.LSI.LSI_Chain
+-- YangMills.LSI.InterfaceLemmas
+-- YangMills.RG.RG_Chain
+-- YangMills.SpectralGap.SpectralGap
+-- YangMills.ClayTheorem
