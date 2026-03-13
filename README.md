@@ -129,3 +129,13 @@ registry/
 ## License
 
 Research program by Lluis Eriksson. All Lean proofs are verifiable in the Lean 4 kernel.
+
+
+## Phase 3 — Next target: `LatticeMassProfile.IsPositive`
+```
+P3.1 CorrelationNorms      — decay witnesses
+P3.2 RGContraction         — one-step improvement predicate  
+P3.3 MultiscaleDecay       — n-step exponential decay
+P3.4 LatticeMassExtraction — extract IsPositive
+P3.5 Phase3Assembly        — discharge hypothesis in L8.1
+```
