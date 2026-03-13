@@ -126,26 +126,40 @@ nodes:
     notes: commit ebe3f85; minimal Wilson observable from plaquetteHolonomy
 
   L4.3:
-    status: OPEN
-    files: []
-    notes: Transfer matrix
+    status: FORMALIZED_KERNEL
+    files: [YangMills/L4_TransferMatrix/TransferMatrix.lean]
+    build_confirmed: true
+    theorems: [transferKernel, transferKernel_nonneg, transferKernel_symm,
+               transferOperatorFn, transferOperatorFn_nonneg,
+               HasSpectralGap, massGap_pos, transferMatrix_spectral_gap,
+               spectral_gap_rate_pos]
+    notes: commit 17d2f21; abstract Banach space H avoids Lp quotient issues
 
   L5.1:
-    status: OPEN
-    files: []
-    notes: Spectral gap / mass gap statement
+    status: FORMALIZED_KERNEL
+    files: [YangMills/L5_MassGap/MassGap.lean]
+    build_confirmed: true
+    theorems: [UniformWilsonDecay, YangMillsMassGap, TransferWilsonBridge,
+               yangMills_massGap_of_decay, yangMills_massGap_of_transfer,
+               yangMills_mass_pos, yangMills_mass_gap]
+    notes: commit d02ce65; terminal theorem with hard content as explicit hypothesis
 
   L6.1:
     status: OPEN
     files: []
-    notes: Osterwalder-Schrader reconstruction
+    notes: Feynman-Kac bridge — connect transfer matrix spectrum to Wilson correlations
+
+  L6.2:
+    status: OPEN
+    files: []
+    notes: Osterwalder-Schrader reconstruction — infinite-volume Gibbs states
 
   L7.1:
     status: OPEN
     files: []
-    notes: Spectral gap (continuum limit)
+    notes: Continuum limit — lattice spacing a → 0
 
   L8.1:
     status: OPEN
     files: []
-    notes: Yang-Mills existence and mass gap — terminal node
+    notes: Yang-Mills existence and mass gap (Clay) — terminal node
