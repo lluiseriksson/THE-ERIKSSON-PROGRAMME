@@ -19,3 +19,4 @@ import YangMills.L4_TransferMatrix.TransferMatrix
 import YangMills.L5_MassGap.MassGap
 import YangMills.L6_FeynmanKac.FeynmanKac
 import YangMills.L6_OS.OsterwalderSchrader
+import YangMills.L7_Continuum.ContinuumLimit
