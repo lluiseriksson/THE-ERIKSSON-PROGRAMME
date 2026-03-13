@@ -42,3 +42,4 @@ import YangMills.P4_Continuum.Phase4Assembly
 import YangMills.P5_KPDecay.KPHypotheses
 import YangMills.P5_KPDecay.BalabanBootstrap
 import YangMills.P5_KPDecay.DecayFromRG
+import YangMills.P6_AsymptoticFreedom.BetaFunction
