@@ -48,3 +48,4 @@ import YangMills.P6_AsymptoticFreedom.AsymptoticFreedomDischarge
 import YangMills.P5_KPDecay.KPTerminalBound
 import YangMills.P7_SpectralGap.TransferMatrixGap
 import YangMills.P7_SpectralGap.ActionBound
+import YangMills.P7_SpectralGap.WilsonDistanceBridge
