@@ -77,17 +77,44 @@ instance gaugeMeasureFrom_isProbability (μ : Measure G) [IsProbabilityMeasure �
   apply Measure.isProbabilityMeasure_map
   exact measurable_gaugeConfigEquiv.aemeasurable
 
-/-! ## L1.1 / L1.2: Partition function and Gibbs measure -/
+/-! ## L1.1: Partition function -/
 
 /-- Partition function: integral of Boltzmann weight over gauge measure. -/
 noncomputable def partitionFunction (μ : Measure G)
     (plaquetteEnergy : G → ℝ) (β : ℝ) : ℝ :=
   ∫ U : GaugeConfig d N G, Real.exp (-β * wilsonAction plaquetteEnergy U)
-    ∂(gaugeMeasureFrom μ)
+    ∂(gaugeMeasureFrom (d:=d) (N:=N) μ)
 
-/-- Gibbs measure: Boltzmann-weighted gauge measure (normalization pending). -/
+/-- The partition function is strictly positive. -/
+theorem partitionFunction_pos (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (β : ℝ)
+    (h_int : Integrable
+      (fun U : GaugeConfig d N G => Real.exp (-β * wilsonAction plaquetteEnergy U))
+      (gaugeMeasureFrom (d:=d) (N:=N) μ)) :
+    0 < partitionFunction (d:=d) (N:=N) μ plaquetteEnergy β := by
+  unfold partitionFunction
+  haveI : NeZero (gaugeMeasureFrom (d:=d) (N:=N) μ) :=
+    IsProbabilityMeasure.neZero _
+  exact integral_exp_pos (μ := gaugeMeasureFrom (d:=d) (N:=N) μ) h_int
+
+/-! ## L1.2: Gibbs measure -/
+
+/-- Gibbs measure: exponential tilt of gauge measure by Boltzmann weight. -/
 noncomputable def gibbsMeasure (μ : Measure G)
     (plaquetteEnergy : G → ℝ) (β : ℝ) : Measure (GaugeConfig d N G) :=
-  gaugeMeasureFrom μ
+  (gaugeMeasureFrom (d:=d) (N:=N) μ).tilted
+    (fun U => -β * wilsonAction plaquetteEnergy U)
+
+/-- Gibbs measure is a probability measure given integrability. -/
+instance gibbsMeasure_isProbability (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (β : ℝ)
+    (h_int : Integrable
+      (fun U : GaugeConfig d N G => Real.exp (-β * wilsonAction plaquetteEnergy U))
+      (gaugeMeasureFrom (d:=d) (N:=N) μ)) :
+    IsProbabilityMeasure (gibbsMeasure (d:=d) (N:=N) μ plaquetteEnergy β) := by
+  unfold gibbsMeasure
+  haveI : NeZero (gaugeMeasureFrom (d:=d) (N:=N) μ) :=
+    IsProbabilityMeasure.neZero _
+  exact isProbabilityMeasure_tilted h_int
 
 end YangMills
