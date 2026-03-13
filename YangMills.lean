@@ -43,3 +43,4 @@ import YangMills.P5_KPDecay.KPHypotheses
 import YangMills.P5_KPDecay.BalabanBootstrap
 import YangMills.P5_KPDecay.DecayFromRG
 import YangMills.P6_AsymptoticFreedom.BetaFunction
+import YangMills.P6_AsymptoticFreedom.CouplingConvergence
