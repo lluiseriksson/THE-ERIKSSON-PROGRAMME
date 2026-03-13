@@ -98,16 +98,42 @@ nodes:
     theorems: [gibbsWeight_gauge_invariant, gibbsTilt_gauge_invariant,
                gibbsMeasure_gauge_invariant, lintegral_restrict_map_equiv,
                lintegral_restrict_invariant, tilted_preimage_eq]
-    notes: hbase hypothesis — base measure invariance requires Haar (L3.3)
+    notes: hbase hypothesis completed by L3.3
+
+  L3.3:
+    status: FORMALIZED_KERNEL
+    files: [YangMills/L3_RGIteration/GaugeMeasureInvariance.lean]
+    build_confirmed: true
+    theorems: [gaugeMeasureFrom_gauge_invariant, pi_map_mul_conj, gaugeAct_comm_equiv]
+    notes: commit 370db64
 
   L4.1:
-    status: OPEN
+    status: FORMALIZED_KERNEL
     files: [YangMills/L4_LargeField/Suppression.lean]
-    notes: Large-field suppression with group norm
+    build_confirmed: true
+    theorems: [largeFieldThreshold, isSmallField, boltzmannWeight,
+               largeField_suppression_integral, largeField_suppression_explicit_bound,
+               gaugeMeasureFrom_isProbability]
+    notes: commit 33b0395; hard analytic bound as hypothesis
+
+  L4.2:
+    status: FORMALIZED_KERNEL
+    files: [YangMills/L4_WilsonLoops/WilsonLoop.lean]
+    build_confirmed: true
+    theorems: [IsClassFunction, plaquetteWilsonObs, plaquetteWilsonObs_gaugeInvariant,
+               wilsonExpectation, wilsonCorrelation, wilsonConnectedCorr,
+               wilsonLoop_exponential_decay, mass_gap_from_decay]
+    notes: commit ebe3f85; minimal Wilson observable from plaquetteHolonomy
+
+  L4.3:
+    status: OPEN
+    files: []
+    notes: Transfer matrix
 
   L5.1:
     status: OPEN
     files: []
+    notes: Spectral gap / mass gap statement
 
   L6.1:
     status: OPEN
@@ -117,7 +143,7 @@ nodes:
   L7.1:
     status: OPEN
     files: []
-    notes: Spectral gap
+    notes: Spectral gap (continuum limit)
 
   L8.1:
     status: OPEN
