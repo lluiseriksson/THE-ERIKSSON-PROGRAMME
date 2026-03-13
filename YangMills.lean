@@ -46,3 +46,4 @@ import YangMills.P6_AsymptoticFreedom.BetaFunction
 import YangMills.P6_AsymptoticFreedom.CouplingConvergence
 import YangMills.P6_AsymptoticFreedom.AsymptoticFreedomDischarge
 import YangMills.P5_KPDecay.KPTerminalBound
+import YangMills.P7_SpectralGap.TransferMatrixGap
