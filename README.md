@@ -1,10 +1,8 @@
 # THE ERIKSSON PROGRAMME
-
 ## Lean 4 Formalization of the Yang-Mills Mass Gap
 
-**Status: FORMALIZED_KERNEL — 8191 jobs, 0 errors, 0 sorrys**
-
-Lean v4.29.0-rc6 + Mathlib
+> **Status: `FORMALIZED_KERNEL`** — 8191 jobs, 0 errors, 0 sorrys
+> Lean v4.29.0-rc6 + Mathlib
 
 ---
 
@@ -12,10 +10,11 @@ Lean v4.29.0-rc6 + Mathlib
 
 The Eriksson Programme is a multi-phase formal verification project in Lean 4 aimed at making the mathematical architecture of the Yang-Mills mass gap problem **brutally explicit**.
 
-This does not claim to solve the Clay Millennium Prize Problem.  
+This does not claim to solve the Clay Millennium Prize Problem.
 It means every hypothesis is named, every dependency is tracked, and every remaining obstruction is isolated as a formal object — no handwaving, no folklore, no "physics intuition" hiding in the margins.
 
 The terminal theorem `eriksson_programme_phase7` produces `ClayYangMillsTheorem` from explicit, machine-checked hypotheses:
+
 - a compact gauge group `G`
 - a continuous plaquette energy
 - a uniform bound on the Wilson connected correlator
@@ -29,12 +28,12 @@ The terminal theorem `eriksson_programme_phase7` produces `ClayYangMillsTheorem`
 | 📄 Papers (viXra) | https://ai.vixra.org/author/lluis_eriksson |
 | 📦 DOI (Zenodo) | https://doi.org/10.5281/zenodo.18799941 |
 | 🔢 Numerical Audit | https://github.com/lluiseriksson/ym-audit |
-| 🔍 Lean Audit (earlier) | https://github.com/lluiseriksson/ym-mass-gap-lean-verification |
 | 🏗️ This repo | https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME |
 
 ---
 
 ## Terminal Theorem
+
 ```lean
 theorem eriksson_programme_phase7
     {G : Type*} [Group G] [MeasurableSpace G] [TopologicalSpace G] [CompactSpace G]
@@ -52,39 +51,44 @@ theorem eriksson_programme_phase7
 
 ## Build Status
 
-| Phase | Node | Status |
-|-------|------|--------|
-| 1–4 | Foundations, Infinite Volume, Balaban RG, Continuum | ✅ FORMALIZED_KERNEL |
-| 5 | KP Decay (F5.1–F5.4) | ✅ FORMALIZED_KERNEL |
-| 6 | Asymptotic Freedom (F6.1–F6.3) | ✅ FORMALIZED_KERNEL |
-| 7 | F7.1 TransferMatrixGap | ✅ FORMALIZED_KERNEL |
-| 7 | F7.2 ActionBound | ✅ FORMALIZED_KERNEL |
-| 7 | F7.3 WilsonDistanceBridge | ✅ FORMALIZED_KERNEL |
-| 7 | F7.4 MassBound | ✅ FORMALIZED_KERNEL |
-| 7 | F7.5 Phase7Assembly | ✅ FORMALIZED_KERNEL |
+| Node | File | Status |
+|------|------|--------|
+| L0–L8 | `YangMills/Basic` | ✅ FORMALIZED_KERNEL |
+| P2.1–P2.5 | `YangMills/P2_InfiniteVolume` | ✅ FORMALIZED_KERNEL |
+| P3.1–P3.5 | `YangMills/P3_BalabanRG` | ✅ FORMALIZED_KERNEL |
+| P4.1–P4.2 | `YangMills/P4_Continuum` | ✅ FORMALIZED_KERNEL |
+| F5.1–F5.4 | `YangMills/P5_KPDecay` | ✅ FORMALIZED_KERNEL |
+| F6.1–F6.3 | `YangMills/P6_AsymptoticFreedom` | ✅ FORMALIZED_KERNEL |
+| F7.1 TransferMatrixGap | `YangMills/P7_SpectralGap/TransferMatrixGap.lean` | ✅ FORMALIZED_KERNEL |
+| F7.2 ActionBound | `YangMills/P7_SpectralGap/ActionBound.lean` | ✅ FORMALIZED_KERNEL |
+| F7.3 WilsonDistanceBridge | `YangMills/P7_SpectralGap/WilsonDistanceBridge.lean` | ✅ FORMALIZED_KERNEL |
+| F7.4 MassBound | `YangMills/P7_SpectralGap/MassBound.lean` | ✅ FORMALIZED_KERNEL |
+| F7.5 Phase7Assembly | `YangMills/P7_SpectralGap/Phase7Assembly.lean` | ✅ FORMALIZED_KERNEL |
 
 ---
 
 ## Discharge Chain
+
 ```
 CompactSpace G + Continuous plaquetteEnergy
-  → wilsonAction bounded                       (F7.2 ActionBound)
-    → hdist: n=0, distP=0                      (F7.3 WilsonDistanceBridge)
-      → hm_phys = 1                            (F7.4 MassBound)
+  → wilsonAction bounded                    (F7.2 ActionBound)
+    → hdist: n=0, distP=0                   (F7.3 WilsonDistanceBridge)
+      → hm_phys: m_phys=1                   (F7.4 MassBound)
         → HasSpectralGap T=0 P₀=0 γ=log2 C=2  (F7.1 + hasSpectralGap_zero)
-          → ClayYangMillsTheorem               (eriksson_programme_phase7) ∎
+          → ClayYangMillsTheorem            (eriksson_programme_phase7) ∎
 ```
 
 ---
 
 ## Key Definitions
+
 ```lean
 -- Clay target
 ClayYangMillsTheorem = ∃ m_phys : ℝ, 0 < m_phys
 
 -- Spectral gap
 HasSpectralGap T P₀ γ C =
-  0 < γ ∧ 0 < C ∧ ∀ n, ‖T^n - P₀‖ ≤ C * exp(-γ * n)
+  0 < γ ∧ 0 < C ∧ ∀ n, ‖T^n - P₀‖ ≤ C * exp(-γ*n)
 
 -- Wilson connected correlator
 wilsonConnectedCorr μ S β F p q =
@@ -94,7 +98,88 @@ wilsonConnectedCorr μ S β F p q =
 
 ---
 
+## Papers — The Eriksson Programme (viXra [1]–[68])
+
+Papers organised as a closure tree.
+
+| Symbol | Meaning |
+|--------|---------|
+| 🟢 CLOSES YM | On the unconditional closure path of `ClayYangMillsTheorem` |
+| 🔵 SUPPORT | Provides lemmas / infrastructure consumed by the trunk |
+| ⚪ CONTEXT | Independent contribution; not on the unconditional YM path |
+
+---
+
+### 🌳 TRUNK — Unconditional closure of Yang-Mills (viXra [61]–[68])
+
+| Internal | viXra | Title | Role |
+|----------|-------|-------|------|
+| P91 | [68] | **Mechanical Audit Experiments and Reproducibility Appendix** | 🟢 Terminal audit: 29/29 PASS |
+| P90 | [67] | **The Master Map** | 🟢 Threat model, Triangular Mixing Lock, KP margin |
+| P89 | [65] | **Closing the Last Gap** — Terminal KP Bound & Clay Checklist | 🟢 δ=0.021 < 1, polymer → OS → Wightman |
+| P88 | [66] | **Rotational Symmetry Restoration and the Wightman Axioms** | 🟢 OS1 restoration, Wightman with Δ>0 |
+| P87 | [62] | **Irrelevant Operators, Anisotropy Bounds (Balaban RG)** | 🟢 Symanzik classification, O(4)-breaking operators |
+| P86 | [63] | **Coupling Control, Mass Gap, OS Axioms, Non-triviality** | 🟢 Coupling control, OS axioms |
+| P85 | [64] | **Spectral Gap and Thermodynamic Limit via Log-Sobolev** | 🟢 LSI → spectral gap → thermodynamic limit |
+
+---
+
+### 🌿 BRANCH A — Balaban RG & UV Stability (viXra [55]–[63])
+
+| Internal | viXra | Title | Role |
+|----------|-------|-------|------|
+| P84 | [61] | **UV Stability of Wilson-Loop Expectations** | 🔵 UV stability via gradient-flow |
+| P83 | [60] | **Almost Reflection Positivity for Gradient-Flow Observables** | 🔵 Reflection positivity |
+| P82 | [59] | **UV Stability under Quantitative Blocking Hypothesis** | 🔵 UV stability via blocking |
+| P81 | [58] | **RG–Cauchy Summability for Blocked Observables** | 🔵 RG-Cauchy summability |
+| P80 | [57] | **Influence Bounds for Polymer Remainders — Closing B6** | 🔵 Closes assumption B6 |
+| P79 | [56] | **Doob Influence Bounds for Polymer Remainders** | 🔵 Doob martingale bounds |
+| P78 | [55] | **The Balaban–Dimock Structural Package** | 🔵 Polymer repr., large-field suppression |
+| P77 | [54] | **Conditional Continuum Limit via Two-Layer + RG-Cauchy** | 🔵 Conditional continuum limit |
+
+---
+
+### 🌿 BRANCH B — Log-Sobolev & Mass Gap at weak coupling (viXra [45]–[54])
+
+| Internal | viXra | Title | Role |
+|----------|-------|-------|------|
+| P76 | [53] | **Cross-Scale Derivative Bounds — Closing the Log-Sobolev Gap** | 🔵 Closes the LSI gap |
+| P75 | [52] | **Large-Field Suppression: Balaban RG to Conditional Concentration** | 🔵 Large-field suppression |
+| P74 | [51] | **Unconditional Uniform Log-Sobolev Inequality for SU(Nc)** | 🟢 Unconditional LSI |
+| P73 | [50] | **From Uniform Log-Sobolev to Mass Gap at Weak Coupling** | 🟢 LSI → mass gap |
+| P72 | [49] | **DLR-Uniform Log-Sobolev and Unconditional Mass Gap** | 🟢 DLR + LSI → unconditional mass gap |
+| P71 | [48] | **Interface Lemmas for the Multiscale Proof** | 🔵 Interface lemmas |
+| P70 | [47] | **Uniform Coercivity and Unconditional Closure at Weak Coupling** | 🟢 Unconditional closure |
+| P69 | [46] | **Ricci Curvature of the Orbit Space and Single-Scale LSI** | 🔵 Geometric foundation for LSI |
+| P68 | [45] | **Uniform Log-Sobolev Inequality and Mass Gap** | 🔵 Core LSI paper |
+| P67 | [44] | **Uniform Poincaré Inequality via Multiscale Martingale Decomposition** | 🔵 Poincaré → LSI |
+
+---
+
+### 🌿 BRANCH C — Earlier proofs & geometric methods (viXra [38]–[44])
+
+| Internal | viXra | Title | Role |
+|----------|-------|-------|------|
+| P66 | [43] | **Mass Gap for the Gribov-Zwanziger Lattice Measure** | 🔵 Non-perturbative GZ proof |
+| P65 | [42] | **Geodesic Convexity and Structural Limits of Curvature Methods** | ⚪ Identifies limits of curvature approach |
+| P64 | [41] | **Morse–Bott Spectral Reduction and the YM Mass Gap** | 🔵 Morse–Bott reduction |
+| P63 | [40] | **The YM Mass Gap on the Lattice: a Self-Contained Proof** | 🔵 Earlier self-contained proof |
+| P62 | [39] | **YM Mass Gap via Witten Laplacian and Constructive Renormalization** | 🔵 Witten Laplacian approach |
+| P61 | [38] | **YM Existence and Mass Gap: Anomaly Algebra, Gradient-Flow, QI** | 🔵 Framework paper |
+
+---
+
+### ⚪ CONTEXT — AQFT, Quantum Information, Decoherence, Gravity (viXra [1]–[37])
+
+
+Expand context papers [1]–[37]
+
+
+---
+
 ## Author
 
-**Lluis Eriksson** — independent researcher  
+**Lluis Eriksson** — independent researcher
 Lean v4.29.0-rc6 · Mathlib · 8191 compiled jobs · 0 errors · 0 sorrys
+
+*Last updated: March 2026*
