@@ -10,3 +10,4 @@ import YangMills.L1_GibbsMeasure.Correlations
 import YangMills.L2_Balaban.SmallLargeDecomposition
 import YangMills.L2_Balaban.RGFlow
 import YangMills.L2_Balaban.Measurability
+import YangMills.L3_RGIteration.BlockSpin

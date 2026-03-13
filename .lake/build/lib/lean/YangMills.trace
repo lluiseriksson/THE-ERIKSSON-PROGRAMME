@@ -1,9 +1,9 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["9d125c9dbd236095.olean"],
-  "i": "a61b12408726ca00.ilean",
-  "c": "adf4cf981595636e.c"},
+ {"o": ["9e43b49620f763c9.olean"],
+  "i": "f7467969b66c6257.ilean",
+  "c": "bc45bff9a839783c.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=/content/repo/.lake/packages/Cli/.lake/build/lib/lean:/content/repo/.lake/packages/batteries/.lake/build/lib/lean:/content/repo/.lake/packages/Qq/.lake/build/lib/lean:/content/repo/.lake/packages/aesop/.lake/build/lib/lean:/content/repo/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/repo/.lake/packages/importGraph/.lake/build/lib/lean:/content/repo/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/repo/.lake/packages/plausible/.lake/build/lib/lean:/content/repo/.lake/packages/mathlib/.lake/build/lib/lean:/content/repo/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/repo/YangMills.lean -o /content/repo/.lake/build/lib/lean/YangMills.olean -i /content/repo/.lake/build/lib/lean/YangMills.ilean -c /content/repo/.lake/build/ir/YangMills.c --setup /content/repo/.lake/build/ir/YangMills.setup.json --json",
@@ -58,7 +58,11 @@
         ["YangMills.L2_Balaban.Measurability transitive imports (legacy)",
          "c889de5a6cf15ac7"],
         ["YangMills.L2_Balaban.Measurability:importAllArts",
-         "ff870e7d4eff45bf"]]]]],
+         "ff870e7d4eff45bf"],
+        ["YangMills.L3_RGIteration.BlockSpin transitive imports (legacy)",
+         "70ca032918532eec"],
+        ["YangMills.L3_RGIteration.BlockSpin:importAllArts",
+         "9e9365095978f64a"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -66,10 +70,10 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
-  ["/content/repo/YangMills.lean", "961d0cdb617e43bd"],
+  ["/content/repo/YangMills.lean", "540bf84230b741dc"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills", "b6470e3856a3d605"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "57c349a6f05727e1"}
+ "depHash": "81d01c3e9a5d68d8"}
