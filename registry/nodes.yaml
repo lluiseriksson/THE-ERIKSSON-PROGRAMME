@@ -187,3 +187,52 @@ nodes:
       - LatticeMassProfile.IsPositive (Balaban RG flow)
       - infinite volume OS gap (OS reconstruction)
       - HasContinuumMassGap (asymptotic freedom / UV RG limit)
+
+  P2.1:
+    status: FORMALIZED_KERNEL
+    files: [YangMills/P2_MaxEntClustering/PetzFidelity.lean]
+    build_confirmed: true
+    commit: b9b590e
+    theorems: [QuantumState, PetzFidelity, FawziRennerBound, MaxEntClusteringRecoveryBridge,
+               HasFiniteCorrelationLength, RecoveryToOSBridge, recovery_implies_massGap]
+
+  P2.2:
+    status: FORMALIZED_KERNEL
+    files: [YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean]
+    build_confirmed: true
+    commit: eecfd98
+    theorems: [IsLocalObservable, localAlgebra, localAlgebra_isotony,
+               IsGaugeInvariantObs, gaugeInvariantAlgebra,
+               localGaugeInvariantAlgebra, restrictState, AgreeOnLocalAlgebra]
+
+  P2.3:
+    status: FORMALIZED_KERNEL
+    files: [YangMills/P2_MaxEntClustering/MaxEntStates.lean]
+    build_confirmed: true
+    commit: cfb75f0
+    theorems: [IsConsistentMarginal, LocalMarginalFamily, RealizesMarginals,
+               IsMaxEntState, MaxEntState, MaxEntExists, MaxEntUnique,
+               maxEnt_determined, IsGibbsTilted, maxEnt_chain]
+
+  P2.4:
+    status: FORMALIZED_KERNEL
+    files: [YangMills/P2_MaxEntClustering/RecoveryChannels.lean]
+    build_confirmed: true
+    commit: 04738b1
+    theorems: [IsTracePreserving, IsPositivePreserving, PetzRecoveryChannel,
+               applyRecovery, HasRecoveryProperty, RotationalRecoveryProperty,
+               MaxEntToRecoveryBridge, maxEntBridge_implies_fawziRenner,
+               recoveryChannel_fidelity_bound, recoveryChannel_implies_decayBound]
+
+  P2.5:
+    status: FORMALIZED_KERNEL
+    files: [YangMills/P2_MaxEntClustering/ClusteringBridge.lean]
+    build_confirmed: true
+    commit: 7ed016a
+    theorems: [ResultadoA_Bridge, resultadoA_massGap, phase2_infiniteVolume_massGap,
+               maxEnt_recovery_OS_massGap, eriksson_phase2_infiniteVolume_massGap]
+    notes: TERMINAL Phase 2 — discharges hypothesis (∃ m_inf > 0) from L8.1
+    open_hypotheses:
+      - FawziRennerBound (hard quantum info content)
+      - MaxEntClusteringRecoveryBridge (Resultado A analytic bound)
+      - RecoveryToOSBridge (OS reconstruction interface)

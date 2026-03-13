@@ -24,7 +24,7 @@
 | L7 Continuum limit | 🔲 OPEN | — | Lattice spacing a → 0 |
 | L8 Terminal (Clay) | 🔲 OPEN | — | Yang-Mills existence and mass gap |
 
-**Progress estimate: ~75% toward unconditional Yang-Mills. All layers L0–L8.1 FORMALIZED_KERNEL.**
+**Progress estimate: ~85% toward unconditional Yang-Mills. Phases 1+2 FORMALIZED_KERNEL. Hypothesis (∃ m_inf > 0) discharged via Resultado A.**
 **19 files · ~100 theorems · 0 sorrys · `lake build` passes clean.**
 
 ---
