@@ -1,0 +1,43 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["0a3fa26a4f8172d5.olean"],
+  "i": "e6c4f373a1ff7cd7.ilean",
+  "c": "f55cbea9eededa4c.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/content/repo/.lake/packages/Cli/.lake/build/lib/lean:/content/repo/.lake/packages/batteries/.lake/build/lib/lean:/content/repo/.lake/packages/Qq/.lake/build/lib/lean:/content/repo/.lake/packages/aesop/.lake/build/lib/lean:/content/repo/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/repo/.lake/packages/importGraph/.lake/build/lib/lean:/content/repo/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/repo/.lake/packages/plausible/.lake/build/lib/lean:/content/repo/.lake/packages/mathlib/.lake/build/lib/lean:/content/repo/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/repo/YangMills/L6_OS/OsterwalderSchrader.lean -o /content/repo/.lake/build/lib/lean/YangMills/L6_OS/OsterwalderSchrader.olean -i /content/repo/.lake/build/lib/lean/YangMills/L6_OS/OsterwalderSchrader.ilean -c /content/repo/.lake/build/ir/YangMills/L6_OS/OsterwalderSchrader.c --setup /content/repo/.lake/build/ir/YangMills/L6_OS/OsterwalderSchrader.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "YangMills/L6_OS/OsterwalderSchrader.lean:88:5: unused variable `hlim`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "YangMills/L6_OS/OsterwalderSchrader.lean:90:5: unused variable `h_finite`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"}],
+ "inputs":
+ [["YangMills.L6_OS.OsterwalderSchrader:deps",
+   [["deps",
+     [["YangMills/YangMills:extraDep",
+       [["@YangMills:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "7a3af43bd648dbee"],
+        ["Mathlib:importAllArts", "4aa2e4f9918fd2f2"],
+        ["YangMills.L6_FeynmanKac.FeynmanKac transitive imports (legacy)",
+         "96c49ad52094b1a7"],
+        ["YangMills.L6_FeynmanKac.FeynmanKac:importAllArts",
+         "2a3bd173e8417554"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
+   "d4ef66a63896cd60"],
+  ["/content/repo/YangMills/L6_OS/OsterwalderSchrader.lean",
+   "5cfa7a1cf951f75c"],
+  ["options", "00000000000006bb"],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: YangMills.L6_OS.OsterwalderSchrader", "15fbdd3f28b85b05"],
+  ["Package.id?: (some YangMills)", "bb149b95168538d5"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "4cead51f52585243"}

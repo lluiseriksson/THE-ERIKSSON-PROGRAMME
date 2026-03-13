@@ -4,7 +4,39 @@
  "name": "YangMills",
  "isModule": false,
  "importArts":
- {"YangMills.L3_RGIteration.BlockSpin":
+ {"YangMills.P3_BalabanRG.CorrelationNorms":
+  ["/content/repo/.lake/build/lib/lean/YangMills/P3_BalabanRG/CorrelationNorms.olean"],
+  "YangMills.P2_MaxEntClustering.RecoveryChannels":
+  ["/content/repo/.lake/build/lib/lean/YangMills/P2_MaxEntClustering/RecoveryChannels.olean"],
+  "YangMills.P2_MaxEntClustering.PetzFidelity":
+  ["/content/repo/.lake/build/lib/lean/YangMills/P2_MaxEntClustering/PetzFidelity.olean"],
+  "YangMills.P2_MaxEntClustering.MaxEntStates":
+  ["/content/repo/.lake/build/lib/lean/YangMills/P2_MaxEntClustering/MaxEntStates.olean"],
+  "YangMills.P2_MaxEntClustering.LocalObservableAlgebras":
+  ["/content/repo/.lake/build/lib/lean/YangMills/P2_MaxEntClustering/LocalObservableAlgebras.olean"],
+  "YangMills.P2_MaxEntClustering.ClusteringBridge":
+  ["/content/repo/.lake/build/lib/lean/YangMills/P2_MaxEntClustering/ClusteringBridge.olean"],
+  "YangMills.L8_Terminal.ClayTheorem":
+  ["/content/repo/.lake/build/lib/lean/YangMills/L8_Terminal/ClayTheorem.olean"],
+  "YangMills.L7_Continuum.ContinuumLimit":
+  ["/content/repo/.lake/build/lib/lean/YangMills/L7_Continuum/ContinuumLimit.olean"],
+  "YangMills.L6_OS.OsterwalderSchrader":
+  ["/content/repo/.lake/build/lib/lean/YangMills/L6_OS/OsterwalderSchrader.olean"],
+  "YangMills.L6_FeynmanKac.FeynmanKac":
+  ["/content/repo/.lake/build/lib/lean/YangMills/L6_FeynmanKac/FeynmanKac.olean"],
+  "YangMills.L5_MassGap.MassGap":
+  ["/content/repo/.lake/build/lib/lean/YangMills/L5_MassGap/MassGap.olean"],
+  "YangMills.L4_WilsonLoops.WilsonLoop":
+  ["/content/repo/.lake/build/lib/lean/YangMills/L4_WilsonLoops/WilsonLoop.olean"],
+  "YangMills.L4_TransferMatrix.TransferMatrix":
+  ["/content/repo/.lake/build/lib/lean/YangMills/L4_TransferMatrix/TransferMatrix.olean"],
+  "YangMills.L4_LargeField.Suppression":
+  ["/content/repo/.lake/build/lib/lean/YangMills/L4_LargeField/Suppression.olean"],
+  "YangMills.L3_RGIteration.GaugeMeasureInvariance":
+  ["/content/repo/.lake/build/lib/lean/YangMills/L3_RGIteration/GaugeMeasureInvariance.olean"],
+  "YangMills.L3_RGIteration.GaugeInvarianceMeasure":
+  ["/content/repo/.lake/build/lib/lean/YangMills/L3_RGIteration/GaugeInvarianceMeasure.olean"],
+  "YangMills.L3_RGIteration.BlockSpin":
   ["/content/repo/.lake/build/lib/lean/YangMills/L3_RGIteration/BlockSpin.olean"],
   "YangMills.L2_Balaban.SmallLargeDecomposition":
   ["/content/repo/.lake/build/lib/lean/YangMills/L2_Balaban/SmallLargeDecomposition.olean"],
