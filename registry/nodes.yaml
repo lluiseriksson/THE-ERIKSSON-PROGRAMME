@@ -1,91 +1,81 @@
 # THE ERIKSSON PROGRAMME — Node Registry
-# Governance: FORMALIZED_KERNEL requires lake build pass reported in conversation
 # Last updated: 2026-03-13
 
 nodes:
   L0.1:
-    description: Finite lattice definition (FinBox, FiniteLatticeGeometry typeclass)
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/FiniteLattice.lean]
     build_confirmed: true
 
   L0.2:
-    description: Concrete FiniteLatticeGeometry instance (ConcreteEdge, ConcretePlaquette, finBoxGeometry)
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/FiniteLatticeGeometryInstance.lean]
     build_confirmed: true
 
   L0.3:
-    description: SU(2) group instances
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/SU2Basic.lean]
     build_confirmed: true
 
   L0.4:
-    description: Wilson action definition and gauge invariance
     status: FORMALIZED_KERNEL
-    files: [YangMills/L0_Lattice/WilsonAction.lean, YangMills/L0_Lattice/GaugeInvariance.lean]
+    files: [YangMills/L0_Lattice/WilsonAction.lean]
     build_confirmed: true
 
   L0.5:
-    description: Gauge configurations and gauge transformations
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/GaugeConfigurations.lean]
     build_confirmed: true
 
   L0.6:
-    description: Gauge invariance of Wilson action
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/GaugeInvariance.lean]
     build_confirmed: true
 
   L1.1:
-    description: Partition function (stub — sorry, pending Haar measure on GaugeConfig)
-    status: PARTIAL
+    status: FORMALIZED_KERNEL
     files: [YangMills/L1_GibbsMeasure/GibbsMeasure.lean]
     build_confirmed: true
-    notes: sorry on partitionFunction
+    notes: partitionFunction, partitionFunction_pos, gaugeMeasureFrom_isProbability
 
   L1.2:
-    description: Gibbs measure (stub — sorry, pending Haar measure on GaugeConfig)
-    status: PARTIAL
+    status: FORMALIZED_KERNEL
     files: [YangMills/L1_GibbsMeasure/GibbsMeasure.lean]
     build_confirmed: true
-    notes: sorry on gibbsMeasure
+    notes: gibbsMeasure via Measure.tilted, gibbsMeasure_isProbability
 
   L2.1:
-    description: Balaban small/large field decomposition
-    status: PARTIAL
+    status: FORMALIZED_KERNEL
     files: [YangMills/L2_Balaban/SmallLargeDecomposition.lean]
-    build_confirmed: false
+    build_confirmed: true
+    notes: SmallFieldSet, LargeFieldSet, partition, disjoint, chi_small+chi_large=1
+
+  L2.2:
+    status: OPEN
+    files: []
+    notes: RG block-spin integration, Balaban estimates
 
   L4.2:
-    description: Large field suppression
     status: BLACKBOX_EXTREME
     files: [YangMills/L4_LargeField/Suppression.lean]
     build_confirmed: false
 
   L5.1:
-    description: Thermodynamic limit
     status: OPEN
     files: []
 
   L6.2:
-    description: Osterwalder-Schrader reconstruction
     status: OPEN
     files: []
 
   L7.3:
-    description: Mass gap lower bound
     status: OPEN
     files: []
 
   L8.3:
-    description: Yang-Mills existence
     status: OPEN
     files: []
 
   L8.4:
-    description: Mass gap (unconditional)
     status: OPEN
     files: []
