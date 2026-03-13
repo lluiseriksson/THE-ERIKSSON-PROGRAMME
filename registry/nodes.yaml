@@ -6,76 +6,114 @@ nodes:
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/FiniteLattice.lean]
     build_confirmed: true
+    theorems: [FinBox, finBoxGeometry]
 
   L0.2:
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/FiniteLatticeGeometryInstance.lean]
     build_confirmed: true
+    theorems: [finBoxGeometry, shift_comm]
 
   L0.3:
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/SU2Basic.lean]
     build_confirmed: true
+    theorems: [SU2, su2_mul_mem]
 
   L0.4:
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/WilsonAction.lean]
     build_confirmed: true
+    theorems: [wilsonAction, plaquetteHolonomy]
 
   L0.5:
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/GaugeConfigurations.lean]
     build_confirmed: true
+    theorems: [GaugeConfig, ConcreteEdge]
 
   L0.6:
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/GaugeInvariance.lean]
     build_confirmed: true
+    theorems: [gaugeTransform, wilsonAction_gauge_invariant]
 
   L1.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/L1_GibbsMeasure/GibbsMeasure.lean]
     build_confirmed: true
-    notes: partitionFunction, partitionFunction_pos, gaugeMeasureFrom_isProbability
+    theorems: [gaugeMeasureFrom, partitionFunction, partitionFunction_pos]
 
   L1.2:
     status: FORMALIZED_KERNEL
     files: [YangMills/L1_GibbsMeasure/GibbsMeasure.lean]
     build_confirmed: true
-    notes: gibbsMeasure via Measure.tilted, gibbsMeasure_isProbability
+    theorems: [gibbsMeasure, gibbsMeasure_isProbability]
+    notes: gibbsMeasure_isProbability is theorem (not instance) with explicit d N
+
+  L1.3:
+    status: FORMALIZED_KERNEL
+    files:
+      - YangMills/L1_GibbsMeasure/Expectation.lean
+      - YangMills/L1_GibbsMeasure/Correlations.lean
+    build_confirmed: true
+    theorems: [expectation, expectation_const, expectation_add, expectation_mono,
+               correlation, correlation_symm]
+    notes: expectation has explicit d N parameters to avoid NeZero metavariable
 
   L2.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/L2_Balaban/SmallLargeDecomposition.lean]
     build_confirmed: true
-    notes: SmallFieldSet, LargeFieldSet, partition, disjoint, chi_small+chi_large=1
+    theorems: [SmallFieldSet, LargeFieldSet, smallLarge_partition,
+               smallLarge_disjoint, decomposition_identity]
 
   L2.2:
+    status: FORMALIZED_KERNEL
+    files: [YangMills/L2_Balaban/RGFlow.lean]
+    build_confirmed: true
+    theorems: [largeField_exp_bound, partitionFunction_split, largeField_suppression]
+    notes: partitionFunction_split and largeField_suppression require MeasurableSet hypotheses
+
+  L2.3:
+    status: FORMALIZED_KERNEL
+    files: [YangMills/L2_Balaban/Measurability.lean]
+    build_confirmed: true
+    theorems: [measurable_gaugeConfigEquiv_symm, measurable_toFun_posEdge,
+               measurable_toFun_edge, measurable_wilsonAction,
+               measurableSet_smallFieldSet, measurableSet_largeFieldSet]
+    notes: requires MeasurableInv G, MeasurableMul2 G
+
+  L3.1:
     status: OPEN
     files: []
-    notes: RG block-spin integration, Balaban estimates
+    notes: Block-spin RG integration — Balaban iterate
 
-  L4.2:
-    status: BLACKBOX_EXTREME
+  L3.2:
+    status: OPEN
+    files: []
+    notes: RG flow bounds — effective action estimates
+
+  L4.1:
+    status: OPEN
     files: [YangMills/L4_LargeField/Suppression.lean]
-    build_confirmed: false
+    notes: Large-field suppression with group norm
 
   L5.1:
     status: OPEN
     files: []
 
-  L6.2:
+  L6.1:
     status: OPEN
     files: []
+    notes: Osterwalder-Schrader reconstruction
 
-  L7.3:
+  L7.1:
     status: OPEN
     files: []
+    notes: Spectral gap
 
-  L8.3:
+  L8.1:
     status: OPEN
     files: []
-
-  L8.4:
-    status: OPEN
-    files: []
+    notes: Yang-Mills existence and mass gap — terminal node
