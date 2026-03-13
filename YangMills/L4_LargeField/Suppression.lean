@@ -48,7 +48,7 @@ lemma exp_le_exp_of_le {a b : ℝ} (h : b ≤ a) : Real.exp (-a) ≤ Real.exp (-
     Given a pointwise bound on the large-field Boltzmann weight,
     the integral over all configurations is bounded by the constant C.
     The hard Bałaban estimate enters only through `h_bound`. -/
-theorem largeField_suppression
+theorem largeField_suppression_integral
     (plaquetteEnergy : G → ℝ) (μ : Measure G) [IsProbabilityMeasure μ]
     (β : ℝ) (k : ℕ) (C : ℝ)
     (h_int : Integrable (fun U : GaugeConfig d N G =>
@@ -72,7 +72,7 @@ theorem largeField_suppression
 
 /-- Corollary: when C = card(Plaquettes) * exp(-c*β*k),
     the large-field contribution is exponentially small. -/
-theorem largeField_suppression_explicit
+theorem largeField_suppression_explicit_bound
     (plaquetteEnergy : G → ℝ) (μ : Measure G) [IsProbabilityMeasure μ]
     (β : ℝ) (hβ : 0 < β) (k : ℕ) (c : ℝ) (hc : 0 < c)
     (h_int : Integrable (fun U : GaugeConfig d N G =>
@@ -88,6 +88,6 @@ theorem largeField_suppression_explicit
         boltzmannWeight plaquetteEnergy β U
       ∂(gaugeMeasureFrom (d:=d) (N:=N) μ)
     ≤ Real.exp (-(c * β * (k : ℝ))) :=
-  largeField_suppression plaquetteEnergy μ β k _ h_int h_bound
+  largeField_suppression_integral plaquetteEnergy μ β k _ h_int h_bound
 
 end YangMills
