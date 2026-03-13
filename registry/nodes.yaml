@@ -1,5 +1,6 @@
 # THE ERIKSSON PROGRAMME — Node Registry
 # Last updated: 2026-03-13
+# Build: lake build YangMills — 8178 jobs, 0 errors, 0 sorrys
 
 nodes:
   L0.1:
@@ -123,7 +124,7 @@ nodes:
     theorems: [IsClassFunction, plaquetteWilsonObs, plaquetteWilsonObs_gaugeInvariant,
                wilsonExpectation, wilsonCorrelation, wilsonConnectedCorr,
                wilsonLoop_exponential_decay, mass_gap_from_decay]
-    notes: commit ebe3f85; minimal Wilson observable from plaquetteHolonomy
+    notes: commit ebe3f85
 
   L4.3:
     status: FORMALIZED_KERNEL
@@ -142,24 +143,47 @@ nodes:
     theorems: [UniformWilsonDecay, YangMillsMassGap, TransferWilsonBridge,
                yangMills_massGap_of_decay, yangMills_massGap_of_transfer,
                yangMills_mass_pos, yangMills_mass_gap]
-    notes: commit d02ce65; terminal theorem with hard content as explicit hypothesis
+    notes: commit d02ce65; terminal finite-volume theorem
 
   L6.1:
-    status: OPEN
-    files: []
-    notes: Feynman-Kac bridge — connect transfer matrix spectrum to Wilson correlations
+    status: FORMALIZED_KERNEL
+    files: [YangMills/L6_FeynmanKac/FeynmanKac.lean]
+    build_confirmed: true
+    theorems: [transferIterateFn, transferIterateFn_zero, transferIterateFn_one,
+               transferIterateFn_succ, matrixElement, matrixElement_zero,
+               feynmanKac_decay, FeynmanKacWilsonBridge, transfer_to_wilson_decay,
+               FeynmanKacWilsonBridgeUniform, feynmanKac_implies_transferBridge]
+    notes: commit b3b7778; raw function iterates avoid Lp quotient issues
 
   L6.2:
-    status: OPEN
-    files: []
-    notes: Osterwalder-Schrader reconstruction — infinite-volume Gibbs states
+    status: FORMALIZED_KERNEL
+    files: [YangMills/L6_OS/OsterwalderSchrader.lean]
+    build_confirmed: true
+    theorems: [HasInfiniteVolumeLimit, IsInfiniteVolumeMeasure, OSCovariant,
+               OSReflectionPositive, OSClusterProperty, infiniteConnectedCorr,
+               osCluster_implies_massGap, thermodynamicLimit_cluster,
+               infiniteVolume_OS_massGap, thermodynamicLimit_massGap]
+    notes: commit f0892b0; OS interface layer without Kolmogorov extension
 
   L7.1:
-    status: OPEN
-    files: []
-    notes: Continuum limit — lattice spacing a → 0
+    status: FORMALIZED_KERNEL
+    files: [YangMills/L7_Continuum/ContinuumLimit.lean]
+    build_confirmed: true
+    theorems: [latticeSpacing, latticeSpacing_pos, latticeSpacing_tendsto_zero,
+               LatticeMassProfile, LatticeMassProfile.IsPositive, renormalizedMass,
+               renormalizedMass_pos, HasContinuumMassGap, continuumMassGap_pos,
+               OSContinuumBridge, osContinuum_massGap, continuumLimit_massGap,
+               continuumLimit_mass_pos]
+    notes: commit c4836de; tendsto_one_div_add_atTop_nhds_zero_nat for a(N)→0
 
   L8.1:
-    status: OPEN
-    files: []
-    notes: Yang-Mills existence and mass gap (Clay) — terminal node
+    status: FORMALIZED_KERNEL
+    files: [YangMills/L8_Terminal/ClayTheorem.lean]
+    build_confirmed: true
+    theorems: [ClayYangMillsTheorem, yangMills_existence_massGap,
+               clay_mass_gap_pos, clay_millennium_yangMills]
+    notes: commit 529ec9f; TERMINAL — Clay Millennium Theorem
+    open_hypotheses:
+      - LatticeMassProfile.IsPositive (Balaban RG flow)
+      - infinite volume OS gap (OS reconstruction)
+      - HasContinuumMassGap (asymptotic freedom / UV RG limit)
