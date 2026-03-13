@@ -1,9 +1,9 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["f8548aaea2f8091c.olean"],
-  "i": "b7d05091019795e1.ilean",
-  "c": "81d9975335eea936.c"},
+ {"o": ["beca5e93c0c875bb.olean"],
+  "i": "19ae16508f994eec.ilean",
+  "c": "d7aa2bc90926804c.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=/content/repo/.lake/packages/Cli/.lake/build/lib/lean:/content/repo/.lake/packages/batteries/.lake/build/lib/lean:/content/repo/.lake/packages/Qq/.lake/build/lib/lean:/content/repo/.lake/packages/aesop/.lake/build/lib/lean:/content/repo/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/repo/.lake/packages/importGraph/.lake/build/lib/lean:/content/repo/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/repo/.lake/packages/plausible/.lake/build/lib/lean:/content/repo/.lake/packages/mathlib/.lake/build/lib/lean:/content/repo/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/repo/YangMills.lean -o /content/repo/.lake/build/lib/lean/YangMills.olean -i /content/repo/.lake/build/lib/lean/YangMills.ilean -c /content/repo/.lake/build/ir/YangMills.c --setup /content/repo/.lake/build/ir/YangMills.setup.json --json",
@@ -39,7 +39,14 @@
         ["YangMills.L1_GibbsMeasure.GibbsMeasure transitive imports (legacy)",
          "2ee3035150a48bf3"],
         ["YangMills.L1_GibbsMeasure.GibbsMeasure:importAllArts",
-         "acc06e270f4dad0d"]]]]],
+         "acc06e270f4dad0d"],
+        ["YangMills.L2_Balaban.SmallLargeDecomposition transitive imports (legacy)",
+         "f32d64a023fc6578"],
+        ["YangMills.L2_Balaban.SmallLargeDecomposition:importAllArts",
+         "05605de49754a1da"],
+        ["YangMills.L2_Balaban.RGFlow transitive imports (legacy)",
+         "1100eec1de4c8cb7"],
+        ["YangMills.L2_Balaban.RGFlow:importAllArts", "13d0afa21902dc04"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -47,10 +54,10 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
-  ["/content/repo/YangMills.lean", "c93ddb2bd01ed10d"],
+  ["/content/repo/YangMills.lean", "e9f6876146682117"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills", "b6470e3856a3d605"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "933e9967f3271822"}
+ "depHash": "6f943cedb2ad43aa"}
