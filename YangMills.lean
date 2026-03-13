@@ -20,3 +20,4 @@ import YangMills.L5_MassGap.MassGap
 import YangMills.L6_FeynmanKac.FeynmanKac
 import YangMills.L6_OS.OsterwalderSchrader
 import YangMills.L7_Continuum.ContinuumLimit
+import YangMills.L8_Terminal.ClayTheorem
