@@ -52,10 +52,11 @@ theorem feynmanKac_hbound
   -- Cauchy-Schwarz: |⟨u,v⟩| ≤ ‖u‖·‖v‖
   -- Use `change` to rewrite @inner ℝ H _ to inner form that norm_inner_le_norm accepts
   -- then `exact norm_inner_le_norm` (uses ‖inner x y‖ = |inner x y| in ℝ)
-  have hinner : |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))| ≤
-      ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ := by
-    change |inner ℝ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))| ≤ _
-    exact abs_real_inner_le_norm _ _
+  -- Cauchy-Schwarz without type annotation on hinner
+  -- norm_inner_le_norm : ‖⟪u,v⟫_ℝ‖ ≤ ‖u‖*‖v‖, and ‖x‖=|x| for x:ℝ
+  have hinner : ‖@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))‖ ≤
+      ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ :=
+    norm_inner_le_norm _ _
   have hopnorm : ‖(T ^ n - P₀) (ψ_obs N' q)‖ ≤ ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ :=
     ContinuousLinearMap.le_opNorm _ _
   have hTS' : ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ ≤ C * C_ψ :=
@@ -67,6 +68,8 @@ theorem feynmanKac_hbound
         ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) :=
       mul_le_mul_of_nonneg_left hopnorm (norm_nonneg _)
     linarith [h1, h2, show C_ψ * (C * C_ψ) = C_ψ ^ 2 * C from by ring]
+  -- Convert ‖inner‖ to |inner|: in ℝ, ‖x‖ = |x|
+  rw [← Real.norm_eq_abs]
   linarith [hinner, key]
 
 theorem hbound_implies_clay
