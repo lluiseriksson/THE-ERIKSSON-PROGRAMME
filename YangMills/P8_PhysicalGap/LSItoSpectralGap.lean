@@ -392,23 +392,27 @@ theorem lsi_poincare_via_truncation
             nlinarith [sq_abs (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn),
                        sq_abs (2 * ((n : ℝ) + 1)),
                        abs_nonneg (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn), hM_bdd x])
-      have hstep := (lsi_implies_poincare_bdd_centered μ E hES α hLSI _ hwm
-        ⟨2 * ((n : ℝ) + 1), by linarith [show (0 : ℝ) ≤ (n : ℝ) from Nat.cast_nonneg n], hM_bdd⟩ hcn hw2)
-      have hEtn : E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ≤ E u := by
+    have hstep :
+        ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
+          ≤ (1 / α) * E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) := by
+      exact lsi_implies_poincare_bdd_centered μ E hES α hLSI _
+        hwm ⟨2 * ((n : ℝ) + 1), by linarith [show (0:ℝ) ≤ (n:ℝ) from Nat.cast_nonneg n], hM_bdd⟩
+        hcn hw2
+    have hEtn : E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ≤ E u := by
       rw [show (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) =
-        (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) + (-mn)) from by ext x; ring, hE_const]
-      rcases Nat.eq_zero_or_pos n with rfl | hpos
-      · -- n=0: trunc at 0 is zero fn, E(0) ≤ E u
-      have : (fun x : Ω => max (min (u x) (0 : ℝ)) (-(0 : ℝ))) = fun _ => 0 := by
-        ext x; simp
-      rw [this]; exact hE_base.1 u
-      · exact dirichlet_contraction E hES u (n : ℝ) (Nat.cast_pos.mpr hpos)
-      calc ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
-      ≤ (1 / α) * E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) := hstep
+          (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) + (-mn)) from by ext x; ring, hE_const]
+      by_cases hn : n = 0
+      · subst hn
+        have : (fun x : Ω => max (min (u x) (0 : ℝ)) (-(0 : ℝ))) = fun _ => 0 := by
+          ext x; simp
+        rw [this]; exact hE_base.1 u
+      · exact dirichlet_contraction E hES u (n : ℝ) (by exact_mod_cast Nat.pos_of_ne_zero hn)
+    calc ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
+        ≤ (1 / α) * E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) := hstep
       _ ≤ (1 / α) * E u := mul_le_mul_of_nonneg_left hEtn (by positivity)
       _ ≤ (2 / α) * E u := by
-        have h12 : (2 / α) = 2 * (1 / α) := by ring
-        rw [h12]; linarith [mul_nonneg (by positivity : 0 ≤ 1 / α) (hE_base.1 u)]
+          have h12 : (2 / α) = 2 * (1 / α) := by ring
+          rw [h12]; linarith [mul_nonneg (by positivity : 0 ≤ 1 / α) (hE_base.1 u)]
   have hlim : Filter.Tendsto
       (fun n : ℕ => ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) -
         ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ)
