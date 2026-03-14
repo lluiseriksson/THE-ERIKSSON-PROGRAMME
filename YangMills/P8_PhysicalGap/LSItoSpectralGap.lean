@@ -397,7 +397,7 @@ theorem lsi_poincare_via_truncation
     have hEtn : E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ≤ E u := by
       rw [show (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) =
           (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) + (-mn)) from by ext x; ring, hE_const]
-      exact dirichlet_contraction E hES u (n : ℝ) (by exact_mod_cast Nat.zero_lt_succ n)
+      exact dirichlet_contraction E hES u (n : ℝ) (by norm_cast; exact Nat.zero_lt_succ n)
     calc ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
         ≤ (1 / α) * E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) := hstep
       _ ≤ (1 / α) * E u := mul_le_mul_of_nonneg_left hEtn (by positivity)
@@ -422,9 +422,8 @@ theorem lsi_poincare_via_truncation
       simpa using this
     have h := h1.sub h2
     simp only [sub_zero] at h
-    exact hEqSeq.symm ▸ h
-  refine le_of_tendsto' hlim (fun n => ?_)
-  exact hpn n
+    simpa only [← hEqSeq] using h
+  exact le_of_tendsto' hlim hpn
 
 
 
