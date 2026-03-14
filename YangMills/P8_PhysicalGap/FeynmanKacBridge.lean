@@ -2,6 +2,7 @@ import Mathlib
 import YangMills.L4_WilsonLoops.WilsonLoop
 import YangMills.L4_TransferMatrix.TransferMatrix
 import YangMills.L5_MassGap.MassGap
+import YangMills.P7_SpectralGap.Phase7Assembly
 import YangMills.P8_PhysicalGap.LSItoSpectralGap
 
 /-!
@@ -31,8 +32,6 @@ def StateNormBound
     (ψ_obs : (N : ℕ) → ConcretePlaquette d N → H) (C_ψ : ℝ) : Prop :=
   0 ≤ C_ψ ∧ ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N), ‖ψ_obs N p‖ ≤ C_ψ
 
-/-- Feynman-Kac + spectral gap → hbound.
-    |⟨ψ_p, (T^n-P₀)ψ_q⟩| ≤ C_ψ²·C by Cauchy-Schwarz + spectral gap. -/
 theorem feynmanKac_hbound
     (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
     (T P₀ : H →L[ℝ] H) (γ C C_ψ : ℝ)
@@ -42,36 +41,35 @@ theorem feynmanKac_hbound
     (hFK : FeynmanKacFormula μ plaquetteEnergy β F (fun _ _ _ => 0) T P₀ ψ_obs) :
     ∀ (N' : ℕ) [NeZero N'] (p q : ConcretePlaquette d N'),
       |@wilsonConnectedCorr d N' _ _ G _ _ μ plaquetteEnergy β F p q| ≤ C_ψ ^ 2 * C := by
-  have hγ := hgap.1      -- 0 < γ
-  have hC := hgap.2.1    -- 0 < C
-  have hψ0 := hψ.1       -- 0 ≤ C_ψ
+  have hγ : (0 : ℝ) < γ := hgap.1
+  have hC : (0 : ℝ) < C := hgap.2.1
+  have hψ0 : (0 : ℝ) ≤ C_ψ := hψ.1
   intro N' _hN' p q
   obtain ⟨n, _, hcorr⟩ := hFK N' p q
   rw [hcorr]
-  -- Cauchy-Schwarz: |⟨u, Av⟩| ≤ ‖u‖·‖A‖·‖v‖
-  have hCS : |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))| ≤
-      ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) := by
-    calc |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))|
-        ≤ ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ :=
-            abs_real_inner_le_norm _ _
-      _ ≤ ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) :=
-            mul_le_mul_of_nonneg_left (ContinuousLinearMap.le_opNorm _ _) (norm_nonneg _)
-  -- Spectral gap bound: ‖T^n - P₀‖ ≤ C·exp(-γ·n) ≤ C·1 = C
+  have hp : ‖ψ_obs N' p‖ ≤ C_ψ := hψ.2 N' p
+  have hq : ‖ψ_obs N' q‖ ≤ C_ψ := hψ.2 N' q
   have hTS : ‖T ^ n - P₀‖ ≤ C := by
     have h1 := transferMatrix_spectral_gap T P₀ γ C hgap n
     have h2 : Real.exp (-γ * ↑n) ≤ 1 :=
       Real.exp_le_one_iff.mpr (by nlinarith [Nat.cast_nonneg n])
-    linarith [mul_le_mul_of_nonneg_left h2 (le_of_lt hC)]
-  -- Norm bounds: ‖ψ_obs p‖ ≤ C_ψ, ‖ψ_obs q‖ ≤ C_ψ
-  have hp := hψ.2 N' p
-  have hq := hψ.2 N' q
-  -- Combine
-  calc |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))|
-      ≤ ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) := hCS
-    _ ≤ C_ψ * (C * C_ψ) := by
-          apply mul_le_mul hp _ (by positivity) hψ0
-          exact mul_le_mul hTS hq (norm_nonneg _) (le_of_lt hC)
-    _ = C_ψ ^ 2 * C := by ring
+    nlinarith
+  -- Cauchy-Schwarz: |⟨u, Av⟩| ≤ ‖u‖·‖A‖·‖v‖ ≤ C_ψ·C·C_ψ = C_ψ²·C
+  have hinner : |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))| ≤
+      ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ :=
+    abs_real_inner_le_norm _ _
+  have hopnorm : ‖(T ^ n - P₀) (ψ_obs N' q)‖ ≤ ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ :=
+    ContinuousLinearMap.le_opNorm _ _
+  -- Combine: |inner| ≤ ‖p‖·‖A‖·‖q‖ ≤ C_ψ·C·C_ψ = C_ψ²·C
+  have key : ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ ≤ C_ψ ^ 2 * C := by
+    have h1 : ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ ≤
+        ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) :=
+      mul_le_mul_of_nonneg_left hopnorm (norm_nonneg _)
+    have h2 : ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) ≤ C_ψ * (C * C_ψ) := by
+      apply mul_le_mul hp _ (by positivity) hψ0
+      apply mul_le_mul hTS hq (norm_nonneg _) (le_of_lt hC)
+    linarith [h1, h2, show C_ψ * (C * C_ψ) = C_ψ ^ 2 * C from by ring]
+  linarith [hinner, key]
 
 theorem hbound_implies_clay
     (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
@@ -80,7 +78,7 @@ theorem hbound_implies_clay
     (hbound : ∀ (N' : ℕ) [NeZero N'] (p q : ConcretePlaquette d N'),
       |@wilsonConnectedCorr d N' _ _ G _ _ μ plaquetteEnergy β F p q| ≤ nf * ng) :
     ClayYangMillsTheorem :=
-  eriksson_programme_phase7 (G := G) d 1 μ plaquetteEnergy β F
+  YangMills.eriksson_programme_phase7 (G := G) d 1 μ plaquetteEnergy β F
     hβ hcont nf ng hng (fun N' _hN' p q => hbound N' p q)
 
 theorem feynmanKac_to_clay
