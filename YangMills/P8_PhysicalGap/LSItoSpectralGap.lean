@@ -280,13 +280,13 @@ private lemma trunc_abs_bound (u : ℝ) (n : ℕ) :
   · simp only [max_def, min_def]; split_ifs <;> linarith [neg_abs_le u, le_abs_self u]
   · simp only [max_def, min_def]; split_ifs <;> linarith [neg_abs_le u, le_abs_self u]
 
-private lemma trunc_int
+private lemma trunc_int (μ : Measure Ω) [IsProbabilityMeasure μ]
     (u : Ω → ℝ) (n : ℕ) (hu_meas : Measurable u) (hu1 : Integrable u μ) :
     Integrable (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ))) μ :=
   hu1.norm.mono' ((hu_meas.min measurable_const).max measurable_const).aestronglyMeasurable
     (by filter_upwards with x; simp only [Real.norm_eq_abs]; exact trunc_abs_bound (u x) n)
 
-private lemma trunc_sq_int
+private lemma trunc_sq_int (μ : Measure Ω) [IsProbabilityMeasure μ]
     (u : Ω → ℝ) (n : ℕ) (hu_meas : Measurable u) (M : ℝ) (hMpos : 0 < M)
     (hM : ∀ x, |max (min (u x) (n : ℝ)) (-(n : ℝ))| ≤ M) :
     Integrable (fun x => (max (min (u x) (n : ℝ)) (-(n : ℝ))) ^ 2) μ := by
@@ -296,7 +296,7 @@ private lemma trunc_sq_int
     nlinarith [sq_abs (max (min (u x) (n : ℝ)) (-(n : ℝ))), sq_abs M,
                abs_nonneg (max (min (u x) (n : ℝ)) (-(n : ℝ))), hM x]
 
-private lemma trunc_sq_lim
+private lemma trunc_sq_lim (μ : Measure Ω) [IsProbabilityMeasure μ]
     (u : Ω → ℝ) (hu_meas : Measurable u) (hu2 : Integrable (fun x => u x ^ 2) μ) :
     Filter.Tendsto (fun n : ℕ => ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ))) ^ 2 ∂μ)
       Filter.atTop (nhds (∫ x, u x ^ 2 ∂μ)) := by
@@ -308,7 +308,7 @@ private lemma trunc_sq_lim
                abs_nonneg (max (min (u x) (n : ℝ)) (-(n : ℝ))), trunc_abs_bound (u x) n]
   · filter_upwards with x; exact (trunc_tendsto_real (u x)).pow 2
 
-private lemma trunc_mean_lim
+private lemma trunc_mean_lim (μ : Measure Ω) [IsProbabilityMeasure μ]
     (u : Ω → ℝ) (hu_meas : Measurable u) (hu1 : Integrable u μ)
     (hcenter : ∫ x, u x ∂μ = 0) :
     Filter.Tendsto (fun n : ℕ => ∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ)
@@ -320,7 +320,7 @@ private lemma trunc_mean_lim
   · intro n; filter_upwards with x; simpa using trunc_abs_bound (u x) n
   · filter_upwards with x; exact trunc_tendsto_real (u x)
 
-private lemma integral_var_eq
+private lemma integral_var_eq (μ : Measure Ω) [IsProbabilityMeasure μ]
     (f : Ω → ℝ) (hf : Integrable f μ) (hf2 : Integrable (fun x => f x ^ 2) μ) :
     ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ = ∫ x, f x ^ 2 ∂μ - (∫ y, f y ∂μ) ^ 2 := by
   set m := ∫ y, f y ∂μ
@@ -346,16 +346,16 @@ theorem lsi_poincare_via_truncation
     ∫ x, u x ^ 2 ∂μ ≤ (2 / α) * E u := by
   obtain ⟨hE_base, hE_const, hE_scale⟩ := hE
   have hES : IsDirichletFormStrong E μ := ⟨hE_base, hE_const, hE_scale⟩
-  have hm_tend := trunc_mean_lim u hu_meas hu1 hcenter
+  have hm_tend := trunc_mean_lim μ u hu_meas hu1 hcenter
   have ht_int : ∀ n, Integrable (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ))) μ := fun n =>
-    trunc_int u n hu_meas hu1
+    trunc_int μ u n hu_meas hu1
   have ht_bdd : ∀ n x, |max (min (u x) (n : ℝ)) (-(n : ℝ))| ≤ (n : ℝ) + 1 := fun n x => by
     rw [abs_le]; constructor
-    · simp [max_def, min_def]; split_ifs <;> linarith [Nat.cast_nonneg (α := ℝ) n]
-    · simp [max_def, min_def]; split_ifs <;> linarith [Nat.cast_nonneg (α := ℝ) n]
+    · simp [max_def, min_def]; split_ifs <;> linarith [show (0 : ℝ) ≤ n from Nat.cast_nonneg n]
+    · simp [max_def, min_def]; split_ifs <;> linarith [show (0 : ℝ) ≤ n from Nat.cast_nonneg n]
   have ht_sq_int : ∀ n, Integrable (fun x => (max (min (u x) (n : ℝ)) (-(n : ℝ))) ^ 2) μ :=
-    fun n => trunc_sq_int u n hu_meas ((n : ℝ) + 1)
-      (by linarith [Nat.cast_nonneg (α := ℝ) n]) (ht_bdd n)
+    fun n => trunc_sq_int μ u n hu_meas ((n : ℝ) + 1)
+      (by linarith [show (0 : ℝ) ≤ n from Nat.cast_nonneg n]) (ht_bdd n)
   have hm_bdd : ∀ n, |∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ| ≤ (n : ℝ) + 1 := fun n =>
     calc |∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ|
         ≤ ∫ x, |max (min (u x) (n : ℝ)) (-(n : ℝ))| ∂μ := by
@@ -369,7 +369,7 @@ theorem lsi_poincare_via_truncation
       ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ =
       ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ))) ^ 2 ∂μ -
       (∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 :=
-    fun n => integral_var_eq _ (ht_int n) (ht_sq_int n)
+    fun n => integral_var_eq μ _ (ht_int n) (ht_sq_int n)
   have hpn : ∀ n, ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) -
       ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ ≤ (2 / α) * E u := by
     intro n
@@ -393,7 +393,7 @@ theorem lsi_poincare_via_truncation
                        sq_abs (2 * ((n : ℝ) + 1)),
                        abs_nonneg (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn), hM_bdd x])
     have hstep := lsi_implies_poincare_bdd_centered μ E hES α hLSI _ hwm
-      ⟨2 * ((n : ℝ) + 1), by linarith [Nat.cast_nonneg (α := ℝ) n], hM_bdd⟩ hcn hw2
+      ⟨2 * ((n : ℝ) + 1), by linarith [show (0 : ℝ) ≤ n from Nat.cast_nonneg n], hM_bdd⟩ hcn hw2
     have hEtn : E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ≤ E u := by
       rw [show (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) =
           (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) + (-mn)) from by ext x; ring, hE_const]
@@ -409,7 +409,7 @@ theorem lsi_poincare_via_truncation
         ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ)
       Filter.atTop (nhds (∫ x, u x ^ 2 ∂μ)) := by
     simp_rw [heq]
-    have h1 := trunc_sq_lim u hu_meas hu2
+    have h1 := trunc_sq_lim μ u hu_meas hu2
     have h2 : Filter.Tendsto
         (fun n => (∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2)
         Filter.atTop (nhds 0) := by simpa using hm_tend.pow 2
