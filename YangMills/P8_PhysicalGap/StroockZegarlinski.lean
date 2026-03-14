@@ -79,7 +79,18 @@ lemma covariance_decay_to_exponential_clustering
     ExponentialClustering μ C ξ := by
   obtain ⟨hξ, hC, hcov⟩ := hCD
   refine ⟨hξ, hC, fun F G => ?_⟩
-  -- Bound Var ≤ E[·²] to go from HasCovarianceDecay to ExponentialClustering
+  -- Bound Var(F) ≤ E[F²] and Var(G) ≤ E[G²] (proven separately below)
+  have hFsqrt : Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) ≤
+      Real.sqrt (∫ x, F x ^ 2 ∂μ) := by
+    apply Real.sqrt_le_sqrt
+    -- Var(F) = E[F²] - (E[F])² ≤ E[F²]  (since (E[F])² ≥ 0)
+    -- TODO(M4): prove under integrability hypotheses
+    sorry
+  have hGsqrt : Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) ≤
+      Real.sqrt (∫ x, G x ^ 2 ∂μ) := by
+    apply Real.sqrt_le_sqrt
+    -- TODO(M4): same as hFsqrt for G
+    sorry
   calc |∫ x, F x * G x ∂μ - (∫ x, F x ∂μ) * (∫ x, G x ∂μ)|
       ≤ C * Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
             Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) *
@@ -88,8 +99,9 @@ lemma covariance_decay_to_exponential_clustering
             Real.sqrt (∫ x, G x ^ 2 ∂μ) *
           Real.exp (-1 / ξ) := by
         gcongr
-        all_goals apply Real.sqrt_le_sqrt
-        all_goals exact le_refl _  -- placeholder; full proof needs integrability
+        · exact hFsqrt
+        · exact hGsqrt
+        · exact le_rfl
 
 /-! ## Main theorem (M4) -/
 
