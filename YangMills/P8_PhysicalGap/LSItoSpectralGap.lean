@@ -73,8 +73,9 @@ private lemma sq_sub_int_implies_sq_int
   have h2cf : Integrable (fun x => 2 * c * f x) μ := hf_int.const_mul (2 * c)
   have hconst : Integrable (fun x => (f x - c) ^ 2 + 2 * c * f x - c ^ 2) μ :=
     (h.add h2cf).sub (integrable_const (c ^ 2))
-  convert hconst using 2
-  funext x; ring
+  have heq : (fun x => f x ^ 2) =ᵐ[μ] (fun x => (f x - c) ^ 2 + 2 * c * f x - c ^ 2) := by
+    filter_upwards with x; ring
+  exact hconst.congr heq
 
 -- lsi_implies_poincare: THEOREM (Phase 9). Was axiom in Phase 8.
 theorem lsi_implies_poincare
