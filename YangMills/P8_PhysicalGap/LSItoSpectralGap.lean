@@ -336,7 +336,6 @@ private lemma integral_var_eq
     proved by truncating u_n = clip(u,-n,n), applying bdd_centered to each u_n,
     and taking n→∞ via DCT. -/
 theorem lsi_poincare_via_truncation
-    (μ : Measure Ω) [IsProbabilityMeasure μ]
     (E : (Ω → ℝ) → ℝ) (hE : IsDirichletFormStrong E μ) (α : ℝ) (hα : 0 < α)
     (hLSI : ∀ f : Ω → ℝ, Measurable f → (∀ x, 0 ≤ f x) →
         ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
@@ -347,10 +346,9 @@ theorem lsi_poincare_via_truncation
     ∫ x, u x ^ 2 ∂μ ≤ (2 / α) * E u := by
   obtain ⟨hE_base, hE_const, hE_scale⟩ := hE
   have hES : IsDirichletFormStrong E μ := ⟨hE_base, hE_const, hE_scale⟩
-  have hm_tend : Filter.Tendsto (fun n => ∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ)
-      Filter.atTop (nhds 0) := trunc_mean_lim u hu_meas hu1 hcenter
-  have ht_int : ∀ n, Integrable (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ))) μ :=
-    fun n => trunc_int u n hu_meas hu1
+  have hm_tend := trunc_mean_lim u hu_meas hu1 hcenter
+  have ht_int : ∀ n, Integrable (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ))) μ := fun n =>
+    trunc_int u n hu_meas hu1
   have ht_bdd : ∀ n x, |max (min (u x) (n : ℝ)) (-(n : ℝ))| ≤ (n : ℝ) + 1 := fun n x => by
     rw [abs_le]; constructor
     · simp [max_def, min_def]; split_ifs <;> linarith [Nat.cast_nonneg (α := ℝ) n]
@@ -443,7 +441,7 @@ theorem lsi_implies_poincare_strong
         have hf1 : Integrable f μ := sq_sub_int_implies_int μ f hf m (by simpa using hfc)
         rw [integral_sub hf1 (integrable_const _), integral_const, probReal_univ, ← hm]; simp
       -- Apply lsi_poincare_via_truncation
-      exact lsi_poincare_via_truncation μ E ⟨hE_base, hE_const, hE_scale⟩ α hα hLSI
+      exact lsi_poincare_via_truncation E ⟨hE_base, hE_const, hE_scale⟩ α hα hLSI
         (fun x => f x - m) (hf.sub measurable_const) hu1_fm (by simpa using hfc) hcenter_fm
   · rw [integral_undef hfc]
     exact mul_nonneg (by positivity) (hE_base.1 f)
