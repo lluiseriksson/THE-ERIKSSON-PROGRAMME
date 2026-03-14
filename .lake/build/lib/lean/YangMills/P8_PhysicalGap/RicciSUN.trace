@@ -1,8 +1,8 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["8adead48099be901.olean"],
-  "i": "41e41f82984296d5.ilean",
+ {"o": ["0b50520af6f19119.olean"],
+  "i": "cd4b2741cfdbc050.ilean",
   "c": "f3d241cee14ac597.c"},
  "log":
  [{"message":
@@ -28,10 +28,10 @@
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
   ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P8_PhysicalGap/RicciSUN.lean",
-   "d1771e3cfe824b91"],
+   "41e5e1fe15f754fb"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.P8_PhysicalGap.RicciSUN", "ede063e088aa8812"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "f4205578264aedf8"}
+ "depHash": "d3aa19975f9d74ce"}
