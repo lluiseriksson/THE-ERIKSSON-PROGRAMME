@@ -53,8 +53,10 @@ theorem feynmanKac_hbound
       Real.exp_le_one_iff.mpr (by nlinarith [Nat.cast_nonneg n, hgap.1])
     nlinarith
   have hinner : |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))| ≤
-      ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ :=
-    abs_real_inner_le_norm _ _
+      ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ := by
+    -- Cauchy-Schwarz: |⟨u,v⟩| ≤ ‖u‖·‖v‖
+    have := @inner_mul_le_norm_mul_norm ℝ H _ _ _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))
+    rwa [Real.norm_eq_abs] at this
   have hopnorm : ‖(T ^ n - P₀) (ψ_obs N' q)‖ ≤ ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ :=
     ContinuousLinearMap.le_opNorm _ _
   have hTS' : ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ ≤ C * C_ψ :=
