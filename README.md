@@ -75,7 +75,39 @@ theorem eriksson_programme_phase7
 
 Formalizing that 4D SU(N) Yang-Mills satisfies the correlator bound — the analytical content of the Clay problem.
 
-**Two named axioms remaining:**
+**
+## Phase 10: LSI → Poincaré via Truncation+DCT (CLOSED — March 2026)
+
+The sorry in `lsi_implies_poincare_strong` has been formally closed. The full truncation+DCT argument for the LSI → Poincaré inequality is now machine-verified.
+
+### New theorems (LSItoSpectralGap.lean)
+
+| Theorem | Status | Description |
+|---------|--------|-------------|
+| `trunc_tendsto_real` | ✅ PROVED | Pointwise convergence of truncation `max(min(u,n),-n) → u` |
+| `trunc_abs_bound` | ✅ PROVED | `\|trunc(u,n)\| ≤ \|u\|` pointwise |
+| `trunc_int` | ✅ PROVED | Integrability of truncation from `u ∈ L¹` |
+| `trunc_sq_int` | ✅ PROVED | Integrability of truncation² from boundedness |
+| `trunc_sq_lim` | ✅ PROVED | DCT: `∫(trunc_n)² → ∫u²` in `L¹` |
+| `trunc_mean_lim` | ✅ PROVED | DCT: `∫trunc_n → ∫u = 0` for centered `u` |
+| `integral_var_eq` | ✅ PROVED | Variance identity: `∫(f-∫f)² = ∫f² - (∫f)²` |
+| `lsi_implies_poincare_bdd_centered` | ✅ PROVED | LSI → Poincaré for bounded+centered functions |
+| `lsi_poincare_via_truncation` | ✅ PROVED | LSI → Poincaré for `u ∈ L²` centered, via truncation+DCT |
+| `lsi_implies_poincare_strong` | ✅ **SORRY CLOSED** | LSI → Poincaré for all `f ∈ L²` (general case) |
+
+### Proof strategy
+1. Define truncations `t_n(x) = max(min(u(x), n), -n)` for centered `u ∈ L²`
+2. Each `t_n - m_n` is bounded and centered → apply `lsi_implies_poincare_bdd_centered`
+3. Use `dirichlet_contraction` to bound `E(t_n) ≤ E(u)`
+4. Take `n → ∞`: `∫(t_n - m_n)² → ∫u²` by DCT; conclude `∫u² ≤ (2/α)·E(u)`
+
+### Remaining sorrys
+| Location | Status | Note |
+|----------|--------|------|
+| `ent_ge_var` (line 144) | ⚠️ STAYS | Mathematically false without nonnegativity hypothesis |
+
+
+Two named axioms remaining:**
 
 | Axiom | Source | Status |
 |-------|--------|--------|
