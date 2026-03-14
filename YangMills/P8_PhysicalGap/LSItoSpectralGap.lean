@@ -542,7 +542,7 @@ theorem lsi_implies_poincare
 axiom sz_lsi_to_clustering
     (gibbsFamily : ℕ → Measure Ω) (E : (Ω → ℝ) → ℝ) (α_star : ℝ)
     (hLSI : DLR_LSI gibbsFamily E α_star) :
-    ∃ C ξ : ℝ, 0 < ξ ∧ ξ ≤ 1/α_star ∧
+    ∃ C ξ : ℝ, 0 < ξ ∧ ξ ≤ 2/α_star ∧
     ∀ L : ℕ, ExponentialClustering (gibbsFamily L) C ξ
 
 axiom clustering_to_spectralGap
