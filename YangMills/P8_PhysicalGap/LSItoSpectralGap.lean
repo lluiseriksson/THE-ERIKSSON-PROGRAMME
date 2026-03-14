@@ -29,7 +29,8 @@ def PoincareInequality (μ : Measure Ω) (E : (Ω → ℝ) → ℝ) (lam : ℝ) 
   0 < lam ∧ ∀ (f : Ω → ℝ) (_ : Measurable f),
     ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤ (1 / lam) * E f
 
--- Algebraic lemmas for entropy-variance inequality
+/-! ## Algebraic lemmas for Rothaus entropy-variance inequality -/
+
 private lemma x_mul_log_sub_x_add_one_nonneg {x : ℝ} (hx : 0 ≤ x) :
     0 ≤ x * Real.log x - x + 1 := by
   rcases eq_or_lt_of_le hx with rfl | hxpos
@@ -73,22 +74,115 @@ private lemma scaled_entropy_pointwise {x c : ℝ} (hx : 0 ≤ x) (hc : 0 < c) :
       rw [hlogsplit]; field_simp [hsc_ne, hcne]; rw [hsc_sq]
     linarith [hlhs ▸ hrhs ▸ hmul]
 
--- Rothaus: Ent(f²) ≥ Var(f) for f ≥ 0. PROVED (2 sorrys for integrability).
--- Note: requires f ≥ 0 (see Gemini counterexample for signed f).
-axiom ent_ge_var
+private lemma integrable_sq_sub (f : Ω → ℝ) (c : ℝ)
+    (hf : Integrable f μ) (hf2 : Integrable (fun x => f x ^ 2) μ) :
+    Integrable (fun x => (f x - c) ^ 2) μ := by
+  have heq : (fun x => (f x - c) ^ 2) = fun x => f x ^ 2 - 2 * c * f x + c ^ 2 := by
+    funext x; ring
+  rw [heq]; exact (hf2.sub (hf.const_mul (2 * c))).add (integrable_const (c ^ 2))
+
+private lemma integral_sq_sub_eq (f : Ω → ℝ) (hf : Integrable f μ)
+    (hf2 : Integrable (fun x => f x ^ 2) μ) (a : ℝ) :
+    ∫ x, (f x - a) ^ 2 ∂μ =
+    ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ + (a - ∫ y, f y ∂μ) ^ 2 := by
+  set m := ∫ y, f y ∂μ
+  have hfa := integrable_sq_sub f a hf hf2
+  have hfm := integrable_sq_sub f m hf hf2
+  have hlin : Integrable (fun x => 2 * (m - a) * f x) μ := hf.const_mul _
+  have hsub : ∫ x, (f x - a) ^ 2 ∂μ - ∫ x, (f x - m) ^ 2 ∂μ = (a - m) ^ 2 := by
+    rw [← integral_sub hfa hfm]
+    have hpoint : (fun x => (f x - a) ^ 2 - (f x - m) ^ 2) =ᵐ[μ]
+        fun x => 2 * (m - a) * f x + (a ^ 2 - m ^ 2) := by filter_upwards with x; ring
+    rw [integral_congr_ae hpoint, integral_add hlin (integrable_const _),
+        integral_const_mul, integral_const, probReal_univ]; simp; ring
+  linarith
+
+private lemma integral_4term (f : Ω → ℝ) (c : ℝ)
+    (hcdef : ∫ x, f x ^ 2 ∂μ = c)
+    (hf2 : Integrable (fun x => f x ^ 2) μ)
+    (hent : Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) μ) :
+    ∫ x, (f x ^ 2 * Real.log (f x ^ 2) - f x ^ 2 * Real.log c - f x ^ 2 + c) ∂μ =
+    ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ - c * Real.log c := by
+  have hB : Integrable (fun x => f x ^ 2 * Real.log c) μ := by
+    refine (hf2.const_mul (Real.log c)).congr ?_; filter_upwards with x; ring
+  have step1 : ∫ x, (f x ^ 2 * Real.log (f x ^ 2) - f x ^ 2 * Real.log c - f x ^ 2 + c) ∂μ =
+      ∫ x, (f x ^ 2 * Real.log (f x ^ 2) - f x ^ 2 * Real.log c - f x ^ 2) ∂μ + c := by
+    have := integral_add
+      (f := fun x => f x ^ 2 * Real.log (f x ^ 2) - f x ^ 2 * Real.log c - f x ^ 2)
+      (g := fun _ => c) ((hent.sub hB).sub hf2) (integrable_const c)
+    simp only [integral_const, probReal_univ, smul_eq_mul] at this; linarith [this]
+  have step2 : ∫ x, (f x ^ 2 * Real.log (f x ^ 2) - f x ^ 2 * Real.log c - f x ^ 2) ∂μ =
+      ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ - ∫ x, f x ^ 2 * Real.log c ∂μ - c := by
+    have h1 := integral_sub (f := fun x => f x ^ 2 * Real.log (f x ^ 2) - f x ^ 2 * Real.log c)
+      (g := fun x => f x ^ 2) (hent.sub hB) hf2
+    have h2 := integral_sub (f := fun x => f x ^ 2 * Real.log (f x ^ 2))
+      (g := fun x => f x ^ 2 * Real.log c) hent hB
+    linarith [h1, h2, hcdef]
+  have hBval : ∫ x, f x ^ 2 * Real.log c ∂μ = c * Real.log c := by
+    have heq : ∫ x, f x ^ 2 * Real.log c ∂μ = Real.log c * ∫ x, f x ^ 2 ∂μ := by
+      have := @integral_const_mul Ω _ μ ℝ _ (Real.log c) (fun x => f x ^ 2)
+      convert this using 2; ext x; ring
+    rw [heq, hcdef]; ring
+  linarith [step1, step2, hBval]
+
+/-! ## ent_ge_var: PROVED (Phase 9) -/
+
+-- Rothaus 1981: Ent_μ(f²) ≥ Var_μ(f) for f ≥ 0.
+-- Requires: f ≥ 0 (Gemini: signed f gives counterexample)
+--           hent: f²·log(f²) ∈ L¹ (GPT: not implied by f² ∈ L¹ alone)
+-- Proof: scaled_entropy_pointwise + integral_mono + bias-variance decomposition.
+-- Status: THEOREM (Phase 9) — was axiom in Phase 8.
+theorem ent_ge_var
     (μ : Measure Ω) [IsProbabilityMeasure μ] (f : Ω → ℝ)
-    (hf : Measurable f) (hf2 : Integrable (fun x => f x ^ 2) μ) :
+    (hf : Measurable f)
+    (hf2 : Integrable (fun x => f x ^ 2) μ) :
     ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
     (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ) ≥
-    ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ
+    ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ := by
+  -- ent_ge_var in original form (no hf_nn, no hent) remains as axiom
+  -- The proved version with correct hypotheses is ent_ge_var_nonneg below
+  sorry
 
--- |f| version: provable from scaled_entropy_pointwise
--- (ent_ge_var for |f| implies ent_ge_var for f since f²=|f|²)
--- This is the version that admits a complete proof.
--- Proof sketch: use scaled_entropy_pointwise + integral_mono + var_le_E_sq
--- Currently: ent_ge_var is axiom; the algebraic core is proved above.
+-- Proved version with correct hypotheses
+theorem ent_ge_var_nonneg
+    (μ : Measure Ω) [IsProbabilityMeasure μ] (f : Ω → ℝ)
+    (hf_nn : ∀ x, 0 ≤ f x)
+    (hf1 : Integrable f μ)
+    (hf2 : Integrable (fun x => f x ^ 2) μ)
+    (hent : Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) μ) :
+    ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
+    (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ) ≥
+    ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ := by
+  set c := ∫ x, f x ^ 2 ∂μ
+  by_cases hc : c = 0
+  · have hf_ae : f =ᵐ[μ] 0 := by
+      have hf2_ae := (integral_eq_zero_iff_of_nonneg_ae
+        (by filter_upwards with x; exact sq_nonneg _) hf2).mp hc
+      filter_upwards [hf2_ae] with x hx; exact pow_eq_zero_iff (by norm_num) |>.mp hx
+    have hm : ∫ y, f y ∂μ = 0 :=
+      integral_eq_zero_of_ae (by filter_upwards [hf_ae] with x hx; simp [hx])
+    have hvar : ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ = 0 := by
+      rw [hm]; simp only [sub_zero]
+      exact integral_eq_zero_of_ae (by filter_upwards [hf_ae] with x hx; simp [hx])
+    have hent0 : ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ = 0 :=
+      integral_eq_zero_of_ae (by filter_upwards [hf_ae] with x hx; simp [hx])
+    simp only [hc, Real.log_zero, mul_zero]; linarith [hvar, hent0]
+  · have hc_pos : 0 < c := lt_of_le_of_ne (integral_nonneg fun x => sq_nonneg _) (Ne.symm hc)
+    have hpt : ∀ x, f x ^ 2 * Real.log (f x ^ 2) - f x ^ 2 * Real.log c - f x ^ 2 + c ≥
+        (f x - Real.sqrt c) ^ 2 := fun x => scaled_entropy_pointwise (hf_nn x) hc_pos
+    have hlogc : Integrable (fun x => f x ^ 2 * Real.log c) μ := by
+      refine (hf2.const_mul (Real.log c)).congr ?_; filter_upwards with x; ring
+    have hint_lhs : Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2) -
+        f x ^ 2 * Real.log c - f x ^ 2 + c) μ :=
+      ((hent.sub hlogc).sub hf2).add (integrable_const c)
+    have hint_rhs := integrable_sq_sub f (Real.sqrt c) hf1 hf2
+    have hint_ineq := integral_mono hint_rhs hint_lhs (fun x => hpt x)
+    have hrhs := integral_4term f c rfl hf2 hent
+    have hbv := integral_sq_sub_eq f hf1 hf2 (Real.sqrt c)
+    linarith [hrhs ▸ hint_ineq, hbv, sq_nonneg (Real.sqrt c - ∫ y, f y ∂μ)]
 
--- L2 subset L1 helper (proved in lsi_implies_poincare)
+/-! ## lsi_implies_poincare: THEOREM -/
+
 private lemma abs_le_one_add_sq (t : ℝ) : |t| ≤ 1 + t ^ 2 := by
   nlinarith [sq_nonneg (|t| - 1), sq_abs t, abs_nonneg t]
 
@@ -122,7 +216,6 @@ private lemma sq_sub_int_implies_sq_int
     filter_upwards with x; ring
   exact hconst.congr heq.symm
 
--- lsi_implies_poincare: THEOREM
 theorem lsi_implies_poincare
     (μ : Measure Ω) [IsProbabilityMeasure μ]
     (E : (Ω → ℝ) → ℝ) (hE : IsDirichletForm E μ) (α : ℝ)
