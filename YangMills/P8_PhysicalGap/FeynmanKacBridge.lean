@@ -11,7 +11,6 @@ import YangMills.P8_PhysicalGap.LSItoSpectralGap
 namespace YangMills
 
 open MeasureTheory Real
-
 open scoped InnerProductSpace
 
 variable {d : ℕ} [NeZero d]
@@ -29,11 +28,11 @@ def FeynmanKacFormula
       @inner ℝ H _ (ψ_obs N p) ((T ^ n - P₀) (ψ_obs N q))
 
 def StateNormBound
-    (ψ_obs : (N : ℕ) → ConcretePlaquette d N → H)
-    (C_ψ : ℝ) : Prop :=
-  0 ≤ C_ψ ∧ ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N),
-    ‖ψ_obs N p‖ ≤ C_ψ
+    (ψ_obs : (N : ℕ) → ConcretePlaquette d N → H) (C_ψ : ℝ) : Prop :=
+  0 ≤ C_ψ ∧ ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N), ‖ψ_obs N p‖ ≤ C_ψ
 
+/-- Feynman-Kac + spectral gap → hbound.
+    |⟨ψ_p, (T^n-P₀)ψ_q⟩| ≤ C_ψ²·C by Cauchy-Schwarz + spectral gap. -/
 theorem feynmanKac_hbound
     (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
     (T P₀ : H →L[ℝ] H) (γ C C_ψ : ℝ)
@@ -43,37 +42,35 @@ theorem feynmanKac_hbound
     (hFK : FeynmanKacFormula μ plaquetteEnergy β F (fun _ _ _ => 0) T P₀ ψ_obs) :
     ∀ (N' : ℕ) [NeZero N'] (p q : ConcretePlaquette d N'),
       |@wilsonConnectedCorr d N' _ _ G _ _ μ plaquetteEnergy β F p q| ≤ C_ψ ^ 2 * C := by
+  have hγ := hgap.1      -- 0 < γ
+  have hC := hgap.2.1    -- 0 < C
+  have hψ0 := hψ.1       -- 0 ≤ C_ψ
   intro N' _hN' p q
   obtain ⟨n, _, hcorr⟩ := hFK N' p q
   rw [hcorr]
-  have hψ_p := hψ.2 N' p
-  have hψ_q := hψ.2 N' q
-  have hTS := transferMatrix_spectral_gap T P₀ γ C hgap n
-  have hC_pos := hgap.2.1
-  have hγ_pos := hgap.1
-  -- |⟨ψ_p, A ψ_q⟩| ≤ ‖ψ_p‖ · ‖A‖ · ‖ψ_q‖ ≤ C_ψ · (C·exp(-γn)) · C_ψ ≤ C_ψ²·C
-  have step1 : |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))| ≤
-      ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ :=
-    abs_real_inner_le_norm _ _
-  have step2 : ‖(T ^ n - P₀) (ψ_obs N' q)‖ ≤ ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ :=
-    ContinuousLinearMap.le_opNorm _ _
-  have step3 : ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ ≤ C * Real.exp (-γ * ↑n) * C_ψ :=
-    mul_le_mul hTS hψ_q (norm_nonneg _) (by linarith)
-  have step4 : C * Real.exp (-γ * ↑n) * C_ψ ≤ C * 1 * C_ψ := by
-    apply mul_le_mul_of_nonneg_right _ hψ.1
-    apply mul_le_mul_of_nonneg_left _ (by linarith)
-    exact Real.exp_le_one_iff.mpr (by nlinarith [Nat.cast_nonneg n])
+  -- Cauchy-Schwarz: |⟨u, Av⟩| ≤ ‖u‖·‖A‖·‖v‖
+  have hCS : |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))| ≤
+      ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) := by
+    calc |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))|
+        ≤ ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ :=
+            abs_real_inner_le_norm _ _
+      _ ≤ ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) :=
+            mul_le_mul_of_nonneg_left (ContinuousLinearMap.le_opNorm _ _) (norm_nonneg _)
+  -- Spectral gap bound: ‖T^n - P₀‖ ≤ C·exp(-γ·n) ≤ C·1 = C
+  have hTS : ‖T ^ n - P₀‖ ≤ C := by
+    have h1 := transferMatrix_spectral_gap T P₀ γ C hgap n
+    have h2 : Real.exp (-γ * ↑n) ≤ 1 :=
+      Real.exp_le_one_iff.mpr (by nlinarith [Nat.cast_nonneg n])
+    linarith [mul_le_mul_of_nonneg_left h2 (le_of_lt hC)]
+  -- Norm bounds: ‖ψ_obs p‖ ≤ C_ψ, ‖ψ_obs q‖ ≤ C_ψ
+  have hp := hψ.2 N' p
+  have hq := hψ.2 N' q
+  -- Combine
   calc |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))|
-      ≤ ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ := step1
-    _ ≤ ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) :=
-          mul_le_mul_of_nonneg_left step2 (norm_nonneg _)
-    _ ≤ ‖ψ_obs N' p‖ * (C * Real.exp (-γ * ↑n) * C_ψ) :=
-          mul_le_mul_of_nonneg_left step3 (norm_nonneg _)
-    _ ≤ ‖ψ_obs N' p‖ * (C * 1 * C_ψ) :=
-          mul_le_mul_of_nonneg_left step4 (norm_nonneg _)
+      ≤ ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) := hCS
     _ ≤ C_ψ * (C * C_ψ) := by
-          simp only [mul_one]
-          exact mul_le_mul_of_nonneg_right hψ_p (by nlinarith)
+          apply mul_le_mul hp _ (by positivity) hψ0
+          exact mul_le_mul hTS hq (norm_nonneg _) (le_of_lt hC)
     _ = C_ψ ^ 2 * C := by ring
 
 theorem hbound_implies_clay
