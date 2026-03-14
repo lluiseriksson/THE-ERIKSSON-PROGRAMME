@@ -403,8 +403,9 @@ theorem lsi_poincare_via_truncation
           (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) + (-mn)) from by ext x; ring, hE_const]
       by_cases hn : n = 0
       · subst hn
-        simp only [Nat.cast_zero, neg_zero, min_self, max_self]
-        exact hE_base.1 u
+          have hzero : (fun x : Ω => max (min (u x) (0 : ℝ)) (-(0 : ℝ))) = fun _ => 0 := by
+            ext x; simp
+          simpa [hzero] using hE_base.1 u
 
       · exact dirichlet_contraction E hES u (n : ℝ) (by exact_mod_cast Nat.pos_of_ne_zero hn)
     calc ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
@@ -447,6 +448,23 @@ theorem lsi_poincare_via_truncation
          via dirichlet_contraction: E(u_n) ≤ E(u)
       3. DCT: ∫u_n² → ∫u² as n → ∞
     The sorry is the DCT/truncation step — mathematically correct. -/
+lemma sq_sub_int_implies_int
+    (μ : Measure Ω) [IsProbabilityMeasure μ] (f : Ω → ℝ) (hf : Measurable f) (c : ℝ)
+    (h : Integrable (fun x => (f x - c) ^ 2) μ) :
+    Integrable f μ := by
+  have hg : Integrable (fun x => 1 + (f x - c) ^ 2) μ := (integrable_const 1).add h
+  have h1 : ∀ᵐ x ∂μ, ‖f x - c‖ ≤ ‖1 + (f x - c) ^ 2‖ := by
+    filter_upwards with x
+    have hnn : 0 ≤ 1 + (f x - c) ^ 2 := by nlinarith [sq_nonneg (f x - c)]
+    rw [Real.norm_eq_abs (f x - c), Real.norm_eq_abs, abs_of_nonneg hnn]
+    exact abs_le_one_add_sq (f x - c)
+  have hfc : Integrable (fun x => f x - c) μ :=
+    hg.mono (hf.sub measurable_const).aestronglyMeasurable h1
+  have key := hfc.add (integrable_const c)
+  have heq : (fun x => f x - c) + (fun x => c) = f := by funext x; simp
+  rwa [heq] at key
+
+
 theorem lsi_implies_poincare_strong
     (μ : Measure Ω) [IsProbabilityMeasure μ]
     (E : (Ω → ℝ) → ℝ) (hE : IsDirichletFormStrong E μ) (α : ℝ)
@@ -482,22 +500,6 @@ theorem lsi_implies_poincare_strong
 
 private lemma abs_le_one_add_sq (t : ℝ) : |t| ≤ 1 + t ^ 2 := by
   nlinarith [sq_nonneg (|t| - 1), sq_abs t, abs_nonneg t]
-
-lemma sq_sub_int_implies_int
-    (μ : Measure Ω) [IsProbabilityMeasure μ] (f : Ω → ℝ) (hf : Measurable f) (c : ℝ)
-    (h : Integrable (fun x => (f x - c) ^ 2) μ) :
-    Integrable f μ := by
-  have hg : Integrable (fun x => 1 + (f x - c) ^ 2) μ := (integrable_const 1).add h
-  have h1 : ∀ᵐ x ∂μ, ‖f x - c‖ ≤ ‖1 + (f x - c) ^ 2‖ := by
-    filter_upwards with x
-    have hnn : 0 ≤ 1 + (f x - c) ^ 2 := by nlinarith [sq_nonneg (f x - c)]
-    rw [Real.norm_eq_abs (f x - c), Real.norm_eq_abs, abs_of_nonneg hnn]
-    exact abs_le_one_add_sq (f x - c)
-  have hfc : Integrable (fun x => f x - c) μ :=
-    hg.mono (hf.sub measurable_const).aestronglyMeasurable h1
-  have key := hfc.add (integrable_const c)
-  have heq : (fun x => f x - c) + (fun x => c) = f := by funext x; simp
-  rwa [heq] at key
 
 private lemma sq_sub_int_implies_sq_int
     (μ : Measure Ω) [IsProbabilityMeasure μ] (f : Ω → ℝ) (hf : Measurable f)
