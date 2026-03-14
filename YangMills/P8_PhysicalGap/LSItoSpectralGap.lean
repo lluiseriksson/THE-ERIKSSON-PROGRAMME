@@ -394,21 +394,21 @@ theorem lsi_poincare_via_truncation
                        abs_nonneg (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn), hM_bdd x])
     have hstep := lsi_implies_poincare_bdd_centered μ E hES α hLSI _ hwm
       ⟨2 * ((n : ℝ) + 1), by linarith [show (0 : ℝ) ≤ (n : ℝ) from Nat.cast_nonneg n], hM_bdd⟩ hcn hw2
-    have hEtn : E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ≤ E u := by
-      rw [show (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) =
-          (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) + (-mn)) from by ext x; ring, hE_const]
-      rcases Nat.eq_zero_or_pos n with rfl | hpos
-      · -- n=0: E(fun x => max(min(u x,0),0)) = E(fun x => 0) ≤ E u
-        have hzero : (fun x : Ω => max (min (u x) (0 : ℝ)) (-(0 : ℝ))) = fun _ => 0 := by
-          ext x; simp
-        rw [hzero]; exact hE_base.1 u
-      · exact dirichlet_contraction E hES u (n : ℝ) (Nat.cast_pos.mpr hpos)
-    calc ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
-        ≤ (1 / α) * E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) := hstep
-      _ ≤ (1 / α) * E u := mul_le_mul_of_nonneg_left hEtn (by positivity)
-      _ ≤ (2 / α) * E u := by
-          have h12 : (2 / α) = 2 * (1 / α) := by ring
-          rw [h12]; linarith [mul_nonneg (by positivity : 0 ≤ 1 / α) (hE_base.1 u)]
+      have hEtn : E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ≤ E u := by
+        rw [show (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) =
+            (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) + (-mn)) from by ext x; ring, hE_const]
+        rcases Nat.eq_zero_or_pos n with rfl | hpos
+        · -- n=0: trunc at 0 is zero fn, E(0) ≤ E u
+          have : (fun x : Ω => max (min (u x) (0 : ℝ)) (-(0 : ℝ))) = fun _ => 0 := by
+            ext x; simp
+          rw [this]; exact hE_base.1 u
+        · exact dirichlet_contraction E hES u (n : ℝ) (Nat.cast_pos.mpr hpos)
+      calc ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
+          ≤ (1 / α) * E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) := hstep
+        _ ≤ (1 / α) * E u := mul_le_mul_of_nonneg_left hEtn (by positivity)
+        _ ≤ (2 / α) * E u := by
+            have h12 : (2 / α) = 2 * (1 / α) := by ring
+            rw [h12]; linarith [mul_nonneg (by positivity : 0 ≤ 1 / α) (hE_base.1 u)]
   have hlim : Filter.Tendsto
       (fun n : ℕ => ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) -
         ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ)
@@ -423,11 +423,15 @@ theorem lsi_poincare_via_truncation
     have h2 : Filter.Tendsto
         (fun n : ℕ => (∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2)
         Filter.atTop (nhds 0) := by
-      have := hm_tend.pow 2
-      simpa using this
-    have h := h1.sub h2
-    simp only [sub_zero] at h
-    exact h
+      have h2' := hm_tend.pow 2
+      simp only [zero_pow, ne_eq, OfNat.ofNat_ne_zero, not_false_eq_true] at h2'
+      exact h2'
+    have h : Filter.Tendsto
+        (fun n : ℕ => ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ))) ^ 2 ∂μ -
+        (∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2)
+        Filter.atTop (nhds (∫ x, u x ^ 2 ∂μ)) := by
+      have := h1.sub h2; simp only [sub_zero] at this; exact this
+    exact hEqSeq ▸ h
   exact le_of_tendsto' hlim hpn
 
 
