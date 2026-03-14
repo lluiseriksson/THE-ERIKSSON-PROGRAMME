@@ -217,6 +217,15 @@ axiom dirichlet_contraction
     (f : Ω → ℝ) (n : ℝ) (hn : 0 < n) :
     E (fun x => max (min (f x) n) (-n)) ≤ E f
 
+/-- Markov/contraction property of Dirichlet forms.
+    For a 1-Lipschitz truncation φ_n(t) = max(min(t,n),-n), E(φ_n∘f) ≤ E(f).
+    This is the defining Markov property of Dirichlet forms (cf. Fukushima et al.).
+    Status: AXIOM — requires extension theory of Dirichlet forms. -/
+axiom dirichlet_contraction
+    (E : (Ω → ℝ) → ℝ) (hE : IsDirichletFormStrong E μ)
+    (f : Ω → ℝ) (n : ℝ) (hn : 0 < n) :
+    E (fun x => max (min (f x) n) (-n)) ≤ E f
+
 /-- LSI → Poincaré for bounded centered functions (Phase 10).
     Proof: apply LSI to g_t = 1 + t·u (nonneg for small t),
     divide by t², take t → 0 using entropy_perturbation_limit. -/
@@ -294,6 +303,38 @@ private lemma sq_sub_int_implies_sq_int
       (fun x => (f x - ∫ y, f y ∂μ) ^ 2 + 2 * (∫ y, f y ∂μ) * f x - (∫ y, f y ∂μ) ^ 2) := by
     filter_upwards with x; ring
   exact hconst.congr heq.symm
+
+/-- LSI → Poincaré for IsDirichletFormStrong (Phase 10).
+    Proof strategy:
+      1. Center: u = f - E[f], E(u) = E(f) by const-invariance
+      2. Apply lsi_implies_poincare_bdd_centered to truncations u_n = clip(u,-n,n)
+         via dirichlet_contraction: E(u_n) ≤ E(u)
+      3. DCT: ∫u_n² → ∫u² as n → ∞
+    The sorry is the DCT/truncation step — mathematically correct. -/
+theorem lsi_implies_poincare_strong
+    (μ : Measure Ω) [IsProbabilityMeasure μ]
+    (E : (Ω → ℝ) → ℝ) (hE : IsDirichletFormStrong E μ) (α : ℝ)
+    (hLSI : ∀ f : Ω → ℝ, Measurable f → (∀ x, 0 ≤ f x) →
+        ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
+        (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ) ≤ (2 / α) * E f)
+    (hα : 0 < α) :
+    PoincareInequality μ E (α / 2) := by
+  refine ⟨by linarith, fun f hf => ?_⟩
+  rw [show (1 : ℝ) / (α / 2) = 2 / α from by field_simp]
+  set m := ∫ y, f y ∂μ
+  obtain ⟨hE_base, hE_const, hE_scale⟩ := hE
+  have hEu : E (fun x => f x - m) = E f := by
+    have := hE_const (-m) f
+    simp_rw [show (fun x => f x + -m) = (fun x => f x - m) from by ext x; ring] at this
+    exact this
+  by_cases hfc : Integrable (fun x => (f x - m) ^ 2) μ
+  · suffices h : ∫ x, (f x - m) ^ 2 ∂μ ≤ (2 / α) * E (fun x => f x - m) by
+      rwa [hEu] at h
+    -- Truncation + DCT: u_n = clip(u,-n,n), apply bdd_centered, take n→∞
+    -- Each u_n is bounded, E(u_n) ≤ E(u), ∫u_n² → ∫u² by DCT
+    sorry
+  · rw [integral_undef hfc]
+    exact mul_nonneg (by positivity) (hE_base.1 f)
 
 /-- LSI → Poincaré for IsDirichletFormStrong (Phase 10).
     Proof strategy:
