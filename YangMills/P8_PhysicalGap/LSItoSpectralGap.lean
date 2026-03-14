@@ -218,6 +218,48 @@ axiom dirichlet_contraction
     E (fun x => max (min (f x) n) (-n)) ≤ E f
 
 
+/-- LSI → Poincaré for bounded centered functions (Phase 10).
+    Proof: apply LSI to g_t = 1 + t·u (nonneg for small t),
+    divide by t², take t → 0 using entropy_perturbation_limit. -/
+theorem lsi_implies_poincare_bdd_centered
+    (μ : Measure Ω) [IsProbabilityMeasure μ]
+    (E : (Ω → ℝ) → ℝ) (hE : IsDirichletFormStrong E μ) (α : ℝ)
+    (hLSI : ∀ f : Ω → ℝ, Measurable f → (∀ x, 0 ≤ f x) →
+        ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
+        (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ) ≤ (2 / α) * E f)
+    (u : Ω → ℝ) (hu : Measurable u)
+    (hbdd : ∃ M > 0, ∀ x, |u x| ≤ M)
+    (hcenter : ∫ x, u x ∂μ = 0)
+    (hu2 : Integrable (fun x => u x ^ 2) μ) :
+    ∫ x, u x ^ 2 ∂μ ≤ (1 / α) * E u := by
+  obtain ⟨M, hMpos, hM⟩ := hbdd
+  obtain ⟨_, hE_const, hE_scale⟩ := hE
+  have hlsi_t : ∀ᶠ t in nhdsWithin 0 {0}ᶜ,
+      (∫ x, (1 + t * u x) ^ 2 * Real.log ((1 + t * u x) ^ 2) ∂μ -
+        (∫ x, (1 + t * u x) ^ 2 ∂μ) * Real.log (∫ x, (1 + t * u x) ^ 2 ∂μ)) / t ^ 2
+      ≤ (2 / α) * E u := by
+    have hsmall : ∀ᶠ t in nhds (0 : ℝ), |t| * M < 1 := by
+      have : Filter.Tendsto (fun t => |t| * M) (nhds 0) (nhds 0) := by
+        have := (continuous_abs.tendsto 0).mul_const M; simp at this; exact this
+      exact this (Iio_mem_nhds (by linarith))
+    filter_upwards [self_mem_nhdsWithin, hsmall.filter_mono nhdsWithin_le_nhds] with t ht_ne hlt
+    simp only [Set.mem_compl_iff, Set.mem_singleton_iff] at ht_ne
+    have hg_nn : ∀ x, 0 ≤ 1 + t * u x := fun x => by
+      have h1 : |t * u x| ≤ |t| * M := by
+        rw [abs_mul]; exact mul_le_mul_of_nonneg_left (hM x) (abs_nonneg t)
+      nlinarith [abs_nonneg (t * u x), neg_abs_le (t * u x)]
+    have hineq := hLSI _ ((hu.const_mul t).const_add 1) hg_nn
+    have hE_gt : E (fun x => 1 + t * u x) = t ^ 2 * E u := by
+      rw [show (fun x => 1 + t * u x) = (fun x => t * u x + 1) from by ext x; ring]
+      rw [show (fun x : Ω => t * u x + 1) = (fun x => (fun x => t * u x) x + 1) from rfl]
+      rw [hE_const, hE_scale]
+    rw [hE_gt] at hineq
+    exact (div_le_iff₀ (by positivity)).mpr (by linarith)
+  have hlim := entropy_perturbation_limit μ u hu ⟨M, hMpos, hM⟩ hcenter hu2
+  have hbound := le_of_tendsto_of_tendsto hlim tendsto_const_nhds hlsi_t
+  have halg : (2 / α) * E u = 2 * ((1 / α) * E u) := by ring
+  rw [halg] at hbound; linarith
+
 /-- LSI → Poincaré for IsDirichletFormStrong (Phase 10).
     Proof strategy:
       1. Center: u = f - E[f], E(u) = E(f) by const-invariance
