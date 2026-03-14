@@ -11,7 +11,6 @@ open MeasureTheory Real
 open scoped InnerProductSpace
 
 variable {d : ℕ} [NeZero d]
--- eriksson_programme_phase7 requires [CompactSpace G]
 variable {G : Type*} [Group G] [MeasurableSpace G] [TopologicalSpace G] [CompactSpace G]
 variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
 
@@ -38,7 +37,6 @@ theorem feynmanKac_hbound
     (hFK : FeynmanKacFormula μ plaquetteEnergy β F (fun _ _ _ => 0) T P₀ ψ_obs) :
     ∀ (N' : ℕ) [NeZero N'] (p q : ConcretePlaquette d N'),
       |@wilsonConnectedCorr d N' _ _ G _ _ μ plaquetteEnergy β F p q| ≤ C_ψ ^ 2 * C := by
-  have hγ : (0 : ℝ) < γ := hgap.1
   have hC : (0 : ℝ) < C := hgap.2.1
   have hψ0 : (0 : ℝ) ≤ C_ψ := hψ.1
   intro N' _hN' p q
@@ -48,15 +46,16 @@ theorem feynmanKac_hbound
   have hq  : ‖ψ_obs N' q‖ ≤ C_ψ := hψ.2 N' q
   have hTS : ‖T ^ n - P₀‖ ≤ C := by
     have h1 := transferMatrix_spectral_gap T P₀ γ C hgap n
-    -- exp(-γ·n) ≤ 1 since -γ·n ≤ 0
     have h2 : Real.exp (-γ * ↑n) ≤ 1 :=
       Real.exp_le_one_iff.mpr (by nlinarith [Nat.cast_nonneg n, hgap.1])
     nlinarith
+  -- Cauchy-Schwarz: |⟨u,v⟩| ≤ ‖u‖·‖v‖
+  -- Use `change` to rewrite @inner ℝ H _ to inner form that norm_inner_le_norm accepts
+  -- then `exact norm_inner_le_norm` (uses ‖inner x y‖ = |inner x y| in ℝ)
   have hinner : |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))| ≤
       ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ := by
-    -- Cauchy-Schwarz: |⟨u,v⟩| ≤ ‖u‖·‖v‖
-    have := @inner_mul_le_norm_mul_norm ℝ H _ _ _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))
-    rwa [Real.norm_eq_abs] at this
+    change |inner ℝ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))| ≤ _
+    exact abs_real_inner_le_norm _ _
   have hopnorm : ‖(T ^ n - P₀) (ψ_obs N' q)‖ ≤ ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ :=
     ContinuousLinearMap.le_opNorm _ _
   have hTS' : ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ ≤ C * C_ψ :=
@@ -78,7 +77,6 @@ theorem hbound_implies_clay
     (hbound : ∀ (N' : ℕ) [NeZero N'] (p q : ConcretePlaquette d N'),
       |@wilsonConnectedCorr d N' _ _ G _ _ μ plaquetteEnergy β F p q| ≤ nf * ng) :
     ClayYangMillsTheorem :=
-  -- [CompactSpace G] is in variable context, [IsProbabilityMeasure μ] explicit above
   YangMills.eriksson_programme_phase7 (G := G) d 1 μ plaquetteEnergy β F
     hβ hcont nf ng hng (fun N' _hN' p q => hbound N' p q)
 
