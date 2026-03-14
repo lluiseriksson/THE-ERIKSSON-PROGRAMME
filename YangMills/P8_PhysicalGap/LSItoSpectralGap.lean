@@ -56,8 +56,9 @@ private lemma sq_sub_int_implies_int
   have hfc : Integrable (fun x => f x - c) μ :=
     hg.mono (hf.sub measurable_const).aestronglyMeasurable h1
   have key := hfc.add (integrable_const c)
-  convert key using 1
-  ext x; simp
+  have heq : (fun x => f x - c) + (fun x => c) = f := by
+    funext x; simp
+  rwa [heq] at key
 
 -- (f-c)² integrable → f² integrable. PROVED.
 private lemma sq_sub_int_implies_sq_int
