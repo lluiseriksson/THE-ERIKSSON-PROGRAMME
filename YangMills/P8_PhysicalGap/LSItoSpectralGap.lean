@@ -354,33 +354,40 @@ theorem lsi_poincare_via_truncation
     · simp [max_def, min_def]; split_ifs <;> linarith [Nat.cast_nonneg (α := ℝ) n]
     · simp [max_def, min_def]; split_ifs <;> linarith [Nat.cast_nonneg (α := ℝ) n]
   have ht_sq_int : ∀ n, Integrable (fun x => (max (min (u x) (n : ℝ)) (-(n : ℝ))) ^ 2) μ :=
-    fun n => trunc_sq_int u n hu_meas ((n : ℝ) + 1) (by linarith [Nat.cast_nonneg (α := ℝ) n]) (ht_bdd n)
+    fun n => trunc_sq_int u n hu_meas ((n : ℝ) + 1)
+      (by linarith [Nat.cast_nonneg (α := ℝ) n]) (ht_bdd n)
   have hm_bdd : ∀ n, |∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ| ≤ (n : ℝ) + 1 := fun n =>
     calc |∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ|
         ≤ ∫ x, |max (min (u x) (n : ℝ)) (-(n : ℝ))| ∂μ := by
-          simpa [Real.norm_eq_abs] using norm_integral_le_integral_norm
-            (f := fun x => max (min (u x) (n : ℝ)) (-(n : ℝ))) (μ := μ)
+          simpa [Real.norm_eq_abs] using
+            norm_integral_le_integral_norm
+              (f := fun x => max (min (u x) (n : ℝ)) (-(n : ℝ))) (μ := μ)
       _ ≤ ∫ _, ((n : ℝ) + 1) ∂μ :=
           integral_mono (ht_int n).norm (integrable_const _) (fun x => ht_bdd n x)
       _ = _ := by simp [probReal_univ]
-  have heq : ∀ n, ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ =
-      ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ))) ^ 2 ∂μ - (∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 :=
+  have heq : ∀ n, ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) -
+      ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ =
+      ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ))) ^ 2 ∂μ -
+      (∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 :=
     fun n => integral_var_eq _ (ht_int n) (ht_sq_int n)
-  have hpn : ∀ n, ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ
-      ≤ (2 / α) * E u := by
+  have hpn : ∀ n, ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) -
+      ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ ≤ (2 / α) * E u := by
     intro n
     set mn := ∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ
     have hM_bdd : ∀ x, |max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn| ≤ 2 * ((n : ℝ) + 1) :=
-      fun x => calc |max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn|
-          ≤ |max (min (u x) (n : ℝ)) (-(n : ℝ))| + |mn| := abs_sub (max (min (u x) (n : ℝ)) (-(n : ℝ))) mn
-        _ ≤ ((n : ℝ) + 1) + ((n : ℝ) + 1) := add_le_add (ht_bdd n x) (hm_bdd n)
-        _ = _ := by ring
+      fun x =>
+        calc |max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn|
+            ≤ |max (min (u x) (n : ℝ)) (-(n : ℝ))| + |mn| :=
+                abs_sub (max (min (u x) (n : ℝ)) (-(n : ℝ))) mn
+          _ ≤ ((n : ℝ) + 1) + ((n : ℝ) + 1) := add_le_add (ht_bdd n x) (hm_bdd n)
+          _ = _ := by ring
     have hcn : ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ∂μ = 0 := by
       simp [mn, integral_sub (ht_int n) (integrable_const _), integral_const, probReal_univ]
     have hwm : Measurable (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) :=
       ((hu_meas.min measurable_const).max measurable_const).sub measurable_const
     have hw2 : Integrable (fun x => (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2) μ :=
-      (integrable_const ((2 * ((n : ℝ) + 1)) ^ 2)).mono' (hwm.pow_const 2).aestronglyMeasurable
+      (integrable_const ((2 * ((n : ℝ) + 1)) ^ 2)).mono'
+        (hwm.pow_const 2).aestronglyMeasurable
         (by filter_upwards with x; simp only [Real.norm_eq_abs, norm_pow]
             nlinarith [sq_abs (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn),
                        sq_abs (2 * ((n : ℝ) + 1)),
@@ -398,14 +405,18 @@ theorem lsi_poincare_via_truncation
           have h12 : (2 / α) = 2 * (1 / α) := by ring
           rw [h12]; linarith [mul_nonneg (by positivity : 0 ≤ 1 / α) (hE_base.1 u)]
   have hlim : Filter.Tendsto
-      (fun n => ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ)
+      (fun n => ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) -
+        ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ)
       Filter.atTop (nhds (∫ x, u x ^ 2 ∂μ)) := by
     simp_rw [heq]
     have h1 := trunc_sq_lim u hu_meas hu2
-    have h2 : Filter.Tendsto (fun n => (∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2)
+    have h2 : Filter.Tendsto
+        (fun n => (∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2)
         Filter.atTop (nhds 0) := by simpa using hm_tend.pow 2
     have h := h1.sub h2; simp only [sub_zero] at h; exact h
   exact le_of_tendsto' hlim hpn
+
+
 
 /-- LSI → Poincaré for IsDirichletFormStrong (Phase 10).
     Proof strategy:
