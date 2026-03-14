@@ -73,8 +73,9 @@ theorem lsi_implies_poincare
       -- (f - ∫f)² integrable → f² integrable
       -- Standard: f = (f - c) + c, sq_integrable of sum
       sorry -- integrability: (f-c)² ∈ L¹ → f² ∈ L¹
-    linarith [hE.1 f, show (0 : ℝ) ≤ 2/α * E f from
-      mul_nonneg (by positivity) (hE.1 f)]
+    have hEf := hE.1 f
+    have hα_pos := hLSI.1
+    linarith [mul_nonneg (by linarith) hEf]
 
 /-! ## Remaining axioms -/
 
