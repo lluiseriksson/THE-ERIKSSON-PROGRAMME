@@ -418,7 +418,7 @@ theorem lsi_poincare_via_truncation
         Filter.atTop (nhds 0) := by simpa using hm_tend.pow 2
     have h := h1.sub h2; simp only [sub_zero] at h
     simpa [hEqSeq] using h
-  exact le_of_tendsto hlim (Filter.eventually_of_forall hpn)
+  exact le_of_tendsto' hlim hpn
 
 
 
