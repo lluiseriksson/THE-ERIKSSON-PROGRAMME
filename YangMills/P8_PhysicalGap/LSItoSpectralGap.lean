@@ -347,16 +347,16 @@ theorem lsi_poincare_via_truncation
   obtain ⟨hE_base, hE_const, hE_scale⟩ := hE
   have hES : IsDirichletFormStrong E μ := ⟨hE_base, hE_const, hE_scale⟩
   have hm_tend := trunc_mean_lim μ u hu_meas hu1 hcenter
-  have ht_int : ∀ n, Integrable (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ))) μ := fun n =>
+  have ht_int : ∀ (n : ℕ), Integrable (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ))) μ := fun n =>
     trunc_int μ u n hu_meas hu1
-  have ht_bdd : ∀ n x, |max (min (u x) (n : ℝ)) (-(n : ℝ))| ≤ (n : ℝ) + 1 := fun n x => by
+  have ht_bdd : ∀ (n : ℕ) (x : Ω), |max (min (u x) (n : ℝ)) (-(n : ℝ))| ≤ (n : ℝ) + 1 := fun n x => by
     rw [abs_le]; constructor
-    · simp [max_def, min_def]; split_ifs <;> linarith [show (0 : ℝ) ≤ n from Nat.cast_nonneg n]
-    · simp [max_def, min_def]; split_ifs <;> linarith [show (0 : ℝ) ≤ n from Nat.cast_nonneg n]
-  have ht_sq_int : ∀ n, Integrable (fun x => (max (min (u x) (n : ℝ)) (-(n : ℝ))) ^ 2) μ :=
+    · simp [max_def, min_def]; split_ifs <;> linarith [show (0 : ℝ) ≤ (n : ℝ) from Nat.cast_nonneg n]
+    · simp [max_def, min_def]; split_ifs <;> linarith [show (0 : ℝ) ≤ (n : ℝ) from Nat.cast_nonneg n]
+  have ht_sq_int : ∀ (n : ℕ), Integrable (fun x => (max (min (u x) (n : ℝ)) (-(n : ℝ))) ^ 2) μ :=
     fun n => trunc_sq_int μ u n hu_meas ((n : ℝ) + 1)
-      (by linarith [show (0 : ℝ) ≤ n from Nat.cast_nonneg n]) (ht_bdd n)
-  have hm_bdd : ∀ n, |∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ| ≤ (n : ℝ) + 1 := fun n =>
+      (by linarith [show (0 : ℝ) ≤ (n : ℝ) from Nat.cast_nonneg n]) (ht_bdd n)
+  have hm_bdd : ∀ (n : ℕ), |∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ| ≤ (n : ℝ) + 1 := fun n =>
     calc |∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ|
         ≤ ∫ x, |max (min (u x) (n : ℝ)) (-(n : ℝ))| ∂μ := by
           simpa [Real.norm_eq_abs] using
@@ -365,12 +365,12 @@ theorem lsi_poincare_via_truncation
       _ ≤ ∫ _, ((n : ℝ) + 1) ∂μ :=
           integral_mono (ht_int n).norm (integrable_const _) (fun x => ht_bdd n x)
       _ = _ := by simp [probReal_univ]
-  have heq : ∀ n, ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) -
+  have heq : ∀ (n : ℕ), ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) -
       ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ =
       ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ))) ^ 2 ∂μ -
       (∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 :=
     fun n => integral_var_eq μ _ (ht_int n) (ht_sq_int n)
-  have hpn : ∀ n, ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) -
+  have hpn : ∀ (n : ℕ), ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) -
       ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ ≤ (2 / α) * E u := by
     intro n
     set mn := ∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ
@@ -393,7 +393,7 @@ theorem lsi_poincare_via_truncation
                        sq_abs (2 * ((n : ℝ) + 1)),
                        abs_nonneg (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn), hM_bdd x])
     have hstep := lsi_implies_poincare_bdd_centered μ E hES α hLSI _ hwm
-      ⟨2 * ((n : ℝ) + 1), by linarith [show (0 : ℝ) ≤ n from Nat.cast_nonneg n], hM_bdd⟩ hcn hw2
+      ⟨2 * ((n : ℝ) + 1), by linarith [show (0 : ℝ) ≤ (n : ℝ) from Nat.cast_nonneg n], hM_bdd⟩ hcn hw2
     have hEtn : E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ≤ E u := by
       rw [show (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) =
           (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) + (-mn)) from by ext x; ring, hE_const]
