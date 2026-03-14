@@ -17,7 +17,7 @@
        [["Mathlib transitive imports (legacy)", "00f202dff5f0ba80"],
         ["Mathlib:importAllArts", "5f5aa85696b12d33"],
         ["YangMills.P8_PhysicalGap.RicciSUN transitive imports (legacy)",
-         "6e6f0a7bfee133d6"],
+         "8a8fc9fea004de05"],
         ["YangMills.P8_PhysicalGap.RicciSUN:importAllArts",
          "022e08a67d70899a"]]]]],
     ["libs",
@@ -35,4 +35,4 @@
    "8b6119ca22f46e49"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "be6dd484ab36948a"}
+ "depHash": "9d15c987310373f7"}
