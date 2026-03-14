@@ -17,7 +17,7 @@
        [["Mathlib transitive imports (legacy)", "00f202dff5f0ba80"],
         ["Mathlib:importAllArts", "5f5aa85696b12d33"],
         ["YangMills.P8_PhysicalGap.BalabanToLSI transitive imports (legacy)",
-         "0aa0e089d9da87b3"],
+         "c8a3bbfcf6dfbbe2"],
         ["YangMills.P8_PhysicalGap.BalabanToLSI:importAllArts",
          "68574e942da1a18b"]]]]],
     ["libs",
@@ -34,4 +34,4 @@
   ["Module.name: YangMills.P8_PhysicalGap.RicciSUN", "ede063e088aa8812"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "846a9b36fada9a22"}
+ "depHash": "31ac9cc04d6b5ec4"}
