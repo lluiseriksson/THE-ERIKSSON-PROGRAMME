@@ -1,8 +1,8 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["1836c37b7699c633.olean"],
-  "i": "3a15672fccd85b02.ilean",
+ {"o": ["7ef20c1451c21a42.olean"],
+  "i": "b8a5afc3f7a264d9.ilean",
   "c": "64274a9c1bcbc463.c"},
  "log":
  [{"message":
@@ -13,6 +13,9 @@
    "level": "warning"},
   {"message":
    "YangMills/P8_PhysicalGap/LSItoSpectralGap.lean:135:8: declaration uses `sorry`",
+   "level": "warning"},
+  {"message":
+   "YangMills/P8_PhysicalGap/LSItoSpectralGap.lean:228:8: declaration uses `sorry`",
    "level": "warning"}],
  "inputs":
  [["YangMills.P8_PhysicalGap.LSItoSpectralGap:deps",
@@ -34,11 +37,11 @@
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
   ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P8_PhysicalGap/LSItoSpectralGap.lean",
-   "35d6a594f8e60b2d"],
+   "9b83902b896c382f"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.P8_PhysicalGap.LSItoSpectralGap",
    "563ec11d473b32d7"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "0e13e8c26f9358dc"}
+ "depHash": "cfab04cdf80128cf"}
