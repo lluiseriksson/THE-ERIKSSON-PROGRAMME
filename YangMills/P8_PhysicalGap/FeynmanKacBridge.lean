@@ -38,6 +38,7 @@ theorem feynmanKac_hbound
     ∀ (N' : ℕ) [NeZero N'] (p q : ConcretePlaquette d N'),
       |@wilsonConnectedCorr d N' _ _ G _ _ μ plaquetteEnergy β F p q| ≤ C_ψ ^ 2 * C := by
   have hC : (0 : ℝ) < C := hgap.2.1
+  have hγ : (0 : ℝ) < γ := hgap.1
   have hψ0 : (0 : ℝ) ≤ C_ψ := hψ.1
   intro N' _hN' p q
   obtain ⟨n, _, hcorr⟩ := hFK N' p q
@@ -46,17 +47,21 @@ theorem feynmanKac_hbound
   have hq  : ‖ψ_obs N' q‖ ≤ C_ψ := hψ.2 N' q
   have hTS : ‖T ^ n - P₀‖ ≤ C := by
     have h1 := transferMatrix_spectral_gap T P₀ γ C hgap n
-    have h2 : Real.exp (-γ * ↑n) ≤ 1 :=
-      Real.exp_le_one_iff.mpr (by nlinarith [Nat.cast_nonneg n, hgap.1])
+    -- exp(-γn) ≤ 1 because γ > 0 and n ≥ 0
+    have hn : (0 : ℝ) ≤ n := Nat.cast_nonneg n
+    have h2 : Real.exp (-γ * ↑n) ≤ 1 := by
+      apply Real.exp_le_one_iff.mpr
+      nlinarith
     nlinarith
-  -- Cauchy-Schwarz: |⟨u,v⟩| ≤ ‖u‖·‖v‖
-  -- Use `change` to rewrite @inner ℝ H _ to inner form that norm_inner_le_norm accepts
-  -- then `exact norm_inner_le_norm` (uses ‖inner x y‖ = |inner x y| in ℝ)
-  -- Cauchy-Schwarz without type annotation on hinner
-  -- norm_inner_le_norm : ‖⟪u,v⟫_ℝ‖ ≤ ‖u‖*‖v‖, and ‖x‖=|x| for x:ℝ
-  have hinner : ‖@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))‖ ≤
+  -- Main bound: |⟨ψ_p, (T^n-P₀)ψ_q⟩| ≤ ‖ψ_p‖·‖T^n-P₀‖·‖ψ_q‖ ≤ C_ψ·C·C_ψ
+  -- We go through norm: ‖inner ℝ u v‖ = |inner ℝ u v| for reals
+  -- Use norm_le_iff to avoid @inner stuck
+  -- Key: after rw [hcorr] the goal has @inner ℝ H _ which we handle via
+  -- show + norm_inner_le_norm
+  show |⟪ψ_obs N' p, (T ^ n - P₀) (ψ_obs N' q)⟫_ℝ| ≤ C_ψ ^ 2 * C
+  have hCS : |⟪ψ_obs N' p, (T ^ n - P₀) (ψ_obs N' q)⟫_ℝ| ≤
       ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ :=
-    norm_inner_le_norm _ _
+    abs_real_inner_le_norm _ _
   have hopnorm : ‖(T ^ n - P₀) (ψ_obs N' q)‖ ≤ ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ :=
     ContinuousLinearMap.le_opNorm _ _
   have hTS' : ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ ≤ C * C_ψ :=
@@ -64,13 +69,9 @@ theorem feynmanKac_hbound
   have h2 : ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) ≤ C_ψ * (C * C_ψ) :=
     mul_le_mul hp hTS' (by positivity) hψ0
   have key : ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ ≤ C_ψ ^ 2 * C := by
-    have h1 : ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ ≤
-        ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) :=
-      mul_le_mul_of_nonneg_left hopnorm (norm_nonneg _)
+    have h1 := mul_le_mul_of_nonneg_left hopnorm (norm_nonneg (ψ_obs N' p))
     linarith [h1, h2, show C_ψ * (C * C_ψ) = C_ψ ^ 2 * C from by ring]
-  -- Convert ‖inner‖ to |inner|: in ℝ, ‖x‖ = |x|
-  rw [← Real.norm_eq_abs]
-  linarith [hinner, key]
+  linarith [hCS, key]
 
 theorem hbound_implies_clay
     (μ : Measure G) [IsProbabilityMeasure μ]
