@@ -1,7 +1,7 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["553e5d6fedacdc54.olean"],
+ {"o": ["88aa48a206b8af77.olean"],
   "i": "56f72de8df8d05de.ilean",
   "c": "f154b53c21268a2d.c"},
  "log":
@@ -19,7 +19,7 @@
         ["YangMills.P8_PhysicalGap.LSItoSpectralGap transitive imports (legacy)",
          "ec867542d9b2c8c9"],
         ["YangMills.P8_PhysicalGap.LSItoSpectralGap:importAllArts",
-         "9a061518ea29887c"]]]]],
+         "9897a1ebf7aec1f4"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -35,4 +35,4 @@
    "5ed02b599d0dfafb"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "f7cb0d21f87a9a3f"}
+ "depHash": "174cc5c084cbf9f5"}
