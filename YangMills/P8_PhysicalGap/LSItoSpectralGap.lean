@@ -407,7 +407,7 @@ theorem lsi_poincare_via_truncation
           ext x; simp
         have hE0 : E (fun _ => (0:ℝ)) = 0 := by
           have := hE_scale 0 (fun _ => (1:ℝ)); simp at this; linarith [hE_base.1 (fun _ => (0:ℝ))]
-        linarith [hE_base.1 u, hE0]
+        rw [hzero]; linarith [hE_base.1 u, hE0]
       · exact dirichlet_contraction E hES u (n : ℝ) (by exact_mod_cast Nat.pos_of_ne_zero hn)
     calc ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
         ≤ (1 / α) * E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) := hstep
