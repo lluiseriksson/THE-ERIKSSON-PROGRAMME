@@ -1,0 +1,53 @@
+// Lean compiler output
+// Module: YangMills.P8_PhysicalGap.FeynmanKacBridge
+// Imports: public import Init public import Mathlib public import YangMills.L4_WilsonLoops.WilsonLoop public import YangMills.L4_TransferMatrix.TransferMatrix public import YangMills.L5_MassGap.MassGap public import YangMills.P7_SpectralGap.Phase7Assembly public import YangMills.P8_PhysicalGap.LSItoSpectralGap
+#include <lean/lean.h>
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma clang diagnostic ignored "-Wunused-label"
+#elif defined(__GNUC__) && !defined(__CLANG__)
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wunused-label"
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
+#endif
+#ifdef __cplusplus
+extern "C" {
+#endif
+lean_object* initialize_Init(uint8_t builtin);
+lean_object* initialize_mathlib_Mathlib(uint8_t builtin);
+lean_object* initialize_YangMills_YangMills_L4__WilsonLoops_WilsonLoop(uint8_t builtin);
+lean_object* initialize_YangMills_YangMills_L4__TransferMatrix_TransferMatrix(uint8_t builtin);
+lean_object* initialize_YangMills_YangMills_L5__MassGap_MassGap(uint8_t builtin);
+lean_object* initialize_YangMills_YangMills_P7__SpectralGap_Phase7Assembly(uint8_t builtin);
+lean_object* initialize_YangMills_YangMills_P8__PhysicalGap_LSItoSpectralGap(uint8_t builtin);
+static bool _G_initialized = false;
+LEAN_EXPORT lean_object* initialize_YangMills_YangMills_P8__PhysicalGap_FeynmanKacBridge(uint8_t builtin) {
+lean_object * res;
+if (_G_initialized) return lean_io_result_mk_ok(lean_box(0));
+_G_initialized = true;
+res = initialize_Init(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_mathlib_Mathlib(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_YangMills_YangMills_L4__WilsonLoops_WilsonLoop(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_YangMills_YangMills_L4__TransferMatrix_TransferMatrix(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_YangMills_YangMills_L5__MassGap_MassGap(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_YangMills_YangMills_P7__SpectralGap_Phase7Assembly(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_YangMills_YangMills_P8__PhysicalGap_LSItoSpectralGap(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+return lean_io_result_mk_ok(lean_box(0));
+}
+#ifdef __cplusplus
+}
+#endif

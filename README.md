@@ -66,7 +66,7 @@ theorem eriksson_programme_phase7
 | F7.4 MassBound | `YangMills/P7_SpectralGap/MassBound.lean` | ✅ FORMALIZED_KERNEL |
 | F7.5 Phase7Assembly | `YangMills/P7_SpectralGap/Phase7Assembly.lean` | ✅ FORMALIZED_KERNEL |
 | **ErikssonBridge** | `YangMills/ErikssonBridge.lean` | ✅ **CLOSED — 0 sorrys, 0 axioms** |
-| P8 Physical gap | `YangMills/P8_PhysicalGap/` | 🔄 **ACTIVE — 2 axioms named** |
+| P8 Physical gap | `YangMills/P8_PhysicalGap/` | ✅ **7/7 compile — axioms documented** |
 
 ---
 
