@@ -435,7 +435,16 @@ theorem lsi_implies_poincare_strong
   by_cases hfc : Integrable (fun x => (f x - m) ^ 2) μ
   · suffices h : ∫ x, (f x - m) ^ 2 ∂μ ≤ (2 / α) * E (fun x => f x - m) by
       rwa [hEu] at h
-    sorry  -- Truncation + DCT (mathematically correct)
+      -- Derive integrability of (f - m)
+      have hu1_fm : Integrable (fun x => f x - m) μ :=
+        sq_sub_int_implies_int μ (fun x => f x - m) (hf.sub measurable_const) 0 (by simpa using hfc)
+      -- Center: ∫(f - m) = 0
+      have hcenter_fm : ∫ x, (f x - m) ∂μ = 0 := by
+        have hf1 : Integrable f μ := sq_sub_int_implies_int μ f hf m (by simpa using hfc)
+        rw [integral_sub hf1 (integrable_const _), integral_const, probReal_univ, ← hm]; simp
+      -- Apply lsi_poincare_via_truncation
+      exact lsi_poincare_via_truncation μ E ⟨hE_base, hE_const, hE_scale⟩ α hα hLSI
+        (fun x => f x - m) (hf.sub measurable_const) hu1_fm (by simpa using hfc) hcenter_fm
   · rw [integral_undef hfc]
     exact mul_nonneg (by positivity) (hE_base.1 f)
 /-! ## lsi_implies_poincare: THEOREM (uses ent_ge_var sorry) -/
