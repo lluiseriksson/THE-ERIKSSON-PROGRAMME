@@ -5,7 +5,7 @@ namespace YangMills
 
 open MeasureTheory Real
 
-variable {Ω : Type*} [MeasurableSpace Ω]
+variable {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsFiniteMeasure μ]
 
 def IsDirichletForm (E : (Ω → ℝ) → ℝ) (μ : Measure Ω) : Prop :=
   (∀ f, 0 ≤ E f) ∧ (∀ f g : Ω → ℝ, E (f + g) ≤ 2 * E f + 2 * E g)
@@ -75,7 +75,6 @@ private lemma scaled_entropy_pointwise {x c : ℝ} (hx : 0 ≤ x) (hc : 0 < c) :
     linarith [hlhs ▸ hrhs ▸ hmul]
 
 private lemma integrable_sq_sub (f : Ω → ℝ) (c : ℝ)
-    [IsFiniteMeasure μ]
     (hf : Integrable f μ) (hf2 : Integrable (fun x => f x ^ 2) μ) :
     Integrable (fun x => (f x - c) ^ 2) μ := by
   have heq : (fun x => (f x - c) ^ 2) = fun x => f x ^ 2 - 2 * c * f x + c ^ 2 := by
@@ -83,7 +82,6 @@ private lemma integrable_sq_sub (f : Ω → ℝ) (c : ℝ)
   rw [heq]; exact (hf2.sub (hf.const_mul (2 * c))).add (integrable_const (c ^ 2))
 
 private lemma integral_sq_sub_eq (f : Ω → ℝ) (hf : Integrable f μ)
-    [IsFiniteMeasure μ]
     (hf2 : Integrable (fun x => f x ^ 2) μ) (a : ℝ) :
     ∫ x, (f x - a) ^ 2 ∂μ =
     ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ + (a - ∫ y, f y ∂μ) ^ 2 := by
@@ -100,7 +98,6 @@ private lemma integral_sq_sub_eq (f : Ω → ℝ) (hf : Integrable f μ)
   linarith
 
 private lemma integral_4term (f : Ω → ℝ) (c : ℝ)
-    [IsFiniteMeasure μ]
     (hcdef : ∫ x, f x ^ 2 ∂μ = c)
     (hf2 : Integrable (fun x => f x ^ 2) μ)
     (hent : Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) μ) :
