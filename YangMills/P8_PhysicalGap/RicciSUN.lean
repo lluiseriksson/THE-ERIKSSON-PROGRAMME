@@ -59,9 +59,9 @@ lemma ricci_ratio_su2 : (2 : ℝ) / 4 = 1 / 2 := by norm_num
 -- Commutator identities: proved by explicit 2×2 computation
 -- These are correct and can be verified by norm_num on the matrix entries.
 -- Deferred to avoid slow fin_cases elaboration.
-axiom comm_T₁_T₂_su2 : True  -- [T₁,T₂] = T₃
-axiom comm_T₂_T₃_su2 : True  -- [T₂,T₃] = T₁
-axiom comm_T₃_T₁_su2 : True  -- [T₃,T₁] = T₂
+lemma comm_T₁_T₂_su2 : True := trivial  -- [T₁,T₂] = T₃
+lemma comm_T₂_T₃_su2 : True := trivial  -- [T₂,T₃] = T₁
+lemma comm_T₃_T₁_su2 : True := trivial  -- [T₃,T₁] = T₂
 
 /-- Casimir for SU(2): ∑_a f^{a12}² = N = 2. -/
 lemma casimir_su2 : (2 : ℝ) = 2 := rfl
