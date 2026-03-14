@@ -1,8 +1,8 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["416fb48c3bc5d74b.olean"],
-  "i": "933957ae19cc2942.ilean",
+ {"o": ["3a6414832846114d.olean"],
+  "i": "6f03a1d9a74e95c8.ilean",
   "c": "64274a9c1bcbc463.c"},
  "log":
  [{"message":
@@ -10,6 +10,9 @@
    "level": "trace"},
   {"message":
    "YangMills/P8_PhysicalGap/LSItoSpectralGap.lean:10:39: unused variable `μ`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "YangMills/P8_PhysicalGap/LSItoSpectralGap.lean:135:8: declaration uses `sorry`",
    "level": "warning"}],
  "inputs":
  [["YangMills.P8_PhysicalGap.LSItoSpectralGap:deps",
@@ -31,11 +34,11 @@
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
   ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P8_PhysicalGap/LSItoSpectralGap.lean",
-   "cc47f925b308a4ab"],
+   "29fe210f839a4a7c"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.P8_PhysicalGap.LSItoSpectralGap",
    "563ec11d473b32d7"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "0ed689fbfc1c046e"}
+ "depHash": "1827bfd7d14d6e08"}
