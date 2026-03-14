@@ -1,28 +1,13 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["c79c2a1eca6abdff.olean"],
-  "i": "d85ddd57646ac36f.ilean",
-  "c": "c5d76e24f469a8a5.c"},
+ {"o": ["bfefb1d2ac12be7b.olean"],
+  "i": "6063a2284a55af56.ilean",
+  "c": "f154b53c21268a2d.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Cli/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/batteries/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Qq/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/aesop/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/importGraph/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/plausible/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/mathlib/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/THE-ERIKSSON-PROGRAMME/YangMills/P8_PhysicalGap/StroockZegarlinski.lean -o /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P8_PhysicalGap/StroockZegarlinski.olean -i /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P8_PhysicalGap/StroockZegarlinski.ilean -c /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P8_PhysicalGap/StroockZegarlinski.c --setup /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P8_PhysicalGap/StroockZegarlinski.setup.json --json",
-   "level": "trace"},
-  {"message":
-   "YangMills/P8_PhysicalGap/StroockZegarlinski.lean:38:8: declaration uses `sorry`",
-   "level": "warning"},
-  {"message":
-   "YangMills/P8_PhysicalGap/StroockZegarlinski.lean:60:36: unused variable `μ`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
-   "level": "warning"},
-  {"message":
-   "YangMills/P8_PhysicalGap/StroockZegarlinski.lean:61:5: unused variable `E`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
-   "level": "warning"},
-  {"message":
-   "YangMills/P8_PhysicalGap/StroockZegarlinski.lean:61:23: unused variable `t`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
-   "level": "warning"},
-  {"message":
-   "YangMills/P8_PhysicalGap/StroockZegarlinski.lean:67:8: declaration uses `sorry`",
-   "level": "warning"}],
+   "level": "trace"}],
  "inputs":
  [["YangMills.P8_PhysicalGap.StroockZegarlinski:deps",
    [["deps",
@@ -43,11 +28,11 @@
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
   ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P8_PhysicalGap/StroockZegarlinski.lean",
-   "fd1c816a155ad4dd"],
+   "4c3998f3066fe9c3"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.P8_PhysicalGap.StroockZegarlinski",
    "5ed02b599d0dfafb"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "71c2f38bca7341e9"}
+ "depHash": "c5c508f7b690ae2d"}
