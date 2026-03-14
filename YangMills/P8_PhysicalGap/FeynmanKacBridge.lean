@@ -11,7 +11,8 @@ open MeasureTheory Real
 open scoped InnerProductSpace
 
 variable {d : ℕ} [NeZero d]
-variable {G : Type*} [Group G] [MeasurableSpace G] [TopologicalSpace G]
+-- eriksson_programme_phase7 requires [CompactSpace G]
+variable {G : Type*} [Group G] [MeasurableSpace G] [TopologicalSpace G] [CompactSpace G]
 variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
 
 def FeynmanKacFormula
@@ -47,15 +48,15 @@ theorem feynmanKac_hbound
   have hq  : ‖ψ_obs N' q‖ ≤ C_ψ := hψ.2 N' q
   have hTS : ‖T ^ n - P₀‖ ≤ C := by
     have h1 := transferMatrix_spectral_gap T P₀ γ C hgap n
+    -- exp(-γ·n) ≤ 1 since -γ·n ≤ 0
     have h2 : Real.exp (-γ * ↑n) ≤ 1 :=
-      Real.exp_le_one_iff.mpr (by nlinarith [Nat.cast_nonneg n])
+      Real.exp_le_one_iff.mpr (by nlinarith [Nat.cast_nonneg n, hgap.1])
     nlinarith
   have hinner : |@inner ℝ H _ (ψ_obs N' p) ((T ^ n - P₀) (ψ_obs N' q))| ≤
       ‖ψ_obs N' p‖ * ‖(T ^ n - P₀) (ψ_obs N' q)‖ :=
     abs_real_inner_le_norm _ _
   have hopnorm : ‖(T ^ n - P₀) (ψ_obs N' q)‖ ≤ ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ :=
     ContinuousLinearMap.le_opNorm _ _
-  -- Fix 1: separate the two mul_le_mul calls (avoids typeclass stuck)
   have hTS' : ‖T ^ n - P₀‖ * ‖ψ_obs N' q‖ ≤ C * C_ψ :=
     mul_le_mul hTS hq (norm_nonneg _) (le_of_lt hC)
   have h2 : ‖ψ_obs N' p‖ * (‖T ^ n - P₀‖ * ‖ψ_obs N' q‖) ≤ C_ψ * (C * C_ψ) :=
@@ -67,7 +68,6 @@ theorem feynmanKac_hbound
     linarith [h1, h2, show C_ψ * (C * C_ψ) = C_ψ ^ 2 * C from by ring]
   linarith [hinner, key]
 
--- Fix 2: add [IsProbabilityMeasure μ] to all theorems that call eriksson_programme_phase7
 theorem hbound_implies_clay
     (μ : Measure G) [IsProbabilityMeasure μ]
     (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
@@ -76,6 +76,7 @@ theorem hbound_implies_clay
     (hbound : ∀ (N' : ℕ) [NeZero N'] (p q : ConcretePlaquette d N'),
       |@wilsonConnectedCorr d N' _ _ G _ _ μ plaquetteEnergy β F p q| ≤ nf * ng) :
     ClayYangMillsTheorem :=
+  -- [CompactSpace G] is in variable context, [IsProbabilityMeasure μ] explicit above
   YangMills.eriksson_programme_phase7 (G := G) d 1 μ plaquetteEnergy β F
     hβ hcont nf ng hng (fun N' _hN' p q => hbound N' p q)
 
@@ -92,7 +93,6 @@ theorem feynmanKac_to_clay
     ClayYangMillsTheorem :=
   hbound_implies_clay μ plaquetteEnergy β F hcont hβ
     (C_ψ ^ 2) C
-    -- Fix 3: mul_nonneg (sq_nonneg C_ψ) (le_of_lt hgap.2.1)  instead of positivity
     (mul_nonneg (sq_nonneg C_ψ) (le_of_lt hgap.2.1))
     (feynmanKac_hbound μ plaquetteEnergy β F T P₀ γ C C_ψ hgap ψ_obs hψ hFK)
 
