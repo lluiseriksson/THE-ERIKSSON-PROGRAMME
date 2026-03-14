@@ -19,7 +19,7 @@
         ["YangMills.P8_PhysicalGap.LSItoSpectralGap transitive imports (legacy)",
          "ec867542d9b2c8c9"],
         ["YangMills.P8_PhysicalGap.LSItoSpectralGap:importAllArts",
-         "f949e7089714bab1"],
+         "4844a7520921a0fe"],
         ["YangMills.L0_Lattice.WilsonAction transitive imports (legacy)",
          "92577a8bcf7bb5a6"],
         ["YangMills.L0_Lattice.WilsonAction:importAllArts",
@@ -38,4 +38,4 @@
   ["Module.name: YangMills.P8_PhysicalGap.BalabanToLSI", "074b03036103831b"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "653d5d5aa9d9d8a9"}
+ "depHash": "594553a0d86b5e7d"}
