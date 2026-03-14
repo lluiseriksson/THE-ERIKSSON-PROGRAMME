@@ -1,15 +1,18 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["3284dfa050ac964e.olean"],
-  "i": "c0beccb97eebc8bb.ilean",
+ {"o": ["9225fcfedf0b3104.olean"],
+  "i": "db638a171775a9ae.ilean",
   "c": "64274a9c1bcbc463.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Cli/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/batteries/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Qq/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/aesop/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/importGraph/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/plausible/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/mathlib/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/THE-ERIKSSON-PROGRAMME/YangMills/P8_PhysicalGap/LSItoSpectralGap.lean -o /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P8_PhysicalGap/LSItoSpectralGap.olean -i /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P8_PhysicalGap/LSItoSpectralGap.ilean -c /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P8_PhysicalGap/LSItoSpectralGap.c --setup /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P8_PhysicalGap/LSItoSpectralGap.setup.json --json",
    "level": "trace"},
   {"message":
-   "YangMills/P8_PhysicalGap/LSItoSpectralGap.lean:32:39: unused variable `μ`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "YangMills/P8_PhysicalGap/LSItoSpectralGap.lean:16:39: unused variable `μ`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`",
+   "level": "warning"},
+  {"message":
+   "YangMills/P8_PhysicalGap/LSItoSpectralGap.lean:54:8: declaration uses `sorry`",
    "level": "warning"}],
  "inputs":
  [["YangMills.P8_PhysicalGap.LSItoSpectralGap:deps",
@@ -31,11 +34,11 @@
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
   ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P8_PhysicalGap/LSItoSpectralGap.lean",
-   "7d577f037d920fca"],
+   "f8637bd9d6ad286a"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.P8_PhysicalGap.LSItoSpectralGap",
    "563ec11d473b32d7"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "d54fa103bb7c73b4"}
+ "depHash": "482849bc9b74903d"}

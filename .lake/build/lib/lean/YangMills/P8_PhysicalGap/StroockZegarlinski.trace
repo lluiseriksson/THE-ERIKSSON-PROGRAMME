@@ -1,8 +1,8 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["bfefb1d2ac12be7b.olean"],
-  "i": "6063a2284a55af56.ilean",
+ {"o": ["5cca75c561b38efd.olean"],
+  "i": "56f72de8df8d05de.ilean",
   "c": "f154b53c21268a2d.c"},
  "log":
  [{"message":
@@ -19,7 +19,7 @@
         ["YangMills.P8_PhysicalGap.LSItoSpectralGap transitive imports (legacy)",
          "ec867542d9b2c8c9"],
         ["YangMills.P8_PhysicalGap.LSItoSpectralGap:importAllArts",
-         "3776d89e0afcccba"]]]]],
+         "b89a1d551d5a537a"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -28,11 +28,11 @@
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
   ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P8_PhysicalGap/StroockZegarlinski.lean",
-   "4c3998f3066fe9c3"],
+   "4e569378eb53c685"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.P8_PhysicalGap.StroockZegarlinski",
    "5ed02b599d0dfafb"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "c5c508f7b690ae2d"}
+ "depHash": "f4f1db81ba39c1fe"}

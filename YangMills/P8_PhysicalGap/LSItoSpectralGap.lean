@@ -51,6 +51,19 @@ axiom ent_ge_var
 /-- LSI(α) → Poincaré(α/2). Proved using ent_ge_var + LSI.
     For non-integrable f: uses integral_undef (= 0 in Lean).
     Status: THEOREM with 1 sorry (integrability transfer). -/
+/-- Integrability lemma: if (f-c)² is integrable under a probability measure
+    and c = ∫f dμ, then f² is integrable.
+    Proof: f² = (f-c)² + 2c(f-c) + c². Need (f-c) integrable first.
+    For prob measures: L²(μ) ⊂ L¹(μ), so (f-c)² ∈ L¹ → (f-c) ∈ L¹.
+    Status: SORRY — requires L² ⊂ L¹ for finite measure spaces. -/
+private lemma sq_sub_int_implies_sq_int
+    (μ : Measure Ω) [IsProbabilityMeasure μ] (f : Ω → ℝ) (hf : Measurable f)
+    (h : Integrable (fun x => (f x - ∫ y, f y ∂μ) ^ 2) μ) :
+    Integrable (fun x => f x ^ 2) μ := by
+  -- f x ^ 2 = (f x - c)^2 + 2c*(f x - c) + c^2 where c = ∫f dμ
+  -- Each term integrable: given h, need (f-c) integrable (L²⊂L¹ for prob)
+  sorry -- L²(μ) ⊂ L¹(μ) for probability measures
+
 theorem lsi_implies_poincare
     (μ : Measure Ω) [IsProbabilityMeasure μ]
     (E : (Ω → ℝ) → ℝ) (hE : IsDirichletForm E μ) (α : ℝ)
@@ -58,21 +71,18 @@ theorem lsi_implies_poincare
     PoincareInequality μ E (α / 2) := by
   refine ⟨by linarith [hLSI.1], fun f hf => ?_⟩
   rw [show (1 : ℝ) / (α / 2) = 2 / α from by field_simp]
-  by_cases hf2 : Integrable (fun x => f x ^ 2) μ
-  · -- Integrable case: ent_ge_var + LSI
+  by_cases hfc : Integrable (fun x => (f x - ∫ y, f y ∂μ) ^ 2) μ
+  · -- (f-c)² integrable: derive f² integrable, then use ent_ge_var
+    have hf2 : Integrable (fun x => f x ^ 2) μ :=
+      sq_sub_int_implies_sq_int μ f hf hfc
     calc ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ
         ≤ ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
           (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ) :=
             ent_ge_var μ f hf hf2
       _ ≤ (2 / α) * E f := hLSI.2 f hf
-  · -- Non-integrable case: (f-c)² not integrable → integral = 0
-    have h0 : ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ = 0 := by
-      apply integral_undef
-      intro h_int
-      apply hf2
-      -- (f - ∫f)² integrable → f² integrable
-      -- Standard: f = (f - c) + c, sq_integrable of sum
-      sorry -- integrability: (f-c)² ∈ L¹ → f² ∈ L¹
+  · -- (f-c)² not integrable: integral = 0 by Lean convention
+    have h0 : ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ = 0 :=
+      integral_undef hfc
     rw [h0]
     apply mul_nonneg
     · have := hLSI.1; positivity
