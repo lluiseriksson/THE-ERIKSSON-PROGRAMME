@@ -397,7 +397,7 @@ theorem lsi_poincare_via_truncation
     have hEtn : E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ≤ E u := by
       rw [show (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) =
           (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) + (-mn)) from by ext x; ring, hE_const]
-      exact dirichlet_contraction E hES u n (by linarith [show (0:ℝ) ≤ (n:ℝ) from Nat.cast_nonneg n])
+      exact dirichlet_contraction E hES u n (Nat.cast_add_one_pos n)
     calc ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
         ≤ (1 / α) * E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) := hstep
       _ ≤ (1 / α) * E u := mul_le_mul_of_nonneg_left hEtn (by positivity)
@@ -412,12 +412,12 @@ theorem lsi_poincare_via_truncation
         ∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2 ∂μ) =
         (fun n : ℕ => ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ))) ^ 2 ∂μ -
         (∫ y, max (min (u y) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2) := funext heq
-    rw [hEqSeq]
     have h1 := trunc_sq_lim μ u hu_meas hu2
     have h2 : Filter.Tendsto
         (fun n => (∫ x, max (min (u x) (n : ℝ)) (-(n : ℝ)) ∂μ) ^ 2)
         Filter.atTop (nhds 0) := by simpa using hm_tend.pow 2
-    have h := h1.sub h2; simp only [sub_zero] at h; exact h
+    have h := h1.sub h2; simp only [sub_zero] at h
+    simpa [hEqSeq] using h
   exact le_of_tendsto hlim (Filter.eventually_of_forall hpn)
 
 
