@@ -403,9 +403,9 @@ theorem lsi_poincare_via_truncation
           (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) + (-mn)) from by ext x; ring, hE_const]
       by_cases hn : n = 0
       · subst hn
-        have : (fun x : Ω => max (min (u x) (0 : ℝ)) (-(0 : ℝ))) = fun _ => 0 := by
-          ext x; simp
-        rw [this]; exact hE_base.1 u
+          simp only [Nat.cast_zero, neg_zero, min_self, max_self]
+          exact hE_base.1 u
+
       · exact dirichlet_contraction E hES u (n : ℝ) (by exact_mod_cast Nat.pos_of_ne_zero hn)
     calc ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
         ≤ (1 / α) * E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) := hstep
@@ -466,14 +466,14 @@ theorem lsi_implies_poincare_strong
   by_cases hfc : Integrable (fun x => (f x - m) ^ 2) μ
   · suffices h : ∫ x, (f x - m) ^ 2 ∂μ ≤ (2 / α) * E (fun x => f x - m) by
       rwa [hEu] at h
-      -- Derive integrability of (f - m)
-      have hu1_fm : Integrable (fun x => f x - m) μ :=
-        sq_sub_int_implies_int μ (fun x => f x - m) (hf.sub measurable_const) 0 (by simpa using hfc)
-      -- Center: ∫(f - m) = 0
-      have hcenter_fm : ∫ x, (f x - m) ∂μ = 0 := by
-        have hf1 : Integrable f μ := sq_sub_int_implies_int μ f hf m (by simpa using hfc)
-        rw [integral_sub hf1 (integrable_const _), integral_const, probReal_univ, ← hm]; simp
-      -- Apply lsi_poincare_via_truncation
+    -- Derive integrability of (f - m)
+    have hu1_fm : Integrable (fun x => f x - m) μ :=
+      sq_sub_int_implies_int μ (fun x => f x - m) (hf.sub measurable_const) 0 (by simpa using hfc)
+    -- Center: ∫(f - m) = 0
+    have hcenter_fm : ∫ x, (f x - m) ∂μ = 0 := by
+      have hf1 : Integrable f μ := sq_sub_int_implies_int μ f hf m (by simpa using hfc)
+      rw [integral_sub hf1 (integrable_const _), integral_const, probReal_univ, ← hm]; simp
+    -- Apply lsi_poincare_via_truncation
       exact lsi_poincare_via_truncation E ⟨hE_base, hE_const, hE_scale⟩ α hα hLSI
         (fun x => f x - m) (hf.sub measurable_const) hu1_fm (by simpa using hfc) hcenter_fm
   · rw [integral_undef hfc]
