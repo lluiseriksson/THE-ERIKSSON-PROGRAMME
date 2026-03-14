@@ -402,12 +402,17 @@ theorem lsi_poincare_via_truncation
       rw [show (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) =
           (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) + (-mn)) from by ext x; ring, hE_const]
       by_cases hn : n = 0
-      · subst hn
-        have hzero : (fun x : Ω => max (min (u x) (0 : ℝ)) (-(0 : ℝ))) = fun _ => 0 := by
-          ext x; simp
-        have hE0 : E (fun _ => (0:ℝ)) = 0 := by
-          have := hE_scale 0 (fun _ => (1:ℝ)); simp at this; linarith [hE_base.1 (fun _ => (0:ℝ))]
-        rw [hzero]; linarith [hE_base.1 u, hE0]
+        · subst hn
+          -- For n=0: goal is E(fun x => max(min(u x, ↑0), -↑0)) ≤ E u
+          -- Use simp to normalize, then E(0)=0 ≤ E u
+          have hE0 : E (fun _ : Ω => (0:ℝ)) = 0 := by
+            have h := hE_scale 0 (fun _ : Ω => (1:ℝ))
+            simp only [zero_mul, zero_pow, ne_eq, OfNat.ofNat_ne_zero,
+              not_false_eq_true] at h
+            linarith [hE_base.1 (fun _ : Ω => (0:ℝ))]
+          have hgoal : (fun x : Ω => max (min (u x) ((0:ℕ):ℝ)) (-((0:ℕ):ℝ))) =
+              fun _ => (0:ℝ) := by ext x; simp
+          rw [hgoal]; linarith [hE_base.1 u]
       · exact dirichlet_contraction E hES u (n : ℝ) (by exact_mod_cast Nat.pos_of_ne_zero hn)
     calc ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
         ≤ (1 / α) * E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) := hstep
