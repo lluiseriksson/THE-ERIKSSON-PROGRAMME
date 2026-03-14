@@ -403,8 +403,8 @@ theorem lsi_poincare_via_truncation
           (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) + (-mn)) from by ext x; ring, hE_const]
       by_cases hn : n = 0
       · subst hn
-        simpmp only [Nat.cast_zero, neg_zero, min_self, max_self]
-        exactct hE_base.1 u
+        simp only [Nat.cast_zero, neg_zero, min_self, max_self]
+        exact hE_base.1 u
 
       · exact dirichlet_contraction E hES u (n : ℝ) (by exact_mod_cast Nat.pos_of_ne_zero hn)
     calc ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
