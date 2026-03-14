@@ -405,7 +405,9 @@ theorem lsi_poincare_via_truncation
       · subst hn
         have hzero : (fun x : Ω => max (min (u x) (0 : ℝ)) (-(0 : ℝ))) = fun _ => 0 := by
           ext x; simp
-        simpa [hzero] using hE_base.1 u
+        have hE0 : E (fun _ => (0:ℝ)) = 0 := by
+          have := hE_scale 0 (fun _ => (1:ℝ)); simp at this; linarith [hE_base.1 (fun _ => (0:ℝ))]
+        linarith [hE_base.1 u, hE0]
       · exact dirichlet_contraction E hES u (n : ℝ) (by exact_mod_cast Nat.pos_of_ne_zero hn)
     calc ∫ x, (max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) ^ 2 ∂μ
         ≤ (1 / α) * E (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ)) - mn) := hstep
@@ -456,7 +458,7 @@ lemma sq_sub_int_implies_int
     filter_upwards with x
     have hnn : 0 ≤ 1 + (f x - c) ^ 2 := by nlinarith [sq_nonneg (f x - c)]
     rw [Real.norm_eq_abs (f x - c), Real.norm_eq_abs, abs_of_nonneg hnn]
-    exact abs_le_one_add_sq (f x - c)
+    nlinarith [abs_nonneg (f x - c), sq_nonneg (f x - c), sq_abs (f x - c)]
   have hfc : Integrable (fun x => f x - c) μ :=
     hg.mono (hf.sub measurable_const).aestronglyMeasurable h1
   have key := hfc.add (integrable_const c)
@@ -489,9 +491,9 @@ theorem lsi_implies_poincare_strong
     -- Center: ∫(f - m) = 0
     have hcenter_fm : ∫ x, (f x - m) ∂μ = 0 := by
       have hf1 : Integrable f μ := sq_sub_int_implies_int μ f hf m (by simpa using hfc)
-      rw [integral_sub hf1 (integrable_const _), integral_const, probReal_univ, ← hm]; simp
+      simp [integral_sub hf1 (integrable_const _), integral_const, probReal_univ, m]
     -- Apply lsi_poincare_via_truncation
-      exact lsi_poincare_via_truncation E ⟨hE_base, hE_const, hE_scale⟩ α hα hLSI
+    exact lsi_poincare_via_truncation E ⟨hE_base, hE_const, hE_scale⟩ α hα hLSI
         (fun x => f x - m) (hf.sub measurable_const) hu1_fm (by simpa using hfc) hcenter_fm
   · rw [integral_undef hfc]
     exact mul_nonneg (by positivity) (hE_base.1 f)
