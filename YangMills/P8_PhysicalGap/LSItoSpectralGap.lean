@@ -37,17 +37,45 @@ axiom ent_ge_var
     (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ) ≥
     ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ
 
--- L2 subset L1: if (f-c)^2 integrable then f^2 integrable.
--- Proof: f^2 = (f-c)^2 + 2c(f-c) + c^2; each term integrable.
--- Status: SORRY (L2 ⊂ L1 for probability measures).
+-- |t| ≤ 1 + t² for all t (proved by nlinarith).
+private lemma abs_le_one_add_sq (t : ℝ) : |t| ≤ 1 + t ^ 2 := by
+  nlinarith [sq_nonneg (|t| - 1), sq_abs t, abs_nonneg t]
+
+-- (f-c)² integrable → f integrable (L²⊂L¹ for prob measures). PROVED.
+private lemma sq_sub_int_implies_int
+    (μ : Measure Ω) [IsProbabilityMeasure μ] (f : Ω → ℝ) (hf : Measurable f) (c : ℝ)
+    (h : Integrable (fun x => (f x - c) ^ 2) μ) :
+    Integrable f μ := by
+  have hg : Integrable (fun x => 1 + (f x - c) ^ 2) μ :=
+    (integrable_const 1).add h
+  have h1 : ∀ᵐ x ∂μ, ‖f x - c‖ ≤ ‖1 + (f x - c) ^ 2‖ := by
+    filter_upwards with x
+    have hnn : 0 ≤ 1 + (f x - c) ^ 2 := by nlinarith [sq_nonneg (f x - c)]
+    rw [Real.norm_eq_abs (f x - c), Real.norm_eq_abs, abs_of_nonneg hnn]
+    exact abs_le_one_add_sq (f x - c)
+  have hfc : Integrable (fun x => f x - c) μ :=
+    hg.mono (hf.sub measurable_const).aestronglyMeasurable h1
+  have key := hfc.add (integrable_const c)
+  convert key using 1
+  ext x; simp
+
+-- (f-c)² integrable → f² integrable. PROVED.
 private lemma sq_sub_int_implies_sq_int
     (μ : Measure Ω) [IsProbabilityMeasure μ] (f : Ω → ℝ) (hf : Measurable f)
-    (h : Integrable (fun x => (f x - ∫ y, f y ∂μ) ^ 2) μ) :
+    (h : Integrable (fun x => (f x - c) ^ 2) μ) :
     Integrable (fun x => f x ^ 2) μ := by
-  sorry
+  -- f integrable (from above), then f·f integrable
+  have hf_int := sq_sub_int_implies_int μ f hf c h
+  -- f² = f*f, integrable product for bounded... actually need more care
+  -- Use: f² = (f-c)² + 2c·f - c² = (f-c)² + 2c·f - c²
+  -- (f-c)² integrable by h, 2c·f integrable (c·integrable), c² const integrable
+  have h2cf : Integrable (fun x => 2 * c * f x) μ := hf_int.const_mul (2 * c)
+  have hconst : Integrable (fun x => (f x - c) ^ 2 + 2 * c * f x - c ^ 2) μ :=
+    (h.add h2cf).sub (integrable_const (c ^ 2))
+  convert hconst using 2
+  ext x; ring
 
 -- lsi_implies_poincare: THEOREM (Phase 9). Was axiom in Phase 8.
--- Proof: split on (f-c)^2 integrability.
 theorem lsi_implies_poincare
     (μ : Measure Ω) [IsProbabilityMeasure μ]
     (E : (Ω → ℝ) → ℝ) (hE : IsDirichletForm E μ) (α : ℝ)
@@ -63,8 +91,7 @@ theorem lsi_implies_poincare
           (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ) :=
             ent_ge_var μ f hf hf2
       _ ≤ (2 / α) * E f := hLSI.2 f hf
-  · have h0 : ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ = 0 :=
-      integral_undef hfc
+  · have h0 : ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ = 0 := integral_undef hfc
     rw [h0]
     apply mul_nonneg
     · have := hLSI.1; positivity
