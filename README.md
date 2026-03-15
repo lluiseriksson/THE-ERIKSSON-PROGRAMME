@@ -556,3 +556,39 @@ Full technical summary written to `PHASE8_SUMMARY.md`:
 - What is unconditionally proved
 - Notes for Lean reviewers
 - Why ent_ge_var was removed (mathematically false for signed f)
+
+---
+
+## ⚠️ Axioms still assumed
+
+These axioms remain in the codebase. They are **not technical debt** —
+they represent genuine mathematical frontiers or Mathlib infrastructure gaps.
+
+| Axiom | File | Role |
+|-------|------|------|
+| `sun_gibbs_dlr_lsi` | `LSItoSpectralGap.lean` | **Clay core**: Gibbs measure on SU(N) satisfies LSI with α*=N/4 |
+| `sz_lsi_to_clustering` | `LSItoSpectralGap.lean` | Stroock-Zegarlinski: LSI → exponential clustering |
+| `clustering_to_spectralGap` | `LSItoSpectralGap.lean` | Clustering → spectral gap (Holley-Stroock type) |
+| `lieDerivative_add` | `SUN_DirichletForm.lean` | ∂_X(f+g)=∂_X(f)+∂_X(g) — Mathlib Lie group gap |
+| `lieDerivative_smul` | `SUN_DirichletForm.lean` | ∂_X(cf)=c·∂_X(f) — Mathlib Lie group gap |
+| `lieDerivative_const_add` | `SUN_DirichletForm.lean` | ∂_X(f+c)=∂_X(f) — Mathlib Lie group gap |
+
+**All other results are fully proved. Build: `lake build` exits 0.**
+
+---
+
+## 🔁 Reproducible build
+```
+Lean toolchain : leanprover/lean4:v4.29.0-rc6
+Commit         : 6baaad11e54d
+Date           : 2026-03-15
+
+# Clone and build
+git clone https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+cd THE-ERIKSSON-PROGRAMME
+lake build
+```
+
+See `PHASE8_SUMMARY.md` for full documentation.
+
+---
