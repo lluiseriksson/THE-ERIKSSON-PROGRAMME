@@ -101,7 +101,6 @@ lemma covariance_decay_to_exponential_clustering
         gcongr
         · exact hFsqrt
         · exact hGsqrt
-        · exact le_rfl
 
 /-! ## Main theorem (M4) -/
 
