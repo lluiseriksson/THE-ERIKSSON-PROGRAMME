@@ -703,3 +703,36 @@ All remaining axioms (except Clay core) now have:
 | `sun_gibbs_dlr_lsi` | Yang-Mills renormalization group (E26 series) | Clay Millennium Prize |
 
 Build: 0 errors · 0 sorrys · 5 axioms · lake build ✅
+
+
+## v0.8.19 — `sun_gibbs_dlr_lsi` THEOREM ✅
+
+**The Clay monolith decomposed.**
+
+`sun_gibbs_dlr_lsi` is now a **proved theorem** from 2 sub-axioms:
+```
+M1: sun_haar_lsi           — Bakry-Émery + Holley-Stroock (Mathlib gap)
+        ↓
+M2: balaban_rg_uniform_lsi — Balaban RG uniform tensorization (Clay core)
+        ↓
+    sun_gibbs_dlr_lsi      — THEOREM (1 line assembly)
+```
+
+**Before:** 1 opaque axiom "Yang-Mills works"
+**After:** 6 axioms where exactly 1 contains the Clay core
+
+### Final axiom classification
+
+| Axiom | Category | Removal path |
+|-------|----------|-------------|
+| `hille_yosida_semigroup` | Mathlib gap | C₀-semigroup theory |
+| `lieDerivative_linear` | Mathlib gap | LieGroup SU(N) |
+| `lieDerivative_const` | Mathlib gap | LieGroup SU(N) |
+| `sunDirichletForm_contraction` | Mathlib gap | Chain rule Lie |
+| `sun_haar_lsi` | Mathlib gap | Bakry-Émery in Mathlib |
+| `balaban_rg_uniform_lsi` | **CLAY CORE** | E26 paper series |
+
+**Build: 0 errors · 0 sorrys · 6 axioms · lake build ✅**
+
+The Clay content is now **isolated in a single axiom** with explicit
+mathematical documentation of what it claims and why it's hard.
