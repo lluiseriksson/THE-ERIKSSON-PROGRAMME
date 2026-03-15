@@ -69,6 +69,19 @@ Proof in `SUN_Compact.lean`:
 5. `SU(N) = U(N) ∩ {det=1}` closed
 6. `IsCompact.of_isClosed_subset` concludes
 
+
+### M2 — IN PROGRESS 🔄
+Target: Concrete definition of `sunDirichletForm N_c : (SUN_State_Concrete N_c → ℝ) → ℝ`
+
+Mathematical content: the Dirichlet form of the Lie-Laplacian on SU(N):
+  `E(f) = ∫ |∇_Lie f|² dμ_Haar`
+where `∇_Lie` is the gradient with respect to the Lie algebra generators.
+
+Minimum API needed:
+- Lie algebra generators of SU(N): `su(N) = {A ∈ M_N(ℂ) | A + A* = 0, Tr A = 0}`
+- Directional derivatives `∂_X f` for `X ∈ su(N)`
+- L² norm of gradient with respect to Haar measure
+
 ### M2, M3 — PENDING 📌
 - M2: `sunDirichletForm` — requires Lie group calculus on SU(N)
 - M3: `sun_gibbs_dlr_lsi` — DLR-LSI for SU(N) Gibbs measures (Clay core)
