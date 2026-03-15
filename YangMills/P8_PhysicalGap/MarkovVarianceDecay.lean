@@ -46,9 +46,9 @@ theorem variance_eq_l2_sq_centered
       (fun x => (f x ^ 2 - (2 * m) * f x) + m ^ 2) :=
     ae_of_all _ fun x => by ring
   have hm_const : ∫ x, m ^ 2 ∂μ = m ^ 2 := by
-    simp [integral_const, measure_univ]
+    rw [integral_const, smul_eq_mul, measure_univ, ENNReal.one_toReal, mul_one]
   have hm_mul : ∫ x, (2 * m) * f x ∂μ = (2 * m) * m := by
-    rw [integral_const_mul]; rfl
+    rw [integral_const_mul]
   calc ∫ x, (f x - m) ^ 2 ∂μ
       = ∫ x, ((f x ^ 2 - (2 * m) * f x) + m ^ 2) ∂μ :=
           integral_congr_ae h_expand
@@ -79,8 +79,9 @@ theorem varT_poincare_bound
   set m := ∫ x, f x ∂μ
   -- g = f - m is centered
   have hg_center : ∫ x, (f x - m) ∂μ = 0 := by
-    rw [integral_sub hf (integrable_const m)]
-    simp [integral_const, measure_univ]
+    rw [integral_sub hf (integrable_const m), integral_const,
+        smul_eq_mul, measure_univ, ENNReal.one_toReal, mul_one]
+    exact sub_self m
   have hg_int : Integrable (fun x => f x - m) μ := hf.sub (integrable_const m)
   -- g² integrable via algebraic expansion
   have hg2_int : Integrable (fun x => (f x - m) ^ 2) μ := by
