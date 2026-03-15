@@ -42,30 +42,37 @@ def HasCovarianceDecay (μ : Measure Ω) (C ξ : ℝ) : Prop :=
         Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) *
     Real.exp (-1 / ξ)
 
-/-! ## Bridge axiom (M4 core) -/
+/-! ## Bridge axiom (M4 core) — decomposed -/
 
-/-- M4 core axiom: PoincareInequality → covariance decay.
-    This encapsulates the Stroock-Zegarlinski semigroup argument:
-      Poincaré (gap λ) → spectral gap of Markov semigroup ≥ λ
+/-- M4b core axiom: Poincaré gap → covariance bound with exponential decay.
+    Encapsulates the Stroock-Zegarlinski semigroup argument:
+      Poincaré gap λ → spectral gap of Markov semigroup ≥ λ
       → Var(T_t f) ≤ exp(-2λt) Var(f)  [Gronwall]
-      → |Cov(F,G)| ≤ 2 · √Var(F) · √Var(G) · exp(-λ)  [Cauchy-Schwarz]
-    The clustering period ξ = 1/λ, rate C = 2.
-    Reference: SZ 1992, Theorems 2.1 and 3.3. -/
--- M4b status: AXIOM (semigroup theory not formalized in abstract setting)
--- To prove this, one needs:
---   (1) A Markov semigroup T_t : L²(μ) → L²(μ) associated to E
---   (2) Spectral identity: d/dt Var_μ(T_t f) = -2 E(T_t f)
---   (3) Gronwall: Var(T_t f) ≤ exp(-2λt) · Var(f)
---   (4) Cov(F,G) = ∫₀^∞ d/dt Cov(F, T_t G) dt  → Cauchy-Schwarz bound
--- These require Mathlib.Analysis.SpecialFunctions.ExpDeriv and
--- a formal MarkovSemigroup type associated to IsDirichletFormStrong.
--- Deferred to future work; see PHASE8_PLAN.md M4b.
-axiom poincare_to_covariance_decay
+      → |Cov(F,G)| ≤ 2·√Var(F)·√Var(G)·exp(-λ)  [Cauchy-Schwarz + semigroup]
+    Reference: Stroock-Zegarlinski 1992, Theorems 2.1 and 3.3.
+    Status: AXIOM — requires formal MarkovSemigroup type in Lean/Mathlib. -/
+axiom poincare_implies_cov_bound
+    {μ : Measure Ω} [IsProbabilityMeasure μ]
+    (E : (Ω → ℝ) → ℝ) (lam : ℝ)
+    (hE : IsDirichletFormStrong E μ)
+    (hP : PoincareInequality μ E lam)
+    (F G : Ω → ℝ) :
+    |∫ x, F x * G x ∂μ - (∫ x, F x ∂μ) * (∫ x, G x ∂μ)| ≤
+    2 * Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
+        Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) *
+    Real.exp (-lam)
+
+/-- Poincaré → covariance decay, proved from poincare_implies_cov_bound. -/
+theorem poincare_to_covariance_decay
     {μ : Measure Ω} [IsProbabilityMeasure μ]
     (E : (Ω → ℝ) → ℝ) (lam : ℝ)
     (hE : IsDirichletFormStrong E μ)
     (hP : PoincareInequality μ E lam) :
-    HasCovarianceDecay μ 2 (1 / lam)
+    HasCovarianceDecay μ 2 (1 / lam) := by
+  obtain ⟨hlam, _⟩ := hP
+  refine ⟨by positivity, by norm_num, fun F G => ?_⟩
+  rw [show (-1 : ℝ) / (1 / lam) = -lam from by field_simp]
+  exact poincare_implies_cov_bound E lam hE hP F G
 
 /-! ## Bridge lemma: covariance decay → exponential clustering -/
 
