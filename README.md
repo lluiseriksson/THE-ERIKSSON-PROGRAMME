@@ -916,3 +916,33 @@ The roadmap for elimination is documented in PoincareCovarianceRoadmap.lean.
 Axioms: 8 (down from 9).
 Sorrys: 0.
 Build: OK.
+
+
+## v0.8.7 — Verified clean state ✅
+
+Full build: OK (0 errors). Real sorrys: 0. Axioms: 8.
+
+### Proved theorems (complete chain)
+- `integral_mul_sq_le`: (∫fg)² ≤ (∫f²)(∫g²) via discriminant
+- `abs_integral_mul_le`: |∫fg| ≤ √(∫f²)·√(∫g²)
+- `covariance_eq_centered`: Cov(F,G) = ∫(F-mF)(G-mG)
+- `covariance_le_sqrt_var`: |Cov(F,G)| ≤ √Var(F)·√Var(G)
+- `markov_to_covariance_decay`: Semigroup + Poincaré → covariance bound (no sorry)
+- `poincare_to_covariance_decay`: Poincaré → HasCovarianceDecay
+- `covariance_decay_to_exponential_clustering`: CovDecay → ExponentialClustering
+- `sz_lsi_to_clustering_bridge`: DLR_LSI → ExponentialClustering (Milestone M4)
+- `lsi_implies_poincare_strong`: LSI → Poincaré inequality
+
+### Axioms: 8 (all honest)
+markov_variance_decay, markov_covariance_transport, lieDerivative_{const_add,smul,add},
+dirichlet_contraction, sz_lsi_to_clustering (superseded), sun_gibbs_dlr_lsi
+
+
+## v0.8.9 — `markov_covariance_transport` ELIMINADO ✅
+
+El transporte de covarianza **no es un axioma independiente**: es consecuencia
+de la reversibilidad (`T_symm`) y la estacionariedad (`T_stat`).
+
+- **Axiomas en P8: 7** (antes 8)
+- `markov_covariance_symm` demostrado como teorema en `MarkovSemigroupDef.lean`
+- Build: OK

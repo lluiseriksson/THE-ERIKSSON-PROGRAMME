@@ -1,3 +1,5 @@
+import YangMills.P8_PhysicalGap.MarkovSemigroupDef
+import YangMills.P8_PhysicalGap.PoincareCovarianceRoadmap
 import YangMills.L0_Lattice.FiniteLattice
 import YangMills.L0_Lattice.GaugeConfigurations
 import YangMills.L0_Lattice.WilsonAction
@@ -27,16 +29,10 @@ import YangMills.P2_MaxEntClustering.MaxEntStates
 import YangMills.P2_MaxEntClustering.RecoveryChannels
 import YangMills.P2_MaxEntClustering.ClusteringBridge
 import YangMills.P3_BalabanRG.CorrelationNorms
-import YangMills.P3_BalabanRG.CorrelationNorms
-import YangMills.P3_BalabanRG.RGContraction
 import YangMills.P3_BalabanRG.RGContraction
 import YangMills.P3_BalabanRG.MultiscaleDecay
 import YangMills.P3_BalabanRG.LatticeMassExtraction
-import YangMills.P3_BalabanRG.LatticeMassExtraction
 import YangMills.P3_BalabanRG.Phase3Assembly
-import YangMills.P3_BalabanRG.Phase3Assembly
-import YangMills.P4_Continuum.ContinuumBridge
-import YangMills.P4_Continuum.Phase4Assembly
 import YangMills.P4_Continuum.ContinuumBridge
 import YangMills.P4_Continuum.Phase4Assembly
 import YangMills.P5_KPDecay.KPHypotheses
