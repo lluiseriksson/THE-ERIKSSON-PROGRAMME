@@ -435,3 +435,28 @@ Lean v4.29.0-rc6 · Mathlib · 8196+ compiled jobs · 0 errors · 0 sorrys
 Phase 7 closed · Phase 8 active · PHASE8_PLAN.md
 
 *Last updated: March 2026*
+
+## Session update — EntropyPerturbation closed ✅
+
+`entropy_perturbation_limit` is now a **theorem**, not an axiom.
+
+### Proved in EntropyPerturbation.lean (0 sorrys)
+- `log_taylor_bound` — cubic remainder via `abs_log_sub_add_sum_range_le`
+- `sq_log_expansion_bound` — pointwise `|(1+h)²·2·log(1+h) - 2h - 3h²| ≤ 14|h|³`
+- `norm_term_tendsto` — `(1+t²c)·log(1+t²c)/t² → c` via `tendsto_slope`
+- `entropy_perturbation_limit_proved` — full DCT + squeeze + algebraic assembly
+
+### Active axioms remaining (P8)
+| Axiom | Status |
+|-------|--------|
+| `sun_gibbs_dlr_lsi` | Clay core — do not attack |
+| `entropy_perturbation_limit` | ✅ CLOSED (now theorem) |
+| `sunDirichletForm_subadditive` | 🔄 NEXT — lieDerivative_add |
+| `dirichlet_contraction` | pending |
+| `poincare_to_covariance_decay` | pending |
+| `clustering_to_spectralGap` | pending |
+
+### Next steps
+1. Isolate exact signature of `lieDerivative_add` needed by `sunDirichletForm_subadditive`
+2. Prove weak version sufficient for M2
+3. Only if blocked: introduce local opaque lemma (not global axiom)
