@@ -51,7 +51,6 @@ theorem variance_eq_l2_sq_centered
     rw [measure_univ, ENNReal.toReal_one, one_mul]
   have hm_mul : ∫ x, (2 * m) * f x ∂μ = (2 * m) * m := by
     rw [integral_const_mul]
-    simp [m]
   calc ∫ x, (f x - m) ^ 2 ∂μ
       = ∫ x, ((f x ^ 2 - (2 * m) * f x) + m ^ 2) ∂μ :=
           integral_congr_ae h_expand
