@@ -16,6 +16,21 @@ theorem markov_preserves_integral
     ∫ x, sg.T t f x ∂μ = ∫ x, f x ∂μ :=
   sg.T_stat t f hf
 
+/-! ## Auxiliary: T commutes with centering -/
+
+lemma T_sub_const
+    (sg : MarkovSemigroup μ) (t : ℝ) (f : Ω → ℝ) (m : ℝ) :
+    sg.T t (fun x => f x - m) = fun x => sg.T t f x - m := by
+  calc sg.T t (fun x => f x - m)
+      = sg.T t (fun x => 1 * f x + (-1) * (fun _ => m) x) := by
+          congr 1; ext x; ring
+    _ = fun x => 1 * sg.T t f x + (-1) * sg.T t (fun _ => m) x :=
+          sg.T_linear t f (fun _ => m) 1 (-1)
+    _ = fun x => 1 * sg.T t f x + (-1) * m := by
+          rw [sg.T_const t m]
+    _ = fun x => sg.T t f x - m := by
+          ext x; ring
+
 /-! ## Step 2: Variance = ‖f - mean‖₂² -/
 
 theorem variance_eq_l2_sq_centered
@@ -24,22 +39,25 @@ theorem variance_eq_l2_sq_centered
     (hf2 : Integrable (fun x => f x ^ 2) μ) :
     ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ =
     ∫ x, f x ^ 2 ∂μ - (∫ x, f x ∂μ) ^ 2 := by
-  set m := ∫ x, f x ∂μ
-  have hm : Integrable (fun _ : Ω => m) μ := integrable_const m
-  have hfm : Integrable (fun x => f x - m) μ := hf.sub hm
-  have hfm2 : Integrable (fun x => (f x - m) ^ 2) μ := by
-    apply Integrable.mono (hf2.add (integrable_const (m ^ 2)))
-    · exact hfm.aestronglyMeasurable.pow_const 2
-    · exact ae_of_all _ fun x => by
-        simp only [Real.norm_eq_abs, abs_pow]
-        nlinarith [abs_nonneg (f x - m), sq_abs (f x - m)]
+  set m : ℝ := ∫ y, f y ∂μ
+  have hcross : Integrable (fun x => (2 * m) * f x) μ := hf.const_mul (2 * m)
+  have hconst : Integrable (fun _ : Ω => m ^ 2) μ := integrable_const _
+  have h_expand : (fun x => (f x - m) ^ 2) =ᵐ[μ]
+      (fun x => (f x ^ 2 - (2 * m) * f x) + m ^ 2) :=
+    ae_of_all _ fun x => by ring
+  have hm_const : ∫ x, m ^ 2 ∂μ = m ^ 2 := by
+    simp [integral_const, measure_univ]
+  have hm_mul : ∫ x, (2 * m) * f x ∂μ = (2 * m) * m := by
+    rw [integral_const_mul]; rfl
   calc ∫ x, (f x - m) ^ 2 ∂μ
-      = ∫ x, (f x ^ 2 - 2 * m * f x + m ^ 2) ∂μ := by
-        congr 1; ext x; ring
-    _ = ∫ x, f x ^ 2 ∂μ - 2 * m * ∫ x, f x ∂μ + m ^ 2 := by
-        rw [integral_add (hf2.sub (hf.const_mul (2 * m))) (integrable_const _),
-            integral_sub hf2 (hf.const_mul (2 * m))]
-        simp [integral_const, integral_const_mul, measure_univ]
+      = ∫ x, ((f x ^ 2 - (2 * m) * f x) + m ^ 2) ∂μ :=
+          integral_congr_ae h_expand
+    _ = ∫ x, (f x ^ 2 - (2 * m) * f x) ∂μ + ∫ x, m ^ 2 ∂μ :=
+          integral_add (hf2.sub hcross) hconst
+    _ = (∫ x, f x ^ 2 ∂μ - ∫ x, (2 * m) * f x ∂μ) + ∫ x, m ^ 2 ∂μ := by
+          rw [integral_sub hf2 hcross]
+    _ = (∫ x, f x ^ 2 ∂μ - (2 * m) * m) + m ^ 2 := by
+          rw [hm_mul, hm_const]
     _ = ∫ x, f x ^ 2 ∂μ - m ^ 2 := by ring
 
 /-! ## Step 3: Poincaré bound -/
@@ -59,27 +77,26 @@ theorem varT_poincare_bound
     ∫ x, (sg.T t f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤
     Real.exp (-2 * γ * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ := by
   set m := ∫ x, f x ∂μ
-  set g := fun x => f x - m
-  have hg_center : ∫ x, g x ∂μ = 0 := by
-    simp [g, integral_sub hf (integrable_const m)]
-  have hg_int : Integrable g μ := hf.sub (integrable_const m)
-  have hg2_int : Integrable (fun x => g x ^ 2) μ := by
-    apply Integrable.mono (hf2.add (integrable_const (m ^ 2)))
-    · exact hg_int.aestronglyMeasurable.pow_const 2
-    · exact ae_of_all _ fun x => by
-        simp only [g, Real.norm_eq_abs, abs_pow]
-        nlinarith [abs_nonneg (f x - m), sq_abs (f x - m)]
-  have hTg_eq : ∀ x, sg.T t g x = sg.T t f x - m := by
-    intro x
-    have hlin := congr_fun (sg.T_linear t f (fun _ => m) 1 (-1)) x
-    have hc   := congr_fun (sg.T_const t m) x
-    simp only [one_mul, neg_mul, one_mul, g] at *
-    linarith
+  -- g = f - m is centered
+  have hg_center : ∫ x, (f x - m) ∂μ = 0 := by
+    rw [integral_sub hf (integrable_const m)]
+    simp [integral_const, measure_univ]
+  have hg_int : Integrable (fun x => f x - m) μ := hf.sub (integrable_const m)
+  -- g² integrable via algebraic expansion
+  have hg2_int : Integrable (fun x => (f x - m) ^ 2) μ := by
+    have h_eq : (fun x => (f x - m) ^ 2) =ᵐ[μ]
+        (fun x => (f x ^ 2 - (2 * m) * f x) + m ^ 2) :=
+      ae_of_all _ fun x => by ring
+    exact (hf2.sub (hf.const_mul (2 * m))).add (integrable_const _) |>.congr h_eq.symm
+  -- T_t(f - m) = T_t f - m
+  have hTsub : sg.T t (fun x => f x - m) = fun x => sg.T t f x - m :=
+    T_sub_const sg t f m
+  -- LHS: ∫(T_t f - m)² = ∫(T_t(f-m))²
   have hlhs : ∫ x, (sg.T t f x - m) ^ 2 ∂μ =
-              ∫ x, (sg.T t g x) ^ 2 ∂μ :=
-    integral_congr_ae (ae_of_all _ fun x => by rw [hTg_eq])
+              ∫ x, (sg.T t (fun y => f y - m) x) ^ 2 ∂μ := by
+    congr 1; ext x; rw [hTsub]
   rw [hlhs]
-  exact hgap g hg_center hg_int hg2_int
+  exact hgap (fun x => f x - m) hg_center hg_int hg2_int
 
 end
 
