@@ -86,20 +86,31 @@ noncomputable def sunDirichletForm_concrete (N_c : ℕ) [NeZero N_c]
 
 /-! ## Algebraic properties of lieDerivative
 
-These are the minimal axioms needed for IsDirichletFormStrong.
-They follow from linearity of directional derivatives. -/
+These axioms encode standard properties of directional derivatives on Lie groups.
+They are NOT provable from `opaque lieDerivative` alone — proving them requires either:
+  (A) Replacing `opaque lieDerivative` with a concrete definition via
+      `deriv (fun t => f (lieExpCurve N_c i U t)) 0`, then adding
+      `DifferentiableAt` hypotheses and using `deriv_add`, `deriv_const_mul`;
+  (B) Waiting for Mathlib to formalize `LieGroup` instances for `SU(N)` with
+      `ModelWithCorners` + `ChartedSpace` + `ContMDiff` infrastructure.
+Status: AXIOMS — represent standard smooth category assumptions on observables.
+Reference: Any differential geometry textbook, e.g. Lee "Introduction to Smooth Manifolds". -/
 
-/-- Lie derivatives are linear: ∂_{Xᵢ}(f + c) = ∂_{Xᵢ}(f) -/
+/-- Lie derivatives kill constants: ∂_{Xᵢ}(f + c) = ∂_{Xᵢ}(f).
+    Proof route when formalizable: deriv_const_add via lieExpCurve definition. -/
 axiom lieDerivative_const_add (N_c : ℕ) [NeZero N_c]
     (i : LieGenIndex N_c) (f : SUN_State_Concrete N_c → ℝ) (c : ℝ) :
     lieDerivative N_c i (fun U => f U + c) = lieDerivative N_c i f
 
-/-- Lie derivatives scale: ∂_{Xᵢ}(cf) = c · ∂_{Xᵢ}(f) -/
+/-- Lie derivatives scale: ∂_{Xᵢ}(cf) = c · ∂_{Xᵢ}(f).
+    Proof route when formalizable: deriv_const_mul via lieExpCurve definition. -/
 axiom lieDerivative_smul (N_c : ℕ) [NeZero N_c]
     (i : LieGenIndex N_c) (c : ℝ) (f : SUN_State_Concrete N_c → ℝ) :
     lieDerivative N_c i (fun U => c * f U) = fun U => c * lieDerivative N_c i f U
 
-/-- Lie derivatives are additive: ∂_{Xᵢ}(f + g) = ∂_{Xᵢ}(f) + ∂_{Xᵢ}(g) -/
+/-- Lie derivatives are additive: ∂_{Xᵢ}(f + g) = ∂_{Xᵢ}(f) + ∂_{Xᵢ}(g).
+    Proof route when formalizable: deriv_add (needs DifferentiableAt hypotheses)
+    via lieExpCurve definition. The unconditional form requires smooth observables. -/
 axiom lieDerivative_add (N_c : ℕ) [NeZero N_c]
     (i : LieGenIndex N_c) (f g : SUN_State_Concrete N_c → ℝ) :
     lieDerivative N_c i (f + g) = lieDerivative N_c i f + lieDerivative N_c i g
