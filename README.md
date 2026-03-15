@@ -736,3 +736,32 @@ M2: balaban_rg_uniform_lsi — Balaban RG uniform tensorization (Clay core)
 
 The Clay content is now **isolated in a single axiom** with explicit
 mathematical documentation of what it claims and why it's hard.
+
+
+## v0.8.20 — `sun_haar_lsi` THEOREM ✅
+
+Decomposed into `BakryEmeryCD` (opaque predicate) + 2 sub-axioms:
+```
+opaque BakryEmeryCD μ E K          ← Γ₂ ≥ K·Γ condition (no Γ₂ in Mathlib)
+axiom bakry_emery_lsi              ← CD(K,∞) ⟹ LSI(K)  (Bakry-Émery 1985)
+axiom sun_bakry_emery_cd           ← SU(N) satisfies CD(N/4,∞) (Bochner bridge)
+theorem sun_haar_lsi               ← PROVED: 2 lines from sub-axioms
+```
+
+### Complete axiom map (7 axioms, 1 Clay core)
+
+| Axiom | Category | Removed by |
+|-------|----------|-----------|
+| `hille_yosida_semigroup` | Mathlib | C₀-semigroup theory |
+| `lieDerivative_linear` | Mathlib | LieGroup SU(N) |
+| `lieDerivative_const` | Mathlib | LieGroup SU(N) |
+| `sunDirichletForm_contraction` | Mathlib | Chain rule Lie |
+| `bakry_emery_lsi` | Mathlib | Γ₂ calculus in Mathlib |
+| `sun_bakry_emery_cd` | Mathlib | Bochner formula + typing |
+| `balaban_rg_uniform_lsi` | **CLAY CORE** | E26 programme |
+
+**Observation:** When Mathlib gains LieGroup SU(N), 4 axioms fall at once:
+`lieDerivative_linear`, `lieDerivative_const`, `sunDirichletForm_contraction`,
+`sun_bakry_emery_cd`.
+
+Build: 0 errors · 0 sorrys · 7 axioms · lake build ✅
