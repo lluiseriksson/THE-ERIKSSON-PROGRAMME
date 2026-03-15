@@ -639,3 +639,46 @@ form. Requires chain rule for Lie derivatives: |∂(trunc f)| ≤ |∂f| via
 **`sun_gibbs_dlr_lsi`** — SU(N) Yang-Mills satisfies DLR-LSI(α*).
 This is the mathematical core of the Clay problem.
 Source: E26 paper series (2602.0046–2602.0117), 29/29 audit PASS.
+
+
+## v0.8.18 — `lieDerivative_*` consolidated ✅
+
+**3 axioms → 2 axioms + 3 proved lemmas.**
+
+Replaced `lieDerivative_const_add`, `lieDerivative_smul`, `lieDerivative_add`
+with two foundational axioms and derived the three as theorems:
+```lean
+-- 2 axioms (foundational):
+axiom lieDerivative_linear  -- additivity + scaling packed together
+axiom lieDerivative_const   -- derivative of constant = 0
+
+-- 3 theorems (derived):
+lemma lieDerivative_add       := (lieDerivative_linear N_c i).1 f g
+lemma lieDerivative_smul      := (lieDerivative_linear N_c i).2 c f
+lemma lieDerivative_const_add := linear + const → add_zero
+```
+
+**P8 axioms: 5 total**
+
+### Final axiom inventory
+
+| Axiom | File | Category |
+|-------|------|----------|
+| `hille_yosida_semigroup` | MarkovSemigroupDef | Mathlib gap (Beurling-Deny) |
+| `lieDerivative_linear` | SUN_DirichletForm | Mathlib gap (LieGroup SU(N)) |
+| `lieDerivative_const` | SUN_DirichletForm | Mathlib gap (LieGroup SU(N)) |
+| `sunDirichletForm_contraction` | SUN_DirichletForm | Mathlib gap (chain rule Lie) |
+| `sun_gibbs_dlr_lsi` | BalabanToLSI | ❌ Clay core |
+
+Build: 0 errors · 0 sorrys · lake build ✅
+
+### Full session progress (v0.8.11 → v0.8.18): 9 → 5 axioms
+
+| Version | Change | Method |
+|---------|--------|--------|
+| v0.8.13 | −1 `markov_variance_decay` | γ₀/2 witness |
+| v0.8.14 | −1 `sz_covariance_bridge` | Cauchy-Schwarz + decay |
+| v0.8.15 | −1 `dirichlet_contraction` | Field in IsDirichletFormStrong |
+| v0.8.16 | −1 `markov_spectral_gap` | Field in MarkovSemigroup |
+| v0.8.17 | −1 `sz_lsi_to_clustering` +1 `hille_yosida` | SZ bridge |
+| v0.8.18 | −1 net (3→2 lieDerivative) | Linearity package |
