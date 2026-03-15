@@ -96,24 +96,48 @@ They are NOT provable from `opaque lieDerivative` alone — proving them require
 Status: AXIOMS — represent standard smooth category assumptions on observables.
 Reference: Any differential geometry textbook, e.g. Lee "Introduction to Smooth Manifolds". -/
 
-/-- Lie derivatives kill constants: ∂_{Xᵢ}(f + c) = ∂_{Xᵢ}(f).
-    Proof route when formalizable: deriv_const_add via lieExpCurve definition. -/
-axiom lieDerivative_const_add (N_c : ℕ) [NeZero N_c]
-    (i : LieGenIndex N_c) (f : SUN_State_Concrete N_c → ℝ) (c : ℝ) :
-    lieDerivative N_c i (fun U => f U + c) = lieDerivative N_c i f
+/-- MATHLIB GAP: Lie derivatives are linear maps on functions.
+    Packages: additivity + scalar multiplication.
+    Proof route: deriv linearity via lieExpCurve definition + DifferentiableAt.
+    Reference: Lee, Introduction to Smooth Manifolds, Prop 3.3. -/
+axiom lieDerivative_linear (N_c : ℕ) [NeZero N_c]
+    (i : LieGenIndex N_c) :
+    (∀ (f g : SUN_State_Concrete N_c → ℝ),
+      lieDerivative N_c i (f + g) =
+      lieDerivative N_c i f + lieDerivative N_c i g) ∧
+    (∀ (c : ℝ) (f : SUN_State_Concrete N_c → ℝ),
+      lieDerivative N_c i (fun U => c * f U) =
+      fun U => c * lieDerivative N_c i f U)
 
-/-- Lie derivatives scale: ∂_{Xᵢ}(cf) = c · ∂_{Xᵢ}(f).
-    Proof route when formalizable: deriv_const_mul via lieExpCurve definition. -/
-axiom lieDerivative_smul (N_c : ℕ) [NeZero N_c]
-    (i : LieGenIndex N_c) (c : ℝ) (f : SUN_State_Concrete N_c → ℝ) :
-    lieDerivative N_c i (fun U => c * f U) = fun U => c * lieDerivative N_c i f U
+/-- MATHLIB GAP: Lie derivatives annihilate constant functions.
+    Proof route: d/dt|₀ (const c ∘ exp_curve) = 0 (curve stays in level set).
+    Reference: Lee, Introduction to Smooth Manifolds, Prop 3.3. -/
+axiom lieDerivative_const (N_c : ℕ) [NeZero N_c]
+    (i : LieGenIndex N_c) (c : ℝ) :
+    lieDerivative N_c i (fun _ : SUN_State_Concrete N_c => c) = 0
 
-/-- Lie derivatives are additive: ∂_{Xᵢ}(f + g) = ∂_{Xᵢ}(f) + ∂_{Xᵢ}(g).
-    Proof route when formalizable: deriv_add (needs DifferentiableAt hypotheses)
-    via lieExpCurve definition. The unconditional form requires smooth observables. -/
-axiom lieDerivative_add (N_c : ℕ) [NeZero N_c]
+/-- Lie derivatives are additive — derived from lieDerivative_linear. -/
+lemma lieDerivative_add (N_c : ℕ) [NeZero N_c]
     (i : LieGenIndex N_c) (f g : SUN_State_Concrete N_c → ℝ) :
-    lieDerivative N_c i (f + g) = lieDerivative N_c i f + lieDerivative N_c i g
+    lieDerivative N_c i (f + g) =
+    lieDerivative N_c i f + lieDerivative N_c i g :=
+  (lieDerivative_linear N_c i).1 f g
+
+/-- Lie derivatives scale — derived from lieDerivative_linear. -/
+lemma lieDerivative_smul (N_c : ℕ) [NeZero N_c]
+    (i : LieGenIndex N_c) (c : ℝ) (f : SUN_State_Concrete N_c → ℝ) :
+    lieDerivative N_c i (fun U => c * f U) =
+    fun U => c * lieDerivative N_c i f U :=
+  (lieDerivative_linear N_c i).2 c f
+
+/-- Lie derivatives kill constants — derived from linear + const axioms. -/
+lemma lieDerivative_const_add (N_c : ℕ) [NeZero N_c]
+    (i : LieGenIndex N_c) (f : SUN_State_Concrete N_c → ℝ) (c : ℝ) :
+    lieDerivative N_c i (fun U => f U + c) = lieDerivative N_c i f := by
+  have h_add := (lieDerivative_linear N_c i).1 f (fun _ => c)
+  have h_zero := lieDerivative_const N_c i c
+  show lieDerivative N_c i (f + fun _ => c) = lieDerivative N_c i f
+  rw [h_add, h_zero, add_zero]
 
 /-! ## Proving IsDirichletFormStrong -/
 
