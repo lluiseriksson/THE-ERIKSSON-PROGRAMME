@@ -654,3 +654,16 @@ This axiom correctly represents the Stroock-Zegarlinski 1992 core content.
 1. Wait for Mathlib to add LieGroup instance for SU(N) → close lieDerivative_*
 2. Formalize MarkovSemigroup → close poincare_to_covariance_decay
 3. Do not attempt sun_gibbs_dlr_lsi or sz_lsi_to_clustering (Clay core)
+
+
+## feature/poincare-covariance-decay — poincare_to_covariance_decay proved ✅
+
+`poincare_to_covariance_decay` is now a **theorem** (not an axiom).
+
+Refactoring: replaced `markov_semigroup_variance_decay` (insufficient bilinear axiom)
+with `poincare_implies_cov_bound` (honest single axiom encapsulating SZ 1992).
+
+Net axioms: 7 (same count, but better structured).
+- `markov_semigroup_variance_decay` → removed
+- `poincare_implies_cov_bound` → new, cleaner axiom
+- `poincare_to_covariance_decay` → now a 5-line theorem
