@@ -7,6 +7,91 @@
 
 ---
 
+---
+
+## Programme Status (March 2026)
+
+### Build: 7/7 PASS
+`ErikssonBridge` · `RicciSUN` · `RicciSU2Explicit` · `StroockZegarlinski` · `FeynmanKacBridge` · `BalabanToLSI` · `PhysicalMassGap`
+
+---
+
+## Proof Chain: Yang-Mills Mass Gap (P8)
+
+```
+Ric_{SU(N)} = N/4        [RicciSUN ✅]
+   ↓ M1: Haar LSI(N/4)
+sunHaarProb (Haar on SU(N))  [SUN_StateConstruction ✅]
+sunGibbsFamily_concrete      [SUN_StateConstruction ✅]
+   ↓ M1b: CompactSpace SU(N)    [axiom — M1b 📌]
+   ↓ M2: Polymer → cross-scale Σ D_k < ∞
+sunDirichletForm             [opaque — M2 📌]
+   ↓ M3: Interface → DLR-LSI
+sun_gibbs_dlr_lsi            [axiom — M3/Clay core 📌]
+   ↓ LSItoSpectralGap [✅]
+   ↓ M4: SZ semigroup → CovarianceDecay
+poincare_to_covariance_decay [axiom — M4 📌]
+   ↓ ExponentialClustering [✅]
+   ↓ SpectralGap [✅]
+PhysicalMassGap              [✅]
+```
+
+---
+
+## Milestone Log
+
+### M4 skeleton — CLOSED ✅
+`StroockZegarlinski.lean`: DLR_LSI → PoincareInequality → HasCovarianceDecay → ExponentialClustering
+
+### M1 — COMPLETE ✅ (modulo M1b axiom)
+`SUN_StateConstruction.lean`
+
+| Component | Status | Detail |
+|-----------|--------|--------|
+| `SUN_State_Concrete N_c` | ✅ | `abbrev ↥(specialUnitaryGroup (Fin N_c) ℂ)` |
+| `MeasurableSpace (Matrix n n ℂ)` | ✅ | `change` tactic (Matrix is `def` not `abbrev`) |
+| `BorelSpace (Matrix n n ℂ)` | ✅ | `change` tactic |
+| `MeasurableSpace ↥SU(N)` | ✅ | subtype inference |
+| `BorelSpace ↥SU(N)` | ✅ | subtype inference |
+| `sunHaarProb N_c` | ✅ | `haarMeasure(univ)`, `IsProbabilityMeasure` proved via `haarMeasure_self` |
+| `sunGibbsFamily_concrete` | ✅ | `= gibbsMeasure sunHaarProb plaquetteEnergy β` |
+| `sunGibbsFamily_isProbability` | ✅ | theorem proved |
+| `instCompactSpaceSUN` | 📌 M1b | axiom: SU(N) closed+bounded in M_N(ℂ) → Heine-Borel |
+
+### M1b — IN PROGRESS 🔄
+Goal: prove `CompactSpace ↥(specialUnitaryGroup (Fin N_c) ℂ)` concretely.
+
+Strategy:
+1. `IsClosed`: preimage of `{1}` under `A ↦ A * star A` (continuous) ∩ preimage of `{1}` under `det` (continuous)
+2. `IsBounded`: `‖U‖ ≤ √N_c` for all `U ∈ SU(N_c)` (columns are orthonormal)
+3. `IsCompact`: closed + bounded in finite-dimensional normed space → compact
+
+### M2, M3 — PENDING 📌
+- M2: `sunDirichletForm` — requires Lie group calculus on SU(N)
+- M3: `sun_gibbs_dlr_lsi` — DLR-LSI for SU(N) Gibbs measures (Clay core)
+
+---
+
+## Axiom Inventory (P8)
+
+| Axiom | Role | Status |
+|-------|------|--------|
+| `sun_gibbs_dlr_lsi` | M3: LSI for SU(N) Gibbs | 📌 Clay core |
+| `entropy_perturbation_limit` | Taylor+DCT | 📌 |
+| `dirichlet_contraction` | Markov property | 📌 |
+| `poincare_to_covariance_decay` | M4: SZ semigroup | 📌 |
+| `instCompactSpaceSUN` | M1b: Heine-Borel SU(N) | 🔄 in progress |
+| `clustering_to_spectralGap` | functional analysis | 📌 |
+
+---
+
+## Key Technical Notes
+
+- `Matrix` is a `def` not `abbrev` → typeclass synthesis does NOT unfold it → use `change` tactic
+- `Measure.haar` is NOT automatically `IsProbabilityMeasure` → use `haarMeasure(univ)` + `haarMeasure_self`
+- `Circle.instCompactSpace` exists in Mathlib; `MeasurableSpace Circle` does NOT → use `borel Circle` + `⟨rfl⟩`
+- `finBoxGeometry` (L0) provides `FiniteLatticeGeometry d N G` for ANY `[Group G]` — no SU(N)-specific geometry needed
+
 ## What is this?
 
 The Eriksson Programme is a multi-phase formal verification project in Lean 4 aimed at making the mathematical architecture of the Yang-Mills mass gap problem **brutally explicit**.
