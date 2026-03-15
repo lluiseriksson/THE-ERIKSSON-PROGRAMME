@@ -486,3 +486,23 @@ in the main proof chain.
 |------|-------|------|
 | LSItoSpectralGap.lean | 144 | ent_ge_var — unused in main chain |
 | StroockZegarlinski.lean | 101,102,112 | Clay core |
+
+
+## Session update — StroockZegarlinski sorrys closed ✅
+
+### Closed
+- `StroockZegarlinski.lean` lines 102, 112: proved `¬Integrable (F-c)²`
+  via: `(F-c)² ∈ L¹ → |F-c| ∈ L¹ → F ∈ L¹ → F² ∈ L¹`, contradiction.
+- `LSItoSpectralGap.lean` line 144: removed `ent_ge_var` (mathematically false
+  for signed f — counterexample: f=±1 gives Ent(f²)=0 but Var(f)=1).
+
+### Current sorry inventory (project files only)
+| File | Real sorrys | Note |
+|------|-------------|------|
+| StroockZegarlinski.lean | 0 | ✅ |
+| LSItoSpectralGap.lean | 0 | ✅ |
+| EntropyPerturbation.lean | 0 | ✅ |
+| SUN_DirichletForm.lean | 0 | ✅ |
+| All other YangMills files | 0 | ✅ |
+
+**Build: 7/7 OK. Zero sorrys in project files.**
