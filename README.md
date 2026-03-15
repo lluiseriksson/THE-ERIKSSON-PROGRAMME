@@ -70,7 +70,23 @@ Proof in `SUN_Compact.lean`:
 6. `IsCompact.of_isClosed_subset` concludes
 
 
-### M2 — IN PROGRESS 🔄
+
+### M2 — PARTIAL ✅
+`SUN_DirichletForm.lean`
+- `sunDirichletForm_concrete` = Σᵢ ∫ (∂_{Xᵢ} f)² dμ_Haar ✅
+- `sunDirichletForm_nonneg` ✅
+- `sunDirichletForm_const_invariant` ✅ 
+- `sunDirichletForm_quadratic` ✅
+- `sunDirichletForm_subadditive` 📌 sorry (needs `lieDerivative_add`)
+- `IsDirichletFormStrong` ✅ (modulo subadditive sorry)
+- Mathlib gap: `LieGroup`/`ChartedSpace` not yet for `specialUnitaryGroup`
+- Axioms: `lieDerivative_const_add`, `lieDerivative_smul`
+
+### Next: entropy_perturbation_limit
+Abstract Taylor+DCT lemma for entropy perturbation.
+Targeted before adding more Lie calculus axioms to M2.
+
+
 Target: Concrete definition of `sunDirichletForm N_c : (SUN_State_Concrete N_c → ℝ) → ℝ`
 
 Mathematical content: the Dirichlet form of the Lie-Laplacian on SU(N):
