@@ -98,9 +98,11 @@ lemma covariance_decay_to_exponential_clustering
     _ ≤ C * Real.sqrt (∫ x, F x ^ 2 ∂μ) *
             Real.sqrt (∫ x, G x ^ 2 ∂μ) *
           Real.exp (-1 / ξ) := by
-        gcongr
-        · exact hFsqrt
-        · exact hGsqrt
+        apply mul_le_mul_of_nonneg_right
+        · apply mul_le_mul_of_nonneg_right
+          · exact mul_le_mul_of_nonneg_left hFsqrt (by positivity)
+          · positivity
+        · positivity
 
 /-! ## Main theorem (M4) -/
 
@@ -120,7 +122,7 @@ theorem sz_lsi_to_clustering_bridge
   -- Step 1: LSI → Poincaré (constant α_star/2) at each volume
   have hPoincare : ∀ L, PoincareInequality (gibbsFamily L) E (α_star / 2) := fun L =>
     lsi_implies_poincare_strong (gibbsFamily L) E (hE L)
-      (fun f hf hfnn => (hLSI_per_volume L).2 hf hfnn) hα
+      (fun f hf _ => (hLSI_per_volume L).2 f hf) hα
   -- Step 2: Poincaré → L² spectral decay (M4a axiom)
   have hDecay : ∀ L, HasL2SpectralDecay (gibbsFamily L) E (α_star / 2) := fun L =>
     poincare_to_spectral_decay E (α_star / 2) (hE L) (hPoincare L)
