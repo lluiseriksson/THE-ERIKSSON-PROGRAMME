@@ -847,3 +847,29 @@ PoincareCovarianceRoadmap status:
 
 ### Axioms: 9 total
 To eliminate `poincare_implies_cov_bound`, connect it to `markov_to_covariance_decay`.
+
+
+## Next: eliminate poincare_implies_cov_bound (9 → 8 axioms)
+
+### Plan
+1. Add import of PoincareCovarianceRoadmap to StroockZegarlinski.lean
+2. Rewrite poincare_to_covariance_decay using markov_to_covariance_decay
+3. Delete axiom poincare_implies_cov_bound
+4. Net: 9 → 8 axioms, better structured
+
+### poincare_to_covariance_decay sketch
+```lean
+theorem poincare_to_covariance_decay (sg : MarkovSemigroup μ) ... :
+    HasCovarianceDecay μ 2 (1 / lam) := by
+  -- Use markov_to_covariance_decay (gives C=1)
+  -- Weaken 1 → 2 via nlinarith
+```
+
+### Remaining axiom structure after swap
+- markov_variance_decay (Gronwall on L²)
+- markov_covariance_transport (semigroup symmetry)
+- lieDerivative_* (3, Mathlib Lie gap)
+- dirichlet_contraction (Sobolev)
+- sz_lsi_to_clustering (SZ core)
+- sun_gibbs_dlr_lsi (Clay)
+= 8 total, all honest
