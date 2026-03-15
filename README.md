@@ -506,3 +506,32 @@ in the main proof chain.
 | All other YangMills files | 0 | ✅ |
 
 **Build: 7/7 OK. Zero sorrys in project files.**
+
+
+## MILESTONE — Zero sorrys in all project files ✅
+
+All real `sorry` tactics removed from YangMills project files.
+
+### Final sorry inventory
+| File | Status |
+|------|--------|
+| SUN_StateConstruction.lean | ✅ 0 sorrys |
+| SUN_Compact.lean | ✅ 0 sorrys |
+| SUN_DirichletForm.lean | ✅ 0 sorrys |
+| EntropyPerturbation.lean | ✅ 0 sorrys |
+| StroockZegarlinski.lean | ✅ 0 sorrys |
+| LSItoSpectralGap.lean | ✅ 0 sorrys |
+| ErikssonBridge.lean | ✅ 0 sorrys |
+
+### Key fixes this session
+- `StroockZegarlinski`: (F-c)²∈L¹ → F∈L¹ → F²∈L¹ by mono_fun + polarization
+- `LSItoSpectralGap`: removed false `ent_ge_var` (counterexample: f=±1)
+- `lsi_implies_poincare`: rerouted via `lsi_poincare_via_truncation`
+- `sunDirichletForm_subadditive`: proved via `lieDerivative_add` + nlinarith
+- `EntropyPerturbation`: DCT + Taylor + `tendsto_slope` for norm term
+
+### Remaining axioms (Clay core, by design)
+- `sun_gibbs_dlr_lsi` — DLR-LSI connection (Clay problem core)
+- `sz_lsi_to_clustering` — Stroock-Zegarlinski clustering
+- `clustering_to_spectralGap` — clustering → spectral gap
+- `lieDerivative_*` — directional derivatives on SU(N) (Mathlib gap)

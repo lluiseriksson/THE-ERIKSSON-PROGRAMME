@@ -92,14 +92,20 @@ lemma covariance_decay_to_exponential_clustering
     · by_cases hF1 : Integrable F μ
       · exact var_le_sq_int (μ := μ) F hF1 hF2
       · simp [integral_undef hF1]
-    · -- (F-∫F)² not integrable either when F² not integrable
-      have hFv : ¬Integrable (fun x => (F x - ∫ y, F y ∂μ) ^ 2) μ := by
+    · have hFv : ¬Integrable (fun x => (F x - ∫ y, F y ∂μ) ^ 2) μ := by
         intro hv
         apply hF2
-        have hc : Integrable (fun _ => (∫ y, F y ∂μ) ^ 2) μ := integrable_const _
-        -- (F-c)² integrable + constant c² integrable → F² integrable (via polarization)
-        -- Use: F² = (F-c)² + 2c·F - c²  but need F integrable first... use sorry
-        sorry
+        set c := ∫ y, F y ∂μ
+        have hFc : Integrable (fun x => F x - c) μ :=
+          (hv.add (integrable_const 1)).mono_fun
+            (hv.1.sub aestronglyMeasurable_const)
+            (ae_of_all _ fun x => by
+              simp only [Real.norm_eq_abs]
+              nlinarith [sq_nonneg (F x - c), sq_abs (F x - c), abs_nonneg (F x - c)])
+        have hF1 : Integrable F μ :=
+          (hFc.add (integrable_const c)).congr (ae_of_all _ fun x => by simp)
+        exact ((hv.add (hF1.const_mul (2 * c))).sub (integrable_const (c ^ 2))).congr
+          (ae_of_all _ fun x => by ring)
       simp [integral_undef hF2, integral_undef hFv]
   have hGsqrt : Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) ≤
       Real.sqrt (∫ x, G x ^ 2 ∂μ) := by
@@ -109,7 +115,19 @@ lemma covariance_decay_to_exponential_clustering
       · exact var_le_sq_int (μ := μ) G hG1 hG2
       · simp [integral_undef hG1]
     · have hGv : ¬Integrable (fun x => (G x - ∫ y, G y ∂μ) ^ 2) μ := by
-        intro hv; apply hG2; sorry
+        intro hv
+        apply hG2
+        set c := ∫ y, G y ∂μ
+        have hGc : Integrable (fun x => G x - c) μ :=
+          (hv.add (integrable_const 1)).mono_fun
+            (hv.1.sub aestronglyMeasurable_const)
+            (ae_of_all _ fun x => by
+              simp only [Real.norm_eq_abs]
+              nlinarith [sq_nonneg (G x - c), sq_abs (G x - c), abs_nonneg (G x - c)])
+        have hG1 : Integrable G μ :=
+          (hGc.add (integrable_const c)).congr (ae_of_all _ fun x => by simp)
+        exact ((hv.add (hG1.const_mul (2 * c))).sub (integrable_const (c ^ 2))).congr
+          (ae_of_all _ fun x => by ring)
       simp [integral_undef hG2, integral_undef hGv]
   have hmul :
       C * Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
