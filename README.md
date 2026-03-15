@@ -803,3 +803,22 @@ PoincareCovarianceRoadmap status:
 
 ### Target
 After this: `poincare_implies_cov_bound` reduces to single `markov_variance_decay` axiom.
+
+
+## v0.8.5 — MarkovSemigroup Layer 1 + Layer 2 axiom defined ✅
+
+`PoincareCovarianceRoadmap.lean` now contains:
+- `structure MarkovSemigroup` with 9 fields:
+  T, T_zero, T_add, T_const, T_linear, T_stat, T_integrable, T_sq_integrable, T_symm
+- `centered μ f` — centered function utility
+- `markov_centered_eq`, `markov_T_const`, `markov_T_add_fn`, `markov_T_smul`
+- `markov_var_eq` — variance preserved under T_stat
+- `axiom markov_variance_decay` — Layer 2 (Gronwall, stays axiom)
+- `theorem markov_to_covariance_decay` — Layer 4 skeleton (1 sorry)
+
+Axioms: 8 total.
+PoincareCovarianceRoadmap status:
+- Layer 1 (MarkovSemigroup): ✅ CLOSED
+- Layer 2 (markov_variance_decay): axiom (Gronwall on L²)
+- Layer 3 (Cauchy-Schwarz): ✅ CLOSED  
+- Layer 4 (assembly): skeleton with 1 sorry
