@@ -616,3 +616,26 @@ Build: 0 errors · 0 sorrys (lake build) · 1 honest sorry in hE_strong
 | `lieDerivative_add` | SUN_DirichletForm | Mathlib gap (LieGroup SU(N)) |
 | `sunDirichletForm_contraction` | SUN_DirichletForm | Mathlib gap (chain rule Lie) |
 | `sun_gibbs_dlr_lsi` | BalabanToLSI | Clay core |
+
+
+## Next Steps — Axiom Frontier
+
+### Mathlib gaps (blocked on library infrastructure)
+
+**`hille_yosida_semigroup`** — Beurling-Deny / Hille-Yosida correspondence.
+Unblocked when Mathlib gains C₀-semigroup theory for unbounded operators.
+Standard 1950s mathematics; single use in `sz_lsi_to_clustering`.
+
+**`lieDerivative_const_add`, `lieDerivative_smul`, `lieDerivative_add`** —
+Lie derivatives on SU(N). Blocked on `LieGroup` API for compact matrix groups
+in Mathlib. All three are trivial algebraic identities once the API exists.
+
+**`sunDirichletForm_contraction`** — Normal contraction for the SU(N) Dirichlet
+form. Requires chain rule for Lie derivatives: |∂(trunc f)| ≤ |∂f| via
+|trunc'| ≤ 1. Blocked same as above.
+
+### Clay core (do not attack)
+
+**`sun_gibbs_dlr_lsi`** — SU(N) Yang-Mills satisfies DLR-LSI(α*).
+This is the mathematical core of the Clay problem.
+Source: E26 paper series (2602.0046–2602.0117), 29/29 audit PASS.
