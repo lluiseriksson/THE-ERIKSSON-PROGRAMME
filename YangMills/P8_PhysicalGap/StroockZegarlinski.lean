@@ -65,7 +65,7 @@ private lemma var_le_sq_int {μ : Measure Ω} [IsProbabilityMeasure μ]
     (f : Ω → ℝ) (hf : Integrable f μ) (hf2 : Integrable (fun x => f x ^ 2) μ) :
     ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤ ∫ x, f x ^ 2 ∂μ := by
   -- Use integral_var_eq: ∫(f - ∫f)² = ∫f² - (∫f)² ≤ ∫f²
-  have heq := integral_var_eq f hf hf2
+  have heq := integral_var_eq μ f hf hf2
   linarith [sq_nonneg (∫ y, f y ∂μ)]
 
 /-- HasCovarianceDecay implies ExponentialClustering.
