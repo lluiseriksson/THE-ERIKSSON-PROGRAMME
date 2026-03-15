@@ -443,3 +443,41 @@ Also:
 
 **P8 axioms: 8 total** (down from 9)
 Build: 0 errors · 0 sorrys
+
+## v0.8.14 — `sz_covariance_bridge` ELIMINATED ✅
+
+**Axiom → Theorem.** Proved from `markov_variance_decay` + Cauchy-Schwarz:
+```
+|Cov(F, T_t G)| ≤ √Var(F) · √Var(T_t G)          (Cauchy-Schwarz)
+               ≤ √Var(F) · exp(-γt) · √Var(G)      (variance decay)
+√(exp(-2γt)) = exp(-γt)  via Real.sqrt_mul + Real.sqrt_sq_eq_abs
+```
+
+Also in this milestone:
+- `markov_variance_decay` PROVED (v0.8.13) from `markov_spectral_gap` via γ₀/2 witness
+- `CovarianceLemmas.lean` — Cauchy-Schwarz extracted to break import cycle
+- Import cycle `PoincareCovarianceRoadmap ↔ StroockZegarlinski` broken
+- `EntropyPerturbation.lean` rewritten for Mathlib v4.29.0-rc6
+- `T_sub_const`, `variance_eq_l2_sq_centered`, `varT_poincare_bound` proved
+
+**P8 axioms: 7 total** (down from 9 at session start)
+Build: 0 errors · 0 sorrys · lake build ✅
+
+### Session progress (v0.8.11 → v0.8.14)
+| Version | Achievement |
+|---------|-------------|
+| v0.8.11 | MarkovVarianceDecay skeleton — T_sub_const + variance_eq proved |
+| v0.8.12 | varT_poincare_bound proved, markov_variance_decay axiom type-checked |
+| v0.8.13 | markov_variance_decay PROVED — axiom eliminated via γ₀/2 witness |
+| v0.8.14 | sz_covariance_bridge PROVED — Cauchy-Schwarz + variance decay chain |
+
+### Remaining P8 axioms (7 total)
+| Axiom | File | Path to removal |
+|-------|------|----------------|
+| `markov_spectral_gap` | MarkovSemigroupDef | Generator ODE + Gronwall |
+| `lieDerivative_const_add` | SUN_DirichletForm | Wait for Mathlib SU(N) LieGroup |
+| `lieDerivative_smul` | SUN_DirichletForm | Same |
+| `lieDerivative_add` | SUN_DirichletForm | Same |
+| `dirichlet_contraction` | LSItoSpectralGap | Sobolev/weak derivatives |
+| `sz_lsi_to_clustering` | LSItoSpectralGap | SZ 1992 core |
+| `sun_gibbs_dlr_lsi` | BalabanToLSI | Clay core — do not attack |
