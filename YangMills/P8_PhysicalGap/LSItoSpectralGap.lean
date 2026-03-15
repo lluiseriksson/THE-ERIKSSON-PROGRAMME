@@ -195,16 +195,18 @@ theorem entropy_perturbation_limit
 def IsDirichletFormStrong (E : (Ω → ℝ) → ℝ) (μ : Measure Ω) : Prop :=
   IsDirichletForm E μ ∧
   (∀ (c : ℝ) (f : Ω → ℝ), E (fun x => f x + c) = E f) ∧
-  (∀ (c : ℝ) (f : Ω → ℝ), E (fun x => c * f x) = c ^ 2 * E f)
+  (∀ (c : ℝ) (f : Ω → ℝ), E (fun x => c * f x) = c ^ 2 * E f) ∧
+  (∀ (f : Ω → ℝ) (n : ℝ), 0 < n →
+    E (fun x => max (min (f x) n) (-n)) ≤ E f)
 
-/-- Markov/contraction property of Dirichlet forms.
-    For a 1-Lipschitz truncation φ_n(t) = max(min(t,n),-n), E(φ_n∘f) ≤ E(f).
-    This is the defining Markov property of Dirichlet forms (cf. Fukushima et al.).
-    Status: AXIOM — requires extension theory of Dirichlet forms. -/
-axiom dirichlet_contraction
+/-- Normal contraction: truncation does not increase the Dirichlet form.
+    PROVED — extracted from the 4th field of IsDirichletFormStrong. -/
+theorem dirichlet_contraction
     (E : (Ω → ℝ) → ℝ) (hE : IsDirichletFormStrong E μ)
     (f : Ω → ℝ) (n : ℝ) (hn : 0 < n) :
-    E (fun x => max (min (f x) n) (-n)) ≤ E f
+    E (fun x => max (min (f x) n) (-n)) ≤ E f := by
+  obtain ⟨_, _, _, hcontr⟩ := hE
+  exact hcontr f n hn
 
 
 /-- LSI → Poincaré for bounded centered functions (Phase 10).
@@ -222,7 +224,7 @@ theorem lsi_implies_poincare_bdd_centered
     (hu2 : Integrable (fun x => u x ^ 2) μ) :
     ∫ x, u x ^ 2 ∂μ ≤ (1 / α) * E u := by
   obtain ⟨M, hMpos, hM⟩ := hbdd
-  obtain ⟨_, hE_const, hE_scale⟩ := hE
+  obtain ⟨_, hE_const, hE_scale, hE_trunc⟩ := hE
   have hlsi_t : ∀ᶠ t in nhdsWithin 0 {0}ᶜ,
       (∫ x, (1 + t * u x) ^ 2 * Real.log ((1 + t * u x) ^ 2) ∂μ -
         (∫ x, (1 + t * u x) ^ 2 ∂μ) * Real.log (∫ x, (1 + t * u x) ^ 2 ∂μ)) / t ^ 2
@@ -333,8 +335,8 @@ theorem lsi_poincare_via_truncation
     (hu1 : Integrable u μ) (hu2 : Integrable (fun x => u x ^ 2) μ)
     (hcenter : ∫ x, u x ∂μ = 0) :
     ∫ x, u x ^ 2 ∂μ ≤ (2 / α) * E u := by
-  obtain ⟨hE_base, hE_const, hE_scale⟩ := hE
-  have hES : IsDirichletFormStrong E μ := ⟨hE_base, hE_const, hE_scale⟩
+  obtain ⟨hE_base, hE_const, hE_scale, hE_trunc⟩ := hE
+  have hES : IsDirichletFormStrong E μ := ⟨hE_base, hE_const, hE_scale, hE_trunc⟩
   have hm_tend := trunc_mean_lim μ u hu_meas hu1 hcenter
   have ht_int : ∀ (n : ℕ), Integrable (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ))) μ := fun n =>
     trunc_int μ u n hu_meas hu1
@@ -468,7 +470,7 @@ theorem lsi_implies_poincare_strong
   refine ⟨by linarith, fun f hf => ?_⟩
   rw [show (1 : ℝ) / (α / 2) = 2 / α from by field_simp]
   set m := ∫ y, f y ∂μ
-  obtain ⟨hE_base, hE_const, hE_scale⟩ := hE
+  obtain ⟨hE_base, hE_const, hE_scale, hE_trunc⟩ := hE
   have hEu : E (fun x => f x - m) = E f := by
     have := hE_const (-m) f
     simp_rw [show (fun x => f x + -m) = (fun x => f x - m) from by ext x; ring] at this
@@ -519,7 +521,7 @@ theorem lsi_implies_poincare
   refine ⟨by linarith [hLSI.1], fun f hf => ?_⟩
   rw [show (1 : ℝ) / (α / 2) = 2 / α from by field_simp]
   set m := ∫ y, f y ∂μ
-  obtain ⟨hE_base, hE_const, hE_scale⟩ := hE
+  obtain ⟨hE_base, hE_const, hE_scale, hE_trunc⟩ := hE
   have hEu : E (fun x => f x - m) = E f := by
     have := hE_const (-m) f
     simp_rw [show (fun x => f x + -m) = (fun x => f x - m) from by ext x; ring] at this
