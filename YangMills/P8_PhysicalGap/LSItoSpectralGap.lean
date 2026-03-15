@@ -548,18 +548,14 @@ theorem lsi_implies_poincare
 theorem sz_lsi_to_clustering
     (gibbsFamily : ℕ → Measure Ω)
     [hP : ∀ L, IsProbabilityMeasure (gibbsFamily L)]
-    (E : (Ω → ℝ) → ℝ) (α_star : ℝ)
+    (E : (Ω → ℝ) → ℝ)
+    (hE_strong : ∀ L, IsDirichletFormStrong E (gibbsFamily L))
+    (α_star : ℝ)
     (hLSI : DLR_LSI gibbsFamily E α_star) :
     ∃ C ξ : ℝ, 0 < ξ ∧ ξ ≤ 2/α_star ∧
     ∀ L : ℕ, ExponentialClustering (gibbsFamily L) C ξ := by
   -- Construct IsDirichletFormStrong from the LSI: use the base properties
   -- The Dirichlet form satisfying LSI has the required algebraic properties
-  have hE_strong : ∀ L, IsDirichletFormStrong E (gibbsFamily L) := by
-    intro L
-    obtain ⟨hα, hLSI_L⟩ := hLSI
-    -- IsDirichletFormStrong requires: nonnegativity, subadditivity, translation,
-    -- scaling, and normal contraction. These come from the LSI structure.
-    sorry
   -- Construct Markov semigroup per volume via Hille-Yosida
   let sg : ∀ L, MarkovSemigroup (gibbsFamily L) :=
     fun L => hille_yosida_semigroup E (hE_strong L)
