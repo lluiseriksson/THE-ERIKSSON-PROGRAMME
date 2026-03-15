@@ -472,3 +472,17 @@ Proved `sunDirichletForm_subadditive` via:
 
 M2 (DirichletForm) now fully closed modulo 3 axioms on `lieDerivative`
 (const_add, smul, add) — all standard properties of directional derivatives.
+
+
+## Session update — lsi_implies_poincare rerouted ✅
+
+`lsi_implies_poincare` no longer depends on `ent_ge_var` (which had sorry).
+Rerouted through `lsi_poincare_via_truncation` — the truncation+centering path
+that was already fully proved. `ent_ge_var` sorry remains but is now unused
+in the main proof chain.
+
+### Active sorry inventory
+| File | Lines | Note |
+|------|-------|------|
+| LSItoSpectralGap.lean | 144 | ent_ge_var — unused in main chain |
+| StroockZegarlinski.lean | 101,102,112 | Clay core |

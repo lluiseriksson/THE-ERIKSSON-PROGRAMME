@@ -139,8 +139,41 @@ theorem ent_ge_var
     ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
     (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ) ≥
     ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ := by
-  -- ent_ge_var in original form (no hf_nn, no hent) remains as axiom
-  -- The proved version with correct hypotheses is ent_ge_var_nonneg below
+  -- Reduce to ent_ge_var_nonneg applied to |f|.
+  -- Key: |f|² = f², so entropy of |f| equals entropy of f.
+  -- Var(|f|) ≥ Var(f) is NOT true in general, but we only need
+  -- Ent(f²) ≥ Var(f), which follows from Ent(f²) = Ent(|f|²) ≥ Var(|f|) ≥ ... 
+  -- Actually: apply ent_ge_var_nonneg directly to |f| then relate vars.
+  -- Simpler: the inequality Ent(f²) ≥ Var(f) follows from Jensen.
+  -- Use ent_ge_var_nonneg on g = |f|: g² = f², Var(g) ≥ Var(f) not needed.
+  -- Direct route: use lsi_poincare path which avoids this theorem entirely.
+  -- For now: derive from ent_ge_var_nonneg on g x := Real.sqrt (f x ^ 2) = |f x|
+  have hg_nn : ∀ x, 0 ≤ |f x| := fun x => abs_nonneg _
+  have hg2_eq : (fun x => |f x| ^ 2) = (fun x => f x ^ 2) := by
+    ext x; simp [sq_abs]
+  have hg1 : Integrable (fun x => |f x|) μ := by
+    apply (hf2.mono_fun hf.abs.aestronglyMeasurable)
+    filter_upwards with x
+    simp [abs_le_one_add_sq, sq_abs]
+  have hent_g : Integrable (fun x => |f x| ^ 2 * Real.log (|f x| ^ 2)) μ := by
+    rw [hg2_eq]; exact hf2.congr (ae_of_all _ fun x => by simp [sq_abs])
+      |>.mono_fun (hf.aestronglyMeasurable.const_mul _)
+      (ae_of_all _ fun x => by simp [Real.norm_eq_abs])
+  have hbase := ent_ge_var_nonneg μ (fun x => |f x|) hg_nn hg1
+    (by rwa [hg2_eq]) (by rwa [show (fun x => |f x| ^ 2 * Real.log (|f x| ^ 2)) =
+        (fun x => f x ^ 2 * Real.log (f x ^ 2)) from by ext x; simp [sq_abs]])
+  -- hbase: Ent(|f|²) ≥ Var(|f|)
+  -- We need: Ent(f²) ≥ Var(f)
+  -- Ent(|f|²) = Ent(f²) since |f|² = f²
+  simp only [hg2_eq] at hbase
+  -- Var(|f|) ≥ Var(f): ∫(|f| - ∫|f|)² ≥ ∫(f - ∫f)²  -- NOT true in general
+  -- So this route fails. Use the direct proof instead:
+  -- Ent(f²) ≥ Var(f) is equivalent to ∫f²log(f²) - (∫f²)log(∫f²) ≥ ∫(f-∫f)²
+  -- This follows from the log-sum inequality / Jensen applied to φ(t) = t*log(t).
+  -- For the purposes of this proof, we use the fact that
+  -- lsi_implies_poincare_bdd_centered + lsi_poincare_via_truncation
+  -- give a complete proof that doesn't need ent_ge_var at all.
+  -- We leave this as sorry and route lsi_implies_poincare through the truncation path.
   sorry
 
 -- Proved version with correct hypotheses
@@ -523,21 +556,32 @@ theorem lsi_implies_poincare
     (E : (Ω → ℝ) → ℝ) (hE : IsDirichletForm E μ) (α : ℝ)
     (hLSI : LogSobolevInequality μ E α) :
     PoincareInequality μ E (α / 2) := by
+  -- Route entirely through lsi_poincare_via_truncation,
+  -- avoiding ent_ge_var (which has sorry).
+  -- lsi_implies_poincare_bdd_centered handles the bounded centered case,
+  -- and lsi_poincare_via_truncation lifts to general f via truncation + centering.
   refine ⟨by linarith [hLSI.1], fun f hf => ?_⟩
   rw [show (1 : ℝ) / (α / 2) = 2 / α from by field_simp]
-  by_cases hfc : Integrable (fun x => (f x - ∫ y, f y ∂μ) ^ 2) μ
-  · have hf2 : Integrable (fun x => f x ^ 2) μ :=
-        sq_sub_int_implies_sq_int μ f hf hfc
-    calc ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ
-        ≤ ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
-          (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ) :=
-            ent_ge_var μ f hf hf2
-      _ ≤ (2 / α) * E f := hLSI.2 f hf
-  · have h0 : ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ = 0 := integral_undef hfc
-    rw [h0]
-    apply mul_nonneg
-    · have := hLSI.1; positivity
-    · exact hE.1 f
+  set m := ∫ y, f y ∂μ
+  obtain ⟨hE_base, hE_const, hE_scale⟩ := hE
+  have hEu : E (fun x => f x - m) = E f := by
+    have := hE_const (-m) f
+    simp_rw [show (fun x => f x + -m) = (fun x => f x - m) from by ext x; ring] at this
+    exact this
+  by_cases hfc : Integrable (fun x => (f x - m) ^ 2) μ
+  · suffices h : ∫ x, (f x - m) ^ 2 ∂μ ≤ (2 / α) * E (fun x => f x - m) by
+      rwa [hEu] at h
+    have hu1_fm : Integrable (fun x => f x - m) μ :=
+      sq_sub_int_implies_int μ (fun x => f x - m) (hf.sub measurable_const) 0
+        (by simpa using hfc)
+    have hcenter_fm : ∫ x, (f x - m) ∂μ = 0 := by
+      have hf1 : Integrable f μ :=
+        sq_sub_int_implies_int μ f hf m (by simpa using hfc)
+      simp [integral_sub hf1 (integrable_const _), integral_const, probReal_univ, m]
+    exact lsi_poincare_via_truncation E ⟨hE_base, hE_const, hE_scale⟩ α hα hLSI
+        (fun x => f x - m) (hf.sub measurable_const) hu1_fm (by simpa using hfc) hcenter_fm
+  · rw [integral_undef hfc]
+    exact mul_nonneg (by positivity) (hE_base.1 f)
 
 axiom sz_lsi_to_clustering
     (gibbsFamily : ℕ → Measure Ω) (E : (Ω → ℝ) → ℝ) (α_star : ℝ)
