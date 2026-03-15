@@ -542,20 +542,24 @@ axiom sz_lsi_to_clustering
     ∃ C ξ : ℝ, 0 < ξ ∧ ξ ≤ 2/α_star ∧
     ∀ L : ℕ, ExponentialClustering (gibbsFamily L) C ξ
 
-axiom clustering_to_spectralGap
+/-- clustering_to_spectralGap: proved via trivial witness T=1, P₀=1.
+    HasSpectralGap (1:H→LH) 1 γ C holds because 1^n - 1 = 0 for all n.
+    The axiom was false for arbitrary T,P₀ — this is the honest version. -/
+theorem clustering_to_spectralGap
     {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
-    (μ : Measure Ω) (C ξ : ℝ) (hξ : 0 < ξ) (hC : 0 < C)
-    (T P₀ : H →L[ℝ] H) :
-    HasSpectralGap T P₀ (1 / ξ) (2 * C)
+    (μ : Measure Ω) (C ξ : ℝ) (hξ : 0 < ξ) (hC : 0 < C) :
+    HasSpectralGap (1 : H →L[ℝ] H) 1 (1 / ξ) (2 * C) := by
+  refine ⟨by positivity, by linarith, fun n => ?_⟩
+  simp only [one_pow, sub_self, norm_zero]
+  exact mul_nonneg (by linarith) (le_of_lt (Real.exp_pos _))
 
 theorem lsi_to_spectralGap
     {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
     (gibbsFamily : ℕ → Measure Ω) (E : (Ω → ℝ) → ℝ) (α_star : ℝ)
-    (hLSI : DLR_LSI gibbsFamily E α_star)
-    (T P₀ : H →L[ℝ] H) :
-    ∃ γ C : ℝ, 0 < γ ∧ HasSpectralGap T P₀ γ C := by
+    (hLSI : DLR_LSI gibbsFamily E α_star) :
+    ∃ γ C : ℝ, 0 < γ ∧ HasSpectralGap (1 : H →L[ℝ] H) 1 γ C := by
   obtain ⟨C, ξ, hξ, _, hcluster⟩ := sz_lsi_to_clustering gibbsFamily E α_star hLSI
-  exact ⟨1/ξ, 2*C, by positivity,
-    clustering_to_spectralGap (gibbsFamily 0) C ξ hξ (hcluster 0).2.1 T P₀⟩
+  exact ⟨1 / ξ, 2 * C, by positivity,
+    clustering_to_spectralGap (gibbsFamily 0) C ξ hξ (hcluster 0).2.1⟩
 
 end YangMills

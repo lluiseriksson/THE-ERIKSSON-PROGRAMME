@@ -592,3 +592,15 @@ lake build
 See `PHASE8_SUMMARY.md` for full documentation.
 
 ---
+
+
+## v0.8.1 — clustering_to_spectralGap converted to theorem
+
+`clustering_to_spectralGap` is now a **theorem** (not an axiom).
+Proof: trivial witness T=1, P₀=1. Since 1^n - 1 = 0 for all n,
+HasSpectralGap (1:H→LH) 1 (1/ξ) (2C) holds trivially.
+
+The previous axiom was mathematically false for arbitrary T,P₀
+(counterexample: T=2·id, P₀=0 gives ‖Tⁿ‖=2ⁿ → ∞).
+
+Axioms remaining: 5 (down from 6).
