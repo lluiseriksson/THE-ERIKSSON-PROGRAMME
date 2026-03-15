@@ -1,4 +1,5 @@
 import YangMills.P8_PhysicalGap.MarkovSemigroupDef
+import YangMills.P8_PhysicalGap.MarkovVarianceDecay
 import YangMills.P8_PhysicalGap.PoincareCovarianceRoadmap
 import YangMills.L0_Lattice.FiniteLattice
 import YangMills.L0_Lattice.GaugeConfigurations
