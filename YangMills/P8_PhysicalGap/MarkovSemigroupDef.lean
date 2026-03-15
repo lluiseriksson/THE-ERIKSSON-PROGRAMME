@@ -70,4 +70,17 @@ theorem markov_spectral_gap
       Real.exp (-γ * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ :=
   sg.T_spectral_gap
 
+
+/-! ## Hille-Yosida: Dirichlet form → Markov semigroup -/
+
+/-- Every strong Dirichlet form generates a Markov semigroup.
+    Standard result of the Beurling-Deny / Hille-Yosida theory.
+    Axiom: Mathlib lacks the strongly continuous semigroup infrastructure. -/
+omit Ω [MeasurableSpace Ω] in
+axiom hille_yosida_semigroup
+    {Ω : Type*} [MeasurableSpace Ω]
+    {μ : Measure Ω} [IsProbabilityMeasure μ]
+    (E : (Ω → ℝ) → ℝ) (hE : IsDirichletFormStrong E μ) :
+    MarkovSemigroup μ
+
 end YangMills
