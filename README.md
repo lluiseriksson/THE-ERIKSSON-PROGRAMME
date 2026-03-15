@@ -708,3 +708,44 @@ Net axioms: 7 (same count, but better structured).
 2. `poincare_implies_cov_bound` + `sz_lsi_to_clustering` — formalize MarkovSemigroup
 3. `sun_gibbs_dlr_lsi` — Clay problem core, do not attack without full theory
 4. Publish/share repo at current state
+
+
+## Next session plan — lieDerivative_* roadmap
+
+### Goal
+Prepare the exact API layer needed to eliminate the 3 `lieDerivative_*` axioms
+when Mathlib adds `LieGroup` support for `SU(N)`.
+
+### Planned work
+1. **Freeze minimal API** for `lieDerivative`:
+   - `lieExpCurve : LieGenIndex N_c → ℝ → SUN_State_Concrete N_c → SUN_State_Concrete N_c`
+   - `lieDerivative i f U = deriv (fun t => f (lieExpCurve i t U)) 0`
+   - With this definition, all 3 axioms follow from `deriv_add`, `deriv_const_mul`, `deriv_const_add`
+
+2. **Write target theorems** (still using axioms internally, but with proof sketches):
+```lean
+   theorem lieDerivative_const_add ... -- from deriv_const_add
+   theorem lieDerivative_smul ...      -- from deriv_const_mul  
+   theorem lieDerivative_add ...       -- from deriv_add + DifferentiableAt
+```
+
+3. **Create `LieDerivativeRoadmap.lean`** documenting:
+   - Expected definition of `lieExpCurve`
+   - Exact Mathlib blockers (need `SmoothManifoldWithCorners` for `↥(specialUnitaryGroup (Fin N) ℂ)`)
+   - 3 target theorems with proof routes
+
+### Mathlib blockers
+- `Matrix.specialUnitaryGroup` needs `LieGroup` instance
+- Requires `ModelWithCorners` + `ChartedSpace` + `ContMDiff` infrastructure
+- Or: ad-hoc definition of `t ↦ exp(t·Xᵢ)·U` using `Matrix.exp`
+
+### Why this matters
+These 3 axioms are the most attackable of the 7 remaining.
+Good preparation now = 3 axioms eliminated in one session when Mathlib catches up.
+
+### Axiom difficulty ranking (updated)
+1. `lieDerivative_*` — ⚠️ Soon (needs Mathlib LieGroup for SU(N))
+2. `poincare_implies_cov_bound` — 🔴 Hard (MarkovSemigroup formalization)
+3. `dirichlet_contraction` — 🔴 Hard (weak derivatives / Sobolev)
+4. `sz_lsi_to_clustering` — 🔴 Very hard (SZ 1992 core)
+5. `sun_gibbs_dlr_lsi` — ❌ Clay core (do not attack)
