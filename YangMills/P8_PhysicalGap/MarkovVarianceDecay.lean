@@ -48,11 +48,10 @@ theorem variance_eq_l2_sq_centered
   have hm_const : ∫ x, m ^ 2 ∂μ = m ^ 2 := by
     rw [integral_const, smul_eq_mul]
     change (μ Set.univ).toReal * m ^ 2 = m ^ 2
-    rw [measure_univ, ENNReal.one_toReal, one_mul]
+    rw [measure_univ, ENNReal.toReal_one, one_mul]
   have hm_mul : ∫ x, (2 * m) * f x ∂μ = (2 * m) * m := by
     rw [integral_const_mul]
-    simp only [m]
-    simp only [m]
+    simp [m]
   calc ∫ x, (f x - m) ^ 2 ∂μ
       = ∫ x, ((f x ^ 2 - (2 * m) * f x) + m ^ 2) ∂μ :=
           integral_congr_ae h_expand
@@ -85,7 +84,7 @@ theorem varT_poincare_bound
   have hg_center : ∫ x, (f x - m) ∂μ = 0 := by
     rw [integral_sub hf (integrable_const m), integral_const, smul_eq_mul]
     change ∫ x, f x ∂μ - (μ Set.univ).toReal * m = 0
-    rw [measure_univ, ENNReal.one_toReal, one_mul]
+    rw [measure_univ, ENNReal.toReal_one, one_mul]
     exact sub_self m
   have hg_int : Integrable (fun x => f x - m) μ := hf.sub (integrable_const m)
   -- g² integrable via algebraic expansion
@@ -100,7 +99,10 @@ theorem varT_poincare_bound
   -- LHS: ∫(T_t f - m)² = ∫(T_t(f-m))²
   have hlhs : ∫ x, (sg.T t f x - m) ^ 2 ∂μ =
               ∫ x, (sg.T t (fun y => f y - m) x) ^ 2 ∂μ := by
-    congr 1; ext x; rw [hTsub]
+    apply integral_congr_ae
+    filter_upwards with x
+    have hx := congr_fun hTsub x
+    rw [hx]
   rw [hlhs]
   exact hgap (fun x => f x - m) hg_center hg_int hg2_int
 
