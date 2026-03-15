@@ -124,35 +124,27 @@ private lemma covariance_eq_centered {μ : Measure Ω} [IsProbabilityMeasure μ]
   simp only [integral_const_mul, integral_const, probReal_univ, smul_eq_mul, mul_one]
   ring
 
-/-- Covariance bound: |Cov(F,G)| ≤ √Var(F) · √Var(G). Pure Cauchy-Schwarz. -/
+/-- Covariance bound: |Cov(F,G)| ≤ √Var(F) · √Var(G). Pure Cauchy-Schwarz.
+    Requires Integrable (F*G) because without it, ∫(F*G)=0 by Lean convention
+    but Cov(F,G) = (∫F)(∫G) ≠ 0 in general, making the bound false. -/
 lemma covariance_le_sqrt_var {μ : Measure Ω} [IsProbabilityMeasure μ]
     (F G : Ω → ℝ)
     (hFv : Integrable (fun x => (F x - ∫ y, F y ∂μ) ^ 2) μ)
-    (hGv : Integrable (fun x => (G x - ∫ y, G y ∂μ) ^ 2) μ) :
+    (hGv : Integrable (fun x => (G x - ∫ y, G y ∂μ) ^ 2) μ)
+    (hFG : Integrable (fun x => F x * G x) μ) :
     |∫ x, F x * G x ∂μ - (∫ x, F x ∂μ) * (∫ x, G x ∂μ)| ≤
     Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
     Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) := by
   set Fc := fun x => F x - ∫ y, F y ∂μ
   set Gc := fun x => G x - ∫ y, G y ∂μ
-  -- Get integrability of F and G from centered squares
-  have hF1 : Integrable F μ := by
-    have := sq_sub_int_implies_int μ F (hFv.1.1.of_comp (by fun_prop)) (∫ y, F y ∂μ)
+  have hF1 : Integrable F μ :=
+    sq_sub_int_implies_int μ F (hFv.1.1.of_comp (by fun_prop)) (∫ y, F y ∂μ)
       (by simpa using hFv)
-    exact this
-  have hG1 : Integrable G μ := by
-    have := sq_sub_int_implies_int μ G (hGv.1.1.of_comp (by fun_prop)) (∫ y, G y ∂μ)
+  have hG1 : Integrable G μ :=
+    sq_sub_int_implies_int μ G (hGv.1.1.of_comp (by fun_prop)) (∫ y, G y ∂μ)
       (by simpa using hGv)
-    exact this
-  -- Get integrability of FG from centered squares
-  by_cases hFG : Integrable (fun x => F x * G x) μ
-  · rw [covariance_eq_centered F G hF1 hG1 hFG]
-    exact abs_integral_mul_le Fc Gc hFv hGv
-  · simp only [integral_undef hFG]
-    simp only [sub_zero]
-    -- ∫F·G is 0, need |0 - (∫F)(∫G)| ≤ √Var(F)·√Var(G)
-    -- Actually ∫F·G = 0 here, so |0 - (∫F)(∫G)| = |(∫F)(∫G)|
-    -- This might not hold... use sorry for this edge case
-    sorry
+  rw [covariance_eq_centered F G hF1 hG1 hFG]
+  exact abs_integral_mul_le Fc Gc hFv hGv
 
 /-! ## Bridge axiom (M4 core) — decomposed -/
 

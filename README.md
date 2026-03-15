@@ -763,3 +763,21 @@ Key technique: `by_cases hfg : Integrable (f*g) μ` avoids measurability issues.
 Quadratic discriminant: 0 ≤ ∫(Bf-Ig)² → I²≤AB without division.
 
 PoincareCovarianceRoadmap Layer 3: CLOSED (modulo 1 edge-case sorry).
+
+
+## v0.8.4 — PoincareCovarianceRoadmap Layer 3 CLOSED ✅
+
+Zero sorrys. All lemmas proved:
+- `integral_mul_sq_le`: (∫fg)²≤(∫f²)(∫g²) — quadratic polynomial method
+- `abs_integral_mul_le`: |∫fg|≤√(∫f²)·√(∫g²)  
+- `covariance_eq_centered`: Cov(F,G) = ∫(F-mF)(G-mG)
+- `covariance_le_sqrt_var`: |Cov(F,G)| ≤ √Var(F)·√Var(G) (with hFG hypothesis)
+
+Key insight: `hFG : Integrable (F*G)` is a necessary hypothesis —
+without it the statement is mathematically false (Lean junk-value issue).
+
+PoincareCovarianceRoadmap status:
+- Layer 3 (Cauchy-Schwarz): ✅ CLOSED
+- Layer 1 (MarkovSemigroup interface): 📌 next
+- Layer 2 (markov_variance_decay): 📌 axiom
+- Layer 4 (assembly): 📌 needs layers 1-2
