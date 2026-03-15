@@ -83,7 +83,9 @@ Minimum API needed:
 - L² norm of gradient with respect to Haar measure
 
 ### M2, M3 — PENDING 📌
-- M2: `sunDirichletForm` — requires Lie group calculus on SU(N)
+- M2: `sunDirichletForm_concrete` ✅ PARTIAL — `SUN_DirichletForm.lean`
+  - `IsDirichletFormStrong` proved (modulo `subadditive` sorry + `lieDerivative` axioms)
+  - Mathlib gap: `LieGroup`/`ChartedSpace` not yet for `specialUnitaryGroup`
 - M3: `sun_gibbs_dlr_lsi` — DLR-LSI for SU(N) Gibbs measures (Clay core)
 
 ---
@@ -93,6 +95,8 @@ Minimum API needed:
 | Axiom | Role | Status |
 |-------|------|--------|
 | `sun_gibbs_dlr_lsi` | M3: LSI for SU(N) Gibbs | 📌 Clay core |
+| `lieDerivative_const_add` | M2: ∂(f+c) = ∂f | 📌 Lie calculus |
+| `lieDerivative_smul` | M2: ∂(cf) = c·∂f | 📌 Lie calculus |
 | `entropy_perturbation_limit` | Taylor+DCT | 📌 |
 | `dirichlet_contraction` | Markov property | 📌 |
 | `poincare_to_covariance_decay` | M4: SZ semigroup | 📌 |
