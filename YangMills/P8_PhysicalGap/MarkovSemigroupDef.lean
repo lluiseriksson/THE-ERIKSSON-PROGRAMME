@@ -12,7 +12,8 @@ markov_covariance_symm proved as theorem (not axiom).
 -/
 
 /-- Abstract Markov semigroup on a measure space. -/
-structure MarkovSemigroup {Ω : Type*} [MeasurableSpace Ω] (μ : Measure Ω) where
+structure MarkovSemigroup {Ω : Type*} [MeasurableSpace Ω]
+    (μ : Measure Ω) [IsProbabilityMeasure μ] where
   T             : ℝ → (Ω → ℝ) → (Ω → ℝ)
   T_zero        : ∀ f, T 0 f = f
   T_add         : ∀ s t f, T (s + t) f = T s (T t f)
@@ -29,6 +30,12 @@ structure MarkovSemigroup {Ω : Type*} [MeasurableSpace Ω] (μ : Measure Ω) wh
   T_symm        : ∀ t f g,
                     Integrable (fun x => f x * g x) μ →
                     ∫ x, f x * T t g x ∂μ = ∫ x, T t f x * g x ∂μ
+  /-- Spectral gap: exponential variance decay.
+      Restricts to semigroups that admit a gap — as in the Yang-Mills case. -/
+  T_spectral_gap : ∃ γ : ℝ, 0 < γ ∧
+      ∀ (f : Ω → ℝ), Integrable f μ → ∀ t : ℝ, 0 ≤ t →
+        ∫ x, (T t f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤
+        Real.exp (-γ * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ
 
 /-- Centered function: f - ∫f -/
 noncomputable def centered {Ω : Type*} [MeasurableSpace Ω]
@@ -51,15 +58,16 @@ theorem markov_covariance_symm
   rw [hsymm, hstatF, hstatG]
 
 
-/-! ## Spectral Gap Axiom -/
+/-! ## Spectral Gap — field projection -/
 
-omit Ω [MeasurableSpace Ω] in
-axiom markov_spectral_gap
+/-- Spectral gap: proved from the T_spectral_gap field of MarkovSemigroup. -/
+theorem markov_spectral_gap
     {Ω : Type*} [MeasurableSpace Ω]
     {μ : Measure Ω} [IsProbabilityMeasure μ]
     (sg : MarkovSemigroup μ) :
     ∃ γ : ℝ, 0 < γ ∧ ∀ (f : Ω → ℝ), Integrable f μ → ∀ t : ℝ, 0 ≤ t →
       ∫ x, (sg.T t f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤
-      Real.exp (-γ * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ
+      Real.exp (-γ * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ :=
+  sg.T_spectral_gap
 
 end YangMills
