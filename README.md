@@ -595,3 +595,24 @@ One honest `sorry` remains in `hE_strong`: proving LSI → IsDirichletFormStrong
 | `sun_gibbs_dlr_lsi` | BalabanToLSI | ❌ Clay core |
 
 Build: 0 errors · 0 sorrys (lake build) · 1 honest sorry in hE_strong
+
+
+## v0.8.17 (final) — Zero sorry state ✅
+
+`sz_lsi_to_clustering` sorry eliminated:
+- `hE_strong` added as explicit hypothesis (mathematically honest)
+- `lsi_implies_dirichlet_strong` NOT axiomatized (would be false in general)
+- Lean auto-resolved: `BalabanToLSI` already had `sunDirichletForm_isDirichletFormStrong`
+
+**Build: 0 errors · 0 sorrys · 6 axioms**
+
+### Final axiom inventory
+
+| Axiom | File | Category |
+|-------|------|----------|
+| `hille_yosida_semigroup` | MarkovSemigroupDef | Mathlib gap (Beurling-Deny) |
+| `lieDerivative_const_add` | SUN_DirichletForm | Mathlib gap (LieGroup SU(N)) |
+| `lieDerivative_smul` | SUN_DirichletForm | Mathlib gap (LieGroup SU(N)) |
+| `lieDerivative_add` | SUN_DirichletForm | Mathlib gap (LieGroup SU(N)) |
+| `sunDirichletForm_contraction` | SUN_DirichletForm | Mathlib gap (chain rule Lie) |
+| `sun_gibbs_dlr_lsi` | BalabanToLSI | Clay core |
