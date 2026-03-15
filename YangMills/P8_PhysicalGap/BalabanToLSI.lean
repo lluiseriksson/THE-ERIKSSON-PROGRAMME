@@ -49,26 +49,79 @@ opaque sunGibbsFamily (d N_c : ℕ) (β : ℝ) : ℕ → Measure (SUN_State N_c)
 
 /-! ## M1: Single-site LSI for SU(N) Haar measure -/
 
-/-- **MATHLIB GAP — M1: Bakry-Émery + Holley-Stroock for SU(N).**
+/-- **MATHLIB GAP: Bakry-Émery curvature-dimension condition CD(K,∞).**
 
-Mathematical chain (all steps standard, blocked only by Mathlib gaps):
-1. `RicciSUN.lean` already proves: Ric_{su(N)}(X,X) = (N/4)·‖X‖²
-2. Bakry-Émery (1985): Ric ≥ K > 0 ⟹ LSI(K) for the volume measure
-   (requires: Bochner formula + Γ₂-calculus on Riemannian manifolds)
-3. Holley-Stroock (1987): if dν/dμ ≤ C then LSI(μ,α) ⟹ LSI(ν, α/C)
-   (Gibbs tilt by e^{β·Re·tr(U)} has ‖V‖_∞ ≤ βN on compact SU(N))
+Opaque predicate: for a probability measure μ with Dirichlet form E,
+CD(K,∞) holds iff Γ₂(f,f) ≥ K·Γ(f,f) for all smooth f, where:
+  Γ(f,f) = |∇f|² (carré du champ / energy density)
+  Γ₂(f,f) = ½L|∇f|² - ⟨∇f, ∇Lf⟩ (iterated carré du champ)
+
+On Riemannian manifolds, this is equivalent to Ric ≥ K.
+Kept opaque: Mathlib 4.29 has no Γ₂ calculus.
+Reference: Bakry-Gentil-Ledoux, Definition 1.16.1. -/
+opaque BakryEmeryCD
+    {Ω : Type*} [MeasurableSpace Ω]
+    (μ : MeasureTheory.Measure Ω)
+    (E : (Ω → ℝ) → ℝ) (K : ℝ) : Prop
+
+/-- **MATHLIB GAP: The Bakry-Émery criterion for LSI.**
+
+Universal theorem: CD(K,∞) with K > 0 implies LSI with constant K.
+Proved via semigroup interpolation (Ent(P_t f²) monotone decreasing).
+Applies to any Markov diffusion, not only SU(N).
 
 References:
-- Bakry-Gentil-Ledoux, §5.7 (Bakry-Émery criterion)
-- Holley-Stroock (1987) [Z. Wahrsch., 74: 87-101]
-- RicciSUN.lean: `ricci_from_killing` (step 1 already proved)
+- Bakry-Émery (1985), C. R. Acad. Sci.
+- Bakry-Gentil-Ledoux, Theorem 5.7.1
 
-Removal plan: When Mathlib has `BakryEmery.lsi_of_ricci_lower_bound`,
-this becomes a 3-line theorem using `ricci_from_killing` from RicciSUN.lean. -/
-axiom sun_haar_lsi
+Removal plan: When Mathlib formalizes heat semigroups + Γ₂ calculus,
+this becomes a proved theorem for any Riemannian manifold. -/
+axiom bakry_emery_lsi
+    {Ω : Type*} [MeasurableSpace Ω]
+    (μ : MeasureTheory.Measure Ω) [MeasureTheory.IsProbabilityMeasure μ]
+    (E : (Ω → ℝ) → ℝ) (K : ℝ) (hK : 0 < K) :
+    BakryEmeryCD μ E K →
+    LogSobolevInequality μ E K
+
+/-- **MATHLIB GAP: SU(N) satisfies CD(N/4, ∞) — geometric typing bridge.**
+
+This axiom bridges two worlds:
+  A) RicciSUN.lean (algebraic): Ric_{su(N)}(X,X) = (N/4)·inner(X,X)  [PROVED]
+  B) SUN_DirichletForm.lean (analytic): sunHaarProb + sunDirichletForm_concrete
+
+The bridge requires (all standard differential geometry, not in Mathlib):
+1. su(N) generators = left-invariant vector fields on SU(N)
+2. Killing inner product on su(N) → bi-invariant Riemannian metric on SU(N)
+3. Haar measure = Riemannian volume measure for this metric
+4. sunDirichletForm_concrete(f) = ∫|∇f|² dHaar  (for orthonormal basis {Xᵢ})
+5. Bochner formula: Γ₂(f) ≥ Ric(∇f,∇f) = (N/4)|∇f|² = (N/4)·Γ(f)
+
+References:
+- Milnor, "Curvatures of left invariant metrics on Lie groups" (1976)
+- do Carmo, Riemannian Geometry, Theorem 9.3.1 (Bochner-Weitzenböck)
+- RicciSUN.lean: ricci_from_killing (step A already proved) -/
+axiom sun_bakry_emery_cd
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) :
+    BakryEmeryCD (sunHaarProb N_c) (sunDirichletForm_concrete N_c) ((N_c : ℝ) / 4)
+
+/-- **THEOREM: Haar LSI for SU(N) — assembled from sub-axioms.**
+
+Formerly a monolithic axiom. Now derived:
+  sun_bakry_emery_cd  →  BakryEmeryCD (N/4)
+  bakry_emery_lsi     →  LSI(N/4)
+
+The constant N/4 is sharp: matches Ric_{SU(N)} = N/4 from RicciSUN.lean.
+For N=2: SU(2) ≅ S³, Ric = 1/2, LSI(1/2).
+For N=3: Ric = 3/4, LSI(3/4). -/
+theorem sun_haar_lsi
     (N_c : ℕ) (hN_c : 2 ≤ N_c) :
     ∃ α_haar : ℝ, 0 < α_haar ∧
-      LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α_haar
+      LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α_haar := by
+  haveI : NeZero N_c := ⟨by linarith⟩
+  refine ⟨(N_c : ℝ) / 4, by positivity, ?_⟩
+  apply bakry_emery_lsi (sunHaarProb N_c) (sunDirichletForm_concrete N_c)
+    ((N_c : ℝ) / 4) (by positivity)
+  exact sun_bakry_emery_cd N_c hN_c
 
 /-! ## M2: Balaban RG — uniform LSI (Clay Millennium core) -/
 
