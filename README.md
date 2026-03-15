@@ -113,7 +113,7 @@ Minimum API needed:
 | `sun_gibbs_dlr_lsi` | M3: LSI for SU(N) Gibbs | 📌 Clay core |
 | `lieDerivative_const_add` | M2: ∂(f+c) = ∂f | 📌 Lie calculus |
 | `lieDerivative_smul` | M2: ∂(cf) = c·∂f | 📌 Lie calculus |
-| `entropy_perturbation_limit` | Taylor+DCT | 📌 |
+| `entropy_perturbation_limit` | Taylor+DCT | 🔄 PARTIAL (EntropyPerturbation.lean) |
 | `dirichlet_contraction` | Markov property | 📌 |
 | `poincare_to_covariance_decay` | M4: SZ semigroup | 📌 |
 | `instCompactSpaceSUN` | M1b: Heine-Borel SU(N) | ✅ PROVED (SUN_Compact.lean) |
