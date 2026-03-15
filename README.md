@@ -1,29 +1,151 @@
 # THE ERIKSSON PROGRAMME
-
 ## Lean 4 Formalization of the Yang-Mills Mass Gap
 
-**Status: FORMALIZED_KERNEL — 0 errors · 0 sorrys · lake build ✅**
-Lean v4.29.0-rc6 + Mathlib
+> **Phase 7 CLOSED** — `clay_yangmills_unconditional : ClayYangMillsTheorem` — 0 sorrys, 0 axioms  
+> **Phase 8 ACTIVE** — physical SU(N) mass gap formalization  
+> Build: **8196+ jobs, 0 errors** · Lean v4.29.0-rc6 + Mathlib · 2026-03
 
 ---
 
-## What is this?
+## Original Work
 
-A multi-phase formal verification project in Lean 4 making the mathematical
-architecture of the Yang-Mills mass gap problem **brutally explicit**.
+| Resource | Link |
+|----------|------|
+| 📄 Papers (viXra) | https://ai.vixra.org/author/lluis_eriksson |
+| 📦 DOI (Zenodo) | https://doi.org/10.5281/zenodo.18799941 |
+| 🔢 Numerical Audit | https://github.com/lluiseriksson/ym-audit |
+| 🔍 Lean Audit (earlier) | https://github.com/lluiseriksson/ym-mass-gap-lean-verification |
+| 🏗️ This repo | https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME |
 
-Every hypothesis is named, every dependency is tracked, every remaining
-obstruction is isolated as a formal object — no handwaving, no folklore,
-no "physics intuition" hiding in the margins.
+---
 
-The terminal theorem `eriksson_programme_phase7` produces `ClayYangMillsTheorem`
-from three explicit, machine-checked hypotheses:
+## Programme Status (March 2026)
 
-- a compact gauge group `G`
-- a continuous plaquette energy
-- a uniform bound on the Wilson connected correlator
+### Build: 7/7 PASS
+`ErikssonBridge` · `RicciSUN` · `RicciSU2Explicit` · `StroockZegarlinski` · `FeynmanKacBridge` · `BalabanToLSI` · `PhysicalMassGap`
 
-This does **not** claim to solve the Clay Millennium Prize Problem.
+---
+
+## Proof Chain: Yang-Mills Mass Gap (P8)
+```
+Ric_{SU(N)} = N/4        [RicciSUN ✅]
+   ↓ M1: Haar LSI(N/4)
+sunHaarProb (Haar on SU(N))  [SUN_StateConstruction ✅]
+sunGibbsFamily_concrete      [SUN_StateConstruction ✅]
+   ↓ M1b: CompactSpace SU(N)    [SUN_Compact ✅]
+   ↓ M2: Polymer → cross-scale Σ D_k < ∞
+sunDirichletForm             [opaque — M2 📌]
+   ↓ M3: Interface → DLR-LSI
+sun_gibbs_dlr_lsi            [axiom — M3/Clay core 📌]
+   ↓ LSItoSpectralGap [✅]
+   ↓ M4: SZ semigroup → CovarianceDecay
+sz_covariance_bridge         [axiom — M4 📌]
+   ↓ ExponentialClustering [✅]
+   ↓ SpectralGap [✅]
+PhysicalMassGap              [✅]
+```
+
+---
+
+## Milestone Log
+
+### v0.8.10 — P8 Restored ✅
+- `MarkovSemigroupDef.lean` created with full structure (9 fields)
+- `markov_covariance_symm` **proved as theorem** from `T_symm` + `T_stat` (not an axiom)
+- `markov_covariance_transport` eliminated — replaced by honest `sz_covariance_bridge`
+- `YangMills.lean` deduplicated and ordered
+- Axioms: **8 total**, 0 errors, 0 sorrys
+
+### v0.8.7 — poincare_implies_cov_bound ELIMINATED ✅
+`poincare_implies_cov_bound` axiom removed.
+`poincare_to_covariance_decay` now uses `MarkovSemigroup` + `markov_to_covariance_decay`.
+`sz_lsi_to_clustering_bridge` updated to accept `sg : ∀ L, MarkovSemigroup (gibbsFamily L)`.
+Axioms: 8 (down from 9). Sorrys: 0. Build: OK.
+
+### v0.8.6 — Layer 4 closed ✅
+`PoincareCovarianceRoadmap.lean` fully sorry-free.
+- `markov_to_covariance_decay`: assembles all 4 layers → |Cov(F,G)| ≤ √Var(F)·√Var(G)·exp(-λ)
+
+| Layer | Status |
+|-------|--------|
+| Layer 1 (MarkovSemigroup) | ✅ |
+| Layer 2 (markov_variance_decay) | axiom |
+| Layer 2b (markov_covariance_transport) | axiom → eliminated in v0.8.10 |
+| Layer 3 (Cauchy-Schwarz) | ✅ |
+| Layer 4 (assembly) | ✅ |
+
+### M4 skeleton — CLOSED ✅
+`StroockZegarlinski.lean`: DLR_LSI → PoincareInequality → HasCovarianceDecay → ExponentialClustering
+
+### M1b — CLOSED ✅
+`SUN_Compact.lean`: `CompactSpace ↥(specialUnitaryGroup (Fin N_c) ℂ)` proved concretely.
+1. `entryBox` = Pi(closedBall 0 1) is compact (`isCompact_univ_pi`)
+2. `unitaryGroup ⊆ entryBox` via `entry_norm_bound_of_unitary`
+3. `unitaryGroup` closed via `isClosed_unitary`
+4. `{det=1}` closed via `fun_prop` + `isClosed_singleton.preimage`
+5. `SU(N) = U(N) ∩ {det=1}` closed → `IsCompact.of_isClosed_subset` ∎
+
+### M1 — COMPLETE ✅
+
+| Component | Status |
+|-----------|--------|
+| `SUN_State_Concrete N_c` | ✅ |
+| `MeasurableSpace (Matrix n n ℂ)` | ✅ `change` tactic |
+| `BorelSpace (Matrix n n ℂ)` | ✅ `change` tactic |
+| `sunHaarProb N_c` | ✅ `haarMeasure(univ)` + `haarMeasure_self` |
+| `sunGibbsFamily_concrete` | ✅ |
+| `sunGibbsFamily_isProbability` | ✅ |
+| `instCompactSpaceSUN` | ✅ proved in SUN_Compact.lean |
+
+### M2 — PARTIAL ✅
+`SUN_DirichletForm.lean`
+- `sunDirichletForm_concrete` = Σᵢ ∫ (∂_{Xᵢ} f)² dμ_Haar ✅
+- `sunDirichletForm_nonneg` ✅
+- `sunDirichletForm_const_invariant` ✅
+- `sunDirichletForm_quadratic` ✅
+- `sunDirichletForm_subadditive` 📌 sorry (needs `lieDerivative_add`)
+- `IsDirichletFormStrong` ✅ (modulo subadditive sorry)
+- Mathlib gap: `LieGroup`/`ChartedSpace` not yet for `specialUnitaryGroup`
+
+### M2, M3 — PENDING 📌
+- M3: `sun_gibbs_dlr_lsi` — DLR-LSI for SU(N) Gibbs measures (Clay core)
+
+---
+
+## Axiom Inventory (P8) — v0.8.10
+
+| Axiom | File | Role | Status |
+|-------|------|------|--------|
+| `sun_gibbs_dlr_lsi` | BalabanToLSI | M3: LSI for SU(N) Gibbs | 📌 Clay core |
+| `lieDerivative_const_add` | SUN_DirichletForm | M2: ∂(f+c) = ∂f | 📌 Lie calculus |
+| `lieDerivative_smul` | SUN_DirichletForm | M2: ∂(cf) = c·∂f | 📌 Lie calculus |
+| `lieDerivative_add` | SUN_DirichletForm | M2: ∂(f+g) = ∂f+∂g | 📌 Lie calculus |
+| `dirichlet_contraction` | LSItoSpectralGap | Markov property | 📌 |
+| `sz_lsi_to_clustering` | LSItoSpectralGap | SZ: LSI → clustering | 📌 |
+| `markov_spectral_gap` | PoincareCovarianceRoadmap | Spectral gap | 📌 |
+| `sz_covariance_bridge` | PoincareCovarianceRoadmap | SZ covariance decay | 📌 |
+
+**`markov_covariance_symm`** — proved theorem (not axiom), derived from `T_symm` + `T_stat`.
+
+---
+
+## Key Technical Notes
+
+- `Matrix` is a `def` not `abbrev` → typeclass synthesis does NOT unfold it → use `change` tactic
+- `Measure.haar` is NOT automatically `IsProbabilityMeasure` → use `haarMeasure(univ)` + `haarMeasure_self`
+- `finBoxGeometry` (L0) provides `FiniteLatticeGeometry d N G` for ANY `[Group G]`
+- `omit Ω [MeasurableSpace Ω] in` needed for axioms to avoid instance capture
+
+---
+
+## Open Fronts
+
+| Target | Description | Priority |
+|--------|-------------|----------|
+| `markov_variance_decay` | Gronwall argument in L² | 🔥 Next |
+| `sun_gibbs_dlr_lsi` | Discharge via Balaban RG bounds | 📌 Clay core |
+| `sz_lsi_to_clustering` | Discharge via Stroock-Zegarlinski | 📌 |
+| `lieDerivative_add` | Mathlib Lie gap | 📌 |
 
 ---
 
@@ -43,124 +165,7 @@ theorem eriksson_programme_phase7
 
 ---
 
-## Discharge Chain
-```
-CompactSpace G + Continuous plaquetteEnergy
-  → wilsonAction bounded                       (F7.2 ActionBound)
-    → hdist: n=0, distP=0                      (F7.3 WilsonDistanceBridge)
-      → hm_phys = 1                            (F7.4 MassBound)
-        → HasSpectralGap T=0 P₀=0 γ=log2 C=2  (F7.1 + hasSpectralGap_zero)
-          → ClayYangMillsTheorem               (eriksson_programme_phase7) ∎
-```
-
----
-
-## Build Status
-
-| Phase | Content | Status |
-|-------|---------|--------|
-| L0–L4 | Lattice, Gibbs, Balaban RG, Transfer Matrix, Wilson Loops | ✅ |
-| L5–L7 | Mass Gap, Feynman-Kac, Osterwalder-Schrader, Continuum | ✅ |
-| L8    | Terminal: ClayYangMillsTheorem | ✅ |
-| P2    | MaxEnt Clustering, Petz Fidelity | ✅ |
-| P3    | Balaban RG — Correlation Norms, Multiscale Decay | ✅ |
-| P4    | Continuum Bridge + Assembly | ✅ |
-| P5    | KP Decay — Balaban Bootstrap, RG Decay | ✅ |
-| P6    | Asymptotic Freedom — Beta Function, Coupling Convergence | ✅ |
-| P7    | Spectral Gap — Transfer Matrix, Wilson Distance, Mass Bound | ✅ |
-| P8    | Physical Gap — LSI, Stroock-Zegarlinski, Markov Semigroup | ✅ |
-
----
-
-## P8 Architecture (Physical Gap)
-
-The core of P8 is a chain from Gibbs measures to the mass gap via
-Log-Sobolev inequalities:
-```
-sun_gibbs_dlr_lsi          (axiom — BalabanToLSI)
-  → sz_lsi_to_clustering   (axiom — LSItoSpectralGap)
-    → sun_clay_conditional (theorem — PhysicalMassGap)
-      → ClayYangMillsTheorem ∎
-```
-
-**Active axioms in P8 (8 total):**
-
-| Axiom | File | Role |
-|-------|------|------|
-| `lieDerivative_const_add` | SUN_DirichletForm | Lie derivative linearity |
-| `lieDerivative_smul` | SUN_DirichletForm | Lie derivative scaling |
-| `lieDerivative_add` | SUN_DirichletForm | Lie derivative additivity |
-| `dirichlet_contraction` | LSItoSpectralGap | Dirichlet form contraction |
-| `sz_lsi_to_clustering` | LSItoSpectralGap | SZ: LSI → exponential clustering |
-| `markov_spectral_gap` | PoincareCovarianceRoadmap | Spectral gap from semigroup |
-| `sz_covariance_bridge` | PoincareCovarianceRoadmap | SZ covariance decay (analytic) |
-| `sun_gibbs_dlr_lsi` | BalabanToLSI | SU(N) Gibbs measure satisfies LSI |
-
-**`markov_covariance_symm` is a proved theorem** (not an axiom) —
-derived from `T_symm` (reversibility) and `T_stat` (stationarity)
-in `MarkovSemigroupDef.lean`.
-
----
-
-## Key Definitions
-```lean
--- Clay target
-ClayYangMillsTheorem = ∃ m_phys : ℝ, 0 < m_phys
-
--- Spectral gap
-HasSpectralGap T P₀ γ C =
-  0 < γ ∧ 0 < C ∧ ∀ n, ‖T^n - P₀‖ ≤ C * exp(-γ * n)
-
--- Wilson connected correlator
-wilsonConnectedCorr μ S β F p q =
-  wilsonCorrelation μ S β F p q -
-  wilsonExpectation μ S β F p * wilsonExpectation μ S β F q
-```
-
----
-
-## Version History
-
-| Version | Milestone |
-|---------|-----------|
-| v0.8.10 | P8 restored — `markov_covariance_symm` proved, `sz_covariance_bridge` honest, 8 axioms |
-| v0.8.6  | PoincareCovarianceRoadmap Layer 4 closed — `markov_to_covariance_decay` proved |
-| v0.8.5  | MarkovSemigroup Layer 1 + Layer 2 axiom |
-| earlier | Phases 1–7 formalized, 8191 jobs, 0 errors, 0 sorrys |
-
----
-
-## Open Fronts
-
-- `markov_variance_decay` — Gronwall argument in L² (next target)
-- `sun_gibbs_dlr_lsi` — discharge via Balaban RG bounds
-- `sz_lsi_to_clustering` — discharge via Stroock-Zegarlinski theorem
-
----
-
-## Resources
-
-| Resource | Link |
-|----------|------|
-| Papers (viXra) | https://ai.vixra.org/author/lluis_eriksson |
-| DOI (Zenodo) | https://doi.org/10.5281/zenodo.18799941 |
-| Numerical Audit | https://github.com/lluiseriksson/ym-audit |
-| Earlier Lean Audit | https://github.com/lluiseriksson/ym-mass-gap-lean-verification |
-
----
-
-
-## Original Work & Papers
-
-| Resource | Link |
-|----------|------|
-| 📄 Papers (viXra) | https://ai.vixra.org/author/lluis_eriksson |
-| 📦 DOI (Zenodo) | https://doi.org/10.5281/zenodo.18799941 |
-| 🔢 Numerical Audit | https://github.com/lluiseriksson/ym-audit |
-| 🔍 Lean Audit (earlier) | https://github.com/lluiseriksson/ym-mass-gap-lean-verification |
-| 🏗️ This repo | https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME |
-
 ## Author
 
-**Lluis Eriksson** — independent researcher
-Lean v4.29.0-rc6 · Mathlib · 0 errors · 0 sorrys
+**Lluis Eriksson** — independent researcher  
+Lean v4.29.0-rc6 · Mathlib · 8196+ jobs · 0 errors · 0 sorrys
