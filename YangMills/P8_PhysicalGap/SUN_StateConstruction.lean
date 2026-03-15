@@ -1,106 +1,149 @@
 import Mathlib
 import YangMills.L1_GibbsMeasure.GibbsMeasure
+import YangMills.L0_Lattice.FiniteLatticeGeometryInstance
 
 /-!
 # M1: Concrete Construction of SUN_State and sunGibbsFamily
 
-This file replaces the `opaque` declarations in BalabanToLSI.lean with
+Replaces the `opaque` declarations in BalabanToLSI.lean with
 concrete constructions based on Mathlib's matrix groups.
 
-## Architecture
+## Key results
 
-  SUN_State N_c  :=  GaugeConfig d L (Matrix.specialUnitaryGroup (Fin N_c) ℂ)
+- `SUN_State_Concrete N_c` := `↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)`
+- `sunHaarProb N_c`         := `haarMeasure univ` — a probability measure on SU(N_c)
+- `sunGibbsFamily_concrete` := `gibbsMeasure sunHaarProb wilsonAction β`
 
-  sunGibbsFamily d N_c β L  :=  gibbsMeasure (haarMeasure SU(N_c)) wilsonAction_SUN β
+## Typeclass instances proved
 
-## Status
+| Instance | Method |
+|---|---|
+| `MeasurableSpace (Matrix (Fin n) (Fin n) ℂ)` | `change` tactic |
+| `BorelSpace (Matrix (Fin n) (Fin n) ℂ)` | `change` tactic |
+| `MeasurableSpace ↥(specialUnitaryGroup (Fin n) ℂ)` | subtype |
+| `BorelSpace ↥(specialUnitaryGroup (Fin n) ℂ)` | subtype |
+| `CompactSpace ↥(specialUnitaryGroup (Fin n) ℂ)` | axiom (M1b) |
+| `IsProbabilityMeasure (sunHaarProb N_c)` | `haarMeasure_self` |
 
-- SUN_State: concrete (M1 partial)
-- sunGibbsFamily: connected to gibbsMeasure via Haar (M1 partial)
-- sunDirichletForm: still opaque (M2, requires Lie group calculus)
-- sun_gibbs_dlr_lsi: still axiom (M3, the Clay problem core)
+## Axioms
 
-## Key instances proved here
-
-- MeasurableSpace (Matrix (Fin n) (Fin n) ℂ)   via change tactic
-- BorelSpace (Matrix (Fin n) (Fin n) ℂ)          via change tactic
-- MeasurableSpace ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)  via subtype
-- BorelSpace ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)        via subtype
-- CompactSpace ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)      as axiom (M1b)
+- `instCompactSpaceSUN` (M1b): SU(N) is closed+bounded in M_N(ℂ), hence compact by Heine-Borel.
 -/
 
 namespace YangMills
 
-open MeasureTheory Matrix
+open MeasureTheory Matrix TopologicalSpace
 
 noncomputable section
 
-/-! ## Typeclass instances for Matrix over ℂ -/
+/-! ## Typeclass instances for Matrix over ℂ
 
-/-- MeasurableSpace for matrices over ℂ.
-    Matrix (Fin n) (Fin n) ℂ is definitionally equal to (Fin n → Fin n → ℂ),
-    but typeclass synthesis does not unfold the `def Matrix`.
-    We force it via `change`. -/
+`Matrix` is a `def`, not an `abbrev`, so typeclass synthesis does not
+unfold it automatically. We use the `change` tactic to reduce to the
+Pi type `Fin n → Fin n → ℂ` where instances exist. -/
+
 instance instMeasurableSpaceMatrix (n : ℕ) :
     MeasurableSpace (Matrix (Fin n) (Fin n) ℂ) := by
-  change MeasurableSpace (Fin n → Fin n → ℂ)
-  infer_instance
+  change MeasurableSpace (Fin n → Fin n → ℂ); infer_instance
 
-/-- BorelSpace for matrices over ℂ. -/
 instance instBorelSpaceMatrix (n : ℕ) :
     BorelSpace (Matrix (Fin n) (Fin n) ℂ) := by
-  change BorelSpace (Fin n → Fin n → ℂ)
-  infer_instance
+  change BorelSpace (Fin n → Fin n → ℂ); infer_instance
 
-/-! ## Typeclass instances for specialUnitaryGroup -/
+/-! ## Typeclass instances for SU(N) -/
 
-/-- MeasurableSpace for SU(N) as a subtype of Matrix. -/
 instance instMeasurableSpaceSUN (n : ℕ) :
-    MeasurableSpace ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) :=
-  inferInstance
+    MeasurableSpace ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) := inferInstance
 
-/-- BorelSpace for SU(N). -/
 instance instBorelSpaceSUN (n : ℕ) :
-    BorelSpace ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) :=
-  inferInstance
+    BorelSpace ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) := inferInstance
 
 /-- CompactSpace for SU(N).
-    Mathematical argument: SU(N) = {A ∈ M_N(ℂ) | A*A = I, det A = 1}
-    is a closed and bounded subset of M_N(ℂ) ≅ ℝ^(2N²), hence compact
-    by Heine-Borel.
-    TODO (M1b): formalize via isClosed + isBounded + finite-dim compactness. -/
+    SU(N) = {A ∈ M_N(ℂ) | A*A = 1, det A = 1} is closed and bounded
+    in M_N(ℂ) ≅ ℝ^(2N²), hence compact by Heine-Borel.
+    (M1b: pending full Lean proof) -/
 axiom instCompactSpaceSUN (n : ℕ) [NeZero n] :
     CompactSpace ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)
 
 attribute [instance] instCompactSpaceSUN
 
-/-! ## Concrete SUN_State -/
+/-! ## SUN_State: the concrete gauge group -/
 
-/-- The state space of SU(N_c) gauge fields on a d-dimensional lattice
-    of side length L. This replaces the `opaque` declaration in BalabanToLSI.lean.
+/-- The concrete state space: SU(N_c) matrices. -/
+abbrev SUN_State_Concrete (N_c : ℕ) :=
+  ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)
 
-    Concretely: a gauge configuration assigns an SU(N_c) matrix to each
-    edge of the lattice, compatible with orientation reversal.
+/-! ## Haar probability measure on SU(N_c)
 
-    Note: We use GaugeConfig from L0/L1 infrastructure, instantiated to
-    G = SU(N_c) (as a Mathlib type). -/
-abbrev SUN_State_Concrete (N_c : ℕ) := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)
+`Measure.haar` is not automatically `IsProbabilityMeasure`.
+We use `haarMeasure K₀` with `K₀ = univ` (valid since SU(N) is compact),
+and `haarMeasure_self` gives `μ(K₀) = 1`, hence `μ(univ) = 1`. -/
 
-/-- The Haar measure on SU(N_c), used as the reference measure for Gibbs families. -/
-noncomputable def sunHaarMeasure (N_c : ℕ) [NeZero N_c] :
+/-- The whole group as a `PositiveCompacts` set (valid since SU(N) is compact). -/
+def sunPositiveCompacts (N_c : ℕ) [NeZero N_c] :
+    PositiveCompacts ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) where
+  carrier := Set.univ
+  isCompact' := isCompact_univ
+  interior_nonempty' := by simp [interior_univ]
+
+/-- The normalized Haar probability measure on SU(N_c).
+    `haarMeasure_self` ensures μ(univ) = 1. -/
+noncomputable def sunHaarProb (N_c : ℕ) [NeZero N_c] :
     Measure ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) :=
-  Measure.haar
+  Measure.haarMeasure (sunPositiveCompacts N_c)
 
-/-- The SU(N_c) Gibbs measure family in finite volume L.
-    This is the concrete counterpart of the opaque `sunGibbsFamily`.
+/-- `sunHaarProb` is a probability measure. -/
+instance instIsProbabilityMeasureSUN (N_c : ℕ) [NeZero N_c] :
+    IsProbabilityMeasure (sunHaarProb N_c) := by
+  constructor
+  have := @Measure.haarMeasure_self
+    ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) _ _ _ _ _
+    (sunPositiveCompacts N_c)
+  simp [sunHaarProb, sunPositiveCompacts] at this ⊢
+  exact this
 
-    Constructed as: gibbsMeasure(Haar_SUN, wilsonAction, β)
-    where wilsonAction is the Wilson plaquette action on the lattice.
+/-! ## sunGibbsFamily: concrete connection to L1
 
-    Status: partial — the connection to the abstract `sunGibbsFamily`
-    requires the Wilson action to be defined for the SU(N) gauge group.
-    See BalabanToLSI.lean for the abstract axiom interface. -/
--- sunGibbsFamily_concrete will be developed in M1 continuation
+`finBoxGeometry` (FiniteLatticeGeometryInstance.lean) provides
+`FiniteLatticeGeometry d L G` for any `[Group G]`, so it applies
+directly to `G = SUN_State_Concrete N_c`.
+
+The concrete Gibbs family is:
+  `sunGibbsFamily_concrete d N_c L β plaquetteEnergy`
+  = `gibbsMeasure sunHaarProb wilsonAction_SUN β` -/
+
+/-- Concrete Gibbs measure for SU(N_c) Yang-Mills on a d×L^(d-1) lattice.
+
+  Parameters:
+  - `d`              : spacetime dimension
+  - `N_c`            : gauge group rank (SU(N_c))
+  - `L`              : lattice side length
+  - `β`              : inverse coupling
+  - `plaquetteEnergy`: single-plaquette energy function G → ℝ
+
+  The `finBoxGeometry` instance (L0) provides the lattice combinatorics.
+  `sunHaarProb` provides the reference probability measure.
+
+  Note: connecting to the abstract `sunGibbsFamily` in BalabanToLSI.lean
+  requires identifying `SUN_State N_c` with `SUN_State_Concrete N_c`
+  and matching the volume parameter L. -/
+noncomputable def sunGibbsFamily_concrete
+    (d N_c L : ℕ) [NeZero d] [NeZero L] [NeZero N_c]
+    (β : ℝ) (plaquetteEnergy : SUN_State_Concrete N_c → ℝ) :
+    Measure (GaugeConfig d L (SUN_State_Concrete N_c)) :=
+  gibbsMeasure (d := d) (N := L) (sunHaarProb N_c) plaquetteEnergy β
+
+/-- `sunGibbsFamily_concrete` is a probability measure (given integrability). -/
+theorem sunGibbsFamily_isProbability
+    (d N_c L : ℕ) [NeZero d] [NeZero L] [NeZero N_c]
+    (β : ℝ) (plaquetteEnergy : SUN_State_Concrete N_c → ℝ)
+    (h_int : Integrable
+      (fun U : GaugeConfig d L (SUN_State_Concrete N_c) =>
+        Real.exp (-β * wilsonAction plaquetteEnergy U))
+      (gaugeMeasureFrom (d := d) (N := L) (sunHaarProb N_c))) :
+    IsProbabilityMeasure
+      (sunGibbsFamily_concrete d N_c L β plaquetteEnergy) :=
+  gibbsMeasure_isProbability d L (sunHaarProb N_c) plaquetteEnergy β h_int
 
 end
 
