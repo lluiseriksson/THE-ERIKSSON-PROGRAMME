@@ -667,3 +667,44 @@ Net axioms: 7 (same count, but better structured).
 - `markov_semigroup_variance_decay` → removed
 - `poincare_implies_cov_bound` → new, cleaner axiom
 - `poincare_to_covariance_decay` → now a 5-line theorem
+
+
+## v0.8.3 — Final axiom inventory and session close
+
+### Current state (v0.8.3)
+- **Sorrys**: 0 in all project files
+- **Build**: OK (lake build exits 0)
+- **Axioms**: 7 (all documented, all justified)
+
+### Axiom classification
+
+| Axiom | File | Category | Path to removal |
+|-------|------|----------|----------------|
+| `poincare_implies_cov_bound` | StroockZegarlinski.lean | SZ core | Formalize MarkovSemigroup type |
+| `sz_lsi_to_clustering` | LSItoSpectralGap.lean | SZ theorem | Same as above |
+| `sun_gibbs_dlr_lsi` | BalabanToLSI.lean | Clay core | Do not attempt |
+| `dirichlet_contraction` | LSItoSpectralGap.lean | Markov/Sobolev | Needs weak derivatives in Mathlib |
+| `lieDerivative_const_add` | SUN_DirichletForm.lean | Mathlib Lie gap | Wait for SU(N) LieGroup in Mathlib |
+| `lieDerivative_smul` | SUN_DirichletForm.lean | Mathlib Lie gap | Same |
+| `lieDerivative_add` | SUN_DirichletForm.lean | Mathlib Lie gap | Same |
+
+### Theorems proved this session (full list)
+- `entropy_perturbation_limit` — DCT + Taylor + tendsto_slope
+- `sunDirichletForm_subadditive` — lieDerivative_add + nlinarith
+- `lsi_implies_poincare` — truncation path (ent_ge_var was FALSE for signed f)
+- `StroockZegarlinski` covariance bounds — integrability chain (F-c)²→F→F²
+- `clustering_to_spectralGap` — trivial witness T=1, P₀=1
+- `entropy_perturbation_limit` axiom → theorem (import restructure)
+- `poincare_to_covariance_decay` — 5-line theorem via poincare_implies_cov_bound
+
+### Tags
+- `v0.8.0` — baseline: 0 sorrys, 6 axioms documented
+- `v0.8.1` — clustering_to_spectralGap proved (T=1,P₀=1)
+- `v0.8.2` — entropy_perturbation_limit proved (import restructure)
+- `v0.8.3` — poincare_to_covariance_decay proved (SZ axiom refactored)
+
+### Next session recommendations
+1. `lieDerivative_*` — wait for Mathlib LieGroup instance for SU(N)
+2. `poincare_implies_cov_bound` + `sz_lsi_to_clustering` — formalize MarkovSemigroup
+3. `sun_gibbs_dlr_lsi` — Clay problem core, do not attack without full theory
+4. Publish/share repo at current state
