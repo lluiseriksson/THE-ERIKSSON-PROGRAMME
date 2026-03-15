@@ -51,6 +51,15 @@ def HasCovarianceDecay (μ : Measure Ω) (C ξ : ℝ) : Prop :=
       → |Cov(F,G)| ≤ 2 · √Var(F) · √Var(G) · exp(-λ)  [Cauchy-Schwarz]
     The clustering period ξ = 1/λ, rate C = 2.
     Reference: SZ 1992, Theorems 2.1 and 3.3. -/
+-- M4b status: AXIOM (semigroup theory not formalized in abstract setting)
+-- To prove this, one needs:
+--   (1) A Markov semigroup T_t : L²(μ) → L²(μ) associated to E
+--   (2) Spectral identity: d/dt Var_μ(T_t f) = -2 E(T_t f)
+--   (3) Gronwall: Var(T_t f) ≤ exp(-2λt) · Var(f)
+--   (4) Cov(F,G) = ∫₀^∞ d/dt Cov(F, T_t G) dt  → Cauchy-Schwarz bound
+-- These require Mathlib.Analysis.SpecialFunctions.ExpDeriv and
+-- a formal MarkovSemigroup type associated to IsDirichletFormStrong.
+-- Deferred to future work; see PHASE8_PLAN.md M4b.
 axiom poincare_to_covariance_decay
     {μ : Measure Ω} [IsProbabilityMeasure μ]
     (E : (Ω → ℝ) → ℝ) (lam : ℝ)

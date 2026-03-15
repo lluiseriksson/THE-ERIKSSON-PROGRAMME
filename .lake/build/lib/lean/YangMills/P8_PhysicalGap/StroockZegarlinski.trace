@@ -1,8 +1,8 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["1cf465a42261d7dd.olean"],
-  "i": "d5bf701fe80930ee.ilean",
+ {"o": ["d1f258aabf95bcf9.olean"],
+  "i": "04fc93061794463f.ilean",
   "c": "c5d76e24f469a8a5.c"},
  "log":
  [{"message":
@@ -31,11 +31,11 @@
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
   ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P8_PhysicalGap/StroockZegarlinski.lean",
-   "715e32f1e4987236"],
+   "2f76305bcacc2a30"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.P8_PhysicalGap.StroockZegarlinski",
    "5ed02b599d0dfafb"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "62c689ec012d717b"}
+ "depHash": "8998f0ddb226af45"}

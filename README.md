@@ -107,6 +107,31 @@ The sorry in `lsi_implies_poincare_strong` has been formally closed. The full tr
 | `ent_ge_var` (line 144) | ⚠️ STAYS | Mathematically false without nonnegativity hypothesis |
 
 
+
+## Milestone M4: Stroock-Zegarlinski skeleton (CLOSED — March 2026)
+
+The M4 skeleton in `StroockZegarlinski.lean` is complete:
+
+```
+DLR_LSI → PoincareInequality    [lsi_implies_poincare_strong ✅ Phase 10]
+         → HasCovarianceDecay    [poincare_to_covariance_decay 📌 M4b axiom]
+         → ExponentialClustering [covariance_decay_to_exponential_clustering ✅]
+```
+
+### M4b axiom: `poincare_to_covariance_decay`
+Mathematical content encapsulated (SZ 1992, Theorems 2.1 and 3.3):
+1. **Markov semigroup** T_t : L²(μ) → L²(μ) associated to Dirichlet form E
+2. **Spectral identity**: d/dt Var_μ(T_t f) = -2 E(T_t f)
+3. **Gronwall**: Var(T_t f) ≤ exp(-2λt) · Var(f)
+4. **Covariance bound**: Cov(F,G) = ∫₀^∞ d/dt Cov(F, T_t G) dt → Cauchy-Schwarz
+
+To formalize: requires `MarkovSemigroup` type + `IsDirichletFormStrong` connection.
+Deferred — no abstract `MarkovSemigroup` in Mathlib for this setting.
+
+### Next focus: M1–M3 (`sun_gibbs_dlr_lsi`)
+LSI for SU(N) Gibbs measures — the physical core of Phase 8.
+
+
 Two named axioms remaining:**
 
 | Axiom | Source | Status |
