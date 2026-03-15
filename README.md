@@ -546,3 +546,13 @@ Remaining axioms are by design (Clay core + Mathlib Lie group gap):
 - `sz_lsi_to_clustering`  
 - `clustering_to_spectralGap`
 - `lieDerivative_const_add`, `lieDerivative_smul`, `lieDerivative_add`
+
+
+## Documentation — PHASE8_SUMMARY.md added
+
+Full technical summary written to `PHASE8_SUMMARY.md`:
+- Dependency map of all 7 files
+- Remaining axioms with mathematical justification  
+- What is unconditionally proved
+- Notes for Lean reviewers
+- Why ent_ge_var was removed (mathematically false for signed f)
