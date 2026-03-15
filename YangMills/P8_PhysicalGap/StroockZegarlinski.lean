@@ -79,13 +79,25 @@ lemma covariance_decay_to_exponential_clustering
   have hFsqrt : Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) ≤
       Real.sqrt (∫ x, F x ^ 2 ∂μ) := by
     apply Real.sqrt_le_sqrt
-    -- Var(F) ≤ E[F²]; needs integrability (TODO M4: close this sorry)
-    sorry
+    -- Var(F) ≤ E[F²]: split on integrability
+    by_cases hF2 : Integrable (fun x => F x ^ 2) μ
+    · by_cases hF1 : Integrable F μ
+      · exact var_le_sq_int μ F hF1 hF2
+      · -- F not integrable: ∫F² is integrable but ∫F = 0 (undef), ∫(F-∫F)² = ∫F²
+        simp [integral_undef hF1]
+    · -- F² not integrable: ∫F² = 0, ∫(F-∫F)² = 0
+      simp [integral_undef hF2, integral_undef (show ¬Integrable (fun x => (F x - ∫ y, F y ∂μ) ^ 2) μ from by
+        intro h; exact hF2 (h.mono (by filter_upwards with x; nlinarith [sq_nonneg (F x), sq_nonneg (∫ y, F y ∂μ)])))]
   have hGsqrt : Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) ≤
       Real.sqrt (∫ x, G x ^ 2 ∂μ) := by
     apply Real.sqrt_le_sqrt
-    -- Var(G) ≤ E[G²]; needs integrability (TODO M4: close this sorry)
-    sorry
+    -- Var(G) ≤ E[G²]: split on integrability
+    by_cases hG2 : Integrable (fun x => G x ^ 2) μ
+    · by_cases hG1 : Integrable G μ
+      · exact var_le_sq_int μ G hG1 hG2
+      · simp [integral_undef hG1]
+    · simp [integral_undef hG2, integral_undef (show ¬Integrable (fun x => (G x - ∫ y, G y ∂μ) ^ 2) μ from by
+        intro h; exact hG2 (h.mono (by filter_upwards with x; nlinarith [sq_nonneg (G x), sq_nonneg (∫ y, G y ∂μ)])))]
   have hmul :
       C * Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
           Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ)
