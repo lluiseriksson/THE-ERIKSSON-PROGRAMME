@@ -781,3 +781,25 @@ PoincareCovarianceRoadmap status:
 - Layer 1 (MarkovSemigroup interface): 📌 next
 - Layer 2 (markov_variance_decay): 📌 axiom
 - Layer 4 (assembly): 📌 needs layers 1-2
+
+
+## Next: MarkovSemigroup structure (Layer 1)
+
+### Plan
+1. Define `structure MarkovSemigroup` with minimal API:
+   - `T : ℝ → (Ω → ℝ) → (Ω → ℝ)` — semigroup operators
+   - `T_zero`, `T_add`, `T_const`, `T_linear`
+   - `T_measurable`, `T_integral`, `T_preserves_integral`
+2. Define `centered μ f = fun x => f x - ∫ y, f y ∂μ`
+3. Prove mechanical lemmas: `centered_const`, `centered_add`, `centered_smul`
+4. Formulate `markov_variance_decay` axiom using the structure
+5. Leave Layer 4 assembly ready to combine with Layer 3 (already closed)
+
+### What to avoid for now
+- Continuity in t
+- Infinitesimal generator
+- L² symmetry
+- Positivity-preserving formalism
+
+### Target
+After this: `poincare_implies_cov_bound` reduces to single `markov_variance_decay` axiom.
