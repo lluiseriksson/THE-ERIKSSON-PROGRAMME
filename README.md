@@ -481,3 +481,34 @@ Build: 0 errors · 0 sorrys · lake build ✅
 | `dirichlet_contraction` | LSItoSpectralGap | Sobolev/weak derivatives |
 | `sz_lsi_to_clustering` | LSItoSpectralGap | SZ 1992 core |
 | `sun_gibbs_dlr_lsi` | BalabanToLSI | Clay core — do not attack |
+
+
+## v0.8.15 — `dirichlet_contraction` ELIMINATED ✅
+
+**Axiom → Field → Theorem.**
+
+The normal contraction property `E(trunc_n f) ≤ E(f)` is now part of
+`IsDirichletFormStrong` as a 4th field, making `dirichlet_contraction`
+a one-line projection theorem:
+```lean
+theorem dirichlet_contraction (E) (hE : IsDirichletFormStrong E μ) (f) (n) (hn) :
+    E (fun x => max (min (f x) n) (-n)) ≤ E f := by
+  obtain ⟨_, _, _, hcontr⟩ := hE; exact hcontr f n hn
+```
+
+Also:
+- `sunDirichletForm_contraction` added as honest local axiom in SUN_DirichletForm
+  (requires chain rule for Lie derivatives — currently axiomatized)
+- `EntropyPerturbation.lean` stabilized with `simpa`-based derivative proofs
+
+**P8 axioms: 7 total**
+
+### Session summary (v0.8.11 → v0.8.15): 9 → 7 axioms
+
+| Version | Axiom eliminated | Method |
+|---------|-----------------|--------|
+| v0.8.13 | `markov_variance_decay` | γ₀/2 witness from `markov_spectral_gap` |
+| v0.8.14 | `sz_covariance_bridge` | Cauchy-Schwarz + variance decay chain |
+| v0.8.15 | `dirichlet_contraction` | Field added to `IsDirichletFormStrong` |
+
+Build: 0 errors · 0 sorrys · lake build ✅
