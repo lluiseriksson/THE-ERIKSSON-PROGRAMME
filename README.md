@@ -905,3 +905,14 @@ The roadmap for elimination is documented in PoincareCovarianceRoadmap.lean.
 | dirichlet_contraction | Sobolev/Markov |
 | sz_lsi_to_clustering | SZ core |
 | sun_gibbs_dlr_lsi | Clay |
+
+
+## v0.8.7 — poincare_implies_cov_bound ELIMINATED ✅
+
+`poincare_implies_cov_bound` axiom removed.
+`poincare_to_covariance_decay` now uses `MarkovSemigroup` + `markov_to_covariance_decay`.
+`sz_lsi_to_clustering_bridge` updated to accept `sg : ∀ L, MarkovSemigroup (gibbsFamily L)`.
+
+Axioms: 8 (down from 9).
+Sorrys: 0.
+Build: OK.

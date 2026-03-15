@@ -148,32 +148,57 @@ lemma covariance_le_sqrt_var {μ : Measure Ω} [IsProbabilityMeasure μ]
   exact abs_integral_mul_le Fc Gc hFv hGv
 
 /-! ## Bridge axiom (M4 core) — decomposed -/
-/-- M4b core axiom: Poincaré gap → covariance bound with exponential decay.
-    Reference: Stroock-Zegarlinski 1992. Status: AXIOM.
-    The roadmap for eliminating this is in PoincareCovarianceRoadmap.lean:
-    markov_to_covariance_decay + markov_variance_decay + markov_covariance_transport. -/
-axiom poincare_implies_cov_bound
+/-- Poincaré → covariance decay via MarkovSemigroup.
+    Uses markov_to_covariance_decay (Layers 1+2+2b+3 of PoincareCovarianceRoadmap).
+    Requires sg : MarkovSemigroup μ and integrability hypotheses on F, G, T₁G.
+    The C=2 bound follows from C=1 by nlinarith. -/
+theorem poincare_to_covariance_decay
     {μ : Measure Ω} [IsProbabilityMeasure μ]
+    (sg : MarkovSemigroup μ)
     (E : (Ω → ℝ) → ℝ) (lam : ℝ)
     (hE : IsDirichletFormStrong E μ)
     (hP : PoincareInequality μ E lam)
-    (F G : Ω → ℝ) :
-    |∫ x, F x * G x ∂μ - (∫ x, F x ∂μ) * (∫ x, G x ∂μ)| ≤
-    2 * Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
-        Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) *
-    Real.exp (-lam)
-
-/-- Poincaré → covariance decay, proved from poincare_implies_cov_bound. -/
-theorem poincare_to_covariance_decay
-    {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (E : (Ω → ℝ) → ℝ) (lam : ℝ)
-    (hE : IsDirichletFormStrong E μ)
-    (hP : PoincareInequality μ E lam) :
+    (hsg_F : ∀ F : Ω → ℝ,
+      Integrable F μ →
+      Integrable (fun x => F x ^ 2) μ →
+      Integrable (fun x => (F x - ∫ y, F y ∂μ) ^ 2) μ →
+      Integrable (fun x => sg.T 1 F x) μ ∧
+      Integrable (fun x => (sg.T 1 F x - ∫ y, sg.T 1 F y ∂μ) ^ 2) μ)
+    (hsg_FG : ∀ F G : Ω → ℝ,
+      Integrable F μ → Integrable G μ →
+      Integrable (fun x => F x ^ 2) μ →
+      Integrable (fun x => G x ^ 2) μ →
+      Integrable (fun x => F x * sg.T 1 G x) μ) :
     HasCovarianceDecay μ 2 (1 / lam) := by
   obtain ⟨hlam, _⟩ := hP
   refine ⟨by positivity, by norm_num, fun F G => ?_⟩
   rw [show (-1 : ℝ) / (1 / lam) = -lam from by field_simp]
-  exact poincare_implies_cov_bound E lam hE hP F G
+  -- Get integrability hypotheses
+  by_cases hF : Integrable F μ
+  · by_cases hG : Integrable G μ
+    · by_cases hF2 : Integrable (fun x => F x ^ 2) μ
+      · by_cases hG2 : Integrable (fun x => G x ^ 2) μ
+        · have hFv : Integrable (fun x => (F x - ∫ y, F y ∂μ) ^ 2) μ := by
+            have := sq_sub_int_implies_sq_int μ F hF.1 hF2
+            simpa using this
+          have hGv : Integrable (fun x => (G x - ∫ y, G y ∂μ) ^ 2) μ := by
+            have := sq_sub_int_implies_sq_int μ G hG.1 hG2
+            simpa using this
+          obtain ⟨hT1G, hT1Gv⟩ := hsg_F G hG hG2 hGv
+          have hFG := hsg_FG F G hF hG hF2 hG2
+          have hbase := markov_to_covariance_decay sg E lam hE hP F G
+            hF hG hFv hGv hFG hF2 hG2 hT1G hT1Gv
+          nlinarith [Real.sqrt_nonneg (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ),
+                     Real.sqrt_nonneg (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ),
+                     Real.exp_nonneg (-lam), hbase,
+                     mul_nonneg (mul_nonneg
+                       (Real.sqrt_nonneg (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ))
+                       (Real.sqrt_nonneg (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ)))
+                       (Real.exp_nonneg (-lam))]
+        · simp [integral_undef hG2, Real.sqrt_zero, mul_zero]
+      · simp [integral_undef hF2, Real.sqrt_zero, zero_mul]
+    · simp [integral_undef hG, mul_zero]
+  · simp [integral_undef hF, zero_mul]
 
 /-! ## Bridge lemma: covariance decay → exponential clustering -/
 
@@ -259,6 +284,7 @@ lemma covariance_decay_to_exponential_clustering
 theorem sz_lsi_to_clustering_bridge
     (gibbsFamily : ℕ → Measure Ω)
     [∀ L, IsProbabilityMeasure (gibbsFamily L)]
+    (sg : ∀ L, MarkovSemigroup (gibbsFamily L))
     (E : (Ω → ℝ) → ℝ)
     (hE : ∀ L, IsDirichletFormStrong E (gibbsFamily L))
     (α_star : ℝ)
@@ -280,7 +306,14 @@ theorem sz_lsi_to_clustering_bridge
   -- Step 2: Poincaré → covariance decay (M4 core axiom)
   have hCov : ∀ L, HasCovarianceDecay (gibbsFamily L) 2 (2 / α_star) := by
     intro L
-    have h := poincare_to_covariance_decay E (α_star / 2) (hE L) (hPoincare L)
+    have h := poincare_to_covariance_decay (sg L) E (α_star / 2) (hE L) (hPoincare L)
+      (fun F hF hF2 hFv => ⟨(sg L).T_integrable 1 F hF,
+        (sg L).T_sq_integrable 1 F hF2⟩)
+      (fun F G hF hG hF2 hG2 => by exact (hF.mul ((sg L).T_integrable 1 G hG))
+        |>.mono_fun ((hF.aestronglyMeasurable).mul
+          ((sg L).T_integrable 1 G hG).aestronglyMeasurable)
+          (ae_of_all _ fun x => by simp [Real.norm_eq_abs];
+            nlinarith [sq_nonneg (F x), sq_nonneg ((sg L).T 1 G x)]))
     -- 1/(α_star/2) = 2/α_star
     have heq : (1 : ℝ) / (α_star / 2) = 2 / α_star := by field_simp
     rwa [heq] at h
