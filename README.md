@@ -682,3 +682,24 @@ Build: 0 errors · 0 sorrys · lake build ✅
 | v0.8.16 | −1 `markov_spectral_gap` | Field in MarkovSemigroup |
 | v0.8.17 | −1 `sz_lsi_to_clustering` +1 `hille_yosida` | SZ bridge |
 | v0.8.18 | −1 net (3→2 lieDerivative) | Linearity package |
+
+
+## v0.8.18 (final) — All Mathlib gaps documented ✅
+
+All remaining axioms (except Clay core) now have:
+- Precise mathematical statement of what is claimed
+- Explicit proof route blocked by Mathlib infrastructure
+- Reference to standard literature
+- Removal plan when Mathlib matures
+
+### Axiom frontier — removal dependencies
+
+| Axiom | Blocked by | ETA |
+|-------|-----------|-----|
+| `lieDerivative_linear` | `LieGroup` instance for `SU(N)` | When Mathlib adds `Matrix.specialUnitaryGroup` as `LieGroup` |
+| `lieDerivative_const` | Same | Same |
+| `sunDirichletForm_contraction` | `HasDerivAt.comp` for Lipschitz ∘ smooth on Lie group | Same + Rademacher |
+| `hille_yosida_semigroup` | `C₀`-semigroup theory for unbounded operators | Independent Mathlib project |
+| `sun_gibbs_dlr_lsi` | Yang-Mills renormalization group (E26 series) | Clay Millennium Prize |
+
+Build: 0 errors · 0 sorrys · 5 axioms · lake build ✅
