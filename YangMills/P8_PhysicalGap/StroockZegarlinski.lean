@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.P8_PhysicalGap.LSItoSpectralGap
+import YangMills.P8_PhysicalGap.PoincareCovarianceRoadmap
 open MeasureTheory Real Filter Topology
 namespace YangMills
 
@@ -147,14 +148,10 @@ lemma covariance_le_sqrt_var {μ : Measure Ω} [IsProbabilityMeasure μ]
   exact abs_integral_mul_le Fc Gc hFv hGv
 
 /-! ## Bridge axiom (M4 core) — decomposed -/
-
 /-- M4b core axiom: Poincaré gap → covariance bound with exponential decay.
-    Encapsulates the Stroock-Zegarlinski semigroup argument:
-      Poincaré gap λ → spectral gap of Markov semigroup ≥ λ
-      → Var(T_t f) ≤ exp(-2λt) Var(f)  [Gronwall]
-      → |Cov(F,G)| ≤ 2·√Var(F)·√Var(G)·exp(-λ)  [Cauchy-Schwarz + semigroup]
-    Reference: Stroock-Zegarlinski 1992, Theorems 2.1 and 3.3.
-    Status: AXIOM — requires formal MarkovSemigroup type in Lean/Mathlib. -/
+    Reference: Stroock-Zegarlinski 1992. Status: AXIOM.
+    The roadmap for eliminating this is in PoincareCovarianceRoadmap.lean:
+    markov_to_covariance_decay + markov_variance_decay + markov_covariance_transport. -/
 axiom poincare_implies_cov_bound
     {μ : Measure Ω} [IsProbabilityMeasure μ]
     (E : (Ω → ℝ) → ℝ) (lam : ℝ)

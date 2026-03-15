@@ -873,3 +873,35 @@ theorem poincare_to_covariance_decay (sg : MarkovSemigroup μ) ... :
 - sz_lsi_to_clustering (SZ core)
 - sun_gibbs_dlr_lsi (Clay)
 = 8 total, all honest
+
+
+## v0.8.6 final — Session close
+
+### State
+- Sorrys: 0
+- Axioms: 9
+- Build: OK
+
+### What was built this session
+- MarkovSemigroup structure (9 fields)
+- markov_variance_decay axiom (Gronwall, Layer 2)
+- markov_covariance_transport axiom (semigroup symmetry, Layer 2b)
+- markov_to_covariance_decay theorem (Layer 4, no sorry)
+- Cauchy-Schwarz lemmas in StroockZegarlinski.lean (Layer 3)
+- PoincareCovarianceRoadmap.lean: fully sorry-free
+
+### Note on poincare_implies_cov_bound
+Kept as axiom. Eliminating it requires propagating sg:MarkovSemigroup
+through sz_lsi_to_clustering_bridge — a larger refactor for next session.
+The roadmap for elimination is documented in PoincareCovarianceRoadmap.lean.
+
+### Axiom inventory
+| Axiom | Category |
+|-------|----------|
+| poincare_implies_cov_bound | SZ (roadmap: use markov_to_covariance_decay) |
+| markov_variance_decay | Gronwall on L² |
+| markov_covariance_transport | Semigroup symmetry |
+| lieDerivative_* (3) | Mathlib Lie gap |
+| dirichlet_contraction | Sobolev/Markov |
+| sz_lsi_to_clustering | SZ core |
+| sun_gibbs_dlr_lsi | Clay |
