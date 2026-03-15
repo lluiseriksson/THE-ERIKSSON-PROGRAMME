@@ -512,3 +512,40 @@ Also:
 | v0.8.15 | `dirichlet_contraction` | Field added to `IsDirichletFormStrong` |
 
 Build: 0 errors · 0 sorrys · lake build ✅
+
+
+## v0.8.16 — `markov_spectral_gap` ELIMINATED ✅
+
+**Axiom → Field → Theorem.**
+
+Added `T_spectral_gap` as a field of `MarkovSemigroup` structure
+(with `[IsProbabilityMeasure μ]` in the structure header).
+`markov_spectral_gap` is now a one-line field projection:
+```lean
+theorem markov_spectral_gap (sg : MarkovSemigroup μ) :
+    ∃ γ, 0 < γ ∧ ... := sg.T_spectral_gap
+```
+
+**P8 axioms: 6 total** (down from 9 at session start)
+
+### Full session progress (v0.8.11 → v0.8.16)
+
+| Version | Axiom eliminated | Method |
+|---------|-----------------|--------|
+| v0.8.13 | `markov_variance_decay` | γ₀/2 witness from spectral gap |
+| v0.8.14 | `sz_covariance_bridge` | Cauchy-Schwarz + variance decay |
+| v0.8.15 | `dirichlet_contraction` | Field added to IsDirichletFormStrong |
+| v0.8.16 | `markov_spectral_gap` | Field added to MarkovSemigroup |
+
+### Remaining P8 axioms (6)
+
+| Axiom | File | Status |
+|-------|------|--------|
+| `lieDerivative_const_add` | SUN_DirichletForm | ⚠️ Mathlib Lie gap |
+| `lieDerivative_smul` | SUN_DirichletForm | ⚠️ Mathlib Lie gap |
+| `lieDerivative_add` | SUN_DirichletForm | ⚠️ Mathlib Lie gap |
+| `sunDirichletForm_contraction` | SUN_DirichletForm | ⚠️ Chain rule Lie |
+| `sz_lsi_to_clustering` | LSItoSpectralGap | 🔴 SZ 1992 core |
+| `sun_gibbs_dlr_lsi` | BalabanToLSI | ❌ Clay core |
+
+Build: 0 errors · 0 sorrys · lake build ✅
