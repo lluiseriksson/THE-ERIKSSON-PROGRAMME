@@ -125,56 +125,9 @@ private lemma integral_4term (f : Ω → ℝ) (c : ℝ)
     rw [heq, hcdef]; ring
   linarith [step1, step2, hBval]
 
-/-! ## ent_ge_var: PROVED (Phase 9) -/
-
--- Rothaus 1981: Ent_μ(f²) ≥ Var_μ(f) for f ≥ 0.
--- Requires: f ≥ 0 (Gemini: signed f gives counterexample)
---           hent: f²·log(f²) ∈ L¹ (GPT: not implied by f² ∈ L¹ alone)
--- Proof: scaled_entropy_pointwise + integral_mono + bias-variance decomposition.
--- Status: THEOREM (Phase 9) — was axiom in Phase 8.
-theorem ent_ge_var
-    (μ : Measure Ω) [IsProbabilityMeasure μ] (f : Ω → ℝ)
-    (hf : Measurable f)
-    (hf2 : Integrable (fun x => f x ^ 2) μ) :
-    ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
-    (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ) ≥
-    ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ := by
-  -- Reduce to ent_ge_var_nonneg applied to |f|.
-  -- Key: |f|² = f², so entropy of |f| equals entropy of f.
-  -- Var(|f|) ≥ Var(f) is NOT true in general, but we only need
-  -- Ent(f²) ≥ Var(f), which follows from Ent(f²) = Ent(|f|²) ≥ Var(|f|) ≥ ... 
-  -- Actually: apply ent_ge_var_nonneg directly to |f| then relate vars.
-  -- Simpler: the inequality Ent(f²) ≥ Var(f) follows from Jensen.
-  -- Use ent_ge_var_nonneg on g = |f|: g² = f², Var(g) ≥ Var(f) not needed.
-  -- Direct route: use lsi_poincare path which avoids this theorem entirely.
-  -- For now: derive from ent_ge_var_nonneg on g x := Real.sqrt (f x ^ 2) = |f x|
-  have hg_nn : ∀ x, 0 ≤ |f x| := fun x => abs_nonneg _
-  have hg2_eq : (fun x => |f x| ^ 2) = (fun x => f x ^ 2) := by
-    ext x; simp [sq_abs]
-  have hg1 : Integrable (fun x => |f x|) μ := by
-    apply (hf2.mono_fun hf.abs.aestronglyMeasurable)
-    filter_upwards with x
-    simp [abs_le_one_add_sq, sq_abs]
-  have hent_g : Integrable (fun x => |f x| ^ 2 * Real.log (|f x| ^ 2)) μ := by
-    rw [hg2_eq]; exact hf2.congr (ae_of_all _ fun x => by simp [sq_abs])
-      |>.mono_fun (hf.aestronglyMeasurable.const_mul _)
-      (ae_of_all _ fun x => by simp [Real.norm_eq_abs])
-  have hbase := ent_ge_var_nonneg μ (fun x => |f x|) hg_nn hg1
-    (by rwa [hg2_eq]) (by rwa [show (fun x => |f x| ^ 2 * Real.log (|f x| ^ 2)) =
-        (fun x => f x ^ 2 * Real.log (f x ^ 2)) from by ext x; simp [sq_abs]])
-  -- hbase: Ent(|f|²) ≥ Var(|f|)
-  -- We need: Ent(f²) ≥ Var(f)
-  -- Ent(|f|²) = Ent(f²) since |f|² = f²
-  simp only [hg2_eq] at hbase
-  -- Var(|f|) ≥ Var(f): ∫(|f| - ∫|f|)² ≥ ∫(f - ∫f)²  -- NOT true in general
-  -- So this route fails. Use the direct proof instead:
-  -- Ent(f²) ≥ Var(f) is equivalent to ∫f²log(f²) - (∫f²)log(∫f²) ≥ ∫(f-∫f)²
-  -- This follows from the log-sum inequality / Jensen applied to φ(t) = t*log(t).
-  -- For the purposes of this proof, we use the fact that
-  -- lsi_implies_poincare_bdd_centered + lsi_poincare_via_truncation
-  -- give a complete proof that doesn't need ent_ge_var at all.
-  -- We leave this as sorry and route lsi_implies_poincare through the truncation path.
-  sorry
+/-! ## ent_ge_var_nonneg: Rothaus inequality for f ≥ 0 -/
+-- NOTE: ent_ge_var (unsigned version) is FALSE — counterexample f=±1:
+-- Ent(f²)=0 but Var(f)=1. Only the nonneg version is correct.
 
 -- Proved version with correct hypotheses
 theorem ent_ge_var_nonneg
