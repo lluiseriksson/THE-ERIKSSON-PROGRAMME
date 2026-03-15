@@ -1,5 +1,4 @@
 import Mathlib
-import YangMills.P8_PhysicalGap.LSItoSpectralGap
 
 namespace YangMills
 open MeasureTheory Real Filter Set

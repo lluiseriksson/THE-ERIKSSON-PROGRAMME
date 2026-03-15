@@ -604,3 +604,12 @@ The previous axiom was mathematically false for arbitrary T,P₀
 (counterexample: T=2·id, P₀=0 gives ‖Tⁿ‖=2ⁿ → ∞).
 
 Axioms remaining: 5 (down from 6).
+
+
+## v0.8.2 — entropy_perturbation_limit converted to theorem
+
+`entropy_perturbation_limit` is now a **theorem** (not an axiom).
+Connected to `entropy_perturbation_limit_proved` in `EntropyPerturbation.lean`
+by breaking the circular import dependency.
+
+Axioms remaining: 7 (down from 8).

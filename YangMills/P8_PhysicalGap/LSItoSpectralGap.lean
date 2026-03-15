@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.L4_TransferMatrix.TransferMatrix
+import YangMills.P8_PhysicalGap.EntropyPerturbation
 
 namespace YangMills
 
@@ -177,7 +178,8 @@ theorem ent_ge_var_nonneg
     Requires: u bounded (for dominated convergence), centered (∫u=0).
     Source: Standard in functional inequalities literature (Ledoux, Bakry-Émery).
     Status: AXIOM — requires Taylor expansion + dominated convergence in Lean. -/
-axiom entropy_perturbation_limit
+/-- entropy_perturbation_limit: proved in EntropyPerturbation.lean -/
+theorem entropy_perturbation_limit
     (μ : Measure Ω) [IsProbabilityMeasure μ] (u : Ω → ℝ)
     (hu : Measurable u) (hbdd : ∃ M > 0, ∀ x, |u x| ≤ M)
     (hcenter : ∫ x, u x ∂μ = 0)
@@ -186,7 +188,8 @@ axiom entropy_perturbation_limit
       (fun t : ℝ => (∫ x, (1 + t * u x) ^ 2 * Real.log ((1 + t * u x) ^ 2) ∂μ -
         (∫ x, (1 + t * u x) ^ 2 ∂μ) * Real.log (∫ x, (1 + t * u x) ^ 2 ∂μ)) / t ^ 2)
       (nhdsWithin 0 {0}ᶜ)
-      (nhds (2 * ∫ x, u x ^ 2 ∂μ))
+      (nhds (2 * ∫ x, u x ^ 2 ∂μ)) :=
+  entropy_perturbation_limit_proved μ u hu hbdd hcenter hu2
 
 /-- IsDirichletForm extra properties needed for the perturbation proof. -/
 def IsDirichletFormStrong (E : (Ω → ℝ) → ℝ) (μ : Measure Ω) : Prop :=
