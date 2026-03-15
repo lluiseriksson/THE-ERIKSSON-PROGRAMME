@@ -64,16 +64,9 @@ axiom poincare_to_covariance_decay
 private lemma var_le_sq_int {μ : Measure Ω} [IsProbabilityMeasure μ]
     (f : Ω → ℝ) (hf : Integrable f μ) (hf2 : Integrable (fun x => f x ^ 2) μ) :
     ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤ ∫ x, f x ^ 2 ∂μ := by
-  have heq : ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ =
-      ∫ x, f x ^ 2 ∂μ - (∫ y, f y ∂μ) ^ 2 := by
-    have h_exp : ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ =
-        ∫ x, ((f x ^ 2 - 2 * (∫ y, f y ∂μ) * f x) + (∫ y, f y ∂μ) ^ 2) ∂μ := by
-      refine integral_congr_ae ?_; filter_upwards with x; ring
-    have hint := hf2.sub (hf.const_mul (2 * ∫ y, f y ∂μ))
-    rw [h_exp, integral_add hint (integrable_const _),
-        integral_sub hf2 (hf.const_mul _), integral_const_mul,
-        integral_const, probReal_univ]; simp; ring
-  rw [heq]; linarith [sq_nonneg (∫ y, f y ∂μ)]
+  -- Use integral_var_eq from LSItoSpectralGap: ∫(f - ∫f)² = ∫f² - (∫f)²
+  rw [integral_var_eq f hf hf2]
+  exact sub_le_self _ (sq_nonneg (∫ y, f y ∂μ))
 
 /-- HasCovarianceDecay implies ExponentialClustering.
     Key step: replace √Var(F) by √E[F²] using var_le_sq_int. -/
