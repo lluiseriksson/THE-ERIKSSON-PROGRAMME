@@ -1,6 +1,5 @@
 import Mathlib
 import YangMills.P8_PhysicalGap.MarkovSemigroupDef
-import YangMills.P8_PhysicalGap.PoincareCovarianceRoadmap
 
 namespace YangMills
 open MeasureTheory Real Filter Set

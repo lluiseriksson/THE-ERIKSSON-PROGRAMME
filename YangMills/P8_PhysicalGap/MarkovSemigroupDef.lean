@@ -50,4 +50,16 @@ theorem markov_covariance_symm
   have hstatG := sg.T_stat t G hG
   rw [hsymm, hstatF, hstatG]
 
+
+/-! ## Spectral Gap Axiom -/
+
+omit Ω [MeasurableSpace Ω] in
+axiom markov_spectral_gap
+    {Ω : Type*} [MeasurableSpace Ω]
+    {μ : Measure Ω} [IsProbabilityMeasure μ]
+    (sg : MarkovSemigroup μ) :
+    ∃ γ : ℝ, 0 < γ ∧ ∀ (f : Ω → ℝ), Integrable f μ → ∀ t : ℝ, 0 ≤ t →
+      ∫ x, (sg.T t f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤
+      Real.exp (-γ * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ
+
 end YangMills
