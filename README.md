@@ -749,3 +749,17 @@ Good preparation now = 3 axioms eliminated in one session when Mathlib catches u
 3. `dirichlet_contraction` — 🔴 Hard (weak derivatives / Sobolev)
 4. `sz_lsi_to_clustering` — 🔴 Very hard (SZ 1992 core)
 5. `sun_gibbs_dlr_lsi` — ❌ Clay core (do not attack)
+
+
+## Layer 3 progress — Cauchy-Schwarz proved ✅
+
+Three lemmas added to `StroockZegarlinski.lean`:
+- `integral_mul_sq_le`: (∫fg)² ≤ (∫f²)(∫g²) via quadratic polynomial ∫(Bf-Ig)²≥0
+- `abs_integral_mul_le`: |∫fg| ≤ √(∫f²)·√(∫g²)
+- `covariance_eq_centered`: ∫FG - (∫F)(∫G) = ∫(F-mF)(G-mG)
+- `covariance_le_sqrt_var`: |Cov(F,G)| ≤ √Var(F)·√Var(G) [1 edge-case sorry]
+
+Key technique: `by_cases hfg : Integrable (f*g) μ` avoids measurability issues.
+Quadratic discriminant: 0 ≤ ∫(Bf-Ig)² → I²≤AB without division.
+
+PoincareCovarianceRoadmap Layer 3: CLOSED (modulo 1 edge-case sorry).
