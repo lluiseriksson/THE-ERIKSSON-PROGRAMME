@@ -320,7 +320,7 @@ private lemma trunc_mean_lim (μ : Measure Ω) [IsProbabilityMeasure μ]
   · intro n; filter_upwards with x; simpa using trunc_abs_bound (u x) n
   · filter_upwards with x; exact trunc_tendsto_real (u x)
 
-private lemma integral_var_eq (μ : Measure Ω) [IsProbabilityMeasure μ]
+lemma integral_var_eq (μ : Measure Ω) [IsProbabilityMeasure μ]
     (f : Ω → ℝ) (hf : Integrable f μ) (hf2 : Integrable (fun x => f x ^ 2) μ) :
     ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ = ∫ x, f x ^ 2 ∂μ - (∫ y, f y ∂μ) ^ 2 := by
   set m := ∫ y, f y ∂μ
