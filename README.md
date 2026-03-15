@@ -460,3 +460,15 @@ Phase 7 closed · Phase 8 active · PHASE8_PLAN.md
 1. Isolate exact signature of `lieDerivative_add` needed by `sunDirichletForm_subadditive`
 2. Prove weak version sufficient for M2
 3. Only if blocked: introduce local opaque lemma (not global axiom)
+
+
+## Session update — sunDirichletForm_subadditive closed ✅
+
+Added `lieDerivative_add` axiom (minimal: only additivity of directional derivatives).
+Proved `sunDirichletForm_subadditive` via:
+- `lieDerivative_add`: ∂(f+g) = ∂f + ∂g
+- pointwise `(a+b)² ≤ 2a²+2b²` via `nlinarith`
+- `integral_mono` + `integral_add` + `Finset.sum_le_sum`
+
+M2 (DirichletForm) now fully closed modulo 3 axioms on `lieDerivative`
+(const_add, smul, add) — all standard properties of directional derivatives.

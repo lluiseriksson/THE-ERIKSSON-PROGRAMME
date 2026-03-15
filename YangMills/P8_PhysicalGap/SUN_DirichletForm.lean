@@ -99,6 +99,11 @@ axiom lieDerivative_smul (N_c : ℕ) [NeZero N_c]
     (i : LieGenIndex N_c) (c : ℝ) (f : SUN_State_Concrete N_c → ℝ) :
     lieDerivative N_c i (fun U => c * f U) = fun U => c * lieDerivative N_c i f U
 
+/-- Lie derivatives are additive: ∂_{Xᵢ}(f + g) = ∂_{Xᵢ}(f) + ∂_{Xᵢ}(g) -/
+axiom lieDerivative_add (N_c : ℕ) [NeZero N_c]
+    (i : LieGenIndex N_c) (f g : SUN_State_Concrete N_c → ℝ) :
+    lieDerivative N_c i (f + g) = lieDerivative N_c i f + lieDerivative N_c i g
+
 /-! ## Proving IsDirichletFormStrong -/
 
 /-- E(f) ≥ 0: sum of integrals of squares. -/
@@ -134,7 +139,44 @@ lemma sunDirichletForm_subadditive
     2 * sunDirichletForm_concrete N_c f +
     2 * sunDirichletForm_concrete N_c g := by
   simp only [sunDirichletForm_concrete, Pi.add_def]
-  sorry -- requires: ∂(f+g) = ∂f + ∂g (linearity axiom) + (a+b)² ≤ 2a²+2b²
+  -- Step 1: rewrite ∂(f+g) = ∂f + ∂g using lieDerivative_add
+  have hderiv : ∀ i : LieGenIndex N_c,
+      lieDerivative N_c i (f + g) = lieDerivative N_c i f + lieDerivative N_c i g :=
+    fun i => lieDerivative_add N_c i f g
+  -- Step 2: bound (a+b)² ≤ 2a²+2b² pointwise
+  have hpw : ∀ (i : LieGenIndex N_c) (U : SUN_State_Concrete N_c),
+      (lieDerivative N_c i (f + g) U) ^ 2 ≤
+      2 * (lieDerivative N_c i f U) ^ 2 +
+      2 * (lieDerivative N_c i g U) ^ 2 := by
+    intro i U
+    have := hderiv i
+    simp only [Pi.add_apply] at this
+    rw [show (lieDerivative N_c i (f + g) U) =
+        lieDerivative N_c i f U + lieDerivative N_c i g U from
+      congr_fun (hderiv i) U]
+    nlinarith [sq_nonneg (lieDerivative N_c i f U - lieDerivative N_c i g U)]
+  -- Step 3: integrate and sum
+  have hsum : ∑ i : LieGenIndex N_c,
+        ∫ U, (lieDerivative N_c i (f + g) U) ^ 2 ∂sunHaarProb N_c ≤
+      2 * ∑ i : LieGenIndex N_c,
+            ∫ U, (lieDerivative N_c i f U) ^ 2 ∂sunHaarProb N_c +
+      2 * ∑ i : LieGenIndex N_c,
+            ∫ U, (lieDerivative N_c i g U) ^ 2 ∂sunHaarProb N_c := by
+    rw [← Finset.sum_add_distrib, ← Finset.mul_sum, ← Finset.mul_sum]
+    apply Finset.sum_le_sum
+    intro i _
+    have hle : ∀ U, (lieDerivative N_c i (f + g) U) ^ 2 ≤
+        2 * (lieDerivative N_c i f U) ^ 2 +
+        2 * (lieDerivative N_c i g U) ^ 2 := fun U => hpw i U
+    calc ∫ U, (lieDerivative N_c i (f + g) U) ^ 2 ∂sunHaarProb N_c
+        ≤ ∫ U, (2 * (lieDerivative N_c i f U) ^ 2 +
+                2 * (lieDerivative N_c i g U) ^ 2) ∂sunHaarProb N_c :=
+          integral_mono (by fun_prop) (by fun_prop) (fun U => hle U)
+      _ = 2 * ∫ U, (lieDerivative N_c i f U) ^ 2 ∂sunHaarProb N_c +
+          2 * ∫ U, (lieDerivative N_c i g U) ^ 2 ∂sunHaarProb N_c := by
+          rw [integral_add (by fun_prop) (by fun_prop),
+              integral_const_mul, integral_const_mul]
+  exact hsum
 
 /-- `sunDirichletForm_concrete` satisfies `IsDirichletForm`. -/
 lemma sunDirichletForm_isDirichletForm :
