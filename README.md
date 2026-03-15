@@ -149,6 +149,17 @@ wilsonConnectedCorr μ S β F p q =
 
 ---
 
+
+## Original Work & Papers
+
+| Resource | Link |
+|----------|------|
+| 📄 Papers (viXra) | https://ai.vixra.org/author/lluis_eriksson |
+| 📦 DOI (Zenodo) | https://doi.org/10.5281/zenodo.18799941 |
+| 🔢 Numerical Audit | https://github.com/lluiseriksson/ym-audit |
+| 🔍 Lean Audit (earlier) | https://github.com/lluiseriksson/ym-mass-gap-lean-verification |
+| 🏗️ This repo | https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME |
+
 ## Author
 
 **Lluis Eriksson** — independent researcher
