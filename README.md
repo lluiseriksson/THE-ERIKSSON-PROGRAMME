@@ -77,6 +77,29 @@ Formalizing that 4D SU(N) Yang-Mills satisfies the correlator bound — the anal
 
 **
 
+
+## Milestone M1: SUN_State Concrete Construction (PARTIAL — March 2026)
+
+`YangMills/P8_PhysicalGap/SUN_StateConstruction.lean`
+
+### Proved instances
+| Instance | Status | Method |
+|----------|--------|--------|
+| `MeasurableSpace (Matrix (Fin n) (Fin n) ℂ)` | ✅ | `change` tactic (Matrix is a `def`, not `abbrev`) |
+| `BorelSpace (Matrix (Fin n) (Fin n) ℂ)` | ✅ | `change` tactic |
+| `MeasurableSpace ↥(specialUnitaryGroup (Fin n) ℂ)` | ✅ | Subtype inference |
+| `BorelSpace ↥(specialUnitaryGroup (Fin n) ℂ)` | ✅ | Subtype inference |
+| `sunHaarMeasure N_c` | ✅ | `Measure.haar` |
+| `SUN_State_Concrete N_c` | ✅ | `abbrev ↥(specialUnitaryGroup (Fin N_c) ℂ)` |
+
+### Axiom (M1b — pending)
+- `instCompactSpaceSUN`: CompactSpace for SU(N) — proof sketch: closed+bounded in M_N(ℂ) → Heine-Borel
+
+### Next: connect sunGibbsFamily to gibbsMeasure (L1)
+- Use `gibbsMeasure` from `L1_GibbsMeasure/GibbsMeasure.lean`
+- With `μ = sunHaarMeasure N_c` as reference measure
+
+
 ## Current Focus: M1–M3 (`sun_gibbs_dlr_lsi`)
 
 **Status**: Active — March 2026
