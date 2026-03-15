@@ -613,3 +613,44 @@ Connected to `entropy_perturbation_limit_proved` in `EntropyPerturbation.lean`
 by breaking the circular import dependency.
 
 Axioms remaining: 7 (down from 8).
+
+
+## Session close — v0.8.2 final assessment
+
+### poincare_to_covariance_decay — NOT attackable today
+
+The axiom requires:
+1. A Markov semigroup `T_t : L²(μ) → L²(μ)` associated to `E`
+2. Spectral identity: `d/dt Var_μ(T_t f) = -2 E(T_t f)`
+3. Gronwall: `Var(T_t f) ≤ exp(-2λt) · Var(f)`
+4. `Cov(F,G) = ∫₀^∞ d/dt Cov(F, T_t G) dt` → Cauchy-Schwarz bound
+
+Mathlib has no `MarkovSemigroup` type associated to `IsDirichletFormStrong`.
+This axiom correctly represents the Stroock-Zegarlinski 1992 core content.
+
+### Final axiom inventory v0.8.2
+
+| Axiom | File | Type | Status |
+|-------|------|------|--------|
+| `sun_gibbs_dlr_lsi` | BalabanToLSI.lean | Clay core | ❌ Do not attack |
+| `sz_lsi_to_clustering` | LSItoSpectralGap.lean | SZ theorem | ❌ Do not attack |
+| `dirichlet_contraction` | LSItoSpectralGap.lean | Markov/Sobolev | ❌ Needs weak derivatives |
+| `poincare_to_covariance_decay` | StroockZegarlinski.lean | Markov semigroup | ❌ Needs MarkovSemigroup type |
+| `lieDerivative_const_add` | SUN_DirichletForm.lean | Mathlib Lie gap | ⚠️ Future Mathlib |
+| `lieDerivative_smul` | SUN_DirichletForm.lean | Mathlib Lie gap | ⚠️ Future Mathlib |
+| `lieDerivative_add` | SUN_DirichletForm.lean | Mathlib Lie gap | ⚠️ Future Mathlib |
+
+### Session achievements (this session)
+- `EntropyPerturbation.lean`: 0 sorrys (DCT + Taylor + tendsto_slope)
+- `sunDirichletForm_subadditive`: proved via lieDerivative_add + nlinarith  
+- `lsi_implies_poincare`: rerouted via truncation (ent_ge_var was FALSE)
+- `StroockZegarlinski`: 0 sorrys (integrability chain)
+- `clustering_to_spectralGap`: theorem via T=1,P₀=1 witness
+- `entropy_perturbation_limit`: theorem via import restructure
+- Axioms: 8 → 7 (net, after discovering hidden axioms)
+- Tags: v0.8.0, v0.8.1, v0.8.2
+
+### Next session recommendations
+1. Wait for Mathlib to add LieGroup instance for SU(N) → close lieDerivative_*
+2. Formalize MarkovSemigroup → close poincare_to_covariance_decay
+3. Do not attempt sun_gibbs_dlr_lsi or sz_lsi_to_clustering (Clay core)
