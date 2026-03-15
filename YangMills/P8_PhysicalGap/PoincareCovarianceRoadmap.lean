@@ -1,7 +1,7 @@
 import Mathlib
 import YangMills.P8_PhysicalGap.LSItoSpectralGap
-import YangMills.P8_PhysicalGap.StroockZegarlinski
 import YangMills.P8_PhysicalGap.MarkovSemigroupDef
+import YangMills.P8_PhysicalGap.CovarianceLemmas
 
 /-!
 # PoincareCovarianceRoadmap — v0.8.10

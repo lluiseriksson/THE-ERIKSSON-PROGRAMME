@@ -1,5 +1,5 @@
-set_option linter.unusedSectionVars false
 import Mathlib
+set_option linter.unusedSectionVars false
 
 namespace YangMills
 open MeasureTheory Real Filter Set
