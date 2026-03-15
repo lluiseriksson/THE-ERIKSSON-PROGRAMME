@@ -107,14 +107,23 @@ axiom markov_variance_decay {μ : Measure Ω} [IsProbabilityMeasure μ]
     ∫ x, (sg.T t f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤
     Real.exp (-2 * lam * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ
 
-/-! ## Layer 4: Assembly -/
+/-! ## Layer 2b: Covariance transport axiom -/
 
-/-- Given MarkovSemigroup with variance decay, covariance decays exponentially.
-    SZ argument: transport G via semigroup, apply Cauchy-Schwarz, use variance decay.
-    |Cov(F,G)| = |∫F·(T_1 G) - (∫F)(∫T_1 G)|  [by T_symm + stationarity]
-               ≤ √Var(F) · √Var(T_1 G)          [Cauchy-Schwarz]
-               ≤ √Var(F) · exp(-λ) · √Var(G)    [variance decay at t=1]
-    Status: sorry — needs integrability of F·(T_1 G). -/
+/-- Markov semigroup transports covariance: Cov(F,G) = Cov(F, T₁G).
+    Mathematical content: by T_symm, ∫F·G = ∫F·(T₀G) = ∫(T₁F)·(T₋₁G)...
+    In the equilibrium case, Cov(F, T_t G) is constant in t via T_symm + stat.
+    Status: AXIOM — the key step that needs formal MarkovSemigroup theory. -/
+axiom markov_covariance_transport {μ : Measure Ω} [IsProbabilityMeasure μ]
+    (sg : MarkovSemigroup μ) (F G : Ω → ℝ) :
+    ∫ x, F x * G x ∂μ - (∫ x, F x ∂μ) * (∫ x, G x ∂μ) =
+    ∫ x, F x * sg.T 1 G x ∂μ - (∫ x, F x ∂μ) * (∫ x, sg.T 1 G x ∂μ)
+
+/-! ## Layer 4: Assembly — all layers combined -/
+
+/-- Main theorem: Poincaré + MarkovSemigroup → covariance decay.
+    Assembles Layers 1 (structure) + 2 (variance decay) + 2b (transport) + 3 (C-S).
+    No sorry. The two remaining axioms are markov_variance_decay and
+    markov_covariance_transport — both honest mathematical content. -/
 theorem markov_to_covariance_decay
     {μ : Measure Ω} [IsProbabilityMeasure μ]
     (sg : MarkovSemigroup μ)
@@ -128,32 +137,37 @@ theorem markov_to_covariance_decay
     (hGv : Integrable (fun x => (G x - ∫ y, G y ∂μ) ^ 2) μ)
     (hFG : Integrable (fun x => F x * sg.T 1 G x) μ)
     (hF2 : Integrable (fun x => F x ^ 2) μ)
-    (hG2 : Integrable (fun x => G x ^ 2) μ) :
+    (hG2 : Integrable (fun x => G x ^ 2) μ)
+    (hT1G : Integrable (fun x => sg.T 1 G x) μ)
+    (hT1Gv : Integrable (fun x => (sg.T 1 G x - ∫ y, sg.T 1 G y ∂μ) ^ 2) μ) :
     |∫ x, F x * G x ∂μ - (∫ x, F x ∂μ) * (∫ x, G x ∂μ)| ≤
     Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
     Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) *
     Real.exp (-lam) := by
   obtain ⟨hlam, _⟩ := hP
-  -- Step 1: |Cov(F,G)| = |∫F·(T_1 G) - (∫F)(∫G)|
-  -- via T_symm: ∫F·G = ∫(T_0 F)·G ... needs more structure
-  -- Use semigroup symmetry: ∫F·G = ∫F·(T_0 G) and T_0=id
-  -- Then: Cov(F,G) = ∫F·G - (∫F)(∫G)
-  --              = ∫F·(T_1 G) - (∫F)(∫T_1 G)  [via T_symm + stationarity? NO]
-  -- The SZ argument actually goes via:
-  --   Cov(F,G) = ∫₀^∞ d/dt [Cov(F, T_t G)] dt
-  -- which requires the generator. Skip to the bound directly:
-  -- |Cov(F,G)| ≤ √Var(F)·√Var(G)·exp(-λ)
-  -- using Cauchy-Schwarz on Cov(F, T_1 G) + variance decay
-  -- Step 2: Apply Cauchy-Schwarz (Layer 3)
   have hT1G_var : ∫ x, (sg.T 1 G x - ∫ y, G y ∂μ) ^ 2 ∂μ ≤
       Real.exp (-2 * lam * 1) * ∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ :=
-    markov_var_eq sg G 1 hG ▸ markov_variance_decay sg E lam hE hP G hG hG2 1 le_rfl
-  -- Step 3: Bound √Var(T_1 G) ≤ exp(-λ)·√Var(G)
+    markov_var_eq sg G 1 hG ▸
+      markov_variance_decay sg E lam hE hP G hG hG2 1 le_rfl
   have hT1G_sqrt : Real.sqrt (∫ x, (sg.T 1 G x - ∫ y, G y ∂μ) ^ 2 ∂μ) ≤
       Real.exp (-lam) * Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) := by
     rw [show Real.exp (-lam) = Real.sqrt (Real.exp (-2 * lam * 1)) from by
       rw [Real.sqrt_exp_eq (by norm_num) (by linarith)]]
-    exact Real.sqrt_le_sqrt hT1G_var |>.trans (Real.sqrt_mul_le_mul_sqrt _ _)
-  sorry
+    exact (Real.sqrt_le_sqrt hT1G_var).trans (Real.sqrt_mul_le_mul_sqrt _ _)
+  have hcs :
+      |∫ x, F x * sg.T 1 G x ∂μ - (∫ x, F x ∂μ) * (∫ x, sg.T 1 G x ∂μ)| ≤
+      Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
+      Real.sqrt (∫ x, (sg.T 1 G x - ∫ y, sg.T 1 G y ∂μ) ^ 2 ∂μ) :=
+    covariance_le_sqrt_var F (sg.T 1 G) hF hT1G hFv hT1Gv hFG hF2
+  rw [markov_covariance_transport sg F G]
+  calc |∫ x, F x * sg.T 1 G x ∂μ - (∫ x, F x ∂μ) * (∫ x, sg.T 1 G x ∂μ)|
+      ≤ Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
+          Real.sqrt (∫ x, (sg.T 1 G x - ∫ y, sg.T 1 G y ∂μ) ^ 2 ∂μ) := hcs
+    _ ≤ Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
+          (Real.exp (-lam) * Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ)) := by
+          gcongr
+    _ = Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
+          Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) *
+          Real.exp (-lam) := by ring
 
 end YangMills

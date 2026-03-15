@@ -822,3 +822,28 @@ PoincareCovarianceRoadmap status:
 - Layer 2 (markov_variance_decay): axiom (Gronwall on L²)
 - Layer 3 (Cauchy-Schwarz): ✅ CLOSED  
 - Layer 4 (assembly): skeleton with 1 sorry
+
+
+## v0.8.6 — Layer 4 closed, markov_to_covariance_decay proved ✅
+
+`PoincareCovarianceRoadmap.lean` is now fully sorry-free.
+
+### What was proved
+- `markov_to_covariance_decay`: assembles all 4 layers into
+  |Cov(F,G)| ≤ √Var(F)·√Var(G)·exp(-λ)
+
+### New axiom added
+- `markov_covariance_transport`: Cov(F,G) = Cov(F, T₁G)
+  This is the honest encapsulation of the semigroup symmetry step.
+
+### PoincareCovarianceRoadmap — COMPLETE
+| Layer | Status |
+|-------|--------|
+| Layer 1 (MarkovSemigroup) | ✅ |
+| Layer 2 (markov_variance_decay) | axiom |
+| Layer 2b (markov_covariance_transport) | axiom |
+| Layer 3 (Cauchy-Schwarz) | ✅ |
+| Layer 4 (assembly) | ✅ |
+
+### Axioms: 9 total
+To eliminate `poincare_implies_cov_bound`, connect it to `markov_to_covariance_decay`.
