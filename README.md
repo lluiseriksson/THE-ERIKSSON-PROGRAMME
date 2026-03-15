@@ -427,3 +427,19 @@ Phase 7 closed · Phase 8 active · [PHASE8_PLAN.md](PHASE8_PLAN.md)
 - `varT_poincare_bound` 🔄 in progress (API errors on `pow_const`, `integral_add` pattern)
 - `markov_variance_decay` axiom ✅ type-checks
 - **Next**: fix `AEStronglyMeasurable.pow_const` → correct Mathlib name, fix `integral_add` rewrite chain
+
+
+## v0.8.13 — `markov_variance_decay` ELIMINATED ✅
+
+**Axiom → Theorem.** Proved from `markov_spectral_gap` via γ₀/2 witness:
+- `markov_spectral_gap` gives `exp(-γ₀·t)` decay
+- Setting γ := γ₀/2 gives `exp(-2·γ·t)` decay  
+- `markov_variance_decay` is now a theorem, not an axiom
+
+Also:
+- `markov_spectral_gap` moved to `MarkovSemigroupDef.lean` (no more import cycles)
+- `EntropyPerturbation.lean` rewritten for Mathlib v4.29.0-rc6
+- Three theorems proved: `T_sub_const`, `variance_eq_l2_sq_centered`, `varT_poincare_bound`
+
+**P8 axioms: 8 total** (down from 9)
+Build: 0 errors · 0 sorrys
