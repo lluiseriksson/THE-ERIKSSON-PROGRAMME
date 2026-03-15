@@ -196,11 +196,20 @@ lemma sunDirichletForm_isDirichletForm :
    fun f g => sunDirichletForm_subadditive f g⟩
 
 /-- `sunDirichletForm_concrete` satisfies `IsDirichletFormStrong`. -/
+/-- Normal contraction for sunDirichletForm.
+    Requires chain rule for Lie derivatives (lieDerivative_* axioms).
+    Honest axiom: |∂(trunc f)| ≤ |∂f| via |trunc'| ≤ 1. -/
+axiom sunDirichletForm_contraction (N_c : ℕ)
+    (f : SUN_State_Concrete N_c → ℝ) (n : ℝ) (hn : 0 < n) :
+    sunDirichletForm_concrete N_c (fun x => max (min (f x) n) (-n)) ≤
+    sunDirichletForm_concrete N_c f
+
 lemma sunDirichletForm_isDirichletFormStrong :
     IsDirichletFormStrong (sunDirichletForm_concrete N_c) (sunHaarProb N_c) :=
   ⟨sunDirichletForm_isDirichletForm,
    fun c f => sunDirichletForm_const_invariant f c,
-   fun c f => sunDirichletForm_quadratic f c⟩
+   fun c f => sunDirichletForm_quadratic f c,
+   fun f n hn => sunDirichletForm_contraction N_c f n hn⟩
 
 end
 
