@@ -219,11 +219,29 @@ lemma sunDirichletForm_isDirichletForm :
   ⟨fun f => sunDirichletForm_nonneg f,
    fun f g => sunDirichletForm_subadditive f g⟩
 
-/-- `sunDirichletForm_concrete` satisfies `IsDirichletFormStrong`. -/
-/-- Normal contraction for sunDirichletForm.
-    Requires chain rule for Lie derivatives (lieDerivative_* axioms).
-    Honest axiom: |∂(trunc f)| ≤ |∂f| via |trunc'| ≤ 1. -/
-axiom sunDirichletForm_contraction (N_c : ℕ)
+/-- **MATHLIB GAP: Normal contraction (Beurling-Deny) for the SU(N) Dirichlet form.**
+
+The normal contraction property states that truncation decreases the Dirichlet energy:
+  E(trunc_n f) ≤ E(f)  where  trunc_n(x) = max(min(x,n), -n).
+
+Mathematical proof route (currently blocked):
+1. trunc_n is 1-Lipschitz: |trunc_n(x) - trunc_n(y)| ≤ |x - y|.
+2. Chain rule: ∂ᵢ(trunc_n ∘ f)(U) = trunc_n'(f U) · ∂ᵢf(U)  (a.e.).
+3. |trunc_n'| ≤ 1 a.e. → (∂ᵢ(trunc_n ∘ f)(U))² ≤ (∂ᵢf(U))².
+4. Integrate and sum: E(trunc_n f) = Σᵢ ∫(∂ᵢ(trunc_n∘f))² ≤ Σᵢ ∫(∂ᵢf)² = E(f).
+
+Steps 1,3,4 are provable in Lean using `LipschitzWith`, `pow_le_pow_left`,
+`integral_mono`, and `Finset.sum_le_sum`. Step 2 (chain rule) requires:
+  - A concrete definition of `lieDerivative` via `deriv (fun t => f (U·exp(t·Tᵢ))) 0`,
+  - `HasDerivAt.comp` for smooth φ (or Rademacher theorem for Lipschitz φ),
+  - These require `SU(N)` to have a `LieGroup` instance with `ModelWithCorners`.
+
+Status: Mathlib 4.29 lacks this infrastructure. This is a software gap, NOT a
+physics assumption. When Mathlib gains `LieGroup SU(N)`, this becomes a theorem.
+
+Reference: Fukushima-Oshima-Takeda, Dirichlet Forms and Symmetric Markov Processes,
+Theorem 1.4.1 (normal contraction characterizes Dirichlet forms). -/
+axiom sunDirichletForm_contraction (N_c : ℕ) [NeZero N_c]
     (f : SUN_State_Concrete N_c → ℝ) (n : ℝ) (hn : 0 < n) :
     sunDirichletForm_concrete N_c (fun x => max (min (f x) n) (-n)) ≤
     sunDirichletForm_concrete N_c f
