@@ -1,8 +1,8 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["8bc808d45397b9c6.olean"],
-  "i": "438ebf004bd02331.ilean",
+ {"o": ["1a365bf92eb5af7f.olean"],
+  "i": "e653d886cca2ec97.ilean",
   "c": "64274a9c1bcbc463.c"},
  "log":
  [{"message":
@@ -34,11 +34,11 @@
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
   ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P8_PhysicalGap/LSItoSpectralGap.lean",
-   "3bbbfff7c9667434"],
+   "46fedf022fe3db4a"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.P8_PhysicalGap.LSItoSpectralGap",
    "563ec11d473b32d7"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "feeee29a0f42b60f"}
+ "depHash": "a2badeced24a8aaa"}
