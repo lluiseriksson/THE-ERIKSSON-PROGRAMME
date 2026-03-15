@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.P8_PhysicalGap.MarkovSemigroupDef
+import YangMills.P8_PhysicalGap.PoincareCovarianceRoadmap
 
 namespace YangMills
 open MeasureTheory Real Filter Set
@@ -107,17 +108,26 @@ theorem varT_poincare_bound
 
 end
 
-/-! ## Variance decay axiom (Gronwall target) -/
+/-! ## Variance decay — proved from markov_spectral_gap -/
 
-axiom markov_variance_decay
+/-- Variance decay: derived from markov_spectral_gap via γ₀/2 witness.
+    Replaces the former axiom markov_variance_decay. -/
+theorem markov_variance_decay
     {Ω : Type*} [MeasurableSpace Ω]
     {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (sg : MarkovSemigroup μ)
-    (γ : ℝ) (hγ : 0 < γ) :
+    (sg : MarkovSemigroup μ) :
+    ∃ γ : ℝ, 0 < γ ∧
     ∀ f : Ω → ℝ, Integrable f μ →
     Integrable (fun x => f x ^ 2) μ →
     ∀ t : ℝ, 0 ≤ t →
       ∫ x, (sg.T t f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤
-      Real.exp (-2 * γ * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ
+      Real.exp (-2 * γ * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ := by
+  obtain ⟨γ₀, hγ₀, hgap₀⟩ := markov_spectral_gap sg
+  refine ⟨γ₀ / 2, half_pos hγ₀, fun f hf _hf2 t ht => ?_⟩
+  have key := hgap₀ f hf t ht
+  calc ∫ x, (sg.T t f x - ∫ y, f y ∂μ) ^ 2 ∂μ
+      ≤ Real.exp (-γ₀ * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ := key
+    _ = Real.exp (-2 * (γ₀ / 2) * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ := by
+        congr 1; congr 1; ring
 
 end YangMills
