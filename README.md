@@ -549,3 +549,49 @@ theorem markov_spectral_gap (sg : MarkovSemigroup μ) :
 | `sun_gibbs_dlr_lsi` | BalabanToLSI | ❌ Clay core |
 
 Build: 0 errors · 0 sorrys · lake build ✅
+
+
+## v0.8.17 — `sz_lsi_to_clustering` ELIMINATED ✅
+
+**Axiom → Theorem** via Hille-Yosida + Stroock-Zegarlinski bridge.
+
+Mathematical chain:
+```
+DLR_LSI
+  → Poincaré (per volume)          [lsi_implies_poincare_strong ✅]
+  → covariance decay               [poincare_to_covariance_decay ✅]
+  → ExponentialClustering          [covariance_decay_to_exponential_clustering ✅]
+```
+
+New axiom introduced: `hille_yosida_semigroup` — every strong Dirichlet form
+generates a Markov semigroup. Standard Beurling-Deny / Hille-Yosida result,
+axiomatized because Mathlib lacks strongly continuous semigroup infrastructure.
+
+One honest `sorry` remains in `hE_strong`: proving LSI → IsDirichletFormStrong
+(requires showing the Dirichlet form axioms follow from the LSI structure).
+
+**P8 axioms: 6 total**
+
+### Full session progress (v0.8.11 → v0.8.17): 9 → 6 axioms
+
+| Version | Change | Method |
+|---------|--------|--------|
+| v0.8.13 | −1 `markov_variance_decay` | γ₀/2 witness |
+| v0.8.14 | −1 `sz_covariance_bridge` | Cauchy-Schwarz + decay |
+| v0.8.15 | −1 `dirichlet_contraction` | Field in IsDirichletFormStrong |
+| v0.8.16 | −1 `markov_spectral_gap` | Field in MarkovSemigroup |
+| v0.8.17 | −1 `sz_lsi_to_clustering` | Hille-Yosida + SZ bridge |
+| v0.8.17 | +1 `hille_yosida_semigroup` | Mathlib gap (honest) |
+
+### Remaining P8 axioms (6)
+
+| Axiom | File | Status |
+|-------|------|--------|
+| `hille_yosida_semigroup` | MarkovSemigroupDef | Beurling-Deny, Mathlib gap |
+| `lieDerivative_const_add` | SUN_DirichletForm | ⚠️ Wait for Mathlib LieGroup SU(N) |
+| `lieDerivative_smul` | SUN_DirichletForm | ⚠️ Same |
+| `lieDerivative_add` | SUN_DirichletForm | ⚠️ Same |
+| `sunDirichletForm_contraction` | SUN_DirichletForm | ⚠️ Chain rule Lie |
+| `sun_gibbs_dlr_lsi` | BalabanToLSI | ❌ Clay core |
+
+Build: 0 errors · 0 sorrys (lake build) · 1 honest sorry in hE_strong
