@@ -76,6 +76,31 @@ theorem eriksson_programme_phase7
 Formalizing that 4D SU(N) Yang-Mills satisfies the correlator bound — the analytical content of the Clay problem.
 
 **
+
+## Current Focus: M1–M3 (`sun_gibbs_dlr_lsi`)
+
+**Status**: Active — March 2026
+
+The next major milestone is the Log-Sobolev Inequality for SU(N) lattice Gibbs measures.
+
+### Axiom to close:
+```lean
+axiom sun_gibbs_dlr_lsi (d N_c : ℕ) (hN : 2 ≤ N_c) (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
+    ∃ α_star, 0 < α_star ∧
+      DLR_LSI (sunGibbsFamily d N_c β) (sunDirichletForm N_c) α_star
+```
+
+### Decomposition plan:
+- **M1**: Construction and properties of `sunGibbsFamily d N_c β` (Gibbs measure, probability, DLR)
+- **M2**: Properties of `sunDirichletForm N_c` (Dirichlet form, IsDirichletFormStrong)
+- **M3**: LSI proof: uniform log-Sobolev at weak coupling (β ≥ β₀ > 0)
+
+### Mathematical references:
+- Balaban RG series (constructive QFT)
+- Holley-Stroock perturbation lemma
+- Zegarlinski uniform LSI for lattice systems
+
+
 ## Phase 10: LSI → Poincaré via Truncation+DCT (CLOSED — March 2026)
 
 The sorry in `lsi_implies_poincare_strong` has been formally closed. The full truncation+DCT argument for the LSI → Poincaré inequality is now machine-verified.

@@ -1,15 +1,15 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["d1f258aabf95bcf9.olean"],
-  "i": "04fc93061794463f.ilean",
+ {"o": ["59d6549972b88424.olean"],
+  "i": "d442ecb14b9af6c4.ilean",
   "c": "c5d76e24f469a8a5.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Cli/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/batteries/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/Qq/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/aesop/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/importGraph/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/plausible/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/packages/mathlib/.lake/build/lib/lean:/content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/THE-ERIKSSON-PROGRAMME/YangMills/P8_PhysicalGap/StroockZegarlinski.lean -o /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P8_PhysicalGap/StroockZegarlinski.olean -i /content/THE-ERIKSSON-PROGRAMME/.lake/build/lib/lean/YangMills/P8_PhysicalGap/StroockZegarlinski.ilean -c /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P8_PhysicalGap/StroockZegarlinski.c --setup /content/THE-ERIKSSON-PROGRAMME/.lake/build/ir/YangMills/P8_PhysicalGap/StroockZegarlinski.setup.json --json",
    "level": "trace"},
   {"message":
-   "YangMills/P8_PhysicalGap/StroockZegarlinski.lean:73:6: declaration uses `sorry`",
+   "YangMills/P8_PhysicalGap/StroockZegarlinski.lean:82:6: declaration uses `sorry`",
    "level": "warning"}],
  "inputs":
  [["YangMills.P8_PhysicalGap.StroockZegarlinski:deps",
@@ -31,11 +31,11 @@
   ["Lean 4.29.0, commit 00659f8e6071d7e46131ed643bf8003b99b044e9",
    "d4ef66a63896cd60"],
   ["/content/THE-ERIKSSON-PROGRAMME/YangMills/P8_PhysicalGap/StroockZegarlinski.lean",
-   "2f76305bcacc2a30"],
+   "1fcbee4343df4a6d"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: YangMills.P8_PhysicalGap.StroockZegarlinski",
    "5ed02b599d0dfafb"],
   ["Package.id?: (some YangMills)", "bb149b95168538d5"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "8998f0ddb226af45"}
+ "depHash": "358579395c29b801"}
