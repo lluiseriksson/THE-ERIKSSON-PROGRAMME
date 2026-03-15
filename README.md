@@ -58,13 +58,16 @@ PhysicalMassGap              [✅]
 | `sunGibbsFamily_isProbability` | ✅ | theorem proved |
 | `instCompactSpaceSUN` | 📌 M1b | axiom: SU(N) closed+bounded in M_N(ℂ) → Heine-Borel |
 
-### M1b — IN PROGRESS 🔄
+### M1b — CLOSED ✅
 Goal: prove `CompactSpace ↥(specialUnitaryGroup (Fin N_c) ℂ)` concretely.
 
-Strategy:
-1. `IsClosed`: preimage of `{1}` under `A ↦ A * star A` (continuous) ∩ preimage of `{1}` under `det` (continuous)
-2. `IsBounded`: `‖U‖ ≤ √N_c` for all `U ∈ SU(N_c)` (columns are orthonormal)
-3. `IsCompact`: closed + bounded in finite-dimensional normed space → compact
+Proof in `SUN_Compact.lean`:
+1. `entryBox` = Pi(closedBall 0 1) is compact (`isCompact_univ_pi`)
+2. `unitaryGroup ⊆ entryBox` via `entry_norm_bound_of_unitary`
+3. `unitaryGroup` closed via `isClosed_unitary`
+4. `{det=1}` closed via `fun_prop` + `isClosed_singleton.preimage`
+5. `SU(N) = U(N) ∩ {det=1}` closed
+6. `IsCompact.of_isClosed_subset` concludes
 
 ### M2, M3 — PENDING 📌
 - M2: `sunDirichletForm` — requires Lie group calculus on SU(N)
@@ -80,7 +83,7 @@ Strategy:
 | `entropy_perturbation_limit` | Taylor+DCT | 📌 |
 | `dirichlet_contraction` | Markov property | 📌 |
 | `poincare_to_covariance_decay` | M4: SZ semigroup | 📌 |
-| `instCompactSpaceSUN` | M1b: Heine-Borel SU(N) | 🔄 in progress |
+| `instCompactSpaceSUN` | M1b: Heine-Borel SU(N) | ✅ PROVED (SUN_Compact.lean) |
 | `clustering_to_spectralGap` | functional analysis | 📌 |
 
 ---

@@ -1,4 +1,5 @@
 import Mathlib
+import YangMills.P8_PhysicalGap.SUN_Compact
 import YangMills.L1_GibbsMeasure.GibbsMeasure
 import YangMills.L0_Lattice.FiniteLatticeGeometryInstance
 
@@ -58,14 +59,13 @@ instance instMeasurableSpaceSUN (n : ℕ) :
 instance instBorelSpaceSUN (n : ℕ) :
     BorelSpace ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) := inferInstance
 
-/-- CompactSpace for SU(N).
-    SU(N) = {A ∈ M_N(ℂ) | A*A = 1, det A = 1} is closed and bounded
-    in M_N(ℂ) ≅ ℝ^(2N²), hence compact by Heine-Borel.
-    (M1b: pending full Lean proof) -/
-axiom instCompactSpaceSUN (n : ℕ) [NeZero n] :
-    CompactSpace ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)
-
-attribute [instance] instCompactSpaceSUN
+/-- CompactSpace for SU(N). Proved in SUN_Compact.lean (M1b).
+    Strategy: SU(N) ⊆ Pi(closedBall 0 1) [entry_norm_bound_of_unitary]
+              SU(N) is closed [isClosed_unitary + continuous det]
+              closed ⊆ compact → compact [IsCompact.of_isClosed_subset] -/
+-- instCompactSpaceSUN_concrete is provided by SUN_Compact.lean
+-- Re-export as the canonical instance name:
+alias instCompactSpaceSUN := instCompactSpaceSUN_concrete
 
 /-! ## SUN_State: the concrete gauge group -/
 
