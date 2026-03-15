@@ -31,7 +31,7 @@ structure MarkovSemigroup {Ω : Type*} [MeasurableSpace Ω] (μ : Measure Ω) wh
                     ∫ x, f x * T t g x ∂μ = ∫ x, T t f x * g x ∂μ
 
 /-- Centered function: f - ∫f -/
-def centered {Ω : Type*} [MeasurableSpace Ω]
+noncomputable def centered {Ω : Type*} [MeasurableSpace Ω]
     (μ : Measure Ω) (f : Ω → ℝ) : Ω → ℝ :=
   fun x => f x - ∫ y, f y ∂μ
 

@@ -418,3 +418,12 @@ Lean v4.29.0-rc6 · Mathlib · 8196+ compiled jobs · 0 errors · 0 sorrys
 Phase 7 closed · Phase 8 active · [PHASE8_PLAN.md](PHASE8_PLAN.md)
 
 *Last updated: March 2026*
+
+
+## v0.8.12 — MarkovVarianceDecay WIP
+
+- `markov_preserves_integral` ✅ proved
+- `variance_eq_l2_sq_centered` ✅ proved  
+- `varT_poincare_bound` 🔄 in progress (API errors on `pow_const`, `integral_add` pattern)
+- `markov_variance_decay` axiom ✅ type-checks
+- **Next**: fix `AEStronglyMeasurable.pow_const` → correct Mathlib name, fix `integral_add` rewrite chain
