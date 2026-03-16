@@ -765,3 +765,24 @@ theorem sun_haar_lsi               ← PROVED: 2 lines from sub-axioms
 `sun_bakry_emery_cd`.
 
 Build: 0 errors · 0 sorrys · 7 axioms · lake build ✅
+
+
+## v0.8.21 — Sandbox LieSUN complete ✅
+
+### YangMills/Experimental/LieSUN/
+
+| File | Status | Key content |
+|------|--------|-------------|
+| `LieDerivativeDef.lean` | ✅ 0 axioms, 0 sorrys | `lieDerivativeVia` + linearity from `deriv_add` |
+| `LieExpCurve.lean` | ✅ 0 errors, 1 sorry | `matExp`, unitarity, `lieExpCurve` on SU(N) |
+| `LieDerivativeBridge.lean` | ✅ 0 errors, 0 sorrys | `lieDerivExp` + 3 abstract theorems |
+
+### Typeclass diamond solution
+`IsTopologicalRing (Matrix (Fin n) (Fin n) ℂ)` for variable `n`:
+`topRingMat` as explicit term + `@NormedSpace.exp _ _ _ topRingMat`.
+`Commute` for matrices: `neg_mul`/`mul_neg` (not `ring`).
+
+### Bridge plan (pending P8 cycle resolution)
+- `lieDerivative_const` → **THEOREM** via `lieDerivExp_const`
+- `lieDerivative_linear` → **THEOREMS** via `lieDerivExp_add` + `_smul`
+- 1 structural axiom: `lieDerivEqConcrete` (lieDerivative = lieDerivExp ∘ basis)
