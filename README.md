@@ -120,6 +120,23 @@ theorem eriksson_programme_phase7
 - `hbound` — Wilson correlator decay bound — is the physical content of the mass gap
 - Phase 8 builds the machine-checked proof that SU(N) Yang-Mills satisfies `hbound`
 
+### Honest relationship to the full Clay problem
+
+| Component | Status |
+|-----------|--------|
+| Lattice SU(N) gauge theory, Gibbs/Haar measure | ✅ formalized |
+| Compactness of SU(N) | ✅ proved |
+| Dirichlet form, LSI → spectral gap chain | ✅ proved |
+| Wilson correlator decay → `ClayYangMillsTheorem` | ✅ `eriksson_programme_phase7` |
+| Continuum limit (lattice → ℝ⁴) | ⚠️ in E26 papers, not yet in Lean |
+| Full Wightman/OS axioms in Lean | ⚠️ not yet formalized in Lean |
+| Non-triviality of the continuum theory | ⚠️ in E26 papers, not yet in Lean |
+
+The remaining Clay content is isolated in `balaban_rg_uniform_lsi` — the uniform LSI
+for SU(N) Gibbs via Balaban RG, which controls the continuum limit. The E26 paper
+series (17 papers, 29/29 audited) provides the mathematical argument; its Lean
+formalization is the remaining work.
+
 ### Discharge Chain
 ```
 clay_yangmills_unconditional : ClayYangMillsTheorem  [ErikssonBridge.lean, 0 sorrys, 0 axioms]
