@@ -1,96 +1,107 @@
 import Mathlib
-import YangMills.Experimental.LieSUN.LieDerivativeDef
 
 /-!
-# Experimental: Exponential Curve on SU(N)
+# Experimental: Exponential curve on SU(N) — FINAL
 
-Layer B: Concrete instantiation of lieDerivativeVia for SU(N).
-
-Goal: define lieExpCurve N_c X U t = U · exp(t·X) ∈ SU(N)
-and prove lieDerivativeVia (lieExpCurve N_c X) is linear/constant.
-
-## Mathlib status for each step
-
-| Step | Mathlib status |
-|------|---------------|
-| `NormedSpace.exp` for matrices | ✅ available |
-| `(exp X)ᴴ = exp(Xᴴ)` via `exp_star` | ✅ likely available |
-| `exp(-X) = (exp X)⁻¹` | ✅ `NormedSpace.exp_neg` |
-| `U · exp(tX) ∈ U(N)` for Xᴴ=-X | ✅ probable from above |
-| `det(exp X) = exp(tr X)` (Jacobi) | ❌ Mathlib TODO |
-| `U · exp(tX) ∈ SU(N)` for tr(X)=0 | ❌ needs Jacobi |
-| `HasDerivAt (fun t => exp(t·X)) ...` | ⚠️ needs checking |
+Key: Commute via neg_mul/mul_neg (ring fails for SemiconjBy over Matrix).
+1 sorry: Jacobi det(exp X) = 1 (Mathlib TODO).
 -/
 
+open scoped Matrix
+
 namespace YangMills.Experimental.LieSUN
+variable {n : ℕ}
 
-open Matrix NormedSpace
+noncomputable def topRingMat (n : ℕ) :
+    IsTopologicalRing (Matrix (Fin n) (Fin n) ℂ) :=
+  @Matrix.topologicalRing (Fin n) ℂ _ _ _ _
 
-variable (N_c : ℕ) [NeZero N_c]
+noncomputable def matExp {n : ℕ} (X : Matrix (Fin n) (Fin n) ℂ) :
+    Matrix (Fin n) (Fin n) ℂ :=
+  @NormedSpace.exp _ _ _ (topRingMat n) X
 
-/-! ## Check: what matrix exp exists in Mathlib? -/
+lemma matExp_conjTranspose (X : Matrix (Fin n) (Fin n) ℂ) :
+    (matExp X)ᴴ = matExp Xᴴ := by
+  simp only [matExp]; exact (Matrix.exp_conjTranspose X).symm
 
--- Test 1: NormedSpace.exp for complex matrices
-#check (NormedSpace.exp ℂ : Matrix (Fin 2) (Fin 2) ℂ → Matrix (Fin 2) (Fin 2) ℂ)
+lemma matExp_add_of_commute (A B : Matrix (Fin n) (Fin n) ℂ) (h : Commute A B) :
+    matExp (A + B) = matExp A * matExp B := by
+  simp only [matExp]; exact Matrix.exp_add_of_commute A B h
 
--- Test 2: exp_star (conjugate of exp)
-#check @NormedSpace.exp_star
+lemma matExp_zero : matExp (0 : Matrix (Fin n) (Fin n) ℂ) = 1 := by
+  simp only [matExp]; exact @NormedSpace.exp_zero _ _ _ (topRingMat n)
 
--- Test 3: exp_neg
-#check @NormedSpace.exp_neg
+lemma commute_neg_left (X : Matrix (Fin n) (Fin n) ℂ) : Commute (-X) X := by
+  show -X * X = X * -X; rw [neg_mul, mul_neg]
 
--- Test 4: HasDerivAt for exp
-#check @NormedSpace.hasDerivAt_exp
+lemma commute_neg_right (X : Matrix (Fin n) (Fin n) ℂ) : Commute X (-X) := by
+  show X * -X = -X * X; rw [mul_neg, neg_mul]
 
--- Test 5: specialUnitaryGroup membership
-#check Matrix.specialUnitaryGroup
-#check Matrix.mem_specialUnitaryGroup_iff
+lemma conjTranspose_smul_skewHerm
+    (X : Matrix (Fin n) (Fin n) ℂ) (hX : Xᴴ = -X) (t : ℝ) :
+    ((t : ℂ) • X)ᴴ = -((t : ℂ) • X) := by
+  ext i j
+  simp only [Matrix.conjTranspose_apply, Matrix.smul_apply, smul_eq_mul,
+             Matrix.neg_apply, star_mul', Complex.star_def, Complex.conj_ofReal]
+  have h : (starRingEnd ℂ) (X j i) = -X i j := by
+    change star (X j i) = (-X) i j
+    simpa using congr_fun (congr_fun hX i) j
+  rw [h]; ring
 
-/-! ## The unitary part: exp(tX) ∈ U(N) for Xᴴ = -X -/
+theorem matExp_skewHerm_unitary
+    (X : Matrix (Fin n) (Fin n) ℂ) (hX : Xᴴ = -X) :
+    (matExp X)ᴴ * matExp X = 1 := by
+  rw [matExp_conjTranspose, hX,
+      ← matExp_add_of_commute _ _ (commute_neg_left X),
+      neg_add_cancel, matExp_zero]
 
-/-- For a skew-Hermitian matrix X (Xᴴ = -X),
-    the matrix exponential exp(tX) is unitary. -/
-theorem exp_skewHermitian_unitary
-    (X : Matrix (Fin N_c) (Fin N_c) ℂ) (hX : Xᴴ = -X) (t : ℝ) :
-    (NormedSpace.exp ℂ (t • X))ᴴ * (NormedSpace.exp ℂ (t • X)) = 1 := by
-  -- Strategy:
-  -- (exp(tX))ᴴ = exp((tX)ᴴ)         [exp_star]
-  --            = exp(t · Xᴴ)          [conjTranspose_smul]
-  --            = exp(t · (-X))         [hX]
-  --            = exp(-(tX))            [smul_neg]
-  --            = (exp(tX))⁻¹           [exp_neg]
-  -- Therefore (exp tX)ᴴ · (exp tX) = (exp tX)⁻¹ · (exp tX) = 1
+theorem matExp_skewHerm_unitary_right
+    (X : Matrix (Fin n) (Fin n) ℂ) (hX : Xᴴ = -X) :
+    matExp X * (matExp X)ᴴ = 1 := by
+  rw [matExp_conjTranspose, hX,
+      ← matExp_add_of_commute _ _ (commute_neg_right X),
+      add_neg_cancel, matExp_zero]
+
+theorem matExp_smul_mem_unitaryGroup
+    (X : Matrix (Fin n) (Fin n) ℂ) (hX : Xᴴ = -X) (t : ℝ) :
+    matExp ((t : ℂ) • X) ∈ Matrix.unitaryGroup (Fin n) ℂ := by
+  rw [Matrix.mem_unitaryGroup_iff]
+  change matExp ((t : ℂ) • X) * (matExp ((t : ℂ) • X))ᴴ = 1
+  exact matExp_skewHerm_unitary_right _ (conjTranspose_smul_skewHerm X hX t)
+
+theorem matExp_traceless_det_one
+    (X : Matrix (Fin n) (Fin n) ℂ) (htr : X.trace = 0) (t : ℝ) :
+    Matrix.det (matExp ((t : ℂ) • X)) = 1 := by
   sorry
-
-/-- For a traceless skew-Hermitian matrix X,
-    det(exp(tX)) = 1.
-    BLOCKED: requires det(exp A) = exp(tr A) (Jacobi's formula).
-    This is a known Mathlib TODO. -/
-theorem exp_traceless_det_one
-    (X : Matrix (Fin N_c) (Fin N_c) ℂ)
-    (hX : Xᴴ = -X) (htr : X.trace = 0) (t : ℝ) :
-    (NormedSpace.exp ℂ (t • X)).det = 1 := by
-  -- det(exp(tX)) = exp(tr(tX)) = exp(t · tr(X)) = exp(0) = 1
-  -- MISSING: Matrix.det_exp or equivalent
-  sorry
-
-/-! ## Attempt: prove unitary part from Mathlib -/
-
-/-- Attempt to prove exp_skewHermitian_unitary without sorry.
-    This checks which Mathlib lemmas are actually available. -/
-theorem exp_skewHermitian_unitary_attempt
-    (X : Matrix (Fin N_c) (Fin N_c) ℂ) (hX : Xᴴ = -X) (t : ℝ) :
-    (NormedSpace.exp ℂ (t • X))ᴴ * (NormedSpace.exp ℂ (t • X)) = 1 := by
-  have h1 : (NormedSpace.exp ℂ (t • X))ᴴ = NormedSpace.exp ℂ ((t • X)ᴴ) := by
-    rw [NormedSpace.exp_star]
-  have h2 : (t • X)ᴴ = -(t • X) := by
-    rw [conjTranspose_smul, hX]
-    simp [conjTranspose_neg, smul_neg]
-  have h3 : NormedSpace.exp ℂ (-(t • X)) = (NormedSpace.exp ℂ (t • X))⁻¹ := by
-    exact (NormedSpace.exp_neg ℂ (t • X)).symm
-  rw [h1, h2, h3]
-  exact mul_inv_cancel₀ (NormedSpace.exp_ne_zero ℂ _)
-
-/-! ## What compiles tells us the exact gap -/
 
 end YangMills.Experimental.LieSUN
+
+section LieExpCurve
+variable (N_c : ℕ) [NeZero N_c]
+open YangMills.Experimental.LieSUN
+
+noncomputable def lieExpCurve
+    (X : Matrix (Fin N_c) (Fin N_c) ℂ) (hX : Xᴴ = -X) (htr : X.trace = 0)
+    (U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (t : ℝ) :
+    ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) :=
+  ⟨U.val * matExp ((t : ℂ) • X), by
+    rw [Matrix.mem_specialUnitaryGroup_iff]
+    exact ⟨mul_mem (Matrix.mem_specialUnitaryGroup_iff.mp U.prop).1
+                   (matExp_smul_mem_unitaryGroup X hX t),
+           by rw [Matrix.det_mul,
+                  (Matrix.mem_specialUnitaryGroup_iff.mp U.prop).2,
+                  matExp_traceless_det_one X htr t, one_mul]⟩⟩
+
+theorem lieExpCurve_at_zero
+    (X : Matrix (Fin N_c) (Fin N_c) ℂ) (hX : Xᴴ = -X) (htr : X.trace = 0)
+    (U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) :
+    lieExpCurve N_c X hX htr U 0 = U := by
+  ext1; simp [lieExpCurve, Complex.ofReal_zero, zero_smul, matExp_zero]
+
+noncomputable def lieDerivConcrete
+    (X : Matrix (Fin N_c) (Fin N_c) ℂ) (hX : Xᴴ = -X) (htr : X.trace = 0)
+    (f : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) : ℝ :=
+  deriv (fun t => f (lieExpCurve N_c X hX htr U t)) 0
+
+end LieExpCurve
