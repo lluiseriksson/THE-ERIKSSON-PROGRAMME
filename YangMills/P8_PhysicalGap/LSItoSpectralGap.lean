@@ -1,4 +1,5 @@
 import Mathlib
+import YangMills.P8_PhysicalGap.LSIDefinitions
 import YangMills.P8_PhysicalGap.StroockZegarlinski
 import YangMills.L4_TransferMatrix.TransferMatrix
 import YangMills.P8_PhysicalGap.EntropyPerturbation
@@ -9,27 +10,10 @@ open MeasureTheory Real
 
 variable {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
 
-def IsDirichletForm (E : (Ω → ℝ) → ℝ) (μ : Measure Ω) : Prop :=
-  (∀ f, 0 ≤ E f) ∧ (∀ f g : Ω → ℝ, E (f + g) ≤ 2 * E f + 2 * E g)
 
-def LogSobolevInequality (μ : Measure Ω) (E : (Ω → ℝ) → ℝ) (α : ℝ) : Prop :=
-  0 < α ∧ ∀ (f : Ω → ℝ) (_ : Measurable f),
-    ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
-    (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ) ≤ (2 / α) * E f
 
-def DLR_LSI (gibbsFamily : ℕ → Measure Ω) (E : (Ω → ℝ) → ℝ) (α_star : ℝ) : Prop :=
-  0 < α_star ∧ ∀ L : ℕ, LogSobolevInequality (gibbsFamily L) E α_star
 
-def ExponentialClustering (μ : Measure Ω) (C ξ : ℝ) : Prop :=
-  0 < ξ ∧ 0 < C ∧
-  ∀ (F G_obs : Ω → ℝ),
-    |∫ x, F x * G_obs x ∂μ - (∫ x, F x ∂μ) * (∫ x, G_obs x ∂μ)| ≤
-    C * Real.sqrt (∫ x, F x ^ 2 ∂μ) * Real.sqrt (∫ x, G_obs x ^ 2 ∂μ) *
-    Real.exp (-1 / ξ)
 
-def PoincareInequality (μ : Measure Ω) (E : (Ω → ℝ) → ℝ) (lam : ℝ) : Prop :=
-  0 < lam ∧ ∀ (f : Ω → ℝ) (_ : Measurable f),
-    ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤ (1 / lam) * E f
 
 /-! ## Algebraic lemmas for Rothaus entropy-variance inequality -/
 
@@ -193,12 +177,6 @@ theorem entropy_perturbation_limit
   entropy_perturbation_limit_proved μ u hu hbdd hcenter hu2
 
 /-- IsDirichletForm extra properties needed for the perturbation proof. -/
-def IsDirichletFormStrong (E : (Ω → ℝ) → ℝ) (μ : Measure Ω) : Prop :=
-  IsDirichletForm E μ ∧
-  (∀ (c : ℝ) (f : Ω → ℝ), E (fun x => f x + c) = E f) ∧
-  (∀ (c : ℝ) (f : Ω → ℝ), E (fun x => c * f x) = c ^ 2 * E f) ∧
-  (∀ (f : Ω → ℝ) (n : ℝ), 0 < n →
-    E (fun x => max (min (f x) n) (-n)) ≤ E f)
 
 /-- Normal contraction: truncation does not increase the Dirichlet form.
     PROVED — extracted from the 4th field of IsDirichletFormStrong. -/

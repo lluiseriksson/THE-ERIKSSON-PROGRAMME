@@ -1,6 +1,6 @@
 import Mathlib
 import YangMills.P8_PhysicalGap.CovarianceLemmas
-import YangMills.P8_PhysicalGap.LSItoSpectralGap
+import YangMills.P8_PhysicalGap.LSIDefinitions
 import YangMills.P8_PhysicalGap.PoincareCovarianceRoadmap
 open MeasureTheory Real Filter Topology
 namespace YangMills
