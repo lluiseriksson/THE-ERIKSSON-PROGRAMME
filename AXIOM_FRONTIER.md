@@ -1,6 +1,6 @@
-# AXIOM FRONTIER — THE-ERIKSSON-PROGRAMME v0.8.36
+# AXIOM FRONTIER — THE-ERIKSSON-PROGRAMME v0.8.39
 
-Last updated: v0.8.36 (SUN_DirichletCore import cycle resolved)
+Last updated: v0.8.39 (SUN_DirichletCore import cycle resolved)
 
 ## Summary
 
@@ -52,7 +52,7 @@ This is the mathematical heart of the Yang-Mills mass gap problem.
 
 ## Architecture milestones
 
-### v0.8.36 — Import cycle resolved
+### v0.8.39 — Import cycle resolved
 - `SUN_DirichletCore.lean`: new cycle-free module
   - Contains: `sunDirichletForm_concrete`, `lieDerivative`, `sunDirichletForm_isDirichletFormStrong`
   - Imports: `SUN_StateConstruction` + `LSIDefinitions` only
@@ -74,6 +74,6 @@ This is the mathematical heart of the Yang-Mills mass gap problem.
 
 | Axiom | Version | How removed |
 |-------|---------|-------------|
-| `sunMarkovSemigroup` | v0.8.36 | Import cycle broken via SUN_DirichletCore |
+| `sunMarkovSemigroup` | v0.8.39 | Import cycle broken via SUN_DirichletCore |
 | `locality_to_static_covariance_v1` | v0.8.32 | Replaced by v2 (deprecated) |
 | `instCompactSpaceSUN` | v0.8.35 | Proved via entry_norm_bound_of_unitary |

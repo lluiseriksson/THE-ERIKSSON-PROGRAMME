@@ -5,6 +5,13 @@
 
 ## Recent Milestones
 
+v0.8.39 — EntropyPerturbation 0 sorrys ✅
+
+`norm_term_tendsto` proved via `norm_term_bound` (Taylor squeeze, `squeeze_zero'`)
+`entropy_perturbation_limit_proved` proved via `R_bound` + integral splitting
+EntropyPerturbation.lean: 0 sorrys, 0 new axioms
+Build: 0 errors, 0 sorrys · P8 analytical sorrys: 0
+
 v0.8.32 — 0 sorrys, 0 axioms in SpatialLocalityFramework ✅
 - `dynamic_covariance_at_optimalTime`: **sorry CLOSED** — existential γ from `markov_variance_decay`
 - `locality_to_static_covariance` (v1): **removed** (no references)
@@ -379,7 +386,7 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8196+ compiled jobs
 *Last updated: v0.8.32*
 
 
-## P8 Physical Gap — v0.8.36 Status
+## P8 Physical Gap — v0.8.39 Status
 
 ### Architecture
 ```
