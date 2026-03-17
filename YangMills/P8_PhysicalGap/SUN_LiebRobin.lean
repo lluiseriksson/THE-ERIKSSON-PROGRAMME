@@ -2,63 +2,37 @@ import Mathlib
 import YangMills.P8_PhysicalGap.SpatialLocalityFramework
 import YangMills.P8_PhysicalGap.MarkovSemigroupDef
 import YangMills.P8_PhysicalGap.SUN_StateConstruction
+import YangMills.P8_PhysicalGap.SUN_DirichletCore
 
 /-!
-# SUN_LiebRobin — v0.8.33
+# SUN_LiebRobin — v0.8.36
 
 Concrete Lieb-Robinson bound for the SU(N) Yang-Mills lattice model.
 
-## Import note
+## Import cycle resolved
+`SUN_DirichletCore` contains `sunDirichletForm_concrete` without importing
+`LSItoSpectralGap`, breaking the cycle with `SpatialLocalityFramework`.
 
-`SUN_DirichletForm` imports `LSItoSpectralGap` which creates a cycle with
-`SpatialLocalityFramework`. Therefore `sunMarkovSemigroup` is declared as an
-axiom here, documenting its mathematical content precisely.
-
-## Architecture
-
-1. `sunMarkovSemigroup` — axiom: the SU(N) Markov semigroup exists.
-   Mathematical content: `hille_yosida_semigroup sunDirichletForm_concrete
-   sunDirichletForm_isDirichletFormStrong`.
-   Depends on: `hille_yosida_semigroup` (Mathlib gap) + `sunDirichletForm`
-   (in `SUN_DirichletForm.lean`, cannot import here due to cycle).
-
-2. `sun_lieb_robinson_bound` — honest physical axiom: the SU(N) semigroup
-   satisfies `LiebRobinsonBound`.
-   Reference: Hastings-Koma 2006. Removal path: E26 papers (P76+).
-
-3. `sun_locality_to_covariance` — proved theorem, 0 sorrys.
-
-## Axiom count: 2 (sunMarkovSemigroup + sun_lieb_robinson_bound)
+## Axiom count: 1 (sun_lieb_robinson_bound — physical input)
 ## Sorry count: 0
-
-Both axioms are honest: the first will collapse once the import cycle is
-resolved; the second is genuine new mathematics.
 -/
 
 namespace YangMills
 open MeasureTheory Real
 
-/-! ## Step 1: SU(N) Markov semigroup — axiom to avoid import cycle
+/-! ## Step 1: SU(N) Markov semigroup — NOW A DEFINITION (axiom eliminated) -/
 
-Mathematical content:
-  sunMarkovSemigroup N_c =
-    hille_yosida_semigroup
-      (sunDirichletForm_concrete N_c)
-      (sunDirichletForm_isDirichletFormStrong)
-
-Cannot inline because SUN_DirichletForm imports LSItoSpectralGap which
-imports StroockZegarlinski which imports PoincareCovarianceRoadmap —
-creating a cycle with SpatialLocalityFramework.
-
-Removal plan: break the LSItoSpectralGap ← SUN_DirichletForm dependency
-by extracting sunDirichletForm into a cycle-free module. -/
-axiom sunMarkovSemigroup (N_c : ℕ) [NeZero N_c] :
-    MarkovSemigroup (sunHaarProb N_c)
+/-- The SU(N) Markov semigroup, constructed from the concrete Dirichlet form
+    via Beurling-Deny / Hille-Yosida.
+    Depends on: `hille_yosida_semigroup` (Mathlib gap: C₀-semigroup theory). -/
+noncomputable def sunMarkovSemigroup (N_c : ℕ) [NeZero N_c] :
+    MarkovSemigroup (sunHaarProb N_c) :=
+  hille_yosida_semigroup (sunDirichletForm_concrete N_c)
+    (sunDirichletForm_isDirichletFormStrong)
 
 /-! ## Step 2: Lieb-Robinson bound — honest physical axiom -/
 
 /-- **PHYSICAL INPUT — Hastings-Koma bound for SU(N) Yang-Mills.**
-
 Reference: Hastings-Koma, Commun. Math. Phys. 265 (2006) 781-804
 Removal path: E26 paper series (P76+) -/
 axiom sun_lieb_robinson_bound (N_c d : ℕ) [NeZero N_c] :
@@ -66,8 +40,7 @@ axiom sun_lieb_robinson_bound (N_c d : ℕ) [NeZero N_c] :
 
 /-! ## Step 3: Main theorem — proved -/
 
-/-- Exponential covariance decay for SU(N) local observables.
-    Sorry count: 0. Depends on sunMarkovSemigroup + sun_lieb_robinson_bound. -/
+/-- Exponential covariance decay for SU(N) local observables. -/
 theorem sun_locality_to_covariance
     (N_c d : ℕ) [NeZero N_c]
     (A B : Finset (Site d))
