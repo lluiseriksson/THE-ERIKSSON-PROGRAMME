@@ -1,5 +1,5 @@
 import Mathlib.MeasureTheory.Measure.MeasureSpace
-import Mathlib.MeasureTheory.Integral.Bochner
+import Mathlib.MeasureTheory.Integral.Bochner.Basic
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 
 /-!

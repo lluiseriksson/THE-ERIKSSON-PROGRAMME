@@ -1,4 +1,5 @@
 import Mathlib
+import YangMills.P8_PhysicalGap.LSIDefinitions
 
 namespace YangMills
 open MeasureTheory Real Filter Set
@@ -97,7 +98,6 @@ estimates, generator domains, and the Dirichlet form ↔ semigroup correspondenc
 
 Used exactly once: in `sz_lsi_to_clustering` (LSItoSpectralGap.lean) to
 construct the Markov semigroup needed by the Stroock-Zegarlinski bridge. -/
-omit Ω [MeasurableSpace Ω] in
 axiom hille_yosida_semigroup
     {Ω : Type*} [MeasurableSpace Ω]
     {μ : Measure Ω} [IsProbabilityMeasure μ]
