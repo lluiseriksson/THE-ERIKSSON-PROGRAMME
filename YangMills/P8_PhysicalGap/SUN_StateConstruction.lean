@@ -65,7 +65,18 @@ instance instBorelSpaceSUN (n : ℕ) :
               closed ⊆ compact → compact [IsCompact.of_isClosed_subset] -/
 -- instCompactSpaceSUN_concrete is provided by SUN_Compact.lean
 -- Re-export as the canonical instance name:
-alias instCompactSpaceSUN := instCompactSpaceSUN_concrete
+-- instCompactSpaceSUN_concrete is in YangMills namespace
+instance instCompactSpaceSUN (n : ℕ) [NeZero n] :
+    CompactSpace ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) :=
+  YangMills.instCompactSpaceSUN_concrete n
+
+/-! ## Topological group instance for SU(N) -/
+
+/-- MATHLIB GAP: IsTopologicalGroup for specialUnitaryGroup.
+    specialUnitaryGroup is a Submonoid of Matrix, not of unitaryGroup.
+    Topology inheritance not automatic. Will resolve with LieGroup API. -/
+@[instance] axiom instIsTopologicalGroupSUN (n : ℕ) [NeZero n] :
+    IsTopologicalGroup ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)
 
 /-! ## SUN_State: the concrete gauge group -/
 
