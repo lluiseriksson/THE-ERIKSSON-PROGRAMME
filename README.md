@@ -5,6 +5,19 @@
 
 ## Recent Milestones
 
+v0.8.32 — 0 sorrys, 0 axioms in SpatialLocalityFramework ✅
+- `dynamic_covariance_at_optimalTime`: **sorry CLOSED** — existential γ from `markov_variance_decay`
+- `locality_to_static_covariance` (v1): **removed** (no references)
+- `local_to_dynamic_covariance`: demoted from global axiom to `LiebRobinsonBound` hypothesis
+- `locality_to_static_covariance_v2`: proved under explicit `hLR : LiebRobinsonBound`
+- Sorry count in P8: **0** · Axiom count in SpatialLocalityFramework: **0**
+- Build: 0 errors, 0 warnings
+
+v0.8.31 — dynamic_covariance_at_optimalTime sorry closed ✅
+hFGT integrability: `Integrable.mono` + explicit norm bound
+Build: 0 errors, 0 warnings
+
+
 ### v0.8.28 — Concrete lattice locality layer ✅
 - `SpatialLocalityFramework.lean`: `Site := Fin d → ℤ`, `siteDist` (ℓ∞), proved metric axioms
 - `locality_to_static_covariance`: concrete SZ §4 statement on `Finset (Site d)`
