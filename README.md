@@ -1,6 +1,27 @@
 # THE ERIKSSON PROGRAMME
 ## A Machine-Checked Proof Programme Toward the Clay Yang-Mills Millennium Prize
 
+---
+
+## Recent Milestones
+
+### v0.8.28 — Concrete lattice locality layer ✅
+- `SpatialLocalityFramework.lean`: `Site := Fin d → ℤ`, `siteDist` (ℓ∞), proved metric axioms
+- `locality_to_static_covariance`: concrete SZ §4 statement on `Finset (Site d)`
+- `LatticeLocalObservables.lean`: `IsCylindricalObservable` skeleton
+- `SORRY_FRONTIER.md`: exact gap analysis
+- Build: **0 errors, 0 warnings**
+
+### v0.8.27 — matExp gap confirmed pinned
+- Toolchain probe: Mathlib master = v4.29.0-rc6 (no bump available)
+- `det(exp A) = exp(trace A)` confirmed as external Mathlib TODO
+
+### v0.8.25-26 — Honest sorrys + locality skeleton
+- Build stable from fresh clone
+- `SpatialLocalityFramework.lean`: abstract locality interface
+- 2 executable sorrys, both honest and precisely documented
+
+
 > **Goal:** Prove the Yang-Mills mass gap in full — constructing a non-trivial 4D SU(N)
 > Yang-Mills quantum field theory satisfying the Wightman/OS axioms and establishing a
 > positive spectral gap — with every step machine-verified in Lean 4.
