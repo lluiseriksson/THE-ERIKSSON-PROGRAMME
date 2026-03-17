@@ -350,3 +350,17 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8196+ compiled jobs
 
 **Author:** Lluis Eriksson — independent researcher
 **Last updated:** March 2026
+
+
+## Formalization Status — P8 Physical Gap
+
+| Component | Status |
+|-----------|--------|
+| `siteDist` / `supportDist` / `optimalTime` | ✅ Proved |
+| `dynamic_covariance_at_optimalTime` | ✅ Proved (v0.8.31) |
+| `locality_to_static_covariance_v2` | ✅ Proved under `LiebRobinsonBound` hypothesis |
+| `LiebRobinsonBound` | ⚠️ Explicit hypothesis (Hastings-Koma, not yet formalized) |
+| Sorry count | **0** |
+| Global axiom count in SpatialLocalityFramework | **0** |
+
+*Last updated: v0.8.32*

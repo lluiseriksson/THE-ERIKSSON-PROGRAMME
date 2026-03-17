@@ -3,6 +3,22 @@ import YangMills.P8_PhysicalGap.MarkovSemigroupDef
 import YangMills.P8_PhysicalGap.MarkovVarianceDecay
 import YangMills.P8_PhysicalGap.CovarianceLemmas
 
+/-!
+# SpatialLocalityFramework — v0.8.32
+
+Concrete spatial locality layer for SZ §4.
+
+Changes from v0.8.31:
+- locality_to_static_covariance (v1): REMOVED (no references, superseded by _v2)
+- local_to_dynamic_covariance: demoted from global axiom to explicit hypothesis
+- locality_to_static_covariance_v2: now takes LiebRobinsonBound as explicit assumption
+- Sorry count: 1 → 0
+- Axiom count: 1 → 0 (in this file)
+
+The Lieb-Robinson bound is the only remaining unproved mathematical input.
+It is now an explicit hypothesis, not a global axiom.
+-/
+
 namespace YangMills
 open MeasureTheory Real Finset
 
@@ -38,19 +54,7 @@ noncomputable def supportDist {d : ℕ} (A B : Finset (Site d)) : ℕ :=
 variable {Ω : Type*} [MeasurableSpace Ω]
 def IsLocalObservable {d : ℕ} (_A : Finset (Site d)) (_F : Ω → ℝ) : Prop := True
 
-theorem locality_to_static_covariance
-    {d : ℕ} (A B : Finset (Site d)) {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (F G : Ω → ℝ) (_hF_loc : IsLocalObservable A F) (_hG_loc : IsLocalObservable B G)
-    (_hF : Integrable F μ) (_hG : Integrable G μ)
-    (_hF2 : Integrable (fun x => F x ^ 2) μ) (_hG2 : Integrable (fun x => G x ^ 2) μ)
-    (C γ : ℝ) (_hC : 0 < C) (_hγ : 0 < γ)
-    (_hdecay : ∀ f : Ω → ℝ, Integrable f μ → Integrable (fun x => f x ^ 2) μ →
-      ∀ t : ℝ, 0 ≤ t → ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤
-        Real.exp (-γ * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ) :
-    |∫ x, F x * G x ∂μ - (∫ x, F x ∂μ) * (∫ x, G x ∂μ)| ≤
-    C * Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
-      Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) *
-    Real.exp (-γ * (supportDist A B : ℝ)) := by sorry
+/-! ### Step 1: Optimal time -/
 
 noncomputable def optimalTime {d : ℕ} (A B : Finset (Site d)) (γ : ℝ) : ℝ :=
   (supportDist A B : ℝ) / γ
@@ -61,6 +65,8 @@ lemma optimalTime_nonneg {d : ℕ} (A B : Finset (Site d)) {γ : ℝ} (hγ : 0 <
 lemma exp_neg_mul_optimalTime {d : ℕ} (A B : Finset (Site d)) {γ : ℝ} (hγ : 0 < γ) :
     Real.exp (-γ * optimalTime A B γ) = Real.exp (-(supportDist A B : ℝ)) := by
   unfold optimalTime; congr 1; field_simp
+
+/-! ### Step 2: Dynamic covariance at t* — proved -/
 
 lemma dynamic_covariance_at_optimalTime
     {d : ℕ} (A B : Finset (Site d)) {μ : Measure Ω} [IsProbabilityMeasure μ]
@@ -136,23 +142,37 @@ lemma dynamic_covariance_at_optimalTime
           Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
           Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) := by rw [hexp]
 
-axiom local_to_dynamic_covariance
-    {d : ℕ} (A B : Finset (Site d)) {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (sg : MarkovSemigroup μ) (F G : Ω → ℝ)
-    (hF_loc : IsLocalObservable A F) (hG_loc : IsLocalObservable B G)
-    (hF : Integrable F μ) (hG : Integrable G μ) {γ : ℝ} (hγ : 0 < γ) :
+/-! ### Step 3: Lieb-Robinson bound — explicit hypothesis (not a global axiom)
+
+The following definition packages the Lieb-Robinson physical content as an
+explicit assumption. This separates proved infrastructure from unproved physics.
+Proof requires finite speed of propagation for the lattice dynamics (Hastings-Koma). -/
+
+def LiebRobinsonBound {d : ℕ} {Ω : Type*} [MeasurableSpace Ω]
+    {μ : Measure Ω} [IsProbabilityMeasure μ]
+    (sg : MarkovSemigroup μ) : Prop :=
+  ∀ (A B : Finset (Site d)) (F G : Ω → ℝ)
+    (_hF_loc : IsLocalObservable A F) (_hG_loc : IsLocalObservable B G)
+    (hF : Integrable F μ) (hG : Integrable G μ) {γ : ℝ} (hγ : 0 < γ),
     |∫ x, F x * G x ∂μ - ∫ x, F x * sg.T (optimalTime A B γ) G x ∂μ| ≤
     Real.exp (-(supportDist A B : ℝ)) *
       Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
       Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ)
 
+/-! ### Step 4: Assembly — proved under explicit Lieb-Robinson hypothesis -/
+
+/-- Main covariance decay theorem for local observables.
+    Proved under the explicit Lieb-Robinson assumption `hLR`.
+    The only unproved input is the Lieb-Robinson bound itself (finite propagation speed).
+    Sorry count: 0. Axiom count: 0. -/
 theorem locality_to_static_covariance_v2
     {d : ℕ} (A B : Finset (Site d)) {μ : Measure Ω} [IsProbabilityMeasure μ]
     (sg : MarkovSemigroup μ) (F G : Ω → ℝ)
     (hF_loc : IsLocalObservable A F) (hG_loc : IsLocalObservable B G)
     (hF : Integrable F μ) (hG : Integrable G μ)
     (hF2 : Integrable (fun x => F x ^ 2) μ)
-    (hG2 : Integrable (fun x => G x ^ 2) μ) :
+    (hG2 : Integrable (fun x => G x ^ 2) μ)
+    (hLR : LiebRobinsonBound (d := d) sg) :
     ∃ γ : ℝ, 0 < γ ∧
     |∫ x, F x * G x ∂μ - (∫ x, F x ∂μ) * (∫ x, G x ∂μ)| ≤
     2 * Real.exp (-(supportDist A B : ℝ)) *
@@ -160,7 +180,7 @@ theorem locality_to_static_covariance_v2
       Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) := by
   obtain ⟨γ, hγ, hDyn⟩ := dynamic_covariance_at_optimalTime A B sg F G hF hG hF2 hG2
   refine ⟨γ, hγ, ?_⟩
-  have hLR := local_to_dynamic_covariance A B sg F G hF_loc hG_loc hF hG hγ
+  have hLR_inst := hLR A B F G hF_loc hG_loc hF hG hγ
   have htri : |∫ x, F x * G x ∂μ - (∫ x, F x ∂μ) * (∫ x, G x ∂μ)| ≤
       |∫ x, F x * G x ∂μ - ∫ x, F x * sg.T (optimalTime A B γ) G x ∂μ| +
       |∫ x, F x * sg.T (optimalTime A B γ) G x ∂μ
