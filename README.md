@@ -261,21 +261,79 @@ Papers organised as a closure tree.
 
 | Symbol | Meaning |
 |--------|---------|
-| 🟢 CLOSES YM | On the unconditional closure path of ClayYangMillsTheorem |
+| 🟢 CLOSES YM | On the unconditional closure path of `ClayYangMillsTheorem` |
 | 🔵 SUPPORT | Provides lemmas / infrastructure consumed by the trunk |
 | ⚪ CONTEXT | Independent contribution; not on the unconditional YM path |
+
+---
 
 ### 🌳 TRUNK — Unconditional closure of Yang-Mills (viXra [61]–[68])
 
 | Internal | viXra | Title | Role |
 |----------|-------|-------|------|
-| P91 | [68] | Mechanical Audit Experiments and Reproducibility Appendix | 🟢 Terminal audit: 29/29 PASS |
-| P90 | [67] | The Master Map | 🟢 Threat model, Triangular Mixing Lock, KP margin |
-| P89 | [65] | Closing the Last Gap — Terminal KP Bound & Clay Checklist | 🟢 δ=0.021 < 1 |
-| P88 | [66] | Rotational Symmetry Restoration and the Wightman Axioms | 🟢 OS1 restoration |
-| P87 | [62] | Irrelevant Operators, Anisotropy Bounds (Balaban RG) | 🟢 Symanzik classification |
-| P86 | [63] | Coupling Control, Mass Gap, OS Axioms, Non-triviality | 🟢 Coupling control |
-| P85 | [64] | Spectral Gap and Thermodynamic Limit via Log-Sobolev | 🟢 LSI → spectral gap |
+| P91 | [68] | **Mechanical Audit Experiments and Reproducibility Appendix** | 🟢 Terminal audit: 29/29 PASS |
+| P90 | [67] | **The Master Map** | 🟢 Threat model, Triangular Mixing Lock, KP margin |
+| P89 | [65] | **Closing the Last Gap** — Terminal KP Bound & Clay Checklist | 🟢 δ=0.021 < 1, polymer → OS → Wightman |
+| P88 | [66] | **Rotational Symmetry Restoration and the Wightman Axioms** | 🟢 OS1 restoration, Wightman with Δ>0 |
+| P87 | [62] | **Irrelevant Operators, Anisotropy Bounds (Balaban RG)** | 🟢 Symanzik classification, O(4)-breaking operators |
+| P86 | [63] | **Coupling Control, Mass Gap, OS Axioms, Non-triviality** | 🟢 Coupling control, OS axioms |
+| P85 | [64] | **Spectral Gap and Thermodynamic Limit via Log-Sobolev** | 🟢 LSI → spectral gap → thermodynamic limit |
+
+---
+
+### 🌿 BRANCH A — Balaban RG & UV Stability (viXra [54]–[61])
+
+| Internal | viXra | Title | Role |
+|----------|-------|-------|------|
+| P84 | [61] | **UV Stability of Wilson-Loop Expectations** | 🔵 UV stability via gradient-flow |
+| P83 | [60] | **Almost Reflection Positivity for Gradient-Flow Observables** | 🔵 Reflection positivity |
+| P82 | [59] | **UV Stability under Quantitative Blocking Hypothesis** | 🔵 UV stability via blocking |
+| P81 | [58] | **RG–Cauchy Summability for Blocked Observables** | 🔵 RG-Cauchy summability |
+| P80 | [57] | **Influence Bounds for Polymer Remainders — Closing B6** | 🔵 Closes assumption B6 |
+| P79 | [56] | **Doob Influence Bounds for Polymer Remainders** | 🔵 Doob martingale bounds |
+| P78 | [55] | **The Balaban–Dimock Structural Package** | 🔵 Polymer repr., large-field suppression |
+| P77 | [54] | **Conditional Continuum Limit via Two-Layer + RG-Cauchy** | 🔵 Conditional continuum limit |
+
+---
+
+### 🌿 BRANCH B — Log-Sobolev & Mass Gap at weak coupling (viXra [44]–[53])
+
+| Internal | viXra | Title | Role |
+|----------|-------|-------|------|
+| P76 | [53] | **Cross-Scale Derivative Bounds — Closing the Log-Sobolev Gap** | 🔵 Closes the LSI gap |
+| P75 | [52] | **Large-Field Suppression: Balaban RG to Conditional Concentration** | 🔵 Large-field suppression |
+| P74 | [51] | **Unconditional Uniform Log-Sobolev Inequality for SU(Nc)** | 🟢 Unconditional LSI |
+| P73 | [50] | **From Uniform Log-Sobolev to Mass Gap at Weak Coupling** | 🟢 LSI → mass gap |
+| P72 | [49] | **DLR-Uniform Log-Sobolev and Unconditional Mass Gap** | 🟢 DLR + LSI → unconditional mass gap |
+| P71 | [48] | **Interface Lemmas for the Multiscale Proof** | 🔵 Interface lemmas |
+| P70 | [47] | **Uniform Coercivity and Unconditional Closure at Weak Coupling** | 🟢 Unconditional closure |
+| P69 | [46] | **Ricci Curvature of the Orbit Space and Single-Scale LSI** | 🔵 Geometric foundation for LSI |
+| P68 | [45] | **Uniform Log-Sobolev Inequality and Mass Gap** | 🔵 Core LSI paper |
+| P67 | [44] | **Uniform Poincaré Inequality via Multiscale Martingale Decomposition** | 🔵 Poincaré → LSI |
+
+---
+
+### 🌿 BRANCH C — Earlier proofs & geometric methods (viXra [38]–[43])
+
+| Internal | viXra | Title | Role |
+|----------|-------|-------|------|
+| P66 | [43] | **Mass Gap for the Gribov-Zwanziger Lattice Measure** | 🔵 Non-perturbative GZ proof |
+| P65 | [42] | **Geodesic Convexity and Structural Limits of Curvature Methods** | ⚪ Identifies limits of curvature approach |
+| P64 | [41] | **Morse–Bott Spectral Reduction and the YM Mass Gap** | 🔵 Morse–Bott reduction |
+| P63 | [40] | **The YM Mass Gap on the Lattice: a Self-Contained Proof** | 🔵 Earlier self-contained proof |
+| P62 | [39] | **YM Mass Gap via Witten Laplacian and Constructive Renormalization** | 🔵 Witten Laplacian approach |
+| P61 | [38] | **YM Existence and Mass Gap: Anomaly Algebra, Gradient-Flow, QI** | 🔵 Framework paper |
+
+---
+
+### ⚪ CONTEXT — AQFT, Quantum Information, Decoherence, Gravity (viXra [1]–[37])
+
+<details>
+<summary>Expand context papers [1]–[37]</summary>
+
+*(See viXra author page: https://ai.vixra.org/author/lluis_eriksson)*
+
+</details>
 
 ---
 
