@@ -377,3 +377,40 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8196+ compiled jobs
 | Global axiom count in SpatialLocalityFramework | **0** |
 
 *Last updated: v0.8.32*
+
+
+## P8 Physical Gap — v0.8.36 Status
+
+### Architecture
+```
+SUN_StateConstruction ──→ SUN_DirichletCore ──→ SUN_LiebRobin
+        ↑                         │                    │
+   SUN_Compact              LSIDefinitions    SpatialLocalityFramework
+                                                        │
+                                               MarkovSemigroupDef
+```
+
+### Key results (proved, 0 sorrys)
+
+- `isCompact_specialUnitaryGroup` — SU(N) is compact (entry_norm_bound_of_unitary)
+- `dynamic_covariance_at_optimalTime` — exponential covariance decay
+- `locality_to_static_covariance_v2` — abstract Lieb-Robinson bound
+- `sun_locality_to_covariance` — concrete SU(N) covariance decay
+
+### sunMarkovSemigroup: axiom → def (v0.8.36)
+```lean
+noncomputable def sunMarkovSemigroup (N_c : ℕ) [NeZero N_c] :
+    MarkovSemigroup (sunHaarProb N_c) :=
+  hille_yosida_semigroup (sunDirichletForm_concrete N_c)
+    (sunDirichletForm_isDirichletFormStrong)
+```
+
+### Axiom classification
+
+| Category | Count | Examples |
+|----------|-------|---------|
+| Physics (new mathematics) | 1 | `sun_lieb_robinson_bound` |
+| Mathlib infrastructure gaps | 7 | `hille_yosida`, `IsTopologicalGroup`, LieGroup API |
+| Clay core | 1 | `balaban_rg_uniform_lsi` |
+
+See `AXIOM_FRONTIER.md` for full details.

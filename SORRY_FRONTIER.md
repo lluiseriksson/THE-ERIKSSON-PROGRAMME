@@ -1,34 +1,29 @@
-# SORRY FRONTIER — v0.8.32
+# SORRY FRONTIER — THE-ERIKSSON-PROGRAMME v0.8.36
 
-## Status: 0 sorrys in P8_PhysicalGap
+Last updated: v0.8.36
 
-All sorrys in `SpatialLocalityFramework.lean` have been eliminated.
+## Current sorry count: 0
 
-## Remaining mathematical frontier
+All sorry-based proofs have been eliminated from the P8 physical gap module.
+The remaining open items are declared as explicit axioms (see AXIOM_FRONTIER.md).
 
-### `LiebRobinsonBound` — explicit hypothesis in `locality_to_static_covariance_v2`
-```lean
-def LiebRobinsonBound {d : ℕ} ... (sg : MarkovSemigroup μ) : Prop :=
-  ∀ (A B : Finset (Site d)) (F G : Ω → ℝ) ...,
-    |Cov(F,G) - Cov(F, T_{t*} G)| ≤ exp(-dist(A,B)) · √VarF · √VarG
-```
+## Files with no sorrys in P8_PhysicalGap
 
-**Mathematical content**: Finite speed of propagation for lattice dynamics.
-**Reference**: Hastings-Koma (2006), Nachtergaele-Sims (2006).
-**Status**: Not a global axiom — an explicit hypothesis of the main theorem.
+| File | Sorrys | Status |
+|------|--------|--------|
+| SpatialLocalityFramework.lean | 0 | ✅ Fully proved |
+| CovarianceLemmas.lean | 0 | ✅ Fully proved |
+| MarkovVarianceDecay.lean | 0 | ✅ Fully proved |
+| MarkovSemigroupDef.lean | 0 | ✅ (1 axiom: hille_yosida) |
+| SUN_Compact.lean | 0 | ✅ Fully proved |
+| SUN_DirichletCore.lean | 0 | ✅ (axioms documented) |
+| SUN_StateConstruction.lean | 0 | ✅ (axiom: IsTopologicalGroup) |
+| SUN_LiebRobin.lean | 0 | ✅ sun_locality_to_covariance proved |
 
-### `hille_yosida_semigroup` — in `MarkovSemigroupDef.lean`
+## Philosophy
 
-Strong Dirichlet form → Markov semigroup (Beurling-Deny/Fukushima).
-Mathlib gap: C₀-semigroup theory not yet in Mathlib.
-
-## History
-
-| Version | Event |
-|---------|-------|
-| v0.8.32 | 0 sorrys in SpatialLocalityFramework, LiebRobinson demoted to hypothesis |
-| v0.8.31 | `dynamic_covariance_at_optimalTime` sorry closed |
-| v0.8.29 | `locality_to_static_covariance_v2` assembly proved |
-| v0.8.28 | SpatialLocalityFramework created with 4 sorrys |
-
-*Last updated: v0.8.32 — March 2026*
+We prefer explicit axioms over sorrys because:
+1. Axioms are searchable and trackable
+2. Axioms document the mathematical gap precisely
+3. Axioms are type-checked (the statement is verified even if the proof is not)
+4. Sorrys are silent proof holes; axioms are honest declarations
