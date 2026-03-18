@@ -369,4 +369,92 @@ theorem insert_mem_of_avoidingX {d : ℕ} {L : ℤ}
     · exact hTcomp.2 A hA B hB hAB
 
 
+
+
+/-- The containing-X branch equals the image of insert X over avoidingX families. -/
+theorem containingFamilies_eq_image {d : ℕ} {L : ℤ}
+    {Gamma : Finset (Polymer d L)} {X : Polymer d L} :
+    ((compatibleSubfamilies (insert X Gamma)).erase ∅).filter (fun S => X ∈ S)
+      = (compatibleSubfamiliesAvoidingX Gamma X).image (insert X) := by
+  classical
+  ext S
+  constructor
+  · intro hS
+    simp only [Finset.mem_filter, Finset.mem_erase] at hS
+    exact Finset.mem_image.mpr
+      ⟨S.erase X, erase_mem_avoidingX hS.1.2 hS.2, Finset.insert_erase hS.2⟩
+  · intro hS
+    rcases Finset.mem_image.mp hS with ⟨T, hT, rfl⟩
+    have hcomp : insert X T ∈ compatibleSubfamilies (insert X Gamma) :=
+      insert_mem_of_avoidingX hT
+    have hne : insert X T ≠ ∅ := by simp
+    simp only [Finset.mem_filter, Finset.mem_erase]
+    refine ⟨?_, by simp⟩
+    exact ⟨hne, hcomp⟩
+
+
+/-- Step 2 (igualdad exacta): las familias que contienen X factorizan |K X| exactamente. -/
+theorem inductionBudget_insert_containing_eq {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (X : Polymer d L) (K : Activity d L) (a : ℝ) :
+    ∑ S ∈ ((compatibleSubfamilies (insert X Gamma)).erase ∅).filter (fun S => X ∈ S),
+      absFamilyWeight K S
+    =
+      |K X| * ∑ S ∈ compatibleSubfamiliesAvoidingX Gamma X, absFamilyWeight K S := by
+  classical
+  rw [containingFamilies_eq_image]
+  rw [Finset.sum_image]
+  · calc
+      ∑ S ∈ compatibleSubfamiliesAvoidingX Gamma X, absFamilyWeight K (insert X S)
+          = ∑ S ∈ compatibleSubfamiliesAvoidingX Gamma X,
+              |K X| * absFamilyWeight K S := by
+              apply Finset.sum_congr rfl
+              intro S hS
+              exact absFamilyWeight_insert K X S
+                (mem_compatibleSubfamiliesAvoidingX_iff.mp hS).2.1
+      _ = |K X| * ∑ S ∈ compatibleSubfamiliesAvoidingX Gamma X,
+              absFamilyWeight K S := by
+              rw [Finset.mul_sum]
+  · -- Inyectividad de (insert X ·) en avoidingX:
+    --   insert X A = insert X B  →  A = B   (porque X ∉ A y X ∉ B)
+    intro A hA B hB hEq
+    have hAX : X ∉ A := (mem_compatibleSubfamiliesAvoidingX_iff.mp hA).2.1
+    have hBX : X ∉ B := (mem_compatibleSubfamiliesAvoidingX_iff.mp hB).2.1
+    have hErase := congrArg (fun S => S.erase X) hEq
+    simpa [Finset.erase_insert, hAX, hBX] using hErase
+
+/-- Step 2 (corolario ≤): derivado trivialmente de la igualdad anterior. -/
+theorem inductionBudget_insert_containing_le {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (X : Polymer d L) (K : Activity d L) (a : ℝ) :
+    ∑ S ∈ ((compatibleSubfamilies (insert X Gamma)).erase ∅).filter (fun S => X ∈ S),
+      absFamilyWeight K S
+    ≤ |K X| * ∑ S ∈ compatibleSubfamiliesAvoidingX Gamma X, absFamilyWeight K S :=
+  le_of_eq (inductionBudget_insert_containing_eq Gamma X K a)
+
+/-- Step 3: Recurrencia principal — InductionBudget se parte bajo insert. -/
+theorem inductionBudget_insert_le {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (X : Polymer d L) (K : Activity d L) (a : ℝ) :
+    InductionBudget (insert X Gamma) K a
+      ≤ InductionBudget Gamma K a
+        + |K X| * ∑ S ∈ compatibleSubfamiliesAvoidingX Gamma X, absFamilyWeight K S := by
+  classical
+  unfold InductionBudget
+  have hsplit :
+      ∑ S ∈ (compatibleSubfamilies (insert X Gamma)).erase ∅, absFamilyWeight K S
+        =
+      ∑ S ∈ ((compatibleSubfamilies (insert X Gamma)).erase ∅).filter (fun S => X ∉ S),
+          absFamilyWeight K S
+        +
+      ∑ S ∈ ((compatibleSubfamilies (insert X Gamma)).erase ∅).filter (fun S => X ∈ S),
+          absFamilyWeight K S := by
+    simpa [add_comm] using
+      (Finset.sum_filter_add_sum_filter_not
+        (s := (compatibleSubfamilies (insert X Gamma)).erase ∅)
+        (p := fun S => X ∈ S)
+        (f := fun S => absFamilyWeight K S)).symm
+  rw [hsplit]
+  exact add_le_add
+    (inductionBudget_insert_avoiding_le Gamma X K a)
+    (inductionBudget_insert_containing_le Gamma X K a)
+
+
 end YangMills.ClayCore
