@@ -5,6 +5,9 @@ YangMills/ClayCore/BalabanRG/ -- Balaban RG layers:
 - Layer 0B: FiniteBlocks.lean -- block-spin averaging, linearity
 - Layer 1:  PolymerCombinatorics.lean -- Polymer, KP criterion, kp_activity_bound
 - Layer 2A: PolymerPartitionFunction.lean -- Z definition, Z(empty)=1, Z({X})=1+K(X)
+- Layer 2B: partitionTail (erase empty), Z=1+Ztail proved
+- Layer 2C: SmallActivityBudget, |Z-1| <= B proved
+Next: KPFiniteTailBound.lean - connect KP criterion to SmallActivityBudget
 Next: partitionTail, Z=1+Ztail, abs bound under KP
 
 # THE ERIKSSON PROGRAMME

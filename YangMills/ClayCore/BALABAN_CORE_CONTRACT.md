@@ -123,4 +123,5 @@ NO REFACTOR ACCEPTED IF:
 | v0.8.50+ | FiniteBlocks.lean: finite-volume averaging ✅ |
 | v0.8.50+ | PolymerCombinatorics.lean: Polymer, KP criterion ✅ |
 | v0.8.50+ | PolymerPartitionFunction.lean: Z, Z(empty)=1, Z({X})=1+K(X) ✅ |
-| Next | partitionTail + Z=1+Ztail + KP absolute bound |
+| v0.8.50+ | Layers 2B+2C: partitionTail, Z=1+Ztail, SmallActivityBudget ✅ |
+| Next | KPFiniteTailBound.lean: connect KP criterion to budget |
