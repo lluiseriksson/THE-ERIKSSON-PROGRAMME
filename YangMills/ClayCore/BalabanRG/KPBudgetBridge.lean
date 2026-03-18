@@ -119,4 +119,63 @@ Key combinatorial lemma for the full induction:
 This split + Finset.sum_union (disjoint) + IH closes the induction.
 -/
 
+
+
+/-! ## Insert-split: key combinatorial lemma for induction -/
+
+/-- Subfamilies of Gamma that do NOT contain X.
+    These are exactly the subfamilies that can be extended by inserting X. -/
+noncomputable def compatibleSubfamiliesAvoidingX {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (X : Polymer d L) :
+    Finset (Finset (Polymer d L)) :=
+  (compatibleSubfamilies Gamma).filter (fun S => X ∉ S)
+
+theorem mem_compatibleSubfamiliesAvoidingX_iff {d : ℕ} {L : ℤ}
+    {Gamma : Finset (Polymer d L)} {X : Polymer d L}
+    {S : Finset (Polymer d L)} :
+    S ∈ compatibleSubfamiliesAvoidingX Gamma X ↔
+    S ∈ compatibleSubfamilies Gamma ∧ X ∉ S := by
+  simp [compatibleSubfamiliesAvoidingX]
+
+/-- A compatible subfamily of insert X Gamma that avoids X
+    is also a compatible subfamily of Gamma. -/
+theorem compatibleSubfamilies_insert_avoiding {d : ℕ} {L : ℤ}
+    {Gamma : Finset (Polymer d L)} {X : Polymer d L}
+    {S : Finset (Polymer d L)}
+    (hS : S ∈ compatibleSubfamilies (insert X Gamma)) (hXS : X ∉ S) :
+    S ∈ compatibleSubfamilies Gamma := by
+  rw [mem_compatibleSubfamilies_iff] at hS ⊢
+  refine ⟨?_, hS.2⟩
+  intro Y hY
+  have hYins := hS.1 hY
+  simp only [Finset.mem_insert] at hYins
+  exact hYins.resolve_left (fun h => hXS (h ▸ hY))
+
+/-- A compatible subfamily of Gamma is also compatible in insert X Gamma. -/
+theorem compatibleSubfamilies_mono {d : ℕ} {L : ℤ}
+    {Gamma : Finset (Polymer d L)} {X : Polymer d L}
+    {S : Finset (Polymer d L)}
+    (hS : S ∈ compatibleSubfamilies Gamma) :
+    S ∈ compatibleSubfamilies (insert X Gamma) := by
+  rw [mem_compatibleSubfamilies_iff] at hS ⊢
+  exact ⟨hS.1.trans (Finset.subset_insert X Gamma), hS.2⟩
+
+/-!
+## Target: insert-split as sum decomposition
+
+The key recurrence for the induction:
+
+∑ S ∈ (compatibleSubfamilies (insert X Gamma)).erase ∅, ∏ Y ∈ S, |K Y|
+= ∑ S ∈ (compatibleSubfamilies Gamma).erase ∅, ∏ Y ∈ S, |K Y|
++ |K X| * ∑ S ∈ compatibleSubfamiliesAvoidingX Gamma X, ∏ Y ∈ S, |K Y|
+
+This follows from partitioning compatible subfamilies of insert X Gamma into:
+  A) those NOT containing X  (= compatibleSubfamilies Gamma)
+  B) those containing X      (= {insert X S | S ∈ compatibleSubfamiliesAvoidingX Gamma X})
+
+Under KP: the second sum is controlled by the KP bound on X,
+closing the induction Budget(insert X Gamma) <= Budget(Gamma) * (1 + |K X|).
+-/
+
+
 end YangMills.ClayCore
