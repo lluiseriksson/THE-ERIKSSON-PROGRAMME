@@ -1,12 +1,16 @@
-Clay Core Layers 0+2A (2026-03-18) -- Polymer partition function formalized
+Clay Core BalabanRG (2026-03-18) -- All layers 0-3A, 0 errors
 
-YangMills/ClayCore/BalabanRG/ -- Balaban RG layers:
-- Layer 0A: BlockSpin.lean -- infinite-lattice geometry
-- Layer 0B: FiniteBlocks.lean -- block-spin averaging, linearity
+YangMills/ClayCore/BalabanRG/ -- Balaban RG formalization:
+- Layer 0A: BlockSpin.lean -- infinite-lattice geometry (LatticeSite, Block, scaleHierarchy)
+- Layer 0B: FiniteBlocks.lean -- block-spin averaging, linearity, const proved
 - Layer 1:  PolymerCombinatorics.lean -- Polymer, KP criterion, kp_activity_bound
-- Layer 2A: PolymerPartitionFunction.lean -- Z definition, Z(empty)=1, Z({X})=1+K(X)
-- Layer 2B: partitionTail (erase empty), Z=1+Ztail proved
+- Layer 2A: PolymerPartitionFunction.lean -- Z, Z(empty)=1, Z({X})=1+K(X)
+- Layer 2B: partitionTail (erase empty), Z = 1 + Ztail proved
 - Layer 2C: SmallActivityBudget, |Z-1| <= B proved
+- Layer 3A: KPFiniteTailBound.lean -- KPOnGamma, weightedActivity, theoreticalBudget
+Next: KPBudgetBridge.lean -- Layer 3B: kpOnGamma -> SmallActivityBudget (KP induction)
+
+
 Next: KPFiniteTailBound.lean - connect KP criterion to SmallActivityBudget
 Next: partitionTail, Z=1+Ztail, abs bound under KP
 
