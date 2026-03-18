@@ -128,14 +128,15 @@ This split + Finset.sum_union (disjoint) + IH closes the induction.
 noncomputable def compatibleSubfamiliesAvoidingX {d : ℕ} {L : ℤ}
     (Gamma : Finset (Polymer d L)) (X : Polymer d L) :
     Finset (Finset (Polymer d L)) :=
-  (compatibleSubfamilies Gamma).filter (fun S => X ∉ S)
+  (compatibleSubfamilies Gamma).filter
+    (fun S => X ∉ S ∧ ∀ Y ∈ S, Polymer.Compatible X Y)
 
 theorem mem_compatibleSubfamiliesAvoidingX_iff {d : ℕ} {L : ℤ}
     {Gamma : Finset (Polymer d L)} {X : Polymer d L}
     {S : Finset (Polymer d L)} :
     S ∈ compatibleSubfamiliesAvoidingX Gamma X ↔
-    S ∈ compatibleSubfamilies Gamma ∧ X ∉ S := by
-  simp [compatibleSubfamiliesAvoidingX]
+    S ∈ compatibleSubfamilies Gamma ∧ X ∉ S ∧ ∀ Y ∈ S, Polymer.Compatible X Y := by
+  simp [compatibleSubfamiliesAvoidingX, Finset.mem_filter]
 
 /-- A compatible subfamily of insert X Gamma that avoids X
     is also a compatible subfamily of Gamma. -/
@@ -301,6 +302,71 @@ Step 4: kpOnGamma_implies_compatibleFamilyMajorant
   - step: use theoreticalBudget_insert + inductionBudget_insert_le
           + one_add_le_exp to close exp form
 -/
+
+
+
+
+
+/-! ## Layer 3B: KP Induction Steps -/
+
+/-- Step 1: avoiding-X subfamilies bounded by InductionBudget Gamma. -/
+theorem inductionBudget_insert_avoiding_le {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (X : Polymer d L)
+    (K : Activity d L) (a : ℝ) :
+    ∑ S ∈ ((compatibleSubfamilies (insert X Gamma)).erase ∅).filter (fun S => X ∉ S),
+      absFamilyWeight K S
+    ≤ InductionBudget Gamma K a := by
+  classical
+  unfold InductionBudget
+  apply Finset.sum_le_sum_of_subset_of_nonneg
+  · intro S hS
+    simp only [Finset.mem_filter, Finset.mem_erase] at hS
+    simp only [Finset.mem_erase]
+    exact ⟨hS.1.1, compatibleSubfamilies_insert_avoiding hS.1.2 hS.2⟩
+  · intro S _ _; exact absFamilyWeight_nonneg K S
+
+/-- If S is compatible in insert X Gamma and contains X, then S.erase X is in avoidingX. -/
+theorem erase_mem_avoidingX {d : ℕ} {L : ℤ}
+    {Gamma : Finset (Polymer d L)} {X : Polymer d L} {S : Finset (Polymer d L)}
+    (hS : S ∈ compatibleSubfamilies (insert X Gamma)) (hXS : X ∈ S) :
+    S.erase X ∈ compatibleSubfamiliesAvoidingX Gamma X := by
+  rw [mem_compatibleSubfamiliesAvoidingX_iff]
+  rw [mem_compatibleSubfamilies_iff] at hS
+  refine ⟨?_, by simp, ?_⟩
+  · rw [mem_compatibleSubfamilies_iff]
+    refine ⟨?_, fun A hA B hB hAB =>
+      hS.2 A (Finset.mem_of_mem_erase hA) B (Finset.mem_of_mem_erase hB) hAB⟩
+    intro Y hY
+    have hYins := hS.1 (Finset.mem_of_mem_erase hY)
+    simp only [Finset.mem_insert] at hYins
+    exact hYins.resolve_left (by
+      intro hYX; subst hYX
+      exact (Finset.mem_erase.mp hY).1 rfl)
+  · intro Y hY
+    exact hS.2 X hXS Y (Finset.mem_of_mem_erase hY) (by
+      intro hYX; exact (Finset.mem_erase.mp hY).1 hYX.symm)
+
+/-- If T is in avoidingX Gamma X, then insert X T is compatible in insert X Gamma. -/
+theorem insert_mem_of_avoidingX {d : ℕ} {L : ℤ}
+    {Gamma : Finset (Polymer d L)} {X : Polymer d L} {T : Finset (Polymer d L)}
+    (hT : T ∈ compatibleSubfamiliesAvoidingX Gamma X) :
+    insert X T ∈ compatibleSubfamilies (insert X Gamma) := by
+  rw [mem_compatibleSubfamiliesAvoidingX_iff] at hT
+  obtain ⟨hTcomp, hTXnot, hTXcompat⟩ := hT
+  rw [mem_compatibleSubfamilies_iff] at hTcomp ⊢
+  refine ⟨?_, ?_⟩
+  · intro Y hY
+    simp only [Finset.mem_insert] at hY ⊢
+    rcases hY with rfl | hY
+    · exact Or.inl rfl
+    · exact Or.inr (hTcomp.1 hY)
+  · intro A hA B hB hAB
+    simp only [Finset.mem_insert] at hA hB
+    rcases hA with rfl | hA <;> rcases hB with rfl | hB
+    · exact (hAB rfl).elim
+    · exact hTXcompat B hB
+    · exact Polymer.compatible_symm (hTXcompat A hA)
+    · exact hTcomp.2 A hA B hB hAB
 
 
 end YangMills.ClayCore
