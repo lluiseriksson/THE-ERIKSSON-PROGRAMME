@@ -1,99 +1,100 @@
-# AXIOM_FRONTIER.md — v0.8.49 (session close)
+# AXIOM_FRONTIER.md — v0.8.50
 
 ## P8 is proof-clean: 0 real sorrys.
-## Frontier: 7 axioms.
-## Journey: 13 → 12 → 11 → 10 → 8 → 7
+## Frontier: 8 axioms (honest). Previous: 7 axioms (1 was logically unsound).
+## Journey: 13 → 12 → 11 → 10 → 8 → 7 → 8*
 
-Last updated: v0.8.49 (2026-03-18)
-Build: OK | Errors: 0 | Sorrys: 0
+*Count went 7→8 in v0.8.50 soundness refactor: replaced 1 unsound axiom
+with 2 honest ones (hille_yosida_semigroup now sound + sun_variance_decay new).
+
+Last updated: v0.8.50 (2026-03-18)
+Build: 0 errors, 0 sorrys
 
 ---
 
-## P8 Axiom Classification (7 total)
+## The Soundness Fix (v0.8.50)
+
+**Before:** `hille_yosida_semigroup : IsDirichletFormStrong E μ → MarkovSemigroup μ`
+This claimed spectral gap from Dirichlet form alone. FALSE in general.
+(Brownian motion on ℝᵈ: strong Dirichlet form, no spectral gap.)
+
+**After:** Two honest axioms:
+- `hille_yosida_semigroup : IsDirichletFormStrong E μ → SymmetricMarkovTransport μ`
+  (Layer A+B: semigroup existence + transport. NO spectral gap.)
+- `sun_variance_decay : HasVarianceDecay (sunMarkovSemigroup N_c)`
+  (Layer C: spectral gap for SU(N) specifically, from Poincaré.)
+
+**New structures:**
+- `SymmetricMarkovTransport`: Layer A+B (T, algebra, stat, integrable, symm)
+- `HasVarianceDecay`: Layer C (exponential variance decay, Poincaré + Gronwall)
+- `MarkovSemigroup`: extends SymmetricMarkovTransport + HasVarianceDecay (unchanged API)
+
+---
+
+## P8 Axiom Classification (8 total)
 
 ### Clay Core (1)
 | Axiom | File | Status |
 |-------|------|--------|
-| `balaban_rg_uniform_lsi` | BalabanToLSI | E26 paper series (17 papers) |
+| `balaban_rg_uniform_lsi` | BalabanToLSI | E26 paper series |
 
 ### Physics Bridge (1)
 | Axiom | File | Status |
 |-------|------|--------|
-| `poincare_to_covariance_decay` | StroockZegarlinski | SZ 1992, static covariance decay |
+| `poincare_to_covariance_decay` | StroockZegarlinski | SZ 1992 |
 
-### Physics Hypothesis (1)
+### Physics Hypotheses (2)
 | Axiom | File | Status |
 |-------|------|--------|
-| `sun_lieb_robinson_bound` | SUN_LiebRobin | Hastings-Koma for SU(N) gauge |
+| `sun_lieb_robinson_bound` | SUN_LiebRobin | Hastings-Koma for SU(N) |
+| `sun_variance_decay` | SUN_LiebRobin | Poincaré→Gronwall→gap for SU(N) |
 
 ### Mathlib Infrastructure Gaps (4)
-| Axiom | File | Difficulty | Next action |
-|-------|------|------------|-------------|
-| `bakry_emery_lsi` | BalabanToLSI | HIGH | Bakry-Émery spike (session 2) |
-| `sun_bakry_emery_cd` | BalabanToLSI | HIGH | Bakry-Émery spike (session 2) |
-| `hille_yosida_semigroup` | MarkovSemigroupDef | HIGH* | Soundness fix (session 2) |
-| `sunDirichletForm_contraction` | SUN_DirichletCore | MEDIUM | Net 0, blocked (Beurling-Deny) |
-
-**hille_yosida_semigroup soundness note:**
-Currently claims IsDirichletFormStrong E μ → MarkovSemigroup μ (including spectral gap).
-This is FALSE in general — Brownian motion on ℝᵈ has strong Dirichlet form but no spectral gap.
-Honest split documented in `Experimental/Semigroup/HilleYosidaDecomposition.lean`:
-- `hille_yosida_core`: IsDirichletFormStrong → SymmetricMarkovTransport (Layer A+B)
-- `poincare_to_variance_decay`: SymmetricMarkovTransport + Poincaré → HasVarianceDecay (Layer C)
-Decomposition is axiom-neutral. Soundness fix is next-session priority.
+| Axiom | File | Difficulty | Notes |
+|-------|------|------------|-------|
+| `bakry_emery_lsi` | BalabanToLSI | HIGH | CD(K,∞)⟹LSI(K) |
+| `sun_bakry_emery_cd` | BalabanToLSI | HIGH | SU(N) satisfies CD(N/4,∞) |
+| `hille_yosida_semigroup` | MarkovSemigroupDef | HIGH | Dirichlet → SymmetricMarkovTransport |
+| `sunDirichletForm_contraction` | SUN_DirichletCore | MEDIUM | Beurling-Deny, net 0 |
 
 ---
 
-## Eliminated Axiom History (13 → 7)
+## Eliminated Axiom History (13 → 8 honest)
 
 | Axiom | Version | Method |
 |-------|---------|--------|
 | `sz_lsi_to_clustering` (phantom) | v0.8.17 | Proved downstream |
 | `lsi_implies_poincare_strong` (phantom) | v0.8.43 | Import cycle broken |
-| `instFintypeLieGenIndex` | v0.8.45 | LieGenIndex := Fin (N_c^2-1) |
-| `lieDerivative_const` | v0.8.48 | lieD'_const via lieDerivExp_const |
-| `lieDerivative_linear` | v0.8.48 | lieD'_add + lieD'_smul via lieDerivExp |
+| `instFintypeLieGenIndex` | v0.8.45 | LieGenIndex := Fin(N²-1) |
+| `lieDerivative_const` | v0.8.48 | lieD'_const via lieDerivExp |
+| `lieDerivative_linear` | v0.8.48 | lieD'_add + lieD'_smul |
 | `sunDirichletForm_subadditive` | v0.8.49 | two_mul_le_add_sq + integral_mono |
+| `hille_yosida_semigroup` (unsound) | v0.8.50 | Replaced by sound version |
 
 ---
 
-## Experimental Findings (this session)
+## Experimental Findings
 
 ### DirichletContraction (net 0 — do not integrate)
-- clip_n is 1-Lipschitz ✅
-- DifferentiableAt fails at kinks ±n ❌ BLOCKER
-- Route B: dirichlet_lipschitz_contraction replaces sunDirichletForm_contraction = net 0
-- Decision: sunDirichletForm_contraction stays as honest Beurling-Deny axiom
+Beurling-Deny gap: DifferentiableAt fails at kinks ±n.
+Route B axiom = 1 IN, 1 OUT. sunDirichletForm_contraction stays.
 
-### HilleYosidaDecomposition (axiom-neutral — soundness improvement)
-- 3-layer split compiles cleanly
-- Soundness finding: spectral gap requires Poincaré explicitly
-- poincare_to_variance_decay is genuinely new (different from poincare_to_covariance_decay)
-- Decision: P8 unchanged, soundness fix is next priority
-
----
-
-## Support Axioms (Experimental/LieSUN)
-| Axiom | File | Notes |
-|-------|------|-------|
-| `sunGeneratorData` | LieDerivReg_v4 | su(N) generator basis |
-| `lieDerivReg_all` | LieDerivReg_v4 | All SU(N) functions satisfy LieDerivReg |
-| `matExp_traceless_det_one` | LieExpCurve | det(exp(tX))=1 (Jacobi/Liouville) |
+### HilleYosidaDecomposition (soundness fix applied to P8)
+3-layer split: Core(A) + Transport(B) + HasVarianceDecay(C).
+poincare_to_variance_decay is genuinely new (not same as poincare_to_covariance_decay).
 
 ---
 
 ## Next Session Priorities
 
-1. **Soundness fix** for `hille_yosida_semigroup`
-   - Require Poincaré as explicit hypothesis for spectral gap
-   - Axiom-neutral but mathematically correct
-   - Use HilleYosidaDecomposition.lean as template
+1. **Bakry-Émery spike** — `bakry_emery_lsi` + `sun_bakry_emery_cd`
+   - Related axioms, may fall together
+   - Inspect current Mathlib for CD(K,∞) machinery
 
-2. **Bakry-Émery spike**
-   - `bakry_emery_lsi` + `sun_bakry_emery_cd` are related
-   - May fall together if Mathlib has CD(K,∞) machinery
-   - Inspect current Mathlib before scaffolding
+2. **sun_variance_decay removal path**
+   - Formalise: LSI → Poincaré → Gronwall → HasVarianceDecay for SU(N)
+   - poincare_to_covariance_decay already established — bridge exists in principle
 
 3. **Mathlib watch**
-   - C₀-semigroup theory would unlock `hille_yosida_semigroup` directly
-   - Track Mathlib PRs for: `ContinuousSemigroup`, `HilleYosida`, `DirichletForm`
+   - C₀-semigroup theory → hille_yosida_semigroup
+   - Bakry-Émery/Γ₂ calculus → bakry_emery_lsi, sun_bakry_emery_cd

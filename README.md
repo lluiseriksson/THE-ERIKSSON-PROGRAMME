@@ -5,11 +5,27 @@
 
 ## Recent Milestones
 
+v0.8.50 — Soundness refactor: 7 unsound → 8 honest axioms ✅
+
+hille_yosida_semigroup fixed: now returns SymmetricMarkovTransport (Layer A+B only).
+Previously claimed spectral gap from Dirichlet form alone — FALSE in general.
+New structures: SymmetricMarkovTransport, HasVarianceDecay, MarkovSemigroup extends both.
+New axiom: sun_variance_decay (Layer C for SU(N) — honest Poincaré+Gronwall gap).
+P8: 8 honest axioms, 0 sorrys. Architecture now logically sound.
+
 v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
 
 sunDirichletForm_subadditive: axiom → theorem via lieDerivReg_all + integral_mono.
 Proof: (a+b)²≤2a²+2b² via two_mul_le_add_sq + gcongr; integrate; sum over generators.
 P8: 7 axioms, 0 real sorrys. Journey: 13→12→11→10→8→7.
+
+v0.8.50 — Soundness refactor: 7 unsound → 8 honest axioms ✅
+
+hille_yosida_semigroup fixed: now returns SymmetricMarkovTransport (Layer A+B only).
+Previously claimed spectral gap from Dirichlet form alone — FALSE in general.
+New structures: SymmetricMarkovTransport, HasVarianceDecay, MarkovSemigroup extends both.
+New axiom: sun_variance_decay (Layer C for SU(N) — honest Poincaré+Gronwall gap).
+P8: 8 honest axioms, 0 sorrys. Architecture now logically sound.
 
 v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
 
@@ -65,11 +81,27 @@ Import cycle fully eliminated. StroockZegarlinski proved with 0 sorrys:
 var_le_sq_int (universal), hT1Fv (AE equality), hprod (calc chain).
 P8 real sorrys: 0 | Full build: 0 errors
 
+v0.8.50 — Soundness refactor: 7 unsound → 8 honest axioms ✅
+
+hille_yosida_semigroup fixed: now returns SymmetricMarkovTransport (Layer A+B only).
+Previously claimed spectral gap from Dirichlet form alone — FALSE in general.
+New structures: SymmetricMarkovTransport, HasVarianceDecay, MarkovSemigroup extends both.
+New axiom: sun_variance_decay (Layer C for SU(N) — honest Poincaré+Gronwall gap).
+P8: 8 honest axioms, 0 sorrys. Architecture now logically sound.
+
 v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
 
 sunDirichletForm_subadditive: axiom → theorem via lieDerivReg_all + integral_mono.
 Proof: (a+b)²≤2a²+2b² via two_mul_le_add_sq + gcongr; integrate; sum over generators.
 P8: 7 axioms, 0 real sorrys. Journey: 13→12→11→10→8→7.
+
+v0.8.50 — Soundness refactor: 7 unsound → 8 honest axioms ✅
+
+hille_yosida_semigroup fixed: now returns SymmetricMarkovTransport (Layer A+B only).
+Previously claimed spectral gap from Dirichlet form alone — FALSE in general.
+New structures: SymmetricMarkovTransport, HasVarianceDecay, MarkovSemigroup extends both.
+New axiom: sun_variance_decay (Layer C for SU(N) — honest Poincaré+Gronwall gap).
+P8: 8 honest axioms, 0 sorrys. Architecture now logically sound.
 
 v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
 
@@ -132,11 +164,27 @@ PoincareCovarianceRoadmap: 0 sorrys, 0 axioms, correct proof of sz_covariance_br
 LSItoSpectralGap: stale sorry-comments cleaned.
 P8 real sorrys: 0 | Build: 0 errors, 0 sorrys
 
+v0.8.50 — Soundness refactor: 7 unsound → 8 honest axioms ✅
+
+hille_yosida_semigroup fixed: now returns SymmetricMarkovTransport (Layer A+B only).
+Previously claimed spectral gap from Dirichlet form alone — FALSE in general.
+New structures: SymmetricMarkovTransport, HasVarianceDecay, MarkovSemigroup extends both.
+New axiom: sun_variance_decay (Layer C for SU(N) — honest Poincaré+Gronwall gap).
+P8: 8 honest axioms, 0 sorrys. Architecture now logically sound.
+
 v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
 
 sunDirichletForm_subadditive: axiom → theorem via lieDerivReg_all + integral_mono.
 Proof: (a+b)²≤2a²+2b² via two_mul_le_add_sq + gcongr; integrate; sum over generators.
 P8: 7 axioms, 0 real sorrys. Journey: 13→12→11→10→8→7.
+
+v0.8.50 — Soundness refactor: 7 unsound → 8 honest axioms ✅
+
+hille_yosida_semigroup fixed: now returns SymmetricMarkovTransport (Layer A+B only).
+Previously claimed spectral gap from Dirichlet form alone — FALSE in general.
+New structures: SymmetricMarkovTransport, HasVarianceDecay, MarkovSemigroup extends both.
+New axiom: sun_variance_decay (Layer C for SU(N) — honest Poincaré+Gronwall gap).
+P8: 8 honest axioms, 0 sorrys. Architecture now logically sound.
 
 v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
 
