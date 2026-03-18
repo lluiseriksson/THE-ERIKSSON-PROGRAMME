@@ -1,12 +1,17 @@
-Clay Core BalabanRG (2026-03-18) -- Layers 0-3B, 0 errors
+Clay Core BalabanRG (2026-03-18) -- 6 files, 808 lines, all 0 errors
 
 YangMills/ClayCore/BalabanRG/ -- Balaban RG formalization:
-- Layer 0A: BlockSpin.lean -- lattice geometry
-- Layer 0B: FiniteBlocks.lean -- block-spin averaging
-- Layer 1:  PolymerCombinatorics.lean -- KP criterion, kp_activity_bound
-- Layer 2:  PolymerPartitionFunction.lean -- Z, Ztail, |Z-1|<=B
-- Layer 3A: KPFiniteTailBound.lean -- KPOnGamma, theoreticalBudget
+- Layer 0A: BlockSpin.lean -- lattice geometry (LatticeSite, Block, scaleHierarchy)
+- Layer 0B: FiniteBlocks.lean -- block-spin averaging, linearity, const
+- Layer 1:  PolymerCombinatorics.lean -- Polymer, KP criterion, kp_activity_bound
+- Layer 2:  PolymerPartitionFunction.lean -- Z, Ztail, SmallActivityBudget, |Z-1|<=B
+- Layer 3A: KPFiniteTailBound.lean -- KPOnGamma, touchingPolymers, theoreticalBudget
 - Layer 3B: KPBudgetBridge.lean -- base/singleton/insert-split/InductionBudget
+           absFamilyWeight, theoreticalBudget_insert, one_add_le_exp
+Next: kpOnGamma_implies_compatibleFamilyMajorant
+  (KP induction: inductionBudget_insert_avoiding/containing/le)
+
+
 Next: kpOnGamma_implies_compatibleFamilyMajorant (KP induction)
 
 
