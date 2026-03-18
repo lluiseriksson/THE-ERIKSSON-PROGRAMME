@@ -30,21 +30,21 @@ Last updated: v0.8.50 (2026-03-18)
 |-------|-------|
 | `balaban_rg_uniform_lsi` | E26 paper series. Volume-independent LSI. Open mathematics. |
 
-#### Physics (3) — requires external proofs
+#### External Physics / Literature inputs (2) — requires external proofs
 | Axiom | Notes |
 |-------|-------|
 | `poincare_to_covariance_decay` | SZ 1992 — static covariance decay from Poincaré |
 | `sun_lieb_robinson_bound` | Hastings-Koma for SU(N) gauge theory |
-| `sun_variance_decay` | Honest Layer C axiom — requires C₀-semigroup generator theory |
 
-#### Frozen — Mathlib ≥ 5.x required (4)
-| Axiom | Blocker | ETA |
-|-------|---------|-----|
-| `bakry_emery_lsi` | Γ₂/CD(K,∞) calculus not in Mathlib | 2-3 years |
-| `sun_bakry_emery_cd` | Bochner-Weitzenböck on Lie groups not in Mathlib | 2-3 years |
-| `hille_yosida_semigroup` | C₀-semigroup + generator domain theory not in Mathlib | 1-2 years |
-| `sunDirichletForm_contraction` | Beurling-Deny / weak derivative chain rule — net 0 | indefinite |
-| `sun_variance_decay` (removal) | Same C₀-semigroup gap as hille_yosida. Gronwall available but t-differentiability of Var(T_t f) requires generator L. | 1-2 years |
+#### Frozen — Functional Analysis infrastructure (5)
+| Axiom | Blocker |
+|-------|-------|
+| `bakry_emery_lsi` | Γ₂/CD(K,∞) calculus not in Mathlib |
+| `sun_bakry_emery_cd` | Bochner-Weitzenböck on Lie groups not in Mathlib |
+| `hille_yosida_semigroup` | C₀-semigroup + generator domain theory not in Mathlib |
+| `sunDirichletForm_contraction` | Beurling-Deny / weak derivative chain rule, net 0 |
+| `sun_variance_decay` | Same C₀-semigroup gap as hille_yosida (Gronwall available but
+t-differentiability of Var(T_t f) requires generator L — same blocker) |
 
 ---
 
