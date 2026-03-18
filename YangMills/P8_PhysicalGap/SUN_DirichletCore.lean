@@ -1,6 +1,7 @@
 import Mathlib
 import YangMills.P8_PhysicalGap.SUN_StateConstruction
 import YangMills.P8_PhysicalGap.LSIDefinitions
+import YangMills.Experimental.LieSUN.LieDerivativeBridge
 
 /-!
 # SUN_DirichletCore — v0.8.36
@@ -19,10 +20,27 @@ abbrev LieGenIndex (N_c : ℕ) : Type := Fin (N_c ^ 2 - 1)
 /-- Fintype instance: LieGenIndex N_c = Fin (N_c²-1) is finite by definition. -/
 instance instFintypeLieGenIndex (N_c : ℕ) : Fintype (LieGenIndex N_c) := inferInstance
 
-/-- Directional derivative along the i-th Lie algebra generator. -/
-opaque lieDerivative (N_c : ℕ) (i : LieGenIndex N_c)
+/-- Abstract generator matrices for su(N_c) — the N²-1 basis elements.
+    Each satisfies: skew-Hermitian (Xᴴ = -X) and trace-zero. -/
+opaque generatorMatrix (N_c : ℕ) (i : LieGenIndex N_c) :
+    Matrix (Fin N_c) (Fin N_c) ℂ
+
+axiom generator_skewHermitian (N_c : ℕ) [NeZero N_c] (i : LieGenIndex N_c) :
+    (generatorMatrix N_c i)ᴴ = -(generatorMatrix N_c i)
+
+axiom generator_trace_zero (N_c : ℕ) [NeZero N_c] (i : LieGenIndex N_c) :
+    (generatorMatrix N_c i).trace = 0
+
+/-- Directional derivative along the i-th generator: d/dt|₀ f(U·exp(t·Xᵢ)).
+    Defined concretely via lieDerivExp from LieDerivativeBridge. -/
+noncomputable def lieDerivative (N_c : ℕ) [NeZero N_c] (i : LieGenIndex N_c)
     (f : SUN_State_Concrete N_c → ℝ) :
-    SUN_State_Concrete N_c → ℝ
+    SUN_State_Concrete N_c → ℝ :=
+  fun U => _root_.lieDerivExp
+    (generatorMatrix N_c i)
+    (generator_skewHermitian N_c i)
+    (generator_trace_zero N_c i)
+    f U
 
 /-- The SU(N_c) Dirichlet form: E(f) = Σᵢ ∫ (∂_{Xᵢ} f)² dμ_Haar -/
 noncomputable def sunDirichletForm_concrete (N_c : ℕ) [NeZero N_c]
@@ -42,10 +60,17 @@ axiom lieDerivative_linear (N_c : ℕ) [NeZero N_c]
       lieDerivative N_c i (fun U => c * f U) =
       fun U => c * lieDerivative N_c i f U)
 
-/-- MATHLIB GAP: Lie derivatives annihilate constants. -/
-axiom lieDerivative_const (N_c : ℕ) [NeZero N_c]
+/-- Lie derivatives annihilate constants. PROVED via lieDerivExp_const. -/
+theorem lieDerivative_const (N_c : ℕ) [NeZero N_c]
     (i : LieGenIndex N_c) (c : ℝ) :
-    lieDerivative N_c i (fun _ : SUN_State_Concrete N_c => c) = 0
+    lieDerivative N_c i (fun _ : SUN_State_Concrete N_c => c) = 0 := by
+  funext U
+  simp only [lieDerivative]
+  exact _root_.lieDerivExp_const
+    (generatorMatrix N_c i)
+    (generator_skewHermitian N_c i)
+    (generator_trace_zero N_c i)
+    c U
 
 lemma lieDerivative_add (N_c : ℕ) [NeZero N_c]
     (i : LieGenIndex N_c) (f g : SUN_State_Concrete N_c → ℝ) :
