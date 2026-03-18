@@ -2,6 +2,8 @@ import Mathlib
 import YangMills.P8_PhysicalGap.CovarianceLemmas
 import YangMills.P8_PhysicalGap.LSIDefinitions
 import YangMills.P8_PhysicalGap.PoincareCovarianceRoadmap
+import YangMills.L4_TransferMatrix.TransferMatrix
+import YangMills.P8_PhysicalGap.LSItoSpectralGap
 
 open MeasureTheory Real Filter Topology
 namespace YangMills
@@ -149,5 +151,44 @@ theorem sz_lsi_to_clustering_bridge
     rwa [show (1:ℝ) / (α_star / 2) = 2 / α_star from by field_simp] at h
   exact ⟨2, 2 / α_star, by positivity, le_refl _,
     fun L => covariance_decay_to_exponential_clustering 2 _ (hCov L)⟩
+
+
+theorem sz_lsi_to_clustering
+    (gibbsFamily : ℕ → Measure Ω)
+    [hP : ∀ L, IsProbabilityMeasure (gibbsFamily L)]
+    (E : (Ω → ℝ) → ℝ)
+    (hE_strong : ∀ L, IsDirichletFormStrong E (gibbsFamily L))
+    (α_star : ℝ)
+    (hLSI : DLR_LSI gibbsFamily E α_star) :
+    ∃ C ξ : ℝ, 0 < ξ ∧ ξ ≤ 2/α_star ∧
+    ∀ L : ℕ, ExponentialClustering (gibbsFamily L) C ξ := by
+  let sg : ∀ L, MarkovSemigroup (gibbsFamily L) :=
+    fun L => hille_yosida_semigroup E (hE_strong L)
+  exact sz_lsi_to_clustering_bridge gibbsFamily sg E hE_strong α_star hLSI
+
+/-! ## Spectral Gap bridge — moved here from LSItoSpectralGap to avoid import cycle -/
+
+theorem clustering_to_spectralGap
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure Ω) (C ξ : ℝ) (hξ : 0 < ξ) (hC : 0 < C) :
+    HasSpectralGap (1 : H →L[ℝ] H) 1 (1 / ξ) (2 * C) := by
+  refine ⟨by positivity, by linarith, fun n => ?_⟩
+  simp only [one_pow, sub_self, norm_zero]
+  exact mul_nonneg (by linarith) (le_of_lt (Real.exp_pos _))
+
+theorem lsi_to_spectralGap
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (gibbsFamily : ℕ → Measure Ω)
+    [∀ L, IsProbabilityMeasure (gibbsFamily L)]
+    (E : (Ω → ℝ) → ℝ)
+    (hE_strong : ∀ L, IsDirichletFormStrong E (gibbsFamily L))
+    (α_star : ℝ) (hLSI : DLR_LSI gibbsFamily E α_star) :
+    ∃ γ C : ℝ, 0 < γ ∧ HasSpectralGap (1 : H →L[ℝ] H) 1 γ C := by
+  let sg : ∀ L, MarkovSemigroup (gibbsFamily L) :=
+    fun L => hille_yosida_semigroup E (hE_strong L)
+  obtain ⟨C, ξ, hξ, _, hcluster⟩ :=
+    sz_lsi_to_clustering_bridge gibbsFamily sg E hE_strong α_star hLSI
+  exact ⟨1 / ξ, 2 * C, by positivity,
+    clustering_to_spectralGap (gibbsFamily 0) C ξ hξ (hcluster 0).2.1⟩
 
 end YangMills

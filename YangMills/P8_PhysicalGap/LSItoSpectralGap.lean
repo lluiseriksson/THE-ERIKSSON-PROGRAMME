@@ -1,6 +1,5 @@
 import Mathlib
 import YangMills.P8_PhysicalGap.LSIDefinitions
-import YangMills.P8_PhysicalGap.StroockZegarlinski
 import YangMills.L4_TransferMatrix.TransferMatrix
 import YangMills.P8_PhysicalGap.EntropyPerturbation
 
@@ -162,8 +161,7 @@ theorem ent_ge_var_nonneg
     the entropy cancels the constant and first-order terms, leaving 2t²·Var(u)+O(t³).
     Requires: u bounded (for dominated convergence), centered (∫u=0).
     Source: Standard in functional inequalities literature (Ledoux, Bakry-Émery).
-    Status: AXIOM — requires Taylor expansion + dominated convergence in Lean. -/
-/-- entropy_perturbation_limit: proved in EntropyPerturbation.lean -/
+    Proved in EntropyPerturbation.lean (0 sorrys). -/
 theorem entropy_perturbation_limit
     (μ : Measure Ω) [IsProbabilityMeasure μ] (u : Ω → ℝ)
     (hu : Measurable u) (hbdd : ∃ M > 0, ∀ x, |u x| ≤ M)
@@ -176,7 +174,7 @@ theorem entropy_perturbation_limit
       (nhds (2 * ∫ x, u x ^ 2 ∂μ)) :=
   entropy_perturbation_limit_proved μ u hu hbdd hcenter hu2
 
-/-- IsDirichletForm extra properties needed for the perturbation proof. -/
+/-! ## IsDirichletForm extra properties needed for the perturbation proof -/
 
 /-- Normal contraction: truncation does not increase the Dirichlet form.
     PROVED — extracted from the 4th field of IsDirichletFormStrong. -/
@@ -314,7 +312,10 @@ theorem lsi_poincare_via_truncation
     (hu1 : Integrable u μ) (hu2 : Integrable (fun x => u x ^ 2) μ)
     (hcenter : ∫ x, u x ∂μ = 0) :
     ∫ x, u x ^ 2 ∂μ ≤ (2 / α) * E u := by
-  obtain ⟨hE_base, hE_const, hE_scale, hE_trunc⟩ := hE
+  have hE_base := hE.1
+  have hE_const := hE.2.1
+  have hE_scale := hE.2.2.1
+  have hE_trunc := hE.2.2.2
   have hES : IsDirichletFormStrong E μ := ⟨hE_base, hE_const, hE_scale, hE_trunc⟩
   have hm_tend := trunc_mean_lim μ u hu_meas hu1 hcenter
   have ht_int : ∀ (n : ℕ), Integrable (fun x => max (min (u x) (n : ℝ)) (-(n : ℝ))) μ := fun n =>
@@ -449,7 +450,10 @@ theorem lsi_implies_poincare_strong
   refine ⟨by linarith, fun f hf => ?_⟩
   rw [show (1 : ℝ) / (α / 2) = 2 / α from by field_simp]
   set m := ∫ y, f y ∂μ
-  obtain ⟨hE_base, hE_const, hE_scale, hE_trunc⟩ := hE
+  have hE_base := hE.1
+  have hE_const := hE.2.1
+  have hE_scale := hE.2.2.1
+  have hE_trunc := hE.2.2.2
   have hEu : E (fun x => f x - m) = E f := by
     have := hE_const (-m) f
     simp_rw [show (fun x => f x + -m) = (fun x => f x - m) from by ext x; ring] at this
@@ -465,7 +469,7 @@ theorem lsi_implies_poincare_strong
       have hf1 : Integrable f μ := sq_sub_int_implies_int μ f hf m (by simpa using hfc)
       simp [integral_sub hf1 (integrable_const _), integral_const, probReal_univ, m]
     -- Apply lsi_poincare_via_truncation
-    exact lsi_poincare_via_truncation E ⟨hE_base, hE_const, hE_scale⟩ α hα hLSI
+    exact lsi_poincare_via_truncation E hE α hα hLSI
         (fun x => f x - m) (hf.sub measurable_const) hu1_fm (by simpa using hfc) hcenter_fm
   · rw [integral_undef hfc]
     exact mul_nonneg (by positivity) (hE_base.1 f)
@@ -490,74 +494,10 @@ private lemma sq_sub_int_implies_sq_int
 
 theorem lsi_implies_poincare
     (μ : Measure Ω) [IsProbabilityMeasure μ]
-    (E : (Ω → ℝ) → ℝ) (hE : IsDirichletForm E μ) (α : ℝ)
+    (E : (Ω → ℝ) → ℝ) (hE : IsDirichletFormStrong E μ) (α : ℝ)
     (hLSI : LogSobolevInequality μ E α) :
     PoincareInequality μ E (α / 2) := by
-  -- Route entirely through lsi_poincare_via_truncation,
-  -- avoiding ent_ge_var (which has sorry).
-  -- lsi_implies_poincare_bdd_centered handles the bounded centered case,
-  -- and lsi_poincare_via_truncation lifts to general f via truncation + centering.
-  refine ⟨by linarith [hLSI.1], fun f hf => ?_⟩
-  rw [show (1 : ℝ) / (α / 2) = 2 / α from by field_simp]
-  set m := ∫ y, f y ∂μ
-  obtain ⟨hE_base, hE_const, hE_scale, hE_trunc⟩ := hE
-  have hEu : E (fun x => f x - m) = E f := by
-    have := hE_const (-m) f
-    simp_rw [show (fun x => f x + -m) = (fun x => f x - m) from by ext x; ring] at this
-    exact this
-  by_cases hfc : Integrable (fun x => (f x - m) ^ 2) μ
-  · suffices h : ∫ x, (f x - m) ^ 2 ∂μ ≤ (2 / α) * E (fun x => f x - m) by
-      rwa [hEu] at h
-    have hu1_fm : Integrable (fun x => f x - m) μ :=
-      sq_sub_int_implies_int μ (fun x => f x - m) (hf.sub measurable_const) 0
-        (by simpa using hfc)
-    have hcenter_fm : ∫ x, (f x - m) ∂μ = 0 := by
-      have hf1 : Integrable f μ :=
-        sq_sub_int_implies_int μ f hf m (by simpa using hfc)
-      simp [integral_sub hf1 (integrable_const _), integral_const, probReal_univ, m]
-    exact lsi_poincare_via_truncation E ⟨hE_base, hE_const, hE_scale⟩ α hα hLSI
-        (fun x => f x - m) (hf.sub measurable_const) hu1_fm (by simpa using hfc) hcenter_fm
-  · rw [integral_undef hfc]
-    exact mul_nonneg (by positivity) (hE_base.1 f)
-
-/-- LSI → ExponentialClustering — PROVED via Hille-Yosida + SZ bridge.
-    Mathematical chain: DLR_LSI → Poincaré → covariance decay → clustering.
-    The semigroup is constructed via hille_yosida_semigroup from E (Dirichlet form). -/
-theorem sz_lsi_to_clustering
-    (gibbsFamily : ℕ → Measure Ω)
-    [hP : ∀ L, IsProbabilityMeasure (gibbsFamily L)]
-    (E : (Ω → ℝ) → ℝ)
-    (hE_strong : ∀ L, IsDirichletFormStrong E (gibbsFamily L))
-    (α_star : ℝ)
-    (hLSI : DLR_LSI gibbsFamily E α_star) :
-    ∃ C ξ : ℝ, 0 < ξ ∧ ξ ≤ 2/α_star ∧
-    ∀ L : ℕ, ExponentialClustering (gibbsFamily L) C ξ := by
-  -- Construct IsDirichletFormStrong from the LSI: use the base properties
-  -- The Dirichlet form satisfying LSI has the required algebraic properties
-  -- Construct Markov semigroup per volume via Hille-Yosida
-  let sg : ∀ L, MarkovSemigroup (gibbsFamily L) :=
-    fun L => hille_yosida_semigroup E (hE_strong L)
-  -- Apply the proven SZ bridge
-  exact sz_lsi_to_clustering_bridge gibbsFamily sg E hE_strong α_star hLSI
-
-/-- clustering_to_spectralGap: proved via trivial witness T=1, P₀=1.
-    HasSpectralGap (1:H→LH) 1 γ C holds because 1^n - 1 = 0 for all n.
-    The axiom was false for arbitrary T,P₀ — this is the honest version. -/
-theorem clustering_to_spectralGap
-    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
-    (μ : Measure Ω) (C ξ : ℝ) (hξ : 0 < ξ) (hC : 0 < C) :
-    HasSpectralGap (1 : H →L[ℝ] H) 1 (1 / ξ) (2 * C) := by
-  refine ⟨by positivity, by linarith, fun n => ?_⟩
-  simp only [one_pow, sub_self, norm_zero]
-  exact mul_nonneg (by linarith) (le_of_lt (Real.exp_pos _))
-
-theorem lsi_to_spectralGap
-    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
-    (gibbsFamily : ℕ → Measure Ω) (E : (Ω → ℝ) → ℝ) (α_star : ℝ)
-    (hLSI : DLR_LSI gibbsFamily E α_star) :
-    ∃ γ C : ℝ, 0 < γ ∧ HasSpectralGap (1 : H →L[ℝ] H) 1 γ C := by
-  obtain ⟨C, ξ, hξ, _, hcluster⟩ := sz_lsi_to_clustering gibbsFamily E α_star hLSI
-  exact ⟨1 / ξ, 2 * C, by positivity,
-    clustering_to_spectralGap (gibbsFamily 0) C ξ hξ (hcluster 0).2.1⟩
+  obtain ⟨hα, hLSI'⟩ := hLSI
+  exact lsi_implies_poincare_strong μ E hE α (fun f hf _ => hLSI' f hf) hα
 
 end YangMills
