@@ -105,14 +105,69 @@ lemma sunDirichletForm_quadratic {N_c : ℕ} [NeZero N_c]
     ext U; ring
   rw [this, integral_const_mul]
 
-/-- E(f+g) ≤ 2·E(f) + 2·E(g).
-    Proof: (a+b)² ≤ 2a²+2b², integrate, sum.
-    Subadditivity of integrals requires fun_prop on lieDerivative — using axiom. -/
-axiom sunDirichletForm_subadditive {N_c : ℕ} [NeZero N_c]
+/-- E(f+g) ≤ 2·E(f) + 2·E(g). PROVED via lieDerivReg_all + integral_mono. -/
+theorem sunDirichletForm_subadditive {N_c : ℕ} [NeZero N_c]
     (f g : SUN_State_Concrete N_c → ℝ) :
     sunDirichletForm_concrete N_c (f + g) ≤
     2 * sunDirichletForm_concrete N_c f +
-    2 * sunDirichletForm_concrete N_c g
+    2 * sunDirichletForm_concrete N_c g := by
+  let μ := sunHaarProb N_c
+  have hf  := lieDerivReg_all N_c f
+  have hg  := lieDerivReg_all N_c g
+  have hfg := lieDerivReg_all N_c (f + g)
+  have hle : ∀ i : LieGenIndex N_c,
+      ∫ U, (lieDerivative N_c i (f + g) U) ^ 2 ∂μ ≤
+        2 * ∫ U, (lieDerivative N_c i f U) ^ 2 ∂μ +
+        2 * ∫ U, (lieDerivative N_c i g U) ^ 2 ∂μ := by
+    intro i
+    -- (a+b)^2 ≤ 2a^2+2b^2: ring_nf first, then linarith
+    have hpoint : ∀ U,
+        (lieDerivative N_c i (f + g) U) ^ 2 ≤
+        2 * (lieDerivative N_c i f U) ^ 2 +
+        2 * (lieDerivative N_c i g U) ^ 2 := by
+      intro U
+      rw [lieDerivative_add N_c i f g]
+      set a := lieDerivative N_c i f U
+      set b := lieDerivative N_c i g U
+      have h2ab : 2 * a * b ≤ a ^ 2 + b ^ 2 := two_mul_le_add_sq a b
+      calc
+        (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2 := by ring
+        _ ≤ a ^ 2 + (a ^ 2 + b ^ 2) + b ^ 2 := by gcongr
+        _ = 2 * a ^ 2 + 2 * b ^ 2 := by ring
+    have hint1 : Integrable (fun U => 2 * (lieDerivative N_c i f U) ^ 2) μ :=
+      (hf.sq_int i).const_mul 2
+    have hint2 : Integrable (fun U => 2 * (lieDerivative N_c i g U) ^ 2) μ :=
+      (hg.sq_int i).const_mul 2
+    have h_int_le :
+        ∫ U, (lieDerivative N_c i (f + g) U) ^ 2 ∂μ ≤
+          ∫ U, (2 * (lieDerivative N_c i f U) ^ 2 +
+                2 * (lieDerivative N_c i g U) ^ 2) ∂μ :=
+      integral_mono (hfg.sq_int i) (hint1.add hint2) hpoint
+    -- split integral via calc to avoid rw pattern matching issues
+    have h_split :
+        ∫ U, (2 * (lieDerivative N_c i f U) ^ 2 +
+              2 * (lieDerivative N_c i g U) ^ 2) ∂μ =
+          2 * ∫ U, (lieDerivative N_c i f U) ^ 2 ∂μ +
+          2 * ∫ U, (lieDerivative N_c i g U) ^ 2 ∂μ :=
+      calc ∫ U, (2 * (lieDerivative N_c i f U) ^ 2 +
+              2 * (lieDerivative N_c i g U) ^ 2) ∂μ
+            = ∫ U, (2 * (lieDerivative N_c i f U) ^ 2) ∂μ +
+              ∫ U, (2 * (lieDerivative N_c i g U) ^ 2) ∂μ := by
+                convert integral_add hint1 hint2 using 1
+          _ = 2 * ∫ U, (lieDerivative N_c i f U) ^ 2 ∂μ +
+              2 * ∫ U, (lieDerivative N_c i g U) ^ 2 ∂μ := by
+                rw [integral_const_mul, integral_const_mul]
+    exact h_int_le.trans (le_of_eq h_split)
+  simp only [sunDirichletForm_concrete]
+  calc ∑ i : LieGenIndex N_c, ∫ U, (lieDerivative N_c i (f + g) U) ^ 2 ∂μ
+      ≤ ∑ i : LieGenIndex N_c,
+            (2 * ∫ U, (lieDerivative N_c i f U) ^ 2 ∂μ +
+             2 * ∫ U, (lieDerivative N_c i g U) ^ 2 ∂μ) :=
+          Finset.sum_le_sum (fun i _ => hle i)
+    _ = 2 * ∑ i : LieGenIndex N_c, ∫ U, (lieDerivative N_c i f U) ^ 2 ∂μ +
+        2 * ∑ i : LieGenIndex N_c, ∫ U, (lieDerivative N_c i g U) ^ 2 ∂μ := by
+          simp [Finset.sum_add_distrib, Finset.mul_sum]
+
 
 lemma sunDirichletForm_isDirichletForm {N_c : ℕ} [NeZero N_c] :
     IsDirichletForm (sunDirichletForm_concrete N_c) (sunHaarProb N_c) :=
