@@ -5,11 +5,31 @@
 
 ## Recent Milestones
 
+v0.8.43 — Phantom axiom eliminated: 12 → 11 axioms ✅
+
+`lsi_implies_poincare_strong` was axiom in LSIDefinitions but proved in LSItoSpectralGap.
+Fix: move sz_lsi_to_clustering to StroockZegarlinski, break import cycle.
+P8: 0 real sorrys · 11 axioms · 0 import cycles · full build green
+
+v0.8.42 — Import architecture documented ✅
+
+Forward-declaration pattern for lsi_implies_poincare_strong documented in AXIOM_FRONTIER.
+
 v0.8.41 — StroockZegarlinski 0 errors ✅
 
 Import cycle fully eliminated. StroockZegarlinski proved with 0 sorrys:
 var_le_sq_int (universal), hT1Fv (AE equality), hprod (calc chain).
 P8 real sorrys: 0 | Full build: 0 errors
+
+v0.8.43 — Phantom axiom eliminated: 12 → 11 axioms ✅
+
+`lsi_implies_poincare_strong` was axiom in LSIDefinitions but proved in LSItoSpectralGap.
+Fix: move sz_lsi_to_clustering to StroockZegarlinski, break import cycle.
+P8: 0 real sorrys · 11 axioms · 0 import cycles · full build green
+
+v0.8.42 — Import architecture documented ✅
+
+Forward-declaration pattern for lsi_implies_poincare_strong documented in AXIOM_FRONTIER.
 
 v0.8.41 — StroockZegarlinski 0 errors ✅
 
@@ -23,6 +43,16 @@ Import cycle StroockZegarlinski→PCR→LSItoSpectralGap→SZ eliminated.
 PoincareCovarianceRoadmap: 0 sorrys, 0 axioms, correct proof of sz_covariance_bridge.
 LSItoSpectralGap: stale sorry-comments cleaned.
 P8 real sorrys: 0 | Build: 0 errors, 0 sorrys
+
+v0.8.43 — Phantom axiom eliminated: 12 → 11 axioms ✅
+
+`lsi_implies_poincare_strong` was axiom in LSIDefinitions but proved in LSItoSpectralGap.
+Fix: move sz_lsi_to_clustering to StroockZegarlinski, break import cycle.
+P8: 0 real sorrys · 11 axioms · 0 import cycles · full build green
+
+v0.8.42 — Import architecture documented ✅
+
+Forward-declaration pattern for lsi_implies_poincare_strong documented in AXIOM_FRONTIER.
 
 v0.8.41 — StroockZegarlinski 0 errors ✅
 
@@ -234,7 +264,7 @@ clay_yangmills_unconditional : ClayYangMillsTheorem  [ErikssonBridge.lean, 0 sor
 | F6.1–F6.3 | YangMills/P6_AsymptoticFreedom | ✅ FORMALIZED_KERNEL |
 | F7.1–F7.5 | YangMills/P7_SpectralGap/ | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
-| P8 Physical gap | YangMills/P8_PhysicalGap/ | ✅ 8 axioms · 0 sorrys |
+| P8 Physical gap | YangMills/P8_PhysicalGap/ | ✅ 11 axioms · 0 sorrys |
 | Sandbox LieSUN | YangMills/Experimental/LieSUN/ | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
@@ -417,7 +447,7 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8196+ compiled jobs
 *Last updated: v0.8.32*
 
 
-## P8 Physical Gap — v0.8.41 Status
+## P8 Physical Gap — v0.8.43 Status
 
 ### Architecture
 ```
@@ -439,6 +469,8 @@ SUN_StateConstruction ──→ SUN_DirichletCore ──→ SUN_LiebRobin
 entropy_perturbation_limit_proved — (1+t²c)log(1+t²c)/t² → 2c as t→0 (v0.8.39)
 sz_covariance_bridge — proved: markov_variance_decay + Cauchy-Schwarz (v0.8.40)
 sz_lsi_to_clustering_bridge — M4: DLR_LSI → ExponentialClustering (v0.8.41)
+sz_lsi_to_clustering + lsi_to_spectralGap — moved to StroockZegarlinski (v0.8.43)
+Axiom count: 12 → 11 (lsi_implies_poincare_strong phantom removed) (v0.8.43)
 entropy_perturbation_limit_proved — (1+t²c)log(1+t²c)/t² → 2c (v0.8.39)
 sz_covariance_bridge — covariance decay from variance decay + CS (v0.8.40)
 sz_lsi_to_clustering_bridge — M4 chain: DLR_LSI → ExponentialClustering (v0.8.41)

@@ -1,22 +1,22 @@
-# AXIOM_FRONTIER.md — v0.8.41
+# AXIOM_FRONTIER.md — v0.8.43
+
+3
 
 ## P8 is proof-clean: 0 real sorrys.
 ## The remaining frontier is axiomatic, not incomplete proof scripts.
 ## The only mathematically essential open input is `balaban_rg_uniform_lsi`.
 
-Last updated: v0.8.41 (2026-03-18)
+Last updated: v0.8.43 (2026-03-18)
 Build: 0 errors, 0 sorrys
 
 ---
 
 ## Axiom Classification
 
-### Forward Declaration Axioms — Proved Downstream (1)
+### Forward Declaration Axioms — ELIMINATED (0)
 | Axiom | File | Status |
 |-------|------|--------|
-| `lsi_implies_poincare_strong` | LSIDefinitions | **Proved** in LSItoSpectralGap L441 — forward decl due to import cycle |
-
-**Note:** This axiom is provably NOT an open mathematical gap. It is an architectural forward-declaration pattern. Resolution: extract to `LSIPoincareBridge.lean` (v0.8.43 target).
+~~`lsi_implies_poincare_strong`~~ — **ELIMINATED in v0.8.43**. Import cycle broken by moving sz_lsi_to_clustering to StroockZegarlinski.
 
 ---
 
