@@ -122,4 +122,5 @@ NO REFACTOR ACCEPTED IF:
 | v0.8.50+ | BlockSpin.lean: infinite-lattice geometry ✅ |
 | v0.8.50+ | FiniteBlocks.lean: finite-volume averaging ✅ |
 | v0.8.50+ | PolymerCombinatorics.lean: Polymer, KP criterion ✅ |
-| Next | PolymerPartitionFunction.lean: Z, log Z bound |
+| v0.8.50+ | PolymerPartitionFunction.lean: Z, Z(empty)=1, Z({X})=1+K(X) ✅ |
+| Next | partitionTail + Z=1+Ztail + KP absolute bound |
