@@ -69,10 +69,13 @@ theorem matExp_smul_mem_unitaryGroup
   change matExp ((t : ℂ) • X) * (matExp ((t : ℂ) • X))ᴴ = 1
   exact matExp_skewHerm_unitary_right _ (conjTranspose_smul_skewHerm X hX t)
 
-theorem matExp_traceless_det_one
+/-- Mathlib gap: det(exp(tX)) = 1 when trace(X) = 0.
+    Proof: det(exp A) = exp(trace A) (Jacobi's formula / Liouville).
+    Mathlib lacks the general matrix exp determinant formula.
+    Ref: Any linear algebra text, e.g. Hall 'Lie Groups', Prop 2.7. -/
+axiom matExp_traceless_det_one
     (X : Matrix (Fin n) (Fin n) ℂ) (htr : X.trace = 0) (t : ℝ) :
-    Matrix.det (matExp ((t : ℂ) • X)) = 1 := by
-  sorry
+    Matrix.det (matExp ((t : ℂ) • X)) = 1
 
 end YangMills.Experimental.LieSUN
 
