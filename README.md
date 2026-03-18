@@ -1,3 +1,11 @@
+Clay Core Layers 0+1 (2026-03-18) -- Polymer combinatorics formalized
+
+YangMills/ClayCore/BalabanRG/ -- First formalizable layers of Balaban RG:
+- Layer 0A: BlockSpin.lean -- infinite-lattice geometry
+- Layer 0B: FiniteBlocks.lean -- block-spin averaging, linearity proved
+- Layer 1: PolymerCombinatorics.lean -- Polymer, KP criterion, kp_activity_bound
+Next: PolymerPartitionFunction.lean
+
 # THE ERIKSSON PROGRAMME
 ## A Machine-Checked Proof Programme Toward the Clay Yang-Mills Millennium Prize
 
