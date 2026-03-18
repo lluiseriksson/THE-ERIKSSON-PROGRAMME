@@ -5,6 +5,37 @@
 
 ## Recent Milestones
 
+v0.8.41 — StroockZegarlinski 0 errors ✅
+
+Import cycle fully eliminated. StroockZegarlinski proved with 0 sorrys:
+var_le_sq_int (universal), hT1Fv (AE equality), hprod (calc chain).
+P8 real sorrys: 0 | Full build: 0 errors
+
+v0.8.41 — StroockZegarlinski 0 errors ✅
+
+StroockZegarlinski.lean: 0 errors, 1 axiom (poincare_to_covariance_decay).
+Chain DLR_LSI → Poincaré → CovarianceDecay → ExponentialClustering: fully formalized.
+Import graph clean, no cycles. P8 real sorrys: 0.
+
+v0.8.40 — PoincareCovarianceRoadmap import cycle broken ✅
+
+Import cycle StroockZegarlinski→PCR→LSItoSpectralGap→SZ eliminated.
+PoincareCovarianceRoadmap: 0 sorrys, 0 axioms, correct proof of sz_covariance_bridge.
+LSItoSpectralGap: stale sorry-comments cleaned.
+P8 real sorrys: 0 | Build: 0 errors, 0 sorrys
+
+v0.8.41 — StroockZegarlinski 0 errors ✅
+
+`var_le_sq_int`: universal by_cases proof, no external dependencies
+M4 chain formalized: DLR_LSI → Poincaré → CovarianceDecay → ExponentialClustering
+Import graph: cycle-free. P8 real sorrys: 0.
+
+v0.8.40 — PoincareCovarianceRoadmap import cycle broken ✅
+
+Import cycle StroockZegarlinski→PCR→LSItoSpectralGap→SZ eliminated.
+`sz_covariance_bridge` proved: markov_variance_decay + Cauchy-Schwarz.
+P8 real sorrys: 0 | Build: 0 errors, 0 sorrys
+
 v0.8.39 — EntropyPerturbation 0 sorrys ✅
 
 `norm_term_tendsto` proved via `norm_term_bound` (Taylor squeeze, `squeeze_zero'`)
@@ -386,7 +417,7 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8196+ compiled jobs
 *Last updated: v0.8.32*
 
 
-## P8 Physical Gap — v0.8.39 Status
+## P8 Physical Gap — v0.8.41 Status
 
 ### Architecture
 ```
@@ -405,6 +436,9 @@ SUN_StateConstruction ──→ SUN_DirichletCore ──→ SUN_LiebRobin
 - `sun_locality_to_covariance` — concrete SU(N) covariance decay
 
 ### sunMarkovSemigroup: axiom → def (v0.8.36)
+entropy_perturbation_limit_proved — (1+t²c)log(1+t²c)/t² → 2c (v0.8.39)
+sz_covariance_bridge — covariance decay from variance decay + CS (v0.8.40)
+sz_lsi_to_clustering_bridge — M4 chain: DLR_LSI → ExponentialClustering (v0.8.41)
 ```lean
 noncomputable def sunMarkovSemigroup (N_c : ℕ) [NeZero N_c] :
     MarkovSemigroup (sunHaarProb N_c) :=

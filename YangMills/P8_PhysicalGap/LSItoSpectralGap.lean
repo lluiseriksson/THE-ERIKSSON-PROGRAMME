@@ -420,7 +420,7 @@ theorem lsi_poincare_via_truncation
       2. Apply lsi_implies_poincare_bdd_centered to truncations u_n = clip(u,-n,n)
          via dirichlet_contraction: E(u_n) ≤ E(u)
       3. DCT: ∫u_n² → ∫u² as n → ∞
-    The sorry is the DCT/truncation step — mathematically correct. -/
+    Key step: DCT/truncation argument, proved via lsi_poincare_via_truncation. -/
 lemma sq_sub_int_implies_int
     (μ : Measure Ω) [IsProbabilityMeasure μ] (f : Ω → ℝ) (hf : Measurable f) (c : ℝ)
     (h : Integrable (fun x => (f x - c) ^ 2) μ) :
@@ -469,7 +469,7 @@ theorem lsi_implies_poincare_strong
         (fun x => f x - m) (hf.sub measurable_const) hu1_fm (by simpa using hfc) hcenter_fm
   · rw [integral_undef hfc]
     exact mul_nonneg (by positivity) (hE_base.1 f)
-/-! ## lsi_implies_poincare: THEOREM (uses ent_ge_var sorry) -/
+/-! ## lsi_implies_poincare: THEOREM (proved via truncation, 0 sorrys) -/
 
 private lemma abs_le_one_add_sq (t : ℝ) : |t| ≤ 1 + t ^ 2 := by
   nlinarith [sq_nonneg (|t| - 1), sq_abs t, abs_nonneg t]
