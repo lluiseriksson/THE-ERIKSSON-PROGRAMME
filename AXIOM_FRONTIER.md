@@ -52,8 +52,8 @@ This claimed spectral gap from Dirichlet form alone. FALSE in general.
 ### Mathlib Infrastructure Gaps (4)
 | Axiom | File | Difficulty | Notes |
 |-------|------|------------|-------|
-| `bakry_emery_lsi` | BalabanToLSI | HIGH | CD(K,∞)⟹LSI(K) |
-| `sun_bakry_emery_cd` | BalabanToLSI | HIGH | SU(N) satisfies CD(N/4,∞) |
+| `bakry_emery_lsi` | BalabanToLSI | FROZEN | CD(K,∞)⟹LSI(K) — no Γ₂ in Mathlib 4.x |
+| `sun_bakry_emery_cd` | BalabanToLSI | FROZEN | Bochner-Weitzenböck not in Mathlib 4.x |
 | `hille_yosida_semigroup` | MarkovSemigroupDef | HIGH | Dirichlet → SymmetricMarkovTransport |
 | `sunDirichletForm_contraction` | SUN_DirichletCore | MEDIUM | Beurling-Deny, net 0 |
 
