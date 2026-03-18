@@ -1,6 +1,7 @@
 import Mathlib
 import YangMills.P8_PhysicalGap.SUN_StateConstruction
 import YangMills.P8_PhysicalGap.LSIDefinitions
+import YangMills.Experimental.LieSUN.LieDerivReg_v4
 
 /-!
 # SUN_DirichletCore — v0.8.36
@@ -19,10 +20,12 @@ abbrev LieGenIndex (N_c : ℕ) : Type := Fin (N_c ^ 2 - 1)
 /-- Fintype instance: LieGenIndex N_c = Fin (N_c²-1) is finite by definition. -/
 instance instFintypeLieGenIndex (N_c : ℕ) : Fintype (LieGenIndex N_c) := inferInstance
 
-/-- Directional derivative along the i-th Lie algebra generator. -/
-opaque lieDerivative (N_c : ℕ) (i : LieGenIndex N_c)
+/-- Directional derivative along the i-th generator via lieDerivExp.
+    Now concrete: uses sunGeneratorData for generator matrices. -/
+noncomputable def lieDerivative (N_c : ℕ) [NeZero N_c] (i : LieGenIndex N_c)
     (f : SUN_State_Concrete N_c → ℝ) :
-    SUN_State_Concrete N_c → ℝ
+    SUN_State_Concrete N_c → ℝ :=
+  fun U => lieD' N_c i f U
 
 /-- The SU(N_c) Dirichlet form: E(f) = Σᵢ ∫ (∂_{Xᵢ} f)² dμ_Haar -/
 noncomputable def sunDirichletForm_concrete (N_c : ℕ) [NeZero N_c]
@@ -32,20 +35,28 @@ noncomputable def sunDirichletForm_concrete (N_c : ℕ) [NeZero N_c]
       (lieDerivative N_c i f U) ^ 2
     ∂(sunHaarProb N_c)
 
-/-- MATHLIB GAP: Lie derivatives are linear. -/
-axiom lieDerivative_linear (N_c : ℕ) [NeZero N_c]
+/-- Lie derivatives are linear. PROVED via lieD'_add + lieD'_smul. -/
+theorem lieDerivative_linear (N_c : ℕ) [NeZero N_c]
     (i : LieGenIndex N_c) :
     (∀ (f g : SUN_State_Concrete N_c → ℝ),
       lieDerivative N_c i (f + g) =
       lieDerivative N_c i f + lieDerivative N_c i g) ∧
     (∀ (c : ℝ) (f : SUN_State_Concrete N_c → ℝ),
       lieDerivative N_c i (fun U => c * f U) =
-      fun U => c * lieDerivative N_c i f U)
+      fun U => c * lieDerivative N_c i f U) := by
+  constructor
+  · intro f g; funext U
+    show lieD' N_c i (f + g) U = lieD' N_c i f U + lieD' N_c i g U
+    exact lieD'_add N_c i f g U
+  · intro c f; funext U
+    show lieD' N_c i (fun x => c * f x) U = c * lieD' N_c i f U
+    exact lieD'_smul N_c i c f U
 
-/-- MATHLIB GAP: Lie derivatives annihilate constants. -/
-axiom lieDerivative_const (N_c : ℕ) [NeZero N_c]
+/-- Lie derivatives annihilate constants. PROVED via lieD'_const. -/
+theorem lieDerivative_const (N_c : ℕ) [NeZero N_c]
     (i : LieGenIndex N_c) (c : ℝ) :
-    lieDerivative N_c i (fun _ : SUN_State_Concrete N_c => c) = 0
+    lieDerivative N_c i (fun _ : SUN_State_Concrete N_c => c) = 0 := by
+  funext U; exact lieD'_const N_c i c U
 
 lemma lieDerivative_add (N_c : ℕ) [NeZero N_c]
     (i : LieGenIndex N_c) (f g : SUN_State_Concrete N_c → ℝ) :
