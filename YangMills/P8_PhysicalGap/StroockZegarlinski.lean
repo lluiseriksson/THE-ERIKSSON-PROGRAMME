@@ -20,7 +20,7 @@ def HasCovarianceDecay (μ : Measure Ω) (C ξ : ℝ) : Prop :=
 
 axiom poincare_to_covariance_decay
     {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (sg : MarkovSemigroup μ)
+    (sg : SymmetricMarkovTransport μ)
     (E : (Ω → ℝ) → ℝ) (lam : ℝ)
     (hE : IsDirichletFormStrong E μ)
     (hP : PoincareInequality μ E lam)
@@ -102,7 +102,7 @@ lemma covariance_decay_to_exponential_clustering
 theorem sz_lsi_to_clustering_bridge
     (gibbsFamily : ℕ → Measure Ω)
     [∀ L, IsProbabilityMeasure (gibbsFamily L)]
-    (sg : ∀ L, MarkovSemigroup (gibbsFamily L))
+    (sg : ∀ L, SymmetricMarkovTransport (gibbsFamily L))
     (E : (Ω → ℝ) → ℝ)
     (hE : ∀ L, IsDirichletFormStrong E (gibbsFamily L))
     (α_star : ℝ)
@@ -162,7 +162,7 @@ theorem sz_lsi_to_clustering
     (hLSI : DLR_LSI gibbsFamily E α_star) :
     ∃ C ξ : ℝ, 0 < ξ ∧ ξ ≤ 2/α_star ∧
     ∀ L : ℕ, ExponentialClustering (gibbsFamily L) C ξ := by
-  let sg : ∀ L, MarkovSemigroup (gibbsFamily L) :=
+  let sg : ∀ L, SymmetricMarkovTransport (gibbsFamily L) :=
     fun L => hille_yosida_semigroup E (hE_strong L)
   exact sz_lsi_to_clustering_bridge gibbsFamily sg E hE_strong α_star hLSI
 
@@ -184,7 +184,7 @@ theorem lsi_to_spectralGap
     (hE_strong : ∀ L, IsDirichletFormStrong E (gibbsFamily L))
     (α_star : ℝ) (hLSI : DLR_LSI gibbsFamily E α_star) :
     ∃ γ C : ℝ, 0 < γ ∧ HasSpectralGap (1 : H →L[ℝ] H) 1 γ C := by
-  let sg : ∀ L, MarkovSemigroup (gibbsFamily L) :=
+  let sg : ∀ L, SymmetricMarkovTransport (gibbsFamily L) :=
     fun L => hille_yosida_semigroup E (hE_strong L)
   obtain ⟨C, ξ, hξ, _, hcluster⟩ :=
     sz_lsi_to_clustering_bridge gibbsFamily sg E hE_strong α_star hLSI

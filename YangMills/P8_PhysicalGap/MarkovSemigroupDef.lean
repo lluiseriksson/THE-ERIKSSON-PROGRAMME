@@ -12,8 +12,10 @@ Full MarkovSemigroup structure recovered from git HEAD of PoincareCovarianceRoad
 markov_covariance_symm proved as theorem (not axiom).
 -/
 
-/-- Abstract Markov semigroup on a measure space. -/
-structure MarkovSemigroup {Ω : Type*} [MeasurableSpace Ω]
+/-- Symmetric Markov transport: Layer A+B only.
+    Semigroup algebra + measure-theoretic transport.
+    Does NOT include spectral gap (which requires Poincaré separately). -/
+structure SymmetricMarkovTransport {Ω : Type*} [MeasurableSpace Ω]
     (μ : Measure Ω) [IsProbabilityMeasure μ] where
   T             : ℝ → (Ω → ℝ) → (Ω → ℝ)
   T_zero        : ∀ f, T 0 f = f
@@ -31,7 +33,28 @@ structure MarkovSemigroup {Ω : Type*} [MeasurableSpace Ω]
   T_symm        : ∀ t f g,
                     Integrable (fun x => f x * g x) μ →
                     ∫ x, f x * T t g x ∂μ = ∫ x, T t f x * g x ∂μ
+
+/-- Variance decay: Layer C — spectral gap property.
+    Shape matches markov_variance_decay exactly (hf2 + exp(-2γt)).
+    Requires Poincaré inequality. NOT automatic from Dirichlet form.
+    (Brownian motion on ℝᵈ: strong Dirichlet form but no spectral gap.) -/
+def HasVarianceDecay {Ω : Type*} [MeasurableSpace Ω]
+    {μ : Measure Ω} [IsProbabilityMeasure μ]
+    (sg : SymmetricMarkovTransport μ) : Prop :=
+  ∃ γ : ℝ, 0 < γ ∧
+    ∀ (f : Ω → ℝ), Integrable f μ →
+    Integrable (fun x => f x ^ 2) μ →
+    ∀ t : ℝ, 0 ≤ t →
+      ∫ x, (sg.T t f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤
+      Real.exp (-2 * γ * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ
+
+/-- Full Markov semigroup: Layer A+B+C (transport + spectral gap).
+    Spectral gap is the Yang-Mills-specific addition. -/
+structure MarkovSemigroup {Ω : Type*} [MeasurableSpace Ω]
+    (μ : Measure Ω) [IsProbabilityMeasure μ]
+    extends SymmetricMarkovTransport μ where
   /-- Spectral gap: exponential variance decay.
+      NOT automatic from Dirichlet form — requires Poincaré inequality.
       Restricts to semigroups that admit a gap — as in the Yang-Mills case. -/
   T_spectral_gap : ∃ γ : ℝ, 0 < γ ∧
       ∀ (f : Ω → ℝ), Integrable f μ → ∀ t : ℝ, 0 ≤ t →
@@ -48,7 +71,7 @@ noncomputable def centered {Ω : Type*} [MeasurableSpace Ω]
 theorem markov_covariance_symm
     {Ω : Type*} [MeasurableSpace Ω]
     {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (sg : MarkovSemigroup μ) (t : ℝ) (F G : Ω → ℝ)
+    (sg : SymmetricMarkovTransport μ) (t : ℝ) (F G : Ω → ℝ)
     (hFG : Integrable (fun x => F x * G x) μ)
     (hF  : Integrable F μ) (hG  : Integrable G μ) :
     ∫ x, F x * sg.T t G x ∂μ - (∫ x, F x ∂μ) * (∫ x, sg.T t G x ∂μ) =
@@ -78,6 +101,8 @@ theorem markov_spectral_gap
 
 Every symmetric closed strong Dirichlet form `(E, μ)` on a probability space
 generates a unique strongly continuous self-adjoint Markov semigroup on L²(μ).
+    Returns SymmetricMarkovTransport (Layer A+B): transport without spectral gap.
+    Spectral gap requires Poincaré separately (Layer C).
 
 Mathematical status: Two classical theorems composed:
 1. Beurling-Deny (1958) / Fukushima (1971): Symmetric closed Dirichlet form →
@@ -102,6 +127,6 @@ axiom hille_yosida_semigroup
     {Ω : Type*} [MeasurableSpace Ω]
     {μ : Measure Ω} [IsProbabilityMeasure μ]
     (E : (Ω → ℝ) → ℝ) (hE : IsDirichletFormStrong E μ) :
-    MarkovSemigroup μ
+    SymmetricMarkovTransport μ
 
 end YangMills

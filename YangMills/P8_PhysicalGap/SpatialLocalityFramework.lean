@@ -70,7 +70,7 @@ lemma exp_neg_mul_optimalTime {d : ℕ} (A B : Finset (Site d)) {γ : ℝ} (hγ 
 
 lemma dynamic_covariance_at_optimalTime
     {d : ℕ} (A B : Finset (Site d)) {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (sg : MarkovSemigroup μ) (F G : Ω → ℝ)
+    (sg : SymmetricMarkovTransport μ) (hVar : HasVarianceDecay sg) (F G : Ω → ℝ)
     (hF : Integrable F μ) (hG : Integrable G μ)
     (hF2 : Integrable (fun x => F x ^ 2) μ)
     (hG2 : Integrable (fun x => G x ^ 2) μ) :
@@ -79,7 +79,7 @@ lemma dynamic_covariance_at_optimalTime
     Real.exp (-(supportDist A B : ℝ)) *
       Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
       Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) := by
-  obtain ⟨γ, hγ, hdecay⟩ := markov_variance_decay sg
+  obtain ⟨γ, hγ, hdecay⟩ := hVar
   refine ⟨γ, hγ, ?_⟩
   set t := optimalTime A B γ
   have ht : 0 ≤ t := optimalTime_nonneg A B hγ
@@ -150,7 +150,7 @@ Proof requires finite speed of propagation for the lattice dynamics (Hastings-Ko
 
 def LiebRobinsonBound {d : ℕ} {Ω : Type*} [MeasurableSpace Ω]
     {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (sg : MarkovSemigroup μ) : Prop :=
+    (sg : SymmetricMarkovTransport μ) : Prop :=
   ∀ (A B : Finset (Site d)) (F G : Ω → ℝ)
     (_hF_loc : IsLocalObservable A F) (_hG_loc : IsLocalObservable B G)
     (hF : Integrable F μ) (hG : Integrable G μ) {γ : ℝ} (hγ : 0 < γ),
@@ -167,7 +167,7 @@ def LiebRobinsonBound {d : ℕ} {Ω : Type*} [MeasurableSpace Ω]
     Sorry count: 0. Axiom count: 0. -/
 theorem locality_to_static_covariance_v2
     {d : ℕ} (A B : Finset (Site d)) {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (sg : MarkovSemigroup μ) (F G : Ω → ℝ)
+    (sg : SymmetricMarkovTransport μ) (hVar : HasVarianceDecay sg) (F G : Ω → ℝ)
     (hF_loc : IsLocalObservable A F) (hG_loc : IsLocalObservable B G)
     (hF : Integrable F μ) (hG : Integrable G μ)
     (hF2 : Integrable (fun x => F x ^ 2) μ)
@@ -178,7 +178,7 @@ theorem locality_to_static_covariance_v2
     2 * Real.exp (-(supportDist A B : ℝ)) *
       Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
       Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) := by
-  obtain ⟨γ, hγ, hDyn⟩ := dynamic_covariance_at_optimalTime A B sg F G hF hG hF2 hG2
+  obtain ⟨γ, hγ, hDyn⟩ := dynamic_covariance_at_optimalTime A B sg hVar F G hF hG hF2 hG2
   refine ⟨γ, hγ, ?_⟩
   have hLR_inst := hLR A B F G hF_loc hG_loc hF hG hγ
   have htri : |∫ x, F x * G x ∂μ - (∫ x, F x ∂μ) * (∫ x, G x ∂μ)| ≤

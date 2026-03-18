@@ -26,11 +26,20 @@ open MeasureTheory Real
     via Beurling-Deny / Hille-Yosida.
     Depends on: `hille_yosida_semigroup` (Mathlib gap: C₀-semigroup theory). -/
 noncomputable def sunMarkovSemigroup (N_c : ℕ) [NeZero N_c] :
-    MarkovSemigroup (sunHaarProb N_c) :=
+    SymmetricMarkovTransport (sunHaarProb N_c) :=
   hille_yosida_semigroup (sunDirichletForm_concrete N_c)
     (sunDirichletForm_isDirichletFormStrong)
 
 /-! ## Step 2: Lieb-Robinson bound — honest physical axiom -/
+
+/-- Variance decay for the SU(N) Yang-Mills semigroup.
+    Derived from the Poincaré inequality (LSI → Poincaré → spectral gap).
+    This is the honest Layer C axiom: spectral gap from Poincaré, not from
+    Hille-Yosida alone. Soundness fix: hille_yosida_semigroup returns
+    SymmetricMarkovTransport only; this axiom provides HasVarianceDecay separately.
+    Removal path: formalize Poincaré → Gronwall → variance decay for SU(N). -/
+axiom sun_variance_decay (N_c : ℕ) [NeZero N_c] :
+    HasVarianceDecay (sunMarkovSemigroup N_c)
 
 /-- **PHYSICAL INPUT — Hastings-Koma bound for SU(N) Yang-Mills.**
 Reference: Hastings-Koma, Commun. Math. Phys. 265 (2006) 781-804
@@ -57,7 +66,7 @@ theorem sun_locality_to_covariance
       Real.sqrt (∫ x, (F x - ∫ y, F y ∂(sunHaarProb N_c)) ^ 2 ∂(sunHaarProb N_c)) *
       Real.sqrt (∫ x, (G x - ∫ y, G y ∂(sunHaarProb N_c)) ^ 2 ∂(sunHaarProb N_c)) :=
   locality_to_static_covariance_v2
-    A B (sunMarkovSemigroup N_c) F G
+    A B (sunMarkovSemigroup N_c) (sun_variance_decay N_c) F G
     hF_loc hG_loc hF hG hF2 hG2
     (sun_lieb_robinson_bound N_c d)
 
