@@ -5,6 +5,29 @@
 
 ## Recent Milestones
 
+v0.8.47 — Lie derivative spike: measurability gap identified ✅
+
+Experimental spike (DirichletConcrete.lean) proves:
+lieDerivative_const (unconditional), lieDeriv_add/smul (under IsDiffAlong),
+sunDirichletForm_subadditive (with explicit integrability hypothesis).
+Conclusion: fun_prop cannot prove Measurable (lieDerivExp ...) automatically.
+Eliminating lieDerivative_* axioms requires SU(N) smooth manifold theory in Mathlib.
+Current frontier: 10 axioms — stable and honest.
+
+v0.8.46 — Stable 10-axiom frontier restored ✅
+
+Reverted partial lieDerivative refactor (net +1 axiom unacceptable).
+Rule established: no refactor accepted that increases total axiom count.
+
+v0.8.45 — instFintypeLieGenIndex eliminated: 11 → 10 axioms ✅
+
+LieGenIndex: opaque Type → abbrev Fin (N_c^2 - 1). su(N) has N²-1 generators.
+instFintypeLieGenIndex: axiom → instance via inferInstance.
+
+v0.8.44 — LSItoSpectralGap cleaned, dead code removed ✅
+
+lsi_implies_poincare: wrapper around strong version, dead code removed.
+
 v0.8.43 — Phantom axiom eliminated: 12 → 11 axioms ✅
 
 `lsi_implies_poincare_strong` was axiom in LSIDefinitions but proved in LSItoSpectralGap.
@@ -20,6 +43,29 @@ v0.8.41 — StroockZegarlinski 0 errors ✅
 Import cycle fully eliminated. StroockZegarlinski proved with 0 sorrys:
 var_le_sq_int (universal), hT1Fv (AE equality), hprod (calc chain).
 P8 real sorrys: 0 | Full build: 0 errors
+
+v0.8.47 — Lie derivative spike: measurability gap identified ✅
+
+Experimental spike (DirichletConcrete.lean) proves:
+lieDerivative_const (unconditional), lieDeriv_add/smul (under IsDiffAlong),
+sunDirichletForm_subadditive (with explicit integrability hypothesis).
+Conclusion: fun_prop cannot prove Measurable (lieDerivExp ...) automatically.
+Eliminating lieDerivative_* axioms requires SU(N) smooth manifold theory in Mathlib.
+Current frontier: 10 axioms — stable and honest.
+
+v0.8.46 — Stable 10-axiom frontier restored ✅
+
+Reverted partial lieDerivative refactor (net +1 axiom unacceptable).
+Rule established: no refactor accepted that increases total axiom count.
+
+v0.8.45 — instFintypeLieGenIndex eliminated: 11 → 10 axioms ✅
+
+LieGenIndex: opaque Type → abbrev Fin (N_c^2 - 1). su(N) has N²-1 generators.
+instFintypeLieGenIndex: axiom → instance via inferInstance.
+
+v0.8.44 — LSItoSpectralGap cleaned, dead code removed ✅
+
+lsi_implies_poincare: wrapper around strong version, dead code removed.
 
 v0.8.43 — Phantom axiom eliminated: 12 → 11 axioms ✅
 
@@ -43,6 +89,29 @@ Import cycle StroockZegarlinski→PCR→LSItoSpectralGap→SZ eliminated.
 PoincareCovarianceRoadmap: 0 sorrys, 0 axioms, correct proof of sz_covariance_bridge.
 LSItoSpectralGap: stale sorry-comments cleaned.
 P8 real sorrys: 0 | Build: 0 errors, 0 sorrys
+
+v0.8.47 — Lie derivative spike: measurability gap identified ✅
+
+Experimental spike (DirichletConcrete.lean) proves:
+lieDerivative_const (unconditional), lieDeriv_add/smul (under IsDiffAlong),
+sunDirichletForm_subadditive (with explicit integrability hypothesis).
+Conclusion: fun_prop cannot prove Measurable (lieDerivExp ...) automatically.
+Eliminating lieDerivative_* axioms requires SU(N) smooth manifold theory in Mathlib.
+Current frontier: 10 axioms — stable and honest.
+
+v0.8.46 — Stable 10-axiom frontier restored ✅
+
+Reverted partial lieDerivative refactor (net +1 axiom unacceptable).
+Rule established: no refactor accepted that increases total axiom count.
+
+v0.8.45 — instFintypeLieGenIndex eliminated: 11 → 10 axioms ✅
+
+LieGenIndex: opaque Type → abbrev Fin (N_c^2 - 1). su(N) has N²-1 generators.
+instFintypeLieGenIndex: axiom → instance via inferInstance.
+
+v0.8.44 — LSItoSpectralGap cleaned, dead code removed ✅
+
+lsi_implies_poincare: wrapper around strong version, dead code removed.
 
 v0.8.43 — Phantom axiom eliminated: 12 → 11 axioms ✅
 
@@ -185,7 +254,7 @@ PhysicalMassGap                [✅]
 
 ---
 
-## Axiom Map (v0.8.21) — 8 axioms, 1 Clay core
+## Axiom Map (v0.8.47) — 10 axioms, 1 Clay core
 
 | Axiom | Category | What it claims | Removal path |
 |-------|----------|---------------|--------------|
@@ -447,7 +516,7 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8196+ compiled jobs
 *Last updated: v0.8.32*
 
 
-## P8 Physical Gap — v0.8.43 Status
+## P8 Physical Gap — v0.8.47 Status
 
 ### Architecture
 ```
