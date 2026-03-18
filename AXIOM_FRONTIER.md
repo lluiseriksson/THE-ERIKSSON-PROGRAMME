@@ -11,6 +11,15 @@ Build: 0 errors, 0 sorrys
 
 ## Axiom Classification
 
+### Forward Declaration Axioms — Proved Downstream (1)
+| Axiom | File | Status |
+|-------|------|--------|
+| `lsi_implies_poincare_strong` | LSIDefinitions | **Proved** in LSItoSpectralGap L441 — forward decl due to import cycle |
+
+**Note:** This axiom is provably NOT an open mathematical gap. It is an architectural forward-declaration pattern. Resolution: extract to `LSIPoincareBridge.lean` (v0.8.43 target).
+
+---
+
 ### Clay Core (1)
 | Axiom | File | What it claims |
 |-------|------|----------------|

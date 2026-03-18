@@ -40,6 +40,11 @@ def IsDirichletFormStrong (E : (Ω → ℝ) → ℝ) (μ : Measure Ω) : Prop :=
   (∀ (f : Ω → ℝ) (n : ℝ), 0 < n →
     E (fun x => max (min (f x) n) (-n)) ≤ E f)
 
+/-- LSI → Poincaré for all f ∈ L² (any centered measurable function).
+    Forward declaration: proved as theorem in LSItoSpectralGap.lean (L441).
+    This axiom cannot be replaced here due to import cycle:
+    LSItoSpectralGap imports LSIDefinitions; LSIDefinitions cannot import LSItoSpectralGap.
+    Resolution: extract to LSIPoincareBridge.lean (future work, v0.8.43). -/
 axiom lsi_implies_poincare_strong
     {Ω : Type*} [MeasurableSpace Ω]
     (μ : Measure Ω) [IsProbabilityMeasure μ]
