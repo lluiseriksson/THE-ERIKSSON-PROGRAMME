@@ -257,4 +257,50 @@ Proof: Finset.induction_on Gamma
 -/
 
 
+
+/-! ## Opening lemmas for the induction (Layer 3B continuation) -/
+
+/-- absFamilyWeight is nonneg (needed for sum monotonicity). -/
+theorem absFamilyWeight_nonneg {d : ℕ} {L : ℤ}
+    (K : Activity d L) (S : Finset (Polymer d L)) :
+    0 ≤ absFamilyWeight K S :=
+  Finset.prod_nonneg (fun X _ => abs_nonneg (K X))
+
+/-- theoreticalBudget splits under insert. -/
+theorem theoreticalBudget_insert {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (X : Polymer d L)
+    (K : Activity d L) (a : ℝ) (hX : X ∉ Gamma) :
+    theoreticalBudget (insert X Gamma) K a
+      = theoreticalBudget Gamma K a + weightedActivity K a X := by
+  simp [theoreticalBudget, Finset.sum_insert hX, add_comm]
+
+/-- 1 + x ≤ exp(x) for all real x. Needed to close the exponential recurrence. -/
+theorem one_add_le_exp (x : ℝ) : 1 + x ≤ Real.exp x := by
+  simpa [add_comm] using Real.add_one_le_exp x
+
+/-!
+## Next session targets
+
+Step 1: inductionBudget_insert_avoiding_le
+  -- compatible subfamilies of insert X Gamma avoiding X
+  -- ⊆ compatible subfamilies of Gamma
+  -- -> sum over subset <= InductionBudget Gamma
+
+Step 2: inductionBudget_insert_containing_le
+  -- compatible subfamilies of insert X Gamma containing X
+  -- = {insert X S | S ∈ compatibleSubfamiliesAvoidingX Gamma X}
+  -- -> sum = |K X| * (sum over avoiding subfamilies)
+
+Step 3: inductionBudget_insert_le (the recurrence)
+  InductionBudget (insert X Gamma) ≤ IB(Gamma) + |K X| * IB(Gamma)
+                                    = IB(Gamma) * (1 + |K X|)
+
+Step 4: kpOnGamma_implies_compatibleFamilyMajorant
+  by Finset.induction_on:
+  - base: exp(0) - 1 = 0 = InductionBudget ∅
+  - step: use theoreticalBudget_insert + inductionBudget_insert_le
+          + one_add_le_exp to close exp form
+-/
+
+
 end YangMills.ClayCore
