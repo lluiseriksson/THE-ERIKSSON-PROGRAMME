@@ -13,12 +13,11 @@ open MeasureTheory Matrix
 
 noncomputable section
 
-/-- Index type for Lie algebra generators of SU(N_c). -/
-opaque LieGenIndex (N_c : ℕ) : Type
+/-- Index type for su(N_c) Lie algebra generators. dim su(N) = N²-1. -/
+abbrev LieGenIndex (N_c : ℕ) : Type := Fin (N_c ^ 2 - 1)
 
-/-- su(N) has finitely many basis elements (N²-1). Honest axiom. -/
-axiom instFintypeLieGenIndex (N_c : ℕ) : Fintype (LieGenIndex N_c)
-attribute [instance] instFintypeLieGenIndex
+/-- Fintype instance: LieGenIndex N_c = Fin (N_c²-1) is finite by definition. -/
+instance instFintypeLieGenIndex (N_c : ℕ) : Fintype (LieGenIndex N_c) := inferInstance
 
 /-- Directional derivative along the i-th Lie algebra generator. -/
 opaque lieDerivative (N_c : ℕ) (i : LieGenIndex N_c)
