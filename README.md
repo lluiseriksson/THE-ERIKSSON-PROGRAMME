@@ -436,6 +436,9 @@ SUN_StateConstruction ──→ SUN_DirichletCore ──→ SUN_LiebRobin
 - `sun_locality_to_covariance` — concrete SU(N) covariance decay
 
 ### sunMarkovSemigroup: axiom → def (v0.8.36)
+entropy_perturbation_limit_proved — (1+t²c)log(1+t²c)/t² → 2c as t→0 (v0.8.39)
+sz_covariance_bridge — proved: markov_variance_decay + Cauchy-Schwarz (v0.8.40)
+sz_lsi_to_clustering_bridge — M4: DLR_LSI → ExponentialClustering (v0.8.41)
 entropy_perturbation_limit_proved — (1+t²c)log(1+t²c)/t² → 2c (v0.8.39)
 sz_covariance_bridge — covariance decay from variance decay + CS (v0.8.40)
 sz_lsi_to_clustering_bridge — M4 chain: DLR_LSI → ExponentialClustering (v0.8.41)
