@@ -4,6 +4,7 @@
 ## P8: 8 honest axioms, 0 real sorrys, full build green.
 ## All analytical/functional paths exhausted.
 ## Remaining live target: balaban_rg_uniform_lsi (Clay Millennium Problem).
+## Clay Core Progress: Layer 0 (BlockSpin+FiniteBlocks) + Layer 1 (Polymers) complete.
 
 Last updated: v0.8.50 (2026-03-18)
 

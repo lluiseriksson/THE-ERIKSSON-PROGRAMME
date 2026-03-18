@@ -119,4 +119,7 @@ NO REFACTOR ACCEPTED IF:
 | Session | Achievement |
 |---------|-------------|
 | v0.8.50 | P8 frontier complete: 8 honest axioms, all paths exhausted |
-| Next | BlockSpin.lean: lattice combinatorics |
+| v0.8.50+ | BlockSpin.lean: infinite-lattice geometry ✅ |
+| v0.8.50+ | FiniteBlocks.lean: finite-volume averaging ✅ |
+| v0.8.50+ | PolymerCombinatorics.lean: Polymer, KP criterion ✅ |
+| Next | PolymerPartitionFunction.lean: Z, log Z bound |
