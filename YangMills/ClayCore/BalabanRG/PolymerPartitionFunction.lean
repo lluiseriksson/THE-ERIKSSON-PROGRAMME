@@ -113,4 +113,50 @@ theorem polymerPartitionFunction_singleton {d : ℕ} {L : ℤ}
   rw [hfull, hf]
   simp [partitionWeight, add_comm]
 
+
+
+
+/-! ## Layer 2B: Tail decomposition -/
+
+noncomputable def partitionTail {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (K : Activity d L) : ℝ :=
+  ∑ S ∈ (compatibleSubfamilies Gamma).erase ∅, partitionWeight K S
+
+theorem polymerPartitionFunction_eq_one_add_tail {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (K : Activity d L) :
+    polymerPartitionFunction Gamma K = 1 + partitionTail Gamma K := by
+  classical
+  have hempty : (∅ : Finset (Polymer d L)) ∈ compatibleSubfamilies Gamma :=
+    empty_mem_compatibleSubfamilies Gamma
+  have hnot : (∅ : Finset (Polymer d L)) ∉ (compatibleSubfamilies Gamma).erase ∅ := by
+    simp
+  rw [polymerPartitionFunction, partitionTail, ← Finset.insert_erase hempty]
+  rw [Finset.sum_insert hnot]
+  simp [partitionWeight]
+
+/-! ## Layer 2C: Absolute bound -/
+
+theorem abs_partitionTail_le_sum_abs {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (K : Activity d L) :
+    |partitionTail Gamma K| ≤
+      ∑ S ∈ (compatibleSubfamilies Gamma).erase ∅, ∏ X ∈ S, |K X| := by
+  simp only [partitionTail]
+  calc |∑ S ∈ _, partitionWeight K S|
+      ≤ ∑ S ∈ _, |partitionWeight K S| := Finset.abs_sum_le_sum_abs _ _
+    _ = ∑ S ∈ _, ∏ X ∈ S, |K X| := by
+          congr 1; ext S; exact abs_partitionWeight_eq K S
+
+def SmallActivityBudget {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (K : Activity d L) (B : ℝ) : Prop :=
+  ∑ S ∈ (compatibleSubfamilies Gamma).erase ∅, ∏ X ∈ S, |K X| ≤ B
+
+theorem abs_polymerPartitionFunction_sub_one_le {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (K : Activity d L) (B : ℝ)
+    (hB : SmallActivityBudget Gamma K B) :
+    |polymerPartitionFunction Gamma K - 1| ≤ B := by
+  rw [polymerPartitionFunction_eq_one_add_tail]
+  simp only [add_sub_cancel_left]
+  exact (abs_partitionTail_le_sum_abs Gamma K).trans hB
+
+
 end YangMills.ClayCore
