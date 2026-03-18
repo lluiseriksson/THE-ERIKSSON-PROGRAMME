@@ -32,6 +32,11 @@ Build: 0 errors, 0 sorrys
 | `bakry_emery_lsi` | BalabanToLSI | HIGH | CD(K,∞)⟹LSI(K) — Γ₂ calculus |
 | `sun_bakry_emery_cd` | BalabanToLSI | HIGH | SU(N) satisfies CD(N/4,∞) |
 | `hille_yosida_semigroup` | MarkovSemigroupDef | HIGH | Bundles 9 fields incl. spectral gap |
+
+**Soundness note:** This axiom gives spectral gap for free from any strong Dirichlet form —
+false in general (Brownian motion on ℝᵈ counterexample). Honest split exists in
+`HilleYosidaDecomposition.lean`: hille_yosida_core (A+B) + poincare_to_variance_decay (C).
+Decomposition is axiom-neutral. P8 unchanged pending Mathlib C₀-semigroup theory.
 | `sunDirichletForm_contraction` | SUN_DirichletCore | MEDIUM | Truncation contraction — Lipschitz/weak derivative needed |
 
 ---
