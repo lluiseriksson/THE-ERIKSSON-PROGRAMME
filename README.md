@@ -5,6 +5,12 @@
 
 ## Recent Milestones
 
+v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
+
+sunDirichletForm_subadditive: axiom → theorem via lieDerivReg_all + integral_mono.
+Proof: (a+b)²≤2a²+2b² via two_mul_le_add_sq + gcongr; integrate; sum over generators.
+P8: 7 axioms, 0 real sorrys. Journey: 13→12→11→10→8→7.
+
 v0.8.48 — LieDerivReg package: P8 axioms 10 → 8 ✅
 
 Three axioms eliminated via LieDerivReg package (2 support axioms IN, 3 P8 axioms OUT):
@@ -52,6 +58,12 @@ v0.8.41 — StroockZegarlinski 0 errors ✅
 Import cycle fully eliminated. StroockZegarlinski proved with 0 sorrys:
 var_le_sq_int (universal), hT1Fv (AE equality), hprod (calc chain).
 P8 real sorrys: 0 | Full build: 0 errors
+
+v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
+
+sunDirichletForm_subadditive: axiom → theorem via lieDerivReg_all + integral_mono.
+Proof: (a+b)²≤2a²+2b² via two_mul_le_add_sq + gcongr; integrate; sum over generators.
+P8: 7 axioms, 0 real sorrys. Journey: 13→12→11→10→8→7.
 
 v0.8.48 — LieDerivReg package: P8 axioms 10 → 8 ✅
 
@@ -107,6 +119,12 @@ Import cycle StroockZegarlinski→PCR→LSItoSpectralGap→SZ eliminated.
 PoincareCovarianceRoadmap: 0 sorrys, 0 axioms, correct proof of sz_covariance_bridge.
 LSItoSpectralGap: stale sorry-comments cleaned.
 P8 real sorrys: 0 | Build: 0 errors, 0 sorrys
+
+v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
+
+sunDirichletForm_subadditive: axiom → theorem via lieDerivReg_all + integral_mono.
+Proof: (a+b)²≤2a²+2b² via two_mul_le_add_sq + gcongr; integrate; sum over generators.
+P8: 7 axioms, 0 real sorrys. Journey: 13→12→11→10→8→7.
 
 v0.8.48 — LieDerivReg package: P8 axioms 10 → 8 ✅
 

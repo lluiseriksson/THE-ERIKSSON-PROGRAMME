@@ -1,10 +1,10 @@
-# AXIOM_FRONTIER.md — v0.8.48
+# AXIOM_FRONTIER.md — v0.8.49
 
 ## P8 is proof-clean: 0 real sorrys.
-## Frontier: 8 axioms (was 12 at start of session).
+## Frontier: 7 axioms (was 12 at start of session).
 ## Journey: 13 → 12 → 11 → 10 → 8
 
-Last updated: v0.8.48 (2026-03-18)
+Last updated: v0.8.49 (2026-03-18)
 Build: 0 errors, 0 sorrys
 
 ---
@@ -32,8 +32,9 @@ Build: 0 errors, 0 sorrys
 | `bakry_emery_lsi` | BalabanToLSI | HIGH | CD(K,∞)⟹LSI(K) — Γ₂ calculus |
 | `sun_bakry_emery_cd` | BalabanToLSI | HIGH | SU(N) satisfies CD(N/4,∞) |
 | `hille_yosida_semigroup` | MarkovSemigroupDef | HIGH | Bundles 9 fields incl. spectral gap |
-| `sunDirichletForm_contraction` | SUN_DirichletCore | MEDIUM | Normal contraction — lieDerivative chain rule |
+
 | `lieDerivReg_all` | (via LieDerivReg_v4) | MEDIUM | All SU(N) functions satisfy LieDerivReg |
+| `sunDirichletForm_contraction` | SUN_DirichletCore | MEDIUM | Normal contraction — truncation Lipschitz chain rule |
 
 Note: `sunGeneratorData` lives in Experimental/LieSUN and is used by lieDerivReg package.
 
@@ -46,9 +47,9 @@ Note: `sunGeneratorData` lives in Experimental/LieSUN and is used by lieDerivReg
 | `sz_lsi_to_clustering` (phantom) | v0.8.17 | Proved downstream |
 | `lsi_implies_poincare_strong` (phantom) | v0.8.43 | Import cycle broken |
 | `instFintypeLieGenIndex` | v0.8.45 | LieGenIndex := Fin (N_c^2-1) |
-| `lieDerivative_const` | v0.8.48 | lieD'_const via lieDerivExp_const |
-| `lieDerivative_linear` | v0.8.48 | lieD'_add + lieD'_smul via lieDerivExp |
-| `sunDirichletForm_subadditive` | v0.8.48 | dirichletForm''_subadditive |
+| `lieDerivative_const` | v0.8.49 | lieD'_const via lieDerivExp_const |
+| `lieDerivative_linear` | v0.8.49 | lieD'_add + lieD'_smul via lieDerivExp |
+| `sunDirichletForm_subadditive` | v0.8.49 | dirichletForm''_subadditive |
 
 ---
 
@@ -62,5 +63,5 @@ Note: `sunGeneratorData` lives in Experimental/LieSUN and is used by lieDerivReg
 
 ## Build
 ```
-P8 axioms: 8 | P8 sorrys: 0 | Full build: OK
+P8 axioms: 7 | P8 sorrys: 0 | Full build: OK
 ```
