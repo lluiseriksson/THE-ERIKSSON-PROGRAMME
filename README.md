@@ -11,6 +11,12 @@ sunDirichletForm_subadditive: axiom → theorem via lieDerivReg_all + integral_m
 Proof: (a+b)²≤2a²+2b² via two_mul_le_add_sq + gcongr; integrate; sum over generators.
 P8: 7 axioms, 0 real sorrys. Journey: 13→12→11→10→8→7.
 
+v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
+
+sunDirichletForm_subadditive: axiom → theorem.
+Proof: (a+b)²≤2a²+2b² via two_mul_le_add_sq + gcongr, integrate, sum over generators.
+P8: 7 axioms, 0 real sorrys. Journey: 13→12→11→10→8→7.
+
 v0.8.48 — LieDerivReg package: P8 axioms 10 → 8 ✅
 
 Three axioms eliminated via LieDerivReg package (2 support axioms IN, 3 P8 axioms OUT):
@@ -63,6 +69,12 @@ v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
 
 sunDirichletForm_subadditive: axiom → theorem via lieDerivReg_all + integral_mono.
 Proof: (a+b)²≤2a²+2b² via two_mul_le_add_sq + gcongr; integrate; sum over generators.
+P8: 7 axioms, 0 real sorrys. Journey: 13→12→11→10→8→7.
+
+v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
+
+sunDirichletForm_subadditive: axiom → theorem.
+Proof: (a+b)²≤2a²+2b² via two_mul_le_add_sq + gcongr, integrate, sum over generators.
 P8: 7 axioms, 0 real sorrys. Journey: 13→12→11→10→8→7.
 
 v0.8.48 — LieDerivReg package: P8 axioms 10 → 8 ✅
@@ -124,6 +136,12 @@ v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
 
 sunDirichletForm_subadditive: axiom → theorem via lieDerivReg_all + integral_mono.
 Proof: (a+b)²≤2a²+2b² via two_mul_le_add_sq + gcongr; integrate; sum over generators.
+P8: 7 axioms, 0 real sorrys. Journey: 13→12→11→10→8→7.
+
+v0.8.49 — sunDirichletForm_subadditive proved: P8 axioms 8 → 7 ✅
+
+sunDirichletForm_subadditive: axiom → theorem.
+Proof: (a+b)²≤2a²+2b² via two_mul_le_add_sq + gcongr, integrate, sum over generators.
 P8: 7 axioms, 0 real sorrys. Journey: 13→12→11→10→8→7.
 
 v0.8.48 — LieDerivReg package: P8 axioms 10 → 8 ✅
