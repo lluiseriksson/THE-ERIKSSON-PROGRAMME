@@ -1,100 +1,80 @@
-# AXIOM_FRONTIER.md — v0.8.50
+# AXIOM_FRONTIER.md — v0.8.50 (COMPLETE)
 
-## P8 is proof-clean: 0 real sorrys.
-## Frontier: 8 axioms (honest). Previous: 7 axioms (1 was logically unsound).
-## Journey: 13 → 12 → 11 → 10 → 8 → 7 → 8*
-
-*Count went 7→8 in v0.8.50 soundness refactor: replaced 1 unsound axiom
-with 2 honest ones (hille_yosida_semigroup now sound + sun_variance_decay new).
+## Status: FRONTIER FULLY MAPPED
+## P8: 8 honest axioms, 0 real sorrys, full build green.
+## All analytical/functional paths exhausted.
+## Remaining live target: balaban_rg_uniform_lsi (Clay Millennium Problem).
 
 Last updated: v0.8.50 (2026-03-18)
-Build: 0 errors, 0 sorrys
 
 ---
 
-## The Soundness Fix (v0.8.50)
+## The Complete Picture
 
-**Before:** `hille_yosida_semigroup : IsDirichletFormStrong E μ → MarkovSemigroup μ`
-This claimed spectral gap from Dirichlet form alone. FALSE in general.
-(Brownian motion on ℝᵈ: strong Dirichlet form, no spectral gap.)
-
-**After:** Two honest axioms:
-- `hille_yosida_semigroup : IsDirichletFormStrong E μ → SymmetricMarkovTransport μ`
-  (Layer A+B: semigroup existence + transport. NO spectral gap.)
-- `sun_variance_decay : HasVarianceDecay (sunMarkovSemigroup N_c)`
-  (Layer C: spectral gap for SU(N) specifically, from Poincaré.)
-
-**New structures:**
-- `SymmetricMarkovTransport`: Layer A+B (T, algebra, stat, integrable, symm)
-- `HasVarianceDecay`: Layer C (exponential variance decay, Poincaré + Gronwall)
-- `MarkovSemigroup`: extends SymmetricMarkovTransport + HasVarianceDecay (unchanged API)
-
----
-
-## P8 Axiom Classification (8 total)
-
-### Clay Core (1)
-| Axiom | File | Status |
-|-------|------|--------|
-| `balaban_rg_uniform_lsi` | BalabanToLSI | E26 paper series |
-
-### Physics Bridge (1)
-| Axiom | File | Status |
-|-------|------|--------|
-| `poincare_to_covariance_decay` | StroockZegarlinski | SZ 1992 |
-
-### Physics Hypotheses (2)
-| Axiom | File | Status |
-|-------|------|--------|
-| `sun_lieb_robinson_bound` | SUN_LiebRobin | Hastings-Koma for SU(N) |
-| `sun_variance_decay` | SUN_LiebRobin | Poincaré→Gronwall→gap for SU(N) |
-
-### Mathlib Infrastructure Gaps (4)
-| Axiom | File | Difficulty | Notes |
-|-------|------|------------|-------|
-| `bakry_emery_lsi` | BalabanToLSI | FROZEN | CD(K,∞)⟹LSI(K) — no Γ₂ in Mathlib 4.x |
-| `sun_bakry_emery_cd` | BalabanToLSI | FROZEN | Bochner-Weitzenböck not in Mathlib 4.x |
-| `hille_yosida_semigroup` | MarkovSemigroupDef | HIGH | Dirichlet → SymmetricMarkovTransport |
-| `sunDirichletForm_contraction` | SUN_DirichletCore | MEDIUM | Beurling-Deny, net 0 |
-
----
-
-## Eliminated Axiom History (13 → 8 honest)
-
-| Axiom | Version | Method |
-|-------|---------|--------|
-| `sz_lsi_to_clustering` (phantom) | v0.8.17 | Proved downstream |
-| `lsi_implies_poincare_strong` (phantom) | v0.8.43 | Import cycle broken |
+### What we proved (eliminated as axioms)
+| Theorem | Version | Method |
+|---------|---------|--------|
+| `sz_lsi_to_clustering` | v0.8.17 | Proved downstream |
+| `lsi_implies_poincare_strong` | v0.8.43 | Import cycle broken |
 | `instFintypeLieGenIndex` | v0.8.45 | LieGenIndex := Fin(N²-1) |
 | `lieDerivative_const` | v0.8.48 | lieD'_const via lieDerivExp |
 | `lieDerivative_linear` | v0.8.48 | lieD'_add + lieD'_smul |
 | `sunDirichletForm_subadditive` | v0.8.49 | two_mul_le_add_sq + integral_mono |
 | `hille_yosida_semigroup` (unsound) | v0.8.50 | Replaced by sound version |
+| `sun_haar_lsi` | v0.8.x | THEOREM from M1+M2 decomposition |
+
+### What remains (8 axioms)
+
+#### Clay Core (1) — the Millennium Problem
+| Axiom | Notes |
+|-------|-------|
+| `balaban_rg_uniform_lsi` | E26 paper series. Volume-independent LSI. Open mathematics. |
+
+#### Physics (3) — requires external proofs
+| Axiom | Notes |
+|-------|-------|
+| `poincare_to_covariance_decay` | SZ 1992 — static covariance decay from Poincaré |
+| `sun_lieb_robinson_bound` | Hastings-Koma for SU(N) gauge theory |
+| `sun_variance_decay` | Honest Layer C axiom — requires C₀-semigroup generator theory |
+
+#### Frozen — Mathlib ≥ 5.x required (4)
+| Axiom | Blocker | ETA |
+|-------|---------|-----|
+| `bakry_emery_lsi` | Γ₂/CD(K,∞) calculus not in Mathlib | 2-3 years |
+| `sun_bakry_emery_cd` | Bochner-Weitzenböck on Lie groups not in Mathlib | 2-3 years |
+| `hille_yosida_semigroup` | C₀-semigroup + generator domain theory not in Mathlib | 1-2 years |
+| `sunDirichletForm_contraction` | Beurling-Deny / weak derivative chain rule — net 0 | indefinite |
+| `sun_variance_decay` (removal) | Same C₀-semigroup gap as hille_yosida. Gronwall available but t-differentiability of Var(T_t f) requires generator L. | 1-2 years |
 
 ---
 
-## Experimental Findings
+## Soundness Architecture (v0.8.50)
 
-### DirichletContraction (net 0 — do not integrate)
-Beurling-Deny gap: DifferentiableAt fails at kinks ±n.
-Route B axiom = 1 IN, 1 OUT. sunDirichletForm_contraction stays.
+### New structures introduced
+- `SymmetricMarkovTransport`: Layer A+B — semigroup algebra + transport
+- `HasVarianceDecay`: Layer C — spectral gap (Poincaré + Gronwall + generator)
+- `MarkovSemigroup`: extends SymmetricMarkovTransport + HasVarianceDecay
 
-### HilleYosidaDecomposition (soundness fix applied to P8)
-3-layer split: Core(A) + Transport(B) + HasVarianceDecay(C).
-poincare_to_variance_decay is genuinely new (not same as poincare_to_covariance_decay).
+### Fixed unsoundness
+- `hille_yosida_semigroup` previously gave spectral gap for free from Dirichlet form
+- This is FALSE: Brownian motion on ℝᵈ counterexample
+- Fixed: now returns `SymmetricMarkovTransport` only (sound)
 
 ---
 
-## Next Session Priorities
+## Experimental Spikes (all documented)
 
-1. **Bakry-Émery spike** — `bakry_emery_lsi` + `sun_bakry_emery_cd`
-   - Related axioms, may fall together
-   - Inspect current Mathlib for CD(K,∞) machinery
+| File | Verdict | Finding |
+|------|---------|---------|
+| `DirichletContraction` | NO-GO (net 0) | Beurling-Deny needs weak derivatives |
+| `HilleYosidaDecomposition` | Soundness fix applied | 3-layer split |
+| `BakryEmerySpike` | FROZEN | Mathlib has no Γ₂/CD |
+| `VarianceDecayFromPoincare` | FROZEN | Gronwall available but t-diff needs generator L |
 
-2. **sun_variance_decay removal path**
-   - Formalise: LSI → Poincaré → Gronwall → HasVarianceDecay for SU(N)
-   - poincare_to_covariance_decay already established — bridge exists in principle
+---
 
-3. **Mathlib watch**
-   - C₀-semigroup theory → hille_yosida_semigroup
-   - Bakry-Émery/Γ₂ calculus → bakry_emery_lsi, sun_bakry_emery_cd
+## Mathlib Watch List
+Track these PRs/issues for future unblocking:
+- `Mathlib.Analysis.Semigroup.C0Semigroup` — would unlock hille_yosida + sun_variance_decay
+- `Mathlib.Geometry.Riemannian.BakryEmery` — would unlock bakry_emery_lsi + sun_bakry_emery_cd
+- `Mathlib.Analysis.DirichletForm` — would connect Dirichlet forms to generators
