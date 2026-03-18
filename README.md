@@ -5,6 +5,15 @@
 
 ## Recent Milestones
 
+v0.8.48 — LieDerivReg package: P8 axioms 10 → 8 ✅
+
+Three axioms eliminated via LieDerivReg package (2 support axioms IN, 3 P8 axioms OUT):
+- lieDerivative_const: axiom → theorem (lieD'_const)
+- lieDerivative_linear: axiom → theorem (lieD'_add + lieD'_smul)
+- sunDirichletForm_subadditive: axiom → theorem (dirichletForm''_subadditive)
+Support: GeneratorData + lieDerivReg_all in Experimental/LieSUN.
+P8: 8 axioms, 0 real sorrys.
+
 v0.8.47 — Lie derivative spike: measurability gap identified ✅
 
 Experimental spike (DirichletConcrete.lean) proves:
@@ -43,6 +52,15 @@ v0.8.41 — StroockZegarlinski 0 errors ✅
 Import cycle fully eliminated. StroockZegarlinski proved with 0 sorrys:
 var_le_sq_int (universal), hT1Fv (AE equality), hprod (calc chain).
 P8 real sorrys: 0 | Full build: 0 errors
+
+v0.8.48 — LieDerivReg package: P8 axioms 10 → 8 ✅
+
+Three axioms eliminated via LieDerivReg package (2 support axioms IN, 3 P8 axioms OUT):
+- lieDerivative_const: axiom → theorem (lieD'_const)
+- lieDerivative_linear: axiom → theorem (lieD'_add + lieD'_smul)
+- sunDirichletForm_subadditive: axiom → theorem (dirichletForm''_subadditive)
+Support: GeneratorData + lieDerivReg_all in Experimental/LieSUN.
+P8: 8 axioms, 0 real sorrys.
 
 v0.8.47 — Lie derivative spike: measurability gap identified ✅
 
@@ -89,6 +107,15 @@ Import cycle StroockZegarlinski→PCR→LSItoSpectralGap→SZ eliminated.
 PoincareCovarianceRoadmap: 0 sorrys, 0 axioms, correct proof of sz_covariance_bridge.
 LSItoSpectralGap: stale sorry-comments cleaned.
 P8 real sorrys: 0 | Build: 0 errors, 0 sorrys
+
+v0.8.48 — LieDerivReg package: P8 axioms 10 → 8 ✅
+
+Three axioms eliminated via LieDerivReg package (2 support axioms IN, 3 P8 axioms OUT):
+- lieDerivative_const: axiom → theorem (lieD'_const)
+- lieDerivative_linear: axiom → theorem (lieD'_add + lieD'_smul)
+- sunDirichletForm_subadditive: axiom → theorem (dirichletForm''_subadditive)
+Support: GeneratorData + lieDerivReg_all in Experimental/LieSUN.
+P8: 8 axioms, 0 real sorrys.
 
 v0.8.47 — Lie derivative spike: measurability gap identified ✅
 
