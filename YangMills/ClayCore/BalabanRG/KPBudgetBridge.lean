@@ -178,4 +178,83 @@ closing the induction Budget(insert X Gamma) <= Budget(Gamma) * (1 + |K X|).
 -/
 
 
+
+
+/-! ## Sum decomposition and induction infrastructure -/
+
+-- partitionWeight uses K X (not |K X|), so the insert lemma is:
+theorem partitionWeight_insert {d : ℕ} {L : ℤ}
+    (K : Activity d L) (X : Polymer d L) (S : Finset (Polymer d L))
+    (hX : X ∉ S) :
+    partitionWeight K (insert X S) = K X * partitionWeight K S := by
+  simp [partitionWeight, Finset.prod_insert hX]
+
+-- For the recurrence, the budget uses |K X|, so define separately:
+noncomputable def absFamilyWeight {d : ℕ} {L : ℤ}
+    (K : Activity d L) (S : Finset (Polymer d L)) : ℝ :=
+  ∏ X ∈ S, |K X|
+
+theorem absFamilyWeight_insert {d : ℕ} {L : ℤ}
+    (K : Activity d L) (X : Polymer d L) (S : Finset (Polymer d L))
+    (hX : X ∉ S) :
+    absFamilyWeight K (insert X S) = |K X| * absFamilyWeight K S := by
+  simp [absFamilyWeight, Finset.prod_insert hX]
+
+theorem absFamilyWeight_eq_partitionWeight_abs {d : ℕ} {L : ℤ}
+    (K : Activity d L) (S : Finset (Polymer d L)) :
+    absFamilyWeight K S = |partitionWeight K S| := by
+  simp [absFamilyWeight, partitionWeight, Finset.abs_prod]
+
+-- noncomputable: sum over Prop-filtered set
+noncomputable def InductionBudget {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (K : Activity d L) (a : ℝ) : ℝ :=
+  ∑ S ∈ (compatibleSubfamilies Gamma).erase ∅, absFamilyWeight K S
+
+theorem inductionBudget_is_majorant {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (K : Activity d L) (a : ℝ) :
+    CompatibleFamilyMajorant Gamma K (InductionBudget Gamma K a) := by
+  unfold CompatibleFamilyMajorant InductionBudget absFamilyWeight
+  exact le_refl _
+
+-- explicit proof: same pattern as compatibleFamilyMajorant_empty
+theorem inductionBudget_empty {d : ℕ} {L : ℤ}
+    (K : Activity d L) (a : ℝ) :
+    InductionBudget (∅ : Finset (Polymer d L)) K a = 0 := by
+  unfold InductionBudget
+  have h : compatibleSubfamilies (∅ : Finset (Polymer d L)) = {∅} := by
+    ext S
+    constructor
+    · intro hS
+      rw [mem_compatibleSubfamilies_iff] at hS
+      simp [Finset.subset_empty.mp hS.1]
+    · intro hS
+      simp only [Finset.mem_singleton] at hS
+      subst hS
+      exact empty_mem_compatibleSubfamilies ∅
+  rw [h, Finset.erase_singleton, Finset.sum_empty]
+
+theorem compatibleFamilyMajorant_mono {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (K : Activity d L) (B C : ℝ)
+    (h : CompatibleFamilyMajorant Gamma K B) (hBC : B ≤ C) :
+    CompatibleFamilyMajorant Gamma K C := h.trans hBC
+
+/-!
+## Full induction target (next session)
+
+theorem kpOnGamma_implies_compatibleFamilyMajorant
+    {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (K : Activity d L) (a : ℝ) (ha : 0 < a)
+    (hKP : KPOnGamma Gamma K a) :
+    CompatibleFamilyMajorant Gamma K (Real.exp (theoreticalBudget Gamma K a) - 1)
+
+Proof: Finset.induction_on Gamma
+  Base: empty -> InductionBudget = 0 = exp(0)-1
+  Step: insert X Gamma' ->
+    Split sum via compatibleSubfamiliesAvoidingX
+    Use absFamilyWeight_insert for containing-X subfamilies
+    Apply KP bound: |K X| * exp(a * |X|) <= a
+    Apply 1 + x <= exp(x) to close exponential form
+-/
+
+
 end YangMills.ClayCore
