@@ -44,6 +44,20 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.81 — P91 chain: 0 sorrys end-to-end ✅ *(2026-03-19)*
+
+**Full active P91 drift/divergence/rate chain: 0 sorrys.**
+
+Architecture split (pure analysis vs data-driven):
+- `P91BetaDriftDecomposition` (14E): `tendsto_atTop_of_linear_drift` — pure analysis
+- `P91BetaDriftClosed` (14J): `beta_linear_drift_from_data` — data-driven, 0 sorrys
+- `P91BetaDivergence` (14D): `rate_to_zero_from_p91_data` — 0 sorrys
+- `CauchyDecayFromAF` (14C): `rate_to_zero_from_af` — 0 sorrys
+
+Session theorems proved (0 sorrys): `tendsto_atTop_of_linear_drift`,
+`beta_ge_one_all`, `uniform_drift_from_data`, `beta_linear_drift_from_data`,
+`beta_tendsto_top_from_data_closed`, `rate_to_zero_from_p91_data`
+
 ### v0.8.81 — `P91BetaDriftDecomposition` pure analysis + `beta_linear_drift_from_data` 0 sorrys ✅ *(2026-03-19)*
 
 **`beta_linear_drift_from_data`: sorry ELIMINATED.**
