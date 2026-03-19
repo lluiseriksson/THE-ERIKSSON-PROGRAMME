@@ -44,6 +44,16 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.67 — Layer 12B: `P80EstimateSkeleton` ✅ *(2026-03-19)*
+
+**`large_field_remainder_bound_P80` decomposed into 2 sub-sorrys.**
+
+- `large_field_decomposition_P80_step1` ← P80 §4.1 (field decomposition)
+- `large_field_exponential_suppression_P80_step2` ← P80 §4.2 (exp suppression)
+- `large_field_suppression_from_P80_steps`: structural wrapper (0 new sorrys)
+
+**36 files · 0 errors · 4 named sub-sorrys (2 P80, 1 P81, 1 implicit)**
+
 ### v0.8.66 — Layer 12A: `E26EstimateIndex` ✅ *(2026-03-19)*
 
 **Formal audit index: exactly 2 sorrys remain.**
