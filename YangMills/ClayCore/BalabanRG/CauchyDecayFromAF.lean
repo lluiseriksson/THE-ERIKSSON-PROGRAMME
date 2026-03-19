@@ -1,6 +1,5 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.P91RecursionData
-import YangMills.ClayCore.BalabanRG.P91BetaDriftDecomposition
 import YangMills.ClayCore.BalabanRG.P91BetaDivergence
 import YangMills.ClayCore.BalabanRG.RGCauchySummabilitySkeleton
 

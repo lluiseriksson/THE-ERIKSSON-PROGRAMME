@@ -1,6 +1,6 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.P91RecursionData
-import YangMills.ClayCore.BalabanRG.P91BetaDriftDecomposition
+import YangMills.ClayCore.BalabanRG.P91BetaDriftClosed
 
 namespace YangMills.ClayCore
 
