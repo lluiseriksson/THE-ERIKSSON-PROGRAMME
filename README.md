@@ -44,6 +44,17 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.68 — Layers 12B-12C: All sorrys decomposed ✅ *(2026-03-19)*
+
+**1 monolithic sorry → 4 atomic sorrys (all E26-sourced, all named)**
+
+- `large_field_decomposition_P80_step1` ← P80 §4.1
+- `large_field_exponential_suppression_P80_step2` ← P80 §4.2
+- `uv_stability_P82_step1` ← P82 §2
+- `cauchy_decay_P81_step2` ← P81 §3
+
+**37 files · 0 errors · 4 atomic sorrys**
+
 ### v0.8.67 — Layer 12B: `P80EstimateSkeleton` ✅ *(2026-03-19)*
 
 **`large_field_remainder_bound_P80` decomposed into 2 sub-sorrys.**
