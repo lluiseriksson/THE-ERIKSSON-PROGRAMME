@@ -41,6 +41,20 @@ theorem remainder_small_P91 (N_c : ℕ) [NeZero N_c]
     simpa [mul_comm] using hmul_le
   exact hle
 
+/-- Algebraic lemma: β_k · (b₀ + |r_k|) < 1 → β_k < 1/(b₀ + |r_k|). 0 sorrys. -/
+theorem window_from_product_small (N_c : ℕ) [NeZero N_c]
+    (β_k r_k : ℝ) (hβ_pos : 0 < β_k)
+    (hprod : β_k * (balabanBetaCoeff N_c + |r_k|) < 1) :
+    β_k < 1 / (balabanBetaCoeff N_c + |r_k|) := by
+  have habs : 0 ≤ |r_k| := abs_nonneg r_k
+  have hb0 : 0 < balabanBetaCoeff N_c := balabanBetaCoeff_pos N_c
+  have hsum_pos : 0 < balabanBetaCoeff N_c + |r_k| := by linarith
+  have hsum_ne : balabanBetaCoeff N_c + |r_k| ≠ 0 := ne_of_gt hsum_pos
+  have hsimp : 1 / (balabanBetaCoeff N_c + |r_k|) * (balabanBetaCoeff N_c + |r_k|) = 1 := by
+    field_simp [hsum_ne]
+  nlinarith [mul_pos hβ_pos hsum_pos, hsimp]
+
+
 end
 
 end YangMills.ClayCore

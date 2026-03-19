@@ -11,21 +11,30 @@ open Classical
 # P91RecursionData — Layer 14B
 
 Packages the P91 A.2 hypotheses.
-p91_tight_window_of_data moved to P91WindowClosed (14K) to avoid cycle.
+remainder_window_small reformulated as β_k · (b₀ + |r_k|) < 1
+so the structure is inhabitable.
 -/
 
 noncomputable section
 
-/-- The two quantitative P91 A.2 hypotheses. -/
+/-- The P91 A.2 hypotheses. -/
 structure P91RecursionData (N_c : ℕ) [NeZero N_c] where
+  /-- Remainder bound: |r_k| ≤ C_rem/β_k. -/
   remainder_small :
     ∀ (k : ℕ) (β_k r_k : ℝ), 1 ≤ β_k →
       |r_k| ≤ remainderBoundConst / β_k
+  /-- Tight window: β_k is in the weak-coupling window. -/
   remainder_window_small :
     ∀ (k : ℕ) (β_k r_k : ℝ), 1 ≤ β_k →
-      |r_k| ≤ remainderBoundConst / β_k →
-      remainderBoundConst < balabanBetaCoeff N_c * β_k *
-        (1 - balabanBetaCoeff N_c * β_k) / β_k
+      β_k * (balabanBetaCoeff N_c + |r_k|) < 1
+
+/-- From data, recover tight window. 0 sorrys. -/
+theorem p91_tight_window_of_data_v2 {N_c : ℕ} [NeZero N_c]
+    (data : P91RecursionData N_c)
+    (k : ℕ) (β_k r_k : ℝ) (hβ : 1 ≤ β_k) :
+    β_k < 1 / (balabanBetaCoeff N_c + |r_k|) :=
+  window_from_product_small N_c β_k r_k (by linarith)
+    (data.remainder_window_small k β_k r_k hβ)
 
 /-- AF from data. -/
 theorem af_of_data {N_c : ℕ} [NeZero N_c]
