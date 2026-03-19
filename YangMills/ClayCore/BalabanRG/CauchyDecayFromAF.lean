@@ -6,6 +6,7 @@ import YangMills.ClayCore.BalabanRG.CauchyDecayViaBridge
 import YangMills.ClayCore.BalabanRG.ConcreteActivityFieldBridge
 import YangMills.ClayCore.BalabanRG.FinitePolymerReadout
 import YangMills.ClayCore.BalabanRG.PolymerGeometricReadout
+import YangMills.ClayCore.BalabanRG.PolymerCanonicalSite
 
 namespace YangMills.ClayCore
 
@@ -134,6 +135,32 @@ theorem cauchy_decay_from_p91_data_via_geometric_bridge {d N_c : ℕ}
     physicalContractionRate β_k * ActivityNorm.dist K₁ K₂ := by
   let ctrl : RGViaBridgeControl d N_c 0 β_k :=
     physicalGeometricBridgeControl (d := d) (N_c := N_c) 0 β_k rep polys
+  exact cauchy_summability_bridge_consumer
+    (d := d) (N_c := N_c) (k := 0) (β := β_k)
+    ctrl K₁ K₂
+    (physicalContractionRate β_k)
+    (by unfold physicalContractionRate; positivity)
+
+
+
+/-- Cauchy decay via the canonical geometric bridge at scale 0.
+    siteOf = Classical.choose X.nonEmpty (polymer's canonical site).
+    First theorem where the bridge is fully determined by polymer geometry.
+    Requires [NeZero d]. 0 sorrys. -/
+theorem cauchy_decay_from_p91_data_via_canonical_geometric_bridge {d N_c : ℕ}
+    [NeZero d] [NeZero N_c]
+    [∀ k, ActivityNorm d k]
+    (β_k : ℝ)
+    (polys : Finset (Polymer d (Int.ofNat 0)))
+    (K₁ K₂ : ActivityFamily d (0 : ℕ)) :
+    ActivityNorm.dist
+      ((selectFieldSplitViaBridge d N_c 0
+          (canonicalGeometricBridge polys) β_k K₁).largePart
+        ((canonicalGeometricBridge polys).fieldOfActivity K₁) K₁)
+      (fun _ => 0) ≤
+    physicalContractionRate β_k * ActivityNorm.dist K₁ K₂ := by
+  let ctrl : RGViaBridgeControl d N_c 0 β_k :=
+    canonicalGeometricBridgeControl (d := d) (N_c := N_c) 0 β_k polys
   exact cauchy_summability_bridge_consumer
     (d := d) (N_c := N_c) (k := 0) (β := β_k)
     ctrl K₁ K₂
