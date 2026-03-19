@@ -70,21 +70,18 @@ theorem beta_step_drift_lb (N_c : ℕ) (β_k r_k c : ℝ)
     (hden_lt1 : betaStepDenom N_c β_k r_k ≤ 1) :
     c ≤ balabanCouplingStep N_c β_k r_k - β_k := by
   rw [beta_step_sub_eq N_c β_k r_k (ne_of_gt hden_pos)]
-  have hβ_pos : 0 < β_k := by linarith
-  have hβ_sq : 1 ≤ β_k ^ 2 := by nlinarith
-  have hnum : c ≤ β_k ^ 2 * (balabanBetaCoeff N_c - r_k) := by
-    calc c ≤ 1 * c := by ring_nf
-      _ ≤ β_k ^ 2 * c := by nlinarith
-      _ ≤ β_k ^ 2 * (balabanBetaCoeff N_c - r_k) :=
-          mul_le_mul_of_nonneg_left hcoeff (by nlinarith)
+  have hβ_sq_nn : 0 ≤ β_k ^ 2 := by nlinarith
+  have hβ_sq_ge1 : 1 ≤ β_k ^ 2 := by nlinarith
+  have hcoeff_pos : 0 < balabanBetaCoeff N_c - r_k := by linarith
+  have hnum_nn : 0 ≤ β_k ^ 2 * (balabanBetaCoeff N_c - r_k) := by nlinarith
+  have h1 : c ≤ β_k ^ 2 * c := by nlinarith
+  have h2 : β_k ^ 2 * c ≤ β_k ^ 2 * (balabanBetaCoeff N_c - r_k) :=
+    mul_le_mul_of_nonneg_left hcoeff hβ_sq_nn
+  have hnum : c ≤ β_k ^ 2 * (balabanBetaCoeff N_c - r_k) := le_trans h1 h2
   calc c ≤ β_k ^ 2 * (balabanBetaCoeff N_c - r_k) := hnum
     _ = β_k ^ 2 * (balabanBetaCoeff N_c - r_k) / 1 := by ring
-    _ ≤ β_k ^ 2 * (balabanBetaCoeff N_c - r_k)
-          / betaStepDenom N_c β_k r_k :=
-        div_le_div_of_nonneg_left
-          (by nlinarith [mul_pos (by nlinarith : (0:ℝ) < β_k^2)
-                           (by linarith : (0:ℝ) < balabanBetaCoeff N_c - r_k)])
-          hden_pos hden_lt1
+    _ ≤ β_k ^ 2 * (balabanBetaCoeff N_c - r_k) / betaStepDenom N_c β_k r_k :=
+        div_le_div_of_nonneg_left hnum_nn hden_pos hden_lt1
 
 end
 
