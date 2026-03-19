@@ -2,7 +2,7 @@
 
 ## Lean 4 Formalization of the Yang-Mills Mass Gap
 
-**Status: FORMALIZED\_KERNEL — 8260+ jobs, 0 errors, 0 sorrys**  
+**Status: FORMALIZED\_KERNEL — 8270+ jobs, 0 errors, 0 sorrys**  
 Lean v4.29.0-rc6 + Mathlib · Last updated: March 2026
 
 ---
@@ -43,6 +43,21 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+
+### v0.8.58 — Layer 8A: `PhysicalRGRates` — quantitative axiom ✅ *(2026-03-19)*
+
+**Axiom refined: `balaban_rg_package_from_E26` → `physical_rg_rates_from_E26`**
+
+`PhysicalRGRates.lean` — 4 quantitative discharge targets:
+- `rho_exp_contractive`: `rho(β) ≤ C·exp(-c·β)` (P81, P82)
+- `rho_in_unit_interval`: `rho(β) ∈ (0,1)` (P81)
+- `cP_linear_lb`: `cP(β) ≥ c·β` (P69, P70)
+- `cLSI_linear_lb`: `cLSI(β) ≥ c·β` (P67, P74)
+
+New theorems (0 sorrys, 0 new axioms beyond `physical_rg_rates_from_E26`):
+- `physicalRGRates_to_balabanRGPackage` — rates → BalabanRGPackage
+- `physicalRGRates_to_lsi` — rates → ClayCoreLSI
+- `uniform_lsi_from_physicalRates` — E26 axiom → LSI
 
 ### v0.8.57 — Layer 7 complete: BalabanRG fields formally satisfiable ✅ *(2026-03-19)*
 
