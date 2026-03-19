@@ -2,7 +2,7 @@
 
 ## Lean 4 Formalization of the Yang-Mills Mass Gap
 
-**Status: FORMALIZED\_KERNEL — 8200+ jobs, 0 errors, 0 sorrys**  
+**Status: FORMALIZED\_KERNEL — 8210+ jobs, 0 errors, 0 sorrys**  
 Lean v4.29.0-rc6 + Mathlib · Last updated: March 2026
 
 ---
@@ -43,6 +43,19 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+
+### v0.8.53 — Layer 4A complete: KP consequences chain ✅ *(2026-03-19)*
+
+**`KPConsequences.lean`: 5 theorems, 0 sorrys.**
+
+Direct analytic consequences of the KP induction (Layer 3B):
+- `kpOnGamma_implies_smallActivityBudget` — via `compatibleFamilyMajorant_implies_smallActivityBudget`
+- `kpOnGamma_implies_abs_Z_sub_one_le` — `|Z-1| ≤ exp(theoreticalBudget)-1`
+- `polymerPartitionFunction_pos_of_kp` — `0 < Z` when budget `< log 2`
+- `Real.log_le_sub_one` — `log x ≤ x-1` for `x > 0` (via `add_one_le_exp + linarith`)
+- `log_polymerPartitionFunction_le_budget` — `log Z ≤ exp(budget)-1`
+
+Chain proven: `KPOnGamma → |Z-1| ≤ exp(B)-1 → 0<Z → log Z ≤ exp(B)-1`
 
 ### v0.8.52 — Layer 3B sealed: `kpOnGamma_implies_compatibleFamilyMajorant` proved ✅ *(2026-03-19)*
 
@@ -351,7 +364,8 @@ proved without axioms.
 
 | Version | Achievement | Axioms |
 |---|---|---|
-| v0.8.52 | **Layer 3B sealed — KP induction fully mechanized, 0 errors** | 8 |
+| v0.8.53 | **Layer 4A — KPConsequences: |Z-1|, positivity, log Z (0 sorrys)** | 8 |
+| v0.8.52 | Layer 3B sealed — KP induction fully mechanized, 0 errors | 8 |
 | v0.8.51 | kpOnGamma_implies_compatibleFamilyMajorant — Layer 3B complete | 8 |
 | v0.8.50 | Soundness refactor: unsound → 8 honest axioms | 8 |
 | v0.8.49 | sunDirichletForm_subadditive THEOREM | 7 |
@@ -385,4 +399,4 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8196+ compiled jobs
 
 ## Author
 
-**Lluis Eriksson** — independent researcher · March 2026 · v0.8.52
+**Lluis Eriksson** — independent researcher · March 2026 · v0.8.53
