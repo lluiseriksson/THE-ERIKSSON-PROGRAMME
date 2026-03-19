@@ -44,6 +44,15 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.76 — Layers 14D-14E: Beta divergence decomposed ✅ *(2026-03-19)*
+
+**β → +∞ separated from local window control.**
+
+- `beta_linear_drift_P91` ← P91 A.2 §3 (1 sorry: quantitative drift)
+- `tendsto_atTop_of_linear_drift` ← pure analysis (0 sorrys)
+- `beta_tendsto_top_from_drift` ← structural wrapper (0 new sorrys)
+- `rate_to_zero_of_beta_tendsto_top` ← 0 sorrys ✅ (show+comp)
+
 ### v0.8.75 — Layers 14B-14C: P91RecursionData + CauchyDecayFromAF ✅ *(2026-03-19)*
 
 **AF → Cauchy bridge complete. 42 files · 0 errors.**

@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.P91RecursionData
+import YangMills.ClayCore.BalabanRG.P91BetaDriftDecomposition
 
 namespace YangMills.ClayCore
 
@@ -21,9 +22,8 @@ theorem beta_tendsto_top_from_recursion_data (N_c : ℕ) [NeZero N_c]
     (hβ0 : 1 ≤ β 0)
     (hstep : ∀ k, β (k + 1) = balabanCouplingStep N_c (β k) (r k))
     (hr : ∀ k, |r k| < balabanBetaCoeff N_c / 2)
-    (hβ_upper : ∀ k, β k < 2 / balabanBetaCoeff N_c) :
-    Tendsto β atTop atTop := by
-  sorry -- P91 A.2 §3: β growth from AF recursion
+    : Tendsto β atTop atTop := by
+  exact beta_tendsto_top_from_drift N_c data β r hβ0 hstep hr
 
 /-- Pure analysis: exp(-β_k) → 0 when β_k → +∞. 0 sorrys. -/
 theorem rate_to_zero_of_beta_tendsto_top
@@ -39,10 +39,9 @@ theorem rate_to_zero_from_p91_data (N_c : ℕ) [NeZero N_c]
     (hβ0 : 1 ≤ β 0)
     (hstep : ∀ k, β (k + 1) = balabanCouplingStep N_c (β k) (r k))
     (hr : ∀ k, |r k| < balabanBetaCoeff N_c / 2)
-    (hβ_upper : ∀ k, β k < 2 / balabanBetaCoeff N_c) :
-    Tendsto (fun k => physicalContractionRate (β k)) atTop (nhds 0) :=
+    : Tendsto (fun k => physicalContractionRate (β k)) atTop (nhds 0) :=
   rate_to_zero_of_beta_tendsto_top β
-    (beta_tendsto_top_from_recursion_data N_c data β r hβ0 hstep hr hβ_upper)
+    (beta_tendsto_top_from_recursion_data N_c data β r hβ0 hstep hr)
 
 end
 
