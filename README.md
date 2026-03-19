@@ -412,6 +412,7 @@ proved without axioms.
 | Version | Achievement | Axioms |
 |---|---|---|
 | v0.8.56 | **Layer 6 — BalabanRG decomposition: monolith → 4 targets (0 sorrys)** | 8 |
+| v0.8.56 | **Layer 6 — BalabanRG decomposition: monolith → 4 targets (0 sorrys)** | 8 |
 | v0.8.55 | Layer 4C — PolymerLogLowerBound: two-sided log Z (0 sorrys) | 8 |
 | v0.8.54 | Layer 4B — PolymerLogBound: positivity + log Z (0 sorrys) | 8 |
 | v0.8.53 | Layer 4A — KPConsequences: |Z-1|, positivity, log Z (0 sorrys) | 8 |
@@ -442,7 +443,7 @@ cd THE-ERIKSSON-PROGRAMME
 lake build
 ```
 
-Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8196+ compiled jobs
+Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8250+ compiled jobs
 · 0 errors · 0 sorrys
 
 ---
