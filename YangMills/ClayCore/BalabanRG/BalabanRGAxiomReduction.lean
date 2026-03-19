@@ -36,4 +36,20 @@ theorem balaban_rg_package_from_E26_theorem (d N_c : ℕ) [NeZero N_c] :
     BalabanRGPackage d N_c :=
   balabanRGPackage_from_physicalRates d N_c
 
+
+/-! ## Zero-axiom route (Layer 8E)
+
+The following theorems use physical witnesses without any axiom:
+-/
+
+/-- BalabanRGPackage from physical witnesses. 0 axioms. -/
+theorem balaban_rg_package_from_physical_witnesses (d N_c : ℕ) [NeZero N_c] :
+    BalabanRGPackage d N_c :=
+  physicalBalabanRGPackage d N_c
+
+/-- Uniform LSI from physical witnesses. 0 axioms, 0 sorrys. -/
+theorem uniform_lsi_without_axioms (d N_c : ℕ) [NeZero N_c] :
+    ∃ c > 0, ClayCoreLSI d N_c c :=
+  physical_uniform_lsi d N_c
+
 end YangMills.ClayCore

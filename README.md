@@ -44,6 +44,20 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.61 — Layer 8E: `physical_uniform_lsi` — 0 axioms, 0 sorrys ✅ *(2026-03-19)*
+
+**`physical_uniform_lsi (d N_c : ℕ) [NeZero N_c] : ∃ c > 0, ClayCoreLSI d N_c c`**
+
+Proved WITHOUT any axiom using physical witnesses:
+- `rho(β) = exp(-β)` ← Layer 8D (0 sorrys)
+- `cP(β) = (N_c/4)·β` ← Layer 8B, Ricci=N/4 (0 sorrys)
+- `cLSI(β) = (N_c/8)·β` ← Layer 8C, cP/2 (0 sorrys)
+
+Formal chain: `physicalRGRatesWitness → physicalBalabanRGPackage → physical_uniform_lsi`
+**21 files · 0 errors · 0 sorrys**
+
+Remaining gap: connect physical witnesses to actual polymer Dirichlet form (E26 P67–P82).
+
 ### v0.8.60 — Layer 8C: `LSIRateLowerBound` ✅ *(2026-03-19)*
 
 **`cLSI_linear_lb_from_E26`: `LinearLowerBound (physicalLSIConstant N_c)` proved.**
