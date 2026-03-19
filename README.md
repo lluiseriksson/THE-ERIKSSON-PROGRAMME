@@ -43,6 +43,18 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+### v0.9.11 — `RGViaBridge` Layer 11F: Unified RG control ✅ *(2026-03-19)*
+
+**Geometry chain 15A–15H + unified API. 0 sorrys. DAG clean.**
+
+Complete dual-path architecture:
+
+- **15G** `P80EstimateViaBridge`: `p80_via_bridge_unified` — SmallField/LargeField cases, `≤ exp(-β)·dist(K,0)` (0 sorrys)
+- **15H** `P81EstimateViaBridge`: `p81_via_bridge_unified` — Cauchy decay, `≤ C·dist(K₁,K₂)` (0 sorrys)
+- **11F** `RGViaBridge`: `RGViaBridgeControl` structure — unified P80+P81 API; `rg_control_via_bridge` constructs it from any bridge; `trivialBridgeControl` inhabited (0 sorrys)
+
+Analytic baseline (v0.8.x): still 0 analytic sorrys. Both paths green simultaneously.
+
 ### v0.9.6 — Geometry chain Layers 15A–15E complete ✅ *(2026-03-19)*
 
 **Full field geometry pipeline: 0 sorrys. DAG clean.**
@@ -682,7 +694,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ 63 files · 0 errors · 0 analytic sorrys (v0.9.6)
+| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~75 files · 0 errors · 0 analytic sorrys (v0.9.11)
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
