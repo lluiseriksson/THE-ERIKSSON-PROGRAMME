@@ -132,6 +132,67 @@ theorem small_field_large_part_trivial {d N_c : ℕ} [NeZero N_c] {k : ℕ}
     (_ : SmallFieldPredicateField d N_c k β φ) :
     (trivialRGFieldSplitOnField d N_c k).largePart φ K = fun _ => 0 := rfl
 
+
+/-! ## Layer 15C: Field selector and large-field norm -/
+
+/-- Selector: returns the trivial split for now.
+    API fixed for future non-trivial φ-dependent splits. -/
+def selectFieldSplit (d N_c : ℕ) [NeZero N_c] (k : ℕ) (β : ℝ)
+    (φ : BalabanLatticeSite d k → ℝ) :
+    RGFieldSplitOnField d N_c k :=
+  trivialRGFieldSplitOnField d N_c k
+
+theorem selectFieldSplit_small_eq_trivial {d N_c : ℕ} [NeZero N_c] {k : ℕ}
+    (β : ℝ) (φ : BalabanLatticeSite d k → ℝ)
+    (_ : SmallFieldPredicateField d N_c k β φ) :
+    selectFieldSplit d N_c k β φ = trivialRGFieldSplitOnField d N_c k := rfl
+
+theorem selectFieldSplit_large_eq_trivial {d N_c : ℕ} [NeZero N_c] {k : ℕ}
+    (β : ℝ) (φ : BalabanLatticeSite d k → ℝ)
+    (_ : LargeFieldPredicateField d N_c k β φ) :
+    selectFieldSplit d N_c k β φ = trivialRGFieldSplitOnField d N_c k := rfl
+
+theorem selectFieldSplit_largePart_zero {d N_c : ℕ} [NeZero N_c] {k : ℕ}
+    (β : ℝ) (φ : BalabanLatticeSite d k → ℝ) (K : ActivityFamily d k) :
+    (selectFieldSplit d N_c k β φ).largePart φ K = fun _ => 0 := rfl
+
+theorem selectFieldSplit_smallPart_eq_rg {d N_c : ℕ} [NeZero N_c] {k : ℕ}
+    (β : ℝ) (φ : BalabanLatticeSite d k → ℝ) (K : ActivityFamily d k) :
+    (selectFieldSplit d N_c k β φ).smallPart φ K = RGBlockingMap d N_c k K := rfl
+
+/-- Discrete large-field norm: number of sites exceeding the threshold. -/
+def largeFieldNorm {d k : ℕ} (φ : BalabanLatticeSite d k → ℝ) (β : ℝ) : ℝ :=
+  ((balabanLargeFieldRegion φ (fieldThreshold β)).card : ℝ)
+
+theorem largeFieldNorm_nonneg {d k : ℕ}
+    (φ : BalabanLatticeSite d k → ℝ) (β : ℝ) :
+    0 ≤ largeFieldNorm φ β := by
+  unfold largeFieldNorm; positivity
+
+theorem largeFieldNorm_eq_zero_iff {d k : ℕ}
+    (φ : BalabanLatticeSite d k → ℝ) (β : ℝ) :
+    largeFieldNorm φ β = 0 ↔
+      balabanLargeFieldRegion φ (fieldThreshold β) = ∅ := by
+  unfold largeFieldNorm
+  simp [Finset.card_eq_zero]
+
+theorem largeFieldNorm_zero_of_small {d N_c : ℕ} [NeZero N_c] {k : ℕ} {β : ℝ}
+    (φ : BalabanLatticeSite d k → ℝ)
+    (hS : SmallFieldPredicateField d N_c k β φ) :
+    largeFieldNorm φ β = 0 := by
+  rw [largeFieldNorm_eq_zero_iff]
+  exact hS
+
+theorem largeFieldNorm_pos_of_large {d N_c : ℕ} [NeZero N_c] {k : ℕ} {β : ℝ}
+    (φ : BalabanLatticeSite d k → ℝ)
+    (hL : LargeFieldPredicateField d N_c k β φ) :
+    0 < largeFieldNorm φ β := by
+  unfold largeFieldNorm LargeFieldPredicateField at *
+  have hne : (balabanLargeFieldRegion φ (fieldThreshold β)).Nonempty :=
+    Finset.nonempty_iff_ne_empty.mpr hL
+  exact_mod_cast Finset.card_pos.mpr hne
+
+
 end
 
 end YangMills.ClayCore
