@@ -193,6 +193,7 @@ theorem largeFieldNorm_pos_of_large {d N_c : ℕ} [NeZero N_c] {k : ℕ} {β : �
   exact_mod_cast Finset.card_pos.mpr hne
 
 
+
 end
 
 end YangMills.ClayCore
