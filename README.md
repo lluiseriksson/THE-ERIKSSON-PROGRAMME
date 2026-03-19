@@ -44,6 +44,18 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.66 — Layer 12A: `E26EstimateIndex` ✅ *(2026-03-19)*
+
+**Formal audit index: exactly 2 sorrys remain.**
+
+`e26_estimates_imply_lsi`: given P80+P81 estimates → ClayCoreLSI (0 new sorrys)
+
+2 sorrys, both E26-sourced:
+- `large_field_remainder_bound_P80` ← P80 §4
+- `rg_increment_decay_P81` ← P81 §3
+
+**35 files · 0 errors · 2 named sorrys**
+
 ### v0.8.65 — Layers 11D-11F: sorry refinement ✅ *(2026-03-19)*
 
 **1 monolithic sorry → 2 named, sourced, isolated sorrys.**
