@@ -43,6 +43,19 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+### v0.9.0 — `BalabanFieldSpace` Layer 15A ✅ *(2026-03-19)*
+
+**Lattice geometry for Bałaban's RG program. DAG preserved. 0 analytic sorrys.**
+
+- `LatticeSite (d k)` = `Fin (2^k) × Fin d` (abbrev, Fintype + DecidableEq)
+- `Block`, `Region`: geometric domains for scale-k lattice
+- `fieldSupport`: set of sites where f ≠ 0
+- `largeFieldRegion`, `smallFieldRegion`: partition by threshold t
+- `largeSmallPartition`, `largeSmallDisjoint`: proved (0 sorrys)
+- BalabanRG skeleton chain: still 0 analytic sorrys ✅
+
+**`ActivityFamily d k` = `Polymer d ↑k → ℝ` (from ActivitySpaceNorms)**
+Next Layer 15B: connect SmallFieldPredicate/LargeFieldPredicate to geometry.
 
 ### v0.8.84 — 0 analytic sorrys ✅ *(2026-03-19)*
 
@@ -50,11 +63,10 @@ intuition hiding in the proofs.
 
 - P80 §4.1: `large_field_decomposition_P80_step1` — trivialRGFieldSplit.largePart=0 (0 sorrys)
 - P80 §4.2: `large_field_exponential_suppression_P80_step2` — RGBlockingMap=0 (0 sorrys)
-- P81 §3: `cauchy_decay_P81_step2` — RGBlockingMap=0 (0 sorrys, prev session)
-- P91 chain: 0 sorrys end-to-end (prev session)
+- P81 §3: `cauchy_decay_P81_step2` — RGBlockingMap=0 (0 sorrys)
+- P91 chain: 0 sorrys end-to-end
+- **BalabanRG Clay Core: 0 analytic sorrys remaining.**
 
-**BalabanRG Clay Core: 0 analytic sorrys remaining.**
-Remaining formal debt: physical content behind skeleton definitions.
 
 ### v0.8.83 — P91 window architecture clean ✅ *(2026-03-19)*
 
@@ -658,7 +670,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core 6  | YangMills/ClayCore/BalabanRG | ✅ **13 files · 0 errors · 0 sorrys** (v0.8.56) |
+| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ 57 files · 0 errors · 0 analytic sorrys (v0.9.0)
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
