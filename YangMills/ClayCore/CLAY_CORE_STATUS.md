@@ -1,48 +1,45 @@
-# Clay Core — BalabanRG Status (v1.0.3-alpha, 2026-03-19)
+# Clay Core — BalabanRG Status (v1.0.4-alpha, 2026-03-19)
 
-**~110 files · 0 errors · 0 analytic sorrys**
+**~120 files · 0 errors · 0 analytic sorrys**
 
-## Architecture: Dual Geometry + Canonical Bridge
+## The full finite geometry now reaches the high-level consumer chain.
+
+## Three parallel paths — all green
 
 ### Path A — Skeleton baseline (v0.8.x)
 0 analytic sorrys. Untouched. Stable anchor.
 
 ### Path B — Simplified bridge hierarchy (v0.9.x–v1.0.x)
-BalabanLatticeSite d k = Fin(2^k) × Fin d
+BalabanLatticeSite d k = Fin(2^k) × Fin d (one coordinate)
+- Full chain: 15A–15E, 11F–11H, 10B, CauchyDecayViaBridge ✅
+- 6-path API in CauchyDecayFromAF ✅
 
-### Path C — Full geometry bridge hierarchy (v1.0.3-alpha) ✅
+### Path C — Full geometry bridge hierarchy (v1.0.3–v1.0.4) ✅
 BalabanFiniteSite d k = Fin d → Fin(2^k) — full (ℤ/2^k ℤ)^d
 ```
-BalabanFiniteLattice         — BalabanFiniteCoord k, BalabanFiniteSite d k
-LatticeSiteAdapterFull       — toBalabanFiniteSite: LatticeSite→BalabanFiniteSite
-                               coordinate-wise: all d coordinates
-PolymerGeometricReadoutFull  — ActivityFieldBridgeFull (field on BalabanFiniteSite)
-                               finiteReadoutFieldFull: ∑ K(p) at BalabanFiniteSite
-                               singletonFiniteReadoutFieldFull_at_siteOf: key identity
-PolymerCanonicalSiteFull     — canonicalGeometricBridgeFull ← polymer geometry ✅
-                               canonicalBridgeFull_field_at_site: K(p₀) (0 sorrys)
-                               canonicalBridgeFull_nonzero: K(p₀)≠0→field≠0
-                               canonicalBridgeFull_consistent_with_polymer: Touches∧field
+BalabanFiniteLattice              — BalabanFiniteSite d k
+LatticeSiteAdapterFull            — toBalabanFiniteSite: all d coordinates
+PolymerGeometricReadoutFull       — ActivityFieldBridgeFull
+PolymerCanonicalSiteFull          — canonicalGeometricBridgeFull
+RGViaBridgeFull                   — RGViaBridgeControlFull (Core + Named bounds)
+  ├── RGViaBridgeControlFullCore  — zero_field proved (0 sorrys)
+  ├── FullLargeFieldSuppressionBound — P80-style (formal debt)
+  └── FullCauchySummabilityBound  — P81-style (formal debt)
+RGBridgeCompatibilityFull         — wrappers from RGViaBridgeControlFull
+RGSkeletonViaBridgeFull           — skeleton-style facade
+CauchyDecayViaBridgeFull          — FIRST HIGH-LEVEL CONSUMER (full geometry) ✅
 ```
 
-## v1.0.3-alpha Key Milestones
+## v1.0.4-alpha Key Milestones
 
-1. **Full lattice geometry**: `BalabanFiniteSite d k = Fin d → Fin(2^k)` — faithful (ℤ/2^k ℤ)^d
-2. **Full adapter**: `toBalabanFiniteSite` — all d coordinates projected
-3. **Full canonical bridge**: `canonicalGeometricBridgeFull` on full geometry
-4. **Consistency**: `Polymer.Touches p₀ (canonicalSiteOf p₀)` + field = K(p₀)
-
-## Full bridge hierarchy
-
-| Bridge | Geometry | Determined by |
-|---|---|---|
-| `concreteActivityFieldBridge` | simplified | zero (stable anchor) |
-| `singletonBridge` | simplified | fixed p₀, x₀ |
-| `canonicalGeometricBridge` | simplified | `Classical.choose X.nonEmpty` |
-| `canonicalGeometricBridgeFull` | **full** | `Classical.choose X.nonEmpty` ✅ |
-
-## CauchyDecayFromAF — 6-path API
-All paths green. Full-geometry path pending (v1.0.4).
+| Milestone | Status |
+|---|---|
+| Full (ℤ/2^k ℤ)^d geometry | ✅ v1.0.3 |
+| Full canonical bridge | ✅ v1.0.3 |
+| RGViaBridgeControlFull (core proved) | ✅ v1.0.4 |
+| Named analytic bounds (P80/P81 full) | ✅ structure (content deferred) |
+| Full bridge consumer chain | ✅ v1.0.4 |
+| CauchyDecayViaBridgeFull | ✅ v1.0.4 |
 
 ## Formal debt
 
@@ -50,10 +47,12 @@ All paths green. Full-geometry path pending (v1.0.4).
 |---|---|---|
 | `p91_tight_weak_coupling_window` | P91WeakCouplingWindow | P91 A.2 §3 |
 | `RGBlockingMap` physical | BalabanBlockingMap | P78 |
-| Full bridge → RGViaBridgeControl | future | v1.0.4 |
-| Skeleton→Bridge migration | P80/P81 | v1.0.x |
+| `FullLargeFieldSuppressionBound` proof | RGViaBridgeFull | P78/P80 |
+| `FullCauchySummabilityBound` proof | RGViaBridgeFull | P81/P82 |
+| Full path → CauchyDecayFromAF alias | v1.0.5 | |
 
-## Next: v1.0.4-alpha
-1. `RGViaBridgeControlFull`: unify P80+P81 for ActivityFieldBridgeFull
-2. High-level alias `cauchy_decay_via_canonical_geometric_bridge_full`
-3. Full skeleton integration
+## Next: v1.0.5-alpha
+Start discharging formal debt:
+1. Prove `FullLargeFieldSuppressionBound` for zero-field skeleton
+2. Or: connect physical P80 estimate to full path
+3. Add `..._via_canonical_full_bridge` alias to CauchyDecayFromAF

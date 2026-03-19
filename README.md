@@ -43,6 +43,20 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+### v1.0.4-alpha — Full geometry reaches high-level consumer chain ✅ *(2026-03-19)*
+
+**The full finite geometry (ℤ/2^k ℤ)^d now reaches the high-level consumer chain.**
+
+- **`RGViaBridgeControlFull`**: three-layer design — Core (proved) + Named bounds (formal debt) ✅
+  - `RGViaBridgeControlFullCore`: `canonicalGeometricBridgeControlFullCore` proved (0 sorrys)
+  - `FullLargeFieldSuppressionBound`, `FullCauchySummabilityBound`: named Props (deferred)
+- **`RGBridgeCompatibilityFull`**: wrappers from full control (0 sorrys)
+- **`RGSkeletonViaBridgeFull`**: skeleton-style facade for full geometry
+- **`CauchyDecayViaBridgeFull`**: **first high-level consumer on full geometry path** ✅
+- Three parallel paths: skeleton (A) + simplified (B) + full (C) — all green ✅
+
+Next: v1.0.5-alpha — discharge `FullLargeFieldSuppressionBound` + CauchyDecayFromAF alias
+
 ### v1.0.3-alpha — Full (ℤ/2^k ℤ)^d geometry canonical bridge ✅ *(2026-03-19)*
 
 **Full d-dimensional finite lattice geometry. Both simplified and full paths green.**
@@ -755,7 +769,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~110 files · 0 errors · 0 analytic sorrys (v1.0.3-alpha)
+| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~120 files · 0 errors · 0 analytic sorrys (v1.0.4-alpha)
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
