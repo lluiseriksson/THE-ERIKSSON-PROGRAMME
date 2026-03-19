@@ -83,6 +83,53 @@ def rgControlFromFiniteReadout {d N_c : ℕ} [NeZero N_c]
     RGViaBridgeControl d N_c k β :=
   rg_control_via_bridge k β (bridgeFromFiniteReadout r)
 
+
+/-! ## Phase 3: Singleton readout — first non-trivial bridge -/
+
+/-- Singleton readout: one polymer p₀ routed to one site x₀. -/
+def singletonFinitePolymerReadout {d k : ℕ}
+    (p₀ : Polymer d (Int.ofNat k)) (x₀ : BalabanLatticeSite d k) :
+    FinitePolymerReadout d k where
+  polys  := {p₀}
+  siteOf := fun _ => x₀
+
+/-- The singleton readout field at x₀ equals K(p₀). 0 sorrys. -/
+theorem singletonReadoutField_at_center {d k : ℕ}
+    (p₀ : Polymer d (Int.ofNat k)) (x₀ : BalabanLatticeSite d k)
+    (K : ActivityFamily d k) :
+    finiteReadoutField (singletonFinitePolymerReadout p₀ x₀) K x₀ = K p₀ := by
+  simp [finiteReadoutField, singletonFinitePolymerReadout]
+
+/-- The singleton readout field at x ≠ x₀ is 0. 0 sorrys. -/
+theorem singletonReadoutField_away {d k : ℕ}
+    (p₀ : Polymer d (Int.ofNat k)) (x₀ : BalabanLatticeSite d k)
+    {x : BalabanLatticeSite d k} (hx : x ≠ x₀)
+    (K : ActivityFamily d k) :
+    finiteReadoutField (singletonFinitePolymerReadout p₀ x₀) K x = 0 := by
+  simp [finiteReadoutField, singletonFinitePolymerReadout, hx.symm]
+
+/-- First non-trivial ActivityFieldBridge.
+    K(p₀) appears at site x₀; zero elsewhere. -/
+def singletonBridge {d k : ℕ}
+    (p₀ : Polymer d (Int.ofNat k)) (x₀ : BalabanLatticeSite d k) :
+    ActivityFieldBridge d k :=
+  bridgeFromFiniteReadout (singletonFinitePolymerReadout p₀ x₀)
+
+/-- The singleton bridge is not the zero bridge when K(p₀) ≠ 0. -/
+theorem singletonBridge_fieldOfActivity_at {d k : ℕ}
+    (p₀ : Polymer d (Int.ofNat k)) (x₀ : BalabanLatticeSite d k)
+    (K : ActivityFamily d k) :
+    (singletonBridge p₀ x₀).fieldOfActivity K x₀ = K p₀ :=
+  singletonReadoutField_at_center p₀ x₀ K
+
+/-- RGViaBridgeControl from the singleton bridge. 0 sorrys. -/
+def singletonBridgeControl {d N_c : ℕ} [NeZero N_c]
+    [∀ j, ActivityNorm d j] (k : ℕ) (β : ℝ)
+    (p₀ : Polymer d (Int.ofNat k)) (x₀ : BalabanLatticeSite d k) :
+    RGViaBridgeControl d N_c k β :=
+  rgControlFromFiniteReadout k β (singletonFinitePolymerReadout p₀ x₀)
+
+
 end
 
 end YangMills.ClayCore
