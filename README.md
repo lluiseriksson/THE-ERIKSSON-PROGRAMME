@@ -44,6 +44,16 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.77 — Layer 14F: `P91OnestepDriftSkeleton` ✅ *(2026-03-19)*
+
+**`beta_linear_drift_P91` → 2 sub-sorrys + structural wrapper.**
+
+- `one_step_beta_drift_P91` ← P91 A.2 §3 (δ = b₀/2, single step)
+- `uniform_drift_lower_bound_P91` ← P91 A.2 §3 (uniformity in k)
+- `beta_linear_drift_from_one_step` ← structural (0 new sorrys)
+
+**All proved this session: tendsto_atTop_of_linear_drift, rate_to_zero_of_beta_tendsto_top**
+
 ### v0.8.76 — Layers 14D-14E: Beta divergence decomposed ✅ *(2026-03-19)*
 
 **β → +∞ separated from local window control.**
