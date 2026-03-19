@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.P91BetaDriftDecomposition
+import YangMills.ClayCore.BalabanRG.P91DriftPositivityControl
 
 namespace YangMills.ClayCore
 
@@ -39,7 +40,9 @@ theorem one_step_beta_drift_P91 (N_c : ℕ) [NeZero N_c]
     (hβ_upper : β_k < 2 / balabanBetaCoeff N_c)
     (hr : |r_k| < balabanBetaCoeff N_c / 2) :
     β_k + balabanBetaCoeff N_c / 2 ≤ balabanCouplingStep N_c β_k r_k := by
-  sorry -- P91 A.2 §3: one-step drift lower bound
+  have hden_pos : 0 < betaStepDenom N_c β_k r_k :=
+    denominator_pos N_c β_k r_k hβ hβ_upper hr
+  linarith [one_step_beta_drift_from_controls N_c β_k r_k hβ hden_pos hr]
 
 /-- Step 2: Uniformity in k: the drift is uniform, not just for one step.
     Follows from Step 1 if β_k stays in [1, 2/b₀) and |r_k| < b₀/2. -/
