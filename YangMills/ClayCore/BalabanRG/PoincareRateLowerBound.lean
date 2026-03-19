@@ -23,7 +23,7 @@ Remaining: connect polymer Dirichlet Poincaré to physicalPoincareConstant.
 noncomputable section
 
 /-- Helper: NeZero N_c → 0 < (N_c : ℝ) -/
-private theorem Nc_pos (N_c : ℕ) [NeZero N_c] : 0 < (N_c : ℝ) :=
+theorem Nc_pos (N_c : ℕ) [NeZero N_c] : 0 < (N_c : ℝ) :=
   Nat.cast_pos.mpr (Nat.pos_of_ne_zero (NeZero.ne N_c))
 
 /-- The physical Poincaré constant: cP(β) = (N_c/4) · β. -/
