@@ -44,6 +44,15 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.81 — `P91BetaDriftDecomposition` pure analysis + `beta_linear_drift_from_data` 0 sorrys ✅ *(2026-03-19)*
+
+**`beta_linear_drift_from_data`: sorry ELIMINATED.**
+
+Architecture: pure analysis layer (14E) separated from data layer (14J):
+- `P91BetaDriftDecomposition`: only `tendsto_atTop_of_linear_drift` (0 sorrys)
+- `P91BetaDriftClosed`: `beta_linear_drift_from_data` via `uniform_drift_from_data` (0 sorrys)
+- Full active chain: P91DriftPositivityControl → P91UniformDrift → P91BetaDriftClosed → 0 sorrys
+
 ### v0.8.80 — Active P91 chain sealed ✅ *(2026-03-19)*
 
 **5/5 targets green. 0 sorrys in active drift/divergence/rate chain.**

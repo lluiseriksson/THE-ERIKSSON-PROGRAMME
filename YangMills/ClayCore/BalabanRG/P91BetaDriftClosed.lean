@@ -11,8 +11,8 @@ open Classical Filter
 /-!
 # P91BetaDriftClosed — Layer 14J
 
-Closed drift/divergence path: imports P91UniformDrift (cycle-free)
-and reuses tendsto_atTop_of_linear_drift from P91BetaDriftDecomposition.
+All data-driven drift/divergence theorems.
+beta_linear_drift_from_data: 0 sorrys (uses uniform_drift_from_data).
 -/
 
 noncomputable section
@@ -28,7 +28,7 @@ theorem beta_linear_drift_from_data (N_c : ℕ) [NeZero N_c]
     ∃ δ > 0, ∀ k, β k + δ ≤ β (k + 1) :=
   uniform_drift_from_data N_c β r hβ0 hβ_upper hr hstep
 
-/-- Closed divergence. Reuses tendsto_atTop_of_linear_drift. 0 sorrys. -/
+/-- Closed divergence. 0 sorrys. -/
 theorem beta_tendsto_top_from_data_closed (N_c : ℕ) [NeZero N_c]
     (data : P91RecursionData N_c)
     (β : ℕ → ℝ) (r : ℕ → ℝ)
