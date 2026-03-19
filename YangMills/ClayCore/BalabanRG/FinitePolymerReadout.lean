@@ -130,6 +130,24 @@ def singletonBridgeControl {d N_c : ℕ} [NeZero N_c]
   rgControlFromFiniteReadout k β (singletonFinitePolymerReadout p₀ x₀)
 
 
+
+/-- The singleton bridge field at x₀ is K(p₀). Explicit non-triviality. -/
+theorem singletonBridge_field_at_center {d k : ℕ}
+    (p₀ : Polymer d (Int.ofNat k)) (x₀ : BalabanLatticeSite d k)
+    (K : ActivityFamily d k) :
+    (singletonBridge p₀ x₀).fieldOfActivity K x₀ = K p₀ :=
+  singletonReadoutField_at_center p₀ x₀ K
+
+/-- If K(p₀) ≠ 0, the singleton bridge field at x₀ is nonzero.
+    This is the first proof that the bridge is genuinely non-trivial. 0 sorrys. -/
+theorem singletonBridge_nonzero_of_activity_nonzero {d k : ℕ}
+    (p₀ : Polymer d (Int.ofNat k)) (x₀ : BalabanLatticeSite d k)
+    (K : ActivityFamily d k) (hK : K p₀ ≠ 0) :
+    (singletonBridge p₀ x₀).fieldOfActivity K x₀ ≠ 0 := by
+  rw [singletonBridge_field_at_center]
+  exact hK
+
+
 end
 
 end YangMills.ClayCore

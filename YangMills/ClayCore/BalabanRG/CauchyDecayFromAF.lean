@@ -4,6 +4,7 @@ import YangMills.ClayCore.BalabanRG.P91BetaDivergence
 import YangMills.ClayCore.BalabanRG.RGCauchySummabilitySkeleton
 import YangMills.ClayCore.BalabanRG.CauchyDecayViaBridge
 import YangMills.ClayCore.BalabanRG.ConcreteActivityFieldBridge
+import YangMills.ClayCore.BalabanRG.FinitePolymerReadout
 
 namespace YangMills.ClayCore
 
@@ -85,6 +86,30 @@ theorem cauchy_decay_from_p91_data_via_concrete_bridge {d N_c : ℕ} [NeZero N_c
   cauchy_summability_bridge_consumer
     (d := d) (N_c := N_c) (k := 0) (β := β_k)
     (concreteBridgeControl d N_c 0 β_k) K₁ K₂
+    (physicalContractionRate β_k)
+    (by unfold physicalContractionRate; positivity)
+
+
+
+/-- Cauchy decay at scale 0 via the singleton bridge.
+    First high-level theorem using a genuinely non-trivial bridge.
+    0 sorrys. -/
+theorem cauchy_decay_from_p91_data_via_singleton_bridge {d N_c : ℕ} [NeZero N_c]
+    [∀ k, ActivityNorm d k]
+    (β_k : ℝ)
+    (p₀ : Polymer d (Int.ofNat 0)) (x₀ : BalabanLatticeSite d 0)
+    (K₁ K₂ : ActivityFamily d (0 : ℕ)) :
+    ActivityNorm.dist
+      ((selectFieldSplitViaBridge d N_c 0
+          (singletonBridge p₀ x₀) β_k K₁).largePart
+        ((singletonBridge p₀ x₀).fieldOfActivity K₁) K₁)
+      (fun _ => 0) ≤
+    physicalContractionRate β_k * ActivityNorm.dist K₁ K₂ := by
+  let ctrl : RGViaBridgeControl d N_c 0 β_k :=
+    singletonBridgeControl (d := d) (N_c := N_c) 0 β_k p₀ x₀
+  exact cauchy_summability_bridge_consumer
+    (d := d) (N_c := N_c) (k := 0) (β := β_k)
+    ctrl K₁ K₂
     (physicalContractionRate β_k)
     (by unfold physicalContractionRate; positivity)
 
