@@ -43,6 +43,22 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+### v1.0.2-alpha — Bridge canonically determined by polymer geometry ✅ *(2026-03-19)*
+
+**The bridge is now derived from the polymer's own geometric support.**
+
+- **`LatticeSiteAdapter`**: `toBalabanSite` — `LatticeSite d → BalabanLatticeSite d k`
+- **`PhysicalPolymerRepSite`**: abstract siteOf — `Polymer → LatticeSite → BalabanLatticeSite`
+- **`PolymerCanonicalSite`**: `canonicalSiteOf = Classical.choose X.nonEmpty ∈ X.sites`
+- **`canonicalGeometricBridge`**: first bridge fully determined by polymer geometry ✅
+- **`canonicalBridge_field_at_site`**: field value = K(p₀) at canonical site (0 sorrys)
+- **`canonicalBridge_nonzero`**: K(p₀) ≠ 0 → bridge field ≠ 0
+- **`cauchy_decay_via_canonical_geometric_bridge`**: high-level canonical consumer ✅
+- **`singletonFiniteReadoutField_at_siteOf`**: key identity for singleton readouts
+- `CauchyDecayFromAF`: 6-path API (baseline + 5 bridge variants)
+
+Next: v1.0.3-alpha — refine `toBalabanSite` to full `(ℤ/2^k ℤ)^d` geometry
+
 ### v1.0.1-alpha — Non-trivial bridge + triple API ✅ *(2026-03-19)*
 
 **First genuinely non-trivial bridge proved. Full triple-path high-level API.**
@@ -724,7 +740,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~90 files · 0 errors · 0 analytic sorrys (v1.0.1-alpha)
+| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~100 files · 0 errors · 0 analytic sorrys (v1.0.2-alpha)
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
