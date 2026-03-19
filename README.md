@@ -43,6 +43,18 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+### v0.9.6 — Geometry chain Layers 15A–15E complete ✅ *(2026-03-19)*
+
+**Full field geometry pipeline: 0 sorrys. DAG clean.**
+
+- **15A** `BalabanFieldSpace`: `BalabanLatticeSite`, `Block`, `Region`, `fieldSupport`, `largeFieldRegion`, `smallFieldRegion` (0 sorrys)
+- **15B** `SmallFieldLargeFieldSplit` extended: `fieldThreshold = exp(-β/2)`, `SmallFieldPredicateField`, `LargeFieldPredicateField`, `largeFieldNorm`, `RGFieldSplitOnField`, `selectFieldSplit`
+- **15C** `BalabanFieldDecomposition`: `φ = φ_small + φ_large` proved (0 sorrys), support disjointness
+- **15D** `ActivityFieldBridge`: abstract `ActivityFamily → LatticeSite → ℝ` interface, `SmallFieldPredViaBridge`, `zero_activity_small`
+- **15E** `ActivityFieldSplitSelection`: `selectFieldSplitViaBridge` (trivial API, above 15B+15D, no cycle)
+
+**Analytic chain (v0.8.x): still 0 analytic sorrys**
+
 ### v0.9.0 — `BalabanFieldSpace` Layer 15A ✅ *(2026-03-19)*
 
 **Lattice geometry for Bałaban's RG program. DAG preserved. 0 analytic sorrys.**
@@ -670,7 +682,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ 57 files · 0 errors · 0 analytic sorrys (v0.9.0)
+| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ 63 files · 0 errors · 0 analytic sorrys (v0.9.6)
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
