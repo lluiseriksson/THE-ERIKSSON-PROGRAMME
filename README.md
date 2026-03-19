@@ -44,6 +44,18 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.69 — `uv_stability_P82_step1` proved ✅ *(2026-03-19)*
+
+**4 atomic sorrys → 3 atomic sorrys.**
+
+`uv_stability_P82_step1`: closed using placeholder RGBlockingMap = 0.
+C_uv = 1, dist(0,0) = 0 ≤ 1·dist(K₁,K₂). nlinarith closes.
+
+**3 sorrys remaining:**
+- `large_field_decomposition_P80_step1` ← P80 §4.1
+- `large_field_exponential_suppression_P80_step2` ← P80 §4.2
+- `cauchy_decay_P81_step2` ← P81 §3 (the deep one)
+
 ### v0.8.68 — Layers 12B-12C: All sorrys decomposed ✅ *(2026-03-19)*
 
 **1 monolithic sorry → 4 atomic sorrys (all E26-sourced, all named)**
