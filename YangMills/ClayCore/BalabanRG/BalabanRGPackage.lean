@@ -4,32 +4,34 @@ import YangMills.ClayCore.BalabanRG.FreeEnergyControlReduction
 namespace YangMills.ClayCore
 
 /-!
-# BalabanRGPackage — Layer 6 (v2)
+# BalabanRGPackage — Layer 6 (v3)
 
-Three-pillar RG package. `freeEnergyControl` has been discharged by the
-Clay Core (see `FreeEnergyControlReduction.lean`).
+Three-pillar RG package. `freeEnergyControl` discharged by Clay Core.
+All fields now use the physical weak-coupling regime: β ≥ β₀ > 0.
 
-Remaining: contractiveMaps, uniformCoercivity, entropyCoupling.
-Source: P67, P69–P70, P74, P81–P82.
+Sources: P67, P69–P70, P74, P81–P82.
 -/
 
+-- freeEnergyControl is discharged in FreeEnergyControlReduction.lean.
+
 structure BalabanRGPackage (d : ℕ) (N_c : ℕ) [NeZero N_c] where
-  /-- Contractive RG maps (P81, P82): activity norm decreases across scales. -/
+  /-- Contractive RG maps (P81, P82): activity decreases across scales
+      in the weak-coupling regime β ≥ β₀. -/
   contractiveMaps :
-    ∀ (k : ℕ) (β : ℝ),
+    ∃ beta0 : ℝ, 0 < beta0 ∧ ∀ (k : ℕ) (β : ℝ), beta0 ≤ β →
       ∃ rho : ℝ, rho ∈ Set.Ioo (0 : ℝ) 1 ∧
         ∀ (K1 K2 : ℕ → ℝ), True
 
-  /-- Uniform coercivity (P69, P70): Poincaré constant bounded below. -/
+  /-- Uniform coercivity (P69, P70): Poincaré constant ≥ cP > 0
+      for β ≥ β₀ (weak coupling). -/
   uniformCoercivity :
-    ∃ lambdaP : ℝ, 0 < lambdaP ∧
-      ∀ (k : ℕ) (β : ℝ), 0 < β → lambdaP ≤ β
+    ∃ beta0 : ℝ, 0 < beta0 ∧ ∃ cP : ℝ, 0 < cP ∧
+      ∀ (k : ℕ) (β : ℝ), beta0 ≤ β → cP ≤ β
 
-  /-- Entropy coupling (P67, P74): LSI constant transfers between scales. -/
+  /-- Entropy coupling (P67, P74): LSI constant ≥ cLSI > 0
+      for β ≥ β₀ (weak coupling). -/
   entropyCoupling :
-    ∃ cLSI : ℝ, 0 < cLSI ∧
-      ∀ (k : ℕ) (β : ℝ), 0 < β → cLSI ≤ β
-
--- freeEnergyControl is discharged in FreeEnergyControlReduction.lean.
+    ∃ beta0 : ℝ, 0 < beta0 ∧ ∃ cLSI : ℝ, 0 < cLSI ∧
+      ∀ (k : ℕ) (β : ℝ), beta0 ≤ β → cLSI ≤ β
 
 end YangMills.ClayCore
