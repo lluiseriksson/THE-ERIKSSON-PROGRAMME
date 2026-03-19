@@ -1,5 +1,5 @@
 import Mathlib
-import YangMills.ClayCore.BalabanRG.BalabanRGPackage
+import YangMills.ClayCore.BalabanRG.UniformLSITransfer
 
 namespace YangMills.ClayCore
 
