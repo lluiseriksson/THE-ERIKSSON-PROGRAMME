@@ -44,6 +44,15 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.74 — `P91WindowFromRecursion` (Layer 14A) ✅ *(2026-03-19)*
+
+**`p91_tight_weak_coupling_window` axiom → theorem chain (3 sub-sorrys).**
+
+- `remainder_small_P91` ← P91 A.2 §3 Step 1 (two-loop remainder bound)
+- `window_from_remainder` ← algebraic consequence (P91 A.2 §3)
+- `window_invariant_P91` ← window preserved under recursion (P91 A.2 §3)
+- `p91_tight_weak_coupling_window_theorem` ← structural (0 new sorrys)
+
 ### v0.8.73 — Full session checkpoint ✅ *(2026-03-19)*
 
 **40 files · 0 errors · 3 analytic sorrys + 1 quantitative axiom**
