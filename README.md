@@ -44,6 +44,18 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.83 — P91 window architecture clean ✅ *(2026-03-19)*
+
+**`remainder_small_P91` proved (window→remainder). Architecture split clean.**
+
+- `P91WindowFromRecursion` (14A): `remainder_small_P91` 0 sorrys (pure algebra)
+- `P91WindowClosed` (14K): owner of `p91_tight_window_of_data` (via axiom)
+- `P91RecursionData` (14B): pure hypothesis package
+- DAG: clean, no cycles
+- Active drift/divergence/rate chain: 0 sorrys end-to-end
+
+Real gap: `p91_tight_weak_coupling_window` (axiom) + P80 §4.1/4.2, P81 §3
+
 ### v0.8.82 — `beta_linear_drift_P91` alias closed ✅ *(2026-03-19)*
 
 **`beta_linear_drift_P91` sorry ELIMINATED. 6 analytic sorrys remain.**
