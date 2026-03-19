@@ -5,14 +5,17 @@ namespace YangMills.ClayCore
 
 /-!
 # UniformLSITransfer — Layer 6B
+
+BalabanRGPackage (3 fields) + FreeEnergyControlReduction → uniform LSI.
+freeEnergyControl is now a theorem, not a field.
 -/
 
-/-- Simplified uniform LSI statement at the Clay Core interface. -/
+/-- Simplified uniform LSI at the Clay Core interface. -/
 def ClayCoreLSI (d N_c : ℕ) [NeZero N_c] (c : ℝ) : Prop :=
   ∃ (β₀ : ℝ), 0 < β₀ ∧ 0 < c ∧
     ∀ (β : ℝ), β₀ ≤ β → c ≤ β
 
-/-- BalabanRGPackage → uniform LSI. -/
+/-- BalabanRGPackage → uniform LSI (via entropyCoupling). -/
 theorem uniform_lsi_of_balaban_rg_package {d N_c : ℕ} [NeZero N_c]
     (pkg : BalabanRGPackage d N_c) :
     ∃ c > 0, ClayCoreLSI d N_c c := by
