@@ -457,4 +457,107 @@ theorem inductionBudget_insert_le {d : ℕ} {L : ℤ}
     (inductionBudget_insert_containing_le Gamma X K a)
 
 
+/-! ## Auxiliary: avoiding-X sum ≤ 1 + InductionBudget -/
+
+theorem avoidingX_sum_le_one_add_inductionBudget {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (X : Polymer d L)
+    (K : Activity d L) (a : ℝ) :
+    ∑ S ∈ compatibleSubfamiliesAvoidingX Gamma X, absFamilyWeight K S
+      ≤ 1 + InductionBudget Gamma K a := by
+  classical
+  have hsub : compatibleSubfamiliesAvoidingX Gamma X ⊆ compatibleSubfamilies Gamma :=
+    fun S hS => (mem_compatibleSubfamiliesAvoidingX_iff.mp hS).1
+  have h0 : (∅ : Finset (Polymer d L)) ∈ compatibleSubfamilies Gamma :=
+    empty_mem_compatibleSubfamilies Gamma
+  have hne : (∅ : Finset (Polymer d L)) ∉ (compatibleSubfamilies Gamma).erase ∅ := by simp
+  calc ∑ S ∈ compatibleSubfamiliesAvoidingX Gamma X, absFamilyWeight K S
+      ≤ ∑ S ∈ compatibleSubfamilies Gamma, absFamilyWeight K S :=
+          Finset.sum_le_sum_of_subset_of_nonneg hsub
+            (fun S _ _ => absFamilyWeight_nonneg K S)
+    _ = ∑ S ∈ insert ∅ ((compatibleSubfamilies Gamma).erase ∅), absFamilyWeight K S := by
+          rw [Finset.insert_erase h0]
+    _ = absFamilyWeight K ∅
+          + ∑ S ∈ (compatibleSubfamilies Gamma).erase ∅, absFamilyWeight K S :=
+          Finset.sum_insert hne
+    _ = 1 + InductionBudget Gamma K a := by
+          simp [absFamilyWeight, InductionBudget]
+
+/-! ## Final theorem: KP condition implies compatible family majorant -/
+
+theorem kpOnGamma_implies_compatibleFamilyMajorant {d : ℕ} {L : ℤ}
+    (Gamma : Finset (Polymer d L)) (K : Activity d L) (a : ℝ) (ha : 0 < a)
+    (hKP : KPOnGamma Gamma K a) :
+    CompatibleFamilyMajorant Gamma K (Real.exp (theoreticalBudget Gamma K a) - 1) := by
+  classical
+  induction Gamma using Finset.induction_on with
+  | empty =>
+    rw [theoreticalBudget_empty, Real.exp_zero]
+    simp only [sub_self]
+    exact compatibleFamilyMajorant_empty K
+  | @insert X Gamma' hX ih =>
+    have hKP' : KPOnGamma Gamma' K a :=
+      kpOnGamma_mono K a (Finset.subset_insert X Gamma') hKP
+    have ih' : CompatibleFamilyMajorant Gamma' K
+        (Real.exp (theoreticalBudget Gamma' K a) - 1) := ih hKP'
+    rw [theoreticalBudget_insert Gamma' X K a hX]
+    -- |K X| ≤ weightedActivity K a X
+    have hKX : |K X| ≤ weightedActivity K a X :=
+      kpOnGamma_activity_bound (le_of_lt ha) hKP (Finset.mem_insert_self X Gamma')
+    -- Basic nonnegativity
+    have hwA_nn : 0 ≤ weightedActivity K a X := by
+      unfold weightedActivity; positivity
+    have hA_nn : 0 ≤ theoreticalBudget Gamma' K a :=
+      theoreticalBudget_nonneg Gamma' K a
+    have hIB_nn : 0 ≤ InductionBudget Gamma' K a :=
+      Finset.sum_nonneg (fun S _ => absFamilyWeight_nonneg K S)
+    -- exp(tb Gamma') ≥ 1
+    have heA : 1 ≤ Real.exp (theoreticalBudget Gamma' K a) :=
+      Real.one_le_exp hA_nn
+    -- IB Gamma' ≤ exp(tb) - 1  [induction hypothesis]
+    have hib : InductionBudget Gamma' K a
+        ≤ Real.exp (theoreticalBudget Gamma' K a) - 1 := ih'
+    -- avoiding sum ≤ 1 + IB Gamma'
+    have hav : ∑ S ∈ compatibleSubfamiliesAvoidingX Gamma' X, absFamilyWeight K S
+        ≤ 1 + InductionBudget Gamma' K a :=
+      avoidingX_sum_le_one_add_inductionBudget Gamma' X K a
+    -- recurrence: IB(insert X Γ') ≤ IB(Γ') + |KX|·(1 + IB(Γ'))
+    have hrec := inductionBudget_insert_le Gamma' X K a
+    have hmul : |K X| * ∑ S ∈ compatibleSubfamiliesAvoidingX Gamma' X, absFamilyWeight K S
+        ≤ |K X| * (1 + InductionBudget Gamma' K a) :=
+      mul_le_mul_of_nonneg_left hav (abs_nonneg _)
+    have hstep : InductionBudget (insert X Gamma') K a
+        ≤ InductionBudget Gamma' K a + |K X| * (1 + InductionBudget Gamma' K a) := by
+      linarith [hrec, hmul]
+    -- algebraic rewrite: IB + |KX|(1+IB) = (1+IB)(1+|KX|) - 1
+    have hfactor :
+        InductionBudget Gamma' K a + |K X| * (1 + InductionBudget Gamma' K a)
+          = (1 + InductionBudget Gamma' K a) * (1 + |K X|) - 1 := by ring
+    -- product bound: (1+IB)(1+|KX|) ≤ exp(tb)(1+w)
+    set E := Real.exp (theoreticalBudget Gamma' K a)
+    set w := weightedActivity K a X
+    have hprod : (1 + InductionBudget Gamma' K a) * (1 + |K X|) ≤ E * (1 + w) := by
+      apply mul_le_mul
+      · linarith
+      · linarith
+      · positivity
+      · linarith
+    -- 1 + w ≤ exp(w)
+    have h1w : 1 + w ≤ Real.exp w := by
+      simpa [add_comm] using Real.add_one_le_exp w
+    -- close
+    unfold CompatibleFamilyMajorant
+    have hIB_eq : ∑ S ∈ (compatibleSubfamilies (insert X Gamma')).erase ∅,
+        ∏ Y ∈ S, |K Y| = InductionBudget (insert X Gamma') K a := by
+      simp [InductionBudget, absFamilyWeight]
+    rw [hIB_eq]
+    calc InductionBudget (insert X Gamma') K a
+        ≤ (1 + InductionBudget Gamma' K a) * (1 + |K X|) - 1 := by
+            linarith [hstep, hfactor.ge]
+      _ ≤ E * (1 + w) - 1 := by linarith
+      _ ≤ E * Real.exp w - 1 := by
+            exact sub_le_sub_right
+              (mul_le_mul_of_nonneg_left h1w (by linarith)) 1
+      _ = Real.exp (theoreticalBudget Gamma' K a + w) - 1 := by
+            rw [← Real.exp_add]
+
 end YangMills.ClayCore

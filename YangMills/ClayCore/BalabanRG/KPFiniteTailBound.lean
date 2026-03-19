@@ -82,4 +82,46 @@ Goal: KPOnGamma Gamma K a -> SmallActivityBudget Gamma K (exp(theoreticalBudget)
 Strategy: induction on Gamma.card (KP induction)
 -/
 
+
+/-- KPOnGamma is monotone under subset. -/
+theorem kpOnGamma_mono {d : ℕ} {L : ℤ}
+    {Gamma Delta : Finset (Polymer d L)} (K : Activity d L) (a : ℝ)
+    (hsub : Delta ⊆ Gamma) (hKP : KPOnGamma Gamma K a) :
+    KPOnGamma Delta K a := by
+  classical
+  intro x
+  have hsub' : touchingPolymers Delta x ⊆ touchingPolymers Gamma x := by
+    intro Y hY
+    rw [mem_touchingPolymers_iff] at hY ⊢
+    exact ⟨hsub hY.1, hY.2⟩
+  exact le_trans
+    (Finset.sum_le_sum_of_subset_of_nonneg hsub'
+      (fun Y _ _ => weightedActivity_nonneg K a Y))
+    (hKP x)
+
+/-- Under KPOnGamma, weightedActivity K a X ≤ a for any X ∈ Gamma. -/
+theorem kpOnGamma_weightedActivity_le {d : ℕ} {L : ℤ}
+    {Gamma : Finset (Polymer d L)} {K : Activity d L} {a : ℝ}
+    (hKP : KPOnGamma Gamma K a) {X : Polymer d L} (hX : X ∈ Gamma) :
+    weightedActivity K a X ≤ a := by
+  classical
+  obtain ⟨x, hx⟩ := X.nonEmpty
+  have hmem : X ∈ touchingPolymers Gamma x := by
+    rw [mem_touchingPolymers_iff]; exact ⟨hX, hx⟩
+  exact le_trans
+    (Finset.single_le_sum (fun Y _ => weightedActivity_nonneg K a Y) hmem)
+    (hKP x)
+
+/-- Under KPOnGamma (with 0 ≤ a), |K X| ≤ weightedActivity K a X for X ∈ Gamma. -/
+theorem kpOnGamma_activity_bound {d : ℕ} {L : ℤ}
+    {Gamma : Finset (Polymer d L)} {K : Activity d L} {a : ℝ}
+    (ha : 0 ≤ a)
+    (hKP : KPOnGamma Gamma K a) {X : Polymer d L} (hX : X ∈ Gamma) :
+    |K X| ≤ weightedActivity K a X := by
+  unfold weightedActivity
+  have hsize : 0 ≤ (X.size : ℝ) := Nat.cast_nonneg _
+  have hexp1 : 1 ≤ Real.exp (a * (X.size : ℝ)) :=
+    Real.one_le_exp (mul_nonneg ha hsize)
+  exact le_mul_of_one_le_right (abs_nonneg _) hexp1
+
 end YangMills.ClayCore
