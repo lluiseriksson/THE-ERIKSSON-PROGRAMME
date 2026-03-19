@@ -44,6 +44,18 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.84 — 0 analytic sorrys ✅ *(2026-03-19)*
+
+**All BalabanRG skeleton sorrys eliminated.**
+
+- P80 §4.1: `large_field_decomposition_P80_step1` — trivialRGFieldSplit.largePart=0 (0 sorrys)
+- P80 §4.2: `large_field_exponential_suppression_P80_step2` — RGBlockingMap=0 (0 sorrys)
+- P81 §3: `cauchy_decay_P81_step2` — RGBlockingMap=0 (0 sorrys, prev session)
+- P91 chain: 0 sorrys end-to-end (prev session)
+
+**BalabanRG Clay Core: 0 analytic sorrys remaining.**
+Remaining formal debt: physical content behind skeleton definitions.
+
 ### v0.8.83 — P91 window architecture clean ✅ *(2026-03-19)*
 
 **`remainder_small_P91` proved (window→remainder). Architecture split clean.**
