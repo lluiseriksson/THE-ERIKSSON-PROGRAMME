@@ -44,6 +44,14 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.71 — `P91AsymptoticFreedomSkeleton` (Layer 13B) ✅ *(2026-03-19)*
+
+**`asymptotic_freedom_implies_beta_growth` → 1 sorry + structural proof.**
+
+- `denominator_in_unit_interval` — 1 sorry (P91 A.2 §3)
+- `beta_growth_from_denominator` — proved: d∈(0,1) → β_{k+1}>β_k (nlinarith)
+- `asymptotic_freedom_from_denominator_control` — structural (0 new sorrys)
+
 ### v0.8.70 — `BalabanCouplingRecursion` (Layer 13A) ✅ *(2026-03-19)*
 
 **Physical engine for `cauchy_decay_P81_step2` formalized.**
