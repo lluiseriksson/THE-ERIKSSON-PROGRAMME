@@ -46,6 +46,17 @@ intuition hiding in the proofs.
 
 ### v0.8.75 — Layers 14B-14C: P91RecursionData + CauchyDecayFromAF ✅ *(2026-03-19)*
 
+**AF → Cauchy bridge complete. 42 files · 0 errors.**
+
+Layers 14B-14C establish:
+- `P91RecursionData`: packages P91 A.2 hypotheses (structure, 0 sorrys)
+- `p91_tight_window_of_data`, `af_of_data`, `rate_decreases_of_data`: structural (0 sorrys)
+- `cauchy_decay_from_p91_data`: P91+P82 → Cauchy estimate (structural)
+
+**Remaining: 3 analytic sorrys (P80, P81) + 3 P91 sub-sorrys + 1 tendsto sorry**
+
+### v0.8.75 — Layers 14B-14C: P91RecursionData + CauchyDecayFromAF ✅ *(2026-03-19)*
+
 **AF → Cauchy bridge established.**
 
 - `P91RecursionData`: packages P91 A.2 hypotheses (structure)
