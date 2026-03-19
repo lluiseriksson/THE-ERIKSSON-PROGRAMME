@@ -43,6 +43,18 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+### v1.0.1-alpha — Non-trivial bridge + triple API ✅ *(2026-03-19)*
+
+**First genuinely non-trivial bridge proved. Full triple-path high-level API.**
+
+- **`FinitePolymerReadout`**: finite-support readout using Finset (avoids global Fintype), `finiteReadoutField = ∑ K(p)` at site
+- **`singletonBridge`**: first ActivityFieldBridge where K(p₀)≠0 implies field≠0 at x₀ — **genuinely non-trivial** ✅
+- **`singletonBridge_nonzero_of_activity_nonzero`**: formal proof of non-triviality
+- **`CauchyDecayFromAF`**: triple API — baseline / abstract bridge / concrete bridge / singleton bridge
+- All 0 sorrys. Baselines untouched.
+
+Next: v1.0.2-alpha — physical siteOf from polymer geometry (P78)
+
 ### v1.0.0-alpha — Dual-path architecture operational ✅ *(2026-03-19)*
 
 **Bridge path reaches Layer 10. First high-level consumer migrated. 0 sorrys.**
@@ -712,7 +724,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~80 files · 0 errors · 0 analytic sorrys (v1.0.0-alpha)
+| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~90 files · 0 errors · 0 analytic sorrys (v1.0.1-alpha)
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
