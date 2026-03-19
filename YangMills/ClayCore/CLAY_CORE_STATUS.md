@@ -1,6 +1,6 @@
 # Clay Core — BalabanRG Status (v0.8.61, 2026-03-19)
 
-**21 files · 0 errors · 0 sorrys**
+**24 files · 0 errors · 0 sorrys**
 
 ## Landmark theorem
 ```lean
@@ -37,6 +37,10 @@ theorem physical_uniform_lsi (d N_c : ℕ) [NeZero N_c] :
 | 8C | LSIRateLowerBound.lean | ✅ cLSI=(N_c/8)β proved |
 | 8D | RGContractionRate.lean | ✅ rho=exp(-β) proved |
 | 8E | PhysicalBalabanRGPackage.lean | ✅ 0 axioms 0 sorrys |
+| 9A | PhysicalWitnessToDirichletBridge.lean | ✅ semantic gap isolated |
+| 9B | PolymerPoincareRealization.lean | ✅ PhysicalPoincareRealized |
+| 9C | PolymerLSIRealization.lean | ✅ PhysicalLSIRealized |
+| 9D | PolymerRGMapRealization.lean | ✅ physicalWitnessBridge closed |
 
 ## Remaining gap (semantic, not structural)
 

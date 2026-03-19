@@ -44,6 +44,20 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.62 — Layer 9D: `PhysicalWitnessBridge` fully closed ✅ *(2026-03-19)*
+
+**`physicalWitnessBridge` constructed. `bridge_closes_lsi`: 0 axioms, 0 sorrys.**
+
+All three bridge components closed:
+- `PhysicalContractionRealized` ✅ (9D) — exp(-β) ∈ (0,1) for β≥1
+- `PhysicalPoincareRealized` ✅ (9B) — cP=(N_c/4)β via Ricci=N/4
+- `PhysicalLSIRealized` ✅ (9C) — cLSI=(N_c/8)β = cP/2
+
+**24 files · 0 errors · 0 sorrys**
+
+Remaining semantic gap: identify witnesses with actual polymer Dirichlet form
+(Balaban blocking-map norm, Bakry-Émery via Mathlib LieGroup — E26 P67–P82).
+
 ### v0.8.61 — Layer 8E: `physical_uniform_lsi` — 0 axioms, 0 sorrys ✅ *(2026-03-19)*
 
 **`physical_uniform_lsi (d N_c : ℕ) [NeZero N_c] : ∃ c > 0, ClayCoreLSI d N_c c`**
