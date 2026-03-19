@@ -1,45 +1,43 @@
-# Clay Core — BalabanRG Status (v1.0.4-alpha, 2026-03-19)
+# Clay Core — BalabanRG Status (v1.0.5-alpha, 2026-03-19)
 
-**~120 files · 0 errors · 0 analytic sorrys**
+**~125 files · 0 errors · 0 analytic sorrys**
 
-## The full finite geometry now reaches the high-level consumer chain.
+## Key milestone: first filled RGViaBridgeControlFull
+
+The full-geometry control package is no longer only hypothetical:
+it is fully discharged for the empty-polymer bridge. 0 sorrys.
 
 ## Three parallel paths — all green
 
 ### Path A — Skeleton baseline (v0.8.x)
-0 analytic sorrys. Untouched. Stable anchor.
+0 analytic sorrys. Stable anchor.
 
 ### Path B — Simplified bridge hierarchy (v0.9.x–v1.0.x)
-BalabanLatticeSite d k = Fin(2^k) × Fin d (one coordinate)
-- Full chain: 15A–15E, 11F–11H, 10B, CauchyDecayViaBridge ✅
-- 6-path API in CauchyDecayFromAF ✅
+BalabanLatticeSite d k = Fin(2^k) × Fin d
 
-### Path C — Full geometry bridge hierarchy (v1.0.3–v1.0.4) ✅
-BalabanFiniteSite d k = Fin d → Fin(2^k) — full (ℤ/2^k ℤ)^d
+### Path C — Full geometry bridge hierarchy (v1.0.3–v1.0.5) ✅
+BalabanFiniteSite d k = Fin d → Fin(2^k)
 ```
-BalabanFiniteLattice              — BalabanFiniteSite d k
-LatticeSiteAdapterFull            — toBalabanFiniteSite: all d coordinates
-PolymerGeometricReadoutFull       — ActivityFieldBridgeFull
-PolymerCanonicalSiteFull          — canonicalGeometricBridgeFull
-RGViaBridgeFull                   — RGViaBridgeControlFull (Core + Named bounds)
-  ├── RGViaBridgeControlFullCore  — zero_field proved (0 sorrys)
-  ├── FullLargeFieldSuppressionBound — P80-style (formal debt)
-  └── FullCauchySummabilityBound  — P81-style (formal debt)
-RGBridgeCompatibilityFull         — wrappers from RGViaBridgeControlFull
-RGSkeletonViaBridgeFull           — skeleton-style facade
-CauchyDecayViaBridgeFull          — FIRST HIGH-LEVEL CONSUMER (full geometry) ✅
+BalabanFiniteLattice
+LatticeSiteAdapterFull        — coordinate-wise projection
+PolymerGeometricReadoutFull   — ActivityFieldBridgeFull
+PolymerCanonicalSiteFull      — canonical bridge from polymer geometry
+RGViaBridgeFull               — 3-layer: Core + Named bounds + Package
+RGBridgeCompatibilityFull
+RGSkeletonViaBridgeFull
+CauchyDecayViaBridgeFull      — high-level consumer ✅
+FullLargeFieldSuppressionSkeleton — DISCHARGED for ∅ ✅
+  empty_polys_full_bridge_field_zero  : field=0 for ∅
+  empty_full_large_field_suppression  : P80 bound discharged
+  empty_full_cauchy_summability       : P81 bound discharged
+  emptyCanonicalGeometricBridgeControlFull : first filled RGViaBridgeControlFull ✅
 ```
 
-## v1.0.4-alpha Key Milestones
-
-| Milestone | Status |
-|---|---|
-| Full (ℤ/2^k ℤ)^d geometry | ✅ v1.0.3 |
-| Full canonical bridge | ✅ v1.0.3 |
-| RGViaBridgeControlFull (core proved) | ✅ v1.0.4 |
-| Named analytic bounds (P80/P81 full) | ✅ structure (content deferred) |
-| Full bridge consumer chain | ✅ v1.0.4 |
-| CauchyDecayViaBridgeFull | ✅ v1.0.4 |
+### CauchyDecayFromAF — 7-path API
+```
+baseline / abstract-bridge / concrete / singleton / geometric /
+canonical-geometric / canonical-geometric-full (← new)
+```
 
 ## Formal debt
 
@@ -47,12 +45,12 @@ CauchyDecayViaBridgeFull          — FIRST HIGH-LEVEL CONSUMER (full geometry) 
 |---|---|---|
 | `p91_tight_weak_coupling_window` | P91WeakCouplingWindow | P91 A.2 §3 |
 | `RGBlockingMap` physical | BalabanBlockingMap | P78 |
-| `FullLargeFieldSuppressionBound` proof | RGViaBridgeFull | P78/P80 |
-| `FullCauchySummabilityBound` proof | RGViaBridgeFull | P81/P82 |
-| Full path → CauchyDecayFromAF alias | v1.0.5 | |
+| `FullLargeFieldSuppressionBound` for `{p₀}` | v1.0.6 | singleton |
+| `FullCauchySummabilityBound` for `{p₀}` | v1.0.6 | singleton |
+| General polys inductive discharge | v1.0.7+ | inductive |
 
-## Next: v1.0.5-alpha
-Start discharging formal debt:
-1. Prove `FullLargeFieldSuppressionBound` for zero-field skeleton
-2. Or: connect physical P80 estimate to full path
-3. Add `..._via_canonical_full_bridge` alias to CauchyDecayFromAF
+## Next: v1.0.6-alpha
+1. `singleton_full_large_field_suppression`
+2. `singleton_full_cauchy_summability`
+3. `singletonCanonicalGeometricBridgeControlFull`
+Then inductive step: ∅ → {p₀} → finite union.

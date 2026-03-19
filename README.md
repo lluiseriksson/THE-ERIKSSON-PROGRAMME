@@ -43,6 +43,20 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+### v1.0.5-alpha — First filled RGViaBridgeControlFull ✅ *(2026-03-19)*
+
+**The full-geometry control package is fully discharged for the empty-polymer bridge.**
+
+- **`empty_polys_full_bridge_field_zero`**: field = 0 for ∅ polymer set (0 sorrys)
+- **`empty_full_large_field_suppression`**: `FullLargeFieldSuppressionBound` discharged for ∅ (0 sorrys)
+- **`empty_full_cauchy_summability`**: `FullCauchySummabilityBound` discharged for ∅ (0 sorrys)
+- **`emptyCanonicalGeometricBridgeControlFull`**: **first filled `RGViaBridgeControlFull`** — both P80+P81 proved ✅
+- `canonicalGeometricBridgeControlFull_from_bounds`: packs control from hypotheses
+- `CauchyDecayFromAF`: 7-path API including full geometry ✅
+- 0 analytic sorrys. Three parallel paths (A/B/C) all green.
+
+Next: v1.0.6-alpha — singleton polys discharge (`{p₀}`)
+
 ### v1.0.4-alpha — Full geometry reaches high-level consumer chain ✅ *(2026-03-19)*
 
 **The full finite geometry (ℤ/2^k ℤ)^d now reaches the high-level consumer chain.**
@@ -769,7 +783,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~120 files · 0 errors · 0 analytic sorrys (v1.0.4-alpha)
+| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~125 files · 0 errors · 0 analytic sorrys (v1.0.5-alpha)
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
