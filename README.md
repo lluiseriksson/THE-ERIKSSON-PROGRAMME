@@ -44,6 +44,17 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.64 — Layers 11A-11C + refactor: clean dependency graph ✅ *(2026-03-19)*
+
+**31 files · 0 errors · 2 honest sorrys (both E26-sourced)**
+
+- `ActivitySpaceNorms` (11A): strong `ActivityNorm` API with `dist`, triangle inequality
+- `BalabanBlockingMap` (11B): `RGBlockingMap`, `RGBlockingMapContracts`, suppression/summability predicates
+- `RGContractiveEstimate` (11C): 2 named sorrys replace 1 monolithic sorry
+- `RGMapNormIdentification` refactored: uses 11B, no duplicate definitions
+
+**2 sorrys:** `large_field_suppression_bound` (P80) + `rg_cauchy_summability_bound` (P81/P82)
+
 ### v0.8.64 — Layers 11A-11C: Banach norm + blocking map + contraction ✅ *(2026-03-19)*
 
 **1 monolithic sorry → 2 named honest sorrys.**
