@@ -44,6 +44,16 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.65 — Layers 11D-11F: sorry refinement ✅ *(2026-03-19)*
+
+**1 monolithic sorry → 2 named, sourced, isolated sorrys.**
+
+- `SmallFieldLargeFieldSplit` (11D): `RGFieldSplit` structure, 0 sorrys
+- `LargeFieldSuppressionEstimate` (11E): `large_field_remainder_bound_P80` ← P80 §4
+- `RGCauchySummabilityEstimate` (11F): `rg_cauchy_summability_P81` ← P81 §3
+
+**33 files · 0 errors · 2 named sorrys**
+
 ### v0.8.64 — Layers 11A-11C + refactor: clean dependency graph ✅ *(2026-03-19)*
 
 **31 files · 0 errors · 2 honest sorrys (both E26-sourced)**

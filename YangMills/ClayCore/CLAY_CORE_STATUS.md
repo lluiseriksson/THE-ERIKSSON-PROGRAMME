@@ -1,16 +1,18 @@
-# Clay Core — BalabanRG Status (v0.8.64, 2026-03-19)
+# Clay Core — BalabanRG Status (v0.8.65, 2026-03-19)
 
-**31 files · 0 errors · 2 honest sorrys**
+**33 files · 0 errors · 2 named sorrys**
 
-## The two remaining sorrys
+## The two remaining sorrys (both E26-sourced, both isolated)
 ```lean
--- Layer 11C: large_field_suppression_bound
--- Source: P80 Theorem 4.1
--- Content: ‖T_k(K)‖ ≤ C·exp(-β)·‖K‖ (activities suppressed outside small-field region)
+-- File: LargeFieldSuppressionEstimate.lean (Layer 11E)
+theorem large_field_remainder_bound_P80 ...
+-- Source: P80 §4 (Balaban large-field suppression)
+-- Content: ‖T_k(K)‖ ≤ C·exp(-β)·‖K‖
 
--- Layer 11C: rg_cauchy_summability_bound
--- Source: P81 Theorem 3.1 + P82 Theorem 2.4
--- Content: ‖T_k(K₁)-T_k(K₂)‖ ≤ exp(-β)·‖K₁-K₂‖ (RG map is Lipschitz)
+-- File: RGCauchySummabilityEstimate.lean (Layer 11F)
+theorem rg_cauchy_summability_P81 ...
+-- Source: P81 §3 (RG-Cauchy summability)
+-- Content: ‖T_k(K₁)-T_k(K₂)‖ ≤ exp(-β)·‖K₁-K₂‖
 ```
 
 When both proved:
@@ -19,67 +21,38 @@ When both proved:
     → polymer_dirichlet_identification_implies_lsi
     → ClayCoreLSI → LSItoSpectralGap ✅ → ClayYangMillsTheorem ✅
 
-## Full layer inventory (31 files)
+## Full layer inventory (33 files)
 
 | Layer | File | Status |
 |---|---|---|
-| 0A  | BlockSpin.lean | ✅ |
-| 0B  | FiniteBlocks.lean | ✅ |
-| 1   | PolymerCombinatorics.lean | ✅ |
-| 2   | PolymerPartitionFunction.lean | ✅ |
-| 3A  | KPFiniteTailBound.lean | ✅ |
-| 3B  | KPBudgetBridge.lean | ✅ KP → exp(B)-1 |
-| 4A  | KPConsequences.lean | ✅ |
-| 4B  | PolymerLogBound.lean | ✅ |
-| 4C  | PolymerLogLowerBound.lean | ✅ |
-| 5   | KPToLSIBridge.lean | ✅ clayCore_free_energy_ready |
-| 6A  | BalabanRGPackage.lean | ✅ |
-| 6B  | UniformLSITransfer.lean | ✅ |
-| 6C  | BalabanRGAxiomReduction.lean | ✅ |
-| 7A  | FreeEnergyControlReduction.lean | ✅ THEOREM |
-| 7B  | EntropyCouplingReduction.lean | ✅ |
-| 7C  | ContractiveMapReduction.lean | ✅ |
-| 8A  | PhysicalRGRates.lean | ✅ |
-| 8B  | PoincareRateLowerBound.lean | ✅ cP=(N_c/4)β |
-| 8C  | LSIRateLowerBound.lean | ✅ cLSI=(N_c/8)β |
-| 8D  | RGContractionRate.lean | ✅ rho=exp(-β) |
-| 8E  | PhysicalBalabanRGPackage.lean | ✅ 0 axioms |
-| 9A  | PhysicalWitnessToDirichletBridge.lean | ✅ |
-| 9B  | PolymerPoincareRealization.lean | ✅ |
-| 9C  | PolymerLSIRealization.lean | ✅ |
-| 9D  | PolymerRGMapRealization.lean | ✅ |
-| 10A | PolymerDirichletRateIdentification.lean | ✅ |
-| 10B | RGMapNormIdentification.lean | ✅ (refactored) |
-| 10C | DirichletPoincareIdentification.lean | ✅ |
-| 10D | DirichletLSIIdentification.lean | ✅ |
-| 10E | DirichletIdentificationClosure.lean | ✅ |
-| 11A | ActivitySpaceNorms.lean | ✅ strong ActivityNorm |
-| 11B | BalabanBlockingMap.lean | ✅ RGBlockingMap + predicates |
-| 11C | RGContractiveEstimate.lean | ✅ 2 named sorrys |
+| 0A-4C | (KP combinatorics chain) | ✅ 8 files |
+| 5    | KPToLSIBridge | ✅ |
+| 6A-7C | (RG package + free energy) | ✅ 6 files |
+| 8A-8E | (Physical RG rates) | ✅ 5 files |
+| 9A-9D | (Physical witness bridge) | ✅ 4 files |
+| 10A-10E | (Dirichlet identification) | ✅ 5 files |
+| 11A | ActivitySpaceNorms | ✅ strong norm API |
+| 11B | BalabanBlockingMap | ✅ RGBlockingMap + predicates |
+| 11C | RGContractiveEstimate | ✅ structural wrapper |
+| 11D | SmallFieldLargeFieldSplit | ✅ 0 sorrys structural |
+| 11E | LargeFieldSuppressionEstimate | ✅ 1 sorry (P80 §4) |
+| 11F | RGCauchySummabilityEstimate | ✅ 1 sorry (P81 §3) |
 
-## Dependency graph (clean)
+## Sorry reduction history this session
 ```
-PolymerCombinatorics (1)
-  ↓
-ActivitySpaceNorms (11A) ← new base for norm API
-  ↓
-BalabanBlockingMap (11B) ← RGBlockingMap + contraction predicates
-  ↓
-RGContractiveEstimate (11C) ← 2 honest sorrys
-  ↓
-RGMapNormIdentification (10B) ← uses 11B
-  ↓
-DirichletIdentificationClosure (10E) ← conditional package
-  ↓
-polymer_dirichlet_identification_implies_lsi
-  ↓
-ClayCoreLSI → ClayYangMillsTheorem ✅
+Start:  1 monolithic sorry (rg_blocking_map_contracts)
+  ↓ Layers 11A-11C: split into 2 named sorrys
+  ↓ Layers 11D-11E: large_field → large_field_remainder_bound_P80 (P80 §4)
+  ↓ Layer 11F:      cauchy → rg_cauchy_summability_P81 (P81 §3)
+Final:  2 named, sourced, isolated theorem-sorrys
 ```
 
-## Next targets (E26 papers)
+## Next targets
 
-1. `large_field_suppression_bound` (P80 §4):
-   Prove ‖T_k(K)‖ ≤ C·exp(-β)·‖K‖ using Balaban's small-field/large-field decomposition.
+P80 §4: large_field_remainder_bound_P80
+  Requires: weighted ActivityNorm + small-field/large-field decomposition
+  Files ready: SmallFieldLargeFieldSplit, ActivitySpaceNorms
 
-2. `rg_cauchy_summability_bound` (P81 §3, P82 §2):
-   Prove ‖T_k(K₁)-T_k(K₂)‖ ≤ exp(-β)·‖K₁-K₂‖ using RG-Cauchy summability.
+P81 §3: rg_cauchy_summability_P81
+  Requires: telescoping sum estimate + Banach contraction
+  Preparation: RGFieldSplit structure (11D)
