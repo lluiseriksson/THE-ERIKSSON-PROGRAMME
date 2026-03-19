@@ -44,6 +44,17 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.60 — Layer 8C: `LSIRateLowerBound` ✅ *(2026-03-19)*
+
+**`cLSI_linear_lb_from_E26`: `LinearLowerBound (physicalLSIConstant N_c)` proved.**
+
+- `physicalLSIConstant N_c β = (N_c/8) · β` (Poincaré/2, from P67)
+- `physicalLSIConstant_le_half_poincare`: cLSI = cP/2 (proved by `ring`)
+- `cLSI_linear_lb_from_E26`: 0 sorrys — arithmetic (β₀=1, c=N_c/8)
+- Remaining: connect to polymer Dirichlet LSI (needs P67 martingale)
+
+**2 quantitative targets remain:** `rho_exp_contractive`, `rho_in_unit_interval`
+
 ### v0.8.59 — Layer 8B: `PoincareRateLowerBound` ✅ *(2026-03-19)*
 
 **`cP_linear_lb_from_E26`: `LinearLowerBound (physicalPoincareConstant N_c)` proved.**
