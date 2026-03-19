@@ -1,6 +1,5 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.RGSkeletonViaBridge
-import YangMills.ClayCore.BalabanRG.CauchyDecayFromAF
 
 namespace YangMills.ClayCore
 

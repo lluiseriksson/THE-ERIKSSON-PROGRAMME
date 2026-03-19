@@ -2,6 +2,7 @@ import Mathlib
 import YangMills.ClayCore.BalabanRG.P91RecursionData
 import YangMills.ClayCore.BalabanRG.P91BetaDivergence
 import YangMills.ClayCore.BalabanRG.RGCauchySummabilitySkeleton
+import YangMills.ClayCore.BalabanRG.CauchyDecayViaBridge
 
 namespace YangMills.ClayCore
 
@@ -45,6 +46,26 @@ theorem cauchy_decay_from_p91_data {d N_c : ℕ} [NeZero N_c]
       ≤ physicalContractionRate β_k * ActivityNorm.dist K₁ K₂ :=
   le_trans (h_uv K₁ K₂)
     (mul_le_mul_of_nonneg_right h_refine (ActivityNorm.dist_nonneg K₁ K₂))
+
+
+/-! ## Bridge Path (v1.0.1-alpha) -/
+
+/-- Bridge-path Cauchy decay at scale 0, consuming RGViaBridgeControl.
+    Parallel to cauchy_decay_from_p91_data. Does NOT replace it.
+    Uses physicalContractionRate as the Cauchy constant. 0 sorrys. -/
+theorem cauchy_decay_from_p91_data_via_bridge {d N_c : ℕ} [NeZero N_c]
+    [∀ k, ActivityNorm d k]
+    (β_k : ℝ)
+    (ctrl : RGViaBridgeControl d N_c 0 β_k)
+    (K₁ K₂ : ActivityFamily d (0 : ℕ)) :
+    ActivityNorm.dist
+      ((selectFieldSplitViaBridge d N_c 0 ctrl.bridge β_k K₁).largePart
+        (ctrl.bridge.fieldOfActivity K₁) K₁)
+      (fun _ => 0) ≤
+    physicalContractionRate β_k * ActivityNorm.dist K₁ K₂ :=
+  cauchy_summability_bridge_consumer ctrl K₁ K₂
+    (physicalContractionRate β_k) (by unfold physicalContractionRate; positivity)
+
 
 end
 
