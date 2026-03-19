@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.P91RecursionData
+import YangMills.ClayCore.BalabanRG.P91BetaDivergence
 import YangMills.ClayCore.BalabanRG.RGCauchySummabilitySkeleton
 
 namespace YangMills.ClayCore
@@ -18,14 +19,17 @@ and the contraction estimate (Layer 12C).
 
 noncomputable section
 
-/-- AF implies the contraction rate decays to 0 as k → ∞. -/
+/-- AF implies the contraction rate decays to 0 as k → ∞.
+    Now delegates to P91BetaDivergence. -/
 theorem rate_to_zero_from_af (N_c : ℕ) [NeZero N_c]
+    (data : P91RecursionData N_c)
     (β : ℕ → ℝ) (r : ℕ → ℝ)
     (hβ0 : 1 ≤ β 0)
-    (h_af : ∀ k, β k < β (k + 1))
-    (h_rate : ∀ k, physicalContractionRate (β (k + 1)) < physicalContractionRate (β k)) :
-    Filter.Tendsto (fun k => physicalContractionRate (β k)) Filter.atTop (nhds 0) := by
-  sorry -- tendsto: strictly decreasing sequence bounded below by 0
+    (hstep : ∀ k, β (k + 1) = balabanCouplingStep N_c (β k) (r k))
+    (hr : ∀ k, |r k| < balabanBetaCoeff N_c / 2)
+    (hβ_upper : ∀ k, β k < 2 / balabanBetaCoeff N_c) :
+    Filter.Tendsto (fun k => physicalContractionRate (β k)) Filter.atTop (nhds 0) :=
+  rate_to_zero_from_p91_data N_c data β r hβ0 hstep hr hβ_upper
 
 /-- Conditional Cauchy decay: given P91RecursionData, close cauchy_decay_P81_step2. -/
 theorem cauchy_decay_from_p91_data {d N_c : ℕ} [NeZero N_c]
