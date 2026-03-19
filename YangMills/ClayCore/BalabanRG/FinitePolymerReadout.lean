@@ -148,6 +148,27 @@ theorem singletonBridge_nonzero_of_activity_nonzero {d k : ℕ}
   exact hK
 
 
+
+/-- Generic singleton readout field identity.
+    The field value at siteOf(p₀) from a singleton readout is K(p₀). 0 sorrys. -/
+theorem singletonFiniteReadoutField_at_siteOf {d k : ℕ}
+    (siteOf : Polymer d (Int.ofNat k) → BalabanLatticeSite d k)
+    (p₀ : Polymer d (Int.ofNat k)) (K : ActivityFamily d k) :
+    finiteReadoutField
+      ({ polys := {p₀}, siteOf := siteOf } : FinitePolymerReadout d k)
+      K (siteOf p₀) = K p₀ := by
+  unfold finiteReadoutField
+  have hfilter : ({p₀} : Finset (Polymer d (Int.ofNat k))).filter
+      (fun p => siteOf p = siteOf p₀) = {p₀} := by
+    ext p
+    simp only [Finset.mem_filter, Finset.mem_singleton]
+    constructor
+    · rintro ⟨rfl, _⟩; rfl
+    · rintro rfl; exact ⟨rfl, rfl⟩
+  rw [hfilter]
+  simp
+
+
 end
 
 end YangMills.ClayCore
