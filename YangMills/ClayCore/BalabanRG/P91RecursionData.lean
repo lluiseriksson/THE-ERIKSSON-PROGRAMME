@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.P91WindowFromRecursion
+import YangMills.ClayCore.BalabanRG.P91DenominatorControl
 
 namespace YangMills.ClayCore
 
@@ -8,12 +9,14 @@ open Classical
 
 /-!
 # P91RecursionData — Layer 14B
+
 Packages the P91 A.2 hypotheses.
+p91_tight_window_of_data moved to P91WindowClosed (14K) to avoid cycle.
 -/
 
 noncomputable section
 
-/-- The two quantitative P91 A.2 hypotheses, packaged. -/
+/-- The two quantitative P91 A.2 hypotheses. -/
 structure P91RecursionData (N_c : ℕ) [NeZero N_c] where
   remainder_small :
     ∀ (k : ℕ) (β_k r_k : ℝ), 1 ≤ β_k →
@@ -24,18 +27,7 @@ structure P91RecursionData (N_c : ℕ) [NeZero N_c] where
       remainderBoundConst < balabanBetaCoeff N_c * β_k *
         (1 - balabanBetaCoeff N_c * β_k) / β_k
 
-/-- From P91RecursionData, recover the tight window. -/
-theorem p91_tight_window_of_data {N_c : ℕ} [NeZero N_c]
-    (data : P91RecursionData N_c)
-    (k : ℕ) (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
-    (hr : |r_k| < balabanBetaCoeff N_c / 2) :
-    β_k < 1 / (balabanBetaCoeff N_c + |r_k|) :=
-  window_from_remainder N_c β_k r_k hβ
-    (data.remainder_small k β_k r_k hβ)
-    (data.remainder_window_small k β_k r_k hβ
-      (data.remainder_small k β_k r_k hβ))
-
-/-- AF from data (explicit hβ_upper). -/
+/-- AF from data. -/
 theorem af_of_data {N_c : ℕ} [NeZero N_c]
     (data : P91RecursionData N_c)
     (k : ℕ) (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
