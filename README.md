@@ -2,7 +2,7 @@
 
 ## Lean 4 Formalization of the Yang-Mills Mass Gap
 
-**Status: FORMALIZED\_KERNEL — 8220+ jobs, 0 errors, 0 sorrys**  
+**Status: FORMALIZED\_KERNEL — 8230+ jobs, 0 errors, 0 sorrys**  
 Lean v4.29.0-rc6 + Mathlib · Last updated: March 2026
 
 ---
@@ -43,6 +43,21 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+
+### v0.8.55 — Layer 4C complete: `PolymerLogLowerBound` sealed ✅ *(2026-03-19)*
+
+**`PolymerLogLowerBound.lean`: 5 theorems, 0 sorrys.**
+
+- `Real.log_one_sub_ge` — `log(1-t) ≥ -t/(1-t)` for `0 ≤ t < 1` (Mercator bound)
+- `Real.log_one_sub_ge_neg_two` — `log(1-t) ≥ -2t` for `t ≤ 1/2`
+- `polymerPartitionFunction_lb` — `Z ≥ 1 - (exp(B)-1)`
+- `log_polymerPartitionFunction_lower` — `log Z ≥ -t/(1-t)`
+- `log_polymerPartitionFunction_abs_le` — `|log Z| ≤ 2t` when `t ≤ 1/2`
+
+**Clay Core BalabanRG: 9 files, 0 errors, 0 sorrys.**
+
+Full chain mechanized:
+`KPOnGamma → |Z-1| ≤ exp(B)-1 → 0<Z → -(exp(B)-1)/(1-(exp(B)-1)) ≤ log Z ≤ exp(B)-1`
 
 ### v0.8.54 — Layer 4B complete: PolymerLogBound ✅ *(2026-03-19)*
 
@@ -231,7 +246,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core 4B | YangMills/ClayCore/BalabanRG | ✅ **8 files · 0 errors · 0 sorrys** (v0.8.54) |
+| Clay Core 4C | YangMills/ClayCore/BalabanRG | ✅ **9 files · 0 errors · 0 sorrys** (v0.8.55) |
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
@@ -377,7 +392,8 @@ proved without axioms.
 
 | Version | Achievement | Axioms |
 |---|---|---|
-| v0.8.54 | **Layer 4B — PolymerLogBound: positivity + log Z (0 sorrys)** | 8 |
+| v0.8.55 | **Layer 4C — PolymerLogLowerBound: two-sided log Z (0 sorrys)** | 8 |
+| v0.8.54 | Layer 4B — PolymerLogBound: positivity + log Z (0 sorrys) | 8 |
 | v0.8.53 | Layer 4A — KPConsequences: |Z-1|, positivity, log Z (0 sorrys) | 8 |
 | v0.8.52 | Layer 3B sealed — KP induction fully mechanized, 0 errors | 8 |
 | v0.8.51 | kpOnGamma_implies_compatibleFamilyMajorant — Layer 3B complete | 8 |
@@ -413,4 +429,4 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8196+ compiled jobs
 
 ## Author
 
-**Lluis Eriksson** — independent researcher · March 2026 · v0.8.54
+**Lluis Eriksson** — independent researcher · March 2026 · v0.8.55
