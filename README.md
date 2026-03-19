@@ -44,6 +44,18 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.78 — Layer 14G: `P91OnestepDriftAlgebra` ✅ *(2026-03-19)*
+
+**Exact drift identity: β_{k+1}-β_k = β_k²·(b₀-r_k)/denom. 0 sorrys.**
+
+- `betaStepDenom`: recursion denominator definition
+- `beta_step_sub_eq`: exact algebraic identity (field_simp + ring)
+- `beta_step_sub_pos`: positivity from coeff>0 + denom>0 (0 sorrys)
+- `beta_step_gt_self`: β grows (0 sorrys)
+- `beta_step_drift_lb`: drift ≥ c when β_k≥1, coeff≥c, denom≤1 (0 sorrys)
+
+`one_step_beta_drift_P91` now reduces to: prove denom ∈ (0,1] and coeff ≥ b₀/2.
+
 ### v0.8.77 — Layer 14F: `P91OnestepDriftSkeleton` ✅ *(2026-03-19)*
 
 **`beta_linear_drift_P91` → 2 sub-sorrys + structural wrapper.**
