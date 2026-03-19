@@ -7,6 +7,7 @@ import YangMills.ClayCore.BalabanRG.ConcreteActivityFieldBridge
 import YangMills.ClayCore.BalabanRG.FinitePolymerReadout
 import YangMills.ClayCore.BalabanRG.PolymerGeometricReadout
 import YangMills.ClayCore.BalabanRG.PolymerCanonicalSite
+import YangMills.ClayCore.BalabanRG.CauchyDecayViaBridgeFull
 
 namespace YangMills.ClayCore
 
@@ -166,6 +167,26 @@ theorem cauchy_decay_from_p91_data_via_canonical_geometric_bridge {d N_c : ℕ}
     ctrl K₁ K₂
     (physicalContractionRate β_k)
     (by unfold physicalContractionRate; positivity)
+
+
+
+/-- Cauchy decay via the full canonical geometric bridge.
+    Uses (ℤ/2^k ℤ)^d geometry (not simplified Fin(2^k)×Fin d).
+    Requires RGViaBridgeControlFull — analytic content as hypothesis.
+    0 sorrys given the control structure. -/
+theorem cauchy_decay_from_p91_data_via_canonical_geometric_bridge_full {d N_c : ℕ}
+    [NeZero N_c]
+    [∀ k, ActivityNorm d k]
+    (β_k : ℝ)
+    (ctrl : RGViaBridgeControlFull d N_c 0 β_k)
+    (K₁ K₂ : ActivityFamily d (0 : ℕ))
+    (x : BalabanFiniteSite d 0) :
+    (|ctrl.core.bridge.fieldOfActivity K₁ x| ≤
+      Real.exp (-β_k) * ActivityNorm.dist K₁ (fun _ => 0)) ∧
+    (|ctrl.core.bridge.fieldOfActivity K₁ x -
+      ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+      physicalContractionRate β_k * ActivityNorm.dist K₁ K₂) :=
+  cauchy_decay_via_full_bridge_control ctrl K₁ K₂ x
 
 
 end
