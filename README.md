@@ -2,7 +2,7 @@
 
 ## Lean 4 Formalization of the Yang-Mills Mass Gap
 
-**Status: FORMALIZED\_KERNEL — 8210+ jobs, 0 errors, 0 sorrys**  
+**Status: FORMALIZED\_KERNEL — 8220+ jobs, 0 errors, 0 sorrys**  
 Lean v4.29.0-rc6 + Mathlib · Last updated: March 2026
 
 ---
@@ -43,6 +43,19 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+
+### v0.8.54 — Layer 4B complete: PolymerLogBound ✅ *(2026-03-19)*
+
+**`PolymerLogBound.lean`: 5 theorems, 0 sorrys.**
+
+- `exp_budget_sub_one_lt_one_iff` — `exp(B)-1 < 1 ↔ B < log 2` (constructor+simpa, no global rw)
+- `polymerPartitionFunction_pos_of_budget_lt_log2` — `0 < Z` in the natural KP regime
+- `polymerPartitionFunction_ne_zero_of_budget_lt_log2` — nonvanishing
+- `log_polymerPartitionFunction_nonpos_of_nonpositive_budget` — `budget ≤ 0 → Z = 1 → log Z = 0`
+- `log_polymerPartitionFunction_le_budget_of_budget_lt_log2` — upper log bound
+
+**Clay Core BalabanRG: 8 files, 0 errors, 0 sorrys.**  
+Chain complete: `KPOnGamma → |Z-1| ≤ exp(B)-1 → 0<Z → log Z ≤ exp(B)-1`
 
 ### v0.8.53 — Layer 4A complete: KP consequences chain ✅ *(2026-03-19)*
 
@@ -218,7 +231,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core 3B | YangMills/ClayCore/BalabanRG | ✅ **0 errors · 0 sorrys** (v0.8.51) |
+| Clay Core 4B | YangMills/ClayCore/BalabanRG | ✅ **8 files · 0 errors · 0 sorrys** (v0.8.54) |
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
@@ -364,7 +377,8 @@ proved without axioms.
 
 | Version | Achievement | Axioms |
 |---|---|---|
-| v0.8.53 | **Layer 4A — KPConsequences: |Z-1|, positivity, log Z (0 sorrys)** | 8 |
+| v0.8.54 | **Layer 4B — PolymerLogBound: positivity + log Z (0 sorrys)** | 8 |
+| v0.8.53 | Layer 4A — KPConsequences: |Z-1|, positivity, log Z (0 sorrys) | 8 |
 | v0.8.52 | Layer 3B sealed — KP induction fully mechanized, 0 errors | 8 |
 | v0.8.51 | kpOnGamma_implies_compatibleFamilyMajorant — Layer 3B complete | 8 |
 | v0.8.50 | Soundness refactor: unsound → 8 honest axioms | 8 |
@@ -399,4 +413,4 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8196+ compiled jobs
 
 ## Author
 
-**Lluis Eriksson** — independent researcher · March 2026 · v0.8.53
+**Lluis Eriksson** — independent researcher · March 2026 · v0.8.54
