@@ -44,6 +44,16 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.75 — Layers 14B-14C: P91RecursionData + CauchyDecayFromAF ✅ *(2026-03-19)*
+
+**AF → Cauchy bridge established.**
+
+- `P91RecursionData`: packages P91 A.2 hypotheses (structure)
+- `p91_tight_window_of_data`: data → tight window (0 new sorrys)
+- `rate_decreases_of_data`: data → rate decay (conditional on 2 sorrys)
+- `cauchy_decay_from_p91_data`: P91+P82 → Cauchy estimate (structural)
+- `rate_to_zero_from_af`: 1 sorry (Filter.tendsto analysis)
+
 ### v0.8.74 — `P91WindowFromRecursion` (Layer 14A) ✅ *(2026-03-19)*
 
 **`p91_tight_weak_coupling_window` axiom → theorem chain (3 sub-sorrys).**
