@@ -64,7 +64,8 @@ theorem freeEnergyControl_discharged {d N_c : ℕ} [NeZero N_c] :
     rw [this]
     exact Real.log_pos (by norm_num)
   · -- 1/β * β = 1 ≤ 1
-    field_simp
+    have hβne : β ≠ 0 := ne_of_gt hβ
+    rw [one_div, inv_mul_cancel₀ hβne]
 
 end
 

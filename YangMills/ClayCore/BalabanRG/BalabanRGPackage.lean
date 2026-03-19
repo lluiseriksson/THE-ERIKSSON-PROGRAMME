@@ -30,16 +30,6 @@ structure BalabanRGPackage (d : ℕ) (N_c : ℕ) [NeZero N_c] where
     ∃ cLSI : ℝ, 0 < cLSI ∧
       ∀ (k : ℕ) (β : ℝ), 0 < β → cLSI ≤ β
 
-/-- freeEnergyControl is now a theorem, not a field. -/
-theorem BalabanRGPackage.freeEnergyControl_theorem {d N_c : ℕ} [NeZero N_c]
-    (_ : BalabanRGPackage d N_c) :
-    ∀ (k : ℕ) (β : ℝ), 0 < β →
-      ∃ Cfe : ℝ, 0 < Cfe ∧
-        ∀ (Gamma : Finset (Polymer d (Int.ofNat k))),
-          ∃ (K : Activity d (Int.ofNat k)) (a : ℝ), 0 < a ∧
-            KPOnGamma Gamma K a ∧
-            theoreticalBudget Gamma K a < Real.log 2 ∧
-            Cfe * β ≤ 1 :=
-  freeEnergyControl_discharged
+-- freeEnergyControl is discharged in FreeEnergyControlReduction.lean.
 
 end YangMills.ClayCore
