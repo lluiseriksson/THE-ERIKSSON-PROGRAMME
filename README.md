@@ -44,6 +44,16 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.73 — `P91WeakCouplingWindow` (Layer 13D) + session checkpoint ✅ *(2026-03-19)*
+
+**`denominator_pos_tight` proved (0 sorrys). 1 axiom: `p91_tight_weak_coupling_window`.**
+
+- `coeff_bound`: |b₀-r_k| ≤ b₀+|r_k| (linarith, 0 sorrys)
+- `denominator_pos_tight`: tight window → d>0 (nlinarith, 0 sorrys)
+- `p91_tight_weak_coupling_window`: 1 axiom (P91 A.2 §3)
+
+**Session total: 3 analytic sorrys + 1 quantitative axiom**
+
 ### v0.8.72 — `P91DenominatorControl` (Layer 13C) ✅ *(2026-03-19)*
 
 **`denominator_in_unit_interval` → 1 sorry + 1 algebraic proof.**

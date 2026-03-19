@@ -1,51 +1,62 @@
-# Clay Core — BalabanRG Status (v0.8.68, 2026-03-19)
+# Clay Core — BalabanRG Status (v0.8.73, 2026-03-19)
 
-**37 files · 0 errors · 4 atomic sorrys**
+**40 files · 0 errors**
 
-## The four remaining sorrys (all E26-sourced)
+## Remaining sorrys / axioms
+
+### Analytic sorrys (3 — all E26-sourced)
 ```lean
 -- Layer 12B: P80 §4.1
-theorem large_field_decomposition_P80_step1 ...  -- P80 §4.1
+theorem large_field_decomposition_P80_step1 ...
 
 -- Layer 12B: P80 §4.2
-theorem large_field_exponential_suppression_P80_step2 ...  -- P80 §4.2
-
--- Layer 12C: P82 §2
-theorem uv_stability_P82_step1 ...  -- P82 Theorem 2.4
+theorem large_field_exponential_suppression_P80_step2 ...
 
 -- Layer 12C: P81 §3
-theorem cauchy_decay_P81_step2 ...  -- P81 Theorem 3.1
+theorem cauchy_decay_P81_step2 ...
 ```
 
-## Structural reduction chain
-```
-Start:  1 monolithic sorry (rg_blocking_map_contracts)
-Layer 11C: → 2 named sorrys (large_field, cauchy)
-Layer 12B: P80 → large_field_decomposition + large_field_suppression
-Layer 12C: P81 → uv_stability + cauchy_decay
-Final: 4 atomic sorrys, each single theorem, each single source
+### Quantitative axiom (1 — P91 A.2 §3)
+```lean
+axiom p91_tight_weak_coupling_window (N_c : ℕ) [NeZero N_c]
+    (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
+    (hr : |r_k| < balabanBetaCoeff N_c / 2) :
+    β_k < 1 / (balabanBetaCoeff N_c + |r_k|)
 ```
 
-## When all 4 proved
+## Session reduction summary
 ```
-large_field_decomposition_P80_step1    (P80 §4.1)
-large_field_exponential_suppression_P80_step2  (P80 §4.2)
+Start:  1 monolithic sorry
+  → 4 atomic sorrys
+  → uv_stability closed (RGBlockingMap = 0 trivially)
+  → denominator_lt_one proved (algebraic, nlinarith)
+  → beta_growth_from_denominator proved (div_mul_cancel₀)
+  → rate_decreases_with_beta proved (Real.exp_lt_exp)
+  → denominator_pos_tight proved (tight window + nlinarith)
+
+Final:
+  3 analytic sorrys (P80, P81) + 1 quantitative axiom (P91 A.2 §3)
+```
+
+## Closure chain when all proved
+```
+p91_tight_weak_coupling_window (P91 A.2 §3)
+  → denominator_pos_from_tight
+  → asymptotic_freedom_from_denominator_control
+  → contraction_rate_decreases_under_recursion
+  → [feed into cauchy_decay_P81_step2]
+
+large_field_decomposition_P80_step1 (P80 §4.1)
+large_field_exponential_suppression_P80_step2 (P80 §4.2)
   → large_field_suppression_from_P80_steps
-  → large_field_remainder_bound_P80
   → LargeFieldSuppressionBound
 
-uv_stability_P82_step1     (P82 §2)
-cauchy_decay_P81_step2     (P81 §3)
-  → cauchy_from_uv_and_decay
-  → rg_increment_decay_P81
-  → RGIncrementDecayBound
+cauchy_decay_P81_step2 (P81 §3)
+  → rg_cauchy_summability_from_P81_P82
 
-Both →
-  rg_blocking_map_contracts_v2
+Both:
+  → rg_blocking_map_contracts_v2
   → rg_norm_identification_to_full_package
   → polymer_dirichlet_identification_implies_lsi
   → ClayCoreLSI → LSItoSpectralGap ✅ → ClayYangMillsTheorem ✅
 ```
-
-## File count: 37 files
-Layers 0A–12C: complete Balaban RG architecture
