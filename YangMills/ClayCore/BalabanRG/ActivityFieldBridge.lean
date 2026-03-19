@@ -103,6 +103,15 @@ theorem zero_activity_small (bridge : ActivityFieldBridge d k)
   rw [bridge.zero_field]
   simp [fieldThreshold_pos β]
 
+/-- Large implies not small via bridge. 0 sorrys. -/
+theorem not_small_of_large_via_bridge (bridge : ActivityFieldBridge d k)
+    (N_c : ℕ) [NeZero N_c] (β : ℝ) (K : ActivityFamily d k)
+    (hL : LargeFieldPredViaBridge bridge N_c β K) :
+    ¬ SmallFieldPredViaBridge bridge N_c β K := by
+  unfold SmallFieldPredViaBridge LargeFieldPredViaBridge at *
+  simpa using hL
+
+
 end
 
 end YangMills.ClayCore

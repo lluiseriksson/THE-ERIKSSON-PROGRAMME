@@ -194,6 +194,23 @@ theorem largeFieldNorm_pos_of_large {d N_c : ℕ} [NeZero N_c] {k : ℕ} {β : �
 
 
 
+
+/-- Polar split: all in large part, small part zero. -/
+def largeOnlyRGFieldSplitOnField (d N_c : ℕ) [NeZero N_c] (k : ℕ) :
+    RGFieldSplitOnField d N_c k where
+  smallPart := fun _ _ _ => 0
+  largePart := fun _ => RGBlockingMap d N_c k
+  split_eq := fun _ K => by funext p; simp
+
+theorem largeOnlyFieldSplit_small_zero {d N_c : ℕ} [NeZero N_c] {k : ℕ}
+    (φ : BalabanLatticeSite d k → ℝ) (K : ActivityFamily d k) :
+    (largeOnlyRGFieldSplitOnField d N_c k).smallPart φ K = fun _ => 0 := rfl
+
+theorem largeOnlyFieldSplit_large_eq_rg {d N_c : ℕ} [NeZero N_c] {k : ℕ}
+    (φ : BalabanLatticeSite d k → ℝ) (K : ActivityFamily d k) :
+    (largeOnlyRGFieldSplitOnField d N_c k).largePart φ K = RGBlockingMap d N_c k K := rfl
+
+
 end
 
 end YangMills.ClayCore
