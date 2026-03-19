@@ -2,7 +2,7 @@
 
 ## Lean 4 Formalization of the Yang-Mills Mass Gap
 
-**Status: FORMALIZED\_KERNEL — 8196+ jobs, 0 errors, 0 sorrys**  
+**Status: FORMALIZED\_KERNEL — 8200+ jobs, 0 errors, 0 sorrys**  
 Lean v4.29.0-rc6 + Mathlib · Last updated: March 2026
 
 ---
@@ -43,6 +43,20 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+
+### v0.8.52 — Layer 3B sealed: `kpOnGamma_implies_compatibleFamilyMajorant` proved ✅ *(2026-03-19)*
+
+**`KPBudgetBridge.lean`: 0 errors, 0 sorrys — full mechanization of Kotecký-Preiss.**
+
+Final fixes to close the induction:
+- `avoidingX_sum_le_one_add_inductionBudget`: `Finset.insert_erase + sum_insert`
+  (no `Finset.not_mem_erase` constant — use `have hne : ... := by simp`).
+- `hstep`: `linarith [hrec, hmul]` bypasses `add_le_add_left` type mismatch.
+- `kpOnGamma_activity_bound`: explicit `(ha : 0 ≤ a)` + `mul_nonneg ha (Nat.cast_nonneg _)`.
+- Base case: `rw [theoreticalBudget_empty, Real.exp_zero] + simp only [sub_self]`.
+
+The exponential calc closes as:
+`(1+IB)(1+|KX|) - 1 ≤ E·(1+w) - 1 ≤ E·exp(w) - 1 = exp(tb+w) - 1`
 
 ### v0.8.51 — Layer 3B complete: KP induction closed ✅ *(2026-03-18)*
 
@@ -337,7 +351,8 @@ proved without axioms.
 
 | Version | Achievement | Axioms |
 |---|---|---|
-| v0.8.51 | **kpOnGamma_implies_compatibleFamilyMajorant — Layer 3B complete** | 8 |
+| v0.8.52 | **Layer 3B sealed — KP induction fully mechanized, 0 errors** | 8 |
+| v0.8.51 | kpOnGamma_implies_compatibleFamilyMajorant — Layer 3B complete | 8 |
 | v0.8.50 | Soundness refactor: unsound → 8 honest axioms | 8 |
 | v0.8.49 | sunDirichletForm_subadditive THEOREM | 7 |
 | v0.8.48 | LieDerivReg package: 10 → 8 axioms | 8 |
@@ -370,4 +385,4 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8196+ compiled jobs
 
 ## Author
 
-**Lluis Eriksson** — independent researcher · March 2026
+**Lluis Eriksson** — independent researcher · March 2026 · v0.8.52
