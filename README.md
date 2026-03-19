@@ -44,6 +44,21 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.80 — Active P91 chain sealed ✅ *(2026-03-19)*
+
+**5/5 targets green. 0 sorrys in active drift/divergence/rate chain.**
+
+- `tendsto_atTop_of_linear_drift`: 0 sorrys (succ_nsmul+linarith+simpa+exists_lt_nsmul)
+- `beta_ge_one_all`: 0 sorrys (induction via positivity control)
+- `uniform_drift_from_data`: 0 sorrys (structural)
+- `rate_to_zero_of_beta_tendsto_top`: 0 sorrys (show+comp)
+- `rate_to_zero_from_af`, `cauchy_decay_from_p91_data`: 0 sorrys
+
+Active chain: P91DriftPositivityControl → P91UniformDrift → P91BetaDriftClosed
+  → P91BetaDivergence → CauchyDecayFromAF ✅
+
+Remaining analytic gaps: P80 §4.1, P80 §4.2, P81 §3, P91 A.2 §3 (drift+window)
+
 ### v0.8.79 — Layers 14G-14I: P91 drift chain complete ✅ *(2026-03-19)*
 
 **`one_step_beta_drift_P91` sorry ELIMINATED. Pure algebra closes the drift.**
