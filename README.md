@@ -44,6 +44,16 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.70 — `BalabanCouplingRecursion` (Layer 13A) ✅ *(2026-03-19)*
+
+**Physical engine for `cauchy_decay_P81_step2` formalized.**
+
+- `balabanBetaCoeff N_c = 11N/(48π²)` — one-loop beta function (P91 A.2)
+- `balabanCouplingStep` — β_{k+1} = β_k/(1 - b₀β_k + r_kβ_k)
+- `rate_decreases_with_beta` — exp(-β) strictly decreasing (0 sorrys)
+- `contraction_rate_decreases_under_recursion` — AF → rate decreases (1 sorry: AF growth)
+- `asymptotic_freedom_implies_beta_growth` — 1 sorry (P91 A.2)
+
 ### v0.8.69 — `uv_stability_P82_step1` proved ✅ *(2026-03-19)*
 
 **4 atomic sorrys → 3 atomic sorrys.**
