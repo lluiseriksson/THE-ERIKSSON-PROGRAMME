@@ -44,6 +44,21 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.63 — Layers 10A-10E: Dirichlet identification complete ✅ *(2026-03-19)*
+
+**1 honest sorry remaining: `rg_blocking_map_contracts` (P81/P82)**
+
+Layers 10A-10E close the semantic identification chain:
+- `PolymerDirichletRateIdentification` — unified interface (10A)
+- `RGMapNormIdentification` — T_k contraction interface, 1 sorry P81/P82 (10B)
+- `DirichletPoincareIdentification` — polymerPoincareConstant = (N_c/4)β (10C)
+- `DirichletLSIIdentification` — polymerLSIConstant = cP/2 (10D)
+- `DirichletIdentificationClosure` — full package conditional on 10B (10E)
+
+**28 files · 0 errors · 1 honest sorry**
+
+When P81/P82 formalized: `rg_blocking_map_contracts → ClayYangMillsTheorem ✅`
+
 ### v0.8.62 — Layer 9D: `PhysicalWitnessBridge` fully closed ✅ *(2026-03-19)*
 
 **`physicalWitnessBridge` constructed. `bridge_closes_lsi`: 0 axioms, 0 sorrys.**
