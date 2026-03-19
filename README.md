@@ -44,6 +44,16 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.59 — Layer 8B: `PoincareRateLowerBound` ✅ *(2026-03-19)*
+
+**`cP_linear_lb_from_E26`: `LinearLowerBound (physicalPoincareConstant N_c)` proved.**
+
+- `physicalPoincareConstant N_c β = (N_c/4) · β`
+- Proved: `(N_c/4) ≤ (N_c/4)·β` for `β ≥ 1` (pure arithmetic, 0 sorrys)
+- Remaining sorry-requiring step: connecting polymer Dirichlet form Poincaré
+  constant to `physicalPoincareConstant` (needs P8 axioms `sun_bakry_emery_cd`
+  and `bakry_emery_lsi` — Mathlib LieGroup gap)
+
 ### v0.8.58 — Layer 8A: `PhysicalRGRates` — quantitative axiom ✅ *(2026-03-19)*
 
 **Axiom refined: `balaban_rg_package_from_E26` → `physical_rg_rates_from_E26`**
