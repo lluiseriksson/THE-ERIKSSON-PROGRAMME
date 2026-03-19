@@ -11,15 +11,12 @@ open Classical
 # RGMapNormIdentification — Layer 10B (refactored)
 
 Uses BalabanBlockingMap (Layer 11B) for norm/contraction infrastructure.
-Identifies the abstract contraction witness with the Balaban blocking map.
+Source: P81 (RG-Cauchy summability), P82 (UV stability under blocking).
 
-Source: P81 (RG-Cauchy summability), P82 (UV stability under blocking)
+Connection: RGBlockingMapContracts → PhysicalContractionRealized → PolymerDirichletRateIdentification
 -/
 
 noncomputable section
-
-/-- The P81/P82 input: rg_blocking_map_contracts from RGContractiveEstimate.
-    Here we connect it to PhysicalContractionRealized. -/
 
 /-- If the blocking map contracts with rate exp(-β),
     then PhysicalContractionRealized holds. -/
