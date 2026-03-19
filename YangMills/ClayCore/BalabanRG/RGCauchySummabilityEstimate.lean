@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.LargeFieldSuppressionEstimate
+import YangMills.ClayCore.BalabanRG.RGCauchyP81Interface
 
 namespace YangMills.ClayCore
 
@@ -30,8 +31,8 @@ theorem rg_cauchy_summability_P81 (d N_c : ℕ) [NeZero N_c]
     [∀ k, ActivityNorm d k] (β : ℝ) (hβ : 1 ≤ β)
     (k : ℕ) (K₁ K₂ : ActivityFamily d k) :
     ActivityNorm.dist (RGBlockingMap d N_c k K₁) (RGBlockingMap d N_c k K₂)
-      ≤ physicalContractionRate β * ActivityNorm.dist K₁ K₂ := by
-  sorry -- P81 Theorem 3.1: RG-Cauchy summability
+      ≤ physicalContractionRate β * ActivityNorm.dist K₁ K₂ :=
+  rg_increment_decay_P81 d N_c β hβ k K₁ K₂
 
 /-- Sub-estimate 2 (P82 §2): UV stability under the blocking hypothesis.
     Content: the blocking hypothesis H_k controls the UV divergences. -/
