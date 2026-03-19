@@ -44,6 +44,20 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.64 — Layers 11A-11C: Banach norm + blocking map + contraction ✅ *(2026-03-19)*
+
+**1 monolithic sorry → 2 named honest sorrys.**
+
+- `ActivitySpaceNorms` (11A): strong `ActivityNorm` with `dist`, triangle, `norm_sub_le`
+- `BalabanBlockingMap` (11B): `RGBlockingMap`, `RGMapLipschitzWith`, `RGBlockingMapContracts`,
+  `LargeFieldSuppressionBound`, `RGCauchySummabilityBound`
+- `RGContractiveEstimate` (11C): `rg_blocking_contracts_from_estimates` (0 new sorrys)
+- `RGMapNormIdentification` refactored: uses 11B, no duplicate definitions
+
+**2 honest sorrys remaining:**
+- `large_field_suppression_bound` ← P80 Theorem 4.1
+- `rg_cauchy_summability_bound` ← P81 Theorem 3.1 + P82 Theorem 2.4
+
 ### v0.8.63 — Layers 10A-10E: Dirichlet identification complete ✅ *(2026-03-19)*
 
 **1 honest sorry remaining: `rg_blocking_map_contracts` (P81/P82)**
