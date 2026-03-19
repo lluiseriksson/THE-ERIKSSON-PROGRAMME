@@ -41,10 +41,17 @@ def balabanBetaCoeff (N_c : ℕ) : ℝ :=
   (11 * N_c : ℝ) / (48 * Real.pi ^ 2)
 
 /-- b₀ > 0 for N_c ≥ 1. -/
+private theorem Nc_pos_rec (N_c : ℕ) [NeZero N_c] : 0 < (N_c : ℝ) :=
+  Nat.cast_pos.mpr (Nat.pos_of_ne_zero (NeZero.ne N_c))
+
 theorem balabanBetaCoeff_pos (N_c : ℕ) [NeZero N_c] :
     0 < balabanBetaCoeff N_c := by
   unfold balabanBetaCoeff
-  positivity
+  apply div_pos
+  · have : 0 < (N_c : ℝ) := Nc_pos_rec N_c
+    nlinarith
+  · have : 0 < Real.pi := Real.pi_pos
+    nlinarith [sq_nonneg Real.pi]
 
 /-- The coupling recursion: β_{k+1}⁻¹ = β_k⁻¹ - b₀ + r_k.
     Equivalently: β_{k+1} = β_k / (1 - b₀·β_k + r_k·β_k). -/
