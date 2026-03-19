@@ -441,7 +441,9 @@ proved without axioms.
 
 | Version | Achievement | Axioms |
 |---|---|---|
-| v0.8.56 | **Layer 6 — BalabanRG decomposition: monolith → 4 targets (0 sorrys)** | 8 |
+| v0.8.58 | **Layer 8A — PhysicalRGRates: 4 quantitative targets (0 sorrys)** | 8 |
+| v0.8.57 | Layer 7 complete — all BalabanRGPackage fields formally satisfiable | 8 |
+| v0.8.56 | Layer 6 — BalabanRG decomposition: monolith → 4 targets (0 sorrys) | 8 |
 | v0.8.56 | **Layer 6 — BalabanRG decomposition: monolith → 4 targets (0 sorrys)** | 8 |
 | v0.8.55 | Layer 4C — PolymerLogLowerBound: two-sided log Z (0 sorrys) | 8 |
 | v0.8.54 | Layer 4B — PolymerLogBound: positivity + log Z (0 sorrys) | 8 |
