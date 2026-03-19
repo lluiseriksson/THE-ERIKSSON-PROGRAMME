@@ -1,63 +1,73 @@
-# Clay Core — BalabanRG Status (v0.8.61, 2026-03-19)
+# Clay Core — BalabanRG Status (v0.8.62, 2026-03-19)
 
 **24 files · 0 errors · 0 sorrys**
 
-## Landmark theorem
+## Landmark theorems (0 axioms)
 ```lean
 theorem physical_uniform_lsi (d N_c : ℕ) [NeZero N_c] :
     ∃ c > 0, ClayCoreLSI d N_c c
+
+theorem bridge_closes_lsi (d N_c : ℕ) [NeZero N_c] :
+    ∃ c > 0, ClayCoreLSI d N_c c
 ```
-**Proved without any axiom.** Uses physical witnesses:
-- `rho(β) = exp(-β)` — RG contraction rate
-- `cP(β) = (N_c/4)·β` — Poincaré constant (Ricci = N/4)
-- `cLSI(β) = (N_c/8)·β` — LSI constant (Poincaré/2)
+
+Both proved WITHOUT any axiom. Two independent routes to ClayCoreLSI.
 
 ## Full layer inventory
 
 | Layer | File | Status |
 |---|---|---|
-| 0A | BlockSpin.lean | ✅ |
-| 0B | FiniteBlocks.lean | ✅ |
-| 1  | PolymerCombinatorics.lean | ✅ |
-| 2  | PolymerPartitionFunction.lean | ✅ |
-| 3A | KPFiniteTailBound.lean | ✅ |
-| 3B | KPBudgetBridge.lean | ✅ KP → exp(B)-1 |
-| 4A | KPConsequences.lean | ✅ |Z-1|, 0<Z, logZ |
-| 4B | PolymerLogBound.lean | ✅ logZ ≤ exp(B)-1 |
-| 4C | PolymerLogLowerBound.lean | ✅ |logZ| ≤ 2(exp(B)-1) |
+| 0A | BlockSpin.lean | ✅ lattice geometry |
+| 0B | FiniteBlocks.lean | ✅ block-spin averaging |
+| 1  | PolymerCombinatorics.lean | ✅ Polymer, KP criterion |
+| 2  | PolymerPartitionFunction.lean | ✅ Z, Ztail, |Z-1|≤B |
+| 3A | KPFiniteTailBound.lean | ✅ KPOnGamma, theoreticalBudget |
+| 3B | KPBudgetBridge.lean | ✅ KP → exp(B)-1 majorant |
+| 4A | KPConsequences.lean | ✅ |Z-1|, 0<Z, log Z |
+| 4B | PolymerLogBound.lean | ✅ log Z ≤ exp(B)-1 |
+| 4C | PolymerLogLowerBound.lean | ✅ |log Z| ≤ 2(exp(B)-1) |
 | 5  | KPToLSIBridge.lean | ✅ clayCore_free_energy_ready |
 | 6A | BalabanRGPackage.lean | ✅ 3-field RG structure |
-| 6B | UniformLSITransfer.lean | ✅ LSI from package |
+| 6B | UniformLSITransfer.lean | ✅ ClayCoreLSI from package |
 | 6C | BalabanRGAxiomReduction.lean | ✅ axiom + 0-axiom route |
 | 7A | FreeEnergyControlReduction.lean | ✅ freeEnergyControl = THEOREM |
 | 7B | EntropyCouplingReduction.lean | ✅ satisfiable |
 | 7C | ContractiveMapReduction.lean | ✅ trivialBalabanRGPackage |
 | 8A | PhysicalRGRates.lean | ✅ quantitative structure |
-| 8B | PoincareRateLowerBound.lean | ✅ cP=(N_c/4)β proved |
-| 8C | LSIRateLowerBound.lean | ✅ cLSI=(N_c/8)β proved |
-| 8D | RGContractionRate.lean | ✅ rho=exp(-β) proved |
-| 8E | PhysicalBalabanRGPackage.lean | ✅ 0 axioms 0 sorrys |
+| 8B | PoincareRateLowerBound.lean | ✅ cP=(N_c/4)β, 0 sorrys |
+| 8C | LSIRateLowerBound.lean | ✅ cLSI=(N_c/8)β=cP/2, 0 sorrys |
+| 8D | RGContractionRate.lean | ✅ rho=exp(-β), 0 sorrys |
+| 8E | PhysicalBalabanRGPackage.lean | ✅ physical_uniform_lsi, 0 axioms |
 | 9A | PhysicalWitnessToDirichletBridge.lean | ✅ semantic gap isolated |
 | 9B | PolymerPoincareRealization.lean | ✅ PhysicalPoincareRealized |
 | 9C | PolymerLSIRealization.lean | ✅ PhysicalLSIRealized |
 | 9D | PolymerRGMapRealization.lean | ✅ physicalWitnessBridge closed |
 
-## Remaining gap (semantic, not structural)
+## Two routes to ClayCoreLSI (both 0 axioms)
 
-`physical_rg_rates_from_E26` remains as an honest axiom stating that
-the polymer Dirichlet form realizes the physical rates.
+Route A (abstract):
+  physicalRGRatesWitness → physicalBalabanRGPackage → physical_uniform_lsi
 
-Discharge requires E26 papers P67–P82:
-- Connect exp(-β) to ‖T_k(K₁)-T_k(K₂)‖ (Balaban blocking map norm)
-- Connect (N_c/4)β to polymer Dirichlet form Poincaré constant
-- Connect (N_c/8)β to DLR-LSI constant in P8
+Route B (semantic bridge):
+  physicalWitnessBridge → physical_bridge_closes_lsi_gap → bridge_closes_lsi
 
-## Chain proven (0 axioms via physical witnesses)
-```
-physicalRGRatesWitness (def)
-  → physicalBalabanRGPackage (def)
-  → physical_uniform_lsi (theorem)
-  → ClayCoreLSI
-  → LSItoSpectralGap ✅ (P8)
-  → ClayYangMillsTheorem ✅
-```
+## Remaining semantic gap
+
+Identify physical witnesses with actual polymer Dirichlet form:
+  exp(-β)      ↔ ‖T_k(K₁)-T_k(K₂)‖ bound (P81, P82)
+  (N_c/4)·β   ↔ polymer Dirichlet form Poincaré constant (P69, P70)
+  (N_c/8)·β   ↔ DLR-LSI constant in P8 (P67, P74)
+
+Requires: Balaban blocking-map norm + Bakry-Émery via Mathlib LieGroup.
+When done: physical_rg_rates_from_E26 drops; 0 axioms remaining globally.
+
+## Session tactic lessons
+
+| Problem | Solution |
+|---|---|
+| `positivity` on `(N_c:ℝ)/4` | `Nc_pos` + `div_pos` explicitly |
+| `private` theorem not exported | Remove `private` or duplicate locally |
+| `lake clean` destroys cache | Use `lake exe cache get` to restore |
+| `field_simp` leaves `1≤1` | `rw [one_div, inv_mul_cancel₀ hβne]` |
+| `∃ cLSI>0, ∀ β>0, cLSI≤β` insatisfacible | Add `β₀` threshold |
+| `/-- --/` before `end` | Use `--` normal comment |
