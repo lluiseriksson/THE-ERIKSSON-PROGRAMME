@@ -8,8 +8,8 @@ open Classical Filter
 /-!
 # P91BetaDriftDecomposition — Layer 14E (pure analysis)
 
-Contains only analysis lemmas. No P91 recursion data dependency.
-The data-driven drift theorems live in P91BetaDriftClosed.
+Contains only generic analysis on sequences.
+No P91 data. No sorrys. Ghost `beta_linear_drift_P91` moved to P91BetaDriftClosed.
 -/
 
 noncomputable section
@@ -34,13 +34,6 @@ theorem tendsto_atTop_of_linear_drift
   intro b
   obtain ⟨N, hN⟩ := exists_lt_nsmul hδ (b - β 0)
   exact ⟨N, le_of_lt (lt_of_lt_of_le (by linarith) (hgrow N))⟩
-
-/-- Hypothesis-driven divergence: takes drift as input. 0 sorrys. -/
-theorem beta_tendsto_top_of_drift
-    (β : ℕ → ℝ) (δ : ℝ) (hδ : 0 < δ)
-    (hdrift : ∀ k, β k + δ ≤ β (k + 1)) :
-    Tendsto β atTop atTop :=
-  tendsto_atTop_of_linear_drift β δ hδ hdrift
 
 end
 

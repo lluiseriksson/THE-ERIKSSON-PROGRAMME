@@ -44,6 +44,17 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.82 — `beta_linear_drift_P91` alias closed ✅ *(2026-03-19)*
+
+**`beta_linear_drift_P91` sorry ELIMINATED. 6 analytic sorrys remain.**
+
+- `P91BetaDriftDecomposition` (14E): pure analysis only, 0 sorrys
+- `beta_linear_drift_P91` in `P91BetaDriftClosed`: alias to `uniform_drift_from_data`
+- Full active chain: 0 sorrys end-to-end
+- sorry count: 7 → 6 (P91 A.2 §3 drift sorry eliminated)
+
+Remaining: P80 §4.1/4.2, P81 §3, P91 A.2 §3 ×3 (window×3)
+
 ### v0.8.81 — P91 chain: 0 sorrys end-to-end ✅ *(2026-03-19)*
 
 **Full active P91 drift/divergence/rate chain: 0 sorrys.**
