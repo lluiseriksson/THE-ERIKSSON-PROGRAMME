@@ -1,64 +1,48 @@
-# Clay Core — BalabanRG Status (v1.0.2-alpha, 2026-03-19)
+# Clay Core — BalabanRG Status (v1.0.3-alpha, 2026-03-19)
 
-**~100 files · 0 errors · 0 analytic sorrys**
+**~110 files · 0 errors · 0 analytic sorrys**
 
-## Architecture: Dual Path + Canonical Geometric Bridge
+## Architecture: Dual Geometry + Canonical Bridge
 
-### Path A — Skeleton baseline (v0.8.x, stable)
-0 analytic sorrys. Untouched.
+### Path A — Skeleton baseline (v0.8.x)
+0 analytic sorrys. Untouched. Stable anchor.
 
-### Path B — Bridge hierarchy (v0.9.x–v1.0.x)
+### Path B — Simplified bridge hierarchy (v0.9.x–v1.0.x)
+BalabanLatticeSite d k = Fin(2^k) × Fin d
+
+### Path C — Full geometry bridge hierarchy (v1.0.3-alpha) ✅
+BalabanFiniteSite d k = Fin d → Fin(2^k) — full (ℤ/2^k ℤ)^d
 ```
-B1  Abstract bridge        ActivityFieldBridge (interface)
-B2  Concrete zero bridge   concreteActivityFieldBridge
-B3  Singleton bridge       singletonBridge: K(p₀)≠0 → field≠0 ✅
-B4  Geometric bridge       canonicalGeometricBridge ← polymer geometry ✅
-```
-
-### Geometry chain (v0.9.x–v1.0.2)
-```
-15A  BalabanFieldSpace          — BalabanLatticeSite = Fin(2^k)×Fin d
-15B  SmallFieldLargeFieldSplit  — fieldThreshold=exp(-β/2)
-15C  BalabanFieldDecomposition  — φ=φ_small+φ_large
-15D  ActivityFieldBridge        — abstract interface
-15E  ActivityFieldSplitSelection — selectFieldSplitViaBridge
-15F  ActivityFieldSuppression   — suppression bounds
-15G  P80EstimateViaBridge       — p80_via_bridge_unified
-15H  P81EstimateViaBridge       — p81_via_bridge_unified
-11F  RGViaBridge                — RGViaBridgeControl (unified)
-11G  RGBridgeCompatibility      — compatibility layer
-11H  RGSkeletonViaBridge        — facade
-10B  CauchyDecayViaBridge       — first high-level consumer
-     ConcreteActivityFieldBridge — zero bridge (stable)
-     PolymerSiteReadout         — abstract readout
-     FinitePolymerReadout       — Finset-based readout
-       singletonFiniteReadoutField_at_siteOf: key identity ✅
-     PolymerGeometricReadout    — PhysicalPolymerRepSite
-     LatticeSiteAdapter         — toBalabanSite: LatticeSite→BalabanLatticeSite
-     PolymerCanonicalSite       — canonical bridge from polymer geometry ✅
-       canonicalSiteOf := Classical.choose X.nonEmpty
-       canonicalBridge_field_at_site: field = K(p₀) at canonical site
-       canonicalBridge_nonzero: K(p₀)≠0 → bridge field≠0
+BalabanFiniteLattice         — BalabanFiniteCoord k, BalabanFiniteSite d k
+LatticeSiteAdapterFull       — toBalabanFiniteSite: LatticeSite→BalabanFiniteSite
+                               coordinate-wise: all d coordinates
+PolymerGeometricReadoutFull  — ActivityFieldBridgeFull (field on BalabanFiniteSite)
+                               finiteReadoutFieldFull: ∑ K(p) at BalabanFiniteSite
+                               singletonFiniteReadoutFieldFull_at_siteOf: key identity
+PolymerCanonicalSiteFull     — canonicalGeometricBridgeFull ← polymer geometry ✅
+                               canonicalBridgeFull_field_at_site: K(p₀) (0 sorrys)
+                               canonicalBridgeFull_nonzero: K(p₀)≠0→field≠0
+                               canonicalBridgeFull_consistent_with_polymer: Touches∧field
 ```
 
-### CauchyDecayFromAF — full API (5 paths)
-```
-cauchy_decay_from_p91_data                    — baseline
-cauchy_decay_from_p91_data_via_bridge         — abstract bridge
-cauchy_decay_from_p91_data_via_concrete_bridge — zero concrete
-cauchy_decay_from_p91_data_via_singleton_bridge — non-trivial
-cauchy_decay_from_p91_data_via_geometric_bridge — physical (NeZero d)
-cauchy_decay_from_p91_data_via_canonical_geometric_bridge — canonical ✅
-```
+## v1.0.3-alpha Key Milestones
 
-## v1.0.2-alpha Key Milestone
+1. **Full lattice geometry**: `BalabanFiniteSite d k = Fin d → Fin(2^k)` — faithful (ℤ/2^k ℤ)^d
+2. **Full adapter**: `toBalabanFiniteSite` — all d coordinates projected
+3. **Full canonical bridge**: `canonicalGeometricBridgeFull` on full geometry
+4. **Consistency**: `Polymer.Touches p₀ (canonicalSiteOf p₀)` + field = K(p₀)
 
-**The bridge is now canonically determined by polymer geometry.**
+## Full bridge hierarchy
 
-`canonicalSiteOf X = Classical.choose X.nonEmpty ∈ X.sites`
+| Bridge | Geometry | Determined by |
+|---|---|---|
+| `concreteActivityFieldBridge` | simplified | zero (stable anchor) |
+| `singletonBridge` | simplified | fixed p₀, x₀ |
+| `canonicalGeometricBridge` | simplified | `Classical.choose X.nonEmpty` |
+| `canonicalGeometricBridgeFull` | **full** | `Classical.choose X.nonEmpty` ✅ |
 
-This is the first bridge where the site assignment is derived from the polymer's
-own geometric support — not an artificial fixed assignment.
+## CauchyDecayFromAF — 6-path API
+All paths green. Full-geometry path pending (v1.0.4).
 
 ## Formal debt
 
@@ -66,9 +50,10 @@ own geometric support — not an artificial fixed assignment.
 |---|---|---|
 | `p91_tight_weak_coupling_window` | P91WeakCouplingWindow | P91 A.2 §3 |
 | `RGBlockingMap` physical | BalabanBlockingMap | P78 |
-| `toBalabanSite` full geometry | LatticeSiteAdapter | v1.0.3 |
+| Full bridge → RGViaBridgeControl | future | v1.0.4 |
 | Skeleton→Bridge migration | P80/P81 | v1.0.x |
 
-## Next: v1.0.3-alpha
-Refine `toBalabanSite`: current encoding uses only one coordinate.
-Full geometry: `(ℤ/2^k ℤ)^d` not yet formalized.
+## Next: v1.0.4-alpha
+1. `RGViaBridgeControlFull`: unify P80+P81 for ActivityFieldBridgeFull
+2. High-level alias `cauchy_decay_via_canonical_geometric_bridge_full`
+3. Full skeleton integration

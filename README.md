@@ -43,6 +43,21 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+### v1.0.3-alpha — Full (ℤ/2^k ℤ)^d geometry canonical bridge ✅ *(2026-03-19)*
+
+**Full d-dimensional finite lattice geometry. Both simplified and full paths green.**
+
+- **`BalabanFiniteSite d k = Fin d → Fin(2^k)`**: faithful `(ℤ/2^k ℤ)^d` torus (vs simplified `Fin(2^k)×Fin d`)
+- **`toBalabanFiniteSite`**: all d coordinates projected (vs single-coord in simplified)
+- **`ActivityFieldBridgeFull`**: bridge with field on `BalabanFiniteSite`
+- **`canonicalGeometricBridgeFull`**: first full-geometry canonical bridge from polymer support ✅
+- **`canonicalBridgeFull_field_at_site`**: K(p₀) at canonical site (0 sorrys)
+- **`canonicalBridgeFull_consistent_with_polymer`**: `Polymer.Touches p₀ (canonicalSiteOf p₀) ∧ field = K(p₀)` ✅
+- Dual bridge hierarchy: simplified path (v1.0.x) + full path (v1.0.3) both canonical
+- All baselines untouched. 0 analytic sorrys.
+
+Next: v1.0.4-alpha — `RGViaBridgeControlFull` (unify P80+P81 for full geometry)
+
 ### v1.0.2-alpha — Bridge canonically determined by polymer geometry ✅ *(2026-03-19)*
 
 **The bridge is now derived from the polymer's own geometric support.**
@@ -740,7 +755,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~100 files · 0 errors · 0 analytic sorrys (v1.0.2-alpha)
+| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~110 files · 0 errors · 0 analytic sorrys (v1.0.3-alpha)
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
