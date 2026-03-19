@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.FinitePolymerReadout
+import YangMills.ClayCore.BalabanRG.LatticeSiteAdapter
 
 namespace YangMills.ClayCore
 
@@ -87,6 +88,49 @@ theorem singletonRep_eq_singleton {d k : ℕ}
     (p₀ : Polymer d (Int.ofNat k)) (x₀ : BalabanLatticeSite d k) :
     geometricFiniteReadout (singletonRepresentativeSite x₀) {p₀} =
       singletonFinitePolymerReadout p₀ x₀ := rfl
+
+
+/-! ## Physical representative site -/
+
+/-- A physically grounded representative site.
+    siteOf maps Polymer → LatticeSite d (infinite integer lattice).
+    Requires [NeZero d] for the BalabanLatticeSite projection. -/
+structure PhysicalPolymerRepSite (d k : ℕ) where
+  siteOf : Polymer d (Int.ofNat k) → LatticeSite d
+
+/-- Project to BalabanLatticeSite via LatticeSiteAdapter. -/
+def siteOfBalaban {d k : ℕ} [NeZero d] (rep : PhysicalPolymerRepSite d k)
+    (X : Polymer d (Int.ofNat k)) : BalabanLatticeSite d k :=
+  toBalabanSite d k (rep.siteOf X)
+
+/-- Lift to PolymerRepresentativeSite. -/
+def toPolymerRepresentativeSite' {d k : ℕ} [NeZero d]
+    (rep : PhysicalPolymerRepSite d k) :
+    PolymerRepresentativeSite d k where
+  siteOf := siteOfBalaban rep
+
+/-- Physical finite readout. -/
+def physicalGeometricReadout {d k : ℕ} [NeZero d]
+    (rep : PhysicalPolymerRepSite d k)
+    (polys : Finset (Polymer d (Int.ofNat k))) :
+    FinitePolymerReadout d k :=
+  geometricFiniteReadout (toPolymerRepresentativeSite' rep) polys
+
+/-- Physical ActivityFieldBridge. -/
+def physicalGeometricBridge {d k : ℕ} [NeZero d]
+    (rep : PhysicalPolymerRepSite d k)
+    (polys : Finset (Polymer d (Int.ofNat k))) :
+    ActivityFieldBridge d k :=
+  bridgeFromFiniteReadout (physicalGeometricReadout rep polys)
+
+/-- Physical RGViaBridgeControl. -/
+def physicalGeometricBridgeControl {d N_c : ℕ} [NeZero d] [NeZero N_c]
+    [∀ j, ActivityNorm d j] (k : ℕ) (β : ℝ)
+    (rep : PhysicalPolymerRepSite d k)
+    (polys : Finset (Polymer d (Int.ofNat k))) :
+    RGViaBridgeControl d N_c k β :=
+  rgControlFromFiniteReadout k β (physicalGeometricReadout rep polys)
+
 
 end
 
