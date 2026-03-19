@@ -3,6 +3,7 @@ import YangMills.ClayCore.BalabanRG.P91RecursionData
 import YangMills.ClayCore.BalabanRG.P91BetaDivergence
 import YangMills.ClayCore.BalabanRG.RGCauchySummabilitySkeleton
 import YangMills.ClayCore.BalabanRG.CauchyDecayViaBridge
+import YangMills.ClayCore.BalabanRG.ConcreteActivityFieldBridge
 
 namespace YangMills.ClayCore
 
@@ -65,6 +66,27 @@ theorem cauchy_decay_from_p91_data_via_bridge {d N_c : ℕ} [NeZero N_c]
     physicalContractionRate β_k * ActivityNorm.dist K₁ K₂ :=
   cauchy_summability_bridge_consumer ctrl K₁ K₂
     (physicalContractionRate β_k) (by unfold physicalContractionRate; positivity)
+
+
+
+/-- Concrete-bridge Cauchy decay at scale 0.
+    Uses the named concreteActivityFieldBridge instance (not abstract).
+    First theorem consuming a specific named bridge object. 0 sorrys. -/
+theorem cauchy_decay_from_p91_data_via_concrete_bridge {d N_c : ℕ} [NeZero N_c]
+    [∀ k, ActivityNorm d k]
+    (β_k : ℝ)
+    (K₁ K₂ : ActivityFamily d (0 : ℕ)) :
+    ActivityNorm.dist
+      ((selectFieldSplitViaBridge d N_c 0
+          (concreteActivityFieldBridge d 0) β_k K₁).largePart
+        ((concreteActivityFieldBridge d 0).fieldOfActivity K₁) K₁)
+      (fun _ => 0) ≤
+    physicalContractionRate β_k * ActivityNorm.dist K₁ K₂ :=
+  cauchy_summability_bridge_consumer
+    (d := d) (N_c := N_c) (k := 0) (β := β_k)
+    (concreteBridgeControl d N_c 0 β_k) K₁ K₂
+    (physicalContractionRate β_k)
+    (by unfold physicalContractionRate; positivity)
 
 
 end
