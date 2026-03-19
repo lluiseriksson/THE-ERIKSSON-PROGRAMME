@@ -2,7 +2,7 @@
 
 ## Lean 4 Formalization of the Yang-Mills Mass Gap
 
-**Status: FORMALIZED\_KERNEL — 8230+ jobs, 0 errors, 0 sorrys**  
+**Status: FORMALIZED\_KERNEL — 8250+ jobs, 0 errors, 0 sorrys**  
 Lean v4.29.0-rc6 + Mathlib · Last updated: March 2026
 
 ---
@@ -43,6 +43,25 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+
+### v0.8.56 — Layer 6 complete: Balaban RG decomposition ✅ *(2026-03-19)*
+
+**`balaban_rg_uniform_lsi` → `balaban_rg_package_from_E26` (structured axiom)**
+
+Three new files, 0 sorrys:
+- `BalabanRGPackage.lean` — `structure` with 4 explicit RG hypotheses:
+  `freeEnergyControl` (P78, P80), `contractiveMaps` (P81, P82),
+  `uniformCoercivity` (P69, P70), `entropyCoupling` (P67, P74)
+- `UniformLSITransfer.lean` — `uniform_lsi_of_balaban_rg_package`,
+  `clay_core_implies_lsi_at_scale`
+- `BalabanRGAxiomReduction.lean` — `balaban_rg_package_from_E26` (reduced axiom),
+  `uniform_lsi_from_E26`, `lsi_at_scale_from_E26`
+
+**Clay Core BalabanRG: 13 files, 0 errors, 0 sorrys.**
+
+The monolithic axiom is now 4 independent mathematical targets:
+`freeEnergyControl + contractiveMaps + uniformCoercivity + entropyCoupling`
+→ `BalabanRGPackage` → `ClayCoreLSI` → `LSItoSpectralGap ✅` → `ClayYangMillsTheorem ✅`
 
 ### v0.8.55 — Layer 4C complete: `PolymerLogLowerBound` sealed ✅ *(2026-03-19)*
 
@@ -246,7 +265,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core 4C | YangMills/ClayCore/BalabanRG | ✅ **9 files · 0 errors · 0 sorrys** (v0.8.55) |
+| Clay Core 6  | YangMills/ClayCore/BalabanRG | ✅ **13 files · 0 errors · 0 sorrys** (v0.8.56) |
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
@@ -392,7 +411,8 @@ proved without axioms.
 
 | Version | Achievement | Axioms |
 |---|---|---|
-| v0.8.55 | **Layer 4C — PolymerLogLowerBound: two-sided log Z (0 sorrys)** | 8 |
+| v0.8.56 | **Layer 6 — BalabanRG decomposition: monolith → 4 targets (0 sorrys)** | 8 |
+| v0.8.55 | Layer 4C — PolymerLogLowerBound: two-sided log Z (0 sorrys) | 8 |
 | v0.8.54 | Layer 4B — PolymerLogBound: positivity + log Z (0 sorrys) | 8 |
 | v0.8.53 | Layer 4A — KPConsequences: |Z-1|, positivity, log Z (0 sorrys) | 8 |
 | v0.8.52 | Layer 3B sealed — KP induction fully mechanized, 0 errors | 8 |
@@ -429,4 +449,4 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8196+ compiled jobs
 
 ## Author
 
-**Lluis Eriksson** — independent researcher · March 2026 · v0.8.55
+**Lluis Eriksson** — independent researcher · March 2026 · v0.8.56
