@@ -2,6 +2,7 @@ import Mathlib
 import YangMills.ClayCore.BalabanRG.RGCauchyP81Interface
 import YangMills.ClayCore.BalabanRG.LargeFieldSuppressionEstimate
 import YangMills.ClayCore.BalabanRG.DirichletIdentificationClosure
+import YangMills.ClayCore.BalabanRG.RGContractiveEstimate
 
 namespace YangMills.ClayCore
 
