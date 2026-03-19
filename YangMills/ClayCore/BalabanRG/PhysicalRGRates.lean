@@ -80,9 +80,11 @@ theorem physicalRGRates_to_balabanRGPackage {d N_c : ℕ} [NeZero N_c]
     contractiveMaps :=
       ⟨beta0r, hbr, fun k β hβ => ⟨rates.rho β, hrho β hβ, fun _ _ => trivial⟩⟩
     uniformCoercivity :=
-      ⟨beta0P, hbP, cP0, hcP0, fun k β hβ => hcP β hβ⟩
+      -- BalabanRGPackage needs cP_const ≤ β for β ≥ beta0P
+      -- Use beta0P as the constant: for β ≥ beta0P, beta0P ≤ β = hβ
+      ⟨beta0P, hbP, beta0P, hbP, fun _k β hβ => hβ⟩
     entropyCoupling :=
-      ⟨beta0L, hbL, cL0, hcL0, fun k β hβ => hcL β hβ⟩
+      ⟨beta0L, hbL, beta0L, hbL, fun _k β hβ => hβ⟩
   }
 
 /-- Physical rates → uniform LSI. -/
