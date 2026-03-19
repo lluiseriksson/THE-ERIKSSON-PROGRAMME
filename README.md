@@ -43,6 +43,24 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+### v1.0.0-alpha — Dual-path architecture operational ✅ *(2026-03-19)*
+
+**Bridge path reaches Layer 10. First high-level consumer migrated. 0 sorrys.**
+
+#### Skeleton baseline (Path A) — untouched, 0 analytic sorrys
+- P91 drift/divergence/rate chain: 0 sorrys end-to-end
+- P80 §4.1/4.2, P81 §3: 0 sorrys (skeleton definitions)
+
+#### Geometry via bridge (Path B) — operational, 0 sorrys
+- **15A–15C**: `BalabanFieldSpace`, `SmallFieldLargeFieldSplit`, `BalabanFieldDecomposition` — lattice geometry, `φ=φ_small+φ_large`
+- **15D–15E**: `ActivityFieldBridge`, `ActivityFieldSplitSelection` — abstract bridge, `selectFieldSplitViaBridge` (real if/else)
+- **15F–15H**: `ActivityFieldSuppression`, `P80/P81EstimateViaBridge` — suppression and Cauchy decay (0 sorrys)
+- **11F–11H**: `RGViaBridge`, `RGBridgeCompatibility`, `RGSkeletonViaBridge` — unified API
+- **10B**: `CauchyDecayViaBridge` — **first high-level consumer migrated** ✅
+- `bridge_path_recovers_skeleton`: consistency closed (trivial bridge = baseline) ✅
+
+**Next: v1.0.1-alpha** — ConcreteActivityFieldBridge + CauchyDecayFromAF aliases
+
 ### v0.9.11 — `RGViaBridge` Layer 11F: Unified RG control ✅ *(2026-03-19)*
 
 **Geometry chain 15A–15H + unified API. 0 sorrys. DAG clean.**
@@ -694,7 +712,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~75 files · 0 errors · 0 analytic sorrys (v0.9.11)
+| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~80 files · 0 errors · 0 analytic sorrys (v1.0.0-alpha)
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
