@@ -1,6 +1,7 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.BalabanBlockingMap
 import YangMills.ClayCore.BalabanRG.LargeFieldSuppressionEstimate
+import YangMills.ClayCore.BalabanRG.RGCauchySummabilityEstimate
 
 namespace YangMills.ClayCore
 
@@ -41,7 +42,7 @@ theorem rg_blocking_map_contracts_v2 (d N_c : ℕ) [NeZero N_c]
     RGBlockingMapContracts d N_c β :=
   rg_blocking_contracts_from_estimates d N_c β hβ
     (large_field_suppression_bound_v2 d N_c β hβ)
-    (rg_cauchy_summability_bound d N_c β hβ)
+    (rg_cauchy_summability_bound_v2 d N_c β hβ)
 
 end
 
