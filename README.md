@@ -44,6 +44,20 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.73 — Full session checkpoint ✅ *(2026-03-19)*
+
+**40 files · 0 errors · 3 analytic sorrys + 1 quantitative axiom**
+
+Theorems proved this session (selected):
+- `lipschitz_iterate_bound` — Lipschitz iterate bound (0 sorrys)
+- `denominator_lt_one` — d < 1 algebraically (nlinarith)
+- `coeff_bound` — b₀-r_k ≤ b₀+|r_k| (neg_abs_le)
+- `denominator_pos_tight` — tight window → d > 0 (mul_div_cancel₀)
+- `beta_growth_from_denominator` — d∈(0,1) → β grows (div_mul_cancel₀)
+- `rate_decreases_with_beta` — exp(-β) monotone (Real.exp_lt_exp)
+- `uv_stability_P82_step1` — UV stable with zero map (trivial)
+- `e26_estimates_imply_lsi` — P80+P81 → ClayCoreLSI (audit index)
+
 ### v0.8.73 — `P91WeakCouplingWindow` (Layer 13D) + session checkpoint ✅ *(2026-03-19)*
 
 **`denominator_pos_tight` proved (0 sorrys). 1 axiom: `p91_tight_weak_coupling_window`.**
