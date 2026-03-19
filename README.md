@@ -44,6 +44,14 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.72 — `P91DenominatorControl` (Layer 13C) ✅ *(2026-03-19)*
+
+**`denominator_in_unit_interval` → 1 sorry + 1 algebraic proof.**
+
+- `denominator_lt_one`: d < 1 proved algebraically (0 sorrys)
+- `denominator_pos`: d > 0 ← P91 A.2 §3 (1 sorry, quantitative window)
+- `denominator_in_unit_interval_v2`: structural (0 new sorrys)
+
 ### v0.8.71 — `P91AsymptoticFreedomSkeleton` (Layer 13B) ✅ *(2026-03-19)*
 
 **`asymptotic_freedom_implies_beta_growth` → 1 sorry + structural proof.**
