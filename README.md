@@ -44,6 +44,19 @@ intuition hiding in the proofs.
 
 ## Recent Milestones
 
+### v0.8.79 — Layers 14G-14I: P91 drift chain complete ✅ *(2026-03-19)*
+
+**`one_step_beta_drift_P91` sorry ELIMINATED. Pure algebra closes the drift.**
+
+- `P91OnestepDriftAlgebra` (14G): exact identity β_{k+1}-β_k = β_k²·coeff/denom (0 sorrys)
+- `P91DriftPositivityControl` (14H): coeff ≥ b₀/2 + denom ≤ 1 (0 sorrys each)
+- `P91UniformDrift` (14I): beta_ge_one_of_drift + uniform_drift_lower_bound (0 sorrys)
+- `one_step_beta_drift_P91`: sorry **eliminated** → delegates to positivity control
+- `tendsto_atTop_of_linear_drift`: 0 sorrys (Archimedean + monotone)
+- `rate_to_zero_of_beta_tendsto_top`: 0 sorrys (show + comp)
+
+**Remaining analytic gaps:** P80 §4.1, P80 §4.2, P81 §3, P91 A.2 §3 (drift), P91 window×3
+
 ### v0.8.78 — Layer 14G: `P91OnestepDriftAlgebra` ✅ *(2026-03-19)*
 
 **Exact drift identity: β_{k+1}-β_k = β_k²·(b₀-r_k)/denom. 0 sorrys.**

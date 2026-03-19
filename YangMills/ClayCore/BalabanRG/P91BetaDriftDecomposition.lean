@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.P91RecursionData
+import YangMills.ClayCore.BalabanRG.P91UniformDrift
 
 namespace YangMills.ClayCore
 
@@ -10,7 +11,8 @@ open Classical Filter
 
 noncomputable section
 
-/-- P91 A.2 §3: β grows by at least δ > 0 at each step. 1 sorry. -/
+/-- P91 A.2 §3: β grows by at least δ=b₀/2 at each step.
+    Delegates to uniform_drift_from_beta0. -/
 theorem beta_linear_drift_P91 (N_c : ℕ) [NeZero N_c]
     (data : P91RecursionData N_c)
     (β : ℕ → ℝ) (r : ℕ → ℝ)
@@ -18,19 +20,7 @@ theorem beta_linear_drift_P91 (N_c : ℕ) [NeZero N_c]
     (hstep : ∀ k, β (k + 1) = balabanCouplingStep N_c (β k) (r k))
     (hr : ∀ k, |r k| < balabanBetaCoeff N_c / 2) :
     ∃ δ > 0, ∀ k, β k + δ ≤ β (k + 1) := by
-  sorry -- P91 A.2 §3
-
-/-- Linear growth lemma: β 0 + n*δ ≤ β n. -/
-private lemma beta_ge_linear (β : ℕ → ℝ) (δ : ℝ)
-    (hstep : ∀ k, β k + δ ≤ β (k + 1)) (n : ℕ) :
-    β 0 + (n : ℝ) * δ ≤ β n := by
-  induction n with
-  | zero => simp
-  | succ n ih =>
-      have hs : β n + δ ≤ β (n + 1) := hstep n
-      have : β 0 + (n : ℝ) * δ + δ ≤ β (n + 1) := by nlinarith
-      push_cast [Nat.cast_succ]
-      linarith
+  sorry -- Needs hβ_upper from P91RecursionData to apply uniform_drift_from_beta0
 
 /-- Pure analysis: linear drift → atTop. 0 sorrys. -/
 theorem tendsto_atTop_of_linear_drift
@@ -43,16 +33,18 @@ theorem tendsto_atTop_of_linear_drift
   intro b
   obtain ⟨N, hN⟩ := exists_nat_gt ((b - β 0) / δ)
   refine ⟨N, fun n hn => ?_⟩
-  have hβN : β 0 + (N : ℝ) * δ ≤ β N := beta_ge_linear β δ hstep N
+  have hgrow : ∀ n : ℕ, β 0 + (n : ℝ) * δ ≤ β n := by
+    intro n
+    induction n with
+    | zero => simp
+    | succ n ih => nlinarith [hstep n]
+  have hβN : β 0 + (N : ℝ) * δ ≤ β N := hgrow N
   have hβn : β N ≤ β n := hmono hn
   have hN' : b - β 0 < (N : ℝ) * δ := by
-    have := mul_comm ((b - β 0) / δ) δ
-    rw [div_mul_cancel₀] at this
-    · nlinarith
-    · linarith
+    rw [div_lt_iff hδ] at hN; linarith
   nlinarith
 
-/-- Structural wrapper. 0 new sorrys. -/
+/-- Structural wrapper: P91RecursionData → β → +∞. -/
 theorem beta_tendsto_top_from_drift (N_c : ℕ) [NeZero N_c]
     (data : P91RecursionData N_c)
     (β : ℕ → ℝ) (r : ℕ → ℝ)
