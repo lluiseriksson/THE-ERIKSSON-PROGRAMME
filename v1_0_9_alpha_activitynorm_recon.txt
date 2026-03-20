@@ -1,0 +1,654 @@
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:16: Real.exp (-β) * ActivityNorm.dist K₁ (fun _ => 0)) ∧
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:19: physicalContractionRate β * ActivityNorm.dist K₁ K₂) :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:27: Real.exp (-β) * ActivityNorm.dist K (fun _ => 0) :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:36: physicalContractionRate β * ActivityNorm.dist K₁ K₂ :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:47: Real.exp (-β) * ActivityNorm.dist K₁ (fun _ => 0)) ∧
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:50: physicalContractionRate β * ActivityNorm.dist K₁ K₂) := by
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:33: `C * ActivityNorm.dist K₁ K₂`. -/
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:38: |K₁ p₀ - K₂ p₀| ≤ C * ActivityNorm.dist K₁ K₂
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:50: ≤ C₁ * ActivityNorm.dist K₁ K₂ := h₁ K₁ K₂
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:51: _ ≤ C₂ * ActivityNorm.dist K₁ K₂ := by
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:52: have hdist : 0 ≤ ActivityNorm.dist K₁ K₂ :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:53: ActivityNorm.dist_nonneg _ _
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:69: ≤ C * ActivityNorm.dist K₁ K₂ := hpoint K₁ K₂
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:70: _ ≤ physicalContractionRate β * ActivityNorm.dist K₁ K₂ := by
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:71: have hdist : 0 ≤ ActivityNorm.dist K₁ K₂ :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:72: ActivityNorm.dist_nonneg _ _
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:104: Real.exp (-β) * ActivityNorm.dist K (fun _ => 0) :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:124: physicalContractionRate β * ActivityNorm.dist K₁ K₂ :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean:29: ActivityNorm.dist (RGBlockingMap d N_c k K₁) (RGBlockingMap d N_c k K₂)
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean:30: ≤ physicalContractionRate β * ActivityNorm.dist K₁ K₂
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/ActivityFieldSuppression.lean:60: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/ActivityFieldSuppression.lean:64: exact ActivityNorm.dist_self _
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/ActivityFieldSuppression.lean:72: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/ActivityFieldSuppression.lean:76: exact ActivityNorm.dist_self _
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:30: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:35: exact ActivityNorm.dist_self _
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:41: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:45: Real.exp (-β) * ActivityNorm.dist K (fun _ => 0) := by
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:46: have hdist : 0 ≤ ActivityNorm.dist K (fun _ => 0) := ActivityNorm.dist_nonneg _ _
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:59: rw [hzero, ActivityNorm.dist_self]
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:19: (hf : ∀ K₁ K₂, ActivityNorm.dist (f K₁) (f K₂) ≤ ρ * ActivityNorm.dist K₁ K₂)
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:21: ActivityNorm.dist (f^[n] K₁) (f^[n] K₂) ≤ ρ^n * ActivityNorm.dist K₁ K₂ := by
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:27: show ActivityNorm.dist (f^[n+1] K₁) (f^[n+1] K₂) ≤ ρ^(n+1) * ActivityNorm.dist K₁ K₂
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:32: have step1 : ActivityNorm.dist (f^[n] (f K₁)) (f^[n] (f K₂))
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:33: ≤ ρ^n * ActivityNorm.dist (f K₁) (f K₂) := ih (f K₁) (f K₂)
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:34: have step2 : ρ^n * ActivityNorm.dist (f K₁) (f K₂)
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:35: ≤ ρ^n * (ρ * ActivityNorm.dist K₁ K₂) :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:37: have step3 : ρ^n * (ρ * ActivityNorm.dist K₁ K₂)
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:38: = ρ^(n+1) * ActivityNorm.dist K₁ K₂ := by rw [pow_succ]; ring
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:49: (hT : ∀ K₁ K₂, ActivityNorm.dist (T K₁) (T K₂) ≤ ρ * ActivityNorm.dist K₁ K₂)
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:51: ActivityNorm.dist (T K₁) (T K₂) ≤ ρ * ActivityNorm.dist K₁ K₂ :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:65: Real.exp (-β) * ActivityNorm.dist K (fun _ => 0)
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:73: physicalContractionRate β * ActivityNorm.dist K₁ K₂
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:93: Real.exp (-β) * ActivityNorm.dist K (fun _ => 0) :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:103: physicalContractionRate β * ActivityNorm.dist K₁ K₂ :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:33: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:37: Real.exp (-β) * ActivityNorm.dist K (fun _ => 0) :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:44: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:48: C * ActivityNorm.dist K₁ K₂ :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:55: (ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:59: Real.exp (-β) * ActivityNorm.dist K₁ (fun _ => 0)) ∧
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:60: (ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:64: C * ActivityNorm.dist K₁ K₂) :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:70: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:74: Real.exp (-β) * ActivityNorm.dist K (fun _ => 0) :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:81: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:85: C * ActivityNorm.dist K₁ K₂ :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:36: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:40: Real.exp (-β) * ActivityNorm.dist K (fun _ => 0)
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:43: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:47: C * ActivityNorm.dist K₁ K₂
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:53: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:57: Real.exp (-β) * ActivityNorm.dist K (fun _ => 0) :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:64: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:68: C * ActivityNorm.dist K₁ K₂ :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:94: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:98: Real.exp (-β) * ActivityNorm.dist K (fun _ => 0) :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:106: ActivityNorm.dist
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:110: C * ActivityNorm.dist K₁ K₂ :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:72: |K p₀| ≤ Real.exp (-β) * ActivityNorm.dist K (fun _ => 0)
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:87: have hdist : 0 ≤ ActivityNorm.dist K (fun _ => 0) := ActivityNorm.dist_nonneg _ _
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:97: |K₁ p₀ - K₂ p₀| ≤ physicalContractionRate β * ActivityNorm.dist K₁ K₂
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:115: have hdist : 0 ≤ ActivityNorm.dist K₁ K₂ := ActivityNorm.dist_nonneg _ _
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSkeleton.lean:73: have hdist : 0 ≤ ActivityNorm.dist K (fun _ => 0) := ActivityNorm.dist_nonneg _ _
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSkeleton.lean:86: have hdist : 0 ≤ ActivityNorm.dist K₁ K₂ := ActivityNorm.dist_nonneg _ _
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:29: Real.exp (-β) * ActivityNorm.dist K₁ (fun _ => 0)) ∧
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:32: physicalContractionRate β * ActivityNorm.dist K₁ K₂) :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:46: Real.exp (-β) * ActivityNorm.dist K (fun _ => 0) :=
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/BalabanBlockingMap.lean:29: ActivityNorm.dist (RGBlockingMap d N_c k K₁) (RGBlockingMap d N_c k K₂)
+[ActivityNorm\.dist] YangMills/ClayCore/BalabanRG/BalabanBlockingMap.lean:30: ≤ ρ * ActivityNorm.dist K₁ K₂
+[dist_nonneg] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:38: theorem dist_nonneg (K₁ K₂ : ActivityFamily d k) : 0 ≤ dist K₁ K₂ :=
+[dist_nonneg] YangMills/ClayCore/BalabanRG/RGCauchySummabilitySkeleton.lean:37: have : 0 ≤ ActivityNorm.dist K₁ K₂ := ActivityNorm.dist_nonneg K₁ K₂
+[dist_nonneg] YangMills/ClayCore/BalabanRG/RGCauchySummabilitySkeleton.lean:54: have hdist : 0 ≤ ActivityNorm.dist K₁ K₂ := ActivityNorm.dist_nonneg K₁ K₂
+[dist_nonneg] YangMills/ClayCore/BalabanRG/P81EstimateViaBridge.lean:76: have hdist : 0 ≤ ActivityNorm.dist K₁ K₂ := ActivityNorm.dist_nonneg _ _
+[dist_nonneg] YangMills/ClayCore/BalabanRG/P80EstimateSkeleton.lean:29: have hdist : 0 ≤ ActivityNorm.dist K (fun _ => 0) := ActivityNorm.dist_nonneg K _
+[dist_nonneg] YangMills/ClayCore/BalabanRG/P80EstimateSkeleton.lean:45: have hdist : 0 ≤ ActivityNorm.dist K (fun _ => 0) := ActivityNorm.dist_nonneg K _
+[dist_nonneg] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:51: ActivityNorm.dist_nonneg _ _
+[dist_nonneg] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:70: ActivityNorm.dist_nonneg _ _
+[dist_nonneg] YangMills/ClayCore/BalabanRG/CauchyDecayFromAF.lean:55: (mul_le_mul_of_nonneg_right h_refine (ActivityNorm.dist_nonneg K₁ K₂))
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:15: (|ctrl.core.bridge.fieldOfActivity K₁ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:17: (|ctrl.core.bridge.fieldOfActivity K₁ x -
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:18: ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:26: |ctrl.core.bridge.fieldOfActivity K x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:34: |ctrl.core.bridge.fieldOfActivity K₁ x -
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:35: ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:46: (|ctrl.core.bridge.fieldOfActivity K₁ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:48: (|ctrl.core.bridge.fieldOfActivity K₁ x -
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:49: ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:103: k β C_large C_cauchy p₀ hlarge hlargeC hcauchy hcauchyC).core.bridge.fieldOfActivity K x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:121: k β C_large C_cauchy p₀ hlarge hlargeC hcauchy hcauchyC).core.bridge.fieldOfActivity K₁ x -
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:123: k β C_large C_cauchy p₀ hlarge hlargeC hcauchy hcauchyC).core.bridge.fieldOfActivity K₂ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:140: k β C_large C_cauchy p₀ hlarge hlargeC hcauchy hcauchyC).core.bridge.fieldOfActivity (fun _ => 0) = fun _ => 0 :=
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:32: (bridge.fieldOfActivity K) K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:43: (bridge.fieldOfActivity K) K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:54: (bridge.fieldOfActivity K) K = RGBlockingMap d N_c k K :=
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:55: selectViaBridge_largePart_eq_rg_of_large bridge β K hL (bridge.fieldOfActivity K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:33: bridge.fieldOfActivity (fun _ => 0) = fun _ => 0
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:39: ctrl.bridge.fieldOfActivity
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:51: (canonicalGeometricBridgeControlFullCore (d := d) (N_c := N_c) k polys).bridge.fieldOfActivity
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:64: |bridge.fieldOfActivity K x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:72: |bridge.fieldOfActivity K₁ x - bridge.fieldOfActivity K₂ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:92: |ctrl.core.bridge.fieldOfActivity K x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:101: |ctrl.core.bridge.fieldOfActivity K₁ x -
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:102: ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:110: ctrl.core.bridge.fieldOfActivity (fun _ => 0) = fun _ => 0 :=
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:70: (geometricBridgeFromRepresentative rep polys).fieldOfActivity (fun _ => 0) = fun _ => 0 :=
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:35: (ctrl.bridge.fieldOfActivity K) K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:46: (ctrl.bridge.fieldOfActivity K₁) K₁)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:57: (ctrl.bridge.fieldOfActivity K₁) K₁)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:62: (ctrl.bridge.fieldOfActivity K₁) K₁)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:72: (bridge.fieldOfActivity K) K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:83: (bridge.fieldOfActivity K₁) K₁)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:38: (bridge.fieldOfActivity K) K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:45: (bridge.fieldOfActivity K₁) K₁)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:55: (bridge.fieldOfActivity K) K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:66: (bridge.fieldOfActivity K₁) K₁)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:87: { fieldOfActivity := fun _ _ => 0,
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:96: (ctrl.bridge.fieldOfActivity K) K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:108: (ctrl.bridge.fieldOfActivity K₁) K₁)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:23: fieldOfActivity : ActivityFamily d k → (BalabanLatticeSite d k → ℝ)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:25: zero_field : fieldOfActivity (fun _ => 0) = fun _ => 0
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:33: balabanFieldSupport (bridge.fieldOfActivity K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:39: balabanLargeFieldRegion (bridge.fieldOfActivity K) t
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:45: balabanSmallFieldRegion (bridge.fieldOfActivity K) t
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:58: balabanLargeSmallPartition (bridge.fieldOfActivity K) (fieldThreshold β)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:66: balabanLargeSmallDisjoint (bridge.fieldOfActivity K) (fieldThreshold β)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:72: SmallFieldPredicateField d N_c k β (bridge.fieldOfActivity K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:78: LargeFieldPredicateField d N_c k β (bridge.fieldOfActivity K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:86: small_or_large_field d N_c k β (bridge.fieldOfActivity K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:93: |bridge.fieldOfActivity K x| < fieldThreshold β := by
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:95: smallField_iff (d := d) (N_c := N_c) (k := k) (β := β) (bridge.fieldOfActivity K)
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:34: (canonicalGeometricBridgeFull ({p₀} : Finset (Polymer d (Int.ofNat k)))).fieldOfActivity K x = 0 := by
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/PolymerSiteReadout.lean:38: fieldOfActivity := r.readoutField
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/PolymerSiteReadout.lean:43: (bridgeFromReadout r).fieldOfActivity (fun _ => 0) = fun _ => 0 :=
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/PolymerCanonicalSite.lean:65: (canonicalGeometricBridge polys).fieldOfActivity (fun _ => 0) = fun _ => 0 :=
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/PolymerCanonicalSite.lean:83: (canonicalGeometricBridge ({p₀} : Finset (Polymer d (Int.ofNat k)))).fieldOfActivity K
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/PolymerCanonicalSite.lean:101: (canonicalGeometricBridge ({p₀} : Finset (Polymer d (Int.ofNat k)))).fieldOfActivity K
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSkeleton.lean:60: (canonicalGeometricBridgeFull (∅ : Finset (Polymer d (Int.ofNat k)))).fieldOfActivity K x = 0 := by
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:28: (|ctrl.core.bridge.fieldOfActivity K₁ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:30: (|ctrl.core.bridge.fieldOfActivity K₁ x -
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:31: ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:38: ctrl.core.bridge.fieldOfActivity (fun _ => 0) = fun _ => 0 :=
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:45: |ctrl.core.bridge.fieldOfActivity K x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/PolymerGeometricReadoutFull.lean:26: fieldOfActivity : ActivityFamily d k → BalabanFiniteSite d k → ℝ
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/PolymerGeometricReadoutFull.lean:27: zero_field : fieldOfActivity (fun _ => 0) = fun _ => 0
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/PolymerGeometricReadoutFull.lean:56: fieldOfActivity := finiteReadoutFieldFull r
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/PolymerGeometricReadoutFull.lean:78: (geometricBridgeFull rep polys).fieldOfActivity (fun _ => 0) = fun _ => 0 :=
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridgeFiniteFull.lean:15: (|ctrl.core.bridge.fieldOfActivity K₁ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridgeFiniteFull.lean:17: (|ctrl.core.bridge.fieldOfActivity K₁ x -
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridgeFiniteFull.lean:18: ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridgeFiniteFull.lean:27: |ctrl.core.bridge.fieldOfActivity K x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridgeFiniteFull.lean:35: |ctrl.core.bridge.fieldOfActivity K₁ x -
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridgeFiniteFull.lean:36: ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGBridgeCompatibilityFull.lean:26: |ctrl.core.bridge.fieldOfActivity K x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGBridgeCompatibilityFull.lean:34: |ctrl.core.bridge.fieldOfActivity K₁ x -
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGBridgeCompatibilityFull.lean:35: ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGBridgeCompatibilityFull.lean:43: (|ctrl.core.bridge.fieldOfActivity K₁ x| ≤
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGBridgeCompatibilityFull.lean:45: (|ctrl.core.bridge.fieldOfActivity K₁ x -
+[fieldOfActivity] YangMills/ClayCore/BalabanRG/RGBridgeCompatibilityFull.lean:46: ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:45: bridge := canonicalGeometricBridgeFull polys
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:46: zero_activity_zero_field := canonicalGeometricBridgeFull_zero polys
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:61: simpa [canonicalGeometricBridgeFull, canonicalGeometricReadoutFull,
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:80: (canonicalGeometricBridgeFull ({p₀} : Finset (Polymer d (Int.ofNat k)))) := by
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:105: (canonicalGeometricBridgeFull ({p₀} : Finset (Polymer d (Int.ofNat k)))) := by
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSkeleton.lean:47: (canonicalGeometricBridgeFull polys))
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSkeleton.lean:49: (canonicalGeometricBridgeFull polys)) :
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSkeleton.lean:61: unfold canonicalGeometricBridgeFull canonicalGeometricReadoutFull
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSkeleton.lean:69: (canonicalGeometricBridgeFull (∅ : Finset (Polymer d (Int.ofNat k)))) := by
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSkeleton.lean:80: (canonicalGeometricBridgeFull (∅ : Finset (Polymer d (Int.ofNat k)))) := by
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/PolymerCanonicalSiteFull.lean:40: def canonicalGeometricBridgeFull {d k : ℕ}
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/PolymerCanonicalSiteFull.lean:46: theorem canonicalGeometricBridgeFull_zero {d k : ℕ}
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/PolymerCanonicalSiteFull.lean:48: (canonicalGeometricBridgeFull polys).fieldOfActivity (fun _ => 0) = fun _ => 0 :=
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/PolymerCanonicalSiteFull.lean:54: (canonicalGeometricBridgeFull ({p₀} : Finset (Polymer d (Int.ofNat k)))).fieldOfActivity K
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/PolymerCanonicalSiteFull.lean:61: simp [canonicalGeometricBridgeFull, canonicalGeometricReadoutFull,
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/PolymerCanonicalSiteFull.lean:71: (canonicalGeometricBridgeFull ({p₀} : Finset (Polymer d (Int.ofNat k)))).fieldOfActivity K
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/PolymerCanonicalSiteFull.lean:81: (canonicalGeometricBridgeFull ({p₀} : Finset (Polymer d (Int.ofNat k)))).fieldOfActivity K
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:35: |(canonicalGeometricBridgeFull polys).fieldOfActivity K x| ≤
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:43: |(canonicalGeometricBridgeFull polys).fieldOfActivity K₁ x -
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:44: (canonicalGeometricBridgeFull polys).fieldOfActivity K₂ x| ≤
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:55: (canonicalGeometricBridgeFull polys) :=
+[canonicalGeometricBridgeFull] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:64: (canonicalGeometricBridgeFull polys) :=
+[SingletonPointwiseBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:83: (hlarge : SingletonPointwiseBound d N_c k C_large p₀)
+[SingletonPointwiseBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:97: (hlarge : SingletonPointwiseBound d N_c k C_large p₀)
+[SingletonPointwiseBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:115: (hlarge : SingletonPointwiseBound d N_c k C_large p₀)
+[SingletonPointwiseBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:135: (hlarge : SingletonPointwiseBound d N_c k C_large p₀)
+[SingletonPointwiseBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:32: def SingletonPointwiseBound (d N_c : ℕ) [NeZero N_c]
+[SingletonPointwiseBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:42: (h₁ : SingletonPointwiseBound d N_c k C₁ p₀)
+[SingletonPointwiseBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:44: SingletonPointwiseBound d N_c k C₂ p₀ := by
+[SingletonPointwiseBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:61: (hpoint : SingletonPointwiseBound d N_c k C p₀)
+[SingletonPointwiseBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:81: (hpoint : SingletonPointwiseBound d N_c k C p₀)
+[SingletonPointwiseBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:94: (hpoint : SingletonPointwiseBound d N_c k C p₀)
+[SingletonPointwiseBound] YangMills/ClayCore/BalabanRG/CauchyDecayFromAF.lean:224: (hlarge : SingletonPointwiseBound d N_c 0 C_large p₀)
+[SingletonPointwiseBound] YangMills/ClayCore/BalabanRG/CauchyDecayFromAF.lean:247: (hlarge : SingletonPointwiseBound d N_c 0 C_large p₀)
+[SingletonPointwiseCauchyBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:34: def SingletonPointwiseCauchyBound (d N_c : ℕ) [NeZero N_c]
+[SingletonPointwiseCauchyBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:44: (h₁ : SingletonPointwiseCauchyBound d N_c k C₁ p₀)
+[SingletonPointwiseCauchyBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:46: SingletonPointwiseCauchyBound d N_c k C₂ p₀ := by
+[SingletonPointwiseCauchyBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:63: (hpoint : SingletonPointwiseCauchyBound d N_c k C p₀)
+[SingletonPointwiseCauchyBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:85: (hcauchy : SingletonPointwiseCauchyBound d N_c k C_cauchy p₀)
+[SingletonPointwiseCauchyBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:99: (hcauchy : SingletonPointwiseCauchyBound d N_c k C_cauchy p₀)
+[SingletonPointwiseCauchyBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:117: (hcauchy : SingletonPointwiseCauchyBound d N_c k C_cauchy p₀)
+[SingletonPointwiseCauchyBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:137: (hcauchy : SingletonPointwiseCauchyBound d N_c k C_cauchy p₀)
+[SingletonPointwiseCauchyBound] YangMills/ClayCore/BalabanRG/CauchyDecayFromAF.lean:226: (hcauchy : SingletonPointwiseCauchyBound d N_c 0 C_cauchy p₀)
+[SingletonPointwiseCauchyBound] YangMills/ClayCore/BalabanRG/CauchyDecayFromAF.lean:249: (hcauchy : SingletonPointwiseCauchyBound d N_c 0 C_cauchy p₀)
+[SingletonFullLargeFieldBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:68: def SingletonFullLargeFieldBound (d N_c : ℕ) [NeZero N_c]
+[SingletonFullLargeFieldBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:78: (hbound : SingletonFullLargeFieldBound d N_c k β p₀) :
+[SingletonFullLargeFieldBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:125: (hlarge : SingletonFullLargeFieldBound d N_c k β p₀)
+[SingletonFullLargeFieldBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:96: (hlarge : SingletonFullLargeFieldBound d N_c k β p₀) :
+[SingletonFullLargeFieldBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:116: (hlarge : SingletonFullLargeFieldBound d N_c k β p₀)
+[SingletonFullLargeFieldBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:21: `SingletonFullLargeFieldBound` when `C ≤ exp(-β)`.
+[SingletonFullLargeFieldBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:63: SingletonFullLargeFieldBound d N_c k β p₀ := by
+[SingletonFullCauchyBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:21: and then upgrade it to `SingletonFullCauchyBound` once
+[SingletonFullCauchyBound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:65: SingletonFullCauchyBound d N_c k β p₀ := by
+[SingletonFullCauchyBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:93: def SingletonFullCauchyBound (d N_c : ℕ) [NeZero N_c]
+[SingletonFullCauchyBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:103: (hcauchy : SingletonFullCauchyBound d N_c k β p₀) :
+[SingletonFullCauchyBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:126: (hcauchy : SingletonFullCauchyBound d N_c k β p₀) :
+[SingletonFullCauchyBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:106: (hcauchy : SingletonFullCauchyBound d N_c k β p₀) :
+[SingletonFullCauchyBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:117: (hcauchy : SingletonFullCauchyBound d N_c k β p₀) :
+[SingletonFullCauchyBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:83: (hcauchy : SingletonFullCauchyBound d N_c k β p₀) :
+[SingletonFullCauchyBound] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:96: (hcauchy : SingletonFullCauchyBound d N_c k β p₀) :
+[\|K p₀\|] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:18: |K p₀| ≤ C · dist(K, 0)
+[\|K p₀\|] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:36: |K p₀| ≤ C * ActivityNorm.dist K (fun _ => 0)
+[\|K p₀\|] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:47: |K p₀|
+[\|K p₀\|] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:66: |K p₀|
+[\|K₁ p₀ - K₂ p₀\|] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:19: |K₁ p₀ - K₂ p₀| ≤ C · dist(K₁, K₂)
+[\|K₁ p₀ - K₂ p₀\|] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:49: |K₁ p₀ - K₂ p₀|
+[\|K₁ p₀ - K₂ p₀\|] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:68: |K₁ p₀ - K₂ p₀|
+[Polymer] YangMills/P8_PhysicalGap/BalabanToLSI.lean:140: 2. Polymer cluster expansion with exponentially decaying activities
+[Polymer] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:41: (polys : Finset (Polymer d (Int.ofNat k)))
+[Polymer] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:36: (p₀ : Polymer d (Int.ofNat k)) : Prop :=
+[Polymer] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:43: (k : ℕ) {C₁ C₂ : ℝ} (p₀ : Polymer d (Int.ofNat k))
+[Polymer] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:62: (k : ℕ) (β C : ℝ) (p₀ : Polymer d (Int.ofNat k))
+[Polymer] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:82: (k : ℕ) (β C_large C_cauchy : ℝ) (p₀ : Polymer d (Int.ofNat k))
+[Polymer] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:96: (k : ℕ) (β C_large C_cauchy : ℝ) (p₀ : Polymer d (Int.ofNat k))
+[Polymer] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:114: (k : ℕ) (β C_large C_cauchy : ℝ) (p₀ : Polymer d (Int.ofNat k))
+[Polymer] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:134: (k : ℕ) (β C_large C_cauchy : ℝ) (p₀ : Polymer d (Int.ofNat k))
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:2: import YangMills.ClayCore.BalabanRG.PolymerCombinatorics
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:10: # PolymerPartitionFunction -- Layer 2A (minimal)
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:16: def CompatibleSubfamily {d : ℕ} {L : ℤ} (S : Finset (Polymer d L)) : Prop :=
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:17: ∀ X ∈ S, ∀ Y ∈ S, X ≠ Y → Polymer.Compatible X Y
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:20: CompatibleSubfamily (∅ : Finset (Polymer d L)) :=
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:23: theorem compatibleSubfamily_singleton {d : ℕ} {L : ℤ} (X : Polymer d L) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:24: CompatibleSubfamily ({X} : Finset (Polymer d L)) := by
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:30: (Gamma : Finset (Polymer d L)) : Finset (Finset (Polymer d L)) :=
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:34: {Gamma S : Finset (Polymer d L)} :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:39: (Gamma : Finset (Polymer d L)) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:40: (∅ : Finset (Polymer d L)) ∈ compatibleSubfamilies Gamma := by
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:44: {Gamma : Finset (Polymer d L)} {X : Polymer d L} (hX : X ∈ Gamma) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:45: ({X} : Finset (Polymer d L)) ∈ compatibleSubfamilies Gamma := by
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:49: (K : Activity d L) (S : Finset (Polymer d L)) : ℝ :=
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:53: partitionWeight K (∅ : Finset (Polymer d L)) = 1 := by
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:57: (K : Activity d L) (X : Polymer d L) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:58: partitionWeight K ({X} : Finset (Polymer d L)) = K X := by
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:62: (K : Activity d L) (S : Finset (Polymer d L)) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:67: (K : Activity d L) (S : Finset (Polymer d L)) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:72: (Gamma : Finset (Polymer d L)) (K : Activity d L) : ℝ :=
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:77: polymerPartitionFunction (∅ : Finset (Polymer d L)) K = 1 := by
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:81: have hf : ({∅} : Finset (Finset (Polymer d L))).filter CompatibleSubfamily = {∅} := by
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:91: (K : Activity d L) (X : Polymer d L) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:92: polymerPartitionFunction ({X} : Finset (Polymer d L)) K = 1 + K X := by
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:95: rw [show ({X} : Finset (Polymer d L)) = insert X ∅ by simp]
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:99: have hfull : ({∅} ∪ Finset.image (insert X) {∅} : Finset (Finset (Polymer d L))) =
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:102: have hf : ({∅, {X}} : Finset (Finset (Polymer d L))).filter CompatibleSubfamily =
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:122: (Gamma : Finset (Polymer d L)) (K : Activity d L) : ℝ :=
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:126: (Gamma : Finset (Polymer d L)) (K : Activity d L) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:129: have hempty : (∅ : Finset (Polymer d L)) ∈ compatibleSubfamilies Gamma :=
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:131: have hnot : (∅ : Finset (Polymer d L)) ∉ (compatibleSubfamilies Gamma).erase ∅ := by
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:140: (Gamma : Finset (Polymer d L)) (K : Activity d L) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:150: (Gamma : Finset (Polymer d L)) (K : Activity d L) (B : ℝ) : Prop :=
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:154: (Gamma : Finset (Polymer d L)) (K : Activity d L) (B : ℝ)
+[Polymer] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:2: import YangMills.ClayCore.BalabanRG.PolymerGeometricReadoutFull
+[Polymer] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:3: import YangMills.ClayCore.BalabanRG.PolymerCanonicalSiteFull
+[Polymer] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:43: (k : ℕ) (polys : Finset (Polymer d (Int.ofNat k))) :
+[Polymer] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:50: (k : ℕ) (polys : Finset (Polymer d (Int.ofNat k))) :
+[Polymer] YangMills/ClayCore/BalabanRG/DirichletIdentificationClosure.lean:12: Closes the semantic identification: constructs PolymerDirichletRateIdentification
+[Polymer] YangMills/ClayCore/BalabanRG/DirichletIdentificationClosure.lean:26: PolymerDirichletRateIdentification d N_c :=
+[Polymer] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:2: import YangMills.ClayCore.BalabanRG.PolymerCombinatorics
+[Polymer] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:18: abbrev ActivityFamily (d : ℕ) (k : ℕ) := Polymer d (Int.ofNat k) → ℝ
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:2: import YangMills.ClayCore.BalabanRG.FinitePolymerReadout
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:11: # PolymerGeometricReadout — (v1.0.2-alpha)
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:17: `PolymerRepresentativeSite`: an abstract assignment Polymer → BalabanLatticeSite.
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:22: - Phase 1 (here): abstract PolymerRepresentativeSite interface
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:31: structure PolymerRepresentativeSite (d k : ℕ) where
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:33: siteOf : Polymer d (Int.ofNat k) → BalabanLatticeSite d k
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:35: /-- Lift a PolymerRepresentativeSite + Finset to a FinitePolymerReadout.
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:38: (rep : PolymerRepresentativeSite d k)
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:39: (polys : Finset (Polymer d (Int.ofNat k))) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:40: FinitePolymerReadout d k where
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:46: (rep : PolymerRepresentativeSite d k)
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:47: (polys : Finset (Polymer d (Int.ofNat k)))
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:54: (rep : PolymerRepresentativeSite d k)
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:55: (polys : Finset (Polymer d (Int.ofNat k))) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:61: (rep : PolymerRepresentativeSite d k)
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:62: (polys : Finset (Polymer d (Int.ofNat k))) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:68: (rep : PolymerRepresentativeSite d k)
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:69: (polys : Finset (Polymer d (Int.ofNat k))) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:76: (rep : PolymerRepresentativeSite d k)
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:77: (polys : Finset (Polymer d (Int.ofNat k))) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:83: (x₀ : BalabanLatticeSite d k) : PolymerRepresentativeSite d k where
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:88: (p₀ : Polymer d (Int.ofNat k)) (x₀ : BalabanLatticeSite d k) :
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:90: singletonFinitePolymerReadout p₀ x₀ := rfl
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:96: siteOf maps Polymer → LatticeSite d (infinite integer lattice).
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:98: structure PhysicalPolymerRepSite (d k : ℕ) where
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:99: siteOf : Polymer d (Int.ofNat k) → LatticeSite d
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:102: def siteOfBalaban {d k : ℕ} [NeZero d] (rep : PhysicalPolymerRepSite d k)
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:103: (X : Polymer d (Int.ofNat k)) : BalabanLatticeSite d k :=
+[Polymer] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:106: /-- Lift to PolymerRepresentativeSite. -/
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldSplitSelection.lean:23: (K : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldSplitSelection.lean:32: (bridge : ActivityFieldBridge d k) (β : ℝ) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldSplitSelection.lean:40: (bridge : ActivityFieldBridge d k) (β : ℝ) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldSplitSelection.lean:49: (bridge : ActivityFieldBridge d k) (β : ℝ) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldSplitSelection.lean:57: (bridge : ActivityFieldBridge d k) (β : ℝ) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldSplitSelection.lean:65: (bridge : ActivityFieldBridge d k) (β : ℝ) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:14: (K₁ K₂ : ActivityFamily d k) (x : BalabanFiniteSite d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:25: (K : ActivityFamily d k) (x : BalabanFiniteSite d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:33: (K₁ K₂ : ActivityFamily d k) (x : BalabanFiniteSite d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFiniteFull.lean:44: (K₁ K₂ : ActivityFamily d k) (x : BalabanFiniteSite d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:37: ∀ (K₁ K₂ : ActivityFamily d k),
+[ActivityFamily] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:101: (K : ActivityFamily d k) (x : BalabanFiniteSite d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:119: (K₁ K₂ : ActivityFamily d k) (x : BalabanFiniteSite d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldSuppression.lean:30: (bridge : ActivityFieldBridge d k) (β : ℝ) (K : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldSuppression.lean:40: (bridge : ActivityFieldBridge d k) (β : ℝ) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldSuppression.lean:48: (bridge : ActivityFieldBridge d k) (β : ℝ) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldSuppression.lean:57: (bridge : ActivityFieldBridge d k) (β : ℝ) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldSuppression.lean:69: (bridge : ActivityFieldBridge d k) (β : ℝ) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:28: (bridge : ActivityFieldBridge d k) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:40: (bridge : ActivityFieldBridge d k) (K : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:17: (f : ActivityFamily d k → ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:20: (n : ℕ) (K₁ K₂ : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:47: (T : ActivityFamily d k → ActivityFamily d k')
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:50: (K₁ K₂ : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:38: ActivityFamily d k → BalabanFiniteSite d k → ℝ :=
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:63: ∀ (K : ActivityFamily d k) (x : BalabanFiniteSite d k),
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:71: ∀ (K₁ K₂ : ActivityFamily d k) (x : BalabanFiniteSite d k),
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:91: (K : ActivityFamily d k) (x : BalabanFiniteSite d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:100: (K₁ K₂ : ActivityFamily d k) (x : BalabanFiniteSite d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:22: norm         : ActivityFamily d k → ℝ
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:35: def dist (K₁ K₂ : ActivityFamily d k) : ℝ :=
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:41: theorem dist_self (K : ActivityFamily d k) : dist K K = 0 := by
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:46: theorem dist_comm (K₁ K₂ : ActivityFamily d k) : dist K₁ K₂ = dist K₂ K₁ := by
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:51: theorem dist_triangle (K₁ K₂ K₃ : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:58: theorem norm_sub_le (K₁ K₂ : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:48: (K : ActivityFamily d k) (x : BalabanLatticeSite d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:32: (ctrl : RGViaBridgeControl d N_c k β) (K : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:43: (K₁ K₂ : ActivityFamily d k) (C : ℝ) (hC : 0 ≤ C) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:54: (K₁ K₂ : ActivityFamily d k) (C : ℝ) (hC : 0 ≤ C) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:69: (bridge : ActivityFieldBridge d k) (K : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridge.lean:80: (K₁ K₂ : ActivityFamily d k) (C : ℝ) (hC : 0 ≤ C) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:35: large_field_bound : ∀ (K : ActivityFamily d k),
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:42: cauchy_bound : ∀ (K₁ K₂ : ActivityFamily d k) (C : ℝ), 0 ≤ C →
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:52: (bridge : ActivityFieldBridge d k) (K : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:63: (bridge : ActivityFieldBridge d k) (K₁ K₂ : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:93: (ctrl : RGViaBridgeControl d N_c k β) (K : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:104: (ctrl : RGViaBridgeControl d N_c k β) (K₁ K₂ : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:14: Abstract interface bridging ActivityFamily (Polymer-based) and
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:31: (K : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:37: (K : ActivityFamily d k) (t : ℝ) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:43: (K : ActivityFamily d k) (t : ℝ) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:55: (K : ActivityFamily d k) (β : ℝ) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:62: (K : ActivityFamily d k) (β : ℝ) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:71: (K : ActivityFamily d k) : Prop :=
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:77: (K : ActivityFamily d k) : Prop :=
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:82: (N_c : ℕ) [NeZero N_c] (β : ℝ) (K : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:90: (N_c : ℕ) [NeZero N_c] (β : ℝ) (K : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:108: (N_c : ℕ) [NeZero N_c] (β : ℝ) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:31: (p₀ : Polymer d (Int.ofNat k)) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:71: ∀ (K : ActivityFamily d k),
+[ActivityFamily] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:96: ∀ (K₁ K₂ : ActivityFamily d k),
+[ActivityFamily] YangMills/ClayCore/BalabanRG/PolymerSiteReadout.lean:27: readoutField : ActivityFamily d k → BalabanLatticeSite d k → ℝ
+[ActivityFamily] YangMills/ClayCore/BalabanRG/PolymerCanonicalSite.lean:82: (p₀ : Polymer d (Int.ofNat k)) (K : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/PolymerCanonicalSite.lean:99: (p₀ : Polymer d (Int.ofNat k)) (K : ActivityFamily d k)
+[ActivityFamily] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSkeleton.lean:59: (K : ActivityFamily d k) (x : BalabanFiniteSite d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:27: (K₁ K₂ : ActivityFamily d k) (x : BalabanFiniteSite d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:44: (K : ActivityFamily d k) (x : BalabanFiniteSite d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/BalabanBlockingMap.lean:22: ActivityFamily d k → ActivityFamily d (k + 1) :=
+[ActivityFamily] YangMills/ClayCore/BalabanRG/BalabanBlockingMap.lean:28: ∀ K₁ K₂ : ActivityFamily d k,
+[ActivityFamily] YangMills/ClayCore/BalabanRG/BalabanBlockingMap.lean:47: ∀ k, ∃ C > 0, ∀ K : ActivityFamily d k,
+[ActivityFamily] YangMills/ClayCore/BalabanRG/BalabanBlockingMap.lean:55: ∀ k, ∀ K₁ K₂ : ActivityFamily d k,
+[ActivityFamily] YangMills/ClayCore/BalabanRG/PolymerGeometricReadoutFull.lean:45: (K : ActivityFamily d k) : BalabanFiniteSite d k → ℝ :=
+[ActivityFamily] YangMills/ClayCore/BalabanRG/PolymerGeometricReadoutFull.lean:84: (p₀ : Polymer d (Int.ofNat k)) (K : ActivityFamily d k) :
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGCauchySummabilitySkeleton.lean:29: ∃ C_uv > 0, ∀ K₁ K₂ : ActivityFamily d k,
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGCauchySummabilitySkeleton.lean:45: (h_uv : ∀ K₁ K₂ : ActivityFamily d k,
+[ActivityFamily] YangMills/ClayCore/BalabanRG/RGCauchySummabilitySkeleton.lean:48: (K₁ K₂ : ActivityFamily d k) :
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:16: - `localAlgebra eval Λ` — real observables supported on finite region Λ
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:18: - `localGaugeInvariantAlgebra eval Λ` — physical observables: local AND gauge-invariant
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:30: variable {E : Type*} (eval : GaugeConfig d N G → E → G)
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:34: ∀ U V : GaugeConfig d N G, (∀ e ∈ Λ, eval U e = eval V e) → f U = f V
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:38: carrier := {f | IsLocalObservable eval Λ f}
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:49: localAlgebra eval Λ₁ ≤ localAlgebra eval Λ₂ :=
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:67: variable {E : Type*} (eval : GaugeConfig d N G → E → G)
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:86: carrier := (localAlgebra eval Λ).carrier ∩ gaugeInvariantAlgebra.carrier
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:88: ⟨(localAlgebra eval Λ).mul_mem hl1 hl2, gaugeInvariantAlgebra.mul_mem hg1 hg2⟩
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:90: ⟨(localAlgebra eval Λ).one_mem, gaugeInvariantAlgebra.one_mem⟩
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:92: ⟨(localAlgebra eval Λ).add_mem hl1 hl2, gaugeInvariantAlgebra.add_mem hg1 hg2⟩
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:94: ⟨(localAlgebra eval Λ).zero_mem, gaugeInvariantAlgebra.zero_mem⟩
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:96: ⟨(localAlgebra eval Λ).algebraMap_mem r, gaugeInvariantAlgebra.algebraMap_mem r⟩
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:100: localGaugeInvariantAlgebra eval Λ₁ ≤ localGaugeInvariantAlgebra eval Λ₂ :=
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:102: ⟨localAlgebra_isotony eval h hloc, hgauge⟩
+[eval] YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean:107: (hf : f ∈ localGaugeInvariantAlgebra eval Λ) :
+[eval] YangMills/P2_MaxEntClustering/MaxEntStates.lean:20: def LocalMarginalFamily {E : Type*} (eval : GaugeConfig d N G → E → G) :=
+[eval] YangMills/P2_MaxEntClustering/MaxEntStates.lean:21: ∀ Λ : Set E, localGaugeInvariantAlgebra eval Λ →ₗ[ℝ] ℝ
+[eval] YangMills/P2_MaxEntClustering/MaxEntStates.lean:25: {E : Type*} (eval : GaugeConfig d N G → E → G)
+[eval] YangMills/P2_MaxEntClustering/MaxEntStates.lean:27: (marg : LocalMarginalFamily eval) : Prop :=
+[eval] YangMills/P2_MaxEntClustering/MaxEntStates.lean:29: IsConsistentMarginal ω (localGaugeInvariantAlgebra eval Λ) (marg Λ)
+[evaluation] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:32: evaluation differences at `p₀` are controlled by
+[evaluation] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:30: /-- Minimal pointwise bridge: evaluation at `p₀` is controlled by
+[pointwise] YangMills/P3_BalabanRG/Phase3Assembly.lean:33: /-- The constant profile is pointwise positive. -/
+[pointwise] YangMills/L4_LargeField/Suppression.lean:17: inequality given that pointwise bound.
+[pointwise] YangMills/L4_LargeField/Suppression.lean:48: Given a pointwise bound on the large-field Boltzmann weight,
+[pointwise] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:17: through a simpler pointwise difference bound
+[pointwise] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:31: /-- Minimal pointwise bridge for singleton Cauchy control:
+[pointwise] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:58: /-- A pointwise bridge bound upgrades to the singleton full Cauchy bound
+[pointwise] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:77: /-- Build the singleton full bridge control from pointwise large-field and
+[pointwise] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:78: pointwise Cauchy bounds plus scalar comparisons.
+[pointwise] YangMills/ClayCore/BalabanRG/PolymerCombinatorics.lean:60: /-- KP gives a pointwise activity bound. -/
+[pointwise] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:16: pointwise bound:
+[pointwise] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:56: /-- A pointwise bridge bound upgrades to the singleton full large-field bound
+[pointwise] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:75: /-- Build the singleton full bridge control from a pointwise large-field bound,
+[pointwise] YangMills/ClayCore/BalabanRG/CauchyDecayFromAF.lean:215: /-- High-level consumer from pointwise singleton full-bridge data.
+[pointwise] YangMills/ClayCore/BalabanRG/CauchyDecayFromAF.lean:216: Uses pointwise large-field and Cauchy bounds at a singleton polymer,
+[pointwise] YangMills/ClayCore/BalabanRG/CauchyDecayFromAF.lean:240: /-- Zero-field extractor for the pointwise singleton full-bridge control.
+[norm] YangMills/P5_KPDecay/KPTerminalBound.lean:21: /-- HasSpectralGap + norm bounds → exponential decay of wilsonConnectedCorr. -/
+[norm] YangMills/P7_SpectralGap/WilsonDistanceBridge.lean:15: the transfer matrix norm at time 0.
+[norm] YangMills/P7_SpectralGap/WilsonDistanceBridge.lean:31: -- Physical bridge: correlator bounded by state norms × transfer matrix norm at t=0
+[norm] YangMills/P8_PhysicalGap/LSItoSpectralGap.lean:254: hu1.norm.mono' ((hu_meas.min measurable_const).max measurable_const).aestronglyMeasurable
+[norm] YangMills/P8_PhysicalGap/LSItoSpectralGap.lean:287: · exact hu1.norm
+[norm] YangMills/P8_PhysicalGap/LSItoSpectralGap.lean:337: integral_mono (ht_int n).norm (integrable_const _) (fun x => ht_bdd n x)
+[norm] YangMills/P8_PhysicalGap/EntropyPerturbation.lean:251: -- Rewrite norm of division explicitly to avoid rewrite failures
+[norm] YangMills/P8_PhysicalGap/FeynmanKacBridge.lean:57: -- We go through norm: ‖inner ℝ u v‖ = |inner ℝ u v| for reals
+[norm] YangMills/ClayCore/BalabanRG/ContractiveMapReduction.lean:26: is contractive in the C^k norm with constant rho(β) → 0 as β → ∞.
+[norm] YangMills/ClayCore/BalabanRG/ContractiveMapReduction.lean:34: - A norm on the activity space (not yet formalized)
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:20: /-- Strong norm interface for polymer activity spaces. -/
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:23: norm_nonneg  : ∀ K, 0 ≤ norm K
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:24: norm_zero    : norm (fun _ => 0) = 0
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:25: norm_add_le  : ∀ K₁ K₂, norm (fun p => K₁ p + K₂ p) ≤ norm K₁ + norm K₂
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:26: norm_neg     : ∀ K, norm (fun p => -K p) = norm K
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:27: norm_smul    : ∀ (c : ℝ) K, norm (fun p => c * K p) = |c| * norm K
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:28: norm_eq_zero : ∀ K, norm K = 0 → ∀ p, K p = 0
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:34: /-- Distance induced by the activity norm. -/
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:36: ActivityNorm.norm (fun p => K₁ p - K₂ p)
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:59: norm (fun p => K₁ p - K₂ p) ≤ norm K₁ + norm K₂ := by
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:62: calc norm (fun p => K₁ p + -K₂ p)
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:63: ≤ norm K₁ + norm (fun p => -K₂ p) := norm_add_le K₁ (fun p => -K₂ p)
+[norm] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:64: _ = norm K₁ + norm K₂ := by rw [norm_neg]
+[norm] YangMills/ClayCore/BalabanRG/PolymerRGMapRealization.lean:25: This requires a Banach norm on activity space (not yet in Lean).
+[norm] YangMills/ClayCore/BalabanRG/PolymerRGMapRealization.lean:66: norm estimates, Bakry-Émery via Mathlib LieGroup).
+[norm] YangMills/ClayCore/BalabanRG/RGMapNormIdentification.lean:13: Uses BalabanBlockingMap (Layer 11B) for norm/contraction infrastructure.
+[norm] YangMills/ClayCore/BalabanRG/RGMapNormIdentification.lean:29: /-- Conditional full identification package from norm estimates. -/
+[norm] YangMills/ClayCore/BalabanRG/RGContractionRate.lean:76: - A Banach norm on the activity space (not yet formalized)
+[norm] YangMills/ClayCore/BalabanRG/SmallFieldLargeFieldSplit.lean:136: /-! ## Layer 15C: Field selector and large-field norm -/
+[norm] YangMills/ClayCore/BalabanRG/SmallFieldLargeFieldSplit.lean:163: /-- Discrete large-field norm: number of sites exceeding the threshold. -/
+[norm] YangMills/ClayCore/BalabanRG/PhysicalWitnessToDirichletBridge.lean:60: 1. PhysicalContractionRealized  ← Balaban blocking-map norm (P81, P82)
+[dist] YangMills/P3_BalabanRG/MultiscaleDecay.lean:66: -- MultiscaleDecayBound: -(↑n * m') * dist
+[dist] YangMills/P3_BalabanRG/MultiscaleDecay.lean:67: -- bound gives: -m * dist
+[dist] YangMills/P3_BalabanRG/MultiscaleDecay.lean:89: -- hbound: C * exp(-↑n * m * dist)   [MultiscaleDecayBound uses -↑n * m]
+[dist] YangMills/P3_BalabanRG/MultiscaleDecay.lean:90: -- goal:   C * exp(-(↑n * m) * dist)  [UniformWilsonDecay uses -(↑n*m)]
+[dist] YangMills/P3_BalabanRG/MultiscaleDecay.lean:91: -- -↑n * m * dist = -(↑n * m) * dist by ring → use linarith via Real.exp_le_exp
+[dist] YangMills/P3_BalabanRG/MultiscaleDecay.lean:105: -- hb : |corr| ≤ C * exp(-↑n * m * dist)
+[dist] YangMills/P3_BalabanRG/MultiscaleDecay.lean:106: -- goal: |corr| ≤ C * exp(-(↑n * m) * dist)
+[dist] YangMills/P3_BalabanRG/MultiscaleDecay.lean:107: -- these are equal: -↑n * m * dist = -(↑n * m) * dist
+[dist] YangMills/ClayCore/BalabanRG/ActivityFieldSuppression.lean:21: - `suppression_bound_small`: dist(largePart(K), 0) = 0 when small
+[dist] YangMills/ClayCore/BalabanRG/ActivityFieldSuppression.lean:54: /-- Small field: dist(largePart, 0) = 0. 0 sorrys. -/
+[dist] YangMills/ClayCore/BalabanRG/ActivityFieldSuppression.lean:66: /-- Large field: dist(smallPart, 0) = 0. 0 sorrys. -/
+[dist] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:17: - SmallField: largePart = 0  →  dist = 0  ≤  exp(-β)·dist(K,0)
+[dist] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:25: /-- SmallField case: dist(largePart, 0) = 0. 0 sorrys. -/
+[dist] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:13: Adds: norm_add_le, norm_smul, norm_sub_le, norm_eq_zero, dist.
+[dist] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:42: unfold dist
+[dist] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:47: unfold dist
+[dist] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:52: dist K₁ K₃ ≤ dist K₁ K₂ + dist K₂ K₃ := by
+[dist] YangMills/ClayCore/BalabanRG/ActivitySpaceNorms.lean:53: unfold dist
+[dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:34: /-- P80: dist(largePart(K), 0) ≤ exp(-β) · dist(K, 0) -/
+[dist] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:41: /-- P81: dist(largePart(K₁), 0) ≤ C · dist(K₁, K₂) -/
+[bound] YangMills/ErikssonBridge.lean:61: -- Use Taylor lower bound at order 3: 1 + x + x²/2 ≤ exp x
+[bound] YangMills/P3_BalabanRG/MultiscaleDecay.lean:84: have hb := hn.bound N p q
+[bound] YangMills/P3_BalabanRG/RGContraction.lean:60: /-- Fixed-dimension one-step RG bound.
+[bound] YangMills/P3_BalabanRG/RGContraction.lean:80: /-- `rg_step_bound` from L3 provides the one-step bound. -/
+[bound] YangMills/P3_BalabanRG/CorrelationNorms.lean:44: bound :
+[bound] YangMills/P3_BalabanRG/CorrelationNorms.lean:55: ⟨h.C, h.m, h.hC, h.hm, h.bound⟩
+[bound] YangMills/P3_BalabanRG/CorrelationNorms.lean:64: /-- Multiscale decay bound after n RG steps (lives in Prop as existential). -/
+[bound] YangMills/P3_BalabanRG/CorrelationNorms.lean:83: have hb := h.bound N p q
+[bound] YangMills/P6_AsymptoticFreedom/BetaFunction.lean:91: /-- F6.1 terminal: b0 > 0 + lower bound framework. -/
+[bound] YangMills/P6_AsymptoticFreedom/AsymptoticFreedomDischarge.lean:34: /-- F6.3 TERMINAL: KP bound + continuum mass → ClayYangMillsTheorem.
+[bound] YangMills/P6_AsymptoticFreedom/AsymptoticFreedomDischarge.lean:68: -- (H1) Small-field: KP decay bound
+[bound] YangMills/P5_KPDecay/KPHypotheses.lean:18: /-- Small-field polymer activity bound (H1).
+[bound] YangMills/P5_KPDecay/KPHypotheses.lean:43: /-- KP geometric series bound. C_anim(4) = 512, margin κ > log 512.
+[bound] YangMills/P5_KPDecay/KPHypotheses.lean:107: /-- Direct: decay bound → ConnectedCorrDecay. -/
+[bound] YangMills/P5_KPDecay/KPHypotheses.lean:129: /-- F5.1 terminal: KP hypotheses + explicit decay bound → ConnectedCorrDecay. -/
+[bound] YangMills/P5_KPDecay/DecayFromRG.lean:21: /-- Direct: KP bound → ConnectedCorrDecay witness. -/
+[bound] YangMills/P5_KPDecay/DecayFromRG.lean:32: /-- H1 + H2 + KP bound → ConnectedCorrDecay witness. -/
+[bound] YangMills/P5_KPDecay/DecayFromRG.lean:46: /-- F5.3 TERMINAL: H1 + H2 + H3 + KP bound + RG increment → UniformWilsonDecay.
+[bound] YangMills/L4_LargeField/Suppression.lean:15: is exponentially suppressed. The hard analytic bound (Bałaban estimate)
+[bound] YangMills/L4_LargeField/Suppression.lean:42: /-- The exponential bound: exp(-a) ≤ exp(-b) iff b ≤ a. -/
+[bound] YangMills/L3_RGIteration/BlockSpin.lean:74: Here we state the key ratio bound. -/
+[bound] YangMills/P7_SpectralGap/WilsonDistanceBridge.lean:13: Physical meaning: at zero separation, the correlator bound
+[bound] YangMills/P7_SpectralGap/WilsonDistanceBridge.lean:20: /-- F7.3 TERMINAL: hdist discharged via uniform correlator bound.
+[bound] YangMills/P7_SpectralGap/TransferMatrixGap.lean:21: /-! ### Step 1: transferKernel lower bound -/
+[bound] YangMills/P7_SpectralGap/TransferMatrixGap.lean:58: Uses ε derived from kernel lower bound, but falls back to const instance. -/
+[bound] YangMills/P7_SpectralGap/TransferMatrixGap.lean:66: -- The kernel bound confirms positivity; the abstract gap uses ε=1/2
+[bound] YangMills/P8_PhysicalGap/MarkovVarianceDecay.lean:65: /-! ## Step 3: Poincaré bound -/
+[bound] YangMills/P8_PhysicalGap/CovarianceLemmas.lean:104: /-- Covariance bound: |Cov(F,G)| ≤ √Var(F) · √Var(G) — v0.8.30.
+[bound] YangMills/P8_PhysicalGap/EntropyPerturbation.lean:161: -- build ∀ᶠ bound on |f t - c|
+[bound] YangMills/P8_PhysicalGap/FeynmanKacBridge.lean:56: -- Main bound: |⟨ψ_p, (T^n-P₀)ψ_q⟩| ≤ ‖ψ_p‖·‖T^n-P₀‖·‖ψ_q‖ ≤ C_ψ·C·C_ψ
+[bound] YangMills/P8_PhysicalGap/SpatialLocalityFramework.lean:18: The Lieb-Robinson bound is the only remaining unproved mathematical input.
+[bound] YangMills/P8_PhysicalGap/SpatialLocalityFramework.lean:145: /-! ### Step 3: Lieb-Robinson bound — explicit hypothesis (not a global axiom)
+[bound] YangMills/P8_PhysicalGap/SpatialLocalityFramework.lean:166: The only unproved input is the Lieb-Robinson bound itself (finite propagation speed).
+[bound] YangMills/P8_PhysicalGap/SUN_LiebRobin.lean:10: Concrete Lieb-Robinson bound for the SU(N) Yang-Mills lattice model.
+[bound] YangMills/P8_PhysicalGap/SUN_LiebRobin.lean:33: /-! ## Step 2: Lieb-Robinson bound — honest physical axiom -/
+[bound] YangMills/P8_PhysicalGap/SUN_LiebRobin.lean:44: /-- **PHYSICAL INPUT — Hastings-Koma bound for SU(N) Yang-Mills.**
+[bound] YangMills/P2_MaxEntClustering/PetzFidelity.lean:23: - `FawziRennerBound` — quantum conditional mutual info bound
+[bound] YangMills/P2_MaxEntClustering/PetzFidelity.lean:71: /-! ### Fawzi-Renner bound -/
+[bound] YangMills/P2_MaxEntClustering/PetzFidelity.lean:73: /-- Fawzi-Renner lower bound on recovery fidelity:
+[bound] YangMills/P2_MaxEntClustering/PetzFidelity.lean:80: /-- Fawzi-Renner implies recovery error bound. -/
+[bound] YangMills/P2_MaxEntClustering/ClusteringBridge.lean:27: → Fawzi-Renner bound (P2.1)
+[bound] YangMills/P2_MaxEntClustering/RecoveryChannels.lean:83: /-- Bridge predicate: a MaxEnt state admits a Fawzi-Renner recovery bound.
+[bound] YangMills/P2_MaxEntClustering/RecoveryChannels.lean:92: /-- The bridge implies the Fawzi-Renner bound. -/
+[bound] YangMills/P2_MaxEntClustering/RecoveryChannels.lean:114: /-- Recovery property + Fawzi-Renner bound → fidelity bound available. -/
+[bound] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:13: Pointwise-to-singleton bridge for the full Cauchy bound.
+[bound] YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean:19: 2. `RGTelescopingSeriesBound`: the increments sum to give the Lipschitz bound
+[bound] YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean:24: /-- Single-scale increment decay bound (P81 §3, single scale).
+[bound] YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean:32: /-- If the increment decay bound holds, then RGCauchySummabilityBound follows directly. -/
+[bound] YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean:39: /-- The P81 physical input: the increment decay bound holds at weak coupling.
+[bound] YangMills/ClayCore/BalabanRG/P80EstimateViaBridge.lean:18: - LargeField: largePart = RGBlockingMap = 0 (skeleton)  →  same bound
+[bound] YangMills/ClayCore/BalabanRG/PolymerPartitionFunction.lean:137: /-! ## Layer 2C: Absolute bound -/
+[bound] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:15: /-- Lipschitz iterate bound: ‖fⁿ K₁ - fⁿ K₂‖ ≤ ρⁿ ‖K₁ - K₂‖. -/
+[bound] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:59: /-- P80-style suppression bound. Analytic content: deferred. -/
+[bound] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:67: /-- P81-style Cauchy summability bound. Analytic content: deferred. -/
+[bound] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:87: /-- Extract large-field bound from full control. 0 sorrys. -/
+[bound] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:96: /-- Extract Cauchy bound from full control. 0 sorrys. -/
+[bound] YangMills/ClayCore/BalabanRG/P91DenominatorControl.lean:29: /-- d > 0: requires weak-coupling window bound. Source: P91 A.2 §3. -/
+[bound] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:90: /-- From RGViaBridgeControl, extract the P80 bound for K₁/K₂. -/
+[bound] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:101: /-- From RGViaBridgeControl, extract the P81 Cauchy bound. -/
+[bound] YangMills/ClayCore/BalabanRG/PhysicalRGRates.lean:46: /-- Linear lower bound: f(β) ≥ c·β for β ≥ β₀. (P69, P70, P67, P74) -/
+[bound] YangMills/ClayCore/BalabanRG/P91RecursionData.lean:22: /-- Remainder bound: |r_k| ≤ C_rem/β_k. -/
+[bound] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:65: /-! ## P80 bound for singleton -/
+[bound] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:90: /-! ## P81 bound for singleton -/
+[bound] YangMills/ClayCore/BalabanRG/DirichletLSIIdentification.lean:45: /-- PhysicalLSIRealized from the polymer LSI bound. -/
+[bound] YangMills/ClayCore/BalabanRG/PolymerLogLowerBound.lean:41: /-- Weak bound: `log(1-t) ≥ -2t` for `0 ≤ t ≤ 1/2`. -/
+[bound] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:41: /-- P80 large-field bound, high-level full API. 0 sorrys. -/
+[bound] YangMills/ClayCore/BalabanRG/BalabanBlockingMap.lean:44: /-- Large-field suppression bound (P80). -/
+[bound] YangMills/ClayCore/BalabanRG/BalabanBlockingMap.lean:51: /-- RG-Cauchy summability bound (P81/P82).
+[bound] YangMills/ClayCore/BalabanRG/BalabanBlockingMap.lean:52: No extra constant C: the bound is exactly exp(-β). -/
+[bound] YangMills/ClayCore/BalabanRG/RGCauchySummabilitySkeleton.lean:40: /-- P81 §3: In the skeleton, RGBlockingMap is constant → dist=0 → bound trivial.
+[bound] YangMills/ClayCore/BalabanRG/PolymerLogBound.lean:16: * upper log bound under the natural `theoreticalBudget < log 2` regime
+[bound] YangMills/ClayCore/BalabanRG/PolymerLogBound.lean:18: Lower/two-sided log bound postponed to Layer 4C.
+[bound] YangMills/ClayCore/BalabanRG/PolymerLogBound.lean:79: /-! ## 4B-4: upper log bound under theoreticalBudget < log 2 -/
+[bound] YangMills/ClayCore/BalabanRG/RGCauchySummabilityEstimate.lean:18: The RG blocking map T_k satisfies a Lipschitz bound with constant exp(-β).
+[bound] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridge.lean:19: any RGViaBridgeControl gives both the P80 suppression bound
+[control] YangMills/P4_Continuum/Phase4Assembly.lean:16: Balaban RG (P3) + Infinite volume (P2) + UV control (P4) → Clay theorem. -/
+[control] YangMills/P4_Continuum/ContinuumBridge.lean:24: /-- Asymptotic freedom control = UV scaling limit. -/
+[control] YangMills/P4_Continuum/ContinuumBridge.lean:40: /-- Phase 4 bridge: P3 + P2 + UV control → Clay conclusion. -/
+[control] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:75: /-! ## Automatic singleton control constructor -/
+[control] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:92: /-- The automatically constructed control satisfies the expected full
+[control] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:110: /-- The automatically constructed control satisfies the expected full
+[control] YangMills/ClayCore/BalabanRG/FullCauchySingletonBound.lean:130: /-- The automatically constructed control has the expected zero-field property.
+[control] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:15: Unified RG control for the full (ℤ/2^k ℤ)^d geometry.
+[control] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:75: /-! ## Layer 3: Full control package -/
+[control] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:77: /-- Full RG control: core + analytic bounds.
+[control] YangMills/ClayCore/BalabanRG/RGViaBridgeFull.lean:106: /-- Zero field from full control. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:14: Unified control layer for Balaban RG estimates via the geometry bridge.
+[control] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:29: /-- Unified RG control structure via bridge.
+[control] YangMills/ClayCore/BalabanRG/RGViaBridge.lean:82: /-- The control structure is inhabited (by the trivial bridge). 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:118: /-! ## Full control for singleton -/
+[control] YangMills/ClayCore/BalabanRG/PolymerSiteReadout.lean:58: /-- The trivial readout gives the same control as trivialBridgeControl. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSkeleton.lean:18: 2. `canonicalGeometricBridgeControlFull_from_bounds`: packs control from hypotheses
+[control] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:24: /-- Combined Cauchy decay via full bridge control. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridgeFull.lean:35: /-- Consistency: trivial full control (if it exists) recovers skeleton logic. -/
+[control] YangMills/ClayCore/BalabanRG/RGBridgeCompatibilityFull.lean:22: /-- P80 large-field suppression from full bridge control. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/RGBridgeCompatibilityFull.lean:30: /-- P81 Cauchy decay from full bridge control. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/RGBridgeCompatibilityFull.lean:39: /-- Combined P80+P81 from full bridge control. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/RGBridgeCompatibilityFull.lean:50: /-- Zero field from full control. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridge.lean:31: /-- Combined Cauchy decay via bridge control. Matches skeleton logical content.
+[control] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridge.lean:48: /-- P80 suppression via bridge control. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/CauchyDecayViaBridge.lean:58: /-- P81 Cauchy decay via bridge control. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/ConcreteActivityFieldBridge.lean:34: /-- Concrete bridge → unified RG control. First non-abstract RGViaBridgeControl. -/
+[control] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:13: Finite-support full-geometry control under named hypotheses.
+[control] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:67: /-! ## Finite packaged control -/
+[control] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:69: /-- Finite-support full bridge control package. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:82: /-- Empty-support finite packaged control. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionFinite.lean:112: /-- Singleton-support finite packaged control. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:73: /-! ## Automatic singleton control constructor -/
+[control] YangMills/ClayCore/BalabanRG/FullLargeFieldSingletonBound.lean:89: /-- The automatically constructed control has the expected zero-field property.
+[control] YangMills/ClayCore/BalabanRG/KPToLSIBridge.lean:31: * Uniform control of the Dirichlet form across scales
+[control] YangMills/ClayCore/BalabanRG/KPToLSIBridge.lean:39: /-! ## Bridge statement: KP finite bound → free-energy control ready for LSI -/
+[control] YangMills/ClayCore/BalabanRG/KPToLSIBridge.lean:75: /-- Summary theorem: the Clay Core delivers free-energy control.
+[control] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridgeFull.lean:13: Exposes skeleton-style API backed by the full bridge control.
+[control] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridgeFull.lean:22: /-- P80 suppression from full control, skeleton-style API. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/RGSkeletonViaBridgeFull.lean:30: /-- P81 Cauchy decay from full control, skeleton-style API. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/RGBridgeCompatibility.lean:31: /-- P80-style suppression from bridge control. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/RGBridgeCompatibility.lean:53: /-- P81-style Cauchy decay from bridge control. 0 sorrys. -/
+[control] YangMills/ClayCore/BalabanRG/FreeEnergyControlReduction.lean:28: /-- Per-family free-energy control: Z > 0 and log Z bounded by KP budget. -/
+[control] YangMills/ClayCore/BalabanRG/CauchyDecayFromAF.lean:178: 0 sorrys given the control structure. -/
+[control] YangMills/ClayCore/BalabanRG/CauchyDecayFromAF.lean:217: then packages them into the full canonical geometric bridge control.
+[zero] YangMills/P3_BalabanRG/MultiscaleDecay.lean:56: | zero => exact ⟨h0, by simp⟩
+[zero] YangMills/P6_AsymptoticFreedom/BetaFunction.lean:43: | zero => simp [InvCouplingSeq]
+[zero] YangMills/L7_Continuum/ContinuumLimit.lean:22: /-- Lattice spacing at resolution N. Using 1/(N+1) to avoid division by zero. -/
+[zero] YangMills/L7_Continuum/ContinuumLimit.lean:29: /-- Lattice spacing tends to zero as N → ∞. -/
+[zero] YangMills/P8_PhysicalGap/BalabanToLSI.lean:134: The key content: the LSI constant does NOT degrade to zero as L → ∞.
+[zero] YangMills/ClayCore/BalabanRG/ActivityFieldSplitSelection.lean:47: /-- Small case: large part is zero. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/ActivityFieldSplitSelection.lean:55: /-- Large case: small part is zero. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/RGCauchyTelescoping.lean:23: | zero => simp
+[zero] YangMills/ClayCore/BalabanRG/P91BetaDriftDecomposition.lean:28: | zero => simp
+[zero] YangMills/ClayCore/BalabanRG/DirichletIdentificationClosure.lean:16: this file gives a zero-sorry path to ClayCoreLSI.
+[zero] YangMills/ClayCore/BalabanRG/PolymerGeometricReadout.lean:52: /-- Zero activity → zero geometric readout field. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/ActivityFieldBridge.lean:24: /-- Zero activity maps to zero field. -/
+[zero] YangMills/ClayCore/BalabanRG/FullLargeFieldSuppressionSingleton.lean:27: /-! ## Off-site zero -/
+[zero] YangMills/ClayCore/BalabanRG/P91UniformDrift.lean:28: | zero => exact hβ0
+[zero] YangMills/ClayCore/BalabanRG/PolymerSiteReadout.lean:30: /-- Trivial readout: zero field for every activity. -/
+[zero] YangMills/ClayCore/BalabanRG/PolymerSiteReadout.lean:46: /-- The trivial readout induces the concrete zero bridge. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/PolymerCanonicalSite.lean:62: /-- Zero activity → zero field through canonical bridge. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/PolymerCanonicalSite.lean:97: /-- When d > 0, the canonical bridge field is non-zero if K(p₀) ≠ 0. -/
+[zero] YangMills/ClayCore/BalabanRG/PolymerGeometricReadoutFull.lean:48: /-- Zero activity → zero field. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/P81EstimateViaBridge.lean:20: /-- Both SmallField: dist between two zero largeParts is 0. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/LatticeSiteAdapterFull.lean:35: /-- The zero LatticeSite maps to the zero BalabanFiniteSite. -/
+[zero] YangMills/ClayCore/BalabanRG/LatticeSiteAdapterFull.lean:37: toBalabanFiniteSite d k (fun _ => 0) = BalabanFiniteSite.zero d k := by
+[zero] YangMills/ClayCore/BalabanRG/LatticeSiteAdapterFull.lean:39: simp [toBalabanFiniteSite, intToFinCoord, BalabanFiniteSite.zero]
+[zero] YangMills/ClayCore/BalabanRG/SmallFieldLargeFieldSplit.lean:45: /-- Trivial split: large part zero. -/
+[zero] YangMills/ClayCore/BalabanRG/SmallFieldLargeFieldSplit.lean:123: /-- Trivial field split: large part zero. -/
+[zero] YangMills/ClayCore/BalabanRG/SmallFieldLargeFieldSplit.lean:198: /-- Polar split: all in large part, small part zero. -/
+[zero] YangMills/ClayCore/BalabanRG/FinitePolymerReadout.lean:34: /-- Zero activity → zero field. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/FinitePolymerReadout.lean:56: /-- Empty support readout: same as zero bridge. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/FinitePolymerReadout.lean:63: /-- Empty readout induces the zero field. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/FinitePolymerReadout.lean:70: /-- Empty readout bridge = concrete zero bridge. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/FinitePolymerReadout.lean:112: K(p₀) appears at site x₀; zero elsewhere. -/
+[zero] YangMills/ClayCore/BalabanRG/FinitePolymerReadout.lean:118: /-- The singleton bridge is not the zero bridge when K(p₀) ≠ 0. -/
+[zero] YangMills/ClayCore/BalabanRG/PolymerCanonicalSiteFull.lean:45: /-- Zero activity → zero field through canonical full bridge. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/ConcreteActivityFieldBridge.lean:16: with a zero readout (fieldOfActivity = 0). This is not yet the physical
+[zero] YangMills/ClayCore/BalabanRG/ConcreteActivityFieldBridge.lean:20: - Phase 1 (here): named concrete bridge, zero readout
+[zero] YangMills/ClayCore/BalabanRG/ConcreteActivityFieldBridge.lean:28: fieldOfActivity maps all activities to the zero field.
+[zero] YangMills/ClayCore/BalabanRG/ConcreteActivityFieldBridge.lean:40: /-- The concrete bridge maps zero activity to a small field. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/P80EstimateSkeleton.lean:13: RGBlockingMap is definitionally zero. trivialRGFieldSplit exists.
+[zero] YangMills/ClayCore/BalabanRG/P80EstimateSkeleton.lean:33: /-- P80 §4.2: RGBlockingMap is zero → dist(0,0)=0 ≤ coeff·‖K‖. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/BalabanFiniteLattice.lean:42: /-- The zero site: all coordinates are 0. -/
+[zero] YangMills/ClayCore/BalabanRG/BalabanFiniteLattice.lean:43: def BalabanFiniteSite.zero (d k : ℕ) : BalabanFiniteSite d k :=
+[zero] YangMills/ClayCore/BalabanRG/BalabanFiniteLattice.lean:46: /-- A singleton region containing just the zero site. -/
+[zero] YangMills/ClayCore/BalabanRG/BalabanFiniteLattice.lean:49: {BalabanFiniteSite.zero d k}
+[zero] YangMills/ClayCore/BalabanRG/BalabanFieldDecomposition.lean:22: /-- Small-field projection: keep φ(x) on small sites, zero elsewhere. -/
+[zero] YangMills/ClayCore/BalabanRG/BalabanFieldDecomposition.lean:27: /-- Large-field projection: keep φ(x) on large sites, zero elsewhere. -/
+[zero] YangMills/ClayCore/BalabanRG/BalabanFieldDecomposition.lean:103: /-- On a small field, the large projection is zero. 0 sorrys. -/
+[zero] YangMills/ClayCore/BalabanRG/FreeEnergyControlReduction.lean:56: -- Use activity = 0, a = 1: KPOnGamma trivially holds for zero activity
+[zero] YangMills/ClayCore/BalabanRG/FreeEnergyControlReduction.lean:58: · -- KPOnGamma with zero activity: each sum is 0 ≤ a = 1
+[zero] YangMills/ClayCore/BalabanRG/FreeEnergyControlReduction.lean:61: · -- theoreticalBudget with zero activity = 0 < log 2
+[zero] YangMills/Experimental/LieSUN/LieDerivReg_v4.lean:19: /-- Generator data for su(N): N²-1 skew-Hermitian trace-zero matrices. -/
+[zero] YangMills/Experimental/LieSUN/LieDerivativeDef.lean:7: Zero axioms, zero sorrys. SANDBOX — not imported by main project.
+[difference] YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean:25: At each scale k, the RG map difference is bounded by exp(-β) · ‖K₁-K₂‖. -/
+[difference] YangMills/ClayCore/BalabanRG/RGCauchySummabilityEstimate.lean:28: /-- Sub-estimate 1 (P81 §3): The RG map difference is summable over scales.
