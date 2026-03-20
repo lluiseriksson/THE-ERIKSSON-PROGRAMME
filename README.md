@@ -292,3 +292,15 @@ final-gap route: P91 recursion data + finite-full native-target envelope +
 terminal LSI→DLR transfer now feed a single reusable witness object exporting
 the final `ClayYangMillsTheorem` closure.
 
+## v1.0.24-alpha
+
+The two honest finite-full terminal lanes are now exposed symmetrically:
+
+- direct-budget lane:
+  small constants -> direct budget -> ClayYangMillsTheorem
+- native-target lane:
+  small constants -> native target envelope -> final gap witness -> ClayYangMillsTheorem
+
+A new registry file presents both lanes under a common consumer-facing interface,
+making the phase-8 terminal plumbing explicitly symmetric.
+
