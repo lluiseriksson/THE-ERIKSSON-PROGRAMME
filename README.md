@@ -232,3 +232,12 @@ v1.0.15-alpha
 The exponential polymer-size weight path is now structurally organized. We added reusable lemmas for
 `w_a(X)=exp(a*|X|)` and rewrote the native KP pointwise activity bound in exp-weight language,
 including the weighted smallness form `|K X| * w_a(X) ≤ a`.
+
+## v1.0.16-alpha
+The KP-side weighting architecture is now abstracted and operational.
+
+- `KPWeightedActivityInterface`: abstract KP-side polymer weights
+- `KPWeightedBudgetInterface`: weighted compatible-family majorants and induction budgets
+- `KPWeightedBudgetToPartition`: weighted budgets recover native `SmallActivityBudget` and `|Z - 1| ≤ B`
+- Exponential polymer-size weight is the first concrete KP-side instance
+- Conservative exp-size-weight specialization is closed through explicit `w ≥ 1`

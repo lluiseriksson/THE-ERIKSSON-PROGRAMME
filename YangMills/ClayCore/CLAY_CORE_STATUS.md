@@ -103,3 +103,10 @@ v1.0.12-alpha
 - Structural lemmas added for the exponential polymer-size weight `w_a(X)=exp(a*|X|)`
 - KP pointwise activity bounds rewritten through the exp-size-weight language
 - Weighted smallness form `|K X| * w_a(X) ≤ a` available in native and scale-specialized versions
+
+## v1.0.16-alpha
+- Abstract KP weighted-activity interface introduced
+- Weighted compatible-family budget interface added
+- Weighted KP budgets now recover native `SmallActivityBudget` and `|Z - 1| ≤ B`
+- Exponential polymer-size weight inserted as the first KP-side concrete instance
+- Conservative exp-size-weight specialization closed through explicit `w ≥ 1`
