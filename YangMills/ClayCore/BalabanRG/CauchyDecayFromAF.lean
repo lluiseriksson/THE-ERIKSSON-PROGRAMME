@@ -10,6 +10,7 @@ import YangMills.ClayCore.BalabanRG.PolymerCanonicalSite
 import YangMills.ClayCore.BalabanRG.CauchyDecayViaBridgeFull
 import YangMills.ClayCore.BalabanRG.CauchyDecayViaBridgeFiniteFull
 import YangMills.ClayCore.BalabanRG.FullCauchySingletonBound
+import YangMills.ClayCore.BalabanRG.ConcreteActivityNormL1
 
 namespace YangMills.ClayCore
 
@@ -253,6 +254,66 @@ theorem zero_field_from_pointwise_singleton_data_via_full_canonical_geometric_br
     ctrl.core.bridge.fieldOfActivity (fun _ => 0) = fun _ => 0 := by
   intro ctrl
   exact rg_control_full_zero_field ctrl
+
+
+
+
+/-- High-level consumer from the concrete finite `L¹` activity norm family.
+    This is the first fully discharged singleton analytic path:
+    the native evaluation and Cauchy bounds come from the concrete `L¹` norm,
+    and only the scalar comparisons remain as hypotheses.
+    0 sorrys. -/
+theorem cauchy_decay_from_l1_singleton_data_via_full_canonical_geometric_bridge
+    {d N_c : ℕ} [NeZero N_c]
+    [∀ j, Fintype (Polymer d (Int.ofNat j))]
+    [∀ j, DecidableEq (Polymer d (Int.ofNat j))]
+    (β_k : ℝ)
+    (p₀ : Polymer d (Int.ofNat 0))
+    (hlargeA : (1 : ℝ) ≤ Real.exp (-β_k))
+    (hcauchyA : (1 : ℝ) ≤ physicalContractionRate β_k)
+    (K₁ K₂ : ActivityFamily d (0 : ℕ))
+    (x : BalabanFiniteSite d 0) :
+    letI : ∀ j, ActivityNorm d j := instActivityNormL1All (d := d)
+    let ctrl := singletonCanonicalGeometricBridgeControlFull_of_eval
+      (d := d) (N_c := N_c) 0 β_k 1 p₀
+      (activityNormEvaluationBoundAt_l1 (d := d) (N_c := N_c) 0 p₀)
+      hlargeA hcauchyA
+    (|ctrl.core.bridge.fieldOfActivity K₁ x| ≤
+      Real.exp (-β_k) * ActivityNorm.dist K₁ (fun _ => 0)) ∧
+    (|ctrl.core.bridge.fieldOfActivity K₁ x -
+      ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+      physicalContractionRate β_k * ActivityNorm.dist K₁ K₂) := by
+  letI : ∀ j, ActivityNorm d j := instActivityNormL1All (d := d)
+  simpa using
+    (cauchy_decay_from_eval_singleton_data
+      (d := d) (N_c := N_c) β_k 1 p₀
+      (activityNormEvaluationBoundAt_l1 (d := d) (N_c := N_c) 0 p₀)
+      hlargeA hcauchyA K₁ K₂ x)
+
+/-- Zero-field extractor for the concrete finite `L¹` singleton path.
+    0 sorrys. -/
+theorem zero_field_from_l1_singleton_data_via_full_canonical_geometric_bridge
+    {d N_c : ℕ} [NeZero N_c]
+    [∀ j, Fintype (Polymer d (Int.ofNat j))]
+    [∀ j, DecidableEq (Polymer d (Int.ofNat j))]
+    (β_k : ℝ)
+    (p₀ : Polymer d (Int.ofNat 0))
+    (hlargeA : (1 : ℝ) ≤ Real.exp (-β_k))
+    (hcauchyA : (1 : ℝ) ≤ physicalContractionRate β_k) :
+    letI : ∀ j, ActivityNorm d j := instActivityNormL1All (d := d)
+    let ctrl := singletonCanonicalGeometricBridgeControlFull_of_eval
+      (d := d) (N_c := N_c) 0 β_k 1 p₀
+      (activityNormEvaluationBoundAt_l1 (d := d) (N_c := N_c) 0 p₀)
+      hlargeA hcauchyA
+    ctrl.core.bridge.fieldOfActivity (fun _ => 0) = fun _ => 0 := by
+  letI : ∀ j, ActivityNorm d j := instActivityNormL1All (d := d)
+  simpa using
+    (zero_field_from_eval_singleton_data
+      (d := d) (N_c := N_c) β_k 1 p₀
+      (activityNormEvaluationBoundAt_l1 (d := d) (N_c := N_c) 0 p₀)
+      hlargeA hcauchyA)
+
+
 
 
 end
