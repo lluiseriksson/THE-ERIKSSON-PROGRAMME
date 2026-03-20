@@ -1,11 +1,11 @@
-# Clay Core — BalabanRG Status (v1.0.5-alpha, 2026-03-19)
+# Clay Core — BalabanRG Status (v1.0.6-alpha, 2026-03-20)
 
-**~125 files · 0 errors · 0 analytic sorrys**
+**~130 files · 0 errors · 0 analytic sorrys**
 
-## Key milestone: first filled RGViaBridgeControlFull
+## Key milestone: singleton polymer discharge
 
-The full-geometry control package is no longer only hypothetical:
-it is fully discharged for the empty-polymer bridge. 0 sorrys.
+P80 and P81 are now fully discharged for the singleton bridge {p₀}.
+Progression: ∅ (v1.0.5) → {p₀} (v1.0.6) → general (future induction).
 
 ## Three parallel paths — all green
 
@@ -15,29 +15,33 @@ it is fully discharged for the empty-polymer bridge. 0 sorrys.
 ### Path B — Simplified bridge hierarchy (v0.9.x–v1.0.x)
 BalabanLatticeSite d k = Fin(2^k) × Fin d
 
-### Path C — Full geometry bridge hierarchy (v1.0.3–v1.0.5) ✅
+### Path C — Full geometry bridge hierarchy (v1.0.3–v1.0.6) ✅
 BalabanFiniteSite d k = Fin d → Fin(2^k)
 ```
 BalabanFiniteLattice
-LatticeSiteAdapterFull        — coordinate-wise projection
-PolymerGeometricReadoutFull   — ActivityFieldBridgeFull
-PolymerCanonicalSiteFull      — canonical bridge from polymer geometry
-RGViaBridgeFull               — 3-layer: Core + Named bounds + Package
+LatticeSiteAdapterFull          — coordinate-wise projection
+PolymerGeometricReadoutFull     — ActivityFieldBridgeFull
+PolymerCanonicalSiteFull        — canonical bridge from polymer geometry
+  canonicalBridgeFull_field_at_site    : field = K(p₀) at canonical site
+  canonicalBridgeFull_field_zero_offsite: field = 0 elsewhere (0 sorrys)
+RGViaBridgeFull                 — 3-layer control structure
 RGBridgeCompatibilityFull
 RGSkeletonViaBridgeFull
-CauchyDecayViaBridgeFull      — high-level consumer ✅
-FullLargeFieldSuppressionSkeleton — DISCHARGED for ∅ ✅
-  empty_polys_full_bridge_field_zero  : field=0 for ∅
-  empty_full_large_field_suppression  : P80 bound discharged
-  empty_full_cauchy_summability       : P81 bound discharged
-  emptyCanonicalGeometricBridgeControlFull : first filled RGViaBridgeControlFull ✅
+CauchyDecayViaBridgeFull        — high-level consumer ✅
+
+FullLargeFieldSuppressionSkeleton — ∅ polys discharged (v1.0.5)
+  emptyCanonicalGeometricBridgeControlFull: P80+P81 for ∅
+
+FullLargeFieldSuppressionSingleton — {p₀} discharged (v1.0.6) ✅
+  canonicalBridgeFull_field_zero_offsite: off-site = 0 (explicit filter)
+  SingletonFullLargeFieldBound: named P80 hypothesis
+  singleton_full_large_field_suppression: by_cases (0 sorrys) ✅
+  SingletonFullCauchyBound: named P81 hypothesis
+  singleton_full_cauchy_summability: by_cases (0 sorrys) ✅
+  singletonCanonicalGeometricBridgeControlFull: first non-trivial control ✅
 ```
 
 ### CauchyDecayFromAF — 7-path API
-```
-baseline / abstract-bridge / concrete / singleton / geometric /
-canonical-geometric / canonical-geometric-full (← new)
-```
 
 ## Formal debt
 
@@ -45,12 +49,10 @@ canonical-geometric / canonical-geometric-full (← new)
 |---|---|---|
 | `p91_tight_weak_coupling_window` | P91WeakCouplingWindow | P91 A.2 §3 |
 | `RGBlockingMap` physical | BalabanBlockingMap | P78 |
-| `FullLargeFieldSuppressionBound` for `{p₀}` | v1.0.6 | singleton |
-| `FullCauchySummabilityBound` for `{p₀}` | v1.0.6 | singleton |
-| General polys inductive discharge | v1.0.7+ | inductive |
+| `SingletonFullLargeFieldBound` proof | P78/P80 content | v1.0.7+ |
+| `SingletonFullCauchyBound` proof | P81/P82 content | v1.0.7+ |
+| General polys inductive discharge | finset induction | v1.0.7+ |
 
-## Next: v1.0.6-alpha
-1. `singleton_full_large_field_suppression`
-2. `singleton_full_cauchy_summability`
-3. `singletonCanonicalGeometricBridgeControlFull`
-Then inductive step: ∅ → {p₀} → finite union.
+## Next: v1.0.7-alpha
+Option A: discharge `SingletonFullLargeFieldBound` from ActivityNorm
+Option B: inductive step ∅→{p₀}→polys∪{p₀}

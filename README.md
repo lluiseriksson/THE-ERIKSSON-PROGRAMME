@@ -43,6 +43,20 @@ intuition hiding in the proofs.
 ---
 
 ## Recent Milestones
+### v1.0.6-alpha — Singleton polymer discharge ✅ *(2026-03-20)*
+
+**P80 and P81 fully discharged for the singleton bridge {p₀}.**
+
+- **`canonicalBridgeFull_field_zero_offsite`**: field = 0 at any site ≠ canonical site (0 sorrys) ✅
+  - Proof: explicit filter→∅ via `by_cases` + `change Finset.sum` + `rw [hfilter]`
+- **`singleton_full_large_field_suppression`**: `FullLargeFieldSuppressionBound` for `{p₀}` (0 sorrys) ✅
+- **`singleton_full_cauchy_summability`**: `FullCauchySummabilityBound` for `{p₀}` (0 sorrys) ✅
+- **`singletonCanonicalGeometricBridgeControlFull`**: first non-trivial `RGViaBridgeControlFull` ✅
+- Progression: ∅ (v1.0.5) → {p₀} (v1.0.6) → general (v1.0.7+)
+- 0 analytic sorrys. All three paths (A/B/C) green.
+
+Next: v1.0.7-alpha — discharge `SingletonFullLargeFieldBound` or inductive step for general polys
+
 ### v1.0.5-alpha — First filled RGViaBridgeControlFull ✅ *(2026-03-19)*
 
 **The full-geometry control package is fully discharged for the empty-polymer bridge.**
@@ -783,7 +797,7 @@ theorem eriksson_programme_phase7
 | F7.1–F7.5 | YangMills/P7_SpectralGap | ✅ FORMALIZED_KERNEL |
 | ErikssonBridge | YangMills/ErikssonBridge.lean | ✅ CLOSED — 0 sorrys, 0 axioms |
 | P8 Physical gap | YangMills/P8_PhysicalGap | ✅ 8 axioms · 0 sorrys |
-| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~125 files · 0 errors · 0 analytic sorrys (v1.0.5-alpha)
+| Clay Core + Geometry | YangMills/ClayCore/BalabanRG | ✅ ~130 files · 0 errors · 0 analytic sorrys (v1.0.6-alpha)
 | Sandbox LieSUN | YangMills/Experimental/LieSUN | ✅ 0 axioms · 1 sorry (Jacobi) |
 
 ---
