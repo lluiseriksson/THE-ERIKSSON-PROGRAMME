@@ -268,3 +268,11 @@ over the honest small-constants interface. The stale `1 ≤ exp(-β)` /
 primary finite-full interface; the real remaining gap is isolated only as the
 small-constants to direct-budget transfer.
 
+## v1.0.21-alpha
+
+The honest finite-full small-constants route now has a terminal budget-envelope
+layer. To close Clay from the finite-full exp-size-weight lane it is now enough
+to produce a concrete witness `B` with
+`KPWeightedInductionBudget ≤ B ≤ theoreticalBudget`,
+instead of supplying a full direct-budget transfer schema.
+
