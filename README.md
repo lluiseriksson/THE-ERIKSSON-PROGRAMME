@@ -215,3 +215,10 @@ The concrete finite `L¹` activity norm now discharges the full finite-support
 bridge bounds in the canonical full geometry. This yields a concrete packaged
 finite full control and exposes the resulting high-level finite full path
 through `CauchyDecayFromAF`.
+
+## v1.0.13-alpha
+The abstract polymer-weight interface is now in place, and the first genuinely nontrivial concrete weight has been instantiated:
+the native polymer-size weight `w(X)=|X|`.
+
+This validates the weighted evaluation path and the finite full bridge path through the abstract interface, and exposes the resulting
+high-level finite full size-weight route in `CauchyDecayFromAF`.

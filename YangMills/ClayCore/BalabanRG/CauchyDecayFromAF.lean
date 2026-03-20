@@ -12,6 +12,7 @@ import YangMills.ClayCore.BalabanRG.CauchyDecayViaBridgeFiniteFull
 import YangMills.ClayCore.BalabanRG.FullCauchySingletonBound
 import YangMills.ClayCore.BalabanRG.ConcreteActivityNormL1
 import YangMills.ClayCore.BalabanRG.ConcreteFiniteFullBridgeL1
+import YangMills.ClayCore.BalabanRG.PolymerSizeWeight
 
 namespace YangMills.ClayCore
 
@@ -362,6 +363,34 @@ theorem zero_field_from_l1_finite_full_data_via_canonical_geometric_bridge
   letI : ∀ j, ActivityNorm d j := instActivityNormL1All (d := d)
   intro ctrl
   exact rg_control_full_zero_field ctrl
+
+
+
+/-- Cauchy decay via the finite-support full canonical geometric bridge
+using the native polymer-size weight `w(X) = |X|`.
+This is the first high-level API alias for a genuinely nontrivial concrete
+polymer weight family beyond the unit-weight anchor. 0 sorrys. -/
+theorem cauchy_decay_from_p91_data_via_finite_canonical_geometric_bridge_size_weight
+    {d N_c : ℕ} [NeZero N_c]
+    [∀ j, Fintype (Polymer d (Int.ofNat j))]
+    [∀ j, DecidableEq (Polymer d (Int.ofNat j))]
+    (β_k : ℝ)
+    (hlargeA : (1 : ℝ) ≤ Real.exp (-β_k))
+    (hcauchyA : (1 : ℝ) ≤ physicalContractionRate β_k)
+    (polys : Finset (Polymer d (Int.ofNat 0)))
+    (K₁ K₂ : ActivityFamily d (0 : ℕ))
+    (x : BalabanFiniteSite d 0) :
+    letI : ∀ j, ActivityNorm d j := instActivityNormFromSizeWeight (d := d)
+    let ctrl := finiteCanonicalGeometricBridgeControlFull_sizeWeight
+      (d := d) (N_c := N_c) 0 β_k hlargeA hcauchyA polys
+    (|ctrl.core.bridge.fieldOfActivity K₁ x| ≤
+      Real.exp (-β_k) * ActivityNorm.dist K₁ (fun _ => 0)) ∧
+    (|ctrl.core.bridge.fieldOfActivity K₁ x -
+      ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+      physicalContractionRate β_k * ActivityNorm.dist K₁ K₂) := by
+  simpa using
+    (cauchy_decay_via_finite_full_bridge_control_sizeWeight
+      (d := d) (N_c := N_c) 0 β_k hlargeA hcauchyA polys K₁ K₂ x)
 
 
 end

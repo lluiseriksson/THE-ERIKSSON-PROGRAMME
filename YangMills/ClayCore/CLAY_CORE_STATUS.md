@@ -84,3 +84,9 @@ v1.0.12-alpha
 - Native evaluation/Cauchy bounds discharged under 1 ≤ w
 - Finite full bridge bounds discharged from weighted L¹
 - Unit-weight specialization w ≡ 1 validates the weighted architecture against the previous concrete basepoint
+
+## v1.0.13-alpha
+- Abstract polymer weight interface introduced
+- Native polymer-size weight `w(X)=|X|` instantiated through the interface
+- Weighted evaluation and finite-full bridge machinery validated for `sizeWeight`
+- `CauchyDecayFromAF` extended with the finite full size-weight alias
