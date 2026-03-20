@@ -20,7 +20,7 @@ Design:
 - define finite-support P80/P81 named hypotheses,
 - wrap them into FullLargeFieldSuppressionBound / FullCauchySummabilityBound,
 - package them as RGViaBridgeControlFull,
-- record consistency with the empty and singleton special cases.
+- provide empty/singleton finite packaged controls.
 -/
 
 noncomputable section
@@ -77,18 +77,17 @@ def finiteCanonicalGeometricBridgeControlFull {d N_c : ℕ} [NeZero N_c]
     (finite_full_large_field_suppression hlarge)
     (finite_full_cauchy_summability hcauchy)
 
-/-! ## Consistency with previous milestones -/
+/-! ## Empty and singleton packaged specializations -/
 
-/-- The finite-support package recovers the empty-polymer control. 0 sorrys. -/
-theorem finite_empty_recovers_empty_control {d N_c : ℕ} [NeZero N_c]
+/-- Empty-support finite packaged control. 0 sorrys. -/
+def emptyFiniteCanonicalGeometricBridgeControlFull {d N_c : ℕ} [NeZero N_c]
     [∀ j, ActivityNorm d j] (k : ℕ) (β : ℝ) :
-    finiteCanonicalGeometricBridgeControlFull
-      (d := d) (N_c := N_c) k β
-      (∅ : Finset (Polymer d (Int.ofNat k)))
-      (empty_full_large_field_suppression (d := d) (N_c := N_c) k β)
-      (empty_full_cauchy_summability (d := d) (N_c := N_c) k β)
-    =
-    emptyCanonicalGeometricBridgeControlFull (d := d) (N_c := N_c) k β := rfl
+    RGViaBridgeControlFull d N_c k β :=
+  finiteCanonicalGeometricBridgeControlFull
+    (d := d) (N_c := N_c) k β
+    (∅ : Finset (Polymer d (Int.ofNat k)))
+    (empty_full_large_field_suppression (d := d) (N_c := N_c) k β)
+    (empty_full_cauchy_summability (d := d) (N_c := N_c) k β)
 
 /-- Singleton P80 hypothesis upgrades to the finite-support P80 hypothesis on {p₀}. 0 sorrys. -/
 theorem singleton_large_to_finite {d N_c : ℕ} [NeZero N_c]
@@ -110,20 +109,18 @@ theorem singleton_cauchy_to_finite {d N_c : ℕ} [NeZero N_c]
   exact singleton_full_cauchy_summability
     (d := d) (N_c := N_c) k β p₀ hcauchy K₁ K₂ x
 
-/-- The finite-support package recovers the singleton control on {p₀}. 0 sorrys. -/
-theorem finite_singleton_recovers_singleton_control {d N_c : ℕ} [NeZero N_c]
+/-- Singleton-support finite packaged control. 0 sorrys. -/
+def singletonFiniteCanonicalGeometricBridgeControlFull {d N_c : ℕ} [NeZero N_c]
     [∀ j, ActivityNorm d j] (k : ℕ) (β : ℝ)
     (p₀ : Polymer d (Int.ofNat k))
     (hlarge : SingletonFullLargeFieldBound d N_c k β p₀)
     (hcauchy : SingletonFullCauchyBound d N_c k β p₀) :
-    finiteCanonicalGeometricBridgeControlFull
-      (d := d) (N_c := N_c) k β
-      ({p₀} : Finset (Polymer d (Int.ofNat k)))
-      (singleton_large_to_finite (d := d) (N_c := N_c) k β p₀ hlarge)
-      (singleton_cauchy_to_finite (d := d) (N_c := N_c) k β p₀ hcauchy)
-    =
-    singletonCanonicalGeometricBridgeControlFull
-      (d := d) (N_c := N_c) k β p₀ hlarge hcauchy := rfl
+    RGViaBridgeControlFull d N_c k β :=
+  finiteCanonicalGeometricBridgeControlFull
+    (d := d) (N_c := N_c) k β
+    ({p₀} : Finset (Polymer d (Int.ofNat k)))
+    (singleton_large_to_finite (d := d) (N_c := N_c) k β p₀ hlarge)
+    (singleton_cauchy_to_finite (d := d) (N_c := N_c) k β p₀ hcauchy)
 
 end
 
