@@ -8,78 +8,108 @@ open scoped BigOperators
 open Classical
 
 /-!
-# ExpPolymerSizeWeightKPActivity — (v1.0.15-alpha Phase 2)
+# ExpPolymerSizeWeightKPActivity — (v1.0.17-alpha repair)
 
-First KP-facing activity bounds rewritten through the exponential polymer-size weight
+Conservative KP-activity rewrite through the exponential polymer-size weight.
 
-  w_a(X) = exp(a * |X|).
+This file intentionally depends only on:
+- `PolymerCombinatorics` for the native KP pointwise bound, and
+- `ExpPolymerSizeWeightKP` for the structural exponential-weight lemmas.
 
-This phase stays conservative:
-- no bridge API changes,
-- no new high-level alias,
-- just the direct pointwise KP consequences in the exp-weight language.
+No abstract KP interface is imported here. This keeps the dependency graph acyclic.
 -/
 
 noncomputable section
 
-/-- Native KP activity bound rewritten in exponential-weight form.
-0 sorrys. -/
-theorem kp_activity_bound_via_expSizeWeight_native
-    {d : ℕ} {L : ℤ} (K : Activity d L) (a : ℝ)
-    (hKP : KoteckyPreiss K a) (X : Polymer d L) :
-    |K X| ≤ a * (Real.exp (a * (X.size : ℝ)))⁻¹ := by
+/-- Native KP pointwise bound rewritten as division by the KP-side exponential
+size weight. -/
+theorem kp_activity_bound_div_expSizeWeight
+    {d : ℕ} {L : ℤ}
+    (K : Activity d L) (a : ℝ)
+    (hKP : KoteckyPreiss K a)
+    (X : Polymer d L) :
+    |K X| ≤ a / kpExpSizeWeight a d L X := by
   calc
     |K X| ≤ a * Real.exp (-a * (X.size : ℝ)) := kp_activity_bound K a hKP X
-    _ = a * (Real.exp (a * (X.size : ℝ)))⁻¹ := by
-        exact kp_decay_factor_native_rewrite (a := a) X
+    _ = a / kpExpSizeWeight a d L X := by
+      rw [kpExpSizeWeight, div_eq_mul_inv, ← Real.exp_neg]
+      congr 1
+      ring
 
-/-- Scale-specialized KP activity bound rewritten via `expSizeWeight`.
-0 sorrys. -/
+/-- Same pointwise KP bound, exposed under a shorter name. -/
 theorem kp_activity_bound_via_expSizeWeight
-    {d k : ℕ} (K : ActivityFamily d k) (a : ℝ)
-    (hKP : KoteckyPreiss K a) (X : Polymer d (Int.ofNat k)) :
-    |K X| ≤ a / expSizeWeight a d k X := by
-  calc
-    |K X| ≤ a * (Real.exp (a * (X.size : ℝ)))⁻¹ := by
-      exact kp_activity_bound_via_expSizeWeight_native
-        (d := d) (L := Int.ofNat k) K a hKP X
-    _ = a / expSizeWeight a d k X := by
-      rw [expSizeWeight]
-      rw [div_eq_mul_inv]
+    {d : ℕ} {L : ℤ}
+    (K : Activity d L) (a : ℝ)
+    (hKP : KoteckyPreiss K a)
+    (X : Polymer d L) :
+    |K X| ≤ a / kpExpSizeWeight a d L X :=
+  kp_activity_bound_div_expSizeWeight K a hKP X
 
-/-- Native weighted-smallness form of the KP activity bound:
-`|K X| * exp(a|X|) ≤ a`. 0 sorrys. -/
-theorem kp_activity_bound_weighted_native
-    {d : ℕ} {L : ℤ} (K : Activity d L) (a : ℝ)
-    (hKP : KoteckyPreiss K a) (X : Polymer d L) :
-    |K X| * Real.exp (a * (X.size : ℝ)) ≤ a := by
-  have hbase : |K X| ≤ a * Real.exp (-a * (X.size : ℝ)) :=
-    kp_activity_bound K a hKP X
-  have hexp_nonneg : 0 ≤ Real.exp (a * (X.size : ℝ)) := by
-    exact le_of_lt (Real.exp_pos _)
+/-- Weighted smallness form of the native KP pointwise bound:
+`|K X| * w_a(X) ≤ a`. -/
+theorem kp_weighted_activity_bound_expSizeWeight
+    {d : ℕ} {L : ℤ}
+    (K : Activity d L) (a : ℝ)
+    (hKP : KoteckyPreiss K a)
+    (X : Polymer d L) :
+    |K X| * kpExpSizeWeight a d L X ≤ a := by
+  have hdiv :
+      |K X| ≤ a / kpExpSizeWeight a d L X :=
+    kp_activity_bound_div_expSizeWeight K a hKP X
+  have hwpos : 0 < kpExpSizeWeight a d L X :=
+    kpExpSizeWeight_pos (d := d) (L := L) a X
+  have hm :
+      |K X| * kpExpSizeWeight a d L X ≤
+        (a / kpExpSizeWeight a d L X) * kpExpSizeWeight a d L X :=
+    mul_le_mul_of_nonneg_right hdiv (le_of_lt hwpos)
+  have hwne : kpExpSizeWeight a d L X ≠ 0 := ne_of_gt hwpos
   calc
-    |K X| * Real.exp (a * (X.size : ℝ))
-      ≤ (a * Real.exp (-a * (X.size : ℝ))) * Real.exp (a * (X.size : ℝ)) :=
-        mul_le_mul_of_nonneg_right hbase hexp_nonneg
-    _ = a * (Real.exp (-a * (X.size : ℝ)) * Real.exp (a * (X.size : ℝ))) := by
-        ring
-    _ = a * Real.exp ((-a * (X.size : ℝ)) + (a * (X.size : ℝ))) := by
-        rw [← Real.exp_add]
-    _ = a * Real.exp 0 := by
-        congr 1
-        ring
+    |K X| * kpExpSizeWeight a d L X
+      ≤ (a / kpExpSizeWeight a d L X) * kpExpSizeWeight a d L X := hm
     _ = a := by
-        simp
+      rw [div_eq_mul_inv]
+      calc
+        (a * (kpExpSizeWeight a d L X)⁻¹) * kpExpSizeWeight a d L X
+            = a * ((kpExpSizeWeight a d L X)⁻¹ * kpExpSizeWeight a d L X) := by ring
+        _ = a * 1 := by rw [inv_mul_cancel₀ hwne]
+        _ = a := by ring
 
-/-- Scale-specialized weighted-smallness form:
-`|K X| * w_a(X) ≤ a`. 0 sorrys. -/
-theorem kp_activity_bound_weighted
-    {d k : ℕ} (K : ActivityFamily d k) (a : ℝ)
-    (hKP : KoteckyPreiss K a) (X : Polymer d (Int.ofNat k)) :
-    |K X| * expSizeWeight a d k X ≤ a := by
-  simpa [expSizeWeight] using
-    (kp_activity_bound_weighted_native
+/-- Alias with the same weighted smallness statement. -/
+theorem kp_weighted_activity_bound_via_expSizeWeight
+    {d : ℕ} {L : ℤ}
+    (K : Activity d L) (a : ℝ)
+    (hKP : KoteckyPreiss K a)
+    (X : Polymer d L) :
+    |K X| * kpExpSizeWeight a d L X ≤ a :=
+  kp_weighted_activity_bound_expSizeWeight K a hKP X
+
+/-- Scale-specialized version on `L = Int.ofNat k`. -/
+theorem kp_activity_bound_div_expSizeWeight_nat
+    {d k : ℕ}
+    (K : Activity d (Int.ofNat k)) (a : ℝ)
+    (hKP : KoteckyPreiss K a)
+    (X : Polymer d (Int.ofNat k)) :
+    |K X| ≤ a / expSizeWeight a d k X := by
+  simpa [kpExpSizeWeight, expSizeWeight] using
+    (kp_activity_bound_div_expSizeWeight
       (d := d) (L := Int.ofNat k) K a hKP X)
+
+/-- Scale-specialized weighted smallness form. -/
+theorem kp_weighted_activity_bound_expSizeWeight_nat
+    {d k : ℕ}
+    (K : Activity d (Int.ofNat k)) (a : ℝ)
+    (hKP : KoteckyPreiss K a)
+    (X : Polymer d (Int.ofNat k)) :
+    |K X| * expSizeWeight a d k X ≤ a := by
+  simpa [kpExpSizeWeight, expSizeWeight] using
+    (kp_weighted_activity_bound_expSizeWeight
+      (d := d) (L := Int.ofNat k) K a hKP X)
+
+/-- Native exponential-decay factor rewritten directly in scale language. -/
+theorem kp_decay_factor_mul_eq_div_expSizeWeight_nat
+    {d k : ℕ} (a : ℝ) (X : Polymer d (Int.ofNat k)) :
+    a * Real.exp (-a * (X.size : ℝ)) = a / expSizeWeight a d k X := by
+  exact kp_decay_factor_mul_eq_div_expSizeWeight (d := d) (k := k) a X
 
 end
 

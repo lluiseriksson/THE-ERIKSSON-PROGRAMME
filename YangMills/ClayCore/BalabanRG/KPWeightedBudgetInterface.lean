@@ -1,6 +1,6 @@
 import Mathlib
-import YangMills.ClayCore.BalabanRG.KPBudgetBridge
 import YangMills.ClayCore.BalabanRG.KPWeightedActivityInterface
+import YangMills.ClayCore.BalabanRG.KPBudgetBridge
 
 namespace YangMills.ClayCore
 
@@ -8,78 +8,70 @@ open scoped BigOperators
 open Classical
 
 /-!
-# KPWeightedBudgetInterface — (v1.0.16-alpha Phase 2)
+# KPWeightedBudgetInterface — (v1.0.17-alpha repair)
 
-Weighted compatible-family budget layer on the native KP side.
+Weighted compatible-family budget layer over the abstract KP weight interface.
 
-This phase remains conservative:
-- it does not alter the existing unweighted KP induction,
-- it introduces the weighted analogue of the family majorant/budget objects,
-- it proves the empty/singleton cases,
-- and it packages the exponential size weight as the first concrete instance.
+Conservative design:
+- preserve the old "KPWeightedActivity" naming as a compatibility alias,
+- define weighted family weight / weighted majorant / weighted induction budget,
+- prove empty and singleton cases,
+- package the exponential polymer-size weight as the first concrete instance.
 -/
 
 noncomputable section
 
-/-- Weighted family weight:
-product of weighted activities over a compatible subfamily. -/
-noncomputable def KPWeightedFamilyWeight {d : ℕ} {L : ℤ}
-    (K : Activity d L) (w : KPPolymerWeight d L)
+/-- Compatibility alias for the old name used in earlier drafts. -/
+abbrev KPWeightedActivity (d : ℕ) (L : ℤ) := KPWeight d L
+
+/-- Weighted absolute family weight:
+`∏_{X∈S} (|K X| * w X)`. -/
+noncomputable def kpWeightedFamilyWeight
+    {d : ℕ} {L : ℤ}
+    (K : Activity d L) (w : KPWeightedActivity d L)
     (S : Finset (Polymer d L)) : ℝ :=
-  ∏ X ∈ S, KPWeightedActivity K w X
+  ∏ X ∈ S, (|K X| * w X)
 
 /-- Weighted compatible-family majorant. -/
-def KPWeightedCompatibleFamilyMajorant {d : ℕ} {L : ℤ}
-    (Gamma : Finset (Polymer d L))
-    (K : Activity d L) (w : KPPolymerWeight d L) (B : ℝ) : Prop :=
-  ∑ S ∈ (compatibleSubfamilies Gamma).erase ∅, KPWeightedFamilyWeight K w S ≤ B
-
-/-- Weighted induction budget attached to a polymer weight. -/
-noncomputable def KPWeightedInductionBudget {d : ℕ} {L : ℤ}
-    (Gamma : Finset (Polymer d L))
-    (K : Activity d L) (w : KPPolymerWeight d L) : ℝ :=
-  ∑ S ∈ (compatibleSubfamilies Gamma).erase ∅, KPWeightedFamilyWeight K w S
-
-/-- Nonnegativity of the weighted family weight under a nonnegative weight.
-0 sorrys. -/
-theorem kpWeightedFamilyWeight_nonneg
+def KPWeightedCompatibleFamilyMajorant
     {d : ℕ} {L : ℤ}
-    (K : Activity d L) (w : KPPolymerWeight d L)
-    (hw : KPWeightNonneg d L w) (S : Finset (Polymer d L)) :
-    0 ≤ KPWeightedFamilyWeight K w S := by
-  unfold KPWeightedFamilyWeight
-  exact Finset.prod_nonneg (fun X hX => kpWeightedActivity_nonneg K w hw X)
+    (Gamma : Finset (Polymer d L))
+    (K : Activity d L)
+    (w : KPWeightedActivity d L)
+    (B : ℝ) : Prop :=
+  ∑ S ∈ (compatibleSubfamilies Gamma).erase ∅,
+      kpWeightedFamilyWeight K w S ≤ B
 
-/-- Singleton family weight reduces to the singleton weighted activity.
-0 sorrys. -/
-theorem kpWeightedFamilyWeight_singleton
+/-- Weighted induction budget. -/
+noncomputable def KPWeightedInductionBudget
     {d : ℕ} {L : ℤ}
-    (K : Activity d L) (w : KPPolymerWeight d L)
-    (X : Polymer d L) :
-    KPWeightedFamilyWeight K w ({X} : Finset (Polymer d L)) =
-      KPWeightedActivity K w X := by
-  simp [KPWeightedFamilyWeight]
+    (Gamma : Finset (Polymer d L))
+    (K : Activity d L)
+    (w : KPWeightedActivity d L) : ℝ :=
+  ∑ S ∈ (compatibleSubfamilies Gamma).erase ∅,
+      kpWeightedFamilyWeight K w S
 
-/-- The weighted induction budget is tautologically a weighted majorant.
-0 sorrys. -/
+/-- The weighted induction budget is tautologically a weighted compatible-family
+majorant. -/
 theorem kpWeightedInductionBudget_is_majorant
     {d : ℕ} {L : ℤ}
     (Gamma : Finset (Polymer d L))
-    (K : Activity d L) (w : KPPolymerWeight d L) :
+    (K : Activity d L)
+    (w : KPWeightedActivity d L) :
     KPWeightedCompatibleFamilyMajorant Gamma K w
       (KPWeightedInductionBudget Gamma K w) := by
   unfold KPWeightedCompatibleFamilyMajorant KPWeightedInductionBudget
   exact le_rfl
 
-/-! ## Base cases -/
-
-/-- Empty-support weighted majorant. 0 sorrys. -/
+/-- Empty weighted majorant. -/
 theorem kpWeightedCompatibleFamilyMajorant_empty
     {d : ℕ} {L : ℤ}
-    (K : Activity d L) (w : KPPolymerWeight d L) :
+    (K : Activity d L)
+    (w : KPWeightedActivity d L) :
     KPWeightedCompatibleFamilyMajorant (∅ : Finset (Polymer d L)) K w 0 := by
   unfold KPWeightedCompatibleFamilyMajorant
-  have h : compatibleSubfamilies (∅ : Finset (Polymer d L)) = {∅} := by
+  have h :
+      compatibleSubfamilies (∅ : Finset (Polymer d L)) = {∅} := by
     ext S
     constructor
     · intro hS
@@ -92,13 +84,15 @@ theorem kpWeightedCompatibleFamilyMajorant_empty
       exact empty_mem_compatibleSubfamilies ∅
   rw [h, Finset.erase_singleton, Finset.sum_empty]
 
-/-- Empty weighted induction budget is zero. 0 sorrys. -/
+/-- Empty weighted induction budget. -/
 theorem kpWeightedInductionBudget_empty
     {d : ℕ} {L : ℤ}
-    (K : Activity d L) (w : KPPolymerWeight d L) :
+    (K : Activity d L)
+    (w : KPWeightedActivity d L) :
     KPWeightedInductionBudget (∅ : Finset (Polymer d L)) K w = 0 := by
   unfold KPWeightedInductionBudget
-  have h : compatibleSubfamilies (∅ : Finset (Polymer d L)) = {∅} := by
+  have h :
+      compatibleSubfamilies (∅ : Finset (Polymer d L)) = {∅} := by
     ext S
     constructor
     · intro hS
@@ -111,66 +105,76 @@ theorem kpWeightedInductionBudget_empty
       exact empty_mem_compatibleSubfamilies ∅
   rw [h, Finset.erase_singleton, Finset.sum_empty]
 
-/-! ## Singleton case -/
+/-- Weighted family weight on a singleton support. -/
+theorem kpWeightedFamilyWeight_singleton
+    {d : ℕ} {L : ℤ}
+    (K : Activity d L)
+    (w : KPWeightedActivity d L)
+    (X : Polymer d L) :
+    kpWeightedFamilyWeight K w ({X} : Finset (Polymer d L)) = |K X| * w X := by
+  simp [kpWeightedFamilyWeight]
 
-/-- Singleton weighted majorant from a single weighted activity bound.
-0 sorrys. -/
+/-- Singleton weighted majorant from a single weighted activity bound. -/
 theorem kpWeightedCompatibleFamilyMajorant_singleton
     {d : ℕ} {L : ℤ}
-    (K : Activity d L) (w : KPPolymerWeight d L)
-    (X : Polymer d L) (B : ℝ)
-    (hB : KPWeightedActivity K w X ≤ B) :
+    (K : Activity d L)
+    (w : KPWeightedActivity d L)
+    (X : Polymer d L)
+    (B : ℝ)
+    (hB : |K X| * w X ≤ B) :
     KPWeightedCompatibleFamilyMajorant ({X} : Finset (Polymer d L)) K w B := by
   unfold KPWeightedCompatibleFamilyMajorant
   rw [compatibleSubfamilies_singleton_erase_empty]
-  simpa [kpWeightedFamilyWeight_singleton] using hB
+  simpa [kpWeightedFamilyWeight, hB]
 
-/-- Singleton weighted induction budget evaluates to the weighted activity.
-0 sorrys. -/
+/-- Singleton weighted induction budget computes exactly to the weighted activity
+of the single polymer. -/
 theorem kpWeightedInductionBudget_singleton
     {d : ℕ} {L : ℤ}
-    (K : Activity d L) (w : KPPolymerWeight d L)
+    (K : Activity d L)
+    (w : KPWeightedActivity d L)
     (X : Polymer d L) :
-    KPWeightedInductionBudget ({X} : Finset (Polymer d L)) K w =
-      KPWeightedActivity K w X := by
+    KPWeightedInductionBudget ({X} : Finset (Polymer d L)) K w = |K X| * w X := by
   unfold KPWeightedInductionBudget
   rw [compatibleSubfamilies_singleton_erase_empty]
-  simpa [kpWeightedFamilyWeight_singleton]
+  simp [kpWeightedFamilyWeight]
 
-/-! ## First concrete instance: exponential size weight -/
+/-! ## First concrete instance: exponential polymer-size weight -/
 
-/-- Singleton weighted majorant for the KP exponential size weight.
-0 sorrys. -/
-theorem kpExpSizeWeight_singleton_majorant
+/-- Compatibility alias with the parameter order used by older local proofs. -/
+theorem kp_weightedActivity_bound_via_kpExpSizeWeight
     {d : ℕ} {L : ℤ}
-    (K : Activity d L) (a : ℝ) (X : Polymer d L)
+    (K : Activity d L)
+    (a : ℝ)
+    (X : Polymer d L)
+    (hKP : KoteckyPreiss K a) :
+    |K X| * kpExpSizeWeight a d L X ≤ a := by
+  exact kp_weighted_activity_bound_via_expSizeWeight K a hKP X
+
+/-- Exponential size weight gives a singleton weighted majorant directly from KP. -/
+theorem kpWeightedCompatibleFamilyMajorant_singleton_expSizeWeight
+    {d : ℕ} {L : ℤ}
+    (K : Activity d L)
+    (a : ℝ)
+    (X : Polymer d L)
     (hKP : KoteckyPreiss K a) :
     KPWeightedCompatibleFamilyMajorant ({X} : Finset (Polymer d L))
       K (kpExpSizeWeight a d L) a := by
   apply kpWeightedCompatibleFamilyMajorant_singleton
-  exact kp_weightedActivity_bound_via_kpExpSizeWeight K a hKP X
+  exact kp_weightedActivity_bound_via_kpExpSizeWeight K a X hKP
 
-/-- Singleton weighted induction budget for the exponential size weight is
-bounded by `a` under KP. 0 sorrys. -/
-theorem kpExpSizeWeight_singleton_budget_le
+/-- Exponential size weight gives the singleton weighted induction budget bound
+directly from KP. -/
+theorem kpWeightedInductionBudget_singleton_expSizeWeight_le
     {d : ℕ} {L : ℤ}
-    (K : Activity d L) (a : ℝ) (X : Polymer d L)
+    (K : Activity d L)
+    (a : ℝ)
+    (X : Polymer d L)
     (hKP : KoteckyPreiss K a) :
     KPWeightedInductionBudget ({X} : Finset (Polymer d L))
       K (kpExpSizeWeight a d L) ≤ a := by
   rw [kpWeightedInductionBudget_singleton]
-  exact kp_weightedActivity_bound_via_kpExpSizeWeight K a hKP X
-
-/-- Scale-specialized singleton weighted majorant for `ActivityFamily`.
-0 sorrys. -/
-theorem kpExpSizeWeight_singleton_majorant_scale
-    {d k : ℕ}
-    (K : ActivityFamily d k) (a : ℝ) (X : Polymer d (Int.ofNat k))
-    (hKP : KoteckyPreiss K a) :
-    KPWeightedCompatibleFamilyMajorant ({X} : Finset (Polymer d (Int.ofNat k)))
-      K (kpExpSizeWeight a d (Int.ofNat k)) a := by
-  exact kpExpSizeWeight_singleton_majorant
-    (d := d) (L := Int.ofNat k) K a X hKP
+  exact kp_weightedActivity_bound_via_kpExpSizeWeight K a X hKP
 
 end
 
