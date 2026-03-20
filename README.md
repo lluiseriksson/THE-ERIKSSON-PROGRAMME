@@ -276,3 +276,11 @@ to produce a concrete witness `B` with
 `KPWeightedInductionBudget ≤ B ≤ theoreticalBudget`,
 instead of supplying a full direct-budget transfer schema.
 
+## v1.0.22-alpha
+
+Added an honest finite-full native-target envelope layer for the P91
+small-constants route. This packages a concrete witness
+`KPWeightedInductionBudget ≤ B ≤ exp(theoreticalBudget) - 1`, exports the
+native free-energy interface, and produces the standard mass-gap-ready package
+without pretending to prove the missing direct-budget transfer.
+
