@@ -97,3 +97,9 @@ v1.0.12-alpha
 - Abstract polymer-weight interface now instantiated with a KP-shaped weight
 - Finite-full weighted bridge path validated for exponential size weights
 - `CauchyDecayFromAF` extended with the exp-size-weight finite-full alias
+
+
+## v1.0.15-alpha
+- Structural lemmas added for the exponential polymer-size weight `w_a(X)=exp(a*|X|)`
+- KP pointwise activity bounds rewritten through the exp-size-weight language
+- Weighted smallness form `|K X| * w_a(X) ≤ a` available in native and scale-specialized versions

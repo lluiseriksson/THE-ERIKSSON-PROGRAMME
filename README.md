@@ -226,3 +226,9 @@ high-level finite full size-weight route in `CauchyDecayFromAF`.
 
 v1.0.14-alpha
 An exponential polymer-size weight `w_a(X)=exp(a*|X|)` is now available through the abstract polymer-weight interface. This gives a KP-shaped weighted `ActivityNorm` family, recovers the finite-full weighted bridge control path, and exposes the resulting high-level exp-size-weight route through `CauchyDecayFromAF`.
+
+
+v1.0.15-alpha
+The exponential polymer-size weight path is now structurally organized. We added reusable lemmas for
+`w_a(X)=exp(a*|X|)` and rewrote the native KP pointwise activity bound in exp-weight language,
+including the weighted smallness form `|K X| * w_a(X) ≤ a`.
