@@ -72,3 +72,9 @@ Option B: inductive step ∅→{p₀}→polys∪{p₀}
 - `ActivityNormEvaluationBoundAt` discharged with constant `1` for the concrete `L¹` family
 - `ActivityNormEvaluationCauchyBoundAt` discharged from the same concrete input
 - Concrete `L¹` singleton path exposed at high level in `CauchyDecayFromAF`
+
+
+## v1.0.11-alpha
+- Concrete finite-support full bridge bounds discharged from the concrete `L¹` norm family
+- Concrete packaged finite full control added via `finiteCanonicalGeometricBridgeControlFull_l1`
+- High-level finite full `L¹` path exposed in `CauchyDecayFromAF`

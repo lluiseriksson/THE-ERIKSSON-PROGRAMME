@@ -1001,3 +1001,10 @@ A first concrete `ActivityNorm` model is now available: a finite `L¹` norm on
 polymer activity families. This concretely discharges the singleton native
 evaluation and Cauchy bounds with constant `1`, and exposes the resulting
 high-level singleton path through `CauchyDecayFromAF`.
+
+
+## v1.0.11-alpha
+The concrete finite `L¹` activity norm now discharges the full finite-support
+bridge bounds in the canonical full geometry. This yields a concrete packaged
+finite full control and exposes the resulting high-level finite full path
+through `CauchyDecayFromAF`.
