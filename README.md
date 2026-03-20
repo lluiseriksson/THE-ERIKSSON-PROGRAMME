@@ -241,3 +241,12 @@ The KP-side weighting architecture is now abstracted and operational.
 - `KPWeightedBudgetToPartition`: weighted budgets recover native `SmallActivityBudget` and `|Z - 1| ≤ B`
 - Exponential polymer-size weight is the first concrete KP-side instance
 - Conservative exp-size-weight specialization is closed through explicit `w ≥ 1`
+
+## v1.0.18-alpha
+
+Weighted KP budgets now propagate all the way to positivity and free-energy control.
+From weighted compatible-family majorants / induction budgets with `1 ≤ w(X)`, the
+formal chain now yields `|Z - 1| ≤ B`, `0 < Z` for `B < 1`, `log Z ≤ B`, and
+`|log Z| ≤ 2B` for `B ≤ 1/2`, with automatic specialization to the exponential
+polymer-size weight.
+
