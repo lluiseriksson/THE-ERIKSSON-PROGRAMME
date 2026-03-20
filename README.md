@@ -222,3 +222,7 @@ the native polymer-size weight `w(X)=|X|`.
 
 This validates the weighted evaluation path and the finite full bridge path through the abstract interface, and exposes the resulting
 high-level finite full size-weight route in `CauchyDecayFromAF`.
+
+
+v1.0.14-alpha
+An exponential polymer-size weight `w_a(X)=exp(a*|X|)` is now available through the abstract polymer-weight interface. This gives a KP-shaped weighted `ActivityNorm` family, recovers the finite-full weighted bridge control path, and exposes the resulting high-level exp-size-weight route through `CauchyDecayFromAF`.

@@ -90,3 +90,10 @@ v1.0.12-alpha
 - Native polymer-size weight `w(X)=|X|` instantiated through the interface
 - Weighted evaluation and finite-full bridge machinery validated for `sizeWeight`
 - `CauchyDecayFromAF` extended with the finite full size-weight alias
+
+
+## v1.0.14-alpha
+- Exponential polymer-size weight introduced: `w_a(X) = exp(a * |X|)`
+- Abstract polymer-weight interface now instantiated with a KP-shaped weight
+- Finite-full weighted bridge path validated for exponential size weights
+- `CauchyDecayFromAF` extended with the exp-size-weight finite-full alias
