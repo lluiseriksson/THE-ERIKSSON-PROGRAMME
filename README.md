@@ -994,3 +994,10 @@ Finite-support full bridge now reaches `CauchyDecayFromAF` via a dedicated alias
 Pointwise singleton control now bridges both large-field and Cauchy bounds
 into the full canonical geometric bridge path, and this reaches the
 high-level consumer `CauchyDecayFromAF`.
+
+
+## v1.0.10-alpha
+A first concrete `ActivityNorm` model is now available: a finite `L¹` norm on
+polymer activity families. This concretely discharges the singleton native
+evaluation and Cauchy bounds with constant `1`, and exposes the resulting
+high-level singleton path through `CauchyDecayFromAF`.

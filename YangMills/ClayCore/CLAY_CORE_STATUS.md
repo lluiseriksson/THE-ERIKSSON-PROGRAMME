@@ -65,3 +65,10 @@ Option B: inductive step ∅→{p₀}→polys∪{p₀}
 - Pointwise-to-singleton large-field bridge added
 - Pointwise-to-singleton Cauchy bridge added
 - Pointwise singleton full bridge reaches `CauchyDecayFromAF`
+
+
+## v1.0.10-alpha
+- First concrete `ActivityNorm` instance added: finite `L¹` norm on `ActivityFamily`
+- `ActivityNormEvaluationBoundAt` discharged with constant `1` for the concrete `L¹` family
+- `ActivityNormEvaluationCauchyBoundAt` discharged from the same concrete input
+- Concrete `L¹` singleton path exposed at high level in `CauchyDecayFromAF`
