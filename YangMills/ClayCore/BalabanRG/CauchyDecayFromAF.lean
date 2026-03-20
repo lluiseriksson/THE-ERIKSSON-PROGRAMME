@@ -13,6 +13,7 @@ import YangMills.ClayCore.BalabanRG.FullCauchySingletonBound
 import YangMills.ClayCore.BalabanRG.ConcreteActivityNormL1
 import YangMills.ClayCore.BalabanRG.ConcreteFiniteFullBridgeL1
 import YangMills.ClayCore.BalabanRG.PolymerSizeWeight
+import YangMills.ClayCore.BalabanRG.ExpPolymerSizeWeight
 
 namespace YangMills.ClayCore
 
@@ -391,6 +392,37 @@ theorem cauchy_decay_from_p91_data_via_finite_canonical_geometric_bridge_size_we
   simpa using
     (cauchy_decay_via_finite_full_bridge_control_sizeWeight
       (d := d) (N_c := N_c) 0 β_k hlargeA hcauchyA polys K₁ K₂ x)
+
+
+
+/-- Cauchy decay via the finite-support full canonical geometric bridge
+with exponential size weight `w_a(X)=exp(a*|X|)`.
+This is the KP-shaped weighted counterpart of the concrete finite-full path.
+0 sorrys. -/
+theorem cauchy_decay_from_p91_data_via_exp_size_weight_finite_full_canonical_geometric_bridge
+    {d N_c : ℕ} [NeZero N_c]
+    [∀ j, Fintype (Polymer d (Int.ofNat j))]
+    [∀ j, DecidableEq (Polymer d (Int.ofNat j))]
+    (a : ℝ) (ha : 0 ≤ a)
+    (β_k : ℝ)
+    (hlargeA : (1 : ℝ) ≤ Real.exp (-β_k))
+    (hcauchyA : (1 : ℝ) ≤ physicalContractionRate β_k)
+    (polys : Finset (Polymer d (Int.ofNat 0)))
+    (K₁ K₂ : ActivityFamily d (0 : ℕ))
+    (x : BalabanFiniteSite d 0) :
+    letI : ∀ j, ActivityNorm d j :=
+      instActivityNormFromExpSizeWeight (d := d) a ha
+    let ctrl := finiteCanonicalGeometricBridgeControlFull_expSizeWeight
+      (d := d) (N_c := N_c) a ha 0 β_k hlargeA hcauchyA polys
+    (|ctrl.core.bridge.fieldOfActivity K₁ x| ≤
+      Real.exp (-β_k) * ActivityNorm.dist K₁ (fun _ => 0)) ∧
+    (|ctrl.core.bridge.fieldOfActivity K₁ x -
+      ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+      physicalContractionRate β_k * ActivityNorm.dist K₁ K₂) := by
+  letI : ∀ j, ActivityNorm d j :=
+    instActivityNormFromExpSizeWeight (d := d) a ha
+  intro ctrl
+  exact cauchy_decay_via_finite_full_bridge_control ctrl K₁ K₂ x
 
 
 end
