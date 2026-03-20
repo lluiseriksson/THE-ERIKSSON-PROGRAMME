@@ -250,3 +250,13 @@ formal chain now yields `|Z - 1| ≤ B`, `0 < Z` for `B < 1`, `log Z ≤ B`, and
 `|log Z| ≤ 2B` for `B ≤ 1/2`, with automatic specialization to the exponential
 polymer-size weight.
 
+## v1.0.19-alpha
+
+Finite-full weighted bridge control now has an honest small-constants interface.
+The legacy coarse lane is preserved, but the missing mathematical transfer is
+now isolated explicitly as:
+small finite-full constants `A_large`, `A_cauchy`,
+their refinement to `exp(-β)` / `physicalContractionRate β`,
+and the remaining finite-full → direct-budget conversion target for the
+exp-size-weight P91 route.
+
