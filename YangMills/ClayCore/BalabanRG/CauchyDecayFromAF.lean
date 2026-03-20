@@ -11,6 +11,7 @@ import YangMills.ClayCore.BalabanRG.CauchyDecayViaBridgeFull
 import YangMills.ClayCore.BalabanRG.CauchyDecayViaBridgeFiniteFull
 import YangMills.ClayCore.BalabanRG.FullCauchySingletonBound
 import YangMills.ClayCore.BalabanRG.ConcreteActivityNormL1
+import YangMills.ClayCore.BalabanRG.ConcreteFiniteFullBridgeL1
 
 namespace YangMills.ClayCore
 
@@ -314,6 +315,53 @@ theorem zero_field_from_l1_singleton_data_via_full_canonical_geometric_bridge
       hlargeA hcauchyA)
 
 
+
+
+
+/-- High-level consumer from the concrete finite-support full `L¹` bridge path.
+    This extends the discharged `L¹` singleton route to arbitrary finite support
+    `polys : Finset (Polymer ...)` in the full canonical geometry.
+    0 sorrys. -/
+theorem cauchy_decay_from_l1_finite_full_data_via_canonical_geometric_bridge
+    {d N_c : ℕ} [NeZero N_c]
+    [∀ j, Fintype (Polymer d (Int.ofNat j))]
+    [∀ j, DecidableEq (Polymer d (Int.ofNat j))]
+    (k : ℕ) (β : ℝ)
+    (hlargeA : (1 : ℝ) ≤ Real.exp (-β))
+    (hcauchyA : (1 : ℝ) ≤ physicalContractionRate β)
+    (polys : Finset (Polymer d (Int.ofNat k)))
+    (K₁ K₂ : ActivityFamily d k)
+    (x : BalabanFiniteSite d k) :
+    letI : ∀ j, ActivityNorm d j := instActivityNormL1All (d := d)
+    let ctrl := finiteCanonicalGeometricBridgeControlFull_l1
+      (d := d) (N_c := N_c) k β hlargeA hcauchyA polys
+    (|ctrl.core.bridge.fieldOfActivity K₁ x| ≤
+      Real.exp (-β) * ActivityNorm.dist K₁ (fun _ => 0)) ∧
+    (|ctrl.core.bridge.fieldOfActivity K₁ x -
+      ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+      physicalContractionRate β * ActivityNorm.dist K₁ K₂) := by
+  letI : ∀ j, ActivityNorm d j := instActivityNormL1All (d := d)
+  simpa using
+    (cauchy_decay_via_finite_full_bridge_control_l1
+      (d := d) (N_c := N_c) k β hlargeA hcauchyA polys K₁ K₂ x)
+
+/-- Zero-field extractor for the concrete finite-support full `L¹` bridge path.
+    0 sorrys. -/
+theorem zero_field_from_l1_finite_full_data_via_canonical_geometric_bridge
+    {d N_c : ℕ} [NeZero N_c]
+    [∀ j, Fintype (Polymer d (Int.ofNat j))]
+    [∀ j, DecidableEq (Polymer d (Int.ofNat j))]
+    (k : ℕ) (β : ℝ)
+    (hlargeA : (1 : ℝ) ≤ Real.exp (-β))
+    (hcauchyA : (1 : ℝ) ≤ physicalContractionRate β)
+    (polys : Finset (Polymer d (Int.ofNat k))) :
+    letI : ∀ j, ActivityNorm d j := instActivityNormL1All (d := d)
+    let ctrl := finiteCanonicalGeometricBridgeControlFull_l1
+      (d := d) (N_c := N_c) k β hlargeA hcauchyA polys
+    ctrl.core.bridge.fieldOfActivity (fun _ => 0) = fun _ => 0 := by
+  letI : ∀ j, ActivityNorm d j := instActivityNormL1All (d := d)
+  intro ctrl
+  exact rg_control_full_zero_field ctrl
 
 
 end
