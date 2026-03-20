@@ -63,6 +63,22 @@ theorem norm_sub_le (K₁ K₂ : ActivityFamily d k) :
       ≤ norm K₁ + norm (fun p => -K₂ p) := norm_add_le K₁ (fun p => -K₂ p)
     _ = norm K₁ + norm K₂ := by rw [norm_neg]
 
+
+theorem dist_zero_right (K : ActivityFamily d k) : dist K (fun _ => 0) = norm K := by
+  unfold dist
+  have h : (fun p => K p - (0 : ℝ)) = K := by
+    funext p
+    simp
+  rw [h]
+
+theorem dist_sub_zero_eq_dist (K₁ K₂ : ActivityFamily d k) :
+    dist (K₁ - K₂) (fun _ => 0) = dist K₁ K₂ := by
+  unfold dist
+  have h : (fun p => (K₁ - K₂) p - (0 : ℝ)) = (fun p => K₁ p - K₂ p) := by
+    funext p
+    simp
+  rw [h]
+
 end ActivityNorm
 
 end
