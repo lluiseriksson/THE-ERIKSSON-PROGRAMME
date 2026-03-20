@@ -985,3 +985,6 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8250+ compiled jobs
 ## Author
 
 **Lluis Eriksson** — independent researcher · March 2026 · v0.8.56
+
+Finite-support full bridge control is now packaged and reaches a high-level consumer.
+Finite-support full bridge now reaches `CauchyDecayFromAF` via a dedicated alias.

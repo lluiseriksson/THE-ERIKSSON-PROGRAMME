@@ -56,3 +56,6 @@ FullLargeFieldSuppressionSingleton — {p₀} discharged (v1.0.6) ✅
 ## Next: v1.0.7-alpha
 Option A: discharge `SingletonFullLargeFieldBound` from ActivityNorm
 Option B: inductive step ∅→{p₀}→polys∪{p₀}
+
+- Finite-support full bridge consumer chain reached
+- `CauchyDecayFromAF` extended with finite full alias
