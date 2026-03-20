@@ -78,3 +78,9 @@ Option B: inductive step ∅→{p₀}→polys∪{p₀}
 - Concrete finite-support full bridge bounds discharged from the concrete `L¹` norm family
 - Concrete packaged finite full control added via `finiteCanonicalGeometricBridgeControlFull_l1`
 - High-level finite full `L¹` path exposed in `CauchyDecayFromAF`
+
+v1.0.12-alpha
+- Weighted finite L¹ ActivityNorm family introduced
+- Native evaluation/Cauchy bounds discharged under 1 ≤ w
+- Finite full bridge bounds discharged from weighted L¹
+- Unit-weight specialization w ≡ 1 validates the weighted architecture against the previous concrete basepoint
