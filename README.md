@@ -68,3 +68,16 @@ Formalize a complete proof architecture for the Yang–Mills mass gap in Lean 4:
 
 **Lluis Eriksson** Independent researcher  
 March 2026
+
+## v1.0.26-alpha
+
+Topological unconditionality phase started.
+
+This milestone opens the first genuine axiom-elimination task in the repository:
+formalizing compactness of the special unitary gauge group inside Lean, rather
+than leaving it as external mathematical background.
+
+No unconditional Clay claim is made at this stage. The repository remains an
+honest reduction program until all terminal transfers and structural axioms are
+discharged internally.
+
