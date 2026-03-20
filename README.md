@@ -284,3 +284,11 @@ small-constants route. This packages a concrete witness
 native free-energy interface, and produces the standard mass-gap-ready package
 without pretending to prove the missing direct-budget transfer.
 
+## v1.0.23-alpha
+
+Added the honest finite-full final-gap witness over the native-target envelope.
+This closes the native-target lane in the same packaged style as the weighted
+final-gap route: P91 recursion data + finite-full native-target envelope +
+terminal LSI→DLR transfer now feed a single reusable witness object exporting
+the final `ClayYangMillsTheorem` closure.
+
