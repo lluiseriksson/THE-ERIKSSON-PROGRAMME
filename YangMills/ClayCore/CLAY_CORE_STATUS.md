@@ -59,3 +59,9 @@ Option B: inductive step ∅→{p₀}→polys∪{p₀}
 
 - Finite-support full bridge consumer chain reached
 - `CauchyDecayFromAF` extended with finite full alias
+
+
+## v1.0.8-alpha
+- Pointwise-to-singleton large-field bridge added
+- Pointwise-to-singleton Cauchy bridge added
+- Pointwise singleton full bridge reaches `CauchyDecayFromAF`

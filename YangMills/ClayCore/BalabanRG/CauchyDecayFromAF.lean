@@ -9,6 +9,7 @@ import YangMills.ClayCore.BalabanRG.PolymerGeometricReadout
 import YangMills.ClayCore.BalabanRG.PolymerCanonicalSite
 import YangMills.ClayCore.BalabanRG.CauchyDecayViaBridgeFull
 import YangMills.ClayCore.BalabanRG.CauchyDecayViaBridgeFiniteFull
+import YangMills.ClayCore.BalabanRG.FullCauchySingletonBound
 
 namespace YangMills.ClayCore
 
@@ -208,6 +209,50 @@ theorem cauchy_decay_from_p91_data_via_finite_canonical_geometric_bridge_full
       ctrl.core.bridge.fieldOfActivity K₂ x| ≤
       physicalContractionRate β_k * ActivityNorm.dist K₁ K₂) :=
   cauchy_decay_via_finite_full_bridge_control ctrl K₁ K₂ x
+
+
+
+/-- High-level consumer from pointwise singleton full-bridge data.
+    Uses pointwise large-field and Cauchy bounds at a singleton polymer,
+    then packages them into the full canonical geometric bridge control.
+    0 sorrys. -/
+theorem cauchy_decay_from_pointwise_singleton_data_via_full_canonical_geometric_bridge
+    {d N_c : ℕ} [NeZero N_c]
+    [∀ k, ActivityNorm d k]
+    (β_k C_large C_cauchy : ℝ)
+    (p₀ : Polymer d (Int.ofNat 0))
+    (hlarge : SingletonPointwiseBound d N_c 0 C_large p₀)
+    (hlargeC : C_large ≤ Real.exp (-β_k))
+    (hcauchy : SingletonPointwiseCauchyBound d N_c 0 C_cauchy p₀)
+    (hcauchyC : C_cauchy ≤ physicalContractionRate β_k)
+    (K₁ K₂ : ActivityFamily d (0 : ℕ))
+    (x : BalabanFiniteSite d 0) :
+    let ctrl := singletonCanonicalGeometricBridgeControlFull_of_pointwise_bounds
+      0 β_k C_large C_cauchy p₀ hlarge hlargeC hcauchy hcauchyC
+    (|ctrl.core.bridge.fieldOfActivity K₁ x| ≤
+      Real.exp (-β_k) * ActivityNorm.dist K₁ (fun _ => 0)) ∧
+    (|ctrl.core.bridge.fieldOfActivity K₁ x -
+      ctrl.core.bridge.fieldOfActivity K₂ x| ≤
+      physicalContractionRate β_k * ActivityNorm.dist K₁ K₂) := by
+  intro ctrl
+  exact cauchy_decay_via_finite_full_bridge_control ctrl K₁ K₂ x
+
+/-- Zero-field extractor for the pointwise singleton full-bridge control.
+    0 sorrys. -/
+theorem zero_field_from_pointwise_singleton_data_via_full_canonical_geometric_bridge
+    {d N_c : ℕ} [NeZero N_c]
+    [∀ k, ActivityNorm d k]
+    (β_k C_large C_cauchy : ℝ)
+    (p₀ : Polymer d (Int.ofNat 0))
+    (hlarge : SingletonPointwiseBound d N_c 0 C_large p₀)
+    (hlargeC : C_large ≤ Real.exp (-β_k))
+    (hcauchy : SingletonPointwiseCauchyBound d N_c 0 C_cauchy p₀)
+    (hcauchyC : C_cauchy ≤ physicalContractionRate β_k) :
+    let ctrl := singletonCanonicalGeometricBridgeControlFull_of_pointwise_bounds
+      0 β_k C_large C_cauchy p₀ hlarge hlargeC hcauchy hcauchyC
+    ctrl.core.bridge.fieldOfActivity (fun _ => 0) = fun _ => 0 := by
+  intro ctrl
+  exact rg_control_full_zero_field ctrl
 
 
 end

@@ -988,3 +988,9 @@ Lean toolchain: `leanprover/lean4:v4.29.0-rc6` · Mathlib · 8250+ compiled jobs
 
 Finite-support full bridge control is now packaged and reaches a high-level consumer.
 Finite-support full bridge now reaches `CauchyDecayFromAF` via a dedicated alias.
+
+
+## v1.0.8-alpha
+Pointwise singleton control now bridges both large-field and Cauchy bounds
+into the full canonical geometric bridge path, and this reaches the
+high-level consumer `CauchyDecayFromAF`.
