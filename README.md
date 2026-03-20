@@ -260,3 +260,11 @@ their refinement to `exp(-β)` / `physicalContractionRate β`,
 and the remaining finite-full → direct-budget conversion target for the
 exp-size-weight P91 route.
 
+## v1.0.20-alpha
+
+The legacy finite-full P91 direct-budget interface is now a compatibility shim
+over the honest small-constants interface. The stale `1 ≤ exp(-β)` /
+`1 ≤ physicalContractionRate β` transfer packaging is no longer carried as the
+primary finite-full interface; the real remaining gap is isolated only as the
+small-constants to direct-budget transfer.
+
