@@ -64,6 +64,87 @@ Formalize a complete proof architecture for the Yang–Mills mass gap in Lean 4:
 
 ---
 
+
+---
+
+## Complete Paper Corpus
+
+**68 publicly timestamped papers** — [ai.vixra.org/author/lluis_eriksson](https://ai.vixra.org/author/lluis_eriksson)  
+Date range: 2025-12-16 → 2026-02-27 · SHA-256 hashes in [`ym-audit`](https://github.com/lluiseriksson/ym-audit)
+
+| # | Date | ai.viXra ID | Title |
+|--:|------|-------------|-------|
+| 1 | — | [2512.0060](https://ai.vixra.org/abs/2512.0060) | *(metadata pending)* |
+| 2 | — | [2512.0061](https://ai.vixra.org/abs/2512.0061) | *(metadata pending)* |
+| 3 | — | [2512.0064](https://ai.vixra.org/abs/2512.0064) | *(metadata pending)* |
+| 4 | — | [2512.0070](https://ai.vixra.org/abs/2512.0070) | *(metadata pending)* |
+| 5 | — | [2512.0071](https://ai.vixra.org/abs/2512.0071) | *(metadata pending)* |
+| 6 | — | [2512.0072](https://ai.vixra.org/abs/2512.0072) | *(metadata pending)* |
+| 7 | — | [2512.0073](https://ai.vixra.org/abs/2512.0073) | *(metadata pending)* |
+| 8 | — | [2512.0081](https://ai.vixra.org/abs/2512.0081) | *(metadata pending)* |
+| 9 | — | [2512.0084](https://ai.vixra.org/abs/2512.0084) | *(metadata pending)* |
+| 10 | — | [2512.0085](https://ai.vixra.org/abs/2512.0085) | *(metadata pending)* |
+| 11 | — | [2512.0091](https://ai.vixra.org/abs/2512.0091) | *(metadata pending)* |
+| 12 | — | [2512.0101](https://ai.vixra.org/abs/2512.0101) | *(metadata pending)* |
+| 13 | — | [2512.0102](https://ai.vixra.org/abs/2512.0102) | *(metadata pending)* |
+| 14 | — | [2512.0105](https://ai.vixra.org/abs/2512.0105) | *(metadata pending)* |
+| 15 | — | [2601.0007](https://ai.vixra.org/abs/2601.0007) | *(metadata pending)* |
+| 16 | — | [2601.0020](https://ai.vixra.org/abs/2601.0020) | *(metadata pending)* |
+| 17 | — | [2601.0022](https://ai.vixra.org/abs/2601.0022) | *(metadata pending)* |
+| 18 | — | [2601.0023](https://ai.vixra.org/abs/2601.0023) | *(metadata pending)* |
+| 19 | — | [2601.0031](https://ai.vixra.org/abs/2601.0031) | *(metadata pending)* |
+| 20 | — | [2601.0034](https://ai.vixra.org/abs/2601.0034) | *(metadata pending)* |
+| 21 | — | [2601.0035](https://ai.vixra.org/abs/2601.0035) | *(metadata pending)* |
+| 22 | — | [2601.0038](https://ai.vixra.org/abs/2601.0038) | *(metadata pending)* |
+| 23 | — | [2601.0040](https://ai.vixra.org/abs/2601.0040) | *(metadata pending)* |
+| 24 | — | [2601.0042](https://ai.vixra.org/abs/2601.0042) | *(metadata pending)* |
+| 25 | — | [2601.0043](https://ai.vixra.org/abs/2601.0043) | *(metadata pending)* |
+| 26 | — | [2601.0044](https://ai.vixra.org/abs/2601.0044) | *(metadata pending)* |
+| 27 | — | [2601.0046](https://ai.vixra.org/abs/2601.0046) | *(metadata pending)* |
+| 28 | — | [2601.0047](https://ai.vixra.org/abs/2601.0047) | *(metadata pending)* |
+| 29 | — | [2601.0050](https://ai.vixra.org/abs/2601.0050) | *(metadata pending)* |
+| 30 | — | [2601.0051](https://ai.vixra.org/abs/2601.0051) | *(metadata pending)* |
+| 31 | — | [2601.0064](https://ai.vixra.org/abs/2601.0064) | *(metadata pending)* |
+| 32 | — | [2601.0065](https://ai.vixra.org/abs/2601.0065) | *(metadata pending)* |
+| 33 | — | [2601.0066](https://ai.vixra.org/abs/2601.0066) | *(metadata pending)* |
+| 34 | — | [2601.0099](https://ai.vixra.org/abs/2601.0099) | *(metadata pending)* |
+| 35 | — | [2601.0111](https://ai.vixra.org/abs/2601.0111) | *(metadata pending)* |
+| 36 | — | [2601.0115](https://ai.vixra.org/abs/2601.0115) | *(metadata pending)* |
+| 37 | — | [2602.0020](https://ai.vixra.org/abs/2602.0020) | *(metadata pending)* |
+| 38 | — | [2602.0021](https://ai.vixra.org/abs/2602.0021) | *(metadata pending)* |
+| 39 | — | [2602.0032](https://ai.vixra.org/abs/2602.0032) | *(metadata pending)* |
+| 40 | — | [2602.0033](https://ai.vixra.org/abs/2602.0033) | *(metadata pending)* |
+| 41 | — | [2602.0035](https://ai.vixra.org/abs/2602.0035) | *(metadata pending)* |
+| 42 | — | [2602.0036](https://ai.vixra.org/abs/2602.0036) | *(metadata pending)* |
+| 43 | — | [2602.0038](https://ai.vixra.org/abs/2602.0038) | *(metadata pending)* |
+| 44 | — | [2602.0040](https://ai.vixra.org/abs/2602.0040) | *(metadata pending)* |
+| 45 | — | [2602.0041](https://ai.vixra.org/abs/2602.0041) | *(metadata pending)* |
+| 46 | — | [2602.0046](https://ai.vixra.org/abs/2602.0046) | *(metadata pending)* |
+| 47 | — | [2602.0051](https://ai.vixra.org/abs/2602.0051) | *(metadata pending)* |
+| 48 | — | [2602.0052](https://ai.vixra.org/abs/2602.0052) | *(metadata pending)* |
+| 49 | — | [2602.0053](https://ai.vixra.org/abs/2602.0053) | *(metadata pending)* |
+| 50 | — | [2602.0054](https://ai.vixra.org/abs/2602.0054) | *(metadata pending)* |
+| 51 | — | [2602.0055](https://ai.vixra.org/abs/2602.0055) | *(metadata pending)* |
+| 52 | — | [2602.0056](https://ai.vixra.org/abs/2602.0056) | *(metadata pending)* |
+| 53 | — | [2602.0057](https://ai.vixra.org/abs/2602.0057) | *(metadata pending)* |
+| 54 | — | [2602.0063](https://ai.vixra.org/abs/2602.0063) | *(metadata pending)* |
+| 55 | — | [2602.0069](https://ai.vixra.org/abs/2602.0069) | *(metadata pending)* |
+| 56 | — | [2602.0070](https://ai.vixra.org/abs/2602.0070) | *(metadata pending)* |
+| 57 | — | [2602.0072](https://ai.vixra.org/abs/2602.0072) | *(metadata pending)* |
+| 58 | — | [2602.0073](https://ai.vixra.org/abs/2602.0073) | *(metadata pending)* |
+| 59 | — | [2602.0077](https://ai.vixra.org/abs/2602.0077) | *(metadata pending)* |
+| 60 | — | [2602.0084](https://ai.vixra.org/abs/2602.0084) | *(metadata pending)* |
+| 61 | — | [2602.0085](https://ai.vixra.org/abs/2602.0085) | *(metadata pending)* |
+| 62 | — | [2602.0087](https://ai.vixra.org/abs/2602.0087) | *(metadata pending)* |
+| 63 | — | [2602.0088](https://ai.vixra.org/abs/2602.0088) | *(metadata pending)* |
+| 64 | — | [2602.0089](https://ai.vixra.org/abs/2602.0089) | *(metadata pending)* |
+| 65 | — | [2602.0091](https://ai.vixra.org/abs/2602.0091) | *(metadata pending)* |
+| 66 | — | [2602.0092](https://ai.vixra.org/abs/2602.0092) | *(metadata pending)* |
+| 67 | — | [2602.0096](https://ai.vixra.org/abs/2602.0096) | *(metadata pending)* |
+| 68 | — | [2602.0117](https://ai.vixra.org/abs/2602.0117) | *(metadata pending)* |
+
+---
+
 ## 14. Author
 
 **Lluis Eriksson** Independent researcher  
