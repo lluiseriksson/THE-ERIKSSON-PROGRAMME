@@ -68,7 +68,7 @@ At code level, `HaarLSILiveTarget` is the canonical public name for that obstruc
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
 | Haar-LSI lane | canonically packaged |
-| Remaining live target in this lane | `BalabanRGUniformLSIConditionalTarget` |
+| Remaining live target in this lane | `BalabanRGUniformLSIConditionalTarget` / `HaarLSILiveTarget` / `BalabanRGUniformLSILiveTarget` |
 | Global claim | honest reduction, not finished Clay proof |
 
 ---

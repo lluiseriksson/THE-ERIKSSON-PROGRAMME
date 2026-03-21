@@ -29,3 +29,5 @@ This is still an honest reduction.
 No unconditional Haar-LSI theorem is being claimed here without the live package-level input.
 
 Formal identification: `HaarLSILiveTarget` is equivalent to `SpecialUnitaryDirectUniformLSITheoremTarget`.
+
+Formal Lean alias: `BalabanRGUniformLSILiveTarget` is definitionally the same target as `HaarLSILiveTarget`.
