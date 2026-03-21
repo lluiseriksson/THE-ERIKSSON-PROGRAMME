@@ -33,3 +33,5 @@ Formal identification: `HaarLSILiveTarget` is equivalent to `SpecialUnitaryDirec
 Formal Lean alias: `BalabanRGUniformLSILiveTarget` is definitionally the same target as `HaarLSILiveTarget`.
 
 Packaged consequence: `BalabanRGUniformLSILastMileOutput` groups the scale target, Haar target, and frontier package under the single live-target hypothesis.
+
+Public closure package: `BalabanRGUniformLSIClosurePackage` exposes the current last-mile consequences with named fields.
