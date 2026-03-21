@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + canonical lane contract + public normal-form theorems for the current Balaban-RG / Haar-LSI frontier
+> **Current status:** formal reduction + single public frontier entrypoint for the current Balaban-RG / Haar-LSI lane
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -28,9 +28,8 @@ What is closed locally or canonically exported right now:
 - the canonical public input packet `BalabanRGUniformLSIActivationData`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- the new public normal-form theorems identifying that carrier with the canonical input packet and with the current equivalent hypothesis surfaces paired with transfer,
-- the structured public output `BalabanRGUniformLSIClosurePackage`,
-- and the equivalence registry `BalabanRGUniformLSIEquivalenceRegistry`.
+- the normal-form theorem layer `BalabanRGUniformLSINormalForm`,
+- and the new single public entrypoint `BalabanRGUniformLSIFrontier`.
 
 What remains live mathematically:
 
@@ -42,29 +41,38 @@ What remains live mathematically:
 
 ## 3. Current public API of the Haar-LSI lane
 
-Preferred public input:
+Preferred single public entrypoint:
+
+- `BalabanRGUniformLSIFrontier`
+
+Behind that entrypoint, the canonical internal organization remains:
+
 - `BalabanRGUniformLSIActivationData`
-
-Preferred public output:
 - `BalabanRGUniformLSIPublicFacade`
-
-Preferred trunk-facing carrier:
 - `BalabanRGUniformLSILaneContract`
+- `BalabanRGUniformLSINormalForm`
 
-Preferred normal-form theorem family:
-- `balaban_rg_uniform_lsi_lane_contract_iff_activation_data`
-- `balaban_rg_uniform_lsi_lane_contract_iff_live_target`
-- `balaban_rg_uniform_lsi_lane_contract_iff_direct_uniform_theorem_target`
-- `balaban_rg_uniform_lsi_lane_contract_iff_conditional_target`
-- `balaban_rg_uniform_lsi_lane_contract_iff_haar_lsi_live_target`
-- `balaban_rg_uniform_lsi_lane_contract_iff_pkg_witness`
+Preferred constructor family for the single entrypoint:
 
-Preferred coherence theorem family:
-- `balaban_rg_uniform_lsi_lane_contract_eq_canonical_of_activation_data`
-- `balaban_rg_uniform_lsi_public_facade_eq_canonical_of_lane_contract`
+- `balaban_rg_uniform_lsi_frontier_of_activation_data`
+- `balaban_rg_uniform_lsi_frontier_of_live_target`
+- `balaban_rg_uniform_lsi_frontier_of_direct_uniform_theorem_target`
+- `balaban_rg_uniform_lsi_frontier_of_conditional_target`
+- `balaban_rg_uniform_lsi_frontier_of_haar_lsi_live_target`
+- `balaban_rg_uniform_lsi_frontier_of_pkg`
+- `balaban_rg_uniform_lsi_frontier_of_pkg_witness`
+
+Preferred theorem-level normal forms for the single entrypoint:
+
+- `balaban_rg_uniform_lsi_frontier_iff_activation_data`
+- `balaban_rg_uniform_lsi_frontier_iff_live_target`
+- `balaban_rg_uniform_lsi_frontier_iff_direct_uniform_theorem_target`
+- `balaban_rg_uniform_lsi_frontier_iff_conditional_target`
+- `balaban_rg_uniform_lsi_frontier_iff_haar_lsi_live_target`
+- `balaban_rg_uniform_lsi_frontier_iff_pkg_witness`
 
 Interpretation:
-the lane now exposes a single carrier for downstream use, plus theorem-level normal forms saying exactly what data that carrier really contains.
+the lane now offers one short public name for import and downstream use, while the more detailed activation / facade / contract / normal-form layers remain available underneath.
 
 ---
 
@@ -72,8 +80,8 @@ the lane now exposes a single carrier for downstream use, plus theorem-level nor
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The current repository architecture now says this very explicitly:
-the current lane contract does not hide extra mathematical content beyond the canonical activation packet; it only packages that packet together with the canonically reconstructed public output.
+The new frontier entrypoint does not add mathematical content.
+It is a public ergonomic layer over the already existing lane contract and its normal forms.
 
 ---
 
@@ -83,11 +91,10 @@ the current lane contract does not hide extra mathematical content beyond the ca
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through activation packet, public facade, closure package, equivalence registry, lane contract, and normal-form theorems |
+| Haar-LSI lane | canonically exported through activation packet, public facade, lane contract, normal-form theorems, and single public frontier entrypoint |
 | Preferred public input | `BalabanRGUniformLSIActivationData` |
 | Preferred public output | `BalabanRGUniformLSIPublicFacade` |
-| Preferred trunk-facing carrier | `BalabanRGUniformLSILaneContract` |
-| Preferred theorem-level normal form | `balaban_rg_uniform_lsi_lane_contract_iff_activation_data` |
+| Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
 | Global claim | honest reduction, not finished Clay proof |
 
 ---
@@ -100,7 +107,8 @@ the current lane contract does not hide extra mathematical content beyond the ca
 | `BalabanRGUniformLSIActivationData` | Formal input packet | Packages the current transfer ingredient and preferred live target |
 | `BalabanRGUniformLSIPublicFacade` | Formal output facade | Packages registry + structured closure |
 | `BalabanRGUniformLSILaneContract` | Formal lane contract | Carries canonical input and canonical output together for downstream use |
-| `balaban_rg_uniform_lsi_lane_contract_iff_activation_data` | Public normal form | Shows the lane contract is logically equivalent to the canonical activation packet |
+| `BalabanRGUniformLSINormalForm` | Public theorem layer | Exposes logical normal forms of the lane contract |
+| `BalabanRGUniformLSIFrontier` | Public ergonomic entrypoint | Single short name for importing and consuming the current lane |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap | Still requires the actual package-level uniform-LSI content |
 
 ---

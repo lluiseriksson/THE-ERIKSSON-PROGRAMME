@@ -1,3 +1,4 @@
+import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIFrontier
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSINormalForm
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSILaneContract
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIActivationData

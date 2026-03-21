@@ -1,14 +1,13 @@
-# AXIOM_FRONTIER.md — v0.8.62 (BALABAN-RG NORMAL FORM)
+# AXIOM_FRONTIER.md — v0.8.63 (BALABAN-RG SINGLE PUBLIC FRONTIER)
 
 ## Status
-TOPOLOGICAL SU FRONT CLOSED LOCALLY; HAAR-LSI LANE NOW HAS CANONICAL INPUT, CANONICAL OUTPUT, A SINGLE TRUNK-FACING CONTRACT OBJECT, AND PUBLIC NORMAL-FORM THEOREMS.
+TOPOLOGICAL SU FRONT CLOSED LOCALLY; HAAR-LSI LANE NOW HAS A SINGLE SHORT PUBLIC ENTRYPOINT ON TOP OF THE CANONICAL CONTRACT AND NORMAL-FORM LAYER.
 
 ## Public lane
-- `BalabanRGUniformLSIActivationData` is the canonical public input packet.
-- `BalabanRGUniformLSIPublicFacade` is the canonical public output facade.
-- `BalabanRGUniformLSILaneContract` is the canonical object carrying both input and output for downstream trunk consumption.
-- The theorem family `balaban_rg_uniform_lsi_lane_contract_iff_*` exposes the logical normal forms of that contract.
-- The theorem family `*_eq_canonical_*` exposes coherence with the canonically reconstructed facade.
+- `BalabanRGUniformLSIFrontier` is the preferred short public entrypoint for the present Balaban-RG / Haar-LSI lane.
+- Internally it sits over `BalabanRGUniformLSIActivationData`, `BalabanRGUniformLSIPublicFacade`, `BalabanRGUniformLSILaneContract`, and `BalabanRGUniformLSINormalForm`.
+- The theorem family `balaban_rg_uniform_lsi_frontier_of_*` builds the frontier from all current equivalent hypothesis surfaces.
+- The theorem family `balaban_rg_uniform_lsi_frontier_iff_*` exposes the logical normal forms of that short public entrypoint.
 
 ## Remaining live mathematical obstruction
 An actual Balaban-RG package carrying the uniform-LSI content still has to be discharged internally.
