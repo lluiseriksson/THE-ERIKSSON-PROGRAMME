@@ -1,7 +1,7 @@
-# AXIOM_FRONTIER.md — v0.8.72 (BALABAN-RG AUDIT PACKET)
+# AXIOM_FRONTIER.md — v0.8.73 (BALABAN-RG AUDIT COHERENCE HUB)
 
 ## Status
-TOPOLOGICAL SU FRONT CLOSED LOCALLY; THE HAAR-LSI LANE NOW HAS A SINGLE SHORT PUBLIC FRONTIER ENTRYPOINT, EXPLICIT DIRECT/CONCRETE INPUT PACKETS, A CENTRALIZED INPUT-COHERENCE HUB, A UNIFIED END-TO-END EXPORT PACKET, A CENTRALIZED OBSTRUCTION PACKET, A UNIFIED PILLAR-II PACKET, AN EXPLICIT LOAD-BEARING PACKET, A DEDICATED LOAD-BEARING COHERENCE HUB, AND A UNIFIED AUDIT PACKET.
+TOPOLOGICAL SU FRONT CLOSED LOCALLY; THE HAAR-LSI LANE NOW HAS A SINGLE SHORT PUBLIC FRONTIER ENTRYPOINT, EXPLICIT DIRECT/CONCRETE INPUT PACKETS, A CENTRALIZED INPUT-COHERENCE HUB, A UNIFIED END-TO-END EXPORT PACKET, A CENTRALIZED OBSTRUCTION PACKET, A UNIFIED PILLAR-II PACKET, AN EXPLICIT LOAD-BEARING PACKET, A DEDICATED LOAD-BEARING COHERENCE HUB, A UNIFIED AUDIT PACKET, AND A DEDICATED AUDIT COHERENCE HUB.
 
 ## Public lane
 - `BalabanRGUniformLSIFrontier` remains the preferred short public entrypoint.
@@ -15,6 +15,7 @@ TOPOLOGICAL SU FRONT CLOSED LOCALLY; THE HAAR-LSI LANE NOW HAS A SINGLE SHORT PU
 - `BalabanRGUniformLSILoadBearingPacket` isolates the specific current Pillar II load-bearing surfaces under one canonical public packet.
 - `BalabanRGUniformLSILoadBearingCoherence` centralizes the constructors, equivalences, projections, and round-trips attached to that explicit load-bearing surface.
 - `BalabanRGUniformLSIAuditPacket` centralizes the load-bearing surface together with frontier, lane contract, public facade, closure, registry, and last-mile output under one audit-facing packet.
+- `BalabanRGUniformLSIAuditCoherence` centralizes the constructors, target-level equivalences, projections, and round-trips attached to that audit-facing packet.
 
 ## Remaining live mathematical obstruction
 An actual Balaban-RG package carrying the uniform-LSI content still has to be discharged internally.

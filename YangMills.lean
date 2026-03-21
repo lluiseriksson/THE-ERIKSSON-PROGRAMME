@@ -5,6 +5,7 @@ import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIPillarIIPacket
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSILoadBearingPacket
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSILoadBearingCoherence
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIAuditPacket
+import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIAuditCoherence
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIConcreteInput
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIDirectInput
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIFrontier
