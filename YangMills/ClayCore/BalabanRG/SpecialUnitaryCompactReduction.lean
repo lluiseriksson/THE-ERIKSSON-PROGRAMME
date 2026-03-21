@@ -1,5 +1,5 @@
 import Mathlib
-import YangMills.ClayCore.BalabanRG.SpecialUnitaryCompact
+import YangMills.ClayCore.BalabanRG.SpecialUnitaryCompactCore
 
 namespace YangMills.ClayCore
 
@@ -71,13 +71,10 @@ theorem specialUnitaryCompactRangeTarget_of_witness
   exact specialUnitaryCompactRangeTarget_of_closed_entrywise_bounded
     m tr wit.closed_range wit.bounded_range
 
-/-- Registry theorem:
-the topology assault on `SU(m)` is now reduced to an explicit Heine–Borel style
-transfer together with a concrete closed+entrywise-bounded witness. -/
 theorem specialUnitary_topology_gap_reduced
     (m : ℕ)
     (tr : SpecialUnitaryClosedEntrywiseBoundedToCompactTransfer m) :
-    (∃ wit : SpecialUnitaryClosedEntrywiseBoundedWitness m, True) →
+    (∃ _ : SpecialUnitaryClosedEntrywiseBoundedWitness m, True) →
       SpecialUnitaryCompactRangeTarget m := by
   intro h
   rcases h with ⟨wit, _⟩

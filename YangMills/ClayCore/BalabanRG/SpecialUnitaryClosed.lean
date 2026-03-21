@@ -42,7 +42,7 @@ theorem specialUnitarySet_eq_closedCandidate
   constructor
   · intro hA
     rcases hA with ⟨U, rfl⟩
-    simp [specialUnitaryClosedCandidate, Matrix.mem_specialUnitaryGroup_iff]
+    simp [specialUnitaryClosedCandidate]
   · intro hA
     rcases hA with ⟨hU, hdet⟩
     refine ⟨⟨A, ?_⟩, rfl⟩
@@ -92,7 +92,7 @@ def specialUnitary_closed_entrywise_bounded_witness
 
 /-- The local `SU(m)` compactness target follows once the explicit reduction
 transfer is supplied. -/
-theorem specialUnitary_compact_range_target
+theorem specialUnitary_compact_range_target_internal
     (m : ℕ)
     (tr : SpecialUnitaryClosedEntrywiseBoundedToCompactTransfer m) :
     SpecialUnitaryCompactRangeTarget m := by
@@ -101,7 +101,7 @@ theorem specialUnitary_compact_range_target
 
 /-- Registry theorem: the two honest topological halves are now fully proved
 inside the repo. -/
-theorem specialUnitary_topology_gap_closed
+theorem specialUnitary_topology_gap_closed_internal
     (m : ℕ) :
     SpecialUnitaryClosedTarget m ∧
       SpecialUnitaryEntrywiseBoundedTarget m := by
@@ -116,7 +116,7 @@ theorem specialUnitary_topology_gap_closed_to_compact
       SpecialUnitaryEntrywiseBoundedTarget m ∧
       SpecialUnitaryCompactRangeTarget m := by
   refine ⟨specialUnitary_closed_target m, specialUnitary_entrywise_bounded_target m, ?_⟩
-  exact specialUnitary_compact_range_target m tr
+  exact specialUnitary_compact_range_target_internal m tr
 
 end
 

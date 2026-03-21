@@ -99,3 +99,53 @@ layer. The ambient `SU(m)` range is identified with the closed cut
 entrywise-bounded witness this closes the local compactness target used by the
 topological reduction.
 
+## v1.0.30-alpha
+
+The local special-unitary compactness transfer is now targeted as an internal
+finite-dimensional theorem: closedness plus entrywise boundedness should imply
+compactness of the ambient `SU(m)` range without any external transfer input.
+
+<!-- SU_UNCONDITIONALITY_START -->
+## Special-unitary compactness: unconditional status
+
+The local special-unitary compactness block is now closed **unconditionally** in the repository.
+
+### Public API
+
+The stable public façade is exposed from:
+
+- `YangMills.ClayCore.BalabanRG.SpecialUnitaryCompact`
+
+with the public theorems:
+
+- `specialUnitary_compact_range_target`
+- `specialUnitary_topology_gap_closed`
+
+### Internal decomposition
+
+The proof path is now split into the following layers:
+
+- `SpecialUnitaryCompactCore`
+- `SpecialUnitaryCompactReduction`
+- `SpecialUnitaryEntrywiseBounded`
+- `SpecialUnitaryClosed`
+- `SpecialUnitaryClosedEntrywiseBoundedToCompact`
+- `SpecialUnitaryCompactUnconditional`
+
+### Unconditional closure achieved
+
+Internal unconditional closure is provided by:
+
+- `specialUnitary_compact_unconditional`
+- `specialUnitary_topology_package_unconditional`
+
+This means the local compactness route for the ambient special-unitary range is no longer left as an external transfer-only gap: the closedness step, boundedness step, and the closed+bounded ⇒ compact transfer are now all discharged inside the repository.
+
+### Current status
+
+- SU block build: green
+- Public API stabilized
+- Temporary recon/smoke files removed
+- Final sanity build without warnings
+<!-- SU_UNCONDITIONALITY_END -->
+
