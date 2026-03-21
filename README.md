@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet for the current Balaban-RG / Haar-LSI lane
+> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet for the current Balaban-RG / Haar-LSI lane
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -31,9 +31,10 @@ What is closed locally or canonically exported right now:
 - the explicit concrete input packet `BalabanRGUniformLSIConcreteInput`,
 - the centralized coherence hub `BalabanRGUniformLSIInputCoherence`,
 - the unified end-to-end packet `BalabanRGUniformLSIEndToEndPacket`,
+- the centralized obstruction packet `BalabanRGUniformLSIObstructionPacket`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- and the theorem layers showing that the direct-input surface, activation surface, concrete package-witness surface, frontier surface, and exported end-to-end surface all coincide canonically.
+- and the theorem layers showing that frontier, activation, direct input, concrete input, end-to-end export, and obstruction surface are canonically interconvertible.
 
 What remains live mathematically:
 
@@ -69,19 +70,24 @@ Preferred unified end-to-end export surface:
 
 - `BalabanRGUniformLSIEndToEndPacket`
 
+Preferred centralized obstruction surface:
+
+- `BalabanRGUniformLSIObstructionPacket`
+
 Preferred public output:
 
 - `BalabanRGUniformLSIPublicFacade`
 
 Preferred theorem-level normal forms now exposed centrally:
 
-- `balaban_rg_uniform_lsi_end_to_end_packet_iff_activation_data`
-- `balaban_rg_uniform_lsi_end_to_end_packet_iff_direct_input`
-- `balaban_rg_uniform_lsi_end_to_end_packet_iff_concrete_input`
-- `balaban_rg_uniform_lsi_end_to_end_packet_iff_frontier`
+- `balaban_rg_uniform_lsi_obstruction_packet_iff_activation_data`
+- `balaban_rg_uniform_lsi_obstruction_packet_iff_direct_input`
+- `balaban_rg_uniform_lsi_obstruction_packet_iff_concrete_input`
+- `balaban_rg_uniform_lsi_obstruction_packet_iff_frontier`
+- `balaban_rg_uniform_lsi_obstruction_packet_iff_end_to_end_packet`
 
 Interpretation:
-the lane now exposes not only short public names for frontier and input surfaces, but also a single omnibus packet carrying the currently exported input/output geometry of the lane.
+the lane now exposes not only short public names for frontier, input surfaces, and end-to-end export, but also a single packet naming the still-live obstruction surface itself.
 
 ---
 
@@ -89,8 +95,8 @@ the lane now exposes not only short public names for frontier and input surfaces
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The new end-to-end packet does not add mathematical content.
-It consolidates, under one public name, the currently exported input and output data of the lane so that future closure work can target one canonical surface.
+The new obstruction packet does not add mathematical content.
+It consolidates, under one public name, the still-live equivalent obstruction surfaces: live target, direct target, conditional target, Haar live target, and package witness.
 
 ---
 
@@ -100,12 +106,12 @@ It consolidates, under one public name, the currently exported input and output 
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, public facade, lane contract, and normal-form theorems |
+| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, public facade, lane contract, and normal-form theorems |
 | Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
 | Preferred direct public input | `BalabanRGUniformLSIDirectInput` |
 | Preferred most concrete public input | `BalabanRGUniformLSIConcreteInput` |
-| Preferred public coherence hub | `BalabanRGUniformLSIInputCoherence` |
 | Preferred unified export surface | `BalabanRGUniformLSIEndToEndPacket` |
+| Preferred obstruction surface | `BalabanRGUniformLSIObstructionPacket` |
 | Preferred public output | `BalabanRGUniformLSIPublicFacade` |
 | Global claim | honest reduction, not finished Clay proof |
 
@@ -121,6 +127,7 @@ It consolidates, under one public name, the currently exported input and output 
 | `BalabanRGUniformLSIConcreteInput` | Formal concrete input packet | Packages the transfer ingredient together with a bare `BalabanRGPackage` witness |
 | `BalabanRGUniformLSIInputCoherence` | Formal coherence hub | Centralizes the normal forms and round-trips among direct input, activation data, concrete input, and frontier |
 | `BalabanRGUniformLSIEndToEndPacket` | Formal omnibus export packet | Carries activation, direct input, concrete input, frontier, facade, closure package, registry, and last-mile output together |
+| `BalabanRGUniformLSIObstructionPacket` | Formal obstruction packet | Carries the equivalent still-live obstruction names together: live target, direct target, conditional target, Haar live target, and package witness |
 | `BalabanRGUniformLSIFrontier` | Public ergonomic entrypoint | Single short name for importing and consuming the current lane |
 | `BalabanRGUniformLSIPublicFacade` | Formal output facade | Packages registry + structured closure |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
