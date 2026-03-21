@@ -1,3 +1,4 @@
+import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIPublicFacade
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIEquivalenceRegistry
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIPackageBridge
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIClosurePackage

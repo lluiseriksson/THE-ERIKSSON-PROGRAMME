@@ -1,17 +1,14 @@
-# AXIOM_FRONTIER.md — v0.8.58 (BALABAN-RG EQUIVALENCE REGISTRY)
+# AXIOM_FRONTIER.md — v0.8.59 (BALABAN-RG PUBLIC FACADE)
 
 ## Status
-TOPOLOGICAL SU FRONT CLOSED LOCALLY; HAAR-LSI LANE CANONICALLY PACKAGED; LIVE-TARGET NAMES NOW EXPLICITLY REGISTRY-ALIGNED.
+TOPOLOGICAL SU FRONT CLOSED LOCALLY; HAAR-LSI LANE CANONICALLY PACKAGED; SINGLE PUBLIC FACADE EXPORTED FOR TRUNK CONSUMPTION.
 
 ## Public lane
 - `BalabanRGUniformLSILiveTarget` is the preferred public name for the unique remaining live target in the present Balaban-RG / Haar-LSI lane.
-- `BalabanRGUniformLSILastMileOutput` bundles the current scale / Haar / frontier consequences.
-- `BalabanRGUniformLSIClosurePackage` exposes those consequences as a structured public package with named fields.
-- `balaban_rg_uniform_lsi_closure_package_of_pkg` is the direct public theorem from an actual `BalabanRGPackage` witness to the exported closure package.
+- `BalabanRGUniformLSIClosurePackage` exposes the current scale / Haar / frontier consequences as a structured public package.
 - `BalabanRGUniformLSIEquivalenceRegistry` records that the current live-target names and the bare package-witness form coincide.
-
-## Compatibility note
-Old names such as `HaarLSILiveTarget` and `BalabanRGUniformLSIConditionalTarget` remain honest compatibility surfaces, but the preferred public gap name is `BalabanRGUniformLSILiveTarget`.
+- `BalabanRGUniformLSIPublicFacade` packages the registry and the structured closure under one canonical front-end.
+- The theorem family `balaban_rg_uniform_lsi_public_facade_of_*` exposes constructors from all current equivalent live surfaces.
 
 ## Remaining live mathematical obstruction
 An actual Balaban-RG package carrying the uniform-LSI content still has to be discharged internally.
