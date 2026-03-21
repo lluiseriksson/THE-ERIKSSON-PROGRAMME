@@ -1,7 +1,7 @@
-# AXIOM_FRONTIER.md — v0.8.68 (BALABAN-RG OBSTRUCTION PACKET)
+# AXIOM_FRONTIER.md — v0.8.69 (BALABAN-RG PILLAR-II PACKET)
 
 ## Status
-TOPOLOGICAL SU FRONT CLOSED LOCALLY; THE HAAR-LSI LANE NOW HAS A SINGLE SHORT PUBLIC FRONTIER ENTRYPOINT, EXPLICIT DIRECT/CONCRETE INPUT PACKETS, A CENTRALIZED INPUT-COHERENCE HUB, A UNIFIED END-TO-END EXPORT PACKET, AND A CENTRALIZED OBSTRUCTION PACKET.
+TOPOLOGICAL SU FRONT CLOSED LOCALLY; THE HAAR-LSI LANE NOW HAS A SINGLE SHORT PUBLIC FRONTIER ENTRYPOINT, EXPLICIT DIRECT/CONCRETE INPUT PACKETS, A CENTRALIZED INPUT-COHERENCE HUB, A UNIFIED END-TO-END EXPORT PACKET, A CENTRALIZED OBSTRUCTION PACKET, AND A UNIFIED PILLAR-II PACKET.
 
 ## Public lane
 - `BalabanRGUniformLSIFrontier` remains the preferred short public entrypoint.
@@ -11,7 +11,8 @@ TOPOLOGICAL SU FRONT CLOSED LOCALLY; THE HAAR-LSI LANE NOW HAS A SINGLE SHORT PU
 - `BalabanRGUniformLSIInputCoherence` centralizes the input-side normal forms and round-trips.
 - `BalabanRGUniformLSIEndToEndPacket` centralizes the currently exported input/output geometry under one packet.
 - `BalabanRGUniformLSIObstructionPacket` centralizes the equivalent names of the still-live obstruction under one packet.
-- The theorem family `balaban_rg_uniform_lsi_obstruction_packet_iff_*` lets future closure work target one canonical obstruction surface.
+- `BalabanRGUniformLSIPillarIIPacket` centralizes the obstruction-side and export-side surfaces under one canonical public packet.
+- The theorem family `balaban_rg_uniform_lsi_pillar_ii_packet_iff_*` lets future closure work target one canonical Pillar-II surface.
 
 ## Remaining live mathematical obstruction
 An actual Balaban-RG package carrying the uniform-LSI content still has to be discharged internally.

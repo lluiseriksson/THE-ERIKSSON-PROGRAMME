@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet for the current Balaban-RG / Haar-LSI lane
+> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet for the current Balaban-RG / Haar-LSI lane
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -32,9 +32,10 @@ What is closed locally or canonically exported right now:
 - the centralized coherence hub `BalabanRGUniformLSIInputCoherence`,
 - the unified end-to-end packet `BalabanRGUniformLSIEndToEndPacket`,
 - the centralized obstruction packet `BalabanRGUniformLSIObstructionPacket`,
+- the unified Pillar II packet `BalabanRGUniformLSIPillarIIPacket`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- and the theorem layers showing that frontier, activation, direct input, concrete input, end-to-end export, and obstruction surface are canonically interconvertible.
+- and the theorem layers showing that frontier, activation, direct input, concrete input, end-to-end export, obstruction surface, and Pillar II surface are canonically interconvertible.
 
 What remains live mathematically:
 
@@ -74,20 +75,25 @@ Preferred centralized obstruction surface:
 
 - `BalabanRGUniformLSIObstructionPacket`
 
+Preferred unified Pillar II surface:
+
+- `BalabanRGUniformLSIPillarIIPacket`
+
 Preferred public output:
 
 - `BalabanRGUniformLSIPublicFacade`
 
 Preferred theorem-level normal forms now exposed centrally:
 
-- `balaban_rg_uniform_lsi_obstruction_packet_iff_activation_data`
-- `balaban_rg_uniform_lsi_obstruction_packet_iff_direct_input`
-- `balaban_rg_uniform_lsi_obstruction_packet_iff_concrete_input`
-- `balaban_rg_uniform_lsi_obstruction_packet_iff_frontier`
-- `balaban_rg_uniform_lsi_obstruction_packet_iff_end_to_end_packet`
+- `balaban_rg_uniform_lsi_pillar_ii_packet_iff_activation_data`
+- `balaban_rg_uniform_lsi_pillar_ii_packet_iff_direct_input`
+- `balaban_rg_uniform_lsi_pillar_ii_packet_iff_concrete_input`
+- `balaban_rg_uniform_lsi_pillar_ii_packet_iff_frontier`
+- `balaban_rg_uniform_lsi_pillar_ii_packet_iff_obstruction_packet`
+- `balaban_rg_uniform_lsi_pillar_ii_packet_iff_end_to_end_packet`
 
 Interpretation:
-the lane now exposes not only short public names for frontier, input surfaces, and end-to-end export, but also a single packet naming the still-live obstruction surface itself.
+the lane now exposes not only frontier, input surfaces, end-to-end export, and obstruction surface, but also a single Pillar II packet that carries the current live obstruction together with the exported public closure geometry.
 
 ---
 
@@ -95,8 +101,8 @@ the lane now exposes not only short public names for frontier, input surfaces, a
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The new obstruction packet does not add mathematical content.
-It consolidates, under one public name, the still-live equivalent obstruction surfaces: live target, direct target, conditional target, Haar live target, and package witness.
+The new Pillar II packet does not add mathematical content.
+It consolidates, under one public name, the current obstruction-side and export-side surfaces of the Haar-LSI lane so that the next real closure step can target a single canonical packet.
 
 ---
 
@@ -106,12 +112,13 @@ It consolidates, under one public name, the still-live equivalent obstruction su
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, public facade, lane contract, and normal-form theorems |
+| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, public facade, lane contract, and normal-form theorems |
 | Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
 | Preferred direct public input | `BalabanRGUniformLSIDirectInput` |
 | Preferred most concrete public input | `BalabanRGUniformLSIConcreteInput` |
 | Preferred unified export surface | `BalabanRGUniformLSIEndToEndPacket` |
 | Preferred obstruction surface | `BalabanRGUniformLSIObstructionPacket` |
+| Preferred Pillar II surface | `BalabanRGUniformLSIPillarIIPacket` |
 | Preferred public output | `BalabanRGUniformLSIPublicFacade` |
 | Global claim | honest reduction, not finished Clay proof |
 
@@ -128,6 +135,7 @@ It consolidates, under one public name, the still-live equivalent obstruction su
 | `BalabanRGUniformLSIInputCoherence` | Formal coherence hub | Centralizes the normal forms and round-trips among direct input, activation data, concrete input, and frontier |
 | `BalabanRGUniformLSIEndToEndPacket` | Formal omnibus export packet | Carries activation, direct input, concrete input, frontier, facade, closure package, registry, and last-mile output together |
 | `BalabanRGUniformLSIObstructionPacket` | Formal obstruction packet | Carries the equivalent still-live obstruction names together: live target, direct target, conditional target, Haar live target, and package witness |
+| `BalabanRGUniformLSIPillarIIPacket` | Formal Pillar II packet | Carries both the still-live obstruction side and the exported closure side together under one canonical public packet |
 | `BalabanRGUniformLSIFrontier` | Public ergonomic entrypoint | Single short name for importing and consuming the current lane |
 | `BalabanRGUniformLSIPublicFacade` | Formal output facade | Packages registry + structured closure |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
