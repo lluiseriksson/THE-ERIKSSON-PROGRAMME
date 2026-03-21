@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + canonical public facade for the current Balaban-RG / Haar-LSI lane
+> **Current status:** formal reduction + canonical input/output API for the current Balaban-RG / Haar-LSI lane
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -28,9 +28,9 @@ What is closed locally or canonically exported right now:
 - the canonical public live target `BalabanRGUniformLSILiveTarget`,
 - the bundled consequence `BalabanRGUniformLSILastMileOutput`,
 - the structured public output `BalabanRGUniformLSIClosurePackage`,
-- the direct bridge `balaban_rg_uniform_lsi_closure_package_of_pkg`,
 - the equivalence registry `BalabanRGUniformLSIEquivalenceRegistry`,
-- and the new facade `BalabanRGUniformLSIPublicFacade`, which packages the current registry and closure output behind a single front-end.
+- the single public output facade `BalabanRGUniformLSIPublicFacade`,
+- and the new single public input packet `BalabanRGUniformLSIActivationData`.
 
 What remains live mathematically:
 
@@ -42,24 +42,35 @@ What remains live mathematically:
 
 ## 3. Current public API of the Haar-LSI lane
 
-Preferred public objects:
+Preferred canonical input:
+
+- `BalabanRGUniformLSIActivationData`
+
+Preferred canonical output:
+
+- `BalabanRGUniformLSIPublicFacade`
+
+Main supporting public objects:
 
 - `BalabanRGUniformLSILiveTarget`
 - `BalabanRGUniformLSIClosurePackage`
 - `BalabanRGUniformLSIEquivalenceRegistry`
-- `BalabanRGUniformLSIPublicFacade`
 
-Preferred public theorem family:
+Preferred constructor family for the canonical input:
 
-- `balaban_rg_uniform_lsi_public_facade_of_live_target`
-- `balaban_rg_uniform_lsi_public_facade_of_direct_uniform_theorem_target`
-- `balaban_rg_uniform_lsi_public_facade_of_conditional_target`
-- `balaban_rg_uniform_lsi_public_facade_of_haar_lsi_live_target`
-- `balaban_rg_uniform_lsi_public_facade_of_pkg`
-- `balaban_rg_uniform_lsi_public_facade_of_pkg_witness`
+- `balaban_rg_uniform_lsi_activation_data_of_live_target`
+- `balaban_rg_uniform_lsi_activation_data_of_direct_uniform_theorem_target`
+- `balaban_rg_uniform_lsi_activation_data_of_conditional_target`
+- `balaban_rg_uniform_lsi_activation_data_of_haar_lsi_live_target`
+- `balaban_rg_uniform_lsi_activation_data_of_pkg`
+- `balaban_rg_uniform_lsi_activation_data_of_pkg_witness`
+
+Preferred passage from canonical input to canonical output:
+
+- `balaban_rg_uniform_lsi_public_facade_of_activation_data`
 
 Interpretation:
-the lane now has one canonical consumption point for the trunk. Different equivalent live-hypothesis surfaces can still be used, but they all feed the same exported facade.
+the lane now has one canonical way to package the current input assumptions, and one canonical way to expose the current output consequences.
 
 ---
 
@@ -68,7 +79,7 @@ the lane now has one canonical consumption point for the trunk. Different equiva
 This is still an honest reduction, not a finished unconditional proof.
 
 The current repository architecture now says this very explicitly:
-once an actual Balaban-RG package with the required uniform-LSI content exists inside Lean, the registry and the structured closure package are both available through a single named facade.
+once the present transfer ingredient and the present live target are packaged as a single activation datum, all current exported consequences follow through a single named public facade.
 
 ---
 
@@ -78,9 +89,9 @@ once an actual Balaban-RG package with the required uniform-LSI content exists i
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through live target, closure package, equivalence registry, package bridge, and public facade |
-| Preferred public live-gap name | `BalabanRGUniformLSILiveTarget` |
-| Preferred public consumption point | `BalabanRGUniformLSIPublicFacade` |
+| Haar-LSI lane | canonically exported through activation packet, live target, closure package, equivalence registry, and public facade |
+| Preferred public input | `BalabanRGUniformLSIActivationData` |
+| Preferred public output | `BalabanRGUniformLSIPublicFacade` |
 | Global claim | honest reduction, not finished Clay proof |
 
 ---
@@ -90,9 +101,10 @@ once an actual Balaban-RG package with the required uniform-LSI content exists i
 | Component | Type | Meaning |
 |---|---|---|
 | SU compactness route | Closed locally | Public topological front compiled and exported |
+| `BalabanRGUniformLSIActivationData` | Formal input packet | Packages the current transfer ingredient and the preferred live target |
 | `BalabanRGUniformLSIClosurePackage` | Formal structured package | Exposes the current scale / Haar / frontier consequences |
 | `BalabanRGUniformLSIEquivalenceRegistry` | Public registry | Makes the equivalence of the current live-target names explicit |
-| `BalabanRGUniformLSIPublicFacade` | Public front-end | Packages registry + closure under one canonical consumption point |
+| `BalabanRGUniformLSIPublicFacade` | Public front-end | Packages the current exported consequences under one canonical output |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap | Still requires the actual package-level uniform-LSI content |
 
 ---
