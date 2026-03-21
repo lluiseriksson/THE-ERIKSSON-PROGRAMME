@@ -57,6 +57,8 @@ Interpretation:
 So the programme is now cleaner:
 the only live obstruction in this lane is no longer hidden in prose, but surfaced as a single named formal target.
 
+At code level, `HaarLSILiveTarget` is the canonical public name for that obstruction, and it is formally equivalent to `SpecialUnitaryDirectUniformLSITheoremTarget`.
+
 ---
 
 ## 4. Repository snapshot

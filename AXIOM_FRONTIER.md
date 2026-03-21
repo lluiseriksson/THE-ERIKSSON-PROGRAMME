@@ -27,3 +27,5 @@ then the formal Haar-LSI frontier closes immediately through the exported canoni
 ## Soundness note
 This is still an honest reduction.
 No unconditional Haar-LSI theorem is being claimed here without the live package-level input.
+
+Formal identification: `HaarLSILiveTarget` is equivalent to `SpecialUnitaryDirectUniformLSITheoremTarget`.
