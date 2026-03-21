@@ -262,3 +262,8 @@ This means the local compactness route for the ambient special-unitary range is 
 ---
 
 ##
+
+
+## Last-mile package
+
+`BalabanRGUniformLSILastMileOutput` is the canonical packaged output of the current last mile: if the unique live target is discharged, the scale target, Haar-LSI target, and frontier package follow at once.

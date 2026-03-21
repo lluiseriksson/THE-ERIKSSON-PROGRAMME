@@ -31,3 +31,5 @@ No unconditional Haar-LSI theorem is being claimed here without the live package
 Formal identification: `HaarLSILiveTarget` is equivalent to `SpecialUnitaryDirectUniformLSITheoremTarget`.
 
 Formal Lean alias: `BalabanRGUniformLSILiveTarget` is definitionally the same target as `HaarLSILiveTarget`.
+
+Packaged consequence: `BalabanRGUniformLSILastMileOutput` groups the scale target, Haar target, and frontier package under the single live-target hypothesis.
