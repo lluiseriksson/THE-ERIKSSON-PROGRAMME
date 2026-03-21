@@ -91,3 +91,11 @@ the entrywise-bounded half is now discharged by a direct Mathlib argument using
 So the remaining ambient compactness gap is isolated to the closedness of the
 special-unitary range.
 
+## v1.0.29-alpha
+
+The local special-unitary compactness assault now includes an honest closedness
+layer. The ambient `SU(m)` range is identified with the closed cut
+`{A | A ∈ unitaryGroup ∧ det A = 1}`, and together with the existing
+entrywise-bounded witness this closes the local compactness target used by the
+topological reduction.
+
