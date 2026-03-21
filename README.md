@@ -81,3 +81,13 @@ No unconditional Clay claim is made at this stage. The repository remains an
 honest reduction program until all terminal transfers and structural axioms are
 discharged internally.
 
+## v1.0.28-alpha
+
+Topological assault on `SU(n)` advanced through the honest compactness reduction:
+the entrywise-bounded half is now discharged by a direct Mathlib argument using
+`Matrix.specialUnitaryGroup_le_unitaryGroup` together with
+`entry_norm_bound_of_unitary`.
+
+So the remaining ambient compactness gap is isolated to the closedness of the
+special-unitary range.
+
