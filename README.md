@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + canonical public API for the current Balaban-RG / Haar-LSI lane
+> **Current status:** formal reduction + canonical public API + equivalence registry for the current Balaban-RG / Haar-LSI lane
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -25,10 +25,11 @@ This repository still does **not** claim a completed Clay solution.
 What is closed locally or canonically exported right now:
 
 - the special-unitary compactness lane used by the topological front,
-- the unique live target of the current Balaban-RG / Haar-LSI lane under the public name `BalabanRGUniformLSILiveTarget`,
+- the canonical public live target `BalabanRGUniformLSILiveTarget`,
 - the bundled consequence `BalabanRGUniformLSILastMileOutput`,
 - the structured public output `BalabanRGUniformLSIClosurePackage`,
-- and the direct bridge from an actual `BalabanRGPackage` witness to that structured public closure.
+- the direct bridge `balaban_rg_uniform_lsi_closure_package_of_pkg`,
+- and the new equivalence registry showing that the current live-target names in this lane are formally aligned.
 
 What remains live mathematically:
 
@@ -40,14 +41,19 @@ What remains live mathematically:
 
 ## 3. Current public API of the Haar-LSI lane
 
-The lane is now organized around four public objects:
+The lane is now organized around five public objects:
 
 - `BalabanRGUniformLSILiveTarget`: canonical public name for the unique remaining live target in this lane,
 - `BalabanRGUniformLSILastMileOutput`: bundled conjunction of scale target, Haar target, and frontier package,
 - `BalabanRGUniformLSIClosurePackage`: the same consequences as a structured package with named fields,
-- `balaban_rg_uniform_lsi_closure_package_of_pkg`: direct public theorem sending an actual `BalabanRGPackage` witness to the exported closure package.
+- `balaban_rg_uniform_lsi_closure_package_of_pkg`: direct public theorem sending an actual `BalabanRGPackage` witness to the exported structured closure,
+- `BalabanRGUniformLSIEquivalenceRegistry`: canonical registry proving that the public live-target names and the bare package-witness form all coincide at the current frontier.
 
-So the live obstruction is no longer hidden in prose, and the public consumption point for the current lane is no longer a bare existential but a named structured output.
+Compatibility layer:
+
+- old names such as `HaarLSILiveTarget` and `BalabanRGUniformLSIConditionalTarget` are kept as honest compatibility interfaces,
+- but the preferred public consumption point is now `BalabanRGUniformLSIClosurePackage`,
+- and the preferred public live-gap name is `BalabanRGUniformLSILiveTarget`.
 
 ---
 
@@ -55,8 +61,8 @@ So the live obstruction is no longer hidden in prose, and the public consumption
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The current repository architecture says exactly this:
-once an actual Balaban-RG package with the required uniform-LSI content exists inside Lean, the current public closure package follows immediately through a named theorem path.
+The current repository architecture now says this very explicitly:
+once an actual Balaban-RG package with the required uniform-LSI content exists inside Lean, every currently used live-target name in this lane becomes interchangeable, and the exported structured closure package follows immediately through named theorems.
 
 ---
 
@@ -66,8 +72,8 @@ once an actual Balaban-RG package with the required uniform-LSI content exists i
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through live target, last-mile output, closure package, and package bridge |
-| Remaining live target in this lane | `BalabanRGUniformLSILiveTarget` |
+| Haar-LSI lane | canonically exported through live target, last-mile output, closure package, package bridge, and equivalence registry |
+| Preferred public live-gap name | `BalabanRGUniformLSILiveTarget` |
 | Best current public structured output | `BalabanRGUniformLSIClosurePackage` |
 | Global claim | honest reduction, not finished Clay proof |
 
@@ -81,6 +87,7 @@ once an actual Balaban-RG package with the required uniform-LSI content exists i
 | `BalabanRGUniformLSILastMileOutput` | Formal package | Bundles the current consequences of discharging the live target |
 | `BalabanRGUniformLSIClosurePackage` | Formal structured package | Exposes those consequences through named fields |
 | `balaban_rg_uniform_lsi_closure_package_of_pkg` | Public bridge | Sends an actual package witness to the exported structured closure |
+| `BalabanRGUniformLSIEquivalenceRegistry` | Public registry | Makes the equivalence of the current live-target names explicit |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap | Still requires the actual package-level uniform-LSI content |
 
 ---
