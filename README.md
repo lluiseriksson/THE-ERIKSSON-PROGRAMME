@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + canonical lane contract for the current Balaban-RG / Haar-LSI frontier
+> **Current status:** formal reduction + canonical lane contract + public normal-form theorems for the current Balaban-RG / Haar-LSI frontier
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -27,7 +27,8 @@ What is closed locally or canonically exported right now:
 - the special-unitary compactness lane used by the topological front,
 - the canonical public input packet `BalabanRGUniformLSIActivationData`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
-- the new canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
+- the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
+- the new public normal-form theorems identifying that carrier with the canonical input packet and with the current equivalent hypothesis surfaces paired with transfer,
 - the structured public output `BalabanRGUniformLSIClosurePackage`,
 - and the equivalence registry `BalabanRGUniformLSIEquivalenceRegistry`.
 
@@ -50,17 +51,20 @@ Preferred public output:
 Preferred trunk-facing carrier:
 - `BalabanRGUniformLSILaneContract`
 
-Main constructor family for the lane contract:
-- `balaban_rg_uniform_lsi_lane_contract_of_activation_data`
-- `balaban_rg_uniform_lsi_lane_contract_of_live_target`
-- `balaban_rg_uniform_lsi_lane_contract_of_direct_uniform_theorem_target`
-- `balaban_rg_uniform_lsi_lane_contract_of_conditional_target`
-- `balaban_rg_uniform_lsi_lane_contract_of_haar_lsi_live_target`
-- `balaban_rg_uniform_lsi_lane_contract_of_pkg`
-- `balaban_rg_uniform_lsi_lane_contract_of_pkg_witness`
+Preferred normal-form theorem family:
+- `balaban_rg_uniform_lsi_lane_contract_iff_activation_data`
+- `balaban_rg_uniform_lsi_lane_contract_iff_live_target`
+- `balaban_rg_uniform_lsi_lane_contract_iff_direct_uniform_theorem_target`
+- `balaban_rg_uniform_lsi_lane_contract_iff_conditional_target`
+- `balaban_rg_uniform_lsi_lane_contract_iff_haar_lsi_live_target`
+- `balaban_rg_uniform_lsi_lane_contract_iff_pkg_witness`
+
+Preferred coherence theorem family:
+- `balaban_rg_uniform_lsi_lane_contract_eq_canonical_of_activation_data`
+- `balaban_rg_uniform_lsi_public_facade_eq_canonical_of_lane_contract`
 
 Interpretation:
-the lane now has one canonical input packet, one canonical output facade, and one canonical object carrying both for downstream consumption.
+the lane now exposes a single carrier for downstream use, plus theorem-level normal forms saying exactly what data that carrier really contains.
 
 ---
 
@@ -69,7 +73,7 @@ the lane now has one canonical input packet, one canonical output facade, and on
 This is still an honest reduction, not a finished unconditional proof.
 
 The current repository architecture now says this very explicitly:
-once the current transfer ingredient and the current live target are packaged, the downstream trunk can consume a single named contract object carrying both assumptions and consequences.
+the current lane contract does not hide extra mathematical content beyond the canonical activation packet; it only packages that packet together with the canonically reconstructed public output.
 
 ---
 
@@ -79,10 +83,11 @@ once the current transfer ingredient and the current live target are packaged, t
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through activation packet, public facade, closure package, equivalence registry, and lane contract |
+| Haar-LSI lane | canonically exported through activation packet, public facade, closure package, equivalence registry, lane contract, and normal-form theorems |
 | Preferred public input | `BalabanRGUniformLSIActivationData` |
 | Preferred public output | `BalabanRGUniformLSIPublicFacade` |
 | Preferred trunk-facing carrier | `BalabanRGUniformLSILaneContract` |
+| Preferred theorem-level normal form | `balaban_rg_uniform_lsi_lane_contract_iff_activation_data` |
 | Global claim | honest reduction, not finished Clay proof |
 
 ---
@@ -95,6 +100,7 @@ once the current transfer ingredient and the current live target are packaged, t
 | `BalabanRGUniformLSIActivationData` | Formal input packet | Packages the current transfer ingredient and preferred live target |
 | `BalabanRGUniformLSIPublicFacade` | Formal output facade | Packages registry + structured closure |
 | `BalabanRGUniformLSILaneContract` | Formal lane contract | Carries canonical input and canonical output together for downstream use |
+| `balaban_rg_uniform_lsi_lane_contract_iff_activation_data` | Public normal form | Shows the lane contract is logically equivalent to the canonical activation packet |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap | Still requires the actual package-level uniform-LSI content |
 
 ---
