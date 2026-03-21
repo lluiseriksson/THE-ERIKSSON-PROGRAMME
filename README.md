@@ -70,78 +70,78 @@ Formalize a complete proof architecture for the Yang–Mills mass gap in Lean 4:
 ## Complete Paper Corpus
 
 **68 publicly timestamped papers** — [ai.vixra.org/author/lluis_eriksson](https://ai.vixra.org/author/lluis_eriksson)  
-Date range: 2025-12-16 → 2026-02-27 · SHA-256 hashes in [`ym-audit`](https://github.com/lluiseriksson/ym-audit)
+Date range: 2025-12-16 → 2026-02-27 · DOI: [10.5281/zenodo.18799942](https://doi.org/10.5281/zenodo.18799942) · SHA-256 hashes: [`ym-audit`](https://github.com/lluiseriksson/ym-audit)
 
 | # | Date | ai.viXra ID | Title |
 |--:|------|-------------|-------|
-| 1 | — | [2512.0060](https://ai.vixra.org/abs/2512.0060) | *(metadata pending)* |
-| 2 | — | [2512.0061](https://ai.vixra.org/abs/2512.0061) | *(metadata pending)* |
-| 3 | — | [2512.0064](https://ai.vixra.org/abs/2512.0064) | *(metadata pending)* |
-| 4 | — | [2512.0070](https://ai.vixra.org/abs/2512.0070) | *(metadata pending)* |
-| 5 | — | [2512.0071](https://ai.vixra.org/abs/2512.0071) | *(metadata pending)* |
-| 6 | — | [2512.0072](https://ai.vixra.org/abs/2512.0072) | *(metadata pending)* |
-| 7 | — | [2512.0073](https://ai.vixra.org/abs/2512.0073) | *(metadata pending)* |
-| 8 | — | [2512.0081](https://ai.vixra.org/abs/2512.0081) | *(metadata pending)* |
-| 9 | — | [2512.0084](https://ai.vixra.org/abs/2512.0084) | *(metadata pending)* |
-| 10 | — | [2512.0085](https://ai.vixra.org/abs/2512.0085) | *(metadata pending)* |
-| 11 | — | [2512.0091](https://ai.vixra.org/abs/2512.0091) | *(metadata pending)* |
-| 12 | — | [2512.0101](https://ai.vixra.org/abs/2512.0101) | *(metadata pending)* |
-| 13 | — | [2512.0102](https://ai.vixra.org/abs/2512.0102) | *(metadata pending)* |
-| 14 | — | [2512.0105](https://ai.vixra.org/abs/2512.0105) | *(metadata pending)* |
-| 15 | — | [2601.0007](https://ai.vixra.org/abs/2601.0007) | *(metadata pending)* |
-| 16 | — | [2601.0020](https://ai.vixra.org/abs/2601.0020) | *(metadata pending)* |
-| 17 | — | [2601.0022](https://ai.vixra.org/abs/2601.0022) | *(metadata pending)* |
-| 18 | — | [2601.0023](https://ai.vixra.org/abs/2601.0023) | *(metadata pending)* |
-| 19 | — | [2601.0031](https://ai.vixra.org/abs/2601.0031) | *(metadata pending)* |
-| 20 | — | [2601.0034](https://ai.vixra.org/abs/2601.0034) | *(metadata pending)* |
-| 21 | — | [2601.0035](https://ai.vixra.org/abs/2601.0035) | *(metadata pending)* |
-| 22 | — | [2601.0038](https://ai.vixra.org/abs/2601.0038) | *(metadata pending)* |
-| 23 | — | [2601.0040](https://ai.vixra.org/abs/2601.0040) | *(metadata pending)* |
-| 24 | — | [2601.0042](https://ai.vixra.org/abs/2601.0042) | *(metadata pending)* |
-| 25 | — | [2601.0043](https://ai.vixra.org/abs/2601.0043) | *(metadata pending)* |
-| 26 | — | [2601.0044](https://ai.vixra.org/abs/2601.0044) | *(metadata pending)* |
-| 27 | — | [2601.0046](https://ai.vixra.org/abs/2601.0046) | *(metadata pending)* |
-| 28 | — | [2601.0047](https://ai.vixra.org/abs/2601.0047) | *(metadata pending)* |
-| 29 | — | [2601.0050](https://ai.vixra.org/abs/2601.0050) | *(metadata pending)* |
-| 30 | — | [2601.0051](https://ai.vixra.org/abs/2601.0051) | *(metadata pending)* |
-| 31 | — | [2601.0064](https://ai.vixra.org/abs/2601.0064) | *(metadata pending)* |
-| 32 | — | [2601.0065](https://ai.vixra.org/abs/2601.0065) | *(metadata pending)* |
-| 33 | — | [2601.0066](https://ai.vixra.org/abs/2601.0066) | *(metadata pending)* |
-| 34 | — | [2601.0099](https://ai.vixra.org/abs/2601.0099) | *(metadata pending)* |
-| 35 | — | [2601.0111](https://ai.vixra.org/abs/2601.0111) | *(metadata pending)* |
-| 36 | — | [2601.0115](https://ai.vixra.org/abs/2601.0115) | *(metadata pending)* |
-| 37 | — | [2602.0020](https://ai.vixra.org/abs/2602.0020) | *(metadata pending)* |
-| 38 | — | [2602.0021](https://ai.vixra.org/abs/2602.0021) | *(metadata pending)* |
-| 39 | — | [2602.0032](https://ai.vixra.org/abs/2602.0032) | *(metadata pending)* |
-| 40 | — | [2602.0033](https://ai.vixra.org/abs/2602.0033) | *(metadata pending)* |
-| 41 | — | [2602.0035](https://ai.vixra.org/abs/2602.0035) | *(metadata pending)* |
-| 42 | — | [2602.0036](https://ai.vixra.org/abs/2602.0036) | *(metadata pending)* |
-| 43 | — | [2602.0038](https://ai.vixra.org/abs/2602.0038) | *(metadata pending)* |
-| 44 | — | [2602.0040](https://ai.vixra.org/abs/2602.0040) | *(metadata pending)* |
-| 45 | — | [2602.0041](https://ai.vixra.org/abs/2602.0041) | *(metadata pending)* |
-| 46 | — | [2602.0046](https://ai.vixra.org/abs/2602.0046) | *(metadata pending)* |
-| 47 | — | [2602.0051](https://ai.vixra.org/abs/2602.0051) | *(metadata pending)* |
-| 48 | — | [2602.0052](https://ai.vixra.org/abs/2602.0052) | *(metadata pending)* |
-| 49 | — | [2602.0053](https://ai.vixra.org/abs/2602.0053) | *(metadata pending)* |
-| 50 | — | [2602.0054](https://ai.vixra.org/abs/2602.0054) | *(metadata pending)* |
-| 51 | — | [2602.0055](https://ai.vixra.org/abs/2602.0055) | *(metadata pending)* |
-| 52 | — | [2602.0056](https://ai.vixra.org/abs/2602.0056) | *(metadata pending)* |
-| 53 | — | [2602.0057](https://ai.vixra.org/abs/2602.0057) | *(metadata pending)* |
-| 54 | — | [2602.0063](https://ai.vixra.org/abs/2602.0063) | *(metadata pending)* |
-| 55 | — | [2602.0069](https://ai.vixra.org/abs/2602.0069) | *(metadata pending)* |
-| 56 | — | [2602.0070](https://ai.vixra.org/abs/2602.0070) | *(metadata pending)* |
-| 57 | — | [2602.0072](https://ai.vixra.org/abs/2602.0072) | *(metadata pending)* |
-| 58 | — | [2602.0073](https://ai.vixra.org/abs/2602.0073) | *(metadata pending)* |
-| 59 | — | [2602.0077](https://ai.vixra.org/abs/2602.0077) | *(metadata pending)* |
-| 60 | — | [2602.0084](https://ai.vixra.org/abs/2602.0084) | *(metadata pending)* |
-| 61 | — | [2602.0085](https://ai.vixra.org/abs/2602.0085) | *(metadata pending)* |
-| 62 | — | [2602.0087](https://ai.vixra.org/abs/2602.0087) | *(metadata pending)* |
-| 63 | — | [2602.0088](https://ai.vixra.org/abs/2602.0088) | *(metadata pending)* |
-| 64 | — | [2602.0089](https://ai.vixra.org/abs/2602.0089) | *(metadata pending)* |
-| 65 | — | [2602.0091](https://ai.vixra.org/abs/2602.0091) | *(metadata pending)* |
-| 66 | — | [2602.0092](https://ai.vixra.org/abs/2602.0092) | *(metadata pending)* |
-| 67 | — | [2602.0096](https://ai.vixra.org/abs/2602.0096) | *(metadata pending)* |
-| 68 | — | [2602.0117](https://ai.vixra.org/abs/2602.0117) | *(metadata pending)* |
+| 1 | 2025-12-17 | [2512.0060](https://ai.vixra.org/abs/2512.0060) | Clustering, Recovery, and Locality in Algebraic Quantum Field Theory: Quantitative Bounds via Split Inclusions and Modular Theory |
+| 2 | 2025-12-16 | [2512.0061](https://ai.vixra.org/abs/2512.0061) | The Conditional Maintenance Work Theorem: Operational Power Lower Bounds from Energy Pinching and a Split-Inclusion Blueprint for Type III AQFT |
+| 3 | 2025-12-17 | [2512.0064](https://ai.vixra.org/abs/2512.0064) | The Heisenberg Cut as a Resource Boundary: An Operational Outlook from Coherence Maintenance Costs |
+| 4 | 2025-12-19 | [2512.0070](https://ai.vixra.org/abs/2512.0070) | Stress Testing the Rate Inheritance Principle: Spectral Decoherence Rates and an Operational Resource Horizon |
+| 5 | 2025-12-19 | [2512.0071](https://ai.vixra.org/abs/2512.0071) | Operational Coherence Maintenance: Proven Results, Conditional Interfaces, and Open Dynamical Gaps |
+| 6 | 2025-12-19 | [2512.0072](https://ai.vixra.org/abs/2512.0072) | The Rate Inheritance Principle: From Static Correlations to Dynamical Decoherence Rates |
+| 7 | 2025-12-19 | [2512.0073](https://ai.vixra.org/abs/2512.0073) | Finite-Dimensional Davies Interface Lemmas and TFIM Witness Tests for the Heisenberg Cut as a Resource Boundary |
+| 8 | 2025-12-23 | [2512.0081](https://ai.vixra.org/abs/2512.0081) | Operational Coherence Maintenance and the Quantum–Classical Boundary: Formal Definitions, Falsifiable Protocols, and an Outlook for Cognitive Systems |
+| 9 | 2025-12-24 | [2512.0084](https://ai.vixra.org/abs/2512.0084) | The Maintenance Constraint: How Resource Boundaries Shape Cognitive Availability |
+| 10 | 2025-12-24 | [2512.0085](https://ai.vixra.org/abs/2512.0085) | Geometry, Membranes, and Life as a Resource Boundary: A Correct-by-Construction Operational Pipeline from Static Suppression to Maintenance Costs |
+| 11 | 2025-12-27 | [2512.0091](https://ai.vixra.org/abs/2512.0091) | Technical Appendix: Heat Kernel, Fermions, and the Sign of Induced Gravity (Sign Conventions Fixed; Laplacian/Lichnerowicz Hinge Made Explicit) |
+| 12 | 2025-12-31 | [2512.0101](https://ai.vixra.org/abs/2512.0101) | Beyond Gaussianity: Extending the Clustering–Recovery Bridge |
+| 13 | 2025-12-31 | [2512.0102](https://ai.vixra.org/abs/2512.0102) | Heat Kernel Methods and the Sign of Induced Gravity: Resolving Conventions via the Laplacian–Lichnerowicz Identity |
+| 14 | 2025-12-31 | [2512.0105](https://ai.vixra.org/abs/2512.0105) | Prefix-Path Bell Transport on IBM Quantum Hardware: High-Resolution Replication, Comparative Geometry Dependence, and Stress Tests of a Static–Dynamic Link |
+| 15 | 2026-01-02 | [2601.0007](https://ai.vixra.org/abs/2601.0007) | Quantitative Recovery Bounds from Vacuum Clustering in Finite-Mode Gaussian States (A Regularized CCR Blueprint Motivated by Split Inclusions) |
+| 16 | 2026-01-08 | [2601.0020](https://ai.vixra.org/abs/2601.0020) | Geometric Markov Bounds and Rate Inheritance Modulo Fixed Points: A Scalar Entropic Interface from Static Locality to Davies Dynamics |
+| 17 | 2026-01-08 | [2601.0022](https://ai.vixra.org/abs/2601.0022) | The Rate Inheritance Principle: Operational Decoherence-Rate Envelopes and Stress Tests in Gapped Lattice Surrogates |
+| 18 | 2026-01-08 | [2601.0023](https://ai.vixra.org/abs/2601.0023) | Finite-Dimensional Davies Interface Lemmas and TFIM Witness Tests for Separation-Dependent Decoherence Rate Envelopes |
+| 19 | 2026-01-10 | [2601.0031](https://ai.vixra.org/abs/2601.0031) | From Static Recoverability to Maintenance Power: A Typed Pipeline with ω=0 Obstructions |
+| 20 | 2026-01-11 | [2601.0034](https://ai.vixra.org/abs/2601.0034) | Modular Recovery from Split Inclusions: B-Minimal Bridge from QFT Collar Geometry to Approximate State Reconstruction |
+| 21 | 2026-01-11 | [2601.0035](https://ai.vixra.org/abs/2601.0035) | A Non-Gaussian Clustering–Recovery Bridge via Conditional Mutual Information |
+| 22 | 2026-01-12 | [2601.0038](https://ai.vixra.org/abs/2601.0038) | Operational Signatures of Criticality from Petz Recovery: Collar-Length Requirements in TFIM Exact Diagonalization |
+| 23 | 2026-01-12 | [2601.0040](https://ai.vixra.org/abs/2601.0040) | Finite-Size Scaling of Petz Recovery Length in the TFIM: Threshold-Dependent Operational Exponents from Exact Diagonalization |
+| 24 | 2026-01-11 | [2601.0042](https://ai.vixra.org/abs/2601.0042) | Emergent Information Distance from Petz Recovery: Temperature and Perturbation Dependence in TFIM Exact Diagonalization |
+| 25 | 2026-01-13 | [2601.0043](https://ai.vixra.org/abs/2601.0043) | Recoverability Geometry: Distances and Embeddings from Quantum Markov Data |
+| 26 | 2026-01-13 | [2601.0044](https://ai.vixra.org/abs/2601.0044) | Recoverability Length Scales and Wilson Loops in Lattice Gauge Theories: Protocol, Definitions, and Conjectural Links to Confinement Diagnostics |
+| 27 | 2026-01-13 | [2601.0046](https://ai.vixra.org/abs/2601.0046) | Petz Recoverability in AQFT Via Conditional Expectations: a Framework and a Conditional Exponential Recovery Bound |
+| 28 | 2026-01-13 | [2601.0047](https://ai.vixra.org/abs/2601.0047) | Petz Recoverability Versus Wilson-Loop Diagnostics in Z₂ Lattice Gauge Theory (2+1D) |
+| 29 | 2026-01-14 | [2601.0050](https://ai.vixra.org/abs/2601.0050) | CMI-Based Recoverability Versus Wilson-Loop Diagnostics in Z₂ Lattice Gauge Theory (2+1D): Exact Diagonalization Benchmark on Small Open Lattices |
+| 30 | 2026-01-14 | [2601.0051](https://ai.vixra.org/abs/2601.0051) | Petz Recoverability Versus Wilson-Loop Diagnostics in Z₂ Lattice Gauge Theory (2+1D): Benchmarks by Exact Diagonalization and Tensor-Network Ladders |
+| 31 | 2026-01-17 | [2601.0064](https://ai.vixra.org/abs/2601.0064) | RIP-U and the ω=0 Obstruction in Davies Dynamics: Upper Envelopes, Witness Floors, and Falsification Protocols for Separation-Dependent Decoherence Rates |
+| 32 | 2026-01-17 | [2601.0065](https://ai.vixra.org/abs/2601.0065) | Split-Regularized Recoverability in Type III AQFT: Conditional Expectations, Split-Dependent CMI, and an Audit-Friendly Contract |
+| 33 | 2026-01-17 | [2601.0066](https://ai.vixra.org/abs/2601.0066) | Typed Pipeline for Recoverability–Rate–Power Links: A Contract Paper with a Closed Recoverability Lane and Falsification Criteria |
+| 34 | 2026-01-24 | [2601.0099](https://ai.vixra.org/abs/2601.0099) | Program A: Semi-Infinite Conditional Mutual Information in the 1D Transverse-Field Ising Model (iMPS) |
+| 35 | 2026-01-27 | [2601.0111](https://ai.vixra.org/abs/2601.0111) | Conditional Mutual Information and Petz Recovery in a Z₂ Lattice Gauge Ground State |
+| 36 | 2026-01-28 | [2601.0115](https://ai.vixra.org/abs/2601.0115) | Algebraic Entropy and Conditional Mutual Information in a Tiny Gauge-Invariant Truncated Hilbert Space: A Reproducible Toy-Model Study with Effective Mixing Hamiltonians |
+| 37 | 2026-02-07 | [2602.0020](https://ai.vixra.org/abs/2602.0020) | Gradient Flow Monotonicity and the Yang-Mills Mass Gap: A Conditional Reduction via Spectral Methods |
+| 38 | 2026-02-07 | [2602.0021](https://ai.vixra.org/abs/2602.0021) | Yang-Mills Existence and Mass Gap: A Framework via Anomaly Algebra, Gradient-Flow Spectral Methods, and Quantum Information |
+| 39 | 2026-02-08 | [2602.0032](https://ai.vixra.org/abs/2602.0032) | The Yang–Mills Mass Gap on the Lattice: a Self-Contained Proof Via Witten Laplacian and Constructive Renormalization |
+| 40 | 2026-02-08 | [2602.0033](https://ai.vixra.org/abs/2602.0033) | The Yang–Mills Mass Gap on the Lattice: a Self-Contained Proof |
+| 41 | 2026-02-08 | [2602.0035](https://ai.vixra.org/abs/2602.0035) | Morse–Bott Spectral Reduction and the Yang–Mills Mass Gap on the Lattice |
+| 42 | 2026-02-08 | [2602.0036](https://ai.vixra.org/abs/2602.0036) | Geodesic Convexity and Structural Limits of Curvature Methods for the Yang-Mills Mass Gap on the Lattice |
+| 43 | 2026-02-08 | [2602.0038](https://ai.vixra.org/abs/2602.0038) | Mass Gap for the Gribov-Zwanziger Lattice Measure: A Non-Perturbative Proof |
+| 44 | 2026-02-08 | [2602.0040](https://ai.vixra.org/abs/2602.0040) | Uniform Poincaré Inequality for Lattice Yang-Mills Theory Via Multiscale Martingale Decomposition |
+| 45 | 2026-02-12 | [2602.0041](https://ai.vixra.org/abs/2602.0041) | Uniform Log-Sobolev Inequality and Mass Gap for Lattice Yang–Mills Theory |
+| 46 | 2026-02-12 | [2602.0046](https://ai.vixra.org/abs/2602.0046) | Ricci Curvature of the Orbit Space of Lattice Gauge Theory and Single-Scale Log-Sobolev Inequalities |
+| 47 | 2026-02-12 | [2602.0051](https://ai.vixra.org/abs/2602.0051) | Uniform Coercivity, Pointwise Large-Field Suppression, and Unconditional Closure of the Lattice Yang-Mills Mass Gap at Weak Coupling in d=4 |
+| 48 | 2026-02-12 | [2602.0052](https://ai.vixra.org/abs/2602.0052) | Interface Lemmas for the Multiscale Proof of the Lattice Yang-Mills Mass Gap |
+| 49 | 2026-02-12 | [2602.0053](https://ai.vixra.org/abs/2602.0053) | DLR-Uniform Log-Sobolev Inequality and Unconditional Mass Gap for Lattice Yang-Mills at Weak Coupling |
+| 50 | 2026-02-12 | [2602.0054](https://ai.vixra.org/abs/2602.0054) | From Uniform Log-Sobolev Inequality to Mass Gap for Lattice Yang-Mills at Weak Coupling |
+| 51 | 2026-02-12 | [2602.0055](https://ai.vixra.org/abs/2602.0055) | Unconditional Uniform Log-Sobolev Inequality for SU(Nc) Lattice Yang-Mills at Weak Coupling |
+| 52 | 2026-02-12 | [2602.0056](https://ai.vixra.org/abs/2602.0056) | Large-Field Suppression for Lattice Gauge Theories: from Balaban's Renormalization Group to Conditional Concentration |
+| 53 | 2026-02-12 | [2602.0057](https://ai.vixra.org/abs/2602.0057) | Integrated Cross-Scale Derivative Bounds for Wilson Lattice Gauge Theory: Closing the Log-Sobolev Gap |
+| 54 | 2026-02-14 | [2602.0063](https://ai.vixra.org/abs/2602.0063) | Conditional Continuum Limit of 4D SU(Nc) Yang-Mills Theory via Two-Layer Architecture, RG-Cauchy Uniqueness, and Step-Scaling Confinement |
+| 55 | 2026-02-14 | [2602.0069](https://ai.vixra.org/abs/2602.0069) | The Balaban–Dimock Structural Package: Derivation of Polymer Representation, Oscillation Bounds, and Large-Field Suppression for Lattice Yang–Mills Theory from Primary Sources |
+| 56 | 2026-02-14 | [2602.0070](https://ai.vixra.org/abs/2602.0070) | Doob Influence Bounds for Polymer Remainders in 4D Lattice Yang-Mills Renormalization |
+| 57 | 2026-02-14 | [2602.0072](https://ai.vixra.org/abs/2602.0072) | Influence Bounds for Polymer Remainders in Balaban's Renormalization Group: Closing Assumption (B6) for the RG-Cauchy Programme in 4D Lattice Yang-Mills |
+| 58 | 2026-02-14 | [2602.0073](https://ai.vixra.org/abs/2602.0073) | RG–Cauchy Summability for Blocked Observables in 4D Lattice Yang–Mills Theory via Balaban's Renormalization Group |
+| 59 | 2026-02-15 | [2602.0077](https://ai.vixra.org/abs/2602.0077) | Ultraviolet Stability for Four-Dimensional Lattice Yang–Mills Theory Under a Quantitative Blocking Hypothesis |
+| 60 | 2026-02-17 | [2602.0084](https://ai.vixra.org/abs/2602.0084) | Almost Reflection Positivity for Gradient-Flow Observables via Gaussian Localization in Lattice Yang-Mills Theory |
+| 61 | 2026-02-17 | [2602.0085](https://ai.vixra.org/abs/2602.0085) | Ultraviolet Stability of Wilson-Loop Expectations in 4D Lattice Yang–Mills Theory Via Multiscale Gradient-Flow Smoothing |
+| 62 | 2026-02-19 | [2602.0087](https://ai.vixra.org/abs/2602.0087) | Irrelevant Operators, Anisotropy Bounds, and Operator Insertions in Balaban's Renormalization Group for Four-Dimensional SU(N) Lattice Yang–Mills Theory |
+| 63 | 2026-02-18 | [2602.0088](https://ai.vixra.org/abs/2602.0088) | Exponential Clustering and Mass Gap for Four-Dimensional SU(N) Lattice Yang–Mills Theory Via Balaban's Renormalization Group and Multiscale Correlator Decoupling |
+| 64 | 2026-02-18 | [2602.0089](https://ai.vixra.org/abs/2602.0089) | Spectral Gap and Thermodynamic Limit for SU(N) Lattice Yang–Mills Theory via Log-Sobolev Inequalities and Complete Analyticity |
+| 65 | 2026-02-19 | [2602.0091](https://ai.vixra.org/abs/2602.0091) | Closing the Last Gap in the 4D SU(N) Yang–Mills Construction: A Verified Terminal KP Bound and an Explicit Clay Checklist |
+| 66 | 2026-02-19 | [2602.0092](https://ai.vixra.org/abs/2602.0092) | Rotational Symmetry Restoration and the Wightman Axioms for Four-Dimensional SU(N) Yang–Mills Theory |
+| 67 | 2026-02-20 | [2602.0096](https://ai.vixra.org/abs/2602.0096) | The Master Map: An Audit-First, Attack-Resistant Navigation Guide to the Unconditional Solution of the 4D SU(N) Yang-Mills Existence and Mass Gap Problem |
+| 68 | 2026-02-27 | [2602.0117](https://ai.vixra.org/abs/2602.0117) | Mechanical Audit Experiments and Reproducibility Appendix for a Companion-Paper Programme on 4D SU(N) Yang–Mills Existence and Mass Gap |
 
 ---
 
