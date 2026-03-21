@@ -1,3 +1,4 @@
+import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIInputCoherence
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIConcreteInput
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIDirectInput
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIFrontier

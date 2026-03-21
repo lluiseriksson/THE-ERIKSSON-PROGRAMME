@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet for the current Balaban-RG / Haar-LSI lane
+> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub for the current Balaban-RG / Haar-LSI lane
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -29,9 +29,10 @@ What is closed locally or canonically exported right now:
 - the explicit direct input packet `BalabanRGUniformLSIDirectInput`,
 - the canonical abstract input packet `BalabanRGUniformLSIActivationData`,
 - the explicit concrete input packet `BalabanRGUniformLSIConcreteInput`,
+- the centralized coherence hub `BalabanRGUniformLSIInputCoherence`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- and the theorem layers showing that the direct-input surface, activation surface, concrete package-witness surface, and frontier surface all coincide.
+- and the theorem layers showing that the direct-input surface, activation surface, concrete package-witness surface, and frontier surface all coincide, with explicit round-trips centralized in one place.
 
 What remains live mathematically:
 
@@ -59,26 +60,25 @@ Preferred most concrete public input:
 
 - `BalabanRGUniformLSIConcreteInput`
 
+Preferred public coherence hub:
+
+- `BalabanRGUniformLSIInputCoherence`
+
 Preferred public output:
 
 - `BalabanRGUniformLSIPublicFacade`
 
-Preferred constructor family for the direct input:
+Preferred theorem-level normal forms now exposed centrally:
 
-- `balaban_rg_uniform_lsi_direct_input_of_direct_uniform_theorem_target`
-- `balaban_rg_uniform_lsi_direct_input_of_pkg`
-- `balaban_rg_uniform_lsi_direct_input_of_pkg_witness`
-- `balaban_rg_uniform_lsi_direct_input_of_activation_data`
-- `balaban_rg_uniform_lsi_direct_input_of_concrete_input`
-
-Preferred theorem-level normal forms around the direct input:
-
-- `balaban_rg_uniform_lsi_direct_input_iff_activation_data`
-- `balaban_rg_uniform_lsi_direct_input_iff_frontier`
-- `balaban_rg_uniform_lsi_direct_input_iff_concrete_input`
+- `balaban_rg_uniform_lsi_direct_input_iff_live_target`
+- `balaban_rg_uniform_lsi_direct_input_iff_pkg_witness`
+- `balaban_rg_uniform_lsi_concrete_input_iff_live_target`
+- `balaban_rg_uniform_lsi_concrete_input_iff_direct_uniform_theorem_target`
+- `balaban_rg_uniform_lsi_direct_input_of_concrete_input_of_direct_input_eq_canonical`
+- `balaban_rg_uniform_lsi_concrete_input_of_direct_input_of_concrete_input_eq_canonical`
 
 Interpretation:
-the lane now exposes not only a short public frontier name and the concrete package-witness packet, but also the explicit direct-theorem packet sitting between them.
+the lane now exposes not only short public names for the frontier, direct input, abstract input, and concrete input, but also a single theorem hub where their mutual coherence lives.
 
 ---
 
@@ -86,8 +86,8 @@ the lane now exposes not only a short public frontier name and the concrete pack
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The new direct input packet does not add mathematical content.
-It isolates, under a single public name, the direct theorem surface corresponding to transfer plus the direct uniform-theorem target.
+The new coherence hub does not add mathematical content.
+It consolidates equivalences and round-trips that were already implicit across several files, so the next mathematical step can target one canonical surface.
 
 ---
 
@@ -97,10 +97,11 @@ It isolates, under a single public name, the direct theorem surface correspondin
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, public facade, lane contract, and normal-form theorems |
+| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, coherence hub, public facade, lane contract, and normal-form theorems |
 | Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
 | Preferred direct public input | `BalabanRGUniformLSIDirectInput` |
 | Preferred most concrete public input | `BalabanRGUniformLSIConcreteInput` |
+| Preferred public coherence hub | `BalabanRGUniformLSIInputCoherence` |
 | Preferred public output | `BalabanRGUniformLSIPublicFacade` |
 | Global claim | honest reduction, not finished Clay proof |
 
@@ -114,6 +115,7 @@ It isolates, under a single public name, the direct theorem surface correspondin
 | `BalabanRGUniformLSIDirectInput` | Formal direct input packet | Packages the transfer ingredient together with the direct uniform-theorem target |
 | `BalabanRGUniformLSIActivationData` | Formal abstract input packet | Packages the transfer ingredient and preferred live target |
 | `BalabanRGUniformLSIConcreteInput` | Formal concrete input packet | Packages the transfer ingredient together with a bare `BalabanRGPackage` witness |
+| `BalabanRGUniformLSIInputCoherence` | Formal coherence hub | Centralizes the normal forms and round-trips among direct input, activation data, concrete input, and frontier |
 | `BalabanRGUniformLSIFrontier` | Public ergonomic entrypoint | Single short name for importing and consuming the current lane |
 | `BalabanRGUniformLSIPublicFacade` | Formal output facade | Packages registry + structured closure |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
