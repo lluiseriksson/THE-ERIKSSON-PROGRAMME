@@ -108,22 +108,22 @@ compactness of the ambient `SU(m)` range without any external transfer input.
 <!-- SU_UNCONDITIONALITY_START -->
 ## Special-unitary compactness: unconditional status
 
-The local special-unitary compactness block is now closed **unconditionally** in the repository.
+The local special-unitary compactness block is now closed **unconditionally** inside the repository.
 
 ### Public API
 
-The stable public façade is exposed from:
+Import:
 
 - `YangMills.ClayCore.BalabanRG.SpecialUnitaryCompact`
 
-with the public theorems:
+Public theorems:
 
 - `specialUnitary_compact_range_target`
 - `specialUnitary_topology_gap_closed`
 
 ### Internal decomposition
 
-The proof path is now split into the following layers:
+The proof path is split into the following layers:
 
 - `SpecialUnitaryCompactCore`
 - `SpecialUnitaryCompactReduction`
@@ -132,7 +132,7 @@ The proof path is now split into the following layers:
 - `SpecialUnitaryClosedEntrywiseBoundedToCompact`
 - `SpecialUnitaryCompactUnconditional`
 
-### Unconditional closure achieved
+### Internal unconditional closure
 
 Internal unconditional closure is provided by:
 
