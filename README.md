@@ -54,6 +54,34 @@ Formalize a complete proof architecture for the Yang–Mills mass gap in Lean 4:
 
 ---
 
+## Haar–LSI frontier status
+
+The second major unconditionality front is now explicitly stratified inside the repository.
+
+### Canonical LSI files
+- `YangMills/ClayCore/BalabanRG/HaarLSIReduction.lean`
+- `YangMills/ClayCore/BalabanRG/HaarLSIBridge.lean`
+- `YangMills/ClayCore/BalabanRG/HaarLSIConcreteBridge.lean`
+- `YangMills/ClayCore/BalabanRG/HaarLSIDirectBridge.lean`
+- `YangMills/ClayCore/BalabanRG/HaarLSIScaleBridge.lean`
+
+### Meaning of the current bridge stack
+This does **not** yet claim a finished unconditional Haar log-Sobolev proof for lattice Yang–Mills.
+
+What is now formalized is the honest decomposition of the next gap into named routes:
+
+1. **Ricci -> Haar-LSI** (`HaarLSIReduction`, `HaarLSIBridge`)
+2. **Concrete uniform LSI package -> abstract Haar-LSI route** (`HaarLSIConcreteBridge`)
+3. **Direct RG package route -> Haar-LSI** (`HaarLSIDirectBridge`)
+4. **Scale-level export route** (`HaarLSIScaleBridge`)
+
+### Current status
+- Special-unitary topological unconditionality: **closed**
+- Haar-LSI frontier: **architecturally isolated, not yet discharged**
+- Build status of the canonical SU + Haar-LSI block: **green**
+
+This means the programme has moved from an informal “LSI should follow somehow” stance to a formally named and machine-checkable bridge stack.
+
 ## 7. Original work and audit trail
 
 | Resource | Link |
@@ -63,7 +91,6 @@ Formalize a complete proof architecture for the Yang–Mills mass gap in Lean 4:
 | Repository | https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME |
 
 ---
-
 
 ---
 
@@ -230,82 +257,6 @@ This means the local compactness route for the ambient special-unitary range is 
 - Final sanity build without warnings
 <!-- SU_UNCONDITIONALITY_END -->
 
-
 ---
 
-## Complete Paper Corpus
-
-**68 publicly timestamped papers** — full list at [ai.vixra.org/author/lluis_eriksson](https://ai.vixra.org/author/lluis_eriksson).  
-Date range: December 16 2025 — February 27 2026.  
-SHA-256 hashes: [`ym-audit` repo](https://github.com/lluiseriksson/ym-audit).
-
-| # | Date | ai.viXra ID | Title |
-|---|------|-------------|-------|
-| 1 | — | [2602.0117](https://ai.vixra.org/abs/2602.0117) |  |
-| 2 | — | [2602.0096](https://ai.vixra.org/abs/2602.0096) |  |
-| 3 | — | [2602.0092](https://ai.vixra.org/abs/2602.0092) |  |
-| 4 | — | [2602.0091](https://ai.vixra.org/abs/2602.0091) |  |
-| 5 | — | [2602.0089](https://ai.vixra.org/abs/2602.0089) |  |
-| 6 | — | [2602.0088](https://ai.vixra.org/abs/2602.0088) |  |
-| 7 | — | [2602.0087](https://ai.vixra.org/abs/2602.0087) |  |
-| 8 | — | [2602.0085](https://ai.vixra.org/abs/2602.0085) |  |
-| 9 | — | [2602.0084](https://ai.vixra.org/abs/2602.0084) |  |
-| 10 | — | [2602.0077](https://ai.vixra.org/abs/2602.0077) |  |
-| 11 | — | [2602.0073](https://ai.vixra.org/abs/2602.0073) |  |
-| 12 | — | [2602.0072](https://ai.vixra.org/abs/2602.0072) |  |
-| 13 | — | [2602.0070](https://ai.vixra.org/abs/2602.0070) |  |
-| 14 | — | [2602.0069](https://ai.vixra.org/abs/2602.0069) |  |
-| 15 | — | [2602.0063](https://ai.vixra.org/abs/2602.0063) |  |
-| 16 | — | [2602.0057](https://ai.vixra.org/abs/2602.0057) |  |
-| 17 | — | [2602.0056](https://ai.vixra.org/abs/2602.0056) |  |
-| 18 | — | [2602.0055](https://ai.vixra.org/abs/2602.0055) |  |
-| 19 | — | [2602.0054](https://ai.vixra.org/abs/2602.0054) |  |
-| 20 | — | [2602.0053](https://ai.vixra.org/abs/2602.0053) |  |
-| 21 | — | [2602.0052](https://ai.vixra.org/abs/2602.0052) |  |
-| 22 | — | [2602.0051](https://ai.vixra.org/abs/2602.0051) |  |
-| 23 | — | [2602.0046](https://ai.vixra.org/abs/2602.0046) |  |
-| 24 | — | [2602.0041](https://ai.vixra.org/abs/2602.0041) |  |
-| 25 | — | [2602.0040](https://ai.vixra.org/abs/2602.0040) |  |
-| 26 | — | [2602.0038](https://ai.vixra.org/abs/2602.0038) |  |
-| 27 | — | [2602.0036](https://ai.vixra.org/abs/2602.0036) |  |
-| 28 | — | [2602.0035](https://ai.vixra.org/abs/2602.0035) |  |
-| 29 | — | [2602.0033](https://ai.vixra.org/abs/2602.0033) |  |
-| 30 | — | [2602.0032](https://ai.vixra.org/abs/2602.0032) |  |
-| 31 | — | [2602.0021](https://ai.vixra.org/abs/2602.0021) |  |
-| 32 | — | [2602.0020](https://ai.vixra.org/abs/2602.0020) |  |
-| 33 | — | [2601.0115](https://ai.vixra.org/abs/2601.0115) |  |
-| 34 | — | [2601.0111](https://ai.vixra.org/abs/2601.0111) |  |
-| 35 | — | [2601.0099](https://ai.vixra.org/abs/2601.0099) |  |
-| 36 | — | [2601.0066](https://ai.vixra.org/abs/2601.0066) |  |
-| 37 | — | [2601.0065](https://ai.vixra.org/abs/2601.0065) |  |
-| 38 | — | [2601.0064](https://ai.vixra.org/abs/2601.0064) |  |
-| 39 | — | [2601.0051](https://ai.vixra.org/abs/2601.0051) |  |
-| 40 | — | [2601.0050](https://ai.vixra.org/abs/2601.0050) |  |
-| 41 | — | [2601.0047](https://ai.vixra.org/abs/2601.0047) |  |
-| 42 | — | [2601.0046](https://ai.vixra.org/abs/2601.0046) |  |
-| 43 | — | [2601.0044](https://ai.vixra.org/abs/2601.0044) |  |
-| 44 | — | [2601.0043](https://ai.vixra.org/abs/2601.0043) |  |
-| 45 | — | [2601.0042](https://ai.vixra.org/abs/2601.0042) |  |
-| 46 | — | [2601.0040](https://ai.vixra.org/abs/2601.0040) |  |
-| 47 | — | [2601.0038](https://ai.vixra.org/abs/2601.0038) |  |
-| 48 | — | [2601.0035](https://ai.vixra.org/abs/2601.0035) |  |
-| 49 | — | [2601.0034](https://ai.vixra.org/abs/2601.0034) |  |
-| 50 | — | [2601.0031](https://ai.vixra.org/abs/2601.0031) |  |
-| 51 | — | [2601.0023](https://ai.vixra.org/abs/2601.0023) |  |
-| 52 | — | [2601.0022](https://ai.vixra.org/abs/2601.0022) |  |
-| 53 | — | [2601.0020](https://ai.vixra.org/abs/2601.0020) |  |
-| 54 | — | [2601.0007](https://ai.vixra.org/abs/2601.0007) |  |
-| 55 | — | [2512.0105](https://ai.vixra.org/abs/2512.0105) |  |
-| 56 | — | [2512.0102](https://ai.vixra.org/abs/2512.0102) |  |
-| 57 | — | [2512.0101](https://ai.vixra.org/abs/2512.0101) |  |
-| 58 | — | [2512.0091](https://ai.vixra.org/abs/2512.0091) |  |
-| 59 | — | [2512.0085](https://ai.vixra.org/abs/2512.0085) |  |
-| 60 | — | [2512.0084](https://ai.vixra.org/abs/2512.0084) |  |
-| 61 | — | [2512.0081](https://ai.vixra.org/abs/2512.0081) |  |
-| 62 | — | [2512.0073](https://ai.vixra.org/abs/2512.0073) |  |
-| 63 | — | [2512.0072](https://ai.vixra.org/abs/2512.0072) |  |
-| 64 | — | [2512.0071](https://ai.vixra.org/abs/2512.0071) |  |
-| 65 | — | [2512.0070](https://ai.vixra.org/abs/2512.0070) |  |
-| 66 | — | [2512.0064](https://ai.vixra.org/abs/2512.0064) |  |
-| 67 | — | [2512.0061](https://ai.vixra.org/abs/2512.0061) |  |
-| 68 | — | [2512.0060](https://ai.vixra.org/abs/2512.0060) |  |
+##
