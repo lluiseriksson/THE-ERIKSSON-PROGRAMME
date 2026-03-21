@@ -3,6 +3,7 @@ import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIEndToEndPacket
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIObstructionPacket
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIPillarIIPacket
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSILoadBearingPacket
+import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSILoadBearingCoherence
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIConcreteInput
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIDirectInput
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIFrontier
