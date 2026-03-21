@@ -1,13 +1,14 @@
-# AXIOM_FRONTIER.md — v0.8.63 (BALABAN-RG SINGLE PUBLIC FRONTIER)
+# AXIOM_FRONTIER.md — v0.8.64 (BALABAN-RG CONCRETE INPUT)
 
 ## Status
-TOPOLOGICAL SU FRONT CLOSED LOCALLY; HAAR-LSI LANE NOW HAS A SINGLE SHORT PUBLIC ENTRYPOINT ON TOP OF THE CANONICAL CONTRACT AND NORMAL-FORM LAYER.
+TOPOLOGICAL SU FRONT CLOSED LOCALLY; THE HAAR-LSI LANE NOW HAS A SINGLE SHORT PUBLIC FRONTIER ENTRYPOINT AND AN EXPLICIT CONCRETE INPUT PACKET.
 
 ## Public lane
-- `BalabanRGUniformLSIFrontier` is the preferred short public entrypoint for the present Balaban-RG / Haar-LSI lane.
-- Internally it sits over `BalabanRGUniformLSIActivationData`, `BalabanRGUniformLSIPublicFacade`, `BalabanRGUniformLSILaneContract`, and `BalabanRGUniformLSINormalForm`.
-- The theorem family `balaban_rg_uniform_lsi_frontier_of_*` builds the frontier from all current equivalent hypothesis surfaces.
-- The theorem family `balaban_rg_uniform_lsi_frontier_iff_*` exposes the logical normal forms of that short public entrypoint.
+- `BalabanRGUniformLSIFrontier` remains the preferred short public entrypoint.
+- `BalabanRGUniformLSIConcreteInput` is the preferred most concrete public input packet for the present lane.
+- `BalabanRGUniformLSIActivationData` remains the abstract canonical input packet.
+- The theorem family `balaban_rg_uniform_lsi_concrete_input_iff_*` exposes the normal forms linking concrete input, activation data, and frontier.
+- The theorem family `*_of_concrete_input` exports the current closure consequences directly from the concrete package-witness surface.
 
 ## Remaining live mathematical obstruction
 An actual Balaban-RG package carrying the uniform-LSI content still has to be discharged internally.

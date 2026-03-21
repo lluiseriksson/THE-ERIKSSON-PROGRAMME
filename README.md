@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint for the current Balaban-RG / Haar-LSI lane
+> **Current status:** formal reduction + single public frontier entrypoint + explicit concrete input packet for the current Balaban-RG / Haar-LSI lane
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -25,11 +25,12 @@ This repository still does **not** claim a completed Clay solution.
 What is closed locally or canonically exported right now:
 
 - the special-unitary compactness lane used by the topological front,
-- the canonical public input packet `BalabanRGUniformLSIActivationData`,
+- the single public frontier entrypoint `BalabanRGUniformLSIFrontier`,
+- the canonical abstract input packet `BalabanRGUniformLSIActivationData`,
+- the new concrete input packet `BalabanRGUniformLSIConcreteInput`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- the normal-form theorem layer `BalabanRGUniformLSINormalForm`,
-- and the new single public entrypoint `BalabanRGUniformLSIFrontier`.
+- and the theorem layer showing that the concrete package-witness surface, the activation surface, and the frontier surface all coincide.
 
 What remains live mathematically:
 
@@ -41,38 +42,35 @@ What remains live mathematically:
 
 ## 3. Current public API of the Haar-LSI lane
 
-Preferred single public entrypoint:
+Preferred short public entrypoint:
 
 - `BalabanRGUniformLSIFrontier`
 
-Behind that entrypoint, the canonical internal organization remains:
+Preferred most concrete public input:
+
+- `BalabanRGUniformLSIConcreteInput`
+
+Preferred abstract public input:
 
 - `BalabanRGUniformLSIActivationData`
+
+Preferred public output:
+
 - `BalabanRGUniformLSIPublicFacade`
-- `BalabanRGUniformLSILaneContract`
-- `BalabanRGUniformLSINormalForm`
 
-Preferred constructor family for the single entrypoint:
+Preferred constructor family for the concrete input:
 
-- `balaban_rg_uniform_lsi_frontier_of_activation_data`
-- `balaban_rg_uniform_lsi_frontier_of_live_target`
-- `balaban_rg_uniform_lsi_frontier_of_direct_uniform_theorem_target`
-- `balaban_rg_uniform_lsi_frontier_of_conditional_target`
-- `balaban_rg_uniform_lsi_frontier_of_haar_lsi_live_target`
-- `balaban_rg_uniform_lsi_frontier_of_pkg`
-- `balaban_rg_uniform_lsi_frontier_of_pkg_witness`
+- `balaban_rg_uniform_lsi_concrete_input_of_pkg`
+- `balaban_rg_uniform_lsi_concrete_input_of_pkg_witness`
+- `balaban_rg_uniform_lsi_concrete_input_of_activation_data`
 
-Preferred theorem-level normal forms for the single entrypoint:
+Preferred theorem-level normal forms around the concrete input:
 
-- `balaban_rg_uniform_lsi_frontier_iff_activation_data`
-- `balaban_rg_uniform_lsi_frontier_iff_live_target`
-- `balaban_rg_uniform_lsi_frontier_iff_direct_uniform_theorem_target`
-- `balaban_rg_uniform_lsi_frontier_iff_conditional_target`
-- `balaban_rg_uniform_lsi_frontier_iff_haar_lsi_live_target`
-- `balaban_rg_uniform_lsi_frontier_iff_pkg_witness`
+- `balaban_rg_uniform_lsi_concrete_input_iff_activation_data`
+- `balaban_rg_uniform_lsi_concrete_input_iff_frontier`
 
 Interpretation:
-the lane now offers one short public name for import and downstream use, while the more detailed activation / facade / contract / normal-form layers remain available underneath.
+the lane now exposes not only a short public frontier name, but also the most concrete public packet corresponding to the actual package-witness surface.
 
 ---
 
@@ -80,8 +78,8 @@ the lane now offers one short public name for import and downstream use, while t
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The new frontier entrypoint does not add mathematical content.
-It is a public ergonomic layer over the already existing lane contract and its normal forms.
+The new concrete input packet does not add mathematical content.
+It isolates, under a single name, the most concrete public input now visible at this frontier: transfer plus a bare `BalabanRGPackage` witness.
 
 ---
 
@@ -91,10 +89,10 @@ It is a public ergonomic layer over the already existing lane contract and its n
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through activation packet, public facade, lane contract, normal-form theorems, and single public frontier entrypoint |
-| Preferred public input | `BalabanRGUniformLSIActivationData` |
-| Preferred public output | `BalabanRGUniformLSIPublicFacade` |
+| Haar-LSI lane | canonically exported through concrete input, activation input, frontier entrypoint, public facade, lane contract, and normal-form theorems |
 | Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
+| Preferred most concrete public input | `BalabanRGUniformLSIConcreteInput` |
+| Preferred public output | `BalabanRGUniformLSIPublicFacade` |
 | Global claim | honest reduction, not finished Clay proof |
 
 ---
@@ -104,12 +102,11 @@ It is a public ergonomic layer over the already existing lane contract and its n
 | Component | Type | Meaning |
 |---|---|---|
 | SU compactness route | Closed locally | Public topological front compiled and exported |
-| `BalabanRGUniformLSIActivationData` | Formal input packet | Packages the current transfer ingredient and preferred live target |
-| `BalabanRGUniformLSIPublicFacade` | Formal output facade | Packages registry + structured closure |
-| `BalabanRGUniformLSILaneContract` | Formal lane contract | Carries canonical input and canonical output together for downstream use |
-| `BalabanRGUniformLSINormalForm` | Public theorem layer | Exposes logical normal forms of the lane contract |
+| `BalabanRGUniformLSIConcreteInput` | Formal concrete input packet | Packages the transfer ingredient together with a bare `BalabanRGPackage` witness |
+| `BalabanRGUniformLSIActivationData` | Formal abstract input packet | Packages the transfer ingredient and preferred live target |
 | `BalabanRGUniformLSIFrontier` | Public ergonomic entrypoint | Single short name for importing and consuming the current lane |
-| `BalabanRGUniformLSILiveTarget` | Real mathematical gap | Still requires the actual package-level uniform-LSI content |
+| `BalabanRGUniformLSIPublicFacade` | Formal output facade | Packages registry + structured closure |
+| `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
 
 ---
 
