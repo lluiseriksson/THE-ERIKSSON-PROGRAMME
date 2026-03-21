@@ -2,8 +2,8 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** Formal reduction + canonical conditional closure of the Haar-LSI lane
-> **Claim level:** This repository does **not** claim a finished Clay solution
+> **Current status:** formal reduction + canonical public API for the current Balaban-RG / Haar-LSI lane
+> **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
 > **Last updated:** March 2026
@@ -14,11 +14,7 @@ Lean 4 formalization for the Yang–Mills mass gap programme
 
 The Eriksson Programme is a long-horizon Lean 4 formalization of the Yang–Mills mass gap programme.
 
-Its policy is strict:
-every bridge is named,
-every dependency is exposed,
-every unresolved ingredient is isolated honestly,
-and no conditional interface is presented as unconditional mathematics.
+Its policy is strict: every bridge is named, every dependency is exposed, every unresolved ingredient is isolated honestly, and no conditional interface is presented as unconditional mathematics.
 
 ---
 
@@ -26,61 +22,66 @@ and no conditional interface is presented as unconditional mathematics.
 
 This repository still does **not** claim a completed Clay solution.
 
-What is closed locally:
+What is closed locally or canonically exported right now:
+
 - the special-unitary compactness lane used by the topological front,
-- the abstract / concrete / direct / scale stratification of the Haar-LSI lane,
-- the canonical frontier package exporting the current consequences of that lane.
+- the unique live target of the current Balaban-RG / Haar-LSI lane under the public name `BalabanRGUniformLSILiveTarget`,
+- the bundled consequence `BalabanRGUniformLSILastMileOutput`,
+- the structured public output `BalabanRGUniformLSIClosurePackage`,
+- and the direct bridge from an actual `BalabanRGPackage` witness to that structured public closure.
 
 What remains live mathematically:
-- the real uniform-LSI Balaban-RG content,
-- i.e. the terminal package-level ingredient that would make the present Haar-LSI lane unconditional.
+
+- the actual package-level Balaban-RG uniform-LSI content,
+- hence the unconditional closure of the present Haar-LSI lane,
+- and therefore the full unconditional Clay conclusion.
 
 ---
 
-## 3. Canonical Haar-LSI lane
+## 3. Current public API of the Haar-LSI lane
 
-The active lane is organized as:
+The lane is now organized around four public objects:
 
-    HaarLSIReduction
-      -> HaarLSIBridge
-      -> HaarLSIConcreteBridge
-      -> HaarLSIDirectBridge
-      -> HaarLSIScaleBridge
-      -> HaarLSIFrontier
-      -> HaarLSIConditionalClosure
+- `BalabanRGUniformLSILiveTarget`: canonical public name for the unique remaining live target in this lane,
+- `BalabanRGUniformLSILastMileOutput`: bundled conjunction of scale target, Haar target, and frontier package,
+- `BalabanRGUniformLSIClosurePackage`: the same consequences as a structured package with named fields,
+- `balaban_rg_uniform_lsi_closure_package_of_pkg`: direct public theorem sending an actual `BalabanRGPackage` witness to the exported closure package.
 
-Interpretation:
-- `HaarLSIFrontier` exports the current formal consequences of the lane.
-- `HaarLSIConditionalClosure` names the remaining live conditional target explicitly:
-  an actual Balaban-RG package carrying the uniform-LSI content.
-
-So the programme is now cleaner:
-the only live obstruction in this lane is no longer hidden in prose, but surfaced as a single named formal target.
-
-At code level, `HaarLSILiveTarget` is the canonical public name for that obstruction, and it is formally equivalent to `SpecialUnitaryDirectUniformLSITheoremTarget`.
+So the live obstruction is no longer hidden in prose, and the public consumption point for the current lane is no longer a bare existential but a named structured output.
 
 ---
 
-## 4. Repository snapshot
+## 4. Honest interpretation
+
+This is still an honest reduction, not a finished unconditional proof.
+
+The current repository architecture says exactly this:
+once an actual Balaban-RG package with the required uniform-LSI content exists inside Lean, the current public closure package follows immediately through a named theorem path.
+
+---
+
+## 5. Repository snapshot
 
 | Item | Current state |
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically packaged |
-| Remaining live target in this lane | `BalabanRGUniformLSIConditionalTarget` / `HaarLSILiveTarget` / `BalabanRGUniformLSILiveTarget` |
+| Haar-LSI lane | canonically exported through live target, last-mile output, closure package, and package bridge |
+| Remaining live target in this lane | `BalabanRGUniformLSILiveTarget` |
+| Best current public structured output | `BalabanRGUniformLSIClosurePackage` |
 | Global claim | honest reduction, not finished Clay proof |
 
 ---
 
-## 5. Unconditionality audit
+## 6. Unconditionality audit
 
 | Component | Type | Meaning |
 |---|---|---|
 | SU compactness route | Closed locally | Public topological front compiled and exported |
-| Haar-LSI abstract/concrete/direct/scale bridges | Honest reduction | Full lane exposed without pretending unconditional closure |
-| `HaarLSIFrontier` | Formal package | Current consequences exported canonically |
-| `BalabanRGUniformLSIConditionalTarget` | Real mathematical gap | The live package-level uniform-LSI content still to be discharged |
+| `BalabanRGUniformLSILastMileOutput` | Formal package | Bundles the current consequences of discharging the live target |
+| `BalabanRGUniformLSIClosurePackage` | Formal structured package | Exposes those consequences through named fields |
+| `balaban_rg_uniform_lsi_closure_package_of_pkg` | Public bridge | Sends an actual package witness to the exported structured closure |
+| `BalabanRGUniformLSILiveTarget` | Real mathematical gap | Still requires the actual package-level uniform-LSI content |
 
 ---
 

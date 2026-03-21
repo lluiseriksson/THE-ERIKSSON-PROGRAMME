@@ -1,37 +1,16 @@
-# AXIOM_FRONTIER.md — v0.8.51 (HAAR-LSI CONDITIONAL CLOSURE)
+# AXIOM_FRONTIER.md — v0.8.57 (BALABAN-RG PUBLIC PACKAGE BRIDGE)
 
 ## Status
-FRONTIER FULLY MAPPED, WITH CANONICAL CONDITIONAL CLOSURE OF THE HAAR-LSI LANE.
+TOPOLOGICAL SU FRONT CLOSED LOCALLY; HAAR-LSI LANE CANONICALLY PACKAGED; PUBLIC PACKAGE BRIDGE EXPORTED.
 
-## P8
-8 honest axioms / interfaces, full build green on touched targets.
+## Public lane
+- `BalabanRGUniformLSILiveTarget` is the canonical public name for the unique remaining live target in the present Balaban-RG / Haar-LSI lane.
+- `BalabanRGUniformLSILastMileOutput` bundles the current scale / Haar / frontier consequences.
+- `BalabanRGUniformLSIClosurePackage` exposes those consequences as a structured public package with named fields.
+- `balaban_rg_uniform_lsi_closure_package_of_pkg` is the direct public theorem from an actual `BalabanRGPackage` witness to the exported closure package.
 
-## Remaining live target
-`balaban_rg_uniform_lsi` (Clay Millennium Problem).
-
-Interpretation after the current refactor:
-the Haar-LSI lane is now exported canonically all the way to
-`HaarLSIConditionalClosure`,
-so the remaining live obstruction is isolated as the package-level uniform-LSI content.
-
-## Clay Core Progress
-- Layer 0 (BlockSpin + FiniteBlocks): complete
-- Layer 1 (Polymers): complete
-- Haar-LSI lane: abstract / concrete / direct / scale / frontier / conditional-closure chain exposed
-- Remaining live mathematical obstruction: unconditional volume-independent uniform LSI
-
-## Public consequence of the current refactor
-If the package-level uniform-LSI target is discharged,
-then the formal Haar-LSI frontier closes immediately through the exported canonical chain.
+## Remaining live mathematical obstruction
+An actual Balaban-RG package carrying the uniform-LSI content still has to be discharged internally.
 
 ## Soundness note
-This is still an honest reduction.
-No unconditional Haar-LSI theorem is being claimed here without the live package-level input.
-
-Formal identification: `HaarLSILiveTarget` is equivalent to `SpecialUnitaryDirectUniformLSITheoremTarget`.
-
-Formal Lean alias: `BalabanRGUniformLSILiveTarget` is definitionally the same target as `HaarLSILiveTarget`.
-
-Packaged consequence: `BalabanRGUniformLSILastMileOutput` groups the scale target, Haar target, and frontier package under the single live-target hypothesis.
-
-Public closure package: `BalabanRGUniformLSIClosurePackage` exposes the current last-mile consequences with named fields.
+This remains an honest reduction. No unconditional Haar-LSI theorem is claimed without the actual package-level witness.
