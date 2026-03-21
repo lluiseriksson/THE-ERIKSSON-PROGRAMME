@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub for the current Balaban-RG / Haar-LSI lane
+> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet for the current Balaban-RG / Haar-LSI lane
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -34,10 +34,11 @@ What is closed locally or canonically exported right now:
 - the centralized obstruction packet `BalabanRGUniformLSIObstructionPacket`,
 - the unified Pillar II packet `BalabanRGUniformLSIPillarIIPacket`,
 - the explicit load-bearing packet `BalabanRGUniformLSILoadBearingPacket`,
-- the new load-bearing coherence hub `BalabanRGUniformLSILoadBearingCoherence`,
+- the load-bearing coherence hub `BalabanRGUniformLSILoadBearingCoherence`,
+- the unified audit packet `BalabanRGUniformLSIAuditPacket`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- and the theorem layers showing that frontier, activation, direct input, concrete input, end-to-end export, obstruction surface, Pillar II surface, and load-bearing surface are canonically interconvertible, with the load-bearing round-trips centralized explicitly.
+- and the theorem layers showing that frontier, activation, direct input, concrete input, end-to-end export, obstruction surface, Pillar II surface, load-bearing surface, and audit surface are canonically interconvertible.
 
 What remains live mathematically:
 
@@ -86,20 +87,25 @@ Preferred explicit load-bearing surface:
 
 - `BalabanRGUniformLSILoadBearingPacket`
 
+Preferred unified audit surface:
+
+- `BalabanRGUniformLSIAuditPacket`
+
 Preferred public output:
 
 - `BalabanRGUniformLSIPublicFacade`
 
 Preferred theorem-level normal forms now exposed centrally:
 
-- `balaban_rg_uniform_lsi_load_bearing_packet_iff_live_target`
-- `balaban_rg_uniform_lsi_load_bearing_packet_iff_conditional_target`
-- `balaban_rg_uniform_lsi_load_bearing_packet_iff_direct_uniform_theorem_target`
-- `balaban_rg_uniform_lsi_load_bearing_packet_iff_haar_lsi_live_target`
-- `balaban_rg_uniform_lsi_load_bearing_packet_iff_pkg_witness`
+- `balaban_rg_uniform_lsi_audit_packet_iff_activation_data`
+- `balaban_rg_uniform_lsi_audit_packet_iff_frontier`
+- `balaban_rg_uniform_lsi_audit_packet_iff_load_bearing_packet`
+- `balaban_rg_uniform_lsi_audit_packet_iff_pillar_ii_packet`
+- `balaban_rg_uniform_lsi_audit_packet_iff_obstruction_packet`
+- `balaban_rg_uniform_lsi_audit_packet_iff_end_to_end_packet`
 
 Interpretation:
-the lane now exposes not only frontier, input surfaces, end-to-end export, obstruction surface, Pillar II surface, and the explicit load-bearing packet, but also a dedicated coherence hub making the load-bearing equivalences and round-trips explicit in one place.
+the lane now exposes not only frontier, input surfaces, end-to-end export, obstruction surface, Pillar II surface, load-bearing surface, and the load-bearing coherence hub, but also a single audit packet carrying the current load-bearing geometry together with the public output side used for hostile review.
 
 ---
 
@@ -107,8 +113,8 @@ the lane now exposes not only frontier, input surfaces, end-to-end export, obstr
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The new load-bearing coherence hub does not add mathematical content.
-It centralizes the equivalences and canonical round-trips for the specific surfaces currently treated as carrying the Pillar II burden, so the next genuinely mathematical step can target one explicit interface.
+The new audit packet does not add mathematical content.
+It consolidates, under one public name, the current load-bearing surface together with the public output side of the lane so that the next real mathematical assault can target one explicit audit-facing interface.
 
 ---
 
@@ -118,7 +124,7 @@ It centralizes the equivalences and canonical round-trips for the specific surfa
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, public facade, lane contract, and normal-form theorems |
+| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, public facade, lane contract, and normal-form theorems |
 | Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
 | Preferred direct public input | `BalabanRGUniformLSIDirectInput` |
 | Preferred most concrete public input | `BalabanRGUniformLSIConcreteInput` |
@@ -126,7 +132,7 @@ It centralizes the equivalences and canonical round-trips for the specific surfa
 | Preferred obstruction surface | `BalabanRGUniformLSIObstructionPacket` |
 | Preferred Pillar II surface | `BalabanRGUniformLSIPillarIIPacket` |
 | Preferred load-bearing surface | `BalabanRGUniformLSILoadBearingPacket` |
-| Preferred load-bearing coherence hub | `BalabanRGUniformLSILoadBearingCoherence` |
+| Preferred audit surface | `BalabanRGUniformLSIAuditPacket` |
 | Preferred public output | `BalabanRGUniformLSIPublicFacade` |
 | Global claim | honest reduction, not finished Clay proof |
 
@@ -146,6 +152,7 @@ It centralizes the equivalences and canonical round-trips for the specific surfa
 | `BalabanRGUniformLSIPillarIIPacket` | Formal Pillar II packet | Carries both the still-live obstruction side and the exported closure side together under one canonical public packet |
 | `BalabanRGUniformLSILoadBearingPacket` | Formal load-bearing packet | Carries the specific current Pillar II load-bearing surfaces: live target, conditional target, scale target, Haar target, and frontier package |
 | `BalabanRGUniformLSILoadBearingCoherence` | Formal load-bearing coherence hub | Centralizes constructors, equivalences, projections, and round-trips for the load-bearing surface |
+| `BalabanRGUniformLSIAuditPacket` | Formal audit packet | Carries the load-bearing surface together with frontier, lane contract, public facade, closure, registry, and last-mile output under one audit-facing public packet |
 | `BalabanRGUniformLSIFrontier` | Public ergonomic entrypoint | Single short name for importing and consuming the current lane |
 | `BalabanRGUniformLSIPublicFacade` | Formal output facade | Packages registry + structured closure |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
