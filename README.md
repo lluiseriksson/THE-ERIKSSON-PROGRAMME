@@ -1,32 +1,61 @@
 # THE ERIKSSON PROGRAMME
+
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** Formal reduction & interface isolation  
-> **Claim level:** This repository does **not** claim a finished Clay solution.  
-> **Build health:** 8270+ jobs, 0 errors, 0 `sorry`s  
-> **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib  
+> **Current status:** Formal reduction + canonical conditional closure of the Haar-LSI lane
+> **Claim level:** This repository does **not** claim a finished Clay solution
+> **Build health:** all touched targets must compile green
+> **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
 > **Last updated:** March 2026
 
 ---
 
 ## 1. What this repository is
 
-The Eriksson Programme is a long-horizon formal verification project in Lean 4.
+The Eriksson Programme is a long-horizon Lean 4 formalization of the Yang–Mills mass gap programme.
 
-Its purpose is to formalize an **honest reduction programme** for the Clay Yang–Mills and Mass Gap problem: every bridge is named, every dependency is exposed, and every unresolved ingredient is isolated explicitly rather than hidden behind folklore or informal “standard arguments”.
-
-This repository therefore aims at a **fully verified structural pipeline** in which the terminal theorem `ClayYangMillsTheorem` is connected to explicit formal interfaces. The programme should be considered **finished** only when the remaining terminal interfaces are discharged **inconditionally inside Lean 4**, without external witness packages or transfer assumptions.
+Its policy is strict:
+every bridge is named,
+every dependency is exposed,
+every unresolved ingredient is isolated honestly,
+and no conditional interface is presented as unconditional mathematics.
 
 ---
 
-## 2. Mathematical goal
+## 2. Current mathematical position
 
-Formalize a complete proof architecture for the Yang–Mills mass gap in Lean 4:
+This repository still does **not** claim a completed Clay solution.
 
-- construct a non-trivial 4D `SU(N)` quantum Yang–Mills theory,
-- satisfy the Osterwalder–Schrader / Wightman interface expected by the Clay formulation,
-- prove a positive spectral gap / mass gap,
-- and verify every formal step in Lean.
+What is closed locally:
+- the special-unitary compactness lane used by the topological front,
+- the abstract / concrete / direct / scale stratification of the Haar-LSI lane,
+- the canonical frontier package exporting the current consequences of that lane.
+
+What remains live mathematically:
+- the real uniform-LSI Balaban-RG content,
+- i.e. the terminal package-level ingredient that would make the present Haar-LSI lane unconditional.
+
+---
+
+## 3. Canonical Haar-LSI lane
+
+The active lane is organized as:
+
+    HaarLSIReduction
+      -> HaarLSIBridge
+      -> HaarLSIConcreteBridge
+      -> HaarLSIDirectBridge
+      -> HaarLSIScaleBridge
+      -> HaarLSIFrontier
+      -> HaarLSIConditionalClosure
+
+Interpretation:
+- `HaarLSIFrontier` exports the current formal consequences of the lane.
+- `HaarLSIConditionalClosure` names the remaining live conditional target explicitly:
+  an actual Balaban-RG package carrying the uniform-LSI content.
+
+So the programme is now cleaner:
+the only live obstruction in this lane is no longer hidden in prose, but surfaced as a single named formal target.
 
 ---
 
@@ -34,53 +63,24 @@ Formalize a complete proof architecture for the Yang–Mills mass gap in Lean 4:
 
 | Item | Current state |
 |---|---|
-| Build health | **8270+ jobs, 0 errors, 0 `sorry`s** |
-| Clay core | 1 Clay core axiom |
-| Named axioms | 8 |
-| BalabanRG status | decomposed into independent targets with concrete discharged subpaths |
-| Current bridge status | singleton, finite full, concrete `L¹`, weighted `L¹`, direct-budget, native-target, and final-gap lanes all registered |
+| Build posture | green on touched frontier targets |
+| SU compactness lane | locally discharged |
+| Haar-LSI lane | canonically packaged |
+| Remaining live target in this lane | `BalabanRGUniformLSIConditionalTarget` |
+| Global claim | honest reduction, not finished Clay proof |
 
 ---
 
 ## 5. Unconditionality audit
 
-| Component | Type | State | Meaning |
-|---|---|---:|---|
-| P91 finite-full small-constants packaging | Honest reduction | 🟢 | The finite-full constants `A_large`, `A_cauchy` are cleanly isolated |
-| Direct-budget lane | Honest reduction | 🟢 | The terminal budget route is packaged |
-| Native-target lane | Honest reduction | 🟢 | The native-target route is packaged |
-| **SmallConstants -> DirectBudget** | **Real mathematical gap** | 🔴 | Need unconditional proof for global weighted budget |
-| **SmallConstants -> NativeTarget** | **Real mathematical gap** | 🔴 | Need unconditional proof reaching native target |
+| Component | Type | Meaning |
+|---|---|---|
+| SU compactness route | Closed locally | Public topological front compiled and exported |
+| Haar-LSI abstract/concrete/direct/scale bridges | Honest reduction | Full lane exposed without pretending unconditional closure |
+| `HaarLSIFrontier` | Formal package | Current consequences exported canonically |
+| `BalabanRGUniformLSIConditionalTarget` | Real mathematical gap | The live package-level uniform-LSI content still to be discharged |
 
 ---
-
-## Haar–LSI frontier status
-
-The second major unconditionality front is now explicitly stratified inside the repository.
-
-### Canonical LSI files
-- `YangMills/ClayCore/BalabanRG/HaarLSIReduction.lean`
-- `YangMills/ClayCore/BalabanRG/HaarLSIBridge.lean`
-- `YangMills/ClayCore/BalabanRG/HaarLSIConcreteBridge.lean`
-- `YangMills/ClayCore/BalabanRG/HaarLSIDirectBridge.lean`
-- `YangMills/ClayCore/BalabanRG/HaarLSIScaleBridge.lean`
-
-### Meaning of the current bridge stack
-This does **not** yet claim a finished unconditional Haar log-Sobolev proof for lattice Yang–Mills.
-
-What is now formalized is the honest decomposition of the next gap into named routes:
-
-1. **Ricci -> Haar-LSI** (`HaarLSIReduction`, `HaarLSIBridge`)
-2. **Concrete uniform LSI package -> abstract Haar-LSI route** (`HaarLSIConcreteBridge`)
-3. **Direct RG package route -> Haar-LSI** (`HaarLSIDirectBridge`)
-4. **Scale-level export route** (`HaarLSIScaleBridge`)
-
-### Current status
-- Special-unitary topological unconditionality: **closed**
-- Haar-LSI frontier: **architecturally isolated, not yet discharged**
-- Build status of the canonical SU + Haar-LSI block: **green**
-
-This means the programme has moved from an informal “LSI should follow somehow” stance to a formally named and machine-checkable bridge stack.
 
 ## 7. Original work and audit trail
 
