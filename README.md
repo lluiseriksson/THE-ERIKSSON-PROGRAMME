@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness + explicit quantitative PhysicalRGRates frontier + explicit quantitative Haar-LSI frontier + explicit quantitative Haar-LSI audit packet + explicit quantitative Haar-LSI audit coherence hub
+> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness + explicit quantitative PhysicalRGRates frontier + explicit quantitative Haar-LSI frontier + explicit quantitative Haar-LSI audit packet + explicit quantitative Haar-LSI audit coherence hub + repaired quantitative-to-audit bridge
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -46,10 +46,11 @@ What is closed locally or canonically exported right now:
 - the explicit quantitative frontier `PhysicalRGRatesFrontier`,
 - the explicit quantitative Haar-LSI frontier `BalabanRGUniformLSIQuantitativeFrontier`,
 - the explicit quantitative Haar-LSI audit packet `BalabanRGUniformLSIQuantitativeAuditPacket`,
-- the new explicit quantitative Haar-LSI audit coherence hub `BalabanRGUniformLSIQuantitativeAuditCoherence`,
+- the explicit quantitative Haar-LSI audit coherence hub `BalabanRGUniformLSIQuantitativeAuditCoherence`,
+- the repaired quantitative-to-audit bridge `BalabanRGUniformLSIQuantitativeAuditBridge`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- and the theorem layers showing how the direct quantitative Haar-LSI route, its audit packet, and its public outputs now sit inside one single coherence surface.
+- and the theorem layers showing how the direct quantitative Haar-LSI route now lands inside the standard audit-facing packet of the public lane without nominal collisions.
 
 What remains live mathematically:
 
@@ -78,10 +79,22 @@ Preferred quantitative audit coherence hub:
 
 - `BalabanRGUniformLSIQuantitativeAuditCoherence`
 
-Preferred quantitative rate surfaces:
+Preferred quantitative-to-audit bridge:
 
-- `physical_rg_rates_witness`
-- `PhysicalRGRatesFrontier`
+- `balaban_rg_uniform_lsi_audit_packet_of_quantitative_frontier`
+- `balaban_rg_uniform_lsi_audit_packet_of_quantitative_audit_packet`
+- `balaban_rg_uniform_lsi_audit_packet_of_quantitative_audit_coherence`
+
+Preferred bridge-side canonical equalities:
+
+- `balaban_rg_uniform_lsi_audit_packet_eq_canonical_of_quantitative_frontier`
+- `balaban_rg_uniform_lsi_audit_packet_eq_canonical_of_quantitative_audit_packet`
+- `balaban_rg_uniform_lsi_audit_packet_eq_canonical_of_quantitative_audit_coherence`
+- `balaban_rg_uniform_lsi_activation_data_via_standard_audit_eq_canonical_of_quantitative_frontier`
+- `balaban_rg_uniform_lsi_frontier_via_standard_audit_eq_canonical_of_quantitative_frontier`
+- `balaban_rg_uniform_lsi_public_facade_via_standard_audit_eq_canonical_of_quantitative_frontier`
+- `balaban_rg_uniform_lsi_public_facade_via_standard_audit_eq_canonical_of_quantitative_audit_packet`
+- `balaban_rg_uniform_lsi_public_facade_via_standard_audit_eq_canonical_of_quantitative_audit_coherence`
 
 Preferred theorem-side P81 surfaces:
 
@@ -89,19 +102,12 @@ Preferred theorem-side P81 surfaces:
 - `RGCauchyP81Frontier`
 - `RGCauchyP81CoherencePacket`
 
-Preferred direct quantitative Haar-LSI exports:
-
-- `balaban_rg_uniform_lsi_quantitative_audit_coherence_of_quantitative_frontier`
-- `balaban_rg_uniform_lsi_quantitative_audit_coherence_iff_quantitative_frontier`
-- `balaban_rg_uniform_lsi_quantitative_audit_coherence_iff_quantitative_audit_packet`
-- `balaban_rg_uniform_lsi_public_facade_eq_canonical_of_quantitative_audit_coherence`
-
 Preferred public output:
 
 - `BalabanRGUniformLSIPublicFacade`
 
 Interpretation:
-the lane now exposes not only a direct quantitative entrypoint into Haar-LSI and an audit packet for it, but also one central coherence hub for the quantitative public surface.
+the lane now exposes not only a direct quantitative entrypoint into Haar-LSI and its own audit-side surfaces, but also a collision-free landing map from that route into the standard audit-facing packet of the public lane.
 
 ---
 
@@ -109,8 +115,8 @@ the lane now exposes not only a direct quantitative entrypoint into Haar-LSI and
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The new quantitative Haar-LSI audit coherence hub does not solve the theorem-side P81 gap.
-It centralizes, under one public surface, the canonical round-trips and normal forms for the quantitative Haar-LSI route.
+The repaired quantitative-to-audit bridge does not solve the theorem-side P81 gap.
+It makes explicit, under collision-free theorem names, that the quantitative Haar-LSI route already sits inside the standard audit-facing packet used by the broader public lane.
 
 ---
 
@@ -120,14 +126,14 @@ It centralizes, under one public surface, the canonical round-trips and normal f
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, the P81 coherence packet, the P81 live target, the quantitative `PhysicalRGRates` witness, the quantitative `PhysicalRGRates` frontier, the quantitative Haar-LSI frontier, the quantitative Haar-LSI audit packet, and the quantitative Haar-LSI audit coherence hub |
+| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, the P81 coherence packet, the P81 live target, the quantitative `PhysicalRGRates` witness, the quantitative `PhysicalRGRates` frontier, the quantitative Haar-LSI frontier, the quantitative Haar-LSI audit packet, the quantitative Haar-LSI audit coherence hub, and the repaired quantitative-to-audit bridge |
 | Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
 | Preferred quantitative public entrypoint | `BalabanRGUniformLSIQuantitativeFrontier` |
 | Preferred quantitative audit packet | `BalabanRGUniformLSIQuantitativeAuditPacket` |
 | Preferred quantitative audit coherence hub | `BalabanRGUniformLSIQuantitativeAuditCoherence` |
+| Preferred standard audit landing surface | `BalabanRGUniformLSIAuditPacket` |
 | Preferred P81 bottleneck surface | `RGCauchyP81Frontier` |
 | Preferred quantitative route | `PhysicalRGRatesFrontier` |
-| Preferred public output | `BalabanRGUniformLSIPublicFacade` |
 | Global claim | honest reduction, not finished Clay proof |
 
 ---
@@ -143,6 +149,7 @@ It centralizes, under one public surface, the canonical round-trips and normal f
 | `BalabanRGUniformLSIQuantitativeFrontier` | Formal quantitative Haar-LSI frontier | Packages the transfer ingredient together with the direct quantitative rates frontier and feeds the public Haar-LSI lane |
 | `BalabanRGUniformLSIQuantitativeAuditPacket` | Formal quantitative audit packet | Centralizes the quantitative Haar-LSI frontier together with its activation data, public facade, closure package, registry, and target-level outputs |
 | `BalabanRGUniformLSIQuantitativeAuditCoherence` | Formal quantitative audit coherence hub | Centralizes the quantitative frontier, audit packet, rates frontier, public frontier, and public facade under one canonical surface |
+| `BalabanRGUniformLSIQuantitativeAuditBridge` | Formal quantitative-to-audit bridge | Shows explicitly how the quantitative Haar-LSI route lands inside the standard audit-facing packet of the public lane without symbol collisions |
 | `rg_increment_decay_P81` | Real mathematical gap surface | Still exported with `sorry` in the current repo |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
 
