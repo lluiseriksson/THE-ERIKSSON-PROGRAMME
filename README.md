@@ -2,11 +2,11 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** honest formal reduction with the P80/P81 corridor green under the current zero-map RG semantics, the corrected P91 public shim now using a direct multiplicative-window drift/divergence route, and the old legacy P91 route explicitly audited as too weak
+> **Current status:** honest formal reduction with the P80/P81 corridor green under the current zero-map RG semantics, the corrected P91 public shim already on the direct multiplicative-window lane, and the legacy closed-window compatibility layer now rerouted to that same direct lane
 > **Claim level:** this repository does **not** claim a finished unconditional Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
-> **Current version:** v0.9.30
+> **Current version:** v0.9.31
 > **Last updated:** March 2026
 
 ---
@@ -15,15 +15,15 @@ Lean 4 formalization for the Yang–Mills mass gap programme
 
 The Eriksson Programme is a Lean 4 formalization of the Yang–Mills mass gap programme.
 
-The current policy is explicit:
-unresolved mathematics is not hidden behind façade files,
-legacy theorem lanes are audited instead of silently reused,
-and the theorem-side public surface is progressively rerouted toward the corrected analytic window.
+The repository policy remains strict:
+unresolved mathematics is not hidden,
+legacy theorem lanes are audited rather than silently reused,
+and public theorem surfaces are progressively rerouted toward the corrected analytic window.
 
-This step does not add new physical content.
-It removes a structural dependency:
-the corrected public P91 shim no longer needs to inherit drift/divergence through the old hβ-upper legacy lane,
-because a direct multiplicative-window drift route is now available.
+This step does not prove the final Clay theorem.
+It removes another structural legacy dependency:
+downstream consumers that still pass through the old closed-window P91 compatibility file
+no longer need to inherit drift/divergence through the old closed route.
 
 ---
 
@@ -36,29 +36,31 @@ What is currently green and load-bearing:
 - the SU compactness / Haar public lane,
 - the P80/P81 theorem corridor under current zero-map semantics,
 - the corrected multiplicative-window P91 asymptotic-freedom and denominator route,
+- the direct multiplicative-window drift/divergence route,
 - the corrected public shim for that lane,
-- and now the direct multiplicative-window drift/divergence route used by that shim.
+- and now the legacy closed-window compatibility layer rerouted so downstream theorem consumers can stay on the old names without depending theorem-side on the old drift proof path.
 
 What remains live mathematically:
 
-- the deprecated legacy P91 statements still present in the old-route files,
-- migration of any remaining theorem consumers away from those old files,
+- any old-route residue that still survives outside the compatibility shell,
 - replacement of the placeholder zero blocking map by the intended explicit Balaban blocking map,
-- and re-proving the theorem-side corridor under that nontrivial RG semantics.
+- rebuilding the theorem-side corridor under that nontrivial RG semantics,
+- and the remaining quantitative/LSI fronts required for a genuinely unconditional terminal conclusion.
 
 ---
 
 ## 3. Why this step matters
 
-The important point is not "one more wrapper".
-It is that the corrected public theorem-side entrypoint now stops borrowing drift/divergence from a legacy route whose hypothesis package is already known to be too weak.
+The previous step corrected the public shim.
+This one corrects the compatibility shell behind many possible downstream consumers.
 
-That makes the public P91 surface more honest:
-corrected AF,
-corrected denominator control,
-corrected drift,
-corrected divergence,
-all in the multiplicative window.
+That matters because the old theorem names may still be imported in the trunk.
+After this patch, those names can remain temporarily available
+while their proof payload comes from the direct multiplicative-window route instead of the deprecated closed-window drift lane.
+
+In other words:
+the migration surface gets wider,
+but the legacy proof debt gets smaller.
 
 ---
 
@@ -69,10 +71,11 @@ all in the multiplicative window.
 | Build posture | green on touched frontier targets |
 | Public claim | honest reduction, not finished Clay proof |
 | P80/P81 corridor | green under current zero-map semantics |
-| Corrected P91 public surface | green and more independent of legacy drift lane |
-| Legacy P91 route | audited as too weak, still present only as deprecated residue |
-| Next real front | retire remaining old-route residue, then replace `RGBlockingMap := 0` |
-| Current version | v0.9.30 |
+| Corrected P91 public surface | green on direct multiplicative-window drift/divergence |
+| Closed-window compatibility layer | still exported for API stability, now direct underneath |
+| Legacy P91 old route | deprecated / audited as too weak |
+| Next real front | cut remaining residue outside compatibility shell, then replace `RGBlockingMap := 0` |
+| Current version | v0.9.31 |
 
 ---
 
@@ -83,7 +86,8 @@ all in the multiplicative window.
 | SU compactness route | Closed locally | Public topological front compiled and exported |
 | P80/P81 corridor | Green in current semantics | No theorem placeholders there |
 | Corrected P91 AF + denominator lane | Green | Preferred analytic lane |
-| Corrected P91 drift/divergence lane | Green directly in multiplicative window | Public shim no longer needs legacy drift wrappers |
+| Direct P91 drift/divergence lane | Green | Preferred drift/divergence lane |
+| Closed-window compatibility layer | Green and rerouted | Old theorem names no longer force old drift payload |
 | Legacy P91 old route | Deprecated / audited as too weak | Counterexample already certifies insufficiency |
 | Intended nontrivial RG semantics | Still live mathematically | Must be rebuilt after replacing the placeholder RG map |
 | Terminal Clay conclusion | Not yet unconditional in the intended final sense | Still inherits live theorem/axiom fronts |
