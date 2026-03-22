@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness
+> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness + explicit quantitative PhysicalRGRates frontier
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -42,10 +42,11 @@ What is closed locally or canonically exported right now:
 - the explicit live frontier `RGCauchyP81Frontier`,
 - the explicit coherence packet `RGCauchyP81CoherencePacket`,
 - the explicit live target `RGCauchyP81LiveTarget`,
-- the new explicit quantitative witness `PhysicalRGRatesWitness`,
+- the explicit quantitative witness `PhysicalRGRatesWitness`,
+- the new explicit quantitative frontier `PhysicalRGRatesFrontier`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- and the theorem layers showing how the theorem-side P81 target and the already-proved rate bounds assemble a full `PhysicalRGRates` witness and therefore a direct route to `BalabanRGPackage` and `ClayCoreLSI`.
+- and the theorem layers showing how the direct quantitative rates route now has both a canonical witness and a canonical public frontier.
 
 What remains live mathematically:
 
@@ -126,10 +127,15 @@ Preferred quantitative witness replacing the legacy axiom route:
 
 - `physical_rg_rates_witness`
 
+Preferred short public frontier for the direct quantitative route:
+
+- `PhysicalRGRatesFrontier`
+
 Preferred direct quantitative exports:
 
-- `balaban_rg_package_of_physical_rg_rates_witness`
-- `uniform_lsi_of_physical_rg_rates_witness`
+- `rates_witness_of_physical_rg_rates_frontier`
+- `balaban_rg_package_of_physical_rg_rates_frontier`
+- `uniform_lsi_of_physical_rg_rates_frontier`
 
 Preferred public output:
 
@@ -137,13 +143,11 @@ Preferred public output:
 
 Preferred theorem-level normal forms now exposed centrally:
 
-- `rho_exp_contractive_of_physical_rg_rates_witness`
-- `rho_in_unit_interval_of_physical_rg_rates_witness`
-- `cP_linear_lb_of_physical_rg_rates_witness`
-- `cLSI_linear_lb_of_physical_rg_rates_witness`
+- `physical_rg_rates_frontier_iff_rates_witness`
+- `physical_rg_rates_frontier_eq_canonical_of_rates_witness`
 
 Interpretation:
-the lane now exposes not only the theorem-side P81 target and its interface packets, but also a direct assembled witness for the full quantitative `PhysicalRGRates` package.
+the lane now exposes not only a direct quantitative witness, but also a short public frontier for the same quantitative route.
 
 ---
 
@@ -151,8 +155,8 @@ the lane now exposes not only the theorem-side P81 target and its interface pack
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The new quantitative witness does not prove the remaining theorem-side P81 gap.
-It packages, under one public module, the rate components that are already proved in the repo and uses them to bypass the old legacy axiom route into `PhysicalRGRates`.
+The new quantitative frontier does not solve the theorem-side P81 gap.
+It gives a short public name to the direct quantitative route that already exists in the repo, so future bridges can target that route instead of the legacy axiom entrypoint.
 
 ---
 
@@ -162,13 +166,12 @@ It packages, under one public module, the rate components that are already prove
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, the P81 coherence packet, the P81 live target, and the quantitative `PhysicalRGRates` witness |
+| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, the P81 coherence packet, the P81 live target, the quantitative `PhysicalRGRates` witness, and the quantitative `PhysicalRGRates` frontier |
 | Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
 | Preferred direct public input | `BalabanRGUniformLSIDirectInput` |
 | Preferred most concrete public input | `BalabanRGUniformLSIConcreteInput` |
 | Preferred P81 bottleneck surface | `RGCauchyP81Frontier` |
-| Preferred theorem-side P81 target | `RGCauchyP81LiveTarget` |
-| Preferred quantitative rate witness | `physical_rg_rates_witness` |
+| Preferred quantitative route | `PhysicalRGRatesFrontier` |
 | Preferred public output | `BalabanRGUniformLSIPublicFacade` |
 | Global claim | honest reduction, not finished Clay proof |
 
@@ -179,13 +182,9 @@ It packages, under one public module, the rate components that are already prove
 | Component | Type | Meaning |
 |---|---|---|
 | SU compactness route | Closed locally | Public topological front compiled and exported |
-| `RGCauchyP81KernelInput` | Formal unresolved kernel input | Packages the existence of a weak-coupling parameter β with the threshold required by P81 |
-| `RGCauchyP81KernelOutput` | Formal unresolved kernel output | Packages the existence of a β carrying both the single-scale increment decay bound and RG-Cauchy summability |
-| `RGCauchyP81Obligation` | Formal live obligation surface | Packages the exact P81 decay obligation together with the derived RG-Cauchy summability consequence under one single name |
-| `RGCauchyP81Frontier` | Formal live frontier surface | Packages the current exact P81 bottleneck under one short public name: audit packet + obligation |
-| `RGCauchyP81CoherencePacket` | Formal coherence hub | Centralizes frontier, audit link, kernel input, kernel output, and the frontier-facing canonical round-trips |
 | `RGCauchyP81LiveTarget` | Formal theorem-side live target | Packages the actual weak-coupling theorem family needed to discharge the current P81 bottleneck |
 | `physical_rg_rates_witness` | Formal quantitative witness | Assembles the already-proved rate-side witnesses into a full `PhysicalRGRates` package without the legacy axiom route |
+| `PhysicalRGRatesFrontier` | Formal quantitative frontier | Packages the existence of a direct quantitative `PhysicalRGRates` route under one short public name |
 | `rg_increment_decay_P81` | Real mathematical gap surface | Still exported with `sorry` in the current repo |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
 
