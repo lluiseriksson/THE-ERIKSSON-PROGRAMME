@@ -2,11 +2,11 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** honest formal reduction with the P80/P81 corridor green under the current zero-map RG semantics, and with the remaining legacy P91 old-route gap explicitly audited by a green counterexample file
+> **Current status:** honest formal reduction with the P80/P81 corridor green under the current zero-map RG semantics, the legacy P91 old route explicitly refuted by counterexample, and a new public shim exposing only the corrected multiplicative-window P91 API
 > **Claim level:** this repository does **not** claim a finished unconditional Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
-> **Current version:** v0.9.28
+> **Current version:** v0.9.29
 > **Last updated:** March 2026
 
 ---
@@ -20,9 +20,10 @@ unresolved mathematics is isolated rather than hidden,
 theorem-side dependencies are named rather than blurred together,
 and the final theorem compiles only as an honest reduction through a small number of live `sorry` and `axiom` fronts.
 
-This step does not add a new theorem in the main corridor.
-It does something equally important for trust:
-it certifies by explicit arithmetic example that the remaining legacy P91 old-route formulation is too weak compared with the corrected multiplicative window already used elsewhere in the repository.
+This step does not claim new physical content.
+It does something structurally important:
+it exposes a single public shim for the corrected multiplicative-window P91 lane,
+so downstream imports can stop depending on legacy files whose hypothesis package is now known to be too weak.
 
 ---
 
@@ -42,6 +43,7 @@ Key entry points:
 | Top-level bridge theorem | `YangMills/ErikssonBridge.lean` |
 | Physical mass-gap theorem | `YangMills/P8_PhysicalGap/PhysicalMassGap.lean` |
 | Central theorem-side P81 interface | `YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean` |
+| Corrected P91 public shim | `YangMills/ClayCore/BalabanRG/P91CorrectedWindowPublicShim.lean` |
 | Corrected P91 window lane | `YangMills/ClayCore/BalabanRG/BalabanCouplingRecursionWindow.lean` |
 | Corrected denominator bridge | `YangMills/ClayCore/BalabanRG/P91DenominatorControlWindow.lean` |
 | Legacy-route audit by counterexample | `YangMills/ClayCore/BalabanRG/P91LegacyRouteCounterexample.lean` |
@@ -58,14 +60,13 @@ What is now true inside the current repository semantics:
 - the public SU compactness / Haar lane is compiled and exported,
 - the P80/P81 corridor is green under the current zero-map semantics,
 - the corrected P91 multiplicative weak-coupling lane is green,
-- and the remaining legacy P91 old-route gap is now explicitly audited by a green counterexample file rather than just carried as an opaque leftover.
+- the old legacy P91 route is explicitly refuted by counterexample,
+- and there is now a single theorem-side shim exposing the corrected P91 API for asymptotic freedom, denominator control, and drift/divergence.
 
 What remains live mathematically:
 
-- replacing the legacy P91 statements by corrected-window statements in the old files,
-- `asymptotic_freedom_implies_beta_growth` in its legacy file,
-- `denominator_pos` in its legacy file,
-- `uniform_drift_lower_bound_P91` in its legacy file,
+- replacing legacy consumers by corrected-window consumers throughout the old P91 files,
+- removing or retiring the remaining legacy `sorry` declarations once nothing theorem-critical depends on them,
 - replacing the placeholder zero blocking map by the intended explicit Balaban blocking map,
 - and re-proving the theorem-side corridor in that nontrivial RG semantics.
 
@@ -79,9 +80,9 @@ What remains live mathematically:
 | `P91DenominatorControl.lean` | `denominator_pos` | Legacy old-route denominator positivity |
 | `P91OnestepDriftSkeleton.lean` | `uniform_drift_lower_bound_P91` | Legacy old-route uniform drift |
 
-The important refinement after v0.9.28 is this:
-these are not best read as "the only remaining hard theorems in the current preferred lane",
-but as leftovers from a legacy hypothesis package that has now been shown too weak by explicit counterexample.
+The important refinement after v0.9.29 is this:
+the repository now has a public corrected-window theorem surface,
+so these legacy statements are no longer the preferred theorem entrypoints.
 
 ---
 
@@ -92,7 +93,8 @@ but as leftovers from a legacy hypothesis package that has now been shown too we
 | SU compactness route | Closed locally | Public topological front is compiled and exported |
 | P80/P81 wrapper lane | Green in current semantics | No remaining theorem placeholders there |
 | Corrected P91 multiplicative window | Green | This is the preferred analytic lane |
-| Legacy P91 old route | Audited as inadequate | Counterexample file shows the weaker route is not the right final front |
+| Legacy P91 old route | Refuted / deprecated as endpoint | Counterexample shows the weaker route is not the right final front |
+| Corrected P91 public shim | Green | Public theorem-side entrypoint now exists for the corrected lane |
 | Intended nontrivial RG semantics | Still live mathematically | Must be rebuilt after replacing the placeholder RG map |
 | Terminal Clay conclusion | Not yet unconditional in the intended final sense | Still inherits live theorem/axiom fronts |
 
@@ -104,10 +106,10 @@ but as leftovers from a legacy hypothesis package that has now been shown too we
 |---|---|
 | Build posture | green on touched frontier targets |
 | Public claim | honest reduction, not finished Clay proof |
-| Current theorem-side headline | P80/P81 green under current semantics; old P91 route explicitly audited as too weak |
-| Next real mathematical front | corrected P91 legacy replacement + replacement of `RGBlockingMap := 0` |
+| Current theorem-side headline | P80/P81 green under current semantics; corrected P91 shim exported; legacy old route audited as too weak |
+| Next real mathematical front | migrate remaining legacy consumers, then replace `RGBlockingMap := 0` |
 | Current audit file | `AXIOM_FRONTIER.md` |
-| Current version | v0.9.28 |
+| Current version | v0.9.29 |
 
 ---
 
