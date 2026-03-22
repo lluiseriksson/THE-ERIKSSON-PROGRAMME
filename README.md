@@ -2,40 +2,92 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** topological SU lane locally closed + theorem-side P81 architecture rigidified + analytic P91 weak-coupling window cleaned through the denominator-control layer + theorem-side `rg_increment_decay_P81` attack packet now uniformized through a proposition-safe `Nonempty` surface
-> **Claim level:** this repository does **not** claim a finished Clay solution
+> **Current status:** honest formal reduction with the P91 weak-coupling lane cleaned through the denominator-control window, a projection-safe `RGIncrementDecayP81AttackSurface`, and a `RGIncrementDecayP81SlotFamily` bridge whose local packet constructor is now correctly represented as a `def`
+> **Claim level:** this repository does **not** claim a finished unconditional Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
+> **Current version:** v0.9.19
 > **Last updated:** March 2026
 
 ---
 
 ## 1. What this repository is
 
-The Eriksson Programme is a long-horizon Lean 4 formalization of the Yang–Mills mass gap programme.
+The Eriksson Programme is a Lean 4 formalization of the Yang–Mills mass gap programme.
 
-The current policy is explicit:
-no unresolved mathematical gap is to be hidden behind API polishing.
-The next live work is theorem-side at the P81 bottleneck, but it must be attacked honestly from paper-side ingredients rather than closed syntactically from placeholder semantics.
+Its current posture is explicit and conservative:
+unresolved mathematics is isolated rather than hidden,
+theorem-side dependencies are named rather than blurred together,
+and the final theorem compiles only as an honest reduction through a small number of live `sorry` and `axiom` fronts.
+
+The repository therefore exposes both:
+- a large proved infrastructure for lattice Yang–Mills / RG / LSI / clustering,
+- and a precise audit of what still blocks a fully unconditional Clay-level conclusion.
 
 ---
 
-## 2. Current mathematical position
+## 2. Build and entry points
 
-This repository still does **not** claim a completed Clay solution.
+Build the project with:
 
-What is already structurally rigid or analytically wired:
+```bash
+lake build YangMills
+```
 
-- the topological SU lane used by the public front,
-- the public Haar-LSI / P81 corridor,
-- the threshold-one theorem-side corridor and its normal-form / equivalence-registry surfaces,
-- the analytic P91 weak-coupling window for the Bałaban coupling recursion,
-- the clean denominator-control bridge for that window,
-- the downstream `CauchyDecayFromAFWindow` consumer of that window,
-- the downstream `P91BetaDivergenceWindow` consumer of that window,
-- the downstream `P91BetaDriftClosedWindow` consumer of that window,
-- the core `P91RecursionDataWindow` consumer of that same window,
-- and now the honest theorem-side `RGIncrementDecayP81AttackSurface` packet together with a proposition-safe uniform surface using `Nonempty`.
+Key entry points:
+
+| Purpose | File |
+|---|---|
+| Clay theorem definition | `YangMills/L8_Terminal/ClayTheorem.lean` |
+| Top-level bridge theorem | `YangMills/ErikssonBridge.lean` |
+| Physical mass-gap theorem | `YangMills/P8_PhysicalGap/PhysicalMassGap.lean` |
+| Live theorem-side P81 bottleneck | `YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean` |
+| Theorem-side live target | `YangMills/ClayCore/BalabanRG/RGCauchyP81LiveTarget.lean` |
+| Local P81 attack packet | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81AttackSurface.lean` |
+| Uniform slot-family bridge | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81SlotFamily.lean` |
+| Current audit frontier | `AXIOM_FRONTIER.md` |
+
+---
+
+## 3. Architecture overview
+
+| Layer / phase | Directory | Role |
+|---|---|---|
+| L0 | `L0_Lattice/` | Finite lattice geometry, gauge configurations, Wilson action, basic SU geometry |
+| L1 | `L1_GibbsMeasure/` | Gibbs measure construction, expectations, correlations |
+| L2 | `L2_Balaban/` | Small/large-field decomposition, RG flow scaffolding, measurability |
+| L3 | `L3_RGIteration/` | Block-spin RG iteration and gauge invariance of the induced measures |
+| L4 | `L4_TransferMatrix/`, `L4_LargeField/`, `L4_WilsonLoops/` | Transfer matrix, spectral gap definitions, large-field suppression, Wilson observables |
+| L5 | `L5_MassGap/` | Mass-gap assembly |
+| L6 | `L6_FeynmanKac/`, `L6_OS/` | Feynman–Kac bridge and Osterwalder–Schrader reconstruction |
+| L7 | `L7_Continuum/` | Continuum-limit bridge |
+| L8 | `L8_Terminal/` | Terminal Clay theorem layer |
+| P2 | `P2_MaxEntClustering/` | Max-entropy, recovery, clustering interfaces |
+| P3 | `P3_BalabanRG/` | RG contraction and multiscale decay |
+| P4 | `P4_Continuum/` | Continuum bridge assembly |
+| P5 | `P5_KPDecay/` | KP decay, spectral-gap-to-decay bridges |
+| P6 | `P6_AsymptoticFreedom/` | β-function and asymptotic-freedom lane |
+| P7 | `P7_SpectralGap/` | Transfer-matrix gap and action bounds |
+| P8 | `P8_PhysicalGap/` | LSI, Poincaré, SU(N) Dirichlet forms, semigroups, Ricci/Haar/physical mass-gap route |
+| ClayCore | `ClayCore/BalabanRG/` | Polymer expansion, KP infrastructure, P80/P81/P91 machinery, quantitative theorem-side coherence surfaces |
+| Experimental | `Experimental/` | Sandbox and non-imported future work |
+
+---
+
+## 4. Current mathematical position
+
+This repository still does **not** claim a finished unconditional Clay solution.
+
+What is already structurally rigid or mathematically substantial:
+
+- the public SU compactness / Haar lane,
+- a large zero-`sorry` lattice / Gibbs / RG / KP infrastructure,
+- the theorem-side P81 coherence corridor and its public live-target surfaces,
+- the P91 weak-coupling window in multiplicative form,
+- the denominator-control bridge for that window,
+- the rerouted P91 downstream and core consumers,
+- the local `RGIncrementDecayP81AttackSurface`,
+- and the explicit `RGIncrementDecayP81SlotFamily` bridge that turns the three paper-side P81 ingredients into a uniform surface feeding the existing live target.
 
 What remains live mathematically:
 
@@ -44,87 +96,121 @@ What remains live mathematically:
 - therefore the actual package-level Balaban-RG uniform-LSI closure,
 - and therefore the full unconditional Clay conclusion.
 
-What changed in this step:
+---
 
-- the local P81 attack packet remains projection-safe,
-- the uniform attack surface is now proposition-valued in a Lean-correct way via `Nonempty`,
-- and the bridge to `RGCauchyP81LiveTarget` is reconstructed by choosing a local packet only where needed.
+## 5. Sorry audit — live mathematical gaps
+
+These are the mathematically live `sorry` fronts that still matter for unconditionality.
+
+| Location | Name | Content |
+|---|---|---|
+| `RGCauchyP81Interface.lean` | `rg_increment_decay_P81` | Single-scale increment decay for the Bałaban RG map (the main bottleneck) |
+| `LargeFieldSuppressionEstimate.lean` | `large_field_remainder_bound_P80` | Large-field remainder suppression |
+| `BalabanCouplingRecursion.lean` | `asymptotic_freedom_implies_beta_growth` | P91 β-growth from asymptotic freedom |
+| `P91DenominatorControl.lean` | `denominator_pos` | Denominator positivity in the old route |
+| `P91OnestepDriftSkeleton.lean` | `uniform_drift_lower_bound_P91` | Uniform one-step drift lower bound |
+| `RGContractiveEstimate.lean` | `large_field_suppression_bound` | P80 large-field suppression interface |
+| `RGContractiveEstimate.lean` | `rg_cauchy_summability_bound` | P81/P82 Cauchy summability interface |
+
+Reading guide:
+among these, `rg_increment_decay_P81` is the unique theorem-side bottleneck whose honest proof would immediately propagate through the current live-target corridor.
 
 ---
 
-## 3. Why this step matters
+## 6. Axiom audit — known mathematics vs. physical inputs
 
-The live obstruction is still `rg_increment_decay_P81`.
-But the repository now has a single honest and Lean-correct place to attack it theorem-side.
+The repository also contains `axiom` declarations. These are not all of the same kind.
 
-This step does **not** solve `rg_increment_decay_P81`.
-It fixes the last representation mismatch between the local attack packet and the proposition-valued uniform frontier.
-
----
-
-## 4. Preferred current attack lane
-
-Preferred analytic lane already cleaned:
-
-- `BalabanCouplingRecursionWindow.lean`
-- `P91DenominatorControlWindow.lean`
-
-Preferred theorem-side bottleneck:
-
-- `rg_increment_decay_P81`
-
-Preferred theorem-side attack file:
-
-- `RGIncrementDecayP81AttackSurface.lean`
-
-Preferred next move after this patch:
-
-- replace the abstract fields of `RGIncrementDecayP81AttackSurface` one by one with actual theorem-bearing modules from the paper-side P81 mechanism,
-- then discharge `rg_increment_decay_P81` through that route.
+| Category | Typical content | Examples |
+|---|---|---|
+| Mathlib gap | Standard mathematics missing from the current Lean ecosystem | `hille_yosida_semigroup`, `instIsTopologicalGroupSUN`, `sunDirichletForm_contraction`, `poincare_to_covariance_decay` |
+| Physical input still to formalize | Yang–Mills / semigroup / Lieb–Robinson inputs not yet internalized | `sun_variance_decay`, `sun_lieb_robinson_bound`, curvature/LSI assumptions around the SU(N) lane |
+| Live theorem-side bottleneck | Actual open front inside the present proof strategy | `rg_increment_decay_P81` and the P80/P91 fronts listed above |
 
 ---
 
-## 5. Repository snapshot
+## 7. Critical dependency path
+
+The current critical path is:
+
+```text
+rg_increment_decay_P81
+    ↓
+RGCauchyP81LiveTarget
+    ↓
+theorem-side P81 frontier / coherence / audit corridor
+    ↓
+BalabanRG uniform-LSI package
+    ↓
+DLR-LSI / clustering / physical-mass-gap route
+    ↓
+ClayYangMillsTheorem
+```
+
+The new alternative theorem-side entrypoint is:
+
+```text
+RGIncrementDecayP81SlotFamily
+    ↓
+RGIncrementDecayP81AttackSurface
+    ↓
+RGIncrementDecayP81UniformAttackSurface
+    ↓
+RGCauchyP81LiveTarget
+    ↓
+same downstream chain
+```
+
+---
+
+## 8. The live P81 attack surface
+
+The file `RGIncrementDecayP81AttackSurface.lean` packages the three paper-side ingredients singled out by the current strategy:
+
+- small-field random-walk decay,
+- large-field polymer suppression,
+- cluster expansion / gluing with holes.
+
+The file `RGIncrementDecayP81SlotFamily.lean` makes the next move explicit:
+a user can now specify those three ingredients as β-indexed theorem families, prove that they hold uniformly above a threshold, and obtain from that uniform theorem-side attack surface the existing `RGCauchyP81LiveTarget`, frontier and coherence consumers.
+
+Important Lean detail:
+the local constructor of the attack packet is represented as a `def`, not a `theorem`,
+because it returns a data packet rather than a proposition.
+
+This does **not** prove P81.
+It isolates the exact landing zone for the remaining Bałaban mathematics.
+
+---
+
+## 9. Unconditionality audit
+
+| Component | Status | Meaning |
+|---|---|---|
+| SU compactness route | Closed locally | Public topological front is compiled and exported |
+| P91 weak-coupling window | Closed in corrected multiplicative form | Analytic front is no longer tied to the older denominator route |
+| P91 denominator-control window | Closed | Clean positivity / unit-interval bridge in the multiplicative window |
+| P91 downstream/core reroutes | Closed as infrastructure | Consumers now follow the corrected analytic lane |
+| `RGIncrementDecayP81AttackSurface` | Closed as infrastructure | Projection-safe theorem-side packet exists |
+| `RGIncrementDecayP81SlotFamily` | Closed as infrastructure | Uniform slot-family bridge into the live target exists |
+| `rg_increment_decay_P81` | Live mathematical gap | Main theorem-side bottleneck remains open |
+| `RGCauchyP81LiveTarget` | Live mathematical surface | Waiting for actual P81 input rather than more architecture |
+| Balaban-RG uniform-LSI closure | Live mathematical surface | Depends on the theorem-side bottleneck |
+| Terminal Clay conclusion | Not yet unconditional | Still inherits the live theorem/axiom fronts |
+
+---
+
+## 10. Repository snapshot
 
 | Item | Current state |
 |---|---|
 | Build posture | green on touched frontier targets |
-| SU compactness lane | locally discharged |
-| Haar-LSI / P81 architecture | rigid enough for direct analytic and theorem-side attack |
-| Analytic correction | `BalabanCouplingRecursionWindow.lean` |
-| Clean denominator bridge | `P91DenominatorControlWindow.lean` |
-| Core theorem-side attack packet | `RGIncrementDecayP81AttackSurface.lean` |
-| Uniform proposition-safe surface | `Nonempty`-based |
-| Current real bottleneck | `rg_increment_decay_P81` |
-| Global claim | honest reduction, not finished Clay proof |
-
----
-
-## 6. Unconditionality audit
-
-| Component | Type | Meaning |
-|---|---|---|
-| SU compactness route | Closed locally | Public topological front compiled and exported |
-| Threshold-one theorem-side corridor | Structurally rigid | Equivalent theorem-side surfaces already centralized |
-| `BalabanCouplingRecursionWindow` | Analytic correction lane | Proves the weak-coupling denominator window and β-growth in multiplicative form |
-| `P91DenominatorControlWindow` | Clean denominator-control bridge | Packages denominator positivity directly in the multiplicative weak-coupling window |
-| `RGIncrementDecayP81AttackSurface` | Honest theorem-side attack packet | Names the exact paper-side P81 ingredients and projects the theorem-bearing gluing output |
-| Uniform attack surface | Prop-safe existential surface | Stores only nonemptiness of local packets above a threshold |
-| `rg_increment_decay_P81` | Real mathematical gap surface | Still the live theorem-side obstruction |
-| `RGCauchyP81LiveTarget` | Immediate downstream consumer | Already receives a direct bridge from the uniform attack surface |
-| `BalabanRGUniformLSILiveTarget` | Package-level live target | Still waits on the actual theorem-side P81 closure |
-
----
-
-## 7. Original work and audit trail
-
-| Resource | Link |
-|---|---|
-| Papers — The Eriksson Programme (viXra [1]–[68]) | Papers organised as a closure tree |
-| Full author page | https://ai.vixra.org/author/lluis_eriksson |
-| Repository | https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME |
-
----
+| Public claim | honest reduction, not finished Clay proof |
+| Preferred theorem-side bottleneck | `rg_increment_decay_P81` |
+| Preferred theorem-side attack files | `RGIncrementDecayP81AttackSurface.lean`, `RGIncrementDecayP81SlotFamily.lean` |
+| Preferred analytic correction files | `BalabanCouplingRecursionWindow.lean`, `P91DenominatorControlWindow.lean` |
+| Current audit file | `AXIOM_FRONTIER.md` |
+| Current version | v0.9.19 |
 
 ---
 
