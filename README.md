@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** topological SU lane locally closed + theorem-side P81 architecture rigidified + analytic P91 weak-coupling window proved + downstream `CauchyDecayFromAF`, `P91BetaDivergence`, `P91BetaDriftClosed`, and `P91RecursionData` consumers rerouted to the multiplicative window
+> **Current status:** topological SU lane locally closed + theorem-side P81 architecture rigidified + analytic P91 weak-coupling window proved + downstream and core P91 consumers rerouted + clean denominator-control window added so the `P91RecursionDataWindow` path no longer leans on the legacy `β < 2 / b₀` denominator route
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -33,7 +33,8 @@ What is already structurally rigid or analytically wired:
 - the downstream `CauchyDecayFromAFWindow` consumer of that window,
 - the downstream `P91BetaDivergenceWindow` consumer of that window,
 - the downstream `P91BetaDriftClosedWindow` consumer of that window,
-- and now the upstream `P91RecursionDataWindow` consumer of that same window.
+- the core `P91RecursionDataWindow` consumer of that same window,
+- and now the clean `P91DenominatorControlWindow` bridge for the denominator positivity/unit-interval step in the multiplicative weak-coupling window.
 
 What remains live mathematically:
 
@@ -44,20 +45,21 @@ What remains live mathematically:
 
 What changed in this step:
 
-- the multiplicative weak-coupling window is no longer paying only in downstream wrappers,
-- it now also pays directly in the core `P91RecursionData` interface layer,
-- so the AF and rate-decrease lemmas attached to that layer are aligned with the true analytic front.
+- the multiplicative weak-coupling window now pays not only through downstream wrappers,
+- it also carries a clean denominator-control theorem for the P91 coupling step,
+- and `P91RecursionDataWindow` is rewritten to consume that clean route directly rather than delegating to the legacy `β < 2 / b₀` denominator path.
 
 ---
 
 ## 3. Why this step matters
 
-The live obstruction is not architecture anymore.
-It is the actual theorem-bearing propagation of the P91 weak-coupling control into the consumers that sit immediately upstream of the P81 bottleneck.
+The live obstruction is still theorem-side at `rg_increment_decay_P81`,
+but the analytic lane also needed one more honest cleanup:
+the corrected multiplicative window should not continue inheriting denominator positivity through the older explicit upper-bound route.
 
 This step does **not** solve `rg_increment_decay_P81`.
 It does something honest and load-bearing:
-it reroutes the core `P91RecursionData` consumer layer from the new multiplicative weak-coupling window into the existing theorem chain without inventing a new hub.
+it isolates a clean denominator-control window and reroutes the core P91 recursion-data consumer so the analytic fix is theorem-bearing on its own terms.
 
 ---
 
@@ -67,11 +69,12 @@ Preferred analytic target:
 
 - `BalabanCouplingRecursion.lean`
 
-Preferred analytic correction file:
+Preferred analytic correction files:
 
 - `BalabanCouplingRecursionWindow.lean`
+- `P91DenominatorControlWindow.lean`
 
-Preferred downstream / upstream reroute consumers:
+Preferred reroute consumers:
 
 - `CauchyDecayFromAFWindow.lean`
 - `P91BetaDivergenceWindow.lean`
@@ -84,7 +87,7 @@ Preferred next theorem-side bottleneck:
 
 Preferred next move after this patch:
 
-- reroute the remaining immediate upstream P91 consumer to the multiplicative window,
+- reroute any remaining immediate P91 consumers off the legacy denominator path,
 - then attack the actual theorem-side P81 increment-decay bound.
 
 ---
@@ -97,10 +100,11 @@ Preferred next move after this patch:
 | SU compactness lane | locally discharged |
 | Haar-LSI / P81 architecture | rigid enough for direct analytic attack |
 | Analytic correction | `BalabanCouplingRecursionWindow.lean` |
+| Clean denominator bridge | `P91DenominatorControlWindow.lean` |
 | First downstream reroute | `CauchyDecayFromAFWindow.lean` |
 | Second downstream reroute | `P91BetaDivergenceWindow.lean` |
 | Third downstream reroute | `P91BetaDriftClosedWindow.lean` |
-| Upstream interface reroute | `P91RecursionDataWindow.lean` |
+| Core interface reroute | `P91RecursionDataWindow.lean` |
 | Current real bottleneck | `rg_increment_decay_P81` |
 | Global claim | honest reduction, not finished Clay proof |
 
@@ -113,10 +117,11 @@ Preferred next move after this patch:
 | SU compactness route | Closed locally | Public topological front compiled and exported |
 | Threshold-one theorem-side corridor | Structurally rigid | Equivalent theorem-side surfaces already centralized |
 | `BalabanCouplingRecursionWindow` | Analytic correction lane | Proves the weak-coupling denominator window and β-growth in multiplicative form |
+| `P91DenominatorControlWindow` | Clean denominator-control bridge | Packages denominator positivity and unit-interval control directly in the multiplicative weak-coupling window |
 | `CauchyDecayFromAFWindow` | Consumer reroute | Converts the multiplicative weak-coupling window into the old `hβ_upper` interface for the Cauchy-decay lane |
 | `P91BetaDivergenceWindow` | Consumer reroute | Converts the multiplicative weak-coupling window into the old `hβ_upper` interface for the beta-divergence / rate-to-zero lane |
 | `P91BetaDriftClosedWindow` | Consumer reroute | Converts the multiplicative weak-coupling window into the old `hβ_upper` interface for the closed drift/divergence layer |
-| `P91RecursionDataWindow` | Core interface reroute | Converts the multiplicative weak-coupling window into the old `hβ_upper` interface for the AF / rate-decrease data layer |
+| `P91RecursionDataWindow` | Core interface reroute | Now consumes the clean multiplicative-window denominator route directly |
 | `rg_increment_decay_P81` | Real mathematical gap surface | Still the live theorem-side obstruction |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
 

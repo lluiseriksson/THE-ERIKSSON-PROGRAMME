@@ -1,6 +1,6 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.P91RecursionData
-import YangMills.ClayCore.BalabanRG.CauchyDecayFromAFWindow
+import YangMills.ClayCore.BalabanRG.P91DenominatorControlWindow
 
 namespace YangMills.ClayCore
 
@@ -20,12 +20,13 @@ can now be invoked directly from the multiplicative weak-coupling window
 
   β * (3 * b₀) < 2
 
-instead of the older explicit upper-bound interface
+and, in this version, the reroute is carried by the clean denominator-control
+window rather than by the legacy explicit upper-bound route
 
   β < 2 / b₀.
 -/
 
-/-- AF from data + multiplicative weak-coupling window. -/
+/-- AF from data + clean multiplicative weak-coupling denominator-control window. -/
 theorem af_of_data_in_window_mul
     {N_c : ℕ} [NeZero N_c]
     (data : P91RecursionData N_c)
@@ -35,11 +36,10 @@ theorem af_of_data_in_window_mul
     (hr : |r_k| < balabanBetaCoeff N_c / 2) :
     β_k < balabanCouplingStep N_c β_k r_k := by
   exact
-    af_of_data data k β_k r_k hβ
-      (beta_upper_of_window_mul N_c β_k hβ_window_mul)
-      hr
+    asymptotic_freedom_from_denominator_control_in_window_mul
+      N_c β_k r_k hβ hr hβ_window_mul
 
-/-- Rate decreases from data + multiplicative weak-coupling window. -/
+/-- Rate decreases from data + clean multiplicative weak-coupling denominator-control window. -/
 theorem rate_decreases_of_data_in_window_mul
     {N_c : ℕ} [NeZero N_c]
     (data : P91RecursionData N_c)
@@ -49,9 +49,8 @@ theorem rate_decreases_of_data_in_window_mul
     (hr : |r_k| < balabanBetaCoeff N_c / 2) :
     physicalContractionRate (balabanCouplingStep N_c β_k r_k) < physicalContractionRate β_k := by
   exact
-    rate_decreases_of_data data k β_k r_k hβ
-      (beta_upper_of_window_mul N_c β_k hβ_window_mul)
-      hr
+    contraction_rate_decreases_under_recursion_in_window_mul
+      N_c β_k r_k hβ hr hβ_window_mul
 
 end
 
