@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** topological SU lane locally closed + theorem-side P81 architecture rigidified + analytic P91 weak-coupling window proved + downstream and core P91 consumers rerouted + clean denominator-control window added so the `P91RecursionDataWindow` path no longer leans on the legacy `β < 2 / b₀` denominator route
+> **Current status:** topological SU lane locally closed + theorem-side P81 architecture rigidified + analytic P91 weak-coupling window cleaned through the denominator-control layer + theorem-side `rg_increment_decay_P81` attack packet now uniformized through a proposition-safe `Nonempty` surface
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -16,7 +16,7 @@ The Eriksson Programme is a long-horizon Lean 4 formalization of the Yang–Mill
 
 The current policy is explicit:
 no unresolved mathematical gap is to be hidden behind API polishing.
-The theorem-side P81 corridor is already rigid enough; live work now happens inside the analytic lane and in the downstream consumers that must eventually feed the theorem-side bottleneck.
+The next live work is theorem-side at the P81 bottleneck, but it must be attacked honestly from paper-side ingredients rather than closed syntactically from placeholder semantics.
 
 ---
 
@@ -30,11 +30,12 @@ What is already structurally rigid or analytically wired:
 - the public Haar-LSI / P81 corridor,
 - the threshold-one theorem-side corridor and its normal-form / equivalence-registry surfaces,
 - the analytic P91 weak-coupling window for the Bałaban coupling recursion,
+- the clean denominator-control bridge for that window,
 - the downstream `CauchyDecayFromAFWindow` consumer of that window,
 - the downstream `P91BetaDivergenceWindow` consumer of that window,
 - the downstream `P91BetaDriftClosedWindow` consumer of that window,
 - the core `P91RecursionDataWindow` consumer of that same window,
-- and now the clean `P91DenominatorControlWindow` bridge for the denominator positivity/unit-interval step in the multiplicative weak-coupling window.
+- and now the honest theorem-side `RGIncrementDecayP81AttackSurface` packet together with a proposition-safe uniform surface using `Nonempty`.
 
 What remains live mathematically:
 
@@ -45,50 +46,41 @@ What remains live mathematically:
 
 What changed in this step:
 
-- the multiplicative weak-coupling window now pays not only through downstream wrappers,
-- it also carries a clean denominator-control theorem for the P91 coupling step,
-- and `P91RecursionDataWindow` is rewritten to consume that clean route directly rather than delegating to the legacy `β < 2 / b₀` denominator path.
+- the local P81 attack packet remains projection-safe,
+- the uniform attack surface is now proposition-valued in a Lean-correct way via `Nonempty`,
+- and the bridge to `RGCauchyP81LiveTarget` is reconstructed by choosing a local packet only where needed.
 
 ---
 
 ## 3. Why this step matters
 
-The live obstruction is still theorem-side at `rg_increment_decay_P81`,
-but the analytic lane also needed one more honest cleanup:
-the corrected multiplicative window should not continue inheriting denominator positivity through the older explicit upper-bound route.
+The live obstruction is still `rg_increment_decay_P81`.
+But the repository now has a single honest and Lean-correct place to attack it theorem-side.
 
 This step does **not** solve `rg_increment_decay_P81`.
-It does something honest and load-bearing:
-it isolates a clean denominator-control window and reroutes the core P91 recursion-data consumer so the analytic fix is theorem-bearing on its own terms.
+It fixes the last representation mismatch between the local attack packet and the proposition-valued uniform frontier.
 
 ---
 
 ## 4. Preferred current attack lane
 
-Preferred analytic target:
-
-- `BalabanCouplingRecursion.lean`
-
-Preferred analytic correction files:
+Preferred analytic lane already cleaned:
 
 - `BalabanCouplingRecursionWindow.lean`
 - `P91DenominatorControlWindow.lean`
 
-Preferred reroute consumers:
-
-- `CauchyDecayFromAFWindow.lean`
-- `P91BetaDivergenceWindow.lean`
-- `P91BetaDriftClosedWindow.lean`
-- `P91RecursionDataWindow.lean`
-
-Preferred next theorem-side bottleneck:
+Preferred theorem-side bottleneck:
 
 - `rg_increment_decay_P81`
 
+Preferred theorem-side attack file:
+
+- `RGIncrementDecayP81AttackSurface.lean`
+
 Preferred next move after this patch:
 
-- reroute any remaining immediate P91 consumers off the legacy denominator path,
-- then attack the actual theorem-side P81 increment-decay bound.
+- replace the abstract fields of `RGIncrementDecayP81AttackSurface` one by one with actual theorem-bearing modules from the paper-side P81 mechanism,
+- then discharge `rg_increment_decay_P81` through that route.
 
 ---
 
@@ -98,13 +90,11 @@ Preferred next move after this patch:
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI / P81 architecture | rigid enough for direct analytic attack |
+| Haar-LSI / P81 architecture | rigid enough for direct analytic and theorem-side attack |
 | Analytic correction | `BalabanCouplingRecursionWindow.lean` |
 | Clean denominator bridge | `P91DenominatorControlWindow.lean` |
-| First downstream reroute | `CauchyDecayFromAFWindow.lean` |
-| Second downstream reroute | `P91BetaDivergenceWindow.lean` |
-| Third downstream reroute | `P91BetaDriftClosedWindow.lean` |
-| Core interface reroute | `P91RecursionDataWindow.lean` |
+| Core theorem-side attack packet | `RGIncrementDecayP81AttackSurface.lean` |
+| Uniform proposition-safe surface | `Nonempty`-based |
 | Current real bottleneck | `rg_increment_decay_P81` |
 | Global claim | honest reduction, not finished Clay proof |
 
@@ -117,13 +107,12 @@ Preferred next move after this patch:
 | SU compactness route | Closed locally | Public topological front compiled and exported |
 | Threshold-one theorem-side corridor | Structurally rigid | Equivalent theorem-side surfaces already centralized |
 | `BalabanCouplingRecursionWindow` | Analytic correction lane | Proves the weak-coupling denominator window and β-growth in multiplicative form |
-| `P91DenominatorControlWindow` | Clean denominator-control bridge | Packages denominator positivity and unit-interval control directly in the multiplicative weak-coupling window |
-| `CauchyDecayFromAFWindow` | Consumer reroute | Converts the multiplicative weak-coupling window into the old `hβ_upper` interface for the Cauchy-decay lane |
-| `P91BetaDivergenceWindow` | Consumer reroute | Converts the multiplicative weak-coupling window into the old `hβ_upper` interface for the beta-divergence / rate-to-zero lane |
-| `P91BetaDriftClosedWindow` | Consumer reroute | Converts the multiplicative weak-coupling window into the old `hβ_upper` interface for the closed drift/divergence layer |
-| `P91RecursionDataWindow` | Core interface reroute | Now consumes the clean multiplicative-window denominator route directly |
+| `P91DenominatorControlWindow` | Clean denominator-control bridge | Packages denominator positivity directly in the multiplicative weak-coupling window |
+| `RGIncrementDecayP81AttackSurface` | Honest theorem-side attack packet | Names the exact paper-side P81 ingredients and projects the theorem-bearing gluing output |
+| Uniform attack surface | Prop-safe existential surface | Stores only nonemptiness of local packets above a threshold |
 | `rg_increment_decay_P81` | Real mathematical gap surface | Still the live theorem-side obstruction |
-| `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
+| `RGCauchyP81LiveTarget` | Immediate downstream consumer | Already receives a direct bridge from the uniform attack surface |
+| `BalabanRGUniformLSILiveTarget` | Package-level live target | Still waits on the actual theorem-side P81 closure |
 
 ---
 
