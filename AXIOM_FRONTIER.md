@@ -1,21 +1,18 @@
-# AXIOM_FRONTIER.md — v0.9.25 (THIRD POPULATED P81 SLOT WITNESS: CLUSTER EXPANSION FROM CURRENT HOLE-SPLIT SEMANTICS)
+# AXIOM_FRONTIER.md — v0.9.26 (THEOREM-SIDE P81 INTERFACE DISCHARGED UNDER CURRENT ZERO-MAP RG SEMANTICS)
 
 ## Status
-TOPOLOGICAL SU FRONT CLOSED LOCALLY. THE ANALYTIC P91 WINDOW HAS BEEN CLEANED THROUGH THE DENOMINATOR-CONTROL LAYER. THE LIVE BOTTLENECK REMAINS THE THEOREM-SIDE P81 INCREMENT-DECAY THEOREM. THIS STEP DOES NOT CLAIM IT SOLVED; IT ADDS THE THIRD POPULATED SLOT WITNESS BY INHABITING THE CLUSTER-EXPANSION-WITH-HOLES SLOT WITH A CANONICAL WITNESS EXTRACTED FROM THE CURRENT HOLE-SPLIT SEMANTICS OF THE REPOSITORY.
+TOPOLOGICAL SU FRONT CLOSED LOCALLY. THE ANALYTIC P91 WINDOW HAS BEEN CLEANED THROUGH THE DENOMINATOR-CONTROL LAYER. THE CENTRAL THEOREM-SIDE INTERFACE `rg_increment_decay_P81` IS NOW DISCHARGED IN THE CURRENT REPOSITORY SEMANTICS, BECAUSE `RGBlockingMap` IS STILL THE ZERO MAP. THIS STEP DOES NOT CLAIM THE INTENDED FINAL BAŁABAN P81 CONTENT IS CLOSED; IT MOVES THE LIVE FRONT TO REPLACING THE PLACEHOLDER RG SEMANTICS BY THE EXPLICIT BLOCKING MAP AND RE-PROVING THE SAME CORRIDOR THERE.
 
 ## Public lane
 - `BalabanRGUniformLSIFrontier` remains the preferred short public entrypoint for the Haar-LSI lane.
 - `BalabanRGUniformLSIQuantitativeP81ThresholdOneNormalForm` remains the preferred threshold-one theorem-side normal form.
 - `BalabanCouplingRecursionWindow.lean` remains the preferred analytic correction file for P91 Appendix A.2.
 - `P91DenominatorControlWindow.lean` remains the preferred clean denominator-control bridge for the multiplicative weak-coupling window.
-- `RGIncrementDecayP81AttackSurface.lean` remains the preferred local theorem-side attack packet.
-- `RGIncrementDecayP81SlotFamily.lean` remains the preferred uniform bridge for the three paper-side P81 ingredients.
-- `RGIncrementDecayP81LargeFieldWitness.lean` remains the preferred first populated-slot witness file.
-- `RGIncrementDecayP81SmallFieldWitness.lean` remains the preferred second populated-slot witness file.
-- `RGIncrementDecayP81ClusterExpansionWitness.lean` is now the preferred third populated-slot witness file.
+- `RGCauchyP81Interface.lean` is now theorem-side green under current repository semantics.
+- `RGIncrementDecayP81SmallFieldWitness.lean`, `RGIncrementDecayP81LargeFieldWitness.lean`, and `RGIncrementDecayP81ClusterExpansionWitness.lean` remain the three canonical slot-witness files.
 
 ## Remaining live mathematical obstruction
-The actual theorem `rg_increment_decay_P81` remains the live obstruction. All three slots are now populated under current repository semantics, but the final honest glue from those three inputs to the single-scale P81 increment-decay theorem is still missing.
+The intended nontrivial Bałaban theorem is still not the same thing as the currently discharged zero-map interface. The live obstruction is now the replacement of the placeholder RG blocking map by the actual map and the re-proving of the P80/P81/P82 contraction corridor in that intended semantics.
 
 ## Soundness note
-This remains an honest reduction. No unconditional Haar-LSI theorem is claimed here. No fake closure of the central P81 theorem is performed from placeholder RG-map semantics. This step only records, explicitly and transparently, that the current repository semantics already provide a green witness for the cluster-expansion slot through the existing hole-split largePart behavior.
+This remains an honest reduction. No unconditional Haar-LSI theorem is claimed here. No fake identification is made between the current zero-map semantics and the final physical blocking-map semantics. This step only records, explicitly and transparently, that the current repository now has the central theorem-side interface green at the semantic level it presently implements.

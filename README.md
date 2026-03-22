@@ -2,11 +2,11 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** honest formal reduction with the full three-slot P81 attack chassis installed, and now all three theorem-side P81 slots populated under the repository's present RG semantics: small-field, large-field, and cluster expansion with holes
+> **Current status:** honest formal reduction with the central theorem-side P81 interface now discharged under the repository's current zero-map RG semantics
 > **Claim level:** this repository does **not** claim a finished unconditional Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
-> **Current version:** v0.9.25
+> **Current version:** v0.9.26
 > **Last updated:** March 2026
 
 ---
@@ -20,9 +20,14 @@ unresolved mathematics is isolated rather than hidden,
 theorem-side dependencies are named rather than blurred together,
 and the final theorem compiles only as an honest reduction through a small number of live `sorry` and `axiom` fronts.
 
-The repository therefore exposes both:
-- a large proved infrastructure for lattice Yang–Mills / RG / LSI / clustering,
-- and a precise audit of what still blocks a fully unconditional Clay-level conclusion.
+This step is important but must be read correctly:
+the theorem `rg_increment_decay_P81` is now discharged in the repository,
+but it is discharged under the current placeholder semantics in which
+`RGBlockingMap` is still the zero map.
+So the formal theorem-side bottleneck is gone at the present semantic level,
+while the intended final mathematical bottleneck moves to replacing that
+placeholder map by the explicit Balaban blocking map and re-proving the
+same corridor with the real P78/P80/P81/P82 content.
 
 ---
 
@@ -41,15 +46,12 @@ Key entry points:
 | Clay theorem definition | `YangMills/L8_Terminal/ClayTheorem.lean` |
 | Top-level bridge theorem | `YangMills/ErikssonBridge.lean` |
 | Physical mass-gap theorem | `YangMills/P8_PhysicalGap/PhysicalMassGap.lean` |
-| Live theorem-side P81 bottleneck | `YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean` |
+| Central theorem-side P81 interface | `YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean` |
 | Theorem-side live target | `YangMills/ClayCore/BalabanRG/RGCauchyP81LiveTarget.lean` |
 | Local P81 attack packet | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81AttackSurface.lean` |
 | Uniform slot-family bridge | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81SlotFamily.lean` |
-| Small-field slot | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81SmallFieldSlot.lean` |
-| Large-field slot | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81LargeFieldSlot.lean` |
-| Cluster-expansion slot | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81ClusterExpansionSlot.lean` |
-| Large-field witness | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81LargeFieldWitness.lean` |
 | Small-field witness | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81SmallFieldWitness.lean` |
+| Large-field witness | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81LargeFieldWitness.lean` |
 | Cluster witness | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81ClusterExpansionWitness.lean` |
 | Current audit frontier | `AXIOM_FRONTIER.md` |
 
@@ -59,27 +61,20 @@ Key entry points:
 
 This repository still does **not** claim a finished unconditional Clay solution.
 
-What is already structurally rigid or mathematically substantial:
+What is now true inside the current repository semantics:
 
-- the public SU compactness / Haar lane,
-- a large zero-`sorry` lattice / Gibbs / RG / KP infrastructure,
-- the theorem-side P81 coherence corridor and its public live-target surfaces,
-- the P91 weak-coupling window in multiplicative form,
-- the denominator-control bridge for that window,
-- the rerouted P91 downstream and core consumers,
-- the local `RGIncrementDecayP81AttackSurface`,
-- the explicit `RGIncrementDecayP81SlotFamily` bridge,
-- the three isolated P81 slots,
-- the large-field slot populated from the current P80 skeleton,
-- the small-field slot populated from the current field-split / RG semantics,
-- and now the cluster-expansion slot populated from the current hole-split semantics.
+- the public SU compactness / Haar lane is compiled and exported,
+- the P91 weak-coupling window and denominator-control reroutes are green,
+- the full three-slot P81 attack chassis exists,
+- all three P81 slots are populated under current repository semantics,
+- and the central theorem-side interface theorem `rg_increment_decay_P81` is now discharged.
 
 What remains live mathematically:
 
-- the actual proof of `rg_increment_decay_P81`,
-- the eventual full glue theorem combining the three populated slots in the intended mathematical form,
-- therefore the actual proof of `RGCauchyP81LiveTarget`,
-- therefore the actual package-level Balaban-RG uniform-LSI closure,
+- replacing the placeholder zero blocking map by the intended explicit Balaban blocking map,
+- re-proving the current theorem-side corridor in that nontrivial RG semantics,
+- internalizing the missing P80/P81/P82 physical content at that level,
+- therefore rebuilding the live-target / uniform-LSI closure in the intended final form,
 - and therefore the full unconditional Clay conclusion.
 
 ---
@@ -88,7 +83,6 @@ What remains live mathematically:
 
 | Location | Name | Content |
 |---|---|---|
-| `RGCauchyP81Interface.lean` | `rg_increment_decay_P81` | Single-scale increment decay for the Bałaban RG map (the main bottleneck) |
 | `LargeFieldSuppressionEstimate.lean` | `large_field_remainder_bound_P80` | Large-field remainder suppression |
 | `BalabanCouplingRecursion.lean` | `asymptotic_freedom_implies_beta_growth` | P91 β-growth from asymptotic freedom |
 | `P91DenominatorControl.lean` | `denominator_pos` | Denominator positivity in the old route |
@@ -96,60 +90,38 @@ What remains live mathematically:
 | `RGContractiveEstimate.lean` | `large_field_suppression_bound` | P80 large-field suppression interface |
 | `RGContractiveEstimate.lean` | `rg_cauchy_summability_bound` | P81/P82 Cauchy summability interface |
 
----
-
-## 5. The live P81 attack surface
-
-The file `RGIncrementDecayP81AttackSurface.lean` packages the three paper-side ingredients singled out by the current strategy:
-
-- small-field random-walk decay,
-- large-field polymer suppression,
-- cluster expansion / gluing with holes.
-
-The file `RGIncrementDecayP81SlotFamily.lean` turns β-indexed theorem families for those three ingredients into the current live target and its public theorem-side consumers.
-
-The three slot files isolate those ingredients individually.
-The three witness files go one step further:
-they do not introduce new slots or hubs,
-but populate the large-field, small-field, and cluster-expansion slots with canonical theorem-side families built from the existing green semantics of the current repository.
-
-This still does **not** prove P81.
-It completes the current witness population layer and leaves the next live front at the actual glue theorem.
+`rg_increment_decay_P81` is no longer a `sorry` in the current repository semantics.
 
 ---
 
-## 6. Unconditionality audit
+## 5. Unconditionality audit
 
 | Component | Status | Meaning |
 |---|---|---|
 | SU compactness route | Closed locally | Public topological front is compiled and exported |
 | P91 weak-coupling window | Closed in corrected multiplicative form | Analytic front is no longer tied to the older denominator route |
 | P91 denominator-control window | Closed | Clean positivity / unit-interval bridge in the multiplicative window |
-| P91 downstream/core reroutes | Closed as infrastructure | Consumers now follow the corrected analytic lane |
-| `RGIncrementDecayP81AttackSurface` | Closed as infrastructure | Projection-safe theorem-side packet exists |
-| `RGIncrementDecayP81SlotFamily` | Closed as infrastructure | Uniform slot-family bridge into the live target exists |
-| Small-field slot | Populated in current repo semantics | Canonical witness comes from current field-split / RG behavior |
-| Large-field slot | Populated in current repo semantics | Canonical witness comes from the 0-sorry P80 skeleton |
-| Cluster-expansion slot | Populated in current repo semantics | Canonical witness comes from the trivial hole-split largePart surface |
-| `rg_increment_decay_P81` | Live mathematical gap | Main theorem-side bottleneck remains open |
-| `RGCauchyP81LiveTarget` | Live mathematical surface | Waiting on the actual glue theorem |
-| Balaban-RG uniform-LSI closure | Live mathematical surface | Depends on the theorem-side bottleneck |
-| Terminal Clay conclusion | Not yet unconditional | Still inherits the live theorem/axiom fronts |
+| Three-slot P81 attack chassis | Closed as infrastructure | Attack packet, slot family, live-target surfaces all exist |
+| Small-field witness | Populated in current repo semantics | Canonical witness comes from current field-split / RG behavior |
+| Large-field witness | Populated in current repo semantics | Canonical witness comes from the 0-sorry P80 skeleton |
+| Cluster witness | Populated in current repo semantics | Canonical witness comes from the hole-split behavior |
+| `rg_increment_decay_P81` | Formally discharged in current semantics | Follows because the current `RGBlockingMap` is the zero map |
+| Intended nontrivial P81 content | Still live mathematically | Must be rebuilt after replacing the placeholder RG semantics |
+| Balaban-RG uniform-LSI closure | Still live mathematically | Intended final content still depends on nontrivial RG semantics |
+| Terminal Clay conclusion | Not yet unconditional in the intended final sense | Still inherits live theorem/axiom fronts |
 
 ---
 
-## 7. Repository snapshot
+## 6. Repository snapshot
 
 | Item | Current state |
 |---|---|
 | Build posture | green on touched frontier targets |
 | Public claim | honest reduction, not finished Clay proof |
-| Preferred theorem-side bottleneck | `rg_increment_decay_P81` |
-| Preferred theorem-side attack files | `RGIncrementDecayP81AttackSurface.lean`, `RGIncrementDecayP81SlotFamily.lean`, `RGIncrementDecayP81SmallFieldSlot.lean`, `RGIncrementDecayP81LargeFieldSlot.lean`, `RGIncrementDecayP81ClusterExpansionSlot.lean` |
-| Preferred populated witness files | `RGIncrementDecayP81LargeFieldWitness.lean`, `RGIncrementDecayP81SmallFieldWitness.lean`, `RGIncrementDecayP81ClusterExpansionWitness.lean` |
-| Preferred analytic correction files | `BalabanCouplingRecursionWindow.lean`, `P91DenominatorControlWindow.lean` |
+| Current theorem-side headline | `rg_increment_decay_P81` discharged under current zero-map semantics |
+| Next real mathematical front | replace `RGBlockingMap` by the explicit nontrivial Balaban map |
 | Current audit file | `AXIOM_FRONTIER.md` |
-| Current version | v0.9.25 |
+| Current version | v0.9.26 |
 
 ---
 
