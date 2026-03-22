@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness + explicit quantitative PhysicalRGRates frontier + explicit quantitative Haar-LSI frontier + explicit quantitative Haar-LSI audit packet + explicit quantitative Haar-LSI audit coherence hub + repaired quantitative-to-audit bridge + explicit quantitative-to-load-bearing bridge + explicit quantitative load-bearing packet + explicit quantitative load-bearing coherence hub + explicit quantitative P81 packet + explicit quantitative P81 coherence hub + explicit quantitative P81 obstruction packet + explicit quantitative P81 obstruction coherence hub + repaired quantitative P81 witness packet + explicit quantitative P81 chosen-beta packet + repaired quantitative P81 kernel packet + explicit quantitative P81 live-target bridge + explicit quantitative P81 interface bridge + explicit quantitative P81 canonical live-target bridge + repaired quantitative P81 threshold-one bridge + explicit quantitative P81 threshold-one frontier bridge + explicit quantitative P81 threshold-one packet + explicit quantitative P81 threshold-one obstruction packet + explicit quantitative P81 threshold-one obstruction bridge + explicit quantitative P81 threshold-one obstruction coherence hub + explicit quantitative P81 threshold-one kernel coherence hub + explicit quantitative P81 threshold-one live-target coherence hub + explicit quantitative P81 threshold-one canonical-live-target coherence hub + explicit quantitative P81 threshold-one normal-form hub + explicit quantitative P81 threshold-one equivalence registry
+> **Current status:** topological SU lane locally closed + theorem-side P81 architecture rigidified + explicit analytic turn on the Bałaban coupling recursion
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -14,7 +14,9 @@ Lean 4 formalization for the Yang–Mills mass gap programme
 
 The Eriksson Programme is a long-horizon Lean 4 formalization of the Yang–Mills mass gap programme.
 
-Its policy is strict: every bridge is named, every dependency is exposed, every unresolved ingredient is isolated honestly, and no conditional interface is presented as unconditional mathematics.
+The policy is now explicit:
+no unresolved mathematical gap is to be hidden behind API polishing.
+The theorem-side P81 corridor has already been rigidified enough; the live work must now happen inside the analytic lane.
 
 ---
 
@@ -22,16 +24,13 @@ Its policy is strict: every bridge is named, every dependency is exposed, every 
 
 This repository still does **not** claim a completed Clay solution.
 
-What is now canonically exported on the current Haar-LSI / P81 lane:
+What is structurally rigid already:
 
-- the public Haar-LSI frontier `BalabanRGUniformLSIFrontier`,
-- the direct quantitative Haar-LSI frontier `BalabanRGUniformLSIQuantitativeFrontier`,
-- the explicit theorem-side surfaces `RGCauchyP81Kernel`, `RGCauchyP81Obligation`, `RGCauchyP81Frontier`, `RGCauchyP81CoherencePacket`, `RGCauchyP81LiveTarget`,
-- the quantitative P81 corridor `BalabanRGUniformLSIQuantitativeP81Packet`, `BalabanRGUniformLSIQuantitativeP81Coherence`, `BalabanRGUniformLSIQuantitativeP81ObstructionPacket`, `BalabanRGUniformLSIQuantitativeP81ObstructionCoherence`, `BalabanRGUniformLSIQuantitativeP81WitnessPacket`, `BalabanRGUniformLSIQuantitativeP81ChosenBetaPacket`, `BalabanRGUniformLSIQuantitativeP81KernelPacket`, `BalabanRGUniformLSIQuantitativeP81LiveTargetBridge`, `BalabanRGUniformLSIQuantitativeP81InterfaceBridge`, `BalabanRGUniformLSIQuantitativeP81CanonicalLiveTargetBridge`,
-- the explicit threshold-one corridor `BalabanRGUniformLSIQuantitativeP81ThresholdOneBridge`, `BalabanRGUniformLSIQuantitativeP81ThresholdOneFrontierBridge`, `BalabanRGUniformLSIQuantitativeP81ThresholdOnePacket`,
-- the explicit threshold-one coherence corridor `BalabanRGUniformLSIQuantitativeP81ThresholdOneObstructionCoherence`, `BalabanRGUniformLSIQuantitativeP81ThresholdOneKernelCoherence`, `BalabanRGUniformLSIQuantitativeP81ThresholdOneLiveTargetCoherence`, `BalabanRGUniformLSIQuantitativeP81ThresholdOneCanonicalLiveTargetCoherence`,
-- the explicit threshold-one theorem-side normal form `BalabanRGUniformLSIQuantitativeP81ThresholdOneNormalForm`,
-- and now the explicit threshold-one equivalence registry `BalabanRGUniformLSIQuantitativeP81ThresholdOneEquivalenceRegistry`, which records under one short surface all the logical equivalences from the normal form toward the obstruction bridge, the four coherence hubs, the interface bridge, the canonical live-target bridge, and the pair `(BalabanRGUniformLSIQuantitativeFrontier ∧ RGCauchyP81LiveTarget)`.
+- the topological SU lane used by the public front,
+- the public Haar-LSI / P81 corridor,
+- the threshold-one obstruction / kernel / live-target / canonical-live-target theorem-side surfaces,
+- the threshold-one normal form,
+- the threshold-one equivalence registry.
 
 What remains live mathematically:
 
@@ -40,54 +39,43 @@ What remains live mathematically:
 - therefore the actual package-level Balaban-RG uniform-LSI closure,
 - and therefore the full unconditional Clay conclusion.
 
----
+What changed in this step:
 
-## 3. Current public API of the Haar-LSI / P81 lane
-
-Preferred short public entrypoint:
-
-- `BalabanRGUniformLSIFrontier`
-
-Preferred short quantitative public entrypoint:
-
-- `BalabanRGUniformLSIQuantitativeFrontier`
-
-Preferred threshold-one theorem-side normal form:
-
-- `BalabanRGUniformLSIQuantitativeP81ThresholdOneNormalForm`
-
-Preferred threshold-one theorem-side equivalence registry:
-
-- `BalabanRGUniformLSIQuantitativeP81ThresholdOneEquivalenceRegistry`
-
-Preferred registry projections:
-
-- `normal_form_to_threshold_one_obstruction_bridge_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_equivalence_registry`
-- `normal_form_to_threshold_one_obstruction_coherence_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_equivalence_registry`
-- `normal_form_to_threshold_one_kernel_coherence_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_equivalence_registry`
-- `normal_form_to_threshold_one_live_target_coherence_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_equivalence_registry`
-- `normal_form_to_threshold_one_canonical_live_target_coherence_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_equivalence_registry`
-- `normal_form_to_quantitative_p81_interface_bridge_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_equivalence_registry`
-- `normal_form_to_quantitative_p81_canonical_live_target_bridge_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_equivalence_registry`
-- `normal_form_to_quantitative_frontier_and_live_target_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_equivalence_registry`
-
-Preferred theorem-side live bottleneck surfaces:
-
-- `RGCauchyP81LiveTarget`
-- `RGCauchyP81Frontier`
-- `RGCauchyP81CoherencePacket`
-
-Interpretation:
-the lane now exposes not only a threshold-one normal form, but also a dedicated registry that freezes all currently available theorem-side equivalences under one public short name before the actual mathematical attack on `rg_increment_decay_P81`.
+- the programme turns analytically toward `BalabanCouplingRecursion.lean`,
+- the weak-coupling window needed for monotone β-growth is now isolated under an explicit proved theorem in `BalabanCouplingRecursionWindow.lean`,
+- the denominator positivity issue is no longer left implicit.
 
 ---
 
-## 4. Honest interpretation
+## 3. Why this step matters
 
-This is still an honest reduction, not a finished unconditional proof.
+The old obstruction was no longer architectural ambiguity.
+It was the actual analytic passage from the P91 Appendix A.2 coupling recursion to a valid contraction statement.
 
-The new threshold-one equivalence registry does **not** prove `rg_increment_decay_P81`.
-It only centralizes, under short collision-free names, the equivalences already established in the threshold-one theorem-side corridor.
+This step does **not** solve `rg_increment_decay_P81`.
+It does something more honest and more useful:
+it isolates the exact missing weak-coupling window required to make the β-growth step true.
+
+---
+
+## 4. Preferred current attack lane
+
+Preferred analytic target:
+
+- `BalabanCouplingRecursion.lean`
+
+Preferred corrective theorem file:
+
+- `BalabanCouplingRecursionWindow.lean`
+
+Preferred next theorem-side bottleneck:
+
+- `rg_increment_decay_P81`
+
+Preferred next move after this patch:
+
+- reroute downstream consumers through the proved weak-coupling-window theorem,
+- then attack the actual theorem-side P81 increment-decay bound.
 
 ---
 
@@ -97,13 +85,9 @@ It only centralizes, under short collision-free names, the equivalences already 
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through a public frontier plus explicit quantitative, obstruction, threshold-one, kernel-corridor, live-target-corridor, canonical-live-target-corridor, normal-form, and now equivalence-registry surfaces |
-| Preferred public frontier | `BalabanRGUniformLSIFrontier` |
-| Preferred quantitative public frontier | `BalabanRGUniformLSIQuantitativeFrontier` |
-| Preferred threshold-one theorem-side normal form | `BalabanRGUniformLSIQuantitativeP81ThresholdOneNormalForm` |
-| Preferred threshold-one theorem-side registry | `BalabanRGUniformLSIQuantitativeP81ThresholdOneEquivalenceRegistry` |
-| Preferred theorem-side bottleneck | `RGCauchyP81LiveTarget` |
-| Preferred theorem-side public bottleneck surface | `RGCauchyP81Frontier` |
+| Haar-LSI / P81 architecture | rigid enough for direct analytic attack |
+| Current real bottleneck | `rg_increment_decay_P81` |
+| Current real local analytic front | `BalabanCouplingRecursion.lean` |
 | Global claim | honest reduction, not finished Clay proof |
 
 ---
@@ -113,10 +97,9 @@ It only centralizes, under short collision-free names, the equivalences already 
 | Component | Type | Meaning |
 |---|---|---|
 | SU compactness route | Closed locally | Public topological front compiled and exported |
-| `RGCauchyP81LiveTarget` | Formal theorem-side live target | Packages the actual weak-coupling theorem family needed to discharge the current P81 bottleneck |
-| `BalabanRGUniformLSIQuantitativeP81ThresholdOneNormalForm` | Explicit threshold-one theorem-side normal form | Centralizes under one surface all currently equivalent threshold-one theorem-side descriptions |
-| `BalabanRGUniformLSIQuantitativeP81ThresholdOneEquivalenceRegistry` | Explicit threshold-one theorem-side equivalence registry | Records under one public registry all logical equivalences already available from the threshold-one normal form |
-| `rg_increment_decay_P81` | Real mathematical gap surface | Still exported as an explicit live obstruction in the current repo |
+| Threshold-one theorem-side corridor | Structurally rigid | Equivalent theorem-side surfaces already centralized |
+| `BalabanCouplingRecursionWindow` | New analytic correction lane | Makes the weak-coupling denominator window explicit and proved |
+| `rg_increment_decay_P81` | Real mathematical gap surface | Still the live theorem-side obstruction |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
 
 ---
