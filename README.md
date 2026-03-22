@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness + explicit quantitative PhysicalRGRates frontier + explicit quantitative Haar-LSI frontier + explicit quantitative Haar-LSI audit packet + explicit quantitative Haar-LSI audit coherence hub + repaired quantitative-to-audit bridge + explicit quantitative-to-load-bearing bridge + explicit quantitative load-bearing packet + explicit quantitative load-bearing coherence hub + explicit quantitative P81 packet + explicit quantitative P81 coherence hub + explicit quantitative P81 obstruction packet + explicit quantitative P81 obstruction coherence hub + repaired quantitative P81 witness packet via canonical choice + explicit quantitative P81 chosen-beta packet
+> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness + explicit quantitative PhysicalRGRates frontier + explicit quantitative Haar-LSI frontier + explicit quantitative Haar-LSI audit packet + explicit quantitative Haar-LSI audit coherence hub + repaired quantitative-to-audit bridge + explicit quantitative-to-load-bearing bridge + explicit quantitative load-bearing packet + explicit quantitative load-bearing coherence hub + explicit quantitative P81 packet + explicit quantitative P81 coherence hub + explicit quantitative P81 obstruction packet + explicit quantitative P81 obstruction coherence hub + repaired quantitative P81 witness packet + explicit quantitative P81 chosen-beta packet + repaired quantitative P81 kernel packet
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -57,9 +57,10 @@ What is closed locally or canonically exported right now:
 - the explicit quantitative P81 obstruction coherence hub `BalabanRGUniformLSIQuantitativeP81ObstructionCoherence`,
 - the repaired quantitative P81 witness packet `BalabanRGUniformLSIQuantitativeP81WitnessPacket`,
 - the explicit quantitative P81 chosen-beta packet `BalabanRGUniformLSIQuantitativeP81ChosenBetaPacket`,
+- the repaired quantitative P81 kernel packet `BalabanRGUniformLSIQuantitativeP81KernelPacket`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- and the theorem layers showing how the direct quantitative Haar-LSI route now selects one canonical exponent `β` that simultaneously carries increment decay and RG-Cauchy summability.
+- and the theorem layers showing how the direct quantitative Haar-LSI route now lands in the theorem-side kernel corridor with the base constructor declared before all derived wrappers, eliminating the forward-reference failure.
 
 What remains live mathematically:
 
@@ -80,33 +81,32 @@ Preferred short quantitative public entrypoint:
 
 - `BalabanRGUniformLSIQuantitativeFrontier`
 
-Preferred quantitative theorem-side witness packet:
-
-- `BalabanRGUniformLSIQuantitativeP81WitnessPacket`
-
 Preferred quantitative theorem-side chosen-beta packet:
 
 - `BalabanRGUniformLSIQuantitativeP81ChosenBetaPacket`
 
-Preferred chosen-beta constructors:
+Preferred quantitative theorem-side kernel packet:
 
-- `balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet_of_quantitative_frontier_and_live_target`
-- `balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet_of_quantitative_p81_witness_packet`
-- `balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet_of_quantitative_p81_obstruction_coherence`
-- `balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet_of_quantitative_p81_obstruction_packet`
-- `balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet_of_quantitative_p81_coherence_and_live_target`
-- `balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet_of_quantitative_p81_packet`
-- `balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet_of_quantitative_load_bearing_coherence_and_live_target`
-- `balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet_of_quantitative_audit_packet_and_live_target`
-- `balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet_of_quantitative_audit_coherence_and_live_target`
+- `BalabanRGUniformLSIQuantitativeP81KernelPacket`
 
-Preferred chosen-beta projections:
+Preferred kernel-packet constructors:
 
-- `chosen_beta_witness_of_balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet`
-- `chosen_beta_of_balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet`
-- `chosen_beta_ge_one_of_balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet`
-- `chosen_beta_increment_decay_bound_of_balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet`
-- `chosen_beta_cauchy_summability_bound_of_balaban_rg_uniform_lsi_quantitative_p81_chosen_beta_packet`
+- `balaban_rg_uniform_lsi_quantitative_p81_kernel_packet_of_quantitative_p81_chosen_beta_packet`
+- `balaban_rg_uniform_lsi_quantitative_p81_kernel_packet_of_quantitative_frontier_and_live_target`
+- `balaban_rg_uniform_lsi_quantitative_p81_kernel_packet_of_quantitative_p81_witness_packet`
+- `balaban_rg_uniform_lsi_quantitative_p81_kernel_packet_of_quantitative_p81_obstruction_coherence`
+- `balaban_rg_uniform_lsi_quantitative_p81_kernel_packet_of_quantitative_p81_obstruction_packet`
+- `balaban_rg_uniform_lsi_quantitative_p81_kernel_packet_of_quantitative_p81_coherence_and_live_target`
+- `balaban_rg_uniform_lsi_quantitative_p81_kernel_packet_of_quantitative_p81_packet`
+- `balaban_rg_uniform_lsi_quantitative_p81_kernel_packet_of_quantitative_load_bearing_coherence_and_live_target`
+- `balaban_rg_uniform_lsi_quantitative_p81_kernel_packet_of_quantitative_audit_packet_and_live_target`
+- `balaban_rg_uniform_lsi_quantitative_p81_kernel_packet_of_quantitative_audit_coherence_and_live_target`
+
+Preferred theorem-side kernel projections:
+
+- `rg_cauchy_p81_kernel_output_of_balaban_rg_uniform_lsi_quantitative_p81_kernel_packet`
+- `rg_cauchy_p81_kernel_input_of_balaban_rg_uniform_lsi_quantitative_p81_kernel_packet`
+- `obligation_of_balaban_rg_uniform_lsi_quantitative_p81_kernel_packet`
 
 Preferred theorem-side P81 surfaces:
 
@@ -119,7 +119,7 @@ Preferred public output:
 - `BalabanRGUniformLSIPublicFacade`
 
 Interpretation:
-the lane now exposes not only existential witnesses and witness-selected packets, but also a single canonical `β` carrying both increment decay and summability, which is the cleanest theorem-side surface immediately above a direct attack on `rg_increment_decay_P81`.
+the lane now exposes not only a chosen canonical `β`, but also a repaired direct packet into the theorem-side P81 kernel corridor, with the definitional order made robust for Lean.
 
 ---
 
@@ -127,8 +127,8 @@ the lane now exposes not only existential witnesses and witness-selected packets
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The quantitative P81 chosen-beta packet does not solve the theorem-side P81 gap.
-It makes explicit, under short collision-free names, one canonical exponent that already satisfies both theorem-side surfaces needed immediately before a direct attack on the live obstruction.
+The repaired quantitative P81 kernel packet does not solve the theorem-side P81 gap.
+It makes explicit, under short collision-free names, the exact theorem-side kernel corridor already supported by the canonical chosen `β`.
 
 ---
 
@@ -138,11 +138,11 @@ It makes explicit, under short collision-free names, one canonical exponent that
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, the P81 coherence packet, the P81 live target, the quantitative `PhysicalRGRates` witness, the quantitative `PhysicalRGRates` frontier, the quantitative Haar-LSI frontier, the quantitative Haar-LSI audit packet, the quantitative Haar-LSI audit coherence hub, the quantitative-to-audit bridge, the quantitative-to-load-bearing bridge, the quantitative load-bearing packet, the quantitative load-bearing coherence hub, the quantitative P81 packet, the quantitative P81 coherence hub, the quantitative P81 obstruction packet, the quantitative P81 obstruction coherence hub, the repaired quantitative P81 witness packet, and the quantitative P81 chosen-beta packet |
+| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, the P81 coherence packet, the P81 live target, the quantitative `PhysicalRGRates` witness, the quantitative `PhysicalRGRates` frontier, the quantitative Haar-LSI frontier, the quantitative Haar-LSI audit packet, the quantitative Haar-LSI audit coherence hub, the quantitative-to-audit bridge, the quantitative-to-load-bearing bridge, the quantitative load-bearing packet, the quantitative load-bearing coherence hub, the quantitative P81 packet, the quantitative P81 coherence hub, the quantitative P81 obstruction packet, the quantitative P81 obstruction coherence hub, the repaired quantitative P81 witness packet, the quantitative P81 chosen-beta packet, and the repaired quantitative P81 kernel packet |
 | Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
 | Preferred quantitative public entrypoint | `BalabanRGUniformLSIQuantitativeFrontier` |
-| Preferred quantitative theorem-side witness packet | `BalabanRGUniformLSIQuantitativeP81WitnessPacket` |
 | Preferred quantitative theorem-side chosen-beta packet | `BalabanRGUniformLSIQuantitativeP81ChosenBetaPacket` |
+| Preferred quantitative theorem-side kernel packet | `BalabanRGUniformLSIQuantitativeP81KernelPacket` |
 | Preferred theorem-side bottleneck surface | `RGCauchyP81Frontier` |
 | Preferred theorem-side live target | `RGCauchyP81LiveTarget` |
 | Preferred quantitative route | `PhysicalRGRatesFrontier` |
@@ -158,8 +158,8 @@ It makes explicit, under short collision-free names, one canonical exponent that
 | `RGCauchyP81LiveTarget` | Formal theorem-side live target | Packages the actual weak-coupling theorem family needed to discharge the current P81 bottleneck |
 | `PhysicalRGRatesFrontier` | Formal quantitative frontier | Packages the existence of a direct quantitative `PhysicalRGRates` route under one short public name |
 | `BalabanRGUniformLSIQuantitativeFrontier` | Formal quantitative Haar-LSI frontier | Packages the transfer ingredient together with the direct quantitative rates frontier and feeds the public Haar-LSI lane |
-| `BalabanRGUniformLSIQuantitativeP81WitnessPacket` | Repaired witness-selected theorem-side packet | Keeps proposition-valued data and extracts canonical exponents via `Classical.choose` from existential witnesses |
-| `BalabanRGUniformLSIQuantitativeP81ChosenBetaPacket` | Canonical chosen-beta theorem-side packet | Packages one canonical `β` that satisfies increment decay and, via `increment_decay_implies_cauchy_summability`, the RG-Cauchy summability surface as well |
+| `BalabanRGUniformLSIQuantitativeP81ChosenBetaPacket` | Canonical chosen-beta theorem-side packet | Packages one canonical `β` that satisfies increment decay and summability |
+| `BalabanRGUniformLSIQuantitativeP81KernelPacket` | Repaired direct theorem-side kernel corridor packet | Lands the canonical chosen `β` directly in `RGCauchyP81KernelOutput`, `RGCauchyP81KernelInput`, and `RGCauchyP81Obligation` with the base constructor declared before all derived wrappers |
 | `rg_increment_decay_P81` | Real mathematical gap surface | Still exported as an explicit live obstruction in the current repo |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
 
