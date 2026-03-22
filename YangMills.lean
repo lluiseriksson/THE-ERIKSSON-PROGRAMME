@@ -1,3 +1,4 @@
+import YangMills.ClayCore.BalabanRG.RGIncrementDecayP81ClusterExpansionSlot
 import YangMills.ClayCore.BalabanRG.RGIncrementDecayP81LargeFieldSlot
 import YangMills.ClayCore.BalabanRG.RGIncrementDecayP81SmallFieldSlot
 import YangMills.ClayCore.BalabanRG.RGIncrementDecayP81SlotFamily
