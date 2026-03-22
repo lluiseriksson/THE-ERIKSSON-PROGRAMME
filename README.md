@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness + explicit quantitative PhysicalRGRates frontier + explicit quantitative Haar-LSI frontier + explicit quantitative Haar-LSI audit packet + explicit quantitative Haar-LSI audit coherence hub + repaired quantitative-to-audit bridge + explicit quantitative-to-load-bearing bridge + explicit quantitative load-bearing packet + explicit quantitative load-bearing coherence hub + explicit quantitative P81 packet + explicit quantitative P81 coherence hub + explicit quantitative P81 obstruction packet + explicit quantitative P81 obstruction coherence hub + repaired quantitative P81 witness packet + explicit quantitative P81 chosen-beta packet + repaired quantitative P81 kernel packet + explicit quantitative P81 live-target bridge + explicit quantitative P81 interface bridge + explicit quantitative P81 canonical live-target bridge + repaired quantitative P81 threshold-one bridge + explicit quantitative P81 threshold-one frontier bridge
+> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness + explicit quantitative PhysicalRGRates frontier + explicit quantitative Haar-LSI frontier + explicit quantitative Haar-LSI audit packet + explicit quantitative Haar-LSI audit coherence hub + repaired quantitative-to-audit bridge + explicit quantitative-to-load-bearing bridge + explicit quantitative load-bearing packet + explicit quantitative load-bearing coherence hub + explicit quantitative P81 packet + explicit quantitative P81 coherence hub + explicit quantitative P81 obstruction packet + explicit quantitative P81 obstruction coherence hub + repaired quantitative P81 witness packet + explicit quantitative P81 chosen-beta packet + repaired quantitative P81 kernel packet + explicit quantitative P81 live-target bridge + explicit quantitative P81 interface bridge + explicit quantitative P81 canonical live-target bridge + repaired quantitative P81 threshold-one bridge + explicit quantitative P81 threshold-one frontier bridge + explicit quantitative P81 threshold-one packet
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -63,9 +63,10 @@ What is closed locally or canonically exported right now:
 - the explicit quantitative P81 canonical live-target bridge `BalabanRGUniformLSIQuantitativeP81CanonicalLiveTargetBridge`,
 - the repaired quantitative P81 threshold-one bridge `BalabanRGUniformLSIQuantitativeP81ThresholdOneBridge`,
 - the explicit quantitative P81 threshold-one frontier bridge `BalabanRGUniformLSIQuantitativeP81ThresholdOneFrontierBridge`,
+- the explicit quantitative P81 threshold-one packet `BalabanRGUniformLSIQuantitativeP81ThresholdOnePacket`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- and the theorem layers showing how the direct quantitative Haar-LSI route now reconstructs the explicit threshold-one `frontier` / `auditLink` / `coherencePacket` surfaces and identifies them canonically with the ones already carried by the quantitative kernel packet.
+- and the theorem layers showing how the direct quantitative Haar-LSI route now centralizes the explicit threshold-one endpoint (`β = 1`) together with its theorem-side kernel, obligation, frontier, audit-link, and coherence surfaces.
 
 What remains live mathematically:
 
@@ -86,26 +87,39 @@ Preferred short quantitative public entrypoint:
 
 - `BalabanRGUniformLSIQuantitativeFrontier`
 
-Preferred quantitative theorem-side threshold-one bridge:
-
-- `BalabanRGUniformLSIQuantitativeP81ThresholdOneBridge`
-
 Preferred quantitative theorem-side threshold-one frontier bridge:
 
 - `BalabanRGUniformLSIQuantitativeP81ThresholdOneFrontierBridge`
 
-Preferred threshold-one frontier projections:
+Preferred quantitative theorem-side threshold-one packet:
 
-- `standard_audit_packet_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_frontier_bridge`
-- `rg_cauchy_p81_frontier_at_one_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_frontier_bridge`
-- `balaban_rg_uniform_lsi_rg_cauchy_audit_link_at_one_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_frontier_bridge`
-- `rg_cauchy_p81_coherence_packet_at_one_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_frontier_bridge`
+- `BalabanRGUniformLSIQuantitativeP81ThresholdOnePacket`
 
-Preferred threshold-one frontier equalities:
+Preferred threshold-one packet projections:
 
-- `rg_cauchy_p81_frontier_at_one_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_frontier_bridge`
-- `balaban_rg_uniform_lsi_rg_cauchy_audit_link_at_one_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_frontier_bridge`
-- `rg_cauchy_p81_coherence_packet_at_one_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_frontier_bridge`
+- `threshold_one_frontier_bridge_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `quantitative_p81_kernel_packet_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_increment_decay_P81_at_one_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_from_increment_decay_at_one_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_p81_threshold_one_live_target_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_p81_kernel_output_at_one_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_p81_kernel_input_at_one_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_p81_obligation_at_one_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_p81_frontier_at_one_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `balaban_rg_uniform_lsi_rg_cauchy_audit_link_at_one_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_p81_coherence_packet_at_one_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+
+Preferred threshold-one packet equalities:
+
+- `rg_increment_decay_P81_at_one_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_from_increment_decay_at_one_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_p81_threshold_one_live_target_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_p81_kernel_output_at_one_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_p81_kernel_input_at_one_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_p81_obligation_at_one_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_p81_frontier_at_one_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `balaban_rg_uniform_lsi_rg_cauchy_audit_link_at_one_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
+- `rg_cauchy_p81_coherence_packet_at_one_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_threshold_one_packet`
 
 Preferred theorem-side P81 surfaces:
 
@@ -118,7 +132,7 @@ Preferred public output:
 - `BalabanRGUniformLSIPublicFacade`
 
 Interpretation:
-the lane now exposes la especialización explícita `β = 1` no solo a nivel de `RGIncrementDecayBound` y `RGCauchySummabilityBound`, sino también a nivel de `frontier`, `auditLink` y `coherencePacket`.
+the lane now exposes un único paquete explícito para el endpoint threshold-one `β = 1`, juntando en una superficie compacta todas las consecuencias theorem-side ya obtenidas.
 
 ---
 
@@ -126,8 +140,8 @@ the lane now exposes la especialización explícita `β = 1` no solo a nivel de 
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The quantitative P81 threshold-one frontier bridge does not solve the theorem-side P81 gap.
-It makes explicit, under short collision-free names, the threshold-one `frontier` / `auditLink` / `coherencePacket` surfaces reconstructed from the exact interface theorem.
+The quantitative P81 threshold-one packet does not solve the theorem-side P81 gap.
+It centralizes, under short collision-free names, the explicit threshold-one endpoint that the current interface theorem already yields.
 
 ---
 
@@ -137,11 +151,11 @@ It makes explicit, under short collision-free names, the threshold-one `frontier
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, the P81 coherence packet, the P81 live target, the quantitative `PhysicalRGRates` witness, the quantitative `PhysicalRGRates` frontier, the quantitative Haar-LSI frontier, the quantitative Haar-LSI audit packet, the quantitative Haar-LSI audit coherence hub, the quantitative-to-audit bridge, the quantitative-to-load-bearing bridge, the quantitative load-bearing packet, the quantitative load-bearing coherence hub, the quantitative P81 packet, the quantitative P81 coherence hub, the quantitative P81 obstruction packet, the quantitative P81 obstruction coherence hub, the repaired quantitative P81 witness packet, the quantitative P81 chosen-beta packet, the repaired quantitative P81 kernel packet, the quantitative P81 live-target bridge, the quantitative P81 interface bridge, the quantitative P81 canonical live-target bridge, the repaired quantitative P81 threshold-one bridge, and the quantitative P81 threshold-one frontier bridge |
+| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, the P81 coherence packet, the P81 live target, the quantitative `PhysicalRGRates` witness, the quantitative `PhysicalRGRates` frontier, the quantitative Haar-LSI frontier, the quantitative Haar-LSI audit packet, the quantitative Haar-LSI audit coherence hub, the quantitative-to-audit bridge, the quantitative-to-load-bearing bridge, the quantitative load-bearing packet, the quantitative load-bearing coherence hub, the quantitative P81 packet, the quantitative P81 coherence hub, the quantitative P81 obstruction packet, the quantitative P81 obstruction coherence hub, the repaired quantitative P81 witness packet, the quantitative P81 chosen-beta packet, the repaired quantitative P81 kernel packet, the quantitative P81 live-target bridge, the quantitative P81 interface bridge, the quantitative P81 canonical live-target bridge, the repaired quantitative P81 threshold-one bridge, the quantitative P81 threshold-one frontier bridge, and the quantitative P81 threshold-one packet |
 | Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
 | Preferred quantitative public entrypoint | `BalabanRGUniformLSIQuantitativeFrontier` |
-| Preferred quantitative theorem-side threshold-one bridge | `BalabanRGUniformLSIQuantitativeP81ThresholdOneBridge` |
 | Preferred quantitative theorem-side threshold-one frontier bridge | `BalabanRGUniformLSIQuantitativeP81ThresholdOneFrontierBridge` |
+| Preferred quantitative theorem-side threshold-one packet | `BalabanRGUniformLSIQuantitativeP81ThresholdOnePacket` |
 | Preferred theorem-side bottleneck surface | `RGCauchyP81Frontier` |
 | Preferred theorem-side live target | `RGCauchyP81LiveTarget` |
 | Preferred quantitative route | `PhysicalRGRatesFrontier` |
@@ -157,8 +171,8 @@ It makes explicit, under short collision-free names, the threshold-one `frontier
 | `RGCauchyP81LiveTarget` | Formal theorem-side live target | Packages the actual weak-coupling theorem family needed to discharge the current P81 bottleneck |
 | `PhysicalRGRatesFrontier` | Formal quantitative frontier | Packages the existence of a direct quantitative `PhysicalRGRates` route under one short public name |
 | `BalabanRGUniformLSIQuantitativeFrontier` | Formal quantitative Haar-LSI frontier | Packages the transfer ingredient together with the direct quantitative rates frontier and feeds the public Haar-LSI lane |
-| `BalabanRGUniformLSIQuantitativeP81ThresholdOneBridge` | Repaired explicit threshold-one theorem-side bridge | Specializes the exact interface theorem to `β = 1` and reconstructs the threshold-one kernel/input/obligation surfaces |
-| `BalabanRGUniformLSIQuantitativeP81ThresholdOneFrontierBridge` | Explicit threshold-one frontier theorem-side bridge | Reconstructs the threshold-one `frontier` / `auditLink` / `coherencePacket` surfaces and identifies them canonically with those already carried by the quantitative kernel packet |
+| `BalabanRGUniformLSIQuantitativeP81ThresholdOneFrontierBridge` | Explicit threshold-one frontier theorem-side bridge | Reconstructs the threshold-one `frontier` / `auditLink` / `coherencePacket` surfaces |
+| `BalabanRGUniformLSIQuantitativeP81ThresholdOnePacket` | Explicit threshold-one theorem-side packet | Centralizes the threshold-one endpoint `β = 1` together with the theorem-side kernel / obligation / frontier / audit-link / coherence surfaces and their canonical identifications |
 | `rg_increment_decay_P81` | Real mathematical gap surface | Still exported as an explicit live obstruction in the current repo |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
 
