@@ -1,24 +1,19 @@
-# AXIOM_FRONTIER.md — v0.8.73 (BALABAN-RG AUDIT COHERENCE HUB)
+# AXIOM_FRONTIER.md — v0.8.74 (RGCAUCHY P81 KERNEL INTERFACE)
 
 ## Status
-TOPOLOGICAL SU FRONT CLOSED LOCALLY; THE HAAR-LSI LANE NOW HAS A SINGLE SHORT PUBLIC FRONTIER ENTRYPOINT, EXPLICIT DIRECT/CONCRETE INPUT PACKETS, A CENTRALIZED INPUT-COHERENCE HUB, A UNIFIED END-TO-END EXPORT PACKET, A CENTRALIZED OBSTRUCTION PACKET, A UNIFIED PILLAR-II PACKET, AN EXPLICIT LOAD-BEARING PACKET, A DEDICATED LOAD-BEARING COHERENCE HUB, A UNIFIED AUDIT PACKET, AND A DEDICATED AUDIT COHERENCE HUB.
+TOPOLOGICAL SU FRONT CLOSED LOCALLY; THE HAAR-LSI LANE NOW HAS A SINGLE SHORT PUBLIC FRONTIER ENTRYPOINT, EXPLICIT DIRECT/CONCRETE INPUT PACKETS, A CENTRALIZED INPUT-COHERENCE HUB, A UNIFIED END-TO-END EXPORT PACKET, A CENTRALIZED OBSTRUCTION PACKET, A UNIFIED PILLAR-II PACKET, AN EXPLICIT LOAD-BEARING PACKET, A DEDICATED LOAD-BEARING COHERENCE HUB, A UNIFIED AUDIT PACKET, A DEDICATED AUDIT COHERENCE HUB, AND AN EXPLICIT RGCAUCHY P81 KERNEL INTERFACE.
 
 ## Public lane
 - `BalabanRGUniformLSIFrontier` remains the preferred short public entrypoint.
-- `BalabanRGUniformLSIDirectInput` remains the preferred explicit packet for the direct-theorem surface.
-- `BalabanRGUniformLSIActivationData` remains the abstract canonical input packet.
-- `BalabanRGUniformLSIConcreteInput` remains the preferred most concrete public input packet.
-- `BalabanRGUniformLSIInputCoherence` centralizes the general input-side normal forms and round-trips.
-- `BalabanRGUniformLSIEndToEndPacket` centralizes the currently exported input/output geometry under one packet.
-- `BalabanRGUniformLSIObstructionPacket` centralizes the equivalent names of the still-live obstruction under one packet.
-- `BalabanRGUniformLSIPillarIIPacket` centralizes the obstruction-side and export-side surfaces under one canonical public packet.
-- `BalabanRGUniformLSILoadBearingPacket` isolates the specific current Pillar II load-bearing surfaces under one canonical public packet.
-- `BalabanRGUniformLSILoadBearingCoherence` centralizes the constructors, equivalences, projections, and round-trips attached to that explicit load-bearing surface.
-- `BalabanRGUniformLSIAuditPacket` centralizes the load-bearing surface together with frontier, lane contract, public facade, closure, registry, and last-mile output under one audit-facing packet.
-- `BalabanRGUniformLSIAuditCoherence` centralizes the constructors, target-level equivalences, projections, and round-trips attached to that audit-facing packet.
+- `BalabanRGUniformLSIAuditPacket` remains the preferred audit-facing packet.
+- `BalabanRGUniformLSIAuditCoherence` remains the preferred audit-facing coherence hub.
+- `RGCauchyP81KernelInput` isolates the existential weak-coupling input needed by the P81 single-scale increment theorem.
+- `RGCauchyP81KernelOutput` packages the existential β carrying both the P81 single-scale increment decay bound and the derived RG-Cauchy summability bound.
+- `BalabanRGUniformLSIRGCauchyAuditLink` links the current audit-facing surface to this first explicit unresolved RG-Cauchy kernel.
+- The theorem families `rg_cauchy_p81_kernel_output_iff_input` and `balaban_rg_uniform_lsi_rg_cauchy_audit_link_iff_audit_packet_and_input` expose the normal forms around that first live kernel.
 
 ## Remaining live mathematical obstruction
-An actual Balaban-RG package carrying the uniform-LSI content still has to be discharged internally.
+The P81 single-scale increment decay theorem and the actual Bałaban-RG package carrying uniform-LSI content still have to be discharged internally.
 
 ## Soundness note
-This remains an honest reduction. No unconditional Haar-LSI theorem is claimed without the actual package-level witness.
+This remains an honest reduction. No unconditional Haar-LSI theorem is claimed without the actual package-level witness and without the explicit P81 single-scale decay input.
