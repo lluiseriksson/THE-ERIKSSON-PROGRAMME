@@ -1,39 +1,21 @@
+# AXIOM_FRONTIER.md — v0.9.30 (THE CORRECTED P91 PUBLIC SHIM NOW USES A DIRECT MULTIPLICATIVE-WINDOW DRIFT/DIVERGENCE ROUTE)
 
-# AXIOM FRONTIER — THE ERIKSSON PROGRAMME
+## Status
+TOPOLOGICAL SU FRONT CLOSED LOCALLY. THE P80/P81 CORRIDOR IS GREEN UNDER THE CURRENT ZERO-MAP SEMANTICS. THE LEGACY P91 ROUTE HAS ALREADY BEEN CERTIFIED TOO WEAK BY EXPLICIT COUNTEREXAMPLE. THIS STEP DOES NOT ADD A NEW HUB: IT ADDS A DIRECT MULTIPLICATIVE-WINDOW DRIFT FILE AND REWIRES THE CORRECTED PUBLIC SHIM TO USE IT.
 
-## Snapshot
+## Public lane
+- `P91CorrectedWindowPublicShim.lean` remains the preferred public theorem-side entrypoint for the corrected P91 lane.
+- `P91UniformDriftWindowDirect.lean` is now the preferred direct multiplicative-window drift/divergence file.
+- `BalabanCouplingRecursionWindow.lean` remains the preferred corrected asymptotic-freedom file.
+- `P91DenominatorControlWindow.lean` remains the preferred corrected denominator-control file.
+- `P91LegacyRouteCounterexample.lean` remains the preferred audit file for the rejected old route.
 
-* Version: v0.9.31
-* Main theorem-side semantic note: `rg_increment_decay_P81` is discharged under current zero-map semantics
-* Preferred public P91 lane: corrected multiplicative window `β · (3 · b₀) < 2`
-* Remaining main-file `sorry`s: 3
-* Status of those 3 `sorry`s: deprecated artifacts on the old P91 route
+## Remaining live mathematical obstruction
+The live obstruction is not to repair the legacy route as written.
+It is:
+- migrate any remaining theorem consumers off the old-route files,
+- retire the remaining old-route `sorry` declarations once they are no longer load-bearing,
+- and then replace the placeholder zero-map RG semantics by the explicit Balaban blocking map and rebuild the theorem-side corridor there.
 
-## Remaining main-file `sorry`s
-
-| File                                                         | Name                                     | Status              |
-| ------------------------------------------------------------ | ---------------------------------------- | ------------------- |
-| `YangMills/ClayCore/BalabanRG/BalabanCouplingRecursion.lean` | `asymptotic_freedom_implies_beta_growth` | legacy / deprecated |
-| `YangMills/ClayCore/BalabanRG/P91DenominatorControl.lean`    | `denominator_pos`                        | legacy / deprecated |
-| `YangMills/ClayCore/BalabanRG/P91OnestepDriftSkeleton.lean`  | `uniform_drift_lower_bound_P91`          | legacy / deprecated |
-
-## Active theorem-side public surface
-
-* `P91CorrectedWindowPublicShim.lean`
-* `P91UniformDriftWindowDirect.lean`
-* `P91CorrectedWindowConsumerPacket.lean`
-
-These are the files intended to carry the corrected P91 public API.
-
-## Semantic frontier
-
-The decisive live mathematical frontier is not the old P91 route anymore. It is:
-
-1. replace `RGBlockingMap := 0` by the explicit Bałaban blocking map,
-2. re-prove the P80/P81 contraction corridor with nontrivial RG dynamics,
-3. keep the corrected multiplicative-window P91 lane as the coupling interface.
-
-## Audit note
-
-The legacy P91 route is formally certified as too weak by
-`YangMills/ClayCore/BalabanRG/P91LegacyRouteCounterexample.lean`.
+## Soundness note
+This remains an honest reduction. No unconditional final Bałaban theorem is claimed here. This step only makes the corrected public P91 surface less dependent on deprecated legacy drift files.

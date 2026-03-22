@@ -1,368 +1,94 @@
 # THE ERIKSSON PROGRAMME
 
-Lean 4 formalization for the Yang–Mills mass gap programme.
+Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Version:** v0.9.31  
-> **Repository state summarized at commit:** pending this commit  
-> **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib  
-> **Build command:** `lake build YangMills`  
+> **Current status:** honest formal reduction with the P80/P81 corridor green under the current zero-map RG semantics, the corrected P91 public shim now using a direct multiplicative-window drift/divergence route, and the old legacy P91 route explicitly audited as too weak
 > **Claim level:** this repository does **not** claim a finished unconditional Clay solution
+> **Build health:** all touched targets must compile green
+> **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
+> **Current version:** v0.9.30
+> **Last updated:** March 2026
 
 ---
 
 ## 1. What this repository is
 
-The Eriksson Programme is a large Lean 4 formalization of the Yang–Mills mass gap programme. It packages lattice geometry, Gibbs measures, renormalization, polymer expansions, logarithmic Sobolev input, clustering, and terminal mass-gap assembly into a single proof-oriented codebase.
+The Eriksson Programme is a Lean 4 formalization of the Yang–Mills mass gap programme.
 
-This repository should be read as an **honest reduction** and audit trail. It explicitly distinguishes:
-- what is already proved in Lean,
-- what is only discharged under current placeholder semantics,
-- what remains live mathematically,
-- what remains live because of Mathlib or physical-input axioms.
+The current policy is explicit:
+unresolved mathematics is not hidden behind façade files,
+legacy theorem lanes are audited instead of silently reused,
+and the theorem-side public surface is progressively rerouted toward the corrected analytic window.
 
----
-
-## 2. Critical semantic note
-
-The theorem-side interface `rg_increment_decay_P81` is no longer a `sorry`.  
-However, that discharge is still obtained under the **current placeholder RG semantics**, where `RGBlockingMap` is the zero map.
-
-So the P80/P81 theorem corridor is green **in the current repository semantics**, but this is not yet the final intended Bałaban theorem. The decisive future step remains:
-
-1. replace `RGBlockingMap := 0` by the explicit Bałaban blocking map,
-2. rebuild the same contraction corridor under nontrivial RG dynamics,
-3. keep the corrected multiplicative-window P91 lane as the only public coupling surface.
+This step does not add new physical content.
+It removes a structural dependency:
+the corrected public P91 shim no longer needs to inherit drift/divergence through the old hβ-upper legacy lane,
+because a direct multiplicative-window drift route is now available.
 
 ---
 
-## 3. Quick start
+## 2. Current mathematical position
 
-### Build
+This repository still does **not** claim a finished unconditional Clay solution.
 
-```bash
-lake build YangMills
-```
+What is currently green and load-bearing:
 
-### Main entry files
+- the SU compactness / Haar public lane,
+- the P80/P81 theorem corridor under current zero-map semantics,
+- the corrected multiplicative-window P91 asymptotic-freedom and denominator route,
+- the corrected public shim for that lane,
+- and now the direct multiplicative-window drift/divergence route used by that shim.
 
-| Purpose                          | File                                                                 |
-| -------------------------------- | -------------------------------------------------------------------- |
-| Terminal Clay theorem definition | `YangMills/L8_Terminal/ClayTheorem.lean`                             |
-| Top-level bridge theorem         | `YangMills/ErikssonBridge.lean`                                      |
-| Physical mass-gap route          | `YangMills/P8_PhysicalGap/PhysicalMassGap.lean`                      |
-| P81 interface                    | `YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean`             |
-| Corrected public P91 shim        | `YangMills/ClayCore/BalabanRG/P91CorrectedWindowPublicShim.lean`     |
-| Corrected P91 consumer packet    | `YangMills/ClayCore/BalabanRG/P91CorrectedWindowConsumerPacket.lean` |
-| Placeholder RG map               | `YangMills/ClayCore/BalabanRG/BalabanBlockingMap.lean`               |
-| Frontier audit                   | `AXIOM_FRONTIER.md`                                                  |
+What remains live mathematically:
+
+- the deprecated legacy P91 statements still present in the old-route files,
+- migration of any remaining theorem consumers away from those old files,
+- replacement of the placeholder zero blocking map by the intended explicit Balaban blocking map,
+- and re-proving the theorem-side corridor under that nontrivial RG semantics.
 
 ---
 
-## 4. Architecture
+## 3. Why this step matters
 
-### Layer structure
+The important point is not "one more wrapper".
+It is that the corrected public theorem-side entrypoint now stops borrowing drift/divergence from a legacy route whose hypothesis package is already known to be too weak.
 
-| Layer | Directory                                                 | Role                                                                            |
-| ----- | --------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| L0    | `L0_Lattice/`                                             | Finite lattice geometry, gauge configurations, Wilson action, basic SU geometry |
-| L1    | `L1_GibbsMeasure/`                                        | Gibbs measures, expectations, correlations                                      |
-| L2    | `L2_Balaban/`                                             | Small/large-field decomposition, RG scaffolding, measurability                  |
-| L3    | `L3_RGIteration/`                                         | Block-spin RG iteration and gauge invariance                                    |
-| L4    | `L4_TransferMatrix/`, `L4_LargeField/`, `L4_WilsonLoops/` | Transfer matrix, large-field suppression, Wilson observables                    |
-| L5    | `L5_MassGap/`                                             | Mass-gap assembly                                                               |
-| L6    | `L6_FeynmanKac/`, `L6_OS/`                                | Feynman–Kac bridge and Osterwalder–Schrader reconstruction                      |
-| L7    | `L7_Continuum/`                                           | Continuum-limit bridge                                                          |
-| L8    | `L8_Terminal/`                                            | Terminal Clay theorem layer                                                     |
-
-### Phase structure
-
-| Phase | Directory               | Role                                                                 |
-| ----- | ----------------------- | -------------------------------------------------------------------- |
-| P2    | `P2_MaxEntClustering/`  | Max-entropy and clustering interfaces                                |
-| P3    | `P3_BalabanRG/`         | RG contraction and multiscale decay                                  |
-| P4    | `P4_Continuum/`         | Continuum assembly                                                   |
-| P5    | `P5_KPDecay/`           | KP decay and spectral-gap-to-decay bridges                           |
-| P6    | `P6_AsymptoticFreedom/` | Beta function and asymptotic-freedom lane                            |
-| P7    | `P7_SpectralGap/`       | Transfer-matrix gap and action bounds                                |
-| P8    | `P8_PhysicalGap/`       | LSI, Poincaré, Dirichlet forms, Haar, Ricci, physical mass-gap route |
-
-### Core infrastructure
-
-| Component    | Directory             | Role                                                |
-| ------------ | --------------------- | --------------------------------------------------- |
-| ClayCore     | `ClayCore/BalabanRG/` | Main Balaban / polymer / KP / P80-P81-P91 machinery |
-| Experimental | `Experimental/`       | Sandbox and non-imported future work                |
+That makes the public P91 surface more honest:
+corrected AF,
+corrected denominator control,
+corrected drift,
+corrected divergence,
+all in the multiplicative window.
 
 ---
 
-## 5. Current mathematical position
+## 4. Repository snapshot
 
-### Green and load-bearing under current semantics
-
-* the full P80/P81 theorem corridor is green under the current zero-map RG semantics,
-* all three Lemma 6.2 slots are isolated and populated,
-* `rg_increment_decay_P81` is discharged,
-* the corrected multiplicative-window P91 public surface is green,
-* drift and divergence on that public surface are direct and no longer borrowed from the old lane,
-* the legacy P91 route is formally certified as too weak.
-
-### Still live in the intended final mathematical sense
-
-* `RGBlockingMap := 0` still has to be replaced by the explicit Bałaban blocking map,
-* theorem consumers should keep migrating onto the corrected-window packet/shim,
-* legacy P91 `sorry`s still exist as deprecated residue,
-* the axiom fronts in the physical and Mathlib layers remain explicit.
+| Item | Current state |
+|---|---|
+| Build posture | green on touched frontier targets |
+| Public claim | honest reduction, not finished Clay proof |
+| P80/P81 corridor | green under current zero-map semantics |
+| Corrected P91 public surface | green and more independent of legacy drift lane |
+| Legacy P91 route | audited as too weak, still present only as deprecated residue |
+| Next real front | retire remaining old-route residue, then replace `RGBlockingMap := 0` |
+| Current version | v0.9.30 |
 
 ---
 
-## 6. Connection to the companion paper (Bloque 4)
+## 5. Unconditionality audit
 
-| Paper section | Content                                       | Lean correspondence                                    |
-| ------------- | --------------------------------------------- | ------------------------------------------------------ |
-| §2            | Lattice setup, scales, observables            | `L0_Lattice/`, `L1_GibbsMeasure/`                      |
-| §3            | Balaban RG framework                          | `ClayCore/BalabanRG/` infrastructure                   |
-| §4            | Coupling control                              | `BalabanCouplingRecursion*`, `P91*` files              |
-| §5            | Terminal cluster expansion                    | `PolymerPartitionFunction.lean`, `KPBudgetBridge.lean` |
-| §6            | Single-scale UV error / multiscale decoupling | P81 slot machinery                                     |
-| §7            | Final mass-gap assembly                       | `PhysicalMassGap.lean` and terminal layers             |
-| §8            | OS reconstruction                             | `L6_OS/OsterwalderSchrader.lean`                       |
-
-### Lemma 6.2 decomposition in Lean
-
-| Paper mechanism                    | Lean slot                      | Current state                       |
-| ---------------------------------- | ------------------------------ | ----------------------------------- |
-| Small-field random-walk decay      | `smallFieldRandomWalkDecay`    | populated                           |
-| Large-field polymer suppression    | `largeFieldPolymerSuppression` | populated                           |
-| Cluster expansion with holes       | `clusterExpansionWithHoles`    | populated                           |
-| Glue into `rg_increment_decay_P81` | `RGCauchyP81Interface.lean`    | discharged under zero-map semantics |
+| Component | Status | Meaning |
+|---|---|---|
+| SU compactness route | Closed locally | Public topological front compiled and exported |
+| P80/P81 corridor | Green in current semantics | No theorem placeholders there |
+| Corrected P91 AF + denominator lane | Green | Preferred analytic lane |
+| Corrected P91 drift/divergence lane | Green directly in multiplicative window | Public shim no longer needs legacy drift wrappers |
+| Legacy P91 old route | Deprecated / audited as too weak | Counterexample already certifies insufficiency |
+| Intended nontrivial RG semantics | Still live mathematically | Must be rebuilt after replacing the placeholder RG map |
+| Terminal Clay conclusion | Not yet unconditional in the intended final sense | Still inherits live theorem/axiom fronts |
 
 ---
-
-## 7. P81 slot system
-
-### Slot files
-
-| Role                   | File                                                                        |
-| ---------------------- | --------------------------------------------------------------------------- |
-| Attack surface         | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81AttackSurface.lean`        |
-| Slot family            | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81SlotFamily.lean`           |
-| Small-field slot       | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81SmallFieldSlot.lean`       |
-| Large-field slot       | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81LargeFieldSlot.lean`       |
-| Cluster-expansion slot | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81ClusterExpansionSlot.lean` |
-
-### Witness files
-
-| Witness             | File                                                                           | Current semantic source    |
-| ------------------- | ------------------------------------------------------------------------------ | -------------------------- |
-| Small-field witness | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81SmallFieldWitness.lean`       | field-split / RG semantics |
-| Large-field witness | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81LargeFieldWitness.lean`       | P80 skeleton route         |
-| Cluster witness     | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81ClusterExpansionWitness.lean` | hole-split semantics       |
-
-This means the P81 corridor is no longer blocked by theorem-side packaging. The remaining issue is semantic: it must eventually be rebuilt once the placeholder RG map is replaced.
-
----
-
-## 8. Corrected P91 public lane
-
-The corrected theorem-side public surface for P91 is the multiplicative window
-
-```text
-β · (3 · b₀) < 2
-```
-
-and not the weaker legacy condition
-
-```text
-β < 2 / b₀.
-```
-
-### Public corrected files
-
-| Role                                 | File                                                                 |
-| ------------------------------------ | -------------------------------------------------------------------- |
-| Corrected AF / window lane           | `YangMills/ClayCore/BalabanRG/BalabanCouplingRecursionWindow.lean`   |
-| Corrected denominator control        | `YangMills/ClayCore/BalabanRG/P91DenominatorControlWindow.lean`      |
-| Corrected public shim                | `YangMills/ClayCore/BalabanRG/P91CorrectedWindowPublicShim.lean`     |
-| Direct corrected drift / divergence  | `YangMills/ClayCore/BalabanRG/P91UniformDriftWindowDirect.lean`      |
-| Stable corrected consumer packet     | `YangMills/ClayCore/BalabanRG/P91CorrectedWindowConsumerPacket.lean` |
-| Legacy-route audit by counterexample | `YangMills/ClayCore/BalabanRG/P91LegacyRouteCounterexample.lean`     |
-
-### Interpretation at v0.9.31
-
-The public surface now has:
-
-* corrected-window AF / growth,
-* corrected-window denominator control,
-* direct corrected-window drift,
-* direct corrected-window divergence,
-* a stable theorem-side consumer packet for migration away from legacy imports.
-
----
-
-## 9. Sorry audit
-
-### Discharged theorem-side placeholders
-
-| Name                              | Status                              |
-| --------------------------------- | ----------------------------------- |
-| `rg_increment_decay_P81`          | discharged under zero-map semantics |
-| `large_field_remainder_bound_P80` | discharged                          |
-| `large_field_suppression_bound`   | discharged                          |
-| `rg_cauchy_summability_bound`     | discharged                          |
-
-### Remaining live `sorry`s in main load-bearing files
-
-| Location                        | Name                                     | Interpretation                 |
-| ------------------------------- | ---------------------------------------- | ------------------------------ |
-| `BalabanCouplingRecursion.lean` | `asymptotic_freedom_implies_beta_growth` | deprecated legacy P91 artifact |
-| `P91DenominatorControl.lean`    | `denominator_pos`                        | deprecated legacy P91 artifact |
-| `P91OnestepDriftSkeleton.lean`  | `uniform_drift_lower_bound_P91`          | deprecated legacy P91 artifact |
-
-These should not be read as the active frontier of the preferred public lane. They remain on the old P91 route, which is deprecated and formally audited as too weak.
-
-### Experimental `sorry`s
-
-Three additional `sorry`s remain in `Experimental/`, but those files are non-load-bearing.
-
----
-
-## 10. Axiom audit
-
-### Category A — Mathlib gaps
-
-* `hille_yosida_semigroup`
-* `instIsTopologicalGroupSUN`
-* `sunDirichletForm_contraction`
-* `poincare_to_covariance_decay`
-
-### Category B — physical inputs still axiomatized
-
-* `sun_variance_decay`
-* `sun_lieb_robinson_bound`
-* `sun_bakry_emery_cd`
-* `sun_haar_lsi`
-
-### Category C — deprecated theorem residue
-
-The three remaining old-route P91 `sorry`s above belong here pragmatically: they still exist in files, but they are no longer the preferred public theorem-side lane.
-
----
-
-## 11. What is already proved
-
-Major green results already present include:
-
-* SU(N) compactness,
-* Haar probability measure,
-* Ricci curvature computations,
-* LSI → Poincaré,
-* Stroock–Zegarlinski clustering bridges,
-* locality / covariance decay bridges,
-* Wilson action gauge invariance,
-* block-spin mechanics,
-* corrected-window P91 theorem-side routes,
-* large KP / polymer infrastructure in `ClayCore/BalabanRG/`.
-
----
-
-## 12. Dependency picture
-
-### Current theorem-side corridor
-
-```text
-rg_increment_decay_P81   -- discharged under current zero-map semantics
-    ↓
-RGCauchyP81LiveTarget
-    ↓
-P81 frontier / coherence corridor
-    ↓
-BalabanRG uniform-LSI package
-    ↓
-DLR-LSI / clustering / physical mass gap
-    ↓
-ClayYangMillsTheorem
-```
-
-### Important qualifier
-
-This corridor is theorem-side green in the current semantics, but the intended final mathematical version still requires rebuilding it after replacing the placeholder `RGBlockingMap := 0` by the explicit Bałaban map.
-
----
-
-## 13. Current frontier
-
-### Cleanup frontier
-
-* migrate any remaining theorem consumers off legacy P91 files,
-* keep the corrected public shim / packet as the unique public theorem-side P91 surface,
-* retire old-route residue once it is not load-bearing anywhere.
-
-### Real semantic frontier
-
-* replace the placeholder zero RG map with the explicit Bałaban blocking map,
-* rebuild the P80/P81 corridor with nontrivial RG dynamics,
-* retain the corrected multiplicative-window P91 lane as the coupling interface for that rebuild.
-
-The second frontier is the mathematically decisive one.
-
----
-
-## 14. Version trajectory
-
-| Version | Commit              | Milestone                                                    |
-| ------- | ------------------- | ------------------------------------------------------------ |
-| v0.9.18 | `1762d76`           | fixed uniform attack surface with `Nonempty` packet          |
-| v0.9.19 | `35c3b1a`           | slot-family bridge                                           |
-| v0.9.20 | `b3e1d12`           | isolated small-field slot                                    |
-| v0.9.21 | `cd8213a`           | isolated large-field slot                                    |
-| v0.9.22 | `b010a18`           | isolated cluster-expansion slot                              |
-| v0.9.23 | `f0db363`           | populated large-field witness                                |
-| v0.9.24 | `14d5bb8`           | populated small-field witness                                |
-| v0.9.25 | `c289474`           | populated cluster witness                                    |
-| v0.9.26 | `dfb1ff3`           | discharged `rg_increment_decay_P81` under zero-map semantics |
-| v0.9.27 | `1ca5eb2`           | cleared semantic-echo P80/P81 wrapper `sorry`s               |
-| v0.9.28 | `b703afa`           | certified legacy P91 route as too weak                       |
-| v0.9.29 | `271f421`           | corrected multiplicative-window public shim                  |
-| v0.9.30 | `27b95b0`           | direct multiplicative-window drift/divergence                |
-| v0.9.31 | pending this commit | stable corrected-window consumer packet                      |
-
----
-
-## 15. Repository snapshot
-
-| Topic                           | Status                                                     |
-| ------------------------------- | ---------------------------------------------------------- |
-| Main build posture              | green on touched targets                                   |
-| P80/P81 corridor                | green under current zero-map semantics                     |
-| Corrected public P91 surface    | direct in multiplicative window                            |
-| Legacy P91 route                | deprecated and audited as too weak                         |
-| Remaining main-file `sorry`s    | 3, all on deprecated legacy P91 route                      |
-| Remaining experimental `sorry`s | 3, non-load-bearing                                        |
-| Terminal claim                  | not yet unconditional in the intended final semantic sense |
-
----
-
-## 16. Reading guide for reviewers
-
-Recommended hostile-review order:
-
-1. `AXIOM_FRONTIER.md`
-2. `YangMills/ClayCore/BalabanRG/P91LegacyRouteCounterexample.lean`
-3. `YangMills/ClayCore/BalabanRG/P91CorrectedWindowPublicShim.lean`
-4. `YangMills/ClayCore/BalabanRG/P91CorrectedWindowConsumerPacket.lean`
-5. `YangMills/ClayCore/BalabanRG/RGCauchyP81Interface.lean`
-6. `YangMills/ClayCore/BalabanRG/BalabanBlockingMap.lean`
-7. `YangMills/P8_PhysicalGap/PhysicalMassGap.lean`
-8. `YangMills/L8_Terminal/ClayTheorem.lean`
-
----
-
-## 17. Signature
-
-Roadmap signature: **March 22, 2026**
-
----
-
 
 ## Complete Paper Corpus
 
