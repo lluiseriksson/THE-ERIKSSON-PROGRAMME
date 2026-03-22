@@ -2,11 +2,11 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** honest formal reduction with the P91 weak-coupling lane cleaned through the denominator-control window, a projection-safe `RGIncrementDecayP81AttackSurface`, and a `RGIncrementDecayP81SlotFamily` bridge whose local packet constructor is now correctly represented as a `def`
+> **Current status:** honest formal reduction with the P91 weak-coupling lane cleaned through the denominator-control window, a projection-safe P81 attack packet, a uniform slot-family bridge, and now a dedicated landing zone for the first live P81 slot: small-field random-walk decay
 > **Claim level:** this repository does **not** claim a finished unconditional Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
-> **Current version:** v0.9.19
+> **Current version:** v0.9.20
 > **Last updated:** March 2026
 
 ---
@@ -45,6 +45,7 @@ Key entry points:
 | Theorem-side live target | `YangMills/ClayCore/BalabanRG/RGCauchyP81LiveTarget.lean` |
 | Local P81 attack packet | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81AttackSurface.lean` |
 | Uniform slot-family bridge | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81SlotFamily.lean` |
+| First live slot landing zone | `YangMills/ClayCore/BalabanRG/RGIncrementDecayP81SmallFieldSlot.lean` |
 | Current audit frontier | `AXIOM_FRONTIER.md` |
 
 ---
@@ -87,7 +88,8 @@ What is already structurally rigid or mathematically substantial:
 - the denominator-control bridge for that window,
 - the rerouted P91 downstream and core consumers,
 - the local `RGIncrementDecayP81AttackSurface`,
-- and the explicit `RGIncrementDecayP81SlotFamily` bridge that turns the three paper-side P81 ingredients into a uniform surface feeding the existing live target.
+- the explicit `RGIncrementDecayP81SlotFamily` bridge,
+- and now the dedicated `RGIncrementDecayP81SmallFieldSlot` landing zone for the first live P81 ingredient.
 
 What remains live mathematically:
 
@@ -147,9 +149,11 @@ DLR-LSI / clustering / physical-mass-gap route
 ClayYangMillsTheorem
 ```
 
-The new alternative theorem-side entrypoint is:
+The theorem-side entrypoint now factors as:
 
 ```text
+RGIncrementDecayP81SmallFieldSlot
+    ↓
 RGIncrementDecayP81SlotFamily
     ↓
 RGIncrementDecayP81AttackSurface
@@ -171,15 +175,13 @@ The file `RGIncrementDecayP81AttackSurface.lean` packages the three paper-side i
 - large-field polymer suppression,
 - cluster expansion / gluing with holes.
 
-The file `RGIncrementDecayP81SlotFamily.lean` makes the next move explicit:
-a user can now specify those three ingredients as β-indexed theorem families, prove that they hold uniformly above a threshold, and obtain from that uniform theorem-side attack surface the existing `RGCauchyP81LiveTarget`, frontier and coherence consumers.
+The file `RGIncrementDecayP81SlotFamily.lean` turns β-indexed theorem families for those three ingredients into the current live target and its public theorem-side consumers.
 
-Important Lean detail:
-the local constructor of the attack packet is represented as a `def`, not a `theorem`,
-because it returns a data packet rather than a proposition.
+The new file `RGIncrementDecayP81SmallFieldSlot.lean` isolates the first of those three ingredients:
+it records a dedicated family for small-field random-walk decay, ties it to the existing small-field threshold surface, and provides the constructor that injects that family into the full slot-family bridge.
 
 This does **not** prove P81.
-It isolates the exact landing zone for the remaining Bałaban mathematics.
+It isolates the exact landing zone for the first genuinely live Bałaban ingredient.
 
 ---
 
@@ -193,6 +195,7 @@ It isolates the exact landing zone for the remaining Bałaban mathematics.
 | P91 downstream/core reroutes | Closed as infrastructure | Consumers now follow the corrected analytic lane |
 | `RGIncrementDecayP81AttackSurface` | Closed as infrastructure | Projection-safe theorem-side packet exists |
 | `RGIncrementDecayP81SlotFamily` | Closed as infrastructure | Uniform slot-family bridge into the live target exists |
+| `RGIncrementDecayP81SmallFieldSlot` | Closed as infrastructure | First live P81 slot now has a dedicated landing zone |
 | `rg_increment_decay_P81` | Live mathematical gap | Main theorem-side bottleneck remains open |
 | `RGCauchyP81LiveTarget` | Live mathematical surface | Waiting for actual P81 input rather than more architecture |
 | Balaban-RG uniform-LSI closure | Live mathematical surface | Depends on the theorem-side bottleneck |
@@ -207,10 +210,10 @@ It isolates the exact landing zone for the remaining Bałaban mathematics.
 | Build posture | green on touched frontier targets |
 | Public claim | honest reduction, not finished Clay proof |
 | Preferred theorem-side bottleneck | `rg_increment_decay_P81` |
-| Preferred theorem-side attack files | `RGIncrementDecayP81AttackSurface.lean`, `RGIncrementDecayP81SlotFamily.lean` |
+| Preferred theorem-side attack files | `RGIncrementDecayP81AttackSurface.lean`, `RGIncrementDecayP81SlotFamily.lean`, `RGIncrementDecayP81SmallFieldSlot.lean` |
 | Preferred analytic correction files | `BalabanCouplingRecursionWindow.lean`, `P91DenominatorControlWindow.lean` |
 | Current audit file | `AXIOM_FRONTIER.md` |
-| Current version | v0.9.19 |
+| Current version | v0.9.20 |
 
 ---
 

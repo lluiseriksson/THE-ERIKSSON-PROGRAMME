@@ -1,7 +1,7 @@
-# AXIOM_FRONTIER.md — v0.9.19 (SLOT-FAMILY PACKET CONSTRUCTOR FIXED AS `def`)
+# AXIOM_FRONTIER.md — v0.9.20 (FIRST LIVE P81 SLOT ISOLATED: SMALL-FIELD RANDOM-WALK DECAY)
 
 ## Status
-TOPOLOGICAL SU FRONT CLOSED LOCALLY. THE ANALYTIC P91 WINDOW HAS BEEN CLEANED THROUGH THE DENOMINATOR-CONTROL LAYER. THE LIVE BOTTLENECK REMAINS THE THEOREM-SIDE P81 INCREMENT-DECAY THEOREM. THIS STEP DOES NOT CLAIM IT SOLVED; IT FIXES THE LOCAL SLOT-FAMILY ATTACK-PACKET CONSTRUCTOR SO IT IS REPRESENTED AS A `def`, WHICH IS THE CORRECT LEAN SHAPE FOR A NON-PROPOSITIONAL PACKET.
+TOPOLOGICAL SU FRONT CLOSED LOCALLY. THE ANALYTIC P91 WINDOW HAS BEEN CLEANED THROUGH THE DENOMINATOR-CONTROL LAYER. THE LIVE BOTTLENECK REMAINS THE THEOREM-SIDE P81 INCREMENT-DECAY THEOREM. THIS STEP DOES NOT CLAIM IT SOLVED; IT ISOLATES THE FIRST LIVE P81 SLOT — SMALL-FIELD RANDOM-WALK DECAY — AND WIRERS IT CLEANLY INTO THE EXISTING SLOT-FAMILY / ATTACK-SURFACE CORRIDOR.
 
 ## Public lane
 - `BalabanRGUniformLSIFrontier` remains the preferred short public entrypoint for the Haar-LSI lane.
@@ -10,9 +10,10 @@ TOPOLOGICAL SU FRONT CLOSED LOCALLY. THE ANALYTIC P91 WINDOW HAS BEEN CLEANED TH
 - `P91DenominatorControlWindow.lean` remains the preferred clean denominator-control bridge for the multiplicative weak-coupling window.
 - `RGIncrementDecayP81AttackSurface.lean` remains the preferred local theorem-side attack packet.
 - `RGIncrementDecayP81SlotFamily.lean` remains the preferred uniform bridge for the three paper-side P81 ingredients.
+- `RGIncrementDecayP81SmallFieldSlot.lean` is now the preferred landing zone for the first genuinely live P81 ingredient.
 
 ## Remaining live mathematical obstruction
-The actual theorem `rg_increment_decay_P81` remains the live obstruction. Once that theorem-side content is populated honestly, `RGCauchyP81LiveTarget` and the package-level uniform-LSI closure become immediate consumers.
+The actual theorem `rg_increment_decay_P81` remains the live obstruction. Once the small-field random-walk slot, the large-field suppression slot, and the cluster-expansion-with-holes slot are populated honestly and glued, `RGCauchyP81LiveTarget` and the package-level uniform-LSI closure become immediate consumers.
 
 ## Soundness note
-This remains an honest reduction. No unconditional Haar-LSI theorem is claimed here. No fake closure of the central P81 theorem is performed from placeholder RG-map semantics. This step is only a Lean-level correction: packet construction returns data, so it must be expressed as a definition rather than as a theorem.
+This remains an honest reduction. No unconditional Haar-LSI theorem is claimed here. No fake closure of the central P81 theorem is performed from placeholder RG-map semantics. This step only isolates the first live paper-side ingredient in a dedicated Lean-correct landing zone.
