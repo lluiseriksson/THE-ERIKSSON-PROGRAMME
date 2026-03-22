@@ -15,6 +15,7 @@ import YangMills.ClayCore.BalabanRG.PhysicalRGRatesWitness
 import YangMills.ClayCore.BalabanRG.PhysicalRGRatesFrontier
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIQuantitativeFrontier
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIQuantitativeAuditPacket
+import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIQuantitativeAuditCoherence
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIConcreteInput
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIDirectInput
 import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIFrontier
