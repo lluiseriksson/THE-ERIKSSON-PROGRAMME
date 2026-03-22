@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** topological SU lane locally closed + theorem-side P81 architecture rigidified + explicit analytic turn on the Bałaban coupling recursion
+> **Current status:** topological SU lane locally closed + theorem-side P81 architecture rigidified + analytic P91 weak-coupling window proved + downstream Cauchy-from-AF consumer rerouted to the multiplicative window
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -14,9 +14,9 @@ Lean 4 formalization for the Yang–Mills mass gap programme
 
 The Eriksson Programme is a long-horizon Lean 4 formalization of the Yang–Mills mass gap programme.
 
-The policy is now explicit:
+The current policy is explicit:
 no unresolved mathematical gap is to be hidden behind API polishing.
-The theorem-side P81 corridor has already been rigidified enough; the live work must now happen inside the analytic lane.
+The theorem-side P81 corridor has been rigidified enough; live work now happens inside the analytic lane and in its first downstream consumers.
 
 ---
 
@@ -28,9 +28,9 @@ What is structurally rigid already:
 
 - the topological SU lane used by the public front,
 - the public Haar-LSI / P81 corridor,
-- the threshold-one obstruction / kernel / live-target / canonical-live-target theorem-side surfaces,
-- the threshold-one normal form,
-- the threshold-one equivalence registry.
+- the threshold-one theorem-side corridor and its normal-form / equivalence-registry surfaces,
+- the analytic P91 weak-coupling window for the Bałaban coupling recursion,
+- and now the downstream `CauchyDecayFromAF` consumer rewritten to accept that multiplicative window.
 
 What remains live mathematically:
 
@@ -41,20 +41,20 @@ What remains live mathematically:
 
 What changed in this step:
 
-- the programme turns analytically toward `BalabanCouplingRecursion.lean`,
-- the weak-coupling window needed for monotone β-growth is now isolated under an explicit proved theorem in `BalabanCouplingRecursionWindow.lean`,
-- the denominator positivity issue is no longer left implicit.
+- `BalabanCouplingRecursionWindow.lean` already proved the multiplicative weak-coupling window,
+- `CauchyDecayFromAFWindow.lean` now converts that window into the older `hβ_upper` interface expected downstream,
+- so the analytic repair is no longer isolated: it now pays a theorem consumer.
 
 ---
 
 ## 3. Why this step matters
 
 The old obstruction was no longer architectural ambiguity.
-It was the actual analytic passage from the P91 Appendix A.2 coupling recursion to a valid contraction statement.
+It was the actual analytic passage from the P91 A.2 coupling recursion to something theorem-side consumers can use.
 
 This step does **not** solve `rg_increment_decay_P81`.
-It does something more honest and more useful:
-it isolates the exact missing weak-coupling window required to make the β-growth step true.
+It does something honest and load-bearing:
+it reroutes a downstream consumer from the new multiplicative weak-coupling window into the existing Cauchy-decay lane without inventing a new hub.
 
 ---
 
@@ -64,9 +64,13 @@ Preferred analytic target:
 
 - `BalabanCouplingRecursion.lean`
 
-Preferred corrective theorem file:
+Preferred analytic correction file:
 
 - `BalabanCouplingRecursionWindow.lean`
+
+Preferred first downstream reroute consumer:
+
+- `CauchyDecayFromAFWindow.lean`
 
 Preferred next theorem-side bottleneck:
 
@@ -74,7 +78,7 @@ Preferred next theorem-side bottleneck:
 
 Preferred next move after this patch:
 
-- reroute downstream consumers through the proved weak-coupling-window theorem,
+- reroute the remaining P91 / beta-divergence consumers to the multiplicative window,
 - then attack the actual theorem-side P81 increment-decay bound.
 
 ---
@@ -86,8 +90,9 @@ Preferred next move after this patch:
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
 | Haar-LSI / P81 architecture | rigid enough for direct analytic attack |
+| Analytic correction | `BalabanCouplingRecursionWindow.lean` |
+| First downstream reroute | `CauchyDecayFromAFWindow.lean` |
 | Current real bottleneck | `rg_increment_decay_P81` |
-| Current real local analytic front | `BalabanCouplingRecursion.lean` |
 | Global claim | honest reduction, not finished Clay proof |
 
 ---
@@ -98,7 +103,8 @@ Preferred next move after this patch:
 |---|---|---|
 | SU compactness route | Closed locally | Public topological front compiled and exported |
 | Threshold-one theorem-side corridor | Structurally rigid | Equivalent theorem-side surfaces already centralized |
-| `BalabanCouplingRecursionWindow` | New analytic correction lane | Makes the weak-coupling denominator window explicit and proved |
+| `BalabanCouplingRecursionWindow` | Analytic correction lane | Proves the weak-coupling denominator window and β-growth in multiplicative form |
+| `CauchyDecayFromAFWindow` | Downstream analytic reroute consumer | Converts the multiplicative weak-coupling window into the old `hβ_upper` consumer interface and pushes the correction downstream |
 | `rg_increment_decay_P81` | Real mathematical gap surface | Still the live theorem-side obstruction |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
 
