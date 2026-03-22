@@ -1,3 +1,4 @@
+import YangMills.ClayCore.BalabanRG.RGIncrementDecayP81SmallFieldWitness
 import YangMills.ClayCore.BalabanRG.RGIncrementDecayP81LargeFieldWitness
 import YangMills.ClayCore.BalabanRG.RGIncrementDecayP81ClusterExpansionSlot
 import YangMills.ClayCore.BalabanRG.RGIncrementDecayP81LargeFieldSlot
