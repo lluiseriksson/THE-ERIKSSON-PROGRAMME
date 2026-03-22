@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness + explicit quantitative PhysicalRGRates frontier + explicit quantitative Haar-LSI frontier + explicit quantitative Haar-LSI audit packet + explicit quantitative Haar-LSI audit coherence hub + repaired quantitative-to-audit bridge + explicit quantitative-to-load-bearing bridge + explicit quantitative load-bearing packet + explicit quantitative load-bearing coherence hub + explicit quantitative P81 packet + explicit quantitative P81 coherence hub + explicit quantitative P81 obstruction packet + explicit quantitative P81 obstruction coherence hub + repaired quantitative P81 witness packet + explicit quantitative P81 chosen-beta packet + repaired quantitative P81 kernel packet + explicit quantitative P81 live-target bridge + explicit quantitative P81 interface bridge
+> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness + explicit quantitative PhysicalRGRates frontier + explicit quantitative Haar-LSI frontier + explicit quantitative Haar-LSI audit packet + explicit quantitative Haar-LSI audit coherence hub + repaired quantitative-to-audit bridge + explicit quantitative-to-load-bearing bridge + explicit quantitative load-bearing packet + explicit quantitative load-bearing coherence hub + explicit quantitative P81 packet + explicit quantitative P81 coherence hub + explicit quantitative P81 obstruction packet + explicit quantitative P81 obstruction coherence hub + repaired quantitative P81 witness packet + explicit quantitative P81 chosen-beta packet + repaired quantitative P81 kernel packet + explicit quantitative P81 live-target bridge + explicit quantitative P81 interface bridge + explicit quantitative P81 canonical live-target bridge
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -60,9 +60,10 @@ What is closed locally or canonically exported right now:
 - the repaired quantitative P81 kernel packet `BalabanRGUniformLSIQuantitativeP81KernelPacket`,
 - the explicit quantitative P81 live-target bridge `BalabanRGUniformLSIQuantitativeP81LiveTargetBridge`,
 - the explicit quantitative P81 interface bridge `BalabanRGUniformLSIQuantitativeP81InterfaceBridge`,
+- the explicit quantitative P81 canonical live-target bridge `BalabanRGUniformLSIQuantitativeP81CanonicalLiveTargetBridge`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- and the theorem layers showing how the direct quantitative Haar-LSI route now evaluates its canonical chosen `β` directly against the exact interface theorem symbol `rg_increment_decay_P81`, with bridge-side canonical equalities.
+- and the theorem layers showing how the direct quantitative Haar-LSI route now identifies its carried theorem-side live target with the canonical standard live target of threshold `β₀ = 1` coming from the exact interface theorem.
 
 What remains live mathematically:
 
@@ -83,39 +84,32 @@ Preferred short quantitative public entrypoint:
 
 - `BalabanRGUniformLSIQuantitativeFrontier`
 
-Preferred quantitative theorem-side kernel packet:
-
-- `BalabanRGUniformLSIQuantitativeP81KernelPacket`
-
 Preferred quantitative theorem-side interface bridge:
 
 - `BalabanRGUniformLSIQuantitativeP81InterfaceBridge`
 
-Preferred interface bridge constructors:
+Preferred quantitative theorem-side canonical live-target bridge:
 
-- `balaban_rg_uniform_lsi_quantitative_p81_interface_bridge_of_quantitative_p81_kernel_packet`
-- `balaban_rg_uniform_lsi_quantitative_p81_interface_bridge_of_quantitative_frontier_and_live_target`
-- `balaban_rg_uniform_lsi_quantitative_p81_interface_bridge_of_quantitative_p81_chosen_beta_packet`
-- `balaban_rg_uniform_lsi_quantitative_p81_interface_bridge_of_quantitative_p81_witness_packet`
-- `balaban_rg_uniform_lsi_quantitative_p81_interface_bridge_of_quantitative_p81_obstruction_coherence`
-- `balaban_rg_uniform_lsi_quantitative_p81_interface_bridge_of_quantitative_p81_obstruction_packet`
-- `balaban_rg_uniform_lsi_quantitative_p81_interface_bridge_of_quantitative_p81_coherence_and_live_target`
-- `balaban_rg_uniform_lsi_quantitative_p81_interface_bridge_of_quantitative_p81_packet`
-- `balaban_rg_uniform_lsi_quantitative_p81_interface_bridge_of_quantitative_load_bearing_coherence_and_live_target`
-- `balaban_rg_uniform_lsi_quantitative_p81_interface_bridge_of_quantitative_audit_packet_and_live_target`
-- `balaban_rg_uniform_lsi_quantitative_p81_interface_bridge_of_quantitative_audit_coherence_and_live_target`
+- `BalabanRGUniformLSIQuantitativeP81CanonicalLiveTargetBridge`
 
-Preferred interface bridge projections:
+Preferred canonical live-target projections:
 
-- `chosen_beta_of_balaban_rg_uniform_lsi_quantitative_p81_interface_bridge`
-- `chosen_beta_ge_one_of_balaban_rg_uniform_lsi_quantitative_p81_interface_bridge`
-- `rg_increment_decay_P81_at_chosen_beta_of_balaban_rg_uniform_lsi_quantitative_p81_interface_bridge`
-- `rg_cauchy_from_increment_decay_at_chosen_beta_of_balaban_rg_uniform_lsi_quantitative_p81_interface_bridge`
+- `rg_cauchy_p81_canonical_live_target_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
+- `rg_cauchy_p81_canonical_threshold_one_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
+- `rg_cauchy_p81_kernel_output_via_canonical_live_target_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
+- `rg_cauchy_p81_kernel_input_via_canonical_live_target_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
+- `rg_cauchy_p81_obligation_via_canonical_live_target_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
+- `rg_cauchy_p81_frontier_via_canonical_live_target_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
+- `rg_cauchy_p81_coherence_packet_via_canonical_live_target_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
 
-Preferred interface bridge equalities:
+Preferred canonical live-target equalities:
 
-- `rg_increment_decay_P81_at_chosen_beta_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_interface_bridge`
-- `rg_cauchy_from_increment_decay_at_chosen_beta_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_interface_bridge`
+- `rg_cauchy_p81_carried_live_target_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
+- `rg_cauchy_p81_kernel_output_via_canonical_live_target_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
+- `rg_cauchy_p81_kernel_input_via_canonical_live_target_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
+- `rg_cauchy_p81_obligation_via_canonical_live_target_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
+- `rg_cauchy_p81_frontier_via_canonical_live_target_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
+- `rg_cauchy_p81_coherence_packet_via_canonical_live_target_eq_canonical_of_balaban_rg_uniform_lsi_quantitative_p81_canonical_live_target_bridge`
 
 Preferred theorem-side P81 surfaces:
 
@@ -128,7 +122,7 @@ Preferred public output:
 - `BalabanRGUniformLSIPublicFacade`
 
 Interpretation:
-the lane now exposes not only the quantitative theorem-side kernel corridor, but also a collision-free bridge that feeds the canonical chosen `β` directly into the exact interface theorem symbol `rg_increment_decay_P81`.
+the lane now exposes not only the quantitative theorem-side kernel corridor and interface bridge, but also a collision-free bridge identifying its carried live target with the canonical threshold-one live target reconstructed from the exact interface theorem.
 
 ---
 
@@ -136,8 +130,8 @@ the lane now exposes not only the quantitative theorem-side kernel corridor, but
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The quantitative P81 interface bridge does not solve the theorem-side P81 gap.
-It makes explicit, under short collision-free names, that the canonical chosen `β` carried by the quantitative route can already be evaluated against the exact theorem symbol that remains the live obstruction.
+The quantitative P81 canonical live-target bridge does not solve the theorem-side P81 gap.
+It makes explicit, under short collision-free names, that the live target already carried by the quantitative route is canonically the same as the standard `β₀ = 1` live target reconstructed from the exact interface theorem.
 
 ---
 
@@ -147,11 +141,11 @@ It makes explicit, under short collision-free names, that the canonical chosen `
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, the P81 coherence packet, the P81 live target, the quantitative `PhysicalRGRates` witness, the quantitative `PhysicalRGRates` frontier, the quantitative Haar-LSI frontier, the quantitative Haar-LSI audit packet, the quantitative Haar-LSI audit coherence hub, the quantitative-to-audit bridge, the quantitative-to-load-bearing bridge, the quantitative load-bearing packet, the quantitative load-bearing coherence hub, the quantitative P81 packet, the quantitative P81 coherence hub, the quantitative P81 obstruction packet, the quantitative P81 obstruction coherence hub, the repaired quantitative P81 witness packet, the quantitative P81 chosen-beta packet, the repaired quantitative P81 kernel packet, the quantitative P81 live-target bridge, and the quantitative P81 interface bridge |
+| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, the P81 coherence packet, the P81 live target, the quantitative `PhysicalRGRates` witness, the quantitative `PhysicalRGRates` frontier, the quantitative Haar-LSI frontier, the quantitative Haar-LSI audit packet, the quantitative Haar-LSI audit coherence hub, the quantitative-to-audit bridge, the quantitative-to-load-bearing bridge, the quantitative load-bearing packet, the quantitative load-bearing coherence hub, the quantitative P81 packet, the quantitative P81 coherence hub, the quantitative P81 obstruction packet, the quantitative P81 obstruction coherence hub, the repaired quantitative P81 witness packet, the quantitative P81 chosen-beta packet, the repaired quantitative P81 kernel packet, the quantitative P81 live-target bridge, the quantitative P81 interface bridge, and the quantitative P81 canonical live-target bridge |
 | Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
 | Preferred quantitative public entrypoint | `BalabanRGUniformLSIQuantitativeFrontier` |
-| Preferred quantitative theorem-side kernel packet | `BalabanRGUniformLSIQuantitativeP81KernelPacket` |
 | Preferred quantitative theorem-side interface bridge | `BalabanRGUniformLSIQuantitativeP81InterfaceBridge` |
+| Preferred quantitative theorem-side canonical live-target bridge | `BalabanRGUniformLSIQuantitativeP81CanonicalLiveTargetBridge` |
 | Preferred theorem-side bottleneck surface | `RGCauchyP81Frontier` |
 | Preferred theorem-side live target | `RGCauchyP81LiveTarget` |
 | Preferred quantitative route | `PhysicalRGRatesFrontier` |
@@ -167,8 +161,8 @@ It makes explicit, under short collision-free names, that the canonical chosen `
 | `RGCauchyP81LiveTarget` | Formal theorem-side live target | Packages the actual weak-coupling theorem family needed to discharge the current P81 bottleneck |
 | `PhysicalRGRatesFrontier` | Formal quantitative frontier | Packages the existence of a direct quantitative `PhysicalRGRates` route under one short public name |
 | `BalabanRGUniformLSIQuantitativeFrontier` | Formal quantitative Haar-LSI frontier | Packages the transfer ingredient together with the direct quantitative rates frontier and feeds the public Haar-LSI lane |
-| `BalabanRGUniformLSIQuantitativeP81KernelPacket` | Repaired direct theorem-side kernel corridor packet | Lands the canonical chosen `β` directly in `RGCauchyP81KernelOutput`, `RGCauchyP81KernelInput`, and `RGCauchyP81Obligation` |
-| `BalabanRGUniformLSIQuantitativeP81InterfaceBridge` | Quantitative-to-interface theorem-side bridge | Evaluates the canonical chosen `β` against the exact interface theorem symbol `rg_increment_decay_P81` and identifies the resulting proof with the canonical bound already carried by the quantitative route |
+| `BalabanRGUniformLSIQuantitativeP81InterfaceBridge` | Quantitative-to-interface theorem-side bridge | Evaluates the canonical chosen `β` against the exact interface theorem symbol `rg_increment_decay_P81` |
+| `BalabanRGUniformLSIQuantitativeP81CanonicalLiveTargetBridge` | Quantitative-to-canonical-live-target theorem-side bridge | Identifies the carried live target of the quantitative route with the standard threshold-one live target reconstructed from the exact interface theorem and reconstructs the canonical theorem-side surfaces from it |
 | `rg_increment_decay_P81` | Real mathematical gap surface | Still exported as an explicit live obstruction in the current repo |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
 
