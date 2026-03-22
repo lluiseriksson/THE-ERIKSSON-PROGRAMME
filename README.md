@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** topological SU lane locally closed + theorem-side P81 architecture rigidified + analytic P91 weak-coupling window proved + downstream `CauchyDecayFromAF` consumer rerouted + downstream `P91BetaDivergence` consumer rerouted to the multiplicative window
+> **Current status:** topological SU lane locally closed + theorem-side P81 architecture rigidified + analytic P91 weak-coupling window proved + downstream `CauchyDecayFromAF`, `P91BetaDivergence`, and `P91BetaDriftClosed` consumers rerouted to the multiplicative window
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -31,7 +31,8 @@ What is already structurally rigid or analytically wired:
 - the threshold-one theorem-side corridor and its normal-form / equivalence-registry surfaces,
 - the analytic P91 weak-coupling window for the Bałaban coupling recursion,
 - the downstream `CauchyDecayFromAFWindow` consumer of that window,
-- and now the downstream `P91BetaDivergenceWindow` consumer of that same window.
+- the downstream `P91BetaDivergenceWindow` consumer of that window,
+- and now the downstream `P91BetaDriftClosedWindow` consumer of that same window.
 
 What remains live mathematically:
 
@@ -42,9 +43,9 @@ What remains live mathematically:
 
 What changed in this step:
 
-- the multiplicative weak-coupling window is no longer paying only inside the Cauchy-decay lane,
-- it now also pays directly in the P91 beta-divergence / rate-to-zero lane,
-- so another theorem-side consumer is now aligned with the true analytic front.
+- the multiplicative weak-coupling window is no longer paying only in the Cauchy-decay lane and in the terminal beta-divergence rate-to-zero lane,
+- it now also pays directly in the closed drift/divergence layer that those downstream theorems consume,
+- so another immediate theorem-side upstream consumer is now aligned with the true analytic front.
 
 ---
 
@@ -55,7 +56,7 @@ It is the actual theorem-bearing propagation of the P91 weak-coupling control in
 
 This step does **not** solve `rg_increment_decay_P81`.
 It does something honest and load-bearing:
-it reroutes another downstream consumer from the new multiplicative weak-coupling window into the existing beta-divergence lane without inventing a new hub.
+it reroutes the closed drift/divergence layer from the new multiplicative weak-coupling window into the existing theorem chain without inventing a new hub.
 
 ---
 
@@ -73,6 +74,7 @@ Preferred downstream reroute consumers:
 
 - `CauchyDecayFromAFWindow.lean`
 - `P91BetaDivergenceWindow.lean`
+- `P91BetaDriftClosedWindow.lean`
 
 Preferred next theorem-side bottleneck:
 
@@ -95,6 +97,7 @@ Preferred next move after this patch:
 | Analytic correction | `BalabanCouplingRecursionWindow.lean` |
 | First downstream reroute | `CauchyDecayFromAFWindow.lean` |
 | Second downstream reroute | `P91BetaDivergenceWindow.lean` |
+| Third downstream reroute | `P91BetaDriftClosedWindow.lean` |
 | Current real bottleneck | `rg_increment_decay_P81` |
 | Global claim | honest reduction, not finished Clay proof |
 
@@ -109,6 +112,7 @@ Preferred next move after this patch:
 | `BalabanCouplingRecursionWindow` | Analytic correction lane | Proves the weak-coupling denominator window and β-growth in multiplicative form |
 | `CauchyDecayFromAFWindow` | Downstream analytic reroute consumer | Converts the multiplicative weak-coupling window into the old `hβ_upper` consumer interface for the Cauchy-decay lane |
 | `P91BetaDivergenceWindow` | Downstream analytic reroute consumer | Converts the multiplicative weak-coupling window into the old `hβ_upper` consumer interface for the beta-divergence / rate-to-zero lane |
+| `P91BetaDriftClosedWindow` | Downstream analytic reroute consumer | Converts the multiplicative weak-coupling window into the old `hβ_upper` consumer interface for the closed drift/divergence layer |
 | `rg_increment_decay_P81` | Real mathematical gap surface | Still the live theorem-side obstruction |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
 

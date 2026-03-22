@@ -1,7 +1,7 @@
-# AXIOM_FRONTIER.md — v0.9.14 (ANALYTIC REROUTE: P91 BETA-DIVERGENCE CONSUMES THE MULTIPLICATIVE WINDOW)
+# AXIOM_FRONTIER.md — v0.9.15 (ANALYTIC REROUTE: P91 CLOSED DRIFT/DIVERGENCE CONSUMES THE MULTIPLICATIVE WINDOW)
 
 ## Status
-TOPOLOGICAL SU FRONT CLOSED LOCALLY. THE THEOREM-SIDE P81 CORRIDOR IS ALREADY RIGID ENOUGH. THE LIVE FRONT REMAINS ANALYTIC. THE P91 WEAK-COUPLING WINDOW IS NOW PROVED IN MULTIPLICATIVE FORM, AND THIS STEP REROUTES ANOTHER DOWNSTREAM CONSUMER (`P91BetaDivergence`) SO THE ANALYTIC FIX CONTINUES TO PAY THEOREM-SIDE.
+TOPOLOGICAL SU FRONT CLOSED LOCALLY. THE THEOREM-SIDE P81 CORRIDOR IS ALREADY RIGID ENOUGH. THE LIVE FRONT REMAINS ANALYTIC. THE P91 WEAK-COUPLING WINDOW IS NOW PROVED IN MULTIPLICATIVE FORM, AND THIS STEP REROUTES THE CLOSED DRIFT/DIVERGENCE LAYER (`P91BetaDriftClosed`) SO THE ANALYTIC FIX CONTINUES TO PAY THEOREM-SIDE.
 
 ## Public lane
 - `BalabanRGUniformLSIFrontier` remains the preferred short public entrypoint for the Haar-LSI lane.
@@ -9,7 +9,8 @@ TOPOLOGICAL SU FRONT CLOSED LOCALLY. THE THEOREM-SIDE P81 CORRIDOR IS ALREADY RI
 - `BalabanRGUniformLSIQuantitativeP81ThresholdOneEquivalenceRegistry` remains the preferred threshold-one theorem-side registry.
 - `BalabanCouplingRecursionWindow.lean` remains the preferred analytic correction file for P91 Appendix A.2.
 - `CauchyDecayFromAFWindow.lean` remains the preferred first downstream consumer of that multiplicative weak-coupling window.
-- `P91BetaDivergenceWindow.lean` is now the preferred second downstream consumer of that multiplicative weak-coupling window.
+- `P91BetaDivergenceWindow.lean` remains the preferred second downstream consumer of that multiplicative weak-coupling window.
+- `P91BetaDriftClosedWindow.lean` is now the preferred third downstream consumer of that multiplicative weak-coupling window.
 
 ## Remaining live mathematical obstruction
 The theorem-side P81 target and the actual package-level uniform-LSI content still have to be discharged internally.
