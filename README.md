@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier
+> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -39,16 +39,17 @@ What is closed locally or canonically exported right now:
 - the audit coherence hub `BalabanRGUniformLSIAuditCoherence`,
 - the explicit kernel interface `RGCauchyP81Kernel`,
 - the explicit obligation surface `RGCauchyP81Obligation`,
-- the new explicit live frontier `RGCauchyP81Frontier`,
+- the explicit live frontier `RGCauchyP81Frontier`,
+- the new explicit coherence packet `RGCauchyP81CoherencePacket`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- and the theorem layers showing how the audit-facing surface, the P81 obligation, and the P81 live frontier are canonically interconvertible.
+- and the theorem layers showing how the audit-facing surface, the P81 obligation, the P81 frontier, the audit link, and the kernel input/output surfaces all coincide canonically.
 
 What remains live mathematically:
 
 - the actual package-level Balaban-RG uniform-LSI content,
 - the P81 single-scale increment decay theorem exported as `rg_increment_decay_P81`,
-- the discharge of the unified live frontier `RGCauchyP81Frontier`,
+- the discharge of the unified P81 bottleneck now packaged through `RGCauchyP81Frontier` and `RGCauchyP81CoherencePacket`,
 - hence the unconditional closure of the present Haar-LSI lane,
 - and therefore the full unconditional Clay conclusion.
 
@@ -112,21 +113,25 @@ Preferred single live frontier for the P81 bottleneck:
 
 - `RGCauchyP81Frontier`
 
+Preferred explicit coherence hub for the P81 bottleneck:
+
+- `RGCauchyP81CoherencePacket`
+
 Preferred public output:
 
 - `BalabanRGUniformLSIPublicFacade`
 
 Preferred theorem-level normal forms now exposed centrally:
 
-- `rg_cauchy_p81_frontier_iff_audit_packet_and_obligation`
-- `rg_cauchy_p81_frontier_iff_audit_link`
-- `rg_cauchy_p81_kernel_output_of_frontier`
-- `rg_cauchy_p81_kernel_input_of_frontier`
-- `rg_increment_decay_bound_of_rg_cauchy_p81_frontier`
-- `rg_cauchy_summability_bound_of_rg_cauchy_p81_frontier`
+- `rg_cauchy_p81_coherence_packet_iff_frontier`
+- `rg_cauchy_p81_coherence_packet_iff_audit_link`
+- `rg_cauchy_p81_coherence_packet_iff_audit_packet_and_obligation`
+- `rg_cauchy_p81_kernel_input_eq_canonical_of_coherence_packet`
+- `rg_cauchy_p81_kernel_output_eq_canonical_of_coherence_packet`
+- `balaban_rg_uniform_lsi_rg_cauchy_audit_link_eq_canonical_of_coherence_packet`
 
 Interpretation:
-the lane now exposes not only the P81 kernel interface and the P81 obligation, but also one single canonical frontier carrying the exact live RG–Cauchy bottleneck under a short public name.
+the lane now exposes not only the P81 kernel interface, the P81 obligation, and the P81 frontier, but also one single coherence hub that centralizes all canonical round-trips and normal forms for the current live RG–Cauchy bottleneck.
 
 ---
 
@@ -134,8 +139,8 @@ the lane now exposes not only the P81 kernel interface and the P81 obligation, b
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The new P81 frontier does not add mathematical content.
-It packages, under one public surface, exactly the current live pair: an audit packet plus the P81 obligation.
+The new P81 coherence packet does not add mathematical content.
+It centralizes, under one public surface, the exact consistency relations among the current live P81 bottleneck names.
 
 ---
 
@@ -145,12 +150,13 @@ It packages, under one public surface, exactly the current live pair: an audit p
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, and the P81 live frontier |
+| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, and the P81 coherence packet |
 | Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
 | Preferred direct public input | `BalabanRGUniformLSIDirectInput` |
 | Preferred most concrete public input | `BalabanRGUniformLSIConcreteInput` |
 | Preferred audit surface | `BalabanRGUniformLSIAuditPacket` |
 | Preferred P81 bottleneck surface | `RGCauchyP81Frontier` |
+| Preferred P81 coherence hub | `RGCauchyP81CoherencePacket` |
 | Preferred public output | `BalabanRGUniformLSIPublicFacade` |
 | Global claim | honest reduction, not finished Clay proof |
 
@@ -168,6 +174,7 @@ It packages, under one public surface, exactly the current live pair: an audit p
 | `BalabanRGUniformLSIRGCauchyAuditLink` | Formal bridge surface | Links the current audit-facing packet to the first explicit RG-Cauchy kernel |
 | `RGCauchyP81Obligation` | Formal live obligation surface | Packages the exact P81 decay obligation together with the derived RG-Cauchy summability consequence under one single name |
 | `RGCauchyP81Frontier` | Formal live frontier surface | Packages the current exact P81 bottleneck under one short public name: audit packet + obligation |
+| `RGCauchyP81CoherencePacket` | Formal coherence hub | Centralizes frontier, audit link, kernel input, kernel output, and the frontier-facing canonical round-trips |
 | `rg_increment_decay_P81` | Real mathematical gap surface | Still exported with `sorry` in the current repo |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
 
