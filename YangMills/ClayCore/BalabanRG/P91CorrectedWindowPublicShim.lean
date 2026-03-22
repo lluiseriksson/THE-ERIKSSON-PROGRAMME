@@ -1,8 +1,9 @@
 import Mathlib
 import YangMills.ClayCore.BalabanRG.BalabanCouplingRecursionWindow
 import YangMills.ClayCore.BalabanRG.P91DenominatorControlWindow
-import YangMills.ClayCore.BalabanRG.P91BetaDriftClosedWindow
+import YangMills.ClayCore.BalabanRG.P91UniformDriftWindowDirect
 import YangMills.ClayCore.BalabanRG.P91LegacyRouteCounterexample
+import YangMills.ClayCore.BalabanRG.P91RecursionData
 
 namespace YangMills.ClayCore
 
@@ -25,6 +26,10 @@ after the old-route hypothesis package
   β < 2 / b₀
 
 has been explicitly audited as too weak by `P91LegacyRouteCounterexample.lean`.
+
+In this version, the drift/divergence surface is no longer borrowed from the
+legacy `hβ_upper` route through `P91BetaDriftClosedWindow.lean`.
+It is obtained directly from `P91UniformDriftWindowDirect.lean`.
 -/
 
 /-- Preferred corrected asymptotic-freedom theorem-side entrypoint. -/
@@ -55,7 +60,7 @@ theorem denominator_in_unit_interval_corrected_in_window_mul
 /-- Preferred corrected drift theorem-side entrypoint. -/
 theorem beta_linear_drift_P91_corrected_in_window_mul
     (N_c : ℕ) [NeZero N_c]
-    (data : P91RecursionData N_c)
+    (_data : P91RecursionData N_c)
     (β : ℕ → ℝ) (r : ℕ → ℝ)
     (hβ0 : 1 ≤ β 0)
     (hstep : ∀ k, β (k + 1) = balabanCouplingStep N_c (β k) (r k))
@@ -63,13 +68,13 @@ theorem beta_linear_drift_P91_corrected_in_window_mul
     (hβ_window_mul : ∀ k, β k * ((3 : ℝ) * balabanBetaCoeff N_c) < 2) :
     ∃ δ > 0, ∀ k, β k + δ ≤ β (k + 1) := by
   exact
-    beta_linear_drift_P91_in_window_mul
-      N_c data β r hβ0 hstep hr hβ_window_mul
+    beta_linear_drift_in_window_mul_direct
+      N_c β r hβ0 hstep hr hβ_window_mul
 
 /-- Preferred corrected divergence theorem-side entrypoint. -/
 theorem beta_tendsto_top_P91_corrected_in_window_mul
     (N_c : ℕ) [NeZero N_c]
-    (data : P91RecursionData N_c)
+    (_data : P91RecursionData N_c)
     (β : ℕ → ℝ) (r : ℕ → ℝ)
     (hβ0 : 1 ≤ β 0)
     (hstep : ∀ k, β (k + 1) = balabanCouplingStep N_c (β k) (r k))
@@ -77,8 +82,8 @@ theorem beta_tendsto_top_P91_corrected_in_window_mul
     (hβ_window_mul : ∀ k, β k * ((3 : ℝ) * balabanBetaCoeff N_c) < 2) :
     Tendsto β atTop atTop := by
   exact
-    beta_tendsto_top_from_data_closed_in_window_mul
-      N_c data β r hβ0 hstep hr hβ_window_mul
+    beta_tendsto_top_in_window_mul_direct
+      N_c β r hβ0 hstep hr hβ_window_mul
 
 /-- Audit surface: the corrected public shim is intentionally aligned with the explicit
 legacy-route counterexample. -/
