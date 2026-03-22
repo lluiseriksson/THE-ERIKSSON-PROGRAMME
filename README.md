@@ -2,7 +2,7 @@
 
 Lean 4 formalization for the Yang–Mills mass gap programme
 
-> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness + explicit quantitative PhysicalRGRates frontier + explicit quantitative Haar-LSI frontier + explicit quantitative Haar-LSI audit packet + explicit quantitative Haar-LSI audit coherence hub + repaired quantitative-to-audit bridge + explicit quantitative-to-load-bearing bridge + explicit quantitative load-bearing packet + explicit quantitative load-bearing coherence hub + explicit quantitative P81 packet
+> **Current status:** formal reduction + single public frontier entrypoint + explicit direct input packet + explicit concrete input packet + centralized input coherence hub + unified end-to-end packet + centralized obstruction packet + unified Pillar II packet + explicit load-bearing packet + load-bearing coherence hub + unified audit packet + audit coherence hub + explicit RGCauchy P81 kernel interface + explicit P81 obligation surface + explicit P81 live frontier + explicit P81 coherence packet + explicit P81 live target + explicit quantitative PhysicalRGRates witness + explicit quantitative PhysicalRGRates frontier + explicit quantitative Haar-LSI frontier + explicit quantitative Haar-LSI audit packet + explicit quantitative Haar-LSI audit coherence hub + repaired quantitative-to-audit bridge + explicit quantitative-to-load-bearing bridge + explicit quantitative load-bearing packet + explicit quantitative load-bearing coherence hub + explicit quantitative P81 packet + explicit quantitative P81 coherence hub
 > **Claim level:** this repository does **not** claim a finished Clay solution
 > **Build health:** all touched targets must compile green
 > **Lean / Mathlib:** Lean `v4.29.0-rc6` + Mathlib
@@ -52,9 +52,10 @@ What is closed locally or canonically exported right now:
 - the explicit quantitative load-bearing packet `BalabanRGUniformLSIQuantitativeLoadBearingPacket`,
 - the explicit quantitative load-bearing coherence hub `BalabanRGUniformLSIQuantitativeLoadBearingCoherence`,
 - the explicit quantitative P81 packet `BalabanRGUniformLSIQuantitativeP81Packet`,
+- the explicit quantitative P81 coherence hub `BalabanRGUniformLSIQuantitativeP81Coherence`,
 - the canonical public output facade `BalabanRGUniformLSIPublicFacade`,
 - the canonical trunk-facing carrier `BalabanRGUniformLSILaneContract`,
-- and the theorem layers showing how the direct quantitative Haar-LSI route now lands not only in the standard audit-facing packet and the standard load-bearing packet, but also in a dedicated theorem-side P81 packet once a theorem-side `RGCauchyP81LiveTarget` is supplied.
+- and the theorem layers showing how the direct quantitative Haar-LSI route now lands in a single dedicated coherence surface immediately above the theorem-side P81 bottleneck.
 
 What remains live mathematically:
 
@@ -75,18 +76,6 @@ Preferred short quantitative public entrypoint:
 
 - `BalabanRGUniformLSIQuantitativeFrontier`
 
-Preferred quantitative audit-style packet:
-
-- `BalabanRGUniformLSIQuantitativeAuditPacket`
-
-Preferred quantitative audit coherence hub:
-
-- `BalabanRGUniformLSIQuantitativeAuditCoherence`
-
-Preferred quantitative load-bearing packet:
-
-- `BalabanRGUniformLSIQuantitativeLoadBearingPacket`
-
 Preferred quantitative load-bearing coherence hub:
 
 - `BalabanRGUniformLSIQuantitativeLoadBearingCoherence`
@@ -95,17 +84,9 @@ Preferred quantitative theorem-side P81 packet:
 
 - `BalabanRGUniformLSIQuantitativeP81Packet`
 
-Preferred quantitative-to-audit bridge:
+Preferred quantitative theorem-side P81 coherence hub:
 
-- `balaban_rg_uniform_lsi_audit_packet_of_quantitative_frontier`
-- `balaban_rg_uniform_lsi_audit_packet_of_quantitative_audit_packet`
-- `balaban_rg_uniform_lsi_audit_packet_of_quantitative_audit_coherence`
-
-Preferred quantitative-to-load-bearing bridge:
-
-- `balaban_rg_uniform_lsi_load_bearing_packet_of_quantitative_frontier`
-- `balaban_rg_uniform_lsi_load_bearing_packet_of_quantitative_audit_packet`
-- `balaban_rg_uniform_lsi_load_bearing_packet_of_quantitative_audit_coherence`
+- `BalabanRGUniformLSIQuantitativeP81Coherence`
 
 Preferred quantitative P81 packet constructors:
 
@@ -114,6 +95,14 @@ Preferred quantitative P81 packet constructors:
 - `balaban_rg_uniform_lsi_quantitative_p81_packet_of_quantitative_load_bearing_coherence_and_live_target`
 - `balaban_rg_uniform_lsi_quantitative_p81_packet_of_quantitative_audit_packet_and_live_target`
 - `balaban_rg_uniform_lsi_quantitative_p81_packet_of_quantitative_audit_coherence_and_live_target`
+
+Preferred quantitative P81 coherence constructors:
+
+- `balaban_rg_uniform_lsi_quantitative_p81_coherence_of_quantitative_frontier_and_live_target`
+- `balaban_rg_uniform_lsi_quantitative_p81_coherence_of_quantitative_p81_packet`
+- `balaban_rg_uniform_lsi_quantitative_p81_coherence_of_quantitative_load_bearing_coherence_and_live_target`
+- `balaban_rg_uniform_lsi_quantitative_p81_coherence_of_quantitative_audit_packet_and_live_target`
+- `balaban_rg_uniform_lsi_quantitative_p81_coherence_of_quantitative_audit_coherence_and_live_target`
 
 Preferred theorem-side P81 surfaces:
 
@@ -126,7 +115,7 @@ Preferred public output:
 - `BalabanRGUniformLSIPublicFacade`
 
 Interpretation:
-the lane now exposes not only a direct quantitative entrypoint into Haar-LSI and its audit/load-bearing landings, but also a dedicated quantitative P81 packet that centralizes the theorem-side bottleneck packet obtained from the quantitative route together with a supplied theorem-side live target.
+the lane now exposes not only a dedicated quantitative theorem-side P81 packet, but also a dedicated coherence hub that centralizes the quantitative route, the supplied theorem-side live target, and the short theorem-side P81 surfaces built from them.
 
 ---
 
@@ -134,8 +123,8 @@ the lane now exposes not only a direct quantitative entrypoint into Haar-LSI and
 
 This is still an honest reduction, not a finished unconditional proof.
 
-The quantitative P81 packet does not solve the theorem-side P81 gap.
-It makes explicit, under short collision-free theorem names, the exact theorem-facing surface that remains once the direct quantitative Haar-LSI route is combined with a theorem-side `RGCauchyP81LiveTarget`.
+The quantitative P81 coherence hub does not solve the theorem-side P81 gap.
+It makes explicit, under short collision-free theorem names, the exact coherence surface that remains once the direct quantitative Haar-LSI route is combined with a theorem-side `RGCauchyP81LiveTarget`.
 
 ---
 
@@ -145,12 +134,11 @@ It makes explicit, under short collision-free theorem names, the exact theorem-f
 |---|---|
 | Build posture | green on touched frontier targets |
 | SU compactness lane | locally discharged |
-| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, the P81 coherence packet, the P81 live target, the quantitative `PhysicalRGRates` witness, the quantitative `PhysicalRGRates` frontier, the quantitative Haar-LSI frontier, the quantitative Haar-LSI audit packet, the quantitative Haar-LSI audit coherence hub, the quantitative-to-audit bridge, the quantitative-to-load-bearing bridge, the quantitative load-bearing packet, the quantitative load-bearing coherence hub, and the quantitative P81 packet |
+| Haar-LSI lane | canonically exported through frontier entrypoint, direct input, activation input, concrete input, input coherence hub, end-to-end packet, obstruction packet, Pillar II packet, load-bearing packet, load-bearing coherence hub, audit packet, audit coherence hub, the RGCauchy P81 kernel interface, the P81 obligation surface, the P81 live frontier, the P81 coherence packet, the P81 live target, the quantitative `PhysicalRGRates` witness, the quantitative `PhysicalRGRates` frontier, the quantitative Haar-LSI frontier, the quantitative Haar-LSI audit packet, the quantitative Haar-LSI audit coherence hub, the quantitative-to-audit bridge, the quantitative-to-load-bearing bridge, the quantitative load-bearing packet, the quantitative load-bearing coherence hub, the quantitative P81 packet, and the quantitative P81 coherence hub |
 | Preferred single public entrypoint | `BalabanRGUniformLSIFrontier` |
 | Preferred quantitative public entrypoint | `BalabanRGUniformLSIQuantitativeFrontier` |
-| Preferred quantitative audit packet | `BalabanRGUniformLSIQuantitativeAuditPacket` |
-| Preferred quantitative load-bearing packet | `BalabanRGUniformLSIQuantitativeLoadBearingPacket` |
 | Preferred quantitative theorem-side packet | `BalabanRGUniformLSIQuantitativeP81Packet` |
+| Preferred quantitative theorem-side coherence hub | `BalabanRGUniformLSIQuantitativeP81Coherence` |
 | Preferred theorem-side bottleneck surface | `RGCauchyP81Frontier` |
 | Preferred theorem-side live target | `RGCauchyP81LiveTarget` |
 | Preferred quantitative route | `PhysicalRGRatesFrontier` |
@@ -164,12 +152,11 @@ It makes explicit, under short collision-free theorem names, the exact theorem-f
 |---|---|---|
 | SU compactness route | Closed locally | Public topological front compiled and exported |
 | `RGCauchyP81LiveTarget` | Formal theorem-side live target | Packages the actual weak-coupling theorem family needed to discharge the current P81 bottleneck |
-| `physical_rg_rates_witness` | Formal quantitative witness | Assembles the already-proved rate-side witnesses into a full `PhysicalRGRates` package without the legacy axiom route |
 | `PhysicalRGRatesFrontier` | Formal quantitative frontier | Packages the existence of a direct quantitative `PhysicalRGRates` route under one short public name |
 | `BalabanRGUniformLSIQuantitativeFrontier` | Formal quantitative Haar-LSI frontier | Packages the transfer ingredient together with the direct quantitative rates frontier and feeds the public Haar-LSI lane |
-| `BalabanRGUniformLSIQuantitativeLoadBearingPacket` | Formal quantitative load-bearing packet | Centralizes the quantitative frontier together with the standard load-bearing landing, the public frontier/facade, and the exact live-target surfaces sitting immediately upstream of the real P81 bottleneck |
-| `BalabanRGUniformLSIQuantitativeLoadBearingCoherence` | Formal quantitative load-bearing coherence hub | Centralizes the quantitative load-bearing packet together with its canonical frontier, load-bearing landing, public surfaces, and live-target projections under one single coherence surface |
-| `BalabanRGUniformLSIQuantitativeP81Packet` | Formal quantitative theorem-side P81 packet | Centralizes the quantitative load-bearing coherence hub together with the standard audit landing, the theorem-side `RGCauchyP81LiveTarget`, the short P81 frontier, and the short theorem-side coherence packet |
+| `BalabanRGUniformLSIQuantitativeLoadBearingCoherence` | Formal quantitative load-bearing coherence hub | Centralizes the quantitative load-bearing surface immediately upstream of the theorem-side bottleneck |
+| `BalabanRGUniformLSIQuantitativeP81Packet` | Formal quantitative theorem-side P81 packet | Centralizes the quantitative route together with the standard audit landing, the theorem-side `RGCauchyP81LiveTarget`, the short P81 frontier, and the short theorem-side coherence packet |
+| `BalabanRGUniformLSIQuantitativeP81Coherence` | Formal quantitative theorem-side P81 coherence hub | Centralizes the quantitative P81 packet together with its canonical quantitative route, theorem-side live target, and short theorem-side packet surfaces under one single coherence surface |
 | `rg_increment_decay_P81` | Real mathematical gap surface | Still exported as an explicit live obstruction in the current repo |
 | `BalabanRGUniformLSILiveTarget` | Real mathematical gap surface | Still points to the actual package-level uniform-LSI content |
 
