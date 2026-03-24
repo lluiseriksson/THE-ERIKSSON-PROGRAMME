@@ -1,5 +1,5 @@
 import Mathlib
-import YangMills.ClayCore.BalabanRG.HaarLSIConcreteBridge
+import YangMills.ClayCore.BalabanRG.HaarLSIBridge
 import YangMills.ClayCore.BalabanRG.UniformLSITransfer
 
 namespace YangMills.ClayCore
@@ -8,13 +8,15 @@ namespace YangMills.ClayCore
 def SpecialUnitaryDirectUniformLSITheoremTarget (d N_c : ℕ) [NeZero N_c] : Prop :=
   ∃ pkg : BalabanRGPackage d N_c, True
 
-/-- The direct package route implies the concrete uniform-LSI target. -/
-theorem concrete_uniform_target_of_direct_theorem
+/-- The direct package route already implies the abstract uniform-LSI package target used
+by the Haar bridge. No concrete bridge is needed here. -/
+theorem abstract_uniform_target_of_direct_theorem
     {d N_c : ℕ} [NeZero N_c]
     (h : SpecialUnitaryDirectUniformLSITheoremTarget d N_c) :
-    SpecialUnitaryConcreteUniformLSITarget d N_c := by
+    SpecialUnitaryUniformLSIPackageTarget N_c := by
   rcases h with ⟨pkg, _⟩
-  exact concrete_uniform_target_of_pkg pkg
+  obtain ⟨c, hc, _hlsi⟩ := uniform_lsi_of_balaban_rg_package pkg
+  exact ⟨c, hc⟩
 
 /-- Any package gives the direct theorem target. -/
 theorem direct_uniform_theorem_target_of_pkg
@@ -23,13 +25,12 @@ theorem direct_uniform_theorem_target_of_pkg
     SpecialUnitaryDirectUniformLSITheoremTarget d N_c := by
   exact ⟨pkg, trivial⟩
 
-/-- Direct package route to Haar-LSI through the concrete bridge. -/
+/-- Direct package route to Haar-LSI through the abstract bridge only. -/
 theorem haar_lsi_from_direct_uniform_theorem
     (d N_c : ℕ) [NeZero N_c]
     (tr : HaarLSIFromUniformLSITransfer N_c)
     (h : SpecialUnitaryDirectUniformLSITheoremTarget d N_c) :
     HaarLSITarget N_c := by
-  exact haar_lsi_target_of_concrete_uniform_lsi d N_c tr
-    (concrete_uniform_target_of_direct_theorem h)
+  exact haar_lsi_target_of_uniform_lsi N_c tr (abstract_uniform_target_of_direct_theorem h)
 
 end YangMills.ClayCore

@@ -1,23 +1,20 @@
-# AXIOM_FRONTIER.md — v0.9.31 (THE LEGACY CLOSED-WINDOW COMPATIBILITY LAYER NOW RUNS ON THE DIRECT MULTIPLICATIVE-WINDOW DRIFT ROUTE)
+# AXIOM_FRONTIER.md — v0.9.34 (HAAR-LSI DIRECT BRIDGE REWRITTEN ON THE ABSTRACT STACK)
 
 ## Status
-TOPOLOGICAL SU FRONT CLOSED LOCALLY. THE P80/P81 CORRIDOR IS GREEN UNDER THE CURRENT ZERO-MAP SEMANTICS. THE LEGACY P91 ROUTE HAS ALREADY BEEN CERTIFIED TOO WEAK BY EXPLICIT COUNTEREXAMPLE. THE CORRECTED PUBLIC P91 SHIM WAS ALREADY MOVED TO THE DIRECT MULTIPLICATIVE-WINDOW DRIFT ROUTE. THIS STEP MOVES THE LEGACY CLOSED-WINDOW COMPATIBILITY LAYER TO THAT SAME DIRECT ROUTE, SO DOWNSTREAM CONSUMERS CAN KEEP THEIR OLD THEOREM NAMES WITHOUT REIMPORTING THE OLD DRIFT PROOF PATH.
+TOPOLOGICAL SU FRONT CLOSED LOCALLY. THE P80/P81 CORRIDOR IS GREEN UNDER THE CURRENT ZERO-MAP SEMANTICS. THE P91 EXTERNAL RESIDUE AUDIT IS AT ZERO. THIS STEP MOVES TO THE NEXT REAL BOTTLENECK: HAAR-LSI, BY REWRITING `HaarLSIDirectBridge.lean` SO IT STOPS USING NAMES FROM `HaarLSIConcreteBridge.lean`.
 
 ## Public lane
-- `P91CorrectedWindowPublicShim.lean` remains the preferred public theorem-side entrypoint for the corrected P91 lane.
-- `P91UniformDriftWindowDirect.lean` remains the preferred direct multiplicative-window drift/divergence file.
-- `P91BetaDriftClosedWindow.lean` remains exportable only as a compatibility shell; its payload is now routed through the direct multiplicative-window drift file.
-- `BalabanCouplingRecursionWindow.lean` remains the preferred corrected asymptotic-freedom file.
-- `P91DenominatorControlWindow.lean` remains the preferred corrected denominator-control file.
-- `P91LegacyRouteCounterexample.lean` remains the preferred audit file for the rejected old route.
+- `HaarLSIBridge.lean` remains the abstract bridge from a uniform-LSI package target to the Haar-LSI target.
+- `UniformLSITransfer.lean` remains the route extracting an actual positive LSI constant from a `BalabanRGPackage`.
+- `HaarLSIDirectBridge.lean` now works on the abstract stack: package → abstract uniform target → Haar-LSI.
+- `HaarLSIConcreteBridge.lean` remains available as a concrete auxiliary layer, but it is no longer needed by the direct bridge.
 
 ## Remaining live mathematical obstruction
-The live obstruction is not to repair the old route as written.
-It is:
-- remove any remaining residue outside the compatibility shell,
-- replace the placeholder zero-map RG semantics by the explicit Balaban blocking map,
-- rebuild the theorem-side corridor there,
-- and discharge the remaining quantitative/LSI fronts without conditional scaffolding.
+The live obstruction is still:
+- continuing to reduce the bridge stack in the Haar-LSI lane,
+- supplying the actual honest transfer `HaarLSIFromUniformLSITransfer`,
+- replacing the placeholder zero-map RG semantics by the explicit Balaban blocking map,
+- and rebuilding the theorem-side corridor there.
 
 ## Soundness note
-This remains an honest reduction. No unconditional final Bałaban theorem is claimed here. This step only makes the surviving compatibility layer less dependent on deprecated legacy drift files.
+No unconditional final Bałaban theorem is claimed here. This step only removes one structural dependency inside the Haar-LSI bridge stack.
