@@ -4,11 +4,12 @@ import YangMills.ClayCore.BalabanRG.BalabanRGUniformLSIEquivalenceRegistry
 namespace YangMills.ClayCore
 
 /-- Canonical public front-end for the current Balaban-RG / Haar-LSI lane:
-it packages both the equivalence registry for the live hypotheses and the
-structured closure package exported by the current frontier. -/
+it packages both the equivalence registry for the live hypotheses and the structured
+closure package exported by the current frontier. The direct theorem target is the
+canonical center, while the older target names remain supported as compatibility views. -/
 structure BalabanRGUniformLSIPublicFacade (d N_c : ℕ) [NeZero N_c] : Prop where
   registry : BalabanRGUniformLSIEquivalenceRegistry d N_c
-  closure : BalabanRGUniformLSIClosurePackage d N_c
+  closure  : BalabanRGUniformLSIClosurePackage d N_c
 
 /-- Preferred public facade from the preferred public live target. -/
 theorem balaban_rg_uniform_lsi_public_facade_of_live_target

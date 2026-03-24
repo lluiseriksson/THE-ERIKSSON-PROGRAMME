@@ -2,6 +2,18 @@
 
 **Lean 4 formalization of the Yang–Mills mass gap programme**
 
+> **Current status:** the internal Haar-LSI chain is already aligned on the direct theorem target, and this step cleans the public BalabanRG/LSI registry and facade so they also use that same target canonically
+>
+> **Stable documentation:** this README keeps the broad mathematical and architectural picture; volatile frontier status lives in `AXIOM_FRONTIER.md`
+>
+> **This step:** `BalabanRGUniformLSIEquivalenceRegistry.lean` and `BalabanRGUniformLSIPublicFacade.lean` now treat the direct theorem target as the canonical center, leaving older target names as compatibility views.
+
+---
+
+# THE ERIKSSON PROGRAMME
+
+**Lean 4 formalization of the Yang–Mills mass gap programme**
+
 > **Current status:** the P91 external residue audit is at zero, the live Haar-LSI chain is aligned on the abstract direct theorem target, and this step turns `HaarLSIConcreteBridge.lean` into a pure compatibility layer
 >
 > **Stable documentation:** this README keeps the broad mathematical and architectural picture; volatile frontier status lives in `AXIOM_FRONTIER.md`
