@@ -2,6 +2,18 @@
 
 **Lean 4 formalization of the Yang–Mills mass gap programme**
 
+> **Current status:** the P91 external residue audit is at zero, the live Haar-LSI chain is aligned on the abstract direct theorem target, and this step turns `HaarLSIConcreteBridge.lean` into a pure compatibility layer
+>
+> **Stable documentation:** this README keeps the broad mathematical and architectural picture; volatile frontier status lives in `AXIOM_FRONTIER.md`
+>
+> **This step:** the old concrete-bridge names remain available, but their theorem payload now comes directly from the already-green abstract route.
+
+---
+
+# THE ERIKSSON PROGRAMME
+
+**Lean 4 formalization of the Yang–Mills mass gap programme**
+
 > **Current status:** the P91 external residue audit is at zero, the direct Haar-LSI bridge and frontier already run on the abstract stack, and this step aligns `HaarLSIConditionalClosure` and `HaarLSILiveTarget` with that same direct theorem target
 >
 > **Stable documentation:** this README keeps the broad mathematical and architectural picture; volatile frontier status lives in `AXIOM_FRONTIER.md`
