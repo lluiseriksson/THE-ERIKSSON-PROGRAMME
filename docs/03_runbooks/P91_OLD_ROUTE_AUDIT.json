@@ -1,11 +1,24 @@
 {
-  "generated_at_utc": "2026-03-24T11:32:48.699390+00:00",
+  "generated_at_utc": "2026-03-24 11:44:38 UTC",
   "lean_files_scanned": 299,
+  "known_legacy_zone_files": [
+    "YangMills/ClayCore/BalabanRG/CauchyDecayFromAF.lean",
+    "YangMills/ClayCore/BalabanRG/CauchyDecayFromAFWindow.lean",
+    "YangMills/ClayCore/BalabanRG/P91BetaDivergence.lean",
+    "YangMills/ClayCore/BalabanRG/P91BetaDriftClosed.lean",
+    "YangMills/ClayCore/BalabanRG/P91BetaDriftClosedWindow.lean",
+    "YangMills/ClayCore/BalabanRG/P91UniformDrift.lean"
+  ],
   "outside_residue_file_count": 0,
-  "outside_residue_files": [],
   "outside_residue_ranked": [],
   "outside_residue_score_map": {},
   "legacy_core_import_outside_count": 0,
   "bridge_import_outside_count": 0,
-  "legacy_symbol_outside_count": 0
+  "legacy_symbol_outside_count": 0,
+  "legacy_core_import_hits_outside_known_zone": [],
+  "bridge_import_hits_outside_known_zone": [],
+  "legacy_symbol_hits_outside_known_zone": [],
+  "legacy_core_import_hits_all": [],
+  "bridge_import_hits_all": [],
+  "legacy_symbol_hits_all": []
 }
