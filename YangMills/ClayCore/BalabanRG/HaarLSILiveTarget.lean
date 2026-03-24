@@ -4,21 +4,16 @@ import YangMills.ClayCore.BalabanRG.HaarLSIDirectBridge
 
 namespace YangMills.ClayCore
 
-/-- Canonical public name for the unique remaining live target in the current Haar-LSI lane. -/
+/-- Canonical public name for the unique remaining live target in the current Haar-LSI lane:
+it is exactly the direct package theorem target. -/
 def HaarLSILiveTarget (d N_c : ℕ) [NeZero N_c] : Prop :=
-  BalabanRGUniformLSIConditionalTarget d N_c
+  SpecialUnitaryDirectUniformLSITheoremTarget d N_c
 
-/-- The live target is equivalent to the already existing direct-package theorem target. -/
+/-- The live target is definitionally the already existing direct-package theorem target. -/
 theorem haar_lsi_live_target_iff_direct_uniform_theorem_target
     (d N_c : ℕ) [NeZero N_c] :
     HaarLSILiveTarget d N_c ↔ SpecialUnitaryDirectUniformLSITheoremTarget d N_c := by
-  constructor
-  · intro h
-    rcases h with ⟨pkg, _⟩
-    exact direct_uniform_theorem_target_of_pkg pkg
-  · intro h
-    rcases h with ⟨pkg, _⟩
-    exact balaban_rg_uniform_lsi_conditional_target_of_pkg pkg
+  rfl
 
 /-- Once the live target is solved, the packaged frontier closes immediately. -/
 theorem haar_lsi_frontier_package_of_live_target
