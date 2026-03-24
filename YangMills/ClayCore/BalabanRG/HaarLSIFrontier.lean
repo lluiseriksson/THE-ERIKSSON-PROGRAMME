@@ -1,18 +1,18 @@
 import Mathlib
-import YangMills.ClayCore.BalabanRG.HaarLSIConcreteBridge
 import YangMills.ClayCore.BalabanRG.HaarLSIDirectBridge
 import YangMills.ClayCore.BalabanRG.HaarLSIScaleBridge
 
 namespace YangMills.ClayCore
 
-/-- Canonical frontier statement:
-an actual RG package plus a transfer from uniform LSI to Haar LSI closes the Haar target. -/
+/-- Canonical frontier statement: an actual RG package plus a transfer from uniform LSI to
+Haar LSI closes the Haar target. -/
 theorem haar_lsi_frontier_of_pkg
     (d N_c : ℕ) [NeZero N_c]
     (tr : HaarLSIFromUniformLSITransfer N_c)
     (pkg : BalabanRGPackage d N_c) :
     HaarLSITarget N_c := by
-  exact haar_lsi_from_concrete_via_abstract d N_c tr pkg
+  exact haar_lsi_from_direct_uniform_theorem d N_c tr
+    (direct_uniform_theorem_target_of_pkg pkg)
 
 /-- Same frontier, but through the direct theorem target abstraction. -/
 theorem haar_lsi_frontier_of_direct_target
