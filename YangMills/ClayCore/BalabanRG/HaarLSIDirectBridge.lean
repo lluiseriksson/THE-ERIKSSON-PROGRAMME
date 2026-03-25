@@ -47,9 +47,17 @@ theorem abstract_uniform_target_of_direct_theorem_explicit
     (d N_c : ℕ) [NeZero N_c]
     (h : SpecialUnitaryDirectUniformLSITheoremTarget d N_c) :
     SpecialUnitaryUniformLSIPackageTarget N_c := by
-  exact abstract_uniform_target_of_direct_theorem h
+  exact direct_uniform_lsi_implies_abstract_uniform_target h
 
-/-- Eliminación directa hacia el target Haar-LSI. -/
+/-- Direct elimination toward the strong analytic Haar-LSI target. -/
+theorem analytic_haar_lsi_target_of_direct_uniform_lsi
+    (d N_c : ℕ) [NeZero N_c]
+    (tr : HaarLSIFromUniformLSIAnalyticTransfer N_c)
+    (h : SpecialUnitaryDirectUniformLSITheoremTarget d N_c) :
+    HaarLSIAnalyticTarget N_c := by
+  exact tr (direct_uniform_lsi_implies_abstract_uniform_target h)
+
+/-- Eliminación directa hacia el target Haar-LSI legacy. -/
 theorem haar_lsi_target_of_direct_uniform_lsi
     (d N_c : ℕ) [NeZero N_c]
     (tr : HaarLSIFromUniformLSITransfer N_c)
@@ -57,6 +65,16 @@ theorem haar_lsi_target_of_direct_uniform_lsi
     HaarLSITarget N_c := by
   exact
     haar_lsi_target_of_uniform_lsi N_c tr
+      (direct_uniform_lsi_implies_abstract_uniform_target h)
+
+/-- Same direct elimination, but through the stronger analytic transfer. -/
+theorem haar_lsi_target_of_direct_uniform_lsi_via_analytic
+    (d N_c : ℕ) [NeZero N_c]
+    (tr : HaarLSIFromUniformLSIAnalyticTransfer N_c)
+    (h : SpecialUnitaryDirectUniformLSITheoremTarget d N_c) :
+    HaarLSITarget N_c := by
+  exact
+    haar_lsi_target_of_uniform_lsi_via_analytic N_c tr
       (direct_uniform_lsi_implies_abstract_uniform_target h)
 
 /-- Alias legacy theorem-side esperado por `HaarLSIFrontier`. -/
@@ -67,6 +85,14 @@ theorem haar_lsi_from_direct_uniform_theorem
     HaarLSITarget N_c := by
   exact haar_lsi_target_of_direct_uniform_lsi d N_c tr h
 
+/-- Strong analytic alias parallel to the legacy one. -/
+theorem analytic_haar_lsi_from_direct_uniform_theorem
+    (d N_c : ℕ) [NeZero N_c]
+    (tr : HaarLSIFromUniformLSIAnalyticTransfer N_c)
+    (h : SpecialUnitaryDirectUniformLSITheoremTarget d N_c) :
+    HaarLSIAnalyticTarget N_c := by
+  exact analytic_haar_lsi_target_of_direct_uniform_lsi d N_c tr h
+
 /-- Paquete RG -> vista directa -> target abstracto reforzado -> Haar-LSI. -/
 theorem haar_lsi_from_direct_via_abstract
     (d N_c : ℕ) [NeZero N_c]
@@ -75,6 +101,16 @@ theorem haar_lsi_from_direct_via_abstract
     HaarLSITarget N_c := by
   exact
     haar_lsi_from_direct_uniform_theorem d N_c tr
+      (direct_uniform_target_of_pkg pkg)
+
+/-- Paquete RG -> vista directa -> target analítico fuerte. -/
+theorem analytic_haar_lsi_from_direct_via_abstract
+    (d N_c : ℕ) [NeZero N_c]
+    (tr : HaarLSIFromUniformLSIAnalyticTransfer N_c)
+    (pkg : BalabanRGPackage d N_c) :
+    HaarLSIAnalyticTarget N_c := by
+  exact
+    analytic_haar_lsi_from_direct_uniform_theorem d N_c tr
       (direct_uniform_target_of_pkg pkg)
 
 end
