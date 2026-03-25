@@ -1,48 +1,70 @@
-import Mathlib
 import YangMills.ClayCore.BalabanRG.HaarLSIReduction
+import YangMills.ClayCore.BalabanRG.HaarLSIAnalyticTarget
 import YangMills.ClayCore.BalabanRG.LSIRateLowerBound
 import YangMills.ClayCore.BalabanRG.UniformLSITransfer
 import YangMills.ClayCore.BalabanRG.KPWeightedToLSIBridge
 
-namespace YangMills.ClayCore
+namespace YangMills
+namespace ClayCore
 
-/-!
-# HaarLSIBridge — puente honesto entre el frente LSI interno y la LSI de Haar
+/-
+HaarLSIBridge — puente honesto entre el frente LSI interno y la LSI de Haar.
 
-Este archivo no cierra todavía la LSI de Haar en `SU(n)`.
-Registra de forma explícita una segunda vía de reducción:
+Esta versión deja explícita la factorización correcta del cuello de botella:
 
-* vía geométrica: Ricci/Bakry–Émery (`HaarLSIReduction`);
-* vía analítica interna del programa: constantes y paquetes LSI ya presentes en BalabanRG.
+1. P8 ya aterriza un target analítico real:
+     HaarLSIAnalyticTarget n
 
-El objetivo aquí es puramente arquitectónico: dejar el puente formalizado sin
-contaminar la fachada topológica ya estabilizada.
+2. Ese target analítico proyecta al target débil legacy:
+     HaarLSIAnalyticTarget n -> HaarLSITarget n
+
+3. La vía RG ya produce exactamente:
+     SpecialUnitaryUniformLSIPackageTarget n
+   mediante un witness real de `ClayCoreLSI`.
+
+Por tanto, el único gap vivo que queda aislado aquí es:
+
+     HaarLSIFromUniformLSITransfer n :
+       SpecialUnitaryUniformLSIPackageTarget n -> HaarLSITarget n
 -/
 
 noncomputable section
 
-/-- Interfaz abstracta para un paquete uniforme LSI extraído del frente RG del programa.
-Por ahora solo registra la existencia de una constante positiva. -/
-def SpecialUnitaryUniformLSIPackageTarget (_n : ℕ) : Prop :=
-  ∃ c : ℝ, 0 < c
+/-- Interfaz abstracta honesta para un paquete uniforme-LSI extraído del frente RG. -/
+def SpecialUnitaryUniformLSIPackageTarget (n : ℕ) [NeZero n] : Prop :=
+  ∃ d : ℕ, ∃ c : ℝ, 0 < c ∧ ClayCoreLSI d n c
 
-/-- Gap honesto del segundo puente:
-una formulación uniforme LSI del lado del programa debería implicar el objetivo Haar-LSI. -/
-def HaarLSIFromUniformLSITransfer (n : ℕ) : Prop :=
+/-- Gap honesto del puente uniforme→Haar. -/
+def HaarLSIFromUniformLSITransfer (n : ℕ) [NeZero n] : Prop :=
   SpecialUnitaryUniformLSIPackageTarget n → HaarLSITarget n
 
-/-- Eliminación directa del puente uniforme-LSI una vez se suministre honestamente. -/
+/-- Un witness explícito de `ClayCoreLSI` ya produce el target abstracto del puente. -/
+theorem abstract_uniform_target_of_clay_core_lsi
+    {d n : ℕ} [NeZero n] {c : ℝ}
+    (hc : 0 < c) (hlsi : ClayCoreLSI d n c) :
+    SpecialUnitaryUniformLSIPackageTarget n := by
+  exact ⟨d, c, hc, hlsi⟩
+
+/-- Un paquete RG real ya produce el target abstracto honesto del puente uniforme→Haar. -/
+theorem abstract_uniform_target_of_pkg
+    {d n : ℕ} [NeZero n]
+    (pkg : BalabanRGPackage d n) :
+    SpecialUnitaryUniformLSIPackageTarget n := by
+  obtain ⟨c, hc, hlsi⟩ := uniform_lsi_of_balaban_rg_package pkg
+  exact ⟨d, c, hc, hlsi⟩
+
+/-- Eliminación directa del puente uniforme→Haar una vez se suministre honestamente. -/
 theorem haar_lsi_target_of_uniform_lsi
-    (n : ℕ)
+    (n : ℕ) [NeZero n]
     (tr : HaarLSIFromUniformLSITransfer n)
     (hlsi : SpecialUnitaryUniformLSIPackageTarget n) :
     HaarLSITarget n := by
   exact tr hlsi
 
-/-- Registro conjunto del frente LSI:
-la vía geométrica y la vía analítica interna quedan separadas como puentes honestos. -/
+/-- Registro conjunto del frente LSI: la vía geométrica y la vía analítica interna
+quedan separadas como puentes honestos. -/
 theorem haar_lsi_front_two_route_registry
-    (n : ℕ)
+    (n : ℕ) [NeZero n]
     (hRicci : HaarLSIFromRicciTransfer n)
     (hUniform : HaarLSIFromUniformLSITransfer n) :
     HaarLSIFromRicciTransfer n ∧ HaarLSIFromUniformLSITransfer n := by

@@ -1,36 +1,82 @@
-import Mathlib
 import YangMills.ClayCore.BalabanRG.HaarLSIBridge
 import YangMills.ClayCore.BalabanRG.UniformLSITransfer
 
-namespace YangMills.ClayCore
+namespace YangMills
+namespace ClayCore
 
-/-- Direct route target: an actual RG package is available. -/
-def SpecialUnitaryDirectUniformLSITheoremTarget (d N_c : ℕ) [NeZero N_c] : Prop :=
+noncomputable section
+
+/-- Direct theorem-side target used by the Haar-LSI direct bridge. -/
+def SpecialUnitaryDirectUniformLSITheoremTarget
+    (d N_c : ℕ) [NeZero N_c] : Prop :=
   ∃ pkg : BalabanRGPackage d N_c, True
 
-/-- The direct package route already implies the abstract uniform-LSI package target used
-by the Haar bridge. No concrete bridge is needed here. -/
-theorem abstract_uniform_target_of_direct_theorem
-    {d N_c : ℕ} [NeZero N_c]
-    (h : SpecialUnitaryDirectUniformLSITheoremTarget d N_c) :
-    SpecialUnitaryUniformLSIPackageTarget N_c := by
-  rcases h with ⟨pkg, _⟩
-  obtain ⟨c, hc, _hlsi⟩ := uniform_lsi_of_balaban_rg_package pkg
-  exact ⟨c, hc⟩
-
-/-- Any package gives the direct theorem target. -/
-theorem direct_uniform_theorem_target_of_pkg
+/-- Actual Balaban-RG package -> direct theorem-side target. -/
+theorem direct_uniform_target_of_pkg
     {d N_c : ℕ} [NeZero N_c]
     (pkg : BalabanRGPackage d N_c) :
     SpecialUnitaryDirectUniformLSITheoremTarget d N_c := by
   exact ⟨pkg, trivial⟩
 
-/-- Direct package route to Haar-LSI through the abstract bridge only. -/
+/-- Legacy alias expected by upper wrappers. -/
+theorem direct_uniform_theorem_target_of_pkg
+    {d N_c : ℕ} [NeZero N_c]
+    (pkg : BalabanRGPackage d N_c) :
+    SpecialUnitaryDirectUniformLSITheoremTarget d N_c := by
+  exact direct_uniform_target_of_pkg pkg
+
+/-- The direct theorem-side target upgrades to the stronger abstract uniform-LSI target. -/
+theorem direct_uniform_lsi_implies_abstract_uniform_target
+    {d N_c : ℕ} [NeZero N_c]
+    (h : SpecialUnitaryDirectUniformLSITheoremTarget d N_c) :
+    SpecialUnitaryUniformLSIPackageTarget N_c := by
+  rcases h with ⟨pkg, _⟩
+  exact abstract_uniform_target_of_pkg pkg
+
+/-- Legacy alias expected by `HaarLSIConcreteBridge`.
+This one uses implicit `d N_c` so callers can just write
+`abstract_uniform_target_of_direct_theorem h`. -/
+theorem abstract_uniform_target_of_direct_theorem
+    {d N_c : ℕ} [NeZero N_c]
+    (h : SpecialUnitaryDirectUniformLSITheoremTarget d N_c) :
+    SpecialUnitaryUniformLSIPackageTarget N_c := by
+  exact direct_uniform_lsi_implies_abstract_uniform_target h
+
+/-- Explicit-form compatibility alias, kept for scripts that pass `d N_c` manually. -/
+theorem abstract_uniform_target_of_direct_theorem_explicit
+    (d N_c : ℕ) [NeZero N_c]
+    (h : SpecialUnitaryDirectUniformLSITheoremTarget d N_c) :
+    SpecialUnitaryUniformLSIPackageTarget N_c := by
+  exact abstract_uniform_target_of_direct_theorem h
+
+/-- Eliminación directa hacia el target Haar-LSI. -/
+theorem haar_lsi_target_of_direct_uniform_lsi
+    (d N_c : ℕ) [NeZero N_c]
+    (tr : HaarLSIFromUniformLSITransfer N_c)
+    (h : SpecialUnitaryDirectUniformLSITheoremTarget d N_c) :
+    HaarLSITarget N_c := by
+  exact
+    haar_lsi_target_of_uniform_lsi N_c tr
+      (direct_uniform_lsi_implies_abstract_uniform_target h)
+
+/-- Alias legacy theorem-side esperado por `HaarLSIFrontier`. -/
 theorem haar_lsi_from_direct_uniform_theorem
     (d N_c : ℕ) [NeZero N_c]
     (tr : HaarLSIFromUniformLSITransfer N_c)
     (h : SpecialUnitaryDirectUniformLSITheoremTarget d N_c) :
     HaarLSITarget N_c := by
-  exact haar_lsi_target_of_uniform_lsi N_c tr (abstract_uniform_target_of_direct_theorem h)
+  exact haar_lsi_target_of_direct_uniform_lsi d N_c tr h
+
+/-- Paquete RG -> vista directa -> target abstracto reforzado -> Haar-LSI. -/
+theorem haar_lsi_from_direct_via_abstract
+    (d N_c : ℕ) [NeZero N_c]
+    (tr : HaarLSIFromUniformLSITransfer N_c)
+    (pkg : BalabanRGPackage d N_c) :
+    HaarLSITarget N_c := by
+  exact
+    haar_lsi_from_direct_uniform_theorem d N_c tr
+      (direct_uniform_target_of_pkg pkg)
+
+end
 
 end YangMills.ClayCore
