@@ -70,7 +70,7 @@ theorem balaban_rg_uniform_lsi_lane_contract_of_pkg
 theorem balaban_rg_uniform_lsi_lane_contract_of_pkg_witness
     (d N_c : ℕ) [NeZero N_c]
     (tr : HaarLSIFromUniformLSITransfer N_c)
-    (h : ∃ pkg : BalabanRGPackage d N_c, True) :
+    (h : ∃ _ : BalabanRGPackage d N_c, True) :
     BalabanRGUniformLSILaneContract d N_c := by
   exact
     balaban_rg_uniform_lsi_lane_contract_of_activation_data d N_c
@@ -171,7 +171,7 @@ theorem haar_lsi_live_target_of_balaban_rg_uniform_lsi_lane_contract
 theorem pkg_witness_of_balaban_rg_uniform_lsi_lane_contract
     {d N_c : ℕ} [NeZero N_c]
     (contract : BalabanRGUniformLSILaneContract d N_c) :
-    ∃ pkg : BalabanRGPackage d N_c, True := by
+    ∃ _ : BalabanRGPackage d N_c, True := by
   exact pkg_witness_of_activation_data contract.activation
 
 end YangMills.ClayCore

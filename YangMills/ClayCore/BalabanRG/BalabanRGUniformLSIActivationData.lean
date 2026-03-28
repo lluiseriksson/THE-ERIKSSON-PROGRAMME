@@ -57,7 +57,7 @@ theorem balaban_rg_uniform_lsi_activation_data_of_pkg
 theorem balaban_rg_uniform_lsi_activation_data_of_pkg_witness
     (d N_c : ℕ) [NeZero N_c]
     (tr : HaarLSIFromUniformLSITransfer N_c)
-    (h : ∃ pkg : BalabanRGPackage d N_c, True) :
+    (h : ∃ _ : BalabanRGPackage d N_c, True) :
     BalabanRGUniformLSIActivationData d N_c := by
   refine ⟨tr, ?_⟩
   exact balaban_rg_uniform_lsi_live_target_of_pkg_witness h
@@ -129,7 +129,7 @@ theorem haar_lsi_live_target_of_activation_data
 theorem pkg_witness_of_activation_data
     {d N_c : ℕ} [NeZero N_c]
     (data : BalabanRGUniformLSIActivationData d N_c) :
-    ∃ pkg : BalabanRGPackage d N_c, True := by
+    ∃ _ : BalabanRGPackage d N_c, True := by
   exact (balaban_rg_uniform_lsi_equivalence_registry d N_c).balabanToPkgWitness.1 data.liveTarget
 
 /-- Projection to the scale target through the canonical input packet. -/

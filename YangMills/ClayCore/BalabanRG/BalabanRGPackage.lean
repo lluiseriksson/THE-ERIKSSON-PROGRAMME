@@ -18,20 +18,20 @@ structure BalabanRGPackage (d : ℕ) (N_c : ℕ) [NeZero N_c] where
   /-- Contractive RG maps (P81, P82): activity decreases across scales
       in the weak-coupling regime β ≥ β₀. -/
   contractiveMaps :
-    ∃ beta0 : ℝ, 0 < beta0 ∧ ∀ (k : ℕ) (β : ℝ), beta0 ≤ β →
+    ∃ beta0 : ℝ, 0 < beta0 ∧ ∀ (_ : ℕ) (β : ℝ), beta0 ≤ β →
       ∃ rho : ℝ, rho ∈ Set.Ioo (0 : ℝ) 1 ∧
-        ∀ (K1 K2 : ℕ → ℝ), True
+        ∀ (_ _ : ℕ → ℝ), True
 
   /-- Uniform coercivity (P69, P70): Poincaré constant ≥ cP > 0
       for β ≥ β₀ (weak coupling). -/
   uniformCoercivity :
     ∃ beta0 : ℝ, 0 < beta0 ∧ ∃ cP : ℝ, 0 < cP ∧
-      ∀ (k : ℕ) (β : ℝ), beta0 ≤ β → cP ≤ β
+      ∀ (_ : ℕ) (β : ℝ), beta0 ≤ β → cP ≤ β
 
   /-- Entropy coupling (P67, P74): LSI constant ≥ cLSI > 0
       for β ≥ β₀ (weak coupling). -/
   entropyCoupling :
     ∃ beta0 : ℝ, 0 < beta0 ∧ ∃ cLSI : ℝ, 0 < cLSI ∧
-      ∀ (k : ℕ) (β : ℝ), beta0 ≤ β → cLSI ≤ β
+      ∀ (_ : ℕ) (β : ℝ), beta0 ≤ β → cLSI ≤ β
 
 end YangMills.ClayCore

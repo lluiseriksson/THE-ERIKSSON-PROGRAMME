@@ -42,7 +42,7 @@ theorem physicalContractionRate_in_unit_interval (β : ℝ) (hβ : 0 < β) :
   ⟨physicalContractionRate_pos β, physicalContractionRate_lt_one β hβ⟩
 
 /-- rho_in_unit_interval discharged with witness beta0 = 1, rho = exp(-·). -/
-theorem rho_in_unit_interval_from_E26 (d N_c : ℕ) [NeZero N_c] :
+theorem rho_in_unit_interval_from_E26 (_d N_c : ℕ) [NeZero N_c] :
     ∃ beta0 : ℝ, 0 < beta0 ∧
       ∀ β, beta0 ≤ β → physicalContractionRate β ∈ Set.Ioo (0 : ℝ) 1 := by
   exact ⟨1, one_pos, fun β hβ =>
@@ -53,7 +53,7 @@ theorem rho_in_unit_interval_from_E26 (d N_c : ℕ) [NeZero N_c] :
 /-- ExponentialContraction for physicalContractionRate.
     Witness: C = 1, c = 1, beta0 = 1.
     Claim: exp(-β) ≤ 1 · exp(-1·β) = exp(-β). Trivially true by le_refl. -/
-theorem rho_exp_contractive_from_E26 (d N_c : ℕ) [NeZero N_c] :
+theorem rho_exp_contractive_from_E26 (_d N_c : ℕ) [NeZero N_c] :
     ExponentialContraction physicalContractionRate := by
   unfold ExponentialContraction physicalContractionRate
   exact ⟨1, 1, 1, one_pos, one_pos, one_pos,

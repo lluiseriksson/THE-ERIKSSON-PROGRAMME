@@ -33,7 +33,7 @@ structure ExpSizeWeightFiniteFullSmallConstantBudgetEnvelope
     (d N_c : ℕ) [NeZero N_c]
     [∀ j, Fintype (Polymer d (Int.ofNat j))]
     [∀ j, DecidableEq (Polymer d (Int.ofNat j))] where
-  pkg : ExpSizeWeightFiniteFullSmallConstantPackage d N_c
+  _ : ExpSizeWeightFiniteFullSmallConstantPackage d N_c
   K : Activity d (Int.ofNat 0)
   B : ℝ
   hbudget :
@@ -158,7 +158,7 @@ def mkExpSizeWeightFiniteFullSmallConstantBudgetEnvelope
     (hN_c : 2 ≤ N_c) :
     ExpSizeWeightFiniteFullSmallConstantBudgetEnvelope d N_c := by
   refine
-    { pkg := pkg
+    { _ := pkg
       K := K
       B := B
       hbudget := hbudget

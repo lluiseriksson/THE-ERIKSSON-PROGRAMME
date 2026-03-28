@@ -47,7 +47,7 @@ theorem physicalPoincareConstant_monotone (N_c : ℕ) [NeZero N_c]
 
 /-- LinearLowerBound for physicalPoincareConstant.
     Witness β₀ = 1, c = N_c/4.  For β ≥ 1: N_c/4 = (N_c/4)·1 ≤ (N_c/4)·β. -/
-theorem cP_linear_lb_from_E26 (d N_c : ℕ) [NeZero N_c] :
+theorem cP_linear_lb_from_E26 (_d N_c : ℕ) [NeZero N_c] :
     LinearLowerBound (physicalPoincareConstant N_c) := by
   refine ⟨1, (N_c : ℝ) / 4, one_pos, coef_pos N_c, fun β hβ => ?_⟩
   show (N_c : ℝ) / 4 ≤ physicalPoincareConstant N_c β

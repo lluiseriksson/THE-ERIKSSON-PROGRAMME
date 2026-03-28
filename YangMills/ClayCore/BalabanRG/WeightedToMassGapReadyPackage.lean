@@ -149,7 +149,7 @@ theorem exists_massGapReadyPackage_of_weightedPhysicalWitness
     (K : Activity d L)
     (a : ℝ)
     (hwit : WeightedPhysicalWitnessAtScale Gamma K a) :
-    ∃ pkg : MassGapReadyPackage N_c Gamma K a, True := by
+    ∃ _ : MassGapReadyPackage N_c Gamma K a, True := by
   exact ⟨massGapReadyPackage_of_weightedPhysicalWitness N_c Gamma K a hwit, trivial⟩
 
 /-- Stronger consumer-facing theorem:

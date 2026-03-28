@@ -58,7 +58,7 @@ theorem physicalLSIConstant_monotone (N_c : ℕ) [NeZero N_c]
 
 /-- LinearLowerBound for physicalLSIConstant.
     Witness β₀ = 1, c = N_c/8. For β ≥ 1: N_c/8 = (N_c/8)·1 ≤ (N_c/8)·β. -/
-theorem cLSI_linear_lb_from_E26 (d N_c : ℕ) [NeZero N_c] :
+theorem cLSI_linear_lb_from_E26 (_d N_c : ℕ) [NeZero N_c] :
     LinearLowerBound (physicalLSIConstant N_c) := by
   refine ⟨1, (N_c : ℝ) / 8, one_pos, lsi_coef_pos N_c, fun β hβ => ?_⟩
   show (N_c : ℝ) / 8 ≤ physicalLSIConstant N_c β

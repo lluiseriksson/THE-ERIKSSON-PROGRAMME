@@ -58,7 +58,7 @@ theorem balaban_rg_uniform_lsi_frontier_of_pkg
 theorem balaban_rg_uniform_lsi_frontier_of_pkg_witness
     (d N_c : ℕ) [NeZero N_c]
     (tr : HaarLSIFromUniformLSITransfer N_c)
-    (h : ∃ pkg : BalabanRGPackage d N_c, True) :
+    (h : ∃ _ : BalabanRGPackage d N_c, True) :
     BalabanRGUniformLSIFrontier d N_c := by
   exact balaban_rg_uniform_lsi_lane_contract_of_pkg_witness d N_c tr h
 
@@ -157,7 +157,7 @@ theorem balaban_rg_uniform_lsi_frontier_iff_haar_lsi_live_target
 theorem balaban_rg_uniform_lsi_frontier_iff_pkg_witness
     (d N_c : ℕ) [NeZero N_c] :
     BalabanRGUniformLSIFrontier d N_c ↔
-      (HaarLSIFromUniformLSITransfer N_c ∧ (∃ pkg : BalabanRGPackage d N_c, True)) := by
+      (HaarLSIFromUniformLSITransfer N_c ∧ (∃ _ : BalabanRGPackage d N_c, True)) := by
   exact balaban_rg_uniform_lsi_lane_contract_iff_pkg_witness d N_c
 
 /-- Coherence: the short public frontier is propositionally equal to the canonical one reconstructed from its activation data. -/

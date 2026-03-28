@@ -89,7 +89,7 @@ theorem balaban_rg_uniform_lsi_lane_contract_iff_haar_lsi_live_target
 theorem balaban_rg_uniform_lsi_lane_contract_iff_pkg_witness
     (d N_c : ℕ) [NeZero N_c] :
     BalabanRGUniformLSILaneContract d N_c ↔
-      (HaarLSIFromUniformLSITransfer N_c ∧ (∃ pkg : BalabanRGPackage d N_c, True)) := by
+      (HaarLSIFromUniformLSITransfer N_c ∧ (∃ _ : BalabanRGPackage d N_c, True)) := by
   constructor
   · intro contract
     exact ⟨

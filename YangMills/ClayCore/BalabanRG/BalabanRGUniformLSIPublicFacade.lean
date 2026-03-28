@@ -65,7 +65,7 @@ theorem balaban_rg_uniform_lsi_public_facade_of_pkg
 theorem balaban_rg_uniform_lsi_public_facade_of_pkg_witness
     (d N_c : ℕ) [NeZero N_c]
     (tr : HaarLSIFromUniformLSITransfer N_c)
-    (h : ∃ pkg : BalabanRGPackage d N_c, True) :
+    (h : ∃ _ : BalabanRGPackage d N_c, True) :
     BalabanRGUniformLSIPublicFacade d N_c := by
   refine ⟨?_, ?_⟩
   · exact balaban_rg_uniform_lsi_equivalence_registry d N_c

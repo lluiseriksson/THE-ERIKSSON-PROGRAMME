@@ -45,9 +45,9 @@ noncomputable section
 
 /-- Trivial witness: beta0 = 1, rho = 1/2. -/
 theorem contractiveMaps_satisfiable :
-    ∃ beta0 : ℝ, 0 < beta0 ∧ ∀ (k : ℕ) (β : ℝ), beta0 ≤ β →
+    ∃ beta0 : ℝ, 0 < beta0 ∧ ∀ (_ : ℕ) (β : ℝ), beta0 ≤ β →
       ∃ rho : ℝ, rho ∈ Set.Ioo (0 : ℝ) 1 ∧
-        ∀ (K1 K2 : ℕ → ℝ), True := by
+        ∀ (_ _ : ℕ → ℝ), True := by
   exact ⟨1, one_pos, fun _k _β _hβ => ⟨1/2, by norm_num, fun _K1 _K2 => trivial⟩⟩
 
 /-!

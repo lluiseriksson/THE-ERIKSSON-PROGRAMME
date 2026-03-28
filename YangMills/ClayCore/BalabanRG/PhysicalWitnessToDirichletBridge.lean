@@ -26,14 +26,14 @@ Isolates the semantic gap between physical witnesses and polymer Dirichlet form.
 
 noncomputable section
 
-def PhysicalContractionRealized (d N_c : ℕ) [NeZero N_c] : Prop :=
-  ∀ (k : ℕ) (β : ℝ), 1 ≤ β →
+def PhysicalContractionRealized (_d N_c : ℕ) [NeZero N_c] : Prop :=
+  ∀ (_ : ℕ) (β : ℝ), 1 ≤ β →
     physicalContractionRate β ∈ Set.Ioo (0 : ℝ) 1
 
-def PhysicalPoincareRealized (d N_c : ℕ) [NeZero N_c] : Prop :=
+def PhysicalPoincareRealized (_d N_c : ℕ) [NeZero N_c] : Prop :=
   LinearLowerBound (physicalPoincareConstant N_c)
 
-def PhysicalLSIRealized (d N_c : ℕ) [NeZero N_c] : Prop :=
+def PhysicalLSIRealized (_d N_c : ℕ) [NeZero N_c] : Prop :=
   LinearLowerBound (physicalLSIConstant N_c)
 
 structure PhysicalWitnessBridge (d N_c : ℕ) [NeZero N_c] where
