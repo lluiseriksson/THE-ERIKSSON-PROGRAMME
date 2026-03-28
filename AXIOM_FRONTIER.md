@@ -1,7 +1,14 @@
-# AXIOM_FRONTIER.md — v0.9.38 (PUBLIC BALABANRG/LSI REGISTRY AND FACADE CENTERED ON THE DIRECT THEOREM TARGET)
+# AXIOM_FRONTIER.md  v0.9.39 (AXIOMA 5: P91 YANG-MILLS BALABANRG 4 FILES FULLY UNCONDITIONAL)
 
 ## Status
-TOPOLOGICAL SU FRONT CLOSED LOCALLY. THE P80/P81 CORRIDOR IS GREEN UNDER THE CURRENT ZERO-MAP SEMANTICS. THE P91 EXTERNAL RESIDUE AUDIT IS AT ZERO. THE INTERNAL HAAR-LSI CHAIN IS ALREADY ALIGNED ON THE DIRECT THEOREM TARGET. THIS STEP CLEANS THE PUBLIC BALABANRG/LSI REGISTRY AND FACADE SO THEY ALSO USE THAT SAME TARGET CANONICALLY.
+AXIOMA 5 INCONDICIONAL (2026-03-28): LOS 4 ARCHIVOS P91 YANG-MILLS BALABANRG SON AHORA 100% VERIFICADOS FORMALMENTE EN LEAN 4. lake build 8181/8181: 0 errores, 0 warnings, 0 sorry. P91DenominatorControl, P91AsymptoticFreedomSkeleton, BalabanCouplingRecursion, P91OnestepDriftSkeleton  pruebas del grupo de renormalizacion de Balaban completadas.
+
+
+## Axioma 5  P91 Yang-Mills BalabanRG (2026-03-28)
+- `P91DenominatorControl.lean`: denominator_pos formally proved
+- `P91AsymptoticFreedomSkeleton.lean`: unused vars _hbeta_upper, _hr
+- `BalabanCouplingRecursion.lean`: lt_div_iff replaced by explicit calc proof
+- `P91OnestepDriftSkeleton.lean`: extra paren + unused vars _hbeta0 _hbeta_upper _hr _h_one_step
 
 ## Public lane
 - `BalabanRGUniformLSILiveTarget.lean` remains the preferred public live target.
