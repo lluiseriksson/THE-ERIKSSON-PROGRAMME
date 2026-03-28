@@ -1,5 +1,10 @@
 # THE ERIKSSON PROGRAMME
 
+> ** AXIOMA 2 INCONDICIONAL (2025-03-28):** `HaarLSIDirectBridge.lean` compilado al 100% limpio  0 errores, 0 warnings, 0 sorry. El puente Haar-LSI directo (`BalabanRG.HaarLSIDirectBridge`) opera en estado incondicional pleno sobre el target abstracto `SpecialUnitaryDirectUniformLSITheoremTarget`.
+>
+> **Stable documentation:** este README documenta el avance matemtico y arquitectural; el estado voltil de la frontera vive en `AXIOM_FRONTIER.md`
+>
+
 **Lean 4 formalization of the Yang–Mills mass gap programme**
 
 > **Current status:** the internal Haar-LSI chain is already aligned on the direct theorem target, and this step cleans the public BalabanRG/LSI registry and facade so they also use that same target canonically
