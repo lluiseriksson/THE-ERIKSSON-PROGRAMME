@@ -14,7 +14,7 @@ structure BalabanRGUniformLSIEquivalenceRegistry (d N_c : ℕ) [NeZero N_c] : Pr
   balabanToConditional :
     BalabanRGUniformLSILiveTarget d N_c ↔ BalabanRGUniformLSIConditionalTarget d N_c
   balabanToPkgWitness :
-    BalabanRGUniformLSILiveTarget d N_c ↔ ∃ pkg : BalabanRGPackage d N_c, True
+    BalabanRGUniformLSILiveTarget d N_c ↔ ∃ _ : BalabanRGPackage d N_c, True
 
 /-- The current public live-target names admit a single canonical equivalence registry. -/
 theorem balaban_rg_uniform_lsi_equivalence_registry
@@ -54,7 +54,7 @@ theorem balaban_rg_uniform_lsi_closure_package_of_haar_lsi_live_target
 theorem balaban_rg_uniform_lsi_closure_package_of_pkg_witness
     (d N_c : ℕ) [NeZero N_c]
     (tr : HaarLSIFromUniformLSITransfer N_c)
-    (h : ∃ pkg : BalabanRGPackage d N_c, True) :
+    (h : ∃ _ : BalabanRGPackage d N_c, True) :
     BalabanRGUniformLSIClosurePackage d N_c := by
   exact balaban_rg_uniform_lsi_closure_package_of_direct_uniform_theorem_target d N_c tr h
 
@@ -68,7 +68,7 @@ theorem balaban_rg_uniform_lsi_live_target_of_conditional_target
 /-- Bare package witness -> preferred public Balaban live-target name. -/
 theorem balaban_rg_uniform_lsi_live_target_of_pkg_witness
     {d N_c : ℕ} [NeZero N_c]
-    (h : ∃ pkg : BalabanRGPackage d N_c, True) :
+    (h : ∃ _ : BalabanRGPackage d N_c, True) :
     BalabanRGUniformLSILiveTarget d N_c := by
   exact (balaban_rg_uniform_lsi_equivalence_registry d N_c).balabanToPkgWitness.2 h
 
