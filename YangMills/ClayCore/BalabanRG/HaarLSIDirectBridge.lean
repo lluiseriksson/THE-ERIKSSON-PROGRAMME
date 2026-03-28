@@ -9,7 +9,7 @@ noncomputable section
 /-- Direct theorem-side target used by the Haar-LSI direct bridge. -/
 def SpecialUnitaryDirectUniformLSITheoremTarget
     (d N_c : ℕ) [NeZero N_c] : Prop :=
-  ∃ pkg : BalabanRGPackage d N_c, True
+  ∃ _ : BalabanRGPackage d N_c, True
 
 /-- Actual Balaban-RG package -> direct theorem-side target. -/
 theorem direct_uniform_target_of_pkg
