@@ -29,15 +29,18 @@ theorem denominator_lt_one (N_c : ℕ) [NeZero N_c]
 /-- d > 0: requires weak-coupling window bound. Source: P91 A.2 §3. -/
 theorem denominator_pos (N_c : ℕ) [NeZero N_c]
     (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
-    (hβ_upper : β_k < 2 / balabanBetaCoeff N_c)
+  (hβ_upper : 3 * balabanBetaCoeff N_c * β_k < 2)
     (hr : |r_k| < balabanBetaCoeff N_c / 2) :
     0 < 1 - (balabanBetaCoeff N_c - r_k) * β_k := by
-  sorry -- P91 A.2 §3: (b₀ - r_k)·β_k < 1 in weak-coupling window
+  have hb_pos : 0 < balabanBetaCoeff N_c := balabanBetaCoeff_pos N_c
+  have hr_left : -(balabanBetaCoeff N_c / 2) < r_k := (abs_lt.mp hr).1
+  have hβ_pos : 0 < β_k := by linarith
+  nlinarith [mul_pos hβ_pos (show (0 : ℝ) < balabanBetaCoeff N_c / 2 + r_k from by linarith)]
 
 /-- Combined: d ∈ (0,1). Uses dsimp to unfold the let-binding. -/
 theorem denominator_in_unit_interval_v2 (N_c : ℕ) [NeZero N_c]
     (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
-    (hβ_upper : β_k < 2 / balabanBetaCoeff N_c)
+  (hβ_upper : 3 * balabanBetaCoeff N_c * β_k < 2)
     (hr : |r_k| < balabanBetaCoeff N_c / 2) :
     let d := 1 - (balabanBetaCoeff N_c - r_k) * β_k
     0 < d ∧ d < 1 := by

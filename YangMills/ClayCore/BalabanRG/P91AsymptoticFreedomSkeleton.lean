@@ -18,11 +18,18 @@ noncomputable section
 /-- Step 1: Denominator d = 1 - (b₀-r_k)·β_k ∈ (0,1). Source: P91 A.2 §3. -/
 theorem denominator_in_unit_interval (N_c : ℕ) [NeZero N_c]
     (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
-    (hβ_upper : β_k < 2 / balabanBetaCoeff N_c)
+    (hβ_upper : 3 * balabanBetaCoeff N_c * β_k < 2)
     (hr : |r_k| < balabanBetaCoeff N_c / 2) :
     let d := 1 - (balabanBetaCoeff N_c - r_k) * β_k
     0 < d ∧ d < 1 := by
-  sorry -- P91 A.2 §3: quantitative weak-coupling window
+  have hb_pos : 0 < balabanBetaCoeff N_c := balabanBetaCoeff_pos N_c
+  have hr_left : -(balabanBetaCoeff N_c / 2) < r_k := (abs_lt.mp hr).1
+  have hr_right : r_k < balabanBetaCoeff N_c / 2 := (abs_lt.mp hr).2
+  have hβ_pos : 0 < β_k := by linarith
+  simp only []
+  constructor
+  · nlinarith [mul_pos hβ_pos (show (0 : ℝ) < balabanBetaCoeff N_c / 2 + r_k from by linarith)]
+  · nlinarith [mul_pos (show (0 : ℝ) < balabanBetaCoeff N_c - r_k from by linarith) hβ_pos]
 
 /-- Step 2: 0 < d < 1 → β_k < β_k/d. Pure arithmetic, 0 sorrys. -/
 theorem beta_growth_from_denominator (β_k d : ℝ) (hβ : 0 < β_k)
@@ -36,8 +43,8 @@ theorem beta_growth_from_denominator (β_k d : ℝ) (hβ : 0 < β_k)
 /-- Structural wrapper: step1 + step2 → AF growth. 0 new sorrys. -/
 theorem asymptotic_freedom_from_denominator_control (N_c : ℕ) [NeZero N_c]
     (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
-    (hβ_upper : β_k < 2 / balabanBetaCoeff N_c)
-    (hr : |r_k| < balabanBetaCoeff N_c / 2)
+    (_hβ_upper : 3 * balabanBetaCoeff N_c * β_k < 2)
+    (_hr : |r_k| < balabanBetaCoeff N_c / 2)
     (h_step1 : let d := 1 - (balabanBetaCoeff N_c - r_k) * β_k
                0 < d ∧ d < 1) :
     β_k < balabanCouplingStep N_c β_k r_k := by

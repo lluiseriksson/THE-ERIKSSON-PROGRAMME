@@ -61,9 +61,25 @@ def balabanCouplingStep (N_c : ℕ) (β_k r_k : ℝ) : ℝ :=
 /-- Under asymptotic freedom (b₀ > 0, r_k small), β grows: β_{k+1} > β_k. -/
 theorem asymptotic_freedom_implies_beta_growth (N_c : ℕ) [NeZero N_c]
     (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
+  (hβ_upper : 3 * balabanBetaCoeff N_c * β_k < 2)
     (hr : |r_k| < balabanBetaCoeff N_c / 2) :
     β_k < balabanCouplingStep N_c β_k r_k := by
-  sorry -- P91 A.2: asymptotic freedom gives β growth
+  have hb_pos : 0 < balabanBetaCoeff N_c := balabanBetaCoeff_pos N_c
+  have hβ_pos : 0 < β_k := by linarith
+  have hr_left : -(balabanBetaCoeff N_c / 2) < r_k := (abs_lt.mp hr).1
+  have hr_right : r_k < balabanBetaCoeff N_c / 2 := (abs_lt.mp hr).2
+  unfold balabanCouplingStep
+  have hd_pos : (0 : ℝ) < 1 - balabanBetaCoeff N_c * β_k + r_k * β_k := by
+    nlinarith [mul_pos (show (0:ℝ) < balabanBetaCoeff N_c / 2 + r_k from by linarith) hβ_pos]
+  have hd_lt_one : 1 - balabanBetaCoeff N_c * β_k + r_k * β_k < 1 := by
+    nlinarith [mul_pos hβ_pos (show (0:ℝ) < balabanBetaCoeff N_c - r_k from by linarith)]
+  have key : β_k * (1 - balabanBetaCoeff N_c * β_k + r_k * β_k) < β_k := by
+    have := mul_lt_mul_of_pos_left hd_lt_one hβ_pos; linarith [mul_one β_k]
+  have hdinv : 0 < (1 - balabanBetaCoeff N_c * β_k + r_k * β_k)⁻¹ := inv_pos.mpr hd_pos
+  have step : β_k * (1 - balabanBetaCoeff N_c * β_k + r_k * β_k) * (1 - balabanBetaCoeff N_c * β_k + r_k * β_k)⁻¹ < β_k * (1 - balabanBetaCoeff N_c * β_k + r_k * β_k)⁻¹ :=
+    mul_lt_mul_of_pos_right key hdinv
+  rw [mul_assoc, mul_inv_cancel₀ (ne_of_gt hd_pos), mul_one, ← div_eq_mul_inv] at step
+  exact step
 
 /-- Contraction rate decreases as β grows. -/
 theorem rate_decreases_with_beta (β₁ β₂ : ℝ) (h : β₁ < β₂) :
@@ -75,11 +91,12 @@ theorem rate_decreases_with_beta (β₁ β₂ : ℝ) (h : β₁ < β₂) :
 /-- Under asymptotic freedom, contraction rate decreases at each step. -/
 theorem contraction_rate_decreases_under_recursion (N_c : ℕ) [NeZero N_c]
     (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
+  (hβ_upper : 3 * balabanBetaCoeff N_c * β_k < 2)
     (hr : |r_k| < balabanBetaCoeff N_c / 2) :
     physicalContractionRate (balabanCouplingStep N_c β_k r_k)
       < physicalContractionRate β_k :=
   rate_decreases_with_beta β_k _
-    (asymptotic_freedom_implies_beta_growth N_c β_k r_k hβ hr)
+    (asymptotic_freedom_implies_beta_growth N_c β_k r_k hβ hβ_upper hr)
 
 /-!
 ## Connection to cauchy_decay_P81_step2

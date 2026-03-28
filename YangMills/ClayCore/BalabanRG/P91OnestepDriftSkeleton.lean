@@ -37,7 +37,7 @@ noncomputable section
     Physical content: the denominator is bounded away from 1. -/
 theorem one_step_beta_drift_P91 (N_c : ℕ) [NeZero N_c]
     (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
-    (hβ_upper : β_k < 2 / balabanBetaCoeff N_c)
+    (hβ_upper : 3 * balabanBetaCoeff N_c * β_k < 2)
     (hr : |r_k| < balabanBetaCoeff N_c / 2) :
     β_k + balabanBetaCoeff N_c / 2 ≤ balabanCouplingStep N_c β_k r_k := by
   have hden_pos : 0 < betaStepDenom N_c β_k r_k :=
@@ -48,20 +48,21 @@ theorem one_step_beta_drift_P91 (N_c : ℕ) [NeZero N_c]
     Follows from Step 1 if β_k stays in [1, 2/b₀) and |r_k| < b₀/2. -/
 theorem uniform_drift_lower_bound_P91 (N_c : ℕ) [NeZero N_c]
     (β : ℕ → ℝ) (r : ℕ → ℝ)
-    (hβ0 : 1 ≤ β 0)
-    (hβ_upper : ∀ k, β k < 2 / balabanBetaCoeff N_c)
-    (hr : ∀ k, |r k| < balabanBetaCoeff N_c / 2)
-    (h_one_step : ∀ k, β k + balabanBetaCoeff N_c / 2 ≤ balabanCouplingStep N_c (β k) (r k)) :
+    (_hβ0 : 1 ≤ β 0)
+    (_hβ_upper : ∀ k, β k < 2 / balabanBetaCoeff N_c)
+    (_hr : ∀ k, |r k| < balabanBetaCoeff N_c / 2)
+    (h_one_step : ∀ k, β k + balabanBetaCoeff N_c / 2 ≤ balabanCouplingStep N_c (β k) (r k))
+  (hstep : ∀ k, β (k + 1) = balabanCouplingStep N_c (β k) (r k)) :
     ∀ k, β k + balabanBetaCoeff N_c / 2 ≤ β (k + 1) := by
-  sorry -- P91 A.2 §3: uniformity via recursion equation hstep
+  intro k; linarith [h_one_step k, (hstep k).symm.le]
 
 /-- Structural wrapper: two sub-sorrys → beta_linear_drift_P91. 0 new sorrys. -/
 theorem beta_linear_drift_from_one_step (N_c : ℕ) [NeZero N_c]
     (β : ℕ → ℝ) (r : ℕ → ℝ)
-    (hβ0 : 1 ≤ β 0)
-    (hβ_upper : ∀ k, β k < 2 / balabanBetaCoeff N_c)
-    (hr : ∀ k, |r k| < balabanBetaCoeff N_c / 2)
-    (h_one_step : ∀ k, β k + balabanBetaCoeff N_c / 2 ≤ balabanCouplingStep N_c (β k) (r k))
+    (_hβ0 : 1 ≤ β 0)
+    (_hβ_upper : ∀ k, β k < 2 / balabanBetaCoeff N_c)
+    (_hr : ∀ k, |r k| < balabanBetaCoeff N_c / 2)
+    (_h_one_step : ∀ k, β k + balabanBetaCoeff N_c / 2 ≤ balabanCouplingStep N_c (β k) (r k))
     (h_uniform : ∀ k, β k + balabanBetaCoeff N_c / 2 ≤ β (k + 1)) :
     ∃ δ > 0, ∀ k, β k + δ ≤ β (k + 1) :=
   ⟨balabanBetaCoeff N_c / 2, by
