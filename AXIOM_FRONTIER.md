@@ -42,23 +42,23 @@ The **mathematically substantive** targets are:
 
 ### Clay-Core Axioms (Genuine Mathematical Gaps)
 
-| Axiom | File | Content |
-|---|---|---|
-| `sun_bakry_emery_cd` | `BalabanToLSI.lean` | SU(N) satisfies Bakry-Émery CD(N/4, ∞) |
-| `balaban_rg_uniform_lsi` | `BalabanToLSI.lean` | RG promotes per-site Haar-LSI to uniform finite-volume DLR-LSI |
-| `sz_lsi_to_clustering` | `BalabanToLSI.lean` | Stroock–Zegarlinski: uniform DLR-LSI → exponential clustering |
-| `sun_gibbs_dlr_lsi` | `PhysicalMassGap.lean` | DLR-LSI for SU(N) Yang-Mills (assembled from above) |
-| `clustering_to_spectralGap` | `PhysicalMassGap.lean` | Exponential clustering → spectral gap (mass gap) |
+| Axiom | File | Content | Status |
+|---|---|---|---|
+| `sun_bakry_emery_cd` | `BalabanToLSI.lean` | SU(N) satisfies Bakry-Émery CD(N/4, ∞) | ⚠ open |
+| `balaban_rg_uniform_lsi` | `BalabanToLSI.lean` | RG promotes per-site Haar-LSI to uniform finite-volume DLR-LSI | ⚠ open |
+| `sz_lsi_to_clustering` | `BalabanToLSI.lean` | Stroock–Zegarlinski: uniform DLR-LSI → exponential clustering | ⚠ open |
+| `sun_gibbs_dlr_lsi` | `PhysicalMassGap.lean` | DLR-LSI for SU(N) Yang-Mills (assembled from above) | ⚠ open |
+| `clustering_to_spectralGap` | `PhysicalMassGap.lean` | Exponential clustering → spectral gap (mass gap) | ⚠ open |
 
 ### Mathlib Gap Axioms (Formalization Infrastructure Gaps)
 
-| Axiom | File | Content |
-|---|---|---|
-| `bakry_emery_lsi` | `BalabanToLSI.lean` | Bakry-Émery curvature criterion implies LSI (Mathlib gap) |
-| `instIsTopologicalGroupSUN` | `SUN_StateConstruction.lean` | `IsTopologicalGroup ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)` — Lean 4 topology inheritance gap |
-| `sunDirichletForm_contraction` | `SUN_DirichletCore.lean` | Beurling-Deny normal contraction for SU(N) Dirichlet form |
-| `hille_yosida` | (P8 gap) | Hille-Yosida theorem for Markov semigroups |
-| `instIsProbabilityMeasure_sunHaarProb` | `BalabanToLSI.lean` | Haar measure on abstract SU(N) state is a probability measure |
+| Axiom | File | Content | Status |
+|---|---|---|---|
+| `bakry_emery_lsi` | `BalabanToLSI.lean` | Bakry-Émery curvature criterion implies LSI (Mathlib gap) | ⚠ open |
+| `instIsTopologicalGroupSUN` | `SUN_StateConstruction.lean` | `IsTopologicalGroup ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)` — Lean 4 topology inheritance gap | ⚠ open |
+| `sunDirichletForm_contraction` | `SUN_DirichletCore.lean` | Beurling-Deny normal contraction for SU(N) Dirichlet form | ⚠ open |
+| `hille_yosida` | (P8 gap) | Hille-Yosida theorem for Markov semigroups | ⚠ open |
+| `instIsProbabilityMeasure_sunHaarProb` | `BalabanToLSI.lean` | Haar measure on abstract SU(N) state is a probability measure | ⚠ open |
 
 ### Notes on Mathlib Gap Axioms
 
