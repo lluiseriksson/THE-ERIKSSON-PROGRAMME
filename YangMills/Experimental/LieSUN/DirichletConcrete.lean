@@ -2,6 +2,7 @@ import Mathlib
 import YangMills.P8_PhysicalGap.SUN_StateConstruction
 import YangMills.Experimental.LieSUN.LieExpCurve
 import YangMills.Experimental.LieSUN.LieDerivativeBridge
+import YangMills.Experimental.LieSUN.LieDerivativeRegularity  -- C3 FIX: import canonical source instead of re-declaring
 
 open scoped Matrix
 open MeasureTheory YangMills
@@ -20,13 +21,13 @@ Tests:
 -/
 
 -- Generator axioms (2 IN)
-axiom generatorMatrix' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
+-- [C3 FIX 2026-03-29] Removed duplicate axiom (now imported from LieDerivativeRegularity.lean)
     Matrix (Fin N_c) (Fin N_c) ℂ
 
-axiom gen_skewHerm' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
+-- [C3 FIX 2026-03-29] Removed duplicate axiom (now imported from LieDerivativeRegularity.lean)
     (generatorMatrix' N_c i)ᴴ = -(generatorMatrix' N_c i)
 
-axiom gen_trace_zero' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
+-- [C3 FIX 2026-03-29] Removed duplicate axiom (now imported from LieDerivativeRegularity.lean)
     (generatorMatrix' N_c i).trace = 0
 
 -- Concrete Lie derivative
