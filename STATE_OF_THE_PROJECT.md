@@ -1,4 +1,5 @@
 # STATE OF THE PROJECT (canonical 29 March 2026, post-audit v0.15.0)
+<!-- CORRECTED 2026-03-29 v0.16.0: axiom count = 29 (was 26, prime-stripping regex bug fixed) -->
 
 ## Terminology Precision
 
@@ -50,7 +51,7 @@ Does NOT mean: unconditional mathematical proof.
   - `gronwall_variance_decay` (VarianceDecayFromPoincare.lean:133)
 
 ### Open axiom count (v0.15.0 — live census 2026-03-29)
-- **26 unique axiom declaration names** across all of `YangMills/`
+- **29 axioms declaration names** across all of `YangMills/`
 - Census scope: full `YangMills/` tree (corrected from v0.14.0 which missed `ClayCore/`)
 - 3 duplicate pairs (same name in two files) — fix pending (run `elimination_structural_v1.py`)
 - See `AXIOM_FRONTIER.md` v0.15.0 for complete verified list with file locations
@@ -103,8 +104,7 @@ on 2026-03-29 to resolve a registry consistency defect.
 ## Next Minimal Action
 
 1. Run `python3 scripts/census_verify.py` to verify 26-axiom baseline.
-2. Run `python3 elimination_structural_v1.py` to apply C3 fix (removes 3 duplicate
-   axiom declarations from `DirichletConcrete.lean`).
+2. Run `python3 elimination_structural_v1.py` to apply    axiom declarations from `DirichletConcrete.lean`).
 3. Verify live census drops to 23 unique names (3 duplicates removed).
 4. Then proceed to mathematical axiom elimination (Tier-B targets first):
    - `matExp_traceless_det_one` — candidate proof via `Matrix.det_exp`

@@ -73,9 +73,17 @@ theorem matExp_smul_mem_unitaryGroup
     Proof: det(exp A) = exp(trace A) (Jacobi's formula / Liouville).
     Mathlib lacks the general matrix exp determinant formula.
     Ref: Any linear algebra text, e.g. Hall 'Lie Groups', Prop 2.7. -/
+/- matExp_traceless_det_one — axiom (Matrix.det_exp not available for NormedSpace.exp)
+   Mathematical argument: det(exp(tX)) = exp(t*tr(X)) = exp(0) = 1 when tr(X) = 0.
+   Blocked by: Matrix.det_exp applies to Matrix.exp ℂ, not to the NormedSpace.exp
+   variant used by matExp.  A bridge lemma `matExp_eq_matrix_exp` would close this.
+   See AXIOM_FRONTIER.md for full analysis. -/
 axiom matExp_traceless_det_one
-    (X : Matrix (Fin n) (Fin n) ℂ) (htr : X.trace = 0) (t : ℝ) :
-    Matrix.det (matExp ((t : ℂ) • X)) = 1
+    {n : ℕ} (X : Matrix (Fin n) (Fin n) ℂ) (htr : X.trace = 0) (t : ℝ) :
+    Matrix.det (matExp ((t : ℂ) • X)) = 1 only [matExp]
+  rw [Matrix.det_exp]
+  rw [Matrix.trace_smul, htr]
+  simp
 
 end YangMills.Experimental.LieSUN
 

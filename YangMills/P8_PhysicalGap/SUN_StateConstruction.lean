@@ -75,6 +75,13 @@ instance instCompactSpaceSUN (n : ℕ) [NeZero n] :
 /-- MATHLIB GAP: IsTopologicalGroup for specialUnitaryGroup.
     specialUnitaryGroup is a Submonoid of Matrix, not of unitaryGroup.
     Topology inheritance not automatic. Will resolve with LieGroup API. -/
+/- instIsTopologicalGroupSUN — axiom (inferInstance failed)
+   Blocked by: specialUnitaryGroup is defined as a Submonoid of Matrix, not
+   as a Subgroup of UnitaryGroup.  Topology inheritance requires an explicit
+   bridge lemma showing the subspace topology makes SU(N) a topological group.
+   In Mathlib4 this would follow from `Subgroup.instIsTopologicalGroup` if
+   specialUnitaryGroup were defined as a Subgroup.
+   See AXIOM_FRONTIER.md for full analysis. -/
 @[instance] axiom instIsTopologicalGroupSUN (n : ℕ) [NeZero n] :
     IsTopologicalGroup ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)
 
