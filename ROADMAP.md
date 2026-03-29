@@ -3,17 +3,17 @@
 
 ## Arquitectura formal completa
 
-### Hipótesis explícitas descargadas (Fases 1-4)
+### Explicit discharged hypotheses (Phases 1-4)
 - `LatticeMassProfile.IsPositive`   ← Phase 3 (Balaban RG)
 - `∃ m_inf : ℝ, 0 < m_inf`         ← Phase 2 (MaxEnt + Petz + Fawzi-Renner)
 - `HasContinuumMassGap` (interfaz)  ← Phase 4 (UV scaling limit)
 
-### Hipótesis explícitas vivas
+### Active explicit hypotheses
 1. `ConnectedCorrDecay`           ← PRIORITY: Phase 5
 2. `HasAsymptoticFreedomControl`  ← Phase 6
 
 ### Terminal
-- `clay_millennium_yangMills`     ← L8 (compilado, espera hipótesis vivas)
+- `clay_millennium_yangMills`     ← L8 (compilado, espera active hypotheses)
 - `eriksson_phase4_clay_yangMills` ← ClayYangMillsTheorem (compilado)
 
 ---

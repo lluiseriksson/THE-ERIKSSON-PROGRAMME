@@ -2,7 +2,7 @@
 
 This file is the mandatory entry point for any new AI session working on this repository.
 
-*(Note: Todo tiene que estar configurado de una manera tan exquisita que el agente siempre sepa qué está verificado, qué no, cuántos pasos quedan en cada capa, y en qué concentrarse en ese momento. Lee el Dashboard.)*
+*(Note: Everything must be configured precisely so the agent always knows what is verified, what is not, how many steps remain in each layer, and what to focus on at any given moment. See the Dashboard.)*
 
 ## 1. What this project is
 

@@ -31,15 +31,15 @@ Click any paper name to see the source on viXra.
 | [2602.0085](https://vixra.org/abs/2602.0085) | UV Closure via Gradient Flow | Assumption A → theorem |
 | [2602.0084](https://vixra.org/abs/2602.0084) | Almost Reflection Positivity | 2-level RP, OS2 |
 | [2602.0046](https://vixra.org/abs/2602.0046) | Interface Lemmas | Gaps A/B/C → unconditional DLR-LSI |
-| [2602.0073](https://vixra.org/abs/2602.0073) | DLR-LSI Uniforme | α* > 0 uniform in Λ', ω |
+| [2602.0073](https://vixra.org/abs/2602.0073) | Uniform DLR-LSI | α* > 0 uniform in Λ', ω |
 | [2602.0072](https://vixra.org/abs/2602.0072) | B6 Influence Bounds | σ(V^irr) ≤ C; scale cancel. d=4 |
 | [2602.0070](https://vixra.org/abs/2602.0070) | Doob Influence (E26XI) | Replaces Efron-Stein (invalid for non-product) |
 | [2602.0069](https://vixra.org/abs/2602.0069) | Bałaban–Dimock Package | (A1)(A2)(B5) from CMP 95–122 |
 | [2602.0053](https://vixra.org/abs/2602.0053) | DLR-Uniform LSI + Mass Gap | Closes G1–G4; α* no circularity |
 | [2602.0063](https://vixra.org/abs/2602.0063) | Two-Layer Continuum Limit | Conditional Ass.RG-Cauchy; RP from lattice |
 | [2602.0074](https://vixra.org/abs/2602.0074) | UV Stability Conditional | Doob vs Efron-Stein distinction |
-| E26VI | LSI Uniforme → Mass Gap | DLR-LSI → DS Mixing → RP → Δ_phys > 0 |
-| E26V | LSI Uniforme Incondicional | Hyp 3.2 polymer deriv. bounds (q=1) |
+| E26VI | Uniform LSI → Mass Gap | DLR-LSI → DS Mixing → RP → Δ_phys > 0 |
+| E26V | Unconditional Uniform LSI | Hyp 3.2 polymer deriv. bounds (q=1) |
 | E26IV | Large-Field Suppression | Hyp 4.2: Z_k⊂L_k → T-op esssup |
 | E26III | Cross-Scale Derivative Bounds | Σ D_k < ∞, replaces Ass. 5.4 |
 | E26II | Ricci Curvature + Single-Scale LSI | RCD*(N/4) on B=A/G; Casimir |
