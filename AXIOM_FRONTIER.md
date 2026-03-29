@@ -91,12 +91,29 @@ the infinitesimal generator L and proving HasDerivWithinAt for t -> Var(T_t f).
 
 ---
 
-## Tier E — BalabanRG quantitative (2 axioms)
+## Tier E – BalabanRG quantitative (2 axioms)
 
   p91_tight_weak_coupling_window  P91WeakCouplingWindow.lean:51
-  physical_rg_rates_from_E26   PhysicalRGRates.lean:101
+  physical_rg_rates_from_E26    PhysicalRGRates.lean:101
 
-blockFinset + blockFinset_spec may close when BlockSpin.lean defines Block/LatticeSite.
+**Deep analysis (v0.19.0):**
+
+`p91_tight_weak_coupling_window`: Encodes the P91 A.2 §3 quantitative hypothesis that
+β_k lies in the weak-coupling window. `balabanBetaCoeff N_c = 11·N_c/(48·π²)` (the
+one-loop β-function coefficient; ≈ 0.07 for N_c = 3). The axiom is structurally the
+`remainder_window_small` field of `P91RecursionData N_c`. `P91WindowClosed.lean` has
+0 sorrys conditional on `P91RecursionData` but that structure cannot be instantiated
+without proving the very bound the axiom asserts. Frozen: requires formalizing
+Balaban P91 A.2 §3 estimates.
+
+`physical_rg_rates_from_E26`: Bundles four quantitative discharge targets from
+Balaban's E26 paper (PhysicalRGRates.lean comment: "When all four are theorems,
+`physical_rg_rates_from_E26` drops"):
+  - rho_exp_contractive  (P81, P82): ρ(β) ≤ C·exp(-c·β)
+  - rho_in_unit_interval (P81):      ρ(β) ∈ (0,1) for β ≥ β₀
+  - cP_linear_lb         (P69, P70): c_P(β) ≥ c·β
+  - cLSI_linear_lb       (P67, P74): c_LSI(β) ≥ c·β
+Frozen: requires formalizing four separate Balaban paper estimates.
 
 ---
 
@@ -160,6 +177,10 @@ geometry, Balaban RG flow, C₀-semigroup theory) with no current Mathlib4 proof
 
 ## Change Log
 
+  v0.19.0  2026-03-29  Tier E deep analysis: both axioms require Balaban paper
+                formalization; p91 = P91RecursionData.remainder_window_small;
+                physical_rg_rates_from_E26 has 4 discharge targets from E26/P67-82.
+                All 8 live axioms confirmed irreducibly frozen.
   v0.18.0  2026-03-29  BFS reachability analysis: 8 build-live axioms (not 27);
                         eliminated `instIsProbabilityMeasure_sunHaarProb` attempt
                         failed (opaque Nonempty constraint); all 8 are irreducible.
