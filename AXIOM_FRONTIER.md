@@ -1,4 +1,4 @@
-# AXIOM_FRONTIER.md v0.11.0 (audit: 2026-03-29)
+# AXIOM_FRONTIER.md v0.12.0 (source-verified: 2026-03-29)
 
 ## Source Census
 
@@ -55,13 +55,25 @@ Proofs require original mathematics beyond Mathlib or known results not yet in t
 |---|---|---|---|
 | `sz_lsi_to_clustering` | `P8_PhysicalGap/BalabanToLSI.lean` | `P8_PhysicalGap/StroockZegarlinski.lean` | ⚠ unconnected |
 
-> **`sz_lsi_to_clustering` — name clash / structural gap**: The axiom exists in the
-> *abstract* `BalabanToLSI` interface. `StroockZegarlinski.lean` provides a separate
-> **proved theorem** (`sz_lsi_to_clustering_bridge` → `sz_lsi_to_clustering`) of the
-> same name using `hille_yosida_semigroup`. The two modules do **not** import each other.
-> The proof does **not** discharge the axiom. Connecting them requires:
-> 1. Choosing one declaration site (remove the axiom, import the theorem), and
-> 2. Showing the abstract SU(N) objects in `BalabanToLSI` satisfy the concrete hypotheses.
+> **`sz_lsi_to_clustering` — ABSTRACT_INTERFACE_GAP (source-verified 2026-03-29)**:
+>
+> **Axiom** (`BalabanToLSI.lean:126`): takes `(gibbsFamily) (E) (α_star) (hLSI)` — 4 args.
+>
+> **Theorem** (`StroockZegarlinski.lean:156`): additionally requires
+> `[hP : ∀ L, IsProbabilityMeasure (gibbsFamily L)]` and
+> `(hE_strong : ∀ L, IsDirichletFormStrong E (gibbsFamily L))`.
+> The theorem also calls `hille_yosida_semigroup` internally, so the result
+> would be conditional on that axiom.
+>
+> **Call site** (`BalabanToLSI.lean:171`): only provides the 4 axiom args —
+> `hP` and `hE_strong` are NOT in scope there.
+>
+> **To connect**: (1) import `StroockZegarlinski` in `BalabanToLSI`, (2) remove axiom,
+> (3) verify that `sunGibbsFamily`/`sunDirichletForm` satisfy the missing hypotheses
+> via the abstract interface, (4) update call site.
+> This reduces `sz_lsi_to_clustering` to a dependency on `hille_yosida_semigroup`
+> but does NOT achieve unconditional closure.
+> **Status: ABSTRACT_INTERFACE_GAP — connection requires non-trivial Lean engineering.**
 
 ---
 
@@ -90,7 +102,7 @@ Standard mathematics blocked by missing Lean 4 / Mathlib 4 infrastructure.
 | `generatorMatrix` | `LieDerivativeRegularity.lean` | SU(N) generator matrix function | SU(N) LieGroup instance | ⚠ |
 | `gen_skewHerm` | `LieDerivativeRegularity.lean` | Generator matrices are skew-Hermitian | SU(N) LieGroup instance | ⚠ |
 | `gen_trace_zero` | `LieDerivativeRegularity.lean` | Generator matrices are traceless | SU(N) LieGroup instance | ⚠ |
-| `matExp_traceless_det_one` | `LieExpCurve.lean` | `Matrix.exp` of traceless matrix has determinant 1 | Needs `Matrix.exp_mem_specialUnitary` | |
+| `matExp_traceless_det_one` | `LieExpCurve.lean` | `det(matExp((t:ℂ)•X)) = 1` when `X.trace=0` — via Liouville/Jacobi formula | Mathlib4 may have `Matrix.det_exp`; connection not yet verified | |
 | `dirichlet_lipschitz_contraction` | `DirichletContraction.lean` | Lipschitz contraction of Dirichlet form under truncation | Needs chain rule for `lieD'` | |
 
 > **⚠ Duplicate declarations** (`generatorMatrix`, `gen_skewHerm`, `gen_trace_zero`):
@@ -110,12 +122,13 @@ They must be converted to named `axiom` declarations before any promotion to the
 
 | File | Line | Comment / Blocker |
 |---|---|---|
-| `Experimental/Semigroup/VarianceDecayFromPoincare.lean` | 92 | Need bridge for all t, not just t=0 |
-| `Experimental/Semigroup/VarianceDecayFromPoincare.lean` | 117 | Needs Gronwall for V(t) ≤ C·exp(−kt) from V′(t) ≤ −k·V(t) |
+| `Experimental/Semigroup/VarianceDecayFromPoincare.lean` | 92 | Need bridge for all t; same root as `hille_yosida_semigroup` |
+| `Experimental/Semigroup/VarianceDecayFromPoincare.lean` | 117 | Gronwall for V(t) ≤ C·exp(−kt) from V′(t) ≤ −k·V(t) |
 
-**Proposed axiom names** (to be added when type signatures are confirmed):
-- `variance_decay_alltime_bridge` : bridge lemma for all t > 0
-- `gronwall_variance_decay` : Gronwall-type inequality for variance decay
+**Closure patch** (`apply_closures.py`):
+- Line 92 sorry → `axiom <theorem_name>_semigroup_gap` (extracted dynamically from source)
+- Line 117 sorry → `axiom gronwall_variance_decay` with full type:
+  `{μ} [IsProbabilityMeasure μ] (E) (sg : SymmetricMarkovTransport μ) (lam) (hlam) (hP) (hBridge : SemigroupDirichletBridgeGlobal E sg) : HasVarianceDecay sg`
 
 ---
 
