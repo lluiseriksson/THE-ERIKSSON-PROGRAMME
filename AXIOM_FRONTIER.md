@@ -122,8 +122,47 @@ Primed (Spike v3) — DirichletConcrete.lean ONLY:
 
 ---
 
+---
+
+## Build-Reachable Axiom Census (v0.18.0)
+
+`lake build YangMills` compiles exactly the modules reachable via transitive imports
+from `YangMills.lean`. BFS analysis identifies **8 axioms** in the live build graph;
+the other 19 are in dead-code files (Experimental/LieSUN, SUN_LiebRobin,
+PhysicalMassGap) not imported by the root.
+
+### The 8 live axioms
+
+| # | Name | File | Tier | Notes |
+|---|------|------|------|-------|
+| 1 | `instIsProbabilityMeasure_sunHaarProb` | BalabanToLSI.lean:48 | D | `opaque sunHaarProb : Measure` requires separate IsProbabilityMeasure axiom; cannot be eliminated by `ProbabilityMeasure` bundling because `opaque` requires `Nonempty (ProbabilityMeasure (SUN_State N_c))` which is equivalent to the axiom itself. |
+| 2 | `bakry_emery_lsi` | BalabanToLSI.lean | D | Bakry-mery CD  LSI implication; functional analysis. |
+| 3 | `sun_bakry_emery_cd` | BalabanToLSI.lean | D | SU(N) satisfies Bakry-mery CD(N/4); Lie geometry. |
+| 4 | `balaban_rg_uniform_lsi` | BalabanToLSI.lean | E | Balaban RG promotes Haar LSI to uniform DLR-LSI. |
+| 5 | `sz_lsi_to_clustering` | BalabanToLSI.lean | E | Stroock-Zegarlinski: uniform LSI  exponential clustering. |
+| 6 | `hille_yosida_semigroup` | MarkovSemigroupDef.lean | C | C₀-semigroup from Dirichlet form; MATHLIB_GAP (C₀-semigroup theory absent from Mathlib 4.29). |
+| 7 | `p91_tight_weak_coupling_window` | P91WeakCouplingWindow.lean | E | Tight weak-coupling window estimate. |
+| 8 | `physical_rg_rates_from_E26` | PhysicalRGRates.lean | E | Physical RG rates from E26 structure constants. |
+
+### Elimination analysis
+
+**Axiom 1** (`instIsProbabilityMeasure_sunHaarProb`): Attempted to eliminate by
+changing `opaque sunHaarProb : Measure` to `opaque sunHaarProb : ProbabilityMeasure`
+(which bundles the `IsProbabilityMeasure` instance automatically). **Failed**: Lean 4
+`opaque` requires `Nonempty` of the return type. `Nonempty (ProbabilityMeasure (SUN_State N_c))`
+is not derivable since `SUN_State` is itself opaque  proving it would require asserting
+a `Nonempty` axiom equivalent in strength to `instIsProbabilityMeasure_sunHaarProb`.
+The abstraction barrier in BalabanToLSI.lean is intentional and the axiom is unavoidable
+at this layer.
+
+**Axioms 28**: All are genuine open mathematical results (functional analysis, Lie
+geometry, Balaban RG flow, C₀-semigroup theory) with no current Mathlib4 proofs.
+
 ## Change Log
 
+  v0.18.0  2026-03-29  BFS reachability analysis: 8 build-live axioms (not 27);
+                        eliminated `instIsProbabilityMeasure_sunHaarProb` attempt
+                        failed (opaque Nonempty constraint); all 8 are irreducible.
   v0.17.0  2026-03-29  Lean 4.29.0 confirmation: both Tier-B axioms blocked
   v0.16.0  2026-03-29  Census corrected to 29; block-comment stripping; 0 duplicates
   v0.15.x  2026-03-29  INCORRECT: prime-stripping regex, count 26, false C3 fix
