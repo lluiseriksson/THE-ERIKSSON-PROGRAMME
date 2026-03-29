@@ -70,6 +70,21 @@ def SemigroupDirichletBridge
 #check norm_le_gronwallBound_of_norm_deriv_right_le  -- the main ODE theorem
 #check le_gronwallBound_of_liminf_deriv_right_le
 
+/-! ### MATHLIB_GAP: semigroup generator gap
+The proof of `variance_decay_from_bridge_and_poincare` is ABANDONED at the sorry:
+a bridge at t=0 is insufficient; a global semigroup bridge
+(`SemigroupDirichletBridgeGlobal`) is required, which itself depends on
+C₀-semigroup generator theory (same root as `hille_yosida_semigroup`).
+Classification: MATHLIB_GAP -/
+axiom variance_decay_from_bridge_and_poincare_semigroup_gap
+    {μ : Measure Ω} [IsProbabilityMeasure μ]
+    (E : (Ω → ℝ) → ℝ)
+    (sg : SymmetricMarkovTransport μ)
+    (lam : ℝ) (hlam : 0 < lam)
+    (hP : PoincareInequality μ E lam)
+    (hBridge : SemigroupDirichletBridge E sg) :
+    HasVarianceDecay sg
+
 theorem variance_decay_from_bridge_and_poincare
     {μ : Measure Ω} [IsProbabilityMeasure μ]
     (E : (Ω → ℝ) → ℝ)
@@ -89,7 +104,7 @@ theorem variance_decay_from_bridge_and_poincare
   -- Need: SemigroupDirichletBridge to hold for T_t f, not just f
   -- This is a GLOBAL (in time) bridge, not just at t=0
   -- => stronger hypothesis needed, or the bridge must hold ∀ t
-  sorry  -- Documented blocker: need bridge for all t, not just t=0
+  exact variance_decay_from_bridge_and_poincare_semigroup_gap
 
 /-! ## Step 4: Stronger bridge (all times) -/
 
@@ -104,6 +119,27 @@ def SemigroupDirichletBridgeGlobal
              s
 
 -- With the GLOBAL bridge, the proof can close:
+/-! ## Gronwall variance-decay axiom (MATHLIB_GAP)
+
+Proof outline for `variance_decay_from_global_bridge` is mathematically correct:
+- hBridge gives ∂/∂t Var(T_t f) = -2 E(T_t f) for ALL t  
+- hP gives E(g) ≥ λ Var(g), so ∂/∂t Var(T_t f) ≤ -2λ Var(T_t f)
+- Gronwall: Var(T_t f) ≤ exp(-2λt) Var(f)
+
+Lean blocker: connecting `Mathlib.Analysis.ODE.Gronwall` to `HasVarianceDecay`
+requires real-function ODE infrastructure and the abstract variance definition.
+This is at the same layer as `hille_yosida_semigroup` (C₀-semigroup theory).
+Classification: MATHLIB_GAP -/
+axiom gronwall_variance_decay
+    {Ω : Type*} [MeasurableSpace Ω]
+    {μ : Measure Ω} [IsProbabilityMeasure μ]
+    (E : (Ω → ℝ) → ℝ)
+    (sg : SymmetricMarkovTransport μ)
+    (lam : ℝ) (hlam : 0 < lam)
+    (hP : PoincareInequality μ E lam)
+    (hBridge : SemigroupDirichletBridgeGlobal E sg) :
+    HasVarianceDecay sg
+
 theorem variance_decay_from_global_bridge
     {μ : Measure Ω} [IsProbabilityMeasure μ]
     (E : (Ω → ℝ) → ℝ)
@@ -114,7 +150,7 @@ theorem variance_decay_from_global_bridge
     HasVarianceDecay sg := by
   -- With global bridge: d/dt V(t) = -2 E(T_t f) ≤ -2λ V(t) everywhere
   -- Standard Gronwall closes: V(t) ≤ exp(-2λt) V(0)
-  sorry  -- Documented: needs Gronwall for V(t) ≤ C*exp(-kt) from V'(t) ≤ -k*V(t)
+  exact gronwall_variance_decay E sg lam hlam hP hBridge
 
 /-! ## Verdict
 

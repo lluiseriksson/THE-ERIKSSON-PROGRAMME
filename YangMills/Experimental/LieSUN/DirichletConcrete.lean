@@ -23,10 +23,10 @@ Tests:
 axiom generatorMatrix' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
     Matrix (Fin N_c) (Fin N_c) ℂ
 
-axiom gen_skewHerm (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
+axiom gen_skewHerm' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
     (generatorMatrix' N_c i)ᴴ = -(generatorMatrix' N_c i)
 
-axiom gen_trace_zero (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
+axiom gen_trace_zero' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
     (generatorMatrix' N_c i).trace = 0
 
 -- Concrete Lie derivative
@@ -35,7 +35,7 @@ noncomputable def lieDeriv (N_c : ℕ) [NeZero N_c]
     (f : SUN_State_Concrete N_c → ℝ)
     (U : SUN_State_Concrete N_c) : ℝ :=
   lieDerivExp
-    (generatorMatrix' N_c i) (gen_skewHerm N_c i) (gen_trace_zero N_c i) f U
+    (generatorMatrix' N_c i) (gen_skewHerm' N_c i) (gen_trace_zero' N_c i) f U
 
 -- TEST 1: const — unconditional ✅
 theorem lieDeriv_const (N_c : ℕ) [NeZero N_c]
@@ -48,7 +48,7 @@ def IsDiffAlong (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1))
     (f : SUN_State_Concrete N_c → ℝ) : Prop :=
   ∀ U : SUN_State_Concrete N_c,
     DifferentiableAt ℝ (fun t => f (lieExpCurve N_c
-      (generatorMatrix' N_c i) (gen_skewHerm N_c i) (gen_trace_zero N_c i) U t)) 0
+      (generatorMatrix' N_c i) (gen_skewHerm' N_c i) (gen_trace_zero' N_c i) U t)) 0
 
 -- TEST 2: add under IsDiffAlong
 theorem lieDeriv_add (N_c : ℕ) [NeZero N_c]
@@ -57,8 +57,8 @@ theorem lieDeriv_add (N_c : ℕ) [NeZero N_c]
     (U : SUN_State_Concrete N_c) :
     lieDeriv N_c i (fun x => f x + g x) U = lieDeriv N_c i f U + lieDeriv N_c i g U := by
   simp only [lieDeriv]
-  exact lieDerivExp_add (X := generatorMatrix' N_c i) (hX := gen_skewHerm N_c i)
-    (htr := gen_trace_zero N_c i) (f := f) (g := g) (U := U) (hf U) (hg U)
+  exact lieDerivExp_add (X := generatorMatrix' N_c i) (hX := gen_skewHerm' N_c i)
+    (htr := gen_trace_zero' N_c i) (f := f) (g := g) (U := U) (hf U) (hg U)
 
 -- TEST 3: smul under IsDiffAlong
 theorem lieDeriv_smul (N_c : ℕ) [NeZero N_c]
@@ -66,8 +66,8 @@ theorem lieDeriv_smul (N_c : ℕ) [NeZero N_c]
     (hf : IsDiffAlong N_c i f) (U : SUN_State_Concrete N_c) :
     lieDeriv N_c i (fun x => c * f x) U = c * lieDeriv N_c i f U := by
   simp only [lieDeriv]
-  exact lieDerivExp_smul (X := generatorMatrix' N_c i) (hX := gen_skewHerm N_c i)
-    (htr := gen_trace_zero N_c i) (c := c) (f := f) (U := U) (hf U)
+  exact lieDerivExp_smul (X := generatorMatrix' N_c i) (hX := gen_skewHerm' N_c i)
+    (htr := gen_trace_zero' N_c i) (c := c) (f := f) (U := U) (hf U)
 
 private lemma sq_add_le (a b : ℝ) : (a + b) ^ 2 ≤ 2 * a ^ 2 + 2 * b ^ 2 :=
   by nlinarith [sq_nonneg (a - b)]
