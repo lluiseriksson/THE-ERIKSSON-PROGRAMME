@@ -7,31 +7,52 @@ on:
     branches: [ main ]
 
 jobs:
+
+  # ── Job 1: Registry consistency ──────────────────────────────────────────────
+  # Checks: node statuses are valid, all dependency references exist,
+  # critical-path BLACKBOX nodes have bottleneck entries.
+  # Authoritative script: scripts/validate_registry.py
   registry:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Install PyYAML
         run: pip install pyyaml
+
       - name: Validate Registry
         run: python scripts/validate_registry.py
 
+  # ── Job 2: Lean build + sorry check ──────────────────────────────────────────
+  # IMPORTANT — SCOPE: This job builds ONE narrow target, not the full project.
+  # Exact target: YangMills.P8_PhysicalGap.BalabanToLSI
+  # A full `lake build` of all ~280 BalabanRG modules is not run in CI
+  # because build time exceeds GitHub Actions free-tier limits.
+  # The README and STATE_OF_THE_PROJECT.md must reflect this scope honestly.
+  #
+  # Sorry check uses scripts/check_consistency.py (Python), which correctly
+  # handles both leading-comment lines and mid-line comments.
+  # The previous bash grep-pipeline was defective:
+  #   grep -v "^\s*--" applied to `grep -rn` output (which includes file paths)
+  #   never matched any line, so commented sorry was silently counted.
   lean-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Install Lean + Lake
         run: |
-          curl -L https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          curl -L https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
           echo "$HOME/.elan/bin" >> $GITHUB_PATH
-      - name: lake build (P8 physical gap target)
+
+      - name: lake build (narrow CI target — P8 physical gap)
+        # Checked target: YangMills.P8_PhysicalGap.BalabanToLSI
+        # This is NOT a full lake build of the repository.
         run: lake build YangMills.P8_PhysicalGap.BalabanToLSI
-      - name: Confirm zero sorry
-        run: |
-          count=$(grep -rn "sorry" YangMills/ --include="*.lean" | grep -v "^\s*--" | wc -l)
-          echo "sorry count: $count"
-          if [ "$count" -gt 0 ]; then
-            grep -rn "sorry" YangMills/ --include="*.lean" | grep -v "^\s*--"
-            exit 1
-          fi
-          echo "OK: zero sorry confirmed"
+
+      - name: Confirm zero sorry (Python — handles comments correctly)
+        # Uses scripts/check_consistency.py which correctly distinguishes
+        # `sorry` in code from `sorry` appearing only in comments.
+        # All gaps must be explicit named `axiom` declarations (AXIOM_FRONTIER.md).
+        run: python scripts/check_consistency.py

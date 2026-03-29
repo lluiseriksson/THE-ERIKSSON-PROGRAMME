@@ -1,236 +1,204 @@
 # THE ERIKSSON PROGRAMME — Node Registry
-# Last updated: 2026-03-13
-# Build: lake build YangMills — 8178 jobs, 0 errors, 0 sorrys
-
+# Last updated: 2026-03-29
+# Note: Build claim moved to README.md and ci.yml where it can be verified.
+# Nodes L0.7, L3.4, L3.5, L7.3, L8.3, L8.4 added as OPEN stubs (2026-03-29):
+#   these nodes are referenced in dependencies.yaml and critical_paths.yaml
+#   but had no registry entries — an honest registry defect now corrected.
 nodes:
   L0.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/FiniteLattice.lean]
     build_confirmed: true
     theorems: [FinBox, finBoxGeometry]
-
   L0.2:
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/FiniteLatticeGeometryInstance.lean]
     build_confirmed: true
     theorems: [finBoxGeometry, shift_comm]
-
   L0.3:
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/SU2Basic.lean]
     build_confirmed: true
     theorems: [SU2, su2_mul_mem]
-
   L0.4:
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/WilsonAction.lean]
     build_confirmed: true
     theorems: [wilsonAction, plaquetteHolonomy]
-
   L0.5:
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/GaugeConfigurations.lean]
     build_confirmed: true
     theorems: [GaugeConfig, ConcreteEdge]
-
   L0.6:
     status: FORMALIZED_KERNEL
     files: [YangMills/L0_Lattice/GaugeInvariance.lean]
     build_confirmed: true
     theorems: [gaugeTransform, wilsonAction_gauge_invariant]
-
   L1.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/L1_GibbsMeasure/GibbsMeasure.lean]
     build_confirmed: true
     theorems: [gaugeMeasureFrom, partitionFunction, partitionFunction_pos]
-
   L1.2:
     status: FORMALIZED_KERNEL
     files: [YangMills/L1_GibbsMeasure/GibbsMeasure.lean]
     build_confirmed: true
     theorems: [gibbsMeasure, gibbsMeasure_isProbability]
     notes: gibbsMeasure_isProbability is theorem (not instance) with explicit d N
-
   L1.3:
     status: FORMALIZED_KERNEL
     files:
       - YangMills/L1_GibbsMeasure/Expectation.lean
       - YangMills/L1_GibbsMeasure/Correlations.lean
     build_confirmed: true
-    theorems: [expectation, expectation_const, expectation_add, expectation_mono,
-               correlation, correlation_symm]
+    theorems: [expectation, expectation_const, expectation_add, expectation_mono, correlation, correlation_symm]
     notes: expectation has explicit d N parameters to avoid NeZero metavariable
-
   L2.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/L2_Balaban/SmallLargeDecomposition.lean]
     build_confirmed: true
-    theorems: [SmallFieldSet, LargeFieldSet, smallLarge_partition,
-               smallLarge_disjoint, decomposition_identity]
-
+    theorems: [SmallFieldSet, LargeFieldSet, smallLarge_partition, smallLarge_disjoint, decomposition_identity]
   L2.2:
     status: FORMALIZED_KERNEL
     files: [YangMills/L2_Balaban/RGFlow.lean]
     build_confirmed: true
     theorems: [largeField_exp_bound, partitionFunction_split, largeField_suppression]
     notes: partitionFunction_split and largeField_suppression require MeasurableSet hypotheses
-
   L2.3:
     status: FORMALIZED_KERNEL
     files: [YangMills/L2_Balaban/Measurability.lean]
     build_confirmed: true
-    theorems: [measurable_gaugeConfigEquiv_symm, measurable_toFun_posEdge,
-               measurable_toFun_edge, measurable_wilsonAction,
-               measurableSet_smallFieldSet, measurableSet_largeFieldSet]
+    theorems: [measurable_gaugeConfigEquiv_symm, measurable_toFun_posEdge, measurable_toFun_edge, measurable_wilsonAction, measurableSet_smallFieldSet, measurableSet_largeFieldSet]
     notes: requires MeasurableInv G, MeasurableMul2 G
-
   L3.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/L3_RGIteration/BlockSpin.lean]
     build_confirmed: true
-    theorems: [effectiveAction, rg_coupling_monotone, rg_large_field_condition,
-               rg_small_field_nonneg, rg_step_bound, rg_iterate_bound]
-
+    theorems: [effectiveAction, rg_coupling_monotone, rg_large_field_condition, rg_small_field_nonneg, rg_step_bound, rg_iterate_bound]
   L3.2:
     status: FORMALIZED_KERNEL
     files: [YangMills/L3_RGIteration/GaugeInvarianceMeasure.lean]
     build_confirmed: true
-    theorems: [gibbsWeight_gauge_invariant, gibbsTilt_gauge_invariant,
-               gibbsMeasure_gauge_invariant, lintegral_restrict_map_equiv,
-               lintegral_restrict_invariant, tilted_preimage_eq]
+    theorems: [gibbsWeight_gauge_invariant, gibbsTilt_gauge_invariant, gibbsMeasure_gauge_invariant, lintegral_restrict_map_equiv, lintegral_restrict_invariant, tilted_preimage_eq]
     notes: hbase hypothesis completed by L3.3
-
   L3.3:
     status: FORMALIZED_KERNEL
     files: [YangMills/L3_RGIteration/GaugeMeasureInvariance.lean]
     build_confirmed: true
     theorems: [gaugeMeasureFrom_gauge_invariant, pi_map_mul_conj, gaugeAct_comm_equiv]
     notes: commit 370db64
-
   L4.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/L4_LargeField/Suppression.lean]
     build_confirmed: true
-    theorems: [largeFieldThreshold, isSmallField, boltzmannWeight,
-               largeField_suppression_integral, largeField_suppression_explicit_bound,
-               gaugeMeasureFrom_isProbability]
+    theorems: [largeFieldThreshold, isSmallField, boltzmannWeight, largeField_suppression_integral, largeField_suppression_explicit_bound, gaugeMeasureFrom_isProbability]
     notes: commit 33b0395; hard analytic bound as hypothesis
-
   L4.2:
     status: FORMALIZED_KERNEL
     files: [YangMills/L4_WilsonLoops/WilsonLoop.lean]
     build_confirmed: true
-    theorems: [IsClassFunction, plaquetteWilsonObs, plaquetteWilsonObs_gaugeInvariant,
-               wilsonExpectation, wilsonCorrelation, wilsonConnectedCorr,
-               wilsonLoop_exponential_decay, mass_gap_from_decay]
+    theorems: [IsClassFunction, plaquetteWilsonObs, plaquetteWilsonObs_gaugeInvariant, wilsonExpectation, wilsonCorrelation, wilsonConnectedCorr, wilsonLoop_exponential_decay, mass_gap_from_decay]
     notes: commit ebe3f85
-
   L4.3:
     status: FORMALIZED_KERNEL
     files: [YangMills/L4_TransferMatrix/TransferMatrix.lean]
     build_confirmed: true
-    theorems: [transferKernel, transferKernel_nonneg, transferKernel_symm,
-               transferOperatorFn, transferOperatorFn_nonneg,
-               HasSpectralGap, massGap_pos, transferMatrix_spectral_gap,
-               spectral_gap_rate_pos]
+    theorems: [transferKernel, transferKernel_nonneg, transferKernel_symm, transferOperatorFn, transferOperatorFn_nonneg, HasSpectralGap, massGap_pos, transferMatrix_spectral_gap, spectral_gap_rate_pos]
     notes: commit 17d2f21; abstract Banach space H avoids Lp quotient issues
-
   L5.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/L5_MassGap/MassGap.lean]
     build_confirmed: true
-    theorems: [UniformWilsonDecay, YangMillsMassGap, TransferWilsonBridge,
-               yangMills_massGap_of_decay, yangMills_massGap_of_transfer,
-               yangMills_mass_pos, yangMills_mass_gap]
+    theorems: [UniformWilsonDecay, YangMillsMassGap, TransferWilsonBridge, yangMills_massGap_of_decay, yangMills_massGap_of_transfer, yangMills_mass_pos, yangMills_mass_gap]
     notes: commit d02ce65; terminal finite-volume theorem
-
   L6.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/L6_FeynmanKac/FeynmanKac.lean]
     build_confirmed: true
-    theorems: [transferIterateFn, transferIterateFn_zero, transferIterateFn_one,
-               transferIterateFn_succ, matrixElement, matrixElement_zero,
-               feynmanKac_decay, FeynmanKacWilsonBridge, transfer_to_wilson_decay,
-               FeynmanKacWilsonBridgeUniform, feynmanKac_implies_transferBridge]
+    theorems: [transferIterateFn, transferIterateFn_zero, transferIterateFn_one, transferIterateFn_succ, matrixElement, matrixElement_zero, feynmanKac_decay, FeynmanKacWilsonBridge, transfer_to_wilson_decay, FeynmanKacWilsonBridgeUniform, feynmanKac_implies_transferBridge]
     notes: commit b3b7778; raw function iterates avoid Lp quotient issues
-
   L6.2:
     status: FORMALIZED_KERNEL
     files: [YangMills/L6_OS/OsterwalderSchrader.lean]
     build_confirmed: true
-    theorems: [HasInfiniteVolumeLimit, IsInfiniteVolumeMeasure, OSCovariant,
-               OSReflectionPositive, OSClusterProperty, infiniteConnectedCorr,
-               osCluster_implies_massGap, thermodynamicLimit_cluster,
-               infiniteVolume_OS_massGap, thermodynamicLimit_massGap]
+    theorems: [HasInfiniteVolumeLimit, IsInfiniteVolumeMeasure, OSCovariant, OSReflectionPositive, OSClusterProperty, infiniteConnectedCorr, osCluster_implies_massGap, thermodynamicLimit_cluster, infiniteVolume_OS_massGap, thermodynamicLimit_massGap]
     notes: commit f0892b0; OS interface layer without Kolmogorov extension
-
   L7.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/L7_Continuum/ContinuumLimit.lean]
     build_confirmed: true
-    theorems: [latticeSpacing, latticeSpacing_pos, latticeSpacing_tendsto_zero,
-               LatticeMassProfile, LatticeMassProfile.IsPositive, renormalizedMass,
-               renormalizedMass_pos, HasContinuumMassGap, continuumMassGap_pos,
-               OSContinuumBridge, osContinuum_massGap, continuumLimit_massGap,
-               continuumLimit_mass_pos]
+    theorems: [latticeSpacing, latticeSpacing_pos, latticeSpacing_tendsto_zero, LatticeMassProfile, LatticeMassProfile.IsPositive, renormalizedMass, renormalizedMass_pos, HasContinuumMassGap, continuumMassGap_pos, OSContinuumBridge, osContinuum_massGap, continuumLimit_massGap, continuumLimit_mass_pos]
     notes: commit c4836de; tendsto_one_div_add_atTop_nhds_zero_nat for a(N)→0
-
   L8.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/L8_Terminal/ClayTheorem.lean]
     build_confirmed: true
-    theorems: [ClayYangMillsTheorem, yangMills_existence_massGap,
-               clay_mass_gap_pos, clay_millennium_yangMills]
+    theorems: [ClayYangMillsTheorem, yangMills_existence_massGap, clay_mass_gap_pos, clay_millennium_yangMills]
     notes: commit 529ec9f; TERMINAL — Clay Millennium Theorem
     open_hypotheses:
       - LatticeMassProfile.IsPositive (Balaban RG flow)
       - infinite volume OS gap (OS reconstruction)
       - HasContinuumMassGap (asymptotic freedom / UV RG limit)
-
   P2.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/P2_MaxEntClustering/PetzFidelity.lean]
     build_confirmed: true
     commit: b9b590e
-    theorems: [QuantumState, PetzFidelity, FawziRennerBound, MaxEntClusteringRecoveryBridge,
-               HasFiniteCorrelationLength, RecoveryToOSBridge, recovery_implies_massGap]
-
+    theorems: [QuantumState, PetzFidelity, FawziRennerBound, MaxEntClusteringRecoveryBridge, HasFiniteCorrelationLength, RecoveryToOSBridge, recovery_implies_massGap]
   P2.2:
     status: FORMALIZED_KERNEL
     files: [YangMills/P2_MaxEntClustering/LocalObservableAlgebras.lean]
     build_confirmed: true
     commit: eecfd98
-    theorems: [IsLocalObservable, localAlgebra, localAlgebra_isotony,
-               IsGaugeInvariantObs, gaugeInvariantAlgebra,
-               localGaugeInvariantAlgebra, restrictState, AgreeOnLocalAlgebra]
-
+    theorems: [IsLocalObservable, localAlgebra, localAlgebra_isotony, IsGaugeInvariantObs, gaugeInvariantAlgebra, localGaugeInvariantAlgebra, restrictState, AgreeOnLocalAlgebra]
   P2.3:
     status: FORMALIZED_KERNEL
     files: [YangMills/P2_MaxEntClustering/MaxEntStates.lean]
     build_confirmed: true
     commit: cfb75f0
-    theorems: [IsConsistentMarginal, LocalMarginalFamily, RealizesMarginals,
-               IsMaxEntState, MaxEntState, MaxEntExists, MaxEntUnique,
-               maxEnt_determined, IsGibbsTilted, maxEnt_chain]
-
+    theorems: [IsConsistentMarginal, LocalMarginalFamily, RealizesMarginals, IsMaxEntState, MaxEntState, MaxEntExists, MaxEntUnique, maxEnt_determined, IsGibbsTilted, maxEnt_chain]
   P2.4:
     status: FORMALIZED_KERNEL
     files: [YangMills/P2_MaxEntClustering/RecoveryChannels.lean]
     build_confirmed: true
     commit: 04738b1
-    theorems: [IsTracePreserving, IsPositivePreserving, PetzRecoveryChannel,
-               applyRecovery, HasRecoveryProperty, RotationalRecoveryProperty,
-               MaxEntToRecoveryBridge, maxEntBridge_implies_fawziRenner,
-               recoveryChannel_fidelity_bound, recoveryChannel_implies_decayBound]
+    theorems: [IsTracePreserving, IsPositivePreserving, PetzRecoveryChannel, applyRecovery, HasRecoveryProperty, RotationalRecoveryProperty, MaxEntToRecoveryBridge, maxEntBridge_implies_fawziRenner, recoveryChannel_fidelity_bound, recoveryChannel_implies_decayBound]
+  # ── Missing critical-path nodes (OPEN stubs added 2026-03-29) ──────────────
+  # These were referenced in dependencies.yaml / critical_paths.yaml
+  # but absent from nodes.yaml.  Added as OPEN until Lean files exist.
+  L0.7:
+    status: OPEN
+    files: []
+    notes: Planned node on CP-001/003; no Lean file yet
+  L3.4:
+    status: OPEN
+    files: []
+    notes: Planned node on CP-002 (KP criterion); no Lean file yet
+  L3.5:
+    status: OPEN
+    files: []
+    notes: Planned node on CP-002 (multiscale uniformity); no Lean file yet
+  L7.3:
+    status: OPEN
+    files: []
+    notes: Planned node on CP-001 (continuum limit); no Lean file yet
+  L8.3:
+    status: OPEN
+    files: []
+    notes: Planned node on CP-001 (spectral gap); no Lean file yet
+  L8.4:
+    status: OPEN
+    files: []
+    notes: Planned terminal node on CP-001; no Lean file yet
 
+  # ── Phase 2 nodes ───────────────────────────────────────────────────────────
   P2.5:
     status: FORMALIZED_KERNEL
     files: [YangMills/P2_MaxEntClustering/ClusteringBridge.lean]
     build_confirmed: true
     commit: 7ed016a
-    theorems: [ResultadoA_Bridge, resultadoA_massGap, phase2_infiniteVolume_massGap,
-               maxEnt_recovery_OS_massGap, eriksson_phase2_infiniteVolume_massGap]
+    theorems: [ResultadoA_Bridge, resultadoA_massGap, phase2_infiniteVolume_massGap, maxEnt_recovery_OS_massGap, eriksson_phase2_infiniteVolume_massGap]
     notes: TERMINAL Phase 2 — discharges hypothesis (∃ m_inf > 0) from L8.1
     open_hypotheses:
       - FawziRennerBound (hard quantum info content)
