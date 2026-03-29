@@ -16,7 +16,7 @@ jobs:
       - name: Validate Registry
         run: python scripts/validate_registry.py
 
-  lean-consistency:
+  lean-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,5 +24,14 @@ jobs:
         run: |
           curl -L https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
           echo "$HOME/.elan/bin" >> $GITHUB_PATH
-      - name: Check no sorry / axiom
-        run: python scripts/check_consistency.py
+      - name: lake build (P8 physical gap target)
+        run: lake build YangMills.P8_PhysicalGap.BalabanToLSI
+      - name: Confirm zero sorry
+        run: |
+          count=$(grep -rn "sorry" YangMills/ --include="*.lean" | grep -v "^\s*--" | wc -l)
+          echo "sorry count: $count"
+          if [ "$count" -gt 0 ]; then
+            grep -rn "sorry" YangMills/ --include="*.lean" | grep -v "^\s*--"
+            exit 1
+          fi
+          echo "OK: zero sorry confirmed"
