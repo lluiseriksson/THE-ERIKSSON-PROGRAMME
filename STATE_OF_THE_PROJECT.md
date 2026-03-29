@@ -50,8 +50,11 @@ Does NOT mean: unconditional mathematical proof.
   - `gronwall_variance_decay` (VarianceDecayFromPoincare.lean:107)
 
 ### Open axiom count
-- Census run 2026-03-29 (updated post-closure C1+C3): **20 unique axiom names** across
-  `YangMills/P8_PhysicalGap/` (20 files) and `YangMills/Experimental/LieSUN/` (8 files).
+- Census run 2026-03-29 (updated post-closure C1+C3): **20 unique mathematical gaps** across
+  `YangMills/P8_PhysicalGap/` (20 files), `YangMills/Experimental/LieSUN/` (8 files),
+  and `YangMills/Experimental/Semigroup/` (2 axioms from C1 closure).
+  Total unique Lean declaration names: **23** (20 gaps + 3 primed C3 aliases in
+  `DirichletConcrete.lean`; see `AXIOM_FRONTIER.md` v0.14.0 for full explanation).
 - Previous version claimed 10 (two of those were actually proved theorems:
   `sun_gibbs_dlr_lsi` and `clustering_to_spectralGap`).
 - An even earlier version claimed 24 — that figure was unverified.
@@ -62,7 +65,7 @@ Does NOT mean: unconditional mathematical proof.
 ```bash
 # Authoritative axiom census command (catches indented AND attributed axioms):
 grep -rn "^\s*axiom " YangMills/ --include="*.lean" | grep -v "^\s*--"
-# Also run broad scan for @[instance] axiom and similar:
+# Also run broad scan for @Instance] axiom and similar:
 grep -rn "\baxiom\b" YangMills/ --include="*.lean" | grep -v "^\s*--"
 ```
 
@@ -79,7 +82,7 @@ These are tracked as Mathlib-gap axioms in `AXIOM_FRONTIER.md`.
 
 ## Current Critical Path
 
-L0 → L3.4 (KP criterion) → L5.2 (multiscale uniformity) → L8.3 (spectral gap)
+L0₠ L3.4 (KP criterion) ₠ L5.2 (multiscale uniformity) ₠ L8.3 (spectral gap)
 
 Nodes L3.4, L3.5, L7.3, L8.3, L8.4 are on the critical path but currently
 have status OPEN (no Lean file). They were added as stubs to `registry/nodes.yaml`
@@ -91,7 +94,7 @@ on 2026-03-29 to resolve a registry consistency defect.
 
 - KP86 (abstract)
 - OS75/OS78
-- Balaban CMP 1984–89 (29 lemmas)
+- Balaban CMP 1983–89 (29 lemmas)
 
 ---
 
