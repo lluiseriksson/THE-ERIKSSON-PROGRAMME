@@ -1,4 +1,4 @@
-# AXIOM_FRONTIER.md v0.12.0 (source-verified: 2026-03-29)
+# AXIOM_FRONTIER.md v0.13.0 (closure C1+C3 applied: 2026-03-29)
 
 ## Source Census
 
@@ -113,12 +113,11 @@ Standard mathematics blocked by missing Lean 4 / Mathlib 4 infrastructure.
 
 ---
 
-## Experimental/ Sorry Declarations (Non-Blocking)
+## Experimental/ Sorry Declarations — RESOLVED (2026-03-29)
 
-These `sorry` occurrences are in `YangMills/Experimental/Semigroup/` scratch files.
-They are reported as **warnings** by `scripts/check_consistency.py` but do NOT cause CI to fail.
-Each carries an explicit `--` comment stating the blocker.
-They must be converted to named `axiom` declarations before any promotion to the main pipeline.
+**Status: CLOSED** — both sorry converted to named `axiom` declarations by `apply_closures.py`.
+`scripts/check_consistency.py` now exits 0 with **zero sorry total** across all Lean source.
+The 2 named axioms are now tracked in the Mathlib-gap table above.
 
 | File | Line | Comment / Blocker |
 |---|---|---|

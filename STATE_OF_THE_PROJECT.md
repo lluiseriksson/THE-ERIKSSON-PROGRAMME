@@ -1,4 +1,4 @@
-# STATE OF THE PROJECT (canonical 29 March 2026, post-audit D1–D8)
+# STATE OF THE PROJECT (canonical 29 March 2026, post-audit D1–D8 + closure C1+C3)
 
 ## Terminology Precision
 
@@ -43,14 +43,14 @@ Does NOT mean: unconditional mathematical proof.
   named `axiom` declarations; see `AXIOM_FRONTIER.md` for the complete list.
 
 ### sorry declarations
-- **Main pipeline** (YangMills/L*, YangMills/P*, Lean/): **0 sorry** — enforced by CI
-- **Experimental/** (scratch files): **2 sorry** — reported as warnings, non-blocking
-  - `Experimental/Semigroup/VarianceDecayFromPoincare.lean:92` (documented blocker)
-  - `Experimental/Semigroup/VarianceDecayFromPoincare.lean:117` (documented blocker)
-  - These must be converted to named `axiom` declarations before any promotion to main pipeline
+- **Total**: **0 sorry** across all Lean source (main pipeline + Experimental/)
+- `scripts/check_consistency.py` exits 0 with no warnings
+- Two former Experimental sorry converted to named axioms (closure C1, 2026-03-29):
+  - `variance_decay_from_bridge_and_poincare_semigroup_gap` (VarianceDecayFromPoincare.lean:73)
+  - `gronwall_variance_decay` (VarianceDecayFromPoincare.lean:107)
 
 ### Open axiom count
-- Census run 2026-03-29: **18 unique axiom names** across
+- Census run 2026-03-29 (updated post-closure C1+C3): **20 unique axiom names** across
   `YangMills/P8_PhysicalGap/` (20 files) and `YangMills/Experimental/LieSUN/` (8 files).
 - Previous version claimed 10 (two of those were actually proved theorems:
   `sun_gibbs_dlr_lsi` and `clustering_to_spectralGap`).

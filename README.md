@@ -8,9 +8,8 @@
 
 > **Current milestone (2026-03-29, post-audit D1–D8):** `BalabanRGUniformLSILiveTarget` and
 > `HaarLSIFrontierPackage` are unconditionally closed at the packaging layer.
-> 0 `sorry` in the main proof pipeline; all gaps are explicit named `axiom`.
-> 2 documented `sorry` remain in `Experimental/Semigroup/` (scratch files, non-blocking).
-> Remaining honest mathematical gaps documented in `AXIOM_FRONTIER.md`.
+> 0 `sorry` across all Lean source; all gaps are explicit named `axiom`.
+> 20 named axioms registered in `AXIOM_FRONTIER.md` (census 2026-03-29, post-closure C1+C3).
 
 ---
 
