@@ -82,8 +82,15 @@ instance instCompactSpaceSUN (n : ℕ) [NeZero n] :
    In Mathlib4 this would follow from `Subgroup.instIsTopologicalGroup` if
    specialUnitaryGroup were defined as a Subgroup.
    See AXIOM_FRONTIER.md for full analysis. -/
-@[instance] axiom instIsTopologicalGroupSUN (n : ℕ) [NeZero n] :
-    IsTopologicalGroup ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)
+noncomputable instance instIsTopologicalGroupSUN (n : ℕ) [NeZero n] :
+    IsTopologicalGroup ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) where
+  continuous_mul :=
+    Continuous.subtype_mk
+      ((continuous_subtype_val.comp continuous_fst).mul
+       (continuous_subtype_val.comp continuous_snd))
+      (fun p => mul_mem p.1.2 p.2.2)
+  continuous_inv :=
+    Continuous.subtype_mk (continuous_star.comp continuous_subtype_val) fun M => (M⁻¹).2
 
 /-! ## SUN_State: the concrete gauge group -/
 
