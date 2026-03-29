@@ -6,10 +6,11 @@
 [![Lean 4](https://img.shields.io/badge/Lean-4-orange)](https://leanprover.github.io/)
 [![Mathlib4](https://img.shields.io/badge/Mathlib-4-green)](https://leanprover-community.github.io/mathlib4_docs/)
 
-> **Current milestone (2026-03-28):** `BalabanRGUniformLSILiveTarget` and
+> **Current milestone (2026-03-29, post-audit D1–D8):** `BalabanRGUniformLSILiveTarget` and
 > `HaarLSIFrontierPackage` are unconditionally closed at the packaging layer.
-> 0 `sorry` across all Lean source; all gaps are explicit named `axiom`. Remaining
-> honest mathematical gaps documented in `AXIOM_FRONTIER.md`.
+> 0 `sorry` in the main proof pipeline; all gaps are explicit named `axiom`.
+> 2 documented `sorry` remain in `Experimental/Semigroup/` (scratch files, non-blocking).
+> Remaining honest mathematical gaps documented in `AXIOM_FRONTIER.md`.
 
 ---
 
@@ -198,8 +199,7 @@ THE-ERIKSSON-PROGRAMME/
 ├── lakefile.lean              # Lake build file (auto-discovers YangMills/)
 ├── lake-manifest.json         # Pinned Mathlib4 commit
 ├── README.md                  # This file
-├── AXIOM_FRONTIER.md          # Volatile frontier: axioms, gaps, milestones
-├── SORRY_FRONTIER.md          # Confirms 0 sorry (all gaps = explicit axioms)
+├── AXIOM_FRONTIER.md          # Open axioms + sorry census (authoritative, census 2026-03-29)
 ├── Colab_Agente_YangMills.py  # Python agent for automated iteration
 │
 └── YangMills/
@@ -304,7 +304,9 @@ Layer 4 (mass gap):
 ```
 
 The packaging layer (BalabanRG modules) has been fully closed:
-`BalabanRGUniformLSILiveTarget` and `HaarLSIFrontierPackage` are proved unconditionally.
+`BalabanRGUniformLSILiveTarget` and `HaarLSIFrontierPackage` compile at the
+**packaging layer** (0 sorry, 0 errors, conditional on named `axiom` declarations
+registered in `AXIOM_FRONTIER.md`). They are **not** unconditional mathematical proofs.
 
 ---
 
@@ -357,7 +359,7 @@ TARGET_MODULE = "YangMills.ClayCore.BalabanRG.HaarLSIDirectBridge"
 
 | Date | Milestone |
 |---|---|
-| 2026-03-28 | **Axiom 6**: `HaarLSIFrontierPackage` closed unconditionally |
+| 2026-03-28 | **Packaging layer**: `HaarLSIFrontierPackage` compiles (conditional on named axioms) |
 | 2026-03-28 | **Axiom 5**: 4 P91 BalabanRG files fully verified |
 | 2026-03-28 | **Axiom 4**: 16 BalabanRG modules compiled clean |
 | 2026-03-28 | **Axiom 3**: `BalabanRGUniformLSIEquivalenceRegistry` clean |

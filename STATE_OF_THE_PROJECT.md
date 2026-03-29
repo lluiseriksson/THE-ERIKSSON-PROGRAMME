@@ -1,4 +1,4 @@
-# STATE OF THE PROJECT (canonical 29 March 2026)
+# STATE OF THE PROJECT (canonical 29 March 2026, post-audit D1–D8)
 
 ## Terminology Precision
 
@@ -41,6 +41,13 @@ Does NOT mean: unconditional mathematical proof.
   on `open_hypotheses` and/or named `axiom` declarations.
 - The genuine Clay problem content is isolated in a small number of explicit
   named `axiom` declarations; see `AXIOM_FRONTIER.md` for the complete list.
+
+### sorry declarations
+- **Main pipeline** (YangMills/L*, YangMills/P*, Lean/): **0 sorry** — enforced by CI
+- **Experimental/** (scratch files): **2 sorry** — reported as warnings, non-blocking
+  - `Experimental/Semigroup/VarianceDecayFromPoincare.lean:92` (documented blocker)
+  - `Experimental/Semigroup/VarianceDecayFromPoincare.lean:117` (documented blocker)
+  - These must be converted to named `axiom` declarations before any promotion to main pipeline
 
 ### Open axiom count
 - Census run 2026-03-29: **18 unique axiom names** across

@@ -1,4 +1,4 @@
-# AXIOM_FRONTIER.md v0.10.0 (census: 2026-03-29)
+# AXIOM_FRONTIER.md v0.11.0 (audit: 2026-03-29)
 
 ## Source Census
 
@@ -98,6 +98,24 @@ Standard mathematics blocked by missing Lean 4 / Mathlib 4 infrastructure.
 > `DirichletConcrete.lean`. Any module importing both will fail with a Lean redeclaration
 > error. **Action required**: remove the declarations from `DirichletConcrete.lean`
 > and import `LieDerivativeRegularity.lean` instead.
+
+---
+
+## Experimental/ Sorry Declarations (Non-Blocking)
+
+These `sorry` occurrences are in `YangMills/Experimental/Semigroup/` scratch files.
+They are reported as **warnings** by `scripts/check_consistency.py` but do NOT cause CI to fail.
+Each carries an explicit `--` comment stating the blocker.
+They must be converted to named `axiom` declarations before any promotion to the main pipeline.
+
+| File | Line | Comment / Blocker |
+|---|---|---|
+| `Experimental/Semigroup/VarianceDecayFromPoincare.lean` | 92 | Need bridge for all t, not just t=0 |
+| `Experimental/Semigroup/VarianceDecayFromPoincare.lean` | 117 | Needs Gronwall for V(t) ≤ C·exp(−kt) from V′(t) ≤ −k·V(t) |
+
+**Proposed axiom names** (to be added when type signatures are confirmed):
+- `variance_decay_alltime_bridge` : bridge lemma for all t > 0
+- `gronwall_variance_decay` : Gronwall-type inequality for variance decay
 
 ---
 

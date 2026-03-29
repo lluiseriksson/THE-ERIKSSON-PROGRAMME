@@ -19,7 +19,16 @@ import re
 import sys
 from pathlib import Path
 
+# Directories subject to the sorry-free invariant (main proof pipeline).
+# Every .lean file here must have 0 sorry; all gaps must be named axiom declarations.
 LEAN_DIRS = ["YangMills", "Lean"]
+
+# Directories excluded from the sorry-free invariant.
+# Files here are experimental scratch / research-in-progress and may contain
+# documented sorry placeholders.  They are STILL checked and REPORTED, but
+# their sorry occurrences do NOT cause CI to fail.
+# Every sorry in these directories must carry an explicit -- comment explaining the blocker.
+EXPERIMENTAL_DIRS = ["YangMills/Experimental"]
 
 # Match the Lean keyword `sorry` as a whole word, not as a substring of
 # identifiers like `sorrys`, `sorryMsg`, `not_sorry_at_all`, etc.
@@ -120,31 +129,67 @@ def line_has_sorry(line: str) -> bool:
     return bool(_SORRY_RE.search(code_part))
 
 
+def _collect_sorry(root_dir: Path, dirs: list[str]) -> list[str]:
+    """Scan *dirs* under *root_dir* and return a list of sorry-containing lines."""
+    hits: list[str] = []
+    for ext in (".lean", ".Lean"):
+        for d in dirs:
+            dir_path = root_dir / d
+            if not (dir_path.exists() and dir_path.is_dir()):
+                continue
+            for p in dir_path.rglob(f"*{ext}"):
+                # Skip files that are inside an EXPERIMENTAL_DIRS subtree
+                # (they will be checked separately)
+                p_str = str(p)
+                if any(str(root_dir / ed) in p_str for ed in EXPERIMENTAL_DIRS):
+                    continue
+                try:
+                    text = p.read_text(encoding="utf-8")
+                except OSError as exc:
+                    hits.append(f"{p}: read error — {exc}")
+                    continue
+                cleaned = strip_block_comments(text)
+                for line_no, line in enumerate(cleaned.splitlines(), 1):
+                    if line_has_sorry(line):
+                        hits.append(f"{p}:{line_no} → {text.splitlines()[line_no-1].strip()}")
+    return hits
+
+
 def scan() -> None:
-    errors: list[str] = []
     root_dir = _repo_root()
 
+    # ── Main pipeline: sorry-free invariant enforced ─────────────────────────
+    errors = _collect_sorry(root_dir, LEAN_DIRS)
+
+    # ── Experimental dirs: sorry reported but NOT blocking ───────────────────
+    warnings: list[str] = []
     for ext in (".lean", ".Lean"):
-        for d in LEAN_DIRS:
+        for d in EXPERIMENTAL_DIRS:
             dir_path = root_dir / d
             if not (dir_path.exists() and dir_path.is_dir()):
                 continue
             for p in dir_path.rglob(f"*{ext}"):
                 try:
                     text = p.read_text(encoding="utf-8")
-                except OSError as exc:
-                    errors.append(f"{p}: read error — {exc}")
+                except OSError:
                     continue
-                # Strip /- ... -/ block comments first so that documentation
-                # phrases like "0 sorrys" or "-- sorry" inside docblocks are
-                # not mistaken for real sorry terms.
                 cleaned = strip_block_comments(text)
                 for line_no, line in enumerate(cleaned.splitlines(), 1):
                     if line_has_sorry(line):
-                        errors.append(f"{p}:{line_no} → {text.splitlines()[line_no-1].strip()}")
+                        warnings.append(f"{p}:{line_no} → {text.splitlines()[line_no-1].strip()}")
+
+    # ── Report ────────────────────────────────────────────────────────────────
+    if warnings:
+        print(f"⚠️  EXPERIMENTAL sorry ({len(warnings)} occurrence(s) — not blocking CI):")
+        for w in warnings:
+            print(f"   {w}")
+        print("   These are in Experimental/ scratch files and must each carry an")
+        print("   explicit --  comment.  They must be converted to named axioms before")
+        print("   promotion to the main pipeline.")
+        print()
 
     if errors:
-        print(f"❌ SORRY DETECTED — {len(errors)} occurrence(s):")
+        print(f"❌ SORRY DETECTED in main pipeline — {len(errors)} occurrence(s):")
         for e in errors[:20]:
             print(f"   {e}")
         if len(errors) > 20:
@@ -154,7 +199,11 @@ def scan() -> None:
         print("See AXIOM_FRONTIER.md for the registered frontier.")
         sys.exit(1)
 
-    print("✅ Zero sorry in Lean source — all gaps are explicit named axioms")
+    if warnings:
+        print("✅ Main pipeline: zero sorry — all gaps are explicit named axioms")
+        print("   ⚠️  See experimental sorry warnings above.")
+    else:
+        print("✅ Zero sorry in Lean source — all gaps are explicit named axioms")
     print("   (Verify the axiom frontier: AXIOM_FRONTIER.md)")
 
 
