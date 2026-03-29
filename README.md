@@ -8,7 +8,7 @@
 
 > **Current milestone (2026-03-28):** `BalabanRGUniformLSILiveTarget` and
 > `HaarLSIFrontierPackage` are unconditionally closed at the packaging layer.
-> 0 sorry, 0 errors, 0 warnings across the full `lake build`. Remaining
+> 0 `sorry` across all Lean source; all gaps are explicit named `axiom`. Remaining
 > honest mathematical gaps documented in `AXIOM_FRONTIER.md`.
 
 ---
@@ -150,7 +150,7 @@ THE-ERIKSSON-PROGRAMME/
 The project enforces a strict discipline: every unproven gap is declared
 as an explicit named `axiom`, never left as a silent `sorry`. This means:
 
-- `lake build` succeeds with **0 errors, 0 warnings, 0 sorry**
+- `lake build` passes locally with 0 errors, 0 warnings, 0 `sorry`
 - The full dependency graph of every theorem is machine-checkable
 - Any reader can audit exactly which mathematical claims are assumed
   (see `AXIOM_FRONTIER.md`)
@@ -234,7 +234,7 @@ TARGET_MODULE   = "YangMills.ClayCore.BalabanRG.HaarLSIDirectBridge"
 ### Build Status
 
 ```
-lake build: 0 errors · 0 warnings · 0 sorry
+lake build (local): 0 errors · 0 warnings · 0 sorry
 ```
 
 ### Milestone History
@@ -264,7 +264,7 @@ The live mathematical obstructions are documented in `AXIOM_FRONTIER.md`:
 - [Lean 4](https://leanprover.github.io/lean4/doc/setup.html) (tested with
   the Mathlib4 toolchain)
 - [Lake](https://github.com/leanprover/lake) (bundled with Lean 4)
-- ~8–16 GB RAM for the full `lake build`
+- ~8–16 GB RAM for a full local `lake build`
 
 ### Build Instructions
 
