@@ -7,7 +7,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Unique axiom names (block-comment-stripped census) | **29** |
+| Unique axiom names (block-comment-stripped census) | **27** |
 | Genuine duplicates (same name, multiple files) | **0** |
 | Tier B+ (Mathlib contribution needed before proof) | 2 |
 | Tier C  (C0-semigroup gap) | 7 |
@@ -91,10 +91,8 @@ the infinitesimal generator L and proving HasDerivWithinAt for t -> Var(T_t f).
 
 ---
 
-## Tier E — BalabanRG quantitative (4 axioms)
+## Tier E — BalabanRG quantitative (2 axioms)
 
-  blockFinset                  FiniteBlocks.lean:17
-  blockFinset_spec             FiniteBlocks.lean:20
   p91_tight_weak_coupling_window  P91WeakCouplingWindow.lean:51
   physical_rg_rates_from_E26   PhysicalRGRates.lean:101
 

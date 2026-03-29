@@ -14,12 +14,56 @@ Key: blockSpinAvg_eq lemma eliminates the empty-branch once and for all.
 
 variable {d : ℕ} (L : ℤ) (hL : 1 < L)
 
-axiom blockFinset (d : ℕ) (L : ℤ) (hL : 1 < L)
-    (corner : LatticeSite d) : Finset (LatticeSite d)
+noncomputable def rawBlockFinset (d : ℕ) (L : ℤ)
+    (corner : LatticeSite d) :
+    Finset ((i : Fin d) → i ∈ (Finset.univ : Finset (Fin d)) → ℤ) :=
+  Finset.pi Finset.univ (fun i => Finset.Icc (corner i) (corner i + L - 1))
 
-axiom blockFinset_spec (d : ℕ) (L : ℤ) (hL : 1 < L)
+def piToLatticeSite (d : ℕ) :
+    ((i : Fin d) → i ∈ (Finset.univ : Finset (Fin d)) → ℤ) ↪ LatticeSite d where
+  toFun f i := f i (by simp)
+  inj' := by
+    intro f g h
+    funext i hi
+    have h' := congrFun h i
+    simpa using h'
+
+noncomputable def blockFinset (d : ℕ) (L : ℤ) (hL : 1 < L)
+    (corner : LatticeSite d) : Finset (LatticeSite d) :=
+  (rawBlockFinset d L corner).map (piToLatticeSite d)
+
+theorem blockFinset_spec (d : ℕ) (L : ℤ) (hL : 1 < L)
     (corner : LatticeSite d) (s : LatticeSite d) :
-    s ∈ blockFinset d L hL corner ↔ s ∈ Block d L corner
+    s ∈ blockFinset d L hL corner ↔ s ∈ Block d L corner := by
+  constructor
+  · intro hs
+    rcases Finset.mem_map.mp hs with ⟨f, hfraw, hfs⟩
+    rw [← hfs]
+    intro i
+    have hmem : f i (by simp) ∈ Finset.Icc (corner i) (corner i + L - 1) := by
+      exact (Finset.mem_pi.mp hfraw) i (by simp)
+    have hmem' : corner i ≤ f i (by simp) ∧ f i (by simp) ≤ corner i + L - 1 := by
+      exact Finset.mem_Icc.mp hmem
+    have hlow : corner i ≤ piToLatticeSite d f i := by
+      simpa [piToLatticeSite] using hmem'.1
+    have hupper_le : piToLatticeSite d f i ≤ corner i + L - 1 := by
+      simpa [piToLatticeSite] using hmem'.2
+    have hupper_lt : piToLatticeSite d f i < corner i + L := by
+      omega
+    exact ⟨hlow, hupper_lt⟩
+  · intro hs
+    let f : ((i : Fin d) → i ∈ (Finset.univ : Finset (Fin d)) → ℤ) := fun i _ => s i
+    have hfraw : f ∈ rawBlockFinset d L corner := by
+      apply Finset.mem_pi.mpr
+      intro i hi
+      have hs' : corner i ≤ s i ∧ s i < corner i + L := hs i
+      have hupper : s i ≤ corner i + L - 1 := by
+        omega
+      exact Finset.mem_Icc.mpr ⟨hs'.1, hupper⟩
+    apply Finset.mem_map.mpr
+    refine ⟨f, hfraw, ?_⟩
+    ext i
+    rfl
 
 /-- The corner belongs to its own block. -/
 theorem corner_mem_block (corner : LatticeSite d) (hL0 : 0 < L) :
