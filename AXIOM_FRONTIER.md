@@ -1,5 +1,5 @@
 # AXIOM_FRONTIER.md — THE-ERIKSSON-PROGRAMME
-<!-- Version: v0.17.0  (2026-03-29) -->
+<!-- Version: v0.20.0  (2026-03-30) -->
 <!-- Lean 4.29.0 / Lake 5.0.0 / Mathlib master (2026-03-29)            -->
 <!-- All Tier-B claims confirmed by lake env lean --stdin tests.        -->
 
@@ -9,10 +9,10 @@
 |--------|-------|
 | Unique axiom names (block-comment-stripped census) | **27** |
 | Genuine duplicates (same name, multiple files) | **0** |
-| Tier B+ (Mathlib contribution needed before proof) | 2 |
-| Tier C  (C0-semigroup gap) | 7 |
-| Tier D  (genuine open math / abstract interface) | 6 |
-| Tier E  (BalabanRG quantitative) | 4 |
+| Tier B+ (Mathlib contribution needed before proof) | 1 |
+| Tier C  (C0-semigroup gap) | 6 |
+| Tier D  (genuine open math / abstract interface) | 5 |
+| Tier E  (BalabanRG quantitative) | 3 |
 | Tier F  (LieSUN experimental spike) | 10 |
 
 ---
@@ -148,29 +148,20 @@ from `YangMills.lean`. BFS analysis identifies **8 axioms** in the live build gr
 the other 19 are in dead-code files (Experimental/LieSUN, SUN_LiebRobin,
 PhysicalMassGap) not imported by the root.
 
-### The 8 live axioms
+### The 7 live axioms
 
 | # | Name | File | Tier | Notes |
 |---|------|------|------|-------|
-| 1 | `instIsProbabilityMeasure_sunHaarProb` | BalabanToLSI.lean:48 | D | `opaque sunHaarProb : Measure` requires separate IsProbabilityMeasure axiom; cannot be eliminated by `ProbabilityMeasure` bundling because `opaque` requires `Nonempty (ProbabilityMeasure (SUN_State N_c))` which is equivalent to the axiom itself. |
-| 2 | `bakry_emery_lsi` | BalabanToLSI.lean | D | Bakry-mery CD  LSI implication; functional analysis. |
-| 3 | `sun_bakry_emery_cd` | BalabanToLSI.lean | D | SU(N) satisfies Bakry-mery CD(N/4); Lie geometry. |
-| 4 | `balaban_rg_uniform_lsi` | BalabanToLSI.lean | E | Balaban RG promotes Haar LSI to uniform DLR-LSI. |
-| 5 | `sz_lsi_to_clustering` | BalabanToLSI.lean | E | Stroock-Zegarlinski: uniform LSI  exponential clustering. |
-| 6 | `hille_yosida_semigroup` | MarkovSemigroupDef.lean | C | C₀-semigroup from Dirichlet form; MATHLIB_GAP (C₀-semigroup theory absent from Mathlib 4.29). |
-| 7 | `p91_tight_weak_coupling_window` | P91WeakCouplingWindow.lean | E | Tight weak-coupling window estimate. |
-| 8 | `physical_rg_rates_from_E26` | PhysicalRGRates.lean | E | Physical RG rates from E26 structure constants. |
+| 1 | `bakry_emery_lsi` | BalabanToLSI.lean | D | Bakry-mery CD  LSI implication; functional analysis. |
+| 2 | `sun_bakry_emery_cd` | BalabanToLSI.lean | D | SU(N) satisfies Bakry-mery CD(N/4); Lie geometry. |
+| 3 | `balaban_rg_uniform_lsi` | BalabanToLSI.lean | E | Balaban RG promotes Haar LSI to uniform DLR-LSI. |
+| 4 | `sz_lsi_to_clustering` | BalabanToLSI.lean | E | Stroock-Zegarlinski: uniform LSI  exponential clustering. |
+| 5 | `hille_yosida_semigroup` | MarkovSemigroupDef.lean | C | C₀-semigroup from Dirichlet form; MATHLIB_GAP (C₀-semigroup theory absent from Mathlib 4.29). |
+| 6 | `p91_tight_weak_coupling_window` | P91WeakCouplingWindow.lean | E | Tight weak-coupling window estimate. |
+| 7 | `physical_rg_rates_from_E26` | PhysicalRGRates.lean | E | Physical RG rates from E26 structure constants. |
 
 ### Elimination analysis
 
-**Axiom 1** (`instIsProbabilityMeasure_sunHaarProb`): Attempted to eliminate by
-changing `opaque sunHaarProb : Measure` to `opaque sunHaarProb : ProbabilityMeasure`
-(which bundles the `IsProbabilityMeasure` instance automatically). **Failed**: Lean 4
-`opaque` requires `Nonempty` of the return type. `Nonempty (ProbabilityMeasure (SUN_State N_c))`
-is not derivable since `SUN_State` is itself opaque  proving it would require asserting
-a `Nonempty` axiom equivalent in strength to `instIsProbabilityMeasure_sunHaarProb`.
-The abstraction barrier in BalabanToLSI.lean is intentional and the axiom is unavoidable
-at this layer.
 
 **Axioms 28**: All are genuine open mathematical results (functional analysis, Lie
 geometry, Balaban RG flow, C₀-semigroup theory) with no current Mathlib4 proofs.
@@ -180,8 +171,8 @@ geometry, Balaban RG flow, C₀-semigroup theory) with no current Mathlib4 proof
   v0.19.0  2026-03-29  Tier E deep analysis: both axioms require Balaban paper
                 formalization; p91 = P91RecursionData.remainder_window_small;
                 physical_rg_rates_from_E26 has 4 discharge targets from E26/P67-82.
-                All 8 live axioms confirmed irreducibly frozen.
-  v0.18.0  2026-03-29  BFS reachability analysis: 8 build-live axioms (not 27);
+                All 7 live axioms confirmed. instIsProbabilityMeasure_sunHaarProb eliminated (Campaign 6).
+  v0.18.0  2026-03-29  BFS reachability analysis: 7 build-live axioms (not 27);
                         eliminated `instIsProbabilityMeasure_sunHaarProb` attempt
                         failed (opaque Nonempty constraint); all 8 are irreducible.
   v0.17.0  2026-03-29  Lean 4.29.0 confirmation: both Tier-B axioms blocked

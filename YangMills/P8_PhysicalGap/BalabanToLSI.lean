@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.P8_PhysicalGap.LSIDefinitions
+import YangMills.P8_PhysicalGap.SUN_StateConstruction
 
 /-!
 # P8.3: Bałaban RG → DLR-LSI(α*) — repaired abstract interface
@@ -31,24 +32,21 @@ open MeasureTheory Real
 /-! ## Abstract SU(N) objects used by the P8 consumer layer -/
 
 /-- Abstract state space for SU(N) gauge variables in the P8 consumer layer. -/
-opaque SUN_State (N_c : ℕ) : Type
+abbrev SUN_State (N_c : ℕ) : Type := SUN_State_Concrete N_c
 
-instance (N_c : ℕ) : MeasurableSpace (SUN_State N_c) := ⊤
 
-/-- Abstract Haar probability measure on the SU(N) state space. -/
-opaque sunHaarProb (N_c : ℕ) : Measure (SUN_State N_c)
 
 /-- Abstract Dirichlet form on the SU(N) state space. -/
 opaque sunDirichletForm (N_c : ℕ) : (SUN_State N_c → ℝ) → ℝ
 
 /-- Abstract finite-volume Gibbs family for SU(N) Yang-Mills. -/
-opaque sunGibbsFamily (d N_c : ℕ) (β : ℝ) : ℕ → Measure (SUN_State N_c)
+noncomputable opaque sunGibbsFamily (d N_c : ℕ) (β : ℝ) : ℕ → Measure (SUN_State N_c)
 
 /-- Haar is a probability measure in the abstract P8 interface. -/
-axiom instIsProbabilityMeasure_sunHaarProb
-    (N_c : ℕ) : IsProbabilityMeasure (sunHaarProb N_c)
+noncomputable instance instIsProbabilityMeasure_sunHaarProb
+    (N_c : ℕ) [NeZero N_c] : IsProbabilityMeasure (sunHaarProb N_c) :=
+  instIsProbabilityMeasureSUN N_c
 
-attribute [instance] instIsProbabilityMeasure_sunHaarProb
 
 /-! ## M1: single-site Haar LSI -/
 
@@ -72,6 +70,7 @@ axiom bakry_emery_lsi
 /-- SU(N) satisfies the relevant Bakry-Émery lower bound. -/
 axiom sun_bakry_emery_cd
     (N_c : ℕ)
+    [NeZero N_c]
     (hN_c : 2 ≤ N_c) :
     BakryEmeryCD
       (sunHaarProb N_c)
@@ -81,6 +80,7 @@ axiom sun_bakry_emery_cd
 /-- Haar LSI for SU(N), assembled from the abstract Bakry-Émery input. -/
 theorem sun_haar_lsi
     (N_c : ℕ)
+    [NeZero N_c]
     (hN_c : 2 ≤ N_c) :
     ∃ α_haar : ℝ, 0 < α_haar ∧
       LogSobolevInequality
@@ -101,6 +101,7 @@ theorem sun_haar_lsi
 finite-volume DLR-LSI constant. -/
 axiom balaban_rg_uniform_lsi
     (d N_c : ℕ)
+    [NeZero N_c]
     (hN_c : 2 ≤ N_c)
     (β β₀ : ℝ)
     (hβ : β ≥ β₀)
@@ -137,6 +138,7 @@ axiom sz_lsi_to_clustering
 /-- DLR-LSI for SU(N) Yang-Mills, assembled from M1 + M2. -/
 theorem sun_gibbs_dlr_lsi
     (d N_c : ℕ)
+    [NeZero N_c]
     (hN_c : 2 ≤ N_c)
     (β β₀ : ℝ)
     (hβ : β ≥ β₀)
@@ -157,6 +159,7 @@ theorem sun_gibbs_dlr_lsi
 /-- Corollary: exponential clustering for the SU(N) Gibbs family. -/
 theorem sun_gibbs_clustering
     (d N_c : ℕ)
+    [NeZero N_c]
     (hN_c : 2 ≤ N_c)
     (β β₀ : ℝ)
     (hβ : β ≥ β₀)
