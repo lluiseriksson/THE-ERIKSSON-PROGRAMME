@@ -1,0 +1,2 @@
+import YangMills.L8_Terminal.ClayTheorem
+#print axioms YangMills.clay_millennium_yangMills

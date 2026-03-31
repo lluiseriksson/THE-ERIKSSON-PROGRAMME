@@ -439,7 +439,22 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 The single BFS-live custom axiom `yangMills_continuum_mass_gap` has been
 replaced by three atomic sub-axioms (AF1–AF3), each corresponding to a
-specific theorem of the Bloque4 paper. `yangMills_continuum_mass_gap` is
+specific theorem of the papers [58]–68 paper. `yangMills_continuum_mass_gap` is
 now a derived theorem. The `UNCONDITIONALITY_ROADMAP.md` (v0.2.0) contains
 the complete proof dependency chain and formalization roadmap.
 
+## Oracle status (Campaign 15)
+
+```
+#print axioms YangMills.clay_millennium_yangMills
+```
+
+Current (v0.28.x): **1 custom axiom** (`YangMills.yangMills_continuum_mass_gap`)
+Target: kernel axioms only (`propext`, `Classical.choice`, `Quot.sound`)
+
+The remaining axiom encodes the Yang–Mills continuum mass gap, established
+mathematically in papers [58]–[68] but not yet formalized in Lean.
+See [UNCONDITIONALITY_ROADMAP.md](UNCONDITIONALITY_ROADMAP.md) for the
+detailed obstruction analysis and formalization plan.
+
+**Source papers [58]–[68]:** viXra:2602.0073 through viXra:2602.0117
