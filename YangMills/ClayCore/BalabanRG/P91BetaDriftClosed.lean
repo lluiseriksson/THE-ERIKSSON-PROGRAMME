@@ -26,7 +26,7 @@ theorem beta_linear_drift_from_data (N_c : ℕ) [NeZero N_c]
     (hr : ∀ k, |r k| < balabanBetaCoeff N_c / 2)
     (hβ_upper : ∀ k, β k < 2 / balabanBetaCoeff N_c) :
     ∃ δ > 0, ∀ k, β k + δ ≤ β (k + 1) :=
-  uniform_drift_from_data N_c β r hβ0 hβ_upper hr hstep
+  uniform_drift_from_data N_c data β r hβ0 hr hstep
 
 /-- Alias: beta_linear_drift_P91 now wraps uniform_drift_from_data. 0 sorrys. -/
 theorem beta_linear_drift_P91 (N_c : ℕ) [NeZero N_c]

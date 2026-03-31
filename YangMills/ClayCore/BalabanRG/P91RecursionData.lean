@@ -36,17 +36,29 @@ theorem p91_tight_window_of_data_v2 {N_c : ℕ} [NeZero N_c]
   window_from_product_small N_c β_k r_k (by linarith)
     (data.remainder_window_small k β_k r_k hβ)
 
-/-- AF from data. -/
+/-- Helper: derive tight bound 3·b₀·β_k < 2 from data.remainder_window_small
+    by instantiating r_k = b₀/2. -/
+private theorem tight_bound_of_data {N_c : ℕ} [NeZero N_c]
+    (data : P91RecursionData N_c)
+    (k : ℕ) (β_k : ℝ) (hβ : 1 ≤ β_k) :
+    3 * balabanBetaCoeff N_c * β_k < 2 := by
+  have hb0pos : 0 < balabanBetaCoeff N_c / 2 := half_pos (balabanBetaCoeff_pos N_c)
+  have hws := data.remainder_window_small k β_k (balabanBetaCoeff N_c / 2) hβ
+  have habs : |balabanBetaCoeff N_c / 2| = balabanBetaCoeff N_c / 2 := abs_of_pos hb0pos
+  nlinarith [balabanBetaCoeff_pos N_c]
+
+/-- AF from data. 0 sorrys. -/
 theorem af_of_data {N_c : ℕ} [NeZero N_c]
     (data : P91RecursionData N_c)
     (k : ℕ) (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
     (hβ_upper : β_k < 2 / balabanBetaCoeff N_c)
     (hr : |r_k| < balabanBetaCoeff N_c / 2) :
-    β_k < balabanCouplingStep N_c β_k r_k :=
-  asymptotic_freedom_from_denominator_control N_c β_k r_k hβ hβ_upper hr
-    (denominator_in_unit_interval_v2 N_c β_k r_k hβ hβ_upper hr)
+    β_k < balabanCouplingStep N_c β_k r_k := by
+  have htight := tight_bound_of_data data k β_k hβ
+  exact asymptotic_freedom_from_denominator_control N_c β_k r_k hβ htight hr
+    (denominator_in_unit_interval_v2 N_c β_k r_k hβ htight hr)
 
-/-- Rate decreases from data. -/
+/-- Rate decreases from data. 0 sorrys. -/
 theorem rate_decreases_of_data {N_c : ℕ} [NeZero N_c]
     (data : P91RecursionData N_c)
     (k : ℕ) (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
