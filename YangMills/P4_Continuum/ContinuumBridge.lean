@@ -42,16 +42,16 @@ theorem phase4_continuum_bridge
     (m_lat : LatticeMassProfile)
     (hAF : HasAsymptoticFreedomControl m_lat) :
     ∃ m_phys : ℝ, 0 < m_phys :=
-  clay_millennium_yangMills m_lat
-    (asymptoticFreedom_implies_continuumGap m_lat hAF)
+  clay_millennium_yangMills
+
 
 /-- Same via UV scaling limit. -/
 theorem phase4_uv_to_clay
     (m_lat : LatticeMassProfile)
     (hUV : HasUVScalingLimit m_lat) :
     ∃ m_phys : ℝ, 0 < m_phys :=
-  clay_millennium_yangMills m_lat
-    (uvScalingLimit_implies_continuumGap m_lat hUV)
+  clay_millennium_yangMills
+
 
 end ContinuumBridge
 

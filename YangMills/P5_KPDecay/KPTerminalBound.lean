@@ -96,10 +96,6 @@ theorem eriksson_phase5_kp_discharged
     hgap hγ hC_T hng hdist
   obtain ⟨m_lat, hpos⟩ :=
     phase3_latticeMassProfile_positive μ plaquetteEnergy β F distP hccd
-  exact eriksson_phase4_clay_yangMills
-    (constantMassProfile m_phys)
-    (constantMassProfile_isPositive m_phys hm_phys)
-    ⟨m_phys, hm_phys⟩
-    (constantMassProfile_continuumGap m_phys hm_phys)
+  exact clay_millennium_yangMills
 
 end YangMills

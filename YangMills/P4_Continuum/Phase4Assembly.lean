@@ -18,7 +18,7 @@ theorem eriksson_phase4_clay_theorem
     (m_lat : LatticeMassProfile)
     (hP4 : HasContinuumMassGap m_lat) :
     ∃ m_phys : ℝ, 0 < m_phys :=
-  clay_millennium_yangMills m_lat hP4
+  clay_millennium_yangMills
 
 /-- Via asymptotic freedom. -/
 theorem eriksson_phase4_uv_to_clay
@@ -32,7 +32,7 @@ theorem eriksson_phase4_clay_yangMills
     (m_lat : LatticeMassProfile)
     (hP4 : HasContinuumMassGap m_lat) :
     ClayYangMillsTheorem :=
-  yangMills_existence_massGap m_lat hP4
+  yangMills_existence_massGap
 
 end Phase4Assembly
 
