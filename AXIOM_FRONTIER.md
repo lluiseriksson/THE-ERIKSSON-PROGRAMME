@@ -74,4 +74,4 @@ The Lean formalization gap is detailed in UNCONDITIONALITY_ROADMAP.md.
 
 ---
 
-*Last updated: Campaign 15.*
+*Last updated: Campaign 16 (v0.28.2). Oracle verified 2026-03-31: 1 BFS-live custom axiom confirmed post-campaign13-revert.*

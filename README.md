@@ -435,6 +435,22 @@ more details.
 
 SPDX-License-Identifier: AGPL-3.0-or-later
 
+
+## v0.28.2 – Campaign 16: Campaign-13 Revert (2026-03-31)
+
+**Oracle:** `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`  
+**Status:** 1 BFS-live custom axiom (NOT unconditional). Campaign-13 fake eliminations reverted.
+
+**Key changes:**
+- Restored `ClayTheorem.lean` to v0.27.0 (commit `54b55df`); 3 spurious axioms removed
+  (`yangMills_ax_terminalKP_smallness`, `yangMills_ax_multiscaleUV_suppression`, `yangMills_ax_OSAssembly`)
+- Forced genuine 8172-job recompile (stale olean cache cleared)
+- Census: 28 axiom decls (27 dead, 1 BFS-live), 2 opaques, 0 real sorries
+- Phase 3 attack: 3 genuine obstructions documented (BF-B/BF-C/BF-D); no new axioms introduced
+- Source authority: papers [58]–[68] (viXra:2602.0073 through viXra:2602.0117)
+
+## Oracle status (Campaign 16)
+
 ## v0.28.0 — Atomic Axiom Split (2026-03-31)
 
 The single BFS-live custom axiom `yangMills_continuum_mass_gap` has been
@@ -443,7 +459,7 @@ specific theorem of the papers [58]–68 paper. `yangMills_continuum_mass_gap` i
 now a derived theorem. The `UNCONDITIONALITY_ROADMAP.md` (v0.2.0) contains
 the complete proof dependency chain and formalization roadmap.
 
-## Oracle status (Campaign 15)
+## Oracle status (Campaign 16)
 
 ```
 #print axioms YangMills.clay_millennium_yangMills
