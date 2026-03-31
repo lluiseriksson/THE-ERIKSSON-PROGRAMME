@@ -208,3 +208,8 @@ grep -rn "sorry" YangMills/ --include="*.lean" | wc -l
 ---
 
 *AXIOM_FRONTIER.md v0.25.0 — 2026-03-31*
+
+## Unconditionality Roadmap
+
+See `UNCONDITIONALITY_ROADMAP.md` for the detailed formalization roadmap
+to eliminate `yangMills_continuum_mass_gap` and achieve full unconditionality.

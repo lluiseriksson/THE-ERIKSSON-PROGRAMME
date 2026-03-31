@@ -361,6 +361,8 @@ TARGET_MODULE = "YangMills.ClayCore.BalabanRG.HaarLSIDirectBridge"
 ### Open Frontier
 
 The live mathematical obstructions are documented in `AXIOM_FRONTIER.md`.
+- `UNCONDITIONALITY_ROADMAP.md` — Detailed formalization roadmap from paper to Lean, with dependency DAG and ranked campaign plan for achieving full unconditionality.
+
 The genuine Clay-problem content is isolated in three Clay-core axioms:
 `sun_bakry_emery_cd`, `balaban_rg_uniform_lsi`, `sun_lieb_robinson_bound`.
 
