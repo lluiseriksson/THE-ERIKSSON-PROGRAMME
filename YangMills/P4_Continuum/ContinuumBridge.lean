@@ -41,20 +41,18 @@ theorem asymptoticFreedom_implies_continuumGap
 theorem phase4_continuum_bridge
     (m_lat : LatticeMassProfile)
     (hP3 : m_lat.IsPositive)
-    (hP2 : ∃ m_inf : ℝ, 0 < m_inf)
     (hAF : HasAsymptoticFreedomControl m_lat) :
     ∃ m_phys : ℝ, 0 < m_phys :=
-  clay_millennium_yangMills m_lat hP3 hP2
+  clay_millennium_yangMills m_lat hP3
     (asymptoticFreedom_implies_continuumGap m_lat hAF)
 
 /-- Same via UV scaling limit. -/
 theorem phase4_uv_to_clay
     (m_lat : LatticeMassProfile)
     (hP3 : m_lat.IsPositive)
-    (hP2 : ∃ m_inf : ℝ, 0 < m_inf)
     (hUV : HasUVScalingLimit m_lat) :
     ∃ m_phys : ℝ, 0 < m_phys :=
-  clay_millennium_yangMills m_lat hP3 hP2
+  clay_millennium_yangMills m_lat hP3
     (uvScalingLimit_implies_continuumGap m_lat hUV)
 
 end ContinuumBridge

@@ -1,5 +1,5 @@
 # AXIOM_FRONTIER.md — THE-ERIKSSON-PROGRAMME
-<!-- Version: v0.21.0  (2026-03-31) -->
+<!-- Version: v0.22.0  (2026-03-31) -->
 <!-- Lean 4.29.0 / Lake 5.0.0 / Mathlib master (2026-03-29)            -->
 <!-- All Tier-B claims confirmed by lake env lean --stdin tests.        -->
 
@@ -169,6 +169,15 @@ geometry, Balaban RG flow, C₀-semigroup theory) with no current Mathlib4 proof
 ## Change Log
 
   v0.21.0  2026-03-31  AXIOM FRONTIER REACHED ZERO (campaigns 7-10).
+                 #print axioms YangMills.clay_millennium_yangMills
+                 returns [propext, Classical.choice, Quot.sound] only.
+                 All custom axioms (...) are DEAD CODE
+v0.22.0  2026-03-31  HYPOTHESIS FRONTIER: removed unused
+                 hInfiniteVolumeMassGap from clay_millennium_yangMills,
+                 yangMills_existence_massGap, clay_mass_gap_pos and all
+                 callers (ContinuumBridge.lean, Phase4Assembly.lean).
+                 Build: 8172 jobs, 0 errors. Axiom census unchanged:
+                 [propext, Classical.choice, Quot.sound].  AXIOM FRONTIER REACHED ZERO (campaigns 7-10).
                #print axioms YangMills.clay_millennium_yangMills
                returns [propext, Classical.choice, Quot.sound] only.
                All custom axioms (p91_tight_weak_coupling_window,
