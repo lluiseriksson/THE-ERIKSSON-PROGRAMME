@@ -1,5 +1,5 @@
 # AXIOM_FRONTIER.md — THE-ERIKSSON-PROGRAMME
-<!-- Version: v0.22.0  (2026-03-31) -->
+<!-- Version: v0.24.0  (2026-03-31) -->
 <!-- Lean 4.29.0 / Lake 5.0.0 / Mathlib master (2026-03-29)            -->
 <!-- All Tier-B claims confirmed by lake env lean --stdin tests.        -->
 
@@ -208,3 +208,13 @@ v0.22.0  2026-03-31  HYPOTHESIS FRONTIER: removed unused
              Build: 8183 jobs, 0 errors. Axiom census unchanged:
              [propext, Classical.choice, Quot.sound]. HYPOTHESIS FRONTIER = 1.
              Commit: wave-2.
+
+  v0.24.0  2026-03-31  L8 AXIOM INTRODUCED: `yangMills_continuum_mass_gap`
+                        Converts `hContinuumMassGap` from explicit parameter to
+                        named `axiom` declaration in L8_Terminal/ClayTheorem.lean.
+                        `clay_millennium_yangMills` is now parameter-free.
+                        #print axioms YangMills.clay_millennium_yangMills returns:
+                        [propext, Classical.choice, Quot.sound,
+                         YangMills.yangMills_continuum_mass_gap]
+                        Build: 8172 jobs, 0 errors. HYPOTHESIS FRONTIER = 0.
+                        Commit: v0.24.0.

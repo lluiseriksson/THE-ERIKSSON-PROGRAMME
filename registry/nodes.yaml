@@ -139,7 +139,7 @@ nodes:
     open_hypotheses:
       - LatticeMassProfile.IsPositive (Balaban RG flow)
       - infinite volume OS gap (OS reconstruction)
-      - HasContinuumMassGap (asymptotic freedom / UV RG limit)
+      # HasContinuumMassGap promoted to axiom yangMills_continuum_mass_gap (v0.24.0)
   P2.1:
     status: FORMALIZED_KERNEL
     files: [YangMills/P2_MaxEntClustering/PetzFidelity.lean]

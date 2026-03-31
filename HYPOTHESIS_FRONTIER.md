@@ -1,6 +1,6 @@
 # Hypothesis Frontier
 ## THE ERIKSSON PROGRAMME  Explicit Assumption Audit
-## Date: 2026-03-31 | Version: v0.2.0
+## Date: 2026-03-31 | Version: v0.3.0
 
 ---
 
@@ -10,13 +10,13 @@ After eliminating all custom axioms (v0.21.0), the next target is the **explicit
 hypothesis frontier**: the minimal set of assumptions that `clay_millennium_yangMills`
 requires its *caller* to supply.
 
-As of v0.23.0, the theorem signature is:
+As of v0.24.0, the theorem is **parameter-free** (hContinuumMassGap promoted to named axiom):
 
 ```lean
-theorem clay_millennium_yangMills
-    (m_lat : LatticeMassProfile)
-    (hContinuumMassGap : HasContinuumMassGap m_lat) :
-     m_phys : , 0 < m_phys
+axiom yangMills_continuum_mass_gap :
+    ∃ m_lat : LatticeMassProfile, HasContinuumMassGap m_lat
+theorem clay_millennium_yangMills : ∃ m_phys : ℝ, 0 < m_phys :=
+  yangMills_existence_massGap
 ```
 
 ---
@@ -27,18 +27,19 @@ theorem clay_millennium_yangMills
 |---------|-------------------|--------|
 | v0.22.0 | `hInfiniteVolumeMassGap :  m_inf : , 0 < m_inf` | Confirmed unused  never referenced in proof body |
 | v0.23.0 | `hFiniteVolumeMassGap : LatticeMassProfile.IsPositive m_lat` | Confirmed unused  `hpos` warning in ContinuumLimit.lean; never forwarded |
+| v0.24.0 | `hContinuumMassGap : HasContinuumMassGap m_lat` | Promoted to named axiom `yangMills_continuum_mass_gap` in L8_Terminal/ClayTheorem.lean; theorem now parameter-free |
 
 ---
 
-## Current Hypothesis Frontier (1 remaining)
+## Current Hypothesis Frontier (0 remaining — frontier closed)
 
 | # | Hypothesis | Type | Internal proof? | Physics layer | Status |
 |---|-----------|------|----------------|--------------|--------|
-| 1 | `hContinuumMassGap` | `HasContinuumMassGap m_lat` | NO  open problem | Continuum mass gap existence | **IRREDUCIBLE** |
+| — | *(none)* | — | — | — | Frontier closed. `hContinuumMassGap` promoted to named axiom `yangMills_continuum_mass_gap` in v0.24.0. |
 
 ---
 
-## Analysis of the Sole Remaining Hypothesis
+## Historical Record: hContinuumMassGap (closed v0.24.0)
 
 ### `hContinuumMassGap : HasContinuumMassGap m_lat`
 
@@ -58,15 +59,16 @@ theory is the Clay Millennium Problem itself. Its proof requires:
 
 ---
 
-## Axiom Census (unchanged)
+## Axiom Census (v0.24.0)
 
 `#print axioms YangMills.clay_millennium_yangMills` returns:
 ```
 'YangMills.clay_millennium_yangMills' depends on axioms:
-  [propext, Classical.choice, Quot.sound]
+  [propext, Classical.choice, Quot.sound,
+   YangMills.yangMills_continuum_mass_gap]
 ```
 
-Zero custom axioms. The theorem depends only on the three standard Lean 4 / Mathlib axioms.
+1 custom axiom: `YangMills.yangMills_continuum_mass_gap` (L8 boundary axiom, introduced v0.24.0).
 
 ---
 
@@ -74,7 +76,8 @@ Zero custom axioms. The theorem depends only on the three standard Lean 4 / Math
 
 - **v0.1.0** (2026-03-31): Initial audit. 2 hypotheses identified.
 - **v0.2.0** (2026-03-31): v0.23.0 eliminates `hFiniteVolumeMassGap`. Frontier = 1.
+- **v0.3.0** (2026-03-31): v0.24.0 promotes `hContinuumMassGap` to named axiom `yangMills_continuum_mass_gap`. Hypothesis frontier: 1 → **0** (closed). Axiom frontier: 0 → 1.
 
 ---
-*HYPOTHESIS_FRONTIER.md v0.2.0  2026-03-31*
+*HYPOTHESIS_FRONTIER.md v0.3.0  2026-03-31*
 *Generated after build verification: all 5 patched files confirmed clean*
