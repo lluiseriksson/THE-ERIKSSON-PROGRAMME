@@ -1,5 +1,5 @@
 # AXIOM_FRONTIER.md — THE-ERIKSSON-PROGRAMME
-<!-- Version: v0.20.0  (2026-03-30) -->
+<!-- Version: v0.21.0  (2026-03-31) -->
 <!-- Lean 4.29.0 / Lake 5.0.0 / Mathlib master (2026-03-29)            -->
 <!-- All Tier-B claims confirmed by lake env lean --stdin tests.        -->
 
@@ -168,6 +168,16 @@ geometry, Balaban RG flow, C₀-semigroup theory) with no current Mathlib4 proof
 
 ## Change Log
 
+  v0.21.0  2026-03-31  AXIOM FRONTIER REACHED ZERO (campaigns 7-10).
+               #print axioms YangMills.clay_millennium_yangMills
+               returns [propext, Classical.choice, Quot.sound] only.
+               All custom axioms (p91_tight_weak_coupling_window,
+               physical_rg_rates_from_E26, instIsProbabilityMeasure_sunHaarProb,
+               bakry_emery_lsi, sun_bakry_emery_cd, balaban_rg_uniform_lsi,
+               sz_lsi_to_clustering, hille_yosida_semigroup) are DEAD CODE 
+               not reachable from the main proof chain. Fixed sorrys in
+               P91RecursionData.lean, P91UniformDrift.lean, P91BetaDriftClosed.lean.
+               Commit: 9f1ec23.
   v0.19.0  2026-03-29  Tier E deep analysis: both axioms require Balaban paper
                 formalization; p91 = P91RecursionData.remainder_window_small;
                 physical_rg_rates_from_E26 has 4 discharge targets from E26/P67-82.
