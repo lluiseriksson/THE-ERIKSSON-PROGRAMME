@@ -6,10 +6,18 @@
 [![Lean 4](https://img.shields.io/badge/Lean-4-orange)](https://leanprover.github.io/)
 [![Mathlib4](https://img.shields.io/badge/Mathlib-4-green)](https://leanprover-community.github.io/mathlib4_docs/)
 
-> **Current milestone (2026-03-29, post-audit D1–D8):** `BalabanRGUniformLSILiveTarget` and
-> `HaarLSIFrontierPackage` are unconditionally closed at the packaging layer.
-> 0 `sorry` across all Lean source; all gaps are explicit named `axiom`.
-> 20 named axioms registered in `AXIOM_FRONTIER.md` (census 2026-03-29, post-closure C1+C3).
+> **Current milestone (2026-03-31, v0.25.0):** `hContinuumMassGap` converted
+> to named axiom `yangMills_continuum_mass_gap`; `clay_millennium_yangMills`
+> is now parameter-free; hypothesis frontier = 0.
+>
+> - 0 `sorry` across all Lean source.
+> - 1 BFS-live custom axiom: `YangMills.yangMills_continuum_mass_gap`
+>   (continuum mass gap existence — the genuine remaining frontier of the Clay Problem).
+> - `#print axioms clay_millennium_yangMills` returns:
+>   `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`
+> - 25 further `axiom` declarations in experimental/dead-code modules
+>   (confirmed not in the final theorem's dependency chain).
+> - See `AXIOM_FRONTIER.md` for the complete live-vs-dead census.
 
 ---
 
@@ -251,34 +259,20 @@ named `axiom`, never left as a silent `sorry`. This means:
 - The full dependency graph of every theorem is machine-checkable
 - Any reader can audit exactly which mathematical claims are assumed
 
-The complete, verified axiom list is in `AXIOM_FRONTIER.md`. A census of
-`YangMills/P8_PhysicalGap/` and `YangMills/Experimental/LieSUN/` (28 files) was
-conducted on 2026-03-29 and found **18 unique axiom names**.
+The complete census is in `AXIOM_FRONTIER.md` (v0.25.0). As of 2026-03-31:
 
-### Current Axiom Inventory (summary — see `AXIOM_FRONTIER.md` for full list)
+- **1 BFS-live custom axiom**: `YangMills.yangMills_continuum_mass_gap`
+  (continuum mass gap existence — the genuine frontier of the Clay Problem)
+- **25 dead custom axioms**: declared in experimental/lattice modules,
+  confirmed absent from `clay_millennium_yangMills`'s dependency graph
+- **0 `sorry`** across all Lean source
 
-**Clay-core axioms** (genuine mathematical content, not yet formalized):
+`#print axioms clay_millennium_yangMills` returns exactly:
+```
+[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]
+```
+See `AXIOM_FRONTIER.md` for the full live-vs-dead breakdown by module.
 
-| Axiom | File | Mathematical Content |
-|---|---|---|
-| `sun_bakry_emery_cd` | `BalabanToLSI.lean` | SU(N) satisfies Bakry-Émery CD(N/4, ∞) |
-| `balaban_rg_uniform_lsi` | `BalabanToLSI.lean` | RG promotes per-site Haar-LSI to uniform DLR-LSI |
-| `sun_lieb_robinson_bound` | `SUN_LiebRobin.lean` | Lieb-Robinson bound for SU(N) lattice observables |
-| `sz_lsi_to_clustering` | `BalabanToLSI.lean` | Uniform DLR-LSI → exponential clustering (abstract interface; concrete proof in `StroockZegarlinski.lean` not yet connected) |
-
-**Selected Mathlib-gap axioms** (formalization infrastructure, not Clay-specific):
-
-| Axiom | File | Content |
-|---|---|---|
-| `bakry_emery_lsi` | `BalabanToLSI.lean` | Bakry-Émery criterion implies LSI |
-| `instIsTopologicalGroupSUN` | `SUN_StateConstruction.lean` | `IsTopologicalGroup` for `Matrix.specialUnitaryGroup` |
-| `sunDirichletForm_contraction` | `SUN_DirichletCore.lean` | Beurling-Deny normal contraction |
-| `hille_yosida_semigroup` | `MarkovSemigroupDef.lean` | Hille-Yosida: Dirichlet form → Markov semigroup |
-| `instIsProbabilityMeasure_sunHaarProb` | `BalabanToLSI.lean` | Haar measure on abstract SU(N) state is a probability measure |
-
-See `AXIOM_FRONTIER.md` for the remaining 9 Mathlib-gap axioms, structural issues
-(duplicate declarations, name-clash between abstract and concrete `sz_lsi_to_clustering`),
-and the discharge roadmap.
 
 ### The Direct Bridge Architecture
 
