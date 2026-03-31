@@ -2,6 +2,7 @@ import YangMills.L5_MassGap.MassGap
 import YangMills.L6_FeynmanKac.FeynmanKac
 import YangMills.L6_OS.OsterwalderSchrader
 import YangMills.L7_Continuum.ContinuumLimit
+import YangMills.L8_Terminal.AtomicAxioms
 
 namespace YangMills
 
@@ -48,8 +49,29 @@ that the SU(N) lattice mass gap survives the continuum limit N -> infinity.
 **Proof status**: Open -- core L7 content of the Clay Millennium Problem.
 See `AXIOM_FRONTIER.md` entry `yangMills_continuum_mass_gap`.
 -/
-axiom yangMills_continuum_mass_gap :
-    ∃ m_lat : LatticeMassProfile, HasContinuumMassGap m_lat
+/--
+Continuum mass gap theorem.
+
+This was previously an axiom; it is now **derived** from three atomic
+axioms (AF1–AF3) in `AtomicAxioms.lean`, each corresponding to a specific
+theorem of Bloque4:
+
+  - `yangMills_ax_terminalKP_smallness`   (AF1 ← Thm 5.3 of Bloque4)
+  - `yangMills_ax_multiscaleUV_suppression` (AF2 ← Thm 6.3 of Bloque4)
+  - `yangMills_ax_OSAssembly`              (AF3 ← Thm 7.1 + Lem 8.2 of Bloque4)
+
+The three atomic axioms remain unformalized (each requires substantial
+Lean infrastructure), but this decomposition makes the remaining
+assumptions more transparent and paper-grounded.
+
+**Oracle**: `#print axioms clay_millennium_yangMills` now lists three
+BFS-live custom axioms (AF1, AF2, AF3) instead of one.
+-/
+theorem yangMills_continuum_mass_gap :
+    ∃ m_lat : LatticeMassProfile, HasContinuumMassGap m_lat := by
+  obtain ⟨m_lat, hKP⟩ := yangMills_ax_terminalKP_smallness
+  exact ⟨m_lat, yangMills_ax_OSAssembly m_lat hKP
+    (yangMills_ax_multiscaleUV_suppression m_lat hKP)⟩
 
 /-- Terminal assembly: the continuum mass gap axiom implies the Clay statement. -/
 theorem yangMills_existence_massGap : ClayYangMillsTheorem := by

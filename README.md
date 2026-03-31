@@ -434,3 +434,12 @@ See the [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.
 more details.
 
 SPDX-License-Identifier: AGPL-3.0-or-later
+
+## v0.28.0 — Atomic Axiom Split (2026-03-31)
+
+The single BFS-live custom axiom `yangMills_continuum_mass_gap` has been
+replaced by three atomic sub-axioms (AF1–AF3), each corresponding to a
+specific theorem of the Bloque4 paper. `yangMills_continuum_mass_gap` is
+now a derived theorem. The `UNCONDITIONALITY_ROADMAP.md` (v0.2.0) contains
+the complete proof dependency chain and formalization roadmap.
+

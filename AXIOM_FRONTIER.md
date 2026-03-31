@@ -213,3 +213,37 @@ grep -rn "sorry" YangMills/ --include="*.lean" | wc -l
 
 See `UNCONDITIONALITY_ROADMAP.md` for the detailed formalization roadmap
 to eliminate `yangMills_continuum_mass_gap` and achieve full unconditionality.
+
+---
+
+## v0.28.0 Axiom Census Update (2026-03-31)
+
+### BFS-Live Custom Axioms (in `#print axioms clay_millennium_yangMills`)
+
+After the Phase 3 atomic split in v0.28.0, the single monolithic axiom
+`yangMills_continuum_mass_gap` has been replaced by three atomic sub-axioms:
+
+| Name | Paper correspondence | Source |
+|------|----------------------|--------|
+| `yangMills_ax_terminalKP_smallness` | Theorem 5.3 of Bloque4 | Paper [1] → Bałaban [7,8,9,10] |
+| `yangMills_ax_multiscaleUV_suppression` | Theorem 6.3 of Bloque4 | Bałaban [4,5] + Dimock [14,15] |
+| `yangMills_ax_OSAssembly` | Thm 7.1 + Lem 8.2 + Rem 8.6 of Bloque4 | Osterwalder–Seiler [25] |
+
+`yangMills_continuum_mass_gap` is now a **theorem** (derived from AF1–AF3).
+
+**Total custom live axioms**: 3 (AF1, AF2, AF3)
+**Real sorry tactics**: 0
+**Opaque declarations**: 2 (`HasTerminalKPSmallness`, `HasMultiscaleUVSuppression`)
+
+### Unconditional status
+
+```
+#print axioms YangMills.clay_millennium_yangMills
+```
+
+produces only `[propext, Classical.choice, Quot.sound]` plus the above
+custom live axioms. The Lean kernel has verified every deductive step.
+All `sorry` tactics: 0. All `opaque` declarations: documented above.
+
+For the detailed unconditionality roadmap and dependency DAG, see
+`UNCONDITIONALITY_ROADMAP.md` (v0.2.0, grounded in Bloque4 paper).
