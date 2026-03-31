@@ -90,7 +90,6 @@ theorem osContinuum_massGap
     Hard content (RG flow, asymptotic freedom) is explicit hypothesis. -/
 theorem continuumLimit_massGap
     (m_lat : LatticeMassProfile)
-    (hpos : m_lat.IsPositive)
     (hcont : HasContinuumMassGap m_lat) :
     ∃ m_phys : ℝ, 0 < m_phys ∧
       Tendsto (renormalizedMass m_lat) atTop (𝓝 m_phys) := by
@@ -100,7 +99,6 @@ theorem continuumLimit_massGap
 /-- Corollary: the continuum physical mass is strictly positive. -/
 theorem continuumLimit_mass_pos
     (m_lat : LatticeMassProfile)
-    (hpos : m_lat.IsPositive)
     (hcont : HasContinuumMassGap m_lat) :
     ∃ m_phys : ℝ, 0 < m_phys :=
   continuumMassGap_pos m_lat hcont

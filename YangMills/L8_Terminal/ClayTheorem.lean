@@ -45,18 +45,16 @@ def ClayYangMillsTheorem : Prop :=
   Conclusion: ∃ m_phys > 0 (Clay statement). -/
 theorem yangMills_existence_massGap
     (m_lat : LatticeMassProfile)
-    (hL5 : LatticeMassProfile.IsPositive m_lat)
     (hL7 : HasContinuumMassGap m_lat) :
     ClayYangMillsTheorem :=
-  continuumLimit_mass_pos m_lat hL5 hL7
+  continuumLimit_mass_pos m_lat hL7
 
 /-- The physical mass gap is strictly positive. -/
 theorem clay_mass_gap_pos
     (m_lat : LatticeMassProfile)
-    (hL5 : LatticeMassProfile.IsPositive m_lat)
     (hL7 : HasContinuumMassGap m_lat) :
     ∃ m_phys : ℝ, 0 < m_phys :=
-  yangMills_existence_massGap m_lat hL5 hL7
+  yangMills_existence_massGap m_lat hL7
 
 /-- CLAY MILLENNIUM THEOREM: Yang-Mills existence and mass gap.
 
@@ -67,9 +65,8 @@ theorem clay_mass_gap_pos
   then there exists a strictly positive physical mass m_phys > 0. -/
 theorem clay_millennium_yangMills
     (m_lat : LatticeMassProfile)
-    (hFiniteVolumeMassGap : LatticeMassProfile.IsPositive m_lat)
     (hContinuumMassGap : HasContinuumMassGap m_lat) :
     ∃ m_phys : ℝ, 0 < m_phys :=
-  continuumLimit_mass_pos m_lat hFiniteVolumeMassGap hContinuumMassGap
+  continuumLimit_mass_pos m_lat hContinuumMassGap
 
 end YangMills

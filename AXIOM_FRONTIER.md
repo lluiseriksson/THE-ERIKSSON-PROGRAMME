@@ -197,3 +197,14 @@ v0.22.0  2026-03-31  HYPOTHESIS FRONTIER: removed unused
   v0.17.0  2026-03-29  Lean 4.29.0 confirmation: both Tier-B axioms blocked
   v0.16.0  2026-03-29  Census corrected to 29; block-comment stripping; 0 duplicates
   v0.15.x  2026-03-29  INCORRECT: prime-stripping regex, count 26, false C3 fix
+
+  v0.23.0  2026-03-31  HYPOTHESIS FRONTIER: removed unused hFiniteVolumeMassGap
+             (LatticeMassProfile.IsPositive) from clay_millennium_yangMills,
+             yangMills_existence_massGap, clay_mass_gap_pos, and all callers
+             (ContinuumLimit.lean, Phase3Assembly.lean, ContinuumBridge.lean,
+             Phase4Assembly.lean). Lean compiler warned 'unused variable hpos'
+             in ContinuumLimit.lean lines 93,103  confirmed never forwarded to
+             continuumMassGap_pos. Hypothesis frontier: 2 -> 1.
+             Build: 8183 jobs, 0 errors. Axiom census unchanged:
+             [propext, Classical.choice, Quot.sound]. HYPOTHESIS FRONTIER = 1.
+             Commit: wave-2.

@@ -57,9 +57,7 @@ theorem phase3_to_clay
     (h : ConnectedCorrDecay μ plaquetteEnergy β F distP)
     (hcont : HasContinuumMassGap (latticeMassFromDecay μ plaquetteEnergy β F distP h)) :
     ∃ m_phys : ℝ, 0 < m_phys :=
-  continuumLimit_mass_pos _
-    (latticeMassFromDecay_isPositive μ plaquetteEnergy β F distP h)
-    hcont
+  continuumLimit_mass_pos _ hcont
 
 /-- Phase 3 Balaban summary: RG iteration gives a positive lattice mass profile. -/
 theorem eriksson_phase3_balaban_massProfile
