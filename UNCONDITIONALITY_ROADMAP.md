@@ -187,7 +187,7 @@ Campaign 16 (this campaign) verified:
 |---------|----------|--------|
 | v0.1.0  | Campaign 12 | Initial roadmap |
 | v0.2.0  | Campaign 14 | Phase 3 obstruction analysis added |
-| v0.3.0  | Campaign 15 | Phase 3 deepened; OS axiom table; Route C added; Bloque4 → [58]–[68] |
+| v0.3.0  | Campaign 15 | Phase 3 deepened; OS axiom table; Route C added; source authority updated to papers [58]–[68] |
 | v0.4.0  | Campaign 16 | Campaign-13 revert: 3 spurious axioms purged; 8172-job rebuild; Phase 3 attack documented; oracle restored to 1 BFS-live axiom |
 
 ---
