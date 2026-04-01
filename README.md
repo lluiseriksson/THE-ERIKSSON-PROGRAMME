@@ -445,13 +445,17 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 - Restored `ClayTheorem.lean` to v0.27.0 (commit `54b55df`); 3 spurious axioms removed
   (`yangMills_ax_terminalKP_smallness`, `yangMills_ax_multiscaleUV_suppression`, `yangMills_ax_OSAssembly`)
 - Forced genuine 8172-job recompile (stale olean cache cleared)
-- Census: 28 axiom decls (27 dead, 1 BFS-live), 2 opaques, 0 real sorries
+- Census: 26 total custom axioms (25 dead, 1 BFS-live), 2 opaques, 0 real sorries
 - Phase 3 attack: 3 genuine obstructions documented (BF-B/BF-C/BF-D); no new axioms introduced
 - Source authority: papers [58]–[68] (viXra:2602.0073 through viXra:2602.0117)
 
 ## Oracle status (Campaign 16)
 
-## v0.28.0 — Atomic Axiom Split (2026-03-31)
+## v0.28.0 — Atomic Axiom Split *(Historical -- REVERTED in v0.28.2)*
+
+> **WARNING REVERTED**: The atomic split described below was a Campaign-13 error.
+> As of v0.28.2, ClayTheorem.lean was restored. yangMills_continuum_mass_gap is still an axiom.
+ (2026-03-31)
 
 The single BFS-live custom axiom `yangMills_continuum_mass_gap` has been
 replaced by three atomic sub-axioms (AF1–AF3), each corresponding to a
