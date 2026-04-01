@@ -1,6 +1,6 @@
 # AXIOM_FRONTIER.md
 ## THE-ERIKSSON-PROGRAMME — Custom Axiom Census
-## Version: Campaign 15
+## Version: Campaign 18
 
 ---
 

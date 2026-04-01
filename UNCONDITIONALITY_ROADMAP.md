@@ -181,6 +181,18 @@ Campaign 16 (this campaign) verified:
 
 ---
 
+
+## Campaign 17 improvements (v0.28.3, 2026-03-30)
+- README.md census corrected: 26 total axioms (25 dead, 1 BFS-live), 2 opaques, 0 sorries.
+- AtomicAxioms.lean confirmed non-existent.
+- Bloque4 legacy source labels purged from UNCONDITIONALITY_ROADMAP.md.
+
+## Campaign 18 improvements (v0.28.4, 2026-04-01)
+- AXIOM_FRONTIER.md: version Campaign 15 → Campaign 18.
+- registry/nodes.yaml: date updated to 2026-04-01.
+- Phase 4 analysis: constantMassProfile fake-elimination documented as excluded.
+- Genuine obstruction confirmed: yangMills_continuum_mass_gap at L8_Terminal/ClayTheorem.lean:51.
+
 ## Version history
 
 | Version | Campaign | Change |
@@ -192,4 +204,4 @@ Campaign 16 (this campaign) verified:
 
 ---
 
-*Last updated: Campaign 16 (v0.28.2, 2026-03-31). Source papers: [58]–[68] as listed above.*
+*Last updated: Campaign 18 (v0.28.4, 2026-04-01). Source papers: [58]–[68] as listed above.*

@@ -436,6 +436,15 @@ more details.
 SPDX-License-Identifier: AGPL-3.0-or-later
 
 
+## v0.28.4 – Campaign 18: Documentation sync (2026-04-01)
+- AXIOM_FRONTIER.md: version updated to Campaign 18.
+- UNCONDITIONALITY_ROADMAP.md: last-updated footer updated.
+- registry/nodes.yaml: date updated to 2026-04-01.
+
+## v0.28.3 – Campaign 17: Census fix + Bloque4 purge (2026-03-30)
+- v0.28.3a: README census corrected: 26 total axioms (25 dead, 1 BFS-live), 2 opaques.
+- v0.28.3b: UNCONDITIONALITY_ROADMAP.md: Bloque4 legacy labels eliminated.
+
 ## v0.28.2 – Campaign 16: Campaign-13 Revert (2026-03-31)
 
 **Oracle:** `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`  
