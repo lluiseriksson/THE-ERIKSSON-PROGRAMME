@@ -177,7 +177,7 @@ Campaign 16 (this campaign) verified:
 - No P8_PhysicalGap theorem directly concludes HasContinuumMassGap unconditionally.
 - The obstruction is genuine and precisely documented above.
 - No new axiom, opaque, constant, or sorry was introduced.
-- All "Bloque4" references replaced with proper [58]–[68] citations.
+- Source authority: papers [58]-[68] only; no legacy source labels.
 
 ---
 
