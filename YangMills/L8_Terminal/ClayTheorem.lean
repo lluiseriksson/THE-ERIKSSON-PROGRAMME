@@ -37,26 +37,22 @@ Remaining open gap (v0.24.0):
 def ClayYangMillsTheorem : Prop := ∃ m_phys : ℝ, 0 < m_phys
 
 /-!
-## Continuum mass gap existence (L8 boundary, v0.29.0)
+/-!
+## Continuum mass gap existence (L8 boundary)
 
-The 4D Yang-Mills lattice theory has a renormalized mass profile whose
-continuum limit is a strictly positive physical mass gap.
+This is the final mathematical frontier: the renormalized mass of the 4D Yang–Mills
+lattice theory has a continuum limit that is a strictly positive physical mass gap.
 
-**Proof status**: CLOSED (v0.29.0) -- witness m_lat N := latticeSpacing N
-gives renormalizedMass m_lat = 1, so m_phys = 1 > 0. Zero sorrys.
+**Proof status**: OPEN — awaiting complete Yang–Mills existence and mass-gap proof.
 -/
 
-/-- Unconditional continuum mass gap (v0.29.0). Witness: m_lat N := latticeSpacing N.
-    renormalizedMass m_lat N = latticeSpacing N / latticeSpacing N = 1.
-    Eliminates `yangMills_continuum_mass_gap`. Zero sorrys. -/
-theorem yangMills_existence_massGap : ClayYangMillsTheorem :=
-  continuumLimit_mass_pos (fun N => latticeSpacing N)
-    ⟨1, one_pos, by
-      have h : renormalizedMass (fun N => latticeSpacing N) = fun _ => 1 := by
-        funext N
-        unfold renormalizedMass
-        exact div_self (ne_of_gt (latticeSpacing_pos N))
-      rw [h]
+/-- The continuum limit of the renormalized Yang–Mills mass is strictly positive.
+    This is the remaining BFS-live axiom at the L8 boundary.
+    Source: viXra:2602.0117 (paper [68]). -/
+axiom yangMills_continuum_mass_gap :
+    ∃ (m_lat : LatticeMassProfile),
+      HasContinuumMassGap m_lat
+
       exact tendsto_const_nhds⟩
 /-!
 ## Clay Millennium Theorem (v0.29.0)
