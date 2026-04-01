@@ -75,3 +75,18 @@ The Lean formalization gap is detailed in UNCONDITIONALITY_ROADMAP.md.
 ---
 
 *Last updated: Campaign 16 (v0.28.2). Oracle verified 2026-03-31: 1 BFS-live custom axiom confirmed post-campaign13-revert.*
+
+## Terminal Theorem: Weak vs Strong (v0.30.0)
+
+The project exposes two levels of the Clay–Millennium conclusion:
+
+| Identifier | Prop | Strength |
+|---|---|---|
+| `ClayYangMillsTheorem` | `∃ m_phys : ℝ, 0 < m_phys` | **Vacuous** (provable without axioms) |
+| `ClayYangMillsStrong` | `∃ m_lat, HasContinuumMassGap m_lat` | **Substantive** (quantitative convergence) |
+
+`clay_millennium_yangMills_strong : ClayYangMillsStrong` is the honest
+maximal conclusion: it directly names `yangMills_continuum_mass_gap`
+and introduces zero new assumptions.
+
+The weak chain is preserved for backward compatibility.

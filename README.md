@@ -487,3 +487,18 @@ See [UNCONDITIONALITY_ROADMAP.md](UNCONDITIONALITY_ROADMAP.md) for the
 detailed obstruction analysis and formalization plan.
 
 **Source papers [58]–[68]:** viXra:2602.0073 through viXra:2602.0117
+
+## Terminal Theorem: Weak vs Strong (v0.30.0)
+
+The project exposes two levels of the Clay–Millennium conclusion:
+
+| Identifier | Prop | Strength |
+|---|---|---|
+| `ClayYangMillsTheorem` | `∃ m_phys : ℝ, 0 < m_phys` | **Vacuous** (provable without axioms) |
+| `ClayYangMillsStrong` | `∃ m_lat, HasContinuumMassGap m_lat` | **Substantive** (quantitative convergence) |
+
+`clay_millennium_yangMills_strong : ClayYangMillsStrong` is the honest
+maximal conclusion: it directly names `yangMills_continuum_mass_gap`
+and introduces zero new assumptions.
+
+The weak chain is preserved for backward compatibility.

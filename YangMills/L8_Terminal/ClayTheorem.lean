@@ -72,4 +72,30 @@ carried by the named axiom `yangMills_continuum_mass_gap` above.
 theorem clay_millennium_yangMills : ∃ m_phys : ℝ, 0 < m_phys :=
   clay_mass_gap_pos
 
+
+/-! ### Strongest honest terminal statement (v0.30.0)
+
+`ClayYangMillsStrong` names precisely what the continuum axiom asserts:
+existence of a lattice mass profile whose renormalized mass has a positive
+real convergent limit.  This is **strictly stronger** than
+`ClayYangMillsTheorem` (which is definitionally vacuous — provable by
+`⟨1, one_pos⟩` with no axioms).
+
+`clay_millennium_yangMills_strong` introduces **zero new assumptions** — the
+proof is a one-step definitional unwrapping of `yangMills_continuum_mass_gap`.
+Use `#print axioms YangMills.clay_millennium_yangMills_strong` to verify.
+
+The pre-existing weak chain (`yangMills_existence_massGap`,
+`clay_mass_gap_pos`, `clay_millennium_yangMills`) is preserved unchanged. -/
+
+/-- The strong Clay–Millennium conclusion: a lattice mass profile whose
+    renormalized mass converges to a positive real limit exists.
+    Strictly stronger than `ClayYangMillsTheorem`. -/
+def ClayYangMillsStrong : Prop :=
+  ∃ m_lat : LatticeMassProfile, HasContinuumMassGap m_lat
+
+/-- Strong terminal theorem.  **No new axioms.**  This definitionally
+    unwraps `yangMills_continuum_mass_gap` under its canonical type. -/
+theorem clay_millennium_yangMills_strong : ClayYangMillsStrong :=
+  yangMills_continuum_mass_gap
 end YangMills
