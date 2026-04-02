@@ -59,6 +59,54 @@ lemma kp_smallness_of_bound (δ weightedSum : ℝ)
     KPSmallness δ weightedSum :=
   ⟨hδ0, hδ1, hw⟩
 
+/-- **H1 activity summability**: any function satisfying the small-field decay bound
+is absolutely summable. For κ > 0, the geometric majorant exp(-κ*n) gives
+convergence by comparison. First sub-step of Step 3 in UNCONDITIONALITY_ROADMAP. -/
+theorem smallfield_decay_summable (E0 κ g : ℝ) (hE0 : 0 < E0) (hκ : 0 < κ)
+    (hg : 0 < g) (activity : ℕ → ℝ)
+    (h : HasSmallFieldDecay E0 κ g activity) :
+    Summable activity := by
+  have hbound := h hE0 hκ hg
+  have hexp_lt1 : exp (-κ) < 1 := exp_lt_one_iff.mpr (neg_lt_zero.mpr hκ)
+  have hexp_nn : (0 : ℝ) ≤ exp (-κ) := exp_nonneg _
+  have hpow : ∀ n : ℕ, exp (-κ * ↑n) = exp (-κ) ^ n := by
+    intro n
+    induction n with
+    | zero => simp
+    | succ m ih =>
+      rw [pow_succ, ← ih, ← exp_add]
+      congr 1; push_cast; ring
+  have hgeom : Summable (fun n : ℕ => E0 * g ^ 2 * exp (-κ) ^ n) :=
+    (summable_geometric_of_lt_one hexp_nn hexp_lt1).mul_left _
+  have habs_bd : ∀ n : ℕ, |activity n| ≤ E0 * g ^ 2 * exp (-κ) ^ n := fun n => by
+    rw [← hpow n]; exact hbound n
+  have hpos_nn : ∀ n, 0 ≤ (activity n + |activity n|) / 2 := fun n => by
+    have h1 := abs_nonneg (activity n)
+    have h2 : -activity n ≤ |activity n| := by
+      calc -activity n ≤ |-activity n| := le_abs_self _
+        _ = |activity n| := abs_neg _
+    linarith
+  have hpos_bd : ∀ n, (activity n + |activity n|) / 2 ≤ E0 * g ^ 2 * exp (-κ) ^ n :=
+    fun n => by
+      have h1 : activity n ≤ |activity n| := le_abs_self _
+      have h2 := habs_bd n; linarith
+  have hpos : Summable (fun n => (activity n + |activity n|) / 2) :=
+    Summable.of_nonneg_of_le hpos_nn hpos_bd hgeom
+  have hneg_nn : ∀ n, 0 ≤ (|activity n| - activity n) / 2 := fun n => by
+    have := le_abs_self (activity n); linarith
+  have hneg_bd : ∀ n, (|activity n| - activity n) / 2 ≤ E0 * g ^ 2 * exp (-κ) ^ n :=
+    fun n => by
+      have h1 : -activity n ≤ |activity n| := by
+        calc -activity n ≤ |-activity n| := le_abs_self _
+          _ = |activity n| := abs_neg _
+      have h2 := habs_bd n; linarith
+  have hneg : Summable (fun n => (|activity n| - activity n) / 2) :=
+    Summable.of_nonneg_of_le hneg_nn hneg_bd hgeom
+  have heq : activity = fun n => (activity n + |activity n|) / 2 -
+      (|activity n| - activity n) / 2 := funext (fun n => by ring)
+  rw [heq]; exact hpos.sub hneg
+
+
 end KPHypotheses
 
 section SpectralGapBridge
