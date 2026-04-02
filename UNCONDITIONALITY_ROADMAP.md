@@ -207,10 +207,12 @@ Campaign 16 (this campaign) verified:
 | v0.3.0  | Campaign 15 | Phase 3 deepened; OS axiom table; Route C added; source authority updated to papers [58]–[68] |
 | v0.4.0  | Campaign 16 | Campaign-13 revert: 3 spurious axioms purged; 8172-job rebuild; Phase 3 attack documented; oracle restored to 1 BFS-live axiom |
 | v0.5.0  | Campaign 18 | `smallfield_decay_summable` proved: H1 activity summable via pos/neg decomp; axioms: propext, Classical.choice, Quot.sound only |
+| v0.5.3 | Campaign 21 | `kp_smallness_from_decay` proved: KPSmallness (E0*g²/(1-exp(-κ))) (∑' n, ‖activity n‖) under HasSmallFieldDecay + E0*g²<1-exp(-κ); bridges Campaigns 19–21 into KP convergence predicate; `kp_smallness_of_bound` + `div_pos` + `mul_pos`; axioms: propext, Classical.choice, Quot.sound only |
 | v0.5.2 | Campaign 20 | `smallfield_decay_tsum_lt_one` proved: ∑' n, ‖activity n‖ < 1 under E0*g² < 1-exp(-κ); `div_lt_one` + `linarith`; axioms: propext, Classical.choice, Quot.sound only |
 | v0.5.1  | Campaign 19 | `smallfield_decay_tsum_bound` proved: ∑’ n, ‖activity n‖ ≤ E0 * g² / (1 - exp(-κ)); HasSum API; axioms: propext, Classical.choice, Quot.sound only |
 
 ---
 
-*Last updated: Campaign 20 (v0.36.0, 2026-04-02). smallfield_decay_tsum_lt_one proved. Source papers: [58]-[68] as listed above.*
+*Last updated: Campaign 21 (v0.37.0, 2026-04-02). smallfield_decay_tsum_lt_one proved. Source papers: [58]-[68] as listed above.*
+- `kp_smallness_from_decay` **proved** (Campaign 21, 2026-04-02): KPSmallness (E0*g²/(1-exp(-κ))) (∑' n, ‖activity n‖) proved without sorry under HasSmallFieldDecay + E0*g²<1-exp(-κ); direct bridge from H1 decay bounds to KP convergence predicate via `kp_smallness_of_bound`; packages Campaigns 19–21 into single KP hypothesis. Oracle: propext, Classical.choice, Quot.sound only. Fourth sub-step of Step 3 (KP activity bound); closes quantitative KP smallness condition.
 - `smallfield_decay_tsum_lt_one` **proved** (Campaign 20, 2026-04-02): strict upper bound ∑' n, ‖activity n‖ < 1 proved without sorry under explicit smallness condition E0*g² < 1 - exp(-κ); direct corollary of `smallfield_decay_tsum_bound` via `div_lt_one` + `linarith`. Oracle: propext, Classical.choice, Quot.sound only. Third sub-step of Step 3 (KP activity bound); closes quantitative “total activity mass < 1” condition.

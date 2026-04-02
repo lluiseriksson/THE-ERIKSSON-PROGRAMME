@@ -157,6 +157,26 @@ theorem smallfield_decay_tsum_lt_one (E0 κ g : ℝ) (hE0 : 0 < E0) (hκ : 0 < �
     (div_lt_one hdenom_pos).mpr hsmall
   linarith
 
+/-- **KP smallness from small-field decay**: if `HasSmallFieldDecay E0 κ g activity` holds and
+    the explicit smallness condition `E0 * g ^ 2 < 1 - Real.exp (-κ)` is satisfied, then
+    `KPSmallness (E0 * g ^ 2 / (1 - Real.exp (-κ))) (∑' n, ‖activity n‖)` holds.
+    This packages Campaigns 19–21 into the KP convergence predicate directly,
+    providing the quantitative bridge from H1 decay to the Kotecky-Preiss hypothesis.
+    Campaign 21, v0.37.0. -/
+theorem kp_smallness_from_decay (E0 κ g : ℝ) (hE0 : 0 < E0) (hκ : 0 < κ)
+    (hg : 0 < g) (activity : ℕ → ℝ)
+    (h : HasSmallFieldDecay E0 κ g activity)
+    (hsmall : E0 * g ^ 2 < 1 - Real.exp (-κ)) :
+    KPSmallness (E0 * g ^ 2 / (1 - Real.exp (-κ))) (∑' n, ‖activity n‖) := by
+  have hbound := smallfield_decay_tsum_bound E0 κ g hE0 hκ hg activity h
+  have hexp_lt1 : exp (-κ) < 1 := exp_lt_one_iff.mpr (neg_lt_zero.mpr hκ)
+  have hdenom_pos : 0 < 1 - exp (-κ) := by linarith
+  have hratio_lt1 : E0 * g ^ 2 / (1 - exp (-κ)) < 1 :=
+    (div_lt_one hdenom_pos).mpr hsmall
+  have hratio_pos : 0 < E0 * g ^ 2 / (1 - exp (-κ)) :=
+    div_pos (mul_pos hE0 (pow_pos hg 2)) hdenom_pos
+  exact kp_smallness_of_bound _ _ hratio_pos hratio_lt1 hbound
+
 end KPHypotheses
 
 section SpectralGapBridge
