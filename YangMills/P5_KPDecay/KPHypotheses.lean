@@ -138,6 +138,25 @@ theorem smallfield_decay_tsum_bound (E0 κ g : ℝ) (hE0 : 0 < E0) (hκ : 0 < κ
     rwa [heq] at hg2
   exact hasSum_le hnorm_bd hnorm_sum.hasSum hgeom_hassum
 
+/-- **Smallness criterion**: if HasSmallFieldDecay E0 κ g activity holds and the
+    explicit numerical condition E0 * g ^ 2 < 1 - Real.exp (-κ) is satisfied, then
+    the series of norms satisfies sum n, norm activity n norm < 1.
+    Direct corollary of smallfield_decay_tsum_bound; closes the
+    "total activity mass < 1" quantitative sub-step of Step 3 (KP activity bound).
+    Explicit smallness criterion reusable in the cluster expansion convergence argument.
+    Campaign 20, v0.36.0. -/
+theorem smallfield_decay_tsum_lt_one (E0 κ g : ℝ) (hE0 : 0 < E0) (hκ : 0 < κ)
+    (hg : 0 < g) (activity : ℕ → ℝ)
+    (h : HasSmallFieldDecay E0 κ g activity)
+    (hsmall : E0 * g ^ 2 < 1 - Real.exp (-κ)) :
+    ∑' n, ‖activity n‖ < 1 := by
+  have hbound := smallfield_decay_tsum_bound E0 κ g hE0 hκ hg activity h
+  have hexp_lt1 : exp (-κ) < 1 := exp_lt_one_iff.mpr (neg_lt_zero.mpr hκ)
+  have hdenom_pos : 0 < 1 - exp (-κ) := by linarith
+  have hratio_lt1 : E0 * g ^ 2 / (1 - exp (-κ)) < 1 :=
+    (div_lt_one hdenom_pos).mpr hsmall
+  linarith
+
 end KPHypotheses
 
 section SpectralGapBridge
