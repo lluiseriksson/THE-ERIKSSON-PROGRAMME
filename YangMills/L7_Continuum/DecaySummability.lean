@@ -94,6 +94,58 @@ theorem multiscale_decay_tsum_bound {κ L : ℝ} (hκ : 0 < κ) (hL : 1 < L) :
           rw [tsum_geometric_of_lt_one hr0.le hr1]
     _ = exp (-κ) / (1 - exp (-(κ * (L - 1)))) := (div_eq_mul_inv _ _).symm
 
+/-- **Abstract Kotecký-Preiss activity bound**: For c ≥ 0 and κ > log(1+c),
+the polymer gas activity series ∑ c^n · exp(-κ·(n+1)) converges and is < 1.
+
+This is the abstract KP convergence criterion with explicit threshold κ > log(1+c).
+The bound shows the total polymer gas activity is controlled by exp(-κ)/(1 - c·exp(-κ)),
+which is < 1 whenever κ exceeds the KP threshold log(1+c).
+
+Directly applicable in the Balaban renormalization group analysis: with
+activity weights z_n = c^n · exp(-κ·(n+1)) for n-polymer clusters,
+this theorem guarantees the polymer gas partition function converges. -/
+theorem abstract_kp_activity_bound (c κ : ℝ) (hc : 0 ≤ c)
+    (hκ : log (1 + c) < κ) :
+    ∑' n : ℕ, c ^ n * exp (-κ * (↑n + 1)) < 1 := by
+  have h1c : 0 < 1 + c := by linarith
+  have hexp_pos : 0 < exp (-κ) := exp_pos _
+  have hr_bound : exp (-κ) < (1 + c)⁻¹ := by
+    have h : (1 + c)⁻¹ = exp (-log (1 + c)) := by
+      rw [exp_neg, exp_log h1c]
+    rw [h]
+    exact exp_lt_exp.mpr (by linarith)
+  have hr_nn : 0 ≤ c * exp (-κ) := mul_nonneg hc hexp_pos.le
+  have hr1 : c * exp (-κ) < 1 := by
+    calc c * exp (-κ) ≤ c * (1 + c)⁻¹ :=
+              mul_le_mul_of_nonneg_left hr_bound.le hc
+         _ = c / (1 + c) := (div_eq_mul_inv c _).symm
+         _ < 1 := by rw [div_lt_one h1c]; linarith
+  have hkey : ∀ n : ℕ, c ^ n * exp (-κ * (↑n + 1)) =
+              exp (-κ) * (c * exp (-κ)) ^ n := by
+    intro n
+    have hpow : exp (-κ) ^ n = exp (↑n * (-κ)) := by
+      induction n with
+      | zero => simp
+      | succ m ih =>
+        rw [pow_succ, ih, ← exp_add]
+        congr 1; push_cast; ring
+    rw [mul_pow, hpow,
+        show -κ * (↑n + 1) = ↑n * (-κ) + (-κ) from by push_cast; ring,
+        exp_add]
+    ring
+  have hval : ∑' n : ℕ, c ^ n * exp (-κ * (↑n + 1)) =
+              exp (-κ) / (1 - c * exp (-κ)) := by
+    simp_rw [hkey]
+    rw [tsum_mul_left, tsum_geometric_of_lt_one hr_nn hr1, ← div_eq_mul_inv]
+  rw [hval]
+  have hpos : 0 < 1 - c * exp (-κ) := by linarith
+  rw [div_lt_one hpos]
+  have hineq : (1 + c) * exp (-κ) < 1 :=
+    calc (1 + c) * exp (-κ) < (1 + c) * (1 + c)⁻¹ :=
+              mul_lt_mul_of_pos_left hr_bound h1c
+         _ = 1 := mul_inv_cancel₀ h1c.ne'
+  linarith
+
 theorem HasContinuumMassGap.limit_unique {m_lat : LatticeMassProfile}
     {m1 m2 : ℝ}
     (h1 : Tendsto (renormalizedMass m_lat) atTop (nhds m1))

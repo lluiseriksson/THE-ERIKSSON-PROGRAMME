@@ -1,6 +1,6 @@
 # UNCONDITIONALITY_ROADMAP.md
 ## THE-ERIKSSON-PROGRAMME — Yang–Mills Lean Formalization
-## Version: v0.3.2  (Campaign 16)
+## Version: v0.3.3  (Campaign 17)
 
 ---
 
@@ -99,6 +99,7 @@ but has not yet been formalized in Lean 4 / Mathlib.
   - `ScaleTower : ℕ → MeasurableSpace (Fin N → SU(N))` (scale-indexed σ-algebras)
   - `conditional_covariance` object (integration-by-scales)
   - ✓ **PROVED (v0.31.0, 2026-04-02)** Geometric series bound: `multiscale_decay_summable` — `∑ k, exp (-κ * L^k) < ∞` for κ > 0, L > 1. Lean file: `YangMills/L7_Continuum/DecaySummability.lean`. Axioms: propext, Classical.choice, Quot.sound only.
+  - ✓ **PROVED (v0.33.0, 2026-04-02)** `abstract_kp_activity_bound`: KP convergence criterion; tsum c^n*exp(-k*(n+1)) < 1 for k > log(1+c). Axioms: propext, Classical.choice, Quot.sound only.
   - ✓ **PROVED (v0.32.0, 2026-04-02)** `multiscale_decay_tsum_bound`. Axioms: propext, Classical.choice, Quot.sound only.
 
 ### Step 6: OS reconstruction + spectral gap
