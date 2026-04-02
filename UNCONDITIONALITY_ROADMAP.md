@@ -98,7 +98,7 @@ but has not yet been formalized in Lean 4 / Mathlib.
 - **Lean sub-steps needed**:
   - `ScaleTower : ℕ → MeasurableSpace (Fin N → SU(N))` (scale-indexed σ-algebras)
   - `conditional_covariance` object (integration-by-scales)
-  - Geometric series bound: `∑ k, exp (-κ * L^k) < ∞` (Mathlib `tsum_geometric_of_lt_one`)
+  - ✓ **PROVED (v0.31.0, 2026-04-02)** Geometric series bound: `multiscale_decay_summable` — `∑ k, exp (-κ * L^k) < ∞` for κ > 0, L > 1. Lean file: `YangMills/L7_Continuum/DecaySummability.lean`. Axioms: propext, Classical.choice, Quot.sound only.
 
 ### Step 6: OS reconstruction + spectral gap
 - **Papers**: [68] §8, Lemma 8.2, Remark 8.6
@@ -147,7 +147,7 @@ but has not yet been formalized in Lean 4 / Mathlib.
 - Outcome: 100% unconditional proof
 
 ### Route B: Partial formalization — Step 5 only (18–36 months)
-- Formalize the geometric UV-suppression sum (Step 5, largely elementary)
+- ✓ **PROVED (v0.31.0)** Geometric UV-suppression bound: `multiscale_decay_summable` in `YangMills/L7_Continuum/DecaySummability.lean` closes the geometric series sub-step of Step 5.
 - This does NOT eliminate the axiom by itself but makes the proof gap smaller
 - Requires: `ScaleTower` structure, conditional covariance formalism
 

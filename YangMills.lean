@@ -98,6 +98,7 @@ import YangMills.L5_MassGap.MassGap
 import YangMills.L6_FeynmanKac.FeynmanKac
 import YangMills.L6_OS.OsterwalderSchrader
 import YangMills.L7_Continuum.ContinuumLimit
+import YangMills.L7_Continuum.DecaySummability
 import YangMills.L8_Terminal.ClayTheorem
 import YangMills.P2_MaxEntClustering.PetzFidelity
 import YangMills.P2_MaxEntClustering.LocalObservableAlgebras
