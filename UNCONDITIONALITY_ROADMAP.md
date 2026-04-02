@@ -196,6 +196,7 @@ Campaign 16 (this campaign) verified:
 - Phase 4 analysis: constantMassProfile fake-elimination documented as excluded.
 - Genuine obstruction confirmed: yangMills_continuum_mass_gap at L8_Terminal/ClayTheorem.lean:51.
 - `smallfield_decay_summable` **proved** (Campaign 18, 2026-04-02): H1 activity summability (`YangMills/P5_KPDecay/KPHypotheses.lean`) established via pos/neg decomposition + geometric comparison. Oracle: propext, Classical.choice, Quot.sound only. First sub-step of Step 3 (KP bound) completed without sorry.
+- `smallfield_decay_tsum_bound` **proved** (Campaign 19, 2026-04-02): quantitative closed-form bound ∑’ n, ‖activity n‖ ≤ E0 * g² / (1 - exp(-κ)) proved without sorry via HasSum API (HasSum.mul_left + hasSum_le). Oracle: propext, Classical.choice, Quot.sound only. Second sub-step of Step 3 (KP activity bound); first explicit geometric series estimate.
 
 ## Version history
 
@@ -206,7 +207,8 @@ Campaign 16 (this campaign) verified:
 | v0.3.0  | Campaign 15 | Phase 3 deepened; OS axiom table; Route C added; source authority updated to papers [58]–[68] |
 | v0.4.0  | Campaign 16 | Campaign-13 revert: 3 spurious axioms purged; 8172-job rebuild; Phase 3 attack documented; oracle restored to 1 BFS-live axiom |
 | v0.5.0  | Campaign 18 | `smallfield_decay_summable` proved: H1 activity summable via pos/neg decomp; axioms: propext, Classical.choice, Quot.sound only |
+| v0.5.1  | Campaign 19 | `smallfield_decay_tsum_bound` proved: ∑’ n, ‖activity n‖ ≤ E0 * g² / (1 - exp(-κ)); HasSum API; axioms: propext, Classical.choice, Quot.sound only |
 
 ---
 
-*Last updated: Campaign 18 (v0.34.0, 2026-04-02). `smallfield_decay_summable` proved. Source papers: [58]-[68] as listed above.*
+*Last updated: Campaign 19 (v0.35.0, 2026-04-02). `smallfield_decay_tsum_bound` proved. Source papers: [58]-[68] as listed above.*

@@ -107,6 +107,37 @@ theorem smallfield_decay_summable (E0 κ g : ℝ) (hE0 : 0 < E0) (hκ : 0 < κ)
   rw [heq]; exact hpos.sub hneg
 
 
+/-- **Quantitative tsum bound**: any activity with `HasSmallFieldDecay E0 κ g`
+    satisfies ∑' n, ‖activity n‖ ≤ E0 * g² / (1 - exp(-κ)).
+    Explicit closed-form geometric series estimate; first quantitative
+    sub-step of Step 3 (KP activity bound). Campaign 19, v0.35.0. -/
+theorem smallfield_decay_tsum_bound (E0 κ g : ℝ) (hE0 : 0 < E0) (hκ : 0 < κ)
+    (hg : 0 < g) (activity : ℕ → ℝ)
+    (h : HasSmallFieldDecay E0 κ g activity) :
+    ∑' n, ‖activity n‖ ≤ E0 * g ^ 2 / (1 - Real.exp (-κ)) := by
+  have hbound := h hE0 hκ hg
+  have hexp_lt1 : exp (-κ) < 1 := exp_lt_one_iff.mpr (neg_lt_zero.mpr hκ)
+  have hexp_nn : (0 : ℝ) ≤ exp (-κ) := exp_nonneg _
+  have hpow : ∀ n : ℕ, exp (-κ * ↑n) = exp (-κ) ^ n := by
+    intro n; induction n with
+    | zero => simp
+    | succ m ih => rw [pow_succ, ← ih, ← exp_add]; congr 1; push_cast; ring
+  have hgeom : Summable (fun n : ℕ => E0 * g ^ 2 * exp (-κ) ^ n) :=
+    (summable_geometric_of_lt_one hexp_nn hexp_lt1).mul_left _
+  have hnorm_bd : ∀ n : ℕ, ‖activity n‖ ≤ E0 * g ^ 2 * exp (-κ) ^ n := fun n => by
+    rw [Real.norm_eq_abs, ← hpow n]; exact hbound n
+  have hnorm_sum : Summable (fun n : ℕ => ‖activity n‖) :=
+    Summable.of_nonneg_of_le (fun n => norm_nonneg _) hnorm_bd hgeom
+  have hgeom_hassum : HasSum (fun n : ℕ => E0 * g ^ 2 * exp (-κ) ^ n)
+      (E0 * g ^ 2 / (1 - exp (-κ))) := by
+    have hg1 : HasSum (fun n : ℕ => exp (-κ) ^ n) (1 - exp (-κ))⁻¹ := by
+      rw [← tsum_geometric_of_lt_one hexp_nn hexp_lt1]
+      exact (summable_geometric_of_lt_one hexp_nn hexp_lt1).hasSum
+    have hg2 := hg1.mul_left (E0 * g ^ 2)
+    have heq : E0 * g ^ 2 * (1 - exp (-κ))⁻¹ = E0 * g ^ 2 / (1 - exp (-κ)) := by ring
+    rwa [heq] at hg2
+  exact hasSum_le hnorm_bd hnorm_sum.hasSum hgeom_hassum
+
 end KPHypotheses
 
 section SpectralGapBridge
