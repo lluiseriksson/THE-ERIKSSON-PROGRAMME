@@ -1,6 +1,6 @@
 # UNCONDITIONALITY_ROADMAP.md
 ## THE-ERIKSSON-PROGRAMME — Yang–Mills Lean Formalization
-## Version: v0.3.0  (Campaign 15)
+## Version: v0.3.2  (Campaign 16)
 
 ---
 
@@ -99,6 +99,7 @@ but has not yet been formalized in Lean 4 / Mathlib.
   - `ScaleTower : ℕ → MeasurableSpace (Fin N → SU(N))` (scale-indexed σ-algebras)
   - `conditional_covariance` object (integration-by-scales)
   - ✓ **PROVED (v0.31.0, 2026-04-02)** Geometric series bound: `multiscale_decay_summable` — `∑ k, exp (-κ * L^k) < ∞` for κ > 0, L > 1. Lean file: `YangMills/L7_Continuum/DecaySummability.lean`. Axioms: propext, Classical.choice, Quot.sound only.
+  - ✓ **PROVED (v0.32.0, 2026-04-02)** `multiscale_decay_tsum_bound`. Axioms: propext, Classical.choice, Quot.sound only.
 
 ### Step 6: OS reconstruction + spectral gap
 - **Papers**: [68] §8, Lemma 8.2, Remark 8.6
@@ -148,6 +149,7 @@ but has not yet been formalized in Lean 4 / Mathlib.
 
 ### Route B: Partial formalization — Step 5 only (18–36 months)
 - ✓ **PROVED (v0.31.0)** Geometric UV-suppression bound: `multiscale_decay_summable` in `YangMills/L7_Continuum/DecaySummability.lean` closes the geometric series sub-step of Step 5.
+- ✓ **PROVED (v0.32.0)** `multiscale_decay_tsum_bound`: explicit UV-suppression bound, controls polymer gas across all RG scales.
 - This does NOT eliminate the axiom by itself but makes the proof gap smaller
 - Requires: `ScaleTower` structure, conditional covariance formalism
 
