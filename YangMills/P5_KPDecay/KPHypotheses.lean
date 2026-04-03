@@ -452,25 +452,52 @@ noncomputable def kp_h1h2_connected_corr_decay
     hKP_bridge
 
 
-/-- **KP H1+H2 bridge to ConnectedCorrDecay**: packages the Campaign 25 explicit KP
-    constants (C = E0·g² + exp(-p0), m = κ) into phase5_kp_sufficient, leaving only
-    the cluster-expansion identity as a remaining named hypothesis. Campaign 26, v0.42.0. -/
-noncomputable def kp_h1h2_connected_corr_decay
-    (E0 κ g p0 : ℝ) (hE0 : 0 < E0) (hκ : 0 < κ) (hg : 0 < g) (hp0 : 0 < p0)
-    (activity₁ activity₂ : ℕ → ℝ)
-    (h1 : HasSmallFieldDecay E0 κ g activity₁)
-    (h2 : HasLargeFieldSuppression p0 κ activity₂)
+
+/-- **KP connected-correlator triangle bound**: Decomposes |wilsonConnectedCorr p q|
+    by the triangle inequality into the two-point correlation |wilsonCorrelation p q|
+    and the product of single-point expectations |wilsonExpectation p|·|wilsonExpectation q|.
+    Uses unfold wilsonConnectedCorr, rw [← abs_mul], then abs_le (giving two linear goals)
+    discharged by linarith with neg_abs_le / le_abs_self.
+    Campaign 27, v0.43.0. -/
+theorem kp_connectedCorr_abs_le_parts
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N) :
+    |wilsonConnectedCorr μ plaquetteEnergy β F p q| ≤
+    |wilsonCorrelation μ plaquetteEnergy β F p q| +
+    |wilsonExpectation μ plaquetteEnergy β F p| * |wilsonExpectation μ plaquetteEnergy β F q| := by
+  unfold wilsonConnectedCorr
+  rw [← abs_mul]
+  rw [abs_le]
+  constructor
+  · linarith [neg_abs_le (wilsonCorrelation μ plaquetteEnergy β F p q),
+              le_abs_self (wilsonExpectation μ plaquetteEnergy β F p *
+                wilsonExpectation μ plaquetteEnergy β F q)]
+  · linarith [le_abs_self (wilsonCorrelation μ plaquetteEnergy β F p q),
+              neg_abs_le (wilsonExpectation μ plaquetteEnergy β F p *
+                wilsonExpectation μ plaquetteEnergy β F q)]
+
+/-- **KP bridge from constituent part bounds**: Reduces hKP_bridge.
+    Campaign 27, v0.43.0. -/
+theorem kp_hKP_bridge_from_parts
     (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
     (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
-    (hKP_bridge : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+    (C_c C_e m : ℝ) (hC_c : 0 ≤ C_c) (hC_e : 0 ≤ C_e) (hm : 0 < m)
+    (h_corr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        |wilsonCorrelation μ plaquetteEnergy β F p q| ≤
+        C_c * Real.exp (-m * distP N p q))
+    (h_exp_prod : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        |wilsonExpectation μ plaquetteEnergy β F p| *
+        |wilsonExpectation μ plaquetteEnergy β F q| ≤
+        C_e * Real.exp (-m * distP N p q)) :
+    ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
         |wilsonConnectedCorr μ plaquetteEnergy β F p q| ≤
-        (E0 * g ^ 2 + exp (-p0)) * exp (-κ * distP N p q)) :
-    ConnectedCorrDecay μ plaquetteEnergy β F distP :=
-  phase5_kp_sufficient μ plaquetteEnergy β F distP
-    (E0 * g ^ 2 + exp (-p0)) κ
-    (by have hpos := mul_pos hE0 (pow_pos hg 2); linarith [exp_pos (-p0)])
-    hκ
-    hKP_bridge
+        (C_c + C_e) * Real.exp (-m * distP N p q) := by
+  intro N hN p q
+  haveI : NeZero N := hN
+  have htri := kp_connectedCorr_abs_le_parts μ plaquetteEnergy β F N p q
+  have hc := h_corr N p q
+  have he := h_exp_prod N p q
+  linarith [add_mul C_c C_e (Real.exp (-m * distP N p q))]
 
 end AbstractDecayBridge
 

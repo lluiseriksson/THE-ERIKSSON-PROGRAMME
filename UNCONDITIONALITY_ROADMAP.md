@@ -207,6 +207,7 @@ Campaign 16 (this campaign) verified:
 | v0.3.0  | Campaign 15 | Phase 3 deepened; OS axiom table; Route C added; source authority updated to papers [58]–[68] |
 | v0.4.0  | Campaign 16 | Campaign-13 revert: 3 spurious axioms purged; 8172-job rebuild; Phase 3 attack documented; oracle restored to 1 BFS-live axiom |
 | v0.5.0  | Campaign 18 | `smallfield_decay_summable` proved: H1 activity summable via pos/neg decomp; axioms: propext, Classical.choice, Quot.sound only |
+| v0.5.9 | `kp_connectedCorr_abs_le_parts`, `kp_hKP_bridge_from_parts` | Triangle decomp + bridge | `[propext, Classical.choice, Quot.sound]` |
 | v0.5.8 | Campaign 26 | `kp_h1h2_connected_corr_decay` proved: first noncomputable def producing `ConnectedCorrDecay` from H1+H2 explicit constants (C = E0·g² + exp(-p0), m = κ); applies `phase5_kp_sufficient` directly; single named remaining bridge hypothesis `hKP_bridge`; axioms: propext, Classical.choice, Quot.sound only |
 | v0.5.7 | Campaign 25 | `kp_combined_activity_pointwise_bound` + `kp_combined_activity_summable` proved: explicit pointwise geometric decay ‖activity₁ n + activity₂ n‖ ≤ (E0·g² + exp(-p0))·exp(-κ)^n and standalone summability; axioms: propext, Classical.choice, Quot.sound only |
 | v0.5.6 | Campaign 24 | `tsum_norm_add_le` + `kp_smallness_combined_activity` proved: tsum triangle inequality + combined-activity KP smallness; axioms: propext, Classical.choice, Quot.sound only |
@@ -218,7 +219,7 @@ Campaign 16 (this campaign) verified:
 
 ---
 
-**Last updated: Campaign 25 (v0.41.0, 2026-04-03).* Campaign 24 (v0.40.0, 2026-04-03).*
+**Last updated: Campaign 27 (v0.43.0, 2026-04-03)
 - `kp_smallness_add` + `kp_smallness_h1_h2_combined` **proved** (Campaign 23, 2026-04-03): abstract KP combination + concrete H1+H2 KP smallness; closes H1+H2 -> KP sub-step of Step 3. Oracle: propext, Classical.choice, Quot.sound only.
 - `large_field_decay_tsum_bound` + `kp_smallness_from_large_field_decay` **proved** (Campaign 22, 2026-04-03): H2 large-field analogues of C19+C21 under HasLargeFieldSuppression; `sum' n, ||activity n|| <= exp(-p0)/(1-exp(-k))` proved; KPSmallness (exp(-p0)/(1-exp(-k))) (sum' n, ||activity n||) proved under exp(-p0)<1-exp(-k); closes H2 KP smallness condition. Oracle: propext, Classical.choice, Quot.sound only. Fifth+sixth sub-steps of Step 3.
 - `kp_smallness_from_decay` **proved** (Campaign 21, 2026-04-02): KPSmallness (E0*g²/(1-exp(-κ))) (∑' n, ‖activity n‖) proved without sorry under HasSmallFieldDecay + E0*g²<1-exp(-κ); direct bridge from H1 decay bounds to KP convergence predicate via `kp_smallness_of_bound`; packages Campaigns 19–21 into single KP hypothesis. Oracle: propext, Classical.choice, Quot.sound only. Fourth sub-step of Step 3 (KP activity bound); closes quantitative KP smallness condition.
