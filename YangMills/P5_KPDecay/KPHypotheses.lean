@@ -551,6 +551,27 @@ theorem kp_expectation_product_from_corr_and_conn
             add_mul C_c C_conn (Real.exp (-m * distP N p q))]
 
 
+
+/-- **KP packaging theorem: ConnectedCorrDecay from correlation and connected correlator bounds**:
+    Given exponential decay bounds on both `|wilsonCorrelation|` and `|wilsonConnectedCorr|`
+    (at the same rate m), derives `ConnectedCorrDecay μ plaquetteEnergy β F distP`.
+    Proof chain: apply C28 with h_corr + h_conn to get expectation-product bound; apply C27
+    to get the full KP bridge bound; wrap in `phase5_kp_sufficient` to produce
+    `ConnectedCorrDecay`. Campaign 29, v0.45.0. -/
+noncomputable def kp_connectedCorrDecay_from_corr_bound
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (C_c C_conn m : ℝ) (hC_c : 0 ≤ C_c) (hC_conn : 0 ≤ C_conn) (hm : 0 < m)
+    (h_corr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N), |wilsonCorrelation μ plaquetteEnergy β F p q| ≤ C_c * Real.exp (-m * distP N p q))
+    (h_conn : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N), |wilsonConnectedCorr μ plaquetteEnergy β F p q| ≤ C_conn * Real.exp (-m * distP N p q)) :
+    ConnectedCorrDecay μ plaquetteEnergy β F distP :=
+  phase5_kp_sufficient μ plaquetteEnergy β F distP
+      (C_c + (C_c + C_conn)) m (by linarith) hm
+      (kp_hKP_bridge_from_parts μ plaquetteEnergy β F distP
+          C_c (C_c + C_conn) m hC_c (by linarith) hm h_corr
+          (kp_expectation_product_from_corr_and_conn μ plaquetteEnergy β F distP
+              C_c C_conn m hC_c hC_conn hm h_corr h_conn))
+
 end AbstractDecayBridge
 
 end YangMills
