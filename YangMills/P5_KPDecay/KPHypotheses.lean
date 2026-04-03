@@ -309,6 +309,49 @@ theorem kp_smallness_combined_activity (E0 κ g p0 : ℝ)
     Summable.of_nonneg_of_le (fun n => norm_nonneg _) hbound2 hgeom2
   exact ⟨hδ_pos, hδ_lt1,
     le_trans (tsum_norm_add_le activity₁ activity₂ hf hg2) hw⟩
+
+/-- **Pointwise geometric decay of combined activity**: given H1 and H2, each term of
+    the pointwise sum satisfies an explicit geometric bound with constants derived from
+    the decay parameters. Campaign 25, v0.41.0. -/
+theorem kp_combined_activity_pointwise_bound (E0 κ g p0 : ℝ)
+    (hE0 : 0 < E0) (hκ : 0 < κ) (hg : 0 < g) (hp0 : 0 < p0)
+    (activity₁ activity₂ : ℕ → ℝ)
+    (h1 : HasSmallFieldDecay E0 κ g activity₁)
+    (h2 : HasLargeFieldSuppression p0 κ activity₂) :
+    ∀ n : ℕ, ‖activity₁ n + activity₂ n‖ ≤ (E0 * g ^ 2 + exp (-p0)) * exp (-κ) ^ n := by
+  intro n
+  have hexp_lt1 : exp (-κ) < 1 := exp_lt_one_iff.mpr (neg_lt_zero.mpr hκ)
+  have hexp_nn : (0 : ℝ) ≤ exp (-κ) := exp_nonneg _
+  have hpow : ∀ m : ℕ, exp (-κ * ↑m) = exp (-κ) ^ m := fun m => by
+    induction m with
+    | zero => simp
+    | succ k ih => rw [pow_succ, ← ih, ← exp_add]; congr 1; push_cast; ring
+  have h_tri : ‖activity₁ n + activity₂ n‖ ≤ ‖activity₁ n‖ + ‖activity₂ n‖ := norm_add_le _ _
+  have hb1 : ‖activity₁ n‖ ≤ E0 * g ^ 2 * exp (-κ) ^ n := by
+    rw [Real.norm_eq_abs, ← hpow n]; exact (h1 hE0 hκ hg) n
+  have hb2 : ‖activity₂ n‖ ≤ exp (-p0) * exp (-κ) ^ n := by
+    rw [Real.norm_eq_abs, ← hpow n]; exact (h2 hp0 hκ) n
+  calc ‖activity₁ n + activity₂ n‖
+      ≤ ‖activity₁ n‖ + ‖activity₂ n‖ := h_tri
+    _ ≤ E0 * g ^ 2 * exp (-κ) ^ n + exp (-p0) * exp (-κ) ^ n := add_le_add hb1 hb2
+    _ = (E0 * g ^ 2 + exp (-p0)) * exp (-κ) ^ n := by ring
+
+/-- **Summability of combined activity norms**: standalone theorem promoted from the
+    internal have in kp_smallness_combined_activity. Campaign 25, v0.41.0. -/
+theorem kp_combined_activity_summable (E0 κ g p0 : ℝ)
+    (hE0 : 0 < E0) (hκ : 0 < κ) (hg : 0 < g) (hp0 : 0 < p0)
+    (activity₁ activity₂ : ℕ → ℝ)
+    (h1 : HasSmallFieldDecay E0 κ g activity₁)
+    (h2 : HasLargeFieldSuppression p0 κ activity₂) :
+    Summable (fun n => ‖activity₁ n + activity₂ n‖) := by
+  have hexp_lt1 : exp (-κ) < 1 := exp_lt_one_iff.mpr (neg_lt_zero.mpr hκ)
+  have hexp_nn : (0 : ℝ) ≤ exp (-κ) := exp_nonneg _
+  have hbound := kp_combined_activity_pointwise_bound E0 κ g p0 hE0 hκ hg hp0
+    activity₁ activity₂ h1 h2
+  have hgeom : Summable (fun n : ℕ => (E0 * g ^ 2 + exp (-p0)) * exp (-κ) ^ n) :=
+    (summable_geometric_of_lt_one hexp_nn hexp_lt1).mul_left _
+  exact Summable.of_nonneg_of_le (fun n => norm_nonneg _) hbound hgeom
+
 end KPHypotheses
 
 section SpectralGapBridge
