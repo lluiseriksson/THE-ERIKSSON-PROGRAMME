@@ -499,6 +499,58 @@ theorem kp_hKP_bridge_from_parts
   have he := h_exp_prod N p q
   linarith [add_mul C_c C_e (Real.exp (-m * distP N p q))]
 
+/-- **KP expectation product from correlation and connected correlator bounds**:
+    Given exponential bounds on |wilsonCorrelation| and |wilsonConnectedCorr|,
+    derives the exponential product bound on expectations needed by
+    `kp_hKP_bridge_from_parts`. Uses: wilsonExpectation p * wilsonExpectation q =
+      wilsonCorrelation p q - wilsonConnectedCorr p q. Campaign 28, v0.44.0. -/
+theorem kp_expectation_product_from_corr_and_conn
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (C_c C_conn m : ℝ) (hC_c : 0 ≤ C_c) (hC_conn : 0 ≤ C_conn) (hm : 0 < m)
+    (h_corr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        |wilsonCorrelation μ plaquetteEnergy β F p q| ≤
+        C_c * Real.exp (-m * distP N p q))
+    (h_conn : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        |wilsonConnectedCorr μ plaquetteEnergy β F p q| ≤
+        C_conn * Real.exp (-m * distP N p q)) :
+    ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        |wilsonExpectation μ plaquetteEnergy β F p| *
+        |wilsonExpectation μ plaquetteEnergy β F q| ≤
+        (C_c + C_conn) * Real.exp (-m * distP N p q) := by
+  intro N hN p q
+  haveI : NeZero N := hN
+  have hrel : wilsonExpectation μ plaquetteEnergy β F p *
+              wilsonExpectation μ plaquetteEnergy β F q =
+      wilsonCorrelation μ plaquetteEnergy β F p q -
+      wilsonConnectedCorr μ plaquetteEnergy β F p q := by
+    unfold wilsonConnectedCorr; ring
+  have hle_nc : -wilsonConnectedCorr μ plaquetteEnergy β F p q ≤
+                |wilsonConnectedCorr μ plaquetteEnergy β F p q| := by
+    rw [← abs_neg]; exact le_abs_self _
+  have hle_nr : -wilsonCorrelation μ plaquetteEnergy β F p q ≤
+                |wilsonCorrelation μ plaquetteEnergy β F p q| := by
+    rw [← abs_neg]; exact le_abs_self _
+  have hprod : |wilsonExpectation μ plaquetteEnergy β F p| *
+               |wilsonExpectation μ plaquetteEnergy β F q| ≤
+               |wilsonCorrelation μ plaquetteEnergy β F p q| +
+               |wilsonConnectedCorr μ plaquetteEnergy β F p q| := by
+    rw [← abs_mul, hrel]
+    have h1 : wilsonCorrelation μ plaquetteEnergy β F p q -
+              wilsonConnectedCorr μ plaquetteEnergy β F p q ≤
+              |wilsonCorrelation μ plaquetteEnergy β F p q| +
+              |wilsonConnectedCorr μ plaquetteEnergy β F p q| := by
+      linarith [le_abs_self (wilsonCorrelation μ plaquetteEnergy β F p q)]
+    have h2 : -(wilsonCorrelation μ plaquetteEnergy β F p q -
+               wilsonConnectedCorr μ plaquetteEnergy β F p q) ≤
+               |wilsonCorrelation μ plaquetteEnergy β F p q| +
+               |wilsonConnectedCorr μ plaquetteEnergy β F p q| := by
+      linarith [le_abs_self (wilsonConnectedCorr μ plaquetteEnergy β F p q)]
+    exact abs_le.mpr ⟨by linarith, h1⟩
+  linarith [h_corr N p q, h_conn N p q, hprod,
+            add_mul C_c C_conn (Real.exp (-m * distP N p q))]
+
+
 end AbstractDecayBridge
 
 end YangMills
