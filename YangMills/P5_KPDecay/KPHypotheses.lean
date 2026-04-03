@@ -231,6 +231,37 @@ theorem kp_smallness_from_large_field_decay (p0 κ : ℝ) (hp0 : 0 < p0) (hκ : 
     div_pos (exp_pos _) hdenom_pos
   exact kp_smallness_of_bound _ _ hratio_pos hratio_lt1 hbound
 
+
+  /-- **Abstract KP combination**: two KP-small weights combine additively.
+      Campaign 23, v0.39.0. -/
+  theorem kp_smallness_add (δ₁ δ₂ w₁ w₂ : ℝ)
+      (h1 : KPSmallness δ₁ w₁) (h2 : KPSmallness δ₂ w₂)
+      (hsum : δ₁ + δ₂ < 1) :
+      KPSmallness (δ₁ + δ₂) (w₁ + w₂) := by
+    obtain ⟨hδ₁_pos, _, hw₁⟩ := h1
+    obtain ⟨hδ₂_pos, _, hw₂⟩ := h2
+    exact ⟨by linarith, hsum, by linarith⟩
+
+  /-- **Combined H1+H2 KP smallness**: given H1 and H2 decay activities,
+      the combined norm sum satisfies KP smallness when the two geometric bounds
+      sum to less than 1. Campaign 23, v0.39.0. -/
+  theorem kp_smallness_h1_h2_combined (E0 κ g p0 : ℝ)
+      (hE0 : 0 < E0) (hκ : 0 < κ) (hg : 0 < g) (hp0 : 0 < p0)
+      (activity₁ activity₂ : ℕ → ℝ)
+      (h1 : HasSmallFieldDecay E0 κ g activity₁)
+      (h2 : HasLargeFieldSuppression p0 κ activity₂)
+      (hsmall : E0 * g ^ 2 / (1 - exp (-κ)) + exp (-p0) / (1 - exp (-κ)) < 1) :
+      KPSmallness (E0 * g ^ 2 / (1 - exp (-κ)) + exp (-p0) / (1 - exp (-κ)))
+        (∑' n, ‖activity₁ n‖ + ∑' n, ‖activity₂ n‖) := by
+    have hexp_lt1 : exp (-κ) < 1 := exp_lt_one_iff.mpr (neg_lt_zero.mpr hκ)
+    have hdenom_pos : 0 < 1 - exp (-κ) := by linarith
+    have hbound1 := smallfield_decay_tsum_bound E0 κ g hE0 hκ hg activity₁ h1
+    have hbound2 := large_field_decay_tsum_bound p0 κ hp0 hκ activity₂ h2
+    have hδ_pos : 0 < E0 * g ^ 2 / (1 - exp (-κ)) + exp (-p0) / (1 - exp (-κ)) :=
+      add_pos (div_pos (mul_pos hE0 (pow_pos hg 2)) hdenom_pos)
+              (div_pos (exp_pos _) hdenom_pos)
+    exact ⟨hδ_pos, hsmall, by linarith⟩
+
 end KPHypotheses
 
 section SpectralGapBridge
