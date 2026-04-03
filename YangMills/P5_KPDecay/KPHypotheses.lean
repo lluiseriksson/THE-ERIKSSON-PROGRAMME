@@ -262,6 +262,53 @@ theorem kp_smallness_from_large_field_decay (p0 κ : ℝ) (hp0 : 0 < p0) (hκ : 
               (div_pos (exp_pos _) hdenom_pos)
     exact ⟨hδ_pos, hsmall, by linarith⟩
 
+
+/-- **Tsum triangle inequality**: norm of pointwise sum ≤ sum of norms (for tsums).
+    Campaign 24, v0.40.0. -/
+theorem tsum_norm_add_le (activity₁ activity₂ : ℕ → ℝ)
+    (hf : Summable (fun n => ‖activity₁ n‖))
+    (hg : Summable (fun n => ‖activity₂ n‖)) :
+    ∑' n, ‖activity₁ n + activity₂ n‖ ≤
+      ∑' n, ‖activity₁ n‖ + ∑' n, ‖activity₂ n‖ := by
+  have h_tri : ∀ n, ‖activity₁ n + activity₂ n‖ ≤ ‖activity₁ n‖ + ‖activity₂ n‖ :=
+    fun n => norm_add_le _ _
+  have h_lhs_sum : Summable (fun n => ‖activity₁ n + activity₂ n‖) :=
+    Summable.of_nonneg_of_le (fun n => norm_nonneg _) h_tri (hf.add hg)
+  exact hasSum_le h_tri h_lhs_sum.hasSum (hf.hasSum.add hg.hasSum)
+
+/-- **KP smallness for the combined activity**: given H1 and H2, the pointwise sum
+    λ n ↦ activity₁ n + activity₂ n satisfies KP smallness. Campaign 24, v0.40.0. -/
+theorem kp_smallness_combined_activity (E0 κ g p0 : ℝ)
+    (hE0 : 0 < E0) (hκ : 0 < κ) (hg : 0 < g) (hp0 : 0 < p0)
+    (activity₁ activity₂ : ℕ → ℝ)
+    (h1 : HasSmallFieldDecay E0 κ g activity₁)
+    (h2 : HasLargeFieldSuppression p0 κ activity₂)
+    (hsmall : E0 * g ^ 2 / (1 - exp (-κ)) + exp (-p0) / (1 - exp (-κ)) < 1) :
+    KPSmallness (E0 * g ^ 2 / (1 - exp (-κ)) + exp (-p0) / (1 - exp (-κ)))
+      (∑' n, ‖activity₁ n + activity₂ n‖) := by
+  have hkp := kp_smallness_h1_h2_combined E0 κ g p0 hE0 hκ hg hp0
+    activity₁ activity₂ h1 h2 hsmall
+  obtain ⟨hδ_pos, hδ_lt1, hw⟩ := hkp
+  have hexp_lt1 : exp (-κ) < 1 := exp_lt_one_iff.mpr (neg_lt_zero.mpr hκ)
+  have hexp_nn : (0 : ℝ) ≤ exp (-κ) := exp_nonneg _
+  have hpow : ∀ n : ℕ, exp (-κ * ↑n) = exp (-κ) ^ n := fun n => by
+    induction n with
+    | zero => simp
+    | succ m ih => rw [pow_succ, ← ih, ← exp_add]; congr 1; push_cast; ring
+  have hbound1 : ∀ n : ℕ, ‖activity₁ n‖ ≤ E0 * g ^ 2 * exp (-κ) ^ n := fun n => by
+    rw [Real.norm_eq_abs, ← hpow n]; exact (h1 hE0 hκ hg) n
+  have hgeom1 : Summable (fun n : ℕ => E0 * g ^ 2 * exp (-κ) ^ n) :=
+    (summable_geometric_of_lt_one hexp_nn hexp_lt1).mul_left _
+  have hf : Summable (fun n => ‖activity₁ n‖) :=
+    Summable.of_nonneg_of_le (fun n => norm_nonneg _) hbound1 hgeom1
+  have hbound2 : ∀ n : ℕ, ‖activity₂ n‖ ≤ exp (-p0) * exp (-κ) ^ n := fun n => by
+    rw [Real.norm_eq_abs, ← hpow n]; exact (h2 hp0 hκ) n
+  have hgeom2 : Summable (fun n : ℕ => exp (-p0) * exp (-κ) ^ n) :=
+    (summable_geometric_of_lt_one hexp_nn hexp_lt1).mul_left _
+  have hg2 : Summable (fun n => ‖activity₂ n‖) :=
+    Summable.of_nonneg_of_le (fun n => norm_nonneg _) hbound2 hgeom2
+  exact ⟨hδ_pos, hδ_lt1,
+    le_trans (tsum_norm_add_le activity₁ activity₂ hf hg2) hw⟩
 end KPHypotheses
 
 section SpectralGapBridge
