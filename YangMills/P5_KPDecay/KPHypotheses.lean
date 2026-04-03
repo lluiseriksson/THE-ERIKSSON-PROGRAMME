@@ -177,6 +177,60 @@ theorem kp_smallness_from_decay (E0 κ g : ℝ) (hE0 : 0 < E0) (hκ : 0 < κ)
     div_pos (mul_pos hE0 (pow_pos hg 2)) hdenom_pos
   exact kp_smallness_of_bound _ _ hratio_pos hratio_lt1 hbound
 
+
+/-- **H2 activity tsum bound**: any function satisfying the large-field suppression
+    bound `HasLargeFieldSuppression p0 κ activity`
+    (i.e. `|activity n| ≤ exp(-p0) * exp(-κ·n)`) satisfies
+    `∑' n, ‖activity n‖ ≤ exp(-p0) / (1 - exp(-κ))`.
+    This is the H2 analogue of `smallfield_decay_tsum_bound` (Campaign 19).
+    Campaign 22, v0.38.0. -/
+theorem large_field_decay_tsum_bound (p0 κ : ℝ) (hp0 : 0 < p0) (hκ : 0 < κ)
+    (activity : ℕ → ℝ)
+    (h : HasLargeFieldSuppression p0 κ activity) :
+    ∑' n, ‖activity n‖ ≤ exp (-p0) / (1 - exp (-κ)) := by
+  have hbound := h hp0 hκ
+  have hexp_lt1 : exp (-κ) < 1 := exp_lt_one_iff.mpr (neg_lt_zero.mpr hκ)
+  have hexp_nn : (0 : ℝ) ≤ exp (-κ) := exp_nonneg _
+  have hpow : ∀ n : ℕ, exp (-κ * ↑n) = exp (-κ) ^ n := by
+    intro n; induction n with
+    | zero => simp
+    | succ m ih => rw [pow_succ, ← ih, ← exp_add]; congr 1; push_cast; ring
+  have hgeom : Summable (fun n : ℕ => exp (-p0) * exp (-κ) ^ n) :=
+    (summable_geometric_of_lt_one hexp_nn hexp_lt1).mul_left _
+  have hnorm_bd : ∀ n : ℕ, ‖activity n‖ ≤ exp (-p0) * exp (-κ) ^ n := fun n => by
+    rw [Real.norm_eq_abs, ← hpow n]; exact hbound n
+  have hnorm_sum : Summable (fun n : ℕ => ‖activity n‖) :=
+    Summable.of_nonneg_of_le (fun n => norm_nonneg _) hnorm_bd hgeom
+  have hgeom_hassum : HasSum (fun n : ℕ => exp (-p0) * exp (-κ) ^ n)
+      (exp (-p0) / (1 - exp (-κ))) := by
+    have hg1 : HasSum (fun n : ℕ => exp (-κ) ^ n) (1 - exp (-κ))⁻¹ := by
+      rw [← tsum_geometric_of_lt_one hexp_nn hexp_lt1]
+      exact (summable_geometric_of_lt_one hexp_nn hexp_lt1).hasSum
+    have hg2 := hg1.mul_left (exp (-p0))
+    have heq : exp (-p0) * (1 - exp (-κ))⁻¹ = exp (-p0) / (1 - exp (-κ)) := by ring
+    rwa [heq] at hg2
+  exact hasSum_le hnorm_bd hnorm_sum.hasSum hgeom_hassum
+
+/-- **KP smallness from large-field decay**: if `HasLargeFieldSuppression p0 κ activity`
+    holds and `exp (-p0) < 1 - Real.exp (-κ)`, then
+    `KPSmallness (exp (-p0) / (1 - Real.exp (-κ))) (∑' n, ‖activity n‖)` holds.
+    H2 analogue of `kp_smallness_from_decay` (Campaign 21): quantitative bridge from
+    H2 large-field suppression to the Kotecky-Preiss convergence predicate.
+    Campaign 22, v0.38.0. -/
+theorem kp_smallness_from_large_field_decay (p0 κ : ℝ) (hp0 : 0 < p0) (hκ : 0 < κ)
+    (activity : ℕ → ℝ)
+    (h : HasLargeFieldSuppression p0 κ activity)
+    (hsmall : exp (-p0) < 1 - Real.exp (-κ)) :
+    KPSmallness (exp (-p0) / (1 - Real.exp (-κ))) (∑' n, ‖activity n‖) := by
+  have hbound := large_field_decay_tsum_bound p0 κ hp0 hκ activity h
+  have hexp_lt1 : exp (-κ) < 1 := exp_lt_one_iff.mpr (neg_lt_zero.mpr hκ)
+  have hdenom_pos : 0 < 1 - exp (-κ) := by linarith
+  have hratio_lt1 : exp (-p0) / (1 - exp (-κ)) < 1 :=
+    (div_lt_one hdenom_pos).mpr hsmall
+  have hratio_pos : 0 < exp (-p0) / (1 - exp (-κ)) :=
+    div_pos (exp_pos _) hdenom_pos
+  exact kp_smallness_of_bound _ _ hratio_pos hratio_lt1 hbound
+
 end KPHypotheses
 
 section SpectralGapBridge
