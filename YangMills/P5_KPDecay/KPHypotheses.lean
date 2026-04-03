@@ -430,6 +430,48 @@ noncomputable def phase5_kp_sufficient
     ConnectedCorrDecay μ plaquetteEnergy β F distP :=
   ⟨C, m, hC, hm, hKP⟩
 
+
+/-- **KP H1+H2 bridge to ConnectedCorrDecay**: packages the Campaign 25 explicit KP
+    constants (C = E0·g² + exp(-p0), m = κ) into phase5_kp_sufficient, leaving only
+    the cluster-expansion identity as a remaining named hypothesis. Campaign 26, v0.42.0. -/
+noncomputable def kp_h1h2_connected_corr_decay
+    (E0 κ g p0 : ℝ) (hE0 : 0 < E0) (hκ : 0 < κ) (hg : 0 < g) (hp0 : 0 < p0)
+    (activity₁ activity₂ : ℕ → ℝ)
+    (h1 : HasSmallFieldDecay E0 κ g activity₁)
+    (h2 : HasLargeFieldSuppression p0 κ activity₂)
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (hKP_bridge : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        |wilsonConnectedCorr μ plaquetteEnergy β F p q| ≤
+        (E0 * g ^ 2 + exp (-p0)) * exp (-κ * distP N p q)) :
+    ConnectedCorrDecay μ plaquetteEnergy β F distP :=
+  phase5_kp_sufficient μ plaquetteEnergy β F distP
+    (E0 * g ^ 2 + exp (-p0)) κ
+    (by have hpos := mul_pos hE0 (pow_pos hg 2); linarith [exp_pos (-p0)])
+    hκ
+    hKP_bridge
+
+
+/-- **KP H1+H2 bridge to ConnectedCorrDecay**: packages the Campaign 25 explicit KP
+    constants (C = E0·g² + exp(-p0), m = κ) into phase5_kp_sufficient, leaving only
+    the cluster-expansion identity as a remaining named hypothesis. Campaign 26, v0.42.0. -/
+noncomputable def kp_h1h2_connected_corr_decay
+    (E0 κ g p0 : ℝ) (hE0 : 0 < E0) (hκ : 0 < κ) (hg : 0 < g) (hp0 : 0 < p0)
+    (activity₁ activity₂ : ℕ → ℝ)
+    (h1 : HasSmallFieldDecay E0 κ g activity₁)
+    (h2 : HasLargeFieldSuppression p0 κ activity₂)
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (hKP_bridge : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        |wilsonConnectedCorr μ plaquetteEnergy β F p q| ≤
+        (E0 * g ^ 2 + exp (-p0)) * exp (-κ * distP N p q)) :
+    ConnectedCorrDecay μ plaquetteEnergy β F distP :=
+  phase5_kp_sufficient μ plaquetteEnergy β F distP
+    (E0 * g ^ 2 + exp (-p0)) κ
+    (by have hpos := mul_pos hE0 (pow_pos hg 2); linarith [exp_pos (-p0)])
+    hκ
+    hKP_bridge
+
 end AbstractDecayBridge
 
 end YangMills

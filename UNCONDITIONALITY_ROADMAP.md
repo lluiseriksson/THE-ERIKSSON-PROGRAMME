@@ -207,6 +207,7 @@ Campaign 16 (this campaign) verified:
 | v0.3.0  | Campaign 15 | Phase 3 deepened; OS axiom table; Route C added; source authority updated to papers [58]–[68] |
 | v0.4.0  | Campaign 16 | Campaign-13 revert: 3 spurious axioms purged; 8172-job rebuild; Phase 3 attack documented; oracle restored to 1 BFS-live axiom |
 | v0.5.0  | Campaign 18 | `smallfield_decay_summable` proved: H1 activity summable via pos/neg decomp; axioms: propext, Classical.choice, Quot.sound only |
+| v0.5.8 | Campaign 26 | `kp_h1h2_connected_corr_decay` proved: first noncomputable def producing `ConnectedCorrDecay` from H1+H2 explicit constants (C = E0·g² + exp(-p0), m = κ); applies `phase5_kp_sufficient` directly; single named remaining bridge hypothesis `hKP_bridge`; axioms: propext, Classical.choice, Quot.sound only |
 | v0.5.7 | Campaign 25 | `kp_combined_activity_pointwise_bound` + `kp_combined_activity_summable` proved: explicit pointwise geometric decay ‖activity₁ n + activity₂ n‖ ≤ (E0·g² + exp(-p0))·exp(-κ)^n and standalone summability; axioms: propext, Classical.choice, Quot.sound only |
 | v0.5.6 | Campaign 24 | `tsum_norm_add_le` + `kp_smallness_combined_activity` proved: tsum triangle inequality + combined-activity KP smallness; axioms: propext, Classical.choice, Quot.sound only |
 | v0.5.5 | Campaign 23 | `kp_smallness_add` + `kp_smallness_h1_h2_combined` proved: abstract KP combination lemma + concrete H1+H2 unification; axioms: propext, Classical.choice, Quot.sound only |
