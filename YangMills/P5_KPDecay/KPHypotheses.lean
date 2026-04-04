@@ -872,6 +872,40 @@ theorem kp_clay_from_symmetric_vacuum_repr
   kp_clay_from_rank_one_and_exp_repr μ plaquetteEnergy β F dnat T P₀ γ C_T Ω Ω Ω Ω
     hgap hy hC_T hP0 hcorr hexp hexp
 
+
+/-- Campaign 37 (v0.53.0): Derives the C36 hP₀ hypothesis from the rank-1
+    operator-equality P₀ = (innerSL ℝ Ω).smulRight Ω.
+    Reduces the pointwise action statement to the single structural
+    operator identity, giving a strictly stronger starting point. -/
+theorem kp_hP0_of_normalized_vacuum_projector
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (P₀ : H →L[ℝ] H) (Ω : H)
+    (hP0_eq : P₀ = (innerSL ℝ Ω).smulRight Ω) :
+    ∀ w : H, P₀ w = @inner ℝ H _ Ω w • Ω := by
+  intro w
+  simp only [hP0_eq, ContinuousLinearMap.smulRight_apply, innerSL_apply_apply]
+
+/-- Campaign 37 (v0.53.0): Full Clay Yang-Mills reduction from the
+    normalised-vacuum projector identity P₀ = (innerSL ℝ Ω).smulRight Ω.
+    Chains kp_hP0_of_normalized_vacuum_projector → kp_clay_from_symmetric_vacuum_repr. -/
+theorem kp_clay_from_normalized_vacuum_projector
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hy : 0 < γ) (hC_T : 0 ≤ C_T)
+    (hP0_eq : P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+          @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hexp : ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p =
+          @inner ℝ H _ Ω Ω) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_symmetric_vacuum_repr μ plaquetteEnergy β F dnat T P₀ γ C_T Ω
+    hgap hy hC_T (kp_hP0_of_normalized_vacuum_projector P₀ Ω hP0_eq) hcorr hexp
+
 end AbstractDecayBridge
 
 end YangMills

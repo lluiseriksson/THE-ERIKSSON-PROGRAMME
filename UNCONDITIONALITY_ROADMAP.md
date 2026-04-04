@@ -240,6 +240,33 @@ Campaign 16 (this campaign) verified:
 
 #---
 
+## v0.53.0 -- C37 (2026-04-04)
+**File**: `YangMills/P5_KPDecay/KPHypotheses.lean`
+**New theorems:**
+- `kp_hP0_of_normalized_vacuum_projector`: Derives the C36 `hP₀` hypothesis from the
+  operator identity `P₀ = (innerSL ℝ Ω).smulRight Ω`.  Given
+  `hP0_eq : P₀ = (innerSL ℝ Ω).smulRight Ω`, proves
+  `∀ w, P₀ w = ⟪Ω, w⟫_ℝ • Ω`.
+  Oracle: `[propext, Classical.choice, Quot.sound]` — no physical axiom.
+- `kp_clay_from_normalized_vacuum_projector`: Full Clay Yang-Mills reduction from the
+  normalised-vacuum projector identity.  Chains
+  `kp_hP0_of_normalized_vacuum_projector → kp_clay_from_symmetric_vacuum_repr`.
+  Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`.
+**Physics**: The rank-1 projector `(innerSL ℝ Ω).smulRight Ω` is the canonical
+form of the vacuum projector in a Hilbert-space transfer-matrix context.  Reducing `hP₀`
+from a pointwise hypothesis to a single operator identity gives a strictly stronger
+structural starting point for all downstream proofs.
+**Proof term**: `simp only [hP0_eq, ContinuousLinearMap.smulRight_apply, innerSL_apply_apply]`
+closes `kp_hP0_of_normalized_vacuum_projector` in one tactic step.
+`kp_clay_from_normalized_vacuum_projector` delegates directly to
+`kp_clay_from_symmetric_vacuum_repr` after chaining through the new lemma.
+**Oracle**: `kp_hP0_of_normalized_vacuum_projector`: `[propext, Classical.choice, Quot.sound]`
+(no physical axiom — pure structural result).  `kp_clay_from_normalized_vacuum_projector`:
+`[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`.
+**Build**: 8184 jobs, no errors
+**File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (877 → 911 lines, +34)
+**Commit**: v0.53.0
+
 ## v0.52.0 -- C36 (2026-04-04)
 
 **Theorem**: `kp_clay_from_symmetric_vacuum_repr`
