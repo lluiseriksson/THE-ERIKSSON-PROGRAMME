@@ -906,6 +906,53 @@ theorem kp_clay_from_normalized_vacuum_projector
   kp_clay_from_symmetric_vacuum_repr μ plaquetteEnergy β F dnat T P₀ γ C_T Ω
     hgap hy hC_T (kp_hP0_of_normalized_vacuum_projector P₀ Ω hP0_eq) hcorr hexp
 
+/-- Campaign 38 (v0.54.0): Derives the operator identity P₀ = (innerSL ℝ Ω).smulRight Ω
+    from orthogonal-projector primitives: normalised vacuum ‖Ω‖ = 1, range P₀ ⊆ span{Ω},
+    fixpoint P₀ Ω = Ω, and self-adjointness. -/
+theorem kp_hP0_eq_of_orthogonal_projector_onto_vacuum_line
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (P₀ : H →L[ℝ] H) (Ω : H)
+    (hΩ : ‖Ω‖ = 1)
+    (hrange : ∀ v : H, ∃ c : ℝ, P₀ v = c • Ω)
+    (hfix : P₀ Ω = Ω)
+    (hsym : ∀ v w : H, @inner ℝ H _ (P₀ v) w = @inner ℝ H _ v (P₀ w)) :
+    P₀ = (innerSL ℝ Ω).smulRight Ω := by
+  ext v
+  simp only [ContinuousLinearMap.smulRight_apply, innerSL_apply_apply]
+  obtain ⟨c, hc⟩ := hrange v
+  have hcval : c = @inner ℝ H _ Ω v := by
+    have h1 : @inner ℝ H _ (P₀ v) Ω = @inner ℝ H _ v (P₀ Ω) := hsym v Ω
+    rw [hc, hfix] at h1
+    rw [real_inner_smul_left, real_inner_self_eq_norm_sq, hΩ, one_pow, mul_one] at h1
+    exact h1.trans (real_inner_comm v Ω).symm
+  rw [hc, hcval]
+
+/-- Campaign 38 (v0.54.0): Full Clay Yang-Mills reduction from orthogonal-projector
+    primitives. Chains kp_hP0_eq_of_orthogonal_projector_onto_vacuum_line →
+    kp_clay_from_normalized_vacuum_projector. -/
+theorem kp_clay_from_orthogonal_projector_onto_vacuum_line
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hy : 0 < γ) (hC_T : 0 ≤ C_T)
+    (hΩ : ‖Ω‖ = 1)
+    (hrange : ∀ v : H, ∃ c : ℝ, P₀ v = c • Ω)
+    (hfix : P₀ Ω = Ω)
+    (hsym : ∀ v w : H, @inner ℝ H _ (P₀ v) w = @inner ℝ H _ v (P₀ w))
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+          @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hexp : ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p =
+          @inner ℝ H _ Ω Ω) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_normalized_vacuum_projector μ plaquetteEnergy β F dnat T P₀ γ C_T Ω
+    hgap hy hC_T
+    (kp_hP0_eq_of_orthogonal_projector_onto_vacuum_line P₀ Ω hΩ hrange hfix hsym)
+    hcorr hexp
+
 end AbstractDecayBridge
 
 end YangMills

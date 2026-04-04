@@ -240,6 +240,29 @@ Campaign 16 (this campaign) verified:
 
 #---
 
+## v0.54.0 -- C38 (2026-04-04)
+
+- `kp_hP0_eq_of_orthogonal_projector_onto_vacuum_line`: Derives `P₀ = (innerSL ℝ Ω).smulRight Ω`
+  from orthogonal-projector primitives: `‖Ω‖ = 1`, range P₀ ⊆ span{Ω}, fixpoint P₀ Ω = Ω, and
+  self-adjointness.  Inner-product chain via `real_inner_smul_left`,
+  `real_inner_self_eq_norm_sq`, `one_pow`, `mul_one`, `real_inner_comm`.
+  Oracle: `[propext, Classical.choice, Quot.sound]` – no physical axiom.
+- `kp_clay_from_orthogonal_projector_onto_vacuum_line`: Full Clay Yang-Mills reduction from
+  orthogonal-projector primitives.  Chains
+  `kp_hP0_eq_of_orthogonal_projector_onto_vacuum_line` → `kp_clay_from_normalized_vacuum_projector`.
+  Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`.
+**Physics**: Derives the rank-1 projector identity `P₀ = (innerSL ℝ Ω).smulRight Ω` purely from
+  orthogonal-projector axioms (normalisation, range constraint, fixpoint, self-adjointness)
+  without assuming the explicit operator formula.  Strongest honest theorem adjacent to `hP0_eq`;
+  four hypotheses replace one definitional assumption.
+**Proof term**: `ext v; simp only [smulRight_apply, innerSL_apply_apply]; obtain ⟨c, hc⟩ := hrange v;`
+  inner-product chain computes `c = ⟪Ω, v⟫_ℝ` from self-adjointness + normalisation.
+**Oracle**: `kp_hP0_eq_of_orthogonal_projector_onto_vacuum_line`: `[propext, Classical.choice, Quot.sound]`
+  (no physical axiom – pure structural result).
+**Build**: 8184 jobs, no errors
+**File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (911 → 958 lines, +47)
+**Commit**: v0.54.0
+
 ## v0.53.0 -- C37 (2026-04-04)
 **File**: `YangMills/P5_KPDecay/KPHypotheses.lean`
 **New theorems:**
