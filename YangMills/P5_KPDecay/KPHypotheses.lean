@@ -572,6 +572,40 @@ noncomputable def kp_connectedCorrDecay_from_corr_bound
           (kp_expectation_product_from_corr_and_conn μ plaquetteEnergy β F distP
               C_c C_conn m hC_c hC_conn hm h_corr h_conn))
 
+/-- **KP packaging**: ConnectedCorrDecay from wilsonCorrelation bound + spectral gap.
+    derive h_conn from HasSpectralGap+hdist at rate γ; apply C29. Sole gap: h_corr.
+    Campaign 30, v0.46.0. -/
+noncomputable def kp_connectedCorrDecay_from_corr_bound_and_gap
+    {H : Type*} [NormedAddCommGroup H] [NormedSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (T P₀ : H →L[ℝ] H) (γ C_T nf ng C_c : ℝ)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hγ : 0 < γ) (hC_T : 0 ≤ C_T) (hng : 0 ≤ nf * ng) (hC_c : 0 ≤ C_c)
+    (hdist : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+      ∃ n : ℕ, distP N p q = n ∧
+        |@wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q| ≤
+          nf * ng * ‖T ^ n - P₀‖)
+    (h_corr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        |wilsonCorrelation μ plaquetteEnergy β F p q| ≤
+        C_c * Real.exp (-γ * distP N p q)) :
+    ConnectedCorrDecay μ plaquetteEnergy β F distP :=
+  have h_conn : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+      |wilsonConnectedCorr μ plaquetteEnergy β F p q| ≤
+      (nf * ng * C_T) * Real.exp (-γ * distP N p q) := by
+    intro N hN p q
+    letI : NeZero N := hN
+    obtain ⟨n, hn_eq, hwilson⟩ := hdist N p q
+    have hTS := transferMatrix_spectral_gap T P₀ γ C_T hgap n
+    calc |wilsonConnectedCorr μ plaquetteEnergy β F p q|
+        ≤ nf * ng * ‖T ^ n - P₀‖ := hwilson
+      _ ≤ nf * ng * (C_T * Real.exp (-γ * n)) :=
+          mul_le_mul_of_nonneg_left hTS hng
+      _ = nf * ng * C_T * Real.exp (-γ * distP N p q) := by
+          rw [hn_eq]; ring
+  kp_connectedCorrDecay_from_corr_bound μ plaquetteEnergy β F distP
+    C_c (nf * ng * C_T) γ hC_c (mul_nonneg hng hC_T) hγ h_corr h_conn
+
 end AbstractDecayBridge
 
 end YangMills
