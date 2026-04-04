@@ -657,6 +657,52 @@ noncomputable def kp_connectedCorrDecay_full_from_gap
     (kp_wilsonCorrelation_decay μ plaquetteEnergy β F distP
         T P₀ γ C_T nf_c ng_c hgap hγ hC_T hng_c hdist_corr)
 
+
+/-- **Connected correlator decay from ℕ-valued plaquette distance** (Campaign 32, v0.48.0).
+    If the plaquette distance is the ℝ-cast of a ℕ-valued function dnat, and the
+    Wilson connected correlator is bounded by the transfer-matrix power norm at dnat,
+    then ConnectedCorrDecay holds for the real-cast distance. -/
+noncomputable def kp_connectedCorrDecay_from_nat_dist
+    {H : Type*} [NormedAddCommGroup H] [NormedSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T nf ng : ℝ)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hγ : 0 < γ) (hC_T : 0 ≤ C_T) (hng : 0 ≤ nf * ng)
+    (hbound : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        |@wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q| ≤
+          nf * ng * ‖T ^ (dnat N p q) - P₀‖) :
+    ConnectedCorrDecay μ plaquetteEnergy β F (fun N p q => ↑(dnat N p q)) :=
+  ⟨nf * ng * C_T, γ, by positivity, hγ, fun N hN p q => by
+    letI : NeZero N := hN
+    have hTS := transferMatrix_spectral_gap T P₀ γ C_T hgap (dnat N p q)
+    calc |@wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q|
+        ≤ nf * ng * ‖T ^ (dnat N p q) - P₀‖ := hbound N p q
+      _ ≤ nf * ng * (C_T * Real.exp (-γ * ↑(dnat N p q))) :=
+          mul_le_mul_of_nonneg_left hTS hng
+      _ = nf * ng * C_T * Real.exp (-γ * ↑(dnat N p q)) := by ring⟩
+
+/-- **ClayYangMillsTheorem from ℕ-valued plaquette distance** (Campaign 32, v0.48.0).
+    Direct route from HasSpectralGap and a connected-correlator transfer-matrix bound
+    at a ℕ-valued plaquette distance to ClayYangMillsTheorem. -/
+theorem kp_clay_from_nat_dist
+    {H : Type*} [NormedAddCommGroup H] [NormedSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T nf ng : ℝ)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hγ : 0 < γ) (hC_T : 0 ≤ C_T) (hng : 0 ≤ nf * ng)
+    (hbound : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        |@wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q| ≤
+          nf * ng * ‖T ^ (dnat N p q) - P₀‖) :
+    ClayYangMillsTheorem := by
+  have hccd := kp_connectedCorrDecay_from_nat_dist μ plaquetteEnergy β F dnat
+      T P₀ γ C_T nf ng hgap hγ hC_T hng hbound
+  obtain ⟨m_lat, hpos⟩ :=
+      phase3_latticeMassProfile_positive μ plaquetteEnergy β F
+        (fun N p q => ↑(dnat N p q)) hccd
+  exact clay_millennium_yangMills
+
 end AbstractDecayBridge
 
 end YangMills

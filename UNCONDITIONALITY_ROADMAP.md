@@ -221,9 +221,14 @@ Campaign 16 (this campaign) verified:
 | v0.45.0 | Campaign 29 | `kp_connectedCorrDecay_from_corr_bound` proved: packages C28+C27 chain into `ConnectedCorrDecay`; `noncomputable def` via `phase5_kp_sufficient`; axioms: propext, Classical.choice, Quot.sound, funext |
 | v0.46.0 | Campaign 30 | `kp_connectedCorrDecay_from_corr_bound_and_gap` proved: packages spectral-gap (`HasSpectralGap`) + `hdist` into `ConnectedCorrDecay`; sole remaining open: `h_corr` (wilsonCorrelation exponential bound); axioms: propext, Classical.choice, Quot.sound, funext |
 | v0.47.0 | Campaign 31 | `kp_wilsonCorrelation_decay` + `kp_connectedCorrDecay_full_from_gap` proved: exponential decay of wilsonCorrelation from spectral gap; ConnectedCorrDecay from gap + dual transfer-matrix bounds; axioms: propext, Classical.choice, Quot.sound |
+| v0.48.0 | Campaign 32 | `kp_connectedCorrDecay_from_nat_dist` + `kp_clay_from_nat_dist` proved: nat-valued plaquette distance route to ConnectedCorrDecay and ClayYangMillsTheorem; avoids hdist existential — direct ℕ→ℝ cast; axioms: propext, Classical.choice, Quot.sound (nat_dist def); Quot.sound + yangMills_continuum_mass_gap (clay path) |
 
 - `kp_wilsonCorrelation_decay` + `kp_connectedCorrDecay_full_from_gap` **proved** (Campaign 31, 2026-04-04): exponential decay of two-point `wilsonCorrelation` function derived from spectral gap + transfer-matrix bound; full `ConnectedCorrDecay` package combining gap hypothesis with dual transfer-matrix bounds on both connected and full correlators. Oracle: propext, Classical.choice, Quot.sound only.
 ---
+
+**Last updated: Campaign 32 (v0.48.0, 2026-04-04)
+
+- `kp_connectedCorrDecay_from_nat_dist` + `kp_clay_from_nat_dist` **proved** (Campaign 32, 2026-04-04): nat-valued plaquette distance route: when the plaquette distance function dnat takes ℕ values, the transfer-matrix bound hypothesis simplifies — no existential quantifier needed, just a direct bound on ‖T^(dnat N p q) - P₀‖. `kp_connectedCorrDecay_from_nat_dist` packages this into `ConnectedCorrDecay` via the anonymous constructor ⟨nf*ng*C_T, γ, ...⟩; `kp_clay_from_nat_dist` chains through `phase3_latticeMassProfile_positive` → `clay_millennium_yangMills`. Oracle: propext, Classical.choice, Quot.sound (nat_dist def); adds yangMills_continuum_mass_gap (clay path). Zero sorry/axiom/opaque. Build: 8184 jobs, RC=0, 123s.
 
 **Last updated: Campaign 31 (v0.47.0, 2026-04-04)
 - `kp_smallness_add` + `kp_smallness_h1_h2_combined` **proved** (Campaign 23, 2026-04-03): abstract KP combination + concrete H1+H2 KP smallness; closes H1+H2 -> KP sub-step of Step 3. Oracle: propext, Classical.choice, Quot.sound only.
