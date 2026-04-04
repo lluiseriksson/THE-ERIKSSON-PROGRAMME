@@ -220,10 +220,12 @@ Campaign 16 (this campaign) verified:
 | v0.44.0 | Campaign 28 | `kp_expectation_product_from_corr_and_conn` proved: expectation-product bound from corr+conn exponential bounds; axioms: propext, Classical.choice, Quot.sound, funext |
 | v0.45.0 | Campaign 29 | `kp_connectedCorrDecay_from_corr_bound` proved: packages C28+C27 chain into `ConnectedCorrDecay`; `noncomputable def` via `phase5_kp_sufficient`; axioms: propext, Classical.choice, Quot.sound, funext |
 | v0.46.0 | Campaign 30 | `kp_connectedCorrDecay_from_corr_bound_and_gap` proved: packages spectral-gap (`HasSpectralGap`) + `hdist` into `ConnectedCorrDecay`; sole remaining open: `h_corr` (wilsonCorrelation exponential bound); axioms: propext, Classical.choice, Quot.sound, funext |
+| v0.47.0 | Campaign 31 | `kp_wilsonCorrelation_decay` + `kp_connectedCorrDecay_full_from_gap` proved: exponential decay of wilsonCorrelation from spectral gap; ConnectedCorrDecay from gap + dual transfer-matrix bounds; axioms: propext, Classical.choice, Quot.sound |
 
+- `kp_wilsonCorrelation_decay` + `kp_connectedCorrDecay_full_from_gap` **proved** (Campaign 31, 2026-04-04): exponential decay of two-point `wilsonCorrelation` function derived from spectral gap + transfer-matrix bound; full `ConnectedCorrDecay` package combining gap hypothesis with dual transfer-matrix bounds on both connected and full correlators. Oracle: propext, Classical.choice, Quot.sound only.
 ---
 
-**Last updated: Campaign 30 (v0.46.0, 2026-04-04)
+**Last updated: Campaign 31 (v0.47.0, 2026-04-04)
 - `kp_smallness_add` + `kp_smallness_h1_h2_combined` **proved** (Campaign 23, 2026-04-03): abstract KP combination + concrete H1+H2 KP smallness; closes H1+H2 -> KP sub-step of Step 3. Oracle: propext, Classical.choice, Quot.sound only.
 - `large_field_decay_tsum_bound` + `kp_smallness_from_large_field_decay` **proved** (Campaign 22, 2026-04-03): H2 large-field analogues of C19+C21 under HasLargeFieldSuppression; `sum' n, ||activity n|| <= exp(-p0)/(1-exp(-k))` proved; KPSmallness (exp(-p0)/(1-exp(-k))) (sum' n, ||activity n||) proved under exp(-p0)<1-exp(-k); closes H2 KP smallness condition. Oracle: propext, Classical.choice, Quot.sound only. Fifth+sixth sub-steps of Step 3.
 - `kp_smallness_from_decay` **proved** (Campaign 21, 2026-04-02): KPSmallness (E0*g²/(1-exp(-κ))) (∑' n, ‖activity n‖) proved without sorry under HasSmallFieldDecay + E0*g²<1-exp(-κ); direct bridge from H1 decay bounds to KP convergence predicate via `kp_smallness_of_bound`; packages Campaigns 19–21 into single KP hypothesis. Oracle: propext, Classical.choice, Quot.sound only. Fourth sub-step of Step 3 (KP activity bound); closes quantitative KP smallness condition.

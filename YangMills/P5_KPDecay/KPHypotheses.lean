@@ -606,6 +606,57 @@ noncomputable def kp_connectedCorrDecay_from_corr_bound_and_gap
   kp_connectedCorrDecay_from_corr_bound μ plaquetteEnergy β F distP
     C_c (nf * ng * C_T) γ hC_c (mul_nonneg hng hC_T) hγ h_corr h_conn
 
+
+/-- **Spectral gap gives exponential decay of wilsonCorrelation** (Campaign 31, v0.47.0). -/
+theorem kp_wilsonCorrelation_decay
+    {H : Type*} [NormedAddCommGroup H] [NormedSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (T P₀ : H →L[ℝ] H) (γ C_T nf ng : ℝ)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hγ : 0 < γ) (hC_T : 0 ≤ C_T) (hng : 0 ≤ nf * ng)
+    (hdist_corr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+      ∃ n : ℕ, distP N p q = n ∧
+        |wilsonCorrelation μ plaquetteEnergy β F p q| ≤
+          nf * ng * ‖T ^ n - P₀‖) :
+    ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+      |wilsonCorrelation μ plaquetteEnergy β F p q| ≤
+        (nf * ng * C_T) * Real.exp (-γ * distP N p q) := by
+  intro N hN p q
+  letI : NeZero N := hN
+  obtain ⟨n, hn_eq, hwilson_c⟩ := hdist_corr N p q
+  have hTS := transferMatrix_spectral_gap T P₀ γ C_T hgap n
+  calc |wilsonCorrelation μ plaquetteEnergy β F p q|
+      ≤ nf * ng * ‖T ^ n - P₀‖ := hwilson_c
+    _ ≤ nf * ng * (C_T * Real.exp (-γ * n)) :=
+        mul_le_mul_of_nonneg_left hTS hng
+    _ = nf * ng * C_T * Real.exp (-γ * distP N p q) := by
+        rw [hn_eq]; ring
+
+/-- **ConnectedCorrDecay from spectral gap + full transfer-matrix bounds** (Campaign 31, v0.47.0). -/
+noncomputable def kp_connectedCorrDecay_full_from_gap
+    {H : Type*} [NormedAddCommGroup H] [NormedSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (T P₀ : H →L[ℝ] H) (γ C_T nf ng nf_c ng_c : ℝ)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hγ : 0 < γ) (hC_T : 0 ≤ C_T) (hng : 0 ≤ nf * ng) (hng_c : 0 ≤ nf_c * ng_c)
+    (hdist : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+      ∃ n : ℕ, distP N p q = n ∧
+        |@wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q| ≤
+          nf * ng * ‖T ^ n - P₀‖)
+    (hdist_corr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+      ∃ n : ℕ, distP N p q = n ∧
+        |wilsonCorrelation μ plaquetteEnergy β F p q| ≤
+          nf_c * ng_c * ‖T ^ n - P₀‖) :
+    ConnectedCorrDecay μ plaquetteEnergy β F distP :=
+  kp_connectedCorrDecay_from_corr_bound_and_gap
+    μ plaquetteEnergy β F distP T P₀ γ C_T nf ng (nf_c * ng_c * C_T)
+    hgap hγ hC_T hng (mul_nonneg hng_c hC_T)
+    hdist
+    (kp_wilsonCorrelation_decay μ plaquetteEnergy β F distP
+        T P₀ γ C_T nf_c ng_c hgap hγ hC_T hng_c hdist_corr)
+
 end AbstractDecayBridge
 
 end YangMills
