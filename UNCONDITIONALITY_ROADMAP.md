@@ -238,7 +238,27 @@ Campaign 16 (this campaign) verified:
 - `kp_smallness_from_decay` **proved** (Campaign 21, 2026-04-02): KPSmallness (E0*g²/(1-exp(-κ))) (∑' n, ‖activity n‖) proved without sorry under HasSmallFieldDecay + E0*g²<1-exp(-κ); direct bridge from H1 decay bounds to KP convergence predicate via `kp_smallness_of_bound`; packages Campaigns 19–21 into single KP hypothesis. Oracle: propext, Classical.choice, Quot.sound only. Fourth sub-step of Step 3 (KP activity bound); closes quantitative KP smallness condition.
 - `smallfield_decay_tsum_lt_one` **proved** (Campaign 20, 2026-04-02): strict upper bound ∑' n, ‖activity n‖ < 1 proved without sorry under explicit smallness condition E0*g² < 1 - exp(-κ); direct corollary of `smallfield_decay_tsum_bound` via `div_lt_one` + `linarith`. Oracle: propext, Classical.choice, Quot.sound only. Third sub-step of Step 3 (KP activity bound); closes quantitative “total activity mass < 1” condition.
 
-### v0.51.0 — Campaign 35 (2026-04-04)
+#---
+
+## v0.52.0 -- C36 (2026-04-04)
+
+**Theorem**: `kp_clay_from_symmetric_vacuum_repr`
+
+**What was proved**: Symmetric vacuum specialisation of the C35 rank-1 representation. All four boundary vectors (psi1, psi2, u, v) are identified with a single vacuum vector Omega; the two Wilson expectation hypotheses (hexp1, hexp2) collapse to one (hexp).
+
+**Physics**: The transfer-matrix vacuum is symmetric and the single-plaquette Wilson loop expectation equals inner(Omega, Omega) for all plaquettes. Merging hexp1 and hexp2 into one hypothesis is physically natural: the reflection-symmetric vacuum sees the same expectation on all sides.
+
+**Proof term**: Direct delegation to `kp_clay_from_rank_one_and_exp_repr` with Omega substituted for all four boundary vectors and `hexp` used for both expectation hypotheses.
+
+**Oracle**: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]` (same profile as all theorems proving `ClayYangMillsTheorem`)
+
+**Build**: 8184 jobs, no errors
+
+**File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (852 -> 877 lines, +25)
+
+**Commit**: v0.52.0 tag (pending)
+
+## v0.51.0 — Campaign 35 (2026-04-04)
 **File:** `YangMills/P5_KPDecay/KPHypotheses.lean`  
 **New theorems:**
 - `kp_hprod_from_rank_one_and_exp_repr`: Reduces C34 vacuum-projector hypothesis `hprod` to a rank-1 application form. Given `hP0 : ∀ w, P₀ w = ⟨v, w⟩ • u` and separate inner-product representations for each Wilson expectation, proves `wilsonExpectation p * wilsonExpectation q = ⟨ψ₁, P₀ ψ₂⟩`. Oracle: `[propext, Classical.choice, Quot.sound]`.

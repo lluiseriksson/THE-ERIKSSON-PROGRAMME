@@ -847,6 +847,31 @@ theorem kp_clay_from_rank_one_and_exp_repr
     hgap hy hC_T hcorr
     (kp_hprod_from_rank_one_and_exp_repr μ plaquetteEnergy β F P₀ ψ₁ ψ₂ u v hP0 hexp1 hexp2)
 
+
+/-- Campaign 36 (v0.52.0): Symmetric vacuum specialisation of the C35
+    rank-1 representation. All four boundary vectors (\u03c8₁, \u03c8₂, u, v)
+    are identified with a single vacuum vector \u03a9, and the two Wilson
+    expectation hypotheses (hexp1, hexp2) collapse into one (hexp).
+    Physically: the transfer-matrix vacuum is symmetric and the single-plaquette
+    Wilson loop expectation equals \u27e8\u03a9, \u03a9\u27e9 for all plaquettes. -/
+theorem kp_clay_from_symmetric_vacuum_repr
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hy : 0 < γ) (hC_T : 0 ≤ C_T)
+    (hP0 : ∀ w : H, P₀ w = @inner ℝ H _ Ω w • Ω)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+          @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hexp : ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p =
+          @inner ℝ H _ Ω Ω) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_rank_one_and_exp_repr μ plaquetteEnergy β F dnat T P₀ γ C_T Ω Ω Ω Ω
+    hgap hy hC_T hP0 hcorr hexp hexp
+
 end AbstractDecayBridge
 
 end YangMills
