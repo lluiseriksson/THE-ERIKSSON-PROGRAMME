@@ -751,6 +751,55 @@ theorem kp_clay_from_inner_product_repr
     (kp_hbound_of_inner_product_repr μ plaquetteEnergy β F dnat T P₀ ψ₁ ψ₂ hrepr)
 
 
+/-- Campaign 34 (v0.50.0): Reduction of the connected-correlator hrepr hypothesis
+    to separate transfer-matrix representations of wilsonCorrelation and
+    the vacuum (expectation-product) term. -/
+theorem kp_hrepr_of_corr_and_expectation_repr
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H)
+    (ψ₁ ψ₂ : H)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+          @inner ℝ H _ ψ₁ ((T ^ (dnat N p q)) ψ₂))
+    (hprod : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p *
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F q =
+          @inner ℝ H _ ψ₁ (P₀ ψ₂)) :
+    ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q =
+          @inner ℝ H _ ψ₁ ((T ^ (dnat N p q) - P₀) ψ₂) := fun N hN p q => by
+  letI : NeZero N := hN
+  unfold wilsonConnectedCorr
+  rw [hcorr N p q, hprod N p q]
+  simp only [ContinuousLinearMap.sub_apply, inner_sub_right]
+
+/-- Campaign 34 (v0.50.0): Clay theorem from correlation + expectation-product
+    transfer-matrix representations. Packages kp_hrepr_of_corr_and_expectation_repr
+    + kp_clay_from_inner_product_repr into a single bridge. -/
+theorem kp_clay_from_corr_and_expectation_repr
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ)
+    (ψ₁ ψ₂ : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hγ : 0 < γ) (hC_T : 0 ≤ C_T)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+          @inner ℝ H _ ψ₁ ((T ^ (dnat N p q)) ψ₂))
+    (hprod : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p *
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F q =
+          @inner ℝ H _ ψ₁ (P₀ ψ₂)) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_inner_product_repr μ plaquetteEnergy β F dnat T P₀ γ C_T ψ₁ ψ₂
+    hgap hγ hC_T
+    (kp_hrepr_of_corr_and_expectation_repr μ plaquetteEnergy β F dnat T P₀ ψ₁ ψ₂
+      hcorr hprod)
+
+
 end AbstractDecayBridge
 
 end YangMills
