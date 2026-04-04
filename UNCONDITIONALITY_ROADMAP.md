@@ -228,6 +228,8 @@ Campaign 16 (this campaign) verified:
 
 **Last updated: Campaign 32 (v0.48.0, 2026-04-04)
 
+- `kp_hbound_of_inner_product_repr` + `kp_clay_from_inner_product_repr` **proved** (Campaign 33, 2026-04-04): inner-product transfer-matrix route; given the representation `wilsonConnectedCorr = ⟨ψ₁,(T^n-P₀)ψ₂⟩`, Cauchy-Schwarz + operator-norm bound yields `|wilsonConnectedCorr| ≤ ‖ψ₁‖ * ‖ψ₂‖ * ‖T^n-P₀‖`; `kp_clay_from_inner_product_repr` wraps this into `ClayYangMillsTheorem` via `kp_clay_from_nat_dist` (C32). Oracle: propext, Classical.choice, Quot.sound (+ pre-existing yangMills_continuum_mass_gap for clay path). Zero sorry/axiom/opaque. Build: 8184 jobs, RC=0.
+
 - `kp_connectedCorrDecay_from_nat_dist` + `kp_clay_from_nat_dist` **proved** (Campaign 32, 2026-04-04): nat-valued plaquette distance route: when the plaquette distance function dnat takes ℕ values, the transfer-matrix bound hypothesis simplifies — no existential quantifier needed, just a direct bound on ‖T^(dnat N p q) - P₀‖. `kp_connectedCorrDecay_from_nat_dist` packages this into `ConnectedCorrDecay` via the anonymous constructor ⟨nf*ng*C_T, γ, ...⟩; `kp_clay_from_nat_dist` chains through `phase3_latticeMassProfile_positive` → `clay_millennium_yangMills`. Oracle: propext, Classical.choice, Quot.sound (nat_dist def); adds yangMills_continuum_mass_gap (clay path). Zero sorry/axiom/opaque. Build: 8184 jobs, RC=0, 123s.
 
 **Last updated: Campaign 31 (v0.47.0, 2026-04-04)

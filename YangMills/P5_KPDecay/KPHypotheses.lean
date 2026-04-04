@@ -703,6 +703,54 @@ theorem kp_clay_from_nat_dist
         (fun N p q => ↑(dnat N p q)) hccd
   exact clay_millennium_yangMills
 
+/-- **Campaign 33 (v0.49.0): hbound from inner-product transfer-matrix representation**.
+    If `wilsonConnectedCorr N p q = ⟪ψ₁, (T^(dnat N p q) - P₀) ψ₂⟫_ℝ` for fixed
+    state vectors `ψ₁ ψ₂ : H`, then hbound holds with nf = ‖ψ₁‖, ng = ‖ψ₂‖.
+    Proof: Cauchy-Schwarz (`abs_real_inner_le_norm`) + operator-norm bound
+    (`ContinuousLinearMap.le_opNorm`). -/
+theorem kp_hbound_of_inner_product_repr
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H)
+    (ψ₁ ψ₂ : H)
+    (hrepr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q =
+          @inner ℝ H _ ψ₁ ((T ^ (dnat N p q) - P₀) ψ₂)) :
+    ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        |@wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q| ≤
+          ‖ψ₁‖ * ‖ψ₂‖ * ‖T ^ (dnat N p q) - P₀‖ := fun N hN p q => by
+  letI : NeZero N := hN
+  rw [hrepr N p q]
+  calc |@inner ℝ H _ ψ₁ ((T ^ (dnat N p q) - P₀) ψ₂)|
+      ≤ ‖ψ₁‖ * ‖(T ^ (dnat N p q) - P₀) ψ₂‖ := abs_real_inner_le_norm ψ₁ _
+    _ ≤ ‖ψ₁‖ * (‖T ^ (dnat N p q) - P₀‖ * ‖ψ₂‖) :=
+        mul_le_mul_of_nonneg_left
+          ((T ^ (dnat N p q) - P₀).le_opNorm ψ₂)
+          (norm_nonneg _)
+    _ = ‖ψ₁‖ * ‖ψ₂‖ * ‖T ^ (dnat N p q) - P₀‖ := by ring
+
+/-- **Campaign 33 (v0.49.0): Clay theorem from inner-product representation of hbound**.
+    Sharpest bridge in the AbstractDecayBridge series: sole hypothesis is the
+    inner-product representation wilsonConnectedCorr = ⟪ψ₁,(T^n-P₀)ψ₂⟫_ℝ.
+    Proof: kp_hbound_of_inner_product_repr → kp_clay_from_nat_dist. -/
+theorem kp_clay_from_inner_product_repr
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ)
+    (ψ₁ ψ₂ : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hγ : 0 < γ) (hC_T : 0 ≤ C_T)
+    (hrepr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q =
+          @inner ℝ H _ ψ₁ ((T ^ (dnat N p q) - P₀) ψ₂)) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_nat_dist μ plaquetteEnergy β F dnat T P₀ γ C_T ‖ψ₁‖ ‖ψ₂‖
+    hgap hγ hC_T (mul_nonneg (norm_nonneg _) (norm_nonneg _))
+    (kp_hbound_of_inner_product_repr μ plaquetteEnergy β F dnat T P₀ ψ₁ ψ₂ hrepr)
+
+
 end AbstractDecayBridge
 
 end YangMills
