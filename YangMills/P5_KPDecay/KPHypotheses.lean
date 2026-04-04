@@ -800,6 +800,53 @@ theorem kp_clay_from_corr_and_expectation_repr
       hcorr hprod)
 
 
+
+/-- Campaign 35 (v0.51.0): Reduces the C34 vacuum-projector hypothesis `hprod`
+    to a rank-1 application form of P₀ plus separate inner-product representations
+    for each Wilson expectation. Algebraic core: ⟨ψ₁, ⟨v,ψ₂⟩•u⟩ = ⟨v,ψ₂⟩*⟨ψ₁,u⟩. -/
+theorem kp_hprod_from_rank_one_and_exp_repr
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (P₀ : H →L[ℝ] H) (ψ₁ ψ₂ u v : H)
+    (hP0 : ∀ w : H, P₀ w = @inner ℝ H _ v w • u)
+    (hexp1 : ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p =
+          @inner ℝ H _ ψ₁ u)
+    (hexp2 : ∀ (N : ℕ) [NeZero N] (q : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F q =
+          @inner ℝ H _ v ψ₂) :
+    ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p *
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F q =
+          @inner ℝ H _ ψ₁ (P₀ ψ₂) := fun N hN p q => by
+  letI : NeZero N := hN
+  rw [hexp1 N p, hexp2 N q, hP0 ψ₂, inner_smul_right]
+  ring
+
+/-- Campaign 35 (v0.51.0): Full Clay bridge from rank-1 projector + separate exp reprs. -/
+theorem kp_clay_from_rank_one_and_exp_repr
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ)
+    (ψ₁ ψ₂ u v : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hy : 0 < γ) (hC_T : 0 ≤ C_T)
+    (hP0 : ∀ w : H, P₀ w = @inner ℝ H _ v w • u)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+          @inner ℝ H _ ψ₁ ((T ^ (dnat N p q)) ψ₂))
+    (hexp1 : ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p =
+          @inner ℝ H _ ψ₁ u)
+    (hexp2 : ∀ (N : ℕ) [NeZero N] (q : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F q =
+          @inner ℝ H _ v ψ₂) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_corr_and_expectation_repr μ plaquetteEnergy β F dnat T P₀ γ C_T ψ₁ ψ₂
+    hgap hy hC_T hcorr
+    (kp_hprod_from_rank_one_and_exp_repr μ plaquetteEnergy β F P₀ ψ₁ ψ₂ u v hP0 hexp1 hexp2)
+
 end AbstractDecayBridge
 
 end YangMills
