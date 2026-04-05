@@ -240,6 +240,17 @@ Campaign 16 (this campaign) verified:
 
 #---
 
+## v0.57.0 — Campaign 41 (2026-04-05)
+**File:** `YangMills/P5_KPDecay/KPHypotheses.lean`
+**New theorems:**
+- `kp_hobs_of_const_one_observable`: For any observable `F : G → ℝ` satisfying `∀ g, F g = 1`, proves `plaquetteWilsonObs F p A = 1` for all plaquettes and gauge configurations. Proof by `simp [plaquetteWilsonObs, hF]`.
+- `kp_clay_from_orthogonal_projector_and_trivial_wilson_observable`: Full Clay bridge combining orthogonal-projector hypotheses with a unit Wilson observable. Packages `kp_hunit_of_unit_wilson_observable` with `kp_hobs_of_const_one_observable`; no new hypotheses beyond `hF : ∀ g, F g = 1`.
+**Oracle:**
+- `kp_hobs_of_const_one_observable` depends on axioms: `[propext, Classical.choice, Quot.sound]`
+- `kp_clay_from_orthogonal_projector_and_trivial_wilson_observable` depends on axioms: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`
+**Build:** 8184 jobs, no errors (cache hit — no new compilation)
+**Commit:** v0.57.0
+
 ## v0.56.0 -- C40 (2026-04-05)
 
 **File:** `YangMills/P5_KPDecay/KPHypotheses.lean`

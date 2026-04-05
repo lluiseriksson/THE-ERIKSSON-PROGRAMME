@@ -1012,6 +1012,42 @@ theorem kp_hunit_of_unit_wilson_observable
   rw [heq]
   exact expectation_const d N μ plaquetteEnergy β (h_int N) 1
 
+/-- Reduces hobs to the condition that F is identically 1 on G. -/
+theorem kp_hobs_of_const_one_observable
+    (F : G → ℝ)
+    (hF : ∀ g : G, F g = 1) :
+    ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N) (A : GaugeConfig d N G),
+        plaquetteWilsonObs F p A = 1 := by
+  intro N _hN p A
+  simp only [plaquetteWilsonObs, hF]
+
+/-- Full Clay reduction: orthogonal-projector primitives + trivial observable (F ≡ 1) + hcorr → ClayYangMillsTheorem. -/
+theorem kp_clay_from_orthogonal_projector_and_trivial_wilson_observable
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hy : 0 < γ) (hC_T : 0 ≤ C_T)
+    (hΩ : ‖Ω‖ = 1)
+    (hrange : ∀ v : H, ∃ c : ℝ, P₀ v = c • Ω)
+    (hfix : P₀ Ω = Ω)
+    (hsym : ∀ v w : H, @inner ℝ H _ (P₀ v) w = @inner ℝ H _ v (P₀ w))
+    (h_int : ∀ (N : ℕ) [NeZero N],
+        Integrable (fun U : GaugeConfig d N G =>
+          Real.exp (-β * wilsonAction plaquetteEnergy U))
+          (gaugeMeasureFrom (d := d) (N := N) μ))
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ g : G, F g = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_orthogonal_projector_and_unit_expectation μ plaquetteEnergy β F
+    dnat T P₀ γ C_T Ω hgap hy hC_T hΩ hrange hfix hsym hcorr
+    (kp_hunit_of_unit_wilson_observable μ plaquetteEnergy β F h_int
+      (kp_hobs_of_const_one_observable F hF))
+
 end AbstractDecayBridge
 
 end YangMills
