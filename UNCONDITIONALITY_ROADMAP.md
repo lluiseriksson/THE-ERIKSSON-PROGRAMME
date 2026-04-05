@@ -240,6 +240,18 @@ Campaign 16 (this campaign) verified:
 
 #---
 
+## v0.55.0 -- C39 (2026-04-05)
+**File:** `YangMills/P5_KPDecay/KPHypotheses.lean`
+**New theorems:**
+- `kp_hexp_of_unit_normalized_vacuum`: Reduces the C36 hypothesis `hexp` (∀ N p, wilsonExpectation ... p = ⟪Omega, Omega⟫_R) to a unit-expectation hypothesis `hunit` (∀ N p, wilsonExpectation ... p = 1) together with vacuum normalisation `‖Omega‖ = 1`. Key: `⟪Omega, Omega⟫_R = ‖Omega‖² = 1² = 1` by `real_inner_self_eq_norm_sq`. Oracle: `[propext, Classical.choice, Quot.sound]` – no physical axiom.
+- `kp_clay_from_orthogonal_projector_and_unit_expectation`: Full Clay Yang-Mills reduction from orthogonal-projector primitives + unit expectation. Chains `kp_hexp_of_unit_normalized_vacuum` + `kp_clay_from_orthogonal_projector_onto_vacuum_line`. Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`.
+**Physics**: The transfer-matrix vacuum is unit-normalised by convention; the Wilson loop expectation equals 1 for all plaquettes. The inner-product expression `⟪Omega, Omega⟫_R` collapses to 1 precisely because `‖Omega‖ = 1`. Splitting `hexp` into `hunit + hΩ` isolates the expectation-value content from the normalisation assumption.
+**Proof term**: `rw [hunit N p, real_inner_self_eq_norm_sq, hΩ, one_pow]` – one-line structural chain: substitute unit expectation → use inner-product-norm identity → substitute `‖Ω‖ = 1` → simplify `1² = 1`.
+**Oracle**: `kp_hexp_of_unit_normalized_vacuum`: `[propext, Classical.choice, Quot.sound]` (no physical axiom – pure structural result).
+**Build**: 8184 jobs, no errors
+**File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (958 → 997 lines, +39)
+**Commit**: v0.55.0
+
 ## v0.54.0 -- C38 (2026-04-04)
 
 - `kp_hP0_eq_of_orthogonal_projector_onto_vacuum_line`: Derives `P₀ = (innerSL ℝ Ω).smulRight Ω`

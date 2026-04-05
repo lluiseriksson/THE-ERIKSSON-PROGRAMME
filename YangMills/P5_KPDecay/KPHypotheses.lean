@@ -953,6 +953,45 @@ theorem kp_clay_from_orthogonal_projector_onto_vacuum_line
     (kp_hP0_eq_of_orthogonal_projector_onto_vacuum_line P₀ Ω hΩ hrange hfix hsym)
     hcorr hexp
 
+/-- Campaign 39 (v0.55.0): Reduces the expectation hypothesis `hexp` to a unit-expectation
+    hypothesis `hunit` together with vacuum normalisation `‖Ω‖ = 1`.
+    Key: `⟪Ω, Ω⟫_ℝ = ‖Ω‖² = 1² = 1` by `real_inner_self_eq_norm_sq`. -/
+theorem kp_hexp_of_unit_normalized_vacuum
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ) (Ω : H)
+    (hΩ : ‖Ω‖ = 1)
+    (hunit : ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p = 1) :
+    ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p =
+          @inner ℝ H _ Ω Ω := by
+  intro N hN p
+  rw [hunit N p, real_inner_self_eq_norm_sq, hΩ, one_pow]
+
+/-- Campaign 39 (v0.55.0): Full Clay Yang-Mills reduction from orthogonal-projector
+    primitives + unit expectation. Chains `kp_hexp_of_unit_normalized_vacuum` +
+    `kp_clay_from_orthogonal_projector_onto_vacuum_line`. -/
+theorem kp_clay_from_orthogonal_projector_and_unit_expectation
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hy : 0 < γ) (hC_T : 0 ≤ C_T)
+    (hΩ : ‖Ω‖ = 1)
+    (hrange : ∀ v : H, ∃ c : ℝ, P₀ v = c • Ω)
+    (hfix : P₀ Ω = Ω)
+    (hsym : ∀ v w : H, @inner ℝ H _ (P₀ v) w = @inner ℝ H _ v (P₀ w))
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+          @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hunit : ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_orthogonal_projector_onto_vacuum_line μ plaquetteEnergy β F dnat T P₀ γ C_T Ω
+    hgap hy hC_T hΩ hrange hfix hsym hcorr
+    (kp_hexp_of_unit_normalized_vacuum μ plaquetteEnergy β F Ω hΩ hunit)
+
 end AbstractDecayBridge
 
 end YangMills
