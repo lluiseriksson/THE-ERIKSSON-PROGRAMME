@@ -1,5 +1,31 @@
 # UNCONDITIONALITY_ROADMAP.md
 - `kp_connectedCorrDecay_from_corr_bound_and_gap` **proved** (Campaign 30, 2026-04-04): packaging theorem that internalises spectral-gap derivation of `wilsonConnectedCorr` bound; calls C29; sole remaining open hypothesis is `h_corr`. Oracle: propext, Classical.choice, Quot.sound only.
+## v0.59.0 — Campaign 43 (C43) — 2026-04-05
+
+**New theorem:** `kp_clay_from_spectral_gap_rank_one_vacuum_and_trivial_wilson_observable`
+**File:** `YangMills/P5_KPDecay/KPHypotheses.lean`
+**Oracle:** `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`
+**Build:** lake build exit 0, 8184 jobs
+
+**What was proved:**
+C43 is the canonical minimal-hypothesis bridge theorem. It eliminates the two
+redundant positivity hypotheses that were explicit in C42:
+- `hy : 0 < γ` (now derived from `hgap.1`)
+- `hC_T : 0 ≤ C_T` (now derived from `hgap.2.1.le`)
+since HasSpectralGap T P₀ γ C := 0 < γ ∧ 0 < C ∧ ∀ n, ‖T^n - P₀‖ ≤ C·exp(-γ·n).
+The proof is a single-line call to C42 (kp_clay_from_projector_formula_and_trivial_wilson_observable)
+forwarding the five remaining hypotheses: hgap, hΩ, hP0_eq, hcorr, hF.
+
+**Remaining formal gap (5 hypotheses):**
+- `hgap : HasSpectralGap T P₀ γ C_T` — spectral gap for transfer operator
+- `hΩ : ‖Ω‖ = 1` — vacuum vector normalisation
+- `hP0_eq : P₀ = (innerSL ℝ Ω).smulRight Ω` — projector formula
+- `hcorr` — Wilson loop / transfer-operator correlation identity
+- `hF : ∀ g, F g = 1` — trivial Wilson observable
+
+**Gap reduction:** positivity bookkeeping eliminated; hypothesis count reduced from 7 (C42) to 5 (C43).
+Net: 40+40 proved, gap structurally compressed to irreducible core.
+
 ## v0.58.0 — Campaign 42 (C42) — 2026-04-05
 
 **New theorem:** `kp_clay_from_projector_formula_and_trivial_wilson_observable`

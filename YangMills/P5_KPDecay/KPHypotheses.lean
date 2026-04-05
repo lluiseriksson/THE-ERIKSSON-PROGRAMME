@@ -1085,6 +1085,34 @@ theorem kp_clay_from_projector_formula_and_trivial_wilson_observable
   exact kp_clay_from_orthogonal_projector_and_trivial_wilson_observable
     μ plaquetteEnergy β F dnat T P₀ γ C_T Ω hgap hy hC_T hΩ hrange hfix hsym h_int hcorr hF
 
+
+/-- Campaign 43 (v0.59.0): Canonical minimal-hypothesis bridge.
+    Eliminates the redundant positivity hypotheses hy : 0 < γ and hC_T : 0 ≤ C_T
+    that were explicit in C42, deriving them from hgap.1 and hgap.2.1.le
+    (since HasSpectralGap T P₀ γ C := 0 < γ ∧ 0 < C ∧ ∀ n, ‖T^n - P₀‖ ≤ C * exp(-γ * n)).
+    Remaining formal gap: hgap, hΩ, hP0_eq, hcorr, hF (plus technical h_int). -/
+theorem kp_clay_from_spectral_gap_rank_one_vacuum_and_trivial_wilson_observable
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hΩ : ‖Ω‖ = 1)
+    (hP0_eq : P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (h_int : ∀ (N : ℕ) [NeZero N],
+        Integrable (fun U : GaugeConfig d N G =>
+          Real.exp (-β * wilsonAction plaquetteEnergy U))
+          (gaugeMeasureFrom (d := d) (N := N) μ))
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ g : G, F g = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_projector_formula_and_trivial_wilson_observable
+    μ plaquetteEnergy β F dnat T P₀ γ C_T Ω
+    hgap hgap.1 hgap.2.1.le hΩ hP0_eq h_int hcorr hF
+
 end AbstractDecayBridge
 
 end YangMills
