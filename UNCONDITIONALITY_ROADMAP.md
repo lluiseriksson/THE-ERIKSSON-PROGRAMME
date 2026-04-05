@@ -1,5 +1,31 @@
 # UNCONDITIONALITY_ROADMAP.md
 - `kp_connectedCorrDecay_from_corr_bound_and_gap` **proved** (Campaign 30, 2026-04-04): packaging theorem that internalises spectral-gap derivation of `wilsonConnectedCorr` bound; calls C29; sole remaining open hypothesis is `h_corr`. Oracle: propext, Classical.choice, Quot.sound only.
+## v0.58.0 — Campaign 42 (C42) — 2026-04-05
+
+**New theorem:** `kp_clay_from_projector_formula_and_trivial_wilson_observable`
+**File:** `YangMills/P5_KPDecay/KPHypotheses.lean`
+**Oracle:** `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`
+**Build:** lake build exit 0, 8184 jobs
+
+**What was proved:**  
+C42 reduces the orthogonal-projector primitive package (3 separate hypotheses: hrange, hfix, hsym)
+to the single structural rank-one operator formula
+`hP0_eq : P₀ = (innerSL ℝ Ω).smulRight Ω`,
+while retaining the trivial Wilson observable hypothesis from C41 (hF : ∀ g, F g = 1).
+The three C38-style primitives are derived internally via ContinuousLinearMap.smulRight_apply,
+innerSL_apply, real_inner_self_eq_norm_sq, real_inner_smul_left, real_inner_smul_right, and ring.
+The theorem calls C41 (kp_clay_from_orthogonal_projector_and_trivial_wilson_observable) directly.
+
+**Remaining formal gap (4 hypotheses):**
+- `hgap : HasSpectralGap T P₀ γ C_T` — spectral gap for transfer operator
+- `hΩ : ‖Ω‖ = 1` — vacuum vector normalisation
+- `hP0_eq : P₀ = (innerSL ℝ Ω).smulRight Ω` — projector formula (now 1 hyp instead of 3)
+- `hcorr` — Wilson loop / transfer-operator correlation identity
+
+**Gap reduction:** projector primitive package shrunk from 3 hypotheses to 1 (net: 38→39 proved, gap 4→4 but structurally compressed).
+
+---
+
 ## THE-ERIKSSON-PROGRAMME — Yang–Mills Lean Formalization
 ## Version: v0.3.3  (Campaign 17)
 

@@ -1048,6 +1048,43 @@ theorem kp_clay_from_orthogonal_projector_and_trivial_wilson_observable
     (kp_hunit_of_unit_wilson_observable μ plaquetteEnergy β F h_int
       (kp_hobs_of_const_one_observable F hF))
 
+
+/-- Campaign 42 (v0.58.0): Reduces the orthogonal-projector primitive package
+    (hrange, hfix, hsym) to the single structural rank-one operator formula
+    hP0_eq : P₀ = (innerSL ℝ Ω).smulRight Ω, replacing three conditions with one,
+    while retaining the trivial Wilson observable hypothesis from C41.
+    Remaining formal gap: hgap, hΩ, hP0_eq, hcorr. -/
+theorem kp_clay_from_projector_formula_and_trivial_wilson_observable
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hy : 0 < γ) (hC_T : 0 ≤ C_T) (hΩ : ‖Ω‖ = 1)
+    (hP0_eq : P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (h_int : ∀ (N : ℕ) [NeZero N],
+        Integrable (fun U : GaugeConfig d N G =>
+          Real.exp (-β * wilsonAction plaquetteEnergy U))
+        (gaugeMeasureFrom (d := d) (N := N) μ))
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ g : G, F g = 1) :
+    ClayYangMillsTheorem := by
+  have hrange : ∀ v : H, ∃ c : ℝ, P₀ v = c • Ω := fun v =>
+    ⟨@inner ℝ H _ Ω v, by
+      simp only [hP0_eq, ContinuousLinearMap.smulRight_apply, innerSL_apply]⟩
+  have hfix : P₀ Ω = Ω := by
+    simp only [hP0_eq, ContinuousLinearMap.smulRight_apply, innerSL_apply]
+    rw [real_inner_self_eq_norm_sq, hΩ, one_pow, one_smul]
+  have hsym : ∀ v w : H, @inner ℝ H _ (P₀ v) w = @inner ℝ H _ v (P₀ w) := fun v w => by
+    simp only [hP0_eq, ContinuousLinearMap.smulRight_apply, innerSL_apply,
+               real_inner_smul_left, real_inner_smul_right]
+    rw [real_inner_comm v Ω]; ring
+  exact kp_clay_from_orthogonal_projector_and_trivial_wilson_observable
+    μ plaquetteEnergy β F dnat T P₀ γ C_T Ω hgap hy hC_T hΩ hrange hfix hsym h_int hcorr hF
+
 end AbstractDecayBridge
 
 end YangMills
