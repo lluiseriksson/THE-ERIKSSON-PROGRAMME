@@ -992,6 +992,26 @@ theorem kp_clay_from_orthogonal_projector_and_unit_expectation
     hgap hy hC_T hΩ hrange hfix hsym hcorr
     (kp_hexp_of_unit_normalized_vacuum μ plaquetteEnergy β F Ω hΩ hunit)
 
+/-- Reduces hunit (Wilson loop expectation = 1) to the primitive condition that
+    the Wilson observable is identically 1 on all gauge configurations, plus
+    Boltzmann integrability (needed for expectation_const). -/
+theorem kp_hunit_of_unit_wilson_observable
+    (μ : Measure G) [IsProbabilityMeasure μ] (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (h_int : ∀ (N : ℕ) [NeZero N],
+        Integrable (fun U : GaugeConfig d N G =>
+          Real.exp (-β * wilsonAction plaquetteEnergy U))
+          (gaugeMeasureFrom (d := d) (N := N) μ))
+    (hobs : ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N)
+        (A : GaugeConfig d N G), plaquetteWilsonObs F p A = 1) :
+    ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N),
+        @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p = 1 := by
+  intro N hN p
+  haveI : NeZero N := hN
+  simp only [wilsonExpectation]
+  have heq : plaquetteWilsonObs F p = fun _ => 1 := funext (hobs N p)
+  rw [heq]
+  exact expectation_const d N μ plaquetteEnergy β (h_int N) 1
+
 end AbstractDecayBridge
 
 end YangMills

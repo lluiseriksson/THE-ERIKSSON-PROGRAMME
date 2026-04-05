@@ -240,6 +240,26 @@ Campaign 16 (this campaign) verified:
 
 #---
 
+## v0.56.0 -- C40 (2026-04-05)
+
+**File:** `YangMills/P5_KPDecay/KPHypotheses.lean`
+
+**New theorems:**
+
+- `kp_hunit_of_unit_wilson_observable`: Reduces `hunit` (∀ N [NeZero N] p, wilsonExpectation μ plaquetteEnergy β F p = 1) to the primitive condition that the Wilson observable is identically 1 on all gauge configurations (`∀ N [NeZero N] p A, plaquetteWilsonObs F p A = 1`), together with Boltzmann integrability and `[IsProbabilityMeasure μ]` on the base gauge measure. Proof: `funext` converts pointwise equality to function equality, then `expectation_const` closes the goal. Oracle: `[propext, Classical.choice, Quot.sound]` — no physical axiom.
+
+**Physics**: The Wilson loop expectation of a unit observable equals 1 by linearity of integration. This theorem isolates the “unit observable” content of `hunit` from all measure-theoretic bookkeeping, reducing the KP hypothesis to its most primitive form: every plaquette holonomy maps to 1 under F.
+
+**Proof term**: `simp only [wilsonExpectation]; funext; exact expectation_const ... 1` — unfold, rewrite observable to constant 1, apply probability-measure integral of constant.
+
+**Oracle**: `[propext, Classical.choice, Quot.sound]` (no physical axiom — pure structural/measure-theoretic result).
+
+**Build**: 8184 jobs, no errors
+
+**File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (997 → 1018 lines, +21)
+
+**Commit**: v0.56.0
+
 ## v0.55.0 -- C39 (2026-04-05)
 **File:** `YangMills/P5_KPDecay/KPHypotheses.lean`
 **New theorems:**
