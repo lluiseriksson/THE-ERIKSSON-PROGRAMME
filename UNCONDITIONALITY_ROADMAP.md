@@ -1,4 +1,5 @@
 # UNCONDITIONALITY_ROADMAP.md
+- `kp_clay_from_normalized_rank_one_vacuum_projector_and_trivial_wilson_observable` **proved** (Campaign 44, 2026-04-05): Packages the projector/vacuum pair into a single conjunction hypothesis `hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω`. Reduces the 5-hypothesis C43 core (hgap, hΩ, hP0_eq, hcorr, hF) to 4 hypotheses (hgap, hvac, hcorr, hF). Oracle: [propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]. Tag: v0.60.0.
 - `kp_connectedCorrDecay_from_corr_bound_and_gap` **proved** (Campaign 30, 2026-04-04): packaging theorem that internalises spectral-gap derivation of `wilsonConnectedCorr` bound; calls C29; sole remaining open hypothesis is `h_corr`. Oracle: propext, Classical.choice, Quot.sound only.
 ## v0.59.0 — Campaign 43 (C43) — 2026-04-05
 

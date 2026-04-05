@@ -1113,6 +1113,33 @@ theorem kp_clay_from_spectral_gap_rank_one_vacuum_and_trivial_wilson_observable
     μ plaquetteEnergy β F dnat T P₀ γ C_T Ω
     hgap hgap.1 hgap.2.1.le hΩ hP0_eq h_int hcorr hF
 
+
+/-- Campaign 44 (v0.60.0): Packages the projector/vacuum pair into a single hypothesis.
+    Reduces the 5-hypothesis core of C43 (hgap, hΩ, hP0_eq, hcorr, hF) to 4 hypotheses
+    by replacing the separate \`hΩ : ‖Ω‖ = 1\` and \`hP0_eq : P₀ = (innerSL ℝ Ω).smulRight Ω\`
+    with a single conjunction \`hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω\`.
+    Remaining formal gap: hgap, hvac, hcorr, hF (plus technical h_int). -/
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_trivial_wilson_observable
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (h_int : ∀ (N : ℕ) [NeZero N],
+        Integrable (fun U : GaugeConfig d N G =>
+          Real.exp (-β * wilsonAction plaquetteEnergy U))
+          (gaugeMeasureFrom (d := d) (N := N) μ))
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ g : G, F g = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_spectral_gap_rank_one_vacuum_and_trivial_wilson_observable
+    μ plaquetteEnergy β F dnat T P₀ γ C_T Ω
+    hgap hvac.1 hvac.2 h_int hcorr hF
+
 end AbstractDecayBridge
 
 end YangMills
