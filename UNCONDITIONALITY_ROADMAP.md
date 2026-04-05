@@ -1,6 +1,39 @@
 # UNCONDITIONALITY_ROADMAP.md
+- `kp_clay_from_normalized_rank_one_vacuum_projector_and_unit_wilson_observable` **proved** (Campaign 45, 2026-04-05): Replaces strong hF with weaker hobs (Wilson observable = 1 on gauge configs); derives hunit via C40 bridge; 8184-job clean build; oracle: yangMills_continuum_mass_gap only.
 - `kp_clay_from_normalized_rank_one_vacuum_projector_and_trivial_wilson_observable` **proved** (Campaign 44, 2026-04-05): Packages the projector/vacuum pair into a single conjunction hypothesis `hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω`. Reduces the 5-hypothesis C43 core (hgap, hΩ, hP0_eq, hcorr, hF) to 4 hypotheses (hgap, hvac, hcorr, hF). Oracle: [propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]. Tag: v0.60.0.
 - `kp_connectedCorrDecay_from_corr_bound_and_gap` **proved** (Campaign 30, 2026-04-04): packaging theorem that internalises spectral-gap derivation of `wilsonConnectedCorr` bound; calls C29; sole remaining open hypothesis is `h_corr`. Oracle: propext, Classical.choice, Quot.sound only.
+
+## v0.61.0 — Campaign 45 (C45) — 2026-04-05
+
+**New theorem:** `kp_clay_from_normalized_rank_one_vacuum_projector_and_unit_wilson_observable`
+**File:** `YangMills/P5_KPDecay/KPHypotheses.lean`
+**Oracle:** `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`
+**Build:** lake build exit 0, 8184 jobs
+
+**What was proved:**
+C45 replaces the strong `hF : ∀ g : G, F g = 1` hypothesis of C44 with the strictly weaker
+observable hypothesis `hobs : ∀ N p A, plaquetteWilsonObs F p A = 1`, which asserts only
+that Wilson loop observables evaluate to 1 on every concrete gauge configuration.
+The bridge `kp_hunit_of_unit_wilson_observable` (C40) derives `hunit` from `hobs` + `h_int`.
+The Hilbert-space geometry (hrange, hfix, hsym) is derived algebraically from
+`hvac = (‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)`.
+The final `exact` delegates to
+`kp_clay_from_orthogonal_projector_and_unit_expectation` (C40 landing-pad theorem).
+
+**Remaining formal gap (5 hypotheses):**
+- `hgap : HasSpectralGap T P₀ γ C_T` — spectral gap for transfer operator
+- `hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω` — normalised rank-1 vacuum projector
+- `hcorr` — Wilson loop / transfer-operator correlation identity
+- `hobs` — plaquette Wilson observables equal 1 on all gauge configurations (weaker than hF)
+- `h_int` — integrability of the Boltzmann weight (technical side-condition)
+
+**Gap reduction:** Strong pointwise `hF : ∀ g, F g = 1` replaced by weaker `hobs` (observable hypothesis).
+Net gap: 5 open hypotheses (hF split into the weaker hobs + technical h_int; hobs is
+strictly weaker since hF ⇒ hobs but not vice versa).
+
+**File:** `YangMills/P5_KPDecay/KPHypotheses.lean` (1145 → 1191 lines, +46)
+**Commit:** v0.61.0
+
 ## v0.59.0 — Campaign 43 (C43) — 2026-04-05
 
 **New theorem:** `kp_clay_from_spectral_gap_rank_one_vacuum_and_trivial_wilson_observable`

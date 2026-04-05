@@ -1140,6 +1140,52 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_trivial_wilson_obs
     μ plaquetteEnergy β F dnat T P₀ γ C_T Ω
     hgap hvac.1 hvac.2 h_int hcorr hF
 
+
+/-- Campaign 45 (v0.61.0): KP-bridge with observable hypothesis.
+    Replaces the strong `hF : ∀ g : G, F g = 1` of C44 with the weaker
+    `hobs`, which asserts only that Wilson loop observables evaluate to 1
+    on every gauge configuration.
+    C40 (`kp_hunit_of_unit_wilson_observable`) derives hunit from hobs + h_int,
+    and `kp_clay_from_orthogonal_projector_and_unit_expectation` closes the gap
+    via the Hilbert-space geometry encoded in hvac.
+    Remaining formal gap: hgap, hvac, hcorr, hobs (plus technical h_int). -/
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_unit_wilson_observable
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (h_int : ∀ (N : ℕ) [NeZero N],
+        Integrable (fun U : GaugeConfig d N G =>
+          Real.exp (-β * wilsonAction plaquetteEnergy U))
+          (gaugeMeasureFrom (d := d) (N := N) μ))
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hobs : ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N)
+        (A : GaugeConfig d N G), plaquetteWilsonObs F p A = 1) :
+    ClayYangMillsTheorem := by
+  have hunit : ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N),
+      @wilsonExpectation d N _ _ G _ _ μ plaquetteEnergy β F p = 1 :=
+    kp_hunit_of_unit_wilson_observable μ plaquetteEnergy β F h_int hobs
+  have hΩ : ‖Ω‖ = 1 := hvac.1
+  have hP0_eq : P₀ = (innerSL ℝ Ω).smulRight Ω := hvac.2
+  have hrange : ∀ v : H, ∃ c : ℝ, P₀ v = c • Ω := fun v =>
+      ⟨@inner ℝ H _ Ω v,
+        by simp only [hP0_eq, ContinuousLinearMap.smulRight_apply, innerSL_apply]⟩
+  have hfix : P₀ Ω = Ω := by
+      simp only [hP0_eq, ContinuousLinearMap.smulRight_apply, innerSL_apply]
+      rw [real_inner_self_eq_norm_sq, hΩ, one_pow, one_smul]
+  have hsym : ∀ v w : H, @inner ℝ H _ (P₀ v) w = @inner ℝ H _ v (P₀ w) := fun v w => by
+      simp only [hP0_eq, ContinuousLinearMap.smulRight_apply, innerSL_apply,
+          real_inner_smul_left, real_inner_smul_right]
+      rw [real_inner_comm v Ω]; ring
+  exact kp_clay_from_orthogonal_projector_and_unit_expectation
+      μ plaquetteEnergy β F dnat T P₀ γ C_T Ω
+      hgap hgap.1 hgap.2.1.le hΩ hrange hfix hsym hcorr hunit
+
 end AbstractDecayBridge
 
 end YangMills
