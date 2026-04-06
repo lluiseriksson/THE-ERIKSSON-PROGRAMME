@@ -1819,6 +1819,51 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalize
     μ plaquetteEnergy f β b Fobs dnat T P₀ γ C_T Ω hgap hvac
     (kp_hcont_of_differentiable_factor hdiff) hβdef hndef hcorr hF
 
+
+/-- C60-T1: Differentiability of f from pointwise Fréchet derivative witnesses.
+    Reduces hdiff : Differentiable ℝ f to hfd : ∀ g : G, HasFDerivAt f (f' g) g.
+    NOTE: This is NOT a weakening of Differentiable ℝ f. It is a structural interface
+    theorem: Differentiable ℝ f ↔ ∃ f', ∀ g, HasFDerivAt f (f' g) g. The hypothesis
+    hfd provides explicit witnesses f' g for the derivative at each point, replacing
+    the existential implicit in Differentiable.
+    Proof: HasFDerivAt.differentiableAt directly. --/
+theorem kp_hdiff_of_hasFDerivAt_factor
+    [NormedAddCommGroup G] [NormedSpace ℝ G]
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    {f : G → E} {f' : G → G →L[ℝ] E}
+    (hfd : ∀ g : G, HasFDerivAt f (f' g) g) :
+    Differentiable ℝ f :=
+  fun g => (hfd g).differentiableAt
+
+/-- C60-T2: ClayYangMillsTheorem from HasFDerivAt witnesses.
+    Packages the full proof chain, replacing Differentiable ℝ f with
+    explicit Fréchet derivative witnesses ∀ g, HasFDerivAt f (f' g) g.
+    Delegates to C59-T2 via kp_hdiff_of_hasFDerivAt_factor. --/
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_hasFDerivAt_factor
+    [MeasurableInv G] [MeasurableMul₂ G]
+    [NormedAddCommGroup G] [NormedSpace ℝ G] [BorelSpace G]
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [MeasurableSpace E] [BorelSpace E]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (f : G → E) (β b : ℝ) (Fobs : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    {f' : G → G →L[ℝ] E}
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (hfd : ∀ g : G, HasFDerivAt f (f' g) g)
+    (hβdef : β = b ^ 2)
+    (hndef : ∀ g : G, plaquetteEnergy g = ‖f g‖ ^ 2)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+      @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β Fobs p q =
+      @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ (N : ℕ) [NeZero N] (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+          Fobs (GaugeConfig.plaquetteHolonomy A p) = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_differentiable_factor
+    μ plaquetteEnergy f β b Fobs dnat T P₀ γ C_T Ω hgap hvac
+    (kp_hdiff_of_hasFDerivAt_factor hfd) hβdef hndef hcorr hF
+
 end AbstractDecayBridge
 
 end YangMills

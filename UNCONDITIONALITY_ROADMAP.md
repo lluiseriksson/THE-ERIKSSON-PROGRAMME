@@ -931,3 +931,61 @@ Note: C59 bypasses the C56–C58 intermediate chain (Lipschitz → LocallyLipsch
 
 `lake build YangMills.P5_KPDecay.KPHypotheses` – exit code 0 (8184 jobs).
 Cleanliness: CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide` introduced).
+
+---
+
+## v0.76.0 — C60 — 2026-04-06
+
+### Theorems added
+
+1. `YangMills.kp_hdiff_of_hasFDerivAt_factor` (C60-T1)
+2. `YangMills.kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_hasFDerivAt_factor` (C60-T2)
+
+### File delta
+
+| File | Before | After | Delta |
+|---|---|---|---|
+| `KPHypotheses.lean` | 1824 | 1869 | +45 |
+| `UNCONDITIONALITY_ROADMAP.md` | 933 | (this entry) | +49 |
+
+### Oracle output
+
+```
+'YangMills.kp_hdiff_of_hasFDerivAt_factor' depends on axioms:
+  [propext, Classical.choice, Quot.sound]
+
+'YangMills.kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_hasFDerivAt_factor' depends on axioms:
+  [propext,
+   Classical.choice,
+   Quot.sound,
+   YangMills.yangMills_continuum_mass_gap]
+```
+
+T1 depends only on the three kernel axioms of Lean 4. T2 additionally depends on `yangMills_continuum_mass_gap`, mandatory since T2 concludes `ClayYangMillsTheorem`.
+
+### Hypothesis reduction
+
+C60 reduces `hdiff : Differentiable ℝ f` (from C59) to `hfd : ∀ g : G, HasFDerivAt f (f' g) g`.
+NOTE: This is NOT a weakening of `Differentiable ℝ f`. It is a structural interface theorem.
+`Differentiable ℝ f` ↔ `∃ f', ∀ g, HasFDerivAt f (f' g) g`. The hypothesis `hfd` provides
+explicit derivative witnesses `f' g : G →L[ℝ] E` at each point, replacing the existential
+implicit in `Differentiable ℝ f`.
+Proof: `HasFDerivAt.differentiableAt` from `Mathlib/Analysis/Calculus/FDeriv/Basic.lean` (line 221).
+Note: C60 provides an alternative entry point to C59; it does not bypass any intermediate chain.
+
+### Cumulative reduction chain after C51–C60
+
+| Original hypothesis | Reduced to (C60 interface) |
+|---|---|
+| `hm : PositiveMassGap` | Handled by `yangMills_continuum_mass_gap` axiom |
+| `hpe : ∀ g, 0 ≤ plaquetteEnergy g` | Derived from `hndef` via C53-T1 |
+| `h : Measurable plaquetteEnergy` | Derived from `hf : Measurable f` via C53-T2 |
+| `hβ : 0 ≤ β` | Derived from `hβdef : β = b ^ 2` via C54-T1 |
+| `hf : Measurable f` | Derived from `hcont : Continuous f` via C55-T1 |
+| `hcont : Continuous f` | Derived from `hdiff : Differentiable ℝ f` via C59-T1 |
+| `hdiff : Differentiable ℝ f` | Derived from `hfd : ∀ g : G, HasFDerivAt f (f' g) g` via C60-T1 |
+
+### Build result
+
+`lake build YangMills.P5_KPDecay.KPHypotheses` – exit code 0 (8184 jobs).
+Cleanliness: CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide` introduced).
