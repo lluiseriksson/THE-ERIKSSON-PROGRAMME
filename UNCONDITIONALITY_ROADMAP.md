@@ -558,3 +558,35 @@ Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_m
 - Linter warning about unused section variables `[Group G] [MeasurableSpace G]` in T1 is cosmetic only.
 
 **Commit**: v0.67.0
+
+---
+
+## Campaign C52  v0.68.0
+
+**Version**: v0.68.0
+**File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (lines 1435-1475, +41 lines)
+**Build**: exit code 0, 8184 jobs for KPHypotheses
+
+### Theorems
+
+**T1**: `kp_hmeas_of_measurable_sq_plaquetteEnergy`
+Reduces `h : Measurable plaquetteEnergy` to `hf : Measurable f` under the structural assumption
+`hdef : forall g, plaquetteEnergy g = f g ^ 2`. Proof: `funext hdef` converts the pointwise equality
+to a function equality, then `hf.pow_const 2` closes the goal.
+Oracle: `[propext, Classical.choice, Quot.sound]`
+
+**T2**: `kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_measurable_sq_plaquetteEnergy_from_measurable_factor`
+Packages C51-T2 and C52-T1: replaces `h : Measurable plaquetteEnergy` with `hf : Measurable f`
+under `hdef : forall g, plaquetteEnergy g = f g ^ 2`.
+Delegates to C51-T2 with `kp_hmeas_of_measurable_sq_plaquetteEnergy` as the measurability witness.
+Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`
+
+### Technical notes
+
+- No `sorry`, `opaque`, `axiom`, or `native_decide` introduced.
+- T1 proof uses `Measurable.pow_const` from `Mathlib/MeasureTheory/Group/Arithmetic.lean`.
+- `funext hdef` converts the pointwise hypothesis to a function equality for `rw`.
+- T2 is a pure delegation: all hypotheses forwarded, `h` replaced by T1 application.
+- Linter warning about unused section variables `[Group G] [MeasurableSpace G]` in T1 is cosmetic only.
+
+**Commit**: v0.68.0

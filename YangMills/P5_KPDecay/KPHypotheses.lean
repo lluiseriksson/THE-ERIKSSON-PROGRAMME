@@ -1429,6 +1429,47 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalize
     (kp_hpe_of_sq_plaquetteEnergy plaquetteEnergy f hdef)
     hcorr hF
 
+/-- C52-T1: Measurability of plaquetteEnergy from measurability of its square-root factor.
+    Reduces h : Measurable plaquetteEnergy to hf : Measurable f
+    under the structural assumption hdef : forall g, plaquetteEnergy g = f g ^ 2.
+    Proof: funext gives the pointwise equality as a function equality,
+    then Measurable.pow_const closes the goal. --/
+theorem kp_hmeas_of_measurable_sq_plaquetteEnergy
+    (plaquetteEnergy : G → ℝ) (f : G → ℝ)
+    (hf : Measurable f)
+    (hdef : ∀ g : G, plaquetteEnergy g = f g ^ 2) :
+    Measurable plaquetteEnergy := by
+  have heq : plaquetteEnergy = fun g => f g ^ 2 := funext hdef
+  rw [heq]
+  exact hf.pow_const 2
+
+/-- C52-T2: Clay Yang-Mills from measurability of the square-root factor.
+    Packages C51-T2 and C52-T1: replaces h : Measurable plaquetteEnergy with
+    hf : Measurable f under hdef : forall g, plaquetteEnergy g = f g ^ 2.
+    Delegates to C51-T2 with kp_hmeas_of_measurable_sq_plaquetteEnergy as witness. --/
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_measurable_sq_plaquetteEnergy_from_measurable_factor
+    [MeasurableInv G] [MeasurableMul₂ G]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (f : G → ℝ) (β : ℝ) (Fobs : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (hf : Measurable f)
+    (hβ : 0 ≤ β)
+    (hdef : ∀ g : G, plaquetteEnergy g = f g ^ 2)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β Fobs p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ (N : ℕ) [NeZero N] (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+        Fobs (GaugeConfig.plaquetteHolonomy A p) = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_measurable_sq_plaquetteEnergy
+    μ plaquetteEnergy f β Fobs dnat T P₀ γ C_T Ω hgap hvac
+    (kp_hmeas_of_measurable_sq_plaquetteEnergy plaquetteEnergy f hf hdef)
+    hβ hdef hcorr hF
+
 end AbstractDecayBridge
 
 end YangMills
