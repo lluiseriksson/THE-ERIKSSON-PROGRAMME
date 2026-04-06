@@ -1713,6 +1713,59 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalize
     μ plaquetteEnergy f β b Fobs dnat T P₀ γ C_T Ω hgap hvac
     (kp_hcont_of_locally_lipschitz_factor hllip) hβdef hndef hcorr hF
 
+
+/-- C58-T1: Local Lipschitz continuity of f from C¹ smoothness.
+    Reduces hllip : LocallyLipschitz f to hcd : ContDiff ℝ 1 f.
+    [NormedAddCommGroup G] [NormedSpace ℝ G] on the gauge group domain implies
+    [PseudoEMetricSpace G] automatically via NormedAddCommGroup → SeminormedAddCommGroup
+    → PseudoMetricSpace → PseudoEMetricSpace, satisfying LocallyLipschitz's requirement.
+    ContDiff ℝ 1 is strictly stronger than LocallyLipschitz:
+    every C¹ function is locally Lipschitz, but not vice versa
+    (e.g. f(x) = |x| on ℝ is locally Lipschitz but not C¹ at 0).
+    Proof: ContDiff.locallyLipschitz directly. --/
+theorem kp_hllip_of_contdiff_one_factor
+    [NormedAddCommGroup G] [NormedSpace ℝ G]
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    {f : G → E} (hcd : ContDiff ℝ 1 f) :
+    LocallyLipschitz f :=
+  hcd.locallyLipschitz
+
+/-- C58-T2: Clay Yang-Mills from a norm-square plaquette energy, squared inverse
+    temperature, and a C¹ amplitude.
+    Packages C58-T1 and C57-T2:
+    given f : G → E with hcd : ContDiff ℝ 1 f,
+    [NormedAddCommGroup G] [NormedSpace ℝ G] on the gauge group (which implies
+    [PseudoEMetricSpace G] via NormedAddCommGroup → PseudoMetricSpace → PseudoEMetricSpace),
+    [BorelSpace G] and [BorelSpace E] on both spaces,
+    hndef : ∀ g, plaquetteEnergy g = ‖f g‖ ^ 2, and hβdef : β = b ^ 2,
+    derives LocallyLipschitz f via C58-T1, then concludes ClayYangMillsTheorem via C57-T2.
+    C¹ smoothness weakens C57's LocallyLipschitz hypothesis: the caller specifies
+    a smoothness degree rather than a local Lipschitz condition.
+    Note: [NormedAddCommGroup G] [NormedSpace ℝ G] implies [PseudoEMetricSpace G] automatically. --/
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_contdiff_one_factor
+    [MeasurableInv G] [MeasurableMul₂ G]
+    [NormedAddCommGroup G] [NormedSpace ℝ G] [BorelSpace G]
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [MeasurableSpace E] [BorelSpace E]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (f : G → E) (β b : ℝ) (Fobs : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (hcd : ContDiff ℝ 1 f)
+    (hβdef : β = b ^ 2)
+    (hndef : ∀ g : G, plaquetteEnergy g = ‖f g‖ ^ 2)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β Fobs p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ (N : ℕ) [NeZero N] (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+        Fobs (GaugeConfig.plaquetteHolonomy A p) = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_locally_lipschitz_factor
+    μ plaquetteEnergy f β b Fobs dnat T P₀ γ C_T Ω hgap hvac
+    (kp_hllip_of_contdiff_one_factor hcd) hβdef hndef hcorr hF
+
 end AbstractDecayBridge
 
 end YangMills

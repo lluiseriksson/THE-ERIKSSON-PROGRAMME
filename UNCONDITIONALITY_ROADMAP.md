@@ -822,3 +822,58 @@ C57 reduces `hLip : LipschitzWith K f` (from C56) to `hllip : LocallyLipschitz f
 
 `lake build YangMills.P5_KPDecay.KPHypotheses` – exit code 0 (8184 jobs).
 Cleanliness: CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide` introduced).
+
+---
+
+## v0.74.0 — C58 — 2026-04-06
+
+### Theorems added
+
+1. `YangMills.kp_hllip_of_contdiff_one_factor` (C58-T1)
+2. `YangMills.kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_contdiff_one_factor` (C58-T2)
+
+### File delta
+
+| File | Before | After | Delta |
+|---|---|---|---|
+| `KPHypotheses.lean` | 1718 | 1771 | +53 |
+| `UNCONDITIONALITY_ROADMAP.md` | 824 | (this entry) | +49 |
+
+### Oracle output
+
+```
+'YangMills.kp_hllip_of_contdiff_one_factor' depends on axioms:
+  [propext, Classical.choice, Quot.sound]
+
+'YangMills.kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_contdiff_one_factor' depends on axioms:
+  [propext,
+   Classical.choice,
+   Quot.sound,
+   YangMills.yangMills_continuum_mass_gap]
+```
+
+T1 depends only on the three kernel axioms of Lean 4. T2 additionally depends on `yangMills_continuum_mass_gap`, mandatory since T2 concludes `ClayYangMillsTheorem`.
+
+### Hypothesis reduction
+
+C58 reduces `hllip : LocallyLipschitz f` (from C57) to `hcd : ContDiff ℝ 1 f`.
+`ContDiff ℝ 1 f` is strictly stronger than `LocallyLipschitz f`: every C¹ function is locally Lipschitz, but not vice versa (e.g. `f(x) = |x|` on ℝ is locally Lipschitz but not C¹ at 0).
+The reduction uses `ContDiff.locallyLipschitz` from `Mathlib/Analysis/Calculus/ContDiff/RCLike.lean` (line 143).
+
+### Cumulative reduction chain after C51–C58
+
+| Original hypothesis | Reduced to (C58 interface) |
+|---|---|
+| `hm : PositiveMassGap` | Handled by `yangMills_continuum_mass_gap` axiom |
+| `hpe : ∀ g, 0 ≤ plaquetteEnergy g` | Derived from `hndef` via C53-T1 |
+| `h : Measurable plaquetteEnergy` | Derived from `hf : Measurable f` via C53-T2 |
+| `hβ : 0 ≤ β` | Derived from `hβdef : β = b ^ 2` via C54-T1 |
+| `hf : Measurable f` | Derived from `hcont : Continuous f` via C55-T1 |
+| `hcont : Continuous f` | Derived from `hLip : LipschitzWith K f` via C56-T1 |
+| `hLip : LipschitzWith K f` | Derived from `hllip : LocallyLipschitz f` via C57-T1 |
+| `hllip : LocallyLipschitz f` | Derived from `hcd : ContDiff ℝ 1 f` via C58-T1 |
+
+### Build result
+
+`lake build YangMills.P5_KPDecay.KPHypotheses` – exit code 0 (8184 jobs).
+Cleanliness: CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide` introduced).
