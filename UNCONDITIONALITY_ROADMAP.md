@@ -528,3 +528,33 @@ Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_m
 - No `sorry`, `opaque`, `axiom`, or `native_decide` introduced.  
 
 **Commit**: v0.64.0
+
+
+---
+
+## Campaign C51 (v0.67.0)
+
+**Version**: v0.67.0
+**File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (lines 1397-1434, +38 lines)
+**Build**: exit code 0, 8184 jobs, 239 s for KPHypotheses
+
+### Theorems
+
+**T1**: `kp_hpe_of_sq_plaquetteEnergy`
+Reduces `hpe : forall g : G, 0 <= plaquetteEnergy g` to the structural assumption
+`hdef : forall g, plaquetteEnergy g = f g ^ 2`. Proof: `intro g; rw [hdef]; exact sq_nonneg _`.
+Oracle: `[propext, Classical.choice, Quot.sound]`
+
+**T2**: `kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_measurable_sq_plaquetteEnergy`
+Packages C50-T2 and C51-T1: replaces `hpe` with `hdef : forall g, plaquetteEnergy g = f g ^ 2`.
+Delegates to the nonneg version with `kp_hpe_of_sq_plaquetteEnergy` as witness.
+Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`
+
+### Technical notes
+
+- No `sorry`, `opaque`, `axiom`, or `native_decide` introduced.
+- T1 proof is one-line: `sq_nonneg` after rewriting with `hdef`.
+- T2 is a pure delegation: all hypotheses forwarded, `hpe` replaced by T1 application.
+- Linter warning about unused section variables `[Group G] [MeasurableSpace G]` in T1 is cosmetic only.
+
+**Commit**: v0.67.0
