@@ -1186,6 +1186,57 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_unit_wilson_observ
       μ plaquetteEnergy β F dnat T P₀ γ C_T Ω
       hgap hgap.1 hgap.2.1.le hΩ hrange hfix hsym hcorr hunit
 
+
+theorem kp_hint_of_bounded_boltzmann_factor_on_probability_space
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (β : ℝ)
+    (hmeas : ∀ (N : ℕ) [NeZero N],
+        Measurable (fun U : GaugeConfig d N G =>
+          Real.exp (-β * wilsonAction plaquetteEnergy U)))
+    (hbdd : ∀ (N : ℕ) [NeZero N], ∃ C : ℝ,
+        ∀ U : GaugeConfig d N G,
+          Real.exp (-β * wilsonAction plaquetteEnergy U) ≤ C) :
+    ∀ (N : ℕ) [NeZero N],
+        Integrable (fun U : GaugeConfig d N G =>
+          Real.exp (-β * wilsonAction plaquetteEnergy U))
+          (gaugeMeasureFrom (d := d) (N := N) μ) := by
+  intro N instN
+  haveI : NeZero N := instN
+  obtain ⟨C, hC⟩ := hbdd N
+  haveI : IsProbabilityMeasure (gaugeMeasureFrom (d := d) (N := N) μ) := inferInstance
+  exact (integrable_const (max C 0 + 1)).mono
+    (hmeas N).aestronglyMeasurable
+    (Filter.Eventually.of_forall fun U => by
+      rw [Real.norm_of_nonneg (Real.exp_nonneg _),
+          Real.norm_of_nonneg (by linarith [le_max_right C (0 : ℝ)])]
+      exact le_trans (hC U)
+        (le_trans (le_max_left C 0) (le_add_of_nonneg_right zero_le_one)))
+
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_unit_wilson_observable_bounded
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (hmeas : ∀ (N : ℕ) [NeZero N],
+        Measurable (fun U : GaugeConfig d N G =>
+          Real.exp (-β * wilsonAction plaquetteEnergy U)))
+    (hbdd : ∀ (N : ℕ) [NeZero N], ∃ C : ℝ,
+        ∀ U : GaugeConfig d N G,
+          Real.exp (-β * wilsonAction plaquetteEnergy U) ≤ C)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hobs : ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N)
+        (A : GaugeConfig d N G), plaquetteWilsonObs F p A = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_normalized_rank_one_vacuum_projector_and_unit_wilson_observable
+    μ plaquetteEnergy β F dnat T P₀ γ C_T Ω hgap hvac
+    (kp_hint_of_bounded_boltzmann_factor_on_probability_space μ plaquetteEnergy β hmeas hbdd)
+    hcorr hobs
+
 end AbstractDecayBridge
 
 end YangMills

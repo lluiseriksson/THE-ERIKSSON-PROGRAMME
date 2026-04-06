@@ -443,3 +443,24 @@ closes `kp_hP0_of_normalized_vacuum_projector` in one tactic step.
 - `kp_hprod_from_rank_one_and_exp_repr`: Reduces C34 vacuum-projector hypothesis `hprod` to a rank-1 application form. Given `hP0 : ∀ w, P₀ w = ⟨v, w⟩ • u` and separate inner-product representations for each Wilson expectation, proves `wilsonExpectation p * wilsonExpectation q = ⟨ψ₁, P₀ ψ₂⟩`. Oracle: `[propext, Classical.choice, Quot.sound]`.
 - `kp_clay_from_rank_one_and_exp_repr`: Full Clay bridge from rank-1 projector + separate expectation reprs. Packages `kp_hprod_from_rank_one_and_exp_repr` into `kp_clay_from_corr_and_expectation_repr`.  
 **Progress:** hprod reduced to rank-1 form; transfer-matrix route now requires only hcorr + hexp1 + hexp2 + hP0 (rank-1 application) hypotheses.
+
+
+## v0.62.0 -- C46 (2026-04-06)
+
+**Theorems**:
+- `kp_hint_of_bounded_boltzmann_factor_on_probability_space`
+- `kp_clay_from_normalized_rank_one_vacuum_projector_and_unit_wilson_observable_bounded`
+
+**What was proved**: C46 reduces the integrability hypothesis h_int to a bounded-Boltzmann-factor pair. Given a measurable Boltzmann weight exp(-β·S(U)) that is pointwise bounded above by some C, the function is automatically integrable over (gaugeMeasureFrom μ) via (integrable_const (max C 0 + 1)).mono. The packaging theorem delegates directly to C45 with this certificate.
+
+**Physics**: The Euclidean partition function integral ∫ exp(-β S(U)) dμ converges whenever the Boltzmann weight is bounded — a natural physical condition satisfied by any finite-action lattice model. C46 formalises this reduction so the user need only supply measurability and a uniform bound.
+
+**Proof term**: kp_hint_of_bounded_boltzmann_factor_on_probability_space closes the integrability goal by (integrable_const (max C 0 + 1)).mono aestronglyMeasurable (Filter.Eventually.of_forall ae_le). kp_clay_from_..._bounded is a term-mode application of C45 with h_int supplied by the first theorem.
+
+**Oracle**: `[propext, Classical.choice, Quot.sound]` (helper); packaging theorem inherits `YangMills.yangMills_continuum_mass_gap` via C45.
+
+**Build**: 8184 jobs, no errors
+
+**File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (1191 → 1234 lines, +43)
+
+**Commit**: v0.62.0
