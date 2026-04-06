@@ -1313,6 +1313,46 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalize
     hbdd hcorr hF
 
 
+
+/-- C49-T1: Boltzmann factor boundedness from a lower bound on wilsonAction.
+    Reduces hbdd to hβ : 0 ≤ β and hm : m ≤ wilsonAction plaquetteEnergy U. --/
+theorem kp_hbdd_of_bounded_below_wilsonAction
+    (plaquetteEnergy : G → ℝ) (β m : ℝ)
+    (hβ : 0 ≤ β)
+    (hm : ∀ (N : ℕ) [NeZero N] (U : GaugeConfig d N G), m ≤ wilsonAction plaquetteEnergy U) :
+    ∀ (N : ℕ) [NeZero N], ∃ C : ℝ,
+        ∀ U : GaugeConfig d N G, Real.exp (-β * wilsonAction plaquetteEnergy U) ≤ C := by
+  intro N _instN
+  exact ⟨Real.exp (-β * m), fun U => by
+    apply Real.exp_le_exp.mpr
+    have h1 : m ≤ wilsonAction plaquetteEnergy U := hm N U
+    have h2 : β * m ≤ β * wilsonAction plaquetteEnergy U :=
+      mul_le_mul_of_nonneg_left h1 hβ
+    linarith⟩
+
+/-- C49-T2: Clay Yang-Mills from bounded-below wilsonAction. --/
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_measurable_boundedbelow_action
+    [MeasurableInv G] [MeasurableMul₂ G]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (β m : ℝ) (Fobs : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (h : Measurable plaquetteEnergy)
+    (hβ : 0 ≤ β)
+    (hm : ∀ (N : ℕ) [NeZero N] (U : GaugeConfig d N G), m ≤ wilsonAction plaquetteEnergy U)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β Fobs p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ (N : ℕ) [NeZero N] (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+        Fobs (GaugeConfig.plaquetteHolonomy A p) = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_measurable_plaquette
+    μ plaquetteEnergy β Fobs dnat T P₀ γ C_T Ω hgap hvac h
+    (kp_hbdd_of_bounded_below_wilsonAction plaquetteEnergy β m hβ hm)
+    hcorr hF
 end AbstractDecayBridge
 
 end YangMills

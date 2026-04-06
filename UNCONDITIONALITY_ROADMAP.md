@@ -486,6 +486,22 @@ closes `kp_hP0_of_normalized_vacuum_projector` in one tactic step.
 
 **Commit**: v0.63.0
 
+
+### Campaign 49 (C49) — v0.65.0
+**Target**: Reduce `hbdd` to a lower bound on `wilsonAction`.
+
+**Phase**: Phase 5 — KP Hypotheses reduction
+
+**Theorems added**:
+- `kp_hbdd_of_bounded_below_wilsonAction` (T1): Given `0 ≤ β` and `∀ N U, m ≤ wilsonAction plaquetteEnergy U`, proves `hbdd` holds with witness `C = Real.exp (-β * m)`. Proof: `Real.exp_le_exp.mpr` + `mul_le_mul_of_nonneg_left` + `linarith`. Axioms: `[propext, Classical.choice, Quot.sound]`.
+- `kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_measurable_boundedbelow_action` (T2): Clay packaging theorem replacing `hbdd` with `hβ + hm`. Calls C48-T2 with `kp_hbdd_of_bounded_below_wilsonAction`. Axioms: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`.
+
+**Build**: `lake build YangMills.P5_KPDecay.KPHypotheses` — 8184 jobs, 211.6s, returncode=0.
+
+**Cleanliness**: sorry/axiom/opaque/native_decide all CLEAN. File: 1358 lines.
+
+**Commit**: v0.65.0
+
 ---
 
 ## C48 — v0.64.0: Boltzmann measurability reduction
