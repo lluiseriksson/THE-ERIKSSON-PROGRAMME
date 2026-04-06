@@ -633,3 +633,46 @@ Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_m
   for any seminormed/normed type E, enabling gauge models with vector-valued amplitude fields.
 
 **Commit**: v0.69.0
+
+---
+
+## Campaign C54  v0.70.0 (2026-04-06)
+
+**Version tag:** v0.70.0
+**File:** `YangMills/P5_KPDecay/KPHypotheses.lean`
+**Lines before:** 1530 | **Lines after:** 1567 | **Delta:** +37
+**Build:** `lake build YangMills.P5_KPDecay.KPHypotheses`  exit code 0, 8184 jobs
+**Cleanliness:** CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide`)
+
+### Theorems Added
+
+**T1  `kp_hbeta_of_sq`**
+Reduces `h : 0  ` from the structural assumption `hdef :  = b ^ 2` for some `b : `.
+Proof: `rw [hdef]; exact sq_nonneg _`. Axioms: [propext, Classical.choice, Quot.sound].
+
+**T2  `kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta`**
+Packages C53-T3 and C54-T1. Accepts `( b : )` and `hdef :  = b ^ 2` in place of
+`h : 0  `, derives non-negativity via T1, and concludes `ClayYangMillsTheorem`.
+Delegates to C53-T3 with `kp_hbeta_of_sq  b hdef` supplying `h`.
+Axioms: [propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap].
+
+### Oracle Output
+```
+'YangMills.kp_hbeta_of_sq' depends on axioms:
+  [propext, Classical.choice, Quot.sound]
+
+'YangMills.kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta' depends on axioms:
+  [propext,
+   Classical.choice,
+   Quot.sound,
+   YangMills.yangMills_continuum_mass_gap]
+```
+
+### Hypothesis Reduction Chain
+- C54 reduces `h : 0  `  `hdef :  = b ^ 2` (scalar square representation)
+- Combined with C53: a caller with `f : G  E`, `hf : Measurable f`,
+  `hndef :  g, plaquetteEnergy g = f g ^ 2`, and `hdef :  = b ^ 2`
+  concludes `ClayYangMillsTheorem` with no separate non-negativity or measurability proofs.
+
+### Commit
+`feat(C54/v0.70.0): squared inverse temperature interface (T1 h from =b, T2 Clay packaging)`

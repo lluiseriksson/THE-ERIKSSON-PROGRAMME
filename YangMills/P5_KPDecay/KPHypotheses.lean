@@ -1525,6 +1525,43 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalize
     μ plaquetteEnergy (fun g => ‖f g‖) β Fobs dnat T P₀ γ C_T Ω hgap hvac
     hf.norm hβ hndef hcorr hF
 
+/-- C54-T1: Non-negativity of β from a square representation.
+    Reduces hβ : 0 ≤ β to hβdef : β = b ^ 2 for some b : ℝ.
+    Proof: sq_nonneg directly. --/
+theorem kp_hbeta_of_sq
+    (β b : ℝ) (hβdef : β = b ^ 2) :
+    0 ≤ β := by
+  rw [hβdef]; exact sq_nonneg _
+
+/-- C54-T2: Clay Yang-Mills from a norm-square plaquette energy and a squared inverse temperature.
+    Packages C53-T3 and C54-T1:
+    given f : G → E with hf : Measurable f, hndef : ∀ g, plaquetteEnergy g = ‖f g‖ ^ 2,
+    and hβdef : β = b ^ 2 for some b : ℝ,
+    derives 0 ≤ β and concludes ClayYangMillsTheorem.
+    Delegates to C53-T3 with kp_hbeta_of_sq supplying hβ. --/
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta
+    [MeasurableInv G] [MeasurableMul₂ G]
+    {E : Type*} [NormedAddCommGroup E] [MeasurableSpace E] [OpensMeasurableSpace E]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (f : G → E) (β b : ℝ) (Fobs : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (hf : Measurable f)
+    (hβdef : β = b ^ 2)
+    (hndef : ∀ g : G, plaquetteEnergy g = ‖f g‖ ^ 2)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β Fobs p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ (N : ℕ) [NeZero N] (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+        Fobs (GaugeConfig.plaquetteHolonomy A p) = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy
+    μ plaquetteEnergy f β Fobs dnat T P₀ γ C_T Ω hgap hvac
+    hf (kp_hbeta_of_sq β b hβdef) hndef hcorr hF
+
 end AbstractDecayBridge
 
 end YangMills
