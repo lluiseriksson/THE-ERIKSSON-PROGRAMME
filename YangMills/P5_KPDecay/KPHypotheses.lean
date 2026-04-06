@@ -1562,6 +1562,54 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalize
     μ plaquetteEnergy f β Fobs dnat T P₀ γ C_T Ω hgap hvac
     hf (kp_hbeta_of_sq β b hβdef) hndef hcorr hF
 
+/-- C55-T1: Measurability of f from continuity.
+    Reduces hf : Measurable f to hcont : Continuous f
+    under [TopologicalSpace G] [BorelSpace G] for the gauge group domain
+    and [BorelSpace E] for the normed codomain.
+    [BorelSpace E] implies [OpensMeasurableSpace E] automatically.
+    Proof: Continuous.measurable directly. --/
+theorem kp_hf_of_continuous_factor
+    [TopologicalSpace G] [BorelSpace G]
+    {E : Type*} [NormedAddCommGroup E] [MeasurableSpace E] [BorelSpace E]
+    {f : G → E} (hcont : Continuous f) :
+    Measurable f :=
+  hcont.measurable
+
+/-- C55-T2: Clay Yang-Mills from a norm-square plaquette energy, squared inverse temperature,
+    and a continuous amplitude.
+    Packages C54-T2 and C55-T1:
+    given f : G → E with hcont : Continuous f,
+    [TopologicalSpace G] [BorelSpace G] on the gauge group,
+    [BorelSpace E] on the codomain,
+    hndef : ∀ g, plaquetteEnergy g = ‖f g‖ ^ 2, and hβdef : β = b ^ 2,
+    derives Measurable f via C55-T1 and concludes ClayYangMillsTheorem.
+    Delegates to C54-T2 with kp_hf_of_continuous_factor hcont supplying hf.
+    Note: [BorelSpace E] implies [OpensMeasurableSpace E] by instance synthesis,
+    so C54-T2's codomain typeclass requirement is satisfied automatically. --/
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_continuous_factor
+    [MeasurableInv G] [MeasurableMul₂ G]
+    [TopologicalSpace G] [BorelSpace G]
+    {E : Type*} [NormedAddCommGroup E] [MeasurableSpace E] [BorelSpace E]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (f : G → E) (β b : ℝ) (Fobs : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (hcont : Continuous f)
+    (hβdef : β = b ^ 2)
+    (hndef : ∀ g : G, plaquetteEnergy g = ‖f g‖ ^ 2)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β Fobs p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ (N : ℕ) [NeZero N] (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+        Fobs (GaugeConfig.plaquetteHolonomy A p) = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta
+    μ plaquetteEnergy f β b Fobs dnat T P₀ γ C_T Ω hgap hvac
+    (kp_hf_of_continuous_factor hcont) hβdef hndef hcorr hF
+
 end AbstractDecayBridge
 
 end YangMills

@@ -676,3 +676,47 @@ Axioms: [propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_ma
 
 ### Commit
 `feat(C54/v0.70.0): squared inverse temperature interface (T1 h from =b, T2 Clay packaging)`
+
+## v0.71.0 — Campaign C55 (2026-04-06)
+
+**Version tag:** v0.71.0
+**Parent:** v0.70.0 (C54)
+**File:** `YangMills/P5_KPDecay/KPHypotheses.lean`
+**Delta:** 1567 → 1615 lines (+48)
+
+### Theorems added
+
+**C55-T1** `kp_hf_of_continuous_factor`
+Reduces `hf : Measurable f` from `hcont : Continuous f` under
+`[TopologicalSpace G] [BorelSpace G]` on the gauge group domain and
+`[BorelSpace E]` on the normed codomain.
+Proof: `hcont.measurable` (one term, Continuous.measurable from Mathlib BorelSpace).
+Oracle: `[propext, Classical.choice, Quot.sound]`
+
+**C55-T2** `kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_continuous_factor`
+Packages C54-T2 and C55-T1: given `f : G → E` with `hcont : Continuous f`,
+`[TopologicalSpace G] [BorelSpace G]`, `[BorelSpace E]`,
+`hndef : ∀ g, plaquetteEnergy g = ‖f g‖ ^ 2`, `hβdef : β = b ^ 2`,
+derives `Measurable f` via C55-T1 and concludes `ClayYangMillsTheorem`.
+Delegates to C54-T2 with `kp_hf_of_continuous_factor hcont` supplying `hf`.
+Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`
+
+### Hypothesis reduction
+
+| Original hypothesis | Reduced to (C55 interface) |
+|---|---|
+| `hf : Measurable f` | `hcont : Continuous f` (via C55-T1) |
+
+Cumulative reduction chain after C51-C45:
+- `hm : PositiveMassGap` → handled by `yangMills_continuum_mass_gap` axiom
+- `hpe : ∀ g, 0 ≤ plaquetteEnergy g` → derived from `hndef` via C53-T1
+- `h : Measurable plaquetteEnergy` → derived from `hf : Measurable f` via C53-T2
+- `hβ : 0 ≤ β` → derived from `hβdef : β = b ^ 2` via C54-T1
+- `hf : Measurable f` → derived from `hcont : Continuous f` via C55-T1
+
+After C55, a caller with `f : G → E` (continuous), `[BorelSpace G]`, `[BorelSpace E]`,
+`hndef` and `hβdef` reaches `ClayYangMillsTheorem` in a single call to T2.
+
+### Build result
+`lake build YangMills.P5_KPDecay.KPHypotheses` — exit code 0 (8184 jobs).
+Cleanliness: CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide` introduced).
