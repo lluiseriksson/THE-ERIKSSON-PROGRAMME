@@ -1237,6 +1237,40 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_unit_wilson_observ
     (kp_hint_of_bounded_boltzmann_factor_on_probability_space μ plaquetteEnergy β hmeas hbdd)
     hcorr hobs
 
+theorem kp_hobs_of_unit_plaquette_holonomy_observable
+    (F : G → ℝ)
+    (hF : ∀ (N : ℕ) [NeZero N] (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+        F (GaugeConfig.plaquetteHolonomy A p) = 1) :
+    ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N) (A : GaugeConfig d N G),
+        plaquetteWilsonObs F p A = 1 := by
+  intro N instN p A
+  simp only [plaquetteWilsonObs]
+  exact hF N A p
+
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (hmeas : ∀ (N : ℕ) [NeZero N],
+        Measurable (fun U : GaugeConfig d N G =>
+          Real.exp (-β * wilsonAction plaquetteEnergy U)))
+    (hbdd : ∀ (N : ℕ) [NeZero N], ∃ C : ℝ,
+        ∀ U : GaugeConfig d N G,
+          Real.exp (-β * wilsonAction plaquetteEnergy U) ≤ C)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ (N : ℕ) [NeZero N] (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+        F (GaugeConfig.plaquetteHolonomy A p) = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_normalized_rank_one_vacuum_projector_and_unit_wilson_observable_bounded
+    μ plaquetteEnergy β F dnat T P₀ γ C_T Ω hgap hvac hmeas hbdd hcorr
+    (kp_hobs_of_unit_plaquette_holonomy_observable F hF)
+
 end AbstractDecayBridge
 
 end YangMills

@@ -464,3 +464,24 @@ closes `kp_hP0_of_normalized_vacuum_projector` in one tactic step.
 **File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (1191 → 1234 lines, +43)
 
 **Commit**: v0.62.0
+
+
+## v0.63.0 -- C47 (2026-04-06)
+
+**Theorems**:
+- `kp_hobs_of_unit_plaquette_holonomy_observable`
+- `kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable`
+
+**What was proved**: C47 reduces the observable hypothesis h_obs (all plaquette Wilson observables equal 1) to a single group-level hypothesis: F(GaugeConfig.plaquetteHolonomy A p) = 1 for all configs A and plaquettes p. The reduction uses the definitional equality plaquetteWilsonObs F p A = F (GaugeConfig.plaquetteHolonomy A p) discharged by simp only [plaquetteWilsonObs]. The packaging theorem stacks on C46.
+
+**Physics**: If the observable function F : G → ℝ evaluates to 1 on every group element that can appear as a plaquette holonomy, then all Wilson loop observables are trivially unit-normalised. C47 captures this as the most primitive reduction of h_obs.
+
+**Proof term**: kp_hobs_of_unit_plaquette_holonomy_observable unfolds via simp only [plaquetteWilsonObs] then applies hF. kp_clay_from_..._holonomy is a term-mode application of C46 T2 with h_obs supplied by C47 T1.
+
+**Oracle**: `[propext, Classical.choice, Quot.sound]` (helper); packaging theorem inherits `YangMills.yangMills_continuum_mass_gap` via C46/C45.
+
+**Build**: 8184 jobs, no errors
+
+**File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (1234 → 1277 lines, +43)
+
+**Commit**: v0.63.0
