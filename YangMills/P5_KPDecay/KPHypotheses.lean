@@ -1470,6 +1470,61 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalize
     (kp_hmeas_of_measurable_sq_plaquetteEnergy plaquetteEnergy f hf hdef)
     hβ hdef hcorr hF
 
+/-- C53-T1: Non-negativity of plaquetteEnergy from a norm-square factor.
+    Reduces hpe : ∀ g, 0 ≤ plaquetteEnergy g to the structural assumption
+    hndef : ∀ g, plaquetteEnergy g = ‖f g‖ ^ 2.
+    Proof: ‖·‖ ^ 2 ≥ 0 by sq_nonneg. --/
+theorem kp_hpe_of_norm_sq_plaquetteEnergy
+    {E : Type*} [SeminormedAddCommGroup E]
+    (plaquetteEnergy : G → ℝ) (f : G → E)
+    (hndef : ∀ g : G, plaquetteEnergy g = ‖f g‖ ^ 2) :
+    ∀ g : G, 0 ≤ plaquetteEnergy g := by
+  intro g; rw [hndef g]; exact sq_nonneg _
+
+/-- C53-T2: Measurability of plaquetteEnergy from measurability of its norm-square factor.
+    Reduces h : Measurable plaquetteEnergy to hf : Measurable f
+    under the structural assumption hndef : ∀ g, plaquetteEnergy g = ‖f g‖ ^ 2.
+    Proof: funext gives the function equality,
+    then Measurable.norm and Measurable.pow_const close the goal. --/
+theorem kp_hmeas_of_measurable_norm_sq_plaquetteEnergy
+    {E : Type*} [NormedAddCommGroup E] [MeasurableSpace E] [OpensMeasurableSpace E]
+    (plaquetteEnergy : G → ℝ) (f : G → E)
+    (hf : Measurable f)
+    (hndef : ∀ g : G, plaquetteEnergy g = ‖f g‖ ^ 2) :
+    Measurable plaquetteEnergy := by
+  have heq : plaquetteEnergy = fun g => ‖f g‖ ^ 2 := funext hndef
+  rw [heq]
+  exact hf.norm.pow_const 2
+
+/-- C53-T3: Clay Yang-Mills from a norm-square plaquette energy.
+    Packages C52-T2, C53-T1, and C53-T2:
+    given f : G → E with hf : Measurable f and hndef : ∀ g, plaquetteEnergy g = ‖f g‖ ^ 2,
+    derives measurability and non-negativity of plaquetteEnergy
+    and concludes ClayYangMillsTheorem.
+    Delegates to C52-T2 with the ℝ-valued factor fun g => ‖f g‖. ---/
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy
+    [MeasurableInv G] [MeasurableMul₂ G]
+    {E : Type*} [NormedAddCommGroup E] [MeasurableSpace E] [OpensMeasurableSpace E]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (f : G → E) (β : ℝ) (Fobs : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (hf : Measurable f)
+    (hβ : 0 ≤ β)
+    (hndef : ∀ g : G, plaquetteEnergy g = ‖f g‖ ^ 2)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β Fobs p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ (N : ℕ) [NeZero N] (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+        Fobs (GaugeConfig.plaquetteHolonomy A p) = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_measurable_sq_plaquetteEnergy_from_measurable_factor
+    μ plaquetteEnergy (fun g => ‖f g‖) β Fobs dnat T P₀ γ C_T Ω hgap hvac
+    hf.norm hβ hndef hcorr hF
+
 end AbstractDecayBridge
 
 end YangMills

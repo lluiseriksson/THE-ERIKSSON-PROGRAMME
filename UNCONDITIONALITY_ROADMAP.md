@@ -590,3 +590,46 @@ Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_m
 - Linter warning about unused section variables `[Group G] [MeasurableSpace G]` in T1 is cosmetic only.
 
 **Commit**: v0.68.0
+
+---
+
+## Campaign C53  v0.69.0
+
+**Version**: v0.69.0
+**File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (lines 1476-1530, +55 lines)
+**Build**: exit code 0, 8184 jobs for KPHypotheses
+
+### Theorems
+
+**T1**: `kp_hpe_of_norm_sq_plaquetteEnergy`
+Reduces `hpe : forall g, 0 <= plaquetteEnergy g` to `hndef : forall g, plaquetteEnergy g = ||f g|| ^ 2`
+for any `f : G -> E` with `[SeminormedAddCommGroup E]`.
+Proof: `rw [hndef g]; exact sq_nonneg _`.
+Oracle: `[propext, Classical.choice, Quot.sound]`
+
+**T2**: `kp_hmeas_of_measurable_norm_sq_plaquetteEnergy`
+Reduces `Measurable plaquetteEnergy` to `hf : Measurable f` under `hndef : forall g, plaquetteEnergy g = ||f g|| ^ 2`
+for any `f : G -> E` with `[NormedAddCommGroup E] [MeasurableSpace E] [OpensMeasurableSpace E]`.
+Proof: `funext hndef` then `hf.norm.pow_const 2`.
+Oracle: `[propext, Classical.choice, Quot.sound]`
+
+**T3**: `kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy`
+Full Clay Yang-Mills packaging from a norm-square plaquette energy.
+Given `f : G -> E` with `hf : Measurable f` and `hndef : forall g, plaquetteEnergy g = ||f g|| ^ 2`,
+concludes `ClayYangMillsTheorem`.
+Delegates to C52-T2 with the real-valued factor `fun g => ||f g||` and `hf.norm`.
+Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`
+
+### Technical notes
+
+- No `sorry`, `opaque`, `axiom`, or `native_decide` introduced.
+- T1 proof uses `sq_nonneg` directly on the real-valued norm; does not need `norm_nonneg`.
+- T2 proof chains `Measurable.norm` (from `BorelSpace/Metric.lean`, needs `OpensMeasurableSpace E`)
+  with `Measurable.pow_const 2`.
+- T3 is a pure term-mode delegation: passes `fun g => ||f g||` as the real-valued factor to C52-T2,
+  replacing `hf : Measurable f` with `hf.norm : Measurable (fun g => ||f g||)`.
+- Linter warning about unused section variable `[Group G]` in T1/T2 is cosmetic only.
+- Generalises C51/C52 from scalar-square (`f g ^ 2`) to norm-square (`||f g|| ^ 2`)
+  for any seminormed/normed type E, enabling gauge models with vector-valued amplitude fields.
+
+**Commit**: v0.69.0
