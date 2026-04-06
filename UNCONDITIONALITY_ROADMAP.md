@@ -720,3 +720,52 @@ After C55, a caller with `f : G → E` (continuous), `[BorelSpace G]`, `[BorelSp
 ### Build result
 `lake build YangMills.P5_KPDecay.KPHypotheses` — exit code 0 (8184 jobs).
 Cleanliness: CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide` introduced).
+
+---
+
+## v0.72.0 (C56) — 2026-04-06
+
+### Theorems added
+
+1. `YangMills.kp_hcont_of_lipschitz_factor` (C56-T1)
+2. `YangMills.kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_lipschitz_factor` (C56-T2)
+
+### File delta
+
+| File | Before | After | Delta |
+|---|---|---|---|
+| `YangMills/P5_KPDecay/KPHypotheses.lean` | 1615 | 1664 | +49 |
+
+### Oracle
+
+```
+'YangMills.kp_hcont_of_lipschitz_factor' depends on axioms:
+  [propext, Classical.choice, Quot.sound]
+
+'YangMills.kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_lipschitz_factor' depends on axioms:
+  [propext,
+   Classical.choice,
+   Quot.sound,
+   YangMills.yangMills_continuum_mass_gap]
+```
+
+### Hypothesis reduction
+
+| Original hypothesis | Reduced to (C56 interface) |
+|---|---|
+| `hcont : Continuous f` | Derived from `hLip : LipschitzWith K f` via C56-T1 |
+
+Cumulative reduction chain after C51–C56:
+- `hm : PositiveMassGap` → handled by `yangMills_continuum_mass_gap` axiom
+- `hpe : ∀ g, 0 ≤ plaquetteEnergy g` → derived from `hndef` via C53-T1
+- `h : Measurable plaquetteEnergy` → derived from `hf : Measurable f` via C53-T2
+- `hβ : 0 ≤ β` → derived from `hβdef : β = b ^ 2` via C54-T1
+- `hf : Measurable f` → derived from `hcont : Continuous f` via C55-T1
+- `hcont : Continuous f` → derived from `hLip : LipschitzWith K f` via C56-T1
+
+After C56, a caller with `f : G → E` (Lipschitz), `[PseudoEMetricSpace G]`, `[BorelSpace G]`, `[BorelSpace E]`, `hndef` and `hβdef` reaches `ClayYangMillsTheorem` in a single call to T2.
+
+### Build result
+
+`lake build YangMills.P5_KPDecay.KPHypotheses` — exit code 0 (8184 jobs).
+Cleanliness: CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide` introduced).
