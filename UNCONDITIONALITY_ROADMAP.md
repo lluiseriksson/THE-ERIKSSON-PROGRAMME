@@ -485,3 +485,30 @@ closes `kp_hP0_of_normalized_vacuum_projector` in one tactic step.
 **File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (1234 → 1277 lines, +43)
 
 **Commit**: v0.63.0
+
+---
+
+## C48 — v0.64.0: Boltzmann measurability reduction
+
+**Date**: 2026-04-06  
+**Version**: v0.64.0  
+**File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (lines 1275–1318, +42 lines; import added on line 3)  
+**Build**: exit code 0, 8184 jobs, 129 s for KPHypotheses  
+
+### Theorems
+
+**T1**: `kp_hmeas_of_measurable_plaquetteEnergy`  
+Reduces Boltzmann factor measurability `Measurable (fun U => Real.exp (-β * wilsonAction plaquetteEnergy U))` to primitive `Measurable plaquetteEnergy`, using `measurable_wilsonAction` from `L2_Balaban/Measurability.lean` and `Real.continuous_exp.measurable.comp`.  
+Oracle: `[propext, Classical.choice, Quot.sound]`  
+
+**T2**: `kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_measurable_plaquette`  
+Packaging theorem replacing `hmeas` in the C47 theorem with `h : Measurable plaquetteEnergy`. Calls T1 to supply the measurability hypothesis.  
+Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`  
+
+### Technical notes
+
+- `YangMills.L2_Balaban.Measurability` is not transitively imported by `KPHypotheses.lean` via the P4/P3 chain; the import was added directly to `KPHypotheses.lean`.  
+- The proof of T1 is a two-step composition: `measurable_const.mul (measurable_wilsonAction plaquetteEnergy h)` produces measurability of the linear argument, then `Real.continuous_exp.measurable.comp` lifts it through `exp`.  
+- No `sorry`, `opaque`, `axiom`, or `native_decide` introduced.  
+
+**Commit**: v0.64.0

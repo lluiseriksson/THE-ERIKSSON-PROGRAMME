@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.P4_Continuum.Phase4Assembly
+import YangMills.L2_Balaban.Measurability
 
 namespace YangMills
 
@@ -1270,6 +1271,47 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalize
   kp_clay_from_normalized_rank_one_vacuum_projector_and_unit_wilson_observable_bounded
     μ plaquetteEnergy β F dnat T P₀ γ C_T Ω hgap hvac hmeas hbdd hcorr
     (kp_hobs_of_unit_plaquette_holonomy_observable F hF)
+
+/-- C48-T1: Boltzmann factor measurability from primitive plaquetteEnergy measurability.
+    Reduces the hmeas condition to Measurable plaquetteEnergy. -/
+theorem kp_hmeas_of_measurable_plaquetteEnergy
+    [MeasurableInv G] [MeasurableMul₂ G]
+    (plaquetteEnergy : G → ℝ) (β : ℝ)
+    (h : Measurable plaquetteEnergy) :
+    ∀ (N : ℕ) [NeZero N],
+        Measurable (fun U : GaugeConfig d N G =>
+          Real.exp (-β * wilsonAction plaquetteEnergy U)) := by
+  intro N _instN
+  exact Real.continuous_exp.measurable.comp
+    (measurable_const.mul (measurable_wilsonAction plaquetteEnergy h))
+
+/-- C48-T2: Clay Yang-Mills from measurable plaquetteEnergy (packaging).
+    Replaces hmeas in the C47 packaging theorem
+    with the primitive Measurable plaquetteEnergy. -/
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_measurable_plaquette
+    [MeasurableInv G] [MeasurableMul₂ G]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (h : Measurable plaquetteEnergy)
+    (hbdd : ∀ (N : ℕ) [NeZero N], ∃ C : ℝ,
+        ∀ U : GaugeConfig d N G,
+          Real.exp (-β * wilsonAction plaquetteEnergy U) ≤ C)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β F p q =
+        @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ (N : ℕ) [NeZero N] (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+        F (GaugeConfig.plaquetteHolonomy A p) = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable
+    μ plaquetteEnergy β F dnat T P₀ γ C_T Ω hgap hvac
+    (kp_hmeas_of_measurable_plaquetteEnergy plaquetteEnergy β h)
+    hbdd hcorr hF
+
 
 end AbstractDecayBridge
 
