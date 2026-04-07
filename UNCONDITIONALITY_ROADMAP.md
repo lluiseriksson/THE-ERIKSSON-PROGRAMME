@@ -1284,3 +1284,63 @@ C67-H is a genuine one-liner theorem: distance-preserving maps are continuous,
 which Mathlib proves via `Isometry.continuous`. The packaging T1 is a thin
 wrapper that confirms any isometry-amplitude system satisfies Clay YM,
 delegating through C62. No mathematical content added; interface value only.
+
+
+---
+
+## C68 / v0.84.0 — Homeomorph Amplitude Interface
+
+**Campaign completed successfully.**
+
+### Theorem C68-H: `kp_hcont_of_homeomorph_factor`
+
+Provides continuity from a homeomorphism `F : G ≃ₜ E` where G and E are topological spaces.
+Proof term: `F.continuous` (field accessor on the Homeomorph structure).
+
+```lean
+theorem kp_hcont_of_homeomorph_factor
+    [TopologicalSpace G]
+    {E : Type*} [TopologicalSpace E]
+    (F : G ≃ₜ E) :
+    Continuous F :=
+  F.continuous
+```
+
+### Theorem C68-T1: `kp_clay_from_..._homeomorph_factor`
+
+Packages C62 (continuous_factor) with a homeomorphism amplitude factor.
+Delegates to C62 via `F.continuous`.
+
+Type class constraints for G: `[MeasurableInv G] [MeasurableMul₂ G] [TopologicalSpace G] [BorelSpace G]`.
+Type class constraints for E: `[NormedAddCommGroup E] [MeasurableSpace E] [BorelSpace E]`.
+Note: `[TopologicalSpace G]` is the minimal topological constraint (cf. C67 which used `[PseudoEMetricSpace G]`).
+
+### API Discovery (Phase 1)
+
+All three candidate proof terms compiled (RC=0):
+- `F.continuous : Continuous ↑F` ✓
+- `F.continuous_toFun : Continuous F.toFun` ✓  
+- `Homeomorph.continuous F : Continuous ↑F` ✓
+
+Selected: `F.continuous` (most idiomatic dot-notation).
+
+### Verification
+
+| Step | Result |
+|------|--------|
+| Proof term test (Phase 2 verify) | RC=0, warnings only |
+| `lake build` (Phase 3) | RC=0, elapsed=82.9s |
+| Oracle C68-H | `[Quot.sound]` — minimally axiomatised |
+| Oracle C68-T1 | `[propext, Classical.choice, Quot.sound, yangMills_continuum_mass_gap]` |
+| Cleanliness | CLEAN (no sorry/admit/native_decide/opaque) |
+
+### Notable: C68-H is Ultra-Clean
+
+C68-H's axiom set `[Quot.sound]` is strictly smaller than C67-H's `[propext, Classical.choice, Quot.sound]`.
+This reflects that `Homeomorph.continuous` is pure field projection, requiring no classical reasoning,
+while `Isometry.continuous` involves an epsilon-delta proof invoking propext and classical choice.
+
+### File Statistics
+
+- KPHypotheses.lean: 2139 → 2174 lines (+35)
+- UNCONDITIONALITY_ROADMAP.md: updated (this entry)
