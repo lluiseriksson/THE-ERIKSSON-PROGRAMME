@@ -1380,3 +1380,42 @@ Oracle path: `YangMills.kp_hcont_of_uniform_equiv_factor`
 - Lake build: RC=0, ~71s (warm cache)
 - File: 2174 → 2211 lines (+37)
 - All forbidden words: CLEAN (sorry/admit/opaque/native_decide absent)
+
+---
+
+## C70 -- UniformContinuous Amplitude Interface (v0.86.0)
+
+**Campaign**: C70 / tag v0.86.0
+**Date**: 2025 (THE-ERIKSSON-PROGRAMME)
+
+### Theorems Added
+
+**C70-H** -- kp_hcont_of_uniformContinuous_factor
+- Statement: [UniformSpace G] -> {E} [UniformSpace E] -> {F : G -> E} -> UniformContinuous F -> Continuous F
+- Proof: hUC.continuous (UniformContinuous.continuous)
+- Oracle: [propext, Classical.choice, Quot.sound] -- standard clean, no mass-gap axiom
+- Mathematical content: every uniformly continuous map is continuous (standard)
+
+**C70-T1** -- kp_clay_from_..._uniformContinuous_factor
+- Statement: Full Clay YM packaging with (hUC : UniformContinuous F) as amplitude hypothesis
+- Proof: Delegates to C62 (norm_sq_beta_continuous_factor) via hUC.continuous
+- Type class: [UniformSpace G] [BorelSpace G]
+- Oracle: [propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]
+- Interface note: F is a bare function G -> E; only uniform continuity required.
+
+### Position in chain
+C62 (Continuous) -> C63 (CLM) -> C64 (LinearIsometry) -> C65 (LinearIsometryEquiv)
+-> C66 (CLEquiv) -> C67 (Isometry) -> C68 (Homeomorph) -> C69 (UniformEquiv)
+-> **C70 (UniformContinuous)** -- weakest map-regularity interface in the chain.
+
+### Build stats
+- Lake build: RC=0, ~71s (warm cache)
+- File: 2211 -> 2250 lines (+39)
+- All forbidden words: CLEAN (sorry/admit/opaque/native_decide absent)
+- No new axioms introduced
+
+### Honest assessment
+This is interface scaffolding, not mass-gap progress.
+The axiom YangMills.yangMills_continuum_mass_gap remains the sole unproven claim.
+C70 shows that uniform continuity of the amplitude suffices for the packaging;
+the hard mathematical content is entirely in that axiom.
