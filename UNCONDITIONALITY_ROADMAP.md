@@ -1081,3 +1081,50 @@ Cleanliness: CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide` introduced
 C62 is a pure interface generalisation. It does not advance the mathematical content of the Yang-Mills mass gap proof. The underlying `ClayYangMillsTheorem` is still reached via `YangMills.yangMills_continuum_mass_gap` (an axiomatic assumption). The contribution is ergonomic: callers whose beta parameter arises as a norm-square of a vector in an arbitrary seminormed group can now invoke the continuous-factor Clay packaging without needing to extract a real square root.
 
 ---
+
+## Campaign C63 / v0.79.0 -- ContinuousLinearMap amplitude interface
+
+**Tag**: v0.79.0  
+**Date**: 2026-04-07  
+**Parent**: C62-T1 (continuous_factor, norm-square beta)
+
+### What was done
+
+**C63-H** (`kp_hcont_of_continuousLinearMap_factor`): helper extracting
+`Continuous F` from `F : G ->L[real] E` via `F.cont`.
+
+**C63-T1** (`kp_clay_from_..._norm_sq_beta_continuousLinearMap_factor`):
+packaging theorem replacing `hcont : Continuous f` in C62-T1 by
+`F : G ->L[real] E`; continuity discharged via C63-H; delegates to C62-T1.
+G must carry `NormedAddCommGroup G` + `NormedSpace real G`.
+
+### Axiom footprint
+
+C63-H  -> [propext, Classical.choice, Quot.sound]
+C63-T1 -> [propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]
+
+No sorry, no opaque, no new axiom declarations.
+
+### Hypothesis reduced
+
+C62-T1 required `(hcont : Continuous f)`.
+C63-T1 takes `(F : G ->L[real] E)` and derives `Continuous F` from `F.cont`.
+Callers whose observable is already a CLM need not supply a continuity proof.
+
+### Typeclass constraint added
+
+`F : G ->L[real] E` requires `Module real E`; C63-T1 adds `[NormedSpace real E]`
+(C62-T1 only needed `[NormedAddCommGroup E]`).
+
+### Build result
+
+lake build YangMills.P5_KPDecay.KPHypotheses -- exit code 0 (8184 jobs, ~63 s).
+Cleanliness: CLEAN.
+
+### Honest assessment
+
+C63 is a pure interface generalisation. No progress on the Yang-Mills mass gap.
+The packaging theorem still depends on YangMills.yangMills_continuum_mass_gap.
+The gain is ergonomic: CLM callers no longer supply a separate hcont proof.
+
+---
