@@ -1236,3 +1236,51 @@ The proof term F.continuous is a one-liner from Mathlib. No new mathematical ide
 Value: broadens the interface surface so callers with ≃L maps need not coerce manually.
 
 **Tag:** v0.82.0
+
+## C67 — Isometry amplitude interface (v0.83.0)
+
+**Campaign**: C67  
+**Tag**: v0.83.0  
+**Date**: 2026-04-07  
+**Parent**: C62 (`continuous_factor`)  
+**New theorems**: `kp_hcont_of_isometry_factor` (C67-H) + packaging T1  
+
+### What was done
+
+Added isometry amplitude interface to `KPHypotheses.lean`. For any map
+`F : G → E` between pseudoemetric spaces, if `hIso : Isometry F`
+(distance-preservation: `∀ x y, edist (F x) (F y) = edist x y`) then `F`
+is continuous. The helper `kp_hcont_of_isometry_factor` extracts this via
+`hIso.continuous`. The packaging theorem delegates to C62
+(`continuous_factor`) passing `hIso.continuous` in the `hcont` slot.
+
+### API discovery
+
+Phase 1 confirmed `hIso.continuous : Continuous F` compiles (RC=0, STDERR empty).
+Both `hIso.continuous` and `Isometry.continuous hIso` are the same term.
+
+### Build
+
+- `lake build YangMills.P5_KPDecay.KPHypotheses`: RC=0, elapsed=98.9s
+- File grew from 2103 → 2139 lines
+- Zero new warnings from C67 code
+
+### Axiom footprint
+
+| Theorem | Axioms |
+|---------|--------|
+| `kp_hcont_of_isometry_factor` | `propext, Classical.choice, Quot.sound` |
+| C67-T1 (isometry_factor packaging) | + `yangMills_continuum_mass_gap` |
+
+### Cleanliness
+
+- No `sorry`, `admit`, `native_decide`, or `opaque` in C67 block
+- STDERR empty on build
+- Zero dirty lines
+
+### Honest assessment
+
+C67-H is a genuine one-liner theorem: distance-preserving maps are continuous,
+which Mathlib proves via `Isometry.continuous`. The packaging T1 is a thin
+wrapper that confirms any isometry-amplitude system satisfies Clay YM,
+delegating through C62. No mathematical content added; interface value only.
