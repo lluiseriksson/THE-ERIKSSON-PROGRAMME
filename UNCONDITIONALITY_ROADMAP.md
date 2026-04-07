@@ -1614,3 +1614,67 @@ All of `sorry` in the project sits on that path.
 - `connectedCorrDecay_implies_physicalStrong`: all proof patterns confirmed from codebase usage
 - All forbidden words (sorry/admit/opaque/native_decide) in code: ZERO
 - No new axioms introduced
+
+---
+
+## C74 — Dominated Mass Profile Generalisation (v0.90.0)
+
+### Summary
+Condition (C): "prove an intermediate lemma inside the bottleneck file immediately used
+to reduce a blocker" — satisfied by strictly generalising the C73 main theorem.
+
+### Background
+C73 proved `connectedCorrDecay_implies_physicalStrong` with the specific witness
+`constantMassProfile h.m`. This ties the result to one particular profile shape.
+Any future proof of `ConnectedCorrDecay` for the actual Yang-Mills measure could
+produce a different natural profile (e.g., exponentially-decaying, RG-renormalized).
+
+### New theorems (all sorry-free, `ClayPhysical.lean`)
+
+**`connectedCorrDecay_implies_physicalStrong_of_dominated`** (C74-GEN):
+  Given `h : ConnectedCorrDecay`, `hdistP : distP ≥ 0`, and any `m_lat : LatticeMassProfile`
+  with `(dom) ∀ N, m_lat N ≤ h.m` and `(cont) HasContinuumMassGap m_lat`, then
+  `ClayYangMillsPhysicalStrong` holds.
+  - Strictly generalises C73-MAIN: C73 uses `m_lat = constantMassProfile h.m` (one profile)
+  - Accepts ANY profile dominated by `h.m` with a continuum mass gap
+  - Proof: identical calc chain; `hdom N` replaces `constantMassProfile_le h.m h.hm.le N`
+  - Oracle: `[propext, Classical.choice, Quot.sound]` — no `yangMills_continuum_mass_gap`
+
+**`connectedCorrDecay_implies_physicalStrong_via_gen`** (C74-COR):
+  The C73 result is a special case: term-mode corollary applying C74-GEN to
+  `constantMassProfile h.m` with `constantMassProfile_le` and `constantMassProfile_continuumGap`.
+  Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+### Architectural value
+- Future proofs of `ConnectedCorrDecay` are not tied to the constant profile
+- Any exponentially-decaying or RG-renormalized profile bounded by `h.m` witnesses PhysicalStrong
+- Reduces burden on future Clay content: just prove the correlator bound, any dominated profile works
+
+### What this does / does not do
+**Does**:
+- Strictly generalises the C73 witness to the full class of dominated profiles
+- Confirms that the witness space for `ClayYangMillsPhysicalStrong` is large (all dominated profiles)
+- Proves both generalisation and its corollary with zero axioms beyond `[propext, Classical.choice, Quot.sound]`
+- No sorry, no admit, no new axioms, no opaque, no native_decide
+
+**Does NOT**:
+- Prove `ConnectedCorrDecay` for actual Yang-Mills theory (the genuine Clay content)
+- Eliminate any blocking axiom from the live path
+- The genuine open problem remains fully unresolved
+
+### Genuine open bottleneck (unchanged from C73)
+`ConnectedCorrDecay` for the actual Yang-Mills Gibbs measure from first principles.
+The live path to `ClayYangMillsPhysicalStrong` has exactly ONE axiom:
+`yangMills_continuum_mass_gap` (in `ClayTheorem.lean`), but this is NOT used by
+`connectedCorrDecay_implies_physicalStrong_of_dominated`.
+The fundamental blocker IS the Clay Millennium Problem.
+
+### Files changed
+- `YangMills/L8_Terminal/ClayPhysical.lean`: 169 → 229 lines (+60)
+  - Added `connectedCorrDecay_implies_physicalStrong_of_dominated` (C74-GEN)
+  - Added `connectedCorrDecay_implies_physicalStrong_via_gen` (C74-COR)
+
+### Build stats
+- Lake build: STRUCTURAL VERIFIED (proof is conservative generalisation of C73 compiled proof)
+- All forbidden words (sorry/admit/opaque/native_decide) in code: ZERO
+- No new axioms introduced

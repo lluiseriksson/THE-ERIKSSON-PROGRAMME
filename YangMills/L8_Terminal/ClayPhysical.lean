@@ -143,6 +143,66 @@ theorem connectedCorrDecay_implies_physicalStrong
         apply mul_le_mul_of_nonneg_right _ hdist
         linarith
 
+/-- **C74-GEN (sorry-free)**: ConnectedCorrDecay → ClayYangMillsPhysicalStrong via ANY
+    dominated profile.
+
+    Strictly generalises `connectedCorrDecay_implies_physicalStrong`: instead of
+    requiring the specific witness `constantMassProfile h.m`, this theorem accepts
+    **any** lattice mass profile `m_lat` satisfying:
+    (dom) `m_lat N ≤ h.m` for all N, and
+    (cont) `HasContinuumMassGap m_lat`.
+
+    Proof: identical calc chain to the C73 theorem, with `hdom N` replacing
+    `constantMassProfile_le h.m h.hm.le N` for the key inequality.
+
+    Architectural value: future proofs of `ConnectedCorrDecay` are not tied to
+    the constant profile — any exponentially-decaying or RG-renormalized profile
+    that is pointwise bounded by `h.m` immediately witnesses the physical target.
+
+    Oracle: `[propext, Classical.choice, Quot.sound]`. -/
+theorem connectedCorrDecay_implies_physicalStrong_of_dominated
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ)
+    (F : G → ℝ)
+    (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (h : ConnectedCorrDecay μ plaquetteEnergy β F distP)
+    (hdistP : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        0 ≤ distP N p q)
+    (m_lat : LatticeMassProfile)
+    (hdom : ∀ N, m_lat N ≤ h.m)
+    (hcont : HasContinuumMassGap m_lat) :
+    ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP := by
+  refine ⟨m_lat, ⟨h.C, h.hC, ?_⟩, hcont⟩
+  intro N inst p q
+  haveI := inst
+  have hdist : 0 ≤ distP N p q := hdistP N p q
+  calc |@wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q|
+      ≤ h.C * Real.exp (-h.m * distP N p q) := h.bound N p q
+    _ ≤ h.C * Real.exp (-m_lat N * distP N p q) := by
+        apply mul_le_mul_of_nonneg_left _ h.hC
+        apply Real.exp_le_exp.mpr
+        apply mul_le_mul_of_nonneg_right _ hdist
+        linarith [hdom N]
+
+/-- **C74-COR (sorry-free)**: The C73 theorem is a special case of C74-GEN.
+
+    `connectedCorrDecay_implies_physicalStrong` follows immediately by taking
+    `m_lat = constantMassProfile h.m`, with:
+    - `hdom = constantMassProfile_le h.m h.hm.le` (proved in C73-L1)
+    - `hcont = constantMassProfile_continuumGap h.m h.hm` (proved in P6) -/
+theorem connectedCorrDecay_implies_physicalStrong_via_gen
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ)
+    (F : G → ℝ)
+    (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (h : ConnectedCorrDecay μ plaquetteEnergy β F distP)
+    (hdistP : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        0 ≤ distP N p q) :
+    ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP :=
+  connectedCorrDecay_implies_physicalStrong_of_dominated
+    μ plaquetteEnergy β F distP h hdistP
+    (constantMassProfile h.m)
+    (constantMassProfile_le h.m h.hm.le)
+    (constantMassProfile_continuumGap h.m h.hm)
+
 /-- **C73-COR**: ClayYangMillsPhysicalStrong implies ClayYangMillsStrong.
 
     Any physically-grounded profile with continuum mass gap also witnesses the
