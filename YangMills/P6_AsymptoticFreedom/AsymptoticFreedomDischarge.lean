@@ -70,4 +70,24 @@ theorem eriksson_programme_terminal
   eriksson_phase6_clay_yangMills
     μ plaquetteEnergy β F distP C m m_phys hC hm hm_phys hKP
 
+/-- **C72-T1 (v0.88.0): `ClayYangMillsStrong` is provable without `yangMills_continuum_mass_gap`**.
+
+    `ClayYangMillsStrong = ∃ m_lat : LatticeMassProfile, HasContinuumMassGap m_lat`
+    is an existential over ALL functions `ℕ → ℝ`, not just those derived from
+    Yang-Mills theory.  The constant profile `constantMassProfile 1` (defined as
+    `fun N => latticeSpacing N = 1/(N+1)`) has renormalized mass identically 1,
+    which trivially converges to 1 > 0.
+
+    This parallels the C71 discovery: just as `ClayYangMillsTheorem` is witnessed
+    by `⟨1, one_pos⟩`, `ClayYangMillsStrong` is witnessed by `constantMassProfile 1`.
+
+    **Architectural consequence**: the project needs a strictly stronger target
+    connecting `m_lat` to the actual Yang-Mills Gibbs measure and spectral gap.
+    The current `ClayYangMillsStrong` definition is insufficient to capture the
+    genuine Clay problem content.
+
+    Oracle: `[propext, Classical.choice, Quot.sound]` — no `yangMills_continuum_mass_gap`. --/
+theorem clay_strong_no_axiom : ClayYangMillsStrong :=
+  ⟨constantMassProfile 1, constantMassProfile_continuumGap 1 one_pos⟩
+
 end YangMills

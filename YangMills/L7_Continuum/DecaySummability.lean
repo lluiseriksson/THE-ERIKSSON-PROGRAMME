@@ -163,4 +163,29 @@ theorem HasContinuumMassGap.smul {m_lat : LatticeMassProfile} {c : ℝ} (hc : 0 
   rw [heq]
   exact htend.const_mul c
 
+/-- **C72-H (v0.88.0): Lattice mass profile tends to zero under any continuum mass gap**.
+    If a lattice mass profile `m_lat` has a continuum mass gap, then `m_lat N → 0`
+    as `N → ∞`.
+
+    Proof: `m_lat N = renormalizedMass m_lat N * latticeSpacing N`.
+    As `N → ∞`, `renormalizedMass m_lat N → m_phys` (from `HasContinuumMassGap`)
+    and `latticeSpacing N → 0`.  So the product tends to `m_phys * 0 = 0`.
+
+    Physical meaning: any lattice mass profile compatible with a finite continuum
+    mass gap must itself go to zero — it scales with the lattice spacing `a(N) → 0`.
+    This characterizes the necessary UV behavior of the lattice mass.
+
+    Mathematical content: Direct work on `HasContinuumMassGap` (strong Clay target).
+    Oracle: `[propext, Classical.choice, Quot.sound]` — no `yangMills_continuum_mass_gap`. --/
+theorem HasContinuumMassGap.lattice_mass_tendsto_zero {m_lat : LatticeMassProfile}
+    (h : HasContinuumMassGap m_lat) :
+    Tendsto m_lat atTop (𝓝 0) := by
+  obtain ⟨m_phys, _, htend⟩ := h
+  have heq : ∀ N : ℕ, m_lat N = renormalizedMass m_lat N * latticeSpacing N := fun N =>
+    (div_mul_cancel₀ (m_lat N) (ne_of_gt (latticeSpacing_pos N))).symm
+  have key : Tendsto (fun N : ℕ => renormalizedMass m_lat N * latticeSpacing N) atTop (𝓝 0) := by
+    have hmul := htend.mul latticeSpacing_tendsto_zero
+    simpa [mul_zero] using hmul
+  exact key.congr (fun N => (heq N).symm)
+
 end YangMills
