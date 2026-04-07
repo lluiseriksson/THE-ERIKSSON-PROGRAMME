@@ -31,6 +31,12 @@ lemma latticeSpacing_tendsto_zero :
     Tendsto latticeSpacing atTop (𝓝 0) :=
   tendsto_one_div_add_atTop_nhds_zero_nat
 
+/-- Lattice spacing is at most 1 for all N. -/
+lemma latticeSpacing_le_one (N : ℕ) : latticeSpacing N ≤ 1 := by
+  unfold latticeSpacing
+  rw [div_le_one (by positivity)]
+  norm_cast; omega
+
 /-! ### Lattice mass profile -/
 
 /-- A lattice mass profile: mass gap at each lattice resolution N. -/
