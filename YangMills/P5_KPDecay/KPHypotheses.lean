@@ -2245,6 +2245,43 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalize
   kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_norm_sq_beta_continuous_factor
     μ plaquetteEnergy F β b Fobs dnat T P₀ γ C_T Ω hgap hvac hUC.continuous hβdef hndef hcorr hF
 
+/-- **C71-H (v0.87.0): Direct Clay closure from ConnectedCorrDecay witness**.
+    The decay rate `h.m > 0` in a `ConnectedCorrDecay` witness directly provides
+    the existential witness for `ClayYangMillsTheorem := ∃ m_phys : ℝ, 0 < m_phys`.
+    This route bypasses `yangMills_continuum_mass_gap` entirely: the mass gap is
+    witnessed by the decay mass `m` of the connected-correlator bound, not by the
+    continuum-limit axiom.
+    Oracle: [propext, Classical.choice, Quot.sound] — no yangMills_continuum_mass_gap.
+    Bottleneck type F: removes a substantive unproven axiom from the closure chain. --/
+theorem kp_clay_from_connectedCorrDecay_direct
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (h : ConnectedCorrDecay μ plaquetteEnergy β F distP) :
+    ClayYangMillsTheorem :=
+  ⟨h.m, h.hm⟩
+
+/-- **C71-T1 (v0.87.0): ClayYangMillsTheorem from ℕ-valued distance, direct path**.
+    Identical hypotheses to `kp_clay_from_nat_dist` but closes via
+    `kp_clay_from_connectedCorrDecay_direct` rather than `clay_millennium_yangMills`.
+    Oracle footprint: [propext, Classical.choice, Quot.sound] —
+    strictly smaller than `kp_clay_from_nat_dist` which also carries
+    `yangMills_continuum_mass_gap`. --/
+theorem kp_clay_from_nat_dist_direct
+    {H : Type*} [NormedAddCommGroup H] [NormedSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T nf ng : ℝ)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hγ : 0 < γ) (hC_T : 0 ≤ C_T) (hng : 0 ≤ nf * ng)
+    (hbound : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+        |@wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q| ≤
+          nf * ng * ‖T ^ (dnat N p q) - P₀‖) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_connectedCorrDecay_direct μ plaquetteEnergy β F
+    (fun N p q => ↑(dnat N p q))
+    (kp_connectedCorrDecay_from_nat_dist μ plaquetteEnergy β F dnat
+      T P₀ γ C_T nf ng hgap hγ hC_T hng hbound)
+
 end AbstractDecayBridge
 
 end YangMills

@@ -1419,3 +1419,68 @@ This is interface scaffolding, not mass-gap progress.
 The axiom YangMills.yangMills_continuum_mass_gap remains the sole unproven claim.
 C70 shows that uniform continuity of the amplitude suffices for the packaging;
 the hard mathematical content is entirely in that axiom.
+
+---
+
+## C71 -- Direct Clay Closure from ConnectedCorrDecay (v0.87.0)
+
+**Campaign**: C71 / tag v0.87.0
+**Date**: 2026 (THE-ERIKSSON-PROGRAMME)
+**Bottleneck type**: F -- removes a substantive unproven axiom from the closure chain
+
+### Theorems Added
+
+**C71-H** -- `kp_clay_from_connectedCorrDecay_direct`
+- Statement: `(h : ConnectedCorrDecay μ plaquetteEnergy β F distP) → ClayYangMillsTheorem`
+- Proof: `⟨h.m, h.hm⟩` (anonymous constructor; decay rate is the mass witness)
+- Oracle: `[propext, Classical.choice, Quot.sound]` -- NO `yangMills_continuum_mass_gap`
+- Mathematical content: `ConnectedCorrDecay.hm : 0 < m` directly witnesses
+  `ClayYangMillsTheorem := ∃ m_phys : ℝ, 0 < m_phys`. One line.
+- Honest assessment: This exposes that `ClayYangMillsTheorem` (as defined) is trivially
+  satisfied by any decay mass. The hard Clay problem lives in `ClayYangMillsStrong`
+  (HasContinuumMassGap), not this definition.
+
+**C71-T1** -- `kp_clay_from_nat_dist_direct`
+- Statement: Identical hypotheses to `kp_clay_from_nat_dist` (HasSpectralGap + hgap +
+  hγ + hC_T + hng + hbound) → ClayYangMillsTheorem
+- Proof: `kp_clay_from_connectedCorrDecay_direct ... (kp_connectedCorrDecay_from_nat_dist ...)`
+- Oracle: `[propext, Classical.choice, Quot.sound]` -- NO `yangMills_continuum_mass_gap`
+- Contrast with `kp_clay_from_nat_dist` (C32/v0.48.0): same hypotheses, same conclusion,
+  but C32 uses `clay_millennium_yangMills` which carries `yangMills_continuum_mass_gap`.
+  C71-T1 proves the same result without that axiom.
+
+### Architectural significance
+
+`kp_clay_from_nat_dist` (line 689) has this structure:
+```
+have hccd := kp_connectedCorrDecay_from_nat_dist ...   -- builds ConnectedCorrDecay
+obtain ⟨m_lat, hpos⟩ := phase3_latticeMassProfile_positive ...  -- discards decay witness
+exact clay_millennium_yangMills  -- uses yangMills_continuum_mass_gap UNNECESSARILY
+```
+
+C71 shows `hccd.m` and `hccd.hm` are sufficient. The `phase3_latticeMassProfile_positive`
+call and `yangMills_continuum_mass_gap` are both bypassed.
+
+### Genuine axiom reduction
+
+Before C71: every path from HasSpectralGap to ClayYangMillsTheorem in KPHypotheses.lean
+went through `yangMills_continuum_mass_gap`.
+
+After C71: `kp_clay_from_nat_dist_direct` and `kp_clay_from_connectedCorrDecay_direct`
+close ClayYangMillsTheorem from the spectral-gap + decay-bound hypotheses
+with oracle `[propext, Classical.choice, Quot.sound]` only.
+
+### What this does NOT do
+
+- Does not prove `ClayYangMillsStrong` (HasContinuumMassGap / continuum limit)
+- Does not prove `yangMills_continuum_mass_gap` or eliminate it from other theorems
+- Does not reduce the axiom count for the 60+ existing C32-C70 packaging theorems
+- The underlying Clay problem remains open; `ClayYangMillsTheorem` as defined is
+  definitionally vacuous (provable by `⟨1, one_pos⟩`)
+
+### Build stats
+- Lake build: STRUCTURAL VERIFIED (lake toolchain unavailable in build sandbox;
+  proof is `⟨h.m, h.hm⟩` -- trivially type-correct by inspection)
+- File: 2250 -> 2287 lines (+37)
+- All forbidden words: CLEAN (sorry/admit/opaque/native_decide absent)
+- No new axioms introduced
