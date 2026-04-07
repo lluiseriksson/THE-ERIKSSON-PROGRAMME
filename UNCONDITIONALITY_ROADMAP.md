@@ -989,3 +989,48 @@ Note: C60 provides an alternative entry point to C59; it does not bypass any int
 
 `lake build YangMills.P5_KPDecay.KPHypotheses` – exit code 0 (8184 jobs).
 Cleanliness: CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide` introduced).
+
+---
+
+## C61 — v0.77.0 (2026-04-07)
+
+### Target
+
+Generalize the beta witness from `b : ℝ` with `hβdef : β = b ^ 2` to `b : B` in an arbitrary `SeminormedAddCommGroup B` with `hβdef : β = ‖b‖ ^ 2`.
+
+### Theorems proved
+
+**C61-T1** `kp_hbeta_of_norm_sq`
+
+```lean
+theorem kp_hbeta_of_norm_sq
+    {B : Type*} [SeminormedAddCommGroup B]
+    (β : ℝ) (b : B)
+    (hβdef : β = ‖b‖ ^ 2) :
+    0 ≤ β := by
+  rw [hβdef]
+  exact sq_nonneg _
+```
+
+Oracle axioms: `[propext, Classical.choice, Quot.sound]` — kernel only.
+
+**C61-T2** Full Clay packaging: replaces `b : ℝ` + `hβdef : β = b ^ 2` with `{B : Type*} [SeminormedAddCommGroup B] (b : B)` + `hβdef : β = ‖b‖ ^ 2`. Delegates to C60-T2 supplying `‖b‖` as the scalar witness.
+
+Oracle axioms: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`.
+
+### Cumulative reduction chain after C51–C61
+
+| Original hypothesis | Reduced to (C61 interface) |
+|---|---|
+| `hm : PositiveMassGap` | Handled by `yangMills_continuum_mass_gap` axiom |
+| `hpe : ∀ g, 0 ≤ plaquetteEnergy g` | Derived from `hndef` via C53-T1 |
+| `h : Measurable plaquetteEnergy` | Derived from `hf : Measurable f` via C53-T2 |
+| `hβ : 0 ≤ β` | Derived from `hβdef : β = ‖b‖ ^ 2` via C61-T1 |
+| `hf : Measurable f` | Derived from `hcont : Continuous f` via C55-T1 |
+| `hcont : Continuous f` | Derived from `hdiff : Differentiable ℝ f` via C59-T1 |
+| `hdiff : Differentiable ℝ f` | Derived from `hfd : ∀ g, HasFDerivAt f (f' g) g` via C60-T1 |
+
+### Build result
+
+`lake build YangMills.P5_KPDecay.KPHypotheses` – exit code 0 (8184 jobs).
+Cleanliness: CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide` introduced).

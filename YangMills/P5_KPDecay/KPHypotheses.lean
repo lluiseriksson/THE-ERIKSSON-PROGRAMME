@@ -1864,6 +1864,48 @@ theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalize
     μ plaquetteEnergy f β b Fobs dnat T P₀ γ C_T Ω hgap hvac
     (kp_hdiff_of_hasFDerivAt_factor hfd) hβdef hndef hcorr hF
 
+
+/-- C61-T1: Beta nonnegativity from norm-square witness.
+    Proves 0 ≤ β from hβdef : β = ‖b‖ ^ 2 for b in an
+    arbitrary SeminormedAddCommGroup B. Genuine interface generalization. --/
+theorem kp_hbeta_of_norm_sq
+    {B : Type*} [SeminormedAddCommGroup B]
+    (β : ℝ) (b : B)
+    (hβdef : β = ‖b‖ ^ 2) :
+    0 ≤ β := by
+  rw [hβdef]
+  exact sq_nonneg _
+
+/-- C61-T2: Full Clay packaging from norm-square beta witness.
+    Generalizes C60-T2: b : ℝ replaced by b : B in SeminormedAddCommGroup,
+    hβdef : β = b ^ 2 replaced by hβdef : β = ‖b‖ ^ 2.
+    Delegates to C60-T2 with ‖b‖ as scalar real witness.
+    NOTE: Interface generalization only, not mass gap progress. --/
+theorem kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_norm_sq_beta_hasFDerivAt_factor
+    [MeasurableInv G] [MeasurableMul₂ G]
+    [NormedAddCommGroup G] [NormedSpace ℝ G] [BorelSpace G]
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [MeasurableSpace E] [BorelSpace E]
+    {B : Type*} [SeminormedAddCommGroup B]
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (plaquetteEnergy : G → ℝ) (f : G → E) (β : ℝ) (b : B) (Fobs : G → ℝ)
+    (dnat : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℕ)
+    (T P₀ : H →L[ℝ] H) (γ C_T : ℝ) (Ω : H)
+    (hgap : HasSpectralGap T P₀ γ C_T)
+    (hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω)
+    {f' : G → G →L[ℝ] E}
+    (hfd : ∀ g : G, HasFDerivAt f (f' g) g)
+    (hβdef : β = ‖b‖ ^ 2)
+    (hndef : ∀ g : G, plaquetteEnergy g = ‖f g‖ ^ 2)
+    (hcorr : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+      @wilsonCorrelation d N _ _ G _ _ μ plaquetteEnergy β Fobs p q =
+      @inner ℝ H _ Ω ((T ^ (dnat N p q)) Ω))
+    (hF : ∀ (N : ℕ) [NeZero N] (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+          Fobs (GaugeConfig.plaquetteHolonomy A p) = 1) :
+    ClayYangMillsTheorem :=
+  kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_sq_beta_hasFDerivAt_factor
+    μ plaquetteEnergy f β ‖b‖ Fobs dnat T P₀ γ C_T Ω hgap hvac hfd hβdef hndef hcorr hF
+
 end AbstractDecayBridge
 
 end YangMills
