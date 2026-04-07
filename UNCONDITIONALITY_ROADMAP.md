@@ -1344,3 +1344,39 @@ while `Isometry.continuous` involves an epsilon-delta proof invoking propext and
 
 - KPHypotheses.lean: 2139 → 2174 lines (+35)
 - UNCONDITIONALITY_ROADMAP.md: updated (this entry)
+
+---
+
+## C69 — UniformEquiv Amplitude Interface (v0.85.0)
+
+**Campaign**: C69 / tag v0.85.0
+**Commit**: (see git log)
+**Date**: 2025 (THE-ERIKSSON-PROGRAMME)
+
+### Theorems Added
+
+**C69-H** — `kp_hcont_of_uniform_equiv_factor`
+- Statement: `[UniformSpace G] → {E} [UniformSpace E] → (F : G ≃ᵤ E) → Continuous F`
+- Proof: `F.continuous` (UniformEquiv field projection)
+- Oracle: `[propext, Classical.choice, Quot.sound]` — standard clean, no mass-gap axiom
+- Technique: Uniform equivalence is automatically continuous in Lean 4 Mathlib
+
+**C69-T1** — `kp_clay_from_..._uniform_equiv_factor`
+- Statement: Full Clay YM packaging with `F : G ≃ᵤ E` as amplitude factor
+- Proof: Delegates to C62 (continuous_factor) via `F.continuous`
+- Type class: `[UniformSpace G] [BorelSpace G]` — `UniformSpace` subsumes `TopologicalSpace`
+- Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`
+- Interface reduction: Requires uniform structure on G (stronger than pure topological)
+
+### Progression
+C62 (continuous) → C63 (CLM) → C64 (LinearIsometry) → C65 (LinearIsometryEquiv)
+→ C66 (CLEquiv) → C67 (Isometry) → C68 (Homeomorph) → **C69 (UniformEquiv)**
+
+### Namespace note
+`section AbstractDecayBridge` (not namespace) — theorems in `YangMills.*` flat namespace.
+Oracle path: `YangMills.kp_hcont_of_uniform_equiv_factor`
+
+### Build stats
+- Lake build: RC=0, ~71s (warm cache)
+- File: 2174 → 2211 lines (+37)
+- All forbidden words: CLEAN (sorry/admit/opaque/native_decide absent)

@@ -1,0 +1,8 @@
+
+import YangMills.P5_KPDecay.KPHypotheses
+
+-- Oracle: C69-H axiom footprint
+#print axioms YangMills.AbstractDecayBridge.kp_hcont_of_uniform_equiv_factor
+
+-- Oracle: C69-T1 axiom footprint
+#print axioms YangMills.AbstractDecayBridge.kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_norm_sq_beta_uniform_equiv_factor
