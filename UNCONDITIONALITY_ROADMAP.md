@@ -1172,3 +1172,38 @@ The packaging theorem still depends on YangMills.yangMills_continuum_mass_gap.
 The gain is ergonomic: linear isometry callers no longer need to supply a CLM or continuity proof.
 
 ---
+
+
+---
+
+## C65 / v0.81.0 — Linear Isometry Equivalence Amplitude Interface
+
+**Date:** 2026-04-07  
+**Tag:** v0.81.0  
+
+### What was added
+
+- `kp_hcont_of_linearIsometryEquiv_factor`: helper proving `Continuous F` for
+  `F : G ≃ₗᵢ[ℝ] E` via `F.continuous` (LinearIsometryEquiv.continuous).
+- `kp_clay_from_..._linearIsometryEquiv_factor`:
+  full Clay packaging delegating to C64 via F.toLinearIsometry.
+
+### Build
+
+- lake build YangMills.P5_KPDecay.KPHypotheses: RC=0, 74.2s, 8184 jobs
+- No errors; pre-existing unused-section-vars linter warnings only.
+
+### Axiom footprint
+
+- Helper C65-H: [propext, Classical.choice, Quot.sound]
+- Packaging C65-T1: [propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]
+
+### Cleanliness: CLEAN
+
+### Honest assessment
+
+C65 is a pure interface generalisation. No progress on the Yang-Mills mass gap.
+The packaging theorem still depends on YangMills.yangMills_continuum_mass_gap.
+The gain is ergonomic: LinearIsometryEquiv callers no longer need a separate hcont proof.
+
+---
