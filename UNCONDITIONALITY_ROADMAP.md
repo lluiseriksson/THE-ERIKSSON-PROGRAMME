@@ -1034,3 +1034,50 @@ Oracle axioms: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_cont
 
 `lake build YangMills.P5_KPDecay.KPHypotheses` – exit code 0 (8184 jobs).
 Cleanliness: CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide` introduced).
+
+---
+
+## Campaign C62 / v0.78.0 — norm-square beta via SeminormedAddCommGroup, continuous_factor path
+
+**Tag**: v0.78.0  
+**Date**: 2026-04-07  
+**Parent campaigns**: C55-T2 (continuous_factor), C61-T1 (kp_hbeta_of_norm_sq)
+
+### What was done
+
+Added theorem `kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_norm_sq_beta_continuous_factor` (C62-T1).
+
+This combines two earlier results:
+- **C55-T2** (continuous_factor path): provides the weakest regularity assumption (`hcont : Continuous f`), as opposed to C61-T2 which requires `hasFDerivAt`.
+- **C61-T1** (`kp_hbeta_of_norm_sq`): generalises the beta non-negativity witness from `b : ℝ` with `hβdef : β = b ^ 2` to `b : B` in any `SeminormedAddCommGroup` with `hβdef : β = ‖b‖ ^ 2`.
+
+C62-T1 replaces the two-parameter pair `(hβ : 0 ≤ β) (hβdef : β = b ^ 2)` (b : ℝ) in C55-T2 by a single hypothesis `hβdef : β = ‖b‖ ^ 2` where `b : B` lives in an arbitrary `SeminormedAddCommGroup`. The proof delegates to C55-T2 with the real witness `‖b‖`, which is valid because `‖b‖ ^ 2 = ‖b‖ ^ 2` trivially.
+
+**Key advantage over C61-T2**: uses the continuous_factor regularity path (weakest available), not hasFDerivAt. This is the first theorem that combines the full generality of C61-T1's beta witness with C55-T2's minimal regularity.
+
+### Axiom footprint
+
+`#print axioms` confirms:
+```
+[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]
+```
+No `sorry`, no new axioms beyond the baseline assumption.
+
+### Hypothesis chain
+
+| Hypothesis | Source |
+|---|---|
+| `hβdef : β = ‖b‖ ^ 2` (b : B, SeminormedAddCommGroup) | C62-T1 interface (new in C62) |
+| `hcont : Continuous f` | Direct assumption (weakest regularity path) |
+| Delegates internally to C55-T2 with real witness `‖b‖` | C62 proof strategy |
+
+### Build result
+
+`lake build YangMills.P5_KPDecay.KPHypotheses` – exit code 0 (8184 jobs).
+Cleanliness: CLEAN (no `sorry`, `opaque`, `axiom`, or `native_decide` introduced).
+
+### Honest assessment
+
+C62 is a pure interface generalisation. It does not advance the mathematical content of the Yang-Mills mass gap proof. The underlying `ClayYangMillsTheorem` is still reached via `YangMills.yangMills_continuum_mass_gap` (an axiomatic assumption). The contribution is ergonomic: callers whose beta parameter arises as a norm-square of a vector in an arbitrary seminormed group can now invoke the continuous-factor Clay packaging without needing to extract a real square root.
+
+---
