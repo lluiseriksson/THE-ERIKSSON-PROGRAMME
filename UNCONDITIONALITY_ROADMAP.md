@@ -1128,3 +1128,47 @@ The packaging theorem still depends on YangMills.yangMills_continuum_mass_gap.
 The gain is ergonomic: CLM callers no longer supply a separate hcont proof.
 
 ---
+
+---
+
+## Campaign C64 / v0.80.0
+
+**Tag**: v0.80.0
+
+### New theorems
+
+**C64-H** (`kp_hcont_of_linearIsometry_factor`):
+Helper theorem: derives `Continuous F` from `F : G →ₗᵢ[ℝ] E` (a linear isometry).
+Proof term: `F.continuous` (LinearIsometry.continuous).
+
+**C64-T1** (`kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_norm_sq_plaquetteEnergy_norm_sq_beta_linearIsometry_factor`):
+Packaging theorem: reduces C63-T1 (CLM interface) to the linear isometry interface.
+Instead of supplying `F : G →L[ℝ] E`, the caller supplies `F : G →ₗᵢ[ℝ] E`.
+Continuity is derived automatically from the isometry structure via C64-H.
+Delegates to C63-T1 via `F.toContinuousLinearMap`.
+
+### Hypothesis reduced
+
+C63-T1 required `(F : G →L[ℝ] E)` (a ContinuousLinearMap).
+C64-T1 takes `(F : G →ₗᵢ[ℝ] E)` (a linear isometry) and derives continuity from the isometric structure.
+Callers whose observable is a linear isometry need not supply a CLM or continuity proof.
+
+### Axiom footprint
+
+C64-H  -> [propext, Classical.choice, Quot.sound]
+C64-T1 -> [propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]
+
+No sorry, no opaque, no new axiom declarations.
+
+### Build result
+
+lake build YangMills.P5_KPDecay.KPHypotheses -- exit code 0 (8184 jobs, ~105 s).
+Cleanliness: CLEAN.
+
+### Honest assessment
+
+C64 is a pure interface generalisation. No progress on the Yang-Mills mass gap.
+The packaging theorem still depends on YangMills.yangMills_continuum_mass_gap.
+The gain is ergonomic: linear isometry callers no longer need to supply a CLM or continuity proof.
+
+---
