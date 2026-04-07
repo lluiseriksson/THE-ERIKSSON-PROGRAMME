@@ -1207,3 +1207,32 @@ The packaging theorem still depends on YangMills.yangMills_continuum_mass_gap.
 The gain is ergonomic: LinearIsometryEquiv callers no longer need a separate hcont proof.
 
 ---
+
+### C66 -- ContinuousLinearEquiv Amplitude Interface (v0.82.0)
+
+**Objective:** Provide a G ≃L[ℝ] E (ContinuousLinearEquiv) interface for the amplitude
+packaging pipeline, parallel to C65 (LinearIsometryEquiv) and delegating to C63 (ContinuousLinearMap).
+
+**Theorems added:**
+- kp_hcont_of_continuousLinearEquiv_factor (C66-H): proves Continuous F for F : G ≃L[ℝ] E
+  via F.continuous (= ContinuousLinearEquiv.continuous F : Continuous ↑F).
+- kp_clay_from_..._continuousLinearEquiv_factor (C66-T1): full Clay packaging via
+  F.toContinuousLinearMap, delegating to C63.
+
+**Build:** RC=0, 8184 jobs, 163.8s (warm cache). File: 2067 → 2104 lines (+37).
+
+**Axiom footprint:**
+- C66-H: [propext, Classical.choice, Quot.sound] (baseline only)
+- C66-T1: adds YangMills.yangMills_continuum_mass_gap
+
+**Cleanliness:** 0 dirty lines (no sorry/admit/decide).
+
+**Linter:** One benign unusedSectionVars warning for C66-H at line 2068
+([Group G] [MeasurableSpace G]), identical pattern to C63-H/C64-H/C65-H.
+
+**Honest assessment:** C66 is a thin adapter. The mathematical content is zero -- it wraps
+ContinuousLinearEquiv by coercing to ContinuousLinearMap via F.toContinuousLinearMap.
+The proof term F.continuous is a one-liner from Mathlib. No new mathematical ideas.
+Value: broadens the interface surface so callers with ≃L maps need not coerce manually.
+
+**Tag:** v0.82.0
