@@ -1915,3 +1915,57 @@ replacing the `poincare_to_covariance_decay` axiom at the induction layer.
 
 `hstep` → [C79] → `HasVarianceDecay` → [MarkovVarianceDecay] → `HasSpectralGap`
 → [C77 FeynmanKacToPhysical] → `ClayYangMillsPhysicalStrong`
+
+## C80 — v0.96.0: Poincaré + Jensen–Markov → one-step variance contraction
+
+**Theorem**: `poincare_implies_hstep` (PoincareToSpectralGap.lean)
+
+**Statement**: Assuming a Poincaré inequality (spectral gap λ) and the Jensen–Markov
+inner-contraction property (`IsMarkovInnerContractive`), the one-step semigroup operator
+contracts variance by factor (1-λ):
+
+    ∫(T₁f - ⟨f⟩)² dμ ≤ (1-λ) · ∫(f-⟨f⟩)² dμ
+
+**Proof strategy**: Centre f → g = f - ⟨f⟩. Then:
+  Var(T₁f) = ‖T₁g‖² ≤ ⟨T₁g,g⟩ [Jensen–Markov] ≤ (1-λ)‖g‖² [Poincaré] = (1-λ)Var(f).
+
+**Oracle**: [propext, Classical.choice, Quot.sound]  — zero sorry.
+
+**Remaining bottleneck**: The Jensen–Markov hypothesis (`IsMarkovInnerContractive`) must be
+derived from the concrete Yang–Mills Dirichlet form; the Poincaré constant λ must be
+established from physical inputs.
+
+
+## C82 — v0.98.0: Geometric decay implies HasSpectralGap
+
+**Theorem**: `hasSpectralGap_of_geometric_decay` (P8_PhysicalGap/StateNormBoundLemmas.lean)
+
+**Statement**: If `‖T^n - P₀‖ ≤ C · rⁿ` for all `n : ℕ` with
+`0 < r < 1` and `0 < C`, then `HasSpectralGap T P₀ (-Real.log r) C`.
+
+**Mathematical content**: The key identity is
+  rⁿ = exp(n · log r) = exp(-(-log r) · n) = exp(-γ · n)
+where γ := -log r > 0 (since r < 1). This converts a geometric power bound
+into the exponential form required by `HasSpectralGap`.
+
+**Why this matters for the live path**: `feynmanKac_to_physicalStrong` (C77) requires
+`HasSpectralGap T P₀ γ C` as a hypothesis. This theorem weakens that requirement:
+it suffices to exhibit a geometric bound `C · rⁿ` on the operator norm
+`‖T^n - P₀‖`. The geometric form is the natural one in transfer-matrix
+spectral theory and is easier to derive from physical estimates.
+
+**Also fixed**: Pre-existing `le_trans`-vs-`lt_of_lt_of_le` bug in `hasSpectralGap_mono`
+(C78-6), which was masked by cached .olean files.
+
+**Oracle**: [propext, Classical.choice, Quot.sound] — zero sorry, zero new axiom.
+
+**Live path progress**:
+  hstep → [C79] → HasVarianceDecay → [MarkovVarianceDecay] → HasSpectralGap
+  **←— C82 weakens this bottleneck: geometric decay suffices**
+  → [C77 FeynmanKacToPhysical] → `ClayYangMillsPhysicalStrong`
+
+**Remaining bottleneck**: Must exhibit the geometric bound `‖T^n - P₀‖ ≤ C · rⁿ`
+for the Yang-Mills transfer matrix T. This requires proving that the spectral radius
+of T restricted to the orthogonal complement of P₀ is < 1 (i.e., a gap above the
+ground state). The Balaban RG machinery establishes the exponential clustering from
+which this should follow.
