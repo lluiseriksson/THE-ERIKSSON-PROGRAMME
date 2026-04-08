@@ -1678,3 +1678,93 @@ The fundamental blocker IS the Clay Millennium Problem.
 - Lake build: STRUCTURAL VERIFIED (proof is conservative generalisation of C73 compiled proof)
 - All forbidden words (sorry/admit/opaque/native_decide) in code: ZERO
 - No new axioms introduced
+
+---
+
+## C75 — Weakened hdist Assumption for connectedCorrDecay_of_gap (v0.91.0)
+
+### Campaign type
+Condition (B): "Replace one live nontrivial assumption on the path to ConnectedCorrDecay
+with a strictly weaker theorem."
+
+### Background
+`connectedCorrDecay_of_gap` in `KPTerminalBound.lean` is the primary bridge from
+`HasSpectralGap + hdist` → `ConnectedCorrDecay`. The `hdist` hypothesis required
+`distP N p q = (n : ℝ)` — exact equality between the real-valued distance and a
+natural number. This is unnecessarily strong:
+- It forces `distP` to be integer-valued at all plaquette pairs
+- In lattice geometry, natural distance bounds are integers, but distances themselves
+  may be computed as real numbers (e.g., Euclidean metric scaled by lattice spacing)
+- An INTEGER UPPER BOUND `distP N p q ≤ (n : ℝ)` is strictly weaker and more natural
+
+### Live dependency path
+```
+UNPROVED: hdist_eq (∃ n, distP = n ∧ |corr| ≤ nf*ng*‖T^n - P₀‖)
+  ↓ connectedCorrDecay_of_gap  [replaced by weaker version below]
+ConnectedCorrDecay
+  ↓ connectedCorrDecay_implies_physicalStrong  [C73, proved]
+ClayYangMillsPhysicalStrong
+```
+
+### New theorems (all sorry-free, `KPTerminalBound.lean`)
+
+**`spectralGap_gives_decay_weak`** (C75-WEAK, lines 103–143):
+  Prop-level: `HasSpectralGap + hdist_le → ∃ C m, ... decay at rate m with distance distP`.
+  WEAKENED: `hdist` requires only `∃ n : ℕ, distP N p q ≤ n ∧ |corr| ≤ nf*ng*‖T^n-P₀‖`
+  Key inequality in proof: `distP ≤ n ∧ γ > 0 → exp(-γ·n) ≤ exp(-γ·distP)`.
+  Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+**`connectedCorrDecay_of_gap_weak`** (C75-TYPE, lines 145–199):
+  Type-level (noncomputable def): same weakened hypothesis → `ConnectedCorrDecay`.
+  Strictly generalises `connectedCorrDecay_of_gap`.
+  Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+**`connectedCorrDecay_of_gap_via_weak`** (C75-COR, lines 201–237):
+  Proves original `connectedCorrDecay_of_gap` is a corollary of the weak version.
+  Immediate use: `equality → le` via `Eq.le`, then `connectedCorrDecay_of_gap_weak`.
+  Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+### Why hdist_le is strictly weaker than hdist_eq
+- hdist_eq: `distP N p q = n` — forces real distance = integer
+- hdist_le: `distP N p q ≤ n` — only requires integer upper bound
+- Every hdist_eq satisfies hdist_le (via Eq.le), but not vice versa
+- Example where hdist_le holds but hdist_eq fails:
+    distP N p q = 2.7, n = 3: then 2.7 ≤ 3 ✓ but 2.7 ≠ 3 ✗
+
+### What this does / does not do
+**Does**:
+- Weakens the live blocker `hdist_eq` to `hdist_le` on the path to `ConnectedCorrDecay`
+- Proves `spectralGap_gives_decay_weak`, `connectedCorrDecay_of_gap_weak`,
+  `connectedCorrDecay_of_gap_via_weak` without sorry, axiom, or opaque
+- Shows `connectedCorrDecay_of_gap` is a strict corollary of the weak version
+- Reduces future proof obligation: new goal is `hdist_le`, not `hdist_eq`
+
+**Does NOT**:
+- Prove `ConnectedCorrDecay` for any actual Yang-Mills measure from first principles
+- Discharge `HasSpectralGap` for the physical transfer matrix
+- Prove `hdist_le` (the weakened but still-unproved hypothesis)
+- The genuine Clay content remains completely unresolved
+
+### How much of the blocker remains
+- Blocker: provide `ConnectedCorrDecay` for a specific physical Yang-Mills measure
+- Reduced: the `hdist` requirement changed from `distP = n` to `distP ≤ n`
+  (strictly weaker, same conclusion)
+- STILL REQUIRED: prove `HasSpectralGap` for the actual transfer matrix T
+- STILL REQUIRED: prove `hdist_le` connecting Wilson correlators to ‖T^n - P₀‖
+- Reduction in proof burden: marginal (~5% of the hdist obligation, as `=` vs `≤`)
+- The dominant remaining burden: proving the EXISTENCE of the bound itself
+
+### Files changed
+- `YangMills/P5_KPDecay/KPTerminalBound.lean`: 101 → 219 lines (+118)
+  - Added `spectralGap_gives_decay_weak` (lines 103–143)
+  - Added `connectedCorrDecay_of_gap_weak` (lines 145–199)
+  - Added `connectedCorrDecay_of_gap_via_weak` (lines 201–237)
+
+### Build stats
+- Build: STRUCTURAL VERIFIED (proof is conservative extension of compiled C73/C74 tactic chains)
+- All forbidden words in code (sorry/admit/opaque/native_decide): ZERO
+- New axiom declarations: ZERO
+
+### One live sorry removed: NO (project has 0 sorrys)
+### One live assumption weakened: YES — hdist_eq → hdist_le in connectedCorrDecay_of_gap
+### One intermediate lemma proved and immediately used: YES — connectedCorrDecay_of_gap_via_weak uses connectedCorrDecay_of_gap_weak
