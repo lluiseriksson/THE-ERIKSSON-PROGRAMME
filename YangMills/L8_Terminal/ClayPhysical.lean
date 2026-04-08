@@ -226,4 +226,61 @@ theorem physicalStrong_implies_theorem
   let ⟨m_lat, _, hcont⟩ := h
   continuumLimit_mass_pos m_lat hcont
 
+/-- **C76-B (sorry-free)**: ClayYangMillsPhysicalStrong from N-dependent spectral gap
+    with continuum mass gap condition.
+
+    Key architectural advance over C73/C74: uses N-dependent spectral gap `γ_lat N`
+    DIRECTLY as the lattice mass profile, with no intermediate `ConnectedCorrDecay`
+    step and no `constantMassProfile` or domination hypothesis.
+
+    Whereas C73 requires `ConnectedCorrDecay` (with fixed rate `h.m`) and then uses
+    `constantMassProfile h.m N ≤ h.m`, this theorem takes a family of N-dependent
+    spectral gaps and uses the gap profile itself as the mass profile.  This is
+    physically correct: the spectral gap of the N-th transfer matrix IS the lattice
+    mass at resolution N.
+
+    Conditions:
+    · `hgap N`: HasSpectralGap for the N-th transfer matrix at rate `γ_lat N`
+    · `hγ_pos`: the gap profile is everywhere positive (required for physical mass)
+    · `hC_ub N`: uniform amplitude bound `nf * ng * getC N ≤ C`
+    · `hdist N p q`: distance-compatible correlator bound via `‖(getT N)^n - (getP₀ N)‖`
+    · `hcont`: the renormalized gap `γ_lat N / a(N) = γ_lat N * (N+1)` converges to
+      a strictly positive continuum mass
+
+    Oracle: `[propext, Classical.choice, Quot.sound]`. -/
+theorem physicalStrong_of_NdepGap
+    {H : Type*} [NormedAddCommGroup H] [NormedSpace ℝ H]
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (getT getP₀ : ℕ → H →L[ℝ] H) (getC : ℕ → ℝ)
+    (γ_lat : LatticeMassProfile)
+    (nf ng : ℝ) (hng : 0 ≤ nf * ng)
+    (hgap : ∀ N, HasSpectralGap (getT N) (getP₀ N) (γ_lat N) (getC N))
+    (hγ_pos : γ_lat.IsPositive)
+    (C : ℝ) (hC : 0 < C) (hC_ub : ∀ N, nf * ng * getC N ≤ C)
+    (hdist : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
+      ∃ n : ℕ, distP N p q ≤ (n : ℝ) ∧
+        |@wilsonConnectedCorr d N _ _ G _ _ μ plaquetteEnergy β F p q| ≤
+          nf * ng * ‖(getT N) ^ n - (getP₀ N)‖)
+    (hcont : HasContinuumMassGap γ_lat) :
+    ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP := by
+  refine ⟨γ_lat, ⟨C, hC.le, ?_⟩, hcont⟩
+  intro N inst p q
+  letI : NeZero N := inst
+  obtain ⟨n, hn_le, hwilson⟩ := hdist N p q
+  have hTS := transferMatrix_spectral_gap (getT N) (getP₀ N) (γ_lat N) (getC N) (hgap N) n
+  have hn_nn : (0 : ℝ) ≤ (n : ℝ) := Nat.cast_nonneg n
+  have hγN := hγ_pos N
+  calc |wilsonConnectedCorr μ plaquetteEnergy β F p q|
+      ≤ nf * ng * ‖(getT N) ^ n - (getP₀ N)‖ := hwilson
+    _ ≤ nf * ng * (getC N * Real.exp (-(γ_lat N) * ↑n)) :=
+        mul_le_mul_of_nonneg_left hTS hng
+    _ = nf * ng * getC N * Real.exp (-(γ_lat N) * ↑n) := by ring
+    _ ≤ C * Real.exp (-(γ_lat N) * ↑n) :=
+        mul_le_mul_of_nonneg_right (hC_ub N) (Real.exp_nonneg _)
+    _ ≤ C * Real.exp (-(γ_lat N) * distP N p q) := by
+        apply mul_le_mul_of_nonneg_left _ hC.le
+        apply Real.exp_le_exp.mpr
+        nlinarith
+
 end YangMills
