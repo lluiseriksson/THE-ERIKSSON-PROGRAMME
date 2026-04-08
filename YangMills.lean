@@ -76,6 +76,7 @@ import YangMills.P8_PhysicalGap.MarkovSemigroupDef
 import YangMills.P8_PhysicalGap.CovarianceLemmas
 import YangMills.P8_PhysicalGap.MarkovVarianceDecay
 import YangMills.P8_PhysicalGap.StateNormBoundLemmas
+import YangMills.P8_PhysicalGap.PoincareToSpectralGap
 import YangMills.P8_PhysicalGap.PoincareCovarianceRoadmap
 import YangMills.L0_Lattice.FiniteLattice
 import YangMills.L0_Lattice.GaugeConfigurations

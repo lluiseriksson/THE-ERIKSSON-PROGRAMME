@@ -1884,3 +1884,34 @@ ClayYangMillsPhysicalStrong (directly, without ConnectedCorrDecay step)
 ### Physical architecture unblocked: YES — N-dependent transfer matrices now permitted
 ### Alternative path to ClayYangMillsPhysicalStrong opened: YES — via physicalStrong_of_NdepGap
 ### C75 subsumed: YES — connectedCorrDecay_of_gap_weak_via_Ndep proves C75 is a corollary
+
+## C79 — PoincareToSpectralGap (v0.95.0)
+
+**File**: `YangMills/P8_PhysicalGap/PoincareToSpectralGap.lean`
+**Status**: sorry-free (0 actual sorry tactics; 5 comment occurrences of "sorry-free")
+**Oracle**: `[propext, Classical.choice, Quot.sound]`
+
+### Theorems proved
+
+- `oneStep_implies_varianceDecay` (C79-1): If the Markov semigroup T_1 contracts
+  variance by (1-λ) per step, then T_n contracts by (1-λ)^n. Proved by induction
+  on n using `T_add` (semigroup composition) and `T_stat` (stationarity).
+
+- `varianceDecay_exp_bound` (C79-2): Converts the polynomial bound (1-λ)^n to
+  the exponential bound exp(-λn/2) using the standard inequality 1-x ≤ exp(-x).
+
+- `poincare_chain_to_varianceDecay` (C79-CHAIN): Full chain composition.
+  Given `hstep` (one-step contraction), proves exponential variance decay.
+
+### Architectural significance
+
+The single honest open problem is `hstep`:
+  Var(T_1 f) ≤ (1-λ) · Var(f)
+which follows from E(f) ≥ λ Var(f) (Poincaré) + d/dt Var(T_t f)|_{t=0} = -2 E(f)
+(Beurling-Deny/Hille-Yosida). This file proves everything EXCEPT that one step,
+replacing the `poincare_to_covariance_decay` axiom at the induction layer.
+
+### Live path to ClayYangMillsPhysicalStrong
+
+`hstep` → [C79] → `HasVarianceDecay` → [MarkovVarianceDecay] → `HasSpectralGap`
+→ [C77 FeynmanKacToPhysical] → `ClayYangMillsPhysicalStrong`
