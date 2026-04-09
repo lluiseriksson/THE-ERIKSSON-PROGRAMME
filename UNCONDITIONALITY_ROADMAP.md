@@ -2019,3 +2019,5 @@ which this should follow.
 **Oracle**: [propext, Classical.choice, Quot.sound]
 **Remaining bottleneck**: Must exhibit the pointwise bound (T_N - P) x  exp(-m)x for the Yang-Mills transfer matrix T_N. The Balaban RG machinery establishes the exponential clustering from which this should follow.
 C90 / v1.06.0 — ComplementResidualContraction: weakened the live C89 hypothesis from all-vector residual contraction to contraction only on ker(P₀); proved `opNormBound_of_complementResidualContraction` and `physicalStrong_of_profiledComplementResidualContraction`; oracle `[propext, Classical.choice, Quot.sound]`; zero sorry; genuine live-bottleneck reduction on the path to `ClayYangMillsPhysicalStrong`.
+
+C91 / v1.07.0  VacuumProjectorNorm: removed the live C90 side-condition 1 - P  1 for rank-one normalized vacuum projectors; proved norm_one_sub_rankOneProjector_le_one and physicalStrong_of_profiledComplementResidualContraction_rankOneVacuum; oracle [propext, Classical.choice, Quot.sound]; zero sorry; genuine live-path reduction toward ClayYangMillsPhysicalStrong.
