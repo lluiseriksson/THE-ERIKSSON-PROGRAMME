@@ -2026,3 +2026,4 @@ C92 / v1.08.0  VacuumProjectorAlgebra: derived rankOneProjector_idem, rankOnePro
 - [x] C93 v1.09.0: ComplementContractionToResidual  H1/H2/T1 derive residual contraction from complement contraction; oracle [propext, Classical.choice, Quot.sound]
 - [x] C94 v1.10.0: ProjectedOpNormToComplementContraction 2014 H1/H2/T1 derive complement contraction from projected-op-norm bound 2016T*(1-P2080)2016 2264 exp(-m); oracle [propext, Classical.choice, Quot.sound]
 - [x] C95 v1.11.0: SelfAdjointVacuum 2014 H1/H2/T1 derive adjoint-fixed from self-adjointness; removes hfixAdj hypothesis from live path; oracle [propext, Classical.choice, Quot.sound]
+- [x] C96 v1.12.0: VacuumProjectorFixedVector -- H1/H2/T1 derive T-fixed-vector from projector-absorb-left; oracle [propext, Classical.choice, Quot.sound]
