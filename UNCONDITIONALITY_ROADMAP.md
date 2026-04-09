@@ -1969,3 +1969,11 @@ for the Yang-Mills transfer matrix T. This requires proving that the spectral ra
 of T restricted to the orthogonal complement of P₀ is < 1 (i.e., a gap above the
 ground state). The Balaban RG machinery establishes the exponential clustering from
 which this should follow.
+
+## C83 — hasSpectralGap_of_pointwiseDecay (v0.99.0)
+**File**: YangMills/P8_PhysicalGap/VarianceDecayToSpectralGap.lean
+**Status**: DONE (no sorry, exit=0)
+**Bridge**: Pointwise exponential decay ||( T^n - P0) x|| ≤ exp(-γn)||x|| → HasSpectralGap T P0 γ 1
+**Key lemma**: ContinuousLinearMap.opNorm_le_bound
+**Oracle**: [propext, Classical.choice, Quot.sound]
+**Note**: Requires NormedAddCommGroup (not Semimormed) to match HasSpectralGap definition.
