@@ -1977,3 +1977,13 @@ which this should follow.
 **Key lemma**: ContinuousLinearMap.opNorm_le_bound
 **Oracle**: [propext, Classical.choice, Quot.sound]
 **Note**: Requires NormedAddCommGroup (not Semimormed) to match HasSpectralGap definition.
+
+## C84  FeynmanKacBound (v1.00.0) **[MILESTONE]**
+**File**: YangMills/P8_PhysicalGap/FeynmanKacBoundBridge.lean
+**Bridge**: Weakens `FeynmanKacFormula` (equality `wilsonConnectedCorr = _p, (T^n  P)_q`) to `FeynmanKacBound` (one-sided `|wilsonConnectedCorr|  |_p, (T^n  P)_q|`).  This is a genuine weakening of a live analytic hypothesis on the non-vacuous path to `ClayYangMillsPhysicalStrong`.
+**Key theorems**:
+- `feynmanKacFormula_implies_bound`: FeynmanKacFormula  FeynmanKacBound (equality implies the weaker one-sided bound)
+- `connectedCorrDecay_of_feynmanKacBound`: FeynmanKacBound + HasSpectralGap + StateNormBound  ConnectedCorrDecay (Cauchy-Schwarz + spectral decay bound)
+- `feynmanKacBound_to_physicalStrong`: end-to-end corollary  ClayYangMillsPhysicalStrong
+**Oracle**: [propext, Classical.choice, Quot.sound]  zero sorry, zero new axiom.
+**Remaining bottleneck**: Must exhibit the geometric bound `T^n  P  C  exp(n)` for the Yang-Mills transfer matrix T. The Balaban RG machinery establishes the exponential clustering from which this should follow.
