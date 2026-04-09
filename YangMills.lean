@@ -81,6 +81,7 @@ import YangMills.P8_PhysicalGap.DiscreteSpectralGap
 import YangMills.P8_PhysicalGap.NormBoundToSpectralGap
 import YangMills.P8_PhysicalGap.OperatorNormBound
 import YangMills.P8_PhysicalGap.ProfiledSpectralGap
+import YangMills.P8_PhysicalGap.PointwiseResidualContraction
 import YangMills.P8_PhysicalGap.PoincareCovarianceRoadmap
 import YangMills.L0_Lattice.FiniteLattice
 import YangMills.L0_Lattice.GaugeConfigurations

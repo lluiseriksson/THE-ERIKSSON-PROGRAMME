@@ -1987,3 +1987,34 @@ which this should follow.
 - `feynmanKacBound_to_physicalStrong`: end-to-end corollary  ClayYangMillsPhysicalStrong
 **Oracle**: [propext, Classical.choice, Quot.sound]  zero sorry, zero new axiom.
 **Remaining bottleneck**: Must exhibit the geometric bound `T^n  P  C  exp(n)` for the Yang-Mills transfer matrix T. The Balaban RG machinery establishes the exponential clustering from which this should follow.
+
+## C85  DiscreteSpectralGap (v1.01.0)
+**File**: YangMills/P8_PhysicalGap/DiscreteSpectralGap.lean
+**Status**: DONE (no sorry, exit=0)
+**Bridge**: `HasSpectralGap` definition + `spectralGap_of_norm_le`: T-P  lam < 1  HasSpectralGap T P (-log lam) (1-P+1)
+**Oracle**: [propext, Classical.choice, Quot.sound]
+
+## C86  NormBoundToSpectralGap (v1.02.0)
+**File**: YangMills/P8_PhysicalGap/NormBoundToSpectralGap.lean
+**Status**: DONE (no sorry, exit=0)
+**Bridge**: Packages C85 into `spectralGap_of_norm_le` with clean Banach-space signature; bridges FeynmanKacOpNormBound + HasSpectralGap  ClayYangMillsPhysicalStrong
+**Oracle**: [propext, Classical.choice, Quot.sound]
+
+## C87  OperatorNormBound (v1.03.0)
+**File**: YangMills/P8_PhysicalGap/OperatorNormBound.lean
+**Status**: DONE (no sorry, exit=0)
+**Bridge**: `feynmanKacBound_implies_opNormBound` (Cauchy-Schwarz + StateNormBound  FeynmanKacOpNormBound(C_)); `normBound_opNormBound_to_physicalStrong` (end-to-end corollary)
+**Oracle**: [propext, Classical.choice, Quot.sound]
+
+## C88  ProfiledSpectralGap (v1.04.0)
+**File**: YangMills/P8_PhysicalGap/ProfiledSpectralGap.lean
+**Status**: DONE (no sorry, exit=0)
+**Bridge**: `spectralGap_of_expNormBound`: T-P  exp(-m)  HasSpectralGap T P m (1-P+1). Uses C86 + Real.log_exp. `physicalStrong_of_profiledExpNormBound`: chains via C87.
+**Oracle**: [propext, Classical.choice, Quot.sound]
+
+## C89  PointwiseResidualContraction (v1.05.0)
+**File**: YangMills/P8_PhysicalGap/PointwiseResidualContraction.lean
+**Status**: DONE (no sorry, exit=0)
+**Bridge**: `opNormBound_of_pointwiseResidualContraction`:  x, A x  lamx  A  lam (ContinuousLinearMap.opNorm_le_bound). `physicalStrong_of_profiledPointwiseResidualContraction`: pointwise  op-norm (C89-1)  C88  ClayYangMillsPhysicalStrong.
+**Oracle**: [propext, Classical.choice, Quot.sound]
+**Remaining bottleneck**: Must exhibit the pointwise bound (T_N - P) x  exp(-m)x for the Yang-Mills transfer matrix T_N. The Balaban RG machinery establishes the exponential clustering from which this should follow.
