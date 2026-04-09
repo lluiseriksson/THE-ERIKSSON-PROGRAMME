@@ -69,7 +69,7 @@ theorem hasSpectralGap_mono (T P₀ : H →L[ℝ] H) {γ γ' C C' : ℝ}
     (h : HasSpectralGap T P₀ γ C)
     (hγ' : 0 < γ') (hγle : γ' ≤ γ) (hCle : C ≤ C') :
     HasSpectralGap T P₀ γ' C' := by
-  refine ⟨hγ', le_trans h.2.1 hCle, fun n => ?_⟩
+  refine ⟨hγ', lt_of_lt_of_le h.2.1 hCle, fun n => ?_⟩
   have hbound := h.2.2 n
   have hn : (0 : ℝ) ≤ n := Nat.cast_nonneg n
   have hexp : Real.exp (-γ * ↑n) ≤ Real.exp (-γ' * ↑n) := by

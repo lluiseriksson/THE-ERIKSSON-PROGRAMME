@@ -102,6 +102,6 @@ theorem markov_to_covariance_decay
       Real.exp (-γ * t) *
         Real.sqrt (∫ x, (F x - ∫ y, F y ∂μ) ^ 2 ∂μ) *
         Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) :=
-  sz_covariance_bridge sg F G hF hG hF2 hG2
+  by exact sz_covariance_bridge sg F G hF hG hF2 hG2
 
 end YangMills

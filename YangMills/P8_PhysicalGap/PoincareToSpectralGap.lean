@@ -98,11 +98,22 @@ theorem varianceDecay_exp_bound
   have hpoly := hvar f hf hf2 n
   -- (1-lam)^n ≤ exp(-lam*n) since 1-x ≤ exp(-x)
   have hbase : 1 - lam ≤ Real.exp (-lam) :=
-    (Real.add_one_le_exp (-lam)).trans_eq (by ring_nf)
-  have hpow : (1 - lam) ^ n ≤ Real.exp (-lam) ^ n :=
-    pow_le_pow_left (by linarith) hbase n
+    by linarith [Real.add_one_le_exp (-lam)]
+  have hpow : (1 - lam) ^ n ≤ Real.exp (-lam) ^ n := by
+    clear hpoly
+    induction n with
+    | zero => simp
+    | succ n ih =>
+      rw [pow_succ, pow_succ]
+      exact (mul_le_mul_of_nonneg_right ih (by linarith)).trans
+        (mul_le_mul_of_nonneg_left hbase (by positivity))
   have hexp_pow : Real.exp (-lam) ^ n = Real.exp (-lam * ↑n) := by
-    rw [← Real.exp_natCast, ← Real.exp_mul]; ring_nf
+    clear hpoly hpow
+    induction n with
+    | zero => simp
+    | succ n ih =>
+      rw [pow_succ, ih, ← Real.exp_add]
+      apply congr_arg; push_cast; ring
   have hexp_half : Real.exp (-lam * ↑n) ≤ Real.exp (-(lam / 2) * ↑n) := by
     apply Real.exp_le_exp.mpr
     have hn : (0 : ℝ) ≤ ↑n := Nat.cast_nonneg n
