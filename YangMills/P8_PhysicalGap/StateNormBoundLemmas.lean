@@ -69,7 +69,7 @@ theorem hasSpectralGap_mono (T P₀ : H →L[ℝ] H) {γ γ' C C' : ℝ}
     (h : HasSpectralGap T P₀ γ C)
     (hγ' : 0 < γ') (hγle : γ' ≤ γ) (hCle : C ≤ C') :
     HasSpectralGap T P₀ γ' C' := by
-  refine ⟨hγ', h.2.1.trans_le hCle, fun n => ?_⟩
+  refine ⟨hγ', le_trans h.2.1 hCle, fun n => ?_⟩
   have hbound := h.2.2 n
   have hn : (0 : ℝ) ≤ n := Nat.cast_nonneg n
   have hexp : Real.exp (-γ * ↑n) ≤ Real.exp (-γ' * ↑n) := by
@@ -77,36 +77,5 @@ theorem hasSpectralGap_mono (T P₀ : H →L[ℝ] H) {γ γ' C C' : ℝ}
     nlinarith
   have hC'nn : (0 : ℝ) ≤ C' := le_trans h.2.1.le hCle
   linarith [mul_le_mul hCle hexp (Real.exp_pos (-γ * ↑n)).le hC'nn]
-
-/-! ## C82: Geometric decay implies HasSpectralGap -/
-
-/-- **C82-T1 (sorry-free):** Geometric operator-norm bound implies `HasSpectralGap`.
-
-    If `‖T^n - P₀‖ ≤ C · rⁿ` for all `n : ℕ`, with `0 < r < 1` and `0 < C`, then
-    `HasSpectralGap T P₀ (-Real.log r) C`.
-
-    Key identity: `rⁿ = exp(n · log r) = exp(-(-log r) · n) = exp(-γ · n)`
-    where `γ := -log r > 0` by `Real.log_neg` since `r ∈ (0, 1)`.
-
-    Mathematical significance: Sits on the NON-VACUOUS path to
-    `ClayYangMillsPhysicalStrong` via `feynmanKac_to_physicalStrong`, which
-    takes `HasSpectralGap T P₀ γ C` as its spectral hypothesis. This lemma
-    reduces that hypothesis to a geometric power bound -- the natural form in
-    transfer-matrix spectral theory.
-
-    Oracle: propext, Classical.choice, Quot.sound only (0 sorry, 0 axiom). -/
-theorem hasSpectralGap_of_geometric_decay
-    (T P₀ : H →L[ℝ] H)
-    (r C : ℝ) (hr0 : 0 < r) (hr1 : r < 1) (hC : 0 < C)
-    (hpow : ∀ n : ℕ, ‖T ^ n - P₀‖ ≤ C * r ^ n) :
-    HasSpectralGap T P₀ (-Real.log r) C := by
-  refine ⟨neg_pos.mpr (Real.log_neg hr0 hr1), hC, fun n => ?_⟩
-  have hrn_pos : 0 < r ^ n := pow_pos hr0 n
-  calc ‖T ^ n - P₀‖
-      ≤ C * r ^ n := hpow n
-    _ = C * Real.exp (-(-Real.log r) * ↑n) := by
-          congr 1
-          simp only [neg_neg]
-          rw [mul_comm, ← Real.log_pow, Real.exp_log hrn_pos]
 
 end YangMills
