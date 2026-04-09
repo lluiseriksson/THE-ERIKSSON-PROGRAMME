@@ -2018,3 +2018,4 @@ which this should follow.
 **Bridge**: `opNormBound_of_pointwiseResidualContraction`:  x, A x  lamx  A  lam (ContinuousLinearMap.opNorm_le_bound). `physicalStrong_of_profiledPointwiseResidualContraction`: pointwise  op-norm (C89-1)  C88  ClayYangMillsPhysicalStrong.
 **Oracle**: [propext, Classical.choice, Quot.sound]
 **Remaining bottleneck**: Must exhibit the pointwise bound (T_N - P) x  exp(-m)x for the Yang-Mills transfer matrix T_N. The Balaban RG machinery establishes the exponential clustering from which this should follow.
+C90 / v1.06.0 — ComplementResidualContraction: weakened the live C89 hypothesis from all-vector residual contraction to contraction only on ker(P₀); proved `opNormBound_of_complementResidualContraction` and `physicalStrong_of_profiledComplementResidualContraction`; oracle `[propext, Classical.choice, Quot.sound]`; zero sorry; genuine live-bottleneck reduction on the path to `ClayYangMillsPhysicalStrong`.
