@@ -2024,3 +2024,4 @@ C91 / v1.07.0  VacuumProjectorNorm: removed the live C90 side-condition 1 - P  1
 
 C92 / v1.08.0  VacuumProjectorAlgebra: derived rankOneProjector_idem, rankOneProjector_absorb_left_of_fixed, rankOneProjector_absorb_right_of_adjointFixed from unit-vector hypotheses; removed three live algebraic side-conditions (P=P, TP=P, PT=P) from C90/C91 path via physicalStrong_of_profiledComplementResidualContraction_rankOneVacuum_biFixed; oracle [propext, Classical.choice, Quot.sound]; zero sorry; genuine live-path reduction toward ClayYangMillsPhysicalStrong.
 - [x] C93 v1.09.0: ComplementContractionToResidual  H1/H2/T1 derive residual contraction from complement contraction; oracle [propext, Classical.choice, Quot.sound]
+- [x] C94 v1.10.0: ProjectedOpNormToComplementContraction 2014 H1/H2/T1 derive complement contraction from projected-op-norm bound 2016T*(1-P2080)2016 2264 exp(-m); oracle [propext, Classical.choice, Quot.sound]
