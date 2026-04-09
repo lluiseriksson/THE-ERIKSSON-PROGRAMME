@@ -87,6 +87,7 @@ import YangMills.P8_PhysicalGap.VacuumProjectorNorm
 import YangMills.P8_PhysicalGap.VacuumProjectorAlgebra
 import YangMills.P8_PhysicalGap.ComplementContractionToResidual
 import YangMills.P8_PhysicalGap.ProjectedOpNormToComplementContraction
+import YangMills.P8_PhysicalGap.SelfAdjointVacuum
 import YangMills.P8_PhysicalGap.PoincareCovarianceRoadmap
 import YangMills.L0_Lattice.FiniteLattice
 import YangMills.L0_Lattice.GaugeConfigurations
