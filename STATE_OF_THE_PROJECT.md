@@ -1,6 +1,6 @@
 # State of the Project — THE-ERIKSSON-PROGRAMME
 
-**Version**: v1.24.0  
+**Version**: v1.25.0  
 **Date**: 2026-04-10  
 **Live hypotheses**: 2
 
@@ -40,7 +40,7 @@ Requires constructing T explicitly from the Yang–Mills path integral.
 |---|---|---|---|
 | `StateNormBound ψ_obs C_ψ` | C105 | v1.21.0 | Absorbed by `HasUnitObsNorm` (C_ψ=1) |
 | `hdistP` (distP ≥ 0) | C104 | v1.20.0 | `Nat.cast_nonneg` |
-| `HasSpectralGap T P₀ γ C` | C106 | v1.24.0 | Replaced by `HasNormContraction` |
+| `HasSpectralGap T P₀ γ C` | C106 | v1.25.0 | Replaced by `HasNormContraction` |
 
 ## Main Bridge Theorems
 

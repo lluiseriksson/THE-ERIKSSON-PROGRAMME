@@ -1276,3 +1276,13 @@ def PhysicalContractionBundle (...) : Prop :=
 **Reduction:** Callers no longer need to certify `T  P`; degenerate T=P case
 (where all Wilson correlators vanish) is handled automatically via trivial spectral gap.
 **Oracle:** `[propext, Classical.choice, Quot.sound]`  zero sorry, zero new axioms.
+
+### C109  PhysicalSpectralGapBundle (v1.25.0)
+**File:** `YangMills/P8_PhysicalGap/SpectralGapBundle.lean`
+**New definition:** `PhysicalSpectralGapBundle  ... T P _obs  C`
+**Theorem:** `physicalStrong_of_physicalSpectralGapBundle`
+**Reduction:** Most general direct path  callers need only provide
+`PhysicalFeynmanKacFormula` and `HasSpectralGap T P  C` (exponential decay
+rate  and constant C). No contraction condition required. Generalizes C107 and C108.
+Proof is a one-liner via `physicalStrong_of_physicalFormula_spectralGap`.
+**Oracle:** `[propext, Classical.choice, Quot.sound]`  zero sorry, zero new axioms.
