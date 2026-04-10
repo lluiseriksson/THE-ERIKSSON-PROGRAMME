@@ -1,6 +1,6 @@
 # State of the Project — THE-ERIKSSON-PROGRAMME
 
-**Version**: v1.28.0  
+**Version**: v1.29.0  
 **Date**: 2026-04-10  
 **Live hypotheses**: 2
 
@@ -40,7 +40,7 @@ Requires constructing T explicitly from the Yang–Mills path integral.
 |---|---|---|---|
 | `StateNormBound ψ_obs C_ψ` | C105 | v1.21.0 | Absorbed by `HasUnitObsNorm` (C_ψ=1) |
 | `hdistP` (distP ≥ 0) | C104 | v1.20.0 | `Nat.cast_nonneg` |
-| `HasSpectralGap T P₀ γ C` | C106 | v1.28.0 | Replaced by `HasNormContraction` |
+| `HasSpectralGap T P₀ γ C` | C106 | v1.29.0 | Replaced by `HasNormContraction` |
 
 ## Main Bridge Theorems
 
@@ -73,10 +73,10 @@ Zero `sorry`. Zero new axioms.
 
 See `UNCONDITIONALITY_ROADMAP.md` for full campaign history (C1–C106).
 
-## C110 (v1.28.0) - FeynmanKacBundle
+## C110 (v1.29.0) - FeynmanKacBundle
 File: YangMills/L8_Terminal/FeynmanKacBundle.lean
 Bundles FeynmanKacFormula + StateNormBound + HasSpectralGap + distP_nonneg into a single Prop (FeynmanKacBundle), with physicalStrong_of_feynmanKacBundle : FeynmanKacBundle -> ClayYangMillsPhysicalStrong. Oracle: [propext, Classical.choice, Quot.sound]. Zero sorry.
 
-## C111 (v1.28.0) - ClayStrongFromFeynmanKac
+## C111 (v1.29.0) - ClayStrongFromFeynmanKac
 File: YangMills/L8_Terminal/ClayStrongFromFeynmanKac.lean
 Adds clayStrong_of_feynmanKacBundle : FeynmanKacBundle -> ClayYangMillsStrong via feynmanKac_to_strong. Oracle: [propext, Classical.choice, Quot.sound]. Zero sorry.

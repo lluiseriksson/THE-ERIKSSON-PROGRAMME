@@ -1286,3 +1286,15 @@ def PhysicalContractionBundle (...) : Prop :=
 rate  and constant C). No contraction condition required. Generalizes C107 and C108.
 Proof is a one-liner via `physicalStrong_of_physicalFormula_spectralGap`.
 **Oracle:** `[propext, Classical.choice, Quot.sound]`  zero sorry, zero new axioms.
+
+
+### C113  ConnectedCorrDecayDomBundle (v1.29.0)
+**File:** `YangMills/L8_Terminal/ConnectedCorrDecayDomBundle.lean`
+**New definition:** `ConnectedCorrDecayDomBundle` -- structure with fields `ccd`, `distP_nonneg`, `m_lat`, `hdom`, `hcont`
+**Theorem:** `physicalStrong_of_connectedCorrDecayDomBundle`
+**Reduction:** Callers supplying any dominated `LatticeMassProfile` + `HasContinuumMassGap` witness
+automatically get `ClayYangMillsPhysicalStrong` without constructing the constant profile manually.
+Generalises C112 (which fixed the profile to `constantMassProfile h.m`).
+**Oracle:** `[propext, Classical.choice, Quot.sound]`  zero sorry, zero new axioms.
+
+**Status:** CLOSED.
