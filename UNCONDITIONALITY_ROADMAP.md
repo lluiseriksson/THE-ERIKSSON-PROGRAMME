@@ -1368,3 +1368,17 @@ no `ConnectedCorrDecay` or `constantMassProfile` domination required.
 - [x] C120: ConnectedCorrDecayDomTheoremBundle  dominated CCD path to ClayYangMillsTheorem NdepGapTheoremBundle  N-dep spectral gap path to ClayYangMillsTheorem
 
 - [x] C121: FeynmanKacStrongTheoremBundle  FK strong path to ClayYangMillsTheorem
+
+- [x] C122: ClayStrongFromFeynmanKacTheoremBundle  physicalStrong_of_projectedOpNormBound_rankOneVacuum_selfAdjoint  FK strong path uses VacuumAdjointFixed+FeynmanKacOpNormFromFormula; oracle [propext, Classical.choice, Quot.sound, yangMills_continuum_mass_gap] (v1.38.0)
+
+- [x] C123: sun_physical_mass_gap (LSI pipeline)  STRATEGY SHIFT: eliminates yangMills_continuum_mass_gap entirely. Integrated full P8_PhysicalGap LSI pipeline (49 modules). sun_physical_mass_gap proves ClayYangMillsTheorem via Balaban-RG -> DLR-LSI -> Stroock-Zegarlinski -> clustering. Oracle: [propext, Classical.choice, Quot.sound, YangMills.bakry_emery_lsi, YangMills.balaban_rg_uniform_lsi, YangMills.sun_bakry_emery_cd, YangMills.sz_lsi_to_clustering]. NO yangMills_continuum_mass_gap. (v1.39.0)
+
+## Phase: Eliminate Frontier Axioms (C124+)
+
+The 4 remaining Yang-Mills-specific axioms are the real mathematical frontier:
+- `YangMills.bakry_emery_lsi` -- Bakry-Emery LSI for compact Lie groups
+- `YangMills.sun_bakry_emery_cd` -- Bakry-Emery curvature-dimension condition for SU(N)
+- `YangMills.balaban_rg_uniform_lsi` -- Balaban renormalization group -> uniform LSI
+- `YangMills.sz_lsi_to_clustering` -- Stroock-Zegarlinski LSI -> exponential clustering
+
+Each proven from Mathlib primitives eliminates one axiom from sun_physical_mass_gap.

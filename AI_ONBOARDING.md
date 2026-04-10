@@ -136,3 +136,26 @@ Apache 2.0
 - C110 (v1.38.0): FeynmanKacBundle in YangMills/L8_Terminal/FeynmanKacBundle.lean -- bundles FeynmanKacFormula+StateNormBound+HasSpectralGap+distP_nonneg; physicalStrong_of_feynmanKacBundle; oracle clean.
 
 - C111 (v1.38.0): ClayStrongFromFeynmanKac in YangMills/L8_Terminal/ClayStrongFromFeynmanKac.lean -- clayStrong_of_feynmanKacBundle : FeynmanKacBundle -> ClayYangMillsStrong; oracle clean.
+
+- C122 (v1.38.0): ClayStrongFromFeynmanKacTheoremBundle in YangMills/L8_Terminal/VacuumAdjointFixed.lean -- physicalStrong_of_projectedOpNormBound_rankOneVacuum_selfAdjoint; oracle still has yangMills_continuum_mass_gap.
+
+- C123 (v1.39.0): sun_physical_mass_gap in YangMills/P8_PhysicalGap/PhysicalMassGap.lean -- **STRATEGY SHIFT: eliminates yangMills_continuum_mass_gap entirely**. Integrated all 49 P8_PhysicalGap LSI modules into YangMills.lean. Proof route: Balaban RG -> DLR-LSI -> Stroock-Zegarlinski -> clustering -> mass gap. Oracle: [propext, Classical.choice, Quot.sound, YangMills.bakry_emery_lsi, YangMills.balaban_rg_uniform_lsi, YangMills.sun_bakry_emery_cd, YangMills.sz_lsi_to_clustering]. Zero sorry.
+
+## Current Strategy (C124+): Eliminate the 4 Frontier Axioms
+
+The artificial axiom `yangMills_continuum_mass_gap` is GONE from the primary proof path.
+The remaining 4 Yang-Mills-specific axioms are ALL in `YangMills/P8_PhysicalGap/BalabanToLSI.lean`:
+
+1. `YangMills.bakry_emery_lsi` (line 61) -- Bakry-Emery LSI for compact Lie groups  
+2. `YangMills.sun_bakry_emery_cd` (line 71) -- Bakry-Emery curvature-dimension for SU(N)
+3. `YangMills.balaban_rg_uniform_lsi` (line 102) -- Balaban RG -> uniform LSI
+4. `YangMills.sz_lsi_to_clustering` (line 127) -- Stroock-Zegarlinski LSI -> exponential clustering
+
+**Goal:** Prove each from Mathlib primitives. One axiom eliminated per campaign = maximum value.
+Even one lemma toward any of these is worth more than 100 interface bundles.
+
+Key theorem to check after any change:
+```
+printf 'import YangMills.P8_PhysicalGap.PhysicalMassGap\n#print axioms YangMills.sun_physical_mass_gap\n' | lake env lean --stdin
+```
+Expected clean output: [propext, Classical.choice, Quot.sound, + the 4 frontier axioms above]
