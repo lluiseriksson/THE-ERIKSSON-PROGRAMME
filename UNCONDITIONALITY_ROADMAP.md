@@ -1314,6 +1314,18 @@ This is the first bundle that delivers the Clay Millennium *strong* statement (n
 
 
 
+
+### C117  FeynmanKacTheoremBundle (v1.33.0)
+
+**File**: `YangMills/L8_Terminal/FeynmanKacTheoremBundle.lean`
+**Base theorems**: `physicalStrong_of_feynmanKacBundle` + `physicalStrong_implies_theorem`
+**Delivers**: `ClayYangMillsTheorem` (Clay Millennium Prize statement:  m_phys > 0)
+**Oracle**: `[propext, Classical.choice, Quot.sound]`. Zero sorry.
+**Commit**: `1d8aa27`, tag `v1.33.0`.
+
+First bundle to deliver `ClayYangMillsTheorem` directly. Proof chain:
+`FeynmanKacBundle`  `ClayYangMillsPhysicalStrong`  `ClayYangMillsTheorem`.
+
 ### C116  ConnectedCorrDecayBundle (v1.32.0)
 
 **File**: `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`
