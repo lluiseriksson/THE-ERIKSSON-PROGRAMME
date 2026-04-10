@@ -106,6 +106,7 @@ import YangMills.L8_Terminal.FeynmanKacBundle
 import YangMills.L8_Terminal.ClayStrongFromFeynmanKac
 import YangMills.L8_Terminal.ConnectedCorrDecayBundle
 import YangMills.L8_Terminal.ConnectedCorrDecayDomBundle
+import YangMills.L8_Terminal.FeynmanKacStrongBundle
 import YangMills.L0_Lattice.FiniteLattice
 import YangMills.L0_Lattice.GaugeConfigurations
 import YangMills.L0_Lattice.WilsonAction
