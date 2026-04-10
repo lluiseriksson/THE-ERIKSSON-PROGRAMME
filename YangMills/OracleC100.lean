@@ -1,0 +1,3 @@
+import YangMills.P8_PhysicalGap.VacuumAdjointFixed
+
+#print axioms YangMills.physicalStrong_of_projectedOpNormBound_rankOneVacuum_ketAdjointFixed

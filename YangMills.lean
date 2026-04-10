@@ -93,6 +93,7 @@ import YangMills.P8_PhysicalGap.VacuumProjectorFixedVector
 import YangMills.P8_PhysicalGap.VacuumBraInvariant
 import YangMills.P8_PhysicalGap.VacuumKetInvariant
 import YangMills.P8_PhysicalGap.VacuumBraFromProjectorInvariant
+import YangMills.P8_PhysicalGap.VacuumAdjointFixed
 import YangMills.L0_Lattice.FiniteLattice
 import YangMills.L0_Lattice.GaugeConfigurations
 import YangMills.L0_Lattice.WilsonAction

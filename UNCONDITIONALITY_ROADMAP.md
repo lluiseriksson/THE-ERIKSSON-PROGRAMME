@@ -44,7 +44,6 @@ forwarding the five remaining hypotheses: hgap, hΩ, hP0_eq, hcorr, hF.
 Net: 40+40 proved, gap structurally compressed to irreducible core.
 ## v0.58.0 — Campaign 42 (C42) — 2026-04-05
 **New theorem:** `kp_clay_from_projector_formula_and_trivial_wilson_observable`
-**What was proved:**  
 C42 reduces the orthogonal-projector primitive package (3 separate hypotheses: hrange, hfix, hsym)
 to the single structural rank-one operator formula
 `hP0_eq : P₀ = (innerSL ℝ Ω).smulRight Ω`,
@@ -149,7 +148,6 @@ but has not yet been formalized in Lean 4 / Mathlib.
 [68] §§5  Exponential clustering   ←→  [68] §§6 Multiscale decoupling
               ↓                                    ↓
            [68] §7  Mass gap m = min(m*, c₀) > 0
-              ↓
            [68] §8  OS reconstruction + spectral gap
       yangMills_continuum_mass_gap (Lean axiom)
       clay_millennium_yangMills (Clay oracle target)
@@ -301,7 +299,6 @@ closes `kp_hP0_of_normalized_vacuum_projector` in one tactic step.
 **File**: `YangMills/P5_KPDecay/KPHypotheses.lean` (852 -> 877 lines, +25)
 **Commit**: v0.52.0 tag (pending)
 ## v0.51.0 — Campaign 35 (2026-04-04)
-**File:** `YangMills/P5_KPDecay/KPHypotheses.lean`  
 - `kp_hprod_from_rank_one_and_exp_repr`: Reduces C34 vacuum-projector hypothesis `hprod` to a rank-1 application form. Given `hP0 : ∀ w, P₀ w = ⟨v, w⟩ • u` and separate inner-product representations for each Wilson expectation, proves `wilsonExpectation p * wilsonExpectation q = ⟨ψ₁, P₀ ψ₂⟩`. Oracle: `[propext, Classical.choice, Quot.sound]`.
 - `kp_clay_from_rank_one_and_exp_repr`: Full Clay bridge from rank-1 projector + separate expectation reprs. Packages `kp_hprod_from_rank_one_and_exp_repr` into `kp_clay_from_corr_and_expectation_repr`.  
 **Progress:** hprod reduced to rank-1 form; transfer-matrix route now requires only hcorr + hexp1 + hexp2 + hP0 (rank-1 application) hypotheses.
@@ -357,12 +354,9 @@ Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_m
 **T1**: `kp_hpe_of_sq_plaquetteEnergy`
 Reduces `hpe : forall g : G, 0 <= plaquetteEnergy g` to the structural assumption
 `hdef : forall g, plaquetteEnergy g = f g ^ 2`. Proof: `intro g; rw [hdef]; exact sq_nonneg _`.
-Oracle: `[propext, Classical.choice, Quot.sound]`
 **T2**: `kp_clay_from_normalized_rank_one_vacuum_projector_and_holonomy_normalized_observable_measurable_sq_plaquetteEnergy`
 Packages C50-T2 and C51-T1: replaces `hpe` with `hdef : forall g, plaquetteEnergy g = f g ^ 2`.
 Delegates to the nonneg version with `kp_hpe_of_sq_plaquetteEnergy` as witness.
-Oracle: `[propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]`
-- No `sorry`, `opaque`, `axiom`, or `native_decide` introduced.
 - T1 proof is one-line: `sq_nonneg` after rewriting with `hdef`.
 - T2 is a pure delegation: all hypotheses forwarded, `hpe` replaced by T1 application.
 - Linter warning about unused section variables `[Group G] [MeasurableSpace G]` in T1 is cosmetic only.
@@ -1144,7 +1138,6 @@ spectral theory and is easier to derive from physical estimates.
 **Live path progress**:
   hstep → [C79] → HasVarianceDecay → [MarkovVarianceDecay] → HasSpectralGap
   **←— C82 weakens this bottleneck: geometric decay suffices**
-  → [C77 FeynmanKacToPhysical] → `ClayYangMillsPhysicalStrong`
 **Remaining bottleneck**: Must exhibit the geometric bound `‖T^n - P₀‖ ≤ C · rⁿ`
 for the Yang-Mills transfer matrix T. This requires proving that the spectral radius
 of T restricted to the orthogonal complement of P₀ is < 1 (i.e., a gap above the
@@ -1192,3 +1185,4 @@ C92 / v1.08.0  VacuumProjectorAlgebra: derived rankOneProjector_idem, rankOnePro
 - [x] C97 v1.13.0: VacuumBraInvariant -- H1/H2/T1 derive ClayYangMillsPhysicalStrong from bra invariance (innerSL R Omega)(T x) = (innerSL R Omega) x; removes self-adjointness hypothesis via adjoint-fixed derivation; oracle [propext, Classical.choice, Quot.sound]
 - [x] C98 v1.14.0: VacuumKetInvariant -- H1/H2 derive T * P0 = P0 from T Omega = Omega via map_smul; T1 physicalStrong_of_profiledProjectedOpNormBound_rankOneVacuum_ketBraInvariant derives hTP internally and calls C97; oracle [propext, Classical.choice, Quot.sound]
 - [x] C99 v1.15.0: VacuumBraFromProjectorInvariant -- H1/H2 derive bra invariance from P0*T=P0 via smul_eq_zero; T1 physicalStrong_of_projectedOpNormBound_rankOneVacuum_ketRightProjectorInvariant removes hbra hypothesis, derives it internally from hPT and calls C98; oracle [propext, Classical.choice, Quot.sound]
+- [x] C100 v1.16.0: VacuumAdjointFixed -- H1 derive P0*T=P0 from adjoint_inner_left; T1 physicalStrong_of_projectedOpNormBound_rankOneVacuum_ketAdjointFixed removes hPT, derives from hfixAdj; oracle [propext, Classical.choice, Quot.sound]
