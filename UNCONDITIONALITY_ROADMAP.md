@@ -1188,4 +1188,27 @@ C92 / v1.08.0  VacuumProjectorAlgebra: derived rankOneProjector_idem, rankOnePro
 - [x] C100 v1.16.0: VacuumAdjointFixed -- H1 derive P0*T=P0 from adjoint_inner_left; T1 physicalStrong_of_projectedOpNormBound_rankOneVacuum_ketAdjointFixed removes hPT, derives from hfixAdj; oracle [propext, Classical.choice, Quot.sound]
 
 ### Phase 7  Hypothesis Reduction
-- [ ] C101 v1.17.0: SelfAdjointKetInvariant  H1 derive T.adjoint Ω = Ω from T.adjoint = T + T Ω = Ω; physicalStrong_of_projectedOpNormBound_rankOneVacuum_selfAdjoint removes hfixAdj, derives from hselfAdj; oracle [propext, Classical.choice, Quot.sound]
+- [x] C101 v1.17.0: SelfAdjointKetInvariant  H1 derive T.adjoint Ω = Ω from T.adjoint = T + T Ω = Ω; physicalStrong_of_projectedOpNormBound_rankOneVacuum_selfAdjoint removes hfixAdj, derives from hselfAdj; oracle [propext, Classical.choice, Quot.sound]
+
+### Phase 8 — Formula-to-OpNorm Bridge
+
+- [x] C102 v1.18.0: FeynmanKacOpNormFromFormula — derives FeynmanKacOpNormBound from FeynmanKacFormula + StateNormBound via Cauchy-Schwarz chain.
+  **File**: YangMills/P8_PhysicalGap/FeynmanKacOpNormFromFormula.lean
+  **Theorems**:
+  - `feynmanKacOpNormBound_of_formula_stateNorm` (C102-H1): FeynmanKacFormula + StateNormBound → FeynmanKacOpNormBound(C_ψ²)
+    Proof: wCC = ⟨ψ_p,(T^n-P₀)ψ_q⟩ → |.| → Cauchy-Schwarz → op-norm → C_ψ²·‖T^n-P₀‖
+  - `physicalStrong_of_formula_stateNorm_rankOneVacuum_selfAdjoint` (C102-T1):
+    FeynmanKacFormula + StateNormBound + self-adjoint ket-invariant vacuum → ClayYangMillsPhysicalStrong
+    Chains C102-H1 (FeynmanKacOpNormBound derived) + C101 (self-adjointness ⇒ adjoint-fixed).
+  **Live bottleneck reduced**: FeynmanKacOpNormBound eliminated as a separate hypothesis.
+  **Remaining open hypotheses on live path**:
+    (a) FeynmanKacFormula (exact FK transfer-matrix representation)
+    (b) StateNormBound (norm bound on observation states)
+    (c) T Ω = Ω (vacuum ket-invariance of transfer matrix)
+    (d) T.adjoint = T (self-adjointness)
+    (e) ‖T*(1-P₀)‖ ≤ exp(-m) (projected op-norm / spectral gap)
+  **Oracle**: [propext, Classical.choice, Quot.sound] — zero sorry, zero new axiom.
+  **Mathematical assessment**: Genuine live-path reduction. FeynmanKacOpNormBound was
+  previously an assumed bridge; it is now a theorem. The Cauchy-Schwarz derivation
+  is mathematically trivial but removes a real hypothesis from the live path.
+
