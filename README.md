@@ -1,7 +1,7 @@
 # THE-ERIKSSON-PROGRAMME
 
 **Lean 4 / Mathlib 4 formalization of the Yang–Mills mass gap problem**  
-**Version**: v1.22.0 | **Live hypotheses**: 2
+**Version**: v1.23.0 | **Live hypotheses**: 2
 
 ## Goal
 
@@ -14,18 +14,18 @@ ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP :=
             ≤ C · exp(−γ · distP N p q)
 ```
 
-## Current Status (v1.22.0)
+## Current Status (v1.23.0)
 
 | Hypothesis | Status | Concreteness |
 |---|---|---|
 | `PhysicalFeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs` | **Live** (~10%) | FK bridge + unit obs norm |
-| `HasNormContraction T P₀` | **Live** (~35%) | `‖T − P₀‖ < 1` + idempotent |
+| `PhysicalContractionBundle (bundles PhysicalFeynmanKacFormula ∧ HasNormContraction)
 
 ### Recently Eliminated
 
 | Hypothesis | Campaign | Version | How |
 |---|---|---|---|
-| `HasSpectralGap T P₀ γ C` | C106 | v1.22.0 | Replaced by `HasNormContraction` |
+| `HasSpectralGap T P₀ γ C` | C106 | v1.23.0 | Replaced by `HasNormContraction` |
 | `StateNormBound ψ_obs C_ψ` | C105 | v1.21.0 | Absorbed by `HasUnitObsNorm` |
 | `hdistP` (distP ≥ 0) | C104 | v1.20.0 | `Nat.cast_nonneg` |
 

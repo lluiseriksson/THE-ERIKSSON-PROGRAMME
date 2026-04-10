@@ -1250,3 +1250,21 @@ C92 / v1.08.0  VacuumProjectorAlgebra: derived rankOneProjector_idem, rankOnePro
 **Proof**: spectralGap_of_normContraction_via_le (C86/NormBoundToSpectralGap) + physicalStrong_of_physicalFormula_spectralGap (C105).
 **Live path after**: 2 hypotheses: PhysicalFeynmanKacFormula, HasNormContraction
 **Oracle**: [propext, Classical.choice, Quot.sound]
+
+## C107  v1.23.0: PhysicalContractionBundle
+
+**Theorem:** `physicalStrong_of_physicalContractionBundle`
+
+**What it does:** Bundles the two remaining hypotheses (`PhysicalFeynmanKacFormula` and `HasNormContraction`) into a single structure `PhysicalContractionBundle`, reducing the proof obligation from 2 explicit hypotheses to 1.
+
+**Definition:**
+```
+def PhysicalContractionBundle (...) : Prop :=
+  PhysicalFeynmanKacFormula ... ∧ HasNormContraction T P₀
+```
+
+**Proof chain:** `h.1 → physicalStrong_of_physicalFormula_normContraction h.1 h.2`
+
+**Oracle:** `[propext, Classical.choice, Quot.sound]` -- zero sorry, zero new axioms.
+
+**Status:** CLOSED.
