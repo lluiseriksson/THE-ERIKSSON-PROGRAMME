@@ -156,3 +156,5 @@ import YangMills.P7_SpectralGap.ActionBound
 import YangMills.P7_SpectralGap.WilsonDistanceBridge
 import YangMills.P7_SpectralGap.MassBound
 import YangMills.P7_SpectralGap.Phase7Assembly
+
+import YangMills.L8_Terminal.FeynmanKacTheoremBundle
