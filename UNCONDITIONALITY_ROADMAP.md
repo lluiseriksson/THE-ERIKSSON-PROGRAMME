@@ -1212,3 +1212,21 @@ C92 / v1.08.0  VacuumProjectorAlgebra: derived rankOneProjector_idem, rankOnePro
   previously an assumed bridge; it is now a theorem. The Cauchy-Schwarz derivation
   is mathematically trivial but removes a real hypothesis from the live path.
 
+
+## C103  v1.19.0: FeynmanKacToPhysicalStrong
+
+**File**: YangMills/P8_PhysicalGap/FeynmanKacToPhysicalStrong.lean
+**Theorem**: physicalStrong_of_formula_stateNorm_hasSpectralGap
+**Eliminated**: All vacuum-structure hypotheses (selfAdj, rank-one P0, T*=T, etc.)
+**Proof**: Chain C102-H1  C87-2 (opNormBound_to_physicalStrong). One term.
+**Live path after**: 4 hypotheses: FeynmanKacFormula, StateNormBound, HasSpectralGap, hdistP
+**Oracle**: [propext, Classical.choice, Quot.sound]
+
+## C104  v1.20.0: DistPNonnegFromFormula
+
+**File**: YangMills/P8_PhysicalGap/DistPNonnegFromFormula.lean
+**Theorem**: distPNonneg_of_feynmanKac + physicalStrong_of_formula_stateNorm_hasSpectralGap_v2
+**Eliminated**: hdistP (0 <= distP N p q)
+**Proof**: FK gives exists n : N, distP N p q = n, so 0 <= n by Nat.cast_nonneg.
+**Live path after**: 3 hypotheses: FeynmanKacFormula, StateNormBound, HasSpectralGap
+**Oracle**: [propext, Classical.choice, Quot.sound]
