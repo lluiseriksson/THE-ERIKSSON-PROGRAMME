@@ -1,91 +1,130 @@
-# AI Onboarding: THE-ERIKSSON-PROGRAMME
+# AI Onboarding Guide — THE-ERIKSSON-PROGRAMME
 
-**Last updated**: v1.20.0 (C104 complete)
+## What This Repo Is
 
-You are an agent in an autonomous multi-agent loop formalizing the Yang-Mills mass gap in Lean 4. Read this before doing anything.
+A Lean 4 / Mathlib 4 formalization of the Yang–Mills mass gap problem (Clay Millennium Problem).
+The goal: reduce `ClayYangMillsPhysicalStrong` to a finite list of explicit mathematical hypotheses,
+then eliminate those hypotheses one campaign at a time.
 
-## The Mission
+**Current version: v1.21.0**  
+**Live hypotheses: 2**
 
-Prove `ClayYangMillsPhysicalStrong` (exponential decay of Wilson loop correlators) with zero `sorry` and axioms = `[propext, Classical.choice, Quot.sound]` only.
-
-**NOT** `ClayYangMillsTheorem` or `ClayYangMillsStrong` — those are trivially true via `sorry`/`False.elim`. The target is the non-vacuous one.
-
-## Current State (v1.20.0)
-
-3 live hypotheses remain. All must be discharged:
+## The Main Theorem
 
 ```
-FeynmanKacFormula       — path integral + distP ∈ ℕ (hardest, ~10% done)
-StateNormBound ψ_obs C_ψ  — ψ_obs states norm-bounded (~40% done)
-HasSpectralGap T P₀ γ C  — transfer matrix spectral gap (~25% done)
+ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP :=
+  ∀ N p q, |wilsonConnectedCorr μ plaquetteEnergy β F N p q|
+            ≤ C · exp(−γ · distP N p q)
 ```
 
-`hdistP` was **eliminated in C104**: it follows from `FeynmanKacFormula` via `Nat.cast_nonneg` since `distP N p q = ↑n` for some `n : ℕ`.
+This is genuine non-vacuous exponential decay of Wilson loop correlators.
 
-## Your Role in the Loop
+## Current State (v1.21.0)
 
-```
-Strategist  →  pick highest-value target
-Executor    →  write the Lean proof
-Build/Oracle→  lake build + #print axioms
-Pusher      →  git commit + tag + push
-Librarian   →  update README, STATE, ONBOARDING
-Architect   →  update ROADMAP
-            →  GOTO Strategist
-```
+### Live Hypotheses (2 remaining)
 
-**Never stop. Never wait for human input. After each campaign, immediately start the next.**
+1. **`PhysicalFeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs`**
+   - Combines `FeynmanKacFormula` + `HasUnitObsNorm`
+   - States: Wilson correlator = ⟨ψ_obs N p, (T^n − P₀)(ψ_obs N q)⟩, and all ψ_obs have unit norm
+   - Progress: ~10% (hardest; needs Balaban renormalization group for FK)
 
-## Critical Lean Pitfalls
+2. **`HasSpectralGap T P₀ γ C_gap`**
+   - States: ‖(T − P₀)^n‖ ≤ C_gap · exp(−γ · n) for transfer matrix T and ground state projector P₀
+   - Progress: ~25% (existing infrastructure: `spectralGap_of_norm_le` in NormBoundToSpectralGap.lean)
 
-1. **Unicode in shell**: DO NOT write `ℕ`, `ℝ`, `∀`, etc. via shell heredocs — they get stripped. Always use Python with `\uXXXX` escapes or copy from existing files.
+### Eliminated Hypotheses (complete list)
 
-2. **`[NeZero d]`**: Whenever `ConcretePlaquette d N` appears in a `variable` block, you need `{d : ℕ} [NeZero d]` not just `{d : ℕ}`.
+| Hypothesis | Campaign | How |
+|---|---|---|
+| `hdistP` (distP ≥ 0) | C104 / v1.20.0 | `Nat.cast_nonneg` |
+| `StateNormBound ψ_obs C_ψ` | C105 / v1.21.0 | Absorbed by `HasUnitObsNorm` (C_ψ=1) |
+| `hbound` (norm bound on corr) | C88-2 | `feynmanKac_hbound` lemma |
+| Various intermediate | C1–C103 | See UNCONDITIONALITY_ROADMAP.md |
 
-3. **Import order**: New files go in `YangMills/P8_PhysicalGap/`. Add import to `YangMills.lean` after `VacuumAdjointFixed`.
-
-4. **Oracle check**: After build, run `#print axioms <theorem>` in a `.lean` file and check the output. Only `[propext, Classical.choice, Quot.sound]` is acceptable.
-
-5. **PATH**: Always `export PATH="$HOME/.elan/bin:$PATH"` before running `lake`.
-
-## Key Files
-
-- `YangMills/P8_PhysicalGap/FeynmanKacBridge.lean` — `FeynmanKacFormula` definition (line 17)
-- `YangMills/P8_PhysicalGap/OperatorNormBound.lean` — `opNormBound_to_physicalStrong` (C87)
-- `YangMills/P8_PhysicalGap/FeynmanKacToPhysicalStrong.lean` — 4-hyp chain (C103)
-- `YangMills/P8_PhysicalGap/DistPNonnegFromFormula.lean` — 3-hyp chain (C104)
-- `YangMills/P8_PhysicalGap/VacuumAdjointFixed.lean` — C100, last import before P8
-
-## Variable Block Template
-
-Copy this for any new P8_PhysicalGap file:
+## Key Definitions
 
 ```lean
-variable {G : Type*} [AddCommGroup G] [Module ℝ G]
-variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
-variable {d : ℕ} [NeZero d]
-variable (μ : MeasureTheory.Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
-variable (distP : (ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
-variable (T P₀ : H →L[ℝ] H) (ψ_obs : (ℕ) → ConcretePlaquette d N → H)
+-- C105: unit-normalized quantum states
+def HasUnitObsNorm (ψ_obs : (N : ℕ) → ConcretePlaquette d N → H) : Prop :=
+  ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N), ‖ψ_obs N p‖ = 1
+
+-- C105: combined physical hypothesis
+def PhysicalFeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs : Prop :=
+  FeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs ∧ HasUnitObsNorm ψ_obs
+
+-- Main bridge (C105)
+theorem physicalStrong_of_physicalFormula_spectralGap
+    (hpFK : PhysicalFeynmanKacFormula ...) (hgap : HasSpectralGap T P₀ γ C_gap) :
+    ClayYangMillsPhysicalStrong ... :=
+  physicalStrong_of_formula_stateNorm_hasSpectralGap_v2
+    (stateNormBound_of_hasUnitObsNorm hpFK.2) hpFK.1 hgap
 ```
 
-(Copy from `FeynmanKacToPhysicalStrong.lean` for exact correct unicode.)
+## Oracle Policy
 
-## Commit Protocol
+Every P8_PhysicalGap theorem must satisfy:
+```
+#print axioms <theorem_name>
+-- Expected: [propext, Classical.choice, Quot.sound]
+-- Zero `sorry`. Zero new axioms.
+```
+
+## File Structure
+
+```
+YangMills/P8_PhysicalGap/
+  FeynmanKacBridge.lean          -- FeynmanKacFormula, StateNormBound, feynmanKac_to_clay
+  OperatorNormBound.lean         -- C87: op-norm exp decay
+  ProfiledSpectralGap.lean       -- C88-2: physicalStrong_of_profiledExpNormBound
+  NormBoundToSpectralGap.lean    -- spectralGap_of_norm_le (HasSpectralGap from ‖T-P₀‖ ≤ λ < 1)
+  DistPNonnegFromFormula.lean    -- C104: hdistP eliminated via Nat.cast_nonneg
+  UnitObsToPhysicalStrong.lean   -- C105: HasUnitObsNorm, PhysicalFeynmanKacFormula
+YangMills.lean                   -- root imports (all campaigns)
+UNCONDITIONALITY_ROADMAP.md      -- campaign log
+README.md                        -- project overview
+STATE_OF_THE_PROJECT.md          -- current status
+AI_ONBOARDING.md                 -- this file
+```
+
+## Campaign Loop Protocol
+
+1. Read current repo state (survey P8_PhysicalGap/*.lean, grep for live hypotheses)
+2. Pick highest-value target (reduce hypotheses, no sorry, oracle-clean)
+3. Write Lean file + build + oracle check
+4. Commit + tag + push (tag = v1.X.0)
+5. Update docs (ROADMAP, README, STATE_OF_THE_PROJECT, AI_ONBOARDING)
+6. GOTO 1
+
+**Never stop. Never wait for human input.**
+
+## Next Campaign (C106)
+
+Best candidates:
+- Reduce `HasSpectralGap` to `‖T − P₀‖ ≤ λ < 1` using `spectralGap_of_norm_le`
+  (NormBoundToSpectralGap.lean already has this infrastructure)
+- Create `physicalStrong_of_physicalFormula_normBound` combining:
+  `PhysicalFeynmanKacFormula + ‖T − P₀‖ ≤ λ < 1 + P₀ idempotent + T*P₀=P₀`
+  → `ClayYangMillsPhysicalStrong`
+
+## Variable Block (all P8_PhysicalGap files)
+
+```lean
+variable {G : Type*} [Group G] [TopologicalSpace G] [CompactSpace G] [T2Space G]
+         [MeasurableSpace G] [BorelSpace G]
+         {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
+         {d : ℕ} [NeZero d]
+```
+
+## Build Commands
 
 ```bash
-git add <files>
-git -c user.email="lluiseriksson@gmail.com" -c user.name="Lluis Eriksson" \
-  commit -m "C<N>: <ShortName> — <what was eliminated> (<old>→<new> hyps)"
-git tag v<X>.<Y>.0
-git push origin main --tags
+export PATH="$HOME/.elan/bin:$PATH"
+cd /content/THE-ERIKSSON-PROGRAMME
+lake build YangMills.P8_PhysicalGap.UnitObsToPhysicalStrong
+# Then full build:
+lake build YangMills
 ```
 
-## Doc Update Protocol (Librarian)
+## License
 
-After each campaign, update:
-1. `STATE_OF_THE_PROJECT.md` — add campaign row, update live path, update progress %
-2. `README.md` — update version, update hypothesis table, add to eliminated list
-3. `AI_ONBOARDING.md` — update current state section
-4. Commit: `docs: update project docs for C<N> (v<tag>)`
-5. Push.
+Apache 2.0

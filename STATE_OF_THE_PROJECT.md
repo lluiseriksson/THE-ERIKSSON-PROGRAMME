@@ -1,8 +1,8 @@
 # State of the Project
 
-**Version**: v1.20.0  
+**Version**: v1.21.0  
 **Date**: 2026-04-10  
-**Status**: Active development  autonomous campaign loop
+**Status**: Active development — autonomous campaign loop
 
 ## The Target
 
@@ -15,18 +15,18 @@ theorem ClayYangMillsPhysicalStrong ... :
 
 This is **non-vacuous** (unlike `ClayYangMillsTheorem`/`ClayYangMillsStrong` which are trivially true by `False.elim`).
 
-## Live Hypothesis Path (3 remaining)
+## Live Hypothesis Path (2 remaining)
 
-All three must be discharged to close the proof unconditionally:
+`ClayYangMillsPhysicalStrong` now follows from exactly **two** hypotheses:
 
-| Hypothesis | Est. difficulty |
-|---|---|
-| `FeynmanKacFormula` | ~10% done (needs Balaban RG) |
-| `StateNormBound ψ_obs C_ψ` | ~40% done |
-| `HasSpectralGap T P₀ γ C` | ~25% done |
+| Hypothesis | Meaning | Est. progress |
+|---|---|---|
+| `PhysicalFeynmanKacFormula` | FK + unit obs states (distP ∈ ℕ, unit norm) | ~10% |
+| `HasSpectralGap T P₀ γ C` | Transfer matrix has spectral gap | ~25% |
 
 **Eliminated** (no longer live):
-- `hdistP` — C104 derived it from `FeynmanKacFormula` via `Nat.cast_nonneg` ✔
+- `hdistP` — C104: derived from FK via `Nat.cast_nonneg` ✔
+- `StateNormBound` — C105: absorbed into `PhysicalFeynmanKacFormula` (unit norm ⇒ C_ψ=1) ✔
 
 ## Campaign History
 
@@ -39,17 +39,18 @@ All three must be discharged to close the proof unconditionally:
 | C102 | v1.18.0 | FK+StateNorm → FeynmanKacOpNormBound (Cauchy-Schwarz) |
 | C103 | v1.19.0 | FeynmanKacToPhysicalStrong — chains C102→C87-2, 4-hyp theorem |
 | C104 | v1.20.0 | DistPNonnegFromFormula — hdistP from FK via Nat.cast_nonneg (4→3 hyps) |
+| C105 | v1.21.0 | UnitObsToPhysicalStrong — HasUnitObsNorm absorbs StateNormBound (3→2 hyps) |
 
 ## Progress
 
 | Component | Status |
 |---|---|
 | Formal chain (hypotheses → target) | COMPLETE |
-| FeynmanKacFormula | ~10% (needs Balaban RG) |
-| StateNormBound | ~40% |
+| PhysicalFeynmanKacFormula | ~10% (FK hardest; unit norm natural) |
 | HasSpectralGap | ~25% |
+| StateNormBound | **ELIMINATED** (C105) |
 | hdistP | **ELIMINATED** (C104) |
-| **Overall genuine progress** | **~22%** |
+| **Overall genuine progress** | **~24%** |
 
 ## Oracle Policy
 
