@@ -1311,3 +1311,18 @@ This is the first bundle that delivers the Clay Millennium *strong* statement (n
 **Oracle:** `[propext, Classical.choice, Quot.sound]`  zero sorry, zero new axioms.
 
 **Status:** CLOSED.
+
+
+### C115  NdepGapBundle (v1.31.0)
+**File:** `YangMills/L8_Terminal/NdepGapBundle.lean`
+**New definition:** `NdepGapBundle` -- structure packaging `hng`, `hgap`, `hy_pos`, `hC`, `hC_ub`, `hdist`, `hcont`
+**Theorem:** `physicalStrong_of_nDepGapBundle`
+**Reduction:** Bundles the C76-B path (sorry-free). Callers with a family of
+N-dependent spectral gaps `HasSpectralGap (getT N) (getP0 N) (y_lat N) (getC N)`,
+a uniform amplitude bound, a distance-compatible correlator estimate, and
+`HasContinuumMassGap` reach `ClayYangMillsPhysicalStrong` directly.
+Key advance over CCD bundles: the N-th spectral gap IS the lattice mass at resolution N --
+no `ConnectedCorrDecay` or `constantMassProfile` domination required.
+**Oracle:** `[propext, Classical.choice, Quot.sound]`  zero sorry, zero new axioms.
+
+**Status:** CLOSED.
