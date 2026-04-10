@@ -103,6 +103,7 @@ import YangMills.P8_PhysicalGap.PhysicalContractionBundle
 import YangMills.P8_PhysicalGap.WeakContractionBundle
 import YangMills.P8_PhysicalGap.SpectralGapBundle
 import YangMills.L8_Terminal.FeynmanKacBundle
+import YangMills.L8_Terminal.ClayStrongFromFeynmanKac
 import YangMills.L0_Lattice.FiniteLattice
 import YangMills.L0_Lattice.GaugeConfigurations
 import YangMills.L0_Lattice.WilsonAction
