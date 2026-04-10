@@ -1365,3 +1365,4 @@ no `ConnectedCorrDecay` or `constantMassProfile` domination required.
 **Status:** CLOSED.
 
 - [x] C119: NdepGapTheoremBundle  N-dep spectral gap path to ClayYangMillsTheorem
+- [x] C120: ConnectedCorrDecayDomTheoremBundle  dominated CCD path to ClayYangMillsTheorem NdepGapTheoremBundle  N-dep spectral gap path to ClayYangMillsTheorem
