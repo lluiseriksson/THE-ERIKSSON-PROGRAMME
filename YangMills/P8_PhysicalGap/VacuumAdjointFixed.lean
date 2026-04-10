@@ -43,5 +43,25 @@ theorem physicalStrong_of_projectedOpNormBound_rankOneVacuum_ketAdjointFixed
   exact physicalStrong_of_projectedOpNormBound_rankOneVacuum_ketRightProjectorInvariant
     Ω hΩ hP₀eq hfix hPT m hm hproj hopnorm hdistP
 
+
+
+-- C101-T1: ClayYangMills from self-adjoint T + ket invariance (removes hfixAdj)
+/-- If `T.adjoint = T` then ket invariance `T Ω = Ω` implies `T.adjoint Ω = Ω` at once.
+    Removes `hfixAdj` from the live-path hypothesis list; oracle: [propext,
+    Classical.choice, Quot.sound]. -/
+theorem physicalStrong_of_projectedOpNormBound_rankOneVacuum_selfAdjoint
+    {μ : Measure G} {plaquetteEnergy : G → ℝ} {β : ℝ} {F : G → ℝ}
+    {distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ}
+    {T P₀ : H →L[ℝ] H} {C_fk : ℝ}
+    (Ω : H) (hΩ : ‖Ω‖ = 1) (hP₀eq : P₀ = (innerSL ℝ Ω).smulRight Ω)
+    (hfix : T Ω = Ω) (hselfAdj : T.adjoint = T)
+    (m : ℝ) (hm : 0 < m)
+    (hproj : ‖T * ((1 : H →L[ℝ] H) - P₀)‖ ≤ Real.exp (-m))
+    (hopnorm : FeynmanKacOpNormBound μ plaquetteEnergy β F distP T P₀ C_fk)
+    (hdistP : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N), 0 ≤ distP N p q) :
+    ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP :=
+  physicalStrong_of_projectedOpNormBound_rankOneVacuum_ketAdjointFixed
+    Ω hΩ hP₀eq hfix (by rw [hselfAdj]; exact hfix) m hm hproj hopnorm hdistP
+
 end FullChain
 end YangMills

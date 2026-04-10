@@ -1186,3 +1186,6 @@ C92 / v1.08.0  VacuumProjectorAlgebra: derived rankOneProjector_idem, rankOnePro
 - [x] C98 v1.14.0: VacuumKetInvariant -- H1/H2 derive T * P0 = P0 from T Omega = Omega via map_smul; T1 physicalStrong_of_profiledProjectedOpNormBound_rankOneVacuum_ketBraInvariant derives hTP internally and calls C97; oracle [propext, Classical.choice, Quot.sound]
 - [x] C99 v1.15.0: VacuumBraFromProjectorInvariant -- H1/H2 derive bra invariance from P0*T=P0 via smul_eq_zero; T1 physicalStrong_of_projectedOpNormBound_rankOneVacuum_ketRightProjectorInvariant removes hbra hypothesis, derives it internally from hPT and calls C98; oracle [propext, Classical.choice, Quot.sound]
 - [x] C100 v1.16.0: VacuumAdjointFixed -- H1 derive P0*T=P0 from adjoint_inner_left; T1 physicalStrong_of_projectedOpNormBound_rankOneVacuum_ketAdjointFixed removes hPT, derives from hfixAdj; oracle [propext, Classical.choice, Quot.sound]
+
+### Phase 7  Hypothesis Reduction
+- [ ] C101 v1.17.0: SelfAdjointKetInvariant  H1 derive T.adjoint Ω = Ω from T.adjoint = T + T Ω = Ω; physicalStrong_of_projectedOpNormBound_rankOneVacuum_selfAdjoint removes hfixAdj, derives from hselfAdj; oracle [propext, Classical.choice, Quot.sound]
