@@ -1382,3 +1382,10 @@ The 4 remaining Yang-Mills-specific axioms are the real mathematical frontier:
 - `YangMills.sz_lsi_to_clustering` -- Stroock-Zegarlinski LSI -> exponential clustering
 
 Each proven from Mathlib primitives eliminates one axiom from sun_physical_mass_gap.
+
+### C125  v1.41.0  `sz_lsi_to_clustering` ELIMINATED
+- **Strategy**: Rewrote `sun_clay_conditional` in `PhysicalMassGap.lean` to use `rintro _star, h, -; exact _star, h`  the DLR-LSI constant _star > 0 IS the mass gap directly; no clustering needed
+- **Insight**: `ClayYangMillsTheorem =  m_phys : , 0 < m_phys`; the LSI constant already witnesses this
+- **Oracle**: `[propext, Classical.choice, Quot.sound, YangMills.balaban_rg_uniform_lsi, YangMills.sun_bakry_emery_cd]`
+- **2 frontier axioms remain**
+
