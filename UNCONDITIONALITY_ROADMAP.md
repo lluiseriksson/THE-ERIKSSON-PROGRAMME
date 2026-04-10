@@ -1268,3 +1268,11 @@ def PhysicalContractionBundle (...) : Prop :=
 **Oracle:** `[propext, Classical.choice, Quot.sound]` -- zero sorry, zero new axioms.
 
 **Status:** CLOSED.
+
+### C108  WeakPhysicalContractionBundle (v1.24.0)
+**File:** `YangMills/P8_PhysicalGap/WeakContractionBundle.lean`
+**New definition:** `HasWeakNormContraction T P`  4 conditions (drops `0 < TP`)
+**Theorem:** `physicalStrong_of_weakPhysicalContractionBundle`
+**Reduction:** Callers no longer need to certify `T  P`; degenerate T=P case
+(where all Wilson correlators vanish) is handled automatically via trivial spectral gap.
+**Oracle:** `[propext, Classical.choice, Quot.sound]`  zero sorry, zero new axioms.
