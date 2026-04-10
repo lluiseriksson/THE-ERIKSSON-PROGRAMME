@@ -1298,3 +1298,16 @@ Generalises C112 (which fixed the profile to `constantMassProfile h.m`).
 **Oracle:** `[propext, Classical.choice, Quot.sound]`  zero sorry, zero new axioms.
 
 **Status:** CLOSED.
+
+
+### C114  FeynmanKacStrongBundle (v1.30.0)
+**File:** `YangMills/L8_Terminal/FeynmanKacStrongBundle.lean`
+**New definition:** `FeynmanKacStrongBundle` -- structure with fields `hgap`, `hψ`, `hFK`, `hdistP`
+**Theorem:** `strong_of_feynmanKacStrongBundle`
+**Reduction:** The highest-level one-shot bundle in the L8 chain. Callers supplying
+`FeynmanKacFormula` + `HasSpectralGap` + `StateNormBound` + `distP_nonneg` reach
+`ClayYangMillsStrong` directly in one constructor application, with zero sorry and no new axioms.
+This is the first bundle that delivers the Clay Millennium *strong* statement (not just PhysicalStrong).
+**Oracle:** `[propext, Classical.choice, Quot.sound]`  zero sorry, zero new axioms.
+
+**Status:** CLOSED.

@@ -6,7 +6,7 @@ A Lean 4 / Mathlib 4 formalization of the Yang–Mills mass gap problem (Clay Mi
 The goal: reduce `ClayYangMillsPhysicalStrong` to a finite list of explicit hypotheses,
 then eliminate those hypotheses one campaign at a time.
 
-**Current version: v1.29.0**  
+**Current version: v1.30.0**  
 **Live hypotheses: 2**
 
 ## The Main Theorem
@@ -19,7 +19,7 @@ ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP :=
 
 Genuine non-vacuous exponential decay of Wilson loop correlators.
 
-## Current State (v1.29.0)
+## Current State (v1.30.0)
 
 ### Live Hypotheses (2 remaining)
 
@@ -37,12 +37,12 @@ Genuine non-vacuous exponential decay of Wilson loop correlators.
 
 | Hypothesis | Campaign | How |
 |---|---|---|
-| `HasSpectralGap T P₀ γ C` | C106 / v1.29.0 | Replaced by `HasNormContraction` |
+| `HasSpectralGap T P₀ γ C` | C106 / v1.30.0 | Replaced by `HasNormContraction` |
 | `StateNormBound ψ_obs C_ψ` | C105 / v1.21.0 | Absorbed by `HasUnitObsNorm` (C_ψ=1) |
 | `hdistP` (distP ≥ 0) | C104 / v1.20.0 | `Nat.cast_nonneg` |
 | Earlier hypotheses | C1–C103 | See UNCONDITIONALITY_ROADMAP.md |
 
-## Key Definitions (v1.29.0)
+## Key Definitions (v1.30.0)
 
 ```lean
 -- C105: unit-normalized quantum states
@@ -133,6 +133,6 @@ lake build YangMills                                             # full build
 
 Apache 2.0
 
-- C110 (v1.29.0): FeynmanKacBundle in YangMills/L8_Terminal/FeynmanKacBundle.lean -- bundles FeynmanKacFormula+StateNormBound+HasSpectralGap+distP_nonneg; physicalStrong_of_feynmanKacBundle; oracle clean.
+- C110 (v1.30.0): FeynmanKacBundle in YangMills/L8_Terminal/FeynmanKacBundle.lean -- bundles FeynmanKacFormula+StateNormBound+HasSpectralGap+distP_nonneg; physicalStrong_of_feynmanKacBundle; oracle clean.
 
-- C111 (v1.29.0): ClayStrongFromFeynmanKac in YangMills/L8_Terminal/ClayStrongFromFeynmanKac.lean -- clayStrong_of_feynmanKacBundle : FeynmanKacBundle -> ClayYangMillsStrong; oracle clean.
+- C111 (v1.30.0): ClayStrongFromFeynmanKac in YangMills/L8_Terminal/ClayStrongFromFeynmanKac.lean -- clayStrong_of_feynmanKacBundle : FeynmanKacBundle -> ClayYangMillsStrong; oracle clean.
