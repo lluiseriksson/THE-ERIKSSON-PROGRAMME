@@ -1,0 +1,3 @@
+import YangMills.P8_PhysicalGap.VacuumBraFromProjectorInvariant
+
+#print axioms YangMills.physicalStrong_of_projectedOpNormBound_rankOneVacuum_ketRightProjectorInvariant
