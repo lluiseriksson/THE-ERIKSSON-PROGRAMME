@@ -1315,6 +1315,18 @@ This is the first bundle that delivers the Clay Millennium *strong* statement (n
 
 
 
+
+### C118  ConnectedCorrDecayTheoremBundle (v1.34.0)
+
+**File**: `YangMills/L8_Terminal/ConnectedCorrDecayTheoremBundle.lean`
+**Base theorems**: `connectedCorrDecay_implies_physicalStrong_via_gen` + `physicalStrong_implies_theorem`
+**Delivers**: `ClayYangMillsTheorem` via CCD path (2-field bundle: `ccd` + `distP_nonneg`)
+**Oracle**: `[propext, Classical.choice, Quot.sound]`. Zero sorry.
+**Commit**: `ffd3716`, tag `v1.34.0`.
+
+CCD analogue of C117. Proof chain:
+`ConnectedCorrDecay`  `ClayYangMillsPhysicalStrong`  `ClayYangMillsTheorem`.
+
 ### C117  FeynmanKacTheoremBundle (v1.33.0)
 
 **File**: `YangMills/L8_Terminal/FeynmanKacTheoremBundle.lean`
