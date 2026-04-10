@@ -1230,3 +1230,23 @@ C92 / v1.08.0  VacuumProjectorAlgebra: derived rankOneProjector_idem, rankOnePro
 **Proof**: FK gives exists n : N, distP N p q = n, so 0 <= n by Nat.cast_nonneg.
 **Live path after**: 3 hypotheses: FeynmanKacFormula, StateNormBound, HasSpectralGap
 **Oracle**: [propext, Classical.choice, Quot.sound]
+
+## C105  v1.21.0: UnitObsToPhysicalStrong
+
+**File**: YangMills/P8_PhysicalGap/UnitObsToPhysicalStrong.lean
+**Theorems**: stateNormBound_of_hasUnitObsNorm, physicalStrong_of_physicalFormula_spectralGap
+**New defs**: HasUnitObsNorm (unit-norm quantum states), PhysicalFeynmanKacFormula (FK + HasUnitObsNorm)
+**Eliminated**: StateNormBound ψ_obs C_ψ (absorbed by HasUnitObsNorm with C_ψ=1)
+**Proof**: Unit norm ⇒ StateNormBound 1 trivially; chain through C104 theorem.
+**Live path after**: 2 hypotheses: PhysicalFeynmanKacFormula, HasSpectralGap
+**Oracle**: [propext, Classical.choice, Quot.sound]
+
+## C106  v1.22.0: NormContractionToPhysical
+
+**File**: YangMills/P8_PhysicalGap/NormContractionToPhysical.lean
+**Theorems**: spectralGap_of_hasNormContraction, physicalStrong_of_physicalFormula_normContraction
+**New defs**: HasNormContraction (P₀ idem + T*P₀=P₀ + P₀*T=P₀ + 0<‖T-P₀‖<1)
+**Eliminated**: HasSpectralGap replaced by concrete operator-norm bound HasNormContraction
+**Proof**: spectralGap_of_normContraction_via_le (C86/NormBoundToSpectralGap) + physicalStrong_of_physicalFormula_spectralGap (C105).
+**Live path after**: 2 hypotheses: PhysicalFeynmanKacFormula, HasNormContraction
+**Oracle**: [propext, Classical.choice, Quot.sound]

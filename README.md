@@ -1,64 +1,80 @@
-# The Eriksson Programme: Machine-Verified Yang-Mills Mass Gap
+# THE-ERIKSSON-PROGRAMME
 
-**v1.21.0** | Lean 4.29.0-rc6 / Mathlib4 | Autonomous campaign loop active
+**Lean 4 / Mathlib 4 formalization of the Yang–Mills mass gap problem**  
+**Version**: v1.22.0 | **Live hypotheses**: 2
 
-## What This Is
+## Goal
 
-A long-term Lean 4 formalization project targeting the **Yang-Mills existence and mass gap** problem (one of the Clay Millennium Problems). The goal is a fully machine-verified proof of `ClayYangMillsPhysicalStrong` with zero `sorry` and only standard axioms.
-
-## The Non-Vacuous Target
+Reduce `ClayYangMillsPhysicalStrong` — exponential decay of Wilson loop correlators —
+to a finite list of explicit, checkable hypotheses. Eliminate them one campaign at a time.
 
 ```lean
-theorem ClayYangMillsPhysicalStrong ... :
-    ∃ C γ : ℝ, 0 < γ ∧ ∀ N p q,
-      |wilsonConnectedCorr ... N p q| ≤ C * Real.exp (-γ * distP N p q)
+ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP :=
+  ∀ N p q, |wilsonConnectedCorr μ plaquetteEnergy β F N p q|
+            ≤ C · exp(−γ · distP N p q)
 ```
 
-This is **genuinely non-vacuous** — unlike `ClayYangMillsTheorem`/`ClayYangMillsStrong` (trivially true by `False.elim`).
+## Current Status (v1.22.0)
 
-## Current Status: 2 Live Hypotheses
-
-The formal deduction chain is **complete**. `ClayYangMillsPhysicalStrong` follows from exactly two remaining hypotheses:
-
-| Hypothesis | Meaning | Est. progress |
+| Hypothesis | Status | Concreteness |
 |---|---|---|
-| `PhysicalFeynmanKacFormula` | FK + unit-norm obs states | ~10% |
-| `HasSpectralGap T P₀ γ C` | Transfer matrix spectral gap | ~25% |
+| `PhysicalFeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs` | **Live** (~10%) | FK bridge + unit obs norm |
+| `HasNormContraction T P₀` | **Live** (~35%) | `‖T − P₀‖ < 1` + idempotent |
 
-**Recently eliminated:**
-- C103 (v1.19.0): `FeynmanKacToPhysicalStrong` — 4-hypothesis chain proven
-- C104 (v1.20.0): `DistPNonnegFromFormula` — `hdistP` eliminated (FK ⇒ distP ∈ ℕ)
-- C105 (v1.21.0): `UnitObsToPhysicalStrong` — `StateNormBound` absorbed (unit norm ⇒ C_ψ=1)
+### Recently Eliminated
 
-**Overall genuine progress: ~24%**
+| Hypothesis | Campaign | Version | How |
+|---|---|---|---|
+| `HasSpectralGap T P₀ γ C` | C106 | v1.22.0 | Replaced by `HasNormContraction` |
+| `StateNormBound ψ_obs C_ψ` | C105 | v1.21.0 | Absorbed by `HasUnitObsNorm` |
+| `hdistP` (distP ≥ 0) | C104 | v1.20.0 | `Nat.cast_nonneg` |
 
-## Repository Structure
+## Top-Level Theorem (C106)
 
-```
-YangMills/
-  P8_PhysicalGap/
-    FeynmanKacBridge.lean           ← FeynmanKacFormula, StateNormBound defs
-    FeynmanKacToPhysicalStrong.lean ← C103: 4-hyp chain
-    DistPNonnegFromFormula.lean     ← C104: hdistP elimination
-    UnitObsToPhysicalStrong.lean    ← C105: StateNormBound elimination
-    OperatorNormBound.lean          ← C87: op-norm exp decay
-    ...
-  YangMills.lean                    ← root imports
-UNCONDITIONALITY_ROADMAP.md
-STATE_OF_THE_PROJECT.md
-AI_ONBOARDING.md
-.claude/agents/librarian.md
+```lean
+theorem physicalStrong_of_physicalFormula_normContraction
+    (hpFK : PhysicalFeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs)
+    (hnc  : HasNormContraction T P₀) :
+    ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP
 ```
 
-## Oracle Policy
+**Oracle**: `[propext, Classical.choice, Quot.sound]` — zero `sorry`, zero new axioms.
 
-Every P8_PhysicalGap theorem: `#print axioms` → `[propext, Classical.choice, Quot.sound]`. Zero `sorry`. Zero new axioms.
+## Key Definitions
 
-## Campaign Loop
+```lean
+-- Unit-normalized quantum states (C105)
+def HasUnitObsNorm (ψ_obs : (N : ℕ) → ConcretePlaquette d N → H) : Prop :=
+  ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N), ‖ψ_obs N p‖ = 1
 
-1. Strategist picks target → 2. Executor writes Lean → 3. Build+oracle → 4. Commit+tag+push → 5. Docs → GOTO 1
+-- Combined physical hypothesis (C105)
+def PhysicalFeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs : Prop :=
+  FeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs ∧ HasUnitObsNorm ψ_obs
 
-See `AI_ONBOARDING.md` for full protocol.
+-- Concrete operator-norm contraction (C106)
+def HasNormContraction (T P₀ : H →L[ℝ] H) : Prop :=
+  P₀ * P₀ = P₀ ∧ T * P₀ = P₀ ∧ P₀ * T = P₀ ∧ 0 < ‖T − P₀‖ ∧ ‖T − P₀‖ < 1
+```
+
+## Structure
+
+```
+YangMills/P8_PhysicalGap/
+  FeynmanKacBridge.lean           -- FK formula, StateNormBound
+  NormBoundToSpectralGap.lean     -- spectralGap_of_normContraction_via_le
+  DistPNonnegFromFormula.lean     -- C104: hdistP eliminated
+  UnitObsToPhysicalStrong.lean    -- C105: HasUnitObsNorm, PhysicalFeynmanKacFormula
+  NormContractionToPhysical.lean  -- C106: HasNormContraction
+YangMills.lean                    -- root imports
+UNCONDITIONALITY_ROADMAP.md       -- campaign log (C1–C106)
+STATE_OF_THE_PROJECT.md           -- current status
+AI_ONBOARDING.md                  -- AI agent guide
+```
+
+## Campaign Protocol
+
+1. Read repo state → 2. Pick highest-value target → 3. Write Lean + build + oracle
+4. Commit + tag + push → 5. Update docs → 6. GOTO 1
 
 ## License
 

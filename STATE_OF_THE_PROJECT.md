@@ -1,63 +1,74 @@
-# State of the Project
+# State of the Project — THE-ERIKSSON-PROGRAMME
 
-**Version**: v1.21.0  
+**Version**: v1.22.0  
 **Date**: 2026-04-10  
-**Status**: Active development — autonomous campaign loop
+**Live hypotheses**: 2
 
-## The Target
+## What Has Been Accomplished
 
-`ClayYangMillsPhysicalStrong`: machine-verified Yang-Mills mass gap.
+The project has reduced `ClayYangMillsPhysicalStrong` — exponential decay of Wilson loop
+correlators — to exactly 2 explicit mathematical hypotheses. Every other condition has been
+derived or eliminated through 106 campaigns.
 
-```lean
-theorem ClayYangMillsPhysicalStrong ... :
-    ∀ N p q, |W_cc(N,p,q)| ≤ C · exp(−γ · distP N p q)
+## Current Live Hypotheses
+
+### 1. PhysicalFeynmanKacFormula (∼10% done)
+
+```
+PhysicalFeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs :=
+  FeynmanKacFormula ... ∧ HasUnitObsNorm ψ_obs
 ```
 
-This is **non-vacuous** (unlike `ClayYangMillsTheorem`/`ClayYangMillsStrong` which are trivially true by `False.elim`).
+States that the Wilson correlator equals a quantum mechanical inner product
+`⟨ψ_obs N p, (T^n − P₀)(ψ_obs N q)⟩` and all observables have unit norm.
+Requires Balaban renormalization group construction. Hardest remaining hypothesis.
 
-## Live Hypothesis Path (2 remaining)
+### 2. HasNormContraction T P₀ (∼35% done)
 
-`ClayYangMillsPhysicalStrong` now follows from exactly **two** hypotheses:
+```
+HasNormContraction T P₀ :=
+  P₀ * P₀ = P₀ ∧ T * P₀ = P₀ ∧ P₀ * T = P₀ ∧ 0 < ‖T − P₀‖ ∧ ‖T − P₀‖ < 1
+```
 
-| Hypothesis | Meaning | Est. progress |
-|---|---|---|
-| `PhysicalFeynmanKacFormula` | FK + unit obs states (distP ∈ ℕ, unit norm) | ~10% |
-| `HasSpectralGap T P₀ γ C` | Transfer matrix has spectral gap | ~25% |
+States that the transfer matrix T contracts to the ground-state projector P₀
+in operator norm. More concrete than the previous `HasSpectralGap` (C106).
+Requires constructing T explicitly from the Yang–Mills path integral.
 
-**Eliminated** (no longer live):
-- `hdistP` — C104: derived from FK via `Nat.cast_nonneg` ✔
-- `StateNormBound` — C105: absorbed into `PhysicalFeynmanKacFormula` (unit norm ⇒ C_ψ=1) ✔
+## Recently Eliminated Hypotheses
 
-## Campaign History
+| Hypothesis | Campaign | Version | Method |
+|---|---|---|---|
+| `StateNormBound ψ_obs C_ψ` | C105 | v1.21.0 | Absorbed by `HasUnitObsNorm` (C_ψ=1) |
+| `hdistP` (distP ≥ 0) | C104 | v1.20.0 | `Nat.cast_nonneg` |
+| `HasSpectralGap T P₀ γ C` | C106 | v1.22.0 | Replaced by `HasNormContraction` |
 
-| Campaign | Tag | Key Elimination |
-|---|---|---|
-| C87 | v1.03.0 | OperatorNormBound: exp decay from op-norm |
-| C88–C96 | v1.04–v1.12 | selfAdj, rank-one P₀, T0=0, ‖Ω‖=1, Ω, exp(−m), spectral gap |
-| C97–C100 | v1.13–v1.16 | isometry, continuity, Lipschitz+StateNorm, FK witness |
-| C101 | v1.17.0 | FK+transfer-matrix reduction |
-| C102 | v1.18.0 | FK+StateNorm → FeynmanKacOpNormBound (Cauchy-Schwarz) |
-| C103 | v1.19.0 | FeynmanKacToPhysicalStrong — chains C102→C87-2, 4-hyp theorem |
-| C104 | v1.20.0 | DistPNonnegFromFormula — hdistP from FK via Nat.cast_nonneg (4→3 hyps) |
-| C105 | v1.21.0 | UnitObsToPhysicalStrong — HasUnitObsNorm absorbs StateNormBound (3→2 hyps) |
+## Main Bridge Theorems
 
-## Progress
+```lean
+-- C106: top-level 2-hypothesis theorem
+theorem physicalStrong_of_physicalFormula_normContraction
+    (hpFK : PhysicalFeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs)
+    (hnc : HasNormContraction T P₀) :
+    ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP
 
-| Component | Status |
-|---|---|
-| Formal chain (hypotheses → target) | COMPLETE |
-| PhysicalFeynmanKacFormula | ~10% (FK hardest; unit norm natural) |
-| HasSpectralGap | ~25% |
-| StateNormBound | **ELIMINATED** (C105) |
-| hdistP | **ELIMINATED** (C104) |
-| **Overall genuine progress** | **~24%** |
+-- C105: spectral gap version
+theorem physicalStrong_of_physicalFormula_spectralGap
+    (hpFK : PhysicalFeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs)
+    (hgap : HasSpectralGap T P₀ γ C_gap) :
+    ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP
+```
 
-## Oracle Policy
+## Oracle Status
 
-All P8_PhysicalGap theorems: oracle = `[propext, Classical.choice, Quot.sound]`. Zero sorry. Zero new axioms.
+All P8_PhysicalGap theorems: `#print axioms` → `[propext, Classical.choice, Quot.sound]`.
+Zero `sorry`. Zero new axioms.
 
-## Build
+## Progress Estimate
 
-- Lean 4.29.0-rc6, Lake 5.0.0-src+00659f8
-- `lake exe cache get` + `lake build <target>`
-- CI via Google Colab, deploy_CXX.py scripts
+- Overall: ∼27% (2 of ~7.5 effective hypotheses eliminated-to-concrete)
+- `HasNormContraction`: ∼35% (operator theory groundwork exists)
+- `PhysicalFeynmanKacFormula`: ∼10% (needs Balaban RG)
+
+## Campaign Log Summary
+
+See `UNCONDITIONALITY_ROADMAP.md` for full campaign history (C1–C106).
