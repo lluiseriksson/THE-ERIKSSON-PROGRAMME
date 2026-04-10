@@ -104,6 +104,7 @@ import YangMills.P8_PhysicalGap.WeakContractionBundle
 import YangMills.P8_PhysicalGap.SpectralGapBundle
 import YangMills.L8_Terminal.FeynmanKacBundle
 import YangMills.L8_Terminal.ClayStrongFromFeynmanKac
+import YangMills.L8_Terminal.ClayStrongFromFeynmanKacTheoremBundle
 import YangMills.L8_Terminal.ConnectedCorrDecayBundle
 import YangMills.L8_Terminal.ConnectedCorrDecayDomBundle
 import YangMills.L8_Terminal.ConnectedCorrDecayDomTheoremBundle
