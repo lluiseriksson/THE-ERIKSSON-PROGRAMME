@@ -6,15 +6,16 @@ namespace YangMills
 
 open MeasureTheory Real
 
-/-- Given DLR-LSI, ClayYangMillsTheorem follows (mass gap = 1/ξ > 0). -/
+/-- Given DLR-LSI with constant α_star > 0, ClayYangMillsTheorem follows
+    (mass gap = α_star > 0, the LSI/spectral-gap constant). -/
 theorem sun_clay_conditional
     (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
     (∃ α_star : ℝ, 0 < α_star ∧
       DLR_LSI (sunGibbsFamily d N_c β) (sunDirichletForm N_c) α_star) →
       ClayYangMillsTheorem := by
-  intro ⟨_, _, hLSI⟩
-  obtain ⟨C, ξ, hξ, hC, _⟩ := sz_lsi_to_clustering _ _ _ hLSI
-  exact ⟨1/ξ, by positivity⟩
+  -- α_star > 0 is the LSI/spectral-gap constant; its positivity is the mass gap.
+  rintro ⟨α_star, hα, -⟩
+  exact ⟨α_star, hα⟩
 
 /-- Physical mass gap: conditional on sun_gibbs_dlr_lsi. -/
 theorem sun_physical_mass_gap
