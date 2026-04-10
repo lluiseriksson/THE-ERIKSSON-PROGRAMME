@@ -99,6 +99,7 @@ import YangMills.P8_PhysicalGap.FeynmanKacToPhysicalStrong
 import YangMills.P8_PhysicalGap.DistPNonnegFromFormula
 import YangMills.P8_PhysicalGap.UnitObsToPhysicalStrong
 import YangMills.P8_PhysicalGap.NormContractionToPhysical
+import YangMills.P8_PhysicalGap.PhysicalContractionBundle
 import YangMills.L0_Lattice.FiniteLattice
 import YangMills.L0_Lattice.GaugeConfigurations
 import YangMills.L0_Lattice.WilsonAction
