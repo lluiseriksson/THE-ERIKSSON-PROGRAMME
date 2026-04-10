@@ -1,0 +1,3 @@
+import YangMills.P8_PhysicalGap.VacuumKetInvariant
+
+#print axioms YangMills.physicalStrong_of_profiledProjectedOpNormBound_rankOneVacuum_ketBraInvariant
