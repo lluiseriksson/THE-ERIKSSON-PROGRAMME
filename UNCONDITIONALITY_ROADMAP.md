@@ -1313,6 +1313,19 @@ This is the first bundle that delivers the Clay Millennium *strong* statement (n
 **Status:** CLOSED.
 
 
+
+### C116  ConnectedCorrDecayBundle (v1.32.0)
+
+**File**: `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`
+**Base theorem**: `connectedCorrDecay_implies_physicalStrong_via_gen`
+**Delivers**: `ClayYangMillsPhysicalStrong` (2-field bundle: `ccd` + `distP_nonneg`)
+**Oracle**: `[propext, Classical.choice, Quot.sound]`. Zero sorry.
+**Commit**: `a750070`, tag `v1.32.0`.
+
+Minimal certificate for `ClayYangMillsPhysicalStrong` via the constant-profile CCD path.
+Unlike `ConnectedCorrDecayDomBundle` (C113), no explicit `LatticeMassProfile` is needed 
+the mass profile is derived internally as `constantMassProfile h.m`.
+
 ### C115  NdepGapBundle (v1.31.0)
 **File:** `YangMills/L8_Terminal/NdepGapBundle.lean`
 **New definition:** `NdepGapBundle` -- structure packaging `hng`, `hgap`, `hy_pos`, `hC`, `hC_ub`, `hdist`, `hcont`
