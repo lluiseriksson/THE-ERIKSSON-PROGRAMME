@@ -95,6 +95,7 @@ import YangMills.P8_PhysicalGap.VacuumKetInvariant
 import YangMills.P8_PhysicalGap.VacuumBraFromProjectorInvariant
 import YangMills.P8_PhysicalGap.VacuumAdjointFixed
 import YangMills.P8_PhysicalGap.FeynmanKacOpNormFromFormula
+import YangMills.P8_PhysicalGap.FeynmanKacToPhysicalStrong
 import YangMills.L0_Lattice.FiniteLattice
 import YangMills.L0_Lattice.GaugeConfigurations
 import YangMills.L0_Lattice.WilsonAction
