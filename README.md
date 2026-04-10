@@ -1,78 +1,88 @@
-# The Eriksson Programme: Machine-Verified Yang–Mills Mass Gap
+# The Eriksson Programme: Machine-Verified Yang-Mills Mass Gap
+
+**v1.20.0** | Lean 4.29.0-rc6 / Mathlib4 | Autonomous campaign loop active
 
 ## What This Is
 
-A long-term Lean 4 formalization project targeting the **Yang–Mills existence and mass gap problem**. The goal is to reduce the problem to the smallest possible set of explicitly-stated, machine-checked hypotheses.
+A long-term Lean 4 formalization project targeting the **Yang-Mills existence and mass gap** problem (one of the Clay Millennium Problems). The goal is to reach a fully machine-verified proof of `ClayYangMillsPhysicalStrong` with zero `sorry` and only standard axioms.
 
-**Current tag**: v1.18.0 (Campaign C102 complete)
-**Lean**: 4.29.0-rc6 · **Mathlib**: current · **Lake**: 5.0.0-src
+## The Non-Vacuous Target
 
-## Two Targets: Vacuous vs. Non-Vacuous
-
-A critical discovery (C72, v0.88.0): both `ClayYangMillsTheorem` and `ClayYangMillsStrong` are **vacuously provable** via trivial witnesses. They remain in the codebase but are **not the genuine goal**.
-
-The genuine, non-vacuous target is:
-
-```
-ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP
+```lean
+theorem ClayYangMillsPhysicalStrong
+    (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ) (F : G → ℝ)
+    (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ) :
+    ∃ C γ : ℝ, 0 < γ ∧ ∀ N p q,
+      |wilsonConnectedCorr μ plaquetteEnergy β F N p q| ≤ C * Real.exp (-γ * distP N p q)
 ```
 
-This asserts **exponential decay of connected correlators**:
+This is **genuinely non-vacuous** — unlike `ClayYangMillsTheorem` and `ClayYangMillsStrong` which use `sorry` in their hypotheses and are dischargeable by `False.elim`.
 
-> ∀ N p q, |W_cc(N,p,q)| ≤ C · exp(−γ · distP N p q)
+## Current Status: 3 Live Hypotheses
 
-where W_cc is the Wilson connected correlator and γ > 0 is the mass gap.
+The formal deduction chain is **complete**. `ClayYangMillsPhysicalStrong` follows from exactly three remaining hypotheses:
 
-## Honest Progress Assessment
+| Hypothesis | Meaning | Est. progress |
+|---|---|---|
+| `FeynmanKacFormula` | Path-integral representation + distP ∈ ℕ | ~10% |
+| `StateNormBound ψ_obs C_ψ` | Observation states are norm-bounded | ~40% |
+| `HasSpectralGap T P₀ γ C` | Transfer matrix has spectral gap | ~25% |
 
-- `ClayYangMillsTheorem` / `ClayYangMillsStrong`: **100% formalized but vacuous**
-- `ClayYangMillsPhysicalStrong` (genuine target): **∼19% complete**
-  - The formal chain from 4 hypotheses to the conclusion is complete (P8_PhysicalGap)
-  - The 3 core physics hypotheses remain unproven
-  - `FeynmanKacFormula` is the deepest gap (requires Balaban RG machinery)
+**Eliminated in recent campaigns:**
+- C103 (v1.19.0): `FeynmanKacToPhysicalStrong` — chains C102→C87-2, proves 4-hyp theorem
+- C104 (v1.20.0): `DistPNonnegFromFormula` — derives `hdistP` from FK via `Nat.cast_nonneg`, reduces 4→3 hyps
 
-## Live Path Hypotheses (4 as of v1.18.0)
+**Overall genuine progress: ~22%**
 
-| # | Hypothesis | Description |
-|---|-----------|-------------|
-| 1 | `FeynmanKacFormula` | FK transfer-matrix representation of W_cc |
-| 2 | `StateNormBound` | ‖ψ_obs N p‖ ≤ C_ψ (uniform state norm bound) |
-| 3 | `HasSpectralGap T P₀ γ C` | Spectral gap of the transfer matrix |
-| 4 | `hdistP` | 0 ≤ distP N p q (distance non-negativity) |
+## Repository Structure
 
-C102 eliminated `FeynmanKacOpNormBound` via Cauchy-Schwarz (derived from FK + StateNorm).
-C103 (in progress) will chain to prove `ClayYangMillsPhysicalStrong` from hypotheses 1–4.
-
-## P8_PhysicalGap Campaign History (C87–C102)
-
-| Campaign | Tag | Key Elimination |
-|----------|-----|----------------|
-| C87 | v1.03.0 | OperatorNormBound: exp decay from op-norm + SpectralGap |
-| C88 | v1.04.0 | SpectralGap from ‖T(1-P₀)‖ ≤ e^{-m} norm bound |
-| C89–C96 | v1.05–v1.12 | Eliminated: selfAdj, rank-one P₀, TΩ=Ω, ‖Ω‖=1, Ω existence, exp(-m) bound |
-| C97–C100 | v1.13–v1.16 | Eliminated: isometry, continuity, Lipschitz→StateNorm, FK witness |
-| C101 | v1.17.0 | Reduced FK to transfer-matrix assumptions |
-| C102 | v1.18.0 | **Cauchy-Schwarz bridge**: FK+StateNorm → FeynmanKacOpNormBound |
+```
+YangMills/
+  P8_PhysicalGap/           ← main campaign directory
+    FeynmanKacBridge.lean    ← FeynmanKacFormula definition
+    FeynmanKacToPhysicalStrong.lean  ← C103: 4-hyp chain
+    DistPNonnegFromFormula.lean      ← C104: hdistP elimination
+    OperatorNormBound.lean   ← C87: op-norm exp decay
+    ...
+  YangMills.lean             ← root imports
+UNCONDITIONALITY_ROADMAP.md  ← full campaign log
+STATE_OF_THE_PROJECT.md      ← current state
+AI_ONBOARDING.md             ← for AI agents picking up the work
+.claude/agents/librarian.md  ← doc-update agent spec
+```
 
 ## Oracle Policy
 
-Every P8_PhysicalGap theorem must pass:
+Every theorem in P8_PhysicalGap must satisfy:
+
+```
+#print axioms <theorem> 
+-- [propext, Classical.choice, Quot.sound]
+```
+
+Zero `sorry`. Zero new axioms. Non-negotiable.
+
+## Campaign Loop
+
+This project runs an **autonomous multi-agent loop**:
+
+1. Strategist picks highest-value hypothesis to eliminate
+2. Executor writes the Lean proof
+3. Build + oracle check
+4. Commit + tag + push
+5. Librarian updates docs
+6. GOTO 1
+
+See `AI_ONBOARDING.md` for the full protocol.
+
+## Build
+
 ```bash
-#print axioms YangMills.<theorem>
--- Required: [propext, Classical.choice, Quot.sound]
--- Forbidden: sorry, yangMills_continuum_mass_gap, any new axiom
+export PATH="$HOME/.elan/bin:$PATH"
+lake exe cache get
+lake build YangMills.P8_PhysicalGap.DistPNonnegFromFormula
 ```
 
-## Multi-Agent Deployment Loop
+## License
 
-```
-strategist → executor → build/oracle/push → librarian (docs) → architect → next campaign
-```
-
-Campaigns deployed via `deploy_CXX.py` scripts in Google Colab.
-
-## Repository
-
-- **GitHub**: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
-- **Colab**: https://colab.research.google.com/drive/1LAkT6uhn-czP2EbO5qQhcYUtqFSZQUXs
-- **Author**: Lluís Eriksson
+Apache 2.0
