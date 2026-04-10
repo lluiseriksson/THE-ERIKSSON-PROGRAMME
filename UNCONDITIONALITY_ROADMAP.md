@@ -1363,3 +1363,5 @@ no `ConnectedCorrDecay` or `constantMassProfile` domination required.
 **Oracle:** `[propext, Classical.choice, Quot.sound]`  zero sorry, zero new axioms.
 
 **Status:** CLOSED.
+
+- [x] C119: NdepGapTheoremBundle  N-dep spectral gap path to ClayYangMillsTheorem
