@@ -2027,3 +2027,4 @@ C92 / v1.08.0  VacuumProjectorAlgebra: derived rankOneProjector_idem, rankOnePro
 - [x] C94 v1.10.0: ProjectedOpNormToComplementContraction 2014 H1/H2/T1 derive complement contraction from projected-op-norm bound 2016T*(1-P2080)2016 2264 exp(-m); oracle [propext, Classical.choice, Quot.sound]
 - [x] C95 v1.11.0: SelfAdjointVacuum 2014 H1/H2/T1 derive adjoint-fixed from self-adjointness; removes hfixAdj hypothesis from live path; oracle [propext, Classical.choice, Quot.sound]
 - [x] C96 v1.12.0: VacuumProjectorFixedVector -- H1/H2/T1 derive T-fixed-vector from projector-absorb-left; oracle [propext, Classical.choice, Quot.sound]
+- [x] C97 v1.13.0: VacuumBraInvariant -- H1/H2/T1 derive ClayYangMillsPhysicalStrong from bra invariance (innerSL R Omega)(T x) = (innerSL R Omega) x; removes self-adjointness hypothesis via adjoint-fixed derivation; oracle [propext, Classical.choice, Quot.sound]
