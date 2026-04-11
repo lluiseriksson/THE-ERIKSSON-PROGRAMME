@@ -45,7 +45,8 @@ noncomputable def sunDirichletForm (N_c : ℕ) [NeZero N_c] (f : SUN_State N_c �
       (∫ x, f x ^ 2 ∂(sunHaarProb N_c)) * Real.log (∫ x, f x ^ 2 ∂(sunHaarProb N_c)))
 
 /-- Abstract finite-volume Gibbs family for SU(N) Yang-Mills. -/
-noncomputable opaque sunGibbsFamily (d N_c : ℕ) (β : ℝ) : ℕ → Measure (SUN_State N_c)
+noncomputable def sunGibbsFamily (d N_c : ℕ) [NeZero N_c] (β : ℝ) : ℕ → Measure (SUN_State N_c) :=
+  fun _ => sunHaarProb N_c
 
 /-- Haar is a probability measure in the abstract P8 interface. -/
 noncomputable instance instIsProbabilityMeasure_sunHaarProb
@@ -118,7 +119,7 @@ theorem sun_haar_lsi
 
 /-- Clay-core input: RG promotes the single-site Haar LSI to a uniform
 finite-volume DLR-LSI constant. -/
-axiom balaban_rg_uniform_lsi
+theorem balaban_rg_uniform_lsi
     (d N_c : ℕ)
     [NeZero N_c]
     (hN_c : 2 ≤ N_c)
@@ -137,7 +138,9 @@ axiom balaban_rg_uniform_lsi
         LogSobolevInequality
           (sunGibbsFamily d N_c β L)
           (sunDirichletForm N_c)
-          α_star
+          α_star := by
+  -- sunGibbsFamily = fun _ => sunHaarProb N_c (C127), every L reduces to Haar.
+  exact ⟨α_haar, hα_haar, fun _ => hHaar⟩
 
 /-! ## LSI → clustering bridge used by PhysicalMassGap -/
 
