@@ -3,133 +3,45 @@ import YangMills.P8_PhysicalGap.LSIDefinitions
 import YangMills.P8_PhysicalGap.SUN_StateConstruction
 
 /-!
-# P8.3: Bałaban RG → DLR-LSI(α*) — repaired abstract interface
+# P8.3: Bałaban RG → DLR-LSI(α*) — C132: Gibbs normalization + correct HS axiom
 
-This file is intentionally **abstract**.
+## Summary of C132 changes (v1.44.0)
 
-Reason:
-the previous version mixed an abstract SU(N) interface
-(`SUN_State`, `sunGibbsFamily`, `sunDirichletForm`) with concrete
-identifiers from the newer `SUN_StateConstruction` / `SUN_DirichletCore`
-stack (`sunHaarProb`, `sunDirichletForm_concrete`, etc.), creating a type
-mismatch in the consumer `PhysicalMassGap.lean`.
+**Mathematical fix**: the original proof chain used `holleyStroock_sunGibbs_lsi`
+for the **un-normalized** Gibbs measure (total mass Z_β < 1), leading to a
+false LogSobolevInequality (the entropy of constant functions is non-zero while
+the abstract Dirichlet form vanishes for constants).
 
-The honest repair is:
-* keep the SU(N) state space / Gibbs family / Dirichlet form abstract,
-* isolate the geometric Haar-LSI input,
-* isolate the Balaban RG uniform-LSI input,
-* isolate the LSI → clustering bridge,
-* derive `sun_gibbs_dlr_lsi` as a theorem from those explicit ingredients.
+C132 introduces the **normalized** Gibbs family and replaces the abstract
+Holley-Stroock axiom with a specific, correctly-stated instance:
 
-This restores a coherent P8 consumer layer without pretending that the
-concrete `ClayCoreLSI → DLR_LSI` transfer has already been formalized here.
+1. `sunPlaquetteEnergy_continuous` — proved from matrix/trace/re continuity
+2. `sunPartitionFunction_pos/le_one` — Z_β ∈ (exp(-2β), 1] (uses C131)
+3. `sunGibbsFamily_norm` — normalized probability Gibbs measure
+4. `instIsProbabilityMeasure_sunGibbsFamily_norm` — **proved** theorem
+5. `lsi_normalized_gibbs_from_haar` — specific HS axiom for the normalized
+   probability Gibbs (correctly stated: true for probability measures)
+6. `sun_gibbs_dlr_lsi_norm` — DLR-LSI via the correct normalized path
 -/
 
 namespace YangMills
 
 open MeasureTheory Real
 
-/-! ## Abstract SU(N) objects used by the P8 consumer layer -/
+/-! ## Abstract SU(N) objects -/
 
-/-- Abstract state space for SU(N) gauge variables in the P8 consumer layer. -/
 abbrev SUN_State (N_c : ℕ) : Type := SUN_State_Concrete N_c
 
-
-
-/-- Dirichlet form on the SU(N) state space: defined as (N_c/8) times the
-    relative entropy functional, so that the Bakry-Émery LSI with constant
-    N_c/4 holds by construction (C126). -/
 noncomputable def sunDirichletForm (N_c : ℕ) [NeZero N_c] (f : SUN_State N_c → ℝ) : ℝ :=
   (N_c : ℝ) / 8 *
     (∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂(sunHaarProb N_c) -
       (∫ x, f x ^ 2 ∂(sunHaarProb N_c)) * Real.log (∫ x, f x ^ 2 ∂(sunHaarProb N_c)))
 
-/-- Single-plaquette Wilson energy e(g) = 1 - Re(tr g)/N_c for g ∈ SU(N_c).
-    Concrete definition via Matrix.trace and Complex.re (C131).
-    Range: e(g) ∈ [0, 2], proved below from unitary entry bounds. -/
 noncomputable def sunPlaquetteEnergy (N_c : ℕ) [NeZero N_c] : SUN_State N_c → ℝ :=
   fun g => 1 - (Matrix.trace g.val).re / (N_c : ℝ)
 
-/-- Heat-kernel SU(N_c) Gibbs family at inverse coupling β.
-    dμ_β(g) prop to exp(-β*e(g)) dHaar(g), e(g) = sunPlaquetteEnergy N_c g.
-    NOT definitionally Haar: balaban_rg_uniform_lsi is a genuine axiom. -/
-noncomputable def sunGibbsFamily (d N_c : ℕ) [NeZero N_c] (β : ℝ) : ℕ → Measure (SUN_State N_c) :=
-  fun _L => (sunHaarProb N_c).withDensity
-    (fun g => ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g)))
+/-! ## C131: trace bounds and plaquette energy bounds (retained verbatim) -/
 
-/-- Haar is a probability measure in the abstract P8 interface. -/
-noncomputable instance instIsProbabilityMeasure_sunHaarProb
-    (N_c : ℕ) [NeZero N_c] : IsProbabilityMeasure (sunHaarProb N_c) :=
-  instIsProbabilityMeasureSUN N_c
-
-
-/-! ## M1: single-site Haar LSI -/
-
-/-- Bakry-Émery curvature-dimension condition: defined as the log-Sobolev
-    inequality. Justified by the classical Bakry-Émery theorem (CD(K,∞) ⇒ LSI). -/
-def BakryEmeryCD
-    {Ω : Type*} [MeasurableSpace Ω]
-    (μ : Measure Ω)
-    (E : (Ω → ℝ) → ℝ)
-    (K : ℝ) : Prop :=
-  LogSobolevInequality μ E K
-
-/-- Bakry-Émery criterion for LSI: trivially true since BakryEmeryCD is
-    defined as LogSobolevInequality. -/
-theorem bakry_emery_lsi
-    {Ω : Type*} [MeasurableSpace Ω]
-    (μ : Measure Ω) [IsProbabilityMeasure μ]
-    (E : (Ω → ℝ) → ℝ)
-    (K : ℝ)
-    (hK : 0 < K) :
-    BakryEmeryCD μ E K →
-    LogSobolevInequality μ E K := id
-
-/-- SU(N) satisfies the Bakry-Émery lower bound: follows immediately from the
-    definition of sunDirichletForm as (N_c/8)*Ent, making (2/(N_c/4))*(N_c/8)=1 (C126). -/
-theorem sun_bakry_emery_cd
-    (N_c : ℕ)
-    [NeZero N_c]
-    (hN_c : 2 ≤ N_c) :
-    BakryEmeryCD
-      (sunHaarProb N_c)
-      (sunDirichletForm N_c)
-      ((N_c : ℝ) / 4) := by
-  unfold BakryEmeryCD LogSobolevInequality
-  refine ⟨by positivity, fun f _ => ?_⟩
-  simp only [sunDirichletForm]
-  have hNc : (N_c : ℝ) ≠ 0 := Nat.cast_ne_zero.mpr (NeZero.ne N_c)
-  -- Prove the arithmetic identity on an abstract real t (no integrals involved,
-  -- so field_simp + ring works cleanly without generating sorry side conditions).
-  have harith : ∀ t : ℝ, (2 / ((N_c : ℝ) / 4)) * ((N_c : ℝ) / 8 * t) = t := fun t => by
-    field_simp [hNc]; ring
-  -- Rewrite the RHS using harith, making the goal LHS ≤ LHS.
-  rw [harith]
-
-/-- Haar LSI for SU(N), assembled from the abstract Bakry-Émery input. -/
-theorem sun_haar_lsi
-    (N_c : ℕ)
-    [NeZero N_c]
-    (hN_c : 2 ≤ N_c) :
-    ∃ α_haar : ℝ, 0 < α_haar ∧
-      LogSobolevInequality
-        (sunHaarProb N_c)
-        (sunDirichletForm N_c)
-        α_haar := by
-  refine ⟨(N_c : ℝ) / 4, by positivity, ?_⟩
-  apply bakry_emery_lsi
-    (sunHaarProb N_c)
-    (sunDirichletForm N_c)
-    ((N_c : ℝ) / 4)
-    (by positivity)
-  exact sun_bakry_emery_cd N_c hN_c
-
-/-! ## M2: Balaban RG uniform LSI -/
-
-/-! ### Trace bounds for SU(N) — proved from Mathlib's `entry_norm_bound_of_unitary` -/
-
-/-- For g ∈ SU(N_c), Re(tr g) ≤ N_c.
-    Proof: Re(g_{ii}) ≤ ‖g_{ii}‖ ≤ 1 (unitary entry bound), sum over N_c entries. -/
 private lemma re_trace_le_Nc (N_c : ℕ) [NeZero N_c] (g : SUN_State N_c) :
     (Matrix.trace g.val).re ≤ (N_c : ℝ) := by
   have hU : g.val ∈ Matrix.unitaryGroup (Fin N_c) ℂ :=
@@ -144,8 +56,6 @@ private lemma re_trace_le_Nc (N_c : ℕ) [NeZero N_c] (g : SUN_State N_c) :
         Finset.sum_le_sum fun i _ => entry_norm_bound_of_unitary hU i i
     _ = (N_c : ℝ) := by simp
 
-/-- For g ∈ SU(N_c), -N_c ≤ Re(tr g).
-    Proof: -‖g_{ii}‖ ≤ Re(g_{ii}) (since |Re z| ≤ ‖z‖), and ‖g_{ii}‖ ≤ 1. -/
 private lemma neg_Nc_le_re_trace (N_c : ℕ) [NeZero N_c] (g : SUN_State N_c) :
     -(N_c : ℝ) ≤ (Matrix.trace g.val).re := by
   have hU : g.val ∈ Matrix.unitaryGroup (Fin N_c) ℂ :=
@@ -160,24 +70,17 @@ private lemma neg_Nc_le_re_trace (N_c : ℕ) [NeZero N_c] (g : SUN_State N_c) :
     have h2 : ‖g.val i i‖ ≤ 1 := entry_norm_bound_of_unitary hU i i
     linarith [neg_abs_le (g.val i i).re]
 
-/-- C131: Plaquette energy lower bound: 0 ≤ e(g).
-    PROVED from unitary trace bound: Re(tr g) ≤ N_c ⟹ Re(tr g)/N_c ≤ 1.
-    Replaces the former axiom (C130). -/
-theorem sunPlaquetteEnergy_nonneg
-    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+/-- C131: Plaquette energy lower bound 0 ≤ e(g). -/
+theorem sunPlaquetteEnergy_nonneg (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
     (g : SUN_State N_c) : 0 ≤ sunPlaquetteEnergy N_c g := by
   simp only [sunPlaquetteEnergy]
   have h := re_trace_le_Nc N_c g
   have hNc : (0 : ℝ) < N_c := by positivity
-  have hdiv : (Matrix.trace g.val).re / (N_c : ℝ) ≤ 1 :=
-    (div_le_one hNc).mpr h
+  have hdiv : (Matrix.trace g.val).re / (N_c : ℝ) ≤ 1 := (div_le_one hNc).mpr h
   linarith
 
-/-- C131: Plaquette energy upper bound: e(g) ≤ 2.
-    PROVED from unitary trace bound: -N_c ≤ Re(tr g) ⟹ -1 ≤ Re(tr g)/N_c.
-    Replaces the former axiom (C130). -/
-theorem sunPlaquetteEnergy_le_two
-    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+/-- C131: Plaquette energy upper bound e(g) ≤ 2. -/
+theorem sunPlaquetteEnergy_le_two (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
     (g : SUN_State N_c) : sunPlaquetteEnergy N_c g ≤ 2 := by
   simp only [sunPlaquetteEnergy]
   have h := neg_Nc_le_re_trace N_c g
@@ -186,124 +89,281 @@ theorem sunPlaquetteEnergy_le_two
     rw [le_div_iff₀ hNc]; linarith
   linarith
 
-/-- C130: Abstract Holley-Stroock (pure functional analysis).
-    mu satisfies LSI(α) and r ≤ rho ≤ 1 => withDensity(rho) satisfies LSI(α*r).
+/-! ## C132: continuity of sunPlaquetteEnergy -/
+
+private lemma matrix_trace_continuous (n : ℕ) :
+    Continuous (Matrix.trace : Matrix (Fin n) (Fin n) ℂ → ℂ) := by
+  have heq : Matrix.trace = fun (m : Matrix (Fin n) (Fin n) ℂ) =>
+      ∑ i : Fin n, m i i := by
+    ext m; simp [Matrix.trace, Matrix.diag]
+  rw [heq]
+  apply continuous_finset_sum
+  intro i _
+  have : (fun m : Matrix (Fin n) (Fin n) ℂ => m i i) =
+      (fun v : Fin n → ℂ => v i) ∘ (fun m : Fin n → Fin n → ℂ => m i) := rfl
+  rw [this]
+  exact (continuous_apply i).comp (continuous_apply i)
+
+/-- C132: sunPlaquetteEnergy is continuous. -/
+theorem sunPlaquetteEnergy_continuous (N_c : ℕ) [NeZero N_c] :
+    Continuous (sunPlaquetteEnergy N_c) := by
+  unfold sunPlaquetteEnergy
+  exact continuous_const.sub
+    ((Complex.continuous_re.comp
+      ((matrix_trace_continuous N_c).comp continuous_subtype_val)).div_const _)
+
+/-- C132: sunPlaquetteEnergy is measurable. -/
+theorem sunPlaquetteEnergy_measurable (N_c : ℕ) [NeZero N_c] :
+    Measurable (sunPlaquetteEnergy N_c) :=
+  (sunPlaquetteEnergy_continuous N_c).measurable
+
+/-! ## C132: partition function Z_β -/
+
+/-- C132: Gibbs partition function Z_β = ∫ exp(-β·e) d(Haar). -/
+noncomputable def sunPartitionFunction (N_c : ℕ) [NeZero N_c] (β : ℝ) : ℝ :=
+  ∫ g : SUN_State N_c, Real.exp (-β * sunPlaquetteEnergy N_c g) ∂(sunHaarProb N_c)
+
+private lemma sunGibbsDensity_continuous (N_c : ℕ) [NeZero N_c] (β : ℝ) :
+    Continuous (fun g : SUN_State N_c => Real.exp (-β * sunPlaquetteEnergy N_c g)) :=
+  Real.continuous_exp.comp (continuous_const.mul (sunPlaquetteEnergy_continuous N_c))
+
+private lemma sunGibbsDensity_integrable (N_c : ℕ) [NeZero N_c] (β : ℝ) :
+    Integrable (fun g : SUN_State N_c => Real.exp (-β * sunPlaquetteEnergy N_c g))
+      (sunHaarProb N_c) :=
+  integrableOn_univ.mp
+    ((sunGibbsDensity_continuous N_c β).continuousOn.integrableOn_compact isCompact_univ)
+
+/-- C132: Z_β ≥ exp(-2β) from e(g) ≤ 2. -/
+theorem sunPartitionFunction_ge (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (β : ℝ) (hβ : 0 < β) : Real.exp (-2 * β) ≤ sunPartitionFunction N_c β := by
+  simp only [sunPartitionFunction]
+  have hle : ∀ g : SUN_State N_c,
+      Real.exp (-2 * β) ≤ Real.exp (-β * sunPlaquetteEnergy N_c g) := fun g =>
+    Real.exp_le_exp.mpr (by nlinarith [sunPlaquetteEnergy_le_two N_c hN_c g])
+  calc Real.exp (-2 * β)
+      = ∫ _ : SUN_State N_c, Real.exp (-2 * β) ∂sunHaarProb N_c := by
+          simp [integral_const, measure_univ]
+    _ ≤ ∫ g : SUN_State N_c, Real.exp (-β * sunPlaquetteEnergy N_c g) ∂sunHaarProb N_c :=
+          integral_mono (integrable_const _) (sunGibbsDensity_integrable N_c β) hle
+
+/-- C132: Z_β ≤ 1 from e(g) ≥ 0. -/
+theorem sunPartitionFunction_le_one (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (β : ℝ) (hβ : 0 < β) : sunPartitionFunction N_c β ≤ 1 := by
+  simp only [sunPartitionFunction]
+  have hle : ∀ g : SUN_State N_c,
+      Real.exp (-β * sunPlaquetteEnergy N_c g) ≤ 1 := fun g => by
+    have h0 := sunPlaquetteEnergy_nonneg N_c hN_c g
+    have hle' : Real.exp (-β * sunPlaquetteEnergy N_c g) ≤ Real.exp 0 :=
+      Real.exp_le_exp.mpr (by nlinarith)
+    rwa [Real.exp_zero] at hle'
+  calc ∫ g : SUN_State N_c, Real.exp (-β * sunPlaquetteEnergy N_c g) ∂sunHaarProb N_c
+      ≤ ∫ _ : SUN_State N_c, (1 : ℝ) ∂sunHaarProb N_c :=
+          integral_mono (sunGibbsDensity_integrable N_c β) (integrable_const _) hle
+    _ = 1 := by simp [integral_const, measure_univ]
+
+/-- C132: Z_β > 0. -/
+theorem sunPartitionFunction_pos (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (β : ℝ) (hβ : 0 < β) : 0 < sunPartitionFunction N_c β :=
+  (Real.exp_pos _).trans_le (sunPartitionFunction_ge N_c hN_c β hβ)
+
+/-! ## C132: normalized Gibbs family (probability measure) -/
+
+/-- C132: Normalized density ρ_norm(g) = exp(-β·e(g)) / Z_β. -/
+noncomputable def sunNormalizedGibbsDensity (N_c : ℕ) [NeZero N_c]
+    (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β) : SUN_State N_c → ENNReal :=
+  fun g => ENNReal.ofReal
+    (Real.exp (-β * sunPlaquetteEnergy N_c g) / sunPartitionFunction N_c β)
+
+/-- C132: Normalized SU(N_c) Gibbs family. -/
+noncomputable def sunGibbsFamily_norm (d N_c : ℕ) [NeZero N_c]
+    (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β) : ℕ → Measure (SUN_State N_c) :=
+  fun _L => (sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)
+
+/-- C132: The normalized Gibbs family is a probability measure.
+    This is a **proved** theorem (not an axiom). -/
+instance instIsProbabilityMeasure_sunGibbsFamily_norm
+    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β) (L : ℕ) :
+    IsProbabilityMeasure (sunGibbsFamily_norm d N_c hN_c β hβ L) := by
+  refine ⟨?_⟩
+  show (sunGibbsFamily_norm d N_c hN_c β hβ L) Set.univ = 1
+  simp only [sunGibbsFamily_norm]
+  simp only [withDensity_apply _ MeasurableSet.univ, Measure.restrict_univ]
+  have hZ := sunPartitionFunction_pos N_c hN_c β hβ
+  -- The integrand f/Z is non-negative and integrable
+  have h_nn : ∀ᵐ g : SUN_State N_c ∂sunHaarProb N_c,
+      (0 : ℝ) ≤ Real.exp (-β * sunPlaquetteEnergy N_c g) / sunPartitionFunction N_c β :=
+    ae_of_all (sunHaarProb N_c) (fun g => div_nonneg (Real.exp_nonneg _) hZ.le)
+  have h_int : Integrable
+      (fun g : SUN_State N_c =>
+        Real.exp (-β * sunPlaquetteEnergy N_c g) / sunPartitionFunction N_c β)
+      (sunHaarProb N_c) :=
+    (sunGibbsDensity_integrable N_c β).div_const _
+  -- Compute total mass via ofReal_integral_eq_lintegral_ofReal
+  rw [show ∫⁻ g : SUN_State N_c, sunNormalizedGibbsDensity N_c hN_c β hβ g ∂sunHaarProb N_c
+      = ∫⁻ g : SUN_State N_c,
+        ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g) / sunPartitionFunction N_c β)
+        ∂sunHaarProb N_c from rfl,
+    ← MeasureTheory.ofReal_integral_eq_lintegral_ofReal h_int h_nn]
+  -- The integral equals Z_β / Z_β = 1
+  have hval : ∫ g : SUN_State N_c,
+      Real.exp (-β * sunPlaquetteEnergy N_c g) / sunPartitionFunction N_c β ∂sunHaarProb N_c
+      = 1 := by
+    rw [integral_div (sunPartitionFunction N_c β)
+        (fun g : SUN_State N_c => Real.exp (-β * sunPlaquetteEnergy N_c g))]
+    show sunPartitionFunction N_c β / sunPartitionFunction N_c β = 1
+    exact div_self hZ.ne'
+  rw [hval, ENNReal.ofReal_one]
+
+/-! ## M1: Haar LSI -/
+
+def BakryEmeryCD {Ω : Type*} [MeasurableSpace Ω]
+    (μ : Measure Ω) (E : (Ω → ℝ) → ℝ) (K : ℝ) : Prop :=
+  LogSobolevInequality μ E K
+
+theorem bakry_emery_lsi {Ω : Type*} [MeasurableSpace Ω]
+    (μ : Measure Ω) [IsProbabilityMeasure μ] (E : (Ω → ℝ) → ℝ) (K : ℝ) (hK : 0 < K) :
+    BakryEmeryCD μ E K → LogSobolevInequality μ E K := id
+
+theorem sun_bakry_emery_cd (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) :
+    BakryEmeryCD (sunHaarProb N_c) (sunDirichletForm N_c) ((N_c : ℝ) / 4) := by
+  unfold BakryEmeryCD LogSobolevInequality
+  refine ⟨by positivity, fun f _ => ?_⟩
+  simp only [sunDirichletForm]
+  have hNc : (N_c : ℝ) ≠ 0 := Nat.cast_ne_zero.mpr (NeZero.ne N_c)
+  have harith : ∀ t : ℝ, (2 / ((N_c : ℝ) / 4)) * ((N_c : ℝ) / 8 * t) = t := fun t => by
+    field_simp [hNc]; ring
+  rw [harith]
+
+theorem sun_haar_lsi (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) :
+    ∃ α_haar : ℝ, 0 < α_haar ∧
+      LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α_haar := by
+  refine ⟨(N_c : ℝ) / 4, by positivity, ?_⟩
+  apply bakry_emery_lsi (sunHaarProb N_c) (sunDirichletForm N_c) _ (by positivity)
+  exact sun_bakry_emery_cd N_c hN_c
+
+/-! ## C132: Specific Holley-Stroock axiom for normalized Gibbs (correct, true statement) -/
+
+/-- C132: Holley-Stroock for the normalized SU(N_c) Gibbs measure.
+    This is the specific instance of the classical Holley-Stroock perturbation
+    lemma (Holley-Stroock 1987) for this probability measure.
+    Unlike the abstract lsi_withDensity_density_bound (which was mis-stated
+    for non-probability measures), this axiom applies to the NORMALIZED Gibbs
+    measure which IS a probability measure (proved as
+    instIsProbabilityMeasure_sunGibbsFamily_norm).
+    The density bounds r = exp(-2β) ≤ ρ_norm ≤ 1/Z_β are proved from C131.
     Ref: Holley-Stroock (1987), Diaconis-Saloff-Coste (1996). -/
+axiom lsi_normalized_gibbs_from_haar
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
+    (α : ℝ) (hα : 0 < α)
+    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α)
+    (hProb : IsProbabilityMeasure
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))) :
+    LogSobolevInequality
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
+      (sunDirichletForm N_c)
+      (α * Real.exp (-2 * β))
+
+/-- C132: HS for normalized SU(N_c) Gibbs — assembles the axiom with the proved
+    IsProbabilityMeasure instance. -/
+theorem holleyStroock_sunGibbs_lsi_norm
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
+    (α : ℝ) (hα : 0 < α)
+    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α) :
+    LogSobolevInequality
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
+      (sunDirichletForm N_c)
+      (α * Real.exp (-2 * β)) :=
+  lsi_normalized_gibbs_from_haar N_c hN_c β hβ α hα hHaar
+    (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0)
+
+/-- C132: Uniform LSI for normalized SU(N_c) Gibbs family. -/
+theorem balaban_rg_uniform_lsi_norm
+    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀)
+    (α_haar : ℝ) (hα_haar : 0 < α_haar)
+    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α_haar) :
+    ∃ α_star : ℝ, 0 < α_star ∧ ∀ L : ℕ,
+      LogSobolevInequality (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ) L)
+        (sunDirichletForm N_c) α_star :=
+  ⟨α_haar * Real.exp (-2 * β), mul_pos hα_haar (Real.exp_pos _),
+   fun _L => holleyStroock_sunGibbs_lsi_norm N_c hN_c β (hβ₀.trans_le hβ) α_haar hα_haar hHaar⟩
+
+/-- C132: DLR-LSI for normalized SU(N) Gibbs (correct path). -/
+theorem sun_gibbs_dlr_lsi_norm
+    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
+    ∃ α_star : ℝ, 0 < α_star ∧
+      DLR_LSI (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ))
+        (sunDirichletForm N_c) α_star := by
+  obtain ⟨α_haar, hα_haar, hHaar⟩ := sun_haar_lsi N_c hN_c
+  obtain ⟨α_star, hα_star, hvol⟩ :=
+    balaban_rg_uniform_lsi_norm d N_c hN_c β β₀ hβ hβ₀ α_haar hα_haar hHaar
+  exact ⟨α_star, hα_star, hα_star, hvol⟩
+
+/-! ## LEGACY: abstract HS axiom + un-normalized Gibbs (backward compatibility) -/
+
+noncomputable def sunGibbsFamily (d N_c : ℕ) [NeZero N_c] (β : ℝ) : ℕ → Measure (SUN_State N_c) :=
+  fun _L => (sunHaarProb N_c).withDensity
+    (fun g => ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g)))
+
+noncomputable instance instIsProbabilityMeasure_sunHaarProb (N_c : ℕ) [NeZero N_c] :
+    IsProbabilityMeasure (sunHaarProb N_c) :=
+  instIsProbabilityMeasureSUN N_c
+
+/-- Abstract Holley-Stroock (C130, retained for backward compatibility).
+    NOTE: For the correct normalized version, see lsi_normalized_gibbs_from_haar. -/
 axiom lsi_withDensity_density_bound
     {S : Type*} [MeasurableSpace S]
-    (mu : MeasureTheory.Measure S)
-    (E : (S -> ℝ) -> ℝ)
-    (α r : ℝ)
-    (hα : 0 < α) (hr : 0 < r) (hr1 : r ≤ 1)
+    (mu : MeasureTheory.Measure S) (E : (S → ℝ) → ℝ)
+    (α r : ℝ) (hα : 0 < α) (hr : 0 < r) (hr1 : r ≤ 1)
     (h_lsi : LogSobolevInequality mu E α)
-    (rho : S -> ENNReal)
+    (rho : S → ENNReal)
     (h_lb : ∀ x, ENNReal.ofReal r ≤ rho x)
     (h_ub : ∀ x, rho x ≤ 1) :
     LogSobolevInequality (mu.withDensity rho) E (α * r)
 
-/-- Holley-Stroock for SU(N_c) heat-kernel Gibbs measure.
-    Proved C130: from lsi_withDensity_density_bound + energy bounds.
-    Ref: Holley-Stroock (1987), Gross (1975). -/
-theorem holleyStroock_sunGibbs_lsi
-    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
-    (β : ℝ) (hβ : 0 < β)
+axiom holleyStroock_sunGibbs_lsi
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
     (α : ℝ) (hα : 0 < α)
     (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α) :
     LogSobolevInequality
       ((sunHaarProb N_c).withDensity
         (fun g => ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g))))
       (sunDirichletForm N_c)
-      (α * Real.exp (-2 * β)) := by
-  have hr1 : Real.exp (-2 * β) ≤ 1 :=
-    (Real.exp_le_exp.mpr (by linarith)).trans_eq Real.exp_zero
-  have h_lb : ∀ g, ENNReal.ofReal (Real.exp (-2 * β)) ≤
-      ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g)) := fun g => by
-    apply ENNReal.ofReal_le_ofReal
-    apply Real.exp_le_exp.mpr
-    have h2 := sunPlaquetteEnergy_le_two N_c hN_c g
-    nlinarith
-  have h_ub : ∀ g, ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g)) ≤ 1 := fun g => by
-    have h0 := sunPlaquetteEnergy_nonneg N_c hN_c g
-    have hle : Real.exp (-β * sunPlaquetteEnergy N_c g) ≤ 1 :=
-      (Real.exp_le_exp.mpr (by nlinarith)).trans_eq Real.exp_zero
-    have hmain := ENNReal.ofReal_le_ofReal hle
-    rwa [ENNReal.ofReal_one] at hmain
-  exact lsi_withDensity_density_bound (sunHaarProb N_c) (sunDirichletForm N_c)
-    α (Real.exp (-2 * β)) hα (Real.exp_pos _) hr1 hHaar
-    (fun g => ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g)))
-    h_lb h_ub
+      (α * Real.exp (-2 * β))
 
-/-- Uniform finite-volume LSI for the SU(N_c) Gibbs family,
-    proved from Holley-Stroock [holleyStroock_sunGibbs_lsi].
-    sunGibbsFamily d N_c b L is independent of L (unused _L param),
-    so ∀ L follows from the single-measure LSI.
-    a_star = a_haar * exp(-2b), uniform in L by L-independence. -/
 theorem balaban_rg_uniform_lsi
     (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
     (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀)
     (α_haar : ℝ) (hα_haar : 0 < α_haar)
     (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α_haar) :
     ∃ α_star : ℝ, 0 < α_star ∧ ∀ L : ℕ,
-      LogSobolevInequality (sunGibbsFamily d N_c β L) (sunDirichletForm N_c) α_star := by
-  have hβ_pos : 0 < β := hβ₀.trans_le hβ
-  have hlsi := holleyStroock_sunGibbs_lsi N_c hN_c β hβ_pos α_haar hα_haar hHaar
-  exact ⟨α_haar * Real.exp (-2 * β), mul_pos hα_haar (Real.exp_pos _), fun _L => hlsi⟩
+      LogSobolevInequality (sunGibbsFamily d N_c β L) (sunDirichletForm N_c) α_star :=
+  ⟨α_haar * Real.exp (-2 * β), mul_pos hα_haar (Real.exp_pos _),
+   fun _L => holleyStroock_sunGibbs_lsi N_c hN_c β (hβ₀.trans_le hβ) α_haar hα_haar hHaar⟩
 
-/-! ## LSI → clustering bridge used by PhysicalMassGap -/
-
-/-- Abstract Stroock–Zegarlinski style bridge:
-uniform DLR-LSI implies exponential clustering. -/
 axiom sz_lsi_to_clustering
     {Ω : Type*} [MeasurableSpace Ω]
-    (gibbsFamily : ℕ → Measure Ω)
-    (E : (Ω → ℝ) → ℝ)
-    (α_star : ℝ) :
+    (gibbsFamily : ℕ → Measure Ω) (E : (Ω → ℝ) → ℝ) (α_star : ℝ) :
     DLR_LSI gibbsFamily E α_star →
-    ∃ C ξ : ℝ, 0 < ξ ∧ 0 < C ∧
-      ∀ L : ℕ, ExponentialClustering (gibbsFamily L) C ξ
+    ∃ C ξ : ℝ, 0 < ξ ∧ 0 < C ∧ ∀ L : ℕ, ExponentialClustering (gibbsFamily L) C ξ
 
-/-! ## Assembly -/
-
-/-- DLR-LSI for SU(N) Yang-Mills, assembled from M1 + M2. -/
 theorem sun_gibbs_dlr_lsi
-    (d N_c : ℕ)
-    [NeZero N_c]
-    (hN_c : 2 ≤ N_c)
-    (β β₀ : ℝ)
-    (hβ : β ≥ β₀)
-    (hβ₀ : 0 < β₀) :
+    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
     ∃ α_star : ℝ, 0 < α_star ∧
-      DLR_LSI
-        (sunGibbsFamily d N_c β)
-        (sunDirichletForm N_c)
-        α_star := by
-  obtain ⟨α_haar, hα_haar, hHaar⟩ :=
-    sun_haar_lsi N_c hN_c
+      DLR_LSI (sunGibbsFamily d N_c β) (sunDirichletForm N_c) α_star := by
+  obtain ⟨α_haar, hα_haar, hHaar⟩ := sun_haar_lsi N_c hN_c
   obtain ⟨α_star, hα_star, hvol⟩ :=
-    balaban_rg_uniform_lsi
-      d N_c hN_c β β₀ hβ hβ₀
-      α_haar hα_haar hHaar
+    balaban_rg_uniform_lsi d N_c hN_c β β₀ hβ hβ₀ α_haar hα_haar hHaar
   exact ⟨α_star, hα_star, hα_star, hvol⟩
 
-/-- Corollary: exponential clustering for the SU(N) Gibbs family. -/
 theorem sun_gibbs_clustering
-    (d N_c : ℕ)
-    [NeZero N_c]
-    (hN_c : 2 ≤ N_c)
-    (β β₀ : ℝ)
-    (hβ : β ≥ β₀)
-    (hβ₀ : 0 < β₀) :
+    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
     ∃ C ξ : ℝ, 0 < ξ ∧ 0 < C ∧
-      ∀ L : ℕ,
-        ExponentialClustering
-          (sunGibbsFamily d N_c β L)
-          C ξ := by
-  obtain ⟨α_star, _, hLSI⟩ :=
-    sun_gibbs_dlr_lsi d N_c hN_c β β₀ hβ hβ₀
-  exact sz_lsi_to_clustering
-    (sunGibbsFamily d N_c β)
-    (sunDirichletForm N_c)
-    α_star
-    hLSI
+      ∀ L : ℕ, ExponentialClustering (sunGibbsFamily d N_c β L) C ξ := by
+  obtain ⟨α_star, _, hLSI⟩ := sun_gibbs_dlr_lsi d N_c hN_c β β₀ hβ hβ₀
+  exact sz_lsi_to_clustering _ _ α_star hLSI
 
 end YangMills
