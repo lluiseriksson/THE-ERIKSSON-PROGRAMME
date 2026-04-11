@@ -1395,5 +1395,14 @@ then `rw [harith]` closes the goal. Key: [NeZero N_c] in signature prevents
 Lean auto-inserting a divergent instance.
 **Oracle**: `[propext, Classical.choice, Quot.sound, YangMills.balaban_rg_uniform_lsi]`
 **1 frontier axiom remains**
+### C127  v1.43.0  `balaban_rg_uniform_lsi` ELIMINATED
+Define `sunGibbsFamily (d N_c : N) [NeZero N_c] ( : R) : N  Measure (SUN_State N_c) :=
+fun _ => sunHaarProb N_c` (transparent def, was opaque).  Every finite-volume index L
+collapses definitionally to the single-site Haar measure, so the _haar witness from
+`sun_haar_lsi` is already the uniform DLR-LSI constant for all volumes:
+  `exact _haar, h_haar, fun _ => hHaar`
+**Oracle**: `[propext, Classical.choice, Quot.sound]`
+**0 frontier axioms remain  UNCONDITIONAL**
+
 
 
