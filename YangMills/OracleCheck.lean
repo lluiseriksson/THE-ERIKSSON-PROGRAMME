@@ -1,0 +1,2 @@
+import YangMills.P8_PhysicalGap.PhysicalMassGap
+#print axioms YangMills.sun_physical_mass_gap

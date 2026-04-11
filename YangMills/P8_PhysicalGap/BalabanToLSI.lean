@@ -174,6 +174,37 @@ noncomputable def sunNormalizedGibbsDensity (N_c : ℕ) [NeZero N_c]
   fun g => ENNReal.ofReal
     (Real.exp (-β * sunPlaquetteEnergy N_c g) / sunPartitionFunction N_c β)
 
+/-- Path A step 1: density upper bound.
+    The normalised SU(N_c) Gibbs density is bounded above by exp(2*beta). -/
+theorem sunNormalizedGibbsDensity_le_exp_two_beta
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
+    (g : SUN_State N_c) :
+    sunNormalizedGibbsDensity N_c hN_c β hβ g ≤
+      ENNReal.ofReal (Real.exp (2 * β)) := by
+  simp only [sunNormalizedGibbsDensity]
+  refine ENNReal.ofReal_le_ofReal ?_
+  have hE_nn : (0 : ℝ) ≤ sunPlaquetteEnergy N_c g :=
+    sunPlaquetteEnergy_nonneg N_c hN_c g
+  have hZ_pos : (0 : ℝ) < sunPartitionFunction N_c β :=
+    sunPartitionFunction_pos N_c hN_c β hβ
+  have hZ_ge : Real.exp (-2 * β) ≤ sunPartitionFunction N_c β :=
+    sunPartitionFunction_ge N_c hN_c β hβ
+  have hexp_le_one : Real.exp (-β * sunPlaquetteEnergy N_c g) ≤ Real.exp 0 := by
+    apply Real.exp_le_exp.mpr
+    nlinarith [hE_nn, hβ.le]
+  have hexp2β_pos : (0 : ℝ) < Real.exp (2 * β) := Real.exp_pos _
+  have hprod : Real.exp (2 * β) * Real.exp (-2 * β) = 1 := by
+    rw [← Real.exp_add,
+      show (2 : ℝ) * β + -2 * β = 0 from by ring, Real.exp_zero]
+  rw [div_le_iff₀ hZ_pos]
+  calc Real.exp (-β * sunPlaquetteEnergy N_c g)
+      ≤ Real.exp 0 := hexp_le_one
+    _ = 1 := Real.exp_zero
+    _ = Real.exp (2 * β) * Real.exp (-2 * β) := hprod.symm
+    _ ≤ Real.exp (2 * β) * sunPartitionFunction N_c β :=
+        mul_le_mul_of_nonneg_left hZ_ge hexp2β_pos.le
+
+
 /-- C132: Normalized SU(N_c) Gibbs family. -/
 noncomputable def sunGibbsFamily_norm (d N_c : ℕ) [NeZero N_c]
     (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β) : ℕ → Measure (SUN_State N_c) :=
