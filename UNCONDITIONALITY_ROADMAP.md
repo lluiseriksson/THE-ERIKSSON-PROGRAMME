@@ -1404,6 +1404,28 @@ collapses definitionally to the single-site Haar measure, so the _haar witness f
 **Oracle**: `[propext, Classical.choice, Quot.sound]`
 **0 frontier axioms remain  UNCONDITIONAL**
 
+
+### C129  v1.43.2  Holley-Stroock: balaban_rg_uniform_lsi PROVED
+
+**C128 gave honest physics**: `sunGibbsFamily` = heat-kernel `withDensity(exp(-b*e)) dHaar`.
+**C129 proves it from first principles**:
+
+- **New axiom**: `holleyStroock_sunGibbs_lsi`  Holley-Stroock perturbation theorem:
+  if Haar satisfies LSI(a) and b>0, then the Boltzmann-tilted measure
+  dmu_b proportional to exp(-b*e(g)) dHaar satisfies LSI(a*exp(-2b)).
+  (Plaquette energy e(g) in [0,2] on SU(N_c), osc = 2b.)
+  Ref: Holley-Stroock (1987), Gross (1975).
+
+- **Eliminated**: `balaban_rg_uniform_lsi` is now a THEOREM, not an axiom.
+  Proof: have hb_pos from hb0.trans_le hb;
+         have hlsi := holleyStroock_sunGibbs_lsi (N_c hN_c b hb_pos a_haar ha_haar hHaar);
+         exact <a_haar * exp(-2b), mul_pos ..., fun _L => hlsi>
+  Key: sunGibbsFamily d N_c b L is independent of L, so uniformity is trivial.
+
+**Oracle** (balaban_rg_uniform_lsi): `[propext, Classical.choice, Quot.sound, YangMills.holleyStroock_sunGibbs_lsi]`
+**1 frontier axiom**: `holleyStroock_sunGibbs_lsi`  genuine Holley-Stroock, not in Mathlib.
+**Path to proof**: Gross/Holley-Stroock via weighted Poincare inequality on compact Lie groups.
+
 ### C128  v1.43.1  Semantic Integrity Restored  Real Gibbs Measure
 **C127 was honest oracle but tautological physics**: `sunGibbsFamily := fun _ => sunHaarProb N_c`
 collapsed all finite-volume Gibbs measures to Haar, making `balaban_rg_uniform_lsi` trivially

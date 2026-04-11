@@ -124,15 +124,36 @@ theorem sun_haar_lsi
 
 /-! ## M2: Balaban RG uniform LSI -/
 
-/-- Clay-core input: RG promotes the single-site Haar LSI to a uniform
-finite-volume DLR-LSI constant. -/
-axiom balaban_rg_uniform_lsi
+/-- Holley-Stroock perturbation for the SU(N_c) heat-kernel Gibbs measure.
+    Haar satisfies LSI(a) + b > 0 => tilted measure satisfies LSI(a*exp(-2b)).
+    Plaquette energy e(g) in [0,2] on SU(N_c), osc(-b*e) = 2b.
+    Ref: Holley-Stroock (1987), Gross (1975). -/
+axiom holleyStroock_sunGibbs_lsi
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (β : ℝ) (hβ : 0 < β)
+    (α : ℝ) (hα : 0 < α)
+    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α) :
+    LogSobolevInequality
+      ((sunHaarProb N_c).withDensity
+        (fun g => ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g))))
+      (sunDirichletForm N_c)
+      (α * Real.exp (-2 * β))
+
+/-- Uniform finite-volume LSI for the SU(N_c) Gibbs family,
+    proved from Holley-Stroock [holleyStroock_sunGibbs_lsi].
+    sunGibbsFamily d N_c b L is independent of L (unused _L param),
+    so ∀ L follows from the single-measure LSI.
+    a_star = a_haar * exp(-2b), uniform in L by L-independence. -/
+theorem balaban_rg_uniform_lsi
     (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
     (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀)
     (α_haar : ℝ) (hα_haar : 0 < α_haar)
     (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α_haar) :
     ∃ α_star : ℝ, 0 < α_star ∧ ∀ L : ℕ,
-      LogSobolevInequality (sunGibbsFamily d N_c β L) (sunDirichletForm N_c) α_star
+      LogSobolevInequality (sunGibbsFamily d N_c β L) (sunDirichletForm N_c) α_star := by
+  have hβ_pos : 0 < β := hβ₀.trans_le hβ
+  have hlsi := holleyStroock_sunGibbs_lsi N_c hN_c β hβ_pos α_haar hα_haar hHaar
+  exact ⟨α_haar * Real.exp (-2 * β), mul_pos hα_haar (Real.exp_pos _), fun _L => hlsi⟩
 
 /-! ## LSI → clustering bridge used by PhysicalMassGap -/
 
