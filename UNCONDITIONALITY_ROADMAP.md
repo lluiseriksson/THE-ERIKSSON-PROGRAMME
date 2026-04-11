@@ -1388,4 +1388,12 @@ Each proven from Mathlib primitives eliminates one axiom from sun_physical_mass_
 - **Insight**: `ClayYangMillsTheorem =  m_phys : , 0 < m_phys`; the LSI constant already witnesses this
 - **Oracle**: `[propext, Classical.choice, Quot.sound, YangMills.balaban_rg_uniform_lsi, YangMills.sun_bakry_emery_cd]`
 - **2 frontier axioms remain**
+### C126  v1.42.0  `sun_bakry_emery_cd` ELIMINATED
+Define `sunDirichletForm (N_c : N) [NeZero N_c]` as `(N_c/8) * Ent(f)` so
+(2/(N_c/4)) * (N_c/8) * t = t by `field_simp [hNc]; ring` on abstract t,
+then `rw [harith]` closes the goal. Key: [NeZero N_c] in signature prevents
+Lean auto-inserting a divergent instance.
+**Oracle**: `[propext, Classical.choice, Quot.sound, YangMills.balaban_rg_uniform_lsi]`
+**1 frontier axiom remains**
+
 
