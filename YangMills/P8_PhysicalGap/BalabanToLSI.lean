@@ -357,11 +357,70 @@ axiom lsi_normalized_gibbs_from_haar
 
 /-! ## C132: Specific Holley-Stroock axiom for normalized Gibbs (correct, true statement) -/
 
+/-! ## Path A Step 3 sub-lemmas: real-analysis ingredients
+    for the Holley-Stroock variational representation of entropy. -/
+
+/-- Basic convexity inequality: `u * log u ≥ u - 1` for `u ≥ 0`,
+    equivalent (for `u > 0`) to `log u ≥ 1 - 1/u`. This is the
+    foundational fact used for the nonnegativity of the Donsker–Varadhan
+    integrand `φₜ(x) = x log(x/t) - x + t`. -/
+private theorem mul_log_sub_add_one_nonneg (u : ℝ) (hu : 0 ≤ u) :
+    0 ≤ u * Real.log u - u + 1 := by
+  rcases eq_or_lt_of_le hu with heq | hupos
+  · rw [← heq]; simp
+  -- u > 0: use Mathlib's `Real.one_sub_inv_le_log_of_pos`
+  have hlog : 1 - u⁻¹ ≤ Real.log u := Real.one_sub_inv_le_log_of_pos hupos
+  have hmul : u * (1 - u⁻¹) ≤ u * Real.log u :=
+    mul_le_mul_of_nonneg_left hlog hupos.le
+  have h_rhs : u * (1 - u⁻¹) = u - 1 := by
+    rw [mul_sub, mul_one, mul_inv_cancel₀ hupos.ne']
+  linarith
+
+/-- Pointwise nonnegativity of the Donsker–Varadhan integrand
+    `φₜ(x) = x * log(x/t) - x + t` for `x ≥ 0, t > 0`.
+    This is the integrand in the variational representation of
+    relative entropy used for the Holley-Stroock entropy comparison. -/
+private theorem phi_nn (x t : ℝ) (hx : 0 ≤ x) (ht : 0 < t) :
+    0 ≤ x * Real.log (x / t) - x + t := by
+  have hu_nn : 0 ≤ x / t := div_nonneg hx ht.le
+  have hmul : 0 ≤ (x / t) * Real.log (x / t) - (x / t) + 1 :=
+    mul_log_sub_add_one_nonneg (x / t) hu_nn
+  have hscale : 0 ≤ t * ((x / t) * Real.log (x / t) - (x / t) + 1) :=
+    mul_nonneg ht.le hmul
+  have hkey : t * ((x / t) * Real.log (x / t) - (x / t) + 1)
+            = x * Real.log (x / t) - x + t := by
+    have h1 : t * (x / t) = x := mul_div_cancel₀ x ht.ne'
+    have h2 : t * ((x / t) * Real.log (x / t) - (x / t) + 1)
+            = t * (x / t) * Real.log (x / t) - t * (x / t) + t := by ring
+    rw [h2, h1]
+  linarith
+
 /-- Abbreviation for the (unnormalized) entropy functional at `f²` under measure `μ`. -/
 private noncomputable def entSq (N_c : ℕ) [NeZero N_c]
     (μ : MeasureTheory.Measure (SUN_State N_c)) (f : SUN_State N_c → ℝ) : ℝ :=
   ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
   (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ)
+
+
+/-- SUB-LEMMA 3: Given the two measure-theoretic ingredients
+    (linearity of the integral + the pointwise log-quotient split),
+    the Donsker–Varadhan-style integrand integrates to `entSq μ f`. -/
+private theorem int_phi_mu_eq_entSq
+    (N_c : ℕ) [NeZero N_c]
+    (μ : MeasureTheory.Measure (SUN_State N_c))
+    (f : SUN_State N_c → ℝ)
+    (h_split : (∫ x, f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ)) ∂μ)
+             = (∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ)
+               - (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ))
+    (h_lin : (∫ x, (f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ))
+                    - f x ^ 2 + (∫ x, f x ^ 2 ∂μ)) ∂μ)
+           = (∫ x, f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ)) ∂μ)
+             - (∫ x, f x ^ 2 ∂μ) + (∫ x, f x ^ 2 ∂μ)) :
+    (∫ x, (f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ))
+           - f x ^ 2 + (∫ x, f x ^ 2 ∂μ)) ∂μ) = entSq N_c μ f := by
+  rw [h_lin, h_split]
+  simp only [entSq]
+  ring
 
 theorem lsi_normalized_gibbs_from_haar_of_ent_pert
     (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
