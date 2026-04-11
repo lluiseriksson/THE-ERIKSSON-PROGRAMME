@@ -243,62 +243,52 @@ theorem sun_haar_lsi (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) :
 
 /-! ## C132: Specific Holley-Stroock axiom for normalized Gibbs (correct, true statement) -/
 
-/-- C132: Holley-Stroock for the normalized SU(N_c) Gibbs measure.
-    This is the specific instance of the classical Holley-Stroock perturbation
-    lemma (Holley-Stroock 1987) for this probability measure.
-    Unlike the abstract lsi_withDensity_density_bound (which was mis-stated
-    for non-probability measures), this axiom applies to the NORMALIZED Gibbs
-    measure which IS a probability measure (proved as
-    instIsProbabilityMeasure_sunGibbsFamily_norm).
-    The density bounds r = exp(-2β) ≤ ρ_norm ≤ 1/Z_β are proved from C131.
-    Ref: Holley-Stroock (1987), Diaconis-Saloff-Coste (1996). -/
-axiom lsi_normalized_gibbs_from_haar
+/-- Abbreviation for the (unnormalized) entropy functional at `f²` under measure `μ`. -/
+private noncomputable def entSq (N_c : ℕ) [NeZero N_c]
+    (μ : MeasureTheory.Measure (SUN_State N_c)) (f : SUN_State N_c → ℝ) : ℝ :=
+  ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
+  (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ)
+
+theorem lsi_normalized_gibbs_from_haar
     (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
     (α : ℝ) (hα : 0 < α)
     (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α)
-    (hProb : IsProbabilityMeasure
-      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))) :
+    (_hProb : IsProbabilityMeasure
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)))
+    (hEntPert : ∀ (f : SUN_State N_c → ℝ), Measurable f →
+      entSq N_c ((sunHaarProb N_c).withDensity
+        (sunNormalizedGibbsDensity N_c hN_c β hβ)) f ≤
+      Real.exp (2 * β) * entSq N_c (sunHaarProb N_c) f) :
     LogSobolevInequality
       ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
       (sunDirichletForm N_c)
-      (α * Real.exp (-2 * β))
-
-/-- C132: HS for normalized SU(N_c) Gibbs — assembles the axiom with the proved
-    IsProbabilityMeasure instance. -/
-theorem holleyStroock_sunGibbs_lsi_norm
-    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
-    (α : ℝ) (hα : 0 < α)
-    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α) :
-    LogSobolevInequality
-      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
-      (sunDirichletForm N_c)
-      (α * Real.exp (-2 * β)) :=
-  lsi_normalized_gibbs_from_haar N_c hN_c β hβ α hα hHaar
-    (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0)
-
-/-- C132: Uniform LSI for normalized SU(N_c) Gibbs family. -/
-theorem balaban_rg_uniform_lsi_norm
-    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
-    (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀)
-    (α_haar : ℝ) (hα_haar : 0 < α_haar)
-    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α_haar) :
-    ∃ α_star : ℝ, 0 < α_star ∧ ∀ L : ℕ,
-      LogSobolevInequality (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ) L)
-        (sunDirichletForm N_c) α_star :=
-  ⟨α_haar * Real.exp (-2 * β), mul_pos hα_haar (Real.exp_pos _),
-   fun _L => holleyStroock_sunGibbs_lsi_norm N_c hN_c β (hβ₀.trans_le hβ) α_haar hα_haar hHaar⟩
-
-/-- C132: DLR-LSI for normalized SU(N) Gibbs (correct path). -/
-theorem sun_gibbs_dlr_lsi_norm
-    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
-    (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
-    ∃ α_star : ℝ, 0 < α_star ∧
-      DLR_LSI (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ))
-        (sunDirichletForm N_c) α_star := by
-  obtain ⟨α_haar, hα_haar, hHaar⟩ := sun_haar_lsi N_c hN_c
-  obtain ⟨α_star, hα_star, hvol⟩ :=
-    balaban_rg_uniform_lsi_norm d N_c hN_c β β₀ hβ hβ₀ α_haar hα_haar hHaar
-  exact ⟨α_star, hα_star, hα_star, hvol⟩
+      (α * Real.exp (-2 * β)) := by
+  refine ⟨mul_pos hα (Real.exp_pos _), ?_⟩
+  intro f hf
+  obtain ⟨_, hLSI⟩ := hHaar
+  have h1 := hLSI f hf
+  have h2 := hEntPert f hf
+  have hexp_pos : (0 : ℝ) < Real.exp (2 * β) := Real.exp_pos _
+  have hexp_nn : (0 : ℝ) ≤ Real.exp (2 * β) := le_of_lt hexp_pos
+  -- Unfold entSq in h2 to match the LSI integral form
+  simp only [entSq] at h2
+  -- Convert Real.exp (-2 * β) to (Real.exp (2 * β))⁻¹
+  have hneg_eq : (-2 * β : ℝ) = -(2 * β) := by ring
+  have hexp_neg : Real.exp (-2 * β) = (Real.exp (2 * β))⁻¹ := by
+    rw [hneg_eq]; exact Real.exp_neg (2 * β)
+  have hα_ne : α ≠ 0 := ne_of_gt hα
+  have hexp_ne : Real.exp (2 * β) ≠ 0 := ne_of_gt hexp_pos
+  -- Key identity: 2 / (α * exp(-2*β)) = exp(2*β) * (2/α)
+  have hkey : (2 : ℝ) / (α * Real.exp (-2 * β)) =
+      Real.exp (2 * β) * (2 / α) := by
+    rw [hexp_neg]; field_simp
+  -- Scale h1 by exp(2β):
+  have h3 := mul_le_mul_of_nonneg_left h1 hexp_nn
+  -- Chain h2 with h3:
+  have h4 := h2.trans h3
+  -- Rewrite coefficient on goal RHS
+  rw [hkey]
+  linarith [h4]
 
 /-! ## LEGACY: abstract HS axiom + un-normalized Gibbs (backward compatibility) -/
 

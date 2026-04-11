@@ -18,17 +18,6 @@ theorem sun_clay_conditional
   rintro ⟨α_star, hα, -⟩
   exact ⟨α_star, hα⟩
 
-/-- C132: Given DLR-LSI for the **normalized** Gibbs family with α_star > 0,
-    ClayYangMillsTheorem follows. The specific Gibbs family is irrelevant;
-    only positivity of α_star matters. -/
-theorem sun_clay_conditional_norm
-    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
-    (∃ α_star : ℝ, 0 < α_star ∧
-      DLR_LSI (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ)) (sunDirichletForm N_c) α_star) →
-      ClayYangMillsTheorem := by
-  rintro ⟨α_star, hα, -⟩
-  exact ⟨α_star, hα⟩
-
 /-- **C134: Axiom-free physical mass gap (conditional on DLR-LSI hypothesis).**
     `sun_physical_mass_gap` now targets `ClayYangMillsPhysicalStrong` with the
     DLR-LSI witness supplied as an **explicit hypothesis** `hdlr` rather than
@@ -73,19 +62,6 @@ theorem sun_physical_mass_gap
   obtain ⟨α_star, hα_pos, hDLR⟩ := hdlr
   exact connectedCorrDecay_implies_physicalStrong
     μ plaquetteEnergy β F distP (bridge α_star hα_pos hDLR) hdistP
-
-/-- **Vacuous form kept for backward compatibility.**
-    Produces `ClayYangMillsTheorem := ∃ m_phys : ℝ, 0 < m_phys`, which is
-    trivially true. Only `lsi_normalized_gibbs_from_haar` appears on the
-    oracle chain because the witness extraction in `sun_clay_conditional_norm`
-    discards the LSI hypothesis; the axiom is still consumed when
-    constructing the argument term. -/
-theorem sun_physical_mass_gap_vacuous
-    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ)
-    (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
-    ClayYangMillsTheorem :=
-  sun_clay_conditional_norm d N_c hN_c β β₀ hβ hβ₀
-    (sun_gibbs_dlr_lsi_norm d N_c hN_c β β₀ hβ hβ₀)
 
 /-- LEGACY: Physical mass gap via un-normalized Gibbs (uses holleyStroock_sunGibbs_lsi axiom). -/
 theorem sun_physical_mass_gap_legacy
