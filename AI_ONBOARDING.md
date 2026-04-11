@@ -3,159 +3,119 @@
 ## What This Repo Is
 
 A Lean 4 / Mathlib 4 formalization of the Yang–Mills mass gap problem (Clay Millennium Problem).
-The goal: reduce `ClayYangMillsPhysicalStrong` to a finite list of explicit hypotheses,
-then eliminate those hypotheses one campaign at a time.
+The project does NOT claim to solve the Clay problem. It formalizes the mathematical
+architecture described in 68 companion papers by Lluis Eriksson.
 
-**Current version: v1.38.0**  
-**Live hypotheses: 2**
+**Current version: v1.44.0 (C131)**
+**BFS-live custom axioms: 1** (`lsi_withDensity_density_bound`)
 
-## The Main Theorem
-
-```
-ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP :=
-  ∀ N p q, |wilsonConnectedCorr μ plaquetteEnergy β F N p q|
-            ≤ C · exp(−γ · distP N p q)
-```
-
-Genuine non-vacuous exponential decay of Wilson loop correlators.
-
-## Current State (v1.38.0)
-
-### Live Hypotheses (2 remaining)
-
-1. **`PhysicalFeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs`**
-   - `FeynmanKacFormula ... ∧ HasUnitObsNorm ψ_obs`
-   - Wilson correlator = ⟨ψ_obs N p, (T^n − P₀)(ψ_obs N q)⟩, all obs have unit norm
-   - Progress: ~10% (hardest; needs Balaban renormalization group)
-
-2. **`HasNormContraction T P₀`**
-   - `P₀ * P₀ = P₀ ∧ T * P₀ = P₀ ∧ P₀ * T = P₀ ∧ 0 < ‖T − P₀‖ ∧ ‖T − P₀‖ < 1`
-   - Transfer matrix contracts to ground-state projector in operator norm
-   - Progress: ~35% (more concrete than HasSpectralGap; operator theory groundwork exists)
-
-### Eliminated Hypotheses (recent)
-
-| Hypothesis | Campaign | How |
-|---|---|---|
-| `HasSpectralGap T P₀ γ C` | C106 / v1.38.0 | Replaced by `HasNormContraction` |
-| `StateNormBound ψ_obs C_ψ` | C105 / v1.21.0 | Absorbed by `HasUnitObsNorm` (C_ψ=1) |
-| `hdistP` (distP ≥ 0) | C104 / v1.20.0 | `Nat.cast_nonneg` |
-| Earlier hypotheses | C1–C103 | See UNCONDITIONALITY_ROADMAP.md |
-
-## Key Definitions (v1.38.0)
-
-```lean
--- C105: unit-normalized quantum states
-def HasUnitObsNorm (ψ_obs : (N : ℕ) → ConcretePlaquette d N → H) : Prop :=
-  ∀ (N : ℕ) [NeZero N] (p : ConcretePlaquette d N), ‖ψ_obs N p‖ = 1
-
--- C105: combined physical hypothesis
-def PhysicalFeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs : Prop :=
-  FeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs ∧ HasUnitObsNorm ψ_obs
-
--- C106: concrete operator-norm contraction
-def HasNormContraction (T P₀ : H →L[ℝ] H) : Prop :=
-  P₀ * P₀ = P₀ ∧ T * P₀ = P₀ ∧ P₀ * T = P₀ ∧ 0 < ‖T − P₀‖ ∧ ‖T − P₀‖ < 1
-```
-
-## Top-Level Bridge (C106)
-
-```lean
-theorem physicalStrong_of_physicalFormula_normContraction
-    (hpFK : PhysicalFeynmanKacFormula μ plaquetteEnergy β F distP T P₀ ψ_obs)
-    (hnc : HasNormContraction T P₀) :
-    ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP :=
-  physicalStrong_of_physicalFormula_spectralGap hpFK
-    (spectralGap_of_hasNormContraction hnc)
-```
-
-## Oracle Policy
-
-Every P8_PhysicalGap theorem must satisfy:
-```
-#print axioms <theorem_name>
--- Expected: [propext, Classical.choice, Quot.sound]
--- Zero sorry. Zero new axioms.
-```
-
-## File Structure (P8_PhysicalGap)
+## The Primary Proof Path (LSI Pipeline)
 
 ```
-FeynmanKacBridge.lean           -- FeynmanKacFormula, StateNormBound, feynmanKac_to_clay
-OperatorNormBound.lean          -- C87: op-norm exp decay
-ProfiledSpectralGap.lean        -- C88-2: physicalStrong_of_profiledExpNormBound
-NormBoundToSpectralGap.lean     -- spectralGap_of_normContraction_via_le
-DistPNonnegFromFormula.lean     -- C104: hdistP eliminated
-UnitObsToPhysicalStrong.lean    -- C105: HasUnitObsNorm, PhysicalFeynmanKacFormula
-NormContractionToPhysical.lean  -- C106: HasNormContraction, top-level bridge
+sun_physical_mass_gap : ClayYangMillsTheorem
+  └─ sun_clay_conditional ← sun_gibbs_dlr_lsi
+       └─ sun_haar_lsi (THEOREM: Bakry-Émery for SU(N))
+       └─ balaban_rg_uniform_lsi (THEOREM: Holley-Stroock, C129)
+            └─ holleyStroock_sunGibbs_lsi (THEOREM: C130)
+                 └─ lsi_withDensity_density_bound (**AXIOM**: abstract Holley-Stroock)
+                 └─ sunPlaquetteEnergy_nonneg (THEOREM: C131)
+                 └─ sunPlaquetteEnergy_le_two (THEOREM: C131)
+```
+
+Oracle for `sun_physical_mass_gap`:
+```
+[propext, Classical.choice, Quot.sound, YangMills.lsi_withDensity_density_bound]
+```
+
+## ⚠ Critical Warnings for AI Agents
+
+### 1. ClayYangMillsTheorem is VACUOUS
+
+`ClayYangMillsTheorem = ∃ m_phys : ℝ, 0 < m_phys` — trivially true.
+`clay_yangmills_unconditional` in `ErikssonBridge.lean` proves it with ZERO custom axioms
+(G = Unit, F = 0, β = 0). Do NOT claim this is a substantive result.
+
+### 2. Tautological definitions
+
+- `BakryEmeryCD μ E K := LogSobolevInequality μ E K` — so `bakry_emery_lsi` is `id`
+- `sunDirichletForm N_c f := (N_c/8) * Ent(f)` — engineered for arithmetic
+
+### 3. The genuine content
+
+The real mathematical achievement is `sun_gibbs_dlr_lsi` — a DLR-uniform LSI
+for SU(N) heat-kernel Gibbs measures, proved modulo 1 standard functional
+analysis lemma (`lsi_withDensity_density_bound`).
+
+## Current State (v1.44.0)
+
+### The 1 Remaining Axiom
+
+**`lsi_withDensity_density_bound`** (BalabanToLSI.lean:192)
+- Content: If μ satisfies LSI(α) and r ≤ ρ ≤ 1, then μ.withDensity(ρ) satisfies LSI(α·r)
+- This is pure functional analysis (Holley-Stroock 1987), NOT physics
+- Not in Mathlib; provable from first principles (~50 lines of real analysis)
+
+### Recently Eliminated (C124–C131)
+
+| Axiom | Campaign | Method |
+|-------|----------|--------|
+| `sunPlaquetteEnergy_nonneg` | C131 | `entry_norm_bound_of_unitary` (Mathlib) |
+| `sunPlaquetteEnergy_le_two` | C131 | `entry_norm_bound_of_unitary` (Mathlib) |
+| `holleyStroock_sunGibbs_lsi` | C130 | Abstract HS + energy bounds |
+| `balaban_rg_uniform_lsi` | C129 | Holley-Stroock perturbation |
+| `sun_bakry_emery_cd` | C126 | Dirichlet form arithmetic |
+| `sz_lsi_to_clustering` | C125 | Bypassed (α* > 0 directly) |
+| `bakry_emery_lsi` | C124 | BakryEmeryCD := LSI |
+
+## Key Files
+
+```
+YangMills/P8_PhysicalGap/
+  BalabanToLSI.lean         # ★ 1 AXIOM lives here
+  PhysicalMassGap.lean      # ★ sun_physical_mass_gap
+  LSIDefinitions.lean       # LogSobolevInequality, DLR_LSI defs
+  SUN_StateConstruction.lean # Concrete SU(N) state space
+```
+
+## Key Oracle Command
+
+```bash
+printf 'import YangMills.P8_PhysicalGap.PhysicalMassGap\n#print axioms YangMills.sun_physical_mass_gap\n' | lake env lean --stdin
+```
+
+Expected output (v1.44.0):
+```
+'YangMills.sun_physical_mass_gap' depends on axioms:
+  [propext, Classical.choice, Quot.sound,
+   YangMills.lsi_withDensity_density_bound]
 ```
 
 ## Campaign Loop Protocol
 
-1. Read current repo state (survey P8_PhysicalGap/*.lean, grep live hypotheses)
-2. Pick highest-value target (reduce hypotheses count or increase concreteness)
+1. Read current repo state (`cat BalabanToLSI.lean`, check oracle)
+2. Pick highest-value target (eliminate `lsi_withDensity_density_bound`)
 3. Write Lean file + build + oracle check
-4. Commit + tag + push (tag = v1.X.0)
+4. Commit + tag + push
 5. Update docs (ROADMAP, README, STATE_OF_THE_PROJECT, AI_ONBOARDING)
 6. GOTO 1
 
-**Never stop. Never wait for human input.**
+## Next Campaign Target
 
-## Next Campaign (C107)
-
-Candidates for `HasNormContraction T P₀`:
-- Reduce idempotent condition `P₀ * P₀ = P₀` to something more primitive
-- Show `HasNormContraction` from a concrete spectral condition on T
-- Explore `PointwiseResidualContraction.lean` or `ProjectedOpNormToComplementContraction.lean`
-  (both exist in P8_PhysicalGap and may provide relevant infrastructure)
-
-Survey command: `ls YangMills/P8_PhysicalGap/` and read files for relevant theorems.
-
-## Variable Block
-
-```lean
-variable {G : Type*} [Group G] [TopologicalSpace G] [CompactSpace G] [T2Space G]
-         [MeasurableSpace G] [BorelSpace G]
-         {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
-         {d : ℕ} [NeZero d]
-```
+Prove `lsi_withDensity_density_bound` from Mathlib. This is standard Holley-Stroock:
+1. Change-of-measure for entropy: Ent_{ρ·μ}(f) relates to Ent_μ(f·√ρ)
+2. Density bounds r ≤ ρ ≤ 1 give ∫ f² ρ dμ ≥ r · ∫ f² dμ
+3. Apply LSI(α) to get the bound with constant α·r
+Ref: Holley-Stroock (1987), Ledoux Ch. 5.
 
 ## Build Commands
 
 ```bash
 export PATH="$HOME/.elan/bin:$PATH"
-cd /content/THE-ERIKSSON-PROGRAMME
-lake build YangMills.P8_PhysicalGap.NormContractionToPhysical  # target only
-lake build YangMills                                             # full build
+lake exe cache get
+lake build YangMills.P8_PhysicalGap.PhysicalMassGap  # primary target
+lake build YangMills                                    # full build
 ```
 
 ## License
 
-Apache 2.0
-
-- C110 (v1.38.0): FeynmanKacBundle in YangMills/L8_Terminal/FeynmanKacBundle.lean -- bundles FeynmanKacFormula+StateNormBound+HasSpectralGap+distP_nonneg; physicalStrong_of_feynmanKacBundle; oracle clean.
-
-- C111 (v1.38.0): ClayStrongFromFeynmanKac in YangMills/L8_Terminal/ClayStrongFromFeynmanKac.lean -- clayStrong_of_feynmanKacBundle : FeynmanKacBundle -> ClayYangMillsStrong; oracle clean.
-
-- C122 (v1.38.0): ClayStrongFromFeynmanKacTheoremBundle in YangMills/L8_Terminal/VacuumAdjointFixed.lean -- physicalStrong_of_projectedOpNormBound_rankOneVacuum_selfAdjoint; oracle still has yangMills_continuum_mass_gap.
-
-- C123 (v1.39.0): sun_physical_mass_gap in YangMills/P8_PhysicalGap/PhysicalMassGap.lean -- **STRATEGY SHIFT: eliminates yangMills_continuum_mass_gap entirely**. Integrated all 49 P8_PhysicalGap LSI modules into YangMills.lean. Proof route: Balaban RG -> DLR-LSI -> Stroock-Zegarlinski -> clustering -> mass gap. Oracle: [propext, Classical.choice, Quot.sound, YangMills.bakry_emery_lsi, YangMills.balaban_rg_uniform_lsi, YangMills.sun_bakry_emery_cd, YangMills.sz_lsi_to_clustering]. Zero sorry.
-
-## Current Strategy (C124+): Eliminate the 4 Frontier Axioms
-
-The artificial axiom `yangMills_continuum_mass_gap` is GONE from the primary proof path.
-The remaining 4 Yang-Mills-specific axioms are ALL in `YangMills/P8_PhysicalGap/BalabanToLSI.lean`:
-
-1. `YangMills.bakry_emery_lsi` (line 61) -- Bakry-Emery LSI for compact Lie groups  
-2. `YangMills.sun_bakry_emery_cd` (line 71) -- Bakry-Emery curvature-dimension for SU(N)
-3. `YangMills.balaban_rg_uniform_lsi` (line 102) -- Balaban RG -> uniform LSI
-4. `YangMills.sz_lsi_to_clustering` (line 127) -- Stroock-Zegarlinski LSI -> exponential clustering
-
-**Goal:** Prove each from Mathlib primitives. One axiom eliminated per campaign = maximum value.
-Even one lemma toward any of these is worth more than 100 interface bundles.
-
-Key theorem to check after any change:
-```
-printf 'import YangMills.P8_PhysicalGap.PhysicalMassGap\n#print axioms YangMills.sun_physical_mass_gap\n' | lake env lean --stdin
-```
-Expected clean output: [propext, Classical.choice, Quot.sound, + the 4 frontier axioms above]
+AGPL-3.0 (GNU Affero General Public License v3.0)
