@@ -1404,5 +1404,22 @@ collapses definitionally to the single-site Haar measure, so the _haar witness f
 **Oracle**: `[propext, Classical.choice, Quot.sound]`
 **0 frontier axioms remain  UNCONDITIONAL**
 
+### C128  v1.43.1  Semantic Integrity Restored  Real Gibbs Measure
+**C127 was honest oracle but tautological physics**: `sunGibbsFamily := fun _ => sunHaarProb N_c`
+collapsed all finite-volume Gibbs measures to Haar, making `balaban_rg_uniform_lsi` trivially
+true by definitional reduction.
+
+**C128 restores real mathematical content**:
+- `sunPlaquetteEnergy (N_c : N) [NeZero N_c] : SUN_State N_c -> R` (opaque, = 1 - Re(tr g)/N_c)
+- `sunGibbsFamily (d N_c : N) [NeZero N_c] (beta : R) : N -> Measure (SUN_State N_c) :=`
+  `fun _L => (sunHaarProb N_c).withDensity (fun g => ENNReal.ofReal (Real.exp (-beta * sunPlaquetteEnergy N_c g)))`
+  This is the **heat-kernel SU(N_c) measure** at single-plaquette coupling beta.
+  NOT definitionally equal to Haar for beta /= 0.
+- `balaban_rg_uniform_lsi` restored to **axiom** (genuine mathematical content).
+
+**Oracle**: `[propext, Classical.choice, Quot.sound, YangMills.balaban_rg_uniform_lsi]`
+**1 frontier axiom remains  path to proof: Holley-Stroock + Balaban RG**
+
+
 
 

@@ -89,7 +89,7 @@ physicalStrong_of_projectedOpNormBound_rankOneVacuum_selfAdjoint: FK strong path
 Files: YangMills/P8_PhysicalGap/PhysicalMassGap.lean, YangMills.lean
 **ELIMINATES yangMills_continuum_mass_gap entirely.**
 Integrated full P8_PhysicalGap LSI pipeline (49 modules). sun_physical_mass_gap proves ClayYangMillsTheorem via independent route: Balaban RG -> DLR-LSI -> Stroock-Zegarlinski -> clustering -> mass gap.
-Oracle: [propext, Classical.choice, Quot.sound, YangMills.~~bakry_emery_lsi~~ **ELIMINATED C124**, YangMills.~~balaban_rg_uniform_lsi~~ **ELIMINATED C127**, YangMills.~~sun_bakry_emery_cd~~ **ELIMINATED C126**, YangMills.~~sz_lsi_to_clustering~~ **ELIMINATED C125**].
+Oracle: [propext, Classical.choice, Quot.sound, YangMills.~~bakry_emery_lsi~~ **ELIMINATED C124**, YangMills.balaban_rg_uniform_lsi **RESTORED C128** (heat-kernel Gibbs; genuine axiom), YangMills.~~sun_bakry_emery_cd~~ **ELIMINATED C126**, YangMills.~~sz_lsi_to_clustering~~ **ELIMINATED C125**].
 No yangMills_continuum_mass_gap. Zero sorry. This is the new primary proof path.
 
 ## Current Frontier (C124+)

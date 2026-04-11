@@ -44,9 +44,16 @@ noncomputable def sunDirichletForm (N_c : ℕ) [NeZero N_c] (f : SUN_State N_c �
     (∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂(sunHaarProb N_c) -
       (∫ x, f x ^ 2 ∂(sunHaarProb N_c)) * Real.log (∫ x, f x ^ 2 ∂(sunHaarProb N_c)))
 
-/-- Abstract finite-volume Gibbs family for SU(N) Yang-Mills. -/
+/-- Single-plaquette Wilson energy e(g)=1-Re(tr g)/N_c for g in SU(N_c).
+    Opaque here; Matrix.trace instantiation is a future commit. -/
+noncomputable opaque sunPlaquetteEnergy (N_c : ℕ) [NeZero N_c] : SUN_State N_c → ℝ
+
+/-- Heat-kernel SU(N_c) Gibbs family at inverse coupling β.
+    dμ_β(g) prop to exp(-β*e(g)) dHaar(g), e(g) = sunPlaquetteEnergy N_c g.
+    NOT definitionally Haar: balaban_rg_uniform_lsi is a genuine axiom. -/
 noncomputable def sunGibbsFamily (d N_c : ℕ) [NeZero N_c] (β : ℝ) : ℕ → Measure (SUN_State N_c) :=
-  fun _ => sunHaarProb N_c
+  fun _L => (sunHaarProb N_c).withDensity
+    (fun g => ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g)))
 
 /-- Haar is a probability measure in the abstract P8 interface. -/
 noncomputable instance instIsProbabilityMeasure_sunHaarProb
@@ -119,28 +126,13 @@ theorem sun_haar_lsi
 
 /-- Clay-core input: RG promotes the single-site Haar LSI to a uniform
 finite-volume DLR-LSI constant. -/
-theorem balaban_rg_uniform_lsi
-    (d N_c : ℕ)
-    [NeZero N_c]
-    (hN_c : 2 ≤ N_c)
-    (β β₀ : ℝ)
-    (hβ : β ≥ β₀)
-    (hβ₀ : 0 < β₀)
-    (α_haar : ℝ)
-    (hα_haar : 0 < α_haar)
-    (hHaar :
-      LogSobolevInequality
-        (sunHaarProb N_c)
-        (sunDirichletForm N_c)
-        α_haar) :
-    ∃ α_star : ℝ, 0 < α_star ∧
-      ∀ L : ℕ,
-        LogSobolevInequality
-          (sunGibbsFamily d N_c β L)
-          (sunDirichletForm N_c)
-          α_star := by
-  -- sunGibbsFamily = fun _ => sunHaarProb N_c (C127), every L reduces to Haar.
-  exact ⟨α_haar, hα_haar, fun _ => hHaar⟩
+axiom balaban_rg_uniform_lsi
+    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀)
+    (α_haar : ℝ) (hα_haar : 0 < α_haar)
+    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α_haar) :
+    ∃ α_star : ℝ, 0 < α_star ∧ ∀ L : ℕ,
+      LogSobolevInequality (sunGibbsFamily d N_c β L) (sunDirichletForm N_c) α_star
 
 /-! ## LSI → clustering bridge used by PhysicalMassGap -/
 
