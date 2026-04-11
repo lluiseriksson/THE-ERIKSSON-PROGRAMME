@@ -1532,3 +1532,44 @@ from Mathlib gives ‖g_{ii}‖ ≤ 1. Then:
 **BFS-live custom axioms for sun_physical_mass_gap:** 1 (lsi_withDensity_density_bound)
 **Next target:** Prove lsi_withDensity_density_bound from Mathlib (pure functional analysis,
   Holley-Stroock density perturbation for log-Sobolev inequalities)
+
+## C133 → v1.45.0 (2026-04-11)
+**Target:** Deep audit and dependency analysis — identify optimal strategy for eliminating `lsi_normalized_gibbs_from_haar`
+**Type:** Audit/analysis campaign (no Lean code changes)
+
+**Context:** C132 (commit 976056c) made major code changes:
+- Introduced normalized Gibbs measure (`sunGibbsFamily_norm`)
+- Proved `instIsProbabilityMeasure_sunGibbsFamily_norm` (not axiom!)
+- Proved `sunPartitionFunction_pos`, `sunPartitionFunction_le_one`
+- Proved `sunPlaquetteEnergy_continuous`
+- Replaced BFS-live axiom: `lsi_withDensity_density_bound` → `lsi_normalized_gibbs_from_haar`
+- The new axiom is correctly stated for the normalized probability Gibbs measure
+- Old axioms retained for backward compatibility (BFS-dead)
+
+**What was done in C133:**
+- Full build confirmed: 349 Lean files, 0 sorry, 0 errors
+- Oracle confirmed:
+  `[propext, Classical.choice, Quot.sound, YangMills.lsi_normalized_gibbs_from_haar]`
+- Deep examination of all 26 declared axioms and their BFS-reachability from `sun_physical_mass_gap`
+- Full axiom dependency graph mapped: 1 BFS-live, 25 BFS-dead (Experimental/, ClayCore/, legacy paths)
+- Searched Mathlib for relevant theorems about log-Sobolev inequalities, weighted measures,
+  and `MeasureTheory.Measure.withDensity` — identified available infrastructure:
+  - `MeasureTheory.Measure.withDensity` (density reweighting)
+  - `MeasureTheory.Measure.absolutelyContinuous_withDensity` (AC relation)
+  - `MeasureTheory.lintegral_withDensity_eq_lintegral_mul` (integration under density)
+  - Radon-Nikodym infrastructure in `Mathlib.MeasureTheory.Decomposition.RadonNikodym`
+  - No log-Sobolev inequality library in Mathlib (must build from scratch)
+- Examined all consumers of `lsi_normalized_gibbs_from_haar`:
+  - Used by `holleyStroock_sunGibbs_lsi_norm` (BalabanToLSI.lean)
+  - Which feeds `balaban_rg_uniform_lsi_norm` → `sun_gibbs_dlr_lsi_norm` → `sun_physical_mass_gap`
+- Strategy assessment: proving `lsi_normalized_gibbs_from_haar` requires formalizing
+  the entropy change-of-measure formula for the normalized density from first principles.
+  The C132 infrastructure (Z_β bounds, IsProbabilityMeasure) provides the foundation.
+
+**Net axiom change:** 0 (audit only, no code changes)
+**BFS-live custom axioms for sun_physical_mass_gap:** 1 (lsi_normalized_gibbs_from_haar)
+**Next target:** Prove `lsi_normalized_gibbs_from_haar` — the Holley-Stroock LSI
+  for normalized Gibbs. Proof sketch:
+  1. Density bounds: exp(-2β)/Z_β ≤ ρ_norm ≤ 1/Z_β (from C131+C132 energy and Z_β bounds)
+  2. Change-of-measure: Ent_{ρ·Haar}(f²) relates to Ent_Haar via density bounds
+  3. Apply Haar LSI(α) to get LSI(α·exp(-2β)) for normalized Gibbs

@@ -1,31 +1,30 @@
 # State of the Project — THE-ERIKSSON-PROGRAMME
 
-**Version**: v1.44.0 (C131)
+**Version**: v1.45.0 (C133)
 **Date**: 2026-04-11
 **BFS-live custom axioms for `sun_physical_mass_gap`**: 1
 
 ## What Has Been Accomplished
 
 The project proves `ClayYangMillsTheorem` via an LSI (log-Sobolev inequality) pipeline
-with exactly **1 custom axiom** remaining: `lsi_withDensity_density_bound` (abstract
-Holley-Stroock density perturbation, pure functional analysis).
+with exactly **1 custom axiom** remaining: `lsi_normalized_gibbs_from_haar` (Holley-Stroock
+LSI for the normalized SU(N) Gibbs probability measure).
 
 ### Primary proof chain
 
 ```
 sun_physical_mass_gap : ClayYangMillsTheorem
-  └─ sun_clay_conditional ← sun_gibbs_dlr_lsi
+  └─ sun_clay_conditional_norm ← sun_gibbs_dlr_lsi_norm
        └─ sun_haar_lsi (THEOREM: Bakry-Émery for SU(N))
-       └─ balaban_rg_uniform_lsi (THEOREM: Holley-Stroock perturbation)
-            └─ holleyStroock_sunGibbs_lsi (THEOREM: C130)
-                 └─ lsi_withDensity_density_bound (AXIOM: abstract HS)
-                 └─ sunPlaquetteEnergy_nonneg (THEOREM: C131)
-                 └─ sunPlaquetteEnergy_le_two (THEOREM: C131)
+       └─ balaban_rg_uniform_lsi_norm (THEOREM: C132)
+            └─ holleyStroock_sunGibbs_lsi_norm (THEOREM: C132)
+                 └─ lsi_normalized_gibbs_from_haar (AXIOM: specific HS for normalized Gibbs)
+                 └─ instIsProbabilityMeasure_sunGibbsFamily_norm (THEOREM: C132)
 ```
 
 Oracle for `sun_physical_mass_gap`:
 ```
-[propext, Classical.choice, Quot.sound, YangMills.lsi_withDensity_density_bound]
+[propext, Classical.choice, Quot.sound, YangMills.lsi_normalized_gibbs_from_haar]
 ```
 
 ## Honest Assessment
@@ -37,11 +36,11 @@ Oracle for `sun_physical_mass_gap`:
 `ErikssonBridge.lean` already proves it with ZERO axioms by instantiating all
 parameters to trivial values (G = Unit, F = 0, β = 0).
 
-The **genuine mathematical content** is in `sun_gibbs_dlr_lsi`, which proves a
-DLR-uniform log-Sobolev inequality for the SU(N) Gibbs family. The mass gap
-theorem uses the LSI constant α* > 0 as the "mass gap" — this connection is
-physically motivated (papers [44]–[51]) but the Lean code does not formalize
-the physics link.
+The **genuine mathematical content** is in `sun_gibbs_dlr_lsi_norm`, which proves a
+DLR-uniform log-Sobolev inequality for the **normalized** SU(N) Gibbs family
+(proved to be a probability measure in C132). The mass gap theorem uses the LSI
+constant α* > 0 as the "mass gap" — this connection is physically motivated
+(papers [44]–[51]) but the Lean code does not formalize the physics link.
 
 ### ⚠ Tautological definitions
 
@@ -53,38 +52,48 @@ the physics link.
 
 ### ✓ Genuine results (non-tautological)
 
+- `instIsProbabilityMeasure_sunGibbsFamily_norm`: **proved** — normalized Gibbs is probability measure (C132)
+- `sunPartitionFunction_pos`: Z_β > 0 proved from energy bounds (C132)
+- `sunPartitionFunction_le_one`: Z_β ≤ 1 proved from energy bounds (C132)
+- `sunPlaquetteEnergy_continuous`: proved from matrix/trace/re continuity (C132)
 - `sunPlaquetteEnergy N_c g = 1 - Re(tr g)/N_c` — concrete def (C131)
 - `sunPlaquetteEnergy_nonneg`: proved from `entry_norm_bound_of_unitary` (Mathlib)
 - `sunPlaquetteEnergy_le_two`: proved from `entry_norm_bound_of_unitary` (Mathlib)
-- `holleyStroock_sunGibbs_lsi`: proved from abstract HS + energy bounds (C130)
 - `balaban_rg_uniform_lsi`: proved from Holley-Stroock (C129)
 - `sunGibbsFamily` is a real Gibbs measure: `Haar.withDensity(exp(-β·e(g)))` (C128)
 
 ## Current Live Axiom
 
-### `lsi_withDensity_density_bound` (BalabanToLSI.lean:192)
+### `lsi_normalized_gibbs_from_haar` (BalabanToLSI.lean:255)
 
 ```lean
-axiom lsi_withDensity_density_bound
-    {S : Type*} [MeasurableSpace S]
-    (mu : MeasureTheory.Measure S) (E : (S -> ℝ) -> ℝ)
-    (α r : ℝ) (hα : 0 < α) (hr : 0 < r) (hr1 : r ≤ 1)
-    (h_lsi : LogSobolevInequality mu E α)
-    (rho : S -> ENNReal) (h_lb : ∀ x, ENNReal.ofReal r ≤ rho x)
-    (h_ub : ∀ x, rho x ≤ 1) :
-    LogSobolevInequality (mu.withDensity rho) E (α * r)
+axiom lsi_normalized_gibbs_from_haar
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
+    (α : ℝ) (hα : 0 < α)
+    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α)
+    (hProb : IsProbabilityMeasure
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))) :
+    LogSobolevInequality
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
+      (sunDirichletForm N_c)
+      (α * Real.exp (-2 * β))
 ```
 
-**Content**: If μ satisfies LSI(α) and r ≤ ρ(x) ≤ 1, then μ.withDensity(ρ) satisfies LSI(α·r).
+**Content**: Holley-Stroock LSI for the **normalized** SU(N_c) Gibbs probability measure.
+If Haar satisfies LSI(α), the normalized Gibbs measure satisfies LSI(α·exp(-2β)).
 **Reference**: Holley-Stroock (1987), Diaconis-Saloff-Coste (1996)
-**Status**: Pure functional analysis. Not in Mathlib. Provable from first principles.
+**Status**: Specific instance of classical perturbation lemma. Not in Mathlib.
 **Papers**: [44]–[45] (viXra:2602.0040–0041)
+**Key improvement over C130**: applies to the *normalized* probability Gibbs measure
+(IsProbabilityMeasure proved in C132), not the raw un-normalized withDensity measure.
 
 ## BFS-Dead Axioms (not in sun_physical_mass_gap chain)
 
 | Axiom | File | Notes |
 |-------|------|-------|
-| `sz_lsi_to_clustering` | BalabanToLSI.lean:256 | Used by sun_gibbs_clustering, NOT by sun_physical_mass_gap |
+| `lsi_withDensity_density_bound` | BalabanToLSI.lean:315 | Legacy abstract HS (replaced by `lsi_normalized_gibbs_from_haar` in C132) |
+| `holleyStroock_sunGibbs_lsi` | BalabanToLSI.lean:325 | Legacy un-normalized HS (replaced in C132) |
+| `sz_lsi_to_clustering` | BalabanToLSI.lean:345 | Used by sun_gibbs_clustering, NOT by sun_physical_mass_gap |
 | `yangMills_continuum_mass_gap` | L8_Terminal/ClayTheorem.lean:51 | Old path, bypassed since C123 |
 | Various Experimental/ axioms | Experimental/*.lean | Research frontier, BFS-dead |
 | Various ClayCore/ axioms | ClayCore/BalabanRG/*.lean | RG machinery, BFS-dead |
@@ -107,12 +116,12 @@ axiom lsi_withDensity_density_bound
 
 - **349 Lean files** in YangMills/
 - **0 sorry** in any Lean file
-- **2 axioms** in BalabanToLSI.lean (1 BFS-live, 1 BFS-dead for main theorem)
-- **~25 axioms** total in repo (mostly Experimental/ and ClayCore/, all BFS-dead)
+- **4 axioms** in BalabanToLSI.lean (1 BFS-live, 3 BFS-dead for main theorem)
+- **~26 axioms** total in repo (mostly Experimental/ and ClayCore/, all BFS-dead)
 
 ## Campaign Log Summary
 
-See `UNCONDITIONALITY_ROADMAP.md` for full campaign history (C1–C131).
+See `UNCONDITIONALITY_ROADMAP.md` for full campaign history (C1–C133).
 
 ## Terminal Theorems
 
@@ -125,6 +134,13 @@ See `UNCONDITIONALITY_ROADMAP.md` for full campaign history (C1–C131).
 
 ## Next Target
 
-Prove `lsi_withDensity_density_bound` from Mathlib. This is pure functional analysis:
-the Holley-Stroock argument for log-Sobolev inequalities under bounded density
-perturbation. Ref: Holley-Stroock (1987), Ledoux "Concentration of Measure" Ch. 5.
+Prove `lsi_normalized_gibbs_from_haar` from Mathlib. This is the specific Holley-Stroock
+instance for the normalized SU(N) Gibbs probability measure. The normalization and
+IsProbabilityMeasure infrastructure is already proved (C132). What remains is the
+entropy change-of-measure argument.
+
+**C133 audit findings** (v1.45.0): Mathlib has `withDensity`, `lintegral_withDensity_eq_lintegral_mul`,
+and Radon-Nikodym infrastructure, but NO log-Sobolev inequality library. The proof
+requires formalizing entropy change-of-measure and density-bound integration from scratch.
+The C132 normalization theorems (Z_β > 0, Z_β ≤ 1, IsProbabilityMeasure) provide the
+necessary foundation. Ref: Holley-Stroock (1987), Ledoux Ch. 5.

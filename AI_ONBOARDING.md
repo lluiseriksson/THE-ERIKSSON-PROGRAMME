@@ -6,25 +6,24 @@ A Lean 4 / Mathlib 4 formalization of the Yang–Mills mass gap problem (Clay Mi
 The project does NOT claim to solve the Clay problem. It formalizes the mathematical
 architecture described in 68 companion papers by Lluis Eriksson.
 
-**Current version: v1.44.0 (C131)**
-**BFS-live custom axioms: 1** (`lsi_withDensity_density_bound`)
+**Current version: v1.45.0 (C133)**
+**BFS-live custom axioms: 1** (`lsi_normalized_gibbs_from_haar`)
 
 ## The Primary Proof Path (LSI Pipeline)
 
 ```
 sun_physical_mass_gap : ClayYangMillsTheorem
-  └─ sun_clay_conditional ← sun_gibbs_dlr_lsi
+  └─ sun_clay_conditional_norm ← sun_gibbs_dlr_lsi_norm
        └─ sun_haar_lsi (THEOREM: Bakry-Émery for SU(N))
-       └─ balaban_rg_uniform_lsi (THEOREM: Holley-Stroock, C129)
-            └─ holleyStroock_sunGibbs_lsi (THEOREM: C130)
-                 └─ lsi_withDensity_density_bound (**AXIOM**: abstract Holley-Stroock)
-                 └─ sunPlaquetteEnergy_nonneg (THEOREM: C131)
-                 └─ sunPlaquetteEnergy_le_two (THEOREM: C131)
+       └─ balaban_rg_uniform_lsi_norm (THEOREM: C132)
+            └─ holleyStroock_sunGibbs_lsi_norm (THEOREM: C132)
+                 └─ lsi_normalized_gibbs_from_haar (**AXIOM**: specific HS for normalized Gibbs)
+                 └─ instIsProbabilityMeasure_sunGibbsFamily_norm (THEOREM: C132)
 ```
 
 Oracle for `sun_physical_mass_gap`:
 ```
-[propext, Classical.choice, Quot.sound, YangMills.lsi_withDensity_density_bound]
+[propext, Classical.choice, Quot.sound, YangMills.lsi_normalized_gibbs_from_haar]
 ```
 
 ## ⚠ Critical Warnings for AI Agents
@@ -42,26 +41,28 @@ Oracle for `sun_physical_mass_gap`:
 
 ### 3. The genuine content
 
-The real mathematical achievement is `sun_gibbs_dlr_lsi` — a DLR-uniform LSI
-for SU(N) heat-kernel Gibbs measures, proved modulo 1 standard functional
-analysis lemma (`lsi_withDensity_density_bound`).
+The real mathematical achievement is `sun_gibbs_dlr_lsi_norm` — a DLR-uniform LSI
+for the **normalized** SU(N) heat-kernel Gibbs probability measure, proved modulo
+1 specific Holley-Stroock instance (`lsi_normalized_gibbs_from_haar`).
+The normalization (`IsProbabilityMeasure`) is **proved**, not assumed (C132).
 
-## Current State (v1.44.0)
+## Current State (v1.45.0)
 
 ### The 1 Remaining Axiom
 
-**`lsi_withDensity_density_bound`** (BalabanToLSI.lean:192)
-- Content: If μ satisfies LSI(α) and r ≤ ρ ≤ 1, then μ.withDensity(ρ) satisfies LSI(α·r)
-- This is pure functional analysis (Holley-Stroock 1987), NOT physics
-- Not in Mathlib; provable from first principles (~50 lines of real analysis)
+**`lsi_normalized_gibbs_from_haar`** (BalabanToLSI.lean:255)
+- Content: If Haar satisfies LSI(α), then normalized Gibbs satisfies LSI(α·exp(-2β))
+- This is a specific instance of the Holley-Stroock perturbation lemma
+- The normalization (IsProbabilityMeasure) is PROVED in C132
+- Not in Mathlib; provable from entropy change-of-measure argument
 
-### Recently Eliminated (C124–C131)
+### Recently Eliminated (C124–C132)
 
 | Axiom | Campaign | Method |
 |-------|----------|--------|
+| `lsi_withDensity_density_bound` (BFS-live) | C132 | Replaced by `lsi_normalized_gibbs_from_haar` (correctly stated) |
 | `sunPlaquetteEnergy_nonneg` | C131 | `entry_norm_bound_of_unitary` (Mathlib) |
 | `sunPlaquetteEnergy_le_two` | C131 | `entry_norm_bound_of_unitary` (Mathlib) |
-| `holleyStroock_sunGibbs_lsi` | C130 | Abstract HS + energy bounds |
 | `balaban_rg_uniform_lsi` | C129 | Holley-Stroock perturbation |
 | `sun_bakry_emery_cd` | C126 | Dirichlet form arithmetic |
 | `sz_lsi_to_clustering` | C125 | Bypassed (α* > 0 directly) |
@@ -71,7 +72,7 @@ analysis lemma (`lsi_withDensity_density_bound`).
 
 ```
 YangMills/P8_PhysicalGap/
-  BalabanToLSI.lean         # ★ 1 AXIOM lives here
+  BalabanToLSI.lean         # ★ 1 AXIOM lives here (lsi_normalized_gibbs_from_haar)
   PhysicalMassGap.lean      # ★ sun_physical_mass_gap
   LSIDefinitions.lean       # LogSobolevInequality, DLR_LSI defs
   SUN_StateConstruction.lean # Concrete SU(N) state space
@@ -83,17 +84,17 @@ YangMills/P8_PhysicalGap/
 printf 'import YangMills.P8_PhysicalGap.PhysicalMassGap\n#print axioms YangMills.sun_physical_mass_gap\n' | lake env lean --stdin
 ```
 
-Expected output (v1.44.0):
+Expected output (v1.45.0):
 ```
 'YangMills.sun_physical_mass_gap' depends on axioms:
   [propext, Classical.choice, Quot.sound,
-   YangMills.lsi_withDensity_density_bound]
+   YangMills.lsi_normalized_gibbs_from_haar]
 ```
 
 ## Campaign Loop Protocol
 
 1. Read current repo state (`cat BalabanToLSI.lean`, check oracle)
-2. Pick highest-value target (eliminate `lsi_withDensity_density_bound`)
+2. Pick highest-value target (eliminate `lsi_normalized_gibbs_from_haar`)
 3. Write Lean file + build + oracle check
 4. Commit + tag + push
 5. Update docs (ROADMAP, README, STATE_OF_THE_PROJECT, AI_ONBOARDING)
@@ -101,11 +102,19 @@ Expected output (v1.44.0):
 
 ## Next Campaign Target
 
-Prove `lsi_withDensity_density_bound` from Mathlib. This is standard Holley-Stroock:
-1. Change-of-measure for entropy: Ent_{ρ·μ}(f) relates to Ent_μ(f·√ρ)
-2. Density bounds r ≤ ρ ≤ 1 give ∫ f² ρ dμ ≥ r · ∫ f² dμ
-3. Apply LSI(α) to get the bound with constant α·r
+Prove `lsi_normalized_gibbs_from_haar` from Mathlib. This is the Holley-Stroock
+perturbation lemma for the normalized SU(N) Gibbs probability measure:
+1. The normalized density ρ_norm = exp(-β·e)/Z_β is bounded: exp(-2β)/Z_β ≤ ρ_norm ≤ 1/Z_β
+2. Entropy change-of-measure: Ent_{ρ·μ}(f) relates to Ent_μ(f)
+3. Apply LSI(α) for Haar to get LSI(α·exp(-2β)) for normalized Gibbs
 Ref: Holley-Stroock (1987), Ledoux Ch. 5.
+
+**C133 audit findings:** Mathlib has `withDensity`, `lintegral_withDensity_eq_lintegral_mul`,
+Radon-Nikodym, but NO log-Sobolev library. Must formalize entropy change-of-measure
+from scratch. Key Mathlib entry points:
+- `MeasureTheory.Measure.withDensity`
+- `MeasureTheory.lintegral_withDensity_eq_lintegral_mul`
+- `MeasureTheory.Measure.absolutelyContinuous_withDensity`
 
 ## Build Commands
 
