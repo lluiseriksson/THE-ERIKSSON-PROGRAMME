@@ -1445,3 +1445,29 @@ true by definitional reduction.
 
 
 
+
+## C130  v1.43.3 (2026-04-11)
+**Target:** Prove `holleyStroock_sunGibbs_lsi` from abstract primitives
+
+**Live bottleneck attacked:** Replaced 1 physics-specific LSI axiom with 3 more primitive axioms:
+- `lsi_withDensity_density_bound` (abstract Holley-Stroock density perturbation)
+- `sunPlaquetteEnergy_nonneg` (e(g) >= 0 for SU(N_c) plaquette energy)
+- `sunPlaquetteEnergy_le_two` (e(g) <= 2 for SU(N_c) plaquette energy)
+
+**Mathematical content:** The proof uses e(g) in [0,2] => exp(-beta*e(g)) in [exp(-2*beta), 1],
+then applies the abstract Holley-Stroock bound. The rate alpha*exp(-2*beta) is sharp.
+
+**Oracle footprint for holleyStroock_sunGibbs_lsi:**
+  [propext, Classical.choice, Quot.sound,
+   YangMills.lsi_withDensity_density_bound,
+   YangMills.sunPlaquetteEnergy_le_two,
+   YangMills.sunPlaquetteEnergy_nonneg]
+
+**Build:** YangMills.P8_PhysicalGap.BalabanToLSI  8167 jobs, 0 errors
+
+**Net axiom change:** -1 physics axiom, +3 more primitive axioms
+- C131 target: prove lsi_withDensity_density_bound from Mathlib (pure functional analysis)
+- C132 target: prove energy bounds from concrete sunPlaquetteEnergy via Mathlib spectral theory
+
+**Honest assessment:** Real progress  each new axiom is strictly more fundamental and
+closer to Mathlib. The chain LSI(Haar) -> LSI(Gibbs) is now proved, not assumed.

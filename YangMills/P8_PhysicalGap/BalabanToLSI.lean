@@ -124,11 +124,37 @@ theorem sun_haar_lsi
 
 /-! ## M2: Balaban RG uniform LSI -/
 
-/-- Holley-Stroock perturbation for the SU(N_c) heat-kernel Gibbs measure.
-    Haar satisfies LSI(a) + b > 0 => tilted measure satisfies LSI(a*exp(-2b)).
-    Plaquette energy e(g) in [0,2] on SU(N_c), osc(-b*e) = 2b.
+/-- C130: Plaquette energy lower bound: 0 ≤ e(g).
+    e(g)=1-Re(tr g)/N_c ≤ 0 impossible; 0 ≤ e(g) holds since Re(tr g)/N_c ≤ 1. -/
+axiom sunPlaquetteEnergy_nonneg
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (g : SUN_State N_c) : 0 ≤ sunPlaquetteEnergy N_c g
+
+/-- C130: Plaquette energy upper bound: e(g) ≤ 2.
+    e(g)=1-Re(tr g)/N_c ≤ 2 since Re(tr g)/N_c ≤ -1 is false; Re ≤ -1 impossible. -/
+axiom sunPlaquetteEnergy_le_two
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (g : SUN_State N_c) : sunPlaquetteEnergy N_c g ≤ 2
+
+/-- C130: Abstract Holley-Stroock (pure functional analysis).
+    mu satisfies LSI(α) and r ≤ rho ≤ 1 => withDensity(rho) satisfies LSI(α*r).
+    Ref: Holley-Stroock (1987), Diaconis-Saloff-Coste (1996). -/
+axiom lsi_withDensity_density_bound
+    {S : Type*} [MeasurableSpace S]
+    (mu : MeasureTheory.Measure S)
+    (E : (S -> ℝ) -> ℝ)
+    (α r : ℝ)
+    (hα : 0 < α) (hr : 0 < r) (hr1 : r ≤ 1)
+    (h_lsi : LogSobolevInequality mu E α)
+    (rho : S -> ENNReal)
+    (h_lb : ∀ x, ENNReal.ofReal r ≤ rho x)
+    (h_ub : ∀ x, rho x ≤ 1) :
+    LogSobolevInequality (mu.withDensity rho) E (α * r)
+
+/-- Holley-Stroock for SU(N_c) heat-kernel Gibbs measure.
+    Proved C130: from lsi_withDensity_density_bound + energy bounds.
     Ref: Holley-Stroock (1987), Gross (1975). -/
-axiom holleyStroock_sunGibbs_lsi
+theorem holleyStroock_sunGibbs_lsi
     (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
     (β : ℝ) (hβ : 0 < β)
     (α : ℝ) (hα : 0 < α)
@@ -137,7 +163,25 @@ axiom holleyStroock_sunGibbs_lsi
       ((sunHaarProb N_c).withDensity
         (fun g => ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g))))
       (sunDirichletForm N_c)
-      (α * Real.exp (-2 * β))
+      (α * Real.exp (-2 * β)) := by
+  have hr1 : Real.exp (-2 * β) ≤ 1 :=
+    (Real.exp_le_exp.mpr (by linarith)).trans_eq Real.exp_zero
+  have h_lb : ∀ g, ENNReal.ofReal (Real.exp (-2 * β)) ≤
+      ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g)) := fun g => by
+    apply ENNReal.ofReal_le_ofReal
+    apply Real.exp_le_exp.mpr
+    have h2 := sunPlaquetteEnergy_le_two N_c hN_c g
+    nlinarith
+  have h_ub : ∀ g, ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g)) ≤ 1 := fun g => by
+    have h0 := sunPlaquetteEnergy_nonneg N_c hN_c g
+    have hle : Real.exp (-β * sunPlaquetteEnergy N_c g) ≤ 1 :=
+      (Real.exp_le_exp.mpr (by nlinarith)).trans_eq Real.exp_zero
+    have hmain := ENNReal.ofReal_le_ofReal hle
+    rwa [ENNReal.ofReal_one] at hmain
+  exact lsi_withDensity_density_bound (sunHaarProb N_c) (sunDirichletForm N_c)
+    α (Real.exp (-2 * β)) hα (Real.exp_pos _) hr1 hHaar
+    (fun g => ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g)))
+    h_lb h_ub
 
 /-- Uniform finite-volume LSI for the SU(N_c) Gibbs family,
     proved from Holley-Stroock [holleyStroock_sunGibbs_lsi].
