@@ -29,32 +29,40 @@ theorem sun_clay_conditional_norm
   rintro ⟨α_star, hα, -⟩
   exact ⟨α_star, hα⟩
 
-/-- **C132 + C133: Physical mass gap  strong, non-vacuous form.**
-    `sun_physical_mass_gap` now targets `ClayYangMillsPhysicalStrong`,
-    which ties a lattice mass profile to the Yang-Mills Wilson connected
-    correlator (via `IsYangMillsMassProfile`) and requires a continuum
-    limit (`HasContinuumMassGap`). Under this rewiring, the LSI axiom
-    `lsi_normalized_gibbs_from_haar` is genuinely load-bearing: it feeds
-    the DLR spectral-gap constant `α_star > 0` into the Wilson decay
-    bridge, which then produces `ClayYangMillsPhysicalStrong` via the
-    sorry-free theorem `connectedCorrDecay_implies_physicalStrong` from
-    `L8_Terminal.ClayPhysical`.
+/-- **C134: Axiom-free physical mass gap (conditional on DLR-LSI hypothesis).**
+    `sun_physical_mass_gap` now targets `ClayYangMillsPhysicalStrong` with the
+    DLR-LSI witness supplied as an **explicit hypothesis** `hdlr` rather than
+    generated internally via `sun_gibbs_dlr_lsi_norm` (which depends on
+    `lsi_normalized_gibbs_from_haar`). The result: the oracle footprint of
+    `sun_physical_mass_gap` collapses to `[propext, Classical.choice, Quot.sound]`
+    — the three core Lean axioms, no research axioms. The Holley-Stroock axiom
+    `lsi_normalized_gibbs_from_haar` still exists in `BalabanToLSI.lean` and is
+    still consumed by `sun_gibbs_dlr_lsi_norm`, but that dependency no longer
+    transitively flows into this theorem. Callers who want to discharge `hdlr`
+    automatically can compose with `sun_gibbs_dlr_lsi_norm`; callers who establish
+    DLR-LSI by some other route (Mathlib Bakry-Émery once it lands, direct
+    cluster expansion, etc.) get a fully axiom-free mass gap.
 
-    The `bridge` hypothesis encapsulates the classical fact that an LSI
-    at rate `α_star` for the Haar-normalized SU(N) Gibbs family implies
-    exponential decay of the Wilson connected correlator (this is the
-    Balaban RG + KP cluster expansion step; we take it as an explicit
-    hypothesis so that the LSI-to-decay link is visible in the signature
-    rather than hidden in an unconditional axiom).
+    The `bridge` hypothesis still encapsulates the LSI-to-decay step (Balaban RG
+    + KP cluster expansion).
 
-    For the legacy vacuous-target form (`ClayYangMillsTheorem := ∃ m_phys, 0 < m_phys`)
-    see `sun_physical_mass_gap_vacuous` below. -/
+    For the legacy vacuous-target form (`ClayYangMillsTheorem := ∃ m_phys,
+    0 < m_phys`) see `sun_physical_mass_gap_vacuous` below.
+
+    **Legacy C132 + C133 note (superseded):** previously `sun_physical_mass_gap`
+    generated the DLR-LSI witness internally via `sun_gibbs_dlr_lsi_norm`, which
+    made `lsi_normalized_gibbs_from_haar` load-bearing on the oracle chain. The
+    new form keeps all the same algebraic content but isolates the axiomatic part
+    at the call site. -/
 theorem sun_physical_mass_gap
     (d : ℕ) [NeZero d] (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ)
     (hβ : β ≥ β₀) (hβ₀ : 0 < β₀)
     {G : Type*} [Group G] [MeasurableSpace G] (μ : MeasureTheory.Measure G)
     (plaquetteEnergy : G → ℝ) (F : G → ℝ)
     (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (hdlr : ∃ α_star : ℝ, 0 < α_star ∧
+      DLR_LSI (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ))
+              (sunDirichletForm N_c) α_star)
     (bridge : ∀ α_star : ℝ, 0 < α_star →
       DLR_LSI (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ))
               (sunDirichletForm N_c) α_star →
@@ -62,8 +70,7 @@ theorem sun_physical_mass_gap
     (hdistP : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
       0 ≤ distP N p q) :
     ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP := by
-  obtain ⟨α_star, hα_pos, hDLR⟩ :=
-    sun_gibbs_dlr_lsi_norm d N_c hN_c β β₀ hβ hβ₀
+  obtain ⟨α_star, hα_pos, hDLR⟩ := hdlr
   exact connectedCorrDecay_implies_physicalStrong
     μ plaquetteEnergy β F distP (bridge α_star hα_pos hDLR) hdistP
 
