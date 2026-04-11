@@ -205,6 +205,27 @@ theorem sunNormalizedGibbsDensity_le_exp_two_beta
         mul_le_mul_of_nonneg_left hZ_ge hexp2β_pos.le
 
 
+/-- Path A step 2 building block: lintegral comparison under withDensity.
+    For any measurable g, the lintegral against the weighted Gibbs measure is at most
+    `exp(2*β)` times the lintegral against the Haar measure. This is the essential
+    L^1 bound that underlies the Holley-Stroock entropy comparison. -/
+theorem sun_lintegral_withDensity_le_exp_two_beta
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
+    (hρ_meas : Measurable (sunNormalizedGibbsDensity N_c hN_c β hβ))
+    (g : SUN_State N_c → ENNReal) (hg : Measurable g) :
+    (∫⁻ x, g x ∂((sunHaarProb N_c).withDensity
+        (sunNormalizedGibbsDensity N_c hN_c β hβ)))
+      ≤ ENNReal.ofReal (Real.exp (2 * β)) * ∫⁻ x, g x ∂(sunHaarProb N_c) := by
+  rw [MeasureTheory.lintegral_withDensity_eq_lintegral_mul _ hρ_meas hg]
+  calc (∫⁻ x, sunNormalizedGibbsDensity N_c hN_c β hβ x * g x ∂(sunHaarProb N_c))
+      ≤ ∫⁻ x, ENNReal.ofReal (Real.exp (2 * β)) * g x ∂(sunHaarProb N_c) := by
+        refine MeasureTheory.lintegral_mono (fun x => ?_)
+        exact mul_le_mul_right'
+          (sunNormalizedGibbsDensity_le_exp_two_beta N_c hN_c β hβ x) _
+    _ = ENNReal.ofReal (Real.exp (2 * β)) * ∫⁻ x, g x ∂(sunHaarProb N_c) :=
+        MeasureTheory.lintegral_const_mul _ hg
+
+
 /-- C132: Normalized SU(N_c) Gibbs family. -/
 noncomputable def sunGibbsFamily_norm (d N_c : ℕ) [NeZero N_c]
     (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β) : ℕ → Measure (SUN_State N_c) :=
