@@ -1500,3 +1500,35 @@ then applies the abstract Holley-Stroock bound. The rate alpha*exp(-2*beta) is s
 
 **Honest assessment:** Real progress  each new axiom is strictly more fundamental and
 closer to Mathlib. The chain LSI(Haar) -> LSI(Gibbs) is now proved, not assumed.
+
+## C131 → v1.44.0 (2026-04-11)
+**Target:** Prove sunPlaquetteEnergy bounds from Mathlib trace theory
+**File:** `YangMills/P8_PhysicalGap/BalabanToLSI.lean` (+62 lines, -12 lines)
+
+**What changed:**
+- `sunPlaquetteEnergy` changed from `noncomputable opaque` to `noncomputable def`
+  with concrete body: `fun g => 1 - (Matrix.trace g.val).re / (N_c : ℝ)`
+- `sunPlaquetteEnergy_nonneg`: axiom → **THEOREM** (proved)
+- `sunPlaquetteEnergy_le_two`: axiom → **THEOREM** (proved)
+- Two new private lemmas: `re_trace_le_Nc`, `neg_Nc_le_re_trace`
+
+**Proof method:** For g ∈ SU(N_c), unitary entry bound `entry_norm_bound_of_unitary`
+from Mathlib gives ‖g_{ii}‖ ≤ 1. Then:
+  - Re(g_{ii}) ≤ ‖g_{ii}‖ ≤ 1 ⟹ ∑ Re(g_{ii}) ≤ N_c ⟹ Re(tr g)/N_c ≤ 1 ⟹ e(g) ≥ 0
+  - |Re(g_{ii})| ≤ ‖g_{ii}‖ ≤ 1 ⟹ ∑ Re(g_{ii}) ≥ -N_c ⟹ Re(tr g)/N_c ≥ -1 ⟹ e(g) ≤ 2
+
+**Axiom elimination:**
+  BEFORE (C130): sun_physical_mass_gap depended on
+    [sunPlaquetteEnergy_nonneg, sunPlaquetteEnergy_le_two, lsi_withDensity_density_bound]
+  AFTER (C131): sun_physical_mass_gap depends on
+    [lsi_withDensity_density_bound] only
+
+**Oracle for sun_physical_mass_gap:**
+  `[propext, Classical.choice, Quot.sound, YangMills.lsi_withDensity_density_bound]`
+
+**Build:** BalabanToLSI.lean compiles, 0 errors, 0 sorry
+
+**Net axiom change:** -2 axioms (sunPlaquetteEnergy_nonneg, sunPlaquetteEnergy_le_two eliminated)
+**BFS-live custom axioms for sun_physical_mass_gap:** 1 (lsi_withDensity_density_bound)
+**Next target:** Prove lsi_withDensity_density_bound from Mathlib (pure functional analysis,
+  Holley-Stroock density perturbation for log-Sobolev inequalities)

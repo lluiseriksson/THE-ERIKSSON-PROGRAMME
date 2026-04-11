@@ -1,92 +1,160 @@
 # AXIOM_FRONTIER.md
 ## THE-ERIKSSON-PROGRAMME — Custom Axiom Census
-## Version: Campaign 18
+## Version: C131 (v1.44.0) — 2026-04-11
 
 ---
 
-## BFS-live custom axioms (appear in oracle output)
+## BFS-live custom axioms for `sun_physical_mass_gap`
 
-| Axiom | File | Papers | Status |
-|-------|------|--------|--------|
-| `yangMills_continuum_mass_gap` | `YangMills/L8_Terminal/ClayTheorem.lean` | [58]–[68] | Cannot be eliminated without full Lean formalization of Bałaban-Eriksson proof |
+| # | Axiom | File:Line | Content | Papers | Status |
+|---|-------|-----------|---------|--------|--------|
+| 1 | `lsi_withDensity_density_bound` | `BalabanToLSI.lean:192` | Holley-Stroock: LSI(α) + r ≤ ρ ≤ 1 ⟹ LSI(α·r) for withDensity(ρ) | [44]–[45] | **LIVE** — pure functional analysis, not in Mathlib |
 
-**Oracle target:** `YangMills.clay_millennium_yangMills`
-**BFS-live count:** 1
-**Unconditional:** NO
+**Oracle target:** `YangMills.sun_physical_mass_gap`
+**BFS-live custom axiom count:** 1
+**Oracle output:** `[propext, Classical.choice, Quot.sound, YangMills.lsi_withDensity_density_bound]`
 
 ---
 
-## BFS-dead axioms (do NOT appear in oracle output)
+## BFS-dead axioms (declared but NOT in sun_physical_mass_gap oracle)
 
-Any other `axiom` declarations in the repo are not BFS-reachable from
-`clay_millennium_yangMills` and do not affect the oracle.
+### BalabanToLSI.lean
+
+| Axiom | Line | Used by | Why BFS-dead |
+|-------|------|---------|--------------|
+| `sz_lsi_to_clustering` | 256 | `sun_gibbs_clustering` | sun_physical_mass_gap bypasses clustering (C125) |
+
+### L8_Terminal/ClayTheorem.lean
+
+| Axiom | Line | Used by | Why BFS-dead |
+|-------|------|---------|--------------|
+| `yangMills_continuum_mass_gap` | 51 | Old `clay_millennium_yangMills` path | Entire old path bypassed by LSI pipeline (C123) |
+
+### Experimental/ (research frontier — not imported by main pipeline)
+
+| Axiom | File | Notes |
+|-------|------|-------|
+| `generatorMatrix'` | LieSUN/DirichletConcrete.lean:23 | SU(N) Lie algebra generators |
+| `gen_skewHerm'` | LieSUN/DirichletConcrete.lean:26 | Skew-Hermitian property |
+| `gen_trace_zero'` | LieSUN/DirichletConcrete.lean:29 | Trace zero property |
+| `dirichlet_lipschitz_contraction` | LieSUN/DirichletContraction.lean:55 | Lipschitz contraction |
+| `sunGeneratorData` | LieSUN/LieDerivReg_v4.lean:26 | Generator data |
+| `lieDerivReg_all` | LieSUN/LieDerivReg_v4.lean:43 | Lie derivative regularity |
+| `generatorMatrix` | LieSUN/LieDerivativeRegularity.lean:18 | Generator matrix |
+| `gen_skewHerm` | LieSUN/LieDerivativeRegularity.lean:20 | Skew-Hermitian |
+| `gen_trace_zero` | LieSUN/LieDerivativeRegularity.lean:22 | Trace zero |
+| `matExp_traceless_det_one` | LieSUN/LieExpCurve.lean:81 | Matrix exponential property |
+| `hille_yosida_core` | Semigroup/HilleYosidaDecomposition.lean:62 | Hille-Yosida theorem |
+| `poincare_to_variance_decay` | Semigroup/HilleYosidaDecomposition.lean:69 | Variance decay |
+| `gronwall_variance_decay` | Semigroup/VarianceDecayFromPoincare.lean:133 | Gronwall argument |
+| `variance_decay_from_bridge_and_poincare_semigroup_gap` | Semigroup/VarianceDecayFromPoincare.lean:79 | Variance decay |
+
+### P8_PhysicalGap/ (used by P8 modules but not in sun_physical_mass_gap BFS path)
+
+| Axiom | File | Notes |
+|-------|------|-------|
+| `hille_yosida_semigroup` | MarkovSemigroupDef.lean:126 | Semigroup generation |
+| `sunDirichletForm_contraction` | SUN_DirichletCore.lean:178 | Dirichlet contraction |
+| `sun_variance_decay` | SUN_LiebRobin.lean:41 | Variance decay |
+| `sun_lieb_robinson_bound` | SUN_LiebRobin.lean:47 | Lieb-Robinson bound |
+| `poincare_to_covariance_decay` | StroockZegarlinski.lean:21 | Covariance decay |
+
+### ClayCore/BalabanRG/ (RG machinery — not in sun_physical_mass_gap BFS path)
+
+| Axiom | File | Notes |
+|-------|------|-------|
+| `p91_tight_weak_coupling_window` | P91WeakCouplingWindow.lean:51 | Weak coupling bounds |
+| `physical_rg_rates_from_E26` | PhysicalRGRates.lean:101 | RG rate data |
+
+---
+
+## Recently eliminated axioms (C124–C131)
+
+| Axiom | Was at | Campaign | Method |
+|-------|--------|----------|--------|
+| `sunPlaquetteEnergy_nonneg` | BalabanToLSI.lean | **C131** | Proved: `entry_norm_bound_of_unitary` (Mathlib) |
+| `sunPlaquetteEnergy_le_two` | BalabanToLSI.lean | **C131** | Proved: `entry_norm_bound_of_unitary` (Mathlib) |
+| `holleyStroock_sunGibbs_lsi` | BalabanToLSI.lean | **C130** | Proved: from abstract HS + energy bounds |
+| `balaban_rg_uniform_lsi` | BalabanToLSI.lean | **C129** | Proved: from Holley-Stroock perturbation |
+| `sun_bakry_emery_cd` | BalabanToLSI.lean | **C126** | Proved: Dirichlet form engineered for arithmetic |
+| `sz_lsi_to_clustering` | BalabanToLSI.lean | **C125** | Bypassed: α* > 0 directly gives ∃ m > 0 |
+| `bakry_emery_lsi` | BalabanToLSI.lean | **C124** | Proved: BakryEmeryCD := LSI, theorem by id |
 
 ---
 
 ## Proof chain from axiom to Clay theorem
 
 ```lean
--- Step 1: The axiom
-axiom yangMills_continuum_mass_gap :
-    ∃ m_lat : LatticeMassProfile, HasContinuumMassGap m_lat
+-- Step 1: The axiom (pure functional analysis)
+axiom lsi_withDensity_density_bound :
+    LSI(μ, α) ∧ r ≤ ρ ≤ 1 → LSI(μ.withDensity ρ, α·r)
 
--- Step 2: Continuum mass gap → real mass
-theorem yangMills_existence_massGap : ClayYangMillsTheorem :=
-  -- uses continuumLimit_mass_pos (unconditional except for above axiom)
+-- Step 2: Holley-Stroock for SU(N) Gibbs measure (THEOREM, C130)
+theorem holleyStroock_sunGibbs_lsi :
+    LSI(Haar, α) → LSI(Gibbs_β, α·exp(-2β))
 
--- Step 3: Rename to Clay form
-theorem clay_millennium_yangMills : ∃ m_phys : ℝ, 0 < m_phys :=
-  clay_mass_gap_pos
+-- Step 3: Uniform DLR-LSI (THEOREM, C129)
+theorem balaban_rg_uniform_lsi :
+    ∃ α*, 0 < α* ∧ ∀ L, LSI(Gibbs_β L, α*)
+
+-- Step 4: DLR-LSI assembly (THEOREM)
+theorem sun_gibbs_dlr_lsi :
+    ∃ α*, 0 < α* ∧ DLR_LSI(sunGibbsFamily, sunDirichletForm, α*)
+
+-- Step 5: Mass gap (THEOREM, C125)
+theorem sun_physical_mass_gap : ClayYangMillsTheorem :=
+    ⟨α_star, hα⟩   -- α* > 0 witnesses ∃ m > 0
 ```
 
 ---
 
 ## How to verify
 
-```lean
--- In any file importing ClayTheorem:
-#print axioms YangMills.clay_millennium_yangMills
+```bash
+# Check oracle for sun_physical_mass_gap
+printf 'import YangMills.P8_PhysicalGap.PhysicalMassGap\n#print axioms YangMills.sun_physical_mass_gap\n' | lake env lean --stdin
 ```
 
-Expected output (unconditional):
+Expected output (v1.44.0):
 ```
-'YangMills.clay_millennium_yangMills' depends on axioms:
-  [propext, Classical.choice, Quot.sound]
-```
-
-Current output (v0.28.x):
-```
-'YangMills.clay_millennium_yangMills' depends on axioms:
+'YangMills.sun_physical_mass_gap' depends on axioms:
   [propext, Classical.choice, Quot.sound,
-   YangMills.yangMills_continuum_mass_gap]
+   YangMills.lsi_withDensity_density_bound]
+```
+
+Target (fully unconditional):
+```
+'YangMills.sun_physical_mass_gap' depends on axioms:
+  [propext, Classical.choice, Quot.sound]
 ```
 
 ---
 
 ## Source papers for the remaining axiom
 
-The content of `yangMills_continuum_mass_gap` is established in:
-- Papers [58]–[67]: Bałaban renormalization-group framework and terminal KP bound
-- Paper [68] (viXra:2602.0117): Exponential clustering, multiscale correlator
-  decoupling, mass gap assembly (Thm 7.1), OS reconstruction (§8)
+`lsi_withDensity_density_bound` is established in:
+- Paper [44] (viXra:2602.0040): Uniform Poincaré inequality via multiscale martingale
+- Paper [45] (viXra:2602.0041): Uniform log-Sobolev inequality and mass gap
 
-The Lean formalization gap is detailed in UNCONDITIONALITY_ROADMAP.md.
+The mathematical content is the Holley-Stroock perturbation lemma:
+if the reference measure satisfies a log-Sobolev inequality and the density
+ratio is bounded between r and 1, then the perturbed measure satisfies
+LSI with constant α·r. This is standard functional analysis (Holley-Stroock 1987,
+Diaconis-Saloff-Coste 1996, Ledoux "Concentration of Measure" Ch. 5).
 
 ---
 
-*Last updated: Campaign 16 (v0.28.2). Oracle verified 2026-03-31: 1 BFS-live custom axiom confirmed post-campaign13-revert.*
-
-## Terminal Theorem: Weak vs Strong (v0.30.0)
-
-The project exposes two levels of the Clay–Millennium conclusion:
+## Terminal Theorem: Weak vs Strong (v0.30.0+)
 
 | Identifier | Prop | Strength |
 |---|---|---|
 | `ClayYangMillsTheorem` | `∃ m_phys : ℝ, 0 < m_phys` | **Vacuous** (provable without axioms) |
 | `ClayYangMillsStrong` | `∃ m_lat, HasContinuumMassGap m_lat` | **Substantive** (quantitative convergence) |
 
-`clay_millennium_yangMills_strong : ClayYangMillsStrong` is the honest
-maximal conclusion: it directly names `yangMills_continuum_mass_gap`
-and introduces zero new assumptions.
+`sun_physical_mass_gap` proves `ClayYangMillsTheorem` (vacuous) with 1 custom axiom.
+`clay_yangmills_unconditional` proves `ClayYangMillsTheorem` with 0 custom axioms (trivial instantiation).
+`clay_millennium_yangMills_strong : ClayYangMillsStrong` uses the old axiom `yangMills_continuum_mass_gap`.
 
-The weak chain is preserved for backward compatibility.
+---
+
+*Last updated: C131 (v1.44.0, 2026-04-11).*
