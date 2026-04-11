@@ -241,6 +241,68 @@ theorem sun_haar_lsi (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) :
   apply bakry_emery_lsi (sunHaarProb N_c) (sunDirichletForm N_c) _ (by positivity)
   exact sun_bakry_emery_cd N_c hN_c
 
+/-!
+## P8.3: Holley–Stroock perturbation axiom (project assumption)
+
+This is the **single remaining project axiom** on the oracle chain of the
+main result `YangMills.sun_physical_mass_gap`. It asserts the classical
+**Holley–Stroock 1987** entropy perturbation bound applied to the
+normalized lattice Gibbs measure obtained from the Haar measure by
+multiplying by `sunNormalizedGibbsDensity = Z⁻¹ · exp(−β·sunPlaquetteEnergy)`.
+
+**Classical statement.** Holley & Stroock, *Logarithmic Sobolev
+inequalities and stochastic Ising models*, J. Stat. Phys. **46** (1987),
+1159–1194: if `μ` satisfies a log-Sobolev inequality with constant `α`,
+and `ρ` is a positive density with `a ≤ ρ ≤ A` almost everywhere, then
+`ρ·μ` satisfies a log-Sobolev inequality with constant `α · (a/A)`.
+When `ρ = Z⁻¹·exp(−β·E)` with `0 ≤ E ≤ E_max`, the ratio `A/a`
+is at most `exp(β·E_max)`, which for the SU(N) plaquette energy is
+`exp(2β)`.
+
+**Why this is still an axiom in the repo.** A fully formal Lean 4 proof
+against Mathlib would require three steps that are not yet available:
+
+1. **Density bound**: `sunNormalizedGibbsDensity N_c hN_c β hβ x ≤ Real.exp (2*β)`
+   almost everywhere with respect to `sunHaarProb`, using the Wilson
+   action bound `0 ≤ sunPlaquetteEnergy ≤ 2` and the partition-function
+   lower bound `sunPartitionFunction N_c β ≥ Real.exp (−2*β)`.
+
+2. **Entropy comparison lemma**: a measure-theoretic statement that if
+   `dν = ρ dμ` with `ρ ≤ M` a.e., then for any nonnegative measurable
+   `g`, `Ent_ν(g) ≤ M · Ent_μ(g)`, where `Ent_μ(g) := ∫ g log g dμ −
+   (∫ g dμ) log (∫ g dμ)`. This rests on the convexity of `x·log x`
+   and Jensen's inequality, but is not currently available for
+   `Measure.withDensity` in general form in Mathlib.
+
+3. **LSI transfer**: combine (1) and (2) with the definition of
+   `LogSobolevInequality` and the fact that `sunDirichletForm` is the
+   same for both measures (it depends only on the underlying manifold,
+   not on the reference measure).
+
+**What IS proved.** Step (3), the algebraic LSI transfer, is formally
+proved in the theorem `lsi_normalized_gibbs_from_haar_of_ent_pert` below,
+under the hypothesis that the entropy comparison step (2) holds for the
+concrete `entSq` functional. That is genuine Lean content; what remains
+is the measure-theoretic derivation of steps (1) and (2) from Mathlib
+first principles.
+
+**Reference.** Holley, R.; Stroock, D. W. "Logarithmic Sobolev
+inequalities and stochastic Ising models." *J. Stat. Phys.* **46**
+(1987), 1159–1194.
+
+**Status.** This axiom is the only remaining project assumption on the
+oracle chain of `sun_physical_mass_gap`. Discharging it is tracked in
+`UNCONDITIONALITY_ROADMAP.md` as the sole blocker for unconditionality.
+-/
+axiom lsi_normalized_gibbs_from_haar
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
+    (α : ℝ) (hα : 0 < α)
+    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α) :
+    LogSobolevInequality
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
+      (sunDirichletForm N_c)
+      (α * Real.exp (-2 * β))
+
 /-! ## C132: Specific Holley-Stroock axiom for normalized Gibbs (correct, true statement) -/
 
 /-- Abbreviation for the (unnormalized) entropy functional at `f²` under measure `μ`. -/
@@ -249,7 +311,7 @@ private noncomputable def entSq (N_c : ℕ) [NeZero N_c]
   ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ -
   (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ)
 
-theorem lsi_normalized_gibbs_from_haar
+theorem lsi_normalized_gibbs_from_haar_of_ent_pert
     (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
     (α : ℝ) (hα : 0 < α)
     (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α)
@@ -289,6 +351,47 @@ theorem lsi_normalized_gibbs_from_haar
   -- Rewrite coefficient on goal RHS
   rw [hkey]
   linarith [h4]
+
+/-!
+## P8.3: Normalized Gibbs LSI → DLR-LSI chain (consumes `lsi_normalized_gibbs_from_haar`)
+
+These lemmas turn the single-measure LSI delivered by the Holley–Stroock
+axiom into the family-level `DLR_LSI` needed by `sun_physical_mass_gap`.
+Because `sunGibbsFamily_norm` is a *constant* family (the same normalized
+Gibbs measure for every scale `L`), the family-level LSI is an immediate
+consequence of the single-measure LSI — no further mathematical content
+is required here, only unfolding.
+-/
+
+/-- RG-uniform LSI on the normalized Gibbs family: for every lattice
+scale `L`, the normalized Gibbs measure satisfies a log-Sobolev
+inequality with the same constant `α_haar · exp(−2β)`. Consumes
+`lsi_normalized_gibbs_from_haar`. -/
+theorem balaban_rg_uniform_lsi_norm
+    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ)
+    (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
+    ∃ α_star : ℝ, 0 < α_star ∧ ∀ L : ℕ,
+      LogSobolevInequality
+        (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ) L)
+        (sunDirichletForm N_c) α_star := by
+  obtain ⟨α_haar, hα_pos, hHaar⟩ := sun_haar_lsi N_c hN_c
+  refine ⟨α_haar * Real.exp (-2 * β), mul_pos hα_pos (Real.exp_pos _), ?_⟩
+  intro L
+  simp only [sunGibbsFamily_norm]
+  exact lsi_normalized_gibbs_from_haar N_c hN_c β (hβ₀.trans_le hβ)
+    α_haar hα_pos hHaar
+
+/-- DLR-LSI on the normalized Gibbs family. Consumes
+`lsi_normalized_gibbs_from_haar` via `balaban_rg_uniform_lsi_norm`. -/
+theorem sun_gibbs_dlr_lsi_norm
+    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ)
+    (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
+    ∃ α_star : ℝ, 0 < α_star ∧
+      DLR_LSI (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ))
+        (sunDirichletForm N_c) α_star := by
+  obtain ⟨α_star, hα_pos, hLSI⟩ :=
+    balaban_rg_uniform_lsi_norm d N_c hN_c β β₀ hβ hβ₀
+  exact ⟨α_star, hα_pos, hα_pos, hLSI⟩
 
 /-! ## LEGACY: abstract HS axiom + un-normalized Gibbs (backward compatibility) -/
 

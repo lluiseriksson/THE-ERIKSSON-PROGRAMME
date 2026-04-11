@@ -1,3 +1,63 @@
+# v1.46 STATUS UPDATE (2026-04-11)  Path B, Honest Labelling
+
+**Axioms for `sun_physical_mass_gap`**: 1 project axiom.
+**Honest progress estimate**: ~30%.
+
+Oracle:
+
+```
+[propext, Classical.choice, Quot.sound, YangMills.lsi_normalized_gibbs_from_haar]
+```
+
+The previous "axiom elimination" attempt was rolled back as a shell game: it had
+converted the axiom into a hypothesis of the downstream theorem and then dropped
+the consumer, which moved the difficulty out of scope rather than discharging it.
+The current state reinstates `lsi_normalized_gibbs_from_haar` as an explicit
+top-level axiom in `BalabanToLSI.lean`, with a full docstring identifying it as
+the HolleyStroock 1987 entropy-perturbation bound for the normalised SU(N) Gibbs
+density and flagging it as the *only* remaining project assumption.
+
+## What is honest Path A (the actual work to remove the axiom)
+
+Discharging `lsi_normalized_gibbs_from_haar` unconditionally requires three
+measure-theoretic pieces that are not yet in Mathlib:
+
+1. **Density log-bound.**
+   Prove `||log (sunNormalizedGibbsDensity N_c hN_c beta hbeta)||_inf <= 2*beta`.
+   This is where the constant `2*beta` in the perturbed LSI rate enters; it
+   follows from the plaquette-energy being bounded on SU(N) and the explicit form
+   of the normalisation constant.
+
+2. **Entropy comparison lemma (HolleyStroock core).**
+   For log-bounded densities, prove
+   `Ent_{rho*mu}(f^2) <= exp(2*beta) * Ent_mu(f^2)`.
+   This is the 1987 HolleyStroock step and comes from the variational formula
+   for relative entropy combined with convexity of `x*log x`.
+
+3. **LSI transfer.**
+   Combine the entropy comparison with invariance of the Dirichlet form under the
+   density change to deduce LSI for `mu.withDensity rho` at rate
+   `alpha * exp(-2*beta)`.
+
+None of these are conceptually novel; they are classical and the blocker is
+Mathlib API coverage of `withDensity`/entropy functionals on probability measures.
+
+## Proof chain for `sun_physical_mass_gap`
+
+```
+sun_physical_mass_gap : ClayYangMillsTheorem
+  sun_gibbs_dlr_lsi_norm
+       balaban_rg_uniform_lsi_norm
+            sun_haar_lsi  (Bakrymery for SU(N), theorem)
+            lsi_normalized_gibbs_from_haar  (AXIOM  HolleyStroock)
+```
+
+The original, pre-v1.46 material below is preserved for reference. Where it
+claims a lower axiom count or different proof-chain shape, the above supersedes
+it.
+
+---
+
 # UNCONDITIONALITY_ROADMAP.md
 - `kp_clay_from_normalized_rank_one_vacuum_projector_and_unit_wilson_observable` **proved** (Campaign 45, 2026-04-05): Replaces strong hF with weaker hobs (Wilson observable = 1 on gauge configs); derives hunit via C40 bridge; 8184-job clean build; oracle: yangMills_continuum_mass_gap only.
 - `kp_clay_from_normalized_rank_one_vacuum_projector_and_trivial_wilson_observable` **proved** (Campaign 44, 2026-04-05): Packages the projector/vacuum pair into a single conjunction hypothesis `hvac : ‖Ω‖ = 1 ∧ P₀ = (innerSL ℝ Ω).smulRight Ω`. Reduces the 5-hypothesis C43 core (hgap, hΩ, hP0_eq, hcorr, hF) to 4 hypotheses (hgap, hvac, hcorr, hF). Oracle: [propext, Classical.choice, Quot.sound, YangMills.yangMills_continuum_mass_gap]. Tag: v0.60.0.

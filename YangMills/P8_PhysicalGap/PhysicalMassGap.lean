@@ -49,9 +49,6 @@ theorem sun_physical_mass_gap
     {G : Type*} [Group G] [MeasurableSpace G] (μ : MeasureTheory.Measure G)
     (plaquetteEnergy : G → ℝ) (F : G → ℝ)
     (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
-    (hdlr : ∃ α_star : ℝ, 0 < α_star ∧
-      DLR_LSI (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ))
-              (sunDirichletForm N_c) α_star)
     (bridge : ∀ α_star : ℝ, 0 < α_star →
       DLR_LSI (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ))
               (sunDirichletForm N_c) α_star →
@@ -59,7 +56,8 @@ theorem sun_physical_mass_gap
     (hdistP : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
       0 ≤ distP N p q) :
     ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP := by
-  obtain ⟨α_star, hα_pos, hDLR⟩ := hdlr
+  obtain ⟨α_star, hα_pos, hDLR⟩ :=
+    sun_gibbs_dlr_lsi_norm d N_c hN_c β β₀ hβ hβ₀
   exact connectedCorrDecay_implies_physicalStrong
     μ plaquetteEnergy β F distP (bridge α_star hα_pos hDLR) hdistP
 
