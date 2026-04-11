@@ -44,9 +44,11 @@ noncomputable def sunDirichletForm (N_c : ℕ) [NeZero N_c] (f : SUN_State N_c �
     (∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂(sunHaarProb N_c) -
       (∫ x, f x ^ 2 ∂(sunHaarProb N_c)) * Real.log (∫ x, f x ^ 2 ∂(sunHaarProb N_c)))
 
-/-- Single-plaquette Wilson energy e(g)=1-Re(tr g)/N_c for g in SU(N_c).
-    Opaque here; Matrix.trace instantiation is a future commit. -/
-noncomputable opaque sunPlaquetteEnergy (N_c : ℕ) [NeZero N_c] : SUN_State N_c → ℝ
+/-- Single-plaquette Wilson energy e(g) = 1 - Re(tr g)/N_c for g ∈ SU(N_c).
+    Concrete definition via Matrix.trace and Complex.re (C131).
+    Range: e(g) ∈ [0, 2], proved below from unitary entry bounds. -/
+noncomputable def sunPlaquetteEnergy (N_c : ℕ) [NeZero N_c] : SUN_State N_c → ℝ :=
+  fun g => 1 - (Matrix.trace g.val).re / (N_c : ℝ)
 
 /-- Heat-kernel SU(N_c) Gibbs family at inverse coupling β.
     dμ_β(g) prop to exp(-β*e(g)) dHaar(g), e(g) = sunPlaquetteEnergy N_c g.
@@ -124,17 +126,65 @@ theorem sun_haar_lsi
 
 /-! ## M2: Balaban RG uniform LSI -/
 
-/-- C130: Plaquette energy lower bound: 0 ≤ e(g).
-    e(g)=1-Re(tr g)/N_c ≤ 0 impossible; 0 ≤ e(g) holds since Re(tr g)/N_c ≤ 1. -/
-axiom sunPlaquetteEnergy_nonneg
-    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
-    (g : SUN_State N_c) : 0 ≤ sunPlaquetteEnergy N_c g
+/-! ### Trace bounds for SU(N) — proved from Mathlib's `entry_norm_bound_of_unitary` -/
 
-/-- C130: Plaquette energy upper bound: e(g) ≤ 2.
-    e(g)=1-Re(tr g)/N_c ≤ 2 since Re(tr g)/N_c ≤ -1 is false; Re ≤ -1 impossible. -/
-axiom sunPlaquetteEnergy_le_two
+/-- For g ∈ SU(N_c), Re(tr g) ≤ N_c.
+    Proof: Re(g_{ii}) ≤ ‖g_{ii}‖ ≤ 1 (unitary entry bound), sum over N_c entries. -/
+private lemma re_trace_le_Nc (N_c : ℕ) [NeZero N_c] (g : SUN_State N_c) :
+    (Matrix.trace g.val).re ≤ (N_c : ℝ) := by
+  have hU : g.val ∈ Matrix.unitaryGroup (Fin N_c) ℂ :=
+    (Matrix.mem_specialUnitaryGroup_iff.mp g.property).1
+  have htr : (Matrix.trace g.val).re = ∑ i : Fin N_c, (g.val i i).re := by
+    simp [Matrix.trace, Matrix.diag]
+  rw [htr]
+  calc ∑ i : Fin N_c, (g.val i i).re
+      ≤ ∑ i : Fin N_c, ‖g.val i i‖ :=
+        Finset.sum_le_sum fun i _ => Complex.re_le_norm (g.val i i)
+    _ ≤ ∑ _i : Fin N_c, (1 : ℝ) :=
+        Finset.sum_le_sum fun i _ => entry_norm_bound_of_unitary hU i i
+    _ = (N_c : ℝ) := by simp
+
+/-- For g ∈ SU(N_c), -N_c ≤ Re(tr g).
+    Proof: -‖g_{ii}‖ ≤ Re(g_{ii}) (since |Re z| ≤ ‖z‖), and ‖g_{ii}‖ ≤ 1. -/
+private lemma neg_Nc_le_re_trace (N_c : ℕ) [NeZero N_c] (g : SUN_State N_c) :
+    -(N_c : ℝ) ≤ (Matrix.trace g.val).re := by
+  have hU : g.val ∈ Matrix.unitaryGroup (Fin N_c) ℂ :=
+    (Matrix.mem_specialUnitaryGroup_iff.mp g.property).1
+  have htr : (Matrix.trace g.val).re = ∑ i : Fin N_c, (g.val i i).re := by
+    simp [Matrix.trace, Matrix.diag]
+  rw [htr]
+  have hNsum : -(N_c : ℝ) = ∑ _i : Fin N_c, (-(1 : ℝ)) := by simp
+  rw [hNsum]
+  exact Finset.sum_le_sum fun i _ => by
+    have h1 : |(g.val i i).re| ≤ ‖g.val i i‖ := Complex.abs_re_le_norm (g.val i i)
+    have h2 : ‖g.val i i‖ ≤ 1 := entry_norm_bound_of_unitary hU i i
+    linarith [neg_abs_le (g.val i i).re]
+
+/-- C131: Plaquette energy lower bound: 0 ≤ e(g).
+    PROVED from unitary trace bound: Re(tr g) ≤ N_c ⟹ Re(tr g)/N_c ≤ 1.
+    Replaces the former axiom (C130). -/
+theorem sunPlaquetteEnergy_nonneg
     (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
-    (g : SUN_State N_c) : sunPlaquetteEnergy N_c g ≤ 2
+    (g : SUN_State N_c) : 0 ≤ sunPlaquetteEnergy N_c g := by
+  simp only [sunPlaquetteEnergy]
+  have h := re_trace_le_Nc N_c g
+  have hNc : (0 : ℝ) < N_c := by positivity
+  have hdiv : (Matrix.trace g.val).re / (N_c : ℝ) ≤ 1 :=
+    (div_le_one hNc).mpr h
+  linarith
+
+/-- C131: Plaquette energy upper bound: e(g) ≤ 2.
+    PROVED from unitary trace bound: -N_c ≤ Re(tr g) ⟹ -1 ≤ Re(tr g)/N_c.
+    Replaces the former axiom (C130). -/
+theorem sunPlaquetteEnergy_le_two
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (g : SUN_State N_c) : sunPlaquetteEnergy N_c g ≤ 2 := by
+  simp only [sunPlaquetteEnergy]
+  have h := neg_Nc_le_re_trace N_c g
+  have hNc : (0 : ℝ) < N_c := by positivity
+  have hdiv : -(1 : ℝ) ≤ (Matrix.trace g.val).re / (N_c : ℝ) := by
+    rw [le_div_iff₀ hNc]; linarith
+  linarith
 
 /-- C130: Abstract Holley-Stroock (pure functional analysis).
     mu satisfies LSI(α) and r ≤ rho ≤ 1 => withDensity(rho) satisfies LSI(α*r).
