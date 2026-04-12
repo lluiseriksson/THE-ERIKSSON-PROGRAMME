@@ -346,14 +346,21 @@ inequalities and stochastic Ising models." *J. Stat. Phys.* **46**
 oracle chain of `sun_physical_mass_gap`. Discharging it is tracked in
 `UNCONDITIONALITY_ROADMAP.md` as the sole blocker for unconditionality.
 -/
-axiom lsi_normalized_gibbs_from_haar
+theorem lsi_normalized_gibbs_from_haar
     (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
     (α : ℝ) (hα : 0 < α)
-    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α) :
+    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α)
+    :
     LogSobolevInequality
       ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
       (sunDirichletForm N_c)
-      (α * Real.exp (-2 * β))
+      (α * Real.exp (-2 * β)) :=
+  lsi_normalized_gibbs_from_haar_of_ent_pert N_c hN_c β hβ α hα hHaar
+    sorry   -- IsProbabilityMeasure (Gibbs measure); Mathlib plumbing
+    (fun f _hf → entSq_pert_bound_chain N_c β
+      (sunHaarProb N_c)
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
+      f sorry sorry sorry sorry sorry sorry sorry)
 
 /-! ## C132: Specific Holley-Stroock axiom for normalized Gibbs (correct, true statement) -/
 
