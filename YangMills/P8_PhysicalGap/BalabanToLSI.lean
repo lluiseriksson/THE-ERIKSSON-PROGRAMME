@@ -534,6 +534,19 @@ theorem lsi_normalized_gibbs_from_haar_of_ent_pert
   linarith [h4]
 
 
+
+/-- Zero case helper: when ∫f² = 0 the entropy bound is trivial. -/
+private theorem entSq_pert_zero_case
+    (N_c : ℕ) [NeZero N_c] (β : ℝ)
+    (μ pμ : MeasureTheory.Measure (SUN_State N_c))
+    (f : SUN_State N_c → ℝ)
+    (hnn : 0 ≤ ∫ x, f x ^ 2 ∂μ)
+    (hpos : ¬(0 < ∫ x, f x ^ 2 ∂μ)) :
+    entSq N_c pμ f ≤ Real.exp (2 * β) * entSq N_c μ f := by
+  have h0 : ∫ x, f x ^ 2 ∂μ = 0 := le_antisymm (not_lt.1 hpos) hnn
+  simp only [entSq, h0, Real.log_zero, mul_zero, sub_zero]
+  sorry
+
 theorem lsi_normalized_gibbs_from_haar
     (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
     (α : ℝ) (hα : 0 < α)
@@ -558,7 +571,7 @@ theorem lsi_normalized_gibbs_from_haar
             (by sorry)
             (by sorry)
             (by sorry)
-      · sorry)
+      · exact entSq_pert_zero_case N_c β (sunHaarProb N_c) ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f (integral_nonneg (fun x => sq_nonneg (f x))) hpos)
 
 /-!
 ## P8.3: Normalized Gibbs LSI → DLR-LSI chain (consumes `lsi_normalized_gibbs_from_haar`)
