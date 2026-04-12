@@ -502,19 +502,20 @@ private theorem integrable_gibbs_of_haar
 
 
 /-- On compact SU(N), f²·log(f²) is integrable under Haar. -/
-private theorem integrable_f2_mul_log_f2_haar
-    {N_c : ℕ} [NeZero N_c]
-    (f : SUN_State N_c → ℝ) :
-    MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c) := by
-  sorry
-
-/-- On compact SU(N), f²·log(f²/m) is integrable under Haar. -/
 private theorem integrable_f2_mul_log_f2_div_haar
     {N_c : ℕ} [NeZero N_c]
     (f : SUN_State N_c → ℝ) (m : ℝ) :
     MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2 / m)) (sunHaarProb N_c) := by
   sorry
 
+private theorem integrable_f2_mul_log_f2_haar
+    {N_c : ℕ} [NeZero N_c]
+    (f : SUN_State N_c → ℝ) :
+    MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c) := by
+  exact (integrable_f2_mul_log_f2_div_haar f 1).congr
+    (Filter.Eventually.of_forall (fun x => by simp [div_one]))
+
+/-- On compact SU(N), f²·log(f²/m) is integrable under Haar. -/
 private theorem dv_integral_lin_cross
     {N_c : ℕ} [NeZero N_c]
     (ν : MeasureTheory.Measure (SUN_State N_c)) (hν : MeasureTheory.IsProbabilityMeasure ν)
@@ -674,12 +675,30 @@ private theorem entSq_pert_zero_case
     (N_c : ℕ) [NeZero N_c] (β : ℝ)
     (μ pμ : MeasureTheory.Measure (SUN_State N_c))
     (f : SUN_State N_c → ℝ)
+    (hf : Measurable f)
+    (hac : pμ.AbsolutelyContinuous μ)
+    (hint : MeasureTheory.Integrable (fun x => f x ^ 2) μ)
     (hnn : 0 ≤ ∫ x, f x ^ 2 ∂μ)
     (hpos : ¬(0 < ∫ x, f x ^ 2 ∂μ)) :
     entSq N_c pμ f ≤ Real.exp (2 * β) * entSq N_c μ f := by
   have h0 : ∫ x, f x ^ 2 ∂μ = 0 := le_antisymm (not_lt.1 hpos) hnn
-  simp only [entSq, h0, Real.log_zero, mul_zero, sub_zero]
-  sorry
+  -- f² = 0 ae [μ] since nonneg integrable function with zero integral
+  have hfsq_ae : (fun x => f x ^ 2) =ᵐ[μ] 0 :=
+    (MeasureTheory.integral_eq_zero_iff_of_nonneg_ae
+      (Filter.Eventually.of_forall (fun x => sq_nonneg (f x))) hint).mp h0
+  -- Transfer to pμ by absolute continuity
+  have hfsq_ae_p : (fun x => f x ^ 2) =ᵐ[pμ] 0 := hac.ae_eq hfsq_ae
+  -- All four integrals in entSq are 0
+  have h0p : ∫ x, f x ^ 2 ∂pμ = 0 :=
+    MeasureTheory.integral_eq_zero_of_ae (hfsq_ae_p.mono fun x hx => hx)
+  have hlog0p : ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂pμ = 0 :=
+    MeasureTheory.integral_eq_zero_of_ae
+      (hfsq_ae_p.mono fun x hx => by simp [show f x ^ 2 = 0 from hx])
+  have hlog0 : ∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ = 0 :=
+    MeasureTheory.integral_eq_zero_of_ae
+      (hfsq_ae.mono fun x hx => by simp [show f x ^ 2 = 0 from hx])
+  simp only [entSq, h0, h0p, hlog0, hlog0p, Real.log_zero, mul_zero, sub_self]
+  exact le_refl _
 
 theorem lsi_normalized_gibbs_from_haar
     (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
@@ -694,7 +713,7 @@ theorem lsi_normalized_gibbs_from_haar
     (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0)
     (fun f _hf => by
       by_cases hpos : 0 < ∫ x, f x ^ 2 ∂(sunHaarProb N_c)
-      · exact entSq_pert_bound_chain N_c β
+      · refine entSq_pert_bound_chain N_c β
             (sunHaarProb N_c)
             ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
             f
@@ -704,8 +723,30 @@ theorem lsi_normalized_gibbs_from_haar
             (log_quotient_split ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f _ hpos (integrable_gibbs_of_haar hN_c β hβ (integrable_f2_mul_log_f2_haar f)) (integrable_gibbs_of_haar hN_c β hβ (by by_contra h; linarith [MeasureTheory.integral_undef h]))) -- TODO: log-quotient split for Gibbs (needs Integrable f²·log(f²))
             (dv_integral_lin_self (sunHaarProb N_c) f _ hpos) -- TODO: integral linearity for Haar (needs Integrable f²·log(f²))
             (log_quotient_split (sunHaarProb N_c) f _ hpos (integrable_f2_mul_log_f2_haar f) (by by_contra h; linarith [MeasureTheory.integral_undef h])) -- TODO: log-quotient split for Haar (needs Integrable f²·log(f²))
-            (by sorry) -- TODO: L¹ comparison via sun_lintegral_withDensity_le_exp_two_beta
-      · exact entSq_pert_zero_case N_c β (sunHaarProb N_c) ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f (integral_nonneg (fun x => sq_nonneg (f x))) hpos)
+          ?_
+        have hint_f2 : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c) := by
+          by_contra h; simp [MeasureTheory.integral_undef h] at hpos
+        have dv_nn : ∀ x, 0 ≤ f x ^ 2 * Real.log (f x ^ 2 / ∫ y, f y ^ 2 ∂sunHaarProb N_c) - f x ^ 2 + ∫ y, f y ^ 2 ∂sunHaarProb N_c := by
+          intro x
+          rcases eq_or_lt_of_le (sq_nonneg (f x)) with h0 | htpos
+          · simp [← h0, hpos.le]
+          · set u := f x ^ 2 / ∫ y, f y ^ 2 ∂sunHaarProb N_c with hu_def
+            have hupos : 0 < u := div_pos htpos hpos
+            suffices hsuff : 0 ≤ u * Real.log u - u + 1 by
+              have : f x ^ 2 * Real.log (f x ^ 2 / ∫ y, f y ^ 2 ∂sunHaarProb N_c) - f x ^ 2 + ∫ y, f y ^ 2 ∂sunHaarProb N_c = (∫ y, f y ^ 2 ∂sunHaarProb N_c) * (u * Real.log u - u + 1) := by rw [hu_def]; field_simp
+              linarith [mul_nonneg hpos.le hsuff]
+            have key : 1 + Real.log u⁻¹ ≤ u⁻¹ := by
+              have h := Real.add_one_le_exp (Real.log u⁻¹)
+              rw [Real.exp_log (inv_pos.mpr hupos)] at h; linarith
+            rw [Real.log_inv] at key
+            have h2 : u * (1 - Real.log u) ≤ 1 := by
+              calc u * (1 - Real.log u) ≤ u * u⁻¹ := mul_le_mul_of_nonneg_left key hupos.le
+                _ = 1 := mul_inv_cancel₀ (ne_of_gt hupos)
+            linarith [show u * Real.log u - u + 1 = 1 - u * (1 - Real.log u) from by ring]
+        have hint_φ := ((integrable_f2_mul_log_f2_div_haar f (∫ y, f y ^ 2 ∂sunHaarProb N_c)).sub hint_f2).add (MeasureTheory.integrable_const (∫ y, f y ^ 2 ∂sunHaarProb N_c))
+        have h := MeasureTheory.integral_mono_measure (gibbs_measure_le_smul_haar hN_c β hβ) (Filter.Eventually.of_forall dv_nn) (hint_φ.smul_measure ENNReal.ofReal_ne_top)
+        rwa [MeasureTheory.integral_smul_measure, ENNReal.toReal_ofReal (le_of_lt (Real.exp_pos _))] at h
+      · exact entSq_pert_zero_case N_c β (sunHaarProb N_c) ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f _hf (MeasureTheory.withDensity_absolutelyContinuous _ _) (by sorry) (integral_nonneg (fun x => sq_nonneg (f x))) hpos)
 
 /-!
 ## P8.3: Normalized Gibbs LSI → DLR-LSI chain (consumes `lsi_normalized_gibbs_from_haar`)
