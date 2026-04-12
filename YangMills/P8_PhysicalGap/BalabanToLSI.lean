@@ -451,6 +451,77 @@ private theorem entSq_le_int_phi
     The chain sub-lemma 2 → Step 2 comparison → sub-lemma 3
     yields the Holley–Stroock entropy comparison
     `entSq ρμ f ≤ exp(2β) * entSq μ f`. -/
+
+private theorem dv_integral_lin_cross
+    {N_c : ℕ} [NeZero N_c]
+    (ν : MeasureTheory.Measure (SUN_State N_c)) (hν : MeasureTheory.IsProbabilityMeasure ν)
+    (f : SUN_State N_c → ℝ)
+    (φ : SUN_State N_c → ℝ)
+    (c : ℝ)
+    (hφ : MeasureTheory.Integrable φ ν)
+    (hf : MeasureTheory.Integrable (fun x => f x ^ 2) ν) :
+    (∫ x, (φ x - f x ^ 2 + c) ∂ν)
+    = (∫ x, φ x ∂ν) - (∫ x, f x ^ 2 ∂ν) + c := by
+  haveI := hν
+  have step1 := MeasureTheory.integral_congr_ae (μ := ν)
+    (Filter.Eventually.of_forall fun x =>
+      show φ x - f x ^ 2 + c = (φ x - f x ^ 2) + c from by ring)
+  have step2 := MeasureTheory.integral_add (hφ.sub hf) (MeasureTheory.integrable_const c)
+  have step3 : ∫ x, c ∂ν = c := by
+    simp [MeasureTheory.integral_const, MeasureTheory.IsProbabilityMeasure.measure_univ]
+  have step4 := MeasureTheory.integral_sub hφ hf
+  calc ∫ x, (φ x - f x ^ 2 + c) ∂ν
+      = ∫ x, ((φ x - f x ^ 2) + c) ∂ν := step1
+    _ = (∫ x, (φ x - f x ^ 2) ∂ν) + ∫ x, c ∂ν := step2
+    _ = (∫ x, (φ x - f x ^ 2) ∂ν) + c := by rw [step3]
+    _ = ((∫ x, φ x ∂ν) - ∫ x, f x ^ 2 ∂ν) + c := by rw [step4]
+    _ = (∫ x, φ x ∂ν) - (∫ x, f x ^ 2 ∂ν) + c := by ring
+
+private theorem dv_integral_lin_self
+    {N_c : ℕ} [NeZero N_c]
+    (μ : MeasureTheory.Measure (SUN_State N_c)) [MeasureTheory.IsProbabilityMeasure μ]
+    (f : SUN_State N_c → ℝ)
+    (φ : SUN_State N_c → ℝ)
+    (hpos : 0 < ∫ x, f x ^ 2 ∂μ) :
+    (∫ x, (φ x - f x ^ 2 + ∫ x, f x ^ 2 ∂μ) ∂μ)
+    = (∫ x, φ x ∂μ) - (∫ x, f x ^ 2 ∂μ) + (∫ x, f x ^ 2 ∂μ) := by
+  have hif : MeasureTheory.Integrable (fun x => f x ^ 2) μ := by
+    by_contra hni; exact absurd (MeasureTheory.integral_undef hni) (ne_of_gt hpos)
+  set m := ∫ x, f x ^ 2 ∂μ
+  have hih : MeasureTheory.Integrable (fun x => -(f x ^ 2) + m) μ :=
+    hif.neg.add (MeasureTheory.integrable_const m)
+  have hint0 : ∫ x, (-(f x ^ 2) + m) ∂μ = 0 := by
+    have s1 := MeasureTheory.integral_add hif.neg (MeasureTheory.integrable_const m)
+    have s2 := MeasureTheory.integral_neg (f := fun x => f x ^ 2) (μ := μ)
+    have s3 : ∫ x, m ∂μ = m := by
+      simp [MeasureTheory.integral_const, MeasureTheory.IsProbabilityMeasure.measure_univ]
+    -- Use calc to bridge the definitional equality gap
+    calc ∫ x, (-(f x ^ 2) + m) ∂μ
+        = (∫ x, -f x ^ 2 ∂μ) + ∫ x, m ∂μ := s1
+      _ = -(∫ x, f x ^ 2 ∂μ) + ∫ x, m ∂μ := by rw [s2]
+      _ = -(∫ x, f x ^ 2 ∂μ) + m := by rw [s3]
+      _ = -m + m := by rfl
+      _ = 0 := by ring
+  by_cases hig : MeasureTheory.Integrable φ μ
+  · -- Integrable case: use calc chain
+    have step1 := MeasureTheory.integral_congr_ae (μ := μ)
+      (Filter.Eventually.of_forall fun x =>
+        show φ x - f x ^ 2 + m = φ x + (-(f x ^ 2) + m) from by ring)
+    have step2 := MeasureTheory.integral_add hig hih
+    -- calc chain bridges definitional equalities that linarith cannot
+    have key : ∫ x, (φ x - f x ^ 2 + m) ∂μ = ∫ x, φ x ∂μ := by
+      calc ∫ x, (φ x - f x ^ 2 + m) ∂μ
+          = ∫ x, (φ x + (-(f x ^ 2) + m)) ∂μ := step1
+        _ = (∫ x, φ x ∂μ) + ∫ x, (-(f x ^ 2) + m) ∂μ := step2
+        _ = (∫ x, φ x ∂μ) + 0 := by rw [hint0]
+        _ = ∫ x, φ x ∂μ := by ring
+    linarith [sub_add_cancel (∫ x, φ x ∂μ) m]
+  · -- Non-integrable case: both integrals are 0
+    have hni_sum : ¬MeasureTheory.Integrable (fun x => φ x - f x ^ 2 + m) μ := by
+      intro h_abs; apply hig
+      exact (h_abs.sub hih).congr (Filter.Eventually.of_forall fun x => by simp [Pi.sub_apply])
+    rw [MeasureTheory.integral_undef hni_sum, MeasureTheory.integral_undef hig]; ring
+
 private theorem entSq_pert_bound_chain
     (N_c : ℕ) [NeZero N_c] (β : ℝ)
     (μ ρμ : MeasureTheory.Measure (SUN_State N_c))
@@ -566,9 +637,9 @@ theorem lsi_normalized_gibbs_from_haar
             f
             (integral_nonneg (fun x => sq_nonneg (f x)))
             hpos
-            (by sorry) -- TODO: integral linearity for Gibbs (needs Integrable f²·log(f²))
+            (dv_integral_lin_cross ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) sorry f _ _ sorry sorry) -- TODO: integral linearity for Gibbs (needs Integrable f²·log(f²))
             (by sorry) -- TODO: log-quotient split for Gibbs (needs Integrable f²·log(f²))
-            (by sorry) -- TODO: integral linearity for Haar (needs Integrable f²·log(f²))
+            (dv_integral_lin_self (sunHaarProb N_c) f _ hpos) -- TODO: integral linearity for Haar (needs Integrable f²·log(f²))
             (by sorry) -- TODO: log-quotient split for Haar (needs Integrable f²·log(f²))
             (by sorry) -- TODO: L¹ comparison via sun_lintegral_withDensity_le_exp_two_beta
       · exact entSq_pert_zero_case N_c β (sunHaarProb N_c) ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f (integral_nonneg (fun x => sq_nonneg (f x))) hpos)
