@@ -422,6 +422,85 @@ private theorem int_phi_mu_eq_entSq
   simp only [entSq]
   ring
 
+/-- SUB-LEMMA 2 (variational upper bound on `entSq`):
+    For any `t > 0`, given the measure-theoretic ingredients
+    (integral linearity + the log-quotient split for constant `t`),
+    the entropy functional `entSq μ f` is bounded above by the
+    Donsker–Varadhan-style integral against measure `μ` at reference
+    `t`. This is the Donsker–Varadhan variational representation of
+    relative entropy, specialised to constant reference measures. -/
+private theorem entSq_le_int_phi
+    (N_c : ℕ) [NeZero N_c]
+    (μ : MeasureTheory.Measure (SUN_State N_c))
+    (f : SUN_State N_c → ℝ)
+    (t : ℝ) (ht : 0 < t)
+    (hm_nn : 0 ≤ ∫ x, f x ^ 2 ∂μ)
+    (h_lin : (∫ x, (f x ^ 2 * Real.log (f x ^ 2 / t)
+                    - f x ^ 2 + t) ∂μ)
+           = (∫ x, f x ^ 2 * Real.log (f x ^ 2 / t) ∂μ)
+             - (∫ x, f x ^ 2 ∂μ) + t)
+    (h_split_t : (∫ x, f x ^ 2 * Real.log (f x ^ 2 / t) ∂μ)
+               = (∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ)
+                 - (∫ x, f x ^ 2 ∂μ) * Real.log t) :
+    entSq N_c μ f ≤
+      ∫ x, (f x ^ 2 * Real.log (f x ^ 2 / t) - f x ^ 2 + t) ∂μ := by
+  rw [h_lin, h_split_t]
+  simp only [entSq]
+  set m := ∫ x, f x ^ 2 ∂μ with hm_def
+  -- Pointwise nonnegativity of `φₚ(m)` from `phi_nn`.
+  have hkey : 0 ≤ m * Real.log (m / t) - m + t := phi_nn m t hm_nn ht
+  rcases eq_or_lt_of_le hm_nn with heq | hpos
+  · -- Case `m = 0`: `entSq = 0 - 0*log(0) = 0` and RHS is `-0 + t ≥ 0`.
+    rw [← heq]; simp; linarith
+  · -- Case `m > 0`: split `log(m/t) = log m - log t` and conclude by `hkey`.
+    rw [Real.log_div hpos.ne' ht.ne'] at hkey
+    linarith [hkey]
+
+/-- SUB-LEMMA 4 (Holley–Stroock entropy perturbation chain):
+    The chain sub-lemma 2 → Step 2 comparison → sub-lemma 3
+    yields the Holley–Stroock entropy comparison
+    `entSq ρμ f ≤ exp(2β) * entSq μ f`. -/
+private theorem entSq_pert_bound_chain
+    (N_c : ℕ) [NeZero N_c] (β : ℝ)
+    (μ ρμ : MeasureTheory.Measure (SUN_State N_c))
+    (f : SUN_State N_c → ℝ)
+    (hm_ρ_nn : 0 ≤ ∫ x, f x ^ 2 ∂ρμ)
+    (hm_μ_pos : 0 < ∫ x, f x ^ 2 ∂μ)
+    (h_lin_ρ : (∫ x, (f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ))
+                      - f x ^ 2 + (∫ x, f x ^ 2 ∂μ)) ∂ρμ)
+             = (∫ x, f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ)) ∂ρμ)
+               - (∫ x, f x ^ 2 ∂ρμ) + (∫ x, f x ^ 2 ∂μ))
+    (h_split_ρ : (∫ x, f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ)) ∂ρμ)
+               = (∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂ρμ)
+                 - (∫ x, f x ^ 2 ∂ρμ) * Real.log (∫ x, f x ^ 2 ∂μ))
+    (h_lin_μ : (∫ x, (f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ))
+                      - f x ^ 2 + (∫ x, f x ^ 2 ∂μ)) ∂μ)
+             = (∫ x, f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ)) ∂μ)
+               - (∫ x, f x ^ 2 ∂μ) + (∫ x, f x ^ 2 ∂μ))
+    (h_split_μ : (∫ x, f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ)) ∂μ)
+               = (∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂μ)
+                 - (∫ x, f x ^ 2 ∂μ) * Real.log (∫ x, f x ^ 2 ∂μ))
+    (h_compare : (∫ x, (f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ))
+                        - f x ^ 2 + (∫ x, f x ^ 2 ∂μ)) ∂ρμ)
+                ≤ Real.exp (2 * β)
+                  * (∫ x, (f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ))
+                           - f x ^ 2 + (∫ x, f x ^ 2 ∂μ)) ∂μ)) :
+    entSq N_c ρμ f ≤ Real.exp (2 * β) * entSq N_c μ f := by
+  have h_up : entSq N_c ρμ f
+            ≤ ∫ x, (f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ))
+                    - f x ^ 2 + (∫ x, f x ^ 2 ∂μ)) ∂ρμ :=
+    entSq_le_int_phi N_c ρμ f (∫ x, f x ^ 2 ∂μ) hm_μ_pos hm_ρ_nn h_lin_ρ h_split_ρ
+  have h_eq : (∫ x, (f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ))
+                     - f x ^ 2 + (∫ x, f x ^ 2 ∂μ)) ∂μ) = entSq N_c μ f :=
+    int_phi_mu_eq_entSq N_c μ f h_split_μ h_lin_μ
+  calc entSq N_c ρμ f
+      ≤ ∫ x, (f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ))
+              - f x ^ 2 + (∫ x, f x ^ 2 ∂μ)) ∂ρμ := h_up
+    _ ≤ Real.exp (2 * β)
+          * (∫ x, (f x ^ 2 * Real.log (f x ^ 2 / (∫ x, f x ^ 2 ∂μ))
+                   - f x ^ 2 + (∫ x, f x ^ 2 ∂μ)) ∂μ) := h_compare
+    _ = Real.exp (2 * β) * entSq N_c μ f := by rw [h_eq]
+
 theorem lsi_normalized_gibbs_from_haar_of_ent_pert
     (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
     (α : ℝ) (hα : 0 < α)
