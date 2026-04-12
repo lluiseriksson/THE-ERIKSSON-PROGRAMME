@@ -544,11 +544,18 @@ theorem lsi_normalized_gibbs_from_haar
       (sunDirichletForm N_c)
       (α * Real.exp (-2 * β)) :=
   lsi_normalized_gibbs_from_haar_of_ent_pert N_c hN_c β hβ α hα hHaar
-    sorry   -- IsProbabilityMeasure (Gibbs measure); Mathlib plumbing
+    (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0)
     (fun f _hf => entSq_pert_bound_chain N_c β
       (sunHaarProb N_c)
       ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
-      f sorry sorry sorry sorry sorry sorry sorry)
+              f
+              (integral_nonneg (fun x => sq_nonneg (f x)))
+              (by sorry)
+              (by sorry)
+              (by sorry)
+              (by sorry)
+              (by sorry)
+              (by sorry))
 
 /-!
 ## P8.3: Normalized Gibbs LSI → DLR-LSI chain (consumes `lsi_normalized_gibbs_from_haar`)
