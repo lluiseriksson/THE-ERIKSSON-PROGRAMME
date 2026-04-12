@@ -452,6 +452,35 @@ private theorem entSq_le_int_phi
     yields the Holley–Stroock entropy comparison
     `entSq ρμ f ≤ exp(2β) * entSq μ f`. -/
 
+private theorem log_quotient_split
+    {N_c : ℕ} [NeZero N_c]
+    (ν : MeasureTheory.Measure (SUN_State N_c))
+    (f : SUN_State N_c → ℝ)
+    (m : ℝ) (hm : 0 < m)
+    (hif2log : MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) ν)
+    (hif2 : MeasureTheory.Integrable (fun x => f x ^ 2) ν) :
+    (∫ x, (f x ^ 2 * Real.log (f x ^ 2 / m)) ∂ν)
+    = (∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂ν)
+    - (∫ x, f x ^ 2 ∂ν) * Real.log m := by
+  have pw : ∀ x, f x ^ 2 * Real.log (f x ^ 2 / m)
+    = f x ^ 2 * Real.log (f x ^ 2) - f x ^ 2 * Real.log m := by
+    intro x
+    by_cases hfx : f x ^ 2 = 0
+    · simp [hfx]
+    · rw [Real.log_div hfx (ne_of_gt hm)]; ring
+  have him : MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log m) ν :=
+    hif2.mul_const (Real.log m)
+  have step1 := MeasureTheory.integral_congr_ae (μ := ν)
+    (Filter.Eventually.of_forall pw)
+  have step2 := MeasureTheory.integral_sub hif2log him
+  have step3 : ∫ x, f x ^ 2 * Real.log m ∂ν = (∫ x, f x ^ 2 ∂ν) * Real.log m :=
+    MeasureTheory.integral_mul_const _ _
+  calc ∫ x, (f x ^ 2 * Real.log (f x ^ 2 / m)) ∂ν
+      = ∫ x, (f x ^ 2 * Real.log (f x ^ 2) - f x ^ 2 * Real.log m) ∂ν := step1
+    _ = (∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂ν) - ∫ x, f x ^ 2 * Real.log m ∂ν := step2
+    _ = (∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂ν) - (∫ x, f x ^ 2 ∂ν) * Real.log m := by
+        rw [step3]
+
 private theorem dv_integral_lin_cross
     {N_c : ℕ} [NeZero N_c]
     (ν : MeasureTheory.Measure (SUN_State N_c)) (hν : MeasureTheory.IsProbabilityMeasure ν)
@@ -637,10 +666,10 @@ theorem lsi_normalized_gibbs_from_haar
             f
             (integral_nonneg (fun x => sq_nonneg (f x)))
             hpos
-            (dv_integral_lin_cross ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) sorry f _ _ sorry sorry) -- TODO: integral linearity for Gibbs (needs Integrable f²·log(f²))
-            (by sorry) -- TODO: log-quotient split for Gibbs (needs Integrable f²·log(f²))
+            (dv_integral_lin_cross ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0) f _ _ sorry sorry) -- TODO: integral linearity for Gibbs (needs Integrable f²·log(f²))
+            (log_quotient_split ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f _ hpos sorry sorry) -- TODO: log-quotient split for Gibbs (needs Integrable f²·log(f²))
             (dv_integral_lin_self (sunHaarProb N_c) f _ hpos) -- TODO: integral linearity for Haar (needs Integrable f²·log(f²))
-            (by sorry) -- TODO: log-quotient split for Haar (needs Integrable f²·log(f²))
+            (log_quotient_split (sunHaarProb N_c) f _ hpos sorry (by by_contra h; linarith [MeasureTheory.integral_undef h])) -- TODO: log-quotient split for Haar (needs Integrable f²·log(f²))
             (by sorry) -- TODO: L¹ comparison via sun_lintegral_withDensity_le_exp_two_beta
       · exact entSq_pert_zero_case N_c β (sunHaarProb N_c) ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f (integral_nonneg (fun x => sq_nonneg (f x))) hpos)
 
