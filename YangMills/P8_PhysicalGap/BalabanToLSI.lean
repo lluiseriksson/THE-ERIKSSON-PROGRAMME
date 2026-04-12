@@ -566,11 +566,11 @@ theorem lsi_normalized_gibbs_from_haar
             f
             (integral_nonneg (fun x => sq_nonneg (f x)))
             hpos
-            (by sorry)
-            (by sorry)
-            (by sorry)
-            (by sorry)
-            (by sorry)
+            (by sorry) -- TODO: integral linearity for Gibbs (needs Integrable f²·log(f²))
+            (by sorry) -- TODO: log-quotient split for Gibbs (needs Integrable f²·log(f²))
+            (by sorry) -- TODO: integral linearity for Haar (needs Integrable f²·log(f²))
+            (by sorry) -- TODO: log-quotient split for Haar (needs Integrable f²·log(f²))
+            (by sorry) -- TODO: L¹ comparison via sun_lintegral_withDensity_le_exp_two_beta
       · exact entSq_pert_zero_case N_c β (sunHaarProb N_c) ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f (integral_nonneg (fun x => sq_nonneg (f x))) hpos)
 
 /-!
