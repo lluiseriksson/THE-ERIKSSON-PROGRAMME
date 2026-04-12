@@ -481,6 +481,26 @@ private theorem log_quotient_split
     _ = (∫ x, f x ^ 2 * Real.log (f x ^ 2) ∂ν) - (∫ x, f x ^ 2 ∂ν) * Real.log m := by
         rw [step3]
 
+/-- The Gibbs measure is dominated by exp(2β) • Haar. -/
+private theorem gibbs_measure_le_smul_haar
+    {N_c : ℕ} [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β) :
+    (sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)
+    ≤ ENNReal.ofReal (Real.exp (2 * β)) • (sunHaarProb N_c) := by
+  rw [← MeasureTheory.withDensity_const]
+  exact MeasureTheory.withDensity_mono
+    (Filter.Eventually.of_forall
+      (fun x => sunNormalizedGibbsDensity_le_exp_two_beta N_c hN_c β hβ x))
+
+/-- Transfer integrability from Haar to Gibbs via measure domination. -/
+private theorem integrable_gibbs_of_haar
+    {N_c : ℕ} [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
+    {g : SUN_State N_c → ℝ}
+    (hg : MeasureTheory.Integrable g (sunHaarProb N_c)) :
+    MeasureTheory.Integrable g
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) :=
+  hg.of_measure_le_smul ENNReal.ofReal_ne_top (gibbs_measure_le_smul_haar hN_c β hβ)
+
+
 private theorem dv_integral_lin_cross
     {N_c : ℕ} [NeZero N_c]
     (ν : MeasureTheory.Measure (SUN_State N_c)) (hν : MeasureTheory.IsProbabilityMeasure ν)
@@ -666,8 +686,8 @@ theorem lsi_normalized_gibbs_from_haar
             f
             (integral_nonneg (fun x => sq_nonneg (f x)))
             hpos
-            (dv_integral_lin_cross ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0) f _ _ sorry sorry) -- TODO: integral linearity for Gibbs (needs Integrable f²·log(f²))
-            (log_quotient_split ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f _ hpos sorry sorry) -- TODO: log-quotient split for Gibbs (needs Integrable f²·log(f²))
+            (dv_integral_lin_cross ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0) f _ _ sorry (integrable_gibbs_of_haar hN_c β hβ (by by_contra h; linarith [MeasureTheory.integral_undef h]))) -- TODO: integral linearity for Gibbs (needs Integrable f²·log(f²))
+            (log_quotient_split ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f _ hpos sorry (integrable_gibbs_of_haar hN_c β hβ (by by_contra h; linarith [MeasureTheory.integral_undef h]))) -- TODO: log-quotient split for Gibbs (needs Integrable f²·log(f²))
             (dv_integral_lin_self (sunHaarProb N_c) f _ hpos) -- TODO: integral linearity for Haar (needs Integrable f²·log(f²))
             (log_quotient_split (sunHaarProb N_c) f _ hpos sorry (by by_contra h; linarith [MeasureTheory.integral_undef h])) -- TODO: log-quotient split for Haar (needs Integrable f²·log(f²))
             (by sorry) -- TODO: L¹ comparison via sun_lintegral_withDensity_le_exp_two_beta
