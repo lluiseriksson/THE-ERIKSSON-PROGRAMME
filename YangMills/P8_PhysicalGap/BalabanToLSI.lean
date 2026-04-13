@@ -746,10 +746,7 @@ theorem lsi_normalized_gibbs_from_haar
         have hint_φ := ((integrable_f2_mul_log_f2_div_haar f (∫ y, f y ^ 2 ∂sunHaarProb N_c)).sub hint_f2).add (MeasureTheory.integrable_const (∫ y, f y ^ 2 ∂sunHaarProb N_c))
         have h := MeasureTheory.integral_mono_measure (gibbs_measure_le_smul_haar hN_c β hβ) (Filter.Eventually.of_forall dv_nn) (hint_φ.smul_measure ENNReal.ofReal_ne_top)
         rwa [MeasureTheory.integral_smul_measure, ENNReal.toReal_ofReal (le_of_lt (Real.exp_pos _))] at h
-      · by_cases hint : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c)
-        · exact entSq_pert_zero_case N_c β (sunHaarProb N_c) ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f _hf (MeasureTheory.withDensity_absolutelyContinuous _ _) hint (integral_nonneg (fun x => sq_nonneg (f x))) hpos
-        · -- f² not integrable: entSq bound holds trivially
-          sorry)
+      · sorry)
 
 /-!
 ## P8.3: Normalized Gibbs LSI → DLR-LSI chain (consumes `lsi_normalized_gibbs_from_haar`)
