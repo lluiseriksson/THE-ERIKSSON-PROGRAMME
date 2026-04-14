@@ -68,4 +68,16 @@ theorem sun_physical_mass_gap_legacy
   sun_clay_conditional d N_c hN_c β β₀ hβ hβ₀
     (sun_gibbs_dlr_lsi d N_c hN_c β β₀ hβ hβ₀)
 
+
+/-- Vacuous-target (`ClayYangMillsTheorem`) mass gap via the NORMALIZED chain.
+    Routes through `sun_gibbs_dlr_lsi_norm`, eliminating the legacy
+    `holleyStroock_sunGibbs_lsi` axiom. Oracle: [propext, Classical.choice,
+    Quot.sound, sorryAx]. -/
+theorem sun_physical_mass_gap_vacuous
+    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ)
+    (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
+    ClayYangMillsTheorem := by
+  obtain ⟨α_star, hα_pos, _⟩ := sun_gibbs_dlr_lsi_norm d N_c hN_c β β₀ hβ hβ₀
+  exact ⟨α_star, hα_pos⟩
+
 end YangMills

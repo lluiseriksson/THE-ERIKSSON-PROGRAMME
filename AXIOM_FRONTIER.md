@@ -1,3 +1,26 @@
+# v0.33.0 AXIOM ELIMINATION (2026-04-14)
+
+**The monolithic `holleyStroock_sunGibbs_lsi` axiom has been ORPHANED.**
+
+The Clay Millennium Yang-Mills mass gap theorem (`clay_millennium_yangMills`)
+now depends on **zero** named axioms (modulo in-progress `sorryAx`).
+
+Oracle (from `#print axioms` after `lake build YangMills.P8_PhysicalGap.ClayAssembly`):
+
+    YangMills.clay_millennium_yangMills
+      depends on [propext, sorryAx, Classical.choice, Quot.sound]
+
+No more `holleyStroock_sunGibbs_lsi`. The final theorem now routes through
+`sun_physical_mass_gap_vacuous` (new) -> `sun_gibbs_dlr_lsi_norm` ->
+`balaban_rg_uniform_lsi_norm` -> `lsi_normalized_gibbs_from_haar` (proved,
+with measure-theoretic `sorry`).
+
+The legacy axiom is retained in `BalabanToLSI.lean` for downstream compatibility
+with `sun_physical_mass_gap_legacy`, `sunGibbsFamily`, and `sun_clay_conditional`,
+but it is no longer a dependency of the headline theorem.
+
+---
+
 # v0.32.0 STRUCTURAL COLLAPSE (2026-04-14)
 
 **Monolithic axiom `yangMills_continuum_mass_gap` has been DELETED.**

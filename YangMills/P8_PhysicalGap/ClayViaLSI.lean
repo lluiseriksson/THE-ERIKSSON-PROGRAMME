@@ -15,7 +15,7 @@ namespace YangMills
 
 /-- Clay Yang-Mills theorem discharged via the SU(N) Holley-Stroock LSI route. -/
 theorem yangMills_existence_massGap_via_lsi : ClayYangMillsTheorem :=
-  sun_physical_mass_gap_legacy 4 3 (by norm_num) 1 1 le_rfl one_pos
+  sun_physical_mass_gap_vacuous 4 3 (by norm_num) 1 1 le_rfl one_pos
 
 /-- Clay Millennium Theorem via the LSI route. -/
 theorem clay_millennium_yangMills_via_lsi : ∃ m_phys : ℝ, 0 < m_phys :=

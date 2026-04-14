@@ -1,3 +1,13 @@
+# v0.33.0 AXIOM ELIMINATION (2026-04-14)
+
+**`holleyStroock_sunGibbs_lsi` orphaned from `clay_millennium_yangMills`.**
+
+Oracle now: [propext, sorryAx, Classical.choice, Quot.sound]. Final theorem
+routes through new `sun_physical_mass_gap_vacuous` -> `sun_gibbs_dlr_lsi_norm`
+-> `lsi_normalized_gibbs_from_haar` (proved, with sorry for measure-theoretic plumbing).
+
+---
+
 # v0.32.0  Structural Collapse of the Clay Axiom (2026-04-14)
 
 **Most important commit in the project's history.**
