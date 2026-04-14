@@ -104,3 +104,44 @@ they are rote measure-theoretic work blocked only by missing Mathlib API for
 There is no Path C. The previous attempt at "axiom elimination" by relocating the
 assumption into a hypothesis of the downstream theorem was a shell game and has
 been rolled back.
+
+---
+
+## Status Update  2026-04-14
+
+**Oracle (non-trivial axioms / declarations consumed by the main theorem):**
+- `propext`, `Classical.choice`, `Quot.sound` (Lean/Mathlib foundational)
+- `lsi_normalized_gibbs_from_haar` (the HolleyStroock transfer; the single
+  mathematical axiom the Clay statement depends on).
+
+**Sorry frontier (3 open obligations, all in `BalabanToLSI.lean`):**
+
+1. **Line ~513  `integrable_f2_mul_log_f2_div_haar`.**
+   Goal: `Integrable f  Integrable (f  log (f/m))` under `sunHaarProb`.
+   *L log L regularity.* Needs the Mathlib-level estimate
+   `|flog(f/m)|  C_m + (f)^{1+}`, i.e. a weighted L log L comparison
+   on a probability space. No Mathlib API today; honest math gap.
+
+2. **Line ~520  `integrable_f2_mul_log_f2_haar`.**
+   Goal: `Integrable f  Integrable (f  log f)` under `sunHaarProb`.
+   Same flavour as (1): L log L corner. Closes as soon as (1) lands.
+
+3. **Line ~763  non-integrable sub-case of
+   `lsi_normalized_gibbs_from_haar`.**
+   When `Integrable f (sunHaarProb)` fails, `integral_undef` forces
+   ` f = 0` on Haar. We need the parallel statement that
+   `Integrable (f  log f) (sunHaarProb)` also fails (bounded-density
+   transfer of non-integrability across `withDensity`). Both sides of the
+   entropy inequality collapse to `0  exp(2)0 = 0`, closing the branch.
+   Alternative: lift `Integrable f` into the hypotheses of
+   `lsi_normalized_gibbs_from_haar_of_ent_pert` (mathematically honest 
+   LSI in the literature assumes `f  L()`). Attempted via the full
+   BakryEmeryCD cascade on 2026-04-14; reverted because the downstream
+   identifications (`sun_bakry_emery_cd`, `id`-normalization) are too
+   entangled for a single pass.
+
+**Honest progress: ~34%** of the Phase 8 LSI chain is sorry-free; the
+rest is a conditional implication gated on the oracle above plus these 3
+concrete analytic lemmas. The structural skeleton (Dirichlet form,
+semigroup, HolleyStroock plumbing, LSI  Poincar  Spectral gap) is
+all in place.

@@ -176,3 +176,43 @@ Deep dependency analysis confirmed:
 - No shortcuts found — the axiom requires genuine real analysis work
 
 *Last updated: C133 (v1.45.0, 2026-04-11).*
+
+---
+
+## Axiom Census  2026-04-14
+
+Taken from `grep -rn '^axiom ' YangMills/ --include='*.lean' | grep -v Experimental`.
+
+### On the main oracle chain (consumed by `yang_mills_mass_gap`)
+
+| # | File | Axiom | Role |
+|---|------|-------|------|
+| 1 | `P8_PhysicalGap/BalabanToLSI.lean:828` | `holleyStroock_sunGibbs_lsi` | HolleyStroock transfer from Haar LSI to perturbed Gibbs LSI (the main analytic content) |
+| 2 | `P8_PhysicalGap/BalabanToLSI.lean:818` | `lsi_withDensity_density_bound` | L density bound used by HolleyStroock |
+| 3 | `P8_PhysicalGap/BalabanToLSI.lean:848` | `sz_lsi_to_clustering` | StroockZegarlinski: LSI  exponential clustering |
+| 4 | `P8_PhysicalGap/StroockZegarlinski.lean:21` | `poincare_to_covariance_decay` | Poincar  covariance decay (generic semigroup fact) |
+| 5 | `P8_PhysicalGap/MarkovSemigroupDef.lean:126` | `hille_yosida_semigroup` | HilleYosida: closed densely-defined generator  contraction semigroup |
+| 6 | `P8_PhysicalGap/SUN_DirichletCore.lean:178` | `sunDirichletForm_contraction` | Markov contraction of the SU(N) Dirichlet form |
+| 7 | `P8_PhysicalGap/SUN_LiebRobin.lean:41` | `sun_variance_decay` | Variance decay on compact SU(N) |
+| 8 | `P8_PhysicalGap/SUN_LiebRobin.lean:47` | `sun_lieb_robinson_bound` | LiebRobinson bound specialised to SU(N) |
+| 9 | `L8_Terminal/ClayTheorem.lean:51` | `yangMills_continuum_mass_gap` | Top-level Clay statement glue |
+
+### Off the main oracle chain (RG branch  not consumed by Clay)
+
+| # | File | Axiom |
+|---|------|-------|
+| 10 | `ClayCore/BalabanRG/PhysicalRGRates.lean:101` | `physical_rg_rates_from_E26` |
+| 11 | `ClayCore/BalabanRG/P91WeakCouplingWindow.lean:51` | `p91_tight_weak_coupling_window` |
+
+(These feed the Balaban RG branch; ask `#print axioms yang_mills_mass_gap`
+whether they're reached.)
+
+### Next cleanup candidates
+
+Check which of (10)(11) survive in `#print axioms yangMills_continuum_mass_gap`.
+If either is unreachable, mark it as RG-branch-only and either inline the proof
+or move to `Experimental/`.
+
+`lsi_normalized_gibbs_from_haar` is *not* an `axiom` keyword (it's an
+`opaque`/declared theorem with `sorry` threaded). It is listed in the oracle
+but won't match the `^axiom ` grep.
