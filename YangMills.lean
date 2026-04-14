@@ -155,6 +155,8 @@ import YangMills.L6_OS.OsterwalderSchrader
 import YangMills.L7_Continuum.ContinuumLimit
 import YangMills.L7_Continuum.DecaySummability
 import YangMills.L8_Terminal.ClayTheorem
+import YangMills.P8_PhysicalGap.ClayViaLSI
+import YangMills.P8_PhysicalGap.ClayAssembly
 import YangMills.P2_MaxEntClustering.PetzFidelity
 import YangMills.P2_MaxEntClustering.LocalObservableAlgebras
 import YangMills.P2_MaxEntClustering.MaxEntStates

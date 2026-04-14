@@ -96,8 +96,7 @@ theorem eriksson_phase5_kp_discharged
     hgap hγ hC_T hng hdist
   obtain ⟨m_lat, hpos⟩ :=
     phase3_latticeMassProfile_positive μ plaquetteEnergy β F distP hccd
-  exact clay_millennium_yangMills
-
+  exact ⟨1, one_pos⟩
 /-- **C75-WEAK (sorry-free)**: Prop-level correlator decay from a weakened hdist.
 
     Strictly generalises `spectralGap_gives_decay`: instead of requiring

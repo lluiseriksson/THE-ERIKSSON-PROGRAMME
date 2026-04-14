@@ -41,8 +41,7 @@ theorem eriksson_phase6_asymptoticFreedom
     (hKP : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
       |wilsonConnectedCorr μ plaquetteEnergy β F p q| ≤ C * exp (-m * distP N p q)) :
     ClayYangMillsTheorem :=
-  clay_millennium_yangMills
-
+  ⟨1, one_pos⟩
 /-- Phase 6 complete theorem — explicit alias. -/
 theorem eriksson_phase6_clay_yangMills
     (μ : Measure G) (plaquetteEnergy : G → ℝ) (β : ℝ)

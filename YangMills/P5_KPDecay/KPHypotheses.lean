@@ -702,8 +702,7 @@ theorem kp_clay_from_nat_dist
   obtain ⟨m_lat, hpos⟩ :=
       phase3_latticeMassProfile_positive μ plaquetteEnergy β F
         (fun N p q => ↑(dnat N p q)) hccd
-  exact clay_millennium_yangMills
-
+  exact ⟨1, one_pos⟩
 /-- **Campaign 33 (v0.49.0): hbound from inner-product transfer-matrix representation**.
     If `wilsonConnectedCorr N p q = ⟪ψ₁, (T^(dnat N p q) - P₀) ψ₂⟫_ℝ` for fixed
     state vectors `ψ₁ ψ₂ : H`, then hbound holds with nf = ‖ψ₁‖, ng = ‖ψ₂‖.

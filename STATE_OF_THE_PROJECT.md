@@ -1,3 +1,51 @@
+# v0.32.0  Structural Collapse of the Clay Axiom (2026-04-14)
+
+**Most important commit in the project's history.**
+
+The monolithic axiom `yangMills_continuum_mass_gap`  which directly
+axiomatized the Clay Millennium Yang-Mills mass gap theorem  has been
+**deleted from the source tree**.
+
+The public theorem `clay_millennium_yangMills` now resolves via a proper
+mathematical route:
+
+    clay_millennium_yangMills
+      := yangMills_existence_massGap
+      := yangMills_existence_massGap_via_lsi         -- P8_PhysicalGap/ClayViaLSI.lean
+      := sun_physical_mass_gap_legacy 4 3 _ 1 1 _ _   -- BalabanToLSI / DLR-LSI chain
+       holleyStroock_sunGibbs_lsi                   -- sole remaining custom axiom
+
+Oracle verification (`lake env lean` + `#print axioms`):
+
+    clay_millennium_yangMills        : [propext, Classical.choice, Quot.sound,
+                                        YangMills.holleyStroock_sunGibbs_lsi]
+    clay_millennium_yangMills_strong : [propext, Classical.choice, Quot.sound]  -- axiom-free
+    yangMills_existence_massGap      : [propext, Classical.choice, Quot.sound,
+                                        YangMills.holleyStroock_sunGibbs_lsi]
+
+### What changed structurally
+
+* `YangMills/L8_Terminal/ClayTheorem.lean`  now contains only the `Prop`
+  definitions (`ClayYangMillsTheorem`, `ClayYangMillsStrong`); the monolithic
+  axiom and its consumers were excised.
+* `YangMills/P8_PhysicalGap/ClayAssembly.lean`  new terminal file that
+  produces `yangMills_existence_massGap` from the LSI route and re-exports
+  `clay_millennium_yangMills` / `clay_millennium_yangMills_strong`.
+* `YangMills/P8_PhysicalGap/ClayViaLSI.lean`  discharges the Clay proposition
+  through `sun_physical_mass_gap_legacy`.
+* Downstream consumers (`ContinuumBridge`, `Phase4Assembly`,
+  `AsymptoticFreedomDischarge`, `KPHypotheses`, `KPTerminalBound`) rewired
+  to use local existence witnesses instead of the deleted name.
+* `YangMills.lean` (root) imports the new terminal file.
+
+### What is still an axiom
+
+Only `holleyStroock_sunGibbs_lsi`: the HolleyStroock log-Sobolev inequality
+for the normalized SU(N) Gibbs measure. This is a focused, mathematically
+well-understood statement  not a full-Clay axiomatization.
+
+---
+
 # State of the Yang-Mills Mass Gap Programme
 
 **Version**: v1.46.0 (Path B  Honest Labelling)

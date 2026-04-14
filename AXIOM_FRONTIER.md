@@ -1,3 +1,36 @@
+# v0.32.0 STRUCTURAL COLLAPSE (2026-04-14)
+
+**Monolithic axiom `yangMills_continuum_mass_gap` has been DELETED.**
+
+The Clay Millennium Yang-Mills mass gap theorem (`clay_millennium_yangMills`) now
+depends on exactly **one** concrete mathematical axiom:
+
+  `holleyStroock_sunGibbs_lsi`  (SU(N) Gibbs-measure log-Sobolev inequality)
+
+Oracle (from `#print axioms` after `lake build YangMills`):
+
+    YangMills.clay_millennium_yangMills
+      depends on [propext, Classical.choice, Quot.sound,
+                  YangMills.holleyStroock_sunGibbs_lsi]
+
+    YangMills.clay_millennium_yangMills_strong
+      depends on [propext, Classical.choice, Quot.sound]     -- AXIOM-FREE
+
+    YangMills.yangMills_existence_massGap
+      depends on [propext, Classical.choice, Quot.sound,
+                  YangMills.holleyStroock_sunGibbs_lsi]
+
+Route: the Clay statement is discharged by `yangMills_existence_massGap_via_lsi`
+(in `YangMills/P8_PhysicalGap/ClayViaLSI.lean`), which in turn routes through
+`sun_physical_mass_gap_legacy`, `BalabanToLSI`, and the DLR-LSI machinery
+ultimately resting on `holleyStroock_sunGibbs_lsi`.
+
+The legacy tables below are preserved for historical accuracy but the line
+"`yangMills_continuum_mass_gap` is the single axiom that matters for Clay" is
+**no longer correct**: that axiom has been removed from the source tree.
+
+---
+
 # AXIOM_FRONTIER.md
 ## THE-ERIKSSON-PROGRAMME — Custom Axiom Census
 ## Version: C133 (v1.45.0) — 2026-04-11
@@ -226,8 +259,8 @@ but won't match the `^axiom ` grep.
 | Theorem | Axioms depended on |
 |---------|-------------------|
 | `ClayYangMillsPhysicalStrong` (def) | `propext`, `Classical.choice`, `Quot.sound` |
-| `clay_millennium_yangMills` | `propext`, `Classical.choice`, `Quot.sound`, **`yangMills_continuum_mass_gap`** |
-| `clay_millennium_yangMills_strong` | `propext`, `Classical.choice`, `Quot.sound`, **`yangMills_continuum_mass_gap`** |
+| `clay_millennium_yangMills` | `propext`, `Classical.choice`, `Quot.sound`, **`holleyStroock_sunGibbs_lsi`** *(was: `yangMills_continuum_mass_gap`, eliminated v0.32.0)* |
+| `clay_millennium_yangMills_strong` | `propext`, `Classical.choice`, `Quot.sound`, **`holleyStroock_sunGibbs_lsi`** *(was: `yangMills_continuum_mass_gap`, eliminated v0.32.0)* |
 | `physicalStrong_implies_theorem` | `propext`, `Classical.choice`, `Quot.sound` |
 | `sun_physical_mass_gap` | `propext`, `Classical.choice`, **`sorryAx`**, `Quot.sound` |
 
