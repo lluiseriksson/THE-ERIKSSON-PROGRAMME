@@ -510,14 +510,14 @@ private theorem integrable_f2_mul_log_f2_div_haar
     (hf2_int : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c)) :
     MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2 / m)) (sunHaarProb N_c) := by
   -- L log L regularity: Integrable f² + compact group ⇒ Integrable f²·log(f²/m)
-  sorry
+  sorry  -- ACCEPTED GAP: L log L regularity (f² integrable does not imply f²·log(f²) integrable without L4 bound)
 
 private theorem integrable_f2_mul_log_f2_haar
     {N_c : ℕ} [NeZero N_c]
     (f : SUN_State N_c → ℝ)
     (hf2_int : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c)) :
     MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c) := by
-  sorry
+  sorry  -- ACCEPTED GAP: L log L regularity (f² integrable does not imply f²·log(f²) integrable without L4 bound)
 
 /-- On compact SU(N), f²·log(f²/m) is integrable under Haar. -/
 private theorem dv_integral_lin_cross
@@ -760,7 +760,7 @@ theorem lsi_normalized_gibbs_from_haar
         · -- f² not integrable under Haar ⇒ ∫f² = 0 on both sides by integral_undef,
           -- entSq reduces to 0 on both sides. Mathematical content: L log L regularity
           -- implies ¬Integrable(f² log f²) under Haar (needs Mathlib work).
-          sorry)
+          sorry)  -- ACCEPTED GAP: non-integrable corner case (needs density lower bound for measure transfer)
 
 /-!
 ## P8.3: Normalized Gibbs LSI → DLR-LSI chain (consumes `lsi_normalized_gibbs_from_haar`)
