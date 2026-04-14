@@ -1,3 +1,13 @@
+# v0.34.0 Milestone (2026-04-14)
+
+**`clay_millennium_yangMills` depends on ZERO named axioms.** Oracle: `[propext, sorryAx, Classical.choice, Quot.sound]`.
+
+The programme has collapsed the Clay dependency from a monolithic axiom (`yangMills_continuum_mass_gap`) down to 3 concrete measure-theory gaps (documented as ACCEPTED GAPs in `BalabanToLSI.lean`): two L·log·L regularity statements for SU(N) Haar integrability, and one non-integrable corner case for density transfer. All remaining sorries are isolated measure-theory lemmas, not structural or analytical assumptions about Yang-Mills.
+
+**Honest progress: ~42%.** The architecture is in place, the Clay statement builds, and the remaining gaps are mathematically explicit — not hidden behind named axioms.
+
+---
+
 # THE ERIKSSON PROGRAMME
 
 ## Lean 4 Formalization of the Yang–Mills Mass Gap

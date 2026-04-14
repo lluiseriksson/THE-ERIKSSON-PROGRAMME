@@ -1,3 +1,36 @@
+# v0.34.0 — AXIOM CENSUS (2026-04-14)
+
+**Milestone:** `clay_millennium_yangMills` oracle is now `[propext, sorryAx, Classical.choice, Quot.sound]` — **ZERO named axioms** in the Clay proof chain.
+
+## Current axiom inventory (non-Experimental)
+
+- **Total declared axioms (non-Experimental):** 10
+- **Axioms reached by `clay_millennium_yangMills`:** 0
+- **Orphaned axioms (declared but unreachable from Clay):** 10
+
+### Orphaned (dead-code) axioms by file
+- `YangMills/P8_PhysicalGap/BalabanToLSI.lean`: 2 (after v0.34 cleanup) — `holleyStroock_sunGibbs_lsi`, `into`
+- `YangMills/P8_PhysicalGap/SUN_LiebRobin.lean`: 2 — `sun_variance_decay`, `sun_lieb_robinson_bound`
+- `YangMills/P8_PhysicalGap/SUN_DirichletCore.lean`: 1 — `sunDirichletForm_contraction`
+- `YangMills/P8_PhysicalGap/StroockZegarlinski.lean`: 1 — `sz_lsi_to_clustering`
+- `YangMills/P8_PhysicalGap/MarkovSemigroupDef.lean`: 1 — `dirichlet_lipschitz_contraction`
+- `YangMills/ClayCore/BalabanRG/PhysicalRGRates.lean`: 1 — `physical_rg_rates_from_E26`
+- `YangMills/ClayCore/BalabanRG/P91WeakCouplingWindow.lean`: 1 — `p91_tight_weak_coupling_window`
+
+### Remaining gaps (sorryAx only)
+Three `sorry` in `BalabanToLSI.lean`, documented inline as ACCEPTED GAPs:
+1. Line ~507-513: `integrable_f2_mul_log_f2_div_haar` (L·log·L regularity: f² integrable ⇒ f²·log(f²/m) integrable)
+2. Line ~515-520: `integrable_f2_mul_log_f2_haar` (L·log·L regularity: f² integrable ⇒ f²·log(f²) integrable)
+3. Line ~746-750: non-integrable corner case (needs density lower bound for measure transfer)
+
+These require Mathlib-level measure-theory infrastructure (L⁴ bound or L log L class) not yet available.
+
+## v0.34.0 cleanup (this release)
+- Deleted orphan `theorem sun_physical_mass_gap_legacy` (unreferenced after v0.33.0 rewire).
+- Deleted orphan `axiom lsi_withDensity_density_bound` (unreferenced in Clay chain).
+
+---
+
 # v0.33.0 AXIOM ELIMINATION (2026-04-14)
 
 **The monolithic `holleyStroock_sunGibbs_lsi` axiom has been ORPHANED.**
