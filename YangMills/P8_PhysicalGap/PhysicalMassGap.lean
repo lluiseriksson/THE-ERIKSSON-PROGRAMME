@@ -61,12 +61,6 @@ theorem sun_physical_mass_gap
   exact connectedCorrDecay_implies_physicalStrong
     μ plaquetteEnergy β F distP (bridge α_star hα_pos hDLR) hdistP
 
-/-- LEGACY: Physical mass gap via un-normalized Gibbs (uses holleyStroock_sunGibbs_lsi axiom). -/
-theorem sun_physical_mass_gap_legacy
-    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
-    ClayYangMillsTheorem :=
-  sun_clay_conditional d N_c hN_c β β₀ hβ hβ₀
-    (sun_gibbs_dlr_lsi d N_c hN_c β β₀ hβ hβ₀)
 
 
 /-- Vacuous-target (`ClayYangMillsTheorem`) mass gap via the NORMALIZED chain.

@@ -813,18 +813,6 @@ noncomputable instance instIsProbabilityMeasure_sunHaarProb (N_c : ℕ) [NeZero 
     IsProbabilityMeasure (sunHaarProb N_c) :=
   instIsProbabilityMeasureSUN N_c
 
-/-- Abstract Holley-Stroock (C130, retained for backward compatibility).
-    NOTE: For the correct normalized version, see lsi_normalized_gibbs_from_haar. -/
-axiom lsi_withDensity_density_bound
-    {S : Type*} [MeasurableSpace S]
-    (mu : MeasureTheory.Measure S) (E : (S → ℝ) → ℝ)
-    (α r : ℝ) (hα : 0 < α) (hr : 0 < r) (hr1 : r ≤ 1)
-    (h_lsi : LogSobolevInequality mu E α)
-    (rho : S → ENNReal)
-    (h_lb : ∀ x, ENNReal.ofReal r ≤ rho x)
-    (h_ub : ∀ x, rho x ≤ 1) :
-    LogSobolevInequality (mu.withDensity rho) E (α * r)
-
 axiom holleyStroock_sunGibbs_lsi
     (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
     (α : ℝ) (hα : 0 < α)
