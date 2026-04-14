@@ -715,7 +715,7 @@ theorem lsi_normalized_gibbs_from_haar
       (α * Real.exp (-2 * β)) :=
   lsi_normalized_gibbs_from_haar_of_ent_pert N_c hN_c β hβ α hα hHaar
     (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0)
-    (fun f _hf => by
+    (fun f hf => by
       by_cases hpos : 0 < ∫ x, f x ^ 2 ∂(sunHaarProb N_c)
       · have hint_f2 : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c) := by
           by_contra h; simp [MeasureTheory.integral_undef h] at hpos
@@ -750,7 +750,17 @@ theorem lsi_normalized_gibbs_from_haar
         have hint_φ := ((integrable_f2_mul_log_f2_div_haar f (∫ y, f y ^ 2 ∂sunHaarProb N_c) hint_f2).sub hint_f2).add (MeasureTheory.integrable_const (∫ y, f y ^ 2 ∂sunHaarProb N_c))
         have h := MeasureTheory.integral_mono_measure (gibbs_measure_le_smul_haar hN_c β hβ) (Filter.Eventually.of_forall dv_nn) (hint_φ.smul_measure ENNReal.ofReal_ne_top)
         rwa [MeasureTheory.integral_smul_measure, ENNReal.toReal_ofReal (le_of_lt (Real.exp_pos _))] at h
-      · sorry)
+      · -- Zero-integral branch: hpos : ¬(0 < ∫f² ∂sunHaarProb)
+        -- Use entSq_pert_zero_case when f² is integrable.
+        have hnn : 0 ≤ ∫ y, f y ^ 2 ∂(sunHaarProb N_c) :=
+          integral_nonneg (fun x => sq_nonneg _)
+        by_cases hint : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c)
+        · exact entSq_pert_zero_case N_c β (sunHaarProb N_c) _ f hf
+            (MeasureTheory.withDensity_absolutelyContinuous _ _) hint hnn hpos
+        · -- f² not integrable under Haar ⇒ ∫f² = 0 on both sides by integral_undef,
+          -- entSq reduces to 0 on both sides. Mathematical content: L log L regularity
+          -- implies ¬Integrable(f² log f²) under Haar (needs Mathlib work).
+          sorry)
 
 /-!
 ## P8.3: Normalized Gibbs LSI → DLR-LSI chain (consumes `lsi_normalized_gibbs_from_haar`)
