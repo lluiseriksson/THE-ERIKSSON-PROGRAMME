@@ -507,18 +507,17 @@ private theorem integrable_gibbs_of_haar
 private theorem integrable_f2_mul_log_f2_div_haar
     {N_c : ℕ} [NeZero N_c]
     (f : SUN_State N_c → ℝ) (m : ℝ)
-    (hflogf : MeasureTheory.Integrable
-      (fun x => f x ^ 2 * Real.log (f x ^ 2 / m)) (sunHaarProb N_c)) :
-    MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2 / m)) (sunHaarProb N_c) :=
-  hflogf
+    (hf2_int : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c)) :
+    MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2 / m)) (sunHaarProb N_c) := by
+  -- L log L regularity: Integrable f² + compact group ⇒ Integrable f²·log(f²/m)
+  sorry
 
 private theorem integrable_f2_mul_log_f2_haar
     {N_c : ℕ} [NeZero N_c]
     (f : SUN_State N_c → ℝ)
-    (hflogf : MeasureTheory.Integrable
-      (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c)) :
-    MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c) :=
-  hflogf
+    (hf2_int : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c)) :
+    MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c) := by
+  sorry
 
 /-- On compact SU(N), f²·log(f²/m) is integrable under Haar. -/
 private theorem dv_integral_lin_cross
@@ -718,19 +717,19 @@ theorem lsi_normalized_gibbs_from_haar
     (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0)
     (fun f _hf => by
       by_cases hpos : 0 < ∫ x, f x ^ 2 ∂(sunHaarProb N_c)
-      · refine entSq_pert_bound_chain N_c β
+      · have hint_f2 : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c) := by
+          by_contra h; simp [MeasureTheory.integral_undef h] at hpos
+        refine entSq_pert_bound_chain N_c β
             (sunHaarProb N_c)
             ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
             f
             (integral_nonneg (fun x => sq_nonneg (f x)))
             hpos
-            (dv_integral_lin_cross ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0) f _ _ (integrable_gibbs_of_haar hN_c β hβ (integrable_f2_mul_log_f2_div_haar f _ sorry)) (integrable_gibbs_of_haar hN_c β hβ (by by_contra h; linarith [MeasureTheory.integral_undef h]))) -- TODO: integral linearity for Gibbs (needs Integrable f²·log(f²))
-            (log_quotient_split ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f _ hpos (integrable_gibbs_of_haar hN_c β hβ (integrable_f2_mul_log_f2_haar f sorry)) (integrable_gibbs_of_haar hN_c β hβ (by by_contra h; linarith [MeasureTheory.integral_undef h]))) -- TODO: log-quotient split for Gibbs (needs Integrable f²·log(f²))
+            (dv_integral_lin_cross ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0) f _ _ (integrable_gibbs_of_haar hN_c β hβ (integrable_f2_mul_log_f2_div_haar f _ hint_f2)) (integrable_gibbs_of_haar hN_c β hβ (by by_contra h; linarith [MeasureTheory.integral_undef h]))) -- TODO: integral linearity for Gibbs (needs Integrable f²·log(f²))
+            (log_quotient_split ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f _ hpos (integrable_gibbs_of_haar hN_c β hβ (integrable_f2_mul_log_f2_haar f hint_f2)) (integrable_gibbs_of_haar hN_c β hβ (by by_contra h; linarith [MeasureTheory.integral_undef h]))) -- TODO: log-quotient split for Gibbs (needs Integrable f²·log(f²))
             (dv_integral_lin_self (sunHaarProb N_c) f _ hpos) -- TODO: integral linearity for Haar (needs Integrable f²·log(f²))
-            (log_quotient_split (sunHaarProb N_c) f _ hpos (integrable_f2_mul_log_f2_haar f sorry) (by by_contra h; linarith [MeasureTheory.integral_undef h])) -- TODO: log-quotient split for Haar (needs Integrable f²·log(f²))
+            (log_quotient_split (sunHaarProb N_c) f _ hpos (integrable_f2_mul_log_f2_haar f hint_f2) (by by_contra h; linarith [MeasureTheory.integral_undef h])) -- TODO: log-quotient split for Haar (needs Integrable f²·log(f²))
           ?_
-        have hint_f2 : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c) := by
-          by_contra h; simp [MeasureTheory.integral_undef h] at hpos
         have dv_nn : ∀ x, 0 ≤ f x ^ 2 * Real.log (f x ^ 2 / ∫ y, f y ^ 2 ∂sunHaarProb N_c) - f x ^ 2 + ∫ y, f y ^ 2 ∂sunHaarProb N_c := by
           intro x
           rcases eq_or_lt_of_le (sq_nonneg (f x)) with h0 | htpos
@@ -748,7 +747,7 @@ theorem lsi_normalized_gibbs_from_haar
               calc u * (1 - Real.log u) ≤ u * u⁻¹ := mul_le_mul_of_nonneg_left key hupos.le
                 _ = 1 := mul_inv_cancel₀ (ne_of_gt hupos)
             linarith [show u * Real.log u - u + 1 = 1 - u * (1 - Real.log u) from by ring]
-        have hint_φ := ((integrable_f2_mul_log_f2_div_haar f (∫ y, f y ^ 2 ∂sunHaarProb N_c) sorry).sub hint_f2).add (MeasureTheory.integrable_const (∫ y, f y ^ 2 ∂sunHaarProb N_c))
+        have hint_φ := ((integrable_f2_mul_log_f2_div_haar f (∫ y, f y ^ 2 ∂sunHaarProb N_c) hint_f2).sub hint_f2).add (MeasureTheory.integrable_const (∫ y, f y ^ 2 ∂sunHaarProb N_c))
         have h := MeasureTheory.integral_mono_measure (gibbs_measure_le_smul_haar hN_c β hβ) (Filter.Eventually.of_forall dv_nn) (hint_φ.smul_measure ENNReal.ofReal_ne_top)
         rwa [MeasureTheory.integral_smul_measure, ENNReal.toReal_ofReal (le_of_lt (Real.exp_pos _))] at h
       · sorry)
