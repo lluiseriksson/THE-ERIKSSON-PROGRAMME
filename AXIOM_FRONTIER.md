@@ -216,3 +216,52 @@ or move to `Experimental/`.
 `lsi_normalized_gibbs_from_haar` is *not* an `axiom` keyword (it's an
 `opaque`/declared theorem with `sorry` threaded). It is listed in the oracle
 but won't match the `^axiom ` grep.
+
+---
+
+## Oracle Dependency Check  2026-04-14 (verified with `#print axioms`)
+
+### Clay statement dependencies
+
+| Theorem | Axioms depended on |
+|---------|-------------------|
+| `ClayYangMillsPhysicalStrong` (def) | `propext`, `Classical.choice`, `Quot.sound` |
+| `clay_millennium_yangMills` | `propext`, `Classical.choice`, `Quot.sound`, **`yangMills_continuum_mass_gap`** |
+| `clay_millennium_yangMills_strong` | `propext`, `Classical.choice`, `Quot.sound`, **`yangMills_continuum_mass_gap`** |
+| `physicalStrong_implies_theorem` | `propext`, `Classical.choice`, `Quot.sound` |
+| `sun_physical_mass_gap` | `propext`, `Classical.choice`, **`sorryAx`**, `Quot.sound` |
+
+**Decisive conclusion:** the Clay statement consumes exactly ONE custom axiom  `yangMills_continuum_mass_gap`. Every other `axiom` declared in the repo is either consumed only by intermediate lemmas that don't feed Clay, or unused entirely.
+
+`sun_physical_mass_gap` has `sorryAx` but no custom axioms  its oracle is the 3 documented `sorry` markers, not the labelled axioms.
+
+### Usage count per axiom (files referencing the name, excluding Experimental)
+
+| Axiom | Files | Status |
+|-------|-------|--------|
+| `yangMills_continuum_mass_gap` | 5 | **Live  sole Clay oracle** |
+| `sz_lsi_to_clustering` | 4 | Live (intermediate; not on Clay path) |
+| `hille_yosida_semigroup` | 3 | Live (intermediate; not on Clay path) |
+| `holleyStroock_sunGibbs_lsi` | 2 | Live (intermediate; not on Clay path) |
+| `poincare_to_covariance_decay` | 2 | Live (intermediate; not on Clay path) |
+| `sunDirichletForm_contraction` | 2 | Live (intermediate; not on Clay path) |
+| `physical_rg_rates_from_E26` | 2 | Live (RG branch; not on Clay path) |
+| `p91_tight_weak_coupling_window` | 2 | Live (RG branch; not on Clay path) |
+| `lsi_withDensity_density_bound` | 1 | **DEAD  no consumers** |
+| `sun_variance_decay` | 1 | **DEAD  no consumers** |
+| `sun_lieb_robinson_bound` | 1 | **DEAD  no consumers** |
+
+### Cleanup recommendation
+
+- **Remove 3 dead axioms** (`lsi_withDensity_density_bound`, `sun_variance_decay`,
+  `sun_lieb_robinson_bound`)  they are declared but never referenced by any other
+  file, so they add nothing except rhetoric. Deletion is safe.
+- **Keep the 7 live intermediate/RG-branch axioms** but label them as such in their
+  source files and rewrite their docstrings to say "not consumed by the Clay
+  statement; this exists to support ".
+- **`yangMills_continuum_mass_gap` is the single axiom that matters for Clay.**
+  All current-pass proof effort on lsi/Holley-Stroock/etc. is structurally
+  orthogonal to closing the Clay gap  it would discharge intermediate axioms
+  that Clay does not consume. To make Clay unconditional, the sole move is to
+  discharge `yangMills_continuum_mass_gap` directly (or wire the LSI chain
+  into it, which currently doesn't happen).
