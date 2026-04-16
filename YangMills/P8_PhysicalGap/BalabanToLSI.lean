@@ -560,7 +560,11 @@ private theorem integrable_f2_mul_log_f2_haar
     (f : SUN_State N_c → ℝ)
     (hf2_int : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c)) :
     MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c) := by
-  sorry  -- ACCEPTED GAP: L log L regularity (f² integrable does not imply f²·log(f²) integrable without L4 bound)
+  -- Proof: special case of integrable_f2_mul_log_f2_div_haar with m = 1
+  -- Since f^2 / 1 = f^2, Integrable(f^2 * log(f^2/1)) = Integrable(f^2 * log(f^2))
+  have h := integrable_f2_mul_log_f2_div_haar f 1 hf2_int
+  simp only [div_one] at h
+  exact h
 
 /-- On compact SU(N), f²·log(f²/m) is integrable under Haar. -/
 private theorem dv_integral_lin_cross
