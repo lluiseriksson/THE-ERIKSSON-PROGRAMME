@@ -892,12 +892,4 @@ theorem sun_gibbs_dlr_lsi
     balaban_rg_uniform_lsi d N_c hN_c β β₀ hβ hβ₀ α_haar hα_haar hHaar
   exact ⟨α_star, hα_star, hα_star, hvol⟩
 
-theorem sun_gibbs_clustering
-    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
-    (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
-    ∃ C ξ : ℝ, 0 < ξ ∧ 0 < C ∧
-      ∀ L : ℕ, ExponentialClustering (sunGibbsFamily d N_c β L) C ξ := by
-  obtain ⟨α_star, _, hLSI⟩ := sun_gibbs_dlr_lsi d N_c hN_c β β₀ hβ hβ₀
-  exact sz_lsi_to_clustering _ _ α_star hLSI
-
 end YangMills
