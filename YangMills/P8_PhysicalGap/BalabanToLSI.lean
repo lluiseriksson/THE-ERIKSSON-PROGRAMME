@@ -534,6 +534,32 @@ private theorem gibbs_measure_le_smul_haar
     (Filter.Eventually.of_forall
       (fun x => sunNormalizedGibbsDensity_le_exp_two_beta N_c hN_c β hβ x))
 
+
+-- Reverse measure domination: exp(-2*beta) * Haar <= Gibbs.
+-- Since rho >= exp(-2*beta) pointwise, withDensity(rho) >= withDensity(exp(-2*beta)) = exp(-2*beta) * Haar.
+private theorem haar_smul_le_gibbs_measure
+    {N_c : ℕ} [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β) :
+    ENNReal.ofReal (Real.exp (-2 * β)) • (sunHaarProb N_c)
+    ≤ (sunHaarProb N_c).withDensity
+      (fun g => ENNReal.ofReal (sunNormalizedGibbsDensity N_c hN_c β hβ g)) := by
+  rw [≤ftarrow MeasureTheory.withDensity_const]
+  exact MeasureTheory.withDensity_mono
+    (Filter.Eventually.of_forall
+      (fun x => sunNormalizedGibbsDensity_ge_exp_neg_two_beta N_c hN_c β hβ x))
+
+-- Contrapositive integrability transfer: not Haar-integrable implies not Gibbs-integrable.
+-- Uses reverse measure domination + Integrable.of_measure_le_smul.
+private theorem not_integrable_gibbs_of_not_integrable_haar
+    {N_c : ℕ} [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
+    {g : SUN_State N_c → ℝ}
+    (hg : ¬ MeasureTheory.Integrable g (sunHaarProb N_c)) :
+    ¬ MeasureTheory.Integrable g
+      ((sunHaarProb N_c).withDensity
+        (fun x => ENNReal.ofReal (sunNormalizedGibbsDensity N_c hN_c β hβ x))) := by
+  intro habs
+  exact hg (habs.of_measure_le_smul ENNReal.ofReal_ne_top
+    (haar_smul_le_gibbs_measure hN_c β hβ))
+
 /-- Transfer integrability from Haar to Gibbs via measure domination. -/
 private theorem integrable_gibbs_of_haar
     {N_c : ℕ} [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
@@ -807,7 +833,13 @@ theorem lsi_normalized_gibbs_from_haar
         · -- f² not integrable under Haar ⇒ ∫f² = 0 on both sides by integral_undef,
           -- entSq reduces to 0 on both sides. Mathematical content: L log L regularity
           -- implies ¬Integrable(f² log f²) under Haar (needs Mathlib work).
-          sorry)  -- ACCEPTED GAP: non-integrable corner case (needs density lower bound for measure transfer)
+          -- Non-integrable corner case: density lower bound gives measure transfer.
+          -- f² not Haar-integrable → f² not Gibbs-integrable (by reverse measure domination)
+          -- Both integrals are 0 by integral_undef, so entSq = 0 on both sides.
+          have hint_gibbs := not_integrable_gibbs_of_not_integrable_haar hN_c β hβ hint
+          simp only [entSq, MeasureTheory.integral_undef hint,
+            MeasureTheory.integral_undef hint_gibbs, mul_zero, Real.log_zero,
+            sub_self, zero_mul, le_refl])
 
 /-!
 ## P8.3: Normalized Gibbs LSI → DLR-LSI chain (consumes `lsi_normalized_gibbs_from_haar`)
