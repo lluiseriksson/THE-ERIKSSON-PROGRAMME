@@ -205,6 +205,49 @@ theorem sunNormalizedGibbsDensity_le_exp_two_beta
         mul_le_mul_of_nonneg_left hZ_ge hexp2β_pos.le
 
 
+/-- Path A step 1 (companion): density **lower** bound.
+    The normalised SU(N_c) Gibbs density is bounded below by `exp(-2·β)`.
+    Combined with the upper bound `sunNormalizedGibbsDensity_le_exp_two_beta`,
+    this gives the two-sided Holley–Stroock bound `exp(-2β) ≤ ρ ≤ exp(2β)`.
+
+    Infrastructure for closing the non-integrable corner case of
+    `lsi_normalized_gibbs_from_haar` via measure-side domination
+    `sunHaarProb ≤ exp(2β) • ((sunHaarProb).withDensity ρ)`. -/
+theorem sunNormalizedGibbsDensity_ge_exp_neg_two_beta
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
+    (g : SUN_State N_c) :
+    ENNReal.ofReal (Real.exp (-2 * β)) ≤
+      sunNormalizedGibbsDensity N_c hN_c β hβ g := by
+  simp only [sunNormalizedGibbsDensity]
+  refine ENNReal.ofReal_le_ofReal ?_
+  have hE_nn : (0 : ℝ) ≤ sunPlaquetteEnergy N_c g :=
+    sunPlaquetteEnergy_nonneg N_c hN_c g
+  have hE_le : sunPlaquetteEnergy N_c g ≤ 2 :=
+    sunPlaquetteEnergy_le_two N_c hN_c g
+  have hZ_pos : (0 : ℝ) < sunPartitionFunction N_c β :=
+    sunPartitionFunction_pos N_c hN_c β hβ
+  have hZ_le_one : sunPartitionFunction N_c β ≤ 1 :=
+    sunPartitionFunction_le_one N_c hN_c β hβ
+  rw [le_div_iff₀ hZ_pos]
+  calc Real.exp (-2 * β) * sunPartitionFunction N_c β
+      ≤ Real.exp (-2 * β) * 1 :=
+        mul_le_mul_of_nonneg_left hZ_le_one (Real.exp_nonneg _)
+    _ = Real.exp (-2 * β) := mul_one _
+    _ ≤ Real.exp (-β * sunPlaquetteEnergy N_c g) :=
+        Real.exp_le_exp.mpr (by nlinarith [hβ.le])
+
+/-- Measurability of the normalised Gibbs density.
+    Follows from continuity of `sunPlaquetteEnergy` together with
+    continuity of `Real.exp` and measurability of `ENNReal.ofReal`. -/
+theorem sunNormalizedGibbsDensity_measurable
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β) :
+    Measurable (sunNormalizedGibbsDensity N_c hN_c β hβ) := by
+  unfold sunNormalizedGibbsDensity
+  refine ENNReal.measurable_ofReal.comp ?_
+  refine (Measurable.div_const ?_ _)
+  refine Real.measurable_exp.comp ?_
+  exact (sunPlaquetteEnergy_measurable N_c).const_mul _
+
 /-- Path A step 2 building block: lintegral comparison under withDensity.
     For any measurable g, the lintegral against the weighted Gibbs measure is at most
     `exp(2*β)` times the lintegral against the Haar measure. This is the essential
@@ -500,6 +543,29 @@ private theorem integrable_gibbs_of_haar
       ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) :=
   hg.of_measure_le_smul ENNReal.ofReal_ne_top (gibbs_measure_le_smul_haar hN_c β hβ)
 
+
+/-- **Reverse domination**: Haar is dominated by `exp(2β) • Gibbs`.
+    This is the measure-level companion of the density lower bound
+    `sunNormalizedGibbsDensity_ge_exp_neg_two_beta` and enables
+    transfer of (non-)integrability from Gibbs to Haar.
+
+    Proof strategy: rewrite `Haar = Haar.withDensity 1`, use pointwise
+    `1 ≤ exp(2β) · ρ` (from the density lower bound), and monotonicity
+    of `withDensity`. -/
+private theorem haar_le_smul_gibbs_measure
+    {N_c : ℕ} [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β) :
+    sunHaarProb N_c ≤
+      ENNReal.ofReal (Real.exp (2 * β)) •
+        ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) := by
+  sorry
+/-- Transfer integrability from Gibbs to Haar via the reverse domination. -/
+private theorem integrable_haar_of_gibbs
+    {N_c : ℕ} [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
+    {g : SUN_State N_c → ℝ}
+    (hg : MeasureTheory.Integrable g
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))) :
+    MeasureTheory.Integrable g (sunHaarProb N_c) :=
+  hg.of_measure_le_smul ENNReal.ofReal_ne_top (haar_le_smul_gibbs_measure hN_c β hβ)
 
 /-- Integrability of f²·log(f²/m) under Haar: taken as an explicit hypothesis.
     On compact SU(N), this is not automatic from measurability of f — it requires an
