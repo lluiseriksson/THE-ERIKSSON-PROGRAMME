@@ -544,29 +544,6 @@ private theorem integrable_gibbs_of_haar
   hg.of_measure_le_smul ENNReal.ofReal_ne_top (gibbs_measure_le_smul_haar hN_c β hβ)
 
 
-/-- **Reverse domination**: Haar is dominated by `exp(2β) • Gibbs`.
-    This is the measure-level companion of the density lower bound
-    `sunNormalizedGibbsDensity_ge_exp_neg_two_beta` and enables
-    transfer of (non-)integrability from Gibbs to Haar.
-
-    Proof strategy: rewrite `Haar = Haar.withDensity 1`, use pointwise
-    `1 ≤ exp(2β) · ρ` (from the density lower bound), and monotonicity
-    of `withDensity`. -/
-private theorem haar_le_smul_gibbs_measure
-    {N_c : ℕ} [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β) :
-    sunHaarProb N_c ≤
-      ENNReal.ofReal (Real.exp (2 * β)) •
-        ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) := by
-  sorry
-/-- Transfer integrability from Gibbs to Haar via the reverse domination. -/
-private theorem integrable_haar_of_gibbs
-    {N_c : ℕ} [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
-    {g : SUN_State N_c → ℝ}
-    (hg : MeasureTheory.Integrable g
-      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))) :
-    MeasureTheory.Integrable g (sunHaarProb N_c) :=
-  hg.of_measure_le_smul ENNReal.ofReal_ne_top (haar_le_smul_gibbs_measure hN_c β hβ)
-
 /-- Integrability of f²·log(f²/m) under Haar: taken as an explicit hypothesis.
     On compact SU(N), this is not automatic from measurability of f — it requires an
     additional regularity condition on f (e.g. f² ∈ L log L). Callers must supply it. -/
