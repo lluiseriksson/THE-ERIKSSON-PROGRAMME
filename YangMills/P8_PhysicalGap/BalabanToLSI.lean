@@ -541,8 +541,8 @@ private theorem haar_smul_le_gibbs_measure
     {N_c : ℕ} [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β) :
     ENNReal.ofReal (Real.exp (-2 * β)) • (sunHaarProb N_c)
     ≤ (sunHaarProb N_c).withDensity
-      (fun g => ENNReal.ofReal (sunNormalizedGibbsDensity N_c hN_c β hβ g)) := by
-  rw [≤ftarrow MeasureTheory.withDensity_const]
+      (sunNormalizedGibbsDensity N_c hN_c β hβ) := by
+  rw [← MeasureTheory.withDensity_const]
   exact MeasureTheory.withDensity_mono
     (Filter.Eventually.of_forall
       (fun x => sunNormalizedGibbsDensity_ge_exp_neg_two_beta N_c hN_c β hβ x))
@@ -555,10 +555,13 @@ private theorem not_integrable_gibbs_of_not_integrable_haar
     (hg : ¬ MeasureTheory.Integrable g (sunHaarProb N_c)) :
     ¬ MeasureTheory.Integrable g
       ((sunHaarProb N_c).withDensity
-        (fun x => ENNReal.ofReal (sunNormalizedGibbsDensity N_c hN_c β hβ x))) := by
+        (sunNormalizedGibbsDensity N_c hN_c β hβ)) := by
   intro habs
-  exact hg (habs.of_measure_le_smul ENNReal.ofReal_ne_top
-    (haar_smul_le_gibbs_measure hN_c β hβ))
+  apply hg
+  have h_smul := habs.mono_measure (haar_smul_le_gibbs_measure hN_c β hβ)
+  rwa [MeasureTheory.integrable_smul_measure
+    (ENNReal.ofReal_pos.mpr (Real.exp_pos _)).ne'
+    ENNReal.ofReal_ne_top] at h_smul
 
 /-- Transfer integrability from Haar to Gibbs via measure domination. -/
 private theorem integrable_gibbs_of_haar
@@ -837,9 +840,31 @@ theorem lsi_normalized_gibbs_from_haar
           -- f² not Haar-integrable → f² not Gibbs-integrable (by reverse measure domination)
           -- Both integrals are 0 by integral_undef, so entSq = 0 on both sides.
           have hint_gibbs := not_integrable_gibbs_of_not_integrable_haar hN_c β hβ hint
+          have hint_log : ¬ MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c) := by
+            intro habs
+            apply hint
+            exact ((MeasureTheory.integrable_const (1 : ℝ)).add habs.norm).mono'
+              (by fun_prop)
+              (Filter.Eventually.of_forall (fun x => by
+              simp only [Pi.add_apply, Real.norm_eq_abs]
+              rw [abs_of_nonneg (sq_nonneg _)]
+              by_cases hfx : f x ^ 2 ≤ 1
+              · linarith [abs_nonneg (f x ^ 2 * Real.log (f x ^ 2))]
+              · push_neg at hfx
+                have h_pos : (0 : ℝ) < f x ^ 2 := by linarith
+                have h_log_pos := Real.log_pos (by linarith : (1 : ℝ) < f x ^ 2)
+                rw [abs_of_pos (mul_pos h_pos h_log_pos)]
+                have := Real.add_one_le_exp (-(Real.log (f x ^ 2)))
+                rw [Real.exp_neg, Real.exp_log h_pos] at this
+                have h_mul := mul_le_mul_of_nonneg_left this (le_of_lt h_pos)
+                rw [mul_inv_cancel₀ h_pos.ne'] at h_mul
+                nlinarith))
+          have hint_log_gibbs := not_integrable_gibbs_of_not_integrable_haar hN_c β hβ hint_log
           simp only [entSq, MeasureTheory.integral_undef hint,
-            MeasureTheory.integral_undef hint_gibbs, mul_zero, Real.log_zero,
-            sub_self, zero_mul, le_refl])
+            MeasureTheory.integral_undef hint_gibbs,
+            MeasureTheory.integral_undef hint_log,
+            MeasureTheory.integral_undef hint_log_gibbs,
+            mul_zero, Real.log_zero, sub_self, le_refl])
 
 /-!
 ## P8.3: Normalized Gibbs LSI → DLR-LSI chain (consumes `lsi_normalized_gibbs_from_haar`)
