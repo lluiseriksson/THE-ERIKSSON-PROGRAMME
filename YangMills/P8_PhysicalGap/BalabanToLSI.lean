@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.P8_PhysicalGap.LSIDefinitions
+import YangMills.P8_PhysicalGap.MemLpLogIntegrability
 import YangMills.P8_PhysicalGap.SUN_StateConstruction
 
 /-!
@@ -27,6 +28,7 @@ Holley-Stroock axiom with a specific, correctly-stated instance:
 namespace YangMills
 
 open MeasureTheory Real
+open scoped ENNReal
 
 /-! ## Abstract SU(N) objects -/
 
@@ -592,7 +594,8 @@ private theorem integrable_f2_mul_log_f2_div_haar
       (Filter.Eventually.of_forall (fun x => by
         by_cases hfx : f x ^ 2 = 0
         · simp [hfx]
-        · rw [Real.log_div hfx hm]; ring))
+        · simp only [Pi.sub_apply]
+          rw [Real.log_div hfx hm]; ring))
 
 private theorem integrable_f2_mul_log_f2_haar
     {N_c : ℕ} [NeZero N_c]
@@ -961,4 +964,224 @@ theorem sun_gibbs_dlr_lsi
     balaban_rg_uniform_lsi d N_c hN_c β β₀ hβ hβ₀ α_haar hα_haar hHaar
   exact ⟨α_star, hα_star, hα_star, hvol⟩
 
+
+/-! ## P8.Σ: MemLp-gated LSI chain (Path Σ)
+
+New chain mirroring the Haar→Gibbs→DLR LSI pipeline, but with the
+universal-measurable-f quantifier replaced by one restricted to
+`MemLp f p μ_ref` with `2 < p`. The missing integrability premise that
+forces the `sorry` at line 805 of the vanilla `lsi_normalized_gibbs_from_haar`
+is then supplied by the helper
+`memLp_gt_two_integrable_sq_mul_log_sq` (defined in
+`YangMills.P8_PhysicalGap.MemLpLogIntegrability`).
+
+Design note: the reference measure `μ_ref` is separated from the LSI
+measure `μ` in `LogSobolevInequalityMemLp`. This decoupling avoids a
+`MemLp Gibbs → MemLp Haar` transfer step that would otherwise be
+needed inside `lsi_normalized_gibbs_from_haar_memLp`. The Haar supplier
+and the Gibbs consumer share `μ_ref = sunHaarProb N_c`.
+
+The vanilla `LogSobolevInequality`, `DLR_LSI`, `BakryEmeryCD`,
+`bakry_emery_lsi`, `sun_bakry_emery_cd`, `sun_haar_lsi`,
+`lsi_normalized_gibbs_from_haar_of_ent_pert`,
+`lsi_normalized_gibbs_from_haar`, `balaban_rg_uniform_lsi_norm` and
+`sun_gibbs_dlr_lsi_norm` are kept unchanged. Only the Σ-variants are
+added. -/
+
+/-- Σ-BakryEmery: definitionally equal to the MemLp-gated LSI. -/
+def BakryEmeryCDMemLp {Ω : Type*} [MeasurableSpace Ω]
+    (μ : MeasureTheory.Measure Ω) (E : (Ω → ℝ) → ℝ) (K : ℝ) (p : ℝ≥0∞)
+    (μ_ref : MeasureTheory.Measure Ω) : Prop :=
+  LogSobolevInequalityMemLp μ E K p μ_ref
+
+/-- Σ-root: BE-curvature implies the MemLp-gated LSI. Identity under
+definitional equality, mirroring `bakry_emery_lsi := id`. -/
+theorem bakry_emery_lsi_memLp {Ω : Type*} [MeasurableSpace Ω]
+    (μ : MeasureTheory.Measure Ω) [MeasureTheory.IsProbabilityMeasure μ]
+    (E : (Ω → ℝ) → ℝ) (K : ℝ) (p : ℝ≥0∞) (μ_ref : MeasureTheory.Measure Ω)
+    (_hK : 0 < K) :
+    BakryEmeryCDMemLp μ E K p μ_ref → LogSobolevInequalityMemLp μ E K p μ_ref := id
+
+/-- Σ-supplier: the Haar BE-curvature inequality in MemLp-gated form.
+Proof is identical to `sun_bakry_emery_cd`; the MemLp argument is ignored
+because the LSI inequality for `sunDirichletForm` is a pointwise algebraic
+tautology regardless of f's integrability. -/
+theorem sun_bakry_emery_cd_memLp (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (p : ℝ≥0∞) (hp : 2 < p) :
+    BakryEmeryCDMemLp (sunHaarProb N_c) (sunDirichletForm N_c)
+      ((N_c : ℝ) / 4) p (sunHaarProb N_c) := by
+  unfold BakryEmeryCDMemLp LogSobolevInequalityMemLp
+  refine ⟨by positivity, hp, fun f _ _ => ?_⟩
+  simp only [sunDirichletForm]
+  have hNc : (N_c : ℝ) ≠ 0 := Nat.cast_ne_zero.mpr (NeZero.ne N_c)
+  have harith : ∀ t : ℝ, (2 / ((N_c : ℝ) / 4)) * ((N_c : ℝ) / 8 * t) = t := fun t => by
+    field_simp [hNc]; ring
+  rw [harith]
+
+/-- Σ-Haar LSI: existence form, MemLp-gated. -/
+theorem sun_haar_lsi_memLp (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+    (p : ℝ≥0∞) (hp : 2 < p) :
+    ∃ α_haar : ℝ, 0 < α_haar ∧
+      LogSobolevInequalityMemLp (sunHaarProb N_c) (sunDirichletForm N_c)
+        α_haar p (sunHaarProb N_c) := by
+  refine ⟨(N_c : ℝ) / 4, by positivity, ?_⟩
+  exact bakry_emery_lsi_memLp (sunHaarProb N_c) (sunDirichletForm N_c)
+    _ p (sunHaarProb N_c) (by positivity) (sun_bakry_emery_cd_memLp N_c hN_c p hp)
+
+/-- Σ-entropy-perturbation theorem: MemLp-gated variant of
+`lsi_normalized_gibbs_from_haar_of_ent_pert`. The `hEntPert` premise now
+takes an additional `MemLp f p (sunHaarProb N_c)` argument, which the
+caller discharges from the output LSI's MemLp gate. -/
+theorem lsi_normalized_gibbs_from_haar_of_ent_pert_memLp
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
+    (α : ℝ) (hα : 0 < α) (p : ℝ≥0∞) (hp : 2 < p)
+    (hHaar : LogSobolevInequalityMemLp (sunHaarProb N_c) (sunDirichletForm N_c)
+              α p (sunHaarProb N_c))
+    (_hProb : MeasureTheory.IsProbabilityMeasure
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)))
+    (hEntPert : ∀ (f : SUN_State N_c → ℝ), Measurable f →
+      MeasureTheory.MemLp f p (sunHaarProb N_c) →
+      entSq N_c ((sunHaarProb N_c).withDensity
+        (sunNormalizedGibbsDensity N_c hN_c β hβ)) f ≤
+      Real.exp (2 * β) * entSq N_c (sunHaarProb N_c) f) :
+    LogSobolevInequalityMemLp
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
+      (sunDirichletForm N_c)
+      (α * Real.exp (-2 * β)) p (sunHaarProb N_c) := by
+  refine ⟨mul_pos hα (Real.exp_pos _), hp, ?_⟩
+  intro f hf hMemLp
+  obtain ⟨_, _, hLSI⟩ := hHaar
+  have h1 := hLSI f hf hMemLp
+  have h2 := hEntPert f hf hMemLp
+  have hexp_pos : (0 : ℝ) < Real.exp (2 * β) := Real.exp_pos _
+  have hexp_nn : (0 : ℝ) ≤ Real.exp (2 * β) := le_of_lt hexp_pos
+  simp only [entSq] at h2
+  have hneg_eq : (-2 * β : ℝ) = -(2 * β) := by ring
+  have hexp_neg : Real.exp (-2 * β) = (Real.exp (2 * β))⁻¹ := by
+    rw [hneg_eq]; exact Real.exp_neg (2 * β)
+  have hα_ne : α ≠ 0 := ne_of_gt hα
+  have hexp_ne : Real.exp (2 * β) ≠ 0 := ne_of_gt hexp_pos
+  have hkey : (2 : ℝ) / (α * Real.exp (-2 * β)) =
+      Real.exp (2 * β) * (2 / α) := by
+    rw [hexp_neg]; field_simp
+  have h3 := mul_le_mul_of_nonneg_left h1 hexp_nn
+  have h4 := h2.trans h3
+  rw [hkey]
+  linarith [h4]
+
+/-- Σ-Gibbs LSI from Haar: MemLp-gated form of
+`lsi_normalized_gibbs_from_haar`. The previous `sorry` at line 805 (over
+`Integrable (f²·log(f²)) Haar`) is now discharged by the MemLp helper
+`memLp_gt_two_integrable_sq_mul_log_sq`. -/
+theorem lsi_normalized_gibbs_from_haar_memLp
+    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
+    (α : ℝ) (hα : 0 < α) (p : ℝ≥0∞) (hp : 2 < p)
+    (hHaar : LogSobolevInequalityMemLp (sunHaarProb N_c) (sunDirichletForm N_c)
+              α p (sunHaarProb N_c)) :
+    LogSobolevInequalityMemLp
+      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
+      (sunDirichletForm N_c)
+      (α * Real.exp (-2 * β)) p (sunHaarProb N_c) :=
+  lsi_normalized_gibbs_from_haar_of_ent_pert_memLp N_c hN_c β hβ α hα p hp hHaar
+    (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0)
+    (fun f hf hMemLp_haar => by
+      by_cases hpos : 0 < ∫ x, f x ^ 2 ∂(sunHaarProb N_c)
+      · have hint_f2 : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c) := by
+          by_contra h; simp [MeasureTheory.integral_undef h] at hpos
+        -- THE Σ CLOSURE: MemLp p>2 supplies the previously-sorry integrability.
+        have hint_haar_log :
+            MeasureTheory.Integrable
+              (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c) :=
+          YangMills.memLp_gt_two_integrable_sq_mul_log_sq
+            (sunHaarProb N_c) f p hp hMemLp_haar
+        refine entSq_pert_bound_chain N_c β
+            (sunHaarProb N_c)
+            ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
+            f
+            (integral_nonneg (fun x => sq_nonneg (f x)))
+            hpos
+            (dv_integral_lin_cross ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0) f _ _ (integrable_gibbs_of_haar hN_c β hβ (integrable_f2_mul_log_f2_div_haar f _ hint_f2 hint_haar_log)) (integrable_gibbs_of_haar hN_c β hβ (by by_contra h; linarith [MeasureTheory.integral_undef h])))
+            (log_quotient_split ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f _ hpos (integrable_gibbs_of_haar hN_c β hβ (integrable_f2_mul_log_f2_haar f hint_f2 hint_haar_log)) (integrable_gibbs_of_haar hN_c β hβ (by by_contra h; linarith [MeasureTheory.integral_undef h])))
+            (dv_integral_lin_self (sunHaarProb N_c) f _ hpos)
+            (log_quotient_split (sunHaarProb N_c) f _ hpos (integrable_f2_mul_log_f2_haar f hint_f2 hint_haar_log) (by by_contra h; linarith [MeasureTheory.integral_undef h]))
+            ?_
+        have dv_nn : ∀ x, 0 ≤ f x ^ 2 * Real.log (f x ^ 2 / ∫ y, f y ^ 2 ∂sunHaarProb N_c) - f x ^ 2 + ∫ y, f y ^ 2 ∂sunHaarProb N_c := by
+          intro x
+          rcases eq_or_lt_of_le (sq_nonneg (f x)) with h0 | htpos
+          · simp [← h0, hpos.le]
+          · set u := f x ^ 2 / ∫ y, f y ^ 2 ∂sunHaarProb N_c with hu_def
+            have hupos : 0 < u := div_pos htpos hpos
+            suffices hsuff : 0 ≤ u * Real.log u - u + 1 by
+              have : f x ^ 2 * Real.log (f x ^ 2 / ∫ y, f y ^ 2 ∂sunHaarProb N_c) - f x ^ 2 + ∫ y, f y ^ 2 ∂sunHaarProb N_c = (∫ y, f y ^ 2 ∂sunHaarProb N_c) * (u * Real.log u - u + 1) := by rw [hu_def]; field_simp
+              linarith [mul_nonneg hpos.le hsuff]
+            have key : 1 + Real.log u⁻¹ ≤ u⁻¹ := by
+              have h := Real.add_one_le_exp (Real.log u⁻¹)
+              rw [Real.exp_log (inv_pos.mpr hupos)] at h; linarith
+            rw [Real.log_inv] at key
+            have h2 : u * (1 - Real.log u) ≤ 1 := by
+              calc u * (1 - Real.log u) ≤ u * u⁻¹ := mul_le_mul_of_nonneg_left key hupos.le
+                _ = 1 := mul_inv_cancel₀ (ne_of_gt hupos)
+            linarith [show u * Real.log u - u + 1 = 1 - u * (1 - Real.log u) from by ring]
+        have hint_φ := ((integrable_f2_mul_log_f2_div_haar f (∫ y, f y ^ 2 ∂sunHaarProb N_c) hint_f2 hint_haar_log).sub hint_f2).add (MeasureTheory.integrable_const (∫ y, f y ^ 2 ∂sunHaarProb N_c))
+        have h := MeasureTheory.integral_mono_measure (gibbs_measure_le_smul_haar hN_c β hβ) (Filter.Eventually.of_forall dv_nn) (hint_φ.smul_measure ENNReal.ofReal_ne_top)
+        rwa [MeasureTheory.integral_smul_measure, ENNReal.toReal_ofReal (le_of_lt (Real.exp_pos _))] at h
+      · -- Zero-integral branch: reuses the existing entSq_pert_zero_case /
+        -- non-integrable corner-case machinery from the vanilla proof.
+        have hnn : 0 ≤ ∫ y, f y ^ 2 ∂(sunHaarProb N_c) :=
+          integral_nonneg (fun x => sq_nonneg _)
+        by_cases hint : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c)
+        · exact entSq_pert_zero_case N_c β (sunHaarProb N_c) _ f hf
+            (MeasureTheory.withDensity_absolutelyContinuous _ _) hint hnn hpos
+        · have hint_gibbs := not_integrable_gibbs_of_not_integrable_haar hN_c β hβ hint
+          have hint_log : ¬ MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c) := by
+            intro habs
+            apply hint
+            exact ((MeasureTheory.integrable_const (1 : ℝ)).add habs.norm).mono'
+              (by fun_prop)
+              (Filter.Eventually.of_forall (fun x => by
+              simp only [Pi.add_apply, Real.norm_eq_abs]
+              rw [abs_of_nonneg (sq_nonneg _)]
+              by_cases hfx : f x ^ 2 ≤ 1
+              · linarith [abs_nonneg (f x ^ 2 * Real.log (f x ^ 2))]
+              · push_neg at hfx
+                have h_pos : (0 : ℝ) < f x ^ 2 := by linarith
+                have h_log_pos := Real.log_pos (by linarith : (1 : ℝ) < f x ^ 2)
+                rw [abs_of_pos (mul_pos h_pos h_log_pos)]
+                have := Real.add_one_le_exp (-(Real.log (f x ^ 2)))
+                rw [Real.exp_neg, Real.exp_log h_pos] at this
+                have h_mul := mul_le_mul_of_nonneg_left this (le_of_lt h_pos)
+                rw [mul_inv_cancel₀ h_pos.ne'] at h_mul
+                nlinarith))
+          have hint_log_gibbs := not_integrable_gibbs_of_not_integrable_haar hN_c β hβ hint_log
+          simp only [entSq, MeasureTheory.integral_undef hint,
+            MeasureTheory.integral_undef hint_gibbs,
+            MeasureTheory.integral_undef hint_log,
+            MeasureTheory.integral_undef hint_log_gibbs,
+            mul_zero, Real.log_zero, sub_self, le_refl])
+
+/-- Σ-family LSI: MemLp-gated RG-uniform LSI on the normalized Gibbs family. -/
+theorem balaban_rg_uniform_lsi_norm_memLp
+    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ)
+    (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) (p : ℝ≥0∞) (hp : 2 < p) :
+    ∃ α_star : ℝ, 0 < α_star ∧ ∀ L : ℕ,
+      LogSobolevInequalityMemLp
+        (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ) L)
+        (sunDirichletForm N_c) α_star p (sunHaarProb N_c) := by
+  obtain ⟨α_haar, hα_pos, hHaar⟩ := sun_haar_lsi_memLp N_c hN_c p hp
+  refine ⟨α_haar * Real.exp (-2 * β), mul_pos hα_pos (Real.exp_pos _), ?_⟩
+  intro L
+  simp only [sunGibbsFamily_norm]
+  exact lsi_normalized_gibbs_from_haar_memLp N_c hN_c β (hβ₀.trans_le hβ)
+    α_haar hα_pos p hp hHaar
+
+/-- Σ-DLR LSI on the normalized Gibbs family. -/
+theorem sun_gibbs_dlr_lsi_norm_memLp
+    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ)
+    (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) (p : ℝ≥0∞) (hp : 2 < p) :
+    ∃ α_star : ℝ, 0 < α_star ∧
+      DLR_LSI_MemLp (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ))
+        (sunDirichletForm N_c) α_star p (sunHaarProb N_c) := by
+  obtain ⟨α_star, hα_pos, hLSI⟩ :=
+    balaban_rg_uniform_lsi_norm_memLp d N_c hN_c β β₀ hβ hβ₀ p hp
+  exact ⟨α_star, hα_pos, hα_pos, hp, hLSI⟩
 end YangMills
