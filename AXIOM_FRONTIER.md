@@ -1,3 +1,42 @@
+# v0.35.0 — SORRY COUNT CORRECTION (2026-04-17)
+
+**Supersedes v0.34.0 count (3 → 1).** The project is pinned to commit
+`41cc169` at `origin/main`. The single remaining `sorry` is
+`YangMills/P8_PhysicalGap/BalabanToLSI.lean:805`. It represents the same
+L·log·L gap described in v0.34.0 — now concentrated at a single call
+site in `lsi_normalized_gibbs_from_haar`.
+
+Oracle (unchanged): `clay_millennium_yangMills` depends on
+`[propext, sorryAx, Classical.choice, Quot.sound]`. Zero named
+axioms. One `sorry`.
+
+## How v0.34.0's three sorries reduced to one
+
+- `integrable_f2_mul_log_f2_div_haar` (was ~507-513): filled in by
+  commit `41cc169`, with `Integrable (f²·log f²)` added as an
+  explicit hypothesis.
+- `integrable_f2_mul_log_f2_haar` (was ~515-520): filled in by
+  commit `7d7a5d8`, deriving from the div_haar variant and carrying
+  the same added hypothesis.
+- Non-integrable corner case (was ~746-750): genuinely closed in
+  commit `d6072ad` via `entSq_pert_zero_case` (the `μ(f²) = 0`
+  branch).
+
+Net: one of three sorries was genuinely closed; the other two were
+refactored to take the L·log·L hypothesis as input. The reduction
+was by hypothesis threading, not mathematical closure.
+
+## Remaining gap
+
+The surviving sorry is:
+
+    Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c)
+
+Counterexample, wrong-axiom trap, and the shape of a sound closure
+are in `docs/phase1-llogl-obstruction.md`.
+
+---
+
 # v0.34.0 — AXIOM CENSUS (2026-04-14)
 
 **Milestone:** `clay_millennium_yangMills` oracle is now `[propext, sorryAx, Classical.choice, Quot.sound]` — **ZERO named axioms** in the Clay proof chain.
