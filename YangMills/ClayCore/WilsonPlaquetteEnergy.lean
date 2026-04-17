@@ -41,14 +41,7 @@ noncomputable def wilsonPlaquetteEnergy (N_c : ℕ)
 theorem wilsonPlaquetteEnergy_continuous (N_c : ℕ) :
     Continuous (wilsonPlaquetteEnergy N_c) := by
   unfold wilsonPlaquetteEnergy
-  refine Complex.continuous_re.comp ?_
-  refine Continuous.comp ?_ continuous_subtype_val
-  -- `Matrix.trace M = ∑ i, M i i`; continuity follows from
-  -- continuity of projections in a product topology.
-  change Continuous (fun M : Matrix (Fin N_c) (Fin N_c) ℂ => Matrix.trace M)
-  refine continuous_finset_sum _ (fun i _ => ?_)
-  exact (continuous_apply (α := fun _ : Fin N_c => ℂ) i).comp
-        (continuous_apply (α := fun _ : Fin N_c => (Fin N_c → ℂ)) i)
+  fun_prop
 
 /-- The Wilson plaquette energy at the identity element of SU(N_c) equals `N_c`. -/
 theorem wilsonPlaquetteEnergy_one (N_c : ℕ) :
