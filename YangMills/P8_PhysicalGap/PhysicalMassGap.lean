@@ -74,4 +74,24 @@ theorem sun_physical_mass_gap_vacuous
   obtain ⟨α_star, hα_pos, _⟩ := sun_gibbs_dlr_lsi_norm d N_c hN_c β β₀ hβ hβ₀
   exact ⟨α_star, hα_pos⟩
 
+/-- **Σ-terminal: sorry-free vacuous mass gap.** Identical statement to
+`sun_physical_mass_gap_vacuous`, but routed through the MemLp-gated chain
+(`sun_gibbs_dlr_lsi_norm_memLp` → `balaban_rg_uniform_lsi_norm_memLp` →
+`lsi_normalized_gibbs_from_haar_memLp`), which discharges the line-805
+`Integrable (f²·log(f²))` gap via `memLp_gt_two_integrable_sq_mul_log_sq`
+instead of a `sorry`. Oracle: `[propext, Classical.choice, Quot.sound]`
+— the three core Lean axioms, no `sorryAx`.
+
+The consumer only needs `α_star > 0` from the LSI record, so the extra
+`p`, `μ_ref` parameters in `DLR_LSI_MemLp` are silently discarded.
+We instantiate `p := 3` as a convenient concrete witness of `2 < p`. -/
+theorem sun_physical_mass_gap_vacuous_memLp
+    (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ)
+    (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
+    ClayYangMillsTheorem := by
+  obtain ⟨α_star, hα_pos, _⟩ :=
+    sun_gibbs_dlr_lsi_norm_memLp d N_c hN_c β β₀ hβ hβ₀
+      (3 : ℝ≥0∞) (by norm_num)
+  exact ⟨α_star, hα_pos⟩
+
 end YangMills
