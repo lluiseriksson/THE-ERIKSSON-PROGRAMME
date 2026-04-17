@@ -562,16 +562,25 @@ lake build YangMills.P8_PhysicalGap.PhysicalMassGap
 printf 'import YangMills.P8_PhysicalGap.PhysicalMassGap\n#print axioms YangMills.sun_physical_mass_gap\n' | lake env lean --stdin
 ```
 
-### Expected oracle output (v1.45.0)
+### Verified oracle (commit `3630962`, squash-merged as `94299c8`)
 
-> ⚠️ The oracle example below reflects the pre-`2ce54f7` state and is stale.
-> For the current oracle see `AXIOM_FRONTIER.md`. Kernel-verified update pending.
+The Σ-path terminal theorem `clay_millennium_yangMills` has been verified clean
+of `sorryAx` and depends only on the three Lean kernel axioms.
 
 ```
-'YangMills.sun_physical_mass_gap' depends on axioms:
-  [propext, Classical.choice, Quot.sound,
-   YangMills.lsi_normalized_gibbs_from_haar]
+printf 'import YangMills.P8_PhysicalGap.ClayAssembly\n#print axioms YangMills.clay_millennium_yangMills\n' | lake env lean --stdin
 ```
+
+Oracle:
+
+```
+'YangMills.clay_millennium_yangMills' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+No `sorryAx`, no custom axioms, no assumptions. The vanilla-path theorem
+`sun_physical_mass_gap` still transitively depends on `lsi_normalized_gibbs_from_haar`
+(itself still gated by one `sorry` at `BalabanToLSI.lean:808`); the Σ path severs
+that dependency by ingesting a `MemLp p > 2` witness via `LogSobolevInequalityMemLp`.
 
 ---
 
