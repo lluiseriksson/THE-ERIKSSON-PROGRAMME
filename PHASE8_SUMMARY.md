@@ -1,3 +1,16 @@
+> **⚠️ Stale as of 2026-04-17.** This document reflects the pre-v0.32
+> state of Phase 8. Specifically: the claim "all project files contain
+> zero sorry tactics / build passes unconditionally (7/7 files OK)" is
+> no longer accurate (one sorry at `BalabanToLSI.lean:805`), and the
+> axiom table lists pre-v0.32 declarations that no longer exist.
+>
+> For the current state, see:
+> - `AXIOM_FRONTIER.md` — live axiom/sorry ledger
+> - `docs/phase1-llogl-obstruction.md` — analysis of the remaining gap
+> - `README.md` — top-level status
+>
+> This file is preserved for historical reference and will not be updated.
+
 # Phase 8 — Physical Gap: Formal Status Summary
 
 ## What was achieved
