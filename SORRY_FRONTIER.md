@@ -1,11 +1,13 @@
-# SORRY FRONTIER — THE-ERIKSSON-PROGRAMME v0.8.47
+# SORRY FRONTIER — THE-ERIKSSON-PROGRAMME v0.35.0
 
-Last updated: v0.8.47
+Last updated: v0.35.0 (2026-04-17)
 
-## Current sorry count: 0
+## Current sorry count: 1
 
-All sorry-based proofs have been eliminated from the P8 physical gap module.
-The remaining open items are declared as explicit axioms (see AXIOM_FRONTIER.md).
+The remaining sorry is `BalabanToLSI.lean:805`, inside the proof of the
+theorem `lsi_normalized_gibbs_from_haar`. For the obstruction analysis
+see `docs/phase1-llogl-obstruction.md`; for the live axiom/sorry ledger
+see `AXIOM_FRONTIER.md`.
 
 ## Files with no sorrys in P8_PhysicalGap
 
@@ -21,6 +23,13 @@ The remaining open items are declared as explicit axioms (see AXIOM_FRONTIER.md)
 | SUN_LiebRobin.lean | 0 | ✅ sun_locality_to_covariance proved |
 
 ## Philosophy
+
+> ⚠️ **Policy update (2026-04-17):** The following reflects pre-v0.34 practice.
+> The current project position on axioms introduced to close L·log·L-type gaps
+> is in `docs/phase1-llogl-obstruction.md` §5 ("The wrong-axiom trap").
+> Short version: the naive implication `Integrable f² → Integrable f²·log f²`
+> is mathematically false (Bertrand counterexample); any axiom of that shape
+> is unsound. Do not axiomatize L·log·L gaps.
 
 We prefer explicit axioms over sorrys because:
 1. Axioms are searchable and trackable
