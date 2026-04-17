@@ -28,6 +28,7 @@ Holley-Stroock axiom with a specific, correctly-stated instance:
 namespace YangMills
 
 open MeasureTheory Real
+open scoped ENNReal
 
 /-! ## Abstract SU(N) objects -/
 
@@ -593,7 +594,8 @@ private theorem integrable_f2_mul_log_f2_div_haar
       (Filter.Eventually.of_forall (fun x => by
         by_cases hfx : f x ^ 2 = 0
         · simp [hfx]
-        · rw [Real.log_div hfx hm]; ring))
+        · simp only [Pi.sub_apply]
+          rw [Real.log_div hfx hm]; ring))
 
 private theorem integrable_f2_mul_log_f2_haar
     {N_c : ℕ} [NeZero N_c]

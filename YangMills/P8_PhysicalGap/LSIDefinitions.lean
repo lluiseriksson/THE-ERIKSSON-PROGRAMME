@@ -9,6 +9,7 @@ Extracted from LSItoSpectralGap.lean to break the import cycle.
 -/
 
 open MeasureTheory Real
+open scoped ENNReal
 
 variable {Ω : Type*} [MeasurableSpace Ω]
 

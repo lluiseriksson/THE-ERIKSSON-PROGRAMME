@@ -6,6 +6,7 @@ import YangMills.L8_Terminal.ClayPhysical
 namespace YangMills
 
 open MeasureTheory Real
+open scoped ENNReal
 
 /-- Given DLR-LSI with constant α_star > 0, ClayYangMillsTheorem follows
     (mass gap = α_star > 0, the LSI/spectral-gap constant). -/

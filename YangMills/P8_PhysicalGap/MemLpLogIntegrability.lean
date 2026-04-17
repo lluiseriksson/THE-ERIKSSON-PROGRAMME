@@ -35,7 +35,8 @@ Nothing here depends on any YangMills definitions; only Mathlib.
 
 namespace YangMills
 
-open MeasureTheory Real
+open MeasureTheory
+open scoped ENNReal Real
 
 /-- Pointwise bound: for any real `u` and `δ > 0`,
     `|u² · log(u²)| ≤ 1 + u² · (u²)^δ / δ`. -/
@@ -46,17 +47,28 @@ private lemma abs_sq_mul_log_sq_le {u δ : ℝ} (hδ : 0 < δ) :
   have hvpow_nn : 0 ≤ v ^ δ := Real.rpow_nonneg hv_nn δ
   have hrhs_extra_nn : 0 ≤ v * v ^ δ / δ :=
     div_nonneg (mul_nonneg hv_nn hvpow_nn) hδ.le
-  rcases le_or_lt v 1 with hle | hlt
-  · -- v ≤ 1 case: |v · log v| ≤ 1 (at v = 0 we use `Real.log 0 = 0`).
-    have hvlog_bound : |v * Real.log v| ≤ 1 := by
+  rcases le_or_gt v 1 with hle | hlt
+  · -- v ≤ 1 case: |v · log v| ≤ 1 ≤ 1 + v * v^δ / δ
+    have h_bound : |v * Real.log v| ≤ 1 := by
       rcases eq_or_lt_of_le hv_nn with hv_eq | hv_pos
-      · -- v = 0 case
-        have hvz : v * Real.log v = 0 := by rw [← hv_eq]; ring
-        rw [hvz, abs_zero]; norm_num
-      · have h := abs_log_mul_self_lt v hv_pos hle
-        rw [mul_comm] at h
-        exact le_of_lt h
-    linarith
+      · rw [← hv_eq]; simp
+      · have hv_ne : v ≠ 0 := ne_of_gt hv_pos
+        have hlog_le : Real.log v ≤ 0 := Real.log_nonpos hv_nn hle
+        have h_vlog_le : v * Real.log v ≤ 0 :=
+          mul_nonpos_of_nonneg_of_nonpos hv_nn hlog_le
+        rw [abs_of_nonpos h_vlog_le]
+        have h_vinv_pos : 0 < v⁻¹ := inv_pos.mpr hv_pos
+        have h_log_sub : Real.log v⁻¹ ≤ v⁻¹ - 1 :=
+          Real.log_le_sub_one_of_pos h_vinv_pos
+        have h_neg_eq : -(v * Real.log v) = v * Real.log v⁻¹ := by
+          rw [Real.log_inv]; ring
+        rw [h_neg_eq]
+        have h_step : v * Real.log v⁻¹ ≤ v * (v⁻¹ - 1) :=
+          mul_le_mul_of_nonneg_left h_log_sub hv_nn
+        have h_calc : v * (v⁻¹ - 1) = 1 - v := by
+          rw [mul_sub, mul_inv_cancel₀ hv_ne, mul_one]
+        linarith
+    linarith [hrhs_extra_nn]
   · -- 1 < v case: log v > 0 and log v ≤ v^δ / δ.
     have hv_pos : 0 < v := lt_trans zero_lt_one hlt
     have hlog_pos : 0 < Real.log v := Real.log_pos hlt
