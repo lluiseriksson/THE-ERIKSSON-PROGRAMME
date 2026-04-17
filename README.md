@@ -13,9 +13,11 @@ The programme has collapsed the Clay dependency from a monolithic axiom (`yangMi
 ## Lean 4 Formalization of the Yang–Mills Mass Gap
 
 **Version**: v1.45.0 (C133) · **Tag**: `v1.45.0`
-**BFS-live custom axioms**: 1 (`lsi_normalized_gibbs_from_haar`)
-**sorry count**: 0 · **Build errors**: 0
-**Oracle** (`sun_physical_mass_gap`): `[propext, Classical.choice, Quot.sound, YangMills.lsi_normalized_gibbs_from_haar]`
+**BFS-live custom axioms**: 0
+**sorry count**: 1 (`BalabanToLSI.lean:805`) · **Build errors**: 0
+**Oracle** (`sun_physical_mass_gap`): `[propext, sorryAx, Classical.choice, Quot.sound]`
+
+The sorryAx kernel marker enters the oracle via one sorry at `BalabanToLSI.lean:805`, inside the proof of the theorem `lsi_normalized_gibbs_from_haar`. For the obstruction analysis see `docs/phase1-llogl-obstruction.md`; for the axiom/sorry ledger see `AXIOM_FRONTIER.md`.
 
 ---
 
@@ -534,7 +536,7 @@ THE-ERIKSSON-PROGRAMME/
     └── Experimental/                 # Research frontier (Lie derivatives, semigroups)
 ```
 
-**349 Lean files · 0 sorry · ~26 axioms (1 BFS-live for main theorem)**
+**349 Lean files · 1 sorry (`BalabanToLSI.lean:805`) · ~26 axioms (0 BFS-live for main theorem)**
 
 ---
 
@@ -561,6 +563,9 @@ printf 'import YangMills.P8_PhysicalGap.PhysicalMassGap\n#print axioms YangMills
 ```
 
 ### Expected oracle output (v1.45.0)
+
+> ⚠️ The oracle example below reflects the pre-`2ce54f7` state and is stale.
+> For the current oracle see `AXIOM_FRONTIER.md`. Kernel-verified update pending.
 
 ```
 'YangMills.sun_physical_mass_gap' depends on axioms:
