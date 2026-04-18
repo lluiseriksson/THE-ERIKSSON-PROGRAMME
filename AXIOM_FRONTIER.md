@@ -1,3 +1,48 @@
+
+# v0.36.0 — BALABAN H1-H2-H3 FORMALIZED (2026-04-18)
+
+**Milestone:** `BalabanH1H2H3.lean` landed on main at commit `3cd930f`.
+
+Oracle for all exported theorems: `[propext, Classical.choice, Quot.sound]`.
+Zero sorry. Zero named project axioms.
+
+## What was added
+
+Three Lean structures encoding the terminal polymer activity bounds:
+- `BalabanH1`: small-field bound `‖R*^sf(X)‖ ≤ E₀·ḡ²·exp(-κ·d(X))`
+  Source: Balaban CMP 116 (1988), Lemma 3, Eq (2.38)
+- `BalabanH2`: large-field bound `‖R*^lf(X)‖ ≤ exp(-p₀(ḡ))·exp(-κ·d(X))`
+  Source: Balaban CMP 122 (1989), Eq (1.98)-(1.100)
+- `BalabanH3`: locality / hard-core compatibility
+  Source: Balaban CMP 116 §2, CMP 122 §1
+
+Key theorems:
+- `balaban_combined_bound`: H1+H2 ⟹ total bound `2·E₀·ḡ²·exp(-κ·n)`
+- `polymerBound_of_balaban`: maps `BalabanHyps` to `PolymerActivityBound`
+- `balaban_to_polymer_bound`: existence of compatible `PolymerActivityBound`
+
+## What these hypotheses represent
+
+H1-H2-H3 are the honest formal boundary between what is Lean-verified
+and what is verified only in the informal companion papers.
+They are NOT axioms — they are explicit hypotheses that any future
+formalization of Balaban CMP 116-122 would discharge as theorems.
+
+Informal verification: [Eriksson 2602.0069], Sections 7-8-12,
+with complete traceability table mapping each hypothesis to primary
+source equations.
+
+## Current oracle chain (complete)
+
+```
+clay_yangMills_witness
+└── ClayWitnessHyp (contains BalabanHyps)
+    └── [propext, Classical.choice, Quot.sound]
+```
+
+No sorryAx anywhere in the chain.
+
+---
 # v0.35.0 — SORRY COUNT CORRECTION (2026-04-17)
 
 **Supersedes v0.34.0 count (3 → 1).** The project is pinned to commit

@@ -1,10 +1,10 @@
-# SORRY FRONTIER — THE-ERIKSSON-PROGRAMME v0.35.0
+# SORRY FRONTIER — THE-ERIKSSON-PROGRAMME v0.36.0
 
-Last updated: v0.35.0 (2026-04-17)
+Last updated: v0.36.0 (2026-04-18)
 
-## Current sorry count: 1
+## Current sorry count: 0
 
-The remaining sorry is `BalabanToLSI.lean:805`, inside the proof of the
+Sorry count: 0. The last sorry was closed by the Σ-path (MemLp-gated LSI) in commit 94299c8. See docs/phase1-llogl-obstruction.md for the full obstruction history., inside the proof of the
 theorem `lsi_normalized_gibbs_from_haar`. For the obstruction analysis
 see `docs/phase1-llogl-obstruction.md`; for the live axiom/sorry ledger
 see `AXIOM_FRONTIER.md`.
