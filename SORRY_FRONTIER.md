@@ -1,6 +1,6 @@
-# SORRY FRONTIER — THE-ERIKSSON-PROGRAMME v0.36.0
+# SORRY FRONTIER — THE-ERIKSSON-PROGRAMME v0.37.0
 
-Last updated: v0.36.0 (2026-04-18)
+Last updated: v0.37.0 (2026-04-18)
 
 ## Current sorry count: 0
 

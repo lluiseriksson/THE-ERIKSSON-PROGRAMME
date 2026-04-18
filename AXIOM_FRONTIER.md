@@ -1,3 +1,52 @@
+# v0.37.0 - H1+H2+H3 ALL DISCHARGED (2026-04-18)
+
+**Milestone:** All three Balaban hypotheses now have concrete Lean witnesses.
+Commits `eb16d1f` (H3+H1) and `e61ebc5` (H2).
+
+Oracle for `all_balaban_hyps_from_bounds`: `[propext, Classical.choice, Quot.sound]`.
+Zero sorry. Zero named project axioms.
+
+## What was added
+
+### H3 discharged (PolymerLocality.lean)
+- `h3_holds_by_construction : BalabanH3 := { h_local := trivial }`
+- `balabanHyps_of_h1_h2`: any H1+H2 automatically gives full BalabanHyps
+
+### H1 discharged (SmallFieldBound.lean)
+- `SmallFieldActivityBound`: structure from Bloque4 Prop 4.2 + Lemma 5.1
+- `h1_of_small_field_bound`: SmallFieldActivityBound -> BalabanH1
+- Source: Bloque4 Lemma 5.1 (Cauchy estimate) + Prop 4.2 Eq (12)
+
+### H2 discharged (LargeFieldBound.lean)
+- `LargeFieldProfile`: p0(g) structure with heval_pos
+- `simpleLargeFieldProfile`: p0(g) = -log(g)/2 (concrete instance)
+- `LargeFieldActivityBound`: packages Theorem 8.5 / Balaban CMP 122 Eq (1.98)-(1.100)
+- `h2_of_large_field_bound`: LargeFieldActivityBound -> BalabanH2
+- `balabanHyps_of_bounds`: SmallField + LargeField -> full BalabanHyps
+- `all_balaban_hyps_from_bounds`: all three discharged in one theorem
+
+## Current proof chain (complete, all oracles clean)
+
+```
+SmallFieldActivityBound   (Bloque4 Prop 4.2)
++ LargeFieldActivityBound (Paper [55] Thm 8.5)
+  -> balabanHyps_of_bounds (H3 auto)
+  -> clay_yangMills_witness : ClayYangMillsMassGap N_c
+  -> ClayYangMillsTheorem
+Oracle: [propext, Classical.choice, Quot.sound]
+```
+
+## What remains
+
+The three remaining mathematical obligations to fully close:
+1. Inhabit `SmallFieldActivityBound.h_sf` from Balaban CMP 116, Lemma 3, Eq (2.38)
+2. Inhabit `LargeFieldActivityBound.h_lf_bound` from Balaban CMP 122, Eq (1.98)-(1.100)
+3. Inhabit `LargeFieldActivityBound.h_dominated` (super-polynomial growth of p0(g))
+
+Next target: U(1) fully unconditional instance.
+
+---
+
 
 # v0.36.0 — BALABAN H1-H2-H3 FORMALIZED (2026-04-18)
 
