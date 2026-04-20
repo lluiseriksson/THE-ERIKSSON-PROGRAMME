@@ -13,6 +13,7 @@ Pointwise identities preparing the character inner product
 * `trace_star_eq_star_trace`         — `tr(star A) = star (tr A)`.
 * `normSq_trace_eq_mul_conj_re`      — `|tr A|² = Re(tr A · conj (tr A))`.
 * `trace_mul_conj_trace_eq_normSq`   — `tr A · conj (tr A) = (|tr A|² : ℂ)`.
+* `trace_inv_eq_star_trace_SU`       — `tr(U⁻¹) = star (tr U)` for `U ∈ SU(N_c)`.
 
 For `U ∈ SU(N_c)` the matrix inverse coincides with `star U`, so the
 pointwise identity
@@ -56,5 +57,18 @@ theorem trace_mul_conj_trace_eq_normSq
     (A : Matrix (Fin N_c) (Fin N_c) ℂ) :
     A.trace * starRingEnd ℂ A.trace = (Complex.normSq A.trace : ℂ) := by
   exact Complex.mul_conj A.trace
+
+/-- For `U ∈ SU(N_c)`, `tr(U⁻¹) = star (tr U)`.
+
+The `specialUnitaryGroup` instance sets `Inv := star`, so
+`(U⁻¹).val = star U.val` holds by `rfl`.  Combined with the
+`trace_star_eq_star_trace` identity this gives the claim. -/
+theorem trace_inv_eq_star_trace_SU [NeZero N_c]
+    (U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) :
+    (U⁻¹).val.trace = star U.val.trace := by
+  have h : (U⁻¹ : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)).val
+      = star U.val := rfl
+  rw [h]
+  exact trace_star_eq_star_trace U.val
 
 end YangMills
