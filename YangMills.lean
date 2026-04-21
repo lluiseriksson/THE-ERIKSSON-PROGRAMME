@@ -186,3 +186,4 @@ import YangMills.L8_Terminal.FeynmanKacTheoremBundle
 
 import YangMills.L8_Terminal.ConnectedCorrDecayTheoremBundle
 import YangMills.ClayCore.SchurTwoSitePhase
+import YangMills.ClayCore.SchurOffDiagonal
