@@ -1,156 +1,113 @@
-# THE ERIKSSON PROGRAMME
+# The Eriksson Programme
 
-## Lean 4 Formalization of the Yang-Mills Mass Gap
+**Formalizing the Clay Millennium Yang–Mills mass gap theorem in Lean 4.**
 
-**Status: FORMALIZED — 0 errors, 0 sorry, oracle [propext, Classical.choice, Quot.sound]**
-
-Lean v4.29.0-rc6 + Mathlib · License: AGPL-3.0
+Active development. No `sorry`, no project-specific axioms. Oracle fixed at `[propext, Classical.choice, Quot.sound]`.
 
 ---
 
 ## What this is
 
-A complete formal verification of the Yang-Mills mass gap argument in Lean 4,
-following the companion paper sequence by Lluis Eriksson (February 2026).
+A Lean 4 + Mathlib project formalizing the mass gap for pure-gauge SU(N) lattice Yang–Mills theory via the character-expansion / cluster-decay strategy. The proof is split into three independent layers so that each can be attacked, verified, and extended in isolation:
 
-The terminal theorem `clay_yangMills_witness` constructs an explicit inhabitant
-of `ClayYangMillsMassGap N_c` — a non-vacuous structure capturing Theorem 1.1
-of [Eriksson 2602.0088]: exponential clustering with m > 0, uniform in lattice
-spacing and physical volume.
-
-**Oracle (verified):**
-
-```
-#print axioms YangMills.clay_yangMills_witness
--- [propext, Classical.choice, Quot.sound]
-#print axioms YangMills.balaban_to_polymer_bound
--- [propext, Classical.choice, Quot.sound]
-#print axioms YangMills.u1_clay_yangMills_mass_gap
--- [propext, Classical.choice, Quot.sound]
-```
+1. **Haar machinery + Schur orthogonality on SU(N)** — proved directly from Mathlib's `Matrix.specialUnitaryGroup` and `MeasureTheory`.
+2. **Character expansion / cluster decay correlator bound** — currently encapsulated as an abstract `CharacterExpansionData` structure; the cluster bound itself is the nontrivial physical content and the main conditional hypothesis.
+3. **Mass-gap conclusion from the correlator bound** — a transfer-matrix / OS-reconstruction calculation that derives the gap once (2) is supplied.
 
 ---
 
-## Unconditional — with honest caveats
+## Status (2026-04-21, v0.34.x)
 
-The Lean formalization is **100% unconditional within the explicitly stated hypotheses**.
-There are no hidden sorries, no unnamed axioms, no black boxes.
+| Layer | Progress | Oracle clean |
+|---|---|---|
+| L1 — Haar measure on SU(N) (`sunHaarProb`) | complete | yes |
+| L2.1–L2.4 — compactness, measurability, trace / Frobenius | complete | yes |
+| L2.5 — `integral of ‖tr U‖² ≤ N` | complete (v0.34.0) | yes |
+| L2.6 — Schur entry orthogonality | in progress — step 1b-i of ~4 | yes so far |
+| L3.1 / L3.2 — Cluster decay bound | assumed as `h_correlator` | N/A |
+| L4.1 — Mass gap conclusion | scaffolded, conditional | yes |
+| Final wiring | not done | — |
 
-The three remaining hypotheses (`BalabanH1`, `BalabanH2`, `BalabanH3`) are
-**explicit Lean structures** encoding the terminal polymer activity bounds from
-Balaban's CMP papers (1984-1989), with full citation trail:
+### L2.6 sub-plan
 
-- **H1** (small-field): Balaban CMP 116 (1988), Lemma 3, Eq (2.38)
-- **H2** (large-field): Balaban CMP 122 (1989), Eq (1.98)-(1.100)
-- **H3** (locality): Balaban CMP 116 §2, CMP 122 §1
-
-These are verified informally in [Eriksson 2602.0069] (The Balaban-Dimock
-Structural Package) with complete traceability to primary source equations.
-Their formal Lean discharge from first principles would require formalizing
-Balaban's full CMP series — a multi-year project.
-
-This is the most complete and honest Lean 4 formalization of the Yang-Mills
-mass gap argument that currently exists.
-
----
-
-## Companion Paper Sequence (viXra, February 2026)
-
-Author page: https://ai.vixra.org/author/lluis_eriksson
-
-| # | viXra ID | Title | Role in Lean chain |
-|---|----------|-------|-------------------|
-| 63 | 2602.0088 | Exponential Clustering and Mass Gap via Balaban RG | Main theorem (Bloque 4) |
-| 65 | 2602.0091 | Closing the Last Gap: Verified Terminal KP Bound | H1-H3 → KP |
-| 55 | 2602.0069 | The Balaban-Dimock Structural Package | Notation bridge |
-| 66 | 2602.0092 | Rotational Symmetry Restoration and Wightman Axioms | OS1 |
-| 62 | 2602.0087 | Irrelevant Operators and Anisotropy Bounds | OS1 input |
-| 67 | 2602.0096 | The Master Map | Audit guide |
-| 68 | 2602.0117 | Mechanical Audit Experiments | Reproducibility |
+- step 0 `SchurDiagPhase.lean` — diagonal phase `diag(exp(I·θ_k))` in SU(N), oracle clean.
+- step 1a `SchurEntryOrthogonality.lean` — antisymmetric angle `antiSymAngle i k`.
+- **step 1b-i** (current) — π-scaled phase, `exp(I·(θ_i − θ_k)) = exp(I·π) = −1`.
+- step 1b-ii — off-diagonal integral vanishing via left-invariance against `piAntiSymSU`.
+- step 2 — diagonal case and the `1/N` normalization constant.
+- step 3 — orthogonality for irreducible character matrix elements.
 
 ---
 
-## Proof Tree
+## Honest conditionality assessment
 
-```
-ClayYangMillsTheorem
-└── clay_yangMills_witness : ClayYangMillsMassGap N_c
-    ├── m = kpParameter(r) = -log(r)/2 > 0
-    ├── hbound: exponential clustering bound
-    │   ├── mass_gap_bound (Thm 7.1)
-    │   │   ├── telescoping_identity (§6.1)
-    │   │   ├── uv_scale_sum_bound (§6.2)
-    │   │   └── multiscale_correlator_bound (§6.3)
-    │   ├── exponential_clustering (Thm 5.5)
-    │   │   ├── terminal_kp_criterion (KP smallness)
-    │   │   │   └── kp_decay_rate_lt_one
-    │   │   └── connecting_cluster_summable
-    │   ├── terminal_oscillation_bound (Prop 5.1)
-    │   │   └── geometric_series_polymer_bound
-    │   └── coupling_control (Prop 4.1)
-    │       └── betaOneLoop_pos
-    ├── hEnergy: wilsonPlaquetteEnergy N_c (concrete Re(Tr U))
-    │   └── wilsonPlaquetteEnergy_nontrivial
-    └── balabanHyps_of_bounds
-        ├── SmallFieldActivityBound (H1 discharged)
-        │   └── Bloque4 Prop 4.2 + Lemma 5.1 (Cauchy estimate)
-        ├── LargeFieldActivityBound (H2 discharged)
-        │   └── Paper [55] Theorem 8.5 / Balaban CMP 122 Eq (1.98)-(1.100)
-        └── h3_holds_by_construction (H3 discharged, trivial by definition)
+| Definition of "100%" | Current progress |
+|---|---|
+| Full Clay-quality (any coupling, continuum) | ~3% |
+| Strong-coupling Wilson action, rigorous gap | ~20% |
+| Modular chain with `h_correlator` as only remaining assumption | ~65% |
+| Modular chain with abstract `CharacterExpansionData` as input | ~75% |
 
-Abelian case (U(1)):
-u1_clay_yangMills_mass_gap : ClayYangMillsMassGap 1
-└── U1CorrelatorBound (Bessel ratio r = I₁(β)/I₀(β) ∈ (0,1))
-```
+The jump from "conditional" to "unconditional strong-coupling" requires proving the cluster decay estimate at large β — tractable but significant (6–12 months at current pace). The jump to unconditional Clay-quality is an open mathematical problem.
 
 ---
 
-## Build Status
+## Structure
 
-| Module | Theorems | Oracle |
-|--------|----------|--------|
-| `ClayCore.ClayAuthentic` | `ClayYangMillsMassGap`, `clayMassGap_implies_clayTheorem` | clean |
-| `ClayCore.WilsonPlaquetteEnergy` | `wilsonPlaquetteEnergy_continuous`, `_nontrivial`, `_bounded` | clean |
-| `ClayCore.LatticeDist` | `latticeDist_nonneg`, `latticeDist_unbounded` | clean |
-| `ClayCore.CouplingControl` | `coupling_control`, `betaOneLoop_pos` | clean |
-| `ClayCore.OscillationBound` | `terminal_oscillation_bound`, `geometric_series_polymer_bound` | clean |
-| `ClayCore.KPSmallness` | `terminal_kp_criterion`, `kp_decay_rate_lt_one` | clean |
-| `ClayCore.ExponentialClustering` | `exponential_clustering`, `clustering_exp_form` | clean |
-| `ClayCore.MultiscaleDecoupling` | `mass_gap_bound`, `telescoping_identity` | clean |
-| `ClayCore.ClayWitness` | `clay_yangMills_witness` | clean |
-| `ClayCore.AbelianU1Witness` | `u1_clay_yangMills_mass_gap` | clean |
-| `ClayCore.BalabanH1H2H3` | `balaban_combined_bound`, `balaban_to_polymer_bound` | clean |
-| `ClayCore.PolymerLocality` | `h3_holds_by_construction`, `balabanHyps_of_h1_h2` | clean |
-| `ClayCore.SmallFieldBound` | `h1_of_small_field_bound`, `h1_from_small_field` | clean |
-| `ClayCore.LargeFieldBound` | `h2_from_large_field`, `all_balaban_hyps_from_bounds` | clean |
+    YangMills/
+      ClayCore/
+        SchurL25.lean                 -- L2.5: trace norm^2 bound
+        SchurDiagPhase.lean           -- L2.6 step 0
+        SchurTwoSitePhase.lean        -- two-site (I, -I, 1, ...) phase
+        SchurOffDiagonal.lean         -- off-diagonal Frobenius term
+        SchurEntryOrthogonality.lean  -- L2.6 steps 1a + 1b-i
+        CharacterExpansion.lean       -- CharacterExpansionData + gap theorem
+        SchurPhysicalBridge.lean      -- physical observable interface
+        CLAY_CORE_STATUS.md           -- deep-dive status on the core layer
+        NEXT_SESSION.md               -- plan for the next work session
+      P8_PhysicalGap/
+        SUN_Compact.lean              -- topology and measurability
 
 ---
 
-## What remains to be formalized
+## Build
 
-H1, H2, and H3 now have concrete Lean witnesses:
-- **H1**: `SmallFieldActivityBound` - structure from Bloque4 Prop 4.2 + Lemma 5.1
-- **H2**: `LargeFieldActivityBound` - structure from Paper [55] Theorem 8.5
-- **H3**: `h3_holds_by_construction` - discharged trivially by construction
+Full build:
 
-The remaining mathematical content to fully close the chain:
-- Inhabit `SmallFieldActivityBound.h_sf` from Balaban CMP 116, Lemma 3, Eq (2.38)
-- Inhabit `LargeFieldActivityBound.h_lf_bound` from Balaban CMP 122, Eq (1.98)-(1.100)
-- Inhabit `LargeFieldActivityBound.h_dominated` (super-polynomial growth of p0)
+    lake build
 
-These are precise mathematical statements pointing to specific equations in
-published papers - not vague "trust me" hypotheses. The U(1) case in d=2
-would provide the first fully unconditional instance.
+Single module:
 
-The OS1 axiom (full O(4) Euclidean covariance) is established in [Eriksson 2602.0092]
-via a lattice Ward identity argument; its Lean formalization is future work.
+    lake build YangMills.ClayCore.SchurEntryOrthogonality
+
+Oracle check — verify a declaration depends only on Lean's core three axioms. In a scratch `.lean` file:
+
+    import YangMills.ClayCore.SchurEntryOrthogonality
+    #print axioms YangMills.ClayCore.piAntiSymSU_phase
+
+Expected: `depends on axioms: [propext, Classical.choice, Quot.sound]`.
 
 ---
 
-## Author
+## Working rules
 
-**Lluis Eriksson** — Independent Researcher
-https://ai.vixra.org/author/lluis_eriksson
-https://doi.org/10.5281/zenodo.18799941
+- No `sorry`.
+- No project-specific axioms.
+- Oracle stays `[propext, Classical.choice, Quot.sound]` for all core declarations.
+- Every commit green under `lake build`.
+- Oracle-checked before every commit.
+- Docs (`README.md`, `STATE_OF_THE_PROJECT.md`, `AXIOM_FRONTIER.md`) updated every ~3 commits.
+- Files split at ~150 lines.
 
-Lean v4.29.0-rc6 · Mathlib · AGPL-3.0
+---
+
+## Related files
+
+- `STATE_OF_THE_PROJECT.md` — detailed version-by-version progress.
+- `AXIOM_FRONTIER.md` — evolving list of closed/open conditional axioms.
+- `YangMills/ClayCore/CLAY_CORE_STATUS.md` — deep-dive status on the core layer.
+- `YangMills/ClayCore/NEXT_SESSION.md` — plan for the next session.
+
+---
+
+Lluis Eriksson — The Eriksson Programme.
