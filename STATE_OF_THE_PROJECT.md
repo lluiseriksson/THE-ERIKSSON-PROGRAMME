@@ -1,3 +1,41 @@
+# v0.34.0 — L2.5 closed: integral(|tr U|^2) <= N_c on SU(N_c) (2026-04-21)
+
+Three clean commits land the fundamental-observable L^2 bound on the Haar
+measure of SU(N_c):
+
+    9005d60  L2.5 step A   two-site phase element of SU(N)
+    344dfa0  L2.5 step B   off-diagonal Haar integral vanishes on SU(N)
+    3a3bc6b  L2.5 step C   Frobenius + main bound  --- closes L2.5
+
+YangMills.ClayCore.sunHaarProb_trace_normSq_integral_le:
+
+    (integral U, (Complex.normSq U.val.trace : R) d(sunHaarProb N)) <= (N : R)
+
+Oracle (verified with #print axioms):
+
+    [propext, Classical.choice, Quot.sound]
+
+No custom axioms, no sorries, no new dependencies.
+
+Proof architecture (three files, ~170 LOC total):
+
+- SchurTwoSitePhase.lean --- diag(i, -i, 1, ...) in SU(N) for i != j;
+  multiplying U by this element phase-shifts entry (k, k) by +/- i
+  exactly when k in {i, j}.
+- SchurOffDiagonal.lean --- for i != j, integral of U_{ii} * conj(U_{jj})
+  against Haar is 0, by left-invariance against the two-site phase.
+- SchurL25.lean --- Frobenius expansion
+      |tr U|^2 = sum_{i,j} U_{ii} * conj(U_{jj})
+  collapses the double sum to the diagonal via L2.5-B, then bounds
+  integral |U_{ii}|^2 <= 1 entry-wise from unitarity.
+
+Feeds into: SchurPhysicalBridge.fundamentalObservable_* --- the
+variance bound needed by the physical gap chain.
+
+Next: L2.6 --- Schur orthogonality for characters. See
+YangMills/ClayCore/NEXT_SESSION.md.
+
+---
 # v0.33.0 AXIOM ELIMINATION (2026-04-14)
 
 **`holleyStroock_sunGibbs_lsi` orphaned from `clay_millennium_yangMills`.**

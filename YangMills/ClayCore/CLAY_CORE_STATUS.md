@@ -110,3 +110,23 @@ v1.0.12-alpha
 - Weighted KP budgets now recover native `SmallActivityBudget` and `|Z - 1| ≤ B`
 - Exponential polymer-size weight inserted as the first KP-side concrete instance
 - Conservative exp-size-weight specialization closed through explicit `w ≥ 1`
+
+## v1.0.17-alpha (2026-04-21) --- L2.5 closed
+
+Schur orthogonality, fundamental rep, integral bound:
+
+    integral |tr U|^2 dHaar <= N_c on SU(N_c)
+
+Oracle: [propext, Classical.choice, Quot.sound]. No new axioms.
+
+Three new files under ClayCore/:
+
+- SchurTwoSitePhase.lean   --- two-site diag(i, -i, 1, ...) in SU(N)
+- SchurOffDiagonal.lean    --- off-diagonal Haar integral = 0
+- SchurL25.lean            --- Frobenius + main bound
+
+sunHaarProb_trace_normSq_integral_le is the L^2 analog of
+sunHaarProb_trace_integral_eq_zero (L2.3). Together they give the
+mean-0 / variance-<=-N_c pair the physical bridge consumes.
+
+Next: L2.6 --- Schur orthogonality for characters (see NEXT_SESSION).

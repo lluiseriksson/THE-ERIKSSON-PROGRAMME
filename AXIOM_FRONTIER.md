@@ -487,3 +487,20 @@ but won't match the `^axiom ` grep.
   that Clay does not consume. To make Clay unconditional, the sole move is to
   discharge `yangMills_continuum_mass_gap` directly (or wire the LSI chain
   into it, which currently doesn't happen).
+
+---
+
+## 2026-04-21 --- L2.5 closed
+
+Theorem: YangMills.ClayCore.sunHaarProb_trace_normSq_integral_le
+Oracle:  [propext, Classical.choice, Quot.sound] --- Mathlib baseline.
+No new axioms, no sorries.
+
+This closes the L^2 bound on the fundamental Wilson loop observable
+over the Haar measure of SU(N_c):  integral |tr U|^2 <= N_c.
+It is the structural input for the variance side of the mass-gap chain
+(SchurPhysicalBridge).
+
+L2.5 is additive-only to the oracle: it does not remove or introduce
+any axiom from the Clay frontier. The holleyStroock_sunGibbs_lsi
+obligation is unchanged.
