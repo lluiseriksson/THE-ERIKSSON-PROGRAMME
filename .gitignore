@@ -1,2 +1,10 @@
-
+# Build artifacts
+*.log
 .lake/build/
+.lake/config/*/lakefile.olean.trace
+.lake/config/*/lakefile.olean.lock
+
+# Specific build logs
+axioms_build.log
+build.log
+schurl26_build.log
