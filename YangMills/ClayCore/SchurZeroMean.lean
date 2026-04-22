@@ -199,6 +199,22 @@ instance sunHaarProb_isMulLeftInvariant (N_c : ℕ) [NeZero N_c] :
     Measure.IsMulLeftInvariant (sunHaarProb N_c) := by
   unfold sunHaarProb; infer_instance
 
+/-- `sunHaarProb N_c` is right-invariant.  On a compact group, Haar probability
+measures are unique (by `isHaarMeasure_eq_of_isProbabilityMeasure`), so
+right-translation fixes the measure. -/
+instance sunHaarProb_isMulRightInvariant (N_c : ℕ) [NeZero N_c] :
+    Measure.IsMulRightInvariant (sunHaarProb N_c) := by
+  haveI hHaar : (sunHaarProb N_c).IsHaarMeasure := by
+    unfold sunHaarProb; infer_instance
+  refine ⟨fun g => ?_⟩
+  haveI : ((sunHaarProb N_c).map (· * g)).IsHaarMeasure := inferInstance
+  haveI : IsProbabilityMeasure ((sunHaarProb N_c).map (· * g)) := by
+    constructor
+    rw [MeasureTheory.Measure.map_apply
+          (continuous_mul_const g).measurable MeasurableSet.univ,
+        Set.preimage_univ, measure_univ]
+  exact MeasureTheory.Measure.isHaarMeasure_eq_of_isProbabilityMeasure _ _
+
 /-- Continuity of the trace on SU(N_c). -/
 theorem continuous_trace_sub (N_c : ℕ) [NeZero N_c] :
     Continuous
