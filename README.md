@@ -1,113 +1,178 @@
-# The Eriksson Programme
+# THE ERIKSSON PROGRAMME
 
-**Formalizing the Clay Millennium Yang–Mills mass gap theorem in Lean 4.**
+**A Lean 4 / Mathlib formalization of the Yang–Mills mass gap, organized around an oracle-clean core and an explicit path to 100 % unconditionality.**
 
-Active development. No `sorry`, no project-specific axioms. Oracle fixed at `[propext, Classical.choice, Quot.sound]`.
-
----
-
-## What this is
-
-A Lean 4 + Mathlib project formalizing the mass gap for pure-gauge SU(N) lattice Yang–Mills theory via the character-expansion / cluster-decay strategy. The proof is split into three independent layers so that each can be attacked, verified, and extended in isolation:
-
-1. **Haar machinery + Schur orthogonality on SU(N)** — proved directly from Mathlib's `Matrix.specialUnitaryGroup` and `MeasureTheory`.
-2. **Character expansion / cluster decay correlator bound** — currently encapsulated as an abstract `CharacterExpansionData` structure; the cluster bound itself is the nontrivial physical content and the main conditional hypothesis.
-3. **Mass-gap conclusion from the correlator bound** — a transfer-matrix / OS-reconstruction calculation that derives the gap once (2) is supplied.
+- Lean toolchain: `leanprover/lean4:v4.29.0-rc6`
+- Mathlib: pinned to `master` (see `lakefile.lean`)
+- License: see `LICENSE`
+- Current front: **L2.6 step 1c — the diagonal Schur integral `∫_{SU(N)} |U_ij|² dμ = 1/N`**
+- Last core milestone closed: **L2.6 step 1b — off-diagonal Schur orthogonality on matrix entries** (commit `0143c37`)
 
 ---
 
-## Status (2026-04-21, v0.34.x)
+## 1. What this repository is
 
-| Layer | Progress | Oracle clean |
-|---|---|---|
-| L1 — Haar measure on SU(N) (`sunHaarProb`) | complete | yes |
-| L2.1–L2.4 — compactness, measurability, trace / Frobenius | complete | yes |
-| L2.5 — `integral of ‖tr U‖² ≤ N` | complete (v0.34.0) | yes |
-| L2.6 — Schur entry orthogonality | in progress — step 1b-i of ~4 | yes so far |
-| L3.1 / L3.2 — Cluster decay bound | assumed as `h_correlator` | N/A |
-| L4.1 — Mass gap conclusion | scaffolded, conditional | yes |
-| Final wiring | not done | — |
+The repository formalizes, in Lean 4 + Mathlib, the chain of analytic and representation-theoretic facts used in a Yang–Mills mass-gap argument. The long-term target is the Clay Millennium Prize problem: proving the existence of a quantum Yang–Mills theory on ℝ⁴ with a positive mass gap.
 
-### L2.6 sub-plan
+The formal content is split into three layers:
 
-- step 0 `SchurDiagPhase.lean` — diagonal phase `diag(exp(I·θ_k))` in SU(N), oracle clean.
-- step 1a `SchurEntryOrthogonality.lean` — antisymmetric angle `antiSymAngle i k`.
-- **step 1b-i** (current) — π-scaled phase, `exp(I·(θ_i − θ_k)) = exp(I·π) = −1`.
-- step 1b-ii — off-diagonal integral vanishing via left-invariance against `piAntiSymSU`.
-- step 2 — diagonal case and the `1/N` normalization constant.
-- step 3 — orthogonality for irreducible character matrix elements.
+- **L1 — Haar + Schur on `SU(N)`.** The base layer. Haar probability measure, left/right invariance, and Schur orthogonality for matrix coefficients of unitary irreducible representations. This is the layer where the current front (L2.6 step 1c) lives.
+- **L2 — Character expansion and cluster decay.** Wilson-loop expansions, polymer / Mayer expansions, exponential cluster bounds. Builds on L1 but is structurally separable.
+- **L3 — Mass-gap conclusion.** The final logical step: from L1+L2 (plus conditional physical hypotheses collected as `CharacterExpansionData` and `h_correlator`) to a two-point-function bound giving a mass gap.
+
+The conditional structure is intentional. Every physics hypothesis that is *not* fully Lean-checked yet is surfaced as a named `structure` field or a named `axiom`, and lives in `AXIOM_FRONTIER.md`. L3's final statement takes those as hypotheses; the goal of the unconditionality roadmap is to discharge them one by one inside L1–L2.
 
 ---
 
-## Honest conditionality assessment
+## 2. Status — 2026-04-22
 
-| Definition of "100%" | Current progress |
-|---|---|
-| Full Clay-quality (any coupling, continuum) | ~3% |
-| Strong-coupling Wilson action, rigorous gap | ~20% |
-| Modular chain with `h_correlator` as only remaining assumption | ~65% |
-| Modular chain with abstract `CharacterExpansionData` as input | ~75% |
+| Milestone | Statement | Status |
+| --- | --- | --- |
+| L2.4 | Structural Schur / Haar scaffolding on `SU(N)` | DONE |
+| L2.5 | `∑_i ∫_{SU(N)} |U_ii|² dμ ≤ N`  (Frobenius trace bound) | DONE |
+| L2.6 step 0 | Diagonal phase element of `SU(N)` (pure-phase block) | DONE |
+| L2.6 step 1a | Antisymmetric two-site angle + `antiSymSU` scaffold | DONE |
+| L2.6 step 1b-i | π-scaled antisymmetric phase, `exp(I·π) = −1` | DONE |
+| L2.6 step 1b-ii | Off-diagonal entry Haar integral vanishes for `i ≠ k` | DONE |
+| L2.6 step 1b (column + general) | Off-diagonal Schur orthogonality, matrix-entry form | DONE |
+| **L2.6 step 1c** | **Diagonal Schur integral `∫ |U_ij|² dμ = 1/N`** | **IN PROGRESS** |
+| L2.6 step 2 | Full diagonal orthogonality + normalization constant `1/N` | QUEUED |
+| L2.6 step 3 | Irreducible-character orthogonality on `SU(N)` | QUEUED |
 
-The jump from "conditional" to "unconditional strong-coupling" requires proving the cluster decay estimate at large β — tractable but significant (6–12 months at current pace). The jump to unconditional Clay-quality is an open mathematical problem.
+The L2.6 step 1c target file is `YangMills/ClayCore/SchurEntryDiagonal.lean` (currently a scaffold).
+
+For the full picture, see:
+
+- `STATE_OF_THE_PROJECT.md` — global snapshot
+- `UNCONDITIONALITY_ROADMAP.md` — ordered plan to 100 % unconditional
+- `AXIOM_FRONTIER.md` — every remaining conditional axiom, with its physical meaning
+- `PETER_WEYL_ROADMAP.md` — Peter–Weyl / character-theory path beyond L2.6
+- `SORRY_FRONTIER.md` — every remaining `sorry`, with the module and line
 
 ---
 
-## Structure
+## 3. Oracle discipline (scope of the "no sorry" claim)
+
+The `YangMills/ClayCore/` subtree — the L1 + central L2 chain through Schur orthogonality and the trace/Frobenius bound — is held to a strict oracle budget:
+
+    #print axioms <theorem>  ⟹  [propext, Classical.choice, Quot.sound]
+
+No project-specific `axiom`, no `sorry`, nothing beyond Lean's three foundational oracles. Any commit that enlarges the axiom print of a ClayCore theorem is rejected.
+
+**This discipline is scoped to `YangMills/ClayCore/` only.** Peripheral modules that model Balaban RG, Dirichlet / Bakry–Émery, Lie-derivative regularity, and Stroock–Zegarliński-type LSI inputs still carry conditional `axiom` declarations and a small number of `sorry`s. These are the declared physics hypotheses of L3, each tracked individually in `AXIOM_FRONTIER.md` and `SORRY_FRONTIER.md`. The unconditionality roadmap is precisely the plan to eliminate those peripheral entries one at a time, starting from the L1 end.
+
+So: the *core* is oracle-clean today. The *whole project* is not — and we say so out in the open, file by file.
+
+---
+
+## 4. Path to 100 % unconditional — L2.6 step 1c
+
+**Target statement.** For `N ≥ 1` and any matrix entry `(i, j)` of a Haar-distributed `U ∈ SU(N)`,
+
+    ∫_{SU(N)} U_ij · star(U_ij) dμ_Haar = 1 / N
+
+i.e. every entry has squared Haar-norm exactly `1/N`. Together with L2.6 step 1b (off-diagonals vanish) this closes matrix-entry Schur orthogonality on `SU(N)`.
+
+### 4.1 Why this is the right next brick
+
+- **Downstream.** Character orthogonality on `SU(N)` (L2.6 step 3) factors cleanly through entry orthogonality plus the Peter–Weyl decomposition. Without the diagonal `1/N` normalization, every L2 cluster-expansion bound carries an unknown multiplicative constant.
+- **Upstream.** L2.5 already proves `∑_i ∫ |U_ii|² dμ ≤ N` on `SU(N)`. Combined with symmetry across diagonal entries (via a row/column swap in `SU(N)`), this upper bound becomes an *equality* and splits into `1/N` per entry. Step 1c is the place where "≤ N" becomes "= N" becomes "= 1/N each".
+
+### 4.2 Proof strategy in Lean
+
+The file `YangMills/ClayCore/SchurEntryDiagonal.lean` will carry three lemmas, in this order:
+
+1. **`rotPairMat_mem_SU` — a quarter-rotation is special unitary.** For `i ≠ j` define `rotPairMat i j : Matrix (Fin N) (Fin N) ℂ` as the identity everywhere except on the 2×2 block `(i,j)` where it is the real rotation `[[0,−1],[1,0]]`. This matrix is unitary, has determinant `1` (the block has det `1`), and is therefore in `SU(N)`. This is a mechanical check on top of the `rotPairMat` skeleton that already lives in `SchurTwoSitePhase.lean`.
+
+2. **`entry_sq_invariant_under_index_swap`.** For `R := rotPairMat i j`, the map `U ↦ R · U · R⁻¹` is a measure-preserving bijection of `SU(N)` under Haar (by `IsMulLeftInvariant` and `IsMulRightInvariant` of `MeasureTheory.Measure.haar` on the compact group `SU(N)`). Under conjugation by `R`, entry `(i,i)` of `U` is sent to entry `(j,j)` of the conjugated matrix, up to a sign that squares to `1`. Taking `|·|²` and integrating:
+
+        ∫ |U_ii|² dμ  =  ∫ |U_jj|² dμ       for all i, j.
+
+   This is the symmetrization step. It is the one place the argument actually uses the structure of `SU(N)` beyond `U(N)` — we need to know that `rotPairMat i j` is in the subgroup, which is exactly step 1 above.
+
+3. **`sunHaarProb_entry_normSq_eq_inv_N`.** Combine with L2.5:
+
+        N · (∫ |U_11|² dμ)  =  ∑_i ∫ |U_ii|² dμ  =  ∫ ∑_i |U_ii|² dμ  =  ∫ ‖row_1 U‖² dμ  =  1
+
+   (the last equality because every row of a unitary has unit Euclidean norm, pointwise; the Frobenius normalization already proved in L2.5 collapses from `≤ N` to `= N` on the full sum because rows of `U` are unit vectors *pointwise*, not merely on average). Divide by `N` to get `∫ |U_11|² dμ = 1/N`, and apply step 2 to move the index.
+
+### 4.3 Oracle budget
+
+Every lemma in `SchurEntryDiagonal.lean` is required to type-check against
+
+    #print axioms
+      ⟶ [propext, Classical.choice, Quot.sound]
+
+only. The three ingredients used — `SU(N)` group structure (Mathlib), Haar left/right invariance on a compact group (Mathlib), and L2.5's pointwise row-norm identity (already in `SchurL25.lean`) — all pass the oracle check today. Step 1c therefore lands the diagonal Schur integral inside the oracle-clean core.
+
+### 4.4 What step 1c does *not* do
+
+Step 1c does not prove full character orthogonality (`∫ χ_λ · conj χ_μ dμ = δ_{λμ}`) — that is L2.6 step 3, and it goes through Peter–Weyl. It also does not touch any L3 physics hypothesis. Its sole deliverable is the matrix-entry identity `∫ |U_ij|² dμ = 1/N` and the immediate corollary `∫ U_ij · conj U_kl dμ = δ_{ik} δ_{jl} / N` obtained by combining with step 1b.
+
+---
+
+## 5. Repository layout
 
     YangMills/
-      ClayCore/
-        SchurL25.lean                 -- L2.5: trace norm^2 bound
-        SchurDiagPhase.lean           -- L2.6 step 0
-        SchurTwoSitePhase.lean        -- two-site (I, -I, 1, ...) phase
-        SchurOffDiagonal.lean         -- off-diagonal Frobenius term
-        SchurEntryOrthogonality.lean  -- L2.6 steps 1a + 1b-i
-        CharacterExpansion.lean       -- CharacterExpansionData + gap theorem
-        SchurPhysicalBridge.lean      -- physical observable interface
-        CLAY_CORE_STATUS.md           -- deep-dive status on the core layer
-        NEXT_SESSION.md               -- plan for the next work session
-      P8_PhysicalGap/
-        SUN_Compact.lean              -- topology and measurability
+      ClayCore/                    ← oracle-clean core (L1 + central L2)
+        SchurDiagPhase.lean        ← L2.6 step 0
+        SchurTwoSitePhase.lean     ← L2.6 step 1a / 1b
+        SchurOffDiagonal.lean
+        SchurEntryOffDiag.lean     ← L2.6 step 1b (columns, general)
+        SchurEntryOrthogonality.lean
+        SchurEntryDiagonal.lean    ← L2.6 step 1c (current front)
+        SchurL25.lean              ← L2.5 closed
+        SchurNormSquared.lean
+        SchurZeroMean.lean
+        SchurPhysicalBridge.lean
+        CharacterExpansion.lean
+        …                          ← Wilson / Cluster / Balaban / Mayer machinery
+      (peripheral L3 modules: Balaban, Dirichlet, LieDeriv, Hille–Yosida,
+       Bakry–Émery, Stroock–Zegarliński — carry declared axioms + a small
+       number of sorries tracked in AXIOM_FRONTIER.md and SORRY_FRONTIER.md)
+    docs/
+    papers/
+    registry/
+    scripts/
+    dashboard/
+    README.md                      ← this file
+    AXIOM_FRONTIER.md
+    SORRY_FRONTIER.md
+    UNCONDITIONALITY_ROADMAP.md
+    PETER_WEYL_ROADMAP.md
+    STATE_OF_THE_PROJECT.md
+    ROADMAP.md / ROADMAP_MASTER.md
+    HYPOTHESIS_FRONTIER.md
+    DECISIONS.md
+    CONTRIBUTING.md
+    AI_ONBOARDING.md
 
 ---
 
-## Build
+## 6. Building
 
-Full build:
+    lake update
+    lake build YangMills.ClayCore
 
-    lake build
+To verify the oracle budget of a specific theorem:
 
-Single module:
+    -- at the end of any ClayCore file
+    #print axioms your_theorem_name
+    -- expected: [propext, Classical.choice, Quot.sound]
 
-    lake build YangMills.ClayCore.SchurEntryOrthogonality
-
-Oracle check — verify a declaration depends only on Lean's core three axioms. In a scratch `.lean` file:
-
-    import YangMills.ClayCore.SchurEntryOrthogonality
-    #print axioms YangMills.ClayCore.piAntiSymSU_phase
-
-Expected: `depends on axioms: [propext, Classical.choice, Quot.sound]`.
+CI refuses a ClayCore commit that prints any other axiom name.
 
 ---
 
-## Working rules
+## 7. How to contribute
 
-- No `sorry`.
-- No project-specific axioms.
-- Oracle stays `[propext, Classical.choice, Quot.sound]` for all core declarations.
-- Every commit green under `lake build`.
-- Oracle-checked before every commit.
-- Docs (`README.md`, `STATE_OF_THE_PROJECT.md`, `AXIOM_FRONTIER.md`) updated every ~3 commits.
-- Files split at ~150 lines.
+1. Read `AI_ONBOARDING.md` and `CONTRIBUTING.md`.
+2. Pick an entry from `AXIOM_FRONTIER.md` or the current front (`SchurEntryDiagonal.lean`).
+3. Keep `YangMills/ClayCore/` oracle-clean; land physics hypotheses in peripheral modules with a *named* `axiom` declaration and a matching row in `AXIOM_FRONTIER.md`.
+4. Open a PR with a `#print axioms` trace for every theorem added to ClayCore.
 
 ---
 
-## Related files
+## 8. Honesty note
 
-- `STATE_OF_THE_PROJECT.md` — detailed version-by-version progress.
-- `AXIOM_FRONTIER.md` — evolving list of closed/open conditional axioms.
-- `YangMills/ClayCore/CLAY_CORE_STATUS.md` — deep-dive status on the core layer.
-- `YangMills/ClayCore/NEXT_SESSION.md` — plan for the next session.
-
----
-
-Lluis Eriksson — The Eriksson Programme.
+This project will not be considered a full proof of the Clay Yang–Mills mass gap until `AXIOM_FRONTIER.md` is empty and `SORRY_FRONTIER.md` is empty at the same commit, and L3's top theorem `#print axioms`-prints only `[propext, Classical.choice, Quot.sound]`. We are not there yet. L2.6 step 1c is one rung on that ladder — a concrete, oracle-clean one. Every milestone en this README is stated with its exact status and a pointer to the file where it lives, so that any reader can check the gap between claim and proof themselves.
