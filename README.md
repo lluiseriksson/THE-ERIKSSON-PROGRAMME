@@ -29,7 +29,7 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 | **Language** | Lean 4 (`leanprover/lean4:v4.29.0-rc6`) + Mathlib (`master`) |
 | **Core discipline** | `YangMills/ClayCore/` prints only `[propext, Classical.choice, Quot.sound]` |
 | **Current front** | **L2.6 step 3** — Peter–Weyl: extend character inner product from fundamental to arbitrary irreps |
-| **Last closed** | **L2.6 step 3c** — power-sum trace vanishing `∫ tr(U^k) dμ = 0` for `N_c ∤ k` (commit `bf321e4`) |
+| **Last closed** | **L2.6 step 3b** — bilinear trace-power vanishing `∫ (tr U)^j · star((tr U))^k dμ_Haar = 0` on SU(N_c) when `k ≤ j` and `N_c ∤ (j - k)` (commit `70403d1`) |
 | **Last updated** | 2026-04-22 |
 
 ---
@@ -81,6 +81,8 @@ L3    Mass-gap conclusion (with hypotheses)     ▰▰▱▱▱▱▱▱▱▱  
 **Change since previous snapshot (2026-04-22 morning).** L2.6's main target — the character inner product `∫ |tr U|² dμ = 1` — closed at commit `f9ec5e9`, moving L2.6 85 → 95, L2 42 → 50, and overall **40 → 48**. This is the biggest single jump since we began tracking. The bump is backed by an oracle-clean `#print axioms` trace (see §3).
 
 **Follow-up closure (2026-04-22 afternoon).** L2.6 step 2 — the full matrix-entry Schur orthogonality `∫_{SU(N)} U_{ij} · star(U_{kl}) dμ_Haar = δ_{ik} δ_{jl} / N` — closed at commit `95175f3`, moving L2.6 95 → 97 and overall **48 → 50**. This packages the four-case analysis previously deferred as "non-blocking" into a single clean theorem `sunHaarProb_entry_orthogonality` in `SchurEntryFull.lean`, combining step 1b (off-diagonal = 0) and step 1c (diagonal = 1/N) via one `by_cases` on `(i = k ∧ j = l)`. Oracle-clean `[propext, Classical.choice, Quot.sound]`.
+
+**Follow-up closure (2026-04-22 evening).** L2.6 step 3b — the bilinear trace-power vanishing `∫_{SU(N_c)} (tr U)^j · (star (tr U))^k dμ_Haar = 0` when `k ≤ j` and `N_c ∤ (j - k)` — closed at commit `70403d1` in `SchurTracePowBilinear.lean`. This completes the {3a, 3b, 3c} sidecar triplet: 3a handles the pure power `(tr U)^k`, 3c handles the power sum `tr(U^k)`, and 3b now handles the mixed bilinear `(tr U)^j · star(tr U)^k` — the form that actually appears inside character inner products `⟨χ_{V^{⊗j}}, χ_{V^{⊗k}}⟩`. Same central-element argument extended to `ω^{j-k} ≠ 1` (with `j ≥ k` and `N_c ∤ (j-k)`). Seven new theorems total: the helper `rootOfUnity_pow_mul_star_pow`, the transport lemma `trace_scalarCenter_mul_pow_bilinear`, the MAIN `sunHaarProb_trace_pow_bilinear_integral_zero` plus a prime variant with `star` applied to the whole power, two low-degree corollaries (`j=2,k=1` requiring `N_c ≥ 2`; `j=3,k=1` requiring `N_c ≥ 3`), and a non-triviality witness at `U = 1` evaluating to `(N_c)^{j+k}`. Oracle-clean `[propext, Classical.choice, Quot.sound]` for all seven. L2.6 bar unchanged at 97 %; step 3 proper (arbitrary irreps, not just scalar traces and their bilinear products) remains open.
 
 **Strategic note on the step 1c → main-target transition.** The plan previously anticipated a separate "step 2" that packages matrix-entry Schur orthogonality `∫ U_ij · star(U_kl) dμ = (1/N) δ_ik δ_jl`. When the parallel instance inspected the downstream L2 call sites, the statement actually consumed is the **character-level** one: `∫ |tr U|² dμ = 1`. That follows from L2.5's trace decomposition `∫ tr U · star(tr U) = ∑ᵢ ∫ |Uᵢᵢ|²` plus step 1c's diagonal identity `∫ |Uᵢᵢ|² = 1/N`. We therefore went directly to the character-level consumer. Full matrix-entry packaging has now been landed anyway (step 2, commit `95175f3`, theorem `sunHaarProb_entry_orthogonality` in `SchurEntryFull.lean`) — it was not on the critical path, but closing it removes a standing TODO and keeps the `δ_{ik} δ_{jl} / N` form available as public API for any irrep-generalization downstream consumer that prefers it over the character-level reduction.
 
@@ -145,7 +147,7 @@ More generally, for `ρ` and `σ` non-isomorphic irreps,
 
     ⟨χ_ρ, χ_σ⟩  =  0.
 
-**Sidecars already landed: L2.6 steps 3a + 3c.** `YangMills/ClayCore/SchurTracePow.lean` (commit `3c7a957`) proves `∫_{SU(N_c)} (tr U)^k dμ_Haar = 0` whenever `N_c ∤ k`. Representation-theoretically this is the trivial-character component of Peter–Weyl restricted to scalar traces of tensor powers of the fundamental: `(tr U)^k` is the character of `(ℂ^{N_c})^{⊗ k}`, and when `N_c ∤ k` the decomposition contains no `det^{k/N_c}` factor, so no trivial summand appears. The companion file `YangMills/ClayCore/SchurTraceUPow.lean` (commit `bf321e4`) proves the parallel identity `∫_{SU(N_c)} tr(U^k) dμ_Haar = 0` for `N_c ∤ k` — the `k`-th power sum of the eigenvalues, as opposed to the `k`-th power of the first power sum. By Newton’s identities these two families span the same subalgebra of class functions over ℚ, but as integrands each is independent; both follow from the same central-element argument (`Ω = ω·I`, `ω^k ≠ 1` when `N_c ∤ k`). Step 3 proper (arbitrary irreps, not just scalar traces) remains open.
+**Sidecars already landed: L2.6 steps 3a + 3b + 3c.** `YangMills/ClayCore/SchurTracePow.lean` (commit `3c7a957`) proves `∫_{SU(N_c)} (tr U)^k dμ_Haar = 0` whenever `N_c ∤ k`. Representation-theoretically this is the trivial-character component of Peter–Weyl restricted to scalar traces of tensor powers of the fundamental: `(tr U)^k` is the character of `(ℂ^{N_c})^{⊗ k}`, and when `N_c ∤ k` the decomposition contains no `det^{k/N_c}` factor, so no trivial summand appears. The companion file `YangMills/ClayCore/SchurTraceUPow.lean` (commit `bf321e4`) proves the parallel identity `∫_{SU(N_c)} tr(U^k) dμ_Haar = 0` for `N_c ∤ k` — the `k`-th power sum of the eigenvalues, as opposed to the `k`-th power of the first power sum. A third file `YangMills/ClayCore/SchurTracePowBilinear.lean` (commit `70403d1`) closes the *bilinear* case `∫_{SU(N_c)} (tr U)^j · (star (tr U))^k dμ_Haar = 0` whenever `k ≤ j` and `N_c ∤ (j - k)`, extending 3a's single-integrand statement to mixed products with complex conjugates — the exact form that appears inside character inner products `⟨χ_{V^{⊗j}}, χ_{V^{⊗k}}⟩` on tensor powers of the fundamental. By Newton’s identities 3a and 3c span the same subalgebra of class functions over ℚ, but as integrands each is independent; 3b adds the bilinear closure of that subalgebra. All three follow from the same central-element argument (`Ω = ω·I`), with `ω^k ≠ 1` for 3a/3c and `ω^{j-k} ≠ 1` for 3b. Step 3 proper (arbitrary irreps, not just scalar traces and their bilinear products) remains open.
 
 ### 5.1 Why this is the right next brick
 
@@ -188,10 +190,11 @@ Every row is a Lean-checkable statement, not a paper-level claim. Acceptance cri
 | 9 | **L2.6 main target — character inner product `∫ \|tr U\|² dμ = 1`** | **`SchurL26.lean`** | **DONE** | **oracle-clean (commit `f9ec5e9`, 2026-04-22)** |
 | 10 | **L2.6 step 2 — full matrix-entry Schur orthogonality `∫ U_{ij}·star(U_{kl}) dμ = δ_{ik}δ_{jl}/N`** | **`SchurEntryFull.lean`** | **DONE** | **oracle-clean (commit `95175f3`, 2026-04-22)** |
 | 11 | **L2.6 step 3a (sidecar) — trace-power vanishing `∫ (tr U)^k dμ = 0` for `N_c ∤ k`** | **`SchurTracePow.lean`** | **DONE** | **oracle-clean (commit `3c7a957`, 2026-04-22)** |
-| 12 | **L2.6 step 3c (sidecar) — power-sum trace vanishing `∫ tr(U^k) dμ = 0` for `N_c ∤ k`** | **`SchurTraceUPow.lean`** | **DONE** | **oracle-clean (commit `bf321e4`, 2026-04-22)** |
-| 13 | **L2.6 step 3 — Peter–Weyl: character orthogonality for arbitrary irreps** | **`PeterWeyl.lean`** (TBD) | **IN PROGRESS** | oracle-clean; fundamental → irrep generalization |
-| 14 | L2 — Cluster expansion bounds | `CharacterExpansion.lean` + cluster | PARTIAL | retires cluster-axiom entries |
-| 15 | L3 — Mass-gap conclusion theorem | L3 top file | CONDITIONAL | retires L3 axioms one-by-one |
+| 12 | **L2.6 step 3b (sidecar) — bilinear trace-power vanishing `∫ (tr U)^j · star((tr U))^k dμ = 0` for `k ≤ j`, `N_c ∤ (j-k)`** | **`SchurTracePowBilinear.lean`** | **DONE** | **oracle-clean (commit `70403d1`, 2026-04-22)** |
+| 13 | **L2.6 step 3c (sidecar) — power-sum trace vanishing `∫ tr(U^k) dμ = 0` for `N_c ∤ k`** | **`SchurTraceUPow.lean`** | **DONE** | **oracle-clean (commit `bf321e4`, 2026-04-22)** |
+| 14 | **L2.6 step 3 — Peter–Weyl: character orthogonality for arbitrary irreps** | **`PeterWeyl.lean`** (TBD) | **IN PROGRESS** | oracle-clean; fundamental → irrep generalization |
+| 15 | L2 — Cluster expansion bounds | `CharacterExpansion.lean` + cluster | PARTIAL | retires cluster-axiom entries |
+| 16 | L3 — Mass-gap conclusion theorem | L3 top file | CONDITIONAL | retires L3 axioms one-by-one |
 
 The canonical, always-up-to-date version of this table is maintained in `UNCONDITIONALITY_ROADMAP.md`.
 
@@ -210,6 +213,7 @@ The canonical, always-up-to-date version of this table is maintained in `UNCONDI
         SchurL26.lean              ← L2.6 MAIN TARGET  CLOSED (commit f9ec5e9)
         SchurEntryFull.lean        ← L2.6 step 2  CLOSED (commit 95175f3)
         SchurTracePow.lean         ← L2.6 step 3a sidecar  CLOSED (commit 3c7a957)
+        SchurTracePowBilinear.lean ← L2.6 step 3b sidecar  CLOSED (commit 70403d1)
         SchurTraceUPow.lean        ← L2.6 step 3c sidecar  CLOSED (commit bf321e4)
         SchurEntryOrthogonality.lean ← step-1a / 1b-i phase scaffolding
         SchurNormSquared.lean      ← |tr|² structural lemmas
