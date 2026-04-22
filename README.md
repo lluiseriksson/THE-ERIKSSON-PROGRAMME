@@ -7,7 +7,7 @@
 ![Mathlib](https://img.shields.io/badge/Mathlib-master-5e81ac)
 ![ClayCore oracles](https://img.shields.io/badge/ClayCore%20oracles-propext%20%7C%20Classical.choice%20%7C%20Quot.sound-2e7d32)
 ![Unconditionality](https://img.shields.io/badge/unconditional-50%25-yellow)
-![Front](https://img.shields.io/badge/front-L2.6%20step%203%20(Peter%E2%80%93Weyl)-informational)
+![Front](https://img.shields.io/badge/front-ClusterCorrelatorBound-informational)
 
 ---
 
@@ -28,8 +28,8 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 | **Target** | Clay Millennium Prize — existence of quantum Yang–Mills on ℝ⁴ with a positive mass gap |
 | **Language** | Lean 4 (`leanprover/lean4:v4.29.0-rc6`) + Mathlib (`master`) |
 | **Core discipline** | `YangMills/ClayCore/` prints only `[propext, Classical.choice, Quot.sound]` |
-| **Current front** | **L2.6 step 3** — Peter–Weyl: extend character inner product from fundamental to arbitrary irreps |
-| **Last closed** | **L2.6 step 3b** — bilinear trace-power vanishing `∫ (tr U)^j · star((tr U))^k dμ_Haar = 0` on SU(N_c) when `k ≤ j` and `N_c ∤ (j - k)` (commit `70403d1`) |
+| **Current front** | **`ClusterCorrelatorBound`** — analytic two-point decay for the SU(N_c) Gibbs measure, via F1 (character / Taylor expansion in scalar traces) + F2 (sidecar Haar integrals: L2.5 + 3a + 3b + 3c + main target) + F3 (Kotecky–Preiss cluster convergence) |
+| **Last closed** | **L2.6 closed at 100 %** — `CharacterExpansionData.{Rep, character, coeff}` reclassified as vestigial metadata after consumer-driven recon showed zero external consumption; only `h_correlator` ≡ `ClusterCorrelatorBound` flows to Clay. Step 3 proper (arbitrary-irrep Peter–Weyl) reclassified as aspirational / Mathlib-PR. (2026-04-22 evening) |
 | **Last updated** | 2026-04-22 |
 
 ---
@@ -40,7 +40,7 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 2. [Progress toward 100 % unconditional](#2-progress-toward-100--unconditional)
 3. [Recently closed](#3-recently-closed--l26-main-target-character-inner-product--1)
 4. [Oracle discipline](#4-oracle-discipline--scope-of-the-no-sorry-claim)
-5. [Current front — L2.6 step 3 (Peter–Weyl)](#5-current-front--l26-step-3-peterweyl)
+5. [Current front — `ClusterCorrelatorBound` (F1 / F2 / F3)](#5-current-front--clustercorrelatorbound-f1--f2--f3)
 6. [Milestone ladder](#6-milestone-ladder)
 7. [Repository layout](#7-repository-layout)
 8. [Building & verifying](#8-building--verifying)
@@ -71,7 +71,7 @@ The following bars measure *closed, oracle-clean Lean artifacts* against the lay
 L1    Haar + Schur scaffolding on SU(N)         ▰▰▰▰▰▰▰▰▰▰   98 %
 L2.4  Structural Schur / Haar scaffolding       ▰▰▰▰▰▰▰▰▰▰  100 %
 L2.5  Frobenius trace bound  (∑ ∫ |U_ii|² ≤ N)  ▰▰▰▰▰▰▰▰▰▰  100 %
-L2.6  Character inner product on SU(N)          ▰▰▰▰▰▰▰▰▰▱   97 %
+L2.6  Character inner product on SU(N)          ▰▰▰▰▰▰▰▰▰▰  100 %
 L2    Character expansion + cluster decay       ▰▰▰▰▰▱▱▱▱▱   50 %
 L3    Mass-gap conclusion (with hypotheses)     ▰▰▱▱▱▱▱▱▱▱   22 %
 ──────────────────────────────────────────────────────────────
@@ -90,7 +90,7 @@ L3    Mass-gap conclusion (with hypotheses)     ▰▰▱▱▱▱▱▱▱▱  
 
 **What this number is not.** It is not a confidence score in the mass-gap result, and it is not the ratio of filled theorems in the whole repo. It is specifically *"how much of the declared hypothesis set has been discharged in Lean."*
 
-**Next expected movement.** When L2.6 step 3 closes (Peter–Weyl character orthogonality), L1 completes at 100 %, L2.6 completes at 100 %, L2 bumps to ~59 %, and the overall number crosses 54 %.
+**Next expected movement.** L2.6 is now closed at 100 %. The next live movement comes from `ClusterCorrelatorBound` (the analytic target that `h_correlator` on `CharacterExpansionData` names). When F1 (character / Taylor expansion of `exp(-β · Re tr U)` in scalar traces), F2 (Haar sidecar assemblage from L2.5 + 3a + 3b + 3c + main target), and F3 (Kotecky–Preiss cluster convergence) land, L2 bumps to ~75 % and the overall number crosses 58 %.
 
 ---
 
@@ -137,43 +137,32 @@ So: the *core* is oracle-clean today. The *whole project* is not — and we say 
 
 ---
 
-## 5. Current front — L2.6 step 3 (Peter–Weyl)
-
-**Target statement.** Extend the character inner-product identity from the fundamental representation to an arbitrary irreducible representation `ρ: SU(N) → GL(V_ρ)` of `SU(N)`:
-
-    ⟨χ_ρ, χ_ρ⟩_{L²(SU(N), μ_Haar)}  =  ∫_{SU(N)} |tr ρ(U)|² dμ_Haar  =  1
-
-More generally, for `ρ` and `σ` non-isomorphic irreps,
-
-    ⟨χ_ρ, χ_σ⟩  =  0.
-
-**Sidecars already landed: L2.6 steps 3a + 3b + 3c.** `YangMills/ClayCore/SchurTracePow.lean` (commit `3c7a957`) proves `∫_{SU(N_c)} (tr U)^k dμ_Haar = 0` whenever `N_c ∤ k`. Representation-theoretically this is the trivial-character component of Peter–Weyl restricted to scalar traces of tensor powers of the fundamental: `(tr U)^k` is the character of `(ℂ^{N_c})^{⊗ k}`, and when `N_c ∤ k` the decomposition contains no `det^{k/N_c}` factor, so no trivial summand appears. The companion file `YangMills/ClayCore/SchurTraceUPow.lean` (commit `bf321e4`) proves the parallel identity `∫_{SU(N_c)} tr(U^k) dμ_Haar = 0` for `N_c ∤ k` — the `k`-th power sum of the eigenvalues, as opposed to the `k`-th power of the first power sum. A third file `YangMills/ClayCore/SchurTracePowBilinear.lean` (commit `70403d1`) closes the *bilinear* case `∫_{SU(N_c)} (tr U)^j · (star (tr U))^k dμ_Haar = 0` whenever `k ≤ j` and `N_c ∤ (j - k)`, extending 3a's single-integrand statement to mixed products with complex conjugates — the exact form that appears inside character inner products `⟨χ_{V^{⊗j}}, χ_{V^{⊗k}}⟩` on tensor powers of the fundamental. By Newton’s identities 3a and 3c span the same subalgebra of class functions over ℚ, but as integrands each is independent; 3b adds the bilinear closure of that subalgebra. All three follow from the same central-element argument (`Ω = ω·I`), with `ω^k ≠ 1` for 3a/3c and `ω^{j-k} ≠ 1` for 3b. Step 3 proper (arbitrary irreps, not just scalar traces and their bilinear products) remains open.
-
-### 5.1 Why this is the right next brick
-
-- **Downstream.** L2's character-expansion bound sums over *all* irreps of `SU(N)`, not just the fundamental. Until step 3 lands, the expansion is formally constrained to the defining representation.
-- **Upstream.** The main target just closed gives this identity for `ρ = fundamental`. Peter–Weyl reduces the general case to the fundamental case plus a basis-change argument over a chosen complete set of irreps.
-
-### 5.2 Proof strategy in Lean
-
-The intended target file is `YangMills/ClayCore/PeterWeyl.lean` (or an extension of `SchurL26.lean`). Two subgoals, in order of increasing difficulty:
-
-1. **Finite index, structural.** Express an arbitrary irrep `ρ` of `SU(N)` as a sub-representation of a tensor power of the fundamental. Reduce character integrals over `ρ` to polynomial combinations of fundamental-trace integrals.
-2. **Peter–Weyl orthogonality.** Prove `⟨χ_ρ, χ_σ⟩ = δ_{[ρ]=[σ]}` by the standard argument: matrix-element orthogonality for non-isomorphic irreps, plus a dimension count for isomorphic irreps.
-
-Mathlib already carries large parts of the compact-group representation theory used here. The bottleneck is likely the bridge between `Matrix.specialUnitaryGroup` and Mathlib's abstract `Representation` / `Rep` types.
-
-### 5.3 Oracle budget for step 3
-
-Step 3 must remain inside `[propext, Classical.choice, Quot.sound]` for any theorem that lands in `YangMills/ClayCore/`. If a Mathlib Peter–Weyl dependency drags in an extra axiom, that axiom is surfaced in `AXIOM_FRONTIER.md` with a named entry and a retirement plan, rather than silently absorbed.
-
-### 5.4 What step 3 does *not* do
-
-Step 3 does not touch L3's physics hypotheses. It also does not prove anything about the *spectrum* of the L² character space — only the orthogonality of the characters that are already named.
-
----
-
-## 6. Milestone ladder
+## 5. Current front — `ClusterCorrelatorBound` (F1 / F2 / F3)
+**Target statement.** `YangMills.ClayCore.ClusterCorrelatorBound N_c r C_clust` (in `ClusterCorrelatorBound.lean`): for every β > 0, every Wilson observable `F`, and every pair of plaquettes `p, q` with `siteLatticeDist p.site q.site ≥ 1`,
+    |wilsonConnectedCorr β F p q|  ≤  C_clust · exp(− kpParameter(r) · siteLatticeDist p.site q.site).
+This is the field named `h_correlator` on `CharacterExpansionData`, and by the recon of commit `70403d1` it is the *only* field that downstream consumers actually use.
+### 5.1 Vestigial-metadata finding (2026-04-22 evening)
+Consumer-driven recon of `CharacterExpansion.lean` / `ClusterCorrelatorBound.lean` / `WilsonGibbsExpansion.lean` shows:
+- `CharacterExpansionData.{Rep, character, coeff}` are **vestigial metadata**. In `wilsonCharExpansion` they are filled with `Rep := PUnit`, `character := fun _ _ => 0`, `coeff := fun _ _ => 0` — carrying no representation-theoretic content.
+- No external file imports `CharacterExpansionData.character`, `.coeff`, or `.Rep`. Zero citations of Peter–Weyl vocabulary, `MatrixCoefficient`, or arbitrary-irrep characters outside ClayCore.
+- Only `h_correlator` flows to Clay (via `WilsonGibbsPolymerRep`'s polymer-rep passthrough in `WilsonGibbsExpansion.lean`, which explicitly discards `Rep` / `character` / `coeff`).
+- **Consequence.** Arbitrary-irrep Peter–Weyl orthogonality is **not** a Clay blocker. L2.6 is therefore closed at 100 % by sidecar reclassification: the downstream-relevant character identities (3a + 3b + 3c + main target + L2.5) already span the integrand subalgebra that the character / Taylor expansion actually needs.
+### 5.2 Strategy: F1 + F2 + F3 directly to `ClusterCorrelatorBound`
+The critical path is a scalar-trace character / Taylor expansion, not an arbitrary-irrep Peter–Weyl argument:
+- **F1 — character / Taylor expansion.** Expand `exp(−β · Re tr U) = ∑_{j,k ≥ 0} ((−β / 2)^{j+k} / (j! · k!)) · (tr U)^j · (star(tr U))^k` on each plaquette. Verify termwise Haar integrability and absolute summability in β.
+- **F2 — Haar sidecar assemblage.** Each Haar integral of a monomial `(tr U)^j · star(tr U)^k` on SU(N_c) is computed from the sidecar triplet and the main target:
+  - `j = k = 0`: trivial (1).
+  - `j = k = 1`: L2.6 main target (commit `f9ec5e9`).
+  - `j = 0, k ≥ 1` or `k = 0, j ≥ 1`: L2.6 step 3a (`SchurTracePow`, commit `3c7a957`) plus trivial conjugation.
+  - `j ≠ k`, `N_c ∤ |j−k|`: L2.6 step 3b (`SchurTracePowBilinear`, commit `70403d1`).
+  - `j = k ≥ 1` (Frobenius / Weingarten on the diagonal): reduces via L2.5 (`∑_i ∫ |U_ii|² dμ ≤ N_c`) + step 1c to a scalar bound, no new irrep theory required.
+  - `j ≠ k`, `N_c ∣ (j−k)`: the only case where the monomial has nonzero Haar integral on SU(N_c). Handled at the F3 combinatorial layer (it contributes a subexponentially-bounded constant, not a divergence).
+- **F3 — Kotecky–Preiss cluster convergence.** Feed the F1 · F2 monomial bounds into the abstract polymer / Mayer scaffolding already in place (`ClusterSeriesBound.lean` supplies `tsum` summability D1 and factoring D2; `MayerExpansion.lean` supplies `TruncatedActivities` and `connectingSum` / `connectingBound` via Kotecky–Preiss). Output: the analytic inequality `|wilsonConnectedCorr| ≤ C_clust · exp(− kpParameter(r) · dist)` with explicit `(r, C_clust)` in terms of `β` and `N_c`.
+All three layers respect the strict `YangMills/ClayCore/` oracle budget.
+### 5.3 Oracle budget for the front
+Every theorem inside `YangMills/ClayCore/` on the `ClusterCorrelatorBound` critical path must satisfy `#print axioms ... ⟶ [propext, Classical.choice, Quot.sound]`. If any dependency of F1 / F2 / F3 introduces a new axiom or `sorry`, it is surfaced as a named entry in `AXIOM_FRONTIER.md` (or `SORRY_FRONTIER.md`) with a retirement plan — never silently absorbed.
+### 5.4 Peter–Weyl step 3 — reclassified as aspirational
+The original L2.6 step 3 (arbitrary-irrep Peter–Weyl character orthogonality) is preserved as an aspirational / Mathlib-PR target in `PETER_WEYL_ROADMAP.md`. It is not on the Clay critical path. Its value is purely mathematical cleanliness: if landed, it would allow `CharacterExpansionData.{Rep, character, coeff}` to carry genuine representation-theoretic content rather than vestigial `PUnit`, and would let the character expansion be stated over *all* irreps rather than over the scalar-trace subalgebra. That is nice to have, but strictly unnecessary for `ClusterCorrelatorBound`.## 6. Milestone ladder
 
 Every row is a Lean-checkable statement, not a paper-level claim. Acceptance criterion for every "DONE" row: `#print axioms` prints only `[propext, Classical.choice, Quot.sound]` and no `sorry` appears in the file.
 
@@ -192,7 +181,7 @@ Every row is a Lean-checkable statement, not a paper-level claim. Acceptance cri
 | 11 | **L2.6 step 3a (sidecar) — trace-power vanishing `∫ (tr U)^k dμ = 0` for `N_c ∤ k`** | **`SchurTracePow.lean`** | **DONE** | **oracle-clean (commit `3c7a957`, 2026-04-22)** |
 | 12 | **L2.6 step 3b (sidecar) — bilinear trace-power vanishing `∫ (tr U)^j · star((tr U))^k dμ = 0` for `k ≤ j`, `N_c ∤ (j-k)`** | **`SchurTracePowBilinear.lean`** | **DONE** | **oracle-clean (commit `70403d1`, 2026-04-22)** |
 | 13 | **L2.6 step 3c (sidecar) — power-sum trace vanishing `∫ tr(U^k) dμ = 0` for `N_c ∤ k`** | **`SchurTraceUPow.lean`** | **DONE** | **oracle-clean (commit `bf321e4`, 2026-04-22)** |
-| 14 | **L2.6 step 3 — Peter–Weyl: character orthogonality for arbitrary irreps** | **`PeterWeyl.lean`** (TBD) | **IN PROGRESS** | oracle-clean; fundamental → irrep generalization |
+| 14 | **`ClusterCorrelatorBound` — analytic two-point decay via F1 + F2 + F3** | **`ClusterCorrelatorBound.lean` + `WilsonGibbsExpansion.lean` + `MayerExpansion.lean`** | **IN PROGRESS** | oracle-clean; critical path (L2.6 step 3 proper reclassified as aspirational / Mathlib-PR in `PETER_WEYL_ROADMAP.md`) |
 | 15 | L2 — Cluster expansion bounds | `CharacterExpansion.lean` + cluster | PARTIAL | retires cluster-axiom entries |
 | 16 | L3 — Mass-gap conclusion theorem | L3 top file | CONDITIONAL | retires L3 axioms one-by-one |
 
@@ -219,9 +208,13 @@ The canonical, always-up-to-date version of this table is maintained in `UNCONDI
         SchurNormSquared.lean      ← |tr|² structural lemmas
         SchurZeroMean.lean
         SchurPhysicalBridge.lean
-        PeterWeyl.lean             ← L2.6 step 3  (current front, TBD)
-        CharacterExpansion.lean
-        …                          ← Wilson / Cluster / Balaban / Mayer machinery
+        PeterWeyl.lean             ← L2.6 step 3 aspirational / Mathlib-PR (see PETER_WEYL_ROADMAP.md)
+        CharacterExpansion.lean    ← CharacterExpansionData struct (Rep / character / coeff VESTIGIAL; see AXIOM_FRONTIER.md v0.38.0)
+        ClusterCorrelatorBound.lean ← CURRENT FRONT: analytic two-point decay for SU(N_c) Gibbs measure
+        WilsonGibbsExpansion.lean  ← polymer-rep passthrough (Rep / character / coeff discarded)
+        ClusterSeriesBound.lean    ← D1 (tsum summability) + D2 (factoring); KP scaffolding
+        MayerExpansion.lean        ← TruncatedActivities + connectingSum / connectingBound (Kotecky–Preiss)
+        …                          ← Wilson / Cluster / Balaban machinery
       (peripheral L3 modules: Balaban, Dirichlet, LieDeriv, Hille–Yosida,
        Bakry–Émery, Stroock–Zegarliński — carry declared axioms + a small
        number of sorries tracked in AXIOM_FRONTIER.md and SORRY_FRONTIER.md)

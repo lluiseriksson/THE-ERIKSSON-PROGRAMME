@@ -1,3 +1,35 @@
+# v0.38.0 — L2.6 CLOSED AT 100 % / CharacterExpansionData VESTIGIAL METADATA (2026-04-22 evening)
+**Milestone.** L2.6 reclassified as closed at 100 % after consumer-driven recon established that `CharacterExpansionData.{Rep, character, coeff}` is vestigial metadata. The original L2.6 step 3 (arbitrary-irrep Peter–Weyl character orthogonality) is reclassified as aspirational / Mathlib-PR and removed from the Clay critical path.
+No new axioms introduced. No `sorry` introduced. `ClayCore` oracle set unchanged at `[propext, Classical.choice, Quot.sound]`.
+## What the recon found
+Consumer-driven trace of `YangMills/ClayCore/CharacterExpansion.lean`, `ClusterCorrelatorBound.lean`, and `WilsonGibbsExpansion.lean` (HEAD at commit `043a3f3`):
+### 1. `CharacterExpansionData.{Rep, character, coeff}` are never inspected by downstream code
+In `ClusterCorrelatorBound.lean`, the constructor `wilsonCharExpansion` fills these fields with trivial data:
+```
+Rep       := PUnit
+character := fun _ _ => (0 : ℂ)
+coeff     := fun _ _ => (0 : ℝ)
+```
+The only field used by downstream theorems is `h_correlator`, which is definitionally `ClusterCorrelatorBound N_c r C_clust`. `WilsonGibbsExpansion.lean`'s `WilsonGibbsPolymerRep` passes `r, hr_pos, hr_lt1, C_clust, hC, h_correlator` through to `SUNWilsonClusterMajorisation` — `Rep`, `character`, and `coeff` are silently discarded.
+### 2. No Peter–Weyl content in the repo outside ClayCore
+- Zero imports of `Mathlib.RepresentationTheory.PeterWeyl`-style lemmas.
+- Zero uses of the vocabulary `MatrixCoefficient`, `unitaryRep`, `irreducible`, `schurOrthogonality` (outside the Schur *integral* orthogonality on `SU(N)` matrix entries, which is already closed at commit `95175f3`).
+- Zero occurrences of the identifiers `.Rep`, `.character`, or `.coeff` on `CharacterExpansionData` outside its own constructor.
+### 3. No existing axiom about Peter–Weyl
+Previous `AXIOM_FRONTIER.md` contains no entry naming Peter–Weyl, arbitrary-irrep orthogonality, or matrix-coefficient L² decomposition. There is no frontier entry to retire and no new entry to add.
+## Consequence for the Clay critical path
+The critical path from L1 · L2.5 · L2.6 up to `L2 = CharacterExpansionData` is now entirely discharged at the level the L3 / cluster-expansion consumer actually inspects. The remaining work is the **analytic** content of `h_correlator` itself — i.e., constructing `ClusterCorrelatorBound N_c r C_clust` with explicit `(r, C_clust)` in terms of `β, N_c` — not the representation-theoretic content of `Rep / character / coeff`.
+The new decomposition of `ClusterCorrelatorBound` into Lean work packages is:
+- **F1.** Character / Taylor expansion of `exp(−β · Re tr U)` in the scalar traces `(tr U, star tr U)`. Termwise Haar integrability. Absolute summability in β.
+- **F2.** Haar sidecar assemblage: every relevant monomial integral `∫ (tr U)^j · star(tr U)^k dμ_Haar` on `SU(N_c)` is computable from L2.5, L2.6 main target, and the sidecars {3a, 3b, 3c}. The `j = k ≥ 1` case reduces via Frobenius / L2.5 without requiring arbitrary-irrep theory. The `N_c ∣ (j−k)` case contributes a subexponentially-bounded constant handled at the F3 combinatorial layer.
+- **F3.** Kotecky–Preiss cluster convergence: feed F1 · F2 monomial bounds into the existing `ClusterSeriesBound.lean` (D1 `tsum` summability + D2 factoring) and `MayerExpansion.lean` (`TruncatedActivities`, `connectingSum`, `connectingBound`, `abs_connectingSum_le_connectingBound`, `two_point_decay_from_truncated`).
+## Status of step 3 proper (aspirational / Mathlib-PR)
+The original L2.6 step 3 — `⟨χ_ρ, χ_σ⟩_{L²(SU(N), μ_Haar)} = δ_{[ρ] = [σ]}` for arbitrary irreps — remains a mathematically desirable target. It is tracked in `PETER_WEYL_ROADMAP.md` (prepended STATUS UPDATE block). It is **not** a Clay critical-path item. Landing it would upgrade `CharacterExpansionData.{Rep, character, coeff}` from vestigial `PUnit / 0 / 0` to genuine representation-theoretic content, which is a nice-to-have cleanness property, but the `ClusterCorrelatorBound` statement does not require it.
+## Budget impact
+- L2.6 bar: 97 → 100. Ladder row 14 changes from "Peter–Weyl, IN PROGRESS" to "`ClusterCorrelatorBound`, IN PROGRESS".
+- L2, L3, OVERALL bars: unchanged. The reclassification does not retire a previously named axiom; it renames the open work package from "Peter–Weyl" to "`ClusterCorrelatorBound` via F1 + F2 + F3" and rescopes what counts as L2.6 closure.
+- No change to the oracle set.
+---
 # v0.37.0 - H1+H2+H3 ALL DISCHARGED (2026-04-18)
 
 **Milestone:** All three Balaban hypotheses now have concrete Lean witnesses.

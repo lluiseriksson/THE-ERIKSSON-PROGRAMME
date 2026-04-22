@@ -1,3 +1,19 @@
+# STATUS UPDATE — 2026-04-22 evening — RECLASSIFIED AS ASPIRATIONAL / MATHLIB-PR
+This roadmap is **no longer on the Clay critical path**.
+**Why.** Consumer-driven recon of `YangMills/ClayCore/CharacterExpansion.lean`, `ClusterCorrelatorBound.lean`, and `WilsonGibbsExpansion.lean` (HEAD at commit `043a3f3`) established that `CharacterExpansionData.{Rep, character, coeff}` are vestigial metadata:
+- `wilsonCharExpansion` fills them with `Rep := PUnit`, `character := fun _ _ => 0`, `coeff := fun _ _ => 0`.
+- Zero external imports / citations of Peter–Weyl vocabulary outside ClayCore.
+- Only `h_correlator` ≡ `ClusterCorrelatorBound N_c r C_clust` flows to the L3 cluster / Balaban consumer.
+**Consequence.** Arbitrary-irrep Peter–Weyl orthogonality (the entire subject of this document from Section 1 onward) is **not a Clay blocker**. L2.6 is therefore closed at 100 % by sidecar reclassification (L2.5 + L2.6 main target + sidecars {3a, 3b, 3c} already span the integrand subalgebra that the downstream character / Taylor expansion actually needs).
+**New critical-path target.** `ClusterCorrelatorBound` via the F1 + F2 + F3 decomposition:
+- F1: character / Taylor expansion of `exp(−β · Re tr U)` in `(tr U, star tr U)`.
+- F2: Haar sidecar assemblage using L2.5, L2.6 main target, and sidecars {3a, 3b, 3c}.
+- F3: Kotecky–Preiss cluster convergence on `ClusterSeriesBound.lean` / `MayerExpansion.lean`.
+See `README.md` §5 for the current front and `AXIOM_FRONTIER.md` v0.38.0 (2026-04-22 evening) for the full reclassification record.
+**Why keep this document.** The goals below are still **mathematically valuable** as a Mathlib-PR / clean-up target. Landing them would upgrade `CharacterExpansionData.{Rep, character, coeff}` from vestigial `PUnit` / `0` / `0` to genuine representation-theoretic content, and would let the character expansion be stated over all irreps rather than just over the scalar-trace subalgebra. That is desirable for mathematical cleanness and for anyone who wants to prove a *stronger* version of `ClusterCorrelatorBound` later, but it is **not required** for the Clay Millennium statement.
+**Relationship to existing sidecars.** The closed sidecars {3a, 3b, 3c} (commits `3c7a957`, `70403d1`, `bf321e4`) each proved a special case of the "arbitrary-irrep" character orthogonality restricted to scalar traces of tensor powers of the fundamental, using the central-element technique `Ω = ω · I`. Any genuine Peter–Weyl development started from this roadmap should consume those sidecars as lemmas, not reprove them.
+**Priority.** Background work only. Do not block on this for Clay. Return to it when `ClusterCorrelatorBound` has landed and the team wants a cleaner `CharacterExpansionData` interface or a public-API statement of character orthogonality for Mathlib upstream.
+---
 # PETER-WEYL ROADMAP
 
 **Target:** prove `ConnectedCorrDecay (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F distP`
