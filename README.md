@@ -29,7 +29,7 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 | **Language** | Lean 4 (`leanprover/lean4:v4.29.0-rc6`) + Mathlib (`master`) |
 | **Core discipline** | `YangMills/ClayCore/` prints only `[propext, Classical.choice, Quot.sound]` |
 | **Current front** | **L2.6 step 3** — Peter–Weyl: extend character inner product from fundamental to arbitrary irreps |
-| **Last closed** | **L2.6 step 2** — full matrix-entry Schur orthogonality `∫ U_{ij}·star(U_{kl}) dμ = δ_{ik}δ_{jl}/N` (commit `95175f3`) |
+| **Last closed** | **L2.6 step 3a** — trace-power vanishing `∫ (tr U)^k dμ = 0` for `N_c ∤ k` (commit `3c7a957`) |
 | **Last updated** | 2026-04-22 |
 
 ---
@@ -145,6 +145,8 @@ More generally, for `ρ` and `σ` non-isomorphic irreps,
 
     ⟨χ_ρ, χ_σ⟩  =  0.
 
+**Sidecar already landed: L2.6 step 3a.** `YangMills/ClayCore/SchurTracePow.lean` (commit `3c7a957`) proves `∫_{SU(N_c)} (tr U)^k dμ_Haar = 0` whenever `N_c ∤ k`. Representation-theoretically this is the trivial-character component of Peter–Weyl restricted to scalar traces of tensor powers of the fundamental: `(tr U)^k` is the character of `(ℂ^{N_c})^{⊗ k}`, and when `N_c ∤ k` the decomposition contains no `det^{k/N_c}` factor, so no trivial summand appears. Step 3 proper (arbitrary irreps, not just scalar traces) remains open.
+
 ### 5.1 Why this is the right next brick
 
 - **Downstream.** L2's character-expansion bound sums over *all* irreps of `SU(N)`, not just the fundamental. Until step 3 lands, the expansion is formally constrained to the defining representation.
@@ -185,9 +187,10 @@ Every row is a Lean-checkable statement, not a paper-level claim. Acceptance cri
 | 8 | L2.6 step 1c — Diagonal Schur integral `∫ \|U_ij\|² dμ = 1/N` | `SchurEntryDiagonal.lean` | DONE | oracle-clean (commit `d22a6b8`, 2026-04-22) |
 | 9 | **L2.6 main target — character inner product `∫ \|tr U\|² dμ = 1`** | **`SchurL26.lean`** | **DONE** | **oracle-clean (commit `f9ec5e9`, 2026-04-22)** |
 | 10 | **L2.6 step 2 — full matrix-entry Schur orthogonality `∫ U_{ij}·star(U_{kl}) dμ = δ_{ik}δ_{jl}/N`** | **`SchurEntryFull.lean`** | **DONE** | **oracle-clean (commit `95175f3`, 2026-04-22)** |
-| 11 | **L2.6 step 3 — Peter–Weyl: character orthogonality for arbitrary irreps** | **`PeterWeyl.lean`** (TBD) | **IN PROGRESS** | oracle-clean; fundamental → irrep generalization |
-| 12 | L2 — Cluster expansion bounds | `CharacterExpansion.lean` + cluster | PARTIAL | retires cluster-axiom entries |
-| 13 | L3 — Mass-gap conclusion theorem | L3 top file | CONDITIONAL | retires L3 axioms one-by-one |
+| 11 | **L2.6 step 3a (sidecar) — trace-power vanishing `∫ (tr U)^k dμ = 0` for `N_c ∤ k`** | **`SchurTracePow.lean`** | **DONE** | **oracle-clean (commit `3c7a957`, 2026-04-22)** |
+| 12 | **L2.6 step 3 — Peter–Weyl: character orthogonality for arbitrary irreps** | **`PeterWeyl.lean`** (TBD) | **IN PROGRESS** | oracle-clean; fundamental → irrep generalization |
+| 13 | L2 — Cluster expansion bounds | `CharacterExpansion.lean` + cluster | PARTIAL | retires cluster-axiom entries |
+| 14 | L3 — Mass-gap conclusion theorem | L3 top file | CONDITIONAL | retires L3 axioms one-by-one |
 
 The canonical, always-up-to-date version of this table is maintained in `UNCONDITIONALITY_ROADMAP.md`.
 
@@ -205,6 +208,7 @@ The canonical, always-up-to-date version of this table is maintained in `UNCONDI
         SchurL25.lean              ← L2.5 closed (trace decomposition)
         SchurL26.lean              ← L2.6 MAIN TARGET  CLOSED (commit f9ec5e9)
         SchurEntryFull.lean        ← L2.6 step 2  CLOSED (commit 95175f3)
+        SchurTracePow.lean         ← L2.6 step 3a sidecar  CLOSED (commit 3c7a957)
         SchurEntryOrthogonality.lean ← step-1a / 1b-i phase scaffolding
         SchurNormSquared.lean      ← |tr|² structural lemmas
         SchurZeroMean.lean
