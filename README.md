@@ -6,7 +6,7 @@
 ![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-0052CC)
 ![Mathlib](https://img.shields.io/badge/Mathlib-master-5e81ac)
 ![ClayCore oracles](https://img.shields.io/badge/ClayCore%20oracles-propext%20%7C%20Classical.choice%20%7C%20Quot.sound-2e7d32)
-![Unconditionality](https://img.shields.io/badge/unconditional-48%25-yellow)
+![Unconditionality](https://img.shields.io/badge/unconditional-50%25-yellow)
 ![Front](https://img.shields.io/badge/front-L2.6%20step%203%20(Peter%E2%80%93Weyl)-informational)
 
 ---
@@ -29,7 +29,7 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 | **Language** | Lean 4 (`leanprover/lean4:v4.29.0-rc6`) + Mathlib (`master`) |
 | **Core discipline** | `YangMills/ClayCore/` prints only `[propext, Classical.choice, Quot.sound]` |
 | **Current front** | **L2.6 step 3** — Peter–Weyl: extend character inner product from fundamental to arbitrary irreps |
-| **Last closed** | **L2.6 main target** — `∫_{SU(N)} \|tr U\|² dμ = 1` (commit `f9ec5e9`) |
+| **Last closed** | **L2.6 step 2** — full matrix-entry Schur orthogonality `∫ U_{ij}·star(U_{kl}) dμ = δ_{ik}δ_{jl}/N` (commit `95175f3`) |
 | **Last updated** | 2026-04-22 |
 
 ---
@@ -71,22 +71,24 @@ The following bars measure *closed, oracle-clean Lean artifacts* against the lay
 L1    Haar + Schur scaffolding on SU(N)         ▰▰▰▰▰▰▰▰▰▰   98 %
 L2.4  Structural Schur / Haar scaffolding       ▰▰▰▰▰▰▰▰▰▰  100 %
 L2.5  Frobenius trace bound  (∑ ∫ |U_ii|² ≤ N)  ▰▰▰▰▰▰▰▰▰▰  100 %
-L2.6  Character inner product on SU(N)          ▰▰▰▰▰▰▰▰▰▱   95 %
+L2.6  Character inner product on SU(N)          ▰▰▰▰▰▰▰▰▰▱   97 %
 L2    Character expansion + cluster decay       ▰▰▰▰▰▱▱▱▱▱   50 %
 L3    Mass-gap conclusion (with hypotheses)     ▰▰▱▱▱▱▱▱▱▱   22 %
 ──────────────────────────────────────────────────────────────
-      OVERALL unconditionality                  ▰▰▰▰▰▱▱▱▱▱   48 %
+      OVERALL unconditionality                  ▰▰▰▰▰▱▱▱▱▱   50 %
 ```
 
 **Change since previous snapshot (2026-04-22 morning).** L2.6's main target — the character inner product `∫ |tr U|² dμ = 1` — closed at commit `f9ec5e9`, moving L2.6 85 → 95, L2 42 → 50, and overall **40 → 48**. This is the biggest single jump since we began tracking. The bump is backed by an oracle-clean `#print axioms` trace (see §3).
 
-**Strategic note on the step 1c → main-target transition.** The plan previously anticipated a separate "step 2" that packages matrix-entry Schur orthogonality `∫ U_ij · star(U_kl) dμ = (1/N) δ_ik δ_jl`. When the parallel instance inspected the downstream L2 call sites, the statement actually consumed is the **character-level** one: `∫ |tr U|² dμ = 1`. That follows from L2.5's trace decomposition `∫ tr U · star(tr U) = ∑ᵢ ∫ |Uᵢᵢ|²` plus step 1c's diagonal identity `∫ |Uᵢᵢ|² = 1/N`. We therefore went directly to the character-level consumer. Full matrix-entry packaging remains available if irrep generality ever requires it, but is not blocking.
+**Follow-up closure (2026-04-22 afternoon).** L2.6 step 2 — the full matrix-entry Schur orthogonality `∫_{SU(N)} U_{ij} · star(U_{kl}) dμ_Haar = δ_{ik} δ_{jl} / N` — closed at commit `95175f3`, moving L2.6 95 → 97 and overall **48 → 50**. This packages the four-case analysis previously deferred as "non-blocking" into a single clean theorem `sunHaarProb_entry_orthogonality` in `SchurEntryFull.lean`, combining step 1b (off-diagonal = 0) and step 1c (diagonal = 1/N) via one `by_cases` on `(i = k ∧ j = l)`. Oracle-clean `[propext, Classical.choice, Quot.sound]`.
+
+**Strategic note on the step 1c → main-target transition.** The plan previously anticipated a separate "step 2" that packages matrix-entry Schur orthogonality `∫ U_ij · star(U_kl) dμ = (1/N) δ_ik δ_jl`. When the parallel instance inspected the downstream L2 call sites, the statement actually consumed is the **character-level** one: `∫ |tr U|² dμ = 1`. That follows from L2.5's trace decomposition `∫ tr U · star(tr U) = ∑ᵢ ∫ |Uᵢᵢ|²` plus step 1c's diagonal identity `∫ |Uᵢᵢ|² = 1/N`. We therefore went directly to the character-level consumer. Full matrix-entry packaging has now been landed anyway (step 2, commit `95175f3`, theorem `sunHaarProb_entry_orthogonality` in `SchurEntryFull.lean`) — it was not on the critical path, but closing it removes a standing TODO and keeps the `δ_{ik} δ_{jl} / N` form available as public API for any irrep-generalization downstream consumer that prefers it over the character-level reduction.
 
 **How the overall number is computed.** Each layer's percentage is the ratio of oracle-clean, sorry-free Lean artifacts to that layer's planned artifact count in `UNCONDITIONALITY_ROADMAP.md`. The overall number weights the layers by their total frontier-entry count in `AXIOM_FRONTIER.md` + `SORRY_FRONTIER.md`. The metric is **monotone by design**: it cannot go up except by retiring a named frontier entry, and it cannot go down unless a previously closed lemma regresses in CI.
 
 **What this number is not.** It is not a confidence score in the mass-gap result, and it is not the ratio of filled theorems in the whole repo. It is specifically *"how much of the declared hypothesis set has been discharged in Lean."*
 
-**Next expected movement.** When L2.6 step 3 closes (Peter–Weyl character orthogonality), L1 completes at 100 %, L2.6 completes at 100 %, L2 bumps to ~58 %, and the overall number crosses 52 %.
+**Next expected movement.** When L2.6 step 3 closes (Peter–Weyl character orthogonality), L1 completes at 100 %, L2.6 completes at 100 %, L2 bumps to ~59 %, and the overall number crosses 54 %.
 
 ---
 
@@ -182,9 +184,10 @@ Every row is a Lean-checkable statement, not a paper-level claim. Acceptance cri
 | 7 | L2.6 step 1b (column + general) — Off-diagonal Schur orthogonality | `SchurEntryOffDiag.lean` | DONE | oracle-clean (commit `0143c37`) |
 | 8 | L2.6 step 1c — Diagonal Schur integral `∫ \|U_ij\|² dμ = 1/N` | `SchurEntryDiagonal.lean` | DONE | oracle-clean (commit `d22a6b8`, 2026-04-22) |
 | 9 | **L2.6 main target — character inner product `∫ \|tr U\|² dμ = 1`** | **`SchurL26.lean`** | **DONE** | **oracle-clean (commit `f9ec5e9`, 2026-04-22)** |
-| 10 | **L2.6 step 3 — Peter–Weyl: character orthogonality for arbitrary irreps** | **`PeterWeyl.lean`** (TBD) | **IN PROGRESS** | oracle-clean; fundamental → irrep generalization |
-| 11 | L2 — Cluster expansion bounds | `CharacterExpansion.lean` + cluster | PARTIAL | retires cluster-axiom entries |
-| 12 | L3 — Mass-gap conclusion theorem | L3 top file | CONDITIONAL | retires L3 axioms one-by-one |
+| 10 | **L2.6 step 2 — full matrix-entry Schur orthogonality `∫ U_{ij}·star(U_{kl}) dμ = δ_{ik}δ_{jl}/N`** | **`SchurEntryFull.lean`** | **DONE** | **oracle-clean (commit `95175f3`, 2026-04-22)** |
+| 11 | **L2.6 step 3 — Peter–Weyl: character orthogonality for arbitrary irreps** | **`PeterWeyl.lean`** (TBD) | **IN PROGRESS** | oracle-clean; fundamental → irrep generalization |
+| 12 | L2 — Cluster expansion bounds | `CharacterExpansion.lean` + cluster | PARTIAL | retires cluster-axiom entries |
+| 13 | L3 — Mass-gap conclusion theorem | L3 top file | CONDITIONAL | retires L3 axioms one-by-one |
 
 The canonical, always-up-to-date version of this table is maintained in `UNCONDITIONALITY_ROADMAP.md`.
 
@@ -201,6 +204,7 @@ The canonical, always-up-to-date version of this table is maintained in `UNCONDI
         SchurEntryDiagonal.lean    ← L2.6 step 1c  CLOSED (commit d22a6b8)
         SchurL25.lean              ← L2.5 closed (trace decomposition)
         SchurL26.lean              ← L2.6 MAIN TARGET  CLOSED (commit f9ec5e9)
+        SchurEntryFull.lean        ← L2.6 step 2  CLOSED (commit 95175f3)
         SchurEntryOrthogonality.lean ← step-1a / 1b-i phase scaffolding
         SchurNormSquared.lean      ← |tr|² structural lemmas
         SchurZeroMean.lean
