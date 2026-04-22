@@ -6,15 +6,15 @@
 ![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-0052CC)
 ![Mathlib](https://img.shields.io/badge/Mathlib-master-5e81ac)
 ![ClayCore oracles](https://img.shields.io/badge/ClayCore%20oracles-propext%20%7C%20Classical.choice%20%7C%20Quot.sound-2e7d32)
-![Unconditionality](https://img.shields.io/badge/unconditional-40%25-orange)
-![Front](https://img.shields.io/badge/front-L2.6%20step%202-informational)
+![Unconditionality](https://img.shields.io/badge/unconditional-48%25-yellow)
+![Front](https://img.shields.io/badge/front-L2.6%20step%203%20(Peter%E2%80%93Weyl)-informational)
 
 ---
 
 ## TL;DR
 
-- **What works today, oracle-clean.** The L1 layer — Haar measure on `SU(N)` + Schur orthogonality on matrix entries, **through L2.6 step 1c** — type-checks against only `[propext, Classical.choice, Quot.sound]`. Every diagonal entry of a Haar-distributed `U ∈ SU(N)` now has `∫ |U_ij|² dμ = 1/N` as a Lean theorem.
-- **What's next.** L2.6 step 2 packages full matrix-entry Schur orthogonality by combining step 1b (off-diagonals vanish) with step 1c (diagonals `= 1/N`). After that, step 3 goes to irreducible-character orthogonality via Peter–Weyl.
+- **What works today, oracle-clean.** The L1 layer — Haar measure on `SU(N)` + Schur orthogonality on matrix entries — is closed, and **L2.6's main target has just landed**: the character inner product `⟨χ_fund, χ_fund⟩ = ∫_{SU(N)} |tr U|² dμ_Haar = 1` is a Lean theorem with `#print axioms` ⟹ `[propext, Classical.choice, Quot.sound]`. This is the statement every downstream cluster-expansion bound actually cites.
+- **What's next.** L2.6 step 3 — extend the character inner-product identity from the fundamental representation to arbitrary irreducible representations, via the Peter–Weyl decomposition. That retires the final internal dependency of the L1 ↦ L2 bridge on a specific irrep.
 - **What's not yet unconditional.** The L3 mass-gap conclusion still depends on declared physics hypotheses — Balaban RG, Dirichlet / Bakry–Émery, Lie-derivative regularity, Stroock–Zegarliński LSI. Every one of them is named in `AXIOM_FRONTIER.md`. The unconditionality roadmap retires them one at a time.
 
 This repository is **not** a finished proof of the Clay Yang–Mills mass gap. It is a structured, transparent push toward one, where every remaining assumption is *named* and the core machinery is held to a strict three-oracle budget. The `#print axioms` trace is the ground truth.
@@ -28,8 +28,8 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 | **Target** | Clay Millennium Prize — existence of quantum Yang–Mills on ℝ⁴ with a positive mass gap |
 | **Language** | Lean 4 (`leanprover/lean4:v4.29.0-rc6`) + Mathlib (`master`) |
 | **Core discipline** | `YangMills/ClayCore/` prints only `[propext, Classical.choice, Quot.sound]` |
-| **Current front** | **L2.6 step 2** — full matrix-entry Schur orthogonality `∫ U_ij · conj U_kl dμ = δ_ik δ_jl / N` |
-| **Last closed** | **L2.6 step 1c** — diagonal Schur integral `∫ \|U_ij\|² dμ = 1/N` (commit `d22a6b8`) |
+| **Current front** | **L2.6 step 3** — Peter–Weyl: extend character inner product from fundamental to arbitrary irreps |
+| **Last closed** | **L2.6 main target** — `∫_{SU(N)} \|tr U\|² dμ = 1` (commit `f9ec5e9`) |
 | **Last updated** | 2026-04-22 |
 
 ---
@@ -38,9 +38,9 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 
 1. [What this repository is](#1-what-this-repository-is)
 2. [Progress toward 100 % unconditional](#2-progress-toward-100--unconditional)
-3. [Recently closed](#3-recently-closed)
+3. [Recently closed](#3-recently-closed--l26-main-target-character-inner-product--1)
 4. [Oracle discipline](#4-oracle-discipline--scope-of-the-no-sorry-claim)
-5. [Current front — L2.6 step 2](#5-current-front--l26-step-2)
+5. [Current front — L2.6 step 3 (Peter–Weyl)](#5-current-front--l26-step-3-peterweyl)
 6. [Milestone ladder](#6-milestone-ladder)
 7. [Repository layout](#7-repository-layout)
 8. [Building & verifying](#8-building--verifying)
@@ -55,8 +55,8 @@ The repository formalizes, in Lean 4 + Mathlib, the chain of analytic and repres
 
 The formal content is split into three layers:
 
-- **L1 — Haar + Schur on `SU(N)`.** The base layer. Haar probability measure, left/right invariance, and Schur orthogonality for matrix coefficients of unitary irreducible representations. This is the layer where the current front (L2.6 step 2) lives.
-- **L2 — Character expansion and cluster decay.** Wilson-loop expansions, polymer / Mayer expansions, exponential cluster bounds. Builds on L1 but is structurally separable.
+- **L1 — Haar + Schur on `SU(N)`.** The base layer. Haar probability measure, left/right invariance, Schur orthogonality for matrix coefficients, and the character inner product for the fundamental representation. This is now closed for the fundamental representation as of L2.6's main target.
+- **L2 — Character expansion and cluster decay.** Wilson-loop expansions, polymer / Mayer expansions, exponential cluster bounds. Builds on L1 but is structurally separable. The current front (L2.6 step 3 / Peter–Weyl) is the last remaining internal L1→L2 bridge.
 - **L3 — Mass-gap conclusion.** The final logical step: from L1 + L2 (plus conditional physical hypotheses collected as `CharacterExpansionData` and `h_correlator`) to a two-point-function bound giving a mass gap.
 
 The conditional structure is intentional. Every physics hypothesis that is *not* fully Lean-checked yet is surfaced as a named `structure` field or a named `axiom`, and lives in `AXIOM_FRONTIER.md`. L3's final statement takes those as hypotheses; the goal of the unconditionality roadmap is to discharge them one by one inside L1–L2.
@@ -71,53 +71,57 @@ The following bars measure *closed, oracle-clean Lean artifacts* against the lay
 L1    Haar + Schur scaffolding on SU(N)         ▰▰▰▰▰▰▰▰▰▰   98 %
 L2.4  Structural Schur / Haar scaffolding       ▰▰▰▰▰▰▰▰▰▰  100 %
 L2.5  Frobenius trace bound  (∑ ∫ |U_ii|² ≤ N)  ▰▰▰▰▰▰▰▰▰▰  100 %
-L2.6  Schur orthogonality on SU(N)              ▰▰▰▰▰▰▰▰▰▱   85 %
-L2    Character expansion + cluster decay       ▰▰▰▰▱▱▱▱▱▱   42 %
+L2.6  Character inner product on SU(N)          ▰▰▰▰▰▰▰▰▰▱   95 %
+L2    Character expansion + cluster decay       ▰▰▰▰▰▱▱▱▱▱   50 %
 L3    Mass-gap conclusion (with hypotheses)     ▰▰▱▱▱▱▱▱▱▱   22 %
 ──────────────────────────────────────────────────────────────
-      OVERALL unconditionality                  ▰▰▰▰▱▱▱▱▱▱   40 %
+      OVERALL unconditionality                  ▰▰▰▰▰▱▱▱▱▱   48 %
 ```
 
-**Change since previous snapshot (2026-04-22 morning).** L2.6 step 1c closed at commit `d22a6b8`, moving L1 92 → 98, L2.6 68 → 85, L2 38 → 42, and overall **34 → 40**. All bumps are backed by an oracle-clean `#print axioms` trace (see §3).
+**Change since previous snapshot (2026-04-22 morning).** L2.6's main target — the character inner product `∫ |tr U|² dμ = 1` — closed at commit `f9ec5e9`, moving L2.6 85 → 95, L2 42 → 50, and overall **40 → 48**. This is the biggest single jump since we began tracking. The bump is backed by an oracle-clean `#print axioms` trace (see §3).
+
+**Strategic note on the step 1c → main-target transition.** The plan previously anticipated a separate "step 2" that packages matrix-entry Schur orthogonality `∫ U_ij · star(U_kl) dμ = (1/N) δ_ik δ_jl`. When the parallel instance inspected the downstream L2 call sites, the statement actually consumed is the **character-level** one: `∫ |tr U|² dμ = 1`. That follows from L2.5's trace decomposition `∫ tr U · star(tr U) = ∑ᵢ ∫ |Uᵢᵢ|²` plus step 1c's diagonal identity `∫ |Uᵢᵢ|² = 1/N`. We therefore went directly to the character-level consumer. Full matrix-entry packaging remains available if irrep generality ever requires it, but is not blocking.
 
 **How the overall number is computed.** Each layer's percentage is the ratio of oracle-clean, sorry-free Lean artifacts to that layer's planned artifact count in `UNCONDITIONALITY_ROADMAP.md`. The overall number weights the layers by their total frontier-entry count in `AXIOM_FRONTIER.md` + `SORRY_FRONTIER.md`. The metric is **monotone by design**: it cannot go up except by retiring a named frontier entry, and it cannot go down unless a previously closed lemma regresses in CI.
 
 **What this number is not.** It is not a confidence score in the mass-gap result, and it is not the ratio of filled theorems in the whole repo. It is specifically *"how much of the declared hypothesis set has been discharged in Lean."*
 
-**Next expected movement.** When L2.6 step 2 closes, the L2.6 row moves 85 → ~92 and the overall number moves 40 → ~42. When L2.6 step 3 closes (Peter–Weyl character orthogonality), L1 completes at 100 %, L2.6 completes at 100 %, and the overall number crosses 50 %.
+**Next expected movement.** When L2.6 step 3 closes (Peter–Weyl character orthogonality), L1 completes at 100 %, L2.6 completes at 100 %, L2 bumps to ~58 %, and the overall number crosses 52 %.
 
 ---
 
-## 3. Recently closed
+## 3. Recently closed — L2.6 main target (character inner product = 1)
 
-### L2.6 step 1c — diagonal Schur integral (commit `d22a6b8`, 2026-04-22)
+### L2.6 main target — character inner product for the fundamental representation (commit `f9ec5e9`, 2026-04-22)
 
-**Theorem.** `YangMills.ClayCore.sunHaarProb_entry_normSq_eq_inv_N` in `YangMills/ClayCore/SchurEntryDiagonal.lean`:
+**Theorem.** `YangMills.ClayCore.sunHaarProb_trace_normSq_integral_eq_one` in `YangMills/ClayCore/SchurL26.lean`:
 
-    ∀ i j : Fin N,
-      ∫ U, U.val i j · star (U.val i j) ∂(sunHaarProb N) = 1 / (N : ℂ)
+    ∫_{SU(N)} Complex.normSq (U.val.trace) ∂(sunHaarProb N) = 1
+
+Equivalently, `⟨χ_fund, χ_fund⟩_{L²(SU(N), μ_Haar)} = 1`, i.e. the fundamental character has unit `L²` norm against Haar measure.
 
 **Oracle trace (verified in CI).**
 
-    #print axioms YangMills.ClayCore.sunHaarProb_entry_normSq_eq_inv_N
+    #print axioms YangMills.ClayCore.sunHaarProb_trace_normSq_integral_eq_one
     ⟶ [propext, Classical.choice, Quot.sound]
 
-**Proof architecture (3 rounds, 298 lines, 0 sorry, 0 new axioms).**
+    #print axioms YangMills.ClayCore.diag_normSq_integral_eq_inv_N
+    ⟶ [propext, Classical.choice, Quot.sound]
 
-1. **`rotPairMat i j`** — the quarter-rotation matrix with the 2×2 block `[[0, −1], [1, 0]]` on rows/columns `(i, j)` and identity elsewhere. Unitarity is proven entry-by-entry.
-2. **`rotPairSU hij`** — `rotPairMat` packaged as an element of `Matrix.specialUnitaryGroup (Fin N) ℂ` after proving `det = 1` via `rotPairMat_eq_diag_mul_perm` + `Matrix.det_permutation` + `Equiv.Perm.sign_swap`.
-3. **`sunHaarProb_entry_normSq_eq_inv_N`** — combines
-   - the row-squared-sum identity `∑_k U_ik · star U_ik = 1` (from `U * star U = I`, diagonal entry);
-   - column symmetry `∫ |U_ij|² dμ = ∫ |U_ii|² dμ` via right-invariance of Haar under `rotPairSU`;
-   - `N · ∫ |U_11|² dμ = ∫ ∑_k |U_1k|² dμ = 1`, divide by `N`.
+**Proof architecture (1 new file, 2 theorems, 0 sorry, 0 new axioms).**
 
-**Impact on the unconditionality ladder.** Together with L2.6 step 1b (off-diagonals vanish, commit `0143c37`), this is the analytic content of matrix-entry Schur orthogonality on `SU(N)`. L2.6 step 2 is now a packaging step.
+1. **Trace decomposition (L2.5).** `integral_trace_mul_conj_trace_eq_sum` expands `∫ tr U · star(tr U) dμ = ∑ᵢⱼ ∫ Uᵢᵢ · star Uⱼⱼ dμ`. The off-diagonal sum collapses to the diagonal via `SchurOffDiagonal.sunHaarProb_offdiag_integral_zero` (two-site phase argument).
+2. **Diagonal identity (step 1c).** `sunHaarProb_entry_normSq_eq_inv_N` gives `∫ |Uᵢᵢ|² dμ = 1/N` for every diagonal entry.
+3. **New bridge lemma `diag_normSq_integral_eq_inv_N`.** Rewrites the diagonal integrand `Uᵢᵢ · star Uᵢᵢ` as `(normSq Uᵢᵢ : ℂ)` and reduces to step 1c.
+4. **`sunHaarProb_trace_normSq_integral_eq_one`.** Sums the diagonal, gets `N · (1/N) = 1`, and pulls the `ofReal` out of the integral by the `integral_congr_ae` + `integral_ofReal` pattern (same template as `SchurL25.diag_integral_ofReal`).
+
+**Impact on the unconditionality ladder.** This is the first L1 → L2 interface statement that L2's cluster expansion actually consumes. It closes L2.6 at the fundamental-representation level. The only remaining L2.6 work is generalization to arbitrary irreps via Peter–Weyl (step 3).
 
 ---
 
 ## 4. Oracle discipline — scope of the "no sorry" claim
 
-The `YangMills/ClayCore/` subtree — the L1 + central L2 chain through Schur orthogonality and the trace/Frobenius bound — is held to a strict oracle budget:
+The `YangMills/ClayCore/` subtree — the L1 + central L2 chain through Schur orthogonality, the trace/Frobenius bound, and now the character inner product — is held to a strict oracle budget:
 
     #print axioms <theorem>  ⟹  [propext, Classical.choice, Quot.sound]
 
@@ -129,35 +133,37 @@ So: the *core* is oracle-clean today. The *whole project* is not — and we say 
 
 ---
 
-## 5. Current front — L2.6 step 2
+## 5. Current front — L2.6 step 3 (Peter–Weyl)
 
-**Target statement.** For `N ≥ 1` and any indices `(i, j, k, l)` of a Haar-distributed `U ∈ SU(N)`,
+**Target statement.** Extend the character inner-product identity from the fundamental representation to an arbitrary irreducible representation `ρ: SU(N) → GL(V_ρ)` of `SU(N)`:
 
-    ∫_{SU(N)} U_ij · star(U_kl) dμ_Haar = (1 / N) · δ_{ik} · δ_{jl}
+    ⟨χ_ρ, χ_ρ⟩_{L²(SU(N), μ_Haar)}  =  ∫_{SU(N)} |tr ρ(U)|² dμ_Haar  =  1
 
-i.e. the full matrix-entry Schur orthogonality identity on `SU(N)`.
+More generally, for `ρ` and `σ` non-isomorphic irreps,
+
+    ⟨χ_ρ, χ_σ⟩  =  0.
 
 ### 5.1 Why this is the right next brick
 
-- **Downstream.** This is the statement every L2 cluster-expansion bound expects to cite. Until step 2 lands, any expansion downstream carries an unknown normalization constant on the two-point function.
-- **Upstream.** Step 1b (commit `0143c37`) and step 1c (commit `d22a6b8`) between them already establish the four cases — diagonal `(i, j) = (k, l)` gives `1/N`; the three off-diagonal cases all vanish. Step 2 is the packaging: a single theorem that case-analyzes and invokes the right sub-lemma.
+- **Downstream.** L2's character-expansion bound sums over *all* irreps of `SU(N)`, not just the fundamental. Until step 3 lands, the expansion is formally constrained to the defining representation.
+- **Upstream.** The main target just closed gives this identity for `ρ = fundamental`. Peter–Weyl reduces the general case to the fundamental case plus a basis-change argument over a chosen complete set of irreps.
 
 ### 5.2 Proof strategy in Lean
 
-The target file is `YangMills/ClayCore/SchurEntryOrthogonality.lean`. One theorem, essentially one `match` on the four cases:
+The intended target file is `YangMills/ClayCore/PeterWeyl.lean` (or an extension of `SchurL26.lean`). Two subgoals, in order of increasing difficulty:
 
-1. `i = k ∧ j = l` → apply `sunHaarProb_entry_normSq_eq_inv_N` (step 1c) and simplify `δ_{ii} · δ_{jj} = 1`.
-2. `i = k ∧ j ≠ l` → apply the column-orthogonality sub-lemma of step 1b.
-3. `i ≠ k ∧ j = l` → apply the row-orthogonality sub-lemma of step 1b.
-4. `i ≠ k ∧ j ≠ l` → apply the general off-diagonal sub-lemma of step 1b (entry version).
+1. **Finite index, structural.** Express an arbitrary irrep `ρ` of `SU(N)` as a sub-representation of a tensor power of the fundamental. Reduce character integrals over `ρ` to polynomial combinations of fundamental-trace integrals.
+2. **Peter–Weyl orthogonality.** Prove `⟨χ_ρ, χ_σ⟩ = δ_{[ρ]=[σ]}` by the standard argument: matrix-element orthogonality for non-isomorphic irreps, plus a dimension count for isomorphic irreps.
 
-### 5.3 Oracle budget for step 2
+Mathlib already carries large parts of the compact-group representation theory used here. The bottleneck is likely the bridge between `Matrix.specialUnitaryGroup` and Mathlib's abstract `Representation` / `Rep` types.
 
-Step 2 calls only theorems already committed and oracle-clean. It therefore lands inside the `YangMills/ClayCore/` oracle budget by construction, provided no Mathlib extension beyond what step 1b and step 1c already import is needed. Expected: hours, not days.
+### 5.3 Oracle budget for step 3
 
-### 5.4 What step 2 does *not* do
+Step 3 must remain inside `[propext, Classical.choice, Quot.sound]` for any theorem that lands in `YangMills/ClayCore/`. If a Mathlib Peter–Weyl dependency drags in an extra axiom, that axiom is surfaced in `AXIOM_FRONTIER.md` with a named entry and a retirement plan, rather than silently absorbed.
 
-Step 2 does not prove irreducible-character orthogonality `∫ χ_λ · conj χ_μ dμ = δ_{λμ}`. That is L2.6 step 3, and it goes through the Peter–Weyl decomposition. It also does not touch any L3 physics hypothesis.
+### 5.4 What step 3 does *not* do
+
+Step 3 does not touch L3's physics hypotheses. It also does not prove anything about the *spectrum* of the L² character space — only the orthogonality of the characters that are already named.
 
 ---
 
@@ -174,9 +180,9 @@ Every row is a Lean-checkable statement, not a paper-level claim. Acceptance cri
 | 5 | L2.6 step 1b-i — `exp(I·π) = −1` for the two-site phase | `SchurTwoSitePhase.lean` | DONE | oracle-clean |
 | 6 | L2.6 step 1b-ii — Off-diagonal entry integral vanishes | `SchurEntryOffDiag.lean` | DONE | oracle-clean |
 | 7 | L2.6 step 1b (column + general) — Off-diagonal Schur orthogonality | `SchurEntryOffDiag.lean` | DONE | oracle-clean (commit `0143c37`) |
-| 8 | L2.6 step 1c — Diagonal Schur integral `∫ \|U_ij\|² dμ = 1/N` | `SchurEntryDiagonal.lean` | **DONE** | **oracle-clean (commit `d22a6b8`, 2026-04-22)** |
-| 9 | **L2.6 step 2 — Full matrix-entry Schur orthogonality** | **`SchurEntryOrthogonality.lean`** | **IN PROGRESS** | oracle-clean; combines 1b + 1c by case analysis |
-| 10 | L2.6 step 3 — Irreducible-character orthogonality on SU(N) | TBD (Peter–Weyl path) | QUEUED | oracle-clean; Peter–Weyl decomposition |
+| 8 | L2.6 step 1c — Diagonal Schur integral `∫ \|U_ij\|² dμ = 1/N` | `SchurEntryDiagonal.lean` | DONE | oracle-clean (commit `d22a6b8`, 2026-04-22) |
+| 9 | **L2.6 main target — character inner product `∫ \|tr U\|² dμ = 1`** | **`SchurL26.lean`** | **DONE** | **oracle-clean (commit `f9ec5e9`, 2026-04-22)** |
+| 10 | **L2.6 step 3 — Peter–Weyl: character orthogonality for arbitrary irreps** | **`PeterWeyl.lean`** (TBD) | **IN PROGRESS** | oracle-clean; fundamental → irrep generalization |
 | 11 | L2 — Cluster expansion bounds | `CharacterExpansion.lean` + cluster | PARTIAL | retires cluster-axiom entries |
 | 12 | L3 — Mass-gap conclusion theorem | L3 top file | CONDITIONAL | retires L3 axioms one-by-one |
 
@@ -190,14 +196,16 @@ The canonical, always-up-to-date version of this table is maintained in `UNCONDI
       ClayCore/                    ← oracle-clean core (L1 + central L2)
         SchurDiagPhase.lean        ← L2.6 step 0
         SchurTwoSitePhase.lean     ← L2.6 step 1a / 1b-i
-        SchurOffDiagonal.lean
+        SchurOffDiagonal.lean      ← two-site phase vanishing
         SchurEntryOffDiag.lean     ← L2.6 step 1b (column + general)
         SchurEntryDiagonal.lean    ← L2.6 step 1c  CLOSED (commit d22a6b8)
-        SchurEntryOrthogonality.lean ← L2.6 step 2  (current front)
-        SchurL25.lean              ← L2.5 closed
-        SchurNormSquared.lean
+        SchurL25.lean              ← L2.5 closed (trace decomposition)
+        SchurL26.lean              ← L2.6 MAIN TARGET  CLOSED (commit f9ec5e9)
+        SchurEntryOrthogonality.lean ← step-1a / 1b-i phase scaffolding
+        SchurNormSquared.lean      ← |tr|² structural lemmas
         SchurZeroMean.lean
         SchurPhysicalBridge.lean
+        PeterWeyl.lean             ← L2.6 step 3  (current front, TBD)
         CharacterExpansion.lean
         …                          ← Wilson / Cluster / Balaban / Mayer machinery
       (peripheral L3 modules: Balaban, Dirichlet, LieDeriv, Hille–Yosida,
@@ -232,11 +240,11 @@ To verify the oracle budget of a specific theorem, add at the end of any ClayCor
     #print axioms your_theorem_name
     -- expected: [propext, Classical.choice, Quot.sound]
 
-CI refuses a `YangMills/ClayCore/` commit que imprima otro axioma.
+CI refuses a `YangMills/ClayCore/` commit that prints any other axiom name.
 
 Example trace for the most recently closed core theorem:
 
-    #print axioms YangMills.ClayCore.sunHaarProb_entry_normSq_eq_inv_N
+    #print axioms YangMills.ClayCore.sunHaarProb_trace_normSq_integral_eq_one
     ⟶ [propext, Classical.choice, Quot.sound]
 
 ---
@@ -244,7 +252,7 @@ Example trace for the most recently closed core theorem:
 ## 9. How to contribute
 
 1. Read `AI_ONBOARDING.md` and `CONTRIBUTING.md`.
-2. Pick an entry from `AXIOM_FRONTIER.md` or the current front (`SchurEntryOrthogonality.lean`).
+2. Pick an entry from `AXIOM_FRONTIER.md` or the current front (`PeterWeyl.lean`, to be created).
 3. Keep `YangMills/ClayCore/` oracle-clean. Land physics hypotheses in peripheral modules with a *named* `axiom` declaration and a matching row in `AXIOM_FRONTIER.md`.
 4. Open a PR with a `#print axioms` trace for every theorem added to ClayCore.
 5. If your PR retires a frontier entry, delete the entry from `AXIOM_FRONTIER.md` (or `SORRY_FRONTIER.md`) in the same commit, and bump the relevant bar in §2 of this README.
@@ -255,6 +263,6 @@ Example trace for the most recently closed core theorem:
 
 This project will not be considered a full proof of the Clay Yang–Mills mass gap until `AXIOM_FRONTIER.md` is empty and `SORRY_FRONTIER.md` is empty at the same commit, and L3's top theorem `#print axioms`-prints only `[propext, Classical.choice, Quot.sound]`. We are not there yet.
 
-L2.6 step 1c (commit `d22a6b8`) is one rung on that ladder — a concrete, oracle-clean one. L2.6 step 2 is the next. Every milestone in this README is stated with its exact status and a pointer to the file where it lives, so that any reader can check the gap between claim and proof themselves.
+L2.6's main target (commit `f9ec5e9`) is one rung on that ladder — a concrete, oracle-clean one, and the first L1→L2 interface statement the downstream cluster expansion actually consumes. L2.6 step 3 (Peter–Weyl) is the next. Every milestone in this README is stated with its exact status and a pointer to the file where it lives, so that any reader can check the gap between claim and proof themselves.
 
 If you spot a gap between a claim and a proof here, open an issue. **Transparency over polish.**
