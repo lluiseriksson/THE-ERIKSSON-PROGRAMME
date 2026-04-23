@@ -4,7 +4,16 @@ import YangMills.ClayCore.SmallFieldBound
 /-! # Large-Field Polymer Activity Bound (H2 discharged)
 
 Source: Paper [55] (Eriksson 2602.0069) Theorem 8.5, Eq (51)-(52).
-Primary: Balaban CMP 122 II, Eq (1.98)-(1.100). -/
+Primary: Balaban CMP 122 II, Eq (1.98)-(1.100).
+
+v0.42.0 / Phase 3 / Task #7 P2c: the `h_dominated` field of
+`LargeFieldActivityBound` is refactored from the over-strong
+`∀ E0 > 0, exp(-p0) ≤ E0 * g^2` quantifier to a fixed-constant form
+`exp(-p0) ≤ E0 * g^2` with `E0` and `hE0 : 0 < E0` exposed as struct
+fields. This matches what `superPoly_dominance_at_specific` produces
+for a chosen small-enough coupling, and lets the consumer at
+`balabanHyps_of_bounds` bridge the two sides via an equality
+`hE0_eq : sfb.consts.E0 = lfb.E0`. -/
 
 namespace YangMills
 open Real
@@ -34,7 +43,12 @@ noncomputable def simpleLargeFieldProfile : LargeFieldProfile where
     have h : Real.log g < 0 := Real.log_neg hg_pos hg_lt1
     linarith
 
-/-- Large-field activity bound structure, Theorem 8.5 of Paper [55]. -/
+/-- Large-field activity bound structure, Theorem 8.5 of Paper [55].
+
+    Post-P2c: the `h_dominated` field carries a fixed dominance constant
+    `E0` (exposed as a struct field) rather than the over-strong
+    `∀ E0 > 0` quantifier. Witnesses are produced by
+    `YangMills.superPoly_dominance_at_specific` for a chosen coupling. -/
 structure LargeFieldActivityBound (N_c : Nat) [NeZero N_c] where
   profile : LargeFieldProfile
   kappa : Real
@@ -42,10 +56,11 @@ structure LargeFieldActivityBound (N_c : Nat) [NeZero N_c] where
   g_bar : Real
   hg_pos : 0 < g_bar
   hg_lt1 : g_bar < 1
+  E0 : Real
+  hE0 : 0 < E0
   h_lf_bound : forall (n : Nat), exists R : Real, 0 <= R ∧
     R <= Real.exp (-(profile.eval g_bar)) * Real.exp (-kappa * n)
-  h_dominated : forall (E0 : Real), 0 < E0 ->
-    Real.exp (-(profile.eval g_bar)) <= E0 * g_bar ^ 2
+  h_dominated : Real.exp (-(profile.eval g_bar)) <= E0 * g_bar ^ 2
 
 /-- From LargeFieldActivityBound, construct BalabanH2. -/
 noncomputable def h2_of_large_field_bound {N_c : Nat} [NeZero N_c]
@@ -64,19 +79,24 @@ theorem h2_from_large_field {N_c : Nat} [NeZero N_c]
     exists h2 : BalabanH2 N_c, h2.g_bar = lfb.g_bar :=
   ⟨h2_of_large_field_bound lfb, rfl⟩
 
-/-- Dominance condition from LargeFieldActivityBound. -/
+/-- Dominance condition from LargeFieldActivityBound. Post-P2c: the
+    dominance constant `E0` is the one exposed as a struct field. -/
 theorem lf_dominance_gives_hlf_le {N_c : Nat} [NeZero N_c]
-    (lfb : LargeFieldActivityBound N_c)
-    (E0 : Real) (hE0 : 0 < E0) :
-    Real.exp (-(lfb.profile.eval lfb.g_bar)) <= E0 * lfb.g_bar ^ 2 :=
-  lfb.h_dominated E0 hE0
+    (lfb : LargeFieldActivityBound N_c) :
+    Real.exp (-(lfb.profile.eval lfb.g_bar)) <= lfb.E0 * lfb.g_bar ^ 2 :=
+  lfb.h_dominated
 
-/-- Assemble full BalabanHyps from small-field + large-field bounds. -/
+/-- Assemble full BalabanHyps from small-field + large-field bounds.
+
+    Post-P2c: consumers must provide `hE0_eq : sfb.consts.E0 = lfb.E0`
+    to connect the small-field dominance constant with the large-field
+    one. -/
 noncomputable def balabanHyps_of_bounds {N_c : Nat} [NeZero N_c]
     (sfb : SmallFieldActivityBound N_c)
     (lfb : LargeFieldActivityBound N_c)
     (hg_eq : sfb.consts.g_bar = lfb.g_bar)
-    (hk_eq : sfb.consts.kappa = lfb.kappa) :
+    (hk_eq : sfb.consts.kappa = lfb.kappa)
+    (hE0_eq : sfb.consts.E0 = lfb.E0) :
     BalabanHyps N_c where
   h1 := h1_of_small_field_bound sfb
   h2 := h2_of_large_field_bound lfb
@@ -84,17 +104,17 @@ noncomputable def balabanHyps_of_bounds {N_c : Nat} [NeZero N_c]
   hg_eq := hg_eq
   hk_eq := hk_eq
   hlf_le := by
-    have hdom := lfb.h_dominated sfb.consts.E0 sfb.consts.hE0
     show Real.exp (-lfb.profile.eval lfb.g_bar) <= sfb.consts.E0 * sfb.consts.g_bar ^ 2
-    rw [hg_eq]; exact hdom
+    rw [hg_eq, hE0_eq]; exact lfb.h_dominated
 
 /-- All three Balaban hypotheses from concrete bounds. -/
 theorem all_balaban_hyps_from_bounds {N_c : Nat} [NeZero N_c]
     (sfb : SmallFieldActivityBound N_c)
     (lfb : LargeFieldActivityBound N_c)
     (hg_eq : sfb.consts.g_bar = lfb.g_bar)
-    (hk_eq : sfb.consts.kappa = lfb.kappa) :
+    (hk_eq : sfb.consts.kappa = lfb.kappa)
+    (hE0_eq : sfb.consts.E0 = lfb.E0) :
     exists hyps : BalabanHyps N_c, hyps.h2.g_bar = lfb.g_bar :=
-  ⟨balabanHyps_of_bounds sfb lfb hg_eq hk_eq, rfl⟩
+  ⟨balabanHyps_of_bounds sfb lfb hg_eq hk_eq hE0_eq, rfl⟩
 
 end YangMills

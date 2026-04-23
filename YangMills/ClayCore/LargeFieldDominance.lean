@@ -15,10 +15,11 @@ for every `E > 0` at sufficiently small `g ∈ (0, 1)`.
 This retires the *analytic* content of the `h_dominated` field of
 `LargeFieldActivityBound`: for any fixed E > 0 (e.g. the E₀ of the
 companion small-field bound), the super-polynomial profile dominates at
-every small enough coupling. The Lean structural integration
-(`LargeFieldActivityBound`'s current `forall E0, …` quantifier is
-structurally over-strong and needs a separate refactor to expose a
-fixed E₀) is tracked as a follow-up; the analytic core lands here.
+every small enough coupling. Paired with the P2c structural refactor
+(v0.42.0), the `h_dominated` field of `LargeFieldActivityBound` now
+carries a fixed `E₀` (exposed as a struct field) and is discharged
+directly by `superPoly_dominance_at_specific` at a chosen small-enough
+coupling.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`.
 No `sorry`. No new axioms.
