@@ -1,4 +1,4 @@
-import YangMills.ClayCore.BalabanRG.P91CorrectedWindowPublicShim
+﻿import YangMills.ClayCore.BalabanRG.P91CorrectedWindowPublicShim
 import YangMills.ClayCore.BalabanRG.P91CorrectedWindowConsumerPacket
 import YangMills.ClayCore.BalabanRG.P91LegacyRouteCounterexample
 import YangMills.ClayCore.BalabanRG.RGIncrementDecayP81ClusterExpansionWitness
@@ -187,3 +187,4 @@ import YangMills.L8_Terminal.FeynmanKacTheoremBundle
 import YangMills.L8_Terminal.ConnectedCorrDecayTheoremBundle
 import YangMills.ClayCore.SchurTwoSitePhase
 import YangMills.ClayCore.SchurOffDiagonal
+import YangMills.ClayCore.ConnectedCorrDecay
