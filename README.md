@@ -29,7 +29,7 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 | **Language** | Lean 4 (`leanprover/lean4:v4.29.0-rc6`) + Mathlib (`master`) |
 | **Core discipline** | `YangMills/ClayCore/` prints only `[propext, Classical.choice, Quot.sound]` |
 | **Current front** | **`ClusterCorrelatorBound`** — analytic two-point decay for the SU(N_c) Gibbs measure, via F1 (character / Taylor expansion in scalar traces) + F2 (sidecar Haar integrals: L2.5 + 3a + 3b + 3c + main target) + F3 (Kotecky–Preiss cluster convergence) |
-| **Last closed** | **N_c = 1 unconditional witness** — `ClayYangMillsMassGap 1` is inhabited oracle-clean with zero hypotheses via `AbelianU1Unconditional.lean`, leveraging `Subsingleton (Matrix.specialUnitaryGroup (Fin 1) ℂ)`. First concrete inhabitant of the Clay statement in this repository. (2026-04-23) |
+| **Last closed** | **ConnectedCorrDecay first-class abstraction (P1)** — the deferred comment at `SchurPhysicalBridge.lean:28` is promoted to a named Lean structure `ConnectedCorrDecay (N_c : ℕ) [NeZero N_c]` in `YangMills/ClayCore/ConnectedCorrDecay.lean`. The U(1) unconditional witness now routes to `ClayYangMillsTheorem` under the physically-meaningful name via `unconditional_U1_ConnectedCorrDecay_clayTheorem`, and the N_c ≥ 2 analytic routes (Osterwalder–Seiler, Kotecký–Preiss, Balaban RG) share the common consumer hub `ConnectedCorrDecay.ofClayWitnessHyp : ClayWitnessHyp N_c → ConnectedCorrDecay N_c`. Round-trip projections to/from `ClayYangMillsMassGap` are field-for-field `rfl`. Oracle: `[propext, Classical.choice, Quot.sound]`. (2026-04-23) |
 | **Last updated** | 2026-04-23 |
 
 ---

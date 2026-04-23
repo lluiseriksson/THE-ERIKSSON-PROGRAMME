@@ -1,3 +1,44 @@
+# v0.40.0 — CONNECTEDCORRDECAY FIRST-CLASS ABSTRACTION (P1) (2026-04-23)
+
+**Milestone.** The deferred comment at `SchurPhysicalBridge.lean:28` (referring to `fundamentalObservable_ConnectedCorrDecay`) is promoted to a named Lean structure `ConnectedCorrDecay (N_c : ℕ) [NeZero N_c]` in a new file `YangMills/ClayCore/ConnectedCorrDecay.lean`. Both the U(1) unconditional route and the N_c ≥ 2 analytic routes (Osterwalder–Seiler reflection positivity, Kotecký–Preiss cluster convergence, Balaban RG) now target a common, physically-meaningful name.
+
+**Scope.** Field content of `ConnectedCorrDecay N_c` is structurally identical to `ClayYangMillsMassGap N_c` (same `m, hm, C, hC, hbound` signature). The abstraction is a naming / API layer for consumer clarity; it does not add or retire analytic content. Round-trip projections `ConnectedCorrDecay.ofClayMassGap` / `ConnectedCorrDecay.toClayMassGap` hold field-for-field (`rfl`).
+
+**No frontier entry retired.** Named entries in this file and in `SORRY_FRONTIER.md` are scoped to analytic obligations at `N_c ≥ 2` (small-field activity, large-field activity, super-polynomial growth of `p₀(g)`). The abstraction layer is a naming / API improvement; it does not discharge any previously named analytic item. L1 / L2 / L3 / OVERALL bars do not move.
+
+**Artefacts (all oracle-clean).**
+
+- `YangMills.ConnectedCorrDecay` — `ℕ → Type` structure, field-for-field identical to `ClayYangMillsMassGap`.
+- `YangMills.ConnectedCorrDecay.ofClayMassGap` / `.toClayMassGap` — round-trip projections (`rfl`).
+- `YangMills.ConnectedCorrDecay.ofClayMassGap_toClayMassGap` / `.toClayMassGap_ofClayMassGap` — round-trip `@[simp]` lemmas.
+- `YangMills.ConnectedCorrDecay.clayTheorem` — terminal `ConnectedCorrDecay N_c → ClayYangMillsTheorem`.
+- `YangMills.ConnectedCorrDecay.ofClayWitnessHyp` — consumer hub for OS / KP / Balaban routes at `N_c ≥ 2`: `ClayWitnessHyp N_c → ConnectedCorrDecay N_c`.
+- `YangMills.unconditional_U1_ConnectedCorrDecay` — `ConnectedCorrDecay 1`, the unconditional U(1) witness under the physically-meaningful name.
+- `YangMills.unconditional_U1_ConnectedCorrDecay_clayTheorem` — `ClayYangMillsTheorem` produced from the U(1) `ConnectedCorrDecay` witness; fully unconditional.
+- Companion reductions: `ofClayWitnessHyp_mass_eq` (mass gap = `kpParameter hyp.r`), `ofClayWitnessHyp_prefactor_eq` (prefactor = `hyp.C_clust`), `unconditional_U1_ConnectedCorrDecay_mass_eq` (mass = `kpParameter (1/2)`), `unconditional_U1_ConnectedCorrDecay_mass_pos`, `unconditional_U1_ConnectedCorrDecay_prefactor_eq` (= 1).
+
+**Oracle verification** (`#print axioms`, emitted at EOF of `YangMills/ClayCore/ConnectedCorrDecay.lean`):
+
+```
+unconditional_U1_ConnectedCorrDecay             → [propext, Classical.choice, Quot.sound]
+unconditional_U1_ConnectedCorrDecay_clayTheorem → [propext, Classical.choice, Quot.sound]
+```
+
+**Core observation.** Promoting the deferred comment to a first-class abstraction exposes `ConnectedCorrDecay.ofClayWitnessHyp : ClayWitnessHyp N_c → ConnectedCorrDecay N_c` as the canonical consumer hub: every future analytic route that produces a `ClayWitnessHyp N_c` (Osterwalder–Seiler duality, Kotecký–Preiss in strong coupling, Balaban RG in weak coupling) discharges `ConnectedCorrDecay N_c` for free, without touching ClayCore plumbing.
+
+**Interpretation.** The Clay conclusion is now exposed under two equivalent names:
+
+- Structural / existential: `ClayYangMillsMassGap N_c` — "there exist `m > 0, C > 0` so that the uniform two-plaquette exponential clustering bound holds".
+- Physical / named: `ConnectedCorrDecay N_c` — "uniform exponential clustering of the connected Wilson two-plaquette correlator against every bounded class observable, at every positive inverse coupling β, every spacetime dimension d, every lattice size L, and every plaquette pair separated by at least one lattice unit".
+
+The U(1) unconditional witness is now available under the physically-meaningful name, and routes to the Clay terminal `ClayYangMillsTheorem` via `ConnectedCorrDecay.clayTheorem`. Field-for-field round-trip lemmas guarantee that consumers can freely switch between the two names without proof obligations.
+
+**Oracle set unchanged:** `[propext, Classical.choice, Quot.sound]`.
+
+**No sorry. No new axioms. No frontier entry retired or added.**
+
+---
+
 # v0.39.0 — N_c = 1 UNCONDITIONAL WITNESS (ClayYangMillsMassGap 1 inhabited oracle-clean) (2026-04-23)
 
 **Milestone.** First concrete inhabitant of `ClayYangMillsMassGap N_c` has landed at `N_c = 1` in `YangMills/ClayCore/AbelianU1Unconditional.lean`. The witness is fully unconditional: zero hypotheses, zero `sorry`, `#print axioms` on all six produced artefacts returns exactly `[propext, Classical.choice, Quot.sound]`.
