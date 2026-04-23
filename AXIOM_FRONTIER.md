@@ -1,3 +1,92 @@
+# v0.43.0 — P2e-α: LargeFieldActivityBound.ofSuperPoly CONSTRUCTOR
+
+**Released: 2026-04-23**
+
+## What
+
+Phase 3 / Task #7 sub-target P2e-α: the super-polynomial dominance lemma
+(P2a, v0.41.0 analytic core) and the fixed-`E0` struct shape (P2c,
+v0.42.0 structural refactor) are wired together into a first-class
+constructor
+
+```
+noncomputable def LargeFieldActivityBound.ofSuperPoly
+    {N_c : Nat} [NeZero N_c]
+    (A : ℝ) (hA : 0 < A) (p : ℝ) (hp : 1 < p)
+    (E : ℝ) (hE : 0 < E)
+    (kappa : ℝ) (hkappa : 0 < kappa)
+    (h_lf_bound_at : …) : LargeFieldActivityBound N_c
+```
+
+in `YangMills/ClayCore/LargeFieldDominance.lean`. The constructor chooses
+a small-enough coupling via `superPoly_dominance_at_specific`, extracts
+the witness `g` and its spec via `Classical.choose` / `Classical.choose_spec`,
+packages the `superPolyProfile A hA p hp` into the `profile` field, and
+discharges `h_dominated` directly from `spec.2.2` after a one-step sign
+normalisation `-(A * …) = -A * …` (`by ring`).
+
+Commit: `3be3c4c` · File: `YangMills/ClayCore/LargeFieldDominance.lean`
+(+39/−0) · Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+## Why
+
+P2a produced the analytic inequality and P2c shaped the target struct;
+without a concrete constructor, downstream code had no way to actually
+produce a `LargeFieldActivityBound N_c` term from the dominance lemma. P2e-α
+closes that gap in a single term-mode definition. The caller supplies the
+uniform RG/cluster-expansion large-field activity bound (`h_lf_bound_at`,
+still the P2e main target, multi-week); this constructor wires dominance
++ activity into a first-class struct value, ready to be paired with a
+companion `SmallFieldActivityBound` and fed into `balabanHyps_of_bounds`
+(per the P2c API shape, with `hE0_eq : sfb.consts.E0 = lfb.E0`).
+
+## How
+
+- **New def** `LargeFieldActivityBound.ofSuperPoly` inserted inside the
+  `section` that contains `superPolyProfile`, `superPoly_dominance`, and
+  `superPoly_dominance_at_specific` (between the last `linarith` of the
+  latter's proof body and the section's closing `end`).
+- **New top-level declaration** `#print axioms
+  YangMills.LargeFieldActivityBound.ofSuperPoly` appended after the
+  existing three `#print axioms` lines; build-time oracle confirmation.
+- **Dominance extraction**:
+  `let dom := superPoly_dominance_at_specific hA hp hE` →
+  `g := Classical.choose dom`, `spec := Classical.choose_spec dom`.
+  `spec.1 : 0 < g`, `spec.2.1 : g < 1`,
+  `spec.2.2 : Real.exp (-A * (Real.log (g⁻¹ ^ 2)) ^ p) ≤ E * g ^ 2`.
+- **`h_dominated` field** discharged via
+  `show Real.exp (-(A * (Real.log (g⁻¹ ^ 2)) ^ p)) ≤ E * g ^ 2` (defn
+  equality against the struct's projected `profile.eval g`), followed by
+  `have h_neg : -(A * …) = -A * … := by ring; rw [h_neg]; exact spec.2.2`.
+
+Build: `lake build YangMills.ClayCore.LargeFieldDominance` → 8164/8164
+jobs green. Oracle prints for all four top-level decls in the module
+(`superPolyProfile`, `superPoly_dominance`,
+`superPoly_dominance_at_specific`, `LargeFieldActivityBound.ofSuperPoly`)
+remain exactly `[propext, Classical.choice, Quot.sound]`.
+
+## Scope of change
+
+Pure additive; no API modifications elsewhere. The new constructor is a
+top-level def that does not alter the signature of any existing decl.
+Zero downstream breakage by construction.
+
+## What remains
+
+- **P2d** (multi-week): retire `h_sf` (Balaban CMP 116 Lemma 3 /
+  small-field activity bound). Independent of P2e.
+- **P2e main** (multi-week): retire `h_lf_bound` (Balaban CMP 122 II
+  Eq 1.98–1.100 / large-field activity via RG + cluster expansion). The
+  P2e-α constructor is the preparatory shape; P2e main supplies the
+  `h_lf_bound_at` argument uniformly in `g`, unlocking a concrete
+  `LargeFieldActivityBound N_c` term without any remaining assumptions.
+
+Oracle invariant remains `[propext, Classical.choice, Quot.sound]`.
+No new axioms. No `sorry`.
+
+---
+
+
 # v0.42.0 — P2c: LargeFieldActivityBound.h_dominated FIXED-E0 REFACTOR
 
 **Released: 2026-04-23**
