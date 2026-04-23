@@ -152,4 +152,63 @@ theorem balabanH1_from_wilson_activity
     ∃ h1 : BalabanH1 N_c, h1.g_bar = wab.r :=
   ⟨h1_of_small_field_bound (smallFieldBound_of_wilsonActivity wab), rfl⟩
 
+/-! ### P2d-α: enriched constructor with nontrivial polymer activity
+
+v0.44.0 / Phase 3 / Task #7 P2d-α: pure-additive enriched constructor
+`SmallFieldActivityBound.ofWilsonActivity` that carries the polymer
+prefactor `A₀` and decay rate `r` from `WilsonPolymerActivityBound`
+into a *nontrivial* activity profile `activity n := A₀ · r^(n+2)`,
+rather than the trivially-zero shortcut of the legacy
+`smallFieldBound_of_wilsonActivity`.
+
+Constants:
+- `E₀ := A₀ + 1`   (ensures `0 < E₀` even when `A₀ = 0`),
+- `κ := -log r`    (positive since `0 < r < 1`),
+- `ḡ := r`         (directly carries the polymer decay rate).
+
+The activity bound
+`A₀ · r^(n+2) ≤ (A₀ + 1) · r^2 · exp(-(-log r)·n)`
+reduces to `A₀ ≤ A₀ + 1` after normalising
+`exp(-(-log r) · n) = r^n` and `r^(n+2) = r^n · r^2`.
+
+This does **not** retire `WilsonPolymerActivityBound.h_bound`; that
+abstract amplitude inequality (Balaban CMP 116 Lemma 3 analytic content)
+remains a struct-hypothesis field. What changes: the small-field
+`activity` is now semantically tied to the polymer pair `(A₀, r)`
+instead of identically zero — matching the Balaban small-field
+activity "macro shape" without bypassing any assumptions. -/
+noncomputable def SmallFieldActivityBound.ofWilsonActivity
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c) :
+    SmallFieldActivityBound N_c where
+  consts :=
+    { E0     := wab.A₀ + 1
+    , hE0    := by linarith [wab.hA₀]
+    , kappa  := -Real.log wab.r
+    , hkappa := neg_pos.mpr (Real.log_neg wab.hr_pos wab.hr_lt1)
+    , g_bar  := wab.r
+    , hg_pos := wab.hr_pos
+    , hg_lt1 := wab.hr_lt1 }
+  activity := fun n => wab.A₀ * wab.r ^ (n + 2)
+  hact_nn  := fun n => by
+    have hr_nn : 0 ≤ wab.r := le_of_lt wab.hr_pos
+    have hpow : 0 ≤ wab.r ^ (n + 2) := pow_nonneg hr_nn _
+    nlinarith [wab.hA₀, hpow]
+  hact_bd  := fun n => by
+    have hr_pos : 0 < wab.r := wab.hr_pos
+    have hrn_pos : 0 < wab.r ^ n := pow_pos hr_pos n
+    have hr2_pos : 0 < wab.r ^ 2 := pow_pos hr_pos 2
+    have hexp : Real.exp (-(-Real.log wab.r) * (n : ℝ)) = wab.r ^ n := by
+      rw [neg_neg]
+      rw [show Real.log wab.r * (n : ℝ) = Real.log (wab.r ^ n) by
+        rw [Real.log_pow]; ring]
+      exact Real.exp_log hrn_pos
+    have hpow : wab.r ^ (n + 2) = wab.r ^ n * wab.r ^ 2 := by rw [pow_add]
+    rw [hpow, hexp]
+    nlinarith [wab.hA₀, hrn_pos, hr2_pos]
+
 end YangMills
+
+#print axioms YangMills.smallFieldBound_of_wilsonActivity
+#print axioms YangMills.balabanH1_from_wilson_activity
+#print axioms YangMills.SmallFieldActivityBound.ofWilsonActivity
