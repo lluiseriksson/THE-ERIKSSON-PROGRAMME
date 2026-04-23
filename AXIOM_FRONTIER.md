@@ -1,3 +1,80 @@
+# v0.42.0 — P2c: LargeFieldActivityBound.h_dominated FIXED-E0 REFACTOR
+
+**Released: 2026-04-23**
+
+## What
+
+Phase 3 / Task #7 sub-target P2c: the `h_dominated` field of
+`LargeFieldActivityBound` is promoted from the over-strong
+`∀ E0 > 0, exp(−p0(g)) ≤ E0 · g²` quantifier to a fixed-constant form
+`exp(−p0(g)) ≤ E0 · g²` with `E0 : ℝ` and `hE0 : 0 < E0` exposed as
+first-class struct fields. This shape matches exactly what
+`YangMills.superPoly_dominance_at_specific` (v0.41.0 analytic core)
+produces for a chosen small-enough coupling — structurally closing the
+P2a ↔ `LargeFieldActivityBound` integration gap flagged in the v0.41.0
+scope comment.
+
+Commit: `f940d58` · Files: `YangMills/ClayCore/LargeFieldBound.lean`
++ `YangMills/ClayCore/LargeFieldDominance.lean` (+40/−19 across 2 files) ·
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+## Why
+
+The former `∀ E0 > 0, …` quantifier required the large-field profile to
+dominate **for every positive E0 whatsoever**, which is neither what the
+downstream consumer needs (`balabanHyps_of_bounds.hlf_le` only uses
+`h_dominated sfb.consts.E0 sfb.consts.hE0`) nor what
+`superPoly_dominance_at_specific` proves (which fixes `E` and produces a
+threshold `g₀` depending on `E`). The fixed-`E0` shape is semantically
+correct, structurally satisfiable, and unblocks `h_dominated` being
+discharged directly by `superPoly_dominance_at_specific` in the eventual
+concrete `LargeFieldActivityBound` constructor (P2e).
+
+## How
+
+API touchpoints (all in `YangMills/ClayCore/LargeFieldBound.lean`):
+
+- **`LargeFieldActivityBound`**: adds `E0 : ℝ` and `hE0 : 0 < E0` fields;
+  reshapes `h_dominated` to
+  `Real.exp (-(profile.eval g_bar)) ≤ E0 * g_bar ^ 2` (unquantified).
+- **`lf_dominance_gives_hlf_le`**: drops the `(E0, hE0)` arguments,
+  returns `lfb.h_dominated` directly.
+- **`balabanHyps_of_bounds`**, **`all_balaban_hyps_from_bounds`**: add
+  `hE0_eq : sfb.consts.E0 = lfb.E0` precondition; the `hlf_le` proof
+  routes via `rw [hg_eq, hE0_eq]; exact lfb.h_dominated`.
+
+The matching scope comment in `YangMills/ClayCore/LargeFieldDominance.lean`
+is updated: P2a's analytic core and P2c's structural refactor are now
+paired — `h_dominated` is discharged directly by
+`superPoly_dominance_at_specific` at a chosen small-enough coupling.
+
+## Scope of change
+
+Pre-deployment recon confirmed exactly **2 files** repo-wide reference
+`LargeFieldActivityBound`: `LargeFieldBound.lean` (definition) and
+`LargeFieldDominance.lean` (scope comment only). No downstream
+constructors of `LargeFieldActivityBound` exist; no other callers of
+`lf_dominance_gives_hlf_le`, `balabanHyps_of_bounds`, or
+`all_balaban_hyps_from_bounds`. The API change is 100% contained.
+
+Build: `lake build YangMills.ClayCore.LargeFieldBound
+YangMills.ClayCore.LargeFieldDominance` → 8164/8164 jobs green.
+
+## What remains
+
+- **P2d** (multi-week): retire `h_sf` (Balaban CMP 116 Lemma 3 /
+  small-field activity bound). Independiente de P2e.
+- **P2e** (multi-week): retire `h_lf_bound` (Balaban CMP 122 II
+  Eq 1.98–1.100 / large-field activity). The P2c field shape is a
+  prerequisite for the eventual P2e concrete constructor, which will
+  use `superPoly_dominance_at_specific` to discharge `h_dominated`
+  directly.
+
+Oracle invariant remains `[propext, Classical.choice, Quot.sound]`.
+No new axioms. No `sorry`.
+
+---
+
 # v0.41.0 — SUPER-POLYNOMIAL DOMINANCE LEMMA (P2a) — ANALYTIC CORE OF h_dominated (2026-04-23)
 
 **Milestone.** The analytic content of Balaban CMP 122 II Eq (1.98)–(1.100) / Paper [55] Theorem 8.5 — the super-polynomial dominance inequality `exp(−A · (log g⁻²)^p) ≤ E · g²` for `A > 0`, `p > 1`, `E > 0` at sufficiently small `g` — is formalized as a first-class Lean theorem `YangMills.superPoly_dominance` in a new file `YangMills/ClayCore/LargeFieldDominance.lean`. Companion profile `YangMills.superPolyProfile : LargeFieldProfile` (with `eval g := A₀ · (log g⁻²)^{p*}`, `A₀ > 0`, `p* > 1`) exposes the Balaban super-polynomial profile under the `LargeFieldProfile` interface, and the specific corollary `YangMills.superPoly_dominance_at_specific` lands the statement at every `g ∈ (0, 1)` with a strict-less-than witness.
