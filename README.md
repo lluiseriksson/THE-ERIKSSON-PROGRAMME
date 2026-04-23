@@ -29,8 +29,8 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 | **Language** | Lean 4 (`leanprover/lean4:v4.29.0-rc6`) + Mathlib (`master`) |
 | **Core discipline** | `YangMills/ClayCore/` prints only `[propext, Classical.choice, Quot.sound]` |
 | **Current front** | **`ClusterCorrelatorBound`** — analytic two-point decay for the SU(N_c) Gibbs measure, via F1 (character / Taylor expansion in scalar traces) + F2 (sidecar Haar integrals: L2.5 + 3a + 3b + 3c + main target) + F3 (Kotecky–Preiss cluster convergence) |
-| **Last closed** | **L2.6 closed at 100 %** — `CharacterExpansionData.{Rep, character, coeff}` reclassified as vestigial metadata after consumer-driven recon showed zero external consumption; only `h_correlator` ≡ `ClusterCorrelatorBound` flows to Clay. Step 3 proper (arbitrary-irrep Peter–Weyl) reclassified as aspirational / Mathlib-PR. (2026-04-22 evening) |
-| **Last updated** | 2026-04-22 |
+| **Last closed** | **N_c = 1 unconditional witness** — `ClayYangMillsMassGap 1` is inhabited oracle-clean with zero hypotheses via `AbelianU1Unconditional.lean`, leveraging `Subsingleton (Matrix.specialUnitaryGroup (Fin 1) ℂ)`. First concrete inhabitant of the Clay statement in this repository. (2026-04-23) |
+| **Last updated** | 2026-04-23 |
 
 ---
 
@@ -38,7 +38,7 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 
 1. [What this repository is](#1-what-this-repository-is)
 2. [Progress toward 100 % unconditional](#2-progress-toward-100--unconditional)
-3. [Recently closed](#3-recently-closed--l26-main-target-character-inner-product--1)
+3. [Recently closed milestones](#3-recently-closed-milestones)
 4. [Oracle discipline](#4-oracle-discipline--scope-of-the-no-sorry-claim)
 5. [Current front — `ClusterCorrelatorBound` (F1 / F2 / F3)](#5-current-front--clustercorrelatorbound-f1--f2--f3)
 6. [Milestone ladder](#6-milestone-ladder)
@@ -84,6 +84,8 @@ L3    Mass-gap conclusion (with hypotheses)     ▰▰▱▱▱▱▱▱▱▱  
 
 **Follow-up closure (2026-04-22 evening).** L2.6 step 3b — the bilinear trace-power vanishing `∫_{SU(N_c)} (tr U)^j · (star (tr U))^k dμ_Haar = 0` when `k ≤ j` and `N_c ∤ (j - k)` — closed at commit `70403d1` in `SchurTracePowBilinear.lean`. This completes the {3a, 3b, 3c} sidecar triplet: 3a handles the pure power `(tr U)^k`, 3c handles the power sum `tr(U^k)`, and 3b now handles the mixed bilinear `(tr U)^j · star(tr U)^k` — the form that actually appears inside character inner products `⟨χ_{V^{⊗j}}, χ_{V^{⊗k}}⟩`. Same central-element argument extended to `ω^{j-k} ≠ 1` (with `j ≥ k` and `N_c ∤ (j-k)`). Seven new theorems total: the helper `rootOfUnity_pow_mul_star_pow`, the transport lemma `trace_scalarCenter_mul_pow_bilinear`, the MAIN `sunHaarProb_trace_pow_bilinear_integral_zero` plus a prime variant with `star` applied to the whole power, two low-degree corollaries (`j=2,k=1` requiring `N_c ≥ 2`; `j=3,k=1` requiring `N_c ≥ 3`), and a non-triviality witness at `U = 1` evaluating to `(N_c)^{j+k}`. Oracle-clean `[propext, Classical.choice, Quot.sound]` for all seven. L2.6 bar unchanged at 97 %; step 3 proper (arbitrary irreps, not just scalar traces and their bilinear products) remains open.
 
+**New milestone (2026-04-23 — N_c = 1 unconditional witness).** `YangMills/ClayCore/AbelianU1Unconditional.lean` lands a concrete, unconditional inhabitant of `ClayYangMillsMassGap 1` — zero hypotheses, zero `sorry`, and `#print axioms` on all six produced artefacts prints exactly `[propext, Classical.choice, Quot.sound]`. The proof uses `Subsingleton (Matrix.specialUnitaryGroup (Fin 1) ℂ)` (SU(1) has exactly one element) to collapse every Wilson observable to a constant, force the connected correlator to vanish identically, and satisfy `ConnectedCorrDecay` vacuously at `m = kpParameter (1/2)`, `C = 1`. This does **not** retire a named entry in `AXIOM_FRONTIER.md` or `SORRY_FRONTIER.md` (those are scoped to `N_c ≥ 2` physics hypotheses), so the L1 / L2 / L3 / OVERALL bars do not move. What it establishes is a lower-bound existential anchor: `ClayYangMillsMassGap _` is not vacuous-by-contradiction in our Lean model; it has at least one oracle-clean inhabitant today. For `N_c ≥ 2`, the same schema must be filled in via the `ClusterCorrelatorBound` front (F1 / F2 / F3).
+
 **Strategic note on the step 1c → main-target transition.** The plan previously anticipated a separate "step 2" that packages matrix-entry Schur orthogonality `∫ U_ij · star(U_kl) dμ = (1/N) δ_ik δ_jl`. When the parallel instance inspected the downstream L2 call sites, the statement actually consumed is the **character-level** one: `∫ |tr U|² dμ = 1`. That follows from L2.5's trace decomposition `∫ tr U · star(tr U) = ∑ᵢ ∫ |Uᵢᵢ|²` plus step 1c's diagonal identity `∫ |Uᵢᵢ|² = 1/N`. We therefore went directly to the character-level consumer. Full matrix-entry packaging has now been landed anyway (step 2, commit `95175f3`, theorem `sunHaarProb_entry_orthogonality` in `SchurEntryFull.lean`) — it was not on the critical path, but closing it removes a standing TODO and keeps the `δ_{ik} δ_{jl} / N` form available as public API for any irrep-generalization downstream consumer that prefers it over the character-level reduction.
 
 **How the overall number is computed.** Each layer's percentage is the ratio of oracle-clean, sorry-free Lean artifacts to that layer's planned artifact count in `UNCONDITIONALITY_ROADMAP.md`. The overall number weights the layers by their total frontier-entry count in `AXIOM_FRONTIER.md` + `SORRY_FRONTIER.md`. The metric is **monotone by design**: it cannot go up except by retiring a named frontier entry, and it cannot go down unless a previously closed lemma regresses in CI.
@@ -94,7 +96,7 @@ L3    Mass-gap conclusion (with hypotheses)     ▰▰▱▱▱▱▱▱▱▱  
 
 ---
 
-## 3. Recently closed — L2.6 main target (character inner product = 1)
+## 3. Recently closed milestones
 
 ### L2.6 main target — character inner product for the fundamental representation (commit `f9ec5e9`, 2026-04-22)
 
@@ -120,6 +122,36 @@ Equivalently, `⟨χ_fund, χ_fund⟩_{L²(SU(N), μ_Haar)} = 1`, i.e. the funda
 4. **`sunHaarProb_trace_normSq_integral_eq_one`.** Sums the diagonal, gets `N · (1/N) = 1`, and pulls the `ofReal` out of the integral by the `integral_congr_ae` + `integral_ofReal` pattern (same template as `SchurL25.diag_integral_ofReal`).
 
 **Impact on the unconditionality ladder.** This is the first L1 → L2 interface statement that L2's cluster expansion actually consumes. It closes L2.6 at the fundamental-representation level. The only remaining L2.6 work is generalization to arbitrary irreps via Peter–Weyl (step 3).
+
+### N_c = 1 unconditional witness — `ClayYangMillsMassGap 1` inhabited (2026-04-23)
+
+**Theorem.** `YangMills.u1_clay_yangMills_mass_gap_unconditional : ClayYangMillsMassGap 1` in `YangMills/ClayCore/AbelianU1Unconditional.lean`. Zero hypotheses. First concrete inhabitant of the Clay statement in this repository.
+
+**Why N_c = 1 is tractable.** `Matrix.specialUnitaryGroup (Fin 1) ℂ` has exactly one element (the identity). Lean sees this as `Subsingleton`, which means every Wilson observable is constant, every Wilson connected correlator is identically zero, and `ConnectedCorrDecay` holds vacuously. We can therefore pick any positive mass gap `m > 0` and prefactor `C > 0`; the witness in this file takes `m = kpParameter (1/2)` and `C = 1` for arithmetic cleanliness.
+
+**Oracle trace (verified at deploy time, 6 / 6).**
+
+    #print axioms YangMills.unconditionalU1CorrelatorBound
+    ⟶ [propext, Classical.choice, Quot.sound]
+
+    #print axioms YangMills.u1_clay_yangMills_mass_gap_unconditional
+    ⟶ [propext, Classical.choice, Quot.sound]
+
+    #print axioms YangMills.wilsonConnectedCorr_su1_eq_zero
+    ⟶ [propext, Classical.choice, Quot.sound]
+
+    #print axioms YangMills.u1_unconditional_mass_gap_eq
+    ⟶ [propext, Classical.choice, Quot.sound]
+
+    #print axioms YangMills.u1_unconditional_mass_gap_pos
+    ⟶ [propext, Classical.choice, Quot.sound]
+
+    #print axioms YangMills.u1_unconditional_prefactor_eq
+    ⟶ [propext, Classical.choice, Quot.sound]
+
+**What it is, and what it is not.** This is the first proof, in this repository, that `ClayYangMillsMassGap _` has any inhabitant at all — i.e., that the Lean model of the Clay conclusion is not vacuous-by-contradiction. For the physically meaningful cases (`N_c ≥ 2`), the connected correlator is not identically zero, so the `ConnectedCorrDecay` witness must come from genuine analytic content: Osterwalder–Seiler reflection positivity, Kotecký–Preiss cluster convergence, and Balaban RG. Those are tracked on the `ClusterCorrelatorBound` front (F1 / F2 / F3) and remain open. No entry in `AXIOM_FRONTIER.md` or `SORRY_FRONTIER.md` was retired by this commit.
+
+**Impact on the unconditionality ladder.** A new row is added to section 6 for the N_c = 1 witness (see ladder). The L1 / L2 / L3 / OVERALL percentage bars are unchanged, by design: the bars measure retirement of named hypotheses, and this milestone is orthogonal to that set.
 
 ---
 
@@ -184,6 +216,7 @@ Every row is a Lean-checkable statement, not a paper-level claim. Acceptance cri
 | 14 | **`ClusterCorrelatorBound` — analytic two-point decay via F1 + F2 + F3** | **`ClusterCorrelatorBound.lean` + `WilsonGibbsExpansion.lean` + `MayerExpansion.lean`** | **IN PROGRESS** | oracle-clean; critical path (L2.6 step 3 proper reclassified as aspirational / Mathlib-PR in `PETER_WEYL_ROADMAP.md`) |
 | 15 | L2 — Cluster expansion bounds | `CharacterExpansion.lean` + cluster | PARTIAL | retires cluster-axiom entries |
 | 16 | L3 — Mass-gap conclusion theorem | L3 top file | CONDITIONAL | retires L3 axioms one-by-one |
+| 17 | **`ClayYangMillsMassGap 1` — unconditional witness at N_c = 1** | **`AbelianU1Unconditional.lean`** | **DONE** | **oracle-clean (6 / 6 artefacts, 2026-04-23); does not retire a named axiom — scoped below the L1 / L2 / L3 N_c ≥ 2 frontier** |
 
 The canonical, always-up-to-date version of this table is maintained in `UNCONDITIONALITY_ROADMAP.md`.
 

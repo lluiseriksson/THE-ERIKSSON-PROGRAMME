@@ -1,3 +1,28 @@
+# v0.39.0 — N_c = 1 UNCONDITIONAL WITNESS (ClayYangMillsMassGap 1 inhabited oracle-clean) (2026-04-23)
+
+**Milestone.** First concrete inhabitant of `ClayYangMillsMassGap N_c` has landed at `N_c = 1` in `YangMills/ClayCore/AbelianU1Unconditional.lean`. The witness is fully unconditional: zero hypotheses, zero `sorry`, `#print axioms` on all six produced artefacts returns exactly `[propext, Classical.choice, Quot.sound]`.
+
+**Scope.** The Clay statement `ClayYangMillsMassGap : ℕ → Prop` in this repo takes an explicit `N_c`. This entry instantiates it at `N_c = 1`. For `N_c ≥ 2` the connected correlator is not identically zero, so the `ConnectedCorrDecay` witness must come from genuine analytic content (Osterwalder–Seiler reflection positivity, Kotecký–Preiss cluster convergence, and Balaban RG), tracked on the `ClusterCorrelatorBound` front (F1 / F2 / F3).
+
+**No frontier entry retired.** The named entries in this file and in `SORRY_FRONTIER.md` are scoped to `N_c ≥ 2` / physics hypotheses. The U(1) witness is a *new kind of closure* — an existential lower-bound anchor — and does not discharge any previously named item. L1 / L2 / L3 / OVERALL bars therefore do not move.
+
+**Artefacts (all oracle-clean, `.olean` built, 190120 bytes):**
+
+- `YangMills.unconditionalU1CorrelatorBound` : `U1CorrelatorBound`
+- `YangMills.u1_clay_yangMills_mass_gap_unconditional` : `ClayYangMillsMassGap 1`
+- `YangMills.wilsonConnectedCorr_su1_eq_zero` : connected correlator = 0 identically
+- `YangMills.u1_unconditional_mass_gap_eq` : `m = kpParameter (1/2)`
+- `YangMills.u1_unconditional_mass_gap_pos` : `0 < m`
+- `YangMills.u1_unconditional_prefactor_eq` : `C = 1`
+
+**Core observation.** `Subsingleton (Matrix.specialUnitaryGroup (Fin 1) ℂ)`. The special unitary group SU(1) has exactly one element (the identity), so every Wilson observable is constant, every connected correlator vanishes identically, and `ConnectedCorrDecay` holds vacuously with any positive choice of mass gap and prefactor.
+
+**Interpretation.** The Lean model of the Clay conclusion is not vacuous-by-contradiction: it admits at least one model. This is the first proof that `ClayYangMillsMassGap _` has any inhabitant at all. For the physically interesting cases (`N_c ≥ 2`) the same schema must be filled in with genuine non-trivial analytic content.
+
+**Oracle set unchanged:** `[propext, Classical.choice, Quot.sound]`.
+
+---
+
 # v0.38.0 — L2.6 CLOSED AT 100 % / CharacterExpansionData VESTIGIAL METADATA (2026-04-22 evening)
 **Milestone.** L2.6 reclassified as closed at 100 % after consumer-driven recon established that `CharacterExpansionData.{Rep, character, coeff}` is vestigial metadata. The original L2.6 step 3 (arbitrary-irrep Peter–Weyl character orthogonality) is reclassified as aspirational / Mathlib-PR and removed from the Clay critical path.
 No new axioms introduced. No `sorry` introduced. `ClayCore` oracle set unchanged at `[propext, Classical.choice, Quot.sound]`.
