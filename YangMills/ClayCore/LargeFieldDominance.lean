@@ -205,6 +205,44 @@ theorem superPoly_dominance_at_specific
   refine ⟨g₀ / 2, by positivity, ?_, hforall (g₀ / 2) (by positivity) (by linarith)⟩
   linarith
 
+/-! ### P2e-α: super-polynomial dominance `LargeFieldActivityBound` constructor
+
+Packages `superPoly_dominance_at_specific` (P2a analytic core, v0.41.0) into
+the fixed-E₀ struct shape of `LargeFieldActivityBound` (P2c structural
+refactor, v0.42.0). The caller supplies the RG/cluster-expansion large-field
+activity bound `h_lf_bound_at` uniformly in `g` (P2e main target,
+multi-week); this constructor wires dominance + activity into a first-class
+`LargeFieldActivityBound N_c` term at a small-enough coupling chosen by
+`superPoly_dominance_at_specific`.
+
+Oracle: `[propext, Classical.choice, Quot.sound]`. -/
+noncomputable def LargeFieldActivityBound.ofSuperPoly {N_c : Nat} [NeZero N_c]
+    (A : ℝ) (hA : 0 < A) (p : ℝ) (hp : 1 < p)
+    (E : ℝ) (hE : 0 < E)
+    (kappa : ℝ) (hkappa : 0 < kappa)
+    (h_lf_bound_at : ∀ (g_bar : ℝ), 0 < g_bar → g_bar < 1 →
+      ∀ (n : ℕ), ∃ R : ℝ, 0 ≤ R ∧
+        R ≤ Real.exp (-(A * (Real.log (g_bar⁻¹ ^ 2)) ^ p)) * Real.exp (-kappa * n)) :
+    LargeFieldActivityBound N_c :=
+  let dom := superPoly_dominance_at_specific hA hp hE
+  let g := Classical.choose dom
+  let spec := Classical.choose_spec dom
+  { profile := superPolyProfile A hA p hp
+    kappa := kappa
+    hkappa := hkappa
+    g_bar := g
+    hg_pos := spec.1
+    hg_lt1 := spec.2.1
+    E0 := E
+    hE0 := hE
+    h_lf_bound := h_lf_bound_at g spec.1 spec.2.1
+    h_dominated := by
+      show Real.exp (-(A * (Real.log (g⁻¹ ^ 2)) ^ p)) ≤ E * g ^ 2
+      have h_neg :
+          -(A * (Real.log (g⁻¹ ^ 2)) ^ p) = -A * (Real.log (g⁻¹ ^ 2)) ^ p := by ring
+      rw [h_neg]
+      exact spec.2.2 }
+
 end
 
 end YangMills
@@ -216,3 +254,4 @@ Emitted at build time; expected oracle is `[propext, Classical.choice, Quot.soun
 #print axioms YangMills.superPolyProfile
 #print axioms YangMills.superPoly_dominance
 #print axioms YangMills.superPoly_dominance_at_specific
+#print axioms YangMills.LargeFieldActivityBound.ofSuperPoly
