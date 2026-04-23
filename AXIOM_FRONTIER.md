@@ -1,3 +1,38 @@
+# v0.41.0 — SUPER-POLYNOMIAL DOMINANCE LEMMA (P2a) — ANALYTIC CORE OF h_dominated (2026-04-23)
+
+**Milestone.** The analytic content of Balaban CMP 122 II Eq (1.98)–(1.100) / Paper [55] Theorem 8.5 — the super-polynomial dominance inequality `exp(−A · (log g⁻²)^p) ≤ E · g²` for `A > 0`, `p > 1`, `E > 0` at sufficiently small `g` — is formalized as a first-class Lean theorem `YangMills.superPoly_dominance` in a new file `YangMills/ClayCore/LargeFieldDominance.lean`. Companion profile `YangMills.superPolyProfile : LargeFieldProfile` (with `eval g := A₀ · (log g⁻²)^{p*}`, `A₀ > 0`, `p* > 1`) exposes the Balaban super-polynomial profile under the `LargeFieldProfile` interface, and the specific corollary `YangMills.superPoly_dominance_at_specific` lands the statement at every `g ∈ (0, 1)` with a strict-less-than witness.
+
+**Scope.** This retires the *analytic* content of the `h_dominated` field of `LargeFieldActivityBound` in `YangMills/ClayCore/LargeFieldBound.lean`: for any fixed `E > 0` (e.g. the companion `E₀` of the small-field bound), the Balaban super-polynomial profile dominates at every sufficiently small coupling. The Lean *structural* integration into `LargeFieldActivityBound` is not part of this release: the current `h_dominated : ∀ E₀ > 0, exp(−p₀(g_bar)) ≤ E₀ · g_bar²` quantifier is over-strong (uninhabitable for any finite profile, since the LHS is a fixed positive constant and the RHS → 0 as `E₀ → 0`), and a separate structural refactor is needed to expose a fixed threshold `E₀`. This refactor is tracked as a follow-up.
+
+**No frontier entry retired.** The L2 / L3 / OVERALL unconditionality bars are not moved: the `h_dominated` entry in the consumer-side `LargeFieldActivityBound` structure is still formally an obligation at `N_c ≥ 2`. The analytic content that would discharge it once the quantifier is refactored is now available as an independent first-class lemma. L1 / L2 / L3 / OVERALL bars therefore do not move.
+
+**Artefacts (all oracle-clean).**
+- `YangMills.superPolyProfile` — Balaban super-polynomial `LargeFieldProfile`, `eval g := A₀ · (Real.log (g⁻¹ ^ 2))^{p*}` with `A₀ > 0`, `p* > 1`, `heval_pos` by elementary real-analysis (`Real.log_pos` on `g⁻² > 1`, then `Real.rpow_pos_of_pos`).
+- `YangMills.superPoly_dominance` : `∀ {A : ℝ} (hA : 0 < A) {p : ℝ} (hp : 1 < p) {E : ℝ} (hE : 0 < E), ∃ g₀ : ℝ, 0 < g₀ ∧ g₀ ≤ 1 ∧ ∀ g : ℝ, 0 < g → g < g₀ → Real.exp (−A · (Real.log (g⁻¹ ^ 2))^p) ≤ E · g^2` — the analytic core of `h_dominated` for any fixed `E > 0`.
+- `YangMills.superPoly_dominance_at_specific` : `∀ {A : ℝ} (hA : 0 < A) {p : ℝ} (hp : 1 < p) {E : ℝ} (hE : 0 < E), ∃ g : ℝ, 0 < g ∧ g < 1 ∧ Real.exp (−A · (Real.log (g⁻¹ ^ 2))^p) ≤ E · g^2` — specific-`g` corollary usable when a strict `g < 1` witness is needed.
+
+**Oracle verification** (`#print axioms`, emitted at EOF of `YangMills/ClayCore/LargeFieldDominance.lean`):
+```
+superPolyProfile                → [propext, Classical.choice, Quot.sound]
+superPoly_dominance             → [propext, Classical.choice, Quot.sound]
+superPoly_dominance_at_specific → [propext, Classical.choice, Quot.sound]
+```
+
+**Core observation.** The proof is elementary and self-contained (no asymptotics library, no `Asymptotics.IsLittleO`). Setting `u := log(g⁻²) = −2 log g`, the argument reduces to a four-step cascade:
+1. Choose `C := max(1, −log E)` so that both `1 ≤ C` and `−log E ≤ C`.
+2. Choose `M := ((1 + C) / A)^{1 / (p − 1)}` (via `Real.rpow`), the threshold at which `A · u^{p−1} ≥ 1 + C`.
+3. Choose `U := max(1, M)`, guaranteeing both `u ≥ 1` and `u ≥ M`.
+4. Set `g₀ := exp(−U / 2)`; for `g < g₀`, `log g < −U / 2`, so `u = −2 log g > U`, which activates step 2's bound. The chain `u · (1 + C) ≤ A · u^p` combined with `−log E ≤ u · C` gives `−(A · u^p) ≤ log E + 2 · log g = log(E · g²)`, and `Real.exp_le_exp` closes the inequality.
+
+The key Mathlib lemmas used are `Real.rpow_mul`, `Real.rpow_le_rpow`, `Real.rpow_add`, `Real.rpow_one`, `Real.rpow_pos_of_pos`, `Real.exp_le_exp`, `Real.log_mul`, `Real.log_pow`, `Real.log_inv`, `Real.log_lt_log`, `Real.exp_log`, `Real.log_pos`, plus `mul_inv_cancel₀`, `mul_lt_mul_of_pos_right`, `mul_le_mul_of_nonneg_left`, `le_mul_of_one_le_left`, `div_pos`. No external APIs; no special-case reasoning; no `sorry`.
+
+**Interpretation.** The analytic core of Balaban's large-field dominance is now first-class and oracle-clean, independently of the `LargeFieldActivityBound` structural layer. Once the over-strong `∀ E₀` quantifier in `h_dominated` is refactored to a fixed `E₀` (for example, the companion `E₀` constant of the small-field bound), `h_dominated` discharges by a direct application of `superPoly_dominance` with no further analytic work. The present lemma is therefore both a *reusable analytic building block* — usable wherever Balaban's super-polynomial mechanism is cited — and a *proof of tractability*: the Balaban dominance machinery requires no asymptotics infrastructure beyond stable Mathlib real-analysis, which was not obvious a priori given the `rpow` + `log` + `exp` interplay.
+
+**Oracle set unchanged:** `[propext, Classical.choice, Quot.sound]`.
+
+**No sorry. No new axioms. No frontier entry retired or added.**
+
+---
 # v0.40.0 — CONNECTEDCORRDECAY FIRST-CLASS ABSTRACTION (P1) (2026-04-23)
 
 **Milestone.** The deferred comment at `SchurPhysicalBridge.lean:28` (referring to `fundamentalObservable_ConnectedCorrDecay`) is promoted to a named Lean structure `ConnectedCorrDecay (N_c : ℕ) [NeZero N_c]` in a new file `YangMills/ClayCore/ConnectedCorrDecay.lean`. Both the U(1) unconditional route and the N_c ≥ 2 analytic routes (Osterwalder–Seiler reflection positivity, Kotecký–Preiss cluster convergence, Balaban RG) now target a common, physically-meaningful name.
