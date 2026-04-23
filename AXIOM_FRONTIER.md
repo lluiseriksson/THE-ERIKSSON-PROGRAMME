@@ -1,3 +1,95 @@
+# v0.44.0 — P2d-α: SmallFieldActivityBound.ofWilsonActivity CONSTRUCTOR
+
+**Released: 2026-04-23**
+
+## What
+
+Phase 3 / Task #7 sub-target P2d-α: pure-additive enriched constructor
+
+```
+noncomputable def SmallFieldActivityBound.ofWilsonActivity
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c) :
+    SmallFieldActivityBound N_c
+```
+
+in `YangMills/ClayCore/WilsonPolymerActivity.lean`. Promotes a
+`WilsonPolymerActivityBound N_c` into a `SmallFieldActivityBound N_c`
+with a *nontrivial* activity profile tied to the polymer pair
+`(A₀, r)` — `activity n := A₀ · r^(n+2)` — rather than the trivially-
+zero shortcut of the legacy `smallFieldBound_of_wilsonActivity`.
+
+Commit: `4985523` · File: `YangMills/ClayCore/WilsonPolymerActivity.lean`
+(+59/−0) · Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+## Why
+
+The legacy `smallFieldBound_of_wilsonActivity` constructor sets
+`activity := fun _ => 0`, trivially satisfying the activity bound but
+severing all semantic connection between the small-field activity
+profile and the underlying polymer weight. P2d-α restores that
+connection: `activity n := A₀ · r^(n+2)` is the polymer amplitude at
+boundary-cube size `n+2`, matching the Balaban CMP 116 small-field
+activity macro shape without bypassing any assumption.
+
+Importantly, P2d-α does **not** retire
+`WilsonPolymerActivityBound.h_bound` itself — that abstract amplitude
+inequality (the analytic content of Balaban CMP 116 Lemma 3) remains
+a struct-hypothesis field. What changes: the activity fed into
+`SmallFieldActivityBound` is now semantically faithful to the polymer
+pair `(A₀, r)`, not identically zero.
+
+## How
+
+Constants assembled from the Wilson polymer struct:
+
+- `E₀ := wab.A₀ + 1`  — strict positivity holds even at `A₀ = 0`,
+  discharged by `linarith [wab.hA₀]`.
+- `κ  := -Real.log wab.r` — positive via
+  `neg_pos.mpr (Real.log_neg wab.hr_pos wab.hr_lt1)`.
+- `ḡ  := wab.r` — direct carry of the polymer decay rate.
+
+Activity profile: `activity n := wab.A₀ * wab.r ^ (n + 2)`.
+
+- `hact_nn`: pointwise nonnegativity from `pow_nonneg` on `r` and
+  `wab.hA₀ : 0 ≤ A₀`, closed with `nlinarith`.
+- `hact_bd`: after the normalisations
+  - `Real.exp (-(-Real.log r) · n) = r^n` via `neg_neg` +
+    `Real.log_pow` + `Real.exp_log`,
+  - `r^(n+2) = r^n · r^2` via `pow_add`,
+  the bound `A₀ · r^(n+2) ≤ (A₀ + 1) · r^2 · exp(-(-log r)·n)`
+  reduces to `A₀ ≤ A₀ + 1`, closed with `nlinarith`.
+
+Build: `lake build YangMills.ClayCore.WilsonPolymerActivity` →
+8172/8172 jobs green. Three top-level `#print axioms` declarations
+appended for `smallFieldBound_of_wilsonActivity`,
+`balabanH1_from_wilson_activity`,
+`SmallFieldActivityBound.ofWilsonActivity`. All three print
+`[propext, Classical.choice, Quot.sound]`.
+
+## Scope of change
+
+Pure additive: legacy `smallFieldBound_of_wilsonActivity` (zero-
+activity trivial shortcut) is **kept intact** and still callable. The
+new `SmallFieldActivityBound.ofWilsonActivity` coexists beside it as
+the polymer-faithful enriched variant. Zero downstream breakage by
+construction.
+
+## What remains
+
+- **P2d main** (multi-week): retire
+  `WilsonPolymerActivityBound.h_bound` itself — i.e. prove Balaban
+  CMP 116 Lemma 3 (character expansion on U(N_c) / Bessel coefficient
+  asymptotics) for the Wilson action.
+- **P2e main** (multi-week): retire `h_lf_bound` via Balaban CMP 122
+  II Eq 1.98–1.100 (RG + cluster expansion). The P2e-α constructor
+  (v0.43.0) is the preparatory shape.
+
+Oracle invariant remains `[propext, Classical.choice, Quot.sound]`.
+No new axioms. No `sorry`.
+
+---
+
 # v0.43.0 — P2e-α: LargeFieldActivityBound.ofSuperPoly CONSTRUCTOR
 
 **Released: 2026-04-23**
