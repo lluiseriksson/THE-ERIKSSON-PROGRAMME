@@ -14,6 +14,8 @@ documented in `TestC72Proto.lean:31-32` (comment) and
 
 is trivially inhabited.
 
+Equivalently, it is logically equivalent to `True`.
+
 Any theorem whose conclusion is `ClayYangMillsTheorem` therefore
 discharges only this weak existential, not Clay-grade Yang-Mills
 content. The authentic target hierarchy is
@@ -48,6 +50,16 @@ namespace YangMills
 theorem clayYangMillsTheorem_trivial : ClayYangMillsTheorem :=
   ⟨1, one_pos⟩
 
+/-- **Audit canary, strengthened.** The weak endpoint
+    `ClayYangMillsTheorem` is logically equivalent to `True`.
+
+    This makes the audit invariant explicit: landing a theorem whose
+    terminal conclusion is only `ClayYangMillsTheorem` cannot, by itself,
+    be counted as a non-vacuous Clay-grade closure. -/
+theorem clayYangMillsTheorem_iff_true : ClayYangMillsTheorem ↔ True :=
+  ⟨fun _ => trivial, fun _ => clayYangMillsTheorem_trivial⟩
+
 #print axioms clayYangMillsTheorem_trivial
+#print axioms clayYangMillsTheorem_iff_true
 
 end YangMills
