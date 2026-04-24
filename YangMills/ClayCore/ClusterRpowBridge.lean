@@ -1601,6 +1601,47 @@ noncomputable def clayMassGap_of_shiftedCountBound_mayerData_ceil
 
 #print axioms clayMassGap_of_shiftedCountBound_mayerData_ceil
 
+/-- Authentic Clay-facing F3 wrapper with the Mayer/activity package supplied
+as separate fields rather than as `ConnectedCardDecayMayerData`. -/
+noncomputable def clayMassGap_of_shiftedCountBound_connectedCardDecayActivities_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (K : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      Finset (ConcretePlaquette d L) → ℝ)
+    (hK_abs_le : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      |K β F p q Y| ≤
+        if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y
+          then A₀ * wab.r ^ Y.card else 0)
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (TruncatedActivities.ofConnectedCardDecay
+        (K β F p q) p q wab.r A₀ wab.hr_pos.le hA.le
+        (hK_abs_le β F p q)).connectingSum p q)
+    (h_count : ShiftedConnectingClusterCountBound C_conn dim) :
+    ClayYangMillsMassGap N_c :=
+  clayMassGap_of_shiftedCountBound_mayerData_ceil
+    N_c wab C_conn A₀ hC hA dim
+    ({ K := K, hK_abs_le := hK_abs_le, h_mayer := h_mayer } :
+      ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le)
+    h_count
+
+#print axioms clayMassGap_of_shiftedCountBound_connectedCardDecayActivities_ceil
+
 /-- Preferred terminal F3 wrapper with both remaining analytic sides packaged:
 `ConnectedCardDecayMayerData` for the raw Mayer/activity input and
 `ShiftedConnectingClusterCountBound` for the lattice-animal count. -/

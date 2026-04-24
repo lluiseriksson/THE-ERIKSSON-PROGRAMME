@@ -1,3 +1,50 @@
+# v0.71.0 — Unpackaged authentic F3 mass-gap endpoint
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive API completion in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    noncomputable def clayMassGap_of_shiftedCountBound_connectedCardDecayActivities_ceil
+
+This is the authentic `ClayYangMillsMassGap N_c` analogue of the older
+unpackaged terminal wrapper
+
+    clay_theorem_of_shiftedCountBound_connectedCardDecayActivities_ceil
+
+It accepts the Mayer/activity inputs as separate fields:
+
+1. raw truncated activity `K`;
+2. connected-cardinality decay `hK_abs_le`;
+3. Mayer/Ursell identity `h_mayer`;
+4. shifted count package `ShiftedConnectingClusterCountBound C_conn dim`.
+
+Internally it constructs the v0.68 package
+`ConnectedCardDecayMayerData` and routes through the v0.70 authentic endpoint
+`clayMassGap_of_shiftedCountBound_mayerData_ceil`.
+
+Purpose: both public F3 entry styles now have a non-vacuous Clay-core output.
+The packaged API remains preferred, but callers that still carry the raw
+`K / hK_abs_le / h_mayer` triple can obtain `ClayYangMillsMassGap N_c`
+without passing through the weak `ClayYangMillsTheorem` endpoint.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.clayMassGap_of_shiftedCountBound_connectedCardDecayActivities_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.70.0 — Authentic mass-gap endpoint for preferred F3
 
 **Released: 2026-04-24**
