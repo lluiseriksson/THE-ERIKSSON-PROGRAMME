@@ -1,3 +1,43 @@
+# v0.56.0 — F3 bucket estimate from count + pointwise polymer bound
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 decomposition in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem cardBucketSum_le_of_count_and_pointwise
+
+For a fixed cardinality bucket
+
+    Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊,
+
+the bucket sum is bounded by the KP summand if:
+
+1. the number of connected polymers in that bucket is bounded by
+   `C_conn * n^dim`, and
+2. each polymer in the bucket has pointwise bound
+   `K_bound Y ≤ A₀ * r^(n + ⌈dist⌉₊)`.
+
+This separates the remaining lattice-animal bucket estimate into its two
+natural pieces: a combinatorial cardinality bound and a pointwise activity
+bound. The theorem is a finite-sum manipulation only.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.cardBucketSum_le_of_count_and_pointwise' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.55.0 — F3 terminal bucket-estimate wrappers
 
 **Released: 2026-04-24**

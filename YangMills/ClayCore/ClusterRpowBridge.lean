@@ -397,6 +397,73 @@ theorem connectedFiniteSum_le_of_cardBucketBounds_kp
       dim ⌈siteLatticeDist p.site q.site⌉₊
       (Fintype.card (ConcretePlaquette d L) + 1))
 
+/-- A single cardinality bucket is bounded by the KP summand if each polymer
+in the bucket is bounded by `A₀ * r^(n + ⌈dist⌉₊)` and the number of polymers
+in the bucket is bounded by `C_conn * n^dim`. -/
+theorem cardBucketSum_le_of_count_and_pointwise
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (r : ℝ) (hr_pos : 0 < r)
+    (C_conn A₀ : ℝ) (hA : 0 < A₀)
+    (dim n : ℕ)
+    (h_count :
+      (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y =>
+          p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+            Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+        C_conn * (n : ℝ) ^ dim)
+    (h_pointwise : ∀ Y ∈
+      (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y =>
+          p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+            Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊),
+      K_bound Y ≤ A₀ * r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+        if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+          then K_bound Y else 0) ≤
+      C_conn * (n : ℝ) ^ dim * A₀ *
+        r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+  classical
+  let S := (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+    (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y)
+  let B := (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+    (fun Y =>
+      p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+        Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊)
+  let term := A₀ * r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)
+  have hterm_nonneg : 0 ≤ term := by
+    exact mul_nonneg hA.le (pow_nonneg hr_pos.le _)
+  have hSB :
+      S.filter (fun Y => Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊) = B := by
+    ext Y
+    simp [S, B, and_assoc]
+  have h_eq :
+      (∑ Y ∈ S,
+        if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+          then K_bound Y else 0) =
+      Finset.sum B (fun Y => K_bound Y) := by
+    rw [← Finset.sum_filter]
+    rw [hSB]
+  calc
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+        if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+          then K_bound Y else 0)
+        = Finset.sum B (fun Y => K_bound Y) := by simpa [S] using h_eq
+    _ ≤ Finset.sum B (fun _Y => term) := by
+        apply Finset.sum_le_sum
+        intro Y hY
+        exact h_pointwise Y (by simpa [B] using hY)
+    _ = (B.card : ℝ) * term := by
+        simp [term, nsmul_eq_mul]
+    _ ≤ (C_conn * (n : ℝ) ^ dim) * term := by
+        exact mul_le_mul_of_nonneg_right (by simpa [B] using h_count) hterm_nonneg
+    _ = C_conn * (n : ℝ) ^ dim * A₀ *
+        r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+        ring
+
 /-- Connected finite-sum version of
 `clusterCorrelatorBound_of_finiteConnectingBounds_ceil`.
 
@@ -510,6 +577,7 @@ theorem clusterCorrelatorBound_of_cardBucketBounds_ceil
 #print axioms connectedFiniteSum_eq_cardBucketSum
 #print axioms connectedFiniteSum_le_of_cardBucketBounds
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_kp
+#print axioms cardBucketSum_le_of_count_and_pointwise
 #print axioms clusterCorrelatorBound_of_connectedFiniteBounds_ceil
 #print axioms clusterCorrelatorBound_of_cardBucketBounds_ceil
 
