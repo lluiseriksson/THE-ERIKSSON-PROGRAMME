@@ -588,6 +588,34 @@ theorem physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
 
 #print axioms physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
 
+/-- Direct physical endpoint from the single-package physical shifted F3
+frontier. -/
+theorem physicalStrong_of_physicalShiftedF3MayerCountPackage_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
+    wab.r wab.hr_pos wab.hr_lt1
+    (clusterPrefactorShifted wab.r pkg.count.C_conn pkg.mayer.A₀
+      pkg.count.dim)
+    (clusterPrefactorShifted_pos wab.r wab.hr_pos wab.hr_lt1
+      pkg.count.C_conn pkg.mayer.A₀ pkg.count.hC pkg.mayer.hA
+      pkg.count.dim)
+    (physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
+      wab pkg)
+    β F hβ hF hF_meas
+
+#print axioms physicalStrong_of_physicalShiftedF3MayerCountPackage_siteDist_measurableF
+
 /-- Direct physical endpoint from independently-produced shifted F3 Mayer and
 physical `d = 4` count subpackages.
 
@@ -609,12 +637,8 @@ theorem physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF
       (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
       (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
         siteLatticeDist p.site q.site) :=
-  physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
-    wab.r wab.hr_pos wab.hr_lt1
-    (clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim)
-    (clusterPrefactorShifted_pos wab.r wab.hr_pos wab.hr_lt1
-      count.C_conn mayer.A₀ count.hC mayer.hA count.dim)
-    (physicalClusterCorrelatorBound_of_shiftedF3Subpackages wab mayer count)
+  physicalStrong_of_physicalShiftedF3MayerCountPackage_siteDist_measurableF
+    wab (PhysicalShiftedF3MayerCountPackage.ofSubpackages mayer count)
     β F hβ hF hF_meas
 
 #print axioms physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF

@@ -1,3 +1,64 @@
+# v1.29.0 — Single-package physical F3 frontier exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added the single-object physical F3 frontier package in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    PhysicalShiftedF3MayerCountPackage N_c wab
+
+with fields:
+
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+and constructors/consumers:
+
+    PhysicalShiftedF3MayerCountPackage.ofSubpackages
+    physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
+    physicalStrong_of_physicalShiftedF3MayerCountPackage_siteDist_measurableF
+
+The last theorem lives in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean` and sends the single
+physical package directly to `ClayYangMillsPhysicalStrong` at
+`physicalClayDimension = 4`.
+
+## Why
+
+No percentage bar moves.  This is interface consolidation around the active F3
+frontier.  Instead of asking downstream code to carry separate
+`mayer/count` arguments, the physical route can now say:
+
+    construct PhysicalShiftedF3MayerCountPackage N_c wab
+
+and Lean has the direct route:
+
+    PhysicalShiftedF3MayerCountPackage
+      → PhysicalClusterCorrelatorBound
+      → ClayYangMillsPhysicalStrong
+
+The two mathematical obligations inside the package remain the same: prove the
+Mayer/activity identity and the physical `d = 4` shifted connected-cluster
+count bound for `N_c ≥ 2`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge \
+      YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces: all new package helpers and endpoint wrappers print the
+canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.28.0 — Physical F3 route reaches `ClayYangMillsPhysicalStrong`
 
 **Released: 2026-04-25**

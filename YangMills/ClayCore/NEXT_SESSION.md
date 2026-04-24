@@ -13,6 +13,17 @@ The preferred single-object F3 frontier is:
 
 in `YangMills/ClayCore/ClusterRpowBridge.lean`.
 
+For the physical `d = 4` route, the preferred single-object frontier is:
+
+    PhysicalShiftedF3MayerCountPackage N_c wab
+
+It bundles exactly:
+
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+and feeds directly into the physical endpoint.
+
 It can be supplied directly, or mechanically assembled from the two independent
 frontier halves:
 
@@ -33,6 +44,7 @@ distance profile to `ConcretePlaquette physicalClayDimension L` with
 
     physicalStrong_of_clusterCorrelatorBound_physicalClayDimension_siteDist_measurableF
     physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
+    physicalStrong_of_physicalShiftedF3MayerCountPackage_siteDist_measurableF
     physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF
     physicalStrong_of_shiftedF3MayerCountPackage_physicalClayDimension_siteDist_measurableF
     physicalStrong_of_shiftedF3Subpackages_physicalClayDimension_siteDist_measurableF
@@ -62,9 +74,14 @@ physical-dimension uniform rather than uniform over all dimensions.
 
 This physical output now feeds L8 directly:
 
+    physicalStrong_of_physicalShiftedF3MayerCountPackage_siteDist_measurableF
     physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF
 
-which consumes
+The single-package form consumes:
+
+    pkg : PhysicalShiftedF3MayerCountPackage N_c wab
+
+The subpackage form consumes:
 
     wab   : WilsonPolymerActivityBound N_c
     mayer : ShiftedF3MayerPackage N_c wab

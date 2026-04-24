@@ -2025,6 +2025,57 @@ theorem physicalClusterCorrelatorBound_of_shiftedF3Subpackages
 
 #print axioms physicalClusterCorrelatorBound_of_shiftedF3Subpackages
 
+/-- Single-package form of the physical four-dimensional F3 frontier.
+
+This packages exactly the two remaining physical F3 obligations: the
+Mayer/activity identity and the physical `d = 4` shifted count bound. -/
+structure PhysicalShiftedF3MayerCountPackage
+    (N_c : ℕ) [NeZero N_c] (wab : WilsonPolymerActivityBound N_c) where
+  mayer : ShiftedF3MayerPackage N_c wab
+  count : PhysicalShiftedF3CountPackage
+
+namespace PhysicalShiftedF3MayerCountPackage
+
+/-- Build the single physical F3 package from independently-produced Mayer and
+physical count halves. -/
+def ofSubpackages
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    PhysicalShiftedF3MayerCountPackage N_c wab where
+  mayer := mayer
+  count := count
+
+@[simp] theorem ofSubpackages_mayer
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    (ofSubpackages mayer count).mayer = mayer := rfl
+
+@[simp] theorem ofSubpackages_count
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    (ofSubpackages mayer count).count = count := rfl
+
+end PhysicalShiftedF3MayerCountPackage
+
+/-- Physical `d = 4` F3 endpoint from the single physical Mayer/count package. -/
+theorem physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    PhysicalClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorShifted wab.r pkg.count.C_conn pkg.mayer.A₀
+        pkg.count.dim) :=
+  physicalClusterCorrelatorBound_of_shiftedF3Subpackages
+    wab pkg.mayer pkg.count
+
+#print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages
+#print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages_mayer
+#print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages_count
+#print axioms physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
+
 /-- SU(1) canary for the shifted F3 Mayer interface.
 
 Since the SU(1) connected Wilson correlator vanishes identically, the raw
