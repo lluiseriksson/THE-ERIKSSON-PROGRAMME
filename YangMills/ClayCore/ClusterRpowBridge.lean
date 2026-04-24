@@ -573,6 +573,73 @@ theorem clusterCorrelatorBound_of_cardBucketBounds_ceil
     r hr_pos hr_lt1 C_conn A₀ hC hA dim
     (fun n hn => h_bucket β hβ F hF p q n hn hdist)
 
+/-- Count-and-pointwise version of the F3 `ClusterCorrelatorBound` bridge.
+
+This composes `cardBucketSum_le_of_count_and_pointwise` with
+`clusterCorrelatorBound_of_cardBucketBounds_ceil`.  The caller supplies a
+cardinality estimate for each connected bucket and a pointwise `K_bound`
+estimate on every polymer in that bucket. -/
+theorem clusterCorrelatorBound_of_count_pointwiseBounds_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (T : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      TruncatedActivities (ConcretePlaquette d L))
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (T β F p q).connectingSum p q)
+    (h_zero : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      p ∈ Y → q ∈ Y → ¬ PolymerConnected Y →
+      (T β F p q).K_bound Y = 0)
+    (h_count : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (p q : ConcretePlaquette d L) (n : ℕ),
+      n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1) →
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y =>
+          p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+            Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+        C_conn * (n : ℝ) ^ dim)
+    (h_pointwise : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L)
+      (n : ℕ)
+      (Y : Finset (ConcretePlaquette d L)),
+      n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1) →
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y =>
+          p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+            Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊) →
+      (T β F p q).K_bound Y ≤
+        A₀ * r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    ClusterCorrelatorBound N_c r (clusterPrefactor r C_conn A₀ dim) := by
+  refine clusterCorrelatorBound_of_cardBucketBounds_ceil
+    N_c r hr_pos hr_lt1 C_conn A₀ hC hA dim T h_mayer h_zero ?_
+  intro d L _ _ β hβ F hF p q n hn hdist
+  exact cardBucketSum_le_of_count_and_pointwise
+    (fun Y => (T β F p q).K_bound Y) p q
+    r hr_pos C_conn A₀ hA dim n
+    (h_count p q n hn hdist)
+    (fun Y hY => h_pointwise β hβ F hF p q n Y hn hdist hY)
+
 #print axioms finiteConnectingSum_eq_connectedFiniteSum
 #print axioms connectedFiniteSum_eq_cardBucketSum
 #print axioms connectedFiniteSum_le_of_cardBucketBounds
@@ -580,6 +647,7 @@ theorem clusterCorrelatorBound_of_cardBucketBounds_ceil
 #print axioms cardBucketSum_le_of_count_and_pointwise
 #print axioms clusterCorrelatorBound_of_connectedFiniteBounds_ceil
 #print axioms clusterCorrelatorBound_of_cardBucketBounds_ceil
+#print axioms clusterCorrelatorBound_of_count_pointwiseBounds_ceil
 
 /-! ### Terminal wrapper from connected finite KP data -/
 

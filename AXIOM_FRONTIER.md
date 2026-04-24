@@ -1,3 +1,41 @@
+# v0.57.0 — F3 ClusterCorrelatorBound from count + pointwise bounds
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 wrapper in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem clusterCorrelatorBound_of_count_pointwiseBounds_ceil
+
+This composes the v0.56 bucket estimate with the v0.55 terminal bucket
+consumer.  The F3 bridge now accepts the two natural lattice-animal inputs
+directly:
+
+1. bucket cardinality:
+   `# {Y ∋ p,q | connected Y ∧ |Y| = n + ⌈dist⌉₊} ≤ C_conn * n^dim`;
+2. pointwise activity:
+   `K_bound Y ≤ A₀ * r^(n + ⌈dist⌉₊)` on each polymer in that bucket.
+
+Together with `h_mayer` and disconnected support cancellation `h_zero`, these
+produce `ClusterCorrelatorBound N_c r (clusterPrefactor r C_conn A₀ dim)`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.clusterCorrelatorBound_of_count_pointwiseBounds_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.56.0 — F3 bucket estimate from count + pointwise polymer bound
 
 **Released: 2026-04-24**
