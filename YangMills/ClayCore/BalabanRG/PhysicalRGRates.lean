@@ -28,10 +28,12 @@ ClayCoreLSI
   ↓ LSItoSpectralGap                     (P8, ✅)
 ClayYangMillsTheorem                     (ErikssonBridge, ✅)
 
-## Remaining axiom
+## Discharge status
 
-`physical_rg_rates_from_E26` — quantitative rates from E26.
-This replaces the abstract `balaban_rg_package_from_E26`.
+The structure below is the reusable quantitative rates interface.  The direct
+witness assembled from the repository's current rate-side theorems lives in
+`PhysicalRGRatesWitness.lean`; this file keeps only the interface and its
+projection theorems.
 -/
 
 noncomputable section
@@ -93,24 +95,6 @@ theorem physicalRGRates_to_lsi {d N_c : ℕ} [NeZero N_c]
     ∃ c > 0, ClayCoreLSI d N_c c :=
   uniform_lsi_of_balaban_rg_package (physicalRGRates_to_balabanRGPackage rates)
 
-/-! ## Reduced axiom: quantitative rates from E26 -/
-
-/-- The remaining axiom: physical RG rates exist for SU(N_c) at dimension d.
-    Content: exponential contraction + linear Poincaré + linear LSI (P67–P82).
-    Removal path: formalize each rate from E26 papers. -/
-axiom physical_rg_rates_from_E26 (d N_c : ℕ) [NeZero N_c] :
-    PhysicalRGRates d N_c
-
-/-- From E26 rates, recover BalabanRGPackage without additional axioms. -/
-theorem balabanRGPackage_from_physicalRates (d N_c : ℕ) [NeZero N_c] :
-    BalabanRGPackage d N_c :=
-  physicalRGRates_to_balabanRGPackage (physical_rg_rates_from_E26 d N_c)
-
-/-- From E26 rates, recover uniform LSI. -/
-theorem uniform_lsi_from_physicalRates (d N_c : ℕ) [NeZero N_c] :
-    ∃ c > 0, ClayCoreLSI d N_c c :=
-  physicalRGRates_to_lsi (physical_rg_rates_from_E26 d N_c)
-
 /-!
 ## Discharge targets for E26 formalization
 
@@ -121,7 +105,8 @@ theorem uniform_lsi_from_physicalRates (d N_c : ℕ) [NeZero N_c] :
 | cP_linear_lb       | P69, P70   | cP(β) ≥ c·β                              |
 | cLSI_linear_lb     | P67, P74   | cLSI(β) ≥ c·β                            |
 
-When all four are theorems, `physical_rg_rates_from_E26` drops.
+When all four are theorems, `PhysicalRGRatesWitness.lean` can assemble a direct
+`PhysicalRGRates` witness without any global axiom declaration.
 -/
 
 end

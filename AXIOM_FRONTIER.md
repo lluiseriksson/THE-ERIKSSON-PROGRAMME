@@ -1,3 +1,61 @@
+# v0.95.0 — Remove final non-Experimental Lean axiom
+
+**Released: 2026-04-24**
+
+## What
+
+Removed the final non-Experimental `axiom` declaration:
+
+    physical_rg_rates_from_E26
+
+from `YangMills/ClayCore/BalabanRG/PhysicalRGRates.lean`.
+
+`PhysicalRGRates.lean` now contains only the quantitative rates interface plus
+the projection theorems
+
+    physicalRGRates_to_balabanRGPackage
+    physicalRGRates_to_lsi
+
+The direct zero-axiom witness remains in
+`YangMills/ClayCore/BalabanRG/PhysicalRGRatesWitness.lean`, assembled from the
+repository's current rate-side theorems:
+
+    rho_exp_contractive_from_E26
+    rho_in_unit_interval_from_E26
+    cP_linear_lb_from_E26
+    cLSI_linear_lb_from_E26
+
+`BalabanRGAxiomReduction.lean` now routes the legacy public names through the
+direct physical witness (`physicalBalabanRGPackage`, `physical_uniform_lsi`)
+instead of through an axiom wrapper.
+
+This does not mean the Clay problem is solved unconditionally in the strong
+physical sense.  It means there are now **zero non-Experimental `axiom`
+declarations** in the Lean tree.  Remaining work is no longer hidden behind
+Lean `axiom` keywords; it lives in theorem-side assumptions, explicit transfer
+interfaces, weak/vacuous endpoints, and the still-open analytic fronts tracked
+elsewhere.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.BalabanRG.PhysicalRGRates
+    lake build YangMills.ClayCore.BalabanRG.PhysicalRGRatesWitness
+    lake build YangMills.ClayCore.BalabanRG.BalabanRGAxiomReduction
+
+Audit command:
+
+    git grep -n -E "^axiom " -- "*.lean" | Select-String -NotMatch "Experimental"
+
+Output:
+
+    <empty>
+
+Non-Experimental Lean axiom count is now 0. No `sorry`.
+
+---
+
 # v0.94.0 — Remove legacy un-normalized Holley-Stroock axiom
 
 **Released: 2026-04-24**

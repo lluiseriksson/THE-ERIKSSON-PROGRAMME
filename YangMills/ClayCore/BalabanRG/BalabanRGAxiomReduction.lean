@@ -5,14 +5,15 @@ import YangMills.ClayCore.BalabanRG.PhysicalBalabanRGPackage
 namespace YangMills.ClayCore
 
 /-!
-# BalabanRGAxiomReduction — Layer 6C (v4)
+# BalabanRGAxiomReduction — Layer 6C (v5)
 
-The remaining axiom is now `physical_rg_rates_from_E26` in `PhysicalRGRates.lean`.
-This is a more precise statement than the previous abstract `BalabanRGPackage` axiom.
+The old `physical_rg_rates_from_E26` axiom has been removed.  The quantitative
+route now uses the direct physical witnesses assembled in
+`PhysicalBalabanRGPackage.lean`.
 
 ## Chain
 
-physical_rg_rates_from_E26 (axiom — 4 quantitative targets)
+physicalRGRatesWitness / physical_rg_rates_witness
   → physicalRGRates_to_balabanRGPackage     (THEOREM ✅)
   → uniform_lsi_of_balaban_rg_package       (THEOREM ✅)
   → ClayCoreLSI
@@ -27,15 +28,15 @@ physical_rg_rates_from_E26 (axiom — 4 quantitative targets)
   cLSI_linear_lb:        cLSI(β) ≥ c·β          (P67, P74)
 -/
 
-/-- Recover uniform LSI from the quantitative E26 axiom. -/
+/-- Recover uniform LSI from the direct quantitative witness. -/
 theorem uniform_lsi_from_E26 (d N_c : ℕ) [NeZero N_c] :
     ∃ c > 0, ClayCoreLSI d N_c c :=
-  uniform_lsi_from_physicalRates d N_c
+  physical_uniform_lsi d N_c
 
-/-- Recover BalabanRGPackage from the quantitative E26 axiom. -/
+/-- Recover BalabanRGPackage from the direct quantitative witness. -/
 theorem balaban_rg_package_from_E26_theorem (d N_c : ℕ) [NeZero N_c] :
     BalabanRGPackage d N_c :=
-  balabanRGPackage_from_physicalRates d N_c
+  physicalBalabanRGPackage d N_c
 
 
 /-! ## Zero-axiom route (Layer 8E)
