@@ -414,6 +414,32 @@ theorem physicalStrong_of_clusterCorrelatorBound_siteDist_measurableF
 
 #print axioms physicalStrong_of_clusterCorrelatorBound_siteDist_measurableF
 
+/-- Physical-dimension specialization of the direct
+`ClusterCorrelatorBound → PhysicalStrong` endpoint.
+
+This keeps the analytic input global, but fixes the terminal physical distance
+profile to `physicalClayDimension = 4`, the Clay spacetime dimension recorded
+in `ConnectingClusterCount.lean`. -/
+theorem physicalStrong_of_clusterCorrelatorBound_physicalClayDimension_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_clust : ℝ) (hC : 0 < C_clust)
+    (hccb : ClusterCorrelatorBound N_c r C_clust)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_clusterCorrelatorBound_siteDist_measurableF
+    (d := physicalClayDimension) r hr_pos hr_lt1 C_clust hC hccb
+    β F hβ hF hF_meas
+
+#print axioms physicalStrong_of_clusterCorrelatorBound_physicalClayDimension_siteDist_measurableF
+
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
 
 This is the Wilson-facing F3 package composed with the direct
@@ -462,6 +488,46 @@ theorem physicalStrong_of_shiftedF3Subpackages_siteDist_measurableF
 #print axioms physicalStrong_of_shiftedF3MayerCountPackage_siteDist_measurableF
 #print axioms physicalStrong_of_shiftedF3Subpackages_siteDist_measurableF
 
+/-- Physical-dimension specialization of the preferred single-package shifted
+F3 endpoint. -/
+theorem physicalStrong_of_shiftedF3MayerCountPackage_physicalClayDimension_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_shiftedF3MayerCountPackage_siteDist_measurableF
+    (d := physicalClayDimension) wab pkg β F hβ hF hF_meas
+
+/-- Physical-dimension specialization of the independently-produced shifted
+F3 subpackage endpoint. -/
+theorem physicalStrong_of_shiftedF3Subpackages_physicalClayDimension_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_shiftedF3Subpackages_siteDist_measurableF
+    (d := physicalClayDimension) wab mayer count β F hβ hF hF_meas
+
+#print axioms physicalStrong_of_shiftedF3MayerCountPackage_physicalClayDimension_siteDist_measurableF
+#print axioms physicalStrong_of_shiftedF3Subpackages_physicalClayDimension_siteDist_measurableF
+
 /-- Direct physical endpoint from the named small-β uniform-rpow frontier.
 
 This is the small-β route exposed in `ZeroMeanCancellation.lean`, composed with
@@ -490,5 +556,29 @@ theorem physicalStrong_of_uniformRpow_small_beta_siteDist_measurableF
     β F hβ hF hF_meas
 
 #print axioms physicalStrong_of_uniformRpow_small_beta_siteDist_measurableF
+
+/-- Physical-dimension specialization of the named small-β uniform-rpow
+endpoint. -/
+theorem physicalStrong_of_uniformRpow_small_beta_physicalClayDimension_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    {β₀ C : ℝ}
+    (hβ₀_pos : 0 < β₀)
+    (hβ₀_lt1 : β₀ < 1)
+    (hC : 0 < C)
+    (h_rpow : WilsonUniformRpowBound N_c β₀ C)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_uniformRpow_small_beta_siteDist_measurableF
+    (d := physicalClayDimension) (C := C)
+    hβ₀_pos hβ₀_lt1 hC h_rpow β F hβ hF hF_meas
+
+#print axioms physicalStrong_of_uniformRpow_small_beta_physicalClayDimension_siteDist_measurableF
 
 end YangMills

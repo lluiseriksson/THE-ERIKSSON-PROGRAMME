@@ -27,6 +27,18 @@ Supplying either the single package or both halves yields, oracle-clean:
     ClayConnectedCorrDecay
     ClayYangMillsTheorem
 
+The L8 terminal layer now has physical-dimension wrappers that fix the final
+distance profile to `ConcretePlaquette physicalClayDimension L` with
+`physicalClayDimension = 4`:
+
+    physicalStrong_of_clusterCorrelatorBound_physicalClayDimension_siteDist_measurableF
+    physicalStrong_of_shiftedF3MayerCountPackage_physicalClayDimension_siteDist_measurableF
+    physicalStrong_of_shiftedF3Subpackages_physicalClayDimension_siteDist_measurableF
+    physicalStrong_of_uniformRpow_small_beta_physicalClayDimension_siteDist_measurableF
+
+So global analytic inputs still give the dimension-uniform route, and the final
+non-vacuous Clay target can now be stated directly at the physical dimension.
+
 The single package now also exposes its finite-volume consumers directly:
 
     ShiftedF3MayerCountPackage.toTruncatedActivities

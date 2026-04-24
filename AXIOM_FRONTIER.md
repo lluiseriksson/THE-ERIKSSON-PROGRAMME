@@ -1,3 +1,52 @@
+# v1.26.0 — Physical d=4 terminal endpoints exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added physical-dimension L8 endpoint wrappers in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    physicalStrong_of_clusterCorrelatorBound_physicalClayDimension_siteDist_measurableF
+    physicalStrong_of_shiftedF3MayerCountPackage_physicalClayDimension_siteDist_measurableF
+    physicalStrong_of_shiftedF3Subpackages_physicalClayDimension_siteDist_measurableF
+    physicalStrong_of_uniformRpow_small_beta_physicalClayDimension_siteDist_measurableF
+
+Each wrapper fixes the terminal plaquette-distance profile to
+
+    fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+      siteLatticeDist p.site q.site
+
+with `physicalClayDimension = 4`.
+
+## Why
+
+No percentage bar moves.  This is terminal API sharpening, not a new analytic
+proof.  The existing global analytic inputs (`ClusterCorrelatorBound`, the
+single shifted F3 Mayer/count package, shifted F3 subpackages, or
+`WilsonUniformRpowBound`) now feed directly into the non-vacuous
+`ClayYangMillsPhysicalStrong` target at the physical spacetime dimension.
+
+This deliberately does not convert the new `PhysicalShiftedF3CountPackage` into
+the all-dimensions `ShiftedF3CountPackage`: a four-dimensional count estimate is
+not the same statement as a dimension-uniform one.  The four-dimensional count
+frontier remains an honest open F3 subtarget.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces: all four new physical-dimension terminal wrappers print the
+canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.25.0 — Physical d=4 count package aliases exposed
 
 **Released: 2026-04-25**
