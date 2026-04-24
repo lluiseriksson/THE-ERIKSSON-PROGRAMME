@@ -1,3 +1,49 @@
+# v0.51.0 — F3 terminal wrapper from connected finite KP data
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive terminal wrapper in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem clay_theorem_of_connectedFiniteBounds_ceil
+        (N_c : ℕ) [NeZero N_c]
+        (wab : WilsonPolymerActivityBound N_c)
+        (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+        (dim : ℕ)
+        (T : ...)
+        (h_mayer : ...)
+        (h_zero : ...)
+        (h_connected_bound : ...) :
+        ClayYangMillsTheorem
+
+It composes the v0.49 connected finite-sum bridge
+`clusterCorrelatorBound_of_connectedFiniteBounds_ceil` with
+`clay_theorem_from_wilson_activity`.  The prefactor positivity is discharged
+internally by `clusterPrefactor_pos`.
+
+This does not prove the Mayer identity or the Kotecký-Preiss
+lattice-animal estimate.  It sharpens the terminal interface: once
+`h_mayer`, disconnected support cancellation `h_zero`, and the connected
+finite KP estimate `h_connected_bound` are available, the current
+`ClayYangMillsTheorem` endpoint follows by a single theorem call.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.clay_theorem_of_connectedFiniteBounds_ceil' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.50.0 — HS audit: explicit normalized-Gibbs LSI axiom replaces hidden sorry
 
 **Released: 2026-04-24**

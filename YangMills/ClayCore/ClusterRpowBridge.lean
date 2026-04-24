@@ -327,4 +327,61 @@ theorem clusterCorrelatorBound_of_connectedFiniteBounds_ceil
 #print axioms finiteConnectingSum_eq_connectedFiniteSum
 #print axioms clusterCorrelatorBound_of_connectedFiniteBounds_ceil
 
+/-! ### Terminal wrapper from connected finite KP data -/
+
+/-- Terminal F3 wrapper: a Wilson activity bound plus the connected finite
+Mayer/KP inputs produce the current Clay theorem endpoint.
+
+This is only a composition theorem. The remaining analytic work is exactly in
+`h_mayer`, `h_zero`, and `h_connected_bound`; once those are discharged, this
+wrapper feeds the resulting `ClusterCorrelatorBound` into
+`clay_theorem_from_wilson_activity`. -/
+theorem clay_theorem_of_connectedFiniteBounds_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (T : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      TruncatedActivities (ConcretePlaquette d L))
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (T β F p q).connectingSum p q)
+    (h_zero : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      p ∈ Y → q ∈ Y → ¬ PolymerConnected Y →
+      (T β F p q).K_bound Y = 0)
+    (h_connected_bound : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+        (T β F p q).K_bound Y) ≤
+        ∑' n : ℕ, C_conn * (n : ℝ) ^ dim * A₀ *
+          wab.r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    ClayYangMillsTheorem := by
+  exact clay_theorem_from_wilson_activity wab
+    (clusterPrefactor wab.r C_conn A₀ dim)
+    (clusterPrefactor_pos wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim)
+    (clusterCorrelatorBound_of_connectedFiniteBounds_ceil
+      N_c wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim
+      T h_mayer h_zero h_connected_bound)
+
+#print axioms clay_theorem_of_connectedFiniteBounds_ceil
+
 end YangMills
