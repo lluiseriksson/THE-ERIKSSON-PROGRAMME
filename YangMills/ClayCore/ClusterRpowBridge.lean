@@ -2000,6 +2000,31 @@ structure ShiftedF3CountPackage where
 
 namespace ShiftedF3CountPackage
 
+/-- Package a global shifted connecting-cluster count bound as the count half
+of the preferred shifted F3 interface. -/
+def ofBound
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_count : ShiftedConnectingClusterCountBound C_conn dim) :
+    ShiftedF3CountPackage where
+  C_conn := C_conn
+  hC := hC
+  dim := dim
+  h_count := h_count
+
+/-- Direct application form of a global shifted F3 count package. -/
+theorem apply
+    (pkg : ShiftedF3CountPackage)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.C_conn * (((n + 1 : ℕ) : ℝ) ^ pkg.dim) :=
+  ShiftedConnectingClusterCountBound.apply pkg.h_count p q n hn hdist
+
 /-- Restrict a global shifted F3 count package to a fixed finite plaquette
 lattice. -/
 def toAt
@@ -2037,6 +2062,16 @@ theorem toAt_apply
       (pkg.toAt d L).C_conn *
         (((n + 1 : ℕ) : ℝ) ^ (pkg.toAt d L).dim) :=
   (pkg.toAt d L).h_count.apply p q n hn hdist
+
+@[simp] theorem ofBound_C_conn
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_count : ShiftedConnectingClusterCountBound C_conn dim) :
+    (ofBound C_conn hC dim h_count).C_conn = C_conn := rfl
+
+@[simp] theorem ofBound_dim
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_count : ShiftedConnectingClusterCountBound C_conn dim) :
+    (ofBound C_conn hC dim h_count).dim = dim := rfl
 
 end ShiftedF3CountPackage
 
@@ -2294,10 +2329,14 @@ theorem clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_prefactor_eq
 #print axioms ShiftedF3MayerPackage.toTruncatedActivities_K_bound_eq_zero_of_not_connected
 #print axioms ShiftedF3MayerPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
 #print axioms shiftedF3MayerPackage_su1_zero
+#print axioms ShiftedF3CountPackage.ofBound
+#print axioms ShiftedF3CountPackage.apply
 #print axioms ShiftedF3CountPackage.toAt
 #print axioms ShiftedF3CountPackage.toAt_C_conn
 #print axioms ShiftedF3CountPackage.toAt_dim
 #print axioms ShiftedF3CountPackage.toAt_apply
+#print axioms ShiftedF3CountPackage.ofBound_C_conn
+#print axioms ShiftedF3CountPackage.ofBound_dim
 #print axioms ShiftedF3MayerCountPackage.ofSubpackages
 #print axioms ShiftedF3MayerCountPackage.mayerPackage
 #print axioms ShiftedF3MayerCountPackage.countPackage

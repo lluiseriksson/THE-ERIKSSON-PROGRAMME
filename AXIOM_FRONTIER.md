@@ -1,3 +1,42 @@
+# v1.19.0 — Shifted F3 count package gets direct constructor and applicator
+
+**Released: 2026-04-25**
+
+## What
+
+Added count-package API in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    ShiftedF3CountPackage.ofBound
+    ShiftedF3CountPackage.apply
+    ShiftedF3CountPackage.ofBound_C_conn
+    ShiftedF3CountPackage.ofBound_dim
+
+`ofBound` packages a global `ShiftedConnectingClusterCountBound C_conn dim`,
+and `apply` exposes the bucket-count inequality directly from a
+`ShiftedF3CountPackage` without first projecting to a finite-volume
+`toAt` package.
+
+## Why
+
+No percentage bar moves.  This is F3 count-interface cleanup: a future proof
+of the global shifted lattice-animal estimate can now be packaged and consumed
+through one named API.  The mathematical content remains the proof of
+`ShiftedConnectingClusterCountBound` itself.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all four new declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.18.0 — Shifted F3 Mayer package exposes its activity consumer
 
 **Released: 2026-04-25**
