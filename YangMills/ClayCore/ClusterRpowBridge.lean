@@ -1612,11 +1612,9 @@ theorem clay_theorem_of_shiftedCountBound_mayerData_ceil
     (data : ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le)
     (h_count : ShiftedConnectingClusterCountBound C_conn dim) :
     ClayYangMillsTheorem :=
-  clay_theorem_from_wilson_activity wab
-    (clusterPrefactorShifted wab.r C_conn A₀ dim)
-    (clusterPrefactorShifted_pos wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim)
-    (clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
-      N_c wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim data h_count)
+  clayMassGap_implies_clayTheorem
+    (clayMassGap_of_shiftedCountBound_mayerData_ceil
+      N_c wab C_conn A₀ hC hA dim data h_count)
 
 #print axioms clay_theorem_of_shiftedCountBound_mayerData_ceil
 
