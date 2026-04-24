@@ -1,3 +1,52 @@
+# v1.12.0 — Uniform-rpow small-β frontier lands in ClusterCorrelatorBound
+
+**Released: 2026-04-25**
+
+## What
+
+Added
+
+    theorem clusterCorrelatorBound_small_beta_of_uniformRpow
+
+to `YangMills/ClayCore/ZeroMeanCancellation.lean`.
+
+It exposes the direct hub bridge
+
+    WilsonUniformRpowBound N_c β C
+    0 < β
+    β < 1
+    0 < C
+    ─────────────────────────────────────────────
+    ClusterCorrelatorBound N_c β C
+
+by applying the existing `clusterCorrelatorBound_of_rpow_bound` conversion.
+`clayMassGap_small_beta_of_uniformRpow` now routes through this named bridge
+instead of inlining the conversion.
+
+## Why
+
+No percentage bar moves.  This is API cleanup on the small-β route: the named
+uniform-rpow frontier now lands explicitly in the central
+`ClusterCorrelatorBound` hub before projecting to mass gap, connected decay,
+Clay theorem, or `PhysicalStrong`.  The analytic target is unchanged: prove
+`WilsonUniformRpowBound` for the nonabelian cases via Mayer/Kotecky-Preiss.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ZeroMeanCancellation
+
+Pinned trace:
+
+    'YangMills.clusterCorrelatorBound_small_beta_of_uniformRpow'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.11.0 — SU(1) inhabits the named uniform-rpow frontier
 
 **Released: 2026-04-25**

@@ -272,6 +272,21 @@ theorem yang_mills_final_small_beta_of_uniformRpow
     ClayYangMillsTheorem :=
   yang_mills_final_small_beta N_c hβ_pos hβ_lt1 C hC_pos h_rpow
 
+/-- Direct hub bridge from the named uniform-rpow frontier to
+`ClusterCorrelatorBound`.
+
+This exposes the conversion already used by the mass-gap wrapper below: the
+small-β rpow profile is the same analytic input, repackaged in the exponential
+KP form consumed by the central cluster-correlator hub. -/
+theorem clusterCorrelatorBound_small_beta_of_uniformRpow
+    (N_c : ℕ) [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (C : ℝ) (hC_pos : 0 < C)
+    (h_rpow : WilsonUniformRpowBound N_c β C) :
+    ClusterCorrelatorBound N_c β C :=
+  clusterCorrelatorBound_of_rpow_bound N_c
+    hβ_pos hβ_lt1 C hC_pos.le h_rpow
+
 /-- Authentic mass-gap object from the named uniform-rpow small-β frontier. -/
 noncomputable def clayMassGap_small_beta_of_uniformRpow
     (N_c : ℕ) [NeZero N_c]
@@ -280,8 +295,8 @@ noncomputable def clayMassGap_small_beta_of_uniformRpow
     (h_rpow : WilsonUniformRpowBound N_c β C) :
     ClayYangMillsMassGap N_c :=
   clay_massGap_large_beta N_c β hβ_pos hβ_lt1 C hC_pos
-    (clusterCorrelatorBound_of_rpow_bound N_c
-      hβ_pos hβ_lt1 C hC_pos.le h_rpow)
+    (clusterCorrelatorBound_small_beta_of_uniformRpow
+      N_c hβ_pos hβ_lt1 C hC_pos h_rpow)
 
 /-- The theorem projection from the authentic small-β mass-gap object. -/
 theorem clay_theorem_small_beta_of_uniformRpow
@@ -349,6 +364,7 @@ theorem clayConnectedCorrDecay_small_beta_of_uniformRpow_prefactor_eq
 #print axioms plaquetteFluctuationNorm_zero_beta
 #print axioms wilsonUniformRpowBound_su1
 #print axioms yang_mills_final_small_beta_of_uniformRpow
+#print axioms clusterCorrelatorBound_small_beta_of_uniformRpow
 #print axioms clayMassGap_small_beta_of_uniformRpow
 #print axioms clay_theorem_small_beta_of_uniformRpow
 #print axioms clayMassGap_small_beta_of_uniformRpow_mass_eq
