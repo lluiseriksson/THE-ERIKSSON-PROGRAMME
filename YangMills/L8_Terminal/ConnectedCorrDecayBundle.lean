@@ -146,4 +146,41 @@ theorem physicalStrong_of_clayConnectedCorrDecay_siteDist
 
 #print axioms physicalStrong_of_clayConnectedCorrDecay_siteDist
 
+/-- Same physical endpoint as
+`physicalStrong_of_clayConnectedCorrDecay_siteDist`, with the Gibbs probability
+input discharged from the standard Boltzmann-weight integrability hypothesis. -/
+theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable
+    {N_c d : ℕ} [NeZero N_c] [NeZero d]
+    (w : ClayConnectedCorrDecay N_c)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hboltz_int : ∀ (L : ℕ) [NeZero L],
+      Integrable
+        (fun U : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+          Real.exp (-β * wilsonAction (wilsonPlaquetteEnergy N_c) U))
+        (gaugeMeasureFrom (d := d) (N := L) (sunHaarProb N_c)))
+    (hp_int : ∀ (L : ℕ) [NeZero L] (p : ConcretePlaquette d L),
+      Integrable (plaquetteWilsonObs F p)
+        (gibbsMeasure (d := d) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β))
+    (hpq_int : ∀ (L : ℕ) [NeZero L] (p q : ConcretePlaquette d L),
+      Integrable
+        (fun A : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+          plaquetteWilsonObs F p A * plaquetteWilsonObs F q A)
+        (gibbsMeasure (d := d) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette d L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_clayConnectedCorrDecay_siteDist
+    w β F hβ hF
+    (fun L => gibbsMeasure_isProbability d L
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β (hboltz_int L))
+    hp_int hpq_int
+
+#print axioms physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable
+
 end YangMills

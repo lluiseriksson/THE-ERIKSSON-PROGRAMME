@@ -1,3 +1,47 @@
+# v1.01.0 — Boltzmann-integrability variant of the PhysicalStrong bridge
+
+**Released: 2026-04-24**
+
+## What
+
+Added
+
+    theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable
+
+to `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+This is the same canonical-distance bridge as v1.00.0, but it no longer asks
+the caller to provide
+
+    IsProbabilityMeasure (gibbsMeasure ... β)
+
+directly.  Instead it derives that probability instance from the standard
+Boltzmann-weight integrability hypothesis via `gibbsMeasure_isProbability`:
+
+    Integrable
+      (fun U => exp (-β * wilsonAction (wilsonPlaquetteEnergy N_c) U))
+      (gaugeMeasureFrom (sunHaarProb N_c))
+
+The remaining local inputs are still explicit: bounded observable `|F| ≤ 1`
+and integrability of the Wilson one-point/two-point observables under the
+tilted Gibbs measure.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace:
+
+    'YangMills.physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.00.0 — ClayConnectedCorrDecay to PhysicalStrong canonical-distance bridge
 
 **Released: 2026-04-24**
