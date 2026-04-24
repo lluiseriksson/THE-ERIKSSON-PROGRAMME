@@ -1,3 +1,56 @@
+# v0.48.0 — F3 bridge: truncated activities to ClusterCorrelatorBound
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 bridge in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem clusterCorrelatorBound_of_truncatedActivities
+        ... :
+        ClusterCorrelatorBound N_c r
+          (clusterPrefactor r C_conn A₀ dim)
+
+This composes the existing Mayer/Kotecký-Preiss analytic scaffolding:
+
+1. `TruncatedActivities.abs_connectingSum_le_connectingBound`
+   (`MayerExpansion.lean`);
+2. `connecting_cluster_tsum_le`
+   (`ClusterSeriesBound.lean`);
+3. the Wilson-facing exponential target
+   `ClusterCorrelatorBound N_c r C_clust`.
+
+The theorem is intentionally honest about the remaining analytic inputs. It
+takes as hypotheses:
+
+- a Mayer/Ursell identity identifying `wilsonConnectedCorr` with the
+  connecting truncated-activity sum;
+- a connecting-cluster series bound on `connectingBound`;
+- a geometric comparison from the discrete cluster distance `distNat` to
+  `siteLatticeDist`.
+
+Given those inputs, the F3 summability/factoring part is fully discharged in
+Lean and produces the exact `ClusterCorrelatorBound` shape consumed by the
+Clay pipeline.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+    lake build YangMills
+
+Pinned trace:
+
+    'YangMills.clusterCorrelatorBound_of_truncatedActivities' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet: the remaining open work is now
+sharply isolated to the Mayer/Ursell identity plus the geometric comparison,
+not the F3 summability/factoring bridge.
+
+---
+
 # v0.47.0 — P2d-audit: frontier reclassification + Clay-endpoint triviality canary
 
 **Released: 2026-04-24**
