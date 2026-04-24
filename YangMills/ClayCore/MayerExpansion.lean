@@ -254,4 +254,25 @@ noncomputable def TruncatedActivities.ofBound
   K_abs_le := hK_abs_le
   summable_K_bound := hK_bound_summable
 
+/-- Finite-volume constructor from a global cardinality-decay bound.
+
+On a finite polymer index type, summability of `A₀ * r ^ Y.card` is
+automatic.  This constructor packages the canonical KP-style pointwise
+estimate into the abstract `TruncatedActivities` interface. -/
+noncomputable def TruncatedActivities.ofCardDecay
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (K : Finset ι → ℝ) (r A₀ : ℝ)
+    (hr_nonneg : 0 ≤ r) (hA_nonneg : 0 ≤ A₀)
+    (hK_abs_le : ∀ Y, |K Y| ≤ A₀ * r ^ Y.card) :
+    TruncatedActivities ι :=
+  TruncatedActivities.ofBound K (fun Y => A₀ * r ^ Y.card)
+    (fun Y => mul_nonneg hA_nonneg (pow_nonneg hr_nonneg Y.card))
+    hK_abs_le
+    (summable_of_hasFiniteSupport (by
+      exact Set.finite_univ.subset (by
+        intro Y _hY
+        exact Set.mem_univ Y)))
+
+#print axioms TruncatedActivities.ofCardDecay
+
 end YangMills

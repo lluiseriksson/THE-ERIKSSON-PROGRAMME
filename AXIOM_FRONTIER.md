@@ -1,3 +1,48 @@
+# v0.60.0 — Finite-volume TruncatedActivities from cardinality decay
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive constructor in `YangMills/ClayCore/MayerExpansion.lean`:
+
+    noncomputable def TruncatedActivities.ofCardDecay
+
+It builds a `TruncatedActivities ι` on a finite polymer index type from the
+canonical global activity estimate
+
+    |K Y| ≤ A₀ * r^Y.card
+
+with `0 ≤ A₀` and `0 ≤ r`.  The pointwise bound is packaged as
+
+    K_bound Y := A₀ * r^Y.card
+
+and `summable_K_bound` is discharged automatically from finite support.  This
+removes one manual analytic bookkeeping obligation from future F3 producers:
+after v0.59.0, the terminal F3 wrapper consumes global cardinality decay;
+after v0.60.0, the abstract Mayer/KP activity object can be constructed from
+the same global decay shape in finite volume.
+
+This does not prove the Mayer/Ursell identity or the lattice-animal count.  It
+only exposes the finite-volume constructor needed to make those future
+producers plug into the existing `TruncatedActivities` API.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.MayerExpansion
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.TruncatedActivities.ofCardDecay' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.59.0 — F3 terminal endpoint from count + global cardinality decay
 
 **Released: 2026-04-24**
