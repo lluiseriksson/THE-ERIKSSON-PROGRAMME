@@ -89,11 +89,14 @@ What is already closed locally:
 
     shiftedConnectingClusterCountBoundAt_finite
     ShiftedF3CountPackageAt.finite
+    ShiftedConnectingClusterCountBound.toAt
+    ShiftedF3CountPackage.toAt
 
 proves the fixed-`d`, fixed-`L` finite-volume version with
 `C_conn = Fintype.card (Finset (ConcretePlaquette d L)) + 1` and `dim = 0`.
 The remaining F3-count work is the uniform lattice-animal estimate
-`ShiftedConnectingClusterCountBound`, not mere finiteness.
+`ShiftedConnectingClusterCountBound`, not mere finiteness.  A proved global
+count package now projects mechanically to every local finite-volume package.
 
 ## Preferred Build Checks
 
@@ -117,6 +120,8 @@ Key oracle canaries:
     #print axioms clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq
     #print axioms shiftedConnectingClusterCountBoundAt_finite
     #print axioms ShiftedF3CountPackageAt.finite
+    #print axioms ShiftedConnectingClusterCountBound.toAt
+    #print axioms ShiftedF3CountPackage.toAt
 
 Expected oracle:
 

@@ -1,3 +1,47 @@
+# v0.81.0 — Restrict global F3 count data to local lattices
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive bridge between the global F3 count frontier and the local
+finite-volume count layer:
+
+    theorem ShiftedConnectingClusterCountBound.toAt
+    def ShiftedF3CountPackage.toAt
+
+`ShiftedConnectingClusterCountBound.toAt` restricts a global uniform shifted
+connecting-cluster count bound to any fixed finite plaquette lattice
+`(d, L)`.  `ShiftedF3CountPackage.toAt` performs the same restriction at the
+packaged-data level:
+
+    ShiftedF3CountPackage → ShiftedF3CountPackageAt d L
+
+This does not prove the global lattice-animal estimate.  It records the
+expected functorial direction: once the true uniform count package is proved,
+all finite-volume local packages are immediate projections.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.ShiftedConnectingClusterCountBound.toAt'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.ShiftedF3CountPackage.toAt'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.80.0 — Packaged local finite-volume count data
 
 **Released: 2026-04-24**

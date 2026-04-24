@@ -120,6 +120,16 @@ theorem ShiftedConnectingClusterCountBoundAt.apply
       C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) :=
   h p q n hn hdist
 
+/-- Restrict a global shifted connecting-cluster count bound to a fixed finite
+plaquette lattice. -/
+theorem ShiftedConnectingClusterCountBound.toAt
+    {C_conn : ℝ} {dim : ℕ}
+    (h : ShiftedConnectingClusterCountBound C_conn dim)
+    (d L : ℕ) [NeZero d] [NeZero L] :
+    ShiftedConnectingClusterCountBoundAt d L C_conn dim := by
+  intro p q n hn hdist
+  exact h.apply p q n hn hdist
+
 /-- Packaged finite-volume shifted count data. -/
 structure ShiftedF3CountPackageAt (d L : ℕ) [NeZero d] [NeZero L] where
   C_conn : ℝ
@@ -218,6 +228,7 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms C_conn_const_pos_of_neZero
 #print axioms ShiftedConnectingClusterCountBound.apply
 #print axioms ShiftedConnectingClusterCountBoundAt.apply
+#print axioms ShiftedConnectingClusterCountBound.toAt
 #print axioms shiftedConnectingClusterCountBoundAt_finite
 #print axioms ShiftedF3CountPackageAt.finite
 
