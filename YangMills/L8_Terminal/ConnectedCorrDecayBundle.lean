@@ -298,4 +298,90 @@ theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable
 
 #print axioms physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_measurableF
 
+/-- Boltzmann-weight integrability for the concrete Wilson plaquette energy on
+finite SU(N) gauge lattices.
+
+The proof uses the existing uniform bound on `wilsonPlaquetteEnergy N_c` and
+the finiteness of the plaquette set to bound `exp (-β * wilsonAction ...)` on
+the probability gauge measure. -/
+theorem wilsonPlaquetteEnergy_boltzmann_integrable
+    {N_c d L : ℕ} [NeZero N_c] [NeZero d] [NeZero L]
+    (β : ℝ) (hβ : 0 ≤ β) :
+    Integrable
+      (fun U : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+        Real.exp (-β * wilsonAction (wilsonPlaquetteEnergy N_c) U))
+      (gaugeMeasureFrom (d := d) (N := L) (sunHaarProb N_c)) := by
+  obtain ⟨M, hM⟩ := wilsonPlaquetteEnergy_bounded N_c
+  let B : ℝ := (Fintype.card (ConcretePlaquette d L) : ℝ) * max M 0
+  have h_lower :
+      ∀ U : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ),
+        -B ≤ wilsonAction (wilsonPlaquetteEnergy N_c) U := by
+    intro U
+    unfold wilsonAction
+    dsimp [B]
+    calc
+      -((Fintype.card (ConcretePlaquette d L) : ℝ) * max M 0)
+          = ∑ _p : ConcretePlaquette d L, -(max M 0) := by
+            simp [Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
+      _ ≤ ∑ p : ConcretePlaquette d L,
+            wilsonPlaquetteEnergy N_c (GaugeConfig.plaquetteHolonomy U p) := by
+            apply Finset.sum_le_sum
+            intro p _
+            have hp_abs := hM (GaugeConfig.plaquetteHolonomy U p)
+            have hp_abs' :
+                |wilsonPlaquetteEnergy N_c (GaugeConfig.plaquetteHolonomy U p)|
+                  ≤ max M 0 :=
+              le_trans hp_abs (le_max_left M 0)
+            exact (abs_le.mp hp_abs').1
+  have hbound :
+      ∀ U : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ),
+        Real.exp (-β * wilsonAction (wilsonPlaquetteEnergy N_c) U)
+          ≤ Real.exp (β * B) := by
+    intro U
+    apply Real.exp_le_exp.mpr
+    have hm := h_lower U
+    have hmul : β * (-B) ≤ β * wilsonAction (wilsonPlaquetteEnergy N_c) U :=
+      mul_le_mul_of_nonneg_left hm hβ
+    nlinarith
+  have haction_meas : Measurable
+      (fun U : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+        wilsonAction (wilsonPlaquetteEnergy N_c) U) :=
+    measurable_wilsonAction (wilsonPlaquetteEnergy N_c)
+      (wilsonPlaquetteEnergy_continuous N_c).measurable
+  have hmeas : AEStronglyMeasurable
+      (fun U : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+        Real.exp (-β * wilsonAction (wilsonPlaquetteEnergy N_c) U))
+      (gaugeMeasureFrom (d := d) (N := L) (sunHaarProb N_c)) := by
+    have hm : Measurable
+        (fun U : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+          Real.exp (-β * wilsonAction (wilsonPlaquetteEnergy N_c) U)) := by
+      exact Real.measurable_exp.comp (haction_meas.const_mul (-β))
+    exact hm.aestronglyMeasurable
+  refine Integrable.of_bound hmeas (Real.exp (β * B)) ?_
+  exact ae_of_all _ fun U => by
+    rw [Real.norm_of_nonneg (Real.exp_nonneg _)]
+    exact hbound U
+
+#print axioms wilsonPlaquetteEnergy_boltzmann_integrable
+
+/-- Concrete SU(N) physical bridge with the Boltzmann integrability side-condition
+discharged from the bounded Wilson plaquette energy. -/
+theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_measurableF
+    {N_c d : ℕ} [NeZero N_c] [NeZero d]
+    (w : ClayConnectedCorrDecay N_c)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette d L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_measurableF
+    w β F hβ hF hF_meas
+    (fun _L => wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le)
+
+#print axioms physicalStrong_of_clayConnectedCorrDecay_siteDist_measurableF
+
 end YangMills

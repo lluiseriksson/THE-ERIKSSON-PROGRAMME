@@ -1,3 +1,67 @@
+# v1.06.0 — Concrete Wilson Boltzmann integrability discharged
+
+**Released: 2026-04-24**
+
+## What
+
+Added
+
+    theorem wilsonPlaquetteEnergy_boltzmann_integrable
+    theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_measurableF
+
+to `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+`wilsonPlaquetteEnergy_boltzmann_integrable` proves that for the concrete
+Wilson plaquette energy, the finite-volume Boltzmann factor
+
+    fun U => exp (-β * wilsonAction (wilsonPlaquetteEnergy N_c) U)
+
+is integrable against the product SU(N) gauge measure whenever `0 ≤ β`.  The
+proof uses the existing bound on `wilsonPlaquetteEnergy N_c`, the finiteness of
+`ConcretePlaquette d L`, and `Integrable.of_bound`.
+
+`physicalStrong_of_clayConnectedCorrDecay_siteDist_measurableF` packages the
+current cleanest physical bridge:
+
+    ClayConnectedCorrDecay N_c
+    0 < β
+    ∀ U, |F U| ≤ 1
+    Measurable F
+    ─────────────────────────────────────────────
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun L p q => siteLatticeDist p.site q.site)
+
+It derives internally: Boltzmann integrability, Gibbs probability, local
+Wilson-observable measurability, and local Wilson-observable integrability.
+
+## Why
+
+No percentage bar moves.  This removes the finite-volume regularity boilerplate
+from the route after a `ClayConnectedCorrDecay N_c` witness has been produced.
+The active mathematical front is now sharply isolated as the production of that
+connected-decay witness, i.e. F1/F2/F3 for `ClusterCorrelatorBound`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces:
+
+    'YangMills.wilsonPlaquetteEnergy_boltzmann_integrable'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalStrong_of_clayConnectedCorrDecay_siteDist_measurableF'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.05.0 — PhysicalStrong bridge with only `Measurable F` local regularity
 
 **Released: 2026-04-24**
