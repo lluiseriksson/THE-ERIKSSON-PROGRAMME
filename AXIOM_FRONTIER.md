@@ -1,3 +1,52 @@
+# v0.63.0 — Shifted KP series for nonempty cardinality buckets
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive KP-series support in `YangMills/ClayCore/ClusterSeriesBound.lean`:
+
+    theorem connecting_cluster_tsum_summable_shifted
+    theorem connecting_cluster_summand_nonneg_shifted
+    theorem connecting_cluster_partial_sum_le_tsum_shifted
+    noncomputable def clusterPrefactorShifted
+    theorem clusterPrefactorShifted_pos
+    theorem connecting_cluster_tsum_le_shifted
+
+This adds the shifted polynomial profile
+
+    C_conn * (n + 1)^dim * A₀ * r^(n + dist)
+
+alongside the existing `C_conn * n^dim * A₀ * r^(n + dist)` profile.  The
+shifted form is the natural lattice-animal bucket shape because the minimal
+extra-size bucket is indexed by `n = 0`; using `n^dim` makes that bucket's
+count bound collapse to zero when `dim > 0`.
+
+No existing theorem is changed or weakened.  The new shifted API is available
+for downstream F3 wrappers that want a realistic nonzero count at the minimal
+bucket while preserving the same exponential `r^dist` factorization.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterSeriesBound
+
+Pinned traces:
+
+    'YangMills.connecting_cluster_partial_sum_le_tsum_shifted' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clusterPrefactorShifted_pos' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.connecting_cluster_tsum_le_shifted' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.62.0 — F3 endpoint from connected cardinality-decay activities
 
 **Released: 2026-04-24**
