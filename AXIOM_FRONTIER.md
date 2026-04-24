@@ -1,3 +1,71 @@
+# v0.93.0 — Remove unrestricted normalized Gibbs LSI axiom
+
+**Released: 2026-04-24**
+
+## What
+
+Removed the P8 axiom `lsi_normalized_gibbs_from_haar` from
+`YangMills/P8_PhysicalGap/BalabanToLSI.lean`.
+
+The unrestricted normalized Gibbs route is now explicit-input:
+
+    theorem balaban_rg_uniform_lsi_norm_of_lsi
+    theorem sun_gibbs_dlr_lsi_norm_of_lsi
+
+Both take a caller-supplied single-measure normalized Gibbs LSI and only package
+it into the constant-volume family / DLR-LSI shape.  The automatic route for the
+weak terminal endpoint now goes through the already proved MemLp-gated Σ chain:
+
+    lsi_normalized_gibbs_from_haar_memLp
+      → balaban_rg_uniform_lsi_norm_memLp
+      → sun_gibbs_dlr_lsi_norm_memLp
+
+`YangMills/P8_PhysicalGap/PhysicalMassGap.lean` was aligned with its existing
+docstring: `sun_physical_mass_gap` now receives the DLR-LSI witness as an
+explicit hypothesis, while `sun_physical_mass_gap_vacuous` routes through the
+MemLp endpoint.
+
+This does not prove the unrestricted Holley-Stroock theorem for all measurable
+functions.  It removes the global axiom declaration and records that the only
+automatic axiom-free normalized route currently available is the MemLp-gated
+one.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.P8_PhysicalGap.PhysicalMassGap
+
+Pinned traces:
+
+    'YangMills.balaban_rg_uniform_lsi_norm_of_lsi'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.sun_gibbs_dlr_lsi_norm_of_lsi'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.sun_physical_mass_gap'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.sun_physical_mass_gap_vacuous'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+Non-Experimental Lean axiom count is now 2:
+
+    YangMills/ClayCore/BalabanRG/PhysicalRGRates.lean:
+      physical_rg_rates_from_E26
+    YangMills/P8_PhysicalGap/BalabanToLSI.lean:
+      holleyStroock_sunGibbs_lsi
+
+No `lsi_normalized_gibbs_from_haar` axiom remains in non-Experimental Lean.
+No `sorry`.
+
+---
+
 # v0.92.0 — Turn SU(N) Dirichlet contraction into explicit input
 
 **Released: 2026-04-24**

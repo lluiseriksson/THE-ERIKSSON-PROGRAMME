@@ -21,17 +21,14 @@ theorem sun_clay_conditional
 
 /-- **C134: Axiom-free physical mass gap (conditional on DLR-LSI hypothesis).**
     `sun_physical_mass_gap` now targets `ClayYangMillsPhysicalStrong` with the
-    DLR-LSI witness supplied as an **explicit hypothesis** `hdlr` rather than
-    generated internally via `sun_gibbs_dlr_lsi_norm` (which depends on
-    `lsi_normalized_gibbs_from_haar`). The result: the oracle footprint of
+    DLR-LSI witness supplied as an **explicit hypothesis** `hdlr`.  The result:
+    the oracle footprint of
     `sun_physical_mass_gap` collapses to `[propext, Classical.choice, Quot.sound]`
-    — the three core Lean axioms, no research axioms. The Holley-Stroock axiom
-    `lsi_normalized_gibbs_from_haar` still exists in `BalabanToLSI.lean` and is
-    still consumed by `sun_gibbs_dlr_lsi_norm`, but that dependency no longer
-    transitively flows into this theorem. Callers who want to discharge `hdlr`
-    automatically can compose with `sun_gibbs_dlr_lsi_norm`; callers who establish
-    DLR-LSI by some other route (Mathlib Bakry-Émery once it lands, direct
-    cluster expansion, etc.) get a fully axiom-free mass gap.
+    — the three core Lean axioms, no research axioms.  Callers who want to
+    discharge `hdlr` from a normalized Gibbs LSI can compose with
+    `sun_gibbs_dlr_lsi_norm_of_lsi`; callers who establish DLR-LSI by some other
+    route (Mathlib Bakry-Émery once it lands, direct cluster expansion, etc.)
+    get a fully axiom-free mass gap.
 
     The `bridge` hypothesis still encapsulates the LSI-to-decay step (Balaban RG
     + KP cluster expansion).
@@ -50,6 +47,9 @@ theorem sun_physical_mass_gap
     {G : Type*} [Group G] [MeasurableSpace G] (μ : MeasureTheory.Measure G)
     (plaquetteEnergy : G → ℝ) (F : G → ℝ)
     (distP : (N : ℕ) → ConcretePlaquette d N → ConcretePlaquette d N → ℝ)
+    (hdlr : ∃ α_star : ℝ, 0 < α_star ∧
+      DLR_LSI (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ))
+              (sunDirichletForm N_c) α_star)
     (bridge : ∀ α_star : ℝ, 0 < α_star →
       DLR_LSI (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ))
               (sunDirichletForm N_c) α_star →
@@ -57,22 +57,21 @@ theorem sun_physical_mass_gap
     (hdistP : ∀ (N : ℕ) [NeZero N] (p q : ConcretePlaquette d N),
       0 ≤ distP N p q) :
     ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP := by
-  obtain ⟨α_star, hα_pos, hDLR⟩ :=
-    sun_gibbs_dlr_lsi_norm d N_c hN_c β β₀ hβ hβ₀
+  obtain ⟨α_star, hα_pos, hDLR⟩ := hdlr
   exact connectedCorrDecay_implies_physicalStrong
     μ plaquetteEnergy β F distP (bridge α_star hα_pos hDLR) hdistP
 
 
 
-/-- Vacuous-target (`ClayYangMillsTheorem`) mass gap via the NORMALIZED chain.
-    Routes through `sun_gibbs_dlr_lsi_norm`, eliminating the legacy
-    `holleyStroock_sunGibbs_lsi` axiom. Oracle: [propext, Classical.choice,
-    Quot.sound, sorryAx]. -/
+/-- Vacuous-target (`ClayYangMillsTheorem`) mass gap via the MemLp-gated
+    normalized chain. Oracle: [propext, Classical.choice, Quot.sound]. -/
 theorem sun_physical_mass_gap_vacuous
     (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ)
     (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
     ClayYangMillsTheorem := by
-  obtain ⟨α_star, hα_pos, _⟩ := sun_gibbs_dlr_lsi_norm d N_c hN_c β β₀ hβ hβ₀
+  obtain ⟨α_star, hα_pos, _⟩ :=
+    sun_gibbs_dlr_lsi_norm_memLp d N_c hN_c β β₀ hβ hβ₀
+      (3 : ℝ≥0∞) (by norm_num)
   exact ⟨α_star, hα_pos⟩
 
 /-- **Σ-terminal: sorry-free vacuous mass gap.** Identical statement to

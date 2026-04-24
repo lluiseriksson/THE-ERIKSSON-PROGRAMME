@@ -4,9 +4,9 @@ import YangMills.P8_PhysicalGap.MemLpLogIntegrability
 import YangMills.P8_PhysicalGap.SUN_StateConstruction
 
 /-!
-# P8.3: Bałaban RG → DLR-LSI(α*) — C132: Gibbs normalization + correct HS axiom
+# P8.3: Bałaban RG → DLR-LSI(α*) — C132/C135: normalized Gibbs route
 
-## Summary of C132 changes (v1.44.0)
+## Summary of C132 changes (v1.44.0) and C135 cleanup
 
 **Mathematical fix**: the original proof chain used `holleyStroock_sunGibbs_lsi`
 for the **un-normalized** Gibbs measure (total mass Z_β < 1), leading to a
@@ -14,15 +14,19 @@ false LogSobolevInequality (the entropy of constant functions is non-zero while
 the abstract Dirichlet form vanishes for constants).
 
 C132 introduces the **normalized** Gibbs family and replaces the abstract
-Holley-Stroock axiom with a specific, correctly-stated instance:
+Holley-Stroock route with a normalized probability-measure statement:
 
 1. `sunPlaquetteEnergy_continuous` — proved from matrix/trace/re continuity
 2. `sunPartitionFunction_pos/le_one` — Z_β ∈ (exp(-2β), 1] (uses C131)
 3. `sunGibbsFamily_norm` — normalized probability Gibbs measure
 4. `instIsProbabilityMeasure_sunGibbsFamily_norm` — **proved** theorem
-5. `lsi_normalized_gibbs_from_haar` — specific HS axiom for the normalized
-   probability Gibbs (correctly stated: true for probability measures)
-6. `sun_gibbs_dlr_lsi_norm` — DLR-LSI via the correct normalized path
+5. `balaban_rg_uniform_lsi_norm_of_lsi` — lifts an explicit normalized
+   single-measure LSI input to the constant Gibbs family
+6. `sun_gibbs_dlr_lsi_norm_of_lsi` — packages that explicit input as DLR-LSI
+
+C135 removes the former unrestricted normalized HS axiom
+`lsi_normalized_gibbs_from_haar`.  The unrestricted route is now explicit-input;
+the automatic axiom-free route is the MemLp-gated Σ chain below.
 -/
 
 namespace YangMills
@@ -790,61 +794,53 @@ private theorem entSq_pert_zero_case
   simp only [entSq, h0, h0p, hlog0, hlog0p, Real.log_zero, mul_zero, sub_self]
   exact le_refl _
 
-/-- Holley--Stroock transfer for the unrestricted normalized Gibbs LSI.
-
-This is intentionally an explicit frontier axiom. The former theorem-shaped
-placeholder hid the same missing universal integrability step behind `sorry`;
-the MemLp-gated route below proves the corresponding restricted statement
-without this axiom. -/
-axiom lsi_normalized_gibbs_from_haar
-    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
-    (α : ℝ) (hα : 0 < α)
-    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α) :
-    LogSobolevInequality
-      ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
-      (sunDirichletForm N_c)
-      (α * Real.exp (-2 * β))
-
 /-!
-## P8.3: Normalized Gibbs LSI → DLR-LSI chain (consumes `lsi_normalized_gibbs_from_haar`)
+## P8.3: Normalized Gibbs LSI → DLR-LSI chain (explicit-input form)
 
-These lemmas turn the single-measure LSI delivered by the Holley–Stroock
-frontier into the family-level `DLR_LSI` needed by `sun_physical_mass_gap`.
+These lemmas turn a caller-supplied single-measure LSI into the family-level
+`DLR_LSI` needed by `sun_physical_mass_gap`.
 Because `sunGibbsFamily_norm` is a *constant* family (the same normalized
 Gibbs measure for every scale `L`), the family-level LSI is an immediate
 consequence of the single-measure LSI — no further mathematical content
 is required here, only unfolding.
 -/
 
-/-- RG-uniform LSI on the normalized Gibbs family: for every lattice
-scale `L`, the normalized Gibbs measure satisfies a log-Sobolev
-inequality with the same constant `α_haar · exp(−2β)`. Consumes
-`lsi_normalized_gibbs_from_haar`. -/
-theorem balaban_rg_uniform_lsi_norm
+/-- RG-uniform LSI on the normalized Gibbs family from an explicit
+single-volume normalized Gibbs LSI. -/
+theorem balaban_rg_uniform_lsi_norm_of_lsi
     (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ)
-    (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
+    (hβ : β ≥ β₀) (hβ₀ : 0 < β₀)
+    (α_star : ℝ) (hα_star : 0 < α_star)
+    (hLSI : LogSobolevInequality
+      ((sunHaarProb N_c).withDensity
+        (sunNormalizedGibbsDensity N_c hN_c β (hβ₀.trans_le hβ)))
+      (sunDirichletForm N_c) α_star) :
     ∃ α_star : ℝ, 0 < α_star ∧ ∀ L : ℕ,
       LogSobolevInequality
         (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ) L)
         (sunDirichletForm N_c) α_star := by
-  obtain ⟨α_haar, hα_pos, hHaar⟩ := sun_haar_lsi N_c hN_c
-  refine ⟨α_haar * Real.exp (-2 * β), mul_pos hα_pos (Real.exp_pos _), ?_⟩
+  refine ⟨α_star, hα_star, ?_⟩
   intro L
   simp only [sunGibbsFamily_norm]
-  exact lsi_normalized_gibbs_from_haar N_c hN_c β (hβ₀.trans_le hβ)
-    α_haar hα_pos hHaar
+  exact hLSI
 
-/-- DLR-LSI on the normalized Gibbs family. Consumes
-`lsi_normalized_gibbs_from_haar` via `balaban_rg_uniform_lsi_norm`. -/
-theorem sun_gibbs_dlr_lsi_norm
+/-- DLR-LSI on the normalized Gibbs family from an explicit single-volume
+normalized Gibbs LSI. -/
+theorem sun_gibbs_dlr_lsi_norm_of_lsi
     (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β β₀ : ℝ)
-    (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
+    (hβ : β ≥ β₀) (hβ₀ : 0 < β₀)
+    (α_star : ℝ) (hα_star : 0 < α_star)
+    (hLSI : LogSobolevInequality
+      ((sunHaarProb N_c).withDensity
+        (sunNormalizedGibbsDensity N_c hN_c β (hβ₀.trans_le hβ)))
+      (sunDirichletForm N_c) α_star) :
     ∃ α_star : ℝ, 0 < α_star ∧
       DLR_LSI (sunGibbsFamily_norm d N_c hN_c β (hβ₀.trans_le hβ))
         (sunDirichletForm N_c) α_star := by
-  obtain ⟨α_star, hα_pos, hLSI⟩ :=
-    balaban_rg_uniform_lsi_norm d N_c hN_c β β₀ hβ hβ₀
-  exact ⟨α_star, hα_pos, hα_pos, hLSI⟩
+  obtain ⟨α_star, hα_pos, hvol⟩ :=
+    balaban_rg_uniform_lsi_norm_of_lsi d N_c hN_c β β₀ hβ hβ₀
+      α_star hα_star hLSI
+  exact ⟨α_star, hα_pos, hα_pos, hvol⟩
 
 /-! ## LEGACY: abstract HS axiom + un-normalized Gibbs (backward compatibility) -/
 
@@ -904,11 +900,10 @@ needed inside `lsi_normalized_gibbs_from_haar_memLp`. The Haar supplier
 and the Gibbs consumer share `μ_ref = sunHaarProb N_c`.
 
 The vanilla `LogSobolevInequality`, `DLR_LSI`, `BakryEmeryCD`,
-`bakry_emery_lsi`, `sun_bakry_emery_cd`, `sun_haar_lsi`,
-`lsi_normalized_gibbs_from_haar_of_ent_pert`,
-`lsi_normalized_gibbs_from_haar`, `balaban_rg_uniform_lsi_norm` and
-`sun_gibbs_dlr_lsi_norm` are kept unchanged. Only the Σ-variants are
-added. -/
+`bakry_emery_lsi`, `sun_bakry_emery_cd`, `sun_haar_lsi`, and
+`lsi_normalized_gibbs_from_haar_of_ent_pert` are kept unchanged.  The former
+unrestricted normalized HS axiom has been replaced by explicit-input family
+wrappers; the automatic axiom-free route is the Σ-variant below. -/
 
 /-- Σ-BakryEmery: definitionally equal to the MemLp-gated LSI. -/
 def BakryEmeryCDMemLp {Ω : Type*} [MeasurableSpace Ω]
