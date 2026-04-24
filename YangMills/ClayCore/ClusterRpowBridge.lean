@@ -1773,6 +1773,20 @@ theorem clay_theorem_of_shiftedCountBound_mayerData_ceil
 
 /-! ### Single-package preferred F3 interface -/
 
+/-- Mayer/activity half of the preferred shifted F3 frontier. -/
+structure ShiftedF3MayerPackage
+    (N_c : ℕ) [NeZero N_c] (wab : WilsonPolymerActivityBound N_c) where
+  A₀ : ℝ
+  hA : 0 < A₀
+  data : ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le
+
+/-- Count half of the preferred shifted F3 frontier. -/
+structure ShiftedF3CountPackage where
+  C_conn : ℝ
+  hC : 0 < C_conn
+  dim : ℕ
+  h_count : ShiftedConnectingClusterCountBound C_conn dim
+
 /-- Single preferred package for the shifted F3 route.
 
 It gathers the constants, Mayer/activity data, and shifted lattice-animal count
@@ -1787,6 +1801,49 @@ structure ShiftedF3MayerCountPackage
   dim : ℕ
   data : ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le
   h_count : ShiftedConnectingClusterCountBound C_conn dim
+
+namespace ShiftedF3MayerCountPackage
+
+/-- Combine independently-produced Mayer/activity and count packages into the
+single preferred F3 frontier object. -/
+def ofSubpackages
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) :
+    ShiftedF3MayerCountPackage N_c wab where
+  C_conn := count.C_conn
+  A₀ := mayer.A₀
+  hC := count.hC
+  hA := mayer.hA
+  dim := count.dim
+  data := mayer.data
+  h_count := count.h_count
+
+/-- Project the Mayer/activity half out of a single preferred F3 package. -/
+def mayerPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    ShiftedF3MayerPackage N_c wab where
+  A₀ := pkg.A₀
+  hA := pkg.hA
+  data := pkg.data
+
+/-- Project the count half out of a single preferred F3 package. -/
+def countPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    ShiftedF3CountPackage where
+  C_conn := pkg.C_conn
+  hC := pkg.hC
+  dim := pkg.dim
+  h_count := pkg.h_count
+
+@[simp] theorem ofSubpackages_mayerPackage_countPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    ofSubpackages (mayerPackage pkg) (countPackage pkg) = pkg := rfl
+
+end ShiftedF3MayerCountPackage
 
 /-- The single-package F3 route yields the Wilson-facing cluster-correlator
 bound. -/
@@ -1873,6 +1930,10 @@ theorem clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_prefactor_eq
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage
 #print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackage
 #print axioms clay_theorem_of_shiftedF3MayerCountPackage
+#print axioms ShiftedF3MayerCountPackage.ofSubpackages
+#print axioms ShiftedF3MayerCountPackage.mayerPackage
+#print axioms ShiftedF3MayerCountPackage.countPackage
+#print axioms ShiftedF3MayerCountPackage.ofSubpackages_mayerPackage_countPackage
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq
 #print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mass_eq

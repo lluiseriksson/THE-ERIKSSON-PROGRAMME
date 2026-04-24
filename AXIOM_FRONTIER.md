@@ -1,3 +1,70 @@
+# v0.77.0 — Split preferred F3 package into Mayer/count halves
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive frontier factoring in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    structure ShiftedF3MayerPackage
+    structure ShiftedF3CountPackage
+
+with mechanical recombination/projections:
+
+    def ShiftedF3MayerCountPackage.ofSubpackages
+    def ShiftedF3MayerCountPackage.mayerPackage
+    def ShiftedF3MayerCountPackage.countPackage
+    theorem ShiftedF3MayerCountPackage.ofSubpackages_mayerPackage_countPackage
+
+The preferred F3 package from v0.75.0 remains the terminal one-object API:
+
+    ShiftedF3MayerCountPackage N_c wab
+
+but its two mathematical burdens are now independently named:
+
+1. `ShiftedF3MayerPackage N_c wab` packages the Mayer/activity side:
+   `A₀`, `hA`, and `ConnectedCardDecayMayerData N_c wab.r A₀ ...`;
+2. `ShiftedF3CountPackage` packages the combinatorial count side:
+   `C_conn`, `hC`, `dim`, and `ShiftedConnectingClusterCountBound C_conn dim`.
+
+Supplying both halves reconstructs the terminal package by
+`ShiftedF3MayerCountPackage.ofSubpackages`.  Any existing terminal package
+projects back to the two halves, and the roundtrip back to the original package
+is definitionally `rfl`.
+
+This does not prove either analytic half.  It sharpens the active F3 frontier:
+the remaining proof work can now proceed independently on the Mayer/activity
+producer and the shifted connecting-cluster count producer, then combine
+mechanically into all v0.75.0/v0.76.0 downstream endpoints.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.ShiftedF3MayerCountPackage.ofSubpackages'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.ShiftedF3MayerCountPackage.mayerPackage'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.ShiftedF3MayerCountPackage.countPackage'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.ShiftedF3MayerCountPackage.ofSubpackages_mayerPackage_countPackage'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.76.0 — Single-package F3 mass/prefactor canaries
 
 **Released: 2026-04-24**
