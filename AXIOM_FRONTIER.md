@@ -1,3 +1,49 @@
+# v0.80.0 — Packaged local finite-volume count data
+
+**Released: 2026-04-24**
+
+## What
+
+Finite-volume count packaging in
+`YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    structure ShiftedF3CountPackageAt
+    noncomputable def ShiftedF3CountPackageAt.finite
+
+`ShiftedF3CountPackageAt d L` packages the local shifted count data for a
+fixed concrete plaquette lattice:
+
+    C_conn : ℝ
+    hC : 0 < C_conn
+    dim : ℕ
+    h_count : ShiftedConnectingClusterCountBoundAt d L C_conn dim
+
+The constructor `ShiftedF3CountPackageAt.finite` fills this package using the
+trivial finite-volume bound from v0.79.0:
+
+    C_conn = Fintype.card (Finset (ConcretePlaquette d L)) + 1
+    dim    = 0
+
+This is still not the global uniform F3 count package.  It makes the
+finite-volume count layer reusable as a first-class local object, while keeping
+the uniform lattice-animal estimate visibly separate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+
+Pinned trace:
+
+    'YangMills.ShiftedF3CountPackageAt.finite'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.79.0 — Local finite-volume shifted count bound
 
 **Released: 2026-04-24**

@@ -120,6 +120,13 @@ theorem ShiftedConnectingClusterCountBoundAt.apply
       C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) :=
   h p q n hn hdist
 
+/-- Packaged finite-volume shifted count data. -/
+structure ShiftedF3CountPackageAt (d L : ℕ) [NeZero d] [NeZero L] where
+  C_conn : ℝ
+  hC : 0 < C_conn
+  dim : ℕ
+  h_count : ShiftedConnectingClusterCountBoundAt d L C_conn dim
+
 /-- **Weak Layer-C1 bound.**
 For any pair of plaquettes `p, q` and any `n : ℕ`, the number of
 connected polymers `X ⊆ ConcretePlaquette d L` of cardinality
@@ -176,6 +183,17 @@ theorem shiftedConnectingClusterCountBoundAt_finite
         ((Fintype.card (Finset (ConcretePlaquette d L)) + 1 : ℕ) : ℝ) by
     exact_mod_cast hle_nat)
 
+/-- Pack the trivial finite-volume shifted count bound as reusable local count
+data. -/
+noncomputable def ShiftedF3CountPackageAt.finite
+    (d L : ℕ) [NeZero d] [NeZero L] :
+    ShiftedF3CountPackageAt d L where
+  C_conn := ((Fintype.card (Finset (ConcretePlaquette d L)) + 1 : ℕ) : ℝ)
+  hC := by
+    exact_mod_cast (Nat.succ_pos (Fintype.card (Finset (ConcretePlaquette d L))))
+  dim := 0
+  h_count := shiftedConnectingClusterCountBoundAt_finite d L
+
 /-- Any connected polymer containing `p` and `q` lies in a canonical
 distance-indexed cardinality bucket: its size is an "extra size" `n`
 plus the ceiling of the lattice distance between `p` and `q`.
@@ -201,5 +219,6 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedConnectingClusterCountBound.apply
 #print axioms ShiftedConnectingClusterCountBoundAt.apply
 #print axioms shiftedConnectingClusterCountBoundAt_finite
+#print axioms ShiftedF3CountPackageAt.finite
 
 end YangMills

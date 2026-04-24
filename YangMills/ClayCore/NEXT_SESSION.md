@@ -88,6 +88,7 @@ under the existing hypotheses
 What is already closed locally:
 
     shiftedConnectingClusterCountBoundAt_finite
+    ShiftedF3CountPackageAt.finite
 
 proves the fixed-`d`, fixed-`L` finite-volume version with
 `C_conn = Fintype.card (Finset (ConcretePlaquette d L)) + 1` and `dim = 0`.
@@ -115,6 +116,7 @@ Key oracle canaries:
     #print axioms clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
     #print axioms clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq
     #print axioms shiftedConnectingClusterCountBoundAt_finite
+    #print axioms ShiftedF3CountPackageAt.finite
 
 Expected oracle:
 
