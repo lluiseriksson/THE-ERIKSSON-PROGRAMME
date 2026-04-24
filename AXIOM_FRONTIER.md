@@ -19,6 +19,11 @@ Pure additive F3 interface tightening across the geometry/counting side:
         T.connectingBound p q =
           ∑ Y ∈ univ.filter (fun Y => p ∈ Y ∧ q ∈ Y), T.K_bound Y
 
+    theorem clusterCorrelatorBound_of_finiteConnectingBounds_ceil
+        ... :
+        ClusterCorrelatorBound N_c r
+          (clusterPrefactor r C_conn A₀ dim)
+
 The first theorem exposes the natural-number form of the existing polymer
 diameter lemma `polymer_size_ge_site_dist_succ`: any connected polymer
 containing `p` and `q` has size at least the ceiling of their lattice
@@ -32,6 +37,17 @@ index types, `connectingBound` is no longer only a `tsum` over `Finset ι`; it
 is definitionally available as a finite sum over polymers containing `p` and
 `q`.  This is the concrete form needed by lattice-animal / connecting-cluster
 counting estimates.
+
+The fourth theorem is the Wilson-facing bridge that consumes exactly that
+finite-sum estimate: if the finite sum of `K_bound` over polymers containing
+`p,q` is bounded by the canonical
+
+    ∑' n, C_conn * n^dim * A₀ *
+      r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)
+
+then `ClusterCorrelatorBound` follows.  The abstract `connectingBound` is
+opened internally, so the remaining KP task can now be stated directly as a
+finite lattice-animal estimate.
 
 ## Oracle
 
@@ -51,6 +67,9 @@ Pinned trace:
     [propext, Classical.choice, Quot.sound]
 
     'YangMills.TruncatedActivities.connectingBound_eq_finset_sum' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clusterCorrelatorBound_of_finiteConnectingBounds_ceil' depends on axioms:
     [propext, Classical.choice, Quot.sound]
 
 No new axioms. No `sorry`. No bar movement yet: this does not prove the
