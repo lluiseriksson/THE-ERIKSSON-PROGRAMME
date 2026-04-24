@@ -1,3 +1,52 @@
+# v0.72.0 — F3 endpoints into `ClayConnectedCorrDecay`
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive hub alignment in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    noncomputable def clayConnectedCorrDecay_of_shiftedCountBound_mayerData_ceil
+    noncomputable def clayConnectedCorrDecay_of_shiftedCountBound_connectedCardDecayActivities_ceil
+
+The preferred F3 route already reaches the authentic
+`ClayYangMillsMassGap N_c` structure (v0.70/v0.71).  v0.72 also exports the
+same result through the physically named hub:
+
+    ClayConnectedCorrDecay N_c
+
+This is a field-for-field projection via
+`ClayConnectedCorrDecay.ofClayMassGap`; it introduces no new mathematical
+content and no new hypotheses.  Its value is interface hygiene: analytic routes
+that use `ClayConnectedCorrDecay` as their common target can now consume the
+preferred F3 packages directly, while the mass-gap and weak theorem endpoints
+remain downstream projections.
+
+Both entry styles are covered:
+
+1. packaged `ConnectedCardDecayMayerData` + `ShiftedConnectingClusterCountBound`;
+2. raw `K / hK_abs_le / h_mayer` + `ShiftedConnectingClusterCountBound`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.clayConnectedCorrDecay_of_shiftedCountBound_mayerData_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayConnectedCorrDecay_of_shiftedCountBound_connectedCardDecayActivities_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.71.0 — Unpackaged authentic F3 mass-gap endpoint
 
 **Released: 2026-04-24**
