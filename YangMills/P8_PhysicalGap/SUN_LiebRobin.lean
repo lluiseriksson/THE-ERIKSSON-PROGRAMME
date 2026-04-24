@@ -54,7 +54,7 @@ theorem sun_locality_to_covariance
     (N_c d : ℕ) [NeZero N_c]
     (A B : Finset (Site d))
     (F G : SUN_State_Concrete N_c → ℝ)
-    (hF_loc : IsLocalObservable A F) (hG_loc : IsLocalObservable B G)
+    (hF_loc : IsSpatialLocalObservable A F) (hG_loc : IsSpatialLocalObservable B G)
     (hF : Integrable F (sunHaarProb N_c))
     (hG : Integrable G (sunHaarProb N_c))
     (hF2 : Integrable (fun x => F x ^ 2) (sunHaarProb N_c))

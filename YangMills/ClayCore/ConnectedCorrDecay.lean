@@ -2,12 +2,12 @@
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Lluis Eriksson
 
-Phase 3 / Task #7 sub-target P1: ConnectedCorrDecay abstraction.
+Phase 3 / Task #7 sub-target P1: ClayConnectedCorrDecay abstraction.
 
 First-class Lean abstraction of **connected correlator decay** for the
 SU(N_c) Wilson lattice Gibbs measure. Promoted from the deferred
 comment in `SchurPhysicalBridge.lean` (L28, referring to
-`fundamentalObservable_ConnectedCorrDecay`) to a named structure.
+`fundamentalObservable_ClayConnectedCorrDecay`) to a named structure.
 
 Field content is structurally identical to `ClayYangMillsMassGap`, but
 the abstraction is exported under a physically-meaningful name to
@@ -16,7 +16,7 @@ serve as the common target of:
   * the N_c ≥ 2 analytic routes (Osterwalder–Seiler / Kotecký–Preiss /
     Balaban RG), which enter through `ClayWitnessHyp N_c`.
 
-Both directions between `ConnectedCorrDecay N_c` and
+Both directions between `ClayConnectedCorrDecay N_c` and
 `ClayYangMillsMassGap N_c` are pure field-for-field projections
 and introduce no axioms.
 
@@ -49,7 +49,7 @@ physically-meaningful name to serve as the entry target of the U(1)
 unconditional route and the Balaban H1+H2+H3 / KP / OS routes for
 `N_c ≥ 2`. Round-trip projections are field-for-field (`rfl`) and
 introduce no axioms. -/
-structure ConnectedCorrDecay (N_c : ℕ) [NeZero N_c] : Type where
+structure ClayConnectedCorrDecay (N_c : ℕ) [NeZero N_c] : Type where
   /-- Exponential decay rate (mass gap). -/
   m : ℝ
   /-- Positivity of the decay rate. -/
@@ -75,9 +75,9 @@ structure ConnectedCorrDecay (N_c : ℕ) [NeZero N_c] : Type where
 
 /-- From a Clay mass-gap witness, produce a connected-correlator-decay
     witness. Pure field-for-field projection; no axioms. -/
-noncomputable def ConnectedCorrDecay.ofClayMassGap
+noncomputable def ClayConnectedCorrDecay.ofClayMassGap
     {N_c : ℕ} [NeZero N_c]
-    (g : ClayYangMillsMassGap N_c) : ConnectedCorrDecay N_c where
+    (g : ClayYangMillsMassGap N_c) : ClayConnectedCorrDecay N_c where
   m := g.m
   hm := g.hm
   C := g.C
@@ -86,35 +86,35 @@ noncomputable def ConnectedCorrDecay.ofClayMassGap
 
 /-- From a connected-correlator-decay witness, produce a Clay mass-gap
     witness. Pure field-for-field projection; no axioms. -/
-noncomputable def ConnectedCorrDecay.toClayMassGap
+noncomputable def ClayConnectedCorrDecay.toClayMassGap
     {N_c : ℕ} [NeZero N_c]
-    (w : ConnectedCorrDecay N_c) : ClayYangMillsMassGap N_c where
+    (w : ClayConnectedCorrDecay N_c) : ClayYangMillsMassGap N_c where
   m := w.m
   hm := w.hm
   C := w.C
   hC := w.hC
   hbound := w.hbound
 
-/-- Round-trip starting from `ConnectedCorrDecay` is the identity. -/
-@[simp] theorem ConnectedCorrDecay.ofClayMassGap_toClayMassGap
-    {N_c : ℕ} [NeZero N_c] (w : ConnectedCorrDecay N_c) :
-    ConnectedCorrDecay.ofClayMassGap
-        (ConnectedCorrDecay.toClayMassGap w) = w := rfl
+/-- Round-trip starting from `ClayConnectedCorrDecay` is the identity. -/
+@[simp] theorem ClayConnectedCorrDecay.ofClayMassGap_toClayMassGap
+    {N_c : ℕ} [NeZero N_c] (w : ClayConnectedCorrDecay N_c) :
+    ClayConnectedCorrDecay.ofClayMassGap
+        (ClayConnectedCorrDecay.toClayMassGap w) = w := rfl
 
 /-- Round-trip starting from `ClayYangMillsMassGap` is the identity. -/
-@[simp] theorem ConnectedCorrDecay.toClayMassGap_ofClayMassGap
+@[simp] theorem ClayConnectedCorrDecay.toClayMassGap_ofClayMassGap
     {N_c : ℕ} [NeZero N_c] (g : ClayYangMillsMassGap N_c) :
-    ConnectedCorrDecay.toClayMassGap
-        (ConnectedCorrDecay.ofClayMassGap g) = g := rfl
+    ClayConnectedCorrDecay.toClayMassGap
+        (ClayConnectedCorrDecay.ofClayMassGap g) = g := rfl
 
 /-! ### Terminal projection to the Clay Millennium statement -/
 
 /-- The Clay Millennium statement `∃ m_phys : ℝ, 0 < m_phys` follows
     from any connected-correlator-decay witness. -/
-theorem ConnectedCorrDecay.clayTheorem
-    {N_c : ℕ} [NeZero N_c] (w : ConnectedCorrDecay N_c) :
+theorem ClayConnectedCorrDecay.clayTheorem
+    {N_c : ℕ} [NeZero N_c] (w : ClayConnectedCorrDecay N_c) :
     ClayYangMillsTheorem :=
-  clayMassGap_implies_clayTheorem (ConnectedCorrDecay.toClayMassGap w)
+  clayMassGap_implies_clayTheorem (ClayConnectedCorrDecay.toClayMassGap w)
 
 /-! ### Consumer hub for analytic routes at `N_c ≥ 2` -/
 
@@ -123,23 +123,23 @@ theorem ConnectedCorrDecay.clayTheorem
 Any analytic route that produces a `ClayWitnessHyp N_c`
 (Osterwalder–Seiler duality; Kotecký–Preiss in the strong-coupling
 phase; Balaban RG in the weak-coupling phase) discharges
-`ConnectedCorrDecay N_c`. -/
-noncomputable def ConnectedCorrDecay.ofClayWitnessHyp
+`ClayConnectedCorrDecay N_c`. -/
+noncomputable def ClayConnectedCorrDecay.ofClayWitnessHyp
     {N_c : ℕ} [NeZero N_c]
-    (hyp : ClayWitnessHyp N_c) : ConnectedCorrDecay N_c :=
-  ConnectedCorrDecay.ofClayMassGap (clay_yangMills_witness hyp)
+    (hyp : ClayWitnessHyp N_c) : ClayConnectedCorrDecay N_c :=
+  ClayConnectedCorrDecay.ofClayMassGap (clay_yangMills_witness hyp)
 
-/-- The mass gap produced by `ConnectedCorrDecay.ofClayWitnessHyp` is
+/-- The mass gap produced by `ClayConnectedCorrDecay.ofClayWitnessHyp` is
     `kpParameter hyp.r = -log(hyp.r) / 2`. -/
-theorem ConnectedCorrDecay.ofClayWitnessHyp_mass_eq
+theorem ClayConnectedCorrDecay.ofClayWitnessHyp_mass_eq
     {N_c : ℕ} [NeZero N_c] (hyp : ClayWitnessHyp N_c) :
-    (ConnectedCorrDecay.ofClayWitnessHyp hyp).m = kpParameter hyp.r := rfl
+    (ClayConnectedCorrDecay.ofClayWitnessHyp hyp).m = kpParameter hyp.r := rfl
 
-/-- The prefactor produced by `ConnectedCorrDecay.ofClayWitnessHyp` is
+/-- The prefactor produced by `ClayConnectedCorrDecay.ofClayWitnessHyp` is
     `hyp.C_clust`. -/
-theorem ConnectedCorrDecay.ofClayWitnessHyp_prefactor_eq
+theorem ClayConnectedCorrDecay.ofClayWitnessHyp_prefactor_eq
     {N_c : ℕ} [NeZero N_c] (hyp : ClayWitnessHyp N_c) :
-    (ConnectedCorrDecay.ofClayWitnessHyp hyp).C = hyp.C_clust := rfl
+    (ClayConnectedCorrDecay.ofClayWitnessHyp hyp).C = hyp.C_clust := rfl
 
 /-! ### U(1) unconditional instance -/
 
@@ -151,31 +151,31 @@ Wilson connected correlator vanishes identically, and the exponential
 bound holds vacuously).
 
 Axiom oracle: `[propext, Classical.choice, Quot.sound]`. No hypotheses. -/
-noncomputable def unconditional_U1_ConnectedCorrDecay :
-    ConnectedCorrDecay 1 :=
-  ConnectedCorrDecay.ofClayMassGap u1_clay_yangMills_mass_gap_unconditional
+noncomputable def unconditional_U1_ClayConnectedCorrDecay :
+    ClayConnectedCorrDecay 1 :=
+  ClayConnectedCorrDecay.ofClayMassGap u1_clay_yangMills_mass_gap_unconditional
 
 /-- Mass gap of the unconditional U(1) witness equals `kpParameter (1/2)`. -/
-theorem unconditional_U1_ConnectedCorrDecay_mass_eq :
-    unconditional_U1_ConnectedCorrDecay.m = kpParameter (1 / 2 : ℝ) := rfl
+theorem unconditional_U1_ClayConnectedCorrDecay_mass_eq :
+    unconditional_U1_ClayConnectedCorrDecay.m = kpParameter (1 / 2 : ℝ) := rfl
 
 /-- Mass gap of the unconditional U(1) witness is strictly positive. -/
-theorem unconditional_U1_ConnectedCorrDecay_mass_pos :
-    0 < unconditional_U1_ConnectedCorrDecay.m :=
+theorem unconditional_U1_ClayConnectedCorrDecay_mass_pos :
+    0 < unconditional_U1_ClayConnectedCorrDecay.m :=
   u1_unconditional_mass_gap_pos
 
 /-- Prefactor of the unconditional U(1) witness equals `1`. -/
-theorem unconditional_U1_ConnectedCorrDecay_prefactor_eq :
-    unconditional_U1_ConnectedCorrDecay.C = 1 := rfl
+theorem unconditional_U1_ClayConnectedCorrDecay_prefactor_eq :
+    unconditional_U1_ClayConnectedCorrDecay.C = 1 := rfl
 
 /-! ### Terminal: unconditional Clay Millennium statement at `N_c = 1` -/
 
 /-- **Unconditional Clay Millennium statement for `N_c = 1`, via the
-`ConnectedCorrDecay` abstraction.** Fully closed chain: no analytic
+`ClayConnectedCorrDecay` abstraction.** Fully closed chain: no analytic
 hypotheses, no `sorry`, no new axioms. -/
-theorem unconditional_U1_ConnectedCorrDecay_clayTheorem :
+theorem unconditional_U1_ClayConnectedCorrDecay_clayTheorem :
     ClayYangMillsTheorem :=
-  unconditional_U1_ConnectedCorrDecay.clayTheorem
+  unconditional_U1_ClayConnectedCorrDecay.clayTheorem
 
 end
 
@@ -186,5 +186,5 @@ end YangMills
 Emitted by the Lean compiler at build time; expected oracle for every
 declaration in this file is `[propext, Classical.choice, Quot.sound]`. -/
 
-#print axioms YangMills.unconditional_U1_ConnectedCorrDecay
-#print axioms YangMills.unconditional_U1_ConnectedCorrDecay_clayTheorem
+#print axioms YangMills.unconditional_U1_ClayConnectedCorrDecay
+#print axioms YangMills.unconditional_U1_ClayConnectedCorrDecay_clayTheorem

@@ -59,7 +59,7 @@ theorem connecting_cluster_tsum_summable
 /-! ### D2: Tsum factoring -/
 
 /-- The tsum factors through the `r^dist_0x` prefactor. -/
-theorem connecting_cluster_tsum_eq
+theorem connecting_cluster_tsum_eq_factored
     (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
     (C_conn A₀ : ℝ) (dim dist_0x : ℕ) :
     ∑' n : ℕ, C_conn * (n : ℝ) ^ dim * A₀ * r ^ (n + dist_0x) =
@@ -102,7 +102,7 @@ theorem connecting_cluster_tsum_le
     (dim dist_0x : ℕ) :
     ∑' n : ℕ, C_conn * (n : ℝ) ^ dim * A₀ * r ^ (n + dist_0x) =
     clusterPrefactor r C_conn A₀ dim * r ^ dist_0x := by
-  rw [connecting_cluster_tsum_eq r hr_pos hr_lt1]
+  rw [connecting_cluster_tsum_eq_factored r hr_pos hr_lt1]
   unfold clusterPrefactor
   ring
 

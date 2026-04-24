@@ -52,7 +52,7 @@ noncomputable def supportDist {d : ℕ} (A B : Finset (Site d)) : ℕ :=
   else 0
 
 variable {Ω : Type*} [MeasurableSpace Ω]
-def IsLocalObservable {d : ℕ} (_A : Finset (Site d)) (_F : Ω → ℝ) : Prop := True
+def IsSpatialLocalObservable {d : ℕ} (_A : Finset (Site d)) (_F : Ω → ℝ) : Prop := True
 
 /-! ### Step 1: Optimal time -/
 
@@ -152,7 +152,7 @@ def LiebRobinsonBound {d : ℕ} {Ω : Type*} [MeasurableSpace Ω]
     {μ : Measure Ω} [IsProbabilityMeasure μ]
     (sg : SymmetricMarkovTransport μ) : Prop :=
   ∀ (A B : Finset (Site d)) (F G : Ω → ℝ)
-    (_hF_loc : IsLocalObservable A F) (_hG_loc : IsLocalObservable B G)
+    (_hF_loc : IsSpatialLocalObservable A F) (_hG_loc : IsSpatialLocalObservable B G)
     (hF : Integrable F μ) (hG : Integrable G μ) {γ : ℝ} (hγ : 0 < γ),
     |∫ x, F x * G x ∂μ - ∫ x, F x * sg.T (optimalTime A B γ) G x ∂μ| ≤
     Real.exp (-(supportDist A B : ℝ)) *
@@ -168,7 +168,7 @@ def LiebRobinsonBound {d : ℕ} {Ω : Type*} [MeasurableSpace Ω]
 theorem locality_to_static_covariance_v2
     {d : ℕ} (A B : Finset (Site d)) {μ : Measure Ω} [IsProbabilityMeasure μ]
     (sg : SymmetricMarkovTransport μ) (hVar : HasVarianceDecay sg) (F G : Ω → ℝ)
-    (hF_loc : IsLocalObservable A F) (hG_loc : IsLocalObservable B G)
+    (hF_loc : IsSpatialLocalObservable A F) (hG_loc : IsSpatialLocalObservable B G)
     (hF : Integrable F μ) (hG : Integrable G μ)
     (hF2 : Integrable (fun x => F x ^ 2) μ)
     (hG2 : Integrable (fun x => G x ^ 2) μ)
