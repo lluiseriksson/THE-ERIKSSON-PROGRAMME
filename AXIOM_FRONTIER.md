@@ -1,3 +1,70 @@
+# v0.62.0 — F3 endpoint from connected cardinality-decay activities
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 refinement in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    noncomputable def TruncatedActivities.ofConnectedCardDecay
+    theorem TruncatedActivities.ofConnectedCardDecay_K
+    theorem TruncatedActivities.ofConnectedCardDecay_K_bound_le_cardDecay
+    theorem TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connected
+    theorem clay_theorem_of_count_connectedCardDecayActivities_ceil
+
+The new finite-volume constructor packages a raw truncated activity `K` with a
+bound supported only on polymers that contain the two marked plaquettes and are
+connected:
+
+    |K Y| ≤ if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y
+      then A₀ * r^Y.card else 0
+
+From this support-shaped bound, the constructor immediately gives:
+
+1. disconnected support cancellation for `K_bound`;
+2. global cardinality decay `K_bound Y ≤ A₀ * r^Y.card`;
+3. the usual finite-volume summability.
+
+The terminal endpoint
+`clay_theorem_of_count_connectedCardDecayActivities_ceil` therefore no longer
+asks callers for separate `h_zero` and `h_card_decay` hypotheses on an
+abstract `TruncatedActivities` object.  It consumes the raw connected
+cardinality-decay activity bound, the Mayer/Ursell identity for the constructed
+activity, and the lattice-animal bucket count.
+
+Remaining F3 frontier after this wrapper:
+
+1. prove the actual Mayer/Ursell identity for the Wilson truncated activity;
+2. prove the connected cardinality-decay activity bound above;
+3. prove the lattice-animal bucket count.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.TruncatedActivities.ofConnectedCardDecay' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.TruncatedActivities.ofConnectedCardDecay_K_bound_le_cardDecay'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connected'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clay_theorem_of_count_connectedCardDecayActivities_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.61.0 — Projection simp rules for card-decay activities
 
 **Released: 2026-04-24**

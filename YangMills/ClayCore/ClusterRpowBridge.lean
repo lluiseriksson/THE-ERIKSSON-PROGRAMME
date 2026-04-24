@@ -714,12 +714,93 @@ theorem clusterCorrelatorBound_of_count_cardDecayBounds_ceil
     (fun Y => (T β F p q).K_bound Y) p q r A₀ n Y hY
     (fun Y => h_card_decay β hβ F hF p q Y)
 
+/-- Concrete finite-volume truncated activities whose bound is supported only
+on polymers containing `p`, containing `q`, and connected. -/
+noncomputable def TruncatedActivities.ofConnectedCardDecay
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (r A₀ : ℝ) (hr_nonneg : 0 ≤ r) (hA_nonneg : 0 ≤ A₀)
+    (hK_abs_le : ∀ Y, |K Y| ≤
+      if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y then A₀ * r ^ Y.card else 0) :
+    TruncatedActivities (ConcretePlaquette d L) := by
+  classical
+  exact TruncatedActivities.ofBound K
+    (fun Y =>
+      if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y then A₀ * r ^ Y.card else 0)
+    (fun Y => by
+      by_cases h : p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y
+      · simp [h, mul_nonneg hA_nonneg (pow_nonneg hr_nonneg Y.card)]
+      · simp [h])
+    hK_abs_le
+    (summable_of_hasFiniteSupport (by
+      exact Set.finite_univ.subset (by
+        intro Y _hY
+        exact Set.mem_univ Y)))
+
+/-- The connected-cardinality constructor stores the supplied activity. -/
+@[simp] theorem TruncatedActivities.ofConnectedCardDecay_K
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (r A₀ : ℝ) (hr_nonneg : 0 ≤ r) (hA_nonneg : 0 ≤ A₀)
+    (hK_abs_le : ∀ Y, |K Y| ≤
+      if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y then A₀ * r ^ Y.card else 0)
+    (Y : Finset (ConcretePlaquette d L)) :
+    (TruncatedActivities.ofConnectedCardDecay K p q r A₀
+      hr_nonneg hA_nonneg hK_abs_le).K Y = K Y := by
+  classical
+  rfl
+
+/-- The connected-cardinality constructor's bound is dominated by the global
+cardinality-decay profile. -/
+theorem TruncatedActivities.ofConnectedCardDecay_K_bound_le_cardDecay
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (r A₀ : ℝ) (hr_nonneg : 0 ≤ r) (hA_nonneg : 0 ≤ A₀)
+    (hK_abs_le : ∀ Y, |K Y| ≤
+      if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y then A₀ * r ^ Y.card else 0)
+    (Y : Finset (ConcretePlaquette d L)) :
+    (TruncatedActivities.ofConnectedCardDecay K p q r A₀
+      hr_nonneg hA_nonneg hK_abs_le).K_bound Y ≤ A₀ * r ^ Y.card := by
+  classical
+  change (if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y then A₀ * r ^ Y.card else 0) ≤
+    A₀ * r ^ Y.card
+  by_cases h : p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y
+  · simp [h]
+  · simp [h, mul_nonneg hA_nonneg (pow_nonneg hr_nonneg Y.card)]
+
+/-- The connected-cardinality constructor's bound vanishes on disconnected
+polymers, even when they contain the two marked plaquettes. -/
+theorem TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connected
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (r A₀ : ℝ) (hr_nonneg : 0 ≤ r) (hA_nonneg : 0 ≤ A₀)
+    (hK_abs_le : ∀ Y, |K Y| ≤
+      if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y then A₀ * r ^ Y.card else 0)
+    (Y : Finset (ConcretePlaquette d L))
+    (_hp : p ∈ Y) (_hq : q ∈ Y) (h_not_connected : ¬ PolymerConnected Y) :
+    (TruncatedActivities.ofConnectedCardDecay K p q r A₀
+      hr_nonneg hA_nonneg hK_abs_le).K_bound Y = 0 := by
+  classical
+  change (if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y then A₀ * r ^ Y.card else 0) = 0
+  have h : ¬ (p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y) := by
+    intro hconn
+    exact h_not_connected hconn.2.2
+  simp [h]
+
 #print axioms finiteConnectingSum_eq_connectedFiniteSum
 #print axioms connectedFiniteSum_eq_cardBucketSum
 #print axioms connectedFiniteSum_le_of_cardBucketBounds
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_kp
 #print axioms cardBucketSum_le_of_count_and_pointwise
 #print axioms pointwiseBucketBound_of_card_decay
+#print axioms TruncatedActivities.ofConnectedCardDecay
+#print axioms TruncatedActivities.ofConnectedCardDecay_K
+#print axioms TruncatedActivities.ofConnectedCardDecay_K_bound_le_cardDecay
+#print axioms TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connected
 #print axioms clusterCorrelatorBound_of_connectedFiniteBounds_ceil
 #print axioms clusterCorrelatorBound_of_cardBucketBounds_ceil
 #print axioms clusterCorrelatorBound_of_count_pointwiseBounds_ceil
@@ -956,5 +1037,73 @@ theorem clay_theorem_of_count_cardDecayBounds_ceil
       T h_mayer h_zero h_count h_card_decay)
 
 #print axioms clay_theorem_of_count_cardDecayBounds_ceil
+
+/-- Terminal wrapper from raw connected-cardinality-decay truncated
+activities.  The disconnected support cancellation and global `K_bound`
+decay are supplied by `TruncatedActivities.ofConnectedCardDecay`; the remaining
+F3 inputs are the Mayer identity, the connected pointwise activity bound, and
+the lattice-animal bucket count. -/
+theorem clay_theorem_of_count_connectedCardDecayActivities_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (K : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      Finset (ConcretePlaquette d L) → ℝ)
+    (hK_abs_le : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      |K β F p q Y| ≤
+        if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y
+          then A₀ * wab.r ^ Y.card else 0)
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (TruncatedActivities.ofConnectedCardDecay
+        (K β F p q) p q wab.r A₀ wab.hr_pos.le hA.le
+        (hK_abs_le β F p q)).connectingSum p q)
+    (h_count : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (p q : ConcretePlaquette d L) (n : ℕ),
+      n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1) →
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y =>
+          p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+            Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+        C_conn * (n : ℝ) ^ dim) :
+    ClayYangMillsTheorem := by
+  let T : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      TruncatedActivities (ConcretePlaquette d L) :=
+    fun {d L} _ _ β F p q =>
+      TruncatedActivities.ofConnectedCardDecay
+        (K β F p q) p q wab.r A₀ wab.hr_pos.le hA.le
+        (hK_abs_le β F p q)
+  refine clay_theorem_of_count_cardDecayBounds_ceil
+    N_c wab C_conn A₀ hC hA dim T ?_ ?_ h_count ?_
+  · intro d L _ _ β hβ F hF p q hdist
+    exact h_mayer β hβ F hF p q hdist
+  · intro d L _ _ β hβ F hF p q Y hp hq h_not_connected
+    exact TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connected
+      (K β F p q) p q wab.r A₀ wab.hr_pos.le hA.le
+      (hK_abs_le β F p q) Y hp hq h_not_connected
+  · intro d L _ _ β _hβ F _hF p q Y
+    exact TruncatedActivities.ofConnectedCardDecay_K_bound_le_cardDecay
+      (K β F p q) p q wab.r A₀ wab.hr_pos.le hA.le
+      (hK_abs_le β F p q) Y
+
+#print axioms clay_theorem_of_count_connectedCardDecayActivities_ceil
 
 end YangMills
