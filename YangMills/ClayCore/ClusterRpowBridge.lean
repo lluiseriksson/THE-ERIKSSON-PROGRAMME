@@ -1865,6 +1865,81 @@ structure ShiftedF3MayerPackage
   hA : 0 < A₀
   data : ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le
 
+namespace ShiftedF3MayerPackage
+
+/-- The finite-volume truncated activities carried by a shifted F3 Mayer
+package. -/
+noncomputable def toTruncatedActivities
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerPackage N_c wab)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L) :
+    TruncatedActivities (ConcretePlaquette d L) :=
+  pkg.data.toTruncatedActivities β F p q
+
+/-- The package-level truncated activity is the raw Mayer activity stored in
+`pkg.data`. -/
+@[simp] theorem toTruncatedActivities_K
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerPackage N_c wab)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (Y : Finset (ConcretePlaquette d L)) :
+    (pkg.toTruncatedActivities β F p q).K Y = pkg.data.K β F p q Y := by
+  rfl
+
+/-- The package-level connected-cardinality bound is dominated by the package
+profile. -/
+theorem toTruncatedActivities_K_bound_le_cardDecay
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerPackage N_c wab)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (Y : Finset (ConcretePlaquette d L)) :
+    (pkg.toTruncatedActivities β F p q).K_bound Y ≤
+      pkg.A₀ * wab.r ^ Y.card := by
+  exact pkg.data.toTruncatedActivities_K_bound_le_cardDecay β F p q Y
+
+/-- The package-level bound vanishes on disconnected polymers containing the
+marked plaquettes. -/
+theorem toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerPackage N_c wab)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (Y : Finset (ConcretePlaquette d L))
+    (hp : p ∈ Y) (hq : q ∈ Y) (h_not_connected : ¬ PolymerConnected Y) :
+    (pkg.toTruncatedActivities β F p q).K_bound Y = 0 := by
+  exact pkg.data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    β F p q Y hp hq h_not_connected
+
+/-- The package-level Mayer/Ursell identity, stated through the activities
+exposed by the package. -/
+theorem wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerPackage N_c wab)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ) (hβ : 0 < β)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (p q : ConcretePlaquette d L)
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    wilsonConnectedCorr (sunHaarProb N_c)
+      (wilsonPlaquetteEnergy N_c) β F p q =
+    (pkg.toTruncatedActivities β F p q).connectingSum p q := by
+  exact pkg.data.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    β hβ F hF p q hdist
+
+end ShiftedF3MayerPackage
+
 /-- SU(1) canary for the shifted F3 Mayer interface.
 
 Since the SU(1) connected Wilson correlator vanishes identically, the raw
@@ -2213,6 +2288,11 @@ theorem clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_prefactor_eq
 #print axioms clayMassGap_of_shiftedF3Subpackages
 #print axioms clayConnectedCorrDecay_of_shiftedF3Subpackages
 #print axioms clay_theorem_of_shiftedF3Subpackages
+#print axioms ShiftedF3MayerPackage.toTruncatedActivities
+#print axioms ShiftedF3MayerPackage.toTruncatedActivities_K
+#print axioms ShiftedF3MayerPackage.toTruncatedActivities_K_bound_le_cardDecay
+#print axioms ShiftedF3MayerPackage.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+#print axioms ShiftedF3MayerPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
 #print axioms shiftedF3MayerPackage_su1_zero
 #print axioms ShiftedF3CountPackage.toAt
 #print axioms ShiftedF3CountPackage.toAt_C_conn

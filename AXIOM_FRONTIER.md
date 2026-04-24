@@ -1,3 +1,45 @@
+# v1.18.0 — Shifted F3 Mayer package exposes its activity consumer
+
+**Released: 2026-04-25**
+
+## What
+
+Added package-level API for `ShiftedF3MayerPackage` in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    ShiftedF3MayerPackage.toTruncatedActivities
+    ShiftedF3MayerPackage.toTruncatedActivities_K
+    ShiftedF3MayerPackage.toTruncatedActivities_K_bound_le_cardDecay
+    ShiftedF3MayerPackage.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    ShiftedF3MayerPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+
+These lift the v1.16/v1.17 `ConnectedCardDecayMayerData` API to the actual
+Mayer-side package object used by the single-package shifted F3 interface.
+
+## Why
+
+No percentage bar moves.  This is F3 package API cleanup: future constructors
+for the nonabelian Mayer/Ursell side can hand around a
+`ShiftedF3MayerPackage` and immediately expose the finite-volume activities,
+their support/cardinality bounds, and the Wilson connected-correlator identity.
+The package still has to be constructed for `N_c ≥ 2`; this entry only removes
+projection friction once it exists.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all five new package-level declarations print the canonical
+project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.17.0 — Mayer identity exposed through packaged truncated activities
 
 **Released: 2026-04-25**
