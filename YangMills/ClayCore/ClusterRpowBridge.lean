@@ -1376,7 +1376,7 @@ theorem clay_theorem_of_count_connectedCardDecayActivities_ceil
       (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
       ConcretePlaquette d L → ConcretePlaquette d L →
       TruncatedActivities (ConcretePlaquette d L) :=
-    fun {d L} _ _ β F p q =>
+    fun {d L} [NeZero d] [NeZero L] β F p q =>
       TruncatedActivities.ofConnectedCardDecay
         (K β F p q) p q wab.r A₀ wab.hr_pos.le hA.le
         (hK_abs_le β F p q)
@@ -1444,7 +1444,7 @@ theorem clay_theorem_of_count_connectedCardDecayActivities_ceil_shifted
       (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
       ConcretePlaquette d L → ConcretePlaquette d L →
       TruncatedActivities (ConcretePlaquette d L) :=
-    fun {d L} _ _ β F p q =>
+    fun {d L} [NeZero d] [NeZero L] β F p q =>
       TruncatedActivities.ofConnectedCardDecay
         (K β F p q) p q wab.r A₀ wab.hr_pos.le hA.le
         (hK_abs_le β F p q)
@@ -1548,6 +1548,43 @@ theorem clay_theorem_of_shiftedCountBound_connectedCardDecayActivities_ceil
 /-- Preferred terminal F3 wrapper with both remaining analytic sides packaged:
 `ConnectedCardDecayMayerData` for the raw Mayer/activity input and
 `ShiftedConnectingClusterCountBound` for the lattice-animal count. -/
+theorem clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_pos.le hA.le)
+    (h_count : ShiftedConnectingClusterCountBound C_conn dim) :
+    ClusterCorrelatorBound N_c r
+      (clusterPrefactorShifted r C_conn A₀ dim) := by
+  exact clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted
+    (N_c := N_c) (r := r) (hr_pos := hr_pos) (hr_lt1 := hr_lt1)
+    (C_conn := C_conn) (A₀ := A₀) (hC := hC) (hA := hA)
+    (dim := dim)
+    (T := fun {d L} [NeZero d] [NeZero L] β F p q =>
+      TruncatedActivities.ofConnectedCardDecay
+        (data.K β F p q) p q r A₀ hr_pos.le hA.le
+        (data.hK_abs_le β F p q))
+    (by
+      intro d L _ _ β hβ F hF p q hdist
+      exact data.h_mayer β hβ F hF p q hdist)
+    (by
+      intro d L _ _ β _hβ F _hF p q Y hp hq h_not_connected
+      exact TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connected
+        (data.K β F p q) p q r A₀ hr_pos.le hA.le
+        (data.hK_abs_le β F p q) Y hp hq h_not_connected)
+    (fun p q n hn hdist => h_count.apply p q n hn hdist)
+    (by
+      intro d L _ _ β _hβ F _hF p q Y
+      exact TruncatedActivities.ofConnectedCardDecay_K_bound_le_cardDecay
+        (data.K β F p q) p q r A₀ hr_pos.le hA.le
+        (data.hK_abs_le β F p q) Y)
+
+#print axioms clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+
+/-- Preferred terminal F3 wrapper with both remaining analytic sides packaged:
+`ConnectedCardDecayMayerData` for the raw Mayer/activity input and
+`ShiftedConnectingClusterCountBound` for the lattice-animal count. -/
 theorem clay_theorem_of_shiftedCountBound_mayerData_ceil
     (N_c : ℕ) [NeZero N_c]
     (wab : WilsonPolymerActivityBound N_c)
@@ -1556,8 +1593,11 @@ theorem clay_theorem_of_shiftedCountBound_mayerData_ceil
     (data : ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le)
     (h_count : ShiftedConnectingClusterCountBound C_conn dim) :
     ClayYangMillsTheorem :=
-  clay_theorem_of_shiftedCountBound_connectedCardDecayActivities_ceil
-    N_c wab C_conn A₀ hC hA dim data.K data.hK_abs_le data.h_mayer h_count
+  clay_theorem_from_wilson_activity wab
+    (clusterPrefactorShifted wab.r C_conn A₀ dim)
+    (clusterPrefactorShifted_pos wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim)
+    (clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+      N_c wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim data h_count)
 
 #print axioms clay_theorem_of_shiftedCountBound_mayerData_ceil
 

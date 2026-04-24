@@ -1,3 +1,59 @@
+# v0.69.0 — Packaged `ClusterCorrelatorBound` endpoint for preferred F3
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive terminal API strengthening in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+
+The v0.68 package exposed the preferred F3 Clay-facing wrapper
+
+    clay_theorem_of_shiftedCountBound_mayerData_ceil
+
+but its conclusion was the deliberately weak endpoint
+`ClayYangMillsTheorem`.  v0.69 exposes the real analytic product of the
+same two packages directly:
+
+    ClusterCorrelatorBound N_c r
+      (clusterPrefactorShifted r C_conn A₀ dim)
+
+It consumes exactly:
+
+1. `ConnectedCardDecayMayerData N_c r A₀ hr_pos.le hA.le`, packaging the
+   raw Mayer/activity kernel, its connected-cardinality decay bound, and the
+   Mayer/Ursell identity for `wilsonConnectedCorr`;
+2. `ShiftedConnectingClusterCountBound C_conn dim`, the named shifted
+   lattice-animal count package.
+
+The existing Clay wrapper is now factored through this stronger theorem via
+`clay_theorem_from_wilson_activity`.  This makes the active F3 target honest
+at the API level: the work remaining is to produce the two named packages,
+after which `ClusterCorrelatorBound` itself is available before any weak
+terminal Clay existential is invoked.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clay_theorem_of_shiftedCountBound_mayerData_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.68.0 — Packaged Mayer/activity data for preferred F3 endpoint
 
 **Released: 2026-04-24**
