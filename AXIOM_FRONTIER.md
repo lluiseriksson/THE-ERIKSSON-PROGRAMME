@@ -1,3 +1,49 @@
+# v0.99.0 — Local bounded-observable Wilson connected-correlation estimate
+
+**Released: 2026-04-24**
+
+## What
+
+Added
+
+    theorem wilsonConnectedCorr_abs_le_two_of_unitBound
+
+to `YangMills/ClayCore/ClusterCorrelatorBound.lean`.
+
+This is the local finite-distance companion to the separated F3 cluster
+decay estimates.  For a unit-bounded observable `|F| ≤ 1`, it proves
+
+    |wilsonConnectedCorr ... β F p q| ≤ 2
+
+provided the tilted Gibbs measure is already known to be a probability measure
+and the three relevant observables are supplied as integrable:
+
+    plaquetteWilsonObs F p
+    plaquetteWilsonObs F q
+    plaquetteWilsonObs F p * plaquetteWilsonObs F q
+
+The theorem does **not** replace the F1/F2/F3 analytic work and does not claim
+exponential decay.  It records the elementary local bound needed later when
+combining separated-distance cluster decay with all-pair physical mass-profile
+statements.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ClusterCorrelatorBound
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.wilsonConnectedCorr_abs_le_two_of_unitBound'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v0.97.0 — Keep experimental Dirichlet sidecar out of main umbrella
 
 **Released: 2026-04-24**
