@@ -1,3 +1,45 @@
+# v0.55.0 — F3 terminal bucket-estimate wrappers
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 wrappers in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem clusterCorrelatorBound_of_cardBucketBounds_ceil
+    theorem clay_theorem_of_cardBucketBounds_ceil
+
+These compose the v0.52 bucket decomposition, the v0.54 partial-sum
+comparison, and the existing connected finite bridge.  The F3 consumer now
+accepts the exact lattice-animal shape:
+
+    ∀ n, bucket_sum(n, p, q)
+      ≤ C_conn * n^dim * A₀ *
+        r^(n + ⌈siteLatticeDist p.site q.site⌉₊)
+
+Together with the Mayer/Ursell identity `h_mayer` and disconnected support
+cancellation `h_zero`, this produces `ClusterCorrelatorBound`; with a
+`WilsonPolymerActivityBound`, the terminal wrapper produces the current
+`ClayYangMillsTheorem` endpoint.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.clusterCorrelatorBound_of_cardBucketBounds_ceil' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clay_theorem_of_cardBucketBounds_ceil' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.54.0 — F3 KP partial-sum comparison discharged
 
 **Released: 2026-04-24**
