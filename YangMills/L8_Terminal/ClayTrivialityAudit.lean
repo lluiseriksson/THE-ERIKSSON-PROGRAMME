@@ -1,22 +1,27 @@
 /- Copyright (c) 2026 Lluis Eriksson. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Lluis Eriksson -/
-import YangMills.L8_Terminal.ClayTheorem
+import YangMills.P6_AsymptoticFreedom.AsymptoticFreedomDischarge
 
 /-!
 # L8: Clay-endpoint triviality audit canary (v0.47.0)
 
-Records, as a first-class Lean theorem, the observation already
+Records, as first-class Lean theorems, the observation already
 documented in `TestC72Proto.lean:31-32` (comment) and
 `L8_Terminal/ClayPhysical.lean:206-210` (hierarchy):
 
     `ClayYangMillsTheorem := ∃ m_phys : ℝ, 0 < m_phys`
 
-is trivially inhabited.
+is trivially inhabited. The same is true of
 
-Equivalently, it is logically equivalent to `True`.
+    `ClayYangMillsStrong := ∃ m_lat, HasContinuumMassGap m_lat`
 
-Any theorem whose conclusion is `ClayYangMillsTheorem` therefore
+via `constantMassProfile 1`.
+
+Equivalently, both weak endpoints are logically equivalent to `True`.
+
+Any theorem whose conclusion is `ClayYangMillsTheorem` or
+`ClayYangMillsStrong` therefore
 discharges only this weak existential, not Clay-grade Yang-Mills
 content. The authentic target hierarchy is
 
@@ -59,7 +64,22 @@ theorem clayYangMillsTheorem_trivial : ClayYangMillsTheorem :=
 theorem clayYangMillsTheorem_iff_true : ClayYangMillsTheorem ↔ True :=
   ⟨fun _ => trivial, fun _ => clayYangMillsTheorem_trivial⟩
 
+/-- **Audit canary.** `ClayYangMillsStrong` is also trivially inhabited,
+    using the existing C72 witness `constantMassProfile 1`.
+
+    This records that `ClayYangMillsStrong`, like `ClayYangMillsTheorem`,
+    is not yet the non-vacuous Clay-grade target. -/
+theorem clayYangMillsStrong_trivial : ClayYangMillsStrong :=
+  clay_strong_no_axiom
+
+/-- **Audit canary, strengthened.** The weak endpoint
+    `ClayYangMillsStrong` is logically equivalent to `True`. -/
+theorem clayYangMillsStrong_iff_true : ClayYangMillsStrong ↔ True :=
+  ⟨fun _ => trivial, fun _ => clayYangMillsStrong_trivial⟩
+
 #print axioms clayYangMillsTheorem_trivial
 #print axioms clayYangMillsTheorem_iff_true
+#print axioms clayYangMillsStrong_trivial
+#print axioms clayYangMillsStrong_iff_true
 
 end YangMills
