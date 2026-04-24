@@ -271,6 +271,76 @@ theorem finiteConnectingSum_eq_connectedFiniteSum
     intro hp hq _
     exact (hpq ⟨hp, hq⟩).elim
 
+/-- Connected finite sums decompose into the canonical cardinality buckets
+`Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊`.
+
+The outer range is finite because the polymer universe is finite; buckets
+outside the possible cardinalities contribute zero. This is the exact finite
+combinatorial form that precedes a lattice-animal bound. -/
+theorem connectedFiniteSum_eq_cardBucketSum
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L) :
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y), K_bound Y) =
+      Finset.sum
+        (Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+        (fun n =>
+        (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+          if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+            then K_bound Y else 0)) := by
+  classical
+  let S := (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+    (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y)
+  let c := ⌈siteLatticeDist p.site q.site⌉₊
+  let M := Fintype.card (ConcretePlaquette d L)
+  have h_pointwise : ∀ Y ∈ S,
+      K_bound Y =
+        Finset.sum (Finset.range (M + 1))
+          (fun n => if Y.card = n + c then K_bound Y else 0) := by
+    intro Y hY
+    have hY' :
+        p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y := by
+      simpa [S] using (Finset.mem_filter.mp hY).2
+    have hc_le : c ≤ Y.card := by
+      simpa [c] using
+        ceil_siteLatticeDist_le_polymer_card p q Y hY'.1 hY'.2.1 hY'.2.2
+    have hcard_le : Y.card ≤ M := by
+      simpa [M] using Finset.card_le_univ Y
+    have hn_mem : Y.card - c ∈ Finset.range (M + 1) := by
+      rw [Finset.mem_range]
+      omega
+    have h_eq : Y.card = (Y.card - c) + c := (Nat.sub_add_cancel hc_le).symm
+    symm
+    rw [Finset.sum_eq_single (Y.card - c)]
+    · rw [if_pos h_eq]
+    · intro n hn hne
+      by_cases hn_eq : Y.card = n + c
+      · have : n = Y.card - c := by omega
+        exact (hne this).elim
+      · rw [if_neg hn_eq]
+    · intro hnot
+      exact (hnot hn_mem).elim
+  calc
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y), K_bound Y)
+        = Finset.sum S (fun Y => K_bound Y) := by simp [S]
+    _ = Finset.sum S (fun Y => Finset.sum (Finset.range (M + 1))
+          (fun n => if Y.card = n + c then K_bound Y else 0)) := by
+        exact Finset.sum_congr rfl h_pointwise
+    _ = Finset.sum (Finset.range (M + 1)) (fun n =>
+          Finset.sum S (fun Y => if Y.card = n + c then K_bound Y else 0)) := by
+        rw [Finset.sum_comm]
+    _ = Finset.sum
+        (Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+        (fun n =>
+        (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+          if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+            then K_bound Y else 0)) := by
+        simp [S, M, c]
+
 /-- Connected finite-sum version of
 `clusterCorrelatorBound_of_finiteConnectingBounds_ceil`.
 
@@ -325,6 +395,7 @@ theorem clusterCorrelatorBound_of_connectedFiniteBounds_ceil
   exact h_connected_bound β hβ F hF p q hdist
 
 #print axioms finiteConnectingSum_eq_connectedFiniteSum
+#print axioms connectedFiniteSum_eq_cardBucketSum
 #print axioms clusterCorrelatorBound_of_connectedFiniteBounds_ceil
 
 /-! ### Terminal wrapper from connected finite KP data -/

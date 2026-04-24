@@ -1,3 +1,47 @@
+# v0.52.0 — F3 connected finite sum cardinal-bucket decomposition
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 combinatorial normalization in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem connectedFiniteSum_eq_cardBucketSum
+        (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+        (p q : ConcretePlaquette d L) :
+        ∑_{Y ∋ p,q, connected} K_bound Y
+          =
+        ∑ n in range (Fintype.card (ConcretePlaquette d L) + 1),
+          ∑_{Y ∋ p,q, connected}
+            if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+            then K_bound Y else 0
+
+This decomposes the finite connected-polymer sum into the canonical
+cardinality buckets
+
+    Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊.
+
+The proof uses `ceil_siteLatticeDist_le_polymer_card` to show that every
+connected polymer containing `p` and `q` belongs to a unique nonnegative
+extra-size bucket.  This is the finite form immediately preceding the
+lattice-animal estimate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.connectedFiniteSum_eq_cardBucketSum' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.51.0 — F3 terminal wrapper from connected finite KP data
 
 **Released: 2026-04-24**
