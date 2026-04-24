@@ -12,7 +12,7 @@ open scoped Matrix
 namespace YangMills.Experimental.LieSUN
 variable {n : ℕ}
 
-noncomputable def topRingMat (n : ℕ) :
+@[reducible] noncomputable def topRingMat (n : ℕ) :
     IsTopologicalRing (Matrix (Fin n) (Fin n) ℂ) :=
   @Matrix.topologicalRing (Fin n) ℂ _ _ _ _
 
@@ -80,10 +80,7 @@ theorem matExp_smul_mem_unitaryGroup
    See AXIOM_FRONTIER.md for full analysis. -/
 axiom matExp_traceless_det_one
     {n : ℕ} (X : Matrix (Fin n) (Fin n) ℂ) (htr : X.trace = 0) (t : ℝ) :
-    Matrix.det (matExp ((t : ℂ) • X)) = 1 only [matExp]
-  rw [Matrix.det_exp]
-  rw [Matrix.trace_smul, htr]
-  simp
+    Matrix.det (matExp ((t : ℂ) • X)) = 1
 
 end YangMills.Experimental.LieSUN
 
