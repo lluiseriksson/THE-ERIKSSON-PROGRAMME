@@ -1,3 +1,58 @@
+# v1.10.0 — Uniform-rpow small-β frontier lands directly in PhysicalStrong
+
+**Released: 2026-04-25**
+
+## What
+
+Added
+
+    theorem physicalStrong_of_uniformRpow_small_beta_siteDist_measurableF
+
+to `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+It composes the named small-β frontier
+
+    WilsonUniformRpowBound N_c β₀ C
+
+from `YangMills/ClayCore/ZeroMeanCancellation.lean` with the cleaned-up L8
+physical bridge.  The consumer-facing endpoint is:
+
+    0 < β₀
+    β₀ < 1
+    0 < C
+    WilsonUniformRpowBound N_c β₀ C
+    0 < β
+    ∀ U, |F U| ≤ 1
+    Measurable F
+    ─────────────────────────────────────────────
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun L p q => siteLatticeDist p.site q.site)
+
+## Why
+
+No percentage bar moves.  The analytic input remains exactly the uniform
+rpow-shape correlator bound; this change removes terminal wiring as a possible
+bottleneck for the small-β route.  Once the Mayer/Kotecky-Preiss layer supplies
+`WilsonUniformRpowBound`, the first non-vacuous physical endpoint follows with
+only the natural local observable assumptions.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace:
+
+    'YangMills.physicalStrong_of_uniformRpow_small_beta_siteDist_measurableF'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.09.0 — SU(1) zero-activity canary for the shifted F3 Mayer package
 
 **Released: 2026-04-25**

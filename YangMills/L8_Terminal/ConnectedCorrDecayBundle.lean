@@ -2,6 +2,7 @@ import YangMills.L8_Terminal.ClayPhysical
 import YangMills.ClayCore.ConnectedCorrDecay
 import YangMills.ClayCore.ClusterCorrelatorBound
 import YangMills.ClayCore.ClusterRpowBridge
+import YangMills.ClayCore.ZeroMeanCancellation
 import YangMills.L2_Balaban.Measurability
 namespace YangMills
 variable {G : Type*} [Group G] [TopologicalSpace G] [CompactSpace G] [T2Space G]
@@ -460,5 +461,34 @@ theorem physicalStrong_of_shiftedF3Subpackages_siteDist_measurableF
 
 #print axioms physicalStrong_of_shiftedF3MayerCountPackage_siteDist_measurableF
 #print axioms physicalStrong_of_shiftedF3Subpackages_siteDist_measurableF
+
+/-- Direct physical endpoint from the named small-β uniform-rpow frontier.
+
+This is the small-β route exposed in `ZeroMeanCancellation.lean`, composed with
+the cleaned-up L8 physical bridge.  The analytic input remains exactly the
+uniform `WilsonUniformRpowBound`; finite-volume regularity is discharged from
+`Measurable F` and `|F| ≤ 1`. -/
+theorem physicalStrong_of_uniformRpow_small_beta_siteDist_measurableF
+    {N_c d : ℕ} [NeZero N_c] [NeZero d]
+    {β₀ C : ℝ}
+    (hβ₀_pos : 0 < β₀)
+    (hβ₀_lt1 : β₀ < 1)
+    (hC : 0 < C)
+    (h_rpow : WilsonUniformRpowBound N_c β₀ C)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette d L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_clayConnectedCorrDecay_siteDist_measurableF
+    (clayConnectedCorrDecay_small_beta_of_uniformRpow
+      N_c hβ₀_pos hβ₀_lt1 C hC h_rpow)
+    β F hβ hF hF_meas
+
+#print axioms physicalStrong_of_uniformRpow_small_beta_siteDist_measurableF
 
 end YangMills
