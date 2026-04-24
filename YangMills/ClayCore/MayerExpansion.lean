@@ -110,6 +110,22 @@ noncomputable def connectingBound [DecidableEq ι]
     (T : TruncatedActivities ι) (p q : ι) : ℝ :=
   ∑' Y : Finset ι, if p ∈ Y ∧ q ∈ Y then T.K_bound Y else 0
 
+/-- On a finite polymer index type, the connecting bound is the finite
+sum over all polymers containing `p` and `q`.  This is the concrete
+form consumed by lattice-animal / connecting-cluster counting
+arguments. -/
+theorem connectingBound_eq_finset_sum
+    (T : TruncatedActivities ι) [DecidableEq ι] [Fintype ι] (p q : ι) :
+    T.connectingBound p q =
+      ∑ Y ∈ (Finset.univ : Finset (Finset ι)).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y),
+        T.K_bound Y := by
+  unfold connectingBound
+  rw [tsum_fintype]
+  rw [Finset.sum_filter]
+
+#print axioms connectingBound_eq_finset_sum
+
 /-! ### Pointwise estimates on connecting indicators -/
 
 theorem connectingIndicator_abs_le
