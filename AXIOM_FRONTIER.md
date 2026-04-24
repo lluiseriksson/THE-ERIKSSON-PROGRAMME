@@ -1,3 +1,42 @@
+# v1.21.0 — Shifted F3 subpackage endpoints expose constants
+
+**Released: 2026-04-25**
+
+## What
+
+Added constant-projection lemmas for the independent-subpackage route in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    clayMassGap_of_shiftedF3Subpackages_mass_eq
+    clayMassGap_of_shiftedF3Subpackages_prefactor_eq
+    clayConnectedCorrDecay_of_shiftedF3Subpackages_mass_eq
+    clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
+
+They expose that the subpackage route has decay rate `kpParameter wab.r` and
+prefactor `clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim`.
+
+## Why
+
+No percentage bar moves.  This is endpoint transparency for the preferred
+split F3 workflow: once Mayer and count are proved independently, the resulting
+mass-gap and connected-decay objects expose the same constants as the
+single-package route without unfolding the package assembly.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all four new subpackage constant lemmas print the canonical
+project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.20.0 — Single shifted F3 package exposes activities and count directly
 
 **Released: 2026-04-25**
