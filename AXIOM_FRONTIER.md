@@ -1,3 +1,50 @@
+# v1.09.0 — SU(1) zero-activity canary for the shifted F3 Mayer package
+
+**Released: 2026-04-25**
+
+## What
+
+Added
+
+    noncomputable def shiftedF3MayerPackage_su1_zero
+
+to `YangMills/ClayCore/ClusterRpowBridge.lean`.
+
+For any `wab : WilsonPolymerActivityBound 1`, it constructs the Mayer/activity
+half of the preferred shifted F3 frontier:
+
+    ShiftedF3MayerPackage 1 wab
+
+with `A₀ := 1` and raw truncated activity `K := 0`.  The Mayer identity closes
+because `wilsonConnectedCorr_su1_eq_zero` proves that the SU(1) connected
+Wilson correlator vanishes identically, and the constructed connecting sum is
+also zero.
+
+## Why
+
+No percentage bar moves.  This is a canary and interface check for the
+already-closed singleton route; it is not the `N_c ≥ 2` Mayer/Ursell
+construction.  It confirms that the preferred F3 package boundary accepts the
+unconditional SU(1) collapse without any additional analytic hypothesis.  The
+live Clay front for the physical nonabelian cases remains the construction of
+the shifted F3 Mayer package and the uniform shifted count package for
+`N_c ≥ 2`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.shiftedF3MayerPackage_su1_zero' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.08.0 — Shifted F3 packages land directly in PhysicalStrong
 
 **Released: 2026-04-25**

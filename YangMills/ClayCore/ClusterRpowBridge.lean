@@ -1780,6 +1780,57 @@ structure ShiftedF3MayerPackage
   hA : 0 < A₀
   data : ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le
 
+/-- SU(1) canary for the shifted F3 Mayer interface.
+
+Since the SU(1) connected Wilson correlator vanishes identically, the raw
+truncated activity can be the zero activity.  This is not the `N_c ≥ 2`
+Mayer/Ursell construction; it records that the preferred F3 package interface
+correctly accepts the already-closed singleton case. -/
+noncomputable def shiftedF3MayerPackage_su1_zero
+    (wab : WilsonPolymerActivityBound 1) :
+    ShiftedF3MayerPackage 1 wab where
+  A₀ := 1
+  hA := one_pos
+  data :=
+    { K := fun _β _F _p _q _Y => 0
+      hK_abs_le := by
+        intro d L _ _ β F p q Y
+        by_cases h : p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y
+        · simp [h, wab.hr_pos.le]
+        · simp [h]
+      h_mayer := by
+        intro d L _ _ β _hβ F _hF p q _hdist
+        rw [wilsonConnectedCorr_su1_eq_zero]
+        have hsum :
+            (TruncatedActivities.ofConnectedCardDecay
+              (fun _Y : Finset (ConcretePlaquette d L) => 0)
+              p q wab.r 1 wab.hr_pos.le zero_le_one
+              (by
+                intro Y
+                by_cases h : p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y
+                · simp [h, wab.hr_pos.le]
+                · simp [h])).connectingSum p q = 0 := by
+          unfold TruncatedActivities.connectingSum
+          have hfun :
+              (fun Y : Finset (ConcretePlaquette d L) =>
+                if p ∈ Y ∧ q ∈ Y then
+                  (TruncatedActivities.ofConnectedCardDecay
+                    (fun _Y : Finset (ConcretePlaquette d L) => 0)
+                    p q wab.r 1 wab.hr_pos.le zero_le_one
+                    (by
+                      intro Y
+                      by_cases h : p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y
+                      · simp [h, wab.hr_pos.le]
+                      · simp [h])).K Y
+                else 0) = fun _ => 0 := by
+            funext Y
+            by_cases h : p ∈ Y ∧ q ∈ Y
+            · simp [h, TruncatedActivities.ofConnectedCardDecay,
+                TruncatedActivities.ofBound]
+            · simp [h]
+          rw [hfun, tsum_zero]
+        simpa using hsum.symm }
+
 /-- Count half of the preferred shifted F3 frontier. -/
 structure ShiftedF3CountPackage where
   C_conn : ℝ
@@ -2006,6 +2057,7 @@ theorem clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_prefactor_eq
 #print axioms clayMassGap_of_shiftedF3Subpackages
 #print axioms clayConnectedCorrDecay_of_shiftedF3Subpackages
 #print axioms clay_theorem_of_shiftedF3Subpackages
+#print axioms shiftedF3MayerPackage_su1_zero
 #print axioms ShiftedF3CountPackage.toAt
 #print axioms ShiftedF3MayerCountPackage.ofSubpackages
 #print axioms ShiftedF3MayerCountPackage.mayerPackage
