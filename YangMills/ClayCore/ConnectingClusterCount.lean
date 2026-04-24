@@ -45,7 +45,49 @@ theorem C_conn_const_pos (d : ℕ) (hd : 0 < d) :
     pow_pos (by omega : (0 : ℕ) < 2 * d) _
   exact_mod_cast h
 
+/-- `C_conn_const d` is strictly positive for a nonzero dimension. -/
+theorem C_conn_const_pos_of_neZero (d : ℕ) [NeZero d] :
+    0 < C_conn_const d := by
+  have hd : 0 < d := by
+    have hne : d ≠ 0 := NeZero.ne d
+    omega
+  exact C_conn_const_pos d hd
+
 /-! ### Connecting-cluster count -/
+
+/-- The shifted lattice-animal bucket-count frontier used by the preferred
+F3 endpoint.
+
+It states that the number of connected polymers of cardinality
+`n + ⌈dist(p,q)⌉₊` containing both marked plaquettes is bounded by the
+non-vacuous polynomial profile `C_conn * (n+1)^dim`.  This is the exact
+combinatorial target consumed by
+`clay_theorem_of_count_connectedCardDecayActivities_ceil_shifted`. -/
+def ShiftedConnectingClusterCountBound (C_conn : ℝ) (dim : ℕ) : Prop :=
+  ∀ {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ),
+    n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1) →
+    (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * (((n + 1 : ℕ) : ℝ) ^ dim)
+
+/-- Apply a shifted connecting-cluster count package to one bucket. -/
+theorem ShiftedConnectingClusterCountBound.apply
+    {C_conn : ℝ} {dim : ℕ}
+    (h : ShiftedConnectingClusterCountBound C_conn dim)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) :=
+  h p q n hn hdist
 
 /-- **Weak Layer-C1 bound.**
 For any pair of plaquettes `p, q` and any `n : ℕ`, the number of
@@ -97,5 +139,7 @@ theorem connected_polymer_card_eq_extra_add_dist
 
 #print axioms connecting_cluster_count_finite
 #print axioms connected_polymer_card_eq_extra_add_dist
+#print axioms C_conn_const_pos_of_neZero
+#print axioms ShiftedConnectingClusterCountBound.apply
 
 end YangMills

@@ -1,3 +1,55 @@
+# v0.67.0 — Named shifted count frontier for terminal F3
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive frontier packaging:
+
+    def ShiftedConnectingClusterCountBound
+    theorem ShiftedConnectingClusterCountBound.apply
+    theorem C_conn_const_pos_of_neZero
+    theorem clay_theorem_of_shiftedCountBound_connectedCardDecayActivities_ceil
+
+`ShiftedConnectingClusterCountBound C_conn dim` is now the named F3
+lattice-animal count target:
+
+    # {Y ∋ p,q | PolymerConnected Y ∧
+        Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊}
+      ≤ C_conn * (n+1)^dim.
+
+The preferred terminal wrapper
+`clay_theorem_of_shiftedCountBound_connectedCardDecayActivities_ceil` consumes
+this single named count package, rather than an anonymous repeated bucket
+formula.  The remaining F3 terminal inputs are now visibly:
+
+1. `ShiftedConnectingClusterCountBound C_conn dim`;
+2. the raw connected-cardinality-decay truncated activity bound;
+3. the Mayer/Ursell identity for the constructed activity.
+
+This does not prove the lattice-animal theorem; it names it precisely in the
+form consumed by the terminal Clay-facing F3 wrapper.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.ShiftedConnectingClusterCountBound.apply' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clay_theorem_of_shiftedCountBound_connectedCardDecayActivities_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.66.0 — Shifted terminal F3 endpoint
 
 **Released: 2026-04-24**
