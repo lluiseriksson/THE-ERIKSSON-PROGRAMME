@@ -273,6 +273,29 @@ noncomputable def TruncatedActivities.ofCardDecay
         intro Y _hY
         exact Set.mem_univ Y)))
 
+/-- Projection rule for the activity stored by `ofCardDecay`. -/
+@[simp] theorem TruncatedActivities.ofCardDecay_K
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (K : Finset ι → ℝ) (r A₀ : ℝ)
+    (hr_nonneg : 0 ≤ r) (hA_nonneg : 0 ≤ A₀)
+    (hK_abs_le : ∀ Y, |K Y| ≤ A₀ * r ^ Y.card)
+    (Y : Finset ι) :
+    (TruncatedActivities.ofCardDecay K r A₀ hr_nonneg hA_nonneg hK_abs_le).K Y =
+      K Y := rfl
+
+/-- Projection rule for the cardinality-decay bound stored by
+`ofCardDecay`. -/
+@[simp] theorem TruncatedActivities.ofCardDecay_K_bound
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (K : Finset ι → ℝ) (r A₀ : ℝ)
+    (hr_nonneg : 0 ≤ r) (hA_nonneg : 0 ≤ A₀)
+    (hK_abs_le : ∀ Y, |K Y| ≤ A₀ * r ^ Y.card)
+    (Y : Finset ι) :
+    (TruncatedActivities.ofCardDecay K r A₀ hr_nonneg hA_nonneg hK_abs_le).K_bound Y =
+      A₀ * r ^ Y.card := rfl
+
 #print axioms TruncatedActivities.ofCardDecay
+#print axioms TruncatedActivities.ofCardDecay_K
+#print axioms TruncatedActivities.ofCardDecay_K_bound
 
 end YangMills

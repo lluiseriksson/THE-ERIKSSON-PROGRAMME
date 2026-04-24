@@ -1,3 +1,42 @@
+# v0.61.0 — Projection simp rules for card-decay activities
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive API support in `YangMills/ClayCore/MayerExpansion.lean`:
+
+    theorem TruncatedActivities.ofCardDecay_K
+    theorem TruncatedActivities.ofCardDecay_K_bound
+
+Both are marked `[simp]`.  They expose the two defining projections of
+`TruncatedActivities.ofCardDecay`:
+
+    (ofCardDecay K r A₀ ...).K Y = K Y
+    (ofCardDecay K r A₀ ...).K_bound Y = A₀ * r^Y.card
+
+This makes future F3 producers less brittle: when a concrete finite-volume
+truncated activity is built from cardinality decay, Lean can reduce its
+activity and bound fields by `simp` instead of requiring manual unfolding.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.MayerExpansion
+
+Pinned traces:
+
+    'YangMills.TruncatedActivities.ofCardDecay_K' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.TruncatedActivities.ofCardDecay_K_bound' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.60.0 — Finite-volume TruncatedActivities from cardinality decay
 
 **Released: 2026-04-24**
