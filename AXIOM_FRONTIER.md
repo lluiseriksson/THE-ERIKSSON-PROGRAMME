@@ -1,3 +1,72 @@
+# v0.75.0 — Single preferred shifted F3 package
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive frontier consolidation in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    structure ShiftedF3MayerCountPackage
+
+and single-package consumers:
+
+    theorem clusterCorrelatorBound_of_shiftedF3MayerCountPackage
+    noncomputable def clayWitnessHyp_of_shiftedF3MayerCountPackage
+    noncomputable def clayMassGap_of_shiftedF3MayerCountPackage
+    noncomputable def clayConnectedCorrDecay_of_shiftedF3MayerCountPackage
+    theorem clay_theorem_of_shiftedF3MayerCountPackage
+
+`ShiftedF3MayerCountPackage N_c wab` is now the one-object preferred F3
+frontier.  It bundles:
+
+1. constants `C_conn`, `A₀`, positivity proofs, and `dim`;
+2. `ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le`;
+3. `ShiftedConnectingClusterCountBound C_conn dim`.
+
+Supplying this package yields every downstream terminal view:
+
+    ClusterCorrelatorBound
+    ClayWitnessHyp
+    ClayYangMillsMassGap
+    ClayConnectedCorrDecay
+    ClayYangMillsTheorem
+
+This does not prove the package.  It makes the remaining F3 work a single
+named Lean object whose projections are all oracle-clean.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.clusterCorrelatorBound_of_shiftedF3MayerCountPackage'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayWitnessHyp_of_shiftedF3MayerCountPackage'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayMassGap_of_shiftedF3MayerCountPackage'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayConnectedCorrDecay_of_shiftedF3MayerCountPackage'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clay_theorem_of_shiftedF3MayerCountPackage'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.74.0 — F3 endpoints into `ClayWitnessHyp`
 
 **Released: 2026-04-24**

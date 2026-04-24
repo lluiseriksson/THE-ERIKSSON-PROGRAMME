@@ -1771,4 +1771,75 @@ theorem clay_theorem_of_shiftedCountBound_mayerData_ceil
 
 #print axioms clay_theorem_of_shiftedCountBound_mayerData_ceil
 
+/-! ### Single-package preferred F3 interface -/
+
+/-- Single preferred package for the shifted F3 route.
+
+It gathers the constants, Mayer/activity data, and shifted lattice-animal count
+into one object.  Supplying this package is exactly the remaining preferred F3
+frontier. -/
+structure ShiftedF3MayerCountPackage
+    (N_c : ℕ) [NeZero N_c] (wab : WilsonPolymerActivityBound N_c) where
+  C_conn : ℝ
+  A₀ : ℝ
+  hC : 0 < C_conn
+  hA : 0 < A₀
+  dim : ℕ
+  data : ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le
+  h_count : ShiftedConnectingClusterCountBound C_conn dim
+
+/-- The single-package F3 route yields the Wilson-facing cluster-correlator
+bound. -/
+theorem clusterCorrelatorBound_of_shiftedF3MayerCountPackage
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    ClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorShifted wab.r pkg.C_conn pkg.A₀ pkg.dim) :=
+  clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+    N_c wab.r wab.hr_pos wab.hr_lt1 pkg.C_conn pkg.A₀ pkg.hC pkg.hA
+    pkg.dim pkg.data pkg.h_count
+
+/-- The single-package F3 route yields the older analytic witness bundle. -/
+noncomputable def clayWitnessHyp_of_shiftedF3MayerCountPackage
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    ClayWitnessHyp N_c :=
+  clayWitnessHyp_of_shiftedCountBound_mayerData_ceil
+    N_c wab pkg.C_conn pkg.A₀ pkg.hC pkg.hA pkg.dim pkg.data pkg.h_count
+
+/-- The single-package F3 route yields the authentic mass-gap structure. -/
+noncomputable def clayMassGap_of_shiftedF3MayerCountPackage
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    ClayYangMillsMassGap N_c :=
+  clayMassGap_of_shiftedCountBound_mayerData_ceil
+    N_c wab pkg.C_conn pkg.A₀ pkg.hC pkg.hA pkg.dim pkg.data pkg.h_count
+
+/-- The single-package F3 route yields the connected-correlator-decay hub. -/
+noncomputable def clayConnectedCorrDecay_of_shiftedF3MayerCountPackage
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    ClayConnectedCorrDecay N_c :=
+  clayConnectedCorrDecay_of_shiftedCountBound_mayerData_ceil
+    N_c wab pkg.C_conn pkg.A₀ pkg.hC pkg.hA pkg.dim pkg.data pkg.h_count
+
+/-- The single-package F3 route still projects to the weak theorem endpoint. -/
+theorem clay_theorem_of_shiftedF3MayerCountPackage
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    ClayYangMillsTheorem :=
+  clay_theorem_of_shiftedCountBound_mayerData_ceil
+    N_c wab pkg.C_conn pkg.A₀ pkg.hC pkg.hA pkg.dim pkg.data pkg.h_count
+
+#print axioms clusterCorrelatorBound_of_shiftedF3MayerCountPackage
+#print axioms clayWitnessHyp_of_shiftedF3MayerCountPackage
+#print axioms clayMassGap_of_shiftedF3MayerCountPackage
+#print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackage
+#print axioms clay_theorem_of_shiftedF3MayerCountPackage
+
 end YangMills
