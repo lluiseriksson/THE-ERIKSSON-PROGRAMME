@@ -4,11 +4,18 @@
 
 ## What
 
-Audit-only pass; no mathematical pipeline change. One new Lean file is
-added as a canary with zero downstream dependency:
+Audit-only pass; no mathematical pipeline change. One Lean file is
+added as a canary module with zero downstream dependency:
 
     theorem clayYangMillsTheorem_trivial : ClayYangMillsTheorem :=
       ⟨1, one_pos⟩
+
+    theorem clayYangMillsTheorem_iff_true : ClayYangMillsTheorem ↔ True
+
+    theorem clayYangMillsStrong_trivial : ClayYangMillsStrong :=
+      clay_strong_no_axiom
+
+    theorem clayYangMillsStrong_iff_true : ClayYangMillsStrong ↔ True
 
 in `YangMills/L8_Terminal/ClayTrivialityAudit.lean`.
 
@@ -32,9 +39,11 @@ Three facts are recorded:
    (`YangMills/ClayCore/WilsonClusterProof.lean`). This is the F3 /
    Kotecký-Preiss target on the `ClusterCorrelatorBound` front.
 
-3. `ClayYangMillsTheorem := ∃ m_phys : ℝ, 0 < m_phys` is a weak endpoint:
-   it is trivially inhabited. Wrappers whose conclusion is only
-   `ClayYangMillsTheorem` discharge that weak existential, not Clay-grade
+3. `ClayYangMillsTheorem := ∃ m_phys : ℝ, 0 < m_phys` and
+   `ClayYangMillsStrong := ∃ m_lat, HasContinuumMassGap m_lat` are weak
+   endpoints: both are trivially inhabited and both are equivalent to
+   `True`. Wrappers whose conclusion is only `ClayYangMillsTheorem` or
+   `ClayYangMillsStrong` discharge weak existentials, not Clay-grade
    Yang-Mills content. Per `YangMills/L8_Terminal/ClayPhysical.lean`, the
    hierarchy is
 
@@ -50,8 +59,20 @@ Build artefact:
 Pinned `#print axioms` trace from
 `.lake/build/lib/lean/YangMills/L8_Terminal/ClayTrivialityAudit.trace`:
 
-    YangMills/L8_Terminal/ClayTrivialityAudit.lean:51:0:
+    YangMills/L8_Terminal/ClayTrivialityAudit.lean:80:0:
     'YangMills.clayYangMillsTheorem_trivial' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    YangMills/L8_Terminal/ClayTrivialityAudit.lean:81:0:
+    'YangMills.clayYangMillsTheorem_iff_true' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    YangMills/L8_Terminal/ClayTrivialityAudit.lean:82:0:
+    'YangMills.clayYangMillsStrong_trivial' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    YangMills/L8_Terminal/ClayTrivialityAudit.lean:83:0:
+    'YangMills.clayYangMillsStrong_iff_true' depends on axioms:
     [propext, Classical.choice, Quot.sound]
 
 This is exactly the canonical project oracle. No new axioms. No `sorry`.
