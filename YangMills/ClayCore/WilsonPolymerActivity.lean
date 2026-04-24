@@ -207,8 +207,30 @@ noncomputable def SmallFieldActivityBound.ofWilsonActivity
     rw [hpow, hexp]
     nlinarith [wab.hA₀, hrn_pos, hr2_pos]
 
+/-! ### P2d-β: enriched BalabanH1 with polymer-faithful small-field activity
+
+v0.45.0 / Phase 3 / Task #7 P2d-β: pure-additive enriched constructor that
+composes `SmallFieldActivityBound.ofWilsonActivity` (P2d-α, v0.44.0) with
+`h1_of_small_field_bound` (`SmallFieldBound.lean`) to produce a first-class
+`BalabanH1 N_c` term whose small-field activity profile is
+`activity n := A₀ · r^(n+2)` — polymer-faithful — instead of identically
+zero (the legacy `balabanH1_from_wilson_activity` route via the
+trivial-activity shortcut `smallFieldBound_of_wilsonActivity`).
+
+Demonstrates the P2d-α enriched constructor is not decorative but
+propagates cleanly through `h1_of_small_field_bound` to a `BalabanH1`
+with semantically faithful small-field content. Pure additive: legacy
+`balabanH1_from_wilson_activity` (existential statement with trivial
+activity) is kept intact and still callable. -/
+noncomputable def balabanH1_from_wilson_activity_enriched
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c) :
+    BalabanH1 N_c :=
+  h1_of_small_field_bound (SmallFieldActivityBound.ofWilsonActivity wab)
+
 end YangMills
 
 #print axioms YangMills.smallFieldBound_of_wilsonActivity
 #print axioms YangMills.balabanH1_from_wilson_activity
 #print axioms YangMills.SmallFieldActivityBound.ofWilsonActivity
+#print axioms YangMills.balabanH1_from_wilson_activity_enriched
