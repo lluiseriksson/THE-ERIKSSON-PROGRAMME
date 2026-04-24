@@ -1,3 +1,52 @@
+# v0.68.0 — Packaged Mayer/activity data for preferred F3 endpoint
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive terminal API packaging in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    structure ConnectedCardDecayMayerData
+    theorem clay_theorem_of_shiftedCountBound_mayerData_ceil
+
+`ConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg` packages the two
+non-count analytic inputs for the preferred F3 route:
+
+1. the raw truncated activity `K`;
+2. its connected-cardinality decay bound
+   `|K Y| ≤ if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y then A₀ * r^Y.card else 0`;
+3. the Mayer/Ursell identity identifying the Wilson connected correlator with
+   the connecting sum of `TruncatedActivities.ofConnectedCardDecay`.
+
+The preferred terminal wrapper is now:
+
+    clay_theorem_of_shiftedCountBound_mayerData_ceil
+
+It consumes exactly:
+
+1. `ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le`;
+2. `ShiftedConnectingClusterCountBound C_conn dim`.
+
+This is not a proof of those two packages.  It is the clean terminal interface
+for the remaining F3 work: one analytic Mayer/activity package plus one
+combinatorial lattice-animal count package.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.clay_theorem_of_shiftedCountBound_mayerData_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.67.0 — Named shifted count frontier for terminal F3
 
 **Released: 2026-04-24**

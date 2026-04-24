@@ -1471,6 +1471,40 @@ theorem clay_theorem_of_count_connectedCardDecayActivities_ceil_shifted
 
 #print axioms clay_theorem_of_count_connectedCardDecayActivities_ceil_shifted
 
+/-- A packaged raw truncated-activity input for the preferred shifted F3
+endpoint.
+
+It contains the raw truncated activity `K`, its connected-cardinality decay
+bound, and the Mayer/Ursell identity identifying the Wilson connected
+correlator with the connecting sum of the constructed activity. -/
+structure ConnectedCardDecayMayerData
+    (N_c : ℕ) [NeZero N_c]
+    (r A₀ : ℝ) (hr_nonneg : 0 ≤ r) (hA_nonneg : 0 ≤ A₀) where
+  K : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+    (β : ℝ) →
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+    ConcretePlaquette d L → ConcretePlaquette d L →
+    Finset (ConcretePlaquette d L) → ℝ
+  hK_abs_le : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (Y : Finset (ConcretePlaquette d L)),
+    |K β F p q Y| ≤
+      if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y
+        then A₀ * r ^ Y.card else 0
+  h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ) (_hβ : 0 < β)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (_hF : ∀ U, |F U| ≤ 1)
+    (p q : ConcretePlaquette d L),
+    (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+    wilsonConnectedCorr (sunHaarProb N_c)
+      (wilsonPlaquetteEnergy N_c) β F p q =
+    (TruncatedActivities.ofConnectedCardDecay
+      (K β F p q) p q r A₀ hr_nonneg hA_nonneg
+      (hK_abs_le β F p q)).connectingSum p q
+
 /-- Preferred terminal F3 wrapper with the shifted bucket count packaged as the
 named frontier predicate `ShiftedConnectingClusterCountBound`. -/
 theorem clay_theorem_of_shiftedCountBound_connectedCardDecayActivities_ceil
@@ -1510,5 +1544,21 @@ theorem clay_theorem_of_shiftedCountBound_connectedCardDecayActivities_ceil
       h_count.apply p q n hn hdist)
 
 #print axioms clay_theorem_of_shiftedCountBound_connectedCardDecayActivities_ceil
+
+/-- Preferred terminal F3 wrapper with both remaining analytic sides packaged:
+`ConnectedCardDecayMayerData` for the raw Mayer/activity input and
+`ShiftedConnectingClusterCountBound` for the lattice-animal count. -/
+theorem clay_theorem_of_shiftedCountBound_mayerData_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (data : ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le)
+    (h_count : ShiftedConnectingClusterCountBound C_conn dim) :
+    ClayYangMillsTheorem :=
+  clay_theorem_of_shiftedCountBound_connectedCardDecayActivities_ceil
+    N_c wab C_conn A₀ hC hA dim data.K data.hK_abs_le data.h_mayer h_count
+
+#print axioms clay_theorem_of_shiftedCountBound_mayerData_ceil
 
 end YangMills
