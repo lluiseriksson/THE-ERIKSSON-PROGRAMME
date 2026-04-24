@@ -3395,9 +3395,11 @@ are in `docs/phase1-llogl-obstruction.md`.
 
 **Milestone:** `clay_millennium_yangMills` oracle is now `[propext, sorryAx, Classical.choice, Quot.sound]` — **ZERO named axioms** in the Clay proof chain.
 
-## Current axiom inventory (non-Experimental)
+## Historical axiom inventory (non-Experimental)
 
-- **Total declared axioms (non-Experimental Lean):** 3 after v0.92.0
+- **Superseded by v0.95.0-v0.97.0.** Current declared axioms
+  outside `YangMills/Experimental/`: **0**.
+- **Historical count at this point in the log:** 3 after v0.92.0
 - **Axioms reached by `clay_millennium_yangMills`:** 0
 - **Orphaned axioms (declared but unreachable from Clay):** historical census below predates v0.86.0-v0.89.0 cleanup
 
@@ -3655,9 +3657,16 @@ Deep dependency analysis confirmed:
 
 ---
 
-## Axiom Census  2026-04-14
+## Historical Axiom Census  2026-04-14
 
-Taken from `grep -rn '^axiom ' YangMills/ --include='*.lean' | grep -v Experimental`.
+Superseded by v0.95.0-v0.97.0.  The current command
+
+    git grep -n -E "^axiom " -- "*.lean" | Select-String -NotMatch "Experimental"
+
+returns empty.  The table below is kept only as a historical record of the
+2026-04-14 audit.
+
+Taken then from `grep -rn '^axiom ' YangMills/ --include='*.lean' | grep -v Experimental`.
 
 ### On the main oracle chain (consumed by `yang_mills_mass_gap`)
 
