@@ -122,4 +122,79 @@ theorem clusterCorrelatorBound_of_truncatedActivities
 
 #print axioms clusterCorrelatorBound_of_truncatedActivities
 
+/-- Geometric comparison for the canonical discrete cluster distance
+`⌈x⌉₊`: the factored `r^⌈x⌉₊` bound is already strong enough for the
+`ClusterCorrelatorBound` exponential target. -/
+theorem clusterPrefactor_rpow_ceil_le_exp
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ) (x : ℝ) :
+    clusterPrefactor r C_conn A₀ dim * r ^ (⌈x⌉₊) ≤
+      clusterPrefactor r C_conn A₀ dim *
+        Real.exp (-(kpParameter r) * x) := by
+  have hpref_nonneg :
+      0 ≤ clusterPrefactor r C_conn A₀ dim :=
+    (clusterPrefactor_pos r hr_pos hr_lt1 C_conn A₀ hC hA dim).le
+  apply mul_le_mul_of_nonneg_left ?_ hpref_nonneg
+  have hceil : x ≤ (⌈x⌉₊ : ℝ) := Nat.le_ceil x
+  have hceil_nonneg : 0 ≤ (⌈x⌉₊ : ℝ) := by exact_mod_cast Nat.zero_le ⌈x⌉₊
+  have hkp_pos : 0 < kpParameter r := kpParameter_pos hr_pos hr_lt1
+  have hceil_exp :
+      r ^ ((⌈x⌉₊ : ℝ)) ≤ Real.exp (-(kpParameter r) * (⌈x⌉₊ : ℝ)) :=
+    rpow_le_exp_kpParameter hr_pos hr_lt1 hceil_nonneg
+  have hexp_mono :
+      Real.exp (-(kpParameter r) * (⌈x⌉₊ : ℝ)) ≤
+        Real.exp (-(kpParameter r) * x) := by
+    apply Real.exp_le_exp.mpr
+    nlinarith [mul_le_mul_of_nonneg_left hceil hkp_pos.le]
+  calc
+    r ^ (⌈x⌉₊)
+        = r ^ ((⌈x⌉₊ : ℝ)) := by rw [Real.rpow_natCast]
+    _ ≤ Real.exp (-(kpParameter r) * (⌈x⌉₊ : ℝ)) := hceil_exp
+    _ ≤ Real.exp (-(kpParameter r) * x) := hexp_mono
+
+/-- Canonical-ceiling version of `clusterCorrelatorBound_of_truncatedActivities`.
+Here the discrete cluster distance is fixed to `⌈siteLatticeDist⌉₊`, so the
+geometric comparison is proved internally by
+`clusterPrefactor_rpow_ceil_le_exp`. -/
+theorem clusterCorrelatorBound_of_truncatedActivities_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (T : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      TruncatedActivities (ConcretePlaquette d L))
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (T β F p q).connectingSum p q)
+    (h_bound : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      (T β F p q).connectingBound p q ≤
+        ∑' n : ℕ, C_conn * (n : ℝ) ^ dim * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    ClusterCorrelatorBound N_c r (clusterPrefactor r C_conn A₀ dim) := by
+  refine clusterCorrelatorBound_of_truncatedActivities
+    N_c r hr_pos hr_lt1 C_conn A₀ hC hA dim T
+    (fun β F p q => ⌈siteLatticeDist p.site q.site⌉₊)
+    h_mayer h_bound ?_
+  intro d L _ _ β hβ F hF p q hdist
+  exact clusterPrefactor_rpow_ceil_le_exp
+    r hr_pos hr_lt1 C_conn A₀ hC hA dim (siteLatticeDist p.site q.site)
+
+#print axioms clusterPrefactor_rpow_ceil_le_exp
+#print axioms clusterCorrelatorBound_of_truncatedActivities_ceil
+
 end YangMills

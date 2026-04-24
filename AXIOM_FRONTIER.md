@@ -11,6 +11,11 @@ Pure additive F3 bridge in `YangMills/ClayCore/ClusterRpowBridge.lean`:
         ClusterCorrelatorBound N_c r
           (clusterPrefactor r C_conn A₀ dim)
 
+    theorem clusterCorrelatorBound_of_truncatedActivities_ceil
+        ... :
+        ClusterCorrelatorBound N_c r
+          (clusterPrefactor r C_conn A₀ dim)
+
 This composes the existing Mayer/Kotecký-Preiss analytic scaffolding:
 
 1. `TruncatedActivities.abs_connectingSum_le_connectingBound`
@@ -20,8 +25,8 @@ This composes the existing Mayer/Kotecký-Preiss analytic scaffolding:
 3. the Wilson-facing exponential target
    `ClusterCorrelatorBound N_c r C_clust`.
 
-The theorem is intentionally honest about the remaining analytic inputs. It
-takes as hypotheses:
+The general theorem is intentionally honest about the remaining analytic
+inputs. It takes as hypotheses:
 
 - a Mayer/Ursell identity identifying `wilsonConnectedCorr` with the
   connecting truncated-activity sum;
@@ -32,6 +37,17 @@ takes as hypotheses:
 Given those inputs, the F3 summability/factoring part is fully discharged in
 Lean and produces the exact `ClusterCorrelatorBound` shape consumed by the
 Clay pipeline.
+
+The canonical-ceiling variant closes the geometric comparison internally:
+
+    clusterPrefactor r C_conn A₀ dim * r ^ ⌈siteLatticeDist p q⌉₊
+      ≤ clusterPrefactor r C_conn A₀ dim *
+        exp (-(kpParameter r) * siteLatticeDist p q)
+
+via `clusterPrefactor_rpow_ceil_le_exp`. Thus, when the cluster-series bound
+is stated with the standard discrete distance `⌈siteLatticeDist⌉₊`, the only
+remaining F3 inputs are the Mayer/Ursell identity and the bound on
+`connectingBound`.
 
 ## Oracle
 
@@ -45,9 +61,16 @@ Pinned trace:
     'YangMills.clusterCorrelatorBound_of_truncatedActivities' depends on axioms:
     [propext, Classical.choice, Quot.sound]
 
+    'YangMills.clusterPrefactor_rpow_ceil_le_exp' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clusterCorrelatorBound_of_truncatedActivities_ceil' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
 No new axioms. No `sorry`. No bar movement yet: the remaining open work is now
-sharply isolated to the Mayer/Ursell identity plus the geometric comparison,
-not the F3 summability/factoring bridge.
+sharply isolated to the Mayer/Ursell identity plus the `connectingBound`
+cluster-series estimate, not the F3 summability/factoring or the canonical
+ceiling-to-exponential geometry.
 
 ---
 
