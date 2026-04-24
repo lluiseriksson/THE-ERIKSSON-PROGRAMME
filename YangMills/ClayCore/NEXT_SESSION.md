@@ -77,6 +77,18 @@ These combine by:
 
     ShiftedF3MayerCountPackage.ofSubpackages mayer count
 
+For the count side there are now three explicit scopes:
+
+    ShiftedConnectingClusterCountBound        -- uniform over all d and L
+    ShiftedConnectingClusterCountBoundDim d   -- fixed d, uniform over L
+    ShiftedConnectingClusterCountBoundAt d L  -- fixed finite volume
+
+The physical `d = 4` combinatorial target should usually be attacked first as
+`ShiftedConnectingClusterCountBoundDim 4 C_conn dim`; the fully global
+predicate projects to it via `ShiftedConnectingClusterCountBound.toDim`, and a
+fixed-dimension proof projects to finite volume via
+`ShiftedConnectingClusterCountBoundDim.toAt`.
+
 ## Two Mathematical Subtargets
 
 ### F3-Mayer
@@ -144,7 +156,10 @@ What is already closed locally:
 
     shiftedConnectingClusterCountBoundAt_finite
     ShiftedF3CountPackageAt.finite
+    ShiftedConnectingClusterCountBoundDim.apply
     ShiftedConnectingClusterCountBound.toAt
+    ShiftedConnectingClusterCountBound.toDim
+    ShiftedConnectingClusterCountBoundDim.toAt
     ShiftedF3CountPackage.toAt
     ShiftedF3CountPackage.ofBound
     ShiftedF3CountPackage.apply
@@ -181,7 +196,10 @@ Key oracle canaries:
     #print axioms ShiftedF3MayerCountPackage.apply_count
     #print axioms shiftedConnectingClusterCountBoundAt_finite
     #print axioms ShiftedF3CountPackageAt.finite
+    #print axioms ShiftedConnectingClusterCountBoundDim.apply
     #print axioms ShiftedConnectingClusterCountBound.toAt
+    #print axioms ShiftedConnectingClusterCountBound.toDim
+    #print axioms ShiftedConnectingClusterCountBoundDim.toAt
     #print axioms ShiftedF3CountPackage.toAt
     #print axioms ShiftedF3CountPackage.ofBound
     #print axioms ShiftedF3CountPackage.apply

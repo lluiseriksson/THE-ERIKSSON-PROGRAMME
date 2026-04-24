@@ -89,6 +89,40 @@ theorem ShiftedConnectingClusterCountBound.apply
       C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) :=
   h p q n hn hdist
 
+/-- Fixed-dimension version of the shifted connecting-cluster count frontier.
+
+This is uniform in the finite volume `L`, but its constants may depend on the
+fixed lattice dimension `d`.  For the physical Clay target this is the natural
+`d = 4` count frontier; it is stronger than the fixed-`d,L` audit bound and
+weaker than a dimension-uniform bound over all `d`. -/
+def ShiftedConnectingClusterCountBoundDim
+    (d : ℕ) [NeZero d] (C_conn : ℝ) (dim : ℕ) : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ),
+    n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1) →
+    (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * (((n + 1 : ℕ) : ℝ) ^ dim)
+
+/-- Apply a fixed-dimension shifted connecting-cluster count bound to one
+bucket. -/
+theorem ShiftedConnectingClusterCountBoundDim.apply
+    {d : ℕ} [NeZero d] {C_conn : ℝ} {dim : ℕ}
+    (h : ShiftedConnectingClusterCountBoundDim d C_conn dim)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) :=
+  h p q n hn hdist
+
 /-- Finite-volume version of the shifted connecting-cluster count frontier.
 
 This keeps `d` and `L` fixed.  Unlike the global
@@ -126,6 +160,26 @@ theorem ShiftedConnectingClusterCountBound.toAt
     {C_conn : ℝ} {dim : ℕ}
     (h : ShiftedConnectingClusterCountBound C_conn dim)
     (d L : ℕ) [NeZero d] [NeZero L] :
+    ShiftedConnectingClusterCountBoundAt d L C_conn dim := by
+  intro p q n hn hdist
+  exact h.apply p q n hn hdist
+
+/-- Restrict a global shifted connecting-cluster count bound to a fixed
+dimension. -/
+theorem ShiftedConnectingClusterCountBound.toDim
+    {C_conn : ℝ} {dim : ℕ}
+    (h : ShiftedConnectingClusterCountBound C_conn dim)
+    (d : ℕ) [NeZero d] :
+    ShiftedConnectingClusterCountBoundDim d C_conn dim := by
+  intro L _ p q n hn hdist
+  exact h.apply p q n hn hdist
+
+/-- Restrict a fixed-dimension shifted connecting-cluster count bound to a
+fixed finite plaquette lattice. -/
+theorem ShiftedConnectingClusterCountBoundDim.toAt
+    {d : ℕ} [NeZero d] {C_conn : ℝ} {dim : ℕ}
+    (h : ShiftedConnectingClusterCountBoundDim d C_conn dim)
+    (L : ℕ) [NeZero L] :
     ShiftedConnectingClusterCountBoundAt d L C_conn dim := by
   intro p q n hn hdist
   exact h.apply p q n hn hdist
@@ -254,8 +308,11 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms connected_polymer_card_eq_extra_add_dist
 #print axioms C_conn_const_pos_of_neZero
 #print axioms ShiftedConnectingClusterCountBound.apply
+#print axioms ShiftedConnectingClusterCountBoundDim.apply
 #print axioms ShiftedConnectingClusterCountBoundAt.apply
 #print axioms ShiftedConnectingClusterCountBound.toAt
+#print axioms ShiftedConnectingClusterCountBound.toDim
+#print axioms ShiftedConnectingClusterCountBoundDim.toAt
 #print axioms shiftedConnectingClusterCountBoundAt_finite
 #print axioms ShiftedF3CountPackageAt.finite
 #print axioms ShiftedF3CountPackageAt.finite_C_conn

@@ -1,3 +1,48 @@
+# v1.23.0 — Fixed-dimension shifted count frontier exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added a fixed-dimension shifted count frontier in
+`YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    ShiftedConnectingClusterCountBoundDim
+    ShiftedConnectingClusterCountBoundDim.apply
+    ShiftedConnectingClusterCountBound.toDim
+    ShiftedConnectingClusterCountBoundDim.toAt
+
+This sits between the existing global
+`ShiftedConnectingClusterCountBound C_conn dim` (uniform over all dimensions)
+and the finite-volume
+`ShiftedConnectingClusterCountBoundAt d L C_conn dim` (constants may depend on
+the concrete volume).
+
+## Why
+
+No percentage bar moves.  This is F3 count-frontier sharpening: the physical
+Clay target has fixed spacetime dimension, so the natural lattice-animal
+subgoal is uniform in volume `L` at fixed `d` (especially `d = 4`), while
+allowing constants to depend on that dimension.  The old global predicate still
+exists and projects to the new fixed-dimension predicate, but future counting
+work can now be scoped more honestly.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: the new fixed-dimension apply/restriction lemmas print the
+canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.22.0 — Uniform-rpow frontier gets direct applicator
 
 **Released: 2026-04-25**
