@@ -1,13 +1,18 @@
-# SORRY FRONTIER — THE-ERIKSSON-PROGRAMME v0.37.0
+# SORRY FRONTIER — THE-ERIKSSON-PROGRAMME v0.50.0
 
-Last updated: v0.37.0 (2026-04-18)
+Last updated: v0.50.0 (2026-04-24)
 
 ## Current sorry count: 0
 
-Sorry count: 0. The last sorry was closed by the Σ-path (MemLp-gated LSI) in commit 94299c8. See docs/phase1-llogl-obstruction.md for the full obstruction history., inside the proof of the
-theorem `lsi_normalized_gibbs_from_haar`. For the obstruction analysis
-see `docs/phase1-llogl-obstruction.md`; for the live axiom/sorry ledger
-see `AXIOM_FRONTIER.md`.
+Sorry count: 0. The former unrestricted
+`lsi_normalized_gibbs_from_haar` placeholder is now an explicit named axiom in
+`YangMills/P8_PhysicalGap/BalabanToLSI.lean`, not a theorem with a hidden
+`sorry`. The Σ-path / MemLp-gated theorem
+`lsi_normalized_gibbs_from_haar_memLp` remains fully proved and prints only the
+canonical project oracle `[propext, Classical.choice, Quot.sound]`.
+
+See `docs/phase1-llogl-obstruction.md` for the L·log·L obstruction history;
+see `AXIOM_FRONTIER.md` v0.50.0 for the live axiom trace.
 
 ## Files with no sorrys in P8_PhysicalGap
 

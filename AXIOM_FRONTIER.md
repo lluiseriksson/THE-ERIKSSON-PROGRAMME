@@ -1,3 +1,64 @@
+# v0.50.0 — HS audit: explicit normalized-Gibbs LSI axiom replaces hidden sorry
+
+**Released: 2026-04-24**
+
+## What
+
+Audit-only / no mathematical pipeline change. The unrestricted Holley--Stroock
+transfer
+
+    axiom lsi_normalized_gibbs_from_haar
+        (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
+        (β : ℝ) (hβ : 0 < β) (α : ℝ) (hα : 0 < α)
+        (hHaar : LogSobolevInequality
+          (sunHaarProb N_c) (sunDirichletForm N_c) α) :
+        LogSobolevInequality
+          ((sunHaarProb N_c).withDensity
+            (sunNormalizedGibbsDensity N_c hN_c β hβ))
+          (sunDirichletForm N_c)
+          (α * Real.exp (-2 * β))
+
+is now declared as a named axiom in
+`YangMills/P8_PhysicalGap/BalabanToLSI.lean`.
+
+This replaces the former theorem-shaped placeholder that carried the same
+missing universal integrability step behind `sorry`. The ledger is now honest:
+the vanilla route depends on the named axiom, while the Σ/MemLp-gated route
+continues to discharge the corresponding restricted statement without it.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.P8_PhysicalGap.BalabanToLSI
+    lake build YangMills.P8_PhysicalGap.PhysicalMassGap
+    lake build YangMills.P8_PhysicalGap.ClayViaLSI
+
+Pinned trace:
+
+    'YangMills.lsi_normalized_gibbs_from_haar' depends on axioms: [propext,
+     Classical.choice,
+     Quot.sound,
+     YangMills.lsi_normalized_gibbs_from_haar]
+
+    'YangMills.lsi_normalized_gibbs_from_haar_memLp' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.sun_physical_mass_gap_vacuous' depends on axioms: [propext,
+     Classical.choice,
+     Quot.sound,
+     YangMills.lsi_normalized_gibbs_from_haar]
+
+    'YangMills.sun_physical_mass_gap_vacuous_memLp' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No unconditional bar movement. This is a transparency repair: it removes a
+hidden `sorryAx` dependency from the vanilla chain by naming the exact frontier
+assumption. The live Clay-grade path remains the MemLp-gated terminal route and
+the `ClusterCorrelatorBound` front.
+
+---
+
 # v0.49.0 — F3 counting interface: canonical buckets + finite connecting bound
 
 **Released: 2026-04-24**

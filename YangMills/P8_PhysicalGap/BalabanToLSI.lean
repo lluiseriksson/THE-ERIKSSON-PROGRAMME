@@ -790,92 +790,20 @@ private theorem entSq_pert_zero_case
   simp only [entSq, h0, h0p, hlog0, hlog0p, Real.log_zero, mul_zero, sub_self]
   exact le_refl _
 
-theorem lsi_normalized_gibbs_from_haar
+/-- Holley--Stroock transfer for the unrestricted normalized Gibbs LSI.
+
+This is intentionally an explicit frontier axiom. The former theorem-shaped
+placeholder hid the same missing universal integrability step behind `sorry`;
+the MemLp-gated route below proves the corresponding restricted statement
+without this axiom. -/
+axiom lsi_normalized_gibbs_from_haar
     (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
     (α : ℝ) (hα : 0 < α)
-    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α)
-    :
+    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α) :
     LogSobolevInequality
       ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
       (sunDirichletForm N_c)
-      (α * Real.exp (-2 * β)) :=
-  lsi_normalized_gibbs_from_haar_of_ent_pert N_c hN_c β hβ α hα hHaar
-    (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0)
-    (fun f hf => by
-      by_cases hpos : 0 < ∫ x, f x ^ 2 ∂(sunHaarProb N_c)
-      · have hint_f2 : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c) := by
-          by_contra h; simp [MeasureTheory.integral_undef h] at hpos
-        have hint_haar_log : MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c) := sorry
-        refine entSq_pert_bound_chain N_c β
-            (sunHaarProb N_c)
-            ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ))
-            f
-            (integral_nonneg (fun x => sq_nonneg (f x)))
-            hpos
-            (dv_integral_lin_cross ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) (instIsProbabilityMeasure_sunGibbsFamily_norm 0 N_c hN_c β hβ 0) f _ _ (integrable_gibbs_of_haar hN_c β hβ (integrable_f2_mul_log_f2_div_haar f _ hint_f2 hint_haar_log)) (integrable_gibbs_of_haar hN_c β hβ (by by_contra h; linarith [MeasureTheory.integral_undef h]))) -- TODO: integral linearity for Gibbs (needs Integrable f²·log(f²))
-            (log_quotient_split ((sunHaarProb N_c).withDensity (sunNormalizedGibbsDensity N_c hN_c β hβ)) f _ hpos (integrable_gibbs_of_haar hN_c β hβ (integrable_f2_mul_log_f2_haar f hint_f2 hint_haar_log)) (integrable_gibbs_of_haar hN_c β hβ (by by_contra h; linarith [MeasureTheory.integral_undef h]))) -- TODO: log-quotient split for Gibbs (needs Integrable f²·log(f²))
-            (dv_integral_lin_self (sunHaarProb N_c) f _ hpos) -- TODO: integral linearity for Haar (needs Integrable f²·log(f²))
-            (log_quotient_split (sunHaarProb N_c) f _ hpos (integrable_f2_mul_log_f2_haar f hint_f2 hint_haar_log) (by by_contra h; linarith [MeasureTheory.integral_undef h])) -- TODO: log-quotient split for Haar (needs Integrable f²·log(f²))
-          ?_
-        have dv_nn : ∀ x, 0 ≤ f x ^ 2 * Real.log (f x ^ 2 / ∫ y, f y ^ 2 ∂sunHaarProb N_c) - f x ^ 2 + ∫ y, f y ^ 2 ∂sunHaarProb N_c := by
-          intro x
-          rcases eq_or_lt_of_le (sq_nonneg (f x)) with h0 | htpos
-          · simp [← h0, hpos.le]
-          · set u := f x ^ 2 / ∫ y, f y ^ 2 ∂sunHaarProb N_c with hu_def
-            have hupos : 0 < u := div_pos htpos hpos
-            suffices hsuff : 0 ≤ u * Real.log u - u + 1 by
-              have : f x ^ 2 * Real.log (f x ^ 2 / ∫ y, f y ^ 2 ∂sunHaarProb N_c) - f x ^ 2 + ∫ y, f y ^ 2 ∂sunHaarProb N_c = (∫ y, f y ^ 2 ∂sunHaarProb N_c) * (u * Real.log u - u + 1) := by rw [hu_def]; field_simp
-              linarith [mul_nonneg hpos.le hsuff]
-            have key : 1 + Real.log u⁻¹ ≤ u⁻¹ := by
-              have h := Real.add_one_le_exp (Real.log u⁻¹)
-              rw [Real.exp_log (inv_pos.mpr hupos)] at h; linarith
-            rw [Real.log_inv] at key
-            have h2 : u * (1 - Real.log u) ≤ 1 := by
-              calc u * (1 - Real.log u) ≤ u * u⁻¹ := mul_le_mul_of_nonneg_left key hupos.le
-                _ = 1 := mul_inv_cancel₀ (ne_of_gt hupos)
-            linarith [show u * Real.log u - u + 1 = 1 - u * (1 - Real.log u) from by ring]
-        have hint_φ := ((integrable_f2_mul_log_f2_div_haar f (∫ y, f y ^ 2 ∂sunHaarProb N_c) hint_f2 hint_haar_log).sub hint_f2).add (MeasureTheory.integrable_const (∫ y, f y ^ 2 ∂sunHaarProb N_c))
-        have h := MeasureTheory.integral_mono_measure (gibbs_measure_le_smul_haar hN_c β hβ) (Filter.Eventually.of_forall dv_nn) (hint_φ.smul_measure ENNReal.ofReal_ne_top)
-        rwa [MeasureTheory.integral_smul_measure, ENNReal.toReal_ofReal (le_of_lt (Real.exp_pos _))] at h
-      · -- Zero-integral branch: hpos : ¬(0 < ∫f² ∂sunHaarProb)
-        -- Use entSq_pert_zero_case when f² is integrable.
-        have hnn : 0 ≤ ∫ y, f y ^ 2 ∂(sunHaarProb N_c) :=
-          integral_nonneg (fun x => sq_nonneg _)
-        by_cases hint : MeasureTheory.Integrable (fun x => f x ^ 2) (sunHaarProb N_c)
-        · exact entSq_pert_zero_case N_c β (sunHaarProb N_c) _ f hf
-            (MeasureTheory.withDensity_absolutelyContinuous _ _) hint hnn hpos
-        · -- f² not integrable under Haar ⇒ ∫f² = 0 on both sides by integral_undef,
-          -- entSq reduces to 0 on both sides. Mathematical content: L log L regularity
-          -- implies ¬Integrable(f² log f²) under Haar (needs Mathlib work).
-          -- Non-integrable corner case: density lower bound gives measure transfer.
-          -- f² not Haar-integrable → f² not Gibbs-integrable (by reverse measure domination)
-          -- Both integrals are 0 by integral_undef, so entSq = 0 on both sides.
-          have hint_gibbs := not_integrable_gibbs_of_not_integrable_haar hN_c β hβ hint
-          have hint_log : ¬ MeasureTheory.Integrable (fun x => f x ^ 2 * Real.log (f x ^ 2)) (sunHaarProb N_c) := by
-            intro habs
-            apply hint
-            exact ((MeasureTheory.integrable_const (1 : ℝ)).add habs.norm).mono'
-              (by fun_prop)
-              (Filter.Eventually.of_forall (fun x => by
-              simp only [Pi.add_apply, Real.norm_eq_abs]
-              rw [abs_of_nonneg (sq_nonneg _)]
-              by_cases hfx : f x ^ 2 ≤ 1
-              · linarith [abs_nonneg (f x ^ 2 * Real.log (f x ^ 2))]
-              · push_neg at hfx
-                have h_pos : (0 : ℝ) < f x ^ 2 := by linarith
-                have h_log_pos := Real.log_pos (by linarith : (1 : ℝ) < f x ^ 2)
-                rw [abs_of_pos (mul_pos h_pos h_log_pos)]
-                have := Real.add_one_le_exp (-(Real.log (f x ^ 2)))
-                rw [Real.exp_neg, Real.exp_log h_pos] at this
-                have h_mul := mul_le_mul_of_nonneg_left this (le_of_lt h_pos)
-                rw [mul_inv_cancel₀ h_pos.ne'] at h_mul
-                nlinarith))
-          have hint_log_gibbs := not_integrable_gibbs_of_not_integrable_haar hN_c β hβ hint_log
-          simp only [entSq, MeasureTheory.integral_undef hint,
-            MeasureTheory.integral_undef hint_gibbs,
-            MeasureTheory.integral_undef hint_log,
-            MeasureTheory.integral_undef hint_log_gibbs,
-            mul_zero, Real.log_zero, sub_self, le_refl])
+      (α * Real.exp (-2 * β))
 
 /-!
 ## P8.3: Normalized Gibbs LSI → DLR-LSI chain (consumes `lsi_normalized_gibbs_from_haar`)
@@ -970,8 +898,8 @@ theorem sun_gibbs_dlr_lsi
 New chain mirroring the Haar→Gibbs→DLR LSI pipeline, but with the
 universal-measurable-f quantifier replaced by one restricted to
 `MemLp f p μ_ref` with `2 < p`. The missing integrability premise that
-forces the `sorry` at line 805 of the vanilla `lsi_normalized_gibbs_from_haar`
-is then supplied by the helper
+formerly blocked the vanilla `lsi_normalized_gibbs_from_haar` proof is then
+supplied by the helper
 `memLp_gt_two_integrable_sq_mul_log_sq` (defined in
 `YangMills.P8_PhysicalGap.MemLpLogIntegrability`).
 
@@ -1070,8 +998,8 @@ theorem lsi_normalized_gibbs_from_haar_of_ent_pert_memLp
   linarith [h4]
 
 /-- Σ-Gibbs LSI from Haar: MemLp-gated form of
-`lsi_normalized_gibbs_from_haar`. The previous `sorry` at line 805 (over
-`Integrable (f²·log(f²)) Haar`) is now discharged by the MemLp helper
+`lsi_normalized_gibbs_from_haar`. The former vanilla-proof obstruction over
+`Integrable (f²·log(f²)) Haar` is discharged here by the MemLp helper
 `memLp_gt_two_integrable_sq_mul_log_sq`. -/
 theorem lsi_normalized_gibbs_from_haar_memLp
     (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
