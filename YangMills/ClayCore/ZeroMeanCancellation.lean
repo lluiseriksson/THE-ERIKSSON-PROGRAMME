@@ -215,6 +215,21 @@ def WilsonUniformRpowBound (N_c : ℕ) [NeZero N_c] (β C : ℝ) : Prop :=
         (wilsonPlaquetteEnergy N_c) β' F p q| ≤
     C * β ^ (siteLatticeDist p.site q.site)
 
+/-- SU(1) canary for the named uniform-rpow frontier.
+
+The connected Wilson correlator vanishes identically on SU(1), so any
+nonnegative prefactor and positive base give a uniform rpow bound.  This is the
+singleton route only; the nonabelian `N_c ≥ 2` uniform-rpow estimate remains
+the live Mayer/Kotecky-Preiss analytic target. -/
+theorem wilsonUniformRpowBound_su1
+    {β C : ℝ} (hβ : 0 < β) (hC : 0 ≤ C) :
+    WilsonUniformRpowBound 1 β C := by
+  intro d L _ _ β' _hβ' F _hF p q _hdist
+  rw [wilsonConnectedCorr_su1_eq_zero]
+  have hpow : 0 ≤ β ^ siteLatticeDist p.site q.site :=
+    Real.rpow_nonneg hβ.le _
+  simpa using mul_nonneg hC hpow
+
 /-! ## Clay wrapper via zero-mean + independence -/
 
 /-- **Phase 15j.7, wrapper to `ClayYangMillsTheorem`.**
@@ -332,6 +347,7 @@ theorem clayConnectedCorrDecay_small_beta_of_uniformRpow_prefactor_eq
 #print axioms plaquetteFluctuationNorm_integrable
 #print axioms plaquetteFluctuationNorm_mean_zero
 #print axioms plaquetteFluctuationNorm_zero_beta
+#print axioms wilsonUniformRpowBound_su1
 #print axioms yang_mills_final_small_beta_of_uniformRpow
 #print axioms clayMassGap_small_beta_of_uniformRpow
 #print axioms clay_theorem_small_beta_of_uniformRpow

@@ -1,3 +1,46 @@
+# v1.11.0 — SU(1) inhabits the named uniform-rpow frontier
+
+**Released: 2026-04-25**
+
+## What
+
+Added
+
+    theorem wilsonUniformRpowBound_su1
+
+to `YangMills/ClayCore/ZeroMeanCancellation.lean`.
+
+For `β > 0` and `0 ≤ C`, it proves
+
+    WilsonUniformRpowBound 1 β C
+
+because `wilsonConnectedCorr_su1_eq_zero` makes the connected Wilson
+correlator vanish identically on SU(1), while `C * β ^ dist` is nonnegative.
+
+## Why
+
+No percentage bar moves.  This is the singleton canary for the named small-β
+frontier introduced for the nonabelian route.  Together with v1.10, it means
+the `SU(1)` unconditional collapse now passes through the same
+`WilsonUniformRpowBound → PhysicalStrong` terminal interface as the intended
+Mayer/Kotecky-Preiss route.  It does not construct the `N_c ≥ 2` uniform-rpow
+bound; that remains the live analytic front.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ZeroMeanCancellation
+
+Pinned trace:
+
+    'YangMills.wilsonUniformRpowBound_su1' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.10.0 — Uniform-rpow small-β frontier lands directly in PhysicalStrong
 
 **Released: 2026-04-25**
