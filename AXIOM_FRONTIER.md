@@ -1,3 +1,57 @@
+# v1.25.0 — Physical d=4 count package aliases exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added physical four-dimensional count aliases and wrappers in
+`YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    physicalClayDimension
+    physicalClayDimension_neZero
+    PhysicalShiftedConnectingClusterCountBound
+    PhysicalShiftedF3CountPackage
+    PhysicalShiftedF3CountPackage.ofBound
+    PhysicalShiftedF3CountPackage.apply
+    PhysicalShiftedF3CountPackage.toAt
+    PhysicalShiftedF3CountPackage.toAt_C_conn
+    PhysicalShiftedF3CountPackage.toAt_dim
+    PhysicalShiftedF3CountPackage.toAt_apply
+    PhysicalShiftedF3CountPackage.ofBound_C_conn
+    PhysicalShiftedF3CountPackage.ofBound_dim
+
+## Why
+
+No percentage bar moves.  This is an F3 count-interface sharpening for the
+actual Clay spacetime dimension.  The physical combinatorial subtarget can now
+be stated without rethreading an abstract dimension parameter:
+
+    PhysicalShiftedConnectingClusterCountBound C_conn dim
+
+which is definitionally the fixed-dimension frontier at
+`physicalClayDimension = 4`.  Its packaged form,
+`PhysicalShiftedF3CountPackage`, projects to finite volume by `toAt` and has a
+direct `apply` theorem for bucket-count consumers.
+
+This does not prove the lattice-animal estimate.  It makes the honest
+next count target first-class: volume-uniform, four-dimensional, and weaker
+than the older all-dimensions global predicate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+
+Pinned traces: `physicalClayDimension` prints no axioms; all new physical
+package declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.24.0 — Fixed-dimension count package exposed
 
 **Released: 2026-04-25**

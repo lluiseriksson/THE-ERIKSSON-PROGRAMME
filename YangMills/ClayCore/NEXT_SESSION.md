@@ -102,6 +102,25 @@ and the fully global package projects to it by:
 
     ShiftedF3CountPackage.toDim
 
+For the actual physical dimension, the aliases are now:
+
+    physicalClayDimension = 4
+    PhysicalShiftedConnectingClusterCountBound C_conn dim
+    PhysicalShiftedF3CountPackage
+
+with direct consumers:
+
+    PhysicalShiftedF3CountPackage.apply
+    PhysicalShiftedF3CountPackage.toAt
+
+So the recommended count-side first target is:
+
+    PhysicalShiftedConnectingClusterCountBound C_conn dim
+
+This is definitionally the `d = 4` fixed-dimension frontier and is uniform over
+finite volume `L`; it does not require proving the stronger all-dimensions
+global predicate.
+
 ## Two Mathematical Subtargets
 
 ### F3-Mayer
@@ -176,6 +195,10 @@ What is already closed locally:
     ShiftedF3CountPackageDim.ofBound
     ShiftedF3CountPackageDim.apply
     ShiftedF3CountPackageDim.toAt
+    PhysicalShiftedConnectingClusterCountBound
+    PhysicalShiftedF3CountPackage.ofBound
+    PhysicalShiftedF3CountPackage.apply
+    PhysicalShiftedF3CountPackage.toAt
     ShiftedF3CountPackage.toAt
     ShiftedF3CountPackage.toDim
     ShiftedF3CountPackage.ofBound

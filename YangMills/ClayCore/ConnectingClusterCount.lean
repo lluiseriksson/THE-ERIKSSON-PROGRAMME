@@ -285,6 +285,99 @@ theorem toAt_apply
 
 end ShiftedF3CountPackageDim
 
+/-! ### Physical four-dimensional count target -/
+
+/-- The physical spacetime dimension for the Clay Yang-Mills target. -/
+def physicalClayDimension : ℕ := 4
+
+/-- The physical Clay dimension is nonzero. -/
+instance physicalClayDimension_neZero : NeZero physicalClayDimension := by
+  dsimp [physicalClayDimension]
+  infer_instance
+
+/-- Physical, four-dimensional version of the shifted connecting-cluster count
+frontier.  The constants are uniform in finite volume `L`, which is the count
+input needed by the `d = 4` F3 route. -/
+abbrev PhysicalShiftedConnectingClusterCountBound
+    (C_conn : ℝ) (dim : ℕ) : Prop :=
+  ShiftedConnectingClusterCountBoundDim physicalClayDimension C_conn dim
+
+/-- Packaged physical, four-dimensional shifted count data for the F3 route. -/
+abbrev PhysicalShiftedF3CountPackage : Type :=
+  ShiftedF3CountPackageDim physicalClayDimension
+
+namespace PhysicalShiftedF3CountPackage
+
+/-- Package a physical `d = 4` shifted connecting-cluster count bound. -/
+def ofBound
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_count : PhysicalShiftedConnectingClusterCountBound C_conn dim) :
+    PhysicalShiftedF3CountPackage :=
+  ShiftedF3CountPackageDim.ofBound physicalClayDimension C_conn hC dim h_count
+
+/-- Direct application form of a physical `d = 4` shifted F3 count package. -/
+theorem apply
+    (pkg : PhysicalShiftedF3CountPackage)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.C_conn * (((n + 1 : ℕ) : ℝ) ^ pkg.dim) :=
+  ShiftedF3CountPackageDim.apply pkg p q n hn hdist
+
+/-- Restrict a physical `d = 4` count package to one finite volume. -/
+def toAt
+    (pkg : PhysicalShiftedF3CountPackage)
+    (L : ℕ) [NeZero L] :
+    ShiftedF3CountPackageAt physicalClayDimension L :=
+  ShiftedF3CountPackageDim.toAt pkg L
+
+@[simp] theorem toAt_C_conn
+    (pkg : PhysicalShiftedF3CountPackage)
+    (L : ℕ) [NeZero L] :
+    (pkg.toAt L).C_conn = pkg.C_conn := rfl
+
+@[simp] theorem toAt_dim
+    (pkg : PhysicalShiftedF3CountPackage)
+    (L : ℕ) [NeZero L] :
+    (pkg.toAt L).dim = pkg.dim := rfl
+
+/-- Applying a physical shifted F3 count package after restriction to a finite
+volume is definitionally the same four-dimensional count bound. -/
+theorem toAt_apply
+    (pkg : PhysicalShiftedF3CountPackage)
+    (L : ℕ) [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      (pkg.toAt L).C_conn *
+        (((n + 1 : ℕ) : ℝ) ^ (pkg.toAt L).dim) :=
+  (pkg.toAt L).h_count.apply p q n hn hdist
+
+@[simp] theorem ofBound_C_conn
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_count : PhysicalShiftedConnectingClusterCountBound C_conn dim) :
+    (ofBound C_conn hC dim h_count).C_conn = C_conn := rfl
+
+@[simp] theorem ofBound_dim
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_count : PhysicalShiftedConnectingClusterCountBound C_conn dim) :
+    (ofBound C_conn hC dim h_count).dim = dim := rfl
+
+end PhysicalShiftedF3CountPackage
+
 /-- **Weak Layer-C1 bound.**
 For any pair of plaquettes `p, q` and any `n : ℕ`, the number of
 connected polymers `X ⊆ ConcretePlaquette d L` of cardinality
@@ -415,6 +508,15 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedF3CountPackageDim.toAt_apply
 #print axioms ShiftedF3CountPackageDim.ofBound_C_conn
 #print axioms ShiftedF3CountPackageDim.ofBound_dim
+#print axioms physicalClayDimension
+#print axioms PhysicalShiftedF3CountPackage.ofBound
+#print axioms PhysicalShiftedF3CountPackage.apply
+#print axioms PhysicalShiftedF3CountPackage.toAt
+#print axioms PhysicalShiftedF3CountPackage.toAt_C_conn
+#print axioms PhysicalShiftedF3CountPackage.toAt_dim
+#print axioms PhysicalShiftedF3CountPackage.toAt_apply
+#print axioms PhysicalShiftedF3CountPackage.ofBound_C_conn
+#print axioms PhysicalShiftedF3CountPackage.ofBound_dim
 #print axioms shiftedConnectingClusterCountBoundAt_finite
 #print axioms ShiftedF3CountPackageAt.finite
 #print axioms ShiftedF3CountPackageAt.finite_C_conn
