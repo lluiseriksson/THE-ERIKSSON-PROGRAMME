@@ -440,6 +440,185 @@ theorem physicalStrong_of_clusterCorrelatorBound_physicalClayDimension_siteDist_
 
 #print axioms physicalStrong_of_clusterCorrelatorBound_physicalClayDimension_siteDist_measurableF
 
+/-- Physical `d = 4` separated correlator bound packaged as a full
+`ConnectedCorrDecayBundle`.
+
+The separated regime is supplied by `PhysicalClusterCorrelatorBound`; the local
+short-distance regime is supplied by the standard unit-bound estimate. -/
+noncomputable def connectedCorrDecayBundle_of_physicalClusterCorrelatorBound_siteDist
+    {N_c : ℕ} [NeZero N_c]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_clust : ℝ) (hC : 0 < C_clust)
+    (hpcb : PhysicalClusterCorrelatorBound N_c r C_clust)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hprob : ∀ (L : ℕ) [NeZero L],
+      IsProbabilityMeasure
+        (gibbsMeasure (d := physicalClayDimension) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β))
+    (hp_int : ∀ (L : ℕ) [NeZero L]
+      (p : ConcretePlaquette physicalClayDimension L),
+      Integrable (plaquetteWilsonObs F p)
+        (gibbsMeasure (d := physicalClayDimension) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β))
+    (hpq_int : ∀ (L : ℕ) [NeZero L]
+      (p q : ConcretePlaquette physicalClayDimension L),
+      Integrable
+        (fun A : GaugeConfig physicalClayDimension L
+            ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+          plaquetteWilsonObs F p A * plaquetteWilsonObs F q A)
+        (gibbsMeasure (d := physicalClayDimension) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)) :
+    ConnectedCorrDecayBundle
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) where
+  ccd := by
+    let m := kpParameter r
+    refine
+      { C := C_clust + 2 * Real.exp m
+        m := m
+        hC := by nlinarith [hC.le, Real.exp_pos m]
+        hm := kpParameter_pos hr_pos hr_lt1
+        bound := ?_ }
+    intro L inst p q
+    letI : NeZero L := inst
+    haveI : IsProbabilityMeasure
+        (gibbsMeasure (d := physicalClayDimension) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β) :=
+      hprob L
+    by_cases hsep : (1 : ℝ) ≤ siteLatticeDist p.site q.site
+    · have hw := hpcb β hβ F hF p q hsep
+      exact hw.trans (by
+        apply mul_le_mul_of_nonneg_right _ (Real.exp_nonneg _)
+        nlinarith [hC.le, Real.exp_nonneg m])
+    · have hlocal := wilsonConnectedCorr_abs_le_two_of_unitBound
+        β F hF p q (hp_int L p) (hp_int L q) (hpq_int L p q)
+      have hdist_le_one : siteLatticeDist p.site q.site ≤ 1 :=
+        le_of_not_ge hsep
+      have hexp_ge_one :
+          1 ≤ Real.exp (m * (1 - siteLatticeDist p.site q.site)) := by
+        rw [Real.one_le_exp_iff]
+        nlinarith [(kpParameter_pos hr_pos hr_lt1).le, hdist_le_one]
+      have htwo :
+          2 ≤ 2 * Real.exp m *
+              Real.exp (-m * siteLatticeDist p.site q.site) := by
+        calc
+          2 = 2 * 1 := by ring
+          _ ≤ 2 * Real.exp (m * (1 - siteLatticeDist p.site q.site)) := by
+            nlinarith
+          _ = 2 * Real.exp m *
+              Real.exp (-m * siteLatticeDist p.site q.site) := by
+            rw [show m * (1 - siteLatticeDist p.site q.site) =
+                m + (-m * siteLatticeDist p.site q.site) by ring,
+              Real.exp_add]
+            ring
+      exact hlocal.trans (by
+        calc
+          2 ≤ 2 * Real.exp m *
+              Real.exp (-m * siteLatticeDist p.site q.site) := htwo
+          _ ≤ (C_clust + 2 * Real.exp m) *
+              Real.exp (-m * siteLatticeDist p.site q.site) := by
+            apply mul_le_mul_of_nonneg_right _ (Real.exp_nonneg _)
+            nlinarith [hC.le, Real.exp_nonneg m])
+  distP_nonneg := fun L _ p q => siteLatticeDist_nonneg p.site q.site
+
+#print axioms connectedCorrDecayBundle_of_physicalClusterCorrelatorBound_siteDist
+
+/-- Direct physical endpoint from the four-dimensional physical correlator
+bound. -/
+theorem physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_clust : ℝ) (hC : 0 < C_clust)
+    (hpcb : PhysicalClusterCorrelatorBound N_c r C_clust)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_connectedCorrDecayBundle
+    (connectedCorrDecayBundle_of_physicalClusterCorrelatorBound_siteDist
+      r hr_pos hr_lt1 C_clust hC hpcb β F hβ hF
+      (fun L => gibbsMeasure_isProbability physicalClayDimension L
+        (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β
+        (wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le))
+      (fun L instL p => by
+        letI : NeZero L := instL
+        haveI : IsProbabilityMeasure
+            (gibbsMeasure (d := physicalClayDimension) (N := L)
+              (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β) :=
+          gibbsMeasure_isProbability physicalClayDimension L
+            (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β
+            (wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le)
+        have hobs : Measurable (plaquetteWilsonObs F p) := by
+          simpa [plaquetteWilsonObs, Function.comp_def] using
+            hF_meas.comp (measurable_plaquetteHolonomy (G :=
+              ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)
+        exact plaquetteWilsonObs_integrable_of_unitBound F hF p
+          (gibbsMeasure (d := physicalClayDimension) (N := L)
+            (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)
+          hobs.aestronglyMeasurable)
+      (fun L instL p q => by
+        letI : NeZero L := instL
+        haveI : IsProbabilityMeasure
+            (gibbsMeasure (d := physicalClayDimension) (N := L)
+              (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β) :=
+          gibbsMeasure_isProbability physicalClayDimension L
+            (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β
+            (wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le)
+        have hpobs : Measurable (plaquetteWilsonObs F p) := by
+          simpa [plaquetteWilsonObs, Function.comp_def] using
+            hF_meas.comp (measurable_plaquetteHolonomy (G :=
+              ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)
+        have hqobs : Measurable (plaquetteWilsonObs F q) := by
+          simpa [plaquetteWilsonObs, Function.comp_def] using
+            hF_meas.comp (measurable_plaquetteHolonomy (G :=
+              ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) q)
+        exact plaquetteWilsonObs_mul_integrable_of_unitBound F hF p q
+          (gibbsMeasure (d := physicalClayDimension) (N := L)
+            (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)
+          hpobs.aestronglyMeasurable hqobs.aestronglyMeasurable))
+
+#print axioms physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
+
+/-- Direct physical endpoint from independently-produced shifted F3 Mayer and
+physical `d = 4` count subpackages.
+
+Unlike the dimension-polymorphic shifted F3 endpoint below, this consumes only
+the physical counting package `PhysicalShiftedF3CountPackage`.  This is the
+shortest current API path from the active F3 obligations to the non-vacuous
+`ClayYangMillsPhysicalStrong` endpoint in Clay dimension four. -/
+theorem physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
+    wab.r wab.hr_pos wab.hr_lt1
+    (clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim)
+    (clusterPrefactorShifted_pos wab.r wab.hr_pos wab.hr_lt1
+      count.C_conn mayer.A₀ count.hC mayer.hA count.dim)
+    (physicalClusterCorrelatorBound_of_shiftedF3Subpackages wab mayer count)
+    β F hβ hF hF_meas
+
+#print axioms physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF
+
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
 
 This is the Wilson-facing F3 package composed with the direct

@@ -32,12 +32,15 @@ distance profile to `ConcretePlaquette physicalClayDimension L` with
 `physicalClayDimension = 4`:
 
     physicalStrong_of_clusterCorrelatorBound_physicalClayDimension_siteDist_measurableF
+    physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
+    physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF
     physicalStrong_of_shiftedF3MayerCountPackage_physicalClayDimension_siteDist_measurableF
     physicalStrong_of_shiftedF3Subpackages_physicalClayDimension_siteDist_measurableF
     physicalStrong_of_uniformRpow_small_beta_physicalClayDimension_siteDist_measurableF
 
-So global analytic inputs still give the dimension-uniform route, and the final
-non-vacuous Clay target can now be stated directly at the physical dimension.
+So global analytic inputs still give the dimension-uniform route, while
+physical-only F3 inputs now have their own direct route to the final
+non-vacuous Clay target at the physical dimension.
 
 There is also a physical four-dimensional F3 output:
 
@@ -56,6 +59,21 @@ The second consumes exactly:
 and returns the exponential connected-correlator bound at `d = 4`, uniform in
 finite volume `L`.  This is the preferred output when the count proof is only
 physical-dimension uniform rather than uniform over all dimensions.
+
+This physical output now feeds L8 directly:
+
+    physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF
+
+which consumes
+
+    wab   : WilsonPolymerActivityBound N_c
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+and produces `ClayYangMillsPhysicalStrong` at `physicalClayDimension = 4` for
+any fixed `β > 0` and measurable unit-bounded Wilson plaquette observable `F`.
+Thus the remaining physical F3 proof work is exactly the construction of the
+Mayer package and physical count package, not terminal packaging.
 
 The single package now also exposes its finite-volume consumers directly:
 

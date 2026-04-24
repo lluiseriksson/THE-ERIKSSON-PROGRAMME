@@ -1,3 +1,57 @@
+# v1.28.0 — Physical F3 route reaches `ClayYangMillsPhysicalStrong`
+
+**Released: 2026-04-25**
+
+## What
+
+Added the terminal L8 wrappers for the physical four-dimensional F3 route in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    connectedCorrDecayBundle_of_physicalClusterCorrelatorBound_siteDist
+    physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
+    physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF
+
+The last wrapper consumes exactly the physical F3 subpackages:
+
+    wab   : WilsonPolymerActivityBound N_c
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+and produces the non-vacuous physical endpoint
+`ClayYangMillsPhysicalStrong` at `physicalClayDimension = 4`, for any fixed
+`β > 0` and measurable unit-bounded Wilson plaquette observable `F`.
+
+## Why
+
+No percentage bar moves.  This is terminal API sharpening, not a new analytic
+F3 proof.  The previous release exposed
+`PhysicalClusterCorrelatorBound`; this release connects that physical
+correlator bound all the way to the L8 physical target without requiring the
+all-dimensions `ClusterCorrelatorBound`.
+
+The active Clay-critical obligations are now cleanly visible:
+
+    ShiftedF3MayerPackage N_c wab
+    PhysicalShiftedF3CountPackage
+
+Once those two packages are supplied for `N_c ≥ 2`, the physical route yields
+`ClayYangMillsPhysicalStrong` in dimension four by direct composition.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces: all three new physical L8 wrappers print the canonical project
+oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.27.0 — Physical ClusterCorrelatorBound endpoint exposed
 
 **Released: 2026-04-25**
