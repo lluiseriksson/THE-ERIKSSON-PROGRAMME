@@ -1,3 +1,43 @@
+# v0.92.0 — Turn SU(N) Dirichlet contraction into explicit input
+
+**Released: 2026-04-24**
+
+## What
+
+Removed the P8 axiom `sunDirichletForm_contraction` from
+`YangMills/P8_PhysicalGap/SUN_DirichletCore.lean`.
+
+The strong Dirichlet-form package is now exposed as:
+
+    lemma sunDirichletForm_isDirichletFormStrong_of_contraction
+
+which takes the normal-contraction estimate as an explicit hypothesis and then
+builds `IsDirichletFormStrong`.  The base Dirichlet-form facts
+`sunDirichletForm_isDirichletForm`, constant invariance, and quadratic scaling
+remain proved as before.
+
+This does not prove the Beurling-Deny normal-contraction estimate.  It removes
+the global axiom declaration and makes the missing contraction input visible at
+the call site.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.P8_PhysicalGap.SUN_DirichletCore
+
+Pinned trace:
+
+    'YangMills.sunDirichletForm_isDirichletFormStrong_of_contraction'
+    depends on axioms:
+    [lieDerivReg_all, propext, sunGeneratorData, Classical.choice,
+     Quot.sound, Experimental.LieSUN.matExp_traceless_det_one]
+
+No `sunDirichletForm_contraction` axiom remains in non-Experimental Lean.
+No `sorry`.
+
+---
+
 # v0.91.0 — Remove Hille-Yosida semigroup axiom from P8
 
 **Released: 2026-04-24**
@@ -3103,14 +3143,14 @@ are in `docs/phase1-llogl-obstruction.md`.
 
 ## Current axiom inventory (non-Experimental)
 
-- **Total declared axioms (non-Experimental Lean):** 4 after v0.91.0
+- **Total declared axioms (non-Experimental Lean):** 3 after v0.92.0
 - **Axioms reached by `clay_millennium_yangMills`:** 0
 - **Orphaned axioms (declared but unreachable from Clay):** historical census below predates v0.86.0-v0.89.0 cleanup
 
 ### Orphaned (dead-code) axioms by file
 - `YangMills/P8_PhysicalGap/BalabanToLSI.lean`: 2 (after v0.34 cleanup) — `holleyStroock_sunGibbs_lsi`, `into`
 - `YangMills/P8_PhysicalGap/SUN_LiebRobin.lean`: 0 after v0.88.0 — former `sun_variance_decay`, `sun_lieb_robinson_bound` now explicit theorem inputs
-- `YangMills/P8_PhysicalGap/SUN_DirichletCore.lean`: 1 — `sunDirichletForm_contraction`
+- `YangMills/P8_PhysicalGap/SUN_DirichletCore.lean`: 0 after v0.92.0 — former `sunDirichletForm_contraction` now explicit input
 - `YangMills/P8_PhysicalGap/StroockZegarlinski.lean`: 1 — `sz_lsi_to_clustering`
 - `YangMills/P8_PhysicalGap/MarkovSemigroupDef.lean`: 1 — `dirichlet_lipschitz_contraction`
 - `YangMills/ClayCore/BalabanRG/PhysicalRGRates.lean`: 1 — `physical_rg_rates_from_E26`
@@ -3243,7 +3283,6 @@ The legacy tables below are preserved for historical accuracy but the line
 
 | Axiom | File | Notes |
 |-------|------|-------|
-| `sunDirichletForm_contraction` | SUN_DirichletCore.lean:178 | Dirichlet contraction |
 
 ### ClayCore/BalabanRG/ (RG machinery — not in sun_physical_mass_gap BFS path)
 
@@ -3375,7 +3414,7 @@ Taken from `grep -rn '^axiom ' YangMills/ --include='*.lean' | grep -v Experimen
 | 3 | `P8_PhysicalGap/BalabanToLSI.lean:848` | `sz_lsi_to_clustering` | StroockZegarlinski: LSI  exponential clustering |
 | 4 | `P8_PhysicalGap/StroockZegarlinski.lean` | retired v0.89.0: former `poincare_to_covariance_decay` | Now explicit SZ input |
 | 5 | `P8_PhysicalGap/MarkovSemigroupDef.lean` | retired v0.91.0: former `hille_yosida_semigroup` | Now explicit `SymmetricMarkovTransport` input |
-| 6 | `P8_PhysicalGap/SUN_DirichletCore.lean:178` | `sunDirichletForm_contraction` | Markov contraction of the SU(N) Dirichlet form |
+| 6 | `P8_PhysicalGap/SUN_DirichletCore.lean` | retired v0.92.0: former `sunDirichletForm_contraction` | Now explicit normal-contraction input |
 | 7 | `P8_PhysicalGap/SUN_LiebRobin.lean` | retired v0.88.0: former `sun_variance_decay` | Now explicit theorem input |
 | 8 | `P8_PhysicalGap/SUN_LiebRobin.lean` | retired v0.88.0: former `sun_lieb_robinson_bound` | Now explicit theorem input |
 | 9 | `L8_Terminal/ClayTheorem.lean:51` | `yangMills_continuum_mass_gap` | Top-level Clay statement glue |
@@ -3427,7 +3466,7 @@ but won't match the `^axiom ` grep.
 | `hille_yosida_semigroup` | 0 | Retired v0.91.0; now explicit `SymmetricMarkovTransport` input |
 | `holleyStroock_sunGibbs_lsi` | 2 | Live (intermediate; not on Clay path) |
 | `poincare_to_covariance_decay` | 0 | Retired v0.89.0; now explicit input to `sz_lsi_to_clustering_bridge` |
-| `sunDirichletForm_contraction` | 2 | Live (intermediate; not on Clay path) |
+| `sunDirichletForm_contraction` | 0 | Retired v0.92.0; now explicit input to `sunDirichletForm_isDirichletFormStrong_of_contraction` |
 | `physical_rg_rates_from_E26` | 2 | Live (RG branch; not on Clay path) |
 | `p91_tight_weak_coupling_window` | 0 | Retired v0.86.0; replaced by data-driven theorem `p91_tight_weak_coupling_window_theorem` |
 | `lsi_withDensity_density_bound` | 1 | **DEAD  no consumers** |

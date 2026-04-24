@@ -174,18 +174,18 @@ lemma sunDirichletForm_isDirichletForm {N_c : ℕ} [NeZero N_c] :
   ⟨fun f => sunDirichletForm_nonneg f,
    fun f g => sunDirichletForm_subadditive f g⟩
 
-/-- MATHLIB GAP: Normal contraction (Beurling-Deny). -/
-axiom sunDirichletForm_contraction (N_c : ℕ) [NeZero N_c]
-    (f : SUN_State_Concrete N_c → ℝ) (n : ℝ) (hn : 0 < n) :
-    sunDirichletForm_concrete N_c (fun x => max (min (f x) n) (-n)) ≤
-    sunDirichletForm_concrete N_c f
-
-lemma sunDirichletForm_isDirichletFormStrong {N_c : ℕ} [NeZero N_c] :
+/-- Strong Dirichlet form from an explicit normal-contraction input. -/
+lemma sunDirichletForm_isDirichletFormStrong_of_contraction {N_c : ℕ} [NeZero N_c]
+    (h_contraction : ∀ (f : SUN_State_Concrete N_c → ℝ) (n : ℝ), 0 < n →
+      sunDirichletForm_concrete N_c (fun x => max (min (f x) n) (-n)) ≤
+      sunDirichletForm_concrete N_c f) :
     IsDirichletFormStrong (sunDirichletForm_concrete N_c) (sunHaarProb N_c) :=
   ⟨sunDirichletForm_isDirichletForm,
    fun c f => sunDirichletForm_const_invariant f c,
    fun c f => sunDirichletForm_quadratic f c,
-   fun f n hn => sunDirichletForm_contraction N_c f n hn⟩
+   fun f n hn => h_contraction f n hn⟩
+
+#print axioms sunDirichletForm_isDirichletFormStrong_of_contraction
 
 end
 end YangMills
