@@ -1,3 +1,59 @@
+# v1.07.0 — Direct ClusterCorrelatorBound to PhysicalStrong bridge
+
+**Released: 2026-04-25**
+
+## What
+
+Added
+
+    theorem physicalStrong_of_clusterCorrelatorBound_siteDist_measurableF
+
+to `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+It composes the existing
+
+    ClusterCorrelatorBound N_c r C_clust → ClayYangMillsMassGap N_c
+
+constructor with the cleaned-up v1.06 L8 physical bridge.  The resulting
+consumer-facing endpoint is:
+
+    ClusterCorrelatorBound N_c r C_clust
+    0 < r
+    r < 1
+    0 < C_clust
+    0 < β
+    ∀ U, |F U| ≤ 1
+    Measurable F
+    ─────────────────────────────────────────────
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun L p q => siteLatticeDist p.site q.site)
+
+All finite-volume regularity boilerplate is handled internally by the previous
+v1.02-v1.06 lemmas.
+
+## Why
+
+No percentage bar moves.  This is a direct landing pad for the current analytic
+front: once F1/F2/F3 produce `ClusterCorrelatorBound`, the non-vacuous physical
+endpoint follows with only the natural local observable assumptions.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace:
+
+    'YangMills.physicalStrong_of_clusterCorrelatorBound_siteDist_measurableF'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.06.0 — Concrete Wilson Boltzmann integrability discharged
 
 **Released: 2026-04-24**

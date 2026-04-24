@@ -384,4 +384,32 @@ theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_measurableF
 
 #print axioms physicalStrong_of_clayConnectedCorrDecay_siteDist_measurableF
 
+/-- Direct bridge from the analytic `ClusterCorrelatorBound` front to the
+concrete SU(N) physical endpoint at fixed `β` and observable `F`.
+
+This composes the existing `ClusterCorrelatorBound → ClayYangMillsMassGap`
+constructor with the cleaned-up L8 bridge.  Once F1/F2/F3 supply
+`ClusterCorrelatorBound`, the remaining finite-volume regularity needed for the
+physical endpoint is just `Measurable F` and `|F| ≤ 1`. -/
+theorem physicalStrong_of_clusterCorrelatorBound_siteDist_measurableF
+    {N_c d : ℕ} [NeZero N_c] [NeZero d]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_clust : ℝ) (hC : 0 < C_clust)
+    (hccb : ClusterCorrelatorBound N_c r C_clust)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette d L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_clayConnectedCorrDecay_siteDist_measurableF
+    (ClayConnectedCorrDecay.ofClayMassGap
+      (clay_massGap_large_beta N_c r hr_pos hr_lt1 C_clust hC hccb))
+    β F hβ hF hF_meas
+
+#print axioms physicalStrong_of_clusterCorrelatorBound_siteDist_measurableF
+
 end YangMills
