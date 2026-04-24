@@ -1,3 +1,64 @@
+# v0.59.0 — F3 terminal endpoint from count + global cardinality decay
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 refinement in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem pointwiseBucketBound_of_card_decay
+    theorem clusterCorrelatorBound_of_count_cardDecayBounds_ceil
+    theorem clay_theorem_of_count_cardDecayBounds_ceil
+
+The previous terminal endpoint consumed a bucket-local pointwise estimate
+
+    K_bound Y ≤ A₀ * r^(n + ⌈dist(p,q)⌉₊)
+
+for every polymer `Y` in the bucket
+`Y.card = n + ⌈dist(p,q)⌉₊`.  v0.59.0 reduces that input to the more natural
+global cardinality-decay estimate
+
+    K_bound Y ≤ A₀ * r^Y.card
+
+plus the existing lattice-animal bucket count.  The small bridge theorem
+`pointwiseBucketBound_of_card_decay` performs the restriction from global
+cardinality decay to a fixed bucket by reading the bucket's `Y.card`
+equality.
+
+The terminal F3 endpoint therefore now takes:
+
+1. Mayer/Ursell identity `h_mayer`;
+2. disconnected support cancellation `h_zero`;
+3. lattice-animal bucket count `h_count`;
+4. global cardinality decay `h_card_decay`.
+
+This is still a composition/audit improvement: it does not prove the
+lattice-animal count, the Mayer identity, or disconnected support
+cancellation.  It does make the pointwise analytic input match the canonical
+polymer-activity shape already used elsewhere in the project.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.pointwiseBucketBound_of_card_decay' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clusterCorrelatorBound_of_count_cardDecayBounds_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clay_theorem_of_count_cardDecayBounds_ceil' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.58.0 — F3 terminal endpoint from count + pointwise bounds
 
 **Released: 2026-04-24**
