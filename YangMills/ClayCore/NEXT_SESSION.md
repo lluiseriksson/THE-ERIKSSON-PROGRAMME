@@ -72,6 +72,18 @@ This means:
       wilsonConnectedCorr ... β F p q =
         (TruncatedActivities.ofConnectedCardDecay ...).connectingSum p q
 
+What is already closed at the single-plaquette layer:
+
+    singlePlaquetteZ_pos
+    plaquetteFluctuationNorm_integrable
+    plaquetteFluctuationNorm_mean_zero
+    plaquetteFluctuationNorm_zero_beta
+
+These prove the normalized one-plaquette fluctuation is integrable, mean-zero,
+and trivial at `β = 0`.  The remaining F3-Mayer work is the product-measure /
+polymer lift to `ConnectedCardDecayMayerData`, not the one-plaquette
+normalization identity.
+
 ### F3-Count
 
 Produce `ShiftedConnectingClusterCountBound C_conn dim`:
@@ -122,6 +134,7 @@ Key oracle canaries:
     #print axioms ShiftedF3CountPackageAt.finite
     #print axioms ShiftedConnectingClusterCountBound.toAt
     #print axioms ShiftedF3CountPackage.toAt
+    #print axioms plaquetteFluctuationNorm_mean_zero
 
 Expected oracle:
 

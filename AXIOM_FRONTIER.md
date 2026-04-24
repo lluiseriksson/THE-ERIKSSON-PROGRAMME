@@ -1,3 +1,57 @@
+# v0.82.0 — Audit normalized plaquette zero-mean layer
+
+**Released: 2026-04-24**
+
+## What
+
+Oracle audit for the already-formal single-plaquette Mayer cancellation layer in
+`YangMills/ClayCore/ZeroMeanCancellation.lean`:
+
+    #print axioms singlePlaquetteZ_pos
+    #print axioms plaquetteFluctuationNorm_integrable
+    #print axioms plaquetteFluctuationNorm_mean_zero
+    #print axioms plaquetteFluctuationNorm_zero_beta
+
+This records the algebraic/analytic one-plaquette facts behind the normalized
+fluctuation
+
+    w̃(U) = plaquetteWeight N_c β U / singlePlaquetteZ N_c β - 1
+
+namely positivity of the one-plaquette partition function, integrability of the
+normalized fluctuation, exact Haar mean zero, and the `β = 0` sanity check.
+
+This is not the full Mayer/product-measure factorisation theorem.  It is the
+closed single-plaquette cancellation input that the remaining F3-Mayer proof
+must lift to the product gauge-configuration/polymer setting.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ZeroMeanCancellation
+
+Pinned traces:
+
+    'YangMills.singlePlaquetteZ_pos'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.plaquetteFluctuationNorm_integrable'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.plaquetteFluctuationNorm_mean_zero'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.plaquetteFluctuationNorm_zero_beta'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.81.0 — Restrict global F3 count data to local lattices
 
 **Released: 2026-04-24**

@@ -228,6 +228,11 @@ theorem yang_mills_final_small_beta
     ClayYangMillsTheorem :=
   yang_mills_unconditional_fubini N_c hβ_pos hβ_lt1 C hC_pos h_rpow
 
+#print axioms singlePlaquetteZ_pos
+#print axioms plaquetteFluctuationNorm_integrable
+#print axioms plaquetteFluctuationNorm_mean_zero
+#print axioms plaquetteFluctuationNorm_zero_beta
+
 end
 
 end YangMills
