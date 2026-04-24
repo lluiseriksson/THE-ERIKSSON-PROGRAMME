@@ -1851,6 +1851,33 @@ def toAt
   dim := pkg.dim
   h_count := ShiftedConnectingClusterCountBound.toAt pkg.h_count d L
 
+@[simp] theorem toAt_C_conn
+    (pkg : ShiftedF3CountPackage)
+    (d L : ℕ) [NeZero d] [NeZero L] :
+    (pkg.toAt d L).C_conn = pkg.C_conn := rfl
+
+@[simp] theorem toAt_dim
+    (pkg : ShiftedF3CountPackage)
+    (d L : ℕ) [NeZero d] [NeZero L] :
+    (pkg.toAt d L).dim = pkg.dim := rfl
+
+/-- Applying a global shifted F3 count package after restriction to a finite
+plaquette lattice is definitionally the global shifted count bound specialized
+to that lattice. -/
+theorem toAt_apply
+    (pkg : ShiftedF3CountPackage)
+    (d L : ℕ) [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      (pkg.toAt d L).C_conn *
+        (((n + 1 : ℕ) : ℝ) ^ (pkg.toAt d L).dim) :=
+  (pkg.toAt d L).h_count.apply p q n hn hdist
+
 end ShiftedF3CountPackage
 
 /-- Single preferred package for the shifted F3 route.
@@ -2059,6 +2086,9 @@ theorem clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_prefactor_eq
 #print axioms clay_theorem_of_shiftedF3Subpackages
 #print axioms shiftedF3MayerPackage_su1_zero
 #print axioms ShiftedF3CountPackage.toAt
+#print axioms ShiftedF3CountPackage.toAt_C_conn
+#print axioms ShiftedF3CountPackage.toAt_dim
+#print axioms ShiftedF3CountPackage.toAt_apply
 #print axioms ShiftedF3MayerCountPackage.ofSubpackages
 #print axioms ShiftedF3MayerCountPackage.mayerPackage
 #print axioms ShiftedF3MayerCountPackage.countPackage

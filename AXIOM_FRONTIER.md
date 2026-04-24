@@ -1,3 +1,53 @@
+# v1.14.0 — Global shifted count package projects transparently to finite volumes
+
+**Released: 2026-04-25**
+
+## What
+
+Added
+
+    theorem ShiftedF3CountPackage.toAt_C_conn
+    theorem ShiftedF3CountPackage.toAt_dim
+    theorem ShiftedF3CountPackage.toAt_apply
+
+to `YangMills/ClayCore/ClusterRpowBridge.lean`.
+
+The global `ShiftedF3CountPackage` restriction
+
+    pkg.toAt d L : ShiftedF3CountPackageAt d L
+
+now exposes, definitionally, that it preserves `C_conn` and `dim`, and has a
+direct finite-volume application theorem.
+
+## Why
+
+No percentage bar moves.  This is F3-count interface cleanup: once the global
+uniform lattice-animal package is proved, every finite-volume consumer can
+inspect and apply its restriction without unfolding `toAt`.  The remaining
+mathematical content is still the proof of `ShiftedConnectingClusterCountBound`
+itself.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.ShiftedF3CountPackage.toAt_C_conn' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.ShiftedF3CountPackage.toAt_dim' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.ShiftedF3CountPackage.toAt_apply' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.13.0 — Finite-volume shifted count package made inspectable
 
 **Released: 2026-04-25**
