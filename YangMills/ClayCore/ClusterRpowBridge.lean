@@ -1506,6 +1506,77 @@ structure ConnectedCardDecayMayerData
       (K β F p q) p q r A₀ hr_nonneg hA_nonneg
       (hK_abs_le β F p q)).connectingSum p q
 
+namespace ConnectedCardDecayMayerData
+
+/-- Convert packaged Mayer/activity data into the finite-volume truncated
+activities used by the shifted F3 counting wrappers. -/
+noncomputable def toTruncatedActivities
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L) :
+    TruncatedActivities (ConcretePlaquette d L) :=
+  TruncatedActivities.ofConnectedCardDecay
+    (data.K β F p q) p q r A₀ hr_nonneg hA_nonneg
+    (data.hK_abs_le β F p q)
+
+/-- The activity projection of `toTruncatedActivities` is the packaged raw
+Mayer activity. -/
+@[simp] theorem toTruncatedActivities_K
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (Y : Finset (ConcretePlaquette d L)) :
+    (data.toTruncatedActivities β F p q).K Y = data.K β F p q Y := by
+  rfl
+
+/-- The connected-cardinality bound supplied by `toTruncatedActivities` is
+dominated by the package's global cardinality-decay profile. -/
+theorem toTruncatedActivities_K_bound_le_cardDecay
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (Y : Finset (ConcretePlaquette d L)) :
+    (data.toTruncatedActivities β F p q).K_bound Y ≤ A₀ * r ^ Y.card := by
+  exact TruncatedActivities.ofConnectedCardDecay_K_bound_le_cardDecay
+    (data.K β F p q) p q r A₀ hr_nonneg hA_nonneg
+    (data.hK_abs_le β F p q) Y
+
+/-- The bound supplied by `toTruncatedActivities` vanishes on disconnected
+polymers, even when they contain the two marked plaquettes. -/
+theorem toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (Y : Finset (ConcretePlaquette d L))
+    (hp : p ∈ Y) (hq : q ∈ Y) (h_not_connected : ¬ PolymerConnected Y) :
+    (data.toTruncatedActivities β F p q).K_bound Y = 0 := by
+  exact TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connected
+    (data.K β F p q) p q r A₀ hr_nonneg hA_nonneg
+    (data.hK_abs_le β F p q) Y hp hq h_not_connected
+
+end ConnectedCardDecayMayerData
+
+#print axioms ConnectedCardDecayMayerData.toTruncatedActivities
+#print axioms ConnectedCardDecayMayerData.toTruncatedActivities_K
+#print axioms ConnectedCardDecayMayerData.toTruncatedActivities_K_bound_le_cardDecay
+#print axioms ConnectedCardDecayMayerData.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+
 /-- Preferred terminal F3 wrapper with the shifted bucket count packaged as the
 named frontier predicate `ShiftedConnectingClusterCountBound`. -/
 theorem clay_theorem_of_shiftedCountBound_connectedCardDecayActivities_ceil
@@ -1563,23 +1634,18 @@ theorem clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
     (C_conn := C_conn) (A₀ := A₀) (hC := hC) (hA := hA)
     (dim := dim)
     (T := fun {d L} [NeZero d] [NeZero L] β F p q =>
-      TruncatedActivities.ofConnectedCardDecay
-        (data.K β F p q) p q r A₀ hr_pos.le hA.le
-        (data.hK_abs_le β F p q))
+      data.toTruncatedActivities β F p q)
     (by
       intro d L _ _ β hβ F hF p q hdist
       exact data.h_mayer β hβ F hF p q hdist)
     (by
       intro d L _ _ β _hβ F _hF p q Y hp hq h_not_connected
-      exact TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connected
-        (data.K β F p q) p q r A₀ hr_pos.le hA.le
-        (data.hK_abs_le β F p q) Y hp hq h_not_connected)
+      exact data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+        β F p q Y hp hq h_not_connected)
     (fun p q n hn hdist => h_count.apply p q n hn hdist)
     (by
       intro d L _ _ β _hβ F _hF p q Y
-      exact TruncatedActivities.ofConnectedCardDecay_K_bound_le_cardDecay
-        (data.K β F p q) p q r A₀ hr_pos.le hA.le
-        (data.hK_abs_le β F p q) Y)
+      exact data.toTruncatedActivities_K_bound_le_cardDecay β F p q Y)
 
 #print axioms clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
 

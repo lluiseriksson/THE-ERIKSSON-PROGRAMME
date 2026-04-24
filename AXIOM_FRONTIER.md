@@ -1,3 +1,48 @@
+# v1.16.0 — Mayer data converts directly to truncated activities
+
+**Released: 2026-04-25**
+
+## What
+
+Added the `ConnectedCardDecayMayerData` method
+
+    ConnectedCardDecayMayerData.toTruncatedActivities
+
+and three projection/bound lemmas in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    ConnectedCardDecayMayerData.toTruncatedActivities_K
+    ConnectedCardDecayMayerData.toTruncatedActivities_K_bound_le_cardDecay
+    ConnectedCardDecayMayerData.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+
+The main packaged F3 bridge
+`clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil` now uses this
+method instead of rebuilding `TruncatedActivities.ofConnectedCardDecay`
+inline.
+
+## Why
+
+No percentage bar moves.  This is F3 Mayer-interface cleanup: a future
+nonabelian Mayer/Ursell construction can now deliver a
+`ConnectedCardDecayMayerData` package and obtain the exact finite-volume
+`TruncatedActivities` consumer with one named projection.  The remaining
+mathematical frontier is still the proof of the package itself plus the global
+shifted count package.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all four new declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.15.0 — Shifted F3 Mayer/count package field coherence exposed
 
 **Released: 2026-04-25**
