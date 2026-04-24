@@ -1,3 +1,50 @@
+# v0.90.0 — Pin terminal ClayAssembly oracle as core-only
+
+**Released: 2026-04-24**
+
+## What
+
+Updated `YangMills/P8_PhysicalGap/ClayAssembly.lean` to reflect the current
+terminal route:
+
+    yangMills_existence_massGap
+    clay_millennium_yangMills
+    clay_millennium_yangMills_strong
+
+now route through the MemLp-gated normalized LSI endpoint and print only the
+canonical Lean/project oracle.  The old comments claimed a dependency on the
+legacy unnormalized Holley-Stroock axiom `holleyStroock_sunGibbs_lsi`; that is
+no longer true for these public terminal names.
+
+This is an audit correction, not a new analytic proof.  The weak endpoint
+`ClayYangMillsTheorem := ∃ m_phys : ℝ, 0 < m_phys` remains the vacuous terminal
+existential audited in v0.47.0.  The non-vacuous work remains at the physical
+and cluster/RG fronts.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.P8_PhysicalGap.ClayAssembly
+
+Pinned traces:
+
+    'YangMills.yangMills_existence_massGap'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clay_millennium_yangMills'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clay_millennium_yangMills_strong'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`.
+
+---
+
 # v0.89.0 — Turn Poincare-to-covariance into explicit SZ input
 
 **Released: 2026-04-24**
@@ -3315,8 +3362,8 @@ but won't match the `^axiom ` grep.
 | Theorem | Axioms depended on |
 |---------|-------------------|
 | `ClayYangMillsPhysicalStrong` (def) | `propext`, `Classical.choice`, `Quot.sound` |
-| `clay_millennium_yangMills` | `propext`, `Classical.choice`, `Quot.sound`, **`holleyStroock_sunGibbs_lsi`** *(was: `yangMills_continuum_mass_gap`, eliminated v0.32.0)* |
-| `clay_millennium_yangMills_strong` | `propext`, `Classical.choice`, `Quot.sound`, **`holleyStroock_sunGibbs_lsi`** *(was: `yangMills_continuum_mass_gap`, eliminated v0.32.0)* |
+| `clay_millennium_yangMills` | `propext`, `Classical.choice`, `Quot.sound` *(v0.90.0 pinned terminal oracle)* |
+| `clay_millennium_yangMills_strong` | `propext`, `Classical.choice`, `Quot.sound` *(v0.90.0 pinned terminal oracle)* |
 | `physicalStrong_implies_theorem` | `propext`, `Classical.choice`, `Quot.sound` |
 | `sun_physical_mass_gap` | `propext`, `Classical.choice`, **`sorryAx`**, `Quot.sound` |
 

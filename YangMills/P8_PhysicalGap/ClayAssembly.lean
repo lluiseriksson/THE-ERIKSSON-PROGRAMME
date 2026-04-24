@@ -8,16 +8,17 @@ import YangMills.P6_AsymptoticFreedom.AsymptoticFreedomDischarge
 /-! # P8.Clay: Terminal Clay assembly via the LSI route (v0.32.0)
 
 This file assembles the public Clay theorems by discharging the existentials
-through two **axiom-free** downstream witnesses:
+through two downstream witnesses whose terminal oracles are core-only:
 
 * `yangMills_existence_massGap_via_lsi` — provides `ClayYangMillsTheorem`
-  with oracle `[propext, Classical.choice, Quot.sound, holleyStroock_sunGibbs_lsi]`.
+  through the MemLp-gated normalized LSI route.
 * `clay_strong_no_axiom` (from P6) — provides `ClayYangMillsStrong`
   with oracle `[propext, Classical.choice, Quot.sound]`.
 
 The monolithic axiom `yangMills_continuum_mass_gap` is **no longer used
-anywhere** in the project; its role is fully replaced by the concrete
-Gibbs-measure log-Sobolev axiom `holleyStroock_sunGibbs_lsi`.
+anywhere** in the project.  The legacy unnormalized Holley-Stroock axiom remains
+available for old P8/BalabanRG interfaces, but it is not load-bearing for these
+terminal public theorems.
 
 Public theorem names (`yangMills_existence_massGap`, `clay_mass_gap_pos`,
 `clay_millennium_yangMills`, `clay_millennium_yangMills_strong`) are
@@ -37,11 +38,8 @@ theorem clay_mass_gap_pos : ∃ m_phys : ℝ, 0 < m_phys :=
 
 /-! ## Clay Millennium Theorem (v0.32.0)
 
-Zero explicit hypothesis parameters.  The sole remaining non-core axiom is
-`holleyStroock_sunGibbs_lsi` (SU(N) Gibbs-measure log-Sobolev inequality).
-
-`#print axioms YangMills.clay_millennium_yangMills` will show:
-`[propext, Classical.choice, Quot.sound, YangMills.holleyStroock_sunGibbs_lsi]`
+Zero explicit hypothesis parameters.  The MemLp-gated normalized LSI route keeps
+the terminal weak endpoint oracle at the canonical project core.
 -/
 theorem clay_millennium_yangMills : ∃ m_phys : ℝ, 0 < m_phys :=
   clay_mass_gap_pos
@@ -50,5 +48,9 @@ theorem clay_millennium_yangMills : ∃ m_phys : ℝ, 0 < m_phys :=
 axiom; depends only on `[propext, Classical.choice, Quot.sound]`). -/
 theorem clay_millennium_yangMills_strong : ClayYangMillsStrong :=
   clay_strong_no_axiom
+
+#print axioms yangMills_existence_massGap
+#print axioms clay_millennium_yangMills
+#print axioms clay_millennium_yangMills_strong
 
 end YangMills
