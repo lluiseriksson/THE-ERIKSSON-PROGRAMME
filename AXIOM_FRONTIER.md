@@ -1,3 +1,65 @@
+# v0.49.0 — F3 counting interface: canonical buckets + finite connecting bound
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 interface tightening across the geometry/counting side:
+
+    theorem ceil_siteLatticeDist_le_polymer_card
+        ... :
+        ⌈siteLatticeDist p.site q.site⌉₊ ≤ X.card
+
+    theorem connected_polymer_card_eq_extra_add_dist
+        ... :
+        ∃ n : ℕ, X.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+
+    theorem TruncatedActivities.connectingBound_eq_finset_sum
+        ... :
+        T.connectingBound p q =
+          ∑ Y ∈ univ.filter (fun Y => p ∈ Y ∧ q ∈ Y), T.K_bound Y
+
+The first theorem exposes the natural-number form of the existing polymer
+diameter lemma `polymer_size_ge_site_dist_succ`: any connected polymer
+containing `p` and `q` has size at least the ceiling of their lattice
+distance.  The second packages every such polymer into the exact bucket
+shape used by the F3 series,
+
+    X.card = n + ⌈siteLatticeDist p.site q.site⌉₊.
+
+The third removes an opacity mismatch in the Mayer layer: on finite plaquette
+index types, `connectingBound` is no longer only a `tsum` over `Finset ι`; it
+is definitionally available as a finite sum over polymers containing `p` and
+`q`.  This is the concrete form needed by lattice-animal / connecting-cluster
+counting estimates.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.PolymerDiameterBound
+    lake build YangMills.ClayCore.ConnectingClusterCount
+    lake build YangMills.ClayCore.MayerExpansion
+    lake build YangMills
+
+Pinned trace:
+
+    'YangMills.ceil_siteLatticeDist_le_polymer_card' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.connected_polymer_card_eq_extra_add_dist' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.TruncatedActivities.connectingBound_eq_finset_sum' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet: this does not prove the
+Kotecký-Preiss connecting-cluster estimate, but it aligns the existing finite
+Mayer bound, polymer diameter geometry, and the canonical `n + ⌈dist⌉₊`
+counting buckets required for that estimate.
+
+---
+
 # v0.48.0 — F3 bridge: truncated activities to ClusterCorrelatorBound
 
 **Released: 2026-04-24**
