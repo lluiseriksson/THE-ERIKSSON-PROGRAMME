@@ -85,6 +85,15 @@ under the existing hypotheses
     n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1)
     1 ≤ siteLatticeDist p.site q.site
 
+What is already closed locally:
+
+    shiftedConnectingClusterCountBoundAt_finite
+
+proves the fixed-`d`, fixed-`L` finite-volume version with
+`C_conn = Fintype.card (Finset (ConcretePlaquette d L)) + 1` and `dim = 0`.
+The remaining F3-count work is the uniform lattice-animal estimate
+`ShiftedConnectingClusterCountBound`, not mere finiteness.
+
 ## Preferred Build Checks
 
 After any edit:
@@ -105,6 +114,7 @@ Key oracle canaries:
     #print axioms clay_theorem_of_shiftedF3MayerCountPackage
     #print axioms clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
     #print axioms clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq
+    #print axioms shiftedConnectingClusterCountBoundAt_finite
 
 Expected oracle:
 

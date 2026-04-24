@@ -1,3 +1,56 @@
+# v0.79.0 — Local finite-volume shifted count bound
+
+**Released: 2026-04-24**
+
+## What
+
+Finite-volume combinatorial audit in
+`YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    def ShiftedConnectingClusterCountBoundAt
+    theorem ShiftedConnectingClusterCountBoundAt.apply
+    theorem shiftedConnectingClusterCountBoundAt_finite
+
+`ShiftedConnectingClusterCountBoundAt d L C_conn dim` is the fixed-lattice
+version of the shifted connecting-cluster count frontier.  It keeps the
+dimension `d` and lattice size `L` fixed, so the constants may depend on the
+finite plaquette lattice.
+
+The theorem
+
+    shiftedConnectingClusterCountBoundAt_finite
+
+proves that every finite plaquette lattice has a trivial shifted count bound
+with:
+
+    C_conn = Fintype.card (Finset (ConcretePlaquette d L)) + 1
+    dim    = 0
+
+This is not the global uniform lattice-animal estimate required by F3.  It
+separates the already-formal finite-volume counting fact from the remaining
+uniform/asymptotic combinatorial burden packaged by
+`ShiftedConnectingClusterCountBound`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+
+Pinned traces:
+
+    'YangMills.ShiftedConnectingClusterCountBoundAt.apply'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.shiftedConnectingClusterCountBoundAt_finite'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.78.0 — Direct F3 subpackage terminal endpoints
 
 **Released: 2026-04-24**

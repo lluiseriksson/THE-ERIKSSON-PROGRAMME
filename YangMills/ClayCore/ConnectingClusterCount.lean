@@ -89,6 +89,37 @@ theorem ShiftedConnectingClusterCountBound.apply
       C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) :=
   h p q n hn hdist
 
+/-- Finite-volume version of the shifted connecting-cluster count frontier.
+
+This keeps `d` and `L` fixed.  Unlike the global
+`ShiftedConnectingClusterCountBound`, its constants may depend on the concrete
+finite plaquette lattice. -/
+def ShiftedConnectingClusterCountBoundAt
+    (d L : ℕ) [NeZero d] [NeZero L] (C_conn : ℝ) (dim : ℕ) : Prop :=
+  ∀ (p q : ConcretePlaquette d L) (n : ℕ),
+    n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1) →
+    (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * (((n + 1 : ℕ) : ℝ) ^ dim)
+
+/-- Apply a finite-volume shifted connecting-cluster count package to one
+bucket. -/
+theorem ShiftedConnectingClusterCountBoundAt.apply
+    {d L : ℕ} [NeZero d] [NeZero L] {C_conn : ℝ} {dim : ℕ}
+    (h : ShiftedConnectingClusterCountBoundAt d L C_conn dim)
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) :=
+  h p q n hn hdist
+
 /-- **Weak Layer-C1 bound.**
 For any pair of plaquettes `p, q` and any `n : ℕ`, the number of
 connected polymers `X ⊆ ConcretePlaquette d L` of cardinality
@@ -118,6 +149,33 @@ theorem connecting_cluster_count_finite
     Finset.card_univ
   exact h1.trans h2.le
 
+/-- Every finite plaquette lattice has a trivial shifted count bound with
+dimension `0` and constant equal to the total number of finite plaquette
+subsets plus one.
+
+This is a local finite-volume audit result, not the global uniform
+lattice-animal estimate needed by F3. -/
+theorem shiftedConnectingClusterCountBoundAt_finite
+    (d L : ℕ) [NeZero d] [NeZero L] :
+    ShiftedConnectingClusterCountBoundAt d L
+      ((Fintype.card (Finset (ConcretePlaquette d L)) + 1 : ℕ) : ℝ) 0 := by
+  intro p q n hn hdist
+  have hlt := connecting_cluster_count_finite p q n
+  have hle_nat :
+      ((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun X =>
+          p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+            X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card ≤
+        Fintype.card (Finset (ConcretePlaquette d L)) + 1 :=
+    Nat.le_of_lt hlt
+  simpa using (show
+      (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun X =>
+          p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+            X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+        ((Fintype.card (Finset (ConcretePlaquette d L)) + 1 : ℕ) : ℝ) by
+    exact_mod_cast hle_nat)
+
 /-- Any connected polymer containing `p` and `q` lies in a canonical
 distance-indexed cardinality bucket: its size is an "extra size" `n`
 plus the ceiling of the lattice distance between `p` and `q`.
@@ -141,5 +199,7 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms connected_polymer_card_eq_extra_add_dist
 #print axioms C_conn_const_pos_of_neZero
 #print axioms ShiftedConnectingClusterCountBound.apply
+#print axioms ShiftedConnectingClusterCountBoundAt.apply
+#print axioms shiftedConnectingClusterCountBoundAt_finite
 
 end YangMills
