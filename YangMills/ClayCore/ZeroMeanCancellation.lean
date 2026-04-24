@@ -215,6 +215,25 @@ def WilsonUniformRpowBound (N_c : ℕ) [NeZero N_c] (β C : ℝ) : Prop :=
         (wilsonPlaquetteEnergy N_c) β' F p q| ≤
     C * β ^ (siteLatticeDist p.site q.site)
 
+namespace WilsonUniformRpowBound
+
+/-- Direct application form of the named uniform-rpow frontier. -/
+theorem apply
+    {N_c : ℕ} [NeZero N_c] {β C : ℝ}
+    (h : WilsonUniformRpowBound N_c β C)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β' : ℝ) (hβ' : 0 < β')
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (p q : ConcretePlaquette d L)
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    |wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β' F p q| ≤
+    C * β ^ (siteLatticeDist p.site q.site) :=
+  h β' hβ' F hF p q hdist
+
+end WilsonUniformRpowBound
+
 /-- SU(1) canary for the named uniform-rpow frontier.
 
 The connected Wilson correlator vanishes identically on SU(1), so any
@@ -362,6 +381,7 @@ theorem clayConnectedCorrDecay_small_beta_of_uniformRpow_prefactor_eq
 #print axioms plaquetteFluctuationNorm_integrable
 #print axioms plaquetteFluctuationNorm_mean_zero
 #print axioms plaquetteFluctuationNorm_zero_beta
+#print axioms WilsonUniformRpowBound.apply
 #print axioms wilsonUniformRpowBound_su1
 #print axioms yang_mills_final_small_beta_of_uniformRpow
 #print axioms clusterCorrelatorBound_small_beta_of_uniformRpow

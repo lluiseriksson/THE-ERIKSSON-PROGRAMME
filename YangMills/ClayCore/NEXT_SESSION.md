@@ -185,6 +185,7 @@ Key oracle canaries:
     #print axioms ShiftedF3CountPackage.toAt
     #print axioms ShiftedF3CountPackage.ofBound
     #print axioms ShiftedF3CountPackage.apply
+    #print axioms WilsonUniformRpowBound.apply
     #print axioms plaquetteFluctuationNorm_mean_zero
     #print axioms yang_mills_final_small_beta_of_uniformRpow
     #print axioms clayMassGap_small_beta_of_uniformRpow

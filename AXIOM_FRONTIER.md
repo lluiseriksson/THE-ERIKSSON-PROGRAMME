@@ -1,3 +1,42 @@
+# v1.22.0 — Uniform-rpow frontier gets direct applicator
+
+**Released: 2026-04-25**
+
+## What
+
+Added
+
+    WilsonUniformRpowBound.apply
+
+to `YangMills/ClayCore/ZeroMeanCancellation.lean`.
+
+This exposes the named small-β uniform-rpow frontier in direct application
+form, matching the existing `ShiftedConnectingClusterCountBound.apply` and
+`ShiftedF3CountPackage.apply` style.
+
+## Why
+
+No percentage bar moves.  This is small-β frontier API cleanup: once the
+uniform rpow estimate is supplied, downstream code can apply it without
+unfolding the `WilsonUniformRpowBound` predicate.  The mathematical frontier
+remains proving this bound for the nonabelian theory.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ZeroMeanCancellation
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace:
+
+    'YangMills.WilsonUniformRpowBound.apply' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.21.0 — Shifted F3 subpackage endpoints expose constants
 
 **Released: 2026-04-25**
