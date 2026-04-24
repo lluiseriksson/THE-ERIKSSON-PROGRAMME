@@ -27,6 +27,7 @@ No `sorry`. No new axioms.
 
 import Mathlib
 import YangMills.ClayCore.LargeFieldBound
+import YangMills.ClayCore.WilsonPolymerActivity
 
 namespace YangMills
 
@@ -243,6 +244,49 @@ noncomputable def LargeFieldActivityBound.ofSuperPoly {N_c : Nat} [NeZero N_c]
       rw [h_neg]
       exact spec.2.2 }
 
+/-! ### P2f-α: SFA + LFA → BalabanHyps end-to-end constructor
+
+Cierra el loop estructural del α-stack: toma un `WilsonPolymerActivityBound`
+(del cual P2d-α produce el SFA) más los inputs analíticos large-field
+(`profile`, `h_lf_bound_at`, `h_dominated`) evaluados en el `g_bar`
+canónico `wab.r`, y emite un `BalabanHyps N_c` completo vía
+`balabanHyps_of_bounds`.
+
+Usa los mismos constantes que `SmallFieldActivityBound.ofWilsonActivity`
+(`E₀ := A₀ + 1`, `κ := -log r`, `ḡ := r`), por lo que las tres
+igualdades `hg_eq / hk_eq / hE0_eq` cierran por `rfl`.
+
+NO usa `LargeFieldActivityBound.ofSuperPoly` (que `Classical.choose`a
+su `g_bar`, lo cual impide la igualdad con `wab.r`); construye la LFA
+directamente con `g_bar := wab.r`, dejando el contenido analítico
+(`h_lf_bound_at`, `h_dominated`) como hipótesis del caller.
+
+Pure-additive: no retira axioma ni sorry, no decreta nada sobre las barras
+del README. El P2e main / P2d main siguen siendo el camino para mover %.
+
+Oracle: `[propext, Classical.choice, Quot.sound]`. -/
+noncomputable def balabanHyps_from_wilson_activity
+    {N_c : Nat} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (profile : LargeFieldProfile)
+    (h_lf_bound_at : ∀ (n : Nat), ∃ R : Real, 0 ≤ R ∧
+      R ≤ Real.exp (-(profile.eval wab.r)) * Real.exp (-(-Real.log wab.r) * n))
+    (h_dominated : Real.exp (-(profile.eval wab.r)) ≤ (wab.A₀ + 1) * wab.r ^ 2) :
+    BalabanHyps N_c :=
+  let sfb := SmallFieldActivityBound.ofWilsonActivity wab
+  let lfb : LargeFieldActivityBound N_c :=
+    { profile := profile
+      kappa := -Real.log wab.r
+      hkappa := neg_pos.mpr (Real.log_neg wab.hr_pos wab.hr_lt1)
+      g_bar := wab.r
+      hg_pos := wab.hr_pos
+      hg_lt1 := wab.hr_lt1
+      E0 := wab.A₀ + 1
+      hE0 := by linarith [wab.hA₀]
+      h_lf_bound := h_lf_bound_at
+      h_dominated := h_dominated }
+  balabanHyps_of_bounds sfb lfb rfl rfl rfl
+
 end
 
 end YangMills
@@ -255,3 +299,4 @@ Emitted at build time; expected oracle is `[propext, Classical.choice, Quot.soun
 #print axioms YangMills.superPoly_dominance
 #print axioms YangMills.superPoly_dominance_at_specific
 #print axioms YangMills.LargeFieldActivityBound.ofSuperPoly
+#print axioms YangMills.balabanHyps_from_wilson_activity
