@@ -1,3 +1,64 @@
+# v1.03.0 — Plaquette-observable measurability bridge
+
+**Released: 2026-04-24**
+
+## What
+
+Added
+
+    lemma measurable_plaquetteHolonomy
+
+to `YangMills/L2_Balaban/Measurability.lean`.
+
+It records that plaquette holonomy
+
+    fun U : GaugeConfig d N G => GaugeConfig.plaquetteHolonomy U p
+
+is measurable whenever inversion and multiplication on the gauge group are
+measurable (`[MeasurableInv G] [MeasurableMul₂ G]`).  The proof reuses the
+existing edge-evaluation measurability API.
+
+Added the L8 wrapper:
+
+    theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_observableMeasurable
+
+to `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+This is the v1.02 physical bridge with local Wilson-observable measurability
+derived from `Measurable F` by composition with measurable plaquette holonomy.
+The remaining local regularity input is now the group-level measurability
+structure (`MeasurableInv` / `MeasurableMul₂`) rather than one proof per
+plaquette observable.
+
+## Why
+
+No percentage bar moves.  This narrows the local finite-volume interface on the
+route to `ClayYangMillsPhysicalStrong`: after Boltzmann integrability supplies
+the Gibbs probability measure, local Wilson integrability follows from
+unit-boundedness and `Measurable F`, provided the concrete gauge group exposes
+the standard measurable group operations.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.L2_Balaban.Measurability
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces:
+
+    'YangMills.measurable_plaquetteHolonomy'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_observableMeasurable'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.02.0 — Local Wilson integrability from measurability + unit bound
 
 **Released: 2026-04-24**

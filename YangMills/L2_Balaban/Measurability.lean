@@ -42,6 +42,20 @@ lemma measurable_toFun_edge [MeasurableInv G] [MeasurableMul₂ G] (e : Concrete
     simp_rw [h_neg]
     exact (measurable_toFun_posEdge ⟨{ e with sign := true }, rfl⟩).inv
 
+/-- Plaquette holonomy is measurable once multiplication and inversion on the
+gauge group are measurable. -/
+lemma measurable_plaquetteHolonomy [MeasurableInv G] [MeasurableMul₂ G]
+    (p : ConcretePlaquette d N) :
+    Measurable (fun U : GaugeConfig d N G => GaugeConfig.plaquetteHolonomy U p) := by
+  unfold GaugeConfig.plaquetteHolonomy
+  apply Measurable.mul
+  apply Measurable.mul
+  apply Measurable.mul
+  · exact measurable_toFun_edge _
+  · exact measurable_toFun_edge _
+  · exact measurable_toFun_edge _
+  · exact measurable_toFun_edge _
+
 /-- wilsonAction is measurable given measurable plaquetteEnergy and MeasurableMul. -/
 lemma measurable_wilsonAction [MeasurableInv G] [MeasurableMul₂ G]
     (plaquetteEnergy : G → ℝ) (h : Measurable plaquetteEnergy) :
@@ -72,5 +86,7 @@ theorem measurableSet_largeFieldSet [MeasurableInv G] [MeasurableMul₂ G]
     MeasurableSet (LargeFieldSet (d:=d) (N:=N) κ plaquetteEnergy) := by
   unfold LargeFieldSet
   exact measurableSet_lt measurable_const (measurable_wilsonAction plaquetteEnergy h)
+
+#print axioms measurable_plaquetteHolonomy
 
 end YangMills

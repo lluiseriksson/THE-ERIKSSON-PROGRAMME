@@ -1,6 +1,7 @@
 import YangMills.L8_Terminal.ClayPhysical
 import YangMills.ClayCore.ConnectedCorrDecay
 import YangMills.ClayCore.ClusterCorrelatorBound
+import YangMills.L2_Balaban.Measurability
 namespace YangMills
 variable {G : Type*} [Group G] [TopologicalSpace G] [CompactSpace G] [T2Space G]
          [MeasurableSpace G] [BorelSpace G]
@@ -234,5 +235,39 @@ theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable
       (hmeas L p) (hmeas L q)
 
 #print axioms physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_measurable
+
+/-- Same physical endpoint, with local Wilson measurability derived from
+measurability of the class function `F` and measurable plaquette holonomy. -/
+theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_observableMeasurable
+    {N_c d : ℕ} [NeZero N_c] [NeZero d]
+    [MeasurableInv ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)]
+    [MeasurableMul₂ ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)]
+    (w : ClayConnectedCorrDecay N_c)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F)
+    (hboltz_int : ∀ (L : ℕ) [NeZero L],
+      Integrable
+        (fun U : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+          Real.exp (-β * wilsonAction (wilsonPlaquetteEnergy N_c) U))
+        (gaugeMeasureFrom (d := d) (N := L) (sunHaarProb N_c))) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette d L) =>
+        siteLatticeDist p.site q.site) := by
+  refine
+    physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_measurable
+      w β F hβ hF hboltz_int ?_
+  intro L instL p
+  letI : NeZero L := instL
+  have hobs : Measurable (plaquetteWilsonObs F p) := by
+    simpa [plaquetteWilsonObs, Function.comp_def] using
+      hF_meas.comp (measurable_plaquetteHolonomy (G :=
+        ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)
+  exact hobs.aestronglyMeasurable
+
+#print axioms physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_observableMeasurable
 
 end YangMills
