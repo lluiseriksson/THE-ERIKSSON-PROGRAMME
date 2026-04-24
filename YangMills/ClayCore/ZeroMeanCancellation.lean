@@ -256,11 +256,55 @@ theorem yang_mills_final_small_beta_of_uniformRpow
     ClayYangMillsTheorem :=
   yang_mills_final_small_beta N_c hβ_pos hβ_lt1 C hC_pos h_rpow
 
+/-- Authentic mass-gap object from the named uniform-rpow small-β frontier. -/
+noncomputable def clayMassGap_small_beta_of_uniformRpow
+    (N_c : ℕ) [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (C : ℝ) (hC_pos : 0 < C)
+    (h_rpow : WilsonUniformRpowBound N_c β C) :
+    ClayYangMillsMassGap N_c :=
+  clay_massGap_large_beta N_c β hβ_pos hβ_lt1 C hC_pos
+    (clusterCorrelatorBound_of_rpow_bound N_c
+      hβ_pos hβ_lt1 C hC_pos.le h_rpow)
+
+/-- The theorem projection from the authentic small-β mass-gap object. -/
+theorem clay_theorem_small_beta_of_uniformRpow
+    (N_c : ℕ) [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (C : ℝ) (hC_pos : 0 < C)
+    (h_rpow : WilsonUniformRpowBound N_c β C) :
+    ClayYangMillsTheorem :=
+  clayMassGap_implies_clayTheorem
+    (clayMassGap_small_beta_of_uniformRpow
+      N_c hβ_pos hβ_lt1 C hC_pos h_rpow)
+
+/-- The small-β uniform-rpow mass gap has decay rate `kpParameter β`. -/
+theorem clayMassGap_small_beta_of_uniformRpow_mass_eq
+    (N_c : ℕ) [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (C : ℝ) (hC_pos : 0 < C)
+    (h_rpow : WilsonUniformRpowBound N_c β C) :
+    (clayMassGap_small_beta_of_uniformRpow
+      N_c hβ_pos hβ_lt1 C hC_pos h_rpow).m = kpParameter β := rfl
+
+/-- The small-β uniform-rpow mass gap has prefactor `C`. -/
+theorem clayMassGap_small_beta_of_uniformRpow_prefactor_eq
+    (N_c : ℕ) [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (C : ℝ) (hC_pos : 0 < C)
+    (h_rpow : WilsonUniformRpowBound N_c β C) :
+    (clayMassGap_small_beta_of_uniformRpow
+      N_c hβ_pos hβ_lt1 C hC_pos h_rpow).C = C := rfl
+
 #print axioms singlePlaquetteZ_pos
 #print axioms plaquetteFluctuationNorm_integrable
 #print axioms plaquetteFluctuationNorm_mean_zero
 #print axioms plaquetteFluctuationNorm_zero_beta
 #print axioms yang_mills_final_small_beta_of_uniformRpow
+#print axioms clayMassGap_small_beta_of_uniformRpow
+#print axioms clay_theorem_small_beta_of_uniformRpow
+#print axioms clayMassGap_small_beta_of_uniformRpow_mass_eq
+#print axioms clayMassGap_small_beta_of_uniformRpow_prefactor_eq
 
 end
 

@@ -90,7 +90,12 @@ The small-β terminal wrapper now consumes the named uniform frontier:
 
 This is stronger than the looser `WilsonLinkIndependence` predicate, whose
 constant is existential per call-site.  The useful Clay-chain input is the
-uniform rpow bound.
+uniform rpow bound.  Supplying it now gives the authentic endpoint
+
+    clayMassGap_small_beta_of_uniformRpow : ClayYangMillsMassGap N_c
+
+with mass `kpParameter β` and prefactor `C`; the weak theorem is just the
+projection from that mass-gap object.
 
 ### F3-Count
 
@@ -144,6 +149,9 @@ Key oracle canaries:
     #print axioms ShiftedF3CountPackage.toAt
     #print axioms plaquetteFluctuationNorm_mean_zero
     #print axioms yang_mills_final_small_beta_of_uniformRpow
+    #print axioms clayMassGap_small_beta_of_uniformRpow
+    #print axioms clayMassGap_small_beta_of_uniformRpow_mass_eq
+    #print axioms clayMassGap_small_beta_of_uniformRpow_prefactor_eq
 
 Expected oracle:
 

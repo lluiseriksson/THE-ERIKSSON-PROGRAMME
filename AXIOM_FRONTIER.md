@@ -1,3 +1,61 @@
+# v0.84.0 — Small-beta uniform-rpow authentic mass-gap endpoint
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive endpoint strengthening in
+`YangMills/ClayCore/ZeroMeanCancellation.lean`:
+
+    noncomputable def clayMassGap_small_beta_of_uniformRpow
+    theorem clay_theorem_small_beta_of_uniformRpow
+    theorem clayMassGap_small_beta_of_uniformRpow_mass_eq
+    theorem clayMassGap_small_beta_of_uniformRpow_prefactor_eq
+
+The named small-β uniform-rpow frontier from v0.83.0 now feeds the authentic
+mass-gap structure directly:
+
+    WilsonUniformRpowBound N_c β C → ClayYangMillsMassGap N_c
+
+The weak theorem endpoint is then only the projection
+`clayMassGap_implies_clayTheorem`.  Two canaries pin the extracted constants:
+
+    mass      = kpParameter β
+    prefactor = C
+
+This does not prove the uniform rpow bound.  It ensures that if the F3-Mayer
+analytic bound is supplied in the small-β form, the downstream object is the
+non-vacuous `ClayYangMillsMassGap N_c`, not merely the weak existential
+`ClayYangMillsTheorem`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ZeroMeanCancellation
+
+Pinned traces:
+
+    'YangMills.clayMassGap_small_beta_of_uniformRpow'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clay_theorem_small_beta_of_uniformRpow'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayMassGap_small_beta_of_uniformRpow_mass_eq'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayMassGap_small_beta_of_uniformRpow_prefactor_eq'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.83.0 — Name the uniform rpow small-beta frontier
 
 **Released: 2026-04-24**
