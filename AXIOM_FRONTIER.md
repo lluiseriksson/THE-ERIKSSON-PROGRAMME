@@ -1,3 +1,41 @@
+# v0.58.0 — F3 terminal endpoint from count + pointwise bounds
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive terminal wrapper in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem clay_theorem_of_count_pointwiseBounds_ceil
+
+This composes `clusterCorrelatorBound_of_count_pointwiseBounds_ceil` with
+`clay_theorem_from_wilson_activity`.  With a `WilsonPolymerActivityBound`,
+the current `ClayYangMillsTheorem` endpoint now follows directly from the
+four factored F3 inputs:
+
+1. Mayer/Ursell identity `h_mayer`;
+2. disconnected support cancellation `h_zero`;
+3. lattice-animal bucket count `h_count`;
+4. pointwise polymer activity estimate `h_pointwise`.
+
+No caller has to manually assemble the intermediate bucket, connected-finite,
+or `ClusterCorrelatorBound` layers.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.clay_theorem_of_count_pointwiseBounds_ceil' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.57.0 — F3 ClusterCorrelatorBound from count + pointwise bounds
 
 **Released: 2026-04-24**

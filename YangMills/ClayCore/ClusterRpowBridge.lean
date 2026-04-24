@@ -759,4 +759,70 @@ theorem clay_theorem_of_cardBucketBounds_ceil
 
 #print axioms clay_theorem_of_cardBucketBounds_ceil
 
+/-- Terminal wrapper from bucket cardinality and pointwise activity bounds.
+
+This is the most factored F3 endpoint: the remaining analytic inputs are the
+Mayer identity, disconnected support cancellation, the lattice-animal bucket
+count, and the pointwise polymer activity bound. -/
+theorem clay_theorem_of_count_pointwiseBounds_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (T : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      TruncatedActivities (ConcretePlaquette d L))
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (T β F p q).connectingSum p q)
+    (h_zero : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      p ∈ Y → q ∈ Y → ¬ PolymerConnected Y →
+      (T β F p q).K_bound Y = 0)
+    (h_count : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (p q : ConcretePlaquette d L) (n : ℕ),
+      n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1) →
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y =>
+          p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+            Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+        C_conn * (n : ℝ) ^ dim)
+    (h_pointwise : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L)
+      (n : ℕ)
+      (Y : Finset (ConcretePlaquette d L)),
+      n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1) →
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y =>
+          p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+            Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊) →
+      (T β F p q).K_bound Y ≤
+        A₀ * wab.r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    ClayYangMillsTheorem := by
+  exact clay_theorem_from_wilson_activity wab
+    (clusterPrefactor wab.r C_conn A₀ dim)
+    (clusterPrefactor_pos wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim)
+    (clusterCorrelatorBound_of_count_pointwiseBounds_ceil
+      N_c wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim
+      T h_mayer h_zero h_count h_pointwise)
+
+#print axioms clay_theorem_of_count_pointwiseBounds_ceil
+
 end YangMills
