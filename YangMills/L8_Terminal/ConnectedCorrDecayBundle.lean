@@ -270,4 +270,32 @@ theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable
 
 #print axioms physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_observableMeasurable
 
+/-- Concrete SU(N) form of
+`physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_observableMeasurable`.
+
+The measurable inversion/multiplication instances are now supplied by the
+repository's concrete SU(N) infrastructure, so callers only provide
+`Measurable F` and the Boltzmann-weight integrability input. -/
+theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_measurableF
+    {N_c d : ℕ} [NeZero N_c] [NeZero d]
+    (w : ClayConnectedCorrDecay N_c)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F)
+    (hboltz_int : ∀ (L : ℕ) [NeZero L],
+      Integrable
+        (fun U : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+          Real.exp (-β * wilsonAction (wilsonPlaquetteEnergy N_c) U))
+        (gaugeMeasureFrom (d := d) (N := L) (sunHaarProb N_c))) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette d L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_observableMeasurable
+    w β F hβ hF hF_meas hboltz_int
+
+#print axioms physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_measurableF
+
 end YangMills

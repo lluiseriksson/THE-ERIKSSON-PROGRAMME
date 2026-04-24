@@ -1,3 +1,56 @@
+# v1.05.0 — PhysicalStrong bridge with only `Measurable F` local regularity
+
+**Released: 2026-04-24**
+
+## What
+
+Added
+
+    theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_measurableF
+
+to `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+This is the concrete SU(N) corollary of the v1.03/v1.04 bridge.  The measurable
+group-operation instances are now supplied by the repository, so the local
+regularity interface is reduced to:
+
+    Measurable F
+
+plus the existing boundedness and Boltzmann-weight integrability inputs:
+
+    0 < β
+    ∀ U, |F U| ≤ 1
+    Integrable (fun U => exp (-β * wilsonAction (wilsonPlaquetteEnergy N_c) U))
+      (gaugeMeasureFrom (sunHaarProb N_c))
+
+The theorem then derives the Gibbs probability measure, local Wilson observable
+measurability, local Wilson observable integrability, and finally the canonical
+site-distance `ClayYangMillsPhysicalStrong` bridge from a
+`ClayConnectedCorrDecay N_c` witness.
+
+## Why
+
+No percentage bar moves.  This removes the remaining local finite-volume
+regularity boilerplate from the bridge interface.  The active mathematical
+front remains the production of `ClayConnectedCorrDecay N_c`, i.e. F1/F2/F3 for
+`ClusterCorrelatorBound`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace:
+
+    'YangMills.physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_measurableF'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.04.0 — Concrete SU(N) measurable multiplication instance
 
 **Released: 2026-04-24**
