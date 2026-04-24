@@ -1,3 +1,52 @@
+# v0.73.0 — `ClusterCorrelatorBound` to `ClayWitnessHyp`
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive consumer bridge in `YangMills/ClayCore/ClusterCorrelatorBound.lean`:
+
+    noncomputable def clayWitnessHyp_of_clusterCorrelatorBound
+
+`ClusterCorrelatorBound N_c r C_clust` is now repackaged directly as the
+older analytic witness bundle:
+
+    ClayWitnessHyp N_c
+
+The map is field-for-field:
+
+* `r`, `hr_pos`, `hr_lt_one`;
+* `C_clust`, `hC_clust`;
+* the universal connected-correlator bound `hbound_hyp`.
+
+This means a future proof of `ClusterCorrelatorBound` feeds all three
+downstream views without extra glue:
+
+1. `CharacterExpansionData` via `wilsonCharExpansion`;
+2. `ClayYangMillsMassGap` via `clay_massGap_large_beta`;
+3. `ClayWitnessHyp` via `clayWitnessHyp_of_clusterCorrelatorBound`.
+
+No analytic package is proved here; the frontier remains the production of
+`ClusterCorrelatorBound` itself.  The gain is that the B1/F3 output is now the
+single canonical object consumed by both the newer `CharacterExpansionData`
+route and the older `ClayWitnessHyp` route.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterCorrelatorBound
+
+Pinned trace:
+
+    'YangMills.clayWitnessHyp_of_clusterCorrelatorBound'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.72.0 — F3 endpoints into `ClayConnectedCorrDecay`
 
 **Released: 2026-04-24**

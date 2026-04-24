@@ -1,5 +1,6 @@
 import Mathlib
 import YangMills.ClayCore.CharacterExpansion
+import YangMills.ClayCore.ClayWitness
 
 /-!
 # Cluster Correlator Bound (Phase 15h, Layer B1)
@@ -99,6 +100,22 @@ noncomputable def wilsonCharExpansion
   hC := hC
   h_correlator := h
 
+/-- Repackage a `ClusterCorrelatorBound` as the analytic witness bundle used by
+    the older Clay witness route.  This is field-for-field: the KP parameter,
+    prefactor, and connected-correlator bound are exactly the supplied data. -/
+noncomputable def clayWitnessHyp_of_clusterCorrelatorBound
+    (N_c : ℕ) [NeZero N_c]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_clust : ℝ) (hC : 0 < C_clust)
+    (h : ClusterCorrelatorBound N_c r C_clust) :
+    ClayWitnessHyp N_c where
+  r := r
+  hr_pos := hr_pos
+  hr_lt_one := hr_lt1
+  C_clust := C_clust
+  hC_clust := hC
+  hbound_hyp := h
+
 /-- **FINAL CHAIN.** Given the cluster correlator bound (B1),
     produce the full Clay Yang-Mills mass-gap structure for
     `SU(N_c)` via the A1 Peter-Weyl bridge. -/
@@ -122,5 +139,7 @@ theorem clay_yangMills_large_beta
     ClayYangMillsTheorem :=
   clay_theorem_from_charExpansion
     (wilsonCharExpansion N_c r hr_pos hr_lt1 C_clust hC h)
+
+#print axioms clayWitnessHyp_of_clusterCorrelatorBound
 
 end YangMills
