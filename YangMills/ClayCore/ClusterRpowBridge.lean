@@ -2175,6 +2175,93 @@ def countPackage
     (pkg : ShiftedF3MayerCountPackage N_c wab) :
     ofSubpackages (mayerPackage pkg) (countPackage pkg) = pkg := rfl
 
+/-- The finite-volume truncated activities carried by the single preferred F3
+package. -/
+noncomputable def toTruncatedActivities
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L) :
+    TruncatedActivities (ConcretePlaquette d L) :=
+  pkg.data.toTruncatedActivities β F p q
+
+/-- The single-package activity projection is the raw Mayer activity stored in
+`pkg.data`. -/
+@[simp] theorem toTruncatedActivities_K
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (Y : Finset (ConcretePlaquette d L)) :
+    (pkg.toTruncatedActivities β F p q).K Y = pkg.data.K β F p q Y := by
+  rfl
+
+/-- The single-package activity bound is dominated by the package cardinality
+profile. -/
+theorem toTruncatedActivities_K_bound_le_cardDecay
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (Y : Finset (ConcretePlaquette d L)) :
+    (pkg.toTruncatedActivities β F p q).K_bound Y ≤
+      pkg.A₀ * wab.r ^ Y.card := by
+  exact pkg.data.toTruncatedActivities_K_bound_le_cardDecay β F p q Y
+
+/-- The single-package bound vanishes on disconnected polymers containing the
+marked plaquettes. -/
+theorem toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (Y : Finset (ConcretePlaquette d L))
+    (hp : p ∈ Y) (hq : q ∈ Y) (h_not_connected : ¬ PolymerConnected Y) :
+    (pkg.toTruncatedActivities β F p q).K_bound Y = 0 := by
+  exact pkg.data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    β F p q Y hp hq h_not_connected
+
+/-- The single-package Mayer/Ursell identity, stated through the activities
+exposed by the package. -/
+theorem wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ) (hβ : 0 < β)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (p q : ConcretePlaquette d L)
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    wilsonConnectedCorr (sunHaarProb N_c)
+      (wilsonPlaquetteEnergy N_c) β F p q =
+    (pkg.toTruncatedActivities β F p q).connectingSum p q := by
+  exact pkg.data.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    β hβ F hF p q hdist
+
+/-- Direct application form of the count half stored in the single preferred F3
+package. -/
+theorem apply_count
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.C_conn * (((n + 1 : ℕ) : ℝ) ^ pkg.dim) :=
+  ShiftedConnectingClusterCountBound.apply pkg.h_count p q n hn hdist
+
 end ShiftedF3MayerCountPackage
 
 /-- The single-package F3 route yields the Wilson-facing cluster-correlator
@@ -2349,6 +2436,12 @@ theorem clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_prefactor_eq
 #print axioms ShiftedF3MayerCountPackage.countPackage_C_conn
 #print axioms ShiftedF3MayerCountPackage.countPackage_dim
 #print axioms ShiftedF3MayerCountPackage.ofSubpackages_mayerPackage_countPackage
+#print axioms ShiftedF3MayerCountPackage.toTruncatedActivities
+#print axioms ShiftedF3MayerCountPackage.toTruncatedActivities_K
+#print axioms ShiftedF3MayerCountPackage.toTruncatedActivities_K_bound_le_cardDecay
+#print axioms ShiftedF3MayerCountPackage.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+#print axioms ShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+#print axioms ShiftedF3MayerCountPackage.apply_count
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq
 #print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mass_eq

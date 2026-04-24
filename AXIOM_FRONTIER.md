@@ -1,3 +1,45 @@
+# v1.20.0 — Single shifted F3 package exposes activities and count directly
+
+**Released: 2026-04-25**
+
+## What
+
+Added direct single-package API for `ShiftedF3MayerCountPackage` in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    ShiftedF3MayerCountPackage.toTruncatedActivities
+    ShiftedF3MayerCountPackage.toTruncatedActivities_K
+    ShiftedF3MayerCountPackage.toTruncatedActivities_K_bound_le_cardDecay
+    ShiftedF3MayerCountPackage.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    ShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    ShiftedF3MayerCountPackage.apply_count
+
+These expose both halves of the preferred shifted F3 package without requiring
+manual projection through `mayerPackage` and `countPackage`.
+
+## Why
+
+No percentage bar moves.  This is final single-package interface cleanup for
+the current F3 route: once the preferred package is constructed, downstream
+code can directly obtain finite-volume truncated activities, their
+support/cardinality bounds, the Mayer identity, and the shifted
+lattice-animal count inequality from the same object.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all six new single-package declarations print the canonical
+project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.19.0 — Shifted F3 count package gets direct constructor and applicator
 
 **Released: 2026-04-25**
