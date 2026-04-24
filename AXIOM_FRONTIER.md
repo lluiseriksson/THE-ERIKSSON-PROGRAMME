@@ -1,3 +1,100 @@
+# v0.45.0 — P2d-β: balabanH1_from_wilson_activity_enriched CONSTRUCTOR
+
+**Released: 2026-04-24**
+
+## What
+
+Phase 3 / Task #7 sub-target P2d-β: pure-additive enriched constructor
+
+    noncomputable def balabanH1_from_wilson_activity_enriched
+        {N_c : ℕ} [NeZero N_c]
+        (wab : WilsonPolymerActivityBound N_c) :
+        BalabanH1 N_c :=
+      h1_of_small_field_bound (SmallFieldActivityBound.ofWilsonActivity wab)
+
+in `YangMills/ClayCore/WilsonPolymerActivity.lean`. Composes the
+P2d-α enriched `SmallFieldActivityBound.ofWilsonActivity` (v0.44.0)
+with the existing `h1_of_small_field_bound` (`SmallFieldBound.lean`)
+to produce a first-class `BalabanH1 N_c` term whose small-field
+activity profile is `activity n := A₀ · r^(n+2)` — polymer-faithful —
+instead of identically zero (the legacy `balabanH1_from_wilson_activity`
+route via the trivial-activity shortcut
+`smallFieldBound_of_wilsonActivity`).
+
+Commit: `c9ac61b` · File: `YangMills/ClayCore/WilsonPolymerActivity.lean`
+(+22/−0) · Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+## Why
+
+P2d-α (v0.44.0) introduced
+`SmallFieldActivityBound.ofWilsonActivity` carrying a polymer-faithful
+activity profile, but did not yet plug it into the SFA → BalabanH1
+chain — the legacy `balabanH1_from_wilson_activity` route still went
+through the trivial-activity shortcut. P2d-β closes that gap: it
+demonstrates the enriched constructor is not decorative but propagates
+cleanly through `h1_of_small_field_bound` to produce a `BalabanH1`
+whose small-field content carries the polymer pair `(A₀, r)` rather
+than identically zero.
+
+## How
+
+The `h1_of_small_field_bound` definition (line 24 of
+`YangMills/ClayCore/SmallFieldBound.lean`) takes a
+`SmallFieldActivityBound N_c` and produces a `BalabanH1 N_c` by
+copying the constants block and packaging the activity profile into
+the `h_sf` field as
+`fun n => ⟨sfb.activity n, sfb.hact_nn n, sfb.hact_bd n⟩`.
+
+P2d-β is therefore a single-line composition:
+
+    h1_of_small_field_bound (SmallFieldActivityBound.ofWilsonActivity wab)
+
+with the resulting `BalabanH1 N_c` carrying:
+- `E0   = wab.A₀ + 1`
+- `kappa = -Real.log wab.r`
+- `g_bar = wab.r`
+- `h_sf  = fun n => ⟨wab.A₀ * wab.r ^ (n+2), _, _⟩`
+
+(the last two anonymous-constructor fields being the inherited
+`hact_nn` and `hact_bd` discharges from P2d-α).
+
+Build: `lake build YangMills.ClayCore.WilsonPolymerActivity` →
+8172/8172 jobs green. A fourth top-level `#print axioms` declaration
+appended for `balabanH1_from_wilson_activity_enriched`. All four
+top-level decls in the module
+(`smallFieldBound_of_wilsonActivity`,
+`balabanH1_from_wilson_activity`,
+`SmallFieldActivityBound.ofWilsonActivity`,
+`balabanH1_from_wilson_activity_enriched`) print
+`[propext, Classical.choice, Quot.sound]`.
+
+## Scope of change
+
+Pure additive: legacy `balabanH1_from_wilson_activity` (existential
+statement carrying the trivial-activity `BalabanH1`) is **kept
+intact** and still callable. The new
+`balabanH1_from_wilson_activity_enriched` coexists beside it as the
+polymer-faithful term-mode variant. Zero downstream breakage by
+construction.
+
+## What remains
+
+- **P2d main** (multi-week): retire
+  `WilsonPolymerActivityBound.h_bound` itself — i.e. prove Balaban
+  CMP 116 Lemma 3 (character expansion on U(N_c) / Bessel coefficient
+  asymptotics) for the Wilson action. P2d-α and P2d-β have shaped
+  the consumer-side struct; the producer-side analytic content is
+  what remains.
+- **P2e main** (multi-week): retire `h_lf_bound` via Balaban CMP 122
+  II Eq 1.98–1.100 (RG + cluster expansion). The P2e-α constructor
+  (v0.43.0) is the preparatory shape.
+
+Oracle invariant remains `[propext, Classical.choice, Quot.sound]`.
+No new axioms. No `sorry`.
+
+---
+
+
 # v0.44.0 — P2d-α: SmallFieldActivityBound.ofWilsonActivity CONSTRUCTOR
 
 **Released: 2026-04-23**
