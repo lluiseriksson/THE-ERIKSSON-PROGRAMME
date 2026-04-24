@@ -1,3 +1,69 @@
+# v0.47.0 — P2d-audit: frontier reclassification + Clay-endpoint triviality canary
+
+**Released: 2026-04-24**
+
+## What
+
+Audit-only pass; no mathematical pipeline change. One new Lean file is
+added as a canary with zero downstream dependency:
+
+    theorem clayYangMillsTheorem_trivial : ClayYangMillsTheorem :=
+      ⟨1, one_pos⟩
+
+in `YangMills/L8_Terminal/ClayTrivialityAudit.lean`.
+
+Three facts are recorded:
+
+1. `WilsonPolymerActivityBound.h_bound` is reclassified from active
+   frontier to **closed de facto for the current small-β / clipped Wilson
+   activity producer**. The pair `wilsonClusterActivity_abs_le` +
+   `wilsonActivityBound_from_expansion` already discharges the field on
+   `0 < β < 1` with the β-clipped fluctuation
+   `plaquetteFluctuationAt N_c β`. This does **not** claim that Balaban
+   CMP 116 Lemma 3 is formalised in full generality: raw unclipped
+   character-expansion / Bessel-coefficient asymptotics on `SU(N_c)` for
+   arbitrary irreps remain future work. It records that, within the
+   current formalism, the `h_bound` field has a canonical producer and is
+   not the active bottleneck.
+
+2. The active analytic frontier is `h_rpow`, equivalently
+   `ClusterCorrelatorBound N_c r C_clust` modulo the proved bridge
+   `clusterCorrelatorBound_of_rpow_bound`
+   (`YangMills/ClayCore/WilsonClusterProof.lean`). This is the F3 /
+   Kotecký-Preiss target on the `ClusterCorrelatorBound` front.
+
+3. `ClayYangMillsTheorem := ∃ m_phys : ℝ, 0 < m_phys` is a weak endpoint:
+   it is trivially inhabited. Wrappers whose conclusion is only
+   `ClayYangMillsTheorem` discharge that weak existential, not Clay-grade
+   Yang-Mills content. Per `YangMills/L8_Terminal/ClayPhysical.lean`, the
+   hierarchy is
+
+       ClayYangMillsPhysicalStrong → ClayYangMillsStrong → ClayYangMillsTheorem
+
+   with `ClayYangMillsPhysicalStrong` the first non-vacuous level.
+
+## Oracle
+
+Build artefact:
+`YangMills/L8_Terminal/ClayTrivialityAudit.lean`.
+
+Pinned `#print axioms` trace from
+`.lake/build/lib/lean/YangMills/L8_Terminal/ClayTrivialityAudit.trace`:
+
+    YangMills/L8_Terminal/ClayTrivialityAudit.lean:51:0:
+    'YangMills.clayYangMillsTheorem_trivial' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+This is exactly the canonical project oracle. No new axioms. No `sorry`.
+
+## Scope of change
+
+Audit-only / no mathematical pipeline change. The new canary module is not
+imported by downstream theorem files. L1 / L2 / L3 / OVERALL bars are
+unchanged.
+
+---
+
 # v0.46.0 — P2f-α: balabanHyps_from_wilson_activity END-TO-END CONSTRUCTOR
 
 **Released: 2026-04-24**
