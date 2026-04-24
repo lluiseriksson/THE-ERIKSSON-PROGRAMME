@@ -196,6 +196,24 @@ def WilsonLinkIndependence (N_c : ℕ) [NeZero N_c] : Prop :=
           (wilsonPlaquetteEnergy N_c) β' F p q| ≤
       C * β' ^ (siteLatticeDist p.site q.site)
 
+/-- Uniform rpow-shape Wilson connected-correlator bound at a fixed small
+coupling scale `β`.
+
+Unlike `WilsonLinkIndependence`, the constant `C` is supplied once and used
+uniformly across all finite lattices, positive inverse couplings, bounded test
+functions, and plaquette pairs.  This is the exact hypothesis shape consumed by
+the small-β Clay wrapper below. -/
+def WilsonUniformRpowBound (N_c : ℕ) [NeZero N_c] (β C : ℝ) : Prop :=
+  ∀ {d L : ℕ} [NeZero d] [NeZero L]
+    (β' : ℝ) (_hβ' : 0 < β')
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (_hF : ∀ U, |F U| ≤ 1)
+    (p q : ConcretePlaquette d L),
+    (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+    |wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β' F p q| ≤
+    C * β ^ (siteLatticeDist p.site q.site)
+
 /-! ## Clay wrapper via zero-mean + independence -/
 
 /-- **Phase 15j.7, wrapper to `ClayYangMillsTheorem`.**
@@ -228,10 +246,21 @@ theorem yang_mills_final_small_beta
     ClayYangMillsTheorem :=
   yang_mills_unconditional_fubini N_c hβ_pos hβ_lt1 C hC_pos h_rpow
 
+/-- Same wrapper as `yang_mills_final_small_beta`, but consuming the named
+uniform-rpow hypothesis. -/
+theorem yang_mills_final_small_beta_of_uniformRpow
+    (N_c : ℕ) [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (C : ℝ) (hC_pos : 0 < C)
+    (h_rpow : WilsonUniformRpowBound N_c β C) :
+    ClayYangMillsTheorem :=
+  yang_mills_final_small_beta N_c hβ_pos hβ_lt1 C hC_pos h_rpow
+
 #print axioms singlePlaquetteZ_pos
 #print axioms plaquetteFluctuationNorm_integrable
 #print axioms plaquetteFluctuationNorm_mean_zero
 #print axioms plaquetteFluctuationNorm_zero_beta
+#print axioms yang_mills_final_small_beta_of_uniformRpow
 
 end
 

@@ -1,3 +1,41 @@
+# v0.83.0 — Name the uniform rpow small-beta frontier
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive frontier sharpening in
+`YangMills/ClayCore/ZeroMeanCancellation.lean`:
+
+    def WilsonUniformRpowBound
+    theorem yang_mills_final_small_beta_of_uniformRpow
+
+`WilsonUniformRpowBound N_c β C` names the exact uniform rpow-shape
+connected-correlator bound consumed by the small-β terminal wrapper: one
+constant `C` and one scale `β` work uniformly across all finite lattices,
+positive inverse couplings, bounded test functions, and plaquette pairs.
+
+This distinguishes the actual terminal input from the looser
+`WilsonLinkIndependence` predicate, whose constant is existential at each call
+site and is therefore not by itself the uniform F3/Mayer output needed for the
+Clay chain.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ZeroMeanCancellation
+
+Pinned trace:
+
+    'YangMills.yang_mills_final_small_beta_of_uniformRpow'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.82.0 — Audit normalized plaquette zero-mean layer
 
 **Released: 2026-04-24**

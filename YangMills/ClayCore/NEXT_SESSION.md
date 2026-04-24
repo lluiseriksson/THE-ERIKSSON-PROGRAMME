@@ -84,6 +84,14 @@ and trivial at `β = 0`.  The remaining F3-Mayer work is the product-measure /
 polymer lift to `ConnectedCardDecayMayerData`, not the one-plaquette
 normalization identity.
 
+The small-β terminal wrapper now consumes the named uniform frontier:
+
+    WilsonUniformRpowBound N_c β C
+
+This is stronger than the looser `WilsonLinkIndependence` predicate, whose
+constant is existential per call-site.  The useful Clay-chain input is the
+uniform rpow bound.
+
 ### F3-Count
 
 Produce `ShiftedConnectingClusterCountBound C_conn dim`:
@@ -135,6 +143,7 @@ Key oracle canaries:
     #print axioms ShiftedConnectingClusterCountBound.toAt
     #print axioms ShiftedF3CountPackage.toAt
     #print axioms plaquetteFluctuationNorm_mean_zero
+    #print axioms yang_mills_final_small_beta_of_uniformRpow
 
 Expected oracle:
 
