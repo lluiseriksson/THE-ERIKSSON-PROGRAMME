@@ -1,3 +1,65 @@
+# v1.00.0 — ClayConnectedCorrDecay to PhysicalStrong canonical-distance bridge
+
+**Released: 2026-04-24**
+
+## What
+
+Added two L8 bridge declarations to
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    noncomputable def connectedCorrDecayBundle_of_clayConnectedCorrDecay_siteDist
+    theorem physicalStrong_of_clayConnectedCorrDecay_siteDist
+
+They convert a ClayCore separated-distance witness
+
+    ClayConnectedCorrDecay N_c
+
+into the non-vacuous physical endpoint
+
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun L p q => siteLatticeDist p.site q.site)
+
+provided the remaining local analytic side-conditions are explicit:
+
+    0 < β
+    ∀ U, |F U| ≤ 1
+    IsProbabilityMeasure (gibbsMeasure ... β) for every L
+    integrability of W_p, W_q, and W_p * W_q for every L,p,q
+
+The bridge uses the separated exponential decay from `ClayConnectedCorrDecay`
+when `1 ≤ siteLatticeDist p.site q.site`, and uses
+`wilsonConnectedCorr_abs_le_two_of_unitBound` for the local regime.  The
+resulting global finite-volume `ConnectedCorrDecay` has prefactor
+
+    w.C + 2 * exp w.m
+
+and decay rate `w.m`.
+
+This still does not prove F1/F2/F3, nor the local probability/integrability
+facts.  It removes a structural gap between the ClayCore connected-decay
+package and the first non-vacuous L8 physical target.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces:
+
+    'YangMills.connectedCorrDecayBundle_of_clayConnectedCorrDecay_siteDist'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalStrong_of_clayConnectedCorrDecay_siteDist'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v0.99.0 — Local bounded-observable Wilson connected-correlation estimate
 
 **Released: 2026-04-24**

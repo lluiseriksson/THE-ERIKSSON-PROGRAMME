@@ -1,4 +1,6 @@
 import YangMills.L8_Terminal.ClayPhysical
+import YangMills.ClayCore.ConnectedCorrDecay
+import YangMills.ClayCore.ClusterCorrelatorBound
 namespace YangMills
 variable {G : Type*} [Group G] [TopologicalSpace G] [CompactSpace G] [T2Space G]
          [MeasurableSpace G] [BorelSpace G]
@@ -24,5 +26,124 @@ theorem physicalStrong_of_connectedCorrDecayBundle
     ClayYangMillsPhysicalStrong μ plaquetteEnergy β F distP :=
   connectedCorrDecay_implies_physicalStrong_via_gen
     μ plaquetteEnergy β F distP h.ccd h.distP_nonneg
+
+/-- Canonical-distance bridge from the ClayCore separated connected-correlator
+decay witness to the L8 physical bundle.
+
+`ClayConnectedCorrDecay` controls pairs with `1 ≤ siteLatticeDist`.  The local
+finite-distance regime is supplied by
+`wilsonConnectedCorr_abs_le_two_of_unitBound`, with probability and
+integrability kept explicit.  The resulting `ConnectedCorrDecayBundle` can be
+sent directly to `physicalStrong_of_connectedCorrDecayBundle`. -/
+noncomputable def connectedCorrDecayBundle_of_clayConnectedCorrDecay_siteDist
+    {N_c d : ℕ} [NeZero N_c] [NeZero d]
+    (w : ClayConnectedCorrDecay N_c)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hprob : ∀ (L : ℕ) [NeZero L],
+      IsProbabilityMeasure
+        (gibbsMeasure (d := d) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β))
+    (hp_int : ∀ (L : ℕ) [NeZero L] (p : ConcretePlaquette d L),
+      Integrable (plaquetteWilsonObs F p)
+        (gibbsMeasure (d := d) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β))
+    (hpq_int : ∀ (L : ℕ) [NeZero L] (p q : ConcretePlaquette d L),
+      Integrable
+        (fun A : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+          plaquetteWilsonObs F p A * plaquetteWilsonObs F q A)
+        (gibbsMeasure (d := d) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)) :
+    ConnectedCorrDecayBundle
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette d L) =>
+        siteLatticeDist p.site q.site) where
+  ccd := by
+    refine
+      { C := w.C + 2 * Real.exp w.m
+        m := w.m
+        hC := by nlinarith [w.hC.le, Real.exp_pos w.m]
+        hm := w.hm
+        bound := ?_ }
+    intro L inst p q
+    letI : NeZero L := inst
+    haveI : IsProbabilityMeasure
+        (gibbsMeasure (d := d) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β) :=
+      hprob L
+    by_cases hsep : (1 : ℝ) ≤ siteLatticeDist p.site q.site
+    · have hw := w.hbound β hβ F hF p q hsep
+      exact hw.trans (by
+        apply mul_le_mul_of_nonneg_right _ (Real.exp_nonneg _)
+        nlinarith [w.hC.le, Real.exp_nonneg w.m])
+    · have hlocal := wilsonConnectedCorr_abs_le_two_of_unitBound
+        β F hF p q (hp_int L p) (hp_int L q) (hpq_int L p q)
+      have hdist_nonneg : 0 ≤ siteLatticeDist p.site q.site :=
+        siteLatticeDist_nonneg p.site q.site
+      have hdist_le_one : siteLatticeDist p.site q.site ≤ 1 :=
+        le_of_not_ge hsep
+      have hexp_ge_one :
+          1 ≤ Real.exp (w.m * (1 - siteLatticeDist p.site q.site)) := by
+        rw [Real.one_le_exp_iff]
+        nlinarith [w.hm.le, hdist_le_one]
+      have htwo :
+          2 ≤ 2 * Real.exp w.m *
+              Real.exp (-w.m * siteLatticeDist p.site q.site) := by
+        calc
+          2 = 2 * 1 := by ring
+          _ ≤ 2 * Real.exp (w.m * (1 - siteLatticeDist p.site q.site)) := by
+            nlinarith
+          _ = 2 * Real.exp w.m *
+              Real.exp (-w.m * siteLatticeDist p.site q.site) := by
+            rw [show w.m * (1 - siteLatticeDist p.site q.site) =
+                w.m + (-w.m * siteLatticeDist p.site q.site) by ring,
+              Real.exp_add]
+            ring
+      exact hlocal.trans (by
+        calc
+          2 ≤ 2 * Real.exp w.m *
+              Real.exp (-w.m * siteLatticeDist p.site q.site) := htwo
+          _ ≤ (w.C + 2 * Real.exp w.m) *
+              Real.exp (-w.m * siteLatticeDist p.site q.site) := by
+            apply mul_le_mul_of_nonneg_right _ (Real.exp_nonneg _)
+            nlinarith [w.hC.le, Real.exp_nonneg w.m])
+  distP_nonneg := fun L _ p q => siteLatticeDist_nonneg p.site q.site
+
+#print axioms connectedCorrDecayBundle_of_clayConnectedCorrDecay_siteDist
+
+/-- Direct physical endpoint from a ClayCore separated connected-correlator
+decay witness plus the explicit local probability/integrability inputs. -/
+theorem physicalStrong_of_clayConnectedCorrDecay_siteDist
+    {N_c d : ℕ} [NeZero N_c] [NeZero d]
+    (w : ClayConnectedCorrDecay N_c)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hprob : ∀ (L : ℕ) [NeZero L],
+      IsProbabilityMeasure
+        (gibbsMeasure (d := d) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β))
+    (hp_int : ∀ (L : ℕ) [NeZero L] (p : ConcretePlaquette d L),
+      Integrable (plaquetteWilsonObs F p)
+        (gibbsMeasure (d := d) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β))
+    (hpq_int : ∀ (L : ℕ) [NeZero L] (p q : ConcretePlaquette d L),
+      Integrable
+        (fun A : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+          plaquetteWilsonObs F p A * plaquetteWilsonObs F q A)
+        (gibbsMeasure (d := d) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette d L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_connectedCorrDecayBundle
+    (connectedCorrDecayBundle_of_clayConnectedCorrDecay_siteDist
+      w β F hβ hF hprob hp_int hpq_int)
+
+#print axioms physicalStrong_of_clayConnectedCorrDecay_siteDist
 
 end YangMills
