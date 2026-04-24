@@ -1582,6 +1582,25 @@ theorem clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
 
 #print axioms clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
 
+/-- Authentic Clay-facing F3 wrapper: the preferred shifted Mayer/count packages
+produce the non-vacuous mass-gap structure, not merely the weak existential
+`ClayYangMillsTheorem`. -/
+noncomputable def clayMassGap_of_shiftedCountBound_mayerData_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (data : ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le)
+    (h_count : ShiftedConnectingClusterCountBound C_conn dim) :
+    ClayYangMillsMassGap N_c :=
+  clay_massGap_large_beta N_c wab.r wab.hr_pos wab.hr_lt1
+    (clusterPrefactorShifted wab.r C_conn A₀ dim)
+    (clusterPrefactorShifted_pos wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim)
+    (clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+      N_c wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim data h_count)
+
+#print axioms clayMassGap_of_shiftedCountBound_mayerData_ceil
+
 /-- Preferred terminal F3 wrapper with both remaining analytic sides packaged:
 `ConnectedCardDecayMayerData` for the raw Mayer/activity input and
 `ShiftedConnectingClusterCountBound` for the lattice-animal count. -/

@@ -1,3 +1,58 @@
+# v0.70.0 — Authentic mass-gap endpoint for preferred F3
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive terminal strengthening in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    noncomputable def clayMassGap_of_shiftedCountBound_mayerData_ceil
+
+The preferred shifted F3 packages now feed the non-vacuous Clay-core target
+directly:
+
+    ClayYangMillsMassGap N_c
+
+rather than only the deliberately weak existential
+`ClayYangMillsTheorem := ∃ m_phys : ℝ, 0 < m_phys`.
+
+The new wrapper consumes the same two named packages as v0.69:
+
+1. `ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le`;
+2. `ShiftedConnectingClusterCountBound C_conn dim`.
+
+It first obtains
+
+    ClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorShifted wab.r C_conn A₀ dim)
+
+from `clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil`, then
+passes that bound through `clay_massGap_large_beta`.  The older
+`clay_theorem_of_shiftedCountBound_mayerData_ceil` remains available, but it is
+now visibly downstream of the authentic mass-gap route rather than the primary
+thing to audit.
+
+This does not prove the two F3 packages.  It removes a terminal ambiguity: once
+the packages are supplied, the first-class result is the pinned Wilson
+`ClayYangMillsMassGap N_c` structure.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.clayMassGap_of_shiftedCountBound_mayerData_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.69.0 — Packaged `ClusterCorrelatorBound` endpoint for preferred F3
 
 **Released: 2026-04-24**
