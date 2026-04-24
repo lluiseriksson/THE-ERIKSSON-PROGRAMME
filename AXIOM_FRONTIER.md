@@ -1,3 +1,52 @@
+# v1.04.0 — Concrete SU(N) measurable multiplication instance
+
+**Released: 2026-04-24**
+
+## What
+
+Added concrete measurable-topology infrastructure for
+
+    ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)
+
+in `YangMills/P8_PhysicalGap/SUN_StateConstruction.lean`:
+
+    instance instSecondCountableTopologySUN
+    instance instMeasurableMulSUN
+    theorem sun_measurableMul₂
+
+`instSecondCountableTopologySUN` exposes the second-countable topology of SU(N)
+as a subtype of the finite-dimensional complex matrix space.  With the already
+available `ContinuousMul`, `BorelSpace`, and measurable space instances,
+Mathlib then synthesizes `MeasurableMul₂` for the concrete SU(N) gauge group.
+
+## Why
+
+This closes the infrastructure item left by v1.03.0.  The L8 bridge
+
+    physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_observableMeasurable
+
+can now use the concrete SU(N) measurable multiplication instance supplied by
+the repository rather than requiring callers to provide it separately.
+
+No percentage bar moves: this is measurable-structure plumbing, not F1/F2/F3.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.P8_PhysicalGap.SUN_StateConstruction
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace:
+
+    'YangMills.sun_measurableMul₂'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.03.0 — Plaquette-observable measurability bridge
 
 **Released: 2026-04-24**

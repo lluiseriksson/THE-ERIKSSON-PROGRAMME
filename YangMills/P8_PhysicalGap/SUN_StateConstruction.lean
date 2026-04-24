@@ -59,6 +59,16 @@ instance instMeasurableSpaceSUN (n : ℕ) :
 instance instBorelSpaceSUN (n : ℕ) :
     BorelSpace ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) := inferInstance
 
+instance instSecondCountableTopologySUN (n : ℕ) :
+    SecondCountableTopology ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) := by
+  haveI : SecondCountableTopology (Matrix (Fin n) (Fin n) ℂ) := by
+    change SecondCountableTopology (Fin n → Fin n → ℂ)
+    infer_instance
+  change SecondCountableTopology
+    (↥((Matrix.specialUnitaryGroup (Fin n) ℂ :
+      Set (Matrix (Fin n) (Fin n) ℂ))))
+  infer_instance
+
 /-- CompactSpace for SU(N). Proved in SUN_Compact.lean (M1b).
     Strategy: SU(N) ⊆ Pi(closedBall 0 1) [entry_norm_bound_of_unitary]
               SU(N) is closed [isClosed_unitary + continuous det]
@@ -91,6 +101,16 @@ noncomputable instance instIsTopologicalGroupSUN (n : ℕ) [NeZero n] :
       (fun p => mul_mem p.1.2 p.2.2)
   continuous_inv :=
     Continuous.subtype_mk (continuous_star.comp continuous_subtype_val) fun M => (M⁻¹).2
+
+instance instMeasurableMulSUN (n : ℕ) [NeZero n] :
+    MeasurableMul₂ ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) :=
+  inferInstance
+
+theorem sun_measurableMul₂ (n : ℕ) [NeZero n] :
+    MeasurableMul₂ ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) :=
+  inferInstance
+
+#print axioms sun_measurableMul₂
 
 /-! ## SUN_State: the concrete gauge group -/
 
