@@ -1668,6 +1668,75 @@ theorem clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
 
 #print axioms clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
 
+/-- Four-dimensional physical version of `ClusterCorrelatorBound`.
+
+Unlike `ClusterCorrelatorBound`, this is uniform only over finite volumes `L`
+at the fixed Clay spacetime dimension `physicalClayDimension = 4`. -/
+def PhysicalClusterCorrelatorBound
+    (N_c : ℕ) [NeZero N_c] (r C_clust : ℝ) : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (β : ℝ) (_hβ : 0 < β)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (_hF : ∀ U, |F U| ≤ 1)
+    (p q : ConcretePlaquette physicalClayDimension L),
+    (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+    |wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q| ≤
+    C_clust * Real.exp (-(kpParameter r) *
+        siteLatticeDist p.site q.site)
+
+/-- Preferred physical `d = 4` F3 endpoint from Mayer data and the physical
+four-dimensional shifted count frontier. -/
+theorem physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_pos.le hA.le)
+    (h_count : PhysicalShiftedConnectingClusterCountBound C_conn dim) :
+    PhysicalClusterCorrelatorBound N_c r
+      (clusterPrefactorShifted r C_conn A₀ dim) := by
+  intro L _ β hβ F hF p q hdist
+  rw [data.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    β hβ F hF p q hdist]
+  have h_connected :
+      (∑ Y ∈ (Finset.univ :
+          Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+        (data.toTruncatedActivities β F p q).K_bound Y) ≤
+        ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+    exact connectedFiniteSum_le_of_cardBucketBounds_kp_shifted
+      (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
+      r hr_pos hr_lt1 C_conn A₀ hC hA dim
+      (fun n hn => cardBucketSum_le_of_count_and_pointwise_shifted
+        (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
+        r hr_pos C_conn A₀ hA dim n
+        (h_count.apply p q n hn hdist)
+        (fun Y hY => pointwiseBucketBound_of_card_decay
+          (fun Y => (data.toTruncatedActivities β F p q).K_bound Y)
+          p q r A₀ n Y hY
+          (fun Y =>
+            data.toTruncatedActivities_K_bound_le_cardDecay β F p q Y)))
+  have h_bound :
+      (data.toTruncatedActivities β F p q).connectingBound p q ≤
+        ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+    rw [TruncatedActivities.connectingBound_eq_finset_sum]
+    exact finiteConnectingSum_eq_connectedFiniteSum
+      (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
+      (fun Y hp hq hnot =>
+        data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+          β F p q Y hp hq hnot) ▸ h_connected
+  exact ((data.toTruncatedActivities β F p q).two_point_decay_from_cluster_tsum_shifted
+    p q r hr_pos hr_lt1 C_conn A₀ hC hA dim
+    ⌈siteLatticeDist p.site q.site⌉₊ h_bound).trans
+      (clusterPrefactorShifted_rpow_ceil_le_exp
+        r hr_pos hr_lt1 C_conn A₀ hC hA dim
+        (siteLatticeDist p.site q.site))
+
+#print axioms physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+
 /-- Preferred F3 endpoint into the older analytic witness bundle. -/
 noncomputable def clayWitnessHyp_of_shiftedCountBound_mayerData_ceil
     (N_c : ℕ) [NeZero N_c]
@@ -1939,6 +2008,22 @@ theorem wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
     β hβ F hF p q hdist
 
 end ShiftedF3MayerPackage
+
+/-- Physical `d = 4` F3 endpoint from independently-produced Mayer and
+physical count packages. -/
+theorem physicalClusterCorrelatorBound_of_shiftedF3Subpackages
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    PhysicalClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim) :=
+  physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+    N_c wab.r wab.hr_pos wab.hr_lt1
+    count.C_conn mayer.A₀ count.hC mayer.hA count.dim
+    mayer.data count.h_count
+
+#print axioms physicalClusterCorrelatorBound_of_shiftedF3Subpackages
 
 /-- SU(1) canary for the shifted F3 Mayer interface.
 

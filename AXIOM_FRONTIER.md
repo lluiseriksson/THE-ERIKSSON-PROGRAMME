@@ -1,3 +1,59 @@
+# v1.27.0 — Physical ClusterCorrelatorBound endpoint exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added a four-dimensional physical correlator target and constructors in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    PhysicalClusterCorrelatorBound
+    physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+    physicalClusterCorrelatorBound_of_shiftedF3Subpackages
+
+`PhysicalClusterCorrelatorBound N_c r C_clust` is the physical-dimension
+analogue of `ClusterCorrelatorBound`: it is uniform over finite volumes `L`,
+but fixes the lattice dimension to `physicalClayDimension = 4`.
+
+## Why
+
+No percentage bar moves.  This is the first direct bridge from the physical
+four-dimensional count frontier to a four-dimensional exponential connected
+correlator bound.  It composes:
+
+    ConnectedCardDecayMayerData
+    PhysicalShiftedConnectingClusterCountBound C_conn dim
+
+into:
+
+    PhysicalClusterCorrelatorBound N_c r
+      (clusterPrefactorShifted r C_conn A₀ dim)
+
+and the package-level wrapper consumes:
+
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+This deliberately remains weaker than the all-dimensions
+`ClusterCorrelatorBound`.  It is the honest `d = 4` F3 output needed before a
+terminal L8 physical wrapper, not a global replacement for the existing
+dimension-uniform route.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: both new physical F3 constructors print the canonical project
+oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.26.0 — Physical d=4 terminal endpoints exposed
 
 **Released: 2026-04-25**

@@ -39,6 +39,24 @@ distance profile to `ConcretePlaquette physicalClayDimension L` with
 So global analytic inputs still give the dimension-uniform route, and the final
 non-vacuous Clay target can now be stated directly at the physical dimension.
 
+There is also a physical four-dimensional F3 output:
+
+    PhysicalClusterCorrelatorBound N_c r C_clust
+
+and package constructors:
+
+    physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+    physicalClusterCorrelatorBound_of_shiftedF3Subpackages
+
+The second consumes exactly:
+
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+and returns the exponential connected-correlator bound at `d = 4`, uniform in
+finite volume `L`.  This is the preferred output when the count proof is only
+physical-dimension uniform rather than uniform over all dimensions.
+
 The single package now also exposes its finite-volume consumers directly:
 
     ShiftedF3MayerCountPackage.toTruncatedActivities
@@ -211,6 +229,9 @@ What is already closed locally:
     PhysicalShiftedF3CountPackage.ofBound
     PhysicalShiftedF3CountPackage.apply
     PhysicalShiftedF3CountPackage.toAt
+    PhysicalClusterCorrelatorBound
+    physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+    physicalClusterCorrelatorBound_of_shiftedF3Subpackages
     ShiftedF3CountPackage.toAt
     ShiftedF3CountPackage.toDim
     ShiftedF3CountPackage.ofBound
