@@ -1,3 +1,52 @@
+# v0.88.0 — Turn SUN Lieb-Robinson axioms into explicit inputs
+
+**Released: 2026-04-24**
+
+## What
+
+Removed two self-contained P8 axioms from
+`YangMills/P8_PhysicalGap/SUN_LiebRobin.lean`:
+
+    sun_variance_decay
+    sun_lieb_robinson_bound
+
+They were consumed only by `sun_locality_to_covariance` in the same file.
+The theorem now takes the two physical inputs explicitly:
+
+    hVar : HasVarianceDecay (sunMarkovSemigroup N_c)
+    hLR  : LiebRobinsonBound (d := d) (sunMarkovSemigroup N_c)
+
+and then applies the already-proved abstract locality bridge
+`locality_to_static_covariance_v2`.  This keeps the formal covariance-decay
+bridge while no longer declaring SU(N)-specific variance decay or
+Lieb-Robinson as global axioms.
+
+This does not prove those two physical inputs.  It changes their status from
+declared axioms to theorem hypotheses, matching the repository's current
+frontier discipline.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.P8_PhysicalGap.SUN_LiebRobin
+
+Pinned trace:
+
+    'YangMills.sun_locality_to_covariance'
+    depends on axioms:
+    [lieDerivReg_all, propext, sunGeneratorData, Classical.choice,
+     Quot.sound, hille_yosida_semigroup, sunDirichletForm_contraction,
+     Experimental.LieSUN.matExp_traceless_det_one]
+
+The deleted names no longer occur as `axiom` declarations:
+
+    git grep "^axiom sun_variance_decay\\|^axiom sun_lieb_robinson_bound" -- YangMills
+
+returns no matches. No `sorry`.
+
+---
+
 # v0.87.0 — Delete unused legacy SZ-to-clustering axiom
 
 **Released: 2026-04-24**
@@ -2919,7 +2968,7 @@ are in `docs/phase1-llogl-obstruction.md`.
 
 ### Orphaned (dead-code) axioms by file
 - `YangMills/P8_PhysicalGap/BalabanToLSI.lean`: 2 (after v0.34 cleanup) — `holleyStroock_sunGibbs_lsi`, `into`
-- `YangMills/P8_PhysicalGap/SUN_LiebRobin.lean`: 2 — `sun_variance_decay`, `sun_lieb_robinson_bound`
+- `YangMills/P8_PhysicalGap/SUN_LiebRobin.lean`: 0 after v0.88.0 — former `sun_variance_decay`, `sun_lieb_robinson_bound` now explicit theorem inputs
 - `YangMills/P8_PhysicalGap/SUN_DirichletCore.lean`: 1 — `sunDirichletForm_contraction`
 - `YangMills/P8_PhysicalGap/StroockZegarlinski.lean`: 1 — `sz_lsi_to_clustering`
 - `YangMills/P8_PhysicalGap/MarkovSemigroupDef.lean`: 1 — `dirichlet_lipschitz_contraction`
@@ -3055,8 +3104,6 @@ The legacy tables below are preserved for historical accuracy but the line
 |-------|------|-------|
 | `hille_yosida_semigroup` | MarkovSemigroupDef.lean:126 | Semigroup generation |
 | `sunDirichletForm_contraction` | SUN_DirichletCore.lean:178 | Dirichlet contraction |
-| `sun_variance_decay` | SUN_LiebRobin.lean:41 | Variance decay |
-| `sun_lieb_robinson_bound` | SUN_LiebRobin.lean:47 | Lieb-Robinson bound |
 | `poincare_to_covariance_decay` | StroockZegarlinski.lean:21 | Covariance decay |
 
 ### ClayCore/BalabanRG/ (RG machinery — not in sun_physical_mass_gap BFS path)
@@ -3190,8 +3237,8 @@ Taken from `grep -rn '^axiom ' YangMills/ --include='*.lean' | grep -v Experimen
 | 4 | `P8_PhysicalGap/StroockZegarlinski.lean:21` | `poincare_to_covariance_decay` | Poincar  covariance decay (generic semigroup fact) |
 | 5 | `P8_PhysicalGap/MarkovSemigroupDef.lean:126` | `hille_yosida_semigroup` | HilleYosida: closed densely-defined generator  contraction semigroup |
 | 6 | `P8_PhysicalGap/SUN_DirichletCore.lean:178` | `sunDirichletForm_contraction` | Markov contraction of the SU(N) Dirichlet form |
-| 7 | `P8_PhysicalGap/SUN_LiebRobin.lean:41` | `sun_variance_decay` | Variance decay on compact SU(N) |
-| 8 | `P8_PhysicalGap/SUN_LiebRobin.lean:47` | `sun_lieb_robinson_bound` | LiebRobinson bound specialised to SU(N) |
+| 7 | `P8_PhysicalGap/SUN_LiebRobin.lean` | retired v0.88.0: former `sun_variance_decay` | Now explicit theorem input |
+| 8 | `P8_PhysicalGap/SUN_LiebRobin.lean` | retired v0.88.0: former `sun_lieb_robinson_bound` | Now explicit theorem input |
 | 9 | `L8_Terminal/ClayTheorem.lean:51` | `yangMills_continuum_mass_gap` | Top-level Clay statement glue |
 
 ### Off the main oracle chain (RG branch  not consumed by Clay)
@@ -3245,14 +3292,14 @@ but won't match the `^axiom ` grep.
 | `physical_rg_rates_from_E26` | 2 | Live (RG branch; not on Clay path) |
 | `p91_tight_weak_coupling_window` | 0 | Retired v0.86.0; replaced by data-driven theorem `p91_tight_weak_coupling_window_theorem` |
 | `lsi_withDensity_density_bound` | 1 | **DEAD  no consumers** |
-| `sun_variance_decay` | 1 | **DEAD  no consumers** |
-| `sun_lieb_robinson_bound` | 1 | **DEAD  no consumers** |
+| `sun_variance_decay` | 0 | Retired v0.88.0; now explicit input to `sun_locality_to_covariance` |
+| `sun_lieb_robinson_bound` | 0 | Retired v0.88.0; now explicit input to `sun_locality_to_covariance` |
 
 ### Cleanup recommendation
 
 - **Remove 3 dead axioms** (`lsi_withDensity_density_bound`, `sun_variance_decay`,
-  `sun_lieb_robinson_bound`)  they are declared but never referenced by any other
-  file, so they add nothing except rhetoric. Deletion is safe.
+  `sun_lieb_robinson_bound`)  the two SUN names were retired in v0.88.0 by
+  turning them into explicit theorem inputs.
 - **Keep the 7 live intermediate/RG-branch axioms** but label them as such in their
   source files and rewrite their docstrings to say "not consumed by the Clay
   statement; this exists to support ".
