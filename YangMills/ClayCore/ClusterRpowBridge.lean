@@ -55,7 +55,28 @@ theorem two_point_decay_from_cluster_tsum
   exact (T.abs_connectingSum_le_connectingBound p q).trans
     (h_bound.trans_eq h_factored)
 
+/-- Shifted KP-series variant of `two_point_decay_from_cluster_tsum`. -/
+theorem two_point_decay_from_cluster_tsum_shifted
+    {ι : Type*} [DecidableEq ι]
+    (T : TruncatedActivities ι) (p q : ι)
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim dist : ℕ)
+    (h_bound : T.connectingBound p q ≤
+      ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
+        r ^ (n + dist)) :
+    |T.connectingSum p q| ≤
+      clusterPrefactorShifted r C_conn A₀ dim * r ^ dist := by
+  have h_factored :
+      ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
+          r ^ (n + dist) =
+        clusterPrefactorShifted r C_conn A₀ dim * r ^ dist :=
+    connecting_cluster_tsum_le_shifted r hr_pos hr_lt1 C_conn A₀ hC hA dim dist
+  exact (T.abs_connectingSum_le_connectingBound p q).trans
+    (h_bound.trans_eq h_factored)
+
 #print axioms TruncatedActivities.two_point_decay_from_cluster_tsum
+#print axioms TruncatedActivities.two_point_decay_from_cluster_tsum_shifted
 
 end TruncatedActivities
 
@@ -155,6 +176,35 @@ theorem clusterPrefactor_rpow_ceil_le_exp
     _ ≤ Real.exp (-(kpParameter r) * (⌈x⌉₊ : ℝ)) := hceil_exp
     _ ≤ Real.exp (-(kpParameter r) * x) := hexp_mono
 
+/-- Shifted-prefactor variant of `clusterPrefactor_rpow_ceil_le_exp`. -/
+theorem clusterPrefactorShifted_rpow_ceil_le_exp
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ) (x : ℝ) :
+    clusterPrefactorShifted r C_conn A₀ dim * r ^ (⌈x⌉₊) ≤
+      clusterPrefactorShifted r C_conn A₀ dim *
+        Real.exp (-(kpParameter r) * x) := by
+  have hpref_nonneg :
+      0 ≤ clusterPrefactorShifted r C_conn A₀ dim :=
+    (clusterPrefactorShifted_pos r hr_pos hr_lt1 C_conn A₀ hC hA dim).le
+  apply mul_le_mul_of_nonneg_left ?_ hpref_nonneg
+  have hceil : x ≤ (⌈x⌉₊ : ℝ) := Nat.le_ceil x
+  have hceil_nonneg : 0 ≤ (⌈x⌉₊ : ℝ) := by exact_mod_cast Nat.zero_le ⌈x⌉₊
+  have hkp_pos : 0 < kpParameter r := kpParameter_pos hr_pos hr_lt1
+  have hceil_exp :
+      r ^ ((⌈x⌉₊ : ℝ)) ≤ Real.exp (-(kpParameter r) * (⌈x⌉₊ : ℝ)) :=
+    rpow_le_exp_kpParameter hr_pos hr_lt1 hceil_nonneg
+  have hexp_mono :
+      Real.exp (-(kpParameter r) * (⌈x⌉₊ : ℝ)) ≤
+        Real.exp (-(kpParameter r) * x) := by
+    apply Real.exp_le_exp.mpr
+    nlinarith [mul_le_mul_of_nonneg_left hceil hkp_pos.le]
+  calc
+    r ^ (⌈x⌉₊)
+        = r ^ ((⌈x⌉₊ : ℝ)) := by rw [Real.rpow_natCast]
+    _ ≤ Real.exp (-(kpParameter r) * (⌈x⌉₊ : ℝ)) := hceil_exp
+    _ ≤ Real.exp (-(kpParameter r) * x) := hexp_mono
+
 /-- Canonical-ceiling version of `clusterCorrelatorBound_of_truncatedActivities`.
 Here the discrete cluster distance is fixed to `⌈siteLatticeDist⌉₊`, so the
 geometric comparison is proved internally by
@@ -195,6 +245,47 @@ theorem clusterCorrelatorBound_of_truncatedActivities_ceil
   intro d L _ _ β hβ F hF p q hdist
   exact clusterPrefactor_rpow_ceil_le_exp
     r hr_pos hr_lt1 C_conn A₀ hC hA dim (siteLatticeDist p.site q.site)
+
+/-- Shifted KP-series version of
+`clusterCorrelatorBound_of_truncatedActivities_ceil`. -/
+theorem clusterCorrelatorBound_of_truncatedActivities_ceil_shifted
+    (N_c : ℕ) [NeZero N_c]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (T : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      TruncatedActivities (ConcretePlaquette d L))
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (T β F p q).connectingSum p q)
+    (h_bound : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      (T β F p q).connectingBound p q ≤
+        ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    ClusterCorrelatorBound N_c r
+      (clusterPrefactorShifted r C_conn A₀ dim) := by
+  intro d L _ _ β hβ F hF p q hdist
+  rw [h_mayer β hβ F hF p q hdist]
+  exact ((T β F p q).two_point_decay_from_cluster_tsum_shifted p q
+    r hr_pos hr_lt1 C_conn A₀ hC hA dim
+    ⌈siteLatticeDist p.site q.site⌉₊
+    (h_bound β hβ F hF p q hdist)).trans
+    (clusterPrefactorShifted_rpow_ceil_le_exp
+      r hr_pos hr_lt1 C_conn A₀ hC hA dim (siteLatticeDist p.site q.site))
 
 /-- Finite-sum version of `clusterCorrelatorBound_of_truncatedActivities_ceil`.
 
@@ -241,7 +332,9 @@ theorem clusterCorrelatorBound_of_finiteConnectingBounds_ceil
   exact h_finite_bound β hβ F hF p q hdist
 
 #print axioms clusterPrefactor_rpow_ceil_le_exp
+#print axioms clusterPrefactorShifted_rpow_ceil_le_exp
 #print axioms clusterCorrelatorBound_of_truncatedActivities_ceil
+#print axioms clusterCorrelatorBound_of_truncatedActivities_ceil_shifted
 #print axioms clusterCorrelatorBound_of_finiteConnectingBounds_ceil
 
 /-- If `K_bound` vanishes on disconnected polymers containing `p` and `q`,

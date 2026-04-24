@@ -1,3 +1,53 @@
+# v0.64.0 — Shifted KP series reaches ClusterCorrelatorBound
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 bridge support in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem TruncatedActivities.two_point_decay_from_cluster_tsum_shifted
+    theorem clusterPrefactorShifted_rpow_ceil_le_exp
+    theorem clusterCorrelatorBound_of_truncatedActivities_ceil_shifted
+
+This propagates v0.63.0's shifted KP series
+
+    C_conn * (n + 1)^dim * A₀ * r^(n + dist)
+
+from the series layer to the abstract `ClusterCorrelatorBound` bridge.  If an
+abstract connecting bound is controlled by the shifted series, the resulting
+two-point decay has the same exponential form as before, with the shifted
+prefactor
+
+    clusterPrefactorShifted r C_conn A₀ dim.
+
+The unshifted API is left intact.  Downstream F3 wrappers can now choose the
+realistic nonzero minimal-bucket profile without redoing the KP summability or
+geometric comparison work.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.TruncatedActivities.two_point_decay_from_cluster_tsum_shifted'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clusterPrefactorShifted_rpow_ceil_le_exp' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clusterCorrelatorBound_of_truncatedActivities_ceil_shifted'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.63.0 — Shifted KP series for nonempty cardinality buckets
 
 **Released: 2026-04-24**
