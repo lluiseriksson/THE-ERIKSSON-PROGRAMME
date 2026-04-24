@@ -1836,10 +1836,46 @@ theorem clay_theorem_of_shiftedF3MayerCountPackage
   clay_theorem_of_shiftedCountBound_mayerData_ceil
     N_c wab pkg.C_conn pkg.A₀ pkg.hC pkg.hA pkg.dim pkg.data pkg.h_count
 
+/-- The single-package mass-gap endpoint has decay rate `kpParameter wab.r`. -/
+theorem clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    (clayMassGap_of_shiftedF3MayerCountPackage N_c wab pkg).m =
+      kpParameter wab.r := rfl
+
+/-- The single-package mass-gap endpoint has the shifted cluster prefactor. -/
+theorem clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    (clayMassGap_of_shiftedF3MayerCountPackage N_c wab pkg).C =
+      clusterPrefactorShifted wab.r pkg.C_conn pkg.A₀ pkg.dim := rfl
+
+/-- The connected-decay endpoint has decay rate `kpParameter wab.r`. -/
+theorem clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mass_eq
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    (clayConnectedCorrDecay_of_shiftedF3MayerCountPackage N_c wab pkg).m =
+      kpParameter wab.r := rfl
+
+/-- The connected-decay endpoint has the shifted cluster prefactor. -/
+theorem clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_prefactor_eq
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    (clayConnectedCorrDecay_of_shiftedF3MayerCountPackage N_c wab pkg).C =
+      clusterPrefactorShifted wab.r pkg.C_conn pkg.A₀ pkg.dim := rfl
+
 #print axioms clusterCorrelatorBound_of_shiftedF3MayerCountPackage
 #print axioms clayWitnessHyp_of_shiftedF3MayerCountPackage
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage
 #print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackage
 #print axioms clay_theorem_of_shiftedF3MayerCountPackage
+#print axioms clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
+#print axioms clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq
+#print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mass_eq
+#print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_prefactor_eq
 
 end YangMills

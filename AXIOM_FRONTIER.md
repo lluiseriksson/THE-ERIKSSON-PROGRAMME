@@ -1,3 +1,54 @@
+# v0.76.0 — Single-package F3 mass/prefactor canaries
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive audit canaries in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
+    theorem clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq
+    theorem clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mass_eq
+    theorem clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_prefactor_eq
+
+For the single preferred F3 package, the extracted endpoints have the expected
+constants definitionally:
+
+    mass      = kpParameter wab.r
+    prefactor = clusterPrefactorShifted wab.r pkg.C_conn pkg.A₀ pkg.dim
+
+These are regression canaries: future refactors of the F3 terminal route should
+not silently change the mass parameter or the prefactor carried into
+`ClayYangMillsMassGap` / `ClayConnectedCorrDecay`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.clayMassGap_of_shiftedF3MayerCountPackage_mass_eq'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mass_eq'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_prefactor_eq'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.75.0 — Single preferred shifted F3 package
 
 **Released: 2026-04-24**
