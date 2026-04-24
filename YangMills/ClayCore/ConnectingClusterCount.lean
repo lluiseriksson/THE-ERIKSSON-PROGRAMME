@@ -76,4 +76,26 @@ theorem connecting_cluster_count_finite
     Finset.card_univ
   exact h1.trans h2.le
 
+/-- Any connected polymer containing `p` and `q` lies in a canonical
+distance-indexed cardinality bucket: its size is an "extra size" `n`
+plus the ceiling of the lattice distance between `p` and `q`.
+
+This is the exact natural-number decomposition used by the F3
+connecting-cluster series
+`n + ⌈siteLatticeDist p.site q.site⌉₊`. -/
+theorem connected_polymer_card_eq_extra_add_dist
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L)
+    (X : Finset (ConcretePlaquette d L))
+    (hpX : p ∈ X) (hqX : q ∈ X) (hconn : PolymerConnected X) :
+    ∃ n : ℕ, X.card = n + ⌈siteLatticeDist p.site q.site⌉₊ := by
+  have hceil_le :
+      ⌈siteLatticeDist p.site q.site⌉₊ ≤ X.card :=
+    ceil_siteLatticeDist_le_polymer_card p q X hpX hqX hconn
+  use X.card - ⌈siteLatticeDist p.site q.site⌉₊
+  omega
+
+#print axioms connecting_cluster_count_finite
+#print axioms connected_polymer_card_eq_extra_add_dist
+
 end YangMills

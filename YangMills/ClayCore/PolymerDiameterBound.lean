@@ -144,4 +144,20 @@ theorem polymer_size_ge_site_dist_succ
     linarith
   linarith
 
+/-- Natural-number form of `polymer_size_ge_site_dist_succ`.
+Any connected polymer containing `p` and `q` has cardinality at least
+the ceiling of the lattice distance between them. -/
+theorem ceil_siteLatticeDist_le_polymer_card
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L)
+    (X : Finset (ConcretePlaquette d L))
+    (hpX : p ∈ X) (hqX : q ∈ X) (hconn : PolymerConnected X) :
+    ⌈siteLatticeDist p.site q.site⌉₊ ≤ X.card := by
+  have hdist_card : siteLatticeDist p.site q.site ≤ (X.card : ℝ) := by
+    have h := polymer_size_ge_site_dist_succ p q X hpX hqX hconn
+    linarith
+  exact Nat.ceil_le.mpr hdist_card
+
+#print axioms ceil_siteLatticeDist_le_polymer_card
+
 end YangMills
