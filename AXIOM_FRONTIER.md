@@ -1,3 +1,39 @@
+# v0.87.0 — Delete unused legacy SZ-to-clustering axiom
+
+**Released: 2026-04-24**
+
+## What
+
+Deleted the orphaned backward-compatibility axiom
+`legacy_sz_lsi_to_clustering` from
+`YangMills/P8_PhysicalGap/BalabanToLSI.lean`.
+
+Source search before deletion found only the declaration itself, so the axiom
+was not feeding the Clay path or any intermediate theorem.  The
+active Stroock-Zegarlinski route remains in
+`YangMills/P8_PhysicalGap/StroockZegarlinski.lean`, where the live frontier is
+the separate `poincare_to_covariance_decay` bridge.
+
+This is a pure dead-axiom deletion.  It does not prove the active
+Stroock-Zegarlinski covariance-decay theorem and does not alter the normalized
+Gibbs LSI frontier `lsi_normalized_gibbs_from_haar`.
+
+## Verification
+
+Build:
+
+    lake build YangMills.P8_PhysicalGap.BalabanToLSI
+
+Post-delete search:
+
+    git grep legacy_sz_lsi_to_clustering -- YangMills
+
+returns no matches.
+
+No `legacy_sz_lsi_to_clustering` axiom remains. No `sorry`.
+
+---
+
 # v0.86.0 — Retire obsolete P91 weak-coupling-window axiom
 
 **Released: 2026-04-24**

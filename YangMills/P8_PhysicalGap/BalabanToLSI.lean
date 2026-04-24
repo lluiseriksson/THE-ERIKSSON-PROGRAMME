@@ -876,12 +876,6 @@ theorem balaban_rg_uniform_lsi
   ⟨α_haar * Real.exp (-2 * β), mul_pos hα_haar (Real.exp_pos _),
    fun _L => holleyStroock_sunGibbs_lsi N_c hN_c β (hβ₀.trans_le hβ) α_haar hα_haar hHaar⟩
 
-axiom legacy_sz_lsi_to_clustering
-    {Ω : Type*} [MeasurableSpace Ω]
-    (gibbsFamily : ℕ → Measure Ω) (E : (Ω → ℝ) → ℝ) (α_star : ℝ) :
-    DLR_LSI gibbsFamily E α_star →
-    ∃ C ξ : ℝ, 0 < ξ ∧ 0 < C ∧ ∀ L : ℕ, ExponentialClustering (gibbsFamily L) C ξ
-
 theorem sun_gibbs_dlr_lsi
     (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
     (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
