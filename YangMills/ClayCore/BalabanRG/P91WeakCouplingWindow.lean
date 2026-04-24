@@ -23,7 +23,7 @@ theorem coeff_bound (N_c : ℕ) [NeZero N_c] (r_k : ℝ) :
 theorem denominator_pos_tight (N_c : ℕ) [NeZero N_c]
     (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
     (hβ_tight : β_k < 1 / (balabanBetaCoeff N_c + |r_k|))
-    (hr : |r_k| < balabanBetaCoeff N_c / 2) :
+    (_hr : |r_k| < balabanBetaCoeff N_c / 2) :
     0 < 1 - (balabanBetaCoeff N_c - r_k) * β_k := by
   have hb0 : 0 < balabanBetaCoeff N_c := balabanBetaCoeff_pos N_c
   have habs : 0 ≤ |r_k| := abs_nonneg r_k
@@ -47,11 +47,8 @@ theorem denominator_pos_from_tight (N_c : ℕ) [NeZero N_c]
     0 < 1 - (balabanBetaCoeff N_c - r_k) * β_k :=
   denominator_pos_tight N_c β_k r_k hβ hβ_tight hr
 
-/-- The actual P91 A.2 §3 quantitative hypothesis. -/
-axiom p91_tight_weak_coupling_window (N_c : ℕ) [NeZero N_c]
-    (β_k r_k : ℝ) (hβ : 1 ≤ β_k)
-    (hr : |r_k| < balabanBetaCoeff N_c / 2) :
-    β_k < 1 / (balabanBetaCoeff N_c + |r_k|)
+#print axioms denominator_pos_tight
+#print axioms denominator_pos_from_tight
 
 end
 

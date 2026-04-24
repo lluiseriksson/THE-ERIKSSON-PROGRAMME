@@ -1,3 +1,53 @@
+# v0.86.0 — Retire obsolete P91 weak-coupling-window axiom
+
+**Released: 2026-04-24**
+
+## What
+
+Deleted the stale RG-branch axiom
+`p91_tight_weak_coupling_window` from
+`YangMills/ClayCore/BalabanRG/P91WeakCouplingWindow.lean`.
+
+The axiom had been superseded by the data-driven theorem
+
+    p91_tight_weak_coupling_window_theorem
+
+in `YangMills/ClayCore/BalabanRG/P91WindowClosed.lean`, which derives the
+tight weak-coupling window from `P91RecursionData` via
+`p91_tight_window_of_data_v2`.  No downstream file consumed the old axiom
+directly; `git grep "^axiom"` on `P91WeakCouplingWindow.lean` is now empty.
+
+The remaining wrappers in `P91WeakCouplingWindow.lean` are purely algebraic:
+
+    theorem denominator_pos_tight
+    theorem denominator_pos_from_tight
+
+They consume the tight-window bound as an explicit hypothesis and produce the
+positive-denominator conclusion.  This removes one declared non-Experimental
+axiom from the RG branch, with no claim that the full P91 recursion analysis is
+complete without its data package.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.BalabanRG.P91WeakCouplingWindow
+    lake build YangMills.ClayCore.BalabanRG.P91WindowClosed
+
+Pinned traces:
+
+    'YangMills.ClayCore.denominator_pos_tight'
+    depends on axioms:
+    [propext, choice, Quot.sound]
+
+    'YangMills.ClayCore.denominator_pos_from_tight'
+    depends on axioms:
+    [propext, choice, Quot.sound]
+
+No `p91_tight_weak_coupling_window` axiom remains. No `sorry`.
+
+---
+
 # v0.85.0 — Small-beta uniform-rpow connected-decay endpoint
 
 **Released: 2026-04-24**
@@ -2827,7 +2877,7 @@ are in `docs/phase1-llogl-obstruction.md`.
 
 ## Current axiom inventory (non-Experimental)
 
-- **Total declared axioms (non-Experimental):** 10
+- **Total declared axioms (non-Experimental):** 9 after v0.86.0
 - **Axioms reached by `clay_millennium_yangMills`:** 0
 - **Orphaned axioms (declared but unreachable from Clay):** 10
 
@@ -2838,7 +2888,7 @@ are in `docs/phase1-llogl-obstruction.md`.
 - `YangMills/P8_PhysicalGap/StroockZegarlinski.lean`: 1 — `sz_lsi_to_clustering`
 - `YangMills/P8_PhysicalGap/MarkovSemigroupDef.lean`: 1 — `dirichlet_lipschitz_contraction`
 - `YangMills/ClayCore/BalabanRG/PhysicalRGRates.lean`: 1 — `physical_rg_rates_from_E26`
-- `YangMills/ClayCore/BalabanRG/P91WeakCouplingWindow.lean`: 1 — `p91_tight_weak_coupling_window`
+- `YangMills/ClayCore/BalabanRG/P91WeakCouplingWindow.lean`: 0 after v0.86.0 — former `p91_tight_weak_coupling_window` retired
 
 ### Remaining gaps (sorryAx only)
 Three `sorry` in `BalabanToLSI.lean`, documented inline as ACCEPTED GAPs:
@@ -2977,7 +3027,6 @@ The legacy tables below are preserved for historical accuracy but the line
 
 | Axiom | File | Notes |
 |-------|------|-------|
-| `p91_tight_weak_coupling_window` | P91WeakCouplingWindow.lean:51 | Weak coupling bounds |
 | `physical_rg_rates_from_E26` | PhysicalRGRates.lean:101 | RG rate data |
 
 ---
@@ -3114,7 +3163,7 @@ Taken from `grep -rn '^axiom ' YangMills/ --include='*.lean' | grep -v Experimen
 | # | File | Axiom |
 |---|------|-------|
 | 10 | `ClayCore/BalabanRG/PhysicalRGRates.lean:101` | `physical_rg_rates_from_E26` |
-| 11 | `ClayCore/BalabanRG/P91WeakCouplingWindow.lean:51` | `p91_tight_weak_coupling_window` |
+| 11 | `ClayCore/BalabanRG/P91WeakCouplingWindow.lean` | retired v0.86.0: former `p91_tight_weak_coupling_window` |
 
 (These feed the Balaban RG branch; ask `#print axioms yang_mills_mass_gap`
 whether they're reached.)
@@ -3158,7 +3207,7 @@ but won't match the `^axiom ` grep.
 | `poincare_to_covariance_decay` | 2 | Live (intermediate; not on Clay path) |
 | `sunDirichletForm_contraction` | 2 | Live (intermediate; not on Clay path) |
 | `physical_rg_rates_from_E26` | 2 | Live (RG branch; not on Clay path) |
-| `p91_tight_weak_coupling_window` | 2 | Live (RG branch; not on Clay path) |
+| `p91_tight_weak_coupling_window` | 0 | Retired v0.86.0; replaced by data-driven theorem `p91_tight_weak_coupling_window_theorem` |
 | `lsi_withDensity_density_bound` | 1 | **DEAD  no consumers** |
 | `sun_variance_decay` | 1 | **DEAD  no consumers** |
 | `sun_lieb_robinson_bound` | 1 | **DEAD  no consumers** |
