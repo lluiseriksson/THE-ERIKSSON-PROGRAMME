@@ -371,6 +371,32 @@ theorem connectedFiniteSum_le_of_cardBucketBounds
   rw [connectedFiniteSum_eq_cardBucketSum K_bound p q]
   exact (Finset.sum_le_sum h_bucket).trans h_partial_le_tsum
 
+/-- Bucket-bound consumer with the KP partial-sum comparison discharged
+internally by `connecting_cluster_partial_sum_le_tsum`. -/
+theorem connectedFiniteSum_le_of_cardBucketBounds_kp
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (h_bucket : ∀ n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1),
+      (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+          if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+            then K_bound Y else 0) ≤
+        C_conn * (n : ℝ) ^ dim * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y), K_bound Y) ≤
+      ∑' n : ℕ, C_conn * (n : ℝ) ^ dim * A₀ *
+        r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+  exact connectedFiniteSum_le_of_cardBucketBounds K_bound p q r C_conn A₀ dim
+    h_bucket
+    (connecting_cluster_partial_sum_le_tsum r hr_pos hr_lt1 C_conn A₀ hC hA
+      dim ⌈siteLatticeDist p.site q.site⌉₊
+      (Fintype.card (ConcretePlaquette d L) + 1))
+
 /-- Connected finite-sum version of
 `clusterCorrelatorBound_of_finiteConnectingBounds_ceil`.
 
@@ -427,6 +453,7 @@ theorem clusterCorrelatorBound_of_connectedFiniteBounds_ceil
 #print axioms finiteConnectingSum_eq_connectedFiniteSum
 #print axioms connectedFiniteSum_eq_cardBucketSum
 #print axioms connectedFiniteSum_le_of_cardBucketBounds
+#print axioms connectedFiniteSum_le_of_cardBucketBounds_kp
 #print axioms clusterCorrelatorBound_of_connectedFiniteBounds_ceil
 
 /-! ### Terminal wrapper from connected finite KP data -/

@@ -56,6 +56,29 @@ theorem connecting_cluster_tsum_summable
   rw [goal_eq]
   exact hbase.mul_left _
 
+/-- The connecting-cluster summand is nonnegative when the physical
+constants are positive. -/
+theorem connecting_cluster_summand_nonneg
+    (r : ℝ) (hr_pos : 0 < r)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim dist_0x n : ℕ) :
+    0 ≤ C_conn * (n : ℝ) ^ dim * A₀ * r ^ (n + dist_0x) := by
+  positivity
+
+/-- Any finite partial sum of the nonnegative connecting-cluster series is
+bounded by its `tsum`. -/
+theorem connecting_cluster_partial_sum_le_tsum
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim dist_0x M : ℕ) :
+    Finset.sum (Finset.range M) (fun n : ℕ =>
+        C_conn * (n : ℝ) ^ dim * A₀ * r ^ (n + dist_0x)) ≤
+      ∑' n : ℕ, C_conn * (n : ℝ) ^ dim * A₀ *
+        r ^ (n + dist_0x) := by
+  exact (connecting_cluster_tsum_summable r hr_pos hr_lt1 C_conn A₀ dim dist_0x).sum_le_tsum
+    (Finset.range M)
+    (fun n _ => connecting_cluster_summand_nonneg r hr_pos C_conn A₀ hC hA dim dist_0x n)
+
 /-! ### D2: Tsum factoring -/
 
 /-- The tsum factors through the `r^dist_0x` prefactor. -/
@@ -116,5 +139,8 @@ theorem rpow_eq_exp_kpParameter
   unfold kpParameter
   rw [show -(-Real.log r / 2) * (dist : ℝ) * 2 = (dist : ℝ) * Real.log r by ring,
       Real.exp_nat_mul, Real.exp_log hr_pos]
+
+#print axioms connecting_cluster_summand_nonneg
+#print axioms connecting_cluster_partial_sum_le_tsum
 
 end YangMills

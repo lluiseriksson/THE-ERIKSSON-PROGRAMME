@@ -1,3 +1,51 @@
+# v0.54.0 — F3 KP partial-sum comparison discharged
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 summability cleanup:
+
+    theorem connecting_cluster_summand_nonneg
+    theorem connecting_cluster_partial_sum_le_tsum
+
+in `YangMills/ClayCore/ClusterSeriesBound.lean`, plus the consumer
+
+    theorem connectedFiniteSum_le_of_cardBucketBounds_kp
+
+in `YangMills/ClayCore/ClusterRpowBridge.lean`.
+
+The new `ClusterSeriesBound` lemmas prove that the KP summand
+
+    C_conn * n^dim * A₀ * r^(n + dist)
+
+is nonnegative for positive constants, and therefore every finite partial
+sum over `Finset.range M` is bounded by the corresponding `tsum`.
+The new bridge theorem uses this internally, so the connected finite F3
+consumer no longer asks callers for a separate `h_partial_le_tsum`.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ClusterSeriesBound
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.connecting_cluster_summand_nonneg' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.connecting_cluster_partial_sum_le_tsum' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.connectedFiniteSum_le_of_cardBucketBounds_kp' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.53.0 — F3 bucket-bound consumer for connected finite sums
 
 **Released: 2026-04-24**
