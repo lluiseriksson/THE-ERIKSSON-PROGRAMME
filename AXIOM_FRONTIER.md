@@ -1,3 +1,46 @@
+# v0.53.0 — F3 bucket-bound consumer for connected finite sums
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 consumer in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem connectedFiniteSum_le_of_cardBucketBounds
+        (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+        (p q : ConcretePlaquette d L)
+        (r C_conn A₀ : ℝ) (dim : ℕ)
+        (h_bucket : ∀ n ∈ range (...),
+          bucket_sum n ≤ C_conn * n^dim * A₀ *
+            r^(n + ⌈siteLatticeDist p.site q.site⌉₊))
+        (h_partial_le_tsum : finite_KP_partial_sum ≤ KP_tsum) :
+        connected_finite_sum ≤ KP_tsum
+
+It consumes the v0.52 bucket decomposition: bound each finite cardinality
+bucket by the corresponding KP summand, compare the resulting finite partial
+sum with the infinite KP series, and obtain the connected finite estimate
+required by `clusterCorrelatorBound_of_connectedFiniteBounds_ceil`.
+
+This narrows the remaining connected KP task to two explicit pieces:
+
+1. the lattice-animal bucket estimate, and
+2. the standard nonnegative partial-sum-to-`tsum` comparison.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.connectedFiniteSum_le_of_cardBucketBounds' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.52.0 — F3 connected finite sum cardinal-bucket decomposition
 
 **Released: 2026-04-24**

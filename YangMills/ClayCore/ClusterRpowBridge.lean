@@ -341,6 +341,36 @@ theorem connectedFiniteSum_eq_cardBucketSum
             then K_bound Y else 0)) := by
         simp [S, M, c]
 
+/-- Bucket-bound consumer for the connected finite sum.
+
+After `connectedFiniteSum_eq_cardBucketSum`, it is enough to bound each
+cardinality bucket by the corresponding KP summand and compare the resulting
+finite partial sum with the infinite KP series. -/
+theorem connectedFiniteSum_le_of_cardBucketBounds
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (r C_conn A₀ : ℝ) (dim : ℕ)
+    (h_bucket : ∀ n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1),
+      (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+          if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+            then K_bound Y else 0) ≤
+        C_conn * (n : ℝ) ^ dim * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊))
+    (h_partial_le_tsum :
+      Finset.sum (Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+        (fun n => C_conn * (n : ℝ) ^ dim * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) ≤
+        ∑' n : ℕ, C_conn * (n : ℝ) ^ dim * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y), K_bound Y) ≤
+      ∑' n : ℕ, C_conn * (n : ℝ) ^ dim * A₀ *
+        r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+  rw [connectedFiniteSum_eq_cardBucketSum K_bound p q]
+  exact (Finset.sum_le_sum h_bucket).trans h_partial_le_tsum
+
 /-- Connected finite-sum version of
 `clusterCorrelatorBound_of_finiteConnectingBounds_ceil`.
 
@@ -396,6 +426,7 @@ theorem clusterCorrelatorBound_of_connectedFiniteBounds_ceil
 
 #print axioms finiteConnectingSum_eq_connectedFiniteSum
 #print axioms connectedFiniteSum_eq_cardBucketSum
+#print axioms connectedFiniteSum_le_of_cardBucketBounds
 #print axioms clusterCorrelatorBound_of_connectedFiniteBounds_ceil
 
 /-! ### Terminal wrapper from connected finite KP data -/
