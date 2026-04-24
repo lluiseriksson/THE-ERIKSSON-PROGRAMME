@@ -1,3 +1,53 @@
+# v1.24.0 — Fixed-dimension count package exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added packaged fixed-dimension count data in
+`YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    ShiftedF3CountPackageDim
+    ShiftedF3CountPackageDim.ofBound
+    ShiftedF3CountPackageDim.apply
+    ShiftedF3CountPackageDim.toAt
+    ShiftedF3CountPackageDim.toAt_C_conn
+    ShiftedF3CountPackageDim.toAt_dim
+    ShiftedF3CountPackageDim.toAt_apply
+    ShiftedF3CountPackageDim.ofBound_C_conn
+    ShiftedF3CountPackageDim.ofBound_dim
+
+and added the global-package restriction in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    ShiftedF3CountPackage.toDim
+    ShiftedF3CountPackage.toDim_C_conn
+    ShiftedF3CountPackage.toDim_dim
+    ShiftedF3CountPackage.toDim_apply
+
+## Why
+
+No percentage bar moves.  This packages the v1.23 fixed-dimension count
+frontier as a first-class object.  The physical `d = 4` count proof can now be
+delivered as `ShiftedF3CountPackageDim 4`, projected to finite volumes by
+`toAt`, or obtained from a fully global `ShiftedF3CountPackage` by `toDim`.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all new fixed-dimension package declarations and global
+`toDim` declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.23.0 — Fixed-dimension shifted count frontier exposed
 
 **Released: 2026-04-25**

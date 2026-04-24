@@ -89,6 +89,19 @@ predicate projects to it via `ShiftedConnectingClusterCountBound.toDim`, and a
 fixed-dimension proof projects to finite volume via
 `ShiftedConnectingClusterCountBoundDim.toAt`.
 
+The packaged fixed-dimension form is:
+
+    ShiftedF3CountPackageDim d
+
+with direct consumers:
+
+    ShiftedF3CountPackageDim.apply
+    ShiftedF3CountPackageDim.toAt
+
+and the fully global package projects to it by:
+
+    ShiftedF3CountPackage.toDim
+
 ## Two Mathematical Subtargets
 
 ### F3-Mayer
@@ -160,7 +173,11 @@ What is already closed locally:
     ShiftedConnectingClusterCountBound.toAt
     ShiftedConnectingClusterCountBound.toDim
     ShiftedConnectingClusterCountBoundDim.toAt
+    ShiftedF3CountPackageDim.ofBound
+    ShiftedF3CountPackageDim.apply
+    ShiftedF3CountPackageDim.toAt
     ShiftedF3CountPackage.toAt
+    ShiftedF3CountPackage.toDim
     ShiftedF3CountPackage.ofBound
     ShiftedF3CountPackage.apply
     ShiftedF3MayerCountPackage.apply_count
@@ -200,7 +217,11 @@ Key oracle canaries:
     #print axioms ShiftedConnectingClusterCountBound.toAt
     #print axioms ShiftedConnectingClusterCountBound.toDim
     #print axioms ShiftedConnectingClusterCountBoundDim.toAt
+    #print axioms ShiftedF3CountPackageDim.ofBound
+    #print axioms ShiftedF3CountPackageDim.apply
+    #print axioms ShiftedF3CountPackageDim.toAt
     #print axioms ShiftedF3CountPackage.toAt
+    #print axioms ShiftedF3CountPackage.toDim
     #print axioms ShiftedF3CountPackage.ofBound
     #print axioms ShiftedF3CountPackage.apply
     #print axioms WilsonUniformRpowBound.apply

@@ -2036,6 +2036,17 @@ def toAt
   dim := pkg.dim
   h_count := ShiftedConnectingClusterCountBound.toAt pkg.h_count d L
 
+/-- Restrict a global shifted F3 count package to a fixed lattice dimension,
+uniformly over finite volumes. -/
+def toDim
+    (pkg : ShiftedF3CountPackage)
+    (d : ℕ) [NeZero d] :
+    ShiftedF3CountPackageDim d where
+  C_conn := pkg.C_conn
+  hC := pkg.hC
+  dim := pkg.dim
+  h_count := ShiftedConnectingClusterCountBound.toDim pkg.h_count d
+
 @[simp] theorem toAt_C_conn
     (pkg : ShiftedF3CountPackage)
     (d L : ℕ) [NeZero d] [NeZero L] :
@@ -2045,6 +2056,16 @@ def toAt
     (pkg : ShiftedF3CountPackage)
     (d L : ℕ) [NeZero d] [NeZero L] :
     (pkg.toAt d L).dim = pkg.dim := rfl
+
+@[simp] theorem toDim_C_conn
+    (pkg : ShiftedF3CountPackage)
+    (d : ℕ) [NeZero d] :
+    (pkg.toDim d).C_conn = pkg.C_conn := rfl
+
+@[simp] theorem toDim_dim
+    (pkg : ShiftedF3CountPackage)
+    (d : ℕ) [NeZero d] :
+    (pkg.toDim d).dim = pkg.dim := rfl
 
 /-- Applying a global shifted F3 count package after restriction to a finite
 plaquette lattice is definitionally the global shifted count bound specialized
@@ -2062,6 +2083,25 @@ theorem toAt_apply
       (pkg.toAt d L).C_conn *
         (((n + 1 : ℕ) : ℝ) ^ (pkg.toAt d L).dim) :=
   (pkg.toAt d L).h_count.apply p q n hn hdist
+
+/-- Applying a global shifted F3 count package after restriction to a fixed
+dimension is definitionally the global shifted count bound specialized to that
+dimension. -/
+theorem toDim_apply
+    (pkg : ShiftedF3CountPackage)
+    (d : ℕ) [NeZero d]
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      (pkg.toDim d).C_conn *
+        (((n + 1 : ℕ) : ℝ) ^ (pkg.toDim d).dim) :=
+  ShiftedConnectingClusterCountBoundDim.apply
+    (pkg.toDim d).h_count p q n hn hdist
 
 @[simp] theorem ofBound_C_conn
     (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
@@ -2457,9 +2497,13 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
 #print axioms ShiftedF3CountPackage.ofBound
 #print axioms ShiftedF3CountPackage.apply
 #print axioms ShiftedF3CountPackage.toAt
+#print axioms ShiftedF3CountPackage.toDim
 #print axioms ShiftedF3CountPackage.toAt_C_conn
 #print axioms ShiftedF3CountPackage.toAt_dim
 #print axioms ShiftedF3CountPackage.toAt_apply
+#print axioms ShiftedF3CountPackage.toDim_C_conn
+#print axioms ShiftedF3CountPackage.toDim_dim
+#print axioms ShiftedF3CountPackage.toDim_apply
 #print axioms ShiftedF3CountPackage.ofBound_C_conn
 #print axioms ShiftedF3CountPackage.ofBound_dim
 #print axioms ShiftedF3MayerCountPackage.ofSubpackages

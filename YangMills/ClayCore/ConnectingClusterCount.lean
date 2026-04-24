@@ -191,6 +191,100 @@ structure ShiftedF3CountPackageAt (d L : ℕ) [NeZero d] [NeZero L] where
   dim : ℕ
   h_count : ShiftedConnectingClusterCountBoundAt d L C_conn dim
 
+/-- Packaged fixed-dimension shifted count data.
+
+The constants are uniform in the finite volume `L`, but may depend on the fixed
+lattice dimension `d`. -/
+structure ShiftedF3CountPackageDim (d : ℕ) [NeZero d] where
+  C_conn : ℝ
+  hC : 0 < C_conn
+  dim : ℕ
+  h_count : ShiftedConnectingClusterCountBoundDim d C_conn dim
+
+namespace ShiftedF3CountPackageDim
+
+/-- Package a fixed-dimension shifted connecting-cluster count bound as the
+count half at that dimension. -/
+def ofBound
+    (d : ℕ) [NeZero d]
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_count : ShiftedConnectingClusterCountBoundDim d C_conn dim) :
+    ShiftedF3CountPackageDim d where
+  C_conn := C_conn
+  hC := hC
+  dim := dim
+  h_count := h_count
+
+/-- Direct application form of a fixed-dimension shifted F3 count package. -/
+theorem apply
+    {d : ℕ} [NeZero d]
+    (pkg : ShiftedF3CountPackageDim d)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.C_conn * (((n + 1 : ℕ) : ℝ) ^ pkg.dim) :=
+  ShiftedConnectingClusterCountBoundDim.apply pkg.h_count p q n hn hdist
+
+/-- Restrict a fixed-dimension count package to one finite plaquette lattice. -/
+def toAt
+    {d : ℕ} [NeZero d]
+    (pkg : ShiftedF3CountPackageDim d)
+    (L : ℕ) [NeZero L] :
+    ShiftedF3CountPackageAt d L where
+  C_conn := pkg.C_conn
+  hC := pkg.hC
+  dim := pkg.dim
+  h_count := ShiftedConnectingClusterCountBoundDim.toAt pkg.h_count L
+
+@[simp] theorem toAt_C_conn
+    {d : ℕ} [NeZero d]
+    (pkg : ShiftedF3CountPackageDim d)
+    (L : ℕ) [NeZero L] :
+    (pkg.toAt L).C_conn = pkg.C_conn := rfl
+
+@[simp] theorem toAt_dim
+    {d : ℕ} [NeZero d]
+    (pkg : ShiftedF3CountPackageDim d)
+    (L : ℕ) [NeZero L] :
+    (pkg.toAt L).dim = pkg.dim := rfl
+
+/-- Applying a fixed-dimension shifted F3 count package after restriction to a
+finite plaquette lattice is definitionally the fixed-dimension bound
+specialized to that volume. -/
+theorem toAt_apply
+    {d : ℕ} [NeZero d]
+    (pkg : ShiftedF3CountPackageDim d)
+    (L : ℕ) [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      (pkg.toAt L).C_conn *
+        (((n + 1 : ℕ) : ℝ) ^ (pkg.toAt L).dim) :=
+  (pkg.toAt L).h_count.apply p q n hn hdist
+
+@[simp] theorem ofBound_C_conn
+    (d : ℕ) [NeZero d]
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_count : ShiftedConnectingClusterCountBoundDim d C_conn dim) :
+    (ofBound d C_conn hC dim h_count).C_conn = C_conn := rfl
+
+@[simp] theorem ofBound_dim
+    (d : ℕ) [NeZero d]
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_count : ShiftedConnectingClusterCountBoundDim d C_conn dim) :
+    (ofBound d C_conn hC dim h_count).dim = dim := rfl
+
+end ShiftedF3CountPackageDim
+
 /-- **Weak Layer-C1 bound.**
 For any pair of plaquettes `p, q` and any `n : ℕ`, the number of
 connected polymers `X ⊆ ConcretePlaquette d L` of cardinality
@@ -313,6 +407,14 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedConnectingClusterCountBound.toAt
 #print axioms ShiftedConnectingClusterCountBound.toDim
 #print axioms ShiftedConnectingClusterCountBoundDim.toAt
+#print axioms ShiftedF3CountPackageDim.ofBound
+#print axioms ShiftedF3CountPackageDim.apply
+#print axioms ShiftedF3CountPackageDim.toAt
+#print axioms ShiftedF3CountPackageDim.toAt_C_conn
+#print axioms ShiftedF3CountPackageDim.toAt_dim
+#print axioms ShiftedF3CountPackageDim.toAt_apply
+#print axioms ShiftedF3CountPackageDim.ofBound_C_conn
+#print axioms ShiftedF3CountPackageDim.ofBound_dim
 #print axioms shiftedConnectingClusterCountBoundAt_finite
 #print axioms ShiftedF3CountPackageAt.finite
 #print axioms ShiftedF3CountPackageAt.finite_C_conn
