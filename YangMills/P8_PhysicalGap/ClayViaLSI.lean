@@ -6,9 +6,9 @@ import YangMills.L8_Terminal.ClayTheorem
 
 /-! # L8.2: Clay statement via LSI route (v0.31.0)
 
-Provides an alternative witness of `ClayYangMillsTheorem` whose only
-non-core axiom dependency is `holleyStroock_sunGibbs_lsi`, bypassing
-the monolithic `yangMills_continuum_mass_gap` axiom.
+Provides an alternative witness of the weak endpoint `ClayYangMillsTheorem`
+through the MemLp-gated normalized LSI route, bypassing the deleted monolithic
+`yangMills_continuum_mass_gap` axiom.
 -/
 
 namespace YangMills
@@ -20,8 +20,7 @@ which replaces the line-805 `sorry` over
 `Integrable (f²·log(f²)) Haar` with a call to the helper
 `memLp_gt_two_integrable_sq_mul_log_sq` (see `MemLpLogIntegrability.lean`).
 The oracle of the terminal `clay_millennium_yangMills` therefore drops
-`sorryAx` and becomes `[propext, Classical.choice, Quot.sound]` modulo the
-Holley–Stroock `α_star` axiom still carried elsewhere in the chain. -/
+`sorryAx` and becomes `[propext, Classical.choice, Quot.sound]`. -/
 theorem yangMills_existence_massGap_via_lsi : ClayYangMillsTheorem :=
   sun_physical_mass_gap_vacuous_memLp 4 3 (by norm_num) 1 1 le_rfl one_pos
 

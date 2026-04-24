@@ -40,7 +40,7 @@ structure WeightedFinalGapWitness
     (Gamma : Finset (Polymer d L))
     (K : Activity d L)
     (a : ℝ) where
-  _ : MassGapReadyPackage N_c Gamma K a
+  pkg : MassGapReadyPackage N_c Gamma K a
   β : ℝ
   hN_c : 2 ≤ N_c
   hβ : pkg.lsiConst ≤ β
@@ -135,7 +135,7 @@ def weightedFinalGapWitness_of_massGapReadyPackage
     (hβ : pkg.lsiConst ≤ β)
     (tr : ClayCoreLSIToSUNDLRTransfer d N_c) :
     WeightedFinalGapWitness N_c Gamma K a where
-  _ := pkg
+  pkg := pkg
   β := β
   hN_c := hN_c
   hβ := hβ

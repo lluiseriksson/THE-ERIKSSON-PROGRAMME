@@ -11,8 +11,8 @@ import YangMills.L7_Continuum.ContinuumLimit
 This file contains ONLY the `Prop`-level statement definitions of the Clay
 Yang–Mills mass-gap conclusion. The assembled theorems (which discharge the
 existentials) live downstream in `YangMills.P8_PhysicalGap.ClayAssembly`,
-which proves them via the SU(N) Holley–Stroock LSI route, consuming only
-the focused axiom `holleyStroock_sunGibbs_lsi`.
+which currently proves the weak endpoint through the MemLp-gated normalized
+LSI route.
 
 As of v0.32.0 the monolithic axiom `yangMills_continuum_mass_gap` has been
 **deleted**: no file in the project depends on it.

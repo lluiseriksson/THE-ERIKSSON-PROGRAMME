@@ -842,7 +842,7 @@ theorem sun_gibbs_dlr_lsi_norm_of_lsi
       α_star hα_star hLSI
   exact ⟨α_star, hα_pos, hα_pos, hvol⟩
 
-/-! ## LEGACY: abstract HS axiom + un-normalized Gibbs (backward compatibility) -/
+/-! ## LEGACY: un-normalized Gibbs family (explicit-input compatibility) -/
 
 noncomputable def sunGibbsFamily (d N_c : ℕ) [NeZero N_c] (β : ℝ) : ℕ → Measure (SUN_State N_c) :=
   fun _L => (sunHaarProb N_c).withDensity
@@ -852,34 +852,28 @@ noncomputable instance instIsProbabilityMeasure_sunHaarProb (N_c : ℕ) [NeZero 
     IsProbabilityMeasure (sunHaarProb N_c) :=
   instIsProbabilityMeasureSUN N_c
 
-axiom holleyStroock_sunGibbs_lsi
-    (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) (β : ℝ) (hβ : 0 < β)
-    (α : ℝ) (hα : 0 < α)
-    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α) :
-    LogSobolevInequality
-      ((sunHaarProb N_c).withDensity
-        (fun g => ENNReal.ofReal (Real.exp (-β * sunPlaquetteEnergy N_c g))))
-      (sunDirichletForm N_c)
-      (α * Real.exp (-2 * β))
-
-theorem balaban_rg_uniform_lsi
+theorem balaban_rg_uniform_lsi_of_lsi
     (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
     (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀)
-    (α_haar : ℝ) (hα_haar : 0 < α_haar)
-    (hHaar : LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm N_c) α_haar) :
+    (α_star : ℝ) (hα_star : 0 < α_star)
+    (hLSI : LogSobolevInequality (sunGibbsFamily d N_c β 0)
+      (sunDirichletForm N_c) α_star) :
     ∃ α_star : ℝ, 0 < α_star ∧ ∀ L : ℕ,
-      LogSobolevInequality (sunGibbsFamily d N_c β L) (sunDirichletForm N_c) α_star :=
-  ⟨α_haar * Real.exp (-2 * β), mul_pos hα_haar (Real.exp_pos _),
-   fun _L => holleyStroock_sunGibbs_lsi N_c hN_c β (hβ₀.trans_le hβ) α_haar hα_haar hHaar⟩
+      LogSobolevInequality (sunGibbsFamily d N_c β L) (sunDirichletForm N_c) α_star := by
+  refine ⟨α_star, hα_star, ?_⟩
+  intro L
+  simpa [sunGibbsFamily] using hLSI
 
-theorem sun_gibbs_dlr_lsi
+theorem sun_gibbs_dlr_lsi_of_lsi
     (d N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c)
-    (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀) :
+    (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀)
+    (α_star : ℝ) (hα_star : 0 < α_star)
+    (hLSI : LogSobolevInequality (sunGibbsFamily d N_c β 0)
+      (sunDirichletForm N_c) α_star) :
     ∃ α_star : ℝ, 0 < α_star ∧
       DLR_LSI (sunGibbsFamily d N_c β) (sunDirichletForm N_c) α_star := by
-  obtain ⟨α_haar, hα_haar, hHaar⟩ := sun_haar_lsi N_c hN_c
   obtain ⟨α_star, hα_star, hvol⟩ :=
-    balaban_rg_uniform_lsi d N_c hN_c β β₀ hβ hβ₀ α_haar hα_haar hHaar
+    balaban_rg_uniform_lsi_of_lsi d N_c hN_c β β₀ hβ hβ₀ α_star hα_star hLSI
   exact ⟨α_star, hα_star, hα_star, hvol⟩
 
 

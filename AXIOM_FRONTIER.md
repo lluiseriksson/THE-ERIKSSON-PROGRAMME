@@ -1,3 +1,51 @@
+# v0.94.0 — Remove legacy un-normalized Holley-Stroock axiom
+
+**Released: 2026-04-24**
+
+## What
+
+Removed the P8 axiom `holleyStroock_sunGibbs_lsi` from
+`YangMills/P8_PhysicalGap/BalabanToLSI.lean`.
+
+The legacy un-normalized Gibbs family is kept, but its family and DLR wrappers
+are now explicit-input:
+
+    theorem balaban_rg_uniform_lsi_of_lsi
+    theorem sun_gibbs_dlr_lsi_of_lsi
+
+The weighted Clay route no longer fabricates a canonical
+`ClayCoreLSIToSUNDLRTransfer` from the legacy P8 axiom.  Instead:
+
+- `WeightedFinalGapWitness` now has a named `pkg` field and continues to carry
+  its own explicit transfer.
+- `WeightedRouteClosesClay` keeps the same closure lemmas but requires the
+  final `ClayCoreLSIToSUNDLRTransfer d N_c` at the call site.
+- `KPExpSizeWeightToClay` likewise keeps the KP-facing closures with the final
+  transfer explicit.
+
+This does not prove the un-normalized Holley-Stroock transfer.  It removes the
+global axiom declaration and makes the transfer obligation visible where it is
+actually needed.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.P8_PhysicalGap.BalabanToLSI
+    lake build YangMills.ClayCore.BalabanRG.WeightedFinalGapWitness
+    lake build YangMills.ClayCore.BalabanRG.WeightedRouteClosesClay
+    lake build YangMills.ClayCore.BalabanRG.KPExpSizeWeightToClay
+
+Non-Experimental Lean axiom count is now 1:
+
+    YangMills/ClayCore/BalabanRG/PhysicalRGRates.lean:
+      physical_rg_rates_from_E26
+
+No `holleyStroock_sunGibbs_lsi` axiom remains in non-Experimental Lean.
+No `sorry`.
+
+---
+
 # v0.93.0 — Remove unrestricted normalized Gibbs LSI axiom
 
 **Released: 2026-04-24**
