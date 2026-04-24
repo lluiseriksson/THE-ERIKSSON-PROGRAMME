@@ -1,3 +1,53 @@
+# v1.13.0 — Finite-volume shifted count package made inspectable
+
+**Released: 2026-04-25**
+
+## What
+
+Added
+
+    theorem ShiftedF3CountPackageAt.finite_C_conn
+    theorem ShiftedF3CountPackageAt.finite_dim
+    theorem ShiftedF3CountPackageAt.finite_apply
+
+to `YangMills/ClayCore/ConnectingClusterCount.lean`.
+
+The local finite-volume count package now exposes its constants definitionally:
+
+    C_conn = Fintype.card (Finset (ConcretePlaquette d L)) + 1
+    dim    = 0
+
+and has a direct application theorem for the shifted bucket count.
+
+## Why
+
+No percentage bar moves.  This does not prove the global uniform
+`ShiftedConnectingClusterCountBound`; the constant still depends on the finite
+volume `d,L`.  It closes the local finite-volume bookkeeping around
+`ShiftedF3CountPackageAt.finite`, making the remaining F3-count gap exactly
+the uniform lattice-animal estimate rather than local package plumbing.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+
+Pinned traces:
+
+    'YangMills.ShiftedF3CountPackageAt.finite_C_conn' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.ShiftedF3CountPackageAt.finite_dim' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.ShiftedF3CountPackageAt.finite_apply' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.12.0 — Uniform-rpow small-β frontier lands in ClusterCorrelatorBound
 
 **Released: 2026-04-25**

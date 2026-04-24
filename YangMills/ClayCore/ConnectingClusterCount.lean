@@ -204,6 +204,33 @@ noncomputable def ShiftedF3CountPackageAt.finite
   dim := 0
   h_count := shiftedConnectingClusterCountBoundAt_finite d L
 
+@[simp] theorem ShiftedF3CountPackageAt.finite_C_conn
+    (d L : ℕ) [NeZero d] [NeZero L] :
+    (ShiftedF3CountPackageAt.finite d L).C_conn =
+      ((Fintype.card (Finset (ConcretePlaquette d L)) + 1 : ℕ) : ℝ) := rfl
+
+@[simp] theorem ShiftedF3CountPackageAt.finite_dim
+    (d L : ℕ) [NeZero d] [NeZero L] :
+    (ShiftedF3CountPackageAt.finite d L).dim = 0 := rfl
+
+/-- Direct application form of the trivial finite-volume shifted count package.
+
+This is intentionally local in `d,L`: its constant depends on the finite
+plaquette lattice, so it is not the global uniform lattice-animal estimate
+needed by F3. -/
+theorem ShiftedF3CountPackageAt.finite_apply
+    (d L : ℕ) [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      (ShiftedF3CountPackageAt.finite d L).C_conn *
+        (((n + 1 : ℕ) : ℝ) ^ (ShiftedF3CountPackageAt.finite d L).dim) :=
+  (ShiftedF3CountPackageAt.finite d L).h_count.apply p q n hn hdist
+
 /-- Any connected polymer containing `p` and `q` lies in a canonical
 distance-indexed cardinality bucket: its size is an "extra size" `n`
 plus the ceiling of the lattice distance between `p` and `q`.
@@ -231,5 +258,8 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedConnectingClusterCountBound.toAt
 #print axioms shiftedConnectingClusterCountBoundAt_finite
 #print axioms ShiftedF3CountPackageAt.finite
+#print axioms ShiftedF3CountPackageAt.finite_C_conn
+#print axioms ShiftedF3CountPackageAt.finite_dim
+#print axioms ShiftedF3CountPackageAt.finite_apply
 
 end YangMills
