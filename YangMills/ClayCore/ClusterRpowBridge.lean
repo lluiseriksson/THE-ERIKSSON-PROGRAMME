@@ -925,6 +925,79 @@ theorem clusterCorrelatorBound_of_count_cardDecayBounds_ceil
     (fun Y => (T β F p q).K_bound Y) p q r A₀ n Y hY
     (fun Y => h_card_decay β hβ F hF p q Y)
 
+/-- Shifted count plus global cardinality-decay version of the F3 bridge.
+
+This consumes the natural bucket count
+`#bucket(n) ≤ C_conn * (n+1)^dim`. -/
+theorem clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted
+    (N_c : ℕ) [NeZero N_c]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (T : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      TruncatedActivities (ConcretePlaquette d L))
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (T β F p q).connectingSum p q)
+    (h_zero : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      p ∈ Y → q ∈ Y → ¬ PolymerConnected Y →
+      (T β F p q).K_bound Y = 0)
+    (h_count : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (p q : ConcretePlaquette d L) (n : ℕ),
+      n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1) →
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y =>
+          p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+            Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+        C_conn * (((n + 1 : ℕ) : ℝ) ^ dim))
+    (h_card_decay : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      (T β F p q).K_bound Y ≤ A₀ * r ^ Y.card) :
+    ClusterCorrelatorBound N_c r
+      (clusterPrefactorShifted r C_conn A₀ dim) := by
+  refine clusterCorrelatorBound_of_truncatedActivities_ceil_shifted
+    N_c r hr_pos hr_lt1 C_conn A₀ hC hA dim T h_mayer ?_
+  intro d L _ _ β hβ F hF p q hdist
+  have h_connected :
+      (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+        (T β F p q).K_bound Y) ≤
+        ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+    exact connectedFiniteSum_le_of_cardBucketBounds_kp_shifted
+      (fun Y => (T β F p q).K_bound Y) p q
+      r hr_pos hr_lt1 C_conn A₀ hC hA dim
+      (fun n hn => cardBucketSum_le_of_count_and_pointwise_shifted
+        (fun Y => (T β F p q).K_bound Y) p q
+        r hr_pos C_conn A₀ hA dim n
+        (h_count p q n hn hdist)
+        (fun Y hY => pointwiseBucketBound_of_card_decay
+          (fun Y => (T β F p q).K_bound Y) p q r A₀ n Y hY
+          (fun Y => h_card_decay β hβ F hF p q Y)))
+  rw [TruncatedActivities.connectingBound_eq_finset_sum]
+  exact finiteConnectingSum_eq_connectedFiniteSum
+    (fun Y => (T β F p q).K_bound Y) p q
+    (fun Y hp hq hnot => h_zero β hβ F hF p q Y hp hq hnot) ▸ h_connected
+
 /-- Concrete finite-volume truncated activities whose bound is supported only
 on polymers containing `p`, containing `q`, and connected. -/
 noncomputable def TruncatedActivities.ofConnectedCardDecay
@@ -1019,6 +1092,7 @@ theorem TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connecte
 #print axioms clusterCorrelatorBound_of_cardBucketBounds_ceil
 #print axioms clusterCorrelatorBound_of_count_pointwiseBounds_ceil
 #print axioms clusterCorrelatorBound_of_count_cardDecayBounds_ceil
+#print axioms clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted
 
 /-! ### Terminal wrapper from connected finite KP data -/
 
@@ -1319,5 +1393,81 @@ theorem clay_theorem_of_count_connectedCardDecayActivities_ceil
       (hK_abs_le β F p q) Y
 
 #print axioms clay_theorem_of_count_connectedCardDecayActivities_ceil
+
+/-- Shifted terminal wrapper from raw connected-cardinality-decay truncated
+activities.  This is the same endpoint as
+`clay_theorem_of_count_connectedCardDecayActivities_ceil`, but consumes the
+natural bucket count `C_conn * (n+1)^dim` and uses
+`clusterPrefactorShifted`. -/
+theorem clay_theorem_of_count_connectedCardDecayActivities_ceil_shifted
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (K : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      Finset (ConcretePlaquette d L) → ℝ)
+    (hK_abs_le : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      |K β F p q Y| ≤
+        if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y
+          then A₀ * wab.r ^ Y.card else 0)
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (TruncatedActivities.ofConnectedCardDecay
+        (K β F p q) p q wab.r A₀ wab.hr_pos.le hA.le
+        (hK_abs_le β F p q)).connectingSum p q)
+    (h_count : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (p q : ConcretePlaquette d L) (n : ℕ),
+      n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1) →
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y =>
+          p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+            Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+        C_conn * (((n + 1 : ℕ) : ℝ) ^ dim)) :
+    ClayYangMillsTheorem := by
+  let T : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      TruncatedActivities (ConcretePlaquette d L) :=
+    fun {d L} _ _ β F p q =>
+      TruncatedActivities.ofConnectedCardDecay
+        (K β F p q) p q wab.r A₀ wab.hr_pos.le hA.le
+        (hK_abs_le β F p q)
+  exact clay_theorem_from_wilson_activity wab
+    (clusterPrefactorShifted wab.r C_conn A₀ dim)
+    (clusterPrefactorShifted_pos wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim)
+    (clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted
+      N_c wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim
+      T
+      (by
+        intro d L _ _ β hβ F hF p q hdist
+        exact h_mayer β hβ F hF p q hdist)
+      (by
+        intro d L _ _ β hβ F hF p q Y hp hq h_not_connected
+        exact TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connected
+          (K β F p q) p q wab.r A₀ wab.hr_pos.le hA.le
+          (hK_abs_le β F p q) Y hp hq h_not_connected)
+      h_count
+      (by
+        intro d L _ _ β _hβ F _hF p q Y
+        exact TruncatedActivities.ofConnectedCardDecay_K_bound_le_cardDecay
+          (K β F p q) p q wab.r A₀ wab.hr_pos.le hA.le
+          (hK_abs_le β F p q) Y))
+
+#print axioms clay_theorem_of_count_connectedCardDecayActivities_ceil_shifted
 
 end YangMills

@@ -1,3 +1,50 @@
+# v0.66.0 — Shifted terminal F3 endpoint
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive terminal F3 wrapper in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted
+    theorem clay_theorem_of_count_connectedCardDecayActivities_ceil_shifted
+
+This is the shifted analogue of the v0.62 terminal endpoint.  It consumes:
+
+1. a raw connected-cardinality-decay truncated activity bound
+   `|K Y| ≤ if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y then A₀ * r^Y.card else 0`;
+2. the Mayer/Ursell identity for the constructed activity;
+3. the realistic bucket count
+   `#bucket(n) ≤ C_conn * (n+1)^dim`.
+
+The disconnected support cancellation, global `K_bound` cardinality decay, and
+finite-volume summability are supplied by `TruncatedActivities.ofConnectedCardDecay`.
+The final exponential bound uses `clusterPrefactorShifted r C_conn A₀ dim`.
+
+This is now the preferred F3 terminal wrapper: it keeps the minimal bucket
+`n = 0` non-vacuous while preserving the same Clay-facing
+`ClusterCorrelatorBound` shape.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clay_theorem_of_count_connectedCardDecayActivities_ceil_shifted'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.65.0 — Shifted bucket-count consumers for F3
 
 **Released: 2026-04-24**
