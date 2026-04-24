@@ -1893,6 +1893,62 @@ theorem clay_theorem_of_shiftedF3MayerCountPackage
   clay_theorem_of_shiftedCountBound_mayerData_ceil
     N_c wab pkg.C_conn pkg.A₀ pkg.hC pkg.hA pkg.dim pkg.data pkg.h_count
 
+/-- Independently-produced Mayer/activity and count packages yield the
+Wilson-facing cluster-correlator bound. -/
+theorem clusterCorrelatorBound_of_shiftedF3Subpackages
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) :
+    ClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim) :=
+  clusterCorrelatorBound_of_shiftedF3MayerCountPackage N_c wab
+    (ShiftedF3MayerCountPackage.ofSubpackages mayer count)
+
+/-- Independently-produced Mayer/activity and count packages yield the older
+analytic witness bundle. -/
+noncomputable def clayWitnessHyp_of_shiftedF3Subpackages
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) :
+    ClayWitnessHyp N_c :=
+  clayWitnessHyp_of_shiftedF3MayerCountPackage N_c wab
+    (ShiftedF3MayerCountPackage.ofSubpackages mayer count)
+
+/-- Independently-produced Mayer/activity and count packages yield the authentic
+mass-gap structure. -/
+noncomputable def clayMassGap_of_shiftedF3Subpackages
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) :
+    ClayYangMillsMassGap N_c :=
+  clayMassGap_of_shiftedF3MayerCountPackage N_c wab
+    (ShiftedF3MayerCountPackage.ofSubpackages mayer count)
+
+/-- Independently-produced Mayer/activity and count packages yield the
+connected-correlator-decay hub. -/
+noncomputable def clayConnectedCorrDecay_of_shiftedF3Subpackages
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) :
+    ClayConnectedCorrDecay N_c :=
+  clayConnectedCorrDecay_of_shiftedF3MayerCountPackage N_c wab
+    (ShiftedF3MayerCountPackage.ofSubpackages mayer count)
+
+/-- Independently-produced Mayer/activity and count packages still project to
+the weak theorem endpoint. -/
+theorem clay_theorem_of_shiftedF3Subpackages
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) :
+    ClayYangMillsTheorem :=
+  clay_theorem_of_shiftedF3MayerCountPackage N_c wab
+    (ShiftedF3MayerCountPackage.ofSubpackages mayer count)
+
 /-- The single-package mass-gap endpoint has decay rate `kpParameter wab.r`. -/
 theorem clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
     (N_c : ℕ) [NeZero N_c]
@@ -1930,6 +1986,11 @@ theorem clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_prefactor_eq
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage
 #print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackage
 #print axioms clay_theorem_of_shiftedF3MayerCountPackage
+#print axioms clusterCorrelatorBound_of_shiftedF3Subpackages
+#print axioms clayWitnessHyp_of_shiftedF3Subpackages
+#print axioms clayMassGap_of_shiftedF3Subpackages
+#print axioms clayConnectedCorrDecay_of_shiftedF3Subpackages
+#print axioms clay_theorem_of_shiftedF3Subpackages
 #print axioms ShiftedF3MayerCountPackage.ofSubpackages
 #print axioms ShiftedF3MayerCountPackage.mayerPackage
 #print axioms ShiftedF3MayerCountPackage.countPackage

@@ -7,13 +7,19 @@ consumer-driven target is:
 
     ClusterCorrelatorBound N_c r C_clust
 
-The preferred single-object F3 frontier is now:
+The preferred single-object F3 frontier is:
 
     ShiftedF3MayerCountPackage N_c wab
 
 in `YangMills/ClayCore/ClusterRpowBridge.lean`.
 
-Supplying this one package yields, oracle-clean:
+It can be supplied directly, or mechanically assembled from the two independent
+frontier halves:
+
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : ShiftedF3CountPackage
+
+Supplying either the single package or both halves yields, oracle-clean:
 
     ClusterCorrelatorBound
     ClayWitnessHyp
@@ -21,18 +27,30 @@ Supplying this one package yields, oracle-clean:
     ClayConnectedCorrDecay
     ClayYangMillsTheorem
 
-## Exact Remaining Package
+## Exact Remaining Packages
 
 For a fixed `wab : WilsonPolymerActivityBound N_c`, construct:
 
-    structure ShiftedF3MayerCountPackage
+    structure ShiftedF3MayerPackage
         (N_c : Nat) [NeZero N_c] (wab : WilsonPolymerActivityBound N_c)
 
 with fields:
 
-1. constants `C_conn`, `A₀`, positivity proofs `hC`, `hA`, and `dim`;
-2. `ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le`;
-3. `ShiftedConnectingClusterCountBound C_conn dim`.
+1. constant `A₀` and positivity proof `hA`;
+2. `ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le`.
+
+Separately construct:
+
+    structure ShiftedF3CountPackage
+
+with fields:
+
+1. constants `C_conn`, positivity proof `hC`, and `dim`;
+2. `ShiftedConnectingClusterCountBound C_conn dim`.
+
+These combine by:
+
+    ShiftedF3MayerCountPackage.ofSubpackages mayer count
 
 ## Two Mathematical Subtargets
 
@@ -75,6 +93,11 @@ After any edit:
 
 Key oracle canaries:
 
+    #print axioms clusterCorrelatorBound_of_shiftedF3Subpackages
+    #print axioms clayWitnessHyp_of_shiftedF3Subpackages
+    #print axioms clayMassGap_of_shiftedF3Subpackages
+    #print axioms clayConnectedCorrDecay_of_shiftedF3Subpackages
+    #print axioms clay_theorem_of_shiftedF3Subpackages
     #print axioms clusterCorrelatorBound_of_shiftedF3MayerCountPackage
     #print axioms clayWitnessHyp_of_shiftedF3MayerCountPackage
     #print axioms clayMassGap_of_shiftedF3MayerCountPackage

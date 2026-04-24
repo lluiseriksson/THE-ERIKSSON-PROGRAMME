@@ -1,3 +1,65 @@
+# v0.78.0 — Direct F3 subpackage terminal endpoints
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive endpoint exposure in `YangMills/ClayCore/ClusterRpowBridge.lean`.
+Given independently-produced packages
+
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : ShiftedF3CountPackage
+
+the module now exposes direct terminal consumers:
+
+    theorem clusterCorrelatorBound_of_shiftedF3Subpackages
+    noncomputable def clayWitnessHyp_of_shiftedF3Subpackages
+    noncomputable def clayMassGap_of_shiftedF3Subpackages
+    noncomputable def clayConnectedCorrDecay_of_shiftedF3Subpackages
+    theorem clay_theorem_of_shiftedF3Subpackages
+
+Each endpoint is a thin wrapper around
+`ShiftedF3MayerCountPackage.ofSubpackages` followed by the existing
+single-package endpoint from v0.75.0.  The terminal API can now be driven either
+by one completed `ShiftedF3MayerCountPackage` or by the two independently
+proved halves from v0.77.0.
+
+This does not prove the Mayer/activity package or the connecting-cluster count
+package.  It removes the final packaging friction between those two remaining
+F3 proof obligations and every downstream audit endpoint.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.clusterCorrelatorBound_of_shiftedF3Subpackages'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayWitnessHyp_of_shiftedF3Subpackages'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayMassGap_of_shiftedF3Subpackages'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayConnectedCorrDecay_of_shiftedF3Subpackages'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clay_theorem_of_shiftedF3Subpackages'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.77.0 — Split preferred F3 package into Mayer/count halves
 
 **Released: 2026-04-24**
