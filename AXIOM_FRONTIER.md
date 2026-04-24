@@ -1,3 +1,125 @@
+# v0.46.0 — P2f-α: balabanHyps_from_wilson_activity END-TO-END CONSTRUCTOR
+
+**Released: 2026-04-24**
+
+## What
+
+Phase 3 / Task #7 sub-target P2f-α: pure-additive end-to-end constructor
+
+    noncomputable def balabanHyps_from_wilson_activity
+        {N_c : Nat} [NeZero N_c]
+        (wab : WilsonPolymerActivityBound N_c)
+        (profile : LargeFieldProfile)
+        (h_lf_bound_at : ∀ (n : Nat), ∃ R : Real, 0 ≤ R ∧
+          R ≤ Real.exp (-(profile.eval wab.r)) * Real.exp (-(-Real.log wab.r) * n))
+        (h_dominated : Real.exp (-(profile.eval wab.r)) ≤ (wab.A₀ + 1) * wab.r ^ 2) :
+        BalabanHyps N_c
+
+in `YangMills/ClayCore/LargeFieldDominance.lean`. Closes the
+structural loop of the α-stack: takes a `WilsonPolymerActivityBound`
+(from which P2d-α produces the SFA) plus the analytic large-field
+inputs (`profile`, `h_lf_bound_at`, `h_dominated`) evaluated at
+the canonical `g_bar = wab.r`, and emits a full `BalabanHyps N_c`
+via `balabanHyps_of_bounds`.
+
+Commit: `3961827` · File:
+`YangMills/ClayCore/LargeFieldDominance.lean` (+45/−0) · Oracle:
+`[propext, Classical.choice, Quot.sound]`.
+
+## Why
+
+The α-stack so far had four pure-additive constructors — P2c-α
+(`BalabanH1H2H3` shape refactor), P2d-α
+(`SmallFieldActivityBound.ofWilsonActivity`), P2d-β
+(`balabanH1_from_wilson_activity_enriched`), P2e-α
+(`LargeFieldActivityBound.ofSuperPoly`) — but no single term-mode
+constructor producing a full `BalabanHyps N_c` from a
+`WilsonPolymerActivityBound`. P2f-α fills exactly that hole:
+SFA + LFA → BalabanHyps end-to-end, polymer-faithful on the
+small-field side and caller-controlled on the large-field side, with
+zero `Classical.choose` opacity in the constants.
+
+## How
+
+`balabanHyps_of_bounds` (`LargeFieldBound.lean:94`) requires
+`hg_eq : sfb.consts.g_bar = lfb.g_bar`,
+`hk_eq : sfb.consts.kappa = lfb.kappa`,
+`hE0_eq : sfb.consts.E0 = lfb.E0`. Both sides have to commit to
+identical constants for these to close.
+
+`SmallFieldActivityBound.ofWilsonActivity` (P2d-α, v0.44.0) fixes
+`E₀ := wab.A₀ + 1`, `κ := -Real.log wab.r`, `ḡ := wab.r`.
+
+P2e-α's `LargeFieldActivityBound.ofSuperPoly` is unsuitable: it
+picks `g_bar := Classical.choose dom` (opaque), so no equality with
+`wab.r` is provable. P2f-α therefore constructs the
+`LargeFieldActivityBound` inline with the matching constants:
+
+    let lfb : LargeFieldActivityBound N_c :=
+      { profile := profile
+        kappa := -Real.log wab.r
+        hkappa := neg_pos.mpr (Real.log_neg wab.hr_pos wab.hr_lt1)
+        g_bar := wab.r
+        hg_pos := wab.hr_pos
+        hg_lt1 := wab.hr_lt1
+        E0 := wab.A₀ + 1
+        hE0 := by linarith [wab.hA₀]
+        h_lf_bound := h_lf_bound_at
+        h_dominated := h_dominated }
+
+The LFA's analytic content (`h_lf_bound`, `h_dominated`) is left
+as caller-supplied hypotheses at the canonical `g_bar = wab.r`. The
+three matching equalities then close by `rfl rfl rfl`.
+
+Build: `lake build YangMills.ClayCore.LargeFieldDominance` →
+8174/8174 jobs green. A fifth top-level `#print axioms` declaration
+appended for `balabanHyps_from_wilson_activity`. All five top-level
+decls in the module — `superPolyProfile`, `superPoly_dominance`,
+`superPoly_dominance_at_specific`,
+`LargeFieldActivityBound.ofSuperPoly`,
+`balabanHyps_from_wilson_activity` — print
+`[propext, Classical.choice, Quot.sound]`.
+
+## Scope of change
+
+Pure additive: `LargeFieldActivityBound.ofSuperPoly` (P2e-α,
+v0.43.0) is **kept intact** and still callable for consumers willing
+to accept the `Classical.choose`-opaque `g_bar`. The new
+`balabanHyps_from_wilson_activity` coexists beside it as the
+constants-aligned variant required to compose with P2d-α through
+`balabanHyps_of_bounds`. Zero downstream breakage by construction.
+
+α-stack now topologically saturated:
+
+| sub-target | constructor                                     | file                          |
+|------------|-------------------------------------------------|-------------------------------|
+| P2c-α      | `BalabanH1H2H3` shape refactor                | `BalabanH1H2H3.lean`        |
+| P2d-α      | `SmallFieldActivityBound.ofWilsonActivity`    | `WilsonPolymerActivity.lean`|
+| P2d-β      | `balabanH1_from_wilson_activity_enriched`     | `WilsonPolymerActivity.lean`|
+| P2e-α      | `LargeFieldActivityBound.ofSuperPoly`         | `LargeFieldDominance.lean`  |
+| P2f-α      | `balabanHyps_from_wilson_activity`            | `LargeFieldDominance.lean`  |
+
+No further pure-additive constructor in the α-stack closes additional
+structural shape — the next moves require analytic content.
+
+## What remains
+
+- **P2d main** (multi-week): retire
+  `WilsonPolymerActivityBound.h_bound` itself — i.e. prove Balaban
+  CMP 116 Lemma 3 (character expansion on U(N_c) / Bessel coefficient
+  asymptotics) for the Wilson action. Moves the L2 bar.
+- **P2e main** (multi-week): retire `h_lf_bound` via Balaban CMP 122
+  II Eq 1.98–1.100 (RG + cluster expansion). Moves the L2 / L3 bars.
+- The α-stack is now structurally saturated; further additive
+  constructors will not move the README percentage. Bar movement
+  requires retiring entries from `AXIOM_FRONTIER.md` /
+  `SORRY_FRONTIER.md`.
+
+Oracle invariant remains `[propext, Classical.choice, Quot.sound]`.
+No new axioms. No `sorry`.
+
+---
+
 # v0.45.0 — P2d-β: balabanH1_from_wilson_activity_enriched CONSTRUCTOR
 
 **Released: 2026-04-24**
