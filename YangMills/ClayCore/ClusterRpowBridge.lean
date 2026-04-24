@@ -1570,12 +1570,30 @@ theorem toTruncatedActivities_K_bound_eq_zero_of_not_connected
     (data.K β F p q) p q r A₀ hr_nonneg hA_nonneg
     (data.hK_abs_le β F p q) Y hp hq h_not_connected
 
+/-- The packaged Mayer/Ursell identity, restated through
+`toTruncatedActivities`. -/
+theorem wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (β : ℝ) (hβ : 0 < β)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (p q : ConcretePlaquette d L)
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    wilsonConnectedCorr (sunHaarProb N_c)
+      (wilsonPlaquetteEnergy N_c) β F p q =
+    (data.toTruncatedActivities β F p q).connectingSum p q := by
+  exact data.h_mayer β hβ F hF p q hdist
+
 end ConnectedCardDecayMayerData
 
 #print axioms ConnectedCardDecayMayerData.toTruncatedActivities
 #print axioms ConnectedCardDecayMayerData.toTruncatedActivities_K
 #print axioms ConnectedCardDecayMayerData.toTruncatedActivities_K_bound_le_cardDecay
 #print axioms ConnectedCardDecayMayerData.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+#print axioms ConnectedCardDecayMayerData.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
 
 /-- Preferred terminal F3 wrapper with the shifted bucket count packaged as the
 named frontier predicate `ShiftedConnectingClusterCountBound`. -/
@@ -1637,7 +1655,8 @@ theorem clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
       data.toTruncatedActivities β F p q)
     (by
       intro d L _ _ β hβ F hF p q hdist
-      exact data.h_mayer β hβ F hF p q hdist)
+      exact data.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+        β hβ F hF p q hdist)
     (by
       intro d L _ _ β _hβ F _hF p q Y hp hq h_not_connected
       exact data.toTruncatedActivities_K_bound_eq_zero_of_not_connected

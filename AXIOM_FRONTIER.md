@@ -1,3 +1,43 @@
+# v1.17.0 — Mayer identity exposed through packaged truncated activities
+
+**Released: 2026-04-25**
+
+## What
+
+Added
+
+    ConnectedCardDecayMayerData.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+
+to `YangMills/ClayCore/ClusterRpowBridge.lean`.
+
+This restates the packaged Mayer/Ursell identity directly through
+`ConnectedCardDecayMayerData.toTruncatedActivities`, and the main bridge
+`clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil` now uses this
+named lemma for its Mayer equality input.
+
+## Why
+
+No percentage bar moves.  This is F3 Mayer-interface cleanup: downstream
+consumers can now treat `ConnectedCardDecayMayerData` as a single object that
+both builds finite-volume truncated activities and identifies their connecting
+sum with the Wilson connected correlator.  The actual nonabelian Mayer/Ursell
+construction remains open.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.ConnectedCardDecayMayerData.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.16.0 — Mayer data converts directly to truncated activities
 
 **Released: 2026-04-25**
