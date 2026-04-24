@@ -1,3 +1,34 @@
+# v0.4.0 — 2026-04-24 superseding status
+
+This file is a historical hypothesis audit.  The current state after the
+v0.93.0-v0.97.0 cleanup is:
+
+- **Declared non-Experimental Lean axioms:** 0.
+- **Real `sorry` / `admit`:** 0.
+- **Weak endpoint canary:** `clayYangMillsTheorem_trivial :
+  ClayYangMillsTheorem := ⟨1, one_pos⟩`, with oracle
+  `[propext, Classical.choice, Quot.sound]`.
+- **First non-vacuous Clay target:** `ClayYangMillsPhysicalStrong`, because it
+  requires an `IsYangMillsMassProfile` tied to the actual Yang-Mills Wilson
+  connected correlators.
+
+The frontier is therefore no longer a list of hidden `axiom` declarations.  It
+is a theorem-side explicit-input frontier:
+
+| Front | Current Lean shape | Meaning |
+|---|---|---|
+| `ClusterCorrelatorBound` / `ConnectedCorrDecay` | explicit hypotheses and packages | Prove exponential decay for the actual Wilson connected correlator from F1/F2/F3. |
+| `ClayCoreLSIToSUNDLRTransfer` | explicit transfer input | Transfer ClayCore/Balaban LSI data to the concrete SU(N) DLR Gibbs family. |
+| SU(N) Dirichlet/Lie sidecar | direct-import sidecar depending on `YangMills/Experimental/LieSUN` | Prove generator data, matrix exponential closure, and Lie-derivative regularity without experimental axioms. |
+| Feynman-Kac / spectral-gap physical packages | explicit theorem inputs | Tie the operator/transfer-matrix packages to `ClayYangMillsPhysicalStrong`. |
+
+Everything below this banner is preserved as historical context.  Where it says
+the hypothesis frontier is "closed" because an assumption was promoted to an
+axiom, that is no longer the current accounting: the modern accounting rejects
+that move and keeps the remaining work visible as explicit theorem inputs.
+
+---
+
 # Hypothesis Frontier
 ## THE ERIKSSON PROGRAMME  Explicit Assumption Audit
 ## Date: 2026-03-31 | Version: v0.3.0
