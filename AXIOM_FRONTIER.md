@@ -1,3 +1,56 @@
+# v0.74.0 — F3 endpoints into `ClayWitnessHyp`
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 consumer bridge in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    noncomputable def clayWitnessHyp_of_shiftedCountBound_mayerData_ceil
+    noncomputable def clayWitnessHyp_of_shiftedCountBound_connectedCardDecayActivities_ceil
+
+The preferred shifted F3 packages now feed the older analytic witness bundle
+directly:
+
+    ClayWitnessHyp N_c
+
+The packaged route consumes
+`ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le` plus
+`ShiftedConnectingClusterCountBound C_conn dim`; the unpackaged route consumes
+the raw `K / hK_abs_le / h_mayer` triple plus the same shifted count package.
+
+Both definitions route through the v0.73 bridge
+`clayWitnessHyp_of_clusterCorrelatorBound`, so the hierarchy is now:
+
+    F3 packages
+      → ClusterCorrelatorBound
+      → ClayWitnessHyp
+      → ClayYangMillsMassGap / ClayConnectedCorrDecay / ClayYangMillsTheorem
+
+No analytic package is proved here.  The remaining F3 mathematical work is
+still exactly to supply the two named packages.  The gain is that all terminal
+consumer shapes are now wired to the same B1/F3 source.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.clayWitnessHyp_of_shiftedCountBound_mayerData_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayWitnessHyp_of_shiftedCountBound_connectedCardDecayActivities_ceil'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.73.0 — `ClusterCorrelatorBound` to `ClayWitnessHyp`
 
 **Released: 2026-04-24**

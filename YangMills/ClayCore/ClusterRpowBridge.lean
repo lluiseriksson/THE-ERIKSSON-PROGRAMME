@@ -1583,6 +1583,24 @@ theorem clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
 
 #print axioms clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
 
+/-- Preferred F3 endpoint into the older analytic witness bundle. -/
+noncomputable def clayWitnessHyp_of_shiftedCountBound_mayerData_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (data : ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le)
+    (h_count : ShiftedConnectingClusterCountBound C_conn dim) :
+    ClayWitnessHyp N_c :=
+  clayWitnessHyp_of_clusterCorrelatorBound N_c
+    wab.r wab.hr_pos wab.hr_lt1
+    (clusterPrefactorShifted wab.r C_conn A₀ dim)
+    (clusterPrefactorShifted_pos wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim)
+    (clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+      N_c wab.r wab.hr_pos wab.hr_lt1 C_conn A₀ hC hA dim data h_count)
+
+#print axioms clayWitnessHyp_of_shiftedCountBound_mayerData_ceil
+
 /-- Authentic Clay-facing F3 wrapper: the preferred shifted Mayer/count packages
 produce the non-vacuous mass-gap structure, not merely the weak existential
 `ClayYangMillsTheorem`. -/
@@ -1657,6 +1675,46 @@ noncomputable def clayMassGap_of_shiftedCountBound_connectedCardDecayActivities_
     h_count
 
 #print axioms clayMassGap_of_shiftedCountBound_connectedCardDecayActivities_ceil
+
+/-- Unpackaged F3 endpoint into the older analytic witness bundle. -/
+noncomputable def clayWitnessHyp_of_shiftedCountBound_connectedCardDecayActivities_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (K : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      Finset (ConcretePlaquette d L) → ℝ)
+    (hK_abs_le : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      |K β F p q Y| ≤
+        if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y
+          then A₀ * wab.r ^ Y.card else 0)
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (TruncatedActivities.ofConnectedCardDecay
+        (K β F p q) p q wab.r A₀ wab.hr_pos.le hA.le
+        (hK_abs_le β F p q)).connectingSum p q)
+    (h_count : ShiftedConnectingClusterCountBound C_conn dim) :
+    ClayWitnessHyp N_c :=
+  clayWitnessHyp_of_shiftedCountBound_mayerData_ceil
+    N_c wab C_conn A₀ hC hA dim
+    ({ K := K, hK_abs_le := hK_abs_le, h_mayer := h_mayer } :
+      ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le)
+    h_count
+
+#print axioms clayWitnessHyp_of_shiftedCountBound_connectedCardDecayActivities_ceil
 
 /-- Unpackaged F3 endpoint into the connected-correlator-decay hub. -/
 noncomputable def clayConnectedCorrDecay_of_shiftedCountBound_connectedCardDecayActivities_ceil
