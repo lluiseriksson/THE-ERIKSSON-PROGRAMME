@@ -1,3 +1,45 @@
+# v1.15.0 — Shifted F3 Mayer/count package field coherence exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added `[simp]` field-coherence lemmas for
+`ShiftedF3MayerCountPackage.ofSubpackages`, `mayerPackage`, and
+`countPackage` in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    ShiftedF3MayerCountPackage.ofSubpackages_C_conn
+    ShiftedF3MayerCountPackage.ofSubpackages_A₀
+    ShiftedF3MayerCountPackage.ofSubpackages_dim
+    ShiftedF3MayerCountPackage.ofSubpackages_data
+    ShiftedF3MayerCountPackage.mayerPackage_A₀
+    ShiftedF3MayerCountPackage.mayerPackage_data
+    ShiftedF3MayerCountPackage.countPackage_C_conn
+    ShiftedF3MayerCountPackage.countPackage_dim
+
+## Why
+
+No percentage bar moves.  This is package-coherence cleanup: independently
+proved Mayer and count packages can now be combined and projected without
+unfolding definitions just to recover `A₀`, `data`, `C_conn`, or `dim`.
+The mathematical F3 frontier remains the construction of the nonabelian Mayer
+package and the global shifted count package.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all eight new coherence lemmas print the canonical project
+oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.14.0 — Global shifted count package projects transparently to finite volumes
 
 **Released: 2026-04-25**

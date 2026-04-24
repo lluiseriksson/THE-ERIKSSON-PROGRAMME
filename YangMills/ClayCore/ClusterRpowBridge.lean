@@ -1931,6 +1931,50 @@ def countPackage
   dim := pkg.dim
   h_count := pkg.h_count
 
+@[simp] theorem ofSubpackages_C_conn
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) :
+    (ofSubpackages mayer count).C_conn = count.C_conn := rfl
+
+@[simp] theorem ofSubpackages_A₀
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) :
+    (ofSubpackages mayer count).A₀ = mayer.A₀ := rfl
+
+@[simp] theorem ofSubpackages_dim
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) :
+    (ofSubpackages mayer count).dim = count.dim := rfl
+
+@[simp] theorem ofSubpackages_data
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) :
+    (ofSubpackages mayer count).data = mayer.data := rfl
+
+@[simp] theorem mayerPackage_A₀
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    (mayerPackage pkg).A₀ = pkg.A₀ := rfl
+
+@[simp] theorem mayerPackage_data
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    (mayerPackage pkg).data = pkg.data := rfl
+
+@[simp] theorem countPackage_C_conn
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    (countPackage pkg).C_conn = pkg.C_conn := rfl
+
+@[simp] theorem countPackage_dim
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) :
+    (countPackage pkg).dim = pkg.dim := rfl
+
 @[simp] theorem ofSubpackages_mayerPackage_countPackage
     {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
     (pkg : ShiftedF3MayerCountPackage N_c wab) :
@@ -2092,6 +2136,14 @@ theorem clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_prefactor_eq
 #print axioms ShiftedF3MayerCountPackage.ofSubpackages
 #print axioms ShiftedF3MayerCountPackage.mayerPackage
 #print axioms ShiftedF3MayerCountPackage.countPackage
+#print axioms ShiftedF3MayerCountPackage.ofSubpackages_C_conn
+#print axioms ShiftedF3MayerCountPackage.ofSubpackages_A₀
+#print axioms ShiftedF3MayerCountPackage.ofSubpackages_dim
+#print axioms ShiftedF3MayerCountPackage.ofSubpackages_data
+#print axioms ShiftedF3MayerCountPackage.mayerPackage_A₀
+#print axioms ShiftedF3MayerCountPackage.mayerPackage_data
+#print axioms ShiftedF3MayerCountPackage.countPackage_C_conn
+#print axioms ShiftedF3MayerCountPackage.countPackage_dim
 #print axioms ShiftedF3MayerCountPackage.ofSubpackages_mayerPackage_countPackage
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq
