@@ -183,4 +183,56 @@ theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable
 
 #print axioms physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable
 
+/-- Same physical endpoint, with the local Wilson-observable integrability
+side-conditions discharged from unit boundedness plus measurability under the
+Gibbs measure.  The remaining local regularity input is now
+`AEStronglyMeasurable (plaquetteWilsonObs F p)` rather than integrability of
+each one- and two-point observable. -/
+theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_measurable
+    {N_c d : ℕ} [NeZero N_c] [NeZero d]
+    (w : ClayConnectedCorrDecay N_c)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hboltz_int : ∀ (L : ℕ) [NeZero L],
+      Integrable
+        (fun U : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+          Real.exp (-β * wilsonAction (wilsonPlaquetteEnergy N_c) U))
+        (gaugeMeasureFrom (d := d) (N := L) (sunHaarProb N_c)))
+    (hmeas : ∀ (L : ℕ) [NeZero L] (p : ConcretePlaquette d L),
+      AEStronglyMeasurable (plaquetteWilsonObs F p)
+        (gibbsMeasure (d := d) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette d L) =>
+        siteLatticeDist p.site q.site) := by
+  refine physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable
+    w β F hβ hF hboltz_int ?_ ?_
+  · intro L instL p
+    letI : NeZero L := instL
+    haveI : IsProbabilityMeasure
+        (gibbsMeasure (d := d) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β) :=
+      gibbsMeasure_isProbability d L
+        (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β (hboltz_int L)
+    exact plaquetteWilsonObs_integrable_of_unitBound F hF p
+      (gibbsMeasure (d := d) (N := L)
+        (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)
+      (hmeas L p)
+  · intro L instL p q
+    letI : NeZero L := instL
+    haveI : IsProbabilityMeasure
+        (gibbsMeasure (d := d) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β) :=
+      gibbsMeasure_isProbability d L
+        (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β (hboltz_int L)
+    exact plaquetteWilsonObs_mul_integrable_of_unitBound F hF p q
+      (gibbsMeasure (d := d) (N := L)
+        (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)
+      (hmeas L p) (hmeas L q)
+
+#print axioms physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_measurable
+
 end YangMills

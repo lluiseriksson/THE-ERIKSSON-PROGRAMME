@@ -1,3 +1,67 @@
+# v1.02.0 — Local Wilson integrability from measurability + unit bound
+
+**Released: 2026-04-24**
+
+## What
+
+Added two ClayCore integrability lemmas:
+
+    theorem plaquetteWilsonObs_integrable_of_unitBound
+    theorem plaquetteWilsonObs_mul_integrable_of_unitBound
+
+in `YangMills/ClayCore/ClusterCorrelatorBound.lean`.
+
+They prove that a unit-bounded Wilson plaquette observable, and the product of
+two such observables, are integrable on any finite measure space once the
+relevant `AEStronglyMeasurable` facts are available.  This is the standard
+finite-measure bounded-function step, now recorded as reusable Lean API.
+
+Added the L8 wrapper:
+
+    theorem physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_measurable
+
+in `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+It is the v1.01 physical bridge with the local Wilson one-point/two-point
+integrability side-conditions discharged from:
+
+    ∀ L p, AEStronglyMeasurable (plaquetteWilsonObs F p) (gibbsMeasure ... β)
+
+together with `|F| ≤ 1` and the Boltzmann-weight integrability that already
+produces the Gibbs probability measure.
+
+## Why
+
+This does not prove F1/F2/F3 and does not move the percentage bars.  It removes
+a small but important local analytic nuisance from the final `PhysicalStrong`
+interface: local Wilson integrability is no longer a separate hypothesis once
+measurability is supplied.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ClusterCorrelatorBound
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces:
+
+    'YangMills.plaquetteWilsonObs_integrable_of_unitBound'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.plaquetteWilsonObs_mul_integrable_of_unitBound'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalStrong_of_clayConnectedCorrDecay_siteDist_of_boltzmannIntegrable_measurable'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.01.0 — Boltzmann-integrability variant of the PhysicalStrong bridge
 
 **Released: 2026-04-24**

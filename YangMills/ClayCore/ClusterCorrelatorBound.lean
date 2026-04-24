@@ -221,6 +221,43 @@ theorem wilsonConnectedCorr_abs_le_two_of_unitBound
       gcongr
     _ = 2 := by norm_num
 
+/-- A unit-bounded Wilson plaquette observable is integrable on any finite
+measure space once its measurability is available. -/
+theorem plaquetteWilsonObs_integrable_of_unitBound
+    {N_c d L : ℕ} [NeZero N_c] [NeZero d] [NeZero L]
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (p : ConcretePlaquette d L)
+    (μ : Measure (GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+    [IsFiniteMeasure μ]
+    (hmeas : AEStronglyMeasurable (plaquetteWilsonObs F p) μ) :
+    Integrable (plaquetteWilsonObs F p) μ := by
+  refine Integrable.of_bound hmeas 1 ?_
+  exact ae_of_all μ fun A => by
+    simpa [Real.norm_eq_abs, plaquetteWilsonObs] using
+      hF (GaugeConfig.plaquetteHolonomy A p)
+
+/-- The product of two unit-bounded Wilson plaquette observables is integrable
+on any finite measure space once both factors are measurable. -/
+theorem plaquetteWilsonObs_mul_integrable_of_unitBound
+    {N_c d L : ℕ} [NeZero N_c] [NeZero d] [NeZero L]
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (p q : ConcretePlaquette d L)
+    (μ : Measure (GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+    [IsFiniteMeasure μ]
+    (hpmeas : AEStronglyMeasurable (plaquetteWilsonObs F p) μ)
+    (hqmeas : AEStronglyMeasurable (plaquetteWilsonObs F q) μ) :
+    Integrable
+      (fun A : GaugeConfig d L ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+        plaquetteWilsonObs F p A * plaquetteWilsonObs F q A) μ := by
+  refine Integrable.of_bound (hpmeas.mul hqmeas) 1 ?_
+  exact ae_of_all μ fun A => by
+    have hp := hF (GaugeConfig.plaquetteHolonomy A p)
+    have hq := hF (GaugeConfig.plaquetteHolonomy A q)
+    rw [Real.norm_eq_abs, abs_mul]
+    exact mul_le_one₀ hp (abs_nonneg _) hq
+
 /-- **Cluster correlator bound (B1).**
     The content of Theorem 7.1 of Bloque4 in the form consumed
     by `CharacterExpansionData`: the connected Wilson correlator
@@ -304,5 +341,7 @@ theorem clay_yangMills_large_beta
 
 #print axioms clayWitnessHyp_of_clusterCorrelatorBound
 #print axioms wilsonConnectedCorr_abs_le_two_of_unitBound
+#print axioms plaquetteWilsonObs_integrable_of_unitBound
+#print axioms plaquetteWilsonObs_mul_integrable_of_unitBound
 
 end YangMills
