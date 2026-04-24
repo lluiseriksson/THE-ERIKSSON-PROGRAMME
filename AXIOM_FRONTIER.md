@@ -1,3 +1,55 @@
+# v1.30.0 — Physical F3 package finite-volume consumers exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added direct finite-volume consumers for
+`PhysicalShiftedF3MayerCountPackage` in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    PhysicalShiftedF3MayerCountPackage.toTruncatedActivities
+    PhysicalShiftedF3MayerCountPackage.toTruncatedActivities_K
+    PhysicalShiftedF3MayerCountPackage.toTruncatedActivities_K_bound_le_cardDecay
+    PhysicalShiftedF3MayerCountPackage.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    PhysicalShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    PhysicalShiftedF3MayerCountPackage.apply_count
+
+These expose the physical `d = 4` truncated activities, Mayer/Ursell identity,
+and shifted connected-cluster count inequality directly from the single
+physical F3 package.
+
+## Why
+
+No percentage bar moves.  This is proof-ergonomics infrastructure around the
+active F3 frontier.  Future code constructing
+`PhysicalShiftedF3MayerCountPackage N_c wab` can now consume the Mayer and
+count halves through package-level API, without manually projecting through
+`pkg.mayer` and `pkg.count` at each finite-volume use site.
+
+The remaining mathematical obligations are unchanged:
+
+    ShiftedF3MayerPackage N_c wab
+    PhysicalShiftedF3CountPackage
+
+for `N_c ≥ 2`.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces: all new physical package consumers print the canonical project
+oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.29.0 — Single-package physical F3 frontier exposed
 
 **Released: 2026-04-25**

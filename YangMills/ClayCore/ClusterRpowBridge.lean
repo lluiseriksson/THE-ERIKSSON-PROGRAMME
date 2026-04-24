@@ -2058,6 +2058,96 @@ def ofSubpackages
     (count : PhysicalShiftedF3CountPackage) :
     (ofSubpackages mayer count).count = count := rfl
 
+/-- The physical finite-volume truncated activities carried by the Mayer half
+of a physical F3 package. -/
+noncomputable def toTruncatedActivities
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L) :
+    TruncatedActivities (ConcretePlaquette physicalClayDimension L) :=
+  pkg.mayer.toTruncatedActivities β F p q
+
+/-- The package-level physical truncated activity is the raw Mayer activity
+stored in the Mayer half. -/
+@[simp] theorem toTruncatedActivities_K
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (Y : Finset (ConcretePlaquette physicalClayDimension L)) :
+    (pkg.toTruncatedActivities β F p q).K Y =
+      pkg.mayer.data.K β F p q Y := by
+  rfl
+
+/-- The physical package-level connected-cardinality bound is dominated by the
+Mayer profile. -/
+theorem toTruncatedActivities_K_bound_le_cardDecay
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (Y : Finset (ConcretePlaquette physicalClayDimension L)) :
+    (pkg.toTruncatedActivities β F p q).K_bound Y ≤
+      pkg.mayer.A₀ * wab.r ^ Y.card := by
+  exact pkg.mayer.toTruncatedActivities_K_bound_le_cardDecay β F p q Y
+
+/-- The physical package-level bound vanishes on disconnected polymers
+containing the marked plaquettes. -/
+theorem toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (Y : Finset (ConcretePlaquette physicalClayDimension L))
+    (hp : p ∈ Y) (hq : q ∈ Y) (h_not_connected : ¬ PolymerConnected Y) :
+    (pkg.toTruncatedActivities β F p q).K_bound Y = 0 := by
+  exact pkg.mayer.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    β F p q Y hp hq h_not_connected
+
+/-- The physical package-level Mayer/Ursell identity, stated through the
+activities exposed by the single physical package. -/
+theorem wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (β : ℝ) (hβ : 0 < β)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    wilsonConnectedCorr (sunHaarProb N_c)
+      (wilsonPlaquetteEnergy N_c) β F p q =
+    (pkg.toTruncatedActivities β F p q).connectingSum p q := by
+  exact pkg.mayer.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    β hβ F hF p q hdist
+
+/-- Direct application form of the physical count half stored in the single
+physical F3 package. -/
+theorem apply_count
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.count.C_conn * (((n + 1 : ℕ) : ℝ) ^ pkg.count.dim) :=
+  pkg.count.apply p q n hn hdist
+
 end PhysicalShiftedF3MayerCountPackage
 
 /-- Physical `d = 4` F3 endpoint from the single physical Mayer/count package. -/
@@ -2074,6 +2164,12 @@ theorem physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
 #print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages
 #print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages_mayer
 #print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages_count
+#print axioms PhysicalShiftedF3MayerCountPackage.toTruncatedActivities
+#print axioms PhysicalShiftedF3MayerCountPackage.toTruncatedActivities_K
+#print axioms PhysicalShiftedF3MayerCountPackage.toTruncatedActivities_K_bound_le_cardDecay
+#print axioms PhysicalShiftedF3MayerCountPackage.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+#print axioms PhysicalShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+#print axioms PhysicalShiftedF3MayerCountPackage.apply_count
 #print axioms physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
 
 /-- SU(1) canary for the shifted F3 Mayer interface.

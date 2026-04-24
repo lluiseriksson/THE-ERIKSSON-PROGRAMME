@@ -24,6 +24,16 @@ It bundles exactly:
 
 and feeds directly into the physical endpoint.
 
+The physical package also exposes the finite-volume consumers needed by proof
+scripts:
+
+    PhysicalShiftedF3MayerCountPackage.toTruncatedActivities
+    PhysicalShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    PhysicalShiftedF3MayerCountPackage.apply_count
+
+Use these package-level names inside future F3 scripts instead of repeatedly
+projecting through `pkg.mayer` and `pkg.count`.
+
 It can be supplied directly, or mechanically assembled from the two independent
 frontier halves:
 
