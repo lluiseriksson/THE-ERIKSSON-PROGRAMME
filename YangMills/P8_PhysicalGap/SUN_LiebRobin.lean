@@ -2,16 +2,16 @@ import Mathlib
 import YangMills.P8_PhysicalGap.SpatialLocalityFramework
 import YangMills.P8_PhysicalGap.MarkovSemigroupDef
 import YangMills.P8_PhysicalGap.SUN_StateConstruction
-import YangMills.P8_PhysicalGap.SUN_DirichletCore
 
 /-!
 # SUN_LiebRobin — v0.8.36
 
 Concrete Lieb-Robinson bound for the SU(N) Yang-Mills lattice model.
 
-## Import cycle resolved
-`SUN_DirichletCore` contains `sunDirichletForm_concrete` without importing
-`LSItoSpectralGap`, breaking the cycle with `SpatialLocalityFramework`.
+## Import discipline
+This module is explicit-input and does not need the concrete SU(N) Dirichlet
+core; avoiding that import keeps the locality theorem independent of the
+experimental Lie-derivative sidecar.
 
 ## Axiom count: 0
 ## Sorry count: 0

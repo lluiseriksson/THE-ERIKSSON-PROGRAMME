@@ -1,3 +1,37 @@
+# v0.96.0 — Remove unused experimental import from SUN locality
+
+**Released: 2026-04-24**
+
+## What
+
+Removed the unused import
+
+    import YangMills.P8_PhysicalGap.SUN_DirichletCore
+
+from `YangMills/P8_PhysicalGap/SUN_LiebRobin.lean`.
+
+`sun_locality_to_covariance` is already an explicit-input theorem: it receives
+the symmetric Markov transport, variance decay, and Lieb-Robinson bound as
+hypotheses.  It does not need the concrete SU(N) Dirichlet sidecar.  Removing
+the import prevents the locality theorem from unnecessarily inheriting the
+experimental Lie-derivative oracle.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.P8_PhysicalGap.SUN_LiebRobin
+
+Pinned trace:
+
+    'YangMills.sun_locality_to_covariance'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No non-Experimental `axiom`.
+
+---
+
 # v0.95.0 — Remove final non-Experimental Lean axiom
 
 **Released: 2026-04-24**
