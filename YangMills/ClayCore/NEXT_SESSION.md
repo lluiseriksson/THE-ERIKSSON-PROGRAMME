@@ -27,6 +27,16 @@ Supplying either the single package or both halves yields, oracle-clean:
     ClayConnectedCorrDecay
     ClayYangMillsTheorem
 
+The single package now also exposes its finite-volume consumers directly:
+
+    ShiftedF3MayerCountPackage.toTruncatedActivities
+    ShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    ShiftedF3MayerCountPackage.apply_count
+
+so downstream code no longer needs to project through `mayerPackage` /
+`countPackage` just to obtain the activity, Mayer identity, or bucket-count
+inequality.
+
 The small-β terminal form is now named directly in
 `YangMills/ClayCore/ZeroMeanCancellation.lean`:
 
@@ -85,7 +95,12 @@ This means:
 - Mayer/Ursell identity:
 
       wilsonConnectedCorr ... β F p q =
-        (TruncatedActivities.ofConnectedCardDecay ...).connectingSum p q
+        (data.toTruncatedActivities β F p q).connectingSum p q
+
+At package level this is available as:
+
+      ShiftedF3MayerPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+      ShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
 
 What is already closed at the single-plaquette layer:
 
@@ -131,6 +146,9 @@ What is already closed locally:
     ShiftedF3CountPackageAt.finite
     ShiftedConnectingClusterCountBound.toAt
     ShiftedF3CountPackage.toAt
+    ShiftedF3CountPackage.ofBound
+    ShiftedF3CountPackage.apply
+    ShiftedF3MayerCountPackage.apply_count
 
 proves the fixed-`d`, fixed-`L` finite-volume version with
 `C_conn = Fintype.card (Finset (ConcretePlaquette d L)) + 1` and `dim = 0`.
@@ -158,10 +176,15 @@ Key oracle canaries:
     #print axioms clay_theorem_of_shiftedF3MayerCountPackage
     #print axioms clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
     #print axioms clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq
+    #print axioms ShiftedF3MayerCountPackage.toTruncatedActivities
+    #print axioms ShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    #print axioms ShiftedF3MayerCountPackage.apply_count
     #print axioms shiftedConnectingClusterCountBoundAt_finite
     #print axioms ShiftedF3CountPackageAt.finite
     #print axioms ShiftedConnectingClusterCountBound.toAt
     #print axioms ShiftedF3CountPackage.toAt
+    #print axioms ShiftedF3CountPackage.ofBound
+    #print axioms ShiftedF3CountPackage.apply
     #print axioms plaquetteFluctuationNorm_mean_zero
     #print axioms yang_mills_final_small_beta_of_uniformRpow
     #print axioms clayMassGap_small_beta_of_uniformRpow
