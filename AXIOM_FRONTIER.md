@@ -1,3 +1,49 @@
+# v0.97.0 — Keep experimental Dirichlet sidecar out of main umbrella
+
+**Released: 2026-04-24**
+
+## What
+
+Removed the two concrete Dirichlet sidecar imports
+
+    import YangMills.P8_PhysicalGap.SUN_DirichletCore
+    import YangMills.P8_PhysicalGap.SUN_DirichletForm
+
+from the root aggregator `YangMills.lean`.
+
+These files remain available by direct import, but they currently depend on
+`YangMills.Experimental.LieSUN.LieDerivReg_v4` for the concrete SU(N)
+Lie-derivative data and regularity facts.  Keeping them out of the main
+umbrella prevents `lake build YangMills` from inheriting experimental
+Lie-derivative axioms through a convenience import.
+
+This is audit hygiene, not a mathematical closure of the SU(N) Dirichlet
+analysis.  The concrete Dirichlet/Lie-derivative sidecar remains an explicit
+frontier until the generator data, matrix exponential closure, and derivative
+regularity facts are proved without experimental axioms.
+
+## Oracle
+
+Build:
+
+    lake build YangMills
+
+Audit command:
+
+    git grep -n "SUN_DirichletCore\|SUN_DirichletForm" -- YangMills.lean
+
+Output:
+
+    <empty>
+
+The sidecar itself still imports experimental Lie-derivative data:
+
+    YangMills/P8_PhysicalGap/SUN_DirichletCore.lean
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v0.96.0 — Remove unused experimental import from SUN locality
 
 **Released: 2026-04-24**

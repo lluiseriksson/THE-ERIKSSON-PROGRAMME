@@ -114,8 +114,6 @@ import YangMills.P8_PhysicalGap.PhysicalMassGap
 import YangMills.P8_PhysicalGap.RicciSU2Explicit
 import YangMills.P8_PhysicalGap.RicciSUN
 import YangMills.P8_PhysicalGap.SUN_Compact
-import YangMills.P8_PhysicalGap.SUN_DirichletCore
-import YangMills.P8_PhysicalGap.SUN_DirichletForm
 import YangMills.P8_PhysicalGap.SUN_LiebRobin
 import YangMills.P8_PhysicalGap.SUN_StateConstruction
 import YangMills.P8_PhysicalGap.SpatialLocalityFramework
