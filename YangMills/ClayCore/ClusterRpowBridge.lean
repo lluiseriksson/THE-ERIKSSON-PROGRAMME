@@ -21,6 +21,8 @@ No sorry. No new axioms.
 
 namespace YangMills
 
+open scoped Classical
+
 namespace TruncatedActivities
 
 open Real
@@ -241,5 +243,88 @@ theorem clusterCorrelatorBound_of_finiteConnectingBounds_ceil
 #print axioms clusterPrefactor_rpow_ceil_le_exp
 #print axioms clusterCorrelatorBound_of_truncatedActivities_ceil
 #print axioms clusterCorrelatorBound_of_finiteConnectingBounds_ceil
+
+/-- If `K_bound` vanishes on disconnected polymers containing `p` and `q`,
+then the finite connecting sum may be restricted to connected polymers.
+This is the support/cancellation shape used before applying lattice-animal
+counting. -/
+theorem finiteConnectingSum_eq_connectedFiniteSum
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (h_zero : ∀ Y : Finset (ConcretePlaquette d L), p ∈ Y → q ∈ Y →
+      ¬ PolymerConnected Y → K_bound Y = 0) :
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y), K_bound Y) =
+      ∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y), K_bound Y := by
+  classical
+  rw [Finset.sum_filter]
+  rw [Finset.sum_filter]
+  apply Finset.sum_congr rfl
+  intro Y _
+  by_cases hpq : p ∈ Y ∧ q ∈ Y
+  · by_cases hconn : PolymerConnected Y
+    · simp [hpq, hconn]
+    · simp [hpq, hconn, h_zero Y hpq.1 hpq.2 hconn]
+  · simp [hpq]
+    intro hp hq _
+    exact (hpq ⟨hp, hq⟩).elim
+
+/-- Connected finite-sum version of
+`clusterCorrelatorBound_of_finiteConnectingBounds_ceil`.
+
+This variant matches the usual KP/lattice-animal input even more closely:
+the caller proves that disconnected polymers have zero `K_bound`, and bounds
+only the finite connected-polymer sum. -/
+theorem clusterCorrelatorBound_of_connectedFiniteBounds_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (T : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      TruncatedActivities (ConcretePlaquette d L))
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (T β F p q).connectingSum p q)
+    (h_zero : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      p ∈ Y → q ∈ Y → ¬ PolymerConnected Y →
+      (T β F p q).K_bound Y = 0)
+    (h_connected_bound : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+        (T β F p q).K_bound Y) ≤
+        ∑' n : ℕ, C_conn * (n : ℝ) ^ dim * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    ClusterCorrelatorBound N_c r (clusterPrefactor r C_conn A₀ dim) := by
+  refine clusterCorrelatorBound_of_finiteConnectingBounds_ceil
+    N_c r hr_pos hr_lt1 C_conn A₀ hC hA dim T h_mayer ?_
+  intro d L _ _ β hβ F hF p q hdist
+  rw [finiteConnectingSum_eq_connectedFiniteSum
+    (fun Y => (T β F p q).K_bound Y) p q
+    (fun Y hp hq hconn => h_zero β hβ F hF p q Y hp hq hconn)]
+  exact h_connected_bound β hβ F hF p q hdist
+
+#print axioms finiteConnectingSum_eq_connectedFiniteSum
+#print axioms clusterCorrelatorBound_of_connectedFiniteBounds_ceil
 
 end YangMills
