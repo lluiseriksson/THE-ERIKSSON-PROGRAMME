@@ -1,3 +1,54 @@
+# v0.65.0 — Shifted bucket-count consumers for F3
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive F3 bucket support in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    theorem connectedFiniteSum_le_of_cardBucketBounds_shifted
+    theorem connectedFiniteSum_le_of_cardBucketBounds_kp_shifted
+    theorem cardBucketSum_le_of_count_and_pointwise_shifted
+
+These are the finite connected-sum and bucket consumers for the shifted
+lattice-animal count
+
+    #bucket(n) ≤ C_conn * (n + 1)^dim.
+
+Together with v0.64.0, this carries the realistic nonzero minimal-bucket
+profile through the same decomposition used by the unshifted F3 bridge:
+
+    connected finite sum
+      → cardinal buckets
+      → count + pointwise bound
+      → shifted KP series.
+
+The older unshifted consumers remain available for compatibility.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    'YangMills.connectedFiniteSum_le_of_cardBucketBounds_shifted'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.connectedFiniteSum_le_of_cardBucketBounds_kp_shifted'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.cardBucketSum_le_of_count_and_pointwise_shifted'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.64.0 — Shifted KP series reaches ClusterCorrelatorBound
 
 **Released: 2026-04-24**
