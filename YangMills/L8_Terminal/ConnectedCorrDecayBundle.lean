@@ -1,6 +1,7 @@
 import YangMills.L8_Terminal.ClayPhysical
 import YangMills.ClayCore.ConnectedCorrDecay
 import YangMills.ClayCore.ClusterCorrelatorBound
+import YangMills.ClayCore.ClusterRpowBridge
 import YangMills.L2_Balaban.Measurability
 namespace YangMills
 variable {G : Type*} [Group G] [TopologicalSpace G] [CompactSpace G] [T2Space G]
@@ -411,5 +412,53 @@ theorem physicalStrong_of_clusterCorrelatorBound_siteDist_measurableF
     β F hβ hF hF_meas
 
 #print axioms physicalStrong_of_clusterCorrelatorBound_siteDist_measurableF
+
+/-- Direct physical endpoint from the preferred single-package shifted F3 route.
+
+This is the Wilson-facing F3 package composed with the direct
+`ClusterCorrelatorBound → PhysicalStrong` bridge. -/
+theorem physicalStrong_of_shiftedF3MayerCountPackage_siteDist_measurableF
+    {N_c d : ℕ} [NeZero N_c] [NeZero d]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette d L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_clusterCorrelatorBound_siteDist_measurableF
+    wab.r wab.hr_pos wab.hr_lt1
+    (clusterPrefactorShifted wab.r pkg.C_conn pkg.A₀ pkg.dim)
+    (clusterPrefactorShifted_pos wab.r wab.hr_pos wab.hr_lt1
+      pkg.C_conn pkg.A₀ pkg.hC pkg.hA pkg.dim)
+    (clusterCorrelatorBound_of_shiftedF3MayerCountPackage N_c wab pkg)
+    β F hβ hF hF_meas
+
+/-- Direct physical endpoint from independently-produced shifted F3 Mayer and
+count subpackages. -/
+theorem physicalStrong_of_shiftedF3Subpackages_siteDist_measurableF
+    {N_c d : ℕ} [NeZero N_c] [NeZero d]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette d L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_shiftedF3MayerCountPackage_siteDist_measurableF
+    wab (ShiftedF3MayerCountPackage.ofSubpackages mayer count)
+    β F hβ hF hF_meas
+
+#print axioms physicalStrong_of_shiftedF3MayerCountPackage_siteDist_measurableF
+#print axioms physicalStrong_of_shiftedF3Subpackages_siteDist_measurableF
 
 end YangMills

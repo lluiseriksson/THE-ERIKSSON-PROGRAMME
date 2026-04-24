@@ -1,3 +1,66 @@
+# v1.08.0 — Shifted F3 packages land directly in PhysicalStrong
+
+**Released: 2026-04-25**
+
+## What
+
+Added
+
+    theorem physicalStrong_of_shiftedF3MayerCountPackage_siteDist_measurableF
+    theorem physicalStrong_of_shiftedF3Subpackages_siteDist_measurableF
+
+to `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+They compose the shifted F3 package endpoints
+
+    clusterCorrelatorBound_of_shiftedF3MayerCountPackage
+    ShiftedF3MayerCountPackage.ofSubpackages
+
+with the v1.07 direct `ClusterCorrelatorBound → PhysicalStrong` bridge.  The
+consumer-facing endpoints are:
+
+    WilsonPolymerActivityBound N_c
+    ShiftedF3MayerCountPackage N_c wab
+    0 < β
+    ∀ U, |F U| ≤ 1
+    Measurable F
+    ─────────────────────────────────────────────
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun L p q => siteLatticeDist p.site q.site)
+
+and the same physical endpoint from independently-produced
+`ShiftedF3MayerPackage N_c wab` and `ShiftedF3CountPackage` subpackages.
+
+## Why
+
+No percentage bar moves.  This packages the current preferred shifted F3 route
+all the way to the first non-vacuous physical endpoint.  The remaining active
+work is to construct the shifted F3 packages themselves: the Mayer/Ursell
+identity and the Kotecky-Preiss count/series analytic content.  Terminal
+finite-volume regularity and endpoint wiring are no longer the bottleneck for
+this route.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces:
+
+    'YangMills.physicalStrong_of_shiftedF3MayerCountPackage_siteDist_measurableF'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalStrong_of_shiftedF3Subpackages_siteDist_measurableF'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.07.0 — Direct ClusterCorrelatorBound to PhysicalStrong bridge
 
 **Released: 2026-04-25**
