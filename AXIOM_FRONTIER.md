@@ -1,3 +1,49 @@
+# v0.89.0 — Turn Poincare-to-covariance into explicit SZ input
+
+**Released: 2026-04-24**
+
+## What
+
+Removed the P8 axiom `poincare_to_covariance_decay` from
+`YangMills/P8_PhysicalGap/StroockZegarlinski.lean`.
+
+The Stroock-Zegarlinski bridge now takes the covariance-decay family as an
+explicit input:
+
+    hCov : ∀ L, HasCovarianceDecay (gibbsFamily L) 2 (2 / α_star)
+
+and then performs the already-proved repackaging to
+`ExponentialClustering`.  This keeps the formal LSI/clustering API useful while
+not declaring the generic Poincare-to-covariance functional-analysis theorem as
+a global axiom.
+
+This does not prove Poincare-to-covariance decay.  It localizes that analytic
+step as a named hypothesis at the call site.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.P8_PhysicalGap.StroockZegarlinski
+
+Pinned traces:
+
+    'YangMills.sz_lsi_to_clustering_bridge'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.sz_lsi_to_clustering'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound, hille_yosida_semigroup]
+
+    'YangMills.lsi_to_spectralGap'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound, hille_yosida_semigroup]
+
+No `poincare_to_covariance_decay` axiom remains. No `sorry`.
+
+---
+
 # v0.88.0 — Turn SUN Lieb-Robinson axioms into explicit inputs
 
 **Released: 2026-04-24**
@@ -60,8 +106,8 @@ Deleted the orphaned backward-compatibility axiom
 Source search before deletion found only the declaration itself, so the axiom
 was not feeding the Clay path or any intermediate theorem.  The
 active Stroock-Zegarlinski route remains in
-`YangMills/P8_PhysicalGap/StroockZegarlinski.lean`, where the live frontier is
-the separate `poincare_to_covariance_decay` bridge.
+`YangMills/P8_PhysicalGap/StroockZegarlinski.lean`; as of v0.89.0 its
+covariance-decay input is explicit rather than a declared axiom.
 
 This is a pure dead-axiom deletion.  It does not prove the active
 Stroock-Zegarlinski covariance-decay theorem and does not alter the normalized
@@ -2962,9 +3008,9 @@ are in `docs/phase1-llogl-obstruction.md`.
 
 ## Current axiom inventory (non-Experimental)
 
-- **Total declared axioms (non-Experimental):** 9 after v0.86.0
+- **Total declared axioms (non-Experimental Lean):** 5 after v0.89.0
 - **Axioms reached by `clay_millennium_yangMills`:** 0
-- **Orphaned axioms (declared but unreachable from Clay):** 10
+- **Orphaned axioms (declared but unreachable from Clay):** historical census below predates v0.86.0-v0.89.0 cleanup
 
 ### Orphaned (dead-code) axioms by file
 - `YangMills/P8_PhysicalGap/BalabanToLSI.lean`: 2 (after v0.34 cleanup) — `holleyStroock_sunGibbs_lsi`, `into`
@@ -3104,7 +3150,6 @@ The legacy tables below are preserved for historical accuracy but the line
 |-------|------|-------|
 | `hille_yosida_semigroup` | MarkovSemigroupDef.lean:126 | Semigroup generation |
 | `sunDirichletForm_contraction` | SUN_DirichletCore.lean:178 | Dirichlet contraction |
-| `poincare_to_covariance_decay` | StroockZegarlinski.lean:21 | Covariance decay |
 
 ### ClayCore/BalabanRG/ (RG machinery — not in sun_physical_mass_gap BFS path)
 
@@ -3234,7 +3279,7 @@ Taken from `grep -rn '^axiom ' YangMills/ --include='*.lean' | grep -v Experimen
 | 1 | `P8_PhysicalGap/BalabanToLSI.lean:828` | `holleyStroock_sunGibbs_lsi` | HolleyStroock transfer from Haar LSI to perturbed Gibbs LSI (the main analytic content) |
 | 2 | `P8_PhysicalGap/BalabanToLSI.lean:818` | `lsi_withDensity_density_bound` | L density bound used by HolleyStroock |
 | 3 | `P8_PhysicalGap/BalabanToLSI.lean:848` | `sz_lsi_to_clustering` | StroockZegarlinski: LSI  exponential clustering |
-| 4 | `P8_PhysicalGap/StroockZegarlinski.lean:21` | `poincare_to_covariance_decay` | Poincar  covariance decay (generic semigroup fact) |
+| 4 | `P8_PhysicalGap/StroockZegarlinski.lean` | retired v0.89.0: former `poincare_to_covariance_decay` | Now explicit SZ input |
 | 5 | `P8_PhysicalGap/MarkovSemigroupDef.lean:126` | `hille_yosida_semigroup` | HilleYosida: closed densely-defined generator  contraction semigroup |
 | 6 | `P8_PhysicalGap/SUN_DirichletCore.lean:178` | `sunDirichletForm_contraction` | Markov contraction of the SU(N) Dirichlet form |
 | 7 | `P8_PhysicalGap/SUN_LiebRobin.lean` | retired v0.88.0: former `sun_variance_decay` | Now explicit theorem input |
@@ -3287,7 +3332,7 @@ but won't match the `^axiom ` grep.
 | `sz_lsi_to_clustering` | 4 | Live (intermediate; not on Clay path) |
 | `hille_yosida_semigroup` | 3 | Live (intermediate; not on Clay path) |
 | `holleyStroock_sunGibbs_lsi` | 2 | Live (intermediate; not on Clay path) |
-| `poincare_to_covariance_decay` | 2 | Live (intermediate; not on Clay path) |
+| `poincare_to_covariance_decay` | 0 | Retired v0.89.0; now explicit input to `sz_lsi_to_clustering_bridge` |
 | `sunDirichletForm_contraction` | 2 | Live (intermediate; not on Clay path) |
 | `physical_rg_rates_from_E26` | 2 | Live (RG branch; not on Clay path) |
 | `p91_tight_weak_coupling_window` | 0 | Retired v0.86.0; replaced by data-driven theorem `p91_tight_weak_coupling_window_theorem` |

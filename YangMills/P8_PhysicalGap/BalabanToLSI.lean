@@ -809,7 +809,7 @@ axiom lsi_normalized_gibbs_from_haar
 ## P8.3: Normalized Gibbs LSI → DLR-LSI chain (consumes `lsi_normalized_gibbs_from_haar`)
 
 These lemmas turn the single-measure LSI delivered by the Holley–Stroock
-axiom into the family-level `DLR_LSI` needed by `sun_physical_mass_gap`.
+frontier into the family-level `DLR_LSI` needed by `sun_physical_mass_gap`.
 Because `sunGibbsFamily_norm` is a *constant* family (the same normalized
 Gibbs measure for every scale `L`), the family-level LSI is an immediate
 consequence of the single-measure LSI — no further mathematical content

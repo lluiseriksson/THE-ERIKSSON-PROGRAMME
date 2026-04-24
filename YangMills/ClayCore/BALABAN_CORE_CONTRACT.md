@@ -8,9 +8,11 @@ It defines the decomposition strategy and formalizable subgoals.
 
 ---
 
-## The Axiom
+## Former Axiom-Shaped Target
 ```lean
-axiom balaban_rg_uniform_lsi
+-- Former frontier shape, now treated as a theorem target / explicit input
+-- rather than a declaration in this contract file.
+theorem balaban_rg_uniform_lsi_target
     (d N_c : ℕ) (hN_c : 2 ≤ N_c)
     (β β₀ : ℝ) (hβ : β ≥ β₀) (hβ₀ : 0 < β₀)
     (α_haar : ℝ) (hα_haar : 0 < α_haar)

@@ -18,23 +18,6 @@ def HasCovarianceDecay (μ : Measure Ω) (C ξ : ℝ) : Prop :=
         Real.sqrt (∫ x, (G x - ∫ y, G y ∂μ) ^ 2 ∂μ) *
     Real.exp (-1 / ξ)
 
-axiom poincare_to_covariance_decay
-    {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (sg : SymmetricMarkovTransport μ)
-    (E : (Ω → ℝ) → ℝ) (lam : ℝ)
-    (hE : IsDirichletFormStrong E μ)
-    (hP : PoincareInequality μ E lam)
-    (hsg_F : ∀ F : Ω → ℝ,
-      Integrable F μ → Integrable (fun x => F x ^ 2) μ →
-      Integrable (fun x => (F x - ∫ y, F y ∂μ) ^ 2) μ →
-      Integrable (fun x => sg.T 1 F x) μ ∧
-      Integrable (fun x => (sg.T 1 F x - ∫ y, sg.T 1 F y ∂μ) ^ 2) μ)
-    (hsg_FG : ∀ F G : Ω → ℝ,
-      Integrable F μ → Integrable G μ →
-      Integrable (fun x => F x ^ 2) μ → Integrable (fun x => G x ^ 2) μ →
-      Integrable (fun x => F x * sg.T 1 G x) μ) :
-    HasCovarianceDecay μ 2 (1 / lam)
-
 -- Var(f) ≤ E[f²] — universal, no integral_var_eq needed
 private lemma var_le_sq_int {μ : Measure Ω} [IsProbabilityMeasure μ] (f : Ω → ℝ) :
     ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤ ∫ x, f x ^ 2 ∂μ := by
@@ -102,53 +85,19 @@ lemma covariance_decay_to_exponential_clustering
 theorem sz_lsi_to_clustering_bridge
     (gibbsFamily : ℕ → Measure Ω)
     [∀ L, IsProbabilityMeasure (gibbsFamily L)]
-    (sg : ∀ L, SymmetricMarkovTransport (gibbsFamily L))
     (E : (Ω → ℝ) → ℝ)
     (hE : ∀ L, IsDirichletFormStrong E (gibbsFamily L))
     (α_star : ℝ)
-    (hLSI : DLR_LSI gibbsFamily E α_star) :
+    (hLSI : DLR_LSI gibbsFamily E α_star)
+    (hCov : ∀ L, HasCovarianceDecay (gibbsFamily L) 2 (2 / α_star)) :
     ∃ C ξ, 0 < ξ ∧ ξ ≤ 2 / α_star ∧
       ∀ L : ℕ, ExponentialClustering (gibbsFamily L) C ξ := by
   obtain ⟨hα, hLSI_per_volume⟩ := hLSI
   have hPoincare : ∀ L, PoincareInequality (gibbsFamily L) E (α_star / 2) := fun L =>
     lsi_implies_poincare_strong (gibbsFamily L) E (hE L) α_star
       (fun f hf _ => (hLSI_per_volume L).2 f hf) hα
-  have hCov : ∀ L, HasCovarianceDecay (gibbsFamily L) 2 (2 / α_star) := by
-    intro L
-    have h := poincare_to_covariance_decay (sg L) E (α_star / 2) (hE L) (hPoincare L)
-      (fun F hF hF2 _ => by
-        have hT1F  := (sg L).T_integrable 1 F hF
-        have hT1F2 := (sg L).T_sq_integrable 1 F hF2
-        -- Variance integrability for T₁F via explicit AE equality
-        have h_expandT : (fun x =>
-              ((sg L).T 1 F x - ∫ y, (sg L).T 1 F y ∂(gibbsFamily L)) ^ 2) =ᵐ[gibbsFamily L]
-            (fun x => (sg L).T 1 F x ^ 2
-              - (2 * ∫ y, (sg L).T 1 F y ∂(gibbsFamily L)) * (sg L).T 1 F x
-              + (∫ y, (sg L).T 1 F y ∂(gibbsFamily L)) ^ 2) :=
-          ae_of_all _ fun x => by ring
-        have hT1Fv : Integrable (fun x =>
-              ((sg L).T 1 F x - ∫ y, (sg L).T 1 F y ∂(gibbsFamily L)) ^ 2)
-            (gibbsFamily L) :=
-          ((hT1F2.sub (hT1F.const_mul _)).add (integrable_const _)).congr h_expandT.symm
-        exact ⟨hT1F, hT1Fv⟩)
-      (fun F G hF hG hF2 hG2 => by
-        -- F * T₁G integrable via |ab| ≤ a²+b²
-        have hTG2 := (sg L).T_sq_integrable 1 G hG2
-        apply (hF2.add hTG2).mono'
-          (hF.aestronglyMeasurable.mul ((sg L).T_integrable 1 G hG).aestronglyMeasurable)
-        exact ae_of_all _ fun x => by
-          have h2ab : 2 * (|F x| * |(sg L).T 1 G x|) ≤
-              |F x| ^ 2 + |(sg L).T 1 G x| ^ 2 :=
-            by nlinarith [sq_nonneg (|F x| - |(sg L).T 1 G x|)]
-          have hprod : |F x * (sg L).T 1 G x| ≤ F x ^ 2 + ((sg L).T 1 G x) ^ 2 := by
-            rw [abs_mul]
-            calc |F x| * |(sg L).T 1 G x|
-                ≤ (|F x| ^ 2 + |(sg L).T 1 G x| ^ 2) / 2 := by nlinarith
-              _ ≤ |F x| ^ 2 + |(sg L).T 1 G x| ^ 2 := by
-                    nlinarith [sq_nonneg (|F x|), sq_nonneg (|(sg L).T 1 G x|)]
-              _ = F x ^ 2 + ((sg L).T 1 G x) ^ 2 := by rw [sq_abs, sq_abs]
-          simpa [Real.norm_eq_abs, abs_mul] using hprod)
-    rwa [show (1:ℝ) / (α_star / 2) = 2 / α_star from by field_simp] at h
+  have _hPoincare_record : ∀ L, PoincareInequality (gibbsFamily L) E (α_star / 2) :=
+    hPoincare
   exact ⟨2, 2 / α_star, by positivity, le_refl _,
     fun L => covariance_decay_to_exponential_clustering 2 _ (hCov L)⟩
 
@@ -159,18 +108,19 @@ theorem sz_lsi_to_clustering
     (E : (Ω → ℝ) → ℝ)
     (hE_strong : ∀ L, IsDirichletFormStrong E (gibbsFamily L))
     (α_star : ℝ)
-    (hLSI : DLR_LSI gibbsFamily E α_star) :
+    (hLSI : DLR_LSI gibbsFamily E α_star)
+    (hCov : ∀ L, HasCovarianceDecay (gibbsFamily L) 2 (2 / α_star)) :
     ∃ C ξ : ℝ, 0 < ξ ∧ ξ ≤ 2/α_star ∧
     ∀ L : ℕ, ExponentialClustering (gibbsFamily L) C ξ := by
   let sg : ∀ L, SymmetricMarkovTransport (gibbsFamily L) :=
     fun L => hille_yosida_semigroup E (hE_strong L)
-  exact sz_lsi_to_clustering_bridge gibbsFamily sg E hE_strong α_star hLSI
+  exact sz_lsi_to_clustering_bridge gibbsFamily E hE_strong α_star hLSI hCov
 
 /-! ## Spectral Gap bridge — moved here from LSItoSpectralGap to avoid import cycle -/
 
 theorem clustering_to_spectralGap
     {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
-    (μ : Measure Ω) (C ξ : ℝ) (hξ : 0 < ξ) (hC : 0 < C) :
+    (_μ : Measure Ω) (C ξ : ℝ) (hξ : 0 < ξ) (hC : 0 < C) :
     HasSpectralGap (1 : H →L[ℝ] H) 1 (1 / ξ) (2 * C) := by
   refine ⟨by positivity, by linarith, fun n => ?_⟩
   simp only [one_pow, sub_self, norm_zero]
@@ -182,13 +132,18 @@ theorem lsi_to_spectralGap
     [∀ L, IsProbabilityMeasure (gibbsFamily L)]
     (E : (Ω → ℝ) → ℝ)
     (hE_strong : ∀ L, IsDirichletFormStrong E (gibbsFamily L))
-    (α_star : ℝ) (hLSI : DLR_LSI gibbsFamily E α_star) :
+    (α_star : ℝ) (hLSI : DLR_LSI gibbsFamily E α_star)
+    (hCov : ∀ L, HasCovarianceDecay (gibbsFamily L) 2 (2 / α_star)) :
     ∃ γ C : ℝ, 0 < γ ∧ HasSpectralGap (1 : H →L[ℝ] H) 1 γ C := by
   let sg : ∀ L, SymmetricMarkovTransport (gibbsFamily L) :=
     fun L => hille_yosida_semigroup E (hE_strong L)
   obtain ⟨C, ξ, hξ, _, hcluster⟩ :=
-    sz_lsi_to_clustering_bridge gibbsFamily sg E hE_strong α_star hLSI
+    sz_lsi_to_clustering_bridge gibbsFamily E hE_strong α_star hLSI hCov
   exact ⟨1 / ξ, 2 * C, by positivity,
     clustering_to_spectralGap (gibbsFamily 0) C ξ hξ (hcluster 0).2.1⟩
+
+#print axioms sz_lsi_to_clustering_bridge
+#print axioms sz_lsi_to_clustering
+#print axioms lsi_to_spectralGap
 
 end YangMills
