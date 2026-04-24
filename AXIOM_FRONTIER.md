@@ -1,3 +1,57 @@
+# v0.85.0 — Small-beta uniform-rpow connected-decay endpoint
+
+**Released: 2026-04-24**
+
+## What
+
+Pure additive endpoint exposure in
+`YangMills/ClayCore/ZeroMeanCancellation.lean`:
+
+    noncomputable def clayConnectedCorrDecay_small_beta_of_uniformRpow
+    theorem clayConnectedCorrDecay_small_beta_of_uniformRpow_mass_eq
+    theorem clayConnectedCorrDecay_small_beta_of_uniformRpow_prefactor_eq
+
+The named small-β uniform-rpow frontier from v0.83.0, already routed to the
+authentic mass-gap structure in v0.84.0, now also projects to the terminal
+connected-decay hub:
+
+    WilsonUniformRpowBound N_c β C → ClayConnectedCorrDecay N_c
+
+This is the same downstream object used by the non-vacuous Clay hierarchy
+between `ClayYangMillsMassGap N_c` and the weak existential endpoint.  Two
+canaries pin the projected constants:
+
+    mass      = kpParameter β
+    prefactor = C
+
+This does not prove `WilsonUniformRpowBound`.  It only makes the small-β
+F3/Mayer terminal shape explicit all the way through the connected-decay API,
+so future analytic work has a named, oracle-clean endpoint to target.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ZeroMeanCancellation
+
+Pinned traces:
+
+    'YangMills.clayConnectedCorrDecay_small_beta_of_uniformRpow'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayConnectedCorrDecay_small_beta_of_uniformRpow_mass_eq'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.clayConnectedCorrDecay_small_beta_of_uniformRpow_prefactor_eq'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No new axioms. No `sorry`. No bar movement yet.
+
+---
+
 # v0.84.0 — Small-beta uniform-rpow authentic mass-gap endpoint
 
 **Released: 2026-04-24**

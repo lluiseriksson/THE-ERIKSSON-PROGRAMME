@@ -3,6 +3,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.ClayCore.FubiniCluster
+import YangMills.ClayCore.ConnectedCorrDecay
 
 /-!
 # Phase 15j.7: Zero mean and disconnected-term cancellation
@@ -296,6 +297,37 @@ theorem clayMassGap_small_beta_of_uniformRpow_prefactor_eq
     (clayMassGap_small_beta_of_uniformRpow
       N_c hβ_pos hβ_lt1 C hC_pos h_rpow).C = C := rfl
 
+/-- Connected-correlator-decay hub from the named uniform-rpow small-β
+frontier. -/
+noncomputable def clayConnectedCorrDecay_small_beta_of_uniformRpow
+    (N_c : ℕ) [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (C : ℝ) (hC_pos : 0 < C)
+    (h_rpow : WilsonUniformRpowBound N_c β C) :
+    ClayConnectedCorrDecay N_c :=
+  ClayConnectedCorrDecay.ofClayMassGap
+    (clayMassGap_small_beta_of_uniformRpow
+      N_c hβ_pos hβ_lt1 C hC_pos h_rpow)
+
+/-- The small-β uniform-rpow connected-decay endpoint has decay rate
+`kpParameter β`. -/
+theorem clayConnectedCorrDecay_small_beta_of_uniformRpow_mass_eq
+    (N_c : ℕ) [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (C : ℝ) (hC_pos : 0 < C)
+    (h_rpow : WilsonUniformRpowBound N_c β C) :
+    (clayConnectedCorrDecay_small_beta_of_uniformRpow
+      N_c hβ_pos hβ_lt1 C hC_pos h_rpow).m = kpParameter β := rfl
+
+/-- The small-β uniform-rpow connected-decay endpoint has prefactor `C`. -/
+theorem clayConnectedCorrDecay_small_beta_of_uniformRpow_prefactor_eq
+    (N_c : ℕ) [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (C : ℝ) (hC_pos : 0 < C)
+    (h_rpow : WilsonUniformRpowBound N_c β C) :
+    (clayConnectedCorrDecay_small_beta_of_uniformRpow
+      N_c hβ_pos hβ_lt1 C hC_pos h_rpow).C = C := rfl
+
 #print axioms singlePlaquetteZ_pos
 #print axioms plaquetteFluctuationNorm_integrable
 #print axioms plaquetteFluctuationNorm_mean_zero
@@ -305,6 +337,9 @@ theorem clayMassGap_small_beta_of_uniformRpow_prefactor_eq
 #print axioms clay_theorem_small_beta_of_uniformRpow
 #print axioms clayMassGap_small_beta_of_uniformRpow_mass_eq
 #print axioms clayMassGap_small_beta_of_uniformRpow_prefactor_eq
+#print axioms clayConnectedCorrDecay_small_beta_of_uniformRpow
+#print axioms clayConnectedCorrDecay_small_beta_of_uniformRpow_mass_eq
+#print axioms clayConnectedCorrDecay_small_beta_of_uniformRpow_prefactor_eq
 
 end
 

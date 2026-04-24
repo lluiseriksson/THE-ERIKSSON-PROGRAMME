@@ -27,6 +27,21 @@ Supplying either the single package or both halves yields, oracle-clean:
     ClayConnectedCorrDecay
     ClayYangMillsTheorem
 
+The small-β terminal form is now named directly in
+`YangMills/ClayCore/ZeroMeanCancellation.lean`:
+
+    WilsonUniformRpowBound N_c β C → ClayYangMillsMassGap N_c
+    WilsonUniformRpowBound N_c β C → ClayConnectedCorrDecay N_c
+
+Both projections preserve the expected constants:
+
+    mass      = kpParameter β
+    prefactor = C
+
+So the remaining terminal analytic target is sharply localized: prove
+`WilsonUniformRpowBound N_c β C` from the F3/Mayer package or its preferred
+subpackages.
+
 ## Exact Remaining Packages
 
 For a fixed `wab : WilsonPolymerActivityBound N_c`, construct:
