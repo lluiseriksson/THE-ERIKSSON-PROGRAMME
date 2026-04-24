@@ -1,4 +1,45 @@
-# v1.46 STATUS UPDATE (2026-04-11)  Path B, Honest Labelling
+# v0.98.0 — 2026-04-24 current roadmap status
+
+Current machine-checked status after the v0.93.0-v0.97.0 cleanup:
+
+- `lake build YangMills` succeeds.
+- There are **zero declared non-Experimental Lean axioms**:
+
+      git grep -n -E "^axiom " -- "*.lean" | Select-String -NotMatch "Experimental"
+
+  returns empty.
+- `SORRY_FRONTIER.md` records zero `sorry`, and real-code grep finds no live
+  `sorry` / `admit` outside comments and history.
+- The weak endpoint `ClayYangMillsTheorem` is intentionally audited as
+  vacuous: `clayYangMillsTheorem_trivial := ⟨1, one_pos⟩`.
+- The first non-vacuous Clay-grade endpoint is
+  `ClayYangMillsPhysicalStrong`, whose witness must be tied to the actual
+  Yang-Mills Wilson connected correlators through `IsYangMillsMassProfile`.
+
+The remaining route to 100% unconditional in the Clay sense is therefore not
+"remove a hidden axiom"; it is to prove the explicit theorem-side inputs now
+surfaced by the code:
+
+1. **F1/F2/F3 → `ClusterCorrelatorBound` / `ConnectedCorrDecay`:**
+   complete the character/Taylor expansion, Haar sidecar assembly, and
+   Kotecký-Preiss connecting-cluster estimate for the actual Wilson
+   connected correlator.
+2. **ClayCore LSI → concrete SU(N) DLR transfer:** discharge the explicit
+   `ClayCoreLSIToSUNDLRTransfer` bridge rather than fabricating it as an
+   axiom.
+3. **SU(N) Dirichlet/Lie sidecar:** move the concrete generator data, matrix
+   exponential closure, and Lie-derivative regularity out of
+   `YangMills/Experimental/LieSUN`.
+4. **Physical endpoint wiring:** keep routing conclusions through
+   `ClayYangMillsPhysicalStrong`, not the weak `ClayYangMillsTheorem`.
+
+Everything below is preserved as historical roadmap material; entries that
+mention `yangMills_continuum_mass_gap` or `lsi_normalized_gibbs_from_haar` as
+live axioms are superseded by the status above.
+
+---
+
+# Historical v1.46 status update (2026-04-11) — Path B, Honest Labelling
 
 **Axioms for `sun_physical_mass_gap`**: 1 project axiom.
 **Honest progress estimate**: ~30%.
