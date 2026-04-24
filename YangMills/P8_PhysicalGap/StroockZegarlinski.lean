@@ -105,6 +105,7 @@ theorem sz_lsi_to_clustering_bridge
 theorem sz_lsi_to_clustering
     (gibbsFamily : ℕ → Measure Ω)
     [hP : ∀ L, IsProbabilityMeasure (gibbsFamily L)]
+    (_sg : ∀ L, SymmetricMarkovTransport (gibbsFamily L))
     (E : (Ω → ℝ) → ℝ)
     (hE_strong : ∀ L, IsDirichletFormStrong E (gibbsFamily L))
     (α_star : ℝ)
@@ -112,8 +113,6 @@ theorem sz_lsi_to_clustering
     (hCov : ∀ L, HasCovarianceDecay (gibbsFamily L) 2 (2 / α_star)) :
     ∃ C ξ : ℝ, 0 < ξ ∧ ξ ≤ 2/α_star ∧
     ∀ L : ℕ, ExponentialClustering (gibbsFamily L) C ξ := by
-  let sg : ∀ L, SymmetricMarkovTransport (gibbsFamily L) :=
-    fun L => hille_yosida_semigroup E (hE_strong L)
   exact sz_lsi_to_clustering_bridge gibbsFamily E hE_strong α_star hLSI hCov
 
 /-! ## Spectral Gap bridge — moved here from LSItoSpectralGap to avoid import cycle -/
@@ -130,13 +129,12 @@ theorem lsi_to_spectralGap
     {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
     (gibbsFamily : ℕ → Measure Ω)
     [∀ L, IsProbabilityMeasure (gibbsFamily L)]
+    (_sg : ∀ L, SymmetricMarkovTransport (gibbsFamily L))
     (E : (Ω → ℝ) → ℝ)
     (hE_strong : ∀ L, IsDirichletFormStrong E (gibbsFamily L))
     (α_star : ℝ) (hLSI : DLR_LSI gibbsFamily E α_star)
     (hCov : ∀ L, HasCovarianceDecay (gibbsFamily L) 2 (2 / α_star)) :
     ∃ γ C : ℝ, 0 < γ ∧ HasSpectralGap (1 : H →L[ℝ] H) 1 γ C := by
-  let sg : ∀ L, SymmetricMarkovTransport (gibbsFamily L) :=
-    fun L => hille_yosida_semigroup E (hE_strong L)
   obtain ⟨C, ξ, hξ, _, hcluster⟩ :=
     sz_lsi_to_clustering_bridge gibbsFamily E hE_strong α_star hLSI hCov
   exact ⟨1 / ξ, 2 * C, by positivity,

@@ -20,15 +20,7 @@ Concrete Lieb-Robinson bound for the SU(N) Yang-Mills lattice model.
 namespace YangMills
 open MeasureTheory Real
 
-/-! ## Step 1: SU(N) Markov semigroup — NOW A DEFINITION (axiom eliminated) -/
-
-/-- The SU(N) Markov semigroup, constructed from the concrete Dirichlet form
-    via Beurling-Deny / Hille-Yosida.
-    Depends on: `hille_yosida_semigroup` (Mathlib gap: C₀-semigroup theory). -/
-noncomputable def sunMarkovSemigroup (N_c : ℕ) [NeZero N_c] :
-    SymmetricMarkovTransport (sunHaarProb N_c) :=
-  hille_yosida_semigroup (sunDirichletForm_concrete N_c)
-    (sunDirichletForm_isDirichletFormStrong)
+/-! ## Step 1: SU(N) Markov semigroup — explicit input -/
 
 /-! ## Step 2: Lieb-Robinson bound — explicit physical inputs -/
 
@@ -37,8 +29,9 @@ noncomputable def sunMarkovSemigroup (N_c : ℕ) [NeZero N_c] :
 /-- Exponential covariance decay for SU(N) local observables. -/
 theorem sun_locality_to_covariance
     (N_c d : ℕ) [NeZero N_c]
-    (hVar : HasVarianceDecay (sunMarkovSemigroup N_c))
-    (hLR : LiebRobinsonBound (d := d) (sunMarkovSemigroup N_c))
+    (sg : SymmetricMarkovTransport (sunHaarProb N_c))
+    (hVar : HasVarianceDecay sg)
+    (hLR : LiebRobinsonBound (d := d) sg)
     (A B : Finset (Site d))
     (F G : SUN_State_Concrete N_c → ℝ)
     (hF_loc : IsSpatialLocalObservable A F) (hG_loc : IsSpatialLocalObservable B G)
@@ -53,7 +46,7 @@ theorem sun_locality_to_covariance
       Real.sqrt (∫ x, (F x - ∫ y, F y ∂(sunHaarProb N_c)) ^ 2 ∂(sunHaarProb N_c)) *
       Real.sqrt (∫ x, (G x - ∫ y, G y ∂(sunHaarProb N_c)) ^ 2 ∂(sunHaarProb N_c)) :=
   locality_to_static_covariance_v2
-    A B (sunMarkovSemigroup N_c) hVar F G
+    A B sg hVar F G
     hF_loc hG_loc hF hG hF2 hG2
     hLR
 

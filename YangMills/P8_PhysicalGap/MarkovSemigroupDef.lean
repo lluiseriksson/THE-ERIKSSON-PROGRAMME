@@ -95,38 +95,13 @@ theorem markov_spectral_gap
   sg.T_spectral_gap
 
 
-/-! ## Hille-Yosida: Dirichlet form → Markov semigroup -/
+/-! ## Hille-Yosida frontier
 
-/-- **MATHLIB GAP — Beurling-Deny / Hille-Yosida correspondence.**
-
-Every symmetric closed strong Dirichlet form `(E, μ)` on a probability space
-generates a unique strongly continuous self-adjoint Markov semigroup on L²(μ).
-    Returns SymmetricMarkovTransport (Layer A+B): transport without spectral gap.
-    Spectral gap requires Poincaré separately (Layer C).
-
-Mathematical status: Two classical theorems composed:
-1. Beurling-Deny (1958) / Fukushima (1971): Symmetric closed Dirichlet form →
-   unique strongly continuous symmetric Markov semigroup.
-   Ref: Fukushima-Oshima-Takeda, Dirichlet Forms and Symmetric Markov Processes,
-   Theorem 1.3.1.
-2. Spectral gap from Poincaré: d/dt Var(Tₜf) = -2·E(Tₜf) + Gronwall.
-   Ref: Bakry-Gentil-Ledoux, Analysis and Geometry of Markov Diffusion
-   Operators, Proposition 4.2.5.
-
-Why NOT a Clay gap: Standard mathematics known for 70+ years. Will become a
-theorem when Mathlib gains C₀-semigroup theory (Hille-Yosida for unbounded
-operators on Banach spaces).
-
-Formalization gap: Mathlib 4.29 has `Mathlib.Analysis.ODE.Gronwall` (scalar)
-but lacks the full operator semigroup theory: C₀-semigroups, resolvent
-estimates, generator domains, and the Dirichlet form ↔ semigroup correspondence.
-
-Used exactly once: in `sz_lsi_to_clustering` (LSItoSpectralGap.lean) to
-construct the Markov semigroup needed by the Stroock-Zegarlinski bridge. -/
-axiom hille_yosida_semigroup
-    {Ω : Type*} [MeasurableSpace Ω]
-    {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (E : (Ω → ℝ) → ℝ) (hE : IsDirichletFormStrong E μ) :
-    SymmetricMarkovTransport μ
+The Beurling-Deny / Hille-Yosida correspondence is no longer declared as a
+global axiom in this file.  Callers that need a Markov transport now carry
+`SymmetricMarkovTransport μ` explicitly.  This keeps the classical
+C₀-semigroup construction visible as an input until Mathlib has the relevant
+operator-semigroup infrastructure.
+-/
 
 end YangMills

@@ -1,3 +1,53 @@
+# v0.91.0 — Remove Hille-Yosida semigroup axiom from P8
+
+**Released: 2026-04-24**
+
+## What
+
+Removed the P8 axiom `hille_yosida_semigroup` from
+`YangMills/P8_PhysicalGap/MarkovSemigroupDef.lean`.
+
+The two remaining consumers were converted to explicit-input form:
+
+- `YangMills/P8_PhysicalGap/StroockZegarlinski.lean` now takes the Markov
+  transport family as an explicit `_sg : ∀ L, SymmetricMarkovTransport
+  (gibbsFamily L)`.
+- `YangMills/P8_PhysicalGap/SUN_LiebRobin.lean` now takes
+  `sg : SymmetricMarkovTransport (sunHaarProb N_c)` explicitly.
+
+This does not formalize the Beurling-Deny / Hille-Yosida correspondence.  It
+removes the global axiom declaration and makes the C₀-semigroup construction an
+explicit input at the call sites that need it.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.P8_PhysicalGap.StroockZegarlinski
+    lake build YangMills.P8_PhysicalGap.SUN_LiebRobin
+
+Pinned traces:
+
+    'YangMills.sz_lsi_to_clustering_bridge'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.sz_lsi_to_clustering'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.lsi_to_spectralGap'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+    'YangMills.sun_locality_to_covariance'
+    depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+
+No `hille_yosida_semigroup` axiom remains in non-Experimental Lean. No `sorry`.
+
+---
+
 # v0.90.0 — Pin terminal ClayAssembly oracle as core-only
 
 **Released: 2026-04-24**
@@ -81,11 +131,11 @@ Pinned traces:
 
     'YangMills.sz_lsi_to_clustering'
     depends on axioms:
-    [propext, Classical.choice, Quot.sound, hille_yosida_semigroup]
+    [propext, Classical.choice, Quot.sound]
 
     'YangMills.lsi_to_spectralGap'
     depends on axioms:
-    [propext, Classical.choice, Quot.sound, hille_yosida_semigroup]
+    [propext, Classical.choice, Quot.sound]
 
 No `poincare_to_covariance_decay` axiom remains. No `sorry`.
 
@@ -128,9 +178,7 @@ Pinned trace:
 
     'YangMills.sun_locality_to_covariance'
     depends on axioms:
-    [lieDerivReg_all, propext, sunGeneratorData, Classical.choice,
-     Quot.sound, hille_yosida_semigroup, sunDirichletForm_contraction,
-     Experimental.LieSUN.matExp_traceless_det_one]
+    [propext, Classical.choice, Quot.sound]
 
 The deleted names no longer occur as `axiom` declarations:
 
@@ -3055,7 +3103,7 @@ are in `docs/phase1-llogl-obstruction.md`.
 
 ## Current axiom inventory (non-Experimental)
 
-- **Total declared axioms (non-Experimental Lean):** 5 after v0.89.0
+- **Total declared axioms (non-Experimental Lean):** 4 after v0.91.0
 - **Axioms reached by `clay_millennium_yangMills`:** 0
 - **Orphaned axioms (declared but unreachable from Clay):** historical census below predates v0.86.0-v0.89.0 cleanup
 
@@ -3195,7 +3243,6 @@ The legacy tables below are preserved for historical accuracy but the line
 
 | Axiom | File | Notes |
 |-------|------|-------|
-| `hille_yosida_semigroup` | MarkovSemigroupDef.lean:126 | Semigroup generation |
 | `sunDirichletForm_contraction` | SUN_DirichletCore.lean:178 | Dirichlet contraction |
 
 ### ClayCore/BalabanRG/ (RG machinery — not in sun_physical_mass_gap BFS path)
@@ -3327,7 +3374,7 @@ Taken from `grep -rn '^axiom ' YangMills/ --include='*.lean' | grep -v Experimen
 | 2 | `P8_PhysicalGap/BalabanToLSI.lean:818` | `lsi_withDensity_density_bound` | L density bound used by HolleyStroock |
 | 3 | `P8_PhysicalGap/BalabanToLSI.lean:848` | `sz_lsi_to_clustering` | StroockZegarlinski: LSI  exponential clustering |
 | 4 | `P8_PhysicalGap/StroockZegarlinski.lean` | retired v0.89.0: former `poincare_to_covariance_decay` | Now explicit SZ input |
-| 5 | `P8_PhysicalGap/MarkovSemigroupDef.lean:126` | `hille_yosida_semigroup` | HilleYosida: closed densely-defined generator  contraction semigroup |
+| 5 | `P8_PhysicalGap/MarkovSemigroupDef.lean` | retired v0.91.0: former `hille_yosida_semigroup` | Now explicit `SymmetricMarkovTransport` input |
 | 6 | `P8_PhysicalGap/SUN_DirichletCore.lean:178` | `sunDirichletForm_contraction` | Markov contraction of the SU(N) Dirichlet form |
 | 7 | `P8_PhysicalGap/SUN_LiebRobin.lean` | retired v0.88.0: former `sun_variance_decay` | Now explicit theorem input |
 | 8 | `P8_PhysicalGap/SUN_LiebRobin.lean` | retired v0.88.0: former `sun_lieb_robinson_bound` | Now explicit theorem input |
@@ -3377,7 +3424,7 @@ but won't match the `^axiom ` grep.
 |-------|-------|--------|
 | `yangMills_continuum_mass_gap` | 5 | **Live  sole Clay oracle** |
 | `sz_lsi_to_clustering` | 4 | Live (intermediate; not on Clay path) |
-| `hille_yosida_semigroup` | 3 | Live (intermediate; not on Clay path) |
+| `hille_yosida_semigroup` | 0 | Retired v0.91.0; now explicit `SymmetricMarkovTransport` input |
 | `holleyStroock_sunGibbs_lsi` | 2 | Live (intermediate; not on Clay path) |
 | `poincare_to_covariance_decay` | 0 | Retired v0.89.0; now explicit input to `sz_lsi_to_clustering_bridge` |
 | `sunDirichletForm_contraction` | 2 | Live (intermediate; not on Clay path) |
