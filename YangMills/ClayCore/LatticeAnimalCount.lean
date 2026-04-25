@@ -432,7 +432,7 @@ theorem plaquetteGraph_branching_le_physical_ternary
 
 /-! ### Neighbor-choice coding -/
 
-/-- Any finset with at most `D` elements admits a canonical injection into
+/-- Any finset with at most `D` elements has a canonical injection into
 `Fin D`, obtained by enumerating it as `Fin s.card` and casting along the
 cardinality bound. -/
 noncomputable def finsetCodeOfCardLe {α : Type} (s : Finset α) {D : ℕ}
@@ -465,10 +465,75 @@ theorem plaquetteNeighborChoiceCodeBoundDim_of_branchingBoundDim
   exact ⟨finsetCodeOfCardLe ((plaquetteGraph d L).neighborFinset p) (hD p),
     finsetCodeOfCardLe_injective ((plaquetteGraph d L).neighborFinset p) (hD p)⟩
 
-/-- Physical four-dimensional plaquette neighbor choices admit `1296` codes. -/
+/-- Physical four-dimensional plaquette neighbor choices have `1296` codes. -/
 theorem plaquetteNeighborChoiceCodeBoundDim_physical_ternary :
     PlaquetteNeighborChoiceCodeBoundDim physicalClayDimension 1296 :=
   plaquetteNeighborChoiceCodeBoundDim_of_branchingBoundDim
+    plaquetteGraph_branchingBoundDim_physical_ternary
+
+/-- A global step-code function, injective on the actual neighbors of each
+plaquette.  This non-dependent packaging is convenient for reconstructing
+finite walks from their per-step codes. -/
+def PlaquetteNeighborStepCodeBoundDim (d D : ℕ) [NeZero d] : Prop :=
+  ∀ {L : ℕ} [NeZero L],
+    ∃ code : ConcretePlaquette d L → ConcretePlaquette d L → Fin D,
+      ∀ p, Set.InjOn (code p)
+        {q | q ∈ (plaquetteGraph d L).neighborFinset p}
+
+/-- Turn dependent neighbor-choice codes into a global step-code function by
+using an arbitrary default value off the neighbor set. -/
+noncomputable def plaquetteNeighborStepCodeOfChoice
+    {d D : ℕ} [NeZero d] [NeZero D]
+    (hchoice : PlaquetteNeighborChoiceCodeBoundDim d D)
+    {L : ℕ} [NeZero L] :
+    ConcretePlaquette d L → ConcretePlaquette d L → Fin D :=
+  fun p q =>
+    if hq : q ∈ (plaquetteGraph d L).neighborFinset p then
+      Classical.choose (hchoice p) ⟨q, hq⟩
+    else 0
+
+/-- The step-code extracted from dependent neighbor-choice codes is injective
+on the actual neighbor set. -/
+theorem plaquetteNeighborStepCodeOfChoice_injOn
+    {d D : ℕ} [NeZero d] [NeZero D]
+    (hchoice : PlaquetteNeighborChoiceCodeBoundDim d D)
+    {L : ℕ} [NeZero L] (p : ConcretePlaquette d L) :
+    Set.InjOn (plaquetteNeighborStepCodeOfChoice hchoice p)
+      {q | q ∈ (plaquetteGraph d L).neighborFinset p} := by
+  intro q hq r hr h
+  have hq' : q ∈ (plaquetteGraph d L).neighborFinset p := hq
+  have hr' : r ∈ (plaquetteGraph d L).neighborFinset p := hr
+  have hinj := Classical.choose_spec (hchoice p)
+  unfold plaquetteNeighborStepCodeOfChoice at h
+  rw [dif_pos hq', dif_pos hr'] at h
+  have hsub :
+      (⟨q, hq'⟩ :
+        {q : ConcretePlaquette d L // q ∈ (plaquetteGraph d L).neighborFinset p}) =
+        ⟨r, hr'⟩ := by
+    exact hinj h
+  exact congrArg Subtype.val hsub
+
+/-- Dependent neighbor-choice codes give global step codes. -/
+theorem plaquetteNeighborStepCodeBoundDim_of_choiceCodeBoundDim
+    {d D : ℕ} [NeZero d] [NeZero D]
+    (hchoice : PlaquetteNeighborChoiceCodeBoundDim d D) :
+    PlaquetteNeighborStepCodeBoundDim d D := by
+  intro L _
+  exact ⟨plaquetteNeighborStepCodeOfChoice hchoice,
+    plaquetteNeighborStepCodeOfChoice_injOn hchoice⟩
+
+/-- A uniform branching bound gives global step codes. -/
+theorem plaquetteNeighborStepCodeBoundDim_of_branchingBoundDim
+    {d D : ℕ} [NeZero d] [NeZero D]
+    (hD : PlaquetteGraphBranchingBoundDim d D) :
+    PlaquetteNeighborStepCodeBoundDim d D :=
+  plaquetteNeighborStepCodeBoundDim_of_choiceCodeBoundDim
+    (plaquetteNeighborChoiceCodeBoundDim_of_branchingBoundDim hD)
+
+/-- Physical four-dimensional plaquette steps have a global `1296`-code. -/
+theorem plaquetteNeighborStepCodeBoundDim_physical_ternary :
+    PlaquetteNeighborStepCodeBoundDim physicalClayDimension 1296 :=
+  plaquetteNeighborStepCodeBoundDim_of_branchingBoundDim
     plaquetteGraph_branchingBoundDim_physical_ternary
 
 /-! ### Finite walk coding interface -/
@@ -520,6 +585,87 @@ theorem plaquetteWalk_card_le_of_codeBoundDim
     Fintype.card (PlaquetteWalk d L n p) ≤ D ^ n := by
   obtain ⟨code, hinj⟩ := hcode p n
   exact plaquetteWalk_card_le_of_injective_code p code hinj
+
+/-- Code a finite plaquette walk by the global step-code at each edge. -/
+noncomputable def plaquetteWalkCodeOfStepCode
+    {d D : ℕ} [NeZero d]
+    (hstep : PlaquetteNeighborStepCodeBoundDim d D)
+    {L : ℕ} [NeZero L] (p : ConcretePlaquette d L) (n : ℕ) :
+    PlaquetteWalk d L n p → (Fin n → Fin D) :=
+  let code := Classical.choose (hstep (L := L))
+  fun w i => code (w.1 i.castSucc) (w.1 i.succ)
+
+/-- The per-step code of a finite walk is injective: the start point is fixed,
+and each next plaquette is recovered from the current plaquette by local
+injectivity on the neighbor set. -/
+theorem plaquetteWalkCodeOfStepCode_injective
+    {d D : ℕ} [NeZero d]
+    (hstep : PlaquetteNeighborStepCodeBoundDim d D)
+    {L : ℕ} [NeZero L] (p : ConcretePlaquette d L) (n : ℕ) :
+    Function.Injective (plaquetteWalkCodeOfStepCode hstep p n) := by
+  intro a b h
+  apply Subtype.ext
+  funext j
+  refine Fin.induction ?zero ?succ j
+  · exact a.2.1.trans b.2.1.symm
+  · intro i hcur
+    have hcode := Classical.choose_spec (hstep (L := L))
+    have hinj := hcode (b.1 i.castSucc)
+    have hstepEq := congrFun h i
+    dsimp [plaquetteWalkCodeOfStepCode] at hstepEq
+    have ha : a.1 i.succ ∈ (plaquetteGraph d L).neighborFinset (b.1 i.castSucc) := by
+      rw [← hcur]
+      exact
+        (SimpleGraph.mem_neighborFinset
+          (plaquetteGraph d L) (a.1 i.castSucc) (a.1 i.succ)).mpr
+          (a.2.2 i)
+    have hb : b.1 i.succ ∈ (plaquetteGraph d L).neighborFinset (b.1 i.castSucc) :=
+      (SimpleGraph.mem_neighborFinset
+        (plaquetteGraph d L) (b.1 i.castSucc) (b.1 i.succ)).mpr
+        (b.2.2 i)
+    rw [hcur] at hstepEq
+    exact hinj ha hb hstepEq
+
+/-- A global neighbor step-code gives a finite-walk word code. -/
+theorem plaquetteWalkCodeBoundDim_of_neighborStepCodeBoundDim
+    {d D : ℕ} [NeZero d]
+    (hstep : PlaquetteNeighborStepCodeBoundDim d D) :
+    PlaquetteWalkCodeBoundDim d D := by
+  intro L _ p n
+  exact ⟨plaquetteWalkCodeOfStepCode hstep p n,
+    plaquetteWalkCodeOfStepCode_injective hstep p n⟩
+
+/-- A dependent neighbor-choice code gives a finite-walk word code. -/
+theorem plaquetteWalkCodeBoundDim_of_neighborChoiceCodeBoundDim
+    {d D : ℕ} [NeZero d] [NeZero D]
+    (hchoice : PlaquetteNeighborChoiceCodeBoundDim d D) :
+    PlaquetteWalkCodeBoundDim d D :=
+  plaquetteWalkCodeBoundDim_of_neighborStepCodeBoundDim
+    (plaquetteNeighborStepCodeBoundDim_of_choiceCodeBoundDim hchoice)
+
+/-- A uniform branching bound gives a finite-walk word code. -/
+theorem plaquetteWalkCodeBoundDim_of_branchingBoundDim
+    {d D : ℕ} [NeZero d] [NeZero D]
+    (hD : PlaquetteGraphBranchingBoundDim d D) :
+    PlaquetteWalkCodeBoundDim d D :=
+  plaquetteWalkCodeBoundDim_of_neighborChoiceCodeBoundDim
+    (plaquetteNeighborChoiceCodeBoundDim_of_branchingBoundDim hD)
+
+/-- Physical four-dimensional plaquette walks have a `1296`-symbol word
+code. -/
+theorem plaquetteWalkCodeBoundDim_physical_ternary :
+    PlaquetteWalkCodeBoundDim physicalClayDimension 1296 :=
+  plaquetteWalkCodeBoundDim_of_branchingBoundDim
+    plaquetteGraph_branchingBoundDim_physical_ternary
+
+/-- Physical four-dimensional length-`n` plaquette walks from a fixed start
+are bounded by `1296^n`. -/
+theorem plaquetteWalk_card_le_physical_ternary
+    {L : ℕ} [NeZero L]
+    (p : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    Fintype.card (PlaquetteWalk physicalClayDimension L n p) ≤ 1296 ^ n :=
+  plaquetteWalk_card_le_of_codeBoundDim
+    plaquetteWalkCodeBoundDim_physical_ternary p n
 
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
@@ -711,8 +857,18 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms finsetCodeOfCardLe_injective
 #print axioms plaquetteNeighborChoiceCodeBoundDim_of_branchingBoundDim
 #print axioms plaquetteNeighborChoiceCodeBoundDim_physical_ternary
+#print axioms plaquetteNeighborStepCodeOfChoice_injOn
+#print axioms plaquetteNeighborStepCodeBoundDim_of_choiceCodeBoundDim
+#print axioms plaquetteNeighborStepCodeBoundDim_of_branchingBoundDim
+#print axioms plaquetteNeighborStepCodeBoundDim_physical_ternary
 #print axioms plaquetteWalk_card_le_of_injective_code
 #print axioms plaquetteWalk_card_le_of_codeBoundDim
+#print axioms plaquetteWalkCodeOfStepCode_injective
+#print axioms plaquetteWalkCodeBoundDim_of_neighborStepCodeBoundDim
+#print axioms plaquetteWalkCodeBoundDim_of_neighborChoiceCodeBoundDim
+#print axioms plaquetteWalkCodeBoundDim_of_branchingBoundDim
+#print axioms plaquetteWalkCodeBoundDim_physical_ternary
+#print axioms plaquetteWalk_card_le_physical_ternary
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints

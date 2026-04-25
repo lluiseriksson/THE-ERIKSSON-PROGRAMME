@@ -1,3 +1,84 @@
+# v1.97.0 — physical finite-walk count bound from plaquette branching
+
+**Released: 2026-04-25**
+
+## What
+
+Closed the finite-walk coding bridge in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PlaquetteNeighborStepCodeBoundDim
+    plaquetteNeighborStepCodeOfChoice
+    plaquetteNeighborStepCodeOfChoice_injOn
+    plaquetteNeighborStepCodeBoundDim_of_choiceCodeBoundDim
+    plaquetteNeighborStepCodeBoundDim_of_branchingBoundDim
+    plaquetteNeighborStepCodeBoundDim_physical_ternary
+    plaquetteWalkCodeOfStepCode
+    plaquetteWalkCodeOfStepCode_injective
+    plaquetteWalkCodeBoundDim_of_neighborStepCodeBoundDim
+    plaquetteWalkCodeBoundDim_of_neighborChoiceCodeBoundDim
+    plaquetteWalkCodeBoundDim_of_branchingBoundDim
+    plaquetteWalkCodeBoundDim_physical_ternary
+    plaquetteWalk_card_le_physical_ternary
+
+The central endpoint is:
+
+    theorem plaquetteWalk_card_le_physical_ternary
+        {L : ℕ} [NeZero L]
+        (p : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+        Fintype.card (PlaquetteWalk physicalClayDimension L n p) ≤ 1296 ^ n
+
+The proof first repackages dependent neighbor-choice codes into a global
+step-code function
+
+    current → next → Fin D
+
+which is injective on the actual neighbor set of each current plaquette.  A
+walk is then coded by the word of its step codes.  Injectivity is by induction
+over `Fin (n+1)`: the start point is fixed, and each next plaquette is
+recovered from the current plaquette by local injectivity.
+
+## Why
+
+No percentage bar moves.  This is still F3-count infrastructure for the
+`ClusterCorrelatorBound` front, but it closes the finite-walk enumeration layer
+behind the forthcoming BFS/tree-count argument.  The physical local geometry
+from v1.92-v1.96 now gives an explicit exponential walk bound:
+
+    # length-n plaquette walks from p ≤ 1296^n.
+
+The remaining F3-count task is no longer local branching or walk coding; it is
+the graph-theoretic packaging from connected finite plaquette sets to a rooted
+walk/tree encoding usable by the `ShiftedConnectingClusterCountBoundExp`
+frontier.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteNeighborStepCodeOfChoice_injOn
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteWalkCodeOfStepCode_injective
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteWalkCodeBoundDim_of_branchingBoundDim
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteWalkCodeBoundDim_physical_ternary
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteWalk_card_le_physical_ternary
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.96.0 — finite neighbor-choice coding from branching bounds
 
 **Released: 2026-04-25**
