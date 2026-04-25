@@ -1339,6 +1339,25 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_pow
   exact (plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one root).trans
     (by simpa using hK)
 
+/-- Uniform base dispatcher for the anchored graph-animal count target at
+sizes `k ≤ 1`. The positive-size case needs only the eventual growth constant
+lower bound `K ≥ 1`. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_base_card_le_pow
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (root : ConcretePlaquette d L) {K k : ℕ} (hK : 1 ≤ K) (hk : k ≤ 1) :
+    (plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k).card ≤ K ^ k := by
+  cases k with
+  | zero =>
+      exact plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_card_le_pow root K
+  | succ k =>
+      cases k with
+      | zero =>
+          simpa using
+            (plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_pow
+              root (K := K) hK)
+      | succ k =>
+          omega
+
 /-- Physical anchored graph-animal count target.
 
 This is the classical lattice-animal counting shape: the number of connected
@@ -1939,6 +1958,7 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_card_le_pow
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_pow
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_base_card_le_pow
 #print axioms PhysicalPlaquetteGraphAnimalAnchoredCountBound.mono
 #print axioms plaquetteGraphPreconnectedConnectingSubsetsShifted_subset_anchored
 #print axioms plaquetteGraphPreconnectedConnectingSubsetsShifted_card_le_anchored

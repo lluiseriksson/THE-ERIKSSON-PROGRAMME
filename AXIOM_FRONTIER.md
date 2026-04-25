@@ -1,3 +1,48 @@
+# v2.30.0 — anchored graph-animal base dispatcher
+
+**Released: 2026-04-25**
+
+## What
+
+Added the uniform base dispatcher
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_base_card_le_pow
+
+in `YangMills/ClayCore/LatticeAnimalCount.lean`.
+
+It packages the already-closed `k = 0` and `k = 1` anchored bucket facts into
+the exact target shape
+
+    card (anchored bucket k) ≤ K ^ k
+
+for every `k ≤ 1`, assuming only the eventual growth-constant lower bound
+`1 ≤ K`.
+
+## Why
+
+No percentage bar moves. This is a small F3 combinatorial staging closure: the
+future bounded-degree/Klarner proof of
+
+    PhysicalPlaquetteGraphAnimalAnchoredCountBound K
+
+can now start from a single base lemma instead of branching manually over the
+two degenerate bucket sizes.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_base_card_le_pow
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.29.0 — anchored graph-animal count base buckets
 
 **Released: 2026-04-25**
