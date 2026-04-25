@@ -1,3 +1,55 @@
+# v1.50.0 — Mixed physical F3 package restricts to preferred physical package
+
+**Released: 2026-04-25**
+
+## What
+
+Added the physical-only restriction for the mixed physical F3 package in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mayerPackage
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_countPackage
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mayer_A₀
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_count_C_conn
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_count_dim
+
+## Why
+
+No percentage bar moves.  The mixed package
+
+    pkg : PhysicalShiftedF3MayerCountPackage N_c wab
+
+contains an all-dimensions Mayer half and a physical `d = 4` count half.  The
+new projection sends it to the preferred fully physical package:
+
+    pkg.toPhysicalOnly : PhysicalOnlyShiftedF3MayerCountPackage N_c wab
+
+by applying `pkg.mayer.toPhysical` and preserving the already-physical count
+half.  The constants used downstream remain simp-visible:
+
+    pkg.toPhysicalOnly.mayer.A₀ = pkg.mayer.A₀
+    pkg.toPhysicalOnly.count.C_conn = pkg.count.C_conn
+    pkg.toPhysicalOnly.count.dim = pkg.count.dim
+
+This is API/frontier normalization only.  The remaining mathematical content is
+unchanged: construct the Mayer/Ursell package and the physical or global count
+package.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all six new declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.49.0 — Global F3 package exposes auditable physical L8 bundle
 
 **Released: 2026-04-25**

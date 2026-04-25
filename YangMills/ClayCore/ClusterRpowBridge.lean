@@ -2713,6 +2713,40 @@ def countPackage
     (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
     (countPackage pkg).dim = pkg.count.dim := rfl
 
+/-- Restrict the mixed physical F3 package, whose Mayer half is still global,
+to the preferred fully physical `d = 4` package. -/
+def toPhysicalOnly
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    PhysicalOnlyShiftedF3MayerCountPackage N_c wab :=
+  PhysicalOnlyShiftedF3MayerCountPackage.ofSubpackages
+    pkg.mayer.toPhysical pkg.count
+
+@[simp] theorem toPhysicalOnly_mayerPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    pkg.toPhysicalOnly.mayerPackage = pkg.mayer.toPhysical := rfl
+
+@[simp] theorem toPhysicalOnly_countPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    pkg.toPhysicalOnly.countPackage = pkg.count := rfl
+
+@[simp] theorem toPhysicalOnly_mayer_A₀
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    pkg.toPhysicalOnly.mayer.A₀ = pkg.mayer.A₀ := rfl
+
+@[simp] theorem toPhysicalOnly_count_C_conn
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    pkg.toPhysicalOnly.count.C_conn = pkg.count.C_conn := rfl
+
+@[simp] theorem toPhysicalOnly_count_dim
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    pkg.toPhysicalOnly.count.dim = pkg.count.dim := rfl
+
 @[simp] theorem ofSubpackages_mayerPackage_countPackage
     {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
     (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
@@ -2832,6 +2866,12 @@ theorem physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
 #print axioms PhysicalShiftedF3MayerCountPackage.mayerPackage_data
 #print axioms PhysicalShiftedF3MayerCountPackage.countPackage_C_conn
 #print axioms PhysicalShiftedF3MayerCountPackage.countPackage_dim
+#print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly
+#print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mayerPackage
+#print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_countPackage
+#print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mayer_A₀
+#print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_count_C_conn
+#print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_count_dim
 #print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages_mayerPackage_countPackage
 #print axioms PhysicalShiftedF3MayerCountPackage.toTruncatedActivities
 #print axioms PhysicalShiftedF3MayerCountPackage.toTruncatedActivities_K
