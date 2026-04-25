@@ -61,6 +61,7 @@ The count side has an explicit finite-volume canary:
     cardBucketSum_summable
     cardBucketTsum_eq_cardBucketSum_range
     connectedFiniteSum_eq_cardBucketTsum
+    finiteConnectingSum_eq_cardBucketTsum
     connectedFiniteSum_le_of_cardBucketBounds_tsum
     connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted
 
@@ -449,6 +450,7 @@ What is already closed locally:
     cardBucketSum_summable
     cardBucketTsum_eq_cardBucketSum_range
     connectedFiniteSum_eq_cardBucketTsum
+    finiteConnectingSum_eq_cardBucketTsum
     connectedFiniteSum_le_of_cardBucketBounds_tsum
     connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted
     real_pow_le_pow_add_of_one_le
@@ -516,7 +518,10 @@ the exact `Finset.range (card + 1)` language used by the bucket sums, and
 finite/infinite bucket-series manipulations, and
 `cardBucketTsum_eq_cardBucketSum_range` collapses the bucket `tsum` back to
 the canonical finite range.  `connectedFiniteSum_eq_cardBucketTsum` exposes
-the connected finite sum directly as that bucket series.  The direct consumers
+the connected finite sum directly as that bucket series, and
+`finiteConnectingSum_eq_cardBucketTsum` exposes the Mayer finite connecting
+sum directly as the same bucket series when disconnected supports vanish.
+The direct consumers
 `connectedFiniteSum_le_of_cardBucketBounds_tsum` and
 `connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted` compare that series
 termwise with the KP `tsum`.  The public KP consumers
@@ -566,6 +571,7 @@ Key oracle canaries:
     #print axioms cardBucketSum_summable
     #print axioms cardBucketTsum_eq_cardBucketSum_range
     #print axioms connectedFiniteSum_eq_cardBucketTsum
+    #print axioms finiteConnectingSum_eq_cardBucketTsum
     #print axioms connectedFiniteSum_le_of_cardBucketBounds_tsum
     #print axioms connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted
     #print axioms real_pow_le_pow_add_of_one_le

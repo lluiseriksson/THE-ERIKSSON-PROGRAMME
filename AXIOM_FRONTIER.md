@@ -1,3 +1,47 @@
+# v1.65.0 — Mayer finite connecting sum equals the bucket `tsum`
+
+**Released: 2026-04-25**
+
+## What
+
+Added the direct Mayer-to-bucket-series bridge in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    finiteConnectingSum_eq_cardBucketTsum
+
+Under the usual disconnected-support cancellation hypothesis, the finite
+connecting sum over all polymers containing `p` and `q`
+
+    ∑ Y in finite connecting polymers, K_bound Y
+
+is exactly the `tsum` of the connected cardinality buckets.
+
+## Why
+
+No percentage bar moves.  v1.62.0 exposed the connected finite sum as the
+bucket `tsum`; this pass composes it with
+`finiteConnectingSum_eq_connectedFiniteSum`, so callers coming directly from
+the Mayer identity can enter the bucket-series API without manually inserting
+the connected-sum intermediate.
+
+This is F3 infrastructure.  The open analytic target remains the uniform
+lattice-animal / KP count estimate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    finiteConnectingSum_eq_cardBucketTsum
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.64.0 — KP consumers route through the direct bucket-`tsum` API
 
 **Released: 2026-04-25**
