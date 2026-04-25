@@ -1453,6 +1453,28 @@ def PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound (K : ℕ) : Prop :=
           physicalClayDimension L root k,
         ∃ word : Fin k → Fin K, decode word = X
 
+/-- The anchored word-decoder target is monotone in the alphabet size. -/
+theorem PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.mono
+    {K K' : ℕ} (hdecode : PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound K)
+    (hK : 1 ≤ K) (hKK' : K ≤ K') :
+    PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound K' := by
+  intro L _ root k
+  obtain ⟨decode, hcover⟩ := hdecode root k
+  let project : Fin K' → Fin K := fun a =>
+    if h : a.val < K then ⟨a.val, h⟩ else ⟨0, hK⟩
+  refine ⟨fun word' => decode (fun i => project (word' i)), ?_⟩
+  intro X hX
+  obtain ⟨word, hword⟩ := hcover X hX
+  refine ⟨fun i => Fin.castLE hKK' (word i), ?_⟩
+  dsimp [project]
+  have hproj : (fun i : Fin k =>
+      (if h : (Fin.castLE hKK' (word i)).val < K then
+        ⟨(Fin.castLE hKK' (word i)).val, h⟩
+      else ⟨0, hK⟩ : Fin K)) = word := by
+    funext i
+    simp [Fin.ext_iff]
+  simpa [hproj] using hword
+
 /-- Choose, for each anchored graph-animal bucket element, one word decoding to
 it. -/
 noncomputable def physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder
@@ -2113,6 +2135,7 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_base_wordDecoderCovers
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_root_reachable
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_root_exists_induced_path
+#print axioms PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.mono
 #print axioms physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder_injective
 #print axioms physicalPlaquetteGraphAnimalAnchoredCountBound_of_wordDecoder
 #print axioms PhysicalPlaquetteGraphAnimalAnchoredCountBound.mono

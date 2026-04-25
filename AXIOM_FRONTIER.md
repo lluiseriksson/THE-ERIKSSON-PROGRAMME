@@ -1,3 +1,40 @@
+# v2.35.0 — anchored word-decoder alphabet monotonicity
+
+**Released: 2026-04-25**
+
+## What
+
+Added alphabet monotonicity for the anchored graph-animal word-decoder target in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.mono
+
+Given a decoder over an alphabet of size `K`, a proof `1 ≤ K`, and `K ≤ K'`,
+the lemma constructs a decoder over the larger alphabet `K'` by projecting
+larger-alphabet words back to `K` and embedding the covering words forward.
+
+## Why
+
+No percentage bar moves. This makes the constructive F3 combinatorial route
+robust under constant inflation: a BFS/Klarner decoder may be proved for a
+convenient alphabet size, while downstream small-β terminal statements can use
+any larger explicit constant when needed.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace:
+
+    PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.mono
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.34.0 — anchored induced root reachability
 
 **Released: 2026-04-25**
