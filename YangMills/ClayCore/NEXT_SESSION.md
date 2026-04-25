@@ -154,10 +154,15 @@ non-vacuous Clay target at the physical dimension.
 If the Mayer half is first proved in the older all-dimensions form while the
 count half is only physical, use:
 
+    connectedCorrDecayBundle_of_globalMayer_physicalCount_siteDist_measurableF
+    connectedCorrDecayBundle_of_globalMayer_physicalCount_mass_eq
+    connectedCorrDecayBundle_of_globalMayer_physicalCount_prefactor_eq
     physicalStrong_of_globalMayer_physicalCount_siteDist_measurableF
 
 It packages through `PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer`
 internally and avoids rebuilding the physical-only package in terminal scripts.
+The bundle route exposes the exact mass and prefactor before the final
+`ClayYangMillsPhysicalStrong` projection.
 
 There is also a physical four-dimensional F3 output:
 

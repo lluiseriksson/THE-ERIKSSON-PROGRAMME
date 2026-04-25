@@ -1,3 +1,53 @@
+# v1.45.0 — Global Mayer + physical count exposes auditable L8 bundle
+
+**Released: 2026-04-25**
+
+## What
+
+Added the bundle-level L8 route and audit equations in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    connectedCorrDecayBundle_of_globalMayer_physicalCount_siteDist_measurableF
+    connectedCorrDecayBundle_of_globalMayer_physicalCount_mass_eq
+    connectedCorrDecayBundle_of_globalMayer_physicalCount_prefactor_eq
+
+## Why
+
+No percentage bar moves.  The previous pass added the direct terminal theorem
+from
+
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+to `ClayYangMillsPhysicalStrong`.  This pass exposes the intermediate
+`ConnectedCorrDecayBundle`, so the route is auditable before projecting to the
+terminal physical statement.
+
+The new equations pin the exact physical decay constants:
+
+    m = kpParameter wab.r
+    C = clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim
+          + 2 * Real.exp (kpParameter wab.r)
+
+Future scripts can therefore inspect mass and prefactor directly on the
+global-Mayer + physical-count route, instead of passing through the terminal
+`PhysicalStrong` projection first.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces: the new bundle route and its mass/prefactor equations print the
+canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.44.0 — Global Mayer + physical count feeds L8 directly
 
 **Released: 2026-04-25**
