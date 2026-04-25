@@ -1685,6 +1685,123 @@ def PhysicalClusterCorrelatorBound
     C_clust * Real.exp (-(kpParameter r) *
         siteLatticeDist p.site q.site)
 
+/-! ### Physical Mayer/activity data -/
+
+/-- Physical `d = 4` version of `ConnectedCardDecayMayerData`.
+
+It packages the raw truncated activity, connected-cardinality decay, and
+Mayer/Ursell identity only for the physical Clay dimension
+`physicalClayDimension = 4`, uniformly over finite volumes `L`. -/
+structure PhysicalConnectedCardDecayMayerData
+    (N_c : ℕ) [NeZero N_c]
+    (r A₀ : ℝ) (hr_nonneg : 0 ≤ r) (hA_nonneg : 0 ≤ A₀) where
+  K : ∀ {L : ℕ} [NeZero L],
+    (β : ℝ) →
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+    ConcretePlaquette physicalClayDimension L →
+    ConcretePlaquette physicalClayDimension L →
+    Finset (ConcretePlaquette physicalClayDimension L) → ℝ
+  hK_abs_le : ∀ {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (Y : Finset (ConcretePlaquette physicalClayDimension L)),
+    |K β F p q Y| ≤
+      if p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y
+        then A₀ * r ^ Y.card else 0
+  h_mayer : ∀ {L : ℕ} [NeZero L]
+    (β : ℝ) (_hβ : 0 < β)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (_hF : ∀ U, |F U| ≤ 1)
+    (p q : ConcretePlaquette physicalClayDimension L),
+    (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+    wilsonConnectedCorr (sunHaarProb N_c)
+      (wilsonPlaquetteEnergy N_c) β F p q =
+    (TruncatedActivities.ofConnectedCardDecay
+      (K β F p q) p q r A₀ hr_nonneg hA_nonneg
+      (hK_abs_le β F p q)).connectingSum p q
+
+namespace PhysicalConnectedCardDecayMayerData
+
+/-- Convert physical Mayer/activity data into physical finite-volume truncated
+activities. -/
+noncomputable def toTruncatedActivities
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : PhysicalConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L) :
+    TruncatedActivities (ConcretePlaquette physicalClayDimension L) :=
+  TruncatedActivities.ofConnectedCardDecay
+    (data.K β F p q) p q r A₀ hr_nonneg hA_nonneg
+    (data.hK_abs_le β F p q)
+
+@[simp] theorem toTruncatedActivities_K
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : PhysicalConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (Y : Finset (ConcretePlaquette physicalClayDimension L)) :
+    (data.toTruncatedActivities β F p q).K Y = data.K β F p q Y := by
+  rfl
+
+theorem toTruncatedActivities_K_bound_le_cardDecay
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : PhysicalConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (Y : Finset (ConcretePlaquette physicalClayDimension L)) :
+    (data.toTruncatedActivities β F p q).K_bound Y ≤ A₀ * r ^ Y.card := by
+  exact TruncatedActivities.ofConnectedCardDecay_K_bound_le_cardDecay
+    (data.K β F p q) p q r A₀ hr_nonneg hA_nonneg
+    (data.hK_abs_le β F p q) Y
+
+theorem toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : PhysicalConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (Y : Finset (ConcretePlaquette physicalClayDimension L))
+    (hp : p ∈ Y) (hq : q ∈ Y) (h_not_connected : ¬ PolymerConnected Y) :
+    (data.toTruncatedActivities β F p q).K_bound Y = 0 := by
+  exact TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connected
+    (data.K β F p q) p q r A₀ hr_nonneg hA_nonneg
+    (data.hK_abs_le β F p q) Y hp hq h_not_connected
+
+theorem wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : PhysicalConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg)
+    {L : ℕ} [NeZero L]
+    (β : ℝ) (hβ : 0 < β)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    wilsonConnectedCorr (sunHaarProb N_c)
+      (wilsonPlaquetteEnergy N_c) β F p q =
+    (data.toTruncatedActivities β F p q).connectingSum p q := by
+  exact data.h_mayer β hβ F hF p q hdist
+
+end PhysicalConnectedCardDecayMayerData
+
+#print axioms PhysicalConnectedCardDecayMayerData.toTruncatedActivities
+#print axioms PhysicalConnectedCardDecayMayerData.toTruncatedActivities_K
+#print axioms PhysicalConnectedCardDecayMayerData.toTruncatedActivities_K_bound_le_cardDecay
+#print axioms PhysicalConnectedCardDecayMayerData.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+#print axioms PhysicalConnectedCardDecayMayerData.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+
 /-- Preferred physical `d = 4` F3 endpoint from Mayer data and the physical
 four-dimensional shifted count frontier. -/
 theorem physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
@@ -1736,6 +1853,84 @@ theorem physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
         (siteLatticeDist p.site q.site))
 
 #print axioms physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+
+/-- Physical `d = 4` F3 endpoint from physical Mayer/activity data and the
+physical four-dimensional shifted count frontier. -/
+theorem physicalClusterCorrelatorBound_of_physicalMayerData_shiftedCount_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (data : PhysicalConnectedCardDecayMayerData N_c r A₀ hr_pos.le hA.le)
+    (h_count : PhysicalShiftedConnectingClusterCountBound C_conn dim) :
+    PhysicalClusterCorrelatorBound N_c r
+      (clusterPrefactorShifted r C_conn A₀ dim) := by
+  intro L _ β hβ F hF p q hdist
+  rw [data.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    β hβ F hF p q hdist]
+  have h_connected :
+      (∑ Y ∈ (Finset.univ :
+          Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+        (data.toTruncatedActivities β F p q).K_bound Y) ≤
+        ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+    exact connectedFiniteSum_le_of_cardBucketBounds_kp_shifted
+      (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
+      r hr_pos hr_lt1 C_conn A₀ hC hA dim
+      (fun n hn => cardBucketSum_le_of_count_and_pointwise_shifted
+        (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
+        r hr_pos C_conn A₀ hA dim n
+        (h_count.apply p q n hn hdist)
+        (fun Y hY => pointwiseBucketBound_of_card_decay
+          (fun Y => (data.toTruncatedActivities β F p q).K_bound Y)
+          p q r A₀ n Y hY
+          (fun Y =>
+            data.toTruncatedActivities_K_bound_le_cardDecay β F p q Y)))
+  have h_bound :
+      (data.toTruncatedActivities β F p q).connectingBound p q ≤
+        ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+    rw [TruncatedActivities.connectingBound_eq_finset_sum]
+    exact finiteConnectingSum_eq_connectedFiniteSum
+      (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
+      (fun Y hp hq hnot =>
+        data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+          β F p q Y hp hq hnot) ▸ h_connected
+  exact ((data.toTruncatedActivities β F p q).two_point_decay_from_cluster_tsum_shifted
+    p q r hr_pos hr_lt1 C_conn A₀ hC hA dim
+    ⌈siteLatticeDist p.site q.site⌉₊ h_bound).trans
+      (clusterPrefactorShifted_rpow_ceil_le_exp
+        r hr_pos hr_lt1 C_conn A₀ hC hA dim
+        (siteLatticeDist p.site q.site))
+
+#print axioms physicalClusterCorrelatorBound_of_physicalMayerData_shiftedCount_ceil
+
+/-- Mayer/activity half of the physical shifted F3 frontier.
+
+Unlike `ShiftedF3MayerPackage`, this only packages the physical
+`d = 4` Mayer/Ursell input needed by `PhysicalClusterCorrelatorBound`. -/
+structure PhysicalShiftedF3MayerPackage
+    (N_c : ℕ) [NeZero N_c] (wab : WilsonPolymerActivityBound N_c) where
+  A₀ : ℝ
+  hA : 0 < A₀
+  data : PhysicalConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le
+
+/-- Physical `d = 4` F3 endpoint from physical-only Mayer and physical count
+packages. -/
+theorem physicalClusterCorrelatorBound_of_physicalShiftedF3Subpackages
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    PhysicalClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim) :=
+  physicalClusterCorrelatorBound_of_physicalMayerData_shiftedCount_ceil
+    N_c wab.r wab.hr_pos wab.hr_lt1
+    count.C_conn mayer.A₀ count.hC mayer.hA count.dim
+    mayer.data count.h_count
+
+#print axioms physicalClusterCorrelatorBound_of_physicalShiftedF3Subpackages
 
 /-- Preferred F3 endpoint into the older analytic witness bundle. -/
 noncomputable def clayWitnessHyp_of_shiftedCountBound_mayerData_ceil

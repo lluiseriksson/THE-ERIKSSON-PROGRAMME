@@ -24,6 +24,16 @@ It bundles exactly:
 
 and feeds directly into the physical endpoint.
 
+There is also a fully physical, dimension-restricted Mayer side:
+
+    PhysicalConnectedCardDecayMayerData
+    PhysicalShiftedF3MayerPackage
+    physicalClusterCorrelatorBound_of_physicalShiftedF3Subpackages
+
+This route needs Mayer/Ursell data only at `physicalClayDimension = 4`,
+uniformly in finite volume `L`.  It should be preferred for Clay-physical F3
+work when no all-dimensions Mayer theorem is available.
+
 The count side has an explicit finite-volume canary:
 
     PhysicalShiftedF3CountPackageAt.finite

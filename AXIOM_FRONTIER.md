@@ -1,3 +1,56 @@
+# v1.36.0 — Physical Mayer-only F3 route exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added the physical-dimension Mayer/activity interface in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    PhysicalConnectedCardDecayMayerData
+    PhysicalConnectedCardDecayMayerData.toTruncatedActivities
+    PhysicalConnectedCardDecayMayerData.toTruncatedActivities_K
+    PhysicalConnectedCardDecayMayerData.toTruncatedActivities_K_bound_le_cardDecay
+    PhysicalConnectedCardDecayMayerData.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    PhysicalConnectedCardDecayMayerData.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+
+and the physical-only F3 package/endpoint:
+
+    PhysicalShiftedF3MayerPackage
+    physicalClusterCorrelatorBound_of_physicalMayerData_shiftedCount_ceil
+    physicalClusterCorrelatorBound_of_physicalShiftedF3Subpackages
+
+## Why
+
+No percentage bar moves.  This weakens the assumptions needed for the physical
+Clay route.  Previously the `d = 4` physical endpoint consumed
+`ConnectedCardDecayMayerData`, whose raw Mayer identity quantified over all
+dimensions `d`.  The new route consumes only the physical-dimension data
+needed by `PhysicalClusterCorrelatorBound`, uniformly over finite volumes `L`.
+
+The physical F3 front is now genuinely physical on both sides:
+
+    mayer : PhysicalShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+produce the same physical exponential connected-correlator bound at
+`physicalClayDimension = 4`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all new physical Mayer declarations and endpoints print the
+canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.35.0 — Physical count uniformization criterion exposed
 
 **Released: 2026-04-25**
