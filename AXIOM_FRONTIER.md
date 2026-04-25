@@ -1,3 +1,52 @@
+# v2.29.0 — anchored graph-animal count base buckets
+
+**Released: 2026-04-25**
+
+## What
+
+Added the first closed base facts for the anchored graph-animal count bucket in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one
+
+The `k = 0` bucket is empty because every anchored bucket element must contain
+the root. The `k = 1` bucket is contained in the singleton bucket `{ {root} }`,
+hence has cardinality at most one.
+
+## Why
+
+No percentage bar moves. This closes the base cases of the forthcoming
+bounded-degree/Klarner induction target
+
+    PhysicalPlaquetteGraphAnimalAnchoredCountBound K
+
+without changing the terminal F3 route. It also gives a small audit canary for
+the anchored-bucket definition itself: the root-membership and cardinality
+filters behave as expected at the two degenerate sizes.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.28.0 — F3 graph-animal growth constant monotonicity
 
 **Released: 2026-04-25**

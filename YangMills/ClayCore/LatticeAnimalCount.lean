@@ -1274,6 +1274,53 @@ noncomputable def plaquetteGraphPreconnectedSubsetsAnchoredCard
     root ∈ X ∧ X.card = k ∧
       ((plaquetteGraph d L).induce {x | x ∈ X}).Preconnected)
 
+/-- The anchored graph-animal bucket of size zero is empty, because every
+bucket element must contain the root. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (root : ConcretePlaquette d L) :
+    plaquetteGraphPreconnectedSubsetsAnchoredCard d L root 0 = ∅ := by
+  ext X
+  constructor
+  · intro hX
+    unfold plaquetteGraphPreconnectedSubsetsAnchoredCard at hX
+    rw [Finset.mem_filter] at hX
+    have hroot : root ∈ X := hX.2.1
+    have hX_empty : X = ∅ := Finset.card_eq_zero.mp hX.2.2.1
+    have hroot_not : root ∉ X := by
+      simp [hX_empty]
+    exact False.elim (hroot_not hroot)
+  · intro hX
+    simp at hX
+
+/-- The anchored graph-animal bucket of size one is contained in the singleton
+bucket containing only `{root}`. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (root : ConcretePlaquette d L) :
+    plaquetteGraphPreconnectedSubsetsAnchoredCard d L root 1 ⊆
+      ({({root} : Finset (ConcretePlaquette d L))} :
+        Finset (Finset (ConcretePlaquette d L))) := by
+  intro X hX
+  unfold plaquetteGraphPreconnectedSubsetsAnchoredCard at hX
+  rw [Finset.mem_filter] at hX
+  rw [Finset.mem_singleton]
+  obtain ⟨a, ha⟩ := Finset.card_eq_one.mp hX.2.2.1
+  have hroot_mem_singleton : root ∈ ({a} : Finset (ConcretePlaquette d L)) := by
+    simpa [ha] using hX.2.1
+  have hroot_eq_a : root = a := by
+    simpa using hroot_mem_singleton
+  simpa [ha, hroot_eq_a]
+
+/-- The anchored graph-animal bucket of size one has cardinality at most one. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (root : ConcretePlaquette d L) :
+    (plaquetteGraphPreconnectedSubsetsAnchoredCard d L root 1).card ≤ 1 := by
+  simpa using
+    Finset.card_le_card
+      (plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton root)
+
 /-- Physical anchored graph-animal count target.
 
 This is the classical lattice-animal counting shape: the number of connected
@@ -1869,6 +1916,9 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraph_induce_reachable_of_chain_endpoints
 #print axioms polymerConnected_plaquetteGraph_induce_reachable
 #print axioms polymerConnected_plaquetteGraph_induce_preconnected
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one
 #print axioms PhysicalPlaquetteGraphAnimalAnchoredCountBound.mono
 #print axioms plaquetteGraphPreconnectedConnectingSubsetsShifted_subset_anchored
 #print axioms plaquetteGraphPreconnectedConnectingSubsetsShifted_card_le_anchored
