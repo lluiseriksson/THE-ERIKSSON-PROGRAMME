@@ -430,6 +430,47 @@ theorem plaquetteGraph_branching_le_physical_ternary
     ((plaquetteGraph physicalClayDimension L).neighborFinset p).card ≤ 1296 :=
   plaquetteGraph_branchingBoundDim_physical_ternary p
 
+/-! ### Neighbor-choice coding -/
+
+/-- Any finset with at most `D` elements admits a canonical injection into
+`Fin D`, obtained by enumerating it as `Fin s.card` and casting along the
+cardinality bound. -/
+noncomputable def finsetCodeOfCardLe {α : Type} (s : Finset α) {D : ℕ}
+    (hD : s.card ≤ D) : {x : α // x ∈ s} → Fin D :=
+  fun x => Fin.castLE hD ((Finset.equivFin s) x)
+
+/-- The canonical bounded-cardinality finset code is injective. -/
+theorem finsetCodeOfCardLe_injective {α : Type} (s : Finset α) {D : ℕ}
+    (hD : s.card ≤ D) :
+    Function.Injective (finsetCodeOfCardLe s hD) := by
+  intro a b h
+  apply (Finset.equivFin s).injective
+  apply Fin.ext
+  have hv := congrArg Fin.val h
+  simpa [finsetCodeOfCardLe, Fin.castLE] using hv
+
+/-- Fixed-dimension uniform finite coding of each plaquette neighbor finset. -/
+def PlaquetteNeighborChoiceCodeBoundDim (d D : ℕ) [NeZero d] : Prop :=
+  ∀ {L : ℕ} [NeZero L] (p : ConcretePlaquette d L),
+    ∃ code : {q : ConcretePlaquette d L //
+        q ∈ (plaquetteGraph d L).neighborFinset p} → Fin D,
+      Function.Injective code
+
+/-- A uniform branching bound produces a uniform finite neighbor-choice code. -/
+theorem plaquetteNeighborChoiceCodeBoundDim_of_branchingBoundDim
+    {d D : ℕ} [NeZero d]
+    (hD : PlaquetteGraphBranchingBoundDim d D) :
+    PlaquetteNeighborChoiceCodeBoundDim d D := by
+  intro L _ p
+  exact ⟨finsetCodeOfCardLe ((plaquetteGraph d L).neighborFinset p) (hD p),
+    finsetCodeOfCardLe_injective ((plaquetteGraph d L).neighborFinset p) (hD p)⟩
+
+/-- Physical four-dimensional plaquette neighbor choices admit `1296` codes. -/
+theorem plaquetteNeighborChoiceCodeBoundDim_physical_ternary :
+    PlaquetteNeighborChoiceCodeBoundDim physicalClayDimension 1296 :=
+  plaquetteNeighborChoiceCodeBoundDim_of_branchingBoundDim
+    plaquetteGraph_branchingBoundDim_physical_ternary
+
 /-! ### Finite walk coding interface -/
 
 /-- A graph walk of edge-length `n` starting at `p`, represented as a finite
@@ -667,6 +708,9 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms plaquetteGraph_branchingBoundDim_ternary
 #print axioms plaquetteGraph_branchingBoundDim_physical_ternary
 #print axioms plaquetteGraph_branching_le_physical_ternary
+#print axioms finsetCodeOfCardLe_injective
+#print axioms plaquetteNeighborChoiceCodeBoundDim_of_branchingBoundDim
+#print axioms plaquetteNeighborChoiceCodeBoundDim_physical_ternary
 #print axioms plaquetteWalk_card_le_of_injective_code
 #print axioms plaquetteWalk_card_le_of_codeBoundDim
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain

@@ -1,3 +1,69 @@
+# v1.96.0 — finite neighbor-choice coding from branching bounds
+
+**Released: 2026-04-25**
+
+## What
+
+Closed the local coding bridge in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    finsetCodeOfCardLe
+    finsetCodeOfCardLe_injective
+    PlaquetteNeighborChoiceCodeBoundDim
+    plaquetteNeighborChoiceCodeBoundDim_of_branchingBoundDim
+    plaquetteNeighborChoiceCodeBoundDim_physical_ternary
+
+Any finset `s` with `s.card ≤ D` is now coded injectively into `Fin D` by
+enumerating `s` as `Fin s.card` via `Finset.equivFin` and casting along the
+cardinality bound.  Applied to the plaquette graph, this turns the abstract
+branching interface
+
+    PlaquetteGraphBranchingBoundDim d D
+
+into a concrete uniform neighbor-choice code:
+
+    PlaquetteNeighborChoiceCodeBoundDim d D.
+
+In physical dimension this specializes to a `1296`-symbol neighbor-choice code.
+
+## Why
+
+No percentage bar moves.  This is F3-count infrastructure for the
+`ClusterCorrelatorBound` front.  The previous step introduced finite
+plaquette-walk spaces and the statement that an injective word code gives a
+`D^n` walk-count bound.  This step supplies the local alphabet for that word
+code: every step out of the current plaquette can be encoded by one element of
+`Fin 1296`.
+
+The intended next closure is the dependent path-coding bridge:
+
+    PlaquetteNeighborChoiceCodeBoundDim d D
+      → PlaquetteWalkCodeBoundDim d D
+
+which will assemble the per-step neighbor choices into an injective code for
+complete finite walks.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    finsetCodeOfCardLe_injective
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteNeighborChoiceCodeBoundDim_of_branchingBoundDim
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteNeighborChoiceCodeBoundDim_physical_ternary
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.95.0 — finite plaquette-walk coding interface
 
 **Released: 2026-04-25**
