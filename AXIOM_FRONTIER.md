@@ -1,3 +1,49 @@
+# v2.17.0 — graph-animal word-decoder route to L8 physical-strong endpoint
+
+**Released: 2026-04-25**
+
+## What
+
+Added the downstream route from the v2.16 graph-animal word-decoder target to
+the physical F3 package, Wilson-facing physical cluster-correlator bound, and
+L8 terminal endpoint:
+
+    physicalOnlyShiftedF3MayerCountPackageExp_of_graphAnimalWordDecoder1296
+    physicalClusterCorrelatorBound_of_graphAnimalWordDecoder1296
+    physicalStrong_of_graphAnimalWordDecoder1296_siteDist_measurableF
+
+with the usual `C_conn = 1`, `K = 1296`, and `A₀ = mayer.A₀` simp canaries.
+
+## Why
+
+No percentage bar moves. This is routing, but it removes one layer of manual
+composition from the active F3 front: a proof of
+`PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound1296`, together
+with the physical Mayer package and `(1296 : ℝ) * wab.r < 1`, now reaches
+`ClayYangMillsPhysicalStrong` directly.
+
+Remaining mathematical work is unchanged: construct the actual graph-animal
+word decoder, construct the physical Mayer package, and prove the smallness
+regime.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.LatticeAnimalF3Bridge
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace for the new terminal declarations:
+
+    physicalOnlyShiftedF3MayerCountPackageExp_of_graphAnimalWordDecoder1296
+    physicalClusterCorrelatorBound_of_graphAnimalWordDecoder1296
+    physicalStrong_of_graphAnimalWordDecoder1296_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.16.0 — graph-animal word-decoder count bridge
 
 **Released: 2026-04-25**
