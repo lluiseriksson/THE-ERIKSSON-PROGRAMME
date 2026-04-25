@@ -1,3 +1,71 @@
+# v1.81.0 — exponential F3 bridge reaches ClusterCorrelatorBound
+
+**Released: 2026-04-25**
+
+## What
+
+Extended the exponential KP-compatible F3 route in
+`YangMills/ClayCore/ClusterRpowBridge.lean` from bucket estimates to the
+Wilson-facing correlator target:
+
+    TruncatedActivities.two_point_decay_from_cluster_tsum_exp
+    clusterPrefactorExp_rpow_ceil_le_exp
+    clusterCorrelatorBound_of_truncatedActivities_ceil_exp
+    finiteConnectingSum_le_of_cardBucketBounds_tsum_exp
+    cardBucketSum_le_of_count_and_pointwise_exp
+    clusterCorrelatorBound_of_cardBucketBounds_ceil_exp
+    clusterCorrelatorBound_of_count_cardDecayBounds_ceil_exp
+
+The new public endpoint consumes an exponential shifted lattice-animal count
+
+    ShiftedConnectingClusterCountBoundExp C_conn K
+
+together with a global activity decay
+
+    (T β F p q).K_bound Y ≤ A₀ * r ^ Y.card
+
+and produces
+
+    ClusterCorrelatorBound N_c r (clusterPrefactorExp r K C_conn A₀)
+
+under the KP smallness condition `0 < K` and `K * r < 1`.
+
+## Why
+
+No percentage bar moves.  This is bridge infrastructure, not the analytic
+lattice-animal theorem itself.  It records the honest route suggested by the
+F3 count audit: connected polymer buckets should be allowed to grow
+exponentially like `C_conn * K^n`; the polymer activity rate then absorbs this
+growth exactly through `K * r < 1`.
+
+The open mathematical target is now sharply separated from the consumer
+plumbing: prove the uniform exponential count estimate and the Mayer/Ursell
+activity package, then feed them through the endpoint above.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces for the new bridge declarations:
+
+    finiteConnectingSum_le_of_cardBucketBounds_tsum_exp
+      [propext, Classical.choice, Quot.sound]
+
+    cardBucketSum_le_of_count_and_pointwise_exp
+      [propext, Classical.choice, Quot.sound]
+
+    clusterCorrelatorBound_of_cardBucketBounds_ceil_exp
+      [propext, Classical.choice, Quot.sound]
+
+    clusterCorrelatorBound_of_count_cardDecayBounds_ceil_exp
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.80.0 — exponential KP series prefactor for F3 counts
 
 **Released: 2026-04-25**

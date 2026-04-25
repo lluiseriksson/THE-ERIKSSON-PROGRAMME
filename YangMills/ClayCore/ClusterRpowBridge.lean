@@ -4,6 +4,7 @@ Authors: Lluis Eriksson -/
 import YangMills.ClayCore.MayerExpansion
 import YangMills.ClayCore.WilsonClusterProof
 import YangMills.ClayCore.ConnectingClusterCount
+import YangMills.ClayCore.ConnectingClusterCountExp
 import YangMills.ClayCore.ConnectedCorrDecay
 
 /-!
@@ -77,8 +78,27 @@ theorem two_point_decay_from_cluster_tsum_shifted
   exact (T.abs_connectingSum_le_connectingBound p q).trans
     (h_bound.trans_eq h_factored)
 
+/-- Exponential KP-series variant of `two_point_decay_from_cluster_tsum`. -/
+theorem two_point_decay_from_cluster_tsum_exp
+    {ι : Type*} [DecidableEq ι]
+    (T : TruncatedActivities ι) (p q : ι)
+    (r K : ℝ) (hr_pos : 0 < r) (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dist : ℕ)
+    (h_bound : T.connectingBound p q ≤
+      ∑' n : ℕ, C_conn * K ^ n * A₀ * r ^ (n + dist)) :
+    |T.connectingSum p q| ≤
+      clusterPrefactorExp r K C_conn A₀ * r ^ dist := by
+  have h_factored :
+      ∑' n : ℕ, C_conn * K ^ n * A₀ * r ^ (n + dist) =
+        clusterPrefactorExp r K C_conn A₀ * r ^ dist :=
+    connecting_cluster_tsum_le_exp r K hr_pos hK_pos hKr_lt1 C_conn A₀ hC hA dist
+  exact (T.abs_connectingSum_le_connectingBound p q).trans
+    (h_bound.trans_eq h_factored)
+
 #print axioms TruncatedActivities.two_point_decay_from_cluster_tsum
 #print axioms TruncatedActivities.two_point_decay_from_cluster_tsum_shifted
+#print axioms TruncatedActivities.two_point_decay_from_cluster_tsum_exp
 
 end TruncatedActivities
 
@@ -207,6 +227,36 @@ theorem clusterPrefactorShifted_rpow_ceil_le_exp
     _ ≤ Real.exp (-(kpParameter r) * (⌈x⌉₊ : ℝ)) := hceil_exp
     _ ≤ Real.exp (-(kpParameter r) * x) := hexp_mono
 
+/-- Exponential-prefactor variant of `clusterPrefactor_rpow_ceil_le_exp`. -/
+theorem clusterPrefactorExp_rpow_ceil_le_exp
+    (r K : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (x : ℝ) :
+    clusterPrefactorExp r K C_conn A₀ * r ^ (⌈x⌉₊) ≤
+      clusterPrefactorExp r K C_conn A₀ *
+        Real.exp (-(kpParameter r) * x) := by
+  have hpref_nonneg :
+      0 ≤ clusterPrefactorExp r K C_conn A₀ :=
+    (clusterPrefactorExp_pos r K hr_pos hK_pos hKr_lt1 C_conn A₀ hC hA).le
+  apply mul_le_mul_of_nonneg_left ?_ hpref_nonneg
+  have hceil : x ≤ (⌈x⌉₊ : ℝ) := Nat.le_ceil x
+  have hceil_nonneg : 0 ≤ (⌈x⌉₊ : ℝ) := by exact_mod_cast Nat.zero_le ⌈x⌉₊
+  have hkp_pos : 0 < kpParameter r := kpParameter_pos hr_pos hr_lt1
+  have hceil_exp :
+      r ^ ((⌈x⌉₊ : ℝ)) ≤ Real.exp (-(kpParameter r) * (⌈x⌉₊ : ℝ)) :=
+    rpow_le_exp_kpParameter hr_pos hr_lt1 hceil_nonneg
+  have hexp_mono :
+      Real.exp (-(kpParameter r) * (⌈x⌉₊ : ℝ)) ≤
+        Real.exp (-(kpParameter r) * x) := by
+    apply Real.exp_le_exp.mpr
+    nlinarith [mul_le_mul_of_nonneg_left hceil hkp_pos.le]
+  calc
+    r ^ (⌈x⌉₊)
+        = r ^ ((⌈x⌉₊ : ℝ)) := by rw [Real.rpow_natCast]
+    _ ≤ Real.exp (-(kpParameter r) * (⌈x⌉₊ : ℝ)) := hceil_exp
+    _ ≤ Real.exp (-(kpParameter r) * x) := hexp_mono
+
 /-- Canonical-ceiling version of `clusterCorrelatorBound_of_truncatedActivities`.
 Here the discrete cluster distance is fixed to `⌈siteLatticeDist⌉₊`, so the
 geometric comparison is proved internally by
@@ -289,6 +339,48 @@ theorem clusterCorrelatorBound_of_truncatedActivities_ceil_shifted
     (clusterPrefactorShifted_rpow_ceil_le_exp
       r hr_pos hr_lt1 C_conn A₀ hC hA dim (siteLatticeDist p.site q.site))
 
+/-- Exponential KP-series version of
+`clusterCorrelatorBound_of_truncatedActivities_ceil`. -/
+theorem clusterCorrelatorBound_of_truncatedActivities_ceil_exp
+    (N_c : ℕ) [NeZero N_c]
+    (r K : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (T : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      TruncatedActivities (ConcretePlaquette d L))
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (T β F p q).connectingSum p q)
+    (h_bound : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      (T β F p q).connectingBound p q ≤
+        ∑' n : ℕ, C_conn * K ^ n * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    ClusterCorrelatorBound N_c r
+      (clusterPrefactorExp r K C_conn A₀) := by
+  intro d L _ _ β hβ F hF p q hdist
+  rw [h_mayer β hβ F hF p q hdist]
+  exact ((T β F p q).two_point_decay_from_cluster_tsum_exp p q
+    r K hr_pos hK_pos hKr_lt1 C_conn A₀ hC hA
+    ⌈siteLatticeDist p.site q.site⌉₊
+    (h_bound β hβ F hF p q hdist)).trans
+    (clusterPrefactorExp_rpow_ceil_le_exp
+      r K hr_pos hr_lt1 hK_pos hKr_lt1 C_conn A₀ hC hA
+      (siteLatticeDist p.site q.site))
+
 /-- Finite-sum version of `clusterCorrelatorBound_of_truncatedActivities_ceil`.
 
 On the concrete finite plaquette lattice, it is enough to bound the finite
@@ -335,8 +427,10 @@ theorem clusterCorrelatorBound_of_finiteConnectingBounds_ceil
 
 #print axioms clusterPrefactor_rpow_ceil_le_exp
 #print axioms clusterPrefactorShifted_rpow_ceil_le_exp
+#print axioms clusterPrefactorExp_rpow_ceil_le_exp
 #print axioms clusterCorrelatorBound_of_truncatedActivities_ceil
 #print axioms clusterCorrelatorBound_of_truncatedActivities_ceil_shifted
+#print axioms clusterCorrelatorBound_of_truncatedActivities_ceil_exp
 #print axioms clusterCorrelatorBound_of_finiteConnectingBounds_ceil
 
 /-- If `K_bound` vanishes on disconnected polymers containing `p` and `q`,
@@ -730,6 +824,38 @@ theorem finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
     exact connecting_cluster_summand_nonneg_shifted r hr_pos C_conn A₀ hC hA dim
       ⌈siteLatticeDist p.site q.site⌉₊ n
 
+/-- Exponential finite-connecting-sum consumer using the bucket `tsum` API
+directly. -/
+theorem finiteConnectingSum_le_of_cardBucketBounds_tsum_exp
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (r K : ℝ) (hr_pos : 0 < r) (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (h_zero : ∀ Y : Finset (ConcretePlaquette d L),
+      p ∈ Y → q ∈ Y → ¬ PolymerConnected Y → K_bound Y = 0)
+    (h_bucket : ∀ n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1),
+      (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+          if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+            then K_bound Y else 0) ≤
+        C_conn * K ^ n * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y), K_bound Y) ≤
+      ∑' n : ℕ, C_conn * K ^ n * A₀ *
+        r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+  rw [finiteConnectingSum_eq_cardBucketTsum K_bound p q h_zero]
+  refine Summable.tsum_le_tsum ?_ (cardBucketSum_summable K_bound p q)
+    (connecting_cluster_tsum_summable_exp r K hr_pos hK_pos hKr_lt1
+      C_conn A₀ ⌈siteLatticeDist p.site q.site⌉₊)
+  intro n
+  by_cases hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1)
+  · exact h_bucket n hn
+  · rw [cardBucketSum_eq_zero_of_not_mem_range K_bound p q n hn]
+    exact connecting_cluster_summand_nonneg_exp r K hr_pos hK_pos
+      C_conn A₀ hC hA ⌈siteLatticeDist p.site q.site⌉₊ n
+
 /-- Bucket-bound consumer with the KP partial-sum comparison discharged
 internally by `connecting_cluster_partial_sum_le_tsum`. -/
 theorem connectedFiniteSum_le_of_cardBucketBounds_kp
@@ -909,6 +1035,72 @@ theorem cardBucketSum_le_of_count_and_pointwise_shifted
         r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
         ring
 
+/-- Exponential variant of `cardBucketSum_le_of_count_and_pointwise`, using
+the KP-compatible bucket count `C_conn * K^n`. -/
+theorem cardBucketSum_le_of_count_and_pointwise_exp
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (r : ℝ) (hr_pos : 0 < r)
+    (K C_conn A₀ : ℝ) (hA : 0 < A₀)
+    (n : ℕ)
+    (h_count :
+      (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y =>
+          p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+            Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+        C_conn * K ^ n)
+    (h_pointwise : ∀ Y ∈
+      (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y =>
+          p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+            Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊),
+      K_bound Y ≤ A₀ * r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+        if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+          then K_bound Y else 0) ≤
+      C_conn * K ^ n * A₀ *
+        r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+  classical
+  let S := (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+    (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y)
+  let B := (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+    (fun Y =>
+      p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+        Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊)
+  let term := A₀ * r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)
+  have hterm_nonneg : 0 ≤ term := by
+    exact mul_nonneg hA.le (pow_nonneg hr_pos.le _)
+  have hSB :
+      S.filter (fun Y => Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊) = B := by
+    ext Y
+    simp [S, B, and_assoc]
+  have h_eq :
+      (∑ Y ∈ S,
+        if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+          then K_bound Y else 0) =
+      Finset.sum B (fun Y => K_bound Y) := by
+    rw [← Finset.sum_filter]
+    rw [hSB]
+  calc
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+        if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+          then K_bound Y else 0)
+        = Finset.sum B (fun Y => K_bound Y) := by simpa [S] using h_eq
+    _ ≤ Finset.sum B (fun _Y => term) := by
+        apply Finset.sum_le_sum
+        intro Y hY
+        exact h_pointwise Y (by simpa [B] using hY)
+    _ = (B.card : ℝ) * term := by
+        simp [term, nsmul_eq_mul]
+    _ ≤ (C_conn * K ^ n) * term := by
+        exact mul_le_mul_of_nonneg_right (by simpa [B] using h_count) hterm_nonneg
+    _ = C_conn * K ^ n * A₀ *
+        r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+        ring
+
 /-- Connected finite-sum version of
 `clusterCorrelatorBound_of_finiteConnectingBounds_ceil`.
 
@@ -1016,6 +1208,65 @@ theorem clusterCorrelatorBound_of_cardBucketBounds_ceil
   exact finiteConnectingSum_le_of_cardBucketBounds_tsum
     (fun Y => (T β F p q).K_bound Y) p q
     r hr_pos hr_lt1 C_conn A₀ hC hA dim
+    (fun Y hp hq hconn => h_zero β hβ F hF p q Y hp hq hconn)
+    (fun n hn => h_bucket β hβ F hF p q n hn hdist)
+
+/-- Exponential bucket-estimate version of
+`clusterCorrelatorBound_of_cardBucketBounds_ceil`.
+
+This is the KP-compatible variant: the bucket count/weight carries an
+exponential profile `C_conn * K^n`, while convergence is supplied by
+`K * r < 1`. -/
+theorem clusterCorrelatorBound_of_cardBucketBounds_ceil_exp
+    (N_c : ℕ) [NeZero N_c]
+    (r K : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (T : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      TruncatedActivities (ConcretePlaquette d L))
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (T β F p q).connectingSum p q)
+    (h_zero : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      p ∈ Y → q ∈ Y → ¬ PolymerConnected Y →
+      (T β F p q).K_bound Y = 0)
+    (h_bucket : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L)
+      (n : ℕ),
+      n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1) →
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+          if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+            then (T β F p q).K_bound Y else 0) ≤
+        C_conn * K ^ n * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    ClusterCorrelatorBound N_c r (clusterPrefactorExp r K C_conn A₀) := by
+  refine clusterCorrelatorBound_of_truncatedActivities_ceil_exp
+    N_c r K hr_pos hr_lt1 hK_pos hKr_lt1 C_conn A₀ hC hA
+    T h_mayer ?_
+  intro d L _ _ β hβ F hF p q hdist
+  rw [(T β F p q).connectingBound_eq_finset_sum p q]
+  exact finiteConnectingSum_le_of_cardBucketBounds_tsum_exp
+    (fun Y => (T β F p q).K_bound Y) p q
+    r K hr_pos hK_pos hKr_lt1 C_conn A₀ hC hA
     (fun Y hp hq hconn => h_zero β hβ F hF p q Y hp hq hconn)
     (fun n hn => h_bucket β hβ F hF p q n hn hdist)
 
@@ -1159,6 +1410,59 @@ theorem clusterCorrelatorBound_of_count_cardDecayBounds_ceil
   exact pointwiseBucketBound_of_card_decay
     (fun Y => (T β F p q).K_bound Y) p q r A₀ n Y hY
     (fun Y => h_card_decay β hβ F hF p q Y)
+
+/-- Exponential count plus global cardinality-decay version of the F3 bridge.
+
+This is the direct public consumer for a shifted exponential lattice-animal
+count and a global `K_bound Y ≤ A₀ * r ^ Y.card` estimate. -/
+theorem clusterCorrelatorBound_of_count_cardDecayBounds_ceil_exp
+    (N_c : ℕ) [NeZero N_c]
+    (r K : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (T : ∀ {d L : ℕ} [NeZero d] [NeZero L],
+      (β : ℝ) →
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) →
+      ConcretePlaquette d L → ConcretePlaquette d L →
+      TruncatedActivities (ConcretePlaquette d L))
+    (h_mayer : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L),
+      (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+      wilsonConnectedCorr (sunHaarProb N_c)
+        (wilsonPlaquetteEnergy N_c) β F p q =
+      (T β F p q).connectingSum p q)
+    (h_zero : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      p ∈ Y → q ∈ Y → ¬ PolymerConnected Y →
+      (T β F p q).K_bound Y = 0)
+    (h_count : ShiftedConnectingClusterCountBoundExp C_conn K)
+    (h_card_decay : ∀ {d L : ℕ} [NeZero d] [NeZero L]
+      (β : ℝ) (_hβ : 0 < β)
+      (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+      (_hF : ∀ U, |F U| ≤ 1)
+      (p q : ConcretePlaquette d L)
+      (Y : Finset (ConcretePlaquette d L)),
+      (T β F p q).K_bound Y ≤ A₀ * r ^ Y.card) :
+    ClusterCorrelatorBound N_c r (clusterPrefactorExp r K C_conn A₀) := by
+  refine clusterCorrelatorBound_of_cardBucketBounds_ceil_exp
+    N_c r K hr_pos hr_lt1 hK_pos hKr_lt1 C_conn A₀ hC hA
+    T h_mayer h_zero ?_
+  intro d L _ _ β hβ F hF p q n hn hdist
+  exact cardBucketSum_le_of_count_and_pointwise_exp
+    (fun Y => (T β F p q).K_bound Y) p q
+    r hr_pos K C_conn A₀ hA n
+    (ShiftedConnectingClusterCountBoundExp.apply h_count p q n hn hdist)
+    (fun Y hY => pointwiseBucketBound_of_card_decay
+      (fun Y => (T β F p q).K_bound Y)
+      p q r A₀ n Y hY
+      (fun Y => h_card_decay β hβ F hF p q Y))
 
 /-- Shifted count plus global cardinality-decay version of the F3 bridge.
 
@@ -1315,10 +1619,12 @@ theorem TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connecte
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted
 #print axioms finiteConnectingSum_le_of_cardBucketBounds_tsum
 #print axioms finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
+#print axioms finiteConnectingSum_le_of_cardBucketBounds_tsum_exp
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_kp
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_kp_shifted
 #print axioms cardBucketSum_le_of_count_and_pointwise
 #print axioms cardBucketSum_le_of_count_and_pointwise_shifted
+#print axioms cardBucketSum_le_of_count_and_pointwise_exp
 #print axioms pointwiseBucketBound_of_card_decay
 #print axioms TruncatedActivities.ofConnectedCardDecay
 #print axioms TruncatedActivities.ofConnectedCardDecay_K
@@ -1326,8 +1632,10 @@ theorem TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connecte
 #print axioms TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connected
 #print axioms clusterCorrelatorBound_of_connectedFiniteBounds_ceil
 #print axioms clusterCorrelatorBound_of_cardBucketBounds_ceil
+#print axioms clusterCorrelatorBound_of_cardBucketBounds_ceil_exp
 #print axioms clusterCorrelatorBound_of_count_pointwiseBounds_ceil
 #print axioms clusterCorrelatorBound_of_count_cardDecayBounds_ceil
+#print axioms clusterCorrelatorBound_of_count_cardDecayBounds_ceil_exp
 #print axioms clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted
 
 /-! ### Terminal wrapper from connected finite KP data -/

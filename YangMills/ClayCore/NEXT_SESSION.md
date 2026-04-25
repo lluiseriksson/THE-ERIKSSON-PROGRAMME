@@ -637,6 +637,25 @@ The matching KP-series consumer is in `ClusterSeriesBound.lean`:
 
 It factors `∑' n, C_conn * K^n * A₀ * r^(n + dist)` into
 `clusterPrefactorExp r K C_conn A₀ * r^dist` under `K * r < 1`.
+That exponential series consumer now reaches the Wilson-facing correlator
+target through `ClusterRpowBridge.lean`:
+
+    TruncatedActivities.two_point_decay_from_cluster_tsum_exp
+    clusterPrefactorExp_rpow_ceil_le_exp
+    clusterCorrelatorBound_of_truncatedActivities_ceil_exp
+    finiteConnectingSum_le_of_cardBucketBounds_tsum_exp
+    cardBucketSum_le_of_count_and_pointwise_exp
+    clusterCorrelatorBound_of_cardBucketBounds_ceil_exp
+    clusterCorrelatorBound_of_count_cardDecayBounds_ceil_exp
+
+The preferred exponential endpoint is:
+
+    clusterCorrelatorBound_of_count_cardDecayBounds_ceil_exp
+
+It consumes `ShiftedConnectingClusterCountBoundExp C_conn K`, a global
+activity decay `(T β F p q).K_bound Y ≤ A₀ * r ^ Y.card`, and the KP smallness
+condition `K * r < 1`, then returns
+`ClusterCorrelatorBound N_c r (clusterPrefactorExp r K C_conn A₀)`.
 If a later estimate has to absorb an extra polynomial factor, use the
 `mono_dim` lemmas above to move from `dim` to `dim + k` while preserving the
 same `C_conn`.  At package level the simp lemmas
