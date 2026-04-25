@@ -1091,6 +1091,15 @@ theorem physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecode
     PhysicalShiftedConnectingClusterCountBoundExp 1 1296 :=
   physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers hcover
 
+/-- Package the physical `1296` baseline-plus-word decoder target as the
+physical exponential F3-count package consumed by downstream F3 routes. -/
+def physicalShiftedF3CountPackageExp_of_baselineExtraWordDecoderCovers1296
+    (hcover : PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296) :
+    PhysicalShiftedF3CountPackageExp :=
+  PhysicalShiftedF3CountPackageExp.ofBound 1 1296 one_pos (by norm_num)
+    (physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers1296
+      hcover)
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -1316,6 +1325,7 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms physicalConnectingClusterExtraWordDecoderBound_of_baselineExtraWordDecoderCovers
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers1296
+#print axioms physicalShiftedF3CountPackageExp_of_baselineExtraWordDecoderCovers1296
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints

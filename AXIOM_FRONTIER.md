@@ -1,3 +1,50 @@
+# v2.07.0 — package physical 1296 decoder count half
+
+**Released: 2026-04-25**
+
+## What
+
+Packaged the physical `1296` baseline-plus-word decoder target as the
+downstream F3-count package consumed by the Mayer/count route:
+
+    physicalShiftedF3CountPackageExp_of_baselineExtraWordDecoderCovers1296
+
+in `YangMills/ClayCore/LatticeAnimalCount.lean`.
+
+The new term says that
+
+    PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296
+
+implies
+
+    PhysicalShiftedF3CountPackageExp
+
+by applying `PhysicalShiftedF3CountPackageExp.ofBound 1 1296` to the
+v2.06 count theorem.
+
+## Why
+
+No percentage bar moves. This is the count-side package handoff: downstream
+F3 routes can now consume the physical decoder target through the same package
+API used by `ShiftedF3MayerCountPackageExp.ofSubpackages`. The remaining work
+is still mathematical: construct the `1296` baseline-plus-word decoder and the
+Mayer/activity package.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace:
+
+    physicalShiftedF3CountPackageExp_of_baselineExtraWordDecoderCovers1296
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.06.0 — physical 1296 decoder target specialization
 
 **Released: 2026-04-25**
