@@ -1,3 +1,71 @@
+# v2.25.0 — anchored graph-animal count reduction
+
+**Released: 2026-04-25**
+
+## What
+
+Added the anchored physical graph-animal count target
+
+    PhysicalPlaquetteGraphAnimalAnchoredCountBound K
+
+in `YangMills/ClayCore/LatticeAnimalCount.lean`. This is the classical
+Klarner/BFS counting shape:
+
+    card {connected plaquette subsets of size k containing root} ≤ K ^ k
+
+uniformly in the finite volume.
+
+The two-marked shifted graph-animal target is now reduced to this anchored
+target by forgetting the second marked plaquette:
+
+    plaquetteGraphPreconnectedConnectingSubsetsShifted_subset_anchored
+    plaquetteGraphPreconnectedConnectingSubsetsShifted_card_le_anchored
+    physicalGraphAnimalTotalCountBound_of_anchoredCountBound
+    physicalGraphAnimalTotalCountBound1296_of_anchoredCountBound
+    physicalTotalF3CountPackageExp_of_anchoredCountBound1296
+
+## Why
+
+No percentage bar moves. This is a combinatorial frontier sharpening: v2.24
+made the terminal F3 count target decoder-free; v2.25 moves the remaining
+count obligation one step closer to the standard graph-theory theorem. The
+active combinatorial input can now be stated without the second marked
+plaquette `q` and without the shifted `n + ceil dist` presentation:
+
+    PhysicalPlaquetteGraphAnimalAnchoredCountBound1296
+
+This is the natural Lean target for the eventual volume-uniform lattice-animal
+count proof driven by the already-formalized local branching bound
+`plaquetteGraph_branching_le_physical_ternary`.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+    lake build YangMills.ClayCore.LatticeAnimalF3Bridge
+
+Pinned traces:
+
+    plaquetteGraphPreconnectedConnectingSubsetsShifted_subset_anchored
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraphPreconnectedConnectingSubsetsShifted_card_le_anchored
+      [propext, Classical.choice, Quot.sound]
+
+    physicalGraphAnimalTotalCountBound_of_anchoredCountBound
+      [propext, Classical.choice, Quot.sound]
+
+    physicalGraphAnimalTotalCountBound1296_of_anchoredCountBound
+      [propext, Classical.choice, Quot.sound]
+
+    physicalTotalF3CountPackageExp_of_anchoredCountBound1296
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.24.0 — decoder-free small-β F3 terminal frontier
 
 **Released: 2026-04-25**

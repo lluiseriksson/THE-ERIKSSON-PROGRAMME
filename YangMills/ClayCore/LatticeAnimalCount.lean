@@ -1274,6 +1274,17 @@ noncomputable def plaquetteGraphPreconnectedSubsetsAnchoredCard
     root ∈ X ∧ X.card = k ∧
       ((plaquetteGraph d L).induce {x | x ∈ X}).Preconnected)
 
+/-- Physical anchored graph-animal count target.
+
+This is the classical lattice-animal counting shape: the number of connected
+plaquette subsets of cardinality `k` containing a fixed root is bounded by
+`K^k`, uniformly in the volume. -/
+def PhysicalPlaquetteGraphAnimalAnchoredCountBound (K : ℕ) : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    (plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k).card ≤ K ^ k
+
 /-- Every connecting-cluster bucket element is an anchored preconnected
 plaquette-graph animal after forgetting the second marked plaquette. -/
 theorem connectingCluster_filter_subset_preconnectedSubsetsAnchoredCard
@@ -1317,6 +1328,37 @@ noncomputable def plaquetteGraphPreconnectedConnectingSubsetsShifted
     p ∈ X ∧ q ∈ X ∧
       X.card = n + ⌈siteLatticeDist p.site q.site⌉₊ ∧
       ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ X}).Preconnected)
+
+/-- The two-marked shifted graph-animal bucket is contained in the anchored
+graph-animal bucket obtained by forgetting the second marked plaquette. -/
+theorem plaquetteGraphPreconnectedConnectingSubsetsShifted_subset_anchored
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    plaquetteGraphPreconnectedConnectingSubsetsShifted L p q n ⊆
+      plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L p
+        (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+  intro X hX
+  unfold plaquetteGraphPreconnectedConnectingSubsetsShifted at hX
+  unfold plaquetteGraphPreconnectedSubsetsAnchoredCard
+  rw [Finset.mem_filter] at hX ⊢
+  exact ⟨Finset.mem_univ X,
+    hX.2.1,
+    hX.2.2.2.1,
+    hX.2.2.2.2⟩
+
+/-- Cardinality reduction from the two-marked shifted graph-animal bucket to
+the anchored graph-animal bucket. -/
+theorem plaquetteGraphPreconnectedConnectingSubsetsShifted_card_le_anchored
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    (plaquetteGraphPreconnectedConnectingSubsetsShifted L p q n).card ≤
+      (plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L p
+        (n + ⌈siteLatticeDist p.site q.site⌉₊)).card := by
+  exact Finset.card_le_card
+    (plaquetteGraphPreconnectedConnectingSubsetsShifted_subset_anchored
+      p q n)
 
 /-- The physical shifted polymer bucket is contained in the corresponding
 shifted graph-animal bucket. -/
@@ -1514,6 +1556,18 @@ def PhysicalConnectingClusterGraphAnimalTotalCountBound (K : ℕ) : Prop :=
     (plaquetteGraphPreconnectedConnectingSubsetsShifted L p q n).card ≤
       K ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)
 
+/-- An anchored graph-animal count bound gives the direct total-size
+two-marked graph-animal count target. -/
+theorem physicalGraphAnimalTotalCountBound_of_anchoredCountBound
+    {K : ℕ}
+    (hanchored : PhysicalPlaquetteGraphAnimalAnchoredCountBound K) :
+    PhysicalConnectingClusterGraphAnimalTotalCountBound K := by
+  intro L _ p q n
+  exact
+    (plaquetteGraphPreconnectedConnectingSubsetsShifted_card_le_anchored
+      p q n).trans
+      (hanchored p (n + ⌈siteLatticeDist p.site q.site⌉₊))
+
 /-- A total-size word decoder gives the direct graph-animal count target. -/
 theorem physicalGraphAnimalTotalCountBound_of_totalWordDecoder
     {K : ℕ}
@@ -1531,6 +1585,18 @@ abbrev PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296 : Prop :=
 alphabet constant. -/
 abbrev PhysicalConnectingClusterGraphAnimalTotalCountBound1296 : Prop :=
   PhysicalConnectingClusterGraphAnimalTotalCountBound 1296
+
+/-- Physical anchored graph-animal count target at the current `1296`
+alphabet constant. -/
+abbrev PhysicalPlaquetteGraphAnimalAnchoredCountBound1296 : Prop :=
+  PhysicalPlaquetteGraphAnimalAnchoredCountBound 1296
+
+/-- A physical `1296` anchored graph-animal count bound gives the direct
+two-marked total-size graph-animal count target. -/
+theorem physicalGraphAnimalTotalCountBound1296_of_anchoredCountBound
+    (hanchored : PhysicalPlaquetteGraphAnimalAnchoredCountBound1296) :
+    PhysicalConnectingClusterGraphAnimalTotalCountBound1296 :=
+  physicalGraphAnimalTotalCountBound_of_anchoredCountBound hanchored
 
 /-- A physical `1296` total-size graph-animal word decoder gives the standard
 `1296^(n + ceil dist)` shifted graph-animal count. -/
@@ -1623,6 +1689,14 @@ def physicalTotalF3CountPackageExp_of_graphAnimalTotalCountBound1296
   PhysicalTotalF3CountPackageExp.ofBound 1 1296 one_pos (by norm_num)
     (physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound1296
       hgraph)
+
+/-- Package a physical `1296` anchored graph-animal count bound as the physical
+total-size exponential F3-count package consumed downstream. -/
+def physicalTotalF3CountPackageExp_of_anchoredCountBound1296
+    (hanchored : PhysicalPlaquetteGraphAnimalAnchoredCountBound1296) :
+    PhysicalTotalF3CountPackageExp :=
+  physicalTotalF3CountPackageExp_of_graphAnimalTotalCountBound1296
+    (physicalGraphAnimalTotalCountBound1296_of_anchoredCountBound hanchored)
 
 /-- A shifted graph-animal count estimate discharges the physical exponential
 F3-count frontier. -/
@@ -1772,6 +1846,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraph_induce_reachable_of_chain_endpoints
 #print axioms polymerConnected_plaquetteGraph_induce_reachable
 #print axioms polymerConnected_plaquetteGraph_induce_preconnected
+#print axioms plaquetteGraphPreconnectedConnectingSubsetsShifted_subset_anchored
+#print axioms plaquetteGraphPreconnectedConnectingSubsetsShifted_card_le_anchored
 #print axioms connectingCluster_filter_subset_preconnectedSubsetsAnchoredCard
 #print axioms connectingCluster_filter_card_le_preconnectedSubsetsAnchoredCard
 #print axioms physical_connectingCluster_filter_subset_graphAnimalShifted
@@ -1781,7 +1857,9 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalGraphAnimalShiftedCountBound_zero_card_le_one
 #print axioms physicalGraphAnimalTotalWordCodeOfDecoder_injective
 #print axioms physicalGraphAnimalTotalCountBound_of_wordDecoder
+#print axioms physicalGraphAnimalTotalCountBound_of_anchoredCountBound
 #print axioms physicalGraphAnimalTotalCountBound_of_totalWordDecoder
+#print axioms physicalGraphAnimalTotalCountBound1296_of_anchoredCountBound
 #print axioms physicalGraphAnimalTotalCountBound1296_of_wordDecoder
 #print axioms physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder
 #print axioms physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound
@@ -1789,6 +1867,7 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound1296
 #print axioms physicalTotalF3CountPackageExp_of_graphAnimalTotalWordDecoder1296
 #print axioms physicalTotalF3CountPackageExp_of_graphAnimalTotalCountBound1296
+#print axioms physicalTotalF3CountPackageExp_of_anchoredCountBound1296
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount1296
 #print axioms physicalShiftedF3CountPackageExp_of_graphAnimalShiftedCount1296
