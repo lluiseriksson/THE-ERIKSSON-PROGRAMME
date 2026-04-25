@@ -1,3 +1,47 @@
+# v1.64.0 — KP consumers route through the direct bucket-`tsum` API
+
+**Released: 2026-04-25**
+
+## What
+
+Refactored the existing public KP consumers in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    connectedFiniteSum_le_of_cardBucketBounds_kp
+    connectedFiniteSum_le_of_cardBucketBounds_kp_shifted
+
+Both now delegate to the direct `tsum` comparison lemmas from v1.63.0 instead
+of replaying the older finite-range partial-sum route.
+
+## Why
+
+No percentage bar moves and no public theorem statement changes.  This keeps
+the public KP API aligned with the new bucket-series spine:
+
+    connected sum = bucket tsum
+    bucketwise bound + zero outside range
+    termwise comparison to the KP tsum
+
+The old finite-range consumers remain available for callers that want that
+shape explicitly.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces remain canonical:
+
+    connectedFiniteSum_le_of_cardBucketBounds_kp
+      [propext, Classical.choice, Quot.sound]
+    connectedFiniteSum_le_of_cardBucketBounds_kp_shifted
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.63.0 — Direct bucket-`tsum` KP comparison
 
 **Released: 2026-04-25**

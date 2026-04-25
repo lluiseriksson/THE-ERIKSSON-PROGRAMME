@@ -668,11 +668,8 @@ theorem connectedFiniteSum_le_of_cardBucketBounds_kp
         (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y), K_bound Y) ≤
       ∑' n : ℕ, C_conn * (n : ℝ) ^ dim * A₀ *
         r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
-  exact connectedFiniteSum_le_of_cardBucketBounds K_bound p q r C_conn A₀ dim
-    h_bucket
-    (connecting_cluster_partial_sum_le_tsum r hr_pos hr_lt1 C_conn A₀ hC hA
-      dim ⌈siteLatticeDist p.site q.site⌉₊
-      (Fintype.card (ConcretePlaquette d L) + 1))
+  exact connectedFiniteSum_le_of_cardBucketBounds_tsum K_bound p q
+    r hr_pos hr_lt1 C_conn A₀ hC hA dim h_bucket
 
 /-- Shifted bucket-bound consumer with the KP partial-sum comparison
 discharged internally by `connecting_cluster_partial_sum_le_tsum_shifted`. -/
@@ -694,11 +691,8 @@ theorem connectedFiniteSum_le_of_cardBucketBounds_kp_shifted
         (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y), K_bound Y) ≤
       ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
         r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
-  exact connectedFiniteSum_le_of_cardBucketBounds_shifted K_bound p q r C_conn A₀ dim
-    h_bucket
-    (connecting_cluster_partial_sum_le_tsum_shifted r hr_pos hr_lt1 C_conn A₀ hC hA
-      dim ⌈siteLatticeDist p.site q.site⌉₊
-      (Fintype.card (ConcretePlaquette d L) + 1))
+  exact connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted K_bound p q
+    r hr_pos hr_lt1 C_conn A₀ hC hA dim h_bucket
 
 /-- A single cardinality bucket is bounded by the KP summand if each polymer
 in the bucket is bounded by `A₀ * r^(n + ⌈dist⌉₊)` and the number of polymers

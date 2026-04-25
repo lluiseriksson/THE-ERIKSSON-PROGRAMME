@@ -519,7 +519,10 @@ the canonical finite range.  `connectedFiniteSum_eq_cardBucketTsum` exposes
 the connected finite sum directly as that bucket series.  The direct consumers
 `connectedFiniteSum_le_of_cardBucketBounds_tsum` and
 `connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted` compare that series
-termwise with the KP `tsum`.
+termwise with the KP `tsum`.  The public KP consumers
+`connectedFiniteSum_le_of_cardBucketBounds_kp` and
+`connectedFiniteSum_le_of_cardBucketBounds_kp_shifted` now delegate through
+this direct route.
 The remaining F3-count work is the uniform lattice-animal estimate
 `ShiftedConnectingClusterCountBound`, not mere finiteness.  A proved global
 count package now projects mechanically to every local finite-volume package.
