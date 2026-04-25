@@ -1,3 +1,59 @@
+# v1.84.0 — physical exponential F3 route reaches PhysicalStrong
+
+**Released: 2026-04-25**
+
+## What
+
+Added L8 terminal wrappers in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    connectedCorrDecayBundle_of_expCountBound_mayerData_siteDist_measurableF
+    connectedCorrDecayBundle_of_physicalMayerData_expCount_siteDist_measurableF
+    physicalStrong_of_expCountBound_mayerData_siteDist_measurableF
+    physicalStrong_of_physicalMayerData_expCount_siteDist_measurableF
+
+These compose the v1.83.0 physical exponential F3 correlator endpoints with
+the existing `PhysicalClusterCorrelatorBound → ConnectedCorrDecayBundle →
+ClayYangMillsPhysicalStrong` path.  The terminal non-vacuous target can now be
+reached from:
+
+    PhysicalShiftedConnectingClusterCountBoundExp C_conn K
+    ConnectedCardDecayMayerData / PhysicalConnectedCardDecayMayerData
+    K * r < 1
+    Measurable F, 0 < β, |F| ≤ 1
+
+## Why
+
+No percentage bar moves.  This closes the L8 consumer plumbing for the honest
+physical exponential F3 route.  A future proof of the physical Mayer/Ursell
+activity package and the physical uniform exponential count estimate now
+feeds directly into `ClayYangMillsPhysicalStrong`, not merely the weaker
+`ClayYangMillsTheorem`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces:
+
+    connectedCorrDecayBundle_of_expCountBound_mayerData_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+    connectedCorrDecayBundle_of_physicalMayerData_expCount_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+    physicalStrong_of_expCountBound_mayerData_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+    physicalStrong_of_physicalMayerData_expCount_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.83.0 — physical d=4 exponential F3 correlator endpoint
 
 **Released: 2026-04-25**

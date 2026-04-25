@@ -588,6 +588,187 @@ theorem physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
 
 #print axioms physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
 
+/-- Bundle-level physical endpoint from all-dimensions Mayer/activity data and
+the physical exponential count frontier. -/
+noncomputable def connectedCorrDecayBundle_of_expCountBound_mayerData_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (r K : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_pos.le hA.le)
+    (h_count : PhysicalShiftedConnectingClusterCountBoundExp C_conn K)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ConnectedCorrDecayBundle
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  connectedCorrDecayBundle_of_physicalClusterCorrelatorBound_siteDist
+    r hr_pos hr_lt1
+    (clusterPrefactorExp r K C_conn A₀)
+    (clusterPrefactorExp_pos r K hr_pos hK_pos hKr_lt1 C_conn A₀ hC hA)
+    (physicalClusterCorrelatorBound_of_expCountBound_mayerData_ceil
+      N_c r K hr_pos hr_lt1 hK_pos hKr_lt1 C_conn A₀ hC hA data h_count)
+    β F hβ hF
+    (fun L => gibbsMeasure_isProbability physicalClayDimension L
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β
+      (wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le))
+    (fun L instL p => by
+      letI : NeZero L := instL
+      haveI : IsProbabilityMeasure
+          (gibbsMeasure (d := physicalClayDimension) (N := L)
+            (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β) :=
+        gibbsMeasure_isProbability physicalClayDimension L
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β
+          (wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le)
+      have hobs : Measurable (plaquetteWilsonObs F p) := by
+        simpa [plaquetteWilsonObs, Function.comp_def] using
+          hF_meas.comp (measurable_plaquetteHolonomy (G :=
+            ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)
+      exact plaquetteWilsonObs_integrable_of_unitBound F hF p
+        (gibbsMeasure (d := physicalClayDimension) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)
+        hobs.aestronglyMeasurable)
+    (fun L instL p q => by
+      letI : NeZero L := instL
+      haveI : IsProbabilityMeasure
+          (gibbsMeasure (d := physicalClayDimension) (N := L)
+            (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β) :=
+        gibbsMeasure_isProbability physicalClayDimension L
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β
+          (wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le)
+      have hpobs : Measurable (plaquetteWilsonObs F p) := by
+        simpa [plaquetteWilsonObs, Function.comp_def] using
+          hF_meas.comp (measurable_plaquetteHolonomy (G :=
+            ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)
+      have hqobs : Measurable (plaquetteWilsonObs F q) := by
+        simpa [plaquetteWilsonObs, Function.comp_def] using
+          hF_meas.comp (measurable_plaquetteHolonomy (G :=
+            ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) q)
+      exact plaquetteWilsonObs_mul_integrable_of_unitBound F hF p q
+        (gibbsMeasure (d := physicalClayDimension) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)
+        hpobs.aestronglyMeasurable hqobs.aestronglyMeasurable)
+
+/-- Bundle-level physical endpoint from physical Mayer/activity data and the
+physical exponential count frontier. -/
+noncomputable def connectedCorrDecayBundle_of_physicalMayerData_expCount_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (r K : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (data : PhysicalConnectedCardDecayMayerData N_c r A₀ hr_pos.le hA.le)
+    (h_count : PhysicalShiftedConnectingClusterCountBoundExp C_conn K)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ConnectedCorrDecayBundle
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  connectedCorrDecayBundle_of_physicalClusterCorrelatorBound_siteDist
+    r hr_pos hr_lt1
+    (clusterPrefactorExp r K C_conn A₀)
+    (clusterPrefactorExp_pos r K hr_pos hK_pos hKr_lt1 C_conn A₀ hC hA)
+    (physicalClusterCorrelatorBound_of_physicalMayerData_expCount_ceil
+      N_c r K hr_pos hr_lt1 hK_pos hKr_lt1 C_conn A₀ hC hA data h_count)
+    β F hβ hF
+    (fun L => gibbsMeasure_isProbability physicalClayDimension L
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β
+      (wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le))
+    (fun L instL p => by
+      letI : NeZero L := instL
+      haveI : IsProbabilityMeasure
+          (gibbsMeasure (d := physicalClayDimension) (N := L)
+            (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β) :=
+        gibbsMeasure_isProbability physicalClayDimension L
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β
+          (wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le)
+      have hobs : Measurable (plaquetteWilsonObs F p) := by
+        simpa [plaquetteWilsonObs, Function.comp_def] using
+          hF_meas.comp (measurable_plaquetteHolonomy (G :=
+            ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)
+      exact plaquetteWilsonObs_integrable_of_unitBound F hF p
+        (gibbsMeasure (d := physicalClayDimension) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)
+        hobs.aestronglyMeasurable)
+    (fun L instL p q => by
+      letI : NeZero L := instL
+      haveI : IsProbabilityMeasure
+          (gibbsMeasure (d := physicalClayDimension) (N := L)
+            (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β) :=
+        gibbsMeasure_isProbability physicalClayDimension L
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β
+          (wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le)
+      have hpobs : Measurable (plaquetteWilsonObs F p) := by
+        simpa [plaquetteWilsonObs, Function.comp_def] using
+          hF_meas.comp (measurable_plaquetteHolonomy (G :=
+            ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)
+      have hqobs : Measurable (plaquetteWilsonObs F q) := by
+        simpa [plaquetteWilsonObs, Function.comp_def] using
+          hF_meas.comp (measurable_plaquetteHolonomy (G :=
+            ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) q)
+      exact plaquetteWilsonObs_mul_integrable_of_unitBound F hF p q
+        (gibbsMeasure (d := physicalClayDimension) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)
+        hpobs.aestronglyMeasurable hqobs.aestronglyMeasurable)
+
+/-- Direct physical endpoint from all-dimensions Mayer/activity data and the
+physical exponential count frontier. -/
+theorem physicalStrong_of_expCountBound_mayerData_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (r K : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_pos.le hA.le)
+    (h_count : PhysicalShiftedConnectingClusterCountBoundExp C_conn K)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_connectedCorrDecayBundle
+    (connectedCorrDecayBundle_of_expCountBound_mayerData_siteDist_measurableF
+      r K hr_pos hr_lt1 hK_pos hKr_lt1 C_conn A₀ hC hA data h_count
+      β F hβ hF hF_meas)
+
+/-- Direct physical endpoint from physical Mayer/activity data and the
+physical exponential count frontier. -/
+theorem physicalStrong_of_physicalMayerData_expCount_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (r K : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (data : PhysicalConnectedCardDecayMayerData N_c r A₀ hr_pos.le hA.le)
+    (h_count : PhysicalShiftedConnectingClusterCountBoundExp C_conn K)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_connectedCorrDecayBundle
+    (connectedCorrDecayBundle_of_physicalMayerData_expCount_siteDist_measurableF
+      r K hr_pos hr_lt1 hK_pos hKr_lt1 C_conn A₀ hC hA data h_count
+      β F hβ hF hF_meas)
+
+#print axioms connectedCorrDecayBundle_of_expCountBound_mayerData_siteDist_measurableF
+#print axioms connectedCorrDecayBundle_of_physicalMayerData_expCount_siteDist_measurableF
+#print axioms physicalStrong_of_expCountBound_mayerData_siteDist_measurableF
+#print axioms physicalStrong_of_physicalMayerData_expCount_siteDist_measurableF
+
 /-- Bundle-level physical endpoint from the single-package physical shifted F3
 frontier.
 

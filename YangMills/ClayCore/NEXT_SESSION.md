@@ -684,6 +684,16 @@ return `PhysicalClusterCorrelatorBound N_c r
 (clusterPrefactorExp r K C_conn A₀)` under `K * r < 1`.  Prefer the physical
 endpoint if the count proof is only uniform in finite volume at
 `physicalClayDimension = 4`.
+The L8 terminal route from the same physical exponential F3 inputs is:
+
+    connectedCorrDecayBundle_of_expCountBound_mayerData_siteDist_measurableF
+    connectedCorrDecayBundle_of_physicalMayerData_expCount_siteDist_measurableF
+    physicalStrong_of_expCountBound_mayerData_siteDist_measurableF
+    physicalStrong_of_physicalMayerData_expCount_siteDist_measurableF
+
+These live in `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean` and land
+directly at `ClayYangMillsPhysicalStrong` once the usual observable inputs
+`Measurable F`, `0 < β`, and `∀ U, |F U| ≤ 1` are supplied.
 If a later estimate has to absorb an extra polynomial factor, use the
 `mono_dim` lemmas above to move from `dim` to `dim + k` while preserving the
 same `C_conn`.  At package level the simp lemmas
