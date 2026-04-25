@@ -752,6 +752,54 @@ theorem physical_connectingCluster_filter_card_le_walk_exp_of_walkCode
   rw [← connectingClusterBucket_card_eq_filter p q n]
   exact connectingClusterBucket_card_le_physical_walk_exp_of_walkCode hcode p q n
 
+/-- Stronger extra-size coding target.  This is the F3-count shape that
+matches the shifted exponential frontier directly: the code length is the
+extra cardinality `n`, while the distance baseline is already accounted for in
+the bucket definition. -/
+def PhysicalConnectingClusterExtraWalkCodeBound : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ),
+    ∃ code :
+      ConnectingClusterBucket physicalClayDimension L p q n →
+        PlaquetteWalk physicalClayDimension L n p,
+      Function.Injective code
+
+/-- The extra-size walk-code target gives the exact `1296^n` natural-number
+bound for the physical shifted connecting-cluster bucket. -/
+theorem physical_connectingCluster_filter_card_le_extra_walk_exp_of_walkCode
+    (hcode : PhysicalConnectingClusterExtraWalkCodeBound)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    ((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+        (fun X =>
+          p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+            X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card ≤
+      1296 ^ n := by
+  rw [← connectingClusterBucket_card_eq_filter p q n]
+  obtain ⟨code, hinj⟩ := hcode p q n
+  exact (Fintype.card_le_of_injective code hinj).trans
+    (plaquetteWalk_card_le_physical_ternary p n)
+
+/-- The extra-size walk-code target discharges the physical shifted
+exponential F3 count frontier with constants `C_conn = 1`, `K = 1296`. -/
+theorem physicalShiftedConnectingClusterCountBoundExp_of_extraWalkCode
+    (hcode : PhysicalConnectingClusterExtraWalkCodeBound) :
+    PhysicalShiftedConnectingClusterCountBoundExp 1 1296 := by
+  intro L _ p q n _hn _hdist
+  have hnat :=
+    physical_connectingCluster_filter_card_le_extra_walk_exp_of_walkCode
+      hcode p q n
+  have hreal :
+      (((Finset.univ :
+        Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+          (fun X =>
+            p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+              X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+        ((1296 ^ n : ℕ) : ℝ) := by
+    exact_mod_cast hnat
+  simpa using hreal
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -958,6 +1006,8 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms connectingClusterBucket_card_le_walks_of_walkCode
 #print axioms connectingClusterBucket_card_le_physical_walk_exp_of_walkCode
 #print axioms physical_connectingCluster_filter_card_le_walk_exp_of_walkCode
+#print axioms physical_connectingCluster_filter_card_le_extra_walk_exp_of_walkCode
+#print axioms physicalShiftedConnectingClusterCountBoundExp_of_extraWalkCode
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints

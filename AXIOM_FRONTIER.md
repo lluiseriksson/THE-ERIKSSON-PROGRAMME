@@ -1,3 +1,68 @@
+# v1.99.0 — extra-walk code target discharges physical F3 count frontier
+
+**Released: 2026-04-25**
+
+## What
+
+Added the stronger shifted-count coding contract and terminal F3-count bridge
+in `YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PhysicalConnectingClusterExtraWalkCodeBound
+    physical_connectingCluster_filter_card_le_extra_walk_exp_of_walkCode
+    physicalShiftedConnectingClusterCountBoundExp_of_extraWalkCode
+
+`PhysicalConnectingClusterExtraWalkCodeBound` is the exact BFS/tree target that
+matches the shifted exponential frontier: every physical connecting-cluster
+bucket of shifted extra size `n`
+
+    X.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+
+must inject into `PlaquetteWalk physicalClayDimension L n p`.  The distance
+baseline is therefore handled by the bucket index, and the walk word has length
+only `n`.
+
+Assuming that target, Lean proves:
+
+    physical_connectingCluster_filter_card_le_extra_walk_exp_of_walkCode
+
+with natural-number bound
+
+    bucket.card ≤ 1296 ^ n
+
+and then immediately discharges the physical exponential count frontier:
+
+    physicalShiftedConnectingClusterCountBoundExp_of_extraWalkCode
+      (hcode : PhysicalConnectingClusterExtraWalkCodeBound) :
+      PhysicalShiftedConnectingClusterCountBoundExp 1 1296
+
+## Why
+
+No percentage bar moves yet, because the BFS/tree injection itself is still the
+open graph-theoretic construction.  But the downstream algebra is now closed:
+once the extra-size walk code is supplied, the physical F3-count frontier
+follows with constants `C_conn = 1`, `K = 1296`.
+
+This replaces the weaker v1.98 shifted-length interface
+`1296^(n+dist)` with the correct shifted-count target `1296^n`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    physical_connectingCluster_filter_card_le_extra_walk_exp_of_walkCode
+      [propext, Classical.choice, Quot.sound]
+
+    physicalShiftedConnectingClusterCountBoundExp_of_extraWalkCode
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.98.0 — connecting-cluster bucket to walk-count interface
 
 **Released: 2026-04-25**
