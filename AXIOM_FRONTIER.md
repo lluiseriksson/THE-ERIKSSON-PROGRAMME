@@ -1,3 +1,45 @@
+# v2.39.0 — anchored decoder reduced to nontrivial sizes
+
+**Released: 2026-04-25**
+
+## What
+
+Added the reduction theorem
+
+    PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.of_nontrivial
+
+in `YangMills/ClayCore/LatticeAnimalCount.lean`.
+
+It proves the full anchored word-decoder target from:
+
+1. an alphabet lower bound `1 ≤ K`;
+2. decoder coverage only for the nontrivial sizes `1 < k`.
+
+The `k = 0` and `k = 1` cases are discharged automatically by the existing
+base decoder lemmas.
+
+## Why
+
+No percentage bar moves. This narrows the remaining BFS/Klarner combinatorial
+frontier to exactly the recursive/nontrivial case. Downstream terminal bridges
+can now consume a proof that focuses only on `1 < k`, without restating or
+duplicating the already-closed base buckets.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace:
+
+    PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.of_nontrivial
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.38.0 — anchored bucket projection witnesses for BFS decoder
 
 **Released: 2026-04-25**

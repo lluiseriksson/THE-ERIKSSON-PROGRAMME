@@ -1521,6 +1521,27 @@ def PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound (K : ℕ) : Prop :=
           physicalClayDimension L root k,
         ∃ word : Fin k → Fin K, decode word = X
 
+/-- To prove the physical anchored word-decoder target, it is enough to prove
+the nontrivial `1 < k` cases.  The `k = 0` and `k = 1` cases are discharged by
+the base decoder lemmas above. -/
+theorem PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.of_nontrivial
+    {K : ℕ} (hK : 1 ≤ K)
+    (hlarge :
+      ∀ {L : ℕ} [NeZero L]
+        (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+        1 < k →
+          ∃ decode : (Fin k → Fin K) →
+              Finset (ConcretePlaquette physicalClayDimension L),
+            ∀ X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+                physicalClayDimension L root k,
+              ∃ word : Fin k → Fin K, decode word = X) :
+    PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound K := by
+  intro L _ root k
+  by_cases hk : k ≤ 1
+  · exact plaquetteGraphPreconnectedSubsetsAnchoredCard_base_wordDecoderCovers
+      root hK hk
+  · exact hlarge root k (by omega)
+
 /-- The anchored word-decoder target is monotone in the alphabet size. -/
 theorem PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.mono
     {K K' : ℕ} (hdecode : PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound K)
@@ -2208,6 +2229,7 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_base_wordDecoderCovers
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_root_reachable
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_root_exists_induced_path
+#print axioms PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.of_nontrivial
 #print axioms PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.mono
 #print axioms physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder_injective
 #print axioms physicalPlaquetteGraphAnimalAnchoredCountBound_of_wordDecoder
