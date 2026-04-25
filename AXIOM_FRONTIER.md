@@ -1,3 +1,52 @@
+# v1.86.0 — plaquette graph local-neighbor bucket
+
+**Released: 2026-04-25**
+
+## What
+
+Extended `YangMills/ClayCore/LatticeAnimalCount.lean` with the local
+neighbor-enumeration layer for the F3 lattice-animal graph:
+
+    plaquetteSiteBall
+    plaquetteGraph_neighborFinset_eq_filter
+    plaquetteGraph_neighborFinset_subset_siteBall
+    plaquetteGraph_degree_le_siteBall_card
+
+`plaquetteSiteBall d L p` is the finite bucket of plaquettes whose base
+site is within `siteLatticeDist ≤ 1` of `p.site`.  The neighbor-finset theorem
+identifies `(plaquetteGraph d L).neighborFinset p` exactly with the concrete
+filter `q ≠ p ∧ siteLatticeDist p.site q.site ≤ 1`; the follow-up lemmas
+show every graph-neighbor lies in `plaquetteSiteBall` and hence bound the
+degree by the local bucket cardinality.
+
+## Why
+
+No percentage bar moves.  This is still F3-count infrastructure, not the
+uniform exponential lattice-animal theorem.  It isolates the finite local
+branching object that a walk/tree encoding proof can later bound uniformly in
+the volume.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteGraph_neighborFinset_eq_filter
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_neighborFinset_subset_siteBall
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_degree_le_siteBall_card
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.85.0 — lattice-animal plaquette graph scaffold
 
 **Released: 2026-04-25**

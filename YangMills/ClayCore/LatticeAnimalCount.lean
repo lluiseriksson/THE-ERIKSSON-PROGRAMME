@@ -63,6 +63,48 @@ theorem plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one
     (plaquetteGraph d L).Adj p q :=
   ⟨hne, hdist⟩
 
+/-! ### Local neighbor enumeration -/
+
+/-- The finite set of plaquettes whose base site is within graph range of `p`.
+This is the local bucket that will later be bounded uniformly in the volume. -/
+noncomputable def plaquetteSiteBall (d L : ℕ) [NeZero d] [NeZero L]
+    (p : ConcretePlaquette d L) : Finset (ConcretePlaquette d L) :=
+  (Finset.univ.filter fun q => siteLatticeDist p.site q.site ≤ 1)
+
+/-- The `plaquetteGraph` neighbor finset is exactly the concrete local bucket
+with `p` itself removed. -/
+theorem plaquetteGraph_neighborFinset_eq_filter
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p : ConcretePlaquette d L) :
+    (plaquetteGraph d L).neighborFinset p =
+      (Finset.univ.filter
+        fun q : ConcretePlaquette d L =>
+          q ≠ p ∧ siteLatticeDist p.site q.site ≤ 1) := by
+  ext q
+  simp only [SimpleGraph.mem_neighborFinset, Finset.mem_filter,
+    Finset.mem_univ, true_and, plaquetteGraph]
+  exact ⟨fun h => ⟨fun hqp => h.1 hqp.symm, h.2⟩,
+    fun h => ⟨fun hpq => h.1 hpq.symm, h.2⟩⟩
+
+/-- Every graph-neighbour of `p` lies in the site-distance local bucket. -/
+theorem plaquetteGraph_neighborFinset_subset_siteBall
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p : ConcretePlaquette d L) :
+    (plaquetteGraph d L).neighborFinset p ⊆ plaquetteSiteBall d L p := by
+  intro q hq
+  rw [plaquetteGraph_neighborFinset_eq_filter] at hq
+  exact Finset.mem_filter.mpr
+    ⟨Finset.mem_univ q, (Finset.mem_filter.mp hq).2.2⟩
+
+/-- The degree of a plaquette in `plaquetteGraph` is bounded by the cardinality
+of the corresponding site-distance local bucket. -/
+theorem plaquetteGraph_degree_le_siteBall_card
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p : ConcretePlaquette d L) :
+    (plaquetteGraph d L).degree p ≤ (plaquetteSiteBall d L p).card := by
+  rw [← SimpleGraph.card_neighborFinset_eq_degree]
+  exact Finset.card_le_card (plaquetteGraph_neighborFinset_subset_siteBall p)
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -226,6 +268,9 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms siteLatticeDist_symm
 #print axioms plaquetteGraph_adj_siteLatticeDist_le_one
 #print axioms plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one
+#print axioms plaquetteGraph_neighborFinset_eq_filter
+#print axioms plaquetteGraph_neighborFinset_subset_siteBall
+#print axioms plaquetteGraph_degree_le_siteBall_card
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints
