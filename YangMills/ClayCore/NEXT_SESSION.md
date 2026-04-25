@@ -92,6 +92,14 @@ It consumes `∀ L [NeZero L], PhysicalShiftedConnectingClusterCountBoundAt L C_
 with the same `C_conn` and `dim` for all `L`.  The next genuine count proof
 should therefore produce this volume-uniform family.
 
+Once such a family is available, use the direct application canary
+
+    PhysicalShiftedF3CountPackage.ofAtFamily_apply
+
+to expose the count estimate at the original `C_conn` and `dim` immediately.
+The fixed-dimension version is
+`ShiftedF3CountPackageDim.ofAtFamily_apply`.
+
 If a proof lands at one polynomial profile dimension and a downstream package
 expects a larger one, increase the exponent mechanically by:
 

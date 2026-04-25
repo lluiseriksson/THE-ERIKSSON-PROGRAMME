@@ -419,6 +419,26 @@ theorem toAt_apply
       ShiftedConnectingClusterCountBoundAt d L C_conn dim) :
     (ofAtFamily d C_conn hC dim h_at).dim = dim := rfl
 
+/-- Direct application form for a fixed-dimension package built from a
+volume-uniform family of finite-volume count bounds. -/
+theorem ofAtFamily_apply
+    (d : ℕ) [NeZero d]
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_at : ∀ (L : ℕ) [NeZero L],
+      ShiftedConnectingClusterCountBoundAt d L C_conn dim)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) := by
+  simpa using
+    (ShiftedF3CountPackageDim.apply
+      (ofAtFamily d C_conn hC dim h_at) p q n hn hdist)
+
 end ShiftedF3CountPackageDim
 
 /-! ### Physical four-dimensional count target -/
@@ -556,6 +576,27 @@ theorem toAt_apply
     (h_at : ∀ (L : ℕ) [NeZero L],
       PhysicalShiftedConnectingClusterCountBoundAt L C_conn dim) :
     (ofAtFamily C_conn hC dim h_at).dim = dim := rfl
+
+/-- Direct application form for a physical count package built from a
+volume-uniform family of physical finite-volume count bounds. -/
+theorem ofAtFamily_apply
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_at : ∀ (L : ℕ) [NeZero L],
+      PhysicalShiftedConnectingClusterCountBoundAt L C_conn dim)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) := by
+  simpa using
+    (PhysicalShiftedF3CountPackage.apply
+      (ofAtFamily C_conn hC dim h_at) p q n hn hdist)
 
 end PhysicalShiftedF3CountPackage
 
@@ -801,6 +842,7 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedF3CountPackageDim.ofBound_dim
 #print axioms ShiftedF3CountPackageDim.ofAtFamily_C_conn
 #print axioms ShiftedF3CountPackageDim.ofAtFamily_dim
+#print axioms ShiftedF3CountPackageDim.ofAtFamily_apply
 #print axioms physicalClayDimension
 #print axioms PhysicalShiftedF3CountPackage.ofBound
 #print axioms PhysicalShiftedF3CountPackage.ofAtFamily
@@ -816,6 +858,7 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms PhysicalShiftedF3CountPackage.ofBound_dim
 #print axioms PhysicalShiftedF3CountPackage.ofAtFamily_C_conn
 #print axioms PhysicalShiftedF3CountPackage.ofAtFamily_dim
+#print axioms PhysicalShiftedF3CountPackage.ofAtFamily_apply
 #print axioms shiftedConnectingClusterCountBoundAt_finite
 #print axioms ShiftedF3CountPackageAt.finite
 #print axioms ShiftedF3CountPackageAt.finite_C_conn

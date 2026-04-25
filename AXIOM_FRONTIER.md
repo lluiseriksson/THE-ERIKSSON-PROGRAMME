@@ -1,3 +1,49 @@
+# v1.71.0 — Direct ofAtFamily application canaries for shifted F3 counts
+
+**Released: 2026-04-25**
+
+## What
+
+Added two direct application canaries in
+`YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    ShiftedF3CountPackageDim.ofAtFamily_apply
+    PhysicalShiftedF3CountPackage.ofAtFamily_apply
+
+They expose the finite-volume count estimate obtained from a
+volume-uniform family directly at the constants `C_conn` and `dim` supplied to
+`ofAtFamily`, without making callers first build the package, project it, and
+then call `.apply`.
+
+## Why
+
+No percentage bar moves.  This is F3 count-frontier ergonomics: the remaining
+mathematical target is still the uniform lattice-animal / KP count estimate,
+but once a proof supplies
+
+    ∀ L [NeZero L], PhysicalShiftedConnectingClusterCountBoundAt L C_conn dim
+
+the physical package can now be applied immediately through the new canary.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    ShiftedF3CountPackageDim.ofAtFamily_apply
+      [propext, Classical.choice, Quot.sound]
+
+    PhysicalShiftedF3CountPackage.ofAtFamily_apply
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.70.0 — Finite Mayer bucket consumers use direct bucket-tsum identity
 
 **Released: 2026-04-25**
