@@ -1,3 +1,54 @@
+# v1.93.0 — neighbor-finset branching form
+
+**Released: 2026-04-25**
+
+## What
+
+Added the neighbor-finset cardinality form of the plaquette-graph branching
+bound in `YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraph_neighborFinset_card_le_ternary
+    plaquetteGraph_neighborFinset_card_le_physical_ternary
+
+The generic theorem rewrites the v1.92 degree bound as
+
+    ((plaquetteGraph d L).neighborFinset p).card
+      ≤ (3 ^ d) * Fintype.card (Fin d) * Fintype.card (Fin d)
+
+and the physical theorem specializes this to
+
+    ((plaquetteGraph physicalClayDimension L).neighborFinset p).card ≤ 1296.
+
+## Why
+
+No percentage bar moves.  This is F3-count infrastructure for the
+`ClusterCorrelatorBound` front.  Degree bounds and neighbor-finset cardinality
+bounds are equivalent in a locally finite simple graph, but the
+neighbor-finset form is the one directly consumed by BFS/tree enumeration:
+each step chooses from a finite set of at most `1296` next plaquettes.
+
+The next local count move is to formalize the finite-choice/list layer that
+turns this branching bound into an exponential bound for graph walks, then
+quotient or dominate connected polymers by such walks.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteGraph_neighborFinset_card_le_ternary
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_neighborFinset_card_le_physical_ternary
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.92.0 — explicit plaquette-graph branching bound
 
 **Released: 2026-04-25**

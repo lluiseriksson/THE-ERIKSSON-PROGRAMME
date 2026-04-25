@@ -374,6 +374,24 @@ theorem plaquetteGraph_degree_le_physical_ternary
     (plaquetteGraph physicalClayDimension L).degree p ≤ 1296 :=
   plaquetteGraph_degreeBoundDim_physical_ternary p
 
+/-- Generic neighbor-finset cardinality form of the ternary plaquette-graph
+branching bound.  This is the shape used by BFS/tree-count arguments. -/
+theorem plaquetteGraph_neighborFinset_card_le_ternary
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p : ConcretePlaquette d L) :
+    ((plaquetteGraph d L).neighborFinset p).card ≤
+      (3 ^ d) * Fintype.card (Fin d) * Fintype.card (Fin d) := by
+  rw [SimpleGraph.card_neighborFinset_eq_degree]
+  exact plaquetteGraph_degreeBoundDim_ternary p
+
+/-- Physical four-dimensional neighbor-finset cardinality bound. -/
+theorem plaquetteGraph_neighborFinset_card_le_physical_ternary
+    {L : ℕ} [NeZero L]
+    (p : ConcretePlaquette physicalClayDimension L) :
+    ((plaquetteGraph physicalClayDimension L).neighborFinset p).card ≤ 1296 := by
+  rw [SimpleGraph.card_neighborFinset_eq_degree]
+  exact plaquetteGraph_degree_le_physical_ternary p
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -555,6 +573,8 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms plaquetteGraph_degreeBoundDim_ternary
 #print axioms plaquetteGraph_degreeBoundDim_physical_ternary
 #print axioms plaquetteGraph_degree_le_physical_ternary
+#print axioms plaquetteGraph_neighborFinset_card_le_ternary
+#print axioms plaquetteGraph_neighborFinset_card_le_physical_ternary
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints
