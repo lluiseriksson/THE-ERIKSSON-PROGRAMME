@@ -154,6 +154,56 @@ theorem ShiftedConnectingClusterCountBoundAt.apply
       C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) :=
   h p q n hn hdist
 
+/-- If `1 ≤ x`, then a natural-power profile is monotone under adding extra
+power. -/
+theorem real_pow_le_pow_add_of_one_le {x : ℝ} (hx : 1 ≤ x) (dim k : ℕ) :
+    x ^ dim ≤ x ^ (dim + k) := by
+  rw [pow_add]
+  have hx_nonneg : 0 ≤ x := by linarith
+  have hpow_nonneg : 0 ≤ x ^ dim := pow_nonneg hx_nonneg dim
+  have hone : 1 ≤ x ^ k := one_le_pow₀ hx
+  nlinarith
+
+/-- A global shifted count bound remains true after increasing the polynomial
+profile dimension. -/
+theorem ShiftedConnectingClusterCountBound.mono_dim
+    {C_conn : ℝ} {dim : ℕ} (hC : 0 ≤ C_conn)
+    (h : ShiftedConnectingClusterCountBound C_conn dim) (k : ℕ) :
+    ShiftedConnectingClusterCountBound C_conn (dim + k) := by
+  intro d L _ _ p q n hn hdist
+  have hbase : (1 : ℝ) ≤ ((n + 1 : ℕ) : ℝ) := by
+    exact_mod_cast Nat.succ_pos n
+  have hpow := real_pow_le_pow_add_of_one_le hbase dim k
+  have hcount := h.apply p q n hn hdist
+  exact hcount.trans (mul_le_mul_of_nonneg_left hpow hC)
+
+/-- A fixed-dimension shifted count bound remains true after increasing the
+polynomial profile dimension. -/
+theorem ShiftedConnectingClusterCountBoundDim.mono_dim
+    {d : ℕ} [NeZero d] {C_conn : ℝ} {dim : ℕ} (hC : 0 ≤ C_conn)
+    (h : ShiftedConnectingClusterCountBoundDim d C_conn dim) (k : ℕ) :
+    ShiftedConnectingClusterCountBoundDim d C_conn (dim + k) := by
+  intro L _ p q n hn hdist
+  have hbase : (1 : ℝ) ≤ ((n + 1 : ℕ) : ℝ) := by
+    exact_mod_cast Nat.succ_pos n
+  have hpow := real_pow_le_pow_add_of_one_le hbase dim k
+  have hcount := h.apply p q n hn hdist
+  exact hcount.trans (mul_le_mul_of_nonneg_left hpow hC)
+
+/-- A finite-volume shifted count bound remains true after increasing the
+polynomial profile dimension. -/
+theorem ShiftedConnectingClusterCountBoundAt.mono_dim
+    {d L : ℕ} [NeZero d] [NeZero L] {C_conn : ℝ} {dim : ℕ}
+    (hC : 0 ≤ C_conn)
+    (h : ShiftedConnectingClusterCountBoundAt d L C_conn dim) (k : ℕ) :
+    ShiftedConnectingClusterCountBoundAt d L C_conn (dim + k) := by
+  intro p q n hn hdist
+  have hbase : (1 : ℝ) ≤ ((n + 1 : ℕ) : ℝ) := by
+    exact_mod_cast Nat.succ_pos n
+  have hpow := real_pow_le_pow_add_of_one_le hbase dim k
+  have hcount := h.apply p q n hn hdist
+  exact hcount.trans (mul_le_mul_of_nonneg_left hpow hC)
+
 /-- Restrict a global shifted connecting-cluster count bound to a fixed finite
 plaquette lattice. -/
 theorem ShiftedConnectingClusterCountBound.toAt
@@ -616,6 +666,10 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedConnectingClusterCountBound.apply
 #print axioms ShiftedConnectingClusterCountBoundDim.apply
 #print axioms ShiftedConnectingClusterCountBoundAt.apply
+#print axioms real_pow_le_pow_add_of_one_le
+#print axioms ShiftedConnectingClusterCountBound.mono_dim
+#print axioms ShiftedConnectingClusterCountBoundDim.mono_dim
+#print axioms ShiftedConnectingClusterCountBoundAt.mono_dim
 #print axioms ShiftedConnectingClusterCountBound.toAt
 #print axioms ShiftedConnectingClusterCountBound.toDim
 #print axioms ShiftedConnectingClusterCountBoundDim.toAt

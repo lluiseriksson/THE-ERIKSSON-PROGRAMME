@@ -69,6 +69,16 @@ It consumes `∀ L [NeZero L], PhysicalShiftedConnectingClusterCountBoundAt L C_
 with the same `C_conn` and `dim` for all `L`.  The next genuine count proof
 should therefore produce this volume-uniform family.
 
+If a proof lands at one polynomial profile dimension and a downstream package
+expects a larger one, increase the exponent mechanically by:
+
+    ShiftedConnectingClusterCountBound.mono_dim
+    ShiftedConnectingClusterCountBoundDim.mono_dim
+    ShiftedConnectingClusterCountBoundAt.mono_dim
+
+These keep `C_conn` fixed and replace `dim` by `dim + k`, so F3 count scripts
+can align dimensions without reproving the combinatorial bucket estimate.
+
 After assembling the package, its constants are simp-visible:
 
     PhysicalShiftedF3CountPackage.ofAtFamily_C_conn
@@ -391,6 +401,10 @@ What is already closed locally:
 
     shiftedConnectingClusterCountBoundAt_finite
     ShiftedF3CountPackageAt.finite
+    real_pow_le_pow_add_of_one_le
+    ShiftedConnectingClusterCountBound.mono_dim
+    ShiftedConnectingClusterCountBoundDim.mono_dim
+    ShiftedConnectingClusterCountBoundAt.mono_dim
     ShiftedConnectingClusterCountBoundDim.apply
     ShiftedConnectingClusterCountBound.toAt
     ShiftedConnectingClusterCountBound.toDim
@@ -420,6 +434,9 @@ proves the fixed-`d`, fixed-`L` finite-volume version with
 The remaining F3-count work is the uniform lattice-animal estimate
 `ShiftedConnectingClusterCountBound`, not mere finiteness.  A proved global
 count package now projects mechanically to every local finite-volume package.
+If a later estimate has to absorb an extra polynomial factor, use the
+`mono_dim` lemmas above to move from `dim` to `dim + k` while preserving the
+same `C_conn`.
 
 ## Preferred Build Checks
 
@@ -446,6 +463,10 @@ Key oracle canaries:
     #print axioms ShiftedF3MayerCountPackage.apply_count
     #print axioms shiftedConnectingClusterCountBoundAt_finite
     #print axioms ShiftedF3CountPackageAt.finite
+    #print axioms real_pow_le_pow_add_of_one_le
+    #print axioms ShiftedConnectingClusterCountBound.mono_dim
+    #print axioms ShiftedConnectingClusterCountBoundDim.mono_dim
+    #print axioms ShiftedConnectingClusterCountBoundAt.mono_dim
     #print axioms ShiftedConnectingClusterCountBoundDim.apply
     #print axioms ShiftedConnectingClusterCountBound.toAt
     #print axioms ShiftedConnectingClusterCountBound.toDim

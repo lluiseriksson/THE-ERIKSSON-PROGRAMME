@@ -1,3 +1,48 @@
+# v1.51.0 — Shifted count bounds are monotone in profile dimension
+
+**Released: 2026-04-25**
+
+## What
+
+Added dimension-monotonicity API for shifted connecting-cluster count bounds in
+`YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    real_pow_le_pow_add_of_one_le
+    ShiftedConnectingClusterCountBound.mono_dim
+    ShiftedConnectingClusterCountBoundDim.mono_dim
+    ShiftedConnectingClusterCountBoundAt.mono_dim
+
+## Why
+
+No percentage bar moves.  This is F3 count-side infrastructure: once a shifted
+count bound is proved with polynomial profile dimension `dim`, it can now be
+weakened mechanically to `dim + k` at every scope:
+
+    global over all d and L
+    fixed dimension, uniform over L
+    fixed finite volume
+
+This matters for the coming lattice-animal/combinatorial estimate because
+independent proofs may naturally land with slightly different polynomial powers.
+The new lemmas let downstream F3 packaging align those dimensions without
+reproving the count inequality.  The remaining mathematical content is
+unchanged: prove the volume-uniform physical/global shifted count package and
+the Mayer/Ursell identity.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+
+Pinned traces: all four new declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.50.0 — Mixed physical F3 package restricts to preferred physical package
 
 **Released: 2026-04-25**
