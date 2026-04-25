@@ -1,3 +1,58 @@
+# v2.19.0 — total-size exponential KP series bridge
+
+**Released: 2026-04-25**
+
+## What
+
+Added the analytic series layer for total-size lattice-animal counts:
+
+    connecting_cluster_tsum_summable_total_exp
+    connecting_cluster_summand_nonneg_total_exp
+    connecting_cluster_partial_sum_le_tsum_total_exp
+    connecting_cluster_tsum_eq_factored_total_exp
+    connecting_cluster_tsum_le_total_exp
+
+in `YangMills/ClayCore/ClusterSeriesBound.lean`, and the corresponding
+truncated-activity wrapper
+
+    TruncatedActivities.two_point_decay_from_cluster_tsum_total_exp
+
+in `YangMills/ClayCore/ClusterRpowBridge.lean`.
+
+## Why
+
+No percentage bar moves. This is the analytic companion to v2.18: a standard
+total-cardinality graph-animal count gives a series of the form
+
+    C_conn * K^(n + dist) * A₀ * r^(n + dist)
+
+which factors as
+
+    clusterPrefactorExp r K C_conn A₀ * (K * r)^dist.
+
+Thus the distance factor is not lost; it becomes decay with the effective
+parameter `K * r`. This is the correct landing zone for total-size
+BFS/Klarner counting, distinct from the stronger shifted `K^n` interface.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ClusterSeriesBound
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace for the new declarations:
+
+    connecting_cluster_summand_nonneg_total_exp
+    connecting_cluster_partial_sum_le_tsum_total_exp
+    connecting_cluster_tsum_le_total_exp
+    TruncatedActivities.two_point_decay_from_cluster_tsum_total_exp
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.18.0 — total-size graph-animal decoder target + shifted-count canary
 
 **Released: 2026-04-25**

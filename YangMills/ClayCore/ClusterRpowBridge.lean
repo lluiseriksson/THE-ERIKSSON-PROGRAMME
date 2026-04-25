@@ -96,9 +96,32 @@ theorem two_point_decay_from_cluster_tsum_exp
   exact (T.abs_connectingSum_le_connectingBound p q).trans
     (h_bound.trans_eq h_factored)
 
+/-- Total-size exponential KP-series variant of
+`two_point_decay_from_cluster_tsum`.  This is the corrected consumer for a
+standard total-cardinality lattice-animal count
+`K^(n + dist)`: the distance decay is carried by `(K*r)^dist`. -/
+theorem two_point_decay_from_cluster_tsum_total_exp
+    {ι : Type*} [DecidableEq ι]
+    (T : TruncatedActivities ι) (p q : ι)
+    (r K : ℝ) (hr_pos : 0 < r) (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dist : ℕ)
+    (h_bound : T.connectingBound p q ≤
+      ∑' n : ℕ, C_conn * K ^ (n + dist) * A₀ * r ^ (n + dist)) :
+    |T.connectingSum p q| ≤
+      clusterPrefactorExp r K C_conn A₀ * (K * r) ^ dist := by
+  have h_factored :
+      ∑' n : ℕ, C_conn * K ^ (n + dist) * A₀ * r ^ (n + dist) =
+        clusterPrefactorExp r K C_conn A₀ * (K * r) ^ dist :=
+    connecting_cluster_tsum_le_total_exp
+      r K hr_pos hK_pos hKr_lt1 C_conn A₀ hC hA dist
+  exact (T.abs_connectingSum_le_connectingBound p q).trans
+    (h_bound.trans_eq h_factored)
+
 #print axioms TruncatedActivities.two_point_decay_from_cluster_tsum
 #print axioms TruncatedActivities.two_point_decay_from_cluster_tsum_shifted
 #print axioms TruncatedActivities.two_point_decay_from_cluster_tsum_exp
+#print axioms TruncatedActivities.two_point_decay_from_cluster_tsum_total_exp
 
 end TruncatedActivities
 

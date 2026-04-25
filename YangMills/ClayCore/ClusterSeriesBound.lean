@@ -125,6 +125,27 @@ theorem connecting_cluster_tsum_summable_exp
   rw [goal_eq]
   exact hbase.mul_left _
 
+/-- Summability of the total-size exponential KP bucket profile
+`n ↦ K^(n+d) · r^(n+d)`, under `K*r < 1`.  This is the series shape
+associated to a standard total-cardinality lattice-animal count. -/
+theorem connecting_cluster_tsum_summable_total_exp
+    (r K : ℝ) (hr_pos : 0 < r) (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (dist_0x : ℕ) :
+    Summable (fun n : ℕ =>
+        C_conn * K ^ (n + dist_0x) * A₀ * r ^ (n + dist_0x)) := by
+  have hbase := summable_exp_mul_geometric r K hr_pos hK_pos hKr_lt1
+  have goal_eq :
+      (fun n : ℕ =>
+        C_conn * K ^ (n + dist_0x) * A₀ * r ^ (n + dist_0x)) =
+      (fun n : ℕ =>
+        (C_conn * A₀ * (K ^ dist_0x * r ^ dist_0x)) *
+          (K ^ n * r ^ n)) := by
+    funext n
+    rw [pow_add K n dist_0x, pow_add r n dist_0x]
+    ring
+  rw [goal_eq]
+  exact hbase.mul_left _
+
 /-- The connecting-cluster summand is nonnegative when the physical
 constants are positive. -/
 theorem connecting_cluster_summand_nonneg
@@ -148,6 +169,14 @@ theorem connecting_cluster_summand_nonneg_exp
     (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
     (dist_0x n : ℕ) :
     0 ≤ C_conn * K ^ n * A₀ * r ^ (n + dist_0x) := by
+  positivity
+
+/-- Total-size exponential connecting-cluster summand nonnegativity. -/
+theorem connecting_cluster_summand_nonneg_total_exp
+    (r K : ℝ) (hr_pos : 0 < r) (hK_pos : 0 < K)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dist_0x n : ℕ) :
+    0 ≤ C_conn * K ^ (n + dist_0x) * A₀ * r ^ (n + dist_0x) := by
   positivity
 
 /-- Any finite partial sum of the nonnegative connecting-cluster series is
@@ -192,6 +221,22 @@ theorem connecting_cluster_partial_sum_le_tsum_exp
     C_conn A₀ dist_0x).sum_le_tsum
     (Finset.range M)
     (fun n _ => connecting_cluster_summand_nonneg_exp
+      r K hr_pos hK_pos C_conn A₀ hC hA dist_0x n)
+
+/-- Any finite partial sum of the nonnegative total-size exponential
+connecting-cluster series is bounded by its `tsum`. -/
+theorem connecting_cluster_partial_sum_le_tsum_total_exp
+    (r K : ℝ) (hr_pos : 0 < r) (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dist_0x M : ℕ) :
+    Finset.sum (Finset.range M) (fun n : ℕ =>
+        C_conn * K ^ (n + dist_0x) * A₀ * r ^ (n + dist_0x)) ≤
+      ∑' n : ℕ, C_conn * K ^ (n + dist_0x) * A₀ *
+        r ^ (n + dist_0x) := by
+  exact (connecting_cluster_tsum_summable_total_exp r K hr_pos hK_pos hKr_lt1
+    C_conn A₀ dist_0x).sum_le_tsum
+    (Finset.range M)
+    (fun n _ => connecting_cluster_summand_nonneg_total_exp
       r K hr_pos hK_pos C_conn A₀ hC hA dist_0x n)
 
 /-! ### D2: Tsum factoring -/
@@ -239,6 +284,24 @@ theorem connecting_cluster_tsum_eq_factored_exp
       (fun n : ℕ =>
         (C_conn * A₀ * r ^ dist_0x) * (K ^ n * r ^ n)) := by
     funext n; rw [pow_add]; ring
+  rw [goal_eq, tsum_mul_left]
+  ring
+
+/-- The total-size exponential tsum factors through the effective-distance
+prefactor `(K*r)^dist_0x`. -/
+theorem connecting_cluster_tsum_eq_factored_total_exp
+    (r K : ℝ) (hr_pos : 0 < r) (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (dist_0x : ℕ) :
+    ∑' n : ℕ, C_conn * K ^ (n + dist_0x) * A₀ * r ^ (n + dist_0x) =
+    C_conn * A₀ * (∑' n : ℕ, K ^ n * r ^ n) * (K * r) ^ dist_0x := by
+  have goal_eq :
+      (fun n : ℕ =>
+        C_conn * K ^ (n + dist_0x) * A₀ * r ^ (n + dist_0x)) =
+      (fun n : ℕ =>
+        (C_conn * A₀ * (K * r) ^ dist_0x) * (K ^ n * r ^ n)) := by
+    funext n
+    rw [pow_add K n dist_0x, pow_add r n dist_0x, mul_pow]
+    ring
   rw [goal_eq, tsum_mul_left]
   ring
 
@@ -346,6 +409,19 @@ theorem connecting_cluster_tsum_le_exp
   unfold clusterPrefactorExp
   ring
 
+/-- The total-size exponential connecting-cluster tsum factors as
+`clusterPrefactorExp r K C A₀ · (K*r)^dist_0x`. -/
+theorem connecting_cluster_tsum_le_total_exp
+    (r K : ℝ) (hr_pos : 0 < r) (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dist_0x : ℕ) :
+    ∑' n : ℕ, C_conn * K ^ (n + dist_0x) * A₀ *
+      r ^ (n + dist_0x) =
+    clusterPrefactorExp r K C_conn A₀ * (K * r) ^ dist_0x := by
+  rw [connecting_cluster_tsum_eq_factored_total_exp r K hr_pos hK_pos hKr_lt1]
+  unfold clusterPrefactorExp
+  ring
+
 /-! ### Bridge to the KP parameter -/
 
 /-- For `0 < r`, `r^dist = exp(-(kpParameter r) · dist · 2)`,
@@ -361,11 +437,14 @@ theorem rpow_eq_exp_kpParameter
 #print axioms connecting_cluster_partial_sum_le_tsum
 #print axioms connecting_cluster_summand_nonneg_shifted
 #print axioms connecting_cluster_summand_nonneg_exp
+#print axioms connecting_cluster_summand_nonneg_total_exp
 #print axioms connecting_cluster_partial_sum_le_tsum_shifted
 #print axioms connecting_cluster_partial_sum_le_tsum_exp
+#print axioms connecting_cluster_partial_sum_le_tsum_total_exp
 #print axioms clusterPrefactorShifted_pos
 #print axioms clusterPrefactorExp_pos
 #print axioms connecting_cluster_tsum_le_shifted
 #print axioms connecting_cluster_tsum_le_exp
+#print axioms connecting_cluster_tsum_le_total_exp
 
 end YangMills
