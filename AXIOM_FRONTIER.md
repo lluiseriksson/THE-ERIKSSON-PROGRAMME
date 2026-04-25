@@ -1,3 +1,46 @@
+# v2.15.0 — graph-animal count route to L8 physical-strong endpoint
+
+**Released: 2026-04-25**
+
+## What
+
+Added the L8 terminal wrapper
+
+    physicalStrong_of_graphAnimalShiftedCount1296_siteDist_measurableF
+
+in `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`, importing the
+graph-animal route from `YangMills/ClayCore/LatticeAnimalF3Bridge.lean`.
+
+## Why
+
+No percentage bar moves. This is terminal routing: the current physical F3
+frontier inputs
+
+    PhysicalConnectingClusterGraphAnimalShiftedCountBound1296
+    PhysicalShiftedF3MayerPackage N_c wab
+    (1296 : ℝ) * wab.r < 1
+
+plus the usual L8 observable hypotheses now produce
+`ClayYangMillsPhysicalStrong` directly.
+
+Remaining mathematical work is unchanged: prove the shifted graph-animal count,
+construct the physical Mayer package, and prove the smallness regime.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace:
+
+    physicalStrong_of_graphAnimalShiftedCount1296_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.14.0 — graph-animal count handoff to physical F3 bridge
 
 **Released: 2026-04-25**

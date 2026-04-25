@@ -2,6 +2,7 @@ import YangMills.L8_Terminal.ClayPhysical
 import YangMills.ClayCore.ConnectedCorrDecay
 import YangMills.ClayCore.ClusterCorrelatorBound
 import YangMills.ClayCore.ClusterRpowBridge
+import YangMills.ClayCore.LatticeAnimalF3Bridge
 import YangMills.ClayCore.ZeroMeanCancellation
 import YangMills.L2_Balaban.Measurability
 namespace YangMills
@@ -1571,6 +1572,29 @@ theorem physicalStrong_of_physicalOnlyShiftedF3SubpackagesExp_siteDist_measurabl
       mayer count hKr_lt1)
     β F hβ hF hF_meas
 
+/-- Direct physical endpoint from the graph-animal `1296` F3-count target,
+the physical Mayer package, and the KP smallness input. -/
+theorem physicalStrong_of_graphAnimalShiftedCount1296_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (hgraph : PhysicalConnectingClusterGraphAnimalShiftedCountBound1296)
+    (hKr_lt1 : (1296 : ℝ) * wab.r < 1)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_physicalOnlyShiftedF3MayerCountPackageExp_siteDist_measurableF
+    wab
+    (physicalOnlyShiftedF3MayerCountPackageExp_of_graphAnimalShiftedCount1296
+      wab mayer hgraph hKr_lt1)
+    β F hβ hF hF_meas
+
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mass_eq
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_prefactor_eq
@@ -1599,6 +1623,7 @@ theorem physicalStrong_of_physicalOnlyShiftedF3SubpackagesExp_siteDist_measurabl
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_prefactor_eq
 #print axioms physicalStrong_of_physicalOnlyShiftedF3MayerCountPackageExp_siteDist_measurableF
 #print axioms physicalStrong_of_physicalOnlyShiftedF3SubpackagesExp_siteDist_measurableF
+#print axioms physicalStrong_of_graphAnimalShiftedCount1296_siteDist_measurableF
 
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
 
