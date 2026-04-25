@@ -71,6 +71,11 @@ noncomputable def plaquetteSiteBall (d L : ℕ) [NeZero d] [NeZero L]
     (p : ConcretePlaquette d L) : Finset (ConcretePlaquette d L) :=
   (Finset.univ.filter fun q => siteLatticeDist p.site q.site ≤ 1)
 
+/-- The finite set of base sites within graph range of `x`. -/
+noncomputable def siteNeighborBall (d L : ℕ) [NeZero d] [NeZero L]
+    (x : FinBox d L) : Finset (FinBox d L) :=
+  (Finset.univ.filter fun y => siteLatticeDist x y ≤ 1)
+
 /-- The `plaquetteGraph` neighbor finset is exactly the concrete local bucket
 with `p` itself removed. -/
 theorem plaquetteGraph_neighborFinset_eq_filter
@@ -104,6 +109,52 @@ theorem plaquetteGraph_degree_le_siteBall_card
     (plaquetteGraph d L).degree p ≤ (plaquetteSiteBall d L p).card := by
   rw [← SimpleGraph.card_neighborFinset_eq_degree]
   exact Finset.card_le_card (plaquetteGraph_neighborFinset_subset_siteBall p)
+
+/-- The plaquette local bucket injects into nearby base sites together with two
+orientation choices.  This isolates the remaining geometric site-neighborhood
+count from the purely orientational factor. -/
+theorem plaquetteSiteBall_card_le_siteNeighborBall_card_mul_dir_sq
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p : ConcretePlaquette d L) :
+    (plaquetteSiteBall d L p).card ≤
+      (siteNeighborBall d L p.site).card *
+        Fintype.card (Fin d) * Fintype.card (Fin d) := by
+  let f :
+      {q : ConcretePlaquette d L // q ∈ plaquetteSiteBall d L p} →
+        (siteNeighborBall d L p.site) × Fin d × Fin d :=
+    fun q =>
+      (⟨q.1.site, by
+          exact Finset.mem_filter.mpr
+            ⟨Finset.mem_univ q.1.site, (Finset.mem_filter.mp q.2).2⟩⟩,
+        q.1.dir1, q.1.dir2)
+  have hf : Function.Injective f := by
+    intro a b h
+    cases a with
+    | mk a ha =>
+      cases b with
+      | mk b hb =>
+        have hsite :
+            (f ⟨a, ha⟩).1 = (f ⟨b, hb⟩).1 := congrArg Prod.fst h
+        have hdir1 :
+            (f ⟨a, ha⟩).2.1 = (f ⟨b, hb⟩).2.1 :=
+          congrArg (fun z => z.2.1) h
+        have hdir2 :
+            (f ⟨a, ha⟩).2.2 = (f ⟨b, hb⟩).2.2 :=
+          congrArg (fun z => z.2.2) h
+        simp only [f] at hsite hdir1 hdir2
+        have hsite_val : a.site = b.site := congrArg Subtype.val hsite
+        apply Subtype.ext
+        cases a with
+        | mk as ai aj ah =>
+          cases b with
+          | mk bs bi bj bh =>
+            simp only at hsite_val hdir1 hdir2
+            subst bs
+            subst bi
+            subst bj
+            rfl
+  have hcard := Fintype.card_le_of_injective f hf
+  simpa [Fintype.card_prod, mul_assoc] using hcard
 
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
@@ -271,6 +322,7 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms plaquetteGraph_neighborFinset_eq_filter
 #print axioms plaquetteGraph_neighborFinset_subset_siteBall
 #print axioms plaquetteGraph_degree_le_siteBall_card
+#print axioms plaquetteSiteBall_card_le_siteNeighborBall_card_mul_dir_sq
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints

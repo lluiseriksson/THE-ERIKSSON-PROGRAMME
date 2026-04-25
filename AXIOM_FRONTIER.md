@@ -1,3 +1,51 @@
+# v1.87.0 — plaquette site-ball orientation split
+
+**Released: 2026-04-25**
+
+## What
+
+Extended `YangMills/ClayCore/LatticeAnimalCount.lean` with the next local
+count reduction:
+
+    siteNeighborBall
+    plaquetteSiteBall_card_le_siteNeighborBall_card_mul_dir_sq
+
+`siteNeighborBall d L x` is the finite set of base sites within
+`siteLatticeDist ≤ 1` of `x`.  The new theorem injects the plaquette local
+bucket into
+
+    siteNeighborBall d L p.site × Fin d × Fin d
+
+and proves
+
+    (plaquetteSiteBall d L p).card ≤
+      (siteNeighborBall d L p.site).card *
+        Fintype.card (Fin d) * Fintype.card (Fin d)
+
+This separates the remaining geometric site-neighborhood estimate from the
+pure orientation factor.
+
+## Why
+
+No percentage bar moves.  This is F3-count infrastructure.  The local branching
+constant needed for the lattice-animal walk/tree encoding is now reduced to a
+finite site-neighborhood bound plus the explicit `d*d` orientation overhead.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace:
+
+    plaquetteSiteBall_card_le_siteNeighborBall_card_mul_dir_sq
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.86.0 — plaquette graph local-neighbor bucket
 
 **Released: 2026-04-25**
