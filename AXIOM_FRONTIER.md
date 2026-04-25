@@ -1,3 +1,50 @@
+# v1.60.0 — Cardinality-bucket sums are summable by finite support
+
+**Released: 2026-04-25**
+
+## What
+
+Added the summability wrapper in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    cardBucketSum_summable
+
+For fixed finite volume, marked plaquettes `p q`, and arbitrary `K_bound`, the
+cardinality-bucket function
+
+    n ↦ ∑ Y in connected finite polymers,
+          if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+          then K_bound Y else 0
+
+is `Summable`.
+
+## Why
+
+No percentage bar moves.  v1.59.0 proved that buckets outside the canonical
+finite range contribute zero.  This pass packages that support cutoff in the
+analytic API expected by later finite/infinite manipulations: the bucket
+series is summable because its support is contained in
+
+    Finset.range (Fintype.card (ConcretePlaquette d L) + 1).
+
+This is still finite-volume infrastructure, not the uniform lattice-animal
+estimate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    cardBucketSum_summable
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.59.0 — Out-of-range cardinality buckets contribute zero to F3 sums
 
 **Released: 2026-04-25**
