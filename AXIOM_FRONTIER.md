@@ -1,3 +1,49 @@
+# v1.42.0 — `ofGlobalMayer` exposes physical activities by simp
+
+**Released: 2026-04-25**
+
+## What
+
+Added a package-level restriction lemma in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_toTruncatedActivities
+
+## Why
+
+No percentage bar moves.  This is API sharpening for the global-Mayer to
+physical-F3 route.  The constructor
+
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer
+
+packages an all-dimensions `ShiftedF3MayerPackage` together with a physical
+count package by restricting the Mayer half to `physicalClayDimension = 4`.
+The new simp lemma records that the activities exposed by the resulting fully
+physical package are definitionally the original global Mayer activities
+evaluated at the physical dimension:
+
+    (ofGlobalMayer mayer count).toTruncatedActivities β F p q
+      = mayer.toTruncatedActivities β F p q
+
+Future scripts that prove the older all-dimensions Mayer theorem first can now
+feed it into the preferred physical route and rewrite the package-level
+activities directly, without unfolding either `ofGlobalMayer` or the physical
+package consumer.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace: the new lemma prints the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.41.0 — Global-to-physical Mayer restriction is simp-visible
 
 **Released: 2026-04-25**

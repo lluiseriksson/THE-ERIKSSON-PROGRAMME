@@ -2559,11 +2559,23 @@ def ofGlobalMayer
     (count : PhysicalShiftedF3CountPackage) :
     countPackage (ofGlobalMayer mayer count) = count := rfl
 
+@[simp] theorem ofGlobalMayer_toTruncatedActivities
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L) :
+    (ofGlobalMayer mayer count).toTruncatedActivities β F p q =
+      mayer.toTruncatedActivities β F p q := rfl
+
 end PhysicalOnlyShiftedF3MayerCountPackage
 
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_mayerPackage
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_countPackage
+#print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_toTruncatedActivities
 
 /-- Physical `d = 4` F3 endpoint from independently-produced Mayer and
 physical count packages. -/

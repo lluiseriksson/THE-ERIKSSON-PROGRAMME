@@ -120,6 +120,7 @@ The restriction is simp-visible on raw and bundled activities:
     ConnectedCardDecayMayerData.toPhysical_K
     ConnectedCardDecayMayerData.toPhysical_toTruncatedActivities
     ShiftedF3MayerPackage.toPhysical_toTruncatedActivities
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_toTruncatedActivities
 
 Supplying either the single package or both halves yields, oracle-clean:
 
