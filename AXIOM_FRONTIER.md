@@ -1,3 +1,45 @@
+# v1.89.0 — site-neighbor finite-code interface
+
+**Released: 2026-04-25**
+
+## What
+
+Extended `YangMills/ClayCore/LatticeAnimalCount.lean` with a finite-code
+interface for the remaining local geometry witness:
+
+    siteNeighborBall_card_le_of_injective_code
+    siteNeighborBallBoundDim_of_injective_code
+
+The first lemma bounds one site-neighborhood bucket by any finite type into
+which it injects.  The second packages the volume-uniform version: if every
+`siteNeighborBall d L x` admits an injective code into a fixed finite type
+`α`, and `Fintype.card α ≤ B`, then `SiteNeighborBallBoundDim d B`.
+
+## Why
+
+No percentage bar moves.  This is the next F3-count reduction layer.  The
+future concrete displacement code, expected to be a small finite alphabet such
+as `{-1,0,1}^d` or a sharper axis-only code, now has a direct API that produces
+the site-neighborhood bound consumed by v1.88.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    siteNeighborBall_card_le_of_injective_code
+      [propext, Classical.choice, Quot.sound]
+
+    siteNeighborBallBoundDim_of_injective_code
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.88.0 — site-neighbor bound lifts to plaquette graph degree bound
 
 **Released: 2026-04-25**

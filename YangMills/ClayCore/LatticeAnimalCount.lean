@@ -163,6 +163,31 @@ def SiteNeighborBallBoundDim (d B : ℕ) [NeZero d] : Prop :=
   ∀ {L : ℕ} [NeZero L] (x : FinBox d L),
     (siteNeighborBall d L x).card ≤ B
 
+/-- A site-neighborhood bucket is bounded by any finite type into which it
+injects. -/
+theorem siteNeighborBall_card_le_of_injective_code
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (x : FinBox d L)
+    {α : Type} [Fintype α]
+    (code : {y : FinBox d L // y ∈ siteNeighborBall d L x} → α)
+    (hcode : Function.Injective code) :
+    (siteNeighborBall d L x).card ≤ Fintype.card α := by
+  simpa using Fintype.card_le_of_injective code hcode
+
+/-- A volume-uniform finite coding of site-neighborhood buckets gives a
+fixed-dimension site-neighborhood bound. -/
+theorem siteNeighborBallBoundDim_of_injective_code
+    {d B : ℕ} [NeZero d]
+    {α : Type} [Fintype α]
+    (hα : Fintype.card α ≤ B)
+    (hcode : ∀ {L : ℕ} [NeZero L] (x : FinBox d L),
+      ∃ code : {y : FinBox d L // y ∈ siteNeighborBall d L x} → α,
+        Function.Injective code) :
+    SiteNeighborBallBoundDim d B := by
+  intro L _ x
+  obtain ⟨code, hinj⟩ := hcode x
+  exact (siteNeighborBall_card_le_of_injective_code x code hinj).trans hα
+
 /-- Fixed-dimension uniform degree bound for `plaquetteGraph`. -/
 def PlaquetteGraphDegreeBoundDim (d D : ℕ) [NeZero d] : Prop :=
   ∀ {L : ℕ} [NeZero L] (p : ConcretePlaquette d L),
@@ -347,6 +372,8 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms plaquetteGraph_neighborFinset_subset_siteBall
 #print axioms plaquetteGraph_degree_le_siteBall_card
 #print axioms plaquetteSiteBall_card_le_siteNeighborBall_card_mul_dir_sq
+#print axioms siteNeighborBall_card_le_of_injective_code
+#print axioms siteNeighborBallBoundDim_of_injective_code
 #print axioms plaquetteGraph_degreeBoundDim_of_siteNeighborBallBoundDim
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
