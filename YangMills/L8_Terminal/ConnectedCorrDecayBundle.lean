@@ -1676,6 +1676,39 @@ theorem physicalStrong_of_graphAnimalTotalWordDecoder1296_smallBeta_siteDist_mea
     (by simpa [wilsonActivityBound_from_expansion] using hβ_small)
     β F hβ_pos hF hF_meas
 
+/-- Single terminal package for the corrected total-size small-β F3 route.
+
+For the concrete clipped Wilson activity `wilsonActivityBound_from_expansion`,
+the remaining nontrivial F3 obligations are exactly:
+the KP smallness inequality `1296 * β < 1`, the physical shifted Mayer package,
+and the physical total graph-animal decoder. -/
+structure PhysicalTotalF3SmallBetaPackage
+    (N_c : ℕ) [NeZero N_c] (β : ℝ)
+    (hβ_pos : 0 < β) (hβ_lt1 : β < 1) where
+  hβ_small : (1296 : ℝ) * β < 1
+  mayer : PhysicalShiftedF3MayerPackage N_c
+    (wilsonActivityBound_from_expansion N_c hβ_pos hβ_lt1)
+  decode : PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296
+
+/-- Terminal small-β physical endpoint from the single F3 package.
+
+This is the current narrowest Wilson-facing F3 statement: once the concrete
+small-β Mayer identity/decay package and the total graph-animal decoder are
+provided, the Clay-grade physical strong endpoint follows. -/
+theorem physicalStrong_of_totalF3SmallBetaPackage_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (pkg : PhysicalTotalF3SmallBetaPackage N_c β hβ_pos hβ_lt1)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_graphAnimalTotalWordDecoder1296_smallBeta_siteDist_measurableF
+    hβ_pos hβ_lt1 pkg.hβ_small pkg.mayer pkg.decode F hF hF_meas
+
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mass_eq
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_prefactor_eq
@@ -1708,6 +1741,7 @@ theorem physicalStrong_of_graphAnimalTotalWordDecoder1296_smallBeta_siteDist_mea
 #print axioms physicalStrong_of_graphAnimalWordDecoder1296_siteDist_measurableF
 #print axioms physicalStrong_of_graphAnimalTotalWordDecoder1296_siteDist_measurableF
 #print axioms physicalStrong_of_graphAnimalTotalWordDecoder1296_smallBeta_siteDist_measurableF
+#print axioms physicalStrong_of_totalF3SmallBetaPackage_siteDist_measurableF
 
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
 

@@ -1,3 +1,53 @@
+# v2.23.0 — single-package small-β F3 terminal frontier
+
+**Released: 2026-04-25**
+
+## What
+
+Added the terminal package
+
+    PhysicalTotalF3SmallBetaPackage
+
+and endpoint
+
+    physicalStrong_of_totalF3SmallBetaPackage_siteDist_measurableF
+
+in `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+For the concrete clipped Wilson producer `wilsonActivityBound_from_expansion`,
+the package collects exactly the remaining total-size F3 obligations:
+
+    hβ_small : (1296 : ℝ) * β < 1
+    mayer : PhysicalShiftedF3MayerPackage N_c
+      (wilsonActivityBound_from_expansion N_c hβ_pos hβ_lt1)
+    decode : PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296
+
+and routes them to `ClayYangMillsPhysicalStrong` for `siteLatticeDist` in
+physical dimension.
+
+## Why
+
+No percentage bar moves. This is an audit/composition closure: the current
+small-β Wilson-facing F3 frontier is now a single named package rather than
+three loose theorem arguments. The package makes the honest remaining work
+plain: produce the concrete physical Mayer package, produce the total
+graph-animal decoder, and discharge the explicit small-coupling inequality.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace:
+
+    physicalStrong_of_totalF3SmallBetaPackage_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.22.0 — small-β terminal wrapper for total-size F3
 
 **Released: 2026-04-25**
