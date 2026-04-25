@@ -1,3 +1,51 @@
+# v1.61.0 — Bucket `tsum` reduces to the finite plaquette range
+
+**Released: 2026-04-25**
+
+## What
+
+Added the finite-range `tsum` identity in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    cardBucketTsum_eq_cardBucketSum_range
+
+For fixed finite volume, marked plaquettes `p q`, and arbitrary `K_bound`,
+the infinite bucket series
+
+    ∑' n, ∑ Y in connected finite polymers,
+      if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+      then K_bound Y else 0
+
+is exactly the finite range sum over
+
+    Finset.range (Fintype.card (ConcretePlaquette d L) + 1).
+
+## Why
+
+No percentage bar moves.  v1.59.0 gave the out-of-range zero lemma and v1.60.0
+packaged summability.  This pass exposes the exact conversion needed by later
+F3 manipulations: once bucket contributions are indexed by `n`, the infinite
+series can be collapsed back to the canonical finite plaquette range without
+reproving support facts.
+
+This remains finite-volume infrastructure; the uniform lattice-animal count
+estimate is still the open F3-count target.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    cardBucketTsum_eq_cardBucketSum_range
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.60.0 — Cardinality-bucket sums are summable by finite support
 
 **Released: 2026-04-25**

@@ -496,6 +496,27 @@ theorem cardBucketSum_summable
       by_contra hmem
       exact hn (cardBucketSum_eq_zero_of_not_mem_range K_bound p q n hmem))
 
+/-- The infinite bucket series is exactly the finite range sum, because all
+out-of-range buckets vanish. -/
+theorem cardBucketTsum_eq_cardBucketSum_range
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L) :
+    (∑' n : ℕ,
+      (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+          if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+            then K_bound Y else 0)) =
+      Finset.sum (Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+        (fun n =>
+          (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+              (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+              if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+                then K_bound Y else 0)) := by
+  classical
+  exact tsum_eq_sum (s := Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (fun n hn => cardBucketSum_eq_zero_of_not_mem_range K_bound p q n hn)
+
 /-- Bucket-bound consumer for the connected finite sum.
 
 After `connectedFiniteSum_eq_cardBucketSum`, it is enough to bound each
@@ -1141,6 +1162,7 @@ theorem TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connecte
 #print axioms connectedFiniteSum_eq_cardBucketSum
 #print axioms cardBucketSum_eq_zero_of_not_mem_range
 #print axioms cardBucketSum_summable
+#print axioms cardBucketTsum_eq_cardBucketSum_range
 #print axioms connectedFiniteSum_le_of_cardBucketBounds
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_shifted
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_kp
