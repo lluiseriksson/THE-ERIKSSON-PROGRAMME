@@ -1,3 +1,49 @@
+# v1.57.0 — Finite-volume connecting-cluster buckets vanish above universe size
+
+**Released: 2026-04-25**
+
+## What
+
+Added a finite-volume support cutoff in
+`YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    connecting_cluster_count_eq_zero_of_card_lt
+
+For fixed `d`, `L`, plaquettes `p q`, and bucket index `n`, if
+
+    Fintype.card (ConcretePlaquette d L)
+      < n + ⌈siteLatticeDist p.site q.site⌉₊
+
+then the filtered bucket of connected polymers containing `p` and `q` with
+that cardinality has cardinality `0`.
+
+## Why
+
+No percentage bar moves.  This is not the uniform lattice-animal estimate, but
+it removes a small finite-support annoyance from the count side: any bucket
+whose requested polymer size exceeds the finite plaquette universe is empty by
+cardinality alone.  The proof is purely finite: any `X : Finset
+(ConcretePlaquette d L)` has `X.card ≤ Fintype.card (ConcretePlaquette d L)`,
+contradicting the bucket equality.
+
+This is useful when range-restricting finite-volume bucket sums before the
+genuine uniform-in-`L` count estimate is attacked.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+
+Pinned trace:
+
+    connecting_cluster_count_eq_zero_of_card_lt
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.56.0 — L8 F3 subpackage routes expose mono-count-dimension constants
 
 **Released: 2026-04-25**

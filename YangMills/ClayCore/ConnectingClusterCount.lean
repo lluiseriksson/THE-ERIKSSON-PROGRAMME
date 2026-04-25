@@ -588,6 +588,34 @@ theorem connecting_cluster_count_finite
     Finset.card_univ
   exact h1.trans h2.le
 
+/-- Buckets above the finite plaquette universe are empty.
+
+This finite-volume support cutoff is useful when replacing finite bucket sums
+by range-restricted sums: no polymer can have cardinality strictly larger than
+the total number of plaquettes in the finite volume. -/
+theorem connecting_cluster_count_eq_zero_of_card_lt
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hlarge :
+      Fintype.card (ConcretePlaquette d L) <
+        n + ⌈siteLatticeDist p.site q.site⌉₊) :
+    ((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun X =>
+          p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+            X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card = 0 := by
+  apply Finset.card_eq_zero.mpr
+  ext X
+  constructor
+  · intro hX
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hX
+    rcases hX with ⟨_hpX, _hqX, _hconn, hcard⟩
+    have hcard_le : X.card ≤ Fintype.card (ConcretePlaquette d L) :=
+      Finset.card_le_univ X
+    exfalso
+    omega
+  · intro hfalse
+    simp at hfalse
+
 /-- Every finite plaquette lattice has a trivial shifted count bound with
 dimension `0` and constant equal to the total number of finite plaquette
 subsets plus one.
@@ -724,6 +752,7 @@ theorem connected_polymer_card_eq_extra_add_dist
   omega
 
 #print axioms connecting_cluster_count_finite
+#print axioms connecting_cluster_count_eq_zero_of_card_lt
 #print axioms connected_polymer_card_eq_extra_add_dist
 #print axioms C_conn_const_pos_of_neZero
 #print axioms ShiftedConnectingClusterCountBound.apply

@@ -55,6 +55,7 @@ available.
 The count side has an explicit finite-volume canary:
 
     PhysicalShiftedF3CountPackageAt.finite
+    connecting_cluster_count_eq_zero_of_card_lt
 
 for each fixed `L`.  Its constant depends on `L`, so it is only an audit/local
 count package.  The open count target is the uniform-in-`L` package
@@ -435,6 +436,7 @@ What is already closed locally:
 
     shiftedConnectingClusterCountBoundAt_finite
     ShiftedF3CountPackageAt.finite
+    connecting_cluster_count_eq_zero_of_card_lt
     real_pow_le_pow_add_of_one_le
     ShiftedConnectingClusterCountBound.mono_dim
     ShiftedConnectingClusterCountBoundDim.mono_dim
@@ -489,6 +491,9 @@ What is already closed locally:
 
 proves the fixed-`d`, fixed-`L` finite-volume version with
 `C_conn = Fintype.card (Finset (ConcretePlaquette d L)) + 1` and `dim = 0`.
+The support cutoff `connecting_cluster_count_eq_zero_of_card_lt` also says
+that any bucket requesting cardinality above the finite plaquette universe is
+empty.
 The remaining F3-count work is the uniform lattice-animal estimate
 `ShiftedConnectingClusterCountBound`, not mere finiteness.  A proved global
 count package now projects mechanically to every local finite-volume package.
@@ -526,6 +531,7 @@ Key oracle canaries:
     #print axioms ShiftedF3MayerCountPackage.apply_count
     #print axioms shiftedConnectingClusterCountBoundAt_finite
     #print axioms ShiftedF3CountPackageAt.finite
+    #print axioms connecting_cluster_count_eq_zero_of_card_lt
     #print axioms real_pow_le_pow_add_of_one_le
     #print axioms ShiftedConnectingClusterCountBound.mono_dim
     #print axioms ShiftedConnectingClusterCountBoundDim.mono_dim
