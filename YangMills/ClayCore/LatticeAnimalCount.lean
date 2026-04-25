@@ -430,6 +430,56 @@ theorem plaquetteGraph_branching_le_physical_ternary
     ((plaquetteGraph physicalClayDimension L).neighborFinset p).card ≤ 1296 :=
   plaquetteGraph_branchingBoundDim_physical_ternary p
 
+/-! ### Finite walk coding interface -/
+
+/-- A graph walk of edge-length `n` starting at `p`, represented as a finite
+sequence of `n+1` plaquettes.  This function representation is finite by
+construction and is better suited to coding arguments than unrestricted
+lists. -/
+def PlaquetteWalk
+    (d L n : ℕ) [NeZero d] [NeZero L]
+    (p : ConcretePlaquette d L) : Type :=
+  { path : Fin (n + 1) → ConcretePlaquette d L //
+    path 0 = p ∧
+      ∀ i : Fin n,
+        (plaquetteGraph d L).Adj (path i.castSucc) (path i.succ) }
+
+noncomputable instance plaquetteWalk_fintype
+    (d L n : ℕ) [NeZero d] [NeZero L]
+    (p : ConcretePlaquette d L) :
+    Fintype (PlaquetteWalk d L n p) := by
+  classical
+  unfold PlaquetteWalk
+  infer_instance
+
+/-- A finite coding of length-`n` walks by words over `D` symbols gives the
+expected `D^n` walk-count bound. -/
+theorem plaquetteWalk_card_le_of_injective_code
+    {d L n D : ℕ} [NeZero d] [NeZero L]
+    (p : ConcretePlaquette d L)
+    (code : PlaquetteWalk d L n p → (Fin n → Fin D))
+    (hcode : Function.Injective code) :
+    Fintype.card (PlaquetteWalk d L n p) ≤ D ^ n := by
+  have hcard :=
+    Fintype.card_le_of_injective code hcode
+  simpa [Fintype.card_fun] using hcard
+
+/-- Fixed-dimension walk-count bound driven by a word code of size `D`. -/
+def PlaquetteWalkCodeBoundDim (d D : ℕ) [NeZero d] : Prop :=
+  ∀ {L : ℕ} [NeZero L] (p : ConcretePlaquette d L) (n : ℕ),
+    ∃ code : PlaquetteWalk d L n p → (Fin n → Fin D),
+      Function.Injective code
+
+/-- A fixed-dimension walk code gives a fixed-dimension `D^n` walk-count
+bound. -/
+theorem plaquetteWalk_card_le_of_codeBoundDim
+    {d D : ℕ} [NeZero d]
+    (hcode : PlaquetteWalkCodeBoundDim d D)
+    {L : ℕ} [NeZero L] (p : ConcretePlaquette d L) (n : ℕ) :
+    Fintype.card (PlaquetteWalk d L n p) ≤ D ^ n := by
+  obtain ⟨code, hinj⟩ := hcode p n
+  exact plaquetteWalk_card_le_of_injective_code p code hinj
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -617,6 +667,8 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms plaquetteGraph_branchingBoundDim_ternary
 #print axioms plaquetteGraph_branchingBoundDim_physical_ternary
 #print axioms plaquetteGraph_branching_le_physical_ternary
+#print axioms plaquetteWalk_card_le_of_injective_code
+#print axioms plaquetteWalk_card_le_of_codeBoundDim
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints

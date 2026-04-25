@@ -1,3 +1,67 @@
+# v1.95.0 — finite plaquette-walk coding interface
+
+**Released: 2026-04-25**
+
+## What
+
+Added the finite walk layer used by the forthcoming BFS/tree-count argument in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PlaquetteWalk
+    plaquetteWalk_fintype
+    plaquetteWalk_card_le_of_injective_code
+    PlaquetteWalkCodeBoundDim
+    plaquetteWalk_card_le_of_codeBoundDim
+
+`PlaquetteWalk d L n p` represents an edge-length `n` plaquette-graph walk
+starting at `p` as a finite function
+
+    Fin (n + 1) → ConcretePlaquette d L
+
+with starting-point and adjacency proofs.  The count interface says that any
+injective code
+
+    PlaquetteWalk d L n p → (Fin n → Fin D)
+
+gives the expected bound
+
+    Fintype.card (PlaquetteWalk d L n p) ≤ D ^ n.
+
+## Why
+
+No percentage bar moves.  This is F3-count infrastructure for the
+`ClusterCorrelatorBound` front.  Lean does not have a finite type of arbitrary
+lists by default, so walks are represented by finite-indexed functions.  This
+keeps the walk space finite by construction and isolates the next mathematical
+task: building the actual BFS/neighbor-choice code from
+`PlaquetteGraphBranchingBoundDim`.
+
+The intended next closure is:
+
+    PlaquetteGraphBranchingBoundDim d D
+      → PlaquetteWalkCodeBoundDim d D
+
+which would turn the physical branching theorem `D = 1296` into a uniform
+`1296^n` walk-count bound.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteWalk_card_le_of_injective_code
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteWalk_card_le_of_codeBoundDim
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.94.0 — plaquette graph branching-bound interface
 
 **Released: 2026-04-25**
