@@ -517,6 +517,21 @@ theorem cardBucketTsum_eq_cardBucketSum_range
   exact tsum_eq_sum (s := Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
     (fun n hn => cardBucketSum_eq_zero_of_not_mem_range K_bound p q n hn)
 
+/-- The connected finite sum is the `tsum` of its cardinality buckets. -/
+theorem connectedFiniteSum_eq_cardBucketTsum
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L) :
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y), K_bound Y) =
+      ∑' n : ℕ,
+        (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+            (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+            if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+              then K_bound Y else 0) := by
+  rw [connectedFiniteSum_eq_cardBucketSum K_bound p q]
+  exact (cardBucketTsum_eq_cardBucketSum_range K_bound p q).symm
+
 /-- Bucket-bound consumer for the connected finite sum.
 
 After `connectedFiniteSum_eq_cardBucketSum`, it is enough to bound each
@@ -1163,6 +1178,7 @@ theorem TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connecte
 #print axioms cardBucketSum_eq_zero_of_not_mem_range
 #print axioms cardBucketSum_summable
 #print axioms cardBucketTsum_eq_cardBucketSum_range
+#print axioms connectedFiniteSum_eq_cardBucketTsum
 #print axioms connectedFiniteSum_le_of_cardBucketBounds
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_shifted
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_kp

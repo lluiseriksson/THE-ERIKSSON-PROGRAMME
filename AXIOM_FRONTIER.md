@@ -1,3 +1,50 @@
+# v1.62.0 — Connected finite sum equals the bucket `tsum`
+
+**Released: 2026-04-25**
+
+## What
+
+Added the direct bucket-series decomposition in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    connectedFiniteSum_eq_cardBucketTsum
+
+For fixed finite volume, marked plaquettes `p q`, and arbitrary `K_bound`,
+the connected finite polymer sum
+
+    ∑ Y in connected finite polymers, K_bound Y
+
+is exactly the infinite series over its cardinality buckets:
+
+    ∑' n, ∑ Y in connected finite polymers,
+      if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+      then K_bound Y else 0.
+
+## Why
+
+No percentage bar moves.  This composes the existing finite bucket
+decomposition with v1.61.0's finite-range `tsum` collapse, giving downstream
+F3 consumers the series-shaped API directly.
+
+The theorem is finite-volume infrastructure.  The open analytic step remains
+the uniform lattice-animal / KP count estimate needed to discharge
+`ClusterCorrelatorBound`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    connectedFiniteSum_eq_cardBucketTsum
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.61.0 — Bucket `tsum` reduces to the finite plaquette range
 
 **Released: 2026-04-25**

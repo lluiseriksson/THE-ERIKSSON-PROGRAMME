@@ -60,6 +60,7 @@ The count side has an explicit finite-volume canary:
     cardBucketSum_eq_zero_of_not_mem_range
     cardBucketSum_summable
     cardBucketTsum_eq_cardBucketSum_range
+    connectedFiniteSum_eq_cardBucketTsum
 
 for each fixed `L`.  Its constant depends on `L`, so it is only an audit/local
 count package.  The open count target is the uniform-in-`L` package
@@ -445,6 +446,7 @@ What is already closed locally:
     cardBucketSum_eq_zero_of_not_mem_range
     cardBucketSum_summable
     cardBucketTsum_eq_cardBucketSum_range
+    connectedFiniteSum_eq_cardBucketTsum
     real_pow_le_pow_add_of_one_le
     ShiftedConnectingClusterCountBound.mono_dim
     ShiftedConnectingClusterCountBoundDim.mono_dim
@@ -509,7 +511,8 @@ the exact `Finset.range (card + 1)` language used by the bucket sums, and
 `cardBucketSum_summable` packages that support cutoff for later
 finite/infinite bucket-series manipulations, and
 `cardBucketTsum_eq_cardBucketSum_range` collapses the bucket `tsum` back to
-the canonical finite range.
+the canonical finite range.  `connectedFiniteSum_eq_cardBucketTsum` exposes
+the connected finite sum directly as that bucket series.
 The remaining F3-count work is the uniform lattice-animal estimate
 `ShiftedConnectingClusterCountBound`, not mere finiteness.  A proved global
 count package now projects mechanically to every local finite-volume package.
@@ -552,6 +555,7 @@ Key oracle canaries:
     #print axioms cardBucketSum_eq_zero_of_not_mem_range
     #print axioms cardBucketSum_summable
     #print axioms cardBucketTsum_eq_cardBucketSum_range
+    #print axioms connectedFiniteSum_eq_cardBucketTsum
     #print axioms real_pow_le_pow_add_of_one_le
     #print axioms ShiftedConnectingClusterCountBound.mono_dim
     #print axioms ShiftedConnectingClusterCountBoundDim.mono_dim
