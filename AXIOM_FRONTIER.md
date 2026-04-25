@@ -1,3 +1,56 @@
+# v1.70.0 — Finite Mayer bucket consumers use direct bucket-tsum identity
+
+**Released: 2026-04-25**
+
+## What
+
+Refactored the two Mayer-facing finite bucket consumers in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    finiteConnectingSum_le_of_cardBucketBounds_tsum
+    finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
+
+Both theorem statements are unchanged.  Their proofs now rewrite the finite
+connecting sum directly with
+
+    finiteConnectingSum_eq_cardBucketTsum
+
+and compare the resulting bucket `tsum` termwise against the KP `tsum`.
+This removes the internal detour through
+`finiteConnectingSum_eq_connectedFiniteSum` followed by the connected
+bucket-`tsum` consumer.
+
+## Why
+
+No percentage bar moves and no public statement changes.  This makes the
+Mayer-facing API match its intended proof spine exactly:
+
+    Mayer finite connecting sum
+    disconnected-support cancellation
+    finite connecting sum = bucket tsum
+    bucket tsum ≤ KP tsum
+
+The open mathematical target remains the uniform lattice-animal / KP count
+estimate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    finiteConnectingSum_le_of_cardBucketBounds_tsum
+      [propext, Classical.choice, Quot.sound]
+
+    finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.69.0 — Physical shifted endpoints use Mayer-facing KP consumer
 
 **Released: 2026-04-25**

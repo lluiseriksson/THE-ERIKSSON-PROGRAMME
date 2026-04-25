@@ -687,9 +687,16 @@ theorem finiteConnectingSum_le_of_cardBucketBounds_tsum
         (fun Y => p ∈ Y ∧ q ∈ Y), K_bound Y) ≤
       ∑' n : ℕ, C_conn * (n : ℝ) ^ dim * A₀ *
         r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
-  rw [finiteConnectingSum_eq_connectedFiniteSum K_bound p q h_zero]
-  exact connectedFiniteSum_le_of_cardBucketBounds_tsum K_bound p q
-    r hr_pos hr_lt1 C_conn A₀ hC hA dim h_bucket
+  rw [finiteConnectingSum_eq_cardBucketTsum K_bound p q h_zero]
+  refine Summable.tsum_le_tsum ?_ (cardBucketSum_summable K_bound p q)
+    (connecting_cluster_tsum_summable r hr_pos hr_lt1 C_conn A₀ dim
+      ⌈siteLatticeDist p.site q.site⌉₊)
+  intro n
+  by_cases hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1)
+  · exact h_bucket n hn
+  · rw [cardBucketSum_eq_zero_of_not_mem_range K_bound p q n hn]
+    exact connecting_cluster_summand_nonneg r hr_pos C_conn A₀ hC hA dim
+      ⌈siteLatticeDist p.site q.site⌉₊ n
 
 /-- Shifted finite-connecting-sum consumer using the bucket `tsum` API directly. -/
 theorem finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
@@ -712,9 +719,16 @@ theorem finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
         (fun Y => p ∈ Y ∧ q ∈ Y), K_bound Y) ≤
       ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
         r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
-  rw [finiteConnectingSum_eq_connectedFiniteSum K_bound p q h_zero]
-  exact connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted K_bound p q
-    r hr_pos hr_lt1 C_conn A₀ hC hA dim h_bucket
+  rw [finiteConnectingSum_eq_cardBucketTsum K_bound p q h_zero]
+  refine Summable.tsum_le_tsum ?_ (cardBucketSum_summable K_bound p q)
+    (connecting_cluster_tsum_summable_shifted r hr_pos hr_lt1 C_conn A₀ dim
+      ⌈siteLatticeDist p.site q.site⌉₊)
+  intro n
+  by_cases hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1)
+  · exact h_bucket n hn
+  · rw [cardBucketSum_eq_zero_of_not_mem_range K_bound p q n hn]
+    exact connecting_cluster_summand_nonneg_shifted r hr_pos C_conn A₀ hC hA dim
+      ⌈siteLatticeDist p.site q.site⌉₊ n
 
 /-- Bucket-bound consumer with the KP partial-sum comparison discharged
 internally by `connecting_cluster_partial_sum_le_tsum`. -/

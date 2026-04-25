@@ -76,7 +76,12 @@ Mayer-facing bucket-`tsum` spine directly.  In particular,
 `clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted`,
 `physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil`, and
 `physicalClusterCorrelatorBound_of_physicalMayerData_shiftedCount_ceil` avoid
-the older detour through `finiteConnectingSum_eq_connectedFiniteSum`.
+the older detour through `finiteConnectingSum_eq_connectedFiniteSum`.  The
+base Mayer-facing consumers
+`finiteConnectingSum_le_of_cardBucketBounds_tsum` and
+`finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted` also now rewrite
+directly with `finiteConnectingSum_eq_cardBucketTsum` before the termwise KP
+`tsum` comparison.
 
 The formal upgrade path from local physical count bounds to the uniform package
 is:
