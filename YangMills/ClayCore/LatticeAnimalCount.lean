@@ -667,6 +667,46 @@ theorem plaquetteWalk_card_le_physical_ternary
   plaquetteWalk_card_le_of_codeBoundDim
     plaquetteWalkCodeBoundDim_physical_ternary p n
 
+/-! ### Walk-range decoder scaffold -/
+
+/-- The finite set of vertices visited by a finite plaquette walk. -/
+noncomputable def plaquetteWalkRangeFinset
+    {d L n : ℕ} [NeZero d] [NeZero L]
+    {p : ConcretePlaquette d L}
+    (w : PlaquetteWalk d L n p) : Finset (ConcretePlaquette d L) :=
+  Finset.univ.image w.1
+
+/-- The start plaquette belongs to the visited set of a finite walk. -/
+theorem plaquetteWalk_start_mem_rangeFinset
+    {d L n : ℕ} [NeZero d] [NeZero L]
+    {p : ConcretePlaquette d L}
+    (w : PlaquetteWalk d L n p) :
+    p ∈ plaquetteWalkRangeFinset w := by
+  unfold plaquetteWalkRangeFinset
+  refine Finset.mem_image.mpr ?_
+  exact ⟨0, Finset.mem_univ _, w.2.1⟩
+
+/-- Every indexed vertex of a finite walk belongs to its visited set. -/
+theorem plaquetteWalk_vertex_mem_rangeFinset
+    {d L n : ℕ} [NeZero d] [NeZero L]
+    {p : ConcretePlaquette d L}
+    (w : PlaquetteWalk d L n p) (i : Fin (n + 1)) :
+    w.1 i ∈ plaquetteWalkRangeFinset w := by
+  unfold plaquetteWalkRangeFinset
+  exact Finset.mem_image.mpr ⟨i, Finset.mem_univ _, rfl⟩
+
+/-- A length-`n` walk visits at most `n+1` plaquettes. -/
+theorem plaquetteWalk_rangeFinset_card_le
+    {d L n : ℕ} [NeZero d] [NeZero L]
+    {p : ConcretePlaquette d L}
+    (w : PlaquetteWalk d L n p) :
+    (plaquetteWalkRangeFinset w).card ≤ n + 1 := by
+  unfold plaquetteWalkRangeFinset
+  have h :=
+    Finset.card_image_le
+      (s := (Finset.univ : Finset (Fin (n + 1)))) (f := w.1)
+  simpa using h
+
 /-! ### Connecting-cluster bucket to walk-count interface -/
 
 /-- The exact connecting-cluster bucket used by the shifted F3 count frontier,
@@ -858,6 +898,30 @@ theorem physicalShiftedConnectingClusterCountBoundExp_of_extraWalkDecoder
     PhysicalShiftedConnectingClusterCountBoundExp 1 1296 :=
   physicalShiftedConnectingClusterCountBoundExp_of_extraWalkCode
     (physicalConnectingClusterExtraWalkCodeBound_of_decoderBound hdecode)
+
+/-- Concrete range-decoder coverage target: every shifted physical bucket is
+the visited set of some length-`n` walk from `p`. -/
+def PhysicalConnectingClusterRangeDecoderCovers : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (X : ConnectingClusterBucket physicalClayDimension L p q n),
+    ∃ w : PlaquetteWalk physicalClayDimension L n p,
+      plaquetteWalkRangeFinset w = X.1
+
+/-- If the concrete walk-range decoder covers every bucket, then the abstract
+decoder-form F3-count target holds. -/
+theorem physicalConnectingClusterExtraWalkDecoderBound_of_rangeDecoderCovers
+    (hcover : PhysicalConnectingClusterRangeDecoderCovers) :
+    PhysicalConnectingClusterExtraWalkDecoderBound := by
+  intro L _ p q n
+  exact ⟨fun w => plaquetteWalkRangeFinset w, hcover p q n⟩
+
+/-- Concrete range-decoder terminal F3-count bridge. -/
+theorem physicalShiftedConnectingClusterCountBoundExp_of_rangeDecoderCovers
+    (hcover : PhysicalConnectingClusterRangeDecoderCovers) :
+    PhysicalShiftedConnectingClusterCountBoundExp 1 1296 :=
+  physicalShiftedConnectingClusterCountBoundExp_of_extraWalkDecoder
+    (physicalConnectingClusterExtraWalkDecoderBound_of_rangeDecoderCovers hcover)
 
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
@@ -1061,6 +1125,9 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms plaquetteWalkCodeBoundDim_of_branchingBoundDim
 #print axioms plaquetteWalkCodeBoundDim_physical_ternary
 #print axioms plaquetteWalk_card_le_physical_ternary
+#print axioms plaquetteWalk_start_mem_rangeFinset
+#print axioms plaquetteWalk_vertex_mem_rangeFinset
+#print axioms plaquetteWalk_rangeFinset_card_le
 #print axioms connectingClusterBucket_card_eq_filter
 #print axioms connectingClusterBucket_card_le_walks_of_walkCode
 #print axioms connectingClusterBucket_card_le_physical_walk_exp_of_walkCode
@@ -1070,6 +1137,8 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms physicalConnectingClusterExtraWalkCodeOfDecoder_injective
 #print axioms physicalConnectingClusterExtraWalkCodeBound_of_decoderBound
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_extraWalkDecoder
+#print axioms physicalConnectingClusterExtraWalkDecoderBound_of_rangeDecoderCovers
+#print axioms physicalShiftedConnectingClusterCountBoundExp_of_rangeDecoderCovers
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints

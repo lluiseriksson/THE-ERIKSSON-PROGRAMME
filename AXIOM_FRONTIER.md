@@ -1,3 +1,77 @@
+# v2.01.0 — concrete walk-range decoder scaffold
+
+**Released: 2026-04-25**
+
+## What
+
+Added the concrete decoder scaffold for the F3-count BFS/tree target in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteWalkRangeFinset
+    plaquetteWalk_start_mem_rangeFinset
+    plaquetteWalk_vertex_mem_rangeFinset
+    plaquetteWalk_rangeFinset_card_le
+    PhysicalConnectingClusterRangeDecoderCovers
+    physicalConnectingClusterExtraWalkDecoderBound_of_rangeDecoderCovers
+    physicalShiftedConnectingClusterCountBoundExp_of_rangeDecoderCovers
+
+`plaquetteWalkRangeFinset w` is the finite set of plaquettes visited by a
+finite walk, implemented as:
+
+    Finset.univ.image w.1
+
+Lean proves that the start plaquette belongs to this set, every indexed walk
+vertex belongs to it, and its cardinality is at most `n+1` for a length-`n`
+walk.
+
+The new concrete coverage target is:
+
+    PhysicalConnectingClusterRangeDecoderCovers
+
+stating that every shifted physical connecting-cluster bucket is exactly the
+visited set of some length-`n` walk from the marked start plaquette.  Assuming
+that coverage theorem, Lean now derives the abstract decoder target and then
+the physical F3 count frontier:
+
+    PhysicalShiftedConnectingClusterCountBoundExp 1 1296.
+
+## Why
+
+No percentage bar moves.  This turns the previous decoder contract into a
+specific candidate decoder: decode a walk by taking its visited-set range.
+The remaining proof obligation is the graph-theoretic coverage theorem that
+every bucket in the shifted connected-cluster class is representable this way.
+
+This is the first concrete shape of the actual BFS/tree proof rather than only
+an abstract injection/decoder interface.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteWalk_start_mem_rangeFinset
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteWalk_vertex_mem_rangeFinset
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteWalk_rangeFinset_card_le
+      [propext, Classical.choice, Quot.sound]
+
+    physicalConnectingClusterExtraWalkDecoderBound_of_rangeDecoderCovers
+      [propext, Classical.choice, Quot.sound]
+
+    physicalShiftedConnectingClusterCountBoundExp_of_rangeDecoderCovers
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.00.0 — decoder-form BFS target bridges to physical F3 count
 
 **Released: 2026-04-25**
