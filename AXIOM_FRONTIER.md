@@ -1,3 +1,47 @@
+# v1.58.0 — Finite-volume connecting-cluster buckets vanish outside range
+
+**Released: 2026-04-25**
+
+## What
+
+Added the range-indexed finite-volume support cutoff in
+`YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    connecting_cluster_count_eq_zero_of_not_mem_range
+
+For fixed `d`, `L`, plaquettes `p q`, and bucket index `n`, if
+
+    n ∉ Finset.range (Fintype.card (ConcretePlaquette d L) + 1)
+
+then the filtered bucket of connected polymers containing `p` and `q` with
+cardinality `n + ⌈siteLatticeDist p.site q.site⌉₊` has cardinality `0`.
+
+## Why
+
+No percentage bar moves.  This packages v1.57.0 in the exact range language
+already used by `ClusterRpowBridge.lean` bucket sums.  Since leaving
+`range (card + 1)` gives `card + 1 ≤ n`, the requested bucket cardinality is
+automatically larger than the finite plaquette universe, so v1.57.0 discharges
+the bucket as empty.
+
+This remains a finite-support cleanup, not the uniform lattice-animal estimate.
+Its role is to keep later sum-range manipulations local and explicit.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+
+Pinned trace:
+
+    connecting_cluster_count_eq_zero_of_not_mem_range
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.57.0 — Finite-volume connecting-cluster buckets vanish above universe size
 
 **Released: 2026-04-25**

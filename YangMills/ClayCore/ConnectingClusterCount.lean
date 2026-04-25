@@ -616,6 +616,23 @@ theorem connecting_cluster_count_eq_zero_of_card_lt
   · intro hfalse
     simp at hfalse
 
+/-- Buckets indexed outside the natural finite-volume range are empty.
+
+The canonical range is `range (card + 1)` because no finite polymer in the
+volume can have cardinality larger than the number of plaquettes. -/
+theorem connecting_cluster_count_eq_zero_of_not_mem_range
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn :
+      n ∉ Finset.range (Fintype.card (ConcretePlaquette d L) + 1)) :
+    ((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun X =>
+          p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+            X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card = 0 := by
+  apply connecting_cluster_count_eq_zero_of_card_lt p q n
+  simp only [Finset.mem_range, not_lt] at hn
+  omega
+
 /-- Every finite plaquette lattice has a trivial shifted count bound with
 dimension `0` and constant equal to the total number of finite plaquette
 subsets plus one.
@@ -753,6 +770,7 @@ theorem connected_polymer_card_eq_extra_add_dist
 
 #print axioms connecting_cluster_count_finite
 #print axioms connecting_cluster_count_eq_zero_of_card_lt
+#print axioms connecting_cluster_count_eq_zero_of_not_mem_range
 #print axioms connected_polymer_card_eq_extra_add_dist
 #print axioms C_conn_const_pos_of_neZero
 #print axioms ShiftedConnectingClusterCountBound.apply
