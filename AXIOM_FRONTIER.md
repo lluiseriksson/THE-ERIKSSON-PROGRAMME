@@ -1,3 +1,53 @@
+# v1.56.0 — L8 F3 subpackage routes expose mono-count-dimension constants
+
+**Released: 2026-04-25**
+
+## What
+
+Added subpackage-route terminal bundle constant canaries in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_mono_count_dim_prefactor_eq
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_mono_count_dim_prefactor_eq
+    connectedCorrDecayBundle_of_globalMayer_physicalCount_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_globalMayer_physicalCount_mono_count_dim_prefactor_eq
+
+## Why
+
+No percentage bar moves.  v1.55.0 covered the single-package endpoints after
+`mono_count_dim`; this pass covers the routes a proof script is likely to use
+while the Mayer and count halves are still developed separately:
+
+    physical shifted F3 subpackages
+    fully physical F3 subpackages
+    global Mayer + physical count
+
+In each route, replacing `count` by `count.mono_dim k` leaves the terminal
+bundle mass equal to `kpParameter wab.r` and exposes the enlarged prefactor
+
+    clusterPrefactorShifted wab.r count.C_conn mayer.A₀ (count.dim + k)
+      + 2 * Real.exp (kpParameter wab.r)
+
+This keeps the F3 terminal API stable whether the count exponent is enlarged at
+the count-package layer, the combined-package layer, or directly at a
+subpackage endpoint.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces: all six new declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.55.0 — L8 F3 bundles expose mono-count-dimension constants
 
 **Released: 2026-04-25**

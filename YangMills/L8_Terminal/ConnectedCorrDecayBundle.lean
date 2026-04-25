@@ -781,9 +781,48 @@ theorem connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_prefactor_eq
       clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim +
         2 * Real.exp (kpParameter wab.r) := rfl
 
+/-- After increasing the count polynomial dimension in the physical shifted F3
+subpackage route, the bundle-level endpoint still has decay rate
+`kpParameter wab.r`. -/
+theorem connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_mono_count_dim_mass_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (k : ℕ)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_siteDist_measurableF
+      wab mayer (count.mono_dim k) β F hβ hF hF_meas).ccd.m =
+      kpParameter wab.r := rfl
+
+/-- After increasing the count polynomial dimension in the physical shifted F3
+subpackage route, the bundle-level endpoint exposes the enlarged shifted
+prefactor. -/
+theorem connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_mono_count_dim_prefactor_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (k : ℕ)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_siteDist_measurableF
+      wab mayer (count.mono_dim k) β F hβ hF hF_meas).ccd.C =
+      clusterPrefactorShifted wab.r count.C_conn mayer.A₀ (count.dim + k) +
+        2 * Real.exp (kpParameter wab.r) := rfl
+
 #print axioms connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_mass_eq
 #print axioms connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_prefactor_eq
+#print axioms connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_mono_count_dim_mass_eq
+#print axioms connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_mono_count_dim_prefactor_eq
 
 /-- Direct physical endpoint from the single-package physical shifted F3
 frontier. -/
@@ -1006,6 +1045,43 @@ theorem connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_prefactor_e
       clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim +
         2 * Real.exp (kpParameter wab.r) := rfl
 
+/-- After increasing the count polynomial dimension in the fully physical F3
+subpackage route, the bundle-level endpoint still has decay rate
+`kpParameter wab.r`. -/
+theorem connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_mono_count_dim_mass_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (k : ℕ)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
+      wab mayer (count.mono_dim k) β F hβ hF hF_meas).ccd.m =
+      kpParameter wab.r := rfl
+
+/-- After increasing the count polynomial dimension in the fully physical F3
+subpackage route, the bundle-level endpoint exposes the enlarged shifted
+prefactor. -/
+theorem connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_mono_count_dim_prefactor_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (k : ℕ)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
+      wab mayer (count.mono_dim k) β F hβ hF hF_meas).ccd.C =
+      clusterPrefactorShifted wab.r count.C_conn mayer.A₀ (count.dim + k) +
+        2 * Real.exp (kpParameter wab.r) := rfl
+
 /-- Bundle-level physical endpoint from an all-dimensions Mayer package and
 the physical count package, via the preferred physical-only F3 package. -/
 noncomputable def connectedCorrDecayBundle_of_globalMayer_physicalCount_siteDist_measurableF
@@ -1052,6 +1128,43 @@ theorem connectedCorrDecayBundle_of_globalMayer_physicalCount_prefactor_eq
     (connectedCorrDecayBundle_of_globalMayer_physicalCount_siteDist_measurableF
       wab mayer count β F hβ hF hF_meas).ccd.C =
       clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim +
+        2 * Real.exp (kpParameter wab.r) := rfl
+
+/-- After increasing the count polynomial dimension in the global-Mayer /
+physical-count route, the bundle-level endpoint still has decay rate
+`kpParameter wab.r`. -/
+theorem connectedCorrDecayBundle_of_globalMayer_physicalCount_mono_count_dim_mass_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (k : ℕ)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_globalMayer_physicalCount_siteDist_measurableF
+      wab mayer (count.mono_dim k) β F hβ hF hF_meas).ccd.m =
+      kpParameter wab.r := rfl
+
+/-- After increasing the count polynomial dimension in the global-Mayer /
+physical-count route, the bundle-level endpoint exposes the enlarged shifted
+prefactor. -/
+theorem connectedCorrDecayBundle_of_globalMayer_physicalCount_mono_count_dim_prefactor_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (k : ℕ)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_globalMayer_physicalCount_siteDist_measurableF
+      wab mayer (count.mono_dim k) β F hβ hF hF_meas).ccd.C =
+      clusterPrefactorShifted wab.r count.C_conn mayer.A₀ (count.dim + k) +
         2 * Real.exp (kpParameter wab.r) := rfl
 
 /-- Bundle-level physical endpoint from the global single F3 package, routed
@@ -1198,9 +1311,13 @@ theorem physicalStrong_of_globalMayer_physicalCount_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_mass_eq
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_prefactor_eq
+#print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_mono_count_dim_mass_eq
+#print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_mono_count_dim_prefactor_eq
 #print axioms connectedCorrDecayBundle_of_globalMayer_physicalCount_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_globalMayer_physicalCount_mass_eq
 #print axioms connectedCorrDecayBundle_of_globalMayer_physicalCount_prefactor_eq
+#print axioms connectedCorrDecayBundle_of_globalMayer_physicalCount_mono_count_dim_mass_eq
+#print axioms connectedCorrDecayBundle_of_globalMayer_physicalCount_mono_count_dim_prefactor_eq
 #print axioms connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mass_eq
 #print axioms connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_prefactor_eq
