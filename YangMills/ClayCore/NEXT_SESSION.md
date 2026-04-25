@@ -626,6 +626,17 @@ available as the KP-compatible count surface:
 Prefer this surface if the lattice-animal estimate lands with an exponential
 bucket profile `C_conn * K^n`; downstream consumers should then carry the
 smallness hypothesis `r * K < 1`.
+The matching KP-series consumer is in `ClusterSeriesBound.lean`:
+
+    connecting_cluster_tsum_summable_exp
+    connecting_cluster_summand_nonneg_exp
+    connecting_cluster_partial_sum_le_tsum_exp
+    clusterPrefactorExp
+    clusterPrefactorExp_pos
+    connecting_cluster_tsum_le_exp
+
+It factors `∑' n, C_conn * K^n * A₀ * r^(n + dist)` into
+`clusterPrefactorExp r K C_conn A₀ * r^dist` under `K * r < 1`.
 If a later estimate has to absorb an extra polynomial factor, use the
 `mono_dim` lemmas above to move from `dim` to `dim + k` while preserving the
 same `C_conn`.  At package level the simp lemmas

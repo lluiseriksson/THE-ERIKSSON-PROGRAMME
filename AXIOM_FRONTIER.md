@@ -1,3 +1,66 @@
+# v1.80.0 — exponential KP series prefactor for F3 counts
+
+**Released: 2026-04-25**
+
+## What
+
+Added exponential KP-series consumers in
+`YangMills/ClayCore/ClusterSeriesBound.lean`:
+
+    connecting_cluster_tsum_summable_exp
+    connecting_cluster_summand_nonneg_exp
+    connecting_cluster_partial_sum_le_tsum_exp
+    connecting_cluster_tsum_eq_factored_exp
+    inner_sum_pos_exp
+    clusterPrefactorExp
+    clusterPrefactorExp_pos
+    connecting_cluster_tsum_le_exp
+
+These factor the exponential count/activity profile
+
+    ∑' n, C_conn * K^n * A₀ * r^(n + dist)
+
+as
+
+    clusterPrefactorExp r K C_conn A₀ * r^dist
+
+under the KP smallness condition `0 < r`, `0 < K`, and `K * r < 1`.
+
+## Why
+
+No percentage bar moves.  This is the consumer-side companion to v1.79.0's
+exponential count frontier.  It makes the honest lattice-animal shape
+`C_conn * K^n` summable after multiplication by the polymer activity rate
+`r^n`, exactly when the future proof supplies `K * r < 1`.
+
+The open mathematical target remains the uniform exponential lattice-animal
+count estimate itself, plus the downstream bridge from exponential count
+packages to `ClusterCorrelatorBound`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterSeriesBound
+
+Pinned traces:
+
+    connecting_cluster_summand_nonneg_exp
+      [propext, Classical.choice, Quot.sound]
+
+    connecting_cluster_partial_sum_le_tsum_exp
+      [propext, Classical.choice, Quot.sound]
+
+    clusterPrefactorExp_pos
+      [propext, Classical.choice, Quot.sound]
+
+    connecting_cluster_tsum_le_exp
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.79.0 — exponential F3 count frontier interface
 
 **Released: 2026-04-25**
