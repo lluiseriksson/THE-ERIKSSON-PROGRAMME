@@ -1,3 +1,56 @@
+# v2.09.0 — lattice-animal physical F3 handoff bridge
+
+**Released: 2026-04-25**
+
+## What
+
+Added `YangMills/ClayCore/LatticeAnimalF3Bridge.lean`, a small terminal bridge
+from the live physical lattice-animal count target into the physical-only
+exponential F3 route:
+
+    physicalOnlyShiftedF3MayerCountPackageExp_of_baselineExtraWordDecoderCovers1296
+    physicalClusterCorrelatorBound_of_baselineExtraWordDecoderCovers1296
+
+plus simp canaries pinning the produced package constants:
+
+    count.C_conn = 1
+    count.K = 1296
+    mayer.A₀ = mayer.A₀
+
+The bridge states that the three remaining physical exponential F3 inputs
+
+    PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296
+    PhysicalShiftedF3MayerPackage N_c wab
+    (1296 : ℝ) * wab.r < 1
+
+produce the Wilson-facing physical cluster-correlator bound via the v2.08
+`PhysicalOnlyShiftedF3MayerCountPackageExp` endpoint.
+
+## Why
+
+No percentage bar moves. This removes one more layer of manual composition:
+once the decoder and physical Mayer package are constructed, the route into
+`PhysicalClusterCorrelatorBound` is a single named theorem. The live
+mathematical work remains exactly the same: prove the `1296`
+baseline-plus-word decoder and construct the physical Mayer/activity package.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalF3Bridge
+
+Pinned trace:
+
+    physicalOnlyShiftedF3MayerCountPackageExp_of_baselineExtraWordDecoderCovers1296
+      [propext, Classical.choice, Quot.sound]
+    physicalClusterCorrelatorBound_of_baselineExtraWordDecoderCovers1296
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.08.0 — physical-only exponential F3 package
 
 **Released: 2026-04-25**
