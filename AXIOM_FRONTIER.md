@@ -1,3 +1,43 @@
+# v2.13.0 — graph-animal 1296 F3-count package bridge
+
+**Released: 2026-04-25**
+
+## What
+
+Added the `1296`-specialized graph-animal count bridge in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PhysicalConnectingClusterGraphAnimalShiftedCountBound1296
+    physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount1296
+    physicalShiftedF3CountPackageExp_of_graphAnimalShiftedCount1296
+
+## Why
+
+No percentage bar moves. This packages the v2.12 graph-animal shifted count
+interface at the current physical alphabet constant `1296`. A proof of
+
+    PhysicalConnectingClusterGraphAnimalShiftedCountBound1296
+
+now directly produces the downstream `PhysicalShiftedF3CountPackageExp`
+consumed by the physical exponential F3 route.
+
+Remaining mathematical work: prove the `1296` shifted graph-animal count
+itself.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace for the two new bridges:
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.12.0 — graph-animal shifted count interface
 
 **Released: 2026-04-25**

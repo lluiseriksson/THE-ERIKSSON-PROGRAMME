@@ -1382,6 +1382,27 @@ theorem physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount
     exact_mod_cast hnat
   simpa using hreal
 
+/-- Physical graph-animal shifted count target at the current `1296` alphabet
+constant. -/
+abbrev PhysicalConnectingClusterGraphAnimalShiftedCountBound1296 : Prop :=
+  PhysicalConnectingClusterGraphAnimalShiftedCountBound 1296
+
+/-- Physical-specialized bridge from the graph-animal shifted count target to
+the exponential F3-count frontier. -/
+theorem physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount1296
+    (hgraph : PhysicalConnectingClusterGraphAnimalShiftedCountBound1296) :
+    PhysicalShiftedConnectingClusterCountBoundExp 1 1296 :=
+  physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount hgraph
+
+/-- Package the physical `1296` graph-animal shifted count target as the
+physical exponential F3-count package consumed downstream. -/
+def physicalShiftedF3CountPackageExp_of_graphAnimalShiftedCount1296
+    (hgraph : PhysicalConnectingClusterGraphAnimalShiftedCountBound1296) :
+    PhysicalShiftedF3CountPackageExp :=
+  PhysicalShiftedF3CountPackageExp.ofBound 1 1296 one_pos (by norm_num)
+    (physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount1296
+      hgraph)
+
 #print axioms siteLatticeDist_symm
 #print axioms plaquetteGraph_adj_siteLatticeDist_le_one
 #print axioms plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one
@@ -1460,5 +1481,7 @@ theorem physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount
 #print axioms physical_connectingCluster_filter_subset_graphAnimalShifted
 #print axioms physical_connectingCluster_filter_card_le_graphAnimalShifted
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount
+#print axioms physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount1296
+#print axioms physicalShiftedF3CountPackageExp_of_graphAnimalShiftedCount1296
 
 end YangMills
