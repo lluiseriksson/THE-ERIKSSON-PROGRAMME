@@ -86,6 +86,16 @@ package, so it is useful when an all-dimensions Mayer theorem is available.
 For the actual Clay-physical route, prefer
 `PhysicalOnlyShiftedF3MayerCountPackage N_c wab`.
 
+If a future proof produces the older global Mayer package, restrict it into the
+fully physical route by:
+
+    ConnectedCardDecayMayerData.toPhysical
+    ShiftedF3MayerPackage.toPhysical
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer
+
+This keeps all-dimensions Mayer results compatible with the preferred
+`physicalClayDimension = 4` package without duplicating downstream endpoints.
+
 Supplying either the single package or both halves yields, oracle-clean:
 
     ClusterCorrelatorBound

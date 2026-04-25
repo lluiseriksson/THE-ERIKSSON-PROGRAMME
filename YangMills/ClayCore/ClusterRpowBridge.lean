@@ -1796,11 +1796,26 @@ theorem wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
 
 end PhysicalConnectedCardDecayMayerData
 
+/-- Restrict all-dimensions Mayer/activity data to the physical Clay
+dimension. -/
+def ConnectedCardDecayMayerData.toPhysical
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg) :
+    PhysicalConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg where
+  K := fun β F p q Y =>
+    data.K (d := physicalClayDimension) β F p q Y
+  hK_abs_le := fun β F p q Y =>
+    data.hK_abs_le (d := physicalClayDimension) β F p q Y
+  h_mayer := fun β hβ F hF p q hdist =>
+    data.h_mayer (d := physicalClayDimension) β hβ F hF p q hdist
+
 #print axioms PhysicalConnectedCardDecayMayerData.toTruncatedActivities
 #print axioms PhysicalConnectedCardDecayMayerData.toTruncatedActivities_K
 #print axioms PhysicalConnectedCardDecayMayerData.toTruncatedActivities_K_bound_le_cardDecay
 #print axioms PhysicalConnectedCardDecayMayerData.toTruncatedActivities_K_bound_eq_zero_of_not_connected
 #print axioms PhysicalConnectedCardDecayMayerData.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+#print axioms ConnectedCardDecayMayerData.toPhysical
 
 /-- Preferred physical `d = 4` F3 endpoint from Mayer data and the physical
 four-dimensional shifted count frontier. -/
@@ -2388,7 +2403,59 @@ theorem wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
   exact pkg.data.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
     β hβ F hF p q hdist
 
+/-- Restrict a global shifted Mayer package to the physical Clay dimension. -/
+def toPhysical
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerPackage N_c wab) :
+    PhysicalShiftedF3MayerPackage N_c wab where
+  A₀ := pkg.A₀
+  hA := pkg.hA
+  data := pkg.data.toPhysical
+
+@[simp] theorem toPhysical_A₀
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerPackage N_c wab) :
+    pkg.toPhysical.A₀ = pkg.A₀ := rfl
+
+@[simp] theorem toPhysical_data
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerPackage N_c wab) :
+    pkg.toPhysical.data = pkg.data.toPhysical := rfl
+
 end ShiftedF3MayerPackage
+
+#print axioms ShiftedF3MayerPackage.toPhysical
+#print axioms ShiftedF3MayerPackage.toPhysical_A₀
+#print axioms ShiftedF3MayerPackage.toPhysical_data
+
+namespace PhysicalOnlyShiftedF3MayerCountPackage
+
+/-- Build the fully physical package from an all-dimensions Mayer package by
+restricting its Mayer half to `physicalClayDimension = 4`. -/
+def ofGlobalMayer
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    PhysicalOnlyShiftedF3MayerCountPackage N_c wab :=
+  ofSubpackages mayer.toPhysical count
+
+@[simp] theorem ofGlobalMayer_mayerPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    mayerPackage (ofGlobalMayer mayer count) = mayer.toPhysical := rfl
+
+@[simp] theorem ofGlobalMayer_countPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    countPackage (ofGlobalMayer mayer count) = count := rfl
+
+end PhysicalOnlyShiftedF3MayerCountPackage
+
+#print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer
+#print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_mayerPackage
+#print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_countPackage
 
 /-- Physical `d = 4` F3 endpoint from independently-produced Mayer and
 physical count packages. -/

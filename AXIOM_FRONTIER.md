@@ -1,3 +1,58 @@
+# v1.38.0 — Global Mayer data restricts to the physical F3 route
+
+**Released: 2026-04-25**
+
+## What
+
+Added compatibility converters in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    ConnectedCardDecayMayerData.toPhysical
+    ShiftedF3MayerPackage.toPhysical
+    ShiftedF3MayerPackage.toPhysical_A₀
+    ShiftedF3MayerPackage.toPhysical_data
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_mayerPackage
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_countPackage
+
+## Why
+
+No percentage bar moves.  This is compatibility glue between the older
+all-dimensions Mayer interface and the new fully physical `d = 4` F3 package.
+Any future proof producing
+
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+can now mechanically enter the preferred fully physical route by restricting
+the Mayer half to `physicalClayDimension = 4`:
+
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer mayer count
+
+The Clay-critical physical route remains sharper: the minimal remaining
+assumption is still
+
+    mayer : PhysicalShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+but the global route now reuses it definitionally instead of carrying a parallel
+API.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all new converters and simp projection lemmas print the
+canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.37.0 — Fully physical F3 package reaches PhysicalStrong
 
 **Released: 2026-04-25**
