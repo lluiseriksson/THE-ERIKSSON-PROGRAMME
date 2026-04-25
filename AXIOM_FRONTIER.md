@@ -1,3 +1,44 @@
+# v2.14.0 — graph-animal count handoff to physical F3 bridge
+
+**Released: 2026-04-25**
+
+## What
+
+Added the graph-animal `1296` route to
+`YangMills/ClayCore/LatticeAnimalF3Bridge.lean`:
+
+    physicalOnlyShiftedF3MayerCountPackageExp_of_graphAnimalShiftedCount1296
+    physicalOnlyShiftedF3MayerCountPackageExp_of_graphAnimalShiftedCount1296_C_conn
+    physicalOnlyShiftedF3MayerCountPackageExp_of_graphAnimalShiftedCount1296_K
+    physicalOnlyShiftedF3MayerCountPackageExp_of_graphAnimalShiftedCount1296_A₀
+    physicalClusterCorrelatorBound_of_graphAnimalShiftedCount1296
+
+## Why
+
+No percentage bar moves. This connects the v2.13 graph-animal shifted count
+target to the same physical exponential F3 handoff previously available for
+the baseline-plus-word decoder route. A proof of
+`PhysicalConnectingClusterGraphAnimalShiftedCountBound1296`, together with the
+physical Mayer package and `(1296 : ℝ) * wab.r < 1`, now reaches
+`PhysicalClusterCorrelatorBound` by one named theorem.
+
+Remaining mathematical work: prove the graph-animal count, the physical Mayer
+package, and the smallness input.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalF3Bridge
+
+Pinned trace for the five new declarations:
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.13.0 — graph-animal 1296 F3-count package bridge
 
 **Released: 2026-04-25**
