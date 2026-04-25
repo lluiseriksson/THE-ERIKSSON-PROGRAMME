@@ -3,6 +3,7 @@ import YangMills.ClayCore.ConnectedCorrDecay
 import YangMills.ClayCore.ClusterCorrelatorBound
 import YangMills.ClayCore.ClusterRpowBridge
 import YangMills.ClayCore.LatticeAnimalF3Bridge
+import YangMills.ClayCore.WilsonHaarBaseCase
 import YangMills.ClayCore.ZeroMeanCancellation
 import YangMills.L2_Balaban.Measurability
 namespace YangMills
@@ -1649,6 +1650,32 @@ theorem physicalStrong_of_graphAnimalTotalWordDecoder1296_siteDist_measurableF
       wab mayer hdecode hKr_lt1)
     β F hβ hF hF_meas
 
+/-- Small-β terminal form of the corrected total-size graph-animal route.
+
+For the concrete clipped Wilson activity producer
+`wilsonActivityBound_from_expansion`, the decay rate is definitionally
+`wab.r = β`, so the KP smallness condition becomes the explicit inequality
+`1296 * β < 1`. -/
+theorem physicalStrong_of_graphAnimalTotalWordDecoder1296_smallBeta_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (hβ_small : (1296 : ℝ) * β < 1)
+    (mayer : PhysicalShiftedF3MayerPackage N_c
+      (wilsonActivityBound_from_expansion N_c hβ_pos hβ_lt1))
+    (hdecode : PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_graphAnimalTotalWordDecoder1296_siteDist_measurableF
+    (wilsonActivityBound_from_expansion N_c hβ_pos hβ_lt1)
+    mayer hdecode
+    (by simpa [wilsonActivityBound_from_expansion] using hβ_small)
+    β F hβ_pos hF hF_meas
+
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mass_eq
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_prefactor_eq
@@ -1680,6 +1707,7 @@ theorem physicalStrong_of_graphAnimalTotalWordDecoder1296_siteDist_measurableF
 #print axioms physicalStrong_of_graphAnimalShiftedCount1296_siteDist_measurableF
 #print axioms physicalStrong_of_graphAnimalWordDecoder1296_siteDist_measurableF
 #print axioms physicalStrong_of_graphAnimalTotalWordDecoder1296_siteDist_measurableF
+#print axioms physicalStrong_of_graphAnimalTotalWordDecoder1296_smallBeta_siteDist_measurableF
 
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
 

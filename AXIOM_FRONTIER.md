@@ -1,3 +1,55 @@
+# v2.22.0 — small-β terminal wrapper for total-size F3
+
+**Released: 2026-04-25**
+
+## What
+
+Added the terminal small-β wrapper
+
+    physicalStrong_of_graphAnimalTotalWordDecoder1296_smallBeta_siteDist_measurableF
+
+in `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+For the concrete clipped Wilson producer
+
+    wilsonActivityBound_from_expansion N_c hβ_pos hβ_lt1
+
+the polymer decay rate is definitionally `r = β`. The new wrapper therefore
+replaces the internal package-side smallness condition
+
+    (1296 : ℝ) * wab.r < 1
+
+by the explicit coupling inequality
+
+    (1296 : ℝ) * β < 1.
+
+## Why
+
+No percentage bar moves. This is a routing/composition closure on top of
+v2.21: the corrected total-size graph-animal route now starts at the concrete
+small-β Wilson activity producer rather than at an arbitrary
+`WilsonPolymerActivityBound`.
+
+The remaining open inputs are still mathematical producers, not glue:
+`PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296` and the
+physical Mayer package for `wilsonActivityBound_from_expansion`, plus the
+explicit small-coupling inequality.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace:
+
+    physicalStrong_of_graphAnimalTotalWordDecoder1296_smallBeta_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.21.0 — physical total-size F3 route to L8
 
 **Released: 2026-04-25**
