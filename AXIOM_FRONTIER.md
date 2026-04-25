@@ -1,3 +1,59 @@
+# v1.33.0 — Physical F3 package projections exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added projection helpers for the single physical F3 package in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    PhysicalShiftedF3MayerCountPackage.mayerPackage
+    PhysicalShiftedF3MayerCountPackage.countPackage
+
+with definitional simp/audit lemmas:
+
+    ofSubpackages_mayerPackage
+    ofSubpackages_countPackage
+    mayerPackage_A₀
+    mayerPackage_data
+    countPackage_C_conn
+    countPackage_dim
+    ofSubpackages_mayerPackage_countPackage
+
+## Why
+
+No percentage bar moves.  This is API sharpening for the active physical F3
+route: future scripts can treat
+
+    pkg : PhysicalShiftedF3MayerCountPackage N_c wab
+
+as a reversible package of its Mayer/activity half and physical count half
+without reaching through raw structure fields.  The inverse simp lemma records
+that rebuilding the package from these two projections is definitionally the
+same package.
+
+The remaining mathematical obligations are unchanged:
+
+    ShiftedF3MayerPackage N_c wab
+    PhysicalShiftedF3CountPackage
+
+for `N_c ≥ 2`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces: all nine new projection declarations print the canonical
+project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.32.0 — Physical F3 subpackage bundle certificate exposed
 
 **Released: 2026-04-25**

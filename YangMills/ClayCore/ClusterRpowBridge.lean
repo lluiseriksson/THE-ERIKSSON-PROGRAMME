@@ -2046,6 +2046,20 @@ def ofSubpackages
   mayer := mayer
   count := count
 
+/-- Project the Mayer/activity half out of a single physical F3 package. -/
+def mayerPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    ShiftedF3MayerPackage N_c wab :=
+  pkg.mayer
+
+/-- Project the physical count half out of a single physical F3 package. -/
+def countPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    PhysicalShiftedF3CountPackage :=
+  pkg.count
+
 @[simp] theorem ofSubpackages_mayer
     {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
     (mayer : ShiftedF3MayerPackage N_c wab)
@@ -2057,6 +2071,43 @@ def ofSubpackages
     (mayer : ShiftedF3MayerPackage N_c wab)
     (count : PhysicalShiftedF3CountPackage) :
     (ofSubpackages mayer count).count = count := rfl
+
+@[simp] theorem ofSubpackages_mayerPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    mayerPackage (ofSubpackages mayer count) = mayer := rfl
+
+@[simp] theorem ofSubpackages_countPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    countPackage (ofSubpackages mayer count) = count := rfl
+
+@[simp] theorem mayerPackage_A₀
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    (mayerPackage pkg).A₀ = pkg.mayer.A₀ := rfl
+
+@[simp] theorem mayerPackage_data
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    (mayerPackage pkg).data = pkg.mayer.data := rfl
+
+@[simp] theorem countPackage_C_conn
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    (countPackage pkg).C_conn = pkg.count.C_conn := rfl
+
+@[simp] theorem countPackage_dim
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    (countPackage pkg).dim = pkg.count.dim := rfl
+
+@[simp] theorem ofSubpackages_mayerPackage_countPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
+    ofSubpackages (mayerPackage pkg) (countPackage pkg) = pkg := rfl
 
 /-- The physical finite-volume truncated activities carried by the Mayer half
 of a physical F3 package. -/
@@ -2162,8 +2213,17 @@ theorem physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
     wab pkg.mayer pkg.count
 
 #print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages
+#print axioms PhysicalShiftedF3MayerCountPackage.mayerPackage
+#print axioms PhysicalShiftedF3MayerCountPackage.countPackage
 #print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages_mayer
 #print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages_count
+#print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages_mayerPackage
+#print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages_countPackage
+#print axioms PhysicalShiftedF3MayerCountPackage.mayerPackage_A₀
+#print axioms PhysicalShiftedF3MayerCountPackage.mayerPackage_data
+#print axioms PhysicalShiftedF3MayerCountPackage.countPackage_C_conn
+#print axioms PhysicalShiftedF3MayerCountPackage.countPackage_dim
+#print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages_mayerPackage_countPackage
 #print axioms PhysicalShiftedF3MayerCountPackage.toTruncatedActivities
 #print axioms PhysicalShiftedF3MayerCountPackage.toTruncatedActivities_K
 #print axioms PhysicalShiftedF3MayerCountPackage.toTruncatedActivities_K_bound_le_cardDecay

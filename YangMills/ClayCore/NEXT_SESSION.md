@@ -27,6 +27,8 @@ and feeds directly into the physical endpoint.
 The physical package also exposes the finite-volume consumers needed by proof
 scripts:
 
+    PhysicalShiftedF3MayerCountPackage.mayerPackage
+    PhysicalShiftedF3MayerCountPackage.countPackage
     PhysicalShiftedF3MayerCountPackage.toTruncatedActivities
     PhysicalShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
     PhysicalShiftedF3MayerCountPackage.apply_count
@@ -34,11 +36,15 @@ scripts:
 Use these package-level names inside future F3 scripts instead of repeatedly
 projecting through `pkg.mayer` and `pkg.count`.
 
+The two projections are reversible by definitional equality:
+
+    PhysicalShiftedF3MayerCountPackage.ofSubpackages_mayerPackage_countPackage
+
 It can be supplied directly, or mechanically assembled from the two independent
 frontier halves:
 
     mayer : ShiftedF3MayerPackage N_c wab
-    count : ShiftedF3CountPackage
+    count : PhysicalShiftedF3CountPackage
 
 Supplying either the single package or both halves yields, oracle-clean:
 
