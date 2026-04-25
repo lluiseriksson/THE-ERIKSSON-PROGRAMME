@@ -1321,6 +1321,24 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one
     Finset.card_le_card
       (plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton root)
 
+/-- Size-zero anchored graph-animal buckets satisfy the target exponential
+count inequality for every growth constant. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_card_le_pow
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (root : ConcretePlaquette d L) (K : ℕ) :
+    (plaquetteGraphPreconnectedSubsetsAnchoredCard d L root 0).card ≤ K ^ 0 := by
+  rw [plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty root]
+  simp
+
+/-- Size-one anchored graph-animal buckets satisfy the target exponential count
+inequality for every growth constant `K ≥ 1`. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_pow
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (root : ConcretePlaquette d L) {K : ℕ} (hK : 1 ≤ K) :
+    (plaquetteGraphPreconnectedSubsetsAnchoredCard d L root 1).card ≤ K ^ 1 := by
+  exact (plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one root).trans
+    (by simpa using hK)
+
 /-- Physical anchored graph-animal count target.
 
 This is the classical lattice-animal counting shape: the number of connected
@@ -1919,6 +1937,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_card_le_pow
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_pow
 #print axioms PhysicalPlaquetteGraphAnimalAnchoredCountBound.mono
 #print axioms plaquetteGraphPreconnectedConnectingSubsetsShifted_subset_anchored
 #print axioms plaquetteGraphPreconnectedConnectingSubsetsShifted_card_le_anchored

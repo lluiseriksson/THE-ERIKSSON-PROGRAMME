@@ -10,10 +10,14 @@ Added the first closed base facts for the anchored graph-animal count bucket in
     plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
     plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton
     plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_card_le_pow
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_pow
 
 The `k = 0` bucket is empty because every anchored bucket element must contain
 the root. The `k = 1` bucket is contained in the singleton bucket `{ {root} }`,
-hence has cardinality at most one.
+hence has cardinality at most one. The last two lemmas restate those base
+cases in the exact exponential-count shape `card ≤ K^k` consumed by the
+anchored graph-animal target.
 
 ## Why
 
@@ -41,6 +45,12 @@ Pinned traces:
       [propext, Classical.choice, Quot.sound]
 
     plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_card_le_pow
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_pow
       [propext, Classical.choice, Quot.sound]
 
 No `sorry`. Non-Experimental Lean axiom count remains 0.
