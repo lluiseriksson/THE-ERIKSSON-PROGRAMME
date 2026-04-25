@@ -1357,6 +1357,68 @@ def PhysicalConnectingClusterGraphAnimalShiftedCountBound (K : ℕ) : Prop :=
     (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ),
     (plaquetteGraphPreconnectedConnectingSubsetsShifted L p q n).card ≤ K ^ n
 
+/-- Decoder-form graph-animal target: every shifted graph-animal bucket is in
+the image of a length-`n` word decoder over an alphabet of size `K`. -/
+def PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound (K : ℕ) : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ),
+    ∃ decode : (Fin n → Fin K) → Finset (ConcretePlaquette physicalClayDimension L),
+      ∀ X ∈ plaquetteGraphPreconnectedConnectingSubsetsShifted L p q n,
+        ∃ word : Fin n → Fin K, decode word = X
+
+/-- Choose, for each shifted graph-animal bucket element, one word decoding to
+it. -/
+noncomputable def physicalGraphAnimalShiftedWordCodeOfDecoder
+    {K : ℕ} (hdecode :
+      PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound K)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    {X : Finset (ConcretePlaquette physicalClayDimension L) //
+      X ∈ plaquetteGraphPreconnectedConnectingSubsetsShifted L p q n} →
+      (Fin n → Fin K) :=
+  let hcover := Classical.choose_spec (hdecode p q n)
+  fun X => Classical.choose (hcover X.1 X.2)
+
+/-- The chosen word code from a covering graph-animal decoder is injective. -/
+theorem physicalGraphAnimalShiftedWordCodeOfDecoder_injective
+    {K : ℕ} (hdecode :
+      PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound K)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    Function.Injective
+      (physicalGraphAnimalShiftedWordCodeOfDecoder hdecode p q n) := by
+  intro X Y h
+  apply Subtype.ext
+  let decode := Classical.choose (hdecode p q n)
+  let hcover := Classical.choose_spec (hdecode p q n)
+  have hX : decode (Classical.choose (hcover X.1 X.2)) = X.1 := by
+    exact Classical.choose_spec (hcover X.1 X.2)
+  have hY : decode (Classical.choose (hcover Y.1 Y.2)) = Y.1 := by
+    exact Classical.choose_spec (hcover Y.1 Y.2)
+  have hdec := congrArg decode h
+  dsimp [physicalGraphAnimalShiftedWordCodeOfDecoder] at hdec
+  change decode (Classical.choose (hcover X.1 X.2)) =
+    decode (Classical.choose (hcover Y.1 Y.2)) at hdec
+  rw [hX, hY] at hdec
+  exact hdec
+
+/-- A graph-animal word decoder gives the exact `K^n` graph-animal count
+bound. -/
+theorem physicalGraphAnimalShiftedCountBound_of_wordDecoder
+    {K : ℕ}
+    (hdecode : PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound K) :
+    PhysicalConnectingClusterGraphAnimalShiftedCountBound K := by
+  intro L _ p q n
+  let S := plaquetteGraphPreconnectedConnectingSubsetsShifted L p q n
+  have hcard :
+      Fintype.card {X : Finset (ConcretePlaquette physicalClayDimension L) //
+          X ∈ S} ≤
+        Fintype.card (Fin n → Fin K) :=
+    Fintype.card_le_of_injective
+      (physicalGraphAnimalShiftedWordCodeOfDecoder hdecode p q n)
+      (physicalGraphAnimalShiftedWordCodeOfDecoder_injective hdecode p q n)
+  simpa [S, Fintype.card_subtype, Fintype.card_fun] using hcard
+
 /-- A shifted graph-animal count estimate discharges the physical exponential
 F3-count frontier. -/
 theorem physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount
@@ -1402,6 +1464,35 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalShiftedCount1296
   PhysicalShiftedF3CountPackageExp.ofBound 1 1296 one_pos (by norm_num)
     (physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount1296
       hgraph)
+
+/-- Physical graph-animal word-decoder target at the current `1296` alphabet
+constant. -/
+abbrev PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound1296 : Prop :=
+  PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound 1296
+
+/-- A physical `1296` graph-animal word decoder gives the physical
+graph-animal shifted count target. -/
+theorem physicalGraphAnimalShiftedCountBound1296_of_wordDecoder
+    (hdecode : PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound1296) :
+    PhysicalConnectingClusterGraphAnimalShiftedCountBound1296 :=
+  physicalGraphAnimalShiftedCountBound_of_wordDecoder hdecode
+
+/-- A physical `1296` graph-animal word decoder discharges the physical
+exponential F3-count frontier. -/
+theorem physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalWordDecoder1296
+    (hdecode : PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound1296) :
+    PhysicalShiftedConnectingClusterCountBoundExp 1 1296 :=
+  physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount1296
+    (physicalGraphAnimalShiftedCountBound1296_of_wordDecoder hdecode)
+
+/-- Package the physical `1296` graph-animal word-decoder target as the
+physical exponential F3-count package consumed downstream. -/
+def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
+    (hdecode : PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound1296) :
+    PhysicalShiftedF3CountPackageExp :=
+  PhysicalShiftedF3CountPackageExp.ofBound 1 1296 one_pos (by norm_num)
+    (physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalWordDecoder1296
+      hdecode)
 
 #print axioms siteLatticeDist_symm
 #print axioms plaquetteGraph_adj_siteLatticeDist_le_one
@@ -1480,8 +1571,13 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalShiftedCount1296
 #print axioms connectingCluster_filter_card_le_preconnectedSubsetsAnchoredCard
 #print axioms physical_connectingCluster_filter_subset_graphAnimalShifted
 #print axioms physical_connectingCluster_filter_card_le_graphAnimalShifted
+#print axioms physicalGraphAnimalShiftedWordCodeOfDecoder_injective
+#print axioms physicalGraphAnimalShiftedCountBound_of_wordDecoder
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount1296
 #print axioms physicalShiftedF3CountPackageExp_of_graphAnimalShiftedCount1296
+#print axioms physicalGraphAnimalShiftedCountBound1296_of_wordDecoder
+#print axioms physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalWordDecoder1296
+#print axioms physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 
 end YangMills

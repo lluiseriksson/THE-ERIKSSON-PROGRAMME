@@ -1,3 +1,59 @@
+# v2.16.0 — graph-animal word-decoder count bridge
+
+**Released: 2026-04-25**
+
+## What
+
+Added the decoder-form graph-animal target
+
+    PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound K
+
+in `YangMills/ClayCore/LatticeAnimalCount.lean`, together with the
+canonical choice/injection bridge
+
+    physicalGraphAnimalShiftedWordCodeOfDecoder
+    physicalGraphAnimalShiftedWordCodeOfDecoder_injective
+    physicalGraphAnimalShiftedCountBound_of_wordDecoder
+
+and the physical `1296` package route
+
+    PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound1296
+    physicalGraphAnimalShiftedCountBound1296_of_wordDecoder
+    physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalWordDecoder1296
+    physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
+
+## Why
+
+No percentage bar moves. This refines the remaining graph-animal count into a
+constructive decoder target: if every shifted graph-animal bucket is covered by
+a length-`n` word decoder over an alphabet of size `K`, then the bucket has
+cardinality at most `K^n`. At `K = 1296`, this feeds directly into the existing
+physical exponential F3-count package.
+
+Remaining mathematical work is now sharper: construct the actual
+BFS/Klarner-style decoder for
+`PhysicalConnectingClusterGraphAnimalShiftedWordDecoderBound1296`, then combine
+it with the physical Mayer package and smallness regime.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace for the new declarations:
+
+    physicalGraphAnimalShiftedWordCodeOfDecoder_injective
+    physicalGraphAnimalShiftedCountBound_of_wordDecoder
+    physicalGraphAnimalShiftedCountBound1296_of_wordDecoder
+    physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalWordDecoder1296
+    physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.15.0 — graph-animal count route to L8 physical-strong endpoint
 
 **Released: 2026-04-25**
