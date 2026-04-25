@@ -667,6 +667,91 @@ theorem plaquetteWalk_card_le_physical_ternary
   plaquetteWalk_card_le_of_codeBoundDim
     plaquetteWalkCodeBoundDim_physical_ternary p n
 
+/-! ### Connecting-cluster bucket to walk-count interface -/
+
+/-- The exact connecting-cluster bucket used by the shifted F3 count frontier,
+repackaged as a subtype for coding arguments. -/
+def ConnectingClusterBucket
+    (d L : ℕ) [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ) : Type :=
+  {X : Finset (ConcretePlaquette d L) //
+    p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+      X.card = n + ⌈siteLatticeDist p.site q.site⌉₊}
+
+noncomputable instance connectingClusterBucket_fintype
+    (d L : ℕ) [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ) :
+    Fintype (ConnectingClusterBucket d L p q n) := by
+  classical
+  unfold ConnectingClusterBucket
+  infer_instance
+
+/-- The subtype bucket has the same cardinality as the filtered finset bucket
+appearing in `ShiftedConnectingClusterCountBoundExp`. -/
+theorem connectingClusterBucket_card_eq_filter
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ) :
+    Fintype.card (ConnectingClusterBucket d L p q n) =
+      ((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun X =>
+          p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+            X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card := by
+  classical
+  unfold ConnectingClusterBucket
+  rw [Fintype.card_subtype]
+
+/-- The remaining graph-theoretic coding target: each shifted physical
+connecting-cluster bucket injects into finite walks of the matching length
+from the marked start plaquette. -/
+def PhysicalConnectingClusterWalkCodeBound : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ),
+    ∃ code :
+      ConnectingClusterBucket physicalClayDimension L p q n →
+        PlaquetteWalk physicalClayDimension L
+          (n + ⌈siteLatticeDist p.site q.site⌉₊) p,
+      Function.Injective code
+
+/-- A bucket-to-walk injection bounds the physical connecting-cluster bucket by
+the corresponding finite-walk count. -/
+theorem connectingClusterBucket_card_le_walks_of_walkCode
+    (hcode : PhysicalConnectingClusterWalkCodeBound)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    Fintype.card (ConnectingClusterBucket physicalClayDimension L p q n) ≤
+      Fintype.card
+        (PlaquetteWalk physicalClayDimension L
+          (n + ⌈siteLatticeDist p.site q.site⌉₊) p) := by
+  obtain ⟨code, hinj⟩ := hcode p q n
+  exact Fintype.card_le_of_injective code hinj
+
+/-- A bucket-to-walk injection and the physical walk bound give the concrete
+`1296` exponential bound for one shifted connecting-cluster bucket. -/
+theorem connectingClusterBucket_card_le_physical_walk_exp_of_walkCode
+    (hcode : PhysicalConnectingClusterWalkCodeBound)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    Fintype.card (ConnectingClusterBucket physicalClayDimension L p q n) ≤
+      1296 ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+  exact (connectingClusterBucket_card_le_walks_of_walkCode hcode p q n).trans
+    (plaquetteWalk_card_le_physical_ternary p
+      (n + ⌈siteLatticeDist p.site q.site⌉₊))
+
+/-- Filter-form version of the physical bucket bound, matching the count
+expression in the exponential F3 frontier. -/
+theorem physical_connectingCluster_filter_card_le_walk_exp_of_walkCode
+    (hcode : PhysicalConnectingClusterWalkCodeBound)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    ((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+        (fun X =>
+          p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+            X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card ≤
+      1296 ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+  rw [← connectingClusterBucket_card_eq_filter p q n]
+  exact connectingClusterBucket_card_le_physical_walk_exp_of_walkCode hcode p q n
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -869,6 +954,10 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms plaquetteWalkCodeBoundDim_of_branchingBoundDim
 #print axioms plaquetteWalkCodeBoundDim_physical_ternary
 #print axioms plaquetteWalk_card_le_physical_ternary
+#print axioms connectingClusterBucket_card_eq_filter
+#print axioms connectingClusterBucket_card_le_walks_of_walkCode
+#print axioms connectingClusterBucket_card_le_physical_walk_exp_of_walkCode
+#print axioms physical_connectingCluster_filter_card_le_walk_exp_of_walkCode
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints

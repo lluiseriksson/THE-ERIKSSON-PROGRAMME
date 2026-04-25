@@ -1,3 +1,83 @@
+# v1.98.0 — connecting-cluster bucket to walk-count interface
+
+**Released: 2026-04-25**
+
+## What
+
+Added the exact bucket-level interface linking the shifted F3 count frontier to
+the finite-walk bound in `YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    ConnectingClusterBucket
+    connectingClusterBucket_fintype
+    connectingClusterBucket_card_eq_filter
+    PhysicalConnectingClusterWalkCodeBound
+    connectingClusterBucket_card_le_walks_of_walkCode
+    connectingClusterBucket_card_le_physical_walk_exp_of_walkCode
+    physical_connectingCluster_filter_card_le_walk_exp_of_walkCode
+
+`ConnectingClusterBucket d L p q n` is the subtype version of the filtered
+bucket appearing in `ShiftedConnectingClusterCountBoundExp`:
+
+    p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+      X.card = n + ⌈siteLatticeDist p.site q.site⌉₊.
+
+The theorem `connectingClusterBucket_card_eq_filter` proves that this subtype
+has exactly the same cardinality as the filtered finset expression in the F3
+frontier.  The new target
+
+    PhysicalConnectingClusterWalkCodeBound
+
+states the remaining graph-theoretic BFS/tree coding input: each physical
+bucket injects into finite plaquette walks of the matching shifted length from
+the marked start plaquette.
+
+Assuming that coding input, Lean now proves:
+
+    physical_connectingCluster_filter_card_le_walk_exp_of_walkCode
+
+which bounds the frontier's filter-form bucket by
+
+    1296 ^ (n + ⌈siteLatticeDist p.site q.site⌉₊).
+
+## Why
+
+No percentage bar moves.  This is an honesty-preserving interface: it does not
+claim the BFS/tree injection is closed, but it pins down the exact theorem
+needed next and proves that it composes with the physical finite-walk bound
+from v1.97.
+
+The remaining local F3-count proof is now sharply isolated as:
+
+    PhysicalConnectingClusterWalkCodeBound
+
+After that, the next layer is algebraic reshaping from
+`1296^(n+dist)` to the constants required by
+`PhysicalShiftedConnectingClusterCountBoundExp`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    connectingClusterBucket_card_eq_filter
+      [propext, Classical.choice, Quot.sound]
+
+    connectingClusterBucket_card_le_walks_of_walkCode
+      [propext, Classical.choice, Quot.sound]
+
+    connectingClusterBucket_card_le_physical_walk_exp_of_walkCode
+      [propext, Classical.choice, Quot.sound]
+
+    physical_connectingCluster_filter_card_le_walk_exp_of_walkCode
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.97.0 — physical finite-walk count bound from plaquette branching
 
 **Released: 2026-04-25**
