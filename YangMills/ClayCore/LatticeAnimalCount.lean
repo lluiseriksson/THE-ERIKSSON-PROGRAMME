@@ -211,6 +211,18 @@ theorem polymerConnected_plaquetteGraph_induce_reachable
   exact plaquetteGraph_induce_reachable_of_chain_endpoints
     hpX hqX path hhead hlast hsub hchain
 
+/-- `PolymerConnected X` gives preconnectedness of the plaquette graph induced
+by `X`.  This is the graph-theoretic connected-subset direction needed by the
+lattice-animal counting interface. -/
+theorem polymerConnected_plaquetteGraph_induce_preconnected
+    {d L : ℕ} [NeZero d] [NeZero L]
+    {X : Finset (ConcretePlaquette d L)}
+    (hconn : PolymerConnected X) :
+    ((plaquetteGraph d L).induce {x | x ∈ X}).Preconnected := by
+  intro p q
+  exact polymerConnected_plaquetteGraph_induce_reachable
+    hconn p.property q.property
+
 #print axioms siteLatticeDist_symm
 #print axioms plaquetteGraph_adj_siteLatticeDist_le_one
 #print axioms plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one
@@ -220,5 +232,6 @@ theorem polymerConnected_plaquetteGraph_induce_reachable
 #print axioms polymerConnected_plaquetteGraph_reachable
 #print axioms plaquetteGraph_induce_reachable_of_chain_endpoints
 #print axioms polymerConnected_plaquetteGraph_induce_reachable
+#print axioms polymerConnected_plaquetteGraph_induce_preconnected
 
 end YangMills
