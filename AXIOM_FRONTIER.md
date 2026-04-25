@@ -1,3 +1,67 @@
+# v2.27.0 — anchored-count small-β F3 terminal package
+
+**Released: 2026-04-25**
+
+## What
+
+Added the terminal route that consumes the anchored graph-animal count target
+directly.
+
+New bridge in `YangMills/ClayCore/LatticeAnimalF3Bridge.lean`:
+
+    physicalClusterCorrelatorBound_of_anchoredCountBound
+
+New terminal package and endpoint in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    PhysicalTotalF3SmallBetaAnchoredPackageK
+    PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerData
+    physicalStrong_of_totalF3SmallBetaAnchoredPackageK_siteDist_measurableF
+
+The Wilson-facing terminal input shape is now exactly:
+
+    hK_pos : (0 : ℝ) < K
+    hβ_small : (K : ℝ) * β < 1
+    data : PhysicalConnectedCardDecayMayerData N_c β A₀ hβ_pos.le hA.le
+    anchored : PhysicalPlaquetteGraphAnimalAnchoredCountBound K
+
+## Why
+
+No percentage bar moves. This is the cleanest current F3 composition frontier:
+the combinatorial input is the standard rooted/anchored lattice-animal count,
+not a decoder, not a two-marked shifted bucket, and not a hard-coded constant.
+
+The remaining mathematical work is now plainly separated:
+
+1. Prove the anchored graph-animal count with some explicit positive `K`.
+2. Prove the physical Mayer/Ursell data for the clipped Wilson small-β
+   producer.
+3. Choose β small enough that `(K : ℝ) * β < 1`.
+
+Those three inputs route directly to `ClayYangMillsPhysicalStrong` for
+`siteLatticeDist` in physical dimension.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces:
+
+    physicalClusterCorrelatorBound_of_anchoredCountBound
+      [propext, Classical.choice, Quot.sound]
+
+    PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerData
+      [propext, Classical.choice, Quot.sound]
+
+    physicalStrong_of_totalF3SmallBetaAnchoredPackageK_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.26.0 — constant-flexible total-count F3 terminal route
 
 **Released: 2026-04-25**

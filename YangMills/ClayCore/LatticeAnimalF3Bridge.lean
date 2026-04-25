@@ -236,6 +236,22 @@ theorem physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound
     (physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound
       hgraph)
 
+/-- Generic terminal physical exponential F3 bridge from the anchored
+graph-animal count target and the physical Mayer half. -/
+theorem physicalClusterCorrelatorBound_of_anchoredCountBound
+    {N_c : ℕ} [NeZero N_c] {K : ℕ}
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (hanchored : PhysicalPlaquetteGraphAnimalAnchoredCountBound K)
+    (hK_pos : (0 : ℝ) < K)
+    (hKr_lt1 : (K : ℝ) * wab.r < 1) :
+    PhysicalClusterCorrelatorBound N_c ((K : ℝ) * wab.r)
+      (clusterPrefactorExp wab.r K 1 mayer.A₀) :=
+  physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound
+    wab mayer
+    (physicalGraphAnimalTotalCountBound_of_anchoredCountBound hanchored)
+    hK_pos hKr_lt1
+
 /-- Terminal physical exponential F3 bridge from the corrected total-size
 graph-animal `1296` count target and the physical Mayer half to the
 Wilson-facing physical cluster-correlator bound.
@@ -272,6 +288,7 @@ theorem physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound1296
 #print axioms physicalClusterCorrelatorBound_of_graphAnimalWordDecoder1296
 #print axioms physicalClusterCorrelatorBound_of_graphAnimalTotalWordDecoder1296
 #print axioms physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound
+#print axioms physicalClusterCorrelatorBound_of_anchoredCountBound
 #print axioms physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound1296
 
 end YangMills
