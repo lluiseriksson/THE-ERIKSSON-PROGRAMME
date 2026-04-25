@@ -797,6 +797,192 @@ theorem physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF
 
 #print axioms physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF
 
+/-- Bundle-level physical endpoint from the fully physical single F3 package.
+
+This consumes physical `d = 4` Mayer data and the physical volume-uniform count
+package, without requiring all-dimensions Mayer data. -/
+noncomputable def connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackage N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ConnectedCorrDecayBundle
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  connectedCorrDecayBundle_of_physicalClusterCorrelatorBound_siteDist
+    wab.r wab.hr_pos wab.hr_lt1
+    (clusterPrefactorShifted wab.r pkg.count.C_conn pkg.mayer.A₀
+      pkg.count.dim)
+    (clusterPrefactorShifted_pos wab.r wab.hr_pos wab.hr_lt1
+      pkg.count.C_conn pkg.mayer.A₀ pkg.count.hC pkg.mayer.hA
+      pkg.count.dim)
+    (physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage
+      wab pkg)
+    β F hβ hF
+    (fun L => gibbsMeasure_isProbability physicalClayDimension L
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β
+      (wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le))
+    (fun L instL p => by
+      letI : NeZero L := instL
+      haveI : IsProbabilityMeasure
+          (gibbsMeasure (d := physicalClayDimension) (N := L)
+            (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β) :=
+        gibbsMeasure_isProbability physicalClayDimension L
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β
+          (wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le)
+      have hobs : Measurable (plaquetteWilsonObs F p) := by
+        simpa [plaquetteWilsonObs, Function.comp_def] using
+          hF_meas.comp (measurable_plaquetteHolonomy (G :=
+            ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)
+      exact plaquetteWilsonObs_integrable_of_unitBound F hF p
+        (gibbsMeasure (d := physicalClayDimension) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)
+        hobs.aestronglyMeasurable)
+    (fun L instL p q => by
+      letI : NeZero L := instL
+      haveI : IsProbabilityMeasure
+          (gibbsMeasure (d := physicalClayDimension) (N := L)
+            (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β) :=
+        gibbsMeasure_isProbability physicalClayDimension L
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β
+          (wilsonPlaquetteEnergy_boltzmann_integrable β hβ.le)
+      have hpobs : Measurable (plaquetteWilsonObs F p) := by
+        simpa [plaquetteWilsonObs, Function.comp_def] using
+          hF_meas.comp (measurable_plaquetteHolonomy (G :=
+            ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)
+      have hqobs : Measurable (plaquetteWilsonObs F q) := by
+        simpa [plaquetteWilsonObs, Function.comp_def] using
+          hF_meas.comp (measurable_plaquetteHolonomy (G :=
+            ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) q)
+      exact plaquetteWilsonObs_mul_integrable_of_unitBound F hF p q
+        (gibbsMeasure (d := physicalClayDimension) (N := L)
+          (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β)
+        hpobs.aestronglyMeasurable hqobs.aestronglyMeasurable)
+
+theorem connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mass_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackage N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+      wab pkg β F hβ hF hF_meas).ccd.m = kpParameter wab.r := rfl
+
+theorem connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_prefactor_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackage N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+      wab pkg β F hβ hF hF_meas).ccd.C =
+      clusterPrefactorShifted wab.r pkg.count.C_conn pkg.mayer.A₀
+        pkg.count.dim + 2 * Real.exp (kpParameter wab.r) := rfl
+
+/-- Bundle-level physical endpoint from fully physical Mayer/count subpackages. -/
+noncomputable def connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ConnectedCorrDecayBundle
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+    wab (PhysicalOnlyShiftedF3MayerCountPackage.ofSubpackages mayer count)
+    β F hβ hF hF_meas
+
+theorem connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_mass_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
+      wab mayer count β F hβ hF hF_meas).ccd.m = kpParameter wab.r := rfl
+
+theorem connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_prefactor_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
+      wab mayer count β F hβ hF hF_meas).ccd.C =
+      clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim +
+        2 * Real.exp (kpParameter wab.r) := rfl
+
+/-- Direct physical endpoint from the fully physical single F3 package. -/
+theorem physicalStrong_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackage N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_connectedCorrDecayBundle
+    (connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+      wab pkg β F hβ hF hF_meas)
+
+/-- Direct physical endpoint from fully physical Mayer/count subpackages. -/
+theorem physicalStrong_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+    wab (PhysicalOnlyShiftedF3MayerCountPackage.ofSubpackages mayer count)
+    β F hβ hF hF_meas
+
+#print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+#print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mass_eq
+#print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_prefactor_eq
+#print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
+#print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_mass_eq
+#print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_prefactor_eq
+#print axioms physicalStrong_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+#print axioms physicalStrong_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
+
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
 
 This is the Wilson-facing F3 package composed with the direct

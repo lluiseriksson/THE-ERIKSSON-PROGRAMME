@@ -1,3 +1,74 @@
+# v1.37.0 — Fully physical F3 package reaches PhysicalStrong
+
+**Released: 2026-04-25**
+
+## What
+
+Added the fully physical single-object F3 package in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    PhysicalOnlyShiftedF3MayerCountPackage
+    PhysicalOnlyShiftedF3MayerCountPackage.ofSubpackages
+    PhysicalOnlyShiftedF3MayerCountPackage.mayerPackage
+    PhysicalOnlyShiftedF3MayerCountPackage.countPackage
+    PhysicalOnlyShiftedF3MayerCountPackage.toTruncatedActivities
+    PhysicalOnlyShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    PhysicalOnlyShiftedF3MayerCountPackage.apply_count
+    physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage
+
+and the matching L8 terminal route in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mass_eq
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_prefactor_eq
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_mass_eq
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3Subpackages_prefactor_eq
+    physicalStrong_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+    physicalStrong_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
+
+## Why
+
+No percentage bar moves.  This is a frontier-sharpening step: it packages the
+Clay-critical physical F3 assumptions into one object that is restricted to the
+physical dimension from the Mayer side and uniform in finite volume from the
+count side:
+
+    mayer : PhysicalShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+From this exact pair the formal route now reaches
+
+    PhysicalClusterCorrelatorBound
+    ConnectedCorrDecayBundle
+    ClayYangMillsPhysicalStrong
+
+at `physicalClayDimension = 4`, with the canonical shifted prefactor
+`clusterPrefactorShifted wab.r C_conn A₀ dim` and mass
+`-Real.log wab.r`.
+
+This removes the last packaging ambiguity between the older all-dimensions
+Mayer route and the physical-only Clay route.  The remaining analytic
+obligations are unchanged and now sharply named: prove the physical Mayer/Ursell
+data for `wilsonConnectedCorr`, and prove the physical volume-uniform shifted
+connecting-cluster count package for `N_c ≥ 2`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces: all new fully physical package declarations, consumers, audit
+equalities, and terminal endpoints print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.36.0 — Physical Mayer-only F3 route exposed
 
 **Released: 2026-04-25**

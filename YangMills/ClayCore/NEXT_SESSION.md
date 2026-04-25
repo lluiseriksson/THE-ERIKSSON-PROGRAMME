@@ -13,16 +13,23 @@ The preferred single-object F3 frontier is:
 
 in `YangMills/ClayCore/ClusterRpowBridge.lean`.
 
-For the physical `d = 4` route, the preferred single-object frontier is:
+For the physical `d = 4` route, the preferred single-object frontier is now:
 
-    PhysicalShiftedF3MayerCountPackage N_c wab
+    PhysicalOnlyShiftedF3MayerCountPackage N_c wab
 
 It bundles exactly:
 
-    mayer : ShiftedF3MayerPackage N_c wab
+    mayer : PhysicalShiftedF3MayerPackage N_c wab
     count : PhysicalShiftedF3CountPackage
 
-and feeds directly into the physical endpoint.
+and feeds directly into the physical endpoint:
+
+    physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+    physicalStrong_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+
+This is the route to prefer for Clay `d = 4`: it does not require the older
+all-dimensions Mayer package.
 
 There is also a fully physical, dimension-restricted Mayer side:
 
@@ -54,24 +61,30 @@ should therefore produce this volume-uniform family.
 The physical package also exposes the finite-volume consumers needed by proof
 scripts:
 
-    PhysicalShiftedF3MayerCountPackage.mayerPackage
-    PhysicalShiftedF3MayerCountPackage.countPackage
-    PhysicalShiftedF3MayerCountPackage.toTruncatedActivities
-    PhysicalShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
-    PhysicalShiftedF3MayerCountPackage.apply_count
+    PhysicalOnlyShiftedF3MayerCountPackage.mayerPackage
+    PhysicalOnlyShiftedF3MayerCountPackage.countPackage
+    PhysicalOnlyShiftedF3MayerCountPackage.toTruncatedActivities
+    PhysicalOnlyShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    PhysicalOnlyShiftedF3MayerCountPackage.apply_count
 
 Use these package-level names inside future F3 scripts instead of repeatedly
 projecting through `pkg.mayer` and `pkg.count`.
 
 The two projections are reversible by definitional equality:
 
-    PhysicalShiftedF3MayerCountPackage.ofSubpackages_mayerPackage_countPackage
+    PhysicalOnlyShiftedF3MayerCountPackage.ofSubpackages_mayerPackage_countPackage
 
 It can be supplied directly, or mechanically assembled from the two independent
 frontier halves:
 
-    mayer : ShiftedF3MayerPackage N_c wab
+    mayer : PhysicalShiftedF3MayerPackage N_c wab
     count : PhysicalShiftedF3CountPackage
+
+The older `PhysicalShiftedF3MayerCountPackage N_c wab` remains available.  It
+bundles the global `ShiftedF3MayerPackage N_c wab` with the physical count
+package, so it is useful when an all-dimensions Mayer theorem is available.
+For the actual Clay-physical route, prefer
+`PhysicalOnlyShiftedF3MayerCountPackage N_c wab`.
 
 Supplying either the single package or both halves yields, oracle-clean:
 
