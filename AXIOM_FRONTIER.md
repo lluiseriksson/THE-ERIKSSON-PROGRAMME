@@ -1,3 +1,75 @@
+# v1.82.0 — packaged exponential F3 route to Clay mass-gap hub
+
+**Released: 2026-04-25**
+
+## What
+
+Added the single-package exponential F3 interface in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    clusterCorrelatorBound_of_expCountBound_mayerData_ceil
+    ShiftedF3MayerCountPackageExp
+    ShiftedF3MayerCountPackageExp.ofSubpackages
+    ShiftedF3MayerCountPackageExp.mayerPackage
+    ShiftedF3MayerCountPackageExp.countPackage
+    ShiftedF3MayerCountPackageExp.apply_count
+    clusterCorrelatorBound_of_shiftedF3MayerCountPackageExp
+    clayWitnessHyp_of_shiftedF3MayerCountPackageExp
+    clayMassGap_of_shiftedF3MayerCountPackageExp
+    clayConnectedCorrDecay_of_shiftedF3MayerCountPackageExp
+    clay_theorem_of_shiftedF3MayerCountPackageExp
+
+The package bundles the Mayer/activity half
+
+    ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le
+
+with the exponential count half
+
+    ShiftedConnectingClusterCountBoundExp C_conn K
+
+plus the KP smallness condition `K * wab.r < 1`.  Its authentic Clay-facing
+endpoint is now:
+
+    clayMassGap_of_shiftedF3MayerCountPackageExp
+
+which returns `ClayYangMillsMassGap N_c` with decay rate `kpParameter wab.r`
+and prefactor `clusterPrefactorExp wab.r K C_conn A₀`.
+
+## Why
+
+No percentage bar moves.  This is an API/packaging closure for the honest
+exponential F3 route.  The future analytic theorem now has a single clean
+target object to build: a Mayer/activity package, an exponential uniform
+count package, and the smallness proof `K * wab.r < 1`.
+
+The remaining mathematical content is unchanged: prove the Mayer/Ursell
+identity and global activity decay, and prove the uniform exponential
+lattice-animal count estimate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    ShiftedF3MayerCountPackageExp.ofSubpackages
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedF3MayerCountPackageExp.apply_count
+      [propext, Classical.choice, Quot.sound]
+
+    clusterCorrelatorBound_of_shiftedF3MayerCountPackageExp
+      [propext, Classical.choice, Quot.sound]
+
+    clayMassGap_of_shiftedF3MayerCountPackageExp
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.81.0 — exponential F3 bridge reaches ClusterCorrelatorBound
 
 **Released: 2026-04-25**

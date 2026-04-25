@@ -2210,6 +2210,40 @@ theorem clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
 
 #print axioms clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
 
+/-- Exponential-count terminal F3 wrapper with both remaining analytic sides
+packaged: `ConnectedCardDecayMayerData` for the raw Mayer/activity input and
+`ShiftedConnectingClusterCountBoundExp` for the KP-compatible lattice-animal
+count. -/
+theorem clusterCorrelatorBound_of_expCountBound_mayerData_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (r K : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_pos.le hA.le)
+    (h_count : ShiftedConnectingClusterCountBoundExp C_conn K) :
+    ClusterCorrelatorBound N_c r
+      (clusterPrefactorExp r K C_conn A₀) := by
+  exact clusterCorrelatorBound_of_count_cardDecayBounds_ceil_exp
+    (N_c := N_c) (r := r) (K := K) (hr_pos := hr_pos)
+    (hr_lt1 := hr_lt1) (hK_pos := hK_pos) (hKr_lt1 := hKr_lt1)
+    (C_conn := C_conn) (A₀ := A₀) (hC := hC) (hA := hA)
+    (T := fun {d L} [NeZero d] [NeZero L] β F p q =>
+      data.toTruncatedActivities β F p q)
+    (by
+      intro d L _ _ β hβ F hF p q hdist
+      exact data.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+        β hβ F hF p q hdist)
+    (by
+      intro d L _ _ β _hβ F _hF p q Y hp hq h_not_connected
+      exact data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+        β F p q Y hp hq h_not_connected)
+    h_count
+    (by
+      intro d L _ _ β _hβ F _hF p q Y
+      exact data.toTruncatedActivities_K_bound_le_cardDecay β F p q Y)
+
+#print axioms clusterCorrelatorBound_of_expCountBound_mayerData_ceil
+
 /-- Four-dimensional physical version of `ClusterCorrelatorBound`.
 
 Unlike `ClusterCorrelatorBound`, this is uniform only over finite volumes `L`
@@ -3852,6 +3886,135 @@ theorem ofBound_apply
 
 end ShiftedF3CountPackage
 
+/-- Single package for the exponential shifted F3 route.
+
+This is the KP-compatible sibling of `ShiftedF3MayerCountPackage`: the count
+side is exponential, so the package records the smallness hypothesis
+`K * wab.r < 1` needed by the series consumer. -/
+structure ShiftedF3MayerCountPackageExp
+    (N_c : ℕ) [NeZero N_c] (wab : WilsonPolymerActivityBound N_c) where
+  C_conn : ℝ
+  K : ℝ
+  A₀ : ℝ
+  hC : 0 < C_conn
+  hK : 0 < K
+  hA : 0 < A₀
+  hKr_lt1 : K * wab.r < 1
+  data : ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le
+  h_count : ShiftedConnectingClusterCountBoundExp C_conn K
+
+namespace ShiftedF3MayerCountPackageExp
+
+/-- Combine independently-produced Mayer/activity and exponential count
+packages into the single exponential F3 frontier object. -/
+def ofSubpackages
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackageExp)
+    (hKr_lt1 : count.K * wab.r < 1) :
+    ShiftedF3MayerCountPackageExp N_c wab where
+  C_conn := count.C_conn
+  K := count.K
+  A₀ := mayer.A₀
+  hC := count.hC
+  hK := count.hK
+  hA := mayer.hA
+  hKr_lt1 := hKr_lt1
+  data := mayer.data
+  h_count := count.h_count
+
+/-- Project the Mayer/activity half out of a single exponential F3 package. -/
+def mayerPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackageExp N_c wab) :
+    ShiftedF3MayerPackage N_c wab where
+  A₀ := pkg.A₀
+  hA := pkg.hA
+  data := pkg.data
+
+/-- Project the exponential count half out of a single F3 package. -/
+def countPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackageExp N_c wab) :
+    ShiftedF3CountPackageExp where
+  C_conn := pkg.C_conn
+  K := pkg.K
+  hC := pkg.hC
+  hK := pkg.hK
+  h_count := pkg.h_count
+
+@[simp] theorem ofSubpackages_C_conn
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackageExp)
+    (hKr_lt1 : count.K * wab.r < 1) :
+    (ofSubpackages mayer count hKr_lt1).C_conn = count.C_conn := rfl
+
+@[simp] theorem ofSubpackages_K
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackageExp)
+    (hKr_lt1 : count.K * wab.r < 1) :
+    (ofSubpackages mayer count hKr_lt1).K = count.K := rfl
+
+@[simp] theorem ofSubpackages_A₀
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackageExp)
+    (hKr_lt1 : count.K * wab.r < 1) :
+    (ofSubpackages mayer count hKr_lt1).A₀ = mayer.A₀ := rfl
+
+@[simp] theorem ofSubpackages_data
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackageExp)
+    (hKr_lt1 : count.K * wab.r < 1) :
+    (ofSubpackages mayer count hKr_lt1).data = mayer.data := rfl
+
+@[simp] theorem mayerPackage_A₀
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackageExp N_c wab) :
+    (mayerPackage pkg).A₀ = pkg.A₀ := rfl
+
+@[simp] theorem countPackage_C_conn
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackageExp N_c wab) :
+    (countPackage pkg).C_conn = pkg.C_conn := rfl
+
+@[simp] theorem countPackage_K
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackageExp N_c wab) :
+    (countPackage pkg).K = pkg.K := rfl
+
+/-- Direct application form of the exponential count half inside the package. -/
+theorem apply_count
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackageExp N_c wab)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.C_conn * pkg.K ^ n :=
+  ShiftedConnectingClusterCountBoundExp.apply pkg.h_count p q n hn hdist
+
+end ShiftedF3MayerCountPackageExp
+
+#print axioms ShiftedF3MayerCountPackageExp.ofSubpackages
+#print axioms ShiftedF3MayerCountPackageExp.mayerPackage
+#print axioms ShiftedF3MayerCountPackageExp.countPackage
+#print axioms ShiftedF3MayerCountPackageExp.ofSubpackages_C_conn
+#print axioms ShiftedF3MayerCountPackageExp.ofSubpackages_K
+#print axioms ShiftedF3MayerCountPackageExp.ofSubpackages_A₀
+#print axioms ShiftedF3MayerCountPackageExp.ofSubpackages_data
+#print axioms ShiftedF3MayerCountPackageExp.mayerPackage_A₀
+#print axioms ShiftedF3MayerCountPackageExp.countPackage_C_conn
+#print axioms ShiftedF3MayerCountPackageExp.countPackage_K
+#print axioms ShiftedF3MayerCountPackageExp.apply_count
+
 /-- Single preferred package for the shifted F3 route.
 
 It gathers the constants, Mayer/activity data, and shifted lattice-animal count
@@ -4200,6 +4363,68 @@ theorem clusterCorrelatorBound_of_shiftedF3MayerCountPackage_mono_count_dim
     (pkg.dim + k) pkg.data
     (ShiftedConnectingClusterCountBound.mono_dim pkg.hC.le pkg.h_count k)
 
+/-- The single exponential-package F3 route yields the Wilson-facing
+cluster-correlator bound. -/
+theorem clusterCorrelatorBound_of_shiftedF3MayerCountPackageExp
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackageExp N_c wab) :
+    ClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorExp wab.r pkg.K pkg.C_conn pkg.A₀) :=
+  clusterCorrelatorBound_of_expCountBound_mayerData_ceil
+    N_c wab.r pkg.K wab.hr_pos wab.hr_lt1 pkg.hK pkg.hKr_lt1
+    pkg.C_conn pkg.A₀ pkg.hC pkg.hA pkg.data pkg.h_count
+
+/-- The single exponential-package F3 route yields the older analytic witness
+bundle. -/
+noncomputable def clayWitnessHyp_of_shiftedF3MayerCountPackageExp
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackageExp N_c wab) :
+    ClayWitnessHyp N_c :=
+  clayWitnessHyp_of_clusterCorrelatorBound N_c
+    wab.r wab.hr_pos wab.hr_lt1
+    (clusterPrefactorExp wab.r pkg.K pkg.C_conn pkg.A₀)
+    (clusterPrefactorExp_pos wab.r pkg.K wab.hr_pos pkg.hK pkg.hKr_lt1
+      pkg.C_conn pkg.A₀ pkg.hC pkg.hA)
+    (clusterCorrelatorBound_of_shiftedF3MayerCountPackageExp N_c wab pkg)
+
+/-- The single exponential-package F3 route yields the authentic mass-gap
+structure. -/
+noncomputable def clayMassGap_of_shiftedF3MayerCountPackageExp
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackageExp N_c wab) :
+    ClayYangMillsMassGap N_c :=
+  clay_massGap_large_beta N_c wab.r wab.hr_pos wab.hr_lt1
+    (clusterPrefactorExp wab.r pkg.K pkg.C_conn pkg.A₀)
+    (clusterPrefactorExp_pos wab.r pkg.K wab.hr_pos pkg.hK pkg.hKr_lt1
+      pkg.C_conn pkg.A₀ pkg.hC pkg.hA)
+    (clusterCorrelatorBound_of_shiftedF3MayerCountPackageExp N_c wab pkg)
+
+/-- The single exponential-package F3 route yields the connected-correlator
+decay hub. -/
+noncomputable def clayConnectedCorrDecay_of_shiftedF3MayerCountPackageExp
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackageExp N_c wab) :
+    ClayConnectedCorrDecay N_c :=
+  ClayConnectedCorrDecay.ofClayMassGap
+    (clayMassGap_of_shiftedF3MayerCountPackageExp N_c wab pkg)
+
+/-- The single exponential-package F3 route still projects to the weak theorem
+endpoint. -/
+theorem clay_theorem_of_shiftedF3MayerCountPackageExp
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackageExp N_c wab) :
+    ClayYangMillsTheorem :=
+  clay_yangMills_large_beta N_c wab.r wab.hr_pos wab.hr_lt1
+    (clusterPrefactorExp wab.r pkg.K pkg.C_conn pkg.A₀)
+    (clusterPrefactorExp_pos wab.r pkg.K wab.hr_pos pkg.hK pkg.hKr_lt1
+      pkg.C_conn pkg.A₀ pkg.hC pkg.hA)
+    (clusterCorrelatorBound_of_shiftedF3MayerCountPackageExp N_c wab pkg)
+
 /-- The single-package F3 route yields the older analytic witness bundle. -/
 noncomputable def clayWitnessHyp_of_shiftedF3MayerCountPackage
     (N_c : ℕ) [NeZero N_c]
@@ -4518,10 +4743,15 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim_prefactor_
       clusterPrefactorShifted wab.r count.C_conn mayer.A₀ (count.dim + k) := rfl
 
 #print axioms clusterCorrelatorBound_of_shiftedF3MayerCountPackage
+#print axioms clusterCorrelatorBound_of_shiftedF3MayerCountPackageExp
 #print axioms clayWitnessHyp_of_shiftedF3MayerCountPackage
+#print axioms clayWitnessHyp_of_shiftedF3MayerCountPackageExp
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage
+#print axioms clayMassGap_of_shiftedF3MayerCountPackageExp
 #print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackage
+#print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackageExp
 #print axioms clay_theorem_of_shiftedF3MayerCountPackage
+#print axioms clay_theorem_of_shiftedF3MayerCountPackageExp
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage_mono_count_dim
 #print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mono_count_dim
 #print axioms clay_theorem_of_shiftedF3MayerCountPackage_mono_count_dim

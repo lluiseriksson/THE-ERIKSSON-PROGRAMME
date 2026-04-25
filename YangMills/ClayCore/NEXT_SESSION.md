@@ -656,6 +656,24 @@ It consumes `ShiftedConnectingClusterCountBoundExp C_conn K`, a global
 activity decay `(T β F p q).K_bound Y ≤ A₀ * r ^ Y.card`, and the KP smallness
 condition `K * r < 1`, then returns
 `ClusterCorrelatorBound N_c r (clusterPrefactorExp r K C_conn A₀)`.
+The packaged version to target in new F3 work is:
+
+    ShiftedF3MayerCountPackageExp N_c wab
+
+It bundles:
+
+    data : ConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le
+    h_count : ShiftedConnectingClusterCountBoundExp C_conn K
+    hKr_lt1 : K * wab.r < 1
+
+and feeds directly into:
+
+    clusterCorrelatorBound_of_shiftedF3MayerCountPackageExp
+    clayMassGap_of_shiftedF3MayerCountPackageExp
+    clayConnectedCorrDecay_of_shiftedF3MayerCountPackageExp
+
+For separately produced halves, use
+`ShiftedF3MayerCountPackageExp.ofSubpackages mayer count hKr_lt1`.
 If a later estimate has to absorb an extra polynomial factor, use the
 `mono_dim` lemmas above to move from `dim` to `dim + k` while preserving the
 same `C_conn`.  At package level the simp lemmas
