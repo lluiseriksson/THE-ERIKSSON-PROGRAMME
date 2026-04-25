@@ -1,3 +1,53 @@
+# v1.49.0 — Global F3 package exposes auditable physical L8 bundle
+
+**Released: 2026-04-25**
+
+## What
+
+Added the L8 bundle route from the global single F3 package through its
+physical restriction in `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_siteDist_measurableF
+    connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mass_eq
+    connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_prefactor_eq
+
+## Why
+
+No percentage bar moves.  The previous pass added
+`ShiftedF3MayerCountPackage.toPhysicalOnly`, turning a global F3 package into
+the preferred physical `d = 4` package.  This pass exposes the corresponding
+terminal audit bundle:
+
+    pkg : ShiftedF3MayerCountPackage N_c wab
+    ⟼ pkg.toPhysicalOnly
+    ⟼ ConnectedCorrDecayBundle
+
+with exact physical constants:
+
+    m = kpParameter wab.r
+    C = clusterPrefactorShifted wab.r pkg.C_conn pkg.A₀ pkg.dim
+          + 2 * Real.exp (kpParameter wab.r)
+
+This keeps the global-package route inspectable before projecting to the final
+`ClayYangMillsPhysicalStrong` endpoint.  The remaining mathematical content is
+unchanged: construct the Mayer/Ursell package and the physical or global count
+package.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces: the new bundle route and mass/prefactor equations print the
+canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.48.0 — Global F3 package restricts to preferred physical F3 package
 
 **Released: 2026-04-25**

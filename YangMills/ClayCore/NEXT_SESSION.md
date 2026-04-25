@@ -163,6 +163,9 @@ If the Mayer half is first proved in the older all-dimensions form while the
 count half is only physical, use:
 
     physicalClusterCorrelatorBound_of_globalMayer_physicalCount
+    connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_siteDist_measurableF
+    connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mass_eq
+    connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_prefactor_eq
     connectedCorrDecayBundle_of_globalMayer_physicalCount_siteDist_measurableF
     connectedCorrDecayBundle_of_globalMayer_physicalCount_mass_eq
     connectedCorrDecayBundle_of_globalMayer_physicalCount_prefactor_eq

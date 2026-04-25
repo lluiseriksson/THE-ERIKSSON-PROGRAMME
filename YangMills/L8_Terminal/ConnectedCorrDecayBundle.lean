@@ -985,6 +985,50 @@ theorem connectedCorrDecayBundle_of_globalMayer_physicalCount_prefactor_eq
       clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim +
         2 * Real.exp (kpParameter wab.r) := rfl
 
+/-- Bundle-level physical endpoint from the global single F3 package, routed
+through its preferred physical restriction. -/
+noncomputable def connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ConnectedCorrDecayBundle
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
+    wab pkg.toPhysicalOnly β F hβ hF hF_meas
+
+theorem connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mass_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_siteDist_measurableF
+      wab pkg β F hβ hF hF_meas).ccd.m = kpParameter wab.r := rfl
+
+theorem connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_prefactor_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_siteDist_measurableF
+      wab pkg β F hβ hF hF_meas).ccd.C =
+      clusterPrefactorShifted wab.r pkg.C_conn pkg.A₀ pkg.dim +
+        2 * Real.exp (kpParameter wab.r) := rfl
+
 /-- Direct physical endpoint from the fully physical single F3 package. -/
 theorem physicalStrong_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
     {N_c : ℕ} [NeZero N_c]
@@ -1051,6 +1095,9 @@ theorem physicalStrong_of_globalMayer_physicalCount_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_globalMayer_physicalCount_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_globalMayer_physicalCount_mass_eq
 #print axioms connectedCorrDecayBundle_of_globalMayer_physicalCount_prefactor_eq
+#print axioms connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_siteDist_measurableF
+#print axioms connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mass_eq
+#print axioms connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_prefactor_eq
 #print axioms physicalStrong_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
 #print axioms physicalStrong_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
 #print axioms physicalStrong_of_globalMayer_physicalCount_siteDist_measurableF
