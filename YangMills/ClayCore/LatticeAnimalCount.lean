@@ -1274,6 +1274,74 @@ noncomputable def plaquetteGraphPreconnectedSubsetsAnchoredCard
     root ∈ X ∧ X.card = k ∧
       ((plaquetteGraph d L).induce {x | x ∈ X}).Preconnected)
 
+/-- Membership in an anchored bucket records that the root belongs to the
+chosen plaquette set. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k) :
+    root ∈ X := by
+  unfold plaquetteGraphPreconnectedSubsetsAnchoredCard at hX
+  rw [Finset.mem_filter] at hX
+  exact hX.2.1
+
+/-- Membership in an anchored bucket records the exact cardinality. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_card_eq
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k) :
+    X.card = k := by
+  unfold plaquetteGraphPreconnectedSubsetsAnchoredCard at hX
+  rw [Finset.mem_filter] at hX
+  exact hX.2.2.1
+
+/-- Membership in an anchored bucket records induced preconnectedness. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k) :
+    ((plaquetteGraph d L).induce {x | x ∈ X}).Preconnected := by
+  unfold plaquetteGraphPreconnectedSubsetsAnchoredCard at hX
+  rw [Finset.mem_filter] at hX
+  exact hX.2.2.2
+
+/-- An anchored bucket element has positive target cardinality. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_card_pos
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k) :
+    0 < k := by
+  have hroot : root ∈ X :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem hX
+  have hcard : X.card = k :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_card_eq hX
+  have hpos : 0 < X.card := Finset.card_pos.mpr ⟨root, hroot⟩
+  simpa [hcard] using hpos
+
+/-- A non-singleton anchored bucket contains some plaquette different from the
+root. This is the first branching witness needed by constructive
+BFS/Klarner decoders. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_root
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hk : 1 < k) :
+    ∃ y, y ∈ X ∧ y ≠ root := by
+  by_contra hnone
+  have hforall : ∀ y, y ∈ X → y = root := by
+    intro y hy
+    by_contra hyne
+    exact hnone ⟨y, hy, hyne⟩
+  have hsubset : X ⊆ ({root} : Finset (ConcretePlaquette d L)) := by
+    intro y hy
+    rw [Finset.mem_singleton]
+    exact hforall y hy
+  have hcard_le : X.card ≤ 1 := by
+    simpa using Finset.card_le_card hsubset
+  have hcard : X.card = k :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_card_eq hX
+  omega
+
 /-- The anchored graph-animal bucket of size zero is empty, because every
 bucket element must contain the root. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
@@ -2124,6 +2192,11 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraph_induce_reachable_of_chain_endpoints
 #print axioms polymerConnected_plaquetteGraph_induce_reachable
 #print axioms polymerConnected_plaquetteGraph_induce_preconnected
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_card_eq
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_card_pos
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_root
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one

@@ -1,3 +1,52 @@
+# v2.38.0 — anchored bucket projection witnesses for BFS decoder
+
+**Released: 2026-04-25**
+
+## What
+
+Added reusable projection and witness lemmas for anchored graph-animal buckets
+in `YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_card_eq
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_card_pos
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_root
+
+## Why
+
+No percentage bar moves. These are BFS/Klarner decoder scaffolding lemmas: an
+anchored bucket element now exposes its root membership, exact size, induced
+preconnectedness, positive size, and a non-root branching witness whenever
+`1 < k`.
+
+This keeps the constructive anchored word-decoder route from repeatedly
+unfolding the bucket definition and gives the recursive `k > 1` case its first
+formal branch witness.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem
+      [propext, Classical.choice, Quot.sound]
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_card_eq
+      [propext, Classical.choice, Quot.sound]
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected
+      [propext, Classical.choice, Quot.sound]
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_card_pos
+      [propext, Classical.choice, Quot.sound]
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_root
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.37.0 — terminal endpoint from smaller anchored decoder alphabet
 
 **Released: 2026-04-25**
