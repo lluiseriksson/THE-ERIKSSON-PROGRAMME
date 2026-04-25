@@ -1,3 +1,49 @@
+# v2.06.0 — physical 1296 decoder target specialization
+
+**Released: 2026-04-25**
+
+## What
+
+Specialized the corrected baseline-plus-word decoder target to the physical
+four-dimensional alphabet already proved from the local branching bound:
+
+    PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296
+    physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers1296
+
+in `YangMills/ClayCore/LatticeAnimalCount.lean`.
+
+The terminal theorem states that the physical target
+
+    PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296
+
+implies the exact F3-count frontier:
+
+    PhysicalShiftedConnectingClusterCountBoundExp 1 1296.
+
+## Why
+
+No percentage bar moves. This removes the final decorative parameter from the
+live F3-count target. The next proof step can now focus entirely on:
+
+    PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296
+
+with no additional plumbing.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace:
+
+    physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers1296
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.05.0 — baseline-plus-word decoder bridge
 
 **Released: 2026-04-25**

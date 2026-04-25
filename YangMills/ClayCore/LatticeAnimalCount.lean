@@ -1079,6 +1079,18 @@ theorem physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecode
   physicalShiftedConnectingClusterCountBoundExp_of_extraWordDecoder
     (physicalConnectingClusterExtraWordDecoderBound_of_baselineExtraWordDecoderCovers hcover)
 
+/-- Physical four-dimensional baseline-plus-word decoder target with the
+existing `1296` local alphabet. -/
+abbrev PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296 : Prop :=
+  PhysicalConnectingClusterBaselineExtraWordDecoderCovers 1296
+
+/-- Physical-specialized terminal bridge from the baseline-plus-word decoder to
+the exact exponential F3-count frontier used downstream. -/
+theorem physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers1296
+    (hcover : PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296) :
+    PhysicalShiftedConnectingClusterCountBoundExp 1 1296 :=
+  physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers hcover
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -1303,6 +1315,7 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_extraWordDecoder
 #print axioms physicalConnectingClusterExtraWordDecoderBound_of_baselineExtraWordDecoderCovers
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers
+#print axioms physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers1296
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints
