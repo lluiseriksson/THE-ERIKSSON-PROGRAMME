@@ -1285,6 +1285,18 @@ def PhysicalPlaquetteGraphAnimalAnchoredCountBound (K : ℕ) : Prop :=
     (plaquetteGraphPreconnectedSubsetsAnchoredCard
       physicalClayDimension L root k).card ≤ K ^ k
 
+/-- The anchored graph-animal count target is monotone in the exponential
+growth constant. This lets the eventual combinatorial proof produce any
+convenient explicit constant `K`, while downstream terminal packages may use a
+larger constant if that is more ergonomic. -/
+theorem PhysicalPlaquetteGraphAnimalAnchoredCountBound.mono
+    {K K' : ℕ}
+    (hbound : PhysicalPlaquetteGraphAnimalAnchoredCountBound K)
+    (hKK' : K ≤ K') :
+    PhysicalPlaquetteGraphAnimalAnchoredCountBound K' := by
+  intro L _ root k
+  exact (hbound root k).trans (Nat.pow_le_pow_left hKK' k)
+
 /-- Every connecting-cluster bucket element is an anchored preconnected
 plaquette-graph animal after forgetting the second marked plaquette. -/
 theorem connectingCluster_filter_subset_preconnectedSubsetsAnchoredCard
@@ -1555,6 +1567,17 @@ def PhysicalConnectingClusterGraphAnimalTotalCountBound (K : ℕ) : Prop :=
     (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ),
     (plaquetteGraphPreconnectedConnectingSubsetsShifted L p q n).card ≤
       K ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)
+
+/-- The direct total-size graph-animal count target is monotone in the
+exponential growth constant. -/
+theorem PhysicalConnectingClusterGraphAnimalTotalCountBound.mono
+    {K K' : ℕ}
+    (hbound : PhysicalConnectingClusterGraphAnimalTotalCountBound K)
+    (hKK' : K ≤ K') :
+    PhysicalConnectingClusterGraphAnimalTotalCountBound K' := by
+  intro L _ p q n
+  exact (hbound p q n).trans
+    (Nat.pow_le_pow_left hKK' (n + ⌈siteLatticeDist p.site q.site⌉₊))
 
 /-- An anchored graph-animal count bound gives the direct total-size
 two-marked graph-animal count target. -/
@@ -1846,6 +1869,7 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraph_induce_reachable_of_chain_endpoints
 #print axioms polymerConnected_plaquetteGraph_induce_reachable
 #print axioms polymerConnected_plaquetteGraph_induce_preconnected
+#print axioms PhysicalPlaquetteGraphAnimalAnchoredCountBound.mono
 #print axioms plaquetteGraphPreconnectedConnectingSubsetsShifted_subset_anchored
 #print axioms plaquetteGraphPreconnectedConnectingSubsetsShifted_card_le_anchored
 #print axioms connectingCluster_filter_subset_preconnectedSubsetsAnchoredCard
@@ -1857,6 +1881,7 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalGraphAnimalShiftedCountBound_zero_card_le_one
 #print axioms physicalGraphAnimalTotalWordCodeOfDecoder_injective
 #print axioms physicalGraphAnimalTotalCountBound_of_wordDecoder
+#print axioms PhysicalConnectingClusterGraphAnimalTotalCountBound.mono
 #print axioms physicalGraphAnimalTotalCountBound_of_anchoredCountBound
 #print axioms physicalGraphAnimalTotalCountBound_of_totalWordDecoder
 #print axioms physicalGraphAnimalTotalCountBound1296_of_anchoredCountBound

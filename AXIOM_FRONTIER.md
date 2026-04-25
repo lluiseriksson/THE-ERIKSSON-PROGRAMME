@@ -1,3 +1,62 @@
+# v2.28.0 — F3 graph-animal growth constant monotonicity
+
+**Released: 2026-04-25**
+
+## What
+
+Added monotonicity lemmas for the F3 graph-animal growth constant:
+
+    PhysicalPlaquetteGraphAnimalAnchoredCountBound.mono
+    PhysicalConnectingClusterGraphAnimalTotalCountBound.mono
+
+in `YangMills/ClayCore/LatticeAnimalCount.lean`, plus the corresponding
+terminal package lift
+
+    PhysicalTotalF3SmallBetaAnchoredPackageK.mono_K
+
+in `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+## Why
+
+No percentage bar moves. This is a frontier-robustness closure: the eventual
+bounded-degree/Klarner graph-animal proof may naturally produce a constant
+`K₀`, while downstream Clay-grade terminal statements may choose any larger
+explicit `K` as long as the small-coupling condition `(K : ℝ) * β < 1` is
+supplied. The F3 terminal route is therefore no longer brittle with respect to
+the exact combinatorial constant.
+
+The current clean terminal input remains:
+
+    data : PhysicalConnectedCardDecayMayerData N_c β A₀ hβ_pos.le hA.le
+    anchored : PhysicalPlaquetteGraphAnimalAnchoredCountBound K
+    hK_pos : (0 : ℝ) < K
+    hβ_small : (K : ℝ) * β < 1
+
+and `mono_K` lets a package built at `K₀` be reused at `K ≥ K₀` when the
+new smallness hypothesis is available.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces:
+
+    PhysicalPlaquetteGraphAnimalAnchoredCountBound.mono
+      [propext, Classical.choice, Quot.sound]
+
+    PhysicalConnectingClusterGraphAnimalTotalCountBound.mono
+      [propext, Classical.choice, Quot.sound]
+
+    PhysicalTotalF3SmallBetaAnchoredPackageK.mono_K
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.27.0 — anchored-count small-β F3 terminal package
 
 **Released: 2026-04-25**

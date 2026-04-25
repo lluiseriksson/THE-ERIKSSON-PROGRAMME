@@ -1812,6 +1812,25 @@ def ofMayerData
         simpa [wilsonActivityBound_from_expansion] using data }
   anchored := anchored
 
+/-- Increase the graph-animal growth constant in an anchored terminal package.
+
+This is useful when the combinatorial proof naturally produces a sharper
+constant but a downstream statement wants to work with a larger explicit
+constant. The new small-coupling hypothesis is supplied explicitly. -/
+def mono_K
+    {K K' N_c : ℕ} [NeZero N_c]
+    {β : ℝ} {hβ_pos : 0 < β} {hβ_lt1 : β < 1}
+    (pkg : PhysicalTotalF3SmallBetaAnchoredPackageK K N_c β hβ_pos hβ_lt1)
+    (hKK' : K ≤ K')
+    (hK'_pos : (0 : ℝ) < K')
+    (hβ_small' : (K' : ℝ) * β < 1) :
+    PhysicalTotalF3SmallBetaAnchoredPackageK K' N_c β hβ_pos hβ_lt1 where
+  hK_pos := hK'_pos
+  hβ_small := hβ_small'
+  mayer := pkg.mayer
+  anchored :=
+    PhysicalPlaquetteGraphAnimalAnchoredCountBound.mono pkg.anchored hKK'
+
 end PhysicalTotalF3SmallBetaAnchoredPackageK
 
 /-- Terminal small-β physical endpoint from the single F3 package.
@@ -1969,6 +1988,7 @@ theorem physicalStrong_of_totalF3SmallBetaAnchoredPackageK_siteDist_measurableF
 #print axioms PhysicalTotalF3SmallBetaCountPackageK.ofMayerData
 #print axioms physicalStrong_of_totalF3SmallBetaCountPackageK_siteDist_measurableF
 #print axioms PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerData
+#print axioms PhysicalTotalF3SmallBetaAnchoredPackageK.mono_K
 #print axioms physicalStrong_of_totalF3SmallBetaAnchoredPackageK_siteDist_measurableF
 
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
