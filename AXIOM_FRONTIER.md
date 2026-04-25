@@ -1,3 +1,49 @@
+# v1.39.0 — Count-family package constants are simp-visible
+
+**Released: 2026-04-25**
+
+## What
+
+Added constructor audit lemmas in
+`YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    ShiftedF3CountPackageDim.ofAtFamily_C_conn
+    ShiftedF3CountPackageDim.ofAtFamily_dim
+    PhysicalShiftedF3CountPackage.ofAtFamily_C_conn
+    PhysicalShiftedF3CountPackage.ofAtFamily_dim
+
+## Why
+
+No percentage bar moves.  This is proof-script ergonomics for the remaining
+physical count frontier.  The uniformization constructor
+
+    PhysicalShiftedF3CountPackage.ofAtFamily
+
+already packaged a family of fixed-volume physical count bounds with
+volume-independent constants.  The new simp lemmas make the packaged constants
+definitionally visible:
+
+    (PhysicalShiftedF3CountPackage.ofAtFamily C_conn hC dim h_at).C_conn = C_conn
+    (PhysicalShiftedF3CountPackage.ofAtFamily C_conn hC dim h_at).dim = dim
+
+Future lattice-animal/count scripts can therefore assemble the physical count
+package and rewrite its constants without unfolding the package constructor.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+
+Pinned traces: all four new simp/audit lemmas print the canonical project
+oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.38.0 — Global Mayer data restricts to the physical F3 route
 
 **Released: 2026-04-25**

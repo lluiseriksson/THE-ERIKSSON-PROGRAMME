@@ -307,6 +307,20 @@ theorem toAt_apply
     (h_count : ShiftedConnectingClusterCountBoundDim d C_conn dim) :
     (ofBound d C_conn hC dim h_count).dim = dim := rfl
 
+@[simp] theorem ofAtFamily_C_conn
+    (d : ℕ) [NeZero d]
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_at : ∀ (L : ℕ) [NeZero L],
+      ShiftedConnectingClusterCountBoundAt d L C_conn dim) :
+    (ofAtFamily d C_conn hC dim h_at).C_conn = C_conn := rfl
+
+@[simp] theorem ofAtFamily_dim
+    (d : ℕ) [NeZero d]
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_at : ∀ (L : ℕ) [NeZero L],
+      ShiftedConnectingClusterCountBoundAt d L C_conn dim) :
+    (ofAtFamily d C_conn hC dim h_at).dim = dim := rfl
+
 end ShiftedF3CountPackageDim
 
 /-! ### Physical four-dimensional count target -/
@@ -417,6 +431,18 @@ theorem toAt_apply
     (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
     (h_count : PhysicalShiftedConnectingClusterCountBound C_conn dim) :
     (ofBound C_conn hC dim h_count).dim = dim := rfl
+
+@[simp] theorem ofAtFamily_C_conn
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_at : ∀ (L : ℕ) [NeZero L],
+      PhysicalShiftedConnectingClusterCountBoundAt L C_conn dim) :
+    (ofAtFamily C_conn hC dim h_at).C_conn = C_conn := rfl
+
+@[simp] theorem ofAtFamily_dim
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_at : ∀ (L : ℕ) [NeZero L],
+      PhysicalShiftedConnectingClusterCountBoundAt L C_conn dim) :
+    (ofAtFamily C_conn hC dim h_at).dim = dim := rfl
 
 end PhysicalShiftedF3CountPackage
 
@@ -603,6 +629,8 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedF3CountPackageDim.toAt_apply
 #print axioms ShiftedF3CountPackageDim.ofBound_C_conn
 #print axioms ShiftedF3CountPackageDim.ofBound_dim
+#print axioms ShiftedF3CountPackageDim.ofAtFamily_C_conn
+#print axioms ShiftedF3CountPackageDim.ofAtFamily_dim
 #print axioms physicalClayDimension
 #print axioms PhysicalShiftedF3CountPackage.ofBound
 #print axioms PhysicalShiftedF3CountPackage.ofAtFamily
@@ -613,6 +641,8 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms PhysicalShiftedF3CountPackage.toAt_apply
 #print axioms PhysicalShiftedF3CountPackage.ofBound_C_conn
 #print axioms PhysicalShiftedF3CountPackage.ofBound_dim
+#print axioms PhysicalShiftedF3CountPackage.ofAtFamily_C_conn
+#print axioms PhysicalShiftedF3CountPackage.ofAtFamily_dim
 #print axioms shiftedConnectingClusterCountBoundAt_finite
 #print axioms ShiftedF3CountPackageAt.finite
 #print axioms ShiftedF3CountPackageAt.finite_C_conn

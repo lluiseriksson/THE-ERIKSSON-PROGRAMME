@@ -58,6 +58,14 @@ It consumes `∀ L [NeZero L], PhysicalShiftedConnectingClusterCountBoundAt L C_
 with the same `C_conn` and `dim` for all `L`.  The next genuine count proof
 should therefore produce this volume-uniform family.
 
+After assembling the package, its constants are simp-visible:
+
+    PhysicalShiftedF3CountPackage.ofAtFamily_C_conn
+    PhysicalShiftedF3CountPackage.ofAtFamily_dim
+
+Use these rather than unfolding the constructor when aligning downstream
+prefactors.
+
 The physical package also exposes the finite-volume consumers needed by proof
 scripts:
 
