@@ -1,3 +1,55 @@
+# v2.20.0 — total-size route to `ClusterCorrelatorBound`
+
+**Released: 2026-04-25**
+
+## What
+
+Promoted the v2.19 total-size exponential series bridge to the public
+Wilson-facing decay target in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    clusterPrefactorExp_effective_rpow_ceil_le_exp
+    clusterCorrelatorBound_of_truncatedActivities_ceil_total_exp
+
+The new route consumes a total-size KP estimate of the form
+
+    ∑' n, C_conn * K^(n + ⌈dist⌉₊) * A₀ * r^(n + ⌈dist⌉₊)
+
+and returns
+
+    ClusterCorrelatorBound N_c (K * r)
+      (clusterPrefactorExp r K C_conn A₀)
+
+provided `0 < r`, `0 < K`, `K * r < 1`, and positive constants
+`C_conn`, `A₀`.
+
+## Why
+
+No percentage bar moves. This closes the formal routing gap opened by
+v2.18/v2.19: the standard BFS/Klarner total-cardinality count does not need
+the stronger shifted `K^n` target. Its extra distance factor is absorbed into
+the effective decay parameter `K * r`, and the exported statement is exactly
+the active `ClusterCorrelatorBound` frontier shape.
+
+The remaining F3 work is now sharply localized: produce the physical
+total-size `connectingBound` KP estimate, then prove the small-coupling
+condition `K * r < 1` for the Wilson activity parameters.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace for the new declarations:
+
+    clusterPrefactorExp_effective_rpow_ceil_le_exp
+    clusterCorrelatorBound_of_truncatedActivities_ceil_total_exp
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.19.0 — total-size exponential KP series bridge
 
 **Released: 2026-04-25**
