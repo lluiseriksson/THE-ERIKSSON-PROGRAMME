@@ -1051,6 +1051,34 @@ theorem physicalShiftedConnectingClusterCountBoundExp_of_extraWordDecoder
     exact_mod_cast hnat
   simpa using hreal
 
+/-- Final corrected BFS/Klarner decoder target: a deterministic baseline plus
+a length-`n` word over an alphabet of size `K`.  This combines the distance
+baseline correction with the finite-word counting bridge. -/
+def PhysicalConnectingClusterBaselineExtraWordDecoderCovers (K : ℕ) : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ),
+    ∃ baseline : Finset (ConcretePlaquette physicalClayDimension L),
+    ∃ decodeExtra : (Fin n → Fin K) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      ∀ X : ConnectingClusterBucket physicalClayDimension L p q n,
+        ∃ word : Fin n → Fin K, baseline ∪ decodeExtra word = X.1
+
+/-- A baseline-plus-word decoder gives the plain word-decoder target by
+unioning the deterministic baseline into the decoded output. -/
+theorem physicalConnectingClusterExtraWordDecoderBound_of_baselineExtraWordDecoderCovers
+    {K : ℕ} (hcover : PhysicalConnectingClusterBaselineExtraWordDecoderCovers K) :
+    PhysicalConnectingClusterExtraWordDecoderBound K := by
+  intro L _ p q n
+  obtain ⟨baseline, decodeExtra, hsurj⟩ := hcover p q n
+  exact ⟨fun word => baseline ∪ decodeExtra word, hsurj⟩
+
+/-- Baseline-plus-word decoder terminal F3-count bridge. -/
+theorem physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers
+    {K : ℕ} (hcover : PhysicalConnectingClusterBaselineExtraWordDecoderCovers K) :
+    PhysicalShiftedConnectingClusterCountBoundExp 1 K :=
+  physicalShiftedConnectingClusterCountBoundExp_of_extraWordDecoder
+    (physicalConnectingClusterExtraWordDecoderBound_of_baselineExtraWordDecoderCovers hcover)
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -1273,6 +1301,8 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms physicalConnectingClusterExtraWordCodeOfDecoder_injective
 #print axioms connectingClusterBucket_card_le_extra_word_of_decoder
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_extraWordDecoder
+#print axioms physicalConnectingClusterExtraWordDecoderBound_of_baselineExtraWordDecoderCovers
+#print axioms physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints

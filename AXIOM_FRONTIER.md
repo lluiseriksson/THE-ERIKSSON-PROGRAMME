@@ -1,3 +1,60 @@
+# v2.05.0 — baseline-plus-word decoder bridge
+
+**Released: 2026-04-25**
+
+## What
+
+Added the final corrected decoder interface for the F3-count BFS/Klarner
+target in `YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PhysicalConnectingClusterBaselineExtraWordDecoderCovers
+    physicalConnectingClusterExtraWordDecoderBound_of_baselineExtraWordDecoderCovers
+    physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers
+
+The target combines both corrections from v2.02-v2.04:
+
+    baseline ∪ decodeExtra word
+
+where the deterministic `baseline` accounts for the marked `p`-to-`q`
+distance contribution, and `word : Fin n → Fin K` encodes the `n` extra
+plaquettes.
+
+Lean proves that this directly implies:
+
+    PhysicalShiftedConnectingClusterCountBoundExp 1 K.
+
+For the physical four-dimensional route, the live target is therefore:
+
+    PhysicalConnectingClusterBaselineExtraWordDecoderCovers 1296.
+
+## Why
+
+No percentage bar moves. This is the cleanest current formal statement of the
+remaining F3-count combinatorics: a canonical baseline plus a fixed-alphabet
+BFS/Klarner word. It avoids both accidental overconstraints exposed during the
+audit:
+
+- the cluster need not be the literal range of a length-`n` walk;
+- the code object need not itself be a graph walk.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    physicalConnectingClusterExtraWordDecoderBound_of_baselineExtraWordDecoderCovers
+      [propext, Classical.choice, Quot.sound]
+
+    physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraWordDecoderCovers
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.04.0 — finite-word decoder bridge for F3 count
 
 **Released: 2026-04-25**
