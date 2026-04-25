@@ -3402,6 +3402,24 @@ theorem toPhysical_apply
     (h_count : ShiftedConnectingClusterCountBound C_conn dim) :
     (ofBound C_conn hC dim h_count).dim = dim := rfl
 
+/-- Direct application form for a global shifted F3 count package built from a
+global shifted count bound. -/
+theorem ofBound_apply
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_count : ShiftedConnectingClusterCountBound C_conn dim)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) := by
+  simpa using
+    (ShiftedF3CountPackage.apply
+      (ofBound C_conn hC dim h_count) p q n hn hdist)
+
 end ShiftedF3CountPackage
 
 /-- Single preferred package for the shifted F3 route.
@@ -3884,6 +3902,7 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
 #print axioms ShiftedF3CountPackage.mono_dim_dim
 #print axioms ShiftedF3CountPackage.ofBound_C_conn
 #print axioms ShiftedF3CountPackage.ofBound_dim
+#print axioms ShiftedF3CountPackage.ofBound_apply
 #print axioms ShiftedF3MayerCountPackage.ofSubpackages
 #print axioms ShiftedF3MayerCountPackage.mayerPackage
 #print axioms ShiftedF3MayerCountPackage.countPackage

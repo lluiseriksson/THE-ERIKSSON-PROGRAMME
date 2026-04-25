@@ -1,3 +1,53 @@
+# v1.72.0 — Direct ofBound application canaries for shifted F3 counts
+
+**Released: 2026-04-25**
+
+## What
+
+Added three direct application canaries for count packages built from already
+proved shifted count bounds:
+
+    ShiftedF3CountPackageDim.ofBound_apply
+    PhysicalShiftedF3CountPackage.ofBound_apply
+    ShiftedF3CountPackage.ofBound_apply
+
+The fixed-dimension and physical canaries live in
+`YangMills/ClayCore/ConnectingClusterCount.lean`; the global canary lives in
+`YangMills/ClayCore/ClusterRpowBridge.lean`, beside the global
+`ShiftedF3CountPackage` wrapper.
+
+## Why
+
+No percentage bar moves.  These are application-level tripwires for the F3
+count frontier: once a shifted count bound is supplied as a hypothesis, callers
+can apply the packaged count estimate directly at the original `C_conn` and
+`dim`, without projecting through the record fields first.
+
+The open mathematical target remains the uniform lattice-animal / KP count
+estimate.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    ShiftedF3CountPackageDim.ofBound_apply
+      [propext, Classical.choice, Quot.sound]
+
+    PhysicalShiftedF3CountPackage.ofBound_apply
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedF3CountPackage.ofBound_apply
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.71.0 — Direct ofAtFamily application canaries for shifted F3 counts
 
 **Released: 2026-04-25**

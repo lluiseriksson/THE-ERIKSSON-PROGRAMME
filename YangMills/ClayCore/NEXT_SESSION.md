@@ -100,6 +100,13 @@ to expose the count estimate at the original `C_conn` and `dim` immediately.
 The fixed-dimension version is
 `ShiftedF3CountPackageDim.ofAtFamily_apply`.
 
+If the proof already produces the uniform count bound directly rather than a
+finite-volume family, the matching canaries are:
+
+    PhysicalShiftedF3CountPackage.ofBound_apply
+    ShiftedF3CountPackageDim.ofBound_apply
+    ShiftedF3CountPackage.ofBound_apply
+
 If a proof lands at one polynomial profile dimension and a downstream package
 expects a larger one, increase the exponent mechanically by:
 

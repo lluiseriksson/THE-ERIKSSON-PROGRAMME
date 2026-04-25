@@ -405,6 +405,25 @@ theorem toAt_apply
     (h_count : ShiftedConnectingClusterCountBoundDim d C_conn dim) :
     (ofBound d C_conn hC dim h_count).dim = dim := rfl
 
+/-- Direct application form for a fixed-dimension package built from a
+fixed-dimension count bound. -/
+theorem ofBound_apply
+    (d : ℕ) [NeZero d]
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_count : ShiftedConnectingClusterCountBoundDim d C_conn dim)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) := by
+  simpa using
+    (ShiftedF3CountPackageDim.apply
+      (ofBound d C_conn hC dim h_count) p q n hn hdist)
+
 @[simp] theorem ofAtFamily_C_conn
     (d : ℕ) [NeZero d]
     (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
@@ -564,6 +583,26 @@ theorem toAt_apply
     (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
     (h_count : PhysicalShiftedConnectingClusterCountBound C_conn dim) :
     (ofBound C_conn hC dim h_count).dim = dim := rfl
+
+/-- Direct application form for a physical count package built from a
+physical volume-uniform count bound. -/
+theorem ofBound_apply
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_count : PhysicalShiftedConnectingClusterCountBound C_conn dim)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) := by
+  simpa using
+    (PhysicalShiftedF3CountPackage.apply
+      (ofBound C_conn hC dim h_count) p q n hn hdist)
 
 @[simp] theorem ofAtFamily_C_conn
     (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
@@ -840,6 +879,7 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedF3CountPackageDim.toAt_apply
 #print axioms ShiftedF3CountPackageDim.ofBound_C_conn
 #print axioms ShiftedF3CountPackageDim.ofBound_dim
+#print axioms ShiftedF3CountPackageDim.ofBound_apply
 #print axioms ShiftedF3CountPackageDim.ofAtFamily_C_conn
 #print axioms ShiftedF3CountPackageDim.ofAtFamily_dim
 #print axioms ShiftedF3CountPackageDim.ofAtFamily_apply
@@ -856,6 +896,7 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms PhysicalShiftedF3CountPackage.toAt_apply
 #print axioms PhysicalShiftedF3CountPackage.ofBound_C_conn
 #print axioms PhysicalShiftedF3CountPackage.ofBound_dim
+#print axioms PhysicalShiftedF3CountPackage.ofBound_apply
 #print axioms PhysicalShiftedF3CountPackage.ofAtFamily_C_conn
 #print axioms PhysicalShiftedF3CountPackage.ofAtFamily_dim
 #print axioms PhysicalShiftedF3CountPackage.ofAtFamily_apply
