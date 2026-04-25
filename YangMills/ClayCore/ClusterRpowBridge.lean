@@ -3337,6 +3337,23 @@ def mono_dim
     (pkg : ShiftedF3CountPackage) (k : ℕ) :
     (pkg.mono_dim k).dim = pkg.dim + k := rfl
 
+/-- Direct application form after increasing the polynomial profile dimension
+of a global shifted F3 count package. -/
+theorem mono_dim_apply
+    (pkg : ShiftedF3CountPackage) (k : ℕ)
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.C_conn * (((n + 1 : ℕ) : ℝ) ^ (pkg.dim + k)) := by
+  simpa using
+    (ShiftedF3CountPackage.apply
+      (pkg.mono_dim k) p q n hn hdist)
+
 /-- Applying a global shifted F3 count package after restriction to a finite
 plaquette lattice is definitionally the global shifted count bound specialized
 to that lattice. -/
@@ -3900,6 +3917,7 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
 #print axioms ShiftedF3CountPackage.toPhysical_apply
 #print axioms ShiftedF3CountPackage.mono_dim_C_conn
 #print axioms ShiftedF3CountPackage.mono_dim_dim
+#print axioms ShiftedF3CountPackage.mono_dim_apply
 #print axioms ShiftedF3CountPackage.ofBound_C_conn
 #print axioms ShiftedF3CountPackage.ofBound_dim
 #print axioms ShiftedF3CountPackage.ofBound_apply

@@ -1,3 +1,55 @@
+# v1.73.0 — Direct mono_dim application canaries for shifted F3 counts
+
+**Released: 2026-04-25**
+
+## What
+
+Added direct application canaries after increasing the polynomial count
+dimension:
+
+    ShiftedF3CountPackageAt.mono_dim_apply
+    ShiftedF3CountPackageDim.mono_dim_apply
+    PhysicalShiftedF3CountPackage.mono_dim_apply
+    ShiftedF3CountPackage.mono_dim_apply
+
+The first three live in `YangMills/ClayCore/ConnectingClusterCount.lean`; the
+global wrapper lives in `YangMills/ClayCore/ClusterRpowBridge.lean`.
+
+## Why
+
+No percentage bar moves.  These canaries make the common F3 maneuver explicit:
+if a count proof lands at one polynomial exponent but a downstream package needs
+`dim + k`, callers can apply the dimension-raised package directly at
+`C_conn` and `dim + k`.
+
+The open mathematical target remains the uniform lattice-animal / KP count
+estimate.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    ShiftedF3CountPackageAt.mono_dim_apply
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedF3CountPackageDim.mono_dim_apply
+      [propext, Classical.choice, Quot.sound]
+
+    PhysicalShiftedF3CountPackage.mono_dim_apply
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedF3CountPackage.mono_dim_apply
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.72.0 — Direct ofBound application canaries for shifted F3 counts
 
 **Released: 2026-04-25**

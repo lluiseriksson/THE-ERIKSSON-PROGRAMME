@@ -138,6 +138,13 @@ expects a larger one, increase the exponent mechanically by:
     connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mono_count_dim_mass_eq
     connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mono_count_dim_prefactor_eq
 
+For proof scripts that need to apply the raised count package immediately, use:
+
+    ShiftedF3CountPackageAt.mono_dim_apply
+    ShiftedF3CountPackageDim.mono_dim_apply
+    PhysicalShiftedF3CountPackage.mono_dim_apply
+    ShiftedF3CountPackage.mono_dim_apply
+
 These keep `C_conn` fixed and replace `dim` by `dim + k`, so F3 count scripts
 can align dimensions without reproving the combinatorial bucket estimate or
 reconstructing package records by hand.  At combined Mayer/count package level,
