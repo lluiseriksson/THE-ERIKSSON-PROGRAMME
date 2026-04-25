@@ -1,3 +1,66 @@
+# v1.94.0 — plaquette graph branching-bound interface
+
+**Released: 2026-04-25**
+
+## What
+
+Added the abstract branching-bound interface consumed by BFS/tree-count
+arguments in `YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PlaquetteGraphBranchingBoundDim
+    plaquetteGraph_branchingBoundDim_of_degreeBoundDim
+    plaquetteGraph_branchingBoundDim_ternary
+    plaquetteGraph_branchingBoundDim_physical_ternary
+    plaquetteGraph_branching_le_physical_ternary
+
+The interface states the local branching bound directly in neighbor-finset
+form:
+
+    ∀ {L} [NeZero L] (p : ConcretePlaquette d L),
+      ((plaquetteGraph d L).neighborFinset p).card ≤ D
+
+and packages the current physical theorem as
+
+    PlaquetteGraphBranchingBoundDim physicalClayDimension 1296.
+
+## Why
+
+No percentage bar moves.  This is F3-count infrastructure for the
+`ClusterCorrelatorBound` front.  The downstream lattice-animal count should
+consume an abstract branching hypothesis, not the geometry-specific ternary
+coding argument.  This separates the proof layers:
+
+1. geometry gives `D = 1296`,
+2. branching-bound API exposes finite next-step choices,
+3. BFS/tree enumeration turns branching into an exponential count.
+
+The next local move is to build the finite walk/tree counting layer against
+`PlaquetteGraphBranchingBoundDim`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteGraph_branchingBoundDim_of_degreeBoundDim
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_branchingBoundDim_ternary
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_branchingBoundDim_physical_ternary
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_branching_le_physical_ternary
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.93.0 — neighbor-finset branching form
 
 **Released: 2026-04-25**

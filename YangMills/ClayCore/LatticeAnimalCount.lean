@@ -392,6 +392,44 @@ theorem plaquetteGraph_neighborFinset_card_le_physical_ternary
   rw [SimpleGraph.card_neighborFinset_eq_degree]
   exact plaquetteGraph_degree_le_physical_ternary p
 
+/-! ### Branching-bound interface -/
+
+/-- Fixed-dimension uniform branching bound for the plaquette graph, stated in
+the neighbor-finset form used by BFS/tree-count arguments. -/
+def PlaquetteGraphBranchingBoundDim (d D : ℕ) [NeZero d] : Prop :=
+  ∀ {L : ℕ} [NeZero L] (p : ConcretePlaquette d L),
+    ((plaquetteGraph d L).neighborFinset p).card ≤ D
+
+/-- A degree bound gives the equivalent neighbor-finset branching bound. -/
+theorem plaquetteGraph_branchingBoundDim_of_degreeBoundDim
+    {d D : ℕ} [NeZero d]
+    (hD : PlaquetteGraphDegreeBoundDim d D) :
+    PlaquetteGraphBranchingBoundDim d D := by
+  intro L _ p
+  rw [SimpleGraph.card_neighborFinset_eq_degree]
+  exact hD p
+
+/-- Generic ternary plaquette-graph branching bound. -/
+theorem plaquetteGraph_branchingBoundDim_ternary
+    {d : ℕ} [NeZero d] :
+    PlaquetteGraphBranchingBoundDim d
+      ((3 ^ d) * Fintype.card (Fin d) * Fintype.card (Fin d)) :=
+  plaquetteGraph_branchingBoundDim_of_degreeBoundDim
+    plaquetteGraph_degreeBoundDim_ternary
+
+/-- Physical four-dimensional plaquette-graph branching bound. -/
+theorem plaquetteGraph_branchingBoundDim_physical_ternary :
+    PlaquetteGraphBranchingBoundDim physicalClayDimension 1296 :=
+  plaquetteGraph_branchingBoundDim_of_degreeBoundDim
+    plaquetteGraph_degreeBoundDim_physical_ternary
+
+/-- Direct application form of the physical branching bound. -/
+theorem plaquetteGraph_branching_le_physical_ternary
+    {L : ℕ} [NeZero L]
+    (p : ConcretePlaquette physicalClayDimension L) :
+    ((plaquetteGraph physicalClayDimension L).neighborFinset p).card ≤ 1296 :=
+  plaquetteGraph_branchingBoundDim_physical_ternary p
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -575,6 +613,10 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms plaquetteGraph_degree_le_physical_ternary
 #print axioms plaquetteGraph_neighborFinset_card_le_ternary
 #print axioms plaquetteGraph_neighborFinset_card_le_physical_ternary
+#print axioms plaquetteGraph_branchingBoundDim_of_degreeBoundDim
+#print axioms plaquetteGraph_branchingBoundDim_ternary
+#print axioms plaquetteGraph_branchingBoundDim_physical_ternary
+#print axioms plaquetteGraph_branching_le_physical_ternary
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints
