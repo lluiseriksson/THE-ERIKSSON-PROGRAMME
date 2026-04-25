@@ -24,6 +24,14 @@ It bundles exactly:
 
 and feeds directly into the physical endpoint.
 
+The count side has an explicit finite-volume canary:
+
+    PhysicalShiftedF3CountPackageAt.finite
+
+for each fixed `L`.  Its constant depends on `L`, so it is only an audit/local
+count package.  The open count target is the uniform-in-`L` package
+`PhysicalShiftedF3CountPackage`.
+
 The physical package also exposes the finite-volume consumers needed by proof
 scripts:
 

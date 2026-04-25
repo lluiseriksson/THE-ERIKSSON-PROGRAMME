@@ -1,3 +1,54 @@
+# v1.34.0 — Physical finite-volume count canary exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added physical fixed-volume audit aliases and constructors in
+`YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    PhysicalShiftedConnectingClusterCountBoundAt
+    PhysicalShiftedF3CountPackageAt
+    PhysicalShiftedF3CountPackageAt.finite
+    PhysicalShiftedF3CountPackageAt.finite_C_conn
+    PhysicalShiftedF3CountPackageAt.finite_dim
+    PhysicalShiftedF3CountPackageAt.finite_apply
+
+The finite package specializes the already-closed local count
+`ShiftedF3CountPackageAt.finite` to the physical dimension
+`physicalClayDimension = 4`.
+
+## Why
+
+No percentage bar moves.  This separates the closed finite-volume audit count
+from the still-open physical F3 count frontier.  For each fixed `L`, the
+physical plaquette powerset is finite and gives a local package whose constant
+depends on `L`.  The real physical F3 count obligation remains the uniform
+package:
+
+    PhysicalShiftedF3CountPackage
+
+whose constants must be independent of `L`.
+
+This makes the next proof target sharper: upgrade the physical finite-volume
+canary to a volume-uniform lattice-animal estimate, rather than merely proving
+finiteness again.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+
+Pinned traces: the four new `PhysicalShiftedF3CountPackageAt.*` declarations
+print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.33.0 — Physical F3 package projections exposed
 
 **Released: 2026-04-25**

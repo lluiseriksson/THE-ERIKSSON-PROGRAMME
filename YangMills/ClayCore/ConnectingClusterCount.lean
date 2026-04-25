@@ -472,6 +472,65 @@ theorem ShiftedF3CountPackageAt.finite_apply
         (((n + 1 : ℕ) : ℝ) ^ (ShiftedF3CountPackageAt.finite d L).dim) :=
   (ShiftedF3CountPackageAt.finite d L).h_count.apply p q n hn hdist
 
+/-! ### Physical finite-volume audit count -/
+
+/-- Physical, four-dimensional finite-volume version of the shifted
+connecting-cluster count audit bound.
+
+This is local in `L`; it is not the uniform physical count frontier. -/
+abbrev PhysicalShiftedConnectingClusterCountBoundAt
+    (L : ℕ) [NeZero L] (C_conn : ℝ) (dim : ℕ) : Prop :=
+  ShiftedConnectingClusterCountBoundAt physicalClayDimension L C_conn dim
+
+/-- Packaged physical finite-volume shifted count data.
+
+The constants may depend on the finite volume `L`; the uniform physical F3
+frontier remains `PhysicalShiftedF3CountPackage`. -/
+abbrev PhysicalShiftedF3CountPackageAt (L : ℕ) [NeZero L] : Type :=
+  ShiftedF3CountPackageAt physicalClayDimension L
+
+namespace PhysicalShiftedF3CountPackageAt
+
+/-- Trivial physical finite-volume shifted count package, obtained from
+finiteness of the plaquette powerset at fixed `L`. -/
+noncomputable def finite
+    (L : ℕ) [NeZero L] :
+    PhysicalShiftedF3CountPackageAt L :=
+  ShiftedF3CountPackageAt.finite physicalClayDimension L
+
+@[simp] theorem finite_C_conn
+    (L : ℕ) [NeZero L] :
+    (finite L).C_conn =
+      ((Fintype.card
+        (Finset (ConcretePlaquette physicalClayDimension L)) + 1 : ℕ) : ℝ) :=
+  rfl
+
+@[simp] theorem finite_dim
+    (L : ℕ) [NeZero L] :
+    (finite L).dim = 0 := rfl
+
+/-- Direct application form of the trivial physical finite-volume count
+package.
+
+This deliberately keeps `L` fixed, so it does not discharge the uniform
+physical count frontier. -/
+theorem finite_apply
+    (L : ℕ) [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      (finite L).C_conn *
+        (((n + 1 : ℕ) : ℝ) ^ (finite L).dim) :=
+  ShiftedF3CountPackageAt.finite_apply physicalClayDimension L p q n hn hdist
+
+end PhysicalShiftedF3CountPackageAt
+
 /-- Any connected polymer containing `p` and `q` lies in a canonical
 distance-indexed cardinality bucket: its size is an "extra size" `n`
 plus the ceiling of the lattice distance between `p` and `q`.
@@ -522,5 +581,9 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedF3CountPackageAt.finite_C_conn
 #print axioms ShiftedF3CountPackageAt.finite_dim
 #print axioms ShiftedF3CountPackageAt.finite_apply
+#print axioms PhysicalShiftedF3CountPackageAt.finite
+#print axioms PhysicalShiftedF3CountPackageAt.finite_C_conn
+#print axioms PhysicalShiftedF3CountPackageAt.finite_dim
+#print axioms PhysicalShiftedF3CountPackageAt.finite_apply
 
 end YangMills
