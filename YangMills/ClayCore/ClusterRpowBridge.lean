@@ -2478,6 +2478,18 @@ theorem physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage
   physicalClusterCorrelatorBound_of_physicalShiftedF3Subpackages
     wab pkg.mayer pkg.count
 
+/-- Endpoint canary after increasing only the count polynomial dimension in
+the fully physical F3 package. -/
+theorem physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    PhysicalClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorShifted wab.r pkg.count.C_conn pkg.mayer.A₀
+        (pkg.count.dim + k)) := by
+  exact physicalClusterCorrelatorBound_of_physicalShiftedF3Subpackages
+    wab pkg.mayer (pkg.count.mono_dim k)
+
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofSubpackages
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.mayerPackage
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.countPackage
@@ -2501,6 +2513,7 @@ theorem physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.apply_count
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim_apply_count
 #print axioms physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage
+#print axioms physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim
 
 /-- Preferred F3 endpoint into the older analytic witness bundle. -/
 noncomputable def clayWitnessHyp_of_shiftedCountBound_mayerData_ceil
@@ -3220,6 +3233,18 @@ theorem physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
   physicalClusterCorrelatorBound_of_shiftedF3Subpackages
     wab pkg.mayer pkg.count
 
+/-- Endpoint canary after increasing only the count polynomial dimension in
+the mixed physical F3 package. -/
+theorem physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage_mono_count_dim
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    PhysicalClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorShifted wab.r pkg.count.C_conn pkg.mayer.A₀
+        (pkg.count.dim + k)) := by
+  exact physicalClusterCorrelatorBound_of_shiftedF3Subpackages
+    wab pkg.mayer (pkg.count.mono_dim k)
+
 #print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages
 #print axioms PhysicalShiftedF3MayerCountPackage.mayerPackage
 #print axioms PhysicalShiftedF3MayerCountPackage.countPackage
@@ -3254,6 +3279,7 @@ theorem physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
 #print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_apply_count
 #print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim_apply_count
 #print axioms physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
+#print axioms physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage_mono_count_dim
 
 /-- SU(1) canary for the shifted F3 Mayer interface.
 
@@ -3853,6 +3879,19 @@ theorem clusterCorrelatorBound_of_shiftedF3MayerCountPackage
     N_c wab.r wab.hr_pos wab.hr_lt1 pkg.C_conn pkg.A₀ pkg.hC pkg.hA
     pkg.dim pkg.data pkg.h_count
 
+/-- Endpoint canary after increasing only the count polynomial dimension in
+the global shifted F3 package. -/
+theorem clusterCorrelatorBound_of_shiftedF3MayerCountPackage_mono_count_dim
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : ShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    ClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorShifted wab.r pkg.C_conn pkg.A₀ (pkg.dim + k)) := by
+  exact clusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+    N_c wab.r wab.hr_pos wab.hr_lt1 pkg.C_conn pkg.A₀ pkg.hC pkg.hA
+    (pkg.dim + k) pkg.data
+    (ShiftedConnectingClusterCountBound.mono_dim pkg.hC.le pkg.h_count k)
+
 /-- The single-package F3 route yields the older analytic witness bundle. -/
 noncomputable def clayWitnessHyp_of_shiftedF3MayerCountPackage
     (N_c : ℕ) [NeZero N_c]
@@ -4086,6 +4125,7 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
 #print axioms ShiftedF3MayerCountPackage.mono_count_dim_apply_count
 #print axioms ShiftedF3MayerCountPackage.toPhysicalOnly_apply_count
 #print axioms ShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim_apply_count
+#print axioms clusterCorrelatorBound_of_shiftedF3MayerCountPackage_mono_count_dim
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq
 #print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mass_eq

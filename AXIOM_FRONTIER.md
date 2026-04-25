@@ -1,3 +1,50 @@
+# v1.76.0 — mono_count_dim endpoint canaries for F3 correlator bounds
+
+**Released: 2026-04-25**
+
+## What
+
+Added endpoint canaries after increasing only the count polynomial dimension
+inside combined F3 Mayer/count packages:
+
+    physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim
+    physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage_mono_count_dim
+    clusterCorrelatorBound_of_shiftedF3MayerCountPackage_mono_count_dim
+
+All three live in `YangMills/ClayCore/ClusterRpowBridge.lean`.
+
+## Why
+
+No percentage bar moves.  These are proof-spine/API canaries: after an F3
+package is assembled, callers can raise the count exponent by `k` and still
+reach the physical or Wilson-facing `ClusterCorrelatorBound` endpoint directly,
+with the Mayer half preserved and the prefactor exposing `dim + k`.
+
+The open mathematical target remains unchanged: prove the uniform
+lattice-animal / Kotecky-Preiss count estimate that supplies the F3 count
+package uniformly in finite volume.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim
+      [propext, Classical.choice, Quot.sound]
+
+    physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage_mono_count_dim
+      [propext, Classical.choice, Quot.sound]
+
+    clusterCorrelatorBound_of_shiftedF3MayerCountPackage_mono_count_dim
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.75.0 — toPhysicalOnly count-application canaries for F3 packages
 
 **Released: 2026-04-25**

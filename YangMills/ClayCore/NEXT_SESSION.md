@@ -151,6 +151,16 @@ At combined Mayer/count package level, use:
     PhysicalShiftedF3MayerCountPackage.mono_count_dim_apply_count
     ShiftedF3MayerCountPackage.mono_count_dim_apply_count
 
+Once a combined package is assembled and only the count exponent needs to be
+raised, the endpoint canaries are:
+
+    physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim
+    physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage_mono_count_dim
+    clusterCorrelatorBound_of_shiftedF3MayerCountPackage_mono_count_dim
+
+These reach the physical or Wilson-facing `ClusterCorrelatorBound` endpoint
+directly with the same Mayer data and the shifted prefactor exponent `dim + k`.
+
 After restricting a mixed/global package into the Clay-physical route, use:
 
     PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_apply_count
