@@ -2019,6 +2019,31 @@ theorem physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderK_siteDist_measurab
       hK_pos hβ_small A₀ hA data decode)
     F hF hF_meas
 
+/-- Parameterized terminal small-β physical endpoint from physical Mayer data
+and an anchored word decoder proved at a smaller alphabet constant. -/
+theorem physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderMonoK_siteDist_measurableF
+    {K₀ K N_c : ℕ} [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (hK₀ : 1 ≤ K₀)
+    (hK₀K : K₀ ≤ K)
+    (hK_pos : (0 : ℝ) < K)
+    (hβ_small : (K : ℝ) * β < 1)
+    (A₀ : ℝ) (hA : 0 < A₀)
+    (data : PhysicalConnectedCardDecayMayerData N_c β A₀ hβ_pos.le hA.le)
+    (decode : PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound K₀)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_totalF3SmallBetaAnchoredPackageK_siteDist_measurableF
+    hβ_pos hβ_lt1
+    (PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerDataWordDecoderMono
+      hK₀ hK₀K hK_pos hβ_small A₀ hA data decode)
+    F hF hF_meas
+
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mass_eq
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_prefactor_eq
@@ -2064,6 +2089,7 @@ theorem physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderK_siteDist_measurab
 #print axioms PhysicalTotalF3SmallBetaAnchoredPackageK.mono_K
 #print axioms physicalStrong_of_totalF3SmallBetaAnchoredPackageK_siteDist_measurableF
 #print axioms physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderK_siteDist_measurableF
+#print axioms physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderMonoK_siteDist_measurableF
 
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
 

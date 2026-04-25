@@ -1,3 +1,51 @@
+# v2.37.0 — terminal endpoint from smaller anchored decoder alphabet
+
+**Released: 2026-04-25**
+
+## What
+
+Added the terminal physical endpoint
+
+    physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderMonoK_siteDist_measurableF
+
+in `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+It produces
+
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site)
+
+from physical Mayer data, a small-β inequality at a terminal alphabet constant
+`K`, and an anchored word decoder proved at a smaller alphabet constant `K₀`.
+
+## Why
+
+No percentage bar moves. This is an API closure for the constructive F3 route:
+the eventual anchored BFS/Klarner decoder can be proved at its natural alphabet
+size `K₀`, while the final physical endpoint may inflate to any larger `K`
+needed for the analytic small-coupling condition `(K : ℝ) * β < 1`.
+
+The active frontier is unchanged: construct the anchored word decoder / graph
+animal bound and the physical Mayer data. This entry only removes terminal
+composition friction once those inputs are available.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace:
+
+    physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderMonoK_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.36.0 — terminal package from smaller anchored decoder alphabet
 
 **Released: 2026-04-25**
