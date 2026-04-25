@@ -1,3 +1,55 @@
+# v2.32.0 — terminal route from anchored word decoder
+
+**Released: 2026-04-25**
+
+## What
+
+Threaded the anchored graph-animal word-decoder input through the small-β F3
+terminal package in `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerDataWordDecoder
+    physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderK_siteDist_measurableF
+
+The endpoint now takes the current clean Wilson-facing inputs
+
+    hK_pos : (0 : ℝ) < K
+    hβ_small : (K : ℝ) * β < 1
+    data : PhysicalConnectedCardDecayMayerData N_c β A₀ hβ_pos.le hA.le
+    decode : PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound K
+
+and returns the Clay-grade physical endpoint
+
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F siteLatticeDist
+
+for measurable bounded observables.
+
+## Why
+
+No percentage bar moves. This removes one more layer of manual composition from
+the active F3 route. The remaining combinatorial obligation can now be stated
+constructively as an anchored BFS/Klarner word decoder, and once that decoder
+plus the Mayer data are supplied, the terminal physical strong statement is a
+single theorem application.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces:
+
+    PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerDataWordDecoder
+      [propext, Classical.choice, Quot.sound]
+
+    physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderK_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.31.0 — anchored graph-animal word-decoder bridge
 
 **Released: 2026-04-25**

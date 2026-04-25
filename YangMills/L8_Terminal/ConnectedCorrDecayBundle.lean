@@ -1828,6 +1828,20 @@ def ofMayerData
         simpa [wilsonActivityBound_from_expansion] using data }
   anchored := anchored
 
+/-- Build the anchored terminal small-β F3 package from physical Mayer data and
+the constructive anchored word-decoder form of the graph-animal count. -/
+def ofMayerDataWordDecoder
+    {K N_c : ℕ} [NeZero N_c]
+    {β : ℝ} {hβ_pos : 0 < β} {hβ_lt1 : β < 1}
+    (hK_pos : (0 : ℝ) < K)
+    (hβ_small : (K : ℝ) * β < 1)
+    (A₀ : ℝ) (hA : 0 < A₀)
+    (data : PhysicalConnectedCardDecayMayerData N_c β A₀ hβ_pos.le hA.le)
+    (decode : PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound K) :
+    PhysicalTotalF3SmallBetaAnchoredPackageK K N_c β hβ_pos hβ_lt1 :=
+  ofMayerData hK_pos hβ_small A₀ hA data
+    (physicalPlaquetteGraphAnimalAnchoredCountBound_of_wordDecoder decode)
+
 /-- Increase the graph-animal growth constant in an anchored terminal package.
 
 This is useful when the combinatorial proof naturally produces a sharper
@@ -1965,6 +1979,29 @@ theorem physicalStrong_of_totalF3SmallBetaAnchoredPackageK_siteDist_measurableF
       PhysicalTotalF3SmallBetaCountPackageK K N_c β hβ_pos hβ_lt1)
     F hF hF_meas
 
+/-- Parameterized terminal small-β physical endpoint from physical Mayer data
+and the anchored word-decoder graph-animal input. -/
+theorem physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderK_siteDist_measurableF
+    {K N_c : ℕ} [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (hK_pos : (0 : ℝ) < K)
+    (hβ_small : (K : ℝ) * β < 1)
+    (A₀ : ℝ) (hA : 0 < A₀)
+    (data : PhysicalConnectedCardDecayMayerData N_c β A₀ hβ_pos.le hA.le)
+    (decode : PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound K)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_totalF3SmallBetaAnchoredPackageK_siteDist_measurableF
+    hβ_pos hβ_lt1
+    (PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerDataWordDecoder
+      hK_pos hβ_small A₀ hA data decode)
+    F hF hF_meas
+
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mass_eq
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_prefactor_eq
@@ -2005,8 +2042,10 @@ theorem physicalStrong_of_totalF3SmallBetaAnchoredPackageK_siteDist_measurableF
 #print axioms PhysicalTotalF3SmallBetaCountPackageK.mono_K
 #print axioms physicalStrong_of_totalF3SmallBetaCountPackageK_siteDist_measurableF
 #print axioms PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerData
+#print axioms PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerDataWordDecoder
 #print axioms PhysicalTotalF3SmallBetaAnchoredPackageK.mono_K
 #print axioms physicalStrong_of_totalF3SmallBetaAnchoredPackageK_siteDist_measurableF
+#print axioms physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderK_siteDist_measurableF
 
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
 
