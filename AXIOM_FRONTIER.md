@@ -16,6 +16,8 @@ review sketch into the main Lean tree:
     polymerConnected_exists_plaquetteGraph_chain
     plaquetteGraph_reachable_of_chain_endpoints
     polymerConnected_plaquetteGraph_reachable
+    plaquetteGraph_induce_reachable_of_chain_endpoints
+    polymerConnected_plaquetteGraph_induce_reachable
 
 The new `plaquetteGraph d L` connects two concrete plaquettes when their
 base sites have `siteLatticeDist ≤ 1` and the plaquettes are distinct.  The
@@ -24,6 +26,8 @@ chain is already a chain in this graph, and package `PolymerConnected X` as
 an internal `plaquetteGraph` chain between any two plaquettes of `X`.  The
 endpoint lemma then converts those chains to `SimpleGraph.Reachable`, giving
 the direct graph-connectivity direction needed by the lattice-animal count.
+The induced-subgraph variants preserve the containment proof and produce
+reachability inside `(plaquetteGraph d L).induce {x | x ∈ X}`.
 
 ## Why
 
@@ -63,6 +67,12 @@ Pinned traces:
       [propext, Classical.choice, Quot.sound]
 
     polymerConnected_plaquetteGraph_reachable
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_induce_reachable_of_chain_endpoints
+      [propext, Classical.choice, Quot.sound]
+
+    polymerConnected_plaquetteGraph_induce_reachable
       [propext, Classical.choice, Quot.sound]
 
 No `sorry`. Non-Experimental Lean axiom count remains 0.
