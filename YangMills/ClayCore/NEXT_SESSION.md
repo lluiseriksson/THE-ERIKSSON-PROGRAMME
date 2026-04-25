@@ -121,6 +121,10 @@ The restriction is simp-visible on raw and bundled activities:
     ConnectedCardDecayMayerData.toPhysical_toTruncatedActivities
     ShiftedF3MayerPackage.toPhysical_toTruncatedActivities
     PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_toTruncatedActivities
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_mayer_A₀
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_mayer_data
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_count_C_conn
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_count_dim
 
 Supplying either the single package or both halves yields, oracle-clean:
 

@@ -2559,6 +2559,30 @@ def ofGlobalMayer
     (count : PhysicalShiftedF3CountPackage) :
     countPackage (ofGlobalMayer mayer count) = count := rfl
 
+@[simp] theorem ofGlobalMayer_mayer_A₀
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    (ofGlobalMayer mayer count).mayer.A₀ = mayer.A₀ := rfl
+
+@[simp] theorem ofGlobalMayer_mayer_data
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    (ofGlobalMayer mayer count).mayer.data = mayer.data.toPhysical := rfl
+
+@[simp] theorem ofGlobalMayer_count_C_conn
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    (ofGlobalMayer mayer count).count.C_conn = count.C_conn := rfl
+
+@[simp] theorem ofGlobalMayer_count_dim
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    (ofGlobalMayer mayer count).count.dim = count.dim := rfl
+
 @[simp] theorem ofGlobalMayer_toTruncatedActivities
     {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
     (mayer : ShiftedF3MayerPackage N_c wab)
@@ -2575,6 +2599,10 @@ end PhysicalOnlyShiftedF3MayerCountPackage
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_mayerPackage
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_countPackage
+#print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_mayer_A₀
+#print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_mayer_data
+#print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_count_C_conn
+#print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_count_dim
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_toTruncatedActivities
 
 /-- Physical `d = 4` F3 endpoint from independently-produced Mayer and

@@ -1,3 +1,49 @@
+# v1.43.0 — `ofGlobalMayer` constants are simp-visible
+
+**Released: 2026-04-25**
+
+## What
+
+Added direct field-normalization lemmas for the global-Mayer to physical-F3
+constructor in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_mayer_A₀
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_mayer_data
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_count_C_conn
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer_count_dim
+
+## Why
+
+No percentage bar moves.  This is proof-script ergonomics for constant and
+prefactor alignment after restricting an all-dimensions Mayer package into the
+preferred physical route.  The previous pass made the package-level activities
+rewrite through `ofGlobalMayer`; this pass makes the fields that enter the
+cluster prefactor rewrite directly:
+
+    (ofGlobalMayer mayer count).mayer.A₀ = mayer.A₀
+    (ofGlobalMayer mayer count).count.C_conn = count.C_conn
+    (ofGlobalMayer mayer count).count.dim = count.dim
+
+and records that the stored physical Mayer data is exactly
+`mayer.data.toPhysical`.  Future scripts can therefore compare the global-route
+and physical-route prefactors by `simp`, without unfolding package
+constructors.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all four new field-normalization lemmas print the canonical
+project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.42.0 — `ofGlobalMayer` exposes physical activities by simp
 
 **Released: 2026-04-25**
