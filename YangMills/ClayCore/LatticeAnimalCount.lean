@@ -943,6 +943,42 @@ theorem physicalConnectingClusterRangeDecoderCovers_forces_dist_ceiling_le_one
       X.1.card = n + ⌈siteLatticeDist p.site q.site⌉₊ := X.2.2.2.2
   omega
 
+/-! ### Baseline-plus-extra decoder target -/
+
+/-- Corrected concrete decoder shape after the exact range obstruction: first
+fix a deterministic baseline set accounting for the marked-plaquette distance,
+then let a length-`n` walk/word encode the extra plaquettes.
+
+This is still a target, not the BFS/tree proof itself.  The key point is that
+the decoded set is `baseline ∪ decodeExtra w`, so its cardinality can include
+the distance baseline plus the `n` extra plaquettes without being forced to be
+the literal range of a length-`n` walk. -/
+def PhysicalConnectingClusterBaselineExtraDecoderCovers : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ),
+    ∃ baseline : Finset (ConcretePlaquette physicalClayDimension L),
+    ∃ decodeExtra : PlaquetteWalk physicalClayDimension L n p →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      ∀ X : ConnectingClusterBucket physicalClayDimension L p q n,
+        ∃ w : PlaquetteWalk physicalClayDimension L n p,
+          baseline ∪ decodeExtra w = X.1
+
+/-- The corrected baseline-plus-extra decoder target implies the abstract
+extra-walk decoder target used by the F3-count bridge. -/
+theorem physicalConnectingClusterExtraWalkDecoderBound_of_baselineExtraDecoderCovers
+    (hcover : PhysicalConnectingClusterBaselineExtraDecoderCovers) :
+    PhysicalConnectingClusterExtraWalkDecoderBound := by
+  intro L _ p q n
+  obtain ⟨baseline, decodeExtra, hsurj⟩ := hcover p q n
+  exact ⟨fun w => baseline ∪ decodeExtra w, hsurj⟩
+
+/-- Baseline-plus-extra decoder terminal F3-count bridge. -/
+theorem physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraDecoderCovers
+    (hcover : PhysicalConnectingClusterBaselineExtraDecoderCovers) :
+    PhysicalShiftedConnectingClusterCountBoundExp 1 1296 :=
+  physicalShiftedConnectingClusterCountBoundExp_of_extraWalkDecoder
+    (physicalConnectingClusterExtraWalkDecoderBound_of_baselineExtraDecoderCovers hcover)
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -1160,6 +1196,8 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms physicalConnectingClusterExtraWalkDecoderBound_of_rangeDecoderCovers
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_rangeDecoderCovers
 #print axioms physicalConnectingClusterRangeDecoderCovers_forces_dist_ceiling_le_one
+#print axioms physicalConnectingClusterExtraWalkDecoderBound_of_baselineExtraDecoderCovers
+#print axioms physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraDecoderCovers
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints

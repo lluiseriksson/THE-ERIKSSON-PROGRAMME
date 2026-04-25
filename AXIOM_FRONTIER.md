@@ -1,3 +1,55 @@
+# v2.03.0 — baseline-plus-extra decoder target
+
+**Released: 2026-04-25**
+
+## What
+
+Added the corrected concrete decoder interface in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PhysicalConnectingClusterBaselineExtraDecoderCovers
+    physicalConnectingClusterExtraWalkDecoderBound_of_baselineExtraDecoderCovers
+    physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraDecoderCovers
+
+The new target says that for each shifted bucket, the decoded cluster has the
+shape
+
+    baseline ∪ decodeExtra w
+
+where `baseline` accounts for the deterministic `p`-to-`q` distance part and
+the length-`n` walk/word `w` accounts for the `n` extra plaquettes.
+
+## Why
+
+No percentage bar moves. This is the corrected post-v2.02 target shape for the
+F3-count BFS/tree proof. It avoids the impossible requirement that the whole
+bucket be the literal range of a length-`n` walk, while preserving the exact
+downstream bridge to:
+
+    PhysicalShiftedConnectingClusterCountBoundExp 1 1296.
+
+The remaining mathematical work is now sharply named: construct the
+baseline-plus-extra decoder, typically by a canonical path/tree baseline plus a
+BFS/Klarner word for the extra attached plaquettes.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    physicalConnectingClusterExtraWalkDecoderBound_of_baselineExtraDecoderCovers
+      [propext, Classical.choice, Quot.sound]
+
+    physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraDecoderCovers
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.02.0 — exact walk-range decoder obstruction
 
 **Released: 2026-04-25**
