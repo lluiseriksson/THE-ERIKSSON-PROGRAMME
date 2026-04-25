@@ -1,3 +1,56 @@
+# v2.18.0 — total-size graph-animal decoder target + shifted-count canary
+
+**Released: 2026-04-25**
+
+## What
+
+Added an audit canary for the exact shifted graph-animal count target:
+
+    physicalGraphAnimalShiftedCountBound_zero_card_le_one
+
+and a corrected total-size decoder interface:
+
+    PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound K
+    physicalGraphAnimalTotalWordCodeOfDecoder
+    physicalGraphAnimalTotalWordCodeOfDecoder_injective
+    physicalGraphAnimalTotalCountBound_of_wordDecoder
+    PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296
+    physicalGraphAnimalTotalCountBound1296_of_wordDecoder
+
+in `YangMills/ClayCore/LatticeAnimalCount.lean`.
+
+## Why
+
+No percentage bar moves. The canary records a real structural warning: the
+exact shifted target `card ≤ K^n` forces the `n = 0` minimal-connector bucket
+to have cardinality at most one. That is far stronger than the usual
+Klarner/BFS total-size lattice-animal count in geometries with multiple
+minimal connectors.
+
+The new total-size target counts shifted graph animals by words of length
+`n + ⌈dist(p,q)⌉₊`, giving the standard bound
+`K^(n + ⌈dist(p,q)⌉₊)`. The next analytic move is to absorb the extra
+distance factor into the decay rate, i.e. use an effective parameter like
+`K * r` rather than pretending the distance factor is absent.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace for the new declarations:
+
+    physicalGraphAnimalShiftedCountBound_zero_card_le_one
+    physicalGraphAnimalTotalWordCodeOfDecoder_injective
+    physicalGraphAnimalTotalCountBound_of_wordDecoder
+    physicalGraphAnimalTotalCountBound1296_of_wordDecoder
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.17.0 — graph-animal word-decoder route to L8 physical-strong endpoint
 
 **Released: 2026-04-25**
