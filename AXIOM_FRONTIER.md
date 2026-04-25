@@ -1,3 +1,46 @@
+# v1.66.0 — Direct Mayer finite-sum KP comparison
+
+**Released: 2026-04-25**
+
+## What
+
+Added finite-connecting-sum KP consumers in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    finiteConnectingSum_le_of_cardBucketBounds_tsum
+    finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
+
+Given disconnected-support cancellation and the usual bucketwise KP bounds on
+the canonical finite plaquette range, these theorems bound the finite Mayer
+connecting sum directly by the unshifted or shifted KP `tsum`.
+
+## Why
+
+No percentage bar moves.  v1.65.0 exposed the Mayer finite connecting sum as
+the bucket `tsum`; this pass packages the immediate inequality consumer, so a
+caller with Mayer cancellation plus bucket estimates no longer has to route
+manually through the connected finite-sum API.
+
+This is still F3 infrastructure.  The open mathematical target remains the
+uniform lattice-animal / KP count estimate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    finiteConnectingSum_le_of_cardBucketBounds_tsum
+      [propext, Classical.choice, Quot.sound]
+    finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.65.0 — Mayer finite connecting sum equals the bucket `tsum`
 
 **Released: 2026-04-25**

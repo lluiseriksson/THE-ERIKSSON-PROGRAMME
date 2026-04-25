@@ -666,6 +666,56 @@ theorem connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted
     exact connecting_cluster_summand_nonneg_shifted r hr_pos C_conn A₀ hC hA dim
       ⌈siteLatticeDist p.site q.site⌉₊ n
 
+/-- Finite-connecting-sum consumer using the bucket `tsum` API directly. -/
+theorem finiteConnectingSum_le_of_cardBucketBounds_tsum
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (h_zero : ∀ Y : Finset (ConcretePlaquette d L),
+      p ∈ Y → q ∈ Y → ¬ PolymerConnected Y → K_bound Y = 0)
+    (h_bucket : ∀ n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1),
+      (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+          if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+            then K_bound Y else 0) ≤
+        C_conn * (n : ℝ) ^ dim * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y), K_bound Y) ≤
+      ∑' n : ℕ, C_conn * (n : ℝ) ^ dim * A₀ *
+        r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+  rw [finiteConnectingSum_eq_connectedFiniteSum K_bound p q h_zero]
+  exact connectedFiniteSum_le_of_cardBucketBounds_tsum K_bound p q
+    r hr_pos hr_lt1 C_conn A₀ hC hA dim h_bucket
+
+/-- Shifted finite-connecting-sum consumer using the bucket `tsum` API directly. -/
+theorem finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L)
+    (r : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (dim : ℕ)
+    (h_zero : ∀ Y : Finset (ConcretePlaquette d L),
+      p ∈ Y → q ∈ Y → ¬ PolymerConnected Y → K_bound Y = 0)
+    (h_bucket : ∀ n ∈ Finset.range (Fintype.card (ConcretePlaquette d L) + 1),
+      (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+          if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+            then K_bound Y else 0) ≤
+        C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y), K_bound Y) ≤
+      ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
+        r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+  rw [finiteConnectingSum_eq_connectedFiniteSum K_bound p q h_zero]
+  exact connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted K_bound p q
+    r hr_pos hr_lt1 C_conn A₀ hC hA dim h_bucket
+
 /-- Bucket-bound consumer with the KP partial-sum comparison discharged
 internally by `connecting_cluster_partial_sum_le_tsum`. -/
 theorem connectedFiniteSum_le_of_cardBucketBounds_kp
@@ -1256,6 +1306,8 @@ theorem TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connecte
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_shifted
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_tsum
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted
+#print axioms finiteConnectingSum_le_of_cardBucketBounds_tsum
+#print axioms finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_kp
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_kp_shifted
 #print axioms cardBucketSum_le_of_count_and_pointwise

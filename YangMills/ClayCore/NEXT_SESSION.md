@@ -64,6 +64,8 @@ The count side has an explicit finite-volume canary:
     finiteConnectingSum_eq_cardBucketTsum
     connectedFiniteSum_le_of_cardBucketBounds_tsum
     connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted
+    finiteConnectingSum_le_of_cardBucketBounds_tsum
+    finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
 
 for each fixed `L`.  Its constant depends on `L`, so it is only an audit/local
 count package.  The open count target is the uniform-in-`L` package
@@ -453,6 +455,8 @@ What is already closed locally:
     finiteConnectingSum_eq_cardBucketTsum
     connectedFiniteSum_le_of_cardBucketBounds_tsum
     connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted
+    finiteConnectingSum_le_of_cardBucketBounds_tsum
+    finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
     real_pow_le_pow_add_of_one_le
     ShiftedConnectingClusterCountBound.mono_dim
     ShiftedConnectingClusterCountBoundDim.mono_dim
@@ -527,7 +531,10 @@ The direct consumers
 termwise with the KP `tsum`.  The public KP consumers
 `connectedFiniteSum_le_of_cardBucketBounds_kp` and
 `connectedFiniteSum_le_of_cardBucketBounds_kp_shifted` now delegate through
-this direct route.
+this direct route.  The Mayer-facing consumers
+`finiteConnectingSum_le_of_cardBucketBounds_tsum` and
+`finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted` add the disconnected
+support cancellation step on top.
 The remaining F3-count work is the uniform lattice-animal estimate
 `ShiftedConnectingClusterCountBound`, not mere finiteness.  A proved global
 count package now projects mechanically to every local finite-volume package.
@@ -574,6 +581,8 @@ Key oracle canaries:
     #print axioms finiteConnectingSum_eq_cardBucketTsum
     #print axioms connectedFiniteSum_le_of_cardBucketBounds_tsum
     #print axioms connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted
+    #print axioms finiteConnectingSum_le_of_cardBucketBounds_tsum
+    #print axioms finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
     #print axioms real_pow_le_pow_add_of_one_le
     #print axioms ShiftedConnectingClusterCountBound.mono_dim
     #print axioms ShiftedConnectingClusterCountBoundDim.mono_dim
