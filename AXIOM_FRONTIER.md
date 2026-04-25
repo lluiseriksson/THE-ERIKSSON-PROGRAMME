@@ -1,3 +1,65 @@
+# v2.26.0 — constant-flexible total-count F3 terminal route
+
+**Released: 2026-04-25**
+
+## What
+
+Generalized the decoder-free total-size F3 route so the graph-animal growth
+constant is an explicit parameter `K` rather than being hard-wired to `1296`.
+
+New bridge in `YangMills/ClayCore/LatticeAnimalF3Bridge.lean`:
+
+    physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound
+
+New terminal package and endpoint in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    PhysicalTotalF3SmallBetaCountPackageK
+    PhysicalTotalF3SmallBetaCountPackageK.ofMayerData
+    physicalStrong_of_totalF3SmallBetaCountPackageK_siteDist_measurableF
+
+The terminal input shape is now:
+
+    hK_pos : (0 : ℝ) < K
+    hβ_small : (K : ℝ) * β < 1
+    data : PhysicalConnectedCardDecayMayerData N_c β A₀ hβ_pos.le hA.le
+    count : PhysicalConnectingClusterGraphAnimalTotalCountBound K
+
+## Why
+
+No percentage bar moves. This is a correctness/robustness closure on the F3
+frontier. The local plaquette branching bound already gives the useful number
+`1296`, but a classical rooted graph-animal count may naturally produce a
+different exponential growth constant. The terminal Clay-grade route should
+therefore not force the eventual combinatorial theorem to have exactly the
+local-degree constant.
+
+The previous `1296` package remains available as the convenient specialization.
+The honest future combinatorial target can now choose its own `K`, with the
+analytic KP condition updated transparently to `(K : ℝ) * β < 1`.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.LatticeAnimalF3Bridge
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces:
+
+    physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound
+      [propext, Classical.choice, Quot.sound]
+
+    PhysicalTotalF3SmallBetaCountPackageK.ofMayerData
+      [propext, Classical.choice, Quot.sound]
+
+    physicalStrong_of_totalF3SmallBetaCountPackageK_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.25.0 — anchored graph-animal count reduction
 
 **Released: 2026-04-25**

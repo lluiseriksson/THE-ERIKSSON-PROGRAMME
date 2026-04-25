@@ -215,6 +215,27 @@ theorem physicalClusterCorrelatorBound_of_graphAnimalTotalWordDecoder1296
     (physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder1296
       hdecode)
 
+/-- Generic terminal physical exponential F3 bridge from a direct total-size
+graph-animal count target and the physical Mayer half.
+
+This keeps the combinatorial growth constant explicit: future graph-animal
+proofs may produce a constant different from the local degree bound `1296`,
+and the KP smallness condition adjusts to `(K : ℝ) * wab.r < 1`. -/
+theorem physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound
+    {N_c : ℕ} [NeZero N_c] {K : ℕ}
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (hgraph : PhysicalConnectingClusterGraphAnimalTotalCountBound K)
+    (hK_pos : (0 : ℝ) < K)
+    (hKr_lt1 : (K : ℝ) * wab.r < 1) :
+    PhysicalClusterCorrelatorBound N_c ((K : ℝ) * wab.r)
+      (clusterPrefactorExp wab.r K 1 mayer.A₀) :=
+  physicalClusterCorrelatorBound_of_physicalMayerData_totalExpCount_ceil
+    N_c wab.r K wab.hr_pos hK_pos hKr_lt1
+    1 mayer.A₀ one_pos mayer.hA mayer.data
+    (physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound
+      hgraph)
+
 /-- Terminal physical exponential F3 bridge from the corrected total-size
 graph-animal `1296` count target and the physical Mayer half to the
 Wilson-facing physical cluster-correlator bound.
@@ -231,11 +252,8 @@ theorem physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound1296
     (hKr_lt1 : (1296 : ℝ) * wab.r < 1) :
     PhysicalClusterCorrelatorBound N_c ((1296 : ℝ) * wab.r)
       (clusterPrefactorExp wab.r 1296 1 mayer.A₀) :=
-  physicalClusterCorrelatorBound_of_physicalMayerData_totalExpCount_ceil
-    N_c wab.r 1296 wab.hr_pos (by norm_num) hKr_lt1
-    1 mayer.A₀ one_pos mayer.hA mayer.data
-    (physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound1296
-      hgraph)
+  physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound
+    wab mayer hgraph (by norm_num) hKr_lt1
 
 #print axioms physicalOnlyShiftedF3MayerCountPackageExp_of_baselineExtraWordDecoderCovers1296
 #print axioms physicalOnlyShiftedF3MayerCountPackageExp_of_baselineExtraWordDecoderCovers1296_C_conn
@@ -253,6 +271,7 @@ theorem physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound1296
 #print axioms physicalOnlyShiftedF3MayerCountPackageExp_of_graphAnimalWordDecoder1296_A₀
 #print axioms physicalClusterCorrelatorBound_of_graphAnimalWordDecoder1296
 #print axioms physicalClusterCorrelatorBound_of_graphAnimalTotalWordDecoder1296
+#print axioms physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound
 #print axioms physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound1296
 
 end YangMills

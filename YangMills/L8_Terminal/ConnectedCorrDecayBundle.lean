@@ -1744,6 +1744,41 @@ def ofMayerData
 
 end PhysicalTotalF3SmallBetaCountPackage
 
+/-- Parameterized terminal package for the corrected total-size small-β F3
+route, keeping the graph-animal growth constant explicit. -/
+structure PhysicalTotalF3SmallBetaCountPackageK
+    (K : ℕ) (N_c : ℕ) [NeZero N_c] (β : ℝ)
+    (hβ_pos : 0 < β) (hβ_lt1 : β < 1) where
+  hK_pos : (0 : ℝ) < K
+  hβ_small : (K : ℝ) * β < 1
+  mayer : PhysicalShiftedF3MayerPackage N_c
+    (wilsonActivityBound_from_expansion N_c hβ_pos hβ_lt1)
+  count : PhysicalConnectingClusterGraphAnimalTotalCountBound K
+
+namespace PhysicalTotalF3SmallBetaCountPackageK
+
+/-- Build the parameterized direct-count terminal small-β F3 package from
+physical Mayer data at the concrete radius `r = β`. -/
+def ofMayerData
+    {K N_c : ℕ} [NeZero N_c]
+    {β : ℝ} {hβ_pos : 0 < β} {hβ_lt1 : β < 1}
+    (hK_pos : (0 : ℝ) < K)
+    (hβ_small : (K : ℝ) * β < 1)
+    (A₀ : ℝ) (hA : 0 < A₀)
+    (data : PhysicalConnectedCardDecayMayerData N_c β A₀ hβ_pos.le hA.le)
+    (count : PhysicalConnectingClusterGraphAnimalTotalCountBound K) :
+    PhysicalTotalF3SmallBetaCountPackageK K N_c β hβ_pos hβ_lt1 where
+  hK_pos := hK_pos
+  hβ_small := hβ_small
+  mayer :=
+    { A₀ := A₀
+      hA := hA
+      data := by
+        simpa [wilsonActivityBound_from_expansion] using data }
+  count := count
+
+end PhysicalTotalF3SmallBetaCountPackageK
+
 /-- Terminal small-β physical endpoint from the single F3 package.
 
 This is the current narrowest Wilson-facing F3 statement: once the concrete
@@ -1799,6 +1834,43 @@ theorem physicalStrong_of_totalF3SmallBetaCountPackage_siteDist_measurableF
       simpa [wilsonActivityBound_from_expansion, neg_mul] using hbase)
     β F hβ_pos hF hF_meas
 
+/-- Parameterized terminal small-β physical endpoint from the direct-count F3
+package.
+
+This is the constant-flexible sibling of
+`physicalStrong_of_totalF3SmallBetaCountPackage_siteDist_measurableF`: the
+future graph-animal proof may choose its own growth constant `K`, with the
+small-coupling condition becoming `(K : ℝ) * β < 1`. -/
+theorem physicalStrong_of_totalF3SmallBetaCountPackageK_siteDist_measurableF
+    {K N_c : ℕ} [NeZero N_c]
+    {β : ℝ} (hβ_pos : 0 < β) (hβ_lt1 : β < 1)
+    (pkg : PhysicalTotalF3SmallBetaCountPackageK K N_c β hβ_pos hβ_lt1)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
+    ((K : ℝ) * β)
+    (mul_pos pkg.hK_pos hβ_pos)
+    pkg.hβ_small
+    (clusterPrefactorExp β K 1 pkg.mayer.A₀)
+    (clusterPrefactorExp_pos β K hβ_pos pkg.hK_pos pkg.hβ_small
+      1 pkg.mayer.A₀ one_pos pkg.mayer.hA)
+    (by
+      intro L instL β' hβ' F' hF' p q hdist
+      letI : NeZero L := instL
+      have hbase :=
+        (physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound
+          (wilsonActivityBound_from_expansion N_c hβ_pos hβ_lt1)
+          pkg.mayer pkg.count pkg.hK_pos
+          (by simpa [wilsonActivityBound_from_expansion] using pkg.hβ_small))
+          β' hβ' F' hF' p q hdist
+      simpa [wilsonActivityBound_from_expansion, neg_mul] using hbase)
+    β F hβ_pos hF hF_meas
+
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mass_eq
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_prefactor_eq
@@ -1835,6 +1907,8 @@ theorem physicalStrong_of_totalF3SmallBetaCountPackage_siteDist_measurableF
 #print axioms physicalStrong_of_totalF3SmallBetaPackage_siteDist_measurableF
 #print axioms PhysicalTotalF3SmallBetaCountPackage.ofMayerData
 #print axioms physicalStrong_of_totalF3SmallBetaCountPackage_siteDist_measurableF
+#print axioms PhysicalTotalF3SmallBetaCountPackageK.ofMayerData
+#print axioms physicalStrong_of_totalF3SmallBetaCountPackageK_siteDist_measurableF
 
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
 
