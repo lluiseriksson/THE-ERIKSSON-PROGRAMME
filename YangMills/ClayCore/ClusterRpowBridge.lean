@@ -1810,12 +1810,37 @@ def ConnectedCardDecayMayerData.toPhysical
   h_mayer := fun β hβ F hF p q hdist =>
     data.h_mayer (d := physicalClayDimension) β hβ F hF p q hdist
 
+@[simp] theorem ConnectedCardDecayMayerData.toPhysical_K
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (Y : Finset (ConcretePlaquette physicalClayDimension L)) :
+    data.toPhysical.K β F p q Y =
+      data.K (d := physicalClayDimension) β F p q Y := rfl
+
+@[simp] theorem ConnectedCardDecayMayerData.toPhysical_toTruncatedActivities
+    {N_c : ℕ} [NeZero N_c]
+    {r A₀ : ℝ} {hr_nonneg : 0 ≤ r} {hA_nonneg : 0 ≤ A₀}
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_nonneg hA_nonneg)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L) :
+    data.toPhysical.toTruncatedActivities β F p q =
+      data.toTruncatedActivities β F p q := rfl
+
 #print axioms PhysicalConnectedCardDecayMayerData.toTruncatedActivities
 #print axioms PhysicalConnectedCardDecayMayerData.toTruncatedActivities_K
 #print axioms PhysicalConnectedCardDecayMayerData.toTruncatedActivities_K_bound_le_cardDecay
 #print axioms PhysicalConnectedCardDecayMayerData.toTruncatedActivities_K_bound_eq_zero_of_not_connected
 #print axioms PhysicalConnectedCardDecayMayerData.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
 #print axioms ConnectedCardDecayMayerData.toPhysical
+#print axioms ConnectedCardDecayMayerData.toPhysical_K
+#print axioms ConnectedCardDecayMayerData.toPhysical_toTruncatedActivities
 
 /-- Preferred physical `d = 4` F3 endpoint from Mayer data and the physical
 four-dimensional shifted count frontier. -/
@@ -2494,11 +2519,22 @@ def toPhysical
     (pkg : ShiftedF3MayerPackage N_c wab) :
     pkg.toPhysical.data = pkg.data.toPhysical := rfl
 
+@[simp] theorem toPhysical_toTruncatedActivities
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L) :
+    pkg.toPhysical.toTruncatedActivities β F p q =
+      pkg.toTruncatedActivities β F p q := rfl
+
 end ShiftedF3MayerPackage
 
 #print axioms ShiftedF3MayerPackage.toPhysical
 #print axioms ShiftedF3MayerPackage.toPhysical_A₀
 #print axioms ShiftedF3MayerPackage.toPhysical_data
+#print axioms ShiftedF3MayerPackage.toPhysical_toTruncatedActivities
 
 namespace PhysicalOnlyShiftedF3MayerCountPackage
 

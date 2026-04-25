@@ -1,3 +1,53 @@
+# v1.41.0 — Global-to-physical Mayer restriction is simp-visible
+
+**Released: 2026-04-25**
+
+## What
+
+Added simp-visible restriction lemmas in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    ConnectedCardDecayMayerData.toPhysical_K
+    ConnectedCardDecayMayerData.toPhysical_toTruncatedActivities
+    ShiftedF3MayerPackage.toPhysical_toTruncatedActivities
+
+## Why
+
+No percentage bar moves.  This is proof-script ergonomics for the remaining
+F3 Mayer/Ursell frontier.  The preferred Clay route is now the fully physical
+`physicalClayDimension = 4` package, but future analytic work may still produce
+the older all-dimensions Mayer data first.  The existing converters
+
+    ConnectedCardDecayMayerData.toPhysical
+    ShiftedF3MayerPackage.toPhysical
+    PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer
+
+already restrict those global packages into the physical route.  The new simp
+lemmas make the raw activity kernel `K` and bundled `TruncatedActivities`
+definitionally visible after restriction, so downstream scripts can pass from
+global Mayer output to the physical package without unfolding constructors.
+
+This keeps the all-dimensions Mayer route aligned with the fully physical F3
+route while the two live analytic obligations remain:
+
+    PhysicalShiftedF3MayerPackage N_c wab
+    PhysicalShiftedF3CountPackage
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all three new restriction simp lemmas print the canonical
+project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.40.0 — Physical Mayer package exposes its own consumers
 
 **Released: 2026-04-25**
