@@ -1519,6 +1519,47 @@ theorem physicalGraphAnimalTotalCountBound1296_of_wordDecoder
       1296 ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) :=
   physicalGraphAnimalTotalCountBound_of_wordDecoder hdecode p q n
 
+/-- A total-size graph-animal word decoder discharges the physical total-size
+exponential F3-count frontier. -/
+theorem physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder
+    {K : ℕ} (hdecode : PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound K) :
+    PhysicalTotalConnectingClusterCountBoundExp 1 K := by
+  intro L _ p q n _hn _hdist
+  have hnat :
+      ((Finset.univ :
+        Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+          (fun X =>
+            p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+              X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card ≤
+        K ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) :=
+    (physical_connectingCluster_filter_card_le_graphAnimalShifted p q n).trans
+      (physicalGraphAnimalTotalCountBound_of_wordDecoder hdecode p q n)
+  have hreal :
+      (((Finset.univ :
+        Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+          (fun X =>
+            p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+              X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+        ((K ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) : ℕ) : ℝ) := by
+    exact_mod_cast hnat
+  simpa [one_mul, Nat.cast_pow] using hreal
+
+/-- A physical `1296` total-size graph-animal word decoder discharges the
+physical total-size exponential F3-count frontier. -/
+theorem physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder1296
+    (hdecode : PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296) :
+    PhysicalTotalConnectingClusterCountBoundExp 1 1296 :=
+  physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder hdecode
+
+/-- Package the physical `1296` total-size graph-animal word-decoder target as
+the physical total-size exponential F3-count package consumed downstream. -/
+def physicalTotalF3CountPackageExp_of_graphAnimalTotalWordDecoder1296
+    (hdecode : PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296) :
+    PhysicalTotalF3CountPackageExp :=
+  PhysicalTotalF3CountPackageExp.ofBound 1 1296 one_pos (by norm_num)
+    (physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder1296
+      hdecode)
+
 /-- A shifted graph-animal count estimate discharges the physical exponential
 F3-count frontier. -/
 theorem physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount
@@ -1677,6 +1718,9 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalGraphAnimalTotalWordCodeOfDecoder_injective
 #print axioms physicalGraphAnimalTotalCountBound_of_wordDecoder
 #print axioms physicalGraphAnimalTotalCountBound1296_of_wordDecoder
+#print axioms physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder
+#print axioms physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder1296
+#print axioms physicalTotalF3CountPackageExp_of_graphAnimalTotalWordDecoder1296
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount1296
 #print axioms physicalShiftedF3CountPackageExp_of_graphAnimalShiftedCount1296

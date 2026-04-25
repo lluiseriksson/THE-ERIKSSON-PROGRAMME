@@ -1,3 +1,61 @@
+# v2.21.0 — physical total-size F3 route to L8
+
+**Released: 2026-04-25**
+
+## What
+
+Added the corrected physical total-size F3 route end-to-end:
+
+    PhysicalTotalConnectingClusterCountBoundExp
+    PhysicalTotalF3CountPackageExp
+    physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder
+    physicalTotalF3CountPackageExp_of_graphAnimalTotalWordDecoder1296
+    finiteConnectingSum_le_of_cardBucketBounds_tsum_total_exp
+    cardBucketSum_le_of_count_and_pointwise_total_exp
+    physicalClusterCorrelatorBound_of_physicalMayerData_totalExpCount_ceil
+    physicalClusterCorrelatorBound_of_graphAnimalTotalWordDecoder1296
+    physicalStrong_of_graphAnimalTotalWordDecoder1296_siteDist_measurableF
+
+across `ConnectingClusterCountExp.lean`, `LatticeAnimalCount.lean`,
+`ClusterRpowBridge.lean`, `LatticeAnimalF3Bridge.lean`, and
+`L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+## Why
+
+No percentage bar moves. The standard graph-animal/BFS count produces
+`C_conn * K^(n + ⌈dist⌉₊)`, not the stronger shifted `C_conn * K^n`.
+v2.21 makes this corrected target first-class and routes it all the way to
+the terminal physical statement:
+
+    PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296
+      + PhysicalShiftedF3MayerPackage
+      + (1296 : ℝ) * wab.r < 1
+      ⇒ ClayYangMillsPhysicalStrong
+
+with effective mass parameter `kpParameter ((1296 : ℝ) * wab.r)`.
+
+The remaining F3 obligations are now exactly the two honest producer inputs:
+the total-size graph-animal decoder/count witness and the physical Mayer
+package, plus the explicit smallness inequality `1296 * wab.r < 1`.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+    lake build YangMills.ClayCore.ClusterRpowBridge
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace for the new terminal declarations:
+
+    physicalClusterCorrelatorBound_of_graphAnimalTotalWordDecoder1296
+    physicalStrong_of_graphAnimalTotalWordDecoder1296_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.20.0 — total-size route to `ClusterCorrelatorBound`
 
 **Released: 2026-04-25**

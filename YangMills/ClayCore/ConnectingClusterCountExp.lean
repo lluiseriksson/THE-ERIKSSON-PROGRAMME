@@ -268,6 +268,41 @@ abbrev PhysicalShiftedConnectingClusterCountBoundExp
     (C_conn K : ℝ) : Prop :=
   ShiftedConnectingClusterCountBoundDimExp physicalClayDimension C_conn K
 
+/-- Physical `d = 4` total-size exponential count frontier.
+
+This is the standard BFS/Klarner shape: the bucket with excess size `n` over
+the connector distance is bounded by `C_conn * K^(n + ceil dist)`. -/
+def PhysicalTotalConnectingClusterCountBoundExp
+    (C_conn K : ℝ) : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ),
+    n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1) →
+    (1 : ℝ) ≤ siteLatticeDist p.site q.site →
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * K ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)
+
+/-- Apply a physical total-size exponential count bound to one bucket. -/
+theorem PhysicalTotalConnectingClusterCountBoundExp.apply
+    {C_conn K : ℝ}
+    (h : PhysicalTotalConnectingClusterCountBoundExp C_conn K)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      C_conn * K ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) :=
+  h p q n hn hdist
+
 /-- Physical finite-volume exponential count audit frontier. -/
 abbrev PhysicalShiftedConnectingClusterCountBoundAtExp
     (L : ℕ) [NeZero L] (C_conn K : ℝ) : Prop :=
@@ -276,6 +311,14 @@ abbrev PhysicalShiftedConnectingClusterCountBoundAtExp
 /-- Packaged physical `d = 4` exponential count data. -/
 abbrev PhysicalShiftedF3CountPackageExp : Type :=
   ShiftedF3CountPackageDimExp physicalClayDimension
+
+/-- Packaged physical total-size exponential count data. -/
+structure PhysicalTotalF3CountPackageExp where
+  C_conn : ℝ
+  K : ℝ
+  hC : 0 < C_conn
+  hK : 0 < K
+  h_count : PhysicalTotalConnectingClusterCountBoundExp C_conn K
 
 namespace PhysicalShiftedF3CountPackageExp
 
@@ -314,6 +357,37 @@ theorem apply
   ShiftedF3CountPackageDimExp.apply pkg p q n hn hdist
 
 end PhysicalShiftedF3CountPackageExp
+
+namespace PhysicalTotalF3CountPackageExp
+
+/-- Package a physical total-size exponential count bound. -/
+def ofBound
+    (C_conn K : ℝ) (hC : 0 < C_conn) (hK : 0 < K)
+    (h_count : PhysicalTotalConnectingClusterCountBoundExp C_conn K) :
+    PhysicalTotalF3CountPackageExp where
+  C_conn := C_conn
+  K := K
+  hC := hC
+  hK := hK
+  h_count := h_count
+
+/-- Apply a physical total-size exponential count package to one bucket. -/
+theorem apply
+    (pkg : PhysicalTotalF3CountPackageExp)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.C_conn * pkg.K ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) :=
+  PhysicalTotalConnectingClusterCountBoundExp.apply pkg.h_count p q n hn hdist
+
+end PhysicalTotalF3CountPackageExp
 
 /-! ### Finite-volume canaries -/
 
@@ -368,6 +442,9 @@ def ShiftedF3CountPackageAtExp_finite
 #print axioms PhysicalShiftedF3CountPackageExp.ofBound
 #print axioms PhysicalShiftedF3CountPackageExp.ofAtFamily
 #print axioms PhysicalShiftedF3CountPackageExp.apply
+#print axioms PhysicalTotalConnectingClusterCountBoundExp.apply
+#print axioms PhysicalTotalF3CountPackageExp.ofBound
+#print axioms PhysicalTotalF3CountPackageExp.apply
 #print axioms shiftedConnectingClusterCountBoundAtExp_finite
 #print axioms ShiftedF3CountPackageAtExp_finite
 

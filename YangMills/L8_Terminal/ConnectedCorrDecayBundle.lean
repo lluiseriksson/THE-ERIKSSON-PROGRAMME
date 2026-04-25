@@ -1618,6 +1618,37 @@ theorem physicalStrong_of_graphAnimalWordDecoder1296_siteDist_measurableF
       wab mayer hdecode hKr_lt1)
     β F hβ hF hF_meas
 
+/-- Direct physical endpoint from the corrected total-size graph-animal `1296`
+word-decoder target, the physical Mayer package, and the KP smallness input.
+
+The mass parameter in the final decay bundle is `kpParameter (1296 * wab.r)`,
+matching the effective total-size route. -/
+theorem physicalStrong_of_graphAnimalTotalWordDecoder1296_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (hdecode : PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296)
+    (hKr_lt1 : (1296 : ℝ) * wab.r < 1)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
+    ((1296 : ℝ) * wab.r)
+    (mul_pos (by norm_num) wab.hr_pos)
+    hKr_lt1
+    (clusterPrefactorExp wab.r 1296 1 mayer.A₀)
+    (clusterPrefactorExp_pos wab.r 1296 wab.hr_pos (by norm_num) hKr_lt1
+      1 mayer.A₀ one_pos mayer.hA)
+    (physicalClusterCorrelatorBound_of_graphAnimalTotalWordDecoder1296
+      wab mayer hdecode hKr_lt1)
+    β F hβ hF hF_meas
+
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mass_eq
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_prefactor_eq
@@ -1648,6 +1679,7 @@ theorem physicalStrong_of_graphAnimalWordDecoder1296_siteDist_measurableF
 #print axioms physicalStrong_of_physicalOnlyShiftedF3SubpackagesExp_siteDist_measurableF
 #print axioms physicalStrong_of_graphAnimalShiftedCount1296_siteDist_measurableF
 #print axioms physicalStrong_of_graphAnimalWordDecoder1296_siteDist_measurableF
+#print axioms physicalStrong_of_graphAnimalTotalWordDecoder1296_siteDist_measurableF
 
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
 
