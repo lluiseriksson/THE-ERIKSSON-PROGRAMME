@@ -1260,6 +1260,52 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
   exact polymerConnected_plaquetteGraph_induce_reachable
     hconn p.property q.property
 
+/-! ### Bucket-to-graph-animal reduction -/
+
+/-- Graph-theoretic anchored bucket: finite plaquette subsets of fixed
+cardinality containing the root whose induced plaquette graph is
+preconnected.  This is the consumer shape for a Klarner/BFS lattice-animal
+count. -/
+noncomputable def plaquetteGraphPreconnectedSubsetsAnchoredCard
+    (d L : ℕ) [NeZero d] [NeZero L]
+    (root : ConcretePlaquette d L) (k : ℕ) :
+    Finset (Finset (ConcretePlaquette d L)) :=
+  (Finset.univ.filter fun X =>
+    root ∈ X ∧ X.card = k ∧
+      ((plaquetteGraph d L).induce {x | x ∈ X}).Preconnected)
+
+/-- Every connecting-cluster bucket element is an anchored preconnected
+plaquette-graph animal after forgetting the second marked plaquette. -/
+theorem connectingCluster_filter_subset_preconnectedSubsetsAnchoredCard
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (k : ℕ) :
+    ((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X => p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧ X.card = k)) ⊆
+        plaquetteGraphPreconnectedSubsetsAnchoredCard d L p k := by
+  intro X hX
+  rw [Finset.mem_filter] at hX
+  unfold plaquetteGraphPreconnectedSubsetsAnchoredCard
+  rw [Finset.mem_filter]
+  exact ⟨Finset.mem_univ X,
+    hX.2.1,
+    hX.2.2.2.2,
+    polymerConnected_plaquetteGraph_induce_preconnected hX.2.2.2.1⟩
+
+/-- The shifted connecting-cluster bucket is bounded by the corresponding
+anchored graph-animal bucket. -/
+theorem connectingCluster_filter_card_le_preconnectedSubsetsAnchoredCard
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (p q : ConcretePlaquette d L) (n : ℕ) :
+    ((Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card ≤
+        (plaquetteGraphPreconnectedSubsetsAnchoredCard d L p
+          (n + ⌈siteLatticeDist p.site q.site⌉₊)).card := by
+  exact Finset.card_le_card
+    (connectingCluster_filter_subset_preconnectedSubsetsAnchoredCard p q
+      (n + ⌈siteLatticeDist p.site q.site⌉₊))
+
 #print axioms siteLatticeDist_symm
 #print axioms plaquetteGraph_adj_siteLatticeDist_le_one
 #print axioms plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one
@@ -1333,5 +1379,7 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms plaquetteGraph_induce_reachable_of_chain_endpoints
 #print axioms polymerConnected_plaquetteGraph_induce_reachable
 #print axioms polymerConnected_plaquetteGraph_induce_preconnected
+#print axioms connectingCluster_filter_subset_preconnectedSubsetsAnchoredCard
+#print axioms connectingCluster_filter_card_le_preconnectedSubsetsAnchoredCard
 
 end YangMills

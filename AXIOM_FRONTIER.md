@@ -1,3 +1,53 @@
+# v2.11.0 — F3-count bucket to graph-animal reduction
+
+**Released: 2026-04-25**
+
+## What
+
+Added a graph-animal consumer bucket to
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard
+    connectingCluster_filter_subset_preconnectedSubsetsAnchoredCard
+    connectingCluster_filter_card_le_preconnectedSubsetsAnchoredCard
+
+The new reduction forgets the second marked plaquette `q` and maps each
+shifted connecting-cluster bucket
+
+    p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+      X.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+
+into the anchored graph-animal bucket
+
+    p ∈ X ∧ X.card = n + ⌈siteLatticeDist p.site q.site⌉₊ ∧
+      ((plaquetteGraph d L).induce {x | x ∈ X}).Preconnected.
+
+## Why
+
+No percentage bar moves. This is the missing project-specific translation
+layer for the F3-count proof: the Wilson/polymer bucket is now bounded by a
+pure `plaquetteGraph` anchored-preconnected finite-set count. Any subsequent
+Klarner/BFS lattice-animal theorem can target this graph-animal bucket without
+reopening the polymer definitions.
+
+Remaining mathematical work: prove the actual bounded-degree graph-animal
+cardinality estimate and connect it to the `1296^n` baseline-plus-word decoder
+target.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace for the two new theorems:
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.10.0 — physical-only exponential F3 L8 endpoint
 
 **Released: 2026-04-25**
