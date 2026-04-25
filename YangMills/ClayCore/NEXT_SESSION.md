@@ -111,6 +111,7 @@ fully physical route by:
     ConnectedCardDecayMayerData.toPhysical
     ShiftedF3MayerPackage.toPhysical
     ShiftedF3CountPackage.toPhysical
+    ShiftedF3MayerCountPackage.toPhysicalOnly
     PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer
 
 This keeps all-dimensions Mayer results compatible with the preferred
@@ -129,6 +130,9 @@ The restriction is simp-visible on raw and bundled activities:
     ShiftedF3CountPackage.toPhysical_C_conn
     ShiftedF3CountPackage.toPhysical_dim
     ShiftedF3CountPackage.toPhysical_apply
+    ShiftedF3MayerCountPackage.toPhysicalOnly_mayer_A₀
+    ShiftedF3MayerCountPackage.toPhysicalOnly_count_C_conn
+    ShiftedF3MayerCountPackage.toPhysicalOnly_count_dim
 
 Supplying either the single package or both halves yields, oracle-clean:
 
@@ -400,6 +404,7 @@ What is already closed locally:
     ShiftedF3CountPackage.toPhysical
     ShiftedF3CountPackage.ofBound
     ShiftedF3CountPackage.apply
+    ShiftedF3MayerCountPackage.toPhysicalOnly
     ShiftedF3MayerCountPackage.apply_count
 
 proves the fixed-`d`, fixed-`L` finite-volume version with

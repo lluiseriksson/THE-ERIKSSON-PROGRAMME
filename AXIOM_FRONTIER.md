@@ -1,3 +1,56 @@
+# v1.48.0 — Global F3 package restricts to preferred physical F3 package
+
+**Released: 2026-04-25**
+
+## What
+
+Added the full-package physical restriction in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    ShiftedF3MayerCountPackage.toPhysicalOnly
+    ShiftedF3MayerCountPackage.toPhysicalOnly_mayerPackage
+    ShiftedF3MayerCountPackage.toPhysicalOnly_countPackage
+    ShiftedF3MayerCountPackage.toPhysicalOnly_mayer_A₀
+    ShiftedF3MayerCountPackage.toPhysicalOnly_count_C_conn
+    ShiftedF3MayerCountPackage.toPhysicalOnly_count_dim
+
+## Why
+
+No percentage bar moves.  This completes the restriction path from the older
+dimension-uniform F3 package
+
+    pkg : ShiftedF3MayerCountPackage N_c wab
+
+to the preferred physical `d = 4` package:
+
+    pkg.toPhysicalOnly : PhysicalOnlyShiftedF3MayerCountPackage N_c wab
+
+It composes the Mayer-side projection `pkg.mayerPackage.toPhysical` with the
+count-side projection `pkg.countPackage.toPhysical`, preserving the constants
+needed downstream:
+
+    pkg.toPhysicalOnly.mayer.A₀ = pkg.A₀
+    pkg.toPhysicalOnly.count.C_conn = pkg.C_conn
+    pkg.toPhysicalOnly.count.dim = pkg.dim
+
+This is still API/frontier sharpening.  The remaining mathematical content is
+unchanged: construct the Mayer/Ursell package and the physical or global count
+package.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all six new declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.47.0 — Global shifted count restricts directly to physical count
 
 **Released: 2026-04-25**
