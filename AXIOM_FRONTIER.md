@@ -1,3 +1,52 @@
+# v2.10.0 — physical-only exponential F3 L8 endpoint
+
+**Released: 2026-04-25**
+
+## What
+
+Added L8 terminal wrappers in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean` for the fully
+physical exponential F3 package:
+
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_siteDist_measurableF
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_mass_eq
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_prefactor_eq
+    physicalStrong_of_physicalOnlyShiftedF3MayerCountPackageExp_siteDist_measurableF
+    physicalStrong_of_physicalOnlyShiftedF3SubpackagesExp_siteDist_measurableF
+
+The wrappers carry
+`PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab` directly to
+`ConnectedCorrDecayBundle` and then to `ClayYangMillsPhysicalStrong`,
+with a subpackage form for
+`PhysicalShiftedF3MayerPackage N_c wab`,
+`PhysicalShiftedF3CountPackageExp`, and `count.K * wab.r < 1`.
+
+## Why
+
+No percentage bar moves. This is terminal routing for the physical
+exponential F3 line opened in v2.08 and connected to the live lattice-animal
+target in v2.09. Once the physical Mayer package, the physical count package,
+and the KP smallness input are supplied, the route reaches the non-vacuous L8
+physical-strong endpoint.
+
+The remaining mathematical work is still exactly the physical content:
+construct the baseline-plus-word decoder, construct the physical Mayer/activity
+package, and prove the relevant smallness regime.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace for the five new declarations:
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.09.0 — lattice-animal physical F3 handoff bridge
 
 **Released: 2026-04-25**

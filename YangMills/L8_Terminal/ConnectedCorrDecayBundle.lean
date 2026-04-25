@@ -1484,6 +1484,93 @@ theorem physicalStrong_of_globalMayer_physicalCount_siteDist_measurableF
     wab (PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer mayer count)
     β F hβ hF hF_meas
 
+/-- Bundle-level physical endpoint from the fully physical exponential F3
+package. -/
+noncomputable def connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ConnectedCorrDecayBundle
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  connectedCorrDecayBundle_of_physicalMayerData_expCount_siteDist_measurableF
+    wab.r pkg.count.K wab.hr_pos wab.hr_lt1 pkg.count.hK pkg.hKr_lt1
+    pkg.count.C_conn pkg.mayer.A₀ pkg.count.hC pkg.mayer.hA
+    pkg.mayer.data pkg.count.h_count β F hβ hF hF_meas
+
+theorem connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_mass_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_siteDist_measurableF
+      wab pkg β F hβ hF hF_meas).ccd.m = kpParameter wab.r := rfl
+
+theorem connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_prefactor_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_siteDist_measurableF
+      wab pkg β F hβ hF hF_meas).ccd.C =
+      clusterPrefactorExp wab.r pkg.count.K pkg.count.C_conn pkg.mayer.A₀ +
+        2 * Real.exp (kpParameter wab.r) := rfl
+
+/-- Direct physical endpoint from the fully physical exponential F3 package. -/
+theorem physicalStrong_of_physicalOnlyShiftedF3MayerCountPackageExp_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_connectedCorrDecayBundle
+    (connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_siteDist_measurableF
+      wab pkg β F hβ hF hF_meas)
+
+/-- Direct physical endpoint from fully physical exponential Mayer/count
+subpackages. -/
+theorem physicalStrong_of_physicalOnlyShiftedF3SubpackagesExp_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackageExp)
+    (hKr_lt1 : count.K * wab.r < 1)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  physicalStrong_of_physicalOnlyShiftedF3MayerCountPackageExp_siteDist_measurableF
+    wab
+    (PhysicalOnlyShiftedF3MayerCountPackageExp.ofSubpackages
+      mayer count hKr_lt1)
+    β F hβ hF hF_meas
+
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mass_eq
 #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_prefactor_eq
@@ -1507,6 +1594,11 @@ theorem physicalStrong_of_globalMayer_physicalCount_siteDist_measurableF
 #print axioms physicalStrong_of_physicalOnlyShiftedF3MayerCountPackage_siteDist_measurableF
 #print axioms physicalStrong_of_physicalOnlyShiftedF3Subpackages_siteDist_measurableF
 #print axioms physicalStrong_of_globalMayer_physicalCount_siteDist_measurableF
+#print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_siteDist_measurableF
+#print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_mass_eq
+#print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackageExp_prefactor_eq
+#print axioms physicalStrong_of_physicalOnlyShiftedF3MayerCountPackageExp_siteDist_measurableF
+#print axioms physicalStrong_of_physicalOnlyShiftedF3SubpackagesExp_siteDist_measurableF
 
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
 
