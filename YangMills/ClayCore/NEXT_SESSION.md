@@ -536,7 +536,10 @@ this direct route.  The Mayer-facing consumers
 `finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted` add the disconnected
 support cancellation step on top.  The public
 `clusterCorrelatorBound_of_cardBucketBounds_ceil` bridge now routes through
-this Mayer-facing consumer directly.
+this Mayer-facing consumer directly.  The shifted
+`clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted` bridge now
+routes through `finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted`
+directly as well.
 The remaining F3-count work is the uniform lattice-animal estimate
 `ShiftedConnectingClusterCountBound`, not mere finiteness.  A proved global
 count package now projects mechanically to every local finite-volume package.

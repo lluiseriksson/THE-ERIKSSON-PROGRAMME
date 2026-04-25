@@ -1,3 +1,47 @@
+# v1.68.0 — Shifted count-cardinality bridge uses Mayer-facing KP consumer
+
+**Released: 2026-04-25**
+
+## What
+
+Refactored the shifted public bridge in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted
+
+The theorem statement is unchanged.  Its proof now bounds the finite Mayer
+connecting sum directly via
+
+    finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
+
+after rewriting `TruncatedActivities.connectingBound_eq_finset_sum`, instead
+of first proving a connected finite-sum bound and then transporting it across
+`finiteConnectingSum_eq_connectedFiniteSum`.
+
+## Why
+
+No percentage bar moves and no public statement changes.  This aligns the
+shifted count/cardinality-decay bridge with the Mayer-facing bucket-`tsum`
+proof spine introduced in v1.65.0-v1.67.0.
+
+The open mathematical target remains the uniform lattice-animal / KP count
+estimate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.67.0 — Card-bucket ClusterCorrelator bridge uses Mayer-facing KP consumer
 
 **Released: 2026-04-25**

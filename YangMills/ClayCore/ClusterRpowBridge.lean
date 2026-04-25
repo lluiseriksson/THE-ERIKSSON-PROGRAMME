@@ -1198,26 +1198,18 @@ theorem clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted
   refine clusterCorrelatorBound_of_truncatedActivities_ceil_shifted
     N_c r hr_pos hr_lt1 C_conn A₀ hC hA dim T h_mayer ?_
   intro d L _ _ β hβ F hF p q hdist
-  have h_connected :
-      (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
-          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
-        (T β F p q).K_bound Y) ≤
-        ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
-          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
-    exact connectedFiniteSum_le_of_cardBucketBounds_kp_shifted
-      (fun Y => (T β F p q).K_bound Y) p q
-      r hr_pos hr_lt1 C_conn A₀ hC hA dim
-      (fun n hn => cardBucketSum_le_of_count_and_pointwise_shifted
-        (fun Y => (T β F p q).K_bound Y) p q
-        r hr_pos C_conn A₀ hA dim n
-        (h_count p q n hn hdist)
-        (fun Y hY => pointwiseBucketBound_of_card_decay
-          (fun Y => (T β F p q).K_bound Y) p q r A₀ n Y hY
-          (fun Y => h_card_decay β hβ F hF p q Y)))
   rw [TruncatedActivities.connectingBound_eq_finset_sum]
-  exact finiteConnectingSum_eq_connectedFiniteSum
+  exact finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
     (fun Y => (T β F p q).K_bound Y) p q
-    (fun Y hp hq hnot => h_zero β hβ F hF p q Y hp hq hnot) ▸ h_connected
+    r hr_pos hr_lt1 C_conn A₀ hC hA dim
+    (fun Y hp hq hnot => h_zero β hβ F hF p q Y hp hq hnot)
+    (fun n hn => cardBucketSum_le_of_count_and_pointwise_shifted
+      (fun Y => (T β F p q).K_bound Y) p q
+      r hr_pos C_conn A₀ hA dim n
+      (h_count p q n hn hdist)
+      (fun Y hY => pointwiseBucketBound_of_card_decay
+        (fun Y => (T β F p q).K_bound Y) p q r A₀ n Y hY
+        (fun Y => h_card_decay β hβ F hF p q Y)))
 
 /-- Concrete finite-volume truncated activities whose bound is supported only
 on polymers containing `p`, containing `q`, and connected. -/
