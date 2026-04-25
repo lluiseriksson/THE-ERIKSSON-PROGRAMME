@@ -1,3 +1,67 @@
+# v2.04.0 — finite-word decoder bridge for F3 count
+
+**Released: 2026-04-25**
+
+## What
+
+Added the word-decoder version of the F3-count target in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PhysicalConnectingClusterExtraWordDecoderBound
+    physicalConnectingClusterExtraWordCodeOfDecoder
+    physicalConnectingClusterExtraWordCodeOfDecoder_injective
+    connectingClusterBucket_card_le_extra_word_of_decoder
+    physicalShiftedConnectingClusterCountBoundExp_of_extraWordDecoder
+
+The target is:
+
+    PhysicalConnectingClusterExtraWordDecoderBound K
+
+meaning every shifted physical connecting-cluster bucket of extra size `n` is
+covered by a decoder from words
+
+    Fin n → Fin K.
+
+Lean proves that such a decoder gives the exact exponential count frontier:
+
+    PhysicalShiftedConnectingClusterCountBoundExp 1 K.
+
+## Why
+
+No percentage bar moves. This is the natural contract for the remaining
+BFS/Klarner proof: the combinatorial object should be a fixed-alphabet word of
+length `n`, not necessarily a literal nearest-neighbour graph walk of length
+`n`.
+
+This removes another accidental overconstraint from the critical path. The
+live F3-count target can now be stated as:
+
+    PhysicalConnectingClusterExtraWordDecoderBound 1296
+
+followed immediately by the already-proved terminal bridge to
+`PhysicalShiftedConnectingClusterCountBoundExp 1 1296`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    physicalConnectingClusterExtraWordCodeOfDecoder_injective
+      [propext, Classical.choice, Quot.sound]
+
+    connectingClusterBucket_card_le_extra_word_of_decoder
+      [propext, Classical.choice, Quot.sound]
+
+    physicalShiftedConnectingClusterCountBoundExp_of_extraWordDecoder
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.03.0 — baseline-plus-extra decoder target
 
 **Released: 2026-04-25**

@@ -979,6 +979,78 @@ theorem physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraDecoderCov
   physicalShiftedConnectingClusterCountBoundExp_of_extraWalkDecoder
     (physicalConnectingClusterExtraWalkDecoderBound_of_baselineExtraDecoderCovers hcover)
 
+/-! ### Word-decoder target for the BFS/Klarner proof -/
+
+/-- General word-decoder version of the F3-count target.  This is the natural
+shape of a BFS/Klarner proof: clusters are decoded from length-`n` words over a
+fixed alphabet of size `K`, rather than from literal graph walks. -/
+def PhysicalConnectingClusterExtraWordDecoderBound (K : ℕ) : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ),
+    ∃ decode : (Fin n → Fin K) → Finset (ConcretePlaquette physicalClayDimension L),
+      ∀ X : ConnectingClusterBucket physicalClayDimension L p q n,
+        ∃ word : Fin n → Fin K, decode word = X.1
+
+/-- Choose, for each bucket element, one word decoding to it. -/
+noncomputable def physicalConnectingClusterExtraWordCodeOfDecoder
+    {K : ℕ} (hdecode : PhysicalConnectingClusterExtraWordDecoderBound K)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    ConnectingClusterBucket physicalClayDimension L p q n → (Fin n → Fin K) :=
+  let hcover := Classical.choose_spec (hdecode p q n)
+  fun X => Classical.choose (hcover X)
+
+/-- The code chosen from a covering word-decoder is injective. -/
+theorem physicalConnectingClusterExtraWordCodeOfDecoder_injective
+    {K : ℕ} (hdecode : PhysicalConnectingClusterExtraWordDecoderBound K)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    Function.Injective
+      (physicalConnectingClusterExtraWordCodeOfDecoder hdecode p q n) := by
+  intro X Y h
+  apply Subtype.ext
+  let decode := Classical.choose (hdecode p q n)
+  let hcover := Classical.choose_spec (hdecode p q n)
+  have hX : decode (Classical.choose (hcover X)) = X.1 := by
+    exact Classical.choose_spec (hcover X)
+  have hY : decode (Classical.choose (hcover Y)) = Y.1 := by
+    exact Classical.choose_spec (hcover Y)
+  have hdec := congrArg decode h
+  dsimp [physicalConnectingClusterExtraWordCodeOfDecoder] at hdec
+  change decode (Classical.choose (hcover X)) =
+    decode (Classical.choose (hcover Y)) at hdec
+  rw [hX, hY] at hdec
+  exact hdec
+
+/-- A covering word-decoder gives the exact `K^n` natural-number bound for one
+shifted bucket. -/
+theorem connectingClusterBucket_card_le_extra_word_of_decoder
+    {K : ℕ} (hdecode : PhysicalConnectingClusterExtraWordDecoderBound K)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    Fintype.card (ConnectingClusterBucket physicalClayDimension L p q n) ≤
+      K ^ n := by
+  have hcard :
+      Fintype.card (ConnectingClusterBucket physicalClayDimension L p q n) ≤
+        Fintype.card (Fin n → Fin K) :=
+    Fintype.card_le_of_injective
+      (physicalConnectingClusterExtraWordCodeOfDecoder hdecode p q n)
+      (physicalConnectingClusterExtraWordCodeOfDecoder_injective hdecode p q n)
+  simpa [Fintype.card_fun] using hcard
+
+/-- Word-decoder terminal F3-count bridge. -/
+theorem physicalShiftedConnectingClusterCountBoundExp_of_extraWordDecoder
+    {K : ℕ} (hdecode : PhysicalConnectingClusterExtraWordDecoderBound K) :
+    PhysicalShiftedConnectingClusterCountBoundExp 1 K := by
+  intro L _ p q n _hn _hdist
+  rw [← connectingClusterBucket_card_eq_filter p q n]
+  have hnat := connectingClusterBucket_card_le_extra_word_of_decoder hdecode p q n
+  have hreal :
+      (Fintype.card (ConnectingClusterBucket physicalClayDimension L p q n) : ℝ) ≤
+        ((K ^ n : ℕ) : ℝ) := by
+    exact_mod_cast hnat
+  simpa using hreal
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -1198,6 +1270,9 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms physicalConnectingClusterRangeDecoderCovers_forces_dist_ceiling_le_one
 #print axioms physicalConnectingClusterExtraWalkDecoderBound_of_baselineExtraDecoderCovers
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_baselineExtraDecoderCovers
+#print axioms physicalConnectingClusterExtraWordCodeOfDecoder_injective
+#print axioms connectingClusterBucket_card_le_extra_word_of_decoder
+#print axioms physicalShiftedConnectingClusterCountBoundExp_of_extraWordDecoder
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints
