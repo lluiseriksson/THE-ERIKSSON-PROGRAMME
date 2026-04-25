@@ -693,6 +693,62 @@ theorem connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_prefactor
 #print axioms connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mass_eq
 #print axioms connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_prefactor_eq
 
+/-- Bundle-level physical endpoint from independently-produced shifted F3 Mayer
+and physical `d = 4` count subpackages. -/
+noncomputable def connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_siteDist_measurableF
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    ConnectedCorrDecayBundle
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun (L : ℕ) (p q : ConcretePlaquette physicalClayDimension L) =>
+        siteLatticeDist p.site q.site) :=
+  connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_siteDist_measurableF
+    wab (PhysicalShiftedF3MayerCountPackage.ofSubpackages mayer count)
+    β F hβ hF hF_meas
+
+/-- The subpackage bundle-level physical F3 endpoint has decay rate
+`kpParameter wab.r`. -/
+theorem connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_mass_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_siteDist_measurableF
+      wab mayer count β F hβ hF hF_meas).ccd.m = kpParameter wab.r := rfl
+
+/-- The subpackage bundle-level physical F3 endpoint has the shifted cluster
+prefactor, inflated by the standard local-distance constant. -/
+theorem connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_prefactor_eq
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage)
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hβ : 0 < β)
+    (hF : ∀ U, |F U| ≤ 1)
+    (hF_meas : Measurable F) :
+    (connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_siteDist_measurableF
+      wab mayer count β F hβ hF hF_meas).ccd.C =
+      clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim +
+        2 * Real.exp (kpParameter wab.r) := rfl
+
+#print axioms connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_siteDist_measurableF
+#print axioms connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_mass_eq
+#print axioms connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_prefactor_eq
+
 /-- Direct physical endpoint from the single-package physical shifted F3
 frontier. -/
 theorem physicalStrong_of_physicalShiftedF3MayerCountPackage_siteDist_measurableF

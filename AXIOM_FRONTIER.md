@@ -1,3 +1,63 @@
+# v1.32.0 — Physical F3 subpackage bundle certificate exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added the subpackage-level bundle constructor in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_siteDist_measurableF
+
+from independently-produced physical F3 halves:
+
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+to the same auditable `ConnectedCorrDecayBundle` at
+`physicalClayDimension = 4`.
+
+Also added constant-audit equalities:
+
+    connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_mass_eq
+    connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_prefactor_eq
+
+pinning rate `kpParameter wab.r` and prefactor
+
+    clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim
+      + 2 * Real.exp (kpParameter wab.r)
+
+by definitional equality.
+
+## Why
+
+No percentage bar moves.  This gives the same inspectable L8 certificate
+whether the proof script constructs the single physical package first or keeps
+the Mayer/count halves separate.  It removes another small manual composition
+step from the active F3 route.
+
+The remaining mathematical obligations remain exactly:
+
+    ShiftedF3MayerPackage N_c wab
+    PhysicalShiftedF3CountPackage
+
+for `N_c ≥ 2`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces: all three new subpackage bundle declarations print the canonical
+project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.31.0 — Physical F3 bundle certificate exposed
 
 **Released: 2026-04-25**
