@@ -109,10 +109,55 @@ theorem polymerConnected_exists_plaquetteGraph_chain
   exact ⟨path, hhead, hlast, hnodup, hsub,
     plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain path hnodup hchain⟩
 
+/-- A `plaquetteGraph` chain with recorded endpoints gives graph reachability
+between those endpoints. -/
+theorem plaquetteGraph_reachable_of_chain_endpoints
+    {d L : ℕ} [NeZero d] [NeZero L] :
+    ∀ {p q : ConcretePlaquette d L} (path : List (ConcretePlaquette d L)),
+      path.head? = some p →
+      path.getLast? = some q →
+      List.IsChain (plaquetteGraph d L).Adj path →
+      (plaquetteGraph d L).Reachable p q := by
+  intro p q path
+  induction path generalizing p q with
+  | nil =>
+      intro hhead _ _
+      simp at hhead
+  | cons a rest ih =>
+      intro hhead hlast hchain
+      have hap : a = p := by
+        rw [List.head?_cons, Option.some.injEq] at hhead
+        exact hhead
+      subst hap
+      match rest, hchain, hlast with
+      | [], _, hlast =>
+          simp only [List.getLast?_singleton, Option.some.injEq] at hlast
+          subst hlast
+          exact SimpleGraph.Reachable.refl _
+      | b :: rest', List.IsChain.cons_cons hpb htail, hlast =>
+          have hhead' : (b :: rest').head? = some b := by simp
+          have hlast' : (b :: rest').getLast? = some q := by
+            simpa [List.getLast?] using hlast
+          exact (SimpleGraph.Adj.reachable hpb).trans
+            (ih hhead' hlast' htail)
+
+/-- `PolymerConnected` implies reachability in the plaquette graph. -/
+theorem polymerConnected_plaquetteGraph_reachable
+    {d L : ℕ} [NeZero d] [NeZero L]
+    {X : Finset (ConcretePlaquette d L)}
+    {p q : ConcretePlaquette d L}
+    (hconn : PolymerConnected X) (hpX : p ∈ X) (hqX : q ∈ X) :
+    (plaquetteGraph d L).Reachable p q := by
+  obtain ⟨path, hhead, hlast, _, _, hchain⟩ :=
+    polymerConnected_exists_plaquetteGraph_chain hconn hpX hqX
+  exact plaquetteGraph_reachable_of_chain_endpoints path hhead hlast hchain
+
 #print axioms siteLatticeDist_symm
 #print axioms plaquetteGraph_adj_siteLatticeDist_le_one
 #print axioms plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
+#print axioms plaquetteGraph_reachable_of_chain_endpoints
+#print axioms polymerConnected_plaquetteGraph_reachable
 
 end YangMills

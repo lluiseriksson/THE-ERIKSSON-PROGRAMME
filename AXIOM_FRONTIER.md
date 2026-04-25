@@ -14,12 +14,16 @@ review sketch into the main Lean tree:
     plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one
     plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
     polymerConnected_exists_plaquetteGraph_chain
+    plaquetteGraph_reachable_of_chain_endpoints
+    polymerConnected_plaquetteGraph_reachable
 
 The new `plaquetteGraph d L` connects two concrete plaquettes when their
 base sites have `siteLatticeDist ≤ 1` and the plaquettes are distinct.  The
 chain lemmas prove that any nodup `PolymerConnected`-style site-distance
 chain is already a chain in this graph, and package `PolymerConnected X` as
-an internal `plaquetteGraph` chain between any two plaquettes of `X`.
+an internal `plaquetteGraph` chain between any two plaquettes of `X`.  The
+endpoint lemma then converts those chains to `SimpleGraph.Reachable`, giving
+the direct graph-connectivity direction needed by the lattice-animal count.
 
 ## Why
 
@@ -53,6 +57,12 @@ Pinned traces:
       [propext, Classical.choice, Quot.sound]
 
     polymerConnected_exists_plaquetteGraph_chain
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_reachable_of_chain_endpoints
+      [propext, Classical.choice, Quot.sound]
+
+    polymerConnected_plaquetteGraph_reachable
       [propext, Classical.choice, Quot.sound]
 
 No `sorry`. Non-Experimental Lean axiom count remains 0.
