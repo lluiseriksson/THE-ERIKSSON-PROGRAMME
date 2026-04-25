@@ -923,6 +923,26 @@ theorem physicalShiftedConnectingClusterCountBoundExp_of_rangeDecoderCovers
   physicalShiftedConnectingClusterCountBoundExp_of_extraWalkDecoder
     (physicalConnectingClusterExtraWalkDecoderBound_of_rangeDecoderCovers hcover)
 
+/-- Audit obstruction for the exact range-decoder target: because a length-`n`
+walk visits at most `n+1` plaquettes, exact coverage of a shifted bucket of
+cardinality `n + ⌈dist(p,q)⌉₊` forces `⌈dist(p,q)⌉₊ ≤ 1`.
+
+Thus the exact visited-set decoder is useful local scaffolding, but it is too
+strong as a global replacement for the BFS/tree coding theorem when the marked
+plaquettes are farther apart. -/
+theorem physicalConnectingClusterRangeDecoderCovers_forces_dist_ceiling_le_one
+    (hcover : PhysicalConnectingClusterRangeDecoderCovers)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (X : ConnectingClusterBucket physicalClayDimension L p q n) :
+    ⌈siteLatticeDist p.site q.site⌉₊ ≤ 1 := by
+  obtain ⟨w, hw⟩ := hcover p q n X
+  have hrange_card := plaquetteWalk_rangeFinset_card_le w
+  rw [hw] at hrange_card
+  have hXcard :
+      X.1.card = n + ⌈siteLatticeDist p.site q.site⌉₊ := X.2.2.2.2
+  omega
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -1139,6 +1159,7 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_extraWalkDecoder
 #print axioms physicalConnectingClusterExtraWalkDecoderBound_of_rangeDecoderCovers
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_rangeDecoderCovers
+#print axioms physicalConnectingClusterRangeDecoderCovers_forces_dist_ceiling_le_one
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints

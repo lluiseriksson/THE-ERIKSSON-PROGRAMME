@@ -1,3 +1,57 @@
+# v2.02.0 — exact walk-range decoder obstruction
+
+**Released: 2026-04-25**
+
+## What
+
+Added the audit theorem in `YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    physicalConnectingClusterRangeDecoderCovers_forces_dist_ceiling_le_one
+
+It proves that if the exact range-decoder target
+
+    PhysicalConnectingClusterRangeDecoderCovers
+
+held for a shifted bucket
+
+    X : ConnectingClusterBucket physicalClayDimension L p q n,
+
+then the marked plaquettes would have to satisfy
+
+    ⌈siteLatticeDist p.site q.site⌉₊ ≤ 1.
+
+The proof is the cardinality obstruction: a length-`n` walk visits at most
+`n+1` plaquettes, while a shifted bucket has cardinality
+
+    n + ⌈siteLatticeDist p.site q.site⌉₊.
+
+## Why
+
+No percentage bar moves. This is an honesty correction to v2.01. The concrete
+decoder `plaquetteWalkRangeFinset` remains useful local scaffolding, but exact
+equality with the range of a length-`n` walk is globally too strong for distant
+marked plaquettes.
+
+The viable F3-count target is therefore not "the bucket is literally the range
+of a length-`n` walk". It must be a genuine BFS/tree word decoder whose word
+length is `n`, while the decoded cluster includes the deterministic distance
+baseline plus `n` extra plaquettes.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace:
+
+    physicalConnectingClusterRangeDecoderCovers_forces_dist_ceiling_le_one
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.01.0 — concrete walk-range decoder scaffold
 
 **Released: 2026-04-25**
