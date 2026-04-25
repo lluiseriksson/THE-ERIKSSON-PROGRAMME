@@ -1,3 +1,70 @@
+# v1.77.0 — mono_count_dim terminal canaries for global F3 package
+
+**Released: 2026-04-25**
+
+## What
+
+Added terminal wrappers after increasing only the count polynomial dimension in
+the global combined F3 package:
+
+    clayMassGap_of_shiftedF3MayerCountPackage_mono_count_dim
+    clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mono_count_dim
+    clay_theorem_of_shiftedF3MayerCountPackage_mono_count_dim
+
+and pinned the mass/prefactor projections:
+
+    clayMassGap_of_shiftedF3MayerCountPackage_mono_count_dim_mass_eq
+    clayMassGap_of_shiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
+    clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mono_count_dim_mass_eq
+    clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
+
+All seven live in `YangMills/ClayCore/ClusterRpowBridge.lean`.
+
+## Why
+
+No percentage bar moves.  This completes the global package's
+`mono_count_dim` terminal wiring: once F3 supplies a Mayer/count package, a
+later dimension raise still reaches the authentic mass-gap structure and
+connected-decay hub directly.  The decay rate remains `kpParameter wab.r`; the
+prefactor exposes the shifted exponent `dim + k`.
+
+The open mathematical target remains unchanged: prove the uniform
+lattice-animal / Kotecky-Preiss count estimate that supplies the F3 count
+package uniformly in finite volume.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    clayMassGap_of_shiftedF3MayerCountPackage_mono_count_dim
+      [propext, Classical.choice, Quot.sound]
+
+    clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mono_count_dim
+      [propext, Classical.choice, Quot.sound]
+
+    clay_theorem_of_shiftedF3MayerCountPackage_mono_count_dim
+      [propext, Classical.choice, Quot.sound]
+
+    clayMassGap_of_shiftedF3MayerCountPackage_mono_count_dim_mass_eq
+      [propext, Classical.choice, Quot.sound]
+
+    clayMassGap_of_shiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
+      [propext, Classical.choice, Quot.sound]
+
+    clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mono_count_dim_mass_eq
+      [propext, Classical.choice, Quot.sound]
+
+    clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.76.0 — mono_count_dim endpoint canaries for F3 correlator bounds
 
 **Released: 2026-04-25**
