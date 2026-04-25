@@ -1306,6 +1306,82 @@ theorem connectingCluster_filter_card_le_preconnectedSubsetsAnchoredCard
     (connectingCluster_filter_subset_preconnectedSubsetsAnchoredCard p q
       (n + ⌈siteLatticeDist p.site q.site⌉₊))
 
+/-- Shifted graph-animal bucket with both marked plaquettes retained.  This is
+the exact graph-theoretic count shape needed for the exponential F3 count
+frontier. -/
+noncomputable def plaquetteGraphPreconnectedConnectingSubsetsShifted
+    (L : ℕ) [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    Finset (Finset (ConcretePlaquette physicalClayDimension L)) :=
+  (Finset.univ.filter fun X =>
+    p ∈ X ∧ q ∈ X ∧
+      X.card = n + ⌈siteLatticeDist p.site q.site⌉₊ ∧
+      ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ X}).Preconnected)
+
+/-- The physical shifted polymer bucket is contained in the corresponding
+shifted graph-animal bucket. -/
+theorem physical_connectingCluster_filter_subset_graphAnimalShifted
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    ((Finset.univ : Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)) ⊆
+        plaquetteGraphPreconnectedConnectingSubsetsShifted L p q n := by
+  intro X hX
+  rw [Finset.mem_filter] at hX
+  unfold plaquetteGraphPreconnectedConnectingSubsetsShifted
+  rw [Finset.mem_filter]
+  exact ⟨Finset.mem_univ X,
+    hX.2.1,
+    hX.2.2.1,
+    hX.2.2.2.2,
+    polymerConnected_plaquetteGraph_induce_preconnected hX.2.2.2.1⟩
+
+/-- Cardinality reduction from the physical shifted polymer bucket to the
+shifted graph-animal bucket. -/
+theorem physical_connectingCluster_filter_card_le_graphAnimalShifted
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    ((Finset.univ : Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card ≤
+        (plaquetteGraphPreconnectedConnectingSubsetsShifted L p q n).card := by
+  exact Finset.card_le_card
+    (physical_connectingCluster_filter_subset_graphAnimalShifted p q n)
+
+/-- Pure graph-animal form of the remaining physical F3-count estimate. -/
+def PhysicalConnectingClusterGraphAnimalShiftedCountBound (K : ℕ) : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ),
+    (plaquetteGraphPreconnectedConnectingSubsetsShifted L p q n).card ≤ K ^ n
+
+/-- A shifted graph-animal count estimate discharges the physical exponential
+F3-count frontier. -/
+theorem physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount
+    {K : ℕ} (hgraph : PhysicalConnectingClusterGraphAnimalShiftedCountBound K) :
+    PhysicalShiftedConnectingClusterCountBoundExp 1 K := by
+  intro L _ p q n _hn _hdist
+  have hnat :
+      ((Finset.univ :
+        Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+          (fun X =>
+            p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+              X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card ≤
+        K ^ n :=
+    (physical_connectingCluster_filter_card_le_graphAnimalShifted p q n).trans
+      (hgraph p q n)
+  have hreal :
+      (((Finset.univ :
+        Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+          (fun X =>
+            p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+              X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+        ((K ^ n : ℕ) : ℝ) := by
+    exact_mod_cast hnat
+  simpa using hreal
+
 #print axioms siteLatticeDist_symm
 #print axioms plaquetteGraph_adj_siteLatticeDist_le_one
 #print axioms plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one
@@ -1381,5 +1457,8 @@ theorem connectingCluster_filter_card_le_preconnectedSubsetsAnchoredCard
 #print axioms polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms connectingCluster_filter_subset_preconnectedSubsetsAnchoredCard
 #print axioms connectingCluster_filter_card_le_preconnectedSubsetsAnchoredCard
+#print axioms physical_connectingCluster_filter_subset_graphAnimalShifted
+#print axioms physical_connectingCluster_filter_card_le_graphAnimalShifted
+#print axioms physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount
 
 end YangMills

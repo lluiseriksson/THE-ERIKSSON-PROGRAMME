@@ -1,3 +1,54 @@
+# v2.12.0 — graph-animal shifted count interface
+
+**Released: 2026-04-25**
+
+## What
+
+Added the exact graph-theoretic F3-count interface in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedConnectingSubsetsShifted
+    physical_connectingCluster_filter_subset_graphAnimalShifted
+    physical_connectingCluster_filter_card_le_graphAnimalShifted
+    PhysicalConnectingClusterGraphAnimalShiftedCountBound
+    physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount
+
+The new proposition
+
+    PhysicalConnectingClusterGraphAnimalShiftedCountBound K
+
+states the remaining physical F3-count task as a pure shifted graph-animal
+estimate:
+
+    #(preconnected plaquetteGraph animals containing p and q,
+      card = n + ⌈dist(p,q)⌉₊) ≤ K^n.
+
+## Why
+
+No percentage bar moves. This sharpens the v2.11 reduction into an exact
+frontier bridge: proving the shifted graph-animal estimate for any natural
+constant `K` now directly discharges
+`PhysicalShiftedConnectingClusterCountBoundExp 1 K`.
+
+For the current physical route, the intended downstream constant remains
+`K = 1296`, matching the existing word/neighbor-code infrastructure. The
+remaining work is the real combinatorics: prove the shifted graph-animal
+estimate itself, e.g. by BFS/Klarner baseline-plus-extra coding.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace for the three new theorem bridges:
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.11.0 — F3-count bucket to graph-animal reduction
 
 **Released: 2026-04-25**
