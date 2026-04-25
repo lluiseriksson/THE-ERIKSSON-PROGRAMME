@@ -8,6 +8,10 @@ Added the terminal package
 
     PhysicalTotalF3SmallBetaPackage
 
+constructor
+
+    PhysicalTotalF3SmallBetaPackage.ofMayerData
+
 and endpoint
 
     physicalStrong_of_totalF3SmallBetaPackage_siteDist_measurableF
@@ -25,6 +29,10 @@ the package collects exactly the remaining total-size F3 obligations:
 and routes them to `ClayYangMillsPhysicalStrong` for `siteLatticeDist` in
 physical dimension.
 
+The constructor `ofMayerData` is the Wilson-facing entry point for future
+analytic work: physical Mayer data at radius `r = β`, plus the decoder and
+smallness inequality, builds the terminal package directly.
+
 ## Why
 
 No percentage bar moves. This is an audit/composition closure: the current
@@ -40,6 +48,9 @@ Build:
     lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
 
 Pinned trace:
+
+    PhysicalTotalF3SmallBetaPackage.ofMayerData
+      [propext, Classical.choice, Quot.sound]
 
     physicalStrong_of_totalF3SmallBetaPackage_siteDist_measurableF
       [propext, Classical.choice, Quot.sound]

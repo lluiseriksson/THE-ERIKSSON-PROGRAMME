@@ -1690,6 +1690,28 @@ structure PhysicalTotalF3SmallBetaPackage
     (wilsonActivityBound_from_expansion N_c hβ_pos hβ_lt1)
   decode : PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296
 
+namespace PhysicalTotalF3SmallBetaPackage
+
+/-- Build the terminal small-β F3 package directly from physical Mayer data
+at the concrete radius `r = β`, plus the total graph-animal decoder. -/
+def ofMayerData
+    {N_c : ℕ} [NeZero N_c]
+    {β : ℝ} {hβ_pos : 0 < β} {hβ_lt1 : β < 1}
+    (hβ_small : (1296 : ℝ) * β < 1)
+    (A₀ : ℝ) (hA : 0 < A₀)
+    (data : PhysicalConnectedCardDecayMayerData N_c β A₀ hβ_pos.le hA.le)
+    (decode : PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296) :
+    PhysicalTotalF3SmallBetaPackage N_c β hβ_pos hβ_lt1 where
+  hβ_small := hβ_small
+  mayer :=
+    { A₀ := A₀
+      hA := hA
+      data := by
+        simpa [wilsonActivityBound_from_expansion] using data }
+  decode := decode
+
+end PhysicalTotalF3SmallBetaPackage
+
 /-- Terminal small-β physical endpoint from the single F3 package.
 
 This is the current narrowest Wilson-facing F3 statement: once the concrete
@@ -1741,6 +1763,7 @@ theorem physicalStrong_of_totalF3SmallBetaPackage_siteDist_measurableF
 #print axioms physicalStrong_of_graphAnimalWordDecoder1296_siteDist_measurableF
 #print axioms physicalStrong_of_graphAnimalTotalWordDecoder1296_siteDist_measurableF
 #print axioms physicalStrong_of_graphAnimalTotalWordDecoder1296_smallBeta_siteDist_measurableF
+#print axioms PhysicalTotalF3SmallBetaPackage.ofMayerData
 #print axioms physicalStrong_of_totalF3SmallBetaPackage_siteDist_measurableF
 
 /-- Direct physical endpoint from the preferred single-package shifted F3 route.
