@@ -188,6 +188,81 @@ theorem siteNeighborBallBoundDim_of_injective_code
   obtain ⟨code, hinj⟩ := hcode x
   exact (siteNeighborBall_card_le_of_injective_code x code hinj).trans hα
 
+/-! ### Ternary displacement coding -/
+
+/-- The ternary code for a one-coordinate displacement.  The intended inputs
+are `-1`, `0`, and `1`; all other integers collapse to the last code. -/
+noncomputable def intTernaryCode (z : ℤ) : Fin 3 :=
+  if z = -1 then 0 else if z = 0 then 1 else 2
+
+/-- `intTernaryCode` is injective on the intended alphabet `{-1, 0, 1}`. -/
+theorem intTernaryCode_inj_on_unit
+    {a b : ℤ}
+    (ha : a = -1 ∨ a = 0 ∨ a = 1)
+    (hb : b = -1 ∨ b = 0 ∨ b = 1)
+    (h : intTernaryCode a = intTernaryCode b) :
+    a = b := by
+  rcases ha with ha | ha | ha <;>
+    rcases hb with hb | hb | hb <;>
+    subst ha <;> subst hb <;>
+    simp [intTernaryCode] at h ⊢
+
+/-- Ternary displacement code for a site-neighborhood element. -/
+noncomputable def siteNeighborTernaryCode
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (x : FinBox d L)
+    (y : {y : FinBox d L // y ∈ siteNeighborBall d L x}) :
+    Fin d → Fin 3 :=
+  fun i => intTernaryCode (siteDisplacement x y.1 i)
+
+/-- Equality of all displacement coordinates from the same base site forces
+equality of the target finite-box sites. -/
+theorem finBox_eq_of_siteDisplacement_eq
+    {d L : ℕ} {x y z : FinBox d L}
+    (h : ∀ i, siteDisplacement x y i = siteDisplacement x z i) :
+    y = z := by
+  funext i
+  have hi := h i
+  unfold siteDisplacement at hi
+  have hyz : ((y i : ℤ) : ℤ) = ((z i : ℤ) : ℤ) := by
+    omega
+  exact Fin.ext (by exact_mod_cast hyz)
+
+/-- The ternary displacement code is injective once all site-neighbor
+displacements have coordinates in `{-1, 0, 1}`. -/
+theorem siteNeighborTernaryCode_injective
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (x : FinBox d L)
+    (hcoord : ∀ y ∈ siteNeighborBall d L x, ∀ i : Fin d,
+      siteDisplacement x y i = -1 ∨
+        siteDisplacement x y i = 0 ∨
+        siteDisplacement x y i = 1) :
+    Function.Injective (siteNeighborTernaryCode x) := by
+  intro a b h
+  apply Subtype.ext
+  apply finBox_eq_of_siteDisplacement_eq
+  intro i
+  exact intTernaryCode_inj_on_unit
+    (hcoord a.1 a.2 i) (hcoord b.1 b.2 i)
+    (congrFun h i)
+
+/-- A coordinate-wise ternary displacement proof gives the uniform
+`3^d` site-neighborhood bound. -/
+theorem siteNeighborBallBoundDim_of_ternary_displacements
+    {d : ℕ} [NeZero d]
+    (hcoord : ∀ {L : ℕ} [NeZero L] (x : FinBox d L)
+      (y : FinBox d L), y ∈ siteNeighborBall d L x → ∀ i : Fin d,
+        siteDisplacement x y i = -1 ∨
+          siteDisplacement x y i = 0 ∨
+          siteDisplacement x y i = 1) :
+    SiteNeighborBallBoundDim d (3 ^ d) := by
+  apply siteNeighborBallBoundDim_of_injective_code
+    (α := Fin d → Fin 3)
+  · simp
+  · intro L _ x
+    exact ⟨siteNeighborTernaryCode x,
+      siteNeighborTernaryCode_injective x (hcoord x)⟩
+
 /-- Fixed-dimension uniform degree bound for `plaquetteGraph`. -/
 def PlaquetteGraphDegreeBoundDim (d D : ℕ) [NeZero d] : Prop :=
   ∀ {L : ℕ} [NeZero L] (p : ConcretePlaquette d L),
@@ -374,6 +449,10 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms plaquetteSiteBall_card_le_siteNeighborBall_card_mul_dir_sq
 #print axioms siteNeighborBall_card_le_of_injective_code
 #print axioms siteNeighborBallBoundDim_of_injective_code
+#print axioms intTernaryCode_inj_on_unit
+#print axioms finBox_eq_of_siteDisplacement_eq
+#print axioms siteNeighborTernaryCode_injective
+#print axioms siteNeighborBallBoundDim_of_ternary_displacements
 #print axioms plaquetteGraph_degreeBoundDim_of_siteNeighborBallBoundDim
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain

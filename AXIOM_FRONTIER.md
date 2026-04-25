@@ -1,3 +1,61 @@
+# v1.90.0 — ternary displacement code for site-neighbor buckets
+
+**Released: 2026-04-25**
+
+## What
+
+Extended `YangMills/ClayCore/LatticeAnimalCount.lean` with a concrete ternary
+displacement coding layer for the local site-neighborhood bound:
+
+    intTernaryCode
+    intTernaryCode_inj_on_unit
+    siteNeighborTernaryCode
+    finBox_eq_of_siteDisplacement_eq
+    siteNeighborTernaryCode_injective
+    siteNeighborBallBoundDim_of_ternary_displacements
+
+The final bridge proves `SiteNeighborBallBoundDim d (3 ^ d)` from the
+coordinate fact that every displacement coordinate of every member of
+`siteNeighborBall d L x` lies in `{-1, 0, 1}`.
+
+## Why
+
+No percentage bar moves.  This is F3-count infrastructure for the
+`ClusterCorrelatorBound` front.  The previous finite-code interface now has its
+first concrete code target, reducing the remaining local geometry witness to
+the Euclidean-coordinate lemma:
+
+    siteLatticeDist x y ≤ 1
+      ⟹ ∀ i, siteDisplacement x y i ∈ {-1, 0, 1}
+
+Once that lemma is available, the `3 ^ d` site-neighborhood bound feeds through
+v1.88 into the plaquette graph degree bound used by the lattice-animal
+branching package.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    intTernaryCode_inj_on_unit
+      [propext, Classical.choice, Quot.sound]
+
+    finBox_eq_of_siteDisplacement_eq
+      [propext, Quot.sound]
+
+    siteNeighborTernaryCode_injective
+      [propext, Classical.choice, Quot.sound]
+
+    siteNeighborBallBoundDim_of_ternary_displacements
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.89.0 — site-neighbor finite-code interface
 
 **Released: 2026-04-25**
