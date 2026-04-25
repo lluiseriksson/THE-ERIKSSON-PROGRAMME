@@ -1,3 +1,49 @@
+# v1.54.0 — Count-dimension monotonicity commutes with F3 packaging
+
+**Released: 2026-04-25**
+
+## What
+
+Added simp-visible compatibility lemmas in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    PhysicalOnlyShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
+    PhysicalShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
+    ShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
+    ShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
+
+## Why
+
+No percentage bar moves.  These lemmas make the v1.53.0 `mono_count_dim`
+wrappers commute definitionally with package assembly and physical restriction:
+
+    ofSubpackages mayer (count.mono_dim k)
+      = (ofSubpackages mayer count).mono_count_dim k
+
+and
+
+    (pkg.mono_count_dim k).toPhysicalOnly
+      = pkg.toPhysicalOnly.mono_count_dim k
+
+for the relevant global, mixed physical, and fully physical package routes.
+This keeps future F3 scripts stable when count exponents are enlarged after a
+package has already been assembled.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all five new declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.53.0 — Mayer/count F3 packages absorb count-dimension increases
 
 **Released: 2026-04-25**

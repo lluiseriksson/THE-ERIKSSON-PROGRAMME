@@ -82,12 +82,18 @@ expects a larger one, increase the exponent mechanically by:
     PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim
     PhysicalShiftedF3MayerCountPackage.mono_count_dim
     ShiftedF3MayerCountPackage.mono_count_dim
+    PhysicalOnlyShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
+    PhysicalShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
+    ShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
+    ShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
 
 These keep `C_conn` fixed and replace `dim` by `dim + k`, so F3 count scripts
 can align dimensions without reproving the combinatorial bucket estimate or
 reconstructing package records by hand.  At combined Mayer/count package level,
 the `mono_count_dim` wrappers preserve the Mayer half and only increase the
-count exponent.
+count exponent.  The `*_mono_count_dim` compatibility lemmas let Lean commute
+this operation past `ofSubpackages` and `toPhysicalOnly`.
 
 After assembling the package, its constants are simp-visible:
 
@@ -422,6 +428,11 @@ What is already closed locally:
     PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim
     PhysicalShiftedF3MayerCountPackage.mono_count_dim
     ShiftedF3MayerCountPackage.mono_count_dim
+    PhysicalOnlyShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
+    PhysicalShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
+    ShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
+    ShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
     ShiftedConnectingClusterCountBoundDim.apply
     ShiftedConnectingClusterCountBound.toAt
     ShiftedConnectingClusterCountBound.toDim
@@ -455,7 +466,9 @@ If a later estimate has to absorb an extra polynomial factor, use the
 `mono_dim` lemmas above to move from `dim` to `dim + k` while preserving the
 same `C_conn`.  At package level the simp lemmas
 `*_mono_dim_C_conn`, `*_mono_dim_dim`, and `*_mono_count_dim_*` keep downstream
-prefactors transparent.
+prefactors transparent.  The `ofSubpackages_mono_count_dim` and
+`toPhysicalOnly_mono_count_dim` lemmas keep the order of packaging/restriction
+irrelevant.
 
 ## Preferred Build Checks
 
@@ -493,6 +506,11 @@ Key oracle canaries:
     #print axioms PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim
     #print axioms PhysicalShiftedF3MayerCountPackage.mono_count_dim
     #print axioms ShiftedF3MayerCountPackage.mono_count_dim
+    #print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
+    #print axioms PhysicalShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
+    #print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
+    #print axioms ShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
+    #print axioms ShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
     #print axioms ShiftedConnectingClusterCountBoundDim.apply
     #print axioms ShiftedConnectingClusterCountBound.toAt
     #print axioms ShiftedConnectingClusterCountBound.toDim
