@@ -187,3 +187,4 @@ import YangMills.ClayCore.SchurTwoSitePhase
 import YangMills.ClayCore.SchurOffDiagonal
 import YangMills.ClayCore.ConnectedCorrDecay
 import YangMills.ClayCore.ClusterRpowBridge
+import YangMills.ClayCore.ConnectingClusterCountExp

@@ -1,3 +1,99 @@
+# v1.79.0 — exponential F3 count frontier interface
+
+**Released: 2026-04-25**
+
+## What
+
+Added the exponential KP/lattice-animal count interface in
+`YangMills/ClayCore/ConnectingClusterCountExp.lean`:
+
+    ShiftedConnectingClusterCountBoundExp
+    ShiftedConnectingClusterCountBoundDimExp
+    ShiftedConnectingClusterCountBoundAtExp
+    ShiftedF3CountPackageExp
+    ShiftedF3CountPackageDimExp
+    ShiftedF3CountPackageAtExp
+    PhysicalShiftedConnectingClusterCountBoundExp
+    PhysicalShiftedF3CountPackageExp
+
+with direct application/projection canaries:
+
+    ShiftedConnectingClusterCountBoundExp.apply
+    ShiftedConnectingClusterCountBoundDimExp.apply
+    ShiftedConnectingClusterCountBoundAtExp.apply
+    ShiftedConnectingClusterCountBoundExp.toDim
+    ShiftedConnectingClusterCountBoundExp.toAt
+    ShiftedConnectingClusterCountBoundDimExp.toAt
+    ShiftedF3CountPackageExp.ofBound
+    ShiftedF3CountPackageExp.apply
+    ShiftedF3CountPackageDimExp.ofBound
+    ShiftedF3CountPackageDimExp.ofAtFamily
+    ShiftedF3CountPackageDimExp.apply
+    ShiftedF3CountPackageAtExp.apply
+    PhysicalShiftedF3CountPackageExp.ofBound
+    PhysicalShiftedF3CountPackageExp.ofAtFamily
+    PhysicalShiftedF3CountPackageExp.apply
+    shiftedConnectingClusterCountBoundAtExp_finite
+    ShiftedF3CountPackageAtExp_finite
+
+The module is imported by `YangMills.lean`.
+
+## Why
+
+No percentage bar moves.  This is an additive correction to the F3 count
+surface: it records the classical KP-compatible exponential bucket profile
+`C_conn * K^n` beside the existing polynomial profile.  The polynomial route
+is left intact for compatibility, but the exponential interface is the natural
+target for the actual lattice-animal estimate and the future smallness
+hypothesis `r * K < 1`.
+
+The finite-volume canary is deliberately local in `L`; it does not prove the
+uniform F3 count theorem.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ConnectingClusterCountExp
+
+Pinned traces:
+
+    ShiftedConnectingClusterCountBoundExp.apply
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedConnectingClusterCountBoundDimExp.apply
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedConnectingClusterCountBoundAtExp.apply
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedF3CountPackageExp.apply
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedF3CountPackageDimExp.apply
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedF3CountPackageAtExp.apply
+      [propext, Classical.choice, Quot.sound]
+
+    PhysicalShiftedF3CountPackageExp.apply
+      [propext, Classical.choice, Quot.sound]
+
+    shiftedConnectingClusterCountBoundAtExp_finite
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedF3CountPackageAtExp_finite
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+Full-library check note: `lake build YangMills` was started after adding the
+new import but exceeded the local 15-minute command timeout without returning
+a Lean error; the module-level build above is the pinned verification for this
+entry.
+
+---
+
 # v1.78.0 — mono_count_dim subpackage terminal canaries for F3
 
 **Released: 2026-04-25**

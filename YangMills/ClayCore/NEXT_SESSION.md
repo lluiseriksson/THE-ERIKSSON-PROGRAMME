@@ -612,6 +612,20 @@ directly as well.
 The remaining F3-count work is the uniform lattice-animal estimate
 `ShiftedConnectingClusterCountBound`, not mere finiteness.  A proved global
 count package now projects mechanically to every local finite-volume package.
+The parallel exponential interface in `ConnectingClusterCountExp.lean` is now
+available as the KP-compatible count surface:
+
+    ShiftedConnectingClusterCountBoundExp
+    ShiftedConnectingClusterCountBoundDimExp
+    ShiftedConnectingClusterCountBoundAtExp
+    ShiftedF3CountPackageExp
+    ShiftedF3CountPackageDimExp
+    ShiftedF3CountPackageAtExp
+    PhysicalShiftedF3CountPackageExp
+
+Prefer this surface if the lattice-animal estimate lands with an exponential
+bucket profile `C_conn * K^n`; downstream consumers should then carry the
+smallness hypothesis `r * K < 1`.
 If a later estimate has to absorb an extra polynomial factor, use the
 `mono_dim` lemmas above to move from `dim` to `dim + k` while preserving the
 same `C_conn`.  At package level the simp lemmas
