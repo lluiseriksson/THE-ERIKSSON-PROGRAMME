@@ -344,6 +344,36 @@ theorem plaquetteGraph_degreeBoundDim_of_siteNeighborBallBoundDim
       (Nat.mul_le_mul_right (Fintype.card (Fin d))
         (Nat.mul_le_mul_right (Fintype.card (Fin d)) (hB p.site))))
 
+/-- Concrete fixed-dimension plaquette-graph degree bound obtained from the
+ternary site-neighborhood code. -/
+theorem plaquetteGraph_degreeBoundDim_ternary
+    {d : ℕ} [NeZero d] :
+    PlaquetteGraphDegreeBoundDim d
+      ((3 ^ d) * Fintype.card (Fin d) * Fintype.card (Fin d)) :=
+  plaquetteGraph_degreeBoundDim_of_siteNeighborBallBoundDim
+    siteNeighborBallBoundDim_ternary
+
+/-- Physical four-dimensional plaquette-graph degree bound from the ternary
+site-neighborhood code. -/
+theorem plaquetteGraph_degreeBoundDim_physical_ternary :
+    PlaquetteGraphDegreeBoundDim physicalClayDimension 1296 := by
+  intro L _ p
+  have h :=
+    (plaquetteGraph_degreeBoundDim_ternary
+      (d := physicalClayDimension) (L := L) p)
+  have h' :
+      (plaquetteGraph physicalClayDimension L).degree p ≤ 81 * 4 * 4 := by
+    simpa [physicalClayDimension, Fintype.card_fin] using h
+  norm_num at h'
+  exact h'
+
+/-- Direct application form of the physical local branching bound. -/
+theorem plaquetteGraph_degree_le_physical_ternary
+    {L : ℕ} [NeZero L]
+    (p : ConcretePlaquette physicalClayDimension L) :
+    (plaquetteGraph physicalClayDimension L).degree p ≤ 1296 :=
+  plaquetteGraph_degreeBoundDim_physical_ternary p
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -522,6 +552,9 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms siteDisplacement_mem_unit_of_siteLatticeDist_le_one
 #print axioms siteNeighborBallBoundDim_ternary
 #print axioms plaquetteGraph_degreeBoundDim_of_siteNeighborBallBoundDim
+#print axioms plaquetteGraph_degreeBoundDim_ternary
+#print axioms plaquetteGraph_degreeBoundDim_physical_ternary
+#print axioms plaquetteGraph_degree_le_physical_ternary
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints

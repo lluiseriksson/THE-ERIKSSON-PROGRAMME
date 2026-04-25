@@ -1,3 +1,61 @@
+# v1.92.0 — explicit plaquette-graph branching bound
+
+**Released: 2026-04-25**
+
+## What
+
+Packaged the v1.91 site-neighborhood estimate into the plaquette graph degree
+interface in `YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraph_degreeBoundDim_ternary
+    plaquetteGraph_degreeBoundDim_physical_ternary
+    plaquetteGraph_degree_le_physical_ternary
+
+The generic theorem gives the fixed-dimension local branching bound
+
+    PlaquetteGraphDegreeBoundDim d
+      ((3 ^ d) * Fintype.card (Fin d) * Fintype.card (Fin d))
+
+and the physical specialization evaluates it at `physicalClayDimension = 4`:
+
+    (plaquetteGraph physicalClayDimension L).degree p ≤ 1296
+
+for every positive finite volume `L` and plaquette `p`.
+
+## Why
+
+No percentage bar moves.  This is F3-count infrastructure for the
+`ClusterCorrelatorBound` front.  The local graph branching constant is now a
+first-class Lean theorem, independent of the finite volume.  This is the input
+needed for the next lattice-animal step: converting bounded degree plus
+graph-connectedness into an exponential walk/tree count for connected
+plaquette polymers.
+
+The bound is intentionally conservative (`3^4 * 4 * 4 = 1296`), matching the
+current ternary site bucket plus plaquette orientation overhead.  Sharper
+constants can be added later without changing the downstream interface.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteGraph_degreeBoundDim_ternary
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_degreeBoundDim_physical_ternary
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_degree_le_physical_ternary
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.91.0 — concrete ternary site-neighbor bound
 
 **Released: 2026-04-25**
