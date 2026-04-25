@@ -156,6 +156,30 @@ theorem plaquetteSiteBall_card_le_siteNeighborBall_card_mul_dir_sq
   have hcard := Fintype.card_le_of_injective f hf
   simpa [Fintype.card_prod, mul_assoc] using hcard
 
+/-! ### Local branching bound interface -/
+
+/-- Fixed-dimension uniform bound on the site-neighborhood bucket. -/
+def SiteNeighborBallBoundDim (d B : ℕ) [NeZero d] : Prop :=
+  ∀ {L : ℕ} [NeZero L] (x : FinBox d L),
+    (siteNeighborBall d L x).card ≤ B
+
+/-- Fixed-dimension uniform degree bound for `plaquetteGraph`. -/
+def PlaquetteGraphDegreeBoundDim (d D : ℕ) [NeZero d] : Prop :=
+  ∀ {L : ℕ} [NeZero L] (p : ConcretePlaquette d L),
+    (plaquetteGraph d L).degree p ≤ D
+
+/-- A uniform site-neighborhood bound gives a uniform plaquette-graph degree
+bound, with the explicit orientation overhead `d*d`. -/
+theorem plaquetteGraph_degreeBoundDim_of_siteNeighborBallBoundDim
+    {d B : ℕ} [NeZero d]
+    (hB : SiteNeighborBallBoundDim d B) :
+    PlaquetteGraphDegreeBoundDim d (B * Fintype.card (Fin d) * Fintype.card (Fin d)) := by
+  intro L _ p
+  exact (plaquetteGraph_degree_le_siteBall_card p).trans
+    ((plaquetteSiteBall_card_le_siteNeighborBall_card_mul_dir_sq p).trans
+      (Nat.mul_le_mul_right (Fintype.card (Fin d))
+        (Nat.mul_le_mul_right (Fintype.card (Fin d)) (hB p.site))))
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -323,6 +347,7 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms plaquetteGraph_neighborFinset_subset_siteBall
 #print axioms plaquetteGraph_degree_le_siteBall_card
 #print axioms plaquetteSiteBall_card_le_siteNeighborBall_card_mul_dir_sq
+#print axioms plaquetteGraph_degreeBoundDim_of_siteNeighborBallBoundDim
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints

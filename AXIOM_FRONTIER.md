@@ -1,3 +1,49 @@
+# v1.88.0 — site-neighbor bound lifts to plaquette graph degree bound
+
+**Released: 2026-04-25**
+
+## What
+
+Extended `YangMills/ClayCore/LatticeAnimalCount.lean` with the fixed-dimension
+local branching interface:
+
+    SiteNeighborBallBoundDim
+    PlaquetteGraphDegreeBoundDim
+    plaquetteGraph_degreeBoundDim_of_siteNeighborBallBoundDim
+
+The new bridge says that any volume-uniform bound
+
+    (siteNeighborBall d L x).card ≤ B
+
+lifts immediately to a volume-uniform plaquette graph degree bound
+
+    (plaquetteGraph d L).degree p ≤ B * Fintype.card (Fin d) * Fintype.card (Fin d)
+
+for all finite volumes `L`.
+
+## Why
+
+No percentage bar moves.  This packages the next F3-count obligation as a
+small local geometry theorem, separated from the graph and orientation
+plumbing.  Once `SiteNeighborBallBoundDim` is witnessed, the local branching
+constant for the lattice-animal walk/tree count is available in the main Lean
+tree.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned trace:
+
+    plaquetteGraph_degreeBoundDim_of_siteNeighborBallBoundDim
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.87.0 — plaquette site-ball orientation split
 
 **Released: 2026-04-25**
