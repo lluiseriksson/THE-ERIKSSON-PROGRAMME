@@ -2943,6 +2943,126 @@ theorem physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage
 #print axioms physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage
 #print axioms physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim
 
+/-- Single-package form of the fully physical exponential `d = 4` F3 frontier.
+
+This is the physical-only sibling of `ShiftedF3MayerCountPackageExp`: the count
+side is exponential, and the package records the smallness hypothesis
+`K * wab.r < 1` needed by the KP-series consumer. -/
+structure PhysicalOnlyShiftedF3MayerCountPackageExp
+    (N_c : ℕ) [NeZero N_c] (wab : WilsonPolymerActivityBound N_c) where
+  mayer : PhysicalShiftedF3MayerPackage N_c wab
+  count : PhysicalShiftedF3CountPackageExp
+  hKr_lt1 : count.K * wab.r < 1
+
+namespace PhysicalOnlyShiftedF3MayerCountPackageExp
+
+/-- Build the fully physical exponential F3 package from independently-produced
+physical Mayer and physical exponential count halves. -/
+def ofSubpackages
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackageExp)
+    (hKr_lt1 : count.K * wab.r < 1) :
+    PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab where
+  mayer := mayer
+  count := count
+  hKr_lt1 := hKr_lt1
+
+/-- Project the physical Mayer/activity half out of a fully physical
+exponential package. -/
+def mayerPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab) :
+    PhysicalShiftedF3MayerPackage N_c wab :=
+  pkg.mayer
+
+/-- Project the physical exponential count half out of a fully physical
+exponential package. -/
+def countPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab) :
+    PhysicalShiftedF3CountPackageExp :=
+  pkg.count
+
+@[simp] theorem ofSubpackages_mayerPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackageExp)
+    (hKr_lt1 : count.K * wab.r < 1) :
+    mayerPackage (ofSubpackages mayer count hKr_lt1) = mayer := rfl
+
+@[simp] theorem ofSubpackages_countPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackageExp)
+    (hKr_lt1 : count.K * wab.r < 1) :
+    countPackage (ofSubpackages mayer count hKr_lt1) = count := rfl
+
+@[simp] theorem mayerPackage_A₀
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab) :
+    (mayerPackage pkg).A₀ = pkg.mayer.A₀ := rfl
+
+@[simp] theorem countPackage_C_conn
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab) :
+    (countPackage pkg).C_conn = pkg.count.C_conn := rfl
+
+@[simp] theorem countPackage_K
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab) :
+    (countPackage pkg).K = pkg.count.K := rfl
+
+@[simp] theorem ofSubpackages_mayerPackage_countPackage
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab) :
+    ofSubpackages (mayerPackage pkg) (countPackage pkg) pkg.hKr_lt1 = pkg := rfl
+
+/-- Direct application form of the physical exponential count half stored in
+the fully physical exponential F3 package. -/
+theorem apply_count
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.count.C_conn * pkg.count.K ^ n :=
+  pkg.count.apply p q n hn hdist
+
+end PhysicalOnlyShiftedF3MayerCountPackageExp
+
+/-- Physical `d = 4` exponential F3 endpoint from the single fully physical
+Mayer/count package. -/
+theorem physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackageExp
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackageExp N_c wab) :
+    PhysicalClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorExp wab.r pkg.count.K pkg.count.C_conn pkg.mayer.A₀) :=
+  physicalClusterCorrelatorBound_of_physicalMayerData_expCount_ceil
+    N_c wab.r pkg.count.K wab.hr_pos wab.hr_lt1 pkg.count.hK pkg.hKr_lt1
+    pkg.count.C_conn pkg.mayer.A₀ pkg.count.hC pkg.mayer.hA
+    pkg.mayer.data pkg.count.h_count
+
+#print axioms PhysicalOnlyShiftedF3MayerCountPackageExp.ofSubpackages
+#print axioms PhysicalOnlyShiftedF3MayerCountPackageExp.mayerPackage
+#print axioms PhysicalOnlyShiftedF3MayerCountPackageExp.countPackage
+#print axioms PhysicalOnlyShiftedF3MayerCountPackageExp.ofSubpackages_mayerPackage
+#print axioms PhysicalOnlyShiftedF3MayerCountPackageExp.ofSubpackages_countPackage
+#print axioms PhysicalOnlyShiftedF3MayerCountPackageExp.mayerPackage_A₀
+#print axioms PhysicalOnlyShiftedF3MayerCountPackageExp.countPackage_C_conn
+#print axioms PhysicalOnlyShiftedF3MayerCountPackageExp.countPackage_K
+#print axioms PhysicalOnlyShiftedF3MayerCountPackageExp.ofSubpackages_mayerPackage_countPackage
+#print axioms PhysicalOnlyShiftedF3MayerCountPackageExp.apply_count
+#print axioms physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackageExp
+
 /-- Preferred F3 endpoint into the older analytic witness bundle. -/
 noncomputable def clayWitnessHyp_of_shiftedCountBound_mayerData_ceil
     (N_c : ℕ) [NeZero N_c]

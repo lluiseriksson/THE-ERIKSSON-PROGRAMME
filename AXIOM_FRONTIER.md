@@ -1,3 +1,63 @@
+# v2.08.0 — physical-only exponential F3 package
+
+**Released: 2026-04-25**
+
+## What
+
+Added the physical-only exponential single-package frontier:
+
+    PhysicalOnlyShiftedF3MayerCountPackageExp
+    PhysicalOnlyShiftedF3MayerCountPackageExp.ofSubpackages
+    PhysicalOnlyShiftedF3MayerCountPackageExp.apply_count
+    physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackageExp
+
+in `YangMills/ClayCore/ClusterRpowBridge.lean`.
+
+The package combines exactly the two physical F3 halves:
+
+    PhysicalShiftedF3MayerPackage N_c wab
+    PhysicalShiftedF3CountPackageExp
+
+plus the KP smallness condition:
+
+    count.K * wab.r < 1.
+
+## Why
+
+No percentage bar moves. This aligns the v2.07 physical `1296` count package
+with a fully physical exponential F3 endpoint, instead of forcing the count
+half through the older all-dimensions `ShiftedF3MayerCountPackageExp`.
+
+After this, the live physical exponential route is explicit:
+
+    PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296
+    + PhysicalShiftedF3MayerPackage N_c wab
+    + 1296 * wab.r < 1
+    ⇒ PhysicalClusterCorrelatorBound N_c wab.r
+         (clusterPrefactorExp wab.r 1296 1 A₀)
+
+The remaining work is still mathematical: construct the `1296`
+baseline-plus-word decoder and the physical Mayer/activity package.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    PhysicalOnlyShiftedF3MayerCountPackageExp.ofSubpackages
+      [propext, Classical.choice, Quot.sound]
+    PhysicalOnlyShiftedF3MayerCountPackageExp.apply_count
+      [propext, Classical.choice, Quot.sound]
+    physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackageExp
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.07.0 — package physical 1296 decoder count half
 
 **Released: 2026-04-25**
