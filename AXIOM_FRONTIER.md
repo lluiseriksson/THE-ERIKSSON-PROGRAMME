@@ -1,3 +1,51 @@
+# v1.63.0 — Direct bucket-`tsum` KP comparison
+
+**Released: 2026-04-25**
+
+## What
+
+Added direct `tsum`-comparison consumers in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    connectedFiniteSum_le_of_cardBucketBounds_tsum
+    connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted
+
+Given the usual bucketwise KP bound on the canonical finite plaquette range,
+these theorems compare the connected finite sum directly against the
+corresponding infinite KP series by:
+
+1. rewriting the connected sum as the bucket `tsum`;
+2. applying termwise `Summable.tsum_le_tsum`;
+3. using the out-of-range zero lemma plus KP summand nonnegativity outside the
+   finite range.
+
+## Why
+
+No percentage bar moves.  The previous public consumers went through a finite
+range sum and then a separate partial-sum-to-`tsum` comparison.  The new API
+packages the same reasoning in the series language created by v1.59.0-v1.62.0,
+which is closer to the downstream Kotecky-Preiss shape.
+
+This is still infrastructure.  The uniform lattice-animal count estimate
+remains the open F3-count target.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    connectedFiniteSum_le_of_cardBucketBounds_tsum
+      [propext, Classical.choice, Quot.sound]
+    connectedFiniteSum_le_of_cardBucketBounds_tsum_shifted
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.62.0 — Connected finite sum equals the bucket `tsum`
 
 **Released: 2026-04-25**
