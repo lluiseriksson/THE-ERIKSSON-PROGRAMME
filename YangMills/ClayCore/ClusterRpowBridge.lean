@@ -2504,6 +2504,92 @@ theorem physicalClusterCorrelatorBound_of_physicalMayerData_shiftedCount_ceil
 
 #print axioms physicalClusterCorrelatorBound_of_physicalMayerData_shiftedCount_ceil
 
+/-- Physical `d = 4` F3 endpoint from all-dimensions Mayer data and the
+physical four-dimensional exponential count frontier. -/
+theorem physicalClusterCorrelatorBound_of_expCountBound_mayerData_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (r K : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (data : ConnectedCardDecayMayerData N_c r A₀ hr_pos.le hA.le)
+    (h_count : PhysicalShiftedConnectingClusterCountBoundExp C_conn K) :
+    PhysicalClusterCorrelatorBound N_c r
+      (clusterPrefactorExp r K C_conn A₀) := by
+  intro L _ β hβ F hF p q hdist
+  rw [data.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    β hβ F hF p q hdist]
+  have h_bound :
+      (data.toTruncatedActivities β F p q).connectingBound p q ≤
+        ∑' n : ℕ, C_conn * K ^ n * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+    rw [TruncatedActivities.connectingBound_eq_finset_sum]
+    exact finiteConnectingSum_le_of_cardBucketBounds_tsum_exp
+      (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
+      r K hr_pos hK_pos hKr_lt1 C_conn A₀ hC hA
+      (fun Y hp hq hnot =>
+        data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+          β F p q Y hp hq hnot)
+      (fun n hn => cardBucketSum_le_of_count_and_pointwise_exp
+        (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
+        r hr_pos K C_conn A₀ hA n
+        (h_count.apply p q n hn hdist)
+        (fun Y hY => pointwiseBucketBound_of_card_decay
+          (fun Y => (data.toTruncatedActivities β F p q).K_bound Y)
+          p q r A₀ n Y hY
+          (fun Y =>
+            data.toTruncatedActivities_K_bound_le_cardDecay β F p q Y)))
+  exact ((data.toTruncatedActivities β F p q).two_point_decay_from_cluster_tsum_exp
+    p q r K hr_pos hK_pos hKr_lt1 C_conn A₀ hC hA
+    ⌈siteLatticeDist p.site q.site⌉₊ h_bound).trans
+      (clusterPrefactorExp_rpow_ceil_le_exp
+        r K hr_pos hr_lt1 hK_pos hKr_lt1 C_conn A₀ hC hA
+        (siteLatticeDist p.site q.site))
+
+#print axioms physicalClusterCorrelatorBound_of_expCountBound_mayerData_ceil
+
+/-- Physical `d = 4` F3 endpoint from physical Mayer/activity data and the
+physical four-dimensional exponential count frontier. -/
+theorem physicalClusterCorrelatorBound_of_physicalMayerData_expCount_ceil
+    (N_c : ℕ) [NeZero N_c]
+    (r K : ℝ) (hr_pos : 0 < r) (hr_lt1 : r < 1)
+    (hK_pos : 0 < K) (hKr_lt1 : K * r < 1)
+    (C_conn A₀ : ℝ) (hC : 0 < C_conn) (hA : 0 < A₀)
+    (data : PhysicalConnectedCardDecayMayerData N_c r A₀ hr_pos.le hA.le)
+    (h_count : PhysicalShiftedConnectingClusterCountBoundExp C_conn K) :
+    PhysicalClusterCorrelatorBound N_c r
+      (clusterPrefactorExp r K C_conn A₀) := by
+  intro L _ β hβ F hF p q hdist
+  rw [data.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    β hβ F hF p q hdist]
+  have h_bound :
+      (data.toTruncatedActivities β F p q).connectingBound p q ≤
+        ∑' n : ℕ, C_conn * K ^ n * A₀ *
+          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
+    rw [TruncatedActivities.connectingBound_eq_finset_sum]
+    exact finiteConnectingSum_le_of_cardBucketBounds_tsum_exp
+      (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
+      r K hr_pos hK_pos hKr_lt1 C_conn A₀ hC hA
+      (fun Y hp hq hnot =>
+        data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+          β F p q Y hp hq hnot)
+      (fun n hn => cardBucketSum_le_of_count_and_pointwise_exp
+        (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
+        r hr_pos K C_conn A₀ hA n
+        (h_count.apply p q n hn hdist)
+        (fun Y hY => pointwiseBucketBound_of_card_decay
+          (fun Y => (data.toTruncatedActivities β F p q).K_bound Y)
+          p q r A₀ n Y hY
+          (fun Y =>
+            data.toTruncatedActivities_K_bound_le_cardDecay β F p q Y)))
+  exact ((data.toTruncatedActivities β F p q).two_point_decay_from_cluster_tsum_exp
+    p q r K hr_pos hK_pos hKr_lt1 C_conn A₀ hC hA
+    ⌈siteLatticeDist p.site q.site⌉₊ h_bound).trans
+      (clusterPrefactorExp_rpow_ceil_le_exp
+        r K hr_pos hr_lt1 hK_pos hKr_lt1 C_conn A₀ hC hA
+        (siteLatticeDist p.site q.site))
+
+#print axioms physicalClusterCorrelatorBound_of_physicalMayerData_expCount_ceil
+
 /-- Mayer/activity half of the physical shifted F3 frontier.
 
 Unlike `ShiftedF3MayerPackage`, this only packages the physical

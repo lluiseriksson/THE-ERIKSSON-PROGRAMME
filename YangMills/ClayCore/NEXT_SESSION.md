@@ -674,6 +674,16 @@ and feeds directly into:
 
 For separately produced halves, use
 `ShiftedF3MayerCountPackageExp.ofSubpackages mayer count hKr_lt1`.
+For the Clay-physical route, the direct `d = 4` exponential consumers are:
+
+    physicalClusterCorrelatorBound_of_expCountBound_mayerData_ceil
+    physicalClusterCorrelatorBound_of_physicalMayerData_expCount_ceil
+
+These consume `PhysicalShiftedConnectingClusterCountBoundExp C_conn K` and
+return `PhysicalClusterCorrelatorBound N_c r
+(clusterPrefactorExp r K C_conn A₀)` under `K * r < 1`.  Prefer the physical
+endpoint if the count proof is only uniform in finite volume at
+`physicalClayDimension = 4`.
 If a later estimate has to absorb an extra polynomial factor, use the
 `mono_dim` lemmas above to move from `dim` to `dim + k` while preserving the
 same `C_conn`.  At package level the simp lemmas

@@ -1,3 +1,58 @@
+# v1.83.0 — physical d=4 exponential F3 correlator endpoint
+
+**Released: 2026-04-25**
+
+## What
+
+Added physical-dimension exponential F3 consumers in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    physicalClusterCorrelatorBound_of_expCountBound_mayerData_ceil
+    physicalClusterCorrelatorBound_of_physicalMayerData_expCount_ceil
+
+These consume the physical exponential count frontier
+
+    PhysicalShiftedConnectingClusterCountBoundExp C_conn K
+
+and produce
+
+    PhysicalClusterCorrelatorBound N_c r
+      (clusterPrefactorExp r K C_conn A₀)
+
+under `0 < K` and `K * r < 1`, either from all-dimensions
+`ConnectedCardDecayMayerData` restricted to `physicalClayDimension = 4`, or
+from the native physical Mayer/activity package
+`PhysicalConnectedCardDecayMayerData`.
+
+## Why
+
+No percentage bar moves.  This is another consumer-side closure.  It matters
+because the Clay-facing route is physically four-dimensional: a future proof
+of the exponential lattice-animal count can now land directly at the physical
+uniform-in-volume frontier without first proving a stronger all-dimensions
+statement.
+
+The remaining mathematical content is still the same: prove physical/global
+Mayer-Ursell activity decay and the uniform physical exponential count bound.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    physicalClusterCorrelatorBound_of_expCountBound_mayerData_ceil
+      [propext, Classical.choice, Quot.sound]
+
+    physicalClusterCorrelatorBound_of_physicalMayerData_expCount_ceil
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.82.0 — packaged exponential F3 route to Clay mass-gap hub
 
 **Released: 2026-04-25**
