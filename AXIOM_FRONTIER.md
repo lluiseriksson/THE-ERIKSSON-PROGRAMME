@@ -1,3 +1,51 @@
+# v1.55.0 — L8 F3 bundles expose mono-count-dimension constants
+
+**Released: 2026-04-25**
+
+## What
+
+Added terminal bundle constant canaries in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
+    connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mono_count_dim_prefactor_eq
+
+## Why
+
+No percentage bar moves.  This is an L8 audit/endpoint normalization pass:
+after increasing a count package's polynomial exponent by `mono_count_dim k`,
+the `ConnectedCorrDecayBundle` endpoint still exposes the same physical mass
+
+    kpParameter wab.r
+
+and the expected enlarged shifted prefactor
+
+    clusterPrefactorShifted ... (old_dim + k)
+      + 2 * Real.exp (kpParameter wab.r)
+
+for the mixed physical package, the fully physical package, and the global
+package restricted through `toPhysicalOnly`.  Future F3 scripts can therefore
+absorb additional polynomial count factors without losing auditable terminal
+constants.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces: all six new declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.54.0 — Count-dimension monotonicity commutes with F3 packaging
 
 **Released: 2026-04-25**

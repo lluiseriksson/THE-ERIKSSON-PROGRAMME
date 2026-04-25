@@ -87,13 +87,21 @@ expects a larger one, increase the exponent mechanically by:
     PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
     ShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
     ShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
+    connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mono_count_dim_prefactor_eq
 
 These keep `C_conn` fixed and replace `dim` by `dim + k`, so F3 count scripts
 can align dimensions without reproving the combinatorial bucket estimate or
 reconstructing package records by hand.  At combined Mayer/count package level,
 the `mono_count_dim` wrappers preserve the Mayer half and only increase the
 count exponent.  The `*_mono_count_dim` compatibility lemmas let Lean commute
-this operation past `ofSubpackages` and `toPhysicalOnly`.
+this operation past `ofSubpackages` and `toPhysicalOnly`.  The L8 bundle
+canaries show that the terminal mass remains `kpParameter wab.r`, while the
+bundle prefactor exposes the shifted `dim + k` count exponent.
 
 After assembling the package, its constants are simp-visible:
 
@@ -242,6 +250,8 @@ projection.  Its constants are definitionally pinned by:
 
     connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mass_eq
     connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_prefactor_eq
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
     connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_mass_eq
     connectedCorrDecayBundle_of_physicalShiftedF3Subpackages_prefactor_eq
 
@@ -433,6 +443,12 @@ What is already closed locally:
     PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
     ShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
     ShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
+    connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mono_count_dim_mass_eq
+    connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mono_count_dim_prefactor_eq
     ShiftedConnectingClusterCountBoundDim.apply
     ShiftedConnectingClusterCountBound.toAt
     ShiftedConnectingClusterCountBound.toDim
@@ -468,7 +484,8 @@ same `C_conn`.  At package level the simp lemmas
 `*_mono_dim_C_conn`, `*_mono_dim_dim`, and `*_mono_count_dim_*` keep downstream
 prefactors transparent.  The `ofSubpackages_mono_count_dim` and
 `toPhysicalOnly_mono_count_dim` lemmas keep the order of packaging/restriction
-irrelevant.
+irrelevant.  The L8 bundle `*_mono_count_dim_*_eq` canaries keep the final
+mass and prefactor transparent after the same dimension increase.
 
 ## Preferred Build Checks
 
@@ -511,6 +528,12 @@ Key oracle canaries:
     #print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
     #print axioms ShiftedF3MayerCountPackage.ofSubpackages_mono_count_dim
     #print axioms ShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim
+    #print axioms connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mono_count_dim_mass_eq
+    #print axioms connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
+    #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim_mass_eq
+    #print axioms connectedCorrDecayBundle_of_physicalOnlyShiftedF3MayerCountPackage_mono_count_dim_prefactor_eq
+    #print axioms connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mono_count_dim_mass_eq
+    #print axioms connectedCorrDecayBundle_of_shiftedF3MayerCountPackage_toPhysicalOnly_mono_count_dim_prefactor_eq
     #print axioms ShiftedConnectingClusterCountBoundDim.apply
     #print axioms ShiftedConnectingClusterCountBound.toAt
     #print axioms ShiftedConnectingClusterCountBound.toDim
