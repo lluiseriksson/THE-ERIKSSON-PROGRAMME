@@ -1,3 +1,49 @@
+# v2.33.0 — anchored word-decoder base coverage
+
+**Released: 2026-04-25**
+
+## What
+
+Added base coverage lemmas for the anchored graph-animal word-decoder target in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_wordDecoderCovers
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_one_wordDecoderCovers
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_base_wordDecoderCovers
+
+The `k = 0` bucket is covered vacuously by a decoder into the empty set. The
+`k = 1` bucket is covered by the constant singleton decoder, assuming only
+`1 ≤ K` so that the word alphabet is inhabited. The dispatcher packages both
+cases for every `k ≤ 1`.
+
+## Why
+
+No percentage bar moves. This closes the decoder-form base cases matching the
+count-form base cases of v2.29/v2.30. The remaining combinatorial work is now
+cleanly isolated in the non-degenerate anchored BFS/Klarner construction for
+`k ≥ 2`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_wordDecoderCovers
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_one_wordDecoderCovers
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_base_wordDecoderCovers
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.32.0 — terminal route from anchored word decoder
 
 **Released: 2026-04-25**

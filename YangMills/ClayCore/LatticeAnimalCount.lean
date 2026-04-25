@@ -1358,6 +1358,56 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_base_card_le_pow
       | succ k =>
           omega
 
+/-- The empty anchored bucket has a vacuous word decoder. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_wordDecoderCovers
+    {d L K : ℕ} [NeZero d] [NeZero L]
+    (root : ConcretePlaquette d L) :
+    ∃ decode : (Fin 0 → Fin K) → Finset (ConcretePlaquette d L),
+      ∀ X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root 0,
+        ∃ word : Fin 0 → Fin K, decode word = X := by
+  refine ⟨fun _ => ∅, ?_⟩
+  intro X hX
+  rw [plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty root] at hX
+  simp at hX
+
+/-- The size-one anchored bucket is covered by the constant singleton decoder,
+provided the alphabet has at least one symbol. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_one_wordDecoderCovers
+    {d L K : ℕ} [NeZero d] [NeZero L]
+    (root : ConcretePlaquette d L) (hK : 1 ≤ K) :
+    ∃ decode : (Fin 1 → Fin K) → Finset (ConcretePlaquette d L),
+      ∀ X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root 1,
+        ∃ word : Fin 1 → Fin K, decode word = X := by
+  refine ⟨fun _ => {root}, ?_⟩
+  intro X hX
+  have hX_singleton :
+      X ∈ ({ {root} } : Finset (Finset (ConcretePlaquette d L))) :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton root hX
+  rw [Finset.mem_singleton] at hX_singleton
+  subst X
+  exact ⟨fun _ => ⟨0, Nat.lt_of_lt_of_le Nat.zero_lt_one hK⟩, rfl⟩
+
+/-- Uniform base dispatcher for anchored word-decoder coverage at sizes
+`k ≤ 1`. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_base_wordDecoderCovers
+    {d L K : ℕ} [NeZero d] [NeZero L]
+    (root : ConcretePlaquette d L) {k : ℕ} (hK : 1 ≤ K) (hk : k ≤ 1) :
+    ∃ decode : (Fin k → Fin K) → Finset (ConcretePlaquette d L),
+      ∀ X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k,
+        ∃ word : Fin k → Fin K, decode word = X := by
+  cases k with
+  | zero =>
+      exact plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_wordDecoderCovers
+        (K := K) root
+  | succ k =>
+      cases k with
+      | zero =>
+          simpa using
+            (plaquetteGraphPreconnectedSubsetsAnchoredCard_one_wordDecoderCovers
+              root hK)
+      | succ k =>
+          omega
+
 /-- Decoder-form anchored graph-animal target: every anchored bucket element is
 covered by a word of length equal to its cardinality over an alphabet of size
 `K`. This is the direct BFS/Klarner proof shape for the anchored count
@@ -2025,6 +2075,9 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_card_le_pow
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_pow
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_base_card_le_pow
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_wordDecoderCovers
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_wordDecoderCovers
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_base_wordDecoderCovers
 #print axioms physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder_injective
 #print axioms physicalPlaquetteGraphAnimalAnchoredCountBound_of_wordDecoder
 #print axioms PhysicalPlaquetteGraphAnimalAnchoredCountBound.mono
