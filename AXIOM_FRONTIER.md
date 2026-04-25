@@ -13,11 +13,13 @@ review sketch into the main Lean tree:
     plaquetteGraph_adj_siteLatticeDist_le_one
     plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one
     plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
+    polymerConnected_exists_plaquetteGraph_chain
 
 The new `plaquetteGraph d L` connects two concrete plaquettes when their
 base sites have `siteLatticeDist ≤ 1` and the plaquettes are distinct.  The
-chain lemma proves that any nodup `PolymerConnected`-style site-distance
-chain is already a chain in this graph.
+chain lemmas prove that any nodup `PolymerConnected`-style site-distance
+chain is already a chain in this graph, and package `PolymerConnected X` as
+an internal `plaquetteGraph` chain between any two plaquettes of `X`.
 
 ## Why
 
@@ -48,6 +50,9 @@ Pinned traces:
       [propext, Classical.choice, Quot.sound]
 
     plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
+      [propext, Classical.choice, Quot.sound]
+
+    polymerConnected_exists_plaquetteGraph_chain
       [propext, Classical.choice, Quot.sound]
 
 No `sorry`. Non-Experimental Lean axiom count remains 0.

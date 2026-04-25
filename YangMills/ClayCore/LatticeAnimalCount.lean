@@ -91,9 +91,28 @@ theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
             (plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one hne hdist)
             (ih htail_nodup htail)
 
+/-- `PolymerConnected` supplies graph chains in `plaquetteGraph`, still
+carrying the original path endpoints, nodup proof, and containment in the
+polymer. -/
+theorem polymerConnected_exists_plaquetteGraph_chain
+    {d L : ℕ} [NeZero d] [NeZero L]
+    {X : Finset (ConcretePlaquette d L)}
+    {p q : ConcretePlaquette d L}
+    (hconn : PolymerConnected X) (hpX : p ∈ X) (hqX : q ∈ X) :
+    ∃ path : List (ConcretePlaquette d L),
+      path.head? = some p ∧
+      path.getLast? = some q ∧
+      path.Nodup ∧
+      (∀ x ∈ path, x ∈ X) ∧
+      List.IsChain (plaquetteGraph d L).Adj path := by
+  obtain ⟨path, hhead, hlast, hnodup, hsub, hchain⟩ := hconn p hpX q hqX
+  exact ⟨path, hhead, hlast, hnodup, hsub,
+    plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain path hnodup hchain⟩
+
 #print axioms siteLatticeDist_symm
 #print axioms plaquetteGraph_adj_siteLatticeDist_le_one
 #print axioms plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
+#print axioms polymerConnected_exists_plaquetteGraph_chain
 
 end YangMills
