@@ -1408,6 +1408,39 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_base_wordDecoderCovers
       | succ k =>
           omega
 
+/-- In an anchored preconnected bucket, every plaquette in the bucket is
+reachable from the root inside the induced graph on that same bucket. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_root_reachable
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root y : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hy : y ∈ X) :
+    ((plaquetteGraph d L).induce {x | x ∈ X}).Reachable
+      ⟨root, by
+        unfold plaquetteGraphPreconnectedSubsetsAnchoredCard at hX
+        rw [Finset.mem_filter] at hX
+        exact hX.2.1⟩
+      ⟨y, hy⟩ := by
+  unfold plaquetteGraphPreconnectedSubsetsAnchoredCard at hX
+  rw [Finset.mem_filter] at hX
+  exact hX.2.2.2 ⟨root, hX.2.1⟩ ⟨y, hy⟩
+
+/-- Path-form version of root reachability inside an anchored bucket. This is
+the local graph-theoretic ingredient used by BFS/Klarner enumerations. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_root_exists_induced_path
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root y : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hy : y ∈ X) :
+    ∃ p : ((plaquetteGraph d L).induce {x | x ∈ X}).Walk
+        ⟨root, by
+          unfold plaquetteGraphPreconnectedSubsetsAnchoredCard at hX
+          rw [Finset.mem_filter] at hX
+          exact hX.2.1⟩
+        ⟨y, hy⟩,
+      p.IsPath :=
+  (plaquetteGraphPreconnectedSubsetsAnchoredCard_root_reachable hX hy).exists_isPath
+
 /-- Decoder-form anchored graph-animal target: every anchored bucket element is
 covered by a word of length equal to its cardinality over an alphabet of size
 `K`. This is the direct BFS/Klarner proof shape for the anchored count
@@ -2078,6 +2111,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_wordDecoderCovers
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_wordDecoderCovers
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_base_wordDecoderCovers
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_root_reachable
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_root_exists_induced_path
 #print axioms physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder_injective
 #print axioms physicalPlaquetteGraphAnimalAnchoredCountBound_of_wordDecoder
 #print axioms PhysicalPlaquetteGraphAnimalAnchoredCountBound.mono

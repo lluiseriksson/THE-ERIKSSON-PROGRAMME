@@ -1,3 +1,48 @@
+# v2.34.0 — anchored induced root reachability
+
+**Released: 2026-04-25**
+
+## What
+
+Added root-reachability lemmas for anchored preconnected buckets in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_reachable
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_exists_induced_path
+
+If `X` lies in the anchored bucket at root `root` and `y ∈ X`, then `y` is
+reachable from `root` inside the graph induced by `X`. The second lemma exposes
+the same fact in path form.
+
+## Why
+
+No percentage bar moves. This is the local graph-theoretic fact needed by the
+non-degenerate BFS/Klarner construction: every vertex of an anchored
+preconnected plaquette animal can be reached from the root without leaving the
+animal.
+
+Together with the decoder base coverage in v2.33, this sharpens the remaining
+combinatorial task to extracting a finite exploration order / word decoder from
+these induced root paths.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_reachable
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_exists_induced_path
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.33.0 — anchored word-decoder base coverage
 
 **Released: 2026-04-25**
