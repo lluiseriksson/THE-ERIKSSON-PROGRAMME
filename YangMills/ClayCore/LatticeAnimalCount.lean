@@ -263,6 +263,70 @@ theorem siteNeighborBallBoundDim_of_ternary_displacements
     exact ⟨siteNeighborTernaryCode x,
       siteNeighborTernaryCode_injective x (hcoord x)⟩
 
+/-! ### Coordinate bound from unit site distance -/
+
+/-- If an integer has real square at most one, it is one of `-1, 0, 1`. -/
+theorem int_eq_neg_one_or_zero_or_one_of_sq_le_one
+    (z : ℤ) (hz : ((z : ℝ) ^ 2) ≤ 1) :
+    z = -1 ∨ z = 0 ∨ z = 1 := by
+  have h_le : z ≤ 1 := by
+    by_contra h
+    have hzge : (2 : ℤ) ≤ z := by omega
+    have hzge_real : (2 : ℝ) ≤ (z : ℝ) := by exact_mod_cast hzge
+    nlinarith
+  have h_ge : -1 ≤ z := by
+    by_contra h
+    have hzle : z ≤ (-2 : ℤ) := by omega
+    have hzle_real : (z : ℝ) ≤ (-2 : ℝ) := by exact_mod_cast hzle
+    nlinarith
+  omega
+
+/-- Unit site distance forces each integer displacement coordinate to have
+real square at most one. -/
+theorem siteDisplacement_sq_le_one_of_siteLatticeDist_le_one
+    {d L : ℕ} (x y : FinBox d L)
+    (hdist : siteLatticeDist x y ≤ 1) (i : Fin d) :
+    ((siteDisplacement x y i : ℝ) ^ 2) ≤ 1 := by
+  let S : ℝ := ∑ j, ((siteDisplacement x y j : ℝ) ^ 2)
+  have hS_nonneg : 0 ≤ S := by
+    dsimp [S]
+    exact Finset.sum_nonneg (fun _ _ => by positivity)
+  have hS_le_one : S ≤ 1 := by
+    unfold siteLatticeDist latticeDist at hdist
+    dsimp [S]
+    have hsqrt_sq_le : (Real.sqrt S) ^ 2 ≤ (1 : ℝ) ^ 2 := by
+      nlinarith [Real.sqrt_nonneg S, hdist]
+    simpa [Real.sq_sqrt hS_nonneg] using hsqrt_sq_le
+  have hterm_le_sum :
+      ((siteDisplacement x y i : ℝ) ^ 2) ≤ S := by
+    dsimp [S]
+    exact Finset.single_le_sum
+      (s := (Finset.univ : Finset (Fin d)))
+      (a := i)
+      (f := fun j => ((siteDisplacement x y j : ℝ) ^ 2))
+      (fun _ _ => by positivity) (Finset.mem_univ i)
+  exact hterm_le_sum.trans hS_le_one
+
+/-- Unit site distance forces every displacement coordinate to lie in the
+ternary alphabet `{-1, 0, 1}`. -/
+theorem siteDisplacement_mem_unit_of_siteLatticeDist_le_one
+    {d L : ℕ} (x y : FinBox d L)
+    (hdist : siteLatticeDist x y ≤ 1) (i : Fin d) :
+    siteDisplacement x y i = -1 ∨
+      siteDisplacement x y i = 0 ∨
+      siteDisplacement x y i = 1 :=
+  int_eq_neg_one_or_zero_or_one_of_sq_le_one _
+    (siteDisplacement_sq_le_one_of_siteLatticeDist_le_one x y hdist i)
+
+/-- Concrete uniform `3^d` site-neighborhood bound. -/
+theorem siteNeighborBallBoundDim_ternary
+    {d : ℕ} [NeZero d] :
+    SiteNeighborBallBoundDim d (3 ^ d) := by
+  apply siteNeighborBallBoundDim_of_ternary_displacements
+  intro L _ x y hy i
+  exact siteDisplacement_mem_unit_of_siteLatticeDist_le_one x y
+    (Finset.mem_filter.mp hy).2 i
+
 /-- Fixed-dimension uniform degree bound for `plaquetteGraph`. -/
 def PlaquetteGraphDegreeBoundDim (d D : ℕ) [NeZero d] : Prop :=
   ∀ {L : ℕ} [NeZero L] (p : ConcretePlaquette d L),
@@ -453,6 +517,10 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms finBox_eq_of_siteDisplacement_eq
 #print axioms siteNeighborTernaryCode_injective
 #print axioms siteNeighborBallBoundDim_of_ternary_displacements
+#print axioms int_eq_neg_one_or_zero_or_one_of_sq_le_one
+#print axioms siteDisplacement_sq_le_one_of_siteLatticeDist_le_one
+#print axioms siteDisplacement_mem_unit_of_siteLatticeDist_le_one
+#print axioms siteNeighborBallBoundDim_ternary
 #print axioms plaquetteGraph_degreeBoundDim_of_siteNeighborBallBoundDim
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain

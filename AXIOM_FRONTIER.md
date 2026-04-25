@@ -1,3 +1,64 @@
+# v1.91.0 — concrete ternary site-neighbor bound
+
+**Released: 2026-04-25**
+
+## What
+
+Closed the coordinate geometry witness left open by v1.90 in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    int_eq_neg_one_or_zero_or_one_of_sq_le_one
+    siteDisplacement_sq_le_one_of_siteLatticeDist_le_one
+    siteDisplacement_mem_unit_of_siteLatticeDist_le_one
+    siteNeighborBallBoundDim_ternary
+
+The final theorem is the concrete uniform site-neighborhood estimate:
+
+    SiteNeighborBallBoundDim d (3 ^ d)
+
+for every positive dimension `d`.
+
+## Why
+
+No percentage bar moves.  This is F3-count infrastructure for the
+`ClusterCorrelatorBound` front.  The finite-code interface from v1.89 and the
+ternary code from v1.90 now have their concrete geometric witness: membership
+in `siteNeighborBall d L x` means `siteLatticeDist x y ≤ 1`, hence every
+integer displacement coordinate has square at most one, and therefore lies in
+`{-1, 0, 1}`.
+
+Combined with v1.88, this supplies an explicit volume-uniform degree bound for
+the plaquette graph with local branching constant
+
+    (3 ^ d) * Fintype.card (Fin d) * Fintype.card (Fin d)
+
+The next F3-count step is to package this constant into the lattice-animal
+walk/tree count used by the exponential connecting-cluster frontier.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    int_eq_neg_one_or_zero_or_one_of_sq_le_one
+      [propext, Classical.choice, Quot.sound]
+
+    siteDisplacement_sq_le_one_of_siteLatticeDist_le_one
+      [propext, Classical.choice, Quot.sound]
+
+    siteDisplacement_mem_unit_of_siteLatticeDist_le_one
+      [propext, Classical.choice, Quot.sound]
+
+    siteNeighborBallBoundDim_ternary
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.90.0 — ternary displacement code for site-neighbor buckets
 
 **Released: 2026-04-25**
