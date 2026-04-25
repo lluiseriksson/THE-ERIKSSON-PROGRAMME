@@ -1,3 +1,66 @@
+# v2.00.0 — decoder-form BFS target bridges to physical F3 count
+
+**Released: 2026-04-25**
+
+## What
+
+Added a decoder-form version of the remaining F3-count target in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PhysicalConnectingClusterExtraWalkDecoderBound
+    physicalConnectingClusterExtraWalkCodeOfDecoder
+    physicalConnectingClusterExtraWalkCodeOfDecoder_injective
+    physicalConnectingClusterExtraWalkCodeBound_of_decoderBound
+    physicalShiftedConnectingClusterCountBoundExp_of_extraWalkDecoder
+
+Instead of directly asking for an injection from connecting-cluster buckets into
+walk words, the decoder target asks for a map
+
+    PlaquetteWalk physicalClayDimension L n p
+      → Finset (ConcretePlaquette physicalClayDimension L)
+
+whose image covers every bucket element of
+`ConnectingClusterBucket physicalClayDimension L p q n`.  Lean then chooses,
+for each bucket element, one preimage walk; this chosen code is injective
+because decoding recovers the original bucket element.
+
+The terminal theorem is:
+
+    physicalShiftedConnectingClusterCountBoundExp_of_extraWalkDecoder
+      (hdecode : PhysicalConnectingClusterExtraWalkDecoderBound) :
+      PhysicalShiftedConnectingClusterCountBoundExp 1 1296
+
+## Why
+
+No percentage bar moves yet.  This is an implementation-oriented restatement
+of v1.99's extra-walk injection contract.  It is closer to the expected
+BFS/tree construction: define a deterministic decoder from words/walks to
+connected plaquette sets and prove every target cluster appears in its image.
+
+The downstream count proof is fully automatic once that decoder coverage
+theorem exists.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    physicalConnectingClusterExtraWalkCodeOfDecoder_injective
+      [propext, Classical.choice, Quot.sound]
+
+    physicalConnectingClusterExtraWalkCodeBound_of_decoderBound
+      [propext, Classical.choice, Quot.sound]
+
+    physicalShiftedConnectingClusterCountBoundExp_of_extraWalkDecoder
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.99.0 — extra-walk code target discharges physical F3 count frontier
 
 **Released: 2026-04-25**

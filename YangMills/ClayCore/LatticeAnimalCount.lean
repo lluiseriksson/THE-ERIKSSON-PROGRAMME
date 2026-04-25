@@ -800,6 +800,65 @@ theorem physicalShiftedConnectingClusterCountBoundExp_of_extraWalkCode
     exact_mod_cast hnat
   simpa using hreal
 
+/-- Decoder-form version of the remaining F3-count target.  Instead of
+directly producing an injection from clusters to words, it is enough to give a
+decoder from words to clusters whose image covers every shifted bucket. -/
+def PhysicalConnectingClusterExtraWalkDecoderBound : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ),
+    ∃ decode : PlaquetteWalk physicalClayDimension L n p →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      ∀ X : ConnectingClusterBucket physicalClayDimension L p q n,
+        ∃ w : PlaquetteWalk physicalClayDimension L n p, decode w = X.1
+
+/-- Choose, for each bucket element, one walk decoding to it. -/
+noncomputable def physicalConnectingClusterExtraWalkCodeOfDecoder
+    (hdecode : PhysicalConnectingClusterExtraWalkDecoderBound)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    ConnectingClusterBucket physicalClayDimension L p q n →
+      PlaquetteWalk physicalClayDimension L n p :=
+  let hcover := Classical.choose_spec (hdecode p q n)
+  fun X => Classical.choose (hcover X)
+
+/-- The code chosen from a covering decoder is injective, because decoding the
+chosen walk recovers the original bucket element. -/
+theorem physicalConnectingClusterExtraWalkCodeOfDecoder_injective
+    (hdecode : PhysicalConnectingClusterExtraWalkDecoderBound)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ) :
+    Function.Injective
+      (physicalConnectingClusterExtraWalkCodeOfDecoder hdecode p q n) := by
+  intro X Y h
+  apply Subtype.ext
+  let decode := Classical.choose (hdecode p q n)
+  let hcover := Classical.choose_spec (hdecode p q n)
+  have hX : decode (Classical.choose (hcover X)) = X.1 := by
+    exact Classical.choose_spec (hcover X)
+  have hY : decode (Classical.choose (hcover Y)) = Y.1 := by
+    exact Classical.choose_spec (hcover Y)
+  have hdec := congrArg decode h
+  dsimp [physicalConnectingClusterExtraWalkCodeOfDecoder] at hdec
+  change decode (Classical.choose (hcover X)) =
+    decode (Classical.choose (hcover Y)) at hdec
+  rw [hX, hY] at hdec
+  exact hdec
+
+/-- A covering decoder gives the injective extra-walk code target. -/
+theorem physicalConnectingClusterExtraWalkCodeBound_of_decoderBound
+    (hdecode : PhysicalConnectingClusterExtraWalkDecoderBound) :
+    PhysicalConnectingClusterExtraWalkCodeBound := by
+  intro L _ p q n
+  exact ⟨physicalConnectingClusterExtraWalkCodeOfDecoder hdecode p q n,
+    physicalConnectingClusterExtraWalkCodeOfDecoder_injective hdecode p q n⟩
+
+/-- Decoder-form terminal F3-count bridge. -/
+theorem physicalShiftedConnectingClusterCountBoundExp_of_extraWalkDecoder
+    (hdecode : PhysicalConnectingClusterExtraWalkDecoderBound) :
+    PhysicalShiftedConnectingClusterCountBoundExp 1 1296 :=
+  physicalShiftedConnectingClusterCountBoundExp_of_extraWalkCode
+    (physicalConnectingClusterExtraWalkCodeBound_of_decoderBound hdecode)
+
 /-- A nodup `PolymerConnected`-style site-distance chain is a chain in the
 plaquette adjacency graph. -/
 theorem plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
@@ -1008,6 +1067,9 @@ theorem polymerConnected_plaquetteGraph_induce_preconnected
 #print axioms physical_connectingCluster_filter_card_le_walk_exp_of_walkCode
 #print axioms physical_connectingCluster_filter_card_le_extra_walk_exp_of_walkCode
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_extraWalkCode
+#print axioms physicalConnectingClusterExtraWalkCodeOfDecoder_injective
+#print axioms physicalConnectingClusterExtraWalkCodeBound_of_decoderBound
+#print axioms physicalShiftedConnectingClusterCountBoundExp_of_extraWalkDecoder
 #print axioms plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
 #print axioms polymerConnected_exists_plaquetteGraph_chain
 #print axioms plaquetteGraph_reachable_of_chain_endpoints
