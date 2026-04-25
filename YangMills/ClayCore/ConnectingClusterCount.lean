@@ -254,6 +254,32 @@ structure ShiftedF3CountPackageAt (d L : ℕ) [NeZero d] [NeZero L] where
   dim : ℕ
   h_count : ShiftedConnectingClusterCountBoundAt d L C_conn dim
 
+namespace ShiftedF3CountPackageAt
+
+/-- A finite-volume shifted F3 count package remains valid after increasing
+the polynomial profile dimension. -/
+def mono_dim
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (pkg : ShiftedF3CountPackageAt d L) (k : ℕ) :
+    ShiftedF3CountPackageAt d L where
+  C_conn := pkg.C_conn
+  hC := pkg.hC
+  dim := pkg.dim + k
+  h_count := ShiftedConnectingClusterCountBoundAt.mono_dim
+    pkg.hC.le pkg.h_count k
+
+@[simp] theorem mono_dim_C_conn
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (pkg : ShiftedF3CountPackageAt d L) (k : ℕ) :
+    (pkg.mono_dim k).C_conn = pkg.C_conn := rfl
+
+@[simp] theorem mono_dim_dim
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (pkg : ShiftedF3CountPackageAt d L) (k : ℕ) :
+    (pkg.mono_dim k).dim = pkg.dim + k := rfl
+
+end ShiftedF3CountPackageAt
+
 /-- Packaged fixed-dimension shifted count data.
 
 The constants are uniform in the finite volume `L`, but may depend on the fixed
@@ -315,6 +341,18 @@ def toAt
   dim := pkg.dim
   h_count := ShiftedConnectingClusterCountBoundDim.toAt pkg.h_count L
 
+/-- A fixed-dimension shifted F3 count package remains valid after increasing
+the polynomial profile dimension. -/
+def mono_dim
+    {d : ℕ} [NeZero d]
+    (pkg : ShiftedF3CountPackageDim d) (k : ℕ) :
+    ShiftedF3CountPackageDim d where
+  C_conn := pkg.C_conn
+  hC := pkg.hC
+  dim := pkg.dim + k
+  h_count := ShiftedConnectingClusterCountBoundDim.mono_dim
+    pkg.hC.le pkg.h_count k
+
 @[simp] theorem toAt_C_conn
     {d : ℕ} [NeZero d]
     (pkg : ShiftedF3CountPackageDim d)
@@ -326,6 +364,16 @@ def toAt
     (pkg : ShiftedF3CountPackageDim d)
     (L : ℕ) [NeZero L] :
     (pkg.toAt L).dim = pkg.dim := rfl
+
+@[simp] theorem mono_dim_C_conn
+    {d : ℕ} [NeZero d]
+    (pkg : ShiftedF3CountPackageDim d) (k : ℕ) :
+    (pkg.mono_dim k).C_conn = pkg.C_conn := rfl
+
+@[simp] theorem mono_dim_dim
+    {d : ℕ} [NeZero d]
+    (pkg : ShiftedF3CountPackageDim d) (k : ℕ) :
+    (pkg.mono_dim k).dim = pkg.dim + k := rfl
 
 /-- Applying a fixed-dimension shifted F3 count package after restriction to a
 finite plaquette lattice is definitionally the fixed-dimension bound
@@ -444,6 +492,13 @@ def toAt
     ShiftedF3CountPackageAt physicalClayDimension L :=
   ShiftedF3CountPackageDim.toAt pkg L
 
+/-- A physical `d = 4` shifted F3 count package remains valid after increasing
+the polynomial profile dimension. -/
+def mono_dim
+    (pkg : PhysicalShiftedF3CountPackage) (k : ℕ) :
+    PhysicalShiftedF3CountPackage :=
+  ShiftedF3CountPackageDim.mono_dim pkg k
+
 @[simp] theorem toAt_C_conn
     (pkg : PhysicalShiftedF3CountPackage)
     (L : ℕ) [NeZero L] :
@@ -453,6 +508,14 @@ def toAt
     (pkg : PhysicalShiftedF3CountPackage)
     (L : ℕ) [NeZero L] :
     (pkg.toAt L).dim = pkg.dim := rfl
+
+@[simp] theorem mono_dim_C_conn
+    (pkg : PhysicalShiftedF3CountPackage) (k : ℕ) :
+    (pkg.mono_dim k).C_conn = pkg.C_conn := rfl
+
+@[simp] theorem mono_dim_dim
+    (pkg : PhysicalShiftedF3CountPackage) (k : ℕ) :
+    (pkg.mono_dim k).dim = pkg.dim + k := rfl
 
 /-- Applying a physical shifted F3 count package after restriction to a finite
 volume is definitionally the same four-dimensional count bound. -/
@@ -670,6 +733,9 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedConnectingClusterCountBound.mono_dim
 #print axioms ShiftedConnectingClusterCountBoundDim.mono_dim
 #print axioms ShiftedConnectingClusterCountBoundAt.mono_dim
+#print axioms ShiftedF3CountPackageAt.mono_dim
+#print axioms ShiftedF3CountPackageAt.mono_dim_C_conn
+#print axioms ShiftedF3CountPackageAt.mono_dim_dim
 #print axioms ShiftedConnectingClusterCountBound.toAt
 #print axioms ShiftedConnectingClusterCountBound.toDim
 #print axioms ShiftedConnectingClusterCountBoundDim.toAt
@@ -680,6 +746,9 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedF3CountPackageDim.toAt
 #print axioms ShiftedF3CountPackageDim.toAt_C_conn
 #print axioms ShiftedF3CountPackageDim.toAt_dim
+#print axioms ShiftedF3CountPackageDim.mono_dim
+#print axioms ShiftedF3CountPackageDim.mono_dim_C_conn
+#print axioms ShiftedF3CountPackageDim.mono_dim_dim
 #print axioms ShiftedF3CountPackageDim.toAt_apply
 #print axioms ShiftedF3CountPackageDim.ofBound_C_conn
 #print axioms ShiftedF3CountPackageDim.ofBound_dim
@@ -692,6 +761,9 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms PhysicalShiftedF3CountPackage.toAt
 #print axioms PhysicalShiftedF3CountPackage.toAt_C_conn
 #print axioms PhysicalShiftedF3CountPackage.toAt_dim
+#print axioms PhysicalShiftedF3CountPackage.mono_dim
+#print axioms PhysicalShiftedF3CountPackage.mono_dim_C_conn
+#print axioms PhysicalShiftedF3CountPackage.mono_dim_dim
 #print axioms PhysicalShiftedF3CountPackage.toAt_apply
 #print axioms PhysicalShiftedF3CountPackage.ofBound_C_conn
 #print axioms PhysicalShiftedF3CountPackage.ofBound_dim

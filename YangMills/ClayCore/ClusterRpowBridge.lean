@@ -2995,6 +2995,17 @@ def toPhysical
     PhysicalShiftedF3CountPackage :=
   pkg.toDim physicalClayDimension
 
+/-- A global shifted F3 count package remains valid after increasing the
+polynomial profile dimension. -/
+def mono_dim
+    (pkg : ShiftedF3CountPackage) (k : ℕ) :
+    ShiftedF3CountPackage where
+  C_conn := pkg.C_conn
+  hC := pkg.hC
+  dim := pkg.dim + k
+  h_count := ShiftedConnectingClusterCountBound.mono_dim
+    pkg.hC.le pkg.h_count k
+
 @[simp] theorem toAt_C_conn
     (pkg : ShiftedF3CountPackage)
     (d L : ℕ) [NeZero d] [NeZero L] :
@@ -3022,6 +3033,14 @@ def toPhysical
 @[simp] theorem toPhysical_dim
     (pkg : ShiftedF3CountPackage) :
     pkg.toPhysical.dim = pkg.dim := rfl
+
+@[simp] theorem mono_dim_C_conn
+    (pkg : ShiftedF3CountPackage) (k : ℕ) :
+    (pkg.mono_dim k).C_conn = pkg.C_conn := rfl
+
+@[simp] theorem mono_dim_dim
+    (pkg : ShiftedF3CountPackage) (k : ℕ) :
+    (pkg.mono_dim k).dim = pkg.dim + k := rfl
 
 /-- Applying a global shifted F3 count package after restriction to a finite
 plaquette lattice is definitionally the global shifted count bound specialized
@@ -3508,6 +3527,7 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
 #print axioms ShiftedF3CountPackage.toAt
 #print axioms ShiftedF3CountPackage.toDim
 #print axioms ShiftedF3CountPackage.toPhysical
+#print axioms ShiftedF3CountPackage.mono_dim
 #print axioms ShiftedF3CountPackage.toAt_C_conn
 #print axioms ShiftedF3CountPackage.toAt_dim
 #print axioms ShiftedF3CountPackage.toAt_apply
@@ -3517,6 +3537,8 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
 #print axioms ShiftedF3CountPackage.toPhysical_C_conn
 #print axioms ShiftedF3CountPackage.toPhysical_dim
 #print axioms ShiftedF3CountPackage.toPhysical_apply
+#print axioms ShiftedF3CountPackage.mono_dim_C_conn
+#print axioms ShiftedF3CountPackage.mono_dim_dim
 #print axioms ShiftedF3CountPackage.ofBound_C_conn
 #print axioms ShiftedF3CountPackage.ofBound_dim
 #print axioms ShiftedF3MayerCountPackage.ofSubpackages

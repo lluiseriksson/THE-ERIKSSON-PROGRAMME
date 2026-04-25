@@ -1,3 +1,59 @@
+# v1.52.0 — F3 count packages are monotone in profile dimension
+
+**Released: 2026-04-25**
+
+## What
+
+Lifted the v1.51.0 shifted count-bound monotonicity to the package layer:
+
+In `YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    ShiftedF3CountPackageAt.mono_dim
+    ShiftedF3CountPackageAt.mono_dim_C_conn
+    ShiftedF3CountPackageAt.mono_dim_dim
+    ShiftedF3CountPackageDim.mono_dim
+    ShiftedF3CountPackageDim.mono_dim_C_conn
+    ShiftedF3CountPackageDim.mono_dim_dim
+    PhysicalShiftedF3CountPackage.mono_dim
+    PhysicalShiftedF3CountPackage.mono_dim_C_conn
+    PhysicalShiftedF3CountPackage.mono_dim_dim
+
+In `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    ShiftedF3CountPackage.mono_dim
+    ShiftedF3CountPackage.mono_dim_C_conn
+    ShiftedF3CountPackage.mono_dim_dim
+
+## Why
+
+No percentage bar moves.  The count-side package objects can now absorb extra
+polynomial powers without manual reconstruction:
+
+    pkg : ShiftedF3CountPackage
+    pkg.mono_dim k : ShiftedF3CountPackage
+    (pkg.mono_dim k).C_conn = pkg.C_conn
+    (pkg.mono_dim k).dim = pkg.dim + k
+
+and similarly at finite-volume, fixed-dimension, and physical `d = 4` scopes.
+This is API/frontier normalization for the coming F3 count proof.  The remaining
+mathematical content is unchanged: construct the volume-uniform shifted count
+package and the Mayer/Ursell package.
+
+## Oracle
+
+Builds:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all twelve new declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.51.0 — Shifted count bounds are monotone in profile dimension
 
 **Released: 2026-04-25**
