@@ -2948,6 +2948,13 @@ def toDim
   dim := pkg.dim
   h_count := ShiftedConnectingClusterCountBound.toDim pkg.h_count d
 
+/-- Restrict a global shifted F3 count package to the physical Clay dimension
+`d = 4`. -/
+def toPhysical
+    (pkg : ShiftedF3CountPackage) :
+    PhysicalShiftedF3CountPackage :=
+  pkg.toDim physicalClayDimension
+
 @[simp] theorem toAt_C_conn
     (pkg : ShiftedF3CountPackage)
     (d L : ℕ) [NeZero d] [NeZero L] :
@@ -2967,6 +2974,14 @@ def toDim
     (pkg : ShiftedF3CountPackage)
     (d : ℕ) [NeZero d] :
     (pkg.toDim d).dim = pkg.dim := rfl
+
+@[simp] theorem toPhysical_C_conn
+    (pkg : ShiftedF3CountPackage) :
+    pkg.toPhysical.C_conn = pkg.C_conn := rfl
+
+@[simp] theorem toPhysical_dim
+    (pkg : ShiftedF3CountPackage) :
+    pkg.toPhysical.dim = pkg.dim := rfl
 
 /-- Applying a global shifted F3 count package after restriction to a finite
 plaquette lattice is definitionally the global shifted count bound specialized
@@ -3003,6 +3018,25 @@ theorem toDim_apply
         (((n + 1 : ℕ) : ℝ) ^ (pkg.toDim d).dim) :=
   ShiftedConnectingClusterCountBoundDim.apply
     (pkg.toDim d).h_count p q n hn hdist
+
+/-- Applying a global shifted F3 count package after physical restriction is
+definitionally the global shifted count bound specialized to `d = 4`. -/
+theorem toPhysical_apply
+    (pkg : ShiftedF3CountPackage)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.toPhysical.C_conn *
+        (((n + 1 : ℕ) : ℝ) ^ pkg.toPhysical.dim) :=
+  ShiftedF3CountPackageDim.apply
+    pkg.toPhysical p q n hn hdist
 
 @[simp] theorem ofBound_C_conn
     (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
@@ -3399,12 +3433,16 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
 #print axioms ShiftedF3CountPackage.apply
 #print axioms ShiftedF3CountPackage.toAt
 #print axioms ShiftedF3CountPackage.toDim
+#print axioms ShiftedF3CountPackage.toPhysical
 #print axioms ShiftedF3CountPackage.toAt_C_conn
 #print axioms ShiftedF3CountPackage.toAt_dim
 #print axioms ShiftedF3CountPackage.toAt_apply
 #print axioms ShiftedF3CountPackage.toDim_C_conn
 #print axioms ShiftedF3CountPackage.toDim_dim
 #print axioms ShiftedF3CountPackage.toDim_apply
+#print axioms ShiftedF3CountPackage.toPhysical_C_conn
+#print axioms ShiftedF3CountPackage.toPhysical_dim
+#print axioms ShiftedF3CountPackage.toPhysical_apply
 #print axioms ShiftedF3CountPackage.ofBound_C_conn
 #print axioms ShiftedF3CountPackage.ofBound_dim
 #print axioms ShiftedF3MayerCountPackage.ofSubpackages

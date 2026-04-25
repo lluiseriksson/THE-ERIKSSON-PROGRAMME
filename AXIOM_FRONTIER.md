@@ -1,3 +1,52 @@
+# v1.47.0 — Global shifted count restricts directly to physical count
+
+**Released: 2026-04-25**
+
+## What
+
+Added the physical-dimension projection for the global shifted F3 count package
+in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    ShiftedF3CountPackage.toPhysical
+    ShiftedF3CountPackage.toPhysical_C_conn
+    ShiftedF3CountPackage.toPhysical_dim
+    ShiftedF3CountPackage.toPhysical_apply
+
+## Why
+
+No percentage bar moves.  If a future combinatorial proof first produces the
+stronger global count package
+
+    count : ShiftedF3CountPackage
+
+scripts can now restrict it directly to the physical Clay dimension:
+
+    count.toPhysical : PhysicalShiftedF3CountPackage
+
+with the count constants preserved by simp:
+
+    count.toPhysical.C_conn = count.C_conn
+    count.toPhysical.dim = count.dim
+
+This completes the count-side analogue of the already-existing Mayer-side
+`ShiftedF3MayerPackage.toPhysical` projection.  The remaining mathematical work
+is unchanged: prove either the physical count package directly or the stronger
+global count package, plus the Mayer/Ursell package.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all four new declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.46.0 — Global Mayer + physical count exposes physical correlator bound
 
 **Released: 2026-04-25**
