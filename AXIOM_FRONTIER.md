@@ -1,3 +1,54 @@
+# v2.31.0 — anchored graph-animal word-decoder bridge
+
+**Released: 2026-04-25**
+
+## What
+
+Added the direct decoder-form bridge for the anchored graph-animal frontier in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound
+    physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder
+    physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder_injective
+    physicalPlaquetteGraphAnimalAnchoredCountBound_of_wordDecoder
+
+The new target says that every anchored preconnected plaquette bucket of
+cardinality `k` is covered by words of length `k` over an alphabet of size `K`.
+The bridge chooses one covering word for each bucket element, proves the chosen
+code injective, and obtains the exact anchored count estimate
+
+    PhysicalPlaquetteGraphAnimalAnchoredCountBound K
+
+by `Fintype.card_le_of_injective`.
+
+## Why
+
+No percentage bar moves. This is the constructive BFS/Klarner shape for the
+remaining combinatorial F3 frontier: instead of proving the cardinal inequality
+directly, it is enough to build a uniform word decoder for anchored
+preconnected plaquette subsets.
+
+This also aligns the anchored route with the existing shifted and total-size
+graph-animal decoder bridges already present downstream.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder_injective
+      [propext, Classical.choice, Quot.sound]
+
+    physicalPlaquetteGraphAnimalAnchoredCountBound_of_wordDecoder
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.30.0 — anchored graph-animal base dispatcher
 
 **Released: 2026-04-25**

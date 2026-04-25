@@ -1358,6 +1358,53 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_base_card_le_pow
       | succ k =>
           omega
 
+/-- Decoder-form anchored graph-animal target: every anchored bucket element is
+covered by a word of length equal to its cardinality over an alphabet of size
+`K`. This is the direct BFS/Klarner proof shape for the anchored count
+frontier. -/
+def PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound (K : ℕ) : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ decode : (Fin k → Fin K) → Finset (ConcretePlaquette physicalClayDimension L),
+      ∀ X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k,
+        ∃ word : Fin k → Fin K, decode word = X
+
+/-- Choose, for each anchored graph-animal bucket element, one word decoding to
+it. -/
+noncomputable def physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder
+    {K : ℕ} (hdecode : PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound K)
+    {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ) :
+    {X : Finset (ConcretePlaquette physicalClayDimension L) //
+      X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k} →
+      (Fin k → Fin K) :=
+  let hcover := Classical.choose_spec (hdecode root k)
+  fun X => Classical.choose (hcover X.1 X.2)
+
+/-- The chosen word code from a covering anchored decoder is injective. -/
+theorem physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder_injective
+    {K : ℕ} (hdecode : PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound K)
+    {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ) :
+    Function.Injective
+      (physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder hdecode root k) := by
+  intro X Y h
+  apply Subtype.ext
+  let decode := Classical.choose (hdecode root k)
+  let hcover := Classical.choose_spec (hdecode root k)
+  have hX : decode (Classical.choose (hcover X.1 X.2)) = X.1 := by
+    exact Classical.choose_spec (hcover X.1 X.2)
+  have hY : decode (Classical.choose (hcover Y.1 Y.2)) = Y.1 := by
+    exact Classical.choose_spec (hcover Y.1 Y.2)
+  have hdec := congrArg decode h
+  dsimp [physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder] at hdec
+  change decode (Classical.choose (hcover X.1 X.2)) =
+    decode (Classical.choose (hcover Y.1 Y.2)) at hdec
+  rw [hX, hY] at hdec
+  exact hdec
+
 /-- Physical anchored graph-animal count target.
 
 This is the classical lattice-animal counting shape: the number of connected
@@ -1368,6 +1415,25 @@ def PhysicalPlaquetteGraphAnimalAnchoredCountBound (K : ℕ) : Prop :=
     (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
     (plaquetteGraphPreconnectedSubsetsAnchoredCard
       physicalClayDimension L root k).card ≤ K ^ k
+
+/-- A covering anchored word decoder gives the physical anchored graph-animal
+count bound. -/
+theorem physicalPlaquetteGraphAnimalAnchoredCountBound_of_wordDecoder
+    {K : ℕ}
+    (hdecode : PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound K) :
+    PhysicalPlaquetteGraphAnimalAnchoredCountBound K := by
+  intro L _ root k
+  let S := plaquetteGraphPreconnectedSubsetsAnchoredCard
+    physicalClayDimension L root k
+  have hcard :
+      Fintype.card {X : Finset (ConcretePlaquette physicalClayDimension L) //
+          X ∈ S} ≤
+        Fintype.card (Fin k → Fin K) :=
+    Fintype.card_le_of_injective
+      (physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder hdecode root k)
+      (physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder_injective
+        hdecode root k)
+  simpa [S, Fintype.card_subtype, Fintype.card_fun] using hcard
 
 /-- The anchored graph-animal count target is monotone in the exponential
 growth constant. This lets the eventual combinatorial proof produce any
@@ -1959,6 +2025,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_card_le_pow
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_pow
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_base_card_le_pow
+#print axioms physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder_injective
+#print axioms physicalPlaquetteGraphAnimalAnchoredCountBound_of_wordDecoder
 #print axioms PhysicalPlaquetteGraphAnimalAnchoredCountBound.mono
 #print axioms plaquetteGraphPreconnectedConnectingSubsetsShifted_subset_anchored
 #print axioms plaquetteGraphPreconnectedConnectingSubsetsShifted_card_le_anchored
