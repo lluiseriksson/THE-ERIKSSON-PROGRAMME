@@ -2111,6 +2111,30 @@ def countPackage
     (pkg : PhysicalOnlyShiftedF3MayerCountPackage N_c wab) :
     (countPackage pkg).dim = pkg.count.dim := rfl
 
+/-- Increase only the physical count polynomial profile dimension in the fully
+physical F3 package, preserving its Mayer half and count constant. -/
+def mono_count_dim
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    PhysicalOnlyShiftedF3MayerCountPackage N_c wab where
+  mayer := pkg.mayer
+  count := pkg.count.mono_dim k
+
+@[simp] theorem mono_count_dim_mayer
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    (pkg.mono_count_dim k).mayer = pkg.mayer := rfl
+
+@[simp] theorem mono_count_dim_count_C_conn
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    (pkg.mono_count_dim k).count.C_conn = pkg.count.C_conn := rfl
+
+@[simp] theorem mono_count_dim_count_dim
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalOnlyShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    (pkg.mono_count_dim k).count.dim = pkg.count.dim + k := rfl
+
 @[simp] theorem ofSubpackages_mayerPackage_countPackage
     {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
     (pkg : PhysicalOnlyShiftedF3MayerCountPackage N_c wab) :
@@ -2221,6 +2245,10 @@ theorem physicalClusterCorrelatorBound_of_physicalOnlyShiftedF3MayerCountPackage
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.mayerPackage_data
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.countPackage_C_conn
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.countPackage_dim
+#print axioms PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim
+#print axioms PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim_mayer
+#print axioms PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim_count_C_conn
+#print axioms PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim_count_dim
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.ofSubpackages_mayerPackage_countPackage
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.toTruncatedActivities
 #print axioms PhysicalOnlyShiftedF3MayerCountPackage.toTruncatedActivities_K
@@ -2713,6 +2741,30 @@ def countPackage
     (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) :
     (countPackage pkg).dim = pkg.count.dim := rfl
 
+/-- Increase only the physical count polynomial profile dimension in the mixed
+physical F3 package, preserving its global Mayer half and count constant. -/
+def mono_count_dim
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    PhysicalShiftedF3MayerCountPackage N_c wab where
+  mayer := pkg.mayer
+  count := pkg.count.mono_dim k
+
+@[simp] theorem mono_count_dim_mayer
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    (pkg.mono_count_dim k).mayer = pkg.mayer := rfl
+
+@[simp] theorem mono_count_dim_count_C_conn
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    (pkg.mono_count_dim k).count.C_conn = pkg.count.C_conn := rfl
+
+@[simp] theorem mono_count_dim_count_dim
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    (pkg.mono_count_dim k).count.dim = pkg.count.dim + k := rfl
+
 /-- Restrict the mixed physical F3 package, whose Mayer half is still global,
 to the preferred fully physical `d = 4` package. -/
 def toPhysicalOnly
@@ -2866,6 +2918,10 @@ theorem physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
 #print axioms PhysicalShiftedF3MayerCountPackage.mayerPackage_data
 #print axioms PhysicalShiftedF3MayerCountPackage.countPackage_C_conn
 #print axioms PhysicalShiftedF3MayerCountPackage.countPackage_dim
+#print axioms PhysicalShiftedF3MayerCountPackage.mono_count_dim
+#print axioms PhysicalShiftedF3MayerCountPackage.mono_count_dim_mayer
+#print axioms PhysicalShiftedF3MayerCountPackage.mono_count_dim_count_C_conn
+#print axioms PhysicalShiftedF3MayerCountPackage.mono_count_dim_count_dim
 #print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly
 #print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mayerPackage
 #print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_countPackage
@@ -3203,6 +3259,41 @@ def countPackage
     {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
     (pkg : ShiftedF3MayerCountPackage N_c wab) :
     (countPackage pkg).dim = pkg.dim := rfl
+
+/-- Increase only the count polynomial profile dimension in the single global
+F3 package, preserving the Mayer half and the count constant. -/
+def mono_count_dim
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    ShiftedF3MayerCountPackage N_c wab where
+  C_conn := pkg.C_conn
+  A₀ := pkg.A₀
+  hC := pkg.hC
+  hA := pkg.hA
+  dim := pkg.dim + k
+  data := pkg.data
+  h_count := ShiftedConnectingClusterCountBound.mono_dim
+    pkg.hC.le pkg.h_count k
+
+@[simp] theorem mono_count_dim_C_conn
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    (pkg.mono_count_dim k).C_conn = pkg.C_conn := rfl
+
+@[simp] theorem mono_count_dim_A₀
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    (pkg.mono_count_dim k).A₀ = pkg.A₀ := rfl
+
+@[simp] theorem mono_count_dim_dim
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    (pkg.mono_count_dim k).dim = pkg.dim + k := rfl
+
+@[simp] theorem mono_count_dim_data
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) (k : ℕ) :
+    (pkg.mono_count_dim k).data = pkg.data := rfl
 
 /-- Restrict a global single F3 package to the preferred physical `d = 4`
 Mayer/count package. -/
@@ -3552,6 +3643,11 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
 #print axioms ShiftedF3MayerCountPackage.mayerPackage_data
 #print axioms ShiftedF3MayerCountPackage.countPackage_C_conn
 #print axioms ShiftedF3MayerCountPackage.countPackage_dim
+#print axioms ShiftedF3MayerCountPackage.mono_count_dim
+#print axioms ShiftedF3MayerCountPackage.mono_count_dim_C_conn
+#print axioms ShiftedF3MayerCountPackage.mono_count_dim_A₀
+#print axioms ShiftedF3MayerCountPackage.mono_count_dim_dim
+#print axioms ShiftedF3MayerCountPackage.mono_count_dim_data
 #print axioms ShiftedF3MayerCountPackage.toPhysicalOnly
 #print axioms ShiftedF3MayerCountPackage.toPhysicalOnly_mayerPackage
 #print axioms ShiftedF3MayerCountPackage.toPhysicalOnly_countPackage

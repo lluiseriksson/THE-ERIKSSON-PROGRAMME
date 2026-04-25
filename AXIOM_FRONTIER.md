@@ -1,3 +1,57 @@
+# v1.53.0 — Mayer/count F3 packages absorb count-dimension increases
+
+**Released: 2026-04-25**
+
+## What
+
+Added count-dimension monotonicity wrappers for the combined Mayer/count F3
+packages in `YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim
+    PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim_mayer
+    PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim_count_C_conn
+    PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim_count_dim
+    PhysicalShiftedF3MayerCountPackage.mono_count_dim
+    PhysicalShiftedF3MayerCountPackage.mono_count_dim_mayer
+    PhysicalShiftedF3MayerCountPackage.mono_count_dim_count_C_conn
+    PhysicalShiftedF3MayerCountPackage.mono_count_dim_count_dim
+    ShiftedF3MayerCountPackage.mono_count_dim
+    ShiftedF3MayerCountPackage.mono_count_dim_C_conn
+    ShiftedF3MayerCountPackage.mono_count_dim_A₀
+    ShiftedF3MayerCountPackage.mono_count_dim_dim
+    ShiftedF3MayerCountPackage.mono_count_dim_data
+
+## Why
+
+No percentage bar moves.  This lifts the package-level count monotonicity one
+step higher: full F3 packages can now absorb an extra polynomial count exponent
+without changing the Mayer half or the count constant.  The simp lemmas pin the
+invariants:
+
+    Mayer data unchanged
+    A₀ unchanged where present
+    C_conn unchanged
+    dim / count.dim becomes old dim + k
+
+This keeps downstream endpoint scripts stable if the eventual lattice-animal
+estimate needs to absorb additional polynomial factors.  The remaining
+mathematical content is unchanged: construct the volume-uniform shifted count
+package and the Mayer/Ursell package.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all thirteen new declarations print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.52.0 — F3 count packages are monotone in profile dimension
 
 **Released: 2026-04-25**
