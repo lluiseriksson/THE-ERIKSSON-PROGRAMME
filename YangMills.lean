@@ -189,3 +189,4 @@ import YangMills.ClayCore.ConnectedCorrDecay
 import YangMills.ClayCore.ClusterRpowBridge
 import YangMills.ClayCore.ConnectingClusterCountExp
 import YangMills.ClayCore.LatticeAnimalCount
+import YangMills.ClayCore.LatticeAnimalF3Bridge
