@@ -2076,16 +2076,17 @@ theorem physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
   intro L _ β hβ F hF p q hdist
   rw [data.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
     β hβ F hF p q hdist]
-  have h_connected :
-      (∑ Y ∈ (Finset.univ :
-          Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
-          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
-        (data.toTruncatedActivities β F p q).K_bound Y) ≤
+  have h_bound :
+      (data.toTruncatedActivities β F p q).connectingBound p q ≤
         ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
           r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
-    exact connectedFiniteSum_le_of_cardBucketBounds_kp_shifted
+    rw [TruncatedActivities.connectingBound_eq_finset_sum]
+    exact finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
       (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
       r hr_pos hr_lt1 C_conn A₀ hC hA dim
+      (fun Y hp hq hnot =>
+        data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+          β F p q Y hp hq hnot)
       (fun n hn => cardBucketSum_le_of_count_and_pointwise_shifted
         (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
         r hr_pos C_conn A₀ hA dim n
@@ -2095,16 +2096,6 @@ theorem physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
           p q r A₀ n Y hY
           (fun Y =>
             data.toTruncatedActivities_K_bound_le_cardDecay β F p q Y)))
-  have h_bound :
-      (data.toTruncatedActivities β F p q).connectingBound p q ≤
-        ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
-          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
-    rw [TruncatedActivities.connectingBound_eq_finset_sum]
-    exact finiteConnectingSum_eq_connectedFiniteSum
-      (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
-      (fun Y hp hq hnot =>
-        data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
-          β F p q Y hp hq hnot) ▸ h_connected
   exact ((data.toTruncatedActivities β F p q).two_point_decay_from_cluster_tsum_shifted
     p q r hr_pos hr_lt1 C_conn A₀ hC hA dim
     ⌈siteLatticeDist p.site q.site⌉₊ h_bound).trans
@@ -2128,16 +2119,17 @@ theorem physicalClusterCorrelatorBound_of_physicalMayerData_shiftedCount_ceil
   intro L _ β hβ F hF p q hdist
   rw [data.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
     β hβ F hF p q hdist]
-  have h_connected :
-      (∑ Y ∈ (Finset.univ :
-          Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
-          (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
-        (data.toTruncatedActivities β F p q).K_bound Y) ≤
+  have h_bound :
+      (data.toTruncatedActivities β F p q).connectingBound p q ≤
         ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
           r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
-    exact connectedFiniteSum_le_of_cardBucketBounds_kp_shifted
+    rw [TruncatedActivities.connectingBound_eq_finset_sum]
+    exact finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
       (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
       r hr_pos hr_lt1 C_conn A₀ hC hA dim
+      (fun Y hp hq hnot =>
+        data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+          β F p q Y hp hq hnot)
       (fun n hn => cardBucketSum_le_of_count_and_pointwise_shifted
         (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
         r hr_pos C_conn A₀ hA dim n
@@ -2147,16 +2139,6 @@ theorem physicalClusterCorrelatorBound_of_physicalMayerData_shiftedCount_ceil
           p q r A₀ n Y hY
           (fun Y =>
             data.toTruncatedActivities_K_bound_le_cardDecay β F p q Y)))
-  have h_bound :
-      (data.toTruncatedActivities β F p q).connectingBound p q ≤
-        ∑' n : ℕ, C_conn * (((n + 1 : ℕ) : ℝ) ^ dim) * A₀ *
-          r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) := by
-    rw [TruncatedActivities.connectingBound_eq_finset_sum]
-    exact finiteConnectingSum_eq_connectedFiniteSum
-      (fun Y => (data.toTruncatedActivities β F p q).K_bound Y) p q
-      (fun Y hp hq hnot =>
-        data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
-          β F p q Y hp hq hnot) ▸ h_connected
   exact ((data.toTruncatedActivities β F p q).two_point_decay_from_cluster_tsum_shifted
     p q r hr_pos hr_lt1 C_conn A₀ hC hA dim
     ⌈siteLatticeDist p.site q.site⌉₊ h_bound).trans

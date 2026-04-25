@@ -1,3 +1,51 @@
+# v1.69.0 — Physical shifted endpoints use Mayer-facing KP consumer
+
+**Released: 2026-04-25**
+
+## What
+
+Refactored the two physical shifted endpoints in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+    physicalClusterCorrelatorBound_of_physicalMayerData_shiftedCount_ceil
+
+Both theorem statements are unchanged.  Their proofs now bound the finite
+Mayer connecting sum directly via
+
+    finiteConnectingSum_le_of_cardBucketBounds_tsum_shifted
+
+after rewriting `TruncatedActivities.connectingBound_eq_finset_sum`, instead
+of first proving a connected finite-sum estimate and then transporting it
+across `finiteConnectingSum_eq_connectedFiniteSum`.
+
+## Why
+
+No percentage bar moves and no public statement changes.  This aligns the
+physical shifted F3 endpoints with the Mayer-facing shifted bucket-`tsum`
+proof spine introduced in v1.65.0-v1.68.0.
+
+The open mathematical target remains the uniform lattice-animal / KP count
+estimate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
+      [propext, Classical.choice, Quot.sound]
+
+    physicalClusterCorrelatorBound_of_physicalMayerData_shiftedCount_ceil
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.68.0 — Shifted count-cardinality bridge uses Mayer-facing KP consumer
 
 **Released: 2026-04-25**

@@ -71,6 +71,13 @@ for each fixed `L`.  Its constant depends on `L`, so it is only an audit/local
 count package.  The open count target is the uniform-in-`L` package
 `PhysicalShiftedF3CountPackage`.
 
+The public shifted and physical shifted consumers now route through the
+Mayer-facing bucket-`tsum` spine directly.  In particular,
+`clusterCorrelatorBound_of_count_cardDecayBounds_ceil_shifted`,
+`physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil`, and
+`physicalClusterCorrelatorBound_of_physicalMayerData_shiftedCount_ceil` avoid
+the older detour through `finiteConnectingSum_eq_connectedFiniteSum`.
+
 The formal upgrade path from local physical count bounds to the uniform package
 is:
 
