@@ -436,6 +436,47 @@ theorem connectedFiniteSum_eq_cardBucketSum
             then K_bound Y else 0)) := by
         simp [S, M, c]
 
+/-- Cardinality buckets outside the finite plaquette range contribute zero to
+the connected finite sum decomposition. -/
+theorem cardBucketSum_eq_zero_of_not_mem_range
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (K_bound : Finset (ConcretePlaquette d L) → ℝ)
+    (p q : ConcretePlaquette d L) (n : ℕ)
+    (hn : n ∉ Finset.range (Fintype.card (ConcretePlaquette d L) + 1)) :
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+        if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+          then K_bound Y else 0) = 0 := by
+  classical
+  let S := (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+    (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y)
+  let B := (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+    (fun Y =>
+      p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y ∧
+        Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊)
+  have hSB :
+      S.filter (fun Y => Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊) = B := by
+    ext Y
+    simp [S, B, and_assoc]
+  have h_eq :
+      (∑ Y ∈ S,
+        if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+          then K_bound Y else 0) =
+      Finset.sum B (fun Y => K_bound Y) := by
+    rw [← Finset.sum_filter]
+    rw [hSB]
+  have hB_card :
+      B.card = 0 := by
+    simpa [B] using connecting_cluster_count_eq_zero_of_not_mem_range p q n hn
+  have hB_empty : B = ∅ := Finset.card_eq_zero.mp hB_card
+  calc
+    (∑ Y ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d L))).filter
+        (fun Y => p ∈ Y ∧ q ∈ Y ∧ PolymerConnected Y),
+        if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+          then K_bound Y else 0)
+        = Finset.sum B (fun Y => K_bound Y) := by simpa [S] using h_eq
+    _ = 0 := by simp [hB_empty]
+
 /-- Bucket-bound consumer for the connected finite sum.
 
 After `connectedFiniteSum_eq_cardBucketSum`, it is enough to bound each
@@ -1079,6 +1120,7 @@ theorem TruncatedActivities.ofConnectedCardDecay_K_bound_eq_zero_of_not_connecte
 
 #print axioms finiteConnectingSum_eq_connectedFiniteSum
 #print axioms connectedFiniteSum_eq_cardBucketSum
+#print axioms cardBucketSum_eq_zero_of_not_mem_range
 #print axioms connectedFiniteSum_le_of_cardBucketBounds
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_shifted
 #print axioms connectedFiniteSum_le_of_cardBucketBounds_kp

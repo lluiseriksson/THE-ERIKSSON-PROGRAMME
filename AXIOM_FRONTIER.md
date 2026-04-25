@@ -1,3 +1,52 @@
+# v1.59.0 — Out-of-range cardinality buckets contribute zero to F3 sums
+
+**Released: 2026-04-25**
+
+## What
+
+Added the sum-level finite-support cutoff in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    cardBucketSum_eq_zero_of_not_mem_range
+
+For any finite-volume bucket index `n` outside
+
+    Finset.range (Fintype.card (ConcretePlaquette d L) + 1)
+
+the corresponding cardinality-bucket contribution
+
+    ∑ Y in connected finite polymers,
+      if Y.card = n + ⌈siteLatticeDist p.site q.site⌉₊
+      then K_bound Y else 0
+
+is exactly `0`.
+
+## Why
+
+No percentage bar moves.  v1.58.0 proved the bucket's filtered cardinality is
+zero outside the finite plaquette range.  This pass lifts that support cutoff
+to the actual bucket-sum expression used by `connectedFiniteSum_eq_cardBucketSum`
+and the downstream KP consumers in `ClusterRpowBridge.lean`.
+
+This keeps later finite/infinite range manipulations local to a reusable lemma:
+outside the canonical finite range, the cardinality bucket contributes nothing,
+independently of the chosen `K_bound`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    cardBucketSum_eq_zero_of_not_mem_range
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.58.0 — Finite-volume connecting-cluster buckets vanish outside range
 
 **Released: 2026-04-25**
