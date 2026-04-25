@@ -1,3 +1,59 @@
+# v1.85.0 — lattice-animal plaquette graph scaffold
+
+**Released: 2026-04-25**
+
+## What
+
+Added `YangMills/ClayCore/LatticeAnimalCount.lean`, the first concrete
+F3-count witness scaffold.  It moves the graph-theoretic objects from the
+review sketch into the main Lean tree:
+
+    siteLatticeDist_symm
+    plaquetteGraph
+    plaquetteGraph_adj_siteLatticeDist_le_one
+    plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one
+    plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
+
+The new `plaquetteGraph d L` connects two concrete plaquettes when their
+base sites have `siteLatticeDist ≤ 1` and the plaquettes are distinct.  The
+chain lemma proves that any nodup `PolymerConnected`-style site-distance
+chain is already a chain in this graph.
+
+## Why
+
+No percentage bar moves.  This is F3-count infrastructure, not the uniform
+lattice-animal counting theorem itself.  The remaining F3-count target is
+still a real exponential bucket bound such as
+
+    ShiftedConnectingClusterCountBoundExp 1 ((4 * d * d : ℕ) : ℝ)
+
+or the tighter `(2 * d - 1)` variant.  The new scaffold closes one assumed
+translation step from the sketch without adding axioms or `sorry`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    siteLatticeDist_symm
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_adj_siteLatticeDist_le_one
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_adj_of_ne_of_siteLatticeDist_le_one
+      [propext, Classical.choice, Quot.sound]
+
+    plaquetteGraph_isChain_of_nodup_siteLatticeDist_isChain
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.84.0 — physical exponential F3 route reaches PhysicalStrong
 
 **Released: 2026-04-25**
