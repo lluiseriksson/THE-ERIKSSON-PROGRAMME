@@ -3170,6 +3170,43 @@ theorem mono_count_dim_apply_count
         (((n + 1 : ℕ) : ℝ) ^ (pkg.count.dim + k)) := by
   simpa using pkg.count.mono_dim_apply k p q n hn hdist
 
+/-- Direct count application after restricting a mixed physical package to the
+fully physical package. -/
+theorem toPhysicalOnly_apply_count
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.count.C_conn * (((n + 1 : ℕ) : ℝ) ^ pkg.count.dim) := by
+  simpa using pkg.toPhysicalOnly.apply_count p q n hn hdist
+
+/-- Direct count application after raising the count dimension and restricting
+a mixed physical package to the fully physical package. -/
+theorem toPhysicalOnly_mono_count_dim_apply_count
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerCountPackage N_c wab) (k : ℕ)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.count.C_conn *
+        (((n + 1 : ℕ) : ℝ) ^ (pkg.count.dim + k)) := by
+  simpa using (pkg.mono_count_dim k).toPhysicalOnly.apply_count p q n hn hdist
+
 end PhysicalShiftedF3MayerCountPackage
 
 /-- Physical `d = 4` F3 endpoint from the single physical Mayer/count package. -/
@@ -3214,6 +3251,8 @@ theorem physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
 #print axioms PhysicalShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
 #print axioms PhysicalShiftedF3MayerCountPackage.apply_count
 #print axioms PhysicalShiftedF3MayerCountPackage.mono_count_dim_apply_count
+#print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_apply_count
+#print axioms PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim_apply_count
 #print axioms physicalClusterCorrelatorBound_of_physicalShiftedF3MayerCountPackage
 
 /-- SU(1) canary for the shifted F3 Mayer interface.
@@ -3764,6 +3803,42 @@ theorem mono_count_dim_apply_count
       pkg.C_conn * (((n + 1 : ℕ) : ℝ) ^ (pkg.dim + k)) := by
   simpa using (pkg.mono_count_dim k).apply_count p q n hn hdist
 
+/-- Direct count application after restricting a global shifted F3 package to
+the fully physical package. -/
+theorem toPhysicalOnly_apply_count
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.C_conn * (((n + 1 : ℕ) : ℝ) ^ pkg.dim) := by
+  simpa using pkg.toPhysicalOnly.apply_count p q n hn hdist
+
+/-- Direct count application after raising the count dimension and restricting
+a global shifted F3 package to the fully physical package. -/
+theorem toPhysicalOnly_mono_count_dim_apply_count
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : ShiftedF3MayerCountPackage N_c wab) (k : ℕ)
+    {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ)
+    (hn : n ∈ Finset.range
+      (Fintype.card (ConcretePlaquette physicalClayDimension L) + 1))
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    (((Finset.univ :
+      Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+      (fun X =>
+        p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+          X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+      pkg.C_conn * (((n + 1 : ℕ) : ℝ) ^ (pkg.dim + k)) := by
+  simpa using (pkg.mono_count_dim k).toPhysicalOnly.apply_count p q n hn hdist
+
 end ShiftedF3MayerCountPackage
 
 /-- The single-package F3 route yields the Wilson-facing cluster-correlator
@@ -4009,6 +4084,8 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
 #print axioms ShiftedF3MayerCountPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
 #print axioms ShiftedF3MayerCountPackage.apply_count
 #print axioms ShiftedF3MayerCountPackage.mono_count_dim_apply_count
+#print axioms ShiftedF3MayerCountPackage.toPhysicalOnly_apply_count
+#print axioms ShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim_apply_count
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage_prefactor_eq
 #print axioms clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mass_eq

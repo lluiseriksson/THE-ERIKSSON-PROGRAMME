@@ -1,3 +1,53 @@
+# v1.75.0 — toPhysicalOnly count-application canaries for F3 packages
+
+**Released: 2026-04-25**
+
+## What
+
+Added direct count-application canaries after restricting combined F3 packages
+to the fully physical `d = 4` route:
+
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_apply_count
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim_apply_count
+    ShiftedF3MayerCountPackage.toPhysicalOnly_apply_count
+    ShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim_apply_count
+
+All four live in `YangMills/ClayCore/ClusterRpowBridge.lean`.
+
+## Why
+
+No percentage bar moves.  These canaries make the Clay-physical restriction
+path usable without manual projection: after `toPhysicalOnly` (and after the
+commuted `mono_count_dim` restriction), the physical count estimate is
+available directly at the original count constant and the expected exponent.
+
+The open mathematical target remains the uniform lattice-animal / KP count
+estimate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_apply_count
+      [propext, Classical.choice, Quot.sound]
+
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim_apply_count
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedF3MayerCountPackage.toPhysicalOnly_apply_count
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim_apply_count
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.74.0 — mono_count_dim application canaries for combined F3 packages
 
 **Released: 2026-04-25**

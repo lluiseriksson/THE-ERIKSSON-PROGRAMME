@@ -151,6 +151,13 @@ At combined Mayer/count package level, use:
     PhysicalShiftedF3MayerCountPackage.mono_count_dim_apply_count
     ShiftedF3MayerCountPackage.mono_count_dim_apply_count
 
+After restricting a mixed/global package into the Clay-physical route, use:
+
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_apply_count
+    PhysicalShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim_apply_count
+    ShiftedF3MayerCountPackage.toPhysicalOnly_apply_count
+    ShiftedF3MayerCountPackage.toPhysicalOnly_mono_count_dim_apply_count
+
 These keep `C_conn` fixed and replace `dim` by `dim + k`, so F3 count scripts
 can align dimensions without reproving the combinatorial bucket estimate or
 reconstructing package records by hand.  At combined Mayer/count package level,
