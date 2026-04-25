@@ -1,3 +1,51 @@
+# v1.40.0 — Physical Mayer package exposes its own consumers
+
+**Released: 2026-04-25**
+
+## What
+
+Added package-level consumers for the physical Mayer half in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    PhysicalShiftedF3MayerPackage.toTruncatedActivities
+    PhysicalShiftedF3MayerPackage.toTruncatedActivities_K
+    PhysicalShiftedF3MayerPackage.toTruncatedActivities_K_bound_le_cardDecay
+    PhysicalShiftedF3MayerPackage.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    PhysicalShiftedF3MayerPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+
+## Why
+
+No percentage bar moves.  This is API sharpening for the remaining physical
+Mayer/Ursell proof.  Before this pass, the fully physical combined package
+exposed finite-volume activity consumers, but the standalone Mayer half
+
+    PhysicalShiftedF3MayerPackage N_c wab
+
+did not.  Future scripts proving or manipulating the physical Mayer package can
+now work directly with its truncated activities, card-decay bound, disconnected
+support cancellation, and Wilson connected-correlator identity without first
+building a count package.
+
+This keeps the two open F3 halves independently usable:
+
+    mayer : PhysicalShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces: all five new physical Mayer package consumers print the
+canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.39.0 — Count-family package constants are simp-visible
 
 **Released: 2026-04-25**

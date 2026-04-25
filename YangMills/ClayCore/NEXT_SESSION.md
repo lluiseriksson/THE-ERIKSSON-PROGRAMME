@@ -41,6 +41,17 @@ This route needs Mayer/Ursell data only at `physicalClayDimension = 4`,
 uniformly in finite volume `L`.  It should be preferred for Clay-physical F3
 work when no all-dimensions Mayer theorem is available.
 
+The standalone physical Mayer package now exposes package-level consumers:
+
+    PhysicalShiftedF3MayerPackage.toTruncatedActivities
+    PhysicalShiftedF3MayerPackage.toTruncatedActivities_K
+    PhysicalShiftedF3MayerPackage.toTruncatedActivities_K_bound_le_cardDecay
+    PhysicalShiftedF3MayerPackage.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    PhysicalShiftedF3MayerPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+
+Use these while proving the Mayer/Ursell half before the count half is
+available.
+
 The count side has an explicit finite-volume canary:
 
     PhysicalShiftedF3CountPackageAt.finite

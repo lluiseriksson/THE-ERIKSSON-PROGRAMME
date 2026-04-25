@@ -1931,6 +1931,73 @@ structure PhysicalShiftedF3MayerPackage
   hA : 0 < A₀
   data : PhysicalConnectedCardDecayMayerData N_c wab.r A₀ wab.hr_pos.le hA.le
 
+namespace PhysicalShiftedF3MayerPackage
+
+/-- The physical finite-volume truncated activities carried by a physical
+shifted F3 Mayer package. -/
+noncomputable def toTruncatedActivities
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L) :
+    TruncatedActivities (ConcretePlaquette physicalClayDimension L) :=
+  pkg.data.toTruncatedActivities β F p q
+
+@[simp] theorem toTruncatedActivities_K
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (Y : Finset (ConcretePlaquette physicalClayDimension L)) :
+    (pkg.toTruncatedActivities β F p q).K Y = pkg.data.K β F p q Y := by
+  rfl
+
+theorem toTruncatedActivities_K_bound_le_cardDecay
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (Y : Finset (ConcretePlaquette physicalClayDimension L)) :
+    (pkg.toTruncatedActivities β F p q).K_bound Y ≤
+      pkg.A₀ * wab.r ^ Y.card := by
+  exact pkg.data.toTruncatedActivities_K_bound_le_cardDecay β F p q Y
+
+theorem toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (β : ℝ)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (Y : Finset (ConcretePlaquette physicalClayDimension L))
+    (hp : p ∈ Y) (hq : q ∈ Y) (h_not_connected : ¬ PolymerConnected Y) :
+    (pkg.toTruncatedActivities β F p q).K_bound Y = 0 := by
+  exact pkg.data.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+    β F p q Y hp hq h_not_connected
+
+theorem wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    {N_c : ℕ} [NeZero N_c] {wab : WilsonPolymerActivityBound N_c}
+    (pkg : PhysicalShiftedF3MayerPackage N_c wab)
+    {L : ℕ} [NeZero L]
+    (β : ℝ) (hβ : 0 < β)
+    (F : ↑(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ)
+    (hF : ∀ U, |F U| ≤ 1)
+    (p q : ConcretePlaquette physicalClayDimension L)
+    (hdist : (1 : ℝ) ≤ siteLatticeDist p.site q.site) :
+    wilsonConnectedCorr (sunHaarProb N_c)
+      (wilsonPlaquetteEnergy N_c) β F p q =
+    (pkg.toTruncatedActivities β F p q).connectingSum p q := by
+  exact pkg.data.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
+    β hβ F hF p q hdist
+
+end PhysicalShiftedF3MayerPackage
+
 /-- Physical `d = 4` F3 endpoint from physical-only Mayer and physical count
 packages. -/
 theorem physicalClusterCorrelatorBound_of_physicalShiftedF3Subpackages
@@ -1945,6 +2012,11 @@ theorem physicalClusterCorrelatorBound_of_physicalShiftedF3Subpackages
     count.C_conn mayer.A₀ count.hC mayer.hA count.dim
     mayer.data count.h_count
 
+#print axioms PhysicalShiftedF3MayerPackage.toTruncatedActivities
+#print axioms PhysicalShiftedF3MayerPackage.toTruncatedActivities_K
+#print axioms PhysicalShiftedF3MayerPackage.toTruncatedActivities_K_bound_le_cardDecay
+#print axioms PhysicalShiftedF3MayerPackage.toTruncatedActivities_K_bound_eq_zero_of_not_connected
+#print axioms PhysicalShiftedF3MayerPackage.wilsonConnectedCorr_eq_toTruncatedActivities_connectingSum
 #print axioms physicalClusterCorrelatorBound_of_physicalShiftedF3Subpackages
 
 /-- Single-package form of the fully physical `d = 4` F3 frontier.
