@@ -4012,6 +4012,53 @@ theorem clay_theorem_of_shiftedF3Subpackages
   clay_theorem_of_shiftedF3MayerCountPackage N_c wab
     (ShiftedF3MayerCountPackage.ofSubpackages mayer count)
 
+/-- Independently-produced Mayer/activity and count packages yield the
+Wilson-facing cluster-correlator bound after increasing only the count
+polynomial dimension. -/
+theorem clusterCorrelatorBound_of_shiftedF3Subpackages_mono_count_dim
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) (k : ℕ) :
+    ClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorShifted wab.r count.C_conn mayer.A₀
+        (count.dim + k)) :=
+  clusterCorrelatorBound_of_shiftedF3Subpackages N_c wab mayer
+    (count.mono_dim k)
+
+/-- Independently-produced Mayer/activity and count packages yield the
+authentic mass-gap structure after increasing only the count polynomial
+dimension. -/
+noncomputable def clayMassGap_of_shiftedF3Subpackages_mono_count_dim
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) (k : ℕ) :
+    ClayYangMillsMassGap N_c :=
+  clayMassGap_of_shiftedF3Subpackages N_c wab mayer (count.mono_dim k)
+
+/-- Independently-produced Mayer/activity and count packages yield the
+connected-decay hub after increasing only the count polynomial dimension. -/
+noncomputable def clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) (k : ℕ) :
+    ClayConnectedCorrDecay N_c :=
+  clayConnectedCorrDecay_of_shiftedF3Subpackages N_c wab mayer
+    (count.mono_dim k)
+
+/-- Independently-produced Mayer/activity and count packages still project to
+the weak theorem endpoint after increasing only the count polynomial
+dimension. -/
+theorem clay_theorem_of_shiftedF3Subpackages_mono_count_dim
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) (k : ℕ) :
+    ClayYangMillsTheorem :=
+  clay_theorem_of_shiftedF3Subpackages N_c wab mayer (count.mono_dim k)
+
 /-- The single-package mass-gap endpoint has decay rate `kpParameter wab.r`. -/
 theorem clayMassGap_of_shiftedF3MayerCountPackage_mass_eq
     (N_c : ℕ) [NeZero N_c]
@@ -4120,6 +4167,48 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
     (clayConnectedCorrDecay_of_shiftedF3Subpackages N_c wab mayer count).C =
       clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim := rfl
 
+/-- The mono-count subpackage mass-gap endpoint has decay rate
+`kpParameter wab.r`. -/
+theorem clayMassGap_of_shiftedF3Subpackages_mono_count_dim_mass_eq
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) (k : ℕ) :
+    (clayMassGap_of_shiftedF3Subpackages_mono_count_dim
+      N_c wab mayer count k).m = kpParameter wab.r := rfl
+
+/-- The mono-count subpackage mass-gap endpoint exposes the shifted cluster
+prefactor. -/
+theorem clayMassGap_of_shiftedF3Subpackages_mono_count_dim_prefactor_eq
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) (k : ℕ) :
+    (clayMassGap_of_shiftedF3Subpackages_mono_count_dim
+      N_c wab mayer count k).C =
+      clusterPrefactorShifted wab.r count.C_conn mayer.A₀ (count.dim + k) := rfl
+
+/-- The mono-count subpackage connected-decay endpoint has decay rate
+`kpParameter wab.r`. -/
+theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim_mass_eq
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) (k : ℕ) :
+    (clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim
+      N_c wab mayer count k).m = kpParameter wab.r := rfl
+
+/-- The mono-count subpackage connected-decay endpoint exposes the shifted
+cluster prefactor. -/
+theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim_prefactor_eq
+    (N_c : ℕ) [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : ShiftedF3CountPackage) (k : ℕ) :
+    (clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim
+      N_c wab mayer count k).C =
+      clusterPrefactorShifted wab.r count.C_conn mayer.A₀ (count.dim + k) := rfl
+
 #print axioms clusterCorrelatorBound_of_shiftedF3MayerCountPackage
 #print axioms clayWitnessHyp_of_shiftedF3MayerCountPackage
 #print axioms clayMassGap_of_shiftedF3MayerCountPackage
@@ -4133,6 +4222,10 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
 #print axioms clayMassGap_of_shiftedF3Subpackages
 #print axioms clayConnectedCorrDecay_of_shiftedF3Subpackages
 #print axioms clay_theorem_of_shiftedF3Subpackages
+#print axioms clusterCorrelatorBound_of_shiftedF3Subpackages_mono_count_dim
+#print axioms clayMassGap_of_shiftedF3Subpackages_mono_count_dim
+#print axioms clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim
+#print axioms clay_theorem_of_shiftedF3Subpackages_mono_count_dim
 #print axioms ShiftedF3MayerPackage.toTruncatedActivities
 #print axioms ShiftedF3MayerPackage.toTruncatedActivities_K
 #print axioms ShiftedF3MayerPackage.toTruncatedActivities_K_bound_le_cardDecay
@@ -4207,5 +4300,9 @@ theorem clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
 #print axioms clayMassGap_of_shiftedF3Subpackages_prefactor_eq
 #print axioms clayConnectedCorrDecay_of_shiftedF3Subpackages_mass_eq
 #print axioms clayConnectedCorrDecay_of_shiftedF3Subpackages_prefactor_eq
+#print axioms clayMassGap_of_shiftedF3Subpackages_mono_count_dim_mass_eq
+#print axioms clayMassGap_of_shiftedF3Subpackages_mono_count_dim_prefactor_eq
+#print axioms clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim_mass_eq
+#print axioms clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim_prefactor_eq
 
 end YangMills

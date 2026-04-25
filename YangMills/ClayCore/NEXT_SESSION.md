@@ -160,13 +160,18 @@ raised, the endpoint canaries are:
     clayMassGap_of_shiftedF3MayerCountPackage_mono_count_dim
     clayConnectedCorrDecay_of_shiftedF3MayerCountPackage_mono_count_dim
     clay_theorem_of_shiftedF3MayerCountPackage_mono_count_dim
+    clusterCorrelatorBound_of_shiftedF3Subpackages_mono_count_dim
+    clayMassGap_of_shiftedF3Subpackages_mono_count_dim
+    clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim
+    clay_theorem_of_shiftedF3Subpackages_mono_count_dim
 
 These reach the physical or Wilson-facing `ClusterCorrelatorBound` endpoint
 directly with the same Mayer data and the shifted prefactor exponent `dim + k`.
 The global terminal wrappers also reach `ClayYangMillsMassGap`,
 `ClayConnectedCorrDecay`, and the weak theorem endpoint; their mass/prefactor
 projection lemmas expose unchanged `kpParameter wab.r` and the shifted
-`dim + k` prefactor.
+`dim + k` prefactor.  The subpackage variants do the same when the Mayer and
+count halves are supplied independently.
 
 After restricting a mixed/global package into the Clay-physical route, use:
 

@@ -1,3 +1,74 @@
+# v1.78.0 — mono_count_dim subpackage terminal canaries for F3
+
+**Released: 2026-04-25**
+
+## What
+
+Added `mono_count_dim` canaries for independently-produced global F3
+subpackages:
+
+    clusterCorrelatorBound_of_shiftedF3Subpackages_mono_count_dim
+    clayMassGap_of_shiftedF3Subpackages_mono_count_dim
+    clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim
+    clay_theorem_of_shiftedF3Subpackages_mono_count_dim
+
+and pinned the mass/prefactor projections:
+
+    clayMassGap_of_shiftedF3Subpackages_mono_count_dim_mass_eq
+    clayMassGap_of_shiftedF3Subpackages_mono_count_dim_prefactor_eq
+    clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim_mass_eq
+    clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim_prefactor_eq
+
+All eight live in `YangMills/ClayCore/ClusterRpowBridge.lean`.
+
+## Why
+
+No percentage bar moves.  This removes one more manual packaging step from
+future F3 scripts: if the Mayer/activity half and the count half are produced
+independently, a later count-dimension raise can be applied directly to the
+subpackage endpoints without first constructing or unfolding a combined
+`ShiftedF3MayerCountPackage`.
+
+The open mathematical target remains unchanged: prove the uniform
+lattice-animal / Kotecky-Preiss count estimate that supplies the F3 count
+package uniformly in finite volume.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    clusterCorrelatorBound_of_shiftedF3Subpackages_mono_count_dim
+      [propext, Classical.choice, Quot.sound]
+
+    clayMassGap_of_shiftedF3Subpackages_mono_count_dim
+      [propext, Classical.choice, Quot.sound]
+
+    clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim
+      [propext, Classical.choice, Quot.sound]
+
+    clay_theorem_of_shiftedF3Subpackages_mono_count_dim
+      [propext, Classical.choice, Quot.sound]
+
+    clayMassGap_of_shiftedF3Subpackages_mono_count_dim_mass_eq
+      [propext, Classical.choice, Quot.sound]
+
+    clayMassGap_of_shiftedF3Subpackages_mono_count_dim_prefactor_eq
+      [propext, Classical.choice, Quot.sound]
+
+    clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim_mass_eq
+      [propext, Classical.choice, Quot.sound]
+
+    clayConnectedCorrDecay_of_shiftedF3Subpackages_mono_count_dim_prefactor_eq
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.77.0 — mono_count_dim terminal canaries for global F3 package
 
 **Released: 2026-04-25**
