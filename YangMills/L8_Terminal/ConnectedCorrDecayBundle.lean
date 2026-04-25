@@ -1842,6 +1842,23 @@ def ofMayerDataWordDecoder
   ofMayerData hK_pos hβ_small A₀ hA data
     (physicalPlaquetteGraphAnimalAnchoredCountBound_of_wordDecoder decode)
 
+/-- Build the anchored terminal package from a word decoder over a smaller
+alphabet, inflating the alphabet before applying the count bridge. -/
+def ofMayerDataWordDecoderMono
+    {K₀ K N_c : ℕ} [NeZero N_c]
+    {β : ℝ} {hβ_pos : 0 < β} {hβ_lt1 : β < 1}
+    (hK₀ : 1 ≤ K₀)
+    (hK₀K : K₀ ≤ K)
+    (hK_pos : (0 : ℝ) < K)
+    (hβ_small : (K : ℝ) * β < 1)
+    (A₀ : ℝ) (hA : 0 < A₀)
+    (data : PhysicalConnectedCardDecayMayerData N_c β A₀ hβ_pos.le hA.le)
+    (decode : PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound K₀) :
+    PhysicalTotalF3SmallBetaAnchoredPackageK K N_c β hβ_pos hβ_lt1 :=
+  ofMayerDataWordDecoder hK_pos hβ_small A₀ hA data
+    (PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.mono
+      decode hK₀ hK₀K)
+
 /-- Increase the graph-animal growth constant in an anchored terminal package.
 
 This is useful when the combinatorial proof naturally produces a sharper
@@ -2043,6 +2060,7 @@ theorem physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderK_siteDist_measurab
 #print axioms physicalStrong_of_totalF3SmallBetaCountPackageK_siteDist_measurableF
 #print axioms PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerData
 #print axioms PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerDataWordDecoder
+#print axioms PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerDataWordDecoderMono
 #print axioms PhysicalTotalF3SmallBetaAnchoredPackageK.mono_K
 #print axioms physicalStrong_of_totalF3SmallBetaAnchoredPackageK_siteDist_measurableF
 #print axioms physicalStrong_of_totalF3SmallBetaAnchoredWordDecoderK_siteDist_measurableF

@@ -1,3 +1,45 @@
+# v2.36.0 — terminal package from smaller anchored decoder alphabet
+
+**Released: 2026-04-25**
+
+## What
+
+Added the terminal package constructor
+
+    PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerDataWordDecoderMono
+
+in `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
+
+It builds the anchored small-β F3 terminal package at a downstream alphabet
+constant `K` from an anchored word decoder proved at a smaller constant `K₀`,
+using
+
+    PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.mono
+
+before applying the existing count bridge.
+
+## Why
+
+No percentage bar moves. This completes the constant-flexibility story for the
+constructive anchored decoder route: the eventual BFS/Klarner proof can target
+its natural alphabet size `K₀`, while the terminal package can use any larger
+`K` for the explicit small-coupling inequality `(K : ℝ) * β < 1`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace:
+
+    PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerDataWordDecoderMono
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.35.0 — anchored word-decoder alphabet monotonicity
 
 **Released: 2026-04-25**
