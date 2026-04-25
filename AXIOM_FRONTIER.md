@@ -1,3 +1,86 @@
+# v2.24.0 — decoder-free small-β F3 terminal frontier
+
+**Released: 2026-04-25**
+
+## What
+
+Added the direct total-size graph-animal count target
+
+    PhysicalConnectingClusterGraphAnimalTotalCountBound K
+
+and its `1296` specialization in `YangMills/ClayCore/LatticeAnimalCount.lean`.
+This is the standard counting shape
+
+    card ≤ K ^ (n + ceil dist)
+
+for the shifted connecting graph-animal bucket, without requiring a concrete
+word-decoder object.
+
+The new route packages that direct count target through the physical total-size
+F3 pipeline:
+
+    physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound
+    physicalTotalF3CountPackageExp_of_graphAnimalTotalCountBound1296
+    physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound1296
+    PhysicalTotalF3SmallBetaCountPackage
+    PhysicalTotalF3SmallBetaCountPackage.ofMayerData
+    physicalStrong_of_totalF3SmallBetaCountPackage_siteDist_measurableF
+
+The terminal small-β endpoint now consumes exactly:
+
+    hβ_small : (1296 : ℝ) * β < 1
+    data : PhysicalConnectedCardDecayMayerData N_c β A₀ hβ_pos.le hA.le
+    count : PhysicalConnectingClusterGraphAnimalTotalCountBound1296
+
+and routes them to `ClayYangMillsPhysicalStrong` for `siteLatticeDist` in
+physical dimension.
+
+## Why
+
+No percentage bar moves. This is a frontier-sharpening closure: v2.23 exposed a
+single terminal package whose combinatorial input was a total-size word decoder;
+v2.24 exposes the more natural mathematical frontier directly as a graph-animal
+count estimate. A decoder still suffices via
+`physicalGraphAnimalTotalCountBound_of_totalWordDecoder`, but it is no longer
+the only public terminal shape.
+
+The honest remaining F3 inputs are now the concrete physical Mayer/Ursell data
+for the clipped Wilson small-β producer, the direct total-size graph-animal
+count bound at constant `1296`, and the explicit small-coupling inequality.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces:
+
+    physicalGraphAnimalTotalCountBound_of_totalWordDecoder
+      [propext, Classical.choice, Quot.sound]
+
+    physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound
+      [propext, Classical.choice, Quot.sound]
+
+    physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound1296
+      [propext, Classical.choice, Quot.sound]
+
+    physicalTotalF3CountPackageExp_of_graphAnimalTotalCountBound1296
+      [propext, Classical.choice, Quot.sound]
+
+    physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound1296
+      [propext, Classical.choice, Quot.sound]
+
+    PhysicalTotalF3SmallBetaCountPackage.ofMayerData
+      [propext, Classical.choice, Quot.sound]
+
+    physicalStrong_of_totalF3SmallBetaCountPackage_siteDist_measurableF
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.23.0 — single-package small-β F3 terminal frontier
 
 **Released: 2026-04-25**

@@ -1504,10 +1504,33 @@ theorem physicalGraphAnimalTotalCountBound_of_wordDecoder
       (physicalGraphAnimalTotalWordCodeOfDecoder_injective hdecode p q n)
   simpa [S, Fintype.card_subtype, Fintype.card_fun] using hcard
 
+/-- Direct total-size graph-animal count target.
+
+This is the standard BFS/Klarner output shape: the shifted graph-animal bucket
+is bounded by `K` to the full cardinality scale `n + ceil dist`. -/
+def PhysicalConnectingClusterGraphAnimalTotalCountBound (K : ℕ) : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (p q : ConcretePlaquette physicalClayDimension L) (n : ℕ),
+    (plaquetteGraphPreconnectedConnectingSubsetsShifted L p q n).card ≤
+      K ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)
+
+/-- A total-size word decoder gives the direct graph-animal count target. -/
+theorem physicalGraphAnimalTotalCountBound_of_totalWordDecoder
+    {K : ℕ}
+    (hdecode : PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound K) :
+    PhysicalConnectingClusterGraphAnimalTotalCountBound K := by
+  intro L _ p q n
+  exact physicalGraphAnimalTotalCountBound_of_wordDecoder hdecode p q n
+
 /-- Physical total-size graph-animal word-decoder target at the current `1296`
 alphabet constant. -/
 abbrev PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296 : Prop :=
   PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound 1296
+
+/-- Physical total-size graph-animal count target at the current `1296`
+alphabet constant. -/
+abbrev PhysicalConnectingClusterGraphAnimalTotalCountBound1296 : Prop :=
+  PhysicalConnectingClusterGraphAnimalTotalCountBound 1296
 
 /-- A physical `1296` total-size graph-animal word decoder gives the standard
 `1296^(n + ceil dist)` shifted graph-animal count. -/
@@ -1544,12 +1567,44 @@ theorem physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecod
     exact_mod_cast hnat
   simpa [one_mul, Nat.cast_pow] using hreal
 
+/-- A direct total-size graph-animal count bound discharges the physical
+total-size exponential F3-count frontier. -/
+theorem physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound
+    {K : ℕ} (hgraph : PhysicalConnectingClusterGraphAnimalTotalCountBound K) :
+    PhysicalTotalConnectingClusterCountBoundExp 1 K := by
+  intro L _ p q n _hn _hdist
+  have hnat :
+      ((Finset.univ :
+        Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+          (fun X =>
+            p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+              X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card ≤
+        K ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) :=
+    (physical_connectingCluster_filter_card_le_graphAnimalShifted p q n).trans
+      (hgraph p q n)
+  have hreal :
+      (((Finset.univ :
+        Finset (Finset (ConcretePlaquette physicalClayDimension L))).filter
+          (fun X =>
+            p ∈ X ∧ q ∈ X ∧ PolymerConnected X ∧
+              X.card = n + ⌈siteLatticeDist p.site q.site⌉₊)).card : ℝ) ≤
+        ((K ^ (n + ⌈siteLatticeDist p.site q.site⌉₊) : ℕ) : ℝ) := by
+    exact_mod_cast hnat
+  simpa [one_mul, Nat.cast_pow] using hreal
+
 /-- A physical `1296` total-size graph-animal word decoder discharges the
 physical total-size exponential F3-count frontier. -/
 theorem physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder1296
     (hdecode : PhysicalConnectingClusterGraphAnimalTotalWordDecoderBound1296) :
     PhysicalTotalConnectingClusterCountBoundExp 1 1296 :=
   physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder hdecode
+
+/-- A physical `1296` total-size graph-animal count bound discharges the
+physical total-size exponential F3-count frontier. -/
+theorem physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound1296
+    (hgraph : PhysicalConnectingClusterGraphAnimalTotalCountBound1296) :
+    PhysicalTotalConnectingClusterCountBoundExp 1 1296 :=
+  physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound hgraph
 
 /-- Package the physical `1296` total-size graph-animal word-decoder target as
 the physical total-size exponential F3-count package consumed downstream. -/
@@ -1559,6 +1614,15 @@ def physicalTotalF3CountPackageExp_of_graphAnimalTotalWordDecoder1296
   PhysicalTotalF3CountPackageExp.ofBound 1 1296 one_pos (by norm_num)
     (physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder1296
       hdecode)
+
+/-- Package the physical `1296` total-size graph-animal count target as the
+physical total-size exponential F3-count package consumed downstream. -/
+def physicalTotalF3CountPackageExp_of_graphAnimalTotalCountBound1296
+    (hgraph : PhysicalConnectingClusterGraphAnimalTotalCountBound1296) :
+    PhysicalTotalF3CountPackageExp :=
+  PhysicalTotalF3CountPackageExp.ofBound 1 1296 one_pos (by norm_num)
+    (physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound1296
+      hgraph)
 
 /-- A shifted graph-animal count estimate discharges the physical exponential
 F3-count frontier. -/
@@ -1717,10 +1781,14 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalGraphAnimalShiftedCountBound_zero_card_le_one
 #print axioms physicalGraphAnimalTotalWordCodeOfDecoder_injective
 #print axioms physicalGraphAnimalTotalCountBound_of_wordDecoder
+#print axioms physicalGraphAnimalTotalCountBound_of_totalWordDecoder
 #print axioms physicalGraphAnimalTotalCountBound1296_of_wordDecoder
 #print axioms physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder
+#print axioms physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound
 #print axioms physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder1296
+#print axioms physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound1296
 #print axioms physicalTotalF3CountPackageExp_of_graphAnimalTotalWordDecoder1296
+#print axioms physicalTotalF3CountPackageExp_of_graphAnimalTotalCountBound1296
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount
 #print axioms physicalShiftedConnectingClusterCountBoundExp_of_graphAnimalShiftedCount1296
 #print axioms physicalShiftedF3CountPackageExp_of_graphAnimalShiftedCount1296

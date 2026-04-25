@@ -215,6 +215,28 @@ theorem physicalClusterCorrelatorBound_of_graphAnimalTotalWordDecoder1296
     (physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalWordDecoder1296
       hdecode)
 
+/-- Terminal physical exponential F3 bridge from the corrected total-size
+graph-animal `1296` count target and the physical Mayer half to the
+Wilson-facing physical cluster-correlator bound.
+
+This is the direct-count sibling of
+`physicalClusterCorrelatorBound_of_graphAnimalTotalWordDecoder1296`: it
+exposes the standard graph-animal estimate as the remaining combinatorial
+input, without requiring an explicit decoder object. -/
+theorem physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound1296
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : PhysicalShiftedF3MayerPackage N_c wab)
+    (hgraph : PhysicalConnectingClusterGraphAnimalTotalCountBound1296)
+    (hKr_lt1 : (1296 : ℝ) * wab.r < 1) :
+    PhysicalClusterCorrelatorBound N_c ((1296 : ℝ) * wab.r)
+      (clusterPrefactorExp wab.r 1296 1 mayer.A₀) :=
+  physicalClusterCorrelatorBound_of_physicalMayerData_totalExpCount_ceil
+    N_c wab.r 1296 wab.hr_pos (by norm_num) hKr_lt1
+    1 mayer.A₀ one_pos mayer.hA mayer.data
+    (physicalTotalConnectingClusterCountBoundExp_of_graphAnimalTotalCountBound1296
+      hgraph)
+
 #print axioms physicalOnlyShiftedF3MayerCountPackageExp_of_baselineExtraWordDecoderCovers1296
 #print axioms physicalOnlyShiftedF3MayerCountPackageExp_of_baselineExtraWordDecoderCovers1296_C_conn
 #print axioms physicalOnlyShiftedF3MayerCountPackageExp_of_baselineExtraWordDecoderCovers1296_K
@@ -231,5 +253,6 @@ theorem physicalClusterCorrelatorBound_of_graphAnimalTotalWordDecoder1296
 #print axioms physicalOnlyShiftedF3MayerCountPackageExp_of_graphAnimalWordDecoder1296_A₀
 #print axioms physicalClusterCorrelatorBound_of_graphAnimalWordDecoder1296
 #print axioms physicalClusterCorrelatorBound_of_graphAnimalTotalWordDecoder1296
+#print axioms physicalClusterCorrelatorBound_of_graphAnimalTotalCountBound1296
 
 end YangMills
