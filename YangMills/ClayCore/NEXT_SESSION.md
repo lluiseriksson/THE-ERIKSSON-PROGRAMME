@@ -154,6 +154,7 @@ non-vacuous Clay target at the physical dimension.
 If the Mayer half is first proved in the older all-dimensions form while the
 count half is only physical, use:
 
+    physicalClusterCorrelatorBound_of_globalMayer_physicalCount
     connectedCorrDecayBundle_of_globalMayer_physicalCount_siteDist_measurableF
     connectedCorrDecayBundle_of_globalMayer_physicalCount_mass_eq
     connectedCorrDecayBundle_of_globalMayer_physicalCount_prefactor_eq
@@ -172,8 +173,9 @@ and package constructors:
 
     physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
     physicalClusterCorrelatorBound_of_shiftedF3Subpackages
+    physicalClusterCorrelatorBound_of_globalMayer_physicalCount
 
-The second consumes exactly:
+The subpackage/global-Mayer forms consume exactly:
 
     mayer : ShiftedF3MayerPackage N_c wab
     count : PhysicalShiftedF3CountPackage
@@ -388,6 +390,7 @@ What is already closed locally:
     PhysicalClusterCorrelatorBound
     physicalClusterCorrelatorBound_of_shiftedCountBound_mayerData_ceil
     physicalClusterCorrelatorBound_of_shiftedF3Subpackages
+    physicalClusterCorrelatorBound_of_globalMayer_physicalCount
     ShiftedF3CountPackage.toAt
     ShiftedF3CountPackage.toDim
     ShiftedF3CountPackage.ofBound

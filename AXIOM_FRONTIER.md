@@ -1,3 +1,51 @@
+# v1.46.0 — Global Mayer + physical count exposes physical correlator bound
+
+**Released: 2026-04-25**
+
+## What
+
+Added the ClayCore physical-correlator bridge in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    physicalClusterCorrelatorBound_of_globalMayer_physicalCount
+
+## Why
+
+No percentage bar moves.  The previous passes exposed the route from
+
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+to the L8 terminal physical statements and audit bundle.  This pass exposes
+the ClayCore intermediate directly:
+
+    PhysicalClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim)
+
+This is the physical `d = 4` connected-correlator statement before the final
+L8 packaging.  It gives future F3 scripts a named target/output when the Mayer
+half is first proved in the older all-dimensions form while the count half is
+only physical-dimension uniform.
+
+The remaining mathematical work is unchanged: construct the Mayer/Ursell
+package and the physical uniform count package.  This is API/frontier
+sharpening, not analytic closure.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    'YangMills.physicalClusterCorrelatorBound_of_globalMayer_physicalCount'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.45.0 — Global Mayer + physical count exposes auditable L8 bundle
 
 **Released: 2026-04-25**

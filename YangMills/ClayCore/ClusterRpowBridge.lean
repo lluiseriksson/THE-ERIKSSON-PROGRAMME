@@ -2621,6 +2621,19 @@ theorem physicalClusterCorrelatorBound_of_shiftedF3Subpackages
 
 #print axioms physicalClusterCorrelatorBound_of_shiftedF3Subpackages
 
+/-- Physical `d = 4` F3 endpoint from an all-dimensions Mayer package and the
+physical count package. -/
+theorem physicalClusterCorrelatorBound_of_globalMayer_physicalCount
+    {N_c : ℕ} [NeZero N_c]
+    (wab : WilsonPolymerActivityBound N_c)
+    (mayer : ShiftedF3MayerPackage N_c wab)
+    (count : PhysicalShiftedF3CountPackage) :
+    PhysicalClusterCorrelatorBound N_c wab.r
+      (clusterPrefactorShifted wab.r count.C_conn mayer.A₀ count.dim) := by
+  exact physicalClusterCorrelatorBound_of_shiftedF3Subpackages wab mayer count
+
+#print axioms physicalClusterCorrelatorBound_of_globalMayer_physicalCount
+
 /-- Single-package form of the physical four-dimensional F3 frontier.
 
 This packages exactly the two remaining physical F3 obligations: the
