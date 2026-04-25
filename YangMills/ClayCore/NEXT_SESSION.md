@@ -142,6 +142,7 @@ distance profile to `ConcretePlaquette physicalClayDimension L` with
     physicalStrong_of_physicalClusterCorrelatorBound_siteDist_measurableF
     physicalStrong_of_physicalShiftedF3MayerCountPackage_siteDist_measurableF
     physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF
+    physicalStrong_of_globalMayer_physicalCount_siteDist_measurableF
     physicalStrong_of_shiftedF3MayerCountPackage_physicalClayDimension_siteDist_measurableF
     physicalStrong_of_shiftedF3Subpackages_physicalClayDimension_siteDist_measurableF
     physicalStrong_of_uniformRpow_small_beta_physicalClayDimension_siteDist_measurableF
@@ -149,6 +150,14 @@ distance profile to `ConcretePlaquette physicalClayDimension L` with
 So global analytic inputs still give the dimension-uniform route, while
 physical-only F3 inputs now have their own direct route to the final
 non-vacuous Clay target at the physical dimension.
+
+If the Mayer half is first proved in the older all-dimensions form while the
+count half is only physical, use:
+
+    physicalStrong_of_globalMayer_physicalCount_siteDist_measurableF
+
+It packages through `PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer`
+internally and avoids rebuilding the physical-only package in terminal scripts.
 
 There is also a physical four-dimensional F3 output:
 

@@ -1,3 +1,50 @@
+# v1.44.0 — Global Mayer + physical count feeds L8 directly
+
+**Released: 2026-04-25**
+
+## What
+
+Added a terminal L8 consumer in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    physicalStrong_of_globalMayer_physicalCount_siteDist_measurableF
+
+## Why
+
+No percentage bar moves.  This is endpoint plumbing for the route where future
+analytic work produces the older all-dimensions Mayer package first:
+
+    mayer : ShiftedF3MayerPackage N_c wab
+    count : PhysicalShiftedF3CountPackage
+
+The new theorem sends those directly to the non-vacuous physical target
+
+    ClayYangMillsPhysicalStrong
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun L p q => siteLatticeDist p.site q.site)
+
+by using `PhysicalOnlyShiftedF3MayerCountPackage.ofGlobalMayer` under the hood.
+Future scripts no longer need to manually assemble the intermediate fully
+physical package before entering L8.
+
+The remaining mathematical work is unchanged: prove the Mayer/Ursell package
+and the physical uniform count package.  This pass only shortens the audited
+path from those packages to the terminal Clay-physical statement.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned trace: the new terminal consumer prints the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.43.0 — `ofGlobalMayer` constants are simp-visible
 
 **Released: 2026-04-25**
