@@ -12,6 +12,7 @@ Added monotonicity lemmas for the F3 graph-animal growth constant:
 in `YangMills/ClayCore/LatticeAnimalCount.lean`, plus the corresponding
 terminal package lift
 
+    PhysicalTotalF3SmallBetaCountPackageK.mono_K
     PhysicalTotalF3SmallBetaAnchoredPackageK.mono_K
 
 in `YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`.
@@ -48,6 +49,9 @@ Pinned traces:
       [propext, Classical.choice, Quot.sound]
 
     PhysicalConnectingClusterGraphAnimalTotalCountBound.mono
+      [propext, Classical.choice, Quot.sound]
+
+    PhysicalTotalF3SmallBetaCountPackageK.mono_K
       [propext, Classical.choice, Quot.sound]
 
     PhysicalTotalF3SmallBetaAnchoredPackageK.mono_K

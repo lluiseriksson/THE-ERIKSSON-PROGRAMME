@@ -1777,6 +1777,22 @@ def ofMayerData
         simpa [wilsonActivityBound_from_expansion] using data }
   count := count
 
+/-- Increase the graph-animal growth constant in a direct-count terminal
+package. The new small-coupling hypothesis is supplied explicitly. -/
+def mono_K
+    {K K' N_c : ℕ} [NeZero N_c]
+    {β : ℝ} {hβ_pos : 0 < β} {hβ_lt1 : β < 1}
+    (pkg : PhysicalTotalF3SmallBetaCountPackageK K N_c β hβ_pos hβ_lt1)
+    (hKK' : K ≤ K')
+    (hK'_pos : (0 : ℝ) < K')
+    (hβ_small' : (K' : ℝ) * β < 1) :
+    PhysicalTotalF3SmallBetaCountPackageK K' N_c β hβ_pos hβ_lt1 where
+  hK_pos := hK'_pos
+  hβ_small := hβ_small'
+  mayer := pkg.mayer
+  count :=
+    PhysicalConnectingClusterGraphAnimalTotalCountBound.mono pkg.count hKK'
+
 end PhysicalTotalF3SmallBetaCountPackageK
 
 /-- Parameterized terminal package whose combinatorial input is the anchored
@@ -1986,6 +2002,7 @@ theorem physicalStrong_of_totalF3SmallBetaAnchoredPackageK_siteDist_measurableF
 #print axioms PhysicalTotalF3SmallBetaCountPackage.ofMayerData
 #print axioms physicalStrong_of_totalF3SmallBetaCountPackage_siteDist_measurableF
 #print axioms PhysicalTotalF3SmallBetaCountPackageK.ofMayerData
+#print axioms PhysicalTotalF3SmallBetaCountPackageK.mono_K
 #print axioms physicalStrong_of_totalF3SmallBetaCountPackageK_siteDist_measurableF
 #print axioms PhysicalTotalF3SmallBetaAnchoredPackageK.ofMayerData
 #print axioms PhysicalTotalF3SmallBetaAnchoredPackageK.mono_K
