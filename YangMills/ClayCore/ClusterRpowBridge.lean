@@ -996,12 +996,13 @@ theorem clusterCorrelatorBound_of_cardBucketBounds_ceil
         C_conn * (n : ℝ) ^ dim * A₀ *
           r ^ (n + ⌈siteLatticeDist p.site q.site⌉₊)) :
     ClusterCorrelatorBound N_c r (clusterPrefactor r C_conn A₀ dim) := by
-  refine clusterCorrelatorBound_of_connectedFiniteBounds_ceil
-    N_c r hr_pos hr_lt1 C_conn A₀ hC hA dim T h_mayer h_zero ?_
+  refine clusterCorrelatorBound_of_finiteConnectingBounds_ceil
+    N_c r hr_pos hr_lt1 C_conn A₀ hC hA dim T h_mayer ?_
   intro d L _ _ β hβ F hF p q hdist
-  exact connectedFiniteSum_le_of_cardBucketBounds_kp
+  exact finiteConnectingSum_le_of_cardBucketBounds_tsum
     (fun Y => (T β F p q).K_bound Y) p q
     r hr_pos hr_lt1 C_conn A₀ hC hA dim
+    (fun Y hp hq hconn => h_zero β hβ F hF p q Y hp hq hconn)
     (fun n hn => h_bucket β hβ F hF p q n hn hdist)
 
 /-- Count-and-pointwise version of the F3 `ClusterCorrelatorBound` bridge.

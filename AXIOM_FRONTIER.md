@@ -1,3 +1,50 @@
+# v1.67.0 — Card-bucket ClusterCorrelator bridge uses Mayer-facing KP consumer
+
+**Released: 2026-04-25**
+
+## What
+
+Refactored the existing public bridge in
+`YangMills/ClayCore/ClusterRpowBridge.lean`:
+
+    clusterCorrelatorBound_of_cardBucketBounds_ceil
+
+The theorem statement is unchanged.  Its proof now routes directly through
+`clusterCorrelatorBound_of_finiteConnectingBounds_ceil` plus the v1.66.0
+Mayer-facing bucket-`tsum` consumer
+
+    finiteConnectingSum_le_of_cardBucketBounds_tsum
+
+instead of first converting to the connected finite-sum bridge.
+
+## Why
+
+No percentage bar moves and no public statement changes.  This aligns the
+closest public F3 bucket consumer with the new proof spine:
+
+    Mayer identity
+    disconnected-support cancellation
+    finite connecting sum ≤ KP tsum via bucket bounds
+    ClusterCorrelatorBound
+
+The open mathematical target remains the uniform lattice-animal / KP count
+estimate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned trace:
+
+    clusterCorrelatorBound_of_cardBucketBounds_ceil
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.66.0 — Direct Mayer finite-sum KP comparison
 
 **Released: 2026-04-25**
