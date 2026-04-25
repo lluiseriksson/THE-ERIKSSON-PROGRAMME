@@ -145,6 +145,12 @@ For proof scripts that need to apply the raised count package immediately, use:
     PhysicalShiftedF3CountPackage.mono_dim_apply
     ShiftedF3CountPackage.mono_dim_apply
 
+At combined Mayer/count package level, use:
+
+    PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim_apply_count
+    PhysicalShiftedF3MayerCountPackage.mono_count_dim_apply_count
+    ShiftedF3MayerCountPackage.mono_count_dim_apply_count
+
 These keep `C_conn` fixed and replace `dim` by `dim + k`, so F3 count scripts
 can align dimensions without reproving the combinatorial bucket estimate or
 reconstructing package records by hand.  At combined Mayer/count package level,

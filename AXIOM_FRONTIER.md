@@ -1,3 +1,49 @@
+# v1.74.0 — mono_count_dim application canaries for combined F3 packages
+
+**Released: 2026-04-25**
+
+## What
+
+Added direct count-application canaries after increasing only the count
+polynomial dimension in the combined Mayer/count packages:
+
+    PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim_apply_count
+    PhysicalShiftedF3MayerCountPackage.mono_count_dim_apply_count
+    ShiftedF3MayerCountPackage.mono_count_dim_apply_count
+
+All three live in `YangMills/ClayCore/ClusterRpowBridge.lean`.
+
+## Why
+
+No percentage bar moves.  These canaries make the package-level exponent-raise
+usable without manual projection: after `mono_count_dim k`, the count estimate
+is immediately available at the unchanged count constant and exponent
+`dim + k`.
+
+The open mathematical target remains the uniform lattice-animal / KP count
+estimate.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ClusterRpowBridge
+
+Pinned traces:
+
+    PhysicalOnlyShiftedF3MayerCountPackage.mono_count_dim_apply_count
+      [propext, Classical.choice, Quot.sound]
+
+    PhysicalShiftedF3MayerCountPackage.mono_count_dim_apply_count
+      [propext, Classical.choice, Quot.sound]
+
+    ShiftedF3MayerCountPackage.mono_count_dim_apply_count
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.73.0 — Direct mono_dim application canaries for shifted F3 counts
 
 **Released: 2026-04-25**
