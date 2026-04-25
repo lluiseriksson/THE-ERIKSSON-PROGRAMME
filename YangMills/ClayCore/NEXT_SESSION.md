@@ -84,12 +84,20 @@ physical-dimension uniform rather than uniform over all dimensions.
 
 This physical output now feeds L8 directly:
 
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_siteDist_measurableF
     physicalStrong_of_physicalShiftedF3MayerCountPackage_siteDist_measurableF
     physicalStrong_of_physicalShiftedF3Subpackages_siteDist_measurableF
 
 The single-package form consumes:
 
     pkg : PhysicalShiftedF3MayerCountPackage N_c wab
+
+The bundle-level constructor exposes the auditable intermediate
+`ConnectedCorrDecayBundle` before the final `ClayYangMillsPhysicalStrong`
+projection.  Its constants are definitionally pinned by:
+
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mass_eq
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_prefactor_eq
 
 The subpackage form consumes:
 

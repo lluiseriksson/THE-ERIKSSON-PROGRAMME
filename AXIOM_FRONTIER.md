@@ -1,3 +1,70 @@
+# v1.31.0 — Physical F3 bundle certificate exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added a bundle-level terminal constructor in
+`YangMills/L8_Terminal/ConnectedCorrDecayBundle.lean`:
+
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_siteDist_measurableF
+
+from the single physical F3 package:
+
+    pkg : PhysicalShiftedF3MayerCountPackage N_c wab
+
+to the intermediate L8 certificate:
+
+    ConnectedCorrDecayBundle
+      (sunHaarProb N_c) (wilsonPlaquetteEnergy N_c) β F
+      (fun L p q => siteLatticeDist p.site q.site)
+
+at `physicalClayDimension = 4`, with the local Gibbs probability and
+observable integrability side conditions discharged from the concrete Wilson
+plaquette energy and `Measurable F`.
+
+Also added audit equalities:
+
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_mass_eq
+    connectedCorrDecayBundle_of_physicalShiftedF3MayerCountPackage_prefactor_eq
+
+recording that the bundle has rate `kpParameter wab.r` and prefactor
+
+    clusterPrefactorShifted wab.r pkg.count.C_conn pkg.mayer.A₀ pkg.count.dim
+      + 2 * Real.exp (kpParameter wab.r)
+
+where the `+ 2 * exp(...)` term is the standard local-distance padding used by
+the L8 bundle bridge.
+
+## Why
+
+No percentage bar moves.  This exposes an auditable certificate between the
+physical F3 package and the final `ClayYangMillsPhysicalStrong` endpoint.
+Future scripts can now stop at the bundle layer to inspect the actual decay
+constants before applying `physicalStrong_of_connectedCorrDecayBundle`.
+
+The remaining mathematical obligations remain unchanged:
+
+    ShiftedF3MayerPackage N_c wab
+    PhysicalShiftedF3CountPackage
+
+for `N_c ≥ 2`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.L8_Terminal.ConnectedCorrDecayBundle
+
+Pinned traces: the new bundle constructor and both constant-audit theorems
+print the canonical project oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.30.0 — Physical F3 package finite-volume consumers exposed
 
 **Released: 2026-04-25**
