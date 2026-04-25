@@ -32,6 +32,15 @@ for each fixed `L`.  Its constant depends on `L`, so it is only an audit/local
 count package.  The open count target is the uniform-in-`L` package
 `PhysicalShiftedF3CountPackage`.
 
+The formal upgrade path from local physical count bounds to the uniform package
+is:
+
+    PhysicalShiftedF3CountPackage.ofAtFamily
+
+It consumes `∀ L [NeZero L], PhysicalShiftedConnectingClusterCountBoundAt L C_conn dim`
+with the same `C_conn` and `dim` for all `L`.  The next genuine count proof
+should therefore produce this volume-uniform family.
+
 The physical package also exposes the finite-volume consumers needed by proof
 scripts:
 

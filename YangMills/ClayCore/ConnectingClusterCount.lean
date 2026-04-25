@@ -184,6 +184,19 @@ theorem ShiftedConnectingClusterCountBoundDim.toAt
   intro p q n hn hdist
   exact h.apply p q n hn hdist
 
+/-- Assemble a fixed-dimension shifted count bound from a family of
+finite-volume bounds with the same constants.
+
+This is the proof shape needed to upgrade local count estimates to the
+uniform-in-volume count frontier. -/
+theorem ShiftedConnectingClusterCountBoundDim.ofAtFamily
+    {d : ℕ} [NeZero d] {C_conn : ℝ} {dim : ℕ}
+    (h_at : ∀ (L : ℕ) [NeZero L],
+      ShiftedConnectingClusterCountBoundAt d L C_conn dim) :
+    ShiftedConnectingClusterCountBoundDim d C_conn dim := by
+  intro L _ p q n hn hdist
+  exact (h_at L).apply p q n hn hdist
+
 /-- Packaged finite-volume shifted count data. -/
 structure ShiftedF3CountPackageAt (d L : ℕ) [NeZero d] [NeZero L] where
   C_conn : ℝ
@@ -214,6 +227,17 @@ def ofBound
   hC := hC
   dim := dim
   h_count := h_count
+
+/-- Package a fixed-dimension count bound from a finite-volume family with
+volume-independent constants. -/
+def ofAtFamily
+    (d : ℕ) [NeZero d]
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_at : ∀ (L : ℕ) [NeZero L],
+      ShiftedConnectingClusterCountBoundAt d L C_conn dim) :
+    ShiftedF3CountPackageDim d :=
+  ofBound d C_conn hC dim
+    (ShiftedConnectingClusterCountBoundDim.ofAtFamily h_at)
 
 /-- Direct application form of a fixed-dimension shifted F3 count package. -/
 theorem apply
@@ -302,6 +326,14 @@ abbrev PhysicalShiftedConnectingClusterCountBound
     (C_conn : ℝ) (dim : ℕ) : Prop :=
   ShiftedConnectingClusterCountBoundDim physicalClayDimension C_conn dim
 
+/-- Physical, four-dimensional finite-volume version of the shifted
+connecting-cluster count audit bound.
+
+This is local in `L`; it is not the uniform physical count frontier. -/
+abbrev PhysicalShiftedConnectingClusterCountBoundAt
+    (L : ℕ) [NeZero L] (C_conn : ℝ) (dim : ℕ) : Prop :=
+  ShiftedConnectingClusterCountBoundAt physicalClayDimension L C_conn dim
+
 /-- Packaged physical, four-dimensional shifted count data for the F3 route. -/
 abbrev PhysicalShiftedF3CountPackage : Type :=
   ShiftedF3CountPackageDim physicalClayDimension
@@ -314,6 +346,16 @@ def ofBound
     (h_count : PhysicalShiftedConnectingClusterCountBound C_conn dim) :
     PhysicalShiftedF3CountPackage :=
   ShiftedF3CountPackageDim.ofBound physicalClayDimension C_conn hC dim h_count
+
+/-- Package the physical count frontier from a family of fixed-volume physical
+count bounds with volume-independent constants. -/
+def ofAtFamily
+    (C_conn : ℝ) (hC : 0 < C_conn) (dim : ℕ)
+    (h_at : ∀ (L : ℕ) [NeZero L],
+      PhysicalShiftedConnectingClusterCountBoundAt L C_conn dim) :
+    PhysicalShiftedF3CountPackage :=
+  ShiftedF3CountPackageDim.ofAtFamily physicalClayDimension
+    C_conn hC dim h_at
 
 /-- Direct application form of a physical `d = 4` shifted F3 count package. -/
 theorem apply
@@ -474,14 +516,6 @@ theorem ShiftedF3CountPackageAt.finite_apply
 
 /-! ### Physical finite-volume audit count -/
 
-/-- Physical, four-dimensional finite-volume version of the shifted
-connecting-cluster count audit bound.
-
-This is local in `L`; it is not the uniform physical count frontier. -/
-abbrev PhysicalShiftedConnectingClusterCountBoundAt
-    (L : ℕ) [NeZero L] (C_conn : ℝ) (dim : ℕ) : Prop :=
-  ShiftedConnectingClusterCountBoundAt physicalClayDimension L C_conn dim
-
 /-- Packaged physical finite-volume shifted count data.
 
 The constants may depend on the finite volume `L`; the uniform physical F3
@@ -559,7 +593,9 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedConnectingClusterCountBound.toAt
 #print axioms ShiftedConnectingClusterCountBound.toDim
 #print axioms ShiftedConnectingClusterCountBoundDim.toAt
+#print axioms ShiftedConnectingClusterCountBoundDim.ofAtFamily
 #print axioms ShiftedF3CountPackageDim.ofBound
+#print axioms ShiftedF3CountPackageDim.ofAtFamily
 #print axioms ShiftedF3CountPackageDim.apply
 #print axioms ShiftedF3CountPackageDim.toAt
 #print axioms ShiftedF3CountPackageDim.toAt_C_conn
@@ -569,6 +605,7 @@ theorem connected_polymer_card_eq_extra_add_dist
 #print axioms ShiftedF3CountPackageDim.ofBound_dim
 #print axioms physicalClayDimension
 #print axioms PhysicalShiftedF3CountPackage.ofBound
+#print axioms PhysicalShiftedF3CountPackage.ofAtFamily
 #print axioms PhysicalShiftedF3CountPackage.apply
 #print axioms PhysicalShiftedF3CountPackage.toAt
 #print axioms PhysicalShiftedF3CountPackage.toAt_C_conn

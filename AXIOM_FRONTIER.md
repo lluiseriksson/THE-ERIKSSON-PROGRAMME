@@ -1,3 +1,52 @@
+# v1.35.0 — Physical count uniformization criterion exposed
+
+**Released: 2026-04-25**
+
+## What
+
+Added finite-volume-family assembly criteria in
+`YangMills/ClayCore/ConnectingClusterCount.lean`:
+
+    ShiftedConnectingClusterCountBoundDim.ofAtFamily
+    ShiftedF3CountPackageDim.ofAtFamily
+    PhysicalShiftedF3CountPackage.ofAtFamily
+
+The physical form consumes a family
+
+    h_at : ∀ (L : ℕ) [NeZero L],
+      PhysicalShiftedConnectingClusterCountBoundAt L C_conn dim
+
+with the same `C_conn` and `dim` for every finite volume, and produces the
+uniform physical count package:
+
+    PhysicalShiftedF3CountPackage
+
+## Why
+
+No percentage bar moves.  This is the exact formal upgrade path from
+finite-volume count estimates to the physical F3 count frontier.  The previous
+finite-volume canary shows that local count packages exist with constants
+depending on `L`; this criterion records what remains to prove: the same count
+bound must hold for all `L` with volume-independent constants.
+
+The remaining physical F3 count target is therefore sharpened to producing
+`h_at` uniformly in `L`, not inventing any new terminal packaging.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.ConnectingClusterCount
+
+Pinned traces: all three new assembly declarations print the canonical project
+oracle
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v1.34.0 — Physical finite-volume count canary exposed
 
 **Released: 2026-04-25**
