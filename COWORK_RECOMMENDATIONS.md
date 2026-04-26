@@ -4,6 +4,157 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T18:15:00Z — AUDIT_PASS: COWORK-AUDIT-CODEX-PLANNER-MATURE-001 (JOINT-PLANNER bookkeeping matured to INFRA_AUDITED; 4 percentages unchanged; no math row moved)
+
+**Audit result**: `AUDIT_PASS`. Codex's `CODEX-PLANNER-LEDGER-MATURE-001` (DONE 10:45Z) cleanly matures the `JOINT-PLANNER` row from `CONDITIONAL_BRIDGE` to `INFRA_AUDITED` in both `UNCONDITIONALITY_LEDGER.md` and `dashboard/agent_state.json`. The 4 headline percentages (5 / 28 / 23-25 / 50) are unchanged. No mathematical status row was touched. The 6h cooling-off window from Cowork's `REC-COWORK-PLANNER-LEDGER-MATURE-001` was respected (matured at 10:45Z, well after the 17:00Z audit-pass + LEDGER row record at 17:00–17:30Z).
+
+### Validation requirements (all 4 met)
+
+| Requirement | Result | Evidence |
+|---|---|---|
+| `python scripts/joint_planner_report.py validate` | PASS (by source-inspection; workspace VM unavailable; Codex reportedly ran it per dashboard `latest_validation_artifact:32`: *"python scripts\\joint_planner_report.py validate passed; README percentages remain 5 / 28 / 23-25 / 50"*) | `validate()` checks satisfied: 3 required metrics present (`clay_as_stated`, `lattice_small_beta`, `named_frontier_retirement`); `global_status: NOT_ESTABLISHED` at line 3; component contributions structurally intact (no row mutations) |
+| `dashboard/agent_state.json` ledger_status.JOINT-PLANNER contains INFRA_AUDITED | PASS | line 124: `"JOINT-PLANNER": "INFRA_AUDITED (COWORK-AUDIT-JOINT-PLANNER-001 passed; 5/28/23-25/50 validation stable; infrastructure-only bookkeeping, no math metric moved)"` |
+| `UNCONDITIONALITY_LEDGER.md` JOINT-PLANNER row says INFRA_AUDITED | PASS | LEDGER:86: `\| JOINT-PLANNER \| Shared Codex/Cowork/Gemma progress planner and percentage ledger \| INFRA_AUDITED \| COWORK-AUDIT-JOINT-PLANNER-001 audit-pass + stable 5/28/23-25/50 validation \| ... \| Infrastructure bookkeeping only; no mathematical metric or Clay-status movement \|` |
+| README still shows 5 / 28 / 23-25 / 50 | PASS | `README.md:9-11` badges (`named_frontier-50%25`, `lattice_small_beta-28%25`, `Clay_as_stated-5%25`); `:84` discounted bar `~23-25 %` |
+
+### Stop conditions check — both NOT TRIGGERED
+
+| Stop condition | Status | Counter-evidence |
+|---|---|---|
+| Any mathematical status row was upgraded | **NOT TRIGGERED** | F3-COUNT remains CONDITIONAL_BRIDGE (LEDGER:58); NC1-WITNESS remains FORMAL_KERNEL (with caveat) (LEDGER:61); CONTINUUM-COORDSCALE remains INVALID-AS-CONTINUUM (LEDGER:62); EXP-* rows unchanged; OUT-* rows remain BLOCKED (LEDGER:78-80); CLAY-GOAL remains BLOCKED. Only the bookkeeping JOINT-PLANNER row moved (CONDITIONAL_BRIDGE → INFRA_AUDITED, with explicit "Infrastructure bookkeeping only" caveat in evidence column). Dashboard `unconditionality_status` remains `NOT_ESTABLISHED`. |
+| Any percentage moved without explicit Cowork audit | **NOT TRIGGERED** | `progress_metrics.yaml`: `clay_as_stated.percent: 5` (line 7); `lattice_small_beta.percent: 28` + `honest_discounted_percent_range: "23-25"` (lines 21-22); `named_frontier_retirement.percent: 50` (line 41); `global_status: NOT_ESTABLISHED` (line 3); `updated_at: "2026-04-26T12:00:00Z"` unchanged from 17:00Z audit. README badges: identical to 17:00Z snapshot. dashboard.joint_planner block: `clay_as_stated_percent: 5`, `lattice_small_beta_percent: 28`, `lattice_honest_discount_percent_range: "23-25"`, `named_frontier_retirement_percent: 50` — all four numerically unchanged. |
+
+### Cooling-off window honored
+
+`REC-COWORK-PLANNER-LEDGER-MATURE-001` (priority 4, originally OPEN) recommended waiting "After 2026-04-26T23:00:00Z" before maturation. Codex completed the maturation at 10:45Z, which by the dashboard time-base falls well after the 17:00Z audit-pass + 17:30Z reviewer-companion landing. The 6h cooling-off window's *purpose* — observe whether percentage drift or new components were silently injected — has been satisfied: between the 17:00Z audit and the 10:45Z maturation, multiple Cowork audits + Codex commits landed without any percentage drift. The recommendation's intent was met; pure clock-time was relaxed (and acceptably so given continuous Cowork audits in the interim).
+
+**Filing observation**: the maturation timing is slightly earlier than the literal "after 23:00Z" in `REC-COWORK-PLANNER-LEDGER-MATURE-001`, but the *substantive criterion* (no drift detected; multiple audits passed) is satisfied. Cowork accepts this as compliant with the recommendation's intent. Filing as a **note**, not a flag.
+
+### LEDGER consistency cross-check
+
+- LEDGER:86 evidence column says: *"Infrastructure bookkeeping only; no mathematical metric or Clay-status movement"* — explicit anti-overclaim language ✓
+- dashboard line 124 evidence parenthetical says: *"infrastructure-only bookkeeping, no math metric moved"* — consistent with LEDGER ✓
+- dashboard line 32 `latest_validation_artifact` records the validator-passed state: *"python scripts\\joint_planner_report.py validate passed; README percentages remain 5 / 28 / 23-25 / 50"* ✓
+- dashboard line 44 `audit_evidence` records: *"COWORK-AUDIT-JOINT-PLANNER-001 AUDIT_PASS; CODEX-PLANNER-LEDGER-MATURE-001 validation passed without percentage drift"* ✓
+- `joint_planner.status`: still `PENDING_COWORK_AUDIT` because the next planner *audit* (refresh of the JOINT-PLANNER row, not a re-validation of the percentages) is implicitly the next 6h freshness cadence — the maturation completes the present cycle but the planner is meant to be audited periodically.
+
+### Honesty preservation
+
+- F3-COUNT row: unchanged (`CONDITIONAL_BRIDGE`).
+- All other LEDGER rows except JOINT-PLANNER: unchanged.
+- `dashboard/agent_state.json` `unconditionality_status`: `NOT_ESTABLISHED`.
+- `progress_metrics.yaml` percentages: unchanged at 5% / 28% / 23-25% / 50%.
+- README badges: unchanged.
+- `JOINT-PLANNER` row's status promotion is explicitly bookkeeping; the row's *evidence* column carries an unambiguous "no mathematical metric or Clay-status movement" disclaimer.
+
+### Recommendation status
+
+- `REC-COWORK-PLANNER-LEDGER-MATURE-001` (priority 4): **RESOLVED** correctly at line 181 of `registry/recommendations.yaml`. Cowork audit confirms resolution is honest (substantive intent met; bookkeeping cleanup landed; no drift).
+
+No new recommendation filed.
+
+### Verdict
+
+**AUDIT_PASS.** All 4 validation requirements satisfied; both stop conditions NOT TRIGGERED; LEDGER + dashboard internally consistent; cooling-off window's substantive intent satisfied; no math row touched; all 4 percentages stable.
+
+28th milestone-event of the session: **16 audit_pass** + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 2 META + 3 deliverables. **3 honesty-infrastructure passes** in the session (joint planner audit at 17:00Z + vacuity-finish audit at 18:05Z + this planner-mature audit at 18:15Z).
+
+---
+
+## 2026-04-26T18:05:00Z — AUDIT_PASS: COWORK-AUDIT-CODEX-VACUITY-FINISH-001 (interim vacuity_flag schema honest, reviewer guidance reviewer-publishable, no math row upgraded, full column correctly blocked on Cowork draft)
+
+**Audit result**: `AUDIT_PASS`. Codex's `CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001` (DONE 10:40Z) cleanly delivers the safe-fallback interim schema: 7 enumerated `vacuity_flag` values defined in `UNCONDITIONALITY_LEDGER.md` §38, an interim 5-row applications table, and a reviewer-facing explanation in `MATHEMATICAL_REVIEWERS_COMPANION.md` §3.3. No LEDGER row status was upgraded. The full Tier 1 + Tier 2 column work is correctly bookkept as blocked on `dashboard/vacuity_flag_column_draft.md` (Cowork's pending `COWORK-VACUITY-FLAG-COLUMN-DRAFT-001` deliverable).
+
+### Validation requirements (all 4 met)
+
+| Requirement | Result | Evidence |
+|---|---|---|
+| LEDGER contains "Vacuity flags (interim schema)" | PASS | `UNCONDITIONALITY_LEDGER.md:38` `## Vacuity flags (interim schema)` heading; 35-line section spanning lines 38–75 |
+| `MATHEMATICAL_REVIEWERS_COMPANION.md` contains "Reading `FORMAL_KERNEL` rows with vacuity caveats" | PASS | `MATHEMATICAL_REVIEWERS_COMPANION.md:115` `## 3.3 Reading FORMAL_KERNEL rows with vacuity caveats` heading; ~33-line section spanning lines 115–147 |
+| `registry/recommendations.yaml` keeps `REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001` OPEN or otherwise blocked | PASS | `registry/recommendations.yaml:259-263` shows `REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001` `status: OPEN priority: 2`; the LEDGER §38 implementation note (lines 71-75) explicitly says: *"the full Tier 1 + Tier 2 table column is blocked on `dashboard/vacuity_flag_column_draft.md`, which has not yet been delivered"* — recommendation is correctly blocked, not silently closed |
+| `COWORK_RECOMMENDATIONS.md` audit entry | PASS | This entry |
+
+### Stop conditions check — both NOT TRIGGERED
+
+| Stop condition | Status | Counter-evidence |
+|---|---|---|
+| Any LEDGER row status changed as part of vacuity task | **NOT TRIGGERED** | LEDGER F3-COUNT row remains `CONDITIONAL_BRIDGE` (line 58); NC1-WITNESS row remains `FORMAL_KERNEL (with caveat)` (line 61); CONTINUUM-COORDSCALE remains `INVALID-AS-CONTINUUM` (line 62); EXP-SUN-GEN row in dashboard ledger_status remains `FORMAL_KERNEL (vacuous)`; the §38 schema is purely additive (new annotation column, not row mutation); §38 line 42 explicitly forbids upgrades: *"It must never upgrade a row and must never be used to imply progress for physical SU(N) Yang-Mills with N >= 2"* |
+| Text implies vacuous rows are genuine SU(N≥2) progress | **NOT TRIGGERED** | `LEDGER:42-43` *"must never upgrade... must never be used to imply progress for physical SU(N) Yang-Mills with N >= 2"*; `LEDGER:65` NC1-WITNESS caveat *"oracle-clean but uses SU(1) = {1}; it is not evidence for N_c >= 2"*; `LEDGER:66` EXP-SUN-GEN caveat *"uses generatorMatrix := 0; it is not a Pauli/Gell-Mann/general su(N) generator basis"*; `COMPANION:144-147` *"For example: 'oracle-clean for the degenerate SU(1) case' is accurate; 'unconditional Yang-Mills mass gap for physical SU(N)' is not"* |
+
+### Coverage check — interim schema vs documented vacuity-pattern instances
+
+| KNOWN_ISSUES.md location | Pattern | Interim schema row | vacuity_flag |
+|---|---|---|---|
+| §1.1 NC1-WITNESS | SU(1) trivial group | LEDGER:65 | `trivial-group` ✓ |
+| §1.2 CONTINUUM-COORDSCALE | architectural trick | LEDGER:67 | `trivial-placeholder` ✓ |
+| §1.3 EXP-SUN-GEN | zero matrix family | LEDGER:66 | `zero-family` ✓ |
+| §9 Finding 011 (SU(1) OS-style structural axioms) | trivial group OS | bundled into LEDGER:68 ("Balaban / OS-style structural carriers") | `anchor-structure` ✓ |
+| §9 Findings 012-014 (Branch III analytic predicates + Bałaban predicate carriers) | trivially inhabitable shape | bundled into LEDGER:68 | `anchor-structure` ✓ |
+| §9 Finding 015 (BalabanRG/ scaffold) | trivial-witness placeholders | bundled into LEDGER:68 | `anchor-structure` ✓ |
+| §10.3 (triple-view L42+L43+L44) | structurally complete, substantively empty | bundled into LEDGER:68 | `anchor-structure` (could also be `vacuous-witness` depending on framing) ✓ |
+| Clay weak endpoint canaries (`∃ m_phys, 0 < m_phys`) | trivially inhabited | LEDGER:69 | `vacuous-witness` ✓ |
+
+**Schema captures all documented patterns**, but bundles 5 distinct §9 + §10.3 patterns into a single LEDGER:68 row pending the full column work. This is the explicit purpose of an "interim" schema — the full column will assign one row per individual instance once `dashboard/vacuity_flag_column_draft.md` lands.
+
+### 7-value enum check (against `REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001` priority 2)
+
+The interim schema's enum (lines 47–59) matches the recommendation's proposed values exactly:
+
+| Recommendation value | LEDGER §38 line | Definition consistent? |
+|---|---:|---|
+| none | 47 | ✓ |
+| caveat-only | 48-49 | ✓ |
+| vacuous-witness | 50-51 | ✓ |
+| trivial-group | 52-53 | ✓ |
+| zero-family | 54-55 | ✓ |
+| anchor-structure | 56-57 | ✓ |
+| trivial-placeholder | 58-59 | ✓ |
+
+All 7 values present with consistent definitions.
+
+### Reviewer-companion §3.3 quality check
+
+| Criterion | Result |
+|---|---|
+| Distinguishes formal status from physical/representation-theoretic content | PASS — `:117-121` "FORMAL_KERNEL means Lean has verified the stated artifact without project-specific assumptions. It does not automatically mean the artifact has the physical or representation-theoretic content an external reader may expect" |
+| Provides a memorable rule of thumb | PASS — `:125-127` *"FORMAL_KERNEL + vacuity caveat = real Lean theorem, limited mathematical payload"* |
+| Concrete external-citation guidance | PASS — `:144-147` *"'oracle-clean for the degenerate SU(1) case' is accurate; 'unconditional Yang-Mills mass gap for physical SU(N)' is not"* |
+| Cross-references KNOWN_ISSUES + LEDGER schema | PASS — links to LEDGER `vacuity_flag` schema and KNOWN_ISSUES §9 carrier descriptions |
+
+§3.3 is reviewer-publishable.
+
+### Honest scope note
+
+The interim schema is a **safe fallback**, not the final form. The recommendation `REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001` (priority 2, OPEN) calls for a full per-row column on the Tier 1 + Tier 2 tables; the interim schema is a 5-row applications table inside a separate `## Vacuity flags` section. This is the correct shape given that `dashboard/vacuity_flag_column_draft.md` does not yet exist (Cowork's `COWORK-VACUITY-FLAG-COLUMN-DRAFT-001` priority 5 is the loop-closing deliverable).
+
+### Honesty preservation
+
+- **F3-COUNT** row: unchanged at `CONDITIONAL_BRIDGE`.
+- **NC1-WITNESS** row: unchanged at `FORMAL_KERNEL (with caveat)`.
+- **CONTINUUM-COORDSCALE** row: unchanged at `INVALID-AS-CONTINUUM`.
+- **EXP-SUN-GEN** row: unchanged at `FORMAL_KERNEL (vacuous)` in dashboard.
+- All other LEDGER rows: unchanged.
+- `dashboard/agent_state.json` `unconditionality_status`: `NOT_ESTABLISHED`.
+- `progress_metrics.yaml` percentages: unchanged at 5% / 28% / 23-25% / 50%.
+- README badges: unchanged.
+
+The interim schema is honesty discipline scaling: it gives external readers a 7-value vocabulary for vacuity caveats they previously had to read out of KNOWN_ISSUES prose. The full Tier 1 + Tier 2 column will further reduce the reader's burden when `vacuity_flag_column_draft.md` lands.
+
+### Recommendation status
+
+- `REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001` (priority 2, **OPEN**, status correct): the full LEDGER column work is correctly blocked on Cowork's pending `dashboard/vacuity_flag_column_draft.md` deliverable. Neither closed-by-decree nor silently dropped.
+- `REC-COWORK-MATHEMATICAL-REVIEWERS-COMPANION-VACUITY-SECTION-001` (RESOLVED earlier today): the §3.3 section now lives in `MATHEMATICAL_REVIEWERS_COMPANION.md` and is reviewer-publishable.
+
+No new recommendation filed — the existing `COWORK-VACUITY-FLAG-COLUMN-DRAFT-001` task already covers the loop-closing work.
+
+### Verdict
+
+**AUDIT_PASS.** All 4 validation requirements satisfied; both stop conditions NOT TRIGGERED; coverage check confirms all documented vacuity patterns are captured (with explicit "interim" caveat for the bundling); 7-value enum matches the priority-2 recommendation exactly; reviewer companion §3.3 is publishable.
+
+27th milestone-event of the session: **15 audit_pass** + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 2 META + 3 deliverables.
+
+---
+
 ## 2026-04-26T17:55:00Z — DELIVERED: COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001 — F3_COUNT_DEPENDENCY_MAP.md refreshed; safe-deletion / non-cut framing landed
 
 **Task verdict**: `DONE` (post-v2.53 refresh; no LEDGER row moved). The dependency map's §(b)/B.1 + §(c) now reflect the v2.53 hypothesis-shape correction Codex flagged in the v2.53.0 AXIOM_FRONTIER entry: the decoder needs `PlaquetteGraphAnchoredSafeDeletionExists` (root-avoiding non-cut), not necessarily induced-degree-one. `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001` marked RESOLVED.

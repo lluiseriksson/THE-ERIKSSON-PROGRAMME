@@ -1895,6 +1895,80 @@ theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_o
     (d := physicalClayDimension) (L := L) (k := k) (root := root) (X := X)
     hsafe hk hX
 
+/-- Unrooted non-cut deletion for anchored buckets.
+
+Mathlib already proves that a finite connected graph has some vertex whose
+removal leaves a preconnected induced graph.  Applied to the induced graph on
+an anchored plaquette bucket, this gives a deletion preserving
+preconnectedness of `X.erase z`.
+
+This theorem is deliberately *unrooted*: it does not assert `z ≠ root`, so it
+does not yet discharge `PlaquetteGraphAnchoredSafeDeletionExists`.  It isolates
+the remaining F3/Klarner gap to the root-avoiding refinement needed by the
+recursive decoder. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L}
+    {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k) :
+    ∃ z, ∃ hzX : z ∈ X,
+      ((plaquetteGraph d L).induce {x | x ∈ X.erase z}).Preconnected := by
+  classical
+  let GX : SimpleGraph {x : ConcretePlaquette d L // x ∈ X} :=
+    (plaquetteGraph d L).induce {x | x ∈ X}
+  have hroot : root ∈ X :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem hX
+  have hpreX : GX.Preconnected := by
+    simpa [GX] using
+      plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected hX
+  have hconnX : GX.Connected := by
+    exact { preconnected := hpreX, nonempty := ⟨⟨root, hroot⟩⟩ }
+  obtain ⟨vz, hvz⟩ :=
+    hconnX.exists_preconnected_induce_compl_singleton_of_finite
+  let Gsrc : SimpleGraph
+      {x : {x : ConcretePlaquette d L // x ∈ X} // x ∈ ({vz}ᶜ :
+          Set {x : ConcretePlaquette d L // x ∈ X})} :=
+    GX.induce ({vz}ᶜ : Set {x : ConcretePlaquette d L // x ∈ X})
+  let Gtgt : SimpleGraph {x : ConcretePlaquette d L // x ∈ X.erase vz.1} :=
+    (plaquetteGraph d L).induce {x | x ∈ X.erase vz.1}
+  have hsrc : Gsrc.Preconnected := by
+    simpa [Gsrc] using hvz
+  let f : Gsrc →g Gtgt :=
+    { toFun := fun a =>
+        ⟨a.1.1, Finset.mem_erase.mpr ⟨by
+          intro h
+          exact a.2 (Subtype.ext h), a.1.2⟩⟩
+      map_rel' := by
+        intro a b hab
+        exact SimpleGraph.induce_adj.mpr
+          (SimpleGraph.induce_adj.mp (SimpleGraph.induce_adj.mp hab)) }
+  have hf_surj : Function.Surjective f := by
+    intro y
+    rcases Finset.mem_erase.mp y.2 with ⟨hy_ne, hyX⟩
+    refine ⟨⟨⟨y.1, hyX⟩, ?_⟩, ?_⟩
+    · intro hy
+      exact hy_ne (Subtype.ext_iff.mp hy)
+    · ext
+      rfl
+  exact ⟨vz.1, vz.2, by
+    simpa [Gtgt] using hsrc.map f hf_surj⟩
+
+/-- Physical four-dimensional specialization of unrooted non-cut deletion.
+
+This is the Mathlib-backed part of the F3 recursive-deletion route.  The
+root-avoiding strengthening remains open. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k) :
+    ∃ z, ∃ hzX : z ∈ X,
+      ((plaquetteGraph physicalClayDimension L).induce
+        {x | x ∈ X.erase z}).Preconnected :=
+  plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
+    (d := physicalClayDimension) (L := L) (k := k) (root := root) (X := X) hX
+
 /-- Member-targeted first BFS step: every non-root member of an anchored bucket
 is reached through some plaquette in the root shell. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
@@ -3046,6 +3120,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_tail_to_member

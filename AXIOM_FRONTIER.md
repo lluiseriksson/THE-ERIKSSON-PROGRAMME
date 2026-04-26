@@ -1,3 +1,69 @@
+# v2.54.0 — unrooted non-cut deletion for F3/Klarner
+
+**Released: 2026-04-26**
+
+## What
+
+Added the Mathlib-backed unrooted non-cut deletion step in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
+
+For any anchored preconnected plaquette bucket `X`, Lean now proves that
+there exists some `z ∈ X` whose deletion leaves the induced graph on
+`X.erase z` preconnected.  The proof applies Mathlib's finite connected-graph
+lemma
+
+    SimpleGraph.Connected.exists_preconnected_induce_compl_singleton_of_finite
+
+to the induced graph on the bucket, then transports the resulting
+preconnectedness from the subtype complement `{vz}ᶜ` back to the concrete
+finset residual `X.erase z`.
+
+## Why
+
+This is deliberately **not** a proof of `F3-COUNT`.  It closes the standard
+unrooted non-cut part of the recursive-deletion story and isolates the exact
+remaining B.1 obstruction: the deletion vertex supplied by the non-cut theorem
+must be proved avoidable as the anchored root, i.e. the project still needs the
+root-avoiding strengthening that yields
+
+    z ≠ root ∧
+    X.erase z ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root (k - 1)
+
+The new v2.54 theorem therefore narrows the gap from "find a safe deletion" to
+"find a safe deletion that is not the root."  It does not move any percentage
+bar and does not upgrade `F3-COUNT` from `CONDITIONAL_BRIDGE`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed. Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axioms. No Clay-level completion claim.
+
+## What remains
+
+- Prove the root-avoiding non-cut/safe-deletion theorem, likely using a
+  two-non-cut-vertices argument or an equivalent rooted spanning-tree/leaf
+  construction.
+- Package that theorem as `PlaquetteGraphAnchoredSafeDeletionExists`.
+- Iterate the v2.53 safe-deletion one-step driver into the full anchored word
+  decoder / Klarner BFS-tree count.
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.
+
+---
+
 # v2.53.0 — exact safe-deletion hypothesis + degree-one sufficiency bridge for F3/Klarner
 
 **Released: 2026-04-26**

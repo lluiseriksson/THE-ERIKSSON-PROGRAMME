@@ -1,12 +1,12 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "joint_planner_infra_audited",
+  "current_phase": "f3_unrooted_noncut_v2_54_partial",
   "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-AUDIT-CODEX-PLANNER-MATURE-001",
-  "last_completed_task": "CODEX-PLANNER-LEDGER-MATURE-001 (DONE 2026-04-26T10:45:00Z; joint planner matured to INFRA_AUDITED bookkeeping)",
-  "last_dispatched_task": "CODEX-PLANNER-LEDGER-MATURE-001",
-  "last_dispatched_agent": "Codex",
+  "next_task_id": "COWORK-AUDIT-CODEX-V2.54-UNROOTED-NONCUT-001",
+  "last_completed_task": "CLAY-F3-COUNT-RECURSIVE-001 (PARTIAL 2026-04-26T18:20:00Z; v2.54 unrooted non-cut deletion landed; root-avoiding safe deletion still open)",
+  "last_dispatched_task": "COWORK-AUDIT-CODEX-V2.54-UNROOTED-NONCUT-001",
+  "last_dispatched_agent": "Cowork",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists"
   ],
@@ -25,11 +25,12 @@
     "REC-COWORK-CLAY-HORIZON-LINK-FROM-README-001",
     "REC-COWORK-MATHEMATICAL-REVIEWERS-COMPANION-VACUITY-SECTION-001",
     "REC-COWORK-PLANNER-LEDGER-MATURE-001",
-    "REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001"
+    "REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001",
+    "REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001"
   ],
-  "last_dispatch_at": "2026-04-26T10:39:02Z",
-  "last_completed_at": "2026-04-26T10:45:00Z",
-  "latest_validation_artifact": "python scripts\\joint_planner_report.py validate passed; README percentages remain 5 / 28 / 23-25 / 50",
+  "last_dispatch_at": "2026-04-26T18:20:00Z",
+  "last_completed_at": "2026-04-26T18:20:00Z",
+  "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount passed; v2.54 unrooted non-cut theorem traces canonical; F3-COUNT remains CONDITIONAL_BRIDGE",
   "joint_planner": {
     "status": "INFRA_AUDITED",
     "source": "registry/progress_metrics.yaml",

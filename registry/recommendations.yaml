@@ -3,16 +3,15 @@ recommendations:
   author: Cowork
   status: RESOLVED
   resolution: 'Resolved by Cowork at 2026-04-26T17:55:00Z. F3_COUNT_DEPENDENCY_MAP.md
-    refreshed: header timestamp updated; new A.6.1 subsection catalogues v2.53
-    entries at lines 1805/1820/1831/1847/1860/1866/1872/1882; §(b)/B.1 rewritten
-    to target `PlaquetteGraphAnchoredSafeDeletionExists` with explicit 4-cycle
-    counter-example showing why the degree-one form fails on cyclic buckets;
-    §(c) restructured into two strategies (Strategy 1 acyclic longest-induced-path,
-    Strategy 2 cyclic DFS-tree non-cut) with combined Lean-side proof outline;
-    §(d) decoder pseudocode updated to use v2.53 line 1847 driver directly;
-    §(e) "Before" cell mentions v2.53; "Suggested Codex schedule" renumbered
-    v2.54+/v2.55+/v2.56+ with Mathlib pre-check inlined. No LEDGER row promoted.
-    F3-COUNT remains CONDITIONAL_BRIDGE.
+    refreshed: header timestamp updated; new A.6.1 subsection catalogues v2.53 entries
+    at lines 1805/1820/1831/1847/1860/1866/1872/1882; §(b)/B.1 rewritten to target
+    `PlaquetteGraphAnchoredSafeDeletionExists` with explicit 4-cycle counter-example
+    showing why the degree-one form fails on cyclic buckets; §(c) restructured into
+    two strategies (Strategy 1 acyclic longest-induced-path, Strategy 2 cyclic DFS-tree
+    non-cut) with combined Lean-side proof outline; §(d) decoder pseudocode updated
+    to use v2.53 line 1847 driver directly; §(e) "Before" cell mentions v2.53; "Suggested
+    Codex schedule" renumbered v2.54+/v2.55+/v2.56+ with Mathlib pre-check inlined.
+    No LEDGER row promoted. F3-COUNT remains CONDITIONAL_BRIDGE.
 
     '
   priority: 5
@@ -100,7 +99,14 @@ recommendations:
     '
 - id: REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001
   author: Cowork
-  status: OPEN
+  status: RESOLVED
+  resolution: >
+    Resolved by Codex v2.54.0. Mathlib was checked for finite connected-graph
+    deletion helpers; `SimpleGraph.Connected.exists_preconnected_induce_compl_singleton_of_finite`
+    exists and was reused to prove the unrooted non-cut deletion theorem in
+    `YangMills/ClayCore/LatticeAnimalCount.lean`. This does not close the
+    root-avoiding theorem; it isolates the remaining gap to the rooted
+    strengthening rather than a missing unrooted non-cut lemma.
   priority: 5
   title: Before formalizing §(c) global root-avoiding leaf existence lemma, Codex
     should grep Mathlib for an existing longest-induced-path or finite-tree leaf lemma

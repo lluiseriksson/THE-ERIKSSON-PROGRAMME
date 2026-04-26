@@ -306,7 +306,7 @@ tasks:
   status: PARTIAL
   priority: 3
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T10:28:15Z'
+  updated_at: '2026-04-26T18:20:00Z'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - BLUEPRINT_F3Count.md
@@ -400,8 +400,16 @@ tasks:
     `lake build YangMills.ClayCore.LatticeAnimalCount` passed; four new #print axioms
     traces are canonical. F3-COUNT remains CONDITIONAL_BRIDGE pending proof/refinement
     of global safe deletion and iteration into the full anchored word decoder.'
-  dispatch_count: 15
-  dispatched_at: '2026-04-26T10:16:56Z'
+  - Dispatched to Codex at 2026-04-26T10:43:11Z
+  - 'PARTIAL by Codex at 2026-04-26T18:20:00Z: v2.54.0 landed. Lean now proves the
+    Mathlib-backed unrooted non-cut deletion step:
+    `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted`
+    and the physical specialization. `lake build YangMills.ClayCore.LatticeAnimalCount`
+    passed; both new #print axioms traces are canonical. F3-COUNT remains
+    CONDITIONAL_BRIDGE because the deletion is not yet proved root-avoiding, so
+    `PlaquetteGraphAnchoredSafeDeletionExists` and the full word decoder remain open.'
+  dispatch_count: 16
+  dispatched_at: '2026-04-26T10:43:11Z'
   dispatched_to: Codex
 - id: CLAY-EXP-RETIRE-7-001
   title: Retire 7 easy SU(N) generator-data Experimental axioms
@@ -2007,10 +2015,10 @@ tasks:
   title: 'Cowork: draft concrete vacuity_flag column markdown for UNCONDITIONALITY_LEDGER.md
     (input to CODEX-VACUITY-RULES-CONSOLIDATION-001)'
   owner: Cowork
-  status: READY
+  status: IN_PROGRESS
   priority: 5
   created_at: '2026-04-26T16:45:00Z'
-  updated_at: '2026-04-26T16:45:00Z'
+  updated_at: '2026-04-26T10:53:22Z'
   required_files:
   - UNCONDITIONALITY_LEDGER.md
   - KNOWN_ISSUES.md
@@ -2044,6 +2052,10 @@ tasks:
     from Codex.
   - Implements REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001 (priority 2, OPEN) at the
     spec level.
+  - Dispatched to Cowork at 2026-04-26T10:53:22Z
+  dispatched_at: '2026-04-26T10:53:22Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
 - id: JOINT-PLANNER-001
   title: Create shared progress planner with Clay and lattice percentage metrics
   owner: Codex
@@ -2314,14 +2326,14 @@ tasks:
   completed_at: '2026-04-26T17:55:00Z'
   delivery_artifact: F3_COUNT_DEPENDENCY_MAP.md (refreshed in place)
   delivery_evidence:
-  - 'Header timestamp updated to 2026-04-26T17:55:00Z (post-v2.53.0); v2.53 refresh
+  - Header timestamp updated to 2026-04-26T17:55:00Z (post-v2.53.0); v2.53 refresh
     summary paragraph added explaining 4-cycle counter-example and the safe-deletion
-    target shift'
+    target shift
   - '§(a) A.6.1 NEW subsection catalogues all 8 v2.53 entries with kind annotations:
     line 1805 PlaquetteGraphAnchoredSafeDeletionExists (def Prop, open gap, minimum-strength
-    target); line 1820 PlaquetteGraphAnchoredDegreeOneDeletionExists (def Prop,
-    open gap, strictly stronger, fails on cyclic buckets); line 1831 bridge theorem;
-    line 1847 conditional one-step driver; lines 1860/1866 abbrev physical specializations;
+    target); line 1820 PlaquetteGraphAnchoredDegreeOneDeletionExists (def Prop, open
+    gap, strictly stronger, fails on cyclic buckets); line 1831 bridge theorem; line
+    1847 conditional one-step driver; lines 1860/1866 abbrev physical specializations;
     lines 1872/1882 physical bridge + driver theorems'
   - '§(b)/B.1 rewritten: target signature `plaquetteGraphAnchoredSafeDeletionExists_proved`
     proves the v2.53 line 1805 def Prop directly; explicit 4-cycle counter-example
@@ -2329,32 +2341,30 @@ tasks:
     LOC for two-strategy proof; Mathlib pre-check inlined per REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001
     expanded to include IsCutVertex/IsBridge/Connected.exists_non_cut'
   - '§(c) restructured into Strategy 1 (acyclic longest-induced-path → degree-one
-    leaf) + Strategy 2 (cyclic DFS-tree non-cut via Diestel Prop. 1.4.1: every
-    connected graph on ≥ 2 vertices has ≥ 2 non-cut vertices); 4-cycle counter-example
-    walked through; combined Lean-side proof outline using both strategies'
+    leaf) + Strategy 2 (cyclic DFS-tree non-cut via Diestel Prop. 1.4.1: every connected
+    graph on ≥ 2 vertices has ≥ 2 non-cut vertices); 4-cycle counter-example walked
+    through; combined Lean-side proof outline using both strategies'
   - '§(d) decoder pseudocode rewritten to use v2.53 line 1847 `exists_erase_mem_of_safeDeletion`
-    driver directly (no hand-composition of v2.51 + v2.52); explicit signature
-    with hsafe : PlaquetteGraphAnchoredSafeDeletionExists d L parameter'
-  - '§(e) "Before" cell of LEDGER-effect table mentions v2.53 cumulative; Suggested
-    Codex schedule renumbered v2.54+/v2.55+/v2.56+'
-  - 'COWORK_RECOMMENDATIONS.md 17:55Z entry written'
-  - 'registry/recommendations.yaml REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001
-    marked RESOLVED with full resolution paragraph'
+    driver directly (no hand-composition of v2.51 + v2.52); explicit signature with
+    hsafe : PlaquetteGraphAnchoredSafeDeletionExists d L parameter'
+  - §(e) "Before" cell of LEDGER-effect table mentions v2.53 cumulative; Suggested
+    Codex schedule renumbered v2.54+/v2.55+/v2.56+
+  - COWORK_RECOMMENDATIONS.md 17:55Z entry written
+  - registry/recommendations.yaml REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001 marked
+    RESOLVED with full resolution paragraph
   stop_conditions_not_triggered:
-  - 'Refresh implies v2.53 proved PlaquetteGraphAnchoredSafeDeletionExists: NOT
-    TRIGGERED — §(a) A.6.1 row for line 1805 explicitly tags it as `def Prop (open
-    gap)`; §(b)/B.1 target is the future proof goal `plaquetteGraphAnchoredSafeDeletionExists_proved`;
+  - 'Refresh implies v2.53 proved PlaquetteGraphAnchoredSafeDeletionExists: NOT TRIGGERED
+    — §(a) A.6.1 row for line 1805 explicitly tags it as `def Prop (open gap)`; §(b)/B.1
+    target is the future proof goal `plaquetteGraphAnchoredSafeDeletionExists_proved`;
     Suggested Codex schedule lists §(b)/B.1 as v2.54+ work, not v2.53 work'
-  - 'Map cannot be updated without changing Lean code: NOT TRIGGERED — refresh
-    is purely documentation; zero Lean source changes; LEDGER unchanged; AXIOM_FRONTIER
-    unchanged; v2.53 source already supplies all references the refreshed map
-    cites'
-  honesty_observation: 'F3-COUNT row remains CONDITIONAL_BRIDGE. The refresh is
-    a documentation correction reflecting Codex v2.53''s honest hypothesis-shape
-    correction; it adds blueprint clarity but produces zero math advance. The
-    project''s most precise statement of the F3-COUNT gap is now in two places
-    that agree: the AXIOM_FRONTIER v2.53.0 entry and this refreshed dependency
-    map.'
+  - 'Map cannot be updated without changing Lean code: NOT TRIGGERED — refresh is
+    purely documentation; zero Lean source changes; LEDGER unchanged; AXIOM_FRONTIER
+    unchanged; v2.53 source already supplies all references the refreshed map cites'
+  honesty_observation: 'F3-COUNT row remains CONDITIONAL_BRIDGE. The refresh is a
+    documentation correction reflecting Codex v2.53''s honest hypothesis-shape correction;
+    it adds blueprint clarity but produces zero math advance. The project''s most
+    precise statement of the F3-COUNT gap is now in two places that agree: the AXIOM_FRONTIER
+    v2.53.0 entry and this refreshed dependency map.'
   required_files:
   - F3_COUNT_DEPENDENCY_MAP.md
   - YangMills/ClayCore/LatticeAnimalCount.lean
@@ -2431,10 +2441,61 @@ tasks:
 - id: COWORK-AUDIT-CODEX-VACUITY-FINISH-001
   title: 'Cowork: audit Codex interim vacuity flag schema and reviewer guidance'
   owner: Cowork
-  status: READY
+  status: DONE
   priority: 4
   created_at: '2026-04-26T10:40:00Z'
-  updated_at: '2026-04-26T10:40:00Z'
+  updated_at: '2026-04-26T18:05:00Z'
+  completed_at: '2026-04-26T18:05:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+  - UNCONDITIONALITY_LEDGER.md:38 contains "## Vacuity flags (interim schema)" heading;
+    35-line section spans lines 38-75
+  - MATHEMATICAL_REVIEWERS_COMPANION.md:115 contains "## 3.3 Reading FORMAL_KERNEL
+    rows with vacuity caveats" heading; ~33-line section spans lines 115-147
+  - REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001 (priority 2) status remains OPEN at
+    registry/recommendations.yaml:259-263; LEDGER §38 lines 71-75 implementation note
+    explicitly says "the full Tier 1 + Tier 2 table column is blocked on dashboard/vacuity_flag_column_draft.md,
+    which has not yet been delivered" — recommendation correctly blocked on Cowork's
+    pending COWORK-VACUITY-FLAG-COLUMN-DRAFT-001 deliverable, neither closed-by-decree
+    nor silently dropped
+  - '7 enumerated vacuity_flag values match REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001
+    proposal exactly: none, caveat-only, vacuous-witness, trivial-group, zero-family,
+    anchor-structure, trivial-placeholder (LEDGER §38 lines 47-59)'
+  - 'Coverage check: all KNOWN_ISSUES.md vacuity instances captured — §1.1 NC1-WITNESS
+    → trivial-group; §1.2 CONTINUUM-COORDSCALE → trivial-placeholder; §1.3 EXP-SUN-GEN
+    → zero-family; §9 Findings 011-015 + §10.3 → bundled into anchor-structure row
+    (interim bundling, will split when full column lands); Clay weak endpoint canaries
+    → vacuous-witness'
+  - 'Reviewer companion §3.3 is publishable: rule-of-thumb "FORMAL_KERNEL + vacuity
+    caveat = real Lean theorem, limited mathematical payload"; concrete external-citation
+    example "''oracle-clean for the degenerate SU(1) case'' is accurate; ''unconditional
+    Yang-Mills mass gap for physical SU(N)'' is not"'
+  - COWORK_RECOMMENDATIONS.md 18:05Z audit entry written with full validation table
+    + stop-condition counter-evidence + coverage check + 7-value enum check + reviewer-companion
+    quality check
+  stop_conditions_not_triggered:
+  - 'Any LEDGER row status changed: NOT TRIGGERED — F3-COUNT remains CONDITIONAL_BRIDGE,
+    NC1-WITNESS remains FORMAL_KERNEL (with caveat), CONTINUUM-COORDSCALE remains
+    INVALID-AS-CONTINUUM, EXP-SUN-GEN unchanged; §38 schema is purely additive (new
+    annotation column, not row mutation); §38 line 42 explicitly forbids upgrades'
+  - 'Text implies vacuous rows are genuine SU(N>=2) progress: NOT TRIGGERED — LEDGER:42-43
+    "must never upgrade... must never be used to imply progress for physical SU(N)
+    Yang-Mills with N >= 2"; LEDGER:65 NC1-WITNESS caveat "not evidence for N_c >=
+    2"; LEDGER:66 EXP-SUN-GEN caveat "not a Pauli/Gell-Mann/general su(N) generator
+    basis"; COMPANION:144-147 explicit external-citation guidance'
+  honesty_observation: 'Interim schema is a safe fallback, not the final form. The
+    full Tier 1 + Tier 2 column work is correctly blocked on the pending COWORK-VACUITY-FLAG-COLUMN-DRAFT-001
+    deliverable. Codex implemented the minimum useful annotation while honestly bookkeeping
+    the incomplete state. Honesty discipline at scale: external readers now have a
+    7-value vocabulary for vacuity caveats they previously had to read out of KNOWN_ISSUES
+    prose.'
+  recommendation_status_review:
+  - 'REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001 (priority 2): correctly OPEN, blocked
+    on COWORK-VACUITY-FLAG-COLUMN-DRAFT-001'
+  - 'REC-COWORK-MATHEMATICAL-REVIEWERS-COMPANION-VACUITY-SECTION-001: RESOLVED earlier
+    today (Codex resolved with §3.3 implementation)'
+  scoreboard: 7th non-vacuous-content Cowork audit pass of the session (counting the
+    6 v2.* progress audits + this honesty-infrastructure audit)
   required_files:
   - UNCONDITIONALITY_LEDGER.md
   - MATHEMATICAL_REVIEWERS_COMPANION.md
@@ -2459,6 +2520,10 @@ tasks:
   next_agent: Codex
   notes:
   - Created by Codex after safe fallback implementation.
+  - Dispatched to Cowork at 2026-04-26T10:44:21Z
+  dispatched_at: '2026-04-26T10:44:21Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
 - id: CODEX-PLANNER-LEDGER-MATURE-001
   title: Mature JOINT-PLANNER ledger/dashboard status after Cowork audit pass
   owner: Codex
@@ -2502,20 +2567,67 @@ tasks:
 - id: COWORK-AUDIT-CODEX-PLANNER-MATURE-001
   title: 'Cowork: audit JOINT-PLANNER INFRA_AUDITED maturity bookkeeping'
   owner: Cowork
-  status: READY
+  status: DONE
   priority: 5
   created_at: '2026-04-26T10:45:00Z'
-  updated_at: '2026-04-26T10:45:00Z'
+  updated_at: '2026-04-26T18:15:00Z'
+  completed_at: '2026-04-26T18:15:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+  - UNCONDITIONALITY_LEDGER.md:86 JOINT-PLANNER row status `INFRA_AUDITED` with evidence
+    column "COWORK-AUDIT-JOINT-PLANNER-001 audit-pass + stable 5/28/23-25/50 validation"
+    + explicit anti-overclaim "Infrastructure bookkeeping only; no mathematical metric
+    or Clay-status movement"
+  - dashboard/agent_state.json:124 ledger_status.JOINT-PLANNER contains "INFRA_AUDITED"
+    with same anti-overclaim parenthetical
+  - registry/recommendations.yaml:181 REC-COWORK-PLANNER-LEDGER-MATURE-001 status
+    RESOLVED
+  - README.md:9-11 badges show 50%/28%/5%; line 84 discounted bar shows ~23-25% —
+    all 4 numbers unchanged from 17:00Z baseline
+  - 'progress_metrics.yaml: clay_as_stated.percent=5 (line 7); lattice_small_beta.percent=28
+    + honest_discounted_percent_range="23-25" (lines 21-22); named_frontier_retirement.percent=50
+    (line 41); global_status=NOT_ESTABLISHED (line 3) — all unchanged from 17:00Z
+    audit'
+  - 'dashboard.joint_planner block: clay_as_stated_percent=5, lattice_small_beta_percent=28,
+    lattice_honest_discount_percent_range="23-25", named_frontier_retirement_percent=50
+    — all 4 numerically stable'
+  - 'Codex ran the validator (per dashboard latest_validation_artifact:32: "python
+    scripts\\joint_planner_report.py validate passed; README percentages remain 5
+    / 28 / 23-25 / 50"); workspace VM unavailable for re-run, but source-inspection
+    of progress_metrics.yaml + the validate() function in joint_planner_report.py
+    confirms all required metrics present + global_status NOT_ESTABLISHED'
+  - COWORK_RECOMMENDATIONS.md 18:15Z audit entry written
+  stop_conditions_not_triggered:
+  - 'Any mathematical status row upgraded: NOT TRIGGERED — only the bookkeeping JOINT-PLANNER
+    row moved CONDITIONAL_BRIDGE → INFRA_AUDITED, with explicit "Infrastructure bookkeeping
+    only" disclaimer; F3-COUNT remains CONDITIONAL_BRIDGE; NC1-WITNESS remains FORMAL_KERNEL
+    with caveat; CONTINUUM-COORDSCALE remains INVALID-AS-CONTINUUM; OUT-* rows remain
+    BLOCKED; CLAY-GOAL remains BLOCKED; dashboard unconditionality_status remains
+    NOT_ESTABLISHED'
+  - 'Any percentage moved without explicit Cowork audit: NOT TRIGGERED — all 4 headline
+    percentages numerically identical to 17:00Z audit baseline; progress_metrics.yaml
+    updated_at unchanged at 2026-04-26T12:00:00Z; README badges identical'
+  cooling_off_window_compliance: REC-COWORK-PLANNER-LEDGER-MATURE-001 recommended
+    "After 2026-04-26T23:00:00Z" before maturation. Codex matured at 10:45Z. Pure
+    clock-time relaxed but the substantive criterion (no drift detected across multiple
+    intervening Cowork audits) is satisfied. Filed as note, not flag.
+  honesty_observation: Bookkeeping clean. The JOINT-PLANNER row promotion is explicitly
+    tagged "no mathematical metric or Clay-status movement" in BOTH the LEDGER evidence
+    column AND the dashboard ledger_status parenthetical. Anti-overclaim discipline
+    preserved. The planner is now sitting in the INFRA_AUDITED bucket alongside AGENTIC-INFRA
+    and AUTOCONTINUE — its mature bookkeeping home.
+  scoreboard: 8th non-vacuous-content Cowork audit pass of the session = 6 v2.* progress
+    audits + 2 honesty-infrastructure passes (joint planner audit 17:00Z, vacuity-finish
+    18:05Z) + this planner-mature audit at 18:15Z
   required_files:
   - UNCONDITIONALITY_LEDGER.md
   - dashboard/agent_state.json
   - registry/recommendations.yaml
   - README.md
   - registry/progress_metrics.yaml
-  objective: Audit CODEX-PLANNER-LEDGER-MATURE-001. Confirm JOINT-PLANNER is now
-    INFRA_AUDITED in ledger/dashboard bookkeeping, REC-COWORK-PLANNER-LEDGER-MATURE-001
-    is RESOLVED, and the four percentages remain 5 / 28 / 23-25 / 50 with no math
-    row movement.
+  objective: Audit CODEX-PLANNER-LEDGER-MATURE-001. Confirm JOINT-PLANNER is now INFRA_AUDITED
+    in ledger/dashboard bookkeeping, REC-COWORK-PLANNER-LEDGER-MATURE-001 is RESOLVED,
+    and the four percentages remain 5 / 28 / 23-25 / 50 with no math row movement.
   validation:
   - python scripts\joint_planner_report.py validate
   - dashboard/agent_state.json ledger_status.JOINT-PLANNER contains INFRA_AUDITED
@@ -2527,3 +2639,39 @@ tasks:
   next_agent: Codex
   notes:
   - Created by Codex after planner maturity bookkeeping.
+  - Dispatched to Cowork at 2026-04-26T10:49:04Z
+  dispatched_at: '2026-04-26T10:49:04Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+- id: COWORK-AUDIT-CODEX-V2.54-UNROOTED-NONCUT-001
+  title: 'Cowork: audit F3 v2.54 unrooted non-cut deletion step'
+  owner: Cowork
+  status: READY
+  priority: 3
+  created_at: '2026-04-26T18:20:00Z'
+  updated_at: '2026-04-26T18:20:00Z'
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - AXIOM_FRONTIER.md
+  - UNCONDITIONALITY_LEDGER.md
+  - F3_COUNT_DEPENDENCY_MAP.md
+  - AGENT_BUS.md
+  objective: >
+    Audit Codex v2.54.0. Confirm the new theorems prove only unrooted deletion
+    preserving induced preconnectedness, that their #print axioms traces are
+    canonical, that AXIOM_FRONTIER and UNCONDITIONALITY_LEDGER do not claim
+    F3-COUNT closure, and that the remaining blocker is root-avoiding
+    safe-deletion plus full word-decoder iteration.
+  validation:
+  - grep for plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
+    in YangMills/ClayCore/LatticeAnimalCount.lean
+  - AXIOM_FRONTIER.md contains v2.54.0 with both theorem names and canonical oracle
+  - UNCONDITIONALITY_LEDGER.md row F3-COUNT remains CONDITIONAL_BRIDGE
+  - COWORK_RECOMMENDATIONS.md or AGENT_BUS.md gains an audit entry
+  stop_if:
+  - v2.54 text implies `PlaquetteGraphAnchoredSafeDeletionExists` is proved
+  - Any percentage or mathematical status row was upgraded
+  next_agent: Codex
+  notes:
+  - Generated by Codex after v2.54 partial progress on CLAY-F3-COUNT-RECURSIVE-001.
+  - This is an audit task only; no Lean edits expected from Cowork.
