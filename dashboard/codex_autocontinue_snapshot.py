@@ -21,7 +21,10 @@
 
 import argparse
 import json
+import os
 import runpy
+import site
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -214,8 +217,50 @@ def build_dispatch_message(agent_role):
         raise ValueError(f"Unknown agent role: {agent_role}")
     if not CANONICAL_DISPATCHER.exists():
         raise FileNotFoundError(f"Missing canonical dispatcher: {CANONICAL_DISPATCHER}")
-    namespace = runpy.run_path(str(CANONICAL_DISPATCHER))
-    return namespace["build_message"](agent_role)
+    try:
+        namespace = runpy.run_path(str(CANONICAL_DISPATCHER))
+        return namespace["build_message"](agent_role)
+    except SystemExit as exc:
+        # When this file is launched directly through Windows .py association,
+        # it may run under a Python that lacks PyYAML. The console command
+        # `python ...` is the known-good interpreter on this machine, so fall
+        # back to it instead of aborting the GUI loop.
+        if str(exc) != "PyYAML is required for agent_next_instruction.py":
+            raise
+    except ModuleNotFoundError as exc:
+        if exc.name != "yaml":
+            raise
+    env = os.environ.copy()
+    user_home = Path.home()
+    candidate_sites = [
+        Path(site.getusersitepackages()),
+        user_home / "AppData" / "Roaming" / "Python" / "Python312" / "site-packages",
+        user_home / "AppData" / "Roaming" / "Python" / "Python311" / "site-packages",
+        user_home / "AppData" / "Roaming" / "Python" / "Python310" / "site-packages",
+    ]
+    existing_sites = [str(p) for p in candidate_sites if p.exists()]
+    env["PYTHONPATH"] = os.pathsep.join(
+        existing_sites + ([env["PYTHONPATH"]] if env.get("PYTHONPATH") else [])
+    )
+    env["PYTHONIOENCODING"] = "utf-8"
+    preferred_python = Path(r"C:\Python312\python.exe")
+    python_exe = str(preferred_python if preferred_python.exists() else Path(sys.executable))
+    result = subprocess.run(
+        [python_exe, str(CANONICAL_DISPATCHER), agent_role],
+        cwd=str(REPO_ROOT),
+        env=env,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(
+            "Canonical dispatcher failed via fallback python:\n"
+            f"STDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
+        )
+    return result.stdout
 
 
 def extract_task_id(message):

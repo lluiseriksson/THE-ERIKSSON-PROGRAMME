@@ -75,6 +75,19 @@ This contract is **binding** for every Codex and Cowork session.
 
 ## Latest Handoff
 
+### 2026-04-26 — Direct `.py` launcher dependency fix
+
+- **Agent**: Codex
+- **Summary**: User ran `C:\Users\lluis\Downloads\codex_autocontinue.py --codex-only` directly and Windows launched a Python environment that could not see PyYAML. The script now catches that path and falls back to `C:\Python312\python.exe` with explicit user-site `PYTHONPATH` and `PYTHONIOENCODING=utf-8`, so direct `.py` execution and `python codex_autocontinue.py` both work.
+- **Validation**:
+  - `& C:\Users\lluis\Downloads\codex_autocontinue.py Codex` produced a structured dispatch instead of `PyYAML is required`.
+  - `python C:\Users\lluis\Downloads\codex_autocontinue.py Codex` still produced a structured dispatch.
+  - `dashboard/codex_autocontinue_snapshot.py` refreshed and compiles.
+- **Registry sync**: Reset validation-only dispatches back to `READY`; the active Codex target remains `CLAY-F3-COUNT-RECURSIVE-001`.
+- **Unconditionality impact**: Infrastructure only. No mathematical progress claimed.
+- **Next exact instruction**:
+  > Lluis, rerun `C:\Users\lluis\Downloads\codex_autocontinue.py --codex-only`; the PyYAML error should be gone. If the GUI still does not activate Codex, use the printed method-failure lines to decide whether to recalibrate the Codex send button.
+
 ### 2026-04-26 — Codex autocontinue delivery fallback hardening
 
 - **Agent**: Codex
