@@ -396,6 +396,49 @@ Final queue normalization:
 
 ---
 
+## Latest Handoff — 2026-04-26 — Codex F3 parent-selector increment
+
+**Baton owner**: Codex
+**Task**: `CLAY-F3-COUNT-RECURSIVE-001`
+**Status**: `PARTIAL`
+
+Codex added the first functional parent-map API for the physical anchored
+BFS/Klarner route in `YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+- `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParentCode1296`
+- `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296`
+- `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296_reachable`
+- `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParentCode1296_spec`
+
+These turn v2.47.0's existential coded reachability witness into canonical
+functions: every non-root member of an anchored bucket now has a selected
+root-shell parent and selected `Fin 1296` code, with reachability and code
+stability proved in Lean.
+
+Validation:
+
+- `lake env lean YangMills/ClayCore/LatticeAnimalCount.lean` passed.
+- `lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+- New `#print axioms` traces are `[propext, Classical.choice, Quot.sound]`.
+
+Honesty note: this does **not** close F3-COUNT. It is a decoder-core increment
+that removes an existential layer from the remaining recursive deletion / full
+word-decoder construction. `UNCONDITIONALITY_LEDGER.md` keeps `F3-COUNT` as
+`CONDITIONAL_BRIDGE`.
+
+> **Next exact instruction**:
+> Codex, continue `CLAY-F3-COUNT-RECURSIVE-001` from the v2.48.0 parent
+> selector. Read `YangMills/ClayCore/LatticeAnimalCount.lean` around the new
+> parent selector and the existing `PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.of_nontrivial`.
+> Implement the next deletion-level API: define the residual non-root member
+> subtype/bucket data controlled by `rootShellParent1296`, prove that selected
+> parents lie in the root shell and that every non-root member is assigned a
+> stable first code, then run `lake build YangMills.ClayCore.LatticeAnimalCount`.
+> Stop if a genuine recursive deletion proof needs a missing Mathlib graph
+> lemma; in that case add a recommendation rather than using `sorry`.
+
+---
+
 ## Protocol checklist
 
 **Read order at startup**:

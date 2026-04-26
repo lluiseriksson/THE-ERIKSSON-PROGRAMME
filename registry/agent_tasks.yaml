@@ -224,16 +224,16 @@ tasks:
   - Reset to READY by Codex at 2026-04-26T06:28:23Z; previous dispatch attempts were not delivered to the left-screen Codex app because negative monitor coordinates were clamped.
   - Dispatched to Cowork at 2026-04-26T06:28:27Z
   - Reset to READY by Codex after left-screen delivery bugfix validation at 2026-04-26T06:29:41Z.
-  - 'AUDIT_PASS by Cowork 2026-04-26T08:00:00Z — three validation criteria all satisfied (roadmap M0-M6, ledger Tier 0-3, ≥3 Clay-reduction tasks). Stop-if "Any section claims the Clay problem is solved without formal evidence" not triggered.'
+  - AUDIT_PASS by Cowork 2026-04-26T08:00:00Z — three validation criteria all satisfied (roadmap M0-M6, ledger Tier 0-3, ≥3 Clay-reduction tasks). Stop-if "Any section claims the Clay problem is solved without formal evidence" not triggered.
   - 'NEGCOORDS bugfix spot-check by Cowork 2026-04-26T08:00:00Z: dashboard/codex_autocontinue_snapshot.py lines 114-123 confirm safe_move_to now uses `if x == 0 and y == 0: x, y = 1, 1` only (avoids the (0,0) FailSafe corner). Negative coords preserved. Docstring (lines 115-120) explicitly explains multi-monitor compatibility. AUDIT_PASS for negcoords bugfix.'
   dispatch_count: 6
 - id: CLAY-F3-COUNT-RECURSIVE-001
   title: F3 — recursive deletion / parent map for Klarner BFS-tree count
   owner: Codex
   status: READY
-  priority: 5
+  priority: 3
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T06:29:41Z'
+  updated_at: '2026-04-26T06:42:46Z'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - BLUEPRINT_F3Count.md
@@ -250,7 +250,7 @@ tasks:
   stop_if:
   - Recursive map cannot be expressed without a sorry
   - A Mathlib gap surfaces (file a recommendation, do not paper over)
-  next_agent: Cowork
+  next_agent: Codex
   notes:
   - Active F3 frontier; closes Priority 1.2 of CODEX_CONSTRAINT_CONTRACT.md.
   - This is the highest-Clay-reduction Codex task currently actionable.
@@ -261,7 +261,10 @@ tasks:
   - Dispatched to Codex at 2026-04-26T06:23:59Z
   - Reset to READY by Codex at 2026-04-26T06:28:23Z; previous dispatch attempts were not delivered to the left-screen Codex app because negative monitor coordinates were clamped.
   - Reset to READY by Codex after left-screen delivery bugfix validation at 2026-04-26T06:29:41Z.
-  dispatch_count: 3
+  - Dispatched to Codex at 2026-04-26T06:32:48Z
+  - 'PARTIAL by Codex at 2026-04-26T06:41:30Z: v2.48.0 parent selector landed in LatticeAnimalCount.lean; lake env lean and lake build module passed; F3-COUNT remains CONDITIONAL_BRIDGE pending recursive deletion/full word decoder.'
+  - Reset to READY priority 3 by Codex at 2026-04-26T06:42:46Z so autocontinue stays on active F3 task after v2.48 parent-selector partial progress; CODEX-FIX-MATHLIB-DRAFTS-001 remains queued after F3.
+  dispatch_count: 4
 - id: CLAY-EXP-RETIRE-7-001
   title: Retire 7 easy SU(N) generator-data Experimental axioms
   owner: Codex
@@ -324,14 +327,160 @@ tasks:
   - Dispatched to Codex at 2026-04-26T06:24:35Z
   - Reset to READY by Codex at 2026-04-26T06:28:23Z; previous dispatch attempts were not delivered to the left-screen Codex app because negative monitor coordinates were clamped.
   - Reset to READY by Codex after left-screen delivery bugfix validation at 2026-04-26T06:29:41Z.
+  - 'COWORK 2026-04-26T09:00:00Z REDIRECT: per COWORK-MATHLIB-PR-DRAFT-AUDIT-001 audit, MatrixExp_DetTrace_DimOne_PR.lean has unresolved `sorry` on lines 82 and 91 — NOT PR-ready as-is. CLAY-MATHLIB-PR-LANDING-001 first-submission target is REDIRECTED to LogTwoLowerBound_PR.lean (INDEX.md Priority 2.1 — full PASS audit). MatrixExp remains the second submission target after CODEX-FIX-MATHLIB-DRAFTS-001 lands. See REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001.'
   dispatch_count: 1
+- id: COWORK-MATHLIB-PR-DRAFT-AUDIT-001
+  title: 'Cowork: audit the 17-20 Mathlib PR drafts before CLAY-MATHLIB-PR-LANDING-001'
+  owner: Cowork
+  status: DONE
+  priority: 4
+  created_at: '2026-04-26T08:30:00Z'
+  updated_at: '2026-04-26T09:00:00Z'
+  audit_verdict: AUDIT_PARTIAL
+  audit_summary: '19 of 23 files PASS, 4 FAIL (below 5-failure NEEDS_HUMAN threshold). 19 PASS files are genuinely Mathlib-PR-ready. 4 FAILs: AnimalCount.lean (F-series, superseded), MatrixExp_DetTrace_DimOne_PR.lean (CRITICAL — INDEX Priority 1 target has unresolved sorry on lines 82, 91; no #print axioms), PartitionLatticeMobius.lean (F-series, sorry), PiDisjointFactorisation.lean (F-series, sorry).'
+  audit_evidence:
+  - COWORK_RECOMMENDATIONS.md per-file audit table dated 2026-04-26T09:00:00Z
+  - 19 PASS files form a coherent set of elementary Real.exp / Real.log / Real.cosh bounds
+  - 'CRITICAL: MatrixExp_DetTrace_DimOne_PR.lean (Priority 1 first-submission target) has 2 sorries — must be repaired or first submission must be redirected'
+  - 3 F-series files (AnimalCount, PartitionLatticeMobius, PiDisjointFactorisation) should move to "Inactive / Cancelled" section of INDEX.md
+  repairs_filed:
+  - CODEX-FIX-MATHLIB-DRAFTS-001 (READY priority 4) — repair MatrixExp + cancel 3 F-series
+  - REC-COWORK-MATHLIB-DRAFTS-FAIL-001 (priority 2)
+  - REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001 (priority 2) — redirect CLAY-MATHLIB-PR-LANDING-001 to LogTwoLowerBound_PR.lean as safer first target
+  required_files:
+  - mathlib_pr_drafts/INDEX.md
+  - mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean
+  - mathlib_pr_drafts/LogTwoLowerBound_PR.lean
+  - MATHLIB_PRS_OVERVIEW.md
+  - MATHLIB_SUBMISSION_PLAYBOOK.md
+  objective: 'Per CLAY-MATHLIB-PR-LANDING-001 sets up the first PR submission, Cowork audits the queue of 17-20 draft files in mathlib_pr_drafts/ for: (1) each file has a docstring explaining the result, proof strategy, and PR submission notes; (2) each closes with `#print axioms` to verify no spurious axioms slipped in; (3) each imports only mainline Mathlib (no project-specific dependencies); (4) the proofs are elementary (linarith/nlinarith/composed Mathlib lemmas — no novel research-level argumentation); (5) the priority queue in INDEX.md is well-justified. Output: an audit entry in COWORK_RECOMMENDATIONS.md with PASS/FAIL per file and a Codex-ready repair list for any FAIL.
+
+    '
+  validation:
+  - COWORK_RECOMMENDATIONS.md contains a per-file audit table
+  - Any FAIL items convert to a Codex-ready repair recommendation in registry/recommendations.yaml
+  - The priority order in mathlib_pr_drafts/INDEX.md is verified or amended
+  stop_if:
+  - mathlib_pr_drafts/INDEX.md is missing
+  - More than 5 of 20 files fail audit (escalate to NEEDS_HUMAN)
+  next_agent: Codex
+  notes:
+  - 'Direct prep for CLAY-MATHLIB-PR-LANDING-001: the first PR cannot ship until Cowork has signed off on the draft.'
+  - This is reading + audit work, not Lean code. Cowork can do it from sandbox.
+  - Dispatched to Cowork at 2026-04-26T06:36:58Z
+  dispatched_at: '2026-04-26T06:36:58Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+- id: COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001
+  title: 'Cowork: verify EXPERIMENTAL_AXIOMS_AUDIT.md against current YangMills/Experimental/ tree'
+  owner: Cowork
+  status: READY
+  priority: 5
+  created_at: '2026-04-26T08:30:00Z'
+  updated_at: '2026-04-26T08:30:00Z'
+  required_files:
+  - EXPERIMENTAL_AXIOMS_AUDIT.md
+  - YangMills/Experimental/
+  - UNCONDITIONALITY_LEDGER.md
+  - KNOWN_ISSUES.md
+  objective: 'Per UNCONDITIONALITY_LEDGER.md Tier 2, the project lists 14 Experimental axioms grouped as 7 (easy retire) + 1 (matExp_traceless_det_one, medium) + 1 (lieDerivReg_all, INVALID — needs reformulation) + 5 (Beurling-Deny / Hille-Yosida / Gronwall, hard Mathlib gaps). Cowork verifies (1) the count is still 14; (2) each named axiom exists in YangMills/Experimental/ at the location described; (3) the retire-effort categorization is current (no axiom has been silently moved out of Experimental/, no new axiom has been added without ledger entry); (4) lieDerivReg_all remains scoped to Experimental/ and does not affect any non-Experimental theorem oracle. Output: audit entry in COWORK_RECOMMENDATIONS.md + retirement-priority list in EXPERIMENTAL_AXIOMS_AUDIT.md if categorization needs amendment.
+
+    '
+  validation:
+  - COWORK_RECOMMENDATIONS.md contains an audit entry referencing this task ID
+  - EXPERIMENTAL_AXIOMS_AUDIT.md count + categorization confirmed or amended with diff
+  - No `axiom` declaration outside YangMills/Experimental/ (verify via grep -rn '^axiom ' YangMills/ | grep -v Experimental | wc -l == 0)
+  - lieDerivReg_all is not consumed by any non-Experimental theorem (verify via
+  stop_if:
+  - The Experimental count differs from 14 without a ledger entry explaining the diff
+  - Any non-Experimental theorem oracle includes lieDerivReg_all
+  next_agent: Codex
+  notes:
+  - 'Direct prep for CLAY-EXP-RETIRE-7-001: Codex cannot retire the 7 easy axioms until Cowork has confirmed which 7 they are and that they are still constructive (no Mathlib gap surfaced since the original audit).'
+  - This is reading + grep + audit work, not Lean code. Cowork can do it from sandbox.
+- id: COWORK-F3-BLUEPRINT-CONSISTENCY-AUDIT-001
+  title: 'Cowork: verify BLUEPRINT_F3Count.md and BLUEPRINT_F3Mayer.md are mutually consistent'
+  owner: Cowork
+  status: READY
+  priority: 6
+  created_at: '2026-04-26T08:30:00Z'
+  updated_at: '2026-04-26T08:30:00Z'
+  required_files:
+  - BLUEPRINT_F3Count.md
+  - BLUEPRINT_F3Mayer.md
+  - UNCONDITIONALITY_LEDGER.md
+  - F3_CHAIN_MAP.md
+  objective: 'Per UNCONDITIONALITY_LEDGER.md Tier 1 rows F3-COUNT and F3-MAYER, the F3 frontier closes when both blueprints land. Cowork audits that they agree on: (1) the smallness regime (β < 1/(28 N_c) per STATE_OF_THE_PROJECT.md); (2) the K_count bound (≤ 2d-1 = 7 for d=4); (3) the truncated activity bound r = 4 N_c β with A0 = 1; (4) the assembly target name `clayMassGap_of_shiftedF3MayerCountPackageExp`; (5) the cross-references in F3_CHAIN_MAP.md. Output: audit entry in COWORK_RECOMMENDATIONS.md flagging any inconsistency. Inconsistencies between blueprints would produce wasted Codex work later (see Finding 006 polynomial vs exponential frontier as the cautionary precedent).
+
+    '
+  validation:
+  - COWORK_RECOMMENDATIONS.md contains an audit entry referencing this task ID
+  - 'Five consistency checks pass: smallness regime, K_count, truncated activity, assembly target, F3_CHAIN_MAP cross-refs'
+  - Any inconsistency converts to a Codex-ready repair recommendation
+  stop_if:
+  - Either blueprint file is missing
+  - The blueprints disagree on the assembly target name
+  next_agent: Codex
+  notes:
+  - 'Direct prep for CLAY-F3-COUNT-RECURSIVE-001: prevents the recursive map being written against a stale smallness regime.'
+  - Cowork-side reading + cross-reference audit. No Lean code.
+- id: CODEX-FIX-MATHLIB-DRAFTS-001
+  title: 'Codex: repair 4 FAIL items in mathlib_pr_drafts/ (per COWORK-MATHLIB-PR-DRAFT-AUDIT-001)'
+  owner: Codex
+  status: READY
+  priority: 4
+  created_at: '2026-04-26T09:00:00Z'
+  updated_at: '2026-04-26T09:00:00Z'
+  required_files:
+  - mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean
+  - mathlib_pr_drafts/AnimalCount.lean
+  - mathlib_pr_drafts/PartitionLatticeMobius.lean
+  - mathlib_pr_drafts/PiDisjointFactorisation.lean
+  - mathlib_pr_drafts/INDEX.md
+  - COWORK_RECOMMENDATIONS.md (audit dated 2026-04-26T09:00:00Z)
+  objective: 'Per COWORK-MATHLIB-PR-DRAFT-AUDIT-001 audit: (1) repair MatrixExp_DetTrace_DimOne_PR.lean by closing the unresolved `sorry` on lines 82 and 91 with the elementary n=1 case proof, then add a closing `#print axioms` line; (2) move the 3 F-series files (AnimalCount.lean, PartitionLatticeMobius.lean, PiDisjointFactorisation.lean) into a new "## §X. Inactive / Cancelled" section of INDEX.md with the reason "superseded by Tier A PRs / `sorry`-incomplete"; do NOT delete the .lean files (preserve for git history per AGENTS.md §5 forbidden patterns) — just remove them from the active priority queue.
+
+    '
+  validation:
+  - grep -n "sorry" mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean returns nothing
+  - mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean ends with `#print axioms <theorem_name>` (theorem name pinned)
+  - mathlib_pr_drafts/INDEX.md gains "## §X. Inactive / Cancelled" section listing the 3 F-series with reason
+  - lake build (against Mathlib master, in a Mathlib checkout) succeeds for MatrixExp_DetTrace_DimOne_PR.lean
+  - registry/recommendations.yaml entry REC-COWORK-MATHLIB-DRAFTS-FAIL-001 → RESOLVED with link to commit SHA
+  stop_if:
+  - The n=1 elementary proof requires a Mathlib lemma not present (file a follow-up Mathlib gap recommendation; redirect CLAY-MATHLIB-PR-LANDING-001 to LogTwoLowerBound_PR.lean per REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001)
+  - lake build fails for any non-`sorry` reason
+  next_agent: Cowork
+  notes:
+  - 'Hard prerequisite for CLAY-MATHLIB-PR-LANDING-001 if MatrixExp is the first-submission target. If MatrixExp cannot be repaired today, REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001 fires automatically: first submission becomes LogTwoLowerBound_PR.lean.'
+- id: CODEX-CLEANUP-ORPHAN-A-001
+  title: 'Codex: git rm orphan empty file `a` at repo root'
+  owner: Codex
+  status: READY
+  priority: 8
+  created_at: '2026-04-26T08:30:00Z'
+  updated_at: '2026-04-26T08:30:00Z'
+  required_files:
+  - a
+  objective: 'A 0-byte file named `a` exists at repo root. It is residue from an accidental earlier session. Cowork could not delete it from the sandbox (allow_cowork_file_delete requires user interaction; workspace VM was unavailable). Codex must `git rm a`, commit with message ''chore: remove orphan empty file `a` at repo root'', and update the registry.
+
+    '
+  validation:
+  - git ls-files | grep -E '^a$' returns nothing
+  - registry/agent_tasks.yaml gains the DONE entry with commit SHA
+  stop_if:
+  - The file `a` no longer exists (mark CANCELLED)
+  - The file has nonzero size (escalate to NEEDS_HUMAN — content review needed)
+  next_agent: Cowork
+  notes:
+  - Long-pending hygiene item from Cowork session 2026-04-26T05:00:00Z.
 - id: META-GENERATE-TASKS-001
   title: Generate new actionable tasks when the queue is empty
   owner: Any
   status: FUTURE
   priority: 99
   created_at: '2026-04-26T00:00:00Z'
-  updated_at: '2026-04-26T06:29:41Z'
+  updated_at: '2026-04-26T06:33:20Z'
   required_files:
   - AGENT_BUS.md
   - FORMALIZATION_ROADMAP_CLAY.md
@@ -356,4 +505,7 @@ tasks:
   - Confirmed FUTURE by Codex after final validation at 2026-04-26T06:21:05Z; not dispatchable while Clay tasks are READY.
   - Dispatched to Codex at 2026-04-26T06:24:52Z
   - Reset to FUTURE by Codex at 2026-04-26T06:28:23Z; failed GUI sends must not consume the emergency meta task.
-  dispatch_count: 4
+  - Dispatched to Cowork at 2026-04-26T06:33:20Z
+  dispatch_count: 5
+  dispatched_at: '2026-04-26T06:33:20Z'
+  dispatched_to: Cowork

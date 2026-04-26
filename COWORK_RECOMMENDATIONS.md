@@ -4,6 +4,128 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T09:00:00Z — AUDIT_PARTIAL: COWORK-MATHLIB-PR-DRAFT-AUDIT-001
+
+**Audit result**: `AUDIT_PARTIAL` — **19 of 23 files PASS, 4 FAIL** (below the 5-failure NEEDS_HUMAN threshold). One critical finding: the file currently slated as `CLAY-MATHLIB-PR-LANDING-001`'s submission target (`MatrixExp_DetTrace_DimOne_PR.lean`) **is not actually PR-ready**. The 19 PASS files are genuinely shippable.
+
+**Scope**: All 23 `.lean` files in `mathlib_pr_drafts/` — 20 `_PR.lean` (current sweep) + 3 older F-series (`AnimalCount.lean`, `PartitionLatticeMobius.lean`, `PiDisjointFactorisation.lean`). Audit performed on the four criteria specified by `COWORK-MATHLIB-PR-DRAFT-AUDIT-001` task objective.
+
+**Per-file results**:
+
+| # | Filename | Docstring | #print axioms | Mathlib-only imports | Elementary proof | Verdict |
+|---|---|---|---|---|---|---|
+| 1 | AnimalCount.lean | PASS | FAIL | PASS | PARTIAL | **FAIL** |
+| 2 | BrydgesKennedyBound_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 3 | CoshLeExpAbs_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 4 | ExpLeOneDivOneSub_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 5 | ExpMVTBounds_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 6 | ExpNegLeOneDivAddOne_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 7 | ExpSubOneLeSelfDivOneSub_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 8 | ExpTangentLineBound_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 9 | KlarnerBFSBound_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 10 | LogLeSelfDivE_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 11 | LogLtSelf_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 12 | LogMVTBounds_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 13 | LogOneAddLeSelf_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 14 | LogTwoLowerBound_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 15 | **MatrixExp_DetTrace_DimOne_PR.lean** | PARTIAL | **FAIL** | PASS | **FAIL** | **FAIL** |
+| 16 | MulExpNegLeInvE_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 17 | NumericalBoundsBundle_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 18 | OneAddDivPowLeExp_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 19 | OneAddPowLeExpMul_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 20 | OneSubInvLeLog_PR.lean | PASS | PASS | PASS | PASS | PASS |
+| 21 | PartitionLatticeMobius.lean | PASS | FAIL | PASS | FAIL | **FAIL** |
+| 22 | PiDisjointFactorisation.lean | PASS | FAIL | PASS | FAIL | **FAIL** |
+| 23 | SpectralGapMassFormula_PR.lean | PASS | PASS | PASS | PASS | PASS |
+
+**FAIL details**:
+
+1. **`AnimalCount.lean`** (F-series, older) — missing `#print axioms`. INDEX.md already marks it superseded by `KlarnerBFSBound_PR.lean`. Recommendation: **mark CANCELLED**, do not ship.
+
+2. **`MatrixExp_DetTrace_DimOne_PR.lean`** — **CRITICAL**. INDEX.md Priority 1 (intended target of `CLAY-MATHLIB-PR-LANDING-001`). Has unresolved `sorry` on lines 82 and 91, no `#print axioms`, partial docstring. **Must be repaired before any PR submission. The CLAY-MATHLIB-PR-LANDING-001 task should redirect to a verified-PASS file (`LogTwoLowerBound_PR.lean` is the safest first submission per INDEX.md Priority 2.1) until MatrixExp is fixed.**
+
+3. **`PartitionLatticeMobius.lean`** (F-series, older) — `sorry` on lines 89 and 121, no `#print axioms`. Recommendation: **mark CANCELLED** (older F-series, scope-creep risk).
+
+4. **`PiDisjointFactorisation.lean`** (F-series, older) — `sorry` on lines 114 and 155, no `#print axioms`. Recommendation: **mark CANCELLED** (older F-series).
+
+**INDEX.md priority queue check**: the Tier A / Tier B / Tier C taxonomy is logically sound. The 19 PASS files are correctly ordered. **However**, the 3 F-series drafts should not appear in any active PR-ready list — they are explicitly described as "deprioritised in favour of structural attacks on Yang-Mills directly" (INDEX.md §2). Recommendation: move them under a clearly-labelled `## §X. Inactive / Cancelled` section and remove from Priority queue.
+
+**The 19 PASS files are genuinely Mathlib-PR-ready** and form a coherent set of elementary `Real.exp` / `Real.log` / `Real.cosh` bounds. Submitting them in tier order would be a clean outward Mathlib contribution.
+
+**Tasks updates**:
+- `COWORK-MATHLIB-PR-DRAFT-AUDIT-001`: READY → **DONE** (audit verdict AUDIT_PARTIAL).
+- New repair task created: `CODEX-FIX-MATHLIB-DRAFTS-001` (priority 4, owner Codex) — repair `MatrixExp_DetTrace_DimOne_PR.lean` (close 2 sorries + add `#print axioms`) and either repair or `CANCELLED`-mark the 3 F-series.
+- `CLAY-MATHLIB-PR-LANDING-001`: redirected to `LogTwoLowerBound_PR.lean` as the safer first submission (smaller, full PASS, INDEX.md Priority 2.1). MatrixExp moved to a follow-up after `CODEX-FIX-MATHLIB-DRAFTS-001` lands.
+
+**Recommendations added**:
+- `REC-COWORK-MATHLIB-DRAFTS-FAIL-001` (priority 2) — convert the 4 FAIL items into the repair task above.
+- `REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001` (priority 2) — redirect first submission target to `LogTwoLowerBound_PR.lean`.
+
+**Honesty preservation**:
+- Below the 5-failure NEEDS_HUMAN escalation threshold, so this is `AUDIT_PARTIAL` not `NEEDS_HUMAN`.
+- No mathematical row of `UNCONDITIONALITY_LEDGER.md` was upgraded. The 19 PASS files are infrastructure for outward Mathlib contribution; they reduce Tier 1 / Tier 2 / Tier 3 conditionality in the ledger only **after they merge upstream** (which adds the lemmas to Mathlib and removes the `EXP-MATEXP-DET` row's gap).
+- The CRITICAL finding on `MatrixExp_DetTrace_DimOne_PR.lean` matters because shipping a PR with `sorry` would be a serious reputational error against the Mathlib community.
+
+**Verdict**: AUDIT_PARTIAL with explicit repair path. No NEEDS_HUMAN escalation.
+
+---
+
+## 2026-04-26T08:00:00Z — AUDIT_PASS: CLAY-ROADMAP-001 + NEGCOORDS bugfix spot-check
+
+**Audit result**: `AUDIT_PASS` on both items. `CLAY-ROADMAP-001` closed DONE. The negative-coordinates bugfix in the watcher script also passes spot-check. Baton remains with Codex; next active task is `CLAY-F3-COUNT-RECURSIVE-001`.
+
+### CLAY-ROADMAP-001 — three validation criteria
+
+| Criterion | Result | Evidence |
+|---|---|---|
+| `FORMALIZATION_ROADMAP_CLAY.md` contains milestone sections | PASS | M0–M6 present (Agentic infra / Formal honesty / Classical YM geometry / Euclidean constructive / OS-Wightman reconstruction / Mass gap / Unconditionality closure) plus Daily work rule. |
+| `UNCONDITIONALITY_LEDGER.md` tracks all conditional dependencies | PASS (re-enriched) | Tier 0 (3 programme-level rows incl. CLAY-GOAL BLOCKED, AGENTIC-INFRA INFRA_AUDITED, AUTOCONTINUE INFRA_AUDITED). Tier 1 (10 rows: L1-HAAR through F3-COMBINED, NC1-WITNESS, CONTINUUM-COORDSCALE). Tier 2 (4 rows for 14 Experimental axioms grouped by retire-effort). Tier 3 (3 outside-scope rows: continuum / OS-Wightman / strong-coupling). |
+| `registry/agent_tasks.yaml` contains ≥ 3 Clay-reduction tasks | PASS | `CLAY-F3-COUNT-RECURSIVE-001` (priority 5), `CLAY-EXP-RETIRE-7-001` (priority 6), `CLAY-MATHLIB-PR-LANDING-001` (priority 7) — all READY and owner-Codex. |
+| Stop-if "Any section claims the Clay problem is solved without formal evidence" | NOT TRIGGERED | Roadmap explicitly states "This roadmap is not a proof. It is a dependency map." Ledger keeps `CLAY-GOAL` BLOCKED. AGENTS.md §8 anti-overclaim rule preserved. |
+
+### NEGCOORDS bugfix spot-check
+
+Inspected `dashboard/codex_autocontinue_snapshot.py` lines 114–123:
+
+```python
+def safe_move_to(x, y, duration=0.1):
+    """Mueve el ratón sin romper coordenadas de monitores a la izquierda.
+
+    Windows usa coordenadas negativas para pantallas situadas a la izquierda o
+    encima del monitor principal. Solo evitamos la esquina primaria (0, 0), que
+    dispara el FailSafe de pyautogui; no normalizamos coordenadas negativas.
+    """
+    if x == 0 and y == 0:
+        x, y = 1, 1
+    pyautogui.moveTo(x, y, duration=duration)
+```
+
+The previous version clamped both `x <= 0` and `y <= 0` to 1, breaking dispatch to the left-monitor Codex window. The fix correctly avoids only the (0, 0) corner that triggers `pyautogui.FAILSAFE`. Negative coords are preserved. Docstring is explicit. **AUDIT_PASS for the negcoords bugfix.**
+
+### Tasks updated
+
+- `CLAY-ROADMAP-001`: READY → **DONE** (audit-pass with 4-criterion table + 4-pointer evidence).
+- `CLAY-F3-COUNT-RECURSIVE-001`: still READY priority 5, active baton.
+- `CLAY-EXP-RETIRE-7-001`, `CLAY-MATHLIB-PR-LANDING-001`: still READY in queue.
+
+### Recommendations added
+
+0. No new recommendations. No repair tasks.
+
+### Honesty preservation
+
+- The Tier 1 ledger row `CLAY-GOAL` remains BLOCKED. No claim about Clay-level mathematical progress was made.
+- All ledger upgrades this session were **meta-infrastructure rows** (`AGENTIC-INFRA` and `AUTOCONTINUE` → `INFRA_AUDITED`). The mathematical-content rows (L1-HAAR, L2.4-SCHUR, L2.5-FROBENIUS, L2.6-CHARACTER, NC1-WITNESS) keep their pre-existing `FORMAL_KERNEL` status with no upgrades.
+- The new Clay-reduction tasks (`CLAY-F3-COUNT-RECURSIVE-001`, `CLAY-EXP-RETIRE-7-001`, `CLAY-MATHLIB-PR-LANDING-001`) are scaffolding for Codex to advance Tier 1 / Tier 2 ledger rows. Their existence does not by itself reduce Clay conditionality — only their successful Lean implementation + Cowork audit will.
+
+### Cowork-side observation for the human
+
+Three audit milestones now complete this session: `COWORK-AUDIT-AUTOCONTINUE-001`, `COWORK-AUDIT-001`, `CLAY-ROADMAP-001`. The infrastructure side of M0 (Agentic research infrastructure) is essentially closed. The roadmap document is intentionally minimal in its current normalised form — that is fine for the validation contract. The detail lives in the ledger and in the blueprints (`BLUEPRINT_F3Count.md`, `BLUEPRINT_F3Mayer.md`, `BLUEPRINT_BalabanRG.md`, `BLUEPRINT_ContinuumLimit.md`, `BLUEPRINT_ReflectionPositivity.md`, `BLUEPRINT_MultiscaleDecoupling.md`).
+
+The next 24/7 cycle should produce **real Lean output** rather than coordination metadata. The first Cowork audit milestone in that regime is `COWORK-AUDIT-CLAY-F3-COUNT-RECURSIVE-001` (auto-create when Codex marks `CLAY-F3-COUNT-RECURSIVE-001` DONE with `lake build` exit-0 + `#print axioms` reducing to `[propext, Classical.choice, Quot.sound]`).
+
+---
+
 ## 2026-04-26T07:30:00Z — AUDIT_PASS: COWORK-AUDIT-001 (whole coordination system)
 
 **Audit result**: `AUDIT_PASS`. Whole agentic coordination system audited end-to-end. Task `COWORK-AUDIT-001` marked DONE. Baton handed to Codex with `CLAY-F3-COUNT-RECURSIVE-001`.

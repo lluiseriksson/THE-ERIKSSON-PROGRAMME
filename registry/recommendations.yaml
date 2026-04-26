@@ -1,4 +1,145 @@
 recommendations:
+- id: REC-COWORK-MATHLIB-DRAFTS-FAIL-001
+  author: Cowork
+  status: OPEN
+  priority: 2
+  title: 'Fix 4 FAIL items in mathlib_pr_drafts/ before any upstream submission'
+  recommendation: 'Audit COWORK-MATHLIB-PR-DRAFT-AUDIT-001 found 4 of 23 files FAIL.
+    Critical: MatrixExp_DetTrace_DimOne_PR.lean (intended Priority-1 first
+    submission) has unresolved `sorry` on lines 82 and 91 plus no `#print axioms`.
+    The 3 F-series files (AnimalCount, PartitionLatticeMobius, PiDisjointFactorisation)
+    have `sorry` and no `#print axioms` and are described as deprioritised in
+    INDEX.md §2 — they should be marked CANCELLED rather than fixed. Codex must
+    (a) repair MatrixExp_DetTrace_DimOne_PR.lean (close both sorries with the
+    elementary n=1 case proof + add `#print axioms` line); (b) move the 3 F-series
+    files into an explicit "Inactive / Cancelled" section of INDEX.md.
+
+    '
+  reason: 'Shipping a Mathlib PR with `sorry` would be a serious reputational error
+    against the Mathlib community. The 19 PASS files are clean and genuinely
+    PR-ready, but cannot be submitted in INDEX.md priority order while the
+    Priority-1 file is unfixed.
+
+    '
+  risk_if_ignored: 'CLAY-MATHLIB-PR-LANDING-001 ships an unfit PR with `sorry`,
+    triggering immediate Mathlib reviewer rejection and damaging future submission
+    prospects.
+
+    '
+  files_affected:
+  - mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean
+  - mathlib_pr_drafts/AnimalCount.lean
+  - mathlib_pr_drafts/PartitionLatticeMobius.lean
+  - mathlib_pr_drafts/PiDisjointFactorisation.lean
+  - mathlib_pr_drafts/INDEX.md
+  converts_to_task: CODEX-FIX-MATHLIB-DRAFTS-001
+  validation: 'After repair, mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean
+    contains zero `sorry` and ends with `#print axioms` reducing to
+    `[propext, Classical.choice, Quot.sound]`. INDEX.md gains an "Inactive /
+    Cancelled" section listing the 3 F-series with reason "superseded by Tier A
+    PRs / sorry-incomplete".
+
+    '
+
+- id: REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001
+  author: Cowork
+  status: OPEN
+  priority: 2
+  title: 'Redirect CLAY-MATHLIB-PR-LANDING-001 first submission target to LogTwoLowerBound_PR.lean'
+  recommendation: 'Until CODEX-FIX-MATHLIB-DRAFTS-001 lands, CLAY-MATHLIB-PR-LANDING-001
+    should target LogTwoLowerBound_PR.lean (INDEX.md Priority 2.1 — described as
+    "tiny, self-contained, sanity-check submission"). All four audit criteria
+    PASS. After it lands and the Mathlib PR pipeline is established, the second
+    submission can target the repaired MatrixExp_DetTrace_DimOne_PR.lean.
+
+    '
+  reason: 'The repository should establish its Mathlib submission credibility
+    with a verified-clean PR before attempting the higher-impact (but currently
+    `sorry`-incomplete) MatrixExp PR.
+
+    '
+  risk_if_ignored: 'First submission fails due to `sorry`; reviewer relationship
+    starts on the wrong foot.
+
+    '
+  files_affected:
+  - registry/agent_tasks.yaml (CLAY-MATHLIB-PR-LANDING-001)
+  - MATHLIB_PRS_OVERVIEW.md
+  converts_to_task: 'Inline edit to CLAY-MATHLIB-PR-LANDING-001 task notes (no new task needed)'
+  validation: 'CLAY-MATHLIB-PR-LANDING-001 task notes reference LogTwoLowerBound_PR.lean
+    as the first submission target, with MatrixExp deferred to a follow-up after
+    CODEX-FIX-MATHLIB-DRAFTS-001.
+
+    '
+
+- id: REC-COWORK-LONG-CI-LAKE-BUILD-001
+  author: Cowork
+  status: OPEN
+  priority: 2
+  title: Configure long-timeout `lake build YangMills` in CI
+  recommendation: 'The Codex sync of 2026-04-26 (`dfbcf7f` consolidate Cowork sweep)
+    imported ~340 Lean files. Local `lake build YangMills` (full graph) timed out
+    at 15 minutes and was abandoned. The master import graph is therefore integration-pending.
+    CI should be configured with a long-timeout job (60-120 min) that runs the full
+    build and posts the result as the project health badge. Until this lands, no agent
+    should claim the master tree type-checks end-to-end.
+
+    '
+  reason: 'STATE_OF_THE_PROJECT.md TL;DR explicitly flags this: the per-module builds
+    (e.g. `lake build YangMills.ClayCore.LatticeAnimalCount`) pass, but the master
+    import graph has not been verified green since the v2.42 sync. Agents may introduce
+    transitive import failures unnoticed.
+
+    '
+  risk_if_ignored: 'A future Codex commit could break a transitive import without
+    detection. The first symptom would be a failed Cowork audit weeks later when someone
+    tries to consume a downstream theorem and discovers the upstream module did not
+    compile.
+
+    '
+  files_affected:
+  - .github/workflows/ci.yml
+  - STATE_OF_THE_PROJECT.md
+  - dashboard/agent_state.json (audit_state.lake_build_full)
+  converts_to_task: CODEX-CI-LONG-LAKE-BUILD-001 (to be created when human ratifies)
+  validation: 'CI pipeline runs `lake build YangMills` to completion (exit 0) on every
+    push to main. dashboard/agent_state.json audit_state.lake_build_full moves from
+    INTEGRATION_PENDING to PASS.
+
+    '
+- id: REC-NEGCOORDS-RUNTIME-CONFIRMATION-001
+  author: Cowork
+  status: OPEN
+  priority: 4
+  title: Confirm multi-monitor delivery via runtime spot-check after negcoords bugfix
+  recommendation: 'The negcoords bugfix in dashboard/codex_autocontinue_snapshot.py
+    lines 114-123 is correct at the source level (verified by Cowork at 2026-04-26T08:00:00Z).
+    However, runtime confirmation that dispatched messages actually reach the left-monitor
+    Codex chat box has not been recorded. After the next ~5 dispatches, Cowork should
+    spot-check that registry/agent_history.jsonl contains successful dispatch events
+    with `[+] Codex (modo=ready)` style logs and that no GHOST_PAUSE event fires.
+
+    '
+  reason: 'Source-level audit cannot detect a coordinate-system mismatch (e.g. pyautogui
+    versus mss using different monitor origins). Only a runtime transcript can.
+
+    '
+  risk_if_ignored: 'If the bugfix is incomplete at the runtime level, Codex sessions
+    will silently fail to deliver tasks to the left-monitor app, the queue will not
+    advance, and the symptom will look like Codex being idle when it is in fact receiving
+    no input.
+
+    '
+  files_affected:
+  - dashboard/codex_autocontinue_snapshot.py
+  - registry/agent_history.jsonl
+  converts_to_task: COWORK-NEGCOORDS-RUNTIME-CONFIRMATION-001 (FUTURE — fires after
+    5 successful dispatches)
+  validation: 'After 5 dispatches post-bugfix, registry/agent_history.jsonl shows
+    no GHOST_PAUSE events and at least 5 successful complete_task or handoff events
+    for tasks delivered to either monitor.
+
+    '
 - id: REC-AUDIT-AUTOCONTINUE-MIRROR-001
   author: Cowork
   status: RESOLVED

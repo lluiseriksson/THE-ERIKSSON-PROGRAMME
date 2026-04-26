@@ -1,3 +1,50 @@
+# v2.48.0 — anchored first-shell parent selector
+
+**Released: 2026-04-26**
+
+## What
+
+Added functional parent-map API for the physical anchored BFS/Klarner route in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParentCode1296
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296_reachable
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParentCode1296_spec
+
+This turns the v2.47.0 existential reachability statement into actual
+`Classical.choose`-backed functions: for every non-root member of an anchored
+bucket, Lean now chooses a root-shell parent, its `Fin 1296` code, proves that
+the parent reaches the member inside the induced bucket graph, and proves that
+the chosen parent has exactly the chosen code.
+
+## Why
+
+No percentage bar moves.  This is a real parent-map increment for the active
+`1 < k` F3/Klarner decoder case, but it does **not** yet construct the full
+recursive deletion map or the global word decoder.  It removes one layer of
+existential unpacking from the remaining recursion: the next step can iterate a
+stable function-valued parent selector instead of repeatedly destructing
+`∃ c, ∃ z, ...` witnesses.
+
+## Oracle
+
+Lean checks:
+
+    lake env lean YangMills/ClayCore/LatticeAnimalCount.lean
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296_reachable
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParentCode1296_spec
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.47.0 — anchored first-branch reachability API
 
 **Released: 2026-04-26**

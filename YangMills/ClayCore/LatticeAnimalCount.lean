@@ -1671,6 +1671,79 @@ theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCo
       hX hy hyne
   exact ⟨c, z, ⟨⟨tail⟩, hcode⟩⟩
 
+/-- Canonical first-shell parent code for a non-root member of a physical
+anchored bucket.  This turns the previous existential first-branch theorem
+into a functional parent-map API, which is the form needed by a recursive
+BFS/Klarner decoder. -/
+noncomputable def physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParentCode1296
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (y : {y : ConcretePlaquette physicalClayDimension L // y ∈ X ∧ root ≠ y}) :
+    Fin 1296 :=
+  Classical.choose
+    (physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_reachable_to_member
+      hX y.2.1 y.2.2)
+
+/-- Canonical first-shell parent for a non-root member of a physical anchored
+bucket.  The parent lies in the root shell `X ∩ neighborFinset root`. -/
+noncomputable def physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (y : {y : ConcretePlaquette physicalClayDimension L // y ∈ X ∧ root ≠ y}) :
+    {z : ConcretePlaquette physicalClayDimension L //
+      z ∈ X ∩ (plaquetteGraph physicalClayDimension L).neighborFinset root} :=
+  Classical.choose
+    (Classical.choose_spec
+      (physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_reachable_to_member
+        hX y.2.1 y.2.2))
+
+/-- The canonical first-shell parent reaches the target member inside the
+bucket-induced graph. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296_reachable
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (y : {y : ConcretePlaquette physicalClayDimension L // y ∈ X ∧ root ≠ y}) :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ X}).Reachable
+      ⟨(physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296
+          hX y).1,
+        (Finset.mem_inter.mp
+          (physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296
+            hX y).2).1⟩
+      ⟨y.1, y.2.1⟩ := by
+  let h :=
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_reachable_to_member
+      hX y.2.1 y.2.2
+  exact (Classical.choose_spec (Classical.choose_spec h)).1
+
+/-- The canonical first-shell parent has exactly the canonical parent code.
+This is the code-stability equation needed when the parent map is iterated into
+full bucket words. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParentCode1296_spec
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (y : {y : ConcretePlaquette physicalClayDimension L // y ∈ X ∧ root ≠ y}) :
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296 hX
+      (physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296
+        hX y) =
+      physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParentCode1296
+        hX y := by
+  let h :=
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_reachable_to_member
+      hX y.2.1 y.2.2
+  exact (Classical.choose_spec (Classical.choose_spec h)).2
+
 /-- Any nontrivial anchored bucket has a first root-neighbor symbol in any
 available neighbor-choice alphabet. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
@@ -2596,6 +2669,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_tail_to_member
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_reachable_to_member
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_reachable_to_member
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296_reachable
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParentCode1296_spec
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
