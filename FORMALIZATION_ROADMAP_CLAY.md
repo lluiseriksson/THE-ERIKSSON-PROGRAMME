@@ -10,6 +10,29 @@ actionable formalization, audit, and research tasks.
 Reach a fully unconditional formal proof chain for the Clay Yang-Mills Mass Gap
 problem.
 
+## Joint planner metrics
+
+The live consensus percentages are maintained in `JOINT_AGENT_PLANNER.md` and
+`registry/progress_metrics.yaml`, and can be rendered or validated with:
+
+```powershell
+python scripts\joint_planner_report.py
+python scripts\joint_planner_report.py validate
+```
+
+Current planning snapshot:
+
+| Metric | Current estimate | Meaning |
+|---|---:|---|
+| Clay-as-stated | ~5% | Continuum quantum Yang-Mills on R4 with OS/Wightman-compatible mass gap for SU(N), N >= 2. |
+| Internal lattice small-beta subgoal | ~28% | The active formalization scope: representation theory + F3/Klarner counting + Mayer/Kotecky-Preiss at small beta. |
+| Honest lattice discount | ~23-25% | Same lattice subgoal after discounting vacuous/low-content retirements. |
+| Named-frontier retirement | 50% | Internal monotone accounting over `AXIOM_FRONTIER.md` and `SORRY_FRONTIER.md`; not the literal Clay percentage. |
+
+Percentage changes require Cowork audit, `UNCONDITIONALITY_LEDGER.md` sync, and
+README sync. Infrastructure progress alone does not move mathematical
+percentages.
+
 ## Non-negotiable rule
 
 This roadmap is not a proof. It is a dependency map. No item is complete until

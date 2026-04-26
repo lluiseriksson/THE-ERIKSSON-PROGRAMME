@@ -1142,11 +1142,11 @@ tasks:
   - 'DONE by Codex at 2026-04-26T09:32:17Z: scripts/agent_next_instruction.py now
     evaluates explicit FUTURE auto-promote triggers before dispatch (task DONE/history,
     AXIOM_FRONTIER version gate, grep/file gate, and specific F3 v2.52 degree-one
-    audit gate). It logs trigger_not_fired when gated tasks are not satisfied,
-    suppresses same-agent repeat dispatches for 10 minutes, and configures UTF-8
-    stdout/stderr for Windows CLI. External watcher and dashboard snapshot now compute
-    retry-vs-new-message before reducing repeat guard, so confirmed same-task redispatch
-    keeps the full repeat pause.'
+    audit gate). It logs trigger_not_fired when gated tasks are not satisfied, suppresses
+    same-agent repeat dispatches for 10 minutes, and configures UTF-8 stdout/stderr
+    for Windows CLI. External watcher and dashboard snapshot now compute retry-vs-new-message
+    before reducing repeat guard, so confirmed same-task redispatch keeps the full
+    repeat pause.'
   dispatched_at: '2026-04-26T09:31:20Z'
   dispatched_to: Codex
   dispatch_count: 1
@@ -1815,3 +1815,201 @@ tasks:
   dispatched_at: '2026-04-26T07:20:21Z'
   dispatched_to: Cowork
   dispatch_count: 2
+- id: COWORK-F3-DEPENDENCY-MAP-001
+  title: 'Cowork: produce F3_COUNT_DEPENDENCY_MAP.md showing the exact gap between
+    v2.52 and full F3-COUNT closure'
+  owner: Cowork
+  status: READY
+  priority: 4
+  created_at: '2026-04-26T16:45:00Z'
+  updated_at: '2026-04-26T16:45:00Z'
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - FORMALIZATION_ROADMAP_CLAY.md
+  - UNCONDITIONALITY_LEDGER.md
+  - AXIOM_FRONTIER.md
+  objective: 'CLAY-F3-COUNT-RECURSIVE-001 is at PARTIAL v2.52. The next concrete target
+    is the global root-avoiding leaf/deletion-order theorem (existence of an induced-degree-1
+    non-root vertex in every nontrivial anchored preconnected bucket). Cowork produces
+    a new document `F3_COUNT_DEPENDENCY_MAP.md` (under doc/ or root) that lists, in
+    topologically sorted order from v2.52 to full `count(n) ≤ C·K^n` closure: (a)
+    every Lean theorem already proven (with file:line references); (b) every Lean
+    theorem still missing (with proposed signature, dependencies on (a), and difficulty
+    estimate); (c) the precise statement of the global root-avoiding leaf existence
+    lemma; (d) the iteration argument that lifts v2.52 + (c) to the full anchored
+    word decoder; (e) the final Klarner-style bound. Output is a mathematician-readable
+    blueprint that Codex can use as a step-by-step plan for v2.53+ commits.
+
+    '
+  validation:
+  - F3_COUNT_DEPENDENCY_MAP.md exists with sections (a)–(e) populated
+  - Every existing theorem citation uses literal file:line references that pass spot-check
+  - Missing theorems list is non-empty and includes at minimum the root-avoiding leaf
+    existence lemma + word-decoder iteration lemma
+  - Document explicitly states F3-COUNT remains CONDITIONAL_BRIDGE until both missing
+    theorems land
+  - COWORK_RECOMMENDATIONS.md gains a dependency-map-001 entry citing the document
+  stop_if:
+  - The document claims F3-COUNT closure (would be overclaim — only v2.52 partial
+    subcase is proven)
+  - File:line references do not match actual Lean source (would be silent rot)
+  next_agent: Codex
+  notes:
+  - Reduces conditionality by making the remaining gap precise rather than aspirational.
+  - When DONE, COWORK-AUDIT-CODEX-V2.53-PROGRESS-001 (FUTURE) auto-promotes once Codex
+    commits a v2.53+ entry to AXIOM_FRONTIER.md.
+- id: COWORK-CLAY-HORIZON-AUDIT-001
+  title: 'Cowork: write CLAY_HORIZON.md companion for honest external-reader Clay
+    scope'
+  owner: Cowork
+  status: READY
+  priority: 5
+  created_at: '2026-04-26T16:45:00Z'
+  updated_at: '2026-04-26T16:45:00Z'
+  required_files:
+  - UNCONDITIONALITY_LEDGER.md
+  - FORMALIZATION_ROADMAP_CLAY.md
+  - KNOWN_ISSUES.md
+  - MATHEMATICAL_REVIEWERS_COMPANION.md
+  objective: 'Per the LEDGER, three OUT-* rows are BLOCKED: OUT-CONTINUUM (research-level,
+    5+ year horizon), OUT-OS-WIGHTMAN (Mathlib gauge-theory infra missing), OUT-STRONG-COUPLING
+    (cluster expansion diverges). External readers seeing the FORMAL_KERNEL rows in
+    Tier 0/1 may misread the project as "near Clay" when in reality the dominant Clay
+    obstacle (continuum limit + OS reconstruction + strong-coupling extension) is
+    not under attack here. Cowork writes a new companion `CLAY_HORIZON.md` (root or
+    doc/) that (i) restates that the project formalizes the *lattice mass gap at small
+    coupling*, not Clay-as-stated; (ii) for each OUT-* row, summarizes the current
+    blocker, distance estimate, and what concrete formal infrastructure would have
+    to land first; (iii) gives an honest "% toward Clay-as-stated" vs "% toward lattice
+    mass gap" rough estimate with a per-row table and explicit caveats; (iv) cross-references
+    KNOWN_ISSUES vacuity caveats so external readers do not double-count vacuous FORMAL_KERNEL
+    rows. The deliverable is reviewer-publishable.
+
+    '
+  validation:
+  - CLAY_HORIZON.md exists with sections (i)–(iv)
+  - Document explicitly distinguishes "lattice mass gap" target from "Clay-as-stated"
+    target
+  - All three OUT-* rows have a concrete blocker description and distance estimate
+  - Per-row "% contribution" table is consistent with current LEDGER status (no row
+    promoted)
+  - COWORK_RECOMMENDATIONS.md gains a clay-horizon-audit-001 entry
+  stop_if:
+  - The document claims any progress toward OUT-CONTINUUM, OUT-OS-WIGHTMAN, or OUT-STRONG-COUPLING
+    that is not backed by Lean evidence (would be overclaim)
+  - The "% toward Clay-as-stated" estimate is given without the disclaimer that Clay
+    requires the continuum theory the project does not currently address
+  next_agent: Codex
+  notes:
+  - Pure honesty-discipline document. No LEDGER status change. No math advance. Reduces
+    external overclaim risk.
+  - 'Recommended by Lluis 2026-04-26T16:35Z question on percentage-to-Clay completion
+    (the answer required dual numbers: ~5% Clay-as-stated vs ~28% lattice mass gap).'
+- id: COWORK-VACUITY-FLAG-COLUMN-DRAFT-001
+  title: 'Cowork: draft concrete vacuity_flag column markdown for UNCONDITIONALITY_LEDGER.md
+    (input to CODEX-VACUITY-RULES-CONSOLIDATION-001)'
+  owner: Cowork
+  status: READY
+  priority: 5
+  created_at: '2026-04-26T16:45:00Z'
+  updated_at: '2026-04-26T16:45:00Z'
+  required_files:
+  - UNCONDITIONALITY_LEDGER.md
+  - KNOWN_ISSUES.md
+  - COWORK_FINDINGS.md
+  objective: 'CODEX-VACUITY-RULES-CONSOLIDATION-001 (priority 4, IN_PROGRESS) requires
+    Codex to add a vacuity_flag column to LEDGER Tier 1 + Tier 2. Cowork pre-supplies
+    the concrete spec by drafting `dashboard/vacuity_flag_column_draft.md`: (a) the
+    7 enumerated values (none / caveat-only / vacuous-witness / trivial-group / zero-family
+    / anchor-structure / trivial-placeholder) with definition + example for each;
+    (b) the proposed column header markdown; (c) for every current Tier 1 + Tier 2
+    row, the recommended vacuity_flag value with one-sentence justification and KNOWN_ISSUES.md
+    cross-reference; (d) explicit instructions for Codex on insertion (where the column
+    goes in each table, how to handle row-spanning entries). Codex then implements
+    the column verbatim from the draft.
+
+    '
+  validation:
+  - dashboard/vacuity_flag_column_draft.md exists with sections (a)–(d)
+  - All 7 enumerated values defined with examples
+  - Every current Tier 1 + Tier 2 LEDGER row has a recommended vacuity_flag value
+  - Justifications cross-reference KNOWN_ISSUES.md sections
+  - COWORK_RECOMMENDATIONS.md gains a vacuity-flag-column-draft entry
+  stop_if:
+  - The draft proposes any LEDGER row status change (would invert separation of concerns
+    — CODEX-VACUITY-RULES-CONSOLIDATION-001 is pure bookkeeping, not math advance)
+  - A vacuity-pattern instance from COWORK-VACUITY-PATTERN-TRACKER-001 (Findings 011-016
+    + §10.3) is missing from the draft
+  next_agent: Codex
+  notes:
+  - Unblocks CODEX-VACUITY-RULES-CONSOLIDATION-001 by removing design-decision burden
+    from Codex.
+  - Implements REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001 (priority 2, OPEN) at the
+    spec level.
+- id: JOINT-PLANNER-001
+  title: Create shared progress planner with Clay and lattice percentage metrics
+  owner: Codex
+  status: DONE
+  priority: 2
+  created_at: '2026-04-26T12:00:00Z'
+  updated_at: '2026-04-26T12:00:00Z'
+  required_files:
+  - JOINT_AGENT_PLANNER.md
+  - registry/progress_metrics.yaml
+  - scripts/joint_planner_report.py
+  - README.md
+  - FORMALIZATION_ROADMAP_CLAY.md
+  - UNCONDITIONALITY_LEDGER.md
+  objective: Create a joint planner so Codex, Cowork, and Gemma/Ollama share the same
+    audited view of where the project is, where it is going, and which percentages
+    may be quoted. Distinguish Clay-as-stated (~5%), internal lattice small-beta subgoal
+    (~28%), honesty-discounted lattice (~23-25%), and named-frontier retirement (50%).
+  validation:
+  - python -m py_compile scripts\joint_planner_report.py
+  - python scripts\joint_planner_report.py validate
+  - python scripts\joint_planner_report.py
+  stop_if:
+  - The planner claims Clay-level completion
+  - The README conflates the 50% named-frontier metric with literal Clay progress
+  - The metric table does not validate
+  next_agent: Cowork
+  notes:
+  - DONE by Codex 2026-04-26. Planner creation is infrastructure only and does not
+    change mathematical status.
+- id: COWORK-AUDIT-JOINT-PLANNER-001
+  title: Audit shared progress planner and README percentage split
+  owner: Cowork
+  status: IN_PROGRESS
+  priority: 2
+  created_at: '2026-04-26T12:00:00Z'
+  updated_at: '2026-04-26T09:41:34Z'
+  required_files:
+  - JOINT_AGENT_PLANNER.md
+  - registry/progress_metrics.yaml
+  - scripts/joint_planner_report.py
+  - README.md
+  - UNCONDITIONALITY_LEDGER.md
+  - KNOWN_ISSUES.md
+  - AGENT_BUS.md
+  objective: Audit whether the new joint planner cleanly separates Clay-as-stated
+    (~5%), internal lattice small-beta subgoal (~28%), honesty-discounted lattice
+    (~23-25%), and named-frontier retirement (50%). Confirm the critical path matches
+    the ledger, the README does not overclaim, and planner creation is not recorded
+    as mathematical progress.
+  validation:
+  - python scripts\joint_planner_report.py validate
+  - README.md contains the four distinct planner numbers
+  - UNCONDITIONALITY_LEDGER.md keeps CLAY-GOAL as BLOCKED / NOT_ESTABLISHED
+  - COWORK_RECOMMENDATIONS.md gains an audit entry
+  stop_if:
+  - Any document implies the Clay problem is solved
+  - The 50% named-frontier metric is presented as the literal Clay percentage
+  - The 28% lattice metric is presented without the vacuity/discount caveat
+  next_agent: Codex
+  notes:
+  - If audit fails, create a Codex-ready correction task with exact replacement wording
+    and affected files.
+  - Dispatched to Cowork at 2026-04-26T09:41:34Z
+  dispatched_at: '2026-04-26T09:41:34Z'
+  dispatched_to: Cowork
+  dispatch_count: 1

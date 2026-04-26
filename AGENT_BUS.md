@@ -9,6 +9,80 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff — 2026-04-26T16:45Z — META-GENERATE-TASKS-001 closed; 3 new Cowork READY tasks seeded
+
+**Baton owner**: Cowork
+**Task**: `META-GENERATE-TASKS-001`
+**Status**: `DONE`
+
+Cowork queue had emptied after closing `COWORK-LEDGER-FRESHNESS-AUDIT-002` AUDIT_PASS at 16:30Z. Per dispatcher META instruction, Cowork seeded three new READY tasks targeting the three real gaps surfaced by current state + recent recommendations + Lluis's 16:35Z question on Clay-completion percentage:
+
+1. **`COWORK-F3-DEPENDENCY-MAP-001`** (priority 4, READY) — Cowork produces `F3_COUNT_DEPENDENCY_MAP.md` cataloguing every existing v2.52 theorem (with file:line references) vs the missing global root-avoiding leaf existence lemma + word-decoder iteration. Direct conditionality reduction for Codex's `CLAY-F3-COUNT-RECURSIVE-001` v2.53 follow-up.
+
+2. **`COWORK-CLAY-HORIZON-AUDIT-001`** (priority 5, READY) — Cowork writes `CLAY_HORIZON.md` companion document distinguishing the *lattice mass gap* target (which the project formalizes) from *Clay-as-stated* (which requires the three BLOCKED `OUT-*` rows: continuum limit, OS-Wightman reconstruction, strong-coupling extension). Per-row blocker + distance + % contribution table. Prevents external overclaim on the dual-number percentages (~5% Clay-as-stated vs ~28% lattice mass gap).
+
+3. **`COWORK-VACUITY-FLAG-COLUMN-DRAFT-001`** (priority 5, READY) — Cowork pre-supplies the concrete spec (`dashboard/vacuity_flag_column_draft.md`) for the 7-value `vacuity_flag` column that Codex's IN_PROGRESS `CODEX-VACUITY-RULES-CONSOLIDATION-001` must add to the LEDGER. Removes design-decision burden from Codex; implements `REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001` priority 2.
+
+**Cowork next action**: pick up `COWORK-F3-DEPENDENCY-MAP-001` (priority 4, highest-priority Cowork READY).
+
+**Codex queue unchanged**: (1) `CODEX-DISPATCHER-TRIGGER-VERIFICATION-001` — note: Codex marked DONE at 09:32:17Z per dashboard `last_completed_at`; this means `COWORK-AUDIT-CODEX-DISPATCHER-TRIGGER-VERIFICATION-001` is now legitimately eligible for FUTURE → READY promotion, no longer a premature dispatch; (2) `CLAY-F3-COUNT-RECURSIVE-001` priority 3 PARTIAL v2.52 — next concrete target: global root-avoiding leaf existence + word decoder; (3) `CODEX-VACUITY-RULES-CONSOLIDATION-001` priority 4 IN_PROGRESS — will benefit from Cowork's vacuity-flag column draft; (4) `CODEX-FIX-MATHLIB-DRAFTS-001` priority 4 PARTIAL.
+
+**Pending human action (unchanged)**: `REC-MATHLIB-FORK-PR-AUTH-001` — Lluis enables `gh` auth or reachable `lluiseriksson/mathlib4` fork so MatrixExp PR can land upstream.
+
+Validation:
+
+- `registry/agent_tasks.yaml` contains the 3 new READY task entries (lines appended at file end).
+- `registry/agent_history.jsonl` gains 6 events: dispatch_task META, 3× create_task, complete_task META, session_milestone, handoff.
+- `dashboard/agent_state.json`: `next_task_id` → `COWORK-F3-DEPENDENCY-MAP-001`; `current_phase` → `f3_dependency_mapping`; `active_cowork_audit_tasks` updated; `completed_audits` gains META-GENERATE-TASKS-001 entry.
+- `COWORK_RECOMMENDATIONS.md`: not modified by META itself (the 3 new tasks each include "gains entry" requirement when each individual task lands).
+
+**Honesty discipline preserved**: each new task carries explicit `stop_if` clauses preventing overclaim — F3-DEPENDENCY-MAP-001 must not claim F3-COUNT closure; CLAY-HORIZON-AUDIT-001 must not claim progress on `OUT-*` rows; VACUITY-FLAG-COLUMN-DRAFT-001 must not propose any LEDGER row status change.
+
+---
+
+## Latest Handoff — 2026-04-26 — Joint planner and percentage ledger created
+
+**Baton owner**: Cowork
+**Task**: `JOINT-PLANNER-001`
+**Status**: `DONE` (pending Cowork audit)
+
+Codex created a shared planning layer so all agents have the same map of where
+the project is and where it is going:
+
+- `JOINT_AGENT_PLANNER.md` records the human-readable consensus.
+- `registry/progress_metrics.yaml` is the machine-readable source.
+- `scripts/joint_planner_report.py` validates and renders the planner snapshot.
+- `README.md` now separates three metrics:
+  - Clay-as-stated: ~5%.
+  - internal lattice small-beta subgoal: ~28% (honesty-discounted ~23-25%).
+  - named-frontier retirement: 50%.
+- `FORMALIZATION_ROADMAP_CLAY.md` now points agents to the planner.
+- `UNCONDITIONALITY_LEDGER.md` now contains a `JOINT-PLANNER` row.
+
+Validation:
+
+- `python -m py_compile scripts\joint_planner_report.py`
+- `python scripts\joint_planner_report.py validate`
+- `python scripts\joint_planner_report.py`
+
+Honesty note: this is coordination infrastructure and percentage hygiene only.
+It does not move any mathematical status. Global Clay status remains
+`NOT_ESTABLISHED`.
+
+> **Next exact instruction**:
+> Cowork, audit `COWORK-AUDIT-JOINT-PLANNER-001`. Read
+> `JOINT_AGENT_PLANNER.md`, `registry/progress_metrics.yaml`,
+> `scripts/joint_planner_report.py`, `README.md`,
+> `UNCONDITIONALITY_LEDGER.md`, `KNOWN_ISSUES.md`, and `AGENT_BUS.md`.
+> Confirm that the 5% Clay-as-stated, 28% lattice-small-beta, 23-25%
+> discounted lattice, and 50% named-frontier metrics are clearly separated,
+> that no mathematical progress is claimed from planner creation, and that the
+> critical path matches the ledger. If it passes, mark the audit task
+> `AUDIT_PASS`; if not, create a Codex-ready correction task with exact
+> replacement text.
+
+---
+
 ## Latest Handoff — 2026-04-26 — Dispatcher trigger verification and repeat guard hardened
 
 **Baton owner**: Cowork

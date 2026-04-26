@@ -44,6 +44,7 @@ Honesty rule (per AGENTS.md §8):
 | CLAY-GOAL | Full Clay-level Yang-Mills existence and mass gap (continuum, SU(N>=2)) | BLOCKED | Complete formal chain through OS reconstruction | FORMALIZATION_ROADMAP_CLAY.md M0-M6 | Close conditional bridges in lower tiers first |
 | AGENTIC-INFRA | Codex/Cowork coordination system | INFRA_AUDITED | COWORK-AUDIT-001 audit-pass 2026-04-26T07:30:00Z | AGENT_BUS.md, registry/agent_tasks.yaml | maintenance only |
 | AUTOCONTINUE | 24/7 task dispatch system + repeat guard | INFRA_AUDITED | COWORK-AUDIT-AUTOCONTINUE-001 audit-pass 2026-04-26T07:00:00Z | dashboard/codex_autocontinue_snapshot.py + dashboard/autocontinue_validation.txt | NEGCOORDS recheck pending |
+| JOINT-PLANNER | Shared Codex/Cowork/Gemma progress planner and percentage ledger | CONDITIONAL_BRIDGE | Requires Cowork audit before treated as canonical consensus | JOINT_AGENT_PLANNER.md, registry/progress_metrics.yaml, scripts/joint_planner_report.py | Cowork audits `COWORK-AUDIT-JOINT-PLANNER-001`; no math status changes from planner creation |
 
 ### Tier 1 — Lattice mass gap (active formalization scope)
 

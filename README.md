@@ -6,7 +6,9 @@
 ![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-0052CC)
 ![Mathlib](https://img.shields.io/badge/Mathlib-master-5e81ac)
 ![ClayCore oracles](https://img.shields.io/badge/ClayCore%20oracles-propext%20%7C%20Classical.choice%20%7C%20Quot.sound-2e7d32)
-![Unconditionality](https://img.shields.io/badge/unconditional-50%25-yellow)
+![Named frontier](https://img.shields.io/badge/named_frontier-50%25-yellow)
+![Lattice subgoal](https://img.shields.io/badge/lattice_small_beta-28%25-orange)
+![Clay as stated](https://img.shields.io/badge/Clay_as_stated-5%25-red)
 ![Front](https://img.shields.io/badge/front-ClusterCorrelatorBound-informational)
 
 ---
@@ -15,7 +17,7 @@
 
 - **What works today, oracle-clean.** The L1 layer — Haar measure on `SU(N)` + Schur orthogonality on matrix entries — is closed, and **L2.6's main target has just landed**: the character inner product `⟨χ_fund, χ_fund⟩ = ∫_{SU(N)} |tr U|² dμ_Haar = 1` is a Lean theorem with `#print axioms` ⟹ `[propext, Classical.choice, Quot.sound]`. This is the statement every downstream cluster-expansion bound actually cites.
 - **What's next.** `ClusterCorrelatorBound`: the F3 summability/factoring bridge now reaches the exact Wilson-facing target; canonical `⌈siteLatticeDist⌉₊` geometry, distance buckets, and finite `connectingBound` normalization are closed. The live analytic inputs are the Mayer/Ursell identity for `wilsonConnectedCorr` and the Kotecký-Preiss `connectingBound` cluster-series estimate.
-- **What's not yet unconditional.** The L3 mass-gap conclusion still depends on declared physics hypotheses — Balaban RG, Dirichlet / Bakry–Émery, Lie-derivative regularity, Stroock–Zegarliński LSI. Every one of them is named in `AXIOM_FRONTIER.md`. The unconditionality roadmap retires them one at a time.
+- **What's not yet unconditional.** The L3 mass-gap conclusion still depends on declared physics hypotheses — Balaban RG, Dirichlet / Bakry–Émery, Lie-derivative regularity, Stroock–Zegarliński LSI. Every one of them is named in `AXIOM_FRONTIER.md`. The literal Clay problem also needs continuum/OS/Wightman work that is not yet formalized here.
 
 This repository is **not** a finished proof of the Clay Yang–Mills mass gap. It is a structured, transparent push toward one, where every remaining assumption is *named* and the core machinery is held to a strict three-oracle budget. The `#print axioms` trace is the ground truth.
 
@@ -29,9 +31,9 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 | **Language** | Lean 4 (`leanprover/lean4:v4.29.0-rc6`) + Mathlib (`master`) |
 | **Core discipline** | `YangMills/ClayCore/` prints only `[propext, Classical.choice, Quot.sound]` |
 | **Current front** | **`ClusterCorrelatorBound`** — analytic two-point decay for the SU(N_c) Gibbs measure, via F1 (character / Taylor expansion in scalar traces) + F2 (sidecar Haar integrals: L2.5 + 3a + 3b + 3c + main target) + F3 (Kotecky–Preiss cluster convergence) |
-| **Last closed** | **v2.42.0 anchored root-shell BFS witness** — no bar movement, but the active F3/Klarner decoder now has a genuine first expansion layer for nontrivial anchored buckets. In `YangMills/ClayCore/LatticeAnimalCount.lean`, v2.40-v2.42 add: a generic nontrivial-walk first-edge lemma; `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighbor`; the `neighborFinset` and `Fin 1296` coded variants; and `plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_nonempty/card_pos`. Thus for `X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k` with `1 < k`, the root shell `X ∩ (plaquetteGraph d L).neighborFinset root` is nonempty and has a first local code in the existing physical `1296` alphabet. Build `lake build YangMills.ClayCore.LatticeAnimalCount` green; new traces remain `[]` or `[propext, Classical.choice, Quot.sound]`. No `sorry`. Commits `7eb7045`, `ee7f8c3`, `cf5b499`. (2026-04-26) |
-| **Last updated** | 2026-04-26 (post-v2.42.0 sync) |
-| **Strict-Clay vs internal-frontier %** | The 50 % bar in §2 measures **named-frontier retirements** (this project's own `AXIOM_FRONTIER.md` + `SORRY_FRONTIER.md`). The **literal Clay Millennium %** (Wightman QFT on ℝ⁴ + mass gap for SU(N), N ≥ 2) is honestly **~10–15 %**, dominated by missing pieces: Bałaban RG complete, OS reconstruction → Wightman, Holley-Stroock LSI for Yang-Mills, Mathlib upstream C₀-semigroup theory. SU(1) is at 100 % literal Clay, but SU(1) is the **trivial group** {1} (physics-degenerate; Finding 003), so that 100 % does not extrapolate. |
+| **Last closed** | **v2.52.0 F3 degree-one leaf deletion subcase** — no bar movement, but the active F3/Klarner decoder now has a verified local deletion theorem. In `YangMills/ClayCore/LatticeAnimalCount.lean`, `plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_preconnected_of_induced_degree_one` and `plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_induced_degree_one` prove that if a non-root bucket vertex has induced degree one, deleting it preserves preconnectedness and re-enters the anchored bucket family through the v2.51 recursive-deletion bridge. Build `lake build YangMills.ClayCore.LatticeAnimalCount` green; `#print axioms` remains `[propext, Classical.choice, Quot.sound]`. This is partial F3-COUNT progress only: the global root-avoiding safe-deletion theorem and full word decoder remain open. Commit `343bfd8`; audit docs commit `d5cabb9`. (2026-04-26) |
+| **Last updated** | 2026-04-26 (post-v2.52.0 + joint-planner sync) |
+| **Joint planner metrics** | See `JOINT_AGENT_PLANNER.md` and `registry/progress_metrics.yaml`. Current consensus: **Clay-as-stated ≈ 5 %** (continuum QFT on ℝ⁴ with OS/Wightman/Wightman-compatible mass gap for SU(N), N ≥ 2); **internal lattice small-β subgoal ≈ 28 %** (honesty-discounted ≈ 23–25 % after vacuous/low-content retirements); **named-frontier retirement = 50 %** (internal monotone accounting over `AXIOM_FRONTIER.md` + `SORRY_FRONTIER.md`). These numbers are distinct and must not be interchanged. |
 
 ---
 
@@ -77,11 +79,39 @@ L2    Character expansion + cluster decay       ▰▰▰▰▰▱▱▱▱▱  
 L3    Mass-gap conclusion (with hypotheses)     ▰▰▱▱▱▱▱▱▱▱   22 %
 ──────────────────────────────────────────────────────────────
       OVERALL (named-frontier retirement)       ▰▰▰▰▰▱▱▱▱▱   50 %
-      LITERAL CLAY (Wightman QFT on ℝ⁴, N ≥ 2)  ▰▱▱▱▱▱▱▱▱▱  ~12 %
+      LATTICE small-β subgoal (honest working)  ▰▰▰▱▱▱▱▱▱▱  ~28 %
+      LATTICE discounted for vacuity caveats    ▰▰▱▱▱▱▱▱▱▱  ~23-25 %
+      CLAY-AS-STATED (continuum, N ≥ 2)         ▰▱▱▱▱▱▱▱▱▱   ~5 %
       SU(1) trivial-group base case             ▰▰▰▰▰▰▰▰▰▰  100 % (physics-degenerate)
 ```
 
-**Two metrics, two stories**. The 50 % `OVERALL` bar is monotone-by-design and measures retirement of *this project's named frontier entries* (`AXIOM_FRONTIER.md` + `SORRY_FRONTIER.md`). The ~12 % `LITERAL CLAY` row is an honest qualitative estimate of how much of the actual Clay Millennium problem (Wightman QFT on ℝ⁴ with positive mass gap for SU(N), N ≥ 2) is formalised — most of the remaining ~88 % is heavy work outside this repository's current scope: Bałaban RG complete, OS reconstruction → Wightman, Holley-Stroock LSI for Yang-Mills, and Mathlib upstream C₀-semigroup theory. The 100 % `SU(1)` row records a structural-completeness fact (every project predicate has an inhabitant at SU(1)) and explicitly does NOT extrapolate to N ≥ 2 because SU(1) is the trivial group {1}.
+**Three metrics, three stories**. The 50 % `OVERALL` bar is monotone-by-design and measures retirement of *this project's named frontier entries* (`AXIOM_FRONTIER.md` + `SORRY_FRONTIER.md`). The ~28 % `LATTICE small-β` row measures the internal subgoal the repository is actively formalizing now: lattice mass gap at small β through representation theory, F3/Klarner counting, and Mayer/Kotecký-Preiss. The ~5 % `CLAY-AS-STATED` row is the honest estimate for the actual Clay Millennium problem: continuum quantum Yang-Mills on ℝ⁴ with a Wightman/OS-compatible construction and positive mass gap for SU(N), N ≥ 2. The 100 % `SU(1)` row records a structural-completeness fact and explicitly does NOT extrapolate to N ≥ 2 because SU(1) is the trivial group {1}.
+
+The joint planner is maintained in `JOINT_AGENT_PLANNER.md`, with machine-readable source in `registry/progress_metrics.yaml` and a verifier/renderer at `scripts/joint_planner_report.py`. Percentage changes require Cowork audit and ledger synchronization; infrastructure improvements alone do not move mathematical percentages.
+
+**Current lattice-small-β breakdown.**
+
+| Component | Status | Weight | Contribution |
+|---|---|---:|---:|
+| L1-HAAR | FORMAL_KERNEL (98 %) | 8 % | ~7.8 % |
+| L2.4-SCHUR | FORMAL_KERNEL (100 %) | 5 % | ~4 % |
+| L2.5-FROBENIUS | FORMAL_KERNEL (100 %) | 5 % | ~4 % |
+| L2.6-CHARACTER | FORMAL_KERNEL (100 %) | 5 % | ~4 % |
+| F3-COUNT | CONDITIONAL_BRIDGE (safe-deletion/decoder pending) | 20 % | ~5 % |
+| F3-MAYER | BLOCKED on F3-COUNT | 20 % | 0 % |
+| F3-COMBINED | BLOCKED on F3-COUNT + F3-MAYER | 10 % | 0 % |
+| EXP-MATEXP-DET | EXPERIMENTAL / Mathlib PR blocked on publishing | 5 % | ~1.5 % |
+| EXP-BD-HY-GR | EXPERIMENTAL hard Mathlib gaps | 10 % | ~0.7 % |
+| EXP-LIEDERIVREG | INVALID as currently stated | 5 % | 0 % |
+| NC1-WITNESS / EXP-SUN-GEN | FORMAL_KERNEL but vacuous/low-content | 5 % | ~0 % honest |
+| Hygiene + agent infrastructure | INFRA_AUDITED | 2 % | ~1 % |
+
+This table uses calibrated headline contributions rather than a naive artifact
+sum. The calibration keeps the lattice headline at ~28 % after discounting
+double counting, vacuous closures, low-content retirements, and unassembled
+bridges.
+
+**Current literal-Clay blockers.** `OUT-CONTINUUM` (continuum limit from lattice gauge theory), `OUT-OS-WIGHTMAN` (OS/Wightman reconstruction for nonabelian gauge theory), and `OUT-STRONG-COUPLING` (beyond the small-β cluster-expansion regime) remain `BLOCKED` in `UNCONDITIONALITY_LEDGER.md`. `CONTINUUM-COORDSCALE` is `INVALID-AS-CONTINUUM`, so it must not be counted as a continuum bridge.
 
 **Change since previous snapshot (2026-04-22 morning).** L2.6's main target — the character inner product `∫ |tr U|² dμ = 1` — closed at commit `f9ec5e9`, moving L2.6 85 → 95, L2 42 → 50, and overall **40 → 48**. This is the biggest single jump since we began tracking. The bump is backed by an oracle-clean `#print axioms` trace (see §3).
 

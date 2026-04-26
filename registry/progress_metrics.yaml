@@ -1,0 +1,163 @@
+updated_at: "2026-04-26T12:00:00Z"
+source_policy: "Joint Codex/Cowork/Gemma planner; percentages are planning estimates, not proof claims."
+global_status: NOT_ESTABLISHED
+metrics:
+  clay_as_stated:
+    title: "Clay-as-stated: continuum quantum Yang-Mills on R4 with mass gap"
+    percent: 5
+    confidence: LOW
+    status: BLOCKED
+    reason: >
+      The repository does not yet formalize the continuum limit, OS/Wightman
+      reconstruction, or the extension beyond the current small-beta lattice
+      regime. These are the dominant parts of the literal Clay problem.
+    blockers:
+      - OUT-CONTINUUM
+      - OUT-OS-WIGHTMAN
+      - OUT-STRONG-COUPLING
+      - CONTINUUM-COORDSCALE
+  lattice_small_beta:
+    title: "Internal lattice small-beta mass-gap subgoal"
+    percent: 28
+    honest_discounted_percent_range: "23-25"
+    confidence: MEDIUM
+    status: CONDITIONAL_BRIDGE
+    reason: >
+      The representation-theoretic base is largely formal, but F3-COUNT,
+      F3-MAYER, final assembly, and several Experimental axioms remain open.
+      The headline 28 percent includes formally closed but low-content or
+      vacuous retirements; the discounted estimate removes most of that value.
+      Component contributions below are calibrated headline contributions, not
+      a naive sum of closed Lean artifacts.
+    blockers:
+      - F3-COUNT
+      - F3-MAYER
+      - F3-COMBINED
+      - EXP-MATEXP-DET
+      - EXP-BD-HY-GR
+      - EXP-LIEDERIVREG
+  named_frontier_retirement:
+    title: "Project named-frontier retirement metric"
+    percent: 50
+    confidence: MEDIUM
+    status: INTERNAL_METRIC
+    reason: >
+      This is the historical README/roadmap metric based on retired named
+      entries in AXIOM_FRONTIER.md and SORRY_FRONTIER.md. It is useful for
+      monotone internal accounting, but it is not the literal Clay percentage.
+components:
+  - id: L1-HAAR
+    scope: lattice_small_beta
+    status: FORMAL_KERNEL
+    completion_percent: 98
+    weight_percent: 8
+    contribution_percent: 7.8
+    next_action: "Close last Haar/Schur polish items only if they unblock F3/F2."
+  - id: L2.4-SCHUR
+    scope: lattice_small_beta
+    status: FORMAL_KERNEL
+    completion_percent: 100
+    weight_percent: 5
+    contribution_percent: 4
+    next_action: "Maintenance only."
+  - id: L2.5-FROBENIUS
+    scope: lattice_small_beta
+    status: FORMAL_KERNEL
+    completion_percent: 100
+    weight_percent: 5
+    contribution_percent: 4
+    next_action: "Maintenance only."
+  - id: L2.6-CHARACTER
+    scope: lattice_small_beta
+    status: FORMAL_KERNEL
+    completion_percent: 100
+    weight_percent: 5
+    contribution_percent: 4
+    next_action: "Maintenance only; arbitrary-irrep generalization remains separate."
+  - id: F3-COUNT
+    scope: lattice_small_beta
+    status: CONDITIONAL_BRIDGE
+    completion_percent: 30
+    weight_percent: 20
+    contribution_percent: 5
+    next_action: "Prove global root-avoiding safe-deletion theorem, then full anchored word decoder."
+  - id: F3-MAYER
+    scope: lattice_small_beta
+    status: BLOCKED
+    completion_percent: 0
+    weight_percent: 20
+    contribution_percent: 0
+    next_action: "Resume once F3-COUNT supplies the count package."
+  - id: F3-COMBINED
+    scope: lattice_small_beta
+    status: BLOCKED
+    completion_percent: 0
+    weight_percent: 10
+    contribution_percent: 0
+    next_action: "Assemble after F3-COUNT and F3-MAYER."
+  - id: EXP-MATEXP-DET
+    scope: lattice_small_beta
+    status: EXPERIMENTAL
+    completion_percent: 40
+    weight_percent: 5
+    contribution_percent: 1.5
+    next_action: "Open/land Mathlib PR or mirror a local proof with exact caveats."
+  - id: EXP-BD-HY-GR
+    scope: lattice_small_beta
+    status: EXPERIMENTAL
+    completion_percent: 10
+    weight_percent: 10
+    contribution_percent: 0.7
+    next_action: "Classify hard Mathlib gaps and isolate minimal formal statements."
+  - id: EXP-LIEDERIVREG
+    scope: lattice_small_beta
+    status: INVALID
+    completion_percent: 0
+    weight_percent: 5
+    contribution_percent: 0
+    next_action: "Replace false all-functions statement with a smooth-function formulation."
+  - id: NC1-WITNESS
+    scope: lattice_small_beta
+    status: FORMAL_KERNEL_VACUOUS
+    completion_percent: 100
+    weight_percent: 5
+    contribution_percent: 0
+    next_action: "Keep as non-vacuity sanity check only; do not count toward SU(N>=2) physics."
+  - id: INFRA-HYGIENE
+    scope: lattice_small_beta
+    status: INFRA_AUDITED
+    completion_percent: 100
+    weight_percent: 2
+    contribution_percent: 1
+    next_action: "Maintain dispatcher, ledger freshness, and audit cadence."
+critical_path:
+  - order: 1
+    id: F3-SAFE-DELETION
+    description: "Global existence of a non-root induced-degree-one or otherwise safe deletion vertex."
+    owner: Codex
+    auditor: Cowork
+    blocks: [F3-COUNT]
+  - order: 2
+    id: F3-ANCHORED-WORD-DECODER
+    description: "Iterated Klarner/BFS decoder from anchored buckets to bounded alphabet words."
+    owner: Codex
+    auditor: Cowork
+    blocks: [F3-COUNT]
+  - order: 3
+    id: F3-MAYER-URSSELL
+    description: "Brydges-Kennedy/Mayer identity plus connectingBound cluster estimate."
+    owner: Codex
+    auditor: Cowork
+    blocks: [F3-MAYER, F3-COMBINED]
+  - order: 4
+    id: EXPERIMENTAL-AXIOM-CLASSIFICATION
+    description: "Retire, reformulate, or explicitly quarantine remaining Experimental axioms."
+    owner: Any
+    auditor: Cowork
+    blocks: [EXP-MATEXP-DET, EXP-BD-HY-GR, EXP-LIEDERIVREG]
+  - order: 5
+    id: OUT-CONTINUUM-BLUEPRINT
+    description: "Create a formalizable continuum/OS/Wightman blueprint before claiming Clay-as-stated movement."
+    owner: Cowork
+    auditor: Codex
+    blocks: [OUT-CONTINUUM, OUT-OS-WIGHTMAN]
