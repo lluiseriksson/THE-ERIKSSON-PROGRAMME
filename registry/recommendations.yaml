@@ -1,0 +1,27 @@
+recommendations:
+- id: REC-BOOTSTRAP-001
+  author: Human
+  status: OPEN
+  priority: 1
+  title: Replace generic continuation with structured task dispatch
+  recommendation: 'The autocontinue system must dispatch precise structured tasks
+    from a shared registry instead of sending generic encouragement.
+
+    '
+  reason: 'A five-year Clay-level research programme requires persistent task control,
+    auditability, and agent coordination.
+
+    '
+  risk_if_ignored: 'Agents may remain active 24/7 while making little or no real progress.
+
+    '
+  files_affected:
+  - C:\Users\lluis\Downloads\codex_autocontinue.py
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  converts_to_task: AUTOCONTINUE-001
+  validation: 'Running the autocontinue script for both Codex and Cowork produces
+    precise task instructions and never emits generic continuation.
+
+    '

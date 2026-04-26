@@ -1,0 +1,142 @@
+tasks:
+- id: INFRA-BOOTSTRAP-001
+  title: Create shared Codex/Cowork coordination files
+  owner: Codex
+  status: DONE
+  priority: 1
+  created_at: '2026-04-26T00:00:00Z'
+  updated_at: '2026-04-26T06:00:00Z'
+  required_files:
+  - AGENTS.md
+  - AGENT_BUS.md
+  - UNCONDITIONALITY_LEDGER.md
+  objective: 'Create the shared communication, task, recommendation, dashboard, roadmap,
+    and unconditionality-ledger files required for Codex and Cowork to work synergistically.
+
+    '
+  validation:
+  - python scripts/agent_next_instruction.py Codex
+  - python scripts/agent_next_instruction.py Cowork
+  stop_if:
+  - Cannot write files
+  - Existing project structure contradicts the coordination system
+  next_agent: Cowork
+  notes:
+  - Coordination files created by Codex.
+  - Validation commands executed and produced structured task messages.
+- id: AUTOCONTINUE-001
+  title: Replace generic autocontinue message with structured task dispatch
+  owner: Codex
+  status: DONE
+  priority: 2
+  created_at: '2026-04-26T00:00:00Z'
+  updated_at: '2026-04-26T06:00:00Z'
+  required_files:
+  - C:\Users\lluis\Downloads\codex_autocontinue.py
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  - AGENT_BUS.md
+  objective: 'Modify codex_autocontinue.py so it no longer sends a generic continuation
+    message. It must read structured tasks, dispatch the next useful task, update
+    history, update dashboard state, and support Codex/Cowork roles.
+
+    '
+  validation:
+  - python C:\Users\lluis\Downloads\codex_autocontinue.py Codex
+  - python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork
+  stop_if:
+  - The script cannot access the repo path
+  - The generated message still contains generic continuation
+  - The task registry cannot be read or safely initialized
+  next_agent: Cowork
+  notes:
+  - External autocontinue script now delegates to scripts/agent_next_instruction.py.
+  - Generic fixed continuation message removed.
+  - Validation commands executed for Codex and Cowork.
+- id: COWORK-AUDIT-001
+  title: Audit autocontinue and coordination system
+  owner: Cowork
+  status: READY
+  priority: 3
+  created_at: '2026-04-26T00:00:00Z'
+  updated_at: '2026-04-26T06:05:00Z'
+  required_files:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/recommendations.yaml
+  - dashboard/agent_state.json
+  - COWORK_RECOMMENDATIONS.md
+  - C:\Users\lluis\Downloads\codex_autocontinue.py
+  objective: 'Audit whether the new system makes Codex and Cowork collaborate productively,
+    prevents generic continuation, records task history, and always preserves useful
+    future work.
+
+    '
+  validation:
+  - COWORK_RECOMMENDATIONS.md contains an audit entry
+  - registry/recommendations.yaml contains any required recommendations
+  - registry/agent_tasks.yaml contains repair tasks if issues are found
+  stop_if:
+  - Codex did not create the required files
+  - The autocontinue script still sends generic messages
+  next_agent: Codex
+  notes:
+  - Dispatched during validation; reset to READY for the actual Cowork handoff.
+  - Dispatched to Cowork at 2026-04-26T05:55:53Z
+  - Reset to READY after validation so Cowork audit is the next real baton.
+  dispatch_count: 2
+- id: CLAY-ROADMAP-001
+  title: Build and maintain Clay-level formalization roadmap
+  owner: Cowork
+  status: READY
+  priority: 4
+  created_at: '2026-04-26T00:00:00Z'
+  updated_at: '2026-04-26T06:05:00Z'
+  required_files:
+  - FORMALIZATION_ROADMAP_CLAY.md
+  - UNCONDITIONALITY_LEDGER.md
+  - registry/recommendations.yaml
+  objective: 'Decompose the Clay-level Yang-Mills goal into formal milestones, assumptions,
+    bridges, blockers, and Codex-ready implementation tasks.
+
+    '
+  validation:
+  - FORMALIZATION_ROADMAP_CLAY.md contains milestone sections
+  - UNCONDITIONALITY_LEDGER.md tracks all conditional dependencies
+  - registry/agent_tasks.yaml contains at least three Clay-reduction tasks
+  stop_if:
+  - Any section claims the Clay problem is solved without formal evidence
+  next_agent: Codex
+  notes:
+  - Dispatched during validation; reset to READY after bootstrap.
+  - Dispatched to Cowork at 2026-04-26T05:55:53Z
+  - Reset to READY after validation; audit task has priority.
+  dispatch_count: 2
+- id: META-GENERATE-TASKS-001
+  title: Generate new actionable tasks when the queue is empty
+  owner: Any
+  status: FUTURE
+  priority: 99
+  created_at: '2026-04-26T00:00:00Z'
+  updated_at: '2026-04-26T06:05:00Z'
+  required_files:
+  - AGENT_BUS.md
+  - FORMALIZATION_ROADMAP_CLAY.md
+  - UNCONDITIONALITY_LEDGER.md
+  - registry/recommendations.yaml
+  - registry/agent_tasks.yaml
+  objective: 'If no READY or PARTIAL tasks exist, inspect the roadmap, ledger, recommendations,
+    and current state, then create at least three new READY tasks that advance the
+    project.
+
+    '
+  validation:
+  - registry/agent_tasks.yaml contains at least three READY tasks
+  stop_if:
+  - Roadmap and ledger are missing
+  next_agent: Codex
+  notes:
+  - Dispatched to Codex at 2026-04-26T05:55:52Z
+  - Reset to FUTURE after validation; used only when no READY or PARTIAL task exists.
+  dispatch_count: 1

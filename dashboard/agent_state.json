@@ -1,0 +1,18 @@
+{
+  "project": "THE-ERIKSSON-PROGRAMME",
+  "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
+  "current_phase": "agentic_coordination_bootstrap",
+  "current_baton_owner": "Cowork",
+  "next_task_id": "COWORK-AUDIT-001",
+  "last_completed_task": "AUTOCONTINUE-001",
+  "last_dispatched_task": "COWORK-AUDIT-001",
+  "last_dispatched_agent": "Cowork",
+  "open_blockers": [],
+  "open_recommendations": [
+    "REC-BOOTSTRAP-001"
+  ],
+  "unconditionality_status": "NOT_ESTABLISHED",
+  "claim_policy": "Never claim Clay-level completion without complete formal evidence.",
+  "always_has_next_task": true,
+  "last_dispatch_at": "2026-04-26T06:05:00Z"
+}
