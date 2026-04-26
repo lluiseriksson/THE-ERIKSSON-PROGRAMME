@@ -72,6 +72,8 @@ MAX_SENDS_PER_APP = None
 # app pasa por "ocupado". Si no la vemos ocuparse, rearmamos de todas formas.
 REARM_TIMEOUT = 8.0
 REARM_POLL = 0.4
+SEND_METHOD_CONFIRM_SECONDS = 2.0
+SEND_METHOD_CONFIRM_POLL = 0.25
 
 # Cuando salta el FailSafe (ratón en una esquina), pausamos en vez de morir.
 FAILSAFE_RECOVERY_SECONDS = 5.0
@@ -88,6 +90,7 @@ GHOST_PAUSE_SECONDS = 30.0    # cuánto pausar la app si se detecta
 # because they are queue-repair tasks, not normal work assignments.
 REPEAT_TASK_PAUSE_SECONDS = 180.0
 META_TASK_PAUSE_SECONDS = 1800.0
+FAILED_DELIVERY_RETRY_SECONDS = 20.0
 
 CODEX_CFG = SCRIPT_DIR / "codex_coords.json"
 CODEX_REF = SCRIPT_DIR / "codex_send.png"
@@ -228,6 +231,53 @@ def repeat_pause_seconds(task_id):
     return REPEAT_TASK_PAUSE_SECONDS
 
 
+def confirm_app_reacted(app, timeout=SEND_METHOD_CONFIRM_SECONDS):
+    deadline = time.time() + timeout
+    last_d = None
+    while time.time() < deadline:
+        ready, d = app.is_ready()
+        last_d = d
+        if not ready:
+            return True, d
+        time.sleep(SEND_METHOD_CONFIRM_POLL)
+    return False, last_d
+
+
+def submit_current_prompt(app):
+    if app.mode == "ready":
+        strategies = (
+            ("enter", lambda: pyautogui.press("enter")),
+            ("calibrated-button", lambda: (
+                safe_move_to(app.ref_x, app.ref_y, duration=0.08),
+                time.sleep(0.05),
+                pyautogui.click(),
+            )),
+            ("ctrl-enter", lambda: pyautogui.hotkey("ctrl", "enter")),
+        )
+    else:
+        strategies = (
+            ("enter", lambda: pyautogui.press("enter")),
+            ("ctrl-enter", lambda: pyautogui.hotkey("ctrl", "enter")),
+        )
+    for name, action in strategies:
+        action()
+        ok, d = confirm_app_reacted(app)
+        if ok:
+            return True, name, d
+        if d is None:
+            print(f"  [{app.name}] método {name} sin lectura de detector.")
+        else:
+            print(f"  [{app.name}] método {name} no activó ocupado "
+                  f"(d={d:.1f}); probando fallback.")
+        # Refocus the input before the next fallback. This also keeps the prompt
+        # text in the box if the first method only inserted a newline.
+        safe_move_to(app.box_x, app.box_y, duration=0.05)
+        time.sleep(0.05)
+        pyautogui.click()
+        time.sleep(0.1)
+    return False, "all-methods-failed", d
+
+
 def send_reply(app, message):
     prev = pyautogui.position()
     safe_move_to(app.box_x, app.box_y, duration=0.15)
@@ -241,17 +291,10 @@ def send_reply(app, message):
     time.sleep(0.05)
     pyautogui.hotkey("ctrl", "v")
     time.sleep(0.2)
-    if app.mode == "ready":
-        # Codex uses a real send button as the reference patch. Clicking the
-        # calibrated button is more reliable than Enter in the desktop app.
-        safe_move_to(app.ref_x, app.ref_y, duration=0.08)
-        time.sleep(0.05)
-        pyautogui.click()
-    else:
-        # Cowork's reference patch is its busy/queue button, not a send button.
-        pyautogui.press("enter")
+    ok, method, d = submit_current_prompt(app)
     time.sleep(0.1)
     safe_move_to(prev.x, prev.y, duration=0.05)
+    return ok, method, d
 
 
 # --- Modelo ----------------------------------------------------------------
@@ -429,6 +472,8 @@ def run(args):
                 task_line = f"Task id: {task_id}"
                 now = time.time()
                 pause_seconds = repeat_pause_seconds(task_id)
+                if app.pending_message:
+                    pause_seconds = min(pause_seconds, FAILED_DELIVERY_RETRY_SECONDS)
                 if (app.last_sent_task_id == task_id
                         and now - app.last_sent_at < pause_seconds):
                     remaining = int(round(pause_seconds - (now - app.last_sent_at)))
@@ -441,7 +486,7 @@ def run(args):
                     continue
 
                 print(f"[OK] {app.name} listo. Enviando #{app.sends+1}: {task_line}")
-                send_reply(app, message)
+                delivered, method, d_after_send = send_reply(app, message)
                 app.sends += 1
                 app.last_sent_task_id = task_id
                 app.last_sent_at = time.time()
@@ -456,8 +501,15 @@ def run(args):
                     continue
 
                 deadline = time.time() + REARM_TIMEOUT
-                rearmed_with_busy = False
-                while time.time() < deadline:
+                rearmed_with_busy = delivered
+                if delivered:
+                    app.armed = True
+                    app.last_confirmed_busy_at = time.time()
+                    app.pending_message = None
+                    app.pending_task_id = None
+                    print(f"  [{app.name}] ocupado confirmado vía {method} "
+                          f"(d={d_after_send:.1f}), rearmado.")
+                while not rearmed_with_busy and time.time() < deadline:
                     r, d = app.is_ready()
                     if not r:
                         app.armed = True

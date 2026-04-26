@@ -75,6 +75,19 @@ This contract is **binding** for every Codex and Cowork session.
 
 ## Latest Handoff
 
+### 2026-04-26 — Codex autocontinue delivery fallback hardening
+
+- **Agent**: Codex
+- **Summary**: User reported that the watcher still generated dispatches but did not actually activate the left-screen Codex app. Hardened `C:\Users\lluis\Downloads\codex_autocontinue.py` again: after pasting the prompt, Codex now tries three submit methods in one delivery cycle (`Enter`, calibrated send-button click, `Ctrl+Enter`) and checks the detector after each method. Cowork gets `Enter` then `Ctrl+Enter`. Failed pending deliveries now retry after 20s instead of being blocked for the full repeat-guard interval.
+- **Validation**:
+  - `python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py` passed.
+  - `python C:\Users\lluis\Downloads\codex_autocontinue.py --diagnose-coords` still confirms Codex `ref=(-649,1073)`, `box=(-1168,1030)`.
+  - `dashboard/codex_autocontinue_snapshot.py` refreshed and compiles.
+- **Registry sync**: Reset failed GUI attempts back to actionable state: `CLAY-F3-COUNT-RECURSIVE-001` is `READY`; `COWORK-AUDIT-CODEX-LED-ORCHESTRATOR-001` is `READY`.
+- **Unconditionality impact**: Infrastructure only. No mathematical progress claimed.
+- **Next exact instruction**:
+  > Lluis, run `python C:\Users\lluis\Downloads\codex_autocontinue.py --codex-only` and watch the left Codex app: the console should show method attempts (`enter`, `calibrated-button`, `ctrl-enter`) if the first method fails. If none activates Codex, recalibrate with `python C:\Users\lluis\Downloads\codex_autocontinue.py --calibrate-codex` by placing the mouse first over the actual Codex send button and then over the message box.
+
 ### 2026-04-26 — Codex-led autocontinue hardening for left-screen delivery
 
 - **Agent**: Codex

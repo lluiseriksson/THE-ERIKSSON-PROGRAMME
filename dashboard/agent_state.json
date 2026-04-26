@@ -1,7 +1,7 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "codex_led_clay_reduction_active",
+  "current_phase": "codex_led_delivery_hardening",
   "current_baton_owner": "Codex",
   "next_task_id": "CLAY-F3-COUNT-RECURSIVE-001",
   "last_completed_task": null,
@@ -19,7 +19,7 @@
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001"
   ],
-  "last_dispatch_at": "2026-04-26T06:49:47Z",
+  "last_dispatch_at": "2026-04-26T07:06:38Z",
   "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount",
   "audit_state": {
     "in_repo_dispatcher": "AUDIT_PASS",
@@ -88,7 +88,8 @@
     "primary_agent": "Codex",
     "cowork_role": "sidecar audit and recommendations",
     "cowork_sidecar_interval_seconds": 900,
-    "codex_delivery": "paste prompt then click calibrated send button",
+    "codex_delivery": "paste prompt, then try Enter, calibrated send-button click, and Ctrl+Enter with detector confirmation",
+    "failed_delivery_retry_seconds": 20,
     "debug_mode": "python C:\\Users\\lluis\\Downloads\\codex_autocontinue.py --codex-only"
   }
 }

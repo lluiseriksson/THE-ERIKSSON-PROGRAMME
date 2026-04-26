@@ -306,7 +306,7 @@ tasks:
   status: READY
   priority: 3
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T06:49:47Z'
+  updated_at: '2026-04-26T07:06:38Z'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - BLUEPRINT_F3Count.md
@@ -355,8 +355,11 @@ tasks:
   - Dispatched to Codex at 2026-04-26T06:49:35Z
   - Reset to READY by Codex at 2026-04-26T06:49:47Z; repo dispatcher validation only,
     not a GUI handoff.
-  dispatch_count: 6
-  dispatched_at: '2026-04-26T06:49:35Z'
+  - Dispatched to Codex at 2026-04-26T07:03:11Z
+  - Reset to READY by Codex at 2026-04-26T07:06:38Z; previous GUI delivery attempts
+    did not activate Codex, script now retries enter/button/ctrl-enter before ghosting.
+  dispatch_count: 7
+  dispatched_at: '2026-04-26T07:03:11Z'
   dispatched_to: Codex
 - id: CLAY-EXP-RETIRE-7-001
   title: Retire 7 easy SU(N) generator-data Experimental axioms
@@ -769,7 +772,7 @@ tasks:
   status: READY
   priority: 6
   created_at: '2026-04-26T06:48:56Z'
-  updated_at: '2026-04-26T06:48:56Z'
+  updated_at: '2026-04-26T07:06:38Z'
   required_files:
   - C:\Users\lluis\Downloads\codex_autocontinue.py
   - dashboard/codex_autocontinue_snapshot.py
@@ -790,3 +793,9 @@ tasks:
   next_agent: Codex
   notes:
   - Created after user reported left-screen Codex was not receiving prompts.
+  - Dispatched to Cowork at 2026-04-26T07:03:21Z
+  - Reset to READY by Codex at 2026-04-26T07:06:38Z; previous GUI delivery attempt
+    did not activate Cowork, script now has multi-method submit fallback.
+  dispatched_at: '2026-04-26T07:03:21Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
