@@ -1,3 +1,61 @@
+# v2.55.0 — root-avoiding safe deletion base case (`k = 2`) for F3/Klarner
+
+**Released: 2026-04-26**
+
+## What
+
+Added the first root-avoiding safe-deletion theorem in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two
+
+For an anchored preconnected bucket of cardinality `2`, Lean now proves that
+there is a non-root plaquette `z ∈ X` such that deleting `z` leaves an anchored
+bucket of cardinality `1`.  The proof uses the existing anchored-card
+destructors to obtain the root and the unique non-root member, then proves the
+residual induced graph is preconnected because it is a singleton subtype.
+
+## Why
+
+This closes the base nontrivial case of the root-avoiding safe-deletion problem
+that v2.54 isolated.  It is intentionally small but useful: the recursive
+Klarner/BFS deletion loop now has a verified endpoint for the first nontrivial
+bucket size.
+
+This is **not** a closure of `F3-COUNT`.  The global root-avoiding theorem for
+all nontrivial anchored buckets, especially `k ≥ 3`, remains open, and the full
+anchored word decoder / recursive count is still incomplete.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed. Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axioms. No Clay-level completion claim.
+
+Commit: `027bf7d`.
+
+## What remains
+
+- Prove the root-avoiding safe-deletion theorem for arbitrary `k > 1`
+  (or at least the missing `k ≥ 3` induction step).
+- Package the global theorem as `PlaquetteGraphAnchoredSafeDeletionExists`.
+- Iterate the v2.53 one-step driver into the full anchored word decoder /
+  Klarner BFS-tree count.
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.
+
+---
+
 # v2.54.0 — unrooted non-cut deletion for F3/Klarner
 
 **Released: 2026-04-26**

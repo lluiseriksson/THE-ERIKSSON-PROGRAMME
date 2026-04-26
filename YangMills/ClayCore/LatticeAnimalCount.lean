@@ -1969,6 +1969,69 @@ theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preco
   plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
     (d := physicalClayDimension) (L := L) (k := k) (root := root) (X := X) hX
 
+/-- Root-avoiding safe deletion in the first nontrivial bucket size.
+
+For `k = 2`, an anchored bucket contains the root and exactly one other
+plaquette.  Deleting that non-root plaquette leaves the singleton `{root}`,
+which is preconnected.  This closes the base nontrivial case of the
+root-avoiding safe-deletion problem without invoking the still-open global
+non-cut theorem. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two
+    {d L : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L}
+    {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root 2) :
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      X.erase z ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root 1 := by
+  classical
+  obtain ⟨z, hzX, hz_ne_root⟩ :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_root hX
+      (show 1 < 2 from Nat.lt_succ_self 1)
+  refine ⟨z, hzX, hz_ne_root, ?_⟩
+  unfold plaquetteGraphPreconnectedSubsetsAnchoredCard
+  rw [Finset.mem_filter]
+  have hroot : root ∈ X :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem hX
+  have hcardX : X.card = 2 :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_card_eq hX
+  have hcardErase : (X.erase z).card = 1 := by
+    rw [Finset.card_erase_of_mem hzX, hcardX]
+  have hpre :
+      ((plaquetteGraph d L).induce {x | x ∈ X.erase z}).Preconnected := by
+    obtain ⟨a, ha⟩ := Finset.card_eq_one.mp hcardErase
+    have hsub :
+        Subsingleton
+          ↑({x : ConcretePlaquette d L | x ∈ X.erase z} :
+            Set (ConcretePlaquette d L)) := by
+      refine ⟨?_⟩
+      intro u v
+      apply Subtype.ext
+      have hu : u.1 ∈ ({a} : Finset (ConcretePlaquette d L)) := by
+        simpa [ha] using u.2
+      have hv : v.1 ∈ ({a} : Finset (ConcretePlaquette d L)) := by
+        simpa [ha] using v.2
+      rw [Finset.mem_singleton] at hu hv
+      exact hu.trans hv.symm
+    haveI := hsub
+    exact SimpleGraph.Preconnected.of_subsingleton
+  exact ⟨Finset.mem_univ _, Finset.mem_erase.mpr ⟨hz_ne_root.symm, hroot⟩,
+    by simpa using hcardErase, hpre⟩
+
+/-- Physical specialization of the `k = 2` root-avoiding safe-deletion base
+case. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two
+    {L : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root 2) :
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      X.erase z ∈
+        plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root 1 :=
+  plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two
+    (d := physicalClayDimension) (L := L) (root := root) (X := X) hX
+
 /-- Member-targeted first BFS step: every non-root member of an anchored bucket
 is reached through some plaquette in the root shell. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
@@ -3122,6 +3185,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_tail_to_member

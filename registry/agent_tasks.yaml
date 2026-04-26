@@ -306,7 +306,7 @@ tasks:
   status: PARTIAL
   priority: 3
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T18:20:00Z'
+  updated_at: '2026-04-26T19:25:00Z'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - BLUEPRINT_F3Count.md
@@ -327,7 +327,7 @@ tasks:
   stop_if:
   - Recursive map cannot be expressed without a sorry
   - A Mathlib gap surfaces (file a recommendation, do not paper over)
-  next_agent: Codex
+  next_agent: Cowork
   notes:
   - Active F3 frontier; closes Priority 1.2 of CODEX_CONSTRAINT_CONTRACT.md.
   - This is the highest-Clay-reduction Codex task currently actionable.
@@ -402,14 +402,21 @@ tasks:
     of global safe deletion and iteration into the full anchored word decoder.'
   - Dispatched to Codex at 2026-04-26T10:43:11Z
   - 'PARTIAL by Codex at 2026-04-26T18:20:00Z: v2.54.0 landed. Lean now proves the
-    Mathlib-backed unrooted non-cut deletion step:
-    `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted`
+    Mathlib-backed unrooted non-cut deletion step: `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted`
+    and the physical specialization. `lake build YangMills.ClayCore.LatticeAnimalCount`
+    passed; both new #print axioms traces are canonical. F3-COUNT remains CONDITIONAL_BRIDGE
+    because the deletion is not yet proved root-avoiding, so `PlaquetteGraphAnchoredSafeDeletionExists`
+    and the full word decoder remain open.'
+  - Dispatched to Codex at 2026-04-26T10:58:33Z
+  - 'PARTIAL by Codex at 2026-04-26T19:25:00Z: v2.55.0 landed. Lean now proves the
+    root-avoiding safe-deletion base case for bucket cardinality 2:
+    `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two`
     and the physical specialization. `lake build YangMills.ClayCore.LatticeAnimalCount`
     passed; both new #print axioms traces are canonical. F3-COUNT remains
-    CONDITIONAL_BRIDGE because the deletion is not yet proved root-avoiding, so
-    `PlaquetteGraphAnchoredSafeDeletionExists` and the full word decoder remain open.'
-  dispatch_count: 16
-  dispatched_at: '2026-04-26T10:43:11Z'
+    CONDITIONAL_BRIDGE pending the global root-avoiding safe-deletion theorem for
+    k >= 3 and the full anchored word decoder.'
+  dispatch_count: 17
+  dispatched_at: '2026-04-26T10:58:33Z'
   dispatched_to: Codex
 - id: CLAY-EXP-RETIRE-7-001
   title: Retire 7 easy SU(N) generator-data Experimental axioms
@@ -1479,10 +1486,10 @@ tasks:
 - id: META-GENERATE-TASKS-001
   title: Generate new actionable tasks when the queue is empty
   owner: Any
-  status: FUTURE
+  status: IN_PROGRESS
   priority: 99
   created_at: '2026-04-26T00:00:00Z'
-  updated_at: '2026-04-26T12:35:00Z'
+  updated_at: '2026-04-26T11:06:46Z'
   required_files:
   - AGENT_BUS.md
   - FORMALIZATION_ROADMAP_CLAY.md
@@ -1520,8 +1527,9 @@ tasks:
   - 'Completed by Codex at 2026-04-26T12:35:00Z for Codex queue starvation: created
     CODEX-F3-SAFE-DELETION-STATEMENT-001, CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001,
     and CODEX-PLANNER-LEDGER-MATURE-001 as READY tasks; reset META back to FUTURE.'
-  dispatch_count: 7
-  dispatched_at: '2026-04-26T07:46:55Z'
+  - Dispatched to Cowork at 2026-04-26T11:06:46Z
+  dispatch_count: 8
+  dispatched_at: '2026-04-26T11:06:46Z'
   dispatched_to: Cowork
 - id: COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001
   title: 'Cowork: audit the EXP-SUN-GEN retirement (vacuity caveat)'
@@ -2015,12 +2023,42 @@ tasks:
   title: 'Cowork: draft concrete vacuity_flag column markdown for UNCONDITIONALITY_LEDGER.md
     (input to CODEX-VACUITY-RULES-CONSOLIDATION-001)'
   owner: Cowork
-  status: IN_PROGRESS
+  status: DONE
   priority: 5
   created_at: '2026-04-26T16:45:00Z'
   updated_at: '2026-04-26T18:25:00Z'
   completed_at: '2026-04-26T18:25:00Z'
   delivery_artifact: dashboard/vacuity_flag_column_draft.md
+  delivery_evidence:
+  - dashboard/vacuity_flag_column_draft.md filed with sections (a) 7-value enum +
+    concrete examples; (b) header markdown for Tier 1 (7 cols) + Tier 2 (6 cols) with
+    vacuity_flag as second-to-last column; (c) per-row recommendations for all 10
+    Tier 1 + 5 Tier 2 LEDGER rows + 7 proposed new rows for §9 + §10.3 vacuity instances;
+    (d) line-by-line Codex insertion recipe + 3-step verification grep commands
+  - 'Coverage: 10 distinct documented vacuity locations from KNOWN_ISSUES.md captured
+    — §1.1, §1.2, §1.3, §9 Findings 011/012/013-014/015/016, §10.3, Clay weak endpoint
+    canaries'
+  - 'Per-row recommendations: L1-HAAR/L2.4-SCHUR/L2.5-FROBENIUS/L2.6-CHARACTER/F3-ANCHOR-SHELL=none;
+    F3-COUNT=caveat-only; F3-MAYER/F3-COMBINED=none (BLOCKED, not vacuous); NC1-WITNESS=trivial-group;
+    CONTINUUM-COORDSCALE=trivial-placeholder; EXP-SUN-GEN=zero-family; EXP-MATEXP-DET=none;
+    EXP-LIEDERIVREG/EXP-BAKRYEMERY-SPIKE/EXP-BD-HY-GR=caveat-only'
+  - 'Anti-overclaim invariant explicit: "must not change any LEDGER row''s Status,
+    Dependency, Evidence, or Next action cell"; §(d)/D.6 verification step requires
+    diff confirming no row mutation; 7 proposed new rows for §9 + §10.3 patterns explicitly
+    deferred to a separate CODEX-LEDGER-VACUITY-PATTERN-ROWS-001 task, not bundled
+    into present consolidation'
+  - COWORK_RECOMMENDATIONS.md 18:25Z entry written with full validation table + stop-condition
+    counter-evidence + coverage matrix
+  stop_conditions_not_triggered:
+  - 'Draft proposes any LEDGER row status change: NOT TRIGGERED — §(b) explicit invariant;
+    §(d)/D.6 verification step explicitly checks no row mutation; 7 new-row proposals
+    deferred to separate task'
+  - 'Vacuity-pattern instance missing: NOT TRIGGERED — §(c) third table enumerates
+    all 7+ Findings 011/012/013-014/015/016 + §10.3 + Clay weak endpoint instances'
+  recommendation_status_update:
+  - 'REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001 (priority 2): now UNBLOCKED. Codex
+    can now read sections (b) + (c) + (d) and implement the column verbatim. After
+    implementation, recommendation moves to RESOLVED.'
   required_files:
   - UNCONDITIONALITY_LEDGER.md
   - KNOWN_ISSUES.md
@@ -2056,8 +2094,8 @@ tasks:
     spec level.
   - Dispatched to Cowork at 2026-04-26T10:53:22Z
   - 'DONE by Cowork at 2026-04-26T18:25:00Z: dashboard/vacuity_flag_column_draft.md
-    delivered with sections (a)-(d), all 7 enum values, per-row Tier 1 + Tier 2
-    recommendations, and mechanical Codex insertion instructions. REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001
+    delivered with sections (a)-(d), all 7 enum values, per-row Tier 1 + Tier 2 recommendations,
+    and mechanical Codex insertion instructions. REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001
     remains OPEN until Codex implements the actual ledger column.'
   dispatched_at: '2026-04-26T10:53:22Z'
   dispatched_to: Cowork
@@ -2652,22 +2690,72 @@ tasks:
 - id: COWORK-AUDIT-CODEX-V2.54-UNROOTED-NONCUT-001
   title: 'Cowork: audit F3 v2.54 unrooted non-cut deletion step'
   owner: Cowork
-  status: READY
+  status: DONE
   priority: 3
   created_at: '2026-04-26T18:20:00Z'
-  updated_at: '2026-04-26T18:20:00Z'
+  updated_at: '2026-04-26T18:35:00Z'
+  completed_at: '2026-04-26T18:35:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+  - 'plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
+    confirmed at LatticeAnimalCount.lean:1909 (general) + :1960 (physical specialization);
+    #print axioms pinned at lines 3181 + 3182'
+  - 'Theorem statement at line 1909 explicitly OMITS z ≠ root constraint: ∃ z ∈ X,
+    induce(X.erase z).Preconnected (no rootedness condition)'
+  - 'Theorem docstring at lines 1905-1908 explicit: "deliberately unrooted: it does
+    not assert z ≠ root, so it does not yet discharge PlaquetteGraphAnchoredSafeDeletionExists.
+    It isolates the remaining F3/Klarner gap to the root-avoiding refinement"'
+  - Proof at lines 1916-1954 reuses Mathlib helper SimpleGraph.Connected.exists_preconnected_induce_compl_singleton_of_finite
+    (line 1927) per REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001 (now RESOLVED)
+  - AXIOM_FRONTIER.md:1 v2.54.0 entry; lines 10-11 list both theorem names; lines
+    47-50 pin both at canonical [propext, Classical.choice, Quot.sound]; lines 26-37
+    (Why) explicit "deliberately not a proof of F3-COUNT" + "needs the root-avoiding
+    strengthening that yields z ≠ root"; lines 36-37 explicit "does not move any percentage
+    bar and does not upgrade F3-COUNT from CONDITIONAL_BRIDGE"; lines 54-62 (What
+    remains) enumerate root-avoiding strengthening + word decoder iteration
+  - UNCONDITIONALITY_LEDGER.md:97 F3-COUNT row remains CONDITIONAL_BRIDGE; evidence
+    column updated to enumerate v2.48 + v2.50 + v2.51 + v2.52 + v2.53 + v2.54 with
+    explicit "v2.54 proves the Mathlib-backed unrooted non-cut deletion step, but
+    the root-avoiding safe-deletion theorem … is still open"
+  - 'Bonus honest content: plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two
+    at line 1979 closes the root-avoiding problem ONLY at k=2 by cardinality argument;
+    correctly bounded; does NOT discharge the general k ≥ 2 case; not flagged as v2.54
+    contribution'
+  - COWORK_RECOMMENDATIONS.md 18:35Z audit entry written with full validation + stop-condition
+    counter-evidence + theorem-by-theorem verification + F3_COUNT_DEPENDENCY_MAP alignment
+  stop_conditions_not_triggered:
+  - 'v2.54 text implies PlaquetteGraphAnchoredSafeDeletionExists proved: NOT TRIGGERED
+    — explicit anti-claim language at LatticeAnimalCount.lean:1905-1908 (theorem docstring),
+    AXIOM_FRONTIER.md:26-37 (Why) + :54-62 (What remains) + :63 ("F3-COUNT remains
+    CONDITIONAL_BRIDGE"), and LatticeAnimalCount.lean:1958 (physical specialization
+    comment "root-avoiding strengthening remains open")'
+  - 'Any percentage or mathematical status row upgraded: NOT TRIGGERED — explicit
+    "does not move any percentage bar and does not upgrade F3-COUNT from CONDITIONAL_BRIDGE"
+    at AXIOM_FRONTIER.md:36-37; LEDGER F3-COUNT row + dashboard ledger_status + progress_metrics.yaml
+    + README badges all unchanged'
+  honesty_observation: 'v2.54 is a textbook honesty-preserving refinement: implements
+    the unrooted form using the Mathlib helper Cowork''s recommendation pointed at,
+    isolates the remaining gap to "root-avoiding" only, adds a correctly-bounded k=2
+    base case as bonus content, and explicitly disclaims F3-COUNT closure in 5+ places.
+    The system worked: Cowork dependency map → Mathlib pre-check recommendation →
+    Codex grep → reuse instead of writing 100-200 LOC from scratch.'
+  scoreboard: '7th non-vacuous Clay-reduction Cowork audit pass + 3 honesty-infrastructure
+    passes; F3-COUNT progression today: v2.42 → v2.43 → v2.44 → v2.48 → v2.50 → v2.51
+    → v2.52 → v2.53 → v2.54 (8 narrowing increments, F3-COUNT row stayed CONDITIONAL_BRIDGE
+    through every commit)'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - AXIOM_FRONTIER.md
   - UNCONDITIONALITY_LEDGER.md
   - F3_COUNT_DEPENDENCY_MAP.md
   - AGENT_BUS.md
-  objective: >
-    Audit Codex v2.54.0. Confirm the new theorems prove only unrooted deletion
-    preserving induced preconnectedness, that their #print axioms traces are
-    canonical, that AXIOM_FRONTIER and UNCONDITIONALITY_LEDGER do not claim
-    F3-COUNT closure, and that the remaining blocker is root-avoiding
-    safe-deletion plus full word-decoder iteration.
+  objective: 'Audit Codex v2.54.0. Confirm the new theorems prove only unrooted deletion
+    preserving induced preconnectedness, that their #print axioms traces are canonical,
+    that AXIOM_FRONTIER and UNCONDITIONALITY_LEDGER do not claim F3-COUNT closure,
+    and that the remaining blocker is root-avoiding safe-deletion plus full word-decoder
+    iteration.
+
+    '
   validation:
   - grep for plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
     in YangMills/ClayCore/LatticeAnimalCount.lean
@@ -2681,3 +2769,242 @@ tasks:
   notes:
   - Generated by Codex after v2.54 partial progress on CLAY-F3-COUNT-RECURSIVE-001.
   - This is an audit task only; no Lean edits expected from Cowork.
+  - Dispatched to Cowork at 2026-04-26T11:01:49Z
+  dispatched_at: '2026-04-26T11:01:49Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+- id: COWORK-F3-MAYER-DEPENDENCY-MAP-001
+  title: 'Cowork: produce F3_MAYER_DEPENDENCY_MAP.md (Brydges-Kennedy random-walk
+    cluster expansion blueprint)'
+  owner: Cowork
+  status: DONE
+  priority: 5
+  created_at: '2026-04-26T18:50:00Z'
+  updated_at: '2026-04-26T19:00:00Z'
+  completed_at: '2026-04-26T19:00:00Z'
+  delivery_artifact: F3_MAYER_DEPENDENCY_MAP.md
+  delivery_evidence:
+  - F3_MAYER_DEPENDENCY_MAP.md filed with sections (a)-(e) parallel to F3_COUNT_DEPENDENCY_MAP.md
+  - '§(a) catalogues 7 sub-tables of existing Lean artifacts: A.0 wilsonConnectedCorr
+    at L4_WilsonLoops/WilsonLoop.lean:54; A.1 algebraic Mayer at MayerIdentity.lean:88-210
+    (7 theorems); A.2 zero-mean keystone at ZeroMeanCancellation.lean:69-163 (5 theorems
+    including plaquetteFluctuationNorm_mean_zero at line 142); A.3 TruncatedActivities
+    at MayerExpansion.lean:50-262 (9 entries); A.4 WilsonPolymerActivityBound at WilsonPolymerActivity.lean:91;
+    A.5 ConnectedCardDecayMayerData target at ClusterRpowBridge.lean:1738-2229; A.6
+    cluster correlator consumer at ClusterCorrelatorBound.lean:44-494; A.7 final F3-COMBINED
+    assembly at ClusterRpowBridge.lean:4355/4371/4855'
+  - '§(b) lists 6 missing theorems with proposed Lean signatures + difficulty estimates:
+    B.1 truncatedK_zero_of_card_one EASY ~30 LOC; B.2 truncatedK_zero_of_not_polymerConnected
+    MEDIUM ~150 LOC; B.3 BK bound HIGH ~250 LOC (analytic boss); B.4 plaquetteFluctuationNorm_sup_le
+    EASY-MEDIUM ~80 LOC; B.5 mayer-ursell identity MEDIUM-HIGH ~200 LOC; B.6 bundled
+    witness EASY ~50 LOC. Total ~760 LOC matches BLUEPRINT_F3Mayer ~700 LOC estimate'
+  - §(c) precise statement of Brydges-Kennedy/Mayer-Ursell identity in project notation
+    with 5-clause why-each-ingredient decomposition tied to B.1-B.5
+  - '§(d) cluster-series convergence argument: A₀=1, r=4 N_c β, K=7 (F3-COUNT) → series
+    ∑(28 N_c β)^n converges iff β < 1/(28 N_c) (Kotecky-Preiss); pseudocode for F3CombinedWitness
+    using ofSubpackages'
+  - §(e) F3-COMBINED assembly via line 4855 consumer; conditional LEDGER + progress_metrics
+    impact (F3-COUNT/MAYER/COMBINED all FORMAL_KERNEL only after BOTH F3-COUNT closes
+    AND §(b)/B.1-B.6 land); lattice 28% → ~73% projected; CLAY_HORIZON cross-ref reminding
+    Clay-as-stated still capped at ~10-12% even after full F3-* closure
+  - COWORK_RECOMMENDATIONS.md 19:00Z entry written
+  stop_conditions_not_triggered:
+  - 'Document claims F3-MAYER closure: NOT TRIGGERED — header + Honesty discipline
+    + footer all explicit "F3-MAYER remains BLOCKED"; §(e) impact-table conditional
+    on "after F3-COUNT closure AND §(b)/B.1-B.6 land"'
+  - 'Document claims F3-COUNT closure: NOT TRIGGERED — header explicit "F3-COUNT remains
+    CONDITIONAL_BRIDGE (post-v2.54)"; Codex schedule explicitly waits for v2.55 +
+    v2.56 before F3-MAYER work begins'
+  - 'File:line references do not match Lean source: NOT TRIGGERED — all 25+ refs generated
+    from live Grep at filing time, including verified WilsonLoop.lean:54, MayerIdentity.lean:138,
+    ZeroMeanCancellation.lean:142, ClusterRpowBridge.lean:2229/4355/4855'
+  honesty_observation: Forward-looking blueprint produces zero math advance. F3-MAYER
+    cannot fire until F3-COUNT closes; F3-COUNT cannot close without §(b)/B.1 + B.2
+    of F3_COUNT_DEPENDENCY_MAP.md. Document is informative but inert until both predecessor
+    proofs land. Mirrors structure of F3-COUNT dependency map for consistency.
+  scoreboard: '5th Cowork-authored deliverable in repo: F3_COUNT_DEPENDENCY_MAP.md
+    (v1 + v2.53 refresh), CLAY_HORIZON.md, dashboard/vacuity_flag_column_draft.md,
+    F3_MAYER_DEPENDENCY_MAP.md (this delivery)'
+  required_files:
+  - BLUEPRINT_F3Mayer.md
+  - UNCONDITIONALITY_LEDGER.md
+  - FORMALIZATION_ROADMAP_CLAY.md
+  - F3_COUNT_DEPENDENCY_MAP.md
+  - YangMills/ClayCore/ (Mayer-related Lean files if any)
+  objective: 'F3-MAYER is BLOCKED on F3-COUNT closure; once Codex lands the v2.55
+    root-avoiding strengthening + word decoder iteration, F3-MAYER becomes the next
+    live front. Cowork pre-supplies F3_MAYER_DEPENDENCY_MAP.md (root or doc/) structured
+    parallel to F3_COUNT_DEPENDENCY_MAP.md: (a) every existing Lean artifact in the
+    Mayer/cluster-expansion area with file:line references; (b) every theorem still
+    missing for `|K(Y)| ≤ A_0 · r^|Y|` with proposed Lean signatures and difficulty
+    estimates; (c) precise statement of the Brydges-Kennedy/Mayer identity in the
+    project''s notation; (d) the cluster-series bound argument for Kotecky-Preiss
+    `connectingBound`; (e) the final assembly into the F3-COMBINED package per `clayMassGap_of_shiftedF3MayerCountPackageExp`.
+    Output is a mathematician-readable blueprint that Codex can use as a step-by-step
+    plan once F3-COUNT closes.
+
+    '
+  validation:
+  - F3_MAYER_DEPENDENCY_MAP.md exists with sections (a)-(e)
+  - Every existing theorem citation uses literal file:line references that pass spot-check
+  - Missing theorems list is non-empty and includes at minimum the Mayer-Ursell identity
+    proof + cluster-series convergence bound
+  - Document explicitly states F3-MAYER remains BLOCKED until F3-COUNT closes AND
+    the Mayer side proofs land
+  - COWORK_RECOMMENDATIONS.md gains a F3-mayer-dependency-map-001 entry
+  stop_if:
+  - The document claims F3-MAYER closure (would be overclaim — F3-MAYER is BLOCKED)
+  - The document claims F3-COUNT closure (would be overclaim — F3-COUNT is CONDITIONAL_BRIDGE)
+  - File:line references do not match actual Lean source (silent rot)
+  next_agent: Codex
+  notes:
+  - Pre-supplies the Mayer-side blueprint so Codex's v2.56+ work has a precise plan
+    once F3-COUNT closes.
+  - Mirror structure of F3_COUNT_DEPENDENCY_MAP.md for consistency.
+  - Dispatched to Cowork at 2026-04-26T11:10:59Z
+  dispatched_at: '2026-04-26T11:10:59Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+- id: COWORK-EXP-LIEDERIVREG-REFORMULATION-SCOPE-001
+  title: 'Cowork: scope reformulation strategy for EXP-LIEDERIVREG (currently INVALID
+    as stated)'
+  owner: Cowork
+  status: IN_PROGRESS
+  priority: 6
+  created_at: '2026-04-26T18:50:00Z'
+  updated_at: '2026-04-26T11:23:24Z'
+  required_files:
+  - YangMills/Experimental/LieSUN/LieDerivReg_v4.lean
+  - UNCONDITIONALITY_LEDGER.md
+  - KNOWN_ISSUES.md
+  objective: 'Per LEDGER:109 + KNOWN_ISSUES, `EXP-LIEDERIVREG` (`lieDerivReg_all`)
+    is INVALID — mathematically false in its current "all functions" form. The LEDGER
+    says "Restrict to smooth f" but no concrete reformulation has been drafted. Cowork
+    investigates: (a) read `LieDerivReg_v4.lean:58` axiom statement + downstream consumers
+    (LieDerivReg_v4, GeneratorAxiomsDimOne, P8_PhysicalGap/SUN_DirichletCore); (b)
+    draft a `dashboard/exp_liederivreg_reformulation_options.md` with at least 2 concrete
+    reformulation options (e.g. restrict to C^∞ functions; restrict to compactly supported
+    smooth functions; restrict to a specific function class used by downstream consumers);
+    (c) for each option, identify which downstream consumers still type-check vs which
+    need their own restrictions; (d) recommend one option as preferred + filing convention
+    (Cowork audit + Codex implementation); (e) cross-reference Mathlib helpers that
+    would unblock the reformulation.
+
+    '
+  validation:
+  - dashboard/exp_liederivreg_reformulation_options.md exists with sections (a)-(e)
+  - At least 2 concrete reformulation options
+  - Downstream consumer impact analysis for each option
+  - One recommended option with justification
+  - COWORK_RECOMMENDATIONS.md gains an exp-liederivreg-reformulation-scope-001 entry
+  stop_if:
+  - Cowork claims to have proved any reformulation (Cowork is scoping, not proving)
+  - The scope document implies the existing INVALID axiom is rescued (it must be REPLACED,
+    not patched)
+  next_agent: Codex
+  notes:
+  - Unblocks the long-tail EXP-LIEDERIVREG fix by removing design burden from Codex.
+  - Tier 2 axiom count remains 5 until the reformulation lands; this scope is bookkeeping
+    for the eventual replacement.
+  - Dispatched to Cowork at 2026-04-26T11:23:24Z
+  dispatched_at: '2026-04-26T11:23:24Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+- id: COWORK-LEDGER-FRESHNESS-AUDIT-003
+  title: 'Cowork: re-grep Tier 2 axioms (3rd iteration of recurring 6h freshness cadence)'
+  owner: Cowork
+  status: DONE
+  priority: 5
+  created_at: '2026-04-26T18:50:00Z'
+  updated_at: '2026-04-26T19:10:00Z'
+  completed_at: '2026-04-26T19:10:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+  - 'Tier 2 grep count = 5 real axiom declarations identical to 14:00 baseline and
+    16:30 audit-002 baseline: sun_haar_satisfies_lsi (BakryEmerySpike.lean:58), variance_decay_from_bridge_and_poincare_semigroup_gap
+    (VarianceDecayFromPoincare.lean:79), gronwall_variance_decay (VarianceDecayFromPoincare.lean:133),
+    lieDerivReg_all (LieDerivReg_v4.lean:58), matExp_traceless_det_one (LieExpCurve.lean:81)'
+  - LEDGER row "5 real declarations in Experimental/" remains accurate (5 = 5, diff
+    = 0)
+  - 0-axiom-outside-Experimental invariant PASS — same 2 docstring hits as baselines
+    (GNSConstruction.lean:23 + AbelianU1OSAxioms.lean:25), both confirmed text wrapping
+    not declarations
+  - lieDerivReg_all consumer scope unchanged at 3 files (LieDerivReg_v4.lean declaration,
+    GeneratorAxiomsDimOne.lean Experimental consumer, P8_PhysicalGap/SUN_DirichletCore.lean
+    consumer outside Experimental)
+  - COWORK_RECOMMENDATIONS.md 19:10Z freshness-audit-003 entry written with literal
+    grep output + comparison-to-baselines table + stability-through-session-commits
+    note
+  - 'Stability: between 14:00 baseline and this audit, the following landed without
+    changing the Tier 2 axiom set: v2.52 + v2.53 + v2.54 + JOINT-PLANNER bookkeeping
+    + LEDGER §38 vacuity_flag schema + MATHEMATICAL_REVIEWERS_COMPANION §3.3 + 5 Cowork
+    deliverables + 6 Cowork-filed recommendations resolved. The Tier 2 axiom set is
+    structurally stable across both math advances and bookkeeping work.'
+  stop_conditions_not_triggered:
+  - 'Tier 2 count diff > 1: NOT TRIGGERED (count = 5, expected = 5, diff = 0)'
+  - 'New non-Experimental axiom: NOT TRIGGERED (2 docstring hits identical to baseline)'
+  honesty_observation: Drift = 0 across all four invariants vs both 14:00 baseline
+    AND 16:30 audit-002 baseline. The Tier 2 axiom set has been stable across 5+ hours
+    and 8 v2.* commits. The recurring 6h cadence is working as designed.
+  scoreboard: 3rd freshness audit in the recurring cadence; 18th audit_pass of the
+    session; 8th non-vacuous-content Cowork audit pass
+  required_files:
+  - UNCONDITIONALITY_LEDGER.md
+  - YangMills/Experimental/
+  - EXPERIMENTAL_AXIOMS_AUDIT.md
+  objective: 'Third iteration of the recurring 6h freshness cadence per `REC-COWORK-LEDGER-FRESHNESS-001`.
+    Cowork re-runs `grep -rn ''^\s*axiom\s+\w+'' YangMills/Experimental/ --include=''*.lean''`
+    and reconciles against `UNCONDITIONALITY_LEDGER.md` Tier 2 row count (currently
+    "5 real declarations"). Brought forward ~4h from the standard 6h schedule (last
+    freshness audit at 16:30Z; standard cadence would put next at ~22:30Z; file as
+    READY now to keep the cadence active and let Codex pick it up when convenient).
+
+    '
+  validation:
+  - 'grep count matches LEDGER Tier 2 row count (expected: 5)'
+  - COWORK_RECOMMENDATIONS.md gains a freshness-audit-003 entry
+  - 0-axiom-outside-Experimental invariant re-verified PASS
+  - lieDerivReg_all consumer scope re-verified unchanged (3 files)
+  stop_if:
+  - Ledger Tier 2 count differs by more than 1 without explaining entry
+  - New non-Experimental axiom appears
+  next_agent: Codex
+  notes:
+  - Recurring iteration. After this lands, COWORK-LEDGER-FRESHNESS-AUDIT-004 to be
+    filed at next META fire (~+6h).
+  - Continues the freshness-cadence anti-stale-loop from earlier today.
+  - Dispatched to Cowork at 2026-04-26T11:19:30Z
+  dispatched_at: '2026-04-26T11:19:30Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+- id: COWORK-AUDIT-CODEX-V2.55-CARD-TWO-DELETION-001
+  title: 'Cowork: audit Codex v2.55 card-two root-avoiding safe-deletion base case'
+  owner: Cowork
+  status: READY
+  priority: 4
+  created_at: '2026-04-26T19:25:00Z'
+  updated_at: '2026-04-26T19:25:00Z'
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - AXIOM_FRONTIER.md
+  - UNCONDITIONALITY_LEDGER.md
+  - AGENT_BUS.md
+  objective: >
+    Audit Codex's v2.55 partial progress on CLAY-F3-COUNT-RECURSIVE-001. Verify
+    that the new card-two root-avoiding deletion theorems exist, are oracle-clean,
+    and are documented honestly as a base case only. Confirm that F3-COUNT remains
+    CONDITIONAL_BRIDGE and that no percentage or Clay-level claim moved.
+  validation:
+  - lake build YangMills.ClayCore.LatticeAnimalCount
+  - '#print axioms traces for both v2.55 theorems are [propext, Classical.choice, Quot.sound]'
+  - AXIOM_FRONTIER.md v2.55.0 states this does not close F3-COUNT
+  - UNCONDITIONALITY_LEDGER.md F3-COUNT row remains CONDITIONAL_BRIDGE and says k >= 3 remains open
+  - COWORK_RECOMMENDATIONS.md gains an audit entry
+  stop_if:
+  - The new theorem depends on sorryAx or a new project axiom
+  - Documentation implies global safe deletion or F3-COUNT closure
+  - Any project percentage moved from this base-case theorem
+  next_agent: Codex
+  notes:
+  - Generated by Codex after v2.55 partial progress on CLAY-F3-COUNT-RECURSIVE-001.
+  - Audit task only; no Lean edits expected from Cowork.
