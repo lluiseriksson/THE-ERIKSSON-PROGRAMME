@@ -1634,6 +1634,43 @@ theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCo
       zShell,
     zShell, htail', rfl⟩
 
+/-- Reachability API for the member-targeted first BFS branch: every non-root
+member is reachable from some root-shell plaquette inside the induced bucket
+graph. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_reachable_to_member
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root y : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hy : y ∈ X) (hyne : root ≠ y) :
+    ∃ z : {x : ConcretePlaquette d L // x ∈ X},
+      z.1 ∈ (plaquetteGraph d L).neighborFinset root ∧
+        ((plaquetteGraph d L).induce {x | x ∈ X}).Reachable z ⟨y, hy⟩ := by
+  obtain ⟨z, tail, hzN⟩ :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_tail_to_member
+      hX hy hyne
+  exact ⟨z, hzN, ⟨tail⟩⟩
+
+/-- Physical coded reachability API for the member-targeted first BFS branch:
+every non-root member is reachable from a `Fin 1296`-coded root-shell
+plaquette inside the induced bucket graph. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_reachable_to_member
+    {L k : ℕ} [NeZero L]
+    {root y : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (hy : y ∈ X) (hyne : root ≠ y) :
+    ∃ c : Fin 1296,
+      ∃ z : {z : ConcretePlaquette physicalClayDimension L //
+        z ∈ X ∩ (plaquetteGraph physicalClayDimension L).neighborFinset root},
+        ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ X}).Reachable
+          ⟨z.1, (Finset.mem_inter.mp z.2).1⟩ ⟨y, hy⟩ ∧
+          physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296 hX z = c := by
+  obtain ⟨c, z, tail, hcode⟩ :=
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_tail_to_member
+      hX hy hyne
+  exact ⟨c, z, ⟨⟨tail⟩, hcode⟩⟩
+
 /-- Any nontrivial anchored bucket has a first root-neighbor symbol in any
 available neighbor-choice alphabet. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
@@ -2557,6 +2594,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_tail_to_member
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_tail_to_member
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_reachable_to_member
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_reachable_to_member
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty

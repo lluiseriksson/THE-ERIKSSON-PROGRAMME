@@ -1,3 +1,44 @@
+# v2.47.0 — anchored first-branch reachability API
+
+**Released: 2026-04-26**
+
+## What
+
+Added reachability-facing BFS/Klarner API lemmas in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_reachable_to_member
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_reachable_to_member
+
+These repackage v2.46.0's residual-tail walk as induced-graph reachability:
+every non-root member of an anchored bucket is reachable from some root-shell
+plaquette, and in physical dimension that root-shell plaquette is carried with
+its `Fin 1296` code.
+
+## Why
+
+No percentage bar moves.  The strong walk-tail theorem remains available for
+constructive recursion, while the reachability API is the cleaner interface for
+the next decoder layer: splitting the bucket into first-shell branches and
+recursive reachable subproblems.
+
+## Oracle
+
+Lean check:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_reachable_to_member
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_reachable_to_member
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.46.0 — anchored first-branch tail splitter
 
 **Released: 2026-04-26**
