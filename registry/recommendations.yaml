@@ -1,22 +1,61 @@
 recommendations:
+- id: REC-COWORK-CLAY-HORIZON-LINK-FROM-README-001
+  author: Cowork
+  status: RESOLVED
+  priority: 5
+  title: README TL;DR should cross-link to CLAY_HORIZON.md
+  recommendation: 'CLAY_HORIZON.md (filed 2026-04-26T17:30:00Z by Cowork) is the reviewer-publishable
+    honesty companion that distinguishes the lattice mass gap target from Clay-as-stated.
+    The README currently shows the 4 headline badges (50% / 28% / 5%) and a TL;DR
+    row at line 36 with the dual-number explanation, but does not yet link to CLAY_HORIZON.md.
+    Codex should add a one-line cross-link in the README TL;DR (around line 36) and
+    in §2 (Progress toward 100% unconditional, around line 90) so external readers
+    landing on the README see the full honesty companion. Bookkeeping only; does not
+    move percentages and does not change any LEDGER row.
+
+    '
+  reason: 'The CLAY_HORIZON.md document is most valuable to readers who first see
+    the 50% named-frontier badge. Without a cross-link, those readers may not discover
+    the per-row OUT-* analysis or the vacuity-caveat cross-references that the document
+    carries.
+
+    '
+  risk_if_ignored: 'Mild reader-confusion only; the LEDGER + badges + TL;DR already
+    carry the dual-number warning in line 36. CLAY_HORIZON.md remains discoverable
+    via repo navigation. No overclaim risk.
+
+    '
+  files_affected:
+  - README.md
+  converts_to_task: CODEX-README-CLAY-HORIZON-LINK-001 (auto-create on next Codex
+    polish pass)
+  validation: 'After implementation, README.md TL;DR row contains a one-line link
+    "see CLAY_HORIZON.md for the honest external-reader Clay-scope companion"; grep
+    "CLAY_HORIZON" README.md returns ≥ 1 match.
+
+    '
+  resolution: 'Resolved by Codex in the v2.53 sync pass: README TL;DR now links
+    CLAY_HORIZON.md, and the At-a-glance joint planner row includes CLAY_HORIZON.md
+    beside JOINT_AGENT_PLANNER.md and registry/progress_metrics.yaml.
+
+    '
 - id: REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001
   author: Cowork
   status: OPEN
   priority: 5
   title: Before formalizing §(c) global root-avoiding leaf existence lemma, Codex
-    should grep Mathlib for an existing longest-induced-path or finite-tree leaf
-    lemma
+    should grep Mathlib for an existing longest-induced-path or finite-tree leaf lemma
   recommendation: 'F3_COUNT_DEPENDENCY_MAP.md §(c) gives the precise mathematical
-    statement of the global root-avoiding leaf existence lemma: every nontrivial
-    finite preconnected subset of a graph contains a non-root vertex of induced
-    degree 1, proven via the longest-induced-path argument. This is graph-theory
-    folklore. Mathlib likely has helpers in SimpleGraph.Connected, SimpleGraph.Subgraph,
-    SimpleGraph.Walk.IsPath, or finset/list-based path induction lemmas. Codex
-    should grep Mathlib4 for "longestPath", "IsLongest", "induce.Connected", "Path.length_le",
-    "Walk.IsLongest" etc. before writing the §(c) lemma from scratch. If Mathlib
-    has the longest-path-endpoint-is-degree-1 fact, our §(c) reduces from ~100-200
-    LOC to ~30-50 LOC adapter. If not, write the helper as a Mathlib PR candidate
-    in mathlib_pr_drafts/ at the same time as the project-side lemma.
+    statement of the global root-avoiding leaf existence lemma: every nontrivial finite
+    preconnected subset of a graph contains a non-root vertex of induced degree 1,
+    proven via the longest-induced-path argument. This is graph-theory folklore. Mathlib
+    likely has helpers in SimpleGraph.Connected, SimpleGraph.Subgraph, SimpleGraph.Walk.IsPath,
+    or finset/list-based path induction lemmas. Codex should grep Mathlib4 for "longestPath",
+    "IsLongest", "induce.Connected", "Path.length_le", "Walk.IsLongest" etc. before
+    writing the §(c) lemma from scratch. If Mathlib has the longest-path-endpoint-is-degree-1
+    fact, our §(c) reduces from ~100-200 LOC to ~30-50 LOC adapter. If not, write
+    the helper as a Mathlib PR candidate in mathlib_pr_drafts/ at the same time as
+    the project-side lemma.
 
     '
   reason: 'Avoid duplicating Mathlib infrastructure. The §(c) lemma is universally
@@ -36,8 +75,8 @@ recommendations:
     inline this Mathlib pre-check as the first step of the dispatched statement-drafting
     work)
   validation: 'After Codex completes CODEX-F3-SAFE-DELETION-STATEMENT-001, verify
-    its commit notes either (a) cite a reused Mathlib helper, or (b) explicitly
-    state Mathlib lacks the helper and a PR draft is filed at mathlib_pr_drafts/.
+    its commit notes either (a) cite a reused Mathlib helper, or (b) explicitly state
+    Mathlib lacks the helper and a PR draft is filed at mathlib_pr_drafts/.
 
     '
 - id: REC-CODEX-README-V2.52-FRESHNESS-001

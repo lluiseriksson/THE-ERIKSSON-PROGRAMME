@@ -4,6 +4,63 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T17:30:00Z — DELIVERED: COWORK-CLAY-HORIZON-AUDIT-001 — CLAY_HORIZON.md filed
+
+**Task verdict**: `DONE` (honesty companion deliverable, not an audit). The deliverable `CLAY_HORIZON.md` (root of repo) is a reviewer-publishable companion that distinguishes the *lattice mass gap* target from *Clay-as-stated* and gives a per-row blocker + distance + % contribution table for the three BLOCKED OUT-* entries.
+
+### Document structure
+
+| Section | Content | Lines |
+|---|---|---|
+| (i) | Restates that the project formalizes the lattice mass gap at small β (β < 1/(28 N_c)), NOT Clay-as-stated; lists what Clay requires (continuum, OS/Wightman, all β); lists what is and is not in scope | ~25 |
+| (ii) | Per-row honest analysis of OUT-CONTINUUM (`UNCONDITIONALITY_LEDGER.md:78`), OUT-OS-WIGHTMAN (`:79`), OUT-STRONG-COUPLING (`:80`) with mathematical content, concrete blocker, distance estimate, concrete formal infrastructure that must land first, and KNOWN_ISSUES cross-references; plus honourable mention of CONTINUUM-COORDSCALE (`:62` INVALID-AS-CONTINUUM) | ~50 |
+| (iii) | Mandatory disclaimer + 4-number side-by-side table (Clay-as-stated 5%, lattice 28%, lattice discounted 23-25%, named-frontier 50%); per-row contribution table covering all 14 LEDGER components with explicit `Contribution to lattice 28%` and `Contribution to Clay-as-stated 5%` columns; honest growth ceiling explanation; named-frontier 50% category-error explanation | ~35 |
+| (iv) | Cross-reference table to KNOWN_ISSUES vacuity caveats: §1.1 NC1-WITNESS, §1.2 CONTINUUM-COORDSCALE, §1.3 EXP-SUN-GEN, §9 Finding 011 (SU(1) OS-style axioms), §9 Finding 012 (Branch III analytic predicates), §9 Findings 013-014 (Bałaban predicate carriers), §9 Finding 015 (BalabanRG scaffold), §10.3 (triple-view); each row carries a "DO-NOT-conclude" clause for external readers | ~20 |
+
+### Validation requirements (all met)
+
+| Requirement | Status |
+|---|---|
+| `CLAY_HORIZON.md` exists with sections (i)–(iv) | PASS — written to repo root |
+| Document explicitly distinguishes "lattice mass gap" target from "Clay-as-stated" target | PASS — §(i) opens with explicit statement: *"This repository is formalising: the lattice mass gap for SU(N) gauge theory at small inverse coupling β"* and *"This repository is NOT formalising: the literal Clay Millennium Prize problem"*; §(iii) `Two distinct metrics, side by side` table; §(iii) `Honest growth ceiling` paragraph |
+| All three OUT-* rows have a concrete blocker description and distance estimate | PASS — §(ii) per-row tables: OUT-CONTINUUM (5+ years, multi-decade, Bałaban RG + Mathlib gauge-theory infra missing), OUT-OS-WIGHTMAN (indeterminate multi-year, Mathlib OS/Wightman missing + non-abelian gauge OS reconstruction is research-level), OUT-STRONG-COUPLING (indeterminate multi-year, cluster expansion diverges + alternative techniques absent from Mathlib) |
+| Per-row "% contribution" table is consistent with current LEDGER status (no row promoted) | PASS — §(iii) per-row contribution table reuses `registry/progress_metrics.yaml` numbers (audited 17:00Z by COWORK-AUDIT-JOINT-PLANNER-001 AUDIT_PASS); explicit footnote "No row in this table has been promoted relative to the LEDGER"; OUT-* rows show `BLOCKED` and ~0% Clay-as-stated contribution |
+| `COWORK_RECOMMENDATIONS.md` gains a clay-horizon-audit-001 entry | PASS — this entry |
+
+### Stop conditions check — both NOT TRIGGERED
+
+| Stop condition | Status |
+|---|---|
+| Document claims any progress toward OUT-CONTINUUM, OUT-OS-WIGHTMAN, or OUT-STRONG-COUPLING that is not backed by Lean evidence | **NOT TRIGGERED** — every per-row table in §(ii) explicitly states `LEDGER status: BLOCKED`; the "Concrete formal infrastructure that must land first" rows enumerate what is missing rather than claiming progress; CONTINUUM-COORDSCALE explicitly flagged as INVALID-AS-CONTINUUM with KNOWN_ISSUES §1.2 cross-reference; §(iii) per-row contribution table shows OUT-* rows at ~0% Clay-as-stated and N/A lattice. |
+| "% toward Clay-as-stated" estimate given without disclaimer that Clay requires continuum theory the project does not address | **NOT TRIGGERED** — §(iii) opens with a labelled "**Disclaimer (mandatory, must accompany any % toward Clay-as-stated quote)**" before any number is shown; the disclaimer explicitly says *"This repository does not currently formalise the continuum theory. Three of the dominant Clay obstacles — OUT-CONTINUUM, OUT-OS-WIGHTMAN, OUT-STRONG-COUPLING — are all BLOCKED... No amount of small-β lattice work alone closes the Clay statement."* |
+
+### Honesty preservation
+
+- LEDGER rows: **all unchanged**. No row promoted, no row demoted.
+- `dashboard/agent_state.json` ledger_status: unchanged.
+- `registry/progress_metrics.yaml` percentages: unchanged (5% / 28% / 23-25% / 50%).
+- README badges: unchanged.
+- The document's per-row "% contribution to Clay-as-stated 5%" column generously credits L1/L2 representation theory at ~2.5% as "reusable infrastructure that any continuum proof would also need" — this is the upper edge of honest accounting; it explicitly does NOT claim the lattice work *is* Clay progress.
+- The "Honest growth ceiling" paragraph in §(iii) caps Clay-as-stated at ~10–12% even after the lattice 28% column closes — that prevents future agents from reading the lattice work as a path to Clay-as-stated 50%+.
+
+### Recommendations added
+
+1. `REC-COWORK-CLAY-HORIZON-LINK-FROM-README-001` (priority 5, OPEN) — the README's TL;DR (line 36) and §2 references should add a one-line cross-link to `CLAY_HORIZON.md` so external readers landing on the README badges see the honesty companion. Bookkeeping only; does not move percentages.
+
+### Direct value to external readers
+
+- A reviewer reading the LEDGER and the README badges and arriving at a wrong impression ("looks half-done") now has a single document that explains, with explicit per-row tables, why the headline percentages don't sum to "near Clay".
+- A reviewer interested in the gauge-theory continuum question can see the three `OUT-*` rows with concrete blockers and concrete formal infrastructure missing, which is more useful than just "BLOCKED".
+- A reviewer worried about vacuous FORMAL_KERNEL rows can use §(iv) cross-references to walk every documented vacuity caveat without searching.
+
+### Verdict
+
+**DELIVERED.** Document filed. All LEDGER rows unchanged. Anti-overclaim discipline preserved with explicit disclaimers in 3 places (§(i) NOT-formalising statement, §(iii) mandatory disclaimer, §(iii) honest growth ceiling).
+
+24th milestone-event of the session: 13 audit_pass + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 2 META + 2 deliverables.
+
+---
+
 ## 2026-04-26T17:15:00Z — DELIVERED: COWORK-F3-DEPENDENCY-MAP-001 — F3_COUNT_DEPENDENCY_MAP.md filed
 
 **Task verdict**: `DONE` (no audit verdict required — this is a planning/blueprint deliverable, not an audit). The deliverable document `F3_COUNT_DEPENDENCY_MAP.md` (root of repo) is a mathematician-readable dependency map from v2.52 to full F3-COUNT closure, suitable as direct input to Codex's just-dispatched `CODEX-F3-SAFE-DELETION-STATEMENT-001` (priority 3, the §(c)/B.1 statement-drafting work).

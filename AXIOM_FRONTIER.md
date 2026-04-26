@@ -1,3 +1,83 @@
+# v2.53.0 — exact safe-deletion hypothesis + degree-one sufficiency bridge for F3/Klarner
+
+**Released: 2026-04-26**
+
+## What
+
+Added the next no-sorry F3/Klarner recursion scaffold in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PlaquetteGraphAnchoredSafeDeletionExists
+    PlaquetteGraphAnchoredDegreeOneDeletionExists
+    plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
+    PhysicalPlaquetteGraphAnchoredSafeDeletionExists
+    PhysicalPlaquetteGraphAnchoredDegreeOneDeletionExists
+    physicalPlaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
+
+The key correction is a separation of two notions:
+
+- `PlaquetteGraphAnchoredSafeDeletionExists` is the **exact** recursive
+  hypothesis needed by the anchored BFS/Klarner decoder: every nontrivial
+  anchored bucket admits a non-root deletion whose residual is again an
+  anchored bucket of size `k - 1`.
+- `PlaquetteGraphAnchoredDegreeOneDeletionExists` is only a **stronger
+  sufficient** hypothesis: every nontrivial anchored bucket has a non-root
+  induced-degree-one member.
+
+The v2.52 local leaf-deletion theorem proves the bridge from the stronger
+degree-one hypothesis to the exact safe-deletion hypothesis.  Once the exact
+safe-deletion hypothesis is supplied, Lean now proves the one-step recursive
+transition:
+
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      X.erase z ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root (k - 1)
+
+and its physical four-dimensional specialization.
+
+## Why
+
+This is deliberately **not** a proof of `F3-COUNT`.  It is an honesty-preserving
+reduction of ambiguity after v2.52.  The repo now distinguishes the target
+property actually required by the recursive decoder from the convenient leaf
+subcase already known to be safe.  This matters because a global
+induced-degree-one claim may be too strong for buckets with cycles, whereas the
+decoder only needs a root-avoiding safe deletion.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed. Pinned traces:
+
+    plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
+      [propext, Classical.choice, Quot.sound]
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axioms. No percentage bar movement. No Clay-level
+completion claim.
+
+## What remains
+
+- Prove or refine `PlaquetteGraphAnchoredSafeDeletionExists` itself.  The
+  likely graph-theoretic route is a root-avoiding non-cut/safe-deletion theorem,
+  not necessarily a global degree-one theorem.
+- Iterate the one-step safe-deletion transition into the full anchored word
+  decoder / Klarner BFS-tree count.
+- Only after that can `F3-MAYER` and `F3-COMBINED` move.
+
+`F3-COUNT` therefore remains `CONDITIONAL_BRIDGE`.
+
+---
+
 # v2.52.0 — degree-one leaf deletion subcase for F3/Klarner
 
 **Released: 2026-04-26**

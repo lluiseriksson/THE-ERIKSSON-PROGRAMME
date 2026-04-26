@@ -1795,6 +1795,106 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_induced_degre
     (plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_preconnected_of_induced_degree_one
       hX hzX hz_ne_root hdeg)
 
+/-- The exact global graph-combinatorics hypothesis still missing from the
+F3/Klarner decoder after v2.52.
+
+For every nontrivial anchored preconnected bucket, it asks for a non-root member
+whose deletion leaves another anchored preconnected bucket of size `k - 1`.
+This is the one-step recursive deletion property needed by the anchored
+BFS/Klarner decoder. -/
+def PlaquetteGraphAnchoredSafeDeletionExists (d L : ℕ) [NeZero d] [NeZero L] :
+    Prop :=
+  ∀ {root : ConcretePlaquette d L} {k : ℕ}
+    {X : Finset (ConcretePlaquette d L)},
+    2 ≤ k →
+    X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k →
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      X.erase z ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root (k - 1)
+
+/-- A stronger sufficient global hypothesis: every nontrivial anchored bucket
+has a non-root member of degree one in the induced bucket graph.
+
+This is separated from `PlaquetteGraphAnchoredSafeDeletionExists` because the
+degree-one condition is useful and already locally proved safe, but the exact
+recursive decoder only needs safe deletion, not necessarily an induced leaf. -/
+def PlaquetteGraphAnchoredDegreeOneDeletionExists
+    (d L : ℕ) [NeZero d] [NeZero L] : Prop :=
+  ∀ {root : ConcretePlaquette d L} {k : ℕ}
+    {X : Finset (ConcretePlaquette d L)},
+    2 ≤ k →
+    X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k →
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      ((plaquetteGraph d L).induce {x | x ∈ X}).degree ⟨z, hzX⟩ = 1
+
+/-- The degree-one global hypothesis is sufficient for the exact safe-deletion
+hypothesis, by the local v2.52 leaf-deletion theorem. -/
+theorem plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (hdegone : PlaquetteGraphAnchoredDegreeOneDeletionExists d L) :
+    PlaquetteGraphAnchoredSafeDeletionExists d L := by
+  intro root k X hk hX
+  obtain ⟨z, hzX, hz_ne_root, hdeg⟩ := hdegone hk hX
+  exact ⟨z, hzX, hz_ne_root,
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_induced_degree_one
+      hX hzX hz_ne_root hdeg⟩
+
+/-- Safe-deletion existence, once proved globally, is exactly the one-step
+recursive transition needed by the anchored BFS/Klarner decoder.
+
+This is deliberately conditional: it does not close `F3-COUNT`; it packages the
+remaining graph-theoretic gap as the hypothesis
+`PlaquetteGraphAnchoredSafeDeletionExists d L`. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L}
+    {X : Finset (ConcretePlaquette d L)}
+    (hsafe : PlaquetteGraphAnchoredSafeDeletionExists d L)
+    (hk : 2 ≤ k)
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k) :
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      X.erase z ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root (k - 1) := by
+  exact hsafe hk hX
+
+/-- Physical four-dimensional version of the global safe-deletion hypothesis
+for the `1296`-alphabet F3 route. -/
+abbrev PhysicalPlaquetteGraphAnchoredSafeDeletionExists (L : ℕ) [NeZero L] :
+    Prop :=
+  PlaquetteGraphAnchoredSafeDeletionExists physicalClayDimension L
+
+/-- Physical four-dimensional version of the stronger degree-one deletion
+hypothesis. -/
+abbrev PhysicalPlaquetteGraphAnchoredDegreeOneDeletionExists
+    (L : ℕ) [NeZero L] : Prop :=
+  PlaquetteGraphAnchoredDegreeOneDeletionExists physicalClayDimension L
+
+/-- Physical specialization: degree-one deletion existence is sufficient for
+safe deletion existence. -/
+theorem physicalPlaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
+    {L : ℕ} [NeZero L]
+    (hdegone : PhysicalPlaquetteGraphAnchoredDegreeOneDeletionExists L) :
+    PhysicalPlaquetteGraphAnchoredSafeDeletionExists L :=
+  plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
+    (d := physicalClayDimension) (L := L) hdegone
+
+/-- Physical specialization of the conditional one-step recursive deletion
+driver.  This is the immediate handoff from the still-open global safe-deletion
+existence theorem to the already-proved v2.52 local deletion theorem. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hsafe : PhysicalPlaquetteGraphAnchoredSafeDeletionExists L)
+    (hk : 2 ≤ k)
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k) :
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      X.erase z ∈
+        plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root (k - 1) :=
+  plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
+    (d := physicalClayDimension) (L := L) (k := k) (root := root) (X := X)
+    hsafe hk hX
+
 /-- Member-targeted first BFS step: every non-root member of an anchored bucket
 is reached through some plaquette in the root shell. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
@@ -2942,6 +3042,10 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296_mem_of_preconnected
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_preconnected_of_induced_degree_one
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_induced_degree_one
+#print axioms plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
+#print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_tail_to_member

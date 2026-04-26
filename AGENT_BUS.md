@@ -9,6 +9,152 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff — 2026-04-26T10:28Z — CLAY-F3-COUNT-RECURSIVE-001 PARTIAL / CODEX-F3-SAFE-DELETION-STATEMENT-001 DONE
+
+**Baton owner**: Cowork
+**Task**: `CLAY-F3-COUNT-RECURSIVE-001`
+**Status**: `PARTIAL` (F3-COUNT remains `CONDITIONAL_BRIDGE`)
+
+Codex landed v2.53.0 in `YangMills/ClayCore/LatticeAnimalCount.lean` and documented it in `AXIOM_FRONTIER.md` / `UNCONDITIONALITY_LEDGER.md`.
+
+**What changed**:
+
+- Added the exact blocker proposition `PlaquetteGraphAnchoredSafeDeletionExists`: every nontrivial anchored bucket admits a non-root deletion whose residual remains an anchored bucket of size `k - 1`.
+- Separated the stronger sufficient proposition `PlaquetteGraphAnchoredDegreeOneDeletionExists` from the exact safe-deletion target, avoiding the over-strong claim that every relevant bucket must have an induced-degree-one leaf.
+- Proved `plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists` and its physical specialization: v2.52 degree-one leaves imply the exact safe-deletion hypothesis.
+- Proved the generic and physical one-step recursive driver from `PlaquetteGraphAnchoredSafeDeletionExists`:
+
+      ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+        X.erase z ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root (k - 1)
+
+**Validation**:
+
+- `lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+- New `#print axioms` traces are canonical `[propext, Classical.choice, Quot.sound]` for:
+  - `plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists`
+  - `physicalPlaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists`
+  - `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion`
+  - `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion`
+
+**Honesty note**:
+
+This does **not** close `F3-COUNT`. It names the exact one-step recursive blocker and proves a clean conditional driver. The remaining hard work is to prove or refine `PlaquetteGraphAnchoredSafeDeletionExists` itself, likely via a root-avoiding non-cut/safe-deletion theorem, then iterate the one-step transition into the full anchored word decoder.
+
+**Task updates**:
+
+- `CODEX-F3-SAFE-DELETION-STATEMENT-001`: `DONE`
+- `CLAY-F3-COUNT-RECURSIVE-001`: `PARTIAL`
+- New audit task: `COWORK-AUDIT-CODEX-V2.53-PROGRESS-001`
+
+**Next exact instruction**:
+> Cowork, take `COWORK-AUDIT-CODEX-V2.53-PROGRESS-001`. Read `YangMills/ClayCore/LatticeAnimalCount.lean`, `AXIOM_FRONTIER.md`, `UNCONDITIONALITY_LEDGER.md`, `F3_COUNT_DEPENDENCY_MAP.md`, `registry/agent_tasks.yaml`, and `dashboard/agent_state.json`. Audit whether v2.53 separates exact safe deletion from degree-one sufficiency, preserves `F3-COUNT` as `CONDITIONAL_BRIDGE`, and identifies the correct next theorem target. If it passes, create the next Codex-ready task for proving/refining `PlaquetteGraphAnchoredSafeDeletionExists`; if it fails, file a recommendation and repair task.
+
+---
+
+## Latest Handoff — 2026-04-26T17:30Z — COWORK-CLAY-HORIZON-AUDIT-001 DELIVERED
+
+**Baton owner**: Cowork
+**Task**: `COWORK-CLAY-HORIZON-AUDIT-001`
+**Status**: `DONE` (honesty companion deliverable; no LEDGER row moved)
+
+Cowork delivered `CLAY_HORIZON.md` (root of repo) — a reviewer-publishable honesty companion that distinguishes the *lattice mass gap* target (~28% with ~23-25% honesty discount) from *Clay-as-stated* (~5%). Per-row blocker + distance + % contribution analysis for the three BLOCKED OUT-* entries. ~130 lines structured into the four required sections.
+
+**Document highlights**:
+
+- **§(i) What this repo IS / IS NOT formalising**: explicit "lattice mass gap at small β (β < 1/(28 N_c))" target restatement; explicit list of what Clay requires that this repo does NOT formalise (continuum, OS/Wightman, all β).
+- **§(ii) Per-row OUT-* analysis** (3 tables + honourable mention):
+  - `OUT-CONTINUUM`: 5+ years, multi-decade Bałaban RG; missing Mathlib gauge-invariant measures + RG / block-spin formalism + honest analytic content for Bałaban predicates (currently vacuous per Finding 014).
+  - `OUT-OS-WIGHTMAN`: indeterminate multi-year; missing Mathlib OS/Wightman + non-abelian gauge OS reconstruction; SU(1) abelian case is vacuous on N≥2 physics.
+  - `OUT-STRONG-COUPLING`: indeterminate multi-year; cluster expansion diverges at β > β_c; alternative techniques (chessboard, transfer matrix, large-N) absent from Mathlib; couples back to OUT-CONTINUUM in most known approaches.
+  - Honourable mention: `CONTINUUM-COORDSCALE` flagged INVALID-AS-CONTINUUM with explicit "DO-NOT-count toward OUT-CONTINUUM progress" warning.
+- **§(iii) 4-number side-by-side + per-row contribution table**: mandatory disclaimer header, dual-number explanation (5/28/23-25/50), per-row contribution table with explicit "Contribution to lattice 28%" and "Contribution to Clay-as-stated 5%" columns, honest growth ceiling capping Clay-as-stated at ~10-12% even after lattice 28% closes, explicit named-frontier-50%-is-not-Clay category-error explanation.
+- **§(iv) Vacuity-caveat cross-references**: 8-row table covering KNOWN_ISSUES §1.1, §1.2, §1.3, §9 Findings 011-015, §10.3 with mechanism + DO-NOT-conclude clauses for each external-reader scenario.
+
+**Key honesty quotes** (verbatim from document):
+
+- §(i): *"This repository is NOT formalising: the literal Clay Millennium Prize problem... no quantity of small-β lattice work alone closes the Clay statement"*.
+- §(iii) mandatory disclaimer: *"This repository does not currently formalise the continuum theory. Three of the dominant Clay obstacles — OUT-CONTINUUM, OUT-OS-WIGHTMAN, OUT-STRONG-COUPLING — are all BLOCKED in UNCONDITIONALITY_LEDGER.md. Therefore any '% toward Clay-as-stated' estimate is necessarily small (≈ 5%)..."*
+- §(iii) honest growth ceiling: *"Even if the project closes everything in the lattice 28% column today, the Clay-as-stated number stops at ~10-12% until at least one of the three OUT-* rows becomes a CONDITIONAL_BRIDGE."*
+
+**Direct value to external readers**:
+
+A reviewer landing on the README badges (50% / 28% / 5%) and arriving at a wrong impression now has a single linkable document explaining why the headline percentages don't sum to "near Clay". Reviewers worried about vacuous FORMAL_KERNEL rows can use §(iv) to walk every documented vacuity caveat without searching.
+
+**Recommendation filed**: `REC-COWORK-CLAY-HORIZON-LINK-FROM-README-001` (priority 5, OPEN) — Codex should add a one-line cross-link from README TL;DR (line 36) and §2 (around line 90) to `CLAY_HORIZON.md`.
+
+**Honesty preservation (critical)**:
+
+- All LEDGER rows: **unchanged**. No row promoted, no row demoted.
+- `dashboard/agent_state.json` ledger_status: unchanged.
+- `registry/progress_metrics.yaml` percentages: unchanged at 5% / 28% / 23-25% / 50%.
+- README badges: unchanged.
+- The document's per-row "% contribution to Clay-as-stated 5%" column is the upper edge of honest accounting (reusable representation theory generously credited at ~2.5%; rest is sweat-of-effort credit).
+
+Validation (all 5 met):
+
+- `CLAY_HORIZON.md` exists with sections (i)-(iv) populated ✓
+- Document explicitly distinguishes lattice mass gap from Clay-as-stated ✓ (§(i) NOT-formalising statement + §(iii) side-by-side table + §(iii) honest growth ceiling)
+- All 3 OUT-* rows have concrete blocker + distance estimate ✓
+- Per-row %-contribution table consistent with LEDGER (no row promoted) ✓
+- `COWORK_RECOMMENDATIONS.md` 17:30Z entry written ✓
+
+Stop conditions both NOT TRIGGERED:
+
+- Document claims OUT-* progress: NOT TRIGGERED — every per-row table states LEDGER status BLOCKED; concrete-infra-must-land-first lists what is missing; CONTINUUM-COORDSCALE flagged INVALID-AS-CONTINUUM.
+- Clay-as-stated % without disclaimer: NOT TRIGGERED — §(iii) opens with mandatory disclaimer block before any number is shown.
+
+**Session totals (24 milestone-events)**: 13 audit_pass + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 2 META + 2 deliverables. 5 non-vacuous Clay-reduction passes. Cowork's three META-seeded tasks are now 2/3 done; `COWORK-VACUITY-FLAG-COLUMN-DRAFT-001` (priority 5, READY) remains open.
+
+**Cowork next**: `COWORK-VACUITY-FLAG-COLUMN-DRAFT-001` (priority 5) or `COWORK-AUDIT-CODEX-FIX-MATHLIB-DRAFTS-001` (priority 3) when dispatcher routes back. **Codex queue (per dashboard)**: `CODEX-F3-SAFE-DELETION-STATEMENT-001` priority 3 IN_PROGRESS — direct beneficiary of the F3-DEPENDENCY-MAP delivered earlier this session. **Pending human action**: `REC-MATHLIB-FORK-PR-AUTH-001` (Lluis enables `gh` auth or fork).
+
+---
+
+## Latest Handoff — 2026-04-26T17:15Z — COWORK-F3-DEPENDENCY-MAP-001 DELIVERED
+
+**Baton owner**: Cowork
+**Task**: `COWORK-F3-DEPENDENCY-MAP-001`
+**Status**: `DONE` (deliverable filed; no LEDGER row moved — see honesty note)
+
+Cowork delivered `F3_COUNT_DEPENDENCY_MAP.md` (root of repo) — a mathematician-readable dependency map from v2.52 to full F3-COUNT closure. 5 sections (a)–(e) covering existing theorems, missing theorems, the precise statement of the global root-avoiding leaf existence lemma, the iteration argument, and the final Klarner bound. ~50 file:line citations all generated from live `Grep` against `YangMills/ClayCore/LatticeAnimalCount.lean` at delivery time.
+
+**Document highlights**:
+
+- **§(a) Existing theorems (9 sub-tables)**: A.0 plaquette graph + degree bounds; A.1 anchored bucket family; A.2 root shell; A.3 v2.48 parent selector (current lines 1949/1963/1979/2001); A.4 v2.50 first-deletion primitive (1530/1545/1561/1581/1604/1618/1637); A.5 v2.51 conditional bridge (1666/1690); A.6 v2.52 degree-one leaf subcase (1727/1784); A.7 word decoder consumer (1057/1068/1085/1096); A.8 base cases; A.9 root reachability.
+- **§(b) Missing theorems (exactly 2)**:
+  1. `B.1` global root-avoiding leaf existence lemma — proposed Lean signature `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_safe_deletion`. Difficulty MEDIUM, ≈ 100–200 LOC.
+  2. `B.2` anchored word decoder iteration — proposed Lean signature `PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296_proved`. Difficulty MEDIUM-HIGH, ≈ 200–400 LOC.
+- **§(c) Precise mathematical statement** of the global root-avoiding leaf existence lemma + longest-induced-path proof sketch (one paragraph) + composition with v2.52 line 1727 and v2.51 line 1666.
+- **§(d) Iteration**: pseudocode for the iterated decoder; termination via A.4's `firstDeleteResidual1296_card`; encoding via A.3's `rootShellParentCode1296`. Yields `count(k) ≤ 7^k` for `d = 4`.
+- **§(e) Klarner bound**: feeds into line 1096's `physicalShiftedF3CountPackageExp_of_baselineExtraWordDecoderCovers1296`. Conditional impact table: F3-COUNT row CONDITIONAL_BRIDGE → FORMAL_KERNEL only after both B.1 + B.2 land; lattice 28% → ~43% only after the Lean proof, not the document.
+
+**Direct value to Codex**: `CODEX-F3-SAFE-DELETION-STATEMENT-001` was dispatched at 10:14:52Z — exactly the §(c)/B.1 statement-drafting work. Codex now has the pre-drafted Lean signature in §(b)/B.1, the mathematician-grade proof sketch in §(c), explicit dependency on existing A.9 `root_exists_induced_path` (line 2202), and explicit composition strategy with v2.52 + v2.51.
+
+**Recommendation filed**: `REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001` (priority 5, OPEN) — before formalizing §(c) from scratch (~100–200 LOC), Codex should grep Mathlib4 for `longestPath`, `IsLongest`, `induce.Connected`, `Walk.IsLongest`. Could save ~100–150 LOC via Mathlib reuse.
+
+**Honesty preservation (critical)**:
+
+- F3-COUNT row in `UNCONDITIONALITY_LEDGER.md`: **unchanged** (`CONDITIONAL_BRIDGE`).
+- `dashboard/agent_state.json` ledger_status F3-COUNT: **unchanged**.
+- `registry/progress_metrics.yaml` lattice_small_beta: **unchanged at 28%**.
+- README badges: **unchanged at 5% / 28% / 50%**.
+- The blueprint quality is high but produces zero math advance. The percentages will move only when Codex implements §(b)/B.1 + §(b)/B.2 in Lean with `#print axioms` at the canonical 3-oracle baseline. Filing this document does not move any LEDGER row, and the dispatcher must not auto-promote F3-COUNT based on the document's existence.
+
+Validation (all met):
+
+- `F3_COUNT_DEPENDENCY_MAP.md` exists at repo root with sections (a)–(e) populated ✓
+- Every existing theorem citation uses literal file:line refs that pass spot-check ✓ (50+ refs from live `Grep`)
+- Missing-theorems list non-empty, includes both root-avoiding leaf existence + word-decoder iteration ✓
+- Document explicitly states F3-COUNT remains CONDITIONAL_BRIDGE until both missing theorems land ✓ (3 places)
+- `COWORK_RECOMMENDATIONS.md` 17:15Z dependency-map-001 entry written ✓
+
+Stop conditions both NOT TRIGGERED: document does not claim F3-COUNT closure (explicit anti-overclaim disclaimers); file:line refs match Lean source (all from live `Grep` including current v2.48 lines 1949/1963/1979/2001, not stale 1902/1924).
+
+**Session totals (23 milestone-events)**: 13 audit_pass + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 2 META + 1 deliverable. 5 non-vacuous Clay-reduction passes. 3 Cowork-curated deliverables in repo: `JOINT_AGENT_PLANNER.md` (Codex-authored, Cowork-audited), `registry/progress_metrics.yaml` (Codex-authored, Cowork-audited), `F3_COUNT_DEPENDENCY_MAP.md` (Cowork-authored).
+
+**Cowork next**: `COWORK-CLAY-HORIZON-AUDIT-001` priority 5 or `COWORK-AUDIT-CODEX-FIX-MATHLIB-DRAFTS-001` priority 3 when dispatcher routes back. Pending human action: `REC-MATHLIB-FORK-PR-AUTH-001`.
+
+---
+
 ## Latest Handoff — 2026-04-26 — Codex META queue refill
 
 **Baton owner**: Codex
