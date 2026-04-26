@@ -2869,10 +2869,63 @@ tasks:
   title: 'Cowork: scope reformulation strategy for EXP-LIEDERIVREG (currently INVALID
     as stated)'
   owner: Cowork
-  status: IN_PROGRESS
+  status: DONE
   priority: 6
   created_at: '2026-04-26T18:50:00Z'
-  updated_at: '2026-04-26T11:23:24Z'
+  updated_at: '2026-04-26T19:30:00Z'
+  completed_at: '2026-04-26T19:30:00Z'
+  delivery_artifact: dashboard/exp_liederivreg_reformulation_options.md
+  delivery_evidence:
+  - 'dashboard/exp_liederivreg_reformulation_options.md filed with sections (a)-(e)
+    populated'
+  - '§(a) catalogues axiom at LieDerivReg_v4.lean:58 + LieDerivReg'' 3-field structure
+    at :50-55; counter-examples for "all functions" claim (indicator function
+    fails diff; non-measurable f fails meas+sq_int); 5-row consumer inventory
+    spanning 3 files (LieDerivReg_v4.lean lines 70/80/94, P8_PhysicalGap/SUN_DirichletCore.lean:109,
+    GeneratorAxiomsDimOne.lean:56 comment-only)'
+  - '§(b) lists 3 concrete options with proposed Lean signatures + difficulty
+    estimates: Option 1 eliminate axiom + pass LieDerivReg'' f as hypothesis
+    (~100 LOC, zero new helpers); Option 2 restrict to ContDiff ℝ ⊤ f (~180
+    LOC, needs Mathlib continuity + integrability helpers); Option 3 DirichletDomain
+    + closure lemmas (~250-400 LOC, needs Sobolev-like infrastructure)'
+  - '§(c) per-option consumer impact table for all 4 active consumers + comment-mention
+    + new helpers + LOC delta; Tier 2 axiom count goes 5 → 4 in all 3 options'
+  - '§(d) recommends Option 1 with 5-clause justification: honest math, lowest
+    refactor, maximally composable, anti-vacuity, count drop. Filing convention:
+    Cowork audit → Codex CODEX-LIEDERIVREG-AXIOM-RETIRE-001 priority 5 → post-impl
+    Cowork audit → LEDGER count update'
+  - '§(e) Mathlib helper cross-references per option: Option 1 needs zero new
+    helpers; Option 2 needs ContDiff.differentiable + Continuous.aestronglyMeasurable
+    + IsCompact.continuous_integrable + Memℒp; Option 3 needs MeasurableSpace.set
+    + closure lemmas'
+  - 'COWORK_RECOMMENDATIONS.md 19:30Z entry written'
+  stop_conditions_not_triggered:
+  - 'Cowork claims to have proved any reformulation: NOT TRIGGERED — header,
+    §(a) (counter-examples only), §(b) (proposed signatures only), §(d) (Anti-overclaim
+    invariants), and footer all explicit "Cowork is scoping, not proving"'
+  - 'Document implies INVALID axiom is rescued: NOT TRIGGERED — header explicit
+    "axiom must be REPLACED"; §(b)/Option 1 explicit "delete the axiom lieDerivReg_all
+    line"; §(d) Anti-overclaim "axiom must be removed"; footer "axiom must be
+    replaced, not patched"'
+  recommendation_summary:
+  - 'Recommended: Option 1 (eliminate axiom; pass LieDerivReg'' f as explicit
+    hypothesis). ~100 LOC refactor across 4 active consumers in 2 files. Tier
+    2 count drops 5 → 4. Optional Option 2 (smooth-functions theorem) filed as
+    follow-up.'
+  honesty_observation: 'Scope document only; Cowork has not proved any reformulation.
+    EXP-LIEDERIVREG row remains INVALID until Codex implements Option 1. The
+    recommendation honestly preserves the conditional structure of the math:
+    subadditivity becomes "for every f admitting Lie regularity, subadditivity
+    holds" (true) instead of "all functions" (false).'
+  side_observation: 'Codex landed v2.55.0 during this deliverable cycle (~19:25Z),
+    promoting the bonus k=2 base case from v2.54 into a formal release. F3-COUNT
+    row remains CONDITIONAL_BRIDGE; global k ≥ 3 case remains open. Created
+    COWORK-AUDIT-CODEX-V2.55-CARD-TWO-DELETION-001 priority 4 READY.'
+  scoreboard: '6th Cowork-authored deliverable in repo: F3_COUNT_DEPENDENCY_MAP.md
+    (v1 + v2.53 refresh), CLAY_HORIZON.md, dashboard/vacuity_flag_column_draft.md,
+    F3_MAYER_DEPENDENCY_MAP.md, dashboard/exp_liederivreg_reformulation_options.md
+    (this delivery), plus JOINT_AGENT_PLANNER.md + progress_metrics.yaml (Codex-authored,
+    Cowork-audited)'
   required_files:
   - YangMills/Experimental/LieSUN/LieDerivReg_v4.lean
   - UNCONDITIONALITY_LEDGER.md
