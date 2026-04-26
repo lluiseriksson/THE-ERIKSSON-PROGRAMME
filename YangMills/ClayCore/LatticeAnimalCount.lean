@@ -1826,6 +1826,22 @@ def PlaquetteGraphAnchoredDegreeOneDeletionExists
     ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
       ((plaquetteGraph d L).induce {x | x ∈ X}).degree ⟨z, hzX⟩ = 1
 
+/-- Exact graph-theoretic non-cut formulation of the anchored deletion gap.
+
+This is the minimum raw combinatorial content needed by
+`PlaquetteGraphAnchoredSafeDeletionExists`: for every nontrivial anchored
+bucket, find a non-root member whose deletion preserves induced
+preconnectedness.  The safe-deletion proposition additionally packages the
+erased set back into the anchored bucket family. -/
+def PlaquetteGraphAnchoredNonRootNonCutExists
+    (d L : ℕ) [NeZero d] [NeZero L] : Prop :=
+  ∀ {root : ConcretePlaquette d L} {k : ℕ}
+    {X : Finset (ConcretePlaquette d L)},
+    2 ≤ k →
+    X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k →
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      ((plaquetteGraph d L).induce {x | x ∈ X.erase z}).Preconnected
+
 /-- The degree-one global hypothesis is sufficient for the exact safe-deletion
 hypothesis, by the local v2.52 leaf-deletion theorem. -/
 theorem plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
@@ -1837,6 +1853,39 @@ theorem plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
   exact ⟨z, hzX, hz_ne_root,
     plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_induced_degree_one
       hX hzX hz_ne_root hdeg⟩
+
+/-- The non-root non-cut formulation is sufficient for the exact safe-deletion
+hypothesis, via the generic erased-bucket bridge. -/
+theorem plaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (hnoncut : PlaquetteGraphAnchoredNonRootNonCutExists d L) :
+    PlaquetteGraphAnchoredSafeDeletionExists d L := by
+  intro root k X hk hX
+  obtain ⟨z, hzX, hz_ne_root, hpre⟩ := hnoncut hk hX
+  exact ⟨z, hzX, hz_ne_root,
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected
+      hX hzX hz_ne_root hpre⟩
+
+/-- Conversely, the exact safe-deletion hypothesis exposes a non-root non-cut
+witness by projecting preconnectedness from the erased anchored bucket. -/
+theorem plaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (hsafe : PlaquetteGraphAnchoredSafeDeletionExists d L) :
+    PlaquetteGraphAnchoredNonRootNonCutExists d L := by
+  intro root k X hk hX
+  obtain ⟨z, hzX, hz_ne_root, hmem⟩ := hsafe hk hX
+  exact ⟨z, hzX, hz_ne_root,
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected hmem⟩
+
+/-- Safe deletion and the non-root non-cut formulation are equivalent.  This
+pins the remaining F3/Klarner B.1 obstruction to the standard rooted non-cut
+graph lemma. -/
+theorem plaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists
+    {d L : ℕ} [NeZero d] [NeZero L] :
+    PlaquetteGraphAnchoredSafeDeletionExists d L ↔
+      PlaquetteGraphAnchoredNonRootNonCutExists d L :=
+  ⟨plaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists,
+    plaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists⟩
 
 /-- Safe-deletion existence, once proved globally, is exactly the one-step
 recursive transition needed by the anchored BFS/Klarner decoder.
@@ -1867,6 +1916,12 @@ abbrev PhysicalPlaquetteGraphAnchoredDegreeOneDeletionExists
     (L : ℕ) [NeZero L] : Prop :=
   PlaquetteGraphAnchoredDegreeOneDeletionExists physicalClayDimension L
 
+/-- Physical four-dimensional version of the exact non-root non-cut deletion
+hypothesis. -/
+abbrev PhysicalPlaquetteGraphAnchoredNonRootNonCutExists
+    (L : ℕ) [NeZero L] : Prop :=
+  PlaquetteGraphAnchoredNonRootNonCutExists physicalClayDimension L
+
 /-- Physical specialization: degree-one deletion existence is sufficient for
 safe deletion existence. -/
 theorem physicalPlaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
@@ -1875,6 +1930,33 @@ theorem physicalPlaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExi
     PhysicalPlaquetteGraphAnchoredSafeDeletionExists L :=
   plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
     (d := physicalClayDimension) (L := L) hdegone
+
+/-- Physical specialization: non-root non-cut deletion existence is sufficient
+for safe deletion existence. -/
+theorem physicalPlaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
+    {L : ℕ} [NeZero L]
+    (hnoncut : PhysicalPlaquetteGraphAnchoredNonRootNonCutExists L) :
+    PhysicalPlaquetteGraphAnchoredSafeDeletionExists L :=
+  plaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
+    (d := physicalClayDimension) (L := L) hnoncut
+
+/-- Physical specialization: safe deletion exposes the non-root non-cut
+formulation. -/
+theorem physicalPlaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists
+    {L : ℕ} [NeZero L]
+    (hsafe : PhysicalPlaquetteGraphAnchoredSafeDeletionExists L) :
+    PhysicalPlaquetteGraphAnchoredNonRootNonCutExists L :=
+  plaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists
+    (d := physicalClayDimension) (L := L) hsafe
+
+/-- Physical specialization of the equivalence between safe deletion and
+non-root non-cut deletion. -/
+theorem physicalPlaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists
+    {L : ℕ} [NeZero L] :
+    PhysicalPlaquetteGraphAnchoredSafeDeletionExists L ↔
+      PhysicalPlaquetteGraphAnchoredNonRootNonCutExists L :=
+  plaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists
+    (d := physicalClayDimension) (L := L)
 
 /-- Physical specialization of the conditional one-step recursive deletion
 driver.  This is the immediate handoff from the still-open global safe-deletion
@@ -3181,6 +3263,12 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_induced_degree_one
 #print axioms plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
 #print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
+#print axioms plaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
+#print axioms plaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists
+#print axioms plaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists
+#print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
+#print axioms physicalPlaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists
+#print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted

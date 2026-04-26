@@ -1,3 +1,73 @@
+# v2.56.0 — safe-deletion iff non-root non-cut bridge for F3/Klarner
+
+**Released: 2026-04-26**
+
+## What
+
+Added the exact non-root non-cut formulation of the remaining safe-deletion
+gap in `YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PlaquetteGraphAnchoredNonRootNonCutExists
+    PhysicalPlaquetteGraphAnchoredNonRootNonCutExists
+    plaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
+    plaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists
+    plaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists
+    physicalPlaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
+    physicalPlaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists
+    physicalPlaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists
+
+`PlaquetteGraphAnchoredNonRootNonCutExists` is the raw graph-theoretic content:
+for every nontrivial anchored bucket, find a non-root member whose deletion
+preserves induced preconnectedness.  Lean now proves this formulation is
+equivalent to the v2.53 `PlaquetteGraphAnchoredSafeDeletionExists` package.
+
+## Why
+
+This narrows the B.1 obstruction without overclaiming it.  v2.54 gave an
+unrooted non-cut deletion; v2.55 gave the root-avoiding base case for `k = 2`.
+v2.56 pins the remaining general case to the standard rooted graph theorem:
+
+> every finite connected induced graph with a distinguished root and at least
+> two vertices has a non-root non-cut vertex.
+
+Once that graph theorem is proved or imported, `F3-COUNT` can consume it through
+the v2.56 bridge and then move on to the anchored word decoder.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed. Pinned traces for the six new bridge theorems:
+
+    plaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
+      [propext, Classical.choice, Quot.sound]
+    plaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists
+      [propext, Classical.choice, Quot.sound]
+    plaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axioms. No Clay-level completion claim.
+
+## What remains
+
+- Prove `PlaquetteGraphAnchoredNonRootNonCutExists` globally, especially for
+  `k ≥ 3`.
+- Then obtain `PlaquetteGraphAnchoredSafeDeletionExists` via the v2.56 bridge.
+- Iterate the v2.53 one-step driver into the full anchored word decoder /
+  Klarner BFS-tree count.
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.
+
+---
+
 # v2.55.0 — root-avoiding safe deletion base case (`k = 2`) for F3/Klarner
 
 **Released: 2026-04-26**

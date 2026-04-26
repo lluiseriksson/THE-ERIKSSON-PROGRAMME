@@ -1,11 +1,11 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_card_two_root_avoiding_deletion_v2_55_partial",
+  "current_phase": "f3_nonroot_noncut_bridge_v2_56_partial",
   "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-AUDIT-CODEX-V2.55-CARD-TWO-DELETION-001",
-  "last_completed_task": "CLAY-F3-COUNT-RECURSIVE-001 (PARTIAL 2026-04-26T19:25:00Z; v2.55 card-two root-avoiding safe-deletion base case landed; global k >= 3 safe deletion still open)",
-  "last_dispatched_task": "COWORK-EXP-LIEDERIVREG-REFORMULATION-SCOPE-001",
+  "next_task_id": "COWORK-AUDIT-CODEX-V2.56-NONROOT-NONCUT-BRIDGE-001",
+  "last_completed_task": "CLAY-F3-COUNT-RECURSIVE-001 (PARTIAL 2026-04-26T20:05:00Z; v2.56 safe-deletion iff non-root non-cut bridge landed; global k >= 3 non-root non-cut theorem still open)",
+  "last_dispatched_task": "COWORK-LEDGER-FRESHNESS-AUDIT-004",
   "last_dispatched_agent": "Cowork",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists"
@@ -28,9 +28,9 @@
     "REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001",
     "REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001"
   ],
-  "last_dispatch_at": "2026-04-26T11:23:24Z",
-  "last_completed_at": "2026-04-26T19:25:00Z",
-  "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount passed; v2.55 card-two root-avoiding safe-deletion theorem traces canonical; F3-COUNT remains CONDITIONAL_BRIDGE",
+  "last_dispatch_at": "2026-04-26T11:39:51Z",
+  "last_completed_at": "2026-04-26T20:05:00Z",
+  "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount passed; v2.56 safe-deletion iff non-root non-cut bridge traces canonical; F3-COUNT remains CONDITIONAL_BRIDGE",
   "joint_planner": {
     "status": "INFRA_AUDITED",
     "source": "registry/progress_metrics.yaml",
@@ -92,6 +92,7 @@
     "CLAY-MATHLIB-PR-LANDING-001"
   ],
   "active_cowork_audit_tasks": [
+    "COWORK-AUDIT-CODEX-V2.56-NONROOT-NONCUT-BRIDGE-001 (priority 4, READY) — audit safe-deletion iff non-root non-cut bridge; F3-COUNT must remain conditional",
     "COWORK-AUDIT-CODEX-V2.55-CARD-TWO-DELETION-001 (priority 4, READY) — audit card-two root-avoiding safe-deletion base case; F3-COUNT must remain conditional",
     "COWORK-AUDIT-CODEX-FIX-MATHLIB-DRAFTS-001 (priority 3, READY) — audit mathlib draft repair and inactive/cancelled F-series handling",
     "COWORK-AUDIT-JOINT-PLANNER-001 (priority 2, READY) — audit 5%/28%/23-25%/50% planner split",
@@ -130,7 +131,7 @@
     "L2.4-SCHUR": "FORMAL_KERNEL (100%)",
     "L2.5-FROBENIUS": "FORMAL_KERNEL (100%)",
     "L2.6-CHARACTER": "FORMAL_KERNEL (100%)",
-    "F3-COUNT": "CONDITIONAL_BRIDGE (v2.48 parent selector + v2.50 first-deletion/residual primitive + v2.51 conditional deletion bridge + v2.52 degree-one leaf deletion subcase + v2.53 exact safe-deletion hypothesis/degree-one sufficiency bridge + v2.54 unrooted non-cut deletion + v2.55 card-two root-avoiding deletion base case landed; global k >= 3 PlaquetteGraphAnchoredSafeDeletionExists and full word decoder pending)",
+    "F3-COUNT": "CONDITIONAL_BRIDGE (v2.48 parent selector + v2.50 first-deletion/residual primitive + v2.51 conditional deletion bridge + v2.52 degree-one leaf deletion subcase + v2.53 exact safe-deletion hypothesis/degree-one sufficiency bridge + v2.54 unrooted non-cut deletion + v2.55 card-two root-avoiding deletion base case + v2.56 safe-deletion iff non-root non-cut bridge landed; global k >= 3 PlaquetteGraphAnchoredNonRootNonCutExists and full word decoder pending)",
     "F3-MAYER": "BLOCKED (gated on F3-COUNT closure)",
     "F3-COMBINED": "BLOCKED (gated on F3-COUNT and F3-MAYER)",
     "NC1-WITNESS": "FORMAL_KERNEL (with vacuity caveat per Finding 003)",
