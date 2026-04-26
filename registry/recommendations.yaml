@@ -1,7 +1,20 @@
 recommendations:
 - id: REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001
   author: Cowork
-  status: OPEN
+  status: RESOLVED
+  resolution: 'Resolved by Cowork at 2026-04-26T17:55:00Z. F3_COUNT_DEPENDENCY_MAP.md
+    refreshed: header timestamp updated; new A.6.1 subsection catalogues v2.53
+    entries at lines 1805/1820/1831/1847/1860/1866/1872/1882; §(b)/B.1 rewritten
+    to target `PlaquetteGraphAnchoredSafeDeletionExists` with explicit 4-cycle
+    counter-example showing why the degree-one form fails on cyclic buckets;
+    §(c) restructured into two strategies (Strategy 1 acyclic longest-induced-path,
+    Strategy 2 cyclic DFS-tree non-cut) with combined Lean-side proof outline;
+    §(d) decoder pseudocode updated to use v2.53 line 1847 driver directly;
+    §(e) "Before" cell mentions v2.53; "Suggested Codex schedule" renumbered
+    v2.54+/v2.55+/v2.56+ with Mathlib pre-check inlined. No LEDGER row promoted.
+    F3-COUNT remains CONDITIONAL_BRIDGE.
+
+    '
   priority: 5
   title: F3_COUNT_DEPENDENCY_MAP.md §(c) needs refresh to align with v2.53's hypothesis-shape
     correction (safe deletion, not necessarily induced-degree-one)
@@ -166,7 +179,7 @@ recommendations:
     '
 - id: REC-COWORK-PLANNER-LEDGER-MATURE-001
   author: Cowork
-  status: OPEN
+  status: RESOLVED
   priority: 4
   title: After 6h stability window, mature dashboard JOINT-PLANNER row from CONDITIONAL_BRIDGE
     to INFRA_AUDITED
@@ -194,6 +207,12 @@ recommendations:
     if no drift)
   validation: 'After 6h, ledger_status.JOINT-PLANNER == "INFRA_AUDITED" and a Cowork
     spot-check confirms the four percentages still equal 5/28/23-25/50.
+
+    '
+  resolution: 'Resolved by Codex on 2026-04-26: `python scripts\joint_planner_report.py
+    validate` returned OK, README still shows 5 / 28 / 23-25 / 50, and JOINT-PLANNER
+    was moved to INFRA_AUDITED in dashboard/ledger bookkeeping only. No mathematical
+    metric moved.
 
     '
 - id: REC-COWORK-DISPATCHER-TRIGGER-VERIFICATION-001
@@ -274,8 +293,8 @@ recommendations:
 
     '
   interim_status: 'Codex added an interim `vacuity_flag` schema section to UNCONDITIONALITY_LEDGER.md
-    on 2026-04-26 because `dashboard/vacuity_flag_column_draft.md` was missing.
-    The full Tier 1 + Tier 2 column remains OPEN and blocked on Cowork draft `COWORK-VACUITY-FLAG-COLUMN-DRAFT-001`.
+    on 2026-04-26 because `dashboard/vacuity_flag_column_draft.md` was missing. The
+    full Tier 1 + Tier 2 column remains OPEN and blocked on Cowork draft `COWORK-VACUITY-FLAG-COLUMN-DRAFT-001`.
 
     '
 - id: REC-COWORK-MATHEMATICAL-REVIEWERS-COMPANION-VACUITY-SECTION-001

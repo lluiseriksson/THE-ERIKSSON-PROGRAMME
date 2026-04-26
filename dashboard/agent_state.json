@@ -1,11 +1,11 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "vacuity_interim_schema_filed",
+  "current_phase": "joint_planner_infra_audited",
   "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-AUDIT-CODEX-VACUITY-FINISH-001",
-  "last_completed_task": "CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001 (DONE 2026-04-26T10:40:00Z; interim vacuity_flag schema and reviewer guidance filed)",
-  "last_dispatched_task": "CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001",
+  "next_task_id": "COWORK-AUDIT-CODEX-PLANNER-MATURE-001",
+  "last_completed_task": "CODEX-PLANNER-LEDGER-MATURE-001 (DONE 2026-04-26T10:45:00Z; joint planner matured to INFRA_AUDITED bookkeeping)",
+  "last_dispatched_task": "CODEX-PLANNER-LEDGER-MATURE-001",
   "last_dispatched_agent": "Codex",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists"
@@ -14,7 +14,6 @@
     "REC-COWORK-LONG-CI-LAKE-BUILD-001",
     "REC-NEGCOORDS-RUNTIME-CONFIRMATION-001",
     "REC-MATHLIB-FORK-PR-AUTH-001",
-    "REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001",
     "REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001"
   ],
   "unconditionality_status": "NOT_ESTABLISHED",
@@ -24,13 +23,15 @@
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001",
     "REC-COWORK-CLAY-HORIZON-LINK-FROM-README-001",
-    "REC-COWORK-MATHEMATICAL-REVIEWERS-COMPANION-VACUITY-SECTION-001"
+    "REC-COWORK-MATHEMATICAL-REVIEWERS-COMPANION-VACUITY-SECTION-001",
+    "REC-COWORK-PLANNER-LEDGER-MATURE-001",
+    "REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001"
   ],
-  "last_dispatch_at": "2026-04-26T10:35:21Z",
-  "last_completed_at": "2026-04-26T10:40:00Z",
-  "latest_validation_artifact": "UNCONDITIONALITY_LEDGER.md defines interim vacuity_flag values; MATHEMATICAL_REVIEWERS_COMPANION.md §3.3 explains vacuous FORMAL_KERNEL rows; no math status rows upgraded",
+  "last_dispatch_at": "2026-04-26T10:39:02Z",
+  "last_completed_at": "2026-04-26T10:45:00Z",
+  "latest_validation_artifact": "python scripts\\joint_planner_report.py validate passed; README percentages remain 5 / 28 / 23-25 / 50",
   "joint_planner": {
-    "status": "PENDING_COWORK_AUDIT",
+    "status": "INFRA_AUDITED",
     "source": "registry/progress_metrics.yaml",
     "human_readable": "JOINT_AGENT_PLANNER.md",
     "renderer": "scripts/joint_planner_report.py",
@@ -39,7 +40,8 @@
     "lattice_honest_discount_percent_range": "23-25",
     "named_frontier_retirement_percent": 50,
     "global_clay_status": "NOT_ESTABLISHED",
-    "next_audit_task": "COWORK-AUDIT-JOINT-PLANNER-001"
+    "next_audit_task": "COWORK-AUDIT-JOINT-PLANNER-001",
+    "audit_evidence": "COWORK-AUDIT-JOINT-PLANNER-001 AUDIT_PASS; CODEX-PLANNER-LEDGER-MATURE-001 validation passed without percentage drift"
   },
   "audit_state": {
     "in_repo_dispatcher": "AUDIT_PASS",
@@ -92,14 +94,13 @@
     "COWORK-AUDIT-CODEX-FIX-MATHLIB-DRAFTS-001 (priority 3, READY) — audit mathlib draft repair and inactive/cancelled F-series handling",
     "COWORK-AUDIT-JOINT-PLANNER-001 (priority 2, READY) — audit 5%/28%/23-25%/50% planner split",
     "COWORK-F3-DEPENDENCY-MAP-001 (priority 4, READY) — produce F3_COUNT_DEPENDENCY_MAP.md",
-    "COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001 (priority 4, READY) — refresh F3 dependency map after safe-deletion/non-cut correction",
     "COWORK-VACUITY-FLAG-COLUMN-DRAFT-001 (priority 5, READY) — pre-supply vacuity_flag column spec to Codex",
     "COWORK-AUDIT-CODEX-DISPATCHER-TRIGGER-VERIFICATION-001 (priority 4, FUTURE → eligible for promotion now that Codex landed the dispatcher fix at 09:32:17Z)",
     "COWORK-AUDIT-CODEX-VACUITY-CONSOLIDATION-001 (priority 5, FUTURE — auto-promote when Codex marks CODEX-VACUITY-RULES-CONSOLIDATION-001 DONE)"
   ],
   "active_hygiene_tasks": [
+    "COWORK-AUDIT-CODEX-PLANNER-MATURE-001 (READY) — audit JOINT-PLANNER INFRA_AUDITED bookkeeping maturity",
     "COWORK-AUDIT-CODEX-VACUITY-FINISH-001 (READY) — audit interim vacuity_flag schema and reviewer guidance",
-    "CODEX-PLANNER-LEDGER-MATURE-001 (READY)",
     "CODEX-CLEANUP-ORPHAN-A-001 (DONE 2026-04-26T08:37:47Z; commit pending at registry update time)"
   ],
   "completed_audits": [
@@ -114,11 +115,13 @@
     "COWORK-F3-DEPENDENCY-MAP-001 (2026-04-26T17:15:00Z) — DELIVERED F3_COUNT_DEPENDENCY_MAP.md; F3-COUNT remains CONDITIONAL_BRIDGE",
     "COWORK-CLAY-HORIZON-AUDIT-001 (2026-04-26T17:30:00Z) — DELIVERED CLAY_HORIZON.md; OUT-* rows remain BLOCKED; per-row analysis filed",
     "COWORK-AUDIT-CODEX-V2.53-PROGRESS-001 (2026-04-26T17:45:00Z) — AUDIT_PASS; exact safe-deletion hypothesis separated from degree-one sufficiency; F3-COUNT remains CONDITIONAL_BRIDGE",
-    "CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001 (2026-04-26T10:40:00Z) — DONE; interim vacuity_flag schema + reviewer guidance filed; full column blocked on Cowork draft"
+    "CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001 (2026-04-26T10:40:00Z) — DONE; interim vacuity_flag schema + reviewer guidance filed; full column blocked on Cowork draft",
+    "CODEX-PLANNER-LEDGER-MATURE-001 (2026-04-26T10:45:00Z) — DONE; JOINT-PLANNER matured to INFRA_AUDITED bookkeeping; no percentages changed",
+    "COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001 (2026-04-26T17:55:00Z) — DELIVERED F3_COUNT_DEPENDENCY_MAP.md refresh; safe-deletion/non-cut framing landed; no math row moved"
   ],
   "ledger_status": {
     "AUTOCONTINUE": "INFRA_AUDITED",
-    "JOINT-PLANNER": "CONDITIONAL_BRIDGE (planner created; pending Cowork audit)",
+    "JOINT-PLANNER": "INFRA_AUDITED (COWORK-AUDIT-JOINT-PLANNER-001 passed; 5/28/23-25/50 validation stable; infrastructure-only bookkeeping, no math metric moved)",
     "AGENTIC-INFRA": "INFRA_AUDITED",
     "CLAY-GOAL": "BLOCKED",
     "L1-HAAR": "FORMAL_KERNEL (98%)",

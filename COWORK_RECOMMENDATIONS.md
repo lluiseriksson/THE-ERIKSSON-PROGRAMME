@@ -4,6 +4,60 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T17:55:00Z — DELIVERED: COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001 — F3_COUNT_DEPENDENCY_MAP.md refreshed; safe-deletion / non-cut framing landed
+
+**Task verdict**: `DONE` (post-v2.53 refresh; no LEDGER row moved). The dependency map's §(b)/B.1 + §(c) now reflect the v2.53 hypothesis-shape correction Codex flagged in the v2.53.0 AXIOM_FRONTIER entry: the decoder needs `PlaquetteGraphAnchoredSafeDeletionExists` (root-avoiding non-cut), not necessarily induced-degree-one. `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001` marked RESOLVED.
+
+### What changed in F3_COUNT_DEPENDENCY_MAP.md
+
+| Section | Change |
+|---|---|
+| Header | Timestamp updated to 17:55Z; "v2.53 refresh summary" paragraph added explaining counter-example (4-cycle) and the safe-deletion target |
+| §(a) A.6 | Renamed to "Degree-one leaf deletion subcase (v2.52)" (removed "latest" tag) |
+| §(a) A.6.1 | **NEW** subsection catalogues all 8 v2.53 entries at lines 1805/1820/1831/1847/1860/1866/1872/1882 with kind annotations (def Prop = open gap; theorem = oracle-clean conditional bridge/driver) |
+| §(b)/B.1 | **Rewritten**: target is now `plaquetteGraphAnchoredSafeDeletionExists_proved` (i.e. prove the v2.53 line 1805 def Prop). Includes explicit 4-cycle counter-example showing why degree-one form fails. Two-strategy difficulty estimate (≈ 200–400 LOC). Mathlib pre-check inlined per `REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001`. Stronger degree-one form preserved as "acceptable intermediate" with explicit caveat that it inherits cyclic-case failure. |
+| §(b)/B.2 | Updated dependencies: now uses v2.53 line 1847's `exists_erase_mem_of_safeDeletion` driver directly rather than hand-composing v2.51 + v2.52 |
+| §(c) | **Restructured** into Strategy 1 (acyclic longest-induced-path) + Strategy 2 (cyclic DFS-tree non-cut via Diestel Prop. 1.4.1: every connected graph on ≥ 2 vertices has ≥ 2 non-cut vertices). Combined Lean-side proof outline using both strategies. 4-cycle counter-example explicitly walked through |
+| §(d) | Decoder pseudocode rewritten to use v2.53 line 1847 driver directly (no hand-composition of v2.51 + v2.52); explicit signature with `(hsafe : PlaquetteGraphAnchoredSafeDeletionExists d L)` parameter |
+| §(e) | "Before" cell of effect-on-LEDGER table mentions v2.53 cumulative |
+| Suggested Codex schedule | Renumbered: v2.53 marked as **landed** (already done by Codex); next v2.54 = §(b)/B.1 with two-strategy proof; v2.55 = §(b)/B.2; v2.56 = chain through line 1096 + LEDGER promotion |
+
+### Validation requirements (all met)
+
+| Requirement | Result |
+|---|---|
+| `F3_COUNT_DEPENDENCY_MAP.md` references `PlaquetteGraphAnchoredSafeDeletionExists` as the minimal next predicate | PASS — appears in: header v2.53 refresh summary; §(a) A.6.1 lines 1805 + 1860; §(b)/B.1 proposed signature `plaquetteGraphAnchoredSafeDeletionExists_proved`; §(c) statement; §(d) decoder pseudocode signature |
+| Map distinguishes degree-one sufficiency from safe-deletion necessity | PASS — §(a) A.6.1 explicitly tags degree-one form as "open gap, **strictly stronger**, not necessary, known to fail on cyclic buckets"; §(b)/B.1 has separate "Variant" section; §(c) has the 4-cycle counter-example explicitly |
+| Map discusses cyclic-bucket / non-cut strategy, not only longest-induced-path | PASS — §(c) Strategy 2 covers DFS-tree non-cut argument with Diestel folklore citation; §(b)/B.1 difficulty estimate explicitly accounts for both strategies |
+| `registry/recommendations.yaml` marks `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001` RESOLVED | PASS — top entry now `status: RESOLVED` with full resolution paragraph at 17:55Z |
+
+### Stop conditions check — both NOT TRIGGERED
+
+| Stop condition | Status | Counter-evidence |
+|---|---|---|
+| Refresh implies v2.53 proved `PlaquetteGraphAnchoredSafeDeletionExists` | **NOT TRIGGERED** | §(a) A.6.1 row for line 1805 explicitly tags it `def Prop (open gap)`; §(b)/B.1 target is `plaquetteGraphAnchoredSafeDeletionExists_proved` (a *future* proof goal); §(c) statement is the unfolding to be proven; "Suggested Codex schedule" lists §(b)/B.1 as v2.54+ work, not v2.53 work; the F3-COUNT row remains CONDITIONAL_BRIDGE |
+| Map cannot be updated without changing Lean code | **NOT TRIGGERED** | Refresh is purely documentation; zero Lean source changes; LEDGER unchanged; AXIOM_FRONTIER unchanged; progress_metrics.yaml unchanged; the existing v2.53 Lean source already supplies all the references the refreshed map cites |
+
+### Honesty preservation
+
+- F3-COUNT row in `UNCONDITIONALITY_LEDGER.md`: **unchanged** (`CONDITIONAL_BRIDGE`).
+- `dashboard/agent_state.json` ledger_status: unchanged.
+- `registry/progress_metrics.yaml` percentages: unchanged.
+- README badges: unchanged at 5% / 28% / 50%.
+- The refresh is a documentation correction; it adds clarity but produces zero math advance.
+
+### Ripple recommendation note
+
+`REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001` (priority 5, OPEN) remains relevant but its scope is now broader: the v2.54 Mathlib pre-check should look for non-cut-vertex existence (Strategy 2) in addition to longest-induced-path machinery (Strategy 1). The recommendation text already says "etc." but Cowork notes this so future re-readers see the broader scope.
+
+### Verdict
+
+**DELIVERED.** Document refreshed in place. `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001` RESOLVED. F3-COUNT remains CONDITIONAL_BRIDGE. Anti-overclaim discipline preserved.
+
+26th milestone-event of the session: 14 audit_pass + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 2 META + 3 deliverables.
+
+---
+
 ## 2026-04-26T17:45:00Z — AUDIT_PASS: COWORK-AUDIT-CODEX-V2.53-PROGRESS-001 (safe-deletion hypothesis separation; conditional one-step driver only; F3-COUNT remains CONDITIONAL_BRIDGE)
 
 **Audit result**: `AUDIT_PASS`. Codex v2.53.0 is exactly the honesty-preserving refinement the dispatch description anticipated. The exact safe-deletion hypothesis is properly separated from the stronger degree-one sufficient condition, only conditional one-step drivers are proven, F3-COUNT stays CONDITIONAL_BRIDGE, and the AXIOM_FRONTIER entry explicitly disclaims Clay-level completion.

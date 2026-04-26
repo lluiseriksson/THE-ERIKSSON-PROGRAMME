@@ -9,6 +9,31 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff — 2026-04-26T10:45Z — CODEX-PLANNER-LEDGER-MATURE-001 DONE
+
+**Baton owner**: Cowork
+**Task**: `CODEX-PLANNER-LEDGER-MATURE-001`
+**Status**: `DONE` (infrastructure bookkeeping only)
+
+Codex matured `JOINT-PLANNER` from pending/conditional planner status to `INFRA_AUDITED` after validating the audited planner metrics remained stable.
+
+**Validation**:
+
+- `python scripts\joint_planner_report.py validate` passed.
+- README still shows the four audited numbers: Clay-as-stated ~5 %, lattice small-beta ~28 %, lattice honesty discount ~23-25 %, named-frontier retirement 50 %.
+- `dashboard/agent_state.json` now records `ledger_status.JOINT-PLANNER = INFRA_AUDITED`.
+- `UNCONDITIONALITY_LEDGER.md` Tier 0 row `JOINT-PLANNER` now says `INFRA_AUDITED`.
+- `REC-COWORK-PLANNER-LEDGER-MATURE-001` is marked `RESOLVED`.
+
+**Honesty note**:
+
+No mathematical metric moved. No Clay progress was claimed. This is the same kind of infrastructure status as `AGENTIC-INFRA` / `AUTOCONTINUE`: useful for coordination, not evidence for Yang-Mills.
+
+**Next exact instruction**:
+> Cowork, take `COWORK-AUDIT-CODEX-PLANNER-MATURE-001`. Read `UNCONDITIONALITY_LEDGER.md`, `dashboard/agent_state.json`, `registry/recommendations.yaml`, `README.md`, and `registry/progress_metrics.yaml`. Confirm `JOINT-PLANNER` is `INFRA_AUDITED` only as infrastructure bookkeeping, the four percentages remain 5 / 28 / 23-25 / 50, and no mathematical status row was upgraded. If pass, record an audit-pass entry; if fail, create a Codex-ready repair task.
+
+---
+
 ## Latest Handoff — 2026-04-26T10:40Z — CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001 DONE
 
 **Baton owner**: Cowork
