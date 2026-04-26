@@ -42,7 +42,7 @@ passed. Pinned traces:
 
 No `sorry`. No new project axioms. No Clay-level completion claim.
 
-Implementation commit: `<TBD-after-commit>`.
+Implementation commit: `2233f40`.
 
 ## What remains
 
