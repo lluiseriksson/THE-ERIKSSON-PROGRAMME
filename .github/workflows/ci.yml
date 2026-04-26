@@ -9,6 +9,17 @@ on:
 jobs:
 
   # ── Job 1: Registry consistency ──────────────────────────────────────────────
+  # ⚠ [ARCHIVED] This job validates SCHEMA only against registry/ which is
+  # marked [ARCHIVED] (see registry/README.md and COWORK_FINDINGS.md
+  # Finding 007). The job continues to run because removing it would be a
+  # CI-config change that needs verification on a real PR; the validation
+  # itself is harmless (schema-only) but does NOT enforce content currency.
+  #
+  # Future maintenance: stub or remove this job per Finding 007 Option A
+  # step 4. Until then, do NOT update registry/*.yaml — those files are
+  # preserved for git history only. See AXIOM_FRONTIER.md / SORRY_FRONTIER.md
+  # for the authoritative ledger.
+  #
   # Checks: node statuses are valid, all dependency references exist,
   # critical-path BLACKBOX nodes have bottleneck entries.
   # Authoritative script: scripts/validate_registry.py

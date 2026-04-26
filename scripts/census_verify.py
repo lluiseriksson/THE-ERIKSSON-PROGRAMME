@@ -2,18 +2,27 @@
 """
 census_verify.py — Authoritative axiom census for THE-ERIKSSON-PROGRAMME.
 
-⚠ DOCSTRING POSSIBLY STALE — references v0.15.0 expected output.
-   Current state (v1.89.0, 2026-04-25): axiom count outside
+⚠ [ARCHIVED — DOCSTRING STALE]
+   Current state (v2.47.0, 2026-04-26): axiom count outside
    YangMills/Experimental/ is **0**. Total Experimental axioms
    are **14** (per EXPERIMENTAL_AXIOMS_AUDIT.md). The script
    may still execute correctly but its expected-output comments
-   below will not match current reality.
+   below describe the v0.15.0 state and will NOT match current
+   reality.
 
-   For current axiom census, see AXIOM_FRONTIER.md (live ledger)
-   and EXPERIMENTAL_AXIOMS_AUDIT.md (classification by
-   retire-ability). For the dual-governance dead-weight
-   discussion, see COWORK_FINDINGS.md Finding 007 and
-   REPO_INFRASTRUCTURE_AUDIT.md §3.
+   For current axiom census, the authoritative sources are:
+     - AXIOM_FRONTIER.md       — live ledger
+     - SORRY_FRONTIER.md       — sorry count (currently 0)
+     - EXPERIMENTAL_AXIOMS_AUDIT.md — Experimental classification
+                                     by retire-ability (7 easy / 1
+                                     medium / 1 reformulation /
+                                     5 hard Mathlib gaps)
+
+   For the dual-governance dead-weight discussion, see
+   COWORK_FINDINGS.md Finding 007 and REPO_INFRASTRUCTURE_AUDIT.md
+   §3. The script is preserved as part of the early-phase
+   governance system (March 2026) which is no longer the
+   authoritative axiom census.
 
 Run this in Colab AFTER cloning/updating the repo:
 
@@ -35,7 +44,12 @@ Expected output (v0.15.0 — STALE; will not match current state):
       They are counted once (26 unique names).
       Fix: remove duplicates from DirichletConcrete.lean (run elimination_structural_v1.py).
 
-If the counts differ, the discrepancy must be documented in AXIOM_FRONTIER.md.
+Current expected output (v2.47.0): the script will report a
+much smaller axiom set (only Experimental/, ~14 distinct names)
+or zero non-Experimental axioms, depending on how it walks the
+tree. If the counts differ from AXIOM_FRONTIER.md / SORRY_FRONTIER.md
+the AUTHORITATIVE source is those two markdown files, NOT this
+script's output.
 """
 import os
 import re

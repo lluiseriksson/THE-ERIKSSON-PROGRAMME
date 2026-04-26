@@ -1,10 +1,13 @@
 # AI Onboarding Guide — THE-ERIKSSON-PROGRAMME
 
-> ⚠ **POSSIBLY STALE — last verified for v1.45.0; current state is
-> v1.89.0 (44 versions later, 2026-04-25).**
+> # 🛑 [ARCHIVED] — DO NOT USE FOR ONBOARDING 🛑
 >
-> This file describes a project state that has been substantially
-> superseded:
+> **This file is preserved for git-history reference only.**
+> Last technical content verified for **v1.45.0**; current project
+> state is **v2.47.0** (102 versions later, 2026-04-26).
+>
+> The content below describes a project state that has been
+> substantially superseded:
 >
 > - The "1 BFS-live custom axiom" claim is **wrong**: current axiom
 >   count outside `Experimental/` is **0** (per `AXIOM_FRONTIER.md`
@@ -18,17 +21,23 @@
 >   `clayMassGap_of_shiftedF3MayerCountPackageExp` and
 >   `physicalStrong_of_expCountBound_mayerData_siteDist_measurableF`.
 >
-> **For current onboarding**, see (in order):
-> 1. `FINAL_HANDOFF.md` — 60-second TL;DR
-> 2. `AGENT_HANDOFF.md` — full operational guide
-> 3. `KNOWN_ISSUES.md` — caveats including N_c=1 trivial group and
->    `HasContinuumMassGap` continuum trick
-> 4. `STATE_OF_THE_PROJECT.md` — current snapshot
-> 5. `CODEX_CONSTRAINT_CONTRACT.md` — current priority queue
+> ## ✅ For current onboarding, read these instead (in order):
 >
-> The historical content below is preserved for git-history
-> reference. See `COWORK_FINDINGS.md` Finding 007 for the
-> dual-governance dead-weight discussion.
+> 1. **`FINAL_HANDOFF.md`** — 60-second TL;DR
+> 2. **`NEXT_SESSION.md`** — what to do next
+> 3. **`AGENT_HANDOFF.md`** — full operational guide
+> 4. **`KNOWN_ISSUES.md`** — caveats including N_c=1 trivial group and
+>    `HasContinuumMassGap` continuum trick
+> 5. **`STATE_OF_THE_PROJECT.md`** — current snapshot
+> 6. **`CODEX_CONSTRAINT_CONTRACT.md`** — current priority queue
+>
+> Background: see `COWORK_FINDINGS.md` Finding 007 for the
+> dual-governance dead-weight discussion. This file is the
+> primary artefact of the abandoned March-2026 governance system.
+
+---
+
+# ⚠ HISTORICAL CONTENT BELOW — PRESERVED FOR REFERENCE ONLY ⚠
 
 ---
 

@@ -1,4 +1,9 @@
-# registry/ — POSSIBLY STALE
+# 🛑 registry/ — [ARCHIVED] 🛑
+
+> **This folder is preserved for git-history reference only.**
+> The CI job `validate_registry` continues to run against it for
+> schema-only consistency, NOT for content currency.
+> Do **NOT** consult these files for project state.
 
 This folder contains the project's **early-phase node registry**
 (March 2026), which was built around an L0–L8 layer organisation
@@ -6,21 +11,27 @@ and consumed by `scripts/validate_registry.py` for CI consistency
 checks.
 
 The registry has not been maintained as the project evolved into
-its current ClayCore + F3 frontier organisation. As of 2026-04-25
-(v1.89.0), the registry has the following discrepancies with
-actual repo state:
+its current ClayCore + F3 frontier organisation. As of 2026-04-26
+(v2.47.0 — 102 versions later from v1.45.0), the registry has the
+following discrepancies with actual repo state:
 
 - **`ai_context.yaml`**: claims `current_phase: "Phase 0 —
   Sanitation and architecture"` and `primary_focus_node: L0.1`.
   Both are **incorrect**: Phase 0 closed in early March 2026, and
-  the current focus is the F3 frontier in `YangMills/ClayCore/`.
+  the current focus is the F3 frontier in `YangMills/ClayCore/`
+  (specifically the BFS/Klarner anchored decoder in
+  `LatticeAnimalCount.lean`, v2.42–v2.47 first-branch layer).
 
 - **`nodes.yaml`**: 29 nodes registered, last updated
   2026-04-01. Covers L0–L8 layers but **does NOT reflect**:
   - The ~275 files in `YangMills/ClayCore/` (the active work area)
+  - The 222-file `BalabanRG/` infrastructure (Codex push,
+    mid-session 2026-04-25)
   - The L2.4–L2.6 sidecar work (closed 2026-04-21/22)
-  - The F3 frontier and its packaging (v1.79.0–v1.89.0)
+  - The F3 frontier and its packaging (v1.79.0 → v2.47.0)
   - The N_c=1 unconditional witness (`AbelianU1Unconditional.lean`)
+  - The 35 long-cycle Lean blocks (L7-L44)
+  - The 20 Mathlib PR-ready drafts in `mathlib_pr_drafts/`
 
 - **`critical_paths.yaml`**: 3 paths defined entirely in terms of
   L0–L8 nodes. **Does not represent** the F3 frontier as the
@@ -68,3 +79,8 @@ folder can be safely archived or deleted without breaking CI.
 
 *README added 2026-04-25 by Cowork agent as defensive staleness
 flag pending Lluis decision per Finding 007.*
+
+*Banner upgraded to `[ARCHIVED]` 2026-04-26 by Cowork agent
+(per Lluis go-ahead on Finding 007 Option A). Folder preserved
+in place; a future maintenance pass can rename to
+`registry_archive/` and stub the CI job.*
