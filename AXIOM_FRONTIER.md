@@ -1,3 +1,53 @@
+# v2.44.0 — anchored root-shell code
+
+**Released: 2026-04-26**
+
+## What
+
+Added first-shell code maps in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCodeOfBranching
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCodeOfBranching_injective
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296_injective
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296
+
+Given any local branching bound, the first BFS shell
+
+    X ∩ (plaquetteGraph d L).neighborFinset root
+
+now has a canonical injective code into `Fin D`.  In physical dimension this is
+specialized to the current `1296`-letter alphabet.  For nontrivial buckets
+`1 < k`, the coded physical shell is inhabited.
+
+## Why
+
+No percentage bar moves.  This is another real decoder-core increment: the
+anchored BFS/Klarner proof can now branch over a coded finite first shell, not
+only over an abstract existential root neighbor.  The remaining hard step is
+the recursive deletion/parent map that turns these shell codes into full
+bucket words.
+
+## Oracle
+
+Lean check:
+
+    lake env lean YangMills/ClayCore/LatticeAnimalCount.lean
+
+Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCodeOfBranching_injective
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296_injective
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.43.0 — anchored root-shell branching bound
 
 **Released: 2026-04-26**

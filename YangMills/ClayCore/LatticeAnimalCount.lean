@@ -1444,6 +1444,73 @@ theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_
   plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_branching
     plaquetteGraph_branchingBoundDim_physical_ternary hX
 
+/-- Canonical code for the first BFS shell, obtained from any local branching
+bound. -/
+noncomputable def plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCodeOfBranching
+    {d D L k : ℕ} [NeZero d] [NeZero L]
+    (hD : PlaquetteGraphBranchingBoundDim d D)
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k) :
+    {z : ConcretePlaquette d L //
+      z ∈ X ∩ (plaquetteGraph d L).neighborFinset root} → Fin D :=
+  finsetCodeOfCardLe (X ∩ (plaquetteGraph d L).neighborFinset root)
+    (plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_branching hD hX)
+
+/-- The first-shell code induced by a branching bound is injective. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCodeOfBranching_injective
+    {d D L k : ℕ} [NeZero d] [NeZero L]
+    (hD : PlaquetteGraphBranchingBoundDim d D)
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k) :
+    Function.Injective
+      (plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCodeOfBranching
+        hD hX) :=
+  finsetCodeOfCardLe_injective (X ∩ (plaquetteGraph d L).neighborFinset root)
+    (plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_branching hD hX)
+
+/-- Physical four-dimensional first-shell code in the current `1296` alphabet. -/
+noncomputable def physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k) :
+    {z : ConcretePlaquette physicalClayDimension L //
+      z ∈ X ∩ (plaquetteGraph physicalClayDimension L).neighborFinset root} →
+      Fin 1296 :=
+  plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCodeOfBranching
+    plaquetteGraph_branchingBoundDim_physical_ternary hX
+
+/-- The physical `1296` first-shell code is injective. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296_injective
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k) :
+    Function.Injective
+      (physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296 hX) :=
+  plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCodeOfBranching_injective
+    plaquetteGraph_branchingBoundDim_physical_ternary hX
+
+/-- Nontrivial physical anchored buckets have an inhabited coded first shell. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (hk : 1 < k) :
+    ∃ c : Fin 1296,
+      ∃ z : {z : ConcretePlaquette physicalClayDimension L //
+        z ∈ X ∩ (plaquetteGraph physicalClayDimension L).neighborFinset root},
+        physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296 hX z = c := by
+  obtain ⟨z, hz⟩ :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_nonempty hX hk
+  exact ⟨physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296 hX
+      ⟨z, hz⟩,
+    ⟨⟨z, hz⟩, rfl⟩⟩
+
 /-- Any nontrivial anchored bucket has a first root-neighbor symbol in any
 available neighbor-choice alphabet. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
@@ -2359,6 +2426,9 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_neighborFinset
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_branching
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_1296
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCodeOfBranching_injective
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296_injective
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
