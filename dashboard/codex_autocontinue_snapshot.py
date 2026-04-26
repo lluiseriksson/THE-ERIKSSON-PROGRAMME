@@ -22,7 +22,6 @@
 import argparse
 import json
 import os
-import runpy
 import site
 import subprocess
 import sys
@@ -217,19 +216,6 @@ def build_dispatch_message(agent_role):
         raise ValueError(f"Unknown agent role: {agent_role}")
     if not CANONICAL_DISPATCHER.exists():
         raise FileNotFoundError(f"Missing canonical dispatcher: {CANONICAL_DISPATCHER}")
-    try:
-        namespace = runpy.run_path(str(CANONICAL_DISPATCHER))
-        return namespace["build_message"](agent_role)
-    except SystemExit as exc:
-        # When this file is launched directly through Windows .py association,
-        # it may run under a Python that lacks PyYAML. The console command
-        # `python ...` is the known-good interpreter on this machine, so fall
-        # back to it instead of aborting the GUI loop.
-        if str(exc) != "PyYAML is required for agent_next_instruction.py":
-            raise
-    except ModuleNotFoundError as exc:
-        if exc.name != "yaml":
-            raise
     env = os.environ.copy()
     user_home = Path.home()
     candidate_sites = [

@@ -75,6 +75,19 @@ This contract is **binding** for every Codex and Cowork session.
 
 ## Latest Handoff
 
+### 2026-04-26 — Removed fragile runpy dispatcher path
+
+- **Agent**: Codex
+- **Summary**: Direct `.py` launch still hit `PyYAML is required` because the script tried to execute the canonical dispatcher inside the launcher interpreter before the fallback could help. Removed that `runpy` path entirely. `codex_autocontinue.py` now always invokes `scripts/agent_next_instruction.py` through `C:\Python312\python.exe` with explicit user-site `PYTHONPATH` and `PYTHONIOENCODING=utf-8`.
+- **Validation**:
+  - `& C:\Users\lluis\Downloads\codex_autocontinue.py Codex` produced a structured dispatch.
+  - `python C:\Users\lluis\Downloads\codex_autocontinue.py Codex` produced a structured dispatch.
+  - Snapshot refreshed and compiles.
+- **Registry sync**: Reset CLI-validation dispatches back to `READY`; active target remains `CLAY-F3-COUNT-RECURSIVE-001`.
+- **Unconditionality impact**: Infrastructure only. No mathematical progress claimed.
+- **Next exact instruction**:
+  > Lluis, run `C:\Users\lluis\Downloads\codex_autocontinue.py --codex-only` again. The `PyYAML is required` error should now be impossible because the dispatcher is no longer imported in the launcher interpreter.
+
 ### 2026-04-26 — Direct `.py` launcher dependency fix
 
 - **Agent**: Codex
