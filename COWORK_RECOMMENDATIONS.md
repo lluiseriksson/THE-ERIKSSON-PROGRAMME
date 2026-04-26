@@ -4,6 +4,48 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T13:30:00Z — META-GENERATE-TASKS-001 (third run): seed 4 Cowork audit tasks
+
+**Action**: Cowork queue exhausted after 13 audit-closures this session. Dispatcher fired META-GENERATE-TASKS-001. Seeded **4 new Cowork tasks** aligned with current Tier 1 / Tier 2 / Mathlib-PR / honesty-discipline state.
+
+### 4 new tasks seeded
+
+| ID | Owner | Pri | Status | Purpose |
+|---|---|---|---|---|
+| `COWORK-AUDIT-CLAY-F3-COUNT-LEAF-DELETION-001` | Cowork | 4 | FUTURE | Auto-promote to READY when Codex lands the leaf/deletion-order theorem (precise next Clay-reduction step per AXIOM_FRONTIER v2.51.0 lines 26–31). 5th anticipated non-vacuous Clay-reduction audit. |
+| `COWORK-LEDGER-FRESHNESS-AUDIT-001` | Cowork | 5 | READY | Recurring 6h cadence per `REC-COWORK-LEDGER-FRESHNESS-001`. Re-grep `^\s*axiom\s+\w+ YangMills/Experimental/` and reconcile against Tier 2 row count (currently "5 real declarations"). Also re-verify `lieDerivReg_all` non-Experimental scope. |
+| `COWORK-VACUITY-PATTERN-TRACKER-001` | Cowork | 6 | READY | Track vacuity-caveat count. Currently 2 (NC1-WITNESS Tier 1 + EXP-SUN-GEN Tier 2). Escalation trigger at 3+: consolidate KNOWN_ISSUES.md §1.X vacuity-rules section, update `MATHEMATICAL_REVIEWERS_COMPANION.md`, propose vacuity-flag column in LEDGER. |
+| `COWORK-MATHLIB-OPEN-PR-AUTH-FOLLOWUP-001` | Cowork | 7 | FUTURE | Auto-promote to READY when Lluis enables one of the auth paths in `REC-MATHLIB-FORK-PR-AUTH-001`. Verify patch still applies, audit PR submission, move EXP-MATEXP-DET row to FORMAL_KERNEL only after PR merges AND project pulls new Mathlib version. |
+
+### Validation
+
+- `registry/agent_tasks.yaml contains at least three READY tasks`: **PASS**. Cowork queue now has `COWORK-LEDGER-FRESHNESS-AUDIT-001` (READY priority 5), `COWORK-VACUITY-PATTERN-TRACKER-001` (READY priority 6), plus 2 FUTURE auto-promote tasks. Codex queue still has `CLAY-F3-COUNT-RECURSIVE-001` IN_PROGRESS (target precisely identified), `CODEX-FIX-MATHLIB-DRAFTS-001` PARTIAL, `MATHLIB-OPEN-PR-001` BLOCKED.
+- Stop-if `Roadmap and ledger are missing`: NOT TRIGGERED. Both files present and freshly updated by Codex (LEDGER row F3-COUNT now records v2.51.0 commit SHA `d76b672`).
+
+### Strategic posture
+
+The session has now transitioned from **infrastructure bootstrap** → **active audit/implementation pairing**. The 4 new tasks fall into 3 categories:
+
+1. **Forward-anticipated audits** (`COWORK-AUDIT-CLAY-F3-COUNT-LEAF-DELETION-001`, `COWORK-MATHLIB-OPEN-PR-AUTH-FOLLOWUP-001`): both FUTURE, auto-promote when their trigger condition fires. This means Cowork is staged to audit Codex's next milestones immediately rather than starting cold.
+2. **Recurring discipline** (`COWORK-LEDGER-FRESHNESS-AUDIT-001`): 6h cadence prevents ledger drift (the original drift that surfaced "14 vs 8" axioms was caught by the prior audit). Establishes the freshness pattern the recommendation requested.
+3. **Honesty-discipline tracker** (`COWORK-VACUITY-PATTERN-TRACKER-001`): pre-emptive escalation logic. Currently 2 vacuity caveats are healthy; at 3+ Cowork hardens external-description guidance. This is a **meta-honesty mechanism** — Cowork audits its own audit pattern.
+
+### Honesty preservation
+
+- META-GENERATE-TASKS-001 is meta-infrastructure work, not a Clay-reduction event. No Tier 1 row changes.
+- All 4 new tasks have explicit stop-conditions that prevent premature row upgrades or false-closure scenarios.
+- `COWORK-VACUITY-PATTERN-TRACKER-001` is the most novel addition: it explicitly counts the vacuity-caveat occurrences and has an escalation trigger at 3+. This is the same shape as `REC-COWORK-LEDGER-FRESHNESS-001` but for vacuity rather than count drift.
+
+### Cumulative session state
+
+- **13 audit-closures** prior to this seed: AUTOCONTINUE / AGENTIC-INFRA system audits (3); CLAY-ROADMAP-001; NEGCOORDS bugfix; META-GENERATE-TASKS-001 (×2); Mathlib drafts audit; Experimental axioms audit; Codex-led orchestrator; EXP-SUN-GEN retirement; CLAY-MATHLIB-PR-LANDING; F3 v2.48 progress; F3 blueprint consistency; F3 v2.51 deletion bridge.
+- **4 non-vacuous Clay-reduction audits**: F3 v2.48 parent selector, v2.50 first-deletion primitive, v2.51 conditional bridge, MatrixExp Mathlib PR built-locally.
+- **2 vacuity caveats**: NC1-WITNESS (§1.1), EXP-SUN-GEN (§1.3).
+- **Tier 1 rows changed**: 0 (only Tier 0 INFRA + 1 Tier 2 EXP-SUN-GEN moved, both with caveats).
+- **Next concrete Clay-reduction step**: leaf/deletion-order theorem about preconnectedness preservation (per AXIOM_FRONTIER v2.51.0 lines 26–31).
+
+---
+
 ## 2026-04-26T13:00:00Z — AUDIT_PASS: COWORK-F3-V2.51-DELETION-BRIDGE-AUDIT-001
 
 **Audit result**: `AUDIT_PASS`. Codex's v2.51 conditional recursive-deletion bridge verified end-to-end. Both new theorems present, both oracle-clean, F3-COUNT row honestly preserved as `CONDITIONAL_BRIDGE`. **No stop-condition triggered.**
