@@ -1,7 +1,7 @@
 # F3_COUNT_DEPENDENCY_MAP.md
 
 **Cowork-authored mathematician-readable dependency map for the F3-COUNT closure path.**
-**Originally filed: 2026-04-26T17:15:00Z (post-v2.52.0). Refreshed: 2026-04-26T17:55:00Z (post-v2.53.0) per `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001`. Codex addenda: 2026-04-26T19:25:00Z (post-v2.55.0), 2026-04-26T20:05:00Z (post-v2.56.0), 2026-04-26T20:20:00Z (post-v2.57.0), 2026-04-26T20:35:00Z (post-v2.58.0), 2026-04-26T20:55:00Z (post-v2.59.0), 2026-04-26T21:35:00Z (post-v2.60.0).**
+**Originally filed: 2026-04-26T17:15:00Z (post-v2.52.0). Refreshed: 2026-04-26T17:55:00Z (post-v2.53.0) per `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001`. Codex addenda: 2026-04-26T19:25:00Z (post-v2.55.0), 2026-04-26T20:05:00Z (post-v2.56.0), 2026-04-26T20:20:00Z (post-v2.57.0), 2026-04-26T20:35:00Z (post-v2.58.0), 2026-04-26T20:55:00Z (post-v2.59.0), 2026-04-26T21:35:00Z (post-v2.60.0), 2026-04-26T22:20:00Z (post-v2.61.0).**
 **Status of `F3-COUNT` in `UNCONDITIONALITY_LEDGER.md`: `CONDITIONAL_BRIDGE` — and remains so until both missing theorems in §(b) land.**
 
 **v2.53 refresh summary**: Codex v2.53 introduced the exact recursive
@@ -167,14 +167,20 @@ clean one-step recursion driver from any future safe-deletion proof.
 | 2299 | `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three` | theorem (oracle-clean) | v2.59: packages the already-proved base zone `2 ≤ k ≤ 3` behind the future global safe-deletion interface |
 | 2322 | `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three` | theorem (oracle-clean) | physical v2.59 specialization |
 | 1869 | `PlaquetteGraphAnchoredHighCardTwoNonCutExists` | `def Prop` (open gap) | v2.60: high-cardinality two-non-cut target restricted to `4 ≤ k`, after the v2.59 base zone has been split off |
-| 2359 | `plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists` | theorem (oracle-clean) | v2.60: combines v2.59 for `2 ≤ k ≤ 3` with the high-card two-non-cut target for `4 ≤ k`, yielding exact safe deletion |
-| 2386 | `physicalPlaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists` | theorem (oracle-clean) | physical v2.60 specialization |
+| 1888 | `SimpleGraphHighCardTwoNonCutExists` | `def Prop` (open gap) | v2.61: pure finite-graph formulation of the remaining high-cardinality two-non-cut theorem |
+| 2092 | `plaquetteGraph_erase_preconnected_of_subtype_compl_preconnected` | theorem (oracle-clean) | v2.61: reusable transport from subtype deletion `G.induce {z}ᶜ` to concrete `X.erase z` preconnectedness |
+| 2170 | `plaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph` | theorem (oracle-clean) | v2.61: pure graph theorem ⇒ plaquette high-cardinality target |
+| 2221 | `physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph` | theorem (oracle-clean) | physical v2.61 specialization |
+| 2444 | `plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists` | theorem (oracle-clean) | v2.60: combines v2.59 for `2 ≤ k ≤ 3` with the high-card two-non-cut target for `4 ≤ k`, yielding exact safe deletion |
+| 2471 | `physicalPlaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists` | theorem (oracle-clean) | physical v2.60 specialization |
 
 The remaining B.1 obstruction is therefore narrower than the v2.53 refresh and
-narrower than the v2.57 global two-non-cut target: prove
-`PlaquetteGraphAnchoredHighCardTwoNonCutExists` for `4 ≤ k` (or prove the
-matching high-card non-root non-cut theorem directly), then use the v2.60 bridge
-to obtain `PlaquetteGraphAnchoredSafeDeletionExists`.
+narrower than the v2.57 global two-non-cut target: prove the pure finite graph
+theorem `SimpleGraphHighCardTwoNonCutExists`, then use v2.61 to obtain
+`PlaquetteGraphAnchoredHighCardTwoNonCutExists` for `4 ≤ k`, then use the v2.60
+bridge to obtain `PlaquetteGraphAnchoredSafeDeletionExists`.  A direct
+high-card non-root non-cut proof would still also work, but the cleanest target
+is now plaquette-free.
 
 ### A.7 — Word-decoder consumer (preexisting at lines 982–1100)
 
@@ -242,6 +248,25 @@ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k`, exhibit some
 plaquetteGraphPreconnectedSubsetsAnchoredCard d L root (k − 1)`.  In graph
 language: every nontrivial anchored preconnected bucket admits a non-root
 *non-cut* (safe) deletion.
+
+**Post-v2.61 preferred subtarget.**  Instead of proving the plaquette version
+directly, prove the pure finite-graph statement:
+
+```lean
+theorem simpleGraphHighCardTwoNonCutExists :
+    SimpleGraphHighCardTwoNonCutExists
+```
+
+Then compose:
+
+```lean
+plaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
+plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
+```
+
+This keeps the remaining B.1 work independent of plaquette geometry and avoids
+any further finite-cardinality ladder beyond the already-closed `2 ≤ k ≤ 3`
+base zone.
 
 **Why not the degree-one form**: the strictly stronger
 `PlaquetteGraphAnchoredDegreeOneDeletionExists` fails for buckets containing

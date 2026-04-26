@@ -1877,6 +1877,23 @@ def PlaquetteGraphAnchoredHighCardTwoNonCutExists
         ((plaquetteGraph d L).induce {x | x ∈ X.erase z₁}).Preconnected ∧
         ((plaquetteGraph d L).induce {x | x ∈ X.erase z₂}).Preconnected
 
+/-- Generic finite-graph theorem that remains to be supplied for the
+high-cardinality F3 deletion route.
+
+It is intentionally phrased without plaquette geometry: every finite connected
+graph with at least four vertices has two distinct vertices whose deletion
+leaves a preconnected induced graph.  The bridge below transports this pure
+graph statement to the plaquette bucket target
+`PlaquetteGraphAnchoredHighCardTwoNonCutExists`. -/
+def SimpleGraphHighCardTwoNonCutExists : Prop :=
+  ∀ {α : Type} [Fintype α] [DecidableEq α] (G : SimpleGraph α),
+    G.Connected →
+    4 ≤ Fintype.card α →
+    ∃ z₁, ∃ z₂,
+      z₁ ≠ z₂ ∧
+        (G.induce ({z₁}ᶜ : Set α)).Preconnected ∧
+        (G.induce ({z₂}ᶜ : Set α)).Preconnected
+
 /-- The degree-one global hypothesis is sufficient for the exact safe-deletion
 hypothesis, by the local v2.52 leaf-deletion theorem. -/
 theorem plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
@@ -2066,6 +2083,50 @@ theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_o
     (d := physicalClayDimension) (L := L) (k := k) (root := root) (X := X)
     hsafe hk hX
 
+/-- Transport preconnectedness from the induced subtype graph with one vertex
+removed back to the concrete erased plaquette bucket.
+
+This factors out the subtype-to-`Finset.erase` graph-homomorphism used by the
+unrooted non-cut theorem, so later two-non-cut bridges can reuse it for both
+deletion candidates. -/
+theorem plaquetteGraph_erase_preconnected_of_subtype_compl_preconnected
+    {d L : ℕ} [NeZero d] [NeZero L]
+    {X : Finset (ConcretePlaquette d L)}
+    (z : {x : ConcretePlaquette d L // x ∈ X})
+    (hpre :
+      (((plaquetteGraph d L).induce {x | x ∈ X}).induce
+        ({z}ᶜ : Set {x : ConcretePlaquette d L // x ∈ X})).Preconnected) :
+    ((plaquetteGraph d L).induce {x | x ∈ X.erase z.1}).Preconnected := by
+  classical
+  let GX : SimpleGraph {x : ConcretePlaquette d L // x ∈ X} :=
+    (plaquetteGraph d L).induce {x | x ∈ X}
+  let Gsrc : SimpleGraph
+      {x : {x : ConcretePlaquette d L // x ∈ X} // x ∈ ({z}ᶜ :
+          Set {x : ConcretePlaquette d L // x ∈ X})} :=
+    GX.induce ({z}ᶜ : Set {x : ConcretePlaquette d L // x ∈ X})
+  let Gtgt : SimpleGraph {x : ConcretePlaquette d L // x ∈ X.erase z.1} :=
+    (plaquetteGraph d L).induce {x | x ∈ X.erase z.1}
+  have hsrc : Gsrc.Preconnected := by
+    simpa [GX, Gsrc] using hpre
+  let f : Gsrc →g Gtgt :=
+    { toFun := fun a =>
+        ⟨a.1.1, Finset.mem_erase.mpr ⟨by
+          intro h
+          exact a.2 (Subtype.ext h), a.1.2⟩⟩
+      map_rel' := by
+        intro a b hab
+        exact SimpleGraph.induce_adj.mpr
+          (SimpleGraph.induce_adj.mp (SimpleGraph.induce_adj.mp hab)) }
+  have hf_surj : Function.Surjective f := by
+    intro y
+    rcases Finset.mem_erase.mp y.2 with ⟨hy_ne, hyX⟩
+    refine ⟨⟨⟨y.1, hyX⟩, ?_⟩, ?_⟩
+    · intro hy
+      exact hy_ne (Subtype.ext_iff.mp hy)
+    · ext
+      rfl
+  simpa [Gtgt] using hsrc.map f hf_surj
+
 /-- Unrooted non-cut deletion for anchored buckets.
 
 Mathlib already proves that a finite connected graph has some vertex whose
@@ -2096,33 +2157,48 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_
     exact { preconnected := hpreX, nonempty := ⟨⟨root, hroot⟩⟩ }
   obtain ⟨vz, hvz⟩ :=
     hconnX.exists_preconnected_induce_compl_singleton_of_finite
-  let Gsrc : SimpleGraph
-      {x : {x : ConcretePlaquette d L // x ∈ X} // x ∈ ({vz}ᶜ :
-          Set {x : ConcretePlaquette d L // x ∈ X})} :=
-    GX.induce ({vz}ᶜ : Set {x : ConcretePlaquette d L // x ∈ X})
-  let Gtgt : SimpleGraph {x : ConcretePlaquette d L // x ∈ X.erase vz.1} :=
-    (plaquetteGraph d L).induce {x | x ∈ X.erase vz.1}
-  have hsrc : Gsrc.Preconnected := by
-    simpa [Gsrc] using hvz
-  let f : Gsrc →g Gtgt :=
-    { toFun := fun a =>
-        ⟨a.1.1, Finset.mem_erase.mpr ⟨by
-          intro h
-          exact a.2 (Subtype.ext h), a.1.2⟩⟩
-      map_rel' := by
-        intro a b hab
-        exact SimpleGraph.induce_adj.mpr
-          (SimpleGraph.induce_adj.mp (SimpleGraph.induce_adj.mp hab)) }
-  have hf_surj : Function.Surjective f := by
-    intro y
-    rcases Finset.mem_erase.mp y.2 with ⟨hy_ne, hyX⟩
-    refine ⟨⟨⟨y.1, hyX⟩, ?_⟩, ?_⟩
-    · intro hy
-      exact hy_ne (Subtype.ext_iff.mp hy)
-    · ext
-      rfl
   exact ⟨vz.1, vz.2, by
-    simpa [Gtgt] using hsrc.map f hf_surj⟩
+    exact plaquetteGraph_erase_preconnected_of_subtype_compl_preconnected
+      (d := d) (L := L) (X := X) vz (by simpa [GX] using hvz)⟩
+
+/-- A pure finite-graph two-non-cut theorem supplies the high-cardinality
+plaquette deletion target.
+
+This is a v2.61 bridge: it does not prove the graph theorem itself, but it
+removes all plaquette-specific bookkeeping from the remaining high-cardinality
+obstruction. -/
+theorem plaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (hgraph : SimpleGraphHighCardTwoNonCutExists) :
+    PlaquetteGraphAnchoredHighCardTwoNonCutExists d L := by
+  classical
+  intro root k X hk hX
+  let GX : SimpleGraph {x : ConcretePlaquette d L // x ∈ X} :=
+    (plaquetteGraph d L).induce {x | x ∈ X}
+  have hroot : root ∈ X :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem hX
+  have hpreX : GX.Preconnected := by
+    simpa [GX] using
+      plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected hX
+  have hconnX : GX.Connected := by
+    exact { preconnected := hpreX, nonempty := ⟨⟨root, hroot⟩⟩ }
+  have hcardX : X.card = k :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_card_eq hX
+  have hcardSubtype :
+      4 ≤ Fintype.card {x : ConcretePlaquette d L // x ∈ X} := by
+    rw [Fintype.card_subtype]
+    simpa [hcardX] using hk
+  obtain ⟨z₁, z₂, hne, hpre₁, hpre₂⟩ :=
+    hgraph GX hconnX hcardSubtype
+  refine ⟨z₁.1, z₁.2, z₂.1, z₂.2, ?_, ?_, ?_⟩
+  · intro h
+    exact hne (Subtype.ext h)
+  · exact
+      plaquetteGraph_erase_preconnected_of_subtype_compl_preconnected
+        (d := d) (L := L) (X := X) z₁ (by simpa [GX] using hpre₁)
+  · exact
+      plaquetteGraph_erase_preconnected_of_subtype_compl_preconnected
+        (d := d) (L := L) (X := X) z₂ (by simpa [GX] using hpre₂)
 
 /-- Physical four-dimensional specialization of unrooted non-cut deletion.
 
@@ -2139,6 +2215,15 @@ theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preco
         {x | x ∈ X.erase z}).Preconnected :=
   plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted
     (d := physicalClayDimension) (L := L) (k := k) (root := root) (X := X) hX
+
+/-- Physical specialization of the pure finite-graph bridge to the
+high-cardinality plaquette two-non-cut target. -/
+theorem physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
+    {L : ℕ} [NeZero L]
+    (hgraph : SimpleGraphHighCardTwoNonCutExists) :
+    PhysicalPlaquetteGraphAnchoredHighCardTwoNonCutExists L :=
+  plaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
+    (d := physicalClayDimension) (L := L) hgraph
 
 /-- Root-avoiding safe deletion in the first nontrivial bucket size.
 
@@ -3561,6 +3646,9 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
 #print axioms plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
 #print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
+#print axioms plaquetteGraph_erase_preconnected_of_subtype_compl_preconnected
+#print axioms plaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
+#print axioms physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_tail_to_member

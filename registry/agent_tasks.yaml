@@ -306,7 +306,7 @@ tasks:
   status: PARTIAL
   priority: 3
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T21:35:00Z'
+  updated_at: '2026-04-26T22:20:00Z'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - BLUEPRINT_F3Count.md
@@ -438,12 +438,18 @@ tasks:
     or direct non-root non-cut theorem, not more finite base cases.'
   - Dispatched to Codex at 2026-04-26T12:34:52Z
   - 'v2.60 partial: added PlaquetteGraphAnchoredHighCardTwoNonCutExists for 4 <= k
-    plus the bridge from that high-card target and the v2.59 base zone to exact
-    PlaquetteGraphAnchoredSafeDeletionExists; lake build YangMills.ClayCore.LatticeAnimalCount
-    passed; F3-COUNT remains CONDITIONAL_BRIDGE pending the high-card theorem and
-    full anchored word decoder.'
-  dispatch_count: 22
-  dispatched_at: '2026-04-26T12:34:52Z'
+    plus the bridge from that high-card target and the v2.59 base zone to exact PlaquetteGraphAnchoredSafeDeletionExists;
+    lake build YangMills.ClayCore.LatticeAnimalCount passed; F3-COUNT remains CONDITIONAL_BRIDGE
+    pending the high-card theorem and full anchored word decoder.'
+  - Dispatched to Codex at 2026-04-26T13:21:38Z
+  - 'v2.61 partial: added SimpleGraphHighCardTwoNonCutExists as the pure finite-graph
+    target, factored plaquetteGraph_erase_preconnected_of_subtype_compl_preconnected,
+    and proved plaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph plus the
+    physical specialization. lake build YangMills.ClayCore.LatticeAnimalCount passed;
+    F3-COUNT remains CONDITIONAL_BRIDGE pending proof of SimpleGraphHighCardTwoNonCutExists
+    and the full anchored word decoder.'
+  dispatch_count: 23
+  dispatched_at: '2026-04-26T13:21:38Z'
   dispatched_to: Codex
 - id: CLAY-EXP-RETIRE-7-001
   title: Retire 7 easy SU(N) generator-data Experimental axioms
@@ -3662,25 +3668,25 @@ tasks:
   audit_evidence:
     grep_count: 5
     grep_declarations:
-    - 'YangMills/Experimental/BakryEmery/BakryEmerySpike.lean:58 axiom sun_haar_satisfies_lsi'
-    - 'YangMills/Experimental/Semigroup/VarianceDecayFromPoincare.lean:79 axiom variance_decay_from_bridge_and_poincare_semigroup_gap'
-    - 'YangMills/Experimental/Semigroup/VarianceDecayFromPoincare.lean:133 axiom gronwall_variance_decay'
-    - 'YangMills/Experimental/LieSUN/LieDerivReg_v4.lean:58 axiom lieDerivReg_all'
-    - 'YangMills/Experimental/LieSUN/LieExpCurve.lean:81 axiom matExp_traceless_det_one'
+    - YangMills/Experimental/BakryEmery/BakryEmerySpike.lean:58 axiom sun_haar_satisfies_lsi
+    - YangMills/Experimental/Semigroup/VarianceDecayFromPoincare.lean:79 axiom variance_decay_from_bridge_and_poincare_semigroup_gap
+    - YangMills/Experimental/Semigroup/VarianceDecayFromPoincare.lean:133 axiom gronwall_variance_decay
+    - YangMills/Experimental/LieSUN/LieDerivReg_v4.lean:58 axiom lieDerivReg_all
+    - YangMills/Experimental/LieSUN/LieExpCurve.lean:81 axiom matExp_traceless_det_one
     ledger_tier2_row_count: 5
     drift_vs_audit_004: 0
-    cadence_drift_total: 0  # 5 consecutive iterations, drift = 0
+    cadence_drift_total: 0
     zero_axiom_outside_experimental: PASS
-    exp_liederivreg_option_1_landed: false  # axiom lieDerivReg_all still at LieDerivReg_v4.lean:58
-    lieDerivReg_all_consumer_files: 3  # declaration + 2 consumers (SUN_DirichletCore + GeneratorAxiomsDimOne)
+    exp_liederivreg_option_1_landed: false
+    lieDerivReg_all_consumer_files: 3
     cowork_recommendations_entry: added at 2026-04-26T21:15:00Z
     workspace_vm_status: unavailable_for_runtime; source-inspection grep substituted
   scoreboard:
-    audit_pass_total_after: 25  # 24 → 25
-    freshness_audits_total_after: 4  # audit-005 is the 5th iteration but session counts only audits 002-005 as in-session (001 was earlier)
+    audit_pass_total_after: 25
+    freshness_audits_total_after: 4
     cadence_iterations_clean: 5
     cadence_total_elapsed_hours: ~5.75
-    codex_v_commits_during_cadence: 17  # v2.42 → v2.59
+    codex_v_commits_during_cadence: 17
   required_files:
   - UNCONDITIONALITY_LEDGER.md
   - YangMills/Experimental/
@@ -3717,10 +3723,31 @@ tasks:
   title: 'Cowork: scope §(b)/B.2 word decoder iteration in detail post-v2.58 (the
     last math step before F3-COUNT closure)'
   owner: Cowork
-  status: READY
+  status: DONE
   priority: 6
   created_at: '2026-04-26T20:45:00Z'
-  updated_at: '2026-04-26T20:45:00Z'
+  updated_at: '2026-04-26T22:10:00Z'
+  completed_at: '2026-04-26T22:10:00Z'
+  audit_verdict: DELIVERED
+  deliverable: dashboard/f3_decoder_iteration_scope.md
+  deliverable_size_lines: ~270
+  audit_evidence:
+    sections_covered:
+    - 'a: precise Lean signature for PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296_proved (both versions); unfolded at LatticeAnimalCount.lean:1057-1064 + :1084-1085'
+    - 'b: structural-induction skeleton with k=0 base, k=1 base, k+1 → k step using safe-deletion driver; explicit recursion on X.erase z; uses :1666-1684 erase_mem_of_preconnected handoff'
+    - 'c: encoding contract — one Fin 1296 symbol per step via v2.48 rootShellParentCode1296 :2629-2639; spec equation :2681-2696'
+    - 'd: termination via v2.50 firstDeleteResidual1296_card :1618-1633 + root_mem :1637-1658; explicit termination_by clause'
+    - 'e: full composition chain to Klarner bound via :1096 consumer; F3-COUNT → FORMAL_KERNEL on closure, lattice 28% → ~43% projected'
+    line_numbers_verified:
+    - 'LatticeAnimalCount.lean:1057-1064 / :1068 / :1084-1085 / :1096 / :1604 / :1618 / :1637 / :1666 / :2359 / :2629 / :2681 — all VERIFIED current'
+    forward_looking_disclaimer: 'Mandatory disclaimer at top + "What this scope does NOT do" section + Honesty preservation section all explicit'
+  stop_conditions_check:
+  - 'Scope claims §(b)/B.2 is proved: NOT TRIGGERED (mandatory disclaimer + What-not-do section explicit)'
+  - 'Scope implies F3-COUNT closure: NOT TRIGGERED (disclaimer + (e) section uses future-conditional "When this composition fires")'
+  - 'File:line references do not match Lean source: NOT TRIGGERED (all 11 line numbers verified against current source)'
+  scoreboard:
+    deliverables_total_after: 9  # 8 → 9
+    cowork_authored_session_deliverables_after: 7  # 6 → 7
   required_files:
   - F3_COUNT_DEPENDENCY_MAP.md
   - YangMills/ClayCore/LatticeAnimalCount.lean
@@ -3757,14 +3784,61 @@ tasks:
     closes PlaquetteGraphAnchoredTwoNonCutExists.
   - Complements F3_COUNT_DEPENDENCY_MAP.md §(d) which has high-level pseudocode but
     lacks Lean signature scaffold.
+  - Dispatched to Cowork at 2026-04-26T13:33:32Z
+  dispatched_at: '2026-04-26T13:33:32Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
 - id: COWORK-DELIVERABLES-CONSISTENCY-AUDIT-001
   title: 'Cowork: cross-document consistency audit of the 8 Cowork-authored session
     deliverables'
   owner: Cowork
-  status: READY
+  status: DONE
   priority: 6
   created_at: '2026-04-26T20:45:00Z'
-  updated_at: '2026-04-26T20:45:00Z'
+  updated_at: '2026-04-26T21:55:00Z'
+  completed_at: '2026-04-26T21:55:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+    documents_audited: 8
+    percentages_consistency: PASS — 5% / 28% / 23-25% / 50% aligned across all 8 documents
+      (progress_metrics.yaml is source of truth; CLAY_HORIZON.md:16 quotes all 4;
+      exp_liederivreg_reformulation_options.md:321 all 4; mayer_mathlib_precheck.md:229
+      all 4; F3 dep maps quote subsets; vacuity_flag_column_draft intentionally has
+      no percentages; JOINT_AGENT_PLANNER 12 hits all aligned)
+    f3_count_status_consistency: PASS — CONDITIONAL_BRIDGE in progress_metrics.yaml:79,
+      F3_MAYER_DEPENDENCY_MAP.md:6/421, vacuity_flag_column_draft.md:33/96, exp_liederivreg_reformulation_options.md:255/316-317,
+      mayer_mathlib_precheck.md:227, CLAY_HORIZON.md:12/171. F3_MAYER_DEPENDENCY_MAP.md
+      FORMAL_KERNEL references are explicit post-closure projections (line 389 "After
+      ... all land" column header), correctly framed.
+    f3_mayer_status_consistency: PASS — BLOCKED in progress_metrics.yaml:86, F3_MAYER_DEPENDENCY_MAP.md:5/420,
+      vacuity_flag_column_draft.md:97, exp_liederivreg_reformulation_options.md:318,
+      mayer_mathlib_precheck.md:226, CLAY_HORIZON.md:172
+    f3_combined_status_consistency: PASS — BLOCKED in progress_metrics.yaml:93, F3_MAYER_DEPENDENCY_MAP.md:393,
+      vacuity_flag_column_draft.md:98, CLAY_HORIZON.md:173
+    out_star_status_consistency: PASS — OUT-CONTINUUM/OUT-OS-WIGHTMAN/OUT-STRONG-COUPLING
+      all BLOCKED per progress_metrics.yaml:14-18 (clay_as_stated.blockers) and CLAY_HORIZON.md
+      lines 92/103/114/144-146/180-182/251 with explicit LEDGER:78-80 line citations
+    cross_references_consistency: PASS — spot checks of CLAY_HORIZON.md → LEDGER:74-80,
+      vacuity_flag_column_draft.md:179-181 → LEDGER:97-99, F3_COUNT_DEPENDENCY_MAP.md
+      → LatticeAnimalCount.lean line numbers (v2.60 addendum lines 169-171) all resolve
+      correctly. F3_MAYER_DEPENDENCY_MAP.md:126 ClusterRpowBridge.lean:4355+ deferred
+      to runtime check when workspace VM available.
+    recommendation_ids_consistency: PASS — all 8 spot-checked IDs (REC-COWORK-LEDGER-FRESHNESS-001,
+      REC-COWORK-F3-PIVOT-TO-GLOBAL-THEOREM-001, REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001,
+      REC-CODEX-MAYER-MATHLIB-CAYLEY-OR-PRUFER-001, REC-CODEX-MAYER-MATHLIB-BK-FORMULA-PROJECT-SIDE-001,
+      REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001, REC-MATHLIB-FORK-PR-AUTH-001, REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001)
+      match registry/recommendations.yaml entries
+    minor_freshness_lag: 'CLAY_HORIZON.md v2 was refreshed at 20:35Z post-v2.57 and
+      does not yet cite v2.58/v2.59/v2.60. NOT an inconsistency: percentages and statuses
+      are still correct. Filed as REC-COWORK-CLAY-HORIZON-V3-REFRESH-001 priority
+      6 OPEN (non-blocking tracking-currency refresh).'
+  filed_recommendations:
+  - REC-COWORK-CLAY-HORIZON-V3-REFRESH-001
+  scoreboard:
+    audit_pass_total_after: 27
+    honesty_infrastructure_audits_after: 4
+    cowork_filed_recommendations_open_after: 3
+  next_agent: Codex
   required_files:
   - F3_COUNT_DEPENDENCY_MAP.md
   - F3_MAYER_DEPENDENCY_MAP.md
@@ -3795,11 +3869,14 @@ tasks:
   stop_if:
   - Audit triggers a percentage change without proper Cowork audit
   - Audit closes any LEDGER row status without proper math evidence
-  next_agent: Codex
   notes:
   - Meta-audit ensuring the 8 Cowork-authored deliverables form a coherent honesty-discipline
     surface; checks for silent drift across documents.
   - Pure consistency check; no math advance.
+  - Dispatched to Cowork at 2026-04-26T13:27:50Z
+  dispatched_at: '2026-04-26T13:27:50Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
 - id: COWORK-AUDIT-CODEX-V2.59-BASE-ZONE-DRIVER-001
   title: 'Cowork: audit Codex v2.59 base-zone safe-deletion driver'
   owner: Cowork
@@ -3898,35 +3975,134 @@ tasks:
 - id: COWORK-AUDIT-CODEX-V2.60-HIGH-CARD-BRIDGE-001
   title: 'Cowork: audit Codex v2.60 high-cardinality two-non-cut bridge'
   owner: Cowork
-  status: READY
+  status: DONE
   priority: 4
   created_at: '2026-04-26T21:35:00Z'
-  updated_at: '2026-04-26T21:35:00Z'
+  updated_at: '2026-04-26T21:40:00Z'
+  completed_at: '2026-04-26T21:40:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+    commit: 526a3d4
+    new_open_def:
+      identifier: PlaquetteGraphAnchoredHighCardTwoNonCutExists
+      file_line: YangMills/ClayCore/LatticeAnimalCount.lean:1869
+      restriction: 4 ≤ k (line 1873)
+      kind: def Prop (open gap)
+    new_bridge_theorems:
+    - identifier: plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
+      file_line: YangMills/ClayCore/LatticeAnimalCount.lean:2359
+      proof_strategy: 'by_cases hk_small : k ≤ 3; small branch dispatches to v2.59
+        _card_le_three; high branch uses open def hypothesis with non-root pick from
+        {z₁, z₂}'
+      oracle_trace: '[propext, Classical.choice, Quot.sound]'
+    - identifier: physicalPlaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
+      file_line: YangMills/ClayCore/LatticeAnimalCount.lean:2386
+      proof_strategy: physical d=4 specialization via (d := physicalClayDimension)
+      oracle_trace: '[propext, Classical.choice, Quot.sound]'
+    print_axioms_directives:
+    - YangMills/ClayCore/LatticeAnimalCount.lean:3562
+    - YangMills/ClayCore/LatticeAnimalCount.lean:3563
+    build_oracle: 8184/8184 jobs green per AXIOM_FRONTIER.md:55 (workspace VM unavailable
+      for Cowork rebuild)
+    documentation_no_closure_claim: AXIOM_FRONTIER.md:69 explicit "not a proof of
+      F3-COUNT"; line 75 "F3-COUNT remains CONDITIONAL_BRIDGE"; line 65 "No sorry.
+      No new project axiom. No percentage movement."
+    cowork_pattern_flag_acknowledgment: AXIOM_FRONTIER.md lines 37-38 verbatim "Cowork's
+      v2.58/v2.59 audits correctly warned against continuing a bottom-up ladder of
+      isolated cases. v2.60 formalizes the right split"
+    ledger_f3_count_row_unchanged: CONDITIONAL_BRIDGE preserved at UNCONDITIONALITY_LEDGER.md:97;
+      v2.60 narrative documents new restriction to 4 ≤ k while preserving status
+    f3_dependency_map_next_target: 'F3 map v2.60 addendum (refreshed 21:35Z) lines
+      173-177 explicit: "prove PlaquetteGraphAnchoredHighCardTwoNonCutExists for 4
+      ≤ k (or prove the matching high-card non-root non-cut theorem directly), then
+      use the v2.60 bridge"; suggested Codex schedule for v2.61+ at lines 551+ pins
+      next target as the high-card theorem (not isolated k=4 base case)'
+    percentages_unchanged: progress_metrics.yaml:22 honest_discounted_percent_range
+      "23-25" unchanged; README badges 5% / 28% / 50% unchanged
+    stop_condition_4_structurally_impossible: The open def PlaquetteGraphAnchoredHighCardTwoNonCutExists
+      hardcodes 4 ≤ k as a hypothesis. A k=4-only base case cannot satisfy this open
+      def; satisfying it requires a proof valid for all 4 ≤ k. The structural reduction
+      makes the bottom-up pattern impossible to continue.
+  cowork_to_codex_feedback_loop: 'Third full iteration this session: Cowork v2.58/v2.59
+    audits flagged bottom-up pattern → v2.60 commits structural reduction restricting
+    future def to 4 ≤ k only, cited verbatim in AXIOM_FRONTIER.md:37-38'
+  scoreboard:
+    audit_pass_total_after: 26
+    non_vacuous_clay_reduction_passes_after: 13
+    f3_count_progression: v2.42 → v2.43 → v2.44 → v2.48 → v2.50 → v2.51 → v2.52 →
+      v2.53 → v2.54 → v2.55 → v2.56 → v2.57 → v2.58 → v2.59 → v2.60 (15 narrowing
+      increments)
+    cowork_to_codex_feedback_loops_total: 3
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - AXIOM_FRONTIER.md
   - UNCONDITIONALITY_LEDGER.md
   - F3_COUNT_DEPENDENCY_MAP.md
   - AGENT_BUS.md
-  objective: >
-    Audit Codex v2.60 partial progress on CLAY-F3-COUNT-RECURSIVE-001. Verify
-    that PlaquetteGraphAnchoredHighCardTwoNonCutExists is an open def Prop
-    restricted to 4 <= k, that the new bridge only combines this high-card
-    target with the already-proved v2.59 base zone 2 <= k <= 3, and that the
-    documentation does not claim F3-COUNT closure or percentage movement.
+  objective: 'Audit Codex v2.60 partial progress on CLAY-F3-COUNT-RECURSIVE-001. Verify
+    that PlaquetteGraphAnchoredHighCardTwoNonCutExists is an open def Prop restricted
+    to 4 <= k, that the new bridge only combines this high-card target with the already-proved
+    v2.59 base zone 2 <= k <= 3, and that the documentation does not claim F3-COUNT
+    closure or percentage movement.
+
+    '
   validation:
   - lake build YangMills.ClayCore.LatticeAnimalCount
-  - '#print axioms traces for the two v2.60 bridge theorems are [propext, Classical.choice, Quot.sound]'
+  - '#print axioms traces for the two v2.60 bridge theorems are [propext, Classical.choice,
+    Quot.sound]'
   - AXIOM_FRONTIER.md v2.60.0 states this does not close F3-COUNT
   - UNCONDITIONALITY_LEDGER.md F3-COUNT row remains CONDITIONAL_BRIDGE
-  - F3_COUNT_DEPENDENCY_MAP.md schedules the next target as high-card two-non-cut theorem, not k=4 base-case accumulation
+  - F3_COUNT_DEPENDENCY_MAP.md schedules the next target as high-card two-non-cut
+    theorem, not k=4 base-case accumulation
   - No README/progress percentage moved
   stop_if:
   - Any new theorem depends on sorryAx or a new project axiom
   - Documentation implies global safe deletion or F3-COUNT closure
   - Any project percentage moved from this bridge theorem
-  - The update suggests continuing to isolated k=4, k=5 cases as a substitute for the high-card theorem
+  - The update suggests continuing to isolated k=4, k=5 cases as a substitute for
+    the high-card theorem
   next_agent: Codex
   notes:
   - Generated by Codex after v2.60 partial progress on CLAY-F3-COUNT-RECURSIVE-001.
+  - Audit task only; no Lean edits expected from Cowork.
+  - Dispatched to Cowork at 2026-04-26T13:21:40Z
+  dispatched_at: '2026-04-26T13:21:40Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+- id: COWORK-AUDIT-CODEX-V2.61-SIMPLEGRAPH-BRIDGE-001
+  title: 'Cowork: audit Codex v2.61 pure finite-graph bridge'
+  owner: Cowork
+  status: READY
+  priority: 4
+  created_at: '2026-04-26T22:20:00Z'
+  updated_at: '2026-04-26T22:20:00Z'
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - AXIOM_FRONTIER.md
+  - UNCONDITIONALITY_LEDGER.md
+  - F3_COUNT_DEPENDENCY_MAP.md
+  - AGENT_BUS.md
+  objective: 'Audit Codex v2.61 partial progress on CLAY-F3-COUNT-RECURSIVE-001.
+    Verify that SimpleGraphHighCardTwoNonCutExists is an open pure finite-graph
+    def Prop, that plaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
+    only bridges this pure graph theorem to the plaquette target, and that F3-COUNT
+    remains CONDITIONAL_BRIDGE with no percentage movement.
+
+    '
+  validation:
+  - lake build YangMills.ClayCore.LatticeAnimalCount
+  - '#print axioms traces for the three v2.61 theorems are [propext, Classical.choice,
+    Quot.sound]'
+  - AXIOM_FRONTIER.md v2.61.0 states this does not close F3-COUNT
+  - UNCONDITIONALITY_LEDGER.md F3-COUNT row remains CONDITIONAL_BRIDGE
+  - F3_COUNT_DEPENDENCY_MAP.md points next to SimpleGraphHighCardTwoNonCutExists,
+    not more finite base cases
+  - No README/progress percentage moved
+  stop_if:
+  - Any new theorem depends on sorryAx or a new project axiom
+  - Documentation implies SimpleGraphHighCardTwoNonCutExists is proved globally
+  - Any project percentage moved from this bridge theorem
+  next_agent: Codex
+  notes:
+  - Generated by Codex after v2.61 partial progress on CLAY-F3-COUNT-RECURSIVE-001.
   - Audit task only; no Lean edits expected from Cowork.

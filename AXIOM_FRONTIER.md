@@ -1,3 +1,82 @@
+# v2.61.0 — pure finite-graph bridge for high-cardinality two-non-cut target
+
+**Released: 2026-04-26**
+
+## What
+
+F3 / Klarner recursive deletion now has a plaquette-free graph-theoretic
+handoff for the remaining high-cardinality obstruction:
+
+    def SimpleGraphHighCardTwoNonCutExists : Prop :=
+      ∀ {α : Type} [Fintype α] [DecidableEq α] (G : SimpleGraph α),
+        G.Connected →
+        4 ≤ Fintype.card α →
+        ∃ z₁, ∃ z₂,
+          z₁ ≠ z₂ ∧
+            (G.induce ({z₁}ᶜ : Set α)).Preconnected ∧
+            (G.induce ({z₂}ᶜ : Set α)).Preconnected
+
+and the oracle-clean bridge:
+
+    theorem plaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
+        {d L : ℕ} [NeZero d] [NeZero L]
+        (hgraph : SimpleGraphHighCardTwoNonCutExists) :
+        PlaquetteGraphAnchoredHighCardTwoNonCutExists d L
+
+with physical specialization:
+
+    theorem physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
+        {L : ℕ} [NeZero L]
+        (hgraph : SimpleGraphHighCardTwoNonCutExists) :
+        PhysicalPlaquetteGraphAnchoredHighCardTwoNonCutExists L
+
+The subtype-to-erased-bucket transport used by the old unrooted non-cut theorem
+was factored as:
+
+    theorem plaquetteGraph_erase_preconnected_of_subtype_compl_preconnected
+
+## Why
+
+v2.60 reduced the deletion blocker to the high-cardinality target
+`PlaquetteGraphAnchoredHighCardTwoNonCutExists` for `4 ≤ k`.  v2.61 removes
+the remaining plaquette bookkeeping from that target: it is enough to prove a
+standard finite graph theorem, namely that every finite connected graph with
+at least four vertices has two distinct non-cut vertices.  Once that pure graph
+theorem is supplied, v2.61 gives the plaquette high-card target, and v2.60 gives
+`PlaquetteGraphAnchoredSafeDeletionExists`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Result: 8184/8184 jobs green.
+
+Pinned traces:
+
+    'YangMills.plaquetteGraph_erase_preconnected_of_subtype_compl_preconnected'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    'YangMills.plaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`.  No new project axiom.  No percentage movement.
+
+## Scope
+
+This is **not** a proof of `F3-COUNT` and does **not** prove
+`SimpleGraphHighCardTwoNonCutExists`.  It is a structural reduction from the
+plaquette-specific high-cardinality deletion target to a pure finite graph
+lemma.  `F3-COUNT` remains `CONDITIONAL_BRIDGE`.
+
+Implementation commit: `c11b1d0`.
+
+---
+
 # v2.60.0 — high-cardinality two-non-cut target + base-zone split
 
 **Released: 2026-04-26**
