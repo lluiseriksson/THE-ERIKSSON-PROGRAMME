@@ -4,6 +4,86 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T18:25:00Z — DELIVERED: COWORK-VACUITY-FLAG-COLUMN-DRAFT-001 — dashboard/vacuity_flag_column_draft.md filed; Codex-ready spec for the LEDGER Tier 1 + Tier 2 column
+
+**Task verdict**: `DONE` (loop-closing deliverable; no LEDGER row moved). The deliverable `dashboard/vacuity_flag_column_draft.md` is the concrete Codex-ready spec that unblocks `REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001` (priority 2, OPEN) and lets Codex replace the LEDGER §38 5-row interim applications table with a per-row column on the actual Tier 1 + Tier 2 LEDGER tables. This is the **last** of the three Cowork-side deliverables seeded by this morning's META-GENERATE-TASKS-001.
+
+### Document structure (4 sections + cross-references)
+
+| Section | Content |
+|---|---|
+| (a) | 7-value enum copied verbatim from LEDGER §38 with **one concrete example each** for disambiguation (none / caveat-only / vacuous-witness / trivial-group / zero-family / anchor-structure / trivial-placeholder); explicit "default value for new rows is `none`" rule |
+| (b) | Proposed column header markdown for both Tier 1 (7 columns) and Tier 2 (6 columns), with `vacuity_flag` slotted as second-to-last column (immediately before `Next action`); explicit explanation of why this position; Tier 0 + Tier 3 deferred with note |
+| (c) | Per-row recommended value for **every** current Tier 1 (10 rows) + Tier 2 (5 rows) LEDGER row with one-sentence justification + KNOWN_ISSUES.md cross-reference; **plus** a third sub-table enumerating 7 vacuity-pattern instances from KNOWN_ISSUES §9 + §10.3 + Findings 011–016 that are not yet first-class LEDGER rows, with proposed row IDs and recommended flags for a follow-up `CODEX-LEDGER-VACUITY-PATTERN-ROWS-001` task |
+| (d) | Step-by-step Codex insertion instructions: D.1 Tier 1 table edit (line-by-line cell content); D.2 Tier 2 table edit (line-by-line cell content); D.3 §38 cleanup (replace 5-row interim table with one-paragraph note); D.4 optional follow-up for §9 + §10.3 patterns (NOT bundled into present task); D.5 row-spanning entries (none currently); D.6 verification recipe (3 grep commands + diff check) |
+
+### Validation requirements (all 5 met)
+
+| Requirement | Result |
+|---|---|
+| `dashboard/vacuity_flag_column_draft.md` exists with sections (a)–(d) | PASS — written to dashboard root |
+| All 7 enumerated values defined with examples | PASS — §(a) table with definition + concrete example for each of the 7 values |
+| Every current Tier 1 + Tier 2 LEDGER row has a recommended `vacuity_flag` value | PASS — §(c) covers all 10 Tier 1 rows (L1-HAAR through CONTINUUM-COORDSCALE per LEDGER lines 92–101) and all 5 Tier 2 rows (EXP-SUN-GEN through EXP-BD-HY-GR per LEDGER lines 107–111). 15/15 rows |
+| Justifications cross-reference KNOWN_ISSUES.md sections | PASS — every row with a non-`none` flag cites a KNOWN_ISSUES section: §1.1 (NC1-WITNESS), §1.2 (CONTINUUM-COORDSCALE), §1.3 (EXP-SUN-GEN), §9 Finding 011 (OS-style at SU(1)), Finding 012 (Branch III), Findings 013–014 (Bałaban carriers), Finding 015 (BalabanRG scaffold), Finding 016 (ClayCoreLSI), §10.3 (triple-view) |
+| `COWORK_RECOMMENDATIONS.md` audit entry | PASS — this entry |
+
+### Stop conditions check — both NOT TRIGGERED
+
+| Stop condition | Status | Counter-evidence |
+|---|---|---|
+| Draft proposes any LEDGER row status change | **NOT TRIGGERED** | §(b) explicit "must not change any LEDGER row's `Status`, `Dependency`, `Evidence`, or `Next action` cell"; §(d)/D.6 verification step explicitly: "no row's Status / Dependency / Evidence / Next action cell text changed"; the 7 proposed new rows in §(c)'s third table are deferred to a separate `CODEX-LEDGER-VACUITY-PATTERN-ROWS-001` task per §(d)/D.4 ("Do not bundle this follow-up into the present consolidation task") |
+| A vacuity-pattern instance from `COWORK-VACUITY-PATTERN-TRACKER-001` (Findings 011–016 + §10.3) is missing | **NOT TRIGGERED** | §(c) third table explicitly enumerates: Finding 011 (OS-style), Finding 012 (Branch III), Findings 013–014 (Bałaban carriers), Finding 015 (BalabanRG scaffold), Finding 016 (ClayCoreLSI), §10.3 (triple-view), Clay weak endpoint canaries. **7+ instances all covered** with proposed row IDs and recommended flags |
+
+### Coverage matrix
+
+| KNOWN_ISSUES location | Pattern | Coverage in this draft |
+|---|---|---|
+| §1.1 NC1-WITNESS | SU(1) trivial group | §(c) Tier 1 row NC1-WITNESS = `trivial-group` (with §1.1 cross-ref) |
+| §1.2 CONTINUUM-COORDSCALE | architectural rescaling | §(c) Tier 1 row CONTINUUM-COORDSCALE = `trivial-placeholder` (with §1.2 cross-ref) |
+| §1.3 EXP-SUN-GEN | zero matrix family | §(c) Tier 2 row EXP-SUN-GEN = `zero-family` (with §1.3 cross-ref) |
+| §9 Finding 011 | SU(1) OS-style structural axioms | §(c) third table proposed row `OS-AXIOM-SU1` = `anchor-structure` |
+| §9 Finding 012 | Branch III analytic predicates | §(c) third table proposed row `BRANCH-III-PREDICATES` = `anchor-structure` |
+| §9 Findings 013-014 | Bałaban predicate carriers | §(c) third table proposed row `BALABAN-CARRIERS` = `anchor-structure` |
+| §9 Finding 015 | BalabanRG scaffold | §(c) third table proposed row `BALABAN-RG-SCAFFOLD` = `anchor-structure` |
+| §9 Finding 016 | ClayCoreLSI arithmetic existential | §(c) third table proposed row `CLAY-CORE-LSI` = `vacuous-witness` (with note that the substantive `ClayCoreLSIToSUNDLRTransfer` deserves `caveat-only`) |
+| §10.3 triple-view | structural plumbing | §(c) third table proposed row `TRIPLE-VIEW-L42-L43-L44` = `anchor-structure` |
+| §1.1 + §9 Finding 015 (Clay weak endpoint canaries) | trivially inhabited proposition | §(c) third table proposed row `CLAY-WEAK-ENDPOINT` = `vacuous-witness` |
+
+**Coverage**: 10 distinct documented vacuity locations, all covered. The §(b) Tier 1 + Tier 2 column captures 3 of these (NC1-WITNESS / EXP-SUN-GEN / CONTINUUM-COORDSCALE) directly via existing rows; the remaining 7 are deferred to a Codex follow-up task that creates new LEDGER rows.
+
+### Recommendation status update
+
+- `REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001` (priority 2, OPEN): **now unblocked**. The draft this recommendation called for now exists. Codex's next step is to read sections (b) + (c) + (d) of `dashboard/vacuity_flag_column_draft.md` and implement the column verbatim. After implementation, the recommendation moves to RESOLVED.
+
+### Honesty preservation
+
+- All LEDGER rows: **unchanged**. No status promotions, no demotions.
+- `dashboard/agent_state.json` ledger_status: unchanged.
+- `progress_metrics.yaml` percentages: unchanged at 5% / 28% / 23-25% / 50%.
+- README badges: unchanged.
+- The draft is purely a specification document; producing it adds zero math and zero formal status changes.
+
+### Direct value to Codex
+
+When Codex picks up `CODEX-VACUITY-RULES-CONSOLIDATION-001` follow-through:
+- Header markdown is pre-written in §(b).
+- Per-row cell contents are pre-listed in §(c) as a line-by-line table.
+- Insertion line numbers are pre-mapped in §(d)/D.1 + §(d)/D.2.
+- Verification grep commands are pre-listed in §(d)/D.6.
+- The work reduces to "diff in the 15 cell insertions; verify; commit". No design decisions remain.
+
+### Side observation captured during drafting
+
+The dashboard line 33 `latest_validation_artifact` shows that **Codex landed v2.54.0** during the time Cowork was drafting this document. The new theorem `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_preconnected_unrooted` (and its physical specialization) is the Mathlib-backed unrooted non-cut deletion step from `F3_COUNT_DEPENDENCY_MAP.md` §(c) Strategy 2. `REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001` is now RESOLVED — Codex confirmed that `SimpleGraph.Connected.exists_preconnected_induce_compl_singleton_of_finite` exists in Mathlib and reused it. This is the system working as designed: dependency map + Mathlib pre-check → Codex implementation in the same dispatch cycle. The v2.54 work is now ready for `COWORK-AUDIT-CODEX-V2.54-UNROOTED-NONCUT-001`.
+
+### Verdict
+
+**DELIVERED.** Document filed. All 5 validation requirements met; both stop conditions NOT TRIGGERED; coverage matrix shows all 10 documented vacuity locations captured. `REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001` is now unblocked.
+
+29th milestone-event of the session: 16 audit_pass + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 2 META + **4 deliverables**. **Cowork's META-seeded 3-task queue is now 3/3 done**: F3_COUNT_DEPENDENCY_MAP.md + CLAY_HORIZON.md + vacuity_flag_column_draft.md (plus the F3 dependency map refresh after v2.53).
+
+---
+
 ## 2026-04-26T18:15:00Z — AUDIT_PASS: COWORK-AUDIT-CODEX-PLANNER-MATURE-001 (JOINT-PLANNER bookkeeping matured to INFRA_AUDITED; 4 percentages unchanged; no math row moved)
 
 **Audit result**: `AUDIT_PASS`. Codex's `CODEX-PLANNER-LEDGER-MATURE-001` (DONE 10:45Z) cleanly matures the `JOINT-PLANNER` row from `CONDITIONAL_BRIDGE` to `INFRA_AUDITED` in both `UNCONDITIONALITY_LEDGER.md` and `dashboard/agent_state.json`. The 4 headline percentages (5 / 28 / 23-25 / 50) are unchanged. No mathematical status row was touched. The 6h cooling-off window from Cowork's `REC-COWORK-PLANNER-LEDGER-MATURE-001` was respected (matured at 10:45Z, well after the 17:00Z audit-pass + LEDGER row record at 17:00–17:30Z).
