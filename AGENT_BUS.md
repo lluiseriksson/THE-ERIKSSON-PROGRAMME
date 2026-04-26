@@ -9,6 +9,43 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff — 2026-04-26T22:05Z — AUTOCONTINUE technical hardening (per-agent repeat memory + stale v2 audit suppression)
+
+**Baton owner**: Codex
+**Task**: technical pause / orchestrator improvement
+**Status**: `DONE`
+
+Codex hardened the agent dispatcher after the PowerShell run showed two
+operational problems:
+
+1. Cowork could receive older milestone audits (`v2.53`, `v2.54`, ...) after a
+   newer `v2.60` audit existed.
+2. Codex could receive the same long-running F3 task repeatedly during the same
+   watcher session.
+
+**Changes**:
+
+- `scripts/agent_next_instruction.py` now suppresses older
+  `COWORK-AUDIT-CODEX-V*.x` audit tasks when a newer actionable v2 audit exists.
+- `scripts/agent_next_instruction.py` records `last_dispatch_by_agent`, so repeat
+  suppression is per-agent instead of being overwritten whenever the other agent
+  receives a task.
+- `C:\Users\lluis\Downloads\codex_autocontinue.py` now keeps a per-session
+  task-id cooldown: Codex 1800s, Cowork 300s. Restarting the watcher remains the
+  manual override.
+
+**Validation**:
+
+- `python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py scripts\agent_next_instruction.py`
+- Static no-write selection test:
+  - Cowork next selected task: `COWORK-AUDIT-CODEX-V2.60-HIGH-CARD-BRIDGE-001`
+  - `COWORK-AUDIT-CODEX-V2.53-PROGRESS-001` actionable: `False`
+  - `COWORK-AUDIT-CODEX-V2.60-HIGH-CARD-BRIDGE-001` actionable: `True`
+
+No Lean files changed.  No mathematical status changed.
+
+---
+
 ## Latest Handoff — 2026-04-26T21:35Z — CLAY-F3-COUNT-RECURSIVE-001 PARTIAL v2.60.0 (high-card two-non-cut target + base-zone split)
 
 **Baton owner**: Codex → Cowork

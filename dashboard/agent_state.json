@@ -1,8 +1,8 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_high_card_tw_noncut_bridge_v2_60_partial",
-  "current_baton_owner": "Cowork",
+  "current_phase": "autocontinue_technical_hardening_done",
+  "current_baton_owner": "Codex",
   "next_task_id": "COWORK-AUDIT-CODEX-V2.60-HIGH-CARD-BRIDGE-001",
   "last_completed_task": "CLAY-F3-COUNT-RECURSIVE-001 (PARTIAL 2026-04-26T21:35:00Z; v2.60 high-card 4<=k two-non-cut target + base-zone split landed; high-card theorem and word decoder still open)",
   "last_dispatched_task": "COWORK-LEDGER-FRESHNESS-AUDIT-005",
@@ -30,7 +30,7 @@
   ],
   "last_dispatch_at": "2026-04-26T12:43:02Z",
   "last_completed_at": "2026-04-26T21:35:00Z",
-  "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount passed; v2.60 high-card bridge traces canonical; F3-COUNT remains CONDITIONAL_BRIDGE",
+  "latest_validation_artifact": "orchestrator hardening: py_compile passed; Cowork selection suppresses stale v2 audits and selects COWORK-AUDIT-CODEX-V2.60-HIGH-CARD-BRIDGE-001; no Lean/math status changed",
   "joint_planner": {
     "status": "INFRA_AUDITED",
     "source": "registry/progress_metrics.yaml",
@@ -157,5 +157,11 @@
     "failed_delivery_retry_seconds": 20,
     "debug_mode": "python C:\\Users\\lluis\\Downloads\\codex_autocontinue.py --codex-only",
     "high_utilization_update": "2026-04-26: default Cowork interval reduced from 900s to 30s; Cowork is no longer intentionally idle while Codex is busy"
+  },
+  "autocontinue_hardening": {
+    "per_agent_dispatch_memory": "enabled in scripts/agent_next_instruction.py",
+    "stale_versioned_cowork_audit_suppression": "enabled for COWORK-AUDIT-CODEX-V* tasks",
+    "session_task_cooldown": "enabled in Downloads/codex_autocontinue.py: Codex 1800s, Cowork 300s",
+    "validated_at": "2026-04-26T22:05:00Z"
   }
 }

@@ -52,6 +52,7 @@ STALE_HOURS = 6
 RECENT_REPEAT_SUPPRESS_SECONDS = 10 * 60
 LOCK_POLL_SECONDS = 0.1
 LOCK_TIMEOUT_SECONDS = 30
+VERSIONED_COWORK_AUDIT = re.compile(r"^COWORK-AUDIT-CODEX-V(\d+(?:\.\d+)*)")
 
 
 INITIAL_TASKS = [
@@ -635,6 +636,40 @@ def axiom_frontier_has_version_at_least(threshold: str) -> bool:
     return False
 
 
+def versioned_cowork_audit_version(task: dict[str, Any]) -> tuple[int, ...] | None:
+    match = VERSIONED_COWORK_AUDIT.match(str(task.get("id", "")))
+    if not match:
+        return None
+    return parse_version_tuple(match.group(1))
+
+
+def superseded_by_newer_cowork_audit(
+    task: dict[str, Any], tasks: list[dict[str, Any]]
+) -> bool:
+    """Avoid feeding Cowork stale v2.x audits after a newer v2 audit exists.
+
+    The repo accumulates audit tasks for each Codex F3 milestone.  During an
+    always-on GUI run, old READY audit tasks can survive long enough to consume
+    Cowork cycles after a newer milestone already exists.  Cowork should audit
+    the newest open version first; older entries remain in the registry for
+    history but are no longer auto-dispatch candidates.
+    """
+    current = versioned_cowork_audit_version(task)
+    if current is None:
+        return False
+    for other in tasks:
+        if other is task:
+            continue
+        if other.get("owner") != "Cowork":
+            continue
+        if other.get("status") in NEVER_DISPATCH:
+            continue
+        other_version = versioned_cowork_audit_version(other)
+        if other_version is not None and other_version > current:
+            return True
+    return False
+
+
 def file_has_regex(path_text: str, pattern: str) -> bool:
     path = Path(path_text)
     if not path.is_absolute():
@@ -743,6 +778,15 @@ def future_trigger_state(task: dict[str, Any], tasks: list[dict[str, Any]]) -> t
 
 
 def recently_dispatched_same_agent(task: dict[str, Any], agent: str, state: dict[str, Any]) -> bool:
+    by_agent = state.get("last_dispatch_by_agent")
+    if isinstance(by_agent, dict):
+        agent_state = by_agent.get(agent)
+        if isinstance(agent_state, dict) and task.get("id") == agent_state.get("task_id"):
+            dispatched_at = parse_time(agent_state.get("at"))
+            if dispatched_at != datetime.min.replace(tzinfo=timezone.utc):
+                age = datetime.now(timezone.utc) - dispatched_at
+                if age.total_seconds() < RECENT_REPEAT_SUPPRESS_SECONDS:
+                    return True
     if task.get("id") != state.get("last_dispatched_task"):
         return False
     if agent != state.get("last_dispatched_agent"):
@@ -788,6 +832,8 @@ def task_is_actionable_for(
     if is_blocked(task):
         return False
     if status in NEVER_DISPATCH:
+        return False
+    if agent == "Cowork" and superseded_by_newer_cowork_audit(task, tasks):
         return False
     if recently_dispatched_same_agent(task, agent, state):
         return False
@@ -958,10 +1004,16 @@ def mark_task_dispatched(tasks_doc: dict[str, Any], task_id: str, agent: str) ->
 
 def update_dashboard(agent: str, task_id: str | None, meta: bool = False) -> None:
     state = INITIAL_STATE | load_json(STATE_FILE)
+    now = utc_now()
     state["current_baton_owner"] = agent
     state["last_dispatched_agent"] = agent
     state["last_dispatched_task"] = task_id
-    state["last_dispatch_at"] = utc_now()
+    state["last_dispatch_at"] = now
+    by_agent = state.get("last_dispatch_by_agent")
+    if not isinstance(by_agent, dict):
+        by_agent = {}
+    by_agent[agent] = {"task_id": task_id, "at": now}
+    state["last_dispatch_by_agent"] = by_agent
     state["next_task_id"] = task_id
     state["always_has_next_task"] = True
     if meta:
