@@ -1,16 +1,19 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_count_first_deletion_partial",
+  "current_phase": "mathlib_matrixexp_patch_built_pr_blocked",
   "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001",
+  "next_task_id": "COWORK-AUDIT-CLAY-MATHLIB-PR-LANDING-001",
   "last_completed_task": "CLAY-EXP-RETIRE-7-001",
-  "last_dispatched_task": "COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001",
-  "last_dispatched_agent": "Cowork",
-  "open_blockers": [],
+  "last_dispatched_task": "CLAY-MATHLIB-PR-LANDING-001",
+  "last_dispatched_agent": "Codex",
+  "open_blockers": [
+    "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists"
+  ],
   "open_recommendations": [
     "REC-COWORK-LONG-CI-LAKE-BUILD-001",
-    "REC-NEGCOORDS-RUNTIME-CONFIRMATION-001"
+    "REC-NEGCOORDS-RUNTIME-CONFIRMATION-001",
+    "REC-MATHLIB-FORK-PR-AUTH-001"
   ],
   "unconditionality_status": "NOT_ESTABLISHED",
   "claim_policy": "Never claim Clay-level completion without complete formal evidence.",
@@ -19,8 +22,8 @@
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001"
   ],
-  "last_dispatch_at": "2026-04-26T08:02:00Z",
-  "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount",
+  "last_dispatch_at": "2026-04-26T08:06:42Z",
+  "latest_validation_artifact": "Mathlib checkout C:\\Users\\lluis\\Downloads\\mathlib4: lake build Mathlib.Analysis.Normed.Algebra.MatrixExponential; full lake build; local commit cd3b69baae",
   "audit_state": {
     "in_repo_dispatcher": "AUDIT_PASS",
     "communication_contract": "AUDIT_PASS",
@@ -30,6 +33,18 @@
     "system_collaboration": "AUDIT_PASS",
     "lean_oracle_discipline": "PASS (0 sorries, 0 non-Experimental axioms)",
     "lake_build_full": "INTEGRATION_PENDING (15-min timeout on v2.42 sync)"
+  },
+  "mathlib_pr_state": {
+    "MatrixExp_DetTrace_DimOne_PR": {
+      "status": "BUILT_LOCAL_PR_BLOCKED",
+      "mathlib_checkout": "C:\\Users\\lluis\\Downloads\\mathlib4",
+      "branch": "eriksson/det-exp-trace-fin-one",
+      "local_commit": "cd3b69baae",
+      "mathlib_base": "80a6231dcf",
+      "patch_artifact": "mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch",
+      "pr_url": null,
+      "blocker": "No gh executable, no upstream push permission, and no reachable lluiseriksson/mathlib4 fork"
+    }
   },
   "communication_contract_active": true,
   "communication_contract_clauses": 13,

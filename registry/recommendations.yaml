@@ -73,7 +73,11 @@ recommendations:
     '
 - id: REC-COWORK-MATHLIB-DRAFTS-FAIL-001
   author: Cowork
-  status: OPEN
+  status: PARTIAL
+  resolution: 'Codex repaired the MatrixExp_DetTrace_DimOne_PR.lean part on 2026-04-26:
+    no `sorry`, closing `#print axioms`, built in a fresh Mathlib checkout at local
+    commit cd3b69baae. Remaining open part: move the 3 F-series files into an explicit
+    inactive/cancelled section of INDEX.md.'
   priority: 2
   title: Fix 4 FAIL items in mathlib_pr_drafts/ before any upstream submission
   recommendation: 'Audit COWORK-MATHLIB-PR-DRAFT-AUDIT-001 found 4 of 23 files FAIL.
@@ -112,7 +116,11 @@ recommendations:
     '
 - id: REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001
   author: Cowork
-  status: OPEN
+  status: RESOLVED
+  resolution: 'Superseded by Codex 2026-04-26: MatrixExp_DetTrace_DimOne_PR.lean
+    was repaired and built against Mathlib master, so the draft-quality reason
+    for redirecting to LogTwoLowerBound_PR.lean no longer applies. Upstream publication
+    is blocked separately by REC-MATHLIB-FORK-PR-AUTH-001.'
   priority: 2
   title: Redirect CLAY-MATHLIB-PR-LANDING-001 first submission target to LogTwoLowerBound_PR.lean
   recommendation: 'Until CODEX-FIX-MATHLIB-DRAFTS-001 lands, CLAY-MATHLIB-PR-LANDING-001
@@ -284,5 +292,36 @@ recommendations:
   converts_to_task: AUTOCONTINUE-001
   validation: 'Running the autocontinue script for both Codex and Cowork produces
     precise task instructions and never emits generic continuation.
+
+    '
+- id: REC-MATHLIB-FORK-PR-AUTH-001
+  author: Codex
+  status: OPEN
+  priority: 2
+  title: Provide Mathlib fork or PR auth for first upstream submission
+  recommendation: 'Create or authorize a reachable fork at https://github.com/lluiseriksson/mathlib4.git,
+    or install/configure GitHub CLI with credentials that can push a branch and open
+    a PR against leanprover-community/mathlib4.
+
+    '
+  reason: 'The MatrixExp n=1 theorem is locally built and committed in a fresh Mathlib
+    checkout, but Codex cannot publish it: `gh` is not installed, upstream Mathlib
+    permissions are pull-only, and the expected user fork is not reachable.
+
+    '
+  risk_if_ignored: 'The first outward Mathlib contribution remains a local patch only,
+    so MATHLIB_PRS_OVERVIEW.md cannot gain a real PR URL and CLAY-MATHLIB-PR-LANDING-001
+    remains blocked despite successful Lean validation.
+
+    '
+  files_affected:
+  - C:\Users\lluis\Downloads\mathlib4
+  - mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch
+  - MATHLIB_PRS_OVERVIEW.md
+  - mathlib_pr_drafts/INDEX.md
+  converts_to_task: MATHLIB-OPEN-PR-001
+  validation: 'One of these succeeds: `git ls-remote https://github.com/lluiseriksson/mathlib4.git
+    HEAD`, or `gh auth status` plus `gh repo fork leanprover-community/mathlib4`.
+    Then branch `eriksson/det-exp-trace-fin-one` can be pushed and a PR URL recorded.
 
     '

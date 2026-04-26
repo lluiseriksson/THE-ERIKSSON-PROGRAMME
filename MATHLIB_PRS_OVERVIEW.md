@@ -15,7 +15,9 @@
 - **Documented**: copyright Apache-2.0, docstring with proof strategy + PR submission notes, closing `#print axioms` to verify no spurious axiom.
 - **Missing in packaged form**: each closes an elementary inequality / identity not currently in Mathlib in the form drafted.
 
-**Critical caveat**: **None has been built with `lake build`** against current Mathlib master. The workspace producing them lacks `lake`. Tactic-name drift (`pow_le_pow_left`, `lt_div_iff₀`, `Real.log_inv`, `Real.exp_nat_mul`, `mul_le_mul_of_nonneg_left`) is real and will require non-trivial polishing per file before any PR opens.
+**Current exception (2026-04-26)**: `MatrixExp_DetTrace_DimOne_PR.lean` has now been polished in a real Mathlib checkout and built successfully against Mathlib master commit `80a6231dcf`. The local Mathlib branch is `eriksson/det-exp-trace-fin-one` at commit `cd3b69baae`, and the patch artifact is `mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch`. PR opening is blocked on GitHub publishing setup: no `gh` executable is available, Codex has no upstream push permission, and `https://github.com/lluiseriksson/mathlib4.git` is not reachable as a fork.
+
+**Remaining caveat**: the other drafts have not yet been built with `lake build` against current Mathlib master. Tactic-name drift (`pow_le_pow_left`, `lt_div_iff₀`, `Real.log_inv`, `Real.exp_nat_mul`, `mul_le_mul_of_nonneg_left`) is real and will require non-trivial polishing per file before any PR opens.
 
 ---
 
@@ -127,11 +129,11 @@ Total: **9-10 PRs** (depending on how the coordinated pairs are packaged).
 
 ---
 
-## 4. Status (2026-04-25)
+## 4. Status (2026-04-26)
 
 | File | Workspace produced | `lake build` verified | Mathlib namespace collision checked |
 |---|---|---|---|
-| `MatrixExp_DetTrace_DimOne_PR.lean` | Yes | **No** | No |
+| `MatrixExp_DetTrace_DimOne_PR.lean` | Yes | **Yes** — Mathlib master `80a6231dcf`; module build and full `lake build` passed; local commit `cd3b69baae` | **Yes** — TODO still present before patch; theorem name absent before insertion |
 | `KlarnerBFSBound_PR.lean` | Yes | **No** | No |
 | `BrydgesKennedyBound_PR.lean` | Yes | **No** | No |
 | `LogTwoLowerBound_PR.lean` | Yes | **No** | No |
@@ -152,7 +154,9 @@ Total: **9-10 PRs** (depending on how the coordinated pairs are packaged).
 | `LogOneAddLeSelf_PR.lean` | Yes | **No** | No |
 | `LogLtSelf_PR.lean` | Yes | **No** | No |
 
-**No file is ready for PR submission until the corresponding row above shows three "Yes".**
+`MatrixExp_DetTrace_DimOne_PR.lean` is technically ready as a patch, but the PR URL is still **blocked** on fork/auth setup. No PR has been opened yet.
+
+**No other file is ready for PR submission until the corresponding row above shows three "Yes".**
 
 ---
 

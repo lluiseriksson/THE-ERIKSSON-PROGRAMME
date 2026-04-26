@@ -371,10 +371,10 @@ tasks:
   - 'PARTIAL by Codex at 2026-04-26T07:56:20Z: v2.50.0 first-deletion primitive landed
     in LatticeAnimalCount.lean; `firstDeleteCode1296_spec` and `firstDelete1296_mem_erase_root`
     are oracle-clean. Full recursive deletion / anchored word decoder remains open.'
-  - 'PARTIAL extension by Codex at 2026-04-26T08:02:30Z: added raw residual
-    `firstDeleteResidual1296`, proved residual card `k - 1`, and proved root
-    remains in the residual. The next blocker is preserving preconnectedness
-    after deletion; arbitrary first-shell deletion is not enough.'
+  - 'PARTIAL extension by Codex at 2026-04-26T08:02:30Z: added raw residual `firstDeleteResidual1296`,
+    proved residual card `k - 1`, and proved root remains in the residual. The next
+    blocker is preserving preconnectedness after deletion; arbitrary first-shell deletion
+    is not enough.'
   dispatch_count: 11
   dispatched_at: '2026-04-26T07:46:53Z'
   dispatched_to: Codex
@@ -445,10 +445,10 @@ tasks:
 - id: CLAY-MATHLIB-PR-LANDING-001
   title: Land first Mathlib PR — MatrixExp_DetTrace_DimOne_PR.lean
   owner: Codex
-  status: READY
+  status: BLOCKED
   priority: 7
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T06:29:41Z'
+  updated_at: '2026-04-26T08:26:40Z'
   required_files:
   - mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean
   - MATHLIB_SUBMISSION_PLAYBOOK.md
@@ -488,7 +488,21 @@ tasks:
     to LogTwoLowerBound_PR.lean (INDEX.md Priority 2.1 — full PASS audit). MatrixExp
     remains the second submission target after CODEX-FIX-MATHLIB-DRAFTS-001 lands.
     See REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001.'
-  dispatch_count: 1
+  - Dispatched to Codex at 2026-04-26T08:06:42Z
+  - 'PARTIAL technical success by Codex at 2026-04-26T08:26:40Z: MatrixExp_DetTrace_DimOne_PR.lean
+    was repaired from the Cowork-noted sorry state; the theorem was inserted into
+    a fresh Mathlib checkout at C:\Users\lluis\Downloads\mathlib4 on branch eriksson/det-exp-trace-fin-one
+    and committed locally as cd3b69baae. Validation passed: `lake build Mathlib.Analysis.Normed.Algebra.MatrixExponential`,
+    full `lake build`, and `#print axioms Matrix.det_exp_eq_exp_trace_fin_one` = [propext,
+    Classical.choice, Quot.sound]. Patch artifact: mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch.'
+  - 'BLOCKED publishing by Codex at 2026-04-26T08:26:40Z: no PR was opened because
+    GitHub publishing setup is unavailable in this environment. `gh` is not installed,
+    Codex has no push permission to leanprover-community/mathlib4, and https://github.com/lluiseriksson/mathlib4.git
+    is not reachable as a fork. REC-MATHLIB-FORK-PR-AUTH-001 and MATHLIB-OPEN-PR-001
+    record the exact unblocker.'
+  dispatch_count: 2
+  dispatched_at: '2026-04-26T08:06:42Z'
+  dispatched_to: Codex
 - id: COWORK-MATHLIB-PR-DRAFT-AUDIT-001
   title: 'Cowork: audit the 17-20 Mathlib PR drafts before CLAY-MATHLIB-PR-LANDING-001'
   owner: Cowork
@@ -549,6 +563,42 @@ tasks:
   dispatched_at: '2026-04-26T06:36:58Z'
   dispatched_to: Cowork
   dispatch_count: 1
+- id: COWORK-AUDIT-CLAY-MATHLIB-PR-LANDING-001
+  title: 'Cowork: audit MatrixExp Mathlib PR landing blocker'
+  owner: Cowork
+  status: READY
+  priority: 3
+  created_at: '2026-04-26T08:26:40Z'
+  updated_at: '2026-04-26T08:32:00Z'
+  required_files:
+  - MATHLIB_PRS_OVERVIEW.md
+  - mathlib_pr_drafts/INDEX.md
+  - mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean
+  - mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch
+  - registry/agent_tasks.yaml
+  - registry/recommendations.yaml
+  - dashboard/agent_state.json
+  objective: 'Audit the CLAY-MATHLIB-PR-LANDING-001 outcome: verify that MatrixExp_DetTrace_DimOne_PR.lean
+    has no `sorry`, includes a closing `#print axioms`, records the local Mathlib
+    branch/commit/patch, and honestly marks PR publication as blocked rather than
+    claiming an upstream PR URL.
+
+    '
+  validation:
+  - grep -n "sorry" mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean returns nothing
+  - mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean contains "#print axioms Matrix.det_exp_eq_exp_trace_fin_one"
+  - MATHLIB_PRS_OVERVIEW.md records local commit cd3b69baae and no fake PR URL
+  - registry/recommendations.yaml contains REC-MATHLIB-FORK-PR-AUTH-001
+  stop_if:
+  - Any document claims the Mathlib PR is open without a URL
+  - The patch artifact is missing
+  next_agent: Codex
+  notes:
+  - Created by Codex at 2026-04-26T08:26:40Z as the audit handoff for the blocked
+    first Mathlib submission.
+  - Dispatched to Cowork at 2026-04-26T08:30:17Z
+  - Reset to READY by Codex at 2026-04-26T08:32:00Z; previous dispatch was a local
+    selector validation, not an actual GUI handoff.
 - id: COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001
   title: 'Cowork: verify EXPERIMENTAL_AXIOMS_AUDIT.md against current YangMills/Experimental/
     tree'
@@ -716,10 +766,10 @@ tasks:
 - id: CODEX-FIX-MATHLIB-DRAFTS-001
   title: 'Codex: repair 4 FAIL items in mathlib_pr_drafts/ (per COWORK-MATHLIB-PR-DRAFT-AUDIT-001)'
   owner: Codex
-  status: IN_PROGRESS
+  status: PARTIAL
   priority: 4
   created_at: '2026-04-26T09:00:00Z'
-  updated_at: '2026-04-26T07:12:57Z'
+  updated_at: '2026-04-26T08:34:00Z'
   required_files:
   - mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean
   - mathlib_pr_drafts/AnimalCount.lean
@@ -757,6 +807,10 @@ tasks:
     target. If MatrixExp cannot be repaired today, REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001
     fires automatically: first submission becomes LogTwoLowerBound_PR.lean.'
   - Dispatched to Codex at 2026-04-26T07:12:57Z
+  - 'PARTIAL by Codex at 2026-04-26T08:34:00Z: MatrixExp_DetTrace_DimOne_PR.lean
+    repaired and built in Mathlib checkout at local commit cd3b69baae. Remaining:
+    move AnimalCount.lean, PartitionLatticeMobius.lean, and PiDisjointFactorisation.lean
+    into an explicit inactive/cancelled section of INDEX.md.'
   dispatched_at: '2026-04-26T07:12:57Z'
   dispatched_to: Codex
   dispatch_count: 1
@@ -785,6 +839,37 @@ tasks:
   next_agent: Cowork
   notes:
   - Long-pending hygiene item from Cowork session 2026-04-26T05:00:00Z.
+- id: MATHLIB-OPEN-PR-001
+  title: Open Mathlib PR for det_exp_eq_exp_trace_fin_one after fork/auth setup
+  owner: Codex
+  status: BLOCKED
+  priority: 4
+  created_at: '2026-04-26T08:26:40Z'
+  updated_at: '2026-04-26T08:26:40Z'
+  required_files:
+  - C:\Users\lluis\Downloads\mathlib4
+  - mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch
+  - MATHLIB_PRS_OVERVIEW.md
+  - mathlib_pr_drafts/INDEX.md
+  objective: 'After a reachable fork or GitHub PR tooling exists, push the local Mathlib
+    branch `eriksson/det-exp-trace-fin-one` from C:\Users\lluis\Downloads\mathlib4,
+    open a PR against leanprover-community/mathlib4, and record the PR URL in MATHLIB_PRS_OVERVIEW.md
+    and mathlib_pr_drafts/INDEX.md.
+
+    '
+  validation:
+  - git -C C:\Users\lluis\Downloads\mathlib4 status --short reports clean
+  - git -C C:\Users\lluis\Downloads\mathlib4 push <fork> eriksson/det-exp-trace-fin-one
+    succeeds
+  - A Mathlib PR URL exists and is recorded in MATHLIB_PRS_OVERVIEW.md
+  - mathlib_pr_drafts/INDEX.md records the PR URL
+  stop_if:
+  - No reachable fork or authenticated GitHub PR mechanism exists
+  - Upstream Mathlib has already closed the n=1 det-exp-trace TODO
+  next_agent: Cowork
+  notes:
+  - Created by Codex at 2026-04-26T08:26:40Z. Local Mathlib commit cd3b69baae and
+    patch artifact are ready; only publication is blocked.
 - id: META-GENERATE-TASKS-001
   title: Generate new actionable tasks when the queue is empty
   owner: Any
@@ -838,14 +923,23 @@ tasks:
   updated_at: '2026-04-26T11:00:00Z'
   audit_verdict: AUDIT_PASS
   audit_evidence:
-  - 'Retirement real Lean-side: LieDerivativeRegularity.lean lines 24-34 — `def generatorMatrix N_c i := 0`, theorems prove via `simp [generatorMatrix]`'
-  - 'Fresh grep ^\s*axiom YangMills/Experimental/ confirms generatorMatrix/gen_skewHerm/gen_trace_zero no longer in axiom output'
-  - 'Docstring lines 18-23 explicitly disclose vacuity ("does not currently require basis spanning or linear-independence data; The zero family therefore retires the old data axiom without strengthening any downstream claim")'
-  - 'Downstream consumers verified via grep: 4 files all inside YangMills/Experimental/ (LieDerivativeRegularity, LieDerivReg_v4, GeneratorAxiomsDimOne, DirichletConcrete). Clay chain (ClayCore/) does NOT touch generatorMatrix.'
-  - 'KNOWN_ISSUES.md §1.3 added with full vacuity caveat, docstring quotation, NC1-WITNESS analogy, follow-up task pointer'
-  - 'Stop-conditions both NOT TRIGGERED'
+  - 'Retirement real Lean-side: LieDerivativeRegularity.lean lines 24-34 — `def generatorMatrix
+    N_c i := 0`, theorems prove via `simp [generatorMatrix]`'
+  - Fresh grep ^\s*axiom YangMills/Experimental/ confirms generatorMatrix/gen_skewHerm/gen_trace_zero
+    no longer in axiom output
+  - Docstring lines 18-23 explicitly disclose vacuity ("does not currently require
+    basis spanning or linear-independence data; The zero family therefore retires
+    the old data axiom without strengthening any downstream claim")
+  - 'Downstream consumers verified via grep: 4 files all inside YangMills/Experimental/
+    (LieDerivativeRegularity, LieDerivReg_v4, GeneratorAxiomsDimOne, DirichletConcrete).
+    Clay chain (ClayCore/) does NOT touch generatorMatrix.'
+  - KNOWN_ISSUES.md §1.3 added with full vacuity caveat, docstring quotation, NC1-WITNESS
+    analogy, follow-up task pointer
+  - Stop-conditions both NOT TRIGGERED
   honesty_observation:
-  - 'Same vacuity shape as NC1-WITNESS Finding 003: technically valid (3 axioms → 3 theorems), vacuous (zero matrix family). External descriptions must NOT advertise this as a Clay-grade math advance.'
+  - 'Same vacuity shape as NC1-WITNESS Finding 003: technically valid (3 axioms →
+    3 theorems), vacuous (zero matrix family). External descriptions must NOT advertise
+    this as a Clay-grade math advance.'
   required_files:
   - YangMills/Experimental/LieSUN/LieDerivativeRegularity.lean
   - UNCONDITIONALITY_LEDGER.md

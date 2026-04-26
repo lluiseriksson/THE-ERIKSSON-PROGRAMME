@@ -9,6 +9,55 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff — 2026-04-26 — MatrixExp Mathlib patch built, PR publication blocked
+
+**Baton owner**: Cowork
+**Task**: `CLAY-MATHLIB-PR-LANDING-001`
+**Status**: `BLOCKED` after technical partial success
+
+Codex repaired `mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean` from
+the earlier Cowork-noted draft state and tested the theorem in a fresh Mathlib
+checkout:
+
+- Mathlib checkout: `C:\Users\lluis\Downloads\mathlib4`
+- Branch: `eriksson/det-exp-trace-fin-one`
+- Local commit: `cd3b69baae`
+- Mathlib base: `80a6231dcf`
+- Patch artifact:
+  `mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch`
+
+Validation passed:
+
+- `lake build Mathlib.Analysis.Normed.Algebra.MatrixExponential`
+- full `lake build`
+- `#print axioms Matrix.det_exp_eq_exp_trace_fin_one` printed
+  `[propext, Classical.choice, Quot.sound]`
+
+Publishing blocker:
+
+- `gh` is not installed.
+- Codex has no push permission to `leanprover-community/mathlib4`.
+- `https://github.com/lluiseriksson/mathlib4.git` is not reachable as a fork.
+
+No Mathlib PR URL exists yet. `CLAY-MATHLIB-PR-LANDING-001` is therefore
+correctly marked `BLOCKED`, not `DONE`. New recommendation:
+`REC-MATHLIB-FORK-PR-AUTH-001`; new blocked follow-up task:
+`MATHLIB-OPEN-PR-001`.
+
+> **Next exact instruction**:
+> Cowork, audit `CLAY-MATHLIB-PR-LANDING-001`. Read
+> `MATHLIB_PRS_OVERVIEW.md`, `mathlib_pr_drafts/INDEX.md`,
+> `mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean`,
+> `mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch`,
+> `registry/agent_tasks.yaml`, `registry/recommendations.yaml`, and
+> `dashboard/agent_state.json`. Verify that the MatrixExp theorem is no-sorry
+> in the draft, that the local Mathlib build evidence is recorded, and that
+> the missing PR URL is represented as a publishing blocker rather than a fake
+> completion. If the audit passes, keep `MATHLIB-OPEN-PR-001` blocked until
+> a fork/auth path exists; if it fails, create a Codex repair task.
+
+---
+
 ## COMMUNICATION_CONTRACT
 
 This contract is **binding** for every Codex and Cowork session.

@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-04-26 (Phase 480 — 20 PR-ready files, round number)
 **Author:** Lluis Eriksson + Cowork agent (Claude)
-**Status:** All files produced in workspace. **None has been built with `lake build`** against current Mathlib master.
+**Status:** All files produced in workspace. `MatrixExp_DetTrace_DimOne_PR.lean` has been built against current Mathlib master; the remaining drafts still require a real Mathlib build pass.
 
 ---
 
@@ -17,7 +17,15 @@ Each file is:
 - closed with `#print axioms` to verify no spurious axioms slipped in
 - elementary in proof technique (`linarith` / `nlinarith` / one or two existing Mathlib lemmas composed)
 
-These files are **not yet built** against Mathlib master because the workspace lacks `lake`. Each file flags its `Status (date)` line. The first concrete submission step for any of them is `lake build` in a Mathlib checkout.
+Except for `MatrixExp_DetTrace_DimOne_PR.lean`, these files are **not yet built** against Mathlib master. Each file flags its `Status (date)` line. The first concrete submission step for each unbuilt draft is `lake build` in a Mathlib checkout.
+
+`MatrixExp_DetTrace_DimOne_PR.lean` was polished on 2026-04-26 in
+`C:\Users\lluis\Downloads\mathlib4` on branch
+`eriksson/det-exp-trace-fin-one`; local commit `cd3b69baae` builds on
+Mathlib master `80a6231dcf`. The patch artifact is
+`0001-feat-prove-det-exp-trace-for-1x1-matrices.patch`. PR opening is
+blocked on GitHub publishing setup: no `gh` executable, no upstream push
+permission, and no reachable `lluiseriksson/mathlib4` fork.
 
 ---
 
@@ -91,7 +99,7 @@ These predate the current PR sweep and target the F3 lattice-animal counting inf
 
 **Priority 1** (literal Mathlib TODO, biggest impact):
 
-1. `MatrixExp_DetTrace_DimOne_PR.lean` — closes `n=1` of the open TODO.
+1. `MatrixExp_DetTrace_DimOne_PR.lean` — closes `n=1` of the open TODO. Local patch built; PR URL pending fork/auth setup.
 
 **Priority 2** (foundational `Real.exp` / `Real.log` bounds, individually small but collectively tighten the API):
 
@@ -131,11 +139,11 @@ Before opening any PR upstream:
 
 ---
 
-## §5. Verification status (2026-04-25)
+## §5. Verification status (2026-04-26)
 
 | File | Workspace produced | `lake build` verified | Mathlib namespace collision checked |
 |---|---|---|---|
-| `MatrixExp_DetTrace_DimOne_PR.lean` | Yes | **No** | No |
+| `MatrixExp_DetTrace_DimOne_PR.lean` | Yes | **Yes** — Mathlib master `80a6231dcf`; module and full build passed; local commit `cd3b69baae` | **Yes** — TODO present and theorem name absent before patch |
 | `KlarnerBFSBound_PR.lean` | Yes | **No** | No |
 | `BrydgesKennedyBound_PR.lean` | Yes | **No** | No |
 | `LogTwoLowerBound_PR.lean` | Yes | **No** | No |
@@ -156,13 +164,17 @@ Before opening any PR upstream:
 | `LogOneAddLeSelf_PR.lean` | Yes | **No** | No |
 | `LogLtSelf_PR.lean` | Yes | **No** | No |
 
-**No file is ready for PR submission until the corresponding row above shows three "Yes".**
+`MatrixExp_DetTrace_DimOne_PR.lean` is ready as a built local patch, but
+the PR URL is still blocked on GitHub publishing setup. No PR has been
+opened yet.
+
+**No other file is ready for PR submission until the corresponding row above shows three "Yes".**
 
 ---
 
 ## §6. Honest caveat
 
-These are **drafts produced inside an LLM-assisted session without access to a Mathlib build environment**. The proofs are short and elementary, but standard pitfalls remain:
+Except for `MatrixExp_DetTrace_DimOne_PR.lean`, these are **drafts produced inside an LLM-assisted session without access to a Mathlib build environment**. The proofs are short and elementary, but standard pitfalls remain:
 
 - A lemma name might exist in Mathlib already under a different signature.
 - A tactic (`pow_le_pow_left`, `lt_div_iff₀`) may have been renamed in the version drift.

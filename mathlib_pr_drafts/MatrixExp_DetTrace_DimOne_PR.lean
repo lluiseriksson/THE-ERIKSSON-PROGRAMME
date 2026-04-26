@@ -12,7 +12,7 @@ import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
 
 This module proves the **`n = 1` case of the Mathlib TODO**
 
-  `Matrix.det (NormedSpace.exp ℂ A) = Complex.exp (Matrix.trace A)`
+  `Matrix.det (NormedSpace.exp A) = NormedSpace.exp (Matrix.trace A)`
 
 listed at `Mathlib/Analysis/Normed/Algebra/MatrixExponential.lean`
 line 57.
@@ -26,7 +26,7 @@ stepping stone toward the general result.
 For `A : Matrix (Fin 1) (Fin 1) ℂ`:
 
 1. `A = Matrix.diagonal (fun _ => A 0 0)` (any 1×1 matrix is diagonal).
-2. `NormedSpace.exp ℂ (Matrix.diagonal v) = Matrix.diagonal (Complex.exp ∘ v)`
+2. `NormedSpace.exp (Matrix.diagonal v) = Matrix.diagonal (NormedSpace.exp ∘ v)`
    (by `Matrix.exp_diagonal` from Mathlib).
 3. `Matrix.det (Matrix.diagonal v) = ∏ i, v i` for any function `v`.
 4. For `Fin 1`, `∏ i, f i = f 0`.
@@ -36,18 +36,27 @@ Combining: `det (exp A) = exp (A 0 0) = exp (trace A)`.
 
 ## PR submission notes
 
-This file is suitable for direct submission to Mathlib at
-`Mathlib/Analysis/Normed/Algebra/MatrixExponential.lean`. It uses
-only standard Mathlib imports. The exact form of `Matrix.exp_diagonal`
-and the corresponding Mathlib API names should be verified against
-the current Mathlib master branch before submission.
+This file has been tested as a direct insertion into
+`Mathlib/Analysis/Normed/Algebra/MatrixExponential.lean`, immediately
+after `Matrix.exp_diagonal`.
 
-**Status (2026-04-25)**: this file was produced in the workspace
-but has NOT been built with `lake build`. It is a polished
-PR-ready candidate that requires:
-1. `lake build` to type-check on Mathlib master.
-2. PR description in `mathlib_pr_drafts/PR_DESCRIPTION.md`.
-3. Mathlib contribution-guidelines compliance check.
+**Status (2026-04-26)**:
+
+1. Built against Mathlib master commit `80a6231dcf`
+   (`feat(Analysis/Calculus/Deriv): add deriv_const_mul_id' (#38171)`).
+2. `lake build Mathlib.Analysis.Normed.Algebra.MatrixExponential` passed.
+3. Full `lake build` in the Mathlib checkout passed.
+4. `#print axioms Matrix.det_exp_eq_exp_trace_fin_one` prints
+   `[propext, Classical.choice, Quot.sound]`.
+5. Local Mathlib branch:
+   `C:\Users\lluis\Downloads\mathlib4`, branch
+   `eriksson/det-exp-trace-fin-one`, commit `cd3b69baae`.
+6. Patch artifact:
+   `mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch`.
+
+PR submission is blocked only on GitHub publishing setup: this environment
+has no `gh` executable, no push permission to upstream Mathlib, and no
+reachable fork at `https://github.com/lluiseriksson/mathlib4.git`.
 -/
 
 namespace Matrix
@@ -74,19 +83,15 @@ lemma fin_one_eq_diagonal_zero_zero {α : Type*} [Zero α] [DecidableEq (Fin 1)]
     matrix-exponential determinant identity. The general case is
     a Mathlib TODO at `MatrixExponential.lean:57`. -/
 theorem det_exp_eq_exp_trace_fin_one (A : Matrix (Fin 1) (Fin 1) ℂ) :
-    Matrix.det (NormedSpace.exp ℂ A) = Complex.exp (Matrix.trace A) := by
-  -- Rewrite A as diagonal.
-  have h_A : A = Matrix.diagonal (fun _ : Fin 1 => A 0 0) :=
-    fin_one_eq_diagonal_zero_zero A
-  -- Compute trace = A 0 0 (using Matrix.trace_fin_one).
-  have h_trace : Matrix.trace A = A 0 0 := Matrix.trace_fin_one A
-  -- Goal: det (exp A) = exp (A 0 0).
-  rw [h_trace, h_A]
-  -- exp of diagonal is diagonal of exp componentwise.
-  rw [Matrix.exp_diagonal]
-  -- det of 1×1 diagonal is the single entry.
-  rw [Matrix.det_fin_one]
-  -- The (0, 0) entry of the diagonal is the value at 0.
-  simp [Matrix.diagonal]
+    det (NormedSpace.exp A) = NormedSpace.exp (trace A) := by
+  rw [show A = diagonal (fun _ : Fin 1 => A 0 0) by
+    ext i j
+    fin_cases i
+    fin_cases j
+    simp [diagonal]]
+  rw [exp_diagonal]
+  simp [trace_fin_one, diagonal]
+
+#print axioms Matrix.det_exp_eq_exp_trace_fin_one
 
 end Matrix

@@ -1,0 +1,34 @@
+From cd3b69baae9cd81a572a3720f2372655eca39038 Mon Sep 17 00:00:00 2001
+From: lluiseriksson <lluiseriksson@gmail.com>
+Date: Sun, 26 Apr 2026 10:24:15 +0200
+Subject: [PATCH] feat: prove det exp trace for 1x1 matrices
+
+---
+ .../Analysis/Normed/Algebra/MatrixExponential.lean    | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/Mathlib/Analysis/Normed/Algebra/MatrixExponential.lean b/Mathlib/Analysis/Normed/Algebra/MatrixExponential.lean
+index 9cceb3f8b2..2cfb4a1b0f 100644
+--- a/Mathlib/Analysis/Normed/Algebra/MatrixExponential.lean
++++ b/Mathlib/Analysis/Normed/Algebra/MatrixExponential.lean
+@@ -82,6 +82,17 @@ variable [Fintype m] [DecidableEq m] [Fintype n] [DecidableEq n] [∀ i, Fintype
+ theorem exp_diagonal [Algebra ℚ 𝔸] (v : m → 𝔸) : exp (diagonal v) = diagonal (exp v) := by
+   simp_rw [exp_eq_tsum_rat, diagonal_pow, ← diagonal_smul, ← diagonal_tsum]
+ 
++/-- The `1 × 1` case of `det (exp A) = exp (trace A)`. -/
++theorem det_exp_eq_exp_trace_fin_one (A : Matrix (Fin 1) (Fin 1) ℂ) :
++    det (exp A) = exp (trace A) := by
++  rw [show A = diagonal (fun _ : Fin 1 => A 0 0) by
++    ext i j
++    fin_cases i
++    fin_cases j
++    simp [diagonal]]
++  rw [exp_diagonal]
++  simp [trace_fin_one, diagonal]
++
+ theorem exp_blockDiagonal [Algebra ℚ 𝔸] (v : m → Matrix n n 𝔸) :
+     exp (blockDiagonal v) = blockDiagonal (exp v) := by
+   simp_rw [exp_eq_tsum_rat, ← blockDiagonal_pow, ← blockDiagonal_smul, ← blockDiagonal_tsum]
+-- 
+2.43.0.windows.1
+
