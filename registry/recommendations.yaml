@@ -3,27 +3,26 @@ recommendations:
   author: Cowork
   status: OPEN
   priority: 2
-  title: 'Fix 4 FAIL items in mathlib_pr_drafts/ before any upstream submission'
+  title: Fix 4 FAIL items in mathlib_pr_drafts/ before any upstream submission
   recommendation: 'Audit COWORK-MATHLIB-PR-DRAFT-AUDIT-001 found 4 of 23 files FAIL.
-    Critical: MatrixExp_DetTrace_DimOne_PR.lean (intended Priority-1 first
-    submission) has unresolved `sorry` on lines 82 and 91 plus no `#print axioms`.
-    The 3 F-series files (AnimalCount, PartitionLatticeMobius, PiDisjointFactorisation)
-    have `sorry` and no `#print axioms` and are described as deprioritised in
-    INDEX.md §2 — they should be marked CANCELLED rather than fixed. Codex must
-    (a) repair MatrixExp_DetTrace_DimOne_PR.lean (close both sorries with the
-    elementary n=1 case proof + add `#print axioms` line); (b) move the 3 F-series
-    files into an explicit "Inactive / Cancelled" section of INDEX.md.
+    Critical: MatrixExp_DetTrace_DimOne_PR.lean (intended Priority-1 first submission)
+    has unresolved `sorry` on lines 82 and 91 plus no `#print axioms`. The 3 F-series
+    files (AnimalCount, PartitionLatticeMobius, PiDisjointFactorisation) have `sorry`
+    and no `#print axioms` and are described as deprioritised in INDEX.md §2 — they
+    should be marked CANCELLED rather than fixed. Codex must (a) repair MatrixExp_DetTrace_DimOne_PR.lean
+    (close both sorries with the elementary n=1 case proof + add `#print axioms` line);
+    (b) move the 3 F-series files into an explicit "Inactive / Cancelled" section
+    of INDEX.md.
 
     '
   reason: 'Shipping a Mathlib PR with `sorry` would be a serious reputational error
-    against the Mathlib community. The 19 PASS files are clean and genuinely
-    PR-ready, but cannot be submitted in INDEX.md priority order while the
-    Priority-1 file is unfixed.
+    against the Mathlib community. The 19 PASS files are clean and genuinely PR-ready,
+    but cannot be submitted in INDEX.md priority order while the Priority-1 file is
+    unfixed.
 
     '
-  risk_if_ignored: 'CLAY-MATHLIB-PR-LANDING-001 ships an unfit PR with `sorry`,
-    triggering immediate Mathlib reviewer rejection and damaging future submission
-    prospects.
+  risk_if_ignored: 'CLAY-MATHLIB-PR-LANDING-001 ships an unfit PR with `sorry`, triggering
+    immediate Mathlib reviewer rejection and damaging future submission prospects.
 
     '
   files_affected:
@@ -33,45 +32,42 @@ recommendations:
   - mathlib_pr_drafts/PiDisjointFactorisation.lean
   - mathlib_pr_drafts/INDEX.md
   converts_to_task: CODEX-FIX-MATHLIB-DRAFTS-001
-  validation: 'After repair, mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean
-    contains zero `sorry` and ends with `#print axioms` reducing to
-    `[propext, Classical.choice, Quot.sound]`. INDEX.md gains an "Inactive /
-    Cancelled" section listing the 3 F-series with reason "superseded by Tier A
-    PRs / sorry-incomplete".
+  validation: 'After repair, mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean contains
+    zero `sorry` and ends with `#print axioms` reducing to `[propext, Classical.choice,
+    Quot.sound]`. INDEX.md gains an "Inactive / Cancelled" section listing the 3 F-series
+    with reason "superseded by Tier A PRs / sorry-incomplete".
 
     '
-
 - id: REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001
   author: Cowork
   status: OPEN
   priority: 2
-  title: 'Redirect CLAY-MATHLIB-PR-LANDING-001 first submission target to LogTwoLowerBound_PR.lean'
+  title: Redirect CLAY-MATHLIB-PR-LANDING-001 first submission target to LogTwoLowerBound_PR.lean
   recommendation: 'Until CODEX-FIX-MATHLIB-DRAFTS-001 lands, CLAY-MATHLIB-PR-LANDING-001
-    should target LogTwoLowerBound_PR.lean (INDEX.md Priority 2.1 — described as
-    "tiny, self-contained, sanity-check submission"). All four audit criteria
-    PASS. After it lands and the Mathlib PR pipeline is established, the second
-    submission can target the repaired MatrixExp_DetTrace_DimOne_PR.lean.
+    should target LogTwoLowerBound_PR.lean (INDEX.md Priority 2.1 — described as "tiny,
+    self-contained, sanity-check submission"). All four audit criteria PASS. After
+    it lands and the Mathlib PR pipeline is established, the second submission can
+    target the repaired MatrixExp_DetTrace_DimOne_PR.lean.
 
     '
-  reason: 'The repository should establish its Mathlib submission credibility
-    with a verified-clean PR before attempting the higher-impact (but currently
-    `sorry`-incomplete) MatrixExp PR.
+  reason: 'The repository should establish its Mathlib submission credibility with
+    a verified-clean PR before attempting the higher-impact (but currently `sorry`-incomplete)
+    MatrixExp PR.
 
     '
-  risk_if_ignored: 'First submission fails due to `sorry`; reviewer relationship
-    starts on the wrong foot.
+  risk_if_ignored: 'First submission fails due to `sorry`; reviewer relationship starts
+    on the wrong foot.
 
     '
   files_affected:
   - registry/agent_tasks.yaml (CLAY-MATHLIB-PR-LANDING-001)
   - MATHLIB_PRS_OVERVIEW.md
-  converts_to_task: 'Inline edit to CLAY-MATHLIB-PR-LANDING-001 task notes (no new task needed)'
+  converts_to_task: Inline edit to CLAY-MATHLIB-PR-LANDING-001 task notes (no new
+    task needed)
   validation: 'CLAY-MATHLIB-PR-LANDING-001 task notes reference LogTwoLowerBound_PR.lean
-    as the first submission target, with MatrixExp deferred to a follow-up after
-    CODEX-FIX-MATHLIB-DRAFTS-001.
+    as the first submission target, with MatrixExp deferred to a follow-up after CODEX-FIX-MATHLIB-DRAFTS-001.
 
     '
-
 - id: REC-COWORK-LONG-CI-LAKE-BUILD-001
   author: Cowork
   status: OPEN
