@@ -1342,6 +1342,42 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_root
     plaquetteGraphPreconnectedSubsetsAnchoredCard_card_eq hX
   omega
 
+/-- A nontrivial walk has a first adjacent vertex. -/
+theorem simpleGraph_walk_exists_adj_start_of_ne
+    {V : Type} {G : SimpleGraph V} {u v : V}
+    (p : G.Walk u v) (huv : u ≠ v) :
+    ∃ w, G.Adj u w := by
+  cases p with
+  | nil =>
+      exact False.elim (huv rfl)
+  | cons hAdj _ =>
+      exact ⟨_, hAdj⟩
+
+/-- A non-singleton anchored bucket contains a plaquette adjacent to the root,
+still inside the same bucket. This is the first local expansion step needed by
+BFS/Klarner decoders. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighbor
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hk : 1 < k) :
+    ∃ z, z ∈ X ∧ (plaquetteGraph d L).Adj root z := by
+  have hroot : root ∈ X :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem hX
+  have hpre :
+      ((plaquetteGraph d L).induce {x | x ∈ X}).Preconnected :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected hX
+  obtain ⟨y, hy, hyne⟩ :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_root hX hk
+  obtain ⟨p⟩ := hpre ⟨root, hroot⟩ ⟨y, hy⟩
+  have hne :
+      (⟨root, hroot⟩ : {x : ConcretePlaquette d L // x ∈ X}) ≠
+        ⟨y, hy⟩ := by
+    intro h
+    exact hyne (congrArg Subtype.val h).symm
+  obtain ⟨z, hz⟩ := simpleGraph_walk_exists_adj_start_of_ne p hne
+  exact ⟨z.1, z.2, SimpleGraph.induce_adj.mp hz⟩
+
 /-- The anchored graph-animal bucket of size zero is empty, because every
 bucket element must contain the root. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
@@ -2218,6 +2254,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_card_pos
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_root
+#print axioms simpleGraph_walk_exists_adj_start_of_ne
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighbor
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one

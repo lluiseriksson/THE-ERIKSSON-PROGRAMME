@@ -1,3 +1,44 @@
+# v2.40.0 — anchored bucket root-neighbor witness
+
+**Released: 2026-04-26**
+
+## What
+
+Added the first-step BFS witness lemmas in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    simpleGraph_walk_exists_adj_start_of_ne
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighbor
+
+The generic graph lemma says that any nontrivial walk has a first adjacent
+vertex. The anchored-bucket lemma applies this to the induced preconnected
+bucket: if `X` is an anchored bucket with `1 < k`, then there exists
+`z ∈ X` adjacent to the root in `plaquetteGraph d L`.
+
+## Why
+
+No percentage bar moves. This is a genuine local BFS/Klarner step: the
+nontrivial anchored decoder case now has a formal first expansion vertex in
+the root neighbor shell, not merely an abstract non-root member somewhere in
+the connected set.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    simpleGraph_walk_exists_adj_start_of_ne
+      []
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighbor
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.39.0 — anchored decoder reduced to nontrivial sizes
 
 **Released: 2026-04-25**
