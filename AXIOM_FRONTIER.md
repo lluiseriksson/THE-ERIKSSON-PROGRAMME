@@ -1,3 +1,55 @@
+# v2.52.0 — degree-one leaf deletion subcase for F3/Klarner
+
+**Released: 2026-04-26**
+
+## What
+
+Added the local leaf-deletion subcase in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_preconnected_of_induced_degree_one
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_induced_degree_one
+
+Commit: `<pending local>`.
+
+If `X` is an anchored preconnected bucket and `z ∈ X` has degree one in the
+induced bucket graph, Lean now proves that deleting `z` preserves
+preconnectedness of the residual induced graph.  The packaged membership
+theorem then feeds this preconnected residual directly through the v2.51
+recursive-deletion bridge, proving
+
+    X.erase z ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root (k - 1)
+
+under the explicit degree-one leaf hypothesis.
+
+## Why
+
+This is a genuine graph-combinatorics step inside `CLAY-F3-COUNT-RECURSIVE-001`,
+but it still **does not close `F3-COUNT`**.  It proves the local leaf subcase:
+degree-one deletions are safe.  The remaining hard target is the global
+root-avoiding leaf/deletion-order theorem: every nontrivial finite anchored
+preconnected bucket must supply a non-root degree-one (or otherwise safe)
+deletion, and that selection must be iterated into the full anchored word
+decoder.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed. Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_preconnected_of_induced_degree_one
+      [propext, Classical.choice, Quot.sound]
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_induced_degree_one
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axioms. No percentage bar movement. No Clay-level
+completion claim.
+
+---
+
 # v2.51.0 — conditional recursive-deletion handoff for F3/Klarner
 
 **Released: 2026-04-26**

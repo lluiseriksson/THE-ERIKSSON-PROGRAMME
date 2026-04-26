@@ -306,7 +306,7 @@ tasks:
   status: PARTIAL
   priority: 3
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T09:05:00Z'
+  updated_at: '2026-04-26T09:15:08Z'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - BLUEPRINT_F3Count.md
@@ -383,8 +383,15 @@ tasks:
     passed and both new #print axioms traces are canonical. Commit `d76b672`. F3-COUNT
     remains CONDITIONAL_BRIDGE pending a leaf/deletion-order theorem that supplies
     the preconnected residual hypothesis and a full word decoder.'
-  dispatch_count: 12
-  dispatched_at: '2026-04-26T08:39:54Z'
+  - Dispatched to Codex at 2026-04-26T08:57:01Z
+  - 'PARTIAL by Codex at 2026-04-26T09:15:08Z: v2.52.0 degree-one leaf deletion subcase
+    landed. Lean now proves deleting an induced-degree-one bucket vertex preserves
+    preconnectedness and re-enters the anchored bucket via the v2.51 bridge. `lake
+    build YangMills.ClayCore.LatticeAnimalCount` passed and both new #print axioms
+    traces are canonical. F3-COUNT remains CONDITIONAL_BRIDGE: still need a global
+    root-avoiding safe-deletion existence theorem and full anchored word decoder.'
+  dispatch_count: 13
+  dispatched_at: '2026-04-26T08:57:01Z'
   dispatched_to: Codex
 - id: CLAY-EXP-RETIRE-7-001
   title: Retire 7 easy SU(N) generator-data Experimental axioms
@@ -935,113 +942,457 @@ tasks:
   - Created by Codex at 2026-04-26T08:26:40Z. Local Mathlib commit cd3b69baae and
     patch artifact are ready; only publication is blocked.
 - id: COWORK-AUDIT-CLAY-F3-COUNT-LEAF-DELETION-001
-  title: 'Cowork: audit the leaf/deletion-order theorem when Codex lands it'
+  title: 'Cowork: audit F3 v2.52 degree-one leaf deletion subcase'
   owner: Cowork
-  status: FUTURE
+  status: DONE
   priority: 4
   created_at: '2026-04-26T13:30:00Z'
-  updated_at: '2026-04-26T13:30:00Z'
+  updated_at: '2026-04-26T16:00:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+  - 'Both new theorems present: erase_preconnected_of_induced_degree_one (line 1727)
+    + erase_mem_of_induced_degree_one (line 1784) of LatticeAnimalCount.lean'
+  - AXIOM_FRONTIER v2.52.0 lines 43-46 pin both theorems at [propext, Classical.choice,
+    Quot.sound]
+  - 'AXIOM_FRONTIER v2.52.0 line 48 explicit: No sorry, No new project axioms, No
+    percentage bar movement, No Clay-level completion claim'
+  - LEDGER row F3-COUNT correctly preserved as CONDITIONAL_BRIDGE with v2.48+v2.50+v2.51+v2.52
+    cumulative evidence (per dashboard ledger_status)
+  - 'Codex AGENT_BUS handoff explicit: "This is not the full BFS/Klarner decoder.
+    F3-COUNT remains a CONDITIONAL_BRIDGE"'
+  - 'v2.52 composes with v2.51 conditional bridge: degree-one z deletion preserves
+    preconnectedness AND residual re-enters anchored bucket family at size k-1'
+  honesty_observation: Cowork CAN refuse to close a task when evidence is absent.
+    This is AGENTS.md §3.2 ("I trust Codex" does NOT count as validation) applied
+    at the dispatch layer. First AUDIT_BLOCKED-shape outcome of session. Marking DONE
+    without evidence would replicate the overclaim pattern the vacuity-pattern tracker
+    just escalated.
+  stop_conditions_not_triggered:
+  - AXIOM_FRONTIER does NOT claim F3-COUNT closed (v2.52.0 line 48 explicit)
+  - LEDGER does NOT upgrade F3-COUNT to FORMAL_KERNEL (status remains CONDITIONAL_BRIDGE)
+  premature_dispatch_note: Dispatcher promoted FUTURE → READY at 2026-04-26T~15:00:00Z
+    without trigger having fired. The trigger requires either (a) a `^theorem` declaration
+    matching leaf/deletion-order naming in YangMills/ClayCore/LatticeAnimalCount.lean,
+    OR (b) a v2.52+ entry in AXIOM_FRONTIER.md. Neither exists as of 14:30. Cowork
+    resets to FUTURE; will auto-promote correctly when Codex actually lands the theorem.
+    Filed REC-COWORK-DISPATCHER-TRIGGER-VERIFICATION-001 to harden auto-promote logic.
+  trigger_check_at_15:00:
+  - 'grep ^theorem.*leaf|deletion_order|deletionOrder|nontrivialAnchored|preserves_preconnected|existsNonRoot
+    on LatticeAnimalCount.lean: NO MATCH'
+  - AXIOM_FRONTIER.md top entry is still v2.51.0 (line 1); no v2.52+ entry
+  - Latest Codex partial_task event (07:56:20Z) was v2.50 first-deletion primitive;
+    v2.51 conditional bridge at 08:50:40Z; nothing since
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - AXIOM_FRONTIER.md
   - UNCONDITIONALITY_LEDGER.md
   - BLUEPRINT_F3Count.md
-  objective: 'When Codex lands the leaf/deletion-order theorem (per AXIOM_FRONTIER
-    v2.51.0 lines 26–31: "every nontrivial finite anchored preconnected bucket
-    admits a non-root deletion whose residual remains preconnected"), Cowork
-    verifies (1) the theorem exists in LatticeAnimalCount.lean with a `^theorem`
-    declaration; (2) AXIOM_FRONTIER gains a v2.52+ entry with the canonical
-    oracle triple; (3) the theorem composes correctly with v2.51 conditional
-    bridge to satisfy the recursive decoder hypothesis; (4) UNCONDITIONALITY_LEDGER
-    Tier 1 row F3-COUNT moves toward FORMAL_KERNEL only if the FULL anchored
-    word decoder closes (the leaf/deletion-order theorem alone may unblock the
-    recursion but not yet close the row); (5) honest framing — F3-COUNT only
-    reaches FORMAL_KERNEL when count(n) ≤ C·K^n is actually proved end-to-end.
+  objective: 'Audit Codex v2.52.0 partial progress on the F3 recursive deletion front.
+    Verify (1) `plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_preconnected_of_induced_degree_one`
+    and `plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_induced_degree_one`
+    exist in LatticeAnimalCount.lean; (2) AXIOM_FRONTIER has a v2.52.0 entry with
+    canonical oracle traces; (3) the theorem is honestly framed as the degree-one
+    local leaf subcase, not as the global root-avoiding deletion-order theorem; (4)
+    UNCONDITIONALITY_LEDGER Tier 1 row F3-COUNT remains CONDITIONAL_BRIDGE; (5) Cowork
+    creates or activates the next Codex task for the remaining global safe-deletion
+    existence theorem / full anchored word decoder.
 
     '
   validation:
-  - 'grep ^theorem.*leaf|grep ^theorem.*deletion_order on LatticeAnimalCount.lean returns the new theorem'
-  - 'AXIOM_FRONTIER.md v2.52+ entry quotes [propext, Classical.choice, Quot.sound] for the new theorem'
-  - 'UNCONDITIONALITY_LEDGER.md row F3-COUNT either remains CONDITIONAL_BRIDGE (if word decoder still pending) or moves to FORMAL_KERNEL (only if full count(n) bound proved)'
+  - grep for both degree-one theorem names in LatticeAnimalCount.lean returns theorem
+    declarations
+  - AXIOM_FRONTIER.md v2.52+ entry quotes [propext, Classical.choice, Quot.sound]
+    for both new theorems
+  - UNCONDITIONALITY_LEDGER.md row F3-COUNT remains CONDITIONAL_BRIDGE and names the
+    remaining global root-avoiding safe-deletion theorem / full decoder
   - COWORK_RECOMMENDATIONS.md gains an audit entry referencing this task ID
   stop_if:
-  - 'AXIOM_FRONTIER claims F3-COUNT closed without the full word decoder'
-  - 'UNCONDITIONALITY_LEDGER prematurely upgrades F3-COUNT to FORMAL_KERNEL'
+  - AXIOM_FRONTIER claims F3-COUNT closed without the full word decoder
+  - UNCONDITIONALITY_LEDGER prematurely upgrades F3-COUNT to FORMAL_KERNEL
   next_agent: Codex
   notes:
-  - 'Auto-promotes FUTURE → READY when Codex marks CLAY-F3-COUNT-RECURSIVE-001 with a partial_task event mentioning "leaf/deletion-order" or commits a v2.52+ to AXIOM_FRONTIER.md.'
-  - 'This is the 5th non-vacuous Clay-reduction audit anticipated for this session.'
-
+  - Auto-promoted manually by Codex after v2.52.0 landed. This is a degree-one local
+    leaf subcase, not the full global deletion-order theorem.
+  - This is the 5th non-vacuous Clay-reduction audit anticipated for this session.
+  - Dispatched to Cowork at 2026-04-26T09:07:14Z
+  - Dispatched to Cowork at 2026-04-26T09:11:22Z
+  dispatched_at: '2026-04-26T09:11:22Z'
+  dispatched_to: Cowork
+  dispatch_count: 2
 - id: COWORK-LEDGER-FRESHNESS-AUDIT-001
   title: 'Cowork: re-grep Tier 2 axioms and reconcile against ledger row count'
   owner: Cowork
-  status: READY
+  status: DONE
   priority: 5
   created_at: '2026-04-26T13:30:00Z'
-  updated_at: '2026-04-26T13:30:00Z'
+  updated_at: '2026-04-26T14:00:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+  - Tier 2 grep count = 5 real axiom declarations (sun_haar_satisfies_lsi, variance_decay_from_bridge_and_poincare_semigroup_gap,
+    gronwall_variance_decay, lieDerivReg_all, matExp_traceless_det_one)
+  - LEDGER row claim "5 real declarations in Experimental/" matches grep output exactly
+    (5 = 5, drift = 0)
+  - 0-axiom-outside-Experimental invariant PASS — 2 non-Experimental grep hits confirmed
+    as docstring text wrapping (GNSConstruction.lean:23 "the OS\\naxiom predicates",
+    AbelianU1OSAxioms.lean:25 "every OS-style structural\\naxiom referenced")
+  - 'lieDerivReg_all consumers: 3 files identical to prior baseline (LieDerivReg_v4
+    declaration + GeneratorAxiomsDimOne + P8_PhysicalGap/SUN_DirichletCore non-Experimental
+    consumer in Phase 8 stack, NOT Clay chain)'
+  comparison_to_baseline:
+  - 'Baseline 09:30: 8 axioms; current 14:00: 5 axioms; -3 (EXP-SUN-GEN retirement
+    at v2.49.0 already audited at 11:00)'
+  - No new drift since 11:00 audit. Bookkeeping is stable.
+  recurring_cadence:
+  - First iteration of recurring 6h cadence per REC-COWORK-LEDGER-FRESHNESS-001
+  - 'Next iteration: COWORK-LEDGER-FRESHNESS-AUDIT-002 (FUTURE → READY at next META
+    fire ≈ +6h) — to be created in subsequent META-GENERATE-TASKS-001 run'
+  stop_conditions_not_triggered:
+  - 'LEDGER count diff > 1: 5 = 5, diff = 0'
+  - 'New non-Experimental axiom: NOT — same 2 docstring matches as baseline'
   required_files:
   - UNCONDITIONALITY_LEDGER.md
   - YangMills/Experimental/
   - EXPERIMENTAL_AXIOMS_AUDIT.md
   - registry/recommendations.yaml
-  objective: 'Per REC-COWORK-LEDGER-FRESHNESS-001 (priority 3), Cowork runs a
-    periodic 6h-cadence freshness audit re-counting Experimental axioms via
-    `grep -rn ''^\s*axiom\s+\w+'' YangMills/Experimental/ --include=''*.lean''`
-    and reconciling against `UNCONDITIONALITY_LEDGER.md` Tier 2 row count.
-    Current ledger claims "5 real declarations" — verify this matches reality.
-    If a new axiom has been added since the last audit (2026-04-26T11:00:00Z
-    confirmed 5), file an immediate amendment. If an axiom was retired,
-    confirm via #print axioms that no non-Experimental theorem oracle was
-    affected.
+  objective: 'Per REC-COWORK-LEDGER-FRESHNESS-001 (priority 3), Cowork runs a periodic
+    6h-cadence freshness audit re-counting Experimental axioms via `grep -rn ''^\s*axiom\s+\w+''
+    YangMills/Experimental/ --include=''*.lean''` and reconciling against `UNCONDITIONALITY_LEDGER.md`
+    Tier 2 row count. Current ledger claims "5 real declarations" — verify this matches
+    reality. If a new axiom has been added since the last audit (2026-04-26T11:00:00Z
+    confirmed 5), file an immediate amendment. If an axiom was retired, confirm via
+    #print axioms that no non-Experimental theorem oracle was affected.
 
     '
   validation:
-  - 'grep ^\s*axiom\s+\w+ YangMills/Experimental/ --include=*.lean produces a count matching the ledger Tier 2 row count'
-  - 'COWORK_RECOMMENDATIONS.md gains a freshness-audit entry with the literal grep output'
-  - 'If discrepancy found, file CODEX-LEDGER-EXPERIMENTAL-COUNT-AMEND-XXX repair task'
+  - grep ^\s*axiom\s+\w+ YangMills/Experimental/ --include=*.lean produces a count
+    matching the ledger Tier 2 row count
+  - COWORK_RECOMMENDATIONS.md gains a freshness-audit entry with the literal grep
+    output
+  - If discrepancy found, file CODEX-LEDGER-EXPERIMENTAL-COUNT-AMEND-XXX repair task
   stop_if:
-  - 'Ledger Tier 2 row count differs from grep count by more than 1 without an explaining ledger entry'
-  - 'A new non-Experimental axiom appears (would violate the 0-axiom-outside-Experimental invariant)'
+  - Ledger Tier 2 row count differs from grep count by more than 1 without an explaining
+    ledger entry
+  - A new non-Experimental axiom appears (would violate the 0-axiom-outside-Experimental
+    invariant)
   next_agent: Codex
   notes:
-  - 'Recurring 6h cadence per REC-COWORK-LEDGER-FRESHNESS-001. After this audit closes, file the next instance as FUTURE → READY at +6h.'
-  - 'Also re-verify lieDerivReg_all has not gained any non-Experimental consumer since the previous audit (2026-04-26T09:30:00Z).'
-
-- id: COWORK-VACUITY-PATTERN-TRACKER-001
-  title: 'Cowork: track vacuity-caveat count; if 3rd appears, escalate external-description hardening'
-  owner: Cowork
+  - Recurring 6h cadence per REC-COWORK-LEDGER-FRESHNESS-001. After this audit closes,
+    file the next instance as FUTURE → READY at +6h.
+  - Also re-verify lieDerivReg_all has not gained any non-Experimental consumer since
+    the previous audit (2026-04-26T09:30:00Z).
+  - Dispatched to Cowork at 2026-04-26T08:57:30Z
+  dispatched_at: '2026-04-26T08:57:30Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+- id: CODEX-DISPATCHER-TRIGGER-VERIFICATION-001
+  title: 'Codex: scripts/agent_next_instruction.py must verify auto-promote trigger
+    conditions before promoting FUTURE → READY for tasks with explicit triggers'
+  owner: Codex
   status: READY
+  priority: 3
+  created_at: '2026-04-26T15:30:00Z'
+  updated_at: '2026-04-26T15:30:00Z'
+  required_files:
+  - scripts/agent_next_instruction.py
+  - dashboard/codex_autocontinue_snapshot.py
+  - C:\Users\lluis\Downloads\codex_autocontinue.py
+  - registry/agent_tasks.yaml
+  - REC-COWORK-DISPATCHER-TRIGGER-VERIFICATION-001
+  objective: 'Per COWORK-AUDIT-CLAY-F3-COUNT-LEAF-DELETION-001 audits at 2026-04-26T15:00:00Z
+    and 15:30:00Z, the dispatcher promoted the same FUTURE task FUTURE → READY twice
+    in 30 min without verifying the trigger condition. Cowork refused to close both
+    times. The dispatcher is inadvertently routing around AGENTS.md §3.2 discipline.
+    Escalating REC-COWORK-DISPATCHER-TRIGGER-VERIFICATION-001 from recommendation
+    to actionable repair task. Modify scripts/agent_next_instruction.py task_is_actionable_for(agent,
+    task, allow_future) (lines 615-629) so that for status: FUTURE tasks with an explicit
+    notes: directive of the form "auto-promote ... when <trigger>", the function evaluates
+    <trigger> and returns True only if satisfied. Supported triggers (initial set):
+    (a) grep <pattern> <file> returns non-empty; (b) AXIOM_FRONTIER.md has entry "#
+    v<X.Y.Z>" with version >= <threshold>; (c) registry/agent_history.jsonl has a
+    recent matching event. Unsupported trigger forms log [TRIGGER_NOT_PARSED] and
+    fall back to current behaviour (no crash on unrecognized directives). Mirror change
+    into Downloads/codex_autocontinue.py per the runpy-delegation invariant.
+
+    '
+  validation:
+  - After implementation, COWORK-AUDIT-CLAY-F3-COUNT-LEAF-DELETION-001 (currently
+    FUTURE) does NOT auto-promote when next dispatcher poll fires (because grep finds
+    no leaf/deletion-order theorem)
+  - Dispatcher logs [TRIGGER_NOT_FIRED] event when it considers a FUTURE task whose
+    trigger is not satisfied
+  - Existing FUTURE tasks without explicit triggers (e.g. META-GENERATE-TASKS-001)
+    continue to behave as before (priority/age fallback when no READY exists)
+  - python scripts/agent_next_instruction.py Cowork dispatches the next non-trigger-gated
+    READY task (e.g. COWORK-LEDGER-FRESHNESS-AUDIT-002 when filed) instead of prematurely
+    promoting trigger-gated FUTURE tasks
+  stop_if:
+  - 'Implementation breaks the existing dispatcher behaviour for tasks without notes:
+    directives'
+  - The trigger-verification logic itself becomes a source of overclaim (e.g. evaluates
+    triggers in a way that always returns True without actual file inspection)
+  next_agent: Cowork
+  notes:
+  - Escalated from REC-COWORK-DISPATCHER-TRIGGER-VERIFICATION-001 (priority 3, OPEN)
+    directly to repair task because the recommendation’s risk_if_ignored clause has
+    now manifested twice in 30 min.
+  - When DONE, COWORK-AUDIT-CODEX-DISPATCHER-TRIGGER-VERIFICATION-001 auto-promotes
+    (with the new trigger-verification logic actually working).
+- id: COWORK-LEDGER-FRESHNESS-AUDIT-002
+  title: 'Cowork: re-grep Tier 2 axioms (2nd iteration of recurring 6h freshness cadence)'
+  owner: Cowork
+  status: DONE
+  priority: 5
+  created_at: '2026-04-26T16:00:00Z'
+  updated_at: '2026-04-26T16:30:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+  - Tier 2 grep count = 5 real axiom declarations (sun_haar_satisfies_lsi, variance_decay_from_bridge_and_poincare_semigroup_gap,
+    gronwall_variance_decay, lieDerivReg_all, matExp_traceless_det_one) — identical
+    to 14:00 baseline (drift = 0)
+  - LEDGER row claim "5 real declarations in Experimental/" remains accurate (5 = 5,
+    diff = 0)
+  - 0-axiom-outside-Experimental invariant PASS — same 2 docstring hits as baseline
+    (GNSConstruction.lean:23 "the OS\\naxiom predicates", AbelianU1OSAxioms.lean:25
+    "every OS-style structural\\naxiom referenced")
+  - lieDerivReg_all consumer scope unchanged — 3 files (LieDerivReg_v4.lean declaration,
+    GeneratorAxiomsDimOne.lean Experimental consumer, P8_PhysicalGap/SUN_DirichletCore.lean
+    consumer)
+  - COWORK_RECOMMENDATIONS.md freshness-audit-002 entry written with literal grep
+    output + comparison-to-baseline table
+  - Loop-breaker function fulfilled — dispatcher had a legitimate non-trigger-gated
+    Cowork READY task during this cycle
+  required_files:
+  - UNCONDITIONALITY_LEDGER.md
+  - YangMills/Experimental/
+  - EXPERIMENTAL_AXIOMS_AUDIT.md
+  objective: 'Second iteration of the recurring 6h freshness cadence per REC-COWORK-LEDGER-FRESHNESS-001.
+    Cowork re-runs `grep -rn ''^\s*axiom\s+\w+'' YangMills/Experimental/ --include=''*.lean''`
+    and reconciles against UNCONDITIONALITY_LEDGER.md Tier 2 row count (currently
+    "5 real declarations"). Brought forward ~4h from the standard 6h schedule because
+    the dispatcher loop needs a non-trigger-gated Cowork READY task to break the premature-promotion
+    cycle until CODEX-DISPATCHER-TRIGGER-VERIFICATION-001 lands.
+
+    '
+  validation:
+  - 'grep count matches LEDGER Tier 2 row count (expected: 5)'
+  - COWORK_RECOMMENDATIONS.md gains a freshness-audit-002 entry
+  - 0-axiom-outside-Experimental invariant re-verified PASS
+  - lieDerivReg_all consumer scope re-verified unchanged
+  stop_if:
+  - Ledger Tier 2 count differs by more than 1 without explaining entry
+  - New non-Experimental axiom appears
+  next_agent: Codex
+  notes:
+  - Loop-breaker task. After this lands, recurring iteration COWORK-LEDGER-FRESHNESS-AUDIT-003
+    to be filed at next META fire (~+6h, ≈ 2026-04-26T22:30Z).
+  - Dispatched to Cowork at 2026-04-26T09:22:46Z; completed at 2026-04-26T16:30:00Z.
+  dispatched_at: '2026-04-26T09:22:46Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+  completed_at: '2026-04-26T16:30:00Z'
+- id: COWORK-AUDIT-CODEX-DISPATCHER-TRIGGER-VERIFICATION-001
+  title: 'Cowork: post-implementation audit of CODEX-DISPATCHER-TRIGGER-VERIFICATION-001'
+  owner: Cowork
+  status: FUTURE
+  priority: 4
+  created_at: '2026-04-26T15:30:00Z'
+  updated_at: '2026-04-26T16:00:00Z'
+  required_files:
+  - scripts/agent_next_instruction.py
+  - dashboard/codex_autocontinue_snapshot.py
+  - registry/agent_tasks.yaml
+  objective: 'Auto-promote FUTURE → READY when Codex marks CODEX-DISPATCHER-TRIGGER-VERIFICATION-001
+    DONE. Audit (1) trigger verification logic exists in scripts/agent_next_instruction.py
+    task_is_actionable_for; (2) at least 3 trigger forms supported (grep, AXIOM_FRONTIER
+    version, history JSONL event); (3) fallback for unsupported trigger forms logs
+    [TRIGGER_NOT_PARSED] without crashing; (4) Downloads/codex_autocontinue.py snapshot
+    mirrors the change; (5) test: dispatch Cowork while only COWORK-AUDIT-CLAY-F3-COUNT-LEAF-DELETION-001
+    remains FUTURE — should NOT promote (because trigger not fired); test: dispatch
+    Cowork after Codex commits a v2.52+ to AXIOM_FRONTIER.md — should promote.
+
+    '
+  validation:
+  - 'task_is_actionable_for has a trigger-evaluation branch for FUTURE tasks with
+    notes: "auto-promote when ..."'
+  - 3 trigger forms tested in unit-test or runtime spot-check
+  - COWORK_RECOMMENDATIONS.md gains an audit entry
+  - COWORK-AUDIT-CLAY-F3-COUNT-LEAF-DELETION-001 no longer auto-promotes spuriously
+  stop_if:
+  - Trigger-verification logic implemented but always returns True (no real file inspection)
+  - Dispatcher behaviour changes for non-triggered FUTURE tasks (regression on META-GENERATE-TASKS-001
+    fallback)
+  next_agent: Codex
+  notes:
+  - Auto-promote on completion of CODEX-DISPATCHER-TRIGGER-VERIFICATION-001.
+  - Dispatched to Cowork at 2026-04-26T09:15:39Z
+  dispatched_at: '2026-04-26T09:15:39Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+- id: CODEX-VACUITY-RULES-CONSOLIDATION-001
+  title: 'Codex: consolidate vacuity-pattern caveats into KNOWN_ISSUES.md §1.X uniform
+    section + LEDGER vacuity_flag column + MATHEMATICAL_REVIEWERS_COMPANION external-description
+    guidance'
+  owner: Codex
+  status: READY
+  priority: 4
+  created_at: '2026-04-26T14:30:00Z'
+  updated_at: '2026-04-26T14:30:00Z'
+  required_files:
+  - KNOWN_ISSUES.md
+  - UNCONDITIONALITY_LEDGER.md
+  - MATHEMATICAL_REVIEWERS_COMPANION.md
+  - COWORK_FINDINGS.md (Findings 003 + 011-016)
+  - COWORK_RECOMMENDATIONS.md (audit dated 2026-04-26T14:30:00Z)
+  objective: 'Per COWORK-VACUITY-PATTERN-TRACKER-001 escalation (audit dated 2026-04-26T14:30:00Z),
+    the project has 5-7+ structurally distinct vacuity-pattern instances scattered
+    across KNOWN_ISSUES.md but only 2 are explicitly titled §1.X caveat rows. External
+    readers reading only the LEDGER cannot distinguish vacuous vs genuine FORMAL_KERNEL
+    rows. Codex must (1) write a consolidated KNOWN_ISSUES.md §1.X "Vacuity rules"
+    section enumerating all 5-7 instances with uniform shape (claim name, Tier, mechanism,
+    Lean witness location, external-reader DO-NOT-conclude template); (2) add a vacuity_flag
+    column to UNCONDITIONALITY_LEDGER.md Tier 1 + Tier 2 tables with values none /
+    caveat-only / vacuous-witness / trivial-group / zero-family / anchor-structure
+    / trivial-placeholder; (3) update MATHEMATICAL_REVIEWERS_COMPANION.md with a "Reading
+    FORMAL_KERNEL rows that carry vacuity caveats" section.
+
+    '
+  validation:
+  - KNOWN_ISSUES.md gains §1.X consolidated vacuity-rules section enumerating ≥ 5
+    instances
+  - UNCONDITIONALITY_LEDGER.md Tier 1 + Tier 2 tables gain vacuity_flag column; rows
+    for NC1-WITNESS, EXP-SUN-GEN, OS-style axioms, Bałaban carriers, BalabanRG witnesses,
+    triple-view all populated
+  - MATHEMATICAL_REVIEWERS_COMPANION.md gains a "Reading FORMAL_KERNEL rows that carry
+    vacuity caveats" section
+  - No mathematical row of the LEDGER changes status (this is bookkeeping, not math
+    advance)
+  stop_if:
+  - A LEDGER row changes status (e.g. EXP-SUN-GEN moves from FORMAL_KERNEL (vacuous)
+    to FORMAL_KERNEL without caveat) — would invert the honesty discipline
+  - KNOWN_ISSUES.md §1.X section claims any vacuity-caveat row is closed without a
+    Lean-side change
+  next_agent: Cowork
+  notes:
+  - Honesty-discipline consolidation. Bookkeeping fix only. No math regression. No
+    math advance.
+  - When DONE, COWORK-AUDIT-CODEX-VACUITY-CONSOLIDATION-001 auto-promotes from FUTURE
+    to READY for the post-implementation audit.
+- id: COWORK-AUDIT-CODEX-VACUITY-CONSOLIDATION-001
+  title: 'Cowork: post-implementation audit of CODEX-VACUITY-RULES-CONSOLIDATION-001'
+  owner: Cowork
+  status: FUTURE
+  priority: 5
+  created_at: '2026-04-26T14:30:00Z'
+  updated_at: '2026-04-26T14:30:00Z'
+  required_files:
+  - KNOWN_ISSUES.md
+  - UNCONDITIONALITY_LEDGER.md
+  - MATHEMATICAL_REVIEWERS_COMPANION.md
+  objective: 'After Codex marks CODEX-VACUITY-RULES-CONSOLIDATION-001 DONE, Cowork
+    audits (1) KNOWN_ISSUES.md §1.X consolidated vacuity-rules section enumerates
+    all 5-7 documented vacuity instances with uniform shape; (2) LEDGER Tier 1 + Tier
+    2 vacuity_flag column is populated correctly per audit dated 2026-04-26T14:30:00Z;
+    (3) MATHEMATICAL_REVIEWERS_COMPANION external-description guidance is concrete
+    enough that a 3rd-party reviewer can distinguish vacuous-FORMAL_KERNEL from genuine-FORMAL_KERNEL
+    rows by inspection of the LEDGER alone.
+
+    '
+  validation:
+  - KNOWN_ISSUES.md §1.X has uniform-shape entries for all 5-7 instances per the audit
+    table
+  - LEDGER vacuity_flag column rows match the §1.X enumeration
+  - MATHEMATICAL_REVIEWERS_COMPANION section is reviewable by an external party
+  - COWORK_RECOMMENDATIONS.md gains an audit-pass entry
+  stop_if:
+  - Any vacuity instance was silently elided from §1.X or the LEDGER column
+  - LEDGER status of any row was upgraded without a corresponding Lean-side change
+    (would be honesty regression)
+  next_agent: Codex
+  notes:
+  - Auto-promotes FUTURE → READY when Codex marks CODEX-VACUITY-RULES-CONSOLIDATION-001
+    DONE.
+- id: COWORK-VACUITY-PATTERN-TRACKER-001
+  title: 'Cowork: track vacuity-caveat count; if 3rd appears, escalate external-description
+    hardening'
+  owner: Cowork
+  status: DONE
   priority: 6
   created_at: '2026-04-26T13:30:00Z'
-  updated_at: '2026-04-26T13:30:00Z'
+  updated_at: '2026-04-26T14:30:00Z'
+  audit_verdict: AUDIT_ESCALATE
+  audit_evidence:
+  - 'Honest count of vacuity-pattern instances: 5+ to 7+, NOT 2 as previously believed.'
+  - §1.1 NC1-WITNESS (Tier 1, SU(1) trivial group)
+  - §1.3 EXP-SUN-GEN (Tier 2, zero matrix family)
+  - '§9 / Finding 011: SU(1) OS-style structural axioms (OSCovariant, OSReflectionPositive,
+    OSClusterProperty, HasInfiniteVolumeLimit) — structurally honest but physically
+    vacuous'
+  - '§9 / Finding 012: Branch III analytic predicates (LSI, Poincaré, clustering,
+    Dirichlet form, Markov-semigroup, Feynman-Kac) — same caveat extends'
+  - '§9 / Findings 013-014: Bałaban predicate carriers (BalabanHyps, WilsonPolymerActivityBound,
+    LargeFieldActivityBound, SmallFieldActivityBound) — structurally trivially inhabitable
+    for every N_c >= 1 via zero/identity/vacuous witnesses'
+  - '§9 / Finding 015: Codex BalabanRG/ push (~222 files, 0 sorries, 0 axioms) scaffolds
+    entire Branch II chain to ClayYangMillsTheorem with trivial-witness placeholders
+    at every layer'
+  - '§10.3: Triple-view characterisation (L42 + L43 + L44) structurally complete but
+    substantively empty; inputs c_Y, c_σ, ω ≠ 1 as anchor structures, NOT derived
+    from first principles'
+  escalation_reasoning:
+  - 'Pre-escalation Cowork count: 2 (NC1-WITNESS + EXP-SUN-GEN explicit titled §1.X
+    rows)'
+  - 'Honest count via grep + Findings 011-016 + §10.3: 7+'
+  - Pattern is structural (5-year programme exposure), not isolated cases
+  - External readers reading only the LEDGER cannot distinguish vacuous vs genuine
+    FORMAL_KERNEL rows
+  - 'Escalation triggers consolidation: §1.X uniform vacuity-rules section + LEDGER
+    vacuity_flag column + MATHEMATICAL_REVIEWERS_COMPANION external-description guidance'
+  follow_up_tasks_filed:
+  - CODEX-VACUITY-RULES-CONSOLIDATION-001 (READY priority 4)
+  - COWORK-AUDIT-CODEX-VACUITY-CONSOLIDATION-001 (FUTURE priority 5, auto-promote
+    when Codex marks consolidation DONE)
+  recommendations_added:
+  - 'REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001 (priority 2): propose vacuity_flag
+    column in LEDGER Tier 1 + Tier 2'
+  - 'REC-COWORK-MATHEMATICAL-REVIEWERS-COMPANION-VACUITY-SECTION-001 (priority 3):
+    explicit external-description guidance for vacuity-caveat rows'
+  honesty_observation: 'This audit is itself an honesty improvement: Cowork was UNDERCOUNTING
+    the vacuity exposure. Escalation surfaces this and triggers consolidation. Tier
+    1 rows unchanged. Meta-bookkeeping that prevents future overclaim.'
   required_files:
   - KNOWN_ISSUES.md
   - UNCONDITIONALITY_LEDGER.md
   - COWORK_FINDINGS.md
   - MATHEMATICAL_REVIEWERS_COMPANION.md
   objective: 'Per Cowork honesty observation 2026-04-26T11:00:00Z, the project now
-    has TWO documented vacuity caveats: KNOWN_ISSUES.md §1.1 (NC1-WITNESS at
-    Tier 1, SU(1) trivial group) and §1.3 (EXP-SUN-GEN at Tier 2, zero matrix
-    family). If a third vacuity-pattern retirement appears, this indicates a
-    structural retirement style rather than isolated cases — at that point
-    Cowork must (1) audit all Tier 1 + Tier 2 ledger rows for similar shape;
-    (2) write a consolidated §1.X vacuity-rules section in KNOWN_ISSUES.md;
-    (3) update MATHEMATICAL_REVIEWERS_COMPANION.md with explicit external
-    guidance on how to read FORMAL_KERNEL rows that carry vacuity caveats;
-    (4) propose a vacuity-flag column in the LEDGER itself.
+    has TWO documented vacuity caveats: KNOWN_ISSUES.md §1.1 (NC1-WITNESS at Tier
+    1, SU(1) trivial group) and §1.3 (EXP-SUN-GEN at Tier 2, zero matrix family).
+    If a third vacuity-pattern retirement appears, this indicates a structural retirement
+    style rather than isolated cases — at that point Cowork must (1) audit all Tier
+    1 + Tier 2 ledger rows for similar shape; (2) write a consolidated §1.X vacuity-rules
+    section in KNOWN_ISSUES.md; (3) update MATHEMATICAL_REVIEWERS_COMPANION.md with
+    explicit external guidance on how to read FORMAL_KERNEL rows that carry vacuity
+    caveats; (4) propose a vacuity-flag column in the LEDGER itself.
 
     '
   validation:
-  - 'grep -n vacuous KNOWN_ISSUES.md returns ≥ 2 matches (current count); if 3+, escalation triggered'
-  - 'COWORK_RECOMMENDATIONS.md gains a vacuity-pattern-tracker entry with current count'
-  - 'If escalation triggered, file CODEX-VACUITY-RULES-CONSOLIDATION-001 repair task'
+  - grep -n vacuous KNOWN_ISSUES.md returns ≥ 2 matches (current count); if 3+, escalation
+    triggered
+  - COWORK_RECOMMENDATIONS.md gains a vacuity-pattern-tracker entry with current count
+  - If escalation triggered, file CODEX-VACUITY-RULES-CONSOLIDATION-001 repair task
   stop_if:
-  - 'A 4th vacuity caveat appears without escalation having been triggered (would indicate the tracker is itself failing)'
+  - A 4th vacuity caveat appears without escalation having been triggered (would indicate
+    the tracker is itself failing)
   next_agent: Cowork (recurring)
   notes:
-  - 'Pre-emptive Cowork honesty discipline. Currently 2 caveats (Tier 1 + Tier 2). The pattern is OK at 2; concerning at 3+; structural at 4+.'
-  - 'Recommended cadence: every Cowork META-GENERATE-TASKS-001 fire (i.e. every time the queue is reseeded).'
-
+  - Pre-emptive Cowork honesty discipline. Currently 2 caveats (Tier 1 + Tier 2).
+    The pattern is OK at 2; concerning at 3+; structural at 4+.
+  - 'Recommended cadence: every Cowork META-GENERATE-TASKS-001 fire (i.e. every time
+    the queue is reseeded).'
+  - Dispatched to Cowork at 2026-04-26T09:01:19Z
+  dispatched_at: '2026-04-26T09:01:19Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
 - id: COWORK-MATHLIB-OPEN-PR-AUTH-FOLLOWUP-001
   title: 'Cowork: revisit MATHLIB-OPEN-PR-001 when Lluis enables an auth path'
   owner: Cowork
@@ -1054,32 +1405,34 @@ tasks:
   - mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch
   - MATHLIB_PRS_OVERVIEW.md
   - registry/recommendations.yaml
-  objective: 'Per REC-MATHLIB-FORK-PR-AUTH-001 (priority 2, OPEN), the
-    MatrixExp PR (commit cd3b69baae against Mathlib master 80a6231dcf) is
-    built locally but PR publication is BLOCKED on (a) gh installed +
-    Lluis-authenticated, (b) push permission to leanprover-community/mathlib4,
-    or (c) reachable lluiseriksson/mathlib4 fork. When Lluis enables one of
-    these paths, Cowork: (1) verifies the patch still applies cleanly against
-    current Mathlib master (the master may have moved since 80a6231dcf);
-    (2) confirms `lake build` still passes; (3) audits the actual PR submission
-    by Codex; (4) updates MATHLIB_PRS_OVERVIEW.md with the real PR URL once
-    opened; (5) when PR merges and project pulls new Mathlib version, moves
-    Tier 2 ledger row EXP-MATEXP-DET to FORMAL_KERNEL.
+  objective: 'Per REC-MATHLIB-FORK-PR-AUTH-001 (priority 2, OPEN), the MatrixExp PR
+    (commit cd3b69baae against Mathlib master 80a6231dcf) is built locally but PR
+    publication is BLOCKED on (a) gh installed + Lluis-authenticated, (b) push permission
+    to leanprover-community/mathlib4, or (c) reachable lluiseriksson/mathlib4 fork.
+    When Lluis enables one of these paths, Cowork: (1) verifies the patch still applies
+    cleanly against current Mathlib master (the master may have moved since 80a6231dcf);
+    (2) confirms `lake build` still passes; (3) audits the actual PR submission by
+    Codex; (4) updates MATHLIB_PRS_OVERVIEW.md with the real PR URL once opened; (5)
+    when PR merges and project pulls new Mathlib version, moves Tier 2 ledger row
+    EXP-MATEXP-DET to FORMAL_KERNEL.
 
     '
   validation:
-  - 'patch artifact still applies against current Mathlib master (`git apply --check` succeeds)'
-  - 'lake build succeeds in fresh Mathlib checkout with the patch applied'
+  - patch artifact still applies against current Mathlib master (`git apply --check`
+    succeeds)
+  - lake build succeeds in fresh Mathlib checkout with the patch applied
   - 'MATHLIB_PRS_OVERVIEW.md records the real PR URL (no longer pr_url: null)'
-  - 'EXP-MATEXP-DET ledger row moves to FORMAL_KERNEL only after both PR merges AND project pulls Mathlib version containing the lemma'
+  - EXP-MATEXP-DET ledger row moves to FORMAL_KERNEL only after both PR merges AND
+    project pulls Mathlib version containing the lemma
   stop_if:
-  - 'Mathlib master has moved enough that the patch no longer applies — file CODEX-PATCH-REBASE-001 repair task'
-  - 'Auth path enabled but Codex pushes to wrong branch / wrong fork'
+  - Mathlib master has moved enough that the patch no longer applies — file CODEX-PATCH-REBASE-001
+    repair task
+  - Auth path enabled but Codex pushes to wrong branch / wrong fork
   next_agent: Codex
   notes:
-  - 'Auto-promotes FUTURE → READY when REC-MATHLIB-FORK-PR-AUTH-001 closes (status RESOLVED with auth path documented).'
+  - Auto-promotes FUTURE → READY when REC-MATHLIB-FORK-PR-AUTH-001 closes (status
+    RESOLVED with auth path documented).
   - 'Human action item still pending: decide which auth path to enable.'
-
 - id: META-GENERATE-TASKS-001
   title: Generate new actionable tasks when the queue is empty
   owner: Any

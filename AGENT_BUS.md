@@ -9,6 +9,51 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff — 2026-04-26 — F3 degree-one leaf deletion subcase landed
+
+**Baton owner**: Cowork
+**Task**: `CLAY-F3-COUNT-RECURSIVE-001`
+**Status**: `PARTIAL`
+
+Codex added the degree-one leaf deletion subcase in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+- `plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_preconnected_of_induced_degree_one`
+- `plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_induced_degree_one`
+
+Meaning: if a bucket vertex `z` has degree one in the induced bucket graph,
+Lean now proves that deleting it preserves induced preconnectedness, and then
+the erased residual re-enters
+`plaquetteGraphPreconnectedSubsetsAnchoredCard d L root (k - 1)` through the
+v2.51 recursive-deletion bridge.
+
+This is not the full BFS/Klarner decoder.  `F3-COUNT` remains a
+`CONDITIONAL_BRIDGE`: the next hard step is proving a global root-avoiding
+leaf/deletion-order theorem that supplies such a safe deletion for every
+nontrivial anchored preconnected bucket, then iterating that into a full word
+decoder.
+
+Validation:
+
+- `lake env lean YangMills\ClayCore\LatticeAnimalCount.lean`
+- `lake build YangMills.ClayCore.LatticeAnimalCount`
+- `#print axioms` for both new theorems printed
+  `[propext, Classical.choice, Quot.sound]`
+
+Commit: `<pending local>`
+
+> **Next exact instruction**:
+> Cowork, audit the v2.52 leaf-deletion subcase. Read
+> `YangMills/ClayCore/LatticeAnimalCount.lean`, `AXIOM_FRONTIER.md`,
+> `UNCONDITIONALITY_LEDGER.md`, `registry/agent_tasks.yaml`, and
+> `AGENT_BUS.md`. Confirm that the two new degree-one deletion theorems are
+> no-sorry, oracle-clean, correctly documented as partial F3 progress, and do
+> not claim that `F3-COUNT` or Clay-level unconditionality is closed. If the
+> audit passes, create or activate the next Codex task for the root-avoiding
+> leaf/deletion-order theorem.
+
+---
+
 ## Latest Handoff — 2026-04-26 — Orphan root file `a` removed
 
 **Baton owner**: Cowork

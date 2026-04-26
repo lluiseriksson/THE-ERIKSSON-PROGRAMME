@@ -1,11 +1,11 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "task_generation_needed",
+  "current_phase": "f3_leaf_deletion_audit",
   "current_baton_owner": "Cowork",
-  "next_task_id": "META-GENERATE-TASKS-001",
-  "last_completed_task": "CLAY-EXP-RETIRE-7-001",
-  "last_dispatched_task": "META-GENERATE-TASKS-001",
+  "next_task_id": "COWORK-LEDGER-FRESHNESS-AUDIT-002",
+  "last_completed_task": "CLAY-F3-COUNT-RECURSIVE-001 (PARTIAL v2.52.0)",
+  "last_dispatched_task": "COWORK-LEDGER-FRESHNESS-AUDIT-002",
   "last_dispatched_agent": "Cowork",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists"
@@ -22,8 +22,8 @@
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001"
   ],
-  "last_dispatch_at": "2026-04-26T08:54:03Z",
-  "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount passed with v2.51 conditional recursive-deletion bridge",
+  "last_dispatch_at": "2026-04-26T09:22:46Z",
+  "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount passed with v2.52 degree-one leaf deletion subcase",
   "audit_state": {
     "in_repo_dispatcher": "AUDIT_PASS",
     "communication_contract": "AUDIT_PASS",
@@ -87,7 +87,7 @@
     "L2.4-SCHUR": "FORMAL_KERNEL (100%)",
     "L2.5-FROBENIUS": "FORMAL_KERNEL (100%)",
     "L2.6-CHARACTER": "FORMAL_KERNEL (100%)",
-    "F3-COUNT": "CONDITIONAL_BRIDGE (v2.48 parent selector + v2.50 first-deletion/residual primitive + v2.51 conditional deletion bridge landed; leaf/deletion-order theorem and full word decoder pending)",
+    "F3-COUNT": "CONDITIONAL_BRIDGE (v2.48 parent selector + v2.50 first-deletion/residual primitive + v2.51 conditional deletion bridge + v2.52 degree-one leaf deletion subcase landed; global root-avoiding safe-deletion theorem and full word decoder pending)",
     "F3-MAYER": "BLOCKED (gated on F3-COUNT closure)",
     "F3-COMBINED": "BLOCKED (gated on F3-COUNT and F3-MAYER)",
     "NC1-WITNESS": "FORMAL_KERNEL (with vacuity caveat per Finding 003)",

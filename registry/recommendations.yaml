@@ -1,4 +1,116 @@
 recommendations:
+- id: REC-COWORK-DISPATCHER-TRIGGER-VERIFICATION-001
+  author: Cowork
+  status: OPEN
+  priority: 3
+  title: scripts/agent_next_instruction.py should verify auto-promote trigger conditions
+    before promoting FUTURE → READY for tasks with explicit triggers
+  recommendation: 'COWORK-AUDIT-CLAY-F3-COUNT-LEAF-DELETION-001 was promoted from
+    FUTURE to READY at ~15:00 by the dispatcher even though its explicit trigger (Codex
+    lands a v2.52+ AXIOM_FRONTIER entry OR a leaf/deletion-order theorem in LatticeAnimalCount.lean)
+    has not fired. The dispatcher currently promotes FUTURE tasks by priority/age
+    fallback when no Cowork READY tasks exist. For tasks whose `notes:` field contains
+    an explicit auto-promote directive (phrase pattern: "auto-promote when X" or "auto-promote
+    FUTURE → READY when X"), the dispatcher should parse X and verify it before promoting.
+    Specific triggers to support: (a) `grep <pattern> <file>` returning non-empty;
+    (b) AXIOM_FRONTIER entry `# v<X.Y.Z>` with version `>= <threshold>`; (c) registry/agent_history.jsonl
+    having a recent matching event. Fallback to priority/age dispatch only for tasks
+    WITHOUT explicit triggers.
+
+    '
+  reason: 'Premature dispatch wastes Cowork cycles on un-completable audits and, without
+    honesty discipline, could lead a less-careful agent to mark tasks DONE without
+    evidence. The dispatcher should help enforce the AGENTS.md §3.2 no-trust-without-evidence
+    rule rather than route around it.
+
+    '
+  risk_if_ignored: 'Cowork wastes cycles on premature audits; if a future agent is
+    less disciplined than the current Cowork (which refused to close the audit), tasks
+    could be marked DONE without evidence, replicating the overclaim pattern.
+
+    '
+  files_affected:
+  - scripts/agent_next_instruction.py
+  - dashboard/codex_autocontinue_snapshot.py (mirrored)
+  - registry/agent_tasks.yaml (notes: field parsing convention)
+  converts_to_task: CODEX-DISPATCHER-TRIGGER-VERIFICATION-001 (to be created when
+    Lluis ratifies)
+  validation: 'After implementation, COWORK-AUDIT-CLAY-F3-COUNT-LEAF-DELETION-001
+    (currently FUTURE) does NOT auto-promote until either grep finds the leaf/deletion-order
+    theorem OR AXIOM_FRONTIER gains a v2.52+ entry. Dispatcher logs a [TRIGGER_NOT_FIRED]
+    event when it considers a FUTURE task but the trigger is not satisfied.
+
+    '
+- id: REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001
+  author: Cowork
+  status: OPEN
+  priority: 2
+  title: Add vacuity_flag column to UNCONDITIONALITY_LEDGER.md Tier 1 + Tier 2 tables
+  recommendation: 'COWORK-VACUITY-PATTERN-TRACKER-001 escalation (audit 2026-04-26T14:30:00Z)
+    surfaced 5-7+ structurally distinct vacuity-pattern instances across the project
+    but only 2 are explicitly titled §1.X caveat rows in KNOWN_ISSUES.md. External
+    readers reading only the LEDGER cannot distinguish vacuous-FORMAL_KERNEL from
+    genuine-FORMAL_KERNEL rows. Add a vacuity_flag column to LEDGER Tier 1 + Tier
+    2 tables with values: none, caveat-only, vacuous-witness, trivial-group, zero-family,
+    anchor-structure, trivial-placeholder. Makes the vacuity status machine-readable
+    rather than buried in evidence-column prose.
+
+    '
+  reason: 'Honesty discipline at scale. The LEDGER is the authoritative dependency
+    map; if it does not surface the vacuity exposure, external descriptions can accidentally
+    overclaim. Currently only KNOWN_ISSUES.md §1.1 + §1.3 + §9 Findings 011-016 +
+    §10.3 capture the full picture, scattered across the document.
+
+    '
+  risk_if_ignored: 'A future external reviewer reading the LEDGER (e.g. for a Mathlib
+    PR review or an academic paper citation) interprets FORMAL_KERNEL rows as genuine
+    math advance, missing the vacuity caveats. Over-claim risk.
+
+    '
+  files_affected:
+  - UNCONDITIONALITY_LEDGER.md
+  converts_to_task: CODEX-VACUITY-RULES-CONSOLIDATION-001 (READY priority 4)
+  validation: 'After implementation, LEDGER Tier 1 + Tier 2 tables have a vacuity_flag
+    column populated for each row. Rows for NC1-WITNESS, EXP-SUN-GEN, OS-style axioms,
+    Bałaban carriers, BalabanRG witnesses, triple-view all show their vacuity mechanism
+    explicitly.
+
+    '
+- id: REC-COWORK-MATHEMATICAL-REVIEWERS-COMPANION-VACUITY-SECTION-001
+  author: Cowork
+  status: OPEN
+  priority: 3
+  title: 'MATHEMATICAL_REVIEWERS_COMPANION.md: add "Reading FORMAL_KERNEL rows that
+    carry vacuity caveats" section'
+  recommendation: 'Per COWORK-VACUITY-PATTERN-TRACKER-001 escalation, the project
+    has 5-7+ vacuity-pattern instances. External reviewers (mathematicians, physicists,
+    formal-verification practitioners) reading the project for citation or Mathlib
+    PR review need explicit guidance on how to distinguish vacuous-FORMAL_KERNEL from
+    genuine-FORMAL_KERNEL rows. Add a section to MATHEMATICAL_REVIEWERS_COMPANION.md
+    titled "Reading FORMAL_KERNEL rows that carry vacuity caveats" with: (1) the 7
+    enumerated vacuity instances with Lean witness pointers; (2) the do-not-conclude
+    template (e.g. "this row being FORMAL_KERNEL does NOT mean the project provides
+    real SU(N) generator data"); (3) cross-references to KNOWN_ISSUES.md §1.X consolidated
+    section.
+
+    '
+  reason: 'External-description guidance is the honesty surface. Without it, the LEDGER
+    alone (even with vacuity_flag column) may not be interpretable by a reviewer unfamiliar
+    with the project conventions.
+
+    '
+  risk_if_ignored: 'External reviewers conclude the project is closer to Clay than
+    it is. Over-claim by interpretation rather than by direct claim.
+
+    '
+  files_affected:
+  - MATHEMATICAL_REVIEWERS_COMPANION.md
+  converts_to_task: CODEX-VACUITY-RULES-CONSOLIDATION-001 (priority 4 — same task
+    covers both LEDGER column and companion-doc section)
+  validation: 'After implementation, MATHEMATICAL_REVIEWERS_COMPANION.md has a vacuity-rows
+    reading section with concrete examples and the do-not-conclude template.
+
+    '
 - id: REC-COWORK-LEDGER-FRESHNESS-001
   author: Cowork
   status: OPEN
