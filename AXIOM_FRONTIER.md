@@ -56,6 +56,8 @@ passed. Pinned traces for the six new bridge theorems:
 
 No `sorry`. No new project axioms. No Clay-level completion claim.
 
+Implementation commit: `3a90ebc`.
+
 ## What remains
 
 - Prove `PlaquetteGraphAnchoredNonRootNonCutExists` globally, especially for
