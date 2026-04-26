@@ -4,6 +4,72 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T17:00:00Z — AUDIT_PASS: COWORK-AUDIT-JOINT-PLANNER-001 (4-number planner separation honest, LEDGER consistent, no overclaim)
+
+**Audit result**: `AUDIT_PASS`. The new joint planner cleanly separates the four percentage targets, the README does not overclaim, the LEDGER keeps `CLAY-GOAL` BLOCKED, and planner creation is correctly recorded as `CONDITIONAL_BRIDGE` bookkeeping rather than mathematical progress.
+
+### Validation results
+
+| Validation requirement | Result | Evidence |
+|---|---|---|
+| `python scripts/joint_planner_report.py validate` | PASS (by source-inspection; workspace VM unavailable for runtime) | `validate()` (lines 25–48) checks: (a) all 3 required metrics present with `percent` field — `clay_as_stated=5`, `lattice_small_beta=28`, `named_frontier_retirement=50` ✓; (b) component contribution sum vs lattice headline within 0.75 — sum = 7.8+4+4+4+5+0+0+1.5+0.7+0+0+1 = **28.0**, target = 28, |diff| = 0 ✓; (c) `global_status == "NOT_ESTABLISHED"` — confirmed at `progress_metrics.yaml:3` ✓. |
+| README contains the four distinct planner numbers | PASS | `README.md:9–11` (badges: 50%, 28%, 5%); `:36` (TL;DR row: "Clay-as-stated ≈ 5%, lattice small-β ≈ 28%, honesty-discounted ≈ 23–25%, named-frontier = 50%, must not be interchanged"); `:81–84` (progress block: 50% / ~28% / ~23-25% / ~5% on separate rows with explicit labels). |
+| `UNCONDITIONALITY_LEDGER.md` keeps `CLAY-GOAL` as BLOCKED / NOT_ESTABLISHED | PASS | `UNCONDITIONALITY_LEDGER.md:44`: `\| CLAY-GOAL \| Full Clay-level Yang-Mills existence and mass gap (continuum, SU(N>=2)) \| BLOCKED \| Complete formal chain through OS reconstruction \| ...`. `dashboard/agent_state.json:18`: `"unconditionality_status": "NOT_ESTABLISHED"`; `:102`: `"CLAY-GOAL": "BLOCKED"`. |
+| COWORK_RECOMMENDATIONS.md gains an audit entry | PASS | This entry. |
+
+### Stop-condition checks — ALL NOT TRIGGERED
+
+| Stop condition | Status | Counter-evidence |
+|---|---|---|
+| Any document implies the Clay problem is solved | **NOT TRIGGERED** | `JOINT_AGENT_PLANNER.md:20` "Global Clay status remains `NOT_ESTABLISHED`"; `:68` "Do not claim the Clay problem is solved"; `README.md:22` "This repository is **not** a finished proof of the Clay Yang–Mills mass gap"; `dashboard/agent_state.json:18` `"NOT_ESTABLISHED"`; LEDGER `CLAY-GOAL: BLOCKED`. |
+| 50% named-frontier metric presented as the literal Clay percentage | **NOT TRIGGERED** | `JOINT_AGENT_PLANNER.md:18` "useful, but not the Clay-as-stated percentage"; `progress_metrics.yaml:43-47` `status: INTERNAL_METRIC` + reason "not the literal Clay percentage"; `README.md:9-11` three badges separated; `:36` "These numbers are distinct and must not be interchanged"; `:81` row labelled "OVERALL (named-frontier retirement)" not "Clay". |
+| 28% lattice metric presented without the vacuity/discount caveat | **NOT TRIGGERED** | Every appearance pairs 28% with the 23-25% discount: `JOINT_AGENT_PLANNER.md:16-17` adjacent rows; `progress_metrics.yaml:21-22` `percent: 28` + `honest_discounted_percent_range: "23-25"`; `README.md:36` "internal lattice small-β subgoal ≈ 28% (honesty-discounted ≈ 23–25% after vacuous/low-content retirements)"; `:82-83` adjacent bars labelled "honest working" / "discounted for vacuity caveats"; component table rows for NC1-WITNESS / EXP-SUN-GEN explicitly show `~0% honest`. |
+
+### Critical-path consistency vs LEDGER
+
+| Planner step | Order | Blocks | LEDGER status of blocked rows | Consistent? |
+|---|---:|---|---|---|
+| `F3-SAFE-DELETION` | 1 | F3-COUNT | F3-COUNT CONDITIONAL_BRIDGE (v2.48+v2.50+v2.51+v2.52) | ✓ (v2.52 just landed the degree-1 subcase; global existence is exactly the "safe-deletion" step the planner names) |
+| `F3-ANCHORED-WORD-DECODER` | 2 | F3-COUNT | same | ✓ |
+| `F3-MAYER-URSSELL` | 3 | F3-MAYER, F3-COMBINED | both BLOCKED gated on F3-COUNT | ✓ |
+| `EXPERIMENTAL-AXIOM-CLASSIFICATION` | 4 | EXP-MATEXP-DET, EXP-BD-HY-GR, EXP-LIEDERIVREG | EXPERIMENTAL / EXPERIMENTAL / INVALID respectively | ✓ |
+| `OUT-CONTINUUM-BLUEPRINT` | 5 | OUT-CONTINUUM, OUT-OS-WIGHTMAN | both BLOCKED | ✓ |
+
+Critical path matches LEDGER 5/5.
+
+### Planner creation NOT recorded as math progress
+
+| Where planner creation is recorded | Effect on math percentages | Honest? |
+|---|---|---|
+| `dashboard/agent_state.json:100` `"JOINT-PLANNER": "CONDITIONAL_BRIDGE (planner created; pending Cowork audit)"` | Bookkeeping row in `ledger_status`, parallel to `AGENTIC-INFRA: INFRA_AUDITED` and `AUTOCONTINUE: INFRA_AUDITED`. Does not feed into `lattice_small_beta` or any math metric. | ✓ |
+| `progress_metrics.yaml` components | INFRA-HYGIENE row is 1% contribution (preexisting, covers dispatcher + ledger freshness + audit cadence). The planner is one new piece of infra hygiene; the 1% headline did not increase to accommodate it. | ✓ |
+| `README.md:90` | Explicit anti-decree clause: *"Percentage changes require Cowork audit and ledger synchronization; infrastructure improvements alone do not move mathematical percentages."* | ✓ |
+| `JOINT_AGENT_PLANNER.md:73` | *"Do not let infrastructure progress move mathematical percentages."* | ✓ |
+
+The 28% / 23-25% / 5% / 50% values are unchanged from the dual-number answer Cowork gave Lluis at 16:35Z. Planner creation is bookkeeping.
+
+### Honesty observations (recorded; not stop conditions)
+
+1. **README "Last closed" is stale**. `README.md:34` still shows *"Last closed: v2.42.0 anchored root-shell BFS witness"* but actual last-closed v2.52.0 degree-one leaf deletion subcase landed earlier today (per AGENT_BUS 16:00Z handoff). Drift ≈ 10 commits across v2.43→v2.52. Not a Clay-level overclaim — but a Cowork-readable freshness gap. Filing `CODEX-README-V2.52-FRESHNESS-001` recommendation.
+
+2. **README §3 N_c=1 milestone phrasing**. `README.md:122` says *"first concrete inhabitant of `ClayYangMillsMassGap 1` — zero hypotheses, zero sorry"* and explicitly states *"L1 / L2 / L3 / OVERALL bars do not move"* + *"For N_c ≥ 2, the same schema must be filled in via the `ClusterCorrelatorBound` front"*. Combined with line 85 ("100% physics-degenerate") and line 88 ("explicitly does NOT extrapolate to N ≥ 2 because SU(1) is the trivial group {1}"), the phrasing is bounded by repeated SU(1)=trivial caveats. Acceptable. Could be hardened in a future polishing pass to add a `KNOWN_ISSUES §1.1` cross-reference inline at line 122 — minor.
+
+3. **Component-weights worth re-auditing on next freshness pass**. The 1% INFRA-HYGIENE contribution feels like the upper edge of what infra can claim; if a future planner extension grows this, it should be discounted. Watching for drift.
+
+### Tasks updates
+
+- `COWORK-AUDIT-JOINT-PLANNER-001`: READY → **DONE** with `audit_verdict: AUDIT_PASS`.
+- `JOINT-PLANNER` LEDGER row in `dashboard/agent_state.json`: CONDITIONAL_BRIDGE → can stay CONDITIONAL_BRIDGE for one more planner cycle; recommend Codex move to `INFRA_AUDITED` after a 6h stability window. Filing `REC-COWORK-PLANNER-LEDGER-MATURE-001` (priority 4).
+- New recommendation: `REC-CODEX-README-V2.52-FRESHNESS-001` (priority 5, not blocking).
+
+### Verdict
+
+**AUDIT_PASS.** All 4 validation requirements satisfied; all 3 stop conditions NOT TRIGGERED; critical path matches LEDGER 5/5; planner creation correctly bookkept as bridge, not math.
+
+22nd audit-event of the session, totalling 13 PASS + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 2 META.
+
+---
+
 ## 2026-04-26T16:30:00Z — AUDIT_PASS: COWORK-LEDGER-FRESHNESS-AUDIT-002 (2nd 6h freshness iteration)
 
 **Audit result**: `AUDIT_PASS`. Second iteration of the recurring 6h freshness cadence per `REC-COWORK-LEDGER-FRESHNESS-001`. Brought forward ~4h from baseline (14:00) to break the dispatcher premature-promotion loop. Re-grep result is **identical** to the 14:00 baseline: 5 real Tier 2 axiom declarations, 0 axioms outside `YangMills/Experimental/`, lieDerivReg_all consumer scope unchanged.

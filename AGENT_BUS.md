@@ -9,6 +9,38 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff — 2026-04-26T17:00Z — COWORK-AUDIT-JOINT-PLANNER-001 closed AUDIT_PASS
+
+**Baton owner**: Cowork
+**Task**: `COWORK-AUDIT-JOINT-PLANNER-001`
+**Status**: `DONE` (`audit_verdict: AUDIT_PASS`)
+
+Cowork audited the joint planner Codex created and confirmed:
+
+- **4-number separation is honest**. Clay-as-stated 5% / lattice small-β 28% / honesty-discounted 23-25% / named-frontier 50% appear in `JOINT_AGENT_PLANNER.md`, `registry/progress_metrics.yaml`, and `README.md` (badges + TL;DR + progress block) without conflation. Every appearance of 28% is paired with the 23-25% discount; every appearance of 50% is labelled "named-frontier" or "OVERALL" (never "Clay").
+- **Validator passes by source-inspection**. `scripts/joint_planner_report.py validate` (lines 25–48): all 3 required metrics present with `percent` field; component contributions sum to **28.0** vs target 28 (|diff| = 0 ≤ 0.75); `global_status == "NOT_ESTABLISHED"` confirmed at `progress_metrics.yaml:3`. (Workspace VM unavailable for runtime; manual computation matches.)
+- **Critical path matches LEDGER 5/5**. F3-SAFE-DELETION → F3-COUNT (CONDITIONAL_BRIDGE); F3-ANCHORED-WORD-DECODER → F3-COUNT; F3-MAYER-URSSELL → F3-MAYER + F3-COMBINED (BLOCKED); EXPERIMENTAL-AXIOM-CLASSIFICATION → EXP-MATEXP-DET + EXP-BD-HY-GR + EXP-LIEDERIVREG; OUT-CONTINUUM-BLUEPRINT → OUT-CONTINUUM + OUT-OS-WIGHTMAN.
+- **All 3 stop conditions NOT TRIGGERED**. No document implies Clay solved (`README.md:22` "not a finished proof"; `JOINT_AGENT_PLANNER.md:68` "Do not claim the Clay problem is solved"; LEDGER `CLAY-GOAL: BLOCKED`; dashboard `unconditionality_status: NOT_ESTABLISHED`). 50% is never presented as the literal Clay percentage. 28% is never presented without the 23-25% discount caveat.
+- **Planner creation correctly bookkept as bridge, not math**. `dashboard/agent_state.json:100` records `JOINT-PLANNER: CONDITIONAL_BRIDGE (planner created; pending Cowork audit)` parallel to `AGENTIC-INFRA: INFRA_AUDITED`. No math row moved. INFRA-HYGIENE component contribution remained 1% (preexisting); the 28% lattice headline did not change to accommodate the planner.
+
+**Recommendations filed (both non-blocking)**:
+
+- `REC-CODEX-README-V2.52-FRESHNESS-001` (priority 5): `README.md:34` still shows "Last closed: v2.42.0" but actual is v2.52.0 (per the AGENT_BUS 16:00Z handoff). Bookkeeping freshness gap, not overclaim. Codex to refresh on next polish pass.
+- `REC-COWORK-PLANNER-LEDGER-MATURE-001` (priority 4): after a 6h stability window (~23:00Z), Codex should mature `JOINT-PLANNER` from `CONDITIONAL_BRIDGE` to `INFRA_AUDITED`. Cowork will spot-check on the next freshness cadence.
+
+**Next baton owner**: dispatcher routes to Codex for `CODEX-FIX-MATHLIB-DRAFTS-001` (currently `last_dispatched_task` per dashboard) or `CLAY-F3-COUNT-RECURSIVE-001` PARTIAL v2.52 (priority 3, the actual math front). Cowork's next READY remains `COWORK-F3-DEPENDENCY-MAP-001` (priority 4).
+
+Validation:
+
+- `COWORK_RECOMMENDATIONS.md` 17:00Z entry written with full table of validation results + stop-condition counter-evidence + critical-path comparison + planner-creation-not-math accounting.
+- `registry/agent_tasks.yaml` marks `COWORK-AUDIT-JOINT-PLANNER-001` DONE with `audit_verdict: AUDIT_PASS`.
+- `registry/recommendations.yaml` gains 2 new OPEN recommendations.
+- `registry/agent_history.jsonl` gains audit_pass + complete_task + session_milestone (22 audit-events) + handoff events.
+
+**Honesty discipline preserved**: 22nd audit-event: 13 PASS + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 2 META. The dual-number percentage answer Cowork gave Lluis at 16:35Z is now backed by an audited LEDGER + machine-readable `progress_metrics.yaml` + verifier script. 4 numbers, 4 stories, no conflation.
+
+---
+
 ## Latest Handoff — 2026-04-26T16:45Z — META-GENERATE-TASKS-001 closed; 3 new Cowork READY tasks seeded
 
 **Baton owner**: Cowork
@@ -37,6 +69,52 @@ Validation:
 - `COWORK_RECOMMENDATIONS.md`: not modified by META itself (the 3 new tasks each include "gains entry" requirement when each individual task lands).
 
 **Honesty discipline preserved**: each new task carries explicit `stop_if` clauses preventing overclaim — F3-DEPENDENCY-MAP-001 must not claim F3-COUNT closure; CLAY-HORIZON-AUDIT-001 must not claim progress on `OUT-*` rows; VACUITY-FLAG-COLUMN-DRAFT-001 must not propose any LEDGER row status change.
+
+---
+
+## Latest Handoff — 2026-04-26 — Mathlib draft FAIL items repaired / cancelled
+
+**Baton owner**: Cowork
+**Task**: `CODEX-FIX-MATHLIB-DRAFTS-001`
+**Status**: `DONE`
+
+Codex completed the repair requested by
+`COWORK-MATHLIB-PR-DRAFT-AUDIT-001`:
+
+- `mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean` is already repaired:
+  no `sorry`, theorem `Matrix.det_exp_eq_exp_trace_fin_one`, closing
+  `#print axioms Matrix.det_exp_eq_exp_trace_fin_one`, and prior Mathlib build
+  evidence recorded at local Mathlib commit `cd3b69baae`.
+- `mathlib_pr_drafts/INDEX.md` now has `## §2. Inactive / Cancelled`.
+- The 3 F-series files are preserved but removed from the active PR queue:
+  `AnimalCount.lean`, `PartitionLatticeMobius.lean`, and
+  `PiDisjointFactorisation.lean`.
+- Reason recorded for all 3: superseded by Tier A PRs / `sorry`-incomplete.
+- `registry/recommendations.yaml` marks
+  `REC-COWORK-MATHLIB-DRAFTS-FAIL-001` as `RESOLVED` with repo commit
+  `f0d0a9b`.
+
+Validation:
+
+- `Select-String -Path mathlib_pr_drafts\MatrixExp_DetTrace_DimOne_PR.lean -Pattern "sorry"` returns no matches.
+- `Select-String -Path mathlib_pr_drafts\MatrixExp_DetTrace_DimOne_PR.lean -Pattern "#print axioms Matrix.det_exp_eq_exp_trace_fin_one"` finds the pinned axiom line.
+- `Select-String -Path mathlib_pr_drafts\INDEX.md -Pattern "Inactive / Cancelled|AnimalCount.lean|PartitionLatticeMobius.lean|PiDisjointFactorisation.lean"` finds the required section and entries.
+- Full Mathlib build evidence for MatrixExp remains the earlier local checkout result: `C:\Users\lluis\Downloads\mathlib4`, branch `eriksson/det-exp-trace-fin-one`, local commit `cd3b69baae`.
+
+Honesty note: this is Mathlib-submission hygiene. It does not move the
+Yang-Mills unconditionality percentages. The publishing blocker remains GitHub
+auth/fork setup.
+
+> **Next exact instruction**:
+> Cowork, audit `CODEX-FIX-MATHLIB-DRAFTS-001`. Read
+> `mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean`,
+> `mathlib_pr_drafts/INDEX.md`, `registry/recommendations.yaml`,
+> `registry/agent_tasks.yaml`, `dashboard/agent_state.json`, and
+> `AGENT_BUS.md`. Confirm that MatrixExp has no `sorry` and a pinned
+> `#print axioms`, the three F-series files are inactive/cancelled rather than
+> deleted, and `REC-COWORK-MATHLIB-DRAFTS-FAIL-001` is resolved with the final
+> commit SHA `f0d0a9b`. If audit passes, return Codex to the next active Clay-reduction
+> task.
 
 ---
 

@@ -832,10 +832,10 @@ tasks:
 - id: CODEX-FIX-MATHLIB-DRAFTS-001
   title: 'Codex: repair 4 FAIL items in mathlib_pr_drafts/ (per COWORK-MATHLIB-PR-DRAFT-AUDIT-001)'
   owner: Codex
-  status: PARTIAL
+  status: DONE
   priority: 4
   created_at: '2026-04-26T09:00:00Z'
-  updated_at: '2026-04-26T08:34:00Z'
+  updated_at: '2026-04-26T12:20:00Z'
   required_files:
   - mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean
   - mathlib_pr_drafts/AnimalCount.lean
@@ -877,9 +877,17 @@ tasks:
     and built in Mathlib checkout at local commit cd3b69baae. Remaining: move AnimalCount.lean,
     PartitionLatticeMobius.lean, and PiDisjointFactorisation.lean into an explicit
     inactive/cancelled section of INDEX.md.'
-  dispatched_at: '2026-04-26T07:12:57Z'
+  - Dispatched to Codex at 2026-04-26T09:43:19Z
+  - 'DONE by Codex at 2026-04-26T12:20:00Z: MatrixExp_DetTrace_DimOne_PR.lean was
+    already repaired and audited (no `sorry`, closing `#print axioms`, Mathlib local
+    build recorded at commit cd3b69baae). Codex completed the remaining queue hygiene
+    by moving AnimalCount.lean, PartitionLatticeMobius.lean, and PiDisjointFactorisation.lean
+    into mathlib_pr_drafts/INDEX.md §2 Inactive / Cancelled with reason "superseded
+    by Tier A PRs / `sorry`-incomplete".'
+  dispatched_at: '2026-04-26T09:43:19Z'
   dispatched_to: Codex
-  dispatch_count: 1
+  completed_at: '2026-04-26T12:20:00Z'
+  dispatch_count: 2
 - id: CODEX-CLEANUP-ORPHAN-A-001
   title: 'Codex: git rm orphan empty file `a` at repo root'
   owner: Codex
@@ -1979,10 +1987,51 @@ tasks:
 - id: COWORK-AUDIT-JOINT-PLANNER-001
   title: Audit shared progress planner and README percentage split
   owner: Cowork
-  status: IN_PROGRESS
+  status: DONE
   priority: 2
   created_at: '2026-04-26T12:00:00Z'
-  updated_at: '2026-04-26T09:41:34Z'
+  updated_at: '2026-04-26T17:00:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+  - 'Validator passes by source-inspection: required metrics present (clay_as_stated=5,
+    lattice_small_beta=28, named_frontier_retirement=50); component contributions
+    sum to 28.0 vs target 28 (|diff| = 0 ≤ 0.75 threshold); global_status == "NOT_ESTABLISHED"
+    confirmed at progress_metrics.yaml:3'
+  - 'README.md contains all 4 distinct planner numbers: badges at lines 9-11 (50%,
+    28%, 5%); TL;DR row at line 36 (5%, 28%, 23-25%, 50%); progress block at lines
+    81-84 (50% / ~28% / ~23-25% / ~5%) with explicit labels'
+  - UNCONDITIONALITY_LEDGER.md:44 keeps CLAY-GOAL = BLOCKED; dashboard/agent_state.json:18
+    keeps unconditionality_status = NOT_ESTABLISHED; LEDGER row CLAY-GOAL unchanged
+  - 'Critical path matches LEDGER 5/5: F3-SAFE-DELETION→F3-COUNT, F3-ANCHORED-WORD-DECODER→F3-COUNT,
+    F3-MAYER-URSSELL→F3-MAYER+F3-COMBINED, EXPERIMENTAL-AXIOM-CLASSIFICATION→EXP-MATEXP-DET+EXP-BD-HY-GR+EXP-LIEDERIVREG,
+    OUT-CONTINUUM-BLUEPRINT→OUT-CONTINUUM+OUT-OS-WIGHTMAN'
+  - 'Planner creation correctly bookkept as bridge, not math: dashboard/agent_state.json:100
+    records JOINT-PLANNER = CONDITIONAL_BRIDGE parallel to AGENTIC-INFRA = INFRA_AUDITED;
+    INFRA-HYGIENE component contribution remained 1% (preexisting); 28% lattice headline
+    did not change'
+  - COWORK_RECOMMENDATIONS.md 17:00Z entry written with full validation results +
+    stop-condition counter-evidence + critical-path comparison + planner-creation-not-math
+    accounting
+  stop_conditions_not_triggered:
+  - 'Any document implies the Clay problem is solved: NOT TRIGGERED — README.md:22
+    "not a finished proof"; JOINT_AGENT_PLANNER.md:68 "Do not claim the Clay problem
+    is solved"; multiple LEDGER + dashboard NOT_ESTABLISHED markers'
+  - 'The 50% named-frontier metric is presented as the literal Clay percentage: NOT
+    TRIGGERED — every reference labels it "named-frontier" or "OVERALL"; JOINT_AGENT_PLANNER.md:18
+    explicit disclaimer; progress_metrics.yaml:43-47 status: INTERNAL_METRIC; README.md:9-11
+    badges separated; README.md:36 "must not be interchanged"'
+  - 'The 28% lattice metric is presented without the vacuity/discount caveat: NOT
+    TRIGGERED — every appearance pairs 28% with 23-25% discount: JOINT_AGENT_PLANNER.md:16-17,
+    progress_metrics.yaml:21-22, README.md:36 inline, README.md:82-83 adjacent bars'
+  recommendations_added:
+  - 'REC-CODEX-README-V2.52-FRESHNESS-001 (priority 5): README.md:34 still shows v2.42.0
+    last-closed; should refresh to v2.52.0; bookkeeping only, not overclaim'
+  - 'REC-COWORK-PLANNER-LEDGER-MATURE-001 (priority 4): after 6h stability window
+    (~23:00Z), Codex matures JOINT-PLANNER from CONDITIONAL_BRIDGE to INFRA_AUDITED'
+  honesty_observation: 4 distinct percentages, 4 distinct stories, no conflation.
+    The dual-number answer Cowork gave Lluis at 16:35Z is now backed by an audited
+    LEDGER + machine-readable progress_metrics.yaml + verifier script. Anti-overclaim
+    discipline maintained; planner creation does not move any math row.
   required_files:
   - JOINT_AGENT_PLANNER.md
   - registry/progress_metrics.yaml
@@ -2009,7 +2058,44 @@ tasks:
   notes:
   - If audit fails, create a Codex-ready correction task with exact replacement wording
     and affected files.
-  - Dispatched to Cowork at 2026-04-26T09:41:34Z
+  - Dispatched to Cowork at 2026-04-26T09:41:34Z; closed AUDIT_PASS at 2026-04-26T17:00:00Z
   dispatched_at: '2026-04-26T09:41:34Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+  completed_at: '2026-04-26T17:00:00Z'
+- id: COWORK-AUDIT-CODEX-FIX-MATHLIB-DRAFTS-001
+  title: Audit Codex repair of mathlib_pr_drafts FAIL items
+  owner: Cowork
+  status: IN_PROGRESS
+  priority: 3
+  created_at: '2026-04-26T12:20:00Z'
+  updated_at: '2026-04-26T09:48:48Z'
+  required_files:
+  - mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean
+  - mathlib_pr_drafts/INDEX.md
+  - registry/recommendations.yaml
+  - registry/agent_tasks.yaml
+  - dashboard/agent_state.json
+  - AGENT_BUS.md
+  objective: Audit CODEX-FIX-MATHLIB-DRAFTS-001. Confirm that MatrixExp_DetTrace_DimOne_PR.lean
+    has no `sorry` and a pinned `#print axioms Matrix.det_exp_eq_exp_trace_fin_one`,
+    that AnimalCount.lean, PartitionLatticeMobius.lean, and PiDisjointFactorisation.lean
+    are listed under INDEX.md §2 Inactive / Cancelled with reason "superseded by Tier
+    A PRs / `sorry`-incomplete", and that REC-COWORK-MATHLIB-DRAFTS-FAIL-001 is RESOLVED
+    with commit evidence.
+  validation:
+  - grep -n "sorry" mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean returns nothing
+  - mathlib_pr_drafts/INDEX.md contains "## §2. Inactive / Cancelled"
+  - mathlib_pr_drafts/INDEX.md lists all three F-series files with the cancellation
+    reason
+  - registry/recommendations.yaml marks REC-COWORK-MATHLIB-DRAFTS-FAIL-001 RESOLVED
+  stop_if:
+  - Any of the 3 F-series files were deleted
+  - MatrixExp_DetTrace_DimOne_PR.lean contains `sorry`
+  next_agent: Codex
+  notes:
+  - Created by Codex after completing CODEX-FIX-MATHLIB-DRAFTS-001.
+  - Dispatched to Cowork at 2026-04-26T09:48:48Z
+  dispatched_at: '2026-04-26T09:48:48Z'
   dispatched_to: Cowork
   dispatch_count: 1

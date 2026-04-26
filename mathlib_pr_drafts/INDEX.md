@@ -80,16 +80,19 @@ This file closes the **`n = 1` case** of a **literal Mathlib TODO** at `Mathlib/
 
 ---
 
-## §2. Older PR drafts (Phases 8-83, F3-related)
+## §2. Inactive / Cancelled
 
-These predate the current PR sweep and target the F3 lattice-animal counting infrastructure. They were drafted but deprioritised in favour of structural attacks on Yang-Mills directly.
+These files are preserved for git history and future reference, but they are
+removed from the active Mathlib PR queue. They are either superseded by cleaner
+Tier A PRs or are `sorry`-incomplete. Do not submit them upstream without a new
+audit.
 
-| # | File | Theorem | PR description |
+| # | File | Reason | Replacement / status |
 |---|---|---|---|
-| F1 | `AnimalCount.lean` | BFS-tree bound on lattice animal counts | `PR_DESCRIPTION.md` |
-| F2 | `PiDisjointFactorisation.lean` | Haar measure disjoint factorisation | `PR_DESCRIPTION_Gap2.md` |
-| F3 | `PartitionLatticeMobius.lean` | Möbius / partition lattice inversion | `PR_DESCRIPTION_Gap3.md` |
-| F4 | `F3_Count_Witness_Sketch.lean` | Reference scaffold (NOT for PR) | — |
+| F1 | `AnimalCount.lean` | Superseded by Tier A PRs / `sorry`-incomplete | `KlarnerBFSBound_PR.lean` is the active replacement |
+| F2 | `PiDisjointFactorisation.lean` | Superseded by Tier A PRs / `sorry`-incomplete | Keep as historical F3 sketch only |
+| F3 | `PartitionLatticeMobius.lean` | Superseded by Tier A PRs / `sorry`-incomplete | Keep as historical Mayer/Ursell sketch only |
+| F4 | `F3_Count_Witness_Sketch.lean` | Reference scaffold, not a PR draft | Keep as project-local reference only |
 
 `KlarnerBFSBound_PR.lean` (tier A #1 above) **supersedes** `AnimalCount.lean` with a cleaner, more general statement.
 
@@ -120,7 +123,8 @@ These predate the current PR sweep and target the F3 lattice-animal counting inf
 
 11. `OneAddPowLeExpMul_PR.lean` — equivalent to #9, mention as a corollary in the same PR.
 
-Older F-series drafts: review against current Mathlib state before any further effort.
+Older F-series drafts: inactive/cancelled; do not spend upstream PR effort on
+them unless Cowork opens a new audit task.
 
 ---
 

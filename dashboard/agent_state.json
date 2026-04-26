@@ -1,11 +1,11 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "joint_planner_audit_needed",
+  "current_phase": "mathlib_drafts_repaired",
   "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-AUDIT-JOINT-PLANNER-001",
-  "last_completed_task": "JOINT-PLANNER-001",
-  "last_dispatched_task": "COWORK-AUDIT-JOINT-PLANNER-001",
+  "next_task_id": "COWORK-AUDIT-CODEX-FIX-MATHLIB-DRAFTS-001",
+  "last_completed_task": "CODEX-FIX-MATHLIB-DRAFTS-001",
+  "last_dispatched_task": "COWORK-AUDIT-CODEX-FIX-MATHLIB-DRAFTS-001",
   "last_dispatched_agent": "Cowork",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists"
@@ -22,9 +22,9 @@
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001"
   ],
-  "last_dispatch_at": "2026-04-26T09:41:34Z",
+  "last_dispatch_at": "2026-04-26T09:48:48Z",
   "last_completed_at": "2026-04-26T09:32:17Z",
-  "latest_validation_artifact": "joint planner metrics validated with scripts/joint_planner_report.py",
+  "latest_validation_artifact": "mathlib draft repair validation: MatrixExp no sorry, #print axioms pinned, INDEX inactive/cancelled section added",
   "joint_planner": {
     "status": "PENDING_COWORK_AUDIT",
     "source": "registry/progress_metrics.yaml",
@@ -59,6 +59,14 @@
       "blocker": "No gh executable, no upstream push permission, and no reachable lluiseriksson/mathlib4 fork"
     }
   },
+  "mathlib_draft_audit_state": {
+    "CODEX-FIX-MATHLIB-DRAFTS-001": "DONE (repo commit f0d0a9b)",
+    "MatrixExp_DetTrace_DimOne_PR": "REPAIRED_NO_SORRY_AXIOMS_PINNED_BUILD_RECORDED",
+    "AnimalCount.lean": "INACTIVE_CANCELLED_SUPERSEDED_BY_TIER_A_OR_SORRY_INCOMPLETE",
+    "PartitionLatticeMobius.lean": "INACTIVE_CANCELLED_SUPERSEDED_BY_TIER_A_OR_SORRY_INCOMPLETE",
+    "PiDisjointFactorisation.lean": "INACTIVE_CANCELLED_SUPERSEDED_BY_TIER_A_OR_SORRY_INCOMPLETE",
+    "recommendation": "REC-COWORK-MATHLIB-DRAFTS-FAIL-001 resolved at repo commit f0d0a9b"
+  },
   "communication_contract_active": true,
   "communication_contract_clauses": 13,
   "anti_stale_loop_layers": [
@@ -76,6 +84,7 @@
     "CLAY-MATHLIB-PR-LANDING-001"
   ],
   "active_cowork_audit_tasks": [
+    "COWORK-AUDIT-CODEX-FIX-MATHLIB-DRAFTS-001 (priority 3, READY) — audit mathlib draft repair and inactive/cancelled F-series handling",
     "COWORK-AUDIT-JOINT-PLANNER-001 (priority 2, READY) — audit 5%/28%/23-25%/50% planner split",
     "COWORK-F3-DEPENDENCY-MAP-001 (priority 4, READY) — produce F3_COUNT_DEPENDENCY_MAP.md",
     "COWORK-CLAY-HORIZON-AUDIT-001 (priority 5, READY) — write CLAY_HORIZON.md companion",

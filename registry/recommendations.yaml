@@ -1,4 +1,75 @@
 recommendations:
+- id: REC-CODEX-README-V2.52-FRESHNESS-001
+  author: Cowork
+  status: RESOLVED
+  resolution: 'Already resolved by Codex in commit e985066: README.md "Last closed"
+    now references v2.52.0 degree-one leaf deletion subcase with theorem names and
+    explicitly states F3-COUNT remains partial. No new task needed.'
+  priority: 5
+  title: README.md "Last closed" entry is stale at v2.42.0 while AXIOM_FRONTIER and
+    LEDGER reference v2.52.0
+  recommendation: 'README.md:34 still shows "Last closed: v2.42.0 anchored root-shell
+    BFS witness" but the actual last-closed lattice-animal-count milestone is v2.52.0
+    (degree-one leaf deletion subcase, landed today per AGENT_BUS 16:00Z handoff).
+    Drift across v2.43 → v2.48 → v2.50 → v2.51 → v2.52 — five increments missing from
+    the README "At a glance" table. Codex should refresh the "Last closed" cell to
+    v2.52.0 with the correct theorem names (plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_preconnected_of_induced_degree_one,
+    erase_mem_of_induced_degree_one) and append the cumulative v2.43-v2.52 progression
+    to §3 (Recently closed milestones). The fix is bookkeeping only — no LEDGER row
+    moves, no percentage moves.
+
+    '
+  reason: 'External readers landing on the README see the badges (Clay-as-stated 5%
+    / lattice 28% / named-frontier 50%) which are correct, but the "Last closed" row
+    gives the impression that no work has happened since v2.42.0. This is a Cowork-readable
+    freshness gap, not a Clay-level overclaim.
+
+    '
+  risk_if_ignored: 'Mild reader-confusion only; LEDGER + dashboard remain authoritative
+    and the math percentages are unaffected. No overclaim risk in either direction.
+
+    '
+  files_affected:
+  - README.md
+  converts_to_task: CODEX-README-V2.52-FRESHNESS-001 (to be created when the queue
+    has Codex-side capacity)
+  validation: 'After implementation, README.md:34 references v2.52.0 with theorem
+    names matching YangMills/ClayCore/LatticeAnimalCount.lean lines 1727 + 1784; §3
+    includes a v2.43-v2.52 cumulative entry.
+
+    '
+- id: REC-COWORK-PLANNER-LEDGER-MATURE-001
+  author: Cowork
+  status: OPEN
+  priority: 4
+  title: After 6h stability window, mature dashboard JOINT-PLANNER row from CONDITIONAL_BRIDGE
+    to INFRA_AUDITED
+  recommendation: 'dashboard/agent_state.json:100 currently records JOINT-PLANNER
+    as CONDITIONAL_BRIDGE because COWORK-AUDIT-JOINT-PLANNER-001 was filed pending.
+    With this audit (2026-04-26T17:00:00Z) closed AUDIT_PASS, the planner is no longer
+    pending — but Cowork recommends keeping it as CONDITIONAL_BRIDGE for one more
+    6h cycle to observe whether percentage drift or new components are silently injected.
+    After 2026-04-26T23:00:00Z, if no drift, Codex moves the row to INFRA_AUDITED
+    with the same audit-cadence treatment as AGENTIC-INFRA and AUTOCONTINUE.
+
+    '
+  reason: 'The planner is a planning instrument, not a math artifact. Once stable
+    it should sit in the same INFRA_AUDITED bucket as the dispatcher and ledger-freshness
+    cadence. Premature promotion would lose the cooling-off audit window; over-delayed
+    promotion would clutter the conditional-bridge row.
+
+    '
+  risk_if_ignored: 'Minor bookkeeping inconsistency; no honesty-discipline impact.
+
+    '
+  files_affected:
+  - dashboard/agent_state.json
+  converts_to_task: CODEX-PLANNER-LEDGER-MATURE-001 (auto-create after 2026-04-26T23:00:00Z
+    if no drift)
+  validation: 'After 6h, ledger_status.JOINT-PLANNER == "INFRA_AUDITED" and a Cowork
+    spot-check confirms the four percentages still equal 5/28/23-25/50.
+
+    '
 - id: REC-COWORK-DISPATCHER-TRIGGER-VERIFICATION-001
   author: Cowork
   status: OPEN
@@ -185,11 +256,12 @@ recommendations:
     '
 - id: REC-COWORK-MATHLIB-DRAFTS-FAIL-001
   author: Cowork
-  status: PARTIAL
+  status: RESOLVED
   resolution: 'Codex repaired the MatrixExp_DetTrace_DimOne_PR.lean part on 2026-04-26:
     no `sorry`, closing `#print axioms`, built in a fresh Mathlib checkout at local
-    commit cd3b69baae. Remaining open part: move the 3 F-series files into an explicit
-    inactive/cancelled section of INDEX.md.'
+    commit cd3b69baae. The 3 F-series files were moved out of the active queue into
+    mathlib_pr_drafts/INDEX.md §2 Inactive / Cancelled with reason "superseded by
+    Tier A PRs / `sorry`-incomplete". Repo commit: f0d0a9b.'
   priority: 2
   title: Fix 4 FAIL items in mathlib_pr_drafts/ before any upstream submission
   recommendation: 'Audit COWORK-MATHLIB-PR-DRAFT-AUDIT-001 found 4 of 23 files FAIL.
