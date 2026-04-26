@@ -1231,7 +1231,7 @@ tasks:
 - id: COWORK-AUDIT-CODEX-DISPATCHER-TRIGGER-VERIFICATION-001
   title: 'Cowork: post-implementation audit of CODEX-DISPATCHER-TRIGGER-VERIFICATION-001'
   owner: Cowork
-  status: IN_PROGRESS
+  status: DONE
   priority: 4
   created_at: '2026-04-26T15:30:00Z'
   updated_at: '2026-04-26T09:31:20Z'
@@ -2018,7 +2018,9 @@ tasks:
   status: IN_PROGRESS
   priority: 5
   created_at: '2026-04-26T16:45:00Z'
-  updated_at: '2026-04-26T10:53:22Z'
+  updated_at: '2026-04-26T18:25:00Z'
+  completed_at: '2026-04-26T18:25:00Z'
+  delivery_artifact: dashboard/vacuity_flag_column_draft.md
   required_files:
   - UNCONDITIONALITY_LEDGER.md
   - KNOWN_ISSUES.md
@@ -2053,6 +2055,10 @@ tasks:
   - Implements REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001 (priority 2, OPEN) at the
     spec level.
   - Dispatched to Cowork at 2026-04-26T10:53:22Z
+  - 'DONE by Cowork at 2026-04-26T18:25:00Z: dashboard/vacuity_flag_column_draft.md
+    delivered with sections (a)-(d), all 7 enum values, per-row Tier 1 + Tier 2
+    recommendations, and mechanical Codex insertion instructions. REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001
+    remains OPEN until Codex implements the actual ledger column.'
   dispatched_at: '2026-04-26T10:53:22Z'
   dispatched_to: Cowork
   dispatch_count: 1
