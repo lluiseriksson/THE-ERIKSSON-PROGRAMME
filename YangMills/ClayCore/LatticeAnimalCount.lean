@@ -1378,6 +1378,50 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighbor
   obtain ⟨z, hz⟩ := simpleGraph_walk_exists_adj_start_of_ne p hne
   exact ⟨z.1, z.2, SimpleGraph.induce_adj.mp hz⟩
 
+/-- Finset form of the root-neighbor witness.  This is the exact shape consumed
+by the local neighbor-choice alphabets. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hk : 1 < k) :
+    ∃ z, z ∈ X ∧ z ∈ (plaquetteGraph d L).neighborFinset root := by
+  obtain ⟨z, hzX, hzAdj⟩ :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighbor hX hk
+  exact ⟨z, hzX,
+    (SimpleGraph.mem_neighborFinset (plaquetteGraph d L) root z).mpr hzAdj⟩
+
+/-- Any nontrivial anchored bucket has a first root-neighbor symbol in any
+available neighbor-choice alphabet. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
+    {d D L k : ℕ} [NeZero d] [NeZero L]
+    (hchoice : PlaquetteNeighborChoiceCodeBoundDim d D)
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hk : 1 < k) :
+    ∃ c : Fin D, ∃ z, ∃ hzX : z ∈ X,
+      ∃ hzN : z ∈ (plaquetteGraph d L).neighborFinset root,
+        Classical.choose (hchoice root) ⟨z, hzN⟩ = c := by
+  obtain ⟨z, hzX, hzN⟩ :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset hX hk
+  exact ⟨Classical.choose (hchoice root) ⟨z, hzN⟩, z, hzX, hzN, rfl⟩
+
+/-- Physical four-dimensional version: a nontrivial anchored bucket has a first
+root-neighbor symbol in the current `1296`-letter alphabet. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode1296
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (hk : 1 < k) :
+    ∃ c : Fin 1296, ∃ z, ∃ hzX : z ∈ X,
+      ∃ hzN : z ∈ (plaquetteGraph physicalClayDimension L).neighborFinset root,
+        Classical.choose (plaquetteNeighborChoiceCodeBoundDim_physical_ternary root)
+          ⟨z, hzN⟩ = c :=
+  plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
+    plaquetteNeighborChoiceCodeBoundDim_physical_ternary hX hk
+
 /-- The anchored graph-animal bucket of size zero is empty, because every
 bucket element must contain the root. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
@@ -2256,6 +2300,9 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_root
 #print axioms simpleGraph_walk_exists_adj_start_of_ne
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighbor
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one

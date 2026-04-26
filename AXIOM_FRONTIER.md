@@ -1,3 +1,48 @@
+# v2.41.0 — anchored root-neighbor code witness
+
+**Released: 2026-04-26**
+
+## What
+
+Extended the v2.40.0 first-step BFS witness in
+`YangMills/ClayCore/LatticeAnimalCount.lean` to the local coding interface:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode1296
+
+The first theorem converts the root-adjacency witness into membership in
+`(plaquetteGraph d L).neighborFinset root`.  The second says that any available
+neighbor-choice alphabet gives a symbol for that first expansion vertex.  The
+third specializes this to the physical four-dimensional `1296`-letter alphabet.
+
+## Why
+
+No percentage bar moves.  This is a decoder-core increment: for the active
+nontrivial anchored bucket case `1 < k`, the formal BFS/Klarner development no
+longer stops at "there exists an adjacent plaquette"; it now exposes a first
+root-neighbor symbol in the exact finite alphabet already used by the walk and
+graph-animal counting bridges.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset
+      [propext, Classical.choice, Quot.sound]
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode1296
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.40.0 — anchored bucket root-neighbor witness
 
 **Released: 2026-04-26**
