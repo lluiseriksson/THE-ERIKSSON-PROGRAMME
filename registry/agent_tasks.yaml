@@ -845,7 +845,7 @@ tasks:
   - Long-pending hygiene item from Cowork session 2026-04-26T05:00:00Z.
   - Dispatched to Codex at 2026-04-26T08:37:25Z
   - DONE by Codex at 2026-04-26T08:37:47Z; verified `a` was tracked and 0 bytes,
-    then removed with `git rm -- a`. Commit SHA to be recorded after commit.
+    then removed with `git rm -- a`. Removal commit SHA `9adffd3`.
   dispatched_at: '2026-04-26T08:37:25Z'
   dispatched_to: Codex
   dispatch_count: 1

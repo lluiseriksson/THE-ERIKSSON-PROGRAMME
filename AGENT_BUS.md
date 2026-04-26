@@ -19,6 +19,8 @@ Codex verified the root file `a` was tracked by git and 0 bytes, then removed
 it with `git rm -- a`. This is hygiene only: no Lean, roadmap, or
 unconditionality status changed.
 
+Removal commit: `9adffd3`
+
 Validation:
 
 - `git ls-files --stage -- a` previously showed blob
