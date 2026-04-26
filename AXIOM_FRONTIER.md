@@ -1,3 +1,49 @@
+# v2.43.0 — anchored root-shell branching bound
+
+**Released: 2026-04-26**
+
+## What
+
+Added first-shell cardinal bounds in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_neighborFinset
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_branching
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_1296
+
+For any anchored bucket `X`, the root shell
+
+    X ∩ (plaquetteGraph d L).neighborFinset root
+
+has cardinal at most the local neighbor finset, hence at most any available
+branching bound.  In physical dimension this gives the concrete bound `≤ 1296`.
+
+## Why
+
+No percentage bar moves.  This is a BFS/Klarner decoder-core increment: after
+v2.42.0 proved the first shell nonempty for `1 < k`, v2.43.0 proves that the
+same shell is also uniformly finite in the exact alphabet already used by the
+physical walk/graph-animal encoders.
+
+## Oracle
+
+Lean check:
+
+    lake env lean YangMills/ClayCore/LatticeAnimalCount.lean
+
+Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_neighborFinset
+      [propext, Classical.choice, Quot.sound]
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_branching
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_1296
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.42.0 — anchored root-shell nonemptiness
 
 **Released: 2026-04-26**

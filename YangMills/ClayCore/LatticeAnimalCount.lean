@@ -1413,6 +1413,37 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_pos
   Finset.card_pos.mpr
     (plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_nonempty hX hk)
 
+/-- The first BFS shell is bounded by the local neighbor finset. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_neighborFinset
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (_hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k) :
+    (X ∩ (plaquetteGraph d L).neighborFinset root).card ≤
+      ((plaquetteGraph d L).neighborFinset root).card :=
+  Finset.card_le_card (Finset.inter_subset_right)
+
+/-- A branching bound controls the first BFS shell of every anchored bucket. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_branching
+    {d D L k : ℕ} [NeZero d] [NeZero L]
+    (hD : PlaquetteGraphBranchingBoundDim d D)
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k) :
+    (X ∩ (plaquetteGraph d L).neighborFinset root).card ≤ D :=
+  (plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_neighborFinset
+      hX).trans
+    (hD root)
+
+/-- Physical four-dimensional first-shell bound in the current `1296` alphabet. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_1296
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k) :
+    (X ∩ (plaquetteGraph physicalClayDimension L).neighborFinset root).card ≤ 1296 :=
+  plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_branching
+    plaquetteGraph_branchingBoundDim_physical_ternary hX
+
 /-- Any nontrivial anchored bucket has a first root-neighbor symbol in any
 available neighbor-choice alphabet. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
@@ -2325,6 +2356,9 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_nonempty
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_pos
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_neighborFinset
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_branching
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_le_1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
