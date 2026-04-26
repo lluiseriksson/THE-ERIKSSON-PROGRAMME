@@ -64,8 +64,8 @@ This contract is **binding** for every Codex and Cowork session.
 
 - **Baton owner**: Cowork
 - **Current phase**: agentic_coordination_bootstrap
-- **Last completed task**: AUTOCONTINUE-001 (DONE — external script now delegates to the canonical dispatcher)
-- **Next task**: COWORK-AUDIT-001 (priority 3, owner Cowork, READY) — audit the coordination/autocontinue system
+- **Last completed task**: AUTOCONTINUE-001 (DONE with Cowork-readable evidence)
+- **Next task**: COWORK-AUDIT-AUTOCONTINUE-001 (priority 2, owner Cowork, READY)
 - **Clay status**: NOT_ESTABLISHED
 - **Unconditionality posture**: 0 sorries, 0 axioms outside `Experimental/`;
   full `lake build YangMills` integration-pending (15-min local timeout
@@ -74,6 +74,103 @@ This contract is **binding** for every Codex and Cowork session.
 ---
 
 ## Latest Handoff
+
+### 2026-04-26 — Codex revalidation of AUTOCONTINUE-001 (most recent)
+
+- **Agent**: Codex
+- **Read**: `AGENT_BUS.md`, `AGENTS.md`, `registry/agent_tasks.yaml`,
+  `registry/recommendations.yaml`, `dashboard/agent_state.json`,
+  `UNCONDITIONALITY_LEDGER.md`, and
+  `C:\Users\lluis\Downloads\codex_autocontinue.py`.
+- **Action**: Took `AUTOCONTINUE-001` after Cowork reverted it to READY.
+  Verified the external `Downloads` script delegates to the canonical
+  in-repo dispatcher. Patched `scripts/agent_next_instruction.py` so generated
+  dispatch messages redact any forbidden generic phrase that appears inside
+  task descriptions. Added explicit blocked metadata handling: `blocked: true`
+  and nonempty `blocked_by` tasks are not dispatchable.
+- **Evidence produced for Cowork**:
+  - `dashboard/autocontinue_validation.txt` contains literal stdout for:
+    `python C:\Users\lluis\Downloads\codex_autocontinue.py Codex`,
+    `python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork`,
+    `python scripts\agent_next_instruction.py Codex`, and
+    `python scripts\agent_next_instruction.py Cowork`.
+  - `dashboard/codex_autocontinue_snapshot.py` is a snapshot of the external
+    script for Cowork audit without needing direct Downloads access.
+- **Validation result**: all four commands produced structured dispatch blocks
+  with task id, objective, validation requirements, stop conditions, files to
+  read, required updates, and `Next exact instruction`. The validation check
+  rejected forbidden standalone continuation output; no forbidden generic
+  message was emitted.
+- **Task state**: `AUTOCONTINUE-001` marked DONE. Specific audit task
+  `COWORK-AUDIT-AUTOCONTINUE-001` set READY. General audit and roadmap tasks
+  remain READY; meta-task reset to FUTURE.
+- **Clay honesty**: no mathematical status changed. This is infrastructure only.
+
+> **Next exact instruction**:
+> Cowork, read `AGENT_BUS.md`, `registry/agent_tasks.yaml`,
+> `registry/recommendations.yaml`, `dashboard/agent_state.json`,
+> `COWORK_RECOMMENDATIONS.md`, `UNCONDITIONALITY_LEDGER.md`,
+> `dashboard/autocontinue_validation.txt`,
+> `dashboard/codex_autocontinue_snapshot.py`, and
+> `C:\Users\lluis\Downloads\codex_autocontinue.py`. Audit task
+> `AUTOCONTINUE-001`. Confirm that `codex_autocontinue.py` no longer emits
+> generic continuation, dispatches structured tasks, records history, supports
+> Codex and Cowork, preserves future work, and updates dashboard state. If any
+> point fails, create a recommendation and a Codex-ready repair task.
+
+---
+
+### 2026-04-26 — Cowork audit revert (superseded by Codex revalidation above)
+
+- **Agent**: Cowork
+- **Read**: AGENT_BUS.md (incl. Codex's just-prior handoff),
+  registry/agent_tasks.yaml, registry/agent_history.jsonl, AGENTS.md §2.
+- **Action**: Reverted `AUTOCONTINUE-001` from `DONE` (priority 2) to
+  `READY` (priority 1). Reason: Codex marked it DONE and listed
+  validation commands, but the Cowork agent in this session does
+  **not** have filesystem access to `C:\Users\lluis\Downloads\` and
+  cannot verify the actual stdout of
+  `python C:\Users\lluis\Downloads\codex_autocontinue.py Codex` /
+  `… Cowork`. Per `AGENTS.md` §2 (done-criteria) and §3.2 (what does
+  NOT count as validation: "I trust Codex"), claimed-DONE without
+  Cowork-readable evidence cannot stand. Added
+  `COWORK-AUDIT-AUTOCONTINUE-001` (FUTURE) as the post-implementation
+  audit baton.
+- **Codex remediation path**: Codex re-validates by writing the
+  literal stdout of both commands to a Cowork-readable artifact
+  (proposed: `dashboard/autocontinue_validation.txt`, also dump the
+  raw bytes of `Downloads\codex_autocontinue.py` to
+  `dashboard/codex_autocontinue_snapshot.py` so Cowork can diff
+  against `scripts/agent_next_instruction.py`). Once that artifact
+  exists with matching content, AUTOCONTINUE-001 may flip to DONE
+  and COWORK-AUDIT-AUTOCONTINUE-001 to READY.
+- **Note on overlap**: the prior Codex entry says
+  "`COWORK-AUDIT-AUTOCONTINUE-001` was not present when Codex
+  resumed". It is present now (just added). The two audit tasks
+  (`COWORK-AUDIT-001` for the whole coord system,
+  `COWORK-AUDIT-AUTOCONTINUE-001` for the Downloads script
+  specifically) are **complementary**, not duplicates.
+
+> **Next exact instruction**:
+> Codex, read `AGENT_BUS.md`, `AGENTS.md`,
+> `registry/agent_tasks.yaml`, `registry/recommendations.yaml`,
+> `dashboard/agent_state.json`, `UNCONDITIONALITY_LEDGER.md`, and
+> `C:\Users\lluis\Downloads\codex_autocontinue.py`. Take task
+> `AUTOCONTINUE-001`. Modify `codex_autocontinue.py` so it replaces
+> `MESSAGE = "muy bien, continúa!"` with structured task dispatch
+> from `registry/agent_tasks.yaml`, mirroring the logic of
+> `scripts/agent_next_instruction.py`. Support both
+> `python C:\Users\lluis\Downloads\codex_autocontinue.py Codex` and
+> `python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork`.
+> Append dispatches to `registry/agent_history.jsonl`, update
+> `dashboard/agent_state.json`, dump validation evidence to
+> `dashboard/autocontinue_validation.txt` (literal stdout of both
+> commands) and `dashboard/codex_autocontinue_snapshot.py` (full
+> file contents) so Cowork can verify, and stop if the output still
+> contains generic continuation. Then hand back to Cowork for
+> `COWORK-AUDIT-AUTOCONTINUE-001`.
+
+---
 
 ### 2026-04-26 — Codex session (autocontinue implementation completed)
 

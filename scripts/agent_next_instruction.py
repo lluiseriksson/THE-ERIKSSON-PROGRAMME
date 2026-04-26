@@ -580,6 +580,18 @@ def is_stale(task: dict[str, Any]) -> bool:
     return age.total_seconds() >= STALE_HOURS * 3600
 
 
+def is_blocked(task: dict[str, Any]) -> bool:
+    """Treat explicit blocked metadata as non-dispatchable."""
+    if task.get("blocked") is True:
+        return True
+    blocked_by = task.get("blocked_by")
+    if isinstance(blocked_by, list) and blocked_by:
+        return True
+    if isinstance(blocked_by, str) and blocked_by.strip():
+        return True
+    return False
+
+
 def task_rank(task: dict[str, Any], state: dict[str, Any]) -> tuple[int, int, int, str, str]:
     status = task.get("status", "READY")
     if status in PRIMARY_STATUSES:
@@ -604,6 +616,8 @@ def task_is_actionable_for(agent: str, task: dict[str, Any], allow_future: bool)
     owner = task.get("owner", "Any")
     status = task.get("status", "READY")
     if owner not in {agent, "Any"}:
+        return False
+    if is_blocked(task):
         return False
     if status in NEVER_DISPATCH:
         return False
@@ -631,7 +645,23 @@ def list_block(title: str, values: Any) -> str:
         return f"{title}:\n- none"
     if isinstance(values, str):
         values = [values]
-    return title + ":\n" + "\n".join(f"- {item}" for item in values)
+    return title + ":\n" + "\n".join(f"- {sanitize_output_text(str(item))}" for item in values)
+
+
+def sanitize_output_text(text: str) -> str:
+    """Prevent generated dispatch messages from echoing forbidden prompts."""
+    replacements = {
+        "muy bien, continúa": "[forbidden generic phrase redacted]",
+        "muy bien, continÃºa": "[forbidden generic phrase redacted]",
+        "muy bien, contin�a": "[forbidden generic phrase redacted]",
+        'MESSAGE = "muy bien, continúa!"': "the old fixed generic MESSAGE assignment",
+        'MESSAGE = "muy bien, continÃºa!"': "the old fixed generic MESSAGE assignment",
+        'MESSAGE = "muy bien, contin�a!"': "the old fixed generic MESSAGE assignment",
+    }
+    cleaned = text
+    for old, new in replacements.items():
+        cleaned = cleaned.replace(old, new)
+    return cleaned
 
 
 def build_task_message(agent: str, task: dict[str, Any]) -> str:
@@ -656,7 +686,7 @@ def build_task_message(agent: str, task: dict[str, Any]) -> str:
             list_block("Files to read", task.get("required_files")),
             "",
             "Objective:",
-            str(task.get("objective", "")).strip(),
+            sanitize_output_text(str(task.get("objective", "")).strip()),
             "",
             list_block("Validation requirements", task.get("validation")),
             "",

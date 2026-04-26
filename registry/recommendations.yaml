@@ -1,4 +1,41 @@
 recommendations:
+- id: REC-AUDIT-AUTOCONTINUE-MIRROR-001
+  author: Cowork
+  status: OPEN
+  priority: 1
+  title: Codex must produce Cowork-verifiable evidence for AUTOCONTINUE-001 DONE claim
+  recommendation: 'Codex must dump the literal stdout of `python C:\Users\lluis\Downloads\codex_autocontinue.py
+    Codex` and `… Cowork` to `dashboard/autocontinue_validation.txt`, and the full
+    contents of `C:\Users\lluis\Downloads\codex_autocontinue.py` to `dashboard/codex_autocontinue_snapshot.py`.
+    Without these artifacts the Cowork sandbox cannot verify the DONE claim and AUTOCONTINUE-001
+    must remain READY.
+
+    '
+  reason: 'AGENTS.md §2 done-criteria and §3.2 what-does-not-count-as-validation:
+    a Cowork audit cannot accept "I trust Codex" or claimed validation without inspectable
+    output. The DONE claim is unfalsifiable from the Cowork sandbox, which violates
+    the auditability principle of the COMMUNICATION_CONTRACT.
+
+    '
+  risk_if_ignored: 'AUTOCONTINUE-001 status drifts between DONE (Codex) and READY
+    (Cowork) on every cycle, the audit task COWORK-AUDIT-AUTOCONTINUE-001 never activates,
+    and the Windows-side autocontinue may silently keep emitting "muy bien, continúa!"
+    while the in-repo dispatcher works correctly.
+
+    '
+  files_affected:
+  - C:\Users\lluis\Downloads\codex_autocontinue.py
+  - dashboard/autocontinue_validation.txt
+  - dashboard/codex_autocontinue_snapshot.py
+  - registry/agent_tasks.yaml
+  - AGENT_BUS.md
+  converts_to_task: AUTOCONTINUE-001
+  validation: 'After Codex re-runs AUTOCONTINUE-001, dashboard/autocontinue_validation.txt
+    contains literal stdout of both commands (Codex/Cowork), neither contains a forbidden
+    phrase, and dashboard/codex_autocontinue_snapshot.py is byte-equivalent on the
+    relevant logic to scripts/agent_next_instruction.py.
+
+    '
 - id: REC-BOOTSTRAP-001
   author: Human
   status: OPEN

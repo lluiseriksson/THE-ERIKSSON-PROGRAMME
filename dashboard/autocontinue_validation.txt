@@ -1,0 +1,159 @@
+=== external_codex ===
+COMMAND: python C:\Users\lluis\Downloads\codex_autocontinue.py Codex
+## Structured Agent Dispatch
+
+Agent role: Codex
+Task id: AUTOCONTINUE-001
+Task title: Replace generic autocontinue message with structured task dispatch
+Task priority: 1
+Task status at dispatch: READY
+
+Files to read:
+- C:\Users\lluis\Downloads\codex_autocontinue.py
+- scripts/agent_next_instruction.py
+- registry/agent_tasks.yaml
+- registry/agent_history.jsonl
+- registry/recommendations.yaml
+- dashboard/agent_state.json
+- AGENT_BUS.md
+
+Objective:
+Modify C:\Users\lluis\Downloads\codex_autocontinue.py so it no longer sends MESSAGE = "[forbidden generic phrase redacted]!". Instead, read registry/agent_tasks.yaml, select the next structured task for the requested agent, generate a precise Codex- or Cowork-targeted message, append the dispatch to registry/agent_history.jsonl, and update dashboard/agent_state.json. Mirror the logic of the canonical in-repo dispatcher scripts/agent_next_instruction.py; do not diverge silently.
+
+Validation requirements:
+- python C:\Users\lluis\Downloads\codex_autocontinue.py Codex
+- python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork
+
+Stop conditions:
+- The script cannot access the repo path
+- The generated message still contains generic continuation
+- The task registry cannot be read or safely initialized
+- The dispatcher diverges from scripts/agent_next_instruction.py without a recommendation
+
+Required updates:
+- AGENT_BUS.md
+- registry/agent_tasks.yaml
+- registry/agent_history.jsonl
+- dashboard/agent_state.json
+
+Next exact instruction:
+> Codex, take task `AUTOCONTINUE-001`. Read the files above, perform the objective, run or satisfy the validation requirements, update the required registries, and stop if any listed stop condition is met.
+
+=== external_cowork ===
+COMMAND: python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork
+## Structured Agent Dispatch
+
+Agent role: Cowork
+Task id: COWORK-AUDIT-AUTOCONTINUE-001
+Task title: Audit AUTOCONTINUE-001 implementation in Downloads\codex_autocontinue.py
+Task priority: 2
+Task status at dispatch: FUTURE
+
+Files to read:
+- C:\Users\lluis\Downloads\codex_autocontinue.py
+- scripts/agent_next_instruction.py
+- registry/agent_tasks.yaml
+- registry/agent_history.jsonl
+- registry/recommendations.yaml
+- dashboard/agent_state.json
+- AGENT_BUS.md
+- COWORK_RECOMMENDATIONS.md
+
+Objective:
+After Codex modifies codex_autocontinue.py via AUTOCONTINUE-001, audit whether the script (a) dispatches structured tasks, (b) records history, (c) supports Codex and Cowork, (d) prevents generic continuation, (e) keeps future work available, (f) faithfully mirrors scripts/agent_next_instruction.py, and (g) keeps the Clay objective honest (no overclaim phrases generated). Result must be either AUDIT_PASS with evidence or AUDIT_FAIL with a repair task.
+
+Validation requirements:
+- python C:\Users\lluis\Downloads\codex_autocontinue.py Codex (output inspected and quoted into COWORK_RECOMMENDATIONS.md)
+- python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork (output inspected and quoted into COWORK_RECOMMENDATIONS.md)
+- diff scripts/agent_next_instruction.py vs Downloads\codex_autocontinue.py for divergence justification
+- COWORK_RECOMMENDATIONS.md gains an audit entry referencing AUTOCONTINUE-001
+- registry/agent_history.jsonl gains a Cowork audit_pass or audit_fail event
+
+Stop conditions:
+- Codex did not deliver the modified script
+- The script still contains '[forbidden generic phrase redacted]' or any forbidden phrase
+- The dispatcher diverges silently from scripts/agent_next_instruction.py
+
+Required updates:
+- AGENT_BUS.md
+- registry/agent_tasks.yaml
+- registry/agent_history.jsonl
+- dashboard/agent_state.json
+- COWORK_RECOMMENDATIONS.md
+- registry/recommendations.yaml
+
+Next exact instruction:
+> Cowork, take task `COWORK-AUDIT-AUTOCONTINUE-001`. Read the files above, perform the objective, run or satisfy the validation requirements, update the required registries, and stop if any listed stop condition is met.
+
+=== repo_codex ===
+COMMAND: python scripts\agent_next_instruction.py Codex
+## Structured Agent Dispatch
+
+Agent role: Codex
+Task id: META-GENERATE-TASKS-001
+Task title: Generate new actionable tasks when the queue is empty
+Task priority: 99
+Task status at dispatch: META
+
+Files to read:
+- FORMALIZATION_ROADMAP_CLAY.md
+- UNCONDITIONALITY_LEDGER.md
+- registry/recommendations.yaml
+- AGENT_BUS.md
+- registry/agent_tasks.yaml
+
+Objective:
+No actionable READY or PARTIAL task exists for this agent. Inspect the roadmap, ledger, recommendations, and bus, then create at least three new READY tasks that reduce conditionality, improve auditability, or repair the agentic infrastructure.
+
+Validation requirements:
+- registry/agent_tasks.yaml contains at least three READY tasks
+
+Stop conditions:
+- Roadmap and ledger are missing
+- Cannot write registry/agent_tasks.yaml
+
+Required updates:
+- registry/agent_tasks.yaml
+- registry/agent_history.jsonl
+- dashboard/agent_state.json
+- AGENT_BUS.md
+
+Next exact instruction:
+> Codex, create at least three READY tasks from the roadmap, ledger, recommendations, and bus; validate that the queue is actionable; then hand off to the appropriate next agent.
+
+=== repo_cowork ===
+COMMAND: python scripts\agent_next_instruction.py Cowork
+## Structured Agent Dispatch
+
+Agent role: Cowork
+Task id: META-GENERATE-TASKS-001
+Task title: Generate new actionable tasks when the queue is empty
+Task priority: 99
+Task status at dispatch: META
+
+Files to read:
+- FORMALIZATION_ROADMAP_CLAY.md
+- UNCONDITIONALITY_LEDGER.md
+- registry/recommendations.yaml
+- AGENT_BUS.md
+- registry/agent_tasks.yaml
+
+Objective:
+No actionable READY or PARTIAL task exists for this agent. Inspect the roadmap, ledger, recommendations, and bus, then create at least three new READY tasks that reduce conditionality, improve auditability, or repair the agentic infrastructure.
+
+Validation requirements:
+- registry/agent_tasks.yaml contains at least three READY tasks
+
+Stop conditions:
+- Roadmap and ledger are missing
+- Cannot write registry/agent_tasks.yaml
+
+Required updates:
+- registry/agent_tasks.yaml
+- registry/agent_history.jsonl
+- dashboard/agent_state.json
+- AGENT_BUS.md
+
+Next exact instruction:
+> Cowork, create at least three READY tasks from the roadmap, ledger, recommendations, and bus; validate that the queue is actionable; then hand off to the appropriate next agent.
+
