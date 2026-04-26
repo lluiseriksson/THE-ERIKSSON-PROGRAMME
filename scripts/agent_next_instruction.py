@@ -48,6 +48,14 @@ VALID_AGENTS = {"Codex", "Cowork"}
 PRIMARY_STATUSES = {"READY": 0, "PARTIAL": 1}
 FALLBACK_STATUSES = {"IN_PROGRESS": 2, "FUTURE": 3}
 NEVER_DISPATCH = {"DONE", "CANCELLED", "BLOCKED"}
+COMPLETION_VERDICTS = {
+    "AUDIT_PASS",
+    "AUDIT_FAIL",
+    "DELIVERED",
+    "DONE",
+    "RESOLVED",
+    "CANCELLED",
+}
 STALE_HOURS = 6
 RECENT_REPEAT_SUPPRESS_SECONDS = 10 * 60
 LOCK_POLL_SECONDS = 0.1
@@ -600,6 +608,28 @@ def is_blocked(task: dict[str, Any]) -> bool:
     return False
 
 
+def effectively_closed(task: dict[str, Any]) -> bool:
+    """Detect completed tasks even when a stale status field was not normalized.
+
+    Cowork often appends rich audit metadata (`completed_at`, `audit_verdict`,
+    `delivery_artifact`) during always-on runs.  If a concurrent writer leaves
+    `status` stale as READY/IN_PROGRESS, the dispatcher should still avoid
+    re-feeding that task.  This keeps Cowork focused on the newest audit rather
+    than burning paid time on already-delivered work.
+    """
+    if task.get("status") in NEVER_DISPATCH:
+        return True
+    if task.get("completed_at"):
+        return True
+    verdict = str(task.get("audit_verdict", "")).upper()
+    if verdict in COMPLETION_VERDICTS:
+        return True
+    if task.get("delivery_artifact") or task.get("deliverable"):
+        if verdict in {"DELIVERED", "AUDIT_PASS", "DONE", ""} and task.get("completed_at"):
+            return True
+    return False
+
+
 def task_text(task: dict[str, Any]) -> str:
     parts: list[str] = []
     for key in ("id", "title", "objective"):
@@ -636,6 +666,19 @@ def axiom_frontier_has_version_at_least(threshold: str) -> bool:
     return False
 
 
+def axiom_frontier_latest_version() -> tuple[int, ...] | None:
+    if not (REPO_ROOT / "AXIOM_FRONTIER.md").exists():
+        return None
+    text = (REPO_ROOT / "AXIOM_FRONTIER.md").read_text(
+        encoding="utf-8", errors="ignore"
+    )
+    versions = [
+        parse_version_tuple(match.group(1))
+        for match in re.finditer(r"^#\s+v(\d+(?:\.\d+)*)", text, re.MULTILINE)
+    ]
+    return max(versions) if versions else None
+
+
 def versioned_cowork_audit_version(task: dict[str, Any]) -> tuple[int, ...] | None:
     match = VERSIONED_COWORK_AUDIT.match(str(task.get("id", "")))
     if not match:
@@ -657,12 +700,15 @@ def superseded_by_newer_cowork_audit(
     current = versioned_cowork_audit_version(task)
     if current is None:
         return False
+    latest_frontier = axiom_frontier_latest_version()
+    if latest_frontier is not None and latest_frontier > current:
+        return True
     for other in tasks:
         if other is task:
             continue
         if other.get("owner") != "Cowork":
             continue
-        if other.get("status") in NEVER_DISPATCH:
+        if effectively_closed(other):
             continue
         other_version = versioned_cowork_audit_version(other)
         if other_version is not None and other_version > current:
@@ -713,7 +759,11 @@ def task_status(tasks: list[dict[str, Any]], task_id: str) -> str | None:
     return None
 
 
-def future_trigger_state(task: dict[str, Any], tasks: list[dict[str, Any]]) -> tuple[bool, str]:
+def future_trigger_state(
+    task: dict[str, Any],
+    tasks: list[dict[str, Any]],
+    log_miss: bool = True,
+) -> tuple[bool, str]:
     """Evaluate explicit FUTURE auto-promote triggers without overclaiming.
 
     Unknown trigger language is treated as not fired and logged, so a trigger-gated
@@ -765,15 +815,16 @@ def future_trigger_state(task: dict[str, Any], tasks: list[dict[str, Any]]) -> t
         ) and axiom_frontier_has_version_at_least("2.52.0"):
             return True, "F3_V2_52_DEGREE_ONE_LEAF_SUBCASE"
 
-    append_history(
-        {
-            "time": utc_now(),
-            "event": "trigger_not_fired",
-            "agent": "dispatcher",
-            "task_id": task.get("id"),
-            "reason": "TRIGGER_NOT_FIRED_OR_NOT_PARSED",
-        }
-    )
+    if log_miss:
+        append_history(
+            {
+                "time": utc_now(),
+                "event": "trigger_not_fired",
+                "agent": "dispatcher",
+                "task_id": task.get("id"),
+                "reason": "TRIGGER_NOT_FIRED_OR_NOT_PARSED",
+            }
+        )
     return False, "TRIGGER_NOT_FIRED_OR_NOT_PARSED"
 
 
@@ -824,14 +875,15 @@ def task_is_actionable_for(
     allow_future: bool,
     state: dict[str, Any],
     tasks: list[dict[str, Any]],
+    log_trigger_misses: bool = True,
 ) -> bool:
     owner = task.get("owner", "Any")
     status = task.get("status", "READY")
     if owner not in {agent, "Any"}:
         return False
-    if is_blocked(task):
+    if effectively_closed(task):
         return False
-    if status in NEVER_DISPATCH:
+    if is_blocked(task):
         return False
     if agent == "Cowork" and superseded_by_newer_cowork_audit(task, tasks):
         return False
@@ -844,21 +896,34 @@ def task_is_actionable_for(
     if status == "FUTURE":
         if not allow_future:
             return False
-        fired, _reason = future_trigger_state(task, tasks)
+        fired, _reason = future_trigger_state(
+            task, tasks, log_miss=log_trigger_misses
+        )
         return fired
     return False
 
 
-def select_next_task(agent: str, tasks: list[dict[str, Any]], state: dict[str, Any]) -> dict[str, Any] | None:
+def select_next_task(
+    agent: str,
+    tasks: list[dict[str, Any]],
+    state: dict[str, Any],
+    log_trigger_misses: bool = True,
+) -> dict[str, Any] | None:
     primary = [
         task for task in tasks
-        if task_is_actionable_for(agent, task, allow_future=False, state=state, tasks=tasks)
+        if task_is_actionable_for(
+            agent, task, allow_future=False, state=state, tasks=tasks,
+            log_trigger_misses=log_trigger_misses,
+        )
     ]
     if primary:
         return sorted(primary, key=lambda task: task_rank(task, state))[0]
     fallback = [
         task for task in tasks
-        if task_is_actionable_for(agent, task, allow_future=True, state=state, tasks=tasks)
+        if task_is_actionable_for(
+            agent, task, allow_future=True, state=state, tasks=tasks,
+            log_trigger_misses=log_trigger_misses,
+        )
     ]
     if fallback:
         return sorted(fallback, key=lambda task: task_rank(task, state))[0]
@@ -1021,52 +1086,64 @@ def update_dashboard(agent: str, task_id: str | None, meta: bool = False) -> Non
     save_json(STATE_FILE, state)
 
 
-def _build_message_unlocked(agent: str) -> str:
+def _build_message_unlocked(agent: str, mutate: bool = True) -> str:
     if agent not in VALID_AGENTS:
         raise SystemExit(f"Unknown agent role '{agent}'. Use Codex or Cowork.")
-    ensure_base_files()
+    if mutate:
+        ensure_base_files()
     tasks_doc = load_yaml(TASKS_FILE)
     state = load_json(STATE_FILE)
-    task = select_next_task(agent, tasks_doc.get("tasks", []), state)
+    task = select_next_task(
+        agent,
+        tasks_doc.get("tasks", []),
+        state,
+        log_trigger_misses=mutate,
+    )
     if task is None:
         message = build_meta_message(agent)
-        update_dashboard(agent, "META-GENERATE-TASKS-001", meta=True)
-        append_history(
-            {
-                "time": utc_now(),
-                "event": "dispatch_meta_task",
-                "agent": agent,
-                "task_id": "META-GENERATE-TASKS-001",
-            }
-        )
+        if mutate:
+            update_dashboard(agent, "META-GENERATE-TASKS-001", meta=True)
+            append_history(
+                {
+                    "time": utc_now(),
+                    "event": "dispatch_meta_task",
+                    "agent": agent,
+                    "task_id": "META-GENERATE-TASKS-001",
+                }
+            )
         return message
 
     message_task = deepcopy(task)
-    mark_task_dispatched(tasks_doc, task["id"], agent)
-    save_yaml(TASKS_FILE, tasks_doc)
-    update_dashboard(agent, task["id"])
-    append_history(
-        {
-            "time": utc_now(),
-            "event": "dispatch_task",
-            "agent": agent,
-            "task_id": task["id"],
-            "task_title": task.get("title"),
-            "priority": task.get("priority"),
-        }
-    )
+    if mutate:
+        mark_task_dispatched(tasks_doc, task["id"], agent)
+        save_yaml(TASKS_FILE, tasks_doc)
+        update_dashboard(agent, task["id"])
+        append_history(
+            {
+                "time": utc_now(),
+                "event": "dispatch_task",
+                "agent": agent,
+                "task_id": task["id"],
+                "task_title": task.get("title"),
+                "priority": task.get("priority"),
+            }
+        )
     return build_task_message(agent, message_task)
 
 
-def build_message(agent: str) -> str:
+def build_message(agent: str, mutate: bool = True) -> str:
     with coordination_lock():
-        return _build_message_unlocked(agent)
+        return _build_message_unlocked(agent, mutate=mutate)
 
 
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
+    mutate = True
+    if "--peek" in argv:
+        mutate = False
+        argv.remove("--peek")
     agent = argv[0] if argv else "Codex"
-    print(build_message(agent))
+    print(build_message(agent, mutate=mutate))
     return 0
 
 
