@@ -1860,6 +1860,23 @@ def PlaquetteGraphAnchoredTwoNonCutExists
         ((plaquetteGraph d L).induce {x | x ∈ X.erase z₁}).Preconnected ∧
         ((plaquetteGraph d L).induce {x | x ∈ X.erase z₂}).Preconnected
 
+/-- High-cardinality two-non-cut formulation after the small base zone has
+been split off.
+
+The v2.55/v2.58/v2.59 base drivers cover `2 ≤ k ≤ 3`.  The remaining
+nontrivial graph-theoretic theorem can therefore be stated just for `4 ≤ k`,
+which prevents the F3 route from accumulating more isolated base cases. -/
+def PlaquetteGraphAnchoredHighCardTwoNonCutExists
+    (d L : ℕ) [NeZero d] [NeZero L] : Prop :=
+  ∀ {root : ConcretePlaquette d L} {k : ℕ}
+    {X : Finset (ConcretePlaquette d L)},
+    4 ≤ k →
+    X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k →
+    ∃ z₁, ∃ hz₁X : z₁ ∈ X, ∃ z₂, ∃ hz₂X : z₂ ∈ X,
+      z₁ ≠ z₂ ∧
+        ((plaquetteGraph d L).induce {x | x ∈ X.erase z₁}).Preconnected ∧
+        ((plaquetteGraph d L).induce {x | x ∈ X.erase z₂}).Preconnected
+
 /-- The degree-one global hypothesis is sufficient for the exact safe-deletion
 hypothesis, by the local v2.52 leaf-deletion theorem. -/
 theorem plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
@@ -1969,6 +1986,12 @@ abbrev PhysicalPlaquetteGraphAnchoredNonRootNonCutExists
 abbrev PhysicalPlaquetteGraphAnchoredTwoNonCutExists
     (L : ℕ) [NeZero L] : Prop :=
   PlaquetteGraphAnchoredTwoNonCutExists physicalClayDimension L
+
+/-- Physical four-dimensional version of the high-cardinality two-non-cut
+deletion hypothesis. -/
+abbrev PhysicalPlaquetteGraphAnchoredHighCardTwoNonCutExists
+    (L : ℕ) [NeZero L] : Prop :=
+  PlaquetteGraphAnchoredHighCardTwoNonCutExists physicalClayDimension L
 
 /-- Physical specialization: degree-one deletion existence is sufficient for
 safe deletion existence. -/
@@ -2326,6 +2349,46 @@ theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_o
   plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
     (d := physicalClayDimension) (L := L) (k := k) (root := root) (X := X)
     hk_lower hk_upper hX
+
+/-- A high-cardinality two-non-cut theorem plus the already-proved small base
+zone is sufficient for exact anchored safe deletion.
+
+This is the v2.60 split of the remaining F3/Klarner obstruction: the local
+`2 ≤ k ≤ 3` cases are discharged by v2.59, so future work only needs to prove
+the standard two-non-cut graph statement for `4 ≤ k`. -/
+theorem plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (hhigh : PlaquetteGraphAnchoredHighCardTwoNonCutExists d L) :
+    PlaquetteGraphAnchoredSafeDeletionExists d L := by
+  intro root k X hk hX
+  by_cases hk_small : k ≤ 3
+  · exact
+      plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
+        (d := d) (L := L) (k := k) (root := root) (X := X)
+        hk hk_small hX
+  · have hk_high : 4 ≤ k := by omega
+    obtain ⟨z₁, hz₁X, z₂, hz₂X, hne, hpre₁, hpre₂⟩ := hhigh hk_high hX
+    by_cases hz₁root : z₁ = root
+    · refine ⟨z₂, hz₂X, ?_, ?_⟩
+      · intro hz₂root
+        exact hne (hz₁root.trans hz₂root.symm)
+      · exact
+          plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected
+            hX hz₂X (by
+              intro hz₂root
+              exact hne (hz₁root.trans hz₂root.symm)) hpre₂
+    · exact ⟨z₁, hz₁X, hz₁root,
+        plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected
+          hX hz₁X hz₁root hpre₁⟩
+
+/-- Physical specialization of the high-cardinality two-non-cut plus small
+base-zone bridge to exact anchored safe deletion. -/
+theorem physicalPlaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
+    {L : ℕ} [NeZero L]
+    (hhigh : PhysicalPlaquetteGraphAnchoredHighCardTwoNonCutExists L) :
+    PhysicalPlaquetteGraphAnchoredSafeDeletionExists L :=
+  plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
+    (d := physicalClayDimension) (L := L) hhigh
 
 /-- Member-targeted first BFS step: every non-root member of an anchored bucket
 is reached through some plaquette in the root shell. -/
@@ -3496,6 +3559,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
+#print axioms plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
+#print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_tail_to_member

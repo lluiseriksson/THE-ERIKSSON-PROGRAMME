@@ -1,7 +1,7 @@
 # F3_COUNT_DEPENDENCY_MAP.md
 
 **Cowork-authored mathematician-readable dependency map for the F3-COUNT closure path.**
-**Originally filed: 2026-04-26T17:15:00Z (post-v2.52.0). Refreshed: 2026-04-26T17:55:00Z (post-v2.53.0) per `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001`. Codex addenda: 2026-04-26T19:25:00Z (post-v2.55.0), 2026-04-26T20:05:00Z (post-v2.56.0), 2026-04-26T20:20:00Z (post-v2.57.0), 2026-04-26T20:35:00Z (post-v2.58.0), 2026-04-26T20:55:00Z (post-v2.59.0).**
+**Originally filed: 2026-04-26T17:15:00Z (post-v2.52.0). Refreshed: 2026-04-26T17:55:00Z (post-v2.53.0) per `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001`. Codex addenda: 2026-04-26T19:25:00Z (post-v2.55.0), 2026-04-26T20:05:00Z (post-v2.56.0), 2026-04-26T20:20:00Z (post-v2.57.0), 2026-04-26T20:35:00Z (post-v2.58.0), 2026-04-26T20:55:00Z (post-v2.59.0), 2026-04-26T21:35:00Z (post-v2.60.0).**
 **Status of `F3-COUNT` in `UNCONDITIONALITY_LEDGER.md`: `CONDITIONAL_BRIDGE` — and remains so until both missing theorems in §(b) land.**
 
 **v2.53 refresh summary**: Codex v2.53 introduced the exact recursive
@@ -166,11 +166,15 @@ clean one-step recursion driver from any future safe-deletion proof.
 | 2283 | `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three` | theorem (oracle-clean) | physical v2.58 specialization |
 | 2299 | `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three` | theorem (oracle-clean) | v2.59: packages the already-proved base zone `2 ≤ k ≤ 3` behind the future global safe-deletion interface |
 | 2322 | `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three` | theorem (oracle-clean) | physical v2.59 specialization |
+| 1869 | `PlaquetteGraphAnchoredHighCardTwoNonCutExists` | `def Prop` (open gap) | v2.60: high-cardinality two-non-cut target restricted to `4 ≤ k`, after the v2.59 base zone has been split off |
+| 2359 | `plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists` | theorem (oracle-clean) | v2.60: combines v2.59 for `2 ≤ k ≤ 3` with the high-card two-non-cut target for `4 ≤ k`, yielding exact safe deletion |
+| 2386 | `physicalPlaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists` | theorem (oracle-clean) | physical v2.60 specialization |
 
-The remaining B.1 obstruction is therefore narrower than the v2.53 refresh:
-prove `PlaquetteGraphAnchoredTwoNonCutExists` globally (or prove
-`PlaquetteGraphAnchoredNonRootNonCutExists` directly), then use the v2.56/v2.57
-bridge stack to obtain `PlaquetteGraphAnchoredSafeDeletionExists`.
+The remaining B.1 obstruction is therefore narrower than the v2.53 refresh and
+narrower than the v2.57 global two-non-cut target: prove
+`PlaquetteGraphAnchoredHighCardTwoNonCutExists` for `4 ≤ k` (or prove the
+matching high-card non-root non-cut theorem directly), then use the v2.60 bridge
+to obtain `PlaquetteGraphAnchoredSafeDeletionExists`.
 
 ### A.7 — Word-decoder consumer (preexisting at lines 982–1100)
 
@@ -544,40 +548,42 @@ unchanged.**
 
 ---
 
-## Suggested Codex schedule for v2.58+ (post-v2.57 addendum)
+## Suggested Codex schedule for v2.61+ (post-v2.60 addendum)
 
-**v2.53–v2.57 already landed**: the exact safe-deletion `def Prop` +
-degree-one sufficient `def Prop` + bridge + conditional one-step driver,
-the unrooted non-cut deletion theorem, the `k = 2` root-avoiding base case,
-the safe-deletion ↔ non-root-non-cut equivalence, and the two-non-cut
-sufficiency bridge, all oracle-clean.  The remaining work is now precisely:
+**v2.53–v2.60 already landed**: the exact safe-deletion `def Prop` +
+degree-one sufficient `def Prop` + bridge + conditional one-step driver, the
+unrooted non-cut deletion theorem, the `k = 2` and `k = 3` root-avoiding base
+cases, the safe-deletion ↔ non-root-non-cut equivalence, the two-non-cut
+sufficiency bridge, the combined base-zone driver `2 ≤ k ≤ 3`, and the
+high-cardinality target/bridge for `4 ≤ k`, all oracle-clean.  The remaining
+work is now precisely:
 
-1. **v2.58**: prove §(b)/B.1 by establishing
-   `PlaquetteGraphAnchoredTwoNonCutExists` globally, or by proving
-   `PlaquetteGraphAnchoredNonRootNonCutExists` directly.  The preferred route is
-   now the standard two-non-cut-vertices theorem for finite connected graphs,
-   adapted to induced plaquette buckets.
+1. **v2.61 target**: prove §(b)/B.1-high by establishing
+   `PlaquetteGraphAnchoredHighCardTwoNonCutExists` for `4 ≤ k`, or by proving
+   the matching high-card non-root non-cut statement directly.  The preferred
+   route remains the standard two-non-cut-vertices theorem for finite connected
+   graphs, adapted to induced plaquette buckets.
 
-   **Acceptable intermediate**: prove the strictly stronger
-   `PlaquetteGraphAnchoredDegreeOneDeletionExists` instead, then use v2.53
-   line 1831's bridge.  Gets you a working decoder for tree-shaped buckets,
-   but **not for cyclic buckets**, so cannot be the final unconditional
-   target.
+   **Do not substitute a new finite base case** (`k = 4`, `k = 5`, ...).  The
+   base zone is already split off; another isolated case would be a planning
+   regression unless it is an unavoidable lemma inside a global proof.
 
-2. **v2.59**: prove §(b)/B.2 — `PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296_proved`.
-   ~200–400 LOC after B.1 lands.  Use v2.53 line 1847's
-   `exists_erase_mem_of_safeDeletion` driver directly (no hand-composition
-   with v2.51/v2.52 needed).  Structural induction on `k`; encode the
-   deletion symbol via v2.48 line 2001's `rootShellParentCode1296`.
+2. **After B.1-high lands**: prove §(b)/B.2 —
+   `PhysicalConnectingClusterBaselineExtraWordDecoderCovers1296_proved`.
+   ~200–400 LOC after safe deletion lands.  Use
+   `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion`
+   or the v2.60 high-card bridge-generated safe-deletion hypothesis directly.
+   Structural induction on `k`; encode the deletion symbol via v2.48's
+   `rootShellParentCode1296`.
 
-3. **v2.60**: tactical clean-up — chain through line 1096
-   (`physicalShiftedF3CountPackageExp_of_baselineExtraWordDecoderCovers1296`)
-   to produce the unconditional `count(n) ≤ K_count^n` package; update
-   the F3-COUNT LEDGER row to `FORMAL_KERNEL`; refresh
-   `registry/progress_metrics.yaml` with Cowork audit (`lattice_small_beta`
+3. **Closure clean-up**: chain through
+   `physicalShiftedF3CountPackageExp_of_baselineExtraWordDecoderCovers1296`
+   to produce the unconditional `count(n) ≤ K_count^n` package; update the
+   F3-COUNT LEDGER row to `FORMAL_KERNEL`; refresh
+   `registry/progress_metrics.yaml` only after Cowork audit (`lattice_small_beta`
    ~28% → ~43%, contribution `F3-COUNT` 5 → 20).
 
-After v2.60: `F3-COUNT` is closed unconditionally and `F3-MAYER` becomes
+After those steps, `F3-COUNT` is closed unconditionally and `F3-MAYER` becomes
 the next live front.  Until then `F3-COUNT` remains `CONDITIONAL_BRIDGE`.
 
 ---

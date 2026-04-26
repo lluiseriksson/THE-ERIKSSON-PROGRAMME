@@ -1,3 +1,83 @@
+# v2.60.0 — high-cardinality two-non-cut target + base-zone split
+
+**Released: 2026-04-26**
+
+## What
+
+F3 / Klarner recursive deletion received a new high-cardinality target and a
+formal bridge that combines it with the already-proved small base zone:
+
+    def PlaquetteGraphAnchoredHighCardTwoNonCutExists
+        (d L : ℕ) [NeZero d] [NeZero L] : Prop :=
+      ∀ {root : ConcretePlaquette d L} {k : ℕ}
+        {X : Finset (ConcretePlaquette d L)},
+        4 ≤ k →
+        X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k →
+        ∃ z₁, ∃ hz₁X : z₁ ∈ X, ∃ z₂, ∃ hz₂X : z₂ ∈ X,
+          z₁ ≠ z₂ ∧
+            ((plaquetteGraph d L).induce {x | x ∈ X.erase z₁}).Preconnected ∧
+            ((plaquetteGraph d L).induce {x | x ∈ X.erase z₂}).Preconnected
+
+and:
+
+    theorem plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
+        {d L : ℕ} [NeZero d] [NeZero L]
+        (hhigh : PlaquetteGraphAnchoredHighCardTwoNonCutExists d L) :
+        PlaquetteGraphAnchoredSafeDeletionExists d L
+
+with the physical specialization:
+
+    theorem physicalPlaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
+        {L : ℕ} [NeZero L]
+        (hhigh : PhysicalPlaquetteGraphAnchoredHighCardTwoNonCutExists L) :
+        PhysicalPlaquetteGraphAnchoredSafeDeletionExists L
+
+## Why
+
+Cowork's v2.58/v2.59 audits correctly warned against continuing a bottom-up
+ladder of isolated cases.  v2.60 formalizes the right split:
+
+- `2 ≤ k ≤ 3` is discharged by the v2.59 base-zone driver.
+- `4 ≤ k` is now the only remaining two-non-cut theorem needed to get the
+  exact global safe-deletion hypothesis.
+
+This keeps the next mathematical target honest and finite: prove
+`PlaquetteGraphAnchoredHighCardTwoNonCutExists` (or bypass it with a direct
+high-card non-root non-cut theorem), then the existing v2.60 bridge gives
+`PlaquetteGraphAnchoredSafeDeletionExists`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Result: 8184/8184 jobs green.
+
+Pinned traces:
+
+    'YangMills.plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalPlaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`.  No new project axiom.  No percentage movement.
+
+## Scope
+
+This is **not** a proof of `F3-COUNT`.  It is a structural reduction of the
+recursive deletion obstruction.  The new `def Prop`
+`PlaquetteGraphAnchoredHighCardTwoNonCutExists` is still open and is now the
+preferred B.1 target, because the low-cardinality cases have already been
+handled without requiring a global graph theorem.
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.
+
+Implementation commit: `<TBD-after-commit>`.
+
+---
+
 # v2.59.0 — combined base-zone safe-deletion driver (`2 ≤ k ≤ 3`)
 
 **Released: 2026-04-26**
