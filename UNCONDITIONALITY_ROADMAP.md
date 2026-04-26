@@ -1,4 +1,27 @@
-# v0.98.0 — 2026-04-24 current roadmap status
+# v2.42.0 — 2026-04-26 current roadmap status
+
+Current sync note: the 2026-04-26 Codex pass consolidated the latest F3
+anchored-decoder work through commit `cf5b499`.  The live Clay-critical front is
+still `ClusterCorrelatorBound` for `SU(N_c)`, `N_c ≥ 2`; no percentage bar
+moved.  What changed is the local BFS/Klarner decoder substrate:
+
+- nontrivial anchored buckets (`1 < k`) now expose a first root-neighbor witness;
+- that witness is available in `neighborFinset` form;
+- the physical `d = 4` version has a `Fin 1296` code;
+- the first root shell `X ∩ neighborFinset root` is proved nonempty and
+  cardinal-positive.
+
+Verified build for this active surface:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+The full Cowork import sweep is being integrated into one repository, but a
+full `lake build YangMills` exceeded a 15-minute local timeout in this sync; use
+long CI before treating the expanded master import graph as fully green.
+
+---
+
+# v0.98.0 — 2026-04-24 historical roadmap status
 
 Current machine-checked status after the v0.93.0-v0.97.0 cleanup:
 
@@ -36,6 +59,40 @@ surfaced by the code:
 Everything below is preserved as historical roadmap material; entries that
 mention `yangMills_continuum_mass_gap` or `lsi_normalized_gibbs_from_haar` as
 live axioms are superseded by the status above.
+
+---
+
+# Update 2026-04-25 — first non-vacuous Clay-grade witness landed
+
+Two facts to record on top of the v0.98.0 banner above:
+
+1. **AbelianU1 N_c=1 unconditional witness landed 2026-04-23.**
+   `YangMills/ClayCore/AbelianU1Unconditional.lean` produces
+   `u1_clay_yangMills_mass_gap_unconditional : ClayYangMillsMassGap 1`
+   with mass `m = kpParameter (1/2)` and prefactor `C = 1`. This is the
+   **first concrete inhabitant** of the authentic non-vacuous Clay
+   target, distinct from the vacuous `ClayYangMillsTheorem` /
+   `ClayYangMillsStrong` audited in `L8_Terminal/ClayTrivialityAudit.lean`.
+   The general `N_c ≥ 2` case remains open and is the subject of the F3
+   frontier work below.
+
+2. **F3 frontier strategy documented in companion blueprints.**
+   The "F1/F2/F3 → `ClusterCorrelatorBound`" item (1) above is now
+   developed in two strategic documents at the repo root:
+   - `BLUEPRINT_F3Count.md` — Resolution C for the count side
+     (exponential frontier `ShiftedConnectingClusterCountBoundExp` with
+     `K = 2d - 1 = 7` for d = 4).
+   - `BLUEPRINT_F3Mayer.md` — Brydges–Kennedy random-walk cluster
+     expansion for the Mayer side, with `r = 4 N_c · β`, `A₀ = 1`,
+     validity `β < log(2)/N_c`.
+
+   Combined regime: `r · K < 1` ⇔ `β < 1/(28 N_c)`. For physical N_c = 3
+   (QCD), `β < 1/84 ≈ 0.012` — the standard weak-coupling
+   cluster-expansion regime where the mass gap is provable via this
+   route.
+
+For the staleness audit of this and the other strategic documents, see
+`ROADMAP_AUDIT.md`.
 
 ---
 

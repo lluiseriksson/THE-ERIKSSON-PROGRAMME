@@ -2,6 +2,7 @@ import Mathlib
 import YangMills.P8_PhysicalGap.SUN_StateConstruction
 import YangMills.Experimental.LieSUN.LieExpCurve
 import YangMills.Experimental.LieSUN.LieDerivativeBridge
+import YangMills.Experimental.LieSUN.LieDerivativeRegularity
 
 open scoped Matrix
 open MeasureTheory YangMills
@@ -14,6 +15,13 @@ Two axioms replace three P8 axioms. Net: -1.
 IN:  sunGeneratorData (1) + lieDerivReg_all (1) = 2
 OUT: lieDerivative_const + lieDerivative_linear + sunDirichletForm_subadditive = 3
 Net: -1 axiom → P8 frontier: 10 → 9
+
+## Phase 35 update (Cowork audit 2026-04-25)
+
+`sunGeneratorData` is now a definition derived from
+`generatorMatrix` / `gen_skewHerm` / `gen_trace_zero` (in
+`LieDerivativeRegularity.lean`), retiring 1 more axiom. Project
+axiom count: 11 → 7 (after Phase 35 deduplication batch).
 -/
 
 /-- Generator data for su(N): N²-1 skew-Hermitian trace-zero matrices. -/
@@ -22,8 +30,15 @@ structure GeneratorData (N_c : ℕ) [NeZero N_c] where
   skewHerm : ∀ i, (mat i)ᴴ = -(mat i)
   trZero   : ∀ i, (mat i).trace = 0
 
-/-- Axiom 1: SU(N) has a basis of su(N) generators. -/
-axiom sunGeneratorData (N_c : ℕ) [NeZero N_c] : GeneratorData N_c
+/-- Constructive bundling of the SU(N) generator data, derived from
+    `generatorMatrix`, `gen_skewHerm`, `gen_trace_zero` (in
+    `LieDerivativeRegularity.lean`).
+
+    Formerly an `axiom`; now a `def`, retiring 1 axiom. -/
+noncomputable def sunGeneratorData (N_c : ℕ) [NeZero N_c] : GeneratorData N_c where
+  mat := generatorMatrix N_c
+  skewHerm := gen_skewHerm N_c
+  trZero := gen_trace_zero N_c
 
 /-- Concrete Lie derivative via generator curves. -/
 noncomputable def lieD' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1))

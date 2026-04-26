@@ -1,5 +1,37 @@
 # AI Onboarding Guide — THE-ERIKSSON-PROGRAMME
 
+> ⚠ **POSSIBLY STALE — last verified for v1.45.0; current state is
+> v1.89.0 (44 versions later, 2026-04-25).**
+>
+> This file describes a project state that has been substantially
+> superseded:
+>
+> - The "1 BFS-live custom axiom" claim is **wrong**: current axiom
+>   count outside `Experimental/` is **0** (per `AXIOM_FRONTIER.md`
+>   and `SORRY_FRONTIER.md`).
+> - The "LSI Pipeline" described as primary critical path has been
+>   **superseded** by the F3-Mayer + F3-Count cluster expansion
+>   (see `BLUEPRINT_F3Count.md`, `BLUEPRINT_F3Mayer.md`).
+> - Build commands and oracle commands reference an entry point
+>   (`sun_physical_mass_gap`) that is no longer the active target.
+>   Current targets are
+>   `clayMassGap_of_shiftedF3MayerCountPackageExp` and
+>   `physicalStrong_of_expCountBound_mayerData_siteDist_measurableF`.
+>
+> **For current onboarding**, see (in order):
+> 1. `FINAL_HANDOFF.md` — 60-second TL;DR
+> 2. `AGENT_HANDOFF.md` — full operational guide
+> 3. `KNOWN_ISSUES.md` — caveats including N_c=1 trivial group and
+>    `HasContinuumMassGap` continuum trick
+> 4. `STATE_OF_THE_PROJECT.md` — current snapshot
+> 5. `CODEX_CONSTRAINT_CONTRACT.md` — current priority queue
+>
+> The historical content below is preserved for git-history
+> reference. See `COWORK_FINDINGS.md` Finding 007 for the
+> dual-governance dead-weight discussion.
+
+---
+
 ## What This Repo Is
 
 A Lean 4 / Mathlib 4 formalization of the Yang–Mills mass gap problem (Clay Millennium Problem).

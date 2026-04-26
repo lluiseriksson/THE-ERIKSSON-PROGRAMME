@@ -58,19 +58,33 @@ def HasVarianceDecay
       ∫ x, (sg.T t f x - ∫ y, f y ∂μ) ^ 2 ∂μ ≤
       Real.exp (-γ * t) * ∫ x, (f x - ∫ y, f y ∂μ) ^ 2 ∂μ
 
--- Honest axiom 1: Dirichlet form → semigroup + transport (no spectral gap)
-axiom hille_yosida_core
-    {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (E : (Ω → ℝ) → ℝ) (hE : IsDirichletFormStrong E μ) :
-    SymmetricMarkovTransport μ
+/-
+**Removed (Phase 33, Cowork audit 2026-04-25)**:
+`hille_yosida_core` and `poincare_to_variance_decay` axioms.
 
--- Honest axiom 2: Poincaré + semigroup → variance decay
--- (Gronwall: d/dt Var(T_t f) = -2·E(T_t f) ≤ -2·lam·Var(T_t f))
-axiom poincare_to_variance_decay
-    {μ : Measure Ω} [IsProbabilityMeasure μ]
-    (E : (Ω → ℝ) → ℝ) (hE : IsDirichletFormStrong E μ)
-    (sg : SymmetricMarkovTransport μ)
-    (lam : ℝ) (hP : PoincareInequality μ E lam) :
-    HasVarianceDecay sg
+Original purpose: the architectural decomposition of
+`hille_yosida_semigroup` (P8) into Layer A+B (Dirichlet form →
+SymmetricMarkovTransport) and Layer C (Poincaré + transport →
+HasVarianceDecay).
+
+Why removed: confirmed orphans via grep audit — declared but
+**never consumed** in any Lean code anywhere in the project (only
+mentions are in docstrings). The original file docstring already
+said "Decision: P8 keeps hille_yosida_semigroup pending Mathlib
+C₀-semigroup theory." — the decomposition was never integrated.
+
+Per consumer-driven discipline, dead-code axioms with zero
+consumers are pure overhead. Removed entirely. The C₀-semigroup
+theory + Poincaré-to-variance-decay implications remain genuine
+Mathlib gaps; if reintroduced, they should come with concrete
+consumers.
+
+**Project axiom count**: this removal moves 13 → 11 (down from
+the pre-Phase-33 count of 14).
+
+The structures `MarkovSemigroupCore`, `SymmetricMarkovTransport`,
+`HasVarianceDecay` are KEPT (they're definitions, not axioms, and
+remain useful for downstream reformulations).
+-/
 
 end YangMills

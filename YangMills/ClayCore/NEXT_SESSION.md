@@ -1,5 +1,30 @@
 # Next Session: F3 package for `ClusterCorrelatorBound`
 
+> **Update 2026-04-26 (post-v2.42.0)**: Codex added the first genuine
+> nontrivial anchored BFS layer in `LatticeAnimalCount.lean`.  For
+> `X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k` with
+> `1 < k`, we now have a root-neighbor witness, its `neighborFinset` form, a
+> physical `Fin 1296` code witness, and a nonempty/card-positive root shell
+> `X ∩ (plaquetteGraph d L).neighborFinset root`.  Next productive move:
+> turn this first-shell witness into a recursive deletion/parent map for the
+> anchored bucket decoder.
+
+> **Update 2026-04-25 (post-v1.82.0)**: the **exponential** frontier
+> `ShiftedF3MayerCountPackageExp` (added v1.82.0 in
+> `YangMills/ClayCore/ClusterRpowBridge.lean`) is the **current
+> closure target**. The polynomial-frontier package and subtarget
+> descriptions in this document below are kept for backwards
+> compatibility but are **NOT** the active work surface. In
+> particular, the F3-Count subtarget below describes the
+> `ShiftedConnectingClusterCountBound C_conn dim` polynomial
+> frontier, which `COWORK_FINDINGS.md` Finding 001 established as
+> structurally infeasible (lattice-animal counts are exponential,
+> not polynomial). Use `ShiftedConnectingClusterCountBoundExp 1 K`
+> with `K = 2d-1 = 7` (or `K = 4d² = 64` looser) instead. See
+> `BLUEPRINT_F3Count.md` §−1 for Resolution C and
+> `CODEX_CONSTRAINT_CONTRACT.md` §4 for the active priority queue.
+> Currently active: Priority 1.2 (`LatticeAnimalCount.lean`).
+
 ## Current Front
 
 The active Clay-critical front is no longer L2.6 / Peter-Weyl.  The

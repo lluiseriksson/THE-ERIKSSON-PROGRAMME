@@ -48,16 +48,24 @@ theorem clip_zero (n : ℝ) (hn : 0 < n) : clip n 0 = 0 := by
   have h2 : max (0 : ℝ) (-n) = 0 := max_eq_left (by linarith)
   simp [h1, h2]
 
-/-- Route B: honest replacement axiom.
-    1-Lipschitz scalar maps do not increase Dirichlet energy.
-    This is the Beurling-Deny contraction: requires weak derivatives on Lie groups.
-    NET COST: replacing sunDirichletForm_contraction with this = net 0. -/
-axiom dirichlet_lipschitz_contraction (N_c : ℕ) [NeZero N_c]
-    (φ : ℝ → ℝ) (hφ : ∀ x y, |φ x - φ y| ≤ |x - y|) (hφ0 : φ 0 = 0)
-    (f : SUN_State_Concrete N_c → ℝ) :
-    (∑ i : Fin (N_c ^ 2 - 1),
-      ∫ U, (lieD' N_c i (fun x => φ (f x)) U) ^ 2 ∂(sunHaarProb N_c)) ≤
-    (∑ i : Fin (N_c ^ 2 - 1),
-      ∫ U, (lieD' N_c i f U) ^ 2 ∂(sunHaarProb N_c))
+/-
+**Removed (Phase 33, Cowork audit 2026-04-25)**:
+`dirichlet_lipschitz_contraction` axiom.
+
+Original purpose: the Beurling-Deny contraction property
+(1-Lipschitz scalar maps do not increase Dirichlet energy).
+
+Why removed: confirmed orphan via grep audit — declared but
+**never consumed** in any Lean code anywhere in the project (only
+mentions are in docstrings). The original file conclusion already
+said "Spike complete: net 0, do not integrate."
+
+Per consumer-driven discipline, dead-code axioms with zero
+consumers are pure overhead. Removed entirely. The Beurling-Deny
+property remains a genuine Mathlib gap that, if needed in future,
+should be reintroduced with at least one concrete consumer.
+
+**Project axiom count**: this removal moves from 14 → 13.
+-/
 
 -- Spike complete: net 0, do not integrate.

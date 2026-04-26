@@ -1,5 +1,30 @@
 # Phase 8 Attack Plan: Physical SU(N) Mass Gap
 
+> **⚠️ Substantially stale as of 2026-04-25.** This document was authored
+> 2026-03-27 and predates the v0.93–v0.97 cleanup, the v0.98+ axiom
+> elimination, and the F3 frontier reformulation (v1.79+). Specifically:
+>
+> - The "current state" section lists 2 axioms (`sun_gibbs_dlr_lsi`,
+>   `sz_lsi_to_clustering`) and 2 sorries that **no longer exist** —
+>   the project currently has 0 axioms outside `Experimental/` and 0
+>   live sorries.
+> - Milestones M1–M5 are structured around the LSI → spectral gap path
+>   that has been **superseded** by the F3-Mayer + F3-Count cluster
+>   expansion route.
+> - Estimates (e.g. "2–4 weeks") and predictions are obsolete.
+>
+> **For the current critical path, see**:
+> - `STATE_OF_THE_PROJECT.md` — current snapshot
+> - `BLUEPRINT_F3Count.md` and `BLUEPRINT_F3Mayer.md` — active strategy
+> - `AXIOM_FRONTIER.md` — live axiom/sorry ledger
+> - `CODEX_CONSTRAINT_CONTRACT.md` §4 — current priority queue
+> - `MATHEMATICAL_REVIEWERS_COMPANION.md` — non-Lean exposition of v1.79+
+>
+> This file is preserved for historical reference of how Phase 8 was
+> originally planned. The actual execution diverged via the F3
+> reformulation. The document will not be updated; it remains as a
+> design artifact.
+
 ## Goal
 
 Prove `sun_physical_mass_gap` with 0 axioms and 0 sorrys.

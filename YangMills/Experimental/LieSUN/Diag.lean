@@ -1,17 +1,9 @@
-import Mathlib
-import YangMills.P8_PhysicalGap.SUN_DirichletForm
-import YangMills.Experimental.LieSUN.LieDerivativeDef
-import YangMills.Experimental.LieSUN.LieExpCurve
+/-
+**File deleted (Cowork audit 2026-04-25, Phase 41)**:
+This was a debug/scratch file containing only `#check` statements
+to verify scope. Confirmed truly orphan via `grep -rn` (zero
+importers anywhere in YangMills/). No production content.
 
-open scoped Matrix
-
--- ¿Qué está en scope?
-#check @LieGenIndex
-#check @lieDerivative
-#check @SUN_State_Concrete
-#check @lieDerivativeVia
-#check @lieExpCurve
-#check @lieDerivConcrete
-
--- Verificar namespace de lieDerivativeVia y lieExpCurve
-#check @YangMills.Experimental.LieSUN.lieDerivativeVia
+If debug scope verification is needed in future, recreate this file
+locally; do not commit.
+-/

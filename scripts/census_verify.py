@@ -2,12 +2,25 @@
 """
 census_verify.py — Authoritative axiom census for THE-ERIKSSON-PROGRAMME.
 
+⚠ DOCSTRING POSSIBLY STALE — references v0.15.0 expected output.
+   Current state (v1.89.0, 2026-04-25): axiom count outside
+   YangMills/Experimental/ is **0**. Total Experimental axioms
+   are **14** (per EXPERIMENTAL_AXIOMS_AUDIT.md). The script
+   may still execute correctly but its expected-output comments
+   below will not match current reality.
+
+   For current axiom census, see AXIOM_FRONTIER.md (live ledger)
+   and EXPERIMENTAL_AXIOMS_AUDIT.md (classification by
+   retire-ability). For the dual-governance dead-weight
+   discussion, see COWORK_FINDINGS.md Finding 007 and
+   REPO_INFRASTRUCTURE_AUDIT.md §3.
+
 Run this in Colab AFTER cloning/updating the repo:
 
     !git -C /content/THE-ERIKSSON-PROGRAMME pull --ff-only
     !python census_verify.py
 
-Expected output (v0.15.0):
+Expected output (v0.15.0 — STALE; will not match current state):
     Total unique Lean axiom declaration names: 26
     Distinct mathematical gaps:                26
       Clay-core (open):          3

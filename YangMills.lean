@@ -190,3 +190,490 @@ import YangMills.ClayCore.ClusterRpowBridge
 import YangMills.ClayCore.ConnectingClusterCountExp
 import YangMills.ClayCore.LatticeAnimalCount
 import YangMills.ClayCore.LatticeAnimalF3Bridge
+
+-- Cowork Branch III + VII (Phases 4, 6, 8, 10, 11, 13, 24, 25 — added Phase 38)
+import YangMills.L6_OS.WilsonReflectionPositivity
+import YangMills.L4_TransferMatrix.TransferMatrixConstruction
+import YangMills.L4_TransferMatrix.SpectralGap
+import YangMills.L4_TransferMatrix.MassGapFromSpectralGap
+import YangMills.L7_Continuum.PhysicalScheme
+import YangMills.L7_Continuum.DimensionalTransmutation
+import YangMills.L7_Continuum.PhysicalSchemeWitness
+import YangMills.L7_Continuum.M_lat_From_F3
+import YangMills.L7_Continuum.PhysicalScheme_Construction
+
+-- Cowork Phase 43 (2026-04-25) — first ClayYangMillsPhysicalStrong unconditional witness for SU(1)
+import YangMills.ClayCore.AbelianU1PhysicalStrongUnconditional
+
+-- Cowork Phase 45 (2026-04-25) — STRONGEST Clay-grade predicate unconditional for SU(1)
+import YangMills.L7_Continuum.AbelianU1PhysicalStrongGenuineUnconditional
+
+-- Cowork Phase 46 (2026-04-25) — Branch III RP discharged for SU(1)
+import YangMills.L6_OS.AbelianU1Reflection
+
+-- Cowork Phase 49 (2026-04-25) — Branch I OSClusterProperty discharged for SU(1)
+import YangMills.L6_OS.AbelianU1ClusterProperty
+
+-- Cowork Phase 50 (2026-04-25) — OSCovariant + HasInfiniteVolumeLimit discharged for SU(1)
+import YangMills.L6_OS.AbelianU1OSAxioms
+
+-- Cowork Phase 53 (2026-04-25) — Branch III LSI/Poincaré/clustering predicates discharged for SU(1)
+import YangMills.P8_PhysicalGap.AbelianU1LSIDischarge
+
+-- Cowork Phase 54 (2026-04-25) — SymmetricMarkovTransport + HasVarianceDecay + MarkovSemigroup discharged for SU(1)
+import YangMills.P8_PhysicalGap.AbelianU1MarkovSemigroup
+
+-- Cowork Phase 55 (2026-04-25) — OSContinuumBridge discharged for SU(1) (Branch I + Branch VII glue)
+import YangMills.L7_Continuum.AbelianU1OSContinuumBridge
+
+-- Cowork Phase 56 (2026-04-25) — LSI extensions discharged for SU(1) (DirichletFormStrong + DLR_LSI + MemLp)
+import YangMills.P8_PhysicalGap.AbelianU1LSIExtensions
+
+-- Cowork Phase 57 (2026-04-25) — FeynmanKacWilsonBridge discharged for SU(1)
+import YangMills.L6_FeynmanKac.AbelianU1FeynmanKacBridge
+
+-- Cowork Phase 58 (2026-04-25) — Single-statement SU(1) structural-completeness audit
+import YangMills.AbelianU1StructuralCompletenessAudit
+
+-- Cowork Phase 59 (2026-04-25) — N_c-agnostic unconditional BalabanHyps witness (structural finding)
+import YangMills.ClayCore.BalabanHypsTrivial
+
+-- Cowork Phase 60 (2026-04-25) — Trivial WilsonPolymerActivityBound for any N_c (K := 0)
+import YangMills.ClayCore.WilsonPolymerActivityTrivial
+
+-- Cowork Phase 61 (2026-04-25) — End-to-end trivial chain through balabanHyps_from_wilson_activity
+import YangMills.ClayCore.TrivialChainEndToEnd
+
+-- Cowork Phase 62 (2026-04-25) — n=1 specialization of matExp_traceless_det_one as theorem
+import YangMills.Experimental.LieSUN.MatExpTracelessDimOne
+
+-- Cowork Phase 63 (2026-04-25) — Trivial LargeFieldActivityBound (completes structural-triviality trilogy)
+import YangMills.ClayCore.LargeFieldActivityTrivial
+
+-- Cowork Phase 64 (2026-04-25) — SU(N) generator axioms theorem-discharged at N_c = 1
+import YangMills.Experimental.LieSUN.GeneratorAxiomsDimOne
+
+-- Cowork Phase 65 (2026-04-25) — Trivial SmallFieldActivityBound (completes Bałaban quartet)
+import YangMills.ClayCore.SmallFieldBoundTrivial
+
+-- Cowork Phase 66 (2026-04-25) — N_c-agnostic structural-triviality bundle + boundary observation
+import YangMills.StructuralTrivialityBundle
+
+-- Cowork Phase 68 (2026-04-25) — wires high-keystone BalabanRG orphans into master import graph
+import YangMills.ClayCore.BalabanRGOrphanWiring
+
+-- Cowork Phase 69 (2026-04-25) — direct trivial inhabitant of ClayCoreLSI (Finding 016)
+import YangMills.ClayCore.BalabanRG.ClayCoreLSITrivial
+
+-- Cowork Phase 70 (2026-04-25) — direct trivial inhabitant of BalabanRGPackage
+import YangMills.ClayCore.BalabanRG.BalabanRGPackageTrivial
+
+-- Cowork Phase 71 (2026-04-25) — vacuous SU(1) inhabitant of ClayCoreLSIToSUNDLRTransfer (closes last carrier)
+import YangMills.ClayCore.BalabanRG.ClayCoreLSIToSUNDLRTransferSU1
+
+-- Cowork Phase 72 (2026-04-25) — cumulative session-final bundle theorem
+import YangMills.SessionFinalBundle
+
+-- Cowork Phase 77 (2026-04-25) — det(matExp A) = exp(trace A) at n=1 (partial Mathlib upstream)
+import YangMills.Experimental.LieSUN.MatExpDetTraceDimOne
+
+-- Cowork Phase 82 (2026-04-25) — Law of Total Covariance (Mathlib-PR-ready draft)
+import YangMills.MathlibUpstream.LawOfTotalCovariance
+
+-- Cowork Phase 83 (2026-04-25) — Bloque-4 Lemma 8.2: clustering ⇒ spectral gap (abstract)
+import YangMills.L6_OS.ClusteringImpliesSpectralGap
+
+-- Cowork Phase 88 (2026-04-25) — Discrete Lyapunov coupling control (creative Angle A2)
+import YangMills.L8_CouplingControl.LyapunovInduction
+
+-- Cowork Phase 89 (2026-04-25) — Liouville's formula for det(exp A) = exp(trace A) (creative Angle D1)
+import YangMills.MathlibUpstream.MatrixDetExpViaLiouville
+
+-- Cowork Phase 90 (2026-04-25) — Plancherel decomposition reduction for SU(N) LSI (creative Angle C3)
+import YangMills.L8_GroupTheoreticLSI.PlancherelDecomposition
+
+-- Cowork Phase 91 (2026-04-25) — Stein's method for multiscale covariance bounds (creative Angle B2)
+import YangMills.L8_SteinMethod.SteinCovarianceBound
+
+-- Cowork Phase 92 (2026-04-25) — Combes-Thomas method for resolvent decay (creative Angle F1)
+import YangMills.L8_CombesThomas.CombesThomas
+
+-- Cowork Phases 93-97 (2026-04-25) — L7_Multiscale block: Branch VIII implementation
+import YangMills.L7_Multiscale.MultiscaleSigmaAlgebraChain
+import YangMills.L7_Multiscale.SingleScaleUVErrorBound
+import YangMills.L7_Multiscale.TelescopingIdentity
+import YangMills.L7_Multiscale.GeometricUVSummation
+import YangMills.L7_Multiscale.MultiscaleDecouplingPackage
+
+-- Cowork Phases 98-102 (2026-04-25) — L9_OSReconstruction: Bloque-4 §8 realization
+import YangMills.L9_OSReconstruction.GNSConstruction
+import YangMills.L9_OSReconstruction.VacuumUniqueness
+import YangMills.L9_OSReconstruction.TransferMatrixSpectralGap
+import YangMills.L9_OSReconstruction.WightmanReconstruction_Conditional
+import YangMills.L9_OSReconstruction.OSReconstructionPackage
+
+-- Cowork Phases 103-107 (2026-04-25) — L8_LatticeToContinuum: bridge L7 → L9 (Bloque-4 §2.3 + §8.1)
+import YangMills.L8_LatticeToContinuum.SchwingerFunctions
+import YangMills.L8_LatticeToContinuum.TemperednessOS0
+import YangMills.L8_LatticeToContinuum.SubsequentialContinuumLimit
+import YangMills.L8_LatticeToContinuum.BoundaryInsensitivity
+import YangMills.L8_LatticeToContinuum.LatticeToContinuumPackage
+
+-- Cowork Phases 108-112 (2026-04-25) — L10_OS1Strategies: mapping the OS1 problem (3 strategies)
+import YangMills.L10_OS1Strategies.WilsonImprovementProgram
+import YangMills.L10_OS1Strategies.LatticeWardIdentities
+import YangMills.L10_OS1Strategies.SymanzikContinuumLimit
+import YangMills.L10_OS1Strategies.StochasticRestoration
+import YangMills.L10_OS1Strategies.OS1StrategiesPackage
+
+-- Cowork Phases 113-117 (2026-04-25) — L11_NonTriviality: Bloque-4 §8.5 Theorem 8.7
+import YangMills.L11_NonTriviality.PlaquetteFourPointFunction
+import YangMills.L11_NonTriviality.TreeLevelBound
+import YangMills.L11_NonTriviality.PolymerRemainderBound
+import YangMills.L11_NonTriviality.ContinuumStability
+import YangMills.L11_NonTriviality.NonTrivialityPackage
+
+-- Cowork Phases 118-122 (2026-04-25) — L12_ClayMillenniumCapstone: master endpoint
+import YangMills.L12_ClayMillenniumCapstone.ClayProgrammeMasterChain
+import YangMills.L12_ClayMillenniumCapstone.BranchClosureBundle
+import YangMills.L12_ClayMillenniumCapstone.OS1ClosureToClay
+import YangMills.L12_ClayMillenniumCapstone.CoworkSessionFinalAudit
+import YangMills.L12_ClayMillenniumCapstone.ClayMillenniumLeanRealization
+
+-- Cowork Phases 123-127 (2026-04-25) — L13_CodexBridge: Cowork ↔ Codex unified merge
+import YangMills.L13_CodexBridge.BalabanRGToL7
+import YangMills.L13_CodexBridge.F3ChainToL7
+import YangMills.L13_CodexBridge.ExistingClayTheoremMap
+import YangMills.L13_CodexBridge.TwoHalvesMerge
+import YangMills.L13_CodexBridge.CodexBridgePackage
+
+-- Cowork Phases 128-132 (2026-04-25) — L14_MasterAuditBundle: session master capstone
+import YangMills.L14_MasterAuditBundle.SessionEndpointAudit
+import YangMills.L14_MasterAuditBundle.AllNineRoutesEnumerated
+import YangMills.L14_MasterAuditBundle.ResidualObligationsBundle
+import YangMills.L14_MasterAuditBundle.CrossBlockCompositionTheorem
+import YangMills.L14_MasterAuditBundle.L14SessionMasterCapstone
+
+-- Cowork Phases 133-142 (2026-04-25) — L15_BranchII_Wilson_Substantive: 10-file deep dive
+import YangMills.L15_BranchII_Wilson_Substantive.BalabanRGFlow
+import YangMills.L15_BranchII_Wilson_Substantive.BlockSpinDecimation
+import YangMills.L15_BranchII_Wilson_Substantive.GaugeBlockDecomposition
+import YangMills.L15_BranchII_Wilson_Substantive.WilsonImprovedAction
+import YangMills.L15_BranchII_Wilson_Substantive.SymanzikImprovementCoefficients
+import YangMills.L15_BranchII_Wilson_Substantive.ImprovedLatticeDispersion
+import YangMills.L15_BranchII_Wilson_Substantive.ContinuumO4Recovery
+import YangMills.L15_BranchII_Wilson_Substantive.BranchIIWilsonClosure
+import YangMills.L15_BranchII_Wilson_Substantive.BranchIIWilsonToClay
+import YangMills.L15_BranchII_Wilson_Substantive.BranchIIWilsonPackage
+
+-- Cowork Phases 143-152 (2026-04-25) — L16_NonTrivialityRefinement_Substantive: 10-file deep dive
+import YangMills.L16_NonTrivialityRefinement_Substantive.ConcreteTreeBound
+import YangMills.L16_NonTrivialityRefinement_Substantive.PolymerActivityNorm
+import YangMills.L16_NonTrivialityRefinement_Substantive.PolymerRemainderEstimate
+import YangMills.L16_NonTrivialityRefinement_Substantive.SmallCouplingDominance
+import YangMills.L16_NonTrivialityRefinement_Substantive.FourPointFunctionLowerBound
+import YangMills.L16_NonTrivialityRefinement_Substantive.ContinuumStabilityCriteria
+import YangMills.L16_NonTrivialityRefinement_Substantive.NonTrivialityFromBounds
+import YangMills.L16_NonTrivialityRefinement_Substantive.NonTrivialityClosure
+import YangMills.L16_NonTrivialityRefinement_Substantive.NonTrivialityToClay
+import YangMills.L16_NonTrivialityRefinement_Substantive.NonTrivialityRefinementPackage
+
+-- Cowork Phases 153-162 (2026-04-25) — L17_BranchI_F3_Substantive: 10-file deep dive
+import YangMills.L17_BranchI_F3_Substantive.KP_Convergence
+import YangMills.L17_BranchI_F3_Substantive.MayerOhmExpansion
+import YangMills.L17_BranchI_F3_Substantive.ClusterCorrelation
+import YangMills.L17_BranchI_F3_Substantive.ExponentialDecay
+import YangMills.L17_BranchI_F3_Substantive.TwoPointCorrelator
+import YangMills.L17_BranchI_F3_Substantive.F3ChainStructure
+import YangMills.L17_BranchI_F3_Substantive.F3ToTerminalClustering
+import YangMills.L17_BranchI_F3_Substantive.BranchIClosureConditions
+import YangMills.L17_BranchI_F3_Substantive.BranchIToClay
+import YangMills.L17_BranchI_F3_Substantive.BranchI_F3_Package
+
+-- Cowork Phases 163-172 (2026-04-25) — L18_BranchIII_RP_TM_Substantive: 10-file deep dive (TRINITY COMPLETE)
+import YangMills.L18_BranchIII_RP_TM_Substantive.ReflectionPositivityCore
+import YangMills.L18_BranchIII_RP_TM_Substantive.WilsonReflectionPos
+import YangMills.L18_BranchIII_RP_TM_Substantive.TransferMatrixDef
+import YangMills.L18_BranchIII_RP_TM_Substantive.TransferMatrixSelfAdjoint
+import YangMills.L18_BranchIII_RP_TM_Substantive.TransferMatrixSpectralBound
+import YangMills.L18_BranchIII_RP_TM_Substantive.GroundStateUnique
+import YangMills.L18_BranchIII_RP_TM_Substantive.SpectralGapToMassGap
+import YangMills.L18_BranchIII_RP_TM_Substantive.BranchIII_RP_TM_Closure
+import YangMills.L18_BranchIII_RP_TM_Substantive.BranchIII_RP_ToClay
+import YangMills.L18_BranchIII_RP_TM_Substantive.BranchIII_RP_TM_Package
+
+-- Cowork Phases 173-182 (2026-04-25) — L19_OS1Substantive_Refinement: 10-file deep dive (BARRIER addressed)
+import YangMills.L19_OS1Substantive_Refinement.WardIdentitiesCore
+import YangMills.L19_OS1Substantive_Refinement.ContinuumWardLimit
+import YangMills.L19_OS1Substantive_Refinement.WardImpliesO4
+import YangMills.L19_OS1Substantive_Refinement.SymanzikImprovementProgram
+import YangMills.L19_OS1Substantive_Refinement.WilsonCoefficientsConcrete
+import YangMills.L19_OS1Substantive_Refinement.HairerStochasticRestoration
+import YangMills.L19_OS1Substantive_Refinement.O4FromAnyStrategy
+import YangMills.L19_OS1Substantive_Refinement.OS1Closure_Refinement
+import YangMills.L19_OS1Substantive_Refinement.OS1ToClay_Refined
+import YangMills.L19_OS1Substantive_Refinement.OS1Refinement_Package
+
+-- Cowork Phases 183-192 (2026-04-25) — L20_SU2_Concrete_YangMills: 10-file concrete Yang-Mills push
+import YangMills.L20_SU2_Concrete_YangMills.SU2_LatticeGauge
+import YangMills.L20_SU2_Concrete_YangMills.SU2_Plaquette
+import YangMills.L20_SU2_Concrete_YangMills.SU2_HaarMeasure
+import YangMills.L20_SU2_Concrete_YangMills.SU2_WilsonAction
+import YangMills.L20_SU2_Concrete_YangMills.SU2_CharacterTheory
+import YangMills.L20_SU2_Concrete_YangMills.SU2_StrongCoupling
+import YangMills.L20_SU2_Concrete_YangMills.SU2_TreeLevelGamma
+import YangMills.L20_SU2_Concrete_YangMills.SU2_PolymerC
+import YangMills.L20_SU2_Concrete_YangMills.SU2_NonTrivialityWitness
+import YangMills.L20_SU2_Concrete_YangMills.SU2_ConcretePackage
+
+-- Cowork Phases 193-202 (2026-04-25) — L21_SU2_MassGap_Concrete: 10-file concrete mass-gap push
+import YangMills.L21_SU2_MassGap_Concrete.SU2_TransferMatrix
+import YangMills.L21_SU2_MassGap_Concrete.SU2_SpectralBound
+import YangMills.L21_SU2_MassGap_Concrete.SU2_MassGapValue
+import YangMills.L21_SU2_MassGap_Concrete.SU2_OS1_WilsonImprovement
+import YangMills.L21_SU2_MassGap_Concrete.SU2_ContinuumLimit
+import YangMills.L21_SU2_MassGap_Concrete.SU2_FullSchwingerFunction
+import YangMills.L21_SU2_MassGap_Concrete.SU2_ClayPredicateInstance
+import YangMills.L21_SU2_MassGap_Concrete.SU2_ConcreteToClay
+import YangMills.L21_SU2_MassGap_Concrete.SU2_AbsoluteEndpoint
+import YangMills.L21_SU2_MassGap_Concrete.SU2_MassGap_Package
+
+-- Cowork Phases 203-212 (2026-04-25) — L22_SU2_BridgeToStructural: integration
+import YangMills.L22_SU2_BridgeToStructural.SU2_To_L12_Capstone
+import YangMills.L22_SU2_BridgeToStructural.SU2_To_L13_CodexBridge
+import YangMills.L22_SU2_BridgeToStructural.SU2_To_L14_AuditBundle
+import YangMills.L22_SU2_BridgeToStructural.SU2_NonTrivToL16
+import YangMills.L22_SU2_BridgeToStructural.SU2_MassGapToL18
+import YangMills.L22_SU2_BridgeToStructural.SU2_OS1ToL19
+import YangMills.L22_SU2_BridgeToStructural.SU2_FullStructuralPath
+import YangMills.L22_SU2_BridgeToStructural.SU2_GrandUnification
+import YangMills.L22_SU2_BridgeToStructural.SU2_ProjectMasterEndpoint
+import YangMills.L22_SU2_BridgeToStructural.SU2_BridgePackage
+
+-- Cowork Phases 213-222 (2026-04-25) — L23_SU3_QCD_Concrete: physical QCD content
+import YangMills.L23_SU3_QCD_Concrete.SU3_LatticeGauge
+import YangMills.L23_SU3_QCD_Concrete.SU3_Plaquette
+import YangMills.L23_SU3_QCD_Concrete.SU3_HaarMeasure
+import YangMills.L23_SU3_QCD_Concrete.SU3_WilsonAction
+import YangMills.L23_SU3_QCD_Concrete.SU3_CharacterTheory
+import YangMills.L23_SU3_QCD_Concrete.SU3_StrongCoupling
+import YangMills.L23_SU3_QCD_Concrete.SU3_TreeLevelGamma
+import YangMills.L23_SU3_QCD_Concrete.SU3_PolymerC
+import YangMills.L23_SU3_QCD_Concrete.SU3_NonTrivialityWitness
+import YangMills.L23_SU3_QCD_Concrete.SU3_ConcretePackage
+
+-- Cowork Phases 223-232 (2026-04-25) — L24_SU3_MassGap_BridgeStructural: SU(3) mass gap + integration
+import YangMills.L24_SU3_MassGap_BridgeStructural.SU3_TransferMatrix
+import YangMills.L24_SU3_MassGap_BridgeStructural.SU3_SpectralBound
+import YangMills.L24_SU3_MassGap_BridgeStructural.SU3_MassGapValue
+import YangMills.L24_SU3_MassGap_BridgeStructural.SU3_OS1_WilsonImprovement
+import YangMills.L24_SU3_MassGap_BridgeStructural.SU3_FullSchwingerFunction
+import YangMills.L24_SU3_MassGap_BridgeStructural.SU3_ToStructural
+import YangMills.L24_SU3_MassGap_BridgeStructural.SU3_ClayPredicateInstance
+import YangMills.L24_SU3_MassGap_BridgeStructural.SU3_GrandUnification
+import YangMills.L24_SU3_MassGap_BridgeStructural.SU3_AbsoluteEndpoint
+import YangMills.L24_SU3_MassGap_BridgeStructural.SU3_MassGap_Bridge_Package
+
+-- Cowork Phases 233-242 (2026-04-25) — L25_SU_N_General: parametric SU(N) for all N ≥ 2
+import YangMills.L25_SU_N_General.SU_N_LatticeGauge
+import YangMills.L25_SU_N_General.SU_N_Plaquette
+import YangMills.L25_SU_N_General.SU_N_TreeLevel
+import YangMills.L25_SU_N_General.SU_N_Polymer
+import YangMills.L25_SU_N_General.SU_N_NonTriviality
+import YangMills.L25_SU_N_General.SU_N_MassGap
+import YangMills.L25_SU_N_General.SU_N_ClayPredicate
+import YangMills.L25_SU_N_General.SU_N_Specializations
+import YangMills.L25_SU_N_General.SU_N_AbsoluteEndpoint
+import YangMills.L25_SU_N_General.SU_N_GeneralPackage
+
+-- Cowork Phases 243-252 (2026-04-25) — L26_SU_N_PhysicsApplications: parametric physics
+import YangMills.L26_SU_N_PhysicsApplications.SU_N_AsymptoticFreedom
+import YangMills.L26_SU_N_PhysicsApplications.SU_N_Confinement
+import YangMills.L26_SU_N_PhysicsApplications.SU_N_RunningCoupling
+import YangMills.L26_SU_N_PhysicsApplications.SU_N_BetaFunction
+import YangMills.L26_SU_N_PhysicsApplications.SU_N_DimensionalTransmutation
+import YangMills.L26_SU_N_PhysicsApplications.SU_N_LargeNcLimit
+import YangMills.L26_SU_N_PhysicsApplications.SU_N_PhysicalScales
+import YangMills.L26_SU_N_PhysicsApplications.SU_N_ContinuumLimit
+import YangMills.L26_SU_N_PhysicsApplications.SU_N_PhysicsAbsoluteEndpoint
+import YangMills.L26_SU_N_PhysicsApplications.SU_N_PhysicsApplicationsPackage
+
+-- Cowork Phases 253-262 (2026-04-25) — L27_TotalSessionCapstone: ABSOLUTE FINAL CAPSTONE
+import YangMills.L27_TotalSessionCapstone.AllBlocksImported
+import YangMills.L27_TotalSessionCapstone.AllCapstonesAssembled
+import YangMills.L27_TotalSessionCapstone.SessionStateCertificate
+import YangMills.L27_TotalSessionCapstone.GrandMasterTheorem
+import YangMills.L27_TotalSessionCapstone.ProjectStatistics
+import YangMills.L27_TotalSessionCapstone.ResidualWorkSummary
+import YangMills.L27_TotalSessionCapstone.HandoffPackage
+import YangMills.L27_TotalSessionCapstone.SessionMilestones
+import YangMills.L27_TotalSessionCapstone.TotalSessionAudit
+import YangMills.L27_TotalSessionCapstone.TotalSessionCapstonePackage
+
+-- Cowork Phases 263-272 (2026-04-25) — L28_StandardModelExtensions: SM extensions
+import YangMills.L28_StandardModelExtensions.WilsonFermions
+import YangMills.L28_StandardModelExtensions.StaggeredFermions
+import YangMills.L28_StandardModelExtensions.NielsenNinomiya
+import YangMills.L28_StandardModelExtensions.ChiralSymmetry
+import YangMills.L28_StandardModelExtensions.ElectroweakSector
+import YangMills.L28_StandardModelExtensions.HiggsMechanism
+import YangMills.L28_StandardModelExtensions.AnomalyMatching
+import YangMills.L28_StandardModelExtensions.TopologicalSectors
+import YangMills.L28_StandardModelExtensions.StandardModelEndpoint
+import YangMills.L28_StandardModelExtensions.StandardModelPackage
+
+-- Cowork Phases 273-282 (2026-04-25) — L29_AdjacentTheories: dimensions, SUSY, finite-T
+import YangMills.L29_AdjacentTheories.YM_in_2D
+import YangMills.L29_AdjacentTheories.YM_in_3D
+import YangMills.L29_AdjacentTheories.YM_in_5D
+import YangMills.L29_AdjacentTheories.SUSY_YM_N1
+import YangMills.L29_AdjacentTheories.SUSY_YM_N2
+import YangMills.L29_AdjacentTheories.SUSY_YM_N4
+import YangMills.L29_AdjacentTheories.FiniteT_YM
+import YangMills.L29_AdjacentTheories.HotQCD
+import YangMills.L29_AdjacentTheories.AdjacentTheoriesEndpoint
+import YangMills.L29_AdjacentTheories.AdjacentTheoriesPackage
+
+-- Cowork Phases 283-292 (2026-04-25) — L30_CreativeAttack_Robustness: substantive attack on placeholders
+import YangMills.L30_CreativeAttack_Robustness.PlaceholderUpperBound
+import YangMills.L30_CreativeAttack_Robustness.SU2_C_UpperBoundsList
+import YangMills.L30_CreativeAttack_Robustness.SU2_GammaLowerBoundsList
+import YangMills.L30_CreativeAttack_Robustness.NonTriviality_Robust
+import YangMills.L30_CreativeAttack_Robustness.SU2_Robust_Witness
+import YangMills.L30_CreativeAttack_Robustness.ParametricRobustness
+import YangMills.L30_CreativeAttack_Robustness.SU2_PrincipledUpperBound
+import YangMills.L30_CreativeAttack_Robustness.SU2_PrincipledLowerBound
+import YangMills.L30_CreativeAttack_Robustness.CreativeAttackEndpoint
+import YangMills.L30_CreativeAttack_Robustness.CreativeAttackPackage
+
+-- Cowork Phases 293-302 (2026-04-25) — L31_CreativeAttack_KP_ExpDecay: substantive obligation #3 attack
+import YangMills.L31_CreativeAttack_KP_ExpDecay.KP_PolymerSetup
+import YangMills.L31_CreativeAttack_KP_ExpDecay.KP_AbsConvergence
+import YangMills.L31_CreativeAttack_KP_ExpDecay.KP_LogZBound
+import YangMills.L31_CreativeAttack_KP_ExpDecay.KP_TwoPointTruncated
+import YangMills.L31_CreativeAttack_KP_ExpDecay.KP_DecayRate
+import YangMills.L31_CreativeAttack_KP_ExpDecay.KP_ExponentialDecay
+import YangMills.L31_CreativeAttack_KP_ExpDecay.KP_F3ChainApplication
+import YangMills.L31_CreativeAttack_KP_ExpDecay.KP_NumericalBounds
+import YangMills.L31_CreativeAttack_KP_ExpDecay.KP_AttackEndpoint
+import YangMills.L31_CreativeAttack_KP_ExpDecay.KP_AttackPackage
+
+-- Cowork Phases 303-312 (2026-04-25) — L32_CreativeAttack_LambdaEff: λ_eff_SU2 placeholder attack
+import YangMills.L32_CreativeAttack_LambdaEff.TM_SelfAdjointContraction
+import YangMills.L32_CreativeAttack_LambdaEff.TM_PositivePerronFrobenius
+import YangMills.L32_CreativeAttack_LambdaEff.TM_SpectralGap_Existence
+import YangMills.L32_CreativeAttack_LambdaEff.TM_LambdaEff_Definition
+import YangMills.L32_CreativeAttack_LambdaEff.TM_LambdaEff_LessThan_OpNorm
+import YangMills.L32_CreativeAttack_LambdaEff.TM_MassGap_From_Gap
+import YangMills.L32_CreativeAttack_LambdaEff.SU2_LambdaEff_Principled
+import YangMills.L32_CreativeAttack_LambdaEff.SU2_MassGap_Robust
+import YangMills.L32_CreativeAttack_LambdaEff.TM_AttackEndpoint
+import YangMills.L32_CreativeAttack_LambdaEff.TM_AttackPackage
+
+-- Cowork Phases 313-322 (2026-04-25) — L33_CreativeAttack_KlarnerBFSBound: obligation #1 attack
+import YangMills.L33_CreativeAttack_KlarnerBFSBound.LatticeAnimal_Setup
+import YangMills.L33_CreativeAttack_KlarnerBFSBound.BFS_Tree
+import YangMills.L33_CreativeAttack_KlarnerBFSBound.NeighborCount
+import YangMills.L33_CreativeAttack_KlarnerBFSBound.KlarnerBound_Statement
+import YangMills.L33_CreativeAttack_KlarnerBFSBound.KlarnerBound_Proof
+import YangMills.L33_CreativeAttack_KlarnerBFSBound.KlarnerBound_4D
+import YangMills.L33_CreativeAttack_KlarnerBFSBound.KlarnerBound_Application
+import YangMills.L33_CreativeAttack_KlarnerBFSBound.KlarnerBound_Endpoint
+import YangMills.L33_CreativeAttack_KlarnerBFSBound.KlarnerBound_Robustness
+import YangMills.L33_CreativeAttack_KlarnerBFSBound.KlarnerBound_Package
+
+-- Cowork Phases 323-332 (2026-04-25) — L34_CreativeAttack_WilsonCoeff: 4th SU(2) placeholder attack
+import YangMills.L34_CreativeAttack_WilsonCoeff.TaylorExpansion_Setup
+import YangMills.L34_CreativeAttack_WilsonCoeff.DiscreteLaplacian_Definition
+import YangMills.L34_CreativeAttack_WilsonCoeff.DiscreteLaplacian_TaylorCoeff
+import YangMills.L34_CreativeAttack_WilsonCoeff.SymanzikImprovement_Constructive
+import YangMills.L34_CreativeAttack_WilsonCoeff.WilsonCoeff_FromTaylor
+import YangMills.L34_CreativeAttack_WilsonCoeff.WilsonCoeff_OneOver12
+import YangMills.L34_CreativeAttack_WilsonCoeff.WilsonCoeff_Robustness
+import YangMills.L34_CreativeAttack_WilsonCoeff.WilsonCoeff_AttackEndpoint
+import YangMills.L34_CreativeAttack_WilsonCoeff.WilsonCoeff_NumericalCheck
+import YangMills.L34_CreativeAttack_WilsonCoeff.WilsonCoeff_AttackPackage
+
+-- Cowork Phases 333-342 (2026-04-25) — L35_CreativeAttack_BrydgesKennedy: obligation #2 attack
+import YangMills.L35_CreativeAttack_BrydgesKennedy.BK_InterpolationFormula
+import YangMills.L35_CreativeAttack_BrydgesKennedy.BK_PerEdgeBound
+import YangMills.L35_CreativeAttack_BrydgesKennedy.BK_TreeGraphFormula
+import YangMills.L35_CreativeAttack_BrydgesKennedy.BK_BoundOnMayerWeight
+import YangMills.L35_CreativeAttack_BrydgesKennedy.BK_ConvergenceRadius
+import YangMills.L35_CreativeAttack_BrydgesKennedy.BK_NumericalEstimates
+import YangMills.L35_CreativeAttack_BrydgesKennedy.BK_ApplicationToF3
+import YangMills.L35_CreativeAttack_BrydgesKennedy.BK_AttackEndpoint
+import YangMills.L35_CreativeAttack_BrydgesKennedy.BK_Robustness
+import YangMills.L35_CreativeAttack_BrydgesKennedy.BK_AttackPackage
+
+-- Cowork Phases 343-352 (2026-04-25) — L36_CreativeAttack_LatticeWard: obligation #7 attack
+import YangMills.L36_CreativeAttack_LatticeWard.CubicGroup_Setup
+import YangMills.L36_CreativeAttack_LatticeWard.CubicGroup_Cardinality
+import YangMills.L36_CreativeAttack_LatticeWard.WilsonAction_CubicInvariance
+import YangMills.L36_CreativeAttack_LatticeWard.ExactLatticeWardIdentities
+import YangMills.L36_CreativeAttack_LatticeWard.ContinuumLimit_O4Density
+import YangMills.L36_CreativeAttack_LatticeWard.WardImpliesO4_FromCubic
+import YangMills.L36_CreativeAttack_LatticeWard.SU_N_Ward_Application
+import YangMills.L36_CreativeAttack_LatticeWard.Ward_AttackEndpoint
+import YangMills.L36_CreativeAttack_LatticeWard.Ward_Robustness
+import YangMills.L36_CreativeAttack_LatticeWard.Ward_AttackPackage
+
+-- Cowork Phases 353-362 (2026-04-25) — L37_CreativeAttack_OS1Symanzik: obligation #6 attack
+import YangMills.L37_CreativeAttack_OS1Symanzik.SU_N_TaylorBound
+import YangMills.L37_CreativeAttack_OS1Symanzik.SU_N_PlaquetteAction_Taylor
+import YangMills.L37_CreativeAttack_OS1Symanzik.SU_N_FirstOrderArtifact
+import YangMills.L37_CreativeAttack_OS1Symanzik.SU_N_SymanzikCounterTerm
+import YangMills.L37_CreativeAttack_OS1Symanzik.SU_N_OneLoopMatching
+import YangMills.L37_CreativeAttack_OS1Symanzik.SU_N_ImprovedWilsonAction
+import YangMills.L37_CreativeAttack_OS1Symanzik.SU_N_OS1FromImprovement
+import YangMills.L37_CreativeAttack_OS1Symanzik.SU_N_OS1Robustness
+import YangMills.L37_CreativeAttack_OS1Symanzik.SU_N_Symanzik_Endpoint
+import YangMills.L37_CreativeAttack_OS1Symanzik.SU_N_Symanzik_Package
+
+-- Cowork Phases 363-372 (2026-04-25) — L38_CreativeAttack_RP_TM_SpectralGap: obligation #5 attack
+import YangMills.L38_CreativeAttack_RP_TM_SpectralGap.RP_InnerProduct
+import YangMills.L38_CreativeAttack_RP_TM_SpectralGap.RP_CauchySchwarz
+import YangMills.L38_CreativeAttack_RP_TM_SpectralGap.T_BoundedOperator
+import YangMills.L38_CreativeAttack_RP_TM_SpectralGap.T_NonDegenerate_Vacuum
+import YangMills.L38_CreativeAttack_RP_TM_SpectralGap.T_SpectralGap_Existence
+import YangMills.L38_CreativeAttack_RP_TM_SpectralGap.SU_N_T_SpectralGap
+import YangMills.L38_CreativeAttack_RP_TM_SpectralGap.TM_MassGap_Quantitative
+import YangMills.L38_CreativeAttack_RP_TM_SpectralGap.RP_TM_SpectralGap_Endpoint
+import YangMills.L38_CreativeAttack_RP_TM_SpectralGap.RP_TM_SpectralGap_Robustness
+import YangMills.L38_CreativeAttack_RP_TM_SpectralGap.RP_TM_SpectralGap_Package
+
+-- Cowork Phases 373-382 (2026-04-25) — L39_CreativeAttack_BalabanRGTransfer: obligation #4 attack
+import YangMills.L39_CreativeAttack_BalabanRGTransfer.LSI_Predicate
+import YangMills.L39_CreativeAttack_BalabanRGTransfer.DLR_LSI_Predicate
+import YangMills.L39_CreativeAttack_BalabanRGTransfer.ConditionalDecomposition
+import YangMills.L39_CreativeAttack_BalabanRGTransfer.TransferHypothesis
+import YangMills.L39_CreativeAttack_BalabanRGTransfer.LSI_to_DLR_LSI
+import YangMills.L39_CreativeAttack_BalabanRGTransfer.SU_N_LSI_Application
+import YangMills.L39_CreativeAttack_BalabanRGTransfer.Transfer_Concrete_Bound
+import YangMills.L39_CreativeAttack_BalabanRGTransfer.Transfer_AttackEndpoint
+import YangMills.L39_CreativeAttack_BalabanRGTransfer.Transfer_Robustness
+import YangMills.L39_CreativeAttack_BalabanRGTransfer.Transfer_AttackPackage
+
+-- Cowork Phases 383-392 (2026-04-25) — L40_CreativeAttack_HairerRegularity: FINAL obligation #8 attack
+import YangMills.L40_CreativeAttack_HairerRegularity.RegularityStructure_Setup
+import YangMills.L40_CreativeAttack_HairerRegularity.HomogeneityIndex
+import YangMills.L40_CreativeAttack_HairerRegularity.ModelSpace
+import YangMills.L40_CreativeAttack_HairerRegularity.StructureGroup
+import YangMills.L40_CreativeAttack_HairerRegularity.ReconstructionTheorem
+import YangMills.L40_CreativeAttack_HairerRegularity.YangMills_RegularityStructure
+import YangMills.L40_CreativeAttack_HairerRegularity.OS1_FromHairer
+import YangMills.L40_CreativeAttack_HairerRegularity.HairerAttack_Endpoint
+import YangMills.L40_CreativeAttack_HairerRegularity.HairerAttack_Robustness
+import YangMills.L40_CreativeAttack_HairerRegularity.HairerAttack_Package
+
+-- Cowork Phases 393-402 (2026-04-25) — L41_AttackProgramme_FinalCapstone: bundle of 11 attacks
+import YangMills.L41_AttackProgramme_FinalCapstone.AttackProgramme_Setup
+import YangMills.L41_AttackProgramme_FinalCapstone.AttackProgramme_Catalog
+import YangMills.L41_AttackProgramme_FinalCapstone.AttackProgramme_Coverage
+import YangMills.L41_AttackProgramme_FinalCapstone.AttackProgramme_Numerics
+import YangMills.L41_AttackProgramme_FinalCapstone.AttackProgramme_AbstractClaims
+import YangMills.L41_AttackProgramme_FinalCapstone.AttackProgramme_ToClay
+import YangMills.L41_AttackProgramme_FinalCapstone.AttackProgramme_Robustness
+import YangMills.L41_AttackProgramme_FinalCapstone.AttackProgramme_GrandStatement
+import YangMills.L41_AttackProgramme_FinalCapstone.AttackProgramme_FinalAudit
+import YangMills.L41_AttackProgramme_FinalCapstone.AttackProgramme_FinalCapstone

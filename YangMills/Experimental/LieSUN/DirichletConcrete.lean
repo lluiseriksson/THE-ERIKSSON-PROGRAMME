@@ -2,6 +2,7 @@ import Mathlib
 import YangMills.P8_PhysicalGap.SUN_StateConstruction
 import YangMills.Experimental.LieSUN.LieExpCurve
 import YangMills.Experimental.LieSUN.LieDerivativeBridge
+import YangMills.Experimental.LieSUN.LieDerivativeRegularity
 
 open scoped Matrix
 open MeasureTheory YangMills
@@ -17,17 +18,31 @@ Tests:
 2. lieDeriv_add under IsDiffAlong
 3. lieDeriv_smul under IsDiffAlong
 4. dirichletForm_subadditive (the key test)
+
+## Phase 35 deduplication (Cowork audit 2026-04-25)
+
+The primed generator axioms (`generatorMatrix'`, `gen_skewHerm'`,
+`gen_trace_zero'`) duplicated the unprimed declarations in
+`LieDerivativeRegularity.lean`. They are now defined as aliases /
+derived theorems, retiring 3 axioms (project axiom count: 11 → 8
+when this Phase 35 edit lands).
 -/
 
--- Generator axioms (2 IN)
-axiom generatorMatrix' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
-    Matrix (Fin N_c) (Fin N_c) ℂ
+/-! ## Generator aliases (formerly axioms; deduplicated to LieDerivativeRegularity) -/
 
-axiom gen_skewHerm' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
-    (generatorMatrix' N_c i)ᴴ = -(generatorMatrix' N_c i)
+/-- Alias for `generatorMatrix` from `LieDerivativeRegularity.lean`.
+    Kept for backward compatibility with code that uses the primed name. -/
+noncomputable def generatorMatrix' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
+    Matrix (Fin N_c) (Fin N_c) ℂ :=
+  generatorMatrix N_c i
 
-axiom gen_trace_zero' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
-    (generatorMatrix' N_c i).trace = 0
+theorem gen_skewHerm' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
+    (generatorMatrix' N_c i)ᴴ = -(generatorMatrix' N_c i) :=
+  gen_skewHerm N_c i
+
+theorem gen_trace_zero' (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
+    (generatorMatrix' N_c i).trace = 0 :=
+  gen_trace_zero N_c i
 
 -- Concrete Lie derivative
 noncomputable def lieDeriv (N_c : ℕ) [NeZero N_c]
