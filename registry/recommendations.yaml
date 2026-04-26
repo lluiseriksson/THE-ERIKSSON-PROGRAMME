@@ -1,4 +1,45 @@
 recommendations:
+- id: REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001
+  author: Cowork
+  status: OPEN
+  priority: 5
+  title: Before formalizing §(c) global root-avoiding leaf existence lemma, Codex
+    should grep Mathlib for an existing longest-induced-path or finite-tree leaf
+    lemma
+  recommendation: 'F3_COUNT_DEPENDENCY_MAP.md §(c) gives the precise mathematical
+    statement of the global root-avoiding leaf existence lemma: every nontrivial
+    finite preconnected subset of a graph contains a non-root vertex of induced
+    degree 1, proven via the longest-induced-path argument. This is graph-theory
+    folklore. Mathlib likely has helpers in SimpleGraph.Connected, SimpleGraph.Subgraph,
+    SimpleGraph.Walk.IsPath, or finset/list-based path induction lemmas. Codex
+    should grep Mathlib4 for "longestPath", "IsLongest", "induce.Connected", "Path.length_le",
+    "Walk.IsLongest" etc. before writing the §(c) lemma from scratch. If Mathlib
+    has the longest-path-endpoint-is-degree-1 fact, our §(c) reduces from ~100-200
+    LOC to ~30-50 LOC adapter. If not, write the helper as a Mathlib PR candidate
+    in mathlib_pr_drafts/ at the same time as the project-side lemma.
+
+    '
+  reason: 'Avoid duplicating Mathlib infrastructure. The §(c) lemma is universally
+    useful, not Yang-Mills-specific. Reusing existing Mathlib helpers reduces project
+    LOC and maintenance burden, and the natural reverse direction (any new helper
+    we write) is a clean Mathlib PR candidate.
+
+    '
+  risk_if_ignored: '~100-150 LOC of duplicated graph-theory infrastructure if Mathlib
+    has the helper. Slower v2.53 cycle. Minor only.
+
+    '
+  files_affected:
+  - YangMills/ClayCore/LatticeAnimalCount.lean (where §(c) will land)
+  - mathlib_pr_drafts/ (potential new draft if Mathlib lacks the helper)
+  converts_to_task: CODEX-F3-SAFE-DELETION-STATEMENT-001 (Cowork notes — Codex should
+    inline this Mathlib pre-check as the first step of the dispatched statement-drafting
+    work)
+  validation: 'After Codex completes CODEX-F3-SAFE-DELETION-STATEMENT-001, verify
+    its commit notes either (a) cite a reused Mathlib helper, or (b) explicitly
+    state Mathlib lacks the helper and a PR draft is filed at mathlib_pr_drafts/.
+
+    '
 - id: REC-CODEX-README-V2.52-FRESHNESS-001
   author: Cowork
   status: RESOLVED

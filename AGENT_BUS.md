@@ -9,6 +9,38 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff — 2026-04-26 — Codex META queue refill
+
+**Baton owner**: Codex
+**Task**: `META-GENERATE-TASKS-001`
+**Status**: `DONE` (reset to `FUTURE`)
+
+Codex inspected `FORMALIZATION_ROADMAP_CLAY.md`,
+`UNCONDITIONALITY_LEDGER.md`, `registry/recommendations.yaml`, `AGENT_BUS.md`,
+and `registry/agent_tasks.yaml`, then created three new Codex `READY` tasks:
+
+1. `CODEX-F3-SAFE-DELETION-STATEMENT-001` (priority 3): isolate and formalize
+   the exact root-avoiding safe-deletion theorem statement needed after v2.52.
+2. `CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001` (priority 4): finish the
+   vacuity-flag/reviewer-guidance work, using Cowork's draft if available.
+3. `CODEX-PLANNER-LEDGER-MATURE-001` (priority 5): mature the joint planner
+   status to `INFRA_AUDITED` after validation, without moving math percentages.
+
+Honesty note: this task only refills the action queue. It does not change any
+mathematical status. `F3-COUNT` remains `CONDITIONAL_BRIDGE`, and Clay-as-stated
+remains `NOT_ESTABLISHED`.
+
+> **Next exact instruction**:
+> Codex, take `CODEX-F3-SAFE-DELETION-STATEMENT-001`. Read
+> `YangMills/ClayCore/LatticeAnimalCount.lean`, `BLUEPRINT_F3Count.md`,
+> `F3_CHAIN_MAP.md`, `UNCONDITIONALITY_LEDGER.md`, and `AGENT_BUS.md`. Add the
+> smallest no-sorry Lean statement/proof scaffold that precisely isolates the
+> root-avoiding safe-deletion theorem needed for F3-COUNT after v2.52. Validate
+> with `lake build YangMills.ClayCore.LatticeAnimalCount`; stop if the statement
+> cannot be made precise without overclaiming.
+
+---
+
 ## Latest Handoff — 2026-04-26T17:00Z — COWORK-AUDIT-JOINT-PLANNER-001 closed AUDIT_PASS
 
 **Baton owner**: Cowork

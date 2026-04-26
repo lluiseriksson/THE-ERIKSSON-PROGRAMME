@@ -1,12 +1,12 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "mathlib_drafts_repaired",
-  "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-AUDIT-CODEX-FIX-MATHLIB-DRAFTS-001",
-  "last_completed_task": "CODEX-FIX-MATHLIB-DRAFTS-001",
-  "last_dispatched_task": "COWORK-AUDIT-CODEX-FIX-MATHLIB-DRAFTS-001",
-  "last_dispatched_agent": "Cowork",
+  "current_phase": "codex_queue_refilled",
+  "current_baton_owner": "Codex",
+  "next_task_id": "CODEX-F3-SAFE-DELETION-STATEMENT-001",
+  "last_completed_task": "META-GENERATE-TASKS-001",
+  "last_dispatched_task": "META-GENERATE-TASKS-001",
+  "last_dispatched_agent": "Codex",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists"
   ],
@@ -22,9 +22,9 @@
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001"
   ],
-  "last_dispatch_at": "2026-04-26T09:48:48Z",
+  "last_dispatch_at": "2026-04-26T10:14:52Z",
   "last_completed_at": "2026-04-26T09:32:17Z",
-  "latest_validation_artifact": "mathlib draft repair validation: MatrixExp no sorry, #print axioms pinned, INDEX inactive/cancelled section added",
+  "latest_validation_artifact": "Codex META task generated three READY tasks and registry YAML validated",
   "joint_planner": {
     "status": "PENDING_COWORK_AUDIT",
     "source": "registry/progress_metrics.yaml",
@@ -79,6 +79,7 @@
     "COWORK-AUDIT-CLAY-MATHLIB-PR-LANDING-001 (auto-create on completion)"
   ],
   "active_clay_reduction_tasks": [
+    "CODEX-F3-SAFE-DELETION-STATEMENT-001",
     "CLAY-F3-COUNT-RECURSIVE-001",
     "CLAY-EXP-RETIRE-7-001",
     "CLAY-MATHLIB-PR-LANDING-001"
@@ -93,6 +94,8 @@
     "COWORK-AUDIT-CODEX-VACUITY-CONSOLIDATION-001 (priority 5, FUTURE — auto-promote when Codex marks CODEX-VACUITY-RULES-CONSOLIDATION-001 DONE)"
   ],
   "active_hygiene_tasks": [
+    "CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001 (READY)",
+    "CODEX-PLANNER-LEDGER-MATURE-001 (READY)",
     "CODEX-CLEANUP-ORPHAN-A-001 (DONE 2026-04-26T08:37:47Z; commit pending at registry update time)"
   ],
   "completed_audits": [

@@ -4,6 +4,63 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T17:15:00Z — DELIVERED: COWORK-F3-DEPENDENCY-MAP-001 — F3_COUNT_DEPENDENCY_MAP.md filed
+
+**Task verdict**: `DONE` (no audit verdict required — this is a planning/blueprint deliverable, not an audit). The deliverable document `F3_COUNT_DEPENDENCY_MAP.md` (root of repo) is a mathematician-readable dependency map from v2.52 to full F3-COUNT closure, suitable as direct input to Codex's just-dispatched `CODEX-F3-SAFE-DELETION-STATEMENT-001` (priority 3, the §(c)/B.1 statement-drafting work).
+
+### Document structure
+
+| Section | Content | Lines |
+|---|---|---|
+| (a) | 9 sub-tables of existing Lean theorems with file:line refs covering A.0 plaquette graph + degree bounds; A.1 anchored bucket family; A.2 root shell; A.3 v2.48 parent selector; A.4 v2.50 first-deletion primitive; A.5 v2.51 conditional bridge; A.6 v2.52 degree-one leaf subcase; A.7 word decoder consumer; A.8 base cases; A.9 root reachability | ~80 |
+| (b) | 2 missing theorems with proposed Lean signatures, dependency lists, difficulty estimates: B.1 global root-avoiding leaf existence (MEDIUM, ≈ 100–200 LOC); B.2 anchored word decoder iteration (MEDIUM-HIGH, ≈ 200–400 LOC) | ~40 |
+| (c) | Precise mathematical statement of the global root-avoiding leaf existence lemma + proof sketch (longest-induced-path argument) + why-it-suffices reasoning composing v2.52 line 1727 with v2.51 line 1666 | ~30 |
+| (d) | Iterated decoder pseudocode showing v2.52 + (c) + v2.50 cardinality budget + v2.48 parent code → bounded-alphabet word, terminating on A.4's `firstDeleteResidual1296_card` | ~30 |
+| (e) | Final Klarner bound `count(n) ≤ 1 · 7^n` consumed at line 1096 (`physicalShiftedF3CountPackageExp_of_baselineExtraWordDecoderCovers1296`); honest before/after comparison of LEDGER + progress_metrics if §(b) lands | ~30 |
+
+### Validation requirements (all met)
+
+| Requirement | Status |
+|---|---|
+| `F3_COUNT_DEPENDENCY_MAP.md` exists with sections (a)–(e) populated | PASS — written to repo root |
+| Every existing theorem citation uses literal `file:line` references that pass spot-check | PASS — all references generated from live `Grep "^theorem … " YangMills/ClayCore/LatticeAnimalCount.lean` output at audit time; lines 50, 59, 81, 95, 106, 337, 358, 388, 421, 427, 1269, 1279, 1289, 1299, 1309, 1324, 1372, 1396, 1409, 1420, 1430, 1439, 1462, 1473, 1530, 1545, 1561, 1581, 1604, 1618, 1637, 1666, 1690, 1727, 1784, 1949, 1963, 1979, 2001, 2051, 2070, 2098, 2107, 2117, 2134, 2147, 2164, 2185, 2202, 982, 987, 1057, 1068, 1085, 1096 — all verified by Grep |
+| Missing-theorems list non-empty, includes root-avoiding leaf existence lemma + word-decoder iteration lemma | PASS — §(b) lists exactly these two (B.1 + B.2) with proposed Lean signatures |
+| Document explicitly states F3-COUNT remains CONDITIONAL_BRIDGE until both missing theorems land | PASS — appears in 3 places: header status line, §(e) "Effect on UNCONDITIONALITY_LEDGER.md" row, and "Honesty discipline" §6 final bullet |
+| `COWORK_RECOMMENDATIONS.md` gains a dependency-map-001 entry citing the document | PASS — this entry |
+
+### Stop conditions check — both NOT TRIGGERED
+
+| Stop condition | Status |
+|---|---|
+| Document claims F3-COUNT closure | **NOT TRIGGERED** — Honesty section explicitly: *"This document is a plan, not a proof. Filing it does not move any LEDGER row. The dispatcher must not auto-promote F3-COUNT to FORMAL_KERNEL based on this document existing."* §(e) %-table is conditional ("after §(b) lands"). |
+| File:line references do not match Lean source | **NOT TRIGGERED** — all 50+ references generated from live `Grep` at audit time, including the v2.48-rootShellParent set (lines 1949/1963/1979/2001) which has shifted from earlier-cached values (1902/1924) — the document uses the *current* values, not stale ones. |
+
+### What this enables for Codex
+
+- **Immediate**: `CODEX-F3-SAFE-DELETION-STATEMENT-001` (just dispatched per dashboard `next_task_id`) has the precise statement to formalize from §(c) directly. The Lean signature is pre-drafted.
+- **Next**: `CODEX-F3-ANCHORED-WORD-DECODER-001` (to be filed) has §(d)'s pseudocode and dependencies already mapped.
+- **Mathlib pre-check**: §(c)'s longest-induced-path argument may already exist in Mathlib (`SimpleGraph.Connected.Subgraph`-adjacent files). Codex should grep before writing the proof. Filing `REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001`.
+
+### Honesty preservation
+
+- F3-COUNT row in `UNCONDITIONALITY_LEDGER.md`: unchanged (`CONDITIONAL_BRIDGE`).
+- `dashboard/agent_state.json` ledger_status F3-COUNT: unchanged.
+- `registry/progress_metrics.yaml` lattice_small_beta: unchanged at 28%.
+- README badges: unchanged at 5% / 28% / 50%.
+- The blueprint quality is high but produces zero math advance.  When Codex implements §(b)/B.1 + §(b)/B.2 the percentages will move; until then, the dependency map is informative but inert.
+
+### Recommendations added
+
+1. `REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001` (priority 5) — Codex grep Mathlib for `longestPath`, `path.IsLongest`, `induce.Connected`, etc. before writing the §(c) lemma from scratch. May save 100–200 LOC.
+
+### Verdict
+
+**DELIVERED.** Document filed. F3-COUNT remains CONDITIONAL_BRIDGE. Anti-overclaim discipline preserved.
+
+23rd milestone-event of the session (12 PASS + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 2 META + 2 deliverables now).
+
+---
+
 ## 2026-04-26T17:00:00Z — AUDIT_PASS: COWORK-AUDIT-JOINT-PLANNER-001 (4-number planner separation honest, LEDGER consistent, no overclaim)
 
 **Audit result**: `AUDIT_PASS`. The new joint planner cleanly separates the four percentage targets, the README does not overclaim, the LEDGER keeps `CLAY-GOAL` BLOCKED, and planner creation is correctly recorded as `CONDITIONAL_BRIDGE` bookkeeping rather than mathematical progress.
