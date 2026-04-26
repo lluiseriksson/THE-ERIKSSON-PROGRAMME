@@ -101,10 +101,11 @@
   },
   "autocontinue_policy": {
     "primary_agent": "Codex",
-    "cowork_role": "sidecar audit and recommendations",
-    "cowork_sidecar_interval_seconds": 900,
+    "cowork_role": "always-on audit, recommendations, roadmap, and handoff quality control",
+    "cowork_sidecar_interval_seconds": 30,
     "codex_delivery": "paste prompt, then try Enter, calibrated send-button click, and Ctrl+Enter with detector confirmation",
     "failed_delivery_retry_seconds": 20,
-    "debug_mode": "python C:\\Users\\lluis\\Downloads\\codex_autocontinue.py --codex-only"
+    "debug_mode": "python C:\\Users\\lluis\\Downloads\\codex_autocontinue.py --codex-only",
+    "high_utilization_update": "2026-04-26: default Cowork interval reduced from 900s to 30s; Cowork is no longer intentionally idle while Codex is busy"
   }
 }

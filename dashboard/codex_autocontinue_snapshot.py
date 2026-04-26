@@ -17,7 +17,7 @@
 # Ejecución:
 #   python codex_autocontinue.py
 #   python codex_autocontinue.py --codex-only
-#   python codex_autocontinue.py --cowork-sidecar-interval 900
+#   python codex_autocontinue.py --cowork-sidecar-interval 30
 
 import argparse
 import json
@@ -61,11 +61,13 @@ CHECK_INTERVAL = 0.7
 STABLE_CHECKS = 3
 POST_SEND_COOLDOWN = 6.0
 
-# Orquestación: Codex es el agente primario; Cowork es sidecar de auditoría.
-# En modo normal se atiende primero a Codex y se limita la frecuencia de Cowork
-# para que no capture el baton mientras Codex todavía necesita trabajo.
+# Orquestación: Codex implementa; Cowork audita/recomienda en paralelo.
+# En modo normal ambos trabajan 24/7: Codex conserva prioridad de envío cuando
+# ambos están listos al mismo instante, pero Cowork no queda aparcado durante
+# largos intervalos. La pausa mínima de Cowork solo evita dobles envíos justo
+# después de completar una tarea o ante detectores visuales inestables.
 PRIMARY_AGENT = "Codex"
-DEFAULT_COWORK_SIDECAR_INTERVAL = 900.0
+DEFAULT_COWORK_SIDECAR_INTERVAL = 30.0
 
 # Sin tope de envíos. Pon un número si quieres limitarlo; None = infinito.
 MAX_SENDS_PER_APP = None
@@ -417,8 +419,9 @@ def run(args):
 
     cap_msg = "sin tope" if MAX_SENDS_PER_APP is None else f"tope {MAX_SENDS_PER_APP}"
     print(f"\nMODO AUTOMÁTICO ({cap_msg}). Ctrl+C para parar.")
-    print(f"Política: Codex primario; Cowork sidecar cada "
-          f"{args.cowork_sidecar_interval:.0f}s como mínimo.")
+    print("Política: Codex implementa; Cowork audita/recomienda en paralelo.")
+    print(f"Cowork always-on: pausa mínima {args.cowork_sidecar_interval:.0f}s "
+          "entre tareas confirmadas.")
     print("Si el ratón toca (0,0) el script PAUSA 5s y reanuda solo.\n")
 
     last_state = {}
@@ -474,6 +477,8 @@ def run(args):
                     if codex_pending:
                         app.stable_ready = 0
                         app.armed = True
+                        print("[SKIP] Cowork: Codex tiene un envío pendiente no "
+                              "confirmado; evito interferir hasta reintento.")
                         continue
                     if (last_cowork_dispatch_at
                             and now - last_cowork_dispatch_at
@@ -490,7 +495,7 @@ def run(args):
                         app.stable_ready = 0
                         app.armed = True
                         print(f"[SKIP] Cowork: sidecar interval active for "
-                              f"{remaining}s; Codex remains primary.")
+                              f"{remaining}s; reintento en cuanto venza.")
                         continue
                 if app.pending_message:
                     message = app.pending_message

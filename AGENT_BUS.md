@@ -58,6 +58,43 @@ correctly marked `BLOCKED`, not `DONE`. New recommendation:
 
 ---
 
+## Latest Handoff — 2026-04-26 — Cowork high-utilization watcher policy
+
+**Baton owner**: Cowork
+**Task**: Autocontinue runtime hardening
+**Status**: `DONE`
+
+Human runtime logs showed Cowork was spending too much paid runtime idle:
+the external watcher still used the old policy `Cowork sidecar cada 900s`.
+Codex changed `C:\Users\lluis\Downloads\codex_autocontinue.py` and mirrored
+the change into `dashboard/codex_autocontinue_snapshot.py`.
+
+New policy:
+
+- Codex remains the implementation-first agent when both apps are ready at the
+  same instant.
+- Cowork is now always-on for audit/recommendation/roadmap work.
+- Default Cowork pause after a confirmed task is `30s`, not `900s`.
+- Cowork is skipped only while Codex has an unconfirmed pending GUI send, to
+  avoid focus collisions during a retry.
+
+Validation:
+
+- `python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py dashboard\codex_autocontinue_snapshot.py scripts\agent_next_instruction.py`
+- `python C:\Users\lluis\Downloads\codex_autocontinue.py --diagnose-coords`
+  confirms Codex and Cowork coordinates still load correctly.
+
+> **Next exact instruction**:
+> Human, restart the watcher with
+> `python C:\Users\lluis\Downloads\codex_autocontinue.py`. Let it run for
+> 10-15 minutes. Confirm that when Cowork returns to `LISTO`, it receives a
+> new Cowork task after roughly 30 seconds rather than waiting 900 seconds.
+> If Cowork still idles, rerun with
+> `python C:\Users\lluis\Downloads\codex_autocontinue.py --cowork-sidecar-interval 5`
+> and send Codex the console log.
+
+---
+
 ## COMMUNICATION_CONTRACT
 
 This contract is **binding** for every Codex and Cowork session.
