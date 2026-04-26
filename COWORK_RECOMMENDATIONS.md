@@ -4,6 +4,108 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T19:30:00Z — DELIVERED: COWORK-EXP-LIEDERIVREG-REFORMULATION-SCOPE-001 — `dashboard/exp_liederivreg_reformulation_options.md` filed; Option 1 (eliminate axiom; pass `LieDerivReg' f` as hypothesis) recommended
+
+**Task verdict**: `DONE` (scoping deliverable; no LEDGER row moved; no Lean edit performed). The deliverable `dashboard/exp_liederivreg_reformulation_options.md` enumerates 3 concrete reformulation options for the only remaining INVALID Tier 2 row (`lieDerivReg_all`), with downstream consumer impact analysis, recommended option, and Mathlib helper cross-references. **Cowork's META-4th-run queue is now 3/3 done.**
+
+### Document structure (5 sections + cross-references)
+
+| Section | Content |
+|---|---|
+| (a) | Existing `axiom lieDerivReg_all` (`LieDerivReg_v4.lean:58`) + `LieDerivReg'` 3-field structure (`:50-55`); two concrete counter-examples showing why "all functions" is mathematically false (indicator function fails `diff`; non-measurable `f` fails `meas`+`sq_int`); 5-row consumer inventory: `lieD'_add` (`:70`), `lieD'_smul` (`:80`), `dirichletForm''_subadditive` (`:94`), `sunDirichletForm_subadditive` (`P8_PhysicalGap/SUN_DirichletCore.lean:109`), comment-only mention in `GeneratorAxiomsDimOne.lean:56` |
+| (b) | 3 concrete options: **Option 1** (eliminate axiom; pass `LieDerivReg' f` as explicit hypothesis, ~100 LOC); **Option 2** (restrict to `ContDiff ℝ ⊤ f`, ~180 LOC); **Option 3** (define `DirichletDomain` + closure lemmas, ~250-400 LOC) |
+| (c) | Per-option consumer impact table for all 4 active consumers showing required hypothesis changes, new auxiliary theorems, LOC delta; key observation that consumers need `LieDerivReg' f` *as input* and don't care how it's produced — making Option 1 maximally generic |
+| (d) | Cowork **recommends Option 1** with 5-clause justification: honest math, lowest refactor, maximally composable, anti-vacuity, Tier 2 count drops 5 → 4. Filing convention: Cowork audit → Codex implementation (`CODEX-LIEDERIVREG-AXIOM-RETIRE-001` priority 5) → post-implementation Cowork audit → LEDGER count update. Optional Option 2 follow-up filed separately |
+| (e) | Mathlib helper cross-references: Option 1 needs **zero** new helpers; Option 2 needs `ContDiff.differentiable`, `Continuous.aestronglyMeasurable`, `IsCompact.continuous_integrable`, `MeasureTheory.Memℒp`; Option 3 needs `MeasurableSpace.set` + closure lemmas + possibly `Mathlib.Analysis.NormedSpace.lpSpace` |
+
+### Validation requirements (all 5 met)
+
+| Requirement | Result |
+|---|---|
+| `dashboard/exp_liederivreg_reformulation_options.md` exists with sections (a)-(e) | PASS |
+| At least 2 concrete reformulation options | PASS — 3 options enumerated |
+| Downstream consumer impact analysis for each option | PASS — §(c) per-option table covers all 4 active consumers + GeneratorAxiomsDimOne comment + new helpers + LOC delta |
+| One recommended option with justification | PASS — Option 1 recommended with 5-clause justification + filing convention + ledger impact |
+| `COWORK_RECOMMENDATIONS.md` audit entry | PASS — this entry |
+
+### Stop conditions check — both NOT TRIGGERED
+
+| Stop condition | Status | Counter-evidence |
+|---|---|---|
+| Cowork claims to have proved any reformulation | **NOT TRIGGERED** | Header: *"Cowork has not proved any reformulation and is not patching the existing INVALID axiom"*; §(a) gives only counter-examples (no proof); §(b) gives proposed signatures (no proofs); §(d) explicit: *"This scope document does NOT claim a reformulation has been proved"*; footer: *"Cowork is scoping, not proving"* |
+| Document implies the existing INVALID axiom is rescued | **NOT TRIGGERED** | Header: *"The axiom must be REPLACED"*; §(b)/Option 1 explicit: *"delete the axiom lieDerivReg_all line"*; §(d) Anti-overclaim invariants: *"the axiom must be removed in favour of an explicit hypothesis (Option 1) or a theorem on a smaller class (Option 2/3)"*; footer: *"the axiom must be replaced, not patched"* |
+
+### Why Option 1 is the right recommendation
+
+The active consumers (`lieD'_add`, `lieD'_smul`, both `subadditive` theorems)
+need `LieDerivReg' f` *as input*. They don't care how it's produced. Option
+1 makes them maximally generic — any future smoothness theorem (Option 2)
+or Dirichlet-domain theorem (Option 3) can supply the input separately
+without further refactor. Option 1 is the **foundation**; Options 2 and 3
+are followups that build on it.
+
+The current state (axiom as-is) provides the input for free but the input
+is mathematically false. Option 1 makes the conditional structure of the
+math **honest**: the subadditivity theorems become "for every `f` admitting
+Lie regularity, subadditivity holds" — which is correct.
+
+### Honesty preservation
+
+- All LEDGER rows: **unchanged**.
+- F3-COUNT row: unchanged (`CONDITIONAL_BRIDGE`).
+- F3-MAYER row: unchanged (`BLOCKED`).
+- EXP-LIEDERIVREG row: unchanged (`INVALID`). Tier 2 count remains 5 until
+  Codex implements Option 1 (which would drop it to 4).
+- `dashboard/agent_state.json` `unconditionality_status`: `NOT_ESTABLISHED`.
+- `progress_metrics.yaml` percentages: unchanged at 5% / 28% / 23-25% / 50%.
+- README badges: unchanged.
+
+### Side observation captured during drafting
+
+Per dashboard line 33 `latest_validation_artifact`, **Codex landed v2.55.0**
+during the drafting of this document (~19:25Z, while Cowork was at the
+"Mathlib helpers cross-reference" section). The new commit per dashboard
+`current_phase: f3_card_two_root_avoiding_deletion_v2_55_partial`: Codex
+**promoted the bonus k=2 base case from v2.54 (`exists_erase_mem_of_card_two`
+at line 1979) into a formal v2.55.0 release** — a `card_two_root_avoiding_safe_deletion`
+theorem. This is honest scoped progress: **the global k ≥ 3 case remains
+open**. F3-COUNT row remains `CONDITIONAL_BRIDGE`. Codex created
+`COWORK-AUDIT-CODEX-V2.55-CARD-TWO-DELETION-001` (priority 4, READY) for
+the post-implementation audit, which is now Cowork's next math audit
+target. F3_COUNT_DEPENDENCY_MAP.md gained a v2.55 addendum line in the
+header at the same time.
+
+### Recommendation status
+
+- `EXP-LIEDERIVREG` LEDGER row: still `INVALID` (the axiom is still in the
+  source). The reformulation is now **scoped and ready for Codex**;
+  implementation is a small ~100 LOC refactor task per §(d) filing
+  convention.
+- No new Cowork recommendation filed; the path forward is captured in
+  this scope document.
+
+### Cowork's META-4th-run queue retrospective
+
+| Task | Priority | Status | Cowork-authored deliverable |
+|---|---:|---|---|
+| `COWORK-F3-MAYER-DEPENDENCY-MAP-001` | 5 | DONE 19:00Z | `F3_MAYER_DEPENDENCY_MAP.md` |
+| `COWORK-LEDGER-FRESHNESS-AUDIT-003` | 5 | DONE 19:10Z | (audit pass; drift = 0 across 8 v2.* commits) |
+| `COWORK-EXP-LIEDERIVREG-REFORMULATION-SCOPE-001` | 6 | DONE 19:30Z | `dashboard/exp_liederivreg_reformulation_options.md` |
+
+**3/3 done.** All META-4th-run tasks complete. Cowork has produced a
+6th deliverable in the repo (counting the EXP-LIEDERIVREG scope document).
+
+### Verdict
+
+**DELIVERED.** Document filed. F3-COUNT remains CONDITIONAL_BRIDGE, F3-MAYER
+remains BLOCKED, EXP-LIEDERIVREG remains INVALID. Cowork's META-4th-run
+queue is now 3/3 done. Anti-overclaim discipline preserved.
+
+34th milestone-event of the session: 18 audit_pass + 2 PARTIAL + 2 ESCALATE
++ 3 BLOCKED + 3 META + **6 deliverables**.
+
+---
+
 ## 2026-04-26T19:10:00Z — AUDIT_PASS: COWORK-LEDGER-FRESHNESS-AUDIT-003 (3rd 6h freshness iteration; drift=0 across all four invariants)
 
 **Audit result**: `AUDIT_PASS`. Third iteration of the recurring 6h freshness cadence per `REC-COWORK-LEDGER-FRESHNESS-001`. Re-grep result is **identical** to the 14:00 baseline and the 16:30 audit-002 baseline: 5 real Tier 2 axiom declarations, 0 axioms outside `YangMills/Experimental/`, lieDerivReg_all consumer scope unchanged at 3 files. Multiple v2.* commits between baseline and now (v2.53 + v2.54 + JOINT-PLANNER infrastructure + interim vacuity_flag schema + 5 Cowork deliverables) — none of them touched the Tier 2 axiom set.
