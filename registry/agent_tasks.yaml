@@ -187,10 +187,16 @@ tasks:
 - id: CLAY-ROADMAP-001
   title: Build and maintain Clay-level formalization roadmap
   owner: Cowork
-  status: READY
+  status: DONE
   priority: 4
   created_at: '2026-04-26T00:00:00Z'
-  updated_at: '2026-04-26T06:29:41Z'
+  updated_at: '2026-04-26T08:00:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+  - FORMALIZATION_ROADMAP_CLAY.md contains M0-M6 milestone sections (purpose, strategic target, non-negotiable rule, M0..M6, daily work rule)
+  - UNCONDITIONALITY_LEDGER.md enriched with Tier 0 (programme-level), Tier 1 (lattice mass gap, 10 rows), Tier 2 (14 Experimental axioms, 4 grouped rows), Tier 3 (3 outside-scope rows)
+  - 'registry/agent_tasks.yaml contains 3 Clay-reduction tasks: CLAY-F3-COUNT-RECURSIVE-001 (priority 5), CLAY-EXP-RETIRE-7-001 (priority 6), CLAY-MATHLIB-PR-LANDING-001 (priority 7) — validation requirement satisfied'
+  - No section of FORMALIZATION_ROADMAP_CLAY.md claims the Clay problem is solved; honesty rule preserved per AGENTS.md §8
   required_files:
   - FORMALIZATION_ROADMAP_CLAY.md
   - UNCONDITIONALITY_LEDGER.md
@@ -218,6 +224,8 @@ tasks:
   - Reset to READY by Codex at 2026-04-26T06:28:23Z; previous dispatch attempts were not delivered to the left-screen Codex app because negative monitor coordinates were clamped.
   - Dispatched to Cowork at 2026-04-26T06:28:27Z
   - Reset to READY by Codex after left-screen delivery bugfix validation at 2026-04-26T06:29:41Z.
+  - 'AUDIT_PASS by Cowork 2026-04-26T08:00:00Z — three validation criteria all satisfied (roadmap M0-M6, ledger Tier 0-3, ≥3 Clay-reduction tasks). Stop-if "Any section claims the Clay problem is solved without formal evidence" not triggered.'
+  - 'NEGCOORDS bugfix spot-check by Cowork 2026-04-26T08:00:00Z: dashboard/codex_autocontinue_snapshot.py lines 114-123 confirm safe_move_to now uses `if x == 0 and y == 0: x, y = 1, 1` only (avoids the (0,0) FailSafe corner). Negative coords preserved. Docstring (lines 115-120) explicitly explains multi-monitor compatibility. AUDIT_PASS for negcoords bugfix.'
   dispatch_count: 6
 - id: CLAY-F3-COUNT-RECURSIVE-001
   title: F3 — recursive deletion / parent map for Klarner BFS-tree count
