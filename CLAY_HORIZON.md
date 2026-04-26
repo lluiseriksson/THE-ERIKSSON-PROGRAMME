@@ -1,9 +1,23 @@
 # CLAY_HORIZON.md
 
 **Cowork-authored honest external-reader companion for the Clay scope.**
-**Updated: 2026-04-26T17:30:00Z.**
+**Originally filed: 2026-04-26T17:30:00Z. Refreshed: 2026-04-26T20:35:00Z (post-v2.57.0) per `COWORK-CLAY-HORIZON-REFRESH-001`.**
 **Status of CLAY-GOAL in `UNCONDITIONALITY_LEDGER.md`: `BLOCKED`. Global
 unconditionality status: `NOT_ESTABLISHED`.**
+
+**Refresh summary (20:35Z)**: since this document was first filed at 17:30Z,
+the project has accumulated significant new context but **no LEDGER row has
+moved and no percentage has changed**. F3-COUNT progressed v2.52 → v2.53 →
+v2.54 → v2.55 → v2.56 → v2.57 (5 narrow increments since this document's
+first filing) — F3-COUNT row stayed `CONDITIONAL_BRIDGE` through every one.
+Three new Cowork deliverables landed: `F3_MAYER_DEPENDENCY_MAP.md`,
+`dashboard/exp_liederivreg_reformulation_options.md`,
+`dashboard/mayer_mathlib_precheck.md`. Six Cowork-filed recommendations were
+resolved. The lattice 28% / Clay-as-stated 5% / honesty-discounted 23–25% /
+named-frontier 50% headline numbers are unchanged. **The OUT-* rows
+(continuum / OS-Wightman / strong coupling) remain BLOCKED. The honest growth
+ceiling for Clay-as-stated remains ~10–12% even after full F3-* lattice
+closure.**
 
 This document exists because the LEDGER's Tier 0 / Tier 1 rows show several
 `FORMAL_KERNEL` entries (Haar measure on SU(N), Schur orthogonality, the
@@ -154,7 +168,7 @@ This table reuses `registry/progress_metrics.yaml` component contributions
 | L2.4-SCHUR | FORMAL_KERNEL (100%) | ~4 % | ~0.5 % (same) |
 | L2.5-FROBENIUS | FORMAL_KERNEL (100%) | ~4 % | ~0.5 % (same) |
 | L2.6-CHARACTER | FORMAL_KERNEL (100%) | ~4 % | ~0.5 % (same) |
-| F3-COUNT | CONDITIONAL_BRIDGE (v2.48+v2.50+v2.51+v2.52, ~30%) | ~5 % | ~0 % (lattice-combinatorics; does not apply at strong coupling or continuum) |
+| F3-COUNT | CONDITIONAL_BRIDGE (v2.48 + v2.50 + v2.51 + v2.52 + v2.53 + v2.54 + v2.55 + v2.56 + v2.57, ~35%; next math step is closing `PlaquetteGraphAnchoredTwoNonCutExists` for k ≥ 3 per `F3_COUNT_DEPENDENCY_MAP.md`) | ~5 % | ~0 % (lattice-combinatorics; does not apply at strong coupling or continuum) |
 | F3-MAYER | BLOCKED on F3-COUNT | 0 % | 0 % |
 | F3-COMBINED | BLOCKED on F3-COUNT + F3-MAYER | 0 % | 0 % |
 | EXP-MATEXP-DET | EXPERIMENTAL (~40%) | ~1.5 % | ~0 % (technical Mathlib lemma, low Clay leverage) |
@@ -250,20 +264,38 @@ contribution ~0 % already.
 ## Cross-references
 
 - `UNCONDITIONALITY_LEDGER.md` — authoritative dependency map, especially
-  Tier 3 lines 74–80.
+  Tier 3 lines 74–80 and §38 interim `vacuity_flag` schema (lines 38–75).
 - `JOINT_AGENT_PLANNER.md` — the 4-number consensus surface; its
   `forbidden_conclusions` list complements this document.
 - `registry/progress_metrics.yaml` — machine-readable percentages
-  (audited 17:00Z by `COWORK-AUDIT-JOINT-PLANNER-001`).
+  (audited 17:00Z by `COWORK-AUDIT-JOINT-PLANNER-001`; INFRA_AUDITED
+  per `CODEX-PLANNER-LEDGER-MATURE-001` at 10:45Z + Cowork
+  `COWORK-AUDIT-CODEX-PLANNER-MATURE-001` at 18:15Z).
 - `KNOWN_ISSUES.md` — vacuity caveats (§1.1, §1.2, §1.3, §9 Findings
   011–015, §10.3).
-- `MATHEMATICAL_REVIEWERS_COMPANION.md` — meant for external mathematician
-  reviewers; this document complements the companion by adding the
-  Clay-scope honesty section.
+- `MATHEMATICAL_REVIEWERS_COMPANION.md` §3.3 — reviewer-facing
+  explanation of `FORMAL_KERNEL` rows with vacuity caveats; complements
+  this document.
 - `F3_COUNT_DEPENDENCY_MAP.md` — the forward-looking blueprint for
-  closing F3-COUNT inside the lattice 28 % column. Even when that
-  succeeds, the Clay-as-stated number does not move beyond ~10–12 %
-  without the OUT-* rows.
+  closing F3-COUNT inside the lattice 28 % column. v1 + v2.53 refresh
+  + Codex addenda for v2.55 / v2.56 / v2.57. **Even when F3-COUNT
+  closes, the Clay-as-stated number does not move beyond ~10–12 %
+  without the OUT-* rows.**
+- `F3_MAYER_DEPENDENCY_MAP.md` (filed 19:00Z) — the parallel blueprint for
+  F3-MAYER (Brydges-Kennedy random-walk cluster expansion). F3-MAYER is
+  BLOCKED until F3-COUNT closes; once it does, the Mayer side is the next
+  ~760 LOC of project work (per §(b) difficulty estimates).
+- `dashboard/exp_liederivreg_reformulation_options.md` (filed 19:30Z) —
+  Cowork's recommended Option 1 (eliminate `lieDerivReg_all` axiom; pass
+  `LieDerivReg' f` as explicit hypothesis). When Codex implements Option
+  1, Tier 2 axiom count drops 5 → 4 (the only mathematically substantive
+  Tier 2 retirement available; unlike the vacuous EXP-SUN-GEN retirement).
+- `dashboard/vacuity_flag_column_draft.md` (filed 18:25Z) — concrete
+  spec for the LEDGER Tier 1 + Tier 2 `vacuity_flag` column (7 enumerated
+  values; per-row recommendations); awaiting Codex implementation.
+- `dashboard/mayer_mathlib_precheck.md` (filed 20:20Z) — Mathlib has-vs-
+  lacks scope for F3-MAYER §(b)/B.3 (BK forest formula); finding: Mathlib
+  lacks the entire Brydges-Kennedy / Mayer / forest-formula stack.
 
 ## When to update
 
@@ -273,6 +305,17 @@ Refresh this document when any of:
 - A new vacuity caveat is added to `KNOWN_ISSUES.md`.
 - The 4-number consensus in `JOINT_AGENT_PLANNER.md` changes (would
   require Cowork audit per the planner's update protocol).
+- F3-COUNT row moves to `FORMAL_KERNEL` (would trigger a `lattice_small_beta`
+  bump from 28% → ~43% per `F3_COUNT_DEPENDENCY_MAP.md` §(e); Cowork audit
+  required; **Clay-as-stated capped at ~10–12% honest growth ceiling
+  remains**).
+- F3-MAYER row moves to `FORMAL_KERNEL` (additional ~20% lattice headline
+  contribution; same ~10–12% Clay ceiling).
+- Codex implements EXP-LIEDERIVREG Option 1 (Tier 2 axiom count 5 → 4;
+  honesty-discounted lattice nudges up by ~0–1%; no math row promotion).
+- Periodic refresh as cumulative new-context warrants (e.g. this 20:35Z
+  refresh after v2.53 → v2.57 progression + 6 deliverables + 6 resolved
+  recommendations).
 
 ---
 

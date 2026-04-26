@@ -4,6 +4,328 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T20:35:00Z — DELIVERED: COWORK-CLAY-HORIZON-REFRESH-001 — CLAY_HORIZON.md refreshed in place; META-5th-run queue 3/3 done
+
+**Task verdict**: `DONE` (refresh of pre-existing honesty companion; no LEDGER row moved; no percentage change; no new math). The deliverable refreshes `CLAY_HORIZON.md` to incorporate v2.53 → v2.57 F3-COUNT progression, the 7 Cowork-authored deliverables, and the 6 resolved recommendations from the session.
+
+### Changes to `CLAY_HORIZON.md`
+
+| Section | Refresh |
+|---|---|
+| Header | Timestamp updated 17:30Z → 20:35Z; new "Refresh summary (20:35Z)" paragraph noting v2.52 → v2.57 progress (5 narrow increments since first filing), 3 new deliverables, 6 resolved recommendations, **all percentages unchanged** |
+| §(iii) F3-COUNT row in per-row contribution table | Evidence updated from "v2.48+v2.50+v2.51+v2.52, ~30%" to "v2.48 + v2.50 + v2.51 + v2.52 + v2.53 + v2.54 + v2.55 + v2.56 + v2.57, ~35%; next math step is closing `PlaquetteGraphAnchoredTwoNonCutExists` for k ≥ 3 per `F3_COUNT_DEPENDENCY_MAP.md`". **Contribution number unchanged at ~5%** (out of 20% weight) — v2.53–v2.57 are all bridge structure, not raw math advance |
+| Cross-references | Expanded from 6 entries to 11; new entries: `F3_MAYER_DEPENDENCY_MAP.md` (filed 19:00Z), `dashboard/exp_liederivreg_reformulation_options.md` (filed 19:30Z), `dashboard/vacuity_flag_column_draft.md` (filed 18:25Z), `dashboard/mayer_mathlib_precheck.md` (filed 20:20Z); existing entries updated with audit/maturity references (`MATHEMATICAL_REVIEWERS_COMPANION.md` §3.3 noted; `progress_metrics.yaml` INFRA_AUDITED status noted) |
+| "When to update" | Expanded from 3 triggers to 7: added F3-COUNT FORMAL_KERNEL trigger (28% → ~43% jump), F3-MAYER FORMAL_KERNEL trigger (additional ~20%), EXP-LIEDERIVREG Option 1 trigger (Tier 2 5 → 4), and periodic refresh trigger (e.g. this 20:35Z refresh) |
+
+### Validation requirements (all 5 met)
+
+| Requirement | Result |
+|---|---|
+| `CLAY_HORIZON.md` gains v2.55-aware header + new cross-references | PASS — header refreshed with explicit v2.57 mention; 5 new cross-references added (F3-MAYER map, EXP-LIEDERIVREG options, vacuity_flag_column_draft, mayer_mathlib_precheck, plus updated COMPANION + progress_metrics references) |
+| Per-row contribution table updated for post-v2.55 evidence | PASS — F3-COUNT row evidence now lists v2.48 → v2.57 (9 commits) with explicit "next math step" pointer |
+| All 4 percentages still 5/28/23-25/50 | PASS — header refresh summary explicit "all percentages unchanged"; per-row table totals row unchanged; `progress_metrics.yaml` unchanged |
+| All 3 OUT-* rows still BLOCKED in §(ii) | PASS — §(ii) tables for OUT-CONTINUUM, OUT-OS-WIGHTMAN, OUT-STRONG-COUPLING all still show `BLOCKED` LEDGER status |
+| `COWORK_RECOMMENDATIONS.md` audit entry | PASS — this entry |
+
+### Stop conditions check — all 3 NOT TRIGGERED
+
+| Stop condition | Status | Counter-evidence |
+|---|---|---|
+| Refresh claims any progress toward OUT-CONTINUUM, OUT-OS-WIGHTMAN, OUT-STRONG-COUPLING | **NOT TRIGGERED** | §(ii) per-row tables are unchanged in content (only date references / cross-link expansions allowed); all 3 rows still labeled `BLOCKED` with same blocker descriptions; "When to update" section's "OUT-* row moves off BLOCKED" trigger explicitly conditional ("would require Cowork audit AND LEDGER co-update BEFORE the percentage table can change") |
+| Refresh changes any of the 4 percentages without a Cowork audit | **NOT TRIGGERED** | Header refresh summary explicit "all percentages unchanged"; F3-COUNT row contribution still ~5% (only the evidence cell mentions cumulative v2.48 → v2.57 progression); §(iii) totals row "Total **~28 %** **~5 %**" unchanged; `progress_metrics.yaml` not modified by this refresh |
+| Refresh implies F3-COUNT closure | **NOT TRIGGERED** | F3-COUNT contribution table row explicitly "CONDITIONAL_BRIDGE"; "next math step is closing `PlaquetteGraphAnchoredTwoNonCutExists` for k ≥ 3" wording explicitly indicates the close is **future** work; "When to update" section's "F3-COUNT row moves to FORMAL_KERNEL" trigger explicit about it being a future event |
+
+### Honesty preservation
+
+- `CLAY-GOAL` row: unchanged (`BLOCKED`)
+- F3-COUNT row: unchanged (`CONDITIONAL_BRIDGE`)
+- All other LEDGER rows: unchanged
+- `dashboard/agent_state.json` `unconditionality_status`: `NOT_ESTABLISHED`
+- `progress_metrics.yaml` percentages: unchanged at 5% / 28% / 23-25% / 50%
+- README badges: unchanged
+- The honest growth ceiling for Clay-as-stated remains at ~10–12% even after full F3-* closure (per CLAY_HORIZON.md §(iii)'s honest growth ceiling section, restated)
+
+### Cowork's META-5th-run queue retrospective (3/3 done)
+
+| Task | Priority | Delivered | Cowork artifact |
+|---|---:|---|---|
+| `COWORK-MAYER-MATHLIB-PRECHECK-001` | 5 | 20:20Z | `dashboard/mayer_mathlib_precheck.md` |
+| `COWORK-LEDGER-FRESHNESS-AUDIT-004` | 5 | 20:00Z | (audit pass; drift = 0) |
+| `COWORK-CLAY-HORIZON-REFRESH-001` | 6 | 20:35Z | `CLAY_HORIZON.md` (refreshed in place) |
+
+**3/3 done.** Cowork's META-5th-run queue is complete.
+
+### 7 Cowork-authored deliverables in repo this session (final count)
+
+1. `F3_COUNT_DEPENDENCY_MAP.md` (v1 + v2.53 refresh + Codex v2.55/v2.56/v2.57 addenda)
+2. `CLAY_HORIZON.md` (v1 17:30Z + this v2 refresh 20:35Z)
+3. `dashboard/vacuity_flag_column_draft.md`
+4. `F3_MAYER_DEPENDENCY_MAP.md`
+5. `dashboard/exp_liederivreg_reformulation_options.md`
+6. `dashboard/mayer_mathlib_precheck.md`
+
+Plus `JOINT_AGENT_PLANNER.md` + `registry/progress_metrics.yaml` (Codex-authored, Cowork-audited).
+
+### Verdict
+
+**DELIVERED.** Document refreshed in place; all 5 validation requirements met; all 3 stop conditions NOT TRIGGERED; META-5th-run queue 3/3 done; LEDGER + percentages + OUT-* rows all unchanged.
+
+41st milestone-event of the session: 22 audit_pass + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 4 META + **8 deliverables** (counting CLAY_HORIZON refresh as a separate deliverable).
+
+---
+
+## 2026-04-26T20:30:00Z — AUDIT_PASS: COWORK-AUDIT-CODEX-V2.57-TWO-NONCUT-BRIDGE-001 (two-non-cut sufficiency bridges oracle-clean; F3-COUNT remains CONDITIONAL_BRIDGE; PlaquetteGraphAnchoredTwoNonCutExists is a strictly stronger open gap)
+
+**Audit result**: `AUDIT_PASS`. Codex v2.57.0 cleanly delivers a **sufficiency** bridge from a strictly stronger graph-theoretic statement (`PlaquetteGraphAnchoredTwoNonCutExists`) down to the v2.56 non-root non-cut and v2.53 safe-deletion forms. 6 declarations: 1 def Prop + 1 abbrev physical + 4 oracle-clean sufficiency theorems (correctly **forward-only**, not iff — because two-non-cut is strictly stronger than non-root-non-cut). Commit `0d2ebc9`.
+
+### Validation requirements (all 6 met)
+
+| Requirement | Result | Evidence |
+|---|---|---|
+| `lake build YangMills.ClayCore.LatticeAnimalCount` passed | PASS (per `AXIOM_FRONTIER.md:38-40`); workspace VM unavailable for Cowork-side rebuild |
+| 4 bridge theorems' `#print axioms` traces are canonical | PASS — `AXIOM_FRONTIER.md:42-49` pin all 4 at `[propext, Classical.choice, Quot.sound]`; `LatticeAnimalCount.lean:3333/3334/3338/3339` directives placed |
+| `AXIOM_FRONTIER.md` v2.57.0 states this does not close F3-COUNT | PASS — header line 1; lines 23-32 (Why) explicit *"This is a bridge only. It does not prove the global two-non-cut theorem, does not close F3-COUNT, and does not move any project percentage"*; line 51 *"No sorry. No new project axioms. No Clay-level completion claim"*; lines 55-62 (What remains) enumerate "Prove `PlaquetteGraphAnchoredTwoNonCutExists` globally, or prove `PlaquetteGraphAnchoredNonRootNonCutExists` directly"; line 64 *"F3-COUNT remains CONDITIONAL_BRIDGE"* |
+| LEDGER F3-COUNT row remains CONDITIONAL_BRIDGE | PASS — per dashboard line 33 `latest_validation_artifact`: *"v2.57 two-non-cut sufficiency bridge traces canonical; F3-COUNT remains CONDITIONAL_BRIDGE"* |
+| `F3_COUNT_DEPENDENCY_MAP.md` post-v2.57 addendum | PASS — header line 4: *"Codex addenda: ... 2026-04-26T20:20:00Z (post-v2.57.0)"* |
+| No README/progress percentage moved | PASS — `progress_metrics.yaml` percentages unchanged at 5% / 28% / 23-25% / 50%; README badges unchanged; F3-COUNT component contribution remains 5% |
+
+### Stop conditions check — all 3 NOT TRIGGERED
+
+| Stop condition | Status | Counter-evidence |
+|---|---|---|
+| Any new theorem depends on sorryAx or new project axiom | **NOT TRIGGERED** | `AXIOM_FRONTIER.md:51` explicit *"No sorry. No new project axioms"*; oracle traces lines 42-49 show only canonical 3-tuple |
+| Documentation implies `PlaquetteGraphAnchoredTwoNonCutExists` is proved globally | **NOT TRIGGERED** | `LatticeAnimalCount.lean:1852` declares as `def Prop` (open gap, like its v2.53/v2.56 predecessors); `AXIOM_FRONTIER.md:31-32` explicit *"does not prove the global two-non-cut theorem"*; `:55-58` (What remains) explicit *"Prove `PlaquetteGraphAnchoredTwoNonCutExists` globally, or prove `PlaquetteGraphAnchoredNonRootNonCutExists` directly"*; theorem docstring at `:1849-1851` honest about the conditional shape: *"If this is proved globally, one candidate must be different from the anchored root, so it implies the exact non-root non-cut formulation below"* |
+| Any project percentage moved | **NOT TRIGGERED** | `AXIOM_FRONTIER.md:32` explicit "does not move any project percentage"; LEDGER + dashboard + progress_metrics + README all unchanged; Tier 2 axiom set confirmed at 5 by freshness audit-004 at 20:00Z |
+
+### Theorem-by-theorem verification
+
+| File:line | Identifier | Kind | Notes |
+|---:|---|---|---|
+| 1852 | `PlaquetteGraphAnchoredTwoNonCutExists` | **`def Prop` (open gap)** | Statement (lines 1858-1861): ∃ z₁ ∈ X, ∃ z₂ ∈ X, z₁ ≠ z₂ ∧ both `induce(X.erase z_i).Preconnected`. **Strictly stronger** than `PlaquetteGraphAnchoredNonRootNonCutExists` (v2.56 form): asks for two non-cut deletions, not just one non-root non-cut deletion. |
+| 1890 | `plaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists` | theorem (oracle-clean) | **The headline forward bridge**: twoNonCut ⇒ nonRootNonCut. Proof at lines 1894-1900 is a clean 2-case Boolean argument: take the two candidates `z₁, z₂` from `twoNonCut`; if `z₁ = root`, use `z₂` (must be ≠ root because `z₁ ≠ z₂`); else use `z₁`. |
+| 1905 | `plaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists` | theorem (oracle-clean) | Composition: twoNonCut ⇒ nonRootNonCut (line 1890) ⇒ safeDeletion (v2.56 line 1859 `..._safeDeletionExists_of_nonRootNonCutExists`). |
+| 1969 | `PhysicalPlaquetteGraphAnchoredTwoNonCutExists` | abbrev | Physical d=4 specialization of the def Prop |
+| 1993 | `physicalPlaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists` | theorem (oracle-clean) | Physical forward bridge |
+| 2002 | `physicalPlaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists` | theorem (oracle-clean) | Physical composition |
+
+6 declarations total: 1 def Prop (open gap) + 1 abbrev + 4 oracle-clean bridge theorems.
+
+### Forward-only correctly distinguishes from v2.56 iff
+
+v2.56 proved `safeDeletion ↔ nonRootNonCut` (bidirectional). v2.57 proves only `twoNonCut ⇒ nonRootNonCut` (forward). The asymmetry is **mathematically correct**: a graph could have exactly one non-cut vertex which happens to be non-root, satisfying nonRootNonCut without satisfying twoNonCut. Codex correctly avoided overclaiming by NOT writing an iff. This honesty is the same pattern as v2.53 (degree-one ⇒ safe, not iff, because degree-one is too strong).
+
+The two-non-cut form is what **Diestel Prop 1.4.1** literally says: every connected graph on ≥ 2 vertices has ≥ 2 non-cut vertices. v2.57 reduces the F3-COUNT closure target to **proving exactly this Diestel statement** for the induced plaquette bucket graph.
+
+### `F3_COUNT_DEPENDENCY_MAP.md` alignment
+
+The dependency map's §(c) Strategy 2 explicitly cites Diestel Prop 1.4.1. v2.57 makes the formal Lean statement match Diestel's exact wording. The map's predicted closure path is now structurally the same as v2.57's What-remains: prove `PlaquetteGraphAnchoredTwoNonCutExists` for k ≥ 3.
+
+### Ladder of open def Props (running tally)
+
+| Layer | def Prop | Proved? | Strength relative to neighbors |
+|---|---|---|---|
+| v2.53 | `PlaquetteGraphAnchoredSafeDeletionExists` | NO (open gap) | medium |
+| v2.53 | `PlaquetteGraphAnchoredDegreeOneDeletionExists` | NO (open gap) | strictly stronger than safe-deletion; ⇒ safe-deletion via v2.53:1831; **fails on cyclic buckets** |
+| v2.56 | `PlaquetteGraphAnchoredNonRootNonCutExists` | NO (open gap) | **provably equivalent** to safe-deletion (v2.56:1883 iff) |
+| v2.57 | `PlaquetteGraphAnchoredTwoNonCutExists` | NO (open gap) | strictly stronger than non-root-non-cut; ⇒ non-root-non-cut via v2.57:1890 (forward only) |
+
+The v2.56 + v2.57 stack now offers Codex 4 different proof targets that all close F3-COUNT through the bridge stack:
+1. Prove `degreeOne` → strongest, but fails on cyclic buckets.
+2. Prove `safeDeletion` directly.
+3. Prove `nonRootNonCut` directly.
+4. Prove `twoNonCut` (Diestel) → cleanest match to standard graph theory; recommended.
+
+### Honesty preservation
+
+- F3-COUNT row: unchanged (`CONDITIONAL_BRIDGE`)
+- F3-MAYER, F3-COMBINED rows: still `BLOCKED`
+- dashboard `unconditionality_status`: `NOT_ESTABLISHED`
+- README badges: unchanged at 5% / 28% / 50%
+- `progress_metrics.yaml` percentages: unchanged
+- F3-COUNT component contribution: still 5%
+- Tier 2 axiom set: unchanged at 5
+
+### Recommendations status
+
+- All previously-OPEN Cowork-filed recommendations: status unchanged.
+- No new recommendation filed.
+
+### Honesty scoreboard
+
+This is the **10th non-vacuous Clay-reduction Cowork audit pass** of the session. F3-COUNT progression: v2.42 → v2.43 → v2.44 → v2.48 → v2.50 → v2.51 → v2.52 → v2.53 → v2.54 → v2.55 → v2.56 → **v2.57** (12 narrowing increments). F3-COUNT row stayed `CONDITIONAL_BRIDGE` through every commit. v2.57 specifically:
+
+- Names a strictly-stronger open gap as `def Prop` (`PlaquetteGraphAnchoredTwoNonCutExists`).
+- Proves the forward-only sufficiency bridge to the v2.56 form (oracle-clean, 4 theorems).
+- Reduces the F3-COUNT closure target to **Diestel Prop 1.4.1** for the induced bucket graph.
+- Adds 6 declarations without moving any LEDGER row or any percentage.
+- Correctly avoids overclaiming with iff (the converse direction does NOT hold).
+
+### Verdict
+
+**AUDIT_PASS.** All 6 validation requirements satisfied; all 3 stop conditions NOT TRIGGERED; theorem-by-theorem verification clean; forward-only direction correctly distinguished from v2.56 iff; F3_COUNT_DEPENDENCY_MAP.md alignment confirmed; v2.57 is the cleanest match to standard graph theory of the 4 open def Props.
+
+40th milestone-event of the session: **22 audit_pass** + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 4 META + 7 deliverables. **10 non-vacuous Clay-reduction Cowork audit passes** + **3 honesty-infrastructure passes** + **4 freshness audits**.
+
+---
+
+## 2026-04-26T20:20:00Z — DELIVERED: COWORK-MAYER-MATHLIB-PRECHECK-001 — `dashboard/mayer_mathlib_precheck.md` filed; 2 new recommendations seeded
+
+**Task verdict**: `DONE` (Mathlib pre-check; no math advance; no Lean edit). The deliverable `dashboard/mayer_mathlib_precheck.md` enumerates Mathlib has-vs-lacks for F3-MAYER §(b)/B.3 (the BK forest formula at HIGH difficulty ~250 LOC). **Findings: Mathlib has tree predicates and integrability machinery, but ZERO Brydges-Kennedy / Mayer / forest-formula content.** Filed 2 new recommendations to capture the next-step decisions.
+
+### Document structure
+
+| Section | Content |
+|---|---|
+| (a) | SimpleGraph spanning trees / tree enumeration: Mathlib has `IsTree`, `IsAcyclic`, `Walk.IsPath`, but **lacks Cayley's formula** (no `n^(n-2)` tree count) and **lacks spanning tree enumeration**. Note: `Mathlib.Combinatorics.SimpleGraph.Cayley.lean` is the Cayley **graph of a group**, NOT Cayley's formula. |
+| (b) | Brydges-Kennedy / measure-theoretic interpolation: **zero matches** for `Brydges`, `brydges`, `forestFormula`, `forest_formula`. Search for `Mayer` returned only sheaf-cohomology Mayer-Vietoris (irrelevant). The statistical-mechanics Mayer-Ursell identity is unformalized in Mathlib. |
+| (c) | `essSup`, integrability: Mathlib has `EssSup`, `Memℒp`, `Continuous.aestronglyMeasurable`, `IsCompact.integrableOn` — all needed pieces are present. The chained lemmas (continuous-on-compact ⇒ ‖f‖∞ = sup, etc.) work fine; project-side composition is ~30 LOC. |
+| (d) | Has-vs-lacks summary table covering 13 line items + most-expensive-gap analysis (the BK formula itself, ~600–1000 LOC if PR'd) + most-savings analysis (Cayley/Prüfer ~150-250 LOC for ~30 LOC project saving) |
+| (e) | Two new recommendations filed: `REC-CODEX-MAYER-MATHLIB-CAYLEY-OR-PRUFER-001` priority 6 (let Codex choose between Mathlib PR for Prüfer vs project-side `treeCountFinset`); `REC-CODEX-MAYER-MATHLIB-BK-FORMULA-PROJECT-SIDE-001` priority 7 (keep BK formula project-side, do NOT attempt Mathlib PR — too specialized) |
+
+### Validation requirements (all 5 met)
+
+| Requirement | Result |
+|---|---|
+| `dashboard/mayer_mathlib_precheck.md` exists with sections (a)–(e) | PASS — written to dashboard root with 13-row has-vs-lacks summary table |
+| At least 3 Mathlib-helper search results documented (with verified import paths) | PASS — multiple confirmed: `Mathlib.Combinatorics.SimpleGraph.Acyclic` (IsTree/IsAcyclic with line refs 157, 161, 453, 604, 609); `Mathlib.MeasureTheory.Function.EssSup`; `Mathlib.MeasureTheory.Function.LpSeminorm.Basic`; `Mathlib.MeasureTheory.Function.StronglyMeasurable.AEStronglyMeasurable`; `Mathlib.MeasureTheory.Integral.IntegrableOn`; `Mathlib.MeasureTheory.Constructions.Pi`; `Mathlib.Combinatorics.SimpleGraph.LapMatrix` |
+| At least 1 honest "Mathlib lacks X" finding | PASS — explicit findings: Mathlib lacks Cayley's formula (zero matches), spanning tree enumeration (zero matches), BK interpolation formula (zero matches), Mayer-Ursell identity (zero relevant matches; only sheaf-cohomology Mayer-Vietoris), random-walk cluster expansion infrastructure |
+| `COWORK_RECOMMENDATIONS.md` audit entry | PASS — this entry |
+| If gaps identified, REC-CODEX-MAYER-MATHLIB-... filed | PASS — 2 new recommendations filed |
+
+### Stop conditions check — both NOT TRIGGERED
+
+| Stop condition | Status | Counter-evidence |
+|---|---|---|
+| Pre-check claims any Mathlib helper proves §(b)/B.3 directly | **NOT TRIGGERED** | Document explicit: *"No Mathlib helper proves §(b)/B.3 directly"* in Honesty discipline section; §(d) summary table shows BK interpolation formula has ✗ in Mathlib column with project-side ~250 LOC estimate; §(e)/REC-2 explicitly recommends keeping BK formula project-side because Mathlib lacks it |
+| Pre-check claims F3-MAYER closure | **NOT TRIGGERED** | Document header explicit: *"Cowork has not written any Mathlib PR, has not closed any §(b)/B.* theorem"*; Honesty discipline §1: *"This is a Mathlib pre-check, not a proof"*; §3: *"F3-MAYER row in UNCONDITIONALITY_LEDGER.md: unchanged (BLOCKED)"* |
+
+### Direct value to Codex (when F3-MAYER work begins after F3-COUNT closes)
+
+When Codex picks up §(b)/B.3 in `BrydgesKennedyEstimate.lean`:
+- Per-section Mathlib has/lacks pre-mapped — Codex doesn't need to repeat the search.
+- 2 explicit recommendations capture the design decisions: tree-count strategy choice (PR vs project-side) and BK formula scope (project-side, ~250 LOC).
+- LOC budget pre-baked: ~250 LOC for BK formula project-side + ~150 LOC for tree counter project-side OR Mathlib PR + ~80 LOC for `‖w̃‖∞` bound + ~30 LOC for chaining = ~510 LOC if no Mathlib PR; ~360 LOC project-side if Prüfer PR contributed (saving ~30 LOC plus ecosystem benefit).
+
+### Honesty preservation
+
+- All LEDGER rows: **unchanged**.
+- F3-COUNT row: unchanged (`CONDITIONAL_BRIDGE`).
+- F3-MAYER row: unchanged (`BLOCKED`).
+- F3-COMBINED row: unchanged (`BLOCKED`).
+- Tier 2 axiom count: unchanged at 5.
+- `dashboard/agent_state.json` `unconditionality_status`: `NOT_ESTABLISHED`.
+- All 4 percentages: unchanged at 5% / 28% / 23-25% / 50%.
+- README badges: unchanged.
+
+The pre-check **prevents wasted Codex cycles** by mapping the Mathlib gap landscape before v2.57+ work. Same pattern as v2.54: Cowork pre-check → Codex finds (or doesn't find) → Codex proceeds with the right LOC budget.
+
+### Recommendations filed (2)
+
+1. `REC-CODEX-MAYER-MATHLIB-CAYLEY-OR-PRUFER-001` (priority 6, OPEN): Codex chooses between Mathlib PR for Prüfer correspondence (~150-250 LOC upstream, ~30 LOC saving) vs project-side `treeCountFinset` (~150 LOC, no Mathlib touch).
+2. `REC-CODEX-MAYER-MATHLIB-BK-FORMULA-PROJECT-SIDE-001` (priority 7, OPEN): Codex keeps BK interpolation formula project-side (~250 LOC), do NOT attempt Mathlib PR (Mathlib lacks BK content entirely; PR would be ~600-1000 LOC and likely face skepticism).
+
+### Cowork's META-5th-run queue progress
+
+| Task | Priority | Status |
+|---|---:|---|
+| `COWORK-MAYER-MATHLIB-PRECHECK-001` | 5 | DONE 20:20Z (this delivery) |
+| `COWORK-LEDGER-FRESHNESS-AUDIT-004` | 5 | DONE 20:00Z (drift = 0) |
+| `COWORK-CLAY-HORIZON-REFRESH-001` | 6 | READY (last remaining) |
+
+**2/3 done.** Last remaining META-5th-run task: `COWORK-CLAY-HORIZON-REFRESH-001`.
+
+### Verdict
+
+**DELIVERED.** Document filed. F3-MAYER row remains BLOCKED. F3-COUNT row remains CONDITIONAL_BRIDGE. No LEDGER row moved. Anti-overclaim discipline preserved.
+
+39th milestone-event of the session: 21 audit_pass + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 4 META + **7 deliverables**.
+
+---
+
+## 2026-04-26T20:10:00Z — AUDIT_PASS: COWORK-AUDIT-CODEX-V2.56-NONROOT-NONCUT-BRIDGE-001 (safe-deletion ↔ non-root non-cut iff bridge oracle-clean; F3-COUNT remains CONDITIONAL_BRIDGE; PlaquetteGraphAnchoredNonRootNonCutExists is the new open gap for k ≥ 3)
+
+**Audit result**: `AUDIT_PASS`. Codex v2.56.0 cleanly delivers the **bidirectional bridge** between `PlaquetteGraphAnchoredSafeDeletionExists` (v2.53 form) and the new `PlaquetteGraphAnchoredNonRootNonCutExists` (pure graph-theoretic form). 8 declarations: 1 def Prop + 1 abbrev physical + 6 oracle-clean bridge theorems. The iff means **the open gap is now a strictly graph-theoretic statement**: prove `PlaquetteGraphAnchoredNonRootNonCutExists` for k ≥ 3 to close F3-COUNT. Commit `3a90ebc`.
+
+### Validation requirements (all 6 met)
+
+| Requirement | Result | Evidence |
+|---|---|---|
+| `lake build YangMills.ClayCore.LatticeAnimalCount` passed | PASS (per `AXIOM_FRONTIER.md:38-40`); workspace VM unavailable for Cowork-side rebuild |
+| `#print axioms` traces for the six v2.56 bridge/equivalence theorems are canonical | PASS — `AXIOM_FRONTIER.md:44-55` pin all 6 at `[propext, Classical.choice, Quot.sound]`; `LatticeAnimalCount.lean:3266-3271` directives placed |
+| `AXIOM_FRONTIER.md` v2.56.0 states this does not close F3-COUNT | PASS — `:1` v2.56.0 header; `:24-34` (Why) explicit *"This narrows the B.1 obstruction without overclaiming it"* + *"Once that graph theorem is proved or imported, F3-COUNT can consume it through the v2.56 bridge"*; `:57` explicit *"No sorry. No new project axioms. No Clay-level completion claim."*; `:61-67` (What remains) enumerate "Prove `PlaquetteGraphAnchoredNonRootNonCutExists` globally, especially for `k ≥ 3`"; `:69` *"F3-COUNT remains CONDITIONAL_BRIDGE."* |
+| `UNCONDITIONALITY_LEDGER.md` F3-COUNT row remains CONDITIONAL_BRIDGE | PASS — per dashboard line 33 `latest_validation_artifact`: *"v2.56 safe-deletion iff non-root non-cut bridge traces canonical; F3-COUNT remains CONDITIONAL_BRIDGE"* |
+| `F3_COUNT_DEPENDENCY_MAP.md` post-v2.56 addendum | PASS — header line 4: *"Codex addenda: 2026-04-26T19:25:00Z (post-v2.55.0), 2026-04-26T20:05:00Z (post-v2.56.0)"* |
+| `COWORK_RECOMMENDATIONS.md` audit entry | PASS — this entry |
+
+### Stop conditions check — all 3 NOT TRIGGERED
+
+| Stop condition | Status | Counter-evidence |
+|---|---|---|
+| Any new theorem depends on sorryAx or a new project axiom | **NOT TRIGGERED** | `AXIOM_FRONTIER.md:57` explicit *"No sorry. No new project axioms"*; oracle traces `:44-55` show only canonical `[propext, Classical.choice, Quot.sound]` |
+| Documentation implies `PlaquetteGraphAnchoredNonRootNonCutExists` is proved globally | **NOT TRIGGERED** | `LatticeAnimalCount.lean:1836` declares it as `def Prop` (an open gap, like its v2.53 predecessor `PlaquetteGraphAnchoredSafeDeletionExists`); `AXIOM_FRONTIER.md:22` only says *"Lean now proves this formulation is equivalent to"* the v2.53 open gap (the **iff** is proved, not either def Prop); `:61-63` (What remains) explicit *"Prove `PlaquetteGraphAnchoredNonRootNonCutExists` globally, especially for `k ≥ 3`"* — listed as still-open work |
+| Any project percentage moved from this bridge theorem | **NOT TRIGGERED** | `AXIOM_FRONTIER.md:57` explicit "No Clay-level completion claim"; `dashboard/agent_state.json` ledger_status F3-COUNT remains `CONDITIONAL_BRIDGE`; `unconditionality_status` remains `NOT_ESTABLISHED`; `progress_metrics.yaml` percentages unchanged at 5% / 28% / 23-25% / 50%; README badges unchanged; F3-COUNT component contribution remains 5% (out of 20% weight); freshness audit-004 at 20:00Z confirmed Tier 2 axiom set unchanged through v2.56 |
+
+### Theorem-by-theorem verification
+
+| File:line | Identifier | Kind | Notes |
+|---:|---|---|---|
+| 1836 | `PlaquetteGraphAnchoredNonRootNonCutExists` | **`def Prop` (open gap)** | Pure graph-theoretic formulation: ∀ nontrivial anchored bucket, ∃ non-root z ∈ X with `((plaquetteGraph d L).induce {x \| x ∈ X.erase z}).Preconnected`. Note: residual is **NOT** required to be in the anchored family; it just needs to be preconnected. **Strictly simpler shape than v2.53's safe-deletion form.** |
+| 1859 | `plaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists` | theorem (oracle-clean) | Forward direction: nonRootNonCut → safeDeletion. Composes the non-cut witness with v2.51's `plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected` at line 1866 to package the residual back into the anchored bucket family. |
+| 1871 | `plaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists` | theorem (oracle-clean) | Backward direction: safeDeletion → nonRootNonCut. Trivial projection — extract preconnectedness from the safe-deletion's anchored-bucket-membership at k-1 via `plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected` at line 1878. |
+| 1883 | `plaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists` | theorem (oracle-clean) | **The headline iff**: `SafeDeletionExists ↔ NonRootNonCutExists`. Trivial: ⟨backward, forward⟩. |
+| 1921 | `PhysicalPlaquetteGraphAnchoredNonRootNonCutExists` | abbrev | Physical d=4 specialization of the def Prop. |
+| 1936 | `physicalPlaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists` | theorem (oracle-clean) | Physical forward direction. |
+| 1945 | `physicalPlaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists` | theorem (oracle-clean) | Physical backward direction. |
+| 1954 | `physicalPlaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists` | theorem (oracle-clean) | Physical iff. |
+
+8 declarations total: 1 def Prop (open gap) + 1 abbrev + 6 oracle-clean bridge theorems. The iff at line 1883 is the headline.
+
+### Structural significance
+
+v2.56 reduces the F3-COUNT closure target from "find a safe deletion that re-enters the anchored bucket family" (v2.53 form, requires the v2.51 bridge composition) to "find a non-root non-cut vertex in the induced bucket subgraph" (v2.56 form, pure graph theory). The two are now **provably equivalent**, so Codex can target whichever is easier to prove.
+
+The v2.56 form is closer to standard graph-theory statements (Diestel "Graph Theory" Prop 1.4.1: every connected graph on ≥ 2 vertices has ≥ 2 non-cut vertices; restricting to "non-root" picks out at least one of them when k ≥ 3).
+
+This is the same structural pattern that worked for v2.53: name the open gap as a `def Prop`, prove a bridge from any sufficient hypothesis, file the gap honestly as the next concrete target.
+
+### `F3_COUNT_DEPENDENCY_MAP.md` alignment
+
+The dependency map's §(c) Strategy 2 (cyclic DFS-tree non-cut, citing Diestel Prop 1.4.1) anticipated this exact framing — the strategy was already named "non-cut" in the map. v2.56 makes the formal Lean statement match this exact framing. The map's predicted v2.56 work was Strategy 2 → root-avoiding strengthening; v2.56 instead implemented an **iff bridge** to a pure graph-theory formulation, which is a **structural refinement** that Strategy 2 will now consume directly.
+
+The next math step (per AXIOM_FRONTIER What-remains + the dependency map §(c) Strategy 2): prove the standard rooted non-cut-vertex existence theorem in the project's `Preconnected` notation, possibly reusing Mathlib helpers (already RESOLVED `REC-CODEX-MATHLIB-LONGEST-INDUCED-PATH-CHECK-001`, but this time for the rooted form).
+
+### Honesty preservation
+
+- **F3-COUNT row**: unchanged at `CONDITIONAL_BRIDGE`.
+- **F3-MAYER, F3-COMBINED rows**: still `BLOCKED`.
+- **dashboard `unconditionality_status`**: still `NOT_ESTABLISHED`.
+- **README badges**: unchanged at 5% / 28% / 50%.
+- **`registry/progress_metrics.yaml`** percentages: unchanged.
+- **F3-COUNT component contribution**: still 5% (out of 20% weight). v2.56 is a structural refinement (not raw new math content) so percentage doesn't move.
+- **Tier 2 axiom set**: unchanged at 5 (per freshness audit-004 at 20:00Z).
+
+### Recommendations status
+
+- All previously-OPEN Cowork-filed recommendations: status unchanged (1 OPEN: `REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001`; 6 RESOLVED).
+- No new recommendation filed.
+
+### Honesty scoreboard
+
+This is the **9th non-vacuous Clay-reduction Cowork audit pass** of the session. F3-COUNT progression: v2.42 → v2.43 → v2.44 → v2.48 → v2.50 → v2.51 → v2.52 → v2.53 → v2.54 → v2.55 → v2.56 (**11 narrowing increments**). F3-COUNT row stayed `CONDITIONAL_BRIDGE` through every commit. v2.56 specifically:
+
+- Names the remaining open gap as a strictly graph-theoretic `def Prop` (`PlaquetteGraphAnchoredNonRootNonCutExists`).
+- Proves the bidirectional bridge to the v2.53 safe-deletion form (oracle-clean, 6 theorems).
+- Reduces the F3-COUNT closure target to a standard graph-theory statement.
+- Adds 8 declarations without moving any LEDGER row or any percentage.
+
+### Verdict
+
+**AUDIT_PASS.** All 6 validation requirements satisfied; all 3 stop conditions NOT TRIGGERED; theorem-by-theorem verification clean; iff bridge correctly bidirectional; structural significance acknowledged; F3_COUNT_DEPENDENCY_MAP.md alignment confirmed.
+
+38th milestone-event of the session: **21 audit_pass** + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 4 META + 6 deliverables. **9 non-vacuous Clay-reduction Cowork audit passes** + **3 honesty-infrastructure passes** + **4 freshness audits**.
+
+---
+
 ## 2026-04-26T20:00:00Z — AUDIT_PASS: COWORK-LEDGER-FRESHNESS-AUDIT-004 (4th 6h freshness iteration; drift=0 across all 4 prior baselines)
 
 **Audit result**: `AUDIT_PASS`. Fourth iteration of the recurring 6h freshness cadence. Re-grep result is **identical** to all three prior baselines (14:00 / 16:30 / 19:10): 5 real Tier 2 axiom declarations, 0 axioms outside `Experimental/`, lieDerivReg_all consumer scope unchanged at 3 files. Codex has not yet implemented EXP-LIEDERIVREG Option 1; the count therefore remains 5 (not 4). Multiple v2.* commits + 6 Cowork deliverables + 6 resolved recommendations between baseline and now — none of them touched the Tier 2 axiom set.

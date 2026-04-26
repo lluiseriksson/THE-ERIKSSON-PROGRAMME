@@ -1,3 +1,62 @@
+# v2.58.0 — root-avoiding safe deletion base case (`k = 3`) for F3/Klarner
+
+**Released: 2026-04-26**
+
+## What
+
+Added the next concrete root-avoiding safe-deletion base case in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three
+
+For an anchored preconnected bucket of cardinality `3`, Lean now proves that
+there is a non-root plaquette `y ∈ X` such that deleting `y` leaves an anchored
+bucket of cardinality `2`.
+
+The proof chooses a root-neighbor `z` inside the bucket, then deletes the other
+non-root plaquette.  The residual is exactly the adjacent pair `{root, z}`,
+so its induced graph is preconnected and the residual remains in the anchored
+bucket family.
+
+## Why
+
+This extends the v2.55 `k = 2` root-avoiding base case to the next nontrivial
+size.  It does not replace the still-open global two-non-cut/non-root non-cut
+theorem, but it shrinks the hand-checked base zone for the future recursive
+decoder and confirms the root-neighbor strategy works beyond the singleton
+residual.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed. Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axioms. No Clay-level completion claim.
+
+Implementation commit: `<TBD-after-commit>`.
+
+## What remains
+
+- Prove `PlaquetteGraphAnchoredTwoNonCutExists` globally, or prove
+  `PlaquetteGraphAnchoredNonRootNonCutExists` directly.
+- Then obtain `PlaquetteGraphAnchoredSafeDeletionExists` via the v2.56/v2.57
+  bridge stack.
+- Iterate the v2.53 one-step driver into the full anchored word decoder /
+  Klarner BFS-tree count.
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.
+
+---
+
 # v2.57.0 — two-non-cut sufficiency bridge for rooted safe deletion
 
 **Released: 2026-04-26**

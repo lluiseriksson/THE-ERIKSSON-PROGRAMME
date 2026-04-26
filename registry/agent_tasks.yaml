@@ -233,7 +233,7 @@ tasks:
   status: PARTIAL
   priority: 3
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T20:20:00Z'
+  updated_at: '2026-04-26T20:35:00Z'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - BLUEPRINT_F3Count.md
@@ -294,8 +294,10 @@ tasks:
   - 'PARTIAL by Codex at 2026-04-26T20:05:00Z: v2.56.0 landed. Lean now names the exact raw remaining graph-theoretic blocker as `PlaquetteGraphAnchoredNonRootNonCutExists` and proves it equivalent to `PlaquetteGraphAnchoredSafeDeletionExists`, with physical specializations. `lake build YangMills.ClayCore.LatticeAnimalCount` passed; six new #print axioms traces are canonical. F3-COUNT remains CONDITIONAL_BRIDGE pending proof of the global non-root non-cut theorem for k >= 3 and the full anchored word decoder.'
   - Dispatched to Codex at 2026-04-26T11:44:44Z
   - 'v2.57 partial: added PlaquetteGraphAnchoredTwoNonCutExists plus four oracle-clean sufficiency bridges to non-root non-cut/safe deletion; lake build YangMills.ClayCore.LatticeAnimalCount passed; F3-COUNT remains CONDITIONAL_BRIDGE; next math target is global two-non-cut theorem or direct non-root non-cut theorem.'
-  dispatch_count: 19
-  dispatched_at: '2026-04-26T11:44:44Z'
+  - Dispatched to Codex at 2026-04-26T12:02:55Z
+  - 'v2.58 partial: proved root-avoiding safe deletion for anchored buckets of cardinality 3; lake build YangMills.ClayCore.LatticeAnimalCount passed; F3-COUNT remains CONDITIONAL_BRIDGE; global two-non-cut/non-root non-cut theorem and full word decoder remain open.'
+  dispatch_count: 20
+  dispatched_at: '2026-04-26T12:02:55Z'
   dispatched_to: Codex
 - id: CLAY-EXP-RETIRE-7-001
   title: Retire 7 easy SU(N) generator-data Experimental axioms
@@ -2134,10 +2136,24 @@ tasks:
 - id: COWORK-CLAY-HORIZON-REFRESH-001
   title: 'Cowork: refresh CLAY_HORIZON.md to incorporate v2.55 progress + 6 Cowork-authored deliverables + recommendation resolution status'
   owner: Cowork
-  status: READY
+  status: DONE
   priority: 6
   created_at: '2026-04-26T19:50:00Z'
-  updated_at: '2026-04-26T19:50:00Z'
+  updated_at: '2026-04-26T20:35:00Z'
+  completed_at: '2026-04-26T20:35:00Z'
+  delivery_artifact: CLAY_HORIZON.md (refreshed in place)
+  delivery_evidence:
+  - CLAY_HORIZON.md header timestamp updated 17:30Z → 20:35Z; new "Refresh summary (20:35Z)" paragraph noting v2.52 → v2.57 progress (5 narrow increments since first filing), 3 new deliverables (F3_MAYER_DEPENDENCY_MAP, EXP-LIEDERIVREG-REFORMULATION-OPTIONS, MAYER-MATHLIB-PRECHECK), 6 resolved recommendations, all percentages unchanged
+  - §(iii) F3-COUNT row evidence updated from "v2.48+v2.50+v2.51+v2.52, ~30%" to "v2.48 + v2.50 + v2.51 + v2.52 + v2.53 + v2.54 + v2.55 + v2.56 + v2.57, ~35%; next math step is closing PlaquetteGraphAnchoredTwoNonCutExists for k ≥ 3 per F3_COUNT_DEPENDENCY_MAP.md"; F3-COUNT contribution unchanged at ~5%
+  - 'Cross-references list expanded from 6 to 11 entries: added F3_MAYER_DEPENDENCY_MAP.md, dashboard/exp_liederivreg_reformulation_options.md, dashboard/vacuity_flag_column_draft.md, dashboard/mayer_mathlib_precheck.md; existing entries updated with audit/maturity references (COMPANION §3.3, progress_metrics INFRA_AUDITED status)'
+  - '"When to update" section expanded from 3 triggers to 7: added F3-COUNT FORMAL_KERNEL trigger (28% → ~43% jump), F3-MAYER FORMAL_KERNEL trigger (additional ~20%), EXP-LIEDERIVREG Option 1 trigger (Tier 2 5 → 4), and periodic refresh trigger'
+  - COWORK_RECOMMENDATIONS.md 20:35Z entry written
+  stop_conditions_not_triggered:
+  - 'Refresh claims any progress toward OUT-CONTINUUM, OUT-OS-WIGHTMAN, OUT-STRONG-COUPLING: NOT TRIGGERED — §(ii) per-row tables unchanged in content; all 3 rows still BLOCKED'
+  - 'Refresh changes any of the 4 percentages without a Cowork audit: NOT TRIGGERED — header explicit "all percentages unchanged"; §(iii) totals row "Total ~28% ~5%" unchanged; progress_metrics.yaml not modified'
+  - 'Refresh implies F3-COUNT closure: NOT TRIGGERED — F3-COUNT contribution table row explicitly CONDITIONAL_BRIDGE; "next math step" wording explicit about close being future work'
+  honesty_observation: Pure documentation refresh; no math advance. The honest growth ceiling for Clay-as-stated remains ~10–12% even after full F3-* lattice closure (per CLAY_HORIZON.md §(iii) honest growth ceiling section). The 5 F3-COUNT progress increments (v2.53 → v2.57) since first filing have all been bridge structure, not raw math advance — F3-COUNT contribution stays at ~5%.
+  scoreboard: Cowork META-5th-run queue 3/3 done (MAYER-MATHLIB-PRECHECK + LEDGER-FRESHNESS-AUDIT-004 + this CLAY-HORIZON-REFRESH); 8 Cowork-authored deliverables in repo (counting CLAY_HORIZON refresh as separate from v1)
   required_files:
   - CLAY_HORIZON.md
   - F3_COUNT_DEPENDENCY_MAP.md
@@ -2162,6 +2178,10 @@ tasks:
   notes:
   - Periodic honesty-companion refresh; mirrors the F3_COUNT_DEPENDENCY_MAP.md v2.53 refresh pattern.
   - No math advance; pure honesty-companion bookkeeping.
+  - Dispatched to Cowork at 2026-04-26T12:07:43Z
+  dispatched_at: '2026-04-26T12:07:43Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
 - id: COWORK-AUDIT-CODEX-V2.56-NONROOT-NONCUT-BRIDGE-001
   title: 'Cowork: audit Codex v2.56 safe-deletion iff non-root non-cut bridge'
   owner: Cowork
@@ -2216,10 +2236,26 @@ tasks:
 - id: COWORK-AUDIT-CODEX-V2.57-TWO-NONCUT-BRIDGE-001
   title: 'Cowork: audit Codex v2.57 two-non-cut sufficiency bridge'
   owner: Cowork
-  status: READY
+  status: DONE
   priority: 4
   created_at: '2026-04-26T20:20:00Z'
-  updated_at: '2026-04-26T20:20:00Z'
+  updated_at: '2026-04-26T20:30:00Z'
+  completed_at: '2026-04-26T20:30:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+  - '6 declarations confirmed in YangMills/ClayCore/LatticeAnimalCount.lean: line 1852 PlaquetteGraphAnchoredTwoNonCutExists (def Prop, open gap); line 1890 plaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists (theorem, headline forward bridge); line 1905 plaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists (theorem, composition); line 1969 PhysicalPlaquetteGraphAnchoredTwoNonCutExists (abbrev); line 1993 physicalPlaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists (theorem); line 2002 physicalPlaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists (theorem)'
+  - 'AXIOM_FRONTIER.md:1 v2.57.0 entry; lines 42-49 pin all 4 bridge theorems at canonical [propext, Classical.choice, Quot.sound]; line 51 explicit "No sorry. No new project axioms. No Clay-level completion claim."; lines 23-32 (Why) explicit "isolates the remaining graph theorem in the standard shape: connected finite graphs with at least two vertices have at least two non-cut vertices" + "This is a bridge only. It does not prove the global two-non-cut theorem, does not close F3-COUNT, and does not move any project percentage"; lines 55-62 (What remains) enumerate "Prove PlaquetteGraphAnchoredTwoNonCutExists globally, or prove PlaquetteGraphAnchoredNonRootNonCutExists directly"; line 64 "F3-COUNT remains CONDITIONAL_BRIDGE"; commit 0d2ebc9 recorded'
+  - 'LatticeAnimalCount.lean:3333/3334/3338/3339 #print axioms directives placed for the 4 bridge theorems'
+  - 'def Prop at line 1852 explicitly declares 2 distinct deletion candidates; forward bridge at line 1890 is a clean 2-case Boolean argument: if z₁ = root, use z₂ (must differ from root because z₁ ≠ z₂); else use z₁'
+  - 'Bridges are correctly forward-only (NOT iff): twoNonCut ⇒ nonRootNonCut. The converse does NOT hold (a graph could have exactly one non-cut vertex that happens to be non-root). Codex correctly avoided overclaiming. Same honesty pattern as v2.53 degree-one ⇒ safe (not iff).'
+  - F3_COUNT_DEPENDENCY_MAP.md header line 4 has post-v2.57 Codex addendum line
+  - COWORK_RECOMMENDATIONS.md 20:30Z audit entry written with full theorem-by-theorem verification + forward-only-vs-iff distinction + ladder of open def Props
+  stop_conditions_not_triggered:
+  - 'New theorem depends on sorryAx or new project axiom: NOT TRIGGERED — AXIOM_FRONTIER:51 explicit; oracle traces canonical 3-tuple only'
+  - 'Documentation implies PlaquetteGraphAnchoredTwoNonCutExists proved globally: NOT TRIGGERED — line 1852 declares as def Prop (open gap); AXIOM_FRONTIER:31-32 explicit "does not prove the global two-non-cut theorem"; What-remains:55-58 explicit; theorem docstring 1849-1851 honest "If this is proved globally"'
+  - 'Any project percentage moved: NOT TRIGGERED — explicit no-percentage-movement at AXIOM_FRONTIER:32; LEDGER + dashboard + progress_metrics + README all unchanged; Tier 2 axiom set confirmed unchanged at 5 by freshness audit-004'
+  honesty_observation: 'v2.57 implements F3_COUNT_DEPENDENCY_MAP.md §(c) Strategy 2 framing exactly: Diestel Prop 1.4.1 (every connected graph on ≥ 2 vertices has ≥ 2 non-cut vertices) made into a Lean def Prop, with the forward-only bridge to v2.56 nonRootNonCut. Codex correctly avoided overclaiming with iff (twoNonCut is strictly stronger than nonRootNonCut). The project now has 4 alternative open def Props that each close F3-COUNT (degreeOne, safe, nonRootNonCut, twoNonCut); twoNonCut is the cleanest match to standard graph theory.'
+  scoreboard: 10th non-vacuous Clay-reduction Cowork audit pass; 22nd audit_pass of session; F3-COUNT progression v2.42 → v2.57 (12 narrowing increments; F3-COUNT row stayed CONDITIONAL_BRIDGE through every commit)
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - AXIOM_FRONTIER.md
@@ -2241,4 +2277,36 @@ tasks:
   next_agent: Codex
   notes:
   - Generated by Codex after v2.57 partial progress on CLAY-F3-COUNT-RECURSIVE-001.
+  - Audit task only; no Lean edits expected from Cowork.
+  - Dispatched to Cowork at 2026-04-26T12:02:57Z
+  dispatched_at: '2026-04-26T12:02:57Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+- id: COWORK-AUDIT-CODEX-V2.58-CARD-THREE-DELETION-001
+  title: 'Cowork: audit Codex v2.58 k=3 root-avoiding deletion base case'
+  owner: Cowork
+  status: READY
+  priority: 4
+  created_at: '2026-04-26T20:35:00Z'
+  updated_at: '2026-04-26T20:35:00Z'
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - AXIOM_FRONTIER.md
+  - UNCONDITIONALITY_LEDGER.md
+  - F3_COUNT_DEPENDENCY_MAP.md
+  - AGENT_BUS.md
+  objective: Audit Codex v2.58 partial progress on CLAY-F3-COUNT-RECURSIVE-001. Verify that the new card-three theorem proves only the k = 3 root-avoiding safe-deletion base case, that the proof uses no sorry/new axiom, and that documentation keeps F3-COUNT conditional with no percentage movement.
+  validation:
+  - lake build YangMills.ClayCore.LatticeAnimalCount
+  - '#print axioms traces for the two v2.58 card-three theorems are [propext, Classical.choice, Quot.sound]'
+  - AXIOM_FRONTIER.md v2.58.0 states this does not close F3-COUNT
+  - UNCONDITIONALITY_LEDGER.md F3-COUNT row remains CONDITIONAL_BRIDGE
+  - No README/progress percentage moved
+  stop_if:
+  - Any new theorem depends on sorryAx or a new project axiom
+  - Documentation implies global safe deletion or F3-COUNT closure
+  - Any project percentage moved from this base-case theorem
+  next_agent: Codex
+  notes:
+  - Generated by Codex after v2.58 partial progress on CLAY-F3-COUNT-RECURSIVE-001.
   - Audit task only; no Lean edits expected from Cowork.

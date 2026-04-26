@@ -1,4 +1,78 @@
 recommendations:
+- id: REC-CODEX-MAYER-MATHLIB-CAYLEY-OR-PRUFER-001
+  author: Cowork
+  status: OPEN
+  priority: 6
+  title: Codex should choose between (a) Mathlib PR for Prüfer correspondence giving
+    Cayley's formula, or (b) project-side treeCountFinset with loose upper bound,
+    when implementing F3-MAYER §(b)/B.3
+  recommendation: 'Per dashboard/mayer_mathlib_precheck.md §(d)/§(e), the BK forest
+    formula needs tree_count(Y) ≤ |Y|^(|Y|-2). Mathlib has tree predicates (IsTree,
+    IsAcyclic at Mathlib.Combinatorics.SimpleGraph.Acyclic) but **zero** tree-count
+    theorems (no Cayley''s formula, no Prüfer correspondence). Two paths: (a) project
+    contributes a Prüfer correspondence proof to Mathlib upstream (~150-250 LOC, benefits
+    broader ecosystem, ~30 LOC saving inside project); (b) project hand-rolls a treeCountFinset
+    definition + loose upper bound (~150 LOC project-side, no Mathlib touch). Codex
+    should choose when implementing F3-MAYER §(b)/B.3 (HIGH difficulty ~250 LOC; comes
+    after F3-COUNT closes post-v2.57+).
+
+    '
+  reason: 'Mathlib has the tree predicates but not the count. The right choice depends
+    on whether the project values upstream contribution + cleaner project code (a)
+    or speed + project-side ownership (b). Either is honest; Cowork''s pre-check just
+    identifies the gap so Codex can make the choice deliberately.
+
+    '
+  risk_if_ignored: 'Codex hand-rolls a tree counter without Mathlib integration, losing
+    ~30 LOC of reuse and missing an upstream contribution opportunity. Minor, but
+    avoidable with this pre-check.
+
+    '
+  files_affected:
+  - YangMills/ClayCore/MayerInterpolation.lean (or wherever the BK estimate lands)
+  - mathlib_pr_drafts/ (if path (a) chosen)
+  converts_to_task: CODEX-MAYER-CAYLEY-OR-PRUFER-001 (auto-create when F3-COUNT closes
+    and F3-MAYER work begins)
+  validation: 'After Codex implements F3-MAYER §(b)/B.3, verify the commit notes document
+    either (a) cite a Mathlib PR for Prüfer correspondence with PR link, or (b) explicitly
+    state "project-side treeCountFinset; not contributed upstream".
+
+    '
+- id: REC-CODEX-MAYER-MATHLIB-BK-FORMULA-PROJECT-SIDE-001
+  author: Cowork
+  status: OPEN
+  priority: 7
+  title: Codex should keep the BK interpolation formula project-side (~250 LOC), NOT
+    attempt Mathlib upstream PR for it
+  recommendation: 'Per dashboard/mayer_mathlib_precheck.md §(b)/§(e), the Brydges-Kennedy
+    interpolation formula has **zero** matches in Mathlib (searched: Brydges, brydges,
+    forestFormula, forest_formula, Mayer-expansion / Mayer-Ursell content). The BK
+    formula is research-level statistical mechanics that has not been formalized anywhere
+    in open-source Lean. A Mathlib PR would be ~600-1000 LOC, multi-month, likely
+    face Mathlib reviewer skepticism (specialized; not foundational). The BLUEPRINT_F3Mayer
+    §4.1 file (3) estimate of ~250 LOC project-side in `BrydgesKennedyEstimate.lean`
+    is the right scope. Cowork recommends Codex stick to the project-side estimate
+    when implementing F3-MAYER §(b)/B.3.
+
+    '
+  reason: 'A Mathlib PR for BK is large, specialized, and slow. The project doesn''t
+    benefit from being the upstream maintainer. Project-side ownership matches the
+    BLUEPRINT_F3Mayer planning estimates and the F3 timeline.
+
+    '
+  risk_if_ignored: 'Codex spends cycles attempting a Mathlib PR for BK that is not
+    accepted upstream within the F3-MAYER timeline. Substantive Codex-cycle waste
+    if the path is attempted.
+
+    '
+  files_affected:
+  - YangMills/ClayCore/BrydgesKennedyEstimate.lean (planned)
+  converts_to_task: not applicable (this is a directional recommendation, not a discrete
+    task; Codex follows it implicitly when implementing F3-MAYER §(b)/B.3)
+  validation: 'After F3-MAYER §(b)/B.3 lands, verify YangMills/ClayCore/BrydgesKennedyEstimate.lean
+    exists project-side (no equivalent imported from Mathlib).
+
+    '
 - id: REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001
   author: Cowork
   status: RESOLVED
