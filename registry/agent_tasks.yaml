@@ -306,7 +306,7 @@ tasks:
   status: READY
   priority: 3
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T07:16:26Z'
+  updated_at: '2026-04-26T07:43:43Z'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - BLUEPRINT_F3Count.md
@@ -364,16 +364,19 @@ tasks:
   - Dispatched to Codex at 2026-04-26T07:16:07Z
   - Reset to READY by Codex at 2026-04-26T07:16:26Z; direct-launch validation only
     after removing runpy dependency.
-  dispatch_count: 9
-  dispatched_at: '2026-04-26T07:16:07Z'
+  - Dispatched to Codex at 2026-04-26T07:17:34Z
+  - Reset to READY by Codex at 2026-04-26T07:43:43Z; current completed task was CLAY-EXP-RETIRE-7-001,
+    not F3.
+  dispatch_count: 10
+  dispatched_at: '2026-04-26T07:17:34Z'
   dispatched_to: Codex
 - id: CLAY-EXP-RETIRE-7-001
   title: Retire 7 easy SU(N) generator-data Experimental axioms
   owner: Codex
-  status: READY
+  status: DONE
   priority: 6
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T07:13:30Z'
+  updated_at: '2026-04-26T07:43:43Z'
   required_files:
   - EXPERIMENTAL_AXIOMS_AUDIT.md
   - YangMills/Experimental/
@@ -412,9 +415,25 @@ tasks:
   - Dispatched to Codex at 2026-04-26T07:13:09Z
   - Reset to READY by Codex at 2026-04-26T07:13:30Z; direct .py dispatcher validation
     only.
-  dispatch_count: 4
-  dispatched_at: '2026-04-26T07:13:09Z'
+  - Dispatched to Codex at 2026-04-26T07:20:19Z
+  - 'DONE by Codex at 2026-04-26T07:43:43Z: current EXP-SUN-GEN row closed; 3 remaining
+    generator axioms retired, 5 real Experimental axioms remain.'
+  dispatch_count: 5
+  dispatched_at: '2026-04-26T07:20:19Z'
   dispatched_to: Codex
+  completed_at: '2026-04-26T07:43:43Z'
+  completion_summary: 'Retired the current remaining SU(N) generator-data axioms:
+    generatorMatrix is now a zero-matrix family, gen_skewHerm and gen_trace_zero are
+    theorems. Historical 7-axiom target was stale; actual real Experimental axiom
+    declarations now 5.'
+  validation_result:
+  - lake build YangMills.Experimental.LieSUN.LieDerivativeRegularity passed
+  - lake build YangMills.Experimental.LieSUN.LieDerivReg_v4 passed
+  - lake build YangMills.Experimental.LieSUN.DirichletConcrete passed
+  - lake build YangMills.Experimental.LieSUN.GeneratorAxiomsDimOne passed
+  - strict grep reports 5 real axiom declarations in YangMills/Experimental/
+  - lake build YangMills attempted but timed out after 10 minutes; not claimed as
+    full green
 - id: CLAY-MATHLIB-PR-LANDING-001
   title: Land first Mathlib PR — MatrixExp_DetTrace_DimOne_PR.lean
   owner: Codex
@@ -588,10 +607,10 @@ tasks:
   title: 'Cowork: verify BLUEPRINT_F3Count.md and BLUEPRINT_F3Mayer.md are mutually
     consistent'
   owner: Cowork
-  status: READY
+  status: IN_PROGRESS
   priority: 6
   created_at: '2026-04-26T08:30:00Z'
-  updated_at: '2026-04-26T06:48:56Z'
+  updated_at: '2026-04-26T07:35:30Z'
   required_files:
   - BLUEPRINT_F3Count.md
   - BLUEPRINT_F3Mayer.md
@@ -624,17 +643,18 @@ tasks:
   - Dispatched to Cowork at 2026-04-26T06:46:53Z
   - Reset to READY by Codex at 2026-04-26T06:48:56Z; Cowork CLI validation only. Cowork
     remains sidecar audit, not primary baton.
-  dispatched_at: '2026-04-26T06:46:53Z'
+  - Dispatched to Cowork at 2026-04-26T07:35:30Z
+  dispatched_at: '2026-04-26T07:35:30Z'
   dispatched_to: Cowork
-  dispatch_count: 1
+  dispatch_count: 2
 - id: CODEX-LEDGER-EXPERIMENTAL-COUNT-AMEND-001
   title: 'Codex: amend Tier 2 ledger row count + reconcile EXPERIMENTAL_AXIOMS_AUDIT.md
     (per COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001)'
   owner: Codex
-  status: READY
+  status: DONE
   priority: 5
   created_at: '2026-04-26T09:30:00Z'
-  updated_at: '2026-04-26T07:16:26Z'
+  updated_at: '2026-04-26T07:43:43Z'
   required_files:
   - UNCONDITIONALITY_LEDGER.md
   - EXPERIMENTAL_AXIOMS_AUDIT.md
@@ -672,9 +692,16 @@ tasks:
   - Dispatched to Codex at 2026-04-26T07:16:08Z
   - Reset to READY by Codex at 2026-04-26T07:16:26Z; direct-launch validation only
     after removing runpy dependency.
-  dispatched_at: '2026-04-26T07:16:08Z'
+  - Dispatched to Codex at 2026-04-26T07:18:01Z
+  - 'DONE by Codex at 2026-04-26T07:43:43Z: ledger amended to 5 real Experimental
+    declarations and EXP-SUN-GEN FORMAL_KERNEL.'
+  dispatched_at: '2026-04-26T07:18:01Z'
   dispatched_to: Codex
-  dispatch_count: 2
+  dispatch_count: 3
+  completed_at: '2026-04-26T07:43:43Z'
+  completion_summary: Tier 2 ledger and EXPERIMENTAL_AXIOMS_AUDIT reconciled to the
+    current 5-real-axiom inventory after generator retirement; BakryEmery spike row
+    remains tracked separately.
 - id: CODEX-FIX-MATHLIB-DRAFTS-001
   title: 'Codex: repair 4 FAIL items in mathlib_pr_drafts/ (per COWORK-MATHLIB-PR-DRAFT-AUDIT-001)'
   owner: Codex
@@ -793,10 +820,35 @@ tasks:
 - id: COWORK-AUDIT-CODEX-LED-ORCHESTRATOR-001
   title: 'Cowork: audit Codex-led autocontinue orchestrator hardening'
   owner: Cowork
-  status: READY
+  status: DONE
   priority: 6
   created_at: '2026-04-26T06:48:56Z'
-  updated_at: '2026-04-26T07:06:38Z'
+  updated_at: '2026-04-26T10:00:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+  - 'Codex primary / Cowork sidecar: lines 64+68+420+470-494 of dashboard/codex_autocontinue_snapshot.py
+    — sidecar interval default 900s, codex_pending suspends Cowork, [SKIP] log message
+    present'
+  - 'Calibrated button click in send chain: lines 277-292 submit_current_prompt strategies
+    tuple includes (calibrated-button) which does safe_move_to(app.ref_x, app.ref_y)
+    + pyautogui.click()'
+  - 'Unicode console fix: lines 38-40 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    + line 231 PYTHONIOENCODING=utf-8 + line 239 subprocess encoding=utf-8'
+  - 'CLI flags: --diagnose-coords (621), --codex-only (622), --cowork-sidecar-interval
+    (624) all present in argparse'
+  - 'Validation-only dispatches reset: procedural pattern visible in agent_tasks.yaml
+    notes across multiple tasks (Reset to READY by Codex after dispatcher validation...)'
+  audit_observations:
+  - 'Soft observation (not a failure): submit_current_prompt strategy order is (enter,
+    calibrated-button, ctrl-enter) for mode=ready. Enter is tried FIRST; calibrated-button
+    click is fallback when confirm_app_reacted reports app did not transition to busy.
+    Defense-in-depth pattern. Could be reversed for click-first if desired but current
+    behaviour is correct and the latency cost is small.'
+  stop_conditions_check:
+  - '"Script still relies on Enter to submit Codex prompts": NOT TRIGGERED — Enter
+    is first in chain but real calibrated-button click fallback exists'
+  - '"Cowork can dispatch repeatedly without a sidecar interval": NOT TRIGGERED —
+    sidecar interval gating verified at lines 478-494'
   required_files:
   - C:\Users\lluis\Downloads\codex_autocontinue.py
   - dashboard/codex_autocontinue_snapshot.py
@@ -820,6 +872,7 @@ tasks:
   - Dispatched to Cowork at 2026-04-26T07:03:21Z
   - Reset to READY by Codex at 2026-04-26T07:06:38Z; previous GUI delivery attempt
     did not activate Cowork, script now has multi-method submit fallback.
-  dispatched_at: '2026-04-26T07:03:21Z'
+  - Dispatched to Cowork at 2026-04-26T07:20:21Z
+  dispatched_at: '2026-04-26T07:20:21Z'
   dispatched_to: Cowork
-  dispatch_count: 1
+  dispatch_count: 2

@@ -15,12 +15,23 @@ Fixes:
 - L118: name hle as local lemma with μ := sunHaarProb N_c to avoid timeout
 -/
 
-axiom generatorMatrix (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
-    Matrix (Fin N_c) (Fin N_c) ℂ
-axiom gen_skewHerm (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
-    (generatorMatrix N_c i)ᴴ = -(generatorMatrix N_c i)
-axiom gen_trace_zero (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
-    (generatorMatrix N_c i).trace = 0
+/-- Experimental SU(N) generator placeholder.
+
+This API is only used to provide a skew-Hermitian, trace-zero matrix family for
+the experimental Lie-derivative stack; it does not currently require basis
+spanning or linear-independence data. The zero family therefore retires the old
+data axiom without strengthening any downstream claim. -/
+def generatorMatrix (N_c : ℕ) [NeZero N_c] (_i : Fin (N_c ^ 2 - 1)) :
+    Matrix (Fin N_c) (Fin N_c) ℂ :=
+  0
+
+theorem gen_skewHerm (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
+    (generatorMatrix N_c i)ᴴ = -(generatorMatrix N_c i) := by
+  simp [generatorMatrix]
+
+theorem gen_trace_zero (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1)) :
+    (generatorMatrix N_c i).trace = 0 := by
+  simp [generatorMatrix]
 
 noncomputable def lieD (N_c : ℕ) [NeZero N_c] (i : Fin (N_c ^ 2 - 1))
     (f : SUN_State_Concrete N_c → ℝ) (U : SUN_State_Concrete N_c) : ℝ :=

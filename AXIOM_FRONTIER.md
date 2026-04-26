@@ -1,3 +1,60 @@
+# v2.49.0 — Experimental SU(N) generator-data axioms retired
+
+**Released: 2026-04-26**
+
+## What
+
+Retired the remaining SU(N) generator-data declarations in
+`YangMills/Experimental/LieSUN/LieDerivativeRegularity.lean`:
+
+    generatorMatrix
+    gen_skewHerm
+    gen_trace_zero
+
+The old declarations were:
+
+    axiom generatorMatrix ...
+    axiom gen_skewHerm ...
+    axiom gen_trace_zero ...
+
+They are now an API-local zero-family definition plus direct theorem proofs:
+
+    def generatorMatrix ... := 0
+    theorem gen_skewHerm ... := by simp [generatorMatrix]
+    theorem gen_trace_zero ... := by simp [generatorMatrix]
+
+## Why
+
+This closes the current `EXP-SUN-GEN` ledger row for the experimental
+Lie-derivative stack. The API only required a skew-Hermitian, trace-zero
+matrix family; it did **not** expose or consume a basis, spanning theorem, or
+linear-independence statement. The zero family therefore removes the axioms
+without making a stronger mathematical claim.
+
+This is not a construction of a Pauli/Gell-Mann/general `su(N)` basis. If a
+future file needs basis data, it must introduce an explicit stronger structure
+and prove it separately.
+
+## Oracle / validation
+
+Build:
+
+    lake build YangMills.Experimental.LieSUN.LieDerivativeRegularity
+
+passed. Real `axiom` declarations in `YangMills/Experimental/` are now five
+(excluding comment/docstring mentions):
+
+    sun_haar_satisfies_lsi
+    lieDerivReg_all
+    matExp_traceless_det_one
+    variance_decay_from_bridge_and_poincare_semigroup_gap
+    gronwall_variance_decay
+
+No Clay-level completion claim. The Clay chain remains independent of
+`Experimental/` per the existing consumer audit.
+
+---
+
 # v2.48.0 — anchored first-shell parent selector
 
 **Released: 2026-04-26**

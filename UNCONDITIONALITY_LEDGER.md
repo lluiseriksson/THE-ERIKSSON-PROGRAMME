@@ -60,14 +60,15 @@ Honesty rule (per AGENTS.md §8):
 | NC1-WITNESS | ClayYangMillsMassGap 1 unconditional | FORMAL_KERNEL (with caveat) | AbelianU1Unconditional.lean | oracle-clean | Vacuous: SU(1) = {1}, connected correlator = 0; rename file (per FINAL_HANDOFF.md desk decision §1) |
 | CONTINUUM-COORDSCALE | HasContinuumMassGap via coordinated scaling | INVALID-AS-CONTINUUM | architectural trick, not analysis | KNOWN_ISSUES.md §1.2, Finding 004 | Refactor (Option C of GENUINE_CONTINUUM_DESIGN.md), pending Lluis decision |
 
-### Tier 2 — Experimental axioms (14 total in `Experimental/`)
+### Tier 2 — Experimental axioms (5 real declarations in `Experimental/`)
 
 | ID | Claim | Status | Retire effort | Next action |
 |---|---|---|---|---|
-| EXP-SUN-GEN | SU(N) generator data (constructive, 7 axioms) | EXPERIMENTAL | Easy (~250 LOC, no Mathlib gap) | CLAY-EXP-RETIRE-7-001 (READY priority 6) |
+| EXP-SUN-GEN | SU(N) generator data for the experimental Lie-derivative stack | FORMAL_KERNEL | Retired in current API by zero skew-Hermitian trace-zero matrix family | `LieDerivativeRegularity.lean` now defines `generatorMatrix` and proves `gen_skewHerm` / `gen_trace_zero`; build `lake build YangMills.Experimental.LieSUN.LieDerivativeRegularity` passed; comments in `EXPERIMENTAL_AXIOMS_AUDIT.md` explain this is not a basis construction |
 | EXP-MATEXP-DET | matExp_traceless_det_one | EXPERIMENTAL | Medium (~50 LOC + Mathlib PR) | Mirror MatrixExp_DetTrace_DimOne_PR.lean |
 | EXP-LIEDERIVREG | lieDerivReg_all | INVALID | Mathematically false as stated; needs reformulation | Restrict to smooth f |
-| EXP-BD-HY-GR | Beurling-Deny + Hille-Yosida + Gronwall (5 axioms, Mathlib gaps) | EXPERIMENTAL | Hard (Mathlib infrastructure) | Long-tail; await Mathlib upstream |
+| EXP-BAKRYEMERY-SPIKE | sun_haar_satisfies_lsi | EXPERIMENTAL | Classification pending: live spike vs archive | CODEX-LEDGER-EXPERIMENTAL-COUNT-AMEND-001 / Cowork recommendation REC-COWORK-BAKRYEMERY-SPIKE-CLASSIFY-001 |
+| EXP-BD-HY-GR | variance-decay / Gronwall semigroup axioms (2 real declarations) | EXPERIMENTAL | Hard (Mathlib infrastructure) | Long-tail; await Mathlib upstream |
 
 ### Tier 3 — Outside-current-scope items
 

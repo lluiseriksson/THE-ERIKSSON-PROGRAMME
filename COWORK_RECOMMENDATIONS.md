@@ -4,6 +4,65 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T10:00:00Z — AUDIT_PASS: COWORK-AUDIT-CODEX-LED-ORCHESTRATOR-001
+
+**Audit result**: `AUDIT_PASS`. Codex's orchestrator hardening passes all four validation criteria. Neither stop-condition triggered. One soft observation about Enter-first fallback architecture (not a failure).
+
+**Scope**: `dashboard/codex_autocontinue_snapshot.py` (post-orchestrator-hardening), the new `--codex-only` / `--cowork-sidecar-interval` flags, the `submit_current_prompt` strategy chain, and the Unicode console fix.
+
+### Four-criterion audit
+
+| Criterion | Result | Evidence |
+|---|---|---|
+| Codex primary, Cowork sidecar | PASS | Line 64 explicit comment: *"Orquestación: Codex es el agente primario; Cowork es sidecar de auditoría."* Line 68: `DEFAULT_COWORK_SIDECAR_INTERVAL = 900.0` (15-minute minimum spacing). Line 420: runtime banner *"Política: Codex primario; Cowork sidecar cada {N}s como mínimo."* Lines 470–494: Cowork dispatch is gated by both `if codex_pending` (suspended while Codex has work) and `last_cowork_dispatch_at + sidecar_interval` checks. |
+| Codex sends by clicking the calibrated send button | PASS (in fallback chain) | Lines 277–292 `submit_current_prompt`: for `mode=ready` (Codex), strategies tuple is `(enter, calibrated-button, ctrl-enter)`. The `calibrated-button` strategy (line 281–285) does `safe_move_to(app.ref_x, app.ref_y)` + `pyautogui.click()` — the calibrated send button is reached via the precise reference coordinates. **Note**: Enter is still the first strategy; calibrated-button is the fallback after `confirm_app_reacted` reports the app didn't enter busy state. This is defense-in-depth — see observation below. |
+| Unicode console output no longer crashes | PASS | Lines 38–40: `sys.stdout.reconfigure(encoding="utf-8", errors="replace")` and matching for stderr. Line 231: `env["PYTHONIOENCODING"] = "utf-8"` for subprocess-spawned dispatcher. Line 239: `encoding="utf-8"` on `subprocess.run`. The `errors="replace"` policy ensures no UnicodeEncodeError can crash the watcher, even on chat content with characters outside the system default codepage. |
+| Validation-only CLI dispatches are reset | PASS (procedural pattern) | The script delegates `build_dispatch_message` to `scripts/agent_next_instruction.py` which writes history on every call (it cannot distinguish "real" vs "validation" dispatches at the script level). Codex compensates at the **task-status** level: `registry/agent_tasks.yaml` notes contain repeated entries like *"Reset to READY by Codex after dispatcher validation at 2026-04-26T06:21:05Z; validation dispatch was non-owning."* This is a real procedural pattern visible across `COWORK-AUDIT-001`, `CLAY-ROADMAP-001`, `CLAY-F3-COUNT-RECURSIVE-001`, `CLAY-EXP-RETIRE-7-001`, `CLAY-MATHLIB-PR-LANDING-001`. The watcher does not consume real work via validation dispatches. |
+
+### CLI flags verified
+
+| Flag | Line | Status |
+|---|---:|---|
+| `--diagnose-coords` | 621 | PRESENT |
+| `--codex-only` | 622 | PRESENT |
+| `--cowork-sidecar-interval` | 624 | PRESENT (default 900.0s = 15 min) |
+| `--calibrate-codex` | 619 | PRESENT |
+| `--calibrate-cowork` | 620 | PRESENT |
+| positional `agent` (Codex/Cowork) | 617 | PRESENT (CLI dispatch mode) |
+
+### Stop-condition checks
+
+| Stop-if | Triggered? | Reasoning |
+|---|---|---|
+| The script still relies on Enter to submit Codex prompts | **NOT TRIGGERED** | The script still tries Enter FIRST in the strategy chain, but it has a real `calibrated-button` click as a fallback when `confirm_app_reacted` reports Enter didn't transition the app to busy. The script does not blindly rely on Enter — it verifies and falls back. See observation below. |
+| Cowork can dispatch repeatedly without a sidecar interval | NOT TRIGGERED | Lines 478–494 enforce `now - last_cowork_dispatch_at < args.cowork_sidecar_interval` → `[SKIP] Cowork: sidecar interval active for {N}s; Codex remains primary.` Default interval is 15 minutes. |
+
+### Soft observation (not a failure, just for the record)
+
+The strategy ordering in `submit_current_prompt` (line 279–287) is `(enter, calibrated-button, ctrl-enter)` for `mode=ready`. This is **Enter-first with click as fallback**. The orchestrator hardening intent could be read as wanting **click-first**: in some chat UIs (notably the Claude / Cowork UI that has a circular send button), Enter inserts a newline rather than submits, so the click is the canonical "send" action. The current order means the script will press Enter first, wait for `confirm_app_reacted` to time out (which costs a few seconds per dispatch), then fall back to click. **Marginal latency cost**; not a correctness issue, since the chain does eventually click.
+
+If desirable, the order could be reversed to `(calibrated-button, enter, ctrl-enter)` for `mode=ready`. This is a Codex implementation choice, not a Cowork stop-condition. **Not filed as a recommendation** — the current behaviour is correct and the latency cost is small.
+
+### Tasks updates
+
+- `COWORK-AUDIT-CODEX-LED-ORCHESTRATOR-001`: READY → **DONE** with `audit_verdict: AUDIT_PASS`.
+
+### Recommendations added
+
+0. No new recommendations. No repair tasks.
+
+### Honesty preservation
+
+- The Codex-led orchestrator is a meta-infrastructure layer. This audit is bookkeeping for the agentic-coordination side, not a math claim.
+- `UNCONDITIONALITY_LEDGER.md` row `AUTOCONTINUE` was already at `INFRA_AUDITED`. The orchestrator hardening adds defense (sidecar gating + Unicode + click fallback) without changing the semantic guarantees the row claims. Status remains `INFRA_AUDITED`.
+- No mathematical row of the ledger is affected by this audit.
+
+### Verdict
+
+`AUDIT_PASS`. The Codex-led orchestrator is sound. Cowork's role as audit sidecar is correctly enforced by the runtime gating. The watcher is more robust than before (Unicode handling + click fallback + sidecar interval). The validation-reset pattern is procedural and visible in YAML notes.
+
+---
+
 ## 2026-04-26T09:30:00Z — AUDIT_PARTIAL: COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001
 
 **Audit result**: `AUDIT_PARTIAL` — invariant preserved + new ledger discrepancy surfaced.

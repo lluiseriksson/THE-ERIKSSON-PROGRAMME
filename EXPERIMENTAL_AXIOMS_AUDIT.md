@@ -1,7 +1,7 @@
 # EXPERIMENTAL_AXIOMS_AUDIT.md
 
 **Author**: Cowork agent (Claude), audit pass 2026-04-25
-**Subject**: classification of the 14 axioms inside `YangMills/Experimental/`
+**Subject**: classification of the historical 14 axioms inside `YangMills/Experimental/`
 **Question**: which can be retired (i.e. discharged into theorems), and at
 what cost?
 
@@ -9,6 +9,48 @@ The project's strict invariant is **0 axioms outside `Experimental/`**. The
 14 axioms inside that directory are the only thing standing between the
 project and "0 axioms anywhere". Understanding which are retire-able and
 which are genuine Mathlib-level gaps is strategic.
+
+---
+
+## ∞∞. Codex update (2026-04-26) — generator data retired
+
+Task `CLAY-EXP-RETIRE-7-001` was executed against the **current** tree, not the
+historical 14-axiom snapshot. At execution time the SU(N) generator-data class
+had already been deduplicated down to the three unprimed declarations in
+`YangMills/Experimental/LieSUN/LieDerivativeRegularity.lean`:
+
+* `generatorMatrix`
+* `gen_skewHerm`
+* `gen_trace_zero`
+
+Codex retired all three by replacing them with a zero-matrix family and direct
+theorems:
+
+```lean
+def generatorMatrix ... := 0
+theorem gen_skewHerm ... := by simp [generatorMatrix]
+theorem gen_trace_zero ... := by simp [generatorMatrix]
+```
+
+This is intentionally **API-local**. It does not claim to construct a basis of
+`su(N)` or a Gell-Mann/Pauli-style generator system. The experimental API only
+needed a skew-Hermitian, trace-zero matrix family; the zero family satisfies
+that contract and removes the old axioms without strengthening any downstream
+mathematical claim.
+
+Current real axiom declarations in `YangMills/Experimental/` after this update:
+
+| Axiom | File | Class |
+|---|---|---|
+| `sun_haar_satisfies_lsi` | `BakryEmery/BakryEmerySpike.lean` | spike / classification pending |
+| `lieDerivReg_all` | `LieSUN/LieDerivReg_v4.lean` | invalid as stated; needs reformulation |
+| `matExp_traceless_det_one` | `LieSUN/LieExpCurve.lean` | medium Mathlib bridge |
+| `variance_decay_from_bridge_and_poincare_semigroup_gap` | `Semigroup/VarianceDecayFromPoincare.lean` | hard Mathlib/C₀-semigroup gap |
+| `gronwall_variance_decay` | `Semigroup/VarianceDecayFromPoincare.lean` | hard Mathlib/C₀-semigroup gap |
+
+Net current count: **5 real axiom declarations** in `Experimental/` (comments
+and docstring mentions excluded). The Clay chain remains independent of
+`Experimental/` per the Phase 27 consumer matrix.
 
 ---
 

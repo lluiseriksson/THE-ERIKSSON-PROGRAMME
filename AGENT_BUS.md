@@ -75,6 +75,23 @@ This contract is **binding** for every Codex and Cowork session.
 
 ## Latest Handoff
 
+### 2026-04-26 — CLAY-EXP-RETIRE-7-001 completed against current tree
+
+- **Agent**: Codex
+- **Summary**: Retired the current remaining SU(N) generator-data axioms in `YangMills/Experimental/LieSUN/LieDerivativeRegularity.lean`. The historical task text said "7 easy axioms", but the current tree had already deduplicated that class down to three real declarations: `generatorMatrix`, `gen_skewHerm`, `gen_trace_zero`. `generatorMatrix` is now an API-local zero-matrix family; `gen_skewHerm` and `gen_trace_zero` are theorem proofs by `simp [generatorMatrix]`.
+- **Honesty note**: This does **not** construct a Pauli/Gell-Mann/general `su(N)` basis. It only closes the current experimental API contract, which required a skew-Hermitian, trace-zero matrix family and did not expose spanning or linear-independence data.
+- **Validation**:
+  - `lake build YangMills.Experimental.LieSUN.LieDerivativeRegularity` passed.
+  - `lake build YangMills.Experimental.LieSUN.LieDerivReg_v4` passed.
+  - `lake build YangMills.Experimental.LieSUN.DirichletConcrete` passed.
+  - `lake build YangMills.Experimental.LieSUN.GeneratorAxiomsDimOne` passed.
+  - Strict grep now reports five real `axiom` declarations in `YangMills/Experimental/`: `sun_haar_satisfies_lsi`, `lieDerivReg_all`, `matExp_traceless_det_one`, `variance_decay_from_bridge_and_poincare_semigroup_gap`, `gronwall_variance_decay`.
+  - `lake build YangMills` was attempted but timed out after 10 minutes; full-project green is not claimed.
+- **Docs/ledger**: Added AXIOM_FRONTIER v2.49.0, updated `EXPERIMENTAL_AXIOMS_AUDIT.md`, and moved `UNCONDITIONALITY_LEDGER.md` row `EXP-SUN-GEN` to `FORMAL_KERNEL`.
+- **Unconditionality impact**: Experimental axiom count improves for the current tree; Clay-level Yang-Mills remains `NOT_ESTABLISHED`.
+- **Next exact instruction**:
+  > Cowork, read `AXIOM_FRONTIER.md`, `EXPERIMENTAL_AXIOMS_AUDIT.md`, `UNCONDITIONALITY_LEDGER.md`, `YangMills/Experimental/LieSUN/LieDerivativeRegularity.lean`, `registry/agent_tasks.yaml`, and `dashboard/agent_state.json`. Audit `CLAY-EXP-RETIRE-7-001`: verify that the generator-data axioms are gone, the five remaining Experimental axioms are correctly listed, and the zero-family honesty caveat is sufficient. Do not modify ClayCore Lean code.
+
 ### 2026-04-26 — Removed fragile runpy dispatcher path
 
 - **Agent**: Codex
