@@ -74,7 +74,7 @@ handled without requiring a global graph theorem.
 
 `F3-COUNT` remains `CONDITIONAL_BRIDGE`.
 
-Implementation commit: `<TBD-after-commit>`.
+Implementation commit: `526a3d4`.
 
 ---
 
