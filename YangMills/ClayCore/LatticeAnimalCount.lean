@@ -1391,6 +1391,28 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset
   exact ⟨z, hzX,
     (SimpleGraph.mem_neighborFinset (plaquetteGraph d L) root z).mpr hzAdj⟩
 
+/-- The first BFS layer of a nontrivial anchored bucket is nonempty: the bucket
+meets the root-neighbor finset. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_nonempty
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hk : 1 < k) :
+    (X ∩ (plaquetteGraph d L).neighborFinset root).Nonempty := by
+  obtain ⟨z, hzX, hzN⟩ :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset hX hk
+  exact ⟨z, by simp [hzX, hzN]⟩
+
+/-- Cardinal form of the nonempty first BFS layer. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_pos
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hk : 1 < k) :
+    0 < (X ∩ (plaquetteGraph d L).neighborFinset root).card :=
+  Finset.card_pos.mpr
+    (plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_nonempty hX hk)
+
 /-- Any nontrivial anchored bucket has a first root-neighbor symbol in any
 available neighbor-choice alphabet. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
@@ -2301,6 +2323,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms simpleGraph_walk_exists_adj_start_of_ne
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighbor
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_nonempty
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_pos
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty

@@ -1,3 +1,44 @@
+# v2.42.0 — anchored root-shell nonemptiness
+
+**Released: 2026-04-26**
+
+## What
+
+Added first-layer BFS shell lemmas in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_nonempty
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_pos
+
+For an anchored bucket `X` of size `k` with `1 < k`, the intersection
+
+    X ∩ (plaquetteGraph d L).neighborFinset root
+
+is nonempty, hence has positive cardinality.
+
+## Why
+
+No percentage bar moves.  This pins the first real BFS frontier layer for the
+nontrivial decoder case.  The next recursive decoder step can now branch over
+the finite root shell rather than over an abstract reachable endpoint.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_nonempty
+      [propext, Classical.choice, Quot.sound]
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_card_pos
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.41.0 — anchored root-neighbor code witness
 
 **Released: 2026-04-26**
