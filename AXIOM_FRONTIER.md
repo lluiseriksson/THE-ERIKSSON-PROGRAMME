@@ -11,11 +11,16 @@ BFS/Klarner route in `YangMills/ClayCore/LatticeAnimalCount.lean`:
     physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296
     physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteCode1296_spec
     physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296_mem_erase_root
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296_card
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem_firstDeleteResidual1296
 
 For a nontrivial anchored bucket `X` with `1 < k`, Lean now chooses a concrete
 root-shell plaquette, chooses its `Fin 1296` first-shell code, proves the
-code-stability equation, and proves that the chosen plaquette belongs to the
-root-erased residual bucket `X.erase root`.
+code-stability equation, proves that the chosen plaquette belongs to the
+root-erased residual bucket `X.erase root`, defines the raw residual obtained
+by peeling it from `X`, proves the residual has cardinal `k - 1`, and proves
+the original root remains in that residual.
 
 ## Why
 
@@ -24,7 +29,10 @@ selector.  It does **not** close `F3-COUNT`: the recursive deletion / full
 anchored word decoder is still open.  What it does close is the first
 function-valued peeling primitive required before the parent selector can be
 iterated into words: the nontrivial bucket case now has a canonical first item
-that is known, in Lean, to be removable from the root residual.
+that is known, in Lean, to be removable from the root residual.  The next
+mathematical obstruction is sharper: arbitrary first-shell peeling need not
+preserve preconnectedness, so the full decoder likely needs a leaf/deletion
+order theorem rather than repeated deletion of an arbitrary root-shell element.
 
 ## Oracle
 
@@ -37,6 +45,10 @@ passed. Pinned traces:
     physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteCode1296_spec
       [propext, Classical.choice, Quot.sound]
     physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296_mem_erase_root
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296_card
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem_firstDeleteResidual1296
       [propext, Classical.choice, Quot.sound]
 
 No `sorry`. No new project axioms. No Clay-level completion claim.

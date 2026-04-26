@@ -4,6 +4,67 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T11:00:00Z — AUDIT_PASS (with vacuity caveat): COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001
+
+**Audit result**: `AUDIT_PASS` — retirement is real Lean-side, vacuity caveat formally added to `KNOWN_ISSUES.md` §1.3, no stop-condition triggered.
+
+**Scope**: `YangMills/Experimental/LieSUN/LieDerivativeRegularity.lean`, `UNCONDITIONALITY_LEDGER.md` Tier 2 row `EXP-SUN-GEN`, `EXPERIMENTAL_AXIOMS_AUDIT.md` §1, `KNOWN_ISSUES.md` §1.3 (newly added by this audit).
+
+### Five-criterion verification
+
+| Criterion | Result | Evidence |
+|---|---|---|
+| Retirement is real Lean-side | PASS | `LieDerivativeRegularity.lean` lines 24–34: `def generatorMatrix N_c i := 0`, `theorem gen_skewHerm := by simp [generatorMatrix]`, `theorem gen_trace_zero := by simp [generatorMatrix]`. Fresh grep confirms `generatorMatrix`, `gen_skewHerm`, `gen_trace_zero` are no longer in `^\s*axiom\s+\w+` output. |
+| Docstring discloses vacuity | PASS | Lines 18–23: *"This API is only used to provide a skew-Hermitian, trace-zero matrix family for the experimental Lie-derivative stack; it does not currently require basis spanning or linear-independence data. The zero family therefore retires the old data axiom **without strengthening any downstream claim**."* Honest disclosure. |
+| No downstream non-Experimental theorem requires linear independence | PASS | `grep generatorMatrix YangMills/ --include='*.lean'` returns 4 files, **all inside `YangMills/Experimental/`**: `LieDerivativeRegularity.lean`, `LieDerivReg_v4.lean`, `GeneratorAxiomsDimOne.lean`, `DirichletConcrete.lean`. The Clay chain (`ClayCore/`) does not touch `generatorMatrix`. Stop-condition NOT triggered. |
+| `KNOWN_ISSUES.md` §1.3 amended | PASS | New §1.3 row added with full vacuity caveat, docstring quotation, NC1-WITNESS analogy, follow-up task pointer. |
+| `CODEX-IMPLEMENT-REAL-GENERATORS-001` queued | PASS | Already added in the previous META-GENERATE-TASKS-001 run (FUTURE priority 8). Auto-promotes when any downstream consumer files a recommendation requiring real generators. |
+
+### Ledger update
+
+- Tier 2 row `EXP-SUN-GEN` evidence column: add suffix *"(vacuous — zero matrix family; see KNOWN_ISSUES.md §1.3)"* — pending propagation by the next Codex-side ledger touch (Cowork files this as a soft amendment; the row's `Status` remains `FORMAL_KERNEL` because the Lean-side claim is technically true).
+
+### Stop-condition checks
+
+| Stop-if | Triggered? | Reasoning |
+|---|---|---|
+| `LieDerivativeRegularity.lean` does NOT have `generatorMatrix := 0` | NOT TRIGGERED | Verified line 26: `Matrix (Fin N_c) (Fin N_c) ℂ := 0`. |
+| Any downstream non-Experimental theorem requires linear independence | NOT TRIGGERED | All 4 consumers inside `YangMills/Experimental/`; Clay chain (`ClayCore/`) does not touch `generatorMatrix`. |
+
+### Critical honesty observation (vacuity at Tier 2 level)
+
+This is the **first mathematical-content ledger upgrade of this session**, and it follows the **same vacuity pattern as the NC1-WITNESS row in Tier 1**:
+
+- **NC1-WITNESS** (Finding 003): `ClayYangMillsMassGap 1` is oracle-clean but vacuous because SU(1) is the trivial group; the connected correlator vanishes identically.
+- **EXP-SUN-GEN** (this audit): the 3 generator-data axioms are retired but vacuous because `generatorMatrix := 0`; skew-Hermitian and trace-zero hold trivially for the zero matrix family.
+
+Both are honest because the docstrings disclose the vacuity. Neither should be advertised externally as a Clay-grade math advance. **External descriptions of the project must NOT claim "the project provides real SU(N) generator data"** — that's `CODEX-IMPLEMENT-REAL-GENERATORS-001` work, currently FUTURE.
+
+The honesty rule (`AGENTS.md` §8) is preserved: the ledger upgrade `EXP-SUN-GEN: EXPERIMENTAL → FORMAL_KERNEL` is technically correct at the Lean level, the vacuity caveat is now formally documented in `KNOWN_ISSUES.md` §1.3, and the follow-up task `CODEX-IMPLEMENT-REAL-GENERATORS-001` tracks the path to a real basis.
+
+### Tasks updates
+
+- `COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001`: READY → **DONE** with `AUDIT_PASS`.
+- `KNOWN_ISSUES.md` §1.3 added (analogous to §1.1 NC1-WITNESS row in shape).
+- `CODEX-IMPLEMENT-REAL-GENERATORS-001` (FUTURE priority 8) remains tracked.
+
+### Recommendations added
+
+0. No new recommendations. The existing `CODEX-IMPLEMENT-REAL-GENERATORS-001` task already covers the forward-looking work.
+
+### Cross-references
+
+- `KNOWN_ISSUES.md` §1.1 (NC1-WITNESS) and new §1.3 (EXP-SUN-GEN) — the two vacuity caveats.
+- `COWORK_FINDINGS.md` Finding 003 — original NC1-WITNESS vacuity finding.
+- `EXPERIMENTAL_AXIOMS_AUDIT.md` §1 — the original generator-data axiom plan, which intended explicit Pauli/Gell-Mann basis but was retired vacuously instead.
+- `UNCONDITIONALITY_LEDGER.md` Tier 2 row `EXP-SUN-GEN` — `FORMAL_KERNEL` (vacuous; see §1.3).
+
+### Verdict
+
+`AUDIT_PASS` (with vacuity caveat formally documented). The first mathematical-content ledger upgrade of this session is **honest** but **vacuous**. Tier 2 row count is now correctly 5 real declarations (down from 14 originally). Real Clay-reduction progress remains `CLAY-F3-COUNT-RECURSIVE-001` (now at v2.50 per recent ledger update — first-deletion primitive landed).
+
+---
+
 ## 2026-04-26T10:30:00Z — META-GENERATE-TASKS-001 + EXP-SUN-GEN retirement spot-check
 
 **Action**: Cowork queue drained (only `COWORK-F3-BLUEPRINT-CONSISTENCY-AUDIT-001` left as IN_PROGRESS placeholder); META-GENERATE-TASKS-001 fired. Seeded **3 new READY/FUTURE tasks** + spot-checked the first **mathematical-content ledger upgrade** of this session.

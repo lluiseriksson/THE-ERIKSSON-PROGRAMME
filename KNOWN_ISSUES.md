@@ -92,6 +92,64 @@ scaling convention rather than genuine continuum analysis".
 `GENUINE_CONTINUUM_DESIGN.md`,
 `MATHEMATICAL_REVIEWERS_COMPANION.md` §6.2.
 
+### 1.3 The EXP-SUN-GEN axiom retirement is technically valid but vacuous (zero matrix family, not Gell-Mann/Pauli)
+
+**Files**: `YangMills/Experimental/LieSUN/LieDerivativeRegularity.lean` (lines
+24–34), `UNCONDITIONALITY_LEDGER.md` Tier 2 row `EXP-SUN-GEN`,
+`EXPERIMENTAL_AXIOMS_AUDIT.md` §1.
+
+**Theorems**:
+- `def generatorMatrix (N_c : ℕ) [NeZero N_c] (_i : Fin (N_c ^ 2 - 1)) : Matrix (Fin N_c) (Fin N_c) ℂ := 0`
+- `theorem gen_skewHerm := by simp [generatorMatrix]`
+- `theorem gen_trace_zero := by simp [generatorMatrix]`
+
+**Issue**: the three former axioms `generatorMatrix`, `gen_skewHerm`,
+`gen_trace_zero` were retired by setting the matrix family to **zero** and
+proving the skew-Hermitian and trace-zero properties trivially via `simp`.
+The retirement is honest at the Lean level (3 axioms → 3 theorems, the
+ledger row `EXP-SUN-GEN` correctly upgraded `EXPERIMENTAL → FORMAL_KERNEL`)
+but **vacuous** at the math level: the zero matrix is skew-Hermitian and
+trace-zero trivially, and a family of zero matrices is **not** the SU(N)
+generator basis (Pauli for N=2, Gell-Mann for N=3, or the general standard
+basis `{E_{ij} - E_{ji}, i(E_{ij} + E_{ji}), H_k}`).
+
+The Lean code is sound. **The math content is degenerate**: this retirement
+does not provide an actual SU(N) Lie-algebra basis.
+
+The docstring is **explicit and honest**: *"This API is only used to provide
+a skew-Hermitian, trace-zero matrix family for the experimental
+Lie-derivative stack; it does not currently require basis spanning or
+linear-independence data. The zero family therefore retires the old data
+axiom **without strengthening any downstream claim**."*
+
+**Why it has not exploded**: as of 2026-04-26, the four files that consume
+`generatorMatrix` are all inside `YangMills/Experimental/`
+(`LieDerivativeRegularity.lean`, `LieDerivReg_v4.lean`,
+`GeneratorAxiomsDimOne.lean`, `DirichletConcrete.lean`). None of them
+require linear independence or basis-spanning. The Clay chain
+(`ClayCore/`) does not touch `generatorMatrix` at all.
+
+**Implication**: when external descriptions say "the project retired the
+SU(N) generator-data axioms", they should add the qualifier "via the zero
+matrix family, not via Pauli/Gell-Mann generators — a real generator basis
+remains future work, tracked as `CODEX-IMPLEMENT-REAL-GENERATORS-001`".
+
+**The first physically non-trivial SU(N) generator data still requires a
+real basis**, which is exactly the `CODEX-IMPLEMENT-REAL-GENERATORS-001`
+follow-up task target. That task auto-promotes from FUTURE to READY when
+any downstream consumer files a recommendation requiring real generators.
+
+**References**: `UNCONDITIONALITY_LEDGER.md` Tier 2 row `EXP-SUN-GEN`,
+`EXPERIMENTAL_AXIOMS_AUDIT.md` §1, `COWORK_RECOMMENDATIONS.md`
+2026-04-26T11:00:00Z audit entry, `COWORK_FINDINGS.md` Finding 003 (the
+analogous NC1-WITNESS vacuity case).
+
+**Same shape as §1.1**: NC1-WITNESS is technically valid (oracle-clean
+`ClayYangMillsMassGap 1`) but vacuous (SU(1) trivial group, connected
+correlator vanishes identically). EXP-SUN-GEN follows the same pattern at
+the Tier 2 level: technically valid (3 axioms → 3 theorems), vacuous (zero
+matrix family).
+
 ---
 
 ## 2. Axiom and sorry status
