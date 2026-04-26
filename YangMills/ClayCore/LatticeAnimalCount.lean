@@ -1511,6 +1511,53 @@ theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCo
       ⟨z, hz⟩,
     ⟨⟨z, hz⟩, rfl⟩⟩
 
+/-- Member-targeted first BFS step: every non-root member of an anchored bucket
+is reached through some plaquette in the root shell. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root y : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hy : y ∈ X) (hyne : root ≠ y) :
+    ∃ z, z ∈ X ∧ z ∈ (plaquetteGraph d L).neighborFinset root := by
+  have hroot : root ∈ X :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem hX
+  have hpre :
+      ((plaquetteGraph d L).induce {x | x ∈ X}).Preconnected :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected hX
+  obtain ⟨p⟩ := hpre ⟨root, hroot⟩ ⟨y, hy⟩
+  have hne :
+      (⟨root, hroot⟩ : {x : ConcretePlaquette d L // x ∈ X}) ≠
+        ⟨y, hy⟩ := by
+    intro h
+    exact hyne (congrArg Subtype.val h)
+  obtain ⟨z, hz⟩ := simpleGraph_walk_exists_adj_start_of_ne p hne
+  have hzAdj : (plaquetteGraph d L).Adj root z.1 :=
+    SimpleGraph.induce_adj.mp hz
+  exact ⟨z.1, z.2,
+    (SimpleGraph.mem_neighborFinset (plaquetteGraph d L) root z.1).mpr hzAdj⟩
+
+/-- Physical member-targeted first-shell code: every non-root member of an
+anchored bucket has at least one coded first branch from the root shell. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
+    {L k : ℕ} [NeZero L]
+    {root y : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (hy : y ∈ X) (hyne : root ≠ y) :
+    ∃ c : Fin 1296,
+      ∃ z : {z : ConcretePlaquette physicalClayDimension L //
+        z ∈ X ∩ (plaquetteGraph physicalClayDimension L).neighborFinset root},
+        physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296 hX z = c := by
+  obtain ⟨z, hzX, hzN⟩ :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
+      hX hy hyne
+  have hzShell : z ∈ X ∩ (plaquetteGraph physicalClayDimension L).neighborFinset root := by
+    simp [hzX, hzN]
+  exact ⟨physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296 hX
+      ⟨z, hzShell⟩,
+    ⟨⟨z, hzShell⟩, rfl⟩⟩
+
 /-- Any nontrivial anchored bucket has a first root-neighbor symbol in any
 available neighbor-choice alphabet. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
@@ -2429,6 +2476,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCodeOfBranching_injective
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296_injective
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborCode1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty

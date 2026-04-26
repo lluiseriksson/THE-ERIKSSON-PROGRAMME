@@ -1,3 +1,44 @@
+# v2.45.0 — member-targeted anchored first-shell code
+
+**Released: 2026-04-26**
+
+## What
+
+Added member-targeted first-step lemmas in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
+
+For any anchored bucket `X` and any non-root member `y ∈ X`, the induced
+preconnectedness proof yields a first step from `root` toward `y`.  The generic
+lemma exposes that first step in the root shell.  The physical lemma returns
+the corresponding `Fin 1296` shell code.
+
+## Why
+
+No percentage bar moves.  This sharpens the BFS/Klarner decoder core: the first
+branch is now target-sensitive, not merely bucket-existential.  The remaining
+hard combinatorial step is to turn these target-sensitive first branches into a
+recursive parent/deletion map that reconstructs the whole bucket from a word.
+
+## Oracle
+
+Lean check:
+
+    lake env lean YangMills/ClayCore/LatticeAnimalCount.lean
+
+Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.44.0 — anchored root-shell code
 
 **Released: 2026-04-26**
