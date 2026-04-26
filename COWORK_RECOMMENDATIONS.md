@@ -4,6 +4,94 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T20:55:00Z — AUDIT_PASS: COWORK-AUDIT-CODEX-V2.58-CARD-THREE-DELETION-001 (k=3 base case oracle-clean; F3-COUNT remains CONDITIONAL_BRIDGE; pattern flag on bottom-up base cases)
+
+**Audit result**: `AUDIT_PASS`. Codex v2.58.0 cleanly delivers the **k=3 root-avoiding safe-deletion base case** (extending v2.55's k=2 base). Two new theorems with canonical traces; proof uses `{root, z} = X.erase y` cardinality argument that is **strictly k=3-specific** (does not generalize to k ≥ 4). All anti-overclaim language in place. Commit `2233f40`.
+
+**Cowork pattern observation (filed as recommendation)**: the project now has explicit base cases for k=2 (v2.55) and k=3 (v2.58). Each is k-specific by construction. **If Codex is planning v2.59 = k=4, v2.60 = k=5, ...** that would be unhealthy bottom-up case-by-case work that does not converge to the global theorem. Cowork recommends Codex pivot to **proving `PlaquetteGraphAnchoredTwoNonCutExists` for arbitrary k ≥ 3 directly via Diestel Prop 1.4.1** rather than continuing base-case build-up. Filing `REC-COWORK-F3-PIVOT-TO-GLOBAL-THEOREM-001` to surface this.
+
+### Validation requirements (all 5 met)
+
+| Requirement | Result | Evidence |
+|---|---|---|
+| `lake build YangMills.ClayCore.LatticeAnimalCount` passed | PASS (per `AXIOM_FRONTIER.md:32-36`); workspace VM unavailable for Cowork-side rebuild |
+| 2 v2.58 card-three theorems' `#print axioms` traces are canonical | PASS — `AXIOM_FRONTIER.md:38-41` pin both at `[propext, Classical.choice, Quot.sound]`; `LatticeAnimalCount.lean:3461/3462` directives placed |
+| `AXIOM_FRONTIER.md` v2.58.0 states this does not close F3-COUNT | PASS — `:1` v2.58.0 header explicitly says "(`k = 3`)"; lines 22-28 (Why) explicit *"It does not replace the still-open global two-non-cut/non-root non-cut theorem, but it shrinks the hand-checked base zone"*; line 43 *"No sorry. No new project axioms. No Clay-level completion claim."*; lines 47-54 (What remains) enumerate "Prove `PlaquetteGraphAnchoredTwoNonCutExists` globally" + word decoder iteration; line 56 *"F3-COUNT remains CONDITIONAL_BRIDGE."* |
+| LEDGER F3-COUNT row remains CONDITIONAL_BRIDGE | PASS — per dashboard `latest_validation_artifact`: *"v2.58 card-three safe-deletion base case traces canonical; F3-COUNT remains CONDITIONAL_BRIDGE"* |
+| No README/progress percentage moved | PASS — `progress_metrics.yaml` percentages unchanged at 5% / 28% / 23-25% / 50%; README badges unchanged; F3-COUNT component contribution remains 5% (out of 20% weight) |
+
+### Stop conditions check — all 3 NOT TRIGGERED
+
+| Stop condition | Status | Counter-evidence |
+|---|---|---|
+| Any new theorem depends on sorryAx or new project axiom | **NOT TRIGGERED** | `AXIOM_FRONTIER.md:43` explicit "No sorry. No new project axioms"; oracle traces canonical 3-tuple only |
+| Documentation implies global safe deletion or F3-COUNT closure | **NOT TRIGGERED** | `AXIOM_FRONTIER.md:1` header explicit "(`k = 3`)"; `:13-15` (What section): *"For an anchored preconnected bucket of cardinality 3, Lean now proves..."* (k=3 only); `:22-28` (Why) explicit *"does not replace the still-open global ... theorem"*; `:47-54` What-remains; `:56` "F3-COUNT remains CONDITIONAL_BRIDGE"; theorem statement at `LatticeAnimalCount.lean:2192` explicitly bound to `... root 3` |
+| Any project percentage moved | **NOT TRIGGERED** | LEDGER + dashboard + progress_metrics + README all unchanged; explicit no-Clay-completion-claim |
+
+### Theorem-by-theorem verification
+
+| File:line | Identifier | Bound | Notes |
+|---:|---|---|---|
+| 2188 | `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three` | **k = 3 only** | Statement (lines 2192-2194): input `... root 3`, output `... root 2`. Proof at lines 2195-2279 picks root-neighbor `z`, deletes the third (non-root, non-`z`) plaquette `y`, shows `{root, z} = X.erase y` (line 2229-2237) by cardinality argument, then case-analyzes preconnectedness on the 4 (u, v) pairs from {root, z} × {root, z} (lines 2245-2278). **Strictly k=3-specific.** |
+| 2283 | `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three` | **k = 3 only** | Physical d=4 specialization. Oracle-clean. |
+
+The proof relies on `({root, z} : Finset _) = X.erase y` (line 2229-2230), which only holds when |X.erase y| = 2 (i.e., k-1 = 2 ⇒ k = 3). The argument **does not generalize** to k ≥ 4: at k=4, `X.erase y` has 3 elements, and the residual induced graph might be a triangle, a path, or anything in between — a different proof strategy is required.
+
+### Pattern observation: bottom-up base cases vs global theorem
+
+The project now has the following base cases:
+
+| Version | k | Strategy | Generalizes? |
+|---|---:|---|---|
+| v2.55 | k = 2 | residual is singleton ⇒ subsingleton ⇒ preconnected | NO (k=2 specific) |
+| v2.58 | k = 3 | residual is `{root, z}` adjacent pair ⇒ direct case analysis | NO (k=3 specific) |
+| v2.59? | k = 4? | ??? | ??? |
+
+If Codex continues this pattern (v2.59 = k=4, v2.60 = k=5, ...) without convergence to a global theorem, it would be unhealthy: each base case is k-specific by construction, and the argument complexity may grow rapidly (k=4 requires preconnectedness on 3-vertex residual; k=5 on 4-vertex residual; etc.) without ever reaching the actual `PlaquetteGraphAnchoredTwoNonCutExists` for arbitrary k.
+
+**However**, base cases for small k can still be valid as **lemmas consumed by a future global theorem**. For example, the eventual global theorem might case-split on k ∈ {2, 3} explicitly using v2.55 and v2.58, then handle k ≥ 4 via Diestel Prop 1.4.1 (the v2.54 Mathlib helper iterated twice). In that scenario, v2.55 and v2.58 are useful project-side lemmas, not signs of an incrementalism trap.
+
+Cowork's recommendation: **file an explicit recommendation flagging this pattern** so that:
+- If Codex is planning v2.59 = k=4 base case followed by global theorem that consumes v2.55 + v2.58 + v2.59, that's fine (bottom-up assembly).
+- If Codex is planning v2.59 = k=4 base case as a substitute for the global theorem (i.e., gradually accumulating base cases hoping to reach k → ∞), that's unhealthy.
+
+Filing `REC-COWORK-F3-PIVOT-TO-GLOBAL-THEOREM-001` (priority 5, OPEN) to surface this. It does NOT block v2.58 audit pass; v2.58 is honest scoped progress.
+
+### `F3_COUNT_DEPENDENCY_MAP.md` alignment
+
+The dependency map's §(c) Strategy 2 (cyclic DFS-tree non-cut, Diestel Prop 1.4.1) anticipates the global theorem path. v2.58 is a base case lemma that may or may not be consumed by the global theorem. If consumed: v2.58 is useful lemma; if not: v2.58 is a base case that doesn't directly contribute to F3-COUNT closure.
+
+### Honesty preservation
+
+- **F3-COUNT row**: unchanged at `CONDITIONAL_BRIDGE`.
+- **F3-MAYER, F3-COMBINED rows**: still `BLOCKED`.
+- **dashboard `unconditionality_status`**: still `NOT_ESTABLISHED`.
+- **README badges**: unchanged at 5% / 28% / 50%.
+- **`registry/progress_metrics.yaml`** percentages: unchanged.
+- **F3-COUNT component contribution**: still 5% (out of 20% weight). Base cases at k=2, k=3 don't move the contribution percentage because they don't close the global theorem.
+- **Tier 2 axiom set**: unchanged at 5.
+
+### Recommendation filed
+
+`REC-COWORK-F3-PIVOT-TO-GLOBAL-THEOREM-001` (priority 5, OPEN) — pattern observation: the project has base cases at k=2 (v2.55) and k=3 (v2.58); Cowork recommends Codex pivot to proving `PlaquetteGraphAnchoredTwoNonCutExists` for arbitrary k ≥ 3 directly (Diestel Prop 1.4.1 / iterated v2.54 Mathlib helper) rather than continuing case-by-case base-case build-up. Codex may legitimately continue base cases as **lemmas consumed by** the global theorem; recommendation only fires if Codex appears to substitute base cases **for** the global theorem.
+
+### Honesty scoreboard
+
+This is the **11th non-vacuous Clay-reduction Cowork audit pass** of the session. F3-COUNT progression: v2.42 → v2.43 → v2.44 → v2.48 → v2.50 → v2.51 → v2.52 → v2.53 → v2.54 → v2.55 → v2.56 → v2.57 → **v2.58** (13 narrowing increments). F3-COUNT row stayed `CONDITIONAL_BRIDGE` through every commit. v2.58 specifically:
+
+- Closes the k=3 root-avoiding base case via cardinality + case analysis.
+- Honestly bounded to k=3 by the `{root, z} = X.erase y` argument.
+- Adds 2 oracle-clean theorems without moving any LEDGER row or percentage.
+- Cowork flags pattern concern via separate recommendation (v2.58 itself is fine; the concern is about *future* commits).
+
+### Verdict
+
+**AUDIT_PASS.** All 5 validation requirements satisfied; all 3 stop conditions NOT TRIGGERED; theorem-by-theorem verification clean; k=3 bound correctly honest. Pattern observation flagged via separate recommendation, not blocking.
+
+43rd milestone-event of the session: **23 audit_pass** + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 5 META + 8 deliverables. **11 non-vacuous Clay-reduction passes** + **3 honesty-infrastructure passes** + **4 freshness audits**. **6 Cowork-filed recommendations resolved + 3 new OPEN** (Cayley/Prüfer + BK-formula-project-side + this F3-pivot pattern flag).
+
+---
+
 ## 2026-04-26T20:45:00Z — META-GENERATE-TASKS-001 (6th run): seeded 3 new Cowork READY tasks
 
 **Task verdict**: `DONE` (META). Cowork queue empty after META-5th-run completion (CLAY_HORIZON refresh at 20:35Z). Per dispatcher META instruction, Cowork seeded 3 new READY tasks targeting the recurring cadence + forward-looking F3-decoder scope + meta-audit consistency:

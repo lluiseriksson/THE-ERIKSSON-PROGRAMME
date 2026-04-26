@@ -1,7 +1,7 @@
 # F3_COUNT_DEPENDENCY_MAP.md
 
 **Cowork-authored mathematician-readable dependency map for the F3-COUNT closure path.**
-**Originally filed: 2026-04-26T17:15:00Z (post-v2.52.0). Refreshed: 2026-04-26T17:55:00Z (post-v2.53.0) per `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001`. Codex addenda: 2026-04-26T19:25:00Z (post-v2.55.0), 2026-04-26T20:05:00Z (post-v2.56.0), 2026-04-26T20:20:00Z (post-v2.57.0), 2026-04-26T20:35:00Z (post-v2.58.0).**
+**Originally filed: 2026-04-26T17:15:00Z (post-v2.52.0). Refreshed: 2026-04-26T17:55:00Z (post-v2.53.0) per `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001`. Codex addenda: 2026-04-26T19:25:00Z (post-v2.55.0), 2026-04-26T20:05:00Z (post-v2.56.0), 2026-04-26T20:20:00Z (post-v2.57.0), 2026-04-26T20:35:00Z (post-v2.58.0), 2026-04-26T20:55:00Z (post-v2.59.0).**
 **Status of `F3-COUNT` in `UNCONDITIONALITY_LEDGER.md`: `CONDITIONAL_BRIDGE` — and remains so until both missing theorems in §(b) land.**
 
 **v2.53 refresh summary**: Codex v2.53 introduced the exact recursive
@@ -164,6 +164,8 @@ clean one-step recursion driver from any future safe-deletion proof.
 | 2065 | `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two` | theorem (oracle-clean) | physical v2.55 specialization |
 | 2188 | `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three` | theorem (oracle-clean) | v2.58: root-avoiding safe deletion for bucket size `k = 3`; deletes the non-root vertex outside an adjacent `{root, z}` pair |
 | 2283 | `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three` | theorem (oracle-clean) | physical v2.58 specialization |
+| 2299 | `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three` | theorem (oracle-clean) | v2.59: packages the already-proved base zone `2 ≤ k ≤ 3` behind the future global safe-deletion interface |
+| 2322 | `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three` | theorem (oracle-clean) | physical v2.59 specialization |
 
 The remaining B.1 obstruction is therefore narrower than the v2.53 refresh:
 prove `PlaquetteGraphAnchoredTwoNonCutExists` globally (or prove

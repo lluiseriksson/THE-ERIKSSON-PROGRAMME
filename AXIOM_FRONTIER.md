@@ -1,3 +1,64 @@
+# v2.59.0 — combined base-zone safe-deletion driver (`2 ≤ k ≤ 3`)
+
+**Released: 2026-04-26**
+
+## What
+
+Added a combined root-avoiding safe-deletion driver for the proved finite base
+zone in `YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
+
+The theorem takes `2 ≤ k` and `k ≤ 3`, then dispatches to the existing v2.55
+`k = 2` theorem or the v2.58 `k = 3` theorem.  Its interface matches the future
+global safe-deletion driver:
+
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      X.erase z ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root (k - 1)
+
+## Why
+
+This is a base-zone packaging theorem, not another attempt to climb `k` one
+case at a time.  It gives the future global proof a clean low-cardinality
+branch (`2 ≤ k ≤ 3`) while leaving the actual hard branch (`4 ≤ k`, or direct
+global two-non-cut/non-root non-cut) explicit.
+
+Cowork's v2.58 audit flagged the risk of bottom-up case accumulation.  v2.59
+answers that risk by packaging only the already-proved base zone and keeping
+the next target pinned to the global theorem:
+`PlaquetteGraphAnchoredTwoNonCutExists` or direct
+`PlaquetteGraphAnchoredNonRootNonCutExists`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed. Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axioms. No Clay-level completion claim.
+
+Implementation commit: `<TBD-after-commit>`.
+
+## What remains
+
+- Prove the global branch: `PlaquetteGraphAnchoredTwoNonCutExists`, or prove
+  `PlaquetteGraphAnchoredNonRootNonCutExists` directly.
+- Avoid substituting further finite base cases for the global theorem.
+- Then obtain `PlaquetteGraphAnchoredSafeDeletionExists` via the v2.56/v2.57
+  bridge stack and iterate into the full anchored word decoder.
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.
+
+---
+
 # v2.58.0 — root-avoiding safe deletion base case (`k = 3`) for F3/Klarner
 
 **Released: 2026-04-26**

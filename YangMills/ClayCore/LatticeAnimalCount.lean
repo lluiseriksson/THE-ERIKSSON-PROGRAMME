@@ -2293,6 +2293,40 @@ theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_o
   plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three
     (d := physicalClayDimension) (L := L) (root := root) (X := X) hX
 
+/-- Combined root-avoiding safe-deletion driver for the proved base zone
+`2 ≤ k ≤ 3`.
+
+This packages the v2.55 `k = 2` base case and the v2.58 `k = 3` base case
+behind the same interface as the future global safe-deletion theorem. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root : ConcretePlaquette d L}
+    {X : Finset (ConcretePlaquette d L)}
+    (hk_lower : 2 ≤ k) (hk_upper : k ≤ 3)
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k) :
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      X.erase z ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root (k - 1) := by
+  interval_cases k
+  · exact plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two hX
+  · exact plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three hX
+
+/-- Physical specialization of the combined `2 ≤ k ≤ 3` root-avoiding
+safe-deletion driver. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hk_lower : 2 ≤ k) (hk_upper : k ≤ 3)
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k) :
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      X.erase z ∈
+        plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root (k - 1) :=
+  plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
+    (d := physicalClayDimension) (L := L) (k := k) (root := root) (X := X)
+    hk_lower hk_upper hX
+
 /-- Member-targeted first BFS step: every non-root member of an anchored bucket
 is reached through some plaquette in the root shell. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
@@ -3460,6 +3494,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_two
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_three
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_card_le_three
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_tail_to_member
