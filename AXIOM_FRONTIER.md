@@ -1,3 +1,70 @@
+# v2.57.0 — two-non-cut sufficiency bridge for rooted safe deletion
+
+**Released: 2026-04-26**
+
+## What
+
+Added the two-non-cut formulation of the remaining F3/Klarner deletion gap in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    PlaquetteGraphAnchoredTwoNonCutExists
+    PhysicalPlaquetteGraphAnchoredTwoNonCutExists
+    plaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists
+    plaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists
+    physicalPlaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists
+    physicalPlaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists
+
+`PlaquetteGraphAnchoredTwoNonCutExists` says that every nontrivial anchored
+bucket has two distinct deletion candidates whose removal preserves induced
+preconnectedness.  Lean now proves that this is sufficient for the exact
+non-root non-cut formulation from v2.56, and therefore sufficient for the
+safe-deletion driver from v2.53.
+
+## Why
+
+This isolates the remaining graph theorem in the standard shape: connected
+finite graphs with at least two vertices have at least two non-cut vertices.
+Once that theorem is proved for the induced plaquette bucket graph, the root
+obstruction disappears automatically: among two distinct deletion candidates,
+at least one is not the anchored root.
+
+This is a bridge only.  It does **not** prove the global two-non-cut theorem,
+does **not** close `F3-COUNT`, and does **not** move any project percentage.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed. Pinned traces for the four new bridge theorems:
+
+    plaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists
+      [propext, Classical.choice, Quot.sound]
+    plaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axioms. No Clay-level completion claim.
+
+Implementation commit: `<TBD-after-commit>`.
+
+## What remains
+
+- Prove `PlaquetteGraphAnchoredTwoNonCutExists` globally, or prove
+  `PlaquetteGraphAnchoredNonRootNonCutExists` directly.
+- Then obtain `PlaquetteGraphAnchoredSafeDeletionExists` via the v2.56/v2.57
+  bridge stack.
+- Iterate the v2.53 one-step driver into the full anchored word decoder /
+  Klarner BFS-tree count.
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.
+
+---
+
 # v2.56.0 — safe-deletion iff non-root non-cut bridge for F3/Klarner
 
 **Released: 2026-04-26**

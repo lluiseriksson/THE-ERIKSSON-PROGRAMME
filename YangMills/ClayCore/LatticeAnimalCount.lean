@@ -1842,6 +1842,24 @@ def PlaquetteGraphAnchoredNonRootNonCutExists
     ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
       ((plaquetteGraph d L).induce {x | x ∈ X.erase z}).Preconnected
 
+/-- Two-non-cut formulation of the anchored deletion gap.
+
+This is the standard graph-theoretic shape one expects from finite connected
+graphs: every nontrivial anchored bucket has two distinct deletion candidates
+whose removal preserves induced preconnectedness.  If this is proved globally,
+one candidate must be different from the anchored root, so it implies the exact
+non-root non-cut formulation below. -/
+def PlaquetteGraphAnchoredTwoNonCutExists
+    (d L : ℕ) [NeZero d] [NeZero L] : Prop :=
+  ∀ {root : ConcretePlaquette d L} {k : ℕ}
+    {X : Finset (ConcretePlaquette d L)},
+    2 ≤ k →
+    X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k →
+    ∃ z₁, ∃ hz₁X : z₁ ∈ X, ∃ z₂, ∃ hz₂X : z₂ ∈ X,
+      z₁ ≠ z₂ ∧
+        ((plaquetteGraph d L).induce {x | x ∈ X.erase z₁}).Preconnected ∧
+        ((plaquetteGraph d L).induce {x | x ∈ X.erase z₂}).Preconnected
+
 /-- The degree-one global hypothesis is sufficient for the exact safe-deletion
 hypothesis, by the local v2.52 leaf-deletion theorem. -/
 theorem plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
@@ -1865,6 +1883,31 @@ theorem plaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
   exact ⟨z, hzX, hz_ne_root,
     plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected
       hX hzX hz_ne_root hpre⟩
+
+/-- A global two-non-cut theorem is sufficient for the exact non-root non-cut
+formulation: among two distinct deletion candidates, at least one is not the
+anchored root. -/
+theorem plaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (htwo : PlaquetteGraphAnchoredTwoNonCutExists d L) :
+    PlaquetteGraphAnchoredNonRootNonCutExists d L := by
+  intro root k X hk hX
+  obtain ⟨z₁, hz₁X, z₂, hz₂X, hne, hpre₁, hpre₂⟩ := htwo hk hX
+  by_cases hz₁root : z₁ = root
+  · refine ⟨z₂, hz₂X, ?_, hpre₂⟩
+    intro hz₂root
+    exact hne (hz₁root.trans hz₂root.symm)
+  · exact ⟨z₁, hz₁X, hz₁root, hpre₁⟩
+
+/-- A global two-non-cut theorem is sufficient for exact anchored safe
+deletion.  This factors through the non-root non-cut bridge to keep the
+remaining F3/Klarner obstruction visibly graph-theoretic. -/
+theorem plaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists
+    {d L : ℕ} [NeZero d] [NeZero L]
+    (htwo : PlaquetteGraphAnchoredTwoNonCutExists d L) :
+    PlaquetteGraphAnchoredSafeDeletionExists d L :=
+  plaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
+    (plaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists htwo)
 
 /-- Conversely, the exact safe-deletion hypothesis exposes a non-root non-cut
 witness by projecting preconnectedness from the erased anchored bucket. -/
@@ -1922,6 +1965,11 @@ abbrev PhysicalPlaquetteGraphAnchoredNonRootNonCutExists
     (L : ℕ) [NeZero L] : Prop :=
   PlaquetteGraphAnchoredNonRootNonCutExists physicalClayDimension L
 
+/-- Physical four-dimensional version of the two-non-cut deletion hypothesis. -/
+abbrev PhysicalPlaquetteGraphAnchoredTwoNonCutExists
+    (L : ℕ) [NeZero L] : Prop :=
+  PlaquetteGraphAnchoredTwoNonCutExists physicalClayDimension L
+
 /-- Physical specialization: degree-one deletion existence is sufficient for
 safe deletion existence. -/
 theorem physicalPlaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
@@ -1939,6 +1987,24 @@ theorem physicalPlaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
     PhysicalPlaquetteGraphAnchoredSafeDeletionExists L :=
   plaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
     (d := physicalClayDimension) (L := L) hnoncut
+
+/-- Physical specialization: two non-cut deletion candidates are sufficient for
+the exact non-root non-cut formulation. -/
+theorem physicalPlaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists
+    {L : ℕ} [NeZero L]
+    (htwo : PhysicalPlaquetteGraphAnchoredTwoNonCutExists L) :
+    PhysicalPlaquetteGraphAnchoredNonRootNonCutExists L :=
+  plaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists
+    (d := physicalClayDimension) (L := L) htwo
+
+/-- Physical specialization: two non-cut deletion candidates are sufficient for
+exact anchored safe deletion. -/
+theorem physicalPlaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists
+    {L : ℕ} [NeZero L]
+    (htwo : PhysicalPlaquetteGraphAnchoredTwoNonCutExists L) :
+    PhysicalPlaquetteGraphAnchoredSafeDeletionExists L :=
+  plaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists
+    (d := physicalClayDimension) (L := L) htwo
 
 /-- Physical specialization: safe deletion exposes the non-root non-cut
 formulation. -/
@@ -3264,9 +3330,13 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
 #print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
 #print axioms plaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
+#print axioms plaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists
+#print axioms plaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists
 #print axioms plaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists
 #print axioms plaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists
 #print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists_of_nonRootNonCutExists
+#print axioms physicalPlaquetteGraphAnchoredNonRootNonCutExists_of_twoNonCutExists
+#print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists_of_twoNonCutExists
 #print axioms physicalPlaquetteGraphAnchoredNonRootNonCutExists_of_safeDeletionExists
 #print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists_iff_nonRootNonCutExists
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
