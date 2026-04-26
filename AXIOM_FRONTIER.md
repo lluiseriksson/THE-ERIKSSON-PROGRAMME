@@ -50,7 +50,7 @@ passed. Pinned traces for the four new bridge theorems:
 
 No `sorry`. No new project axioms. No Clay-level completion claim.
 
-Implementation commit: `<TBD-after-commit>`.
+Implementation commit: `0d2ebc9`.
 
 ## What remains
 
