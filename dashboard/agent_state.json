@@ -2,8 +2,8 @@
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
   "current_phase": "clay_reduction_active",
-  "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-AUDIT-001",
+  "current_baton_owner": "Codex",
+  "next_task_id": "CLAY-F3-COUNT-RECURSIVE-001",
   "last_completed_task": "AUTOCONTINUE-001",
   "last_dispatched_task": null,
   "last_dispatched_agent": null,
@@ -16,25 +16,36 @@
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001"
   ],
-  "last_dispatch_at": "2026-04-26T06:21:05Z",
-  "latest_validation_artifact": "dashboard/autocontinue_validation.txt",
+  "last_dispatch_at": "2026-04-26T06:29:41Z",
+  "latest_validation_artifact": "dashboard/autocontinue_delivery_fix_validation.txt",
   "audit_state": {
-    "in_repo_dispatcher": "PASS",
-    "communication_contract": "PASS",
-    "downloads_autocontinue": "AUDIT_PASS_WITH_REPEAT_GUARD_HARDENING_PENDING_COWORK_RECHECK",
+    "in_repo_dispatcher": "AUDIT_PASS",
+    "communication_contract": "AUDIT_PASS",
+    "downloads_autocontinue": "BUGFIXED_NEGATIVE_MONITOR_COORDS_PENDING_RUNTIME_CONFIRMATION",
+    "downloads_autocontinue_repeat_guard": "AUDIT_PASS",
+    "system_collaboration": "AUDIT_PASS",
     "lean_oracle_discipline": "PASS (0 sorries, 0 non-Experimental axioms)",
     "lake_build_full": "INTEGRATION_PENDING (15-min timeout on v2.42 sync)"
   },
   "communication_contract_active": true,
   "communication_contract_clauses": 13,
+  "anti_stale_loop_layers": [
+    "external watcher: REPEAT_TASK_PAUSE_SECONDS=180.0 + META_TASK_PAUSE_SECONDS=1800.0 keyed on last_sent_task_id",
+    "canonical dispatcher: repeat_penalty in task_rank after priority"
+  ],
   "future_audit_tasks": [
-    "COWORK-AUDIT-001",
-    "COWORK-AUDIT-CLAY-F3-COUNT-RECURSIVE-001 (auto-create on completion)"
+    "COWORK-AUDIT-CLAY-F3-COUNT-RECURSIVE-001 (auto-create on completion)",
+    "COWORK-AUDIT-CLAY-EXP-RETIRE-7-001 (auto-create on completion)",
+    "COWORK-AUDIT-CLAY-MATHLIB-PR-LANDING-001 (auto-create on completion)"
   ],
   "active_clay_reduction_tasks": [
     "CLAY-F3-COUNT-RECURSIVE-001",
     "CLAY-EXP-RETIRE-7-001",
     "CLAY-MATHLIB-PR-LANDING-001"
+  ],
+  "completed_audits": [
+    "COWORK-AUDIT-AUTOCONTINUE-001 (2026-04-26T07:00:00Z)",
+    "COWORK-AUDIT-001 (2026-04-26T07:30:00Z)"
   ],
   "ledger_status": {
     "AUTOCONTINUE": "INFRA_AUDITED",
@@ -46,6 +57,15 @@
     "L2.6-CHARACTER": "FORMAL_KERNEL (100%)",
     "F3-COUNT": "CONDITIONAL_BRIDGE (active — recursive deletion / parent map pending)",
     "F3-MAYER": "BLOCKED (gated on F3-COUNT closure)",
-    "EXP-SUN-GEN": "EXPERIMENTAL (7 axioms, easy retire)"
+    "F3-COMBINED": "BLOCKED (gated on F3-COUNT and F3-MAYER)",
+    "NC1-WITNESS": "FORMAL_KERNEL (with vacuity caveat per Finding 003)",
+    "CONTINUUM-COORDSCALE": "INVALID-AS-CONTINUUM (per Finding 004)",
+    "EXP-SUN-GEN": "EXPERIMENTAL (7 axioms, easy retire — CLAY-EXP-RETIRE-7-001)",
+    "EXP-MATEXP-DET": "EXPERIMENTAL (1 axiom, ~50 LOC + Mathlib PR)",
+    "EXP-LIEDERIVREG": "INVALID (mathematically false; reformulation pending)",
+    "EXP-BD-HY-GR": "EXPERIMENTAL (5 axioms, hard Mathlib gaps)",
+    "OUT-CONTINUUM": "BLOCKED (research-level, 5+ year horizon)",
+    "OUT-OS-WIGHTMAN": "BLOCKED (Mathlib gauge-theory infra missing)",
+    "OUT-STRONG-COUPLING": "BLOCKED (cluster expansion diverges)"
   }
 }

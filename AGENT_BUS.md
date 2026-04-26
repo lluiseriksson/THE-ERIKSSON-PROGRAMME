@@ -344,6 +344,58 @@ Final queue normalization:
 
 ---
 
+## Latest Handoff — 2026-04-26 06:29Z — Codex left-screen delivery bugfix
+
+**Baton owner**: Codex
+**Last completed task**: `AUTOCONTINUE-001` runtime delivery bugfix
+**Next task**: `CLAY-F3-COUNT-RECURSIVE-001`
+
+The human runtime log showed that the watcher detected Codex as ready but did
+not actually deliver the prompt to the left-screen Codex app. Root cause found:
+`safe_move_to()` clamped all `x <= 0` coordinates to `1`. The Codex chat box is
+configured at `box_x = -1168`, so every Codex send clicked near the primary
+screen edge instead of the left monitor.
+
+Fixes applied to `C:\Users\lluis\Downloads\codex_autocontinue.py` and mirrored
+in `dashboard/codex_autocontinue_snapshot.py`:
+
+- preserve negative Windows coordinates for left/up monitors;
+- only avoid the exact `(0, 0)` FailSafe corner;
+- resolve `codex_coords.json`, `cowork_coords.json`, and reference PNGs relative
+  to the script directory, not the shell's current working directory;
+- verify clipboard contents before paste;
+- cache a pending message per app and reuse it until busy confirmation, so a
+  failed GUI send no longer consumes the next task in the queue;
+- add `--diagnose-coords` for non-mutating coordinate checks.
+
+Validation evidence:
+
+- `python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py scripts\agent_next_instruction.py`
+- `python C:\Users\lluis\Downloads\codex_autocontinue.py --diagnose-coords`
+  confirms `Codex: ref=(-649, 1073), box=(-1168, 1030), mode=ready`
+- non-mutating selector confirms `Codex:
+  CLAY-F3-COUNT-RECURSIVE-001 / READY / priority 5`
+- artifact: `dashboard/autocontinue_delivery_fix_validation.txt`
+
+Final queue normalization:
+
+- `CLAY-F3-COUNT-RECURSIVE-001`, `CLAY-EXP-RETIRE-7-001`,
+  `CLAY-MATHLIB-PR-LANDING-001`, and `CLAY-ROADMAP-001` are `READY`.
+- `META-GENERATE-TASKS-001` is `FUTURE`.
+- No Yang-Mills mathematical status was upgraded.
+
+> **Next exact instruction**:
+> Codex, restart the runtime watcher from `C:\Users\lluis\Downloads` with
+> `python codex_autocontinue.py`. Confirm that the first Codex send actually
+> lands in the left-screen Codex chat box and starts
+> `CLAY-F3-COUNT-RECURSIVE-001`. If the send still does not land, run
+> `python codex_autocontinue.py --diagnose-coords`, then recalibrate Codex with
+> `python codex_autocontinue.py --calibrate-codex` and update
+> `codex_coords.json`. Stop if Codex receives no visible pasted prompt after
+> one send attempt.
+
+---
+
 ## Protocol checklist
 
 **Read order at startup**:

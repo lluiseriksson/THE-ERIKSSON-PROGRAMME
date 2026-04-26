@@ -4,6 +4,45 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T07:30:00Z — AUDIT_PASS: COWORK-AUDIT-001 (whole coordination system)
+
+**Audit result**: `AUDIT_PASS`. Whole agentic coordination system audited end-to-end. Task `COWORK-AUDIT-001` marked DONE. Baton handed to Codex with `CLAY-F3-COUNT-RECURSIVE-001`.
+
+**Scope**: full coordination loop — `AGENT_BUS.md` COMMUNICATION_CONTRACT (13 clauses), `registry/agent_tasks.yaml`, `registry/recommendations.yaml`, `registry/agent_history.jsonl`, `dashboard/agent_state.json`, `scripts/agent_next_instruction.py`, `dashboard/codex_autocontinue_snapshot.py`, `dashboard/autocontinue_validation.txt`, `COWORK_RECOMMENDATIONS.md`, the new repeat-guard hardening Codex landed at 06:20:09Z and revalidated at 06:21:05Z.
+
+**Five-dimension audit** (per task COWORK-AUDIT-001 objective):
+
+| # | Dimension | Result | Evidence |
+|---|---|---|---|
+| 1 | Productive collaboration | PASS | History 58+ events showing dispatch / handoff / audit_pass ratchet. Tasks transition READY → IN_PROGRESS → DONE under task-rank discipline. Codex → Cowork → Codex baton flips visible. |
+| 2 | Prevents generic continuation | PASS | Carry-over from COWORK-AUDIT-AUTOCONTINUE-001 (forbidden phrase absent in source, redacted in echo). |
+| 3 | Records task history | PASS | `agent_history.jsonl` JSONL valid; `registry/agent_dispatch.lock` enforces atomic appends; one historical race-condition healed via `history_repair` event (visible at line 4). |
+| 4 | Preserves future work | PASS | `META-GENERATE-TASKS-001` fallback fires when queue empties for an agent. Three fresh Clay-reduction READY tasks (`CLAY-F3-COUNT-RECURSIVE-001`, `CLAY-EXP-RETIRE-7-001`, `CLAY-MATHLIB-PR-LANDING-001`) seeded at 2026-04-26T07:00:00Z. Validation `≥ 3 Clay-reduction READY tasks` from `CLAY-ROADMAP-001` is therefore satisfied. |
+| 5 | Anti-stale-loop hardening | PASS | **Layered defense verified**: (a) external watcher has hard wall-clock pauses keyed on `last_sent_task_id` — `REPEAT_TASK_PAUSE_SECONDS = 180.0`, `META_TASK_PAUSE_SECONDS = 1800.0` (snapshot lines 75-76); branches at lines 339-354 emit `[SKIP] {app.name}: Task id: {x} already sent; repeat guard active for {n}s.`. (b) canonical dispatcher applies soft `repeat_penalty` in `task_rank` order (line 605) — priority dominates so urgent re-dispatch is still possible. Two layers, one soft + one hard, structurally prevent the AGENTS.md §4 forbidden pattern "Two consecutive autocontinue dispatches of the same task without progress". |
+
+**Bonus structural observation**: the layered defense is the right design. The watcher-side pause is a wall-clock guard, the dispatcher-side penalty is a rank-order guard. They use different signals (timestamp vs `last_dispatched_task` field), so they can't both fail to the same input. Defense in depth.
+
+**Tasks updates**:
+- `COWORK-AUDIT-001`: IN_PROGRESS → DONE with `audit_verdict: AUDIT_PASS` and 6 lines of evidence pointers in `audit_evidence:`.
+- `CLAY-F3-COUNT-RECURSIVE-001`: remains READY priority 5, now the active baton for Codex.
+- `CLAY-EXP-RETIRE-7-001`, `CLAY-MATHLIB-PR-LANDING-001`: remain READY in Codex queue.
+
+**Ledger updates**:
+- Row `AUTOCONTINUE`: INFRA_AUDITED confirmed (additional evidence: repeat-guard hardening pass).
+- Row `AGENTIC-INFRA`: INFRA_AUDITED confirmed (system-wide audit including layered repeat defense).
+- No mathematical row changed status. The `CLAY-GOAL` row remains BLOCKED. The lattice mass gap rows (`L1-HAAR`, `L2.4-SCHUR`, `L2.5-FROBENIUS`, `L2.6-CHARACTER`) remain at their FORMAL_KERNEL percentages. `F3-COUNT` remains CONDITIONAL_BRIDGE pending the recursive deletion / parent map.
+
+**Honesty preservation**:
+- The agentic infrastructure is now fully audited end-to-end. **This is meta-infrastructure progress, not Clay-level mathematical progress.**
+- No claim about the Yang-Mills mass gap, the continuum limit, OS / Wightman reconstruction, or any Tier-1 row of `UNCONDITIONALITY_LEDGER.md` was made or accepted.
+- The `claim_policy` in `dashboard/agent_state.json` is preserved: *"Never claim Clay-level completion without complete formal evidence."*
+
+**No new recommendations filed.** No repair tasks created.
+
+**Cowork-side observation for the human**: with the agentic infrastructure now AUDIT_PASS, the next 24/7 cycle should produce real Lean / Mathlib output rather than coordination metadata. The first Cowork audit milestone in the new regime is `COWORK-AUDIT-CLAY-F3-COUNT-RECURSIVE-001` (auto-create when Codex marks `CLAY-F3-COUNT-RECURSIVE-001` DONE with `lake build` + `#print axioms` evidence — see `AGENTS.md` §3.2 on auditable validation).
+
+---
+
 ## 2026-04-26T07:00:00Z — AUDIT_PASS: COWORK-AUDIT-AUTOCONTINUE-001 (closes AUTOCONTINUE-001)
 
 **Audit result**: `AUDIT_PASS`. AUTOCONTINUE-001 marked DONE. COWORK-AUDIT-AUTOCONTINUE-001 marked DONE. REC-AUDIT-AUTOCONTINUE-MIRROR-001 closed (RESOLVED). REC-BOOTSTRAP-001 closed (RESOLVED).

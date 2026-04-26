@@ -1,0 +1,35 @@
+AUTOCONTINUE LEFT-SCREEN DELIVERY FIX VALIDATION
+Generated: 2026-04-26T06:29:03Z
+
+=== py_compile ===
+
+
+=== diagnose_coords ===
+=== Diagn�stico de coordenadas ===
+Codex: ref=(-649, 1073), box=(-1168, 1030), mode=ready
+Cowork: ref=(3828, 1190), box=(3157, 1150), mode=busy
+Nota: coordenadas negativas son v�lidas en monitores a la izquierda.
+
+=== nonmutating_selector ===
+Codex: CLAY-F3-COUNT-RECURSIVE-001 / READY / priority 5
+Cowork: META-GENERATE-TASKS-001 / FUTURE / priority 99
+
+=== source_checks ===
+
+C:\Users\lluis\Downloads\codex_autocontinue.py:37:SCRIPT_DIR = Path(__file__).resolve().parent
+C:\Users\lluis\Downloads\codex_autocontinue.py:79:CODEX_CFG = SCRIPT_DIR / "codex_coords.json"
+C:\Users\lluis\Downloads\codex_autocontinue.py:80:CODEX_REF = SCRIPT_DIR / "codex_send.png"
+C:\Users\lluis\Downloads\codex_autocontinue.py:81:COWORK_CFG = SCRIPT_DIR / "cowork_coords.json"
+C:\Users\lluis\Downloads\codex_autocontinue.py:82:COWORK_REF = SCRIPT_DIR / "cowork_busy.png"
+C:\Users\lluis\Downloads\codex_autocontinue.py:114:def safe_move_to(x, y, duration=0.1):
+C:\Users\lluis\Downloads\codex_autocontinue.py:121:    if x == 0 and y == 0:
+C:\Users\lluis\Downloads\codex_autocontinue.py:178:def diagnose_coords():
+C:\Users\lluis\Downloads\codex_autocontinue.py:226:        raise RuntimeError("Clipboard verification failed before paste")
+C:\Users\lluis\Downloads\codex_autocontinue.py:260:        self.pending_message = None
+C:\Users\lluis\Downloads\codex_autocontinue.py:364:                    app.pending_message = None
+C:\Users\lluis\Downloads\codex_autocontinue.py:368:                if app.pending_message:
+C:\Users\lluis\Downloads\codex_autocontinue.py:369:                    message = app.pending_message
+C:\Users\lluis\Downloads\codex_autocontinue.py:374:                    app.pending_message = message
+C:\Users\lluis\Downloads\codex_autocontinue.py:411:                        app.pending_message = None
+C:\Users\lluis\Downloads\codex_autocontinue.py:491:    elif args.diagnose_coords:
+C:\Users\lluis\Downloads\codex_autocontinue.py:492:        diagnose_coords()

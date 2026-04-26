@@ -34,6 +34,7 @@ from PIL import Image
 
 REPO_ROOT = Path(r"C:\Users\lluis\.gemini\antigravity\scratch\THE-ERIKSSON-PROGRAMME")
 CANONICAL_DISPATCHER = REPO_ROOT / "scripts" / "agent_next_instruction.py"
+SCRIPT_DIR = Path(__file__).resolve().parent
 
 PATCH_HALF = 22
 
@@ -75,10 +76,10 @@ GHOST_PAUSE_SECONDS = 30.0    # cuánto pausar la app si se detecta
 REPEAT_TASK_PAUSE_SECONDS = 180.0
 META_TASK_PAUSE_SECONDS = 1800.0
 
-CODEX_CFG = Path("codex_coords.json")
-CODEX_REF = Path("codex_send.png")
-COWORK_CFG = Path("cowork_coords.json")
-COWORK_REF = Path("cowork_busy.png")
+CODEX_CFG = SCRIPT_DIR / "codex_coords.json"
+CODEX_REF = SCRIPT_DIR / "codex_send.png"
+COWORK_CFG = SCRIPT_DIR / "cowork_coords.json"
+COWORK_REF = SCRIPT_DIR / "cowork_busy.png"
 
 pyautogui.FAILSAFE = True
 pyautogui.PAUSE = 0.05
@@ -111,11 +112,14 @@ def countdown(secs, msg):
 
 
 def safe_move_to(x, y, duration=0.1):
-    """Mueve el ratón evitando coordenadas que disparen el FailSafe."""
-    if x <= 0:
-        x = 1
-    if y <= 0:
-        y = 1
+    """Mueve el ratón sin romper coordenadas de monitores a la izquierda.
+
+    Windows usa coordenadas negativas para pantallas situadas a la izquierda o
+    encima del monitor principal. Solo evitamos la esquina primaria (0, 0), que
+    dispara el FailSafe de pyautogui; no normalizamos coordenadas negativas.
+    """
+    if x == 0 and y == 0:
+        x, y = 1, 1
     pyautogui.moveTo(x, y, duration=duration)
 
 
@@ -171,6 +175,22 @@ def calibrate_cowork():
     print(f"Guardado {COWORK_CFG}.")
 
 
+def diagnose_coords():
+    print("=== Diagnóstico de coordenadas ===")
+    for name, cfg_path in (("Codex", CODEX_CFG), ("Cowork", COWORK_CFG)):
+        if not cfg_path.exists():
+            print(f"{name}: sin config ({cfg_path})")
+            continue
+        cfg = json.loads(cfg_path.read_text())
+        print(
+            f"{name}: ref=({cfg.get('ref_x', cfg.get('btn_x'))}, "
+            f"{cfg.get('ref_y', cfg.get('btn_y'))}), "
+            f"box=({cfg.get('box_x')}, {cfg.get('box_y')}), "
+            f"mode={cfg.get('mode', 'ready')}"
+        )
+    print("Nota: coordenadas negativas son válidas en monitores a la izquierda.")
+
+
 # --- Acción ----------------------------------------------------------------
 
 def build_dispatch_message(agent_role):
@@ -202,11 +222,15 @@ def send_reply(box_x, box_y, message):
     pyautogui.click()
     time.sleep(0.25)
     pyperclip.copy(message)
+    if pyperclip.paste() != message:
+        raise RuntimeError("Clipboard verification failed before paste")
+    pyautogui.hotkey("ctrl", "a")
+    time.sleep(0.05)
     pyautogui.hotkey("ctrl", "v")
     time.sleep(0.2)
     pyautogui.press("enter")
     time.sleep(0.1)
-    safe_move_to(max(prev.x, 1), max(prev.y, 1), duration=0.05)
+    safe_move_to(prev.x, prev.y, duration=0.05)
 
 
 # --- Modelo ----------------------------------------------------------------
@@ -233,6 +257,8 @@ class WatchedApp:
         self.last_sent_task_id = None
         self.last_sent_at = 0.0
         self.last_confirmed_busy_at = 0.0
+        self.pending_message = None
+        self.pending_task_id = None
 
     def load(self):
         if not (self.cfg_path.exists() and self.ref_path.exists()):
@@ -335,10 +361,18 @@ def run():
                     app.armed = True
                     # Vimos ocupado de verdad: la racha fantasma se rompe
                     app.ghost_streak = 0
+                    app.pending_message = None
+                    app.pending_task_id = None
 
             for app in ready_apps:
-                message = build_dispatch_message(app.name)
-                task_id = extract_task_id(message)
+                if app.pending_message:
+                    message = app.pending_message
+                    task_id = app.pending_task_id or extract_task_id(message)
+                else:
+                    message = build_dispatch_message(app.name)
+                    task_id = extract_task_id(message)
+                    app.pending_message = message
+                    app.pending_task_id = task_id
                 task_line = f"Task id: {task_id}"
                 now = time.time()
                 pause_seconds = repeat_pause_seconds(task_id)
@@ -374,6 +408,8 @@ def run():
                         app.armed = True
                         rearmed_with_busy = True
                         app.last_confirmed_busy_at = time.time()
+                        app.pending_message = None
+                        app.pending_task_id = None
                         print(f"  [{app.name}] ocupado confirmado "
                               f"(d={d:.1f}), rearmado.")
                         break
@@ -444,6 +480,7 @@ if __name__ == "__main__":
                    help="Print one structured task dispatch for this agent and exit.")
     p.add_argument("--calibrate-codex", action="store_true")
     p.add_argument("--calibrate-cowork", action="store_true")
+    p.add_argument("--diagnose-coords", action="store_true")
     args = p.parse_args()
     if args.agent:
         print(build_dispatch_message(args.agent))
@@ -451,5 +488,7 @@ if __name__ == "__main__":
         calibrate_codex()
     elif args.calibrate_cowork:
         calibrate_cowork()
+    elif args.diagnose_coords:
+        diagnose_coords()
     else:
         run()
