@@ -1,3 +1,48 @@
+# v2.46.0 — anchored first-branch tail splitter
+
+**Released: 2026-04-26**
+
+## What
+
+Added residual-tail BFS/Klarner lemmas in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    simpleGraph_walk_exists_adj_start_and_tail_of_ne
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_tail_to_member
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_tail_to_member
+
+The new splitter refines the previous first-shell facts: for any non-root
+member `y ∈ X`, Lean now extracts not only a root-shell first branch but also
+the remaining induced walk from that branch to `y`, staying inside the same
+anchored bucket.  The physical specialization packages the first branch as a
+`Fin 1296` code plus the residual tail.
+
+## Why
+
+No percentage bar moves.  This is a real decoder-core increment for the
+`1 < k` F3/Klarner case: the local first branch is no longer a disconnected
+witness.  It carries exactly the tail data needed for the eventual recursive
+BFS parent/deletion map that reconstructs an anchored bucket from a word.
+
+## Oracle
+
+Lean check:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Pinned traces:
+
+    simpleGraph_walk_exists_adj_start_and_tail_of_ne
+      []
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_tail_to_member
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_tail_to_member
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. Non-Experimental Lean axiom count remains 0.
+
+---
+
 # v2.45.0 — member-targeted anchored first-shell code
 
 **Released: 2026-04-26**
