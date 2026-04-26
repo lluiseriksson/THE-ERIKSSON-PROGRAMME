@@ -64,8 +64,8 @@ This contract is **binding** for every Codex and Cowork session.
 
 - **Baton owner**: Codex
 - **Current phase**: codex_led_clay_reduction_active
-- **Last completed task**: AUTOCONTINUE-001 (DONE with Cowork-readable evidence)
-- **Next task**: CLAY-F3-COUNT-RECURSIVE-001 (priority 3, owner Codex, READY)
+- **Last completed task**: CLAY-EXP-RETIRE-7-001 (DONE; Cowork audit pending)
+- **Next task**: CLAY-F3-COUNT-RECURSIVE-001 (priority 3, owner Codex, PARTIAL)
 - **Clay status**: NOT_ESTABLISHED
 - **Unconditionality posture**: 0 sorries, 0 axioms outside `Experimental/`;
   full `lake build YangMills` integration-pending (15-min local timeout
@@ -74,6 +74,20 @@ This contract is **binding** for every Codex and Cowork session.
 ---
 
 ## Latest Handoff
+
+### 2026-04-26 — CLAY-F3-COUNT-RECURSIVE-001 v2.50 first-deletion increment
+
+- **Agent**: Codex
+- **Summary**: Added the first deletion-facing functional API for the physical anchored BFS/Klarner route in `YangMills/ClayCore/LatticeAnimalCount.lean`: `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteCode1296`, `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296`, `...firstDeleteCode1296_spec`, and `...firstDelete1296_mem_erase_root`.
+- **What changed formally**: for every nontrivial anchored bucket `X` with `1 < k`, Lean now chooses a root-shell plaquette, pins its `Fin 1296` code, proves the code-stability equation, and proves the chosen plaquette is in `X.erase root`. This is the first executable peeling primitive for the recursive deletion/word-decoder route.
+- **Honesty note**: This is `PARTIAL` progress. It does **not** close `F3-COUNT`, does not prove the full BFS/Klarner count, and does not move Clay-level status. The remaining hard step is still iteration into a residual deletion map and full anchored word decoder.
+- **Validation**:
+  - `lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+  - `#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteCode1296_spec` prints `[propext, Classical.choice, Quot.sound]`.
+  - `#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296_mem_erase_root` prints `[propext, Classical.choice, Quot.sound]`.
+- **Docs/ledger**: Added AXIOM_FRONTIER v2.50.0 and updated `UNCONDITIONALITY_LEDGER.md` row `F3-COUNT` to record first-deletion progress while preserving `CONDITIONAL_BRIDGE`.
+- **Next exact instruction**:
+  > Codex, continue `CLAY-F3-COUNT-RECURSIVE-001`. Read `YangMills/ClayCore/LatticeAnimalCount.lean` around `firstDelete1296`, `rootShellParent1296`, and `PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.of_nontrivial`. Implement the next residual-deletion API: define the residual bucket data after removing the selected first-deletion plaquette, prove the size drops from `k` to `k - 1` when preconnectedness is available or record the exact missing graph lemma if this cannot be proved without `sorry`, then run `lake build YangMills.ClayCore.LatticeAnimalCount` and update `AXIOM_FRONTIER.md`, `UNCONDITIONALITY_LEDGER.md`, `registry/agent_tasks.yaml`, `registry/agent_history.jsonl`, and `dashboard/agent_state.json`.
 
 ### 2026-04-26 — CLAY-EXP-RETIRE-7-001 completed against current tree
 

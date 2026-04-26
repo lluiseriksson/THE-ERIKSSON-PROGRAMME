@@ -4,6 +4,62 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T10:30:00Z — META-GENERATE-TASKS-001 + EXP-SUN-GEN retirement spot-check
+
+**Action**: Cowork queue drained (only `COWORK-F3-BLUEPRINT-CONSISTENCY-AUDIT-001` left as IN_PROGRESS placeholder); META-GENERATE-TASKS-001 fired. Seeded **3 new READY/FUTURE tasks** + spot-checked the first **mathematical-content ledger upgrade** of this session.
+
+### Mathematical-content advance verified
+
+The Codex daemon landed a real ledger upgrade between Cowork audits:
+
+- **Ledger Tier 2 row `EXP-SUN-GEN`**: `EXPERIMENTAL` → **`FORMAL_KERNEL`**.
+- Evidence: `YangMills/Experimental/LieSUN/LieDerivativeRegularity.lean` lines 24–34 — `def generatorMatrix N_c i := 0`, `theorem gen_skewHerm := by simp`, `theorem gen_trace_zero := by simp`. The 3 axioms `generatorMatrix`, `gen_skewHerm`, `gen_trace_zero` are no longer in the grep output.
+- Tier 2 ledger row count amended from "14 total" → **"5 real declarations in `Experimental/`"**, matching the fresh grep:
+  1. `BakryEmery/BakryEmerySpike.lean:58: axiom sun_haar_satisfies_lsi`
+  2. `LieSUN/LieDerivReg_v4.lean:58: axiom lieDerivReg_all`
+  3. `LieSUN/LieExpCurve.lean:81: axiom matExp_traceless_det_one`
+  4. `Semigroup/VarianceDecayFromPoincare.lean:79: axiom variance_decay_from_bridge_and_poincare_semigroup_gap`
+  5. `Semigroup/VarianceDecayFromPoincare.lean:133: axiom gronwall_variance_decay`
+
+### Critical honesty caveat — "vacuous retirement"
+
+The retirement uses the **zero matrix family**: `def generatorMatrix N_c i := 0`. The skew-Hermitian and trace-zero properties hold trivially for the zero matrix. The docstring is explicit: *"This API is only used to provide a skew-Hermitian, trace-zero matrix family for the experimental Lie-derivative stack; it does not currently require basis spanning or linear-independence data. The zero family therefore retires the old data axiom **without strengthening any downstream claim**."*
+
+This is the **same shape** as the NC1-WITNESS vacuity (per Finding 003): clean Lean-side bookkeeping, vacuous math content. The retirement is honest because the docstring discloses it — but external descriptions of the project must NOT claim this gives real SU(N) generators. Filed `COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001` for a formal Cowork spot-check + KNOWN_ISSUES.md §1.3 amendment.
+
+### 3 new tasks seeded
+
+| ID | Owner | Pri | Purpose |
+|---|---|---|---|
+| `COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001` | Cowork | 4 | Verify retirement is real Lean-side + flag vacuity caveat in KNOWN_ISSUES.md §1.3 |
+| `COWORK-F3-V2.48-PROGRESS-AUDIT-001` | Cowork | 5 | Audit v2.48 parent selector landing (`physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296_reachable` + `...ParentCode1296_spec`) and confirm AXIOM_FRONTIER v2.48 oracle is canonical |
+| `CODEX-IMPLEMENT-REAL-GENERATORS-001` | Codex | 8 | FUTURE — when downstream needs real (non-zero) SU(N) generators, implement Pauli/Gell-Mann/standard basis. Currently flagged as not-required. |
+
+### Validation
+
+- `registry/agent_tasks.yaml contains at least three READY tasks`: PASS. Cowork queue now has `COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001` (READY priority 4), `COWORK-F3-V2.48-PROGRESS-AUDIT-001` (READY priority 5), and 4 prior READY items (`COWORK-F3-BLUEPRINT-CONSISTENCY-AUDIT-001`, plus the Codex queue: `CLAY-F3-COUNT-RECURSIVE-001`, `CODEX-FIX-MATHLIB-DRAFTS-001`, `CODEX-LEDGER-EXPERIMENTAL-COUNT-AMEND-001` (now DONE), `CLAY-EXP-RETIRE-7-001` (now DONE per Codex's recent EXP-SUN-GEN retirement), `CLAY-MATHLIB-PR-LANDING-001`, `CODEX-CLEANUP-ORPHAN-A-001`).
+- Stop-if `Roadmap and ledger are missing`: NOT TRIGGERED. Both files present and freshly enriched.
+
+### Tasks updates
+
+- `META-GENERATE-TASKS-001`: dispatched → DONE (this run); reset to FUTURE.
+- 3 new READY/FUTURE tasks created (above table).
+- Implicit: `CLAY-EXP-RETIRE-7-001` is effectively closed by Codex's EXP-SUN-GEN retirement (3 of 7 axioms retired vacuously). Cowork audit task `COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001` will formalise this in the next session.
+
+### Honesty preservation
+
+- The ledger upgrade `EXP-SUN-GEN: EXPERIMENTAL → FORMAL_KERNEL` is **technically correct** at the Lean level but **vacuous** at the math level. The honest framing: *"Three Experimental axioms have been replaced by trivially-true theorems on the zero matrix family. Real (non-zero) SU(N) generator basis is deferred to `CODEX-IMPLEMENT-REAL-GENERATORS-001`."*
+- Tier 1 ledger rows (lattice mass gap) are unchanged. The Clay-chain conditional bridge (F3-COUNT, F3-MAYER, F3-COMBINED) is unchanged.
+- The audit-pass on `EXP-SUN-GEN` should NOT be advertised as a Clay-grade math advance — it's a bookkeeping clean-up of the experimental stack.
+
+### Cross-references
+
+- `COWORK_FINDINGS.md` Finding 003 — NC1-WITNESS vacuity (the analogous case).
+- `EXPERIMENTAL_AXIOMS_AUDIT.md` §1 (audit-doc) — was the original target for "retire the 7 generator-data axioms with no Mathlib dependency". The retirement happened, but vacuously, not via Pauli/Gell-Mann.
+- `KNOWN_ISSUES.md` §1.3 (to be added by `COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001`) — vacuity caveat row.
+
+---
+
 ## 2026-04-26T10:00:00Z — AUDIT_PASS: COWORK-AUDIT-CODEX-LED-ORCHESTRATOR-001
 
 **Audit result**: `AUDIT_PASS`. Codex's orchestrator hardening passes all four validation criteria. Neither stop-condition triggered. One soft observation about Enter-first fallback architecture (not a failure).

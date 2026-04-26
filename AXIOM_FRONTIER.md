@@ -1,3 +1,48 @@
+# v2.50.0 — anchored first-deletion candidate for F3/Klarner recursion
+
+**Released: 2026-04-26**
+
+## What
+
+Added the first deletion-facing functional API for the physical anchored
+BFS/Klarner route in `YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteCode1296
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteCode1296_spec
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296_mem_erase_root
+
+For a nontrivial anchored bucket `X` with `1 < k`, Lean now chooses a concrete
+root-shell plaquette, chooses its `Fin 1296` first-shell code, proves the
+code-stability equation, and proves that the chosen plaquette belongs to the
+root-erased residual bucket `X.erase root`.
+
+## Why
+
+This is the deletion-side companion to v2.48.0's member-targeted parent
+selector.  It does **not** close `F3-COUNT`: the recursive deletion / full
+anchored word decoder is still open.  What it does close is the first
+function-valued peeling primitive required before the parent selector can be
+iterated into words: the nontrivial bucket case now has a canonical first item
+that is known, in Lean, to be removable from the root residual.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed. Pinned traces:
+
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteCode1296_spec
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296_mem_erase_root
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axioms. No Clay-level completion claim.
+
+---
+
 # v2.49.0 — Experimental SU(N) generator-data axioms retired
 
 **Released: 2026-04-26**

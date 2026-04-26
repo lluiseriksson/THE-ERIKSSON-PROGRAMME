@@ -1524,6 +1524,79 @@ theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCo
       ⟨z, hz⟩,
     ⟨⟨z, hz⟩, rfl⟩⟩
 
+/-- Canonical first-deletion code for a nontrivial physical anchored bucket.
+This chooses the first root-shell symbol that a recursive BFS/Klarner deletion
+decoder can peel from a bucket with `1 < k`. -/
+noncomputable def physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteCode1296
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (hk : 1 < k) :
+    Fin 1296 :=
+  Classical.choose
+    (physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296
+      hX hk)
+
+/-- Canonical first-deletion plaquette for a nontrivial physical anchored
+bucket.  The chosen plaquette lies in the root shell
+`X ∩ neighborFinset root`. -/
+noncomputable def physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (hk : 1 < k) :
+    {z : ConcretePlaquette physicalClayDimension L //
+      z ∈ X ∩ (plaquetteGraph physicalClayDimension L).neighborFinset root} :=
+  Classical.choose
+    (Classical.choose_spec
+      (physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296
+        hX hk))
+
+/-- The canonical first-deletion plaquette carries exactly the canonical
+first-deletion code. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteCode1296_spec
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (hk : 1 < k) :
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296 hX
+      (physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296
+        hX hk) =
+      physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteCode1296
+        hX hk := by
+  let h :=
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296
+      hX hk
+  exact Classical.choose_spec (Classical.choose_spec h)
+
+/-- The canonical first-deletion plaquette is outside the root and therefore
+belongs to the root-erased residual bucket.  This is the deletion-side API
+needed before the first-shell selector can be iterated into full words. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296_mem_erase_root
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (hk : 1 < k) :
+    (physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296
+      hX hk).1 ∈ X.erase root := by
+  let z :=
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296 hX hk
+  have hzX : z.1 ∈ X := (Finset.mem_inter.mp z.2).1
+  have hzN : z.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset root :=
+    (Finset.mem_inter.mp z.2).2
+  have hzAdj : (plaquetteGraph physicalClayDimension L).Adj root z.1 :=
+    (SimpleGraph.mem_neighborFinset
+      (plaquetteGraph physicalClayDimension L) root z.1).mp hzN
+  exact Finset.mem_erase.mpr ⟨hzAdj.1.symm, hzX⟩
+
 /-- Member-targeted first BFS step: every non-root member of an anchored bucket
 is reached through some plaquette in the root shell. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
@@ -2663,6 +2736,8 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCodeOfBranching_injective
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellCode1296_injective
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteCode1296_spec
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296_mem_erase_root
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_tail_to_member

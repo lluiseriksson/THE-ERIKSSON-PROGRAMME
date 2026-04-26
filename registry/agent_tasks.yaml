@@ -303,10 +303,10 @@ tasks:
 - id: CLAY-F3-COUNT-RECURSIVE-001
   title: F3 — recursive deletion / parent map for Klarner BFS-tree count
   owner: Codex
-  status: READY
+  status: PARTIAL
   priority: 3
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T07:43:43Z'
+  updated_at: '2026-04-26T07:56:20Z'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - BLUEPRINT_F3Count.md
@@ -367,8 +367,13 @@ tasks:
   - Dispatched to Codex at 2026-04-26T07:17:34Z
   - Reset to READY by Codex at 2026-04-26T07:43:43Z; current completed task was CLAY-EXP-RETIRE-7-001,
     not F3.
-  dispatch_count: 10
-  dispatched_at: '2026-04-26T07:17:34Z'
+  - Dispatched to Codex at 2026-04-26T07:46:53Z
+  - 'PARTIAL by Codex at 2026-04-26T07:56:20Z: v2.50.0 first-deletion
+    primitive landed in LatticeAnimalCount.lean; `firstDeleteCode1296_spec`
+    and `firstDelete1296_mem_erase_root` are oracle-clean. Full recursive
+    deletion / anchored word decoder remains open.'
+  dispatch_count: 11
+  dispatched_at: '2026-04-26T07:46:53Z'
   dispatched_to: Codex
 - id: CLAY-EXP-RETIRE-7-001
   title: Retire 7 easy SU(N) generator-data Experimental axioms
@@ -607,10 +612,10 @@ tasks:
   title: 'Cowork: verify BLUEPRINT_F3Count.md and BLUEPRINT_F3Mayer.md are mutually
     consistent'
   owner: Cowork
-  status: IN_PROGRESS
+  status: READY
   priority: 6
   created_at: '2026-04-26T08:30:00Z'
-  updated_at: '2026-04-26T07:35:30Z'
+  updated_at: '2026-04-26T07:56:20Z'
   required_files:
   - BLUEPRINT_F3Count.md
   - BLUEPRINT_F3Mayer.md
@@ -644,6 +649,9 @@ tasks:
   - Reset to READY by Codex at 2026-04-26T06:48:56Z; Cowork CLI validation only. Cowork
     remains sidecar audit, not primary baton.
   - Dispatched to Cowork at 2026-04-26T07:35:30Z
+  - Reset to READY by Codex at 2026-04-26T07:56:20Z; GUI log showed Cowork
+    second sidecar prompt did not confirm activation, so this is treated as
+    an undelivered/ghost dispatch rather than real task ownership.
   dispatched_at: '2026-04-26T07:35:30Z'
   dispatched_to: Cowork
   dispatch_count: 2
@@ -777,10 +785,10 @@ tasks:
 - id: META-GENERATE-TASKS-001
   title: Generate new actionable tasks when the queue is empty
   owner: Any
-  status: FUTURE
+  status: IN_PROGRESS
   priority: 99
   created_at: '2026-04-26T00:00:00Z'
-  updated_at: '2026-04-26T06:48:56Z'
+  updated_at: '2026-04-26T07:46:55Z'
   required_files:
   - AGENT_BUS.md
   - FORMALIZATION_ROADMAP_CLAY.md
@@ -814,9 +822,121 @@ tasks:
   - Dispatched to Cowork at 2026-04-26T06:47:08Z
   - Reset to FUTURE by Codex at 2026-04-26T06:48:56Z; CLI validation must not consume
     the emergency meta-task.
-  dispatch_count: 6
-  dispatched_at: '2026-04-26T06:47:08Z'
+  - Dispatched to Cowork at 2026-04-26T07:46:55Z
+  dispatch_count: 7
+  dispatched_at: '2026-04-26T07:46:55Z'
   dispatched_to: Cowork
+- id: COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001
+  title: 'Cowork: audit the EXP-SUN-GEN retirement (vacuity caveat)'
+  owner: Cowork
+  status: READY
+  priority: 4
+  created_at: '2026-04-26T10:30:00Z'
+  updated_at: '2026-04-26T10:30:00Z'
+  required_files:
+  - YangMills/Experimental/LieSUN/LieDerivativeRegularity.lean
+  - UNCONDITIONALITY_LEDGER.md
+  - EXPERIMENTAL_AXIOMS_AUDIT.md
+  - KNOWN_ISSUES.md
+  objective: 'Per UNCONDITIONALITY_LEDGER.md Tier 2, EXP-SUN-GEN was just upgraded
+    EXPERIMENTAL → FORMAL_KERNEL. Cowork verifies the retirement is real Lean-side
+    (LieDerivativeRegularity.lean lines 24-34: `def generatorMatrix := 0`,
+    `theorem gen_skewHerm := by simp`, `theorem gen_trace_zero := by simp`) but
+    flags the **vacuity caveat**: the retirement uses the **zero matrix family**,
+    not the actual SU(N) generator basis (Gell-Mann / Pauli). The docstring
+    itself says *"The zero family therefore retires the old data axiom without
+    strengthening any downstream claim."* This is honest bookkeeping but needs
+    a KNOWN_ISSUES.md row (analogous to NC1-WITNESS vacuity caveat per Finding
+    003) and a forward-looking task for when downstream gauge theory work
+    needs real generators. Output: audit entry + KNOWN_ISSUES.md amendment +
+    a follow-up task `CODEX-IMPLEMENT-REAL-GENERATORS-001` (FUTURE).
+
+    '
+  validation:
+  - 'COWORK_RECOMMENDATIONS.md gains an audit entry referencing this task ID'
+  - 'KNOWN_ISSUES.md gains a §1.3 row "EXP-SUN-GEN retirement is vacuous (zero family, not Gell-Mann/Pauli)"'
+  - 'CODEX-IMPLEMENT-REAL-GENERATORS-001 added to registry/agent_tasks.yaml as FUTURE'
+  - 'UNCONDITIONALITY_LEDGER.md Tier 2 row EXP-SUN-GEN status note adds "(vacuous — zero matrix family; see KNOWN_ISSUES.md §1.3)"'
+  stop_if:
+  - 'LieDerivativeRegularity.lean does NOT have generatorMatrix := 0 (false retirement claim)'
+  - 'Any downstream non-Experimental theorem actually requires linear independence of generatorMatrix (would invalidate the vacuity-is-OK justification)'
+  next_agent: Codex
+  notes:
+  - 'Direct verification of the FIRST mathematical-content ledger upgrade this session. The retirement is FORMAL_KERNEL at the Lean level but vacuous at the math level — same shape as NC1-WITNESS.'
+  - 'Cowork can do this from sandbox: read + grep, no Lean execution needed.'
+
+- id: COWORK-F3-V2.48-PROGRESS-AUDIT-001
+  title: 'Cowork: audit CLAY-F3-COUNT-RECURSIVE-001 v2.48 partial progress (parent selector)'
+  owner: Cowork
+  status: READY
+  priority: 5
+  created_at: '2026-04-26T10:30:00Z'
+  updated_at: '2026-04-26T10:30:00Z'
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - AXIOM_FRONTIER.md
+  - UNCONDITIONALITY_LEDGER.md
+  objective: 'Per registry/agent_history.jsonl 2026-04-26T06:41:30Z partial_task
+    event, Codex landed v2.48 parent selector for the F3 BFS/Klarner decoder
+    with two new oracle-clean theorems:
+    `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296_reachable`
+    and `...ParentCode1296_spec`. Cowork verifies (1) both theorems exist in
+    LatticeAnimalCount.lean; (2) AXIOM_FRONTIER.md gained the v2.48.0 entry
+    with pinned trace `[propext, Classical.choice, Quot.sound]`; (3)
+    UNCONDITIONALITY_LEDGER.md row F3-COUNT correctly notes this as PARTIAL
+    progress (does not close the row); (4) the remaining "recursive deletion /
+    full anchored word decoder" target is still BLOCKED.
+
+    '
+  validation:
+  - 'grep ^theorem.*rootShellParent1296_reachable YangMills/ClayCore/LatticeAnimalCount.lean returns at least 1 hit'
+  - 'grep ^theorem.*rootShellParentCode1296_spec YangMills/ClayCore/LatticeAnimalCount.lean returns at least 1 hit'
+  - 'AXIOM_FRONTIER.md v2.48.0 entry quotes the pinned trace [propext, Classical.choice, Quot.sound]'
+  - 'UNCONDITIONALITY_LEDGER.md row F3-COUNT mentions v2.48 parent selector but remains CONDITIONAL_BRIDGE (does not falsely upgrade)'
+  - 'COWORK_RECOMMENDATIONS.md gains an audit entry'
+  stop_if:
+  - 'Either of the two new theorems is missing or has been silently demoted'
+  - 'AXIOM_FRONTIER.md v2.48.0 entry shows non-canonical oracle (e.g. extra axioms)'
+  - 'F3-COUNT row was prematurely upgraded to FORMAL_KERNEL'
+  next_agent: Codex
+  notes:
+  - 'Tracking real Clay-reduction progress. Codex made genuine math progress; Cowork audits to prevent drift.'
+
+- id: CODEX-IMPLEMENT-REAL-GENERATORS-001
+  title: 'Codex: implement real SU(N) generator basis (Gell-Mann/Pauli) when downstream needs it'
+  owner: Codex
+  status: FUTURE
+  priority: 8
+  created_at: '2026-04-26T10:30:00Z'
+  updated_at: '2026-04-26T10:30:00Z'
+  required_files:
+  - YangMills/Experimental/LieSUN/LieDerivativeRegularity.lean
+  - UNCONDITIONALITY_LEDGER.md
+  - KNOWN_ISSUES.md
+  objective: 'Per COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001 vacuity caveat: the
+    current `def generatorMatrix := 0` retires the old data axiom but does NOT
+    provide the actual SU(N) generator basis. When downstream gauge theory
+    work (P8 LSI stack, Bałaban RG, Yang-Mills action functional) requires
+    linear independence or basis-spanning of generators, Codex must implement
+    the standard basis: Pauli matrices for N=2, Gell-Mann matrices for N=3,
+    and the general standard basis `{E_{ij} - E_{ji}, i(E_{ij} + E_{ji}), H_k}`
+    for arbitrary N. Auto-activates (FUTURE → READY) when any downstream
+    consumer files a recommendation that requires real generators.
+
+    '
+  validation:
+  - 'New constructive definition of generatorMatrix N_c i = (real Pauli/Gell-Mann/standard basis matrix)'
+  - 'gen_skewHerm and gen_trace_zero proofs no longer trivial (use actual matrix structure)'
+  - 'Linear independence theorem proved for the basis at small N_c (or general)'
+  - 'Downstream consumer that triggered the activation now satisfies'
+  - 'KNOWN_ISSUES.md §1.3 vacuity caveat row CLOSED'
+  stop_if:
+  - 'No downstream consumer has activated this task yet (remains FUTURE)'
+  next_agent: Cowork
+  notes:
+  - 'Currently FUTURE per the audit-doc flag "API does not currently require basis spanning". When that changes, Cowork promotes this task to READY.'
+  - 'Estimated effort: ~150 LOC for N=2/3 explicit; ~300 LOC for general N standard basis.'
+
 - id: COWORK-AUDIT-CODEX-LED-ORCHESTRATOR-001
   title: 'Cowork: audit Codex-led autocontinue orchestrator hardening'
   owner: Cowork

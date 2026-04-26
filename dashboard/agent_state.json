@@ -1,12 +1,12 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "experimental_axiom_reduction_done",
-  "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-F3-BLUEPRINT-CONSISTENCY-AUDIT-001",
+  "current_phase": "f3_count_first_deletion_partial",
+  "current_baton_owner": "Codex",
+  "next_task_id": "CLAY-F3-COUNT-RECURSIVE-001",
   "last_completed_task": "CLAY-EXP-RETIRE-7-001",
-  "last_dispatched_task": "COWORK-F3-BLUEPRINT-CONSISTENCY-AUDIT-001",
-  "last_dispatched_agent": "Cowork",
+  "last_dispatched_task": "CLAY-F3-COUNT-RECURSIVE-001",
+  "last_dispatched_agent": "Codex",
   "open_blockers": [],
   "open_recommendations": [
     "REC-COWORK-LONG-CI-LAKE-BUILD-001",
@@ -19,8 +19,8 @@
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001"
   ],
-  "last_dispatch_at": "2026-04-26T07:43:43Z",
-  "latest_validation_artifact": "lake build YangMills.Experimental.LieSUN.LieDerivReg_v4 / DirichletConcrete / GeneratorAxiomsDimOne",
+  "last_dispatch_at": "2026-04-26T07:56:20Z",
+  "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount",
   "audit_state": {
     "in_repo_dispatcher": "AUDIT_PASS",
     "communication_contract": "AUDIT_PASS",
@@ -71,7 +71,7 @@
     "L2.4-SCHUR": "FORMAL_KERNEL (100%)",
     "L2.5-FROBENIUS": "FORMAL_KERNEL (100%)",
     "L2.6-CHARACTER": "FORMAL_KERNEL (100%)",
-    "F3-COUNT": "CONDITIONAL_BRIDGE (v2.48 parent selector landed; recursive deletion / full word decoder pending)",
+    "F3-COUNT": "CONDITIONAL_BRIDGE (v2.48 parent selector + v2.50 first-deletion primitive landed; residual deletion / full word decoder pending)",
     "F3-MAYER": "BLOCKED (gated on F3-COUNT closure)",
     "F3-COMBINED": "BLOCKED (gated on F3-COUNT and F3-MAYER)",
     "NC1-WITNESS": "FORMAL_KERNEL (with vacuity caveat per Finding 003)",
