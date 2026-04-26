@@ -303,10 +303,10 @@ tasks:
 - id: CLAY-F3-COUNT-RECURSIVE-001
   title: F3 — recursive deletion / parent map for Klarner BFS-tree count
   owner: Codex
-  status: PARTIAL
+  status: IN_PROGRESS
   priority: 3
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T09:15:08Z'
+  updated_at: '2026-04-26T09:31:58Z'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - BLUEPRINT_F3Count.md
@@ -390,8 +390,9 @@ tasks:
     build YangMills.ClayCore.LatticeAnimalCount` passed and both new #print axioms
     traces are canonical. F3-COUNT remains CONDITIONAL_BRIDGE: still need a global
     root-avoiding safe-deletion existence theorem and full anchored word decoder.'
-  dispatch_count: 13
-  dispatched_at: '2026-04-26T08:57:01Z'
+  - Dispatched to Codex at 2026-04-26T09:31:58Z
+  dispatch_count: 14
+  dispatched_at: '2026-04-26T09:31:58Z'
   dispatched_to: Codex
 - id: CLAY-EXP-RETIRE-7-001
   title: Retire 7 easy SU(N) generator-data Experimental axioms
@@ -1088,10 +1089,10 @@ tasks:
   title: 'Codex: scripts/agent_next_instruction.py must verify auto-promote trigger
     conditions before promoting FUTURE → READY for tasks with explicit triggers'
   owner: Codex
-  status: READY
+  status: DONE
   priority: 3
   created_at: '2026-04-26T15:30:00Z'
-  updated_at: '2026-04-26T15:30:00Z'
+  updated_at: '2026-04-26T09:32:17Z'
   required_files:
   - scripts/agent_next_instruction.py
   - dashboard/codex_autocontinue_snapshot.py
@@ -1137,6 +1138,18 @@ tasks:
     now manifested twice in 30 min.
   - When DONE, COWORK-AUDIT-CODEX-DISPATCHER-TRIGGER-VERIFICATION-001 auto-promotes
     (with the new trigger-verification logic actually working).
+  - Dispatched to Codex at 2026-04-26T09:31:20Z
+  - 'DONE by Codex at 2026-04-26T09:32:17Z: scripts/agent_next_instruction.py now
+    evaluates explicit FUTURE auto-promote triggers before dispatch (task DONE/history,
+    AXIOM_FRONTIER version gate, grep/file gate, and specific F3 v2.52 degree-one
+    audit gate). It logs trigger_not_fired when gated tasks are not satisfied,
+    suppresses same-agent repeat dispatches for 10 minutes, and configures UTF-8
+    stdout/stderr for Windows CLI. External watcher and dashboard snapshot now compute
+    retry-vs-new-message before reducing repeat guard, so confirmed same-task redispatch
+    keeps the full repeat pause.'
+  dispatched_at: '2026-04-26T09:31:20Z'
+  dispatched_to: Codex
+  dispatch_count: 1
 - id: COWORK-LEDGER-FRESHNESS-AUDIT-002
   title: 'Cowork: re-grep Tier 2 axioms (2nd iteration of recurring 6h freshness cadence)'
   owner: Cowork
@@ -1149,8 +1162,8 @@ tasks:
   - Tier 2 grep count = 5 real axiom declarations (sun_haar_satisfies_lsi, variance_decay_from_bridge_and_poincare_semigroup_gap,
     gronwall_variance_decay, lieDerivReg_all, matExp_traceless_det_one) — identical
     to 14:00 baseline (drift = 0)
-  - LEDGER row claim "5 real declarations in Experimental/" remains accurate (5 = 5,
-    diff = 0)
+  - LEDGER row claim "5 real declarations in Experimental/" remains accurate (5 =
+    5, diff = 0)
   - 0-axiom-outside-Experimental invariant PASS — same 2 docstring hits as baseline
     (GNSConstruction.lean:23 "the OS\\naxiom predicates", AbelianU1OSAxioms.lean:25
     "every OS-style structural\\naxiom referenced")
@@ -1193,10 +1206,10 @@ tasks:
 - id: COWORK-AUDIT-CODEX-DISPATCHER-TRIGGER-VERIFICATION-001
   title: 'Cowork: post-implementation audit of CODEX-DISPATCHER-TRIGGER-VERIFICATION-001'
   owner: Cowork
-  status: FUTURE
+  status: IN_PROGRESS
   priority: 4
   created_at: '2026-04-26T15:30:00Z'
-  updated_at: '2026-04-26T16:00:00Z'
+  updated_at: '2026-04-26T09:31:20Z'
   required_files:
   - scripts/agent_next_instruction.py
   - dashboard/codex_autocontinue_snapshot.py
@@ -1225,18 +1238,19 @@ tasks:
   notes:
   - Auto-promote on completion of CODEX-DISPATCHER-TRIGGER-VERIFICATION-001.
   - Dispatched to Cowork at 2026-04-26T09:15:39Z
-  dispatched_at: '2026-04-26T09:15:39Z'
+  - Dispatched to Cowork at 2026-04-26T09:31:20Z
+  dispatched_at: '2026-04-26T09:31:20Z'
   dispatched_to: Cowork
-  dispatch_count: 1
+  dispatch_count: 2
 - id: CODEX-VACUITY-RULES-CONSOLIDATION-001
   title: 'Codex: consolidate vacuity-pattern caveats into KNOWN_ISSUES.md §1.X uniform
     section + LEDGER vacuity_flag column + MATHEMATICAL_REVIEWERS_COMPANION external-description
     guidance'
   owner: Codex
-  status: READY
+  status: IN_PROGRESS
   priority: 4
   created_at: '2026-04-26T14:30:00Z'
-  updated_at: '2026-04-26T14:30:00Z'
+  updated_at: '2026-04-26T09:31:42Z'
   required_files:
   - KNOWN_ISSUES.md
   - UNCONDITIONALITY_LEDGER.md
@@ -1277,6 +1291,10 @@ tasks:
     math advance.
   - When DONE, COWORK-AUDIT-CODEX-VACUITY-CONSOLIDATION-001 auto-promotes from FUTURE
     to READY for the post-implementation audit.
+  - Dispatched to Codex at 2026-04-26T09:31:42Z
+  dispatched_at: '2026-04-26T09:31:42Z'
+  dispatched_to: Codex
+  dispatch_count: 1
 - id: COWORK-AUDIT-CODEX-VACUITY-CONSOLIDATION-001
   title: 'Cowork: post-implementation audit of CODEX-VACUITY-RULES-CONSOLIDATION-001'
   owner: Cowork

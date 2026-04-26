@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import time
 from copy import deepcopy
@@ -23,6 +24,11 @@ try:
     import yaml
 except ImportError as exc:  # pragma: no cover - environment failure
     raise SystemExit("PyYAML is required for agent_next_instruction.py") from exc
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 
 REPO_ROOT = Path(r"C:\Users\lluis\.gemini\antigravity\scratch\THE-ERIKSSON-PROGRAMME")
@@ -43,6 +49,7 @@ PRIMARY_STATUSES = {"READY": 0, "PARTIAL": 1}
 FALLBACK_STATUSES = {"IN_PROGRESS": 2, "FUTURE": 3}
 NEVER_DISPATCH = {"DONE", "CANCELLED", "BLOCKED"}
 STALE_HOURS = 6
+RECENT_REPEAT_SUPPRESS_SECONDS = 10 * 60
 LOCK_POLL_SECONDS = 0.1
 LOCK_TIMEOUT_SECONDS = 30
 
@@ -592,6 +599,161 @@ def is_blocked(task: dict[str, Any]) -> bool:
     return False
 
 
+def task_text(task: dict[str, Any]) -> str:
+    parts: list[str] = []
+    for key in ("id", "title", "objective"):
+        value = task.get(key)
+        if isinstance(value, str):
+            parts.append(value)
+    notes = task.get("notes", [])
+    if isinstance(notes, list):
+        parts.extend(str(item) for item in notes)
+    elif isinstance(notes, str):
+        parts.append(notes)
+    validation = task.get("validation", [])
+    if isinstance(validation, list):
+        parts.extend(str(item) for item in validation)
+    elif isinstance(validation, str):
+        parts.append(validation)
+    return "\n".join(parts)
+
+
+def parse_version_tuple(version: str) -> tuple[int, ...]:
+    return tuple(int(part) for part in version.split(".") if part.isdigit())
+
+
+def axiom_frontier_has_version_at_least(threshold: str) -> bool:
+    if not (REPO_ROOT / "AXIOM_FRONTIER.md").exists():
+        return False
+    text = (REPO_ROOT / "AXIOM_FRONTIER.md").read_text(
+        encoding="utf-8", errors="ignore"
+    )
+    wanted = parse_version_tuple(threshold)
+    for match in re.finditer(r"^#\s+v(\d+(?:\.\d+)*)", text, re.MULTILINE):
+        if parse_version_tuple(match.group(1)) >= wanted:
+            return True
+    return False
+
+
+def file_has_regex(path_text: str, pattern: str) -> bool:
+    path = Path(path_text)
+    if not path.is_absolute():
+        path = REPO_ROOT / path
+    if not path.exists() or not path.is_file():
+        return False
+    try:
+        text = path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return False
+    return re.search(pattern, text, re.MULTILINE) is not None
+
+
+def history_has_task_status(task_id: str, statuses: set[str]) -> bool:
+    if not HISTORY_FILE.exists():
+        return False
+    try:
+        lines = HISTORY_FILE.read_text(encoding="utf-8", errors="ignore").splitlines()
+    except OSError:
+        return False
+    for line in reversed(lines[-500:]):
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if event.get("task_id") != task_id:
+            continue
+        status_text = " ".join(
+            str(event.get(key, "")) for key in ("event", "status", "verdict", "summary")
+        )
+        if any(status in status_text for status in statuses):
+            return True
+    return False
+
+
+def task_status(tasks: list[dict[str, Any]], task_id: str) -> str | None:
+    for item in tasks:
+        if item.get("id") == task_id:
+            status = item.get("status")
+            return str(status) if status is not None else None
+    return None
+
+
+def future_trigger_state(task: dict[str, Any], tasks: list[dict[str, Any]]) -> tuple[bool, str]:
+    """Evaluate explicit FUTURE auto-promote triggers without overclaiming.
+
+    Unknown trigger language is treated as not fired and logged, so a trigger-gated
+    FUTURE task cannot repeatedly route around Cowork's audit discipline.
+    """
+    text = task_text(task)
+    lower = text.lower()
+    if "auto-promote" not in lower and "auto-promotes" not in lower:
+        return True, "NO_EXPLICIT_TRIGGER"
+
+    # Common audit-followup shape: "When DONE, TASK-X auto-promotes".
+    done_ids = set(re.findall(r"\b([A-Z][A-Z0-9.-]+-[A-Z0-9.-]+-\d{3})\b", text))
+    done_ids.discard(str(task.get("id", "")))
+    for task_id in sorted(done_ids):
+        if "when DONE" in text or "When DONE" in text or "when done" in lower:
+            if task_status(tasks, task_id) == "DONE" or history_has_task_status(
+                task_id, {"DONE", "complete_task", "audit_pass"}
+            ):
+                return True, f"TASK_DONE:{task_id}"
+
+    # AXIOM_FRONTIER version gates, e.g. "commits a v2.52+ to AXIOM_FRONTIER.md".
+    for version in re.findall(r"\bv(\d+(?:\.\d+)*)\+", text):
+        if "AXIOM_FRONTIER" in text and axiom_frontier_has_version_at_least(version):
+            return True, f"AXIOM_FRONTIER_VERSION_AT_LEAST:v{version}"
+
+    # Grep-style gates in task notes/objectives.
+    grep_patterns = [
+        (r"grep\s+([^\n]+?)\s+(YangMills/[^\s,;]+\.lean)", "generic_grep"),
+        (r"\^theorem\.\*(leaf|deletion_order|deletionOrder|nontrivialAnchored|preserves_preconnected|existsNonRoot)[^\n]*?(YangMills/[^\s,;]+\.lean)", "theorem_grep"),
+    ]
+    for regex, _kind in grep_patterns:
+        for match in re.finditer(regex, text):
+            raw_pattern = match.group(1)
+            raw_file = match.group(2)
+            pattern = raw_pattern.strip().strip("`'\"")
+            if pattern.startswith("^theorem.*"):
+                regex_pattern = pattern
+            else:
+                regex_pattern = re.escape(pattern)
+            if file_has_regex(raw_file, regex_pattern):
+                return True, f"GREP_MATCH:{raw_file}:{pattern}"
+
+    # Known F3 audit gate after Codex v2.52: the local degree-one subcase is
+    # auditable, but it is still not the global deletion-order theorem.
+    if str(task.get("id")) == "COWORK-AUDIT-CLAY-F3-COUNT-LEAF-DELETION-001":
+        if file_has_regex(
+            "YangMills/ClayCore/LatticeAnimalCount.lean",
+            r"^theorem\s+plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_induced_degree_one",
+        ) and axiom_frontier_has_version_at_least("2.52.0"):
+            return True, "F3_V2_52_DEGREE_ONE_LEAF_SUBCASE"
+
+    append_history(
+        {
+            "time": utc_now(),
+            "event": "trigger_not_fired",
+            "agent": "dispatcher",
+            "task_id": task.get("id"),
+            "reason": "TRIGGER_NOT_FIRED_OR_NOT_PARSED",
+        }
+    )
+    return False, "TRIGGER_NOT_FIRED_OR_NOT_PARSED"
+
+
+def recently_dispatched_same_agent(task: dict[str, Any], agent: str, state: dict[str, Any]) -> bool:
+    if task.get("id") != state.get("last_dispatched_task"):
+        return False
+    if agent != state.get("last_dispatched_agent"):
+        return False
+    dispatched_at = parse_time(state.get("last_dispatch_at"))
+    if dispatched_at == datetime.min.replace(tzinfo=timezone.utc):
+        return False
+    age = datetime.now(timezone.utc) - dispatched_at
+    return age.total_seconds() < RECENT_REPEAT_SUPPRESS_SECONDS
+
+
 def task_rank(task: dict[str, Any], state: dict[str, Any]) -> tuple[int, int, int, str, str]:
     status = task.get("status", "READY")
     if status in PRIMARY_STATUSES:
@@ -612,7 +774,13 @@ def task_rank(task: dict[str, Any], state: dict[str, Any]) -> tuple[int, int, in
     )
 
 
-def task_is_actionable_for(agent: str, task: dict[str, Any], allow_future: bool) -> bool:
+def task_is_actionable_for(
+    agent: str,
+    task: dict[str, Any],
+    allow_future: bool,
+    state: dict[str, Any],
+    tasks: list[dict[str, Any]],
+) -> bool:
     owner = task.get("owner", "Any")
     status = task.get("status", "READY")
     if owner not in {agent, "Any"}:
@@ -621,20 +789,31 @@ def task_is_actionable_for(agent: str, task: dict[str, Any], allow_future: bool)
         return False
     if status in NEVER_DISPATCH:
         return False
+    if recently_dispatched_same_agent(task, agent, state):
+        return False
     if status in PRIMARY_STATUSES:
         return True
     if status == "IN_PROGRESS":
         return is_stale(task)
     if status == "FUTURE":
-        return allow_future
+        if not allow_future:
+            return False
+        fired, _reason = future_trigger_state(task, tasks)
+        return fired
     return False
 
 
 def select_next_task(agent: str, tasks: list[dict[str, Any]], state: dict[str, Any]) -> dict[str, Any] | None:
-    primary = [task for task in tasks if task_is_actionable_for(agent, task, allow_future=False)]
+    primary = [
+        task for task in tasks
+        if task_is_actionable_for(agent, task, allow_future=False, state=state, tasks=tasks)
+    ]
     if primary:
         return sorted(primary, key=lambda task: task_rank(task, state))[0]
-    fallback = [task for task in tasks if task_is_actionable_for(agent, task, allow_future=True)]
+    fallback = [
+        task for task in tasks
+        if task_is_actionable_for(agent, task, allow_future=True, state=state, tasks=tasks)
+    ]
     if fallback:
         return sorted(fallback, key=lambda task: task_rank(task, state))[0]
     return None

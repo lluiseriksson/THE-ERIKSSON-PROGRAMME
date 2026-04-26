@@ -1,12 +1,12 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_leaf_deletion_audit",
-  "current_baton_owner": "Codex",
-  "next_task_id": "CODEX-DISPATCHER-TRIGGER-VERIFICATION-001",
-  "last_completed_task": "COWORK-LEDGER-FRESHNESS-AUDIT-002 (DONE AUDIT_PASS, drift=0 vs 14:00 baseline)",
-  "last_dispatched_task": "COWORK-LEDGER-FRESHNESS-AUDIT-002",
-  "last_dispatched_agent": "Cowork",
+  "current_phase": "dispatcher_trigger_verification_audit",
+  "current_baton_owner": "Cowork",
+  "next_task_id": "COWORK-AUDIT-CODEX-DISPATCHER-TRIGGER-VERIFICATION-001",
+  "last_completed_task": "CODEX-DISPATCHER-TRIGGER-VERIFICATION-001",
+  "last_dispatched_task": "CLAY-F3-COUNT-RECURSIVE-001",
+  "last_dispatched_agent": "Codex",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists"
   ],
@@ -22,9 +22,9 @@
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001"
   ],
-  "last_dispatch_at": "2026-04-26T09:22:46Z",
-  "last_completed_at": "2026-04-26T16:30:00Z",
-  "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount passed with v2.52 degree-one leaf deletion subcase; freshness audit 16:30 confirmed Tier 2 axiom set unchanged at 5 (drift = 0 vs 14:00 baseline)",
+  "last_dispatch_at": "2026-04-26T09:31:58Z",
+  "last_completed_at": "2026-04-26T09:32:17Z",
+  "latest_validation_artifact": "dispatcher trigger verification and repeat guard hardening validated with py_compile plus Codex/Cowork dispatcher CLI runs",
   "audit_state": {
     "in_repo_dispatcher": "AUDIT_PASS",
     "communication_contract": "AUDIT_PASS",

@@ -497,7 +497,8 @@ def run(args):
                         print(f"[SKIP] Cowork: sidecar interval active for "
                               f"{remaining}s; reintento en cuanto venza.")
                         continue
-                if app.pending_message:
+                is_retry = app.pending_message is not None
+                if is_retry:
                     message = app.pending_message
                     task_id = app.pending_task_id or extract_task_id(message)
                 else:
@@ -508,7 +509,7 @@ def run(args):
                 task_line = f"Task id: {task_id}"
                 now = time.time()
                 pause_seconds = repeat_pause_seconds(task_id)
-                if app.pending_message:
+                if is_retry:
                     pause_seconds = min(pause_seconds, FAILED_DELIVERY_RETRY_SECONDS)
                 if (app.last_sent_task_id == task_id
                         and now - app.last_sent_at < pause_seconds):

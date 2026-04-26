@@ -9,6 +9,56 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff — 2026-04-26 — Dispatcher trigger verification and repeat guard hardened
+
+**Baton owner**: Cowork
+**Task**: `CODEX-DISPATCHER-TRIGGER-VERIFICATION-001`
+**Status**: `DONE`
+
+Human runtime logs showed the watcher was successfully activating both apps,
+but Cowork could still receive the same trigger-gated audit task twice. Codex
+closed the repair in two layers:
+
+- `scripts/agent_next_instruction.py` now evaluates explicit `FUTURE`
+  auto-promote triggers before dispatch. Supported checks include task/history
+  completion, `AXIOM_FRONTIER.md` version gates, grep/file gates, and the
+  known F3 v2.52 degree-one leaf audit gate.
+- The dispatcher logs `trigger_not_fired` instead of silently promoting a gated
+  `FUTURE` task.
+- Same-agent repeat dispatch of the same task is suppressed for 10 minutes at
+  the canonical selector level.
+- Windows CLI output is forced to UTF-8 so Unicode task titles no longer crash
+  under PowerShell `cp1252`.
+- `C:\Users\lluis\Downloads\codex_autocontinue.py` and
+  `dashboard/codex_autocontinue_snapshot.py` now distinguish true retry from a
+  freshly generated message before reducing the repeat guard to 20 seconds.
+  Confirmed same-task redispatch keeps the full repeat pause.
+
+Validation:
+
+- `python -m py_compile scripts\agent_next_instruction.py dashboard\codex_autocontinue_snapshot.py C:\Users\lluis\Downloads\codex_autocontinue.py`
+- `python scripts\agent_next_instruction.py Codex`
+- `python scripts\agent_next_instruction.py Cowork`
+- `python C:\Users\lluis\Downloads\codex_autocontinue.py Codex`
+- `python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork`
+
+The Cowork validation now falls to the meta-task when no actionable Cowork
+task exists, rather than spuriously promoting trigger-gated `FUTURE` work.
+
+> **Next exact instruction**:
+> Cowork, audit `CODEX-DISPATCHER-TRIGGER-VERIFICATION-001`. Read
+> `scripts/agent_next_instruction.py`,
+> `dashboard/codex_autocontinue_snapshot.py`,
+> `C:\Users\lluis\Downloads\codex_autocontinue.py`,
+> `registry/agent_tasks.yaml`, `registry/agent_history.jsonl`, and
+> `AGENT_BUS.md`. Confirm that trigger-gated FUTURE tasks are checked before
+> dispatch, unsupported triggers do not crash, same-agent repeat dispatch is
+> suppressed, and the external watcher no longer reduces confirmed same-task
+> repeats to the failed-delivery retry window. If the audit passes, return Codex
+> to `CLAY-F3-COUNT-RECURSIVE-001`.
+
+---
+
 ## Latest Handoff — 2026-04-26 — F3 degree-one leaf deletion subcase landed
 
 **Baton owner**: Cowork
