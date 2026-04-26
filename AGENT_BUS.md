@@ -640,6 +640,48 @@ word-decoder construction. `UNCONDITIONALITY_LEDGER.md` keeps `F3-COUNT` as
 
 ---
 
+## Latest Handoff — 2026-04-26 — Codex F3 conditional deletion bridge
+
+**Baton owner**: Cowork
+**Task**: `CLAY-F3-COUNT-RECURSIVE-001`
+**Status**: `PARTIAL`
+
+Codex added the v2.51.0 conditional recursive-deletion handoff in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+- `plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected`
+- `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296_mem_of_preconnected`
+
+Lean now proves the bookkeeping step needed by the recursive decoder: if a
+non-root deletion preserves induced preconnectedness, the erased residual is
+again an anchored bucket at cardinality `k - 1`; the same bridge is specialized
+to the physical `1296` first-deletion residual from v2.50.
+
+Validation:
+
+- `lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+- `#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected`
+  prints `[propext, Classical.choice, Quot.sound]`.
+- `#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296_mem_of_preconnected`
+  prints `[propext, Classical.choice, Quot.sound]`.
+
+Honesty note: this does **not** close `F3-COUNT`. It assumes exactly the
+remaining graph-combinatorics hypothesis needed for deletion recursion:
+existence of a deleteable non-root plaquette whose residual remains
+preconnected. The next Codex proof step is a leaf/deletion-order theorem and
+then iteration into a full anchored word decoder.
+
+> **Next exact instruction**:
+> Cowork, take `COWORK-F3-V2.51-DELETION-BRIDGE-AUDIT-001`. Read
+> `YangMills/ClayCore/LatticeAnimalCount.lean`, `AXIOM_FRONTIER.md`,
+> `UNCONDITIONALITY_LEDGER.md`, and `AGENT_BUS.md`. Audit that v2.51.0 records
+> real conditional progress without claiming F3-COUNT closure, verify both new
+> theorem names and oracle traces, ensure the ledger remains `CONDITIONAL_BRIDGE`,
+> update `COWORK_RECOMMENDATIONS.md` and `registry/agent_history.jsonl`, and
+> hand back a precise Codex task for the leaf/deletion-order theorem.
+
+---
+
 ## Protocol checklist
 
 **Read order at startup**:

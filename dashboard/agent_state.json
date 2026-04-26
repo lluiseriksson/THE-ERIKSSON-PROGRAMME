@@ -1,11 +1,11 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "repo_hygiene_orphan_a_removed",
+  "current_phase": "f3_count_v2_51_conditional_deletion_bridge",
   "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-AUDIT-CLAY-MATHLIB-PR-LANDING-001",
+  "next_task_id": "COWORK-F3-V2.51-DELETION-BRIDGE-AUDIT-001",
   "last_completed_task": "CLAY-EXP-RETIRE-7-001",
-  "last_dispatched_task": "COWORK-AUDIT-CLAY-MATHLIB-PR-LANDING-001",
+  "last_dispatched_task": "COWORK-F3-V2.51-DELETION-BRIDGE-AUDIT-001",
   "last_dispatched_agent": "Cowork",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists"
@@ -22,8 +22,8 @@
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001"
   ],
-  "last_dispatch_at": "2026-04-26T08:37:27Z",
-  "latest_validation_artifact": "git rm -- a; git ls-files -- a returns no tracked root file",
+  "last_dispatch_at": "2026-04-26T08:50:38Z",
+  "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount passed with v2.51 conditional recursive-deletion bridge",
   "audit_state": {
     "in_repo_dispatcher": "AUDIT_PASS",
     "communication_contract": "AUDIT_PASS",
@@ -63,6 +63,7 @@
     "CLAY-MATHLIB-PR-LANDING-001"
   ],
   "active_cowork_audit_tasks": [
+    "COWORK-F3-V2.51-DELETION-BRIDGE-AUDIT-001 (priority 4, READY)",
     "COWORK-MATHLIB-PR-DRAFT-AUDIT-001 (priority 4, READY)",
     "COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001 (priority 5, READY)",
     "COWORK-F3-BLUEPRINT-CONSISTENCY-AUDIT-001 (priority 6, READY)",
@@ -86,7 +87,7 @@
     "L2.4-SCHUR": "FORMAL_KERNEL (100%)",
     "L2.5-FROBENIUS": "FORMAL_KERNEL (100%)",
     "L2.6-CHARACTER": "FORMAL_KERNEL (100%)",
-    "F3-COUNT": "CONDITIONAL_BRIDGE (v2.48 parent selector + v2.50 first-deletion/residual primitive landed; preconnected deletion order / full word decoder pending)",
+    "F3-COUNT": "CONDITIONAL_BRIDGE (v2.48 parent selector + v2.50 first-deletion/residual primitive + v2.51 conditional deletion bridge landed; leaf/deletion-order theorem and full word decoder pending)",
     "F3-MAYER": "BLOCKED (gated on F3-COUNT closure)",
     "F3-COMBINED": "BLOCKED (gated on F3-COUNT and F3-MAYER)",
     "NC1-WITNESS": "FORMAL_KERNEL (with vacuity caveat per Finding 003)",

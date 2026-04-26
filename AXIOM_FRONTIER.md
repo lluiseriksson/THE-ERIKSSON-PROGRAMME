@@ -1,3 +1,53 @@
+# v2.51.0 — conditional recursive-deletion handoff for F3/Klarner
+
+**Released: 2026-04-26**
+
+## What
+
+Added the next deletion-recursion bridge in
+`YangMills/ClayCore/LatticeAnimalCount.lean`:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296_mem_of_preconnected
+
+The first theorem is the generic anchored-bucket closure step: if `X` is an
+anchored preconnected bucket at size `k`, `z ∈ X`, `z ≠ root`, and the induced
+graph on `X.erase z` is still preconnected, then `X.erase z` is again an
+anchored bucket at size `k - 1`.
+
+The second theorem specializes that bridge to the v2.50 physical `1296`
+first-deletion residual.  Once the currently selected first deletion is known
+to preserve induced preconnectedness, Lean now proves that the residual
+re-enters the exact anchored bucket family required by the recursive decoder.
+
+## Why
+
+This is real F3-count progress, but deliberately **does not close `F3-COUNT`**.
+It removes the bookkeeping part of the recursive handoff and leaves a sharper,
+mathematical graph-combinatorics target: prove a leaf/deletion-order theorem
+showing that every nontrivial finite anchored preconnected bucket admits a
+non-root deletion whose residual remains preconnected.  Arbitrary first-shell
+peeling is not enough; the next step must select a deletion compatible with
+connectivity, then iterate this bridge into a full anchored word decoder.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed. Pinned traces:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected
+      [propext, Classical.choice, Quot.sound]
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296_mem_of_preconnected
+      [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axioms. No percentage bar movement. No Clay-level
+completion claim.
+
+---
+
 # v2.50.0 — anchored first-deletion candidate for F3/Klarner recursion
 
 **Released: 2026-04-26**
