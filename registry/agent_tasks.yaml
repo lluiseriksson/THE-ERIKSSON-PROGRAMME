@@ -2236,10 +2236,43 @@ tasks:
 - id: COWORK-AUDIT-CODEX-V2.53-PROGRESS-001
   title: 'Cowork: audit F3 v2.53 safe-deletion hypothesis and one-step driver'
   owner: Cowork
-  status: IN_PROGRESS
+  status: DONE
   priority: 3
   created_at: '2026-04-26T10:28:15Z'
-  updated_at: '2026-04-26T10:30:12Z'
+  updated_at: '2026-04-26T17:45:00Z'
+  completed_at: '2026-04-26T17:45:00Z'
+  audit_verdict: AUDIT_PASS
+  audit_evidence:
+  - 'Both predicates present and separated: `PlaquetteGraphAnchoredSafeDeletionExists`
+    at LatticeAnimalCount.lean:1805 and `PlaquetteGraphAnchoredDegreeOneDeletionExists`
+    at :1820.'
+  - 'AXIOM_FRONTIER.md v2.53.0 pins all four new theorem traces at [propext,
+    Classical.choice, Quot.sound].'
+  - 'UNCONDITIONALITY_LEDGER.md row F3-COUNT remains CONDITIONAL_BRIDGE and says
+    the global safe-deletion/non-cut theorem is not yet proved.'
+  - 'No stop condition triggered: v2.53 does not claim full F3-COUNT closure and
+    does not conflate exact safe deletion with the degree-one sufficient condition.'
+  - 'Theorem-by-theorem verification: 8 new entries at LatticeAnimalCount.lean
+    lines 1805 (def Prop, gap), 1820 (def Prop, stronger sufficient), 1831 (theorem
+    bridge, oracle-clean), 1847 (theorem one-step driver, oracle-clean), 1860
+    (abbrev physical), 1866 (abbrev physical), 1872 (theorem physical bridge,
+    oracle-clean), 1882 (theorem physical one-step driver, oracle-clean). Bridge
+    at line 1831 is one-directional only; converse not claimed.'
+  - 'AXIOM_FRONTIER.md:39-46 (Why) + :65-66 (Oracle) + :68-75 (What remains)
+    explicitly disclaim Clay-level completion, percentage movement, and F3-COUNT
+    closure; "What remains" enumerates the still-open targets in the right order.'
+  - 'COWORK_RECOMMENDATIONS.md 17:45Z audit entry written with full theorem-by-theorem
+    table and stop-condition counter-evidence.'
+  recommendations_added:
+  - 'REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001 (priority 5, OPEN): refresh
+    F3_COUNT_DEPENDENCY_MAP.md §(c) to align with v2.53''s hypothesis-shape correction
+    — the decoder needs `PlaquetteGraphAnchoredSafeDeletionExists`, not necessarily
+    induced-degree-one. v2.53 is itself an honest refinement of the Cowork-authored
+    blueprint: Codex correctly flagged that buckets with cycles may have no
+    non-root induced-degree-one vertex, but a safe (non-cut) deletion still exists.'
+  honesty_scoreboard: '6th non-vacuous Clay-reduction Cowork audit pass of the
+    session (v2.42 → v2.43 → v2.44 → v2.48 → v2.50 → v2.51 → v2.52 → v2.53).
+    Each commit narrows the remaining hard step without overclaiming.'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - AXIOM_FRONTIER.md
@@ -2266,9 +2299,42 @@ tasks:
   - 'If audit passes, recommend the next Codex theorem target: prove/refine `PlaquetteGraphAnchoredSafeDeletionExists`,
     likely via a root-avoiding non-cut/safe-deletion lemma, then begin decoder iteration.'
   - Dispatched to Cowork at 2026-04-26T10:30:12Z
+  - 'DONE by Cowork at 2026-04-26T17:45:00Z: AUDIT_PASS. Filed `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001`
+    to update F3_COUNT_DEPENDENCY_MAP.md with the safe-deletion/non-cut framing.'
   dispatched_at: '2026-04-26T10:30:12Z'
   dispatched_to: Cowork
   dispatch_count: 1
+- id: COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001
+  title: 'Cowork: refresh F3_COUNT_DEPENDENCY_MAP.md after v2.53 safe-deletion correction'
+  owner: Cowork
+  status: READY
+  priority: 4
+  created_at: '2026-04-26T17:45:00Z'
+  updated_at: '2026-04-26T17:45:00Z'
+  required_files:
+  - F3_COUNT_DEPENDENCY_MAP.md
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - AXIOM_FRONTIER.md
+  - UNCONDITIONALITY_LEDGER.md
+  - registry/recommendations.yaml
+  objective: Refresh F3_COUNT_DEPENDENCY_MAP.md §(b)/B.1 and §(c) so it reflects
+    v2.53's hypothesis-shape correction. The decoder needs `PlaquetteGraphAnchoredSafeDeletionExists`
+    (root-avoiding safe deletion / non-cut framing), while induced-degree-one deletion
+    is only a sufficient condition via v2.53.
+  validation:
+  - F3_COUNT_DEPENDENCY_MAP.md references `PlaquetteGraphAnchoredSafeDeletionExists`
+    as the minimal next predicate
+  - The dependency map distinguishes degree-one sufficiency from safe-deletion necessity
+  - The map discusses a cyclic-bucket/non-cut strategy, not only longest-induced-path
+    leaf existence
+  - registry/recommendations.yaml marks REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001
+    RESOLVED or records why it remains open
+  stop_if:
+  - The refresh would imply v2.53 proved `PlaquetteGraphAnchoredSafeDeletionExists`
+  - The map cannot be updated without changing Lean code
+  next_agent: Codex
+  notes:
+  - Created from Cowork audit recommendation REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001.
 - id: CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001
   title: Finish vacuity rules consolidation after Cowork draft or implement minimal
     ledger flags

@@ -1,4 +1,51 @@
 recommendations:
+- id: REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001
+  author: Cowork
+  status: OPEN
+  priority: 5
+  title: F3_COUNT_DEPENDENCY_MAP.md §(c) needs refresh to align with v2.53's hypothesis-shape
+    correction (safe deletion, not necessarily induced-degree-one)
+  recommendation: 'F3_COUNT_DEPENDENCY_MAP.md (filed Cowork 2026-04-26T17:15:00Z)
+    §(b)/B.1 + §(c) used the longest-induced-path argument to argue for global non-root
+    induced-degree-one existence in every nontrivial anchored bucket. Codex v2.53
+    (`AXIOM_FRONTIER.md` lines 39-46 + 68-75) flags this as **possibly too strong**:
+    in a bucket that contains a cycle, every non-root vertex may have induced-degree
+    ≥ 2, but a safe (non-cut) deletion still exists. The decoder needs `PlaquetteGraphAnchoredSafeDeletionExists`,
+    not the stronger degree-one variant. Cowork should refresh §(c) of the dependency
+    map: (a) replace the "longest-induced-path → degree-one leaf" framing with the
+    correct "root-avoiding non-cut/safe-deletion theorem" framing; (b) note that
+    `PlaquetteGraphAnchoredDegreeOneDeletionExists` is sufficient (via v2.53 line
+    1831 bridge composing v2.52 line 1727) but **not** necessary; (c) update the
+    §(b)/B.1 proposed Lean signature from `exists_safe_deletion` (degree-one) to
+    `PlaquetteGraphAnchoredSafeDeletionExists` (the actual Codex predicate at line
+    1805); (d) preserve the longest-induced-path argument as Strategy 1 of 2,
+    applicable to the cycle-free / tree case, with a Strategy 2 note for the
+    non-cut argument needed in the cyclic case.
+
+    '
+  reason: 'The dependency map should reflect the project''s most precise statement
+    of the gap. v2.53''s honesty-preserving separation of the exact and stronger
+    hypotheses is itself a refinement of the original blueprint. Cowork''s map
+    should incorporate the refinement to remain a useful Codex-input.
+
+    '
+  risk_if_ignored: 'Codex may try to formalize the longest-induced-path argument
+    as the unconditional B.1 proof, then discover (correctly) that buckets with
+    cycles do not have induced-degree-one non-root vertices. The dependency map''s
+    "MEDIUM, ~100-200 LOC" estimate would be revised upward at that point. Better
+    to surface the issue now than spend Codex cycles on a too-strong hypothesis.
+
+    '
+  files_affected:
+  - F3_COUNT_DEPENDENCY_MAP.md
+  converts_to_task: COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001 (Cowork action item)
+  validation: 'After refresh, F3_COUNT_DEPENDENCY_MAP.md §(c) discusses both Strategy
+    1 (longest-induced-path → degree-one, applies to acyclic case) and Strategy
+    2 (root-avoiding non-cut, applies to cyclic case). §(b)/B.1 proposed signature
+    references `PlaquetteGraphAnchoredSafeDeletionExists` (the v2.53 def at line
+    1805) rather than the degree-one form.
+
+    '
 - id: REC-COWORK-CLAY-HORIZON-LINK-FROM-README-001
   author: Cowork
   status: RESOLVED

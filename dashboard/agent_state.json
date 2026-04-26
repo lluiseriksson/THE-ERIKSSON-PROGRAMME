@@ -1,10 +1,10 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_safe_deletion_v2_53_partial",
+  "current_phase": "f3_safe_deletion_v2_53_audited",
   "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-AUDIT-CODEX-V2.53-PROGRESS-001",
-  "last_completed_task": "CODEX-F3-SAFE-DELETION-STATEMENT-001 (DONE 2026-04-26T10:28:15Z; v2.53 safe-deletion hypothesis and conditional driver landed)",
+  "next_task_id": "COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001",
+  "last_completed_task": "COWORK-AUDIT-CODEX-V2.53-PROGRESS-001 (AUDIT_PASS 2026-04-26T17:45:00Z; v2.53 safe-deletion separation verified)",
   "last_dispatched_task": "COWORK-AUDIT-CODEX-V2.53-PROGRESS-001",
   "last_dispatched_agent": "Cowork",
   "open_blockers": [
@@ -13,7 +13,8 @@
   "open_recommendations": [
     "REC-COWORK-LONG-CI-LAKE-BUILD-001",
     "REC-NEGCOORDS-RUNTIME-CONFIRMATION-001",
-    "REC-MATHLIB-FORK-PR-AUTH-001"
+    "REC-MATHLIB-FORK-PR-AUTH-001",
+    "REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001"
   ],
   "unconditionality_status": "NOT_ESTABLISHED",
   "claim_policy": "Never claim Clay-level completion without complete formal evidence.",
@@ -89,7 +90,7 @@
     "COWORK-AUDIT-CODEX-FIX-MATHLIB-DRAFTS-001 (priority 3, READY) — audit mathlib draft repair and inactive/cancelled F-series handling",
     "COWORK-AUDIT-JOINT-PLANNER-001 (priority 2, READY) — audit 5%/28%/23-25%/50% planner split",
     "COWORK-F3-DEPENDENCY-MAP-001 (priority 4, READY) — produce F3_COUNT_DEPENDENCY_MAP.md",
-    "COWORK-CLAY-HORIZON-AUDIT-001 (priority 5, READY) — write CLAY_HORIZON.md companion",
+    "COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001 (priority 4, READY) — refresh F3 dependency map after safe-deletion/non-cut correction",
     "COWORK-VACUITY-FLAG-COLUMN-DRAFT-001 (priority 5, READY) — pre-supply vacuity_flag column spec to Codex",
     "COWORK-AUDIT-CODEX-DISPATCHER-TRIGGER-VERIFICATION-001 (priority 4, FUTURE → eligible for promotion now that Codex landed the dispatcher fix at 09:32:17Z)",
     "COWORK-AUDIT-CODEX-VACUITY-CONSOLIDATION-001 (priority 5, FUTURE — auto-promote when Codex marks CODEX-VACUITY-RULES-CONSOLIDATION-001 DONE)"
@@ -109,7 +110,8 @@
     "META-GENERATE-TASKS-001 (2026-04-26T16:45:00Z) — created 3 Cowork READY tasks: F3-DEPENDENCY-MAP-001, CLAY-HORIZON-AUDIT-001, VACUITY-FLAG-COLUMN-DRAFT-001",
     "COWORK-AUDIT-JOINT-PLANNER-001 (2026-04-26T17:00:00Z) — AUDIT_PASS; 4-number planner separation honest; LEDGER consistent",
     "COWORK-F3-DEPENDENCY-MAP-001 (2026-04-26T17:15:00Z) — DELIVERED F3_COUNT_DEPENDENCY_MAP.md; F3-COUNT remains CONDITIONAL_BRIDGE",
-    "COWORK-CLAY-HORIZON-AUDIT-001 (2026-04-26T17:30:00Z) — DELIVERED CLAY_HORIZON.md; OUT-* rows remain BLOCKED; per-row analysis filed"
+    "COWORK-CLAY-HORIZON-AUDIT-001 (2026-04-26T17:30:00Z) — DELIVERED CLAY_HORIZON.md; OUT-* rows remain BLOCKED; per-row analysis filed",
+    "COWORK-AUDIT-CODEX-V2.53-PROGRESS-001 (2026-04-26T17:45:00Z) — AUDIT_PASS; exact safe-deletion hypothesis separated from degree-one sufficiency; F3-COUNT remains CONDITIONAL_BRIDGE"
   ],
   "ledger_status": {
     "AUTOCONTINUE": "INFRA_AUDITED",

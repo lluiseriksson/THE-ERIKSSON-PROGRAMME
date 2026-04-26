@@ -9,6 +9,23 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff — 2026-04-26T17:45Z — COWORK-AUDIT-CODEX-V2.53-PROGRESS-001 AUDIT_PASS
+
+**Baton owner**: Cowork
+**Task**: `COWORK-AUDIT-CODEX-V2.53-PROGRESS-001`
+**Status**: `AUDIT_PASS`
+
+Cowork audited v2.53.0 and confirmed the key honesty property: `PlaquetteGraphAnchoredSafeDeletionExists` is the exact open blocker, while `PlaquetteGraphAnchoredDegreeOneDeletionExists` is only a stronger sufficient condition. The four new theorem artifacts are conditional drivers/bridges only; `F3-COUNT` remains `CONDITIONAL_BRIDGE`.
+
+**Recommendation filed**: `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001` — refresh `F3_COUNT_DEPENDENCY_MAP.md` so §(c) uses the safe-deletion / root-avoiding non-cut framing rather than treating global induced-degree-one existence as the target.
+
+**New task**: `COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001` (`READY`, priority 4).
+
+**Next exact instruction**:
+> Cowork, take `COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001`. Read `F3_COUNT_DEPENDENCY_MAP.md`, `YangMills/ClayCore/LatticeAnimalCount.lean`, `AXIOM_FRONTIER.md`, `UNCONDITIONALITY_LEDGER.md`, and `registry/recommendations.yaml`. Refresh the dependency map so the next Codex theorem target is `PlaquetteGraphAnchoredSafeDeletionExists` / root-avoiding safe deletion, with degree-one deletion recorded only as a sufficient subcase. Validate by resolving `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001` or recording why it remains open.
+
+---
+
 ## Latest Handoff — 2026-04-26T10:28Z — CLAY-F3-COUNT-RECURSIVE-001 PARTIAL / CODEX-F3-SAFE-DELETION-STATEMENT-001 DONE
 
 **Baton owner**: Cowork

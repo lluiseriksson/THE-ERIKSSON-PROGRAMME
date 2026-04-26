@@ -4,6 +4,76 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T17:45:00Z — AUDIT_PASS: COWORK-AUDIT-CODEX-V2.53-PROGRESS-001 (safe-deletion hypothesis separation; conditional one-step driver only; F3-COUNT remains CONDITIONAL_BRIDGE)
+
+**Audit result**: `AUDIT_PASS`. Codex v2.53.0 is exactly the honesty-preserving refinement the dispatch description anticipated. The exact safe-deletion hypothesis is properly separated from the stronger degree-one sufficient condition, only conditional one-step drivers are proven, F3-COUNT stays CONDITIONAL_BRIDGE, and the AXIOM_FRONTIER entry explicitly disclaims Clay-level completion.
+
+### Validation requirements (all met)
+
+| Requirement | Result | Evidence |
+|---|---|---|
+| Grep finds both predicates in `LatticeAnimalCount.lean` | PASS | `def PlaquetteGraphAnchoredSafeDeletionExists` at line 1805; `def PlaquetteGraphAnchoredDegreeOneDeletionExists` at line 1820. Both are independent `Prop` definitions, not conflated. |
+| `AXIOM_FRONTIER.md` has v2.53.0 entry with canonical oracle traces | PASS | `AXIOM_FRONTIER.md:1` `# v2.53.0 — exact safe-deletion hypothesis + degree-one sufficiency bridge for F3/Klarner`. Lines 56–63 pin all 4 closed theorems at `[propext, Classical.choice, Quot.sound]`. |
+| `UNCONDITIONALITY_LEDGER.md` row F3-COUNT still says CONDITIONAL_BRIDGE | PASS | `UNCONDITIONALITY_LEDGER.md:58` row `F3-COUNT … CONDITIONAL_BRIDGE …`. Updated evidence column now references v2.48 + v2.50 + v2.51 + v2.52 + v2.53; honest acknowledgment "global safe-deletion/non-cut theorem itself is not yet proved". |
+| `COWORK_RECOMMENDATIONS.md` audit entry | PASS | This entry. |
+
+### Stop conditions check — both NOT TRIGGERED
+
+| Stop condition | Status | Counter-evidence |
+|---|---|---|
+| v2.53 overclaims full F3-COUNT closure | **NOT TRIGGERED** | `AXIOM_FRONTIER.md:39-46` (Why section): *"This is deliberately not a proof of F3-COUNT. It is an honesty-preserving reduction of ambiguity after v2.52."*; `:65-66`: *"No percentage bar movement. No Clay-level completion claim."*; `:68-75` (What remains section): explicitly enumerates "Prove or refine `PlaquetteGraphAnchoredSafeDeletionExists` itself" + "Iterate the one-step safe-deletion transition into the full anchored word decoder / Klarner BFS-tree count" + "Only after that can `F3-MAYER` and `F3-COMBINED` move." |
+| Exact safe-deletion hypothesis conflated with degree-one sufficient condition | **NOT TRIGGERED** | The two predicates are *independent* `def`s in the Lean source: `PlaquetteGraphAnchoredSafeDeletionExists` (line 1805, ∃ non-root deletion such that residual is in anchored bucket k-1) vs `PlaquetteGraphAnchoredDegreeOneDeletionExists` (line 1820, ∃ non-root member of induced degree 1). The bridge theorem at line 1831 (`plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists`) is one-directional: degree-one ⇒ safe via v2.52; the converse is *not* claimed. AXIOM_FRONTIER explicitly says: *"a global induced-degree-one claim may be too strong for buckets with cycles, whereas the decoder only needs a root-avoiding safe deletion."* |
+
+### Theorem-by-theorem verification
+
+| File:line | Identifier | Kind | Notes |
+|---:|---|---|---|
+| 1805 | `PlaquetteGraphAnchoredSafeDeletionExists` | `def Prop` | The exact recursive hypothesis (∃ non-root z, X.erase z ∈ anchored(k-1)). NOT proven. Names the gap. |
+| 1820 | `PlaquetteGraphAnchoredDegreeOneDeletionExists` | `def Prop` | Stronger sufficient hypothesis (∃ non-root z with induced-degree 1). NOT proven. |
+| 1831 | `plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists` | `theorem` (proven, oracle-clean) | The bridge: degree-one ⇒ safe, via v2.52 line 1727 + 1784. Conditional. |
+| 1847 | `plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion` | `theorem` (proven, oracle-clean) | One-step driver: takes safe-deletion hypothesis as input, produces the recursive transition. Conditional. |
+| 1860 | `PhysicalPlaquetteGraphAnchoredSafeDeletionExists` | `abbrev` | Physical d=4 specialization. |
+| 1866 | `PhysicalPlaquetteGraphAnchoredDegreeOneDeletionExists` | `abbrev` | Physical d=4 specialization. |
+| 1872 | `physicalPlaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists` | `theorem` (proven, oracle-clean) | Physical bridge. Conditional. |
+| 1882 | `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion` | `theorem` (proven, oracle-clean) | Physical conditional one-step driver. |
+
+The 4 closed theorems are pinned at the canonical oracle triple in `AXIOM_FRONTIER.md` lines 56–63. The two `def Prop`s (lines 1805 + 1820) are *not* claimed to be proven — they name the open gap.
+
+### Refinement of F3_COUNT_DEPENDENCY_MAP.md §(c) implied by v2.53
+
+`F3_COUNT_DEPENDENCY_MAP.md` (filed by Cowork at 17:15Z) §(b)/B.1 + §(c) used the longest-induced-path argument to argue for *degree-one* leaf existence. v2.53's "What remains" section flags this as **possibly too strong**: in a bucket with cycles every vertex has induced-degree ≥ 2, so a global degree-one existence claim may fail, but a *safe* (non-cut) deletion still exists. v2.53 has the correct framing: the decoder needs `PlaquetteGraphAnchoredSafeDeletionExists`, not the stronger degree-one variant. This is an **honest correction to Cowork's blueprint**, not an overclaim by Codex.
+
+Filing `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001` to refresh `F3_COUNT_DEPENDENCY_MAP.md` §(c) with the v2.53 hypothesis-shape: the minimum-strength hypothesis is **safe deletion** (non-cut, non-root), and the longest-induced-path argument is *one* sufficient path to it (when the bucket has no cycles, the degree-1 leaf exists; otherwise a different non-cut argument is needed).
+
+### Honesty preservation
+
+- **F3-COUNT row**: unchanged at `CONDITIONAL_BRIDGE` (`UNCONDITIONALITY_LEDGER.md:58`).
+- **F3-MAYER, F3-COMBINED rows**: still `BLOCKED` (gated as before).
+- **dashboard `unconditionality_status`**: still `NOT_ESTABLISHED`.
+- **README badges**: unchanged at 5% / 28% / 50%.
+- **`registry/progress_metrics.yaml` percentages**: unchanged.
+- **F3-COUNT component contribution**: still 5% (out of 20% weight). The hypothesis predicate is named but not proven — proper bookkeeping.
+
+### Recommendation added
+
+1. `REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001` (priority 5, OPEN) — refresh `F3_COUNT_DEPENDENCY_MAP.md` §(c) to align with v2.53's hypothesis-shape: the decoder needs **safe deletion** (root-avoiding non-cut), not necessarily induced-degree-one. Cowork action item.
+
+### Honesty scoreboard
+
+This is the **6th non-vacuous Clay-reduction Cowork audit pass** of the session. v2.42 → v2.43 → v2.44 → v2.48 → v2.50 → v2.51 → v2.52 → v2.53: each commit narrows the remaining hard step without overclaiming. v2.53 specifically:
+
+- Reframes the v2.52 "degree-one local subcase" win into the *correct* hypothesis shape for the decoder.
+- Names the actual minimum-strength gap (`PlaquetteGraphAnchoredSafeDeletionExists`) so the next Codex commit has a precise unconditional target rather than a possibly-too-strong target.
+- Adds 4 new oracle-clean theorems (bridge + driver + 2 physical specializations) without moving any LEDGER row.
+
+### Verdict
+
+**AUDIT_PASS.** All validation requirements satisfied; both stop conditions NOT TRIGGERED. The hypothesis separation is the project's most precise statement of the F3-COUNT gap to date.
+
+25th milestone-event of the session: 14 audit_pass + 2 PARTIAL + 2 ESCALATE + 3 BLOCKED + 2 META + 2 deliverables.
+
+---
+
 ## 2026-04-26T17:30:00Z — DELIVERED: COWORK-CLAY-HORIZON-AUDIT-001 — CLAY_HORIZON.md filed
 
 **Task verdict**: `DONE` (honesty companion deliverable, not an audit). The deliverable `CLAY_HORIZON.md` (root of repo) is a reviewer-publishable companion that distinguishes the *lattice mass gap* target from *Clay-as-stated* and gives a per-row blocker + distance + % contribution table for the three BLOCKED OUT-* entries.
