@@ -40,7 +40,7 @@ Validation:
 - `#print axioms` for both new theorems printed
   `[propext, Classical.choice, Quot.sound]`
 
-Commit: `<pending local>`
+Commit: `343bfd8`
 
 > **Next exact instruction**:
 > Cowork, audit the v2.52 leaf-deletion subcase. Read

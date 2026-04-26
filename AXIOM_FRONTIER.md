@@ -10,7 +10,7 @@ Added the local leaf-deletion subcase in
     plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_preconnected_of_induced_degree_one
     plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_induced_degree_one
 
-Commit: `<pending local>`.
+Commit: `343bfd8`.
 
 If `X` is an anchored preconnected bucket and `z ∈ X` has degree one in the
 induced bucket graph, Lean now proves that deleting `z` preserves
