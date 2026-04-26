@@ -45,7 +45,7 @@ passed. Pinned traces:
 
 No `sorry`. No new project axioms. No Clay-level completion claim.
 
-Implementation commit: `<TBD-after-commit>`.
+Implementation commit: `e17f316`.
 
 ## What remains
 
