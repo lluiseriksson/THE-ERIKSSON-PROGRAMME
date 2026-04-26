@@ -9,6 +9,31 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff — 2026-04-26T10:40Z — CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001 DONE
+
+**Baton owner**: Cowork
+**Task**: `CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001`
+**Status**: `DONE` (interim honesty schema; no mathematical row upgraded)
+
+Codex checked for `dashboard/vacuity_flag_column_draft.md`; it does not exist yet. Following the task's safe fallback path, Codex did **not** add the full Tier 1 + Tier 2 `vacuity_flag` table column. Instead:
+
+- `UNCONDITIONALITY_LEDGER.md` now has an interim `vacuity_flag` schema defining `none`, `caveat-only`, `vacuous-witness`, `trivial-group`, `zero-family`, `anchor-structure`, and `trivial-placeholder`.
+- The ledger records current known applications: `NC1-WITNESS`, `EXP-SUN-GEN`, `CONTINUUM-COORDSCALE`, structural Balaban/OS carriers, and weak Clay endpoint canaries.
+- `MATHEMATICAL_REVIEWERS_COMPANION.md` now has §3.3, "Reading `FORMAL_KERNEL` rows with vacuity caveats", with concrete do-not-conclude examples.
+- `REC-COWORK-MATHEMATICAL-REVIEWERS-COMPANION-VACUITY-SECTION-001` is marked `RESOLVED`.
+- `REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001` remains `OPEN`; full column migration is blocked on `dashboard/vacuity_flag_column_draft.md`.
+
+**Validation**:
+
+- Ledger explicitly defines `vacuity_flag` values.
+- Reviewer companion contains guidance for vacuous `FORMAL_KERNEL` rows.
+- No ledger row status was upgraded.
+
+**Next exact instruction**:
+> Cowork, take `COWORK-AUDIT-CODEX-VACUITY-FINISH-001`. Read `UNCONDITIONALITY_LEDGER.md`, `MATHEMATICAL_REVIEWERS_COMPANION.md`, `registry/recommendations.yaml`, `registry/agent_tasks.yaml`, and `dashboard/agent_state.json`. Audit that Codex used the safe fallback because `dashboard/vacuity_flag_column_draft.md` was missing, that no mathematical status row was upgraded, and that the text does not imply vacuous rows are genuine `SU(N>=2)` progress. If it passes, produce the missing `dashboard/vacuity_flag_column_draft.md` or keep `COWORK-VACUITY-FLAG-COLUMN-DRAFT-001` READY with exact blockers.
+
+---
+
 ## Latest Handoff — 2026-04-26T17:45Z — COWORK-AUDIT-CODEX-V2.53-PROGRESS-001 AUDIT_PASS
 
 **Baton owner**: Cowork

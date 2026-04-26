@@ -112,6 +112,40 @@ circle).
 The first physically non-trivial Clay-grade witness still requires
 `N_c ≥ 2`. That is the open work.
 
+## 3.3 Reading `FORMAL_KERNEL` rows with vacuity caveats
+
+`FORMAL_KERNEL` means Lean has verified the stated artifact without
+project-specific assumptions.  It does **not** automatically mean the artifact
+has the physical or representation-theoretic content an external reader may
+expect from its informal name.  The project therefore tracks a separate
+`vacuity_flag` schema in `UNCONDITIONALITY_LEDGER.md`.
+
+The rule of thumb is:
+
+```
+FORMAL_KERNEL + vacuity caveat = real Lean theorem, limited mathematical payload.
+```
+
+Current examples:
+
+- `NC1-WITNESS`: formally real for `N_c = 1`, but `SU(1)` is the trivial
+  group.  Do not read it as evidence for `SU(N)` Yang-Mills with `N >= 2`.
+- `EXP-SUN-GEN`: formally retires generator-data axioms in the current
+  experimental API, but the witness is the zero matrix family.  Do not read it
+  as a Pauli/Gell-Mann/general `su(N)` generator basis.
+- Weak Clay endpoint canaries: useful audit tripwires, but the endpoint
+  `∃ m_phys, 0 < m_phys` is trivially inhabited.
+- Structural Balaban / OS-style carriers described in `KNOWN_ISSUES.md`:
+  useful shape control, but carrier inhabitation is not the analytic Wilson,
+  Gibbs, RG, or OS reconstruction theorem itself.
+- `CONTINUUM-COORDSCALE`: explicitly `INVALID-AS-CONTINUUM`; do not count it
+  as progress toward the continuum limit.
+
+When citing this repository externally, cite both the formal status and the
+vacuity flag/caveat.  For example: "oracle-clean for the degenerate `SU(1)`
+case" is accurate; "unconditional Yang-Mills mass gap for physical `SU(N)`" is
+not.
+
 ## 4. The route to the open `N_c ≥ 2` witness — F3 frontier
 
 The strategy is the standard **high-temperature cluster expansion**

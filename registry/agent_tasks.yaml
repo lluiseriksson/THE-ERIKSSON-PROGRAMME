@@ -2246,33 +2246,33 @@ tasks:
   - 'Both predicates present and separated: `PlaquetteGraphAnchoredSafeDeletionExists`
     at LatticeAnimalCount.lean:1805 and `PlaquetteGraphAnchoredDegreeOneDeletionExists`
     at :1820.'
-  - 'AXIOM_FRONTIER.md v2.53.0 pins all four new theorem traces at [propext,
-    Classical.choice, Quot.sound].'
-  - 'UNCONDITIONALITY_LEDGER.md row F3-COUNT remains CONDITIONAL_BRIDGE and says
-    the global safe-deletion/non-cut theorem is not yet proved.'
-  - 'No stop condition triggered: v2.53 does not claim full F3-COUNT closure and
-    does not conflate exact safe deletion with the degree-one sufficient condition.'
-  - 'Theorem-by-theorem verification: 8 new entries at LatticeAnimalCount.lean
-    lines 1805 (def Prop, gap), 1820 (def Prop, stronger sufficient), 1831 (theorem
-    bridge, oracle-clean), 1847 (theorem one-step driver, oracle-clean), 1860
-    (abbrev physical), 1866 (abbrev physical), 1872 (theorem physical bridge,
-    oracle-clean), 1882 (theorem physical one-step driver, oracle-clean). Bridge
-    at line 1831 is one-directional only; converse not claimed.'
-  - 'AXIOM_FRONTIER.md:39-46 (Why) + :65-66 (Oracle) + :68-75 (What remains)
-    explicitly disclaim Clay-level completion, percentage movement, and F3-COUNT
-    closure; "What remains" enumerates the still-open targets in the right order.'
-  - 'COWORK_RECOMMENDATIONS.md 17:45Z audit entry written with full theorem-by-theorem
-    table and stop-condition counter-evidence.'
+  - AXIOM_FRONTIER.md v2.53.0 pins all four new theorem traces at [propext, Classical.choice,
+    Quot.sound].
+  - UNCONDITIONALITY_LEDGER.md row F3-COUNT remains CONDITIONAL_BRIDGE and says the
+    global safe-deletion/non-cut theorem is not yet proved.
+  - 'No stop condition triggered: v2.53 does not claim full F3-COUNT closure and does
+    not conflate exact safe deletion with the degree-one sufficient condition.'
+  - 'Theorem-by-theorem verification: 8 new entries at LatticeAnimalCount.lean lines
+    1805 (def Prop, gap), 1820 (def Prop, stronger sufficient), 1831 (theorem bridge,
+    oracle-clean), 1847 (theorem one-step driver, oracle-clean), 1860 (abbrev physical),
+    1866 (abbrev physical), 1872 (theorem physical bridge, oracle-clean), 1882 (theorem
+    physical one-step driver, oracle-clean). Bridge at line 1831 is one-directional
+    only; converse not claimed.'
+  - AXIOM_FRONTIER.md:39-46 (Why) + :65-66 (Oracle) + :68-75 (What remains) explicitly
+    disclaim Clay-level completion, percentage movement, and F3-COUNT closure; "What
+    remains" enumerates the still-open targets in the right order.
+  - COWORK_RECOMMENDATIONS.md 17:45Z audit entry written with full theorem-by-theorem
+    table and stop-condition counter-evidence.
   recommendations_added:
-  - 'REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001 (priority 5, OPEN): refresh
-    F3_COUNT_DEPENDENCY_MAP.md §(c) to align with v2.53''s hypothesis-shape correction
-    — the decoder needs `PlaquetteGraphAnchoredSafeDeletionExists`, not necessarily
-    induced-degree-one. v2.53 is itself an honest refinement of the Cowork-authored
-    blueprint: Codex correctly flagged that buckets with cycles may have no
-    non-root induced-degree-one vertex, but a safe (non-cut) deletion still exists.'
-  honesty_scoreboard: '6th non-vacuous Clay-reduction Cowork audit pass of the
-    session (v2.42 → v2.43 → v2.44 → v2.48 → v2.50 → v2.51 → v2.52 → v2.53).
-    Each commit narrows the remaining hard step without overclaiming.'
+  - 'REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001 (priority 5, OPEN): refresh F3_COUNT_DEPENDENCY_MAP.md
+    §(c) to align with v2.53''s hypothesis-shape correction — the decoder needs `PlaquetteGraphAnchoredSafeDeletionExists`,
+    not necessarily induced-degree-one. v2.53 is itself an honest refinement of the
+    Cowork-authored blueprint: Codex correctly flagged that buckets with cycles may
+    have no non-root induced-degree-one vertex, but a safe (non-cut) deletion still
+    exists.'
+  honesty_scoreboard: 6th non-vacuous Clay-reduction Cowork audit pass of the session
+    (v2.42 → v2.43 → v2.44 → v2.48 → v2.50 → v2.51 → v2.52 → v2.53). Each commit narrows
+    the remaining hard step without overclaiming.
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - AXIOM_FRONTIER.md
@@ -2307,18 +2307,18 @@ tasks:
 - id: COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001
   title: 'Cowork: refresh F3_COUNT_DEPENDENCY_MAP.md after v2.53 safe-deletion correction'
   owner: Cowork
-  status: READY
+  status: IN_PROGRESS
   priority: 4
   created_at: '2026-04-26T17:45:00Z'
-  updated_at: '2026-04-26T17:45:00Z'
+  updated_at: '2026-04-26T10:35:21Z'
   required_files:
   - F3_COUNT_DEPENDENCY_MAP.md
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - AXIOM_FRONTIER.md
   - UNCONDITIONALITY_LEDGER.md
   - registry/recommendations.yaml
-  objective: Refresh F3_COUNT_DEPENDENCY_MAP.md §(b)/B.1 and §(c) so it reflects
-    v2.53's hypothesis-shape correction. The decoder needs `PlaquetteGraphAnchoredSafeDeletionExists`
+  objective: Refresh F3_COUNT_DEPENDENCY_MAP.md §(b)/B.1 and §(c) so it reflects v2.53's
+    hypothesis-shape correction. The decoder needs `PlaquetteGraphAnchoredSafeDeletionExists`
     (root-avoiding safe deletion / non-cut framing), while induced-degree-one deletion
     is only a sufficient condition via v2.53.
   validation:
@@ -2335,14 +2335,19 @@ tasks:
   next_agent: Codex
   notes:
   - Created from Cowork audit recommendation REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001.
+  - Dispatched to Cowork at 2026-04-26T10:35:21Z
+  dispatched_at: '2026-04-26T10:35:21Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
 - id: CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001
   title: Finish vacuity rules consolidation after Cowork draft or implement minimal
     ledger flags
   owner: Codex
-  status: READY
+  status: DONE
   priority: 4
   created_at: '2026-04-26T12:35:00Z'
-  updated_at: '2026-04-26T12:35:00Z'
+  updated_at: '2026-04-26T10:40:00Z'
+  completed_at: '2026-04-26T10:40:00Z'
   required_files:
   - UNCONDITIONALITY_LEDGER.md
   - KNOWN_ISSUES.md
@@ -2370,6 +2375,46 @@ tasks:
   - Generated by Codex from META-GENERATE-TASKS-001 on 2026-04-26.
   - Complements existing CODEX-VACUITY-RULES-CONSOLIDATION-001 without deleting it;
     dispatcher can pick whichever is actionable first.
+  - Dispatched to Codex at 2026-04-26T10:34:59Z
+  - 'DONE by Codex at 2026-04-26T10:40:00Z: `dashboard/vacuity_flag_column_draft.md`
+    was missing, so Codex implemented the safe fallback: interim `vacuity_flag`
+    schema in UNCONDITIONALITY_LEDGER.md plus reviewer-facing guidance in MATHEMATICAL_REVIEWERS_COMPANION.md
+    §3.3. No mathematical row status was upgraded. Full Tier 1 + Tier 2 column remains
+    blocked on Cowork draft.'
+  dispatched_at: '2026-04-26T10:34:59Z'
+  dispatched_to: Codex
+  dispatch_count: 1
+- id: COWORK-AUDIT-CODEX-VACUITY-FINISH-001
+  title: 'Cowork: audit Codex interim vacuity flag schema and reviewer guidance'
+  owner: Cowork
+  status: READY
+  priority: 4
+  created_at: '2026-04-26T10:40:00Z'
+  updated_at: '2026-04-26T10:40:00Z'
+  required_files:
+  - UNCONDITIONALITY_LEDGER.md
+  - MATHEMATICAL_REVIEWERS_COMPANION.md
+  - registry/recommendations.yaml
+  - registry/agent_tasks.yaml
+  - dashboard/agent_state.json
+  objective: Audit CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001. Confirm that Codex
+    used the safe fallback because `dashboard/vacuity_flag_column_draft.md` was missing,
+    defined the interim `vacuity_flag` values, added reviewer guidance, did not upgrade
+    any mathematical status row, and left the full LEDGER column work blocked on the
+    Cowork draft.
+  validation:
+  - UNCONDITIONALITY_LEDGER.md contains "Vacuity flags (interim schema)"
+  - MATHEMATICAL_REVIEWERS_COMPANION.md contains "Reading `FORMAL_KERNEL` rows with
+    vacuity caveats"
+  - registry/recommendations.yaml keeps REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001
+    OPEN or otherwise explicitly blocked on the missing draft
+  - COWORK_RECOMMENDATIONS.md gains an audit entry
+  stop_if:
+  - Any ledger row status changed as part of the vacuity task
+  - The text implies vacuous rows are genuine SU(N>=2) progress
+  next_agent: Codex
+  notes:
+  - Created by Codex after safe fallback implementation.
 - id: CODEX-PLANNER-LEDGER-MATURE-001
   title: Mature JOINT-PLANNER ledger/dashboard status after Cowork audit pass
   owner: Codex

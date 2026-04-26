@@ -35,6 +35,45 @@ Honesty rule (per AGENTS.md §8):
 - BLOCKED: cannot progress without a theorem, definition, or decision
 - INVALID: must not be used
 
+## Vacuity flags (interim schema)
+
+`vacuity_flag` is an honesty annotation, not a proof status.  It records
+whether a formally verified row is mathematically low-content, degenerate, or
+only a structural carrier.  It must never upgrade a row and must never be used
+to imply progress for physical `SU(N)` Yang-Mills with `N >= 2`.
+
+Intended values:
+
+- none: no known vacuity caveat.
+- caveat-only: genuine formal content exists, but reviewers must read a caveat
+  before interpreting the row externally.
+- vacuous-witness: the formal witness exists because the target proposition is
+  weak, empty, or trivially inhabitable.
+- trivial-group: the witness uses `SU(1)` or another degenerate group case and
+  does not transfer to `SU(N)` for `N >= 2`.
+- zero-family: the witness uses the zero object/family to satisfy shape
+  predicates, without supplying the intended nonzero spanning/basis data.
+- anchor-structure: the row proves scaffolding or carrier shape, not the
+  analytic content that external readers may expect.
+- trivial-placeholder: the row is a placeholder or bookkeeping endpoint whose
+  inhabitant should not be described as mathematical progress.
+
+Current known applications before the full column migration:
+
+| Row | Intended vacuity_flag | Caveat |
+|---|---|---|
+| NC1-WITNESS | trivial-group | `ClayYangMillsMassGap 1` is oracle-clean but uses `SU(1) = {1}`; it is not evidence for `N_c >= 2`. |
+| EXP-SUN-GEN | zero-family | The retired generator data uses `generatorMatrix := 0`; it is not a Pauli/Gell-Mann/general `su(N)` generator basis. |
+| CONTINUUM-COORDSCALE | trivial-placeholder | Marked `INVALID-AS-CONTINUUM`; it must not be counted as continuum-limit progress. |
+| Balaban / OS-style structural carriers mentioned in `KNOWN_ISSUES.md` §9 | anchor-structure | Carrier inhabitation does not supply the analytic Wilson/Gibbs/Balaban content. |
+| Clay weak endpoint canaries | vacuous-witness | `ClayYangMillsTheorem := ∃ m_phys, 0 < m_phys` is trivially inhabited. |
+
+Implementation note (2026-04-26): the full Tier 1 + Tier 2 table column is
+blocked on `dashboard/vacuity_flag_column_draft.md`, which has not yet been
+delivered.  Until that draft exists, this schema is the authoritative interim
+reader guidance.  The companion reviewer explanation lives in
+`MATHEMATICAL_REVIEWERS_COMPANION.md`.
+
 ## Ledger
 
 ### Tier 0 — Programme-level

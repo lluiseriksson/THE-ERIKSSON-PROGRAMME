@@ -1,12 +1,12 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_safe_deletion_v2_53_audited",
+  "current_phase": "vacuity_interim_schema_filed",
   "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001",
-  "last_completed_task": "COWORK-AUDIT-CODEX-V2.53-PROGRESS-001 (AUDIT_PASS 2026-04-26T17:45:00Z; v2.53 safe-deletion separation verified)",
-  "last_dispatched_task": "COWORK-AUDIT-CODEX-V2.53-PROGRESS-001",
-  "last_dispatched_agent": "Cowork",
+  "next_task_id": "COWORK-AUDIT-CODEX-VACUITY-FINISH-001",
+  "last_completed_task": "CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001 (DONE 2026-04-26T10:40:00Z; interim vacuity_flag schema and reviewer guidance filed)",
+  "last_dispatched_task": "CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001",
+  "last_dispatched_agent": "Codex",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists"
   ],
@@ -14,7 +14,8 @@
     "REC-COWORK-LONG-CI-LAKE-BUILD-001",
     "REC-NEGCOORDS-RUNTIME-CONFIRMATION-001",
     "REC-MATHLIB-FORK-PR-AUTH-001",
-    "REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001"
+    "REC-COWORK-F3-DEPENDENCY-MAP-V2.53-REFRESH-001",
+    "REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001"
   ],
   "unconditionality_status": "NOT_ESTABLISHED",
   "claim_policy": "Never claim Clay-level completion without complete formal evidence.",
@@ -22,11 +23,12 @@
   "resolved_recommendations": [
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001",
-    "REC-COWORK-CLAY-HORIZON-LINK-FROM-README-001"
+    "REC-COWORK-CLAY-HORIZON-LINK-FROM-README-001",
+    "REC-COWORK-MATHEMATICAL-REVIEWERS-COMPANION-VACUITY-SECTION-001"
   ],
-  "last_dispatch_at": "2026-04-26T10:30:12Z",
-  "last_completed_at": "2026-04-26T09:32:17Z",
-  "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount passed for v2.53 safe-deletion hypothesis and conditional driver",
+  "last_dispatch_at": "2026-04-26T10:35:21Z",
+  "last_completed_at": "2026-04-26T10:40:00Z",
+  "latest_validation_artifact": "UNCONDITIONALITY_LEDGER.md defines interim vacuity_flag values; MATHEMATICAL_REVIEWERS_COMPANION.md §3.3 explains vacuous FORMAL_KERNEL rows; no math status rows upgraded",
   "joint_planner": {
     "status": "PENDING_COWORK_AUDIT",
     "source": "registry/progress_metrics.yaml",
@@ -96,7 +98,7 @@
     "COWORK-AUDIT-CODEX-VACUITY-CONSOLIDATION-001 (priority 5, FUTURE — auto-promote when Codex marks CODEX-VACUITY-RULES-CONSOLIDATION-001 DONE)"
   ],
   "active_hygiene_tasks": [
-    "CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001 (READY)",
+    "COWORK-AUDIT-CODEX-VACUITY-FINISH-001 (READY) — audit interim vacuity_flag schema and reviewer guidance",
     "CODEX-PLANNER-LEDGER-MATURE-001 (READY)",
     "CODEX-CLEANUP-ORPHAN-A-001 (DONE 2026-04-26T08:37:47Z; commit pending at registry update time)"
   ],
@@ -111,7 +113,8 @@
     "COWORK-AUDIT-JOINT-PLANNER-001 (2026-04-26T17:00:00Z) — AUDIT_PASS; 4-number planner separation honest; LEDGER consistent",
     "COWORK-F3-DEPENDENCY-MAP-001 (2026-04-26T17:15:00Z) — DELIVERED F3_COUNT_DEPENDENCY_MAP.md; F3-COUNT remains CONDITIONAL_BRIDGE",
     "COWORK-CLAY-HORIZON-AUDIT-001 (2026-04-26T17:30:00Z) — DELIVERED CLAY_HORIZON.md; OUT-* rows remain BLOCKED; per-row analysis filed",
-    "COWORK-AUDIT-CODEX-V2.53-PROGRESS-001 (2026-04-26T17:45:00Z) — AUDIT_PASS; exact safe-deletion hypothesis separated from degree-one sufficiency; F3-COUNT remains CONDITIONAL_BRIDGE"
+    "COWORK-AUDIT-CODEX-V2.53-PROGRESS-001 (2026-04-26T17:45:00Z) — AUDIT_PASS; exact safe-deletion hypothesis separated from degree-one sufficiency; F3-COUNT remains CONDITIONAL_BRIDGE",
+    "CODEX-VACUITY-RULES-CONSOLIDATION-FINISH-001 (2026-04-26T10:40:00Z) — DONE; interim vacuity_flag schema + reviewer guidance filed; full column blocked on Cowork draft"
   ],
   "ledger_status": {
     "AUTOCONTINUE": "INFRA_AUDITED",
@@ -133,7 +136,8 @@
     "EXP-BD-HY-GR": "EXPERIMENTAL (5 axioms, hard Mathlib gaps)",
     "OUT-CONTINUUM": "BLOCKED (research-level, 5+ year horizon)",
     "OUT-OS-WIGHTMAN": "BLOCKED (Mathlib gauge-theory infra missing)",
-    "OUT-STRONG-COUPLING": "BLOCKED (cluster expansion diverges)"
+    "OUT-STRONG-COUPLING": "BLOCKED (cluster expansion diverges)",
+    "VACUITY-FLAGS": "INTERIM_SCHEMA (full Tier 1 + Tier 2 column blocked on dashboard/vacuity_flag_column_draft.md)"
   },
   "autocontinue_policy": {
     "primary_agent": "Codex",
