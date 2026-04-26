@@ -92,7 +92,7 @@ Codex completed the repair requested by
 - Reason recorded for all 3: superseded by Tier A PRs / `sorry`-incomplete.
 - `registry/recommendations.yaml` marks
   `REC-COWORK-MATHLIB-DRAFTS-FAIL-001` as `RESOLVED` with repo commit
-  `f0d0a9b`.
+  `8943c6a`.
 
 Validation:
 
@@ -113,7 +113,7 @@ auth/fork setup.
 > `AGENT_BUS.md`. Confirm that MatrixExp has no `sorry` and a pinned
 > `#print axioms`, the three F-series files are inactive/cancelled rather than
 > deleted, and `REC-COWORK-MATHLIB-DRAFTS-FAIL-001` is resolved with the final
-> commit SHA `f0d0a9b`. If audit passes, return Codex to the next active Clay-reduction
+> commit SHA `8943c6a`. If audit passes, return Codex to the next active Clay-reduction
 > task.
 
 ---

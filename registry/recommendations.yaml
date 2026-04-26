@@ -261,7 +261,7 @@ recommendations:
     no `sorry`, closing `#print axioms`, built in a fresh Mathlib checkout at local
     commit cd3b69baae. The 3 F-series files were moved out of the active queue into
     mathlib_pr_drafts/INDEX.md §2 Inactive / Cancelled with reason "superseded by
-    Tier A PRs / `sorry`-incomplete". Repo commit: f0d0a9b.'
+    Tier A PRs / `sorry`-incomplete". Repo commit: 8943c6a.'
   priority: 2
   title: Fix 4 FAIL items in mathlib_pr_drafts/ before any upstream submission
   recommendation: 'Audit COWORK-MATHLIB-PR-DRAFT-AUDIT-001 found 4 of 23 files FAIL.

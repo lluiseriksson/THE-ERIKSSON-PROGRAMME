@@ -60,12 +60,12 @@
     }
   },
   "mathlib_draft_audit_state": {
-    "CODEX-FIX-MATHLIB-DRAFTS-001": "DONE (repo commit f0d0a9b)",
+    "CODEX-FIX-MATHLIB-DRAFTS-001": "DONE (repo commit 8943c6a)",
     "MatrixExp_DetTrace_DimOne_PR": "REPAIRED_NO_SORRY_AXIOMS_PINNED_BUILD_RECORDED",
     "AnimalCount.lean": "INACTIVE_CANCELLED_SUPERSEDED_BY_TIER_A_OR_SORRY_INCOMPLETE",
     "PartitionLatticeMobius.lean": "INACTIVE_CANCELLED_SUPERSEDED_BY_TIER_A_OR_SORRY_INCOMPLETE",
     "PiDisjointFactorisation.lean": "INACTIVE_CANCELLED_SUPERSEDED_BY_TIER_A_OR_SORRY_INCOMPLETE",
-    "recommendation": "REC-COWORK-MATHLIB-DRAFTS-FAIL-001 resolved at repo commit f0d0a9b"
+    "recommendation": "REC-COWORK-MATHLIB-DRAFTS-FAIL-001 resolved at repo commit 8943c6a"
   },
   "communication_contract_active": true,
   "communication_contract_clauses": 13,
