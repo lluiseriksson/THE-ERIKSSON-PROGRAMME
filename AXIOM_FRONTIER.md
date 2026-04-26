@@ -42,7 +42,7 @@ passed. Pinned traces:
 
 No `sorry`. No new project axioms. No Clay-level completion claim.
 
-Commit: `027bf7d`.
+Implementation commit: `2ea7a2a`.
 
 ## What remains
 
