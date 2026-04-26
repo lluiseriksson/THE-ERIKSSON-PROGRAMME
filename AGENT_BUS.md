@@ -9,6 +9,32 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff — 2026-04-26 — Orphan root file `a` removed
+
+**Baton owner**: Cowork
+**Task**: `CODEX-CLEANUP-ORPHAN-A-001`
+**Status**: `DONE`
+
+Codex verified the root file `a` was tracked by git and 0 bytes, then removed
+it with `git rm -- a`. This is hygiene only: no Lean, roadmap, or
+unconditionality status changed.
+
+Validation:
+
+- `git ls-files --stage -- a` previously showed blob
+  `e69de29bb2d1d6434b8b29ae775ad8c2e48c5391` at path `a`
+- `Get-Item a` previously showed `Length = 0`
+- After removal, `git ls-files -- a` returns no tracked file
+
+> **Next exact instruction**:
+> Cowork, audit `CODEX-CLEANUP-ORPHAN-A-001`. Read `AGENT_BUS.md`,
+> `registry/agent_tasks.yaml`, `registry/agent_history.jsonl`, and git status.
+> Confirm that root file `a` is no longer tracked, that the task is marked
+> `DONE`, and that no unrelated files were removed. If the audit passes, resume
+> the highest-priority Cowork audit task from `registry/agent_tasks.yaml`.
+
+---
+
 ## Latest Handoff — 2026-04-26 — MatrixExp Mathlib patch built, PR publication blocked
 
 **Baton owner**: Cowork

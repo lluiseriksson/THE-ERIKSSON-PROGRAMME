@@ -566,10 +566,10 @@ tasks:
 - id: COWORK-AUDIT-CLAY-MATHLIB-PR-LANDING-001
   title: 'Cowork: audit MatrixExp Mathlib PR landing blocker'
   owner: Cowork
-  status: READY
+  status: IN_PROGRESS
   priority: 3
   created_at: '2026-04-26T08:26:40Z'
-  updated_at: '2026-04-26T08:32:00Z'
+  updated_at: '2026-04-26T08:37:27Z'
   required_files:
   - MATHLIB_PRS_OVERVIEW.md
   - mathlib_pr_drafts/INDEX.md
@@ -599,6 +599,10 @@ tasks:
   - Dispatched to Cowork at 2026-04-26T08:30:17Z
   - Reset to READY by Codex at 2026-04-26T08:32:00Z; previous dispatch was a local
     selector validation, not an actual GUI handoff.
+  - Dispatched to Cowork at 2026-04-26T08:37:27Z
+  dispatched_at: '2026-04-26T08:37:27Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
 - id: COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001
   title: 'Cowork: verify EXPERIMENTAL_AXIOMS_AUDIT.md against current YangMills/Experimental/
     tree'
@@ -807,20 +811,20 @@ tasks:
     target. If MatrixExp cannot be repaired today, REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001
     fires automatically: first submission becomes LogTwoLowerBound_PR.lean.'
   - Dispatched to Codex at 2026-04-26T07:12:57Z
-  - 'PARTIAL by Codex at 2026-04-26T08:34:00Z: MatrixExp_DetTrace_DimOne_PR.lean
-    repaired and built in Mathlib checkout at local commit cd3b69baae. Remaining:
-    move AnimalCount.lean, PartitionLatticeMobius.lean, and PiDisjointFactorisation.lean
-    into an explicit inactive/cancelled section of INDEX.md.'
+  - 'PARTIAL by Codex at 2026-04-26T08:34:00Z: MatrixExp_DetTrace_DimOne_PR.lean repaired
+    and built in Mathlib checkout at local commit cd3b69baae. Remaining: move AnimalCount.lean,
+    PartitionLatticeMobius.lean, and PiDisjointFactorisation.lean into an explicit
+    inactive/cancelled section of INDEX.md.'
   dispatched_at: '2026-04-26T07:12:57Z'
   dispatched_to: Codex
   dispatch_count: 1
 - id: CODEX-CLEANUP-ORPHAN-A-001
   title: 'Codex: git rm orphan empty file `a` at repo root'
   owner: Codex
-  status: READY
+  status: DONE
   priority: 8
   created_at: '2026-04-26T08:30:00Z'
-  updated_at: '2026-04-26T08:30:00Z'
+  updated_at: '2026-04-26T08:37:47Z'
   required_files:
   - a
   objective: 'A 0-byte file named `a` exists at repo root. It is residue from an accidental
@@ -839,6 +843,12 @@ tasks:
   next_agent: Cowork
   notes:
   - Long-pending hygiene item from Cowork session 2026-04-26T05:00:00Z.
+  - Dispatched to Codex at 2026-04-26T08:37:25Z
+  - DONE by Codex at 2026-04-26T08:37:47Z; verified `a` was tracked and 0 bytes,
+    then removed with `git rm -- a`. Commit SHA to be recorded after commit.
+  dispatched_at: '2026-04-26T08:37:25Z'
+  dispatched_to: Codex
+  dispatch_count: 1
 - id: MATHLIB-OPEN-PR-001
   title: Open Mathlib PR for det_exp_eq_exp_trace_fin_one after fork/auth setup
   owner: Codex

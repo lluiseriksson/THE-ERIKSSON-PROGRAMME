@@ -1,12 +1,12 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "mathlib_matrixexp_patch_built_pr_blocked",
+  "current_phase": "repo_hygiene_orphan_a_removed",
   "current_baton_owner": "Cowork",
   "next_task_id": "COWORK-AUDIT-CLAY-MATHLIB-PR-LANDING-001",
   "last_completed_task": "CLAY-EXP-RETIRE-7-001",
-  "last_dispatched_task": "CLAY-MATHLIB-PR-LANDING-001",
-  "last_dispatched_agent": "Codex",
+  "last_dispatched_task": "COWORK-AUDIT-CLAY-MATHLIB-PR-LANDING-001",
+  "last_dispatched_agent": "Cowork",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists"
   ],
@@ -22,8 +22,8 @@
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001"
   ],
-  "last_dispatch_at": "2026-04-26T08:06:42Z",
-  "latest_validation_artifact": "Mathlib checkout C:\\Users\\lluis\\Downloads\\mathlib4: lake build Mathlib.Analysis.Normed.Algebra.MatrixExponential; full lake build; local commit cd3b69baae",
+  "last_dispatch_at": "2026-04-26T08:37:27Z",
+  "latest_validation_artifact": "git rm -- a; git ls-files -- a returns no tracked root file",
   "audit_state": {
     "in_repo_dispatcher": "AUDIT_PASS",
     "communication_contract": "AUDIT_PASS",
@@ -69,7 +69,7 @@
     "COWORK-AUDIT-CODEX-LED-ORCHESTRATOR-001 (priority 6, READY)"
   ],
   "active_hygiene_tasks": [
-    "CODEX-CLEANUP-ORPHAN-A-001 (priority 8, READY)"
+    "CODEX-CLEANUP-ORPHAN-A-001 (DONE 2026-04-26T08:37:47Z; commit pending at registry update time)"
   ],
   "completed_audits": [
     "COWORK-AUDIT-AUTOCONTINUE-001 (2026-04-26T07:00:00Z)",
