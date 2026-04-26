@@ -62,10 +62,10 @@ This contract is **binding** for every Codex and Cowork session.
 
 ## Current Baton
 
-- **Baton owner**: Cowork
-- **Current phase**: agentic_coordination_bootstrap
+- **Baton owner**: Codex
+- **Current phase**: codex_led_clay_reduction_active
 - **Last completed task**: AUTOCONTINUE-001 (DONE with Cowork-readable evidence)
-- **Next task**: COWORK-AUDIT-AUTOCONTINUE-001 (priority 2, owner Cowork, READY)
+- **Next task**: CLAY-F3-COUNT-RECURSIVE-001 (priority 3, owner Codex, READY)
 - **Clay status**: NOT_ESTABLISHED
 - **Unconditionality posture**: 0 sorries, 0 axioms outside `Experimental/`;
   full `lake build YangMills` integration-pending (15-min local timeout
@@ -74,6 +74,21 @@ This contract is **binding** for every Codex and Cowork session.
 ---
 
 ## Latest Handoff
+
+### 2026-04-26 — Codex-led autocontinue hardening for left-screen delivery
+
+- **Agent**: Codex
+- **Summary**: Updated `C:\Users\lluis\Downloads\codex_autocontinue.py` so Codex is treated as the primary agent and Cowork as an audit/recommendation sidecar. The Codex send path now pastes the structured dispatch and then clicks the calibrated Codex send button (`ref_x/ref_y`) instead of relying on `Enter`, which was the likely reason prompts were not reaching the left-screen Codex app. Added `--codex-only` for safe Codex-only debugging and `--cowork-sidecar-interval` (default 900s) to prevent Cowork from taking the baton too frequently. Forced stdout/stderr to UTF-8 so task text with mathematical symbols does not crash Windows console output.
+- **Validation**:
+  - `python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py` passed.
+  - `python C:\Users\lluis\Downloads\codex_autocontinue.py --diagnose-coords` confirmed Codex negative coordinates remain valid: `ref=(-649, 1073)`, `box=(-1168, 1030)`.
+  - `python C:\Users\lluis\Downloads\codex_autocontinue.py --help` exposes `--codex-only` and `--cowork-sidecar-interval`.
+  - `python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork` no longer crashes on Unicode.
+  - `dashboard/codex_autocontinue_snapshot.py` refreshed from the Downloads script and compiles.
+- **Registry sync**: Reset validation-only dispatch effects (`CLAY-F3-COUNT-RECURSIVE-001` back to `READY`, `COWORK-F3-BLUEPRINT-CONSISTENCY-AUDIT-001` back to `READY`, `META-GENERATE-TASKS-001` back to `FUTURE`). Integrated Cowork's Experimental-axiom audit result as `AUDIT_PARTIAL` and created `CODEX-LEDGER-EXPERIMENTAL-COUNT-AMEND-001`.
+- **Unconditionality impact**: Infrastructure only. No Yang-Mills mathematical progress claimed. The active mathematical task remains F3 recursive deletion/full word decoder.
+- **Next exact instruction**:
+  > Codex, run `python C:\Users\lluis\Downloads\codex_autocontinue.py --codex-only` only after this handoff is read, confirm the left-screen Codex app receives a prompt via calibrated send-button click, then continue `CLAY-F3-COUNT-RECURSIVE-001` in `YangMills/ClayCore/LatticeAnimalCount.lean`; Cowork should later audit `COWORK-AUDIT-CODEX-LED-ORCHESTRATOR-001`.
 
 ### 2026-04-26 — Codex revalidation of AUTOCONTINUE-001 (most recent)
 

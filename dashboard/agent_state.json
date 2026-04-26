@@ -1,12 +1,12 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "clay_reduction_active",
-  "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001",
+  "current_phase": "codex_led_clay_reduction_active",
+  "current_baton_owner": "Codex",
+  "next_task_id": "CLAY-F3-COUNT-RECURSIVE-001",
   "last_completed_task": null,
-  "last_dispatched_task": "COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001",
-  "last_dispatched_agent": "Cowork",
+  "last_dispatched_task": "CLAY-F3-COUNT-RECURSIVE-001",
+  "last_dispatched_agent": "Codex",
   "open_blockers": [],
   "open_recommendations": [
     "REC-COWORK-LONG-CI-LAKE-BUILD-001",
@@ -19,7 +19,7 @@
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001"
   ],
-  "last_dispatch_at": "2026-04-26T06:43:07Z",
+  "last_dispatch_at": "2026-04-26T06:49:47Z",
   "latest_validation_artifact": "lake build YangMills.ClayCore.LatticeAnimalCount",
   "audit_state": {
     "in_repo_dispatcher": "AUDIT_PASS",
@@ -50,7 +50,8 @@
   "active_cowork_audit_tasks": [
     "COWORK-MATHLIB-PR-DRAFT-AUDIT-001 (priority 4, READY)",
     "COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001 (priority 5, READY)",
-    "COWORK-F3-BLUEPRINT-CONSISTENCY-AUDIT-001 (priority 6, READY)"
+    "COWORK-F3-BLUEPRINT-CONSISTENCY-AUDIT-001 (priority 6, READY)",
+    "COWORK-AUDIT-CODEX-LED-ORCHESTRATOR-001 (priority 6, READY)"
   ],
   "active_hygiene_tasks": [
     "CODEX-CLEANUP-ORPHAN-A-001 (priority 8, READY)"
@@ -82,5 +83,12 @@
     "OUT-CONTINUUM": "BLOCKED (research-level, 5+ year horizon)",
     "OUT-OS-WIGHTMAN": "BLOCKED (Mathlib gauge-theory infra missing)",
     "OUT-STRONG-COUPLING": "BLOCKED (cluster expansion diverges)"
+  },
+  "autocontinue_policy": {
+    "primary_agent": "Codex",
+    "cowork_role": "sidecar audit and recommendations",
+    "cowork_sidecar_interval_seconds": 900,
+    "codex_delivery": "paste prompt then click calibrated send button",
+    "debug_mode": "python C:\\Users\\lluis\\Downloads\\codex_autocontinue.py --codex-only"
   }
 }

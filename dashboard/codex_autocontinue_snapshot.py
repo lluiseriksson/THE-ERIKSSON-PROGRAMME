@@ -16,6 +16,8 @@
 #
 # Ejecución:
 #   python codex_autocontinue.py
+#   python codex_autocontinue.py --codex-only
+#   python codex_autocontinue.py --cowork-sidecar-interval 900
 
 import argparse
 import json
@@ -29,6 +31,11 @@ import numpy as np
 import pyautogui
 import pyperclip
 from PIL import Image
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 # --- Configuración ---------------------------------------------------------
 
@@ -51,6 +58,12 @@ SANITY_MAX_BUSY = 100.0
 CHECK_INTERVAL = 0.7
 STABLE_CHECKS = 3
 POST_SEND_COOLDOWN = 6.0
+
+# Orquestación: Codex es el agente primario; Cowork es sidecar de auditoría.
+# En modo normal se atiende primero a Codex y se limita la frecuencia de Cowork
+# para que no capture el baton mientras Codex todavía necesita trabajo.
+PRIMARY_AGENT = "Codex"
+DEFAULT_COWORK_SIDECAR_INTERVAL = 900.0
 
 # Sin tope de envíos. Pon un número si quieres limitarlo; None = infinito.
 MAX_SENDS_PER_APP = None
@@ -215,9 +228,9 @@ def repeat_pause_seconds(task_id):
     return REPEAT_TASK_PAUSE_SECONDS
 
 
-def send_reply(box_x, box_y, message):
+def send_reply(app, message):
     prev = pyautogui.position()
-    safe_move_to(box_x, box_y, duration=0.15)
+    safe_move_to(app.box_x, app.box_y, duration=0.15)
     time.sleep(0.1)
     pyautogui.click()
     time.sleep(0.25)
@@ -228,7 +241,15 @@ def send_reply(box_x, box_y, message):
     time.sleep(0.05)
     pyautogui.hotkey("ctrl", "v")
     time.sleep(0.2)
-    pyautogui.press("enter")
+    if app.mode == "ready":
+        # Codex uses a real send button as the reference patch. Clicking the
+        # calibrated button is more reliable than Enter in the desktop app.
+        safe_move_to(app.ref_x, app.ref_y, duration=0.08)
+        time.sleep(0.05)
+        pyautogui.click()
+    else:
+        # Cowork's reference patch is its busy/queue button, not a send button.
+        pyautogui.press("enter")
     time.sleep(0.1)
     safe_move_to(prev.x, prev.y, duration=0.05)
 
@@ -294,10 +315,11 @@ class WatchedApp:
 
 # --- Bucle -----------------------------------------------------------------
 
-def run():
+def run(args):
     apps = []
     codex = WatchedApp("Codex", CODEX_CFG, CODEX_REF)
     cowork = WatchedApp("Cowork", COWORK_CFG, COWORK_REF)
+    last_cowork_dispatch_at = 0.0
 
     if codex.load():
         apps.append(codex)
@@ -306,10 +328,12 @@ def run():
     else:
         print(f"[-] {codex.name}: sin calibrar (--calibrate-codex)")
 
-    if cowork.load():
+    if not args.codex_only and cowork.load():
         apps.append(cowork)
         print(f"[+] {cowork.name} (modo={cowork.mode}, umbral={cowork.threshold}) "
               f"en ({cowork.ref_x}, {cowork.ref_y})")
+    elif args.codex_only:
+        print("[-] Cowork: desactivado por --codex-only")
     else:
         print(f"[-] {cowork.name}: sin calibrar (--calibrate-cowork)")
 
@@ -319,6 +343,8 @@ def run():
 
     cap_msg = "sin tope" if MAX_SENDS_PER_APP is None else f"tope {MAX_SENDS_PER_APP}"
     print(f"\nMODO AUTOMÁTICO ({cap_msg}). Ctrl+C para parar.")
+    print(f"Política: Codex primario; Cowork sidecar cada "
+          f"{args.cowork_sidecar_interval:.0f}s como mínimo.")
     print("Si el ratón toca (0,0) el script PAUSA 5s y reanuda solo.\n")
 
     last_state = {}
@@ -364,7 +390,34 @@ def run():
                     app.pending_message = None
                     app.pending_task_id = None
 
+            ready_apps.sort(key=lambda a: 0 if a.name == PRIMARY_AGENT else 1)
+            codex_pending = any(
+                a.name == PRIMARY_AGENT and a.pending_message for a in apps
+            )
             for app in ready_apps:
+                if app.name == "Cowork":
+                    now = time.time()
+                    if codex_pending:
+                        app.stable_ready = 0
+                        app.armed = True
+                        continue
+                    if (last_cowork_dispatch_at
+                            and now - last_cowork_dispatch_at
+                            < args.cowork_sidecar_interval):
+                        remaining = int(round(
+                            args.cowork_sidecar_interval
+                            - (now - last_cowork_dispatch_at)
+                        ))
+                        app.paused_until = max(
+                            app.paused_until,
+                            last_cowork_dispatch_at
+                            + args.cowork_sidecar_interval,
+                        )
+                        app.stable_ready = 0
+                        app.armed = True
+                        print(f"[SKIP] Cowork: sidecar interval active for "
+                              f"{remaining}s; Codex remains primary.")
+                        continue
                 if app.pending_message:
                     message = app.pending_message
                     task_id = app.pending_task_id or extract_task_id(message)
@@ -388,10 +441,12 @@ def run():
                     continue
 
                 print(f"[OK] {app.name} listo. Enviando #{app.sends+1}: {task_line}")
-                send_reply(app.box_x, app.box_y, message)
+                send_reply(app, message)
                 app.sends += 1
                 app.last_sent_task_id = task_id
                 app.last_sent_at = time.time()
+                if app.name == "Cowork":
+                    last_cowork_dispatch_at = app.last_sent_at
                 app.stable_ready = 0
                 app.armed = False
 
@@ -481,6 +536,11 @@ if __name__ == "__main__":
     p.add_argument("--calibrate-codex", action="store_true")
     p.add_argument("--calibrate-cowork", action="store_true")
     p.add_argument("--diagnose-coords", action="store_true")
+    p.add_argument("--codex-only", action="store_true",
+                   help="Watch only Codex; useful while debugging left-screen delivery.")
+    p.add_argument("--cowork-sidecar-interval", type=float,
+                   default=DEFAULT_COWORK_SIDECAR_INTERVAL,
+                   help="Minimum seconds between Cowork sidecar dispatches.")
     args = p.parse_args()
     if args.agent:
         print(build_dispatch_message(args.agent))
@@ -491,4 +551,4 @@ if __name__ == "__main__":
     elif args.diagnose_coords:
         diagnose_coords()
     else:
-        run()
+        run(args)

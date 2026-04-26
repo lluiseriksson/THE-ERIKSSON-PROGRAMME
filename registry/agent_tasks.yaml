@@ -306,7 +306,7 @@ tasks:
   status: READY
   priority: 3
   created_at: '2026-04-26T07:00:00Z'
-  updated_at: '2026-04-26T06:42:46Z'
+  updated_at: '2026-04-26T06:49:47Z'
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - BLUEPRINT_F3Count.md
@@ -349,7 +349,15 @@ tasks:
   - Reset to READY priority 3 by Codex at 2026-04-26T06:42:46Z so autocontinue stays
     on active F3 task after v2.48 parent-selector partial progress; CODEX-FIX-MATHLIB-DRAFTS-001
     remains queued after F3.
-  dispatch_count: 4
+  - Dispatched to Codex at 2026-04-26T06:46:53Z
+  - Reset to READY by Codex at 2026-04-26T06:48:56Z; orchestrator CLI validation only,
+    not a completed GUI handoff. Codex remains primary on F3.
+  - Dispatched to Codex at 2026-04-26T06:49:35Z
+  - Reset to READY by Codex at 2026-04-26T06:49:47Z; repo dispatcher validation only,
+    not a GUI handoff.
+  dispatch_count: 6
+  dispatched_at: '2026-04-26T06:49:35Z'
+  dispatched_to: Codex
 - id: CLAY-EXP-RETIRE-7-001
   title: Retire 7 easy SU(N) generator-data Experimental axioms
   owner: Codex
@@ -504,10 +512,25 @@ tasks:
   title: 'Cowork: verify EXPERIMENTAL_AXIOMS_AUDIT.md against current YangMills/Experimental/
     tree'
   owner: Cowork
-  status: IN_PROGRESS
+  status: DONE
   priority: 5
   created_at: '2026-04-26T08:30:00Z'
-  updated_at: '2026-04-26T06:43:07Z'
+  updated_at: '2026-04-26T06:48:56Z'
+  audit_verdict: AUDIT_PARTIAL
+  audit_summary: 'Invariant 0-non-Experimental-axioms PASS. Two amendments needed:
+    (1) Tier 2 ledger row claims 14 — actual is 8 after Phases 33+35; (2) `sun_haar_satisfies_lsi`
+    in BakryEmery/BakryEmerySpike.lean is NOT in EXPERIMENTAL_AXIOMS_AUDIT.md §∞ table
+    (either spike code or missed in the update). lieDerivReg_all has 1 non-Experimental
+    consumer (P8_PhysicalGap/SUN_DirichletCore.lean) but Phase 27 confirmed 0 Clay-chain
+    consumption — stop-if NOT triggered.'
+  audit_evidence:
+  - COWORK_RECOMMENDATIONS.md entry 2026-04-26T09:30:00Z
+  - Actual Experimental axiom inventory grep-verified as 8; ledger/audit doc require
+    amendment
+  repairs_filed:
+  - CODEX-LEDGER-EXPERIMENTAL-COUNT-AMEND-001 (READY priority 5)
+  - REC-COWORK-LEDGER-FRESHNESS-001 (priority 3) — 6h freshness audit cadence
+  - REC-COWORK-BAKRYEMERY-SPIKE-CLASSIFY-001 (priority 4) — classify spike file
   required_files:
   - EXPERIMENTAL_AXIOMS_AUDIT.md
   - YangMills/Experimental/
@@ -542,6 +565,8 @@ tasks:
     (no Mathlib gap surfaced since the original audit).'
   - This is reading + grep + audit work, not Lean code. Cowork can do it from sandbox.
   - Dispatched to Cowork at 2026-04-26T06:43:07Z
+  - AUDIT_PARTIAL recorded by Codex sync at 2026-04-26T06:48:56Z from COWORK_RECOMMENDATIONS.md;
+    repair task CODEX-LEDGER-EXPERIMENTAL-COUNT-AMEND-001 needed.
   dispatched_at: '2026-04-26T06:43:07Z'
   dispatched_to: Cowork
   dispatch_count: 1
@@ -552,7 +577,7 @@ tasks:
   status: READY
   priority: 6
   created_at: '2026-04-26T08:30:00Z'
-  updated_at: '2026-04-26T08:30:00Z'
+  updated_at: '2026-04-26T06:48:56Z'
   required_files:
   - BLUEPRINT_F3Count.md
   - BLUEPRINT_F3Mayer.md
@@ -582,6 +607,51 @@ tasks:
   - 'Direct prep for CLAY-F3-COUNT-RECURSIVE-001: prevents the recursive map being
     written against a stale smallness regime.'
   - Cowork-side reading + cross-reference audit. No Lean code.
+  - Dispatched to Cowork at 2026-04-26T06:46:53Z
+  - Reset to READY by Codex at 2026-04-26T06:48:56Z; Cowork CLI validation only. Cowork
+    remains sidecar audit, not primary baton.
+  dispatched_at: '2026-04-26T06:46:53Z'
+  dispatched_to: Cowork
+  dispatch_count: 1
+- id: CODEX-LEDGER-EXPERIMENTAL-COUNT-AMEND-001
+  title: 'Codex: amend Tier 2 ledger row count + reconcile EXPERIMENTAL_AXIOMS_AUDIT.md
+    (per COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001)'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-26T09:30:00Z'
+  updated_at: '2026-04-26T09:30:00Z'
+  required_files:
+  - UNCONDITIONALITY_LEDGER.md
+  - EXPERIMENTAL_AXIOMS_AUDIT.md
+  - YangMills/Experimental/BakryEmery/BakryEmerySpike.lean
+  - COWORK_RECOMMENDATIONS.md (audit dated 2026-04-26T09:30:00Z)
+  objective: 'Per COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001 audit: (1) update UNCONDITIONALITY_LEDGER.md
+    Tier 2 row from "14 total in `Experimental/`" to "8 total (was 14, reduced via
+    Phases 33+35; 7 listed in EXPERIMENTAL_AXIOMS_AUDIT.md §∞ + 1 in BakryEmerySpike
+    pending classification)"; (2) amend EXPERIMENTAL_AXIOMS_AUDIT.md top section to
+    consolidate the 14 → 8 history (currently §0 "Summary" claims 14, §∞ correctly
+    notes 7 — these contradict); (3) classify BakryEmery/BakryEmerySpike.lean per
+    REC-COWORK-BAKRYEMERY-SPIKE-CLASSIFY-001 — either add `sun_haar_satisfies_lsi`
+    to the §∞ table (active code) or move BakryEmerySpike to `YangMills/Experimental/_archive/`
+    with [SPIKE — ARCHIVED] banner.
+
+    '
+  validation:
+  - UNCONDITIONALITY_LEDGER.md Tier 2 row shows current actual axiom count (8 if BakryEmerySpike
+    kept; 7 if archived)
+  - EXPERIMENTAL_AXIOMS_AUDIT.md top section reconciled with §∞ (no 14 vs 7 contradiction)
+  - Either §∞ table has 8 entries (incl. sun_haar_satisfies_lsi) OR BakryEmerySpike
+    under _archive/ with banner
+  - grep -rn '^\s*axiom\s+\w+' YangMills/Experimental/ --include='*.lean' | wc -l
+    matches the count claimed in the ledger row
+  stop_if:
+  - BakryEmerySpike has consumers in active YangMills/ tree that would break if archived
+    (run grep -rn sun_haar_satisfies_lsi YangMills/ to verify)
+  next_agent: Cowork
+  notes:
+  - Bookkeeping fix only. No mathematical content changes. The actual axiom inventory
+    is BETTER than the ledger claimed (8 vs 14) — this fix improves honesty.
 - id: CODEX-FIX-MATHLIB-DRAFTS-001
   title: 'Codex: repair 4 FAIL items in mathlib_pr_drafts/ (per COWORK-MATHLIB-PR-DRAFT-AUDIT-001)'
   owner: Codex
@@ -656,7 +726,7 @@ tasks:
   status: FUTURE
   priority: 99
   created_at: '2026-04-26T00:00:00Z'
-  updated_at: '2026-04-26T06:33:20Z'
+  updated_at: '2026-04-26T06:48:56Z'
   required_files:
   - AGENT_BUS.md
   - FORMALIZATION_ROADMAP_CLAY.md
@@ -687,6 +757,36 @@ tasks:
   - Reset to FUTURE by Codex at 2026-04-26T06:28:23Z; failed GUI sends must not consume
     the emergency meta task.
   - Dispatched to Cowork at 2026-04-26T06:33:20Z
-  dispatch_count: 5
-  dispatched_at: '2026-04-26T06:33:20Z'
+  - Dispatched to Cowork at 2026-04-26T06:47:08Z
+  - Reset to FUTURE by Codex at 2026-04-26T06:48:56Z; CLI validation must not consume
+    the emergency meta-task.
+  dispatch_count: 6
+  dispatched_at: '2026-04-26T06:47:08Z'
   dispatched_to: Cowork
+- id: COWORK-AUDIT-CODEX-LED-ORCHESTRATOR-001
+  title: 'Cowork: audit Codex-led autocontinue orchestrator hardening'
+  owner: Cowork
+  status: READY
+  priority: 6
+  created_at: '2026-04-26T06:48:56Z'
+  updated_at: '2026-04-26T06:48:56Z'
+  required_files:
+  - C:\Users\lluis\Downloads\codex_autocontinue.py
+  - dashboard/codex_autocontinue_snapshot.py
+  - registry/agent_tasks.yaml
+  - dashboard/agent_state.json
+  - AGENT_BUS.md
+  objective: Audit that Codex is treated as primary, Cowork as sidecar, Codex sends
+    by clicking the calibrated send button, Unicode console output no longer crashes,
+    and validation-only CLI dispatches are reset instead of consuming real work.
+  validation:
+  - python C:\Users\lluis\Downloads\codex_autocontinue.py --diagnose-coords
+  - python C:\Users\lluis\Downloads\codex_autocontinue.py --help
+  - Source inspection confirms send_reply clicks app.ref_x/app.ref_y for Codex mode=ready
+  - Source inspection confirms --codex-only and --cowork-sidecar-interval exist
+  stop_if:
+  - The script still relies on Enter to submit Codex prompts
+  - Cowork can dispatch repeatedly without a sidecar interval
+  next_agent: Codex
+  notes:
+  - Created after user reported left-screen Codex was not receiving prompts.

@@ -1,4 +1,76 @@
 recommendations:
+- id: REC-COWORK-LEDGER-FRESHNESS-001
+  author: Cowork
+  status: OPEN
+  priority: 3
+  title: Establish 6-hour Cowork audit cadence to verify ledger row counts match actual
+    tree state
+  recommendation: 'COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001 surfaced that UNCONDITIONALITY_LEDGER.md
+    Tier 2 row claims "14 total" while actual count is 8. The audit doc itself documents
+    the 14 → 11 → 7 reduction in §∞, but the ledger row was never amended. Cowork
+    should run a periodic (every 6h) lightweight audit that re-counts axioms via grep
+    and reconciles each ledger row against ground truth.
+
+    '
+  reason: 'Ledger drift is the silent failure mode for an honesty-driven project.
+    External readers and AI agents trust the ledger numbers; if they are 1+ session-cycle
+    stale, the project gives a more-pessimistic-than-reality picture which is itself
+    a form of overclaiming-by-understatement.
+
+    '
+  risk_if_ignored: 'Ledger numbers continue to drift. New agents reading UNCONDITIONALITY_LEDGER.md
+    make incorrect strategic decisions (e.g. assigning Codex to retire 14 axioms when
+    only 8 exist).
+
+    '
+  files_affected:
+  - UNCONDITIONALITY_LEDGER.md
+  - EXPERIMENTAL_AXIOMS_AUDIT.md
+  - registry/agent_tasks.yaml (would convert to a recurring task)
+  - scripts/agent_next_instruction.py (could trigger via cadence)
+  converts_to_task: COWORK-LEDGER-FRESHNESS-CADENCE-001 (recurring; FUTURE — fires
+    every 6h after a Cowork session)
+  validation: 'After implementation, the dispatcher fires a Cowork audit task every
+    6 hours that re-verifies ledger row counts. Each Tier 2 row count is reconciled
+    against `grep -rn ''^\s*axiom\s+\w+'' YangMills/Experimental/ --include=''*.lean''`.
+
+    '
+- id: REC-COWORK-BAKRYEMERY-SPIKE-CLASSIFY-001
+  author: Cowork
+  status: OPEN
+  priority: 4
+  title: Classify YangMills/Experimental/BakryEmery/BakryEmerySpike.lean as live or
+    spike code
+  recommendation: 'COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001 found that BakryEmery/BakryEmerySpike.lean
+    (line 58) declares `axiom sun_haar_satisfies_lsi` which is NOT listed in `EXPERIMENTAL_AXIOMS_AUDIT.md`
+    §∞ "Late-session update" table. The filename suffix "Spike" suggests prototype/scratch
+    work. Codex must decide: (a) BakryEmerySpike is live experimental code → add `sun_haar_satisfies_lsi`
+    to the §∞ table and the Tier 2 ledger row; (b) BakryEmerySpike is spike/scratch
+    code → move to `YangMills/Experimental/_archive/` with a banner indicating it
+    is preserved for git history but not part of the active axiom inventory.
+
+    '
+  reason: 'Untracked axioms in active subdirectories are exactly the dual-governance
+    pattern Finding 007 warned about. The audit doc must have a single source of truth
+    for the axiom inventory.
+
+    '
+  risk_if_ignored: 'A Codex agent retiring axioms based on the §∞ table will skip
+    `sun_haar_satisfies_lsi` because it is not in the table, leaving an untracked
+    axiom in the tree.
+
+    '
+  files_affected:
+  - YangMills/Experimental/BakryEmery/BakryEmerySpike.lean
+  - EXPERIMENTAL_AXIOMS_AUDIT.md
+  - UNCONDITIONALITY_LEDGER.md
+  converts_to_task: CODEX-LEDGER-EXPERIMENTAL-COUNT-AMEND-001 (single repair task,
+    see registry/agent_tasks.yaml)
+  validation: 'After implementation, either §∞ table contains 8 axioms incl. `sun_haar_satisfies_lsi`
+    AND Tier 2 ledger row count = 8, or BakryEmerySpike.lean moved under `_archive/`
+    with a [SPIKE — ARCHIVED] banner.
+
+    '
 - id: REC-COWORK-MATHLIB-DRAFTS-FAIL-001
   author: Cowork
   status: OPEN

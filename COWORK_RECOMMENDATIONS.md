@@ -4,6 +4,76 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T09:30:00Z — AUDIT_PARTIAL: COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001
+
+**Audit result**: `AUDIT_PARTIAL` — invariant preserved + new ledger discrepancy surfaced.
+
+**Scope**: `EXPERIMENTAL_AXIOMS_AUDIT.md`, `YangMills/Experimental/` tree (8 `.lean` files), `UNCONDITIONALITY_LEDGER.md` Tier 2 row, `KNOWN_ISSUES.md` §2.3.
+
+### Verification matrix
+
+| Validation criterion | Result | Evidence |
+|---|---|---|
+| Experimental count claimed = actual | **AMEND** | Ledger says 14; actual via grep is **8** (1 missed axiom + 6 retired by Phases 33+35). |
+| Each named axiom exists at the location described | PASS | All 7 axioms in audit's §∞ "Late-session update" table found at the lines documented. |
+| Categorization current | AMEND | Original 7+1+1+5 = 14 is the **pre-cleanup** category. Current actual is **5+1+1+1+1 = 9** (incl. 1 BakryEmerySpike) or **4+1+1+1 = 7** if BakryEmerySpike is treated as spike code. |
+| `lieDerivReg_all` scoped to Experimental | PARTIAL | The axiom **declaration** is in `Experimental/LieSUN/LieDerivReg_v4.lean`. But there is **1 non-Experimental consumer**: `YangMills/P8_PhysicalGap/SUN_DirichletCore.lean`. This was already noted by the audit's Phase 27 update (consumer matrix). Per Phase 27 analysis, 0 of 14 axioms are consumed by the **Clay chain** — `lieDerivReg_all` flows through the parallel Phase 8 LSI stack only. Stop-if "Any non-Experimental theorem oracle includes lieDerivReg_all" was relative to the Clay chain → **NOT TRIGGERED**. |
+| 0 axioms outside `Experimental/` | **PASS (invariant preserved)** | Stricter grep returned 9 files initially; manual inspection of the 2 non-Experimental hits (`L9_OSReconstruction/GNSConstruction.lean:23` and `L6_OS/AbelianU1OSAxioms.lean:25`) confirms both are **docstring text wrapping** with the word "axiom" inside, NOT real `axiom` declarations. Lean tokenizes both as comment content. The 0-non-Experimental-axiom invariant **stands**. |
+
+### Actual axiom inventory (grep-verified, 2026-04-26T09:30:00Z)
+
+| # | File | Line | Axiom name | In §∞ table? |
+|---|---|---:|---|---|
+| 1 | BakryEmery/BakryEmerySpike.lean | 58 | `sun_haar_satisfies_lsi` | **NO — discrepancy with §∞ table** |
+| 2 | LieSUN/LieDerivativeRegularity.lean | 18 | `generatorMatrix` | YES |
+| 3 | LieSUN/LieDerivativeRegularity.lean | 20 | `gen_skewHerm` | YES |
+| 4 | LieSUN/LieDerivativeRegularity.lean | 22 | `gen_trace_zero` | YES |
+| 5 | LieSUN/LieDerivReg_v4.lean | 58 | `lieDerivReg_all` | YES |
+| 6 | LieSUN/LieExpCurve.lean | 81 | `matExp_traceless_det_one` | YES |
+| 7 | Semigroup/VarianceDecayFromPoincare.lean | 79 | `variance_decay_from_bridge_and_poincare_semigroup_gap` | YES |
+| 8 | Semigroup/VarianceDecayFromPoincare.lean | 133 | `gronwall_variance_decay` | YES |
+
+**Net actual count: 8** (vs. ledger's 14, vs. audit §∞'s 7).
+
+### Critical findings
+
+1. **Ledger Tier 2 row count is stale**. `UNCONDITIONALITY_LEDGER.md` still describes "14 total in `Experimental/`" with categorization 7+1+1+5. After Phases 33 (deletion of 3 orphans) and 35 (deduplication of 4), the actual count dropped to 7. This is documented in `EXPERIMENTAL_AXIOMS_AUDIT.md` §∞ "Late-session update" but the Tier 2 ledger row was never amended.
+
+2. **One axiom missing from `EXPERIMENTAL_AXIOMS_AUDIT.md` §∞ table**: `sun_haar_satisfies_lsi` in `Experimental/BakryEmery/BakryEmerySpike.lean` (line 58). The §∞ table lists 7; my grep finds 8. Either (a) BakryEmerySpike is dead "spike" code that should be flagged in the audit doc, or (b) the §∞ table missed it during update. Either way, **the audit doc needs amendment**.
+
+3. **0 non-Experimental axiom declarations** invariant **PASSES** unambiguously. Two grep hits in non-Experimental files (`L9_OSReconstruction/GNSConstruction.lean:23` and `L6_OS/AbelianU1OSAxioms.lean:25`) are docstring text wrapping, not real declarations.
+
+4. **`lieDerivReg_all` non-Experimental consumer** confirmed in `P8_PhysicalGap/SUN_DirichletCore.lean`. Per the audit's own Phase 27 analysis, this consumption flows through the parallel Phase 8 LSI stack and **does not enter the Clay chain**. The Clay deliverable (`ClayCore/ClayUnconditional.lean` and downstream) is fully independent of the `Experimental/` directory.
+
+### Tasks updates
+
+- `COWORK-EXPERIMENTAL-AXIOMS-AUDIT-001`: READY → **DONE** (`AUDIT_PARTIAL`).
+- New repair task: `CODEX-LEDGER-EXPERIMENTAL-COUNT-AMEND-001` (READY priority 5) — update Tier 2 row of `UNCONDITIONALITY_LEDGER.md` from "14 total" to "8 total" with citation to Phases 33+35 and to this audit; update top of `EXPERIMENTAL_AXIOMS_AUDIT.md` to consolidate the count history (originally 14, now 8); add `sun_haar_satisfies_lsi` to the §∞ table or flag BakryEmerySpike as spike code.
+
+### Recommendations added
+
+- `REC-COWORK-LEDGER-FRESHNESS-001` (priority 3) — establish a 6-hour Cowork audit cadence to verify ledger row counts match the actual `YangMills/Experimental/` tree state. Repeated stale-count findings (the ledger has now been wrong for one full session cycle) should not be allowed to accumulate.
+- `REC-COWORK-BAKRYEMERY-SPIKE-CLASSIFY-001` (priority 4) — Codex must decide whether `BakryEmery/BakryEmerySpike.lean` is (a) live experimental code (track in §∞ table + ledger) or (b) spike/scratch code (move to `YangMills/Experimental/_archive/` with a banner). Right now it's untracked, which is exactly the dual-governance pattern Finding 007 warned about.
+
+### Honesty preservation
+
+- The 0-non-Experimental-axiom invariant **PASSES**. No mathematical claim about Clay-level progress is changed.
+- The Tier 2 row count discrepancy is **bookkeeping**, not a math regression. The actual axiom inventory is **better** than the ledger claimed (8 vs 14). Cowork's job here is to fix the bookkeeping so external readers don't see a more-pessimistic-than-reality picture.
+- The `lieDerivReg_all` non-Experimental consumer **does not enter the Clay chain**. The Phase 27 audit's strategic posture remains valid: Experimental is non-load-bearing for Clay.
+
+### Cross-references
+
+- `EXPERIMENTAL_AXIOMS_AUDIT.md` §∞ "Late-session update" (2026-04-25) — documents the 14 → 11 → 7 reduction.
+- `EXPERIMENTAL_AXIOMS_AUDIT.md` §8 "Phase 27 update — Consumer matrix" — confirms 0 Clay-chain consumption.
+- `KNOWN_ISSUES.md` §2.3 — describes the 14-axiom categorization (also stale).
+- `COWORK_FINDINGS.md` Findings 010, 014 — referenced by the audit doc for `MatExpTracelessDimOne` and `MatExpDetTraceDimOne` discharges at base case.
+
+### Verdict
+
+`AUDIT_PARTIAL` — invariant preserved, but ledger and audit-doc bookkeeping needs amendment. Below 5-FAIL escalation threshold (1 critical bookkeeping diff + 1 spike-classification ambiguity = 2 amendments). One repair task + two recommendations filed.
+
+---
+
 ## 2026-04-26T09:00:00Z — AUDIT_PARTIAL: COWORK-MATHLIB-PR-DRAFT-AUDIT-001
 
 **Audit result**: `AUDIT_PARTIAL` — **19 of 23 files PASS, 4 FAIL** (below the 5-failure NEEDS_HUMAN threshold). One critical finding: the file currently slated as `CLAY-MATHLIB-PR-LANDING-001`'s submission target (`MatrixExp_DetTrace_DimOne_PR.lean`) **is not actually PR-ready**. The 19 PASS files are genuinely shippable.
