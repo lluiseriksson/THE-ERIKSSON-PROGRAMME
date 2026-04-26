@@ -380,9 +380,9 @@ tasks:
     bridge landed. Lean now proves an erased residual re-enters the anchored bucket
     whenever the deletion preserves induced preconnectedness, including the physical
     `firstDeleteResidual1296` specialization. `lake build YangMills.ClayCore.LatticeAnimalCount`
-    passed and both new #print axioms traces are canonical. F3-COUNT remains CONDITIONAL_BRIDGE
-    pending a leaf/deletion-order theorem that supplies the preconnected residual
-    hypothesis and a full word decoder.'
+    passed and both new #print axioms traces are canonical. Commit `d76b672`. F3-COUNT
+    remains CONDITIONAL_BRIDGE pending a leaf/deletion-order theorem that supplies
+    the preconnected residual hypothesis and a full word decoder.'
   dispatch_count: 12
   dispatched_at: '2026-04-26T08:39:54Z'
   dispatched_to: Codex
@@ -1134,25 +1134,42 @@ tasks:
   updated_at: '2026-04-26T13:00:00Z'
   audit_verdict: AUDIT_PASS
   audit_evidence:
-  - 'plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected at line 1666 of LatticeAnimalCount.lean (^theorem decl)'
-  - 'physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296_mem_of_preconnected at line 1690 (^theorem decl)'
-  - 'AXIOM_FRONTIER v2.51.0 lines 41-44: pinned [propext, Classical.choice, Quot.sound] for both theorems'
-  - 'AXIOM_FRONTIER v2.51.0 line 25 explicit: "real F3-count progress, but deliberately does not close F3-COUNT"'
-  - 'AXIOM_FRONTIER v2.51.0 lines 26-31 precisely identify next target: leaf/deletion-order theorem about preconnectedness preservation'
-  - 'UNCONDITIONALITY_LEDGER row F3-COUNT line 57: status CONDITIONAL_BRIDGE; evidence column updated to mention v2.51.0 conditional handoff alongside v2.48/v2.50; dependency column reads "existence of a deletion preserving residual preconnectedness is not yet proved"; next-action column reads "prove a leaf/deletion-order theorem that supplies the preconnected residual hypothesis"'
+  - plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected at line
+    1666 of LatticeAnimalCount.lean (^theorem decl)
+  - physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296_mem_of_preconnected
+    at line 1690 (^theorem decl)
+  - 'AXIOM_FRONTIER v2.51.0 lines 41-44: pinned [propext, Classical.choice, Quot.sound]
+    for both theorems'
+  - 'AXIOM_FRONTIER v2.51.0 line 25 explicit: "real F3-count progress, but deliberately
+    does not close F3-COUNT"'
+  - 'AXIOM_FRONTIER v2.51.0 lines 26-31 precisely identify next target: leaf/deletion-order
+    theorem about preconnectedness preservation'
+  - 'UNCONDITIONALITY_LEDGER row F3-COUNT line 57: status CONDITIONAL_BRIDGE; evidence
+    column updated to mention v2.51.0 conditional handoff alongside v2.48/v2.50; dependency
+    column reads "existence of a deletion preserving residual preconnectedness is
+    not yet proved"; next-action column reads "prove a leaf/deletion-order theorem
+    that supplies the preconnected residual hypothesis"'
   honesty_observation:
-  - 'TEXTBOOK example of well-disciplined Lean engineering for incremental Clay-reduction: identify recursive step → factor into if-then bridge + unconditional hypothesis → land bridge oracle-clean with full disclosure that hypothesis remains. This narrows the remaining hard step to a precisely-stated graph-combinatorics target.'
-  - '4th non-vacuous Clay-reduction audit of session. Codex anti-overclaim discipline consistent across 12+ audit closures.'
+  - 'TEXTBOOK example of well-disciplined Lean engineering for incremental Clay-reduction:
+    identify recursive step → factor into if-then bridge + unconditional hypothesis
+    → land bridge oracle-clean with full disclosure that hypothesis remains. This
+    narrows the remaining hard step to a precisely-stated graph-combinatorics target.'
+  - 4th non-vacuous Clay-reduction audit of session. Codex anti-overclaim discipline
+    consistent across 12+ audit closures.
   cumulative_F3_progress:
   - 'v2.42-v2.44: anchored root shell (FORMAL_KERNEL on separate row F3-ANCHOR-SHELL)'
-  - 'v2.48 (audited 12:00): parent selector (function-valued, Classical.choose-backed); F3-COUNT remained CONDITIONAL_BRIDGE'
-  - 'v2.50 (covered 12:00): first-deletion / residual primitive (4 theorems); F3-COUNT remained CONDITIONAL_BRIDGE'
-  - 'v2.51 (THIS AUDIT 13:00): conditional recursive-deletion bridge; F3-COUNT remains CONDITIONAL_BRIDGE'
-  - 'v2.52+ (future): leaf/deletion-order theorem; only then F3-COUNT moves toward FORMAL_KERNEL'
+  - 'v2.48 (audited 12:00): parent selector (function-valued, Classical.choose-backed);
+    F3-COUNT remained CONDITIONAL_BRIDGE'
+  - 'v2.50 (covered 12:00): first-deletion / residual primitive (4 theorems); F3-COUNT
+    remained CONDITIONAL_BRIDGE'
+  - 'v2.51 (THIS AUDIT 13:00): conditional recursive-deletion bridge; F3-COUNT remains
+    CONDITIONAL_BRIDGE'
+  - 'v2.52+ (future): leaf/deletion-order theorem; only then F3-COUNT moves toward
+    FORMAL_KERNEL'
   stop_conditions_not_triggered:
-  - 'Both theorems present (lines 1666, 1690)'
-  - 'AXIOM_FRONTIER does NOT claim F3-COUNT closed (line 25 explicit)'
-  - 'LEDGER does NOT upgrade F3-COUNT to FORMAL_KERNEL (status remains CONDITIONAL_BRIDGE)'
+  - Both theorems present (lines 1666, 1690)
+  - AXIOM_FRONTIER does NOT claim F3-COUNT closed (line 25 explicit)
+  - LEDGER does NOT upgrade F3-COUNT to FORMAL_KERNEL (status remains CONDITIONAL_BRIDGE)
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
   - AXIOM_FRONTIER.md

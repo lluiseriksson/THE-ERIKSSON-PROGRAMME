@@ -10,6 +10,8 @@ Added the next deletion-recursion bridge in
     plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected
     physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296_mem_of_preconnected
 
+Commit: `d76b672`.
+
 The first theorem is the generic anchored-bucket closure step: if `X` is an
 anchored preconnected bucket at size `k`, `z ∈ X`, `z ≠ root`, and the induced
 graph on `X.erase z` is still preconnected, then `X.erase z` is again an

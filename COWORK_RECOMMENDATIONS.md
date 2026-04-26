@@ -4,6 +4,294 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T13:00:00Z — AUDIT_PASS: COWORK-F3-V2.51-DELETION-BRIDGE-AUDIT-001
+
+**Audit result**: `AUDIT_PASS`. Codex's v2.51 conditional recursive-deletion bridge verified end-to-end. Both new theorems present, both oracle-clean, F3-COUNT row honestly preserved as `CONDITIONAL_BRIDGE`. **No stop-condition triggered.**
+
+**Scope**: `YangMills/ClayCore/LatticeAnimalCount.lean` lines 1666 + 1690, `AXIOM_FRONTIER.md` v2.51.0 entry (top of file, lines 1–47), `UNCONDITIONALITY_LEDGER.md` Tier 1 row `F3-COUNT` line 57.
+
+### Four-criterion verification
+
+| Criterion | Result | Evidence |
+|---|---|---|
+| Both theorem declarations present in `LatticeAnimalCount.lean` | PASS | Line 1666: `theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected`. Line 1690: `theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296_mem_of_preconnected`. Both `^theorem` declarations (not `def`, not `axiom`). |
+| `AXIOM_FRONTIER.md` v2.51.0 quotes `[propext, Classical.choice, Quot.sound]` for both | PASS | Lines 41–44 of `AXIOM_FRONTIER.md` literally show: `plaquetteGraphPreconnectedSubsetsAnchoredCard_erase_mem_of_preconnected [propext, Classical.choice, Quot.sound]` and the second theorem with the same canonical kernel triple. |
+| `UNCONDITIONALITY_LEDGER.md` row `F3-COUNT` remains `CONDITIONAL_BRIDGE` | PASS | Line 57 status column = `CONDITIONAL_BRIDGE`. Evidence column updated to mention v2.51.0 conditional recursive-deletion handoff alongside v2.48 + v2.50 progress. Dependency column explicitly reads *"existence of a deletion preserving residual preconnectedness is not yet proved"*. Next-action column reads *"prove a leaf/deletion-order theorem that supplies the preconnected residual hypothesis, then iterate into full anchored word decoder"*. **Honest framing preserved.** |
+| `COWORK_RECOMMENDATIONS.md` audit entry | PASS | This entry. |
+
+### Stop-condition checks
+
+| Stop-if | Triggered? | Reasoning |
+|---|---|---|
+| Either theorem missing | NOT TRIGGERED | Both at lines 1666/1690 of `LatticeAnimalCount.lean`, both `^theorem` declarations. |
+| `AXIOM_FRONTIER.md` claims F3-COUNT is closed | NOT TRIGGERED | v2.51.0 entry line 25 is explicit: *"This is real F3-count progress, but deliberately **does not close `F3-COUNT`**."* The "Why" section line 26–31 reads: *"It removes the bookkeeping part of the recursive handoff and leaves a sharper, mathematical graph-combinatorics target: prove a leaf/deletion-order theorem showing that every nontrivial finite anchored preconnected bucket admits a non-root deletion whose residual remains preconnected. Arbitrary first-shell peeling is not enough; the next step must select a deletion compatible with connectivity, then iterate this bridge into a full anchored word decoder."* Honesty discipline at its best. |
+| `UNCONDITIONALITY_LEDGER.md` upgrades F3-COUNT to FORMAL_KERNEL | NOT TRIGGERED | Status column reads `CONDITIONAL_BRIDGE`. Cowork explicitly endorses this. |
+
+### What v2.51 actually accomplishes
+
+Per the AXIOM_FRONTIER v2.51.0 entry: *"The first theorem is the generic anchored-bucket closure step: if `X` is an anchored preconnected bucket at size `k`, `z ∈ X`, `z ≠ root`, and the induced graph on `X.erase z` is still preconnected, then `X.erase z` is again an anchored bucket at size `k - 1`. The second theorem specializes that bridge to the v2.50 physical `1296` first-deletion residual."*
+
+In other words, **v2.51 closes the conditional/bookkeeping half of the recursive handoff**: *if* the first-deletion residual is preconnected, *then* it re-enters the anchored bucket family at size `k-1`. The remaining *unconditional* graph-combinatorics work — proving the residual is preconnected for some non-arbitrary deletion — is the leaf/deletion-order theorem still pending.
+
+### Cowork honesty observation — "conditional bridge" pattern
+
+This v2.51 commit is a **textbook example of well-disciplined Lean engineering for incremental Clay-reduction**:
+
+1. **Identify the recursive step** that needs to fire (first-deletion residual ↦ anchored bucket at size k-1).
+2. **Factor the proof obligation** into (a) an *if-then* bridge theorem (this is what v2.51 closes), and (b) the unconditional hypothesis (preconnectedness preservation, still pending).
+3. **Land (a) immediately**, oracle-clean, with full disclosure that (b) remains. This narrows the remaining hard step to a precisely-stated graph-combinatorics target instead of the diffuse "prove F3-COUNT" objective.
+
+Compare to the previous-session anti-pattern Finding 006: the polynomial/exponential ambiguity in `NEXT_SESSION.md` was a wasted effort that contemplated an unprovable target. v2.51 is the **opposite pattern**: every commit narrows the target without false closure.
+
+### Cumulative F3-COUNT progress this session
+
+| Version | Date | Increment | Status of F3-COUNT row | Cowork audit |
+|---|---|---|---|---|
+| v2.42–v2.44 | 2026-04-21+ | Anchored root shell (nonempty + bounded + injective code) | `FORMAL_KERNEL` (separate row F3-ANCHOR-SHELL) | (audited as part of `STATE_OF_THE_PROJECT.md` baseline) |
+| v2.48 | 2026-04-26 | Parent selector (function-valued, `Classical.choose`-backed) | `CONDITIONAL_BRIDGE` (no premature upgrade) | `COWORK-F3-V2.48-PROGRESS-AUDIT-001` AUDIT_PASS at 12:00 |
+| v2.50 | 2026-04-26 | First-deletion / residual primitive (4 theorems) | `CONDITIONAL_BRIDGE` (no premature upgrade) | (covered by 12:00 audit, scope expanded) |
+| **v2.51** | **2026-04-26** | **Conditional recursive-deletion bridge (this audit)** | **`CONDITIONAL_BRIDGE` (still)** | **`COWORK-F3-V2.51-DELETION-BRIDGE-AUDIT-001` AUDIT_PASS at 13:00 (this entry)** |
+| v2.52+ | future | Leaf/deletion-order theorem (preconnectedness preservation) | TBD — only when this lands does F3-COUNT move toward `FORMAL_KERNEL` | future Cowork audit |
+
+### Tasks updates
+
+- `COWORK-F3-V2.51-DELETION-BRIDGE-AUDIT-001`: READY → **DONE** with `AUDIT_PASS`.
+- `CLAY-F3-COUNT-RECURSIVE-001`: status unchanged (PARTIAL/IN_PROGRESS at v2.51). Codex's next target is now precisely identified as the leaf/deletion-order theorem (per AXIOM_FRONTIER v2.51.0 "Why" section).
+- `F3-COUNT` ledger row: status unchanged (`CONDITIONAL_BRIDGE`). Evidence column captures v2.48 + v2.50 + v2.51 cumulative progress.
+
+### Recommendations added
+
+0. No new recommendations. Codex's anti-overclaim framing is exemplary.
+
+### Honesty preservation
+
+- The v2.51 commit is **real F3-count progress** (closes the conditional half of the recursive bridge) but **does not close `F3-COUNT`** (the residual-preconnectedness hypothesis is still required as input). Both AXIOM_FRONTIER and the LEDGER express this honestly.
+- External-description guidance: *"The F3 BFS/Klarner decoder has the parent selector (v2.48), first-deletion primitive (v2.50), and conditional recursive-deletion bridge (v2.51) in place, all oracle-clean against `[propext, Classical.choice, Quot.sound]`. The remaining hard step is a leaf/deletion-order theorem about preconnectedness preservation. The full lattice-animal count `count(n) ≤ C·K^n` is not yet proved."*
+
+### Verdict
+
+`AUDIT_PASS`. The 4th non-vacuous Clay-reduction audit of the session ratifies real F3 progress while keeping the Tier 1 ledger row honest. Codex's anti-overclaim discipline is now consistent across 12+ audit closures this session. The next concrete target is precisely identified.
+
+---
+
+## 2026-04-26T12:30:00Z — AUDIT_PASS: COWORK-F3-BLUEPRINT-CONSISTENCY-AUDIT-001
+
+**Audit result**: `AUDIT_PASS`. All 5 cross-document consistency checks pass between `BLUEPRINT_F3Count.md`, `BLUEPRINT_F3Mayer.md`, and `F3_CHAIN_MAP.md`. No STOP-condition triggered.
+
+**Scope**: full read of `BLUEPRINT_F3Count.md`, `BLUEPRINT_F3Mayer.md`, `F3_CHAIN_MAP.md` (delegated to subagent). Cross-checked against `UNCONDITIONALITY_LEDGER.md` Tier 1 rows `F3-COUNT`, `F3-MAYER`, `F3-COMBINED`.
+
+### Five-check verdict
+
+| # | Check | Verdict | Evidence |
+|---|---|---|---|
+| 1 | Smallness regime `β < 1/(28 N_c)` | PASS | F3Mayer line 418: *"β < 1 / (28 N_c)"*. F3Count line 412: *"K = 2d − 1 = 7; r' = 7r, must have r' < 1, i.e. r < 1/7"*. Combined: `β < 1/(28 N_c)` consistent. |
+| 2 | K_count bound `K ≤ 2d-1 = 7` for `d=4` | PASS | F3Count line 412 (`K = 2d − 1 = 7`), F3Mayer line 98 (`K_count = 7 (d=4 connective constant bound)`), F3_CHAIN_MAP line 26 (`K = 2d - 1 = 7 for d=4`). All agree. |
+| 3 | Truncated activity bound `r = 4 N_c β`, `A₀ = 1` | PASS | F3Mayer lines 309–313: *"\|K(Y)\| ≤ (4 N_c β)^\|Y\| which gives r = 4 N_c · β, A₀ = 1"*. F3Count line 254–255 refers to the same `r, A₀` activity bound generically. Constants consistent. |
+| 4 | Assembly target name `clayMassGap_of_shiftedF3MayerCountPackageExp` | PASS | F3Count line 42, F3Mayer line 28, F3_CHAIN_MAP line 189 + 251–255 — name appears identically in all three. **No reference to a polynomial-frontier variant** (which Finding 006 warned would cause wasted Codex work). The "Exp" suffix consistent across all three docs. **Critical STOP-condition NOT triggered.** |
+| 5 | F3_CHAIN_MAP cross-refs to both blueprints | PASS | F3_CHAIN_MAP line 19–40 (top-level chain diagram) references both F3-MAYER and F3-COUNT branches; F3Mayer line 6 explicitly refers to `BLUEPRINT_F3Count.md` as companion document. Cross-references coherent. |
+
+### Stop-condition checks
+
+| Stop-if | Triggered? | Reasoning |
+|---|---|---|
+| Either blueprint file is missing | NOT TRIGGERED | Both `BLUEPRINT_F3Count.md` and `BLUEPRINT_F3Mayer.md` present; `F3_CHAIN_MAP.md` also present. |
+| The blueprints disagree on the assembly target name | NOT TRIGGERED | All three docs use `clayMassGap_of_shiftedF3MayerCountPackageExp` literally. The Resolution C exponential-frontier convention (executed v1.79–v1.82) is consistently applied; no leftover references to the deprecated polynomial frontier (Finding 006 cautionary precedent). |
+
+### Critical observation — Finding 006 risk averted
+
+`COWORK_FINDINGS.md` Finding 006 documented an earlier near-miss where `YangMills/ClayCore/NEXT_SESSION.md` simultaneously described both polynomial and exponential F3 packages, creating a real risk that a future Codex session could redirect effort to a target that cannot close (the polynomial frontier was structurally infeasible per Finding 001). Today's audit confirms the **blueprints have been fully migrated** to the exponential frontier:
+
+- All three docs use `ShiftedF3MayerCountPackageExp` (with the `Exp` suffix) and `clayMassGap_of_shiftedF3MayerCountPackageExp` as the terminal endpoint name.
+- No lingering references to a polynomial `ShiftedF3MayerCountPackage` without the suffix in active blueprint text.
+- The Resolution C convention (executed 2026-04-25 v1.79.0–v1.82.0) is the canonical assembly target everywhere consulted.
+
+This means a future Codex commit on `CLAY-F3-COUNT-RECURSIVE-001` can read either blueprint and reach the same target name. **Finding 006 risk fully averted.**
+
+### Constants reconciliation table
+
+For external readers — the F3 frontier closes when `β` is small enough that `r · K_count < 1`:
+
+| Quantity | Value | Source |
+|---|---|---|
+| Activity rate | `r = 4 N_c · β` | F3Mayer §3.2–§3.3 |
+| Activity prefactor | `A₀ = 1` | F3Mayer §3.3 |
+| Lattice-animal connective constant bound | `K = 2d − 1 = 7` for `d = 4` | F3Count §6 |
+| Smallness regime | `β < 1 / (28 N_c)` | F3Mayer §6 (= `1/(4·N_c·K_count) = 1/(4·N_c·7)`) |
+| For `N_c = 3` (QCD) | `β < 1/84 ≈ 0.012` | F3_CHAIN_MAP table line 231 |
+
+### Tasks updates
+
+- `COWORK-F3-BLUEPRINT-CONSISTENCY-AUDIT-001`: READY → **DONE** with `AUDIT_PASS`.
+- `CLAY-F3-COUNT-RECURSIVE-001`: status unchanged (PARTIAL/IN_PROGRESS at v2.50). Next hard step still the leaf/deletion-order theorem about preconnectedness preservation.
+- `F3-COUNT`, `F3-MAYER`, `F3-COMBINED` ledger rows: status unchanged. The audit confirms the documents agree on what closure looks like, but no actual proof landed in this audit.
+
+### Recommendations added
+
+0. No new recommendations. The blueprints are mutually consistent; no Codex repair work needed.
+
+### Honesty preservation
+
+- This is a **documentation-consistency audit**, not a math-content audit. It confirms that the strategic blueprints agree on constants and naming, which **prevents wasted Codex effort** but does not itself close any Tier 1 row.
+- The `F3-COUNT`, `F3-MAYER`, `F3-COMBINED` rows of `UNCONDITIONALITY_LEDGER.md` remain in their pre-audit states (`CONDITIONAL_BRIDGE`, `BLOCKED`, `BLOCKED` respectively). No upgrades.
+- External-description guidance: *"The F3 frontier strategy is internally consistent across the F3-Count and F3-Mayer blueprints, both targeting `clayMassGap_of_shiftedF3MayerCountPackageExp` for the assembly endpoint with `r = 4 N_c β`, `A₀ = 1`, `K_count = 7` (d=4), and smallness regime `β < 1/(28 N_c)`. The actual proof of `F3-COUNT` is in progress (PARTIAL at v2.50 first-deletion primitive) and `F3-MAYER` is BLOCKED pending `F3-COUNT` closure."*
+
+### Cross-references
+
+- `BLUEPRINT_F3Count.md` line 412 (constants for d=4) and line 42 (assembly target name).
+- `BLUEPRINT_F3Mayer.md` lines 28, 309–313, 418 (assembly target, activity bound, smallness regime).
+- `F3_CHAIN_MAP.md` lines 26, 189, 231, 251–255 (top-level diagram, terminal endpoint, β table).
+- `COWORK_FINDINGS.md` Finding 001 (polynomial frontier infeasibility) and Finding 006 (NEXT_SESSION.md polynomial-vs-exponential ambiguity) — both averted by today's audit.
+
+### Verdict
+
+`AUDIT_PASS`. The F3 frontier blueprints are internally consistent. No Codex repair needed. Codex can proceed on `CLAY-F3-COUNT-RECURSIVE-001` (leaf/deletion-order theorem) without risk of writing against a stale or contradictory smallness regime / constant / assembly target.
+
+---
+
+## 2026-04-26T12:00:00Z — AUDIT_PASS: COWORK-F3-V2.48-PROGRESS-AUDIT-001 (expanded to v2.48 + v2.49 + v2.50 cumulative)
+
+**Audit result**: `AUDIT_PASS`. All 6 new theorems verified, all pinned traces match the canonical kernel triple, ledger row `F3-COUNT` correctly remains `CONDITIONAL_BRIDGE` despite real progress.
+
+**Scope**: `YangMills/ClayCore/LatticeAnimalCount.lean` (theorems at lines 1561, 1581, 1618, 1637, 1902, 1924), `AXIOM_FRONTIER.md` v2.48.0 (parent selector) + v2.49.0 (EXP-SUN-GEN retirement) + v2.50.0 (first-deletion primitives), `UNCONDITIONALITY_LEDGER.md` Tier 1 row `F3-COUNT`.
+
+### Five-criterion verification (per task objective)
+
+| Criterion | Result | Evidence |
+|---|---|---|
+| `^theorem.*rootShellParent1296_reachable` returns ≥ 1 hit | PASS | Line 1902 of `LatticeAnimalCount.lean`: `theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296_reachable`. |
+| `^theorem.*rootShellParentCode1296_spec` returns ≥ 1 hit | PASS | Line 1924: `theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParentCode1296_spec`. |
+| `AXIOM_FRONTIER.md` v2.48.0 entry quotes pinned trace `[propext, Classical.choice, Quot.sound]` | PASS | Lines 153–156 of `AXIOM_FRONTIER.md` literally show: `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParent1296_reachable [propext, Classical.choice, Quot.sound]` and `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_rootShellParentCode1296_spec [propext, Classical.choice, Quot.sound]`. **Canonical kernel triple — no extra axioms.** |
+| `UNCONDITIONALITY_LEDGER.md` row `F3-COUNT` mentions v2.48 parent selector but remains `CONDITIONAL_BRIDGE` | PASS | Line 57 includes both `v2.48.0 parent selector` (rootShellParent1296_reachable, ParentCode1296_spec) AND `v2.50.0 first-deletion/residual primitive` (firstDeleteCode1296_spec, firstDelete1296_mem_erase_root, firstDeleteResidual1296_card, root_mem_firstDeleteResidual1296). Status column reads `CONDITIONAL_BRIDGE`. **NOT prematurely upgraded.** |
+| `COWORK_RECOMMENDATIONS.md` audit entry | PASS | This entry. |
+
+### Bonus findings — v2.49 + v2.50 cumulative scope
+
+Per the prior session handoff, scope was expanded to include the v2.50 first-deletion primitives and the v2.49 EXP-SUN-GEN retirement (which fired between v2.48 and v2.50). All also verified clean:
+
+| Theorem (v2.50, first-deletion primitive) | Line | Pinned trace |
+|---|---:|---|
+| `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteCode1296_spec` | 1561 | `[propext, Classical.choice, Quot.sound]` (AXIOM_FRONTIER lines 45–46) |
+| `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDelete1296_mem_erase_root` | 1581 | `[propext, Classical.choice, Quot.sound]` (lines 47–48) |
+| `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_firstDeleteResidual1296_card` | 1618 | `[propext, Classical.choice, Quot.sound]` (lines 49–50) |
+| `physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem_firstDeleteResidual1296` | 1637 | `[propext, Classical.choice, Quot.sound]` (lines 51–52) |
+
+| AXIOM_FRONTIER version | Description | Cowork-side cross-check |
+|---|---|---|
+| v2.48.0 | Anchored first-shell parent selector | Two new theorems at lines 1902 + 1924, oracle-clean. |
+| v2.49.0 | EXP-SUN-GEN retired (zero family) | 3 axioms → 3 theorems; vacuous (per `KNOWN_ISSUES.md` §1.3 added in `COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001` audit). |
+| v2.50.0 | Anchored first-deletion candidate | 4 new theorems at lines 1561/1581/1618/1637, oracle-clean. AXIOM_FRONTIER v2.50.0 entry (lines 1–55) explicitly states *"This … does **not** close `F3-COUNT`: the recursive deletion / full anchored word decoder is still open."* |
+
+### Stop-condition checks
+
+| Stop-if | Triggered? | Reasoning |
+|---|---|---|
+| Either of the two v2.48 theorems missing or silently demoted | NOT TRIGGERED | Both at `^theorem` declaration (not just `def`) at lines 1902 + 1924. |
+| AXIOM_FRONTIER.md v2.48.0 entry shows non-canonical oracle | NOT TRIGGERED | Both pinned traces are exactly `[propext, Classical.choice, Quot.sound]`. No project-specific axioms, no `sorry`. |
+| F3-COUNT row prematurely upgraded to FORMAL_KERNEL | NOT TRIGGERED | Status remains `CONDITIONAL_BRIDGE`. The dependency column explicitly reads *"Recursive deletion / full word decoder still incomplete; residual preconnectedness after deletion is not yet proved"* and the next-action column reads *"Continue `CLAY-F3-COUNT-RECURSIVE-001`: prove a leaf/deletion-order theorem that preserves anchored preconnectedness, then iterate into full anchored word decoder"*. **Honest framing preserved.** |
+
+### Cowork honesty note — three real Clay-reduction increments (not vacuous)
+
+This is the **third Clay-reduction audit** of the session. Unlike NC1-WITNESS (Tier 1) and EXP-SUN-GEN (Tier 2) which were **vacuous** retirements, the v2.48 + v2.50 progress is **real Mathlib-foundational mathematics**:
+
+- v2.48 turns existential reachability witnesses (`∃ c, ∃ z, ...`) into `Classical.choose`-backed function-valued parent selectors. This is a real architectural step toward the decoder.
+- v2.50 produces an executable peeling primitive: pick a root-shell plaquette via the parent selector, pin its `Fin 1296` code, prove residual cardinal `k - 1`, prove the root remains in the residual. This is a real first-deletion candidate, not a no-op.
+
+**However**: v2.50's own AXIOM_FRONTIER entry is explicit that this **does not close `F3-COUNT`** — the residual after first deletion is **not yet proved preconnected**, so a leaf/deletion-order theorem is still required before recursion can iterate. Per the entry: *"The remaining hard step is sharper now: arbitrary first-shell deletion need not preserve preconnectedness, so the next proof likely needs a leaf/deletion-order theorem."*
+
+This is the **right kind of progress** for a 5-year programme: each commit narrows the remaining hard step rather than fabricating closure. Cowork explicitly endorses keeping `F3-COUNT` at `CONDITIONAL_BRIDGE` until the leaf/deletion-order theorem lands.
+
+### Tasks updates
+
+- `COWORK-F3-V2.48-PROGRESS-AUDIT-001`: READY → **DONE** with `AUDIT_PASS`.
+- `CLAY-F3-COUNT-RECURSIVE-001`: status remains `PARTIAL` / `IN_PROGRESS`. Cowork agrees with Codex's framing.
+- `F3-COUNT` ledger row: status remains `CONDITIONAL_BRIDGE`. Evidence column already records both v2.48 + v2.50 progress (line 57 of `UNCONDITIONALITY_LEDGER.md`).
+
+### Recommendations added
+
+0. No new recommendations. The existing `CLAY-F3-COUNT-RECURSIVE-001` next-action *"prove a leaf/deletion-order theorem that preserves anchored preconnectedness"* is sufficient guidance for the next Codex commit.
+
+### Honesty preservation
+
+- `F3-COUNT` row status preserved as `CONDITIONAL_BRIDGE`. **No false upgrade.**
+- Cowork explicitly distinguishes v2.48 + v2.50 progress (real, narrowing the hard step) from NC1-WITNESS / EXP-SUN-GEN (vacuous, bookkeeping-clean only).
+- External-description guidance: *"The F3 lattice-animal count proof has the parent-selector and first-deletion primitives in place (oracle-clean against `[propext, Classical.choice, Quot.sound]`). The remaining hard step is a leaf/deletion-order theorem about preconnectedness preservation. The full BFS/Klarner count is not yet proved."*
+
+### Cross-references
+
+- `AXIOM_FRONTIER.md` v2.48.0 (parent selector) + v2.49.0 (EXP-SUN-GEN retirement) + v2.50.0 (first-deletion primitive).
+- `UNCONDITIONALITY_LEDGER.md` Tier 1 row `F3-COUNT` (line 57).
+- `KNOWN_ISSUES.md` §1.3 — EXP-SUN-GEN vacuity caveat (added in earlier `COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001` audit).
+- `BLUEPRINT_F3Count.md` — the strategic blueprint that v2.48 + v2.50 are executing against.
+
+### Verdict
+
+`AUDIT_PASS`. The third Clay-reduction audit of the session — and the **first** of the three that audits **non-vacuous** mathematical progress (v2.48 parent selector + v2.50 first-deletion primitive). The F3 frontier is genuinely advancing. The next hard step (leaf/deletion-order theorem) is narrower than before. Codex's anti-overclaim discipline holds: `F3-COUNT` row stays `CONDITIONAL_BRIDGE`.
+
+---
+
+## 2026-04-26T11:30:00Z — AUDIT_PASS: COWORK-AUDIT-CLAY-MATHLIB-PR-LANDING-001
+
+**Audit result**: `AUDIT_PASS`. The MatrixExp Mathlib PR landing was correctly marked `BLOCKED` (not `DONE`) by Codex after local build/verify success was contradicted by GitHub authentication blockers. Honest framing preserved; no fake PR URL claimed anywhere.
+
+**Scope**: `mathlib_pr_drafts/MatrixExp_DetTrace_DimOne_PR.lean`, `mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch`, `MATHLIB_PRS_OVERVIEW.md`, `registry/agent_tasks.yaml`, `registry/recommendations.yaml`, `dashboard/agent_state.json`, `AGENT_BUS.md` Latest Handoff.
+
+### Five-criterion verification
+
+| Criterion | Result | Evidence |
+|---|---|---|
+| `grep -n "sorry" MatrixExp_DetTrace_DimOne_PR.lean` returns nothing | PASS | Grep returned no matches. The 2 sorries on lines 82 and 91 (flagged by `COWORK-MATHLIB-PR-DRAFT-AUDIT-001` at 2026-04-26T09:00:00Z) are now closed. |
+| File contains `#print axioms Matrix.det_exp_eq_exp_trace_fin_one` | PASS | Line 95: literal `#print axioms Matrix.det_exp_eq_exp_trace_fin_one`. Line 49 is the same string inside the docstring documenting the validation requirement. |
+| `MATHLIB_PRS_OVERVIEW.md` records local commit `cd3b69baae` and no fake PR URL | PASS | Line 136 records: *"Mathlib master `80a6231dcf`; module build and full `lake build` passed; local commit `cd3b69baae`"*. No `github.com/.*pull` URL anywhere. |
+| `registry/recommendations.yaml` contains `REC-MATHLIB-FORK-PR-AUTH-001` | PASS | Line 297, status OPEN, priority 2, author Codex. |
+| Patch artifact present | PASS | `mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch` exists. |
+
+### Stop-condition checks
+
+| Stop-if | Triggered? | Reasoning |
+|---|---|---|
+| Any document claims the Mathlib PR is open without a URL | NOT TRIGGERED | `dashboard/agent_state.json` mathlib_pr_state: `"status": "BUILT_LOCAL_PR_BLOCKED"`, `"pr_url": null`, `"blocker": "No gh executable, no upstream push permission, and no reachable lluiseriksson/mathlib4 fork"`. `AGENT_BUS.md` Latest Handoff: status `BLOCKED` after technical partial success. `MATHLIB_PRS_OVERVIEW.md` line 136 records only the local Mathlib master + commit, no fake upstream. **Honesty preserved.** |
+| The patch artifact is missing | NOT TRIGGERED | File present at `mathlib_pr_drafts/0001-feat-prove-det-exp-trace-for-1x1-matrices.patch`. |
+
+### Honest-framing audit (this is the most important part)
+
+This task is the **first time in the session that a Clay-reduction objective hit a real-world publishing blocker** (no `gh`, no push permission, no reachable fork). Codex's response is exemplary:
+
+- The Lean math content was completed: theorem `Matrix.det_exp_eq_exp_trace_fin_one` proved without `sorry`, oracle reduces to `[propext, Classical.choice, Quot.sound]`, both `lake build Mathlib.Analysis.Normed.Algebra.MatrixExponential` and full `lake build` passed against Mathlib master `80a6231dcf`.
+- The publishing step was honestly admitted as blocked: `pr_url: null`, status `BLOCKED` (not `DONE`), explicit blocker text on the dashboard, new follow-up task `MATHLIB-OPEN-PR-001` (BLOCKED) created, new recommendation `REC-MATHLIB-FORK-PR-AUTH-001` filed.
+- Patch artifact preserved so any future agent (or human with `gh` + auth) can pick up where Codex left off.
+
+This is the **AGENTS.md §8 anti-overclaim discipline working correctly under stress**. A less disciplined agent would have marked the task `DONE` based on the local build success; Codex correctly distinguished "local build pass" from "PR landed upstream" and refused to conflate them.
+
+### Tasks updates
+
+- `COWORK-AUDIT-CLAY-MATHLIB-PR-LANDING-001`: READY → **DONE** with `AUDIT_PASS`.
+- `CLAY-MATHLIB-PR-LANDING-001`: status remains `BLOCKED` per `AGENT_BUS.md` Latest Handoff. Honest. Cowork agrees.
+- `MATHLIB-OPEN-PR-001` (Codex follow-up): remains `BLOCKED` until a fork/auth path exists. Cowork's recommendation: do **not** unblock without one of (a) `gh` installed + Lluis-authenticated, (b) push permission to `leanprover-community/mathlib4`, or (c) reachable `lluiseriksson/mathlib4` fork.
+- `REC-MATHLIB-FORK-PR-AUTH-001`: remains `OPEN` until Lluis decides which auth path to enable.
+
+### Recommendations added
+
+0. No new recommendations. The existing `REC-MATHLIB-FORK-PR-AUTH-001` covers the publishing gap.
+
+### Honesty preservation
+
+- The Lean-side math content of `Matrix.det_exp_eq_exp_trace_fin_one` is genuinely new and verified (commit `cd3b69baae` against Mathlib master `80a6231dcf`). This is **real Mathlib-foundational progress**, not vacuous. It directly retires Tier 2 ledger row `EXP-MATEXP-DET` once the PR lands upstream and the project pulls the new Mathlib version.
+- However, **the PR has NOT landed upstream**. Until the PR URL exists in `MATHLIB_PRS_OVERVIEW.md` and a Mathlib version with this lemma is pinned in the project's `lakefile.lean`/`lake-manifest.json`, the row `EXP-MATEXP-DET` remains `EXPERIMENTAL`.
+- External descriptions of the project should now read: *"A Mathlib PR for the dim-1 case of `det(exp A) = exp(trace A)` has been written, builds locally against Mathlib master `cd3b69baae`/`80a6231dcf`, and is awaiting an authenticated push path to be opened upstream."* — neither overclaim ("PR merged") nor underclaim ("not done").
+
+### Cross-references
+
+- `AGENT_BUS.md` Latest Handoff 2026-04-26 — MatrixExp Mathlib patch built, PR publication blocked.
+- `dashboard/agent_state.json` `mathlib_pr_state.MatrixExp_DetTrace_DimOne_PR` — full structured state including `pr_url: null`.
+- Earlier Cowork audit `COWORK-MATHLIB-PR-DRAFT-AUDIT-001` (2026-04-26T09:00:00Z) flagged the original 2 sorries; Codex repaired and revalidated.
+- `REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001` (priority 2) suggested redirecting first submission to `LogTwoLowerBound_PR.lean` while MatrixExp was broken — that recommendation is now obsolete since MatrixExp itself is repaired; the actual blocker shifted from the Lean code to GitHub auth. Cowork should update that recommendation's status to `RESOLVED-OBSOLETE` in a future maintenance pass.
+
+### Verdict
+
+`AUDIT_PASS`. The first Clay-reduction Mathlib pipeline is in good order: math proved, build verified, publishing honestly blocked. **Recommendation to the human**: when convenient, decide which auth path (a/b/c above) to enable so `MATHLIB-OPEN-PR-001` can unblock. Until then, the existing state is honest and stable — no degradation if it sits as `BLOCKED` for days/weeks.
+
+---
+
 ## 2026-04-26T11:00:00Z — AUDIT_PASS (with vacuity caveat): COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001
 
 **Audit result**: `AUDIT_PASS` — retirement is real Lean-side, vacuity caveat formally added to `KNOWN_ISSUES.md` §1.3, no stop-condition triggered.

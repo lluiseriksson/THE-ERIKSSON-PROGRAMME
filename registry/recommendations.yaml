@@ -117,10 +117,10 @@ recommendations:
 - id: REC-COWORK-CLAY-MATHLIB-FIRST-SUBMISSION-REDIRECT-001
   author: Cowork
   status: RESOLVED
-  resolution: 'Superseded by Codex 2026-04-26: MatrixExp_DetTrace_DimOne_PR.lean
-    was repaired and built against Mathlib master, so the draft-quality reason
-    for redirecting to LogTwoLowerBound_PR.lean no longer applies. Upstream publication
-    is blocked separately by REC-MATHLIB-FORK-PR-AUTH-001.'
+  resolution: 'Superseded by Codex 2026-04-26: MatrixExp_DetTrace_DimOne_PR.lean was
+    repaired and built against Mathlib master, so the draft-quality reason for redirecting
+    to LogTwoLowerBound_PR.lean no longer applies. Upstream publication is blocked
+    separately by REC-MATHLIB-FORK-PR-AUTH-001.'
   priority: 2
   title: Redirect CLAY-MATHLIB-PR-LANDING-001 first submission target to LogTwoLowerBound_PR.lean
   recommendation: 'Until CODEX-FIX-MATHLIB-DRAFTS-001 lands, CLAY-MATHLIB-PR-LANDING-001
