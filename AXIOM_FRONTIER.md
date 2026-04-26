@@ -73,7 +73,7 @@ This is **not** a proof of `F3-COUNT` and does **not** prove
 plaquette-specific high-cardinality deletion target to a pure finite graph
 lemma.  `F3-COUNT` remains `CONDITIONAL_BRIDGE`.
 
-Implementation commit: `c11b1d0`.
+Implementation commit: `341fcef`.
 
 ---
 
