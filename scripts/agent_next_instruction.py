@@ -605,8 +605,8 @@ def task_rank(task: dict[str, Any], state: dict[str, Any]) -> tuple[int, int, in
     repeat_penalty = 1 if task.get("id") == state.get("last_dispatched_task") else 0
     return (
         status_rank,
-        repeat_penalty,
         int(task.get("priority", 999)),
+        repeat_penalty,
         str(task.get("created_at", "")),
         str(task.get("id", "")),
     )

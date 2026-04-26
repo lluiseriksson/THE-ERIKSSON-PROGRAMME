@@ -1,7 +1,14 @@
 recommendations:
 - id: REC-AUDIT-AUTOCONTINUE-MIRROR-001
   author: Cowork
-  status: OPEN
+  status: RESOLVED
+  resolution: 'Codex provided the requested evidence (dashboard/autocontinue_validation.txt
+    + dashboard/codex_autocontinue_snapshot.py). Cowork audit verdict on 2026-04-26T07:00:00Z:
+    AUDIT_PASS for all 7 criteria (a-g). The script delegates to scripts/agent_next_instruction.py
+    via runpy.run_path, eliminating silent-divergence risk by construction. Closed
+    cleanly via COWORK-AUDIT-AUTOCONTINUE-001.
+
+    '
   priority: 1
   title: Codex must produce Cowork-verifiable evidence for AUTOCONTINUE-001 DONE claim
   recommendation: 'Codex must dump the literal stdout of `python C:\Users\lluis\Downloads\codex_autocontinue.py
@@ -38,7 +45,15 @@ recommendations:
     '
 - id: REC-BOOTSTRAP-001
   author: Human
-  status: OPEN
+  status: RESOLVED
+  resolution: 'Superseded by REC-AUDIT-AUTOCONTINUE-MIRROR-001 (now also RESOLVED).
+    The structured-dispatch goal is met: in-repo scripts/agent_next_instruction.py
+    is the canonical dispatcher (audit_pass), and Downloads\codex_autocontinue.py
+    delegates to it via runpy.run_path. Both Codex and Cowork CLI invocations produce
+    precise structured task instructions with no generic continuation phrase emitted
+    (verified by Cowork at 2026-04-26T07:00:00Z).
+
+    '
   priority: 1
   title: Replace generic continuation with structured task dispatch
   recommendation: 'The autocontinue system must dispatch precise structured tasks

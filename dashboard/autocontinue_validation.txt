@@ -1,34 +1,33 @@
+AUTOCONTINUE HARDENING VALIDATION
+Generated: 2026-04-26T06:20:25Z
+
 === external_codex ===
-COMMAND: python C:\Users\lluis\Downloads\codex_autocontinue.py Codex
 ## Structured Agent Dispatch
 
 Agent role: Codex
-Task id: AUTOCONTINUE-001
-Task title: Replace generic autocontinue message with structured task dispatch
-Task priority: 1
+Task id: CLAY-F3-COUNT-RECURSIVE-001
+Task title: F3 � recursive deletion / parent map for Klarner BFS-tree count
+Task priority: 5
 Task status at dispatch: READY
 
 Files to read:
-- C:\Users\lluis\Downloads\codex_autocontinue.py
-- scripts/agent_next_instruction.py
-- registry/agent_tasks.yaml
-- registry/agent_history.jsonl
-- registry/recommendations.yaml
-- dashboard/agent_state.json
-- AGENT_BUS.md
+- YangMills/ClayCore/LatticeAnimalCount.lean
+- BLUEPRINT_F3Count.md
+- AXIOM_FRONTIER.md
+- UNCONDITIONALITY_LEDGER.md
 
 Objective:
-Modify C:\Users\lluis\Downloads\codex_autocontinue.py so it no longer sends MESSAGE = "[forbidden generic phrase redacted]!". Instead, read registry/agent_tasks.yaml, select the next structured task for the requested agent, generate a precise Codex- or Cowork-targeted message, append the dispatch to registry/agent_history.jsonl, and update dashboard/agent_state.json. Mirror the logic of the canonical in-repo dispatcher scripts/agent_next_instruction.py; do not diverge silently.
+Implement the recursive deletion / parent map that turns first-shell codes into full bucket words. AXIOM_FRONTIER v2.44.0 explicitly names this as the next hard step: "The remaining hard step is the recursive deletion/parent map that turns these shell codes into full bucket words." Closes Tier-1 row F3-COUNT in UNCONDITIONALITY_LEDGER.md and unblocks F3-COMBINED for N_c >= 2.
 
 Validation requirements:
-- python C:\Users\lluis\Downloads\codex_autocontinue.py Codex
-- python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork
+- lake build YangMills.ClayCore.LatticeAnimalCount
+- #print axioms on the new theorem reduces to [propext, Classical.choice, Quot.sound]
+- AXIOM_FRONTIER.md gains a new oracle-clean v2.45+ entry
+- UNCONDITIONALITY_LEDGER.md row F3-COUNT progresses (status note + commit SHA)
 
 Stop conditions:
-- The script cannot access the repo path
-- The generated message still contains generic continuation
-- The task registry cannot be read or safely initialized
-- The dispatcher diverges from scripts/agent_next_instruction.py without a recommendation
+- Recursive map cannot be expressed without a sorry
+- A Mathlib gap surfaces (file a recommendation, do not paper over)
 
 Required updates:
 - AGENT_BUS.md
@@ -37,42 +36,36 @@ Required updates:
 - dashboard/agent_state.json
 
 Next exact instruction:
-> Codex, take task `AUTOCONTINUE-001`. Read the files above, perform the objective, run or satisfy the validation requirements, update the required registries, and stop if any listed stop condition is met.
+> Codex, take task `CLAY-F3-COUNT-RECURSIVE-001`. Read the files above, perform the objective, run or satisfy the validation requirements, update the required registries, and stop if any listed stop condition is met.
 
 === external_cowork ===
-COMMAND: python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork
 ## Structured Agent Dispatch
 
 Agent role: Cowork
-Task id: COWORK-AUDIT-AUTOCONTINUE-001
-Task title: Audit AUTOCONTINUE-001 implementation in Downloads\codex_autocontinue.py
-Task priority: 2
-Task status at dispatch: FUTURE
+Task id: COWORK-AUDIT-001
+Task title: Audit autocontinue and coordination system
+Task priority: 3
+Task status at dispatch: READY
 
 Files to read:
-- C:\Users\lluis\Downloads\codex_autocontinue.py
-- scripts/agent_next_instruction.py
+- AGENT_BUS.md
 - registry/agent_tasks.yaml
-- registry/agent_history.jsonl
 - registry/recommendations.yaml
 - dashboard/agent_state.json
-- AGENT_BUS.md
 - COWORK_RECOMMENDATIONS.md
+- C:\Users\lluis\Downloads\codex_autocontinue.py
 
 Objective:
-After Codex modifies codex_autocontinue.py via AUTOCONTINUE-001, audit whether the script (a) dispatches structured tasks, (b) records history, (c) supports Codex and Cowork, (d) prevents generic continuation, (e) keeps future work available, (f) faithfully mirrors scripts/agent_next_instruction.py, and (g) keeps the Clay objective honest (no overclaim phrases generated). Result must be either AUDIT_PASS with evidence or AUDIT_FAIL with a repair task.
+Audit whether the new system makes Codex and Cowork collaborate productively, prevents generic continuation, records task history, and always preserves useful future work.
 
 Validation requirements:
-- python C:\Users\lluis\Downloads\codex_autocontinue.py Codex (output inspected and quoted into COWORK_RECOMMENDATIONS.md)
-- python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork (output inspected and quoted into COWORK_RECOMMENDATIONS.md)
-- diff scripts/agent_next_instruction.py vs Downloads\codex_autocontinue.py for divergence justification
-- COWORK_RECOMMENDATIONS.md gains an audit entry referencing AUTOCONTINUE-001
-- registry/agent_history.jsonl gains a Cowork audit_pass or audit_fail event
+- COWORK_RECOMMENDATIONS.md contains an audit entry
+- registry/recommendations.yaml contains any required recommendations
+- registry/agent_tasks.yaml contains repair tasks if issues are found
 
 Stop conditions:
-- Codex did not deliver the modified script
-- The script still contains '[forbidden generic phrase redacted]' or any forbidden phrase
-- The dispatcher diverges silently from scripts/agent_next_instruction.py
+- Codex did not create the required files
+- The autocontinue script still sends generic messages
 
 Required updates:
 - AGENT_BUS.md
@@ -83,77 +76,77 @@ Required updates:
 - registry/recommendations.yaml
 
 Next exact instruction:
-> Cowork, take task `COWORK-AUDIT-AUTOCONTINUE-001`. Read the files above, perform the objective, run or satisfy the validation requirements, update the required registries, and stop if any listed stop condition is met.
+> Cowork, take task `COWORK-AUDIT-001`. Read the files above, perform the objective, run or satisfy the validation requirements, update the required registries, and stop if any listed stop condition is met.
 
 === repo_codex ===
-COMMAND: python scripts\agent_next_instruction.py Codex
 ## Structured Agent Dispatch
 
 Agent role: Codex
-Task id: META-GENERATE-TASKS-001
-Task title: Generate new actionable tasks when the queue is empty
-Task priority: 99
-Task status at dispatch: META
+Task id: CLAY-EXP-RETIRE-7-001
+Task title: Retire 7 easy SU(N) generator-data Experimental axioms
+Task priority: 6
+Task status at dispatch: READY
 
 Files to read:
-- FORMALIZATION_ROADMAP_CLAY.md
+- EXPERIMENTAL_AXIOMS_AUDIT.md
+- YangMills/Experimental/
 - UNCONDITIONALITY_LEDGER.md
-- registry/recommendations.yaml
-- AGENT_BUS.md
-- registry/agent_tasks.yaml
 
 Objective:
-No actionable READY or PARTIAL task exists for this agent. Inspect the roadmap, ledger, recommendations, and bus, then create at least three new READY tasks that reduce conditionality, improve auditability, or repair the agentic infrastructure.
+Convert the 7 SU(N) generator-data axioms (constructive, no Mathlib gap) from `axiom` declarations to proved theorems. Per EXPERIMENTAL_AXIOMS_AUDIT.md and UNCONDITIONALITY_LEDGER.md row EXP-SUN-GEN, this is ~250 LOC and the cheapest unconditionality move currently available � drops Experimental axiom count 14 -> 7.
 
 Validation requirements:
-- registry/agent_tasks.yaml contains at least three READY tasks
+- lake build YangMills
+- grep -rn '^axiom ' YangMills/Experimental/ reports 7 axioms (down from 14)
+- UNCONDITIONALITY_LEDGER.md row EXP-SUN-GEN moves to FORMAL_KERNEL with commit SHA evidence
 
 Stop conditions:
-- Roadmap and ledger are missing
-- Cannot write registry/agent_tasks.yaml
+- A constructive proof requires a Mathlib lemma not present (file Mathlib PR draft instead)
 
 Required updates:
+- AGENT_BUS.md
 - registry/agent_tasks.yaml
 - registry/agent_history.jsonl
 - dashboard/agent_state.json
-- AGENT_BUS.md
 
 Next exact instruction:
-> Codex, create at least three READY tasks from the roadmap, ledger, recommendations, and bus; validate that the queue is actionable; then hand off to the appropriate next agent.
+> Codex, take task `CLAY-EXP-RETIRE-7-001`. Read the files above, perform the objective, run or satisfy the validation requirements, update the required registries, and stop if any listed stop condition is met.
 
 === repo_cowork ===
-COMMAND: python scripts\agent_next_instruction.py Cowork
 ## Structured Agent Dispatch
 
 Agent role: Cowork
-Task id: META-GENERATE-TASKS-001
-Task title: Generate new actionable tasks when the queue is empty
-Task priority: 99
-Task status at dispatch: META
+Task id: CLAY-ROADMAP-001
+Task title: Build and maintain Clay-level formalization roadmap
+Task priority: 4
+Task status at dispatch: READY
 
 Files to read:
 - FORMALIZATION_ROADMAP_CLAY.md
 - UNCONDITIONALITY_LEDGER.md
 - registry/recommendations.yaml
-- AGENT_BUS.md
-- registry/agent_tasks.yaml
 
 Objective:
-No actionable READY or PARTIAL task exists for this agent. Inspect the roadmap, ledger, recommendations, and bus, then create at least three new READY tasks that reduce conditionality, improve auditability, or repair the agentic infrastructure.
+Decompose the Clay-level Yang-Mills goal into formal milestones, assumptions, bridges, blockers, and Codex-ready implementation tasks.
 
 Validation requirements:
-- registry/agent_tasks.yaml contains at least three READY tasks
+- FORMALIZATION_ROADMAP_CLAY.md contains milestone sections
+- UNCONDITIONALITY_LEDGER.md tracks all conditional dependencies
+- registry/agent_tasks.yaml contains at least three Clay-reduction tasks
 
 Stop conditions:
-- Roadmap and ledger are missing
-- Cannot write registry/agent_tasks.yaml
+- Any section claims the Clay problem is solved without formal evidence
 
 Required updates:
+- AGENT_BUS.md
 - registry/agent_tasks.yaml
 - registry/agent_history.jsonl
 - dashboard/agent_state.json
-- AGENT_BUS.md
+- COWORK_RECOMMENDATIONS.md
+- registry/recommendations.yaml
 
 Next exact instruction:
-> Cowork, create at least three READY tasks from the roadmap, ledger, recommendations, and bus; validate that the queue is actionable; then hand off to the appropriate next agent.
+> Cowork, take task `CLAY-ROADMAP-001`. Read the files above, perform the objective, run or satisfy the validation requirements, update the required registries, and stop if any listed stop condition is met.
+
+=== py_compile ===
 

@@ -4,6 +4,56 @@ Human-readable Cowork recommendation and audit log.
 
 ---
 
+## 2026-04-26T07:00:00Z — AUDIT_PASS: COWORK-AUDIT-AUTOCONTINUE-001 (closes AUTOCONTINUE-001)
+
+**Audit result**: `AUDIT_PASS`. AUTOCONTINUE-001 marked DONE. COWORK-AUDIT-AUTOCONTINUE-001 marked DONE. REC-AUDIT-AUTOCONTINUE-MIRROR-001 closed (RESOLVED). REC-BOOTSTRAP-001 closed (RESOLVED).
+
+**Evidence reviewed**:
+
+1. `dashboard/autocontinue_validation.txt` (159 lines) — literal stdout of all four commands:
+   - `python C:\Users\lluis\Downloads\codex_autocontinue.py Codex`
+   - `python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork`
+   - `python scripts\agent_next_instruction.py Codex`
+   - `python scripts\agent_next_instruction.py Cowork`
+2. `dashboard/codex_autocontinue_snapshot.py` (419 lines) — full snapshot of `C:\Users\lluis\Downloads\codex_autocontinue.py`.
+
+**Seven-criterion audit** (per task COWORK-AUDIT-AUTOCONTINUE-001 objective):
+
+| Criterion | Result | Evidence |
+|---|---|---|
+| (a) Structured dispatch | PASS | All 4 stdouts include task id, role, files to read, objective, validation, stop conditions, required updates, next exact instruction. |
+| (b) History recorded | PASS | Watcher + CLI both delegate via `runpy` to `scripts/agent_next_instruction.py` whose history append is file-locked (`registry/agent_dispatch.lock`). |
+| (c) Both roles supported | PASS | Snapshot line 407 `argparse` choices `["Codex", "Cowork"]`; line 171–172 raises on unknown role; watcher loads two `WatchedApp` instances. |
+| (d) No generic continuation | PASS | The forbidden phrase string is **absent from the snapshot source** entirely. Where validation.txt echoes the AUTOCONTINUE-001 objective text it is rendered as `[forbidden generic phrase redacted]` — the dispatcher honours the forbidden-phrase rule even on echoed task descriptions. |
+| (e) Future work preserved | PASS | `repo_codex` / `repo_cowork` sections (validation.txt lines 88–158) show `META-GENERATE-TASKS-001` dispatched with explicit instruction to create ≥ 3 new READY tasks when queue empties. |
+| (f) Faithful mirror of canonical dispatcher | PASS (BETTER) | Snapshot lines 173–176: `runpy.run_path(str(CANONICAL_DISPATCHER))`, then `namespace["build_message"](agent_role)`. The script does **not** reimplement dispatcher logic — it loads it at runtime. **Silent divergence is structurally impossible**: only one source of truth (`scripts/agent_next_instruction.py`). |
+| (g) Clay honesty | PASS | No overclaim phrases generated. Dispatcher only echoes `agent_tasks.yaml` fields. The `claim_policy` in `dashboard/agent_state.json` is preserved through every dispatch. |
+
+**Bonus observations** (defensive engineering noted, no action required):
+
+- Snapshot has FAILSAFE handling (lines 378–387), ghost-send detection (lines 354–364, prevents 1000 fake-clicks against an unfocused window), sanity bounds (line 48), pause/cooldown logic (lines 50–58), threshold-based ready/busy detection (lines 42–43, 232–235), and per-app calibration mode (lines 118–165).
+- The `runpy` delegation pattern is the right architectural choice. It pays a tiny runtime cost (re-import the dispatcher per CLI call) but eliminates a whole class of audit bugs.
+
+**Tasks created (Cowork-as-task-router, per CLAY-ROADMAP-001 §validation: "≥ 3 Clay-reduction tasks")**:
+
+- `CLAY-F3-COUNT-RECURSIVE-001` (READY, owner Codex, priority 5) — F3 recursive deletion / parent map per AXIOM_FRONTIER v2.44.0. Active Clay-reduction frontier.
+- `CLAY-EXP-RETIRE-7-001` (READY, owner Codex, priority 6) — retire 7 SU(N) generator-data Experimental axioms (~250 LOC, no Mathlib gap).
+- `CLAY-MATHLIB-PR-LANDING-001` (READY, owner Codex, priority 7) — first Mathlib PR submission (`MatrixExp_DetTrace_DimOne_PR.lean`, closes literal Mathlib TODO).
+
+**Ledger updates** (`UNCONDITIONALITY_LEDGER.md`):
+
+- Row `AUTOCONTINUE` : `CONDITIONAL_BRIDGE` → `INFRA_AUDITED`. Evidence: `dashboard/autocontinue_validation.txt` + `dashboard/codex_autocontinue_snapshot.py` + the runpy-delegation invariant.
+- Row `AGENTIC-INFRA` : `CONDITIONAL_BRIDGE` → `INFRA_AUDITED`. Bootstrap files in place, COMMUNICATION_CONTRACT 13 clauses active, AUTOCONTINUE audited.
+- Row `CLAY-GOAL` : unchanged (`BLOCKED`). The agentic infrastructure is now sound; the Clay-reduction work itself begins under `CLAY-F3-COUNT-RECURSIVE-001`.
+
+**Honesty preservation**:
+
+- No row in `UNCONDITIONALITY_LEDGER.md` was upgraded to `FORMAL_KERNEL` outside the meta-infrastructure rows. The mathematical content is unchanged.
+- No claim about Clay-level progress was made.
+- The "ledger graduation" of AUTOCONTINUE / AGENTIC-INFRA is **infrastructure-only** — these rows exist to track the agentic system, not the Yang-Mills mathematics.
+
+---
+
 ## 2026-04-26 — Audit entry: COMMUNICATION_CONTRACT bootstrap + AUTOCONTINUE-001 revert
 
 **Audit result**: `AUDIT_PARTIAL` — in-repo dispatcher passes; Downloads-side autocontinue cannot be verified from this Cowork sandbox.

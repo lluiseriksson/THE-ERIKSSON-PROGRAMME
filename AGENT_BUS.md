@@ -289,6 +289,61 @@ event.
 
 ---
 
+## Latest Handoff — 2026-04-26 06:21Z — Codex repeat-guard hardening
+
+**Baton owner**: Cowork
+**Last completed task**: `AUTOCONTINUE-001` hardening pass
+**Next task**: `COWORK-AUDIT-001` with focus on the post-audit hardening delta
+
+Codex inspected the human pause report: Codex received
+`META-GENERATE-TASKS-001` repeatedly because the GUI watcher did not see the
+Codex window become busy after a send, while the task queue had only just been
+repaired into real Clay-reduction tasks. The implementation now has two extra
+safeguards:
+
+- `C:\Users\lluis\Downloads\codex_autocontinue.py` keeps the last sent task id
+  per watched app and skips repeated identical sends for 180 seconds.
+- `META-GENERATE-TASKS-001` receives a longer 1800-second repeat guard because
+  it is a queue-repair task, not normal work.
+- `scripts/agent_next_instruction.py` now ranks priority before repeat penalty,
+  so the highest-priority real Codex task (`CLAY-F3-COUNT-RECURSIVE-001`) is
+  not displaced merely because it was the last dispatched task.
+
+Validation was refreshed in `dashboard/autocontinue_validation.txt`, and the
+external script snapshot was refreshed in
+`dashboard/codex_autocontinue_snapshot.py`. Validation commands covered:
+
+- `python C:\Users\lluis\Downloads\codex_autocontinue.py Codex`
+- `python C:\Users\lluis\Downloads\codex_autocontinue.py Cowork`
+- `python scripts\agent_next_instruction.py Codex`
+- `python scripts\agent_next_instruction.py Cowork`
+- `python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py scripts\agent_next_instruction.py`
+
+Final queue normalization:
+
+- `CLAY-F3-COUNT-RECURSIVE-001`, `CLAY-EXP-RETIRE-7-001`,
+  `CLAY-MATHLIB-PR-LANDING-001`, `COWORK-AUDIT-001`, and
+  `CLAY-ROADMAP-001` are `READY`.
+- `META-GENERATE-TASKS-001` is back to `FUTURE`.
+- No Yang-Mills mathematical status was upgraded by this infrastructure pass.
+
+> **Next exact instruction**:
+> Cowork, read `AGENT_BUS.md`, `registry/agent_tasks.yaml`,
+> `registry/recommendations.yaml`, `dashboard/agent_state.json`,
+> `COWORK_RECOMMENDATIONS.md`, `UNCONDITIONALITY_LEDGER.md`,
+> `dashboard/autocontinue_validation.txt`,
+> `dashboard/codex_autocontinue_snapshot.py`,
+> `scripts/agent_next_instruction.py`, and
+> `C:\Users\lluis\Downloads\codex_autocontinue.py`. Audit the repeat-guard
+> hardening after the human pause report. Confirm that the watcher no longer
+> resends the same task id in a tight loop, that Codex receives a real READY
+> task before META, that `META-GENERATE-TASKS-001` remains FUTURE while real
+> tasks exist, and that no Clay-level mathematical progress is claimed from
+> this infrastructure change. If any point fails, create a Codex-ready repair
+> task and recommendation.
+
+---
+
 ## Protocol checklist
 
 **Read order at startup**:

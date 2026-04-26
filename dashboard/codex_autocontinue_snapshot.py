@@ -69,6 +69,12 @@ FAILSAFE_RECOVERY_SECONDS = 5.0
 GHOST_SEND_LIMIT = 5          # nº de envíos seguidos sin ver "ocupado"
 GHOST_PAUSE_SECONDS = 30.0    # cuánto pausar la app si se detecta
 
+# Even when the screen detector cannot confirm that an app became busy, do not
+# resend the exact same task id in a tight loop. META tasks get a longer pause
+# because they are queue-repair tasks, not normal work assignments.
+REPEAT_TASK_PAUSE_SECONDS = 180.0
+META_TASK_PAUSE_SECONDS = 1800.0
+
 CODEX_CFG = Path("codex_coords.json")
 CODEX_REF = Path("codex_send.png")
 COWORK_CFG = Path("cowork_coords.json")
@@ -176,6 +182,19 @@ def build_dispatch_message(agent_role):
     return namespace["build_message"](agent_role)
 
 
+def extract_task_id(message):
+    for line in message.splitlines():
+        if line.startswith("Task id:"):
+            return line.split(":", 1)[1].strip()
+    return "<unknown>"
+
+
+def repeat_pause_seconds(task_id):
+    if task_id == "META-GENERATE-TASKS-001":
+        return META_TASK_PAUSE_SECONDS
+    return REPEAT_TASK_PAUSE_SECONDS
+
+
 def send_reply(box_x, box_y, message):
     prev = pyautogui.position()
     safe_move_to(box_x, box_y, duration=0.15)
@@ -211,6 +230,9 @@ class WatchedApp:
         # Detección de envío fantasma
         self.ghost_streak = 0
         self.paused_until = 0.0
+        self.last_sent_task_id = None
+        self.last_sent_at = 0.0
+        self.last_confirmed_busy_at = 0.0
 
     def load(self):
         if not (self.cfg_path.exists() and self.ref_path.exists()):
@@ -316,13 +338,26 @@ def run():
 
             for app in ready_apps:
                 message = build_dispatch_message(app.name)
-                task_line = next(
-                    (line for line in message.splitlines() if line.startswith("Task id:")),
-                    "Task id: <unknown>",
-                )
+                task_id = extract_task_id(message)
+                task_line = f"Task id: {task_id}"
+                now = time.time()
+                pause_seconds = repeat_pause_seconds(task_id)
+                if (app.last_sent_task_id == task_id
+                        and now - app.last_sent_at < pause_seconds):
+                    remaining = int(round(pause_seconds - (now - app.last_sent_at)))
+                    app.paused_until = max(app.paused_until,
+                                           app.last_sent_at + pause_seconds)
+                    app.stable_ready = 0
+                    app.armed = True
+                    print(f"[SKIP] {app.name}: {task_line} already sent; "
+                          f"repeat guard active for {remaining}s.")
+                    continue
+
                 print(f"[OK] {app.name} listo. Enviando #{app.sends+1}: {task_line}")
                 send_reply(app.box_x, app.box_y, message)
                 app.sends += 1
+                app.last_sent_task_id = task_id
+                app.last_sent_at = time.time()
                 app.stable_ready = 0
                 app.armed = False
 
@@ -338,6 +373,7 @@ def run():
                     if not r:
                         app.armed = True
                         rearmed_with_busy = True
+                        app.last_confirmed_busy_at = time.time()
                         print(f"  [{app.name}] ocupado confirmado "
                               f"(d={d:.1f}), rearmado.")
                         break

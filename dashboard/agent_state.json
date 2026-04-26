@@ -1,33 +1,51 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "agentic_coordination_bootstrap",
+  "current_phase": "clay_reduction_active",
   "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-AUDIT-AUTOCONTINUE-001",
+  "next_task_id": "COWORK-AUDIT-001",
   "last_completed_task": "AUTOCONTINUE-001",
-  "last_dispatched_task": "COWORK-AUDIT-AUTOCONTINUE-001",
-  "last_dispatched_agent": "Cowork",
+  "last_dispatched_task": null,
+  "last_dispatched_agent": null,
   "open_blockers": [],
-  "open_recommendations": [
-    "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
-    "REC-BOOTSTRAP-001"
-  ],
+  "open_recommendations": [],
   "unconditionality_status": "NOT_ESTABLISHED",
   "claim_policy": "Never claim Clay-level completion without complete formal evidence.",
   "always_has_next_task": true,
-  "last_dispatch_at": "2026-04-26T06:10:00Z",
+  "resolved_recommendations": [
+    "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
+    "REC-BOOTSTRAP-001"
+  ],
+  "last_dispatch_at": "2026-04-26T06:21:05Z",
   "latest_validation_artifact": "dashboard/autocontinue_validation.txt",
   "audit_state": {
     "in_repo_dispatcher": "PASS",
     "communication_contract": "PASS",
-    "downloads_autocontinue": "VALIDATED_BY_CODEX_PENDING_COWORK_AUDIT",
+    "downloads_autocontinue": "AUDIT_PASS_WITH_REPEAT_GUARD_HARDENING_PENDING_COWORK_RECHECK",
     "lean_oracle_discipline": "PASS (0 sorries, 0 non-Experimental axioms)",
     "lake_build_full": "INTEGRATION_PENDING (15-min timeout on v2.42 sync)"
   },
   "communication_contract_active": true,
   "communication_contract_clauses": 13,
   "future_audit_tasks": [
-    "COWORK-AUDIT-AUTOCONTINUE-001",
-    "COWORK-AUDIT-001"
-  ]
+    "COWORK-AUDIT-001",
+    "COWORK-AUDIT-CLAY-F3-COUNT-RECURSIVE-001 (auto-create on completion)"
+  ],
+  "active_clay_reduction_tasks": [
+    "CLAY-F3-COUNT-RECURSIVE-001",
+    "CLAY-EXP-RETIRE-7-001",
+    "CLAY-MATHLIB-PR-LANDING-001"
+  ],
+  "ledger_status": {
+    "AUTOCONTINUE": "INFRA_AUDITED",
+    "AGENTIC-INFRA": "INFRA_AUDITED",
+    "CLAY-GOAL": "BLOCKED",
+    "L1-HAAR": "FORMAL_KERNEL (98%)",
+    "L2.4-SCHUR": "FORMAL_KERNEL (100%)",
+    "L2.5-FROBENIUS": "FORMAL_KERNEL (100%)",
+    "L2.6-CHARACTER": "FORMAL_KERNEL (100%)",
+    "F3-COUNT": "CONDITIONAL_BRIDGE (active — recursive deletion / parent map pending)",
+    "F3-MAYER": "BLOCKED (gated on F3-COUNT closure)",
+    "EXP-SUN-GEN": "EXPERIMENTAL (7 axioms, easy retire)"
+  }
 }
