@@ -1,11 +1,11 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_origin_certificate_code_injection_blocked_at_noncircular_data",
+  "current_phase": "f3_origin_certificate_code_injection_minimal_frontier_confirmed",
   "current_baton_owner": "Codex",
-  "next_task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001",
-  "last_completed_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001",
-  "last_dispatched_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001",
+  "next_task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001",
+  "last_completed_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001",
+  "last_dispatched_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001",
   "last_dispatched_agent": "Codex",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists",
@@ -42,9 +42,9 @@
     "REC-COWORK-DISPATCH-RATE-LIMIT-AUDIT-SLOT-001",
     "REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002"
   ],
-  "last_dispatch_at": "2026-04-28T06:02:00Z",
-  "last_completed_at": "2026-04-28T09:55:00Z",
-  "latest_validation_artifact": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001 produced dashboard/f3_base_zone_origin_certificate_code_injection_frontier_recheck_v2_240.md. The origin-certificate code-injection frontier is not closed: the only visible named Lean bridge from another F3 interface is the disallowed downstream PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296 route. Exact blocker is non-circular construction of PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData. No Lean file was edited; YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "last_dispatch_at": "2026-04-28T06:07:06Z",
+  "last_completed_at": "2026-04-28T10:15:00Z",
+  "latest_validation_artifact": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001 produced dashboard/f3_base_zone_origin_certificate_code_injection_structural_source_scope_v2_241.md. The v2.228 code-injection data carrier is confirmed as the minimal honest frontier unless a concrete upstream invariant is found; no strictly upstream named theorem narrower than the carrier was identified, and downstream residual-value interfaces remain disallowed. No Lean file was edited; YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
   "f3_base_zone_residual_value_code_separation_interface_v2_234": {
     "status": "DONE_INTERFACE_AND_BRIDGE_LANDED",
     "artifact": "dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md",
@@ -171,6 +171,20 @@
     "next_codex_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001",
     "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
     "updated_at": "2026-04-28T09:55:00Z"
+  },
+  "f3_base_zone_origin_certificate_code_injection_structural_source_scope_v2_241": {
+    "status": "DONE_SCOPE_MINIMAL_FRONTIER_CONFIRMED",
+    "artifact": "dashboard/f3_base_zone_origin_certificate_code_injection_structural_source_scope_v2_241.md",
+    "task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001",
+    "scoped_frontier": "PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296",
+    "minimal_frontier": "PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData",
+    "exact_blocker": "Direct construction of PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData from v2.121 bookkeeping/base-zone residual data.",
+    "bridge_direction": "PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296 -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296",
+    "rejected_route": "PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296 and downstream residual-value realization/separation interfaces are not proof evidence for this frontier.",
+    "validation": "Dashboard-only scope; no Lean file edited and no lake build required. YAML/JSON/JSONL validation passed.",
+    "next_codex_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001",
+    "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
+    "updated_at": "2026-04-28T10:15:00Z"
   },
   "cowork_workspace_mount_dispatch_suspension": {
     "status": "DONE_COWORK_DISPATCH_SUSPENDED_UNTIL_MOUNT_AVAILABLE",
@@ -2702,8 +2716,8 @@
   },
   "last_dispatch_by_agent": {
     "Codex": {
-      "task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001",
-      "at": "2026-04-28T06:02:00Z"
+      "task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001",
+      "at": "2026-04-28T06:07:06Z"
     },
     "Cowork": {
       "task_id": "META-GENERATE-TASKS-001",

@@ -9,6 +9,48 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T10:15:00Z - CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001 DONE_SCOPE_MINIMAL_FRONTIER_CONFIRMED
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001`
+**Status**: `DONE_SCOPE_MINIMAL_FRONTIER_CONFIRMED`
+
+Codex scoped the non-circular structural source question for:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+
+No strictly upstream named theorem was found that is narrower than the v2.228
+carrier and independent of downstream residual-value source/realization/separation
+interfaces.
+
+Minimal honest frontier:
+
+    Direct construction of PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData
+
+This requires a selector-independent `Fin 1296` code on the whole residual
+subtype plus selected-admissible equality-reflection for values carrying
+terminal-neighbor selector data from essential parents.
+
+Dashboard artifact:
+
+    dashboard/f3_base_zone_origin_certificate_code_injection_structural_source_scope_v2_241.md
+
+Validation:
+
+- Dashboard-only scope; no Lean file was edited.
+- No new theorem or theorem-specific axiom trace was introduced.
+- F3-COUNT remains `CONDITIONAL_BRIDGE`; no status or percentage moved.
+
+Next Codex task:
+
+    CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001
+
+That task should inventory concrete v2.121 bookkeeping/base-zone invariants
+that could construct the v2.228 carrier directly, without downstream
+residual-value interfaces.
+
+---
+
 ## Latest Handoff - 2026-04-28T09:55:00Z - CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001 DONE_NO_CLOSURE_NONCIRCULAR_CODE_INJECTION_DATA_MISSING
 
 **Baton owner**: Codex
