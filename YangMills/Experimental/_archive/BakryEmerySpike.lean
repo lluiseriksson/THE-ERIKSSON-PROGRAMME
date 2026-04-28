@@ -4,6 +4,17 @@ import YangMills.P8_PhysicalGap.SUN_StateConstruction
 
 open MeasureTheory Real
 
+/-
+[SPIKE - ARCHIVED]
+
+Archived by CODEX-EXPERIMENTAL-BAKRYEMERY-SPIKE-CLASSIFY-001 on 2026-04-26.
+
+This file is preserved as historical reconnaissance only. It is not imported
+by active `YangMills/` modules and must not be counted in the active
+Experimental axiom inventory. The text below discusses a possible one-axiom
+merge shape, but it intentionally contains no active Lean axiom declaration.
+-/
+
 /-!
 # Bakry-Émery Spike
 
@@ -54,8 +65,8 @@ Step B: Ric → BakryEmeryCD requires Bochner-Weitzenböck formula on Lie groups
 This is a Mathlib gap (differential geometry on Lie groups).
 
 ### Can we reduce 2 axioms → 1?
-Option: merge into single axiom `sun_haar_satisfies_lsi`:
-  axiom sun_haar_satisfies_lsi (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) :
+Option: merge into a single hypothetical declaration `sun_haar_satisfies_lsi`:
+  hypothetical declaration sun_haar_satisfies_lsi (N_c : ℕ) [NeZero N_c] (hN_c : 2 ≤ N_c) :
       LogSobolevInequality (sunHaarProb N_c) (sunDirichletForm_concrete N_c) ((N_c : ℝ) / 4)
 
 Net: 2 → 1 axiom, but LOSES the factorization structure.

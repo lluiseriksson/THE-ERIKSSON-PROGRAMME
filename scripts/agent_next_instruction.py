@@ -47,7 +47,7 @@ EXTERNAL_AUTOCONTINUE = Path(r"C:\Users\lluis\Downloads\codex_autocontinue.py")
 VALID_AGENTS = {"Codex", "Cowork"}
 PRIMARY_STATUSES = {"READY": 0, "PARTIAL": 1}
 FALLBACK_STATUSES = {"IN_PROGRESS": 2, "FUTURE": 3}
-NEVER_DISPATCH = {"DONE", "CANCELLED", "BLOCKED"}
+NEVER_DISPATCH = {"DONE", "CANCELLED", "BLOCKED", "SUPERSEDED"}
 COMPLETION_VERDICTS = {
     "AUDIT_PASS",
     "AUDIT_FAIL",
@@ -57,10 +57,38 @@ COMPLETION_VERDICTS = {
     "CANCELLED",
 }
 STALE_HOURS = 6
-RECENT_REPEAT_SUPPRESS_SECONDS = 60
+GHOST_IN_PROGRESS_DIAGNOSTIC_SECONDS = 60
+DIAGNOSTIC_STALE_UNCONFIRMED_HOURS = 24
+RECENT_REPEAT_SUPPRESS_SECONDS = 300
 LOCK_POLL_SECONDS = 0.1
 LOCK_TIMEOUT_SECONDS = 30
+CONFIRMED_DELIVERY_STATES = {"CONFIRMED_BUSY", "CONFIRMED_DELIVERY"}
+UNCONFIRMED_DELIVERY_STATES = {
+    "DISPATCH_MUTATED_PENDING_CONFIRMATION",
+    "UNCONFIRMED_SEND_RETRY_PENDING",
+    "ABANDONED_UNCONFIRMED",
+    "QUARANTINED_UNCONFIRMED",
+}
 VERSIONED_COWORK_AUDIT = re.compile(r"^COWORK-AUDIT-CODEX-V(\d+(?:\.\d+)*)")
+CODEX_TASK_ID_RE = re.compile(r"\bCODEX-[A-Z0-9][A-Z0-9._-]*-\d{3}\b")
+COWORK_AUDIT_SUBSTRATE_WAIT_SECONDS = 15 * 60
+COWORK_POLLING_TASK_PREFIXES = (
+    "COWORK-LEDGER-FRESHNESS-AUDIT",
+    "COWORK-DELIVERABLES-CONSISTENCY-AUDIT",
+    "COWORK-DELIVERABLES-INDEX-REFRESH",
+    "COWORK-AUDIT-FRESH-PERCENTAGE-MOVE",
+    "COWORK-AUDIT-MATHLIB-PR-DRAFT-STATUS",
+)
+META_TASK_IDS = {"META-GENERATE-TASKS-001", "META-DISPATCHER-FAILSAFE-001"}
+
+
+class YAMLRegistryError(RuntimeError):
+    """Raised when a shared YAML registry cannot be parsed."""
+
+    def __init__(self, path: Path, original: BaseException):
+        self.path = path
+        self.original = original
+        super().__init__(f"{path}: {original}")
 
 
 INITIAL_TASKS = [
@@ -516,7 +544,10 @@ def coordination_lock():
 def load_yaml(path: Path) -> dict[str, Any]:
     if not path.exists() or path.read_text(encoding="utf-8").strip() == "":
         return {}
-    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    except yaml.YAMLError as exc:
+        raise YAMLRegistryError(path, exc) from exc
     return data if isinstance(data, dict) else {}
 
 
@@ -588,12 +619,34 @@ def parse_time(value: Any) -> datetime:
         return datetime.min.replace(tzinfo=timezone.utc)
 
 
+def task_age_seconds(task: dict[str, Any]) -> float:
+    updated = parse_time(task.get("dispatched_at") or task.get("updated_at"))
+    return (datetime.now(timezone.utc) - updated).total_seconds()
+
+
+def delivery_state(task: dict[str, Any]) -> str:
+    return str(task.get("delivery_state", "")).upper()
+
+
+def dispatch_confirmed(task: dict[str, Any]) -> bool:
+    return bool(task.get("delivery_confirmed_at")) or delivery_state(task) in CONFIRMED_DELIVERY_STATES
+
+
+def has_completion_evidence(task: dict[str, Any]) -> bool:
+    if task.get("completed_at") or task.get("result"):
+        return True
+    verdict = str(task.get("audit_verdict", "")).upper()
+    if verdict in COMPLETION_VERDICTS:
+        return True
+    return bool(task.get("delivery_artifact") or task.get("deliverable"))
+
+
 def is_stale(task: dict[str, Any]) -> bool:
     if task.get("status") != "IN_PROGRESS":
         return False
-    updated = parse_time(task.get("dispatched_at") or task.get("updated_at"))
-    age = datetime.now(timezone.utc) - updated
-    return age.total_seconds() >= STALE_HOURS * 3600
+    if not dispatch_confirmed(task):
+        return False
+    return task_age_seconds(task) >= STALE_HOURS * 3600
 
 
 def is_blocked(task: dict[str, Any]) -> bool:
@@ -630,6 +683,88 @@ def effectively_closed(task: dict[str, Any]) -> bool:
     return False
 
 
+def dispatch_unconfirmed(task: dict[str, Any]) -> bool:
+    if delivery_state(task) in UNCONFIRMED_DELIVERY_STATES:
+        return True
+    notes = task.get("notes", [])
+    if isinstance(notes, str):
+        notes = [notes]
+    if isinstance(notes, list):
+        return any("UNCONFIRMED" in str(note).upper() for note in notes)
+    return False
+
+
+def stale_in_progress_diagnostic(task: dict[str, Any]) -> str | None:
+    if task.get("status") != "IN_PROGRESS" or effectively_closed(task):
+        return None
+    age_seconds = task_age_seconds(task)
+    if age_seconds < GHOST_IN_PROGRESS_DIAGNOSTIC_SECONDS:
+        return None
+    if diagnostic_stale_unconfirmed_in_progress(task):
+        return "DIAGNOSTIC_STALE_UNCONFIRMED_IN_PROGRESS"
+    if dispatch_unconfirmed(task):
+        return "UNCONFIRMED_IN_PROGRESS"
+    if not dispatch_confirmed(task) and age_seconds >= STALE_HOURS * 3600:
+        return "STALE_WITHOUT_DELIVERY_CONFIRMATION"
+    return None
+
+
+def diagnostic_stale_unconfirmed_in_progress(task: dict[str, Any]) -> bool:
+    """Quarantine old ghost dispatches as diagnostic-only, never as DONE.
+
+    This path is intentionally narrower than normal stale recycling: it applies
+    only to aged IN_PROGRESS tasks with no confirmed delivery and no completion
+    evidence.  The task remains in the registry for auditability, but it is not
+    treated as actionable fallback work after the 24h diagnostic threshold.
+    """
+    if task.get("status") != "IN_PROGRESS":
+        return False
+    if effectively_closed(task):
+        return False
+    if dispatch_confirmed(task) or has_completion_evidence(task):
+        return False
+    if task_age_seconds(task) < DIAGNOSTIC_STALE_UNCONFIRMED_HOURS * 3600:
+        return False
+    return dispatch_unconfirmed(task) or bool(task.get("dispatched_at"))
+
+
+def unconfirmed_in_progress_requeue_candidate(task: dict[str, Any], agent: str) -> bool:
+    if task.get("status") != "IN_PROGRESS":
+        return False
+    owner = task.get("owner", "Any")
+    if owner not in {agent, "Any"}:
+        return False
+    if task.get("dispatched_to") not in {None, agent}:
+        return False
+    if dispatch_confirmed(task) or has_completion_evidence(task):
+        return False
+    if diagnostic_stale_unconfirmed_in_progress(task):
+        return False
+    if delivery_state(task) not in UNCONFIRMED_DELIVERY_STATES:
+        return False
+    return task_age_seconds(task) >= GHOST_IN_PROGRESS_DIAGNOSTIC_SECONDS
+
+
+def in_progress_diagnostics_for(agent: str, tasks: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    diagnostics: list[dict[str, Any]] = []
+    for task in tasks:
+        owner = task.get("owner", "Any")
+        if owner not in {agent, "Any"}:
+            continue
+        reason = stale_in_progress_diagnostic(task)
+        if reason:
+            diagnostics.append(
+                {
+                    "task_id": task.get("id"),
+                    "reason": reason,
+                    "dispatched_to": task.get("dispatched_to"),
+                    "delivery_state": task.get("delivery_state"),
+                    "age_seconds": round(task_age_seconds(task), 1),
+                }
+            )
+    return diagnostics
+
+
 def task_text(task: dict[str, Any]) -> str:
     parts: list[str] = []
     for key in ("id", "title", "objective"):
@@ -653,6 +788,23 @@ def parse_version_tuple(version: str) -> tuple[int, ...]:
     return tuple(int(part) for part in version.split(".") if part.isdigit())
 
 
+def normalize_version_tuple(version: tuple[int, ...], width: int = 3) -> tuple[int, ...]:
+    """Compare v2.64 and v2.64.0 as the same frontier version."""
+    if len(version) >= width:
+        return version
+    return version + (0,) * (width - len(version))
+
+
+def version_gt(left: tuple[int, ...], right: tuple[int, ...]) -> bool:
+    width = max(len(left), len(right), 3)
+    return normalize_version_tuple(left, width) > normalize_version_tuple(right, width)
+
+
+def version_gte(left: tuple[int, ...], right: tuple[int, ...]) -> bool:
+    width = max(len(left), len(right), 3)
+    return normalize_version_tuple(left, width) >= normalize_version_tuple(right, width)
+
+
 def axiom_frontier_has_version_at_least(threshold: str) -> bool:
     if not (REPO_ROOT / "AXIOM_FRONTIER.md").exists():
         return False
@@ -661,7 +813,7 @@ def axiom_frontier_has_version_at_least(threshold: str) -> bool:
     )
     wanted = parse_version_tuple(threshold)
     for match in re.finditer(r"^#\s+v(\d+(?:\.\d+)*)", text, re.MULTILINE):
-        if parse_version_tuple(match.group(1)) >= wanted:
+        if version_gte(parse_version_tuple(match.group(1)), wanted):
             return True
     return False
 
@@ -701,7 +853,7 @@ def superseded_by_newer_cowork_audit(
     if current is None:
         return False
     latest_frontier = axiom_frontier_latest_version()
-    if latest_frontier is not None and latest_frontier > current:
+    if latest_frontier is not None and version_gt(latest_frontier, current):
         return True
     for other in tasks:
         if other is task:
@@ -711,7 +863,7 @@ def superseded_by_newer_cowork_audit(
         if effectively_closed(other):
             continue
         other_version = versioned_cowork_audit_version(other)
-        if other_version is not None and other_version > current:
+        if other_version is not None and version_gt(other_version, current):
             return True
     return False
 
@@ -759,6 +911,130 @@ def task_status(tasks: list[dict[str, Any]], task_id: str) -> str | None:
     return None
 
 
+def task_by_id(tasks: list[dict[str, Any]], task_id: str) -> dict[str, Any] | None:
+    for item in tasks:
+        if item.get("id") == task_id:
+            return item
+    return None
+
+
+def _extend_text_from_value(parts: list[str], value: Any) -> None:
+    if isinstance(value, str):
+        parts.append(value)
+    elif isinstance(value, list):
+        parts.extend(str(item) for item in value)
+
+
+def codex_substrate_ids_for_cowork_audit(task: dict[str, Any]) -> list[str]:
+    """Return concrete Codex task ids named by a Cowork audit slot.
+
+    This is a rate-limit guard for audit slots, not a polling-spam gate.  It only
+    applies to Cowork audit tasks that explicitly name a Codex substrate task.
+    Version labels embedded in audit-family ids such as
+    `COWORK-AUDIT-CODEX-V2.169-...` are ignored because they are audit names,
+    not Codex substrate task ids.
+    """
+    if task.get("owner") != "Cowork":
+        return []
+    task_id = str(task.get("id", ""))
+    if not task_id.startswith("COWORK-AUDIT-CODEX-"):
+        return []
+
+    parts: list[str] = []
+    for key in (
+        "id",
+        "title",
+        "objective",
+        "source_task",
+        "source_recommendation",
+        "audit_summary",
+        "deferral_reason",
+        "abandonment_reason",
+    ):
+        _extend_text_from_value(parts, task.get(key))
+    for key in ("notes", "validation", "stop_if"):
+        _extend_text_from_value(parts, task.get(key))
+
+    ids = {
+        match.group(0)
+        for text in parts
+        for match in CODEX_TASK_ID_RE.finditer(text)
+        if not re.match(r"^CODEX-V\d", match.group(0))
+    }
+    return sorted(ids)
+
+
+def substrate_task_completed(
+    task_id: str,
+    tasks: list[dict[str, Any]],
+    seen: set[str] | None = None,
+) -> bool:
+    seen = set() if seen is None else seen
+    if task_id in seen:
+        return False
+    seen.add(task_id)
+    task = task_by_id(tasks, task_id)
+    if task is not None:
+        if effectively_closed(task) or str(task.get("status", "")).upper() == "DONE":
+            return True
+        for key in ("superseded_by", "resolved_by", "completed_by"):
+            successor = task.get(key)
+            if isinstance(successor, str) and successor and successor != task_id:
+                if substrate_task_completed(successor, tasks, seen):
+                    return True
+    return history_has_task_status(
+        task_id,
+        {"task_completed", "DONE", "RESOLVED", "AUDIT_PASS"},
+    )
+
+
+def cowork_audit_waiting_on_unlanded_substrate(
+    task: dict[str, Any],
+    tasks: list[dict[str, Any]],
+) -> tuple[bool, str]:
+    """Defer repeated Cowork audit slots until their Codex substrate lands.
+
+    Cowork should stay busy, but not by repeatedly auditing the same absent
+    substrate.  If at least one named substrate is already complete, the audit is
+    allowed.  If no named substrate is known to the registry/history, the audit is
+    also allowed so Cowork can diagnose the mismatch rather than being hidden.
+    """
+    substrate_ids = codex_substrate_ids_for_cowork_audit(task)
+    if not substrate_ids:
+        return False, ""
+
+    known_substrates = [
+        task_id for task_id in substrate_ids
+        if task_by_id(tasks, task_id) is not None
+        or history_has_task_status(
+            task_id,
+            {"dispatch_task", "task_completed", "DONE", "RESOLVED", "AUDIT_PASS"},
+        )
+    ]
+    if not known_substrates:
+        return False, ""
+    if any(substrate_task_completed(task_id, tasks) for task_id in known_substrates):
+        return False, ""
+
+    dispatched_at = parse_time(task.get("dispatched_at"))
+    if dispatched_at != datetime.min.replace(tzinfo=timezone.utc):
+        age = (datetime.now(timezone.utc) - dispatched_at).total_seconds()
+        if age < COWORK_AUDIT_SUBSTRATE_WAIT_SECONDS:
+            return True, (
+                "AUDIT_SUBSTRATE_PENDING_RECENT:"
+                + ",".join(known_substrates)
+            )
+    return True, "AUDIT_SUBSTRATE_PENDING:" + ",".join(known_substrates)
+
+
+def is_cowork_polling_task_id(task_id: str) -> bool:
+    # META tasks create new actionable work; they must never be throttled as
+    # Cowork polling audits.
+    if task_id in META_TASK_IDS or task_id.startswith("META-"):
+        return False
+    return any(task_id.startswith(prefix) for prefix in COWORK_POLLING_TASK_PREFIXES)
+
+
 def future_trigger_state(
     task: dict[str, Any],
     tasks: list[dict[str, Any]],
@@ -771,7 +1047,53 @@ def future_trigger_state(
     """
     text = task_text(task)
     lower = text.lower()
-    if "auto-promote" not in lower and "auto-promotes" not in lower:
+    trigger_state = str(task.get("trigger_state", "")).strip().upper()
+    trigger_name = str(task.get("trigger", "")).strip()
+    if trigger_state:
+        fired_states = {"FIRED", "TRIGGER_FIRED", "READY", "ACTIVATED"}
+        if trigger_state in fired_states:
+            return True, f"TRIGGER_STATE:{trigger_state}"
+        if log_miss:
+            append_history(
+                {
+                    "time": utc_now(),
+                    "event": "trigger_not_fired",
+                    "agent": "dispatcher",
+                    "task_id": task.get("id"),
+                    "reason": f"TRIGGER_STATE_{trigger_state}",
+                }
+            )
+        return False, f"TRIGGER_STATE:{trigger_state}"
+
+    if trigger_name:
+        if log_miss:
+            append_history(
+                {
+                    "time": utc_now(),
+                    "event": "trigger_not_fired",
+                    "agent": "dispatcher",
+                    "task_id": task.get("id"),
+                    "reason": f"TRIGGER_FIELD_NOT_FIRED:{trigger_name}",
+                }
+            )
+        return False, f"TRIGGER_FIELD_NOT_FIRED:{trigger_name}"
+
+    has_explicit_future_gate = any(
+        phrase in lower
+        for phrase in (
+            "auto-promote",
+            "auto-promotes",
+            "auto_promote",
+            "auto_promotes",
+            "auto-activate",
+            "auto-activates",
+            "auto-activated",
+            "auto_activate",
+            "auto_activates",
+            "auto_activated",
+        )
+    )
+    if not has_explicit_future_gate:
         return True, "NO_EXPLICIT_TRIGGER"
 
     # Common audit-followup shape: "When DONE, TASK-X auto-promotes".
@@ -887,18 +1209,28 @@ def task_is_actionable_for(
         return False
     if agent == "Cowork" and superseded_by_newer_cowork_audit(task, tasks):
         return False
+    if agent == "Cowork":
+        waiting_on_substrate, _reason = cowork_audit_waiting_on_unlanded_substrate(task, tasks)
+        if waiting_on_substrate:
+            return False
     if recently_dispatched_same_agent(task, agent, state):
         return False
     if status in PRIMARY_STATUSES:
         return True
     if status == "IN_PROGRESS":
-        return is_stale(task)
+        return is_stale(task) or unconfirmed_in_progress_requeue_candidate(task, agent)
     if status == "FUTURE":
         if not allow_future:
             return False
         fired, _reason = future_trigger_state(
             task, tasks, log_miss=log_trigger_misses
         )
+        if (
+            agent == "Cowork"
+            and _reason == "NO_EXPLICIT_TRIGGER"
+            and is_cowork_polling_task_id(str(task.get("id", "")))
+        ):
+            return False
         return fired
     return False
 
@@ -1052,19 +1384,176 @@ def build_meta_message(agent: str) -> str:
     )
 
 
+def record_yaml_registry_error(agent: str, error: YAMLRegistryError) -> None:
+    now = utc_now()
+    payload = {
+        "timestamp": now,
+        "agent": agent,
+        "event": "yaml_registry_parse_error",
+        "path": str(error.path),
+        "error": str(error.original),
+    }
+    (REPO_ROOT / "dashboard").mkdir(parents=True, exist_ok=True)
+    save_json(REPO_ROOT / "dashboard" / "last_yaml_error.json", payload)
+    append_history(payload)
+
+
+def build_yaml_repair_message(agent: str, error: YAMLRegistryError) -> str:
+    err_text = sanitize_output_text(str(error.original)).strip()
+    files = [
+        str(error.path),
+        "dashboard/last_yaml_error.json",
+        "registry/agent_history.jsonl",
+        "AGENT_BUS.md",
+    ]
+    return "\n".join(
+        [
+            "## Structured Agent Dispatch",
+            "",
+            f"Agent role: {agent}",
+            "Task id: META-YAML-REPAIR-001",
+            "Task title: Repair malformed shared YAML registry",
+            "Task priority: 0",
+            "Task status at dispatch: EMERGENCY",
+            "",
+            list_block("Files to read", files),
+            "",
+            "Objective:",
+            (
+                f"The dispatcher could not parse `{error.path}`. Repair only the "
+                "malformed YAML syntax, preserve all existing task content, then "
+                "validate that the canonical dispatcher can emit structured tasks "
+                "for both Codex and Cowork."
+            ),
+            "",
+            "Parser error:",
+            err_text,
+            "",
+            list_block(
+                "Validation requirements",
+                [
+                    f"python -c \"import yaml, pathlib; yaml.safe_load(pathlib.Path(r'{error.path}').read_text(encoding='utf-8')); print('yaml ok')\"",
+                    "python scripts\\agent_next_instruction.py Codex --peek",
+                    "python scripts\\agent_next_instruction.py Cowork --peek",
+                    "python C:\\Users\\lluis\\Downloads\\codex_autocontinue.py --codex-only",
+                ],
+            ),
+            "",
+            list_block(
+                "Stop conditions",
+                [
+                    "Do not delete existing tasks to make YAML parse",
+                    "Do not mark any mathematical task DONE during syntax repair",
+                    "Stop if the file has conflicting duplicate task ids that need human review",
+                ],
+            ),
+            "",
+            list_block(
+                "Required updates",
+                [
+                    "registry/agent_tasks.yaml or the malformed YAML file named above",
+                    "registry/agent_history.jsonl",
+                    "dashboard/last_yaml_error.json",
+                    "AGENT_BUS.md",
+                ],
+            ),
+            "",
+            "Next exact instruction:",
+            (
+                f"> {agent}, take task `META-YAML-REPAIR-001`. Repair the malformed "
+                "YAML registry named above without deleting tasks, run the validation "
+                "commands, update the history and bus, and stop if duplicate task ids "
+                "or ambiguous conflicting edits require human review."
+            ),
+        ]
+    )
+
+
 def mark_task_dispatched(tasks_doc: dict[str, Any], task_id: str, agent: str) -> None:
     now = utc_now()
     for task in tasks_doc.get("tasks", []):
         if task.get("id") == task_id:
+            requeue_unconfirmed = unconfirmed_in_progress_requeue_candidate(task, agent)
             if task.get("status") in {"READY", "PARTIAL", "FUTURE"}:
                 task["status"] = "IN_PROGRESS"
+            if requeue_unconfirmed:
+                task["quarantined_unconfirmed_at"] = now
+                task["quarantine_requeue_count"] = int(task.get("quarantine_requeue_count", 0)) + 1
             task["updated_at"] = now
             task["dispatched_at"] = now
             task["dispatched_to"] = agent
+            task["delivery_state"] = "DISPATCH_MUTATED_PENDING_CONFIRMATION"
+            task["delivery_attempted_at"] = now
+            task.pop("delivery_confirmed_at", None)
+            task.pop("delivery_unconfirmed_at", None)
             task["dispatch_count"] = int(task.get("dispatch_count", 0)) + 1
             notes = task.setdefault("notes", [])
-            notes.append(f"Dispatched to {agent} at {now}")
+            notes.append(
+                f"Dispatched to {agent} at {now}; awaiting visual busy confirmation"
+            )
+            if requeue_unconfirmed:
+                notes.append(
+                    "Re-dispatched after conservative unconfirmed-IN_PROGRESS "
+                    "quarantine checks: aged pending delivery, same agent, "
+                    "no completion evidence, and no confirmed busy delivery."
+                )
             return
+
+
+def record_delivery_state(
+    agent: str,
+    task_id: str,
+    state_name: str,
+    method: str = "",
+    distance: str = "",
+) -> None:
+    now = utc_now()
+    normalized_state = state_name.upper()
+    with coordination_lock():
+        tasks_doc = load_yaml(TASKS_FILE)
+        found = False
+        for task in tasks_doc.get("tasks", []):
+            if task.get("id") != task_id:
+                continue
+            found = True
+            task["delivery_state"] = normalized_state
+            task["delivery_updated_at"] = now
+            task["delivery_agent"] = agent
+            if method:
+                task["last_delivery_method"] = method
+            if distance:
+                task["last_delivery_distance"] = distance
+            if normalized_state in CONFIRMED_DELIVERY_STATES:
+                task["delivery_confirmed_at"] = now
+                task.pop("delivery_unconfirmed_at", None)
+            elif normalized_state in UNCONFIRMED_DELIVERY_STATES:
+                task["delivery_unconfirmed_at"] = now
+                if (
+                    normalized_state == "ABANDONED_UNCONFIRMED"
+                    and not dispatch_confirmed(task)
+                    and not has_completion_evidence(task)
+                ):
+                    task["status"] = "READY"
+                    task["requeued_after_abandoned_unconfirmed_at"] = now
+            notes = task.setdefault("notes", [])
+            notes.append(
+                f"Delivery state for {agent} recorded as {normalized_state} at {now}"
+            )
+            break
+        if not found:
+            raise SystemExit(f"Task id not found for delivery state update: {task_id}")
+        save_yaml(TASKS_FILE, tasks_doc)
+        append_history(
+            {
+                "time": now,
+                "event": "dispatch_delivery_state",
+                "agent": agent,
+                "task_id": task_id,
+                "delivery_state": normalized_state,
+                "method": method,
+                "distance": distance,
+            }
+        )
 
 
 def update_dashboard(agent: str, task_id: str | None, meta: bool = False) -> None:
@@ -1086,22 +1575,75 @@ def update_dashboard(agent: str, task_id: str | None, meta: bool = False) -> Non
     save_json(STATE_FILE, state)
 
 
-def _build_message_unlocked(agent: str, mutate: bool = True) -> str:
+def _build_message_unlocked(
+    agent: str,
+    mutate: bool = True,
+    skip_cowork_polling: bool = False,
+) -> str:
     if agent not in VALID_AGENTS:
         raise SystemExit(f"Unknown agent role '{agent}'. Use Codex or Cowork.")
     if mutate:
         ensure_base_files()
     tasks_doc = load_yaml(TASKS_FILE)
     state = load_json(STATE_FILE)
+    candidate_tasks = tasks_doc.get("tasks", [])
+    if agent == "Cowork" and skip_cowork_polling:
+        candidate_tasks = [
+            task for task in candidate_tasks
+            if not is_cowork_polling_task_id(str(task.get("id", "")))
+        ]
     task = select_next_task(
         agent,
-        tasks_doc.get("tasks", []),
+        candidate_tasks,
         state,
         log_trigger_misses=mutate,
     )
+    diagnostics = in_progress_diagnostics_for(agent, tasks_doc.get("tasks", []))
+    diagnostic_stale = [
+        item for item in diagnostics
+        if item.get("reason") == "DIAGNOSTIC_STALE_UNCONFIRMED_IN_PROGRESS"
+    ]
+    if mutate and diagnostic_stale:
+        previous_ids = {
+            str(item.get("task_id"))
+            for item in state.get("diagnostic_stale_in_progress", [])
+            if isinstance(item, dict)
+        }
+        current_ids = {str(item.get("task_id")) for item in diagnostic_stale}
+        state["last_in_progress_dispatch_diagnostic"] = {
+            "agent": agent,
+            "at": utc_now(),
+            "candidates": diagnostics[:5],
+        }
+        state["diagnostic_stale_in_progress"] = diagnostic_stale[:20]
+        save_json(STATE_FILE, state)
+        if current_ids != previous_ids:
+            append_history(
+                {
+                    "time": utc_now(),
+                    "event": "diagnostic_stale_in_progress",
+                    "agent": agent,
+                    "candidates": diagnostic_stale[:20],
+                }
+            )
     if task is None:
         message = build_meta_message(agent)
         if mutate:
+            if diagnostics:
+                state["last_in_progress_dispatch_diagnostic"] = {
+                    "agent": agent,
+                    "at": utc_now(),
+                    "candidates": diagnostics[:5],
+                }
+                save_json(STATE_FILE, state)
+                append_history(
+                    {
+                        "time": utc_now(),
+                        "event": "in_progress_dispatch_diagnostic",
+                        "agent": agent,
+                        "candidates": diagnostics[:5],
+                    }
+                )
             update_dashboard(agent, "META-GENERATE-TASKS-001", meta=True)
             append_history(
                 {
@@ -1131,19 +1673,62 @@ def _build_message_unlocked(agent: str, mutate: bool = True) -> str:
     return build_task_message(agent, message_task)
 
 
-def build_message(agent: str, mutate: bool = True) -> str:
+def build_message(
+    agent: str,
+    mutate: bool = True,
+    skip_cowork_polling: bool = False,
+) -> str:
     with coordination_lock():
-        return _build_message_unlocked(agent, mutate=mutate)
+        return _build_message_unlocked(
+            agent,
+            mutate=mutate,
+            skip_cowork_polling=skip_cowork_polling,
+        )
+
+
+def _pop_cli_option(argv: list[str], name: str, default: str = "") -> str:
+    if name not in argv:
+        return default
+    idx = argv.index(name)
+    argv.pop(idx)
+    if idx >= len(argv):
+        return default
+    return argv.pop(idx)
 
 
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
+    if "--record-delivery" in argv:
+        argv.remove("--record-delivery")
+        agent = _pop_cli_option(argv, "--agent", "Codex")
+        task_id = _pop_cli_option(argv, "--task-id")
+        state_name = _pop_cli_option(argv, "--state")
+        method = _pop_cli_option(argv, "--method")
+        distance = _pop_cli_option(argv, "--distance")
+        if not task_id or not state_name:
+            raise SystemExit("--record-delivery requires --task-id and --state")
+        record_delivery_state(agent, task_id, state_name, method, distance)
+        return 0
+
     mutate = True
     if "--peek" in argv:
         mutate = False
         argv.remove("--peek")
+    skip_cowork_polling = False
+    if "--skip-cowork-polling" in argv:
+        skip_cowork_polling = True
+        argv.remove("--skip-cowork-polling")
     agent = argv[0] if argv else "Codex"
-    print(build_message(agent, mutate=mutate))
+    try:
+        print(build_message(
+            agent,
+            mutate=mutate,
+            skip_cowork_polling=skip_cowork_polling,
+        ))
+    except YAMLRegistryError as exc:
+        with coordination_lock():
+            record_yaml_registry_error(agent, exc)
+        print(build_yaml_repair_message(agent, exc))
     return 0
 
 

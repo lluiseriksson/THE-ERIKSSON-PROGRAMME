@@ -110,3 +110,91 @@ The explicit `#eval` sanity check is no longer the gating action.
 **F3 progress signal**: None of the four named early-warning declarations (`physicalShiftedF3MayerWitness`, `latticeAnimalCount`, `mayerExpansion_*`, `connecting_cluster_count_exp_bound`) appear in the repo yet. **However**, new file `YangMills/ClayCore/ConnectingClusterCountExp.lean` (added today) introduces `ShiftedConnectingClusterCountBoundExp` + `Dim`/`At` variants, `ShiftedF3CountPackageExp`, and `PhysicalShiftedConnectingClusterCountBoundExp` — clearly the scaffolding for the missing `connecting_cluster_count_exp_bound`. Also new: `ClusterRpowBridge.lean` with `clusterCorrelatorBound_of_truncatedActivities_ceil_exp` etc. Real but pre-substantive: scaffolding, not the count estimate itself.
 
 **Recommendation**: Cadence is unusually high and prefix-clustered around F3 packaging. Bars unchanged. Watch for the named F3 declarations (`latticeAnimalCount`, `mayerExpansion_*`) to appear — until then the F3 work is interface plumbing, not the analytic count. No axiom drift, no real-fronts regressions.
+
+---
+
+## Audit 2026-04-27 03:54 UTC
+
+### Cadence
+- **71 commits in last 24h** (≈3.0/h). Previous 7d total: 334 → 7d avg ≈47.7/d ≈2.0/h.
+- Hour distribution (UTC+2 local): heaviest 14h:10, 13h:9, 10h:9, 12h:8, 08h:8, 11h:7, 07h:7, 09h:5, 15h:4, 06h:3, 05h:1. Quiet overnight.
+- Cadence has settled from the 153/d burst on 04-25 to a sustainable ~70/d.
+
+### Contract evaluation (CODEX_CONSTRAINT_CONTRACT.md v1)
+- **HR1** (no 6+ canary streak): **PASS** — top 4-word prefix in last 50 has count 1; no streaks.
+- **HR2** (no 48h F3 drought): **PASS** — `LatticeAnimalCount.lean` and `ConnectingClusterCountExp.lean` both modified in last 48h. F3-Count work is the live focus.
+- **HR3** (no axiom drift): **PASS** — refined check (block-comment-stripped) returns 0 live `axiom` declarations outside Experimental. The two raw-grep hits are doc-comment text, not declarations.
+- **HR4** (no live sorry/admit): **PASS** — block-comment-stripped scan returns 0 hits outside Experimental.
+- **HR5** (oracle preservation): **PASS** — last 30 commits show 9 ClayCore-touching commits, **9/9** add corresponding `#print axioms` lines. Spot-check on `341fcef1` (high-card simple-graph bridge) confirms canonical oracle traces declared.
+- **SR1** (file diversity): **WARN** — last 12 commits touch exactly **1** ClayCore file (`LatticeAnimalCount.lean`). All F3 work is concentrated there. Threshold is ≥3.
+- **SR2** (substantive:canary ratio): **PASS** — 16 substantive vs 2 strict canary (`F3: expose anchored first branch reachability`, `F3: expose anchored root shell`). 8:1, well clear of 1:5 floor. The remainder (~53) are `docs:`/`audit:`/`infra:`/`tasks:` — meta/governance, neither bucket.
+- **SR3** (README freshness): **WARN** — README "Last closed" pinned at v2.53.0; commit log shows progress through **v2.61** (8 versions ahead). README has fallen behind the deletion-bridge work.
+- **SR4** (new files documented): **WARN** — 10 new `YangMills/ClayCore/` files in last 24h; **7/10 absent** from `NEXT_SESSION.md`/`STATE_OF_THE_PROJECT.md`/`AXIOM_FRONTIER.md`. Undocumented: `AbelianU1PhysicalStrongUnconditional` (273 LOC), `BalabanHypsTrivial` (180), `LargeFieldActivityTrivial` (143), `SmallFieldBoundTrivial` (149), `TrivialChainEndToEnd` (164), `WilsonPolymerActivityTrivial` (153), `BalabanRGOrphanWiring` (91). These look like an SU(1)/trivial-group parallel track running silently.
+
+### Top commit prefixes (last 50)
+1. No 4-word prefix has >1 occurrence — last-50 is highly diversified at the prefix level. (Compare 04-25: `F3: expose global Mayer` had 4.)
+
+### Axiom frontier
+clean — 0 live `axiom` declarations outside `YangMills/Experimental/`.
+
+### Bar movement (from README.md)
+- Previous (2026-04-25): L1=98% L2=50% L3=22% OVERALL=50% ; LATTICE small-β ~28%, CLAY-AS-STATED ~5%
+- Current  (2026-04-27): L1=98% L2=50% L3=22% OVERALL=50% ; LATTICE small-β ~28%, CLAY-AS-STATED ~5%
+- Flag: **normal** (no movement). Two days of substantial commit volume with bars unchanged — consistent with the work being *internal* (anchored deletion / Klarner decoder), upstream of the LatticeAnimalCount witness that would actually move L2.
+
+### F3 progress signal (last 24h)
+- `LatticeAnimalCount.lean` extended across 16 commits (anchored deletion: card-2 root-avoiding base, card-3 base, unrooted non-cut, two-non-cut bridge, safe-deletion → non-root-non-cut, leaf-deletion subcase, high-card simple-graph reduction, deletion-bridge primitives, parent selector API). This is genuine progress toward §1.3 marker `connecting_cluster_count_exp_bound`, but stays *inside* the BFS-tree decoder construction.
+- Multi-marker hit on `dfbcf7f` is a documentation-consolidation commit (`sync: consolidate Cowork sweep and v2.42 docs`), not new code — it added BLUEPRINT_F3*.md / AUDIT_v18*.md text, where every F3 marker name appears as prose.
+- Priority 2.x markers (`MayerInterpolation`, `HaarFactorization`, `BrydgesKennedyEstimate`) and 3.x (`PhysicalConnectedCardDecayWitness`) **still untouched** at the file level.
+
+### Recommendation
+System is healthy and the contract is being respected on hard rules. Three soft signals to watch:
+
+1. **Single-file concentration on LatticeAnimalCount** (SR1 warn, 16/16 F3 commits). The deletion-bridge / Klarner-decoder tree is plausibly load-bearing for `count(m) ≤ Δ^(m-1)`, but two days of single-file commits is the same shape as canary-spam — only with substantive verbs. Watch v2.62/v2.63: if `LatticeAnimalCount.lean` stays the only target, Codex is treading water on the decoder. Per §4 Priority 1.2 the witness goal is the Δ^(m-1) bound itself — which still has not landed — so the next bar movement requires either closing that bound or pivoting to Priority 2.1 (`MayerInterpolation.lean`, untouched).
+2. **README v2.53 vs HEAD v2.61** (SR3): docs lag 8 versions; "Last closed" should be refreshed.
+3. **SU(1)/Trivial parallel track** (SR4): 7 new ClayCore files (~1150 LOC) created without strategic-doc mention. Either retire to `Experimental/`, or add to `NEXT_SESSION.md` so they are not orphaned.
+
+Highest-priority queue item per CODEX_CONSTRAINT_CONTRACT.md §4: **Priority 1.2** — finish `LatticeAnimalCount.lean` by proving the actual `count(m) ≤ Δ^(m-1)` bound (the open BFS-tree witness), or pivot to **Priority 2.1** (`MayerInterpolation.lean`) if the decoder is structurally blocked.
+
+---
+
+## Audit 2026-04-27 07:05 UTC
+
+### Cadence
+- **52 commits in last 24h** (≈2.2/h). Previous 7d total: 333 → 7d avg ≈47.6/d ≈2.0/h. Slight decel from yesterday's 71/d, still on trend.
+- Hour distribution (UTC+2 local): 09h:5, 10h:9, 11h:7, 12h:8, 13h:9, 14h:10, 15h:4. Single working-day pulse; no overnight churn — quieter than 04-26.
+
+### Contract evaluation (CODEX_CONSTRAINT_CONTRACT.md v1)
+- **HR1** (no 6+ canary streak): **PASS** — last 10 commit prefixes all unique; no 4-word prefix appears more than once across last 50 commits.
+- **HR2** (no 48h F3 drought): **PASS** — `LatticeAnimalCount.lean` and `ConnectingClusterCountExp.lean` both touched in last 48h (F3-Count is the live focus).
+- **HR3** (no axiom drift): **PASS** — comment-aware scan returns 0 live `axiom` declarations outside `Experimental/`. Two raw-grep hits (`AbelianU1OSAxioms.lean:25`, `GNSConstruction.lean:23`) are confirmed inside `/-` doc-comment blocks.
+- **HR4** (no live sorry/admit): **PASS** — comment-stripped scan returns 0 hits outside `Experimental/`.
+- **HR5** (oracle preservation): **PASS** — last 3 ClayCore-touching commits (`341fcef1`, `526a3d4e`, `e17f3169`) each add `#print axioms` blocks (3, 2, 2 respectively, matching new theorem counts 4, 3, 2).
+- **SR1** (file diversity): **WARN** — last 12 commits touch exactly **1** ClayCore file (`LatticeAnimalCount.lean`). Concentration unchanged from 04-27 03:54 audit; threshold ≥3 not met for second consecutive audit window.
+- **SR2** (substantive:canary ratio): **PASS** — strict canary markers (per §1.1) = **0** in last 24h. Substantive (f3:/experimental: with ≥30 LOC insertions) = 16. Remaining 36 = `docs:`/`audit:`/`tasks:`/`infra:`/`planning:`/`mathlib:`/`autocontinue:`/`chore:` — meta/governance.
+- **SR3** (README freshness): **WARN** — README "Last closed" pinned at **v2.53.0**; commit log shows progress through **v2.61** (8 versions ahead, same lag as yesterday's 03:54 audit). README has not been refreshed despite 8 version-pinning `docs: pin v2.5x evidence` commits in this window.
+- **SR4** (new files documented): **PASS-by-vacuity** — **0 new** `YangMills/ClayCore/*.lean` files added in last 24h. (However, yesterday's flagged SU(1)/Trivial parallel-track files — `AbelianU1PhysicalStrongUnconditional`, `BalabanHypsTrivial`, `LargeFieldActivityTrivial`, `SmallFieldBoundTrivial`, `TrivialChainEndToEnd`, `WilsonPolymerActivityTrivial`, `BalabanRGOrphanWiring` — **remain absent from `NEXT_SESSION.md`/`STATE_OF_THE_PROJECT.md`/`AXIOM_FRONTIER.md`**. Carry-over soft signal.)
+
+### Top commit prefixes (last 50)
+1. No 4-word prefix has >1 occurrence — last-50 highly diversified at the prefix level. By top-level slug, last 24h splits: f3=13, docs=12, tasks=6, audit=6, infra=5, planning=2, mathlib=2, chore=2, autocontinue=2, experimental=1.
+
+### Axiom frontier
+clean — 0 live `axiom` declarations outside `YangMills/Experimental/`.
+
+### Bar movement (from README.md)
+- Previous (2026-04-27 03:54): L1=98% L2=50% L3=22% OVERALL=50% ; LATTICE small-β ~28%, CLAY-AS-STATED ~5%
+- Current  (2026-04-27 07:05): L1=98% L2=50% L3=22% OVERALL=50% ; LATTICE small-β ~28%, CLAY-AS-STATED ~5%
+- Flag: **normal** (no movement). Three audit windows in a row with bars unchanged — work remains internal to the F3/Klarner decoder, upstream of any frontier retirement.
+
+### F3 progress signal (last 24h)
+- 13 `f3:` commits, all extending `LatticeAnimalCount.lean` (anchored deletion-bridge: card-2/card-3 bases, unrooted/two-non-cut, safe-deletion → non-root-non-cut, leaf subcase, high-card simple-graph reduction, conditional deletion bridge, anchored first-deletion primitive). Genuine progress toward §1.3 marker `connecting_cluster_count_exp_bound` — but stays inside the BFS-tree decoder.
+- **None of the §1.3 named markers were instantiated as new declarations** (grep on the marker names in last-24h diffs returns empty). Specifically: `connecting_cluster_count_exp_bound` not yet proved; `MayerInterpolation.lean`, `HaarFactorization.lean`, `BrydgesKennedyEstimate.lean`, `PhysicalConnectedCardDecayWitness.lean` still **absent from disk**.
+
+### Recommendation
+System healthy on all hard rules (HR1–HR5 all PASS). Three persistent soft signals, all carrying over from 04-27 03:54:
+
+1. **Single-file F3 concentration** (SR1, second window): 12/12 ClayCore commits on `LatticeAnimalCount.lean`. The deletion-bridge tree is plausibly load-bearing for `count(m) ≤ Δ^(m-1)`, but this is the same shape as canary-spam — only with substantive verbs. If v2.62/v2.63 stay on the same file without closing the Δ^(m-1) bound, escalate to an HR1-style alert.
+2. **README v2.53 vs HEAD v2.61** (SR3, second window): doc lag held at 8 versions despite 8 `docs: pin v2.5x` commits — those evidently update audit-pin docs but not the public README "Last closed" block.
+3. **SU(1)/Trivial track orphans** (SR4 carry-over): 7 ClayCore files (~1150 LOC, created ≥24h ago) still absent from all three strategic docs.
+
+Highest-priority queue item per CODEX_CONSTRAINT_CONTRACT.md §4: **Priority 1.2** — close `LatticeAnimalCount.lean`'s `count(m) ≤ Δ^(m-1)` witness (first concrete instance of `connecting_cluster_count_exp_bound`), or pivot to **Priority 2.1** (`MayerInterpolation.lean` — currently absent from disk) if the decoder construction is structurally blocked.

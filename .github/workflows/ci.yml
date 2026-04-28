@@ -67,3 +67,29 @@ jobs:
         # `sorry` in code from `sorry` appearing only in comments.
         # All gaps must be explicit named `axiom` declarations (AXIOM_FRONTIER.md).
         run: python scripts/check_consistency.py
+
+  # ── Job 3: Full Lean integration build ─────────────────────────────────────
+  # This job is intentionally long-running. It exists to discharge
+  # REC-COWORK-LONG-CI-LAKE-BUILD-001 by checking the full YangMills import
+  # graph, not just the narrow P8 target above.
+  #
+  # Honesty rule: adding this job is not evidence that the full tree is green.
+  # dashboard/agent_state.json audit_state.lake_build_full must remain
+  # INTEGRATION_PENDING until a real GitHub Actions run completes successfully.
+  long-lake-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Lean + Lake
+        run: |
+          curl -L https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
+      - name: Restore Mathlib cache
+        run: lake exe cache get
+
+      - name: lake build (full YangMills integration target)
+        run: lake build YangMills

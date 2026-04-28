@@ -150,6 +150,37 @@ correlator vanishes identically). EXP-SUN-GEN follows the same pattern at
 the Tier 2 level: technically valid (3 axioms → 3 theorems), vacuous (zero
 matrix family).
 
+### 1.4 Consolidated vacuity rules for external readers
+
+This section consolidates the vacuity-pattern caveats that were previously
+spread across §1.1, §1.2, §1.3, §9, §10.3, and `COWORK_FINDINGS.md`
+Findings 003 + 011-016. It is an honesty index, not a new mathematical claim.
+No entry below is closed merely by being listed here.
+
+Rule:
+
+```
+Lean-verified carrier or witness + vacuity flag = read the caveat before
+describing the result externally.
+```
+
+| Claim / pattern | Tier or location | Mechanism | Lean witness location | External-reader DO-NOT-conclude template |
+|---|---|---|---|---|
+| `NC1-WITNESS` | Tier 1 | `SU(1)` is the trivial group; the connected correlator vanishes identically | `YangMills/ClayCore/AbelianU1Unconditional.lean` | Do not conclude a physical `SU(N)` mass gap for `N >= 2`. |
+| `EXP-SUN-GEN` | Tier 2 | `generatorMatrix := 0` retires shape axioms but supplies no nonzero generator basis | `YangMills/Experimental/LieSUN/LieDerivativeRegularity.lean` | Do not conclude Pauli/Gell-Mann/general `su(N)` generator data has been constructed. |
+| OS-style structural axioms at `SU(1)` | Finding 011 | Structural predicates are inhabitable in the degenerate group case | OS/continuum scaffold files cited in `COWORK_FINDINGS.md` Finding 011 | Do not conclude Wightman/OS reconstruction for nonabelian continuum Yang-Mills. |
+| Branch III analytic predicates | Finding 012 | LSI, Poincare, clustering, Dirichlet, Markov-semigroup, and Feynman-Kac predicate carriers inherit the `SU(1)` caveat | Branch III scaffold files cited in Finding 012 | Do not conclude analytic inequalities have been proved for physical Wilson-Gibbs data. |
+| Bałaban predicate carriers | Findings 013-014 | `BalabanHyps`, Wilson activity, large-field, and small-field carriers are structurally inhabitable by zero / identity / vacuous witnesses | Bałaban carrier files cited in Findings 013-014 | Do not conclude Bałaban RG convergence or Wilson activity estimates. |
+| BalabanRG scaffold to weak endpoint | Finding 015 | A large 0-sorry scaffold reaches a weak endpoint through trivial-witness placeholders | `YangMills/BalabanRG/` and comments in `RGContractionRate.lean` | Do not conclude substantive Branch II Clay closure. |
+| `ClayCoreLSI` | Finding 016 | The named predicate is an arithmetic existential, not the integral log-Sobolev inequality | `ClayCoreLSI` / `ClayCoreLSIToSUNDLRTransfer` files cited in Finding 016 | Do not conclude LSI for SU(N) Wilson-Gibbs measures; the transfer theorem remains the substantive target. |
+| Triple-view characterisation | §10.3 | L42/L43/L44 input dimensionless constants as anchor structures rather than deriving them | L42/L43/L44 files cited in §10.3 | Do not conclude Wilson area law or confinement from first principles. |
+| `CONTINUUM-COORDSCALE` | Tier 1 / Finding 004 | Coordinated scaling makes the continuum field true by architecture, not continuum analysis | `YangMills/L7_Continuum/ContinuumLimit.lean` | Do not count this as a proof of the continuum limit. |
+| Clay weak endpoint canaries | Terminal/audit scaffolds | `ClayYangMillsTheorem := ∃ m_phys, 0 < m_phys` is trivially inhabited | `YangMills/L8_Terminal/ClayTrivialityAudit.lean` | Do not cite this as the Clay mass-gap theorem. |
+
+`UNCONDITIONALITY_LEDGER.md` records first-class Tier 1 and Tier 2 rows with a
+`vacuity_flag` column. Patterns that are not yet first-class ledger rows remain
+tracked here until a separate ledger-row task promotes them.
+
 ---
 
 ## 2. Axiom and sorry status
@@ -169,21 +200,23 @@ Experimental` returns empty. Verified by daily auto-audit (HR3 of
 `SORRY_FRONTIER.md` records `Current sorry count: 0`. Verified by
 refined regex check in the daily audit (HR4).
 
-### 2.3 The 14 axioms inside `YangMills/Experimental/`
+### 2.3 Active axioms inside `YangMills/Experimental/`
 
-**Status**: 14 declared, classified by retire-ability.
+**Status**: 4 active real declarations remain after generator-data retirement
+and Bakry-Emery spike archival.
 
 | Group | Count | Retire effort |
 |---|---:|---|
-| SU(N) generator data (constructive) | 7 | easy (~250 LOC, no Mathlib gap) |
 | `matExp_traceless_det_one` (needs bridge) | 1 | medium (~50 LOC + Mathlib PR) |
 | `lieDerivReg_all` (smuggling — false for arbitrary `f`) | 1 | needs reformulation |
-| Beurling-Deny + Hille-Yosida + Gronwall (Mathlib gaps) | 5 | hard (Mathlib infrastructure) |
+| variance-decay + Gronwall semigroup axioms | 2 | hard (Mathlib / C₀-semigroup infrastructure) |
 
 **Reference**: `EXPERIMENTAL_AXIOMS_AUDIT.md`.
 
-The 7 "easy retire" axioms are the next significant hygiene target;
-once retired, the project's axiom count drops to 7.
+The former SU(N) generator-data axioms were retired using the zero-family API
+described in §1.3. `YangMills/Experimental/_archive/BakryEmerySpike.lean` is
+preserved as historical reconnaissance only; its former `sun_haar_satisfies_lsi`
+text was comment-only and is excluded from the active axiom inventory.
 
 **`lieDerivReg_all` is mathematically false** as stated (it asserts
 regularity for **every** `f : SU(N) → ℝ`, including discontinuous

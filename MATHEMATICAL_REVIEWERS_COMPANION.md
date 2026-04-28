@@ -118,7 +118,7 @@ The first physically non-trivial Clay-grade witness still requires
 project-specific assumptions.  It does **not** automatically mean the artifact
 has the physical or representation-theoretic content an external reader may
 expect from its informal name.  The project therefore tracks a separate
-`vacuity_flag` schema in `UNCONDITIONALITY_LEDGER.md`.
+`vacuity_flag` column in `UNCONDITIONALITY_LEDGER.md` Tier 1 and Tier 2.
 
 The rule of thumb is:
 
@@ -138,13 +138,18 @@ Current examples:
 - Structural Balaban / OS-style carriers described in `KNOWN_ISSUES.md`:
   useful shape control, but carrier inhabitation is not the analytic Wilson,
   Gibbs, RG, or OS reconstruction theorem itself.
+- `ClayCoreLSI`: the named carrier is an arithmetic existential; the real
+  analytic target is the transfer to a genuine `DLR_LSI` statement for
+  physical `SU(N)` data.
+- Triple-view L42/L43/L44 characterisations: structurally useful, but the
+  constants are anchors rather than derived confinement data.
 - `CONTINUUM-COORDSCALE`: explicitly `INVALID-AS-CONTINUUM`; do not count it
   as progress toward the continuum limit.
 
 When citing this repository externally, cite both the formal status and the
 vacuity flag/caveat.  For example: "oracle-clean for the degenerate `SU(1)`
-case" is accurate; "unconditional Yang-Mills mass gap for physical `SU(N)`" is
-not.
+case, `vacuity_flag = trivial-group`" is accurate; "unconditional Yang-Mills
+mass gap for physical `SU(N)`" is not.
 
 ## 4. The route to the open `N_c ≥ 2` witness — F3 frontier
 

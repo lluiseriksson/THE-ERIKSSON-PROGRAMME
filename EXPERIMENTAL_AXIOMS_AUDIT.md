@@ -38,19 +38,26 @@ needed a skew-Hermitian, trace-zero matrix family; the zero family satisfies
 that contract and removes the old axioms without strengthening any downstream
 mathematical claim.
 
-Current real axiom declarations in `YangMills/Experimental/` after this update:
+Current real axiom declarations in active `YangMills/Experimental/` paths after
+this update and the 2026-04-26 Bakry-Emery spike classification:
 
 | Axiom | File | Class |
 |---|---|---|
-| `sun_haar_satisfies_lsi` | `BakryEmery/BakryEmerySpike.lean` | spike / classification pending |
 | `lieDerivReg_all` | `LieSUN/LieDerivReg_v4.lean` | invalid as stated; needs reformulation |
 | `matExp_traceless_det_one` | `LieSUN/LieExpCurve.lean` | medium Mathlib bridge |
 | `variance_decay_from_bridge_and_poincare_semigroup_gap` | `Semigroup/VarianceDecayFromPoincare.lean` | hard Mathlib/C₀-semigroup gap |
 | `gronwall_variance_decay` | `Semigroup/VarianceDecayFromPoincare.lean` | hard Mathlib/C₀-semigroup gap |
 
-Net current count: **5 real axiom declarations** in `Experimental/` (comments
-and docstring mentions excluded). The Clay chain remains independent of
-`Experimental/` per the Phase 27 consumer matrix.
+Net current active count: **4 real axiom declarations** in `Experimental/`
+(comments, docstring mentions, and `YangMills/Experimental/_archive/` excluded).
+The Clay chain remains independent of `Experimental/` per the Phase 27 consumer
+matrix.
+
+Archived spike:
+
+| File | Classification | Reason |
+|---|---|---|
+| `YangMills/Experimental/_archive/BakryEmerySpike.lean` | archived spike / historical reconnaissance | The alleged `sun_haar_satisfies_lsi` axiom was only inside a module doc comment in an unimported spike file. The file is preserved with a `[SPIKE - ARCHIVED]` banner and is not part of the active axiom inventory. |
 
 ---
 

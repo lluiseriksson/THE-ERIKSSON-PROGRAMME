@@ -1,0 +1,18 @@
+{
+  "agent": "Gemma4",
+  "runtime": "Ollama local",
+  "model": "gemma4:latest",
+  "status": "RAN_DISCOVERY_PASS",
+  "role": "local mathematical-discovery sidecar under Codex/Cowork audit",
+  "authority": "HEURISTIC_ONLY",
+  "canonical_runner": "scripts/gemma4_math_discovery.py",
+  "latest_output": "dashboard\\gemma4_math_discovery_latest.md",
+  "run_log": "registry/gemma4_discovery_runs.jsonl",
+  "may_move_ledger_status": false,
+  "may_move_percentages": false,
+  "requires_cowork_audit": true,
+  "last_probe": "2026-04-26T15:18:03Z",
+  "last_run": "2026-04-26T15:26:07Z",
+  "last_probe_response": "GEMMA4_SIDEcar_READY",
+  "last_output_assessment": "WEAK_OUTPUT_MISSING_## Recommended Next Codex Task,## Risks"
+}

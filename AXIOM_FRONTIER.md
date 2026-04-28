@@ -1,3 +1,5428 @@
+# v2.222.0 - F3 selector-admissible base-zone coordinate source interface and bridge
+
+**Released: 2026-04-28**
+
+Codex reconciled the F3 AXIOM_FRONTIER head beyond v2.219 using the scoped
+documentation evidence in:
+
+    dashboard/axiom_frontier_f3_v2_220_v2_222_reconcile_scope.md
+
+This is a documentation reconciliation entry.  It does not introduce a new Lean
+theorem, does not claim that F3-COUNT is closed, and does not move any
+percentage.
+
+## v2.220-v2.222 segment: selector-admissible base-zone coordinate source interface
+
+The selector-admissible base-zone coordinate lane is supported by:
+
+    dashboard/f3_selector_admissible_base_zone_coordinate_injection_interface_recovery_v2_220.md
+    dashboard/f3_selector_admissible_base_zone_coordinate_injection_attempt_v2_221.md
+    dashboard/f3_selector_admissible_base_zone_coordinate_source_scope.md
+    dashboard/f3_selector_admissible_base_zone_coordinate_source_interface_v2_222.md
+
+The v2.220 interface artifact records the no-sorry Lean landing of:
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjectionData
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+    physicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296_of_residualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+
+The bridge target is exactly:
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+
+The v2.221 attempt artifact records that the proof of
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+
+does not close from the current Lean artifacts.  The exact missing source at
+that endpoint is:
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+
+The source scope artifact then specifies the proof-relevant realization layer
+needed upstream of the v2.220 injection carrier.  It requires a residual
+bookkeeping/base-zone coordinate realization relation or certificate tying
+coordinates to residual values before erasing those certificates into the
+injection interface.
+
+The v2.222 interface artifact records the no-sorry Lean landing of:
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSourceData
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+    physicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296_of_residualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+
+The bridge target is exactly:
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+
+## Active blocker after this reconciliation
+
+For this v2.220-v2.222 reconciliation window, the active blocker is proving the
+source theorem from genuine residual bookkeeping/base-zone coordinate
+realization data:
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+
+Later dashboard evidence refines this blocker further, but this AXIOM_FRONTIER
+entry records only the v2.220-v2.222 endpoint requested here.
+
+## Honesty
+
+This entry does not claim that
+`PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296`
+was proved, and it does not claim that
+`PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296`
+was proved unconditionally.  It records only the documented no-sorry interface
+and bridge landings plus the v2.221 no-closure reduction.
+
+This entry does not close F3-COUNT.  It does not use selected-image
+cardinality, bounded menu cardinality, `finsetCodeOfCardLe`, empirical search,
+root-shell/local-neighbor/local-displacement codes as residual-subtype
+bookkeeping/base-zone injectivity, parent-relative `terminalNeighborCode`
+equality, deleted-X residual shortcuts, or the v2.161 circular route.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, proof claim beyond the cited
+dashboard/Lean-supported artifacts, or Clay-level claim moved.
+
+---
+
+# v2.219.0 - F3 base-zone coordinate interface and no-closure reduction
+
+**Released: 2026-04-28**
+
+Codex reconciled the F3 AXIOM_FRONTIER head beyond v2.216 using the scoped
+documentation evidence in:
+
+    dashboard/axiom_frontier_f3_v2_217_v2_219_reconcile_scope.md
+
+This is a documentation reconciliation entry.  It does not introduce a new Lean
+theorem, does not claim that F3-COUNT is closed, and does not move any
+percentage.
+
+## v2.217-v2.219 segment: base-zone coordinate interface and blocker
+
+The base-zone coordinate lane is supported by:
+
+    dashboard/f3_bookkeeping_base_zone_tag_coordinate_scope_recovery.md
+    dashboard/f3_bookkeeping_base_zone_tag_coordinate_interface_v2_218.md
+    dashboard/f3_bookkeeping_base_zone_tag_coordinate_attempt_v2_219.md
+
+There is no separate `dashboard/*v2_217*.md` artifact in the repository.  The
+scope-recovery artifact is the auditable precursor for this lane: it recovered
+the stale base-zone coordinate scope, named
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+
+and named the exact bridge into
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingTagSpaceInjection1296
+
+The v2.218 interface artifact records the no-sorry Lean landing of:
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinateData
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+    physicalPlaquetteGraphResidualFiberBookkeepingTagSpaceInjection1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
+
+The bridge target is exactly:
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingTagSpaceInjection1296
+
+The v2.219 attempt artifact records that the proof of
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+
+does not close from the current Lean artifacts.  The exact missing upstream
+source at this endpoint is:
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+
+with intended bridge shape:
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+      -> PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+
+## Active blocker after this reconciliation
+
+For this v2.217-v2.219 reconciliation window, the active blocker is the missing
+selector-admissible base-zone coordinate injection source:
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+
+Later dashboard/Lean artifacts may refine this blocker further, but this
+AXIOM_FRONTIER entry records only the v2.217-v2.219 endpoint requested here.
+
+## Honesty
+
+This entry does not claim that
+`PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296` was
+proved at v2.219, and it does not claim that
+`PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296`
+was available at this endpoint.
+
+This entry does not close F3-COUNT.  It does not use selected-image
+cardinality, bounded menu cardinality, `finsetCodeOfCardLe`, empirical search,
+root-shell/local-neighbor/local-displacement codes as residual-subtype
+bookkeeping/base-zone injectivity, parent-relative `terminalNeighborCode`
+equality, deleted-X residual shortcuts, or the v2.161 circular route.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, proof claim beyond the cited
+dashboard/Lean-supported artifacts, or Clay-level claim moved.
+
+---
+
+# v2.216.0 - F3 reconciliation through supported v2.188-v2.216 artifacts
+
+**Released: 2026-04-28**
+
+Codex reconciled the F3 AXIOM_FRONTIER head beyond v2.187 using the scoped
+dashboard/Lean-supported evidence in:
+
+    dashboard/axiom_frontier_f3_v2_188_v2_216_reconcile_scope.md
+
+This is a documentation reconciliation entry.  It does not introduce a new Lean
+theorem, does not claim that F3-COUNT is closed, and does not move any
+percentage.
+
+## v2.188-v2.195 segment: walk-split to selector-source closure path
+
+The retrospective research artifact:
+
+    dashboard/f3_nonsingleton_walk_split_creative_research.md
+
+records that the non-singleton residual walk-split route had already landed in
+Lean by the time of the v2.216 research pass, including:
+
+    physicalPlaquetteGraphResidualFiberNonSingletonMemberNeighborWalkSplit1296
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296_of_residualFiberNonSingletonMemberNeighborWalkSplit1296
+
+The supporting dashboard artifacts are:
+
+    dashboard/f3_nonsingleton_member_has_residual_neighbor_interface_v2_189.md
+    dashboard/f3_nonsingleton_member_has_residual_neighbor_proof_v2_190.md
+    dashboard/f3_nonsingleton_member_neighbor_walk_split_interface_v2_191.md
+    dashboard/f3_nonsingleton_member_neighbor_walk_split_proof_v2_192.md
+    dashboard/f3_terminal_neighbor_selector_data_source_proof_v2_193.md
+    dashboard/f3_terminal_neighbor_domination_relation_proof_v2_194.md
+    dashboard/f3_terminal_neighbor_selector_source_proof_v2_195.md
+
+This segment reconciles the v2.187 blocker through the selector-source closure
+path.  It remains only one local segment of the F3-COUNT ladder.
+
+## v2.196-v2.214 segment: bookkeeping-tag/base-zone blocker chain
+
+The admissible-value inventory:
+
+    dashboard/f3_admissible_value_separation_candidate_lemma_inventory.md
+
+records the later bookkeeping-tag/base-zone chain and identifies the strongest
+local source available at that time as:
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingTagSpaceInjection1296
+
+with the missing source still:
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+
+The supporting dashboard artifacts are:
+
+    dashboard/f3_bookkeeping_tag_code_for_selector_attempt_v2_196.md
+    dashboard/f3_residual_bookkeeping_tag_value_code_source_interface_v2_198.md
+    dashboard/f3_bookkeeping_tag_value_code_source_attempt_v2_199.md
+    dashboard/f3_bookkeeping_tag_value_separation_interface_v2_201.md
+    dashboard/f3_bookkeeping_tag_value_separation_attempt_v2_202.md
+    dashboard/f3_residual_bookkeeping_tag_coordinate_interface_v2_204.md
+    dashboard/f3_bookkeeping_tag_coordinate_attempt_v2_205.md
+    dashboard/f3_bookkeeping_tag_admissible_value_separation_interface_v2_207.md
+    dashboard/f3_bookkeeping_tag_admissible_value_separation_attempt_v2_208.md
+    dashboard/f3_selector_admissible_bookkeeping_tag_injection_interface_v2_210.md
+    dashboard/f3_selector_admissible_bookkeeping_tag_injection_attempt_v2_211.md
+    dashboard/f3_bookkeeping_tag_space_injection_interface_v2_213.md
+    dashboard/f3_bookkeeping_tag_space_injection_attempt_v2_214.md
+
+This segment reconciles a chain of interface landings and no-closure reductions.
+It does not prove the missing selector-independent base-zone coordinate source.
+
+## v2.216 status
+
+The v2.216 artifact is retrospective/auditable research:
+
+    dashboard/f3_nonsingleton_walk_split_creative_research.md
+
+It is not treated as a new proof closure.  It records non-circular routes and
+the already-landed non-singleton walk-split path, while preserving the
+conditional status of F3-COUNT.
+
+## Active blocker after this reconciliation
+
+For this v2.188-v2.216 reconciliation window, the active blocker remains the
+selector-independent residual bookkeeping/base-zone coordinate source:
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+
+Later dashboard notes may sharpen this blocker further, but this AXIOM_FRONTIER
+entry records only the v2.188-v2.216 evidence requested here.
+
+## Honesty
+
+This entry does not close F3-COUNT.  It does not use selected-image
+cardinality, bounded menu cardinality, `finsetCodeOfCardLe`, empirical search,
+root-shell/local-neighbor/local-displacement codes as residual-subtype
+bookkeeping tag injectivity, parent-relative `terminalNeighborCode` equality,
+deleted-X residual shortcuts, or the v2.161 circular route.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, proof claim beyond the cited
+dashboard/Lean-supported artifacts, or Clay-level claim moved.
+
+---
+
+# v2.187.0 - F3 selector-data source proof stopped at non-singleton walk-split blocker
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_selector_data_source_attempt_v2_187.md
+
+## Result
+
+No Lean theorem was added by the attempt.  The v2.186 interface and bridge still
+build:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296_of_residualFiberTerminalNeighborSelectorDataSource1296
+
+The attempt isolated the next structural blocker:
+
+    PhysicalPlaquetteGraphResidualFiberNonSingletonMemberNeighborWalkSplit1296
+
+## Exact blocker
+
+For every v2.121 bookkeeping residual fiber and essential parent, the proof now
+needs residual induced-graph walk splitting: the singleton residual case must
+be discharged vacuously, and the non-singleton case must supply a residual
+terminal neighbor adjacent to the parent plus compatible induced residual walks
+`source -> parent`, `source -> terminalNeighbor`, and
+`terminalNeighbor -> parent`.
+
+The v2.121 deleted-vertex adjacency is not sufficient because the deleted
+vertex is outside `residual = X.erase (deleted X)`.
+
+## Honesty
+
+This entry does not close F3-COUNT.  It does not use selected-image
+cardinality, bounded menu cardinality, `finsetCodeOfCardLe`, empirical search,
+residual paths alone, deleted-vertex adjacency outside the residual, or the
+v2.161 circular route.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, proof claim, or Clay-level claim
+moved.
+
+---
+
+# v2.186.0 - F3 selector-data source interface and bridge landed
+
+**Released: 2026-04-27**
+
+Codex added the no-sorry residual-local interface:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296
+
+and the no-sorry bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296_of_residualFiberTerminalNeighborSelectorDataSource1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_selector_data_source_scope.md
+
+Lean evidence:
+
+    YangMills/ClayCore/LatticeAnimalCount.lean
+
+## Result
+
+The interface exposes the full selector-data source package for each v2.121
+bookkeeping residual fiber and essential parent: source and target residual
+subtypes, a residual terminal neighbor, `terminalNeighborCode : Fin 1296`,
+target equality, induced residual walks `source -> target`,
+`source -> terminalNeighbor`, `terminalNeighbor -> target`, and final-edge
+adjacency in the non-singleton residual case.
+
+The bridge repackages those fields into
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData` and obtains
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296`.
+
+## Validation
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed according to the dashboard artifact.  The bridge axiom trace is no
+larger than:
+
+    [propext, Classical.choice, Quot.sound]
+
+## Honesty
+
+This is an interface/bridge landing, not a proof that the selector-data source
+exists from v2.121 bookkeeping alone.  It does not use residual-neighbor
+existence alone, menu cardinality, selected-image cardinality,
+`finsetCodeOfCardLe`, empirical search, or the v2.161 circular route.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, proof claim, or Clay-level claim
+moved.
+
+---
+
+# v2.185.0 - F3 domination relation proof stopped at selector-data source blocker
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_domination_relation_attempt_v2_185.md
+
+## Result
+
+No Lean theorem was added by the attempt.  The v2.184 interface and bridge still
+build:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296_of_residualFiberTerminalNeighborDominationRelation1296
+
+The attempt showed that a bare residual-neighbor existence lemma such as
+`essential_parent_has_residual_neighbor` is not enough.  The domination
+relation needs a residual terminal neighbor together with a nonempty
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData` witness.
+
+## Exact blocker
+
+The next missing theorem was isolated as:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296
+
+It must construct the selector-data fields: residual target membership, source,
+target equality, induced residual canonical walk, prefix to the terminal
+neighbor, terminal-neighbor suffix, final-edge adjacency for non-singleton
+residual fibers, and `terminalNeighborCode : Fin 1296`.
+
+## Honesty
+
+The attempt did not use selected-image cardinality, bounded menu cardinality,
+`finsetCodeOfCardLe`, residual paths alone, root-shell reachability alone,
+local degree alone, deleted-vertex adjacency outside the residual, empirical
+search, post-hoc current witnesses, or the v2.161 circular route.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, proof claim, or Clay-level claim
+moved.
+
+---
+
+# v2.184.0 - F3 menu-free terminal-neighbor domination relation interface landed
+
+**Released: 2026-04-27**
+
+Codex added the no-sorry residual-local interface:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296
+
+and the no-sorry bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296_of_residualFiberTerminalNeighborDominationRelation1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296
+
+Dashboard artifacts:
+
+    dashboard/f3_terminal_neighbor_domination_relation_scope.md
+
+    dashboard/f3_terminal_neighbor_domination_relation_brainstorm_v2_184.md
+
+## Result
+
+The interface isolates only the menu-free domination relation needed by the
+selector source.  For each residual fiber and essential parent it asks for a
+residual terminal-neighbor candidate together with a
+`Nonempty PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`
+witness.  It is deliberately weaker than
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296` because
+it does not ask for a bounded menu.
+
+The Cowork brainstorm artifact is supporting creative context only: it
+identified Strategy A and the first falsification tests, but it is not treated
+as proof evidence.
+
+## Validation
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed according to the dashboard artifact.  The bridge axiom trace is no
+larger than:
+
+    [propext, Classical.choice, Quot.sound]
+
+## Honesty
+
+This is an interface/bridge landing, not a proof that the domination relation
+exists from v2.121 bookkeeping alone.  It does not use menu cardinality,
+selected-image cardinality, `finsetCodeOfCardLe`, empirical search, post-hoc
+terminal-neighbor choices, or the v2.161 circular route.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, proof claim, or Clay-level claim
+moved.
+
+---
+
+# v2.183.0 - F3 selector source reduced to domination relation part of dominating menu
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296
+
+Dashboard artifact:
+
+    dashboard/f3_residual_fiber_terminal_neighbor_selector_source_attempt_v2_183.md
+
+## Result
+
+The target was not proved directly from the v2.121 bookkeeping residual-fiber
+hypotheses alone.  Codex instead landed the no-sorry reduction:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296_of_residualFiberTerminalNeighborDominatingMenu1296
+
+Source premise:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296
+
+Target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296
+
+The proof projects the dominated terminal neighbor and selector-data witness
+from the existing dominating-menu relation while ignoring the menu-cardinality
+field.
+
+## Exact blocker
+
+The reduction sharpened the blocker to the domination-relation component below
+the dominating-menu theorem: construct, for every residual fiber and essential
+parent, a residual terminal-neighbor candidate and
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`, without
+proving any bounded selected image or bounded menu.
+
+## Validation
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed according to the dashboard artifact.  The new reduction axiom trace is
+no larger than:
+
+    [propext, Classical.choice, Quot.sound]
+
+## Honesty
+
+This reduction does not close F3-COUNT and does not use selected-image
+cardinality, `finsetCodeOfCardLe`, local displacement codes,
+parent-relative `terminalNeighborCode` equality, empirical search, post-hoc
+terminal-neighbor choices, or the v2.161 circular route.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, proof claim, or Clay-level claim
+moved.
+
+---
+
+# v2.170.0 - F3 absolute selected-value terminal-neighbor code interface landed
+
+**Released: 2026-04-27**
+
+Codex added the no-sorry residual-local interface:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborAbsoluteSelectedValueCode1296
+
+and the no-sorry bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296_of_residualFiberTerminalNeighborAbsoluteSelectedValueCode1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_absolute_selected_value_code_interface_v2_170.md
+
+Lean evidence:
+
+    YangMills/ClayCore/LatticeAnimalCount.lean
+
+## Result
+
+The interface supplies residual-local `terminalNeighborOfParent` selector
+data, `PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`, and an
+absolute residual-value code
+`{q : ConcretePlaquette physicalClayDimension L // q ∈ residual} -> Fin 1296`.
+The separation clause says equality of this absolute code on selected
+terminal-neighbor values forces equality of those selected plaquettes across
+essential parents in the same residual fiber.
+
+The bridge projects this absolute selected-value code into the v2.166
+basepoint-independent selected-image interface.  It is a no-sorry interface
+landing and bridge, not a proof that the absolute selected-value code exists
+from v2.121 bookkeeping alone.
+
+## Validation
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed according to the dashboard artifact.  The bridge axiom trace is exactly:
+
+    [propext, Classical.choice, Quot.sound]
+
+## Honesty
+
+This entry does not close F3-COUNT.  It does not use local displacement codes,
+parent-relative `terminalNeighborCode` equality, local degree, residual paths,
+root-shell reachability, residual size, raw frontier, deleted-vertex adjacency,
+empirical search, packing/projection of an already bounded menu,
+`finsetCodeOfCardLe` on an already bounded selected image, or the v2.161
+circular chain.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, or Clay-level claim moved.
+
+---
+
+# v2.169.0 - F3 absolute selected-value code proof attempt stopped at missing interface
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborAbsoluteSelectedValueCode1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_absolute_selected_value_code_attempt_v2_169.md
+
+## Result
+
+No Lean theorem was added.  The proof attempt stopped before proof work because
+the interface
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborAbsoluteSelectedValueCode1296`
+and its bridge into
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296`
+were not yet present in `YangMills/ClayCore/LatticeAnimalCount.lean`.
+
+## Exact blocker
+
+The required next artifact was a no-sorry Lean interface/bridge landing:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborAbsoluteSelectedValueCode1296
+
+with bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296_of_residualFiberTerminalNeighborAbsoluteSelectedValueCode1296
+
+The interface needed to expose residual-local terminal-neighbor selector data,
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`, an
+absolute/basepoint-independent `Fin 1296` code on selected terminal-neighbor
+values, and selected-value injectivity across essential parents in the same
+residual fiber.
+
+## Honesty
+
+No Lean file was edited for the attempt, so no new theorem-specific axiom trace
+was introduced.  The attempt did not use local displacement codes,
+parent-relative `terminalNeighborCode` equality, local degree, residual paths,
+root-shell reachability, residual size, raw frontier, deleted-vertex adjacency,
+empirical search, packing/projection, `finsetCodeOfCardLe` on an already
+bounded selected image, the v2.161 circular chain, or post-hoc current deletion
+witnesses.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, or Clay-level claim moved.
+
+---
+
+# v2.168.0 - F3 absolute selected-value terminal-neighbor code scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the next residual-local source theorem:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborAbsoluteSelectedValueCode1296
+
+Intended bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296_of_residualFiberTerminalNeighborAbsoluteSelectedValueCode1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_absolute_selected_value_code_scope.md
+
+## Result
+
+The scope factors the v2.167 blocker into a stronger source theorem.  The
+source must construct the residual-local terminal-neighbor selector data and an
+absolute `Fin 1296` code on residual terminal-neighbor values, such as a code
+on `{q : ConcretePlaquette physicalClayDimension L // q ∈ residual}` or an
+equivalent residual-local absolute-value domain.
+
+The intended bridge is only a restriction/projection into the v2.166
+basepoint-independent selected-image interface: it reuses the selector data,
+restricts the absolute residual-value code to selected terminal-neighbor
+values, and derives selected-image injectivity from the selected-value
+separation clause.
+
+## Honesty
+
+Dashboard-only scope; no Lean file was edited and no lake build was required
+for this scope task.  It does not use local displacement codes,
+parent-relative `terminalNeighborCode` equality, `finsetCodeOfCardLe` on an
+already bounded selected image, the v2.161 circular chain, local degree,
+residual paths, root-shell reachability, residual size, raw frontier,
+deleted-vertex adjacency, empirical search, packing/projection, or post-hoc
+current deletion witnesses.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, or Clay-level claim moved.
+
+---
+
+# v2.167.0 - F3 basepoint-independent code proof attempt blocked by absolute selected-value code
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_basepoint_independent_code_attempt_v2_167.md
+
+## Result
+
+No Lean theorem was added.  The existing interfaces and bridges build, but they
+do not provide an independent residual-local construction of the selected
+terminal-neighbor values together with an absolute/basepoint-independent
+`Fin 1296` code.
+
+## Exact blocker
+
+The missing theorem is an absolute selected terminal-neighbor value-code
+construction for the v2.121 bookkeeping residual fibers.  It must construct
+`terminalNeighborOfParent`, provide
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`, and prove an
+injective `Fin 1296` code on selected terminal-neighbor values.
+
+Local displacement codes and equality of a per-parent `terminalNeighborCode`
+field do not identify selected terminal-neighbor values across different
+parent basepoints.
+
+## Validation
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed before the note was recorded.  No Lean file was edited for this
+attempt, so no new theorem axiom trace was introduced.
+
+## Honesty
+
+The attempt does not use `finsetCodeOfCardLe` on an already bounded selected
+image, the v2.161 circular chain, local degree, residual paths, root-shell
+reachability, residual size, raw frontier, deleted-vertex adjacency, empirical
+search, packing/projection, or post-hoc current deletion witnesses.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.166.0 - F3 basepoint-independent terminal-neighbor code interface landed
+
+**Released: 2026-04-27**
+
+Codex added the no-sorry residual-local interface:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296
+
+and the no-sorry bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296_of_residualFiberTerminalNeighborBasepointIndependentCode1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_basepoint_independent_code_interface_v2_166.md
+
+## Result
+
+The interface upgrades the v2.165 scoped burden into Lean: it asks for a
+residual-local `terminalNeighborOfParent` selector, selector evidence via
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`, and a
+`Fin 1296` code on the selected terminal-neighbor image as absolute residual
+values, with injectivity in each residual fiber.
+
+The bridge reads this absolute selected-value code at each parent's selected
+terminal neighbor to supply the parent-indexed geometric selector code from
+v2.163.  It therefore avoids treating per-parent local displacement codes as
+selected-value equality across different basepoints.
+
+## Validation
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed.  The new bridge axiom trace is:
+
+    [propext, Classical.choice, Quot.sound]
+
+## Honesty
+
+No `finsetCodeOfCardLe` on an already bounded selected image was used, and the
+v2.161 circular route through selector-code separation, code separation,
+dominating menu, and image compression was not used.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, or Clay-level claim moved.
+
+---
+
+# v2.165.0 - F3 basepoint-independent terminal-neighbor code scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the next residual-local source theorem:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296
+
+Intended bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296_of_residualFiberTerminalNeighborBasepointIndependentCode1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_basepoint_independent_code_scope.md
+
+## Result
+
+The scope sharpens the v2.164 blocker: the missing code must be a code on
+selected terminal-neighbor values as absolute residual values. It cannot be a
+per-parent local displacement code, because equal local displacements from
+different parent/base vertices do not identify the same absolute plaquette.
+
+The proposed interface exposes a `Fin 1296` code on the selected terminal
+neighbor image itself, with injectivity. The bridge to the v2.163 geometric
+selector-code interface then reads this absolute value code at each selected
+neighbor and obtains pairwise selected-value separation by injectivity.
+
+## Honesty
+
+Dashboard-only scope; no Lean file was edited and no lake build was required.
+The scope does not use `finsetCodeOfCardLe` on an already bounded selected
+image, the v2.161 circular chain, local degree, residual paths, root-shell
+reachability, residual size, raw frontier, deleted-vertex adjacency, empirical
+search, packing/projection, or post-hoc current deletion witnesses.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.164.0 - F3 geometric selector-code proof attempt blocked by basepoint-independent separation
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_geometric_selector_code_attempt_v2_164.md
+
+## Result
+
+No proof was added.  The existing local geometric coding tools separate
+neighbors relative to a fixed base point, but the target requires equality of
+codes across possibly different essential parents in the same residual fiber
+to force equality of the selected terminal-neighbor values themselves.
+
+The per-witness `terminalNeighborCode` field and local neighbor/displacement
+codes do not supply that basepoint-independent selected-value separation.
+
+## Exact blocker
+
+The next missing theorem is a residual-local basepoint-independent terminal
+neighbor code/separation principle, tentatively:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296
+
+It must construct the terminal-neighbor selector data and a genuine `Fin 1296`
+code whose equality separates selected terminal-neighbor values across all
+essential parents in a residual fiber.
+
+## Honesty
+
+No Lean theorem was added in this attempt.  The proof was not replaced by local
+degree, residual paths, root-shell reachability, residual size, raw frontier,
+deleted-vertex adjacency, empirical search, packing/projection, the v2.161
+cycle, or `finsetCodeOfCardLe` on an already bounded selected image.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.163.0 - F3 geometric selector-code interface and bridge landed
+
+**Released: 2026-04-27**
+
+Codex added the no-sorry interface:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296
+
+and the no-sorry bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296_of_residualFiberTerminalNeighborGeometricSelectorCode1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_geometric_selector_code_interface_v2_163.md
+
+## Result
+
+The bridge derives the selected terminal-neighbor image cardinality bound from an
+independent residual-local `Fin 1296` geometric selector code with pairwise
+selected-value separation.  It builds a code on selected-image elements by
+choosing parent witnesses of image membership, proves that induced code
+injective, and applies finite-cardinality injection into `Fin 1296`.
+
+This does not use `finsetCodeOfCardLe` on an already bounded selected image and
+does not route through the v2.161 cycle:
+
+    SelectorImageBound -> SelectorCodeSeparation -> CodeSeparation
+      -> DominatingMenu -> ImageCompression -> SelectorImageBound
+
+## Axiom trace
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.  The new bridge trace
+is:
+
+    [propext, Classical.choice, Quot.sound]
+
+## Honesty
+
+The source theorem
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296`
+remains to be proved. F3-COUNT remains `CONDITIONAL_BRIDGE`. No status,
+percentage, README metric, planner metric, ledger row, or Clay-level claim
+moved.
+
+---
+
+# v2.162.0 - F3 non-circular selector-image route scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the independent route to:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296
+
+Proposed source theorem:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296
+
+Intended bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296_of_residualFiberTerminalNeighborGeometricSelectorCode1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_selector_image_independence_scope.md
+
+## Result
+
+The scope explicitly rejects the circular v2.161 route:
+
+    SelectorImageBound -> SelectorCodeSeparation -> CodeSeparation
+      -> DominatingMenu -> ImageCompression -> SelectorImageBound
+
+The new source theorem must construct residual-local terminal-neighbor selector
+data and an independent `Fin 1296` geometric selector code whose pairwise
+separation proves the selected-image cardinality bound.  The code cannot be
+`finsetCodeOfCardLe` on an already bounded selected image, and the proof cannot
+come from a bounded menu, local degree, residual paths, root-shell reachability,
+residual size, raw frontier, deleted-vertex adjacency, empirical search, or
+post-hoc current deletion witnesses.
+
+## Honesty
+
+Dashboard-only scope; no Lean file was edited and no lake build was required.
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.161.0 - F3 selector-code separation reduced to independent selector-image bound
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorCodeSeparation1296
+
+and added the no-sorry reduction bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorCodeSeparation1296_of_residualFiberTerminalNeighborSelectorImageBound1296
+
+Bridge premise:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorCodeSeparation1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_selector_code_separation_attempt_v2_161.md
+
+## Result
+
+The selector-code separation burden is no longer independent once a selected
+terminal-neighbor image bound exists: the bridge reuses the selected neighbor
+and residual-local selector evidence, replaces only the `terminalNeighborCode`
+field with `finsetCodeOfCardLe` on the selected image, and obtains pairwise
+separation from `finsetCodeOfCardLe_injective`.
+
+No unconditional proof of
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorCodeSeparation1296`
+was added.
+
+## Exact blocker
+
+The remaining blocker is an independent, non-circular proof of:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296
+
+The existing route through selector-code separation would be circular:
+
+    SelectorImageBound -> SelectorCodeSeparation -> CodeSeparation
+      -> DominatingMenu -> ImageCompression -> SelectorImageBound
+
+Thus the next theorem must construct and bound the selected terminal-neighbor
+image without cycling through the v2.161 reduction.
+
+## Axiom trace
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.  The new bridge
+trace is:
+
+    [propext, Classical.choice, Quot.sound]
+
+## Honesty
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.160.0 - F3 residual terminal-neighbor selector-code separation interface and bridge
+
+**Released: 2026-04-27**
+
+Codex added the selector-code separation interface:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorCodeSeparation1296
+
+and proved the no-sorry projection bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296_of_residualFiberTerminalNeighborSelectorCodeSeparation1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_selector_code_separation_interface_v2_160.md
+
+## Result
+
+The interface carries a residual-local `terminalNeighborOfParent` selector,
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`, a pairwise
+separation clause proving that equal `terminalNeighborCode : Fin 1296` values
+force equal selected terminal-neighbor values, and the selected-image
+cardinality bound `<= 1296`.
+
+The bridge chooses a parent witness for each selected image element, defines
+the v2.157 image code from the witness's selector code, and proves injectivity
+using the pairwise selector-code separation clause.
+
+## Axiom trace
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.  The new bridge
+trace is:
+
+    [propext, Classical.choice, Quot.sound]
+
+The existing v2.157 bridge
+`physicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296_of_residualFiberTerminalNeighborCodeSeparation1296`
+was also made explicit at its selected-image witness and now prints the same
+clean trace.
+
+## Honesty
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.159.0 - F3 residual terminal-neighbor selector-code separation theorem scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the residual-fiber selector-code separation target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorCodeSeparation1296
+
+Intended bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296_of_residualFiberTerminalNeighborSelectorCodeSeparation1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_selector_code_separation_scope.md
+
+## Result
+
+The scope isolates the theorem missing behind v2.158: construct the
+residual-local `terminalNeighborOfParent` selector and
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`, then prove
+that equal `terminalNeighborCode : Fin 1296` values force equal selected
+terminal-neighbor values across essential parents in the same residual fiber.
+The bridge can then choose image witnesses and define the v2.157 image code
+from those selector codes.
+
+The selected-image cardinality bound should either be carried by this
+selector-code interface or derived by a narrow finite-card lemma from the
+pairwise `Fin 1296` separation.
+
+## Non-substitutes
+
+The per-witness `terminalNeighborCode` field is not itself an injectivity
+theorem.  Local degree, residual paths, root/root-shell reachability, residual
+size, raw frontier growth, deleted-vertex adjacency outside the residual,
+empirical search, and packing/projection of an already bounded menu do not
+provide selected-image code separation.
+
+## Validation
+
+Dashboard-only scope; no Lean file was edited and no theorem-specific axiom
+trace was required.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.158.0 - F3 residual terminal-neighbor code-separation proof blocked
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_code_separation_attempt_v2_158.md
+
+## Result
+
+No Lean proof was added.  The exact blocker is the absence of a residual-fiber
+selector-code separation theorem, tentatively:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorCodeSeparation1296
+
+The missing theorem must construct the residual-local `terminalNeighborOfParent`
+selector and `PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`,
+then prove that the selector data's `terminalNeighborCode : Fin 1296` separates
+selected terminal-neighbor values across essential parents in each residual
+fiber.  Only after that can the current v2.157 image-code interface be proved
+honestly.
+
+## Non-substitutes
+
+The per-witness `terminalNeighborCode` field alone is not an injectivity
+theorem.  Local degree, residual path existence/splitting, root/root-shell
+reachability, residual size, raw frontier growth, deleted-vertex adjacency
+outside the residual, empirical search, and packing/projection of an already
+bounded menu do not provide selected-image code separation.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+No new theorem was introduced by this attempt.  The v2.157 bridge trace remains
+`[propext, Classical.choice, Quot.sound]`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.157.0 - F3 residual terminal-neighbor code-separation interface and bridge
+
+**Released: 2026-04-27**
+
+Codex added the selected-image code-separation interface:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296
+
+and proved the no-sorry projection bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296_of_residualFiberTerminalNeighborCodeSeparation1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_code_separation_interface_v2_157.md
+
+## Result
+
+The interface carries a residual-local `terminalNeighborOfParent` selector,
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`, an injective
+`Fin 1296` code on the selected terminal-neighbor image, and the resulting
+selected-image cardinality bound.  The bridge takes the selected image itself
+as the dominating menu.
+
+## Axiom trace
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.  The new bridge
+trace is:
+
+    [propext, Classical.choice, Quot.sound]
+
+## Honesty
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.156.0 - F3 residual terminal-neighbor code-separation theorem scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the residual-fiber selected-image target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296
+
+Intended bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296_of_residualFiberTerminalNeighborCodeSeparation1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_code_separation_scope.md
+
+## Result
+
+The scope isolates the true construction missing behind v2.155: construct a
+residual-local terminal-neighbor selector and selector evidence, then prove a
+genuine `Fin 1296` injective code/cardinality bound for the selected
+terminal-neighbor image.  The dominating menu is then that selected image.
+
+## Non-substitutes
+
+Local degree, residual path existence/splitting, root/root-shell reachability,
+residual size, raw frontier growth, deleted-vertex adjacency outside the
+residual, empirical search, and packing/projection of an already bounded menu
+do not provide the required selected-image code separation.
+
+## Validation
+
+Dashboard-only scope; no Lean file was edited and no new axiom trace was
+needed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.155.0 - F3 residual terminal-neighbor dominating-menu proof blocked
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_dominating_menu_bound_attempt_v2_155.md
+
+## Result
+
+No Lean proof was added.  The exact blocker is the absence of a residual-fiber
+terminal-neighbor code separation theorem, tentatively:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296
+
+The missing theorem must construct residual-local terminal-neighbor selector
+data and prove a genuine `Fin 1296` separation/cardinality bound for the
+selected terminal-neighbor image.  Then the dominating menu can be taken to be
+that selected image.
+
+## Non-substitutes
+
+Local degree, residual path existence/splitting, root/root-shell reachability,
+residual size, raw frontier growth, deleted-vertex adjacency outside the
+residual, empirical search, and packing/projection of an already bounded menu
+do not provide the required selected-image separation.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+No new theorem was introduced by this attempt.  The v2.154 bridge trace remains
+`[propext, Classical.choice, Quot.sound]`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.154.0 - F3 residual terminal-neighbor dominating-menu interface and bridge
+
+**Released: 2026-04-27**
+
+Codex added the menu-first residual-fiber interface:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296
+
+and proved the no-sorry projection bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296_of_residualFiberTerminalNeighborDominatingMenu1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_dominating_menu_interface_v2_154.md
+
+## Result
+
+The interface first supplies `terminalNeighborMenu residual ⊆ residual` and
+`(terminalNeighborMenu residual).card <= 1296`, then proves every essential
+parent is dominated by a terminal neighbor in that menu carrying nonempty
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`.
+
+The bridge derives the v2.151 selector, selector evidence, membership in the
+menu, and selected-image subset mechanically from the domination relation.
+It does not choose terminal neighbors from a current `(X, deleted X)` witness.
+
+## Axiom trace
+
+`#print axioms
+physicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296_of_residualFiberTerminalNeighborDominatingMenu1296`
+reports:
+
+    [propext, Classical.choice, Quot.sound]
+
+## Non-substitutes
+
+Local degree, residual path existence/splitting, root/root-shell reachability,
+residual size, raw frontier growth, deleted-vertex adjacency outside the
+residual, empirical search, and packing/projection of an already bounded menu
+remain non-substitutes for proving the new menu theorem itself.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.153.0 - F3 residual terminal-neighbor dominating-menu theorem scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the residual-fiber bounded-menu target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296
+
+Intended bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296_of_residualFiberTerminalNeighborDominatingMenu1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_dominating_menu_scope.md
+
+## Result
+
+The scope isolates the true construction missing behind v2.152: first build a
+residual-local `terminalNeighborMenu` with `terminalNeighborMenu residual ⊆
+residual` and `(terminalNeighborMenu residual).card <= 1296`; then prove every
+essential parent is dominated by some terminal neighbor in that menu carrying
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`.
+
+The selector required by v2.151 is then a bridge-level choice from this
+domination relation, not primitive data and not a post-hoc choice from a current
+`(X, deleted X)` witness.
+
+## Non-substitutes
+
+Local neighbor existence, local degree of one fixed plaquette, residual path
+existence/splitting, root/root-shell reachability, residual size, raw frontier
+growth, deleted-vertex adjacency outside the residual, empirical search, and
+packing/projection of an already bounded menu do not construct the bounded
+dominating menu.
+
+## Validation
+
+Dashboard-only scope; no Lean file was edited and no new axiom trace was
+needed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, or Clay-level claim moved.
+
+---
+
+# v2.152.0 - F3 residual terminal-neighbor image compression producer blocked
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_image_compression_bound_attempt_v2_152.md
+
+## Result
+
+No Lean proof was added. The exact blocker is the absence of a residual-fiber
+terminal-neighbor dominating-menu theorem, tentatively:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296
+
+The missing theorem must construct a residual-local `terminalNeighborMenu`
+inside each v2.121 bookkeeping residual fiber, prove
+`terminalNeighborMenu.card <= 1296`, and show that every essential parent has a
+terminal neighbor in that menu with residual-local selector evidence.
+
+## Non-substitutes
+
+Local degree of one fixed plaquette, residual path existence/splitting,
+root/root-shell reachability, residual size, raw frontier growth, deleted-vertex
+adjacency outside the residual, empirical search, and packing/projection of an
+already bounded menu do not construct the bounded residual menu.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed. No new theorem was
+introduced, so no new theorem-specific axiom trace was required.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.151.0 - F3 residual terminal-neighbor image compression interface and bridge landed
+
+**Released: 2026-04-27**
+
+Codex added:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296
+
+and proved:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296_of_residualFiberTerminalNeighborImageCompression1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_image_compression_interface_v2_151.md
+
+## Result
+
+The new interface exposes a residual-indexed bounded terminal-neighbor menu,
+menu subset residual, menu cardinality `<= 1296`, selector membership in the
+menu, residual-local selector evidence, and selected image subset the menu.
+
+The bridge is projection-only: it reuses the selector/evidence and derives the
+selected-image cardinality bound using `Finset.card_le_card` from
+`selected image ⊆ terminalNeighborMenu` and the menu-cardinality proof.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed. The new bridge
+theorem axiom trace is `[propext, Classical.choice, Quot.sound]`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.150.0 - F3 residual terminal-neighbor image compression theorem scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the residual-fiber compression target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296
+
+Intended bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296_of_residualFiberTerminalNeighborImageCompression1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_image_compression_scope.md
+
+## Result
+
+The scope isolates the missing bounded-menu step behind v2.149: construct a
+residual-only `terminalNeighborMenu` with cardinality `<= 1296`, a
+`terminalNeighborOfParent` selector whose values lie in that menu, residual-local
+selector evidence, and `selected image ⊆ terminalNeighborMenu`. The intended
+bridge then derives the existing selector-image cardinality bound by combining
+`Finset.card_le_card` with the menu-cardinality proof.
+
+## Non-substitutes
+
+Local neighbor existence, residual path existence/splitting, root/root-shell
+reachability, local degree of one fixed plaquette, residual size, raw residual
+frontier, deleted-vertex adjacency outside the residual, empirical search, and
+packing of an already bounded menu do not supply the selected-image compression
+theorem.
+
+## Validation
+
+Dashboard-only scope; no Lean file was edited and no new axiom trace was needed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.149.0 - F3 residual terminal-neighbor selector producer blocked
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_selector_image_bound_attempt_v2_149.md
+
+## Result
+
+No Lean proof was added. The exact blocker is the absence of a residual-fiber
+terminal-neighbor image compression/dominating theorem, tentatively:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296
+
+The missing theorem must construct a residual-local `terminalNeighborOfParent`
+selector with last-edge adjacency and residual-local walk/prefix/suffix
+evidence, and must prove the selected terminal-neighbor image has cardinality
+`<= 1296` over each v2.121 bookkeeping residual fiber.
+
+## Non-substitutes
+
+Residual path existence/splitting, root/root-shell reachability, local degree of
+one fixed plaquette, residual size, raw frontier growth, deleted-vertex
+adjacency outside the residual, empirical search, and packing of an already
+bounded menu do not supply the selected-image bound.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed. No new theorem was
+introduced by this attempt, so no new theorem-specific axiom trace was needed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.148.0 - F3 residual terminal-neighbor selector image interface and bridge landed
+
+**Released: 2026-04-27**
+
+Codex added:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296
+
+and proved:
+
+    physicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296_of_residualFiberTerminalNeighborSelectorImageBound1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_selector_image_interface_v2_148.md
+
+## Result
+
+The new interface exposes a residual-indexed selected terminal-neighbor map
+`terminalNeighborOfParent` separately from the selector evidence and selected
+terminal-neighbor image-cardinality bound `<= 1296`.
+
+The bridge is projection-only: it copies the selected terminal neighbor and its
+residual-local walk/prefix/suffix evidence into
+`PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborData`, then carries
+the selected-image bound unchanged.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed. The new bridge
+theorem axiom trace is `[propext, Classical.choice, Quot.sound]`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.147.0 - F3 residual terminal-neighbor selector image theorem scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the sharper residual-local target:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296
+
+Intended bridge:
+
+    physicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296_of_residualFiberTerminalNeighborSelectorImageBound1296
+
+Bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_selector_image_scope.md
+
+## Result
+
+The scoped theorem isolates a residual-indexed selector
+`terminalNeighborOfParent` and a selected terminal-neighbor image-cardinality
+bound `<= 1296` over each v2.121 bookkeeping residual fiber.
+
+This is a sharper proof obligation than the v2.145 canonical terminal-neighbor
+interface: the later bridge should only project/copy selector data into
+`PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborData` and carry the
+selected-image bound unchanged.
+
+## Non-substitutes
+
+The selected terminal-neighbor image bound is not supplied by residual path
+existence or splitting, root/root-shell reachability, local degree of one fixed
+plaquette, residual size, raw frontier growth, deleted-vertex adjacency outside
+the residual, or packing of an already bounded menu.
+
+## Validation
+
+No Lean file was edited, so no `lake build` was required for this scope task.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.146.0 - F3 residual canonical terminal-neighbor producer blocked
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_image_bound_attempt_v2_146.md
+
+## Result
+
+No Lean proof was added. The exact blocker is the absence of a residual-local
+terminal-neighbor selector/image theorem, tentatively:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296
+
+This theorem must select terminal neighbors inside each v2.121 bookkeeping
+residual fiber, prove last-edge adjacency to each essential parent, provide
+residual prefix/suffix or walk evidence, and bound the selected
+terminal-neighbor image by `<= 1296`.
+
+Existing APIs provide residual path existence, first-edge walk splitting,
+root/root-shell reachability, local degree bounds for one fixed plaquette,
+deleted-vertex adjacency to residual parents, and packing of an already bounded
+menu. They do not construct the bounded selected terminal-neighbor image inside
+the residual.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed. No new theorem was
+introduced by this attempt, so no new theorem-specific axiom trace was needed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.145.0 - F3 residual canonical terminal-neighbor image interface and bridge landed
+
+**Released: 2026-04-27**
+
+Codex added:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborData
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296
+
+and proved the bridge:
+
+    physicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296_of_residualFiberCanonicalTerminalNeighborImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_image_bound_interface_v2_145.md
+
+## Result
+
+The new interface exposes residual-local selected terminal-neighbor data
+separately from terminal-suffix repacking and keeps the selected
+terminal-neighbor image-cardinality bound `<= 1296` explicit over each residual
+fiber.
+
+The bridge is projection-only into
+`PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296`. It
+renames `terminalNeighbor` as the terminal predecessor field and carries the
+selected-image bound unchanged.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed. The bridge theorem
+axiom trace is `[propext, Classical.choice, Quot.sound]`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.144.0 - F3 residual canonical terminal-neighbor image theorem scoped
+
+**Released: 2026-04-27**
+
+Codex scoped:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_neighbor_image_bound_scope.md
+
+## Result
+
+The intended bridge is:
+
+    physicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296_of_residualFiberCanonicalTerminalNeighborImageBound1296
+
+with conclusion:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296
+
+The target isolates the residual-local selected terminal-neighbor image
+cardinality bound `<= 1296` over the v2.121 bookkeeping residual fibers. It
+keeps that bound separate from residual path existence/splitting, root/root-shell
+reachability, local degree of one fixed plaquette, residual size, raw residual
+frontier growth, and packing of an already bounded menu.
+
+The proposed bridge is projection/repacking only: selected terminal neighbors
+become terminal predecessors in
+`PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixData`, while the
+selected-image bound is carried through unchanged.
+
+## Validation
+
+Dashboard-only scope artifact created. No Lean file was edited, so no new
+theorem-specific axiom trace or `lake build` was required.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.143.0 - F3 residual canonical terminal-suffix producer blocked
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_suffix_image_bound_attempt_v2_143.md
+
+## Result
+
+No Lean proof was added. The exact blocker is the absence of a residual-local
+selected terminal-neighbor image theorem, tentatively:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296
+
+This theorem must select terminal predecessors inside each v2.121 bookkeeping
+residual fiber, prove last-edge adjacency to each essential parent, provide
+residual reachability/suffix evidence, and bound the selected terminal-neighbor
+image by `<= 1296`.
+
+Existing APIs provide induced paths, first-edge walk splitting, root/root-shell
+reachability, and deleted-vertex adjacency to residual parents. They do not
+construct the bounded selected terminal-neighbor image inside the residual.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed for the current Lean
+state. No new theorem was introduced by this attempt, so no new theorem-specific
+axiom trace was needed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.142.0 - F3 residual canonical terminal-suffix image interface and bridge landed
+
+**Released: 2026-04-27**
+
+Codex added:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixData
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296
+
+and proved the bridge:
+
+    physicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296_of_residualFiberCanonicalTerminalSuffixImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_suffix_image_bound_interface_v2_142.md
+
+## Result
+
+The new interface exposes residual-local canonical walk/path source data,
+`prefixToTerminalPred`, terminal-suffix extraction, last-edge adjacency inside
+the residual, and the selected terminal-predecessor image-cardinality bound
+`<= 1296`.
+
+The bridge is projection-only into
+`PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296`.
+It does not construct terminal suffixes and does not use path existence,
+root/root-shell reachability, local degree, residual size, raw frontier growth,
+deleted-vertex adjacency outside the residual, empirical search, or packing an
+already bounded menu as a substitute for the selected-image bound.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed. The bridge theorem
+axiom trace is `[propext, Classical.choice, Quot.sound]`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.141.0 - F3 residual canonical terminal-suffix image theorem scoped
+
+**Released: 2026-04-27**
+
+Codex scoped:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_suffix_image_bound_scope.md
+
+## Result
+
+The intended bridge is:
+
+    physicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296_of_residualFiberCanonicalTerminalSuffixImageBound1296
+
+with conclusion:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296
+
+The new target separates residual-local canonical walk/path source selection,
+terminal-suffix extraction from that canonical data, last-edge adjacency and
+residual suffix evidence, and selected terminal-predecessor image cardinality
+`<= 1296` over the v2.121 bookkeeping residual fibers.
+
+This is not merely path existence, root/root-shell reachability, local degree,
+residual size, raw frontier growth, or packing of an already bounded menu.
+Deleted-vertex adjacency outside the residual remains forbidden.
+
+## Validation
+
+Dashboard-only scope artifact created. No Lean file was edited, so no new
+theorem-specific axiom trace or build was required. F3-COUNT remains
+`CONDITIONAL_BRIDGE`. No status, percentage, README metric, planner metric, or
+Clay-level claim moved.
+
+---
+
+# v2.140.0 - F3 walk terminal-edge selected-image producer blocked
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_walk_terminal_edge_image_bound_attempt_v2_140.md
+
+## Result
+
+No Lean proof was added. The exact blocker is the absence of a sharper
+residual-local terminal-suffix image theorem, tentatively:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296
+
+This theorem must construct canonical residual walk/path source data, extract
+the immediate terminal predecessor and residual suffix, prove last-edge
+adjacency inside the residual, and prove selected terminal-predecessor image
+cardinality `<= 1296` over the v2.121 bookkeeping residual fibers.
+
+Existing APIs provide path existence, root/root-shell reachability, first-edge
+walk helpers, and `1296 ^ n` walk-count bounds, but not the selected terminal
+predecessor image bound. Packing an already bounded menu is also insufficient to
+construct the menu.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed for the current Lean
+state. No new theorem was introduced by this attempt, so no new theorem-specific
+axiom trace was needed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.139.0 - F3 walk terminal-edge selected-image interface and bridge landed
+
+**Released: 2026-04-27**
+
+Codex added:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeData
+    PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296
+
+and proved the bridge:
+
+    physicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296_of_residualFiberCanonicalWalkTerminalEdgeImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_walk_terminal_edge_image_bound_interface_v2_139.md
+
+## Result
+
+The new interface exposes residual-local canonical walk/path data separately
+from terminal-edge extraction and keeps the selected terminal-predecessor image
+cardinality bound `<= 1296` explicit. The bridge is projection-only into
+`PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296`.
+
+The interface does not use path existence, root/root-shell reachability, local
+degree, residual size, raw frontier growth, deleted-vertex adjacency outside the
+residual, empirical search, or packing an already bounded menu as a substitute
+for the selected-image bound.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed. The bridge theorem
+axiom trace is `[propext, Classical.choice, Quot.sound]`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.138.0 - F3 walk terminal-edge selected-image bound scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the next target:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_walk_terminal_edge_image_bound_scope.md
+
+## Result
+
+The target should expose residual-local canonical walk/path data, terminal-edge
+extraction, last-edge adjacency, residual path/walk evidence, and selected
+terminal-predecessor image cardinality `<= 1296` over the v2.121 bookkeeping
+residual fibers.
+
+The intended bridge is:
+
+    physicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296_of_residualFiberCanonicalWalkTerminalEdgeImageBound1296
+
+with target:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296
+
+Path existence or root/root-shell reachability is not enough: it does not bound
+the selected terminal-predecessor image. Local degree, residual size, raw
+frontier growth, deleted-vertex adjacency outside the residual, and packing an
+already bounded menu are also insufficient substitutes for the selected-image
+bound.
+
+## Validation
+
+No Lean file was edited in this scope pass, so no new theorem-specific axiom
+trace or build was required. F3-COUNT remains `CONDITIONAL_BRIDGE`. No status,
+percentage, README metric, planner metric, or Clay-level claim moved.
+
+---
+
+# v2.137.0 - F3 terminal-edge selector producer blocked
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_edge_selector_attempt_v2_137.md
+
+## Result
+
+No Lean theorem was added. The exact blocker is a missing residual-local
+walk/path terminal-edge extraction theorem with selected terminal predecessor
+image cardinality `<= 1296` over the v2.121 bookkeeping residual fibers.
+
+Existing reachability/path APIs do not name or bound the image of immediate
+terminal predecessors. Existing packing code only encodes an explicit bounded
+menu once supplied; it does not construct the menu.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed for the current Lean
+state. No new theorem was introduced by this attempt, so no new theorem-specific
+axiom trace was needed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.136.0 - F3 residual-fiber terminal-edge selector interface and bridge landed
+
+**Released: 2026-04-27**
+
+Codex added:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeData
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296
+
+and proved the bridge:
+
+    physicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296_of_residualFiberCanonicalTerminalEdgeSelector1296
+
+Lean locations:
+
+    YangMills/ClayCore/LatticeAnimalCount.lean:3281
+    YangMills/ClayCore/LatticeAnimalCount.lean:3504
+    YangMills/ClayCore/LatticeAnimalCount.lean:3563
+    YangMills/ClayCore/LatticeAnimalCount.lean:6339
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_edge_selector_interface_v2_136.md
+
+## Result
+
+The new interface separates residual-local canonical path/path-code data from
+terminal-edge predecessor selection, while keeping the selected predecessor
+image-cardinality bound `<= 1296` explicit. The bridge is only a repacking
+bridge into `PhysicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296`.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+The new bridge theorem-specific axiom trace is:
+
+    [propext, Classical.choice, Quot.sound]
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.135.0 - F3 residual-fiber terminal-edge selector scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the structural target:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296
+
+Dashboard artifact:
+
+    dashboard/f3_residual_fiber_terminal_edge_selector_scope.md
+
+## Result
+
+The scope factors the v2.134 blocker into residual-local canonical path or
+path-code data, extraction of the immediate terminal predecessor adjacent to
+each essential parent, residual path evidence, and a selected predecessor image
+cardinality bound `<= 1296` over the v2.121 bookkeeping residual fibers.
+
+Planned bridge:
+
+    physicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296_of_residualFiberCanonicalTerminalEdgeSelector1296
+
+Target:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296
+
+## Validation
+
+Dashboard-only scope; no Lean file was edited and no new theorem-specific axiom
+trace was introduced.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.134.0 - F3 residual-fiber canonical last-edge image producer blocked
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_residual_fiber_canonical_last_edge_image_bound_attempt_v2_134.md
+
+## Result
+
+No Lean theorem was added. The exact no-closure blocker is a missing
+residual-local canonical terminal-edge selector with selected predecessor image
+cardinality `<= 1296` over the v2.121 bookkeeping residual fibers.
+
+Existing root/root-shell reachability APIs do not extract the terminal
+predecessor adjacent to the essential parent. The local degree bound controls
+the neighbors of one fixed plaquette, not the selected predecessor image over a
+residual fiber. Deleted-vertex adjacency lies outside the residual and cannot be
+used as terminal-predecessor data.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed. No new theorem was
+introduced, so no new theorem-specific axiom trace was needed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.133.0 - F3 canonical last-edge bridge axiom frontier closed
+
+**Released: 2026-04-27**
+
+Codex proved the projection bridge:
+
+    physicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296_of_residualFiberCanonicalLastEdgeImageBound1296
+
+Lean location:
+
+    YangMills/ClayCore/LatticeAnimalCount.lean:3539
+
+Dashboard artifact:
+
+    dashboard/f3_canonical_last_edge_bridge_axiom_frontier_v2_133.md
+
+## Result
+
+The v2.132 `sorryAx` report was isolated as a stale/failed-iteration artifact.
+After replaying the projection bridge in a clean imported environment and then
+adding it to Lean, the theorem-specific axiom trace is:
+
+    [propext, Classical.choice, Quot.sound]
+
+The bridge projects the canonical datum's `predecessor`, `target`,
+`target_eq`, and induced residual walk into
+`PhysicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296`.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.132.0 - F3 residual-fiber canonical last-edge image interface landed
+
+**Released: 2026-04-27**
+
+Codex added the Lean Prop/interface:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296
+
+Lean location:
+
+    YangMills/ClayCore/LatticeAnimalCount.lean:3419
+
+Dashboard artifact:
+
+    dashboard/f3_residual_fiber_canonical_last_edge_image_interface_v2_132.md
+
+## Interface Result
+
+The interface exposes residual-local canonical last-edge data separately from
+the selected predecessor image cardinality bound `<= 1296`.  It does not use
+deleted-vertex adjacency outside the residual, root reachability, local degree,
+raw residual frontier growth, residual size, or empirical search as the image
+bound.
+
+## Bridge Status
+
+The requested bridge target remains:
+
+    physicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296_of_residualFiberCanonicalLastEdgeImageBound1296
+
+The projection bridge was attempted and typechecked, but its `#print axioms`
+trace included `sorryAx`.  The bridge theorem was therefore not left in Lean.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed after the
+interface-only Lean edit.  No new theorem was left in Lean, so no new
+theorem-specific axiom trace was introduced.  The new Prop/interface itself has
+axiom trace `[propext, Classical.choice, Quot.sound]`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.131.0 - F3 residual-fiber canonical last-edge image scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the next structural target:
+
+    PhysicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_residual_fiber_canonical_last_edge_image_scope.md
+
+## Scope Result
+
+The target should expose residual-local canonical last-edge data, then project
+its predecessor field to supply
+`PhysicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296`.  The
+scope separates canonical path/terminal-edge extraction from the selected-image
+cardinality bound `<= 1296`.
+
+## Validation
+
+Dashboard-only scope; no Lean file was edited and no new axiom trace was
+introduced.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.130.0 - F3 residual-fiber terminal-predecessor image bound no-closure
+
+**Released: 2026-04-27**
+
+Codex attempted but did not prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_residual_fiber_terminal_predecessor_image_bound_attempt_v2_130.md
+
+## No-Closure Result
+
+The exact missing theorem is a residual-local canonical last-edge selector with
+a `1296`-bounded selected predecessor image over each v2.121 bookkeeping
+residual fiber.  Existing root-reachability and local-degree APIs do not expose
+canonical terminal-edge data or prove the selected-image cardinality bound.
+Deleted-vertex adjacency remains outside the residual and cannot be used as
+terminal-predecessor data.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.  No new theorem was
+introduced, so no new theorem-specific axiom trace was added.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.129.0 - F3 residual-fiber terminal-predecessor image interface landed
+
+**Released: 2026-04-27**
+
+Codex added the selected-image interface and bridge:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296
+    physicalPlaquetteGraphResidualFiberTerminalPredecessorDomination1296_of_residualFiberTerminalPredecessorImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_residual_fiber_terminal_predecessor_image_bound_interface_v2_129.md
+
+## Interface Result
+
+The new Prop isolates the residual-indexed terminal-predecessor selector,
+last-edge adjacency, residual path evidence, and selected-image cardinality
+bound `<= 1296`.  The bridge defines the v2.126 menu as that selected image and
+repackages the evidence into
+`PhysicalPlaquetteGraphResidualFiberTerminalPredecessorDomination1296`.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.  The bridge theorem
+axiom trace is `[propext, Classical.choice, Quot.sound]`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.128.0 - F3 residual-fiber terminal-predecessor image bound scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the selected-image theorem behind the v2.126 producer:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_residual_fiber_terminal_predecessor_image_bound_scope.md
+
+## Scope Result
+
+The new target isolates a residual-indexed terminal-predecessor selector and
+the load-bearing image bound:
+
+    ((essential residual).attach.image
+      (fun p => (terminalPredOfParent residual p).1)).card ≤ 1296
+
+It is intended to bridge back into
+`PhysicalPlaquetteGraphResidualFiberTerminalPredecessorDomination1296` by
+defining the terminal predecessor menu as that selected image. The bridge is
+mechanical once the selector, last-edge adjacency, residual path evidence, and
+selected-image bound are available.
+
+## Validation
+
+Dashboard-only scope; no Lean file was edited and no new axiom trace was
+introduced.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.127.0 - F3 residual-fiber terminal-predecessor domination no-closure
+
+**Released: 2026-04-27**
+
+Codex attempted but did not prove:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalPredecessorDomination1296
+
+Dashboard artifact:
+
+    dashboard/f3_residual_fiber_terminal_predecessor_domination_attempt_v2_127.md
+
+## No-Closure Result
+
+The v2.121 bookkeeping theorem supplies `parentOf X ∈ X.erase (deleted X)` and,
+in the non-singleton branch, adjacency between `deleted X` and `parentOf X`.
+That deleted plaquette is outside the residual, so it cannot be used as the
+terminal predecessor required by the v2.126 producer.
+
+The remaining mathematical burden is a residual-fiber selected-image theorem:
+construct residual-local terminal predecessors adjacent to the essential parents
+and prove the selected predecessor image has cardinality `≤ 1296`. Existing
+APIs provide local degree bounds and first-shell/root reachability, but not this
+residual-fiber selected-image bound.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed. No new theorem was
+introduced, so no new theorem-specific axiom trace was added.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.126.0 - F3 residual-fiber terminal-predecessor interface landed
+
+**Released: 2026-04-27**
+
+Codex added the residual-fiber producer interface and conditional bridge:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalPredecessorDomination1296
+    physicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296_of_baseAwareBookkeeping_of_residualFiberTerminalPredecessorDomination1296_of_packing1296
+
+Dashboard artifact:
+
+    dashboard/f3_residual_fiber_terminal_predecessor_domination_interface_v2_126.md
+
+## Interface result
+
+The interface is indexed by the actual v2.121 base-aware bookkeeping data
+`deleted`, `parentOf`, and `essential`, plus the bookkeeping clauses.  It asks
+for explicit selected terminal-predecessor menus, residual paths, last-edge
+domination evidence, and `terminalPredMenu.card ≤ 1296` for each bookkeeping
+residual fiber.
+
+The bridge composes v2.121 bookkeeping, the new producer interface, and the
+v2.124 packing theorem into
+`PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296`.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+The new bridge theorem-specific axiom trace is:
+
+    [propext, Classical.choice, Quot.sound]
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.125.0 - F3 residual-fiber terminal-predecessor domination scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the producer needed after the v2.124 packing theorem:
+
+    PhysicalPlaquetteGraphResidualFiberTerminalPredecessorDomination1296
+
+Dashboard artifact:
+
+    dashboard/f3_residual_fiber_terminal_predecessor_domination_scope.md
+
+## Scope result
+
+The producer must supply an explicit selected terminal-predecessor menu,
+last-edge domination evidence, residual path evidence, and
+`terminalPredMenu.card ≤ 1296` for the residual fibers produced by the v2.121
+base-aware bookkeeping theorem.  It must not infer domination from arbitrary
+`essential ⊆ residual` data.
+
+The intended bridge target is:
+
+    physicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296_of_baseAwareBookkeeping_of_residualFiberTerminalPredecessorDomination1296_of_packing1296
+
+It should compose v2.121 bookkeeping, the new residual-fiber producer, and the
+v2.124 packing theorem.
+
+## Validation
+
+Dashboard-only scope; no Lean file was edited and no new axiom trace was
+introduced.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.124.0 - F3 dominated terminal-predecessor packing interface landed
+
+**Released: 2026-04-27**
+
+Codex added and proved the explicit packing/coding interface:
+
+    PhysicalPlaquetteGraphResidualDominatedTerminalPredecessorPacking1296
+    physicalPlaquetteGraph_residualDominatedTerminalPredecessorPacking1296
+
+Dashboard artifact:
+
+    dashboard/f3_dominated_terminal_predecessor_packing_interface_v2_124.md
+
+## Proof result
+
+The theorem derives an injective `Fin 1296` code from an explicit residual-local
+selected terminal-predecessor menu with `terminalPredMenu.card ≤ 1296`.
+Last-edge domination, residual path evidence, menu membership, and the menu
+cardinality bound are all inputs.  The theorem does not assert that arbitrary
+`essential ⊆ residual` data is dominated.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+The new theorem-specific axiom trace is:
+
+    [propext, Classical.choice, Quot.sound]
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.123.0 - F3 dominated terminal-predecessor interface scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the corrected successor to the too-strong v2.114 residual
+terminal-predecessor theorem.
+
+Dashboard artifact:
+
+    dashboard/f3_dominated_terminal_predecessor_interface_scope.md
+
+## Scope result
+
+The v2.122 blocker showed that arbitrary `essential ⊆ residual` cannot imply
+last-edge domination.  The recommended successor is a packing/coding interface:
+
+    PhysicalPlaquetteGraphResidualDominatedTerminalPredecessorPacking1296
+
+It should take an explicit residual-local selected terminal-predecessor menu,
+last-edge domination evidence, residual path evidence, and
+`terminalPredMenu.card ≤ 1296`, then produce the injective `Fin 1296` code.
+Producer theorems for such menus must be fiber-specific or otherwise carry
+honest residual-local domination hypotheses.
+
+## Validation
+
+Dashboard-only scope; no Lean file was edited and no new axiom trace was
+introduced.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.121.0 - F3 base-aware bookkeeping proved
+
+**Released: 2026-04-27**
+
+Codex proved:
+
+    physicalPlaquetteGraph_baseAwareTerminalPredecessorBookkeeping1296
+
+Dashboard artifact:
+
+    dashboard/f3_baseaware_bookkeeping_proof_v2_121.md
+
+## Proof result
+
+The proof closes `PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296`
+by splitting on `k ≤ 1`.  The low-cardinality branch uses the v2.120 theorem
+`physicalPlaquetteGraph_baseAwareLowCardBookkeepingTotalization1296`; the
+`2 ≤ k` bookkeeping clause is vacuous there.  The high-cardinality branch uses
+the existing safe-deletion and residual-parent APIs to define total `deleted`,
+`parentOf`, and `essential` data.
+
+The proof does not construct terminal-predecessor menus/codes/paths and does
+not prove `PhysicalPlaquetteGraphResidualTerminalPredecessorDomination1296`.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+The new theorem-specific axiom trace is:
+
+    [propext, Classical.choice, Quot.sound]
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.120.0 - F3 low-cardinality bookkeeping totalization proved
+
+**Released: 2026-04-27**
+
+Codex proved the low-cardinality bookkeeping totalization branch:
+
+    physicalPlaquetteGraph_root_has_distinct_plaquette
+    physicalPlaquetteGraph_baseAwareLowCardBookkeepingTotalization1296
+
+Dashboard artifact:
+
+    dashboard/f3_lowcard_bookkeeping_totalization_proof_v2_120.md
+
+## Proof result
+
+`physicalPlaquetteGraph_root_has_distinct_plaquette` constructs a same-site
+physical plaquette distinct from any given root by comparing the concrete
+orientation candidates `(0,1)` and `(0,2)` in dimension `4`.
+
+`physicalPlaquetteGraph_baseAwareLowCardBookkeepingTotalization1296` uses that
+non-root fallback with `deleted X := fallbackDeleted`, `parentOf X := root`,
+and the existing `k = 0` / `k = 1` anchored-bucket lemmas to prove the
+low-cardinality image/subset clauses without invoking safe deletion.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+The new theorem-specific axiom traces are:
+
+    [propext, Classical.choice, Quot.sound]
+
+for both new theorems.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.119.0 - F3 low-cardinality bookkeeping totalization interface landed
+
+**Released: 2026-04-27**
+
+Codex added two Lean Prop interfaces:
+
+    PhysicalPlaquetteGraphRootHasDistinctPlaquette
+    PhysicalPlaquetteGraphBaseAwareLowCardBookkeepingTotalization1296
+
+Dashboard artifact:
+
+    dashboard/f3_lowcard_bookkeeping_totalization_interface_v2_119.md
+
+## Interface result
+
+`PhysicalPlaquetteGraphRootHasDistinctPlaquette` isolates the uniform non-root
+fallback plaquette needed for the `k < 2` branch.
+
+`PhysicalPlaquetteGraphBaseAwareLowCardBookkeepingTotalization1296` isolates the
+low-cardinality image/subset branch for v2.116 bookkeeping. It explicitly asks
+for `parentOf X ∈ X.erase (deleted X)` for every current low-cardinality
+anchored bucket, so the proof burden is not hidden behind arbitrary defaults.
+
+No bridge was added and no theorem was proved.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+No new theorem was added, so no new theorem-specific axiom trace was required.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.118.0 - F3 low-cardinality bookkeeping totalization scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the low-cardinality base-case target behind:
+
+    PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296
+
+Scope artifact:
+
+    dashboard/f3_lowcard_bookkeeping_totalization_scope.md
+
+## Scope result
+
+The exact low-cardinality target is:
+
+    PhysicalPlaquetteGraphBaseAwareLowCardBookkeepingTotalization1296
+
+It should handle `k < 2` without invoking safe deletion. Existing Lean facts
+already provide:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_one
+
+The remaining local fact is a uniform non-root physical plaquette:
+
+    physicalPlaquetteGraph_root_has_distinct_plaquette
+
+The intended low-card construction is `deleted X := fallbackDeleted`,
+`parentOf X := root`, with `fallbackDeleted != root`; for `k = 0` the fiber is
+empty, and for `k = 1` every bucket is `{root}`, so `root ∈ X.erase
+fallbackDeleted`.
+
+No Lean file was edited in v2.118.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.117.0 - F3 base-aware bookkeeping proof attempt: low-cardinality totalization blocker
+
+**Released: 2026-04-27**
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296
+
+Dashboard artifact:
+
+    dashboard/f3_baseaware_bookkeeping_attempt_v2_117.md
+
+## Result
+
+No Lean proof was added. The high-cardinality `2 <= k` branch is aligned with
+the existing safe-deletion and residual-parent APIs, but the v2.116 bookkeeping
+interface also requires the unguarded global clause:
+
+    essential residual subset residual
+
+together with the unguarded fiber identity defining `essential` as the
+`parentOf` image over all anchored buckets of cardinality `k`.
+
+The exact blocker is low-cardinality totalization for `k < 2`, especially the
+`k = 1` singleton anchored bucket. Existing safe-deletion APIs begin at
+`2 <= k`; they do not provide the total `deleted`/`parentOf` values needed to
+make the unguarded image/subset clause hold for the base cases.
+
+## Validation
+
+No Lean file was edited in v2.117.
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.116.0 - F3 base-aware bookkeeping interface and bridge landed
+
+**Released: 2026-04-27**
+
+Codex added the Lean interface:
+
+    PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296
+
+and the two-input bridge:
+
+    physicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296_of_baseAwareBookkeeping_of_terminalPredecessorDomination1296
+
+Dashboard artifact:
+
+    dashboard/f3_baseaware_bookkeeping_interface_v2_116.md
+
+## Interface result
+
+The new bookkeeping interface carries only:
+
+    deleted
+    parentOf
+    essential
+    current-bucket safe deletion and parent clauses
+    essential residual = parentOf-image over the residual fiber
+    essential residual subset residual
+
+It deliberately excludes terminal predecessor menus, terminal predecessor
+codes, residual terminal paths, selected-image bounds, and decoder compression.
+
+## Bridge result
+
+The bridge combines:
+
+    PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296
+    PhysicalPlaquetteGraphResidualTerminalPredecessorDomination1296
+
+to produce:
+
+    PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296
+
+It is a repacking lemma only: it applies the residual-only domination theorem to
+each `(residual, essential residual)` supplied by the bookkeeping layer.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+The new bridge prints:
+
+    [propext, Classical.choice, Quot.sound]
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.115.0 - F3 base-aware terminal-domination bridge scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the missing base-aware bookkeeping theorem needed to combine:
+
+    PhysicalPlaquetteGraphResidualTerminalPredecessorDomination1296
+
+with:
+
+    PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296
+
+Scope artifact:
+
+    dashboard/f3_baseaware_terminal_domination_bridge_scope.md
+
+## Scope result
+
+The proposed interface is:
+
+    PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296
+
+It isolates only the base-aware deletion and parent bookkeeping:
+
+    deleted
+    parentOf
+    essential
+    current-bucket safe deletion and parent clauses
+    essential residual = parentOf-image over the residual fiber
+    essential residual subset residual
+
+It deliberately excludes the terminal predecessor menu, terminal predecessor
+code, residual path evidence, and selected terminal-predecessor image bound.
+Those are supplied by:
+
+    PhysicalPlaquetteGraphResidualTerminalPredecessorDomination1296
+
+## Bridge target
+
+The intended exact bridge target remains:
+
+    physicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296_of_terminalPredecessorDomination1296
+
+The honest Lean route should first add a two-input bridge:
+
+    physicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296_of_baseAwareBookkeeping_of_terminalPredecessorDomination1296
+
+from:
+
+    PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296
+    PhysicalPlaquetteGraphResidualTerminalPredecessorDomination1296
+
+to:
+
+    PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296
+
+The single-input bridge name should be reserved until the base-aware
+bookkeeping theorem is already closed or supplied by an earlier theorem.
+
+No Lean file was edited in v2.115.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.114.0 - F3 terminal-predecessor domination interface landed
+
+**Released: 2026-04-27**
+
+Codex added the no-sorry residual-only Lean interface:
+
+    PhysicalPlaquetteGraphResidualTerminalPredecessorDomination1296
+
+Location:
+
+    YangMills/ClayCore/LatticeAnimalCount.lean:3346
+
+Dashboard artifact:
+
+    dashboard/f3_terminal_predecessor_domination_interface_v2_114.md
+
+## Interface result
+
+The new target takes only:
+
+    residual
+    essential subset residual
+
+and asks for a residual-only terminal-predecessor selected image with:
+
+    terminalPredMenu subset residual
+    Function.Injective terminalPredCode into Fin 1296
+    terminalPredMenu = image terminalPredOfParent over essential
+    last-edge domination for non-singleton residuals
+    induced residual path evidence from the selected predecessor to the parent
+
+This keeps the selected terminal-predecessor image bound separate from the
+base-aware deletion, `deleted`, and `parentOf` bookkeeping in:
+
+    PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296
+
+## Bridge status
+
+The bridge:
+
+    physicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296_of_terminalPredecessorDomination1296
+
+was not added. A direct bridge would still need to construct the base-aware
+residual/essential data and prove `essential subset residual` from the current
+safe-deletion hypotheses. Adding that bridge here would re-bundle the
+bookkeeping burden that the new residual-only interface is meant to isolate.
+
+## Validation
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+
+No new theorem was introduced; the Lean addition is a `def ... : Prop`, so no
+new theorem-specific axiom trace was added.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.113.0 — F3 terminal-predecessor domination theorem scoped
+
+**Released: 2026-04-27**
+
+Codex scoped a sharper residual-only graph-theoretic target:
+
+    PhysicalPlaquetteGraphResidualTerminalPredecessorDomination1296
+
+Scope artifact:
+
+    dashboard/f3_terminal_predecessor_domination_scope.md
+
+## Scope result
+
+The target takes only a residual bucket and an essential parent set:
+
+    residual
+    essential ⊆ residual
+
+and asks for a residual-only terminal-predecessor image with:
+
+    terminalPredMenu ⊆ residual
+    Function.Injective terminalPredCode into Fin 1296
+    terminalPredMenu = image terminalPredOfParent over essential
+    last-edge domination of each non-singleton essential parent
+
+This separates the selected-image theorem from the base-aware deletion and
+`parentOf` bookkeeping carried by:
+
+    PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296
+
+## Bridge target
+
+The intended next bridge is:
+
+    physicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296_of_terminalPredecessorDomination1296
+
+This bridge should repack a proof of the terminal-predecessor domination theorem
+into the v2.111 residual last-edge dominating-set interface, together with the
+existing base-aware deletion/parent clauses.
+
+## Honesty constraints
+
+This is not a proof, not a raw residual-frontier bound, not a residual-size
+bound, not a local-degree bound for one fixed plaquette, and not first-shell/root
+reachability.  The v2.109 bounded search is motivation only.
+
+No Lean file was edited.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`.  No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.112.0 — F3 residual last-edge dominating-set bound no-closure
+
+**Released: 2026-04-27**
+
+Codex attempted:
+
+    PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296
+
+and did not add a Lean proof.
+
+Dashboard artifact:
+
+    dashboard/f3_last_edge_dominating_set_bound_attempt_v2_112.md
+
+## Blocker
+
+The missing content is a residual-only terminal-predecessor domination theorem:
+for each residual bucket, the essential parent fiber must admit a selected
+terminal-predecessor menu of cardinality at most `1296`, with an injective
+`Fin 1296` code, such that every non-singleton essential parent is adjacent to
+its selected terminal predecessor.
+
+Existing APIs supply safe-deletion witnesses, current-witness parent/deleted
+neighbor data, root-shell reachability, and local degree bounds.  They do not
+construct a residual-only selected terminal-predecessor image bound over the
+entire residual fiber.
+
+## Honesty constraints
+
+Using the existing deleted-vertex neighbor-parent helper would choose a
+predecessor post-hoc from `(X, deleted X)`.  Using root-shell reachability would
+bound the wrong edge: first-shell/root reachability, not terminal last-edge
+adjacency.  Using local degree bounds would bound one fixed plaquette, not the
+selected predecessor image.
+
+No Lean theorem was added.  The existing module build passed:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`.  No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.111.0 — F3 residual last-edge dominating-set interface and bridge
+
+**Released: 2026-04-27**
+
+Codex added the Lean interface:
+
+    PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296
+
+and the repacking bridge:
+
+    physicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296_of_residualLastEdgeDominatingSetBound1296
+
+Dashboard artifact:
+
+    dashboard/f3_last_edge_dominating_set_interface_v2_111.md
+
+## Oracle
+
+The bridge is oracle-clean in the existing classical quotient baseline:
+
+    [propext, Classical.choice, Quot.sound]
+
+It is a bridge only.  The theorem
+`PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296` remains the next
+mathematical target; v2.111 does not prove it and does not close any decoder
+constant.
+
+Validation:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`.  No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.110.0 — F3 residual last-edge dominating-set lemma scoped
+
+**Released: 2026-04-27**
+
+Codex scoped the next structural target:
+
+    PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296
+
+Scope artifact:
+
+    dashboard/f3_last_edge_dominating_set_lemma_scope.md
+
+## Scope result
+
+The proposed target factors the selected terminal-predecessor image bound
+through a residual-only dominating menu:
+
+    terminalPredMenu residual
+
+with a residual-indexed injective code into `Fin 1296`.  The menu is meant to
+cover the essential-parent fiber by last-edge adjacency, feeding:
+
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296
+
+via a future bridge:
+
+    physicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296_of_residualLastEdgeDominatingSetBound1296
+
+## Honesty constraints
+
+This is not a raw residual-frontier bound, not a residual-size bound, not a
+local degree bound for one fixed portal, and not first-shell/root reachability.
+The bounded v2.109 search motivates the target but is not proof evidence.
+
+No Lean file was edited for this scope-only task.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`.  No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.109.0 — F3 last-edge predecessor image growth search
+
+**Released: 2026-04-27**
+
+Codex added the bounded diagnostic script:
+
+    scripts/f3_last_edge_predecessor_image_growth_search.py
+
+and recorded the artifact:
+
+    dashboard/f3_last_edge_predecessor_image_growth_search.md
+
+## Result
+
+The script searches finite residual fibers for growth of the minimum selected
+terminal-predecessor image behind:
+
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296
+
+The model is aligned with `plaquetteGraph`: concrete plaquettes are adjacent
+iff they are distinct and their base-site distance is at most one.  The
+diagnostic explicitly distinguishes selected terminal-predecessor image
+cardinality from raw residual frontier, residual size, local degree of one fixed
+portal, and first-shell reachability.
+
+Default bounded cases found no growth beyond `2`, including capped physical
+dimension `d=4, L=2` residual sizes `4` and `5`.
+
+## Oracle
+
+This is empirical scaffolding only.  It is not a proof of the selected-image
+bound and it does not close any decoder theorem.  The next structural target is
+a residual-local terminal-predecessor domination lemma feeding the v2.107
+selector interface.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`.  No status, percentage, README metric,
+planner metric, or Clay-level claim moved.
+
+---
+
+# v2.108.0 — F3 canonical last-edge predecessor selector attempt stopped at selected-image bound
+
+**Released: 2026-04-27**
+
+## What
+
+Codex attempted:
+
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296
+
+No Lean proof was added.
+
+## Exact blocker
+
+The missing step is now the selected terminal-predecessor image bound.  Existing
+root-shell APIs provide first-shell reachability, not last-edge portal-local
+adjacency.  Existing deleted-vertex residual-neighbor helpers choose from a
+concrete `(X, deleted X)` witness.  Residual walks alone do not bound the image
+of selected terminal predecessors over an essential-parent fiber by `1296`.
+
+## Oracle
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed (8184 jobs).
+
+No new theorem or axiom trace was introduced by this no-closure attempt.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.107.0 — F3 canonical residual last-edge predecessor interface and bridge landed
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added:
+
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgeData
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296
+
+and the bridge:
+
+    physicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296_of_baseAwareResidualCanonicalLastEdgePredecessorSelector1296
+
+The bridge target is exactly:
+
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296
+
+## Scope of the new interface
+
+The data structure carries residual-local last-edge/path data: a residual target,
+proof that it is the requested essential parent, a residual predecessor, an
+induced residual walk from predecessor to target, and a `Fin 1296` code.  This
+is intentionally sharper than merely naming the selected predecessor-code pair.
+
+## Oracle
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed (8184 jobs).
+
+The new bridge has canonical axiom trace:
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`; no new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.106.0 — F3 canonical residual last-edge predecessor selector scoped
+
+**Released: 2026-04-27**
+
+## What
+
+Codex scoped the next structural target:
+
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296
+
+No Lean file was edited.
+
+## Scope result
+
+The target is a sharpening of v2.104.  It must expose residual-local canonical
+path or last-edge data, extract the immediate predecessor adjacent to each
+essential parent, and isolate the `Fin 1296` selected-image/separation proof.
+It must not merely restate:
+
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296
+
+Exact bridge target:
+
+    physicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296_of_baseAwareResidualCanonicalLastEdgePredecessorSelector1296
+
+## Oracle
+
+Scope-only dashboard artifact:
+
+    dashboard/f3_baseaware_canonical_last_edge_predecessor_scope.md
+
+No build was required because no Lean file was edited.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.105.0 — F3 canonical last-step predecessor proof attempt stopped at last-edge selector
+
+**Released: 2026-04-27**
+
+## What
+
+Codex attempted:
+
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296
+
+No Lean proof was added.
+
+## Exact blocker
+
+The missing theorem is now sharper:
+
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296
+
+The existing root-shell APIs provide first-shell reachability, not the immediate
+last-edge predecessor adjacent to each essential parent.  The existing
+deleted-vertex neighbor-parent helper provides an adjacent residual parent only
+from a concrete `(X, deleted X)` witness, which is forbidden for this
+residual-local selector.  The current walk-splitting lemmas extract first edges,
+not residual-local last-edge predecessor data with a `Fin 1296` separation and
+selected-image bound.
+
+## Oracle
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed (8184 jobs).
+
+No Lean file changed in this no-closure attempt; no new theorem or axiom trace
+was introduced.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.104.0 — F3 base-aware canonical last-step predecessor interface and bridge landed
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added the Lean interface:
+
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296
+
+and the bridge:
+
+    physicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296_of_baseAwareResidualCanonicalLastStepPredecessorImageBound1296
+
+The bridge target is exactly:
+
+    PhysicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296
+
+## Scope of the new interface
+
+The interface carries residual-local canonical predecessor data:
+
+    {q // q ∈ residual} × Fin 1296
+
+for every essential parent.  The selected predecessor is separate from its
+`Fin 1296` code, and the interface records a code-separation clause.  This is
+the future route for proving the selected-image bound, not a root-shell
+reachability shortcut and not a current-witness parent choice.
+
+## Oracle
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed (8184 jobs).
+
+The new bridge has canonical axiom trace:
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`; no new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.103.0 — F3 base-aware canonical last-step predecessor route scoped
+
+**Released: 2026-04-27**
+
+## What
+
+Codex scoped the next structural target:
+
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296
+
+No Lean file was edited.
+
+## Scope result
+
+The target factors the v2.102 blocker through residual-local canonical path or
+predecessor data, extraction of the immediate predecessor adjacent to each
+essential parent, and a selected-image cardinality proof into `Fin 1296`.
+
+Exact bridge target:
+
+    physicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296_of_baseAwareResidualCanonicalLastStepPredecessorImageBound1296
+
+This route is deliberately not a restatement of
+`PhysicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296`: the new
+burden must expose canonical path/predecessor data separately before repacking
+into the v2.101 selector.
+
+## Oracle
+
+Scope-only dashboard artifact:
+
+    dashboard/f3_baseaware_canonical_last_step_predecessor_scope.md
+
+No build was required because no Lean file was edited.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.102.0 — F3 base-aware last-step portal image bound no-closure
+
+**Released: 2026-04-27**
+
+## What
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296
+
+No Lean theorem was added.
+
+## No-closure blocker
+
+The exact remaining gap is a residual-local canonical last-step predecessor
+image bound.  Existing root-shell APIs provide bounded first-shell reachability
+to a target member, but the v2.101 interface needs an adjacent last predecessor
+for each essential parent.  Existing deleted-vertex adjacency helpers provide a
+parent from a concrete `(X, deleted X)` witness, but using that would be a
+post-hoc portal choice rather than residual-only data.
+
+The next structural target is:
+
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296
+
+with a bridge into:
+
+    PhysicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296
+
+## Oracle
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed.  No new theorem was
+introduced by this attempt, so no new axiom trace was added.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.101.0 — F3 base-aware last-step portal image interface and bridge landed
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added the Lean interface:
+
+    PhysicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296
+
+and the bridge:
+
+    physicalPlaquetteGraphBaseAwareResidualPortalMenuBound1296_of_baseAwareResidualLastStepPortalImageBound1296
+
+The bridge target is exactly:
+
+    PhysicalPlaquetteGraphBaseAwareResidualPortalMenuBound1296
+
+## Scope of the new interface
+
+The interface asks for a residual-local selector
+`lastStepPortalOfParent residual p`, proves it lies in the residual, proves
+portal-local adjacency for non-singleton residuals, and bounds the image of the
+selector over the essential parent fiber by `1296`.
+
+This factors the v2.98 portal-menu burden into a selected-image bound.  It is
+not a raw residual frontier bound, not local degree of one fixed portal, and not
+root-shell reachability.
+
+## Oracle
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed (8184 jobs).
+
+The new bridge has canonical axiom trace:
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`; no new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.100.0 — F3 base-aware last-step portal image bound scoped
+
+**Released: 2026-04-27**
+
+## What
+
+Codex scoped the next residual-local target:
+
+    PhysicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296
+
+No Lean file was edited.
+
+## Scope result
+
+The proposed target asks for a residual-local function
+`lastStepPortalOfParent residual p` sending each essential parent to an adjacent
+portal inside the same residual.  The selected portal image over each residual
+fiber must have cardinality at most `1296`.
+
+Exact bridge target:
+
+    physicalPlaquetteGraphBaseAwareResidualPortalMenuBound1296_of_baseAwareResidualLastStepPortalImageBound1296
+
+The bridge should define `portalMenu residual` as the image of
+`lastStepPortalOfParent` over the essential parent fiber.  This distinguishes
+the selected bounded image from raw residual frontier growth, residual size, and
+local degree of one fixed portal.
+
+## Oracle
+
+Scope-only dashboard artifact:
+
+    dashboard/f3_baseaware_last_step_portal_image_scope.md
+
+No Lean file was edited.  No `sorry`; no new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.99.0 — F3 base-aware residual portal-menu bound attempted; last-step portal image blocker isolated
+
+**Released: 2026-04-27**
+
+## What
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphBaseAwareResidualPortalMenuBound1296
+
+No Lean proof was added.
+
+## No-closure result
+
+The direct proof stops at the residual-local last-step portal image bound.
+Root-shell menus are bounded, but existing root-shell APIs give reachability to
+an essential parent, not adjacency from a portal to that parent.  Current-witness
+parent support gives local adjacency, but choosing portals from `(X, deleted X)`
+would violate the residual-only contract.
+
+Exact next blocker:
+
+    PhysicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296
+
+The missing theorem should construct residual-only adjacent predecessor portals
+for essential parents and prove the image cardinality is at most `1296`.
+
+## Oracle
+
+No Lean file was edited in this attempt.
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed (8184 jobs).
+
+No `sorry`; no new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.98.0 — F3 base-aware residual portal-menu interface and bridge landed
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added the Lean interface:
+
+    PhysicalPlaquetteGraphBaseAwareResidualPortalMenuBound1296
+
+and the bridge:
+
+    physicalPlaquetteGraphBaseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296_of_baseAwareResidualPortalMenuBound1296
+
+The bridge targets exactly:
+
+    PhysicalPlaquetteGraphBaseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296
+
+## Scope of the new interface
+
+The interface factors the v2.95 producer obligation into base-aware safe-deletion
+choices plus the residual-only non-singleton portal-menu cover.  The proof burden
+is still the portal-menu cover: construct a residual-only menu of cardinality at
+most `1296` covering essential parents by portal-local neighbor shells.
+
+This is not a proof of the bound and not a compression to older decoder
+constants.
+
+## Oracle
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed (8184 jobs).
+
+The new bridge has canonical axiom trace:
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`; no new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.97.0 — F3 base-aware residual portal-menu bound scoped
+
+**Released: 2026-04-27**
+
+## What
+
+Codex scoped a sharper successor target for the v2.96 non-singleton blocker:
+
+    PhysicalPlaquetteGraphBaseAwareResidualPortalMenuBound1296
+
+No Lean file was edited in this scope task.
+
+## Scope result
+
+The proposed target isolates the residual-only non-singleton portal-menu cover
+needed by:
+
+    PhysicalPlaquetteGraphBaseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296
+
+The intended bridge is:
+
+    physicalPlaquetteGraphBaseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296_of_baseAwareResidualPortalMenuBound1296
+
+The scope explicitly separates this from local degree bounds and raw residual
+frontier growth.  The menu must be a subset of the residual, have cardinality at
+most `1296`, and cover essential parents over each residual fiber by
+portal-local neighbor shells.  It must not choose portals from the current
+deleted-vertex witness.
+
+## Oracle
+
+No Lean file was edited.  No theorem proof was added.  No `sorry`; no new
+project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.96.0 — F3 base-aware producer attempt stopped by non-singleton portal-menu bound
+
+**Released: 2026-04-27**
+
+## What
+
+Codex attempted the producer theorem:
+
+    PhysicalPlaquetteGraphBaseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296
+
+No proof was added.
+
+## No-closure blocker
+
+The v2.95 singleton residual branch remains sound: singleton residuals use
+direct root-shell decoding and do not require self-neighbor support.
+
+The non-singleton branch still needs a residual-only portal menu
+`portalMenu residual ⊆ residual` of cardinality at most `1296` that covers every
+essential parent over the residual fiber by a portal-local neighbor shell.
+Current Lean artifacts provide local parent support for a current `(X, z)`
+witness, but not a uniformly bounded residual-only portal menu for all safe
+extensions of the same residual.
+
+Choosing `portalMenu = residual` would confuse residual size with local degree;
+choosing portals from the current deleted-vertex witness would be post-hoc and
+violates the contract.
+
+## Oracle
+
+No Lean file was edited in this attempt.  The previous v2.95 build for
+`YangMills.ClayCore.LatticeAnimalCount` was green.  No theorem proof was added.
+No `sorry`; no new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.95.0 — F3 base-aware multi-portal interface and triple-symbol bridge landed
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added the Lean producer interface:
+
+    PhysicalPlaquetteGraphBaseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296
+
+and the bridge:
+
+    physicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296_of_baseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296
+
+The bridge targets only:
+
+    PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296
+
+It does not compress to the old single `1296` or two-component `1296x1296`
+contracts.
+
+## Base-aware branch
+
+The reconstruction branches on the residual cardinality.  Singleton residuals
+decode the deleted plaquette directly from the root shell using the third
+`Fin 1296` component, so the proof never assumes a vertex is adjacent to itself.
+Non-singleton residuals use the v2.92 portal → parent → deleted route.
+
+## Oracle
+
+`lake build YangMills.ClayCore.LatticeAnimalCount` passed (8184 jobs).
+
+The new bridge has canonical axiom trace:
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`; no new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.94.0 — F3 pointed/base-aware multi-portal successor scoped
+
+**Released: 2026-04-27**
+
+## What
+
+Codex scoped a successor to the blocked v2.91 multi-portal producer:
+
+    PhysicalPlaquetteGraphBaseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296
+
+No Lean file was edited in this scope task.
+
+## Scope result
+
+The recommended route is base-aware rather than self-neighbor based.  For
+singleton residuals it decodes the deleted plaquette directly from the root
+shell.  For non-singleton residuals it preserves the v2.92 portal → parent →
+deleted route.
+
+The intended bridge target is:
+
+    PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296
+
+via a future theorem:
+
+    physicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296_of_baseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296
+
+## Oracle
+
+No Lean file was edited.  The previous v2.93 control build for
+`YangMills.ClayCore.LatticeAnimalCount` was green.  No theorem proof was added.
+No `sorry`; no new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.93.0 — F3 multi-portal orientation attempt stopped by base-case self-neighbor blocker
+
+**Released: 2026-04-27**
+
+## What
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphMultiPortalSupportedSafeDeletionOrientation1296x1296
+
+No proof was added.
+
+## No-closure blocker
+
+The current multi-portal interface is too strong for the `k = 2` base case.
+After deleting the unique non-root plaquette, the residual is the singleton
+`{root}`.  The interface requires the chosen parent to lie in the residual and
+also be in the local neighbor shell of a portal chosen from that same residual.
+Thus it would force `root` to be a neighbor of itself.
+
+This is an interface-shape blocker, not a Lean-side refutation of the physical
+graph.  The successor route must either use a pointed portal shell, or split the
+base case away from the portal-shell phase.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+No Lean file was edited in this attempt.  No theorem proof was added.  No
+`sorry`; no new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier percentage,
+README metric, or planner metric moves from this entry.
+
+---
+
+# v2.92.0 — F3 triple-symbol decoder interface and bridge landed
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added the separate triple-symbol decoder contract:
+
+    PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296
+
+at:
+
+    YangMills/ClayCore/LatticeAnimalCount.lean:2888
+
+and the no-sorry bridge:
+
+    physicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296_of_multiPortalSupportedSafeDeletionOrientation1296x1296
+
+at:
+
+    YangMills/ClayCore/LatticeAnimalCount.lean:3069
+
+The bridge consumes the v2.91 multi-portal orientation interface and reconstructs
+using three finite symbols: portal-code, parent-code, and deleted-code.
+
+## Bridge status
+
+The bridge targets the new triple-symbol decoder only.  It does not compress the
+triple symbol back to either the old `1296` or `1296 x 1296` constants.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+The new bridge has canonical oracle-clean trace:
+
+    [propext, Classical.choice, Quot.sound]
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  The multi-portal theorem itself remains
+open, and the strengthened triple-symbol alphabet remains constants-audit gated.
+No Clay-level percentage, lattice-level percentage, honest-discount percentage,
+named-frontier percentage, README metric, or planner metric moves from this entry.
+
+---
+
+# v2.91.0 — F3 multi-portal interface added; triple-symbol arity blocker isolated
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added the Lean interface:
+
+    PhysicalPlaquetteGraphMultiPortalSupportedSafeDeletionOrientation1296x1296
+
+at:
+
+    YangMills/ClayCore/LatticeAnimalCount.lean:2994
+
+The interface is residual-only but not root-only.  Each residual carries a
+bounded portal menu, and each essential chosen parent is supported by a
+portal-local neighbor shell.
+
+## Bridge status
+
+No bridge theorem was added.
+
+The existing product decoder target:
+
+    PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296
+
+has only two finite components.  The multi-portal reconstruction route honestly
+needs three choices:
+
+    portal-code
+    parent-code inside the portal shell
+    deleted-code inside the parent shell
+
+Thus a direct bridge would require either a new compression theorem back into
+two components or a larger triple-symbol contract.  Neither is currently proved,
+and no compression back to the old `1296` or `1296 x 1296` constants is claimed.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+No theorem proof was added.  No `sorry`.  No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  The strengthened product-symbol route
+remains conditional and constants-audit gated.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier
+percentage, README metric, or planner metric moves from this entry.
+
+---
+
+# v2.90.0 — F3 flexible multi-portal policy scoped after root-only blocker
+
+**Released: 2026-04-27**
+
+## What
+
+Codex scoped a replacement for the blocked root-only portal policy:
+
+    PhysicalPlaquetteGraphMultiPortalSupportedSafeDeletionOrientation1296x1296
+
+No Lean file was edited in this task.
+
+## Scope result
+
+The proposed route is residual-only but not root-only.  Each residual bucket
+would provide a bounded portal menu, and each essential chosen parent would be
+supported by one portal from that residual menu.  The intended code is:
+
+    (portal-code, local-neighbor-code) : Fin 1296 x Fin 1296
+
+This avoids the v2.89 path obstruction:
+
+    root -- a -- b
+
+because the safe deletion `b` can use parent `a`, supported by portal `root`,
+instead of forcing `parentOf X = root`.
+
+## Bridge target
+
+The honest target is the strengthened product-symbol route:
+
+    PhysicalPlaquetteGraphMultiPortalSupportedSafeDeletionOrientation1296x1296
+      -> PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296
+
+or an explicit intermediate:
+
+    PhysicalPlaquetteGraphSafeDeletionOrientationCodeBound1296x1296
+
+This scope does not claim a bridge to the old single-portal
+`PhysicalPlaquetteGraphPortalSupportedSafeDeletionOrientation1296`, and it does
+not claim compression back to a single `Fin 1296` alphabet.
+
+## Oracle
+
+No Lean file changed in this scope task.  The prior v2.89 module build remained:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+No theorem proof was added.  No `sorry`.  No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  The strengthened product-symbol route
+remains conditional and constants-audit gated.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier
+percentage, README metric, or planner metric moves from this entry.
+
+---
+
+# v2.89.0 — F3 root-shell safe-deletion scope; root-only portal policy blocked
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added the Lean-stable proposition:
+
+    PhysicalPlaquetteGraphRootShellSafeDeletionExists1296
+
+This proposition states the exact v2.88 intersection target: a nontrivial
+anchored bucket should have a deleted plaquette that is both safe and adjacent
+to the anchored root.
+
+No proof of this proposition was added.
+
+## Scope result
+
+The root-only portal policy is too strong as a general graph-theoretic route.
+The minimal obstruction pattern is the three-vertex path:
+
+    root -- a -- b
+
+Here the root shell is `{a}`, but deleting `a` disconnects `{root, b}`.  The
+safe deletion is `b`, which is not adjacent to `root`.
+
+This is recorded as a hand-checkable obstruction pattern, not as a Lean
+refutation of the full physical plaquette graph model.  It is enough to steer
+the F3 product-symbol route away from the cheap root-only portal policy and
+back toward a flexible residual portal policy.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+No theorem proof was added.  No `sorry`.  No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  The strengthened product-symbol route
+remains conditional and constants-audit gated.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier
+percentage, README metric, or planner metric moves from this entry.
+
+---
+
+# v2.88.0 — F3 portal-supported orientation proof attempt; root-shell safe-deletion blocker isolated
+
+**Released: 2026-04-27**
+
+## What
+
+Codex attempted:
+
+    PhysicalPlaquetteGraphPortalSupportedSafeDeletionOrientation1296
+
+No proof was added.
+
+The existing repository has:
+
+1. safe-deletion existence for anchored buckets; and
+2. a root-shell API proving nontrivial anchored buckets meet the root neighbor
+   shell, with `Fin 1296` coding.
+
+It does not currently prove that the same plaquette can be chosen to satisfy
+both properties.
+
+## Exact blocker
+
+The cheapest portal strategy would use `root` as the residual portal and
+`parentOf X = root`.  That reduces the portal-supported theorem to a
+root-shell safe-deletion intersection:
+
+    PhysicalPlaquetteGraphRootShellSafeDeletionExists1296
+
+Mathematically, for every nontrivial anchored bucket `X`, one must find a
+deleted plaquette `z` such that:
+
+    z ∈ X
+    z ≠ root
+    z ∈ (plaquetteGraph physicalClayDimension L).neighborFinset root
+    X.erase z ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root (k - 1)
+
+The current safe-deletion theorem gives a safe `z` but not the root-shell
+condition.  The current root-shell theorem gives a root-neighbor `z` but not
+safe deletion.  Combining them by `Classical.choose` would be post-hoc and would
+not satisfy the v2.87 portal policy.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+No Lean file changed in this attempt.  No `sorry`.  No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  The strengthened product-symbol route
+remains conditional and constants-audit gated.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier
+percentage, README metric, or planner metric moves from this entry.
+
+---
+
+# v2.87.0 — F3 portal-supported orientation interface and bridge landed
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added:
+
+    PhysicalPlaquetteGraphPortalSupportedSafeDeletionOrientation1296
+
+and the no-sorry bridge:
+
+    physicalPlaquetteGraphSafeDeletionOrientationCodeBound1296_of_portalSupportedSafeDeletionOrientation1296
+
+The new proposition is a portal/local-shell interface, not a restatement of the
+v2.84 orientation-code target.  It requires the essential chosen-parent menu
+over each residual fiber to lie in the local neighbor shell of a residual-only
+portal.  The bridge then constructs the `Fin 1296` orientation code from:
+
+    plaquetteNeighborStepCodeBoundDim_physical_ternary
+
+so the code is derived from portal-local neighbor-code injectivity rather than
+from a raw residual-frontier bound.
+
+## Bridge chain
+
+    PhysicalPlaquetteGraphPortalSupportedSafeDeletionOrientation1296
+      -> PhysicalPlaquetteGraphSafeDeletionOrientationCodeBound1296
+      -> PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296
+      -> PhysicalPlaquetteGraphResidualParentMenuBound1296
+      -> PhysicalPlaquetteGraphResidualParentMenuCovers1296
+      -> PhysicalPlaquetteGraphSymbolicResidualParentSelector1296
+      -> PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296
+
+Only the first bridge in this chain is new in v2.87.  The
+portal-supported orientation theorem itself remains open.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+`#print axioms` for the new bridge reports:
+
+    [propext, Classical.choice, Quot.sound]
+
+No `sorry`.  No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  The strengthened product-symbol route
+remains conditional and constants-audit gated.  No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier
+percentage, README metric, or planner metric moves from this entry.
+
+---
+
+# v2.86.0 — F3 portal-supported safe-deletion orientation policy scoped
+
+**Released: 2026-04-27**
+
+## What
+
+Codex filed:
+
+    dashboard/f3_safe_deletion_orientation_policy_scope.md
+
+No Lean theorem was added.  The scope proposes a concrete non-raw-frontier
+policy for the v2.85 blocker:
+
+    PhysicalPlaquetteGraphPortalSupportedSafeDeletionOrientation1296
+
+The policy chooses a residual-only portal and requires the selected residual
+parent to lie in the portal's local `1296`-bounded neighbor shell.  This would
+make the orientation code for the essential chosen-parent menu come from the
+already-existing local neighbor code, rather than from a bound on the raw
+residual frontier.
+
+## Intended bridge
+
+    PhysicalPlaquetteGraphPortalSupportedSafeDeletionOrientation1296
+      -> PhysicalPlaquetteGraphSafeDeletionOrientationCodeBound1296
+
+The bridge should define the essential menu as the chosen-parent image over
+each residual fiber and inject that menu into `Fin 1296` via the residual
+portal's local neighbor code.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No build was required because no Lean
+file changed.  No `sorry`.  No new project axiom.
+
+No Clay-level percentage, lattice-level percentage, honest-discount percentage,
+named-frontier percentage, README metric, or planner metric moves from this
+entry.
+
+---
+
+# v2.85.0 — F3 orientation-code bound attempted; canonical policy blocker isolated
+
+**Released: 2026-04-27**
+
+## What
+
+Codex attempted:
+
+    PhysicalPlaquetteGraphSafeDeletionOrientationCodeBound1296
+
+No proof was added.  The existing Lean file already supplies safe-deletion
+existence, residual neighbor-parent existence once a deleted plaquette is fixed,
+local `Fin 1296` neighbor coding for one parent, and the v2.84 bridge from an
+orientation-code injection to the essential frontier bound.
+
+The missing ingredient is not another bridge.  It is a constructive canonical
+orientation policy choosing `deleted X` and `parentOf X` for every current
+anchored bucket such that each residual fiber's chosen-parent image injects into
+`Fin 1296`.
+
+## Exact blocker
+
+The exact remaining theorem is still:
+
+    PhysicalPlaquetteGraphSafeDeletionOrientationCodeBound1296
+
+Equivalently, the project needs a residual-fiber code for the essential
+chosen-parent menu.  `Classical.choose` over existing safe-deletion existence
+theorems would be post-hoc and would not establish the injectivity requirement.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+No Lean file changed in this attempt.  No `sorry`.  No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  The strengthened product-symbol route
+remains conditional and constants-audit gated.
+
+No Clay-level percentage, lattice-level percentage, honest-discount percentage,
+named-frontier percentage, README metric, or planner metric moves from this
+entry.
+
+---
+
+# v2.84.0 — F3 safe-deletion orientation-code interface and injection bridge landed
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added:
+
+    PhysicalPlaquetteGraphSafeDeletionOrientationCodeBound1296
+
+and proved:
+
+    physicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296_of_safeDeletionOrientationCodeBound1296
+
+The new proposition supplies safe-deletion choices, residual parent choices, an
+essential chosen-parent menu, and an injective residual-indexed orientation code
+from that menu into `Fin 1296`.
+
+The bridge derives:
+
+    PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296
+
+from the finite-code injection.  It does not bound the raw residual frontier and
+does not use empirical bounded-search evidence.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+Axiom trace:
+
+    physicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296_of_safeDeletionOrientationCodeBound1296
+      depends on [propext, Classical.choice, Quot.sound]
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  The orientation-code theorem itself is
+not proved; only the interface and bridge are landed.  The strengthened
+product-symbol route remains conditional and constants-audit gated.
+
+No Clay-level percentage, lattice-level percentage, honest-discount percentage,
+named-frontier percentage, README metric, or planner metric moves from this
+entry.
+
+---
+
+# v2.83.0 — F3 bounded-indegree orientation scoped; code-bound interface selected
+
+**Released: 2026-04-27**
+
+## What
+
+Codex filed:
+
+    dashboard/f3_safe_deletion_orientation_indegree_scope.md
+
+No Lean theorem was added. The note explains why the naive proposition
+
+    PhysicalPlaquetteGraphSafeDeletionOrientationIndegreeBound1296
+
+would be too close to restating:
+
+    PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296
+
+unless it carries additional finite coding structure.
+
+The selected next target is therefore:
+
+    PhysicalPlaquetteGraphSafeDeletionOrientationCodeBound1296
+
+This theorem should choose safe deletions and residual parents plus an
+`orientCode : current bucket -> Fin 1296` separating distinct chosen parents
+inside each residual fiber.
+
+## Intended bridge
+
+    PhysicalPlaquetteGraphSafeDeletionOrientationCodeBound1296
+      -> PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296
+
+The bridge should derive the `≤ 1296` essential parent image bound from an
+injection into `Fin 1296`, not from an empirical search or a raw frontier bound.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. No build was required because no Lean
+file changed. No `sorry`. No new project axiom.
+
+No Clay-level percentage, lattice-level percentage, honest-discount percentage,
+named-frontier percentage, README metric, or planner metric moves from this
+entry.
+
+---
+
+# v2.82.0 — F3 essential frontier bound attempted; bounded-indegree orientation isolated
+
+**Released: 2026-04-27**
+
+## What
+
+Codex attempted:
+
+    PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296
+
+No proof was added. No counterexample was formalized.
+
+The exact missing theorem is now a bounded-indegree safe-deletion orientation:
+choose, for every current anchored bucket, a safe deleted plaquette and residual
+parent so that each residual fiber sees at most `1296` chosen parents.
+
+The next proposed target is:
+
+    PhysicalPlaquetteGraphSafeDeletionOrientationIndegreeBound1296
+
+with bridge:
+
+    PhysicalPlaquetteGraphSafeDeletionOrientationIndegreeBound1296
+      -> PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+No Lean file was changed by this attempt. No `sorry`. No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. The strengthened product-symbol route
+remains conditional and constants-audit gated.
+
+No Clay-level percentage, lattice-level percentage, honest-discount percentage,
+named-frontier percentage, README metric, or planner metric moves from this
+entry.
+
+---
+
+# v2.81.0 — F3 essential safe-deletion frontier interface and bridge landed
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added:
+
+    PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296
+
+and proved the bridge:
+
+    physicalPlaquetteGraphResidualParentMenuBound1296_of_essentialSafeDeletionParentFrontierBound1296
+
+The proposition encodes canonical safe-deletion choices and bounds the image of
+chosen parents over each residual fiber.  This is not the raw residual frontier
+that v2.79 showed can grow with residual size.
+
+The bridge chain is now:
+
+    PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296
+      -> PhysicalPlaquetteGraphResidualParentMenuBound1296
+      -> PhysicalPlaquetteGraphResidualParentMenuCovers1296
+      -> PhysicalPlaquetteGraphSymbolicResidualParentSelector1296
+      -> PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+Pinned trace:
+
+    YangMills.physicalPlaquetteGraphResidualParentMenuBound1296_of_essentialSafeDeletionParentFrontierBound1296
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. The essential frontier bound is now the
+next exact theorem to prove; v2.81 only adds the interface and conditional
+bridge. The original `Fin 1296` decoder is not claimed.
+
+No Clay-level percentage, lattice-level percentage, honest-discount percentage,
+named-frontier percentage, README metric, or planner metric moves from this
+entry.
+
+---
+
+# v2.80.0 — F3 essential safe-deletion frontier lemma scoped; no Lean theorem added
+
+**Released: 2026-04-27**
+
+## What
+
+Codex filed:
+
+    dashboard/f3_essential_frontier_menu_lemma_scope.md
+
+The note scopes a non-circular sufficient target for the remaining menu-bound
+gap:
+
+    PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296
+
+The proposed route first chooses a canonical safe deleted vertex and a canonical
+residual parent for each current anchored bucket, then asks for a `≤ 1296` bound
+on the image of those chosen parents over each fixed residual fiber.
+
+This differs from the raw residual-frontier cover that v2.79 showed can grow
+with residual size, and it differs from simply restating:
+
+    PhysicalPlaquetteGraphResidualParentMenuBound1296
+
+## Bridge Target
+
+The intended bridge is:
+
+    PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296
+      -> PhysicalPlaquetteGraphResidualParentMenuBound1296
+      -> PhysicalPlaquetteGraphResidualParentMenuCovers1296
+      -> PhysicalPlaquetteGraphSymbolicResidualParentSelector1296
+      -> PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296
+
+No Lean theorem was added in this entry. No build was required.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. The original `Fin 1296` decoder is not
+claimed, and the strengthened product-symbol route remains constants-audit
+gated.
+
+No Clay-level percentage, lattice-level percentage, honest-discount percentage,
+named-frontier percentage, README metric, or planner metric moves from this
+entry.
+
+---
+
+# v2.79.0 — F3 residual parent-menu growth search; raw frontier growth detected, no proof claimed
+
+**Released: 2026-04-27**
+
+## What
+
+Codex extended the bounded search script:
+
+    scripts/f3_residual_parent_menu_bound_search.py
+
+and filed the diagnostic artifact:
+
+    dashboard/f3_residual_parent_menu_growth_search.md
+
+The exact small-model menu CSP still found small menus, with minimum menu size
+at most `2` in the tested cases including physical `(d=4, L=2, k=3)`.
+
+The new residual-local frontier-cover diagnostic found a hand-checkable growth
+pattern for raw residual one-step frontiers: a 2D row residual of length `n`
+requires `n` parents if the menu is asked to cover every one-step extension of
+that residual.
+
+## Status
+
+This is not a Lean proof and not a counterexample to the current F3 B.2 target.
+The diagnostic is deliberately stronger than the decoder theorem, because it
+covers every one-step extension of a fixed residual rather than the essential
+safe-deletion parent needed for each current anchored bucket.
+
+The exact remaining theorem is still:
+
+    PhysicalPlaquetteGraphResidualParentMenuBound1296
+
+A proof must now isolate an essential safe-deletion parent frontier; the local
+degree bound for one fixed parent and the raw residual frontier bound are not
+enough.
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. No Clay-level percentage, lattice-level
+percentage, honest-discount percentage, named-frontier percentage, README
+metric, or planner metric moves from this entry.
+
+---
+
+# v2.78.0 — F3 residual parent-menu bound attempted; conditional Bound→Covers bridge landed
+
+**Released: 2026-04-27**
+
+## What
+
+Codex attempted the residual-frontier bound:
+
+    PhysicalPlaquetteGraphResidualParentMenuBound1296
+
+The bound itself remains open.  No proof and no counterexample were added.
+
+Codex did prove the conditional enumeration bridge:
+
+    physicalPlaquetteGraphResidualParentMenuCovers1296_of_residualParentMenuBound1296
+
+This shows that, if the residual-frontier menu bound is proved, the bounded
+menu can be enumerated into the existing `Fin 1296` parent-menu interface:
+
+    PhysicalPlaquetteGraphResidualParentMenuBound1296
+      -> PhysicalPlaquetteGraphResidualParentMenuCovers1296
+
+Codex also added the bounded empirical script:
+
+    scripts/f3_residual_parent_menu_bound_search.py
+
+The script finds that the square-corner obstruction needs menu size 2 rather
+than 1 in small models, including physical `(d=4, L=2, k=3)`, but it does not
+prove the universal `1296` bound.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+Pinned trace:
+
+    YangMills.physicalPlaquetteGraphResidualParentMenuCovers1296_of_residualParentMenuBound1296
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  The exact remaining theorem is still
+`PhysicalPlaquetteGraphResidualParentMenuBound1296`: a structural residual-frontier
+parent-menu bound, not a local degree bound for one fixed parent.
+
+No Clay-level percentage, lattice-level percentage, honest-discount percentage,
+named-frontier percentage, README metric, or planner metric moves from this
+entry.
+
+---
+
+# v2.77.0 — F3 residual-frontier parent-menu bound scoped as stable Lean proposition
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added the stable proposition:
+
+    PhysicalPlaquetteGraphResidualParentMenuBound1296
+
+This is the missing residual-frontier menu-size target behind:
+
+    PhysicalPlaquetteGraphResidualParentMenuCovers1296
+
+The statement explicitly distinguishes the local degree bound for a fixed parent
+from the needed residual-only bound on how many parent candidates cover all safe
+one-plaquette extensions of a residual bucket.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+No theorem was added for the new proposition.  No `sorry`. No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  The bound is scoped, not proved.  The
+old `Fin 1296` decoder is not claimed, and the strengthened product-symbol route
+remains constants-audit gated.
+
+---
+
+# v2.76.0 — F3 residual parent-menu cover attempted; no closure, frontier-menu bound isolated
+
+**Released: 2026-04-27**
+
+## What
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualParentMenuCovers1296
+
+No proof was added.  The exact missing content is not the local degree bound
+already present in the file, but a residual-frontier parent-menu bound:
+
+    PhysicalPlaquetteGraphResidualParentMenuBound1296
+
+Informally: for each residual bucket `R` arising from a safe deletion, choose a
+residual-only finset `S(R) ⊆ R` of at most `1296` parent candidates covering all
+safe one-plaquette extensions of `R`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+No new theorem was added in this attempt.  The latest new bridge remains v2.75:
+
+    YangMills.physicalPlaquetteGraphSymbolicResidualParentSelector1296_of_residualParentMenuCovers1296
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No old `Fin 1296` decoder contract is
+claimed.  No strengthened product-symbol downstream constant is claimed.  No
+percentage moves from this entry.
+
+---
+
+# v2.75.0 — F3 residual parent-menu cover interface landed; bridge to symbolic selector
+
+**Released: 2026-04-27**
+
+## What
+
+Codex formalized the v2.74 blocker as:
+
+    PhysicalPlaquetteGraphResidualParentMenuCovers1296
+
+and proved the bridge:
+
+    physicalPlaquetteGraphSymbolicResidualParentSelector1296_of_residualParentMenuCovers1296
+
+This bridge supplies the existing physical local neighbor code and turns the
+residual-only 1296-parent menu into the v2.73 symbolic selector.  It does not
+prove the parent-menu cover theorem itself.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+Pinned trace:
+
+    YangMills.physicalPlaquetteGraphSymbolicResidualParentSelector1296_of_residualParentMenuCovers1296
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  The old `Fin 1296` decoder is not
+claimed, and the strengthened `1296^2` route remains constants-audit gated.
+
+---
+
+# v2.74.0 — F3 symbolic parent selector attempted; no closure, parent-menu cover isolated
+
+**Released: 2026-04-27**
+
+## What
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphSymbolicResidualParentSelector1296
+
+The proof did not close.  The exact missing content is a residual-only
+1296-bounded parent-menu cover, provisionally named:
+
+    PhysicalPlaquetteGraphResidualParentMenuCovers1296
+
+The existing local theorem only gives a residual neighbor-parent after the
+current deleted vertex is known:
+
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_deletedVertex_has_residualNeighborParent
+
+That post-hoc parent does not define the required fixed function
+`residual -> Fin 1296 -> Option parent`.
+
+## Oracle
+
+No Lean theorem was added in this attempt.  The existing v2.73 bridge remains
+the latest new theorem and is already pinned to:
+
+    [propext, Classical.choice, Quot.sound]
+
+Build check for the current module:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green, recorded in
+`dashboard/f3_symbolic_parent_selector_attempt_v2_74.md`.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No old `Fin 1296` decoder contract is
+claimed.  No strengthened `1296^2` downstream constant is claimed.  No
+percentage moves from this entry.
+
+---
+
+# v2.73.0 — F3 symbolic parent selector interface landed; product-symbol bridge only
+
+**Released: 2026-04-27**
+
+## What
+
+Codex added the strengthened product-symbol B.2 decoder interface:
+
+    PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296
+    PhysicalPlaquetteGraphSymbolicResidualParentSelector1296
+    physicalPlaquetteGraphDeletedVertexDecoderStep1296x1296_of_symbolicResidualParentSelector1296
+
+The bridge composes a symbolic residual-parent branch with the existing local
+neighbor decoder.  This is a parallel route after the v2.72 residual-only
+selector obstruction; it does not replace or invalidate the v2.48-v2.72
+artifacts.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+Pinned trace:
+
+    YangMills.physicalPlaquetteGraphDeletedVertexDecoderStep1296x1296_of_symbolicResidualParentSelector1296
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  The old `Fin 1296` decoder contract is
+not proved.  The strengthened direct alphabet is `1296^2`, so downstream
+constants require a separate audit before any ledger status or percentage move.
+
+---
+
+# v2.72.0 — F3 residual-extension compatibility attempted; proved equivalent to canonical selector, no closure
+
+**Released: 2026-04-26**
+
+## What
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualExtensionCompatibility1296
+
+The proof did not close.  Instead, Codex proved the reverse bridge and pinned
+the equivalence with the v2.69 canonical selector:
+
+    physicalPlaquetteGraphResidualExtensionCompatibility1296_of_canonicalResidualParentSelector1296
+    physicalPlaquetteGraphResidualExtensionCompatibility1296_iff_canonicalResidualParentSelector1296
+
+This is an honesty-preserving no-closure result: v2.71 did not define a weaker
+target; it named exactly the same residual-only parent-selector content in a
+factored form.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+passed: 8184/8184 jobs green.
+
+Pinned traces:
+
+    YangMills.physicalPlaquetteGraphResidualExtensionCompatibility1296_of_canonicalResidualParentSelector1296
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    YangMills.physicalPlaquetteGraphResidualExtensionCompatibility1296_iff_canonicalResidualParentSelector1296
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axiom.
+
+## Status
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. The exact remaining theorem is still
+the residual-only selector/compatibility obligation:
+
+    PhysicalPlaquetteGraphCanonicalResidualParentSelector1296
+    -- equivalently:
+    PhysicalPlaquetteGraphResidualExtensionCompatibility1296
+
+No Clay-level percentage, lattice-level percentage, honest-discount percentage,
+named-frontier percentage, or README metric moves from this entry.
+
+---
+
+# v2.71.0 — F3 residual-extension compatibility interface landed; compatibility theorem still open
+
+**Released: 2026-04-26**
+
+## What
+
+Codex formalized the v2.70 blocker as:
+
+    PhysicalPlaquetteGraphResidualExtensionCompatible1296
+    PhysicalPlaquetteGraphResidualExtensionCompatibility1296
+
+and proved the bridge:
+
+    physicalPlaquetteGraphCanonicalResidualParentSelector1296_of_residualExtensionCompatibility1296
+
+This shows that residual-extension compatibility is sufficient for the v2.69
+canonical selector.  The compatibility theorem itself is not proved.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Result: 8184/8184 jobs green.
+
+Pinned trace:
+
+    'YangMills.physicalPlaquetteGraphCanonicalResidualParentSelector1296_of_residualExtensionCompatibility1296'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axiom.
+
+## Scope
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. The exact remaining theorem is
+`PhysicalPlaquetteGraphResidualExtensionCompatibility1296`. No Clay-level
+percentage, lattice-level percentage, honest-discount percentage, named-frontier
+percentage, or README metric moves from this entry.
+
+---
+
+# v2.70.0 — F3 canonical residual-parent selector attempted; extension-compatibility blocker isolated
+
+**Released: 2026-04-26**
+
+## What
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphCanonicalResidualParentSelector1296
+
+The proof did not close.  The attempted residual-only construction can choose
+a parent `parent R` from some extension of a residual bucket `R`, but the target
+requires that for every current bucket `X` there is a safe deletion `z` such
+that `parent (X.erase z)` works for that same `X`.  This is a real
+extension-compatibility theorem, not a local adjacency fact.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Result: 8184/8184 jobs green.
+
+No Lean theorem was added in this attempt.  No `sorry`. No new project axiom.
+
+## Scope
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. The exact remaining blocker is a
+residual-only parent selector compatible with all current anchored buckets,
+not merely with some extension of each residual. No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier
+percentage, or README metric moves from this entry.
+
+---
+
+# v2.69.0 — F3 canonical residual-parent selector interface factored; selector still open
+
+**Released: 2026-04-26**
+
+## What
+
+Codex factored the exact residual-only selector obligation:
+
+    PhysicalPlaquetteGraphCanonicalResidualParentSelector1296
+
+and proved the two clean bridges:
+
+    physicalPlaquetteGraphResidualParentInvariant1296_of_canonicalResidualParentSelector1296
+    physicalPlaquetteGraphDeletedVertexDecoderStep1296_of_canonicalResidualParentSelector1296
+
+This shows that a residual-only canonical parent selector is sufficient for the
+v2.67 invariant and then for the v2.65 deleted-vertex decoder contract.  The
+selector itself is not proved.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Result: 8184/8184 jobs green.
+
+Pinned traces:
+
+    'YangMills.physicalPlaquetteGraphResidualParentInvariant1296_of_canonicalResidualParentSelector1296'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalPlaquetteGraphDeletedVertexDecoderStep1296_of_canonicalResidualParentSelector1296'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axiom.
+
+## Scope
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. The exact remaining theorem is
+`PhysicalPlaquetteGraphCanonicalResidualParentSelector1296`. No Clay-level
+percentage, lattice-level percentage, honest-discount percentage, named-frontier
+percentage, or README metric moves from this entry.
+
+---
+
+# v2.68.0 — F3 residual-parent invariant attempted; local residual-parent lemma landed, canonical selector still open
+
+**Released: 2026-04-26**
+
+## What
+
+Codex attempted the full v2.67 invariant:
+
+    PhysicalPlaquetteGraphResidualParentInvariant1296
+
+The full invariant did not close, because it requires a parent selector
+depending only on the residual bucket.  A post-hoc parent chosen from the
+current deleted vertex would not be reconstructive.
+
+Codex did land the local frontier fact:
+
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_deletedVertex_has_residualNeighborParent
+    physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_deletedVertex_has_residualNeighborParent
+
+These prove that any non-root deleted vertex in an anchored preconnected bucket
+has at least one adjacent parent in the residual bucket.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Result: 8184/8184 jobs green.
+
+Pinned traces:
+
+    'YangMills.plaquetteGraphPreconnectedSubsetsAnchoredCard_deletedVertex_has_residualNeighborParent'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_deletedVertex_has_residualNeighborParent'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axiom.
+
+## Scope
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier
+percentage, or README metric moves from this entry.
+
+---
+
+# v2.67.0 — F3 B.2 residual parent invariant interface and bridge landed; invariant still open
+
+**Released: 2026-04-26**
+
+## What
+
+Codex added the residual-parent/frontier interface needed to make the deleted
+vertex symbol local:
+
+    PhysicalPlaquetteGraphResidualParentInvariant1296
+
+and proved the bridge:
+
+    physicalPlaquetteGraphDeletedVertexDecoderStep1296_of_residualParentInvariant1296
+
+The bridge composes a selected residual parent with the local neighbor-code
+inverse:
+
+    physicalNeighborDecodeOfStepCode
+    physicalNeighborDecodeOfStepCode_spec
+
+Therefore, the v2.65 contract is now reduced to the single named invariant
+above.  The invariant itself is not yet proved.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Result: 8184/8184 jobs green.
+
+Pinned traces:
+
+    'YangMills.physicalNeighborDecodeOfStepCode_spec'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalPlaquetteGraphDeletedVertexDecoderStep1296_of_residualParentInvariant1296'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axiom. No existential-only deleted-vertex decoder.
+
+## Scope
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. No Clay-level percentage,
+lattice-level percentage, honest-discount percentage, named-frontier
+percentage, or README metric moves from this entry.
+
+---
+
+# v2.66.0 — F3 B.2 reconstructive contract attempted; no closure without residual parent/frontier invariant
+
+**Released: 2026-04-26**
+
+## What
+
+Codex attempted to prove the named v2.65 contract:
+
+    PhysicalPlaquetteGraphDeletedVertexDecoderStep1296
+
+No Lean theorem was added.  The task hit the explicit stop condition against an
+existential-only decoder: the existing safe-deletion theorem supplies a deleted
+plaquette `z` for each bucket `X`, but it does not supply a canonical way to
+recover `z` from `(X.erase z, symbol : Fin 1296)`.
+
+## Blocker
+
+The `Fin 1296` symbol is a local-neighbor-sized code.  Given only a residual
+bucket `R = X.erase z`, the current Lean infrastructure proves that `z` is
+adjacent to some vertex in `R`, but it does not identify a canonical parent in
+`R`.  Without such a parent, possible extensions of `R` are bounded by the
+residual boundary, not uniformly by `1296`.
+
+The exact next theorem is a residual-parent/frontier invariant: choose a
+canonical parent `p(R)` in the residual and prove that an admissible deleted
+vertex is adjacent to `p(R)`, or otherwise prove an injection from all valid
+residual extensions into `Fin 1296`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Result: 8184/8184 jobs green.
+
+Pinned existing trace:
+
+    'YangMills.physicalPlaquetteGraphDeletedVertexDecoderStep1296_exists_recoverable_deletion'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axiom. No existential-only decoder was accepted.
+
+## Scope
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. No Clay-level percentage, lattice
+percentage, named-frontier percentage, or README metric moves from this entry.
+
+---
+
+# v2.65.0 — F3 B.2 reconstructive deleted-vertex contract named; contract still open
+
+**Released: 2026-04-26**
+
+## What
+
+Codex named the exact finite-alphabet reconstruction contract needed after the
+v2.64 one-step residual handoff:
+
+    def PhysicalPlaquetteGraphDeletedVertexDecoderStep1296 : Prop
+
+The contract asks for a uniform reconstruction function which, given the
+residual bucket and one `Fin 1296` symbol, recovers a deleted non-root plaquette
+for every nontrivial physical anchored bucket.
+
+Codex also added the projector theorem:
+
+    theorem physicalPlaquetteGraphDeletedVertexDecoderStep1296_exists_recoverable_deletion
+
+This theorem extracts the recoverable safe deletion from the contract. It is
+deliberately conditional on the contract; it does not prove the contract.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Result: 8184/8184 jobs green.
+
+Pinned trace:
+
+    'YangMills.physicalPlaquetteGraphDeletedVertexDecoderStep1296_exists_recoverable_deletion'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`. No new project axiom.
+
+## Scope
+
+This is an interface/handoff closure for B.2, not the recursive decoder and not
+the proof of the reconstruction contract. The exact remaining theorem is now:
+
+    PhysicalPlaquetteGraphDeletedVertexDecoderStep1296
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`. No Clay-level percentage or lattice
+percentage moves from this entry.
+
+---
+
+# v2.64.0 — F3 B.2 one-step residual handoff packaged; full decoder still open
+
+**Released: 2026-04-26**
+
+## What
+
+Codex packaged the v2.63 safe-deletion closure into the exact physical one-step
+residual theorem needed by the anchored recursive decoder:
+
+    theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem
+
+This theorem removes the remaining external safe-deletion hypothesis from the
+one-step B.2 residual handoff: for every physical anchored bucket of cardinality
+`k` with `2 <= k`, Lean now produces a non-root `z` whose erasure re-enters the
+anchored bucket at cardinality `k - 1`.
+
+Codex also pinned the physical alphabet specialization of the nontrivial decoder
+frontier:
+
+    theorem physicalPlaquetteGraphAnimalAnchoredWordDecoderBound1296_of_nontrivial
+
+This reduces the final anchored word-decoder target to the nontrivial recursive
+cases over the already-fixed physical alphabet `1296`.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Result: 8184/8184 jobs green.
+
+Pinned traces:
+
+    'YangMills.physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalPlaquetteGraphAnimalAnchoredWordDecoderBound1296_of_nontrivial'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`.  No new project axiom.
+
+## Scope
+
+This is real F3 B.2 preparation, but it is **not** the recursive word decoder.
+The missing step is now sharper: construct a finite-alphabet reconstructive
+iteration that records enough information at each safe deletion to rebuild the
+deleted plaquette from the residual bucket.  Existing root-shell parent codes
+identify a root-shell branch for a member, but they do not yet provide an
+injective reconstruction of the deleted vertex from `(residual, symbol)`.
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.  No Clay-level percentage or lattice
+percentage moves from this entry.
+
+---
+
+# v2.63.0 — F3 B.1 safe-deletion closure via finite-tree two-leaves theorem
+
+**Released: 2026-04-26**
+
+## What
+
+The high-cardinality graph blocker introduced in v2.60/v2.61 is now closed
+oracle-cleanly in `YangMills/ClayCore/LatticeAnimalCount.lean`.
+
+New finite-tree helper:
+
+    theorem simpleGraph_isTree_exists_two_distinct_degree_one_of_card_ge_two
+        {V : Type} [Fintype V] [DecidableEq V]
+        {T : SimpleGraph V} [DecidableRel T.Adj]
+        (hT : T.IsTree) (hcard : 2 <= Fintype.card V) :
+        exists z1 z2 : V, z1 != z2 /\ T.degree z1 = 1 /\ T.degree z2 = 1
+
+New pure finite-graph closure:
+
+    theorem simpleGraphHighCardTwoNonCutExists :
+        SimpleGraphHighCardTwoNonCutExists
+
+New plaquette consequences:
+
+    theorem plaquetteGraphAnchoredHighCardTwoNonCutExists
+    theorem physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists
+    theorem plaquetteGraphAnchoredSafeDeletionExists
+    theorem physicalPlaquetteGraphAnchoredSafeDeletionExists
+
+## How
+
+The proof uses the standard spanning-tree route:
+
+1. `Connected.exists_isTree_le` supplies a spanning tree `T <= G`.
+2. The two-leaves helper proves two distinct degree-one vertices in `T` by
+   contradiction from the degree sum:
+   `sum_degrees_eq_twice_card_edges` plus `IsTree.card_edgeFinset`.
+3. `Connected.induce_compl_singleton_of_degree_eq_one` shows deleting each
+   tree leaf preserves connectedness in the tree.
+4. `Connected.mono` transports preconnected deletion to the original graph.
+5. Existing v2.61/v2.60 bridges transport the pure graph theorem to anchored
+   plaquette safe deletion.
+
+## Oracle
+
+Build:
+
+    lake build YangMills.ClayCore.LatticeAnimalCount
+
+Result: 8184/8184 jobs green.
+
+Pinned traces:
+
+    'YangMills.simpleGraph_isTree_exists_two_distinct_degree_one_of_card_ge_two'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    'YangMills.simpleGraphHighCardTwoNonCutExists'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    'YangMills.plaquetteGraphAnchoredHighCardTwoNonCutExists'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    'YangMills.plaquetteGraphAnchoredSafeDeletionExists'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+    'YangMills.physicalPlaquetteGraphAnchoredSafeDeletionExists'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+No `sorry`.  No new project axiom.
+
+## Scope
+
+This closes the F3 B.1 safe-deletion obstruction: the global
+`PlaquetteGraphAnchoredSafeDeletionExists` hypothesis is now proved.
+
+It does **not** close the full `F3-COUNT` row yet.  The remaining B.2 step is
+the iterative anchored word decoder / recursive parent-map construction using
+the safe-deletion theorem at each cardinality.
+
+No project percentage is moved in this entry pending Cowork audit and the B.2
+decoder closure.
+
+---
+
+# v2.62.0 — SimpleGraph high-card theorem proof attempt: reduced to finite-tree two-leaves lemma
+
+**Released: 2026-04-26**
+
+## What
+
+Codex attempted to close the pure graph theorem introduced in v2.61:
+
+    SimpleGraphHighCardTwoNonCutExists
+
+No Lean theorem was added.  The attempt produced an implementation note:
+
+    dashboard/simplegraph_highcard_proof_attempt_v2_62.md
+
+and confirmed the cheapest route:
+
+1. obtain a spanning tree using Mathlib's `Connected.exists_isTree_le`;
+2. produce two distinct leaves of that same tree;
+3. use `Connected.induce_compl_singleton_of_degree_eq_one` for each leaf;
+4. lift connected/preconnected deletion from the spanning tree to the original graph.
+
+## Remaining exact gap
+
+The closure is now reduced to the finite-tree two-leaves lemma:
+
+    theorem SimpleGraph.IsTree.exists_two_distinct_degree_one_of_card_ge_two
+        {V : Type} [Fintype V] [DecidableEq V]
+        {T : SimpleGraph V} [DecidableRel T.Adj]
+        (hT : T.IsTree) (hcard : 2 ≤ Fintype.card V) :
+        ∃ z₁ z₂ : V, z₁ ≠ z₂ ∧ T.degree z₁ = 1 ∧ T.degree z₂ = 1
+
+The expected proof is the standard degree-sum argument for finite trees.  This
+is a real Lean gap, not a mathematical objection.
+
+## Scope
+
+This entry is a proof-attempt / reduction note only.  It does **not** prove
+`SimpleGraphHighCardTwoNonCutExists`, does **not** close `F3-COUNT`, and does
+not move any project percentage.
+
+`F3-COUNT` remains `CONDITIONAL_BRIDGE`.
+
+---
+
 # v2.61.0 — pure finite-graph bridge for high-cardinality two-non-cut target
 
 **Released: 2026-04-26**

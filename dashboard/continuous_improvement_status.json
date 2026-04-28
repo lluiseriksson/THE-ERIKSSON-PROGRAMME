@@ -1,0 +1,105 @@
+{
+  "updated_at": "2026-04-27T23:17:34Z",
+  "status": "OK",
+  "strategic_goal": "Unconditional Clay-level Yang-Mills formalization; no Clay claim without full formal evidence.",
+  "counts_by_status": {
+    "DONE": 380,
+    "BLOCKED": 2,
+    "FUTURE": 5,
+    "CANCELLED": 1,
+    "READY": 16,
+    "SUPERSEDED": 14,
+    "IN_PROGRESS": 1
+  },
+  "counts_by_owner": {
+    "Cowork": 192,
+    "Codex": 226,
+    "Any": 1
+  },
+  "ready_by_agent": {
+    "Cowork": [
+      "COWORK-AUDIT-CODEX-V2.69-CANONICAL-SELECTOR-BRIDGE-001",
+      "COWORK-AUDIT-CODEX-V2.70-CANONICAL-SELECTOR-NOCLOSURE-001",
+      "COWORK-AUDIT-CODEX-V2.95-BASEAWARE-BRIDGE-001",
+      "COWORK-AUDIT-CODEX-V2.78-V2.83-MENU-LINE-001",
+      "COWORK-AUDIT-CODEX-V2.78-V2.86-MENU-LINE-001",
+      "COWORK-AUDIT-CODEX-V2.86-PORTAL-POLICY-SCOPE-001",
+      "COWORK-AUDIT-CODEX-V2.78-V2.91-MENU-LINE-001",
+      "COWORK-AUDIT-CODEX-V2.78-V2.93-MENU-LINE-001",
+      "COWORK-AUDIT-CODEX-V2.93-MULTIPORTAL-ORIENTATION-001",
+      "COWORK-AUDIT-CODEX-V2.78-V2.94-MENU-LINE-001"
+    ],
+    "Codex": [
+      "CODEX-F3-NONSINGLETON-WALK-SPLIT-CREATIVE-RESEARCH-001",
+      "CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-SCOPE-001",
+      "CODEX-F3-ADMISSIBLE-VALUE-SEPARATION-CANDIDATE-LEMMA-INVENTORY-001"
+    ]
+  },
+  "lane_ready_counts": {
+    "formal_math": 16,
+    "audit_honesty": 13,
+    "planning_metrics": 4,
+    "automation_infra": 2,
+    "creative_research": 1
+  },
+  "lane_active_counts": {
+    "formal_math": 17,
+    "audit_honesty": 13,
+    "planning_metrics": 4,
+    "automation_infra": 2,
+    "creative_research": 1
+  },
+  "lane_gaps": [],
+  "ready_floor": {
+    "Codex": 3,
+    "Cowork": 1
+  },
+  "recommended_seed_tasks": [],
+  "stale_unconfirmed_in_progress": [],
+  "recent_history_counts": {
+    "dispatch_task": 28,
+    "dispatch_delivery_state": 119,
+    "meta_run_seeded_3_ready_tasks": 1,
+    "audit_completed": 2,
+    "task_completed": 25,
+    "deliverable_filed": 1,
+    "trigger_not_fired": 28,
+    "dispatch_meta_task": 28,
+    "yaml_registry_parse_error": 17,
+    "ready_floor_seed": 1
+  },
+  "role_rotation": [
+    {
+      "role": "Codex-Implementer",
+      "agent": "Codex",
+      "purpose": "Land Lean interfaces/proofs or infrastructure patches with validation."
+    },
+    {
+      "role": "Cowork-CreativeResearch",
+      "agent": "Cowork",
+      "purpose": "Invent candidate invariants, theorem statements, and non-circular proof routes."
+    },
+    {
+      "role": "Cowork-Auditor",
+      "agent": "Cowork",
+      "purpose": "Attack claims, check ledgers, and block fake percentage/status movement."
+    },
+    {
+      "role": "Codex-Infrastructure",
+      "agent": "Codex",
+      "purpose": "Improve watcher, dispatcher, validation, and registry automation."
+    },
+    {
+      "role": "Planner",
+      "agent": "Codex/Cowork",
+      "purpose": "Turn blockers into dated, lane-balanced tasks."
+    }
+  ],
+  "next_tasks": {
+    "Codex": "CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-SCOPE-001",
+    "Cowork": "COWORK-AUDIT-CODEX-V2.184-DOMINATION-RELATION-INTERFACE-001"
+  },
+  "recommendations": [
+    "META dispatches are high in recent history; Codex READY floor is currently satisfied, monitor the next unattended run."
+  ]
+}

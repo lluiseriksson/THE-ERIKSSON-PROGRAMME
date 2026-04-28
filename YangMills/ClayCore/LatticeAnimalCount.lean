@@ -1342,6 +1342,29 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_root
     plaquetteGraphPreconnectedSubsetsAnchoredCard_card_eq hX
   omega
 
+/-- A non-singleton anchored bucket contains another plaquette different from
+any chosen member. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_member
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root p : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (_hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hp : p ∈ X) (hcard : X.card ≠ 1) :
+    ∃ y, y ∈ X ∧ y ≠ p := by
+  by_contra hnone
+  have hforall : ∀ y, y ∈ X → y = p := by
+    intro y hy
+    by_contra hyne
+    exact hnone ⟨y, hy, hyne⟩
+  have hsubset : X ⊆ ({p} : Finset (ConcretePlaquette d L)) := by
+    intro y hy
+    rw [Finset.mem_singleton]
+    exact hforall y hy
+  have hcard_le : X.card ≤ 1 := by
+    simpa using Finset.card_le_card hsubset
+  have hcard_pos : 0 < X.card := Finset.card_pos.mpr ⟨p, hp⟩
+  have hcard_eq : X.card = 1 := by omega
+  exact hcard hcard_eq
+
 /-- A nontrivial walk has a first adjacent vertex. -/
 theorem simpleGraph_walk_exists_adj_start_of_ne
     {V : Type} {G : SimpleGraph V} {u v : V}
@@ -1365,6 +1388,32 @@ theorem simpleGraph_walk_exists_adj_start_and_tail_of_ne
       exact False.elim (huv rfl)
   | cons hAdj tail =>
       exact ⟨_, hAdj, tail, trivial⟩
+
+/-- A non-singleton anchored bucket contains a residual neighbor of any chosen
+member.  This is the member-local analogue of
+`plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset`. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_nonSingleton_member_has_neighbor
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root p : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hp : p ∈ X) (hcard : X.card ≠ 1) :
+    ∃ q, q ∈ X ∧ p ∈ (plaquetteGraph d L).neighborFinset q := by
+  have hpre :
+      ((plaquetteGraph d L).induce {x | x ∈ X}).Preconnected :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected hX
+  obtain ⟨y, hy, hyne⟩ :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_member hX hp hcard
+  obtain ⟨walk⟩ := hpre ⟨p, hp⟩ ⟨y, hy⟩
+  have hne :
+      (⟨p, hp⟩ : {x : ConcretePlaquette d L // x ∈ X}) ≠
+        ⟨y, hy⟩ := by
+    intro h
+    exact hyne (congrArg Subtype.val h).symm
+  obtain ⟨q, hqAdj⟩ := simpleGraph_walk_exists_adj_start_of_ne walk hne
+  have hAdj : (plaquetteGraph d L).Adj p q.1 :=
+    SimpleGraph.induce_adj.mp hqAdj
+  exact ⟨q.1, q.2,
+    (SimpleGraph.mem_neighborFinset (plaquetteGraph d L) q.1 p).mpr hAdj.symm⟩
 
 /-- A non-singleton anchored bucket contains a plaquette adjacent to the root,
 still inside the same bucket. This is the first local expansion step needed by
@@ -1894,6 +1943,84 @@ def SimpleGraphHighCardTwoNonCutExists : Prop :=
         (G.induce ({z₁}ᶜ : Set α)).Preconnected ∧
         (G.induce ({z₂}ᶜ : Set α)).Preconnected
 
+/-- A finite tree with at least two vertices has two distinct leaves.
+
+This is the focused graph-theoretic helper needed by the spanning-tree route
+to `SimpleGraphHighCardTwoNonCutExists`: two leaves of the same spanning tree
+give two deletion candidates in the original connected graph. -/
+theorem simpleGraph_isTree_exists_two_distinct_degree_one_of_card_ge_two
+    {V : Type} [Fintype V] [DecidableEq V]
+    {T : SimpleGraph V} [DecidableRel T.Adj]
+    (hT : T.IsTree) (hcard : 2 ≤ Fintype.card V) :
+    ∃ z₁ z₂ : V, z₁ ≠ z₂ ∧ T.degree z₁ = 1 ∧ T.degree z₂ = 1 := by
+  classical
+  haveI : Nontrivial V :=
+    Fintype.one_lt_card_iff_nontrivial.mp
+      (Nat.lt_of_lt_of_le Nat.one_lt_two hcard)
+  obtain ⟨z₁, hz₁⟩ := hT.exists_vert_degree_one_of_nontrivial
+  by_contra hnot
+  push_neg at hnot
+  have huniq : ∀ v : V, T.degree v = 1 → v = z₁ := by
+    intro v hv
+    by_contra hvne
+    exact hnot z₁ v (fun h => hvne h.symm) hz₁ hv
+  have hdeg_ge : ∀ v : V, v ≠ z₁ → 2 ≤ T.degree v := by
+    intro v hvne
+    have hpos : 0 < T.degree v :=
+      hT.isConnected.preconnected.degree_pos_of_nontrivial v
+    have hne_one : T.degree v ≠ 1 := by
+      intro hv
+      exact hvne (huniq v hv)
+    omega
+  have hsum_lower : 2 * Fintype.card V - 1 ≤ ∑ v : V, T.degree v := by
+    calc
+      2 * Fintype.card V - 1 = 1 + 2 * (Fintype.card V - 1) := by
+        omega
+      _ ≤ T.degree z₁ + (∑ v ∈ Finset.univ.erase z₁, T.degree v) := by
+        rw [hz₁]
+        exact Nat.add_le_add_left (by
+          calc
+            2 * (Fintype.card V - 1)
+                = ∑ v ∈ Finset.univ.erase z₁, 2 := by
+                  rw [Finset.sum_const, Finset.card_erase_of_mem (Finset.mem_univ z₁),
+                    Finset.card_univ, smul_eq_mul]
+                  omega
+            _ ≤ ∑ v ∈ Finset.univ.erase z₁, T.degree v := by
+              exact Finset.sum_le_sum fun v hv => hdeg_ge v
+                (Finset.mem_erase.mp hv).1) 1
+      _ = ∑ v : V, T.degree v := by
+        rw [add_comm]
+        exact Finset.sum_erase_add _ _ (Finset.mem_univ z₁)
+  have hsum := T.sum_degrees_eq_twice_card_edges
+  have hedge := hT.card_edgeFinset
+  omega
+
+/-- Finite connected graphs with at least four vertices have two distinct
+vertices whose deletion leaves a preconnected induced graph.
+
+The proof takes a spanning tree, uses the two-leaves helper above, deletes
+each leaf in the tree, and then transports preconnectedness to the original
+graph by monotonicity. -/
+theorem simpleGraphHighCardTwoNonCutExists :
+    SimpleGraphHighCardTwoNonCutExists := by
+  classical
+  intro α _ _ G hconn hcard
+  obtain ⟨T, hTG, hT⟩ := hconn.exists_isTree_le
+  have h2 : 2 ≤ Fintype.card α := le_trans (by norm_num) hcard
+  obtain ⟨z₁, z₂, hne, hdeg₁, hdeg₂⟩ :=
+    simpleGraph_isTree_exists_two_distinct_degree_one_of_card_ge_two hT h2
+  refine ⟨z₁, z₂, hne, ?_, ?_⟩
+  · exact
+      ((hT.isConnected.induce_compl_singleton_of_degree_eq_one hdeg₁).mono
+        (by
+          intro a b hab
+          exact hTG hab)).preconnected
+  · exact
+      ((hT.isConnected.induce_compl_singleton_of_degree_eq_one hdeg₂).mono
+        (by
+          intro a b hab
+          exact hTG hab)).preconnected
+
 /-- The degree-one global hypothesis is sufficient for the exact safe-deletion
 hypothesis, by the local v2.52 leaf-deletion theorem. -/
 theorem plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists
@@ -2225,6 +2352,23 @@ theorem physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
   plaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
     (d := physicalClayDimension) (L := L) hgraph
 
+/-- High-cardinality two-non-cut deletion for anchored plaquette buckets.
+
+This composes the oracle-clean pure finite-graph theorem with the v2.61
+plaquette bookkeeping bridge. -/
+theorem plaquetteGraphAnchoredHighCardTwoNonCutExists
+    {d L : ℕ} [NeZero d] [NeZero L] :
+    PlaquetteGraphAnchoredHighCardTwoNonCutExists d L :=
+  plaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
+    (d := d) (L := L) simpleGraphHighCardTwoNonCutExists
+
+/-- Physical specialization of high-cardinality two-non-cut deletion. -/
+theorem physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists
+    {L : ℕ} [NeZero L] :
+    PhysicalPlaquetteGraphAnchoredHighCardTwoNonCutExists L :=
+  physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
+    (L := L) simpleGraphHighCardTwoNonCutExists
+
 /-- Root-avoiding safe deletion in the first nontrivial bucket size.
 
 For `k = 2`, an anchored bucket contains the root and exactly one other
@@ -2474,6 +2618,6530 @@ theorem physicalPlaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExi
     PhysicalPlaquetteGraphAnchoredSafeDeletionExists L :=
   plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
     (d := physicalClayDimension) (L := L) hhigh
+
+/-- Exact anchored safe deletion for all nontrivial anchored plaquette buckets.
+
+The small base zone `2 ≤ k ≤ 3` is supplied by the existing v2.59 base-case
+driver, and the high-cardinality zone is supplied by the v2.63
+`SimpleGraphHighCardTwoNonCutExists` closure above. -/
+theorem plaquetteGraphAnchoredSafeDeletionExists
+    {d L : ℕ} [NeZero d] [NeZero L] :
+    PlaquetteGraphAnchoredSafeDeletionExists d L :=
+  plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
+    (d := d) (L := L) plaquetteGraphAnchoredHighCardTwoNonCutExists
+
+/-- Physical specialization of exact anchored safe deletion. -/
+theorem physicalPlaquetteGraphAnchoredSafeDeletionExists
+    {L : ℕ} [NeZero L] :
+    PhysicalPlaquetteGraphAnchoredSafeDeletionExists L :=
+  physicalPlaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
+    (L := L) physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists
+
+/-- Exact physical one-step residual handoff for the recursive anchored decoder.
+
+The v2.63 graph-theoretic closure supplies `physicalPlaquetteGraphAnchoredSafeDeletionExists`,
+so the older conditional one-step deletion driver can now be used without an
+external safe-deletion hypothesis.  This does not yet construct the full
+Klarner/BFS decoder: the remaining work is to package the iterated residuals
+into a reconstructive finite-alphabet word map. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hk : 2 ≤ k)
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k) :
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      X.erase z ∈
+        plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root (k - 1) :=
+  physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem_of_safeDeletion
+    (L := L) (k := k) (root := root) (X := X)
+    physicalPlaquetteGraphAnchoredSafeDeletionExists hk hX
+
+/-- Exact one-step reconstruction contract for the B.2 anchored word decoder.
+
+For each physical root and cardinality `k`, a single decoder
+`reconstruct residual symbol` must recover the deleted plaquette from the
+residual bucket and one `Fin 1296` symbol for every nontrivial anchored bucket.
+This is deliberately a `Prop` target: v2.64 proves that a safe deleted plaquette
+exists, while this contract records the still-open injective reconstruction
+content needed to iterate those deletions into a full word decoder. -/
+def PhysicalPlaquetteGraphDeletedVertexDecoderStep1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ reconstruct :
+      Finset (ConcretePlaquette physicalClayDimension L) → Fin 1296 →
+        Option (ConcretePlaquette physicalClayDimension L),
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+          X.erase z ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          ∃ symbol : Fin 1296, reconstruct (X.erase z) symbol = some z
+
+/-- A reconstruction-step contract supplies the exact recoverable safe deletion
+needed by the B.2 iteration.  This theorem is only a projector from the contract;
+it does not prove the contract itself. -/
+theorem physicalPlaquetteGraphDeletedVertexDecoderStep1296_exists_recoverable_deletion
+    (hstep : PhysicalPlaquetteGraphDeletedVertexDecoderStep1296)
+    {L k : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hk : 2 ≤ k)
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k) :
+    ∃ reconstruct :
+      Finset (ConcretePlaquette physicalClayDimension L) → Fin 1296 →
+        Option (ConcretePlaquette physicalClayDimension L),
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      X.erase z ∈
+        plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root (k - 1) ∧
+      ∃ symbol : Fin 1296, reconstruct (X.erase z) symbol = some z := by
+  obtain ⟨reconstruct, hcover⟩ := hstep root k
+  obtain ⟨z, hzX, hz_ne_root, hresidual, symbol, hsymbol⟩ := hcover hk hX
+  exact ⟨reconstruct, z, hzX, hz_ne_root, hresidual, symbol, hsymbol⟩
+
+/-- Invert a local plaquette-neighbor step code at a fixed parent.  This is a
+finite inverse for an injective code on the actual neighbor finset, not an
+existential decoder for deleted vertices. -/
+noncomputable def physicalNeighborDecodeOfStepCode
+    {L : ℕ} [NeZero L]
+    (code : ConcretePlaquette physicalClayDimension L →
+      ConcretePlaquette physicalClayDimension L → Fin 1296)
+    (p : ConcretePlaquette physicalClayDimension L) (symbol : Fin 1296) :
+    Option (ConcretePlaquette physicalClayDimension L) :=
+  if h : ∃ q : ConcretePlaquette physicalClayDimension L,
+      q ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p ∧
+        code p q = symbol then
+    some (Classical.choose h)
+  else
+    none
+
+/-- The local inverse recovers any actual neighbor from its injective step code. -/
+theorem physicalNeighborDecodeOfStepCode_spec
+    {L : ℕ} [NeZero L]
+    {code : ConcretePlaquette physicalClayDimension L →
+      ConcretePlaquette physicalClayDimension L → Fin 1296}
+    (hinj : ∀ p, Set.InjOn (code p)
+      {q | q ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p})
+    {p q : ConcretePlaquette physicalClayDimension L}
+    (hq : q ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p) :
+    physicalNeighborDecodeOfStepCode code p (code p q) = some q := by
+  classical
+  unfold physicalNeighborDecodeOfStepCode
+  have hex : ∃ r : ConcretePlaquette physicalClayDimension L,
+      r ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p ∧
+        code p r = code p q := ⟨q, hq, rfl⟩
+  rw [dif_pos hex]
+  apply congrArg some
+  have hchosen := Classical.choose_spec hex
+  exact hinj p hchosen.1 hq hchosen.2
+
+/-- Residual parent/frontier invariant sufficient to make the B.2 deleted
+vertex symbol local.
+
+For each residual bucket produced by a safe deletion, the invariant supplies a
+canonical parent selected from the residual and a globally injective local
+neighbor code.  At least one admissible deleted plaquette is adjacent to the
+selected parent, so a single `Fin 1296` neighbor symbol reconstructs it. -/
+def PhysicalPlaquetteGraphResidualParentInvariant1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ parent :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Option (ConcretePlaquette physicalClayDimension L),
+    ∃ code : ConcretePlaquette physicalClayDimension L →
+      ConcretePlaquette physicalClayDimension L → Fin 1296,
+      (∀ p, Set.InjOn (code p)
+        {q | q ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p}) ∧
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+          X.erase z ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          ∃ p, parent (X.erase z) = some p ∧
+            p ∈ X.erase z ∧
+            z ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p
+
+/-- Canonical residual-only parent selector for the B.2 deleted-vertex decoder.
+
+This is the exact selector part of `PhysicalPlaquetteGraphResidualParentInvariant1296`,
+with the already-proved `Fin 1296` local-neighbor code fact factored out. -/
+def PhysicalPlaquetteGraphCanonicalResidualParentSelector1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ parent :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Option (ConcretePlaquette physicalClayDimension L),
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+          X.erase z ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          ∃ p, parent (X.erase z) = some p ∧
+            p ∈ X.erase z ∧
+            z ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p
+
+/-- A fixed residual-only parent selector is compatible with all current
+anchored buckets at a fixed root/cardinality.
+
+This isolates the v2.70 blocker: the parent is a function of the residual
+bucket alone, while the existential deleted vertex is chosen only after that
+residual-only selector has been fixed. -/
+def PhysicalPlaquetteGraphResidualExtensionCompatible1296
+    {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (parent :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Option (ConcretePlaquette physicalClayDimension L)) : Prop :=
+  ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hk : 2 ≤ k)
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k),
+    ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+      X.erase z ∈
+        plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root (k - 1) ∧
+      ∃ p, parent (X.erase z) = some p ∧
+        p ∈ X.erase z ∧
+        z ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p
+
+/-- Residual-extension compatibility is the exact remaining mathematical
+content of the canonical residual parent selector. -/
+def PhysicalPlaquetteGraphResidualExtensionCompatibility1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ parent :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Option (ConcretePlaquette physicalClayDimension L),
+      PhysicalPlaquetteGraphResidualExtensionCompatible1296 root k parent
+
+/-- Once residual-extension compatibility is proved, the canonical residual
+parent selector follows immediately.  This is a bridge only: it does not prove
+the compatibility theorem. -/
+theorem physicalPlaquetteGraphCanonicalResidualParentSelector1296_of_residualExtensionCompatibility1296
+    (hcompat : PhysicalPlaquetteGraphResidualExtensionCompatibility1296) :
+    PhysicalPlaquetteGraphCanonicalResidualParentSelector1296 := by
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨parent, hparent⟩ := hcompat root k
+  exact ⟨parent, hparent⟩
+
+/-- Conversely, the canonical residual parent selector is exactly residual-extension
+compatibility with the selector body named separately.  This records that v2.71
+did not make the mathematical target easier; it only gave the blocker a sharper
+name. -/
+theorem physicalPlaquetteGraphResidualExtensionCompatibility1296_of_canonicalResidualParentSelector1296
+    (hselector : PhysicalPlaquetteGraphCanonicalResidualParentSelector1296) :
+    PhysicalPlaquetteGraphResidualExtensionCompatibility1296 := by
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨parent, hparent⟩ := hselector root k
+  exact ⟨parent, hparent⟩
+
+/-- The residual-extension compatibility theorem is definitionally the same
+remaining content as the canonical residual-only parent selector. -/
+theorem physicalPlaquetteGraphResidualExtensionCompatibility1296_iff_canonicalResidualParentSelector1296 :
+    PhysicalPlaquetteGraphResidualExtensionCompatibility1296 ↔
+      PhysicalPlaquetteGraphCanonicalResidualParentSelector1296 :=
+  ⟨physicalPlaquetteGraphCanonicalResidualParentSelector1296_of_residualExtensionCompatibility1296,
+    physicalPlaquetteGraphResidualExtensionCompatibility1296_of_canonicalResidualParentSelector1296⟩
+
+/-- The canonical residual-only selector is exactly the missing mathematical
+part of the residual-parent invariant; the `Fin 1296` code is supplied by the
+physical neighbor step-code bound. -/
+theorem physicalPlaquetteGraphResidualParentInvariant1296_of_canonicalResidualParentSelector1296
+    (hselector : PhysicalPlaquetteGraphCanonicalResidualParentSelector1296) :
+    PhysicalPlaquetteGraphResidualParentInvariant1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨parent, hparent⟩ := hselector root k
+  obtain ⟨code, hinj⟩ :=
+    (plaquetteNeighborStepCodeBoundDim_physical_ternary (L := L))
+  exact ⟨parent, code, hinj, hparent⟩
+
+/-- A proved residual parent/frontier invariant closes the one-step deleted
+vertex decoder contract by composing the parent selector with the local
+neighbor-code inverse. -/
+theorem physicalPlaquetteGraphDeletedVertexDecoderStep1296_of_residualParentInvariant1296
+    (hinv : PhysicalPlaquetteGraphResidualParentInvariant1296) :
+    PhysicalPlaquetteGraphDeletedVertexDecoderStep1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨parent, code, hinj, hcover⟩ := hinv root k
+  refine ⟨fun residual symbol =>
+    match parent residual with
+    | some p => physicalNeighborDecodeOfStepCode code p symbol
+    | none => none, ?_⟩
+  intro X hk hX
+  obtain ⟨z, hzX, hz_ne_root, hresidual, p, hparent, _hp_residual, hzp⟩ :=
+    hcover hk hX
+  refine ⟨z, hzX, hz_ne_root, hresidual, code p z, ?_⟩
+  dsimp
+  rw [hparent]
+  exact physicalNeighborDecodeOfStepCode_spec hinj hzp
+
+/-- A canonical residual-only selector closes the one-step deleted-vertex
+decoder contract through the residual-parent invariant bridge. -/
+theorem physicalPlaquetteGraphDeletedVertexDecoderStep1296_of_canonicalResidualParentSelector1296
+    (hselector : PhysicalPlaquetteGraphCanonicalResidualParentSelector1296) :
+    PhysicalPlaquetteGraphDeletedVertexDecoderStep1296 :=
+  physicalPlaquetteGraphDeletedVertexDecoderStep1296_of_residualParentInvariant1296
+    (physicalPlaquetteGraphResidualParentInvariant1296_of_canonicalResidualParentSelector1296
+      hselector)
+
+/-- Strengthened one-step reconstruction contract for the B.2 decoder.
+
+This is a parallel interface to `PhysicalPlaquetteGraphDeletedVertexDecoderStep1296`.
+The product symbol records a residual parent/frontier branch together with the
+existing local neighbor code.  It deliberately does not claim the original
+`Fin 1296` contract or preserve the old alphabet constant. -/
+def PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ reconstruct :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        (Fin 1296 × Fin 1296) →
+        Option (ConcretePlaquette physicalClayDimension L),
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+          X.erase z ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          ∃ symbol : Fin 1296 × Fin 1296,
+            reconstruct (X.erase z) symbol = some z
+
+/-- Triple-symbol one-step reconstruction contract for the multi-portal B.2
+decoder route.
+
+The three components separately encode a residual portal, a parent inside the
+portal-local shell, and the deleted plaquette inside the parent-local shell.
+This is intentionally not a compression back to the old `Fin 1296` or
+two-component `Fin 1296 × Fin 1296` contracts. -/
+def PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ reconstruct :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        (Fin 1296 × (Fin 1296 × Fin 1296)) →
+        Option (ConcretePlaquette physicalClayDimension L),
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+          X.erase z ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          ∃ symbol : Fin 1296 × (Fin 1296 × Fin 1296),
+            reconstruct (X.erase z) symbol = some z
+
+/-- Essential safe-deletion parent-frontier bound for the strengthened symbolic
+B.2 decoder.
+
+This is a structured sufficient target for the residual parent-menu bound.  For
+fixed `root` and `k`, it chooses a canonical deleted plaquette and a canonical
+residual parent for every current anchored bucket.  The finite menu attached to
+a residual is required to be exactly the image of those chosen parents over the
+fiber of current buckets whose canonical deletion has that residual.  The bound
+is therefore on the essential safe-deletion parent image, not on the whole raw
+one-step residual frontier. -/
+def PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      (∀ residual,
+        essential residual =
+          ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root k).filter
+              (fun X => X.erase (deleted X) = residual)).image parentOf) ∧
+      (∀ residual,
+        essential residual ⊆ residual ∧ (essential residual).card ≤ 1296) ∧
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        deleted X ∈ X ∧
+          deleted X ≠ root ∧
+          X.erase (deleted X) ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          parentOf X ∈ X.erase (deleted X) ∧
+          parentOf X ∈ essential (X.erase (deleted X)) ∧
+          deleted X ∈
+            (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)
+
+/-- A sharpened interface for the safe-deletion orientation obstruction.  It
+does not postulate the `card ≤ 1296` menu bound directly.  Instead, for each
+residual bucket it provides an explicit code of the essential chosen-parent menu
+into `Fin 1296`, plus injectivity of that code. -/
+def PhysicalPlaquetteGraphSafeDeletionOrientationCodeBound1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+    ∃ orientCode :
+      ∀ residual,
+        {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+          Fin 1296,
+      (∀ residual,
+        essential residual =
+          ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root k).filter
+              (fun X => X.erase (deleted X) = residual)).image parentOf) ∧
+      (∀ residual, Function.Injective (orientCode residual)) ∧
+      (∀ residual, essential residual ⊆ residual) ∧
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        deleted X ∈ X ∧
+          deleted X ≠ root ∧
+          X.erase (deleted X) ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          parentOf X ∈ X.erase (deleted X) ∧
+          parentOf X ∈ essential (X.erase (deleted X)) ∧
+          deleted X ∈
+            (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)
+
+/-- Root-shell safe-deletion intersection for the portal-supported F3 route.
+
+This is stronger than plain safe deletion and stronger than plain first-shell
+nonemptiness: it asks for the same deleted plaquette to be safe and adjacent
+to the anchored root.  If proved, it supports the cheap portal policy
+`portal residual = some root` and `parentOf X = root` in
+`PhysicalPlaquetteGraphPortalSupportedSafeDeletionOrientation1296`. -/
+def PhysicalPlaquetteGraphRootShellSafeDeletionExists1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    {root : ConcretePlaquette physicalClayDimension L} {k : ℕ}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)},
+    2 ≤ k →
+    X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k →
+    ∃ z, z ∈ X ∧
+      z ≠ root ∧
+      z ∈ (plaquetteGraph physicalClayDimension L).neighborFinset root ∧
+      X.erase z ∈
+        plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root (k - 1)
+
+/-- Multi-portal safe-deletion orientation for the flexible product-symbol F3 route.
+
+This is residual-only but not root-only.  Each residual bucket carries a bounded
+menu of portal points, and each essential chosen parent is supported by one
+portal-local neighbor shell.  The first two `Fin 1296`-sized choices can encode
+the portal and then the parent inside that portal shell; a separate compression
+or an additional local deleted-vertex symbol is still required before this can
+close the existing two-component deleted-vertex decoder contract. -/
+def PhysicalPlaquetteGraphMultiPortalSupportedSafeDeletionOrientation1296x1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+    ∃ portalMenu :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+    ∃ portalOfParent :
+      ∀ residual,
+        {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+          ConcretePlaquette physicalClayDimension L,
+      (∀ residual,
+        essential residual =
+          ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root k).filter
+              (fun X => X.erase (deleted X) = residual)).image parentOf) ∧
+      (∀ residual,
+        portalMenu residual ⊆ residual ∧ (portalMenu residual).card ≤ 1296) ∧
+      (∀ residual
+        (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+        portalOfParent residual p ∈ portalMenu residual ∧
+          p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+            (portalOfParent residual p)) ∧
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        deleted X ∈ X ∧
+          deleted X ≠ root ∧
+          X.erase (deleted X) ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          parentOf X ∈ X.erase (deleted X) ∧
+          parentOf X ∈ essential (X.erase (deleted X)) ∧
+          deleted X ∈
+            (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)
+
+/-- Base-aware multi-portal safe-deletion orientation for the triple-symbol F3
+route.
+
+This is the v2.94 successor interface to the strict multi-portal producer.  It
+keeps the residual-only portal menu for non-singleton residuals, but handles the
+first nontrivial residual explicitly: when the residual bucket has cardinality
+one, the deleted plaquette is decoded directly from the root shell.  Thus the
+interface never asks a singleton portal to support itself as a graph neighbor,
+and it remains a triple-symbol route rather than a compression back to the old
+`Fin 1296` or `Fin 1296 × Fin 1296` contracts. -/
+def PhysicalPlaquetteGraphBaseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+    ∃ portalMenu :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+    ∃ portalOfParent :
+      ∀ residual,
+        {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+          ConcretePlaquette physicalClayDimension L,
+      (∀ residual,
+        essential residual =
+          ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root k).filter
+              (fun X => X.erase (deleted X) = residual)).image parentOf) ∧
+      (∀ residual,
+        portalMenu residual ⊆ residual ∧ (portalMenu residual).card ≤ 1296) ∧
+      (∀ residual
+        (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+        residual.card ≠ 1 →
+          portalOfParent residual p ∈ portalMenu residual ∧
+            p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+              (portalOfParent residual p)) ∧
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        deleted X ∈ X ∧
+          deleted X ≠ root ∧
+          X.erase (deleted X) ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          parentOf X ∈ X.erase (deleted X) ∧
+          parentOf X ∈ essential (X.erase (deleted X)) ∧
+          (((X.erase (deleted X)).card = 1 ∧
+              parentOf X = root ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+            ((X.erase (deleted X)).card ≠ 1 ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))
+
+/-- Last-step portal-image bound for the base-aware v2.98 route.
+
+This interface factors the residual portal-menu burden one step further.  It
+does not postulate a raw residual frontier bound and does not use root-shell
+reachability as adjacency.  Instead it asks for a residual-local
+`lastStepPortalOfParent` selector whose value is adjacent to each essential
+parent, and asks only that the image of this selector over each essential
+parent fiber has cardinality at most `1296`. -/
+def PhysicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        deleted X ∈ X ∧
+          deleted X ≠ root ∧
+          X.erase (deleted X) ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          parentOf X ∈ X.erase (deleted X) ∧
+          parentOf X ∈ essential (X.erase (deleted X)) ∧
+          (((X.erase (deleted X)).card = 1 ∧
+              parentOf X = root ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+            ((X.erase (deleted X)).card ≠ 1 ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) ∧
+      ∃ lastStepPortalOfParent :
+        ∀ residual,
+          {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+            ConcretePlaquette physicalClayDimension L,
+        (∀ residual,
+          essential residual =
+            ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+                physicalClayDimension L root k).filter
+                (fun X => X.erase (deleted X) = residual)).image parentOf) ∧
+        (∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+          lastStepPortalOfParent residual p ∈ residual ∧
+            (residual.card ≠ 1 →
+              p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+                (lastStepPortalOfParent residual p))) ∧
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p => lastStepPortalOfParent residual p)).card ≤ 1296
+
+/-- Canonical-predecessor-code interface for the base-aware v2.101 last-step
+portal-image route.
+
+This is deliberately sharper than `PhysicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296`.
+Instead of directly naming only a last-step portal selector, it asks for canonical
+residual-local predecessor data carrying both the selected predecessor and a
+`Fin 1296` code.  The code-separation clause is the future load-bearing route
+for proving the selected-image bound; this interface still records the image
+bound explicitly so the bridge to v2.101 is a no-sorry repacking bridge, not a
+new cardinality proof. -/
+def PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        deleted X ∈ X ∧
+          deleted X ≠ root ∧
+          X.erase (deleted X) ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          parentOf X ∈ X.erase (deleted X) ∧
+          parentOf X ∈ essential (X.erase (deleted X)) ∧
+          (((X.erase (deleted X)).card = 1 ∧
+              parentOf X = root ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+            ((X.erase (deleted X)).card ≠ 1 ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) ∧
+      ∃ canonicalLastStepPredecessor :
+        ∀ residual,
+          {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} × Fin 1296,
+        (∀ residual,
+          essential residual =
+            ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+                physicalClayDimension L root k).filter
+                (fun X => X.erase (deleted X) = residual)).image parentOf) ∧
+        (∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+          residual.card ≠ 1 →
+            p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+              ((canonicalLastStepPredecessor residual p).1.1)) ∧
+        (∀ residual
+          (p q : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+          (canonicalLastStepPredecessor residual p).2 =
+              (canonicalLastStepPredecessor residual q).2 →
+            (canonicalLastStepPredecessor residual p).1.1 =
+              (canonicalLastStepPredecessor residual q).1.1) ∧
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p => (canonicalLastStepPredecessor residual p).1.1)).card ≤ 1296
+
+/-- Residual-local last-edge data for the canonical predecessor route.
+
+For a residual bucket and target parent `p`, this data packages:
+
+* a proof that `p` itself lies in the residual,
+* a selected residual predecessor `q`,
+* an induced residual walk from `q` to `p`,
+* a `Fin 1296` code attached to the selected predecessor.
+
+The future mathematical burden is to build such data canonically and prove that
+the selected predecessor image is `1296`-bounded.  The data is residual-local:
+it mentions only the residual bucket and target parent, not a current
+deleted-vertex witness `(X, deleted X)`. -/
+structure PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgeData
+    {L : ℕ} [NeZero L]
+    (residual : Finset (ConcretePlaquette physicalClayDimension L))
+    (p : ConcretePlaquette physicalClayDimension L) where
+  target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual}
+  target_eq : target.1 = p
+  predecessor : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}
+  path :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      predecessor target
+  code : Fin 1296
+
+/-- Residual-local terminal-edge selector data for the v2.135 route.
+
+This is slightly more structured than
+`PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgeData`: it separates the
+canonical residual path endpoint/source data from the terminal predecessor
+selected on the final edge.  The load-bearing future theorem is the selected
+terminal-predecessor image bound; this data object itself does not prove that
+bound and does not mention a current deleted-vertex witness. -/
+structure PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeData
+    {L : ℕ} [NeZero L]
+    (residual : Finset (ConcretePlaquette physicalClayDimension L))
+    (p : ConcretePlaquette physicalClayDimension L) where
+  target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual}
+  target_eq : target.1 = p
+  pathSource : {s : ConcretePlaquette physicalClayDimension L // s ∈ residual}
+  canonicalPath :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      pathSource target
+  terminalPred : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}
+  terminalPath :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      terminalPred target
+  terminalCode : Fin 1296
+
+/-- Residual-local walk terminal-edge data for the v2.138 route.
+
+This refines the v2.136 terminal-edge data by naming the full residual
+`canonicalWalk` and the extracted `terminalSuffix` separately.  The intended
+future proof must construct this data from residual-local walk/path information
+and prove the selected terminal-predecessor image bound.  This structure does
+not use deleted-vertex adjacency outside the residual and does not by itself
+bound the selected image. -/
+structure PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeData
+    {L : ℕ} [NeZero L]
+    (residual : Finset (ConcretePlaquette physicalClayDimension L))
+    (p : ConcretePlaquette physicalClayDimension L) where
+  target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual}
+  target_eq : target.1 = p
+  walkSource : {s : ConcretePlaquette physicalClayDimension L // s ∈ residual}
+  canonicalWalk :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      walkSource target
+  terminalPred : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}
+  terminalSuffix :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      terminalPred target
+  terminalCode : Fin 1296
+
+/-- Residual-local canonical terminal-suffix data for the v2.141 route.
+
+This refines the v2.139 walk terminal-edge data by exposing a residual-local
+prefix to the selected terminal predecessor and a final-edge adjacency clause
+inside the residual.  The prefix/suffix fields make the selected predecessor a
+terminal-suffix datum from residual-local walk/path information, not a
+post-hoc deleted-vertex witness.  The structure still does not prove the
+selected image bound; that remains a field of the corresponding proposition. -/
+structure PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixData
+    {L : ℕ} [NeZero L]
+    (residual : Finset (ConcretePlaquette physicalClayDimension L))
+    (p : ConcretePlaquette physicalClayDimension L) where
+  target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual}
+  target_eq : target.1 = p
+  source : {s : ConcretePlaquette physicalClayDimension L // s ∈ residual}
+  canonicalWalk :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      source target
+  terminalPred : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}
+  prefixToTerminalPred :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      source terminalPred
+  terminalSuffix :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      terminalPred target
+  terminalSuffix_is_last_edge :
+    residual.card ≠ 1 →
+      p ∈ (plaquetteGraph physicalClayDimension L).neighborFinset terminalPred.1
+  terminalCode : Fin 1296
+
+/-- Residual-local selector evidence for the v2.147 terminal-neighbor image route.
+
+The selected terminal neighbor is an explicit parameter, supplied by the
+corresponding selector theorem.  This structure only records the residual-local
+canonical walk/prefix/suffix evidence and the final-edge adjacency for that
+already selected neighbor.  It is therefore sharper than merely repacking
+`PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborData`: the
+selector map and its selected-image cardinality bound remain separate fields of
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296`.
+
+This evidence is not derived from root/root-shell reachability, local degree,
+residual size, raw frontier growth, deleted-vertex adjacency outside the
+residual, or packing of an already bounded menu. -/
+structure PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+    {L : ℕ} [NeZero L]
+    (residual : Finset (ConcretePlaquette physicalClayDimension L))
+    (p : ConcretePlaquette physicalClayDimension L)
+    (terminalNeighbor :
+      {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) where
+  target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual}
+  target_eq : target.1 = p
+  source : {s : ConcretePlaquette physicalClayDimension L // s ∈ residual}
+  canonicalWalk :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      source target
+  prefixToTerminalNeighbor :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      source terminalNeighbor
+  terminalNeighborSuffix :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      terminalNeighbor target
+  terminalNeighbor_is_last_edge :
+    residual.card ≠ 1 →
+      p ∈ (plaquetteGraph physicalClayDimension L).neighborFinset terminalNeighbor.1
+  terminalNeighborCode : Fin 1296
+
+/-- Residual-local canonical terminal-neighbor data for the v2.144 route.
+
+This is a predecessor to `PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixData`
+that names the selected terminal neighbor directly.  The image bound belongs to
+the corresponding proposition below; this structure only records residual-local
+canonical walk/prefix/suffix evidence and the final adjacency inside the
+residual.  It does not choose a terminal predecessor from a current deleted
+vertex witness and does not use deleted-vertex adjacency outside the residual. -/
+structure PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborData
+    {L : ℕ} [NeZero L]
+    (residual : Finset (ConcretePlaquette physicalClayDimension L))
+    (p : ConcretePlaquette physicalClayDimension L) where
+  target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual}
+  target_eq : target.1 = p
+  source : {s : ConcretePlaquette physicalClayDimension L // s ∈ residual}
+  canonicalWalk :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      source target
+  terminalNeighbor : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}
+  prefixToTerminalNeighbor :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      source terminalNeighbor
+  terminalNeighborSuffix :
+    ((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+      terminalNeighbor target
+  terminalNeighbor_is_last_edge :
+    residual.card ≠ 1 →
+      p ∈ (plaquetteGraph physicalClayDimension L).neighborFinset terminalNeighbor.1
+  terminalNeighborCode : Fin 1296
+
+/-- Canonical residual last-edge predecessor selector for the base-aware v2.104
+route.
+
+This is deliberately sharper than
+`PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296`:
+it does not merely name a selected predecessor and code.  It also exposes
+residual-local last-edge path data from which the predecessor is projected.  The
+bridge to v2.104 below is only a repacking bridge; this interface still leaves
+the actual selector construction as the next mathematical target. -/
+def PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        deleted X ∈ X ∧
+          deleted X ≠ root ∧
+          X.erase (deleted X) ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          parentOf X ∈ X.erase (deleted X) ∧
+          parentOf X ∈ essential (X.erase (deleted X)) ∧
+          (((X.erase (deleted X)).card = 1 ∧
+              parentOf X = root ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+            ((X.erase (deleted X)).card ≠ 1 ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) ∧
+      ∃ canonicalLastEdgeData :
+        ∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+            PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgeData
+              residual p.1,
+        (∀ residual,
+          essential residual =
+            ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+                physicalClayDimension L root k).filter
+                (fun X => X.erase (deleted X) = residual)).image parentOf) ∧
+        (∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+          residual.card ≠ 1 →
+            p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+              ((canonicalLastEdgeData residual p).predecessor.1)) ∧
+        (∀ residual
+          (p q : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+          (canonicalLastEdgeData residual p).code =
+              (canonicalLastEdgeData residual q).code →
+            (canonicalLastEdgeData residual p).predecessor.1 =
+              (canonicalLastEdgeData residual q).predecessor.1) ∧
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p => (canonicalLastEdgeData residual p).predecessor.1)).card ≤ 1296
+
+/-- Residual-only terminal-predecessor domination target.
+
+This factors the selected last-edge predecessor image bound away from the
+base-aware deletion bookkeeping.  It takes only a residual bucket and an
+essential parent set inside it, then asks for a residual-local selected
+terminal-predecessor menu with an injective `Fin 1296` code.  It is not a raw
+frontier bound, not a residual-cardinality bound, not the local degree bound of
+one fixed plaquette, and not first-shell/root reachability. -/
+def PhysicalPlaquetteGraphResidualTerminalPredecessorDomination1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (residual essential : Finset (ConcretePlaquette physicalClayDimension L)),
+    essential ⊆ residual →
+      ∃ terminalPredMenu : Finset (ConcretePlaquette physicalClayDimension L),
+      ∃ terminalPredOfParent :
+        {p : ConcretePlaquette physicalClayDimension L // p ∈ essential} →
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalPredCode :
+        {q : ConcretePlaquette physicalClayDimension L //
+          q ∈ terminalPredMenu} → Fin 1296,
+        terminalPredMenu ⊆ residual ∧
+        Function.Injective terminalPredCode ∧
+        terminalPredMenu =
+          essential.attach.image (fun p => (terminalPredOfParent p).1) ∧
+        (∀ p, (terminalPredOfParent p).1 ∈ terminalPredMenu) ∧
+        (residual.card ≠ 1 →
+          ∀ p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential},
+            p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+              (terminalPredOfParent p).1) ∧
+        ∀ p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential},
+          ∃ target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual},
+            target.1 = p.1 ∧
+              Nonempty
+                (((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+                  (terminalPredOfParent p) target)
+
+/-- Packing interface for a residual-local selected terminal-predecessor menu.
+
+Unlike `PhysicalPlaquetteGraphResidualTerminalPredecessorDomination1296`, this
+does not claim that arbitrary `essential ⊆ residual` data is last-edge
+dominated.  The selected predecessor menu, last-edge domination, residual path
+evidence, and cardinality bound are explicit inputs; the interface only asks
+for the resulting `Fin 1296` code. -/
+def PhysicalPlaquetteGraphResidualDominatedTerminalPredecessorPacking1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (residual essential terminalPredMenu :
+      Finset (ConcretePlaquette physicalClayDimension L))
+    (terminalPredOfParent :
+      {p : ConcretePlaquette physicalClayDimension L // p ∈ essential} →
+        {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+    essential ⊆ residual →
+    terminalPredMenu ⊆ residual →
+    terminalPredMenu =
+      essential.attach.image (fun p => (terminalPredOfParent p).1) →
+    (∀ p, (terminalPredOfParent p).1 ∈ terminalPredMenu) →
+    (residual.card ≠ 1 →
+      ∀ p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential},
+        p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+          (terminalPredOfParent p).1) →
+    (∀ p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential},
+      ∃ target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual},
+        target.1 = p.1 ∧
+          Nonempty
+            (((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+              (terminalPredOfParent p) target)) →
+    terminalPredMenu.card ≤ 1296 →
+      ∃ terminalPredCode :
+        {q : ConcretePlaquette physicalClayDimension L // q ∈ terminalPredMenu} →
+          Fin 1296,
+        Function.Injective terminalPredCode
+
+/-- Residual-fiber canonical last-edge selected-image bound.
+
+This is the canonical-data strengthening of
+`PhysicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296`.  It is
+indexed by the same v2.121 base-aware bookkeeping data, but it asks first for
+canonical residual last-edge data for each essential parent.  The selected
+terminal predecessor is then the `predecessor` field of that canonical datum.
+The cardinality bound is still an image bound over those selected
+predecessors; it is not root reachability, local degree, raw frontier growth,
+or deleted-vertex adjacency outside the residual. -/
+def PhysicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ canonicalLastEdgeData :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgeData
+              residual p.1,
+        (∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual}),
+          residual.card ≠ 1 →
+            p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+              ((canonicalLastEdgeData residual p).predecessor.1)) ∧
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p =>
+              (canonicalLastEdgeData residual p).predecessor.1)).card ≤ 1296
+
+/-- Residual-fiber canonical terminal-edge selector interface.
+
+This is the v2.135 structural predecessor to
+`PhysicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296`.  It asks
+for residual-local terminal-edge data, including a canonical residual path
+record and a separately selected terminal predecessor.  The selected-image
+bound is still explicit and applies to the terminal predecessor image over each
+residual fiber.  It is not a root-shell reachability bound, local degree bound,
+residual-cardinality bound, raw frontier bound, or deleted-vertex adjacency
+outside the residual. -/
+def PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalEdgeData :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeData
+              residual p.1,
+        (∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual}),
+          residual.card ≠ 1 →
+            p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+              ((terminalEdgeData residual p).terminalPred.1)) ∧
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p =>
+              (terminalEdgeData residual p).terminalPred.1)).card ≤ 1296
+
+/-- Residual-fiber canonical walk terminal-edge selected-image interface.
+
+This is the v2.138 structural predecessor to
+`PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296`.  It asks
+for residual-local canonical walk/path data, extraction of an immediate terminal
+predecessor, residual suffix evidence to the essential parent, and the selected
+terminal-predecessor image bound `<= 1296` over each residual fiber.
+
+It is not a proof from path existence alone, not a root/root-shell reachability
+statement, not a local-degree or residual-cardinality bound, not a raw frontier
+bound, and not merely packing an already bounded menu.  It also does not use
+deleted-vertex adjacency outside the residual as terminal-predecessor data. -/
+def PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ walkTerminalEdgeData :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeData
+              residual p.1,
+        (∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual}),
+          residual.card ≠ 1 →
+            p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+              ((walkTerminalEdgeData residual p).terminalPred.1)) ∧
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p =>
+              (walkTerminalEdgeData residual p).terminalPred.1)).card ≤ 1296
+
+/-- Residual-fiber canonical terminal-suffix selected-image interface.
+
+This is the v2.141 structural predecessor to
+`PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296`.
+It separates residual-local canonical walk/path source data, a prefix to the
+selected terminal predecessor, terminal-suffix evidence, final-edge adjacency
+inside the residual, and the selected terminal-predecessor image bound.
+
+It is not a proof from path existence alone, not root/root-shell reachability,
+not a local-degree or residual-size bound, not a raw frontier bound, and not
+packing an already bounded menu.  It does not use deleted-vertex adjacency
+outside the residual as terminal-predecessor data. -/
+def PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalSuffixData :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixData
+              residual p.1,
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p =>
+              (terminalSuffixData residual p).terminalPred.1)).card ≤ 1296
+
+/-- Residual-fiber terminal-neighbor selector selected-image interface.
+
+This is the v2.147 structural predecessor to
+`PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296`.
+It exposes the residual-indexed selector `terminalNeighborOfParent` as the
+load-bearing object, then separately supplies residual-local evidence for that
+chosen neighbor and the selected terminal-neighbor image-cardinality bound
+`<= 1296` over each v2.121 bookkeeping residual fiber.
+
+The interface deliberately does not treat residual path existence/splitting,
+root/root-shell reachability, local degree of one fixed plaquette, residual
+size, raw frontier growth, deleted-vertex adjacency outside the residual, or
+packing of an already bounded menu as a proof of the selected-image bound. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborOfParent :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalNeighborSelectorEvidence :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+              residual p.1 (terminalNeighborOfParent residual p),
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p =>
+              (terminalNeighborOfParent residual p).1)).card ≤ 1296
+
+/-- Source tags for an ambient residual-value code.
+
+These constructors name the allowed upstream origins for the `Fin 1296` code
+used in `PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientValueCode1296`.
+They are bookkeeping metadata for the interface: the code is meant to come from
+base-zone enumeration, v2.121 bookkeeping tags, or canonical-last-edge/frontier
+coordinates, never from a selected-image cardinality bound. -/
+inductive PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientCodeOrigin where
+  | baseZoneEnumeration
+  | bookkeepingTag
+  | canonicalLastEdgeFrontier
+  deriving DecidableEq
+
+/-- Ambient code data for a single residual fiber.
+
+The value code is defined on the whole residual subtype, not on the already
+selected terminal-neighbor image.  The `ambientOrigin` field records which
+upstream structural source is intended to justify the code in a later proof:
+base-zone enumeration, bookkeeping tags, or canonical-last-edge/frontier
+coordinates. -/
+structure PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientValueCodeData
+    {L : ℕ}
+    (residual : Finset (ConcretePlaquette physicalClayDimension L)) where
+  ambientOrigin :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientCodeOrigin
+  ambientValueCode :
+    {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} → Fin 1296
+
+/-- Bookkeeping-tag code data for a single residual fiber.
+
+This is narrower than
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientValueCodeData`: the
+origin is fixed to the v2.121 bookkeeping-tag route.  The code still lives on
+the whole residual subtype, not on the selected terminal-neighbor image, so it
+cannot be manufactured from a selected-image cardinality bound. -/
+structure PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCodeData
+    {L : ℕ}
+    (residual : Finset (ConcretePlaquette physicalClayDimension L)) where
+  bookkeepingTagCode :
+    {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} → Fin 1296
+
+/-- Selector-independent base-zone coordinate data for bookkeeping residual fibers.
+
+The coordinate lives on the whole residual subtype before any fixed selector,
+selected terminal-neighbor image, or bounded menu is supplied.  The separation
+law is only required on residual values that carry
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData` evidence from
+essential parents. -/
+structure PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinateData
+    {L : ℕ} [NeZero L]
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)) where
+  baseZoneTagSpace :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L), Type
+  baseZoneTagOfResidualValue :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} →
+        baseZoneTagSpace residual
+  baseZoneTagIntoFin1296 :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      baseZoneTagSpace residual → Fin 1296
+  selectedAdmissible_injective :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (a b : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 a)) →
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 b)) →
+      baseZoneTagIntoFin1296 residual (baseZoneTagOfResidualValue residual a) =
+        baseZoneTagIntoFin1296 residual (baseZoneTagOfResidualValue residual b) →
+      a.1 = b.1
+
+/-- Selector-admissible base-zone coordinate injection data.
+
+This is a source-facing carrier for the v2.220 recovery interface.  It exposes
+a selector-independent base-zone coordinate space, a residual-value coordinate
+extractor on the whole residual subtype, an encoding into `Fin 1296`, and the
+selected-admissible injectivity law needed to populate the downstream
+bookkeeping/base-zone tag coordinate data.
+
+The coordinate data is present before any selected image, bounded menu, or
+fixed selector is supplied.  The admissibility hypotheses only restrict the
+injectivity law to residual values carrying
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData` evidence from
+essential parents. -/
+structure PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjectionData
+    {L : ℕ} [NeZero L]
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)) where
+  baseZoneCoordinateSpace :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L), Type
+  baseZoneCoordinateOfResidualValue :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} →
+        baseZoneCoordinateSpace residual
+  baseZoneCoordinateIntoFin1296 :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      baseZoneCoordinateSpace residual → Fin 1296
+  selectorAdmissible_injective :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (a b : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 a)) →
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 b)) →
+      baseZoneCoordinateIntoFin1296 residual
+          (baseZoneCoordinateOfResidualValue residual a) =
+        baseZoneCoordinateIntoFin1296 residual
+          (baseZoneCoordinateOfResidualValue residual b) →
+      a.1 = b.1
+
+/-- Proof-relevant selector-admissible base-zone coordinate source data.
+
+This is strictly upstream of
+`PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjectionData`.
+It carries a realization relation connecting each residual value to its
+base-zone coordinate certificate.  The downstream injection interface is
+obtained by erasing those certificates and retaining only the coordinate,
+`Fin 1296` encoding, and selected-admissible separation law.
+
+The realization layer is the intended place for a future structural proof that
+v2.121 bookkeeping/base-zone data produces selector-independent residual-value
+coordinates.  It is not a selected-image cardinality theorem, does not
+manufacture codes by `finsetCodeOfCardLe`, and does not use root-shell,
+local-neighbor, local-displacement, parent-relative `terminalNeighborCode`,
+deleted-X, empirical, or v2.161 cycle routes. -/
+structure PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSourceData
+    {L : ℕ} [NeZero L]
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)) where
+  baseZoneCoordinateSpace :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L), Type
+  baseZoneCoordinateRealizes :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} →
+        baseZoneCoordinateSpace residual → Prop
+  baseZoneCoordinateOfResidualValue :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+        {c : baseZoneCoordinateSpace residual //
+          baseZoneCoordinateRealizes residual q c}
+  baseZoneCoordinateIntoFin1296 :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      baseZoneCoordinateSpace residual → Fin 1296
+  selectorAdmissible_realized_injective :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (a b : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual})
+      (ca cb : baseZoneCoordinateSpace residual),
+      baseZoneCoordinateRealizes residual a ca →
+      baseZoneCoordinateRealizes residual b cb →
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 a)) →
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 b)) →
+      baseZoneCoordinateIntoFin1296 residual ca =
+        baseZoneCoordinateIntoFin1296 residual cb →
+      a.1 = b.1
+
+/-- Proof-relevant base-zone coordinate origin/separation data.
+
+This carrier sits strictly upstream of
+`PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSourceData`.
+It separates the origin/certificate producing a residual bookkeeping/base-zone
+coordinate from the coordinate value later consumed by the source interface.
+The bridge to the source interface erases the origin certificates into a
+realization relation.
+
+The origin layer is selector-independent and lives on the whole residual
+subtype.  It is not a selected-image cardinality argument, bounded-menu
+argument, empirical search, `finsetCodeOfCardLe` construction, root-shell,
+local-neighbor, local-displacement, parent-relative `terminalNeighborCode`,
+deleted-X shortcut, or v2.161 cycle route. -/
+structure PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparationData
+    {L : ℕ} [NeZero L]
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)) where
+  baseZoneCoordinateSpace :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L), Type
+  baseZoneCoordinateOrigin :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} → Type
+  baseZoneCoordinateOfOrigin :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+        baseZoneCoordinateOrigin residual q →
+          baseZoneCoordinateSpace residual
+  baseZoneCoordinateOrigin_realizes :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+        baseZoneCoordinateOrigin residual q → Prop
+  baseZoneCoordinateOriginOfResidualValue :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+        {origin : baseZoneCoordinateOrigin residual q //
+          baseZoneCoordinateOrigin_realizes residual q origin}
+  baseZoneCoordinateIntoFin1296 :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      baseZoneCoordinateSpace residual → Fin 1296
+  selectorAdmissible_origin_injective :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (a b : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual})
+      (oa : baseZoneCoordinateOrigin residual a)
+      (ob : baseZoneCoordinateOrigin residual b),
+      baseZoneCoordinateOrigin_realizes residual a oa →
+      baseZoneCoordinateOrigin_realizes residual b ob →
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 a)) →
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 b)) →
+      baseZoneCoordinateIntoFin1296 residual
+          (baseZoneCoordinateOfOrigin residual a oa) =
+        baseZoneCoordinateIntoFin1296 residual
+          (baseZoneCoordinateOfOrigin residual b ob) →
+      a.1 = b.1
+
+/-- Concrete base-zone origin certificate source data.
+
+This carrier sits strictly upstream of
+`PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparationData`.
+It separates the provenance source for an origin certificate from the erased
+certificate consumed by the v2.224 realization/separation layer.  The source is
+selector-independent and lives on the whole residual subtype; selected
+admissibility appears only in the certificate-level separation law.
+
+It is not a selected-image cardinality argument, bounded-menu argument,
+empirical search, `finsetCodeOfCardLe` construction, root-shell, local-neighbor,
+local-displacement, parent-relative `terminalNeighborCode`, deleted-X shortcut,
+or v2.161 cycle route. -/
+structure PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSourceData
+    {L : ℕ} [NeZero L]
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)) where
+  baseZoneCoordinateSpace :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L), Type
+  baseZoneOriginCertificate :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} → Type
+  baseZoneOriginCertificateSource :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} → Type
+  baseZoneOriginCertificateOfSource :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+        baseZoneOriginCertificateSource residual q →
+          baseZoneOriginCertificate residual q
+  baseZoneOriginSourceOfResidualValue :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+        baseZoneOriginCertificateSource residual q
+  baseZoneOriginSource_valid :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+        baseZoneOriginCertificateSource residual q → Prop
+  baseZoneOriginSourceOfResidualValue_valid :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+        baseZoneOriginSource_valid residual q
+          (baseZoneOriginSourceOfResidualValue residual q)
+  baseZoneOriginCertificate_realizes :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+        baseZoneOriginCertificate residual q → Prop
+  baseZoneOriginCertificateOfSource_realizes :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+        (source : baseZoneOriginCertificateSource residual q) →
+          baseZoneOriginSource_valid residual q source →
+            baseZoneOriginCertificate_realizes residual q
+              (baseZoneOriginCertificateOfSource residual q source)
+  baseZoneCoordinateOfCertificate :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+        baseZoneOriginCertificate residual q →
+          baseZoneCoordinateSpace residual
+  baseZoneCoordinateIntoFin1296 :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      baseZoneCoordinateSpace residual → Fin 1296
+  selectorAdmissible_certificate_injective :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (a b : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual})
+      (ca : baseZoneOriginCertificate residual a)
+      (cb : baseZoneOriginCertificate residual b),
+      baseZoneOriginCertificate_realizes residual a ca →
+      baseZoneOriginCertificate_realizes residual b cb →
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 a)) →
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 b)) →
+      baseZoneCoordinateIntoFin1296 residual
+          (baseZoneCoordinateOfCertificate residual a ca) =
+      baseZoneCoordinateIntoFin1296 residual
+          (baseZoneCoordinateOfCertificate residual b cb) →
+      a.1 = b.1
+
+/-- Selector-independent residual-value code separation data.
+
+This carrier is strictly upstream of
+`PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealizationData`.
+It exposes only the residual-value code into `Fin 1296` on the whole residual
+subtype and the selected-admissible equality-reflection law needed to populate a
+trivial realization layer.
+
+It is not a selected-image cardinality argument, bounded-menu argument,
+empirical search, `finsetCodeOfCardLe` construction, root-shell, local-neighbor,
+local-displacement, parent-relative `terminalNeighborCode`, deleted-X shortcut,
+or v2.161 cycle route. -/
+structure
+  PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData
+    {L : ℕ} [NeZero L]
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)) where
+  residualValueCode :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} →
+        Fin 1296
+  selectorAdmissible_code_injective :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (a b : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 a)) →
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 b)) →
+      residualValueCode residual a =
+        residualValueCode residual b →
+      a.1 = b.1
+
+/-- Proof-relevant residual-value code realization data.
+
+This carrier is strictly upstream of
+`PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSourceData`.  It
+exposes a selector-independent realization/certificate type for every value of
+the whole residual subtype, a distinguished valid realization, code extraction
+from realizations into `Fin 1296`, realization-choice stability, and
+selected-admissible equality-reflection for values carrying terminal-neighbor
+selector data from essential parents.
+
+It is not a selected-image cardinality argument, bounded-menu argument,
+empirical search, `finsetCodeOfCardLe` construction, root-shell, local-neighbor,
+local-displacement, parent-relative `terminalNeighborCode`, deleted-X shortcut,
+or v2.161 cycle route. -/
+structure
+  PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealizationData
+    {L : ℕ} [NeZero L]
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)) where
+  residualValueCodeRealization :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} → Type
+  residualValueCodeRealizationOfValue :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      residualValueCodeRealization residual q
+  residualValueCodeRealization_valid :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      residualValueCodeRealization residual q → Prop
+  residualValueCodeRealizationOfValue_valid :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      residualValueCodeRealization_valid residual q
+        (residualValueCodeRealizationOfValue residual q)
+  residualValueCodeOfRealization :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      residualValueCodeRealization residual q → Fin 1296
+  residualValueCode_realization_ext :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual})
+      (s t : residualValueCodeRealization residual q),
+      residualValueCodeRealization_valid residual q s →
+      residualValueCodeRealization_valid residual q t →
+      residualValueCodeOfRealization residual q s =
+        residualValueCodeOfRealization residual q t
+  selectorAdmissible_realizedCode_injective :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (a b : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 a)) →
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 b)) →
+      residualValueCodeOfRealization residual a
+          (residualValueCodeRealizationOfValue residual a) =
+        residualValueCodeOfRealization residual b
+          (residualValueCodeRealizationOfValue residual b) →
+      a.1 = b.1
+
+/-- Proof-relevant residual-value code source data.
+
+This carrier is strictly upstream of
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData`.
+It exposes a source/certificate type for every value of the whole residual
+subtype, a distinguished valid source witness, a code extracted from valid
+sources into `Fin 1296`, and selected-admissible equality-reflection for values
+carrying terminal-neighbor selector data from essential parents.
+
+It is not a selected-image cardinality argument, bounded-menu argument,
+empirical search, `finsetCodeOfCardLe` construction, root-shell, local-neighbor,
+local-displacement, parent-relative `terminalNeighborCode`, deleted-X shortcut,
+or v2.161 cycle route. -/
+structure
+  PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSourceData
+    {L : ℕ} [NeZero L]
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)) where
+  residualValueCodeSource :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} → Type
+  residualValueCodeSourceOfValue :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      residualValueCodeSource residual q
+  residualValueSource_valid :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      residualValueCodeSource residual q → Prop
+  residualValueCodeSourceOfValue_valid :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      residualValueSource_valid residual q
+        (residualValueCodeSourceOfValue residual q)
+  residualValueCodeOfSource :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      residualValueCodeSource residual q → Fin 1296
+  residualValueCode_source_ext :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual})
+      (s t : residualValueCodeSource residual q),
+      residualValueSource_valid residual q s →
+      residualValueSource_valid residual q t →
+      residualValueCodeOfSource residual q s =
+        residualValueCodeOfSource residual q t
+  selectorAdmissible_sourceCode_injective :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (a b : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 a)) →
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 b)) →
+      residualValueCodeOfSource residual a
+          (residualValueCodeSourceOfValue residual a) =
+        residualValueCodeOfSource residual b
+          (residualValueCodeSourceOfValue residual b) →
+      a.1 = b.1
+
+/-- Selector-independent residual-value certificate-code injection data.
+
+This carrier is strictly upstream of
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSourceData`.
+It exposes only a code into `Fin 1296` on the whole residual subtype and the
+selected-admissible equality-reflection principle needed by the richer source
+carrier.
+
+It is not a selected-image cardinality argument, bounded-menu argument,
+empirical search, `finsetCodeOfCardLe` construction, root-shell, local-neighbor,
+local-displacement, parent-relative `terminalNeighborCode`, deleted-X shortcut,
+or v2.161 cycle route. -/
+structure
+  PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData
+    {L : ℕ} [NeZero L]
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)) where
+  baseZoneOriginCertificateCode :
+    ∀ residual : Finset (ConcretePlaquette physicalClayDimension L),
+      {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} →
+        Fin 1296
+  selectorAdmissible_code_injective :
+    ∀ (residual : Finset (ConcretePlaquette physicalClayDimension L))
+      (a b : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 a)) →
+      (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual},
+        Nonempty
+          (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 b)) →
+      baseZoneOriginCertificateCode residual a =
+        baseZoneOriginCertificateCode residual b →
+      a.1 = b.1
+
+/-- Residual-fiber terminal-neighbor selector source interface.
+
+This is the upstream v2.181 source contract for the selector part of
+`PhysicalPlaquetteGraphResidualFiberBookkeepingTagMap1296`.  It exposes only
+the residual-local `terminalNeighborOfParent` selector and the corresponding
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`.
+
+It deliberately does not carry a residual-value tag map, selected-value
+separation, selected-image cardinality, or a code manufactured by
+`finsetCodeOfCardLe`.  It is also not justified here by residual paths alone,
+root-shell reachability alone, local degree, residual size, raw frontier,
+deleted-vertex adjacency, local displacement codes, parent-relative
+`terminalNeighborCode` equality, empirical search, or post-hoc choices from a
+current deletion witness. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborOfParent :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalNeighborSelectorEvidence :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+              residual p.1 (terminalNeighborOfParent residual p),
+        True
+
+/-- Bookkeeping tag-code interface relative to a fixed terminal-neighbor selector.
+
+This is separated from
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296` so the
+selector-source interface remains selector-only.  Given the same v2.121
+bookkeeping hypotheses, a fixed residual-local `terminalNeighborOfParent`, and
+its selector evidence, this contract supplies the residual-subtype
+bookkeeping-tag map and selected-value separation needed by
+`PhysicalPlaquetteGraphResidualFiberBookkeepingTagMap1296`.
+
+The code lives on the whole residual subtype; it is not derived from
+selected-image cardinality, `finsetCodeOfCardLe`, local displacement codes,
+parent-relative `terminalNeighborCode` equality, empirical search, or the
+v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBookkeepingTagCodeForSelector1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+    (terminalNeighborOfParent :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+    (∀ residual,
+      (p : {p : ConcretePlaquette physicalClayDimension L //
+        p ∈ essential residual}) →
+        PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+          residual p.1 (terminalNeighborOfParent residual p)) →
+      ∃ bookkeepingTagCode :
+        ∀ residual,
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} →
+            Fin 1296,
+        ∀ residual
+          (p q : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}),
+          bookkeepingTagCode residual (terminalNeighborOfParent residual p) =
+            bookkeepingTagCode residual (terminalNeighborOfParent residual q) →
+            (terminalNeighborOfParent residual p).1 =
+              (terminalNeighborOfParent residual q).1
+
+/-- Residual bookkeeping/base-zone coordinate source for the tag-space injection
+route.  The source returns named base-zone coordinate data on the whole
+residual subtype before any selected image, bounded menu, or fixed selector code
+is supplied; admissibility only restricts the separation statement to residual
+values carrying terminal-neighbor selector evidence from essential parents.
+
+This interface does not obtain its code from selected-image cardinality, bounded
+menu cardinality, empirical search, `finsetCodeOfCardLe`, root-shell codes,
+local neighbor or displacement codes, parent-relative `terminalNeighborCode`
+equality, deleted-vertex adjacency outside the residual, or the v2.161
+selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      Nonempty
+        (PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinateData
+          (L := L) essential)
+
+/-- Selector-admissible residual bookkeeping/base-zone coordinate injection
+source.
+
+This upstream interface isolates the source of the v2.218 base-zone coordinate
+data.  For each v2.121 bookkeeping residual fiber it supplies coordinate data
+on the whole residual subtype before any selected image, bounded menu, or fixed
+selector is supplied, together with selected-admissible injectivity for values
+carrying terminal-neighbor selector evidence from essential parents.
+
+It does not obtain its code from selected-image cardinality, bounded menu
+cardinality, empirical search, `finsetCodeOfCardLe`, root-shell codes, local
+neighbor or displacement codes, parent-relative `terminalNeighborCode`
+equality, deleted-vertex adjacency outside the residual, or the v2.161
+selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      Nonempty
+        (PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjectionData
+          (L := L) essential)
+
+/-- Selector-admissible residual bookkeeping/base-zone coordinate source.
+
+This interface is stricter than the v2.220 injection interface: it exposes a
+proof-relevant realization relation tying each residual value to a base-zone
+coordinate certificate before the certificate is erased into coordinate
+injection data.  It is therefore an origin/source contract, not merely a
+renaming of
+`PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296`.
+
+It does not obtain its code from selected-image cardinality, bounded menu
+cardinality, empirical search, `finsetCodeOfCardLe`, root-shell codes, local
+neighbor or displacement codes, parent-relative `terminalNeighborCode`
+equality, deleted-vertex adjacency outside the residual, or the v2.161
+selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      Nonempty
+        (PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSourceData
+          (L := L) essential)
+
+/-- Proof-relevant base-zone coordinate realization/separation interface.
+
+This is an upstream source contract for
+`PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296`.
+It provides a selector-independent origin/certificate layer for residual
+bookkeeping/base-zone coordinates on the whole residual subtype.  The
+downstream source interface should be obtained only by erasing these origin
+certificates into coordinate realizations.
+
+It does not obtain its code or separation law from selected-image cardinality,
+bounded menu cardinality, empirical search, `finsetCodeOfCardLe`, root-shell
+codes, local neighbor or displacement codes, parent-relative
+`terminalNeighborCode` equality, deleted-vertex adjacency outside the residual,
+or the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      Nonempty
+        (PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparationData
+          (L := L) essential)
+
+/-- Concrete base-zone origin certificate source interface.
+
+This is upstream of
+`PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296`.
+It exposes provenance/certificate-source data that can be erased into the
+v2.224 origin layer, rather than assuming the origin layer directly.
+
+It does not obtain its code or separation law from selected-image cardinality,
+bounded menu cardinality, empirical search, `finsetCodeOfCardLe`, root-shell
+codes, local neighbor or displacement codes, parent-relative
+`terminalNeighborCode` equality, deleted-vertex adjacency outside the residual,
+or the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      Nonempty
+        (PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSourceData
+          (L := L) essential)
+
+/-- Selector-independent residual-value code separation interface.
+
+This is strictly upstream of
+`PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296`.
+It supplies the actual code into `Fin 1296` on the whole residual subtype and
+the selected-admissible equality-reflection law for values carrying
+terminal-neighbor selector data from essential parents.  The downstream
+realization interface is obtained by adding a trivial `Unit` realization layer.
+
+The interface does not obtain its code from selected-image cardinality, bounded
+menu cardinality, empirical search, `finsetCodeOfCardLe`, root-shell codes,
+local neighbor or displacement codes, parent-relative `terminalNeighborCode`
+equality, deleted-X shortcuts, or the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      Nonempty
+        (PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData
+          (L := L) essential)
+
+/-- Realization-level source for residual-value codes.
+
+This is strictly upstream of
+`PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296`.  It
+supplies proof-relevant realization/certificate data for residual-value codes
+into `Fin 1296` on the whole residual subtype, together with selected-admissible
+equality-reflection for values carrying terminal-neighbor selector data from
+essential parents.
+
+The interface does not obtain its code from selected-image cardinality, bounded
+menu cardinality, empirical search, `finsetCodeOfCardLe`, root-shell codes,
+local neighbor or displacement codes, parent-relative `terminalNeighborCode`
+equality, deleted-X shortcuts, or the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      Nonempty
+        (PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealizationData
+          (L := L) essential)
+
+/-- Proof-relevant residual-value code source interface.
+
+This is strictly upstream of
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296`.
+It supplies a selector-independent source layer for residual-value codes into
+`Fin 1296` on the whole residual subtype, together with selected-admissible
+equality-reflection for values carrying terminal-neighbor selector data from
+essential parents.
+
+The interface does not obtain its code from selected-image cardinality, bounded
+menu cardinality, empirical search, `finsetCodeOfCardLe`, root-shell codes,
+local neighbor or displacement codes, parent-relative `terminalNeighborCode`
+equality, deleted-X shortcuts, or the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      Nonempty
+        (PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSourceData
+          (L := L) essential)
+
+/-- Selector-independent base-zone origin certificate code-injection interface.
+
+This is the focused upstream source for
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296`.  It
+provides only a residual-value code into `Fin 1296` on the whole residual
+subtype and selected-admissible equality-reflection for values carrying
+terminal-neighbor selector data from essential parents. -/
+def PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      Nonempty
+        (PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData
+          (L := L) essential)
+
+/-- Residual bookkeeping/base-zone tag-space injection source for the
+selector-admissible bookkeeping-tag route.  The tag space and extractor live on
+the whole residual subtype before any selected image or bounded menu is
+introduced; admissibility only restricts the separation statement to residual
+values carrying terminal-neighbor selector evidence from essential parents.
+
+This interface does not obtain its code from selected-image cardinality, bounded
+menu cardinality, empirical search, `finsetCodeOfCardLe`, root-shell codes,
+local neighbor or displacement codes, parent-relative `terminalNeighborCode`
+equality, deleted-vertex adjacency outside the residual, or the v2.161
+selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBookkeepingTagSpaceInjection1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ bookkeepingTagSpace : ∀ residual, Type,
+      ∃ bookkeepingTagOfResidualVertex :
+        ∀ residual,
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} →
+            bookkeepingTagSpace residual,
+      ∃ bookkeepingTagIntoFin1296 :
+        ∀ residual, bookkeepingTagSpace residual → Fin 1296,
+        ∀ residual
+          (a b : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+          (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual},
+            Nonempty
+              (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+                residual p.1 a)) →
+          (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual},
+            Nonempty
+              (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+                residual p.1 b)) →
+          bookkeepingTagIntoFin1296 residual
+              (bookkeepingTagOfResidualVertex residual a) =
+            bookkeepingTagIntoFin1296 residual
+              (bookkeepingTagOfResidualVertex residual b) →
+          a.1 = b.1
+
+/-- Selector-admissible residual bookkeeping/base-zone tag injection source.
+
+This is the v2.209 interface source for admissible-value separation.  For the
+v2.121 bookkeeping residual fibers, it exposes bookkeeping/base-zone tag code
+data on the whole residual subtype before any fixed
+`terminalNeighborOfParent` selector, selected image, or bounded menu is
+supplied.  Its separation clause only applies to residual values carrying
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData` evidence
+from essential parents.
+
+This is deliberately not a selected-image cardinality theorem.  It does not
+manufacture the code by `finsetCodeOfCardLe`, bounded menu cardinality,
+empirical search, root-shell codes, local neighbor or displacement codes,
+parent-relative `terminalNeighborCode` equality, deleted-vertex adjacency
+outside the residual, or the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBookkeepingTagInjection1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ bookkeepingTagCodeData :
+        ∀ residual,
+          PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCodeData
+            residual,
+        ∀ residual
+          (a b : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+          (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual},
+            Nonempty
+              (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+                residual p.1 a)) →
+          (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual},
+            Nonempty
+              (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+                residual p.1 b)) →
+          (bookkeepingTagCodeData residual).bookkeepingTagCode a =
+            (bookkeepingTagCodeData residual).bookkeepingTagCode b →
+      a.1 = b.1
+
+/-- A selector-admissible base-zone coordinate injection source supplies the
+bookkeeping/base-zone tag coordinate interface by projecting its coordinate
+space, residual-value extractor, `Fin 1296` encoding, and admissible
+injectivity law into the downstream carrier. -/
+theorem physicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296_of_residualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+    (hinjection :
+      PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296) :
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨coordinateInjectionData⟩ :=
+    hinjection root k deleted parentOf essential hchoice himage hessential_subset
+  exact ⟨
+    { baseZoneTagSpace :=
+        coordinateInjectionData.baseZoneCoordinateSpace
+      baseZoneTagOfResidualValue :=
+        coordinateInjectionData.baseZoneCoordinateOfResidualValue
+      baseZoneTagIntoFin1296 :=
+        coordinateInjectionData.baseZoneCoordinateIntoFin1296
+      selectedAdmissible_injective :=
+        coordinateInjectionData.selectorAdmissible_injective }⟩
+
+/-- A proof-relevant base-zone coordinate source supplies the v2.220
+selector-admissible coordinate injection interface by erasing realization
+certificates. -/
+theorem physicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296_of_residualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+    (hsource :
+      PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296) :
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨sourceData⟩ :=
+    hsource root k deleted parentOf essential hchoice himage hessential_subset
+  refine ⟨
+    { baseZoneCoordinateSpace :=
+        sourceData.baseZoneCoordinateSpace
+      baseZoneCoordinateOfResidualValue :=
+        fun residual q => (sourceData.baseZoneCoordinateOfResidualValue residual q).1
+      baseZoneCoordinateIntoFin1296 :=
+        sourceData.baseZoneCoordinateIntoFin1296
+      selectorAdmissible_injective := ?_ }⟩
+  intro residual a b ha hb hcode
+  exact
+    sourceData.selectorAdmissible_realized_injective residual a b
+      ((sourceData.baseZoneCoordinateOfResidualValue residual a).1)
+      ((sourceData.baseZoneCoordinateOfResidualValue residual b).1)
+      ((sourceData.baseZoneCoordinateOfResidualValue residual a).2)
+      ((sourceData.baseZoneCoordinateOfResidualValue residual b).2)
+      ha hb hcode
+
+/-- A proof-relevant base-zone coordinate origin/separation source supplies the
+v2.222 selector-admissible coordinate source interface by erasing origin
+certificates into coordinate realizations. -/
+theorem physicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296_of_baseZoneCoordinateRealizationSeparation1296
+    (hrealization :
+      PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296) :
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨realizationData⟩ :=
+    hrealization root k deleted parentOf essential hchoice himage hessential_subset
+  refine ⟨
+    { baseZoneCoordinateSpace :=
+        realizationData.baseZoneCoordinateSpace
+      baseZoneCoordinateRealizes := ?_
+      baseZoneCoordinateOfResidualValue := ?_
+      baseZoneCoordinateIntoFin1296 :=
+        realizationData.baseZoneCoordinateIntoFin1296
+      selectorAdmissible_realized_injective := ?_ }⟩
+  · intro residual q c
+    exact
+      ∃ origin : realizationData.baseZoneCoordinateOrigin residual q,
+        realizationData.baseZoneCoordinateOrigin_realizes residual q origin ∧
+          realizationData.baseZoneCoordinateOfOrigin residual q origin = c
+  · intro residual q
+    let origin := realizationData.baseZoneCoordinateOriginOfResidualValue residual q
+    exact
+      ⟨realizationData.baseZoneCoordinateOfOrigin residual q origin.1,
+        ⟨origin.1, origin.2, rfl⟩⟩
+  · intro residual a b ca cb ha_real hb_real ha hb hcode
+    rcases ha_real with ⟨oa, hoa, hca⟩
+    rcases hb_real with ⟨ob, hob, hcb⟩
+    exact
+      realizationData.selectorAdmissible_origin_injective residual a b oa ob
+        hoa hob ha hb (by
+          simpa [hca, hcb] using hcode)
+
+/-- A concrete base-zone origin certificate source supplies the v2.224
+realization/separation interface by erasing source provenance into origin
+certificates. -/
+theorem physicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296_of_baseZoneOriginCertificateSource1296
+    (hsource :
+      PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296) :
+    PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨sourceData⟩ :=
+    hsource root k deleted parentOf essential hchoice himage hessential_subset
+  refine ⟨
+    { baseZoneCoordinateSpace :=
+        sourceData.baseZoneCoordinateSpace
+      baseZoneCoordinateOrigin :=
+        sourceData.baseZoneOriginCertificate
+      baseZoneCoordinateOfOrigin :=
+        sourceData.baseZoneCoordinateOfCertificate
+      baseZoneCoordinateOrigin_realizes :=
+        sourceData.baseZoneOriginCertificate_realizes
+      baseZoneCoordinateOriginOfResidualValue := ?_
+      baseZoneCoordinateIntoFin1296 :=
+        sourceData.baseZoneCoordinateIntoFin1296
+      selectorAdmissible_origin_injective := ?_ }⟩
+  · intro residual q
+    let source := sourceData.baseZoneOriginSourceOfResidualValue residual q
+    exact
+      ⟨sourceData.baseZoneOriginCertificateOfSource residual q source,
+        sourceData.baseZoneOriginCertificateOfSource_realizes residual q source
+          (sourceData.baseZoneOriginSourceOfResidualValue_valid residual q)⟩
+  · intro residual a b oa ob hoa hob ha hb hcode
+    exact
+      sourceData.selectorAdmissible_certificate_injective residual a b oa ob
+        hoa hob ha hb hcode
+
+/-- A selector-independent residual-value code separation theorem supplies the
+v2.232 realization layer by adding a trivial `Unit` realization certificate. -/
+theorem physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296_of_baseZoneResidualValueCodeSeparation1296
+    (hseparation :
+      PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296) :
+    PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨separationData⟩ :=
+    hseparation root k deleted parentOf essential hchoice himage
+      hessential_subset
+  refine ⟨
+    { residualValueCodeRealization := fun _ _ => Unit
+      residualValueCodeRealizationOfValue := fun _ _ => ()
+      residualValueCodeRealization_valid := fun _ _ _ => True
+      residualValueCodeRealizationOfValue_valid := fun _ _ => trivial
+      residualValueCodeOfRealization := fun residual q _ =>
+        separationData.residualValueCode residual q
+      residualValueCode_realization_ext := ?_
+      selectorAdmissible_realizedCode_injective := ?_ }⟩
+  · intro residual q s t hs ht
+    rfl
+  · intro residual a b ha hb hcode
+    exact
+      separationData.selectorAdmissible_code_injective residual a b ha hb
+        hcode
+
+/-- A residual-value code realization layer supplies the v2.230 source layer by
+erasing realization certificates into source witnesses. -/
+theorem physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296_of_baseZoneResidualValueCodeRealization1296
+    (hrealization :
+      PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296) :
+    PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨realizationData⟩ :=
+    hrealization root k deleted parentOf essential hchoice himage hessential_subset
+  refine ⟨
+    { residualValueCodeSource :=
+        realizationData.residualValueCodeRealization
+      residualValueCodeSourceOfValue :=
+        realizationData.residualValueCodeRealizationOfValue
+      residualValueSource_valid :=
+        realizationData.residualValueCodeRealization_valid
+      residualValueCodeSourceOfValue_valid :=
+        realizationData.residualValueCodeRealizationOfValue_valid
+      residualValueCodeOfSource :=
+        realizationData.residualValueCodeOfRealization
+      residualValueCode_source_ext :=
+        realizationData.residualValueCode_realization_ext
+      selectorAdmissible_sourceCode_injective := ?_ }⟩
+  intro residual a b ha hb hcode
+  exact
+    realizationData.selectorAdmissible_realizedCode_injective
+      residual a b ha hb hcode
+
+/-- A proof-relevant residual-value code source supplies the focused
+base-zone origin certificate code-injection interface by forgetting the source
+layer and retaining only the distinguished residual-value code and its
+selected-admissible equality-reflection law. -/
+theorem physicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296_of_baseZoneResidualValueCodeSource1296
+    (hsource :
+      PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296) :
+    PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨sourceData⟩ :=
+    hsource root k deleted parentOf essential hchoice himage hessential_subset
+  refine ⟨
+    { baseZoneOriginCertificateCode := fun residual q =>
+        sourceData.residualValueCodeOfSource residual q
+          (sourceData.residualValueCodeSourceOfValue residual q)
+      selectorAdmissible_code_injective := ?_ }⟩
+  intro residual a b ha hb hcode
+  exact
+    sourceData.selectorAdmissible_sourceCode_injective residual a b ha hb hcode
+
+/-- A selector-independent residual-value certificate code supplies the richer
+base-zone origin certificate source interface by using `Fin 1296` as the
+coordinate space and trivial origin certificates. -/
+theorem physicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296_of_baseZoneOriginCertificateCodeInjection1296
+    (hcode :
+      PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296) :
+    PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨codeData⟩ :=
+    hcode root k deleted parentOf essential hchoice himage hessential_subset
+  refine ⟨
+    { baseZoneCoordinateSpace := fun _ => Fin 1296
+      baseZoneOriginCertificate := fun _ _ => Unit
+      baseZoneOriginCertificateSource := fun _ _ => Unit
+      baseZoneOriginCertificateOfSource := fun _ _ _ => ()
+      baseZoneOriginSourceOfResidualValue := fun _ _ => ()
+      baseZoneOriginSource_valid := fun _ _ _ => True
+      baseZoneOriginSourceOfResidualValue_valid := fun _ _ => trivial
+      baseZoneOriginCertificate_realizes := fun _ _ _ => True
+      baseZoneOriginCertificateOfSource_realizes := fun _ _ _ _ => trivial
+      baseZoneCoordinateOfCertificate := fun residual q _ =>
+        codeData.baseZoneOriginCertificateCode residual q
+      baseZoneCoordinateIntoFin1296 := fun _ code => code
+      selectorAdmissible_certificate_injective := ?_ }⟩
+  intro residual a b _ca _cb _hca _hcb ha hb hcode_eq
+  exact
+    codeData.selectorAdmissible_code_injective residual a b ha hb hcode_eq
+
+/-- A selector-independent base-zone coordinate source supplies the residual
+bookkeeping tag-space injection interface by projecting its tag space,
+residual-value extractor, `Fin 1296` encoding, and selected-admissible
+injectivity law. -/
+theorem physicalPlaquetteGraphResidualFiberBookkeepingTagSpaceInjection1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
+    (hcoordinate :
+      PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296) :
+    PhysicalPlaquetteGraphResidualFiberBookkeepingTagSpaceInjection1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨coordinateData⟩ :=
+    hcoordinate root k deleted parentOf essential hchoice himage hessential_subset
+  exact ⟨coordinateData.baseZoneTagSpace,
+    coordinateData.baseZoneTagOfResidualValue,
+    coordinateData.baseZoneTagIntoFin1296,
+    coordinateData.selectedAdmissible_injective⟩
+
+/-- A residual bookkeeping tag space injection supplies the selector-admissible
+bookkeeping tag injection interface by composing its residual-value tag
+extractor with the fixed `Fin 1296` encoding. -/
+theorem physicalPlaquetteGraphResidualFiberSelectorAdmissibleBookkeepingTagInjection1296_of_residualFiberBookkeepingTagSpaceInjection1296
+    (htagSpace :
+      PhysicalPlaquetteGraphResidualFiberBookkeepingTagSpaceInjection1296) :
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBookkeepingTagInjection1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨bookkeepingTagSpace, bookkeepingTagOfResidualVertex,
+      bookkeepingTagIntoFin1296, hseparates⟩ :=
+    htagSpace root k deleted parentOf essential hchoice himage hessential_subset
+  let bookkeepingTagCodeData :
+      ∀ residual,
+        PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCodeData
+          residual :=
+    fun residual =>
+      { bookkeepingTagCode := fun q =>
+          bookkeepingTagIntoFin1296 residual
+            (bookkeepingTagOfResidualVertex residual q) }
+  refine ⟨bookkeepingTagCodeData, ?_⟩
+  intro residual a b ha hb hcode
+  exact hseparates residual a b ha hb hcode
+
+/-- Selector-admissible residual-value bookkeeping tag separation source.
+
+This is the admissible-value separation interface isolated by v2.206.  For the
+v2.121 bookkeeping residual fibers, it exposes bookkeeping/base-zone tag code
+data on the whole residual subtype before any fixed `terminalNeighborOfParent`
+selector is supplied.  Its separation clause applies to residual values that
+are admissible through `PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`
+evidence from essential parents.
+
+This is deliberately not a selected-image cardinality theorem.  It does not
+manufacture the code by `finsetCodeOfCardLe`, bounded menu cardinality,
+empirical search, root-shell codes, local neighbor or displacement codes,
+parent-relative `terminalNeighborCode` equality, deleted-vertex adjacency
+outside the residual, or the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBookkeepingTagAdmissibleValueSeparation1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ bookkeepingTagCodeData :
+        ∀ residual,
+          PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCodeData
+            residual,
+        ∀ residual
+          (a b : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+          (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual},
+            Nonempty
+              (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+                residual p.1 a)) →
+          (∃ p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual},
+            Nonempty
+              (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+                residual p.1 b)) →
+          (bookkeepingTagCodeData residual).bookkeepingTagCode a =
+            (bookkeepingTagCodeData residual).bookkeepingTagCode b →
+          a.1 = b.1
+
+/-- A selector-admissible bookkeeping-tag injection source supplies the
+admissible-value separation interface by direct repackaging.
+
+The source already carries a residual-subtype bookkeeping/base-zone tag code
+before any fixed selector, selected image, or bounded menu is supplied, and its
+separation law is exactly the selected-admissible residual-value separation
+needed downstream. -/
+theorem physicalPlaquetteGraphResidualFiberBookkeepingTagAdmissibleValueSeparation1296_of_residualFiberSelectorAdmissibleBookkeepingTagInjection1296
+    (hinjection :
+      PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBookkeepingTagInjection1296) :
+    PhysicalPlaquetteGraphResidualFiberBookkeepingTagAdmissibleValueSeparation1296 := by
+  exact hinjection
+
+/-- Structural residual bookkeeping/base-zone coordinate source.
+
+This is the coordinate-first interface isolated by v2.203.  For the v2.121
+bookkeeping residual fibers, it exposes bookkeeping/base-zone tag code data on
+the whole residual subtype before any fixed `terminalNeighborOfParent` selector
+or selector evidence is supplied.  The later separation clause may then be
+restricted to selected terminal-neighbor values.
+
+This interface is deliberately not a selected-image cardinality theorem.  It
+does not manufacture the code by `finsetCodeOfCardLe`, bounded menu
+cardinality, empirical search, root-shell codes, local neighbor or displacement
+codes, parent-relative `terminalNeighborCode` equality, deleted-vertex
+adjacency outside the residual, or the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBookkeepingTagCoordinate1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ bookkeepingTagCodeData :
+        ∀ residual,
+          PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCodeData
+            residual,
+        ∀ (terminalNeighborOfParent :
+            ∀ residual,
+              (p : {p : ConcretePlaquette physicalClayDimension L //
+                p ∈ essential residual}) →
+                {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}),
+          (∀ residual,
+            (p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual}) →
+              PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+                residual p.1 (terminalNeighborOfParent residual p)) →
+          ∀ residual
+            (p q : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual}),
+            (bookkeepingTagCodeData residual).bookkeepingTagCode
+                (terminalNeighborOfParent residual p) =
+              (bookkeepingTagCodeData residual).bookkeepingTagCode
+                (terminalNeighborOfParent residual q) →
+              (terminalNeighborOfParent residual p).1 =
+                (terminalNeighborOfParent residual q).1
+
+/-- A selector-admissible residual-value separation source supplies the
+coordinate-first interface by direct repackaging after the caller fixes a
+selector.
+
+The proof only shows that each selected terminal-neighbor value is admissible
+using the supplied selector evidence.  It does not create a code from a
+selected image, bounded menu, `finsetCodeOfCardLe`, empirical search,
+root-shell/local-neighbor/local-displacement code, parent-relative
+`terminalNeighborCode`, deleted-vertex adjacency outside the residual, or the
+v2.161 selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberBookkeepingTagCoordinate1296_of_residualFiberBookkeepingTagAdmissibleValueSeparation1296
+    (hadmissible :
+      PhysicalPlaquetteGraphResidualFiberBookkeepingTagAdmissibleValueSeparation1296) :
+    PhysicalPlaquetteGraphResidualFiberBookkeepingTagCoordinate1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨bookkeepingTagCodeData, hseparates_admissible⟩ :=
+    hadmissible root k deleted parentOf essential hchoice himage
+      hessential_subset
+  refine ⟨bookkeepingTagCodeData, ?_⟩
+  intro terminalNeighborOfParent terminalNeighborSelectorEvidence residual p q hcode
+  exact hseparates_admissible residual
+    (terminalNeighborOfParent residual p)
+    (terminalNeighborOfParent residual q)
+    ⟨p, ⟨terminalNeighborSelectorEvidence residual p⟩⟩
+    ⟨q, ⟨terminalNeighborSelectorEvidence residual q⟩⟩
+    hcode
+
+/-- Structural residual-value bookkeeping tag separation source.
+
+This is the upstream separation interface isolated by v2.200.  For the v2.121
+bookkeeping residual fibers, and for a fixed residual-local
+`terminalNeighborOfParent` selector with selector evidence, it exposes
+bookkeeping/base-zone tag code data on the whole residual subtype and proves
+that equality of those residual-value tags separates the selected
+terminal-neighbor values.
+
+This interface is deliberately not a selected-image cardinality theorem.  It
+does not manufacture the code by `finsetCodeOfCardLe`, bounded menu
+cardinality, empirical search, root-shell codes, local neighbor or displacement
+codes, parent-relative `terminalNeighborCode` equality, deleted-vertex
+adjacency outside the residual, or the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBookkeepingTagValueSeparation1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+    (terminalNeighborOfParent :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+    (∀ residual,
+      (p : {p : ConcretePlaquette physicalClayDimension L //
+        p ∈ essential residual}) →
+        PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+          residual p.1 (terminalNeighborOfParent residual p)) →
+      ∃ bookkeepingTagCodeData :
+        ∀ residual,
+          PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCodeData
+            residual,
+        ∀ residual
+          (p q : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}),
+          (bookkeepingTagCodeData residual).bookkeepingTagCode
+              (terminalNeighborOfParent residual p) =
+            (bookkeepingTagCodeData residual).bookkeepingTagCode
+              (terminalNeighborOfParent residual q) →
+            (terminalNeighborOfParent residual p).1 =
+              (terminalNeighborOfParent residual q).1
+
+/-- A coordinate-first bookkeeping/base-zone source supplies the value-separation
+interface by direct repackaging after the caller fixes a selector.
+
+This bridge does not create a code from selected-image cardinality, bounded
+menu cardinality, `finsetCodeOfCardLe`, empirical search, root-shell codes,
+local neighbor or displacement codes, parent-relative `terminalNeighborCode`
+equality, deleted-vertex adjacency outside the residual, or the v2.161
+selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberBookkeepingTagValueSeparation1296_of_residualFiberBookkeepingTagCoordinate1296
+    (hcoord :
+      PhysicalPlaquetteGraphResidualFiberBookkeepingTagCoordinate1296) :
+    PhysicalPlaquetteGraphResidualFiberBookkeepingTagValueSeparation1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+    terminalNeighborOfParent terminalNeighborSelectorEvidence
+  letI : NeZero L := hL
+  obtain ⟨bookkeepingTagCodeData, hseparates⟩ :=
+    hcoord root k deleted parentOf essential hchoice himage hessential_subset
+  exact ⟨bookkeepingTagCodeData,
+    hseparates terminalNeighborOfParent terminalNeighborSelectorEvidence⟩
+
+/-- Structural residual-value bookkeeping tag code source.
+
+This is upstream of
+`PhysicalPlaquetteGraphResidualFiberBookkeepingTagCodeForSelector1296`.  For
+the v2.121 bookkeeping residual fibers, and for a fixed residual-local
+`terminalNeighborOfParent` selector with selector evidence, it supplies
+bookkeeping-tag code data on the whole residual subtype before restricting to
+the selected terminal-neighbor values.
+
+This interface does not obtain a code from selected-image cardinality, bounded
+menu cardinality, `finsetCodeOfCardLe`, empirical search, local displacement
+codes, parent-relative `terminalNeighborCode` equality, deleted-vertex
+adjacency outside the residual, or the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBookkeepingTagValueCodeSource1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+    (terminalNeighborOfParent :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual}) →
+    (∀ residual,
+      (p : {p : ConcretePlaquette physicalClayDimension L //
+        p ∈ essential residual}) →
+        PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+          residual p.1 (terminalNeighborOfParent residual p)) →
+      ∃ bookkeepingTagCodeData :
+        ∀ residual,
+          PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCodeData
+            residual,
+        ∀ residual
+          (p q : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}),
+          (bookkeepingTagCodeData residual).bookkeepingTagCode
+              (terminalNeighborOfParent residual p) =
+            (bookkeepingTagCodeData residual).bookkeepingTagCode
+              (terminalNeighborOfParent residual q) →
+            (terminalNeighborOfParent residual p).1 =
+              (terminalNeighborOfParent residual q).1
+
+/-- A residual-value bookkeeping tag separation source supplies the value-code
+source interface by direct repackaging.
+
+This bridge does not create a code from selected-image cardinality, bounded
+menu cardinality, `finsetCodeOfCardLe`, empirical search, root-shell codes,
+local neighbor or displacement codes, parent-relative `terminalNeighborCode`
+equality, deleted-vertex adjacency outside the residual, or the v2.161
+selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberBookkeepingTagValueCodeSource1296_of_residualFiberBookkeepingTagValueSeparation1296
+    (hseparation :
+      PhysicalPlaquetteGraphResidualFiberBookkeepingTagValueSeparation1296) :
+    PhysicalPlaquetteGraphResidualFiberBookkeepingTagValueCodeSource1296 := by
+  exact hseparation
+
+/-- A structural residual-value bookkeeping tag source supplies the compatible
+tag-code-for-selector premise by projecting the residual-subtype code data.
+
+This bridge is only repackaging.  It does not manufacture a code from
+selected-image cardinality, bounded menu cardinality, `finsetCodeOfCardLe`,
+empirical search, local displacement codes, parent-relative
+`terminalNeighborCode` equality, deleted-vertex adjacency outside the residual,
+or the v2.161 selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberBookkeepingTagCodeForSelector1296_of_residualFiberBookkeepingTagValueCodeSource1296
+    (htagSource :
+      PhysicalPlaquetteGraphResidualFiberBookkeepingTagValueCodeSource1296) :
+    PhysicalPlaquetteGraphResidualFiberBookkeepingTagCodeForSelector1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+    terminalNeighborOfParent terminalNeighborSelectorEvidence
+  letI : NeZero L := hL
+  obtain ⟨bookkeepingTagCodeData, htag_separates⟩ :=
+    htagSource root k deleted parentOf essential hchoice himage
+      hessential_subset terminalNeighborOfParent terminalNeighborSelectorEvidence
+  refine ⟨fun residual =>
+    (bookkeepingTagCodeData residual).bookkeepingTagCode, ?_⟩
+  intro residual p q hcode
+  exact htag_separates residual p q hcode
+
+/-- Residual-fiber bookkeeping tag map interface.
+
+This is the upstream v2.178 source contract for
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCode1296`.
+It exposes the residual-value `Fin 1296` tag map directly on the whole residual
+subtype, before the selected terminal-neighbor image is considered.  The
+selected-value separation clause is only a restriction of that residual tag map
+to the terminal-neighbor values chosen by `terminalNeighborOfParent`.
+
+This interface is not a selected-image cardinality theorem, does not use
+`finsetCodeOfCardLe` on an already bounded selected image, is not a local
+displacement code or parent-relative `terminalNeighborCode` equality, and does
+not route through empirical search or the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberBookkeepingTagMap1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborOfParent :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalNeighborSelectorEvidence :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+              residual p.1 (terminalNeighborOfParent residual p),
+      ∃ bookkeepingTagCode :
+        ∀ residual,
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} →
+            Fin 1296,
+        ∀ residual
+          (p q : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}),
+          bookkeepingTagCode residual (terminalNeighborOfParent residual p) =
+            bookkeepingTagCode residual (terminalNeighborOfParent residual q) →
+            (terminalNeighborOfParent residual p).1 =
+              (terminalNeighborOfParent residual q).1
+
+/-- A terminal-neighbor selector source plus a compatible bookkeeping tag-code
+source supplies the residual-fiber bookkeeping tag map interface.
+
+The proof is only a two-premise packaging bridge.  It obtains the selector and
+selector evidence from
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296`, then
+applies `PhysicalPlaquetteGraphResidualFiberBookkeepingTagCodeForSelector1296`
+to that exact selector.  It does not use selected-image cardinality,
+`finsetCodeOfCardLe`, local displacement codes, parent-relative
+`terminalNeighborCode` equality, empirical search, or the v2.161
+selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberBookkeepingTagMap1296_of_residualFiberTerminalNeighborSelectorSource1296_of_residualFiberBookkeepingTagCodeForSelector1296
+    (hselector :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296)
+    (htagForSelector :
+      PhysicalPlaquetteGraphResidualFiberBookkeepingTagCodeForSelector1296) :
+    PhysicalPlaquetteGraphResidualFiberBookkeepingTagMap1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence, _⟩ :=
+    hselector root k deleted parentOf essential hchoice himage hessential_subset
+  obtain ⟨bookkeepingTagCode, htag_separates⟩ :=
+    htagForSelector root k deleted parentOf essential hchoice himage
+      hessential_subset terminalNeighborOfParent terminalNeighborSelectorEvidence
+  exact ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+    bookkeepingTagCode, htag_separates⟩
+
+/-- Residual-fiber ambient bookkeeping-tag terminal-neighbor value-code interface.
+
+This is the v2.175 source contract for
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientValueCode1296`.  It
+has the same residual-local selector shape as the ambient interface, but the
+absolute residual-value code is explicitly a bookkeeping-tag code rather than
+an arbitrary ambient source.  The bridge below repacks this code with
+`ambientOrigin = bookkeepingTag`.
+
+The code is defined on `{q // q ∈ residual}` before terminal neighbors are
+selected.  It is not a local displacement code, not parent-relative
+`terminalNeighborCode` equality, not `finsetCodeOfCardLe` on an already bounded
+selected image, not empirical search, and not the v2.161 cycle through
+selector-image bounds. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCode1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborOfParent :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalNeighborSelectorEvidence :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+              residual p.1 (terminalNeighborOfParent residual p),
+      ∃ bookkeepingTagCodeData :
+        ∀ residual,
+          PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCodeData
+            residual,
+        ∀ residual
+          (p q : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}),
+          (bookkeepingTagCodeData residual).bookkeepingTagCode
+              (terminalNeighborOfParent residual p) =
+            (bookkeepingTagCodeData residual).bookkeepingTagCode
+              (terminalNeighborOfParent residual q) →
+            (terminalNeighborOfParent residual p).1 =
+              (terminalNeighborOfParent residual q).1
+
+/-- A residual-fiber bookkeeping tag map supplies the terminal-neighbor
+bookkeeping-tag code interface by packaging the residual-subtype map as
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCodeData`.
+
+The proof is only a repacking bridge.  It does not derive a code from
+selected-image cardinality, does not use `finsetCodeOfCardLe`, does not inspect
+local displacement or parent-relative terminal-neighbor codes, and does not
+route through the v2.161 selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCode1296_of_residualFiberBookkeepingTagMap1296
+    (htag : PhysicalPlaquetteGraphResidualFiberBookkeepingTagMap1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCode1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+      bookkeepingTagCode, htag_separates⟩ :=
+    htag root k deleted parentOf essential hchoice himage hessential_subset
+  let bookkeepingTagCodeData :
+      ∀ residual,
+        PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCodeData
+          residual :=
+    fun residual =>
+      { bookkeepingTagCode := bookkeepingTagCode residual }
+  refine ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+    bookkeepingTagCodeData, ?_⟩
+  intro residual p q hcode
+  exact htag_separates residual p q hcode
+
+/-- Residual-fiber ambient terminal-neighbor value-code interface.
+
+This is the upstream v2.172 source contract for
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborAbsoluteSelectedValueCode1296`.
+It carries the residual-local terminal-neighbor selector and selector evidence,
+then supplies an ambient `Fin 1296` code on residual values themselves.
+
+The code lives on `{q // q ∈ residual}` and is tagged by an ambient source:
+base-zone enumeration, v2.121 bookkeeping tags, or canonical-last-edge/frontier
+coordinates.  Thus the bridge below is a direct projection into the v2.170
+absolute selected-value interface.  It is not a local displacement code, not
+parent-relative `terminalNeighborCode` equality, not `finsetCodeOfCardLe` on an
+already bounded selected image, not selected-image packing/projection, and not
+the v2.161 circular chain through selector-image bounds. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientValueCode1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborOfParent :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalNeighborSelectorEvidence :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+              residual p.1 (terminalNeighborOfParent residual p),
+      ∃ ambientValueCodeData :
+        ∀ residual,
+          PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientValueCodeData
+            residual,
+        ∀ residual
+          (p q : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}),
+          (ambientValueCodeData residual).ambientValueCode
+              (terminalNeighborOfParent residual p) =
+            (ambientValueCodeData residual).ambientValueCode
+              (terminalNeighborOfParent residual q) →
+            (terminalNeighborOfParent residual p).1 =
+              (terminalNeighborOfParent residual q).1
+
+/-- A bookkeeping-tag residual-value code supplies the ambient value-code
+interface by fixing the ambient origin to `bookkeepingTag`.
+
+The proof only repacks the residual-subtype code into
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientValueCodeData`.  It
+does not derive a code from selected-image cardinality, does not use
+`finsetCodeOfCardLe`, and does not route through the v2.161 selector-image
+cycle. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborAmbientValueCode1296_of_residualFiberTerminalNeighborAmbientBookkeepingTagCode1296
+    (hbookkeeping :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCode1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientValueCode1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+      bookkeepingTagCodeData, hbookkeeping_separates⟩ :=
+    hbookkeeping root k deleted parentOf essential hchoice himage hessential_subset
+  let ambientValueCodeData :
+      ∀ residual,
+        PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientValueCodeData
+          residual :=
+    fun residual =>
+      { ambientOrigin :=
+          PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientCodeOrigin.bookkeepingTag
+        ambientValueCode :=
+          (bookkeepingTagCodeData residual).bookkeepingTagCode }
+  refine ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+    ambientValueCodeData, ?_⟩
+  intro residual p q hcode
+  exact hbookkeeping_separates residual p q hcode
+
+/-- Residual-fiber absolute selected terminal-neighbor value-code interface.
+
+This is the v2.168 source contract for
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296`.
+It carries the residual-local terminal-neighbor selector and selector evidence,
+then codes absolute residual terminal-neighbor values directly:
+
+`{q : ConcretePlaquette physicalClayDimension L // q ∈ residual} → Fin 1296`.
+
+The separation clause is stated on essential parents, but the codes being
+compared are the absolute residual values selected by those parents.  This is
+not a parent-relative displacement code, not equality of the per-witness
+`terminalNeighborCode` field, and not a code obtained by first bounding the
+selected-image finset. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborAbsoluteSelectedValueCode1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborOfParent :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalNeighborSelectorEvidence :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+              residual p.1 (terminalNeighborOfParent residual p),
+      ∃ terminalNeighborAbsoluteValueCode :
+        ∀ residual,
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} →
+            Fin 1296,
+        ∀ residual
+          (p q : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}),
+          terminalNeighborAbsoluteValueCode residual
+              (terminalNeighborOfParent residual p) =
+            terminalNeighborAbsoluteValueCode residual
+              (terminalNeighborOfParent residual q) →
+            (terminalNeighborOfParent residual p).1 =
+              (terminalNeighborOfParent residual q).1
+
+/-- An ambient residual-value code supplies the v2.170 absolute selected-value
+code by direct projection.
+
+The proof only forgets the ambient-origin tag and reuses the residual-subtype
+code on each selected terminal neighbor.  It does not construct a code from the
+cardinality of the selected image, does not use `finsetCodeOfCardLe`, and does
+not route through the v2.161 selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborAbsoluteSelectedValueCode1296_of_residualFiberTerminalNeighborAmbientValueCode1296
+    (hambient :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborAmbientValueCode1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborAbsoluteSelectedValueCode1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+      ambientValueCodeData, hambient_separates⟩ :=
+    hambient root k deleted parentOf essential hchoice himage hessential_subset
+  refine ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+    (fun residual q => (ambientValueCodeData residual).ambientValueCode q), ?_⟩
+  intro residual p q hcode
+  exact hambient_separates residual p q hcode
+
+/-- Residual-fiber basepoint-independent terminal-neighbor value-code interface.
+
+This is the v2.165 source contract for
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296`.
+It carries the same residual-local terminal-neighbor selector data as the
+geometric selector-code interface, but the `Fin 1296` code is attached to the
+selected terminal-neighbor value itself, as an element of the selected-image
+finset, not to a parent-relative displacement or a per-parent local neighbor
+code.
+
+The selected-image cardinality bound is deliberately not assumed here and the
+code is not obtained from `finsetCodeOfCardLe` on an already bounded selected
+image.  The bridge below evaluates this absolute selected-value code at each
+parent's selected neighbor and uses injectivity to prove pairwise selected-value
+separation. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborOfParent :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalNeighborSelectorEvidence :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+              residual p.1 (terminalNeighborOfParent residual p),
+      ∃ terminalNeighborValueCode :
+        ∀ residual,
+          {q : ConcretePlaquette physicalClayDimension L //
+            q ∈ (essential residual).attach.image
+              (fun p => (terminalNeighborOfParent residual p).1)} →
+            Fin 1296,
+        ∀ residual, Function.Injective (terminalNeighborValueCode residual)
+
+/-- An absolute residual-value code restricts to the selected-image code used by
+the basepoint-independent interface.
+
+The selected-image code is defined by choosing an essential parent witnessing
+membership in the image and evaluating the absolute residual-value code on that
+parent's selected terminal neighbor.  Injectivity on the selected-image subtype
+follows from the absolute selected-value separation clause plus the image
+witness equalities. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296_of_residualFiberTerminalNeighborAbsoluteSelectedValueCode1296
+    (habsolute :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborAbsoluteSelectedValueCode1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+      terminalNeighborAbsoluteValueCode, habsolute_separates⟩ :=
+    habsolute root k deleted parentOf essential hchoice himage hessential_subset
+  let imageParent :
+      ∀ residual,
+        {q : ConcretePlaquette physicalClayDimension L //
+          q ∈ (essential residual).attach.image
+            (fun p => (terminalNeighborOfParent residual p).1)} →
+          {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual} :=
+    fun residual q =>
+      Classical.choose (Finset.mem_image.mp q.2)
+  let terminalNeighborValueCode :
+      ∀ residual,
+        {q : ConcretePlaquette physicalClayDimension L //
+          q ∈ (essential residual).attach.image
+            (fun p => (terminalNeighborOfParent residual p).1)} →
+          Fin 1296 :=
+    fun residual q =>
+      terminalNeighborAbsoluteValueCode residual
+        (terminalNeighborOfParent residual (imageParent residual q))
+  refine ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+    terminalNeighborValueCode, ?_⟩
+  intro residual q r hcode
+  have hq_image :
+      (terminalNeighborOfParent residual (imageParent residual q)).1 = q.1 := by
+    simpa [imageParent] using
+      (Classical.choose_spec (Finset.mem_image.mp q.2)).2
+  have hr_image :
+      (terminalNeighborOfParent residual (imageParent residual r)).1 = r.1 := by
+    simpa [imageParent] using
+      (Classical.choose_spec (Finset.mem_image.mp r.2)).2
+  have hcode' :
+      terminalNeighborAbsoluteValueCode residual
+          (terminalNeighborOfParent residual (imageParent residual q)) =
+        terminalNeighborAbsoluteValueCode residual
+          (terminalNeighborOfParent residual (imageParent residual r)) := by
+    simpa [terminalNeighborValueCode] using hcode
+  have hneighbor_eq :
+      (terminalNeighborOfParent residual (imageParent residual q)).1 =
+        (terminalNeighborOfParent residual (imageParent residual r)).1 :=
+    habsolute_separates residual (imageParent residual q)
+      (imageParent residual r) hcode'
+  apply Subtype.ext
+  calc
+    q.1 = (terminalNeighborOfParent residual (imageParent residual q)).1 :=
+      hq_image.symm
+    _ = (terminalNeighborOfParent residual (imageParent residual r)).1 :=
+      hneighbor_eq
+    _ = r.1 := hr_image
+
+/-- Residual-fiber geometric selector-code interface for terminal neighbors.
+
+This is the non-circular v2.162 source contract for
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296`.
+It asks for the residual-local `terminalNeighborOfParent` selector and its
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`, then exposes
+an independent `Fin 1296` geometric code on essential parents.  Equal codes
+must force equality of the selected terminal-neighbor values inside each
+residual fiber.
+
+The selected-image cardinality bound is deliberately not an input field here:
+the bridge below derives it by coding the selected image through parent
+witnesses and the pairwise selected-value separation theorem.  Thus this
+interface does not use `finsetCodeOfCardLe` on an already bounded selected
+image and does not cycle through selector-code separation, code separation,
+dominating menus, image compression, local degree, residual paths, root-shell
+reachability, residual size, raw frontier growth, deleted-vertex adjacency,
+empirical search, or post-hoc current deletion witnesses. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborOfParent :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalNeighborSelectorEvidence :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+              residual p.1 (terminalNeighborOfParent residual p),
+      ∃ terminalNeighborGeometricCode :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) → Fin 1296,
+        ∀ residual
+          (p q : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}),
+          terminalNeighborGeometricCode residual p =
+              terminalNeighborGeometricCode residual q →
+            (terminalNeighborOfParent residual p).1 =
+              (terminalNeighborOfParent residual q).1
+
+/-- An absolute selected-value code gives the parent-indexed geometric selector
+code.
+
+The geometric code of an essential parent is the basepoint-independent code of
+the selected terminal-neighbor value itself.  Pairwise selected-value separation
+then follows from injectivity on the selected image. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296_of_residualFiberTerminalNeighborBasepointIndependentCode1296
+    (hbase :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+      terminalNeighborValueCode, hvalueCode_injective⟩ :=
+    hbase root k deleted parentOf essential hchoice himage hessential_subset
+  let selectedValue :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}) →
+          {q : ConcretePlaquette physicalClayDimension L //
+            q ∈ (essential residual).attach.image
+              (fun p => (terminalNeighborOfParent residual p).1)} :=
+    fun residual p =>
+      ⟨(terminalNeighborOfParent residual p).1, by
+        exact Finset.mem_image.mpr ⟨p, by simp, rfl⟩⟩
+  refine ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+    (fun residual p => terminalNeighborValueCode residual (selectedValue residual p)), ?_⟩
+  intro residual p q hcode
+  exact congrArg
+    (fun x :
+      {q : ConcretePlaquette physicalClayDimension L //
+        q ∈ (essential residual).attach.image
+          (fun p => (terminalNeighborOfParent residual p).1)} => x.1)
+    (hvalueCode_injective residual hcode)
+
+/-- A residual-local geometric selector code gives the selected terminal-neighbor
+image bound.
+
+The proof builds a code on each selected-image element by choosing an essential
+parent witnessing membership in the image and then applying the geometric code
+of that parent.  Injectivity follows from the pairwise selected-value separation
+field of
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296`.
+It does not use `finsetCodeOfCardLe` on the selected image and does not route
+through selector-code separation, code separation, dominating menus, or image
+compression. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296_of_residualFiberTerminalNeighborGeometricSelectorCode1296
+    (hgeometric :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+      terminalNeighborGeometricCode, hcode_separates⟩ :=
+    hgeometric root k deleted parentOf essential hchoice himage hessential_subset
+  refine ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence, ?_⟩
+  intro residual
+  let selectedImage : Finset (ConcretePlaquette physicalClayDimension L) :=
+    (essential residual).attach.image
+      (fun p => (terminalNeighborOfParent residual p).1)
+  let selectedImageCode :
+      {q : ConcretePlaquette physicalClayDimension L // q ∈ selectedImage} →
+        Fin 1296 :=
+    fun q =>
+      terminalNeighborGeometricCode residual
+        (Classical.choose (Finset.mem_image.mp q.2))
+  have hselectedImageCode_injective : Function.Injective selectedImageCode := by
+    intro a b hcode
+    let pa := Classical.choose (Finset.mem_image.mp a.2)
+    let pb := Classical.choose (Finset.mem_image.mp b.2)
+    have hpa :
+        (terminalNeighborOfParent residual pa).1 = a.1 :=
+      (Classical.choose_spec (Finset.mem_image.mp a.2)).2
+    have hpb :
+        (terminalNeighborOfParent residual pb).1 = b.1 :=
+      (Classical.choose_spec (Finset.mem_image.mp b.2)).2
+    have hsame :
+        (terminalNeighborOfParent residual pa).1 =
+          (terminalNeighborOfParent residual pb).1 := by
+      exact hcode_separates residual pa pb hcode
+    apply Subtype.ext
+    exact hpa.symm.trans (hsame.trans hpb)
+  have hcard :
+      Fintype.card
+        {q : ConcretePlaquette physicalClayDimension L // q ∈ selectedImage} ≤
+          1296 := by
+    simpa using
+      Fintype.card_le_of_injective selectedImageCode hselectedImageCode_injective
+  rw [← Fintype.card_of_subtype selectedImage (fun _ => Iff.rfl)]
+  exact hcard
+
+/-- Residual-fiber terminal-neighbor image-compression interface.
+
+This is the v2.150 bounded-menu predecessor to
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296`.
+It does not ask for the selected-image cardinality directly.  Instead, it
+requires a residual-only `terminalNeighborMenu` with cardinality `<= 1296`, a
+selector whose values lie in that menu, residual-local selector evidence, and
+an image-cover clause showing that the selected terminal-neighbor image is
+contained in the bounded menu.
+
+This separates image compression from local neighbor existence, residual path
+existence/splitting, root/root-shell reachability, local degree of one fixed
+plaquette, residual size, raw frontier growth, deleted-vertex adjacency outside
+the residual, empirical search, and packing of an already bounded menu. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborMenu :
+        Finset (ConcretePlaquette physicalClayDimension L) →
+          Finset (ConcretePlaquette physicalClayDimension L),
+      (∀ residual, terminalNeighborMenu residual ⊆ residual) ∧
+      (∀ residual, (terminalNeighborMenu residual).card ≤ 1296) ∧
+      ∃ terminalNeighborOfParent :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalNeighborSelectorEvidence :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+              residual p.1 (terminalNeighborOfParent residual p),
+        (∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            (terminalNeighborOfParent residual p).1 ∈
+              terminalNeighborMenu residual) ∧
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p =>
+              (terminalNeighborOfParent residual p).1)) ⊆
+                terminalNeighborMenu residual
+
+/-- Residual-fiber terminal-neighbor dominating-menu interface.
+
+This is the v2.153 menu-first predecessor to
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296`.
+It asks for a residual-local bounded menu and a domination relation: every
+essential parent is dominated by some terminal neighbor in that menu carrying
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`.
+
+The selector used by the image-compression interface is derived only in the
+bridge from this domination relation.  The bounded-menu construction is kept
+separate from selector image compression, local degree, residual path
+existence/splitting, root/root-shell reachability, residual size, raw frontier
+growth, deleted-vertex adjacency outside the residual, empirical search, and
+packing/projection of an already bounded menu. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborMenu :
+        Finset (ConcretePlaquette physicalClayDimension L) →
+          Finset (ConcretePlaquette physicalClayDimension L),
+      ∃ hmenu_subset : ∀ residual, terminalNeighborMenu residual ⊆ residual,
+      (∀ residual, (terminalNeighborMenu residual).card ≤ 1296) ∧
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          ∃ q : {q : ConcretePlaquette physicalClayDimension L //
+            q ∈ terminalNeighborMenu residual},
+            Nonempty
+              (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+                residual p.1 ⟨q.1, hmenu_subset residual q.2⟩)
+
+/-- Non-singleton residual-member neighbor source.
+
+This interface isolates only the residual final-edge neighbor existence needed
+upstream of the walk-split theorem
+`PhysicalPlaquetteGraphResidualFiberNonSingletonMemberNeighborWalkSplit1296`.
+For each v2.121 bookkeeping residual fiber and essential residual parent, it
+asks that a non-singleton residual contain some residual vertex adjacent to the
+parent.
+
+It deliberately does not claim full
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`: there are no
+source/target subtypes, induced residual walks, terminal-neighbor suffixes, menu
+cardinality, selected-image cardinality, `finsetCodeOfCardLe`, empirical search,
+or v2.161 selector-image cycle here.  In particular the deleted vertex of a
+current witness is not used as a residual terminal neighbor for
+`residual = X.erase (deleted X)`. -/
+def PhysicalPlaquetteGraphResidualFiberNonSingletonMemberHasResidualNeighbor1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset
+                (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∀ residual,
+        residual ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root (k - 1) →
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          residual.card ≠ 1 →
+            ∃ q : {q : ConcretePlaquette physicalClayDimension L //
+              q ∈ residual},
+              p.1 ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset q.1
+
+/-- The non-singleton residual-member neighbor interface follows from induced
+preconnectedness of each anchored residual fiber.
+
+The proof is strictly local to the residual: essential parents are first
+included into the residual via the `essential ⊆ residual` hypothesis, and the
+generic member-neighbor lemma extracts an adjacent residual vertex from a
+nontrivial induced walk.  It does not construct selector-data source fields,
+walk-split data, menus, selected-image bounds, or any code from bounded
+cardinality. -/
+theorem physicalPlaquetteGraphResidualFiberNonSingletonMemberHasResidualNeighbor1296 :
+    PhysicalPlaquetteGraphResidualFiberNonSingletonMemberHasResidualNeighbor1296 := by
+  intro L hL root k deleted parentOf essential _hchoice _himage hessential_subset
+    residual hresidual p hcard
+  letI : NeZero L := hL
+  have hp_residual : p.1 ∈ residual := hessential_subset residual p.2
+  obtain ⟨q, hq_residual, hq_neighbor⟩ :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_nonSingleton_member_has_neighbor
+      (d := physicalClayDimension) (L := L) (k := k - 1) (root := root)
+      (p := p.1) (X := residual) hresidual hp_residual hcard
+  exact ⟨⟨q, hq_residual⟩, hq_neighbor⟩
+
+/-- Residual induced walk-split interface below the full terminal-neighbor
+selector-data source.
+
+This interface is deliberately stronger than residual-neighbor existence
+alone.  It accepts
+`PhysicalPlaquetteGraphResidualFiberNonSingletonMemberHasResidualNeighbor1296`
+as the only permitted source for non-singleton final-edge adjacency, but it
+still requires the full induced residual walk-split payload for each essential
+parent: source and target residual subtypes, a residual terminal neighbor, a
+terminal-neighbor code, induced walks `source -> target`,
+`source -> terminalNeighbor`, and `terminalNeighbor -> target`, plus the
+non-singleton final-edge adjacency.
+
+Thus the bridge to
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296`
+below is only structural repackaging.  This interface does not use deleted
+vertices outside the residual, selected-image cardinality, bounded menus,
+`finsetCodeOfCardLe`, empirical search, or the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberNonSingletonMemberNeighborWalkSplit1296 :
+    Prop :=
+  PhysicalPlaquetteGraphResidualFiberNonSingletonMemberHasResidualNeighbor1296 →
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset
+                (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          ∃ source : {s : ConcretePlaquette physicalClayDimension L //
+            s ∈ residual},
+          ∃ target : {r : ConcretePlaquette physicalClayDimension L //
+            r ∈ residual},
+          ∃ terminalNeighbor :
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+          ∃ terminalNeighborCode : Fin 1296,
+            target.1 = p.1 ∧
+            Nonempty
+              (((plaquetteGraph physicalClayDimension L).induce
+                {x | x ∈ residual}).Walk source target) ∧
+            Nonempty
+              (((plaquetteGraph physicalClayDimension L).induce
+                {x | x ∈ residual}).Walk source terminalNeighbor) ∧
+            Nonempty
+              (((plaquetteGraph physicalClayDimension L).induce
+                {x | x ∈ residual}).Walk terminalNeighbor target) ∧
+            (residual.card ≠ 1 →
+              p.1 ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset
+                  terminalNeighbor.1)
+
+/-- The non-singleton residual-member neighbor theorem supplies the final edge
+of the induced residual walk split.
+
+The construction keeps the source equal to the target essential parent.  In the
+singleton case the final-edge clause is vacuous and all induced walks are nil.
+In the non-singleton case the neighbor-only theorem supplies a residual
+terminal neighbor `q`; the two one-edge induced walks are built from the
+ambient adjacency `q -- p`, while the source-to-target walk remains nil.
+
+No deleted vertex from a current witness is used as a residual terminal
+neighbor, and no selected-image cardinality, bounded menu, empirical search,
+`finsetCodeOfCardLe`, or v2.161 selector-image cycle appears in the proof. -/
+theorem physicalPlaquetteGraphResidualFiberNonSingletonMemberNeighborWalkSplit1296 :
+    PhysicalPlaquetteGraphResidualFiberNonSingletonMemberNeighborWalkSplit1296 := by
+  intro hneighbor L hL root k deleted parentOf essential hchoice himage
+    hessential_subset residual p
+  letI : NeZero L := hL
+  have hp_residual : p.1 ∈ residual := hessential_subset residual p.2
+  let source : {s : ConcretePlaquette physicalClayDimension L // s ∈ residual} :=
+    ⟨p.1, hp_residual⟩
+  let target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual} :=
+    source
+  by_cases hcard : residual.card = 1
+  · refine ⟨source, target, target, 0, ?_, ?_, ?_, ?_, ?_⟩
+    · rfl
+    · exact ⟨SimpleGraph.Walk.nil⟩
+    · exact ⟨SimpleGraph.Walk.nil⟩
+    · exact ⟨SimpleGraph.Walk.nil⟩
+    · intro hnon
+      exact False.elim (hnon hcard)
+  · have hp_image :
+        p.1 ∈
+          ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root k).filter
+              (fun X => X.erase (deleted X) = residual)).image parentOf := by
+      simpa [himage residual] using p.2
+    obtain ⟨X, hXfilter, hparent⟩ := Finset.mem_image.mp hp_image
+    have hX :
+        X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k :=
+      (Finset.mem_filter.mp hXfilter).1
+    have herase : X.erase (deleted X) = residual :=
+      (Finset.mem_filter.mp hXfilter).2
+    have hres_card_pos : 0 < residual.card :=
+      Finset.card_pos.mpr ⟨p.1, hp_residual⟩
+    have hres_card_ge_two : 2 ≤ residual.card := by
+      omega
+    have hres_le_X : residual.card ≤ X.card := by
+      rw [← herase]
+      exact Finset.card_le_card (Finset.erase_subset _ _)
+    have hXcard : X.card = k :=
+      plaquetteGraphPreconnectedSubsetsAnchoredCard_card_eq hX
+    have hk : 2 ≤ k := by
+      omega
+    have hchoiceX := hchoice hk hX
+    have hresidual_anchored :
+        residual ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root (k - 1) := by
+      simpa [herase] using hchoiceX.2.2.1
+    obtain ⟨terminalNeighbor, hterminal_adj⟩ :=
+      hneighbor root k deleted parentOf essential hchoice himage hessential_subset
+        residual hresidual_anchored p hcard
+    have hAdj_qp :
+        (plaquetteGraph physicalClayDimension L).Adj terminalNeighbor.1 target.1 := by
+      simpa [target, source] using
+        (SimpleGraph.mem_neighborFinset
+          (plaquetteGraph physicalClayDimension L) terminalNeighbor.1 p.1).mp
+          hterminal_adj
+    have hAdj_source_q :
+        ((plaquetteGraph physicalClayDimension L).induce
+          {x | x ∈ residual}).Adj source terminalNeighbor := by
+      exact SimpleGraph.induce_adj.mpr hAdj_qp.symm
+    have hAdj_q_target :
+        ((plaquetteGraph physicalClayDimension L).induce
+          {x | x ∈ residual}).Adj terminalNeighbor target := by
+      exact SimpleGraph.induce_adj.mpr hAdj_qp
+    refine ⟨source, target, terminalNeighbor, 0, ?_, ?_, ?_, ?_, ?_⟩
+    · rfl
+    · exact ⟨SimpleGraph.Walk.nil⟩
+    · exact ⟨SimpleGraph.Walk.cons hAdj_source_q SimpleGraph.Walk.nil⟩
+    · exact ⟨SimpleGraph.Walk.cons hAdj_q_target SimpleGraph.Walk.nil⟩
+    · intro _hnon
+      exact hterminal_adj
+
+/-- Structural source data for residual terminal-neighbor selector evidence.
+
+This is the full selector-data source isolated by the v2.185 proof attempt.  It
+is deliberately stronger than residual-neighbor existence alone: for every
+essential parent it exposes the residual source, target, selected terminal
+neighbor, the three induced residual walks used by
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`, the
+non-singleton final-edge adjacency, and the terminal-neighbor code.
+
+It is still cardinality-free: there is no menu, selected-image bound,
+`finsetCodeOfCardLe`, empirical search, or v2.161 selector-image cycle here. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          ∃ source : {s : ConcretePlaquette physicalClayDimension L //
+            s ∈ residual},
+          ∃ target : {r : ConcretePlaquette physicalClayDimension L //
+            r ∈ residual},
+          ∃ terminalNeighbor :
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+          ∃ terminalNeighborCode : Fin 1296,
+            target.1 = p.1 ∧
+            Nonempty
+              (((plaquetteGraph physicalClayDimension L).induce
+                {x | x ∈ residual}).Walk source target) ∧
+            Nonempty
+              (((plaquetteGraph physicalClayDimension L).induce
+                {x | x ∈ residual}).Walk source terminalNeighbor) ∧
+            Nonempty
+              (((plaquetteGraph physicalClayDimension L).induce
+                {x | x ∈ residual}).Walk terminalNeighbor target) ∧
+            (residual.card ≠ 1 →
+              p.1 ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset
+                  terminalNeighbor.1)
+
+/-- The walk-split interface supplies the full selector-data source by passing
+the already proved residual-member neighbor theorem as its non-singleton
+final-edge source and then forgetting that source label.
+
+This bridge does not construct selector data from residual-neighbor existence
+alone: all source/target subtypes, induced walks, terminal neighbor, and code
+come from
+`PhysicalPlaquetteGraphResidualFiberNonSingletonMemberNeighborWalkSplit1296`. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296_of_residualFiberNonSingletonMemberNeighborWalkSplit1296
+    (hsplit :
+      PhysicalPlaquetteGraphResidualFiberNonSingletonMemberNeighborWalkSplit1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+    residual p
+  letI : NeZero L := hL
+  exact hsplit
+    physicalPlaquetteGraphResidualFiberNonSingletonMemberHasResidualNeighbor1296
+    root k deleted parentOf essential hchoice himage hessential_subset
+    residual p
+
+/-- The v2.192 walk-split proof closes the residual terminal-neighbor
+selector-data source by direct bridge application.
+
+This proof deliberately does not reconstruct selector data from residual-neighbor
+existence alone.  The full source/target subtype payload, induced residual
+walks, residual terminal neighbor, and code come through
+`physicalPlaquetteGraphResidualFiberNonSingletonMemberNeighborWalkSplit1296`
+and the bridge above. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296 :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296 :=
+  physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296_of_residualFiberNonSingletonMemberNeighborWalkSplit1296
+    physicalPlaquetteGraphResidualFiberNonSingletonMemberNeighborWalkSplit1296
+
+/-- Residual-fiber terminal-neighbor domination relation without a bounded menu.
+
+This is the v2.184 selector-source predecessor isolated from the v2.154
+dominating-menu interface.  It asks only for the residual-local domination
+relation needed to choose a terminal neighbor for every essential parent:
+for each bookkeeping residual fiber and essential parent, there exists a
+residual terminal-neighbor candidate carrying
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`.
+
+It deliberately does not ask for a `terminalNeighborMenu`, a menu-cardinality
+bound, selected-image cardinality, `finsetCodeOfCardLe`, local displacement
+codes, parent-relative `terminalNeighborCode` equality, empirical search, or
+the v2.161 selector-image cycle. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          ∃ q : {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+            Nonempty
+              (PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+                residual p.1 q)
+
+/-- A full residual terminal-neighbor selector-data source supplies the
+menu-free domination relation by packaging the exposed source/target/walk data
+as `PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`.
+
+The proof is a structural repackaging bridge only.  It does not derive
+selector data from residual-neighbor existence alone and does not use bounded
+menus, selected-image cardinality, `finsetCodeOfCardLe`, empirical search, or
+the v2.161 selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296_of_residualFiberTerminalNeighborSelectorDataSource1296
+    (hsource :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  intro residual p
+  obtain ⟨source, target, terminalNeighbor, terminalNeighborCode,
+    htarget, hcanonicalWalk, hprefix, hsuffix, hlast⟩ :=
+    hsource root k deleted parentOf essential hchoice himage
+      hessential_subset residual p
+  refine ⟨terminalNeighbor, ?_⟩
+  exact
+    ⟨{
+      target := target
+      target_eq := htarget
+      source := source
+      canonicalWalk := Classical.choice hcanonicalWalk
+      prefixToTerminalNeighbor := Classical.choice hprefix
+      terminalNeighborSuffix := Classical.choice hsuffix
+      terminalNeighbor_is_last_edge := hlast
+      terminalNeighborCode := terminalNeighborCode
+    }⟩
+
+/-- The proved selector-data source closes the residual terminal-neighbor
+domination relation by direct bridge application.
+
+This proof deliberately keeps the domination construction behind the existing
+selector-data-source bridge.  It does not rebuild domination witnesses from
+residual-neighbor existence alone, bounded menus, selected-image cardinality,
+`finsetCodeOfCardLe`, empirical search, or the v2.161 selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296 :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296 :=
+  physicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296_of_residualFiberTerminalNeighborSelectorDataSource1296
+    physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296
+
+/-- A residual terminal-neighbor domination relation supplies the selector-source
+interface by choosing the dominated terminal neighbor for each essential parent.
+
+This bridge is the menu-free version of the v2.183 reduction.  It does not use
+menu cardinality, selected-image cardinality, `finsetCodeOfCardLe`, residual
+paths alone, root-shell reachability, local degree, deleted-vertex adjacency,
+local displacement codes, parent-relative `terminalNeighborCode` equality,
+empirical search, or the v2.161 selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296_of_residualFiberTerminalNeighborDominationRelation1296
+    (hdomination :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  let terminalNeighborOfParent :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} :=
+    fun residual p =>
+      Classical.choose
+        (hdomination root k deleted parentOf essential hchoice himage
+          hessential_subset residual p)
+  let terminalNeighborSelectorEvidence :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 (terminalNeighborOfParent residual p) :=
+    fun residual p => by
+      simpa [terminalNeighborOfParent] using
+        (Classical.choice
+          (Classical.choose_spec
+            (hdomination root k deleted parentOf essential hchoice himage
+              hessential_subset residual p)))
+  exact ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence, trivial⟩
+
+/-- The proved residual terminal-neighbor domination relation closes the
+selector-source interface by direct bridge application.
+
+This proof deliberately keeps all selector-source construction inside the
+existing domination-relation bridge.  It does not use bounded menus,
+selected-image cardinality, `finsetCodeOfCardLe`, empirical search, deleted
+vertices outside the residual, or the v2.161 selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296 :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296 :=
+  physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296_of_residualFiberTerminalNeighborDominationRelation1296
+    physicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296
+
+/-- A residual terminal-neighbor dominating menu supplies the selector-source
+interface by choosing the dominated terminal neighbor for each essential parent.
+
+The proof only projects the domination relation to a residual-local
+`terminalNeighborOfParent` and its
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData`.  It ignores
+the menu cardinality field and does not derive anything from selected-image
+cardinality, `finsetCodeOfCardLe`, local displacement codes, parent-relative
+`terminalNeighborCode` equality, empirical search, or the v2.161
+selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296_of_residualFiberTerminalNeighborDominatingMenu1296
+    (hdominating :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborMenu, hmenu_subset, _hmenu_card, hdominating_menu⟩ :=
+    hdominating root k deleted parentOf essential hchoice himage hessential_subset
+  let terminalNeighborOfParent :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} :=
+    fun residual p =>
+      ⟨(Classical.choose (hdominating_menu residual p)).1,
+        hmenu_subset residual (Classical.choose (hdominating_menu residual p)).2⟩
+  let terminalNeighborSelectorEvidence :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 (terminalNeighborOfParent residual p) :=
+    fun residual p => by
+      simpa [terminalNeighborOfParent] using
+        (Classical.choice (Classical.choose_spec (hdominating_menu residual p)))
+  exact ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence, trivial⟩
+
+/-- Residual-fiber terminal-neighbor selected-image code-separation interface.
+
+This is the v2.159 selector-code predecessor to
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296`.  It
+does not merely record a per-witness `terminalNeighborCode`.  Instead, it
+constructs a residual-local selector and proves that equal selector codes force
+equal selected terminal-neighbor values across essential parents in the same
+residual fiber.  The selected-image cardinality bound is kept explicit so the
+projection bridge is Lean-stable and does not smuggle in a separate cardinality
+argument.
+
+This is not a local-degree, residual-path, root-shell, residual-size,
+raw-frontier, deleted-vertex adjacency, empirical-search, or packing/projection
+statement. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorCodeSeparation1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborOfParent :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalNeighborSelectorEvidence :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+              residual p.1 (terminalNeighborOfParent residual p),
+        (∀ residual
+          (p q : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}),
+          (terminalNeighborSelectorEvidence residual p).terminalNeighborCode =
+              (terminalNeighborSelectorEvidence residual q).terminalNeighborCode →
+            (terminalNeighborOfParent residual p).1 =
+              (terminalNeighborOfParent residual q).1) ∧
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p =>
+              (terminalNeighborOfParent residual p).1)).card ≤ 1296
+
+/-- Residual-fiber terminal-neighbor selected-image code-separation interface.
+
+This is the v2.156 selected-image predecessor to
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296`.  It
+constructs a residual-local terminal-neighbor selector and residual-local
+selector evidence, then exposes a genuine injective `Fin 1296` code on the
+selected terminal-neighbor image.  The dominating menu can therefore be the
+selected image itself.
+
+This is deliberately not a local-degree, residual-path, root-shell, residual
+size, raw-frontier, deleted-vertex adjacency, empirical-search, or
+packing/projection statement: those ingredients do not separate the selected
+terminal-neighbor image across all essential parents in a residual fiber. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborOfParent :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalNeighborSelectorEvidence :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+              residual p.1 (terminalNeighborOfParent residual p),
+      ∃ terminalNeighborImageCode :
+        ∀ residual,
+          {q : ConcretePlaquette physicalClayDimension L //
+            q ∈
+              ((essential residual).attach.image
+                (fun p => (terminalNeighborOfParent residual p).1))} →
+            Fin 1296,
+        (∀ residual, Function.Injective (terminalNeighborImageCode residual)) ∧
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p =>
+              (terminalNeighborOfParent residual p).1)).card ≤ 1296
+
+/-- Residual-fiber canonical terminal-neighbor selected-image interface.
+
+This is the v2.144 structural predecessor to
+`PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296`.  It
+names the selected terminal neighbor before terminal-suffix repacking and keeps
+the selected terminal-neighbor image-cardinality bound `<= 1296` explicit over
+each residual fiber.
+
+It is not a proof from residual path existence or path splitting alone, not
+root/root-shell reachability, not a local-degree or residual-size bound, not a
+raw frontier bound, and not packing an already bounded menu.  It does not use
+deleted-vertex adjacency outside the residual as terminal-predecessor data. -/
+def PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalNeighborData :
+        ∀ residual,
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual}) →
+            PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborData
+              residual p.1,
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p =>
+              (terminalNeighborData residual p).terminalNeighbor.1)).card ≤ 1296
+
+/-- Selector terminal-neighbor data projects into the v2.145 canonical
+terminal-neighbor interface.
+
+The proof is projection-only: it copies the explicit
+`terminalNeighborOfParent` selector into
+`PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborData` and carries
+the selected-image bound unchanged.  It does not construct the selector, does
+not use deleted-vertex adjacency outside the residual, and does not replace the
+selected-image bound with path existence, root/root-shell reachability, local
+degree, residual size, raw frontier growth, or packing of an already bounded
+menu. -/
+theorem physicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296_of_residualFiberTerminalNeighborSelectorImageBound1296
+    (hselector :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296) :
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence, hcard⟩ :=
+    hselector root k deleted parentOf essential hchoice himage hessential_subset
+  let terminalNeighborData :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborData
+            residual p.1 :=
+    fun residual p =>
+      { target := (terminalNeighborSelectorEvidence residual p).target
+        target_eq := (terminalNeighborSelectorEvidence residual p).target_eq
+        source := (terminalNeighborSelectorEvidence residual p).source
+        canonicalWalk :=
+          (terminalNeighborSelectorEvidence residual p).canonicalWalk
+        terminalNeighbor := terminalNeighborOfParent residual p
+        prefixToTerminalNeighbor :=
+          (terminalNeighborSelectorEvidence residual p).prefixToTerminalNeighbor
+        terminalNeighborSuffix :=
+          (terminalNeighborSelectorEvidence residual p).terminalNeighborSuffix
+        terminalNeighbor_is_last_edge :=
+          (terminalNeighborSelectorEvidence residual p).terminalNeighbor_is_last_edge
+        terminalNeighborCode :=
+          (terminalNeighborSelectorEvidence residual p).terminalNeighborCode }
+  refine ⟨terminalNeighborData, ?_⟩
+  intro residual
+  simpa [terminalNeighborData] using hcard residual
+
+/-- Selected terminal-neighbor code separation supplies the dominating menu.
+
+The menu is the selected terminal-neighbor image itself.  The cardinality bound
+comes from the code-separation interface, while domination is obtained from the
+residual-local selector evidence.  This does not choose terminal neighbors
+post-hoc from a current `(X, deleted X)` witness and does not replace selected
+image separation by local degree, paths, root-shell reachability, residual
+size, raw frontier, deleted-vertex adjacency, empirical search, or packing. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296_of_residualFiberTerminalNeighborCodeSeparation1296
+    (hseparation :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+      _terminalNeighborImageCode, _hcode_injective, hcard⟩ :=
+    hseparation root k deleted parentOf essential hchoice himage hessential_subset
+  let terminalNeighborMenu :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L) :=
+    fun residual =>
+      (essential residual).attach.image
+        (fun p => (terminalNeighborOfParent residual p).1)
+  have hmenu_subset : ∀ residual, terminalNeighborMenu residual ⊆ residual := by
+    intro residual q hq
+    rcases Finset.mem_image.mp hq with ⟨p, _hp, rfl⟩
+    exact (terminalNeighborOfParent residual p).2
+  refine ⟨terminalNeighborMenu, hmenu_subset, ?_, ?_⟩
+  · intro residual
+    simpa [terminalNeighborMenu] using hcard residual
+  · intro residual p
+    have hq_mem : (terminalNeighborOfParent residual p).1 ∈
+        terminalNeighborMenu residual := by
+      refine Finset.mem_image.mpr ?_
+      exact ⟨p, by simp, rfl⟩
+    let qMenu : {q : ConcretePlaquette physicalClayDimension L //
+        q ∈ terminalNeighborMenu residual} :=
+      ⟨(terminalNeighborOfParent residual p).1, hq_mem⟩
+    refine ⟨qMenu, ?_⟩
+    exact ⟨by
+      simpa [qMenu, terminalNeighborMenu, hmenu_subset] using
+        terminalNeighborSelectorEvidence residual p⟩
+
+/-- Selector-code separation projects to a selected-image code.
+
+The image code is defined by choosing a parent witness for each selected image
+element and reading the witness's `terminalNeighborCode`.  Injectivity follows
+from the pairwise selector-code separation clause; the selected-image
+cardinality bound is carried by the selector-code interface.  This bridge does
+not use local degree, residual paths, root-shell reachability, residual size,
+raw frontier growth, deleted-vertex adjacency, empirical search, or post-hoc
+current deletion witnesses. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296_of_residualFiberTerminalNeighborSelectorCodeSeparation1296
+    (hselectorCode :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorCodeSeparation1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+      hselector_code_separates, hcard⟩ :=
+    hselectorCode root k deleted parentOf essential hchoice himage hessential_subset
+  let selectedImage :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L) :=
+    fun residual =>
+      (essential residual).attach.image
+        (fun p => (terminalNeighborOfParent residual p).1)
+  let imageParent :
+      ∀ residual,
+        {q : ConcretePlaquette physicalClayDimension L //
+          q ∈ selectedImage residual} →
+          {p : ConcretePlaquette physicalClayDimension L //
+            p ∈ essential residual} :=
+    fun residual q =>
+      Classical.choose (Finset.mem_image.mp q.2)
+  let terminalNeighborImageCode :
+      ∀ residual,
+        {q : ConcretePlaquette physicalClayDimension L //
+          q ∈ selectedImage residual} →
+          Fin 1296 :=
+    fun residual q =>
+      (terminalNeighborSelectorEvidence residual
+        (imageParent residual q)).terminalNeighborCode
+  refine ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+    terminalNeighborImageCode, ?_, ?_⟩
+  · intro residual q r hcode
+    have hq_image :
+        (terminalNeighborOfParent residual (imageParent residual q)).1 = q.1 := by
+      simpa [selectedImage, imageParent] using
+        (Classical.choose_spec (Finset.mem_image.mp q.2)).2
+    have hr_image :
+        (terminalNeighborOfParent residual (imageParent residual r)).1 = r.1 := by
+      simpa [selectedImage, imageParent] using
+        (Classical.choose_spec (Finset.mem_image.mp r.2)).2
+    have hcode' :
+        (terminalNeighborSelectorEvidence residual
+            (imageParent residual q)).terminalNeighborCode =
+          (terminalNeighborSelectorEvidence residual
+            (imageParent residual r)).terminalNeighborCode := by
+      simpa [terminalNeighborImageCode] using hcode
+    have hneighbor_eq :=
+      hselector_code_separates residual (imageParent residual q)
+        (imageParent residual r) hcode'
+    apply Subtype.ext
+    calc
+      q.1 = (terminalNeighborOfParent residual (imageParent residual q)).1 :=
+        hq_image.symm
+      _ = (terminalNeighborOfParent residual (imageParent residual r)).1 :=
+        hneighbor_eq
+      _ = r.1 := hr_image
+  · intro residual
+    simpa [selectedImage] using hcard residual
+
+/-- A selected-image bound canonically supplies selector-code separation.
+
+This bridge does not prove the selected-image bound.  It reuses the selector
+and residual-local terminal-neighbor evidence from
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296`,
+then replaces only the per-witness `terminalNeighborCode` field by the
+canonical `finsetCodeOfCardLe` code on the already bounded selected image.
+Thus equal codes separate selected terminal-neighbor values by
+`finsetCodeOfCardLe_injective`. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorCodeSeparation1296_of_residualFiberTerminalNeighborSelectorImageBound1296
+    (hselector :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorCodeSeparation1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence, hcard⟩ :=
+    hselector root k deleted parentOf essential hchoice himage hessential_subset
+  let selectedImage :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L) :=
+    fun residual =>
+      (essential residual).attach.image
+        (fun p => (terminalNeighborOfParent residual p).1)
+  have hselected_mem :
+      ∀ residual
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}),
+        (terminalNeighborOfParent residual p).1 ∈ selectedImage residual := by
+    intro residual p
+    refine Finset.mem_image.mpr ?_
+    exact ⟨p, by simp, rfl⟩
+  let terminalNeighborSelectorEvidenceWithCode :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 (terminalNeighborOfParent residual p) :=
+    fun residual p =>
+      { target := (terminalNeighborSelectorEvidence residual p).target
+        target_eq := (terminalNeighborSelectorEvidence residual p).target_eq
+        source := (terminalNeighborSelectorEvidence residual p).source
+        canonicalWalk :=
+          (terminalNeighborSelectorEvidence residual p).canonicalWalk
+        prefixToTerminalNeighbor :=
+          (terminalNeighborSelectorEvidence residual p).prefixToTerminalNeighbor
+        terminalNeighborSuffix :=
+          (terminalNeighborSelectorEvidence residual p).terminalNeighborSuffix
+        terminalNeighbor_is_last_edge :=
+          (terminalNeighborSelectorEvidence residual p).terminalNeighbor_is_last_edge
+        terminalNeighborCode :=
+          finsetCodeOfCardLe (selectedImage residual)
+            (by simpa [selectedImage] using hcard residual)
+            ⟨(terminalNeighborOfParent residual p).1, hselected_mem residual p⟩ }
+  refine ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidenceWithCode,
+    ?_, ?_⟩
+  · intro residual p q hcode
+    have hsub :
+        (⟨(terminalNeighborOfParent residual p).1, hselected_mem residual p⟩ :
+          {x : ConcretePlaquette physicalClayDimension L //
+            x ∈ selectedImage residual}) =
+        (⟨(terminalNeighborOfParent residual q).1, hselected_mem residual q⟩ :
+          {x : ConcretePlaquette physicalClayDimension L //
+            x ∈ selectedImage residual}) := by
+      exact finsetCodeOfCardLe_injective (selectedImage residual)
+        (by simpa [selectedImage] using hcard residual) hcode
+    exact congrArg
+      (fun z : {x : ConcretePlaquette physicalClayDimension L //
+        x ∈ selectedImage residual} => z.1) hsub
+  · intro residual
+    simpa [selectedImage] using hcard residual
+
+/-- A residual terminal-neighbor dominating menu projects to image compression.
+
+The proof is structural: the selector is chosen from the supplied domination
+relation, and the selected image is covered by the bounded menu because every
+chosen terminal neighbor is a member of that menu.  It does not construct the
+menu from local degree, residual paths, root-shell reachability, residual size,
+raw frontier growth, deleted-vertex adjacency, empirical search, or packing. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296_of_residualFiberTerminalNeighborDominatingMenu1296
+    (hdominating :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborMenu, hmenu_subset, hmenu_card, hdominating_menu⟩ :=
+    hdominating root k deleted parentOf essential hchoice himage hessential_subset
+  let terminalNeighborOfParent :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} :=
+    fun residual p =>
+      ⟨(Classical.choose (hdominating_menu residual p)).1,
+        hmenu_subset residual (Classical.choose (hdominating_menu residual p)).2⟩
+  let terminalNeighborSelectorEvidence :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData
+            residual p.1 (terminalNeighborOfParent residual p) :=
+    fun residual p => by
+      simpa [terminalNeighborOfParent] using
+        (Classical.choice (Classical.choose_spec (hdominating_menu residual p)))
+  refine ⟨terminalNeighborMenu, hmenu_subset, hmenu_card,
+    terminalNeighborOfParent, terminalNeighborSelectorEvidence, ?_, ?_⟩
+  · intro residual p
+    simpa [terminalNeighborOfParent] using
+      (Classical.choose (hdominating_menu residual p)).2
+  · intro residual x hx
+    rcases Finset.mem_image.mp hx with ⟨p, _hp, rfl⟩
+    simpa [terminalNeighborOfParent] using
+      (Classical.choose (hdominating_menu residual p)).2
+
+/-- A bounded residual terminal-neighbor menu projects to the selected-image
+interface.
+
+The proof is purely structural: it reuses the selector and residual-local
+evidence supplied by
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296`, then
+derives the selected-image cardinality bound from `selected image ⊆ menu` and
+`menu.card <= 1296`.  It does not construct the menu from path existence,
+root/root-shell data, local degree, residual size, raw frontier growth,
+deleted-vertex adjacency, empirical search, or packing. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296_of_residualFiberTerminalNeighborImageCompression1296
+    (hcompression :
+      PhysicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborMenu, _hmenu_subset, hmenu_card,
+      terminalNeighborOfParent, terminalNeighborSelectorEvidence,
+      _hselector_mem_menu, himage_subset_menu⟩ :=
+    hcompression root k deleted parentOf essential hchoice himage hessential_subset
+  refine ⟨terminalNeighborOfParent, terminalNeighborSelectorEvidence, ?_⟩
+  intro residual
+  exact le_trans (Finset.card_le_card (himage_subset_menu residual))
+    (hmenu_card residual)
+
+/-- Terminal-neighbor data repacks into the v2.142 terminal-suffix interface.
+
+The proof is projection-only: it renames the selected `terminalNeighbor` as the
+terminal predecessor in `PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixData`
+and carries the selected-image cardinality bound unchanged.  It does not
+construct terminal neighbors, does not use deleted-vertex adjacency outside the
+residual, and does not replace the image bound by path existence,
+root/root-shell reachability, local degree, residual size, raw frontier growth,
+or packing of an already bounded menu. -/
+theorem physicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296_of_residualFiberCanonicalTerminalNeighborImageBound1296
+    (hneighbor :
+      PhysicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296) :
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalNeighborData, hcard⟩ :=
+    hneighbor root k deleted parentOf essential hchoice himage hessential_subset
+  let terminalSuffixData :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixData
+            residual p.1 :=
+    fun residual p =>
+      { target := (terminalNeighborData residual p).target
+        target_eq := (terminalNeighborData residual p).target_eq
+        source := (terminalNeighborData residual p).source
+        canonicalWalk := (terminalNeighborData residual p).canonicalWalk
+        terminalPred := (terminalNeighborData residual p).terminalNeighbor
+        prefixToTerminalPred :=
+          (terminalNeighborData residual p).prefixToTerminalNeighbor
+        terminalSuffix := (terminalNeighborData residual p).terminalNeighborSuffix
+        terminalSuffix_is_last_edge :=
+          (terminalNeighborData residual p).terminalNeighbor_is_last_edge
+        terminalCode := (terminalNeighborData residual p).terminalNeighborCode }
+  refine ⟨terminalSuffixData, ?_⟩
+  intro residual
+  simpa [terminalSuffixData] using hcard residual
+
+/-- Terminal-suffix data repacks into the v2.139 walk terminal-edge interface.
+
+The proof is projection-only: it forgets the explicit prefix-to-terminal
+predecessor field and carries the terminal suffix, final-edge adjacency, and
+selected-image cardinality bound into the v2.139 contract.  It does not
+construct terminal suffixes, does not use deleted-vertex adjacency outside the
+residual, and does not replace the image bound by path existence,
+root/root-shell reachability, local degree, residual size, raw frontier growth,
+or packing of an already bounded menu. -/
+theorem physicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296_of_residualFiberCanonicalTerminalSuffixImageBound1296
+    (hsuffix :
+      PhysicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296) :
+    PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalSuffixData, hcard⟩ :=
+    hsuffix root k deleted parentOf essential hchoice himage hessential_subset
+  let walkTerminalEdgeData :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeData
+            residual p.1 :=
+    fun residual p =>
+      { target := (terminalSuffixData residual p).target
+        target_eq := (terminalSuffixData residual p).target_eq
+        walkSource := (terminalSuffixData residual p).source
+        canonicalWalk := (terminalSuffixData residual p).canonicalWalk
+        terminalPred := (terminalSuffixData residual p).terminalPred
+        terminalSuffix := (terminalSuffixData residual p).terminalSuffix
+        terminalCode := (terminalSuffixData residual p).terminalCode }
+  refine ⟨walkTerminalEdgeData, ?_, ?_⟩
+  · intro residual p hnontrivial
+    dsimp [walkTerminalEdgeData]
+    exact (terminalSuffixData residual p).terminalSuffix_is_last_edge hnontrivial
+  · intro residual
+    simpa [walkTerminalEdgeData] using hcard residual
+
+/-- Walk terminal-edge data repacks into the v2.136 terminal-edge selector.
+
+This bridge is deliberately projection-only: it forgets the stronger v2.138
+field names into `PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeData`.
+It does not construct walk data, does not use deleted-vertex adjacency outside
+the residual, and does not replace the selected-image bound by path existence,
+root/root-shell reachability, local degree, residual size, raw frontier growth,
+or packing of an already bounded menu. -/
+theorem physicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296_of_residualFiberCanonicalWalkTerminalEdgeImageBound1296
+    (hwalk :
+      PhysicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296) :
+    PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨walkTerminalEdgeData, hterminalEdge, hcard⟩ :=
+    hwalk root k deleted parentOf essential hchoice himage hessential_subset
+  let terminalEdgeData :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeData
+            residual p.1 :=
+    fun residual p =>
+      { target := (walkTerminalEdgeData residual p).target
+        target_eq := (walkTerminalEdgeData residual p).target_eq
+        pathSource := (walkTerminalEdgeData residual p).walkSource
+        canonicalPath := (walkTerminalEdgeData residual p).canonicalWalk
+        terminalPred := (walkTerminalEdgeData residual p).terminalPred
+        terminalPath := (walkTerminalEdgeData residual p).terminalSuffix
+        terminalCode := (walkTerminalEdgeData residual p).terminalCode }
+  refine ⟨terminalEdgeData, ?_, ?_⟩
+  · intro residual p hnontrivial
+    dsimp [terminalEdgeData]
+    exact hterminalEdge residual p hnontrivial
+  · intro residual
+    simpa [terminalEdgeData] using hcard residual
+
+/-- Terminal-edge selector data repacks into the v2.132 canonical last-edge
+image interface.
+
+The proof projects the selected terminal predecessor and terminal path from the
+new v2.135 data object.  It does not construct the selector, does not use
+deleted-vertex adjacency outside the residual, and does not replace the selected
+image bound by root-shell reachability, local degree, residual size, raw
+frontier growth, or empirical search. -/
+theorem physicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296_of_residualFiberCanonicalTerminalEdgeSelector1296
+    (hselector :
+      PhysicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296) :
+    PhysicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨terminalEdgeData, hterminalEdge, hcard⟩ :=
+    hselector root k deleted parentOf essential hchoice himage hessential_subset
+  let canonicalLastEdgeData :
+      ∀ residual,
+        (p : {p : ConcretePlaquette physicalClayDimension L //
+          p ∈ essential residual}) →
+          PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgeData
+            residual p.1 :=
+    fun residual p =>
+      { target := (terminalEdgeData residual p).target
+        target_eq := (terminalEdgeData residual p).target_eq
+        predecessor := (terminalEdgeData residual p).terminalPred
+        path := (terminalEdgeData residual p).terminalPath
+        code := (terminalEdgeData residual p).terminalCode }
+  refine ⟨canonicalLastEdgeData, ?_, ?_⟩
+  · intro residual p hnontrivial
+    dsimp [canonicalLastEdgeData]
+    exact hterminalEdge residual p hnontrivial
+  · intro residual
+    simpa [canonicalLastEdgeData] using hcard residual
+
+/-- Residual-fiber selected terminal-predecessor image bound.
+
+This is the graph-theoretic producer core behind
+`PhysicalPlaquetteGraphResidualFiberTerminalPredecessorDomination1296`.  It is
+indexed by the same v2.121 base-aware bookkeeping data and hypotheses, but it
+does not package a menu existential directly.  Instead it asks for a
+residual-indexed terminal-predecessor selector and the bound that the selector
+image has cardinality at most `1296`.  The bridge below turns this image into
+the menu required by the v2.126 producer interface. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∃ terminalPredOfParent :
+        ∀ residual,
+          {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+        (∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual}),
+          residual.card ≠ 1 →
+            p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+              (terminalPredOfParent residual p).1) ∧
+        (∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual}),
+          ∃ target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual},
+            target.1 = p.1 ∧
+              Nonempty
+                (((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+                  (terminalPredOfParent residual p) target)) ∧
+        ∀ residual,
+          ((essential residual).attach.image
+            (fun p => (terminalPredOfParent residual p).1)).card ≤ 1296
+
+/-- Canonical residual last-edge data projects to the v2.129 selected-image
+interface.
+
+The proof only repackages the `predecessor`, `target`, `target_eq`, and `path`
+fields of `PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgeData`.  It
+does not construct canonical paths, does not use deleted-vertex adjacency
+outside the residual, and does not invoke empirical search evidence. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296_of_residualFiberCanonicalLastEdgeImageBound1296
+    (hcanonical :
+      PhysicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨canonicalLastEdgeData, hlastEdge, hcard⟩ :=
+    hcanonical root k deleted parentOf essential hchoice himage hessential_subset
+  let terminalPredOfParent :
+      ∀ residual,
+        {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} :=
+    fun residual p => (canonicalLastEdgeData residual p).predecessor
+  refine ⟨terminalPredOfParent, ?_, ?_, ?_⟩
+  · intro residual p hcard_ne
+    exact hlastEdge residual p hcard_ne
+  · intro residual p
+    refine ⟨(canonicalLastEdgeData residual p).target, ?_, ?_⟩
+    · exact (canonicalLastEdgeData residual p).target_eq
+    · exact ⟨(canonicalLastEdgeData residual p).path⟩
+  · intro residual
+    exact hcard residual
+
+/-- Residual-fiber terminal-predecessor domination producer.
+
+This is the producer counterpart to
+`PhysicalPlaquetteGraphResidualDominatedTerminalPredecessorPacking1296`.  It is
+indexed by the `deleted`/`parentOf`/`essential` data and bookkeeping clauses
+from `PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296`;
+therefore it does not claim that arbitrary `essential ⊆ residual` data is
+last-edge dominated.  It supplies only the explicit selected menu, selected
+terminal predecessor, path/domination evidence, and menu cardinality bound
+that the v2.124 packing theorem can code into `Fin 1296`. -/
+def PhysicalPlaquetteGraphResidualFiberTerminalPredecessorDomination1296 :
+    Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ)
+    (deleted parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L)
+    (essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L)),
+    (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+      (hk : 2 ≤ k)
+      (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k),
+      deleted X ∈ X ∧
+        deleted X ≠ root ∧
+        X.erase (deleted X) ∈
+          plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root (k - 1) ∧
+        parentOf X ∈ X.erase (deleted X) ∧
+        parentOf X ∈ essential (X.erase (deleted X)) ∧
+        (((X.erase (deleted X)).card = 1 ∧
+            parentOf X = root ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+          ((X.erase (deleted X)).card ≠ 1 ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) →
+    (∀ residual,
+      essential residual =
+        ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+            physicalClayDimension L root k).filter
+            (fun X => X.erase (deleted X) = residual)).image parentOf) →
+    (∀ residual, essential residual ⊆ residual) →
+      ∀ residual,
+        ∃ terminalPredMenu : Finset (ConcretePlaquette physicalClayDimension L),
+        ∃ terminalPredOfParent :
+          {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+          terminalPredMenu ⊆ residual ∧
+          terminalPredMenu =
+            (essential residual).attach.image
+              (fun p => (terminalPredOfParent p).1) ∧
+          (∀ p, (terminalPredOfParent p).1 ∈ terminalPredMenu) ∧
+          (residual.card ≠ 1 →
+            ∀ p : {p : ConcretePlaquette physicalClayDimension L //
+                p ∈ essential residual},
+              p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+                (terminalPredOfParent p).1) ∧
+          (∀ p : {p : ConcretePlaquette physicalClayDimension L //
+              p ∈ essential residual},
+            ∃ target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual},
+              target.1 = p.1 ∧
+                Nonempty
+                  (((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+                    (terminalPredOfParent p) target)) ∧
+          terminalPredMenu.card ≤ 1296
+
+/-- A residual-fiber selected-image bound supplies the v2.126 residual-fiber
+terminal-predecessor producer.
+
+The proof is purely a repacking bridge: it defines the terminal predecessor menu
+as the image of the residual-indexed selector.  It does not construct the
+selector, does not use deleted-vertex adjacency outside the residual, and does
+not invoke empirical search evidence. -/
+theorem physicalPlaquetteGraphResidualFiberTerminalPredecessorDomination1296_of_residualFiberTerminalPredecessorImageBound1296
+    (himageBound :
+      PhysicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296) :
+    PhysicalPlaquetteGraphResidualFiberTerminalPredecessorDomination1296 := by
+  classical
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset residual
+  letI : NeZero L := hL
+  obtain ⟨terminalPredOfParent, hlastEdge, hpath, hcard⟩ :=
+    himageBound root k deleted parentOf essential hchoice himage hessential_subset
+  let terminalPredMenu : Finset (ConcretePlaquette physicalClayDimension L) :=
+    (essential residual).attach.image
+      (fun p => (terminalPredOfParent residual p).1)
+  refine ⟨terminalPredMenu, terminalPredOfParent residual, ?_, ?_, ?_, ?_, ?_, ?_⟩
+  · intro q hq
+    dsimp [terminalPredMenu] at hq
+    rcases Finset.mem_image.mp hq with ⟨p, _hp, rfl⟩
+    exact (terminalPredOfParent residual p).2
+  · rfl
+  · intro p
+    dsimp [terminalPredMenu]
+    exact Finset.mem_image.mpr ⟨p, by simp, rfl⟩
+  · intro hcard_ne p
+    exact hlastEdge residual p hcard_ne
+  · intro p
+    exact hpath residual p
+  · exact hcard residual
+
+/-- Base-aware deletion/parent bookkeeping for the terminal-predecessor bridge.
+
+This contains exactly the `deleted`, `parentOf`, and `essential` data needed to
+feed the residual-only terminal-predecessor domination theorem.  It deliberately
+does not contain terminal-predecessor menus, codes, paths, or selected-image
+bounds; those remain the responsibility of
+`PhysicalPlaquetteGraphResidualTerminalPredecessorDomination1296`. -/
+def PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        deleted X ∈ X ∧
+          deleted X ≠ root ∧
+          X.erase (deleted X) ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          parentOf X ∈ X.erase (deleted X) ∧
+          parentOf X ∈ essential (X.erase (deleted X)) ∧
+          (((X.erase (deleted X)).card = 1 ∧
+              parentOf X = root ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+            ((X.erase (deleted X)).card ≠ 1 ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) ∧
+      (∀ residual,
+        essential residual =
+          ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root k).filter
+              (fun X => X.erase (deleted X) = residual)).image parentOf) ∧
+      ∀ residual, essential residual ⊆ residual
+
+/-- Low-cardinality non-root fallback witness for base-aware bookkeeping.
+
+The intended proof should come from the concrete physical plaquette
+representation.  It is separated from the bookkeeping interface so the `k < 2`
+branch cannot hide a non-root deleted plaquette behind an arbitrary default. -/
+def PhysicalPlaquetteGraphRootHasDistinctPlaquette : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L),
+    ∃ fallbackDeleted : ConcretePlaquette physicalClayDimension L,
+      fallbackDeleted ≠ root
+
+/-- Low-cardinality totalization for the v2.116 base-aware bookkeeping interface.
+
+This interface isolates the `k ≤ 1` residual-fiber image/subset obligation.  It
+does not invoke safe deletion, which is only available for `2 ≤ k`.  The
+load-bearing low-cardinality clause is explicit: every current low-cardinality
+anchored bucket must have `parentOf X ∈ X.erase (deleted X)`, so the eventual
+proof cannot rely on hidden arbitrary defaults.
+
+The intended bridge back into
+`PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296` splits on
+`k ≤ 1`: this interface supplies the low-cardinality image/subset branch, while
+the existing safe-deletion and residual-parent APIs supply the `2 ≤ k` branch. -/
+def PhysicalPlaquetteGraphBaseAwareLowCardBookkeepingTotalization1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    k ≤ 1 →
+    ∃ fallbackDeleted : ConcretePlaquette physicalClayDimension L,
+      fallbackDeleted ≠ root ∧
+    ∃ deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      (∀ X : Finset (ConcretePlaquette physicalClayDimension L),
+        deleted X = fallbackDeleted ∧ parentOf X = root) ∧
+      (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (_hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        parentOf X ∈ X.erase (deleted X)) ∧
+      (∀ residual,
+        essential residual =
+          ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root k).filter
+              (fun X => X.erase (deleted X) = residual)).image parentOf) ∧
+      ∀ residual, essential residual ⊆ residual
+
+/-- Residual last-edge dominating-set bound for the v2.107 selector route.
+
+This is deliberately factored below
+`PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296`.
+It names a residual-only terminal-predecessor menu and an injective `Fin 1296`
+code on that menu.  The mathematical burden is the selected terminal-predecessor
+image; this is not a raw residual-frontier bound, not a residual-cardinality
+bound, not the local degree of one fixed portal, and not first-shell
+reachability. -/
+def PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        deleted X ∈ X ∧
+          deleted X ≠ root ∧
+          X.erase (deleted X) ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          parentOf X ∈ X.erase (deleted X) ∧
+          parentOf X ∈ essential (X.erase (deleted X)) ∧
+          (((X.erase (deleted X)).card = 1 ∧
+              parentOf X = root ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+            ((X.erase (deleted X)).card ≠ 1 ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) ∧
+      ∃ terminalPredMenu :
+        Finset (ConcretePlaquette physicalClayDimension L) →
+          Finset (ConcretePlaquette physicalClayDimension L),
+      ∃ terminalPredOfParent :
+        ∀ residual,
+          {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+      ∃ terminalPredCode :
+        ∀ residual,
+          {q : ConcretePlaquette physicalClayDimension L //
+            q ∈ terminalPredMenu residual} → Fin 1296,
+      ∃ terminalPredPath :
+        ∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+          ∃ target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual},
+            target.1 = p.1 ∧
+              Nonempty
+                (((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+                  (terminalPredOfParent residual p) target),
+        (∀ residual,
+          essential residual =
+            ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+                physicalClayDimension L root k).filter
+                (fun X => X.erase (deleted X) = residual)).image parentOf) ∧
+        (∀ residual, essential residual ⊆ residual) ∧
+        (∀ residual,
+          terminalPredMenu residual ⊆ residual ∧
+            Function.Injective (terminalPredCode residual)) ∧
+        (∀ residual,
+          terminalPredMenu residual =
+            (essential residual).attach.image
+              (fun p => (terminalPredOfParent residual p).1)) ∧
+        (∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+          (terminalPredOfParent residual p).1 ∈ terminalPredMenu residual) ∧
+        ∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+          residual.card ≠ 1 →
+            p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+              (terminalPredOfParent residual p).1
+
+/-- Base-aware bookkeeping plus residual-only terminal-predecessor domination
+repack into the v2.107 residual last-edge dominating-set interface.
+
+This bridge proves no bookkeeping theorem and no terminal-predecessor domination
+theorem.  It only applies the residual-only domination theorem to each
+`essential residual` supplied by the bookkeeping layer and repacks the fields. -/
+theorem physicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296_of_baseAwareBookkeeping_of_terminalPredecessorDomination1296
+    (hbook : PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296)
+    (hterminal : PhysicalPlaquetteGraphResidualTerminalPredecessorDomination1296) :
+    PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨deleted, parentOf, essential, hchoice, himage, hessential_subset⟩ :=
+    hbook root k
+  let hwit :
+      ∀ residual,
+        ∃ terminalPredMenu : Finset (ConcretePlaquette physicalClayDimension L),
+        ∃ terminalPredOfParent :
+          {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+        ∃ terminalPredCode :
+          {q : ConcretePlaquette physicalClayDimension L //
+            q ∈ terminalPredMenu} → Fin 1296,
+          terminalPredMenu ⊆ residual ∧
+          Function.Injective terminalPredCode ∧
+          terminalPredMenu =
+            (essential residual).attach.image (fun p => (terminalPredOfParent p).1) ∧
+          (∀ p, (terminalPredOfParent p).1 ∈ terminalPredMenu) ∧
+          (residual.card ≠ 1 →
+            ∀ p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual},
+              p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+                (terminalPredOfParent p).1) ∧
+          ∀ p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual},
+            ∃ target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual},
+              target.1 = p.1 ∧
+                Nonempty
+                  (((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+                    (terminalPredOfParent p) target) :=
+    fun residual => hterminal residual (essential residual) (hessential_subset residual)
+  let terminalPredMenu :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L) :=
+    fun residual => Classical.choose (hwit residual)
+  let hwitMenu residual := Classical.choose_spec (hwit residual)
+  let terminalPredOfParent :
+      ∀ residual,
+        {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} :=
+    fun residual => Classical.choose (hwitMenu residual)
+  let hwitParent residual := Classical.choose_spec (hwitMenu residual)
+  let terminalPredCode :
+      ∀ residual,
+        {q : ConcretePlaquette physicalClayDimension L //
+          q ∈ terminalPredMenu residual} → Fin 1296 :=
+    fun residual => Classical.choose (hwitParent residual)
+  let hprops residual := Classical.choose_spec (hwitParent residual)
+  let terminalPredPath :
+      ∀ residual
+        (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+        ∃ target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual},
+          target.1 = p.1 ∧
+            Nonempty
+              (((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+                (terminalPredOfParent residual p) target) :=
+    fun residual p => (hprops residual).2.2.2.2.2 p
+  refine ⟨deleted, parentOf, essential, hchoice, terminalPredMenu,
+    terminalPredOfParent, terminalPredCode, terminalPredPath, himage, hessential_subset,
+    ?_, ?_, ?_, ?_⟩
+  · intro residual
+    exact ⟨(hprops residual).1, (hprops residual).2.1⟩
+  · intro residual
+    exact (hprops residual).2.2.1
+  · intro residual p
+    exact (hprops residual).2.2.2.1 p
+  · intro residual p hcard
+    exact (hprops residual).2.2.2.2.1 hcard p
+
+/-- Base-aware bookkeeping plus a residual-fiber terminal-predecessor producer
+and the explicit packing theorem repack into the v2.107 residual last-edge
+dominating-set interface.
+
+This bridge does not prove the residual-fiber domination producer and does not
+infer domination from arbitrary `essential ⊆ residual` data.  The producer
+supplies the selected menu, last-edge domination evidence, residual path
+evidence, and cardinality bound for the bookkeeping fiber; the packing theorem
+only supplies the injective `Fin 1296` code. -/
+theorem physicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296_of_baseAwareBookkeeping_of_residualFiberTerminalPredecessorDomination1296_of_packing1296
+    (hbook : PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296)
+    (hfiber : PhysicalPlaquetteGraphResidualFiberTerminalPredecessorDomination1296)
+    (hpacking : PhysicalPlaquetteGraphResidualDominatedTerminalPredecessorPacking1296) :
+    PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨deleted, parentOf, essential, hchoice, himage, hessential_subset⟩ :=
+    hbook root k
+  let hwit :
+      ∀ residual,
+        ∃ terminalPredMenu : Finset (ConcretePlaquette physicalClayDimension L),
+        ∃ terminalPredOfParent :
+          {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+            {q : ConcretePlaquette physicalClayDimension L // q ∈ residual},
+          terminalPredMenu ⊆ residual ∧
+          terminalPredMenu =
+            (essential residual).attach.image (fun p => (terminalPredOfParent p).1) ∧
+          (∀ p, (terminalPredOfParent p).1 ∈ terminalPredMenu) ∧
+          (residual.card ≠ 1 →
+            ∀ p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual},
+              p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+                (terminalPredOfParent p).1) ∧
+          (∀ p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual},
+            ∃ target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual},
+              target.1 = p.1 ∧
+                Nonempty
+                  (((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+                    (terminalPredOfParent p) target)) ∧
+          terminalPredMenu.card ≤ 1296 :=
+    fun residual => hfiber root k deleted parentOf essential hchoice himage
+      hessential_subset residual
+  let terminalPredMenu :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L) :=
+    fun residual => Classical.choose (hwit residual)
+  let hwitMenu residual := Classical.choose_spec (hwit residual)
+  let terminalPredOfParent :
+      ∀ residual,
+        {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} :=
+    fun residual => Classical.choose (hwitMenu residual)
+  let hprops residual := Classical.choose_spec (hwitMenu residual)
+  let terminalPredCode :
+      ∀ residual,
+        {q : ConcretePlaquette physicalClayDimension L //
+          q ∈ terminalPredMenu residual} → Fin 1296 :=
+    fun residual =>
+      Classical.choose
+        (hpacking residual (essential residual) (terminalPredMenu residual)
+          (terminalPredOfParent residual) (hessential_subset residual)
+          (hprops residual).1 (hprops residual).2.1 (hprops residual).2.2.1
+          (hprops residual).2.2.2.1 (hprops residual).2.2.2.2.1
+          (hprops residual).2.2.2.2.2)
+  let hcode_inj residual :
+      Function.Injective (terminalPredCode residual) :=
+    Classical.choose_spec
+      (hpacking residual (essential residual) (terminalPredMenu residual)
+        (terminalPredOfParent residual) (hessential_subset residual)
+        (hprops residual).1 (hprops residual).2.1 (hprops residual).2.2.1
+        (hprops residual).2.2.2.1 (hprops residual).2.2.2.2.1
+        (hprops residual).2.2.2.2.2)
+  let terminalPredPath :
+      ∀ residual
+        (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+        ∃ target : {r : ConcretePlaquette physicalClayDimension L // r ∈ residual},
+          target.1 = p.1 ∧
+            Nonempty
+              (((plaquetteGraph physicalClayDimension L).induce {x | x ∈ residual}).Walk
+                (terminalPredOfParent residual p) target) :=
+    fun residual p => (hprops residual).2.2.2.2.1 p
+  refine ⟨deleted, parentOf, essential, hchoice, terminalPredMenu,
+    terminalPredOfParent, terminalPredCode, terminalPredPath, himage, hessential_subset,
+    ?_, ?_, ?_, ?_⟩
+  · intro residual
+    exact ⟨(hprops residual).1, hcode_inj residual⟩
+  · intro residual
+    exact (hprops residual).2.1
+  · intro residual p
+    exact (hprops residual).2.2.1 p
+  · intro residual p hcard
+    exact (hprops residual).2.2.2.1 hcard p
+
+/-- A residual-only terminal-predecessor dominating menu supplies the v2.107
+last-edge selector interface.  The bridge only repacks the named menu, selected
+predecessor, and `Fin 1296` code; it proves no dominating-set existence theorem
+and uses no empirical search evidence. -/
+theorem physicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296_of_residualLastEdgeDominatingSetBound1296
+    (hbound : PhysicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296) :
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨deleted, parentOf, essential, hchoice, terminalPredMenu,
+    terminalPredOfParent, terminalPredCode, terminalPredPath, himage, _hessential_subset,
+    hmenu, _hmenu_image, hpred_mem_menu, hlastEdge⟩ :=
+    hbound root k
+  let canonicalLastEdgeData :
+      ∀ residual
+        (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+          PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgeData residual p.1 :=
+    fun residual p =>
+      let codePred :
+          {q : ConcretePlaquette physicalClayDimension L //
+            q ∈ terminalPredMenu residual} :=
+        ⟨(terminalPredOfParent residual p).1, hpred_mem_menu residual p⟩
+      let pathData := terminalPredPath residual p
+      { target := Classical.choose pathData
+        target_eq := (Classical.choose_spec pathData).1
+        predecessor := terminalPredOfParent residual p
+        path := Classical.choice (Classical.choose_spec pathData).2
+        code := terminalPredCode residual codePred }
+  refine ⟨deleted, parentOf, essential, hchoice, canonicalLastEdgeData,
+    himage, ?_, ?_, ?_⟩
+  · intro residual p hcard
+    dsimp [canonicalLastEdgeData]
+    exact hlastEdge residual p hcard
+  · intro residual p q hcode
+    dsimp [canonicalLastEdgeData] at hcode ⊢
+    exact congrArg
+      (fun q : {q : ConcretePlaquette physicalClayDimension L //
+          q ∈ terminalPredMenu residual} => q.1)
+      ((hmenu residual).2 hcode)
+  · intro residual
+    have hcard :=
+      Fintype.card_le_of_injective (terminalPredCode residual) (hmenu residual).2
+    have himage_subset :
+        (essential residual).attach.image
+            (fun p => (canonicalLastEdgeData residual p).predecessor.1) ⊆
+          terminalPredMenu residual := by
+      intro q hq
+      rw [Finset.mem_image] at hq
+      obtain ⟨p, _hp, rfl⟩ := hq
+      dsimp [canonicalLastEdgeData]
+      exact hpred_mem_menu residual p
+    exact (Finset.card_le_card himage_subset).trans
+      (by simpa [Fintype.card_fin] using hcard)
+
+/-- Base-aware residual portal-menu bound for the v2.95 producer route.
+
+This is deliberately factored as a sharper interface than the producer itself:
+it first asks for the base-aware safe-deletion/parent choices, and then asks for
+the residual-only non-singleton portal-menu cover for the resulting essential
+parent fibers.  The mathematical burden is the portal-menu cover, not the
+singleton root-shell branch and not a compression to any older decoder
+constant. -/
+def PhysicalPlaquetteGraphBaseAwareResidualPortalMenuBound1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      (∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        deleted X ∈ X ∧
+          deleted X ≠ root ∧
+          X.erase (deleted X) ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          parentOf X ∈ X.erase (deleted X) ∧
+          parentOf X ∈ essential (X.erase (deleted X)) ∧
+          (((X.erase (deleted X)).card = 1 ∧
+              parentOf X = root ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset root) ∨
+            ((X.erase (deleted X)).card ≠ 1 ∧
+              deleted X ∈
+                (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)))) ∧
+      ∃ portalMenu :
+        Finset (ConcretePlaquette physicalClayDimension L) →
+          Finset (ConcretePlaquette physicalClayDimension L),
+      ∃ portalOfParent :
+        ∀ residual,
+          {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+            ConcretePlaquette physicalClayDimension L,
+        (∀ residual,
+          essential residual =
+            ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+                physicalClayDimension L root k).filter
+                (fun X => X.erase (deleted X) = residual)).image parentOf) ∧
+        (∀ residual,
+          portalMenu residual ⊆ residual ∧ (portalMenu residual).card ≤ 1296) ∧
+        ∀ residual
+          (p : {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual}),
+          residual.card ≠ 1 →
+            portalOfParent residual p ∈ portalMenu residual ∧
+              p.1 ∈ (plaquetteGraph physicalClayDimension L).neighborFinset
+                (portalOfParent residual p)
+
+/-- A bounded last-step portal image yields the v2.98 base-aware residual
+portal-menu bound by taking the portal menu to be exactly that selected image.
+This bridge proves no image bound itself and makes no compression claim. -/
+theorem physicalPlaquetteGraphBaseAwareResidualPortalMenuBound1296_of_baseAwareResidualLastStepPortalImageBound1296
+    (hbound : PhysicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296) :
+    PhysicalPlaquetteGraphBaseAwareResidualPortalMenuBound1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨deleted, parentOf, essential, hchoice, lastStepPortalOfParent,
+    himage, hlastStepPortal, himageBound⟩ := hbound root k
+  let portalMenu :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L) :=
+    fun residual =>
+      (essential residual).attach.image
+        (fun p => lastStepPortalOfParent residual p)
+  refine ⟨deleted, parentOf, essential, hchoice, portalMenu,
+    lastStepPortalOfParent, himage, ?_, ?_⟩
+  · intro residual
+    constructor
+    · intro portal hportal
+      dsimp [portalMenu] at hportal
+      rw [Finset.mem_image] at hportal
+      obtain ⟨p, _hp, rfl⟩ := hportal
+      exact (hlastStepPortal residual p).1
+    · exact himageBound residual
+  · intro residual p hsingle
+    exact ⟨by
+      dsimp [portalMenu]
+      rw [Finset.mem_image]
+      exact ⟨p, by simp, rfl⟩, (hlastStepPortal residual p).2 hsingle⟩
+
+/-- Canonical predecessor data repacks into the v2.101 last-step portal-image
+interface by projecting out the predecessor component.  The `Fin 1296` code and
+separation clause remain available for the future proof of the image bound; this
+bridge itself proves no compression theorem. -/
+theorem physicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296_of_baseAwareResidualCanonicalLastStepPredecessorImageBound1296
+    (hbound :
+      PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296) :
+    PhysicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨deleted, parentOf, essential, hchoice, canonicalLastStepPredecessor,
+    himage, hadjacent, _hseparate, himageBound⟩ := hbound root k
+  let lastStepPortalOfParent :
+      ∀ residual,
+        {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+          ConcretePlaquette physicalClayDimension L :=
+    fun residual p => (canonicalLastStepPredecessor residual p).1.1
+  refine ⟨deleted, parentOf, essential, hchoice, lastStepPortalOfParent,
+    himage, ?_, ?_⟩
+  · intro residual p
+    constructor
+    · exact (canonicalLastStepPredecessor residual p).1.2
+    · exact hadjacent residual p
+  · intro residual
+    simpa [lastStepPortalOfParent] using himageBound residual
+
+/-- Residual last-edge selector data repacks into the v2.104 canonical
+last-step predecessor interface by projecting out its selected predecessor and
+`Fin 1296` code.  This bridge proves no selector existence theorem and does not
+compress any strengthened decoder alphabet. -/
+theorem physicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296_of_baseAwareResidualCanonicalLastEdgePredecessorSelector1296
+    (hbound :
+      PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296) :
+    PhysicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨deleted, parentOf, essential, hchoice, canonicalLastEdgeData,
+    himage, hadjacent, hseparate, himageBound⟩ := hbound root k
+  let canonicalLastStepPredecessor :
+      ∀ residual,
+        {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+          {q : ConcretePlaquette physicalClayDimension L // q ∈ residual} × Fin 1296 :=
+    fun residual p =>
+      ((canonicalLastEdgeData residual p).predecessor,
+        (canonicalLastEdgeData residual p).code)
+  refine ⟨deleted, parentOf, essential, hchoice, canonicalLastStepPredecessor,
+    himage, ?_, ?_, ?_⟩
+  · intro residual p
+    simpa [canonicalLastStepPredecessor] using hadjacent residual p
+  · intro residual p q hcode
+    exact hseparate residual p q hcode
+  · intro residual
+    simpa [canonicalLastStepPredecessor] using himageBound residual
+
+/-- The factored base-aware portal-menu bound repacks directly into the v2.95
+base-aware multi-portal producer interface.  This bridge introduces no
+compression claim and does not prove the portal-menu bound itself. -/
+theorem physicalPlaquetteGraphBaseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296_of_baseAwareResidualPortalMenuBound1296
+    (hbound : PhysicalPlaquetteGraphBaseAwareResidualPortalMenuBound1296) :
+    PhysicalPlaquetteGraphBaseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨deleted, parentOf, essential, hchoice, portalMenu, portalOfParent,
+    himage, hportalMenu, hportalSupport⟩ := hbound root k
+  exact ⟨deleted, parentOf, essential, portalMenu, portalOfParent,
+    himage, hportalMenu, hportalSupport, hchoice⟩
+
+/-- A multi-portal orientation yields the triple-symbol decoder contract by
+enumerating the residual portal menu and then using the existing local neighbor
+decoder twice: once from portal to parent, and once from parent to the deleted
+plaquette.  This is a bridge only; it does not compress the triple symbol back
+to the old `1296` or `1296 × 1296` constants. -/
+theorem physicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296_of_multiPortalSupportedSafeDeletionOrientation1296x1296
+    (hmulti : PhysicalPlaquetteGraphMultiPortalSupportedSafeDeletionOrientation1296x1296) :
+    PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨deleted, parentOf, essential, portalMenu, portalOfParent,
+    _himage, hportalMenu, hportalSupport, hchoice⟩ := hmulti root k
+  obtain ⟨code, hinj⟩ :=
+    (plaquetteNeighborStepCodeBoundDim_physical_ternary (L := L))
+  let portalDecode :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Fin 1296 → Option (ConcretePlaquette physicalClayDimension L) :=
+    fun residual symbol =>
+      if h :
+          ∃ p : {p : ConcretePlaquette physicalClayDimension L // p ∈ portalMenu residual},
+            finsetCodeOfCardLe (portalMenu residual) (hportalMenu residual).2 p = symbol then
+        some (Classical.choose h).1
+      else
+        none
+  refine ⟨fun residual symbol =>
+    match portalDecode residual symbol.1 with
+    | some portal =>
+        match physicalNeighborDecodeOfStepCode code portal symbol.2.1 with
+        | some parent => physicalNeighborDecodeOfStepCode code parent symbol.2.2
+        | none => none
+    | none => none, ?_⟩
+  intro X hk hX
+  obtain ⟨hzX, hz_ne_root, hresidual, hp_residual, hp_essential, hz_parent⟩ :=
+    hchoice hk hX
+  let residual := X.erase (deleted X)
+  let parentSubtype :
+      {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} :=
+    ⟨parentOf X, hp_essential⟩
+  let portal := portalOfParent residual parentSubtype
+  have hportal := hportalSupport residual parentSubtype
+  let portalSymbol : Fin 1296 :=
+    finsetCodeOfCardLe (portalMenu residual) (hportalMenu residual).2
+      ⟨portal, hportal.1⟩
+  let parentSymbol : Fin 1296 := code portal (parentOf X)
+  let deletedSymbol : Fin 1296 := code (parentOf X) (deleted X)
+  refine ⟨deleted X, hzX, hz_ne_root, hresidual,
+    (portalSymbol, (parentSymbol, deletedSymbol)), ?_⟩
+  have hportalDecode :
+      portalDecode residual portalSymbol = some portal := by
+    dsimp [portalDecode, portalSymbol]
+    rw [dif_pos ⟨⟨portal, hportal.1⟩, rfl⟩]
+    have hchoose :=
+      Classical.choose_spec
+        (show
+          ∃ q : {p : ConcretePlaquette physicalClayDimension L // p ∈ portalMenu residual},
+            finsetCodeOfCardLe (portalMenu residual) (hportalMenu residual).2 q =
+              finsetCodeOfCardLe (portalMenu residual) (hportalMenu residual).2
+                ⟨portal, hportal.1⟩ from
+          ⟨⟨portal, hportal.1⟩, rfl⟩)
+    have hsub :
+        Classical.choose
+            (show
+              ∃ q : {p : ConcretePlaquette physicalClayDimension L // p ∈ portalMenu residual},
+                finsetCodeOfCardLe (portalMenu residual) (hportalMenu residual).2 q =
+                  finsetCodeOfCardLe (portalMenu residual) (hportalMenu residual).2
+                    ⟨portal, hportal.1⟩ from
+              ⟨⟨portal, hportal.1⟩, rfl⟩) =
+          ⟨portal, hportal.1⟩ :=
+      finsetCodeOfCardLe_injective (portalMenu residual) (hportalMenu residual).2
+        hchoose
+    exact congrArg some (congrArg Subtype.val hsub)
+  have hparentDecode :
+      physicalNeighborDecodeOfStepCode code portal parentSymbol =
+        some (parentOf X) := by
+    simpa [parentSymbol] using
+      physicalNeighborDecodeOfStepCode_spec hinj hportal.2
+  have hdeletedDecode :
+      physicalNeighborDecodeOfStepCode code (parentOf X) deletedSymbol =
+        some (deleted X) := by
+    simpa [deletedSymbol] using
+      physicalNeighborDecodeOfStepCode_spec hinj hz_parent
+  dsimp
+  rw [hportalDecode]
+  simp [hparentDecode, hdeletedDecode]
+
+/-- A base-aware multi-portal orientation yields the triple-symbol decoder
+contract.  Singleton residuals use the third symbol as a direct root-shell code;
+non-singleton residuals use the v2.92 portal → parent → deleted route.  This is
+still a triple-symbol bridge only and does not compress to older constants. -/
+theorem physicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296_of_baseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296
+    (hmulti :
+      PhysicalPlaquetteGraphBaseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296) :
+    PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨deleted, parentOf, essential, portalMenu, portalOfParent,
+    _himage, hportalMenu, hportalSupport, hchoice⟩ := hmulti root k
+  obtain ⟨code, hinj⟩ :=
+    (plaquetteNeighborStepCodeBoundDim_physical_ternary (L := L))
+  let portalDecode :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Fin 1296 → Option (ConcretePlaquette physicalClayDimension L) :=
+    fun residual symbol =>
+      if h :
+          ∃ p : {p : ConcretePlaquette physicalClayDimension L // p ∈ portalMenu residual},
+            finsetCodeOfCardLe (portalMenu residual) (hportalMenu residual).2 p = symbol then
+        some (Classical.choose h).1
+      else
+        none
+  refine ⟨fun residual symbol =>
+    if h : residual.card = 1 then
+      physicalNeighborDecodeOfStepCode code root symbol.2.2
+    else
+      match portalDecode residual symbol.1 with
+      | some portal =>
+          match physicalNeighborDecodeOfStepCode code portal symbol.2.1 with
+          | some parent => physicalNeighborDecodeOfStepCode code parent symbol.2.2
+          | none => none
+      | none => none, ?_⟩
+  intro X hk hX
+  obtain ⟨hzX, hz_ne_root, hresidual, hp_residual, hp_essential, hbranch⟩ :=
+    hchoice hk hX
+  let residual := X.erase (deleted X)
+  rcases hbranch with hbase | hrecursive
+  · rcases hbase with ⟨hres_card, _hp_root, hz_root⟩
+    let deletedSymbol : Fin 1296 := code root (deleted X)
+    refine ⟨deleted X, hzX, hz_ne_root, hresidual,
+      ((0 : Fin 1296), ((0 : Fin 1296), deletedSymbol)), ?_⟩
+    have hdeletedDecode :
+        physicalNeighborDecodeOfStepCode code root deletedSymbol =
+          some (deleted X) := by
+      simpa [deletedSymbol] using
+        physicalNeighborDecodeOfStepCode_spec hinj hz_root
+    simp [hres_card, hdeletedDecode]
+  · rcases hrecursive with ⟨hres_card_ne, hz_parent⟩
+    let parentSubtype :
+        {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} :=
+      ⟨parentOf X, hp_essential⟩
+    let portal := portalOfParent residual parentSubtype
+    have hportal := hportalSupport residual parentSubtype hres_card_ne
+    let portalSymbol : Fin 1296 :=
+      finsetCodeOfCardLe (portalMenu residual) (hportalMenu residual).2
+        ⟨portal, hportal.1⟩
+    let parentSymbol : Fin 1296 := code portal (parentOf X)
+    let deletedSymbol : Fin 1296 := code (parentOf X) (deleted X)
+    refine ⟨deleted X, hzX, hz_ne_root, hresidual,
+      (portalSymbol, (parentSymbol, deletedSymbol)), ?_⟩
+    have hportalDecode :
+        portalDecode residual portalSymbol = some portal := by
+      dsimp [portalDecode, portalSymbol]
+      rw [dif_pos ⟨⟨portal, hportal.1⟩, rfl⟩]
+      have hchoose :=
+        Classical.choose_spec
+          (show
+            ∃ q : {p : ConcretePlaquette physicalClayDimension L // p ∈ portalMenu residual},
+              finsetCodeOfCardLe (portalMenu residual) (hportalMenu residual).2 q =
+                finsetCodeOfCardLe (portalMenu residual) (hportalMenu residual).2
+                  ⟨portal, hportal.1⟩ from
+            ⟨⟨portal, hportal.1⟩, rfl⟩)
+      have hsub :
+          Classical.choose
+              (show
+                ∃ q : {p : ConcretePlaquette physicalClayDimension L // p ∈ portalMenu residual},
+                  finsetCodeOfCardLe (portalMenu residual) (hportalMenu residual).2 q =
+                    finsetCodeOfCardLe (portalMenu residual) (hportalMenu residual).2
+                      ⟨portal, hportal.1⟩ from
+                ⟨⟨portal, hportal.1⟩, rfl⟩) =
+            ⟨portal, hportal.1⟩ :=
+        finsetCodeOfCardLe_injective (portalMenu residual) (hportalMenu residual).2
+          hchoose
+      exact congrArg some (congrArg Subtype.val hsub)
+    have hparentDecode :
+        physicalNeighborDecodeOfStepCode code portal parentSymbol =
+          some (parentOf X) := by
+      simpa [parentSymbol] using
+        physicalNeighborDecodeOfStepCode_spec hinj hportal.2
+    have hdeletedDecode :
+        physicalNeighborDecodeOfStepCode code (parentOf X) deletedSymbol =
+          some (deleted X) := by
+      simpa [deletedSymbol] using
+        physicalNeighborDecodeOfStepCode_spec hinj hz_parent
+    simp [residual, hres_card_ne, hportalDecode, hparentDecode, hdeletedDecode]
+
+/-- Portal-supported safe-deletion orientation for the v2.86 policy.
+
+This is a strictly more structured target than
+`PhysicalPlaquetteGraphSafeDeletionOrientationCodeBound1296`: it does not
+provide an orientation code.  Instead, it requires the essential chosen-parent
+menu over every residual fiber to lie inside the local neighbor shell of a
+residual-only portal.  The bridge below then derives the `Fin 1296` orientation
+code from the already proved physical local neighbor-code bound. -/
+def PhysicalPlaquetteGraphPortalSupportedSafeDeletionOrientation1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ portal :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Option (ConcretePlaquette physicalClayDimension L),
+    ∃ deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L,
+    ∃ essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      (∀ residual,
+        essential residual =
+          ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root k).filter
+              (fun X => X.erase (deleted X) = residual)).image parentOf) ∧
+      (∀ residual, essential residual ⊆ residual) ∧
+      (∀ residual,
+        match portal residual with
+        | some portalPoint =>
+            essential residual ⊆
+              (plaquetteGraph physicalClayDimension L).neighborFinset portalPoint
+        | none => essential residual = ∅) ∧
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        deleted X ∈ X ∧
+          deleted X ≠ root ∧
+          X.erase (deleted X) ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          parentOf X ∈ X.erase (deleted X) ∧
+          parentOf X ∈ essential (X.erase (deleted X)) ∧
+          ∃ portalX,
+            portal (X.erase (deleted X)) = some portalX ∧
+            parentOf X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset portalX ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X)
+
+/-- A portal-local chosen-parent shell yields the orientation-code interface by
+coding chosen parents with the local physical neighbor code of the residual
+portal.  This bridge is conditional: it does not prove the portal-supported
+orientation policy itself. -/
+theorem physicalPlaquetteGraphSafeDeletionOrientationCodeBound1296_of_portalSupportedSafeDeletionOrientation1296
+    (hportal : PhysicalPlaquetteGraphPortalSupportedSafeDeletionOrientation1296) :
+    PhysicalPlaquetteGraphSafeDeletionOrientationCodeBound1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨portal, deleted, parentOf, essential, himage, hsubset,
+    hportal_shell, hchoice⟩ := hportal root k
+  obtain ⟨code, hcode_inj⟩ :=
+    (plaquetteNeighborStepCodeBoundDim_physical_ternary (L := L))
+  let orientCode :
+      ∀ residual,
+        {p : ConcretePlaquette physicalClayDimension L // p ∈ essential residual} →
+          Fin 1296 :=
+    fun residual p =>
+      match portal residual with
+      | some portalPoint => code portalPoint p.1
+      | none => 0
+  refine ⟨deleted, parentOf, essential, orientCode, himage, ?_, hsubset, ?_⟩
+  · intro residual
+    intro a b hab
+    dsimp [orientCode] at hab
+    cases hres : portal residual with
+    | none =>
+        have hempty : essential residual = ∅ := by
+          simpa [hres] using hportal_shell residual
+        have ha : a.1 ∈ (∅ : Finset (ConcretePlaquette physicalClayDimension L)) := by
+          simpa [hempty] using a.2
+        simp at ha
+    | some portalPoint =>
+        have hshell :
+            essential residual ⊆
+              (plaquetteGraph physicalClayDimension L).neighborFinset portalPoint := by
+          simpa [hres] using hportal_shell residual
+        have hab' : code portalPoint a.1 = code portalPoint b.1 := by
+          simpa [hres] using hab
+        apply Subtype.ext
+        exact hcode_inj portalPoint (hshell a.2) (hshell b.2) hab'
+  · intro X hk hX
+    obtain ⟨hzX, hz_ne_root, hresidual, hp_residual, hp_essential,
+      _portalX, _hportalX, _hp_shell, hneighbor⟩ := hchoice hk hX
+    exact ⟨hzX, hz_ne_root, hresidual, hp_residual, hp_essential, hneighbor⟩
+
+/-- A finite orientation-code injection into `Fin 1296` implies the essential
+chosen-parent frontier bound. -/
+theorem physicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296_of_safeDeletionOrientationCodeBound1296
+    (horient : PhysicalPlaquetteGraphSafeDeletionOrientationCodeBound1296) :
+    PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296 := by
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨deleted, parentOf, essential, orientCode, himage, hcode_inj,
+    hsubset, hchoice⟩ := horient root k
+  refine ⟨deleted, parentOf, essential, himage, ?_, hchoice⟩
+  intro residual
+  refine ⟨hsubset residual, ?_⟩
+  have hcard :=
+    Fintype.card_le_of_injective (orientCode residual) (hcode_inj residual)
+  simpa [Fintype.card_fin] using hcard
+
+/-- Residual-frontier parent-menu bound for the strengthened symbolic B.2
+decoder.
+
+This is the missing bounded-menu statement isolated by v2.76.  It is different
+from the local degree bound `plaquetteGraph_neighborFinset_card_le_physical_ternary`:
+that theorem bounds the number of deleted plaquettes adjacent to one fixed
+parent, while this proposition bounds the number of residual parent candidates
+needed to cover all safe one-plaquette extensions of a residual bucket. -/
+def PhysicalPlaquetteGraphResidualParentMenuBound1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ menu :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L),
+      (∀ residual,
+        menu residual ⊆ residual ∧ (menu residual).card ≤ 1296) ∧
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+          X.erase z ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          ∃ p, p ∈ menu (X.erase z) ∧
+            z ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p
+
+/-- A proved essential safe-deletion parent-frontier bound gives the residual
+parent-menu bound by taking each residual menu to be the essential parent image
+over the canonical-deletion fiber.  This bridge is conditional: it does not
+prove the essential frontier bound itself. -/
+theorem physicalPlaquetteGraphResidualParentMenuBound1296_of_essentialSafeDeletionParentFrontierBound1296
+    (hessential : PhysicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296) :
+    PhysicalPlaquetteGraphResidualParentMenuBound1296 := by
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨deleted, parentOf, essential, _himage, hessential_bound, hchoice⟩ :=
+    hessential root k
+  refine ⟨essential, hessential_bound, ?_⟩
+  intro X hk hX
+  obtain ⟨hzX, hz_ne_root, hresidual, hp_residual, hp_menu, hneighbor⟩ :=
+    hchoice hk hX
+  exact ⟨deleted X, hzX, hz_ne_root, hresidual, parentOf X, hp_menu, hneighbor⟩
+
+/-- Residual-only parent-menu cover for the strengthened symbolic B.2 decoder.
+
+For each residual bucket, the menu `parent residual : Fin 1296 → Option ...`
+is fixed before the current extension is inspected.  The statement says that
+every current anchored bucket has a safe deleted plaquette whose residual
+neighbor-parent appears in that residual-only menu.  This is the exact
+combinatorial content isolated by v2.74; it is still only a `Prop` target. -/
+def PhysicalPlaquetteGraphResidualParentMenuCovers1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ parent :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Fin 1296 → Option (ConcretePlaquette physicalClayDimension L),
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+          X.erase z ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          ∃ parentSymbol : Fin 1296, ∃ p,
+            parent (X.erase z) parentSymbol = some p ∧
+            p ∈ X.erase z ∧
+            z ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p
+
+/-- A proved residual-frontier menu-size bound can be enumerated into the
+`Fin 1296` parent-menu interface.  This bridge is conditional: it does not prove
+the residual-frontier bound itself. -/
+theorem physicalPlaquetteGraphResidualParentMenuCovers1296_of_residualParentMenuBound1296
+    (hbound : PhysicalPlaquetteGraphResidualParentMenuBound1296) :
+    PhysicalPlaquetteGraphResidualParentMenuCovers1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨menu, hmenu_bound, hcover⟩ := hbound root k
+  let parent :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Fin 1296 → Option (ConcretePlaquette physicalClayDimension L) :=
+    fun residual symbol =>
+      if h :
+          ∃ p : {x : ConcretePlaquette physicalClayDimension L // x ∈ menu residual},
+            finsetCodeOfCardLe (menu residual) (hmenu_bound residual).2 p = symbol then
+        some (Classical.choose h).1
+      else
+        none
+  refine ⟨parent, ?_⟩
+  intro X hk hX
+  obtain ⟨z, hzX, hz_ne_root, hresidual, p, hp_menu, hzp⟩ := hcover hk hX
+  let residual := X.erase z
+  let code :=
+    finsetCodeOfCardLe (menu residual) (hmenu_bound residual).2
+  let parentSymbol : Fin 1296 := code ⟨p, hp_menu⟩
+  refine ⟨z, hzX, hz_ne_root, hresidual, parentSymbol, p, ?_, ?_, hzp⟩
+  · dsimp [parent, parentSymbol, code, residual]
+    rw [dif_pos ⟨⟨p, hp_menu⟩, rfl⟩]
+    have hchoose :=
+      Classical.choose_spec
+        (show
+          ∃ q : {x : ConcretePlaquette physicalClayDimension L // x ∈ menu (X.erase z)},
+            finsetCodeOfCardLe (menu (X.erase z)) (hmenu_bound (X.erase z)).2 q =
+              finsetCodeOfCardLe (menu (X.erase z)) (hmenu_bound (X.erase z)).2
+                ⟨p, hp_menu⟩ from
+          ⟨⟨p, hp_menu⟩, rfl⟩)
+    have hsub :
+        Classical.choose
+            (show
+              ∃ q : {x : ConcretePlaquette physicalClayDimension L // x ∈ menu (X.erase z)},
+                finsetCodeOfCardLe (menu (X.erase z)) (hmenu_bound (X.erase z)).2 q =
+                  finsetCodeOfCardLe (menu (X.erase z)) (hmenu_bound (X.erase z)).2
+                    ⟨p, hp_menu⟩ from
+              ⟨⟨p, hp_menu⟩, rfl⟩) =
+          ⟨p, hp_menu⟩ :=
+      finsetCodeOfCardLe_injective (menu (X.erase z)) (hmenu_bound (X.erase z)).2
+        hchoose
+    exact congrArg some (congrArg Subtype.val hsub)
+  · exact (hmenu_bound (X.erase z)).1 hp_menu
+
+/-- Symbolic residual parent selector for the strengthened B.2 decoder.
+
+Unlike `PhysicalPlaquetteGraphCanonicalResidualParentSelector1296`, the parent
+may depend on a first `Fin 1296` component.  The residual alone no longer has to
+choose a single parent for all current extensions; the symbol carries that
+branch information. -/
+def PhysicalPlaquetteGraphSymbolicResidualParentSelector1296 : Prop :=
+  ∀ {L : ℕ} [NeZero L]
+    (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+    ∃ parent :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Fin 1296 → Option (ConcretePlaquette physicalClayDimension L),
+    ∃ code : ConcretePlaquette physicalClayDimension L →
+      ConcretePlaquette physicalClayDimension L → Fin 1296,
+      (∀ p, Set.InjOn (code p)
+        {q | q ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p}) ∧
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)}
+        (hk : 2 ≤ k)
+        (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k),
+        ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+          X.erase z ∈
+            plaquetteGraphPreconnectedSubsetsAnchoredCard
+              physicalClayDimension L root (k - 1) ∧
+          ∃ parentSymbol : Fin 1296, ∃ p,
+            parent (X.erase z) parentSymbol = some p ∧
+            p ∈ X.erase z ∧
+            z ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p
+
+/-- A residual-only 1296-parent menu plus the existing physical local neighbor
+code gives the symbolic residual-parent selector.  This is a bridge only: it
+does not prove the parent-menu cover. -/
+theorem physicalPlaquetteGraphSymbolicResidualParentSelector1296_of_residualParentMenuCovers1296
+    (hmenu : PhysicalPlaquetteGraphResidualParentMenuCovers1296) :
+    PhysicalPlaquetteGraphSymbolicResidualParentSelector1296 := by
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨parent, hparent⟩ := hmenu root k
+  obtain ⟨code, hinj⟩ :=
+    (plaquetteNeighborStepCodeBoundDim_physical_ternary (L := L))
+  exact ⟨parent, code, hinj, hparent⟩
+
+/-- A symbolic residual-parent selector closes the strengthened product-symbol
+deleted-vertex decoder by reusing the existing local neighbor-code inverse. -/
+theorem physicalPlaquetteGraphDeletedVertexDecoderStep1296x1296_of_symbolicResidualParentSelector1296
+    (hselector : PhysicalPlaquetteGraphSymbolicResidualParentSelector1296) :
+    PhysicalPlaquetteGraphDeletedVertexDecoderStep1296x1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  obtain ⟨parent, code, hinj, hcover⟩ := hselector root k
+  refine ⟨fun residual symbol =>
+    match parent residual symbol.1 with
+    | some p => physicalNeighborDecodeOfStepCode code p symbol.2
+    | none => none, ?_⟩
+  intro X hk hX
+  obtain ⟨z, hzX, hz_ne_root, hresidual, parentSymbol, p, hparent,
+    _hp_residual, hzp⟩ := hcover hk hX
+  refine ⟨z, hzX, hz_ne_root, hresidual, (parentSymbol, code p z), ?_⟩
+  dsimp
+  rw [hparent]
+  exact physicalNeighborDecodeOfStepCode_spec hinj hzp
+
+/-- Any non-root deleted vertex in an anchored bucket has at least one parent in
+the residual bucket.  This is the local frontier fact needed by the v2.67
+invariant; it does not choose a canonical parent depending only on the
+residual. -/
+theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_deletedVertex_has_residualNeighborParent
+    {d L k : ℕ} [NeZero d] [NeZero L]
+    {root z : ConcretePlaquette d L} {X : Finset (ConcretePlaquette d L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard d L root k)
+    (hzX : z ∈ X) (hz_ne_root : z ≠ root) :
+    ∃ p, p ∈ X.erase z ∧
+      z ∈ (plaquetteGraph d L).neighborFinset p := by
+  have hroot : root ∈ X :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem hX
+  have hpre :
+      ((plaquetteGraph d L).induce {x | x ∈ X}).Preconnected :=
+    plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected hX
+  obtain ⟨walk⟩ := hpre ⟨z, hzX⟩ ⟨root, hroot⟩
+  have hne :
+      (⟨z, hzX⟩ : {x : ConcretePlaquette d L // x ∈ X}) ≠
+        ⟨root, hroot⟩ := by
+    intro h
+    exact hz_ne_root (congrArg Subtype.val h)
+  obtain ⟨p, hpAdjInd⟩ :=
+    simpleGraph_walk_exists_adj_start_of_ne walk hne
+  have hpAdj : (plaquetteGraph d L).Adj z p.1 :=
+    SimpleGraph.induce_adj.mp hpAdjInd
+  have hp_ne_z : p.1 ≠ z :=
+    hpAdj.ne'
+  have hp_erase : p.1 ∈ X.erase z := by
+    simpa [Finset.mem_erase] using And.intro hp_ne_z p.2
+  have hz_neighbor :
+      z ∈ (plaquetteGraph d L).neighborFinset p.1 :=
+    (SimpleGraph.mem_neighborFinset (plaquetteGraph d L) p.1 z).mpr hpAdj.symm
+  exact ⟨p.1, hp_erase, hz_neighbor⟩
+
+/-- Physical specialization: any non-root deleted physical plaquette has a
+residual neighbor-parent. -/
+theorem physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_deletedVertex_has_residualNeighborParent
+    {L k : ℕ} [NeZero L]
+    {root z : ConcretePlaquette physicalClayDimension L}
+    {X : Finset (ConcretePlaquette physicalClayDimension L)}
+    (hX : X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+      physicalClayDimension L root k)
+    (hzX : z ∈ X) (hz_ne_root : z ≠ root) :
+    ∃ p, p ∈ X.erase z ∧
+      z ∈ (plaquetteGraph physicalClayDimension L).neighborFinset p :=
+  plaquetteGraphPreconnectedSubsetsAnchoredCard_deletedVertex_has_residualNeighborParent
+    (d := physicalClayDimension) (L := L) (k := k)
+    (root := root) (z := z) (X := X) hX hzX hz_ne_root
 
 /-- Member-targeted first BFS step: every non-root member of an anchored bucket
 is reached through some plaquette in the root shell. -/
@@ -2810,6 +9478,239 @@ theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_base_card_le_pow
       | succ k =>
           omega
 
+/-- In physical dimension, every plaquette has a distinct plaquette at the same
+site, obtained by changing the orientation when necessary. -/
+theorem physicalPlaquetteGraph_root_has_distinct_plaquette :
+    PhysicalPlaquetteGraphRootHasDistinctPlaquette := by
+  intro L _ root
+  let d0 : Fin physicalClayDimension :=
+    ⟨0, by norm_num [physicalClayDimension]⟩
+  let d1 : Fin physicalClayDimension :=
+    ⟨1, by norm_num [physicalClayDimension]⟩
+  let d2 : Fin physicalClayDimension :=
+    ⟨2, by norm_num [physicalClayDimension]⟩
+  let p01 : ConcretePlaquette physicalClayDimension L :=
+    ⟨root.site, d0, d1, by
+      rw [Fin.lt_def]
+      norm_num [d0, d1]⟩
+  let p02 : ConcretePlaquette physicalClayDimension L :=
+    ⟨root.site, d0, d2, by
+      rw [Fin.lt_def]
+      norm_num [d0, d2]⟩
+  have hp01_ne_p02 : p01 ≠ p02 := by
+    intro hp
+    have hdir :
+        (ConcretePlaquette.dir2 p01).val =
+          (ConcretePlaquette.dir2 p02).val := by
+      simpa using congrArg (fun q : ConcretePlaquette physicalClayDimension L => q.dir2.val) hp
+    norm_num [p01, p02, d1, d2] at hdir
+  by_cases hroot : root = p01
+  · refine ⟨p02, ?_⟩
+    intro hp02
+    exact hp01_ne_p02 (hroot.symm.trans hp02.symm)
+  · refine ⟨p01, ?_⟩
+    intro hp01
+    exact hroot hp01.symm
+
+/-- Low-cardinality totalization for the base-aware bookkeeping interface.
+For `k = 0` the family is empty; for `k = 1` every anchored bucket is `{root}`,
+so a non-root fallback deletion leaves `root` in the residual. -/
+theorem physicalPlaquetteGraph_baseAwareLowCardBookkeepingTotalization1296 :
+    PhysicalPlaquetteGraphBaseAwareLowCardBookkeepingTotalization1296 := by
+  classical
+  intro L hL root k hk
+  letI : NeZero L := hL
+  obtain ⟨fallbackDeleted, hfallback_ne⟩ :=
+    physicalPlaquetteGraph_root_has_distinct_plaquette (root := root)
+  let deleted :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L :=
+    fun _ => fallbackDeleted
+  let parentOf :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        ConcretePlaquette physicalClayDimension L :=
+    fun _ => root
+  let essential :
+      Finset (ConcretePlaquette physicalClayDimension L) →
+        Finset (ConcretePlaquette physicalClayDimension L) :=
+    fun residual =>
+      ((plaquetteGraphPreconnectedSubsetsAnchoredCard
+        physicalClayDimension L root k).filter
+        (fun X => X.erase (deleted X) = residual)).image parentOf
+  have hparent_mem :
+      ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)},
+        X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+          physicalClayDimension L root k →
+        parentOf X ∈ X.erase (deleted X) := by
+    intro X hX
+    cases k with
+    | zero =>
+        rw [plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_eq_empty root] at hX
+        simp at hX
+    | succ k =>
+        cases k with
+        | zero =>
+            have hX_singleton :
+                X ∈ ({ {root} } :
+                  Finset (Finset (ConcretePlaquette physicalClayDimension L))) :=
+              plaquetteGraphPreconnectedSubsetsAnchoredCard_one_subset_singleton
+                root hX
+            rw [Finset.mem_singleton] at hX_singleton
+            subst X
+            simp [deleted, parentOf, hfallback_ne]
+        | succ k =>
+            omega
+  refine ⟨fallbackDeleted, hfallback_ne, deleted, parentOf, essential, ?_, hparent_mem, ?_, ?_⟩
+  · intro X
+    exact ⟨rfl, rfl⟩
+  · intro residual
+    rfl
+  · intro residual p hp
+    dsimp [essential] at hp
+    rcases Finset.mem_image.mp hp with ⟨X, hX, rfl⟩
+    rw [Finset.mem_filter] at hX
+    simpa [hX.2] using hparent_mem hX.1
+
+/-- Base-aware bookkeeping follows by combining the proved low-cardinality
+totalization with the existing safe-deletion and residual-parent APIs. -/
+theorem physicalPlaquetteGraph_baseAwareTerminalPredecessorBookkeeping1296 :
+    PhysicalPlaquetteGraphBaseAwareTerminalPredecessorBookkeeping1296 := by
+  classical
+  intro L hL root k
+  letI : NeZero L := hL
+  by_cases hk_low : k ≤ 1
+  · obtain ⟨_fallbackDeleted, _hfallback_ne, deleted, parentOf, essential,
+      _hdefault, _hparent_mem, himage, hessential_subset⟩ :=
+        physicalPlaquetteGraph_baseAwareLowCardBookkeepingTotalization1296
+          (root := root) (k := k) hk_low
+    refine ⟨deleted, parentOf, essential, ?_, himage, hessential_subset⟩
+    intro X hk hX
+    omega
+  · have hk_high : 2 ≤ k := by omega
+    let family : Finset (Finset (ConcretePlaquette physicalClayDimension L)) :=
+      plaquetteGraphPreconnectedSubsetsAnchoredCard physicalClayDimension L root k
+    have hdelExists :
+        ∀ X : Finset (ConcretePlaquette physicalClayDimension L),
+          X ∈ family →
+          ∃ z, ∃ hzX : z ∈ X, z ≠ root ∧
+            X.erase z ∈
+              plaquetteGraphPreconnectedSubsetsAnchoredCard
+                physicalClayDimension L root (k - 1) := by
+      intro X hX
+      exact
+        physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem
+          (L := L) (k := k) (root := root) (X := X) hk_high hX
+    let deleted :
+        Finset (ConcretePlaquette physicalClayDimension L) →
+          ConcretePlaquette physicalClayDimension L :=
+      fun X =>
+        if hX : X ∈ family then
+          Classical.choose (hdelExists X hX)
+        else
+          root
+    have hdeleted_spec :
+        ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)},
+          (hX : X ∈ family) →
+          deleted X ∈ X ∧
+            deleted X ≠ root ∧
+            X.erase (deleted X) ∈
+              plaquetteGraphPreconnectedSubsetsAnchoredCard
+                physicalClayDimension L root (k - 1) := by
+      intro X hX
+      dsimp [deleted]
+      rw [dif_pos hX]
+      obtain ⟨hzX, hz_ne_root, hresidual⟩ :=
+        Classical.choose_spec (hdelExists X hX)
+      exact ⟨hzX, hz_ne_root, hresidual⟩
+    have hparentExists :
+        ∀ X : Finset (ConcretePlaquette physicalClayDimension L),
+          (hX : X ∈ family) →
+          ∃ p, p ∈ X.erase (deleted X) ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset p := by
+      intro X hX
+      have hdel := hdeleted_spec hX
+      exact
+        physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_deletedVertex_has_residualNeighborParent
+          (L := L) (k := k) (root := root) (z := deleted X) (X := X)
+          hX hdel.1 hdel.2.1
+    let parentOf :
+        Finset (ConcretePlaquette physicalClayDimension L) →
+          ConcretePlaquette physicalClayDimension L :=
+      fun X =>
+        if hX : X ∈ family then
+          Classical.choose (hparentExists X hX)
+        else
+          root
+    have hparent_spec :
+        ∀ {X : Finset (ConcretePlaquette physicalClayDimension L)},
+          (hX : X ∈ family) →
+          parentOf X ∈ X.erase (deleted X) ∧
+            deleted X ∈
+              (plaquetteGraph physicalClayDimension L).neighborFinset (parentOf X) := by
+      intro X hX
+      simpa [parentOf, hX] using
+        (Classical.choose_spec (hparentExists X hX))
+    let essential :
+        Finset (ConcretePlaquette physicalClayDimension L) →
+          Finset (ConcretePlaquette physicalClayDimension L) :=
+      fun residual =>
+        (family.filter (fun X => X.erase (deleted X) = residual)).image parentOf
+    refine ⟨deleted, parentOf, essential, ?_, ?_, ?_⟩
+    · intro X hk hX
+      have hdel := hdeleted_spec (X := X) hX
+      have hparent := hparent_spec (X := X) hX
+      have hparent_essential :
+          parentOf X ∈ essential (X.erase (deleted X)) := by
+        dsimp [essential]
+        exact Finset.mem_image.mpr ⟨X, by simp [family, hX], rfl⟩
+      refine ⟨hdel.1, hdel.2.1, hdel.2.2, hparent.1, hparent_essential, ?_⟩
+      by_cases hcard :
+          (X.erase (deleted X)).card = 1
+      · have hroot_residual :
+            root ∈ X.erase (deleted X) :=
+          plaquetteGraphPreconnectedSubsetsAnchoredCard_root_mem hdel.2.2
+        obtain ⟨a, ha⟩ := Finset.card_eq_one.mp hcard
+        have hparent_mem_singleton :
+            parentOf X ∈ ({a} :
+              Finset (ConcretePlaquette physicalClayDimension L)) := by
+          simpa [ha] using hparent.1
+        have hroot_mem_singleton :
+            root ∈ ({a} :
+              Finset (ConcretePlaquette physicalClayDimension L)) := by
+          simpa [ha] using hroot_residual
+        have hparent_eq_a : parentOf X = a := by
+          simpa using hparent_mem_singleton
+        have hroot_eq_a : root = a := by
+          simpa using hroot_mem_singleton
+        have hparent_root : parentOf X = root :=
+          hparent_eq_a.trans hroot_eq_a.symm
+        exact Or.inl ⟨hcard, hparent_root, by simpa [hparent_root] using hparent.2⟩
+      · exact Or.inr ⟨hcard, hparent.2⟩
+    · intro residual
+      rfl
+    · intro residual p hp
+      dsimp [essential] at hp
+      rcases Finset.mem_image.mp hp with ⟨X, hX, rfl⟩
+      rw [Finset.mem_filter] at hX
+      simpa [hX.2] using (hparent_spec (X := X) hX.1).1
+
+/-- An explicit `1296`-bounded selected terminal-predecessor menu packs into an
+injective `Fin 1296` code.
+
+All domination and residual-path facts are inputs; this theorem proves only the
+finite coding step and does not assert that arbitrary residual/essential data is
+dominated. -/
+theorem physicalPlaquetteGraph_residualDominatedTerminalPredecessorPacking1296 :
+    PhysicalPlaquetteGraphResidualDominatedTerminalPredecessorPacking1296 := by
+  classical
+  intro L hL residual essential terminalPredMenu terminalPredOfParent
+    _hessential_subset _hmenu_subset _hmenu_image _hpred_mem_menu
+    _hlastEdge _hpath hcard
+  letI : NeZero L := hL
+  exact ⟨finsetCodeOfCardLe terminalPredMenu hcard,
+    finsetCodeOfCardLe_injective terminalPredMenu hcard⟩
+
 /-- The empty anchored bucket has a vacuous word decoder. -/
 theorem plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_wordDecoderCovers
     {d L K : ℕ} [NeZero d] [NeZero L]
@@ -2925,6 +9826,23 @@ theorem PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.of_nontrivial
   · exact plaquetteGraphPreconnectedSubsetsAnchoredCard_base_wordDecoderCovers
       root hK hk
   · exact hlarge root k (by omega)
+
+/-- Physical `1296` specialization of the nontrivial-case anchored decoder
+frontier.  This pins the target alphabet used by the physical branching bound
+and leaves only the `1 < k` recursive decoder cases as the remaining input. -/
+theorem physicalPlaquetteGraphAnimalAnchoredWordDecoderBound1296_of_nontrivial
+    (hlarge :
+      ∀ {L : ℕ} [NeZero L]
+        (root : ConcretePlaquette physicalClayDimension L) (k : ℕ),
+        1 < k →
+          ∃ decode : (Fin k → Fin 1296) →
+              Finset (ConcretePlaquette physicalClayDimension L),
+            ∀ X ∈ plaquetteGraphPreconnectedSubsetsAnchoredCard
+                physicalClayDimension L root k,
+              ∃ word : Fin k → Fin 1296, decode word = X) :
+    PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound 1296 :=
+  PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.of_nontrivial
+    (K := 1296) (by norm_num) hlarge
 
 /-- The anchored word-decoder target is monotone in the alphabet size. -/
 theorem PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.mono
@@ -3602,8 +10520,10 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_preconnected
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_card_pos
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_root
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_ne_member
 #print axioms simpleGraph_walk_exists_adj_start_of_ne
 #print axioms simpleGraph_walk_exists_adj_start_and_tail_of_ne
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_nonSingleton_member_has_neighbor
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighbor
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_rootShell_nonempty
@@ -3647,8 +10567,109 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
 #print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists_of_highCardTwoNonCutExists
 #print axioms plaquetteGraph_erase_preconnected_of_subtype_compl_preconnected
+#print axioms simpleGraph_isTree_exists_two_distinct_degree_one_of_card_ge_two
+#print axioms simpleGraphHighCardTwoNonCutExists
 #print axioms plaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
 #print axioms physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists_of_simpleGraph
+#print axioms plaquetteGraphAnchoredHighCardTwoNonCutExists
+#print axioms physicalPlaquetteGraphAnchoredHighCardTwoNonCutExists
+#print axioms plaquetteGraphAnchoredSafeDeletionExists
+#print axioms physicalPlaquetteGraphAnchoredSafeDeletionExists
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_erase_mem
+#print axioms physicalPlaquetteGraphDeletedVertexDecoderStep1296_exists_recoverable_deletion
+#print axioms physicalNeighborDecodeOfStepCode_spec
+#print axioms physicalPlaquetteGraphCanonicalResidualParentSelector1296_of_residualExtensionCompatibility1296
+#print axioms physicalPlaquetteGraphResidualExtensionCompatibility1296_of_canonicalResidualParentSelector1296
+#print axioms physicalPlaquetteGraphResidualExtensionCompatibility1296_iff_canonicalResidualParentSelector1296
+#print axioms physicalPlaquetteGraphResidualParentInvariant1296_of_canonicalResidualParentSelector1296
+#print axioms physicalPlaquetteGraphDeletedVertexDecoderStep1296_of_residualParentInvariant1296
+#print axioms physicalPlaquetteGraphDeletedVertexDecoderStep1296_of_canonicalResidualParentSelector1296
+#print axioms physicalPlaquetteGraphResidualParentMenuBound1296_of_essentialSafeDeletionParentFrontierBound1296
+#print axioms physicalPlaquetteGraphSafeDeletionOrientationCodeBound1296_of_portalSupportedSafeDeletionOrientation1296
+#print axioms physicalPlaquetteGraphEssentialSafeDeletionParentFrontierBound1296_of_safeDeletionOrientationCodeBound1296
+#print axioms physicalPlaquetteGraphResidualParentMenuCovers1296_of_residualParentMenuBound1296
+#print axioms physicalPlaquetteGraphSymbolicResidualParentSelector1296_of_residualParentMenuCovers1296
+#print axioms physicalPlaquetteGraphDeletedVertexDecoderStep1296x1296_of_symbolicResidualParentSelector1296
+#print axioms physicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296_of_multiPortalSupportedSafeDeletionOrientation1296x1296
+#print axioms physicalPlaquetteGraphDeletedVertexDecoderStep1296x1296x1296_of_baseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296
+#print axioms physicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296_of_baseAwareBookkeeping_of_terminalPredecessorDomination1296
+#print axioms physicalPlaquetteGraphResidualLastEdgeDominatingSetBound1296_of_baseAwareBookkeeping_of_residualFiberTerminalPredecessorDomination1296_of_packing1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalPredecessorDomination1296_of_residualFiberTerminalPredecessorImageBound1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalPredecessorImageBound1296_of_residualFiberCanonicalLastEdgeImageBound1296
+#print axioms PhysicalPlaquetteGraphResidualFiberNonSingletonMemberHasResidualNeighbor1296
+#print axioms physicalPlaquetteGraphResidualFiberNonSingletonMemberHasResidualNeighbor1296
+#print axioms PhysicalPlaquetteGraphResidualFiberNonSingletonMemberNeighborWalkSplit1296
+#print axioms physicalPlaquetteGraphResidualFiberNonSingletonMemberNeighborWalkSplit1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296_of_residualFiberNonSingletonMemberNeighborWalkSplit1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorDataSource1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296_of_residualFiberTerminalNeighborSelectorDataSource1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborDominationRelation1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296_of_residualFiberTerminalNeighborDominationRelation1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296_of_residualFiberTerminalNeighborDominatingMenu1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborDominatingMenu1296_of_residualFiberTerminalNeighborCodeSeparation1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborCodeSeparation1296_of_residualFiberTerminalNeighborSelectorCodeSeparation1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorCodeSeparation1296_of_residualFiberTerminalNeighborSelectorImageBound1296
+#print axioms PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinateData
+#print axioms PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjectionData
+#print axioms PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSourceData
+#print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparationData
+#print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSourceData
+#print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData
+#print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+#print axioms physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296_of_baseZoneResidualValueCodeSeparation1296
+#print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealizationData
+#print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296
+#print axioms physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296_of_baseZoneResidualValueCodeRealization1296
+#print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSourceData
+#print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296
+#print axioms physicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296_of_baseZoneResidualValueCodeSource1296
+#print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData
+#print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+#print axioms physicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296_of_baseZoneOriginCertificateCodeInjection1296
+#print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+#print axioms physicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296_of_baseZoneOriginCertificateSource1296
+#print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296
+#print axioms physicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296_of_baseZoneCoordinateRealizationSeparation1296
+#print axioms PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+#print axioms physicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296_of_residualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+#print axioms PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+#print axioms physicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296_of_residualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+#print axioms PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+#print axioms physicalPlaquetteGraphResidualFiberBookkeepingTagSpaceInjection1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
+#print axioms PhysicalPlaquetteGraphResidualFiberBookkeepingTagSpaceInjection1296
+#print axioms physicalPlaquetteGraphResidualFiberSelectorAdmissibleBookkeepingTagInjection1296_of_residualFiberBookkeepingTagSpaceInjection1296
+#print axioms PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBookkeepingTagInjection1296
+#print axioms physicalPlaquetteGraphResidualFiberBookkeepingTagAdmissibleValueSeparation1296_of_residualFiberSelectorAdmissibleBookkeepingTagInjection1296
+#print axioms PhysicalPlaquetteGraphResidualFiberBookkeepingTagAdmissibleValueSeparation1296
+#print axioms physicalPlaquetteGraphResidualFiberBookkeepingTagCoordinate1296_of_residualFiberBookkeepingTagAdmissibleValueSeparation1296
+#print axioms PhysicalPlaquetteGraphResidualFiberBookkeepingTagCoordinate1296
+#print axioms physicalPlaquetteGraphResidualFiberBookkeepingTagValueSeparation1296_of_residualFiberBookkeepingTagCoordinate1296
+#print axioms PhysicalPlaquetteGraphResidualFiberBookkeepingTagValueSeparation1296
+#print axioms physicalPlaquetteGraphResidualFiberBookkeepingTagValueCodeSource1296_of_residualFiberBookkeepingTagValueSeparation1296
+#print axioms PhysicalPlaquetteGraphResidualFiberBookkeepingTagValueCodeSource1296
+#print axioms physicalPlaquetteGraphResidualFiberBookkeepingTagCodeForSelector1296_of_residualFiberBookkeepingTagValueCodeSource1296
+#print axioms physicalPlaquetteGraphResidualFiberBookkeepingTagMap1296_of_residualFiberTerminalNeighborSelectorSource1296_of_residualFiberBookkeepingTagCodeForSelector1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborAmbientBookkeepingTagCode1296_of_residualFiberBookkeepingTagMap1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborAmbientValueCode1296_of_residualFiberTerminalNeighborAmbientBookkeepingTagCode1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborAbsoluteSelectedValueCode1296_of_residualFiberTerminalNeighborAmbientValueCode1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborBasepointIndependentCode1296_of_residualFiberTerminalNeighborAbsoluteSelectedValueCode1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborGeometricSelectorCode1296_of_residualFiberTerminalNeighborBasepointIndependentCode1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296_of_residualFiberTerminalNeighborGeometricSelectorCode1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborImageCompression1296_of_residualFiberTerminalNeighborDominatingMenu1296
+#print axioms physicalPlaquetteGraphResidualFiberTerminalNeighborSelectorImageBound1296_of_residualFiberTerminalNeighborImageCompression1296
+#print axioms physicalPlaquetteGraphResidualFiberCanonicalTerminalNeighborImageBound1296_of_residualFiberTerminalNeighborSelectorImageBound1296
+#print axioms physicalPlaquetteGraphResidualFiberCanonicalTerminalSuffixImageBound1296_of_residualFiberCanonicalTerminalNeighborImageBound1296
+#print axioms physicalPlaquetteGraphResidualFiberCanonicalWalkTerminalEdgeImageBound1296_of_residualFiberCanonicalTerminalSuffixImageBound1296
+#print axioms physicalPlaquetteGraphResidualFiberCanonicalTerminalEdgeSelector1296_of_residualFiberCanonicalWalkTerminalEdgeImageBound1296
+#print axioms physicalPlaquetteGraphResidualFiberCanonicalLastEdgeImageBound1296_of_residualFiberCanonicalTerminalEdgeSelector1296
+#print axioms physicalPlaquetteGraphBaseAwareResidualCanonicalLastEdgePredecessorSelector1296_of_residualLastEdgeDominatingSetBound1296
+#print axioms physicalPlaquetteGraphBaseAwareResidualCanonicalLastStepPredecessorImageBound1296_of_baseAwareResidualCanonicalLastEdgePredecessorSelector1296
+#print axioms physicalPlaquetteGraphBaseAwareResidualLastStepPortalImageBound1296_of_baseAwareResidualCanonicalLastStepPredecessorImageBound1296
+#print axioms physicalPlaquetteGraphBaseAwareResidualPortalMenuBound1296_of_baseAwareResidualLastStepPortalImageBound1296
+#print axioms physicalPlaquetteGraphBaseAwareMultiPortalSupportedSafeDeletionOrientation1296x1296_of_baseAwareResidualPortalMenuBound1296
+#print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_deletedVertex_has_residualNeighborParent
+#print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_deletedVertex_has_residualNeighborParent
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_to_member
 #print axioms physicalPlaquetteGraphPreconnectedSubsetsAnchoredCard_exists_rootShellCode1296_to_member
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_exists_root_neighborFinset_tail_to_member
@@ -3665,12 +10686,17 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_card_le_pow
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_card_le_pow
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_base_card_le_pow
+#print axioms physicalPlaquetteGraph_root_has_distinct_plaquette
+#print axioms physicalPlaquetteGraph_baseAwareLowCardBookkeepingTotalization1296
+#print axioms physicalPlaquetteGraph_baseAwareTerminalPredecessorBookkeeping1296
+#print axioms physicalPlaquetteGraph_residualDominatedTerminalPredecessorPacking1296
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_zero_wordDecoderCovers
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_one_wordDecoderCovers
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_base_wordDecoderCovers
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_root_reachable
 #print axioms plaquetteGraphPreconnectedSubsetsAnchoredCard_root_exists_induced_path
 #print axioms PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.of_nontrivial
+#print axioms physicalPlaquetteGraphAnimalAnchoredWordDecoderBound1296_of_nontrivial
 #print axioms PhysicalPlaquetteGraphAnimalAnchoredWordDecoderBound.mono
 #print axioms physicalPlaquetteGraphAnimalAnchoredWordCodeOfDecoder_injective
 #print axioms physicalPlaquetteGraphAnimalAnchoredCountBound_of_wordDecoder

@@ -1,0 +1,7 @@
+{
+  "timestamp": "2026-04-28T02:13:15Z",
+  "agent": "Cowork",
+  "event": "yaml_registry_parse_error",
+  "path": "C:\\Users\\lluis\\.gemini\\antigravity\\scratch\\THE-ERIKSSON-PROGRAMME\\registry\\agent_tasks.yaml",
+  "error": "while parsing a block mapping\n  in \"<unicode string>\", line 28327, column 3:\n    - id: CODEX-F3-BASE-ZONE-ORIGIN-CE ... \n      ^\nexpected <block end>, but found '<scalar>'\n  in \"<unicode string>\", line 28348, column 5:\n        Quot.sound]\n        ^"
+}

@@ -31,10 +31,10 @@ Prove a constructive witness for
 ConnectedCardDecayMayerData N_c (4 N_c β) 1 hr_nonneg hA_nonneg
 ```
 
-at small inverse coupling `β < log(2) / N_c` (the BK convergence regime).
-This witness, combined with F3-COUNT's `ShiftedConnectingClusterCountBoundExp`
-package and the smallness condition `K · r < 1` (i.e. `7 · 4 N_c β < 1`,
-giving `β < 1/(28 N_c)` for d=4), bundles into
+under the B.4 smallness hypothesis `β < 1 / (2 * N_c)`.  This witness,
+combined with F3-COUNT's `ShiftedConnectingClusterCountBoundExp` package and
+the final smallness condition `K · r < 1` (i.e. `7 · 4 N_c β < 1`, giving
+`β < 1/(28 N_c)` for d=4), bundles into
 
 ```lean
 ShiftedF3MayerCountPackageExp N_c wab
@@ -144,7 +144,9 @@ which in turn requires:
 
 Six theorems are required to close the F3-MAYER side. Together they
 inhabit `ConnectedCardDecayMayerData N_c (4 N_c β) 1 hr_nonneg hA_nonneg`
-for `β < log(2)/N_c`.
+under the corrected B.4 hypothesis `β < 1 / (2 * N_c)`.  The final
+F3-COMBINED assembly later uses the stronger convergence regime
+`β < 1 / (28 * N_c)`.
 
 ### B.1 — Truncated-activity vanishing on single-vertex polymers
 
@@ -207,7 +209,7 @@ random-walk interpolation and tree-on-Y enumeration. BLUEPRINT_F3Mayer
 
 ```lean
 theorem plaquetteFluctuationNorm_sup_le
-    {N_c : ℕ} [NeZero N_c] (β : ℝ) (hβ : β > 0) (hβ_small : β < Real.log 2 / N_c) :
+    {N_c : ℕ} [NeZero N_c] (β : ℝ) (hβ : β > 0) (hβ_small : β < 1 / (2 * N_c)) :
     ‖plaquetteFluctuationNorm N_c β‖_∞ ≤ 4 * N_c * β
 ```
 
@@ -247,7 +249,7 @@ formula. ~200 LOC.
 
 ```lean
 def physicalConnectedCardDecayMayerWitness
-    (N_c : ℕ) [NeZero N_c] (β : ℝ) (hβ : 0 < β) (hβ_small : β < Real.log 2 / N_c) :
+    (N_c : ℕ) [NeZero N_c] (β : ℝ) (hβ : 0 < β) (hβ_small : β < 1 / (2 * N_c)) :
     ConnectedCardDecayMayerData N_c (4 * N_c * β) 1
       (by positivity) zero_le_one
 ```

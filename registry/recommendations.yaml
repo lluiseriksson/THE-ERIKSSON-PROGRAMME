@@ -1,4 +1,511 @@
 recommendations:
+- id: REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002
+  author: Cowork
+  status: RESOLVED
+  resolved_at: '2026-04-28T00:30:00Z'
+  resolved_by: CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.171-V2.182-001
+  resolution: UNCONDITIONALITY_LEDGER.md F3-COUNT evidence column now covers the requested
+    v2.170-v2.182 drift window across the v2.170 partial pass (CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.170-001
+    DONE 00:15Z) and the v2.171-v2.182 follow-up pass (CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.171-V2.182-001
+    DONE 00:30Z). LEDGER:88 evidence column now reads "...v2.170 PhysicalPlaquetteGraphResidualFiberTerminalNeighborAbsoluteSelectedValueCode1296
+    plus bridge ... v2.171-v2.182 advanced the ambient/bookkeeping-tag/tag-map/selector-source
+    chain via [11 dashboard artifacts] ... v2.182 PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorSource1296
+    plus PhysicalPlaquetteGraphResidualFiberBookkeepingTagCodeForSelector1296 with
+    two-premise bridge..." — full v2.170-v2.182 coverage. F3-COUNT remains CONDITIONAL_BRIDGE
+    and no percentage, README badge, planner metric, vacuity caveat, or ledger row
+    status moved. Cowork verified resolution at 00:35Z via COWORK-AUDIT-CODEX-LEDGER-EVIDENCE-COLUMN-EXTEND-002-RESOLUTION-001
+    (4th formal Cowork-rec resolution cycle of the session closed cleanly).
+  verification_task: COWORK-AUDIT-CODEX-LEDGER-EVIDENCE-COLUMN-EXTEND-002-RESOLUTION-001
+  verification_status: VERIFIED
+  verified_by: COWORK-AUDIT-CODEX-LEDGER-EVIDENCE-COLUMN-EXTEND-002-RESOLUTION-001
+  verified_at: '2026-04-28T00:35:00Z'
+  cycle_duration_minutes: 125
+  cycle_number: 4
+  priority: 9
+  created_at: '2026-04-27T22:30:00Z'
+  source_task: COWORK-LEDGER-FRESHNESS-AUDIT-021
+  source_observation: 'AUDIT-021 detected drift = 13 commits (v2.170-v2.182) at audit
+    time, exceeding the 10+ fresh-REC filing threshold established by AUDIT-017/AUDIT-019.
+    AUDIT-019 prior-art: drift = 3 was below threshold (finding inline). AUDIT-020
+    prior-art: drift = 6 was at-threshold but below filing threshold (finding inline).
+    AUDIT-021 prior-art: drift = 13 EXCEEDS filing threshold (this REC). Codex CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.170-001
+    has been READY priority 6 since META-39 (19:20Z) for 3+ hours without dispatching.
+    The original v2.170-only task has been overtaken by 12 additional commits without
+    execution.'
+  source_artifact: UNCONDITIONALITY_LEDGER.md line 88 evidence column (last cited
+    commit v2.169 from CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.167-V2.169-001
+    landing at 19:45Z)
+  recommendation: 'Codex extends LEDGER:88 F3-COUNT evidence column through chain
+    head v2.182. Either (a) execute the existing CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.170-001
+    task and seed follow-up tasks for v2.171-v2.182, OR (b) supersede the v2.170-001
+    task with a new superset CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.170-V2.182-001
+    priority 5 to close the full 13-commit drift in one pass. Recommended: option
+    (b) for efficiency. Documentation-only bookkeeping; preserve F3-COUNT CONDITIONAL_BRIDGE;
+    do not move any percentage, README badge, planner metric, or LEDGER row status.'
+  rationale: Drift = 13 commits exceeds the 10+ filing threshold per AUDIT-017/AUDIT-019
+    originating policy. Without remediation, the LEDGER:88 evidence column will continue
+    to grow stale at velocity ~1 commit per 5-10 minutes during active formal-math
+    advance. The 13 missing commits represent the full ambient-value-code -> bookkeeping-tag
+    -> bookkeeping-tag-map -> selector-source upstream-narrowing chain, which is honest
+    formal-math progress that should be reflected in LEDGER documentation even though
+    no F3-COUNT row movement is implied.
+  risk_if_ignored: Documentation-only risk - LEDGER:88 evidence column becomes increasingly
+    stale and the F3-COUNT row becomes harder to audit against ground truth. No mathematical
+    risk - F3-COUNT remains CONDITIONAL_BRIDGE regardless. However, sustained drift
+    > 20 commits would make external readers (and future auditors) unable to map the
+    LEDGER row to the actual chain state; it would also undermine the audit-finding
+    chain pattern (file rec -> seed action task -> execute -> audit resolution) that
+    this project relies on for honesty discipline.
+  next_action: Codex executes either (a) existing CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.170-001
+    + seeds follow-up extension tasks, or (b) supersedes with CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.170-V2.182-001
+    superset task. Cowork audits resolution via fresh COWORK-AUDIT-CODEX-LEDGER-EVIDENCE-EXTEND-002
+    task seeded by next META.
+  classification: documentation-only-bookkeeping-extension
+  audit_finding_chain_step: 1 of 4 (file rec -> seed action task -> execute -> audit
+    resolution)
+  drift_at_filing_time:
+    drift_count: 13
+    drift_commits:
+    - v2.170 Type A (absolute-selected-value-code interface 19:30Z)
+    - v2.171 Type D (proof attempt no-closure ambient-value-code missing 20:25Z)
+    - v2.172 Type F-std (ambient-value-code scope 20:40Z)
+    - v2.173 Type A (ambient-value-code interface 21:00Z)
+    - v2.174 Type D (proof attempt no-closure bookkeeping-tag/base-zone code missing
+      21:10Z)
+    - v2.175 Type F-std (bookkeeping-tag-origin scope 21:15Z)
+    - v2.176 Type A (bookkeeping-tag interface 21:20Z)
+    - v2.177 Type D (proof attempt no-closure residual-fiber bookkeeping-tag map missing
+      21:25Z)
+    - v2.178 Type F-std (residual-fiber tag-map scope DONE 18:29Z)
+    - v2.179 Type A (bookkeeping-tag-map interface 18:32Z window)
+    - v2.180 Type D (proof attempt no-closure terminal-neighbor selector source missing
+      22:00Z)
+    - v2.181 Type F-std (selector-source scope DONE 18:45Z window)
+    - v2.182 Type A (selector-source interface DONE 22:25Z)
+    chain_head_at_filing: v2.182
+    next_codex_task_in_progress: CODEX-F3-PROVE-RESIDUAL-FIBER-TERMINAL-NEIGHBOR-SELECTOR-SOURCE-001
+      (CONFIRMED_BUSY at 18:57Z; v2.183 candidate)
+    inflight_codex_task_age_minutes: 190
+  prior_rec: REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-001 (RESOLVED 2026-04-27T11:01:15Z
+    by CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.96-V2.166-001 + verified by
+    COWORK-AUDIT-CODEX-LEDGER-EVIDENCE-EXTEND-001; canonical ~24h cycle).
+  partial_resolution_at: '2026-04-28T00:15:00Z'
+  partial_resolution_by: CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.170-001
+  partial_resolution_scope: UNCONDITIONALITY_LEDGER.md F3-COUNT evidence column extended
+    through v2.170 absolute selected-value code interface/bridge landing. REC remains
+    OPEN because its requested full drift window extends through v2.182. F3-COUNT
+    remains CONDITIONAL_BRIDGE and no percentage moved.
+  next_partial_action: CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.171-V2.182-001
+    seeded READY to close the remaining REC drift window.
+- id: REC-COWORK-DISPATCH-RATE-LIMIT-AUDIT-SLOT-001
+  author: Cowork
+  status: RESOLVED
+  resolved_at: '2026-04-27T19:35:00Z'
+  resolved_by: CODEX-DISPATCHER-AUDIT-SUBSTRATE-RATE-LIMIT-001
+  resolution: 'Resolved by CODEX-DISPATCHER-AUDIT-SUBSTRATE-RATE-LIMIT-001: scripts/agent_next_instruction.py
+    now suppresses COWORK-AUDIT-CODEX-* dispatch while a known named CODEX-* substrate
+    remains incomplete, but allows the audit once a substrate lands and allows unknown-substrate
+    audits to diagnose mismatches. Cowork polling-spam gates were not weakened; no
+    audit task was marked DONE by the gate; F3-COUNT remains CONDITIONAL_BRIDGE.'
+  verified_by: COWORK-AUDIT-CODEX-DISPATCHER-AUDIT-SUBSTRATE-RATE-LIMIT-001
+  verified_at: '2026-04-27T19:50:00Z'
+  priority: 8
+  created_at: '2026-04-27T18:30:00Z'
+  source_task: COWORK-AUDIT-CODEX-V2.169-INTERFACE-LANDING-003
+  source_observation: AUDIT-001 / AUDIT-002 / AUDIT-003 of the absolute-selected-value-code
+    interface landing all deferred consecutively (18:10Z / 18:20Z / 18:30Z) because
+    Codex CODEX-F3-TERMINAL-NEIGHBOR-ABSOLUTE-SELECTED-VALUE-CODE-INTERFACE-001 (dispatched
+    15:57Z) had not yet completed at audit dispatch time. The dispatcher fired audit
+    slots 3 times in 20 minutes for an interface that had not yet landed.
+  source_artifact: scripts/agent_next_instruction.py + dispatcher audit-slot trigger
+    logic
+  recommendation: Codex maintenance pass to add a dispatch rate-limit on audit slots
+    whose substrate has not yet appeared. When a Cowork audit slot fires (e.g. COWORK-AUDIT-CODEX-V2.169-INTERFACE-LANDING-NNN)
+    and the audit body finds that the substrate (e.g. CODEX-F3-TERMINAL-NEIGHBOR-ABSOLUTE-SELECTED-VALUE-CODE-INTERFACE-001)
+    has not yet completed, the dispatcher should NOT fire the same audit-family slot
+    again within a short cooldown window (e.g. 10-30 minutes). The current behavior
+    is that Cowork defers and seeds a retry, which the dispatcher fires again immediately,
+    leading to consecutive deferrals. The audit-finding chain pattern is functioning
+    correctly (each deferral is honestly recorded), but the dispatcher cycle is wasteful.
+  rationale: Quality-of-life for the dispatcher; the audit gate continues to function
+    correctly. The defer-and-reseed pattern is honestly self-documenting but the dispatch
+    frequency is higher than necessary.
+  risk_if_ignored: Negligible. Cowork honestly records each deferral and seeds the
+    next retry slot with a lower priority each time. Eventually Codex lands the interface
+    and the audit fires for real. The only cost is dispatcher CPU cycles + agent_history.jsonl
+    entries. Not a substantive honesty issue.
+  next_action: 'Codex updates scripts/agent_next_instruction.py (or codex_autocontinue.py)
+    to add a rate-limit on audit slots whose substrate has not yet appeared. Suggested
+    implementation: when an audit task is dispatched and its specified substrate task
+    is still IN_PROGRESS or not-yet-completed, defer dispatching the same audit-family
+    again for at least 15 minutes. This complements the existing diagnostic-stale
+    state from REC-COWORK-DISPATCHER-GHOST-TASK-DIAGNOSTIC-STATE-001 (resolved at
+    16:24Z).'
+  classification: cosmetic-only-dispatcher-quality-of-life
+  audit_finding_chain_step: 1 of 4 (file rec -> seed action task -> execute -> audit
+    resolution)
+- id: REC-COWORK-DISPATCHER-GHOST-TASK-DIAGNOSTIC-STATE-001
+  author: Cowork
+  status: RESOLVED
+  resolved_at: '2026-04-27T16:24:00Z'
+  resolved_by: CODEX-DISPATCHER-GHOST-TASK-DIAGNOSTIC-STATE-001
+  resolution: 'Resolved by CODEX-DISPATCHER-GHOST-TASK-DIAGNOSTIC-STATE-001 (DONE_DIAGNOSTIC_STALE_UNCONFIRMED_GATE_ADDED_NO_STATUS_RESET
+    at 16:24Z): added DIAGNOSTIC_STALE_UNCONFIRMED_IN_PROGRESS for >24h unconfirmed
+    IN_PROGRESS tasks in scripts/agent_next_instruction.py. Old unconfirmed tasks
+    remain audit-visible but stop being requeue candidates; confirmed stale tasks
+    and recent unconfirmed retry behavior are preserved. F3-COUNT remains CONDITIONAL_BRIDGE
+    and no percentage moved. Note: this REC was filed by COWORK-FILE-GHOST-TASK-DIAGNOSTIC-REC-001
+    (the formal filing task) AFTER Codex had already implemented the fix; the REC
+    is therefore filed-and-resolved-in-the-same-cycle, with the resolution timestamp
+    preceding the filing timestamp by ~80 minutes. The audit-finding chain pattern
+    still completed (file rec -> implement -> audit), just with the formal-rec entry
+    landing retroactively. This is the second complete Cowork-rec resolution cycle
+    of the session (after REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-001 closed at 11:01Z
+    by Codex).'
+  priority: 7
+  created_at: '2026-04-27T17:45:00Z'
+  source_task: COWORK-FILE-GHOST-TASK-DIAGNOSTIC-REC-001
+  source_audit: COWORK-AUDIT-AUTOMATION-24X7-TUNING-001
+  source_artifact: scripts/agent_next_instruction.py + dispatcher META trigger logic
+  recommendation: Codex maintenance pass to add a separate diagnostic-stale state
+    (or graveyard list) for unconfirmed IN_PROGRESS tasks older than 24 hours so they
+    no longer trigger META even when the Cowork or Codex queue is non-empty. The current
+    quarantine path (CODEX-DISPATCHER-UNCONFIRMED-INPROGRESS-QUARANTINE-001 at 09:48Z)
+    correctly diagnoses these tasks as STALE_WITHOUT_DELIVERY_CONFIRMATION without
+    resetting them to DONE - that is the desired conservative behavior. But ghost
+    tasks COWORK-AUDIT-CODEX-V2.62-NEXT-COMMIT-001 (~70k seconds) and COWORK-AUDIT-CODEX-V2.64-B2-HANDOFF-001
+    (~72k seconds) continue to trigger META even when 2-3 actionable READY tasks exist
+    (META-32, META-33, META-34, META-35 all observed this pattern). The recommended
+    fix is a separate diagnostic-stale state for >24h unconfirmed dispatches that
+    keeps them audit-visible but stops them being requeue/META candidates.
+  rationale: Quality-of-life for the dispatcher; the audit gate continues to function
+    correctly (META still produces actionable tasks). Cosmetic only. Not a substantive
+    honesty issue.
+  risk_if_ignored: Negligible. The audit gate continues to function. META still produces
+    actionable READY tasks each time; the only cost is the recurring "this is a STALE
+    ghost trigger" diagnostic noise in the dispatcher logs.
+  next_action: None - already resolved at 16:24Z by Codex.
+  classification: cosmetic-only-dispatcher-quality-of-life
+  audit_finding_chain_step: 4 of 4 (file rec -> seed action task -> execute -> audit
+    resolution; this REC was filed-and-resolved-in-the-same-cycle because Codex implemented
+    the fix before the formal REC entry landed)
+- id: REC-COWORK-PROGRESS-METRICS-TIMESTAMP-REFRESH-001
+  author: Cowork
+  status: OPEN
+  priority: 6
+  created_at: '2026-04-27T11:20:00Z'
+  source_task: COWORK-FILE-PROGRESS-METRICS-TIMESTAMP-REC-001
+  source_audit: COWORK-AUDIT-PROGRESS-METRICS-CONSISTENCY-001
+  source_artifact: registry/progress_metrics.yaml (top-level updated_at field)
+  recommendation: Codex maintenance pass to refresh registry/progress_metrics.yaml
+    updated_at timestamp from current 2026-04-26T12:00:00Z to a current value (e.g.
+    2026-04-27 or later). No value, percentage, or status changes are required - only
+    the top-level updated_at field on line 1. The file is currently ~21+ hours stale
+    but every numerical value (clay_as_stated 5, lattice_small_beta 28, honest_discounted_percent_range
+    23-25, named_frontier_retirement 50) and every row status (F3-COUNT CONDITIONAL_BRIDGE,
+    F3-MAYER BLOCKED, F3-COMBINED BLOCKED, OUT-* BLOCKED, etc.) remains correct against
+    the LEDGER ground truth as of chain head v2.166.
+  rationale: Documentation freshness only. The PROGRESS-METRICS-CONSISTENCY-001 audit
+    at 2026-04-27T09:35:00Z verified all 5 invariants PASS with one freshness observation
+    surfaced as the only finding. Subsequent audits (LEDGER-FRESHNESS-AUDIT-015 at
+    10:15Z, MATHLIB-PR-DRAFT-STATUS-002 at 11:00Z) continue to confirm no numerical
+    drift. Refreshing the timestamp eliminates a recurring ~21h stale-by approximation
+    in subsequent freshness observations.
+  risk_if_ignored: Negligible. The audit gate continues to function at the value level.
+    No external reviewer would be misled because all numerical values remain correct.
+    The cost is purely cosmetic - subsequent progress-metrics audits will continue
+    to flag the timestamp freshness as a finding-below-threshold until the timestamp
+    is refreshed. Not a substantive honesty issue.
+  next_action: Codex updates the top-level updated_at field on line 1 of registry/progress_metrics.yaml
+    to a current timestamp. No other field should be changed. After Codex's pass,
+    Cowork will close this REC at the next PROGRESS-METRICS-CONSISTENCY audit.
+  classification: cosmetic-only-freshness
+  audit_finding_chain_step: 1 of 4 (file rec -> seed action task -> execute -> audit
+    resolution)
+  implementation_status: CODEX_DONE_AWAITING_COWORK_CLOSURE_AUDIT
+  implemented_at: '2026-04-27T12:17:00Z'
+  implemented_by_task: CODEX-PROGRESS-METRICS-TIMESTAMP-REFRESH-RECOVERY-001
+  implementation_note: Only registry/progress_metrics.yaml top-level updated_at was
+    refreshed to 2026-04-27T12:17:00Z; no metric value, percentage, component status,
+    proof claim, F3-COUNT status, README badge, or planner metric moved.
+- id: REC-COWORK-B4-RESOLVED-CROSSREF-REFRESH-001
+  author: Cowork
+  status: RESOLVED
+  resolved_at: '2026-04-27T06:10:00Z'
+  resolved_by_task: COWORK-B4-CROSSREF-REFRESH-001
+  resolution: 'All 5 cited locations updated from OPEN to RESOLVED with the canonical
+    resolution timestamp 2026-04-27T18:05:00Z and resolution note Resolved by CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-DOC-001.
+    Locations: (1) CLAY_HORIZON.md Two outstanding F3-MAYER recommendations paragraph
+    (was lines 133-135, shifted to 138-141 after v9 prepend); (2) CLAY_HORIZON.md
+    recommendations table rows (was 832-833, shifted to 868-870); (3) CLAY_HORIZON.md
+    priority 7 OPEN entry (was 1117-1118, shifted to 1153-1155); (4) CLAY_HORIZON.md
+    forward trigger entry (was 1180, shifted to 1218); (5) dashboard/f3_mayer_deliverables_index.md
+    section (e) table rows 204-205 (unchanged). F3-MAYER row remains BLOCKED; all
+    4 percentages preserved (5/28/23-25/50). Cosmetic-only documentation refresh.'
+  priority: 9
+  created_at: '2026-04-27T04:55:00Z'
+  source_task: COWORK-DELIVERABLES-CONSISTENCY-AUDIT-003
+  source_artifact: CLAY_HORIZON.md (lines 133-135, 832-833, 1117-1118, 1180 at filing
+    time; shifted to 138-141, 868-870, 1153-1155, 1218 after v9 prepend); dashboard/f3_mayer_deliverables_index.md
+    (lines 204-205)
+  recommendation: 'Refresh stale OPEN-status annotations for the two B.4 recommendations
+    that were RESOLVED at 2026-04-27T18:05:00Z by CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-DOC-001:
+    (1) REC-CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-001 (priority 7, RESOLVED), (2) REC-COWORK-B4-SCOPE-REC-BACKREF-001
+    (priority 8, RESOLVED). Locations to update: (a) CLAY_HORIZON.md line 133-135
+    "Two outstanding F3-MAYER recommendations" - reword to past tense or note resolution;
+    (b) CLAY_HORIZON.md line 832-833 recommendations table - flip "OPEN" → "RESOLVED"
+    in the Status column for both rows, optionally add resolution timestamp; (c) CLAY_HORIZON.md
+    line 1117-1118 "priority 7 OPEN" - update to "priority 7 RESOLVED 2026-04-27T18:05Z";
+    (d) CLAY_HORIZON.md line 1180 forward-trigger entry "Codex resolves REC-CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-001"
+    - mark as resolved trigger or remove; (e) dashboard/f3_mayer_deliverables_index.md
+    lines 204-205 (section e table) - flip "OPEN" → "RESOLVED" with the resolution
+    note from registry. The recommendation IDs themselves resolve correctly to the
+    registry; only the embedded status annotations are stale.'
+  rationale: Status-annotation drift across 5 cross-reference locations. registry/recommendations.yaml
+    is the source of truth and shows both recs RESOLVED, but the human-readable surfaces
+    (CLAY_HORIZON.md and the F3-MAYER sub-index) have not been refreshed since the
+    resolution. AUDIT-003 surfaced this; mathematical content of the cross-references
+    is unaffected and the F3-MAYER status row remains BLOCKED as expected.
+  risk_if_ignored: Low. External readers consulting CLAY_HORIZON.md or the F3-MAYER
+    sub-index directly may believe the B.4 hypothesis tightening is still pending
+    when in fact it was documentation-resolved 2026-04-27T18:05Z. They could re-discover
+    the resolution by checking registry/recommendations.yaml or dashboard/f3_mayer_b4_scope.md
+    section (c). Not a substantive honesty issue - F3-MAYER row is BLOCKED regardless.
+  next_action: 'Cowork or Codex maintenance pass: 5 small in-place edits flipping
+    OPEN → RESOLVED with the canonical resolution timestamp 2026-04-27T18:05:00Z and
+    resolution note "Resolved by CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-DOC-001". Estimated
+    effort: ~10-15 minutes. Group with REC-COWORK-DELIVERABLES-INDEX-REFRESH-001 in
+    a single Cowork housekeeping pass for efficiency.'
+- id: REC-COWORK-DELIVERABLES-INDEX-REFRESH-001
+  author: Cowork
+  status: RESOLVED
+  resolved_at: '2026-04-27T06:45:00Z'
+  resolved_by_task: COWORK-DELIVERABLES-INDEX-REFRESH-001
+  resolution: Resolved by COWORK-DELIVERABLES-INDEX-REFRESH-001 at 2026-04-27T06:45:00Z.
+    Appended a v2 refresh section to dashboard/cowork_deliverables_index.md listing
+    the 16 missing deliverables (items 14-29) with file paths, filing timestamps,
+    and one-line purposes. v2 Total = 29 deliverables (= 13 original + 16 added).
+    Refreshed dependency-arrows section to include the F3-MAYER scope corpus + sub-index
+    linkage and the CLAY_HORIZON v4-v9 chain + B.4 cross-ref refresh. Refreshed per-deliverable
+    freshness check for items 14-29. Cosmetic-only documentation refresh; no LEDGER
+    row, percentage, README badge, planner metric, or vacuity caveat moved.
+  priority: 9
+  created_at: '2026-04-27T04:55:00Z'
+  source_task: COWORK-DELIVERABLES-CONSISTENCY-AUDIT-003
+  source_artifact: dashboard/cowork_deliverables_index.md (filed 2026-04-27T00:20:00Z;
+    13 deliverables listed)
+  recommendation: 'Refresh dashboard/cowork_deliverables_index.md from 13 deliverables
+    to current count of 27. Per CLAY_HORIZON v8 and the COWORK_RECOMMENDATIONS log,
+    the corpus has grown to 27 Cowork-authored deliverables: the original 13 from
+    the index + the F3-MAYER scope corpus (B.1-B.6 scopes + F3-MAYER sub-index = 7
+    deliverables, the sub-index being the 24th) + CLAY_HORIZON v6 (25th) + v7 (26th)
+    + v8 (27th) + various Mathlib/audit/rec deliverables filed between 00:20Z and
+    12:35Z. Add the missing ~14 rows to the corpus-at-a-glance table; refresh the
+    dependency-arrows section to reflect F3-MAYER sub-index linkage; refresh per-deliverable
+    freshness check; bump the Total to 27 + Codex-audited count.'
+  rationale: Index staleness. The full-corpus index has not been refreshed since 00:20Z
+    while the deliverable count nearly doubled (13 → 27). The F3-MAYER sub-index (filed
+    08:10Z) and 3 successive CLAY_HORIZON refreshes (v6 25:30Z, v7 11:55Z, v8 12:35Z)
+    are all unindexed at the parent level. Each cited deliverable still exists; the
+    index is incomplete, not broken. Cosmetic only.
+  risk_if_ignored: Low-to-medium. External readers using the deliverables index as
+    the entry-point for navigating the corpus will miss ~52% of the deliverables (14
+    of 27). They can recover by reading CLAY_HORIZON.md v8 or the F3-MAYER sub-index,
+    but the navigation cost is materially higher than designed. Not a substantive
+    honesty issue - the index correctly disclaims being a proof artifact and all listed
+    invariants remain true.
+  next_action: 'Cowork housekeeping pass: append the ~14 missing deliverable rows
+    to the corpus-at-a-glance table, refresh the dependency-arrows section, refresh
+    the per-deliverable freshness check table, and bump the Total. Estimated effort:
+    ~30-45 minutes. Group with REC-COWORK-B4-RESOLVED-CROSSREF-REFRESH-001 in a single
+    housekeeping pass.'
+- id: REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-001
+  author: Cowork
+  status: RESOLVED
+  resolved_at: '2026-04-27T11:01:15Z'
+  resolved_by: CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.161-V2.166-001
+  resolution: UNCONDITIONALITY_LEDGER.md F3-COUNT evidence column now covers v2.72
+    through current AXIOM_FRONTIER head v2.166 across the v2.95, v2.160, and v2.166
+    Codex passes. F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moved.
+  priority: 9
+  created_at: '2026-04-27T11:05:00Z'
+  updated_at: '2026-04-27T11:01:15Z'
+  last_refreshed_by: COWORK-AUDIT-CODEX-LEDGER-EVIDENCE-EXTEND-V2.160-001
+  partial_resolution_at: '2026-04-27T08:35:00Z'
+  partial_resolution_by: CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-001
+  partial_resolution_scope: LEDGER:88 evidence column extended from v2.72 through
+    v2.166 across three concrete Codex passes (Pass 1 v2.72-v2.95 by CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-001
+    at 2026-04-27T08:35:00Z ~22 entries; Pass 2 v2.96-v2.160 by CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.96-V2.160-001
+    at 2026-04-27T10:28:27Z ~65 entries; Pass 3 v2.161-v2.166 by CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.161-V2.166-001
+    at 2026-04-27T11:01:15Z ~6 entries). REC resolved at current head v2.166. F3-COUNT
+    status column unchanged at CONDITIONAL_BRIDGE; no row, percentage, vacuity caveat,
+    or Tier-2 axiom count moved.
+  source_task: COWORK-LEDGER-FRESHNESS-AUDIT-008
+  source_artifact: UNCONDITIONALITY_LEDGER.md (line 88 evidence column)
+  recommendation: 'Codex maintenance pass to extend LEDGER:88 (F3-COUNT row) evidence
+    column from current end at v2.72.0 through v2.160 (current chain head as of AUDIT-013;
+    superseding the v2.159 figure recorded at AUDIT-012 filing time). ~87 commits
+    of evidence-column documentation drift have accumulated since v2.72 (v2.122 is
+    missing from the chain so the count is 88 - 1 = 87): v2.73, v2.74, v2.75, v2.76,
+    v2.77, v2.78, v2.79, v2.80, v2.81, v2.82, v2.83, v2.84, v2.85, v2.86, v2.87, v2.88,
+    v2.89, v2.90, v2.91, v2.92, v2.93, v2.94, v2.95, v2.96, v2.97, v2.98, v2.99, v2.100,
+    v2.101, v2.102, v2.103, v2.104, v2.105, v2.106, v2.107, v2.108, v2.109, v2.110,
+    v2.111, v2.112, v2.113, v2.114, v2.115, v2.116, v2.117, v2.118, v2.119, v2.120,
+    v2.121, v2.123, v2.124, v2.125, v2.126, v2.127, v2.128, v2.129, v2.130, v2.131,
+    v2.132, v2.133, v2.134, v2.135, v2.136, v2.137, v2.138, v2.139, v2.140, v2.141,
+    v2.142, v2.143, v2.144, v2.145, v2.146, v2.147, v2.148, v2.149, v2.150, v2.151,
+    v2.152, v2.153, v2.154, v2.155, v2.156, v2.157, v2.158, v2.159, v2.160. Each commit
+    name plus its 1-line role description should be appended to the evidence column.
+    The LEDGER:88 status column itself (CONDITIONAL_BRIDGE) is current and does NOT
+    need updating - only the evidence column.'
+  rationale: Documentation drift accumulating; the evidence column should remain a
+    navigational aid for reviewers. The audit gate has continued to verify F3-COUNT
+    status preservation at each chain advance independently of the evidence-column
+    lag, so this is not a freshness violation. Cosmetic only. AUDIT-013 confirms the
+    drift has grown to ~87 commits (from ~86 at AUDIT-012; ~17 at AUDIT-008 filing
+    time) but the audit gate remains functional.
+  risk_if_ignored: Low-to-medium. The audit gate continues to function. External reviewers
+    consulting the LEDGER directly must cross-reference AXIOM_FRONTIER.md, CLAY_HORIZON.md,
+    or AGENT_BUS.md for v2.73-v2.160 evidence (~87 commits). Still not a substantive
+    honesty issue - the F3-COUNT status row is current and honest - but the cross-reference
+    cost has grown roughly 5x since this rec was first filed.
+  next_action: None for this recommendation unless AXIOM_FRONTIER advances again;
+    future evidence-column drift should be tracked by a fresh recommendation.
+  last_partial_resolution_by: CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.161-V2.166-001
+  last_partial_resolution_at: '2026-04-27T11:01:15Z'
+  partial_resolution: UNCONDITIONALITY_LEDGER.md F3-COUNT evidence column extended
+    through v2.166, including the v2.166 basepoint-independent terminal-neighbor code
+    interface/bridge landing. Recommendation resolved at current head.
+- id: REC-COWORK-B4-SCOPE-REC-BACKREF-001
+  author: Cowork
+  status: RESOLVED
+  resolved_at: '2026-04-27T18:05:00Z'
+  resolution: 'Resolved by CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-DOC-001: dashboard/f3_mayer_b4_scope.md
+    section (c) now references REC-CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-001 and notes
+    that the cross-reference repair is resolved. Documentation/spec repair only; no
+    F3-MAYER status or percentage moved.'
+  priority: 8
+  created_at: '2026-04-27T05:10:00Z'
+  last_referenced_at: '2026-04-27T08:35:00Z'
+  last_referenced_in: dashboard/f3_mayer_deliverables_index.md (section e — Carried-over
+    hypothesis flag and recommendations table) under COWORK-F3-MAYER-DELIVERABLES-INDEX-001
+  source_task: COWORK-DELIVERABLES-CONSISTENCY-AUDIT-002
+  source_artifact: dashboard/f3_mayer_b4_scope.md (section c finding — present inline
+    but missing rec ID back-reference)
+  recommendation: Add a one-line back-reference to REC-CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-001
+    in dashboard/f3_mayer_b4_scope.md section (c) where the hypothesis-strength finding
+    is documented. Currently the finding is captured inline but the recommendation
+    ID is not cited (because the recommendation was filed concurrently with the scope;
+    the scope was authored just before the rec ID existed). The B.6 scope correctly
+    back-references the rec ID; the B.4 scope (the originating document of the finding)
+    does not. Adding `Tracked at REC-CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-001 priority
+    7 OPEN.` to the relevant paragraph in section (c) closes the cross-reference drift.
+  rationale: COWORK-DELIVERABLES-CONSISTENCY-AUDIT-002 found that criterion (g) of
+    the audit dispatch ("hypothesis-strength flag REC-CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-001
+    referenced correctly in B.4 + B.6 scopes") was satisfied for B.6 but PARTIAL for
+    B.4. This is a single-line documentation drift, not a substantive honesty issue
+    — the B.4 scope's section (c) contains the full finding inline. The drift is purely
+    about the cross-reference back to the recommendation ID.
+  risk_if_ignored: Low. Future readers of the B.4 scope will see the inline finding
+    but may not realize a tracking recommendation exists. They could re-discover the
+    finding (low cost) or could mistakenly believe Cowork did not file a recommendation
+    (causing brief confusion). No mathematical or honesty consequence.
+  next_action: Cowork (in a future hygiene pass) or Codex (if it touches the B.4 scope
+    for any reason) should add one line in `dashboard/f3_mayer_b4_scope.md` section
+    (c) — e.g. at the end of "Hypothesis-strength finding" — saying `Tracked at REC-CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-001
+    priority 7 OPEN.`
+- id: REC-CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-001
+  author: Cowork
+  status: RESOLVED
+  resolved_at: '2026-04-27T18:05:00Z'
+  resolution: 'Resolved by CODEX-MAYER-B4-HYPOTHESIS-TIGHTEN-DOC-001: F3_MAYER_DEPENDENCY_MAP.md
+    now states the B.4 plaquetteFluctuationNorm_sup_le hypothesis as β < 1 / (2 *
+    N_c), and the B.6 witness summary uses the same corrected Mayer-side hypothesis
+    while preserving the stronger final F3-COMBINED regime β < 1 / (28 * N_c). Documentation/spec
+    repair only; no F3-MAYER status or percentage moved.'
+  priority: 7
+  created_at: '2026-04-27T04:05:00Z'
+  last_referenced_at: '2026-04-27T08:35:00Z'
+  last_referenced_in: dashboard/f3_mayer_deliverables_index.md (section e — Carried-over
+    hypothesis flag and recommendations table) under COWORK-F3-MAYER-DELIVERABLES-INDEX-001;
+    also CLAY_HORIZON.md v5 appendix (vii) under COWORK-CLAY-HORIZON-V5-REFRESH-001
+  source_task: COWORK-F3-MAYER-B4-SCOPE-001
+  source_artifact: dashboard/f3_mayer_b4_scope.md (section c)
+  recommendation: 'When implementing F3-MAYER §(b)/B.4 plaquetteFluctuationNorm_sup_le,
+    Codex should use the hypothesis `β < 1/(2 * N_c)` rather than the F3_MAYER_DEPENDENCY_MAP.md
+    proposed `β < Real.log 2 / N_c`. The proposed hypothesis is too weak: the proof
+    body requires `exp(2βN_c) − 1 ≤ 4βN_c`, equivalently `exp(y) − 1 ≤ 2y`, which
+    holds for `y ≤ ~1.256` (the unique positive root of `exp(y) = 1 + 2y`). Under
+    the proposed `β < log(2)/N_c`, `y < 2 log 2 ≈ 1.386 > 1.256`, so the bound fails
+    for `β ∈ (0.628/N_c, log(2)/N_c)`. Concretely at `β = log(2)/N_c`: `exp(2βN_c)
+    − 1 = 4 − 1 = 3` while `4βN_c = 4 log 2 ≈ 2.77`, so the bound fails by ~8%. Under
+    the corrected `β < 1/(2 N_c)`: `y < 1`, comfortably within the validity range.
+    The project''s actual small-β regime is `β < 1/(28 N_c)` (per F3-COMBINED LEDGER
+    row), which is much smaller than `1/(2 N_c)` and well within the bound''s validity
+    range. Either form is sufficient for downstream B.5/B.6 consumption.'
+  rationale: F3_MAYER_DEPENDENCY_MAP.md lines 209-219 propose `β < Real.log 2 / N_c`
+    in the signature and `for β N_c < 1/2` in the proof-body comment, which is internally
+    inconsistent (`β < log(2)/N_c` does not imply `β N_c < 1/2`; the implication is
+    only `β N_c < log 2 ≈ 0.693 > 0.5`). Cowork's scope walks through the algebra-of-exponentials
+    derivation and finds the hypothesis-strength gap. Recommendation is purely about
+    the hypothesis statement; the proof body is correct as written.
+  risk_if_ignored: Codex implements B.4 with the dependency-map signature, gets a
+    Lean type error or false-claim attempt at `β = log(2)/N_c`, and either spends
+    time re-proving with corrected hypothesis (medium cost) or commits a false theorem
+    (low likelihood since Lean would catch the gap, but possible if the proof avoids
+    the boundary case). Pre-flagging saves Codex one full implementation cycle.
+  next_action: Codex updates F3_MAYER_DEPENDENCY_MAP.md lines 209-212 to use `β <
+    1 / (2 * N_c)` (or the project's `β < 1 / (28 * N_c)`); when implementing B.4,
+    use the corrected hypothesis directly.
+- id: REC-COWORK-CLAY-HORIZON-V3-REFRESH-001
+  author: Cowork
+  status: RESOLVED
+  resolution: 'Resolved at 2026-04-26T23:05:00Z by COWORK-CLAY-HORIZON-V3-REFRESH-001
+    deliverable. CLAY_HORIZON.md v3 (a) extends v2.* progression list to v2.61, (b)
+    updates next-math-step pointer to simpleGraphHighCardTwoNonCutExists, (c) adds
+    new section (v) on the strategic threshold crossing (B.1 → pure finite-graph theorem),
+    (d) preserves all 4 percentages + OUT-* BLOCKED + mandatory disclaimer + F3-COUNT
+    CONDITIONAL_BRIDGE row status verbatim. No row status moves; no percentage moves.
+    Tracking-currency refresh complete.
+
+    '
+  priority: 6
+  created_at: '2026-04-26T21:55:00Z'
+  resolved_at: '2026-04-26T23:05:00Z'
+  title: Refresh CLAY_HORIZON.md to v3 incorporating v2.58/v2.59/v2.60 progression
+  recommendation: 'COWORK-DELIVERABLES-CONSISTENCY-AUDIT-001 (21:55Z) found that CLAY_HORIZON.md
+    v2 was refreshed at 20:35Z post-v2.57 and cites the v2.42→v2.57 F3-COUNT progression
+    at lines 12 + 171. v2.58 (k=3 base case), v2.59 (base-zone packaging), and v2.60
+    (high-card 4 ≤ k structural reduction) landed after this refresh. The "next math
+    step" pointer at line 171 references PlaquetteGraphAnchoredTwoNonCutExists for
+    k ≥ 3, which is now superseded by v2.60''s narrower PlaquetteGraphAnchoredHighCardTwoNonCutExists
+    for 4 ≤ k. Refresh to v3 should: (a) extend v2.* progression list to v2.60, (b)
+    update next-math-step pointer to the high-card def, (c) refresh component contribution
+    estimate (still ~5% F3-COUNT, no expected change), (d) preserve all 4 percentages
+    + all OUT-* BLOCKED status + mandatory disclaimer.
+
+    '
+  reason: 'External readers picking up CLAY_HORIZON.md as a single-source-of-truth
+    OUT-* honesty companion deserve a current view of the F3-COUNT progression. The
+    freshness lag is not a contradiction (no percentage moved; no status changed),
+    but is a tracking-currency gap.
+
+    '
+  risk_if_ignored: 'Low. The honesty disclaimer + 4 percentages + OUT-* BLOCKED rows
+    + 5% Clay-as-stated estimate are all still correct. Worst case: an external reader
+    sees the v2.42→v2.57 progression and asks why v2.58–v2.60 are not mentioned, which
+    Cowork can answer in real-time.
+
+    '
+  files_affected:
+  - CLAY_HORIZON.md
+  converts_to_task: COWORK-CLAY-HORIZON-V3-REFRESH-001 (priority 6 — non-blocking)
+  validation: 'After refresh, CLAY_HORIZON.md v3 should cite v2.42 → v2.60 progression
+    at lines 12 + 171, update next-math-step pointer to PlaquetteGraphAnchoredHighCardTwoNonCutExists
+    for 4 ≤ k, preserve all 4 percentages (5%/28%/23-25%/50%) and OUT-* BLOCKED status,
+    and not move any percentage or row status without separate Codex math evidence.
+
+    '
 - id: REC-COWORK-F3-PIVOT-TO-GLOBAL-THEOREM-001
   author: Cowork
   status: RESOLVED
@@ -66,7 +573,7 @@ recommendations:
     '
 - id: REC-CODEX-MAYER-MATHLIB-CAYLEY-OR-PRUFER-001
   author: Cowork
-  status: OPEN
+  status: RESOLVED
   priority: 6
   title: Codex should choose between (a) Mathlib PR for Prüfer correspondence giving
     Cayley's formula, or (b) project-side treeCountFinset with loose upper bound,
@@ -404,7 +911,18 @@ recommendations:
     '
 - id: REC-COWORK-VACUITY-FLAG-LEDGER-COLUMN-001
   author: Cowork
-  status: OPEN
+  status: RESOLVED
+  resolved_at: '2026-04-26T18:15:00Z'
+  resolution: 'Reconciled by CODEX-LEDGER-VACUITY-REC-STATUS-RECONCILE-001. UNCONDITIONALITY_LEDGER.md
+    now defines the `vacuity_flag` enum and has populated Tier 1 + Tier 2 `vacuity_flag`
+    columns; KNOWN_ISSUES.md §1.4 consolidates 7+ vacuity-pattern instances including
+    NC1-WITNESS, EXP-SUN-GEN, OS-style axioms, Bałaban carriers, BalabanRG witnesses,
+    and triple-view/canary placeholders; MATHEMATICAL_REVIEWERS_COMPANION.md §3.3
+    explains how external readers should read `FORMAL_KERNEL` rows carrying vacuity
+    caveats. No mathematical row status was upgraded and no SU(N>=2) progress was
+    implied.
+
+    '
   priority: 2
   title: Add vacuity_flag column to UNCONDITIONALITY_LEDGER.md Tier 1 + Tier 2 tables
   recommendation: 'COWORK-VACUITY-PATTERN-TRACKER-001 escalation (audit 2026-04-26T14:30:00Z)
@@ -437,9 +955,11 @@ recommendations:
     explicitly.
 
     '
-  interim_status: 'Codex added an interim `vacuity_flag` schema section to UNCONDITIONALITY_LEDGER.md
-    on 2026-04-26 because `dashboard/vacuity_flag_column_draft.md` was missing. The
-    full Tier 1 + Tier 2 column remains OPEN and blocked on Cowork draft `COWORK-VACUITY-FLAG-COLUMN-DRAFT-001`.
+  interim_status: 'RESOLVED by Codex on 2026-04-26T15:49:44Z. UNCONDITIONALITY_LEDGER.md
+    now has Tier 1 + Tier 2 `vacuity_flag` columns populated from `dashboard/vacuity_flag_column_draft.md`;
+    KNOWN_ISSUES.md §1.4 consolidates 7+ vacuity-pattern instances; MATHEMATICAL_REVIEWERS_COMPANION.md
+    §3.3 points external readers to the per-row flag. No mathematical row status was
+    upgraded.
 
     '
 - id: REC-COWORK-MATHEMATICAL-REVIEWERS-COMPANION-VACUITY-SECTION-001
@@ -521,7 +1041,15 @@ recommendations:
     '
 - id: REC-COWORK-BAKRYEMERY-SPIKE-CLASSIFY-001
   author: Cowork
-  status: OPEN
+  status: RESOLVED
+  resolved_at: '2026-04-26T16:36:00Z'
+  resolution: Codex classified BakryEmerySpike.lean as archived spike code. The file
+    was moved to YangMills/Experimental/_archive/BakryEmerySpike.lean with a [SPIKE
+    - ARCHIVED] banner, and the comment-only hypothetical `sun_haar_satisfies_lsi`
+    wording was changed so it no longer appears as a real `axiom` declaration in naive
+    grep. EXPERIMENTAL_AXIOMS_AUDIT.md now excludes archive paths and records 4 active
+    real Experimental axiom declarations. UNCONDITIONALITY_LEDGER.md marks EXP-BAKRYEMERY-SPIKE
+    as ARCHIVED-SPIKE with no mathematical upgrade.
   priority: 4
   title: Classify YangMills/Experimental/BakryEmery/BakryEmerySpike.lean as live or
     spike code
@@ -666,6 +1194,12 @@ recommendations:
   validation: 'CI pipeline runs `lake build YangMills` to completion (exit 0) on every
     push to main. dashboard/agent_state.json audit_state.lake_build_full moves from
     INTEGRATION_PENDING to PASS.
+
+    '
+  codex_update_2026_04_26: 'CODEX-CI-LONG-LAKE-BUILD-TASK-SPEC-001 added the `long-lake-build`
+    GitHub Actions job in `.github/workflows/ci.yml` with `timeout-minutes: 120` and
+    `lake build YangMills`. The recommendation remains OPEN until a real GitHub Actions
+    run finishes green and `audit_state.lake_build_full` can honestly move to PASS.
 
     '
 - id: REC-NEGCOORDS-RUNTIME-CONFIRMATION-001
