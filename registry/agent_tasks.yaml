@@ -30155,8 +30155,8 @@ tasks:
   immediate_blocker: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
   bridge_direction: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
     -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
-  rejected_cycle: Downstream residual-value source/realization/separation interfaces were
-    not used as proof of the origin-certificate source frontier.
+  rejected_cycle: Downstream residual-value source/realization/separation interfaces
+    were not used as proof of the origin-certificate source frontier.
   validation_result:
   - Dashboard artifact records the exact no-closure blocker and bridge direction.
   - No Lean file was edited; no lake build required.
@@ -30165,9 +30165,10 @@ tasks:
     metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.
   next_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001
 - id: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001
-  title: 'Codex: recheck base-zone origin certificate code-injection frontier after v2.239'
+  title: 'Codex: recheck base-zone origin certificate code-injection frontier after
+    v2.239'
   owner: Codex
-  status: READY
+  status: COMPLETED
   priority: 5
   created_at: '2026-04-28T09:35:00Z'
   source_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-001
@@ -30201,9 +30202,78 @@ tasks:
   - dashboard/agent_state.json
   next_agent: Codex
   notes:
-  - Seeded after v2.239 confirmed that the origin-certificate source frontier is
-    blocked exactly at PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296.
+  - Seeded after v2.239 confirmed that the origin-certificate source frontier is blocked
+    exactly at PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296.
   - Do not use PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296
     or downstream residual-value realization/separation interfaces as circular evidence
     for this premise.
-  updated_at: '2026-04-28T09:35:00Z'
+  - Dispatched to Codex at 2026-04-28T06:01:59Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T06:02:02Z
+  updated_at: '2026-04-28T06:01:59Z'
+  dispatched_at: '2026-04-28T06:01:59Z'
+  dispatched_to: Codex
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T06:01:59Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T06:02:02Z'
+  delivery_agent: Codex
+  last_delivery_method: codex-enter
+  last_delivery_distance: '32.5'
+  delivery_confirmed_at: '2026-04-28T06:02:02Z'
+  completed_at: '2026-04-28T09:55:00Z'
+  completion_status: DONE_NO_CLOSURE_NONCIRCULAR_CODE_INJECTION_DATA_MISSING
+  artifact: dashboard/f3_base_zone_origin_certificate_code_injection_frontier_recheck_v2_240.md
+  checked_frontier: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+  exact_blocker: Non-circular construction of PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData
+  disallowed_bridge: PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296
+    -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+  bridge_direction: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+    -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+  validation_result:
+  - Dashboard artifact records the exact no-closure blocker and bridge direction.
+  - No Lean file was edited; no lake build required.
+  - No new theorem was added and no new theorem-specific axiom trace was introduced.
+  f3_count_impact: F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README
+    metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.
+  next_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001
+- id: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001
+  title: 'Codex: scope non-circular structural source for origin certificate code injection'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-28T09:55:00Z'
+  source_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - dashboard/f3_base_zone_origin_certificate_code_injection_frontier_recheck_v2_240.md
+  - dashboard/f3_base_zone_origin_certificate_code_injection_scope.md
+  - dashboard/f3_base_zone_origin_certificate_code_injection_attempt_v2_229.md
+  - dashboard/f3_structural_residual_value_invariant_inventory.md
+  - AXIOM_FRONTIER.md
+  objective: Scope a genuinely non-circular structural source for PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+    or confirm that PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData
+    is already the minimal honest frontier. The scope must not use PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296
+    or downstream residual-value realization/separation interfaces as proof evidence.
+  validation:
+  - Dashboard scope note records the exact proposed theorem/blocker and bridge direction
+  - Any proposed theorem is strictly upstream of PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+    and not a downstream residual-value interface
+  - No Lean theorem is added unless it builds without sorry or new axioms
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
+  stop_if:
+  - The scope relies on downstream residual-value realization/source/origin interfaces
+    in reverse, selected-image cardinality, bounded menu cardinality, empirical search,
+    finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes, parent-relative
+    terminalNeighborCode equality, deleted-X shortcut, or the v2.161 cycle
+  required_updates:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  notes:
+  - Seeded after v2.240 confirmed that the only visible Lean bridge into code injection
+    from a named theorem is the disallowed downstream residual-value source route.
+  - The scope should either name a new upstream structural theorem or mark the v2.228
+    data carrier itself as the minimal honest frontier.
+  updated_at: '2026-04-28T09:55:00Z'

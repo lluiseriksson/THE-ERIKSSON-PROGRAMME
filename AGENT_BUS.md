@@ -9,6 +9,56 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T09:55:00Z - CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001 DONE_NO_CLOSURE_NONCIRCULAR_CODE_INJECTION_DATA_MISSING
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001`
+**Status**: `DONE_NO_CLOSURE_NONCIRCULAR_CODE_INJECTION_DATA_MISSING`
+
+Codex rechecked the code-injection frontier:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+
+The v2.228 bridge into origin-certificate source is present:
+
+    OriginCertificateCodeInjection -> OriginCertificateSource
+
+Lean also contains:
+
+    BaseZoneResidualValueCodeSource -> OriginCertificateCodeInjection
+
+but that residual-value source route was not used.  In the post-v2.236 chain it
+is downstream of residual-value realization/separation and would be circular for
+this frontier.
+
+Exact no-closure blocker:
+
+    Non-circular construction of PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData
+
+More specifically, the missing data is a `Fin 1296` code on the whole residual
+subtype plus selected-admissible equality-reflection for residual values
+carrying terminal-neighbor selector data from essential parents.
+
+Dashboard artifact:
+
+    dashboard/f3_base_zone_origin_certificate_code_injection_frontier_recheck_v2_240.md
+
+Validation:
+
+- No Lean file was edited; no `lake build` required by this task.
+- No new theorem or theorem-specific axiom trace was introduced.
+- F3-COUNT remains `CONDITIONAL_BRIDGE`; no status or percentage moved.
+
+Next Codex task:
+
+    CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001
+
+That task should scope a genuinely non-circular structural source for the
+code-injection data, or confirm that the v2.228 data carrier itself is the
+minimal honest frontier.
+
+---
+
 ## Latest Handoff - 2026-04-28T09:35:00Z - CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-001 DONE_NO_CLOSURE_ORIGIN_CERTIFICATE_CODE_INJECTION_FRONTIER_CONFIRMED
 
 **Baton owner**: Codex
