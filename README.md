@@ -32,8 +32,8 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 | **Language** | Lean 4 (`leanprover/lean4:v4.29.0-rc6`) + Mathlib (`master`) |
 | **Core discipline** | `YangMills/ClayCore/` prints only `[propext, Classical.choice, Quot.sound]` |
 | **Current front** | **`ClusterCorrelatorBound`** — analytic two-point decay for the SU(N_c) Gibbs measure, via F1 (character / Taylor expansion in scalar traces) + F2 (sidecar Haar integrals: L2.5 + 3a + 3b + 3c + main target) + F3 (Kotecky–Preiss cluster convergence) |
-| **Last closed** | **v2.53.0 F3 safe-deletion hypothesis + degree-one sufficiency bridge** — no bar movement, but the active F3/Klarner decoder now has the exact one-step recursive blocker named in Lean. `PlaquetteGraphAnchoredSafeDeletionExists` states the needed non-root deletion whose residual remains an anchored bucket of size `k - 1`; `PlaquetteGraphAnchoredDegreeOneDeletionExists` is separated as a stronger sufficient condition. Lean proves `plaquetteGraphAnchoredSafeDeletionExists_of_degreeOneDeletionExists`, the physical specialization, and the generic/physical one-step deletion drivers. Build `lake build YangMills.ClayCore.LatticeAnimalCount` green; all four new `#print axioms` traces remain `[propext, Classical.choice, Quot.sound]`. This is partial F3-COUNT progress only: proving/refining global safe deletion and iterating into the full anchored word decoder remain open. (2026-04-26) |
-| **Last updated** | 2026-04-26 (post-v2.53.0 + joint-planner sync) |
+| **Last closed** | **v2.234 F3 base-zone residual-value code separation interface + erasure bridge** — no bar movement, but the active F3 bookkeeping/base-zone lane now has the focused Lean interface `PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296` and bridge `physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296_of_baseZoneResidualValueCodeSeparation1296`. Build `lake build YangMills.ClayCore.LatticeAnimalCount` passed; focused `#print axioms` traces remain no larger than `[propext, Classical.choice, Quot.sound]`. This is interface progress only: proving the selector-independent residual-value code and selected-admissible equality-reflection remains the next blocker. |
+| **Last updated** | 2026-04-28 (post-v2.234 F3 residual-value code separation interface; branch `p2d-audit` pushed at commit `6eb61fc`) |
 | **Joint planner metrics** | See `JOINT_AGENT_PLANNER.md`, `CLAY_HORIZON.md`, and `registry/progress_metrics.yaml`. Current consensus: **Clay-as-stated ≈ 5 %** (continuum QFT on ℝ⁴ with OS/Wightman/Wightman-compatible mass gap for SU(N), N ≥ 2); **internal lattice small-β subgoal ≈ 28 %** (honesty-discounted ≈ 23–25 % after vacuous/low-content retirements); **named-frontier retirement = 50 %** (internal monotone accounting over `AXIOM_FRONTIER.md` + `SORRY_FRONTIER.md`). These numbers are distinct and must not be interchanged. |
 
 ---
@@ -50,6 +50,14 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 8. [Building & verifying](#8-building--verifying)
 9. [How to contribute](#9-how-to-contribute) (incl. §9.1 Mathlib upstream contributions)
 10. [Honesty note](#10-honesty-note)
+
+## Fresh-window agent prompt
+
+If a Codex or Cowork session runs out of usable context, start the new session
+from `CODEX_COWORK_NEW_TASK_PROMPT.md`. It is the compact, copy-pasteable
+handoff for both agents: current branch, latest pushed commit, active F3
+blocker, validation commands, and the guardrails that must not move
+F3-COUNT or Clay percentages.
 
 ---
 
