@@ -137,3 +137,29 @@ coordinate could be stale or fail to focus the input. The Codex send path now:
 
 The user-confirmed undelivered F3 inventory dispatch was marked
 `ABANDONED_UNCONFIRMED` and is `READY` again.
+
+## Follow-up: Baseline Scope Crash in Codex Rearm Loop
+
+A later user run exposed a hard crash after the multipoint Codex submit path:
+
+```text
+NameError: name 'baseline_ready' is not defined
+```
+
+Root cause: `send_reply()` captured the detector baseline needed by the stale
+busy confirmation rule, but returned only `(ok, method, d)`. The outer rearm
+loop then referenced `baseline_ready` and `baseline_d` out of scope.
+
+Patch:
+
+- `send_reply()` now returns `(ok, method, d, baseline_ready, baseline_d)`.
+- The main loop carries those values into the post-send rearm check.
+- Recording an unconfirmed delivery now clears stale `delivery_confirmed_at`
+  before deciding whether `ABANDONED_UNCONFIRMED` should requeue the task.
+
+The user-confirmed undelivered Codex dispatches for
+`CODEX-CI-LONG-LAKE-BUILD-WORKFLOW-PUBLICATION-SCOPE-001` and
+`CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001`
+were marked `ABANDONED_UNCONFIRMED`; the next Codex peek is again a READY F3
+task. Cowork still receives only `COWORK-WORKSPACE-MOUNT-BLOCKED` until its
+workspace mount is actually attached.

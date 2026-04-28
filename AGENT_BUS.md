@@ -9,6 +9,40 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T11:10:00Z - CODEX-AUTOCONTINUE-BASELINE-REARM-SCOPE-FIX DONE_AUTOMATION_FIX
+
+**Baton owner**: Codex
+**Task**: `CODEX-AUTOCONTINUE-BASELINE-REARM-SCOPE-FIX`
+**Status**: `DONE_AUTOMATION_FIX`
+
+User-run logs exposed a real watcher crash after Codex multipoint submit
+fallbacks:
+
+    NameError: name 'baseline_ready' is not defined
+
+`send_reply()` measured `baseline_ready` / `baseline_d`, but the outer rearm
+loop used those values without receiving them. The active watcher and versioned
+snapshot now return the baseline values from `send_reply()` and pass them into
+the rearm loop, so a failed Codex submit no longer crashes the 24/7 loop or
+leaves Cowork waiting on a broken pending state.
+
+The dispatcher delivery-state helper also now clears stale
+`delivery_confirmed_at` when recording unconfirmed states, so
+`ABANDONED_UNCONFIRMED` can reliably requeue user-confirmed undelivered tasks.
+Both user-reported undelivered Codex dispatches were marked
+`ABANDONED_UNCONFIRMED`; the Codex peek is again a real READY task:
+`CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001`.
+
+Validation:
+
+- `python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py dashboard\codex_autocontinue_snapshot.py scripts\agent_next_instruction.py`
+- `python scripts\agent_next_instruction.py Codex --peek`
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, or
+percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T11:05:00Z - CODEX-AUTOCONTINUE-CODEX-MULTIPOINT-PASTE-SUBMIT DONE_AUTOMATION_FIX
 
 **Baton owner**: Codex

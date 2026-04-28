@@ -1577,6 +1577,7 @@ def record_delivery_state(
                 task["delivery_confirmed_at"] = now
                 task.pop("delivery_unconfirmed_at", None)
             elif normalized_state in UNCONFIRMED_DELIVERY_STATES:
+                task.pop("delivery_confirmed_at", None)
                 task["delivery_unconfirmed_at"] = now
                 if (
                     normalized_state == "ABANDONED_UNCONFIRMED"

@@ -912,7 +912,7 @@ def send_reply(app, message):
         )
     time.sleep(0.1)
     safe_move_to(prev.x, prev.y, duration=0.05)
-    return ok, method, d
+    return ok, method, d, baseline_ready, baseline_d
 
 
 # --- Modelo ----------------------------------------------------------------
@@ -1200,7 +1200,7 @@ def run(args):
                     app.pending_attempts += 1
 
                 print(f"[OK] {app.name} listo. Enviando #{app.sends+1}: {task_line}")
-                delivered, method, d_after_send = send_reply(app, message)
+                delivered, method, d_after_send, baseline_ready, baseline_d = send_reply(app, message)
                 app.sends += 1
                 app.last_sent_task_id = task_id
                 app.last_sent_at = time.time()
