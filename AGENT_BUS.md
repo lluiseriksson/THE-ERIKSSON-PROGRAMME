@@ -9,6 +9,42 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T15:40:00Z - CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-TO-ORIGIN-CERTIFICATE-CODE-INJECTION-BRIDGE-001 DONE_CONDITIONAL_BRIDGE
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-TO-ORIGIN-CERTIFICATE-CODE-INJECTION-BRIDGE-001`
+**Status**: `DONE_CONDITIONAL_BRIDGE_LANDED_TAG_COORDINATE_PREMISE_OPEN`
+
+Lean bridge landed:
+`physicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296`.
+
+The bridge repacks
+`PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296` into
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296`
+by composing `baseZoneTagOfResidualValue` with `baseZoneTagIntoFin1296` and
+reusing `selectedAdmissible_injective`.
+
+Artifact:
+`dashboard/f3_bookkeeping_base_zone_tag_coordinate_to_origin_certificate_code_injection_bridge_v2_243.md`
+
+Validation:
+
+- `lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+- Focused axiom trace for the new bridge is exactly
+  `[propext, Classical.choice, Quot.sound]`.
+- The bridge is conditional and does not prove
+  `PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296`.
+- No downstream residual-value source/realization/origin/separation route was
+  used in reverse.
+
+Next Codex task seeded:
+`CODEX-F3-PROVE-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-001`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, proof
+closure claim, Clay-level claim, or percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T12:27:16Z - CODEX-COWORK-READONLY-PROJECT-SIDECAR-DISPATCH-001 DONE_AUTOMATION_FIX
 
 **Baton owner**: Codex

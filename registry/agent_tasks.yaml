@@ -30412,7 +30412,7 @@ tasks:
   title: 'Codex: bridge bookkeeping base-zone tag coordinate into origin certificate
     code injection'
   owner: Codex
-  status: READY
+  status: COMPLETED
   priority: 5
   created_at: '2026-04-28T12:19:34Z'
   source_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001
@@ -30428,7 +30428,8 @@ tasks:
     into PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData.
   validation:
   - lake build YangMills.ClayCore.LatticeAnimalCount
-  - 'New bridge #print axioms trace is no larger than [propext, Classical.choice, Quot.sound]'
+  - 'New bridge #print axioms trace is no larger than [propext, Classical.choice,
+    Quot.sound]'
   - Dashboard artifact records that the bridge is conditional and does not prove the
     tag-coordinate premise
   - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
@@ -30448,3 +30449,71 @@ tasks:
   - Seeded by v2.242 after the direct-data inventory found the tag-coordinate carrier
     is the narrowest existing conditional source with the exact whole-residual Fin
     1296 code plus selected-admissible equality-reflection shape.
+  - Dispatched to Codex at 2026-04-28T15:19:34Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T15:19:37Z
+  updated_at: '2026-04-28T15:19:34Z'
+  dispatched_at: '2026-04-28T15:19:34Z'
+  dispatched_to: Codex
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T15:19:34Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T15:19:37Z'
+  delivery_agent: Codex
+  last_delivery_method: codex-enter
+  last_delivery_distance: '32.5'
+  delivery_confirmed_at: '2026-04-28T15:19:37Z'
+  completed_at: '2026-04-28T15:40:00Z'
+  completion_status: DONE_CONDITIONAL_BRIDGE_LANDED_TAG_COORDINATE_PREMISE_OPEN
+  artifact: dashboard/f3_bookkeeping_base_zone_tag_coordinate_to_origin_certificate_code_injection_bridge_v2_243.md
+  lean_additions:
+  - physicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
+  bridge_source: PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+  bridge_target: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+  validation_result:
+  - lake build YangMills.ClayCore.LatticeAnimalCount passed.
+  - 'New bridge #print axioms trace is exactly [propext, Classical.choice, Quot.sound].'
+  - Dashboard artifact records that the bridge is conditional and does not prove
+    the tag-coordinate premise.
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moved.
+  next_task: CODEX-F3-PROVE-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-001
+- id: CODEX-F3-PROVE-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-001
+  title: 'Codex: prove or precisely fail origin certificate code injection via
+    tag coordinate'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-28T15:40:00Z'
+  source_task: CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-TO-ORIGIN-CERTIFICATE-CODE-INJECTION-BRIDGE-001
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - dashboard/f3_bookkeeping_base_zone_tag_coordinate_to_origin_certificate_code_injection_bridge_v2_243.md
+  - dashboard/f3_bookkeeping_base_zone_tag_coordinate_attempt_v2_219.md
+  - dashboard/f3_base_zone_origin_certificate_code_injection_data_candidate_inventory_v2_242.md
+  - AXIOM_FRONTIER.md
+  objective: Attempt to prove PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+    using the new conditional bridge from PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296,
+    or record the exact remaining no-closure blocker at the tag-coordinate premise.
+  validation:
+  - lake build YangMills.ClayCore.LatticeAnimalCount if Lean is edited
+  - 'Any new theorem has #print axioms trace no larger than [propext, Classical.choice,
+    Quot.sound]'
+  - Dashboard artifact records closure or exact no-closure blocker and bridge direction
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
+  stop_if:
+  - The proof requires sorry, a new project axiom, downstream residual-value realization/source/origin
+    interfaces in reverse, selected-image cardinality, bounded menu cardinality, empirical
+    search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes,
+    parent-relative terminalNeighborCode equality, deleted-X shortcut, or the v2.161
+    cycle
+  required_updates:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  notes:
+  - Seeded by v2.243 after the direct conditional bridge from tag-coordinate data
+    to origin-certificate code injection landed without new axioms.
+  - This task must not treat the v2.243 bridge as evidence for its own tag-coordinate
+    premise.
+  updated_at: '2026-04-28T15:40:00Z'

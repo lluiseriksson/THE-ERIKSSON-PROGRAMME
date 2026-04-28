@@ -5318,6 +5318,32 @@ theorem physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation12
   exact
     coordinateData.selectedAdmissible_injective residual a b ha hb hcode
 
+/-- A bookkeeping/base-zone tag-coordinate source directly supplies the
+origin-certificate code-injection interface by forgetting the tag space and
+keeping only the composed whole-residual `Fin 1296` code.
+
+This is a conditional repackaging bridge: it does not prove
+`PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296`, and
+it does not route through downstream residual-value source, realization, or
+separation interfaces. -/
+theorem physicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
+    (hcoordinate :
+      PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296) :
+    PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨coordinateData⟩ :=
+    hcoordinate root k deleted parentOf essential hchoice himage
+      hessential_subset
+  refine ⟨
+    { baseZoneOriginCertificateCode := fun residual q =>
+        coordinateData.baseZoneTagIntoFin1296 residual
+          (coordinateData.baseZoneTagOfResidualValue residual q)
+      selectorAdmissible_code_injective := ?_ }⟩
+  intro residual a b ha hb hcode
+  exact
+    coordinateData.selectedAdmissible_injective residual a b ha hb hcode
+
 /-- A selector-independent residual-value code separation theorem supplies the
 v2.232 realization layer by adding a trivial `Unit` realization certificate. -/
 theorem physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296_of_baseZoneResidualValueCodeSeparation1296
@@ -10653,6 +10679,7 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296_of_baseZoneResidualValueCodeRealization1296
 #print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSourceData
 #print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296
+#print axioms physicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
 #print axioms physicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296_of_baseZoneResidualValueCodeSource1296
 #print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData
 #print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
