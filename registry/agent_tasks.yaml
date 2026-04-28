@@ -30472,15 +30472,15 @@ tasks:
   validation_result:
   - lake build YangMills.ClayCore.LatticeAnimalCount passed.
   - 'New bridge #print axioms trace is exactly [propext, Classical.choice, Quot.sound].'
-  - Dashboard artifact records that the bridge is conditional and does not prove
-    the tag-coordinate premise.
+  - Dashboard artifact records that the bridge is conditional and does not prove the
+    tag-coordinate premise.
   - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moved.
   next_task: CODEX-F3-PROVE-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-001
 - id: CODEX-F3-PROVE-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-001
-  title: 'Codex: prove or precisely fail origin certificate code injection via
-    tag coordinate'
+  title: 'Codex: prove or precisely fail origin certificate code injection via tag
+    coordinate'
   owner: Codex
-  status: READY
+  status: COMPLETED
   priority: 5
   created_at: '2026-04-28T15:40:00Z'
   source_task: CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-TO-ORIGIN-CERTIFICATE-CODE-INJECTION-BRIDGE-001
@@ -30516,4 +30516,69 @@ tasks:
     to origin-certificate code injection landed without new axioms.
   - This task must not treat the v2.243 bridge as evidence for its own tag-coordinate
     premise.
-  updated_at: '2026-04-28T15:40:00Z'
+  - Dispatched to Codex at 2026-04-28T15:49:53Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T15:49:55Z
+  updated_at: '2026-04-28T15:49:53Z'
+  dispatched_at: '2026-04-28T15:49:53Z'
+  dispatched_to: Codex
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T15:49:53Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T15:49:55Z'
+  delivery_agent: Codex
+  last_delivery_method: codex-enter
+  last_delivery_distance: '32.5'
+  delivery_confirmed_at: '2026-04-28T15:49:55Z'
+  completed_at: '2026-04-28T15:55:00Z'
+  completion_status: DONE_NO_CLOSURE_BOOKKEEPING_BASE_ZONE_TAG_COORDINATE_PREMISE_OPEN
+  artifact: dashboard/f3_base_zone_origin_certificate_code_injection_via_tag_coordinate_attempt_v2_244.md
+  attempted_theorem: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+  bridge_used: physicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
+  exact_blocker: PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+  upstream_blocker: PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+  validation_result:
+  - No Lean file was edited; no lake build required for this attempt.
+  - Dashboard artifact records exact no-closure blocker and bridge direction.
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moved.
+  next_task: CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-INJECTION-FRONTIER-RECHECK-001
+- id: CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-INJECTION-FRONTIER-RECHECK-001
+  title: 'Codex: recheck selector-admissible base-zone coordinate injection frontier
+    after v2.244'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-28T15:55:00Z'
+  source_task: CODEX-F3-PROVE-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-001
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - dashboard/f3_base_zone_origin_certificate_code_injection_via_tag_coordinate_attempt_v2_244.md
+  - dashboard/f3_selector_admissible_base_zone_coordinate_injection_attempt_v2_221.md
+  - dashboard/f3_selector_admissible_base_zone_coordinate_source_recovery_attempt_v2_223.md
+  - AXIOM_FRONTIER.md
+  objective: Recheck whether a non-circular source now proves PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+    after the v2.243/v2.244 bridge work, or confirm the exact remaining no-closure
+    blocker at PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296.
+  validation:
+  - lake build YangMills.ClayCore.LatticeAnimalCount if Lean is edited
+  - 'Any new theorem has #print axioms trace no larger than [propext, Classical.choice,
+    Quot.sound]'
+  - Dashboard artifact records closure or exact no-closure blocker and bridge direction
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
+  stop_if:
+  - The proof requires sorry, a new project axiom, downstream residual-value realization/source/origin
+    interfaces in reverse, selected-image cardinality, bounded menu cardinality, empirical
+    search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes,
+    parent-relative terminalNeighborCode equality, deleted-X shortcut, or the v2.161
+    cycle
+  required_updates:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  notes:
+  - Seeded by v2.244 after code injection via tag coordinate remained blocked exactly
+    at PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296.
+  - Do not use the v2.243/v2.244 downstream code-injection bridge as evidence for
+    selector-admissible base-zone coordinate injection.
+  updated_at: '2026-04-28T15:55:00Z'

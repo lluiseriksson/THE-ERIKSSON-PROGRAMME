@@ -9,6 +9,43 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T15:55:00Z - CODEX-F3-PROVE-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-001 DONE_NO_CLOSURE
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-PROVE-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-001`
+**Status**: `DONE_NO_CLOSURE_BOOKKEEPING_BASE_ZONE_TAG_COORDINATE_PREMISE_OPEN`
+
+Attempted to close
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296`
+through the v2.243 bridge:
+`physicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296`.
+
+Result: no unconditional closure. The exact remaining blocker is still
+`PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296`.
+The v2.243 bridge is one-way from tag-coordinate premise to code injection; it
+does not prove the premise and was not used in reverse.
+
+Artifact:
+`dashboard/f3_base_zone_origin_certificate_code_injection_via_tag_coordinate_attempt_v2_244.md`
+
+The upstream chain remains:
+
+- `PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296`
+  -> `PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296`
+- v2.221 records the next missing source as
+  `PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296`
+
+No Lean file was edited; no `lake build` was required for this attempt. The
+v2.243 bridge build and axiom trace remain the validation baseline.
+
+Next Codex task seeded:
+`CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-INJECTION-FRONTIER-RECHECK-001`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, proof
+closure claim, Clay-level claim, or percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T15:40:00Z - CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-TO-ORIGIN-CERTIFICATE-CODE-INJECTION-BRIDGE-001 DONE_CONDITIONAL_BRIDGE
 
 **Baton owner**: Codex
