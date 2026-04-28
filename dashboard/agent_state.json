@@ -1,11 +1,11 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_bookkeeping_base_zone_tag_coordinate_no_closure",
+  "current_phase": "f3_selector_admissible_base_zone_coordinate_injection_no_closure",
   "current_baton_owner": "Codex",
-  "next_task_id": "CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-INJECTION-PREMISE-RECHECK-AFTER-V2-262-001",
-  "last_completed_task": "CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-RECHECK-AFTER-V2-261-001",
-  "last_dispatched_task": "CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-RECHECK-AFTER-V2-261-001",
+  "next_task_id": "CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-SOURCE-PREMISE-RECHECK-AFTER-V2-263-001",
+  "last_completed_task": "CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-INJECTION-PREMISE-RECHECK-AFTER-V2-262-001",
+  "last_dispatched_task": "CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-INJECTION-PREMISE-RECHECK-AFTER-V2-262-001",
   "last_dispatched_agent": "Codex",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists",
@@ -42,9 +42,22 @@
     "REC-COWORK-DISPATCH-RATE-LIMIT-AUDIT-SLOT-001",
     "REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002"
   ],
-  "last_dispatch_at": "2026-04-28T17:10:57Z",
-  "last_completed_at": "2026-04-28T17:11:40Z",
-  "latest_validation_artifact": "dashboard/f3_bookkeeping_base_zone_tag_coordinate_premise_recheck_after_v2_261_v2_262.md records no closure of PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296; exact immediate blocker remains PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296. F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "last_dispatch_at": "2026-04-28T17:14:58Z",
+  "last_completed_at": "2026-04-28T17:15:37Z",
+  "latest_validation_artifact": "dashboard/f3_selector_admissible_base_zone_coordinate_injection_premise_recheck_after_v2_262_v2_263.md records no closure of PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296; exact immediate blocker remains PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296. F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "f3_selector_admissible_base_zone_coordinate_injection_premise_recheck_after_v2_262_v2_263": {
+    "status": "DONE_NO_CLOSURE_SELECTOR_ADMISSIBLE_BASE_ZONE_COORDINATE_SOURCE_STILL_MISSING",
+    "artifact": "dashboard/f3_selector_admissible_base_zone_coordinate_injection_premise_recheck_after_v2_262_v2_263.md",
+    "task_id": "CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-INJECTION-PREMISE-RECHECK-AFTER-V2-262-001",
+    "checked_frontier": "PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296",
+    "exact_blocker": "PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296",
+    "bridge_direction": "PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296 -> PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296",
+    "deeper_known_blocker": "PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296",
+    "validation": "No Lean file was edited; no lake build required. Dispatcher preflight passed YAML/JSON/JSONL validation; Peek Codex returned CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-SOURCE-PREMISE-RECHECK-AFTER-V2-263-001 and Peek Cowork returned COWORK-READONLY-PROJECT-SIDECAR-001.",
+    "next_codex_task": "CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-SOURCE-PREMISE-RECHECK-AFTER-V2-263-001",
+    "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
+    "updated_at": "2026-04-28T17:15:37Z"
+  },
   "f3_bookkeeping_base_zone_tag_coordinate_premise_recheck_after_v2_261_v2_262": {
     "status": "DONE_NO_CLOSURE_SELECTOR_ADMISSIBLE_BASE_ZONE_COORDINATE_INJECTION_STILL_MISSING",
     "artifact": "dashboard/f3_bookkeeping_base_zone_tag_coordinate_premise_recheck_after_v2_261_v2_262.md",
@@ -3026,12 +3039,12 @@
   },
   "last_dispatch_by_agent": {
     "Codex": {
-      "task_id": "CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-RECHECK-AFTER-V2-261-001",
-      "at": "2026-04-28T17:10:57Z"
+      "task_id": "CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-INJECTION-PREMISE-RECHECK-AFTER-V2-262-001",
+      "at": "2026-04-28T17:14:58Z"
     },
     "Cowork": {
       "task_id": "COWORK-READONLY-PROJECT-SIDECAR-001",
-      "at": "2026-04-28T17:12:51Z"
+      "at": "2026-04-28T17:18:02Z"
     }
   },
   "last_agent": "Codex",
