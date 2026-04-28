@@ -121,3 +121,19 @@ Preflight now also auto-abandons stale unconfirmed `IN_PROGRESS` tasks after 30
 minutes via `ABANDONED_UNCONFIRMED`, which requeues them without claiming
 completion. This repaired the stale Codex inventory task left by earlier
 delivery failures.
+
+## Follow-up: Codex Multipoint Paste/Submit
+
+Codex delivery still failed after detector fixes because a single prompt-box
+coordinate could be stale or fail to focus the input. The Codex send path now:
+
+- repastes the full dispatcher prompt at several focus points around the
+  calibrated prompt box and toward the send button;
+- tries Enter, Ctrl+Enter, calibrated button, and double calibrated button at
+  each focus point;
+- preserves the active focus point during submit retries instead of jumping back
+  to the original stale coordinate;
+- abandons/requeues stale unconfirmed dispatches after 2 minutes on preflight.
+
+The user-confirmed undelivered F3 inventory dispatch was marked
+`ABANDONED_UNCONFIRMED` and is `READY` again.

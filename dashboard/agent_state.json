@@ -42,9 +42,9 @@
     "REC-COWORK-DISPATCH-RATE-LIMIT-AUDIT-SLOT-001",
     "REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002"
   ],
-  "last_dispatch_at": "2026-04-28T08:06:08Z",
+  "last_dispatch_at": "2026-04-28T10:27:57Z",
   "last_completed_at": "2026-04-28T10:15:00Z",
-  "latest_validation_artifact": "CODEX-AUTOCONTINUE-DECOUPLE-COWORK-FROM-CODEX-PENDING removed the Cowork skip loop caused by Codex pending retries and added preflight auto-requeue for stale unconfirmed IN_PROGRESS deliveries after 30 minutes via ABANDONED_UNCONFIRMED. YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "latest_validation_artifact": "CODEX-AUTOCONTINUE-CODEX-MULTIPOINT-PASTE-SUBMIT added multipoint Codex paste/submit retries around the calibrated prompt box and send-button midline, preserving the active focus point for Enter/Ctrl+Enter/button submit attempts. Stale unconfirmed preflight cleanup now requeues after 2 minutes; the user-confirmed undelivered F3 inventory task is READY again. YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
   "f3_base_zone_residual_value_code_separation_interface_v2_234": {
     "status": "DONE_INTERFACE_AND_BRIDGE_LANDED",
     "artifact": "dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md",
@@ -2732,7 +2732,7 @@
   "last_dispatch_by_agent": {
     "Codex": {
       "task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001",
-      "at": "2026-04-28T08:06:08Z"
+      "at": "2026-04-28T10:27:57Z"
     },
     "Cowork": {
       "task_id": "META-GENERATE-TASKS-001",

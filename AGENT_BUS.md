@@ -9,6 +9,36 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T11:05:00Z - CODEX-AUTOCONTINUE-CODEX-MULTIPOINT-PASTE-SUBMIT DONE_AUTOMATION_FIX
+
+**Baton owner**: Codex
+**Task**: `CODEX-AUTOCONTINUE-CODEX-MULTIPOINT-PASTE-SUBMIT`
+**Status**: `DONE_AUTOMATION_FIX`
+
+Codex delivery was still failing because the watcher could click/paste at one
+stale prompt-box coordinate and then retry submit methods without ever proving
+the prompt box actually had focus. The Codex path now repastes the prompt across
+multiple focus points around the calibrated box and midline toward the send
+button, then tries Enter, Ctrl+Enter, calibrated button, and double calibrated
+button at each point. The submit helpers preserve the active retry focus point
+instead of jumping back to the original stale box coordinate.
+
+Preflight stale-unconfirmed cleanup was tightened from 30 minutes to 2 minutes,
+and the user-confirmed undelivered F3 inventory dispatch was marked
+`ABANDONED_UNCONFIRMED`, returning the task to `READY`.
+
+Validation:
+
+- `python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py dashboard\codex_autocontinue_snapshot.py scripts\agent_next_instruction.py`
+- `python C:\Users\lluis\Downloads\codex_autocontinue.py --preflight-only`
+- `python scripts\agent_next_instruction.py Codex --peek`
+- YAML/JSON/JSONL validation passed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, or
+percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T10:50:00Z - CODEX-AUTOCONTINUE-DECOUPLE-COWORK-FROM-CODEX-PENDING DONE_AUTOMATION_FIX
 
 **Baton owner**: Codex
