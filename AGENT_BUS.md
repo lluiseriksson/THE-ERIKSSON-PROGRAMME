@@ -9,6 +9,41 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T17:04:04Z - CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-PREMISE-RECHECK-AFTER-V2-259-001 DONE_NO_CLOSURE
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-PREMISE-RECHECK-AFTER-V2-259-001`
+**Status**: `DONE_NO_CLOSURE_BASE_ZONE_ORIGIN_CERTIFICATE_CODE_INJECTION_STILL_MISSING`
+
+Rechecked
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296`
+after v2.259.
+
+Result: no unconditional closure. The bridge
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296`
+to
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296`
+is valid but conditional. The exact immediate blocker is still
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296`.
+
+Artifact:
+`dashboard/f3_base_zone_origin_certificate_source_premise_recheck_after_v2_259_v2_260.md`
+
+Downstream coordinate realization/separation, coordinate source, coordinate
+injection, bookkeeping tag-coordinate, residual-value, and separation interfaces
+were not used in reverse.
+
+No Lean file was edited; no `lake build` was required. No new theorem-specific
+axiom trace was introduced.
+
+Next Codex task seeded:
+`CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-PREMISE-RECHECK-AFTER-V2-260-001`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, proof
+closure claim, Clay-level claim, or percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T16:58:16Z - CODEX-F3-BASE-ZONE-COORDINATE-REALIZATION-SEPARATION-PREMISE-RECHECK-AFTER-V2-258-001 DONE_NO_CLOSURE
 
 **Baton owner**: Codex
