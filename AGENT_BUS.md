@@ -9,6 +9,42 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T16:00:00Z - CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-INJECTION-FRONTIER-RECHECK-001 DONE_NO_CLOSURE
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-INJECTION-FRONTIER-RECHECK-001`
+**Status**: `DONE_NO_CLOSURE_BASE_ZONE_COORDINATE_SOURCE_STILL_MISSING`
+
+Rechecked
+`PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296`
+after the v2.243/v2.244 tag-coordinate/code-injection bridge work.
+
+Result: no new non-circular source exists. The exact immediate blocker remains
+`PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296`.
+The only Lean bridge into the injection target is one-way:
+`PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296`
+to `PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296`.
+
+Artifact:
+`dashboard/f3_selector_admissible_base_zone_coordinate_injection_frontier_recheck_v2_245.md`
+
+The v2.243/v2.244 bridge is downstream from this frontier and was not used in
+reverse. AXIOM_FRONTIER/v2.223 still records the deeper source blocker at
+`PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296`,
+with v2.225 continuing onward to
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296`.
+
+No Lean file was edited; no `lake build` was required. No new theorem-specific
+axiom trace was introduced.
+
+Next Codex task seeded:
+`CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-SOURCE-FRONTIER-RECHECK-001`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, proof
+closure claim, Clay-level claim, or percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T15:55:00Z - CODEX-F3-PROVE-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-001 DONE_NO_CLOSURE
 
 **Baton owner**: Codex
