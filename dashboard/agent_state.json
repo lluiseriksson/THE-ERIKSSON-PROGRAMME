@@ -21,7 +21,7 @@
   "unconditionality_status": "NOT_ESTABLISHED",
   "claim_policy": "Never claim Clay-level completion without complete formal evidence.",
   "always_has_next_task": true,
-  "next_cowork_task_id": "COWORK-WORKSPACE-MOUNT-BLOCKED",
+  "next_cowork_task_id": "COWORK-READONLY-PROJECT-SIDECAR-001",
   "cowork_dispatch_suspended": true,
   "cowork_required_mount": "/sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/",
   "cowork_dispatch_blocker": "Cowork session /sessions/magical-busy-noether/mnt/ does not have THE-ERIKSSON-PROGRAMME mounted; registry-writing, dashboard-writing, and META tasks must not be dispatched to Cowork until the folder is attached.",
@@ -44,7 +44,7 @@
   ],
   "last_dispatch_at": "2026-04-28T12:16:09Z",
   "last_completed_at": "2026-04-28T12:19:34Z",
-  "latest_validation_artifact": "dashboard/f3_base_zone_origin_certificate_code_injection_data_candidate_inventory_v2_242.md records that no existing v2.121 bookkeeping/base-zone invariant unconditionally constructs PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData. The narrowest existing conditional source is PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296; a follow-up conditional bridge task was seeded. No Lean file was edited and F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "latest_validation_artifact": "dashboard/cowork_readonly_project_sidecar_dispatch.md changes suspended Cowork dispatch from a blocked-only mount prompt to COWORK-READONLY-PROJECT-SIDECAR-001, embedding project context so Cowork can perform read-only audit/research work in chat until the repository mount is available. F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
   "f3_base_zone_residual_value_code_separation_interface_v2_234": {
     "status": "DONE_INTERFACE_AND_BRIDGE_LANDED",
     "artifact": "dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md",
@@ -229,6 +229,24 @@
     "validation": "python -m py_compile C:/Users/lluis/Downloads/codex_autocontinue.py dashboard/codex_autocontinue_snapshot.py passed; python C:/Users/lluis/Downloads/codex_autocontinue.py --preflight-only passed and reported Cowork suspended prompt remains sendable=True.",
     "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
     "updated_at": "2026-04-28T10:20:00Z"
+  },
+  "cowork_readonly_project_sidecar_dispatch": {
+    "status": "DONE_AUTOMATION_FIX",
+    "artifact": "dashboard/cowork_readonly_project_sidecar_dispatch.md",
+    "task_id": "CODEX-COWORK-READONLY-PROJECT-SIDECAR-DISPATCH-001",
+    "active_synthetic_cowork_task": "COWORK-READONLY-PROJECT-SIDECAR-001",
+    "root_cause": "Cowork was prompted only with COWORK-WORKSPACE-MOUNT-BLOCKED while /sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/ remained absent, so Cowork correctly refused registry-writing work.",
+    "new_behavior": "When cowork_dispatch_suspended is true, the dispatcher emits a read-only project sidecar prompt with embedded AGENT_BUS, dashboard state, and latest artifact context so Cowork can audit/research in chat without filesystem writes.",
+    "patched_files": [
+      "scripts/agent_next_instruction.py",
+      "dashboard/codex_autocontinue_snapshot.py",
+      "C:/Users/lluis/Downloads/codex_autocontinue.py"
+    ],
+    "backup": "scripts/autocontinue_backups/codex_autocontinue_active_before_cowork_readonly_sidecar_20260428T122548Z.py",
+    "validation": "python -m py_compile scripts/agent_next_instruction.py dashboard/codex_autocontinue_snapshot.py C:/Users/lluis/Downloads/codex_autocontinue.py passed; Cowork --peek now returns COWORK-READONLY-PROJECT-SIDECAR-001; active watcher --preflight-only reports Cowork fallback COWORK-READONLY-PROJECT-SIDECAR-001.",
+    "remaining_blocker": "Full Cowork registry-writing tasks still require mounting THE-ERIKSSON-PROGRAMME at /sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/ and then clearing cowork_dispatch_suspended.",
+    "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
+    "updated_at": "2026-04-28T12:27:16Z"
   },
   "f3_base_zone_residual_value_code_separation_scope": {
     "status": "DONE_SCOPE_DELIVERED_NO_LEAN_NO_STATUS_MOVE",

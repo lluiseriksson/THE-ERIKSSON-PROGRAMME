@@ -81,6 +81,7 @@ COWORK_POLLING_TASK_PREFIXES = (
 )
 META_TASK_IDS = {"META-GENERATE-TASKS-001", "META-DISPATCHER-FAILSAFE-001"}
 COWORK_WORKSPACE_MOUNT_BLOCKED_TASK_ID = "COWORK-WORKSPACE-MOUNT-BLOCKED"
+COWORK_READONLY_PROJECT_SIDECAR_TASK_ID = "COWORK-READONLY-PROJECT-SIDECAR-001"
 
 
 class YAMLRegistryError(RuntimeError):
@@ -1398,37 +1399,71 @@ def build_cowork_workspace_blocked_message(state: dict[str, Any]) -> str:
         "cowork_required_mount",
         "/sessions/<cowork-session>/mnt/THE-ERIKSSON-PROGRAMME/",
     )
+    def excerpt(rel_path: str, limit: int = 5000) -> str:
+        path = REPO_ROOT / rel_path
+        try:
+            text = path.read_text(encoding="utf-8", errors="replace")
+        except OSError as exc:
+            return f"<unavailable: {exc}>"
+        if len(text) <= limit:
+            return text
+        return text[:limit] + "\n\n... <truncated> ..."
+
+    latest_artifact = str(state.get("latest_validation_artifact", "")).strip()
+    artifact_path = latest_artifact.split()[0] if latest_artifact.startswith("dashboard/") else ""
+    artifact_excerpt = excerpt(artifact_path, 6000) if artifact_path else "<no dashboard artifact path detected>"
     return "\n".join(
         [
             "## Structured Agent Dispatch",
             "",
             "Agent role: Cowork",
-            f"Task id: {COWORK_WORKSPACE_MOUNT_BLOCKED_TASK_ID}",
-            "Task title: Cowork workspace mount is blocked",
-            "Task priority: 0",
-            "Task status at dispatch: BLOCKED",
+            f"Task id: {COWORK_READONLY_PROJECT_SIDECAR_TASK_ID}",
+            "Task title: Cowork read-only project sidecar while workspace mount is absent",
+            "Task priority: 1",
+            "Task status at dispatch: READY_READONLY",
             "",
             "Files to read:",
-            "- none",
+            "- Embedded project snapshot in this prompt",
             "",
             "Objective:",
-            sanitize_output_text(str(blocker)),
+            "Do not answer only BLOCKED. The repository mount is currently unavailable,",
+            f"but you can still work from the embedded project snapshot below. {sanitize_output_text(str(blocker))}",
+            "Perform a read-only sidecar audit of the current project frontier and respond",
+            "in chat with concrete findings, risks, and next actions. Do not claim to have",
+            "read or written local files unless the mount is actually available in your session.",
             "",
             "Validation requirements:",
-            f"- Mount the repository so `{mount}` is readable and writable from Cowork",
-            "- Then resume Cowork dispatch by clearing `cowork_dispatch_suspended` in dashboard/agent_state.json",
+            "- Produce a useful audit/research note from the embedded snapshot instead of refusing work",
+            "- If the mount is now available, say `MOUNT_AVAILABLE` and list the repo path you can access",
+            "- If the mount is still absent, do not write registries; return findings in chat only",
             "",
             "Stop conditions:",
-            "- The repository is still not mounted in Cowork",
+            "- The embedded snapshot is insufficient to make any project-specific observation",
             "",
             "Required updates:",
-            "- none from Cowork while the workspace is unavailable",
+            "- none while the Cowork workspace mount is unavailable",
+            "",
+            "Embedded project snapshot:",
+            "",
+            "```text",
+            "dashboard/agent_state.json summary:",
+            f"next_task_id={state.get('next_task_id')}",
+            f"last_completed_task={state.get('last_completed_task')}",
+            f"latest_validation_artifact={state.get('latest_validation_artifact')}",
+            "",
+            "AGENT_BUS.md head:",
+            excerpt("AGENT_BUS.md", 5000),
+            "",
+            "Latest dashboard artifact excerpt:",
+            artifact_excerpt,
+            "```",
             "",
             "Next exact instruction:",
             (
-                "> Do not dispatch a registry-writing task to Cowork until the shared "
-                "THE-ERIKSSON-PROGRAMME folder is mounted in that session. Use Codex "
-                "for registry/meta-task maintenance meanwhile."
+                "> Cowork, take task `COWORK-READONLY-PROJECT-SIDECAR-001`. Work from "
+                "the embedded project snapshot, produce a project-specific read-only "
+                "audit/research note in chat, and do not write registries until the "
+                f"shared folder is mounted at `{mount}`."
             ),
         ]
     )
@@ -1642,9 +1677,9 @@ def _build_message_unlocked(
             append_history(
                 {
                     "time": utc_now(),
-                    "event": "cowork_dispatch_suspended",
+                    "event": "cowork_readonly_sidecar_dispatch",
                     "agent": agent,
-                    "task_id": COWORK_WORKSPACE_MOUNT_BLOCKED_TASK_ID,
+                    "task_id": COWORK_READONLY_PROJECT_SIDECAR_TASK_ID,
                     "reason": state.get("cowork_dispatch_blocker"),
                 }
             )

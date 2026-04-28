@@ -9,6 +9,42 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T12:27:16Z - CODEX-COWORK-READONLY-PROJECT-SIDECAR-DISPATCH-001 DONE_AUTOMATION_FIX
+
+**Baton owner**: Codex
+**Task**: `CODEX-COWORK-READONLY-PROJECT-SIDECAR-DISPATCH-001`
+**Status**: `DONE_AUTOMATION_FIX`
+
+User reported that Codex is now receiving prompts, but Cowork only replies
+`BLOCKED`. Root cause: Cowork still lacks the repository mount at
+`/sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/`, so the dispatcher
+was feeding only `COWORK-WORKSPACE-MOUNT-BLOCKED`.
+
+Fix applied:
+
+- `scripts/agent_next_instruction.py` now emits
+  `COWORK-READONLY-PROJECT-SIDECAR-001` while the mount is absent.
+- The prompt embeds project context from `dashboard/agent_state.json`,
+  `AGENT_BUS.md`, and the latest dashboard validation artifact, so Cowork can do
+  read-only project audit/research work in chat instead of refusing.
+- The active watcher `C:\Users\lluis\Downloads\codex_autocontinue.py` and
+  `dashboard/codex_autocontinue_snapshot.py` treat the read-only sidecar as a
+  synthetic task, skipping registry delivery-state writes and using the same
+  five-minute repeat guard as the old blocked task.
+- Backup of the active watcher:
+  `scripts/autocontinue_backups/codex_autocontinue_active_before_cowork_readonly_sidecar_20260428T122548Z.py`.
+
+Validation:
+
+- `python -m py_compile scripts\agent_next_instruction.py dashboard\codex_autocontinue_snapshot.py C:\Users\lluis\Downloads\codex_autocontinue.py`
+- `python scripts\agent_next_instruction.py Cowork --peek`
+- `python C:\Users\lluis\Downloads\codex_autocontinue.py --preflight-only`
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, or
+percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T12:19:34Z - CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001 DONE_INVENTORY
 
 **Baton owner**: Codex
