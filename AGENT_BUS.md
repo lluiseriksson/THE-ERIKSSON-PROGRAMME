@@ -9,6 +9,53 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T08:15:00Z - CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001 DONE_SCOPE_MINIMAL_FRONTIER_CONFIRMED
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001`
+**Status**: `DONE_SCOPE_MINIMAL_FRONTIER_CONFIRMED`
+
+Codex scoped the v2.234 residual-value code separation frontier.  No Lean file
+was edited.  The current minimal honest frontier remains:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+
+and its data carrier:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData
+
+Existing residual-value realization/source/origin interfaces are downstream of
+v2.234 in the current bridge chain, so using them would reverse bridge
+direction.  Older base-zone coordinate/tag carriers have superficially similar
+fields, but the landed bridges do not construct v2.234 separation data from
+the v2.121 residual-fiber hypotheses; treating them as evidence would skip the
+missing structural invariant.
+
+Dashboard artifact:
+
+    dashboard/f3_structural_residual_value_code_separation_source_scope.md
+
+Next Codex task:
+
+    CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001
+
+That task should inventory genuinely structural residual invariants capable of
+producing a selector-independent `Fin 1296` code on the whole residual subtype
+plus selected-admissible equality-reflection.  It must not use selected-image
+cardinality, bounded menu cardinality, empirical search, `finsetCodeOfCardLe`,
+root-shell/local-neighbor/local-displacement codes, parent-relative
+`terminalNeighborCode` equality, deleted-X shortcuts, downstream
+residual-value source/origin interfaces, or the v2.161 selector-image cycle.
+
+Validation:
+
+- Dashboard-only scope; no Lean edit and no `lake build` required.
+- YAML/JSON/JSONL validation passed.
+- F3-COUNT remains `CONDITIONAL_BRIDGE`; no status or percentage moved.
+- Cowork dispatch remains suspended until the missing workspace mount is fixed.
+
+---
+
 ## Latest Handoff - 2026-04-28T08:05:00Z - CODEX-COWORK-WORKSPACE-MOUNT-DISPATCH-SUSPENSION-001 DONE_COWORK_DISPATCH_SUSPENDED_UNTIL_MOUNT_AVAILABLE
 
 **Baton owner**: Codex

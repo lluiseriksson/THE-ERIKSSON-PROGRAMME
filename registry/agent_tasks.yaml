@@ -29675,7 +29675,7 @@ tasks:
 - id: CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001
   title: 'Codex: scope structural residual-value code separation source'
   owner: Codex
-  status: READY
+  status: COMPLETED
   priority: 5
   created_at: '2026-04-28T07:35:00Z'
   source_task: CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001
@@ -29708,6 +29708,33 @@ tasks:
   notes:
   - Seeded by the v2.235 no-closure attempt as the precise repair task for the missing
     selector-independent residual-value code separation construction.
+  - Dispatched to Codex at 2026-04-28T05:09:48Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T05:09:51Z
+  updated_at: '2026-04-28T08:15:00Z'
+  dispatched_at: '2026-04-28T05:09:48Z'
+  dispatched_to: Codex
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T05:09:48Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T05:09:51Z'
+  delivery_agent: Codex
+  last_delivery_method: codex-enter
+  last_delivery_distance: '32.5'
+  delivery_confirmed_at: '2026-04-28T05:09:51Z'
+  completed_at: '2026-04-28T08:15:00Z'
+  completion_status: DONE_SCOPE_MINIMAL_FRONTIER_CONFIRMED
+  artifact: dashboard/f3_structural_residual_value_code_separation_source_scope.md
+  exact_blocker: PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData
+  validation_result:
+  - Dashboard-only scope artifact records that v2.234 is the current minimal honest
+    frontier
+  - Existing downstream residual-value realization/source/origin interfaces were not
+    used as reverse evidence
+  - No Lean file was edited; no lake build required
+  - YAML/JSON/JSONL validation passed
+  f3_count_impact: F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README
+    metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.
+  next_task: CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001
 - id: CODEX-COWORK-WORKSPACE-MOUNT-DISPATCH-SUSPENSION-001
   title: 'Codex: suspend Cowork dispatch while workspace mount is unavailable'
   owner: Codex
@@ -29727,8 +29754,8 @@ tasks:
   - registry/agent_history.jsonl
   objective: Stop repeated Cowork META/task dispatches while the Cowork session lacks
     a readable and writable THE-ERIKSSON-PROGRAMME workspace mount. The dispatcher
-    must emit an explicit blocked mount pseudo-dispatch instead of assigning
-    registry-writing work to Cowork.
+    must emit an explicit blocked mount pseudo-dispatch instead of assigning registry-writing
+    work to Cowork.
   validation:
   - python -m py_compile scripts/agent_next_instruction.py dashboard/codex_autocontinue_snapshot.py
     C:/Users/lluis/Downloads/codex_autocontinue.py
@@ -29752,8 +29779,8 @@ tasks:
   validation_result:
   - Dispatcher returns COWORK-WORKSPACE-MOUNT-BLOCKED for Cowork while cowork_dispatch_suspended
     is true
-  - Autocontinue watcher and repository snapshot skip Cowork while the same state flag
-    is true
+  - Autocontinue watcher and repository snapshot skip Cowork while the same state
+    flag is true
   - Codex next task remains CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001
   f3_count_impact: F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README
     metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.
@@ -29762,6 +29789,48 @@ tasks:
   - Created in direct response to Cowork halting META-GENERATE-TASKS-001 because the
     repository was not mounted in /sessions/magical-busy-noether/mnt/.
   - The external watcher file C:/Users/lluis/Downloads/codex_autocontinue.py was patched
-    locally; dashboard/codex_autocontinue_snapshot.py mirrors the committed script change.
+    locally; dashboard/codex_autocontinue_snapshot.py mirrors the committed script
+    change.
   - Resume Cowork only after mounting the repo read/write at /sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/
     and clearing cowork_dispatch_suspended in dashboard/agent_state.json.
+- id: CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001
+  title: 'Codex: inventory structural residual-value invariants for v2.234 separation'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-28T08:15:00Z'
+  updated_at: '2026-04-28T08:15:00Z'
+  source_task: CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - dashboard/f3_structural_residual_value_code_separation_source_scope.md
+  - dashboard/f3_base_zone_residual_value_code_separation_attempt_v2_235.md
+  - dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md
+  - AXIOM_FRONTIER.md
+  objective: Inventory existing Lean and dashboard structural residual invariants that
+    could non-circularly construct PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData.
+    Identify whether any invariant already supplies a selector-independent Fin 1296
+    code on the whole residual subtype plus selected-admissible equality-reflection;
+    if none exists, record the narrowest missing lemma/interface shape.
+  validation:
+  - Dashboard artifact lists each candidate invariant checked and whether its bridge
+    direction is upstream, downstream, or unrelated to v2.234
+  - Any proposed theorem is strictly upstream of PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+  - No Lean theorem is added unless it builds without sorry or new axioms
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
+  stop_if:
+  - The inventory relies on selected-image cardinality, bounded menu cardinality, empirical
+    search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes,
+    parent-relative terminalNeighborCode equality, deleted-X shortcut, downstream
+    residual-value source/origin interfaces, or the v2.161 cycle
+  - The inventory treats any existing downstream interface as proof of v2.234 separation
+  required_updates:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  notes:
+  - Seeded after scope confirmed that v2.234 is the current minimal honest frontier.
+  - The task is an inventory/narrowing pass, not authority to move F3-COUNT or any
+    percentage.
