@@ -9,6 +9,67 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T08:25:00Z - CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001 DONE_INVENTORY_CONDITIONAL_COORDINATE_SOURCE_IDENTIFIED
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001`
+**Status**: `DONE_INVENTORY_CONDITIONAL_COORDINATE_SOURCE_IDENTIFIED`
+
+Codex inventoried the existing Lean/dashboard structural candidates for
+constructing the v2.234 carrier:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData
+
+Best conditional source found:
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+
+Its data carrier already has the right shape: a residual-value coordinate on
+the whole residual subtype, an encoding into `Fin 1296`, and
+selected-admissible injectivity.  There is no current Lean bridge from that
+coordinate theorem into v2.234, and the premise itself remains unproved.
+
+Rejected/non-closing candidates:
+
+- terminal-neighbor ambient/bookkeeping value-code lanes separate only the
+  chosen `terminalNeighborOfParent` image, not arbitrary residual values with
+  existential selector-data evidence;
+- residual-value realization/source/origin interfaces are downstream of v2.234
+  and cannot be used in reverse;
+- selected-image cardinality, bounded menu cardinality, empirical search,
+  `finsetCodeOfCardLe`, root-shell/local-neighbor/local-displacement codes,
+  parent-relative `terminalNeighborCode`, deleted-X shortcuts, and the v2.161
+  cycle remain disallowed.
+
+Dashboard artifact:
+
+    dashboard/f3_structural_residual_value_invariant_inventory.md
+
+Next Codex task:
+
+    CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001
+
+That task should add only the no-sorry bridge:
+
+    physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
+
+from:
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+
+to:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+
+Validation:
+
+- Dashboard-only inventory; no Lean edit and no `lake build` required.
+- YAML/JSON/JSONL validation passed.
+- F3-COUNT remains `CONDITIONAL_BRIDGE`; no status or percentage moved.
+- Cowork dispatch remains suspended until the missing workspace mount is fixed.
+
+---
+
 ## Latest Handoff - 2026-04-28T08:15:00Z - CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001 DONE_SCOPE_MINIMAL_FRONTIER_CONFIRMED
 
 **Baton owner**: Codex

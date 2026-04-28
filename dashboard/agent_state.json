@@ -1,11 +1,11 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_structural_residual_value_invariant_inventory_ready",
+  "current_phase": "f3_base_zone_tag_coordinate_bridge_ready",
   "current_baton_owner": "Codex",
-  "next_task_id": "CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001",
-  "last_completed_task": "CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001",
-  "last_dispatched_task": "CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001",
+  "next_task_id": "CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001",
+  "last_completed_task": "CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001",
+  "last_dispatched_task": "CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001",
   "last_dispatched_agent": "Codex",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists",
@@ -42,9 +42,9 @@
     "REC-COWORK-DISPATCH-RATE-LIMIT-AUDIT-SLOT-001",
     "REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002"
   ],
-  "last_dispatch_at": "2026-04-28T05:09:49Z",
-  "last_completed_at": "2026-04-28T08:15:00Z",
-  "latest_validation_artifact": "CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001 produced dashboard/f3_structural_residual_value_code_separation_source_scope.md. It records that v2.234 is the current minimal honest frontier; existing residual-value realization/source/origin interfaces are downstream and were not used in reverse. No Lean file was edited; YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "last_dispatch_at": "2026-04-28T05:14:23Z",
+  "last_completed_at": "2026-04-28T08:25:00Z",
+  "latest_validation_artifact": "CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001 produced dashboard/f3_structural_residual_value_invariant_inventory.md. Best conditional source is PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296; terminal-neighbor ambient/bookkeeping lanes are insufficient for v2.234 existential selector-data equality-reflection; downstream residual-value source/origin interfaces were not used in reverse. No Lean file was edited; YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
   "f3_base_zone_residual_value_code_separation_interface_v2_234": {
     "status": "DONE_INTERFACE_AND_BRIDGE_LANDED",
     "artifact": "dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md",
@@ -83,6 +83,23 @@
     "next_codex_task": "CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001",
     "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
     "updated_at": "2026-04-28T08:15:00Z"
+  },
+  "f3_structural_residual_value_invariant_inventory": {
+    "status": "DONE_INVENTORY_CONDITIONAL_COORDINATE_SOURCE_IDENTIFIED",
+    "artifact": "dashboard/f3_structural_residual_value_invariant_inventory.md",
+    "task_id": "CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001",
+    "best_candidate": "PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296",
+    "conditional_bridge_missing": "physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296",
+    "still_unproved": "PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296; prior artifacts reduce it to selector-admissible base-zone coordinate injection/source blockers.",
+    "non_candidates": [
+      "Terminal-neighbor ambient/bookkeeping value-code lanes: separation only for chosen terminalNeighborOfParent image",
+      "Residual-value realization/source/origin interfaces: downstream of v2.234",
+      "Selected-image/cardinality/local-code/deleted-X/v2.161 routes: forbidden"
+    ],
+    "validation": "Dashboard-only inventory; no Lean file edited and no lake build required; YAML/JSON/JSONL validation passed.",
+    "next_codex_task": "CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001",
+    "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
+    "updated_at": "2026-04-28T08:25:00Z"
   },
   "cowork_workspace_mount_dispatch_suspension": {
     "status": "DONE_COWORK_DISPATCH_SUSPENDED_UNTIL_MOUNT_AVAILABLE",
@@ -2596,8 +2613,8 @@
   },
   "last_dispatch_by_agent": {
     "Codex": {
-      "task_id": "CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001",
-      "at": "2026-04-28T05:09:49Z"
+      "task_id": "CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001",
+      "at": "2026-04-28T05:14:23Z"
     },
     "Cowork": {
       "task_id": "META-GENERATE-TASKS-001",

@@ -29796,10 +29796,10 @@ tasks:
 - id: CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001
   title: 'Codex: inventory structural residual-value invariants for v2.234 separation'
   owner: Codex
-  status: READY
+  status: COMPLETED
   priority: 5
   created_at: '2026-04-28T08:15:00Z'
-  updated_at: '2026-04-28T08:15:00Z'
+  updated_at: '2026-04-28T08:25:00Z'
   source_task: CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
@@ -29807,8 +29807,8 @@ tasks:
   - dashboard/f3_base_zone_residual_value_code_separation_attempt_v2_235.md
   - dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md
   - AXIOM_FRONTIER.md
-  objective: Inventory existing Lean and dashboard structural residual invariants that
-    could non-circularly construct PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData.
+  objective: Inventory existing Lean and dashboard structural residual invariants
+    that could non-circularly construct PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData.
     Identify whether any invariant already supplies a selector-independent Fin 1296
     code on the whole residual subtype plus selected-admissible equality-reflection;
     if none exists, record the narrowest missing lemma/interface shape.
@@ -29819,9 +29819,9 @@ tasks:
   - No Lean theorem is added unless it builds without sorry or new axioms
   - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
   stop_if:
-  - The inventory relies on selected-image cardinality, bounded menu cardinality, empirical
-    search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes,
-    parent-relative terminalNeighborCode equality, deleted-X shortcut, downstream
+  - The inventory relies on selected-image cardinality, bounded menu cardinality,
+    empirical search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement
+    codes, parent-relative terminalNeighborCode equality, deleted-X shortcut, downstream
     residual-value source/origin interfaces, or the v2.161 cycle
   - The inventory treats any existing downstream interface as proof of v2.234 separation
   required_updates:
@@ -29834,3 +29834,69 @@ tasks:
   - Seeded after scope confirmed that v2.234 is the current minimal honest frontier.
   - The task is an inventory/narrowing pass, not authority to move F3-COUNT or any
     percentage.
+  - Dispatched to Codex at 2026-04-28T05:14:22Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T05:14:25Z
+  dispatched_at: '2026-04-28T05:14:22Z'
+  dispatched_to: Codex
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T05:14:22Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T05:14:25Z'
+  delivery_agent: Codex
+  last_delivery_method: codex-enter
+  last_delivery_distance: '32.5'
+  delivery_confirmed_at: '2026-04-28T05:14:25Z'
+  completed_at: '2026-04-28T08:25:00Z'
+  completion_status: DONE_INVENTORY_CONDITIONAL_COORDINATE_SOURCE_IDENTIFIED
+  artifact: dashboard/f3_structural_residual_value_invariant_inventory.md
+  best_candidate: PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+  exact_bridge_missing: physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
+  validation_result:
+  - Dashboard artifact lists candidate invariants and bridge direction relative to v2.234
+  - Best existing conditional source is upstream and unproved; downstream residual-value
+    source/origin interfaces were not used as reverse evidence
+  - No Lean file was edited; no lake build required
+  - YAML/JSON/JSONL validation passed
+  f3_count_impact: F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README
+    metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.
+  next_task: CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001
+- id: CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001
+  title: 'Codex: bridge base-zone tag coordinate into residual-value code separation'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-28T08:25:00Z'
+  updated_at: '2026-04-28T08:25:00Z'
+  source_task: CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - dashboard/f3_structural_residual_value_invariant_inventory.md
+  - dashboard/f3_bookkeeping_base_zone_tag_coordinate_attempt_v2_219.md
+  - dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md
+  - AXIOM_FRONTIER.md
+  objective: Add a no-sorry Lean bridge from PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+    to PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+    by repacking baseZoneTagOfResidualValue, baseZoneTagIntoFin1296, and selectedAdmissible_injective
+    into PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData.
+  validation:
+  - lake build YangMills.ClayCore.LatticeAnimalCount
+  - 'New bridge #print axioms trace is no larger than [propext, Classical.choice,
+    Quot.sound]'
+  - Dashboard artifact records that the bridge is conditional and does not prove the
+    coordinate premise
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
+  stop_if:
+  - The proof requires sorry, a new project axiom, downstream residual-value realization/source/origin
+    interfaces in reverse, selected-image cardinality, bounded menu cardinality, empirical
+    search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes,
+    parent-relative terminalNeighborCode equality, deleted-X shortcut, or the v2.161
+    cycle
+  required_updates:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  notes:
+  - Seeded by the structural invariant inventory. This is a conditional repackaging
+    bridge only; it does not prove PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296.
