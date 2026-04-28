@@ -9,6 +9,54 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T09:05:00Z - CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-VIA-TAG-COORDINATE-001 DONE_NO_CLOSURE_BOOKKEEPING_BASE_ZONE_TAG_COORDINATE_PREMISE_OPEN
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-VIA-TAG-COORDINATE-001`
+**Status**: `DONE_NO_CLOSURE_BOOKKEEPING_BASE_ZONE_TAG_COORDINATE_PREMISE_OPEN`
+
+Codex attempted to close:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+
+using the v2.236 bridge:
+
+    physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
+
+The bridge applies only with:
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+
+That coordinate premise is not currently proved.  The exact immediate
+no-closure blocker for the v2.236 route is therefore:
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+
+The known upstream blocker at that coordinate premise remains the v2.219
+selector-admissible coordinate injection lane:
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+
+Dashboard artifact:
+
+    dashboard/f3_base_zone_residual_value_code_separation_via_tag_coordinate_attempt_v2_237.md
+
+Validation:
+
+- No Lean file was edited; no `lake build` required by this task.
+- No new theorem or axiom trace was introduced.
+- The v2.236 bridge axiom trace remains `[propext, Classical.choice, Quot.sound]`.
+- F3-COUNT remains `CONDITIONAL_BRIDGE`; no status or percentage moved.
+
+Next Codex task:
+
+    CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-CHAIN-RECHECK-001
+
+That task should recheck the coordinate-premise chain after v2.236 without
+treating the bridge itself as proof of the premise.
+
+---
+
 ## Latest Handoff - 2026-04-28T08:55:00Z - CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001 DONE_CONDITIONAL_BRIDGE_LANDED_COORDINATE_PREMISE_OPEN
 
 **Baton owner**: Codex
