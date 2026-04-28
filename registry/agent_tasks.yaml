@@ -31726,7 +31726,7 @@ tasks:
 - id: CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-RECHECK-AFTER-V2-261-001
   title: 'Codex: recheck bookkeeping base-zone tag-coordinate premise after v2.261'
   owner: Codex
-  status: READY
+  status: COMPLETED
   priority: 5
   created_at: '2026-04-28T17:08:02Z'
   source_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-PREMISE-RECHECK-AFTER-V2-260-001
@@ -31763,6 +31763,76 @@ tasks:
   notes:
   - Seeded by v2.261 after origin-certificate code injection remained conditional
     on bookkeeping base-zone tag-coordinate.
-  - Preserve bridge direction from selector-admissible coordinate injection to
-    bookkeeping tag-coordinate; do not use downstream origin-certificate, coordinate,
-    bookkeeping, or residual-value interfaces in reverse.
+  - Preserve bridge direction from selector-admissible coordinate injection to bookkeeping
+    tag-coordinate; do not use downstream origin-certificate, coordinate, bookkeeping,
+    or residual-value interfaces in reverse.
+  - Dispatched to Codex at 2026-04-28T17:10:56Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T17:10:59Z
+  updated_at: '2026-04-28T17:11:40Z'
+  dispatched_at: '2026-04-28T17:10:56Z'
+  dispatched_to: Codex
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T17:10:56Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T17:10:59Z'
+  delivery_agent: Codex
+  last_delivery_method: codex-enter
+  last_delivery_distance: '32.5'
+  delivery_confirmed_at: '2026-04-28T17:10:59Z'
+  completed_at: '2026-04-28T17:11:40Z'
+  completion_status: DONE_NO_CLOSURE_SELECTOR_ADMISSIBLE_BASE_ZONE_COORDINATE_INJECTION_STILL_MISSING
+  artifact: dashboard/f3_bookkeeping_base_zone_tag_coordinate_premise_recheck_after_v2_261_v2_262.md
+  checked_frontier: PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+  exact_blocker: PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+  bridge_direction: PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+    -> PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+  deeper_known_blocker: PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+  validation_result:
+  - No Lean file was edited; no lake build required for this recheck.
+  - Dashboard artifact records exact no-closure blocker and bridge direction.
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moved.
+  next_task: CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-INJECTION-PREMISE-RECHECK-AFTER-V2-262-001
+- id: CODEX-F3-SELECTOR-ADMISSIBLE-BASE-ZONE-COORDINATE-INJECTION-PREMISE-RECHECK-AFTER-V2-262-001
+  title: 'Codex: recheck selector-admissible base-zone coordinate injection premise after v2.262'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-28T17:11:40Z'
+  source_task: CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-RECHECK-AFTER-V2-261-001
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - dashboard/f3_bookkeeping_base_zone_tag_coordinate_premise_recheck_after_v2_261_v2_262.md
+  - dashboard/f3_selector_admissible_base_zone_coordinate_injection_premise_recheck_after_v2_256_v2_257.md
+  - dashboard/f3_selector_admissible_base_zone_coordinate_source_premise_recheck_after_v2_257_v2_258.md
+  - dashboard/f3_base_zone_coordinate_realization_separation_premise_recheck_after_v2_258_v2_259.md
+  - AXIOM_FRONTIER.md
+  objective: Recheck whether a non-circular source now proves PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+    after v2.262. Do not treat downstream bookkeeping tag-coordinate, origin-certificate
+    code-injection/source, coordinate realization/separation, coordinate source,
+    residual-value, or separation interfaces as proof of the coordinate injection
+    premise; otherwise record the exact remaining no-closure blocker and bridge
+    direction.
+  validation:
+  - lake build YangMills.ClayCore.LatticeAnimalCount if Lean is edited
+  - 'Any new theorem has #print axioms trace no larger than [propext, Classical.choice,
+    Quot.sound]'
+  - Dashboard artifact records closure or exact no-closure blocker and bridge direction
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
+  stop_if:
+  - The proof requires sorry, a new project axiom, downstream residual-value realization/source/origin
+    interfaces in reverse, selected-image cardinality, bounded menu cardinality, empirical
+    search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes,
+    parent-relative terminalNeighborCode equality, deleted-X shortcut, or the v2.161
+    cycle
+  required_updates:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  notes:
+  - Seeded by v2.262 after bookkeeping tag-coordinate remained conditional on selector-admissible
+    base-zone coordinate injection.
+  - Preserve bridge direction from selector-admissible coordinate source to coordinate
+    injection; do not use downstream bookkeeping, origin-certificate, coordinate,
+    or residual-value interfaces in reverse.
