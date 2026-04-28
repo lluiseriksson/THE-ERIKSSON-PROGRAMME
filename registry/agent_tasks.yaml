@@ -30320,7 +30320,7 @@ tasks:
 - id: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001
   title: 'Codex: inventory direct data candidates for origin certificate code injection'
   owner: Codex
-  status: READY
+  status: COMPLETED
   priority: 5
   created_at: '2026-04-28T10:15:00Z'
   source_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001
@@ -30386,15 +30386,65 @@ tasks:
   - Delivery state for Codex recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T11:35:03Z
   - Delivery state for Codex recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T11:37:42Z
   - Delivery state for Codex recorded as ABANDONED_UNCONFIRMED at 2026-04-28T11:41:08Z
-  updated_at: '2026-04-28T11:32:33Z'
-  dispatched_at: '2026-04-28T11:32:33Z'
+  - Dispatched to Codex at 2026-04-28T12:16:08Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T12:16:10Z
+  updated_at: '2026-04-28T12:16:08Z'
+  dispatched_at: '2026-04-28T12:16:08Z'
   dispatched_to: Codex
-  delivery_state: ABANDONED_UNCONFIRMED
-  delivery_attempted_at: '2026-04-28T11:32:33Z'
-  dispatch_count: 8
-  delivery_updated_at: '2026-04-28T11:41:08Z'
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T12:16:08Z'
+  dispatch_count: 9
+  delivery_updated_at: '2026-04-28T12:16:10Z'
   delivery_agent: Codex
-  last_delivery_method: preflight-stale-unconfirmed
-  last_delivery_distance: '56.6'
+  last_delivery_method: codex-enter
+  last_delivery_distance: '32.3'
   requeued_after_abandoned_unconfirmed_at: '2026-04-28T11:41:08Z'
-  delivery_unconfirmed_at: '2026-04-28T11:41:08Z'
+  delivery_confirmed_at: '2026-04-28T12:16:10Z'
+  completed_at: '2026-04-28T12:19:34Z'
+  completion_status: DONE_INVENTORY_NO_UNCONDITIONAL_SOURCE_DIRECT_CONDITIONAL_BRIDGE_IDENTIFIED
+  artifact: dashboard/f3_base_zone_origin_certificate_code_injection_data_candidate_inventory_v2_242.md
+  validation_result: Dashboard-only inventory; no Lean file edited and no lake build
+    required. Candidate table records bridge directions, no downstream residual-value
+    proof route was used, and F3-COUNT remains CONDITIONAL_BRIDGE with no percentage
+    move.
+  next_task: CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-TO-ORIGIN-CERTIFICATE-CODE-INJECTION-BRIDGE-001
+- id: CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-TO-ORIGIN-CERTIFICATE-CODE-INJECTION-BRIDGE-001
+  title: 'Codex: bridge bookkeeping base-zone tag coordinate into origin certificate
+    code injection'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-28T12:19:34Z'
+  source_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - dashboard/f3_base_zone_origin_certificate_code_injection_data_candidate_inventory_v2_242.md
+  - dashboard/f3_bookkeeping_base_zone_tag_coordinate_attempt_v2_219.md
+  - dashboard/f3_base_zone_origin_certificate_code_injection_scope.md
+  - AXIOM_FRONTIER.md
+  objective: Add a no-sorry Lean bridge from PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+    to PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+    by repacking baseZoneTagOfResidualValue, baseZoneTagIntoFin1296, and selectedAdmissible_injective
+    into PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData.
+  validation:
+  - lake build YangMills.ClayCore.LatticeAnimalCount
+  - 'New bridge #print axioms trace is no larger than [propext, Classical.choice, Quot.sound]'
+  - Dashboard artifact records that the bridge is conditional and does not prove the
+    tag-coordinate premise
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
+  stop_if:
+  - The proof requires sorry, a new project axiom, downstream residual-value realization/source/origin
+    interfaces in reverse, selected-image cardinality, bounded menu cardinality, empirical
+    search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes,
+    parent-relative terminalNeighborCode equality, deleted-X shortcut, or the v2.161
+    cycle
+  required_updates:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  notes:
+  - Seeded by v2.242 after the direct-data inventory found the tag-coordinate carrier
+    is the narrowest existing conditional source with the exact whole-residual Fin
+    1296 code plus selected-admissible equality-reflection shape.

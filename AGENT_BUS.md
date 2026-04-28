@@ -9,6 +9,36 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T12:19:34Z - CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001 DONE_INVENTORY
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001`
+**Status**: `DONE_INVENTORY_NO_UNCONDITIONAL_SOURCE_DIRECT_CONDITIONAL_BRIDGE_IDENTIFIED`
+
+Inventory artifact:
+`dashboard/f3_base_zone_origin_certificate_code_injection_data_candidate_inventory_v2_242.md`
+
+Result: no existing v2.121 bookkeeping/base-zone invariant unconditionally
+constructs `PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData`.
+The narrowest existing conditional source is
+`PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296`: it
+already carries the whole-residual tag-to-`Fin 1296` code and
+selected-admissible equality-reflection needed after direct repacking, but its
+premise remains unproved.
+
+Rejected routes were kept out of proof evidence: residual-value code source,
+downstream residual-value realization/separation, selected-image cardinality,
+bounded menus, empirical search, `finsetCodeOfCardLe`, local/root-shell codes,
+deleted-X shortcut, and the v2.161 cycle.
+
+Next Codex task seeded:
+`CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-TO-ORIGIN-CERTIFICATE-CODE-INJECTION-BRIDGE-001`.
+
+No Lean file was edited for v2.242; no lake build was required. F3-COUNT remains
+`CONDITIONAL_BRIDGE`; no status, metric, ledger row, or percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T11:45:00Z - CODEX-AUTOCONTINUE-SAFE-ROLLBACK-NO-RANDOM-CLICKS DONE_AUTOMATION_FIX
 
 **Baton owner**: Codex
