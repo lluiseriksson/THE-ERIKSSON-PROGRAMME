@@ -9,6 +9,43 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T16:11:04Z - CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-AFTER-V2-247-001 DONE_NO_CLOSURE
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-AFTER-V2-247-001`
+**Status**: `DONE_NO_CLOSURE_ORIGIN_CERTIFICATE_CODE_INJECTION_STILL_MISSING`
+
+Rechecked
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296`
+after v2.247 and the post-v2.243 conditional bridge work.
+
+Result: no new non-circular source exists. The exact immediate blocker remains
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296`.
+The direct bridge into the source target is one-way:
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296`
+to `PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296`.
+
+Artifact:
+`dashboard/f3_base_zone_origin_certificate_source_frontier_recheck_after_v2_247_v2_248.md`
+
+The post-v2.243 bridge
+`PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296` to
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296`
+is valid but conditional. It does not prove the source target because the
+tag-coordinate premise remains open. The downstream residual-value source route
+was not used.
+
+No Lean file was edited; no `lake build` was required. No new theorem-specific
+axiom trace was introduced.
+
+Next Codex task seeded:
+`CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-RECHECK-AFTER-V2-248-001`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, proof
+closure claim, Clay-level claim, or percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T16:06:31Z - CODEX-F3-BASE-ZONE-COORDINATE-REALIZATION-SEPARATION-FRONTIER-RECHECK-001 DONE_NO_CLOSURE
 
 **Baton owner**: Codex

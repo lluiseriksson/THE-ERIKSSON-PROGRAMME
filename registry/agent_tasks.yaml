@@ -28098,7 +28098,7 @@ tasks:
   title: 'Codex: scope F3-COUNT ledger evidence-column extension from v2.217 through
     v2.222'
   owner: Codex
-  status: IN_PROGRESS
+  status: COMPLETED
   priority: 6
   created_at: '2026-04-28T01:38:00Z'
   source_task: META-GENERATE-TASKS-001-RUN-48
@@ -30743,7 +30743,7 @@ tasks:
 - id: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-AFTER-V2-247-001
   title: 'Codex: recheck base-zone origin certificate source frontier after v2.247'
   owner: Codex
-  status: READY
+  status: IN_PROGRESS
   priority: 5
   created_at: '2026-04-28T16:06:31Z'
   source_task: CODEX-F3-BASE-ZONE-COORDINATE-REALIZATION-SEPARATION-FRONTIER-RECHECK-001
@@ -30755,10 +30755,10 @@ tasks:
   - dashboard/f3_bookkeeping_base_zone_tag_coordinate_to_origin_certificate_code_injection_bridge_v2_243.md
   - AXIOM_FRONTIER.md
   objective: Recheck whether a non-circular source now proves PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
-    after v2.247 and the post-v2.243 conditional bridges. Prove it only if the
-    source does not route through downstream residual-value realization/source/origin/separation
-    interfaces or a circular tag-coordinate premise; otherwise record the exact
-    remaining no-closure blocker.
+    after v2.247 and the post-v2.243 conditional bridges. Prove it only if the source
+    does not route through downstream residual-value realization/source/origin/separation
+    interfaces or a circular tag-coordinate premise; otherwise record the exact remaining
+    no-closure blocker.
   validation:
   - lake build YangMills.ClayCore.LatticeAnimalCount if Lean is edited
   - 'Any new theorem has #print axioms trace no larger than [propext, Classical.choice,
@@ -30778,9 +30778,83 @@ tasks:
   - dashboard/agent_state.json
   next_agent: Codex
   notes:
-  - Seeded by v2.247 after base-zone coordinate realization/separation remained
-    blocked at the origin certificate source premise.
+  - Seeded by v2.247 after base-zone coordinate realization/separation remained blocked
+    at the origin certificate source premise.
   - Do not use downstream residual-value source/realization/separation interfaces
     as proof evidence for the origin certificate source frontier.
-  - If the post-v2.243 tag-coordinate bridge is considered, keep its premise
-    explicitly conditional and do not treat it as closure.
+  - If the post-v2.243 tag-coordinate bridge is considered, keep its premise explicitly
+    conditional and do not treat it as closure.
+  - Dispatched to Codex at 2026-04-28T16:10:06Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T16:10:09Z
+  - Completed by v2.248 dashboard recheck; no Lean file was edited.
+  updated_at: '2026-04-28T16:10:06Z'
+  dispatched_at: '2026-04-28T16:10:06Z'
+  dispatched_to: Codex
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T16:10:06Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T16:10:09Z'
+  delivery_agent: Codex
+  last_delivery_method: codex-enter
+  last_delivery_distance: '32.5'
+  delivery_confirmed_at: '2026-04-28T16:10:09Z'
+  completed_at: '2026-04-28T16:11:04Z'
+  completion_status: DONE_NO_CLOSURE_ORIGIN_CERTIFICATE_CODE_INJECTION_STILL_MISSING
+  artifact: dashboard/f3_base_zone_origin_certificate_source_frontier_recheck_after_v2_247_v2_248.md
+  checked_frontier: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+  exact_blocker: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+  bridge_direction: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+    -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+  conditional_tag_coordinate_route: PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+    -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+    -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+  still_open_conditional_premise: PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+  validation_result:
+  - No Lean file was edited; no lake build required for this recheck.
+  - Dashboard artifact records exact no-closure blocker and bridge direction.
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moved.
+  next_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-RECHECK-AFTER-V2-248-001
+- id: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-RECHECK-AFTER-V2-248-001
+  title: 'Codex: recheck origin certificate code injection via tag coordinate after
+    v2.248'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-28T16:11:04Z'
+  source_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-AFTER-V2-247-001
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - dashboard/f3_base_zone_origin_certificate_source_frontier_recheck_after_v2_247_v2_248.md
+  - dashboard/f3_bookkeeping_base_zone_tag_coordinate_to_origin_certificate_code_injection_bridge_v2_243.md
+  - dashboard/f3_base_zone_origin_certificate_code_injection_data_candidate_inventory_v2_242.md
+  - dashboard/f3_base_zone_origin_certificate_code_injection_frontier_recheck_v2_240.md
+  - AXIOM_FRONTIER.md
+  objective: Recheck whether the post-v2.243 tag-coordinate route proves PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+    without treating the still-open PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+    premise as closure. If not, record the exact no-closure blocker at that premise
+    and preserve all bridge directions.
+  validation:
+  - lake build YangMills.ClayCore.LatticeAnimalCount if Lean is edited
+  - 'Any new theorem has #print axioms trace no larger than [propext, Classical.choice,
+    Quot.sound]'
+  - Dashboard artifact records closure or exact no-closure blocker and bridge direction
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
+  stop_if:
+  - The proof requires sorry, a new project axiom, downstream residual-value realization/source/origin
+    interfaces in reverse, selected-image cardinality, bounded menu cardinality, empirical
+    search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes,
+    parent-relative terminalNeighborCode equality, deleted-X shortcut, or the v2.161
+    cycle
+  required_updates:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  notes:
+  - Seeded by v2.248 after origin-certificate source remained blocked at the
+    code-injection premise.
+  - The v2.243 bridge from bookkeeping base-zone tag coordinate to code injection
+    is conditional and must not be treated as proof of its premise.
+  - Do not use downstream residual-value source/realization/separation interfaces
+    as evidence for code injection.

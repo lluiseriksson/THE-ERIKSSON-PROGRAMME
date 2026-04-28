@@ -1,11 +1,11 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_base_zone_coordinate_realization_separation_no_closure",
+  "current_phase": "f3_base_zone_origin_certificate_source_no_closure",
   "current_baton_owner": "Codex",
-  "next_task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-AFTER-V2-247-001",
-  "last_completed_task": "CODEX-F3-BASE-ZONE-COORDINATE-REALIZATION-SEPARATION-FRONTIER-RECHECK-001",
-  "last_dispatched_task": "CODEX-F3-BASE-ZONE-COORDINATE-REALIZATION-SEPARATION-FRONTIER-RECHECK-001",
+  "next_task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-RECHECK-AFTER-V2-248-001",
+  "last_completed_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-AFTER-V2-247-001",
+  "last_dispatched_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-AFTER-V2-247-001",
   "last_dispatched_agent": "Codex",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists",
@@ -42,9 +42,23 @@
     "REC-COWORK-DISPATCH-RATE-LIMIT-AUDIT-SLOT-001",
     "REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002"
   ],
-  "last_dispatch_at": "2026-04-28T16:04:51Z",
-  "last_completed_at": "2026-04-28T16:06:31Z",
-  "latest_validation_artifact": "dashboard/f3_base_zone_coordinate_realization_separation_frontier_recheck_v2_247.md records no closure of PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296; exact immediate blocker remains PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296. F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "last_dispatch_at": "2026-04-28T16:10:07Z",
+  "last_completed_at": "2026-04-28T16:11:04Z",
+  "latest_validation_artifact": "dashboard/f3_base_zone_origin_certificate_source_frontier_recheck_after_v2_247_v2_248.md records no closure of PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296; exact immediate blocker remains PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296. F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "f3_base_zone_origin_certificate_source_frontier_recheck_after_v2_247_v2_248": {
+    "status": "DONE_NO_CLOSURE_ORIGIN_CERTIFICATE_CODE_INJECTION_STILL_MISSING",
+    "artifact": "dashboard/f3_base_zone_origin_certificate_source_frontier_recheck_after_v2_247_v2_248.md",
+    "task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-AFTER-V2-247-001",
+    "checked_frontier": "PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296",
+    "exact_blocker": "PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296",
+    "bridge_direction": "PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296 -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296",
+    "conditional_tag_coordinate_route": "PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296 -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296 -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296",
+    "still_open_conditional_premise": "PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296",
+    "validation": "No Lean file was edited; no lake build required. Dashboard artifact records exact no-closure blocker and bridge direction; YAML/JSON/JSONL validation passed.",
+    "next_codex_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-VIA-TAG-COORDINATE-RECHECK-AFTER-V2-248-001",
+    "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
+    "updated_at": "2026-04-28T16:11:04Z"
+  },
   "f3_base_zone_coordinate_realization_separation_frontier_recheck_v2_247": {
     "status": "DONE_NO_CLOSURE_ORIGIN_CERTIFICATE_SOURCE_STILL_MISSING",
     "artifact": "dashboard/f3_base_zone_coordinate_realization_separation_frontier_recheck_v2_247.md",
@@ -2830,8 +2844,8 @@
   },
   "last_dispatch_by_agent": {
     "Codex": {
-      "task_id": "CODEX-F3-BASE-ZONE-COORDINATE-REALIZATION-SEPARATION-FRONTIER-RECHECK-001",
-      "at": "2026-04-28T16:04:51Z"
+      "task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-AFTER-V2-247-001",
+      "at": "2026-04-28T16:10:07Z"
     },
     "Cowork": {
       "task_id": "META-GENERATE-TASKS-001",
