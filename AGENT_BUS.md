@@ -9,6 +9,41 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T16:41:59Z - CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-PREMISE-RECHECK-AFTER-V2-254-001 DONE_NO_CLOSURE
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-PREMISE-RECHECK-AFTER-V2-254-001`
+**Status**: `DONE_NO_CLOSURE_BOOKKEEPING_BASE_ZONE_TAG_COORDINATE_STILL_MISSING`
+
+Rechecked
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296`
+after v2.254.
+
+Result: no unconditional closure. The bridge
+`PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296`
+to `PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296`
+is valid but conditional. The exact immediate blocker is still
+`PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296`.
+
+Artifact:
+`dashboard/f3_base_zone_origin_certificate_code_injection_premise_recheck_after_v2_254_v2_255.md`
+
+The residual-value code-source route was not used because it is prohibited for
+this frontier. Downstream origin-certificate source, coordinate
+realization/separation, coordinate source, coordinate injection, bookkeeping
+tag-coordinate, and residual-value interfaces were not used in reverse.
+
+No Lean file was edited; no `lake build` was required. No new theorem-specific
+axiom trace was introduced.
+
+Next Codex task seeded:
+`CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-RECHECK-AFTER-V2-255-001`.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, proof
+closure claim, Clay-level claim, or percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T16:38:17Z - CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-PREMISE-RECHECK-AFTER-V2-253-001 DONE_NO_CLOSURE
 
 **Baton owner**: Codex
