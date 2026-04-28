@@ -1,11 +1,11 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_base_zone_tag_coordinate_bridge_ready",
+  "current_phase": "f3_axiom_frontier_reconciled_through_v2_225",
   "current_baton_owner": "Codex",
   "next_task_id": "CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001",
-  "last_completed_task": "CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001",
-  "last_dispatched_task": "CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001",
+  "last_completed_task": "CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001",
+  "last_dispatched_task": "CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001",
   "last_dispatched_agent": "Codex",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists",
@@ -42,9 +42,9 @@
     "REC-COWORK-DISPATCH-RATE-LIMIT-AUDIT-SLOT-001",
     "REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002"
   ],
-  "last_dispatch_at": "2026-04-28T05:14:23Z",
-  "last_completed_at": "2026-04-28T08:25:00Z",
-  "latest_validation_artifact": "CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001 produced dashboard/f3_structural_residual_value_invariant_inventory.md. Best conditional source is PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296; terminal-neighbor ambient/bookkeeping lanes are insufficient for v2.234 existential selector-data equality-reflection; downstream residual-value source/origin interfaces were not used in reverse. No Lean file was edited; YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "last_dispatch_at": "2026-04-28T05:30:28Z",
+  "last_completed_at": "2026-04-28T08:40:00Z",
+  "latest_validation_artifact": "CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001 produced dashboard/axiom_frontier_f3_v2_223_v2_225_reconcile.md and updated AXIOM_FRONTIER.md through v2.225.0. The active blocker remains PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296; no Lean file was edited; YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
   "f3_base_zone_residual_value_code_separation_interface_v2_234": {
     "status": "DONE_INTERFACE_AND_BRIDGE_LANDED",
     "artifact": "dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md",
@@ -225,6 +225,24 @@
     "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof claim beyond the documentation scope, or Clay-level claim moved.",
     "updated_at": "2026-04-28T04:15:00Z"
   },
+  "axiom_frontier_f3_v2_223_v2_225_reconcile": {
+    "status": "DONE_AXIOM_FRONTIER_RECONCILED_THROUGH_V2_225_NO_STATUS_MOVE",
+    "artifact": "dashboard/axiom_frontier_f3_v2_223_v2_225_reconcile.md",
+    "task_id": "CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001",
+    "axiom_frontier_head": "v2.225.0 - F3 base-zone realization/separation interface and no-closure reduction",
+    "supporting_artifacts": [
+      "dashboard/axiom_frontier_f3_v2_223_v2_225_reconcile_scope.md",
+      "dashboard/f3_selector_admissible_base_zone_coordinate_source_recovery_attempt_v2_223.md",
+      "dashboard/f3_base_zone_coordinate_realization_separation_interface_v2_224.md",
+      "dashboard/f3_base_zone_coordinate_realization_separation_attempt_v2_225.md",
+      "dashboard/f3_base_zone_origin_certificate_source_scope.md"
+    ],
+    "exact_blocker_after_endpoint": "PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296",
+    "validation": "AXIOM_FRONTIER.md now has a v2.225 head entry citing existing dashboard artifacts; YAML/JSON/JSONL validation passed.",
+    "next_codex_task": "CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001",
+    "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
+    "updated_at": "2026-04-28T08:40:00Z"
+  },
   "f3_base_zone_origin_certificate_code_injection_attempt_v2_229": {
     "status": "DONE_NO_CLOSURE_RESIDUAL_VALUE_CODE_SOURCE_MISSING",
     "artifact": "dashboard/f3_base_zone_origin_certificate_code_injection_attempt_v2_229.md",
@@ -344,7 +362,7 @@
     "task_id": "CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.223-V2.225-SCOPE-001",
     "ledger_edited": false,
     "proposed_endpoint": "v2.225.0 - F3 base-zone realization/separation interface and no-closure reduction",
-    "exact_blocker": "AXIOM_FRONTIER.md is still headed at v2.222; dashboard/axiom_frontier_f3_v2_223_v2_225_reconcile_scope.md supports v2.225, but dashboard/axiom_frontier_f3_v2_223_v2_225_reconcile.md does not exist yet.",
+    "exact_blocker": "Resolved by dashboard/axiom_frontier_f3_v2_223_v2_225_reconcile.md; AXIOM_FRONTIER.md is now headed at v2.225.0. Ledger extension remains a separate task and no ledger status moved here.",
     "recommendation_status": "REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002 remains RESOLVED and was not reopened.",
     "next_codex_task": "CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001",
     "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, vacuity caveat, proof claim, or Clay-level claim moved.",
@@ -2613,8 +2631,8 @@
   },
   "last_dispatch_by_agent": {
     "Codex": {
-      "task_id": "CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001",
-      "at": "2026-04-28T05:14:23Z"
+      "task_id": "CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001",
+      "at": "2026-04-28T05:30:28Z"
     },
     "Cowork": {
       "task_id": "META-GENERATE-TASKS-001",

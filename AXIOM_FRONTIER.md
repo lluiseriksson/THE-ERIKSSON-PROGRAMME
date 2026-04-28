@@ -1,3 +1,96 @@
+# v2.225.0 - F3 base-zone realization/separation interface and no-closure reduction
+
+**Released: 2026-04-28**
+
+Codex reconciled the F3 AXIOM_FRONTIER head beyond v2.222 using the scoped
+documentation evidence in:
+
+    dashboard/axiom_frontier_f3_v2_223_v2_225_reconcile_scope.md
+
+This is a documentation reconciliation entry.  It does not introduce a new Lean
+theorem, does not claim that F3-COUNT is closed, and does not move any
+percentage.
+
+## v2.223-v2.225 segment: base-zone realization/separation blocker
+
+The base-zone realization/separation lane is supported by:
+
+    dashboard/f3_selector_admissible_base_zone_coordinate_source_recovery_attempt_v2_223.md
+    dashboard/f3_base_zone_coordinate_realization_separation_interface_v2_224.md
+    dashboard/f3_base_zone_coordinate_realization_separation_attempt_v2_225.md
+    dashboard/f3_base_zone_origin_certificate_source_scope.md
+
+The v2.223 recovery artifact records that the proof of
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+
+does not close from the current v2.222 interface artifacts.  The exact missing
+source at that endpoint is:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296
+
+with intended bridge shape:
+
+    physicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296_of_baseZoneCoordinateRealizationSeparation1296
+
+The v2.224 interface artifact records the no-sorry Lean landing of:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparationData
+    PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296
+    physicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296_of_baseZoneCoordinateRealizationSeparation1296
+
+The bridge target is exactly:
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+
+The v2.225 attempt artifact records that the proof of
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296
+
+does not close from the current Lean artifacts.  The exact missing upstream
+source at this endpoint is:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+
+with intended bridge target:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296
+
+The origin-certificate source scope artifact names the next theorem shape and
+bridge direction.  It is a scoped next lane, not evidence that the v2.225
+blocker has been proved.
+
+## Active blocker after this reconciliation
+
+For this v2.223-v2.225 reconciliation window, the active blocker is the missing
+selector-independent base-zone origin/certificate source:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+
+Later dashboard/Lean artifacts may refine this blocker further, but this
+AXIOM_FRONTIER entry records only the v2.223-v2.225 endpoint requested here.
+
+## Honesty
+
+This entry does not claim that
+`PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296`
+was proved, and it does not claim that
+`PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296` was
+proved.  It records only the documented no-sorry v2.224 interface and bridge
+landing plus the v2.223 and v2.225 no-closure reductions.
+
+This entry does not close F3-COUNT.  It does not use selected-image
+cardinality, bounded menu cardinality, `finsetCodeOfCardLe`, empirical search,
+root-shell/local-neighbor/local-displacement codes as residual-subtype
+bookkeeping/base-zone injectivity, parent-relative `terminalNeighborCode`
+equality, deleted-X residual shortcuts, or the v2.161 circular route.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`. No status, percentage, README metric,
+planner metric, ledger row, vacuity caveat, proof claim beyond the cited
+dashboard/Lean-supported artifacts, or Clay-level claim moved.
+
+---
+
 # v2.222.0 - F3 selector-admissible base-zone coordinate source interface and bridge
 
 **Released: 2026-04-28**

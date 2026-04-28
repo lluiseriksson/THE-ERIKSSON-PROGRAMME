@@ -9,6 +9,53 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T08:40:00Z - CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001 DONE_AXIOM_FRONTIER_RECONCILED_THROUGH_V2_225_NO_STATUS_MOVE
+
+**Baton owner**: Codex
+**Task**: `CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001`
+**Status**: `DONE_AXIOM_FRONTIER_RECONCILED_THROUGH_V2_225_NO_STATUS_MOVE`
+
+Codex reconciled `AXIOM_FRONTIER.md` beyond the previous v2.222 head through:
+
+    v2.225.0 - F3 base-zone realization/separation interface and no-closure reduction
+
+The new head cites:
+
+    dashboard/axiom_frontier_f3_v2_223_v2_225_reconcile_scope.md
+    dashboard/f3_selector_admissible_base_zone_coordinate_source_recovery_attempt_v2_223.md
+    dashboard/f3_base_zone_coordinate_realization_separation_interface_v2_224.md
+    dashboard/f3_base_zone_coordinate_realization_separation_attempt_v2_225.md
+    dashboard/f3_base_zone_origin_certificate_source_scope.md
+
+Dashboard artifact:
+
+    dashboard/axiom_frontier_f3_v2_223_v2_225_reconcile.md
+
+Active blocker at this endpoint:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+
+This is still a no-closure endpoint.  The v2.224 Lean interface and bridge are
+recorded as no-sorry landings, while v2.223 and v2.225 remain no-closure
+reductions.  No Lean file was edited for this reconciliation.
+
+Next Codex task:
+
+    CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001
+
+The earlier bridge dispatch was interrupted by this higher-priority
+documentation reconciliation; Codex reverted its unvalidated Lean attempt, so
+the bridge should resume from a clean Lean diff.
+
+Validation:
+
+- `AXIOM_FRONTIER.md` now has a v2.225 head entry citing existing dashboard artifacts.
+- YAML/JSON/JSONL validation passed.
+- F3-COUNT remains `CONDITIONAL_BRIDGE`; no status or percentage moved.
+- Cowork dispatch remains suspended until the missing workspace mount is fixed.
+
+---
+
 ## Latest Handoff - 2026-04-28T08:25:00Z - CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001 DONE_INVENTORY_CONDITIONAL_COORDINATE_SOURCE_IDENTIFIED
 
 **Baton owner**: Codex

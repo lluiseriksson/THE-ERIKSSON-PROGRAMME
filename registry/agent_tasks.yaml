@@ -28906,7 +28906,7 @@ tasks:
 - id: CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001
   title: 'Codex: reconcile AXIOM_FRONTIER with scoped F3 v2.223-v2.225 artifacts'
   owner: Codex
-  status: READY
+  status: COMPLETED
   priority: 6
   created_at: '2026-04-28T04:15:00Z'
   source_task: CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-SCOPE-001
@@ -28942,6 +28942,31 @@ tasks:
   notes:
   - Seeded by the v2.223-v2.225 reconciliation scope to perform the documentation-only
     AXIOM_FRONTIER update.
+  - Dispatched to Codex at 2026-04-28T05:30:27Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T05:30:38Z
+  updated_at: '2026-04-28T08:40:00Z'
+  dispatched_at: '2026-04-28T05:30:27Z'
+  dispatched_to: Codex
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T05:30:27Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T05:30:38Z'
+  delivery_agent: Codex
+  last_delivery_method: detector
+  last_delivery_distance: '32.5'
+  delivery_confirmed_at: '2026-04-28T05:30:38Z'
+  completed_at: '2026-04-28T08:40:00Z'
+  completion_status: DONE_AXIOM_FRONTIER_RECONCILED_THROUGH_V2_225_NO_STATUS_MOVE
+  artifact: dashboard/axiom_frontier_f3_v2_223_v2_225_reconcile.md
+  axiom_frontier_head: v2.225.0 - F3 base-zone realization/separation interface and no-closure reduction
+  exact_blocker: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+  validation_result:
+  - AXIOM_FRONTIER.md now has a v2.225 head entry citing existing dashboard artifacts.
+  - Required v2.223-v2.225 artifacts exist and agree with the scoped bridge directions.
+  - YAML/JSON/JSONL validation passed.
+  f3_count_impact: F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README
+    metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.
+  next_task: CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001
 - id: CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.223-V2.225-SCOPE-001
   title: 'Codex: scope F3-COUNT ledger evidence-column extension from v2.223 through
     v2.225'
@@ -29852,7 +29877,8 @@ tasks:
   best_candidate: PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
   exact_bridge_missing: physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
   validation_result:
-  - Dashboard artifact lists candidate invariants and bridge direction relative to v2.234
+  - Dashboard artifact lists candidate invariants and bridge direction relative to
+    v2.234
   - Best existing conditional source is upstream and unproved; downstream residual-value
     source/origin interfaces were not used as reverse evidence
   - No Lean file was edited; no lake build required
@@ -29866,7 +29892,7 @@ tasks:
   status: READY
   priority: 5
   created_at: '2026-04-28T08:25:00Z'
-  updated_at: '2026-04-28T08:25:00Z'
+  updated_at: '2026-04-28T08:40:00Z'
   source_task: CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
@@ -29900,3 +29926,17 @@ tasks:
   notes:
   - Seeded by the structural invariant inventory. This is a conditional repackaging
     bridge only; it does not prove PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296.
+  - Dispatched to Codex at 2026-04-28T05:20:10Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T05:20:13Z
+  - Interrupted by CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001 before validation;
+    the unvalidated Lean attempt was reverted and no bridge theorem was committed.
+  dispatched_at: '2026-04-28T05:20:10Z'
+  dispatched_to: Codex
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T05:20:10Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T05:20:13Z'
+  delivery_agent: Codex
+  last_delivery_method: codex-enter
+  last_delivery_distance: '32.5'
+  delivery_confirmed_at: '2026-04-28T05:20:13Z'
