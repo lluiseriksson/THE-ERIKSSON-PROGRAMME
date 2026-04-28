@@ -28958,7 +28958,8 @@ tasks:
   completed_at: '2026-04-28T08:40:00Z'
   completion_status: DONE_AXIOM_FRONTIER_RECONCILED_THROUGH_V2_225_NO_STATUS_MOVE
   artifact: dashboard/axiom_frontier_f3_v2_223_v2_225_reconcile.md
-  axiom_frontier_head: v2.225.0 - F3 base-zone realization/separation interface and no-closure reduction
+  axiom_frontier_head: v2.225.0 - F3 base-zone realization/separation interface and
+    no-closure reduction
   exact_blocker: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
   validation_result:
   - AXIOM_FRONTIER.md now has a v2.225 head entry citing existing dashboard artifacts.
@@ -29889,10 +29890,10 @@ tasks:
 - id: CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001
   title: 'Codex: bridge base-zone tag coordinate into residual-value code separation'
   owner: Codex
-  status: READY
+  status: COMPLETED
   priority: 5
   created_at: '2026-04-28T08:25:00Z'
-  updated_at: '2026-04-28T08:40:00Z'
+  updated_at: '2026-04-28T08:55:00Z'
   source_task: CODEX-F3-STRUCTURAL-RESIDUAL-VALUE-INVARIANT-INVENTORY-001
   required_files:
   - YangMills/ClayCore/LatticeAnimalCount.lean
@@ -29930,13 +29931,66 @@ tasks:
   - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T05:20:13Z
   - Interrupted by CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001 before validation;
     the unvalidated Lean attempt was reverted and no bridge theorem was committed.
-  dispatched_at: '2026-04-28T05:20:10Z'
+  - Dispatched to Codex at 2026-04-28T05:37:03Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T05:37:07Z
+  dispatched_at: '2026-04-28T05:37:03Z'
   dispatched_to: Codex
   delivery_state: CONFIRMED_BUSY
-  delivery_attempted_at: '2026-04-28T05:20:10Z'
-  dispatch_count: 1
-  delivery_updated_at: '2026-04-28T05:20:13Z'
+  delivery_attempted_at: '2026-04-28T05:37:03Z'
+  dispatch_count: 2
+  delivery_updated_at: '2026-04-28T05:37:07Z'
   delivery_agent: Codex
   last_delivery_method: codex-enter
   last_delivery_distance: '32.5'
-  delivery_confirmed_at: '2026-04-28T05:20:13Z'
+  delivery_confirmed_at: '2026-04-28T05:37:07Z'
+  completed_at: '2026-04-28T08:55:00Z'
+  completion_status: DONE_CONDITIONAL_BRIDGE_LANDED_COORDINATE_PREMISE_OPEN
+  artifact: dashboard/f3_base_zone_tag_coordinate_to_residual_value_separation_bridge_v2_236.md
+  lean_additions:
+  - physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
+  bridge_premise: PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+  bridge_target: PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+  validation_result:
+  - lake build YangMills.ClayCore.LatticeAnimalCount passed.
+  - 'New bridge #print axioms trace is [propext, Classical.choice, Quot.sound].'
+  - Dashboard artifact records that the bridge is conditional and does not prove the coordinate premise.
+  f3_count_impact: F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README
+    metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.
+  next_task: CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-VIA-TAG-COORDINATE-001
+- id: CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-VIA-TAG-COORDINATE-001
+  title: 'Codex: prove or precisely fail residual-value separation via base-zone tag coordinate'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-28T08:55:00Z'
+  source_task: CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - dashboard/f3_base_zone_tag_coordinate_to_residual_value_separation_bridge_v2_236.md
+  - dashboard/f3_structural_residual_value_invariant_inventory.md
+  - dashboard/f3_bookkeeping_base_zone_tag_coordinate_attempt_v2_219.md
+  - AXIOM_FRONTIER.md
+  objective: Attempt to prove PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+    using the new conditional bridge from PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296,
+    or record the exact remaining no-closure blocker at the coordinate premise.
+  validation:
+  - lake build YangMills.ClayCore.LatticeAnimalCount if Lean is edited
+  - 'Any new theorem has #print axioms trace no larger than [propext, Classical.choice,
+    Quot.sound]'
+  - Dashboard artifact records closure or exact no-closure blocker
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
+  stop_if:
+  - The proof requires sorry, a new project axiom, downstream residual-value realization/source/origin
+    interfaces in reverse, selected-image cardinality, bounded menu cardinality, empirical
+    search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes,
+    parent-relative terminalNeighborCode equality, deleted-X shortcut, or the v2.161
+    cycle
+  required_updates:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  notes:
+  - Seeded after v2.236 landed the conditional bridge into v2.234. This task should
+    not treat the bridge as proof of the coordinate premise.

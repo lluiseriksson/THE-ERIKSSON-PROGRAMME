@@ -1,11 +1,11 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_axiom_frontier_reconciled_through_v2_225",
+  "current_phase": "f3_base_zone_residual_value_separation_bridge_landed",
   "current_baton_owner": "Codex",
-  "next_task_id": "CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001",
-  "last_completed_task": "CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001",
-  "last_dispatched_task": "CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001",
+  "next_task_id": "CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-VIA-TAG-COORDINATE-001",
+  "last_completed_task": "CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001",
+  "last_dispatched_task": "CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001",
   "last_dispatched_agent": "Codex",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists",
@@ -42,9 +42,9 @@
     "REC-COWORK-DISPATCH-RATE-LIMIT-AUDIT-SLOT-001",
     "REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002"
   ],
-  "last_dispatch_at": "2026-04-28T05:30:28Z",
-  "last_completed_at": "2026-04-28T08:40:00Z",
-  "latest_validation_artifact": "CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001 produced dashboard/axiom_frontier_f3_v2_223_v2_225_reconcile.md and updated AXIOM_FRONTIER.md through v2.225.0. The active blocker remains PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296; no Lean file was edited; YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "last_dispatch_at": "2026-04-28T05:37:05Z",
+  "last_completed_at": "2026-04-28T08:55:00Z",
+  "latest_validation_artifact": "CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001 produced dashboard/f3_base_zone_tag_coordinate_to_residual_value_separation_bridge_v2_236.md and added physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296. lake build YangMills.ClayCore.LatticeAnimalCount passed; new bridge #print axioms trace is [propext, Classical.choice, Quot.sound]; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
   "f3_base_zone_residual_value_code_separation_interface_v2_234": {
     "status": "DONE_INTERFACE_AND_BRIDGE_LANDED",
     "artifact": "dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md",
@@ -100,6 +100,20 @@
     "next_codex_task": "CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001",
     "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
     "updated_at": "2026-04-28T08:25:00Z"
+  },
+  "f3_base_zone_tag_coordinate_to_residual_value_separation_bridge_v2_236": {
+    "status": "DONE_CONDITIONAL_BRIDGE_LANDED_COORDINATE_PREMISE_OPEN",
+    "artifact": "dashboard/f3_base_zone_tag_coordinate_to_residual_value_separation_bridge_v2_236.md",
+    "task_id": "CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001",
+    "lean_additions": [
+      "physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296"
+    ],
+    "bridge_premise": "PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296",
+    "bridge_target": "PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296",
+    "validation": "lake build YangMills.ClayCore.LatticeAnimalCount passed; new bridge #print axioms trace is [propext, Classical.choice, Quot.sound].",
+    "next_codex_task": "CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-VIA-TAG-COORDINATE-001",
+    "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
+    "updated_at": "2026-04-28T08:55:00Z"
   },
   "cowork_workspace_mount_dispatch_suspension": {
     "status": "DONE_COWORK_DISPATCH_SUSPENDED_UNTIL_MOUNT_AVAILABLE",
@@ -2631,8 +2645,8 @@
   },
   "last_dispatch_by_agent": {
     "Codex": {
-      "task_id": "CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001",
-      "at": "2026-04-28T05:30:28Z"
+      "task_id": "CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001",
+      "at": "2026-04-28T05:37:05Z"
     },
     "Cowork": {
       "task_id": "META-GENERATE-TASKS-001",

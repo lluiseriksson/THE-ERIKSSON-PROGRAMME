@@ -9,6 +9,49 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T08:55:00Z - CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001 DONE_CONDITIONAL_BRIDGE_LANDED_COORDINATE_PREMISE_OPEN
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-BASE-ZONE-TAG-COORDINATE-TO-RESIDUAL-VALUE-SEPARATION-BRIDGE-001`
+**Status**: `DONE_CONDITIONAL_BRIDGE_LANDED_COORDINATE_PREMISE_OPEN`
+
+Codex landed the no-sorry Lean bridge:
+
+    physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
+
+from:
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+
+to:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+
+The bridge repacks `baseZoneTagOfResidualValue` and `baseZoneTagIntoFin1296`
+as the v2.234 `residualValueCode`, and delegates selected-admissible
+equality-reflection to `selectedAdmissible_injective`.
+
+Dashboard artifact:
+
+    dashboard/f3_base_zone_tag_coordinate_to_residual_value_separation_bridge_v2_236.md
+
+Validation:
+
+- `lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+- New bridge `#print axioms` trace is `[propext, Classical.choice, Quot.sound]`.
+- The bridge is conditional and does not prove the coordinate premise.
+- F3-COUNT remains `CONDITIONAL_BRIDGE`; no status or percentage moved.
+
+Next Codex task:
+
+    CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-VIA-TAG-COORDINATE-001
+
+That task should attempt the v2.234 theorem through the new bridge or record
+the remaining exact no-closure blocker at
+`PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296`.
+
+---
+
 ## Latest Handoff - 2026-04-28T08:40:00Z - CODEX-AXIOM-FRONTIER-F3-V2.223-V2.225-RECONCILE-001 DONE_AXIOM_FRONTIER_RECONCILED_THROUGH_V2_225_NO_STATUS_MOVE
 
 **Baton owner**: Codex

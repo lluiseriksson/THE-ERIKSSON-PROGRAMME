@@ -5289,6 +5289,35 @@ theorem physicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparati
       sourceData.selectorAdmissible_certificate_injective residual a b oa ob
         hoa hob ha hb hcode
 
+/-- A selector-independent bookkeeping/base-zone tag coordinate supplies the
+v2.234 residual-value code separation interface by using its `Fin 1296`
+coordinate code directly as the residual-value code.
+
+This is a conditional repackaging bridge only. It does not prove the
+bookkeeping/base-zone coordinate premise, does not use downstream
+residual-value realization/source/origin interfaces in reverse, and does not use
+selected-image cardinality, bounded menu cardinality, empirical search,
+`finsetCodeOfCardLe`, root-shell/local-neighbor/local-displacement codes,
+parent-relative `terminalNeighborCode`, deleted-X shortcuts, or the v2.161
+selector-image cycle. -/
+theorem physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
+    (hcoordinate :
+      PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296) :
+    PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296 := by
+  intro L hL root k deleted parentOf essential hchoice himage hessential_subset
+  letI : NeZero L := hL
+  obtain ⟨coordinateData⟩ :=
+    hcoordinate root k deleted parentOf essential hchoice himage
+      hessential_subset
+  refine ⟨
+    { residualValueCode := fun residual q =>
+        coordinateData.baseZoneTagIntoFin1296 residual
+          (coordinateData.baseZoneTagOfResidualValue residual q)
+      selectorAdmissible_code_injective := ?_ }⟩
+  intro residual a b ha hb hcode
+  exact
+    coordinateData.selectedAdmissible_injective residual a b ha hb hcode
+
 /-- A selector-independent residual-value code separation theorem supplies the
 v2.232 realization layer by adding a trivial `Unit` realization certificate. -/
 theorem physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296_of_baseZoneResidualValueCodeSeparation1296
@@ -10617,6 +10646,7 @@ def physicalShiftedF3CountPackageExp_of_graphAnimalWordDecoder1296
 #print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSourceData
 #print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData
 #print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+#print axioms physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296_of_residualFiberBookkeepingBaseZoneTagCoordinate1296
 #print axioms physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296_of_baseZoneResidualValueCodeSeparation1296
 #print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealizationData
 #print axioms PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296
