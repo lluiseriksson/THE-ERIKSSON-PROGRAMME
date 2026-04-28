@@ -44,7 +44,7 @@
   ],
   "last_dispatch_at": "2026-04-28T06:07:06Z",
   "last_completed_at": "2026-04-28T10:15:00Z",
-  "latest_validation_artifact": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001 produced dashboard/f3_base_zone_origin_certificate_code_injection_structural_source_scope_v2_241.md. The v2.228 code-injection data carrier is confirmed as the minimal honest frontier unless a concrete upstream invariant is found; no strictly upstream named theorem narrower than the carrier was identified, and downstream residual-value interfaces remain disallowed. No Lean file was edited; YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "latest_validation_artifact": "CODEX-COWORK-AUTOCONTINUE-BLOCKED-PROMPT-INJECTION-FIX produced dashboard/cowork_autocontinue_blocked_prompt_injection_fix.md. The watcher now keeps calibrated Cowork sessions enabled while dispatch is suspended and sends only COWORK-WORKSPACE-MOUNT-BLOCKED with cooldown; real Cowork registry-writing tasks still require the workspace mount. YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
   "f3_base_zone_residual_value_code_separation_interface_v2_234": {
     "status": "DONE_INTERFACE_AND_BRIDGE_LANDED",
     "artifact": "dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md",
@@ -200,6 +200,21 @@
     "validation": "python -m py_compile scripts/agent_next_instruction.py dashboard/codex_autocontinue_snapshot.py C:/Users/lluis/Downloads/codex_autocontinue.py passed; Cowork --peek returns COWORK-WORKSPACE-MOUNT-BLOCKED; Codex --peek still selects CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001; YAML/JSON/JSONL validation passed.",
     "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
     "updated_at": "2026-04-28T08:05:00Z"
+  },
+  "cowork_autocontinue_blocked_prompt_injection_fix": {
+    "status": "DONE_AUTOMATION_FIX_BLOCKED_PROMPT_SENDABLE",
+    "artifact": "dashboard/cowork_autocontinue_blocked_prompt_injection_fix.md",
+    "task_id": "CODEX-COWORK-AUTOCONTINUE-BLOCKED-PROMPT-INJECTION-FIX",
+    "patched_files": [
+      "dashboard/codex_autocontinue_snapshot.py",
+      "C:/Users/lluis/Downloads/codex_autocontinue.py"
+    ],
+    "root_cause": "The canonical dispatcher emitted COWORK-WORKSPACE-MOUNT-BLOCKED, but codex_autocontinue.py disabled Cowork whenever cowork_dispatch_suspended was true, so the safe blocked prompt was never injected.",
+    "new_behavior": "A calibrated Cowork window remains watched while dispatch is suspended; the watcher sends only COWORK-WORKSPACE-MOUNT-BLOCKED with a five-minute repeat guard and skips registry delivery-state updates for that synthetic id.",
+    "remaining_blocker": "Real Cowork registry-writing tasks still require mounting THE-ERIKSSON-PROGRAMME at /sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/ and clearing cowork_dispatch_suspended.",
+    "validation": "python -m py_compile C:/Users/lluis/Downloads/codex_autocontinue.py dashboard/codex_autocontinue_snapshot.py passed; python C:/Users/lluis/Downloads/codex_autocontinue.py --preflight-only passed and reported Cowork suspended prompt remains sendable=True.",
+    "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
+    "updated_at": "2026-04-28T10:20:00Z"
   },
   "f3_base_zone_residual_value_code_separation_scope": {
     "status": "DONE_SCOPE_DELIVERED_NO_LEAN_NO_STATUS_MOVE",

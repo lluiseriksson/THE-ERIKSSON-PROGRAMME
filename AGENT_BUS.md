@@ -9,6 +9,45 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T10:20:00Z - CODEX-COWORK-AUTOCONTINUE-BLOCKED-PROMPT-INJECTION-FIX DONE_AUTOMATION_FIX
+
+**Baton owner**: Codex
+**Task**: `CODEX-COWORK-AUTOCONTINUE-BLOCKED-PROMPT-INJECTION-FIX`
+**Status**: `DONE_AUTOMATION_FIX`
+
+Codex traced Cowork prompt starvation to the watcher, not the canonical
+dispatcher. `scripts/agent_next_instruction.py Cowork --peek` correctly emits
+`COWORK-WORKSPACE-MOUNT-BLOCKED`, but `codex_autocontinue.py` disabled Cowork
+as soon as `cowork_dispatch_suspended` was true, so the safe blocked prompt was
+never pasted into Cowork.
+
+Patched:
+
+- `C:/Users/lluis/Downloads/codex_autocontinue.py`
+- `dashboard/codex_autocontinue_snapshot.py`
+
+New behavior: when Cowork is calibrated but workspace dispatch remains
+suspended, the watcher keeps Cowork enabled and sends only the synthetic
+`COWORK-WORKSPACE-MOUNT-BLOCKED` prompt with a five-minute repeat guard. It
+does not record delivery state for that synthetic id, and it still refuses real
+registry-writing Cowork tasks until the repository is mounted in the Cowork
+session.
+
+Validation:
+
+- `python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py dashboard\codex_autocontinue_snapshot.py`
+- `python C:\Users\lluis\Downloads\codex_autocontinue.py --preflight-only`
+
+Preflight reports `Cowork suspended prompt remains sendable=True`. The remaining
+external blocker is still the Cowork mount:
+
+    /sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, or
+percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T10:15:00Z - CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001 DONE_SCOPE_MINIMAL_FRONTIER_CONFIRMED
 
 **Baton owner**: Codex

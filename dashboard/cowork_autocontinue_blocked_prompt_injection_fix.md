@@ -1,0 +1,77 @@
+# Cowork Autocontinue Blocked Prompt Injection Fix
+
+Date: 2026-04-28
+
+## Scope
+
+Operational fix for the 24/7 watcher path that should keep Codex and Cowork
+receiving prompts. This is not a mathematical F3 task and does not move
+F3-COUNT, any README metric, any planner metric, any ledger status, or any
+percentage.
+
+## Root Cause
+
+`dashboard/agent_state.json` correctly marks Cowork dispatch as suspended while
+the Cowork session lacks the repository mount:
+
+```text
+/sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/
+```
+
+The canonical dispatcher still emits the safe synthetic prompt:
+
+```text
+COWORK-WORKSPACE-MOUNT-BLOCKED
+```
+
+However, `codex_autocontinue.py` treated `cowork_dispatch_suspended` as a
+reason to disable Cowork in the visual watcher before any prompt could be
+pasted. That converted an honest mount blocker into total prompt starvation on
+the Cowork side.
+
+## Fix
+
+Patched both the active watcher and the versioned snapshot:
+
+- `C:/Users/lluis/Downloads/codex_autocontinue.py`
+- `dashboard/codex_autocontinue_snapshot.py`
+
+Behavior after the patch:
+
+- Codex remains the primary implementing agent.
+- Cowork is still watched when calibrated, even while dispatch is suspended.
+- While suspended, Cowork receives only the safe
+  `COWORK-WORKSPACE-MOUNT-BLOCKED` prompt.
+- The blocked prompt has a five-minute repeat guard to avoid flooding the chat.
+- The watcher does not try to record delivery state for the synthetic blocked
+  task id, because it is not a real registry task.
+- Normal registry-writing Cowork tasks remain blocked until the folder is
+  actually mounted and `cowork_dispatch_suspended` is cleared.
+
+## Validation
+
+Commands run:
+
+```powershell
+python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py dashboard\codex_autocontinue_snapshot.py
+python C:\Users\lluis\Downloads\codex_autocontinue.py --preflight-only
+```
+
+Preflight confirmed:
+
+- YAML/JSON/JSONL parse.
+- No duplicate task ids.
+- `Cowork --peek` returns `COWORK-WORKSPACE-MOUNT-BLOCKED`.
+- Guardrail diagnostic reports `Cowork suspended prompt remains sendable=True`.
+
+## Remaining Blocker
+
+This patch restores Cowork prompt injection, but it cannot make Cowork write the
+repository while the Cowork session lacks the mounted folder. To resume real
+Cowork audit/write tasks, mount the repository at:
+
+```text
+/sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/
+```
+
+Then clear `cowork_dispatch_suspended` in `dashboard/agent_state.json`.

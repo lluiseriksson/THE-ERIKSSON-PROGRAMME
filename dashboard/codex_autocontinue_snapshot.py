@@ -121,6 +121,8 @@ UNCONFIRMED_FAILURE_PAUSE_SECONDS = 15.0
 # polling el mismo estado. Estas tareas solo se envían si ha cambiado una
 # superficie matemática/ledger desde el último envío de Cowork.
 COWORK_NO_TRIGGER_PAUSE_SECONDS = 20.0
+COWORK_BLOCKED_PROMPT_PAUSE_SECONDS = 5 * 60.0
+COWORK_WORKSPACE_MOUNT_BLOCKED_TASK_ID = "COWORK-WORKSPACE-MOUNT-BLOCKED"
 COWORK_TRIGGER_FILES = [
     REPO_ROOT / "AXIOM_FRONTIER.md",
     REPO_ROOT / "UNCONDITIONALITY_LEDGER.md",
@@ -384,6 +386,8 @@ def record_delivery_state(agent_role, task_id, state_name, method="", distance=N
     """Tell the canonical dispatcher whether the visual send was confirmed."""
     if not task_id or task_id == "<unknown>":
         return
+    if cowork_blocked_task(task_id):
+        return
     python_exe, env = dispatcher_python_env()
     command = [
         python_exe,
@@ -525,6 +529,8 @@ def extract_task_id(message):
 def repeat_pause_seconds(task_id):
     if task_id == "META-GENERATE-TASKS-001":
         return META_TASK_PAUSE_SECONDS
+    if task_id == COWORK_WORKSPACE_MOUNT_BLOCKED_TASK_ID:
+        return COWORK_BLOCKED_PROMPT_PAUSE_SECONDS
     return REPEAT_TASK_PAUSE_SECONDS
 
 
@@ -588,6 +594,10 @@ def cowork_non_polling_fallback(peek=True):
     )
 
 
+def cowork_blocked_task(task_id):
+    return task_id == COWORK_WORKSPACE_MOUNT_BLOCKED_TASK_ID
+
+
 def stale_busy_reaction_confirmed(ready, baseline_d, current_d):
     """Return whether a stale-busy send attempt really changed app state.
 
@@ -628,7 +638,9 @@ def print_guardrail_diagnostics():
         f"[{status}] Guardrails 24/7: META no es Cowork polling="
         f"{not meta_polling}; stale-busy small-oscillation blocks="
         f"{not small_oscillation_confirms}; large-jump confirms={large_jump_confirms}; "
-        f"Cowork fallback no-polling={cowork_fallback_task}."
+        f"Cowork fallback no-polling={cowork_fallback_task}; "
+        f"Cowork suspended prompt remains sendable="
+        f"{cowork_blocked_task(cowork_fallback_task)}."
     )
 
 
@@ -877,15 +889,19 @@ def run(args):
     else:
         print(f"[-] {codex.name}: sin calibrar (--calibrate-codex)")
 
-    if cowork_dispatch_suspended():
-        print(f"[-] Cowork: suspendido por estado del agente: {cowork_dispatch_blocker()}")
-    elif not args.codex_only and cowork.load():
+    if args.codex_only:
+        print("[-] Cowork: desactivado por --codex-only")
+    elif cowork.load():
         cowork.threshold = args.cowork_busy_threshold
         apps.append(cowork)
-        print(f"[+] {cowork.name} (modo={cowork.mode}, umbral={cowork.threshold}) "
-              f"en ({cowork.ref_x}, {cowork.ref_y})")
-    elif args.codex_only:
-        print("[-] Cowork: desactivado por --codex-only")
+        if cowork_dispatch_suspended():
+            print(f"[+] {cowork.name} vigilado en modo bloqueo: {cowork_dispatch_blocker()}")
+        else:
+            print(f"[+] {cowork.name} (modo={cowork.mode}, umbral={cowork.threshold}) "
+                  f"en ({cowork.ref_x}, {cowork.ref_y})")
+    elif cowork_dispatch_suspended():
+        print(f"[-] Cowork: bloqueo activo pero sin calibrar (--calibrate-cowork): "
+              f"{cowork_dispatch_blocker()}")
     else:
         print(f"[-] {cowork.name}: sin calibrar (--calibrate-cowork)")
 
@@ -909,10 +925,6 @@ def run(args):
             ready_apps = []
             for app in apps:
                 if not app.enabled:
-                    continue
-                if app.name == "Cowork" and cowork_dispatch_suspended():
-                    app.enabled = False
-                    print(f"[-] Cowork: suspendido durante ejecución: {cowork_dispatch_blocker()}")
                     continue
                 if app.is_paused():
                     continue
@@ -1065,9 +1077,12 @@ def run(args):
                           "el watcher para forzar reenvío manual.")
                     continue
                 if not is_retry:
-                    skip_polling = app.name == "Cowork" and preview is not None and task_id == extract_task_id(
-                        cowork_non_polling_fallback(peek=True)
-                    )
+                    if app.name == "Cowork" and cowork_blocked_task(task_id):
+                        skip_polling = False
+                    else:
+                        skip_polling = app.name == "Cowork" and preview is not None and task_id == extract_task_id(
+                            cowork_non_polling_fallback(peek=True)
+                        )
                     message = build_dispatch_message(
                         app.name,
                         peek=False,
