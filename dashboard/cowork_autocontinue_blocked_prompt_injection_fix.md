@@ -163,3 +163,26 @@ The user-confirmed undelivered Codex dispatches for
 were marked `ABANDONED_UNCONFIRMED`; the next Codex peek is again a READY F3
 task. Cowork still receives only `COWORK-WORKSPACE-MOUNT-BLOCKED` until its
 workspace mount is actually attached.
+
+## Follow-up: Safe Rollback for Random Window Clicks
+
+The multipoint Codex paste/submit retry was unsafe in the user's desktop layout:
+when the stale ready-button detector read `d=56.6`, the watcher forced Codex to
+`LISTO` and clicked several negative-screen coordinates. Those clicks did not
+deliver the prompt and could focus/open unrelated windows.
+
+Safe rollback:
+
+- A copy of the active script before rollback is preserved in
+  `scripts/autocontinue_backups/`.
+- `CODEX_STALE_BUSY_RESCUE_ENABLED = False`; Codex is no longer forced ready
+  from a stale detector reading.
+- Codex uses a single prompt-box focus/paste point, not multipoint retries.
+- Codex submit is keyboard-only: `Enter`, then `Ctrl+Enter`.
+- Codex no longer clicks or double-clicks the calibrated send button.
+- Failed unconfirmed sends abandon after one attempt and pause for 10 minutes
+  instead of retrying in a tight loop.
+
+With the current calibration, `d=56.6` means Codex is treated as not ready; the
+watcher should stay quiet on Codex until the send-button detector is recalibrated
+or the UI actually matches the stored reference.

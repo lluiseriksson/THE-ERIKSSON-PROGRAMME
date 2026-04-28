@@ -75,8 +75,7 @@ DEFAULT_COWORK_SIDECAR_INTERVAL = 30.0
 MAX_SENDS_PER_APP = None
 
 # Tras enviar, esperamos hasta REARM_TIMEOUT segundos para confirmar que la
-# app pasa por "ocupado". Si no la vemos ocuparse, abandonamos ese intento sin
-# repetir clics indefinidamente.
+# app pasa por "ocupado". Si no la vemos ocuparse, rearmamos de todas formas.
 REARM_TIMEOUT = 12.0
 REARM_POLL = 0.4
 SEND_METHOD_CONFIRM_SECONDS = 4.0
@@ -91,10 +90,15 @@ SUBMIT_OBSERVABILITY = True
 # the dispatcher has concrete work. This rescue only applies to Codex startup or
 # stale visual states; after a confirmed delivery it waits a long grace period so
 # real long-running work is not interrupted.
-CODEX_STALE_BUSY_RESCUE_ENABLED = False
 CODEX_STALE_BUSY_RESCUE_SECONDS = 18.0
 CODEX_CONFIRMED_BUSY_GRACE_SECONDS = 10 * 60.0
-CODEX_FOCUS_RETRY_OFFSETS = ((0, 0),)
+CODEX_FOCUS_RETRY_OFFSETS = (
+    (0, 0),
+    (180, 0),
+    (-180, 0),
+    (0, -36),
+    (180, -36),
+)
 
 # Cuando salta el FailSafe (ratón en una esquina), pausamos en vez de morir.
 FAILSAFE_RECOVERY_SECONDS = 5.0
@@ -105,20 +109,20 @@ KEYBOARD_INTERRUPT_RECOVERY_SECONDS = 15.0
 # es que el clic no está llegando. En vez de spammear, pausamos esa app un
 # rato para no hacer 1000 envíos al vacío. None = desactivado.
 GHOST_SEND_LIMIT = 4          # nº de envíos seguidos sin ver "ocupado"
-GHOST_PAUSE_SECONDS = 10 * 60.0    # cuánto pausar la app si se detecta
+GHOST_PAUSE_SECONDS = 15.0    # cuánto pausar la app si se detecta
 
 # Even when the screen detector cannot confirm that an app became busy, do not
 # resend the exact same task id in a tight loop. Keep these guards short enough
 # that a 24/7 run continues to make progress without needing a watcher restart.
-REPEAT_TASK_PAUSE_SECONDS = 10 * 60.0
+REPEAT_TASK_PAUSE_SECONDS = 60.0
 META_TASK_PAUSE_SECONDS = 180.0
 FAILED_DELIVERY_RETRY_SECONDS = 15.0
 
 # No conviertas un detector visual inestable en una manguera de prompts. Si un
 # envío no queda confirmado, permitimos dos reintentos pausados; después la app
 # descansa poco tiempo y vuelve a pedir una tarea fresca al dispatcher.
-UNCONFIRMED_RETRY_LIMIT = 0
-UNCONFIRMED_FAILURE_PAUSE_SECONDS = 10 * 60.0
+UNCONFIRMED_RETRY_LIMIT = 2
+UNCONFIRMED_FAILURE_PAUSE_SECONDS = 15.0
 STALE_UNCONFIRMED_AUTO_ABANDON_SECONDS = 2 * 60.0
 
 # Cowork es valioso cuando audita un cambio real; es caro cuando re-audita por
@@ -588,8 +592,6 @@ def is_meta_task_id(task_id):
 
 
 def codex_stale_busy_rescue_allowed(app, args):
-    if not CODEX_STALE_BUSY_RESCUE_ENABLED:
-        return False, None
     if app.name != "Codex" or app.mode != "ready":
         return False, None
     if args.codex_stale_busy_rescue <= 0:
@@ -801,10 +803,37 @@ def submit_current_prompt(app, baseline_ready=None, baseline_d=None):
             pyautogui.hotkey("ctrl", "enter")
             time.sleep(CODEX_KEYBOARD_SUBMIT_SETTLE_SECONDS)
 
-        strategies = (
-            ("codex-enter", codex_keyboard_enter),
-            ("codex-ctrl-enter", codex_keyboard_ctrl_enter),
-        )
+        def codex_button_click(method_name):
+            submit_obs(app, method_name, "fallback-button-submit",
+                       button=f"({app.ref_x},{app.ref_y})", clicks=1)
+            safe_move_to(app.ref_x, app.ref_y, duration=0.08)
+            time.sleep(0.05)
+            pyautogui.click()
+
+        def codex_button_double_click(method_name):
+            submit_obs(app, method_name, "fallback-button-submit",
+                       button=f"({app.ref_x},{app.ref_y})", clicks=2)
+            safe_move_to(app.ref_x, app.ref_y, duration=0.08)
+            time.sleep(0.05)
+            pyautogui.doubleClick(interval=0.12)
+
+        if baseline_ready is False:
+            # In stale-busy rescue the ready detector is already stale. Try the
+            # keyboard paths first, then the calibrated button as a last resort;
+            # confirmation below still requires a real visual change.
+            strategies = (
+                ("codex-enter", codex_keyboard_enter),
+                ("codex-ctrl-enter", codex_keyboard_ctrl_enter),
+                ("calibrated-button", codex_button_click),
+                ("double-calibrated-button", codex_button_double_click),
+            )
+        else:
+            strategies = (
+                ("codex-enter", codex_keyboard_enter),
+                ("codex-ctrl-enter", codex_keyboard_ctrl_enter),
+                ("calibrated-button", codex_button_click),
+                ("double-calibrated-button", codex_button_double_click),
+            )
     else:
         strategies = (
             ("enter", lambda method_name: (
@@ -859,12 +888,21 @@ def send_reply(app, message):
     prev = pyautogui.position()
     baseline_ready, baseline_d = app.is_ready()
     if app.name == "Codex":
-        focus_and_paste_prompt(app, message)
-        ok, method, d = submit_current_prompt(
-            app,
-            baseline_ready=baseline_ready,
-            baseline_d=baseline_d,
-        )
+        ok = False
+        method = "all-focus-points-failed"
+        d = baseline_d
+        for index, (x, y) in enumerate(codex_focus_points(app), 1):
+            submit_obs(app, "focus-retry", "paste-point",
+                       index=index, point=f"({x},{y})")
+            focus_and_paste_prompt(app, message, x=x, y=y)
+            ok, method, d = submit_current_prompt(
+                app,
+                baseline_ready=baseline_ready,
+                baseline_d=baseline_d,
+            )
+            method = f"focus{index}:{method}"
+            if ok:
+                break
     else:
         focus_and_paste_prompt(app, message)
         ok, method, d = submit_current_prompt(
@@ -1223,7 +1261,6 @@ def run(args):
                 if not rearmed_with_busy:
                     app.armed = True
                     app.ghost_streak += 1
-                    app.session_sent_tasks[task_id] = time.time()
                     print(f"  [{app.name}] timeout sin ver ocupado, "
                           f"rearmado por seguridad. "
                           f"(racha fantasma {app.ghost_streak}/{GHOST_SEND_LIMIT})")

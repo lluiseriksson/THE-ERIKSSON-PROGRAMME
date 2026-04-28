@@ -9,6 +9,43 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T11:45:00Z - CODEX-AUTOCONTINUE-SAFE-ROLLBACK-NO-RANDOM-CLICKS DONE_AUTOMATION_FIX
+
+**Baton owner**: Codex
+**Task**: `CODEX-AUTOCONTINUE-SAFE-ROLLBACK-NO-RANDOM-CLICKS`
+**Status**: `DONE_AUTOMATION_FIX`
+
+User-run logs showed the previous multipoint Codex retry policy was unsafe: the
+watcher forced Codex to `LISTO` from a stale detector reading (`d=56.6`) and
+then clicked several negative-screen coordinates around the prompt box and send
+button, causing random window focus/opening while still failing to deliver.
+
+Safe rollback applied:
+
+- The active watcher was backed up under `scripts/autocontinue_backups/`.
+- Codex stale-busy rescue is disabled by default:
+  `CODEX_STALE_BUSY_RESCUE_ENABLED = False`.
+- Codex no longer uses multipoint paste retries.
+- Codex no longer clicks the calibrated send button or double-clicks it; submit
+  attempts are keyboard-only (`Enter`, then `Ctrl+Enter`) after a single prompt
+  box focus/paste.
+- Unconfirmed Codex attempts abandon after one try and pause for 10 minutes;
+  repeat-task and ghost-send pauses are also 10 minutes.
+
+Validation:
+
+- `python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py dashboard\codex_autocontinue_snapshot.py scripts\agent_next_instruction.py`
+- `python C:\Users\lluis\Downloads\codex_autocontinue.py --preflight-only`
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, or
+percentage moved.
+
+Operational note: with current calibration (`Codex d=56.6`), Codex will now stay
+quiet instead of forcing sends. Recalibrate Codex when the real send button is
+visible before expecting unattended Codex injection again.
+
+---
+
 ## Latest Handoff - 2026-04-28T11:10:00Z - CODEX-AUTOCONTINUE-BASELINE-REARM-SCOPE-FIX DONE_AUTOMATION_FIX
 
 **Baton owner**: Codex

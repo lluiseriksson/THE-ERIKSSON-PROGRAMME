@@ -30366,15 +30366,35 @@ tasks:
   - Delivery state for Codex recorded as ABANDONED_UNCONFIRMED at 2026-04-28T10:33:20Z
   - Dispatched to Codex at 2026-04-28T10:36:51Z; awaiting visual busy confirmation
   - Delivery state for Codex recorded as ABANDONED_UNCONFIRMED at 2026-04-28T10:51:23Z
-  updated_at: '2026-04-28T10:36:51Z'
-  dispatched_at: '2026-04-28T10:36:51Z'
+  - Dispatched to Codex at 2026-04-28T10:56:43Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T10:59:14Z
+  - Delivery state for Codex recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T11:01:59Z
+  - Delivery state for Codex recorded as ABANDONED_UNCONFIRMED at 2026-04-28T11:04:39Z
+  - Dispatched to Codex at 2026-04-28T11:05:44Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T11:08:15Z
+  - Delivery state for Codex recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T11:11:03Z
+  - Delivery state for Codex recorded as ABANDONED_UNCONFIRMED at 2026-04-28T11:13:41Z
+  - Dispatched to Codex at 2026-04-28T11:14:40Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T11:17:10Z
+  - Delivery state for Codex recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T11:19:49Z
+  - Delivery state for Codex recorded as ABANDONED_UNCONFIRMED at 2026-04-28T11:22:42Z
+  - Dispatched to Codex at 2026-04-28T11:23:40Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T11:26:10Z
+  - Delivery state for Codex recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T11:28:49Z
+  - Delivery state for Codex recorded as ABANDONED_UNCONFIRMED at 2026-04-28T11:31:35Z
+  - Dispatched to Codex at 2026-04-28T11:32:33Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T11:35:03Z
+  - Delivery state for Codex recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T11:37:42Z
+  - Delivery state for Codex recorded as ABANDONED_UNCONFIRMED at 2026-04-28T11:41:08Z
+  updated_at: '2026-04-28T11:32:33Z'
+  dispatched_at: '2026-04-28T11:32:33Z'
   dispatched_to: Codex
   delivery_state: ABANDONED_UNCONFIRMED
-  delivery_attempted_at: '2026-04-28T10:36:51Z'
-  dispatch_count: 3
-  delivery_updated_at: '2026-04-28T10:51:23Z'
+  delivery_attempted_at: '2026-04-28T11:32:33Z'
+  dispatch_count: 8
+  delivery_updated_at: '2026-04-28T11:41:08Z'
   delivery_agent: Codex
-  last_delivery_method: user-confirmed-not-delivered
+  last_delivery_method: preflight-stale-unconfirmed
   last_delivery_distance: '56.6'
-  requeued_after_abandoned_unconfirmed_at: '2026-04-28T10:51:23Z'
-  delivery_unconfirmed_at: '2026-04-28T10:51:23Z'
+  requeued_after_abandoned_unconfirmed_at: '2026-04-28T11:41:08Z'
+  delivery_unconfirmed_at: '2026-04-28T11:41:08Z'

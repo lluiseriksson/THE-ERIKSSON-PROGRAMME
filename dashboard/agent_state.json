@@ -5,7 +5,7 @@
   "current_baton_owner": "Codex",
   "next_task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001",
   "last_completed_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001",
-  "last_dispatched_task": "CODEX-CI-LONG-LAKE-BUILD-WORKFLOW-PUBLICATION-SCOPE-001",
+  "last_dispatched_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001",
   "last_dispatched_agent": "Codex",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists",
@@ -42,9 +42,9 @@
     "REC-COWORK-DISPATCH-RATE-LIMIT-AUDIT-SLOT-001",
     "REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002"
   ],
-  "last_dispatch_at": "2026-04-28T10:38:25Z",
+  "last_dispatch_at": "2026-04-28T11:32:34Z",
   "last_completed_at": "2026-04-28T10:15:00Z",
-  "latest_validation_artifact": "CODEX-AUTOCONTINUE-BASELINE-REARM-SCOPE-FIX fixed the NameError crash by returning baseline_ready/baseline_d from send_reply into the rearm loop in both the active watcher and snapshot. Unconfirmed delivery recording now clears stale delivery_confirmed_at before ABANDONED_UNCONFIRMED requeue decisions. The user-confirmed undelivered Codex CI and F3 inventory dispatches were requeued; Codex --peek selects CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001. F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "latest_validation_artifact": "CODEX-AUTOCONTINUE-SAFE-ROLLBACK-NO-RANDOM-CLICKS backed up the active watcher under scripts/autocontinue_backups, disabled Codex stale-busy forced sends, removed multipoint Codex retries, removed calibrated-button/double-click Codex submit fallbacks, and lengthened unconfirmed/ghost pauses to 10 minutes. With current Codex d=56.6 calibration, Codex now stays quiet instead of opening random windows. F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
   "f3_base_zone_residual_value_code_separation_interface_v2_234": {
     "status": "DONE_INTERFACE_AND_BRIDGE_LANDED",
     "artifact": "dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md",
@@ -2731,8 +2731,8 @@
   },
   "last_dispatch_by_agent": {
     "Codex": {
-      "task_id": "CODEX-CI-LONG-LAKE-BUILD-WORKFLOW-PUBLICATION-SCOPE-001",
-      "at": "2026-04-28T10:38:25Z"
+      "task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001",
+      "at": "2026-04-28T11:32:34Z"
     },
     "Cowork": {
       "task_id": "META-GENERATE-TASKS-001",
