@@ -29708,3 +29708,60 @@ tasks:
   notes:
   - Seeded by the v2.235 no-closure attempt as the precise repair task for the missing
     selector-independent residual-value code separation construction.
+- id: CODEX-COWORK-WORKSPACE-MOUNT-DISPATCH-SUSPENSION-001
+  title: 'Codex: suspend Cowork dispatch while workspace mount is unavailable'
+  owner: Codex
+  status: COMPLETED
+  priority: 2
+  created_at: '2026-04-28T08:05:00Z'
+  updated_at: '2026-04-28T08:05:00Z'
+  completed_at: '2026-04-28T08:05:00Z'
+  source_task: USER-COWORK-MOUNT-DISPATCH-REPAIR-2026-04-28
+  required_files:
+  - scripts/agent_next_instruction.py
+  - dashboard/codex_autocontinue_snapshot.py
+  - C:/Users/lluis/Downloads/codex_autocontinue.py
+  - dashboard/agent_state.json
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  objective: Stop repeated Cowork META/task dispatches while the Cowork session lacks
+    a readable and writable THE-ERIKSSON-PROGRAMME workspace mount. The dispatcher
+    must emit an explicit blocked mount pseudo-dispatch instead of assigning
+    registry-writing work to Cowork.
+  validation:
+  - python -m py_compile scripts/agent_next_instruction.py dashboard/codex_autocontinue_snapshot.py
+    C:/Users/lluis/Downloads/codex_autocontinue.py
+  - python scripts/agent_next_instruction.py Cowork --peek returns COWORK-WORKSPACE-MOUNT-BLOCKED
+  - python scripts/agent_next_instruction.py Codex --peek still selects CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001
+  - YAML/JSON/JSONL validation passes
+  stop_if:
+  - The patch sends registry-writing work to Cowork while /sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/
+    is unavailable
+  - The patch changes F3-COUNT status, percentages, README metrics, planner metrics,
+    ledger statuses, proof closure claims, or Clay-level claims
+  required_updates:
+  - dashboard/cowork_workspace_mount_dispatch_suspension.md
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  completion_status: DONE_COWORK_DISPATCH_SUSPENDED_UNTIL_MOUNT_AVAILABLE
+  artifact: dashboard/cowork_workspace_mount_dispatch_suspension.md
+  validation_result:
+  - Dispatcher returns COWORK-WORKSPACE-MOUNT-BLOCKED for Cowork while cowork_dispatch_suspended
+    is true
+  - Autocontinue watcher and repository snapshot skip Cowork while the same state flag
+    is true
+  - Codex next task remains CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001
+  f3_count_impact: F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README
+    metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.
+  next_task: CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001
+  notes:
+  - Created in direct response to Cowork halting META-GENERATE-TASKS-001 because the
+    repository was not mounted in /sessions/magical-busy-noether/mnt/.
+  - The external watcher file C:/Users/lluis/Downloads/codex_autocontinue.py was patched
+    locally; dashboard/codex_autocontinue_snapshot.py mirrors the committed script change.
+  - Resume Cowork only after mounting the repo read/write at /sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/
+    and clearing cowork_dispatch_suspended in dashboard/agent_state.json.

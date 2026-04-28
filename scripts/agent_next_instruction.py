@@ -80,6 +80,7 @@ COWORK_POLLING_TASK_PREFIXES = (
     "COWORK-AUDIT-MATHLIB-PR-DRAFT-STATUS",
 )
 META_TASK_IDS = {"META-GENERATE-TASKS-001", "META-DISPATCHER-FAILSAFE-001"}
+COWORK_WORKSPACE_MOUNT_BLOCKED_TASK_ID = "COWORK-WORKSPACE-MOUNT-BLOCKED"
 
 
 class YAMLRegistryError(RuntimeError):
@@ -1384,6 +1385,55 @@ def build_meta_message(agent: str) -> str:
     )
 
 
+def cowork_dispatch_suspended(state: dict[str, Any]) -> bool:
+    return bool(state.get("cowork_dispatch_suspended"))
+
+
+def build_cowork_workspace_blocked_message(state: dict[str, Any]) -> str:
+    blocker = state.get(
+        "cowork_dispatch_blocker",
+        "Cowork cannot read or write the shared repository workspace.",
+    )
+    mount = state.get(
+        "cowork_required_mount",
+        "/sessions/<cowork-session>/mnt/THE-ERIKSSON-PROGRAMME/",
+    )
+    return "\n".join(
+        [
+            "## Structured Agent Dispatch",
+            "",
+            "Agent role: Cowork",
+            f"Task id: {COWORK_WORKSPACE_MOUNT_BLOCKED_TASK_ID}",
+            "Task title: Cowork workspace mount is blocked",
+            "Task priority: 0",
+            "Task status at dispatch: BLOCKED",
+            "",
+            "Files to read:",
+            "- none",
+            "",
+            "Objective:",
+            sanitize_output_text(str(blocker)),
+            "",
+            "Validation requirements:",
+            f"- Mount the repository so `{mount}` is readable and writable from Cowork",
+            "- Then resume Cowork dispatch by clearing `cowork_dispatch_suspended` in dashboard/agent_state.json",
+            "",
+            "Stop conditions:",
+            "- The repository is still not mounted in Cowork",
+            "",
+            "Required updates:",
+            "- none from Cowork while the workspace is unavailable",
+            "",
+            "Next exact instruction:",
+            (
+                "> Do not dispatch a registry-writing task to Cowork until the shared "
+                "THE-ERIKSSON-PROGRAMME folder is mounted in that session. Use Codex "
+                "for registry/meta-task maintenance meanwhile."
+            ),
+        ]
+    )
+
+
 def record_yaml_registry_error(agent: str, error: YAMLRegistryError) -> None:
     now = utc_now()
     payload = {
@@ -1586,6 +1636,18 @@ def _build_message_unlocked(
         ensure_base_files()
     tasks_doc = load_yaml(TASKS_FILE)
     state = load_json(STATE_FILE)
+    if agent == "Cowork" and cowork_dispatch_suspended(state):
+        if mutate:
+            append_history(
+                {
+                    "time": utc_now(),
+                    "event": "cowork_dispatch_suspended",
+                    "agent": agent,
+                    "task_id": COWORK_WORKSPACE_MOUNT_BLOCKED_TASK_ID,
+                    "reason": state.get("cowork_dispatch_blocker"),
+                }
+            )
+        return build_cowork_workspace_blocked_message(state)
     candidate_tasks = tasks_doc.get("tasks", [])
     if agent == "Cowork" and skip_cowork_polling:
         candidate_tasks = [

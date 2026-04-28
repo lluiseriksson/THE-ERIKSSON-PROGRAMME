@@ -1,10 +1,10 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "f3_repair_task_ready",
+  "current_phase": "cowork_workspace_mount_blocked_codex_only",
   "current_baton_owner": "Codex",
   "next_task_id": "CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001",
-  "last_completed_task": "CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001",
+  "last_completed_task": "CODEX-COWORK-WORKSPACE-MOUNT-DISPATCH-SUSPENSION-001",
   "last_dispatched_task": "META-GENERATE-TASKS-001",
   "last_dispatched_agent": "Cowork",
   "open_blockers": [
@@ -21,7 +21,10 @@
   "unconditionality_status": "NOT_ESTABLISHED",
   "claim_policy": "Never claim Clay-level completion without complete formal evidence.",
   "always_has_next_task": true,
-  "next_cowork_task_id": "COWORK-NEGCOORDS-RUNTIME-CONFIRMATION-AUDIT-001",
+  "next_cowork_task_id": "COWORK-WORKSPACE-MOUNT-BLOCKED",
+  "cowork_dispatch_suspended": true,
+  "cowork_required_mount": "/sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/",
+  "cowork_dispatch_blocker": "Cowork session /sessions/magical-busy-noether/mnt/ does not have THE-ERIKSSON-PROGRAMME mounted; registry-writing, dashboard-writing, and META tasks must not be dispatched to Cowork until the folder is attached.",
   "resolved_recommendations": [
     "REC-AUDIT-AUTOCONTINUE-MIRROR-001",
     "REC-BOOTSTRAP-001",
@@ -40,8 +43,8 @@
     "REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002"
   ],
   "last_dispatch_at": "2026-04-28T04:58:00Z",
-  "last_completed_at": "2026-04-28T07:35:00Z",
-  "latest_validation_artifact": "CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001 did not prove PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296; exact blocker is a non-circular construction of PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData. lake build YangMills.ClayCore.LatticeAnimalCount passed; focused v2.234 axiom traces remain no larger than [propext, Classical.choice, Quot.sound]; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "last_completed_at": "2026-04-28T08:05:00Z",
+  "latest_validation_artifact": "CODEX-COWORK-WORKSPACE-MOUNT-DISPATCH-SUSPENSION-001 patched the canonical dispatcher plus autocontinue watcher/snapshot so Cowork receives a BLOCKED mount message, not META-GENERATE-TASKS-001, while its session lacks THE-ERIKSSON-PROGRAMME. python -m py_compile validation passed; YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
   "f3_base_zone_residual_value_code_separation_interface_v2_234": {
     "status": "DONE_INTERFACE_AND_BRIDGE_LANDED",
     "artifact": "dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md",
@@ -67,6 +70,21 @@
     "next_codex_task": "CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001",
     "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
     "updated_at": "2026-04-28T07:35:00Z"
+  },
+  "cowork_workspace_mount_dispatch_suspension": {
+    "status": "DONE_COWORK_DISPATCH_SUSPENDED_UNTIL_MOUNT_AVAILABLE",
+    "artifact": "dashboard/cowork_workspace_mount_dispatch_suspension.md",
+    "task_id": "CODEX-COWORK-WORKSPACE-MOUNT-DISPATCH-SUSPENSION-001",
+    "patched_files": [
+      "scripts/agent_next_instruction.py",
+      "dashboard/codex_autocontinue_snapshot.py",
+      "C:/Users/lluis/Downloads/codex_autocontinue.py"
+    ],
+    "blocked_cowork_task": "COWORK-WORKSPACE-MOUNT-BLOCKED",
+    "resume_condition": "Mount THE-ERIKSSON-PROGRAMME into Cowork at /sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/ and clear cowork_dispatch_suspended in dashboard/agent_state.json.",
+    "validation": "python -m py_compile scripts/agent_next_instruction.py dashboard/codex_autocontinue_snapshot.py C:/Users/lluis/Downloads/codex_autocontinue.py passed; Cowork --peek returns COWORK-WORKSPACE-MOUNT-BLOCKED; Codex --peek still selects CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001; YAML/JSON/JSONL validation passed.",
+    "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
+    "updated_at": "2026-04-28T08:05:00Z"
   },
   "f3_base_zone_residual_value_code_separation_scope": {
     "status": "DONE_SCOPE_DELIVERED_NO_LEAN_NO_STATUS_MOVE",

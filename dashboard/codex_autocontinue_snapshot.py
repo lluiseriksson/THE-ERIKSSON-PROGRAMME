@@ -46,6 +46,7 @@ if hasattr(sys.stderr, "reconfigure"):
 REPO_ROOT = Path(r"C:\Users\lluis\.gemini\antigravity\scratch\THE-ERIKSSON-PROGRAMME")
 CANONICAL_DISPATCHER = REPO_ROOT / "scripts" / "agent_next_instruction.py"
 CONTINUOUS_IMPROVEMENT = REPO_ROOT / "scripts" / "continuous_improvement.py"
+STATE_FILE = REPO_ROOT / "dashboard" / "agent_state.json"
 SCRIPT_DIR = Path(__file__).resolve().parent
 
 PATCH_HALF = 22
@@ -359,6 +360,24 @@ def build_dispatch_message(agent_role, peek=False, skip_cowork_polling=False):
         f"> {agent_role}, take task `META-DISPATCHER-FAILSAFE-001`. Read the files above, repair the dispatcher or malformed registry without deleting existing tasks, run the validation commands, update the bus/history/dashboard, and stop if conflicting registry edits require human review.",
         ])
     return result.stdout
+
+
+def load_agent_state():
+    try:
+        return json.loads(STATE_FILE.read_text(encoding="utf-8-sig"))
+    except Exception:
+        return {}
+
+
+def cowork_dispatch_suspended():
+    return bool(load_agent_state().get("cowork_dispatch_suspended"))
+
+
+def cowork_dispatch_blocker():
+    return load_agent_state().get(
+        "cowork_dispatch_blocker",
+        "Cowork workspace dispatch is suspended.",
+    )
 
 
 def record_delivery_state(agent_role, task_id, state_name, method="", distance=None):
@@ -858,7 +877,9 @@ def run(args):
     else:
         print(f"[-] {codex.name}: sin calibrar (--calibrate-codex)")
 
-    if not args.codex_only and cowork.load():
+    if cowork_dispatch_suspended():
+        print(f"[-] Cowork: suspendido por estado del agente: {cowork_dispatch_blocker()}")
+    elif not args.codex_only and cowork.load():
         cowork.threshold = args.cowork_busy_threshold
         apps.append(cowork)
         print(f"[+] {cowork.name} (modo={cowork.mode}, umbral={cowork.threshold}) "
@@ -888,6 +909,10 @@ def run(args):
             ready_apps = []
             for app in apps:
                 if not app.enabled:
+                    continue
+                if app.name == "Cowork" and cowork_dispatch_suspended():
+                    app.enabled = False
+                    print(f"[-] Cowork: suspendido durante ejecución: {cowork_dispatch_blocker()}")
                     continue
                 if app.is_paused():
                     continue

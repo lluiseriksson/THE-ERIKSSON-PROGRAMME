@@ -9,6 +9,57 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T08:05:00Z - CODEX-COWORK-WORKSPACE-MOUNT-DISPATCH-SUSPENSION-001 DONE_COWORK_DISPATCH_SUSPENDED_UNTIL_MOUNT_AVAILABLE
+
+**Baton owner**: Codex
+**Task**: `CODEX-COWORK-WORKSPACE-MOUNT-DISPATCH-SUSPENSION-001`
+**Status**: `DONE_COWORK_DISPATCH_SUSPENDED_UNTIL_MOUNT_AVAILABLE`
+
+Cowork's repeated `META-GENERATE-TASKS-001` halt was confirmed as a missing
+workspace mount, not a refusal.  Its session path:
+
+    /sessions/magical-busy-noether/mnt/
+
+does not expose the shared repository at:
+
+    /sessions/magical-busy-noether/mnt/THE-ERIKSSON-PROGRAMME/
+
+Codex patched the canonical dispatcher and both watcher copies so Cowork is
+not sent registry-writing or META maintenance work while the mount is absent.
+The active state flag is:
+
+    "cowork_dispatch_suspended": true
+
+While set, `scripts/agent_next_instruction.py Cowork --peek` returns:
+
+    COWORK-WORKSPACE-MOUNT-BLOCKED
+
+and the running watcher in:
+
+    C:\Users\lluis\Downloads\codex_autocontinue.py
+
+skips Cowork sidecar dispatch.  Codex remains active; the next Codex task is
+still:
+
+    CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001
+
+Dashboard artifact:
+
+    dashboard/cowork_workspace_mount_dispatch_suspension.md
+
+Resume Cowork by mounting the folder read/write at the path above and then
+clearing `cowork_dispatch_suspended` in `dashboard/agent_state.json`.
+
+Validation:
+
+- `python -m py_compile scripts/agent_next_instruction.py dashboard/codex_autocontinue_snapshot.py C:/Users/lluis/Downloads/codex_autocontinue.py` passed.
+- `python scripts/agent_next_instruction.py Cowork --peek` returns the blocked mount pseudo-dispatch.
+- `python scripts/agent_next_instruction.py Codex --peek` still selects the F3 structural residual-value code separation source task.
+- YAML/JSON/JSONL validation passed.
+- F3-COUNT remains `CONDITIONAL_BRIDGE`; no status or percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T07:35:00Z - CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001 DONE_NO_CLOSURE_SELECTOR_INDEPENDENT_RESIDUAL_VALUE_CODE_MISSING
 
 **Baton owner**: Codex
