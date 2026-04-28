@@ -13,10 +13,10 @@ C:\Users\lluis\.gemini\antigravity\scratch\THE-ERIKSSON-PROGRAMME
 Branch and remote:
 - Branch: p2d-audit
 - Remote: origin https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
-- Latest pushed commit at handoff: 6eb61fc f3: add residual value code separation interface
 - Before starting, run:
   git status --short --branch
   git pull --ff-only
+  git log --oneline --decorate -3
 
 Current mathematical state:
 - F3-COUNT remains CONDITIONAL_BRIDGE.
@@ -91,4 +91,3 @@ Useful orientation files:
 - registry/agent_tasks.yaml
 - AGENT_BUS.md
 ```
-

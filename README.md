@@ -9,14 +9,14 @@
 ![Named frontier](https://img.shields.io/badge/named_frontier-50%25-yellow)
 ![Lattice subgoal](https://img.shields.io/badge/lattice_small_beta-28%25-orange)
 ![Clay as stated](https://img.shields.io/badge/Clay_as_stated-5%25-red)
-![Front](https://img.shields.io/badge/front-ClusterCorrelatorBound-informational)
+![Front](https://img.shields.io/badge/front-F3_residual_value_code_separation-informational)
 
 ---
 
 ## TL;DR
 
 - **What works today, oracle-clean.** The L1 layer — Haar measure on `SU(N)` + Schur orthogonality on matrix entries — is closed, and **L2.6's main target has just landed**: the character inner product `⟨χ_fund, χ_fund⟩ = ∫_{SU(N)} |tr U|² dμ_Haar = 1` is a Lean theorem with `#print axioms` ⟹ `[propext, Classical.choice, Quot.sound]`. This is the statement every downstream cluster-expansion bound actually cites.
-- **What's next.** `ClusterCorrelatorBound`: the F3 summability/factoring bridge now reaches the exact Wilson-facing target; canonical `⌈siteLatticeDist⌉₊` geometry, distance buckets, and finite `connectingBound` normalization are closed. The live analytic inputs are the Mayer/Ursell identity for `wilsonConnectedCorr` and the Kotecký-Preiss `connectingBound` cluster-series estimate.
+- **What's next.** The immediate front is now inside `YangMills/ClayCore/LatticeAnimalCount.lean`: prove or precisely fail `PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296`. The latest Lean interface isolates a selector-independent residual-value code into `Fin 1296`; the missing content is the actual code plus selected-admissible equality-reflection for residual values carrying terminal-neighbor selector data from essential parents.
 - **What's not yet unconditional.** The L3 mass-gap conclusion still depends on declared physics hypotheses — Balaban RG, Dirichlet / Bakry–Émery, Lie-derivative regularity, Stroock–Zegarliński LSI. Every one of them is named in `AXIOM_FRONTIER.md`. The literal Clay problem also needs continuum/OS/Wightman work that is not yet formalized here.
 - **Clay scope companion.** For the honest external-reader split between Clay-as-stated (~5 %), the internal lattice small-β subgoal (~28 %), and named-frontier retirement (50 %), see `CLAY_HORIZON.md`.
 
@@ -31,9 +31,9 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 | **Target** | Clay Millennium Prize — existence of quantum Yang–Mills on ℝ⁴ with a positive mass gap |
 | **Language** | Lean 4 (`leanprover/lean4:v4.29.0-rc6`) + Mathlib (`master`) |
 | **Core discipline** | `YangMills/ClayCore/` prints only `[propext, Classical.choice, Quot.sound]` |
-| **Current front** | **`ClusterCorrelatorBound`** — analytic two-point decay for the SU(N_c) Gibbs measure, via F1 (character / Taylor expansion in scalar traces) + F2 (sidecar Haar integrals: L2.5 + 3a + 3b + 3c + main target) + F3 (Kotecky–Preiss cluster convergence) |
+| **Current front** | **F3-COUNT residual-value code separation** — `PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296` in `YangMills/ClayCore/LatticeAnimalCount.lean`. This is the current upstream blocker in the F3 bookkeeping/base-zone chain feeding the `ClusterCorrelatorBound` route. |
 | **Last closed** | **v2.234 F3 base-zone residual-value code separation interface + erasure bridge** — no bar movement, but the active F3 bookkeeping/base-zone lane now has the focused Lean interface `PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296` and bridge `physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296_of_baseZoneResidualValueCodeSeparation1296`. Build `lake build YangMills.ClayCore.LatticeAnimalCount` passed; focused `#print axioms` traces remain no larger than `[propext, Classical.choice, Quot.sound]`. This is interface progress only: proving the selector-independent residual-value code and selected-admissible equality-reflection remains the next blocker. |
-| **Last updated** | 2026-04-28 (post-v2.234 F3 residual-value code separation interface; branch `p2d-audit` pushed at commit `6eb61fc`) |
+| **Last updated** | 2026-04-28 (full README refresh after v2.234; branch `p2d-audit`) |
 | **Joint planner metrics** | See `JOINT_AGENT_PLANNER.md`, `CLAY_HORIZON.md`, and `registry/progress_metrics.yaml`. Current consensus: **Clay-as-stated ≈ 5 %** (continuum QFT on ℝ⁴ with OS/Wightman/Wightman-compatible mass gap for SU(N), N ≥ 2); **internal lattice small-β subgoal ≈ 28 %** (honesty-discounted ≈ 23–25 % after vacuous/low-content retirements); **named-frontier retirement = 50 %** (internal monotone accounting over `AXIOM_FRONTIER.md` + `SORRY_FRONTIER.md`). These numbers are distinct and must not be interchanged. |
 
 ---
@@ -44,7 +44,7 @@ This repository is **not** a finished proof of the Clay Yang–Mills mass gap. I
 2. [Progress toward 100 % unconditional](#2-progress-toward-100--unconditional)
 3. [Recently closed milestones](#3-recently-closed-milestones)
 4. [Oracle discipline](#4-oracle-discipline--scope-of-the-no-sorry-claim)
-5. [Current front — `ClusterCorrelatorBound` (F1 / F2 / F3)](#5-current-front--clustercorrelatorbound-f1--f2--f3)
+5. [Current Front — F3 Residual-Value Code Separation](#5-current-front--f3-residual-value-code-separation)
 6. [Milestone ladder](#6-milestone-ladder)
 7. [Repository layout](#7-repository-layout)
 8. [Building & verifying](#8-building--verifying)
@@ -68,7 +68,7 @@ The repository formalizes, in Lean 4 + Mathlib, the chain of analytic and repres
 The formal content is split into three layers:
 
 - **L1 — Haar + Schur on `SU(N)`.** The base layer. Haar probability measure, left/right invariance, Schur orthogonality for matrix coefficients, and the character inner product for the fundamental representation. This is now closed for the fundamental representation as of L2.6's main target.
-- **L2 — Character expansion and cluster decay.** Wilson-loop expansions, polymer / Mayer expansions, exponential cluster bounds. Builds on L1 but is structurally separable. The current front (L2.6 step 3 / Peter–Weyl) is the last remaining internal L1→L2 bridge.
+- **L2 — Character expansion and cluster decay.** Wilson-loop expansions, polymer / Mayer expansions, exponential cluster bounds. Builds on L1 but is structurally separable. L2.6 is closed for the downstream scalar-trace identities currently consumed by the cluster front; arbitrary-irrep Peter–Weyl remains aspirational / Mathlib-facing rather than the active Clay blocker.
 - **L3 — Mass-gap conclusion.** The final logical step: from L1 + L2 (plus conditional physical hypotheses collected as `CharacterExpansionData` and `h_correlator`) to a two-point-function bound giving a mass gap.
 
 The conditional structure is intentional. Every physics hypothesis that is *not* fully Lean-checked yet is surfaced as a named `structure` field or a named `axiom`, and lives in `AXIOM_FRONTIER.md`. L3's final statement takes those as hypotheses; the goal of the unconditionality roadmap is to discharge them one by one inside L1–L2.
@@ -106,7 +106,7 @@ The joint planner is maintained in `JOINT_AGENT_PLANNER.md`, with machine-readab
 | L2.4-SCHUR | FORMAL_KERNEL (100 %) | 5 % | ~4 % |
 | L2.5-FROBENIUS | FORMAL_KERNEL (100 %) | 5 % | ~4 % |
 | L2.6-CHARACTER | FORMAL_KERNEL (100 %) | 5 % | ~4 % |
-| F3-COUNT | CONDITIONAL_BRIDGE (safe-deletion/decoder pending) | 20 % | ~5 % |
+| F3-COUNT | CONDITIONAL_BRIDGE (residual-value code separation pending in `LatticeAnimalCount.lean`) | 20 % | ~5 % |
 | F3-MAYER | BLOCKED on F3-COUNT | 20 % | 0 % |
 | F3-COMBINED | BLOCKED on F3-COUNT + F3-MAYER | 10 % | 0 % |
 | EXP-MATEXP-DET | EXPERIMENTAL / Mathlib PR blocked on publishing | 5 % | ~1.5 % |
@@ -136,11 +136,23 @@ bridges.
 
 **What this number is not.** It is not a confidence score in the mass-gap result, and it is not the ratio of filled theorems in the whole repo. It is specifically *"how much of the declared hypothesis set has been discharged in Lean."*
 
-**Next expected movement.** L2.6 is now closed at 100 %. The next live movement comes from `ClusterCorrelatorBound` (the analytic target that `h_correlator` on `CharacterExpansionData` names). When F1 (character / Taylor expansion of `exp(-β · Re tr U)` in scalar traces), F2 (Haar sidecar assemblage from L2.5 + 3a + 3b + 3c + main target), and F3 (Kotecky–Preiss cluster convergence) land, L2 bumps to ~75 % and the overall number crosses 58 %.
+**Next expected movement.** No percentage moves from the v2.234 interface itself. The next live work is to either prove `PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296` or record the exact next no-closure blocker. F3-COUNT remains `CONDITIONAL_BRIDGE` until the residual-value/base-zone chain supplies genuine selector-independent equality-reflection and the downstream F3 counting bridge is assembled without shortcuts.
 
 ---
 
 ## 3. Recently closed milestones
+
+### v2.234 F3 base-zone residual-value code separation interface (commit `6eb61fc`, 2026-04-28)
+
+**Theorem/interface.** `PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296` in `YangMills/ClayCore/LatticeAnimalCount.lean`, with carrier `PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData`.
+
+**Bridge.** `physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296_of_baseZoneResidualValueCodeSeparation1296` repackages the separation data into `PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296` using a trivial `Unit` realization layer.
+
+**Oracle trace and build.** `lake build YangMills.ClayCore.LatticeAnimalCount` passed. Focused `#print axioms` traces for the new carrier, interface, and bridge are no larger than `[propext, Classical.choice, Quot.sound]`.
+
+**What changed.** The current F3 lane no longer needs another interface merely to express the residual-value code separation blocker. The exact open content is now the proof of a selector-independent residual-value code into `Fin 1296` on the whole residual subtype plus selected-admissible equality-reflection for values carrying `PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData` evidence from essential parents.
+
+**What did not change.** F3-COUNT remains `CONDITIONAL_BRIDGE`; no README percentage, planner percentage, ledger status, or Clay-level claim moved.
 
 ### L2.6 main target — character inner product for the fundamental representation (commit `f9ec5e9`, 2026-04-22)
 
@@ -165,7 +177,7 @@ Equivalently, `⟨χ_fund, χ_fund⟩_{L²(SU(N), μ_Haar)} = 1`, i.e. the funda
 3. **New bridge lemma `diag_normSq_integral_eq_inv_N`.** Rewrites the diagonal integrand `Uᵢᵢ · star Uᵢᵢ` as `(normSq Uᵢᵢ : ℂ)` and reduces to step 1c.
 4. **`sunHaarProb_trace_normSq_integral_eq_one`.** Sums the diagonal, gets `N · (1/N) = 1`, and pulls the `ofReal` out of the integral by the `integral_congr_ae` + `integral_ofReal` pattern (same template as `SchurL25.diag_integral_ofReal`).
 
-**Impact on the unconditionality ladder.** This is the first L1 → L2 interface statement that L2's cluster expansion actually consumes. It closes L2.6 at the fundamental-representation level. The only remaining L2.6 work is generalization to arbitrary irreps via Peter–Weyl (step 3).
+**Impact on the unconditionality ladder.** This is the first L1 → L2 interface statement that L2's cluster expansion actually consumes. Together with the sidecar trace-power closures and the downstream recon, it supports the current L2.6 100 % accounting for the scalar-trace subalgebra used by the active cluster front. Arbitrary-irrep Peter–Weyl remains valuable but aspirational.
 
 ### N_c = 1 unconditional witness — `ClayYangMillsMassGap 1` inhabited (2026-04-23)
 
@@ -211,17 +223,24 @@ A 6-version arc executing **Resolution C** of `BLUEPRINT_F3Count.md`: replace th
 | v1.82.0 | Packaged Clay route | `ShiftedF3MayerCountPackageExp N_c wab` + terminal endpoint `clayMassGap_of_shiftedF3MayerCountPackageExp` |
 | v1.83.0 | Physical d=4 endpoint | `physicalClusterCorrelatorBound_of_expCountBound_mayerData_ceil` |
 | v1.84.0 | L8 terminal route to `ClayYangMillsPhysicalStrong` | `physicalStrong_of_expCountBound_mayerData_siteDist_measurableF` (with caveat below) |
-| v1.85.0 | F3-Count witness scaffold | `YangMills/ClayCore/LatticeAnimalCount.lean` with `plaquetteGraph d L`; Priority 1.2 begins |
+| v1.85.0 | F3-Count witness scaffold | `YangMills/ClayCore/LatticeAnimalCount.lean` with `plaquetteGraph d L`; historical start of the F3-COUNT Lean lane |
 
 **Oracle traces**: every artefact above prints `[propext, Classical.choice, Quot.sound]`. No `sorry`. Non-Experimental Lean axiom count remains 0.
 
 **Caveat for v1.84.0** (per `COWORK_FINDINGS.md` Finding 004): `ClayYangMillsPhysicalStrong` requires `IsYangMillsMassProfile m_lat` (genuine, requires Wilson correlator decay) AND `HasContinuumMassGap m_lat`. The latter is satisfied via the repository's coordinated lattice-spacing convention `latticeSpacing N = 1/(N+1) ↔ constantMassProfile m N = m/(N+1)`, which trivially makes the renormalised mass converge. **The continuum half is NOT genuine continuum analysis** (Balaban RG, Osterwalder-Schrader); it is satisfied by the coordinated convention. External descriptions of "reaching ClayYangMillsPhysicalStrong" should include this qualifier. See `MATHEMATICAL_REVIEWERS_COMPANION.md` §6.2 and `GENUINE_CONTINUUM_DESIGN.md` for the full discussion.
 
-**What remains for the F3 witness chain**: two named open inputs, both classical mathematics with well-understood proofs:
-1. **F3-Count witness** (Priority 1.2): the Klarner BFS-tree count, `count(m) ≤ Δ^(m-1)` with `Δ = 2d-1` for `d=4`. Scaffolding in v1.85.0 (~99 LOC); estimated ~310 LOC remain. See `AUDIT_v185_LATTICEANIMAL.md`.
-2. **F3-Mayer witness** (Priority 2.x): the Brydges–Kennedy random-walk cluster expansion, `|K(Y)| ≤ ‖w̃‖_∞^|Y|`. ~700 LOC across 4 files per `BLUEPRINT_F3Mayer.md` §4.1.
+**What remains for the F3 witness chain now**: the old v1.85 scaffold has been
+refined through many Lean-stable interfaces and no-closure notes. The immediate
+open input is no longer a bare "~310 LOC Klarner scaffold" task; it is the
+focused v2.234 blocker
+`PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296`.
+After that blocker is discharged or sharpened, the downstream F3-COUNT and
+F3-Mayer assembly still has to be audited before any small-beta mass-gap claim
+can move.
 
-When both close, the chain produces an unconditional `ClayYangMillsMassGap N_c` for `N_c ≥ 2` in the small-β regime `β < 1/(28 N_c)` (for QCD N_c=3: β < 1/84 ≈ 0.012).
+When the complete F3-COUNT and F3-Mayer chain closes, the intended downstream
+route is the existing small-beta `ClusterCorrelatorBound`/Kotecky-Preiss
+pipeline. That is not closed today.
 
 ### Codex `BalabanRG/` push — Branch II scaffold-complete to `ClayYangMillsTheorem` (2026-04-25, ~222 files / ~32k LOC, 0 sorries / 0 axioms)
 
@@ -274,32 +293,72 @@ So: the *core* is oracle-clean today. The *whole project* is not — and we say 
 
 ---
 
-## 5. Current front — `ClusterCorrelatorBound` (F1 / F2 / F3)
-**Target statement.** `YangMills.ClayCore.ClusterCorrelatorBound N_c r C_clust` (in `ClusterCorrelatorBound.lean`): for every β > 0, every Wilson observable `F`, and every pair of plaquettes `p, q` with `siteLatticeDist p.site q.site ≥ 1`,
-    |wilsonConnectedCorr β F p q|  ≤  C_clust · exp(− kpParameter(r) · siteLatticeDist p.site q.site).
-This is the field named `h_correlator` on `CharacterExpansionData`, and by the recon of commit `70403d1` it is the *only* field that downstream consumers actually use.
-### 5.1 Vestigial-metadata finding (2026-04-22 evening)
-Consumer-driven recon of `CharacterExpansion.lean` / `ClusterCorrelatorBound.lean` / `WilsonGibbsExpansion.lean` shows:
-- `CharacterExpansionData.{Rep, character, coeff}` are **vestigial metadata**. In `wilsonCharExpansion` they are filled with `Rep := PUnit`, `character := fun _ _ => 0`, `coeff := fun _ _ => 0` — carrying no representation-theoretic content.
-- No external file imports `CharacterExpansionData.character`, `.coeff`, or `.Rep`. Zero citations of Peter–Weyl vocabulary, `MatrixCoefficient`, or arbitrary-irrep characters outside ClayCore.
-- Only `h_correlator` flows to Clay (via `WilsonGibbsPolymerRep`'s polymer-rep passthrough in `WilsonGibbsExpansion.lean`, which explicitly discards `Rep` / `character` / `coeff`).
-- **Consequence.** Arbitrary-irrep Peter–Weyl orthogonality is **not** a Clay blocker. L2.6 is therefore closed at 100 % by sidecar reclassification: the downstream-relevant character identities (3a + 3b + 3c + main target + L2.5) already span the integrand subalgebra that the character / Taylor expansion actually needs.
-### 5.2 Strategy: F1 + F2 + F3 directly to `ClusterCorrelatorBound`
-The critical path is a scalar-trace character / Taylor expansion, not an arbitrary-irrep Peter–Weyl argument:
-- **F1 — character / Taylor expansion.** Expand `exp(−β · Re tr U) = ∑_{j,k ≥ 0} ((−β / 2)^{j+k} / (j! · k!)) · (tr U)^j · (star(tr U))^k` on each plaquette. Verify termwise Haar integrability and absolute summability in β.
-- **F2 — Haar sidecar assemblage.** Each Haar integral of a monomial `(tr U)^j · star(tr U)^k` on SU(N_c) is computed from the sidecar triplet and the main target:
-  - `j = k = 0`: trivial (1).
-  - `j = k = 1`: L2.6 main target (commit `f9ec5e9`).
-  - `j = 0, k ≥ 1` or `k = 0, j ≥ 1`: L2.6 step 3a (`SchurTracePow`, commit `3c7a957`) plus trivial conjugation.
-  - `j ≠ k`, `N_c ∤ |j−k|`: L2.6 step 3b (`SchurTracePowBilinear`, commit `70403d1`).
-  - `j = k ≥ 1` (Frobenius / Weingarten on the diagonal): reduces via L2.5 (`∑_i ∫ |U_ii|² dμ ≤ N_c`) + step 1c to a scalar bound, no new irrep theory required.
-  - `j ≠ k`, `N_c ∣ (j−k)`: the only case where the monomial has nonzero Haar integral on SU(N_c). Handled at the F3 combinatorial layer (it contributes a subexponentially-bounded constant, not a divergence).
-- **F3 — Kotecky–Preiss cluster convergence.** Feed the F1 · F2 monomial bounds into the abstract polymer / Mayer scaffolding already in place (`ClusterSeriesBound.lean` supplies `tsum` summability D1 and factoring D2; `MayerExpansion.lean` supplies `TruncatedActivities` and `connectingSum` / `connectingBound` via Kotecky–Preiss). Output: the analytic inequality `|wilsonConnectedCorr| ≤ C_clust · exp(− kpParameter(r) · dist)` with explicit `(r, C_clust)` in terms of `β` and `N_c`.
-All three layers respect the strict `YangMills/ClayCore/` oracle budget.
-### 5.3 Oracle budget for the front
-Every theorem inside `YangMills/ClayCore/` on the `ClusterCorrelatorBound` critical path must satisfy `#print axioms ... ⟶ [propext, Classical.choice, Quot.sound]`. If any dependency of F1 / F2 / F3 introduces a new axiom or `sorry`, it is surfaced as a named entry in `AXIOM_FRONTIER.md` (or `SORRY_FRONTIER.md`) with a retirement plan — never silently absorbed.
-### 5.4 Peter–Weyl step 3 — reclassified as aspirational
-The original L2.6 step 3 (arbitrary-irrep Peter–Weyl character orthogonality) is preserved as an aspirational / Mathlib-PR target in `PETER_WEYL_ROADMAP.md`. It is not on the Clay critical path. Its value is purely mathematical cleanliness: if landed, it would allow `CharacterExpansionData.{Rep, character, coeff}` to carry genuine representation-theoretic content rather than vestigial `PUnit`, and would let the character expansion be stated over *all* irreps rather than over the scalar-trace subalgebra. That is nice to have, but strictly unnecessary for `ClusterCorrelatorBound`.## 6. Milestone ladder
+## 5. Current Front — F3 Residual-Value Code Separation
+
+The immediate active front is the F3 bookkeeping/base-zone chain in
+`YangMills/ClayCore/LatticeAnimalCount.lean`, not Peter-Weyl and not a new
+top-level Clay claim.
+
+**Current target.**
+
+```lean
+PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+```
+
+The target must construct, without `sorry` or new project axioms, a
+selector-independent residual-value code
+
+```lean
+{q : ConcretePlaquette physicalClayDimension L // q in residual} -> Fin 1296
+```
+
+on the whole residual subtype, plus selected-admissible equality-reflection for
+residual values carrying
+`PhysicalPlaquetteGraphResidualFiberTerminalNeighborSelectorData` evidence from
+essential parents.
+
+**Latest closed interface.** v2.234 added:
+
+- `PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData`;
+- `PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296`;
+- `physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296_of_baseZoneResidualValueCodeSeparation1296`.
+
+The bridge target is exactly
+`PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296`.
+It is an erasure/repackaging bridge using a trivial `Unit` realization layer;
+it does not itself prove the missing residual-value code separation.
+
+**Exact next task.**
+
+```text
+CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001
+```
+
+Read first:
+
+- `YangMills/ClayCore/LatticeAnimalCount.lean`;
+- `dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md`;
+- `dashboard/f3_base_zone_residual_value_code_separation_scope.md`;
+- `dashboard/f3_base_zone_residual_value_code_realization_attempt_v2_233.md`;
+- `AXIOM_FRONTIER.md`.
+
+**Forbidden shortcuts.** This front must not use selected-image cardinality,
+bounded menu cardinality, empirical search, `finsetCodeOfCardLe`,
+root-shell/local-neighbor/local-displacement codes, parent-relative
+`terminalNeighborCode` equality, deleted-X shortcuts, or the v2.161 cycle as
+proof of residual-value injectivity.
+
+**Downstream analytic target.** `ClusterCorrelatorBound` remains the
+Wilson-facing analytic decay target reached by the F1/F2/F3 route. The
+`CharacterExpansionData.{Rep, character, coeff}` fields remain vestigial for
+that route; only `h_correlator` flows downstream. Arbitrary-irrep Peter-Weyl is
+preserved as an aspirational / Mathlib-facing cleanup, not as the current Clay
+blocker.
+
+Every theorem inside `YangMills/ClayCore/` on this front must satisfy
+`#print axioms ... -> [propext, Classical.choice, Quot.sound]`.
+
+## 6. Milestone ladder
 
 Every row is a Lean-checkable statement, not a paper-level claim. Acceptance criterion for every "DONE" row: `#print axioms` prints only `[propext, Classical.choice, Quot.sound]` and no `sorry` appears in the file.
 
@@ -328,14 +387,16 @@ Every row is a Lean-checkable statement, not a paper-level claim. Acceptance cri
 | 21 | **F3 packaged Clay route `ShiftedF3MayerCountPackageExp`** | **`ClusterRpowBridge.lean`** (v1.82.0) | **DONE** | **oracle-clean; terminal endpoint `clayMassGap_of_shiftedF3MayerCountPackageExp`** |
 | 22 | **F3 physical d=4 endpoint** | **`ClusterRpowBridge.lean`** (v1.83.0) | **DONE** | **oracle-clean** |
 | 23 | **F3 L8 terminal route to `ClayYangMillsPhysicalStrong`** | **`L8_Terminal/ConnectedCorrDecayBundle.lean`** (v1.84.0) | **DONE** | **oracle-clean; continuum half via coordinated scaling, see `COWORK_FINDINGS.md` Finding 004** |
-| 24 | **F3-Count witness scaffold (`plaquetteGraph d L`)** | **`LatticeAnimalCount.lean`** (v1.85.0) | **IN PROGRESS** | **oracle-clean; Priority 1.2 of `CODEX_CONSTRAINT_CONTRACT.md`; ~99 of ~410 LOC** |
-| 25 | F3-Count witness `connecting_cluster_count_exp_bound` (Klarner BFS-tree) | `LatticeAnimalCount.lean` | OPEN | Priority 1.2 closure |
+| 24 | **F3-Count witness scaffold (`plaquetteGraph d L`)** | **`LatticeAnimalCount.lean`** (v1.85.0) | **SUPERSEDED BY F3 INTERFACE LANE** | **historical start of the current v2.x F3-COUNT chain** |
+| 25 | F3-Count witness `connecting_cluster_count_exp_bound` (Klarner/BFS count route) | `LatticeAnimalCount.lean` | BLOCKED | superseded/refined by residual-fiber bookkeeping/base-zone blocker chain; see rows 32-33 |
 | 26 | F3-Mayer witness `physicalConnectedCardDecayMayerWitness` (Brydges–Kennedy) | TBD (~4 new files per `BLUEPRINT_F3Mayer.md`) | OPEN | Priority 2.x |
 | 27 | **`ClayYangMillsPhysicalStrong (1, …)` — SU(1) unconditional, ⭐ strongest predicate inhabited at N_c = 1 prior to Phase 45** | **`ClayCore/AbelianU1PhysicalStrongUnconditional.lean`** (Phase 43) | **DONE** | **oracle-clean; physics-degenerate (Finding 003)** |
 | 28 | **`ClayYangMillsPhysicalStrong_Genuine (1, …)` — SU(1) unconditional, strongest currently-defined Clay-grade predicate** | **`L7_Continuum/AbelianU1PhysicalStrongGenuineUnconditional.lean`** (Phase 45) | **DONE** | **oracle-clean; physics-degenerate (Findings 003+004)** |
 | 29 | **OS-axiom quartet for SU(1) — `OSCovariant`, `OSReflectionPositive`, `OSClusterProperty`, `HasInfiniteVolumeLimit` + `osQuadruple_su1` bundle** | **`L6_OS/AbelianU1Reflection.lean` + `AbelianU1ClusterProperty.lean` + `AbelianU1OSAxioms.lean`** (Phases 46–50, 52) | **DONE** | **oracle-clean; physics-degenerate (Finding 011)** |
 | 30 | **Branch III analytic quartet for SU(1) — `IsDirichletForm`, `PoincareInequality`, `LogSobolevInequality`, `ExponentialClustering` + `branchIII_LSI_bundle_su1`** | **`P8_PhysicalGap/AbelianU1LSIDischarge.lean`** (Phase 53) | **DONE** | **oracle-clean; physics-degenerate (Finding 012)** |
 | 31 | **Markov semigroup framework for SU(1) — `SymmetricMarkovTransport`, `HasVarianceDecay`, full `MarkovSemigroup`** | **`P8_PhysicalGap/AbelianU1MarkovSemigroup.lean`** (Phase 54) | **DONE** | **oracle-clean; identity transport, physics-degenerate (Finding 012)** |
+| 32 | **F3 base-zone residual-value code separation interface + bridge** | **`LatticeAnimalCount.lean`** (v2.234) | **DONE** | **oracle-clean; build `lake build YangMills.ClayCore.LatticeAnimalCount` passed; no F3-COUNT status or percentage movement** |
+| 33 | **F3 base-zone residual-value code separation proof/no-closure** | **`LatticeAnimalCount.lean`** | **READY** | **next task: prove `PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296` or record exact blocker** |
 
 The canonical, always-up-to-date version of this table is maintained in `UNCONDITIONALITY_ROADMAP.md`.
 
@@ -362,10 +423,11 @@ The canonical, always-up-to-date version of this table is maintained in `UNCONDI
         SchurPhysicalBridge.lean
         PeterWeyl.lean             ← L2.6 step 3 aspirational / Mathlib-PR (see PETER_WEYL_ROADMAP.md)
         CharacterExpansion.lean    ← CharacterExpansionData struct (Rep / character / coeff VESTIGIAL; see AXIOM_FRONTIER.md v0.38.0)
-        ClusterCorrelatorBound.lean ← CURRENT FRONT: analytic two-point decay for SU(N_c) Gibbs measure
+        ClusterCorrelatorBound.lean ← downstream analytic target: two-point decay for SU(N_c) Gibbs measure
         WilsonGibbsExpansion.lean  ← polymer-rep passthrough (Rep / character / coeff discarded)
         ClusterSeriesBound.lean    ← D1 (tsum summability) + D2 (factoring); KP scaffolding
         MayerExpansion.lean        ← TruncatedActivities + connectingSum / connectingBound (Kotecky–Preiss)
+        LatticeAnimalCount.lean    ← CURRENT FRONT: F3 residual-value/base-zone code separation lane
         …                          ← Wilson / Cluster / Balaban machinery
       (peripheral L3 modules: Balaban, Dirichlet, LieDeriv, Hille–Yosida,
        Bakry–Émery, Stroock–Zegarliński — carry declared axioms + a small
@@ -376,6 +438,7 @@ The canonical, always-up-to-date version of this table is maintained in `UNCONDI
     scripts/
     dashboard/
     README.md                      ← this file
+    CODEX_COWORK_NEW_TASK_PROMPT.md ← compact fresh-window prompt for Codex/Cowork
     AXIOM_FRONTIER.md
     SORRY_FRONTIER.md
     UNCONDITIONALITY_ROADMAP.md
@@ -401,9 +464,12 @@ To verify the oracle budget of a specific theorem, add at the end of any ClayCor
 
 CI refuses a `YangMills/ClayCore/` commit that prints any other axiom name.
 
-Example trace for the most recently closed core theorem:
+Example traces for the most recently closed F3 interface:
 
-    #print axioms YangMills.ClayCore.sunHaarProb_trace_normSq_integral_eq_one
+    #print axioms YangMills.ClayCore.PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+    ⟶ [propext, Classical.choice, Quot.sound]
+
+    #print axioms YangMills.ClayCore.physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296_of_baseZoneResidualValueCodeSeparation1296
     ⟶ [propext, Classical.choice, Quot.sound]
 
 ---
@@ -411,7 +477,7 @@ Example trace for the most recently closed core theorem:
 ## 9. How to contribute
 
 1. Read `AI_ONBOARDING.md` and `CONTRIBUTING.md`.
-2. Pick an entry from `AXIOM_FRONTIER.md` or the current front (`PeterWeyl.lean`, to be created).
+2. Pick an entry from `registry/agent_tasks.yaml` or the current front in `LatticeAnimalCount.lean`.
 3. Keep `YangMills/ClayCore/` oracle-clean. Land physics hypotheses in peripheral modules with a *named* `axiom` declaration and a matching row in `AXIOM_FRONTIER.md`.
 4. Open a PR with a `#print axioms` trace for every theorem added to ClayCore.
 5. If your PR retires a frontier entry, delete the entry from `AXIOM_FRONTIER.md` (or `SORRY_FRONTIER.md`) in the same commit, and bump the relevant bar in §2 of this README.
@@ -430,58 +496,38 @@ The package complements the existing **`MATHLIB_GAPS.md`** (the *inward* directi
 
 This project will not be considered a full proof of the Clay Yang–Mills mass gap until `AXIOM_FRONTIER.md` is empty and `SORRY_FRONTIER.md` is empty at the same commit, and L3's top theorem `#print axioms`-prints only `[propext, Classical.choice, Quot.sound]`. We are not there yet.
 
-L2.6's main target (commit `f9ec5e9`) is one rung on that ladder — a concrete, oracle-clean one, and the first L1→L2 interface statement the downstream cluster expansion actually consumes. L2.6 step 3 (Peter–Weyl) is the next. Every milestone in this README is stated with its exact status and a pointer to the file where it lives, so that any reader can check the gap between claim and proof themselves.
+The v2.234 residual-value code separation interface is one rung on that ladder
+inside F3-COUNT. It is concrete and oracle-clean, but it is not the proof of
+F3-COUNT: the selector-independent residual-value code and selected-admissible
+equality-reflection still have to be constructed or reduced to the next exact
+blocker. Every milestone in this README is stated with its exact status and a
+pointer to the file where it lives, so that any reader can check the gap between
+claim and proof themselves.
 
 If you spot a gap between a claim and a proof here, open an issue. **Transparency over polish.**
 
 ---
 
-## 11. Session-end addendum (2026-04-25, post-Phase 448)
+## 11. Fresh-Window Handoff
 
-**This README's body above predates Phase 49**. The 2026-04-25 Cowork session ran 400 phases (49-448) and produced substantial extensions not yet reflected in §1-§10.
+This README is refreshed through v2.234 as of 2026-04-28. For a new Codex or
+Cowork window, use `CODEX_COWORK_NEW_TASK_PROMPT.md` as the compact handoff
+instead of relying on a saturated chat transcript.
 
-### What was added
+The next active Codex task is:
 
-- **35 long-cycle Lean blocks** L7-L41 realising Eriksson's Bloque-4 paper (Phases 49-402). See `BLOQUE4_LEAN_REALIZATION.md`.
-- **17 Mathlib-PR-ready files** in `mathlib_pr_drafts/` (Phases 403-420). See §9.1 above and `MATHLIB_PRS_OVERVIEW.md`.
-- **3 physics-anchoring blocks** (Phases 427-447) constituting the **triple-view structural characterisation of pure Yang-Mills**:
+```text
+CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001
+```
 
-| Block | View | Order parameter / structural content | Files | Phases |
-|---|---|---|---|---|
-| L42 | Continuous (area law) | String tension `σ > 0`, mass gap `m_gap = c_Y · Λ_QCD` | 5 | 427-431 |
-| L43 | Discrete (center) | `Z_N` invariance, `⟨P⟩ = 0` | 3 | 437-439 |
-| L44 | Asymptotic (large-N) | 't Hooft coupling `λ = g²·N_c`, planar dominance | 3 | 443-445 |
+The task must either prove
+`PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296` or
+record the exact no-closure blocker. It must not move F3-COUNT out of
+`CONDITIONAL_BRIDGE`, and it must not move any Clay/lattice/frontier
+percentage.
 
-  See `TRIPLE_VIEW_CONFINEMENT.md` for the synthesis.
-
-- **14 surface docs propagated/produced** (NEXT_SESSION, FINAL_REPORT, PLAYBOOK, INDEX, OVERVIEW, README in subfolder, LITERATURE_COMPARISON, TRIPLE_VIEW_CONFINEMENT, plus updates to FINAL_HANDOFF, STATE_OF_THE_PROJECT, COWORK_FINDINGS, BLOQUE4, MATHLIB_GAPS, plus this README addendum).
-
-### Updated metrics
-
-- **Phases**: 49 → 448 = **400 phases** (single-day session).
-- **Long-cycle blocks**: **38** (L7-L44).
-- **Lean files**: ~321 (~38,200 LOC).
-- **Sorries**: 0 maintained (with 2 sorry-catches: Phase 437 + Phase 444).
-- **Mathlib-PR-ready files**: 17.
-- **Findings filed**: 23 (Findings 001-023).
-- **Strict-Clay incondicional**: ~12% (pre-session) → ~32% (post-Phase 402, attack programme).
-- **Internal-frontier**: ~50% (unchanged).
-
-### What this means in terms of §2's progress bars
-
-The 50% internal-frontier bar is **unchanged**. The L42-L44 physics-anchoring blocks are structural (inputs not derived), so they do not retire named frontier entries. The advance from ~12% to ~32% strict-Clay incondicional happened in the L30-L41 attack programme arc (Phases 283-402), reflecting conversion of placeholder constants/theorems from arbitrary text into derivable Lean theorems.
-
-### What to do if you arrive cold (post-Phase 448)
-
-1. **5 minutes**: read `FINAL_HANDOFF.md` (TL;DR + post-Phase 446 mini-mini-addendum).
-2. **15 minutes**: add `STATE_OF_THE_PROJECT.md`, `COWORK_FINDINGS.md` Findings 001-023, `NEXT_SESSION.md`.
-3. **30+ minutes**: add `BLOQUE4_LEAN_REALIZATION.md`, `mathlib_pr_drafts/INDEX.md`, `MATHLIB_PRS_OVERVIEW.md`, `TRIPLE_VIEW_CONFINEMENT.md`.
-4. **Tangible action**: open `MATHLIB_SUBMISSION_PLAYBOOK.md` and try to land **one** PR upstream (`LogTwoLowerBound_PR.lean` is the recommended first target, ~30 min in a real Mathlib build environment).
-
-### Honest caveat repeated
-
-The L42-L44 anchor blocks input dimensionless constants `c_Y` (mass-gap / Λ_QCD), `c_σ` (string-tension / Λ_QCD²), and the actual non-zero `⟨P⟩` for deconfined phase as **anchor structures, NOT derived from first principles**. The actual area-law decay for SU(N) Yang-Mills Wilson Gibbs measure remains the **Holy Grail of Confinement** — unproved here.
-
-The 17 Mathlib-PR-ready files have NOT been built with `lake build` against current Mathlib master. They are math sketches + Lean drafts.
-
-The project does **not** claim to solve the Clay Millennium Yang-Mills mass-gap problem. It targets the lattice mass gap (one input toward the Clay statement, distinct from it). The ~32% strict-Clay incondicional figure does not extrapolate; the remaining ~68% includes physics infrastructure (Bałaban RG complete, OS reconstruction → Wightman, Holley-Stroock LSI) not in this project's current scope.
+Historical session addenda from 2026-04-25 are preserved in the dedicated
+session and audit files (`SESSION_SUMMARY.md`, `FINAL_HANDOFF.md`,
+`COWORK_FINDINGS.md`, `BLOQUE4_LEAN_REALIZATION.md`). They are not the current
+README authority when they conflict with the 5 % / ~28 % / 50 % metric split
+recorded above.
