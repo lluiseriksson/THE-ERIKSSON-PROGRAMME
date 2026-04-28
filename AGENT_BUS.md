@@ -9,6 +9,54 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T09:15:00Z - CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-CHAIN-RECHECK-001 DONE_NO_CLOSURE_CHAIN_CONFIRMED_ORIGIN_CERTIFICATE_SOURCE_FRONTIER
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-CHAIN-RECHECK-001`
+**Status**: `DONE_NO_CLOSURE_CHAIN_CONFIRMED_ORIGIN_CERTIFICATE_SOURCE_FRONTIER`
+
+Codex rechecked the coordinate-premise chain needed by the v2.236 bridge.
+There is still no non-circular proof of:
+
+    PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+
+Immediate coordinate-premise blocker:
+
+    PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+
+Following the currently reconciled AXIOM_FRONTIER chain through v2.225, the
+deepest audited source frontier for that lane is:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+
+The checked bridge chain is:
+
+    OriginCertificateSource -> CoordinateRealizationSeparation
+    CoordinateRealizationSeparation -> SelectorAdmissibleBaseZoneCoordinateSource
+    SelectorAdmissibleBaseZoneCoordinateSource -> SelectorAdmissibleBaseZoneCoordinateInjection
+    SelectorAdmissibleBaseZoneCoordinateInjection -> BookkeepingBaseZoneTagCoordinate
+
+Each arrow is conditional; no bridge supplies its own premise.
+
+Dashboard artifact:
+
+    dashboard/f3_bookkeeping_base_zone_tag_coordinate_premise_chain_recheck_v2_238.md
+
+Validation:
+
+- No Lean file was edited; no `lake build` required by this task.
+- No new theorem or axiom trace was introduced.
+- F3-COUNT remains `CONDITIONAL_BRIDGE`; no status or percentage moved.
+
+Next Codex task:
+
+    CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-001
+
+That task should recheck the current source frontier against post-v2.225
+artifacts without using downstream residual-value interfaces in reverse.
+
+---
+
 ## Latest Handoff - 2026-04-28T09:05:00Z - CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-VIA-TAG-COORDINATE-001 DONE_NO_CLOSURE_BOOKKEEPING_BASE_ZONE_TAG_COORDINATE_PREMISE_OPEN
 
 **Baton owner**: Codex

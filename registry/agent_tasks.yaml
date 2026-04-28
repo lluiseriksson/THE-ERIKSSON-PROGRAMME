@@ -30026,7 +30026,7 @@ tasks:
 - id: CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-CHAIN-RECHECK-001
   title: 'Codex: recheck base-zone tag coordinate premise chain after v2.236'
   owner: Codex
-  status: READY
+  status: COMPLETED
   priority: 5
   created_at: '2026-04-28T09:05:00Z'
   source_task: CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-VIA-TAG-COORDINATE-001
@@ -30061,3 +30061,74 @@ tasks:
   notes:
   - Seeded after v2.237 confirmed that v2.234 via tag coordinate is blocked exactly
     at PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296.
+  - Dispatched to Codex at 2026-04-28T05:50:19Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T05:50:22Z
+  updated_at: '2026-04-28T09:15:00Z'
+  dispatched_at: '2026-04-28T05:50:19Z'
+  dispatched_to: Codex
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T05:50:19Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T05:50:22Z'
+  delivery_agent: Codex
+  last_delivery_method: codex-enter
+  last_delivery_distance: '32.5'
+  delivery_confirmed_at: '2026-04-28T05:50:22Z'
+  completed_at: '2026-04-28T09:15:00Z'
+  completion_status: DONE_NO_CLOSURE_CHAIN_CONFIRMED_ORIGIN_CERTIFICATE_SOURCE_FRONTIER
+  artifact: dashboard/f3_bookkeeping_base_zone_tag_coordinate_premise_chain_recheck_v2_238.md
+  checked_premise: PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+  immediate_blocker: PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+  deepest_axiom_frontier_blocker: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+  bridge_chain:
+  - PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296 -> PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296
+  - PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296 -> PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+  - PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296 -> PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+  - PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296 -> PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+  validation_result:
+  - Dashboard artifact records the coordinate-premise chain, exact immediate blocker,
+    and deepest AXIOM_FRONTIER-supported source frontier.
+  - No Lean file was edited; no lake build required.
+  - No new theorem was added and no new theorem-specific axiom trace was introduced.
+  f3_count_impact: F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README
+    metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.
+  next_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-001
+- id: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-001
+  title: 'Codex: recheck base-zone origin certificate source frontier after v2.236'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-28T09:15:00Z'
+  source_task: CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-CHAIN-RECHECK-001
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - dashboard/f3_bookkeeping_base_zone_tag_coordinate_premise_chain_recheck_v2_238.md
+  - dashboard/f3_base_zone_origin_certificate_source_scope.md
+  - dashboard/f3_base_zone_origin_certificate_source_interface_v2_226.md
+  - dashboard/f3_base_zone_origin_certificate_source_attempt_v2_227.md
+  - AXIOM_FRONTIER.md
+  objective: Recheck the current source frontier PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+    against the latest post-v2.225 artifacts. Prove it only if a non-circular source
+    exists; otherwise record the exact next no-closure blocker without using downstream
+    residual-value interfaces in reverse.
+  validation:
+  - lake build YangMills.ClayCore.LatticeAnimalCount if Lean is edited
+  - 'Any new theorem has #print axioms trace no larger than [propext, Classical.choice,
+    Quot.sound]'
+  - Dashboard artifact records closure or exact no-closure blocker and bridge direction
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
+  stop_if:
+  - The proof requires sorry, a new project axiom, downstream residual-value realization/source/origin
+    interfaces in reverse, selected-image cardinality, bounded menu cardinality, empirical
+    search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes,
+    parent-relative terminalNeighborCode equality, deleted-X shortcut, or the v2.161
+    cycle
+  required_updates:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  notes:
+  - Seeded after v2.238 confirmed the coordinate-premise chain reaches the AXIOM_FRONTIER
+    v2.225 source frontier at PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296.
