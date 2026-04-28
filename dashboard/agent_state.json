@@ -5,7 +5,7 @@
   "current_baton_owner": "Codex",
   "next_task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001",
   "last_completed_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001",
-  "last_dispatched_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001",
+  "last_dispatched_task": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001",
   "last_dispatched_agent": "Codex",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists",
@@ -42,9 +42,9 @@
     "REC-COWORK-DISPATCH-RATE-LIMIT-AUDIT-SLOT-001",
     "REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002"
   ],
-  "last_dispatch_at": "2026-04-28T06:07:06Z",
+  "last_dispatch_at": "2026-04-28T07:21:54Z",
   "last_completed_at": "2026-04-28T10:15:00Z",
-  "latest_validation_artifact": "CODEX-COWORK-AUTOCONTINUE-BLOCKED-PROMPT-INJECTION-FIX produced dashboard/cowork_autocontinue_blocked_prompt_injection_fix.md. The watcher now keeps calibrated Cowork sessions enabled while dispatch is suspended and sends only COWORK-WORKSPACE-MOUNT-BLOCKED with cooldown; real Cowork registry-writing tasks still require the workspace mount. YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "latest_validation_artifact": "CODEX-COWORK-AUTOCONTINUE-STALE-BUSY-CONFIRMATION-FIX patched the Codex stale-busy path after a false CONFIRMED_BUSY at unchanged detector distance 56.6. The affected Codex task was requeued READY; stale-busy now tries calibrated-button fallbacks and requires real visual change before confirming delivery. YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
   "f3_base_zone_residual_value_code_separation_interface_v2_234": {
     "status": "DONE_INTERFACE_AND_BRIDGE_LANDED",
     "artifact": "dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md",
@@ -2731,8 +2731,8 @@
   },
   "last_dispatch_by_agent": {
     "Codex": {
-      "task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-STRUCTURAL-SOURCE-SCOPE-001",
-      "at": "2026-04-28T06:07:06Z"
+      "task_id": "CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001",
+      "at": "2026-04-28T07:21:54Z"
     },
     "Cowork": {
       "task_id": "META-GENERATE-TASKS-001",

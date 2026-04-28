@@ -723,11 +723,14 @@ def submit_current_prompt(app, baseline_ready=None, baseline_d=None):
             pyautogui.doubleClick(interval=0.12)
 
         if baseline_ready is False:
-            # In stale-busy rescue the ready-button coordinate is not trustworthy.
-            # Keep the prompt box focused and use keyboard submits only.
+            # In stale-busy rescue the ready detector is already stale. Try the
+            # keyboard paths first, then the calibrated button as a last resort;
+            # confirmation below still requires a real visual change.
             strategies = (
                 ("codex-enter", codex_keyboard_enter),
                 ("codex-ctrl-enter", codex_keyboard_ctrl_enter),
+                ("calibrated-button", codex_button_click),
+                ("double-calibrated-button", codex_button_double_click),
             )
         else:
             strategies = (
@@ -1133,7 +1136,11 @@ def run(args):
                           f"(d={d_after_send:.1f}), rearmado.")
                 while not rearmed_with_busy and time.time() < deadline:
                     r, d = app.is_ready()
-                    if not r:
+                    if baseline_ready is False:
+                        reacted = stale_busy_reaction_confirmed(r, baseline_d, d)
+                    else:
+                        reacted = not r
+                    if reacted:
                         app.armed = True
                         rearmed_with_busy = True
                         app.last_confirmed_busy_at = time.time()

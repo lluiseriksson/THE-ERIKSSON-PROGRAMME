@@ -9,6 +9,37 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T10:32:00Z - CODEX-COWORK-AUTOCONTINUE-STALE-BUSY-CONFIRMATION-FIX DONE_AUTOMATION_FIX
+
+**Baton owner**: Codex
+**Task**: `CODEX-COWORK-AUTOCONTINUE-STALE-BUSY-CONFIRMATION-FIX`
+**Status**: `DONE_AUTOMATION_FIX`
+
+User-run watcher logs showed Cowork injection working, but Codex still failed
+to receive a prompt. The Codex path entered stale-busy rescue at detector
+distance `56.6`, tried Enter and Ctrl+Enter, saw no visual change, then the
+rearm loop incorrectly accepted the unchanged already-busy detector state as
+`CONFIRMED_BUSY`.
+
+Patched:
+
+- `C:/Users/lluis/Downloads/codex_autocontinue.py`
+- `dashboard/codex_autocontinue_snapshot.py`
+
+New behavior: Codex stale-busy rescue now tries Enter, Ctrl+Enter, calibrated
+button, and double calibrated button. It does not confirm delivery unless the
+detector actually transitions or makes the configured large stale-busy jump.
+
+Registry repair: requeued
+`CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001`
+to `READY` because the previous `CONFIRMED_BUSY` came from the false detector
+confirmation and the user reported no prompt arrived.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, or
+percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T10:20:00Z - CODEX-COWORK-AUTOCONTINUE-BLOCKED-PROMPT-INJECTION-FIX DONE_AUTOMATION_FIX
 
 **Baton owner**: Codex

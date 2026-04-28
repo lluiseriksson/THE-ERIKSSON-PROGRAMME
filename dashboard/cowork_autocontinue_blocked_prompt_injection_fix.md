@@ -75,3 +75,28 @@ Cowork audit/write tasks, mount the repository at:
 ```
 
 Then clear `cowork_dispatch_suspended` in `dashboard/agent_state.json`.
+
+## Follow-up: Codex Stale-Busy False Confirmation
+
+After the first fix, the watcher did inject Cowork's blocked prompt, but Codex
+hit a separate stale-busy path:
+
+```text
+[Codex] método codex-enter no mostró cambio visual suficiente (d=56.6, Δ=0.0)
+[Codex] método codex-ctrl-enter no mostró cambio visual suficiente (d=56.6, Δ=0.0)
+[Codex] ocupado confirmado (d=56.6), rearmado.
+```
+
+The last line was wrong: unchanged detector distance must not confirm delivery
+when the rescue path started from an already-busy detector state.
+
+Additional patch:
+
+- Stale-busy Codex submit now tries Enter, Ctrl+Enter, calibrated button, and
+  double calibrated button.
+- The rearm loop now uses the same stale-busy confirmation rule as the submit
+  loop: confirmation requires a real ready-state transition or a large detector
+  jump, not merely `not ready`.
+- The affected task
+  `CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001`
+  was requeued to `READY` because the user reported the prompt did not arrive.

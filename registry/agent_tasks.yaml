@@ -30294,8 +30294,8 @@ tasks:
   bridge_direction: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
     -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
   rejected_route: PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296
-    and downstream residual-value realization/separation interfaces are not proof evidence
-    for this frontier.
+    and downstream residual-value realization/separation interfaces are not proof
+    evidence for this frontier.
   validation_result:
   - Dashboard scope note records the exact blocker and bridge direction.
   - No Lean file was edited; no lake build required.
@@ -30320,8 +30320,8 @@ tasks:
   objective: Inventory concrete v2.121 bookkeeping/base-zone invariants that could
     construct PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjectionData
     directly. Identify whether any existing invariant supplies the whole-residual
-    Fin 1296 code plus selected-admissible equality-reflection; if none exists,
-    record the narrowest missing invariant shape.
+    Fin 1296 code plus selected-admissible equality-reflection; if none exists, record
+    the narrowest missing invariant shape.
   validation:
   - Dashboard artifact lists each candidate invariant checked and whether its bridge
     direction is upstream, downstream, or unrelated to code injection
@@ -30341,6 +30341,9 @@ tasks:
   - dashboard/agent_state.json
   next_agent: Codex
   notes:
-  - Seeded after v2.241 confirmed that the v2.228 code-injection data carrier is
-    the minimal honest frontier unless a concrete upstream invariant is found.
-  updated_at: '2026-04-28T10:15:00Z'
+  - Seeded after v2.241 confirmed that the v2.228 code-injection data carrier is the
+    minimal honest frontier unless a concrete upstream invariant is found.
+  - Requeued at 2026-04-28T10:32:00Z after Codex stale-busy rescue falsely
+    accepted an unchanged detector distance as delivery confirmation; user
+    reported the prompt did not arrive.
+  updated_at: '2026-04-28T10:32:00Z'
