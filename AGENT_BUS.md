@@ -9,6 +9,49 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T09:35:00Z - CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-001 DONE_NO_CLOSURE_ORIGIN_CERTIFICATE_CODE_INJECTION_FRONTIER_CONFIRMED
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-001`
+**Status**: `DONE_NO_CLOSURE_ORIGIN_CERTIFICATE_CODE_INJECTION_FRONTIER_CONFIRMED`
+
+Codex rechecked the current source frontier:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+
+The direct Lean bridge is present:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+      -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+
+No non-circular proof of the source theorem was found.  The exact immediate
+no-closure blocker is:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+
+The later residual-value source bridge into code injection was noted but not
+used, because routing through residual-value source/realization/separation
+after v2.236 would be downstream and circular for this frontier.
+
+Dashboard artifact:
+
+    dashboard/f3_base_zone_origin_certificate_source_frontier_recheck_v2_239.md
+
+Validation:
+
+- No Lean file was edited; no `lake build` required by this task.
+- No new theorem or theorem-specific axiom trace was introduced.
+- F3-COUNT remains `CONDITIONAL_BRIDGE`; no status or percentage moved.
+
+Next Codex task:
+
+    CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001
+
+That task should recheck the code-injection premise from non-circular
+structural sources only, without downstream residual-value interfaces.
+
+---
+
 ## Latest Handoff - 2026-04-28T09:15:00Z - CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-CHAIN-RECHECK-001 DONE_NO_CLOSURE_CHAIN_CONFIRMED_ORIGIN_CERTIFICATE_SOURCE_FRONTIER
 
 **Baton owner**: Codex

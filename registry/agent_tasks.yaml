@@ -30082,9 +30082,12 @@ tasks:
   deepest_axiom_frontier_blocker: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
   bridge_chain:
   - PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296 -> PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296
-  - PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296 -> PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
-  - PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296 -> PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
-  - PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296 -> PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
+  - PhysicalPlaquetteGraphResidualFiberBaseZoneCoordinateRealizationSeparation1296
+    -> PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+  - PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateSource1296
+    -> PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+  - PhysicalPlaquetteGraphResidualFiberSelectorAdmissibleBaseZoneCoordinateInjection1296
+    -> PhysicalPlaquetteGraphResidualFiberBookkeepingBaseZoneTagCoordinate1296
   validation_result:
   - Dashboard artifact records the coordinate-premise chain, exact immediate blocker,
     and deepest AXIOM_FRONTIER-supported source frontier.
@@ -30096,7 +30099,7 @@ tasks:
 - id: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-001
   title: 'Codex: recheck base-zone origin certificate source frontier after v2.236'
   owner: Codex
-  status: READY
+  status: COMPLETED
   priority: 5
   created_at: '2026-04-28T09:15:00Z'
   source_task: CODEX-F3-BOOKKEEPING-BASE-ZONE-TAG-COORDINATE-PREMISE-CHAIN-RECHECK-001
@@ -30132,3 +30135,75 @@ tasks:
   notes:
   - Seeded after v2.238 confirmed the coordinate-premise chain reaches the AXIOM_FRONTIER
     v2.225 source frontier at PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296.
+  - Dispatched to Codex at 2026-04-28T05:55:58Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T05:56:01Z
+  updated_at: '2026-04-28T05:55:58Z'
+  dispatched_at: '2026-04-28T05:55:58Z'
+  dispatched_to: Codex
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T05:55:58Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T05:56:01Z'
+  delivery_agent: Codex
+  last_delivery_method: codex-enter
+  last_delivery_distance: '32.5'
+  delivery_confirmed_at: '2026-04-28T05:56:01Z'
+  completed_at: '2026-04-28T09:35:00Z'
+  completion_status: DONE_NO_CLOSURE_ORIGIN_CERTIFICATE_CODE_INJECTION_FRONTIER_CONFIRMED
+  artifact: dashboard/f3_base_zone_origin_certificate_source_frontier_recheck_v2_239.md
+  checked_frontier: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+  immediate_blocker: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+  bridge_direction: PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+    -> PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateSource1296
+  rejected_cycle: Downstream residual-value source/realization/separation interfaces were
+    not used as proof of the origin-certificate source frontier.
+  validation_result:
+  - Dashboard artifact records the exact no-closure blocker and bridge direction.
+  - No Lean file was edited; no lake build required.
+  - No new theorem was added and no new theorem-specific axiom trace was introduced.
+  f3_count_impact: F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README
+    metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.
+  next_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001
+- id: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-FRONTIER-RECHECK-001
+  title: 'Codex: recheck base-zone origin certificate code-injection frontier after v2.239'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-28T09:35:00Z'
+  source_task: CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-SOURCE-FRONTIER-RECHECK-001
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - dashboard/f3_base_zone_origin_certificate_source_frontier_recheck_v2_239.md
+  - dashboard/f3_base_zone_origin_certificate_code_injection_scope.md
+  - dashboard/f3_base_zone_origin_certificate_code_injection_interface_v2_228.md
+  - dashboard/f3_base_zone_origin_certificate_code_injection_attempt_v2_229.md
+  - AXIOM_FRONTIER.md
+  objective: Recheck the current code-injection frontier PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296
+    from non-circular structural sources only. Prove it only if a source exists that
+    does not route through downstream residual-value source, realization, or separation
+    interfaces; otherwise record the exact no-closure blocker.
+  validation:
+  - lake build YangMills.ClayCore.LatticeAnimalCount if Lean is edited
+  - 'Any new theorem has #print axioms trace no larger than [propext, Classical.choice,
+    Quot.sound]'
+  - Dashboard artifact records closure or exact no-closure blocker and bridge direction
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
+  stop_if:
+  - The proof requires sorry, a new project axiom, downstream residual-value realization/source/origin
+    interfaces in reverse, selected-image cardinality, bounded menu cardinality, empirical
+    search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes,
+    parent-relative terminalNeighborCode equality, deleted-X shortcut, or the v2.161
+    cycle
+  required_updates:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  notes:
+  - Seeded after v2.239 confirmed that the origin-certificate source frontier is
+    blocked exactly at PhysicalPlaquetteGraphResidualFiberBaseZoneOriginCertificateCodeInjection1296.
+  - Do not use PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSource1296
+    or downstream residual-value realization/separation interfaces as circular evidence
+    for this premise.
+  updated_at: '2026-04-28T09:35:00Z'
