@@ -9,6 +9,39 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T10:50:00Z - CODEX-AUTOCONTINUE-DECOUPLE-COWORK-FROM-CODEX-PENDING DONE_AUTOMATION_FIX
+
+**Baton owner**: Codex
+**Task**: `CODEX-AUTOCONTINUE-DECOUPLE-COWORK-FROM-CODEX-PENDING`
+**Status**: `DONE_AUTOMATION_FIX`
+
+User-run logs showed Cowork stuck in a tight skip loop:
+
+    [SKIP] Cowork: Codex tiene un envío pendiente no confirmado; evito interferir hasta reintento.
+
+This policy was too conservative for 24/7 operation. Codex and Cowork each
+refocus their own prompt box before paste/submit, so Cowork no longer waits on a
+Codex pending retry. Cowork now follows its own sidecar interval and repeat
+guards even when Codex has an unconfirmed prompt retry pending.
+
+Additional hardening: preflight now auto-abandons stale `IN_PROGRESS` tasks
+whose delivery was never confirmed after 30 minutes, using
+`ABANDONED_UNCONFIRMED`, which requeues them without claiming completion. The
+stale
+`CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001`
+entry was repaired and is `READY` again.
+
+Validation:
+
+- `python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py dashboard\codex_autocontinue_snapshot.py scripts\agent_next_instruction.py`
+- `python C:\Users\lluis\Downloads\codex_autocontinue.py --preflight-only`
+- YAML/JSON/JSONL validation passed.
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, or
+percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T10:32:00Z - CODEX-COWORK-AUTOCONTINUE-STALE-BUSY-CONFIRMATION-FIX DONE_AUTOMATION_FIX
 
 **Baton owner**: Codex

@@ -104,3 +104,20 @@ Additional patch:
 - The affected task
   `CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001`
   was requeued to `READY` because the user reported the prompt did not arrive.
+
+## Follow-up: Cowork Decoupled From Codex Pending Retries
+
+Another live run showed Cowork stuck behind Codex's unconfirmed pending prompt:
+
+```text
+[SKIP] Cowork: Codex tiene un envío pendiente no confirmado; evito interferir hasta reintento.
+```
+
+This guard has been removed. Codex and Cowork each focus their own calibrated
+prompt box before paste/submit, so Cowork can continue under its own repeat
+guard and sidecar interval even while Codex is retrying an unconfirmed delivery.
+
+Preflight now also auto-abandons stale unconfirmed `IN_PROGRESS` tasks after 30
+minutes via `ABANDONED_UNCONFIRMED`, which requeues them without claiming
+completion. This repaired the stale Codex inventory task left by earlier
+delivery failures.

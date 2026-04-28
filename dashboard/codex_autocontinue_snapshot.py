@@ -116,6 +116,7 @@ FAILED_DELIVERY_RETRY_SECONDS = 15.0
 # descansa poco tiempo y vuelve a pedir una tarea fresca al dispatcher.
 UNCONFIRMED_RETRY_LIMIT = 2
 UNCONFIRMED_FAILURE_PAUSE_SECONDS = 15.0
+STALE_UNCONFIRMED_AUTO_ABANDON_SECONDS = 30 * 60.0
 
 # Cowork es valioso cuando audita un cambio real; es caro cuando re-audita por
 # polling el mismo estado. Estas tareas solo se envían si ha cambiado una
@@ -451,7 +452,51 @@ def print_inprogress_delivery_diagnostics(tasks_doc):
         print("[!] IN_PROGRESS con entrega no confirmada detectados:")
         for task_id, state, age_min in candidates[:5]:
             print(f"    - {task_id}: {state}, edad ~{age_min} min")
-        print("    No se resetean automáticamente; quedan como diagnóstico conservador.")
+        print("    Se reencolan automáticamente si superan el umbral stale.")
+
+
+def auto_abandon_stale_unconfirmed(tasks_doc):
+    tasks = (tasks_doc or {}).get("tasks", [])
+    now = datetime.now(timezone.utc)
+    states = {
+        "DISPATCH_MUTATED_PENDING_CONFIRMATION",
+        "UNCONFIRMED_SEND_RETRY_PENDING",
+    }
+    repaired = []
+    for task in tasks:
+        if task.get("status") != "IN_PROGRESS":
+            continue
+        state = str(task.get("delivery_state", "")).upper()
+        if state not in states:
+            continue
+        if task.get("delivery_confirmed_at") or task.get("completed_at"):
+            continue
+        dispatched_at = parse_registry_time(
+            task.get("delivery_attempted_at")
+            or task.get("dispatched_at")
+            or task.get("updated_at")
+        )
+        if dispatched_at is None:
+            continue
+        age = (now - dispatched_at).total_seconds()
+        if age < STALE_UNCONFIRMED_AUTO_ABANDON_SECONDS:
+            continue
+        task_id = str(task.get("id", ""))
+        agent = str(task.get("dispatched_to") or task.get("owner") or "Codex")
+        if not task_id or task_id == "<unknown>":
+            continue
+        record_delivery_state(
+            agent,
+            task_id,
+            "ABANDONED_UNCONFIRMED",
+            method="preflight-stale-unconfirmed",
+            distance=task.get("last_delivery_distance", ""),
+        )
+        repaired.append((task_id, int(age // 60)))
+    if repaired:
+        print("[OK] Auto-requeue de IN_PROGRESS sin entrega confirmada:")
+        for task_id, age_min in repaired[:5]:
+            print(f"    - {task_id}: requeued after ~{age_min} min unconfirmed")
 
 
 def preflight_dispatcher():
@@ -483,6 +528,7 @@ def preflight_dispatcher():
         else:
             print("[OK] YAML/JSON/JSONL parsean y no hay task ids duplicados.")
         print_inprogress_delivery_diagnostics(tasks_doc)
+        auto_abandon_stale_unconfirmed(tasks_doc)
         print_guardrail_diagnostics()
     except Exception as exc:
         print(f"[!] Preflight registry falló: {type(exc).__name__}: {exc}")
@@ -997,18 +1043,9 @@ def run(args):
                         app.pending_attempts = 0
 
             ready_apps.sort(key=lambda a: 0 if a.name == PRIMARY_AGENT else 1)
-            codex_pending = any(
-                a.name == PRIMARY_AGENT and a.pending_message for a in apps
-            )
             for app in ready_apps:
                 if app.name == "Cowork":
                     now = time.time()
-                    if codex_pending:
-                        app.stable_ready = 0
-                        app.armed = True
-                        print("[SKIP] Cowork: Codex tiene un envío pendiente no "
-                              "confirmado; evito interferir hasta reintento.")
-                        continue
                     if (last_cowork_dispatch_at
                             and now - last_cowork_dispatch_at
                             < args.cowork_sidecar_interval):

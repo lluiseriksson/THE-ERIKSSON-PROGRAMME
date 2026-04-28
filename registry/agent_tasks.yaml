@@ -30346,4 +30346,17 @@ tasks:
   - Requeued at 2026-04-28T10:32:00Z after Codex stale-busy rescue falsely accepted
     an unchanged detector distance as delivery confirmation; user reported the prompt
     did not arrive.
-  updated_at: '2026-04-28T10:32:00Z'
+  - Dispatched to Codex at 2026-04-28T08:06:07Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as ABANDONED_UNCONFIRMED at 2026-04-28T09:47:58Z
+  updated_at: '2026-04-28T08:06:07Z'
+  dispatched_at: '2026-04-28T08:06:07Z'
+  dispatched_to: Codex
+  delivery_state: ABANDONED_UNCONFIRMED
+  delivery_attempted_at: '2026-04-28T08:06:07Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T09:47:58Z'
+  delivery_agent: Codex
+  last_delivery_method: stale-cleanup
+  last_delivery_distance: '56.6'
+  delivery_unconfirmed_at: '2026-04-28T09:47:58Z'
+  requeued_after_abandoned_unconfirmed_at: '2026-04-28T09:47:58Z'
