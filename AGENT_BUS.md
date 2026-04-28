@@ -9,6 +9,52 @@ files are machine-readable derivatives.
 
 ---
 
+## Latest Handoff - 2026-04-28T07:35:00Z - CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001 DONE_NO_CLOSURE_SELECTOR_INDEPENDENT_RESIDUAL_VALUE_CODE_MISSING
+
+**Baton owner**: Codex
+**Task**: `CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001`
+**Status**: `DONE_NO_CLOSURE_SELECTOR_INDEPENDENT_RESIDUAL_VALUE_CODE_MISSING`
+
+Codex attempted to prove:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296
+
+No Lean theorem was added.  The exact no-closure blocker is the missing
+non-circular construction of:
+
+    PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData
+
+for every v2.121 residual-fiber instance: a selector-independent
+`Fin 1296` residual-value code on the whole residual subtype plus
+selected-admissible equality-reflection for residual values carrying
+terminal-neighbor selector data evidence from essential parents.
+
+Dashboard artifact:
+
+    dashboard/f3_base_zone_residual_value_code_separation_attempt_v2_235.md
+
+Rejected candidate routes:
+
+- treating the v2.234 interface as evidence for itself;
+- using downstream realization/source/origin-code interfaces in reverse;
+- selected-image cardinality, bounded menu cardinality, empirical search,
+  `finsetCodeOfCardLe`, root-shell/local-neighbor/local-displacement codes,
+  parent-relative `terminalNeighborCode` equality, deleted-X shortcuts, or the
+  v2.161 selector-image cycle.
+
+Validation:
+
+- `lake build YangMills.ClayCore.LatticeAnimalCount` passed.
+- Focused `#print axioms` traces for the v2.234 data, Prop/interface, and
+  bridge remain no larger than `[propext, Classical.choice, Quot.sound]`.
+- F3-COUNT remains `CONDITIONAL_BRIDGE`; no status or percentage moved.
+
+Suggested next Codex repair task:
+
+    CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001
+
+---
+
 ## Latest Handoff - 2026-04-28T06:55:00Z - CODEX-F3-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-INTERFACE-001 DONE_INTERFACE_AND_BRIDGE_LANDED
 
 **Baton owner**: Codex

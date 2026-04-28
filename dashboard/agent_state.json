@@ -1,11 +1,11 @@
 {
   "project": "THE-ERIKSSON-PROGRAMME",
   "strategic_goal": "Five-year day-by-day progress toward unconditional Clay-level Yang-Mills Mass Gap formalization",
-  "current_phase": "task_generation_needed",
-  "current_baton_owner": "Cowork",
-  "next_task_id": "COWORK-NEGCOORDS-RUNTIME-CONFIRMATION-AUDIT-001",
-  "last_completed_task": "CODEX-F3-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-INTERFACE-001",
-  "last_dispatched_task": "COWORK-NEGCOORDS-RUNTIME-CONFIRMATION-AUDIT-001",
+  "current_phase": "f3_repair_task_ready",
+  "current_baton_owner": "Codex",
+  "next_task_id": "CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001",
+  "last_completed_task": "CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001",
+  "last_dispatched_task": "META-GENERATE-TASKS-001",
   "last_dispatched_agent": "Cowork",
   "open_blockers": [
     "MATHLIB-PR-PUBLISHING: MatrixExp patch built locally but no PR can be opened until a reachable fork/auth path exists",
@@ -39,9 +39,9 @@
     "REC-COWORK-DISPATCH-RATE-LIMIT-AUDIT-SLOT-001",
     "REC-COWORK-LEDGER-EVIDENCE-COLUMN-EXTEND-002"
   ],
-  "last_dispatch_at": "2026-04-28T03:58:59Z",
-  "last_completed_at": "2026-04-28T06:55:00Z",
-  "latest_validation_artifact": "CODEX-F3-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-INTERFACE-001 landed PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData, PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296, and physicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeRealization1296_of_baseZoneResidualValueCodeSeparation1296; lake build YangMills.ClayCore.LatticeAnimalCount passed; new axiom traces are no larger than [propext, Classical.choice, Quot.sound]; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "last_dispatch_at": "2026-04-28T04:58:00Z",
+  "last_completed_at": "2026-04-28T07:35:00Z",
+  "latest_validation_artifact": "CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001 did not prove PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296; exact blocker is a non-circular construction of PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData. lake build YangMills.ClayCore.LatticeAnimalCount passed; focused v2.234 axiom traces remain no larger than [propext, Classical.choice, Quot.sound]; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
   "f3_base_zone_residual_value_code_separation_interface_v2_234": {
     "status": "DONE_INTERFACE_AND_BRIDGE_LANDED",
     "artifact": "dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md",
@@ -56,6 +56,17 @@
     "next_codex_task": "CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001",
     "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
     "updated_at": "2026-04-28T06:55:00Z"
+  },
+  "f3_base_zone_residual_value_code_separation_attempt_v2_235": {
+    "status": "DONE_NO_CLOSURE_SELECTOR_INDEPENDENT_RESIDUAL_VALUE_CODE_MISSING",
+    "artifact": "dashboard/f3_base_zone_residual_value_code_separation_attempt_v2_235.md",
+    "task_id": "CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001",
+    "attempted_theorem": "PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296",
+    "exact_blocker": "Non-circular construction of PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData",
+    "validation": "lake build YangMills.ClayCore.LatticeAnimalCount passed; focused v2.234 #print axioms traces remain no larger than [propext, Classical.choice, Quot.sound].",
+    "next_codex_task": "CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001",
+    "unconditionality_impact": "F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.",
+    "updated_at": "2026-04-28T07:35:00Z"
   },
   "f3_base_zone_residual_value_code_separation_scope": {
     "status": "DONE_SCOPE_DELIVERED_NO_LEAN_NO_STATUS_MOVE",
@@ -2554,12 +2565,12 @@
   },
   "last_dispatch_by_agent": {
     "Codex": {
-      "task_id": "CODEX-F3-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-INTERFACE-001",
-      "at": "2026-04-28T03:56:04Z"
+      "task_id": "CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001",
+      "at": "2026-04-28T04:50:20Z"
     },
     "Cowork": {
-      "task_id": "COWORK-NEGCOORDS-RUNTIME-CONFIRMATION-AUDIT-001",
-      "at": "2026-04-28T03:58:59Z"
+      "task_id": "META-GENERATE-TASKS-001",
+      "at": "2026-04-28T04:58:00Z"
     }
   },
   "last_agent": "Codex",
@@ -3200,14 +3211,14 @@
   },
   "last_in_progress_dispatch_diagnostic": {
     "agent": "Cowork",
-    "at": "2026-04-28T02:15:37Z",
+    "at": "2026-04-28T04:58:00Z",
     "candidates": [
       {
         "task_id": "COWORK-NEGCOORDS-RUNTIME-CONFIRMATION-AUDIT-001",
         "reason": "UNCONFIRMED_IN_PROGRESS",
         "dispatched_to": "Cowork",
-        "delivery_state": "UNCONFIRMED_SEND_RETRY_PENDING",
-        "age_seconds": 277.7
+        "delivery_state": "CONFIRMED_BUSY",
+        "age_seconds": 494.7
       }
     ]
   },

@@ -2243,16 +2243,19 @@ tasks:
   - Delivery state for Cowork recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T03:57:05Z
   - Delivery state for Cowork recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T03:57:47Z
   - Delivery state for Cowork recorded as ABANDONED_UNCONFIRMED at 2026-04-28T03:58:29Z
+  - Delivery state for Cowork recorded as CONFIRMED_BUSY at 2026-04-28T04:50:57Z
+  - Delivery state for Cowork recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T04:54:30Z
+  - Delivery state for Cowork recorded as CONFIRMED_BUSY at 2026-04-28T04:54:51Z
+  - Delivery state for Cowork recorded as CONFIRMED_BUSY at 2026-04-28T04:58:02Z
   dispatch_count: 11
   dispatched_at: '2026-04-26T18:14:41Z'
   dispatched_to: Cowork
-  delivery_state: ABANDONED_UNCONFIRMED
-  delivery_updated_at: '2026-04-28T03:58:29Z'
+  delivery_state: CONFIRMED_BUSY
+  delivery_updated_at: '2026-04-28T04:58:02Z'
   delivery_agent: Cowork
-  last_delivery_method: all-methods-failed
-  last_delivery_distance: '43.1'
-  delivery_confirmed_at: '2026-04-28T02:10:42Z'
-  delivery_unconfirmed_at: '2026-04-28T03:58:29Z'
+  last_delivery_method: enter
+  last_delivery_distance: '0.4'
+  delivery_confirmed_at: '2026-04-28T04:58:02Z'
 - id: COWORK-AUDIT-EXP-SUN-GEN-RETIREMENT-001
   title: 'Cowork: audit the EXP-SUN-GEN retirement (vacuity caveat)'
   owner: Cowork
@@ -27644,7 +27647,7 @@ tasks:
 - id: COWORK-NEGCOORDS-RUNTIME-CONFIRMATION-AUDIT-001
   title: 'Cowork: audit negcoords runtime confirmation evidence'
   owner: Cowork
-  status: READY
+  status: IN_PROGRESS
   priority: 4
   created_at: '2026-04-28T01:34:00Z'
   source_task: CODEX-NEGCOORDS-RUNTIME-HISTORY-SPOTCHECK-001
@@ -27674,12 +27677,12 @@ tasks:
   - registry/agent_history.jsonl
   - dashboard/agent_state.json
   next_agent: Cowork
-  updated_at: '2026-04-28T03:58:57Z'
-  dispatched_at: '2026-04-28T03:58:57Z'
+  updated_at: '2026-04-28T04:49:46Z'
+  dispatched_at: '2026-04-28T04:49:46Z'
   dispatched_to: Cowork
-  delivery_state: ABANDONED_UNCONFIRMED
-  delivery_attempted_at: '2026-04-28T03:58:57Z'
-  dispatch_count: 36
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T04:49:46Z'
+  dispatch_count: 37
   notes:
   - Dispatched to Cowork at 2026-04-28T01:13:56Z; awaiting visual busy confirmation
   - Delivery state for Cowork recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T01:14:19Z
@@ -27824,14 +27827,16 @@ tasks:
   - Delivery state for Cowork recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T03:59:21Z
   - Delivery state for Cowork recorded as UNCONFIRMED_SEND_RETRY_PENDING at 2026-04-28T04:00:02Z
   - Delivery state for Cowork recorded as ABANDONED_UNCONFIRMED at 2026-04-28T04:00:44Z
-  delivery_updated_at: '2026-04-28T04:00:44Z'
+  - Dispatched to Cowork at 2026-04-28T04:49:46Z; awaiting visual busy confirmation
+  - Delivery state for Cowork recorded as CONFIRMED_BUSY at 2026-04-28T04:49:50Z
+  delivery_updated_at: '2026-04-28T04:49:50Z'
   delivery_agent: Cowork
-  last_delivery_method: all-methods-failed
-  last_delivery_distance: '43.1'
+  last_delivery_method: enter
+  last_delivery_distance: '11.4'
   requeued_after_abandoned_unconfirmed_at: '2026-04-28T04:00:44Z'
   quarantined_unconfirmed_at: '2026-04-28T02:17:49Z'
   quarantine_requeue_count: 1
-  delivery_unconfirmed_at: '2026-04-28T04:00:44Z'
+  delivery_confirmed_at: '2026-04-28T04:49:50Z'
 - id: CODEX-LEDGER-F3-COUNT-EVIDENCE-COLUMN-EXTEND-V2.183-V2.216-SCOPE-001
   title: 'Codex: scope F3-COUNT LEDGER evidence-column extension from v2.183 through
     v2.216'
@@ -29604,7 +29609,7 @@ tasks:
 - id: CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001
   title: 'Codex: prove or precisely fail base-zone residual value code separation'
   owner: Codex
-  status: READY
+  status: COMPLETED
   priority: 5
   created_at: '2026-04-28T06:55:00Z'
   source_task: CODEX-F3-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-INTERFACE-001
@@ -29615,8 +29620,8 @@ tasks:
   - dashboard/f3_base_zone_residual_value_code_realization_attempt_v2_233.md
   - AXIOM_FRONTIER.md
   objective: Prove `PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparation1296`
-    or reduce it to the next exact no-closure blocker. The proof must construct
-    a selector-independent residual-value code into `Fin 1296` on the whole residual
+    or reduce it to the next exact no-closure blocker. The proof must construct a
+    selector-independent residual-value code into `Fin 1296` on the whole residual
     subtype and selected-admissible equality-reflection for residual values carrying
     terminal-neighbor selector data evidence from essential parents.
   validation:
@@ -29642,3 +29647,64 @@ tasks:
   notes:
   - Seeded by the v2.234 separation interface and bridge as the next proof/no-closure
     task.
+  - Dispatched to Codex at 2026-04-28T04:50:19Z; awaiting visual busy confirmation
+  - Delivery state for Codex recorded as CONFIRMED_BUSY at 2026-04-28T04:50:32Z
+  updated_at: '2026-04-28T04:50:19Z'
+  dispatched_at: '2026-04-28T04:50:19Z'
+  dispatched_to: Codex
+  delivery_state: CONFIRMED_BUSY
+  delivery_attempted_at: '2026-04-28T04:50:19Z'
+  dispatch_count: 1
+  delivery_updated_at: '2026-04-28T04:50:32Z'
+  delivery_agent: Codex
+  last_delivery_method: detector
+  last_delivery_distance: '32.5'
+  delivery_confirmed_at: '2026-04-28T04:50:32Z'
+  completed_at: '2026-04-28T07:35:00Z'
+  completion_status: DONE_NO_CLOSURE_SELECTOR_INDEPENDENT_RESIDUAL_VALUE_CODE_MISSING
+  artifact: dashboard/f3_base_zone_residual_value_code_separation_attempt_v2_235.md
+  exact_blocker: Non-circular construction of PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData
+  validation_result:
+  - lake build YangMills.ClayCore.LatticeAnimalCount passed
+  - 'Focused v2.234 #print axioms traces remain no larger than [propext, Classical.choice,
+    Quot.sound]'
+  - No Lean theorem was added in this no-closure attempt
+  f3_count_impact: F3-COUNT remains CONDITIONAL_BRIDGE; no status, percentage, README
+    metric, planner metric, ledger row, proof closure claim, or Clay-level claim moved.
+  next_task: CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001
+- id: CODEX-F3-SCOPE-STRUCTURAL-RESIDUAL-VALUE-CODE-SEPARATION-SOURCE-001
+  title: 'Codex: scope structural residual-value code separation source'
+  owner: Codex
+  status: READY
+  priority: 5
+  created_at: '2026-04-28T07:35:00Z'
+  source_task: CODEX-F3-PROVE-BASE-ZONE-RESIDUAL-VALUE-CODE-SEPARATION-001
+  required_files:
+  - YangMills/ClayCore/LatticeAnimalCount.lean
+  - dashboard/f3_base_zone_residual_value_code_separation_attempt_v2_235.md
+  - dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md
+  - dashboard/f3_base_zone_residual_value_code_separation_scope.md
+  - AXIOM_FRONTIER.md
+  objective: Scope the missing non-circular structural source for PhysicalPlaquetteGraphResidualFiberBaseZoneResidualValueCodeSeparationData.
+    Determine whether the v2.234 separation theorem can be reduced to a smaller named
+    theorem that constructs a selector-independent Fin 1296 code on the whole residual
+    subtype plus selected-admissible equality-reflection, or whether v2.234 is already
+    the minimal honest frontier.
+  validation:
+  - Dashboard scope note records the exact structural theorem/blocker and bridge direction
+  - No Lean theorem is added unless it builds without sorry or new axioms
+  - F3-COUNT remains CONDITIONAL_BRIDGE and no percentage moves
+  stop_if:
+  - The scope relies on selected-image cardinality, bounded menu cardinality, empirical
+    search, finsetCodeOfCardLe, root-shell/local-neighbor/local-displacement codes,
+    parent-relative terminalNeighborCode equality, deleted-X shortcut, downstream
+    residual-value source/origin interfaces, or the v2.161 cycle
+  required_updates:
+  - AGENT_BUS.md
+  - registry/agent_tasks.yaml
+  - registry/agent_history.jsonl
+  - dashboard/agent_state.json
+  next_agent: Codex
+  notes:
+  - Seeded by the v2.235 no-closure attempt as the precise repair task for the missing
+    selector-independent residual-value code separation construction.
