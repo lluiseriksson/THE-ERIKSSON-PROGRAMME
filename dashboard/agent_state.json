@@ -44,7 +44,7 @@
   ],
   "last_dispatch_at": "2026-04-28T07:21:54Z",
   "last_completed_at": "2026-04-28T10:15:00Z",
-  "latest_validation_artifact": "CODEX-COWORK-AUTOCONTINUE-STALE-BUSY-CONFIRMATION-FIX patched the Codex stale-busy path after a false CONFIRMED_BUSY at unchanged detector distance 56.6. The affected Codex task was requeued READY; stale-busy now tries calibrated-button fallbacks and requires real visual change before confirming delivery. YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
+  "latest_validation_artifact": "CODEX-CODEX-STARTUP-STALE-DETECTOR-FORCE-SEND patched Codex startup detector handling after the watcher printed Codex ocupado at d=56.6 while Codex was idle. Startup Codex stale-busy is now untrusted immediately when no delivery has been confirmed in the watcher session; concrete non-META tasks are sent without waiting 18 seconds behind the stale detector. YAML/JSON/JSONL validation passed; F3-COUNT remains CONDITIONAL_BRIDGE with no percentage move.",
   "f3_base_zone_residual_value_code_separation_interface_v2_234": {
     "status": "DONE_INTERFACE_AND_BRIDGE_LANDED",
     "artifact": "dashboard/f3_base_zone_residual_value_code_separation_interface_v2_234.md",

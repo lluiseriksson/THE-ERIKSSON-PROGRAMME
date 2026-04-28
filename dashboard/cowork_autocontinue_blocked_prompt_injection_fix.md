@@ -97,6 +97,10 @@ Additional patch:
 - The rearm loop now uses the same stale-busy confirmation rule as the submit
   loop: confirmation requires a real ready-state transition or a large detector
   jump, not merely `not ready`.
+- Startup stale-busy is now treated as untrusted immediately when Codex has not
+  yet had a confirmed delivery in the watcher session. If the dispatcher has a
+  concrete non-META task, the watcher sends instead of waiting 18 seconds while
+  printing `ocupado` for a stale detector.
 - The affected task
   `CODEX-F3-BASE-ZONE-ORIGIN-CERTIFICATE-CODE-INJECTION-DATA-CANDIDATE-INVENTORY-001`
   was requeued to `READY` because the user reported the prompt did not arrive.

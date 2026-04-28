@@ -40,6 +40,34 @@ percentage moved.
 
 ---
 
+## Latest Handoff - 2026-04-28T10:40:00Z - CODEX-CODEX-STARTUP-STALE-DETECTOR-FORCE-SEND DONE_AUTOMATION_FIX
+
+**Baton owner**: Codex
+**Task**: `CODEX-CODEX-STARTUP-STALE-DETECTOR-FORCE-SEND`
+**Status**: `DONE_AUTOMATION_FIX`
+
+User confirmed Codex was idle while the watcher printed `Codex ocupado |
+d=56.6`. The startup ready-detector reading is stale. Patched the Codex
+stale-busy rescue so startup Codex detector state is untrusted immediately when
+there has been no confirmed Codex delivery in this watcher session. If the
+dispatcher has a concrete non-META task, the watcher now logs `detector stale
+de arranque` and sends instead of waiting behind the stale `ocupado` label.
+
+Patched:
+
+- `C:/Users/lluis/Downloads/codex_autocontinue.py`
+- `dashboard/codex_autocontinue_snapshot.py`
+
+Validation:
+
+- `python -m py_compile C:\Users\lluis\Downloads\codex_autocontinue.py dashboard\codex_autocontinue_snapshot.py`
+- `python C:\Users\lluis\Downloads\codex_autocontinue.py --preflight-only`
+
+F3-COUNT remains `CONDITIONAL_BRIDGE`; no status, metric, ledger row, or
+percentage moved.
+
+---
+
 ## Latest Handoff - 2026-04-28T10:20:00Z - CODEX-COWORK-AUTOCONTINUE-BLOCKED-PROMPT-INJECTION-FIX DONE_AUTOMATION_FIX
 
 **Baton owner**: Codex

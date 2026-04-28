@@ -30343,7 +30343,7 @@ tasks:
   notes:
   - Seeded after v2.241 confirmed that the v2.228 code-injection data carrier is the
     minimal honest frontier unless a concrete upstream invariant is found.
-  - Requeued at 2026-04-28T10:32:00Z after Codex stale-busy rescue falsely
-    accepted an unchanged detector distance as delivery confirmation; user
-    reported the prompt did not arrive.
+  - Requeued at 2026-04-28T10:32:00Z after Codex stale-busy rescue falsely accepted
+    an unchanged detector distance as delivery confirmation; user reported the prompt
+    did not arrive.
   updated_at: '2026-04-28T10:32:00Z'

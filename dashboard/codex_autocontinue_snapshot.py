@@ -548,7 +548,11 @@ def codex_stale_busy_rescue_allowed(app, args):
     if app.busy_since <= 0:
         return False, None
     now = time.time()
-    if now - app.busy_since < args.codex_stale_busy_rescue:
+    startup_detector_is_untrusted = app.sends == 0 and not app.last_confirmed_busy_at
+    if (
+        not startup_detector_is_untrusted
+        and now - app.busy_since < args.codex_stale_busy_rescue
+    ):
         return False, None
     if (
         app.last_confirmed_busy_at
@@ -942,8 +946,13 @@ def run(args):
                     if rescue:
                         ready = True
                         if last_state.get(("rescue", app.name)) != rescued_task_id:
+                            label = (
+                                "detector stale de arranque"
+                                if app.sends == 0 and not app.last_confirmed_busy_at
+                                else "rescate stale-busy"
+                            )
                             print(
-                                f"  [{app.name}] rescate stale-busy: d={d:.1f} "
+                                f"  [{app.name}] {label}: d={d:.1f} "
                                 f"durante {time.time() - app.busy_since:.0f}s; "
                                 f"dispatcher tiene {rescued_task_id}. Intento enviar."
                             )
