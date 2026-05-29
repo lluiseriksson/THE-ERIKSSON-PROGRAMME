@@ -1,0 +1,85 @@
+/- Copyright (c) 2026 Lluis Eriksson. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Lluis Eriksson -/
+import Mathlib
+
+/-!
+# KP0 — polymer substrate and partition function
+
+First milestone (KP0) of the Kotecký–Preiss cluster-expansion layer planned in
+`docs/kp-cluster-expansion-plan.md`.  This is the foundation the whole layer (and,
+through it, §5/§6.2 of the Eriksson paper) is built on.
+
+We fix an **abstract hard-core polymer system**: a type of polymers with a
+symmetric, reflexive *incompatibility* relation and complex *activities*.  A finite
+family of polymers is *admissible* when its members are pairwise compatible, and the
+finite-volume **partition function** sums the product of activities over admissible
+subfamilies of a region.
+
+Everything here is elementary `Finset` bookkeeping (KP0 = "low difficulty" in the
+plan), but it is real, compiler-checked infrastructure, not a sketch.  The hard
+parts — the cluster expansion and its KP convergence (KP2) and the exponential
+clustering corollary (KP3) — come later and are the genuine work.
+
+Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
+-/
+
+namespace YangMills.KP
+
+open scoped Classical BigOperators
+
+/-- An abstract hard-core polymer system with complex activities. -/
+structure PolymerSystem where
+  /-- The type of polymers (e.g. connected finite subsets of a lattice). -/
+  Polymer : Type*
+  /-- Incompatibility relation (e.g. polymers overlap or touch). -/
+  incomp : Polymer → Polymer → Prop
+  /-- Incompatibility is symmetric. -/
+  incomp_symm : ∀ X Y, incomp X Y → incomp Y X
+  /-- Hard core: every polymer is incompatible with itself. -/
+  incomp_self : ∀ X, incomp X X
+  /-- The activity `z(X)` of a polymer. -/
+  activity : Polymer → ℂ
+
+variable (P : PolymerSystem)
+
+/-- A finite family of polymers is **admissible** if its members are pairwise
+compatible (no two distinct members are incompatible). -/
+def Admissible (S : Finset P.Polymer) : Prop :=
+  ∀ X ∈ S, ∀ Y ∈ S, X ≠ Y → ¬ P.incomp X Y
+
+/-- The empty family is admissible. -/
+theorem admissible_empty : Admissible P (∅ : Finset P.Polymer) := by
+  intro X hX
+  simp at hX
+
+/-- Admissibility is inherited by subfamilies. -/
+theorem admissible_mono {S T : Finset P.Polymer} (h : S ⊆ T)
+    (hT : Admissible P T) : Admissible P S :=
+  fun X hX Y hY hne => hT X (h hX) Y (h hY) hne
+
+/-- A singleton family is always admissible (hard core only forbids *distinct*
+incompatible members). -/
+theorem admissible_singleton (X : P.Polymer) :
+    Admissible P ({X} : Finset P.Polymer) := by
+  intro A hA B hB hne
+  rw [Finset.mem_singleton] at hA hB
+  exact absurd (hA.trans hB.symm) hne
+
+/-- **Finite-volume partition function** `Ξ(Λ) = ∑_{S ⊆ Λ admissible} ∏_{X ∈ S} z(X)`. -/
+noncomputable def partition (Λ : Finset P.Polymer) : ℂ :=
+  ∑ S ∈ Λ.powerset.filter (Admissible P), ∏ X ∈ S, P.activity X
+
+/-- The partition function of the empty region is `1` (the empty family contributes
+the empty product). -/
+theorem partition_empty : partition P ∅ = 1 := by
+  rw [partition, Finset.powerset_empty]
+  have hfilter : ({∅} : Finset (Finset P.Polymer)).filter (Admissible P) = {∅} := by
+    apply Finset.filter_eq_self.mpr
+    intro S hS
+    rw [Finset.mem_singleton] at hS
+    subst hS
+    exact admissible_empty P
+  rw [hfilter, Finset.sum_singleton, Finset.prod_empty]
+
+end YangMills.KP

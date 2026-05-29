@@ -148,7 +148,7 @@ hypothesis of `mass_gap_bound`.
 
 | ID | Content | Difficulty | Notes |
 |----|---------|-----------|-------|
-| **KP0** | `PolymerSystem`, `Admissible`, `partition` | low | Pure `Finset` bookkeeping. |
+| **KP0** | `PolymerSystem`, `Admissible`, `partition` | low | ✅ **landed** — `YangMills/KP/Basic.lean` (`PolymerSystem`, `Admissible` + `admissible_empty`/`_mono`/`_singleton`, `partition`, `partition_empty = 1`); green, oracle clean. |
 | **KP1** | finite-volume `Ξ`, basic identities (factorization over compatible blocks) | low–med | |
 | **KP2a** | `ursell` coefficients + connected-cluster indexing | **high** | The combinatorial core; needs a clean cluster datatype (multisets + connectivity via `SimpleGraph`). |
 | **KP2b** | `kp_cluster_convergence` (FV Thm 5.4, inductive) | **highest** | The crux. Strong induction on cluster size + KP criterion. Budget the bulk here. |
