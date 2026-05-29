@@ -1,2 +1,12 @@
 
-.lake/build/
+# Lake build cache, packages, and config are all generated — never tracked.
+.lake/
+
+# Scratch / build artifacts
+build_log.txt
+run_build.bat
+*.log
+build_and_push_*.ps1
+commit_and_push_*.ps1
+oracle_check_*.ps1
+# NOTE: oracle_check.lean is kept and committed — it is the repo's oracle-verification entry point.

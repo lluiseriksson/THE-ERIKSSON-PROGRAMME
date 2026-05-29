@@ -1,2 +1,0 @@
-import YangMills.P8_PhysicalGap.VacuumProjectorFixedVector
-#print axioms YangMills.physicalStrong_of_profiledProjectedOpNormBound_rankOneVacuum_selfAdjoint_projectorInvariant
