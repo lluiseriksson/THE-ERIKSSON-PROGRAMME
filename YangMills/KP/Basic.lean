@@ -103,4 +103,24 @@ theorem partition_singleton (X : P.Polymer) :
     · subst h; exact admissible_singleton P X
   rw [hfilter, Finset.sum_pair (by simp), Finset.prod_empty, Finset.prod_singleton]
 
+/-- **Admissibility splits over compatible blocks.**  If no polymer of `Λ₁` is
+incompatible with any polymer of `Λ₂`, then a family drawn from `S₁ ⊆ Λ₁` and
+`S₂ ⊆ Λ₂` is admissible iff each part is.  This is the combinatorial linchpin of
+the partition-function factorization `Ξ(Λ₁ ∪ Λ₂) = Ξ(Λ₁)·Ξ(Λ₂)` (KP1). -/
+theorem admissible_union_iff {Λ₁ Λ₂ : Finset P.Polymer}
+    (hcross : ∀ X ∈ Λ₁, ∀ Y ∈ Λ₂, ¬ P.incomp X Y)
+    {S₁ S₂ : Finset P.Polymer} (h1 : S₁ ⊆ Λ₁) (h2 : S₂ ⊆ Λ₂) :
+    Admissible P (S₁ ∪ S₂) ↔ Admissible P S₁ ∧ Admissible P S₂ := by
+  constructor
+  · intro h
+    exact ⟨admissible_mono P Finset.subset_union_left h,
+           admissible_mono P Finset.subset_union_right h⟩
+  · rintro ⟨hS1, hS2⟩ X hX Y hY hne
+    rw [Finset.mem_union] at hX hY
+    rcases hX with hX1 | hX2 <;> rcases hY with hY1 | hY2
+    · exact hS1 X hX1 Y hY1 hne
+    · exact hcross X (h1 hX1) Y (h2 hY2)
+    · exact fun hc => hcross Y (h1 hY1) X (h2 hX2) (P.incomp_symm X Y hc)
+    · exact hS2 X hX2 Y hY2 hne
+
 end YangMills.KP
