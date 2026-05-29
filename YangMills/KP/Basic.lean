@@ -82,4 +82,25 @@ theorem partition_empty : partition P ∅ = 1 := by
     exact admissible_empty P
   rw [hfilter, Finset.sum_singleton, Finset.prod_empty]
 
+/-- Single-polymer partition function: `Ξ({X}) = 1 + z(X)`.  The two admissible
+subfamilies of `{X}` are `∅` (contributing `1`) and `{X}` (contributing `z(X)`).
+This is the `n = 1` base case of the cluster expansion. -/
+theorem partition_singleton (X : P.Polymer) :
+    partition P ({X} : Finset P.Polymer) = 1 + P.activity X := by
+  rw [partition]
+  have hpow : ({X} : Finset P.Polymer).powerset = {∅, {X}} := by
+    ext S
+    rw [Finset.mem_powerset, Finset.subset_singleton_iff, Finset.mem_insert,
+        Finset.mem_singleton]
+  rw [hpow]
+  have hfilter :
+      ({∅, {X}} : Finset (Finset P.Polymer)).filter (Admissible P) = {∅, {X}} := by
+    apply Finset.filter_eq_self.mpr
+    intro S hS
+    rw [Finset.mem_insert, Finset.mem_singleton] at hS
+    rcases hS with h | h
+    · subst h; exact admissible_empty P
+    · subst h; exact admissible_singleton P X
+  rw [hfilter, Finset.sum_pair (by simp), Finset.prod_empty, Finset.prod_singleton]
+
 end YangMills.KP
