@@ -123,4 +123,64 @@ theorem admissible_union_iff {Λ₁ Λ₂ : Finset P.Polymer}
     · exact fun hc => hcross Y (h1 hY1) X (h2 hX2) (P.incomp_symm X Y hc)
     · exact hS2 X hX2 Y hY2 hne
 
+/-- **Partition-function factorization (KP1).**  If `Λ₁` and `Λ₂` are disjoint with
+no incompatibility between them, then `Ξ(Λ₁ ∪ Λ₂) = Ξ(Λ₁)·Ξ(Λ₂)`.  This
+multiplicativity over compatible blocks is what makes `log Ξ` additive — the
+algebraic basis of the cluster expansion (the bridge to KP2).
+
+Proof: the admissible subfamilies of `Λ₁ ∪ Λ₂` are in bijection with pairs
+`(S ∩ Λ₁, S ∩ Λ₂)` of admissible subfamilies of each block
+(`admissible_union_iff`), and the activity product splits over the disjoint union. -/
+theorem partition_union {Λ₁ Λ₂ : Finset P.Polymer}
+    (hdisj : Disjoint Λ₁ Λ₂)
+    (hcross : ∀ X ∈ Λ₁, ∀ Y ∈ Λ₂, ¬ P.incomp X Y) :
+    partition P (Λ₁ ∪ Λ₂) = partition P Λ₁ * partition P Λ₂ := by
+  rw [partition, partition, partition, Finset.sum_mul_sum, ← Finset.sum_product']
+  refine Finset.sum_bij'
+    (fun S _ => (S ∩ Λ₁, S ∩ Λ₂)) (fun p _ => p.1 ∪ p.2) ?_ ?_ ?_ ?_ ?_
+  · -- forward map lands in the product of filtered powersets
+    intro S hS
+    rw [Finset.mem_filter, Finset.mem_powerset] at hS
+    rw [Finset.mem_product, Finset.mem_filter, Finset.mem_powerset, Finset.mem_filter,
+        Finset.mem_powerset]
+    exact ⟨⟨Finset.inter_subset_right, admissible_mono P Finset.inter_subset_left hS.2⟩,
+           ⟨Finset.inter_subset_right, admissible_mono P Finset.inter_subset_left hS.2⟩⟩
+  · -- inverse map lands in the filtered powerset of the union
+    intro p hp
+    rw [Finset.mem_product, Finset.mem_filter, Finset.mem_powerset, Finset.mem_filter,
+        Finset.mem_powerset] at hp
+    rw [Finset.mem_filter, Finset.mem_powerset]
+    exact ⟨Finset.union_subset_union hp.1.1 hp.2.1,
+           (admissible_union_iff P hcross hp.1.1 hp.2.1).mpr ⟨hp.1.2, hp.2.2⟩⟩
+  · -- left inverse: (S∩Λ₁) ∪ (S∩Λ₂) = S
+    intro S hS
+    rw [Finset.mem_filter, Finset.mem_powerset] at hS
+    dsimp only
+    rw [← Finset.inter_union_distrib_left, Finset.inter_eq_left.mpr hS.1]
+  · -- right inverse: ((p.1∪p.2)∩Λ₁, (p.1∪p.2)∩Λ₂) = p
+    intro p hp
+    rw [Finset.mem_product, Finset.mem_filter, Finset.mem_powerset, Finset.mem_filter,
+        Finset.mem_powerset] at hp
+    dsimp only
+    have hd2 : Disjoint p.2 Λ₁ := hdisj.symm.mono_left hp.2.1
+    have hd1 : Disjoint p.1 Λ₂ := hdisj.mono_left hp.1.1
+    have e1 : (p.1 ∪ p.2) ∩ Λ₁ = p.1 := by
+      rw [Finset.union_inter_distrib_right, Finset.inter_eq_left.mpr hp.1.1,
+          Finset.disjoint_iff_inter_eq_empty.mp hd2, Finset.union_empty]
+    have e2 : (p.1 ∪ p.2) ∩ Λ₂ = p.2 := by
+      rw [Finset.union_inter_distrib_right, Finset.disjoint_iff_inter_eq_empty.mp hd1,
+          Finset.inter_eq_left.mpr hp.2.1, Finset.empty_union]
+    rw [Prod.ext_iff]
+    exact ⟨e1, e2⟩
+  · -- the activity product splits over the disjoint union
+    intro S hS
+    rw [Finset.mem_filter, Finset.mem_powerset] at hS
+    dsimp only
+    have hSeq : S = (S ∩ Λ₁) ∪ (S ∩ Λ₂) := by
+      rw [← Finset.inter_union_distrib_left, Finset.inter_eq_left.mpr hS.1]
+    have hSdisj : Disjoint (S ∩ Λ₁) (S ∩ Λ₂) :=
+      hdisj.mono Finset.inter_subset_right Finset.inter_subset_right
+    conv_lhs => rw [hSeq]
+    rw [Finset.prod_union hSdisj]
+
 end YangMills.KP
