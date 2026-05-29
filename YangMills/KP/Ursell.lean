@@ -98,4 +98,59 @@ theorem ursell_eq_zero_of_not_isCluster {n : ℕ} (X : Fin n → P.Polymer)
     exact SimpleGraph.Connected.mono hle hconn
   rw [hempty, Finset.sum_empty]
 
+/-- **First nontrivial Mayer coefficient: a "dimer" has Ursell coefficient `−1`.**
+For two mutually incompatible polymers, the incompatibility graph is a single edge
+on two vertices; its only connected spanning subgraph is the edge itself, giving
+`(−1)^1 = −1`.  (Monomer `+1`, dimer `−1`, non-cluster `0` — matching the physical
+Mayer coefficients, which validates the definition.) -/
+theorem ursell_fin_two (X : Fin 2 → P.Polymer) (hinc : P.incomp (X 0) (X 1)) :
+    ursell P X = -1 := by
+  classical
+  have hadj01 : (incompGraph P X).Adj 0 1 := by
+    rw [incompGraph_adj]; exact ⟨by decide, hinc⟩
+  -- The incompatibility graph has exactly the edge `s(0,1)`.
+  have hef : (incompGraph P X).edgeFinset = {s(0, 1)} := by
+    ext e
+    rw [SimpleGraph.mem_edgeFinset, Finset.mem_singleton]
+    refine Sym2.ind (fun a b => ?_) e
+    rw [SimpleGraph.mem_edgeSet]
+    constructor
+    · intro hab
+      have hne : a ≠ b := ((incompGraph_adj P X a b).mp hab).1
+      fin_cases a <;> fin_cases b <;> simp_all
+    · intro he
+      rw [Sym2.eq_iff] at he
+      rcases he with ⟨ha, hb⟩ | ⟨ha, hb⟩ <;> subst ha <;> subst hb
+      · exact hadj01
+      · exact (incompGraph P X).symm hadj01
+  -- The empty subgraph on two vertices is disconnected; the single edge is connected.
+  have hdisc : ¬ (SimpleGraph.fromEdgeSet
+      (↑(∅ : Finset (Sym2 (Fin 2))) : Set (Sym2 (Fin 2)))).Connected := by
+    have he0 : SimpleGraph.fromEdgeSet
+        (↑(∅ : Finset (Sym2 (Fin 2))) : Set (Sym2 (Fin 2))) = ⊥ := by simp
+    rw [he0]
+    intro hc
+    have : (0 : Fin 2) = 1 := SimpleGraph.reachable_bot.mp (hc.preconnected 0 1)
+    exact absurd this (by decide)
+  have hconn : (SimpleGraph.fromEdgeSet
+      (↑({s(0, 1)} : Finset (Sym2 (Fin 2))) : Set (Sym2 (Fin 2)))).Connected := by
+    have hadj : (SimpleGraph.fromEdgeSet
+        (↑({s(0, 1)} : Finset (Sym2 (Fin 2))) : Set (Sym2 (Fin 2)))).Adj 0 1 := by
+      rw [SimpleGraph.fromEdgeSet_adj]
+      exact ⟨by simp, by decide⟩
+    refine ⟨fun u v => ?_⟩
+    fin_cases u <;> fin_cases v
+    · exact SimpleGraph.Reachable.refl _
+    · exact hadj.reachable
+    · exact hadj.symm.reachable
+    · exact SimpleGraph.Reachable.refl _
+  unfold ursell
+  rw [hef]
+  rw [show ({s(0, 1)} : Finset (Sym2 (Fin 2))).powerset = {∅, {s(0, 1)}} by
+        ext S; rw [Finset.mem_powerset, Finset.subset_singleton_iff, Finset.mem_insert,
+          Finset.mem_singleton]]
+  rw [Finset.filter_insert, if_neg hdisc, Finset.filter_singleton, if_pos hconn,
+      Finset.sum_singleton, Finset.card_singleton]
+  norm_num
+
 end YangMills.KP
