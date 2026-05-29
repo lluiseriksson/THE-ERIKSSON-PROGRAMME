@@ -156,6 +156,35 @@ history of this repo.
 
 ---
 
+## 4. Paper-formalization log (honest, conditional)
+
+Pieces of the Eriksson paper ("Exponential Clustering and Mass Gap for 4D SU(N)
+Lattice Yang–Mills", Feb 2026) formalized as **explicitly conditional** theorems —
+Balaban's imported inputs carried as *hypotheses*, never axioms.
+
+| Paper result | Lean | Status |
+|---|---|---|
+| §4 Prop. 4.1, coupling-control induction (`u_k ≥ u_0 + k·b₀/2`) | `YangMills/Paper/CouplingControl.lean` (`coupling_control`) | ✅ **verified** (oracle clean). Conditional on the β-function recursion + remainder bound `|r_k|≤C/u_k` as hypotheses. |
+| §6.1 Prop. 6.1, multiscale telescoping (algebraic core) | `YangMills/Paper/MassGapAssembly.lean` (`telescoping`) | ✅ **verified** (oracle clean). Proved outright (no hypotheses) — the law-of-total-covariance telescoping stripped to `S 0 = S n + Σ (S k − S (k+1))`. |
+| §6.3 Thm 6.3, UV summation over scales (`|∑R_k| ≤ M(1−r)⁻¹`) | `YangMills/Paper/UVSummation.lean` (`uv_geometric_summation`) | ✅ **verified** (oracle clean). **Unconditional** real analysis (geometric-tail bound); proved outright. The analytic core of the §6 "core new contribution" — the summability/finite-tail mechanism. |
+| §7 Thm 7.1, mass-gap bound assembly (`|Cov| ≤ (C₁+C₂)e^{−min(m*,c₀)t}`) | `YangMills/Paper/MassGapAssembly.lean` (`mass_gap_bound`) | ✅ **verified** (oracle clean). Conditional on the IR clustering bound (§5) and UV suppression bound (§6.3) as hypotheses. |
+
+**What the log certifies and does not:** each entry machine-checks the *internal
+logic* of a paper step *given* its imported inputs as hypotheses. It does **not**
+discharge those inputs (the uniform analyticity radius `R*`, the value `b₀`, the
+KP/polymer bounds, OS1/O(4) covariance) — those remain the hard, unclosed content.
+The honest reading: the paper's conditional *bookkeeping* is becoming verified; its
+*foundations* (and the unconditional Clay claim) are not.
+
+Next paper target (the big one): **Appendix A / §5 — KP ⇒ exponential clustering**,
+which requires building a polymer cluster-expansion layer that Mathlib lacks. A
+concrete, layered construction plan (types, lemmas, milestones KP0–KP4, honest
+difficulty) is in **`docs/kp-cluster-expansion-plan.md`**. This is milestone M3:
+large but *known* mathematics; landing it would turn the §5 input of
+`mass_gap_bound` from an assumed hypothesis into a derived theorem.
+
+---
+
 Lluis Eriksson — The Eriksson Programme. Update the percentage ledger (§0) and the
 milestone done-tests (§1) honestly as nodes close; never report a number that a
 `#print axioms` and an adversarial audit would not support.
