@@ -151,7 +151,32 @@ hypothesis of `mass_gap_bound`.
 | **KP0** | `PolymerSystem`, `Admissible`, `partition` | low | ✅ **landed** — `YangMills/KP/Basic.lean` (`PolymerSystem`, `Admissible` + `admissible_empty`/`_mono`/`_singleton`, `partition`, `partition_empty = 1`); green, oracle clean. |
 | **KP1** | finite-volume `Ξ`, basic identities (factorization over compatible blocks) | low–med | ✅ **landed** — `YangMills/KP/Basic.lean`: `partition_singleton` (`Ξ({X})=1+z(X)`), `admissible_union_iff`, and the factorization `partition_union` (`Ξ(Λ₁∪Λ₂)=Ξ(Λ₁)·Ξ(Λ₂)` for disjoint, cross-compatible blocks); green, oracle clean. This is the multiplicativity that makes `log Ξ` additive. |
 | **KP2a** | `ursell` coefficients + connected-cluster indexing | **high** | ✅ **defined** — `YangMills/KP/Cluster.lean` (`incompGraph`, `incompGraph_adj`, `IsCluster`) + `YangMills/KP/Ursell.lean` (`ursell` = signed sum `∑(−1)^{#edges}` over connected spanning subgraphs of the incompatibility graph, plus `ursell_fin_one` (`φ = 1` for a single-polymer cluster — base case) `ursell_eq_zero_of_not_isCluster` (`φ = 0` off clusters — clusters are *exactly* the expansion index), and `ursell_fin_two` (`φ = −1` for a dimer — the first nontrivial Mayer coefficient, validating the definition against the physical values +1/−1/0)); green, oracle clean. **Next:** the expansion identity `log Ξ = ∑ clusters …`, then KP2b convergence. |
-| **KP2b** | `kp_cluster_convergence` (FV Thm 5.4, inductive) | **highest** | The crux. Strong induction on cluster size + KP criterion. Budget the bulk here. |
+| **KP2b** | `kp_cluster_convergence` (FV Thm 5.4, inductive) | **highest** | 🚧 **attack begun** — `YangMills/KP/Expansion.lean`: `clusterSum` (the RHS object `∑' n, (1/(n+1)!)·∑_X φ(X)·∏z`, for `Fintype Polymer`) is defined and oracle-clean. The crux (convergence + the identity) is below. |
+
+### KP2b attack plan (the expansion identity `Ξ = exp(clusterSum)`)
+
+The cluster sum (RHS) is now a Lean object (`clusterSum`). The route to the identity
+`log Ξ(Λ) = clusterSum` and the convergence, in dependency order:
+
+- **E1 — cluster sum object.** ✅ `clusterSum` defined (`Expansion.lean`).
+- **E2 — only-clusters reduction.** ✅ `ursell_eq_zero_of_not_isCluster` already
+  shows the inner sum ranges effectively over clusters.
+- **E3 — Mayer exponential formula (combinatorial identity).** `Ξ(Λ) = exp(clusterSum)`
+  as a *formal* identity of finite sums (no convergence yet): expand `exp` of the
+  cluster sum into a sum over multisets of clusters, and match it term-by-term with
+  `Ξ = ∑_{compatible families} ∏ z` via the Mayer–Ursell inversion. This is the
+  combinatorial heart; needs the partition of a polymer family into its connected
+  components (`incompGraph` connected components) and the multinomial/`n!`
+  bookkeeping. Large but finitary.
+- **E4 — KP convergence (FV Thm 5.4).** The inductive bound: under `KPCriterion`,
+  the one-point cluster sum is `≤ exp(a X) − 1`, so `clusterSum` converges
+  absolutely uniformly in the volume. Strong induction on cluster size. **The crux.**
+- **E5 — truncated correlation decay (= Appendix A / KP3).** Differentiate `log Ξ`
+  / use the cluster representation of the two-point function; the KP weights give
+  the exponential-in-distance bound `m*` fed to `mass_gap_bound` (§7).
+
+E3 is the next attackable target (finitary, no convergence); E4 is the months-long
+inductive core.
 | **KP3** | `kp_exponential_clustering` (Appendix A) | med–high | Given KP2b, this is "spanning cluster pays e^{−m·dist}" + summation. |
 | **KP4** | wire `m*` into `mass_gap_bound` (§7); state §5 as a theorem, not a hypothesis | low | The payoff: §5 input becomes derived from the KP bound. |
 
