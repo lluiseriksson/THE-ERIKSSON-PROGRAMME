@@ -177,6 +177,59 @@ The cluster sum (RHS) is now a Lean object (`clusterSum`). The route to the iden
 
 E3 is the next attackable target (finitary, no convergence); E4 is the months-long
 inductive core.
+
+### Landed so far (`YangMills/KP/`, all oracle-clean, wired into `YangMillsCore`)
+
+KP0–KP2a: `PolymerSystem`, `partition`, `partition_empty/_singleton/_union`,
+`incompGraph`, `IsCluster`, `ursell`, `ursell_fin_one` (φ=+1), `ursell_fin_two`
+(φ=−1), `ursell_eq_zero_of_not_isCluster`.
+
+KP2b identity side (`Expansion.lean`): `clusterSum` (E1), `clusterSum_eq_sum_clusters`
+(E2), `expansion_identity_isEmpty` (E3 base), `clusterSum_first_order` (E3 linear order).
+
+KP2b convergence side (`Criterion.lean`): `KPCriterion`, `kp_activity_le`,
+`kp_neighbor_sum_le`.
+
+### The two heavy open targets (sharpened goals for the next prover)
+
+Both are genuine theorems *not* in Mathlib; each is a dedicated-session effort, not an
+iteration. They have no remaining 3-line intermediate corollaries — the next step in
+each *is* the heavy theorem.
+
+**Target A — Ursell value on the complete graph (closes E3 beyond linear order).**
+The Mayer coefficient of a `k`-fold cluster of a single polymer (whose incompatibility
+graph is `K_k`, since the hard core makes every pair incompatible) is
+
+```
+theorem ursell_complete {k : ℕ} (X : Fin (k+1) → P.Polymer)
+    (hcomplete : ∀ i j, i ≠ j → P.incomp (X i) (X j)) :
+    ursell P X = (-1) ^ k * (Nat.factorial k : ℤ)
+```
+
+i.e. `φ(K_{k+1}) = (−1)^k k!`. Validated data: `k=0 → +1` (`ursell_fin_one`),
+`k=1 → −1` (`ursell_fin_two`); next checkpoint `k=2 → +2`. Proof route: the signed
+count of connected spanning subgraphs of `K_{k+1}`; either deletion–contraction
+induction or the exponential-generating-function identity `log(1+z) = ∑ (−1)^k z^{k+1}/(k+1)`.
+The Lean obstacle is walk-based reachability arguments on `fromEdgeSet` subgraphs
+(showing specific subsets are/aren't connected), for which Mathlib has only low-level
+API. With Target A, `clusterSum` of a one-polymer system sums to `log(1 + z(X))`,
+giving the single-polymer case of `Ξ = exp(clusterSum)`.
+
+**Target B — inductive KP convergence (closes E4 / FV Thm 5.4).**
+Under `KPCriterion P a`, the cluster sum converges absolutely with the standard bound
+
+```
+theorem kp_cluster_bound [Fintype P.Polymer] {a : P.Polymer → ℝ}
+    (h : KPCriterion P a) (X : P.Polymer) :
+    ∑ (clusters containing X) ‖φ(·)‖ ∏ ‖z‖ ≤ a X          -- schematic
+```
+
+(the one-point cluster sum is `≤ a X`), proved by strong induction on cluster size via
+the tree-graph inequality. `kp_activity_le` and `kp_neighbor_sum_le` are the base
+estimates the induction starts from. The Lean obstacle is the tree-graph / Penrose
+bound combinatorics (forests spanning the incompatibility graph), entirely absent from
+Mathlib. Target B feeds the exponential-clustering corollary (KP3) and ultimately the
+`m*` fed to `mass_gap_bound` (§7).
 | **KP3** | `kp_exponential_clustering` (Appendix A) | med–high | Given KP2b, this is "spanning cluster pays e^{−m·dist}" + summation. |
 | **KP4** | wire `m*` into `mass_gap_bound` (§7); state §5 as a theorem, not a hypothesis | low | The payoff: §5 input becomes derived from the KP bound. |
 

@@ -87,3 +87,22 @@ import YangMills.ClayCore.LeftInvariantVanishing
 import YangMills.ClayCore.SchurMixedPowerSumVanishing
 import YangMills.ClayCore.SUOneDegenerate
 import YangMills.ClayCore.U1FourierOrthogonality
+
+-- Paper (Eriksson, Bloque 4) — the §4/§6/§7 conditional skeleton, formalized as
+-- explicit-hypothesis theorems (the imported Balaban/KP estimates are carried as
+-- hypotheses, never as axioms).  See `docs/` and the per-file headers.
+import YangMills.Paper.CouplingControl
+import YangMills.Paper.MassGapAssembly
+import YangMills.Paper.UVSummation
+
+-- Kotecký–Preiss / Mayer cluster-expansion layer (`docs/kp-cluster-expansion-plan.md`).
+-- KP0–KP2a (substrate, partition identities, incompatibility graph, Ursell coefficient)
+-- plus the KP2b attack: the cluster sum (Mayer RHS), its support on clusters, the
+-- empty-system and first-order checks of `Ξ = exp(clusterSum)`, and the KP smallness
+-- criterion with its base estimates.  The general Ursell value on complete graphs and
+-- the inductive KP convergence bound remain open (and are NOT imported as axioms).
+import YangMills.KP.Basic
+import YangMills.KP.Cluster
+import YangMills.KP.Ursell
+import YangMills.KP.Expansion
+import YangMills.KP.Criterion
