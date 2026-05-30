@@ -70,6 +70,14 @@ the recurrence as hypothesis), giving Target A in full.
 of two filtered powersets, with the cardinality split. This is the focused interactive
 session.
 
+**Bonus already in place:** closing `ursellComplete_recurrence` also immediately gives
+the *single-polymer case of the Mayer identity* `Ξ({X}) = exp(clusterSum)`. The analytic
+half is done: `mayer_log_series` (`Convergence.lean`) proves
+`∑ₙ (−1)ⁿ·zⁿ⁺¹/(n+1) = log(1+z)`. Combined with `ursellComplete` (each one-polymer term
+is `(1/(n+1)!)·φ(K_{n+1})·zⁿ⁺¹ = (−1)ⁿ/(n+1)·zⁿ⁺¹`) and `partition_singleton`
+(`Ξ({X}) = 1+z`), Target A ⟹ `clusterSum({X}) = log(1+z(X))` ⟹ `Ξ({X}) = exp(clusterSum)`.
+So Target A is the *only* missing piece for the n=1 identity case too.
+
 ---
 
 ## Target B — `kp_per_size_bound`
