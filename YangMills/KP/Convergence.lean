@@ -73,4 +73,22 @@ theorem mayer_log_series {z : ℝ} (h : |z| < 1) :
   rw [hfun, hval]
   exact (Real.hasSum_pow_div_log_of_abs_lt_one hx).neg
 
+/-- **Complex Mayer log series (the form the cluster sum actually needs).**
+For `‖z‖ < 1` (complex `z`), `∑ₙ (−1)ⁿ·zⁿ⁺¹/(n+1) = log(1 + z)`.  The `clusterSum` is
+`ℂ`-valued, so this is the version that combines with Target A's `ursellComplete` to give
+`clusterSum({X}) = Complex.log(1 + z(X))`.  Reindexed from Mathlib's
+`Complex.hasSum_taylorSeries_log` (`∑ₙ (−1)ⁿ⁺¹·zⁿ/n`, whose `n=0` term vanishes) by the
+shift `n ↦ n+1`. -/
+theorem mayer_log_series_complex {z : ℂ} (h : ‖z‖ < 1) :
+    HasSum (fun n : ℕ => (-1) ^ n * z ^ (n + 1) / ((n : ℂ) + 1)) (Complex.log (1 + z)) := by
+  have htaylor := Complex.hasSum_taylorSeries_log h
+  -- Mathlib indexes `∑ (-1)^(n+1) zⁿ/n`; the n=0 term is 0, so shift to start at 1.
+  rw [← hasSum_nat_add_iff' 1] at htaylor
+  simp only [Finset.range_one, Finset.sum_singleton, pow_zero, Nat.cast_zero,
+    div_zero, sub_zero] at htaylor
+  convert htaylor using 2 with n
+  rw [show n + 1 + 1 = n + 2 by ring, pow_add]
+  push_cast
+  ring
+
 end YangMills.KP
