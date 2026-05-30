@@ -95,4 +95,65 @@ theorem integral_single_edge_eq_zero {E : Type*} [NormedAddCommGroup E] [NormedS
     ∫ A, f (configToPos A e) ∂(gaugeMeasureFrom (d := d) (N := N) μ) = 0 := by
   rw [integral_single_edge μ e f hf, hmean]
 
+/-- **Product observable over all positive edges factorizes.**  For a `𝕜`-valued
+observable assigned to each positive edge, the expectation of the product over all edges
+under the product gauge measure factorizes into the per-edge group integrals:
+`∫ ∏ₑ fₑ(A e) dμ_gauge = ∏ₑ ∫ fₑ dμ`.  This is the gauge-measure form of Fubini
+(`integral_fintype_prod_eq_prod`) transported through the positive-edge coordinates;
+it is the basis for evaluating multi-edge Wilson observables on the lattice. -/
+theorem integral_prod_edges {𝕜 : Type*} [RCLike 𝕜]
+    (μ : Measure G) [IsProbabilityMeasure μ] (f : PosEdge d N → G → 𝕜)
+    (hf : ∀ e, AEStronglyMeasurable (f e) μ) :
+    ∫ A, ∏ e : PosEdge d N, f e (configToPos A e)
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+      = ∏ e : PosEdge d N, ∫ g, f e g ∂μ := by
+  classical
+  -- Transport along `gaugeConfigEquiv`: `configToPos A e = (symm A) e`, then Fubini.
+  unfold gaugeMeasureFrom
+  have hmeas : Measurable (gaugeConfigEquiv (d := d) (N := N) (G := G)) :=
+    measurable_gaugeConfigEquiv
+  have hsymm : Measurable (gaugeConfigEquiv (d := d) (N := N) (G := G)).symm := by
+    rw [measurable_iff_comap_le]; exact le_of_eq rfl
+  rw [integral_map hmeas.aemeasurable]
+  · have hcongr : (fun x : PosEdge d N → G =>
+        ∏ e : PosEdge d N, f e (configToPos (gaugeConfigEquiv x) e))
+        = (fun x : PosEdge d N → G => ∏ e : PosEdge d N, f e (x e)) := by
+      funext x
+      refine Finset.prod_congr rfl (fun e _ => ?_)
+      rw [show configToPos (gaugeConfigEquiv x) e = x e from
+        congrFun (gaugeConfigEquiv.left_inv x) e]
+    rw [hcongr]
+    exact integral_fintype_prod_eq_prod (fun (_ : PosEdge d N) => f _)
+  · -- the integrand on the mapped measure is AEStronglyMeasurable; rewrite product of
+    -- functions, then apply the Finset product lemma edge-by-edge.
+    have hfun : (fun A : GaugeConfig d N G => ∏ e : PosEdge d N, f e (configToPos A e))
+        = ∏ e : PosEdge d N, (fun A : GaugeConfig d N G => f e (configToPos A e)) := by
+      funext A; rw [Finset.prod_apply]
+    rw [hfun]
+    refine Finset.aestronglyMeasurable_prod _ (fun e _ => ?_)
+    have hcomp : Measurable (fun A : GaugeConfig d N G => configToPos A e) :=
+      (measurable_pi_apply e).comp hsymm
+    have hg : AEStronglyMeasurable (f e)
+        (((Measure.pi fun _ : PosEdge d N => μ).map gaugeConfigEquiv).map
+          (fun A => configToPos A e)) := by
+      rw [show ((Measure.pi fun _ : PosEdge d N => μ).map gaugeConfigEquiv)
+            = gaugeMeasureFrom (d := d) (N := N) μ from rfl, gaugeMeasureFrom_map_eval]
+      exact hf e
+    exact hg.comp_aemeasurable hcomp.aemeasurable
+
+/-- **A multi-edge product observable vanishes if any one factor has zero group mean.**
+For a product of per-edge observables, if some edge `e₀` carries an observable with
+vanishing Haar mean `∫ f e₀ dμ = 0`, then the full product expectation under the lattice
+gauge measure is zero.  Combined with the Schur/Fourier zero-mean facts this gives the
+vanishing of open Wilson lines (which contain at least one non-trivial edge factor) on
+the lattice. -/
+theorem integral_prod_edges_eq_zero {𝕜 : Type*} [RCLike 𝕜]
+    (μ : Measure G) [IsProbabilityMeasure μ] (f : PosEdge d N → G → 𝕜)
+    (hf : ∀ e, AEStronglyMeasurable (f e) μ)
+    (e₀ : PosEdge d N) (hmean : ∫ g, f e₀ g ∂μ = 0) :
+    ∫ A, ∏ e : PosEdge d N, f e (configToPos A e)
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ) = 0 := by
+  rw [integral_prod_edges μ f hf]
+  exact Finset.prod_eq_zero (Finset.mem_univ e₀) hmean
+
 end YangMills
