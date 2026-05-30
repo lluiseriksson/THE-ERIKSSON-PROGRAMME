@@ -61,4 +61,25 @@ theorem gaugeMeasureFrom_map_eval (μ : Measure G) [IsProbabilityMeasure μ]
   rw [hcomp]
   exact (measurePreserving_eval (μ := fun _ : PosEdge d N => μ) e).map_eq
 
+/-- **Single-edge observable reduces to a one-group integral.**  For any observable `f`
+of a single edge holonomy, its expectation under the product gauge measure equals the
+Haar integral of `f` over the group: `∫ f(A e) dμ_gauge = ∫ f dμ`.  This is the bridge
+that turns a lattice gauge expectation of a one-edge observable into a single-group Haar
+integral — where the centre-vanishing engine (`∫ χ dμ = 0` for non-trivial characters)
+applies.  Proved by `integral_map` over the single-edge marginal. -/
+theorem integral_single_edge {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (μ : Measure G) [IsProbabilityMeasure μ] (e : PosEdge d N)
+    (f : G → E) (hf : AEStronglyMeasurable f μ) :
+    ∫ A, f (configToPos A e) ∂(gaugeMeasureFrom (d := d) (N := N) μ) = ∫ g, f g ∂μ := by
+  classical
+  have hmeas : AEMeasurable (fun A : GaugeConfig d N G => configToPos A e)
+      (gaugeMeasureFrom (d := d) (N := N) μ) := by
+    have hsymm : Measurable (gaugeConfigEquiv (d := d) (N := N) (G := G)).symm := by
+      rw [measurable_iff_comap_le]; exact le_of_eq rfl
+    exact ((measurable_pi_apply e).comp hsymm).aemeasurable
+  have hf' : AEStronglyMeasurable f
+      ((gaugeMeasureFrom (d := d) (N := N) μ).map (fun A => configToPos A e)) := by
+    rw [gaugeMeasureFrom_map_eval]; exact hf
+  rw [← integral_map hmeas hf', gaugeMeasureFrom_map_eval]
+
 end YangMills
