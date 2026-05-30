@@ -250,6 +250,49 @@ The recurrence follows from the **component-of-vertex-0 decomposition**:
 Step 3 is the substantial piece (needs a `Finset`-level subgraph-splitting bijection and
 the component API); it is a focused local-Lean effort, not a paste-loop iteration.
 
+##### Exact next target (for an interactive-Lean session)
+
+All structural sub-lemmas are now landed and oracle-clean in `Ursell.lean`:
+`componentSupp_closed_under_adj` (no edge leaves a component — the partition fact),
+plus `allSubgraphs_signedSum` (`a(n)=[n≤1]`), `ursellComplete{,_one,_two,_three}`,
+`closed_form_of_recurrence`, `ursellComplete_closed_form`. Mathlib supplies the rest of
+the component API: `ConnectedComponent.supp`, `mem_supp_congr_adj`,
+`connected_toSimpleGraph` (induced subgraph on a component is connected),
+`maximal_connected_induce_supp`, and `Finset.sum_fiberwise` / `Finset.sum_nbij'`.
+
+The single remaining lemma to prove interactively (after which `ursellComplete_closed_form`
+becomes unconditional):
+
+```lean
+theorem ursellComplete_recurrence (n : ℕ) (hn : 1 ≤ n) :
+    ursellComplete (n + 1) = -(n : ℤ) * ursellComplete n
+```
+
+Proof skeleton:
+1. `unfold ursellComplete ursell`; the LHS is `∑_{E ⊆ E(K_{n+1})} [connected] (−1)^{|E|}`.
+   Drop the `[connected]` filter is *not* valid here — instead keep the full powerset and
+   use `componentSupp_closed_under_adj` to fiber.
+2. Fiber the full signed sum `a(n+1) = ∑_{E ⊆ E(K_{n+1})} (−1)^{|E|}` by
+   `S := (fromEdgeSet ↑E).connectedComponentMk 0 |>.supp.toFinset` (the component of 0).
+   `Finset.sum_fiberwise`.
+3. For fixed `S ∋ 0`: the fiber `{E : comp₀ = S}` splits (via
+   `componentSupp_closed_under_adj`, no crossing edges) as `{connected spanning E_S of K_S}
+   × {arbitrary E_c ⊆ E(K_{Sᶜ})}`, with `|E| = |E_S| + |E_c|`. Hence the fiber sum is
+   `(∑_{E_S connected} (−1)^{|E_S|}) · (∑_{E_c} (−1)^{|E_c|}) = ursellComplete |S| · a(n+1−|S|)`.
+4. By `allSubgraphs_signedSum`, `a(m) = [m≤1]`, so on the LHS `a(n+1) = 0` (as `n+1 ≥ 2`),
+   and on the RHS the complement factor `a(n+1−|S|)` is `0` unless `|S| ∈ {n, n+1}`.
+5. `|S| = n+1` ⟹ term `= ursellComplete(n+1)·a(0) = ursellComplete(n+1)`.
+   `|S| = n`   ⟹ `n` choices of which vertex ≠ 0 is excluded? No — `S ∋ 0` and `|S|=n`
+   means one non-zero vertex is excluded: `n` such `S`, each giving
+   `ursellComplete(n)·a(1) = ursellComplete(n)`. So `0 = ursellComplete(n+1) + n·ursellComplete(n)`,
+   i.e. the recurrence. (Use `componentSupp_closed_under_adj` to show a `|S|=n` component
+   forces the excluded vertex isolated, consistent with `comp₀ = S`.)
+
+The hard Lean work is the step-3 fiber bijection as a `Finset.sum_nbij'` between
+`(E(K_{n+1})).powerset.filter (comp₀ = S)` and a product of two powerset-filters; the
+`|E| = |E_S| + |E_c|` cardinality split; and the `decide`-free connectivity reasoning on
+`fromEdgeSet` of the `S`-part. Budget this as one dedicated interactive session.
+
 **Target B — inductive KP convergence (closes E4 / FV Thm 5.4).**
 Under `KPCriterion P a`, the cluster sum converges absolutely with the standard bound
 
