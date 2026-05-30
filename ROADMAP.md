@@ -183,6 +183,42 @@ difficulty) is in **`docs/kp-cluster-expansion-plan.md`**. This is milestone M3:
 large but *known* mathematics; landing it would turn the §5 input of
 `mass_gap_bound` from an assumed hypothesis into a derived theorem.
 
+### KP cluster-expansion layer — progress (2026-05-30)
+
+Built and verified in `YangMills/KP/` (all oracle-clean, wired into `YangMillsCore`;
+full build 8195 jobs green). ~20 theorems:
+
+- **KP0/KP1** (`Basic.lean`): `PolymerSystem`, `partition`, `partition_empty`,
+  `partition_singleton`, `partition_union` (factorization over compatible blocks).
+- **KP2a** (`Cluster.lean`, `Ursell.lean`): incompatibility graph, `IsCluster`, the
+  Ursell/Mayer coefficient with verified values φ(K₁)=+1, φ(K₂)=−1, φ(K₃)=+2, and
+  `ursell_eq_zero_of_not_isCluster`.
+- **KP2b identity side** (`Expansion.lean`, `SinglePolymer.lean`): the cluster sum
+  (Mayer RHS), its support on clusters, and the empty / linear-order / **single-polymer**
+  cases of `Ξ = exp(clusterSum)`. The n=1 identity
+  (`partition_eq_exp_clusterSum_singlePolymer`) is a **complete theorem conditional on
+  Target A**.
+- **KP2b convergence side** (`Criterion.lean`, `Convergence.lean`): the KP smallness
+  criterion + base estimates (`kp_activity_le`, `kp_neighbor_sum_le`) and the
+  convergence back-half (`cluster_series_summable`, `cluster_sum_le`: geometric per-size
+  bound ⇒ summable, sum ≤ C/(1−r)).
+- **Bridges** (`Convergence.lean`): `mayer_log_series` (real) and `mayer_log_series_complex`
+  (`∑ (−1)ⁿzⁿ⁺¹/(n+1) = log(1+z)`), and `closed_form_of_recurrence` (recurrence ⇒
+  `(−1)ⁿn!`).
+
+**Both heavy targets are now one lemma away** (see `docs/HANDOFF-KP.md` for exact
+statements, skeletons, and located Mathlib API):
+- **Target A** — `ursellComplete_recurrence` (`d(n+1) = −n·d(n)`, the
+  component-of-vertex-0 bijection). Closing it makes both the closed-form Ursell value
+  *and* the n=1 Mayer identity unconditional.
+- **Target B** — `kp_per_size_bound` (the Penrose tree-graph inequality giving the
+  geometric per-size bound). Closing it feeds the verified convergence back-half.
+
+Both remaining lemmas are large `Finset`/graph constructions that need interactive Lean;
+both are carried with **no axiom**, only explicit hypotheses (FOUNDATIONS discipline).
+This is genuine M3 progress, all on the lattice / finite-volume side — **still ~0%
+toward Clay** (§0), whose difficulty is the untouched continuum limit (M4–M5).
+
 ---
 
 Lluis Eriksson — The Eriksson Programme. Update the percentage ledger (§0) and the
