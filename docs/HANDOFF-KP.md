@@ -70,13 +70,18 @@ the recurrence as hypothesis), giving Target A in full.
 of two filtered powersets, with the cardinality split. This is the focused interactive
 session.
 
-**Bonus already in place:** closing `ursellComplete_recurrence` also immediately gives
-the *single-polymer case of the Mayer identity* `Ξ({X}) = exp(clusterSum)`. The analytic
-half is done: `mayer_log_series` (`Convergence.lean`) proves
-`∑ₙ (−1)ⁿ·zⁿ⁺¹/(n+1) = log(1+z)`. Combined with `ursellComplete` (each one-polymer term
-is `(1/(n+1)!)·φ(K_{n+1})·zⁿ⁺¹ = (−1)ⁿ/(n+1)·zⁿ⁺¹`) and `partition_singleton`
-(`Ξ({X}) = 1+z`), Target A ⟹ `clusterSum({X}) = log(1+z(X))` ⟹ `Ξ({X}) = exp(clusterSum)`.
-So Target A is the *only* missing piece for the n=1 identity case too.
+**Bonus already in place (fully assembled):** the *single-polymer case of the Mayer
+identity* is a complete theorem **conditional on Target A**, in
+`YangMills/KP/SinglePolymer.lean`:
+- `clusterSum_singlePolymer` : `clusterSum (singlePolymerSystem z) = Complex.log (1+z)`.
+- `partition_eq_exp_clusterSum_singlePolymer` :
+  `Ξ(singlePolymerSystem z) = Complex.exp (clusterSum …)` (for `‖z‖<1`).
+
+Both take only `hrec` (Target A's recurrence) as hypothesis. So the *moment*
+`ursellComplete_recurrence` is closed, the n=1 case of `Ξ = exp(clusterSum)` becomes
+**unconditional with zero extra work** — discharge `hrec` and done. The assembly already
+composes `ursellComplete_closed_form` + `mayer_log_series_complex` + factorial
+cancellation + `partition_singleton` + `Complex.exp_log`, all verified.
 
 ---
 
