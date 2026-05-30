@@ -214,4 +214,42 @@ theorem closed_form_of_recurrence (c : ℕ → ℤ) (h1 : c 1 = 1)
     push_cast
     ring
 
+/-- The **canonical complete (all-incompatible) polymer system**: every pair of
+polymers is incompatible.  For any tuple `X : Fin n → ℕ`, its incompatibility graph is
+the complete graph `K_n` (adjacency `i ≠ j ∧ True ↔ i ≠ j`), so this system isolates
+the complete-graph Ursell values, independent of which polymers are chosen. -/
+def completeSystem : PolymerSystem where
+  Polymer := Unit
+  incomp _ _ := True
+  incomp_symm _ _ _ := trivial
+  incomp_self _ := trivial
+  activity _ := 1
+
+/-- The **complete-graph Ursell value** `d(n) = φ(K_n)`, realized as the Ursell
+coefficient of an `n`-tuple in the all-incompatible system.  This is the sequence
+Target A computes: `d(n) = (−1)^{n-1}(n-1)!`. -/
+noncomputable def ursellComplete (n : ℕ) : ℤ :=
+  ursell completeSystem (fun _ : Fin n => ())
+
+theorem ursellComplete_one : ursellComplete 1 = 1 := by
+  unfold ursellComplete; exact ursell_fin_one completeSystem _
+
+theorem ursellComplete_two : ursellComplete 2 = -1 := by
+  unfold ursellComplete; exact ursell_fin_two completeSystem _ trivial
+
+theorem ursellComplete_three : ursellComplete 3 = 2 := by
+  unfold ursellComplete; exact ursell_fin_three completeSystem _ trivial trivial trivial
+
+/-- **Target A, conditional on the recurrence.**  Granting the complete-graph Ursell
+recurrence `d(n+1) = −n·d(n)` (`hrec`, the remaining open combinatorial lemma — the
+component-of-vertex-0 decomposition of spanning subgraphs), the closed form
+`φ(K_{n+1}) = d(n+1) = (−1)^n·n!` of Target A follows for the genuine complete-graph
+values.  Validated base data: `ursellComplete_one/two/three` give `d(1)=1, d(2)=−1,
+d(3)=2`, matching the recurrence (`−1 = −1·1`, `2 = −2·(−1)`).  No axiom is introduced:
+the recurrence is an explicit hypothesis. -/
+theorem ursellComplete_closed_form
+    (hrec : ∀ n : ℕ, 1 ≤ n → ursellComplete (n + 1) = -(n : ℤ) * ursellComplete n) :
+    ∀ n : ℕ, ursellComplete (n + 1) = (-1) ^ n * (Nat.factorial n : ℤ) :=
+  closed_form_of_recurrence ursellComplete ursellComplete_one hrec
+
 end YangMills.KP
