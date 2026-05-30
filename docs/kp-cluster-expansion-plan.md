@@ -227,6 +227,29 @@ The Lean obstacle is walk-based reachability arguments on `fromEdgeSet` subgraph
 API. With Target A, `clusterSum` of a one-polymer system sums to `log(1 + z(X))`,
 giving the single-polymer case of `Ξ = exp(clusterSum)`.
 
+#### Blueprint for the one remaining lemma — the recurrence `d(n+1) = −n·d(n)`
+
+Verified scaffolding already in `Ursell.lean`: `ursellComplete` (= `d(n)`),
+`closed_form_of_recurrence` (recurrence ⟹ closed form), `ursellComplete_one/two/three`
+(`d=1,−1,2`), and `allSubgraphs_signedSum` (`a(n) = ∑_{E⊆E(K_n)}(−1)^{|E|} = [n≤1]`).
+The recurrence follows from the **component-of-vertex-0 decomposition**:
+
+1. Component map `c0 : E(K_n).powerset → {S : Finset (Fin n) // 0 ∈ S}`,
+   `E ↦ ((fromEdgeSet ↑E).connectedComponentMk 0).supp`. (Mathlib:
+   `SimpleGraph.ConnectedComponent.supp`, `connectedComponentMk_mem`.)
+2. `Finset.sum_fiberwise` over `c0`: `a(n) = ∑_{S∋0} ∑_{E : c0 E = S} (−1)^{|E|}`.
+3. Fiber bijection (the crux): `{E : c0 E = S} ≃ {connected spanning subgraphs of K_S}
+   × {arbitrary subgraphs of K_{Sᶜ}}`. Forward: split `E` into `E∩K_S` and `E∩K_{Sᶜ}`;
+   the no-crossing-edges fact (`connectedComponentMk_eq_of_adj`: adjacent vertices share
+   a component, so no edge leaves `S`) makes this a partition of `E`. So the fiber sum
+   factors as `d(|S|)·a(n−|S|)`.
+4. Group by `|S| = k` (`C(n−1,k−1)` choices of `S∋0`): `a(n) = ∑_k C(n−1,k−1) d(k) a(n−k)`.
+5. With `a(n) = [n≤1]` (step done) only `k = n` and `k = n−1` survive for `n ≥ 2`,
+   giving `0 = d(n) + (n−1)d(n−1)`, i.e. `d(n) = −(n−1)d(n−1)`. Reindex to `hrec`.
+
+Step 3 is the substantial piece (needs a `Finset`-level subgraph-splitting bijection and
+the component API); it is a focused local-Lean effort, not a paste-loop iteration.
+
 **Target B — inductive KP convergence (closes E4 / FV Thm 5.4).**
 Under `KPCriterion P a`, the cluster sum converges absolutely with the standard bound
 

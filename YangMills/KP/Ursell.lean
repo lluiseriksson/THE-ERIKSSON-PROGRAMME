@@ -252,4 +252,31 @@ theorem ursellComplete_closed_form
     ∀ n : ℕ, ursellComplete (n + 1) = (-1) ^ n * (Nat.factorial n : ℤ) :=
   closed_form_of_recurrence ursellComplete ursellComplete_one hrec
 
+/-- **Recurrence ingredient `a(n) = [n ≤ 1]`: the signed sum over ALL spanning
+subgraphs of `K_n` vanishes for `n ≥ 2`.**  Since `∑_{E ⊆ S} (−1)^{|E|} = (1−1)^{|S|}`
+(`Finset.sum_powerset_neg_one_pow_card`), summing over every subset of the edge set of
+`K_n` gives `1` when `K_n` has no edges (`n ≤ 1`) and `0` otherwise.  This `a(n)` is the
+left-hand side of the cluster recurrence: expanding `a(n)` by the connected component of
+vertex 0 yields `a(n) = ∑_k C(n−1,k−1)·d(k)·a(n−k)`, which with `a(n) = [n≤1]` collapses
+to `d(n+1) = −n·d(n)` (the open `hrec`).  Proving that expansion is the remaining
+combinatorial step (see `docs/kp-cluster-expansion-plan.md`). -/
+theorem allSubgraphs_signedSum (n : ℕ) :
+    ∑ E ∈ (⊤ : SimpleGraph (Fin n)).edgeFinset.powerset, (-1 : ℤ) ^ E.card
+      = if n ≤ 1 then 1 else 0 := by
+  rw [Finset.sum_powerset_neg_one_pow_card]
+  have hbot : (⊤ : SimpleGraph (Fin n)) = ⊥ ↔ n ≤ 1 := by
+    rw [← Fin.subsingleton_iff_le_one]
+    constructor
+    · intro h
+      refine ⟨fun a b => ?_⟩
+      by_contra hab
+      have hadj : (⊤ : SimpleGraph (Fin n)).Adj a b := (SimpleGraph.top_adj a b).mpr hab
+      rw [h] at hadj
+      exact (SimpleGraph.bot_adj a b).mp hadj
+    · intro h
+      ext a b
+      rw [SimpleGraph.top_adj, SimpleGraph.bot_adj]
+      simp [Subsingleton.elim a b]
+  simp only [SimpleGraph.edgeFinset_eq_empty, hbot]
+
 end YangMills.KP
