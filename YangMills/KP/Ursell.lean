@@ -153,4 +153,43 @@ theorem ursell_fin_two (X : Fin 2 → P.Polymer) (hinc : P.incomp (X 0) (X 1)) :
       Finset.sum_singleton, Finset.card_singleton]
   norm_num
 
+/-- **k = 2 checkpoint of `ursell(K_{k+1}) = (−1)^k·k!`: a triangle has `φ = +2`.**
+Three mutually incompatible polymers have incompatibility graph `K_3` (edge set
+`{s(0,1), s(0,2), s(1,2)}`).  Of the eight spanning subgraphs, the four connected
+ones are the three 2-edge paths (`(−1)^2 = +1` each) and the full triangle
+(`(−1)^3 = −1`), so `φ = 3·(+1) + (−1) = 2 = (−1)^2·2!`.  This is the first nontrivial
+confirmation of Target A beyond the monomer (`+1`) and dimer (`−1`).
+
+The connectivity of each concrete subgraph is settled by `decide` (kernel-reduced, so
+the oracle stays `[propext, Classical.choice, Quot.sound]`); the spanning subgraphs are
+enumerated as the explicit 8-element powerset of the edge set. -/
+theorem ursell_fin_three (X : Fin 3 → P.Polymer)
+    (h01 : P.incomp (X 0) (X 1)) (h02 : P.incomp (X 0) (X 2))
+    (h12 : P.incomp (X 1) (X 2)) :
+    ursell P X = 2 := by
+  classical
+  have h10 := P.incomp_symm _ _ h01
+  have h20 := P.incomp_symm _ _ h02
+  have h21 := P.incomp_symm _ _ h12
+  -- The incompatibility graph is K_3: edgeFinset = {s(0,1), s(0,2), s(1,2)}.
+  have hef : (incompGraph P X).edgeFinset = {s(0,1), s(0,2), s(1,2)} := by
+    ext e
+    rw [SimpleGraph.mem_edgeFinset]
+    refine Sym2.ind (fun a b => ?_) e
+    rw [SimpleGraph.mem_edgeSet, incompGraph_adj]
+    fin_cases a <;> fin_cases b <;>
+      simp_all [Finset.mem_insert, Finset.mem_singleton]
+  -- Enumerate the 8 spanning subgraphs; resolve connectivity by `decide`.
+  rw [ursell, hef, Finset.sum_filter]
+  rw [show ({s(0,1), s(0,2), s(1,2)} : Finset (Sym2 (Fin 3))).powerset =
+      {∅, {s(0,1)}, {s(0,2)}, {s(1,2)}, {s(0,1), s(0,2)}, {s(0,1), s(1,2)},
+       {s(0,2), s(1,2)}, {s(0,1), s(0,2), s(1,2)}} from by decide]
+  rw [Finset.sum_insert (by decide), Finset.sum_insert (by decide),
+      Finset.sum_insert (by decide), Finset.sum_insert (by decide),
+      Finset.sum_insert (by decide), Finset.sum_insert (by decide),
+      Finset.sum_insert (by decide), Finset.sum_singleton]
+  rw [if_neg (by decide), if_neg (by decide), if_neg (by decide), if_neg (by decide),
+      if_pos (by decide), if_pos (by decide), if_pos (by decide), if_pos (by decide)]
+  decide
+
 end YangMills.KP
