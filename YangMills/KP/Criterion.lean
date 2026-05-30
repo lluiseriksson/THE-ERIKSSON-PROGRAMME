@@ -66,4 +66,21 @@ theorem kp_activity_le [Fintype P.Polymer] {a : P.Polymer → ℝ}
         mul_le_mul_of_nonneg_left hexp (norm_nonneg _)
     _ ≤ a X := h1
 
+/-- **Tempered form of the KP criterion.**  Dropping the `exp(a(Y)) ≥ 1` factors from
+the criterion sum, the total activity of the polymers incompatible with `X` is itself
+bounded by `a(X)`: `∑_{Y : incomp X Y} ‖z(Y)‖ ≤ a(X)`.  This unweighted neighbour bound
+is the hypothesis the inductive Kotecký–Preiss convergence estimate (E4) starts from. -/
+theorem kp_neighbor_sum_le [Fintype P.Polymer] {a : P.Polymer → ℝ}
+    (h : KPCriterion P a) (X : P.Polymer) :
+    ∑ Y ∈ Finset.univ.filter (fun Y => P.incomp X Y), ‖P.activity Y‖ ≤ a X := by
+  classical
+  obtain ⟨hnn, hsum⟩ := h
+  refine le_trans (Finset.sum_le_sum ?_) (hsum X)
+  intro Y _
+  have hexp : (1 : ℝ) ≤ Real.exp (a Y) := by
+    rw [← Real.exp_zero]; exact Real.exp_le_exp.mpr (hnn Y)
+  calc ‖P.activity Y‖ = ‖P.activity Y‖ * 1 := (mul_one _).symm
+    _ ≤ ‖P.activity Y‖ * Real.exp (a Y) :=
+        mul_le_mul_of_nonneg_left hexp (norm_nonneg _)
+
 end YangMills.KP
