@@ -141,12 +141,18 @@ theorem integral_prod_edges {𝕜 : Type*} [RCLike 𝕜]
       exact hf e
     exact hg.comp_aemeasurable hcomp.aemeasurable
 
-/-- **A multi-edge product observable vanishes if any one factor has zero group mean.**
-For a product of per-edge observables, if some edge `e₀` carries an observable with
-vanishing Haar mean `∫ f e₀ dμ = 0`, then the full product expectation under the lattice
-gauge measure is zero.  Combined with the Schur/Fourier zero-mean facts this gives the
-vanishing of open Wilson lines (which contain at least one non-trivial edge factor) on
-the lattice. -/
+/-- **A multi-edge scalar product observable vanishes if any one factor has zero group
+mean.**  For a *scalar* product of independent per-edge observables `∏ₑ fₑ(A e)`, if some
+edge `e₀` carries an observable with vanishing Haar mean `∫ f e₀ dμ = 0`, then the full
+product expectation under the lattice gauge measure is zero.  Combined with the
+Schur/Fourier zero-mean facts (e.g. `∫ tr = 0`, `∫ fourier k = 0`) this kills any scalar
+edge-product observable with a non-trivial factor.
+
+NOTE on scope (do not over-read): this applies to genuine *scalar products over distinct
+edges*, e.g. `∏ₑ χ(A e)`.  It does **not** apply to a Wilson *loop* `tr(∏ matrices)` —
+a trace of a matrix product couples the edges and is not of the form `∏ₑ fₑ(A e)`; that
+case needs the centre-eigenvalue argument and a closed loop does not vanish in general
+(see `HORIZON.md` §3.3, LG6). -/
 theorem integral_prod_edges_eq_zero {𝕜 : Type*} [RCLike 𝕜]
     (μ : Measure G) [IsProbabilityMeasure μ] (f : PosEdge d N → G → 𝕜)
     (hf : ∀ e, AEStronglyMeasurable (f e) μ)

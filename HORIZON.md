@@ -335,10 +335,27 @@ a single-`U` Haar integral.
   zero-mean factor — proved without the eigenvalue/invariance machinery of route 2, using
   the marginal + Fubini instead.
 
-What remains (`LG6`–`LG8`): package `wilsonLine`/`wilsonLoop` as concrete edge products
-and specialize; then the strong-coupling character expansion and area law, which need
-Peter–Weyl (F3) + the KP cluster expansion. Still lattice / finite-volume — **~0% toward
-Clay**.
+What remains (`LG6`–`LG8`). **Caveat discovered 2026-05-30 (do not repeat my near-miss):**
+the Wilson *loop* observable is `tr(U(e₀)·U(e₁)·U(e₂)·U(e₃))` — the trace of a **matrix
+product**, which is *not* a scalar product `∏ₑ fₑ(A e)` over edges, so `integral_prod_edges`
+does **not** apply to it, and a closed loop does **not** vanish (under `U_e ↦ ω·U_e` it
+picks up `ω^{loop length}`; for a closed plaquette `ω⁴`, and the loop is the *leading*
+nonzero contributor — that is the whole point of the area law). The Fubini corollaries
+`LG4/LG5` correctly cover only **scalar** edge-product observables (e.g. open lines whose
+trace genuinely factorizes, or characters), not matrix-product loop traces.
+
+- **LG6** `[OPEN]` define `wilsonLine`/`wilsonLoop` honestly: the open line that *does*
+  factorize as a scalar edge product → close via `LG5`; the closed loop trace needs the
+  **centre eigenvalue argument** (route 2 of §3.3): establish `IsMulLeftInvariant` of
+  `gaugeMeasureFrom` under the diagonal centre action, then `tr(ω·loop) = ω^L·tr(loop)`
+  gives vanishing only when `N ∤ L` (so a single plaquette, `L = 4`, does **not** vanish
+  unless `N ∣ 4`).
+- **LG7** `[OPEN]` strong-coupling character/heat-kernel expansion of `exp(−β·S)`; the
+  area-law leading term. Needs the SU(N) class-function expansion (Peter–Weyl, F3).
+- **LG8** `[BLOCKED]` area law `⟨W(C)⟩ ≤ e^{−σ·Area(C)}` at small β; blocked on LG7 + the
+  KP cluster expansion (Targets A/B).
+
+Still lattice / finite-volume — **~0% toward Clay**.
 
 ---
 
