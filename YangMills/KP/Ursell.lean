@@ -279,4 +279,15 @@ theorem allSubgraphs_signedSum (n : ℕ) :
       simp [Subsingleton.elim a b]
   simp only [SimpleGraph.edgeFinset_eq_empty, hbot]
 
+/-- **Step 3 sub-lemma of the recurrence: no edge leaves a connected component.**
+If `a` lies in the support of the connected component of `v` and `a` is adjacent to `b`,
+then `b` is in the same component.  This is the "no crossing edges" fact that lets a
+spanning subgraph split cleanly into its part inside the component `S` of vertex 0 and
+its part in the complement `Sᶜ` (with nothing in between) — the structural heart of the
+fiber bijection in the Target-A recurrence blueprint. -/
+theorem componentSupp_closed_under_adj {V : Type*} (G : SimpleGraph V) (v a b : V)
+    (ha : a ∈ (G.connectedComponentMk v).supp) (hab : G.Adj a b) :
+    b ∈ (G.connectedComponentMk v).supp :=
+  (SimpleGraph.ConnectedComponent.mem_supp_congr_adj _ hab).mp ha
+
 end YangMills.KP
