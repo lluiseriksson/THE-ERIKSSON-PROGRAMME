@@ -308,6 +308,29 @@ estimates the induction starts from. The Lean obstacle is the tree-graph / Penro
 bound combinatorics (forests spanning the incompatibility graph), entirely absent from
 Mathlib. Target B feeds the exponential-clustering corollary (KP3) and ultimately the
 `m*` fed to `mass_gap_bound` (§7).
+
+> **Progress (dedicated session, Target B).** The **back-half is proved** in
+> `YangMills/KP/Convergence.lean`, exactly mirroring Target A's split: granting a
+> geometric per-size bound `b n ≤ C·rⁿ` (`0 ≤ r < 1`), `cluster_series_summable` gives
+> `Summable b` and `cluster_sum_le` gives `∑' b ≤ C/(1−r)` (both oracle-clean, wired to
+> root). Mathlib's `IsTree` / `IsAcyclic` API (`Acyclic.lean`:
+> `IsTree.card_edgeFinset`, `Connected.exists_isTree_le_of_le_of_isAcyclic`,
+> `isTree_iff_minimal_connected`) is available for the forest combinatorics.
+>
+> **Target B is now reduced to the single estimate** that the size-`n` cluster weight
+> obeys such a geometric bound:
+> ```lean
+> theorem kp_per_size_bound [Fintype P.Polymer] {a : P.Polymer → ℝ}
+>     (h : KPCriterion P a) (X : P.Polymer) (n : ℕ) :
+>     ∑ Y ∈ {clusters of size n containing X}, ‖ursell P Y‖ * ∏ i, ‖activity (Y i)‖
+>       ≤ a X * (something < 1) ^ n          -- the tree-graph / Penrose bound
+> ```
+> Proof route (the open content): bound `‖ursell‖` of an `n`-cluster by its number of
+> spanning trees (`(n)^{n-2}`-type Cayley bound) times the tree weight, then sum tree
+> weights via `kp_neighbor_sum_le` along each tree edge (strong induction on `n`). This
+> is the Penrose tree-graph inequality — a focused interactive-Lean effort needing the
+> spanning-tree enumeration, not a paste-loop iteration. No axiom introduced: the bound
+> is what `cluster_series_summable`/`cluster_sum_le` take as hypothesis.
 | **KP3** | `kp_exponential_clustering` (Appendix A) | med–high | Given KP2b, this is "spanning cluster pays e^{−m·dist}" + summation. |
 | **KP4** | wire `m*` into `mass_gap_bound` (§7); state §5 as a theorem, not a hypothesis | low | The payoff: §5 input becomes derived from the KP bound. |
 
