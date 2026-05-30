@@ -106,3 +106,5 @@ import YangMills.KP.Cluster
 import YangMills.KP.Ursell
 import YangMills.KP.Expansion
 import YangMills.KP.Criterion
+import YangMills.KP.Convergence
+import YangMills.KP.SinglePolymer
