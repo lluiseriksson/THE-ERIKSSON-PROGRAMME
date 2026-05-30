@@ -87,6 +87,7 @@ import YangMills.ClayCore.LeftInvariantVanishing
 import YangMills.ClayCore.SchurMixedPowerSumVanishing
 import YangMills.ClayCore.SUOneDegenerate
 import YangMills.ClayCore.U1FourierOrthogonality
+import YangMills.ClayCore.GaugeMarginal
 
 -- Paper (Eriksson, Bloque 4) — the §4/§6/§7 conditional skeleton, formalized as
 -- explicit-hypothesis theorems (the imported Balaban/KP estimates are carried as
