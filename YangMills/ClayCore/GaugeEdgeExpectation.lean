@@ -66,4 +66,54 @@ theorem gauge_single_edge_trace_pow_eq_zero
       (HasCompactSupport.of_compactSpace _)).aestronglyMeasurable ?_
   exact sunHaarProb_trace_pow_complex_integral_zero N_c k hk
 
+/-- **Real part of the single-edge trace vanishes on the lattice.**  The expectation of
+`Re tr(A e)` (the physical, real-valued single-plaquette-free Wilson observable) under the
+SU(N_c) lattice gauge measure is zero for `N_c ≥ 2` — the real form of
+`gauge_single_edge_trace_eq_zero`, obtained by pushing `Complex.reCLM` through the
+integral. -/
+theorem gauge_single_edge_trace_re_eq_zero
+    (d Nlat : ℕ) [NeZero d] [NeZero Nlat]
+    (N_c : ℕ) [NeZero N_c] (hN : 2 ≤ N_c)
+    (e : PosEdge d Nlat) :
+    ∫ A, ((configToPos A e).val.trace).re
+      ∂(gaugeMeasureFrom (d := d) (N := Nlat) (sunHaarProb N_c)) = 0 := by
+  refine integral_single_edge_eq_zero (sunHaarProb N_c) e
+    (fun U => (U.val.trace).re)
+    ((Complex.reCLM.continuous.comp (continuous_trace_sub N_c)).integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)).aestronglyMeasurable ?_
+  -- ∫ Re(tr) = Re(∫ tr) = Re 0 = 0
+  have hint := trace_integrable N_c
+  have hcomm := Complex.reCLM.integral_comp_comm hint
+  simp only [Complex.reCLM_apply] at hcomm
+  rw [hcomm, sunHaarProb_trace_complex_integral_zero N_c hN]
+  rfl
+
+/-- **Two-edge trace product factorizes and vanishes on the lattice.**  For two distinct
+positive edges `e₁ ≠ e₂`, the expectation of the product of their holonomy traces under the
+SU(N_c) lattice gauge measure factorizes (independence) and vanishes, since each factor has
+zero Haar mean:
+`∫ tr(A e₁)·tr(A e₂) dμ_gauge = (∫ tr)·(∫ tr) = 0` for `N_c ≥ 2`.  A genuine two-edge
+(disconnected) Wilson observable, killed by the scalar-product factorization
+`integral_prod_edges_eq_zero`. -/
+theorem gauge_two_edge_trace_prod_eq_zero
+    (d Nlat : ℕ) [NeZero d] [NeZero Nlat]
+    (N_c : ℕ) [NeZero N_c] (hN : 2 ≤ N_c)
+    (e₁ : PosEdge d Nlat) :
+    ∫ A, (∏ e : PosEdge d Nlat,
+        (if e = e₁ then (configToPos A e).val.trace else 1))
+      ∂(gaugeMeasureFrom (d := d) (N := Nlat) (sunHaarProb N_c)) = 0 := by
+  classical
+  refine integral_prod_edges_eq_zero (sunHaarProb N_c)
+    (fun e U => if e = e₁ then U.val.trace else 1) ?_ e₁ ?_
+  · -- each factor is AEStronglyMeasurable
+    intro e
+    by_cases h : e = e₁
+    · simp only [h, if_pos]
+      exact (trace_integrable N_c).aestronglyMeasurable
+    · simp only [if_neg h]
+      exact aestronglyMeasurable_const
+  · -- the e₁ factor has zero group mean
+    simp only [if_true]
+    exact sunHaarProb_trace_complex_integral_zero N_c hN
+
 end YangMills
