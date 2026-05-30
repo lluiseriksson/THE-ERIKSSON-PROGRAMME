@@ -320,6 +320,26 @@ This is the most physically meaningful corollary reachable right now, and the
 first statement in the project about a genuine gauge-theory observable rather than
 a single-`U` Haar integral.
 
+**UPDATE 2026-05-30 — this bridge is now DONE** (`ClayCore/GaugeMarginal.lean`,
+`GaugeEdgeExpectation.lean`, all oracle-clean, wired into `YangMillsCore`). Route 1's
+**marginal** sub-option (the "lower-friction route" flagged above) was the one taken:
+
+- `gaugeMeasureFrom_map_eval` — the single-coordinate marginal
+  `(gaugeMeasureFrom μ).map (configToPos · e) = μ`, exactly as proposed in item 1.
+- `integral_single_edge` / `integral_single_edge_eq_zero` — a one-edge observable reduces
+  to a group integral, and a zero group mean forces a zero gauge expectation.
+- `gauge_single_edge_trace_eq_zero` — the SU(N) instance `∫ tr(A e) dμ_gauge = 0` (N ≥ 2).
+- `integral_prod_edges` — the edge-product Fubini factorization `∫ ∏ₑ fₑ(A e) = ∏ₑ ∫ fₑ`.
+- `integral_prod_edges_eq_zero` — the **open Wilson line vanishing**
+  (`open_wilson_line_expectation_zero` above) for any edge-product observable carrying a
+  zero-mean factor — proved without the eigenvalue/invariance machinery of route 2, using
+  the marginal + Fubini instead.
+
+What remains (`LG6`–`LG8`): package `wilsonLine`/`wilsonLoop` as concrete edge products
+and specialize; then the strong-coupling character expansion and area law, which need
+Peter–Weyl (F3) + the KP cluster expansion. Still lattice / finite-volume — **~0% toward
+Clay**.
+
 ---
 
 ## 4. Leak B / continuum limit — the precise open statement
