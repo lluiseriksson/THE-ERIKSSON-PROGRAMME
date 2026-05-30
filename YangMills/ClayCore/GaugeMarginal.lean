@@ -82,4 +82,17 @@ theorem integral_single_edge {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ
     rw [gaugeMeasureFrom_map_eval]; exact hf
   rw [← integral_map hmeas hf', gaugeMeasureFrom_map_eval]
 
+/-- **Zero-mean single-edge observables have zero gauge expectation.**  If an observable
+`f` has vanishing Haar mean `∫ f dμ = 0`, then its expectation under the full lattice
+gauge measure also vanishes.  This is the lattice realization of the centre-vanishing
+engine: an edge observable whose group integral is zero (e.g. a non-trivial U(1) Fourier
+mode `fourier k`, `k ≠ 0`, or `tr U` on SU(N), both already proved to integrate to zero)
+contributes zero to every lattice gauge expectation.  The first lattice gauge-observable
+expectation computed end-to-end. -/
+theorem integral_single_edge_eq_zero {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (μ : Measure G) [IsProbabilityMeasure μ] (e : PosEdge d N)
+    (f : G → E) (hf : AEStronglyMeasurable f μ) (hmean : ∫ g, f g ∂μ = 0) :
+    ∫ A, f (configToPos A e) ∂(gaugeMeasureFrom (d := d) (N := N) μ) = 0 := by
+  rw [integral_single_edge μ e f hf, hmean]
+
 end YangMills
