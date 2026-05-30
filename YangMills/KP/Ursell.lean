@@ -192,4 +192,26 @@ theorem ursell_fin_three (X : Fin 3 → P.Polymer)
       if_pos (by decide), if_pos (by decide), if_pos (by decide), if_pos (by decide)]
   decide
 
+/-- **Back half of Target A: the closed form follows from the recurrence.**
+The Ursell value of the complete graph, `d(k) := φ(K_{k+1})`, is conjectured to satisfy
+the recurrence `d(k) = −k · d(k−1)` (the component-of-vertex-0 decomposition — the one
+remaining hard combinatorial lemma).  *Granting* that recurrence, this pure induction
+delivers the closed form `φ(K_{k+1}) = (−1)^k · k!` of Target A.
+
+The hypothesis `hrec` is exactly the recurrence `c(n+1) = −n · c(n)` (for `n ≥ 1`); the
+verified data `ursell_fin_one/two/three` (`d(0)=1, d(1)=−1, d(2)=2`) confirm it at the
+first steps (`−1=−1·1`, `2=−2·(−1)`).  This isolates Target A's open content to the
+single combinatorial recurrence, with no axiom introduced: the recurrence enters only
+as an explicit hypothesis. -/
+theorem closed_form_of_recurrence (c : ℕ → ℤ) (h1 : c 1 = 1)
+    (hrec : ∀ n : ℕ, 1 ≤ n → c (n + 1) = -(n : ℤ) * c n) :
+    ∀ n : ℕ, c (n + 1) = (-1) ^ n * (Nat.factorial n : ℤ) := by
+  intro n
+  induction n with
+  | zero => simpa using h1
+  | succ m ih =>
+    rw [hrec (m + 1) (by omega), ih, Nat.factorial_succ]
+    push_cast
+    ring
+
 end YangMills.KP

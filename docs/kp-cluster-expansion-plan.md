@@ -196,6 +196,18 @@ Both are genuine theorems *not* in Mathlib; each is a dedicated-session effort, 
 iteration. They have no remaining 3-line intermediate corollaries — the next step in
 each *is* the heavy theorem.
 
+> **Progress (dedicated session, Target A).** The `decide` tactic settles connectivity
+> of concrete `fromEdgeSet` subgraphs on `Fin n` *kernel-side* (oracle stays clean), so
+> small complete-graph cases are computable. Landed: `ursell_fin_three` (φ(K₃)=+2, the
+> k=2 checkpoint), confirming the pattern at +1,−1,+2. Piece 1 of the recurrence
+> (`∑_{E⊆AllEdges}(−1)^{|E|} = [AllEdges=∅]`) is already in Mathlib as
+> `Finset.sum_powerset_neg_one_pow_card`. The back-half induction
+> `closed_form_of_recurrence` (recurrence ⟹ `(−1)^k k!`) is proved. **Target A is now
+> reduced to a single open lemma:** the recurrence `ursell(K_{k+1}) = −k · ursell(K_k)`,
+> i.e. the component-of-vertex-0 decomposition of spanning subgraphs (the only piece
+> needing Mathlib's connected-component API). No axiom introduced — the recurrence is
+> carried as the explicit hypothesis `hrec` of `closed_form_of_recurrence`.
+
 **Target A — Ursell value on the complete graph (closes E3 beyond linear order).**
 The Mayer coefficient of a `k`-fold cluster of a single polymer (whose incompatibility
 graph is `K_k`, since the hard core makes every pair incompatible) is
