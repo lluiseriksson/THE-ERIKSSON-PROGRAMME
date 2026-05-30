@@ -344,12 +344,21 @@ nonzero contributor — that is the whole point of the area law). The Fubini cor
 `LG4/LG5` correctly cover only **scalar** edge-product observables (e.g. open lines whose
 trace genuinely factorizes, or characters), not matrix-product loop traces.
 
-- **LG6** `[OPEN]` define `wilsonLine`/`wilsonLoop` honestly: the open line that *does*
+- **LG6** `[PARTIAL]` define `wilsonLine`/`wilsonLoop` honestly: the open line that *does*
   factorize as a scalar edge product → close via `LG5`; the closed loop trace needs the
   **centre eigenvalue argument** (route 2 of §3.3): establish `IsMulLeftInvariant` of
   `gaugeMeasureFrom` under the diagonal centre action, then `tr(ω·loop) = ω^L·tr(loop)`
   gives vanishing only when `N ∤ L` (so a single plaquette, `L = 4`, does **not** vanish
   unless `N ∣ 4`).
+  - **Algebraic core DONE** (`ClayCore/WilsonLoopCenter.lean`, oracle `[propext,
+    Quot.sound]`): `plaquetteHolonomy_center_smul` proves the centre eigenvalue identity
+    `plaquetteHolonomy (z·A) p = z⁴ · plaquetteHolonomy A p` for central `z` (via the
+    monoid lemma `center_smul_prod_four`). This is the `z^L`, `L=4` factor of route 2.
+  - **Remaining (measure-theoretic plumbing)**: `IsMulLeftInvariant (gaugeMeasureFrom μ)`
+    under the diagonal centre action `A ↦ (e ↦ z·A e)` (group structure on `GaugeConfig`
+    + transport along `gaugeConfigEquiv`), then feed `plaquetteHolonomy_center_smul` + a
+    character with `z⁴ ≠ 1` to the eigenvalue-vanishing engine. Best done in interactive
+    Lean (instance/transport plumbing).
 - **LG7** `[OPEN]` strong-coupling character/heat-kernel expansion of `exp(−β·S)`; the
   area-law leading term. Needs the SU(N) class-function expansion (Peter–Weyl, F3).
 - **LG8** `[BLOCKED]` area law `⟨W(C)⟩ ≤ e^{−σ·Area(C)}` at small β; blocked on LG7 + the
