@@ -76,6 +76,37 @@ theorem plaquetteHolonomy_eq_wilsonLine (A : GaugeConfig d N G)
   simp only [plaquetteHolonomy, wilsonLine, List.map_cons, List.map_nil, List.prod_cons,
     List.prod_nil, mul_one, mul_assoc]
 
+/-- Two-edge Wilson line: `wilsonLine A [e₁, e₂] = A e₁ * A e₂`. -/
+@[simp] theorem wilsonLine_pair (A : GaugeConfig d N G)
+    (e₁ e₂ : FiniteLatticeGeometry.E (d := d) (N := N) (G := G)) :
+    wilsonLine A [e₁, e₂] = A e₁ * A e₂ := by
+  rw [wilsonLine_cons, wilsonLine_singleton]
+
+/-- **Snoc law.**  Appending an edge on the right multiplies the line on the right:
+`wilsonLine A (es ++ [e]) = wilsonLine A es * A e`. -/
+theorem wilsonLine_append_singleton (A : GaugeConfig d N G)
+    (es : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := G)))
+    (e : FiniteLatticeGeometry.E (d := d) (N := N) (G := G)) :
+    wilsonLine A (es ++ [e]) = wilsonLine A es * A e := by
+  rw [wilsonLine_append, wilsonLine_singleton]
+
+/-- The Wilson line of the **trivial (identity) configuration** is `1` for any path. -/
+theorem wilsonLine_one
+    (es : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := G)))
+    (A : GaugeConfig d N G) (hA : ∀ e, A e = 1) :
+    wilsonLine A es = 1 := by
+  unfold wilsonLine
+  rw [show (es.map (fun e => A e)) = es.map (fun _ => (1 : G)) from
+    List.map_congr_left (fun e _ => hA e)]
+  simp
+
+/-- **Length additivity under concatenation** (a sanity invariant of the path length used
+by the centre exponent `z^L`): the centre exponent of a concatenated path is the sum. -/
+theorem wilsonLine_append_length
+    (es₁ es₂ : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := G))) :
+    (es₁ ++ es₂).length = es₁.length + es₂.length :=
+  List.length_append
+
 /-- **Centre scaling of an ordered list product.**  If `z` is central, scaling each factor
 of an ordered list product by `z` multiplies the product by `z^(length)`. -/
 theorem center_listProd_scaling {z : G} (hz : ∀ y : G, Commute z y) (l : List G) :

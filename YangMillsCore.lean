@@ -89,6 +89,7 @@ import YangMills.ClayCore.SUOneDegenerate
 import YangMills.ClayCore.U1FourierOrthogonality
 import YangMills.ClayCore.GaugeMarginal
 import YangMills.ClayCore.GaugeEdgeExpectation
+import YangMills.ClayCore.GaugeMeasureProps
 import YangMills.ClayCore.WilsonLoopCenter
 import YangMills.ClayCore.WilsonLine
 

@@ -5,6 +5,7 @@ import Mathlib
 import YangMills.ClayCore.GaugeMarginal
 import YangMills.ClayCore.SchurZeroMean
 import YangMills.ClayCore.SchurMomentVanishing
+import YangMills.ClayCore.SchurMixedMomentVanishing
 import YangMills.ClayCore.SchurL25
 
 /-!
@@ -149,5 +150,25 @@ theorem gauge_single_edge_trace_normSq_nonneg
     0 ≤ ∫ A, (Complex.normSq (configToPos A e).val.trace : ℝ)
       ∂(gaugeMeasureFrom (d := d) (N := Nlat) (sunHaarProb N_c)) :=
   integral_nonneg (fun _ => Complex.normSq_nonneg _)
+
+/-- **Conjugate single-edge Wilson observable vanishes on the lattice (higher N-ality).**
+For `N_c ∤ b`, the expectation of `conj(tr(A e))^b` under the SU(N_c) lattice gauge measure
+is zero — the complex-conjugate (anti-fundamental N-ality) counterpart of
+`gauge_single_edge_trace_pow_eq_zero`, via `sunHaarProb_trace_starPow_integral_zero`. -/
+theorem gauge_single_edge_trace_starPow_eq_zero
+    (d Nlat : ℕ) [NeZero d] [NeZero Nlat]
+    (N_c b : ℕ) [NeZero N_c] (hb : ¬ N_c ∣ b)
+    (e : PosEdge d Nlat) :
+    ∫ A, (star (configToPos A e).val.trace) ^ b
+      ∂(gaugeMeasureFrom (d := d) (N := Nlat) (sunHaarProb N_c)) = 0 := by
+  have hcont : Continuous
+      (fun U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) => (star U.val.trace) ^ b) :=
+    ((continuous_star.comp (continuous_trace_sub N_c)).pow b)
+  refine integral_single_edge_eq_zero (sunHaarProb N_c) e
+    (fun U => (star U.val.trace) ^ b)
+    (hcont.integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)).aestronglyMeasurable ?_
+  have h := sunHaarProb_trace_starPow_integral_zero N_c b hb
+  simpa using h
 
 end YangMills
