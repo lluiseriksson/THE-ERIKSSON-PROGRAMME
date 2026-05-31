@@ -107,6 +107,45 @@ theorem wilsonLine_append_length
     (es₁ ++ es₂).length = es₁.length + es₂.length :=
   List.length_append
 
+/-- The Wilson line of a **flattened** list of paths is the ordered product of the pieces'
+Wilson lines. -/
+theorem wilsonLine_flatten (A : GaugeConfig d N G)
+    (P : List (List (FiniteLatticeGeometry.E (d := d) (N := N) (G := G)))) :
+    wilsonLine A P.flatten = (P.map (fun es => wilsonLine A es)).prod := by
+  induction P with
+  | nil => simp
+  | cons es rest ih =>
+    rw [List.flatten_cons, wilsonLine_append, ih, List.map_cons, List.prod_cons]
+
+/-- **Gauge action is multiplicative on edges.**  `gaugeAct u A e = u(src e) · A e · u(dst e)⁻¹`
+restated as the defining identity (a convenient rewrite). -/
+theorem wilsonLine_gaugeAct_cons (u : GaugeTransform d N G) (A : GaugeConfig d N G)
+    (e : FiniteLatticeGeometry.E (d := d) (N := N) (G := G))
+    (es : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := G))) :
+    wilsonLine (gaugeAct u A) (e :: es)
+      = (u (FiniteLatticeGeometry.src e) * A e * (u (FiniteLatticeGeometry.dst e))⁻¹)
+        * wilsonLine (gaugeAct u A) es := by
+  rw [wilsonLine_cons, gaugeAct_apply]
+
+/-- **Trivial gauge transformation acts trivially on the Wilson line.**  If `u ≡ 1`, then
+`gaugeAct u A` has the same Wilson line as `A` (gauge invariance at the identity). -/
+theorem wilsonLine_gaugeAct_one (u : GaugeTransform d N G) (A : GaugeConfig d N G)
+    (hu : ∀ v, u v = 1)
+    (es : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := G))) :
+    wilsonLine (gaugeAct u A) es = wilsonLine A es := by
+  have hpt : ∀ e, gaugeAct u A e = A e := by
+    intro e; rw [gaugeAct_apply, hu, hu]; group
+  unfold wilsonLine
+  exact congrArg List.prod (List.map_congr_left (fun e _ => hpt e))
+
+/-- The single-edge gauge-transformed line: `wilsonLine (gaugeAct u A) [e]
+= u(src e)·A e·u(dst e)⁻¹`. -/
+@[simp] theorem wilsonLine_gaugeAct_singleton (u : GaugeTransform d N G) (A : GaugeConfig d N G)
+    (e : FiniteLatticeGeometry.E (d := d) (N := N) (G := G)) :
+    wilsonLine (gaugeAct u A) [e]
+      = u (FiniteLatticeGeometry.src e) * A e * (u (FiniteLatticeGeometry.dst e))⁻¹ := by
+  rw [wilsonLine_singleton, gaugeAct_apply]
+
 /-- **Centre scaling of an ordered list product.**  If `z` is central, scaling each factor
 of an ordered list product by `z` multiplies the product by `z^(length)`. -/
 theorem center_listProd_scaling {z : G} (hz : ∀ y : G, Commute z y) (l : List G) :

@@ -171,4 +171,26 @@ theorem gauge_single_edge_trace_starPow_eq_zero
   have h := sunHaarProb_trace_starPow_integral_zero N_c b hb
   simpa using h
 
+/-- **Mixed N-ality single-edge Wilson observable vanishes on the lattice.**  For
+`N_c ∤ (a − b)` (over ℤ), the expectation of `(tr(A e))^a · conj(tr(A e))^b` under the
+SU(N_c) lattice gauge measure is zero — the full Z_N N-ality grading at the level of a
+single lattice edge, via `sunHaarProb_trace_mixedPow_integral_zero`.  Specializes to the
+pure-power (`b=0`) and conjugate (`a=0`) edge rules. -/
+theorem gauge_single_edge_trace_mixedPow_eq_zero
+    (d Nlat : ℕ) [NeZero d] [NeZero Nlat]
+    (N_c a b : ℕ) [NeZero N_c] (hdvd : ¬ (N_c : ℤ) ∣ ((a : ℤ) - (b : ℤ)))
+    (e : PosEdge d Nlat) :
+    ∫ A, ((configToPos A e).val.trace) ^ a * (star (configToPos A e).val.trace) ^ b
+      ∂(gaugeMeasureFrom (d := d) (N := Nlat) (sunHaarProb N_c)) = 0 := by
+  have hcont : Continuous
+      (fun U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+        (U.val.trace) ^ a * (star U.val.trace) ^ b) :=
+    ((continuous_trace_sub N_c).pow a).mul
+      ((continuous_star.comp (continuous_trace_sub N_c)).pow b)
+  refine integral_single_edge_eq_zero (sunHaarProb N_c) e
+    (fun U => (U.val.trace) ^ a * (star U.val.trace) ^ b)
+    (hcont.integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)).aestronglyMeasurable ?_
+  exact sunHaarProb_trace_mixedPow_integral_zero N_c a b hdvd
+
 end YangMills
