@@ -43,6 +43,39 @@ def wilsonLine (A : GaugeConfig d N G)
     wilsonLine A ([] : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := G))) = 1 := by
   simp [wilsonLine]
 
+@[simp] theorem wilsonLine_singleton (A : GaugeConfig d N G)
+    (e : FiniteLatticeGeometry.E (d := d) (N := N) (G := G)) :
+    wilsonLine A [e] = A e := by
+  simp [wilsonLine]
+
+theorem wilsonLine_cons (A : GaugeConfig d N G)
+    (e : FiniteLatticeGeometry.E (d := d) (N := N) (G := G))
+    (es : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := G))) :
+    wilsonLine A (e :: es) = A e * wilsonLine A es := by
+  simp [wilsonLine, List.map_cons, List.prod_cons]
+
+/-- **Composition of Wilson lines.**  The Wilson line of a concatenated path is the ordered
+product of the Wilson lines of the pieces: `wilsonLine A (es₁ ++ es₂) = wilsonLine A es₁ *
+wilsonLine A es₂`.  This is the composition law that lets a closed loop be split into
+sub-paths (and underlies the multiplicativity of holonomies along a contour). -/
+theorem wilsonLine_append (A : GaugeConfig d N G)
+    (es₁ es₂ : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := G))) :
+    wilsonLine A (es₁ ++ es₂) = wilsonLine A es₁ * wilsonLine A es₂ := by
+  simp [wilsonLine, List.map_append, List.prod_append]
+
+/-- **The plaquette holonomy is the Wilson line of its four boundary edges.**  Connects the
+existing `plaquetteHolonomy` (`L0_Lattice`) to the general `wilsonLine`: the plaquette is
+the closed length-4 Wilson loop. -/
+theorem plaquetteHolonomy_eq_wilsonLine (A : GaugeConfig d N G)
+    (p : FiniteLatticeGeometry.P (d := d) (N := N) (G := G)) :
+    plaquetteHolonomy A p
+      = wilsonLine A [FiniteLatticeGeometry.plaquetteEdge p 0,
+          FiniteLatticeGeometry.plaquetteEdge p 1,
+          FiniteLatticeGeometry.plaquetteEdge p 2,
+          FiniteLatticeGeometry.plaquetteEdge p 3] := by
+  simp only [plaquetteHolonomy, wilsonLine, List.map_cons, List.map_nil, List.prod_cons,
+    List.prod_nil, mul_one, mul_assoc]
+
 /-- **Centre scaling of an ordered list product.**  If `z` is central, scaling each factor
 of an ordered list product by `z` multiplies the product by `z^(length)`. -/
 theorem center_listProd_scaling {z : G} (hz : ∀ y : G, Commute z y) (l : List G) :
