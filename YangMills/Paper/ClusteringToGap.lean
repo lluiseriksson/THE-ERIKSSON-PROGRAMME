@@ -3,6 +3,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.Paper.MassGapAssembly
+import YangMills.KP.Convergence
 
 /-!
 # Clustering ⟹ exponential decay ⟹ mass-gap rate (the M3 bridge)
@@ -94,5 +95,38 @@ theorem lattice_mass_gap_of_clustering
   refine ⟨min mstar c0, lt_min hmpos hc0, ?_⟩
   exact Paper.mass_gap_bound (covIR t + covUV) (covIR t) covUV C1 C2 mstar c0 (t : ℝ)
     (Nat.cast_nonneg t) rfl (hIR t) hUV
+
+/-! ### Finite susceptibility — the summed correlator converges
+
+Exponential clustering has a physical corollary: the **susceptibility**
+`χ = ∑_d |cov d|` (the integrated correlator) is *finite*.  A diverging susceptibility is
+the hallmark of a *massless* phase, so finiteness is the quantitative face of the mass gap.
+These reuse the geometric-series back-half (`KP.Convergence`). -/
+
+/-- **Finite susceptibility: the summed correlator converges.**  Under a geometric cluster
+bound `|cov d| ≤ C·rᵈ` (`0 ≤ r < 1`), the integrated correlator `∑_d |cov d|` is summable.
+Finiteness of the susceptibility is the quantitative signature of the mass gap (a massless
+phase has divergent susceptibility). -/
+theorem susceptibility_summable
+    (cov : ℕ → ℝ) (C r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1)
+    (hbound : ∀ d, |cov d| ≤ C * r ^ d) :
+    Summable (fun d => |cov d|) :=
+  KP.cluster_series_summable (fun d => |cov d|) C r hr0 hr1
+    (fun d => abs_nonneg _) hbound
+
+/-- **Susceptibility bound: `χ ≤ C/(1−r)`.**  The integrated correlator is bounded by the
+closed-form geometric tail, giving an explicit finite susceptibility from the cluster
+bound. -/
+theorem susceptibility_le
+    (cov : ℕ → ℝ) (C r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1)
+    (hbound : ∀ d, |cov d| ≤ C * r ^ d) :
+    ∑' d, |cov d| ≤ C / (1 - r) :=
+  KP.cluster_sum_le (fun d => |cov d|) C r hr0 hr1
+    (fun d => abs_nonneg _) hbound
+
+/-- The susceptibility is nonnegative (it is a sum of absolute values). -/
+theorem susceptibility_nonneg (cov : ℕ → ℝ) :
+    0 ≤ ∑' d, |cov d| :=
+  tsum_nonneg (fun d => abs_nonneg _)
 
 end YangMills
