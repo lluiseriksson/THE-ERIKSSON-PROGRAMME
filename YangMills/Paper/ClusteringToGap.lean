@@ -69,4 +69,30 @@ theorem clustering_to_massGap_IR
   obtain ⟨mstar, hpos, hdecay⟩ := clustering_gives_exponential_decay cov C r hr0 hr1 hbound
   exact ⟨mstar, hpos, hdecay d⟩
 
+/-- **Strong-coupling lattice mass gap (M3) — full conditional assembly.**
+Putting the pieces together: given
+* an **infrared geometric cluster bound** `|covIR d| ≤ C₁·rᵈ` with `0 < r < 1` (the output
+  of the Kotecký–Preiss expansion / Appendix A, carried as a hypothesis), and
+* a **UV suppression bound** `|covUV| ≤ C₂·exp(-(c₀·t))` (the §6.3 single-scale bound),
+* with the correlator decomposing as `cov = covIR t + covUV` (telescoping, §6.1),
+
+the full connected correlator decays **exponentially with a strictly positive rate**
+`min(m*, c₀) > 0`, where `m* = -log r > 0` is the mass extracted from the cluster ratio.
+This is the honest **strong-coupling lattice** mass-gap statement (Osterwalder–Seiler) — the
+rung beneath Clay.  It is conditional on the cluster bound and UV bound as explicit
+hypotheses (never axioms); the Clay prize additionally needs the continuum limit + OS
+axioms, which are open and untouched here. -/
+theorem lattice_mass_gap_of_clustering
+    (covIR : ℕ → ℝ) (covUV C1 C2 r c0 : ℝ) (t : ℕ)
+    (hr0 : 0 < r) (hr1 : r < 1) (hc0 : 0 < c0)
+    (hIRbound : ∀ d, |covIR d| ≤ C1 * r ^ d)
+    (hUV : |covUV| ≤ C2 * Real.exp (-(c0 * (t : ℝ)))) :
+    ∃ gap : ℝ, 0 < gap ∧
+      |covIR t + covUV| ≤ (C1 + C2) * Real.exp (-(gap * (t : ℝ))) := by
+  obtain ⟨mstar, hmpos, hIR⟩ :=
+    clustering_gives_exponential_decay covIR C1 r hr0 hr1 hIRbound
+  refine ⟨min mstar c0, lt_min hmpos hc0, ?_⟩
+  exact Paper.mass_gap_bound (covIR t + covUV) (covIR t) covUV C1 C2 mstar c0 (t : ℝ)
+    (Nat.cast_nonneg t) rfl (hIR t) hUV
+
 end YangMills
