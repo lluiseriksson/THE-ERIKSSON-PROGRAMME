@@ -115,6 +115,30 @@ theorem trace_scalarPow_mul {n : ℕ} (ω : ℂ) (L : ℕ) (M : Matrix (Fin n) (
       = ω ^ L * M.trace := by
   rw [smul_pow, one_pow, Matrix.smul_mul, Matrix.trace_smul, smul_eq_mul, Matrix.one_mul]
 
+/-- **Wilson-loop centre selection rule (algebraic closure).**  If the central unit `z` is
+the scalar `ω·1` (`hzval`), then under the diagonal centre rescaling of every edge by `z`,
+the Wilson loop is a centre eigenfunction with eigenvalue `ω^L`:
+`wilsonLoop Az es = ω^(es.length) · wilsonLoop A es`.
+
+This is the fully algebraic form of the Wilson-loop selection rule: combined with
+left-invariance of `gaugeMeasureFrom` under the centre action (the remaining
+measure-theoretic step, `HORIZON.md` LG6) and a root of unity `ω` with `ω^L ≠ 1`, it forces
+the loop's expectation to vanish exactly when `N ∤ L` — and leaves it free otherwise (the
+area-law contributor).  Assembled from `wilsonLine_center_smul` (`z^L` line scaling) and
+`trace_scalarPow_mul` (`tr((ω·1)^L·M) = ω^L·tr M`). -/
+theorem wilsonLoop_scalarCenter_smul {n : ℕ}
+    [FiniteLatticeGeometry d N (Matrix (Fin n) (Fin n) ℂ)ˣ]
+    (ω : ℂ) {z : (Matrix (Fin n) (Fin n) ℂ)ˣ}
+    (hzval : (z : Matrix (Fin n) (Fin n) ℂ) = ω • (1 : Matrix (Fin n) (Fin n) ℂ))
+    (hz : ∀ y, Commute z y)
+    (A Az : GaugeConfig d N (Matrix (Fin n) (Fin n) ℂ)ˣ)
+    (es : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := (Matrix (Fin n) (Fin n) ℂ)ˣ)))
+    (hAz : ∀ e, Az e = z * A e) :
+    wilsonLoop Az es = ω ^ es.length * wilsonLoop A es := by
+  unfold wilsonLoop
+  rw [wilsonLine_center_smul hz A Az es hAz, Units.val_mul, Units.val_pow_eq_pow_val,
+      hzval, trace_scalarPow_mul]
+
 end Loop
 
 end YangMills.GaugeConfig

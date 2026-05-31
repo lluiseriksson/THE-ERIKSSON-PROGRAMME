@@ -350,10 +350,18 @@ trace genuinely factorizes, or characters), not matrix-product loop traces.
   `gaugeMeasureFrom` under the diagonal centre action, then `tr(ω·loop) = ω^L·tr(loop)`
   gives vanishing only when `N ∤ L` (so a single plaquette, `L = 4`, does **not** vanish
   unless `N ∣ 4`).
-  - **Algebraic core DONE** (`ClayCore/WilsonLoopCenter.lean`, oracle `[propext,
-    Quot.sound]`): `plaquetteHolonomy_center_smul` proves the centre eigenvalue identity
-    `plaquetteHolonomy (z·A) p = z⁴ · plaquetteHolonomy A p` for central `z` (via the
-    monoid lemma `center_smul_prod_four`). This is the `z^L`, `L=4` factor of route 2.
+  - **Algebraic core DONE** (`ClayCore/WilsonLoopCenter.lean` + `WilsonLine.lean`, oracle
+    `[propext, Quot.sound]` / `[propext, Classical.choice, Quot.sound]`):
+    - `plaquetteHolonomy_center_smul` — `plaquetteHolonomy (z·A) p = z⁴·plaquetteHolonomy A p`
+      (the `L=4` plaquette case, via the monoid lemma `center_smul_prod_four`).
+    - `wilsonLine` (ordered edge-list product) + `wilsonLine_center_smul` — the
+      arbitrary-length scaling `wilsonLine (z·A) es = z^(es.length) · wilsonLine A es`
+      (via `center_listProd_scaling`).
+    - `wilsonLoop` (trace of the closed line) + `trace_scalarPow_mul`
+      (`tr((ω·1)^L·M) = ω^L·tr M`), assembled into
+      **`wilsonLoop_scalarCenter_smul`**: `wilsonLoop (z·A) es = ω^(es.length)·wilsonLoop A es`
+      for a scalar centre `z = ω·1`. This is the *complete* algebraic Wilson-loop centre
+      eigenvalue — the full `route 2` eigenvalue identity, only the measure step remains.
   - **Remaining (measure-theoretic plumbing)**: `IsMulLeftInvariant (gaugeMeasureFrom μ)`
     under the diagonal centre action `A ↦ (e ↦ z·A e)` (group structure on `GaugeConfig`
     + transport along `gaugeConfigEquiv`), then feed `plaquetteHolonomy_center_smul` + a
