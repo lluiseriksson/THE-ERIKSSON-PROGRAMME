@@ -71,4 +71,39 @@ theorem wilsonLine_center_smul {z : G} (hz : ∀ y : G, Commute z y)
     exact List.map_congr_left (fun e _ => by rw [Function.comp_apply, hAz e])
   rw [hmap, center_listProd_scaling hz, List.length_map]
 
+section Loop
+
+variable {d N n : ℕ}
+
+/-- The **Wilson loop** observable: the trace of the (matrix-valued) Wilson line of a closed
+edge list, for a configuration valued in `n × n` complex matrices.  This is the genuine
+gauge-invariant Wilson observable; `wilsonLoop_center_smul` below records its centre
+eigenvalue. -/
+noncomputable def wilsonLoop
+    [FiniteLatticeGeometry d N (Matrix (Fin n) (Fin n) ℂ)ˣ]
+    (A : GaugeConfig d N (Matrix (Fin n) (Fin n) ℂ)ˣ)
+    (es : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := (Matrix (Fin n) (Fin n) ℂ)ˣ))) :
+    ℂ :=
+  (((wilsonLine A es : (Matrix (Fin n) (Fin n) ℂ)ˣ) : Matrix (Fin n) (Fin n) ℂ)).trace
+
+/-- **Wilson loop under a central edge rescaling.**  Rescaling every edge by a central unit
+`z` turns the loop into the trace of `z^L · (line)`:
+`wilsonLoop Az es = tr( (z^L) · wilsonLine A es )` (as matrices, `L = es.length`).  This is
+the matrix-level centre eigenvalue identity; for a scalar centre element `z = ω·1` the RHS
+is `ω^L · tr(wilsonLine A es)`, the `ω^L` eigenvalue that forces the loop expectation to
+vanish exactly when a character has `ω^L ≠ 1` (`N ∤ L`), and not otherwise (area law). -/
+theorem wilsonLoop_center_smul
+    [FiniteLatticeGeometry d N (Matrix (Fin n) (Fin n) ℂ)ˣ]
+    {z : (Matrix (Fin n) (Fin n) ℂ)ˣ} (hz : ∀ y, Commute z y)
+    (A Az : GaugeConfig d N (Matrix (Fin n) (Fin n) ℂ)ˣ)
+    (es : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := (Matrix (Fin n) (Fin n) ℂ)ˣ)))
+    (hAz : ∀ e, Az e = z * A e) :
+    wilsonLoop Az es
+      = (((z ^ es.length * wilsonLine A es : (Matrix (Fin n) (Fin n) ℂ)ˣ) :
+            Matrix (Fin n) (Fin n) ℂ)).trace := by
+  unfold wilsonLoop
+  rw [wilsonLine_center_smul hz A Az es hAz]
+
+end Loop
+
 end YangMills.GaugeConfig
