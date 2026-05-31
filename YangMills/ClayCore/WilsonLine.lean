@@ -104,6 +104,17 @@ theorem wilsonLoop_center_smul
   unfold wilsonLoop
   rw [wilsonLine_center_smul hz A Az es hAz]
 
+/-- **Scalar centre element extraction (matrix level).**  The scalar centre matrix `ω•1`
+raised to the `L` and multiplied into any matrix `M` pulls the scalar out of the trace as
+`ω^L`: `tr( (ω•1)^L * M ) = ω^L · tr M`.  This is the clean algebraic form of the Wilson-loop
+centre eigenvalue: combined with `wilsonLoop_center_smul` (whose `z^L·line` is exactly this
+shape for `z = ω•1`), it yields `wilsonLoop (scaled) = ω^L · wilsonLoop`, the selection rule
+`ω^L ≠ 1 ⟺ N ∤ L`. -/
+theorem trace_scalarPow_mul {n : ℕ} (ω : ℂ) (L : ℕ) (M : Matrix (Fin n) (Fin n) ℂ) :
+    ((ω • (1 : Matrix (Fin n) (Fin n) ℂ)) ^ L * M).trace
+      = ω ^ L * M.trace := by
+  rw [smul_pow, one_pow, Matrix.smul_mul, Matrix.trace_smul, smul_eq_mul, Matrix.one_mul]
+
 end Loop
 
 end YangMills.GaugeConfig
