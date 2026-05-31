@@ -5,6 +5,7 @@ import Mathlib
 import YangMills.ClayCore.GaugeMarginal
 import YangMills.ClayCore.SchurZeroMean
 import YangMills.ClayCore.SchurMomentVanishing
+import YangMills.ClayCore.SchurL25
 
 /-!
 # First lattice gauge-observable expectations, end-to-end
@@ -115,5 +116,38 @@ theorem gauge_two_edge_trace_prod_eq_zero
   · -- the e₁ factor has zero group mean
     simp only [if_true]
     exact sunHaarProb_trace_complex_integral_zero N_c hN
+
+/-- **Second moment of the single-edge trace is bounded by N on the lattice.**  The
+expectation of `|tr(A e)|²` under the SU(N_c) lattice gauge measure is at most `N_c`:
+`∫ |tr(A e)|² dμ_gauge ≤ N_c`.  Transports the group-level L² bound
+`sunHaarProb_trace_normSq_integral_le` (`∫|tr U|² ≤ N`) through the single-edge marginal.
+This is the lattice second-moment / variance control for the single-edge Wilson observable
+— the input to two-point correlator bounds. -/
+theorem gauge_single_edge_trace_normSq_le
+    (d Nlat : ℕ) [NeZero d] [NeZero Nlat]
+    (N_c : ℕ) [NeZero N_c]
+    (e : PosEdge d Nlat) :
+    ∫ A, (Complex.normSq (configToPos A e).val.trace : ℝ)
+      ∂(gaugeMeasureFrom (d := d) (N := Nlat) (sunHaarProb N_c)) ≤ (N_c : ℝ) := by
+  have hcont : Continuous
+      (fun U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+        (Complex.normSq U.val.trace : ℝ)) :=
+    Complex.continuous_normSq.comp (continuous_trace_sub N_c)
+  rw [integral_single_edge (sunHaarProb N_c) e
+    (fun U => (Complex.normSq U.val.trace : ℝ))
+    (hcont.integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)).aestronglyMeasurable]
+  exact sunHaarProb_trace_normSq_integral_le
+
+/-- **The single-edge second moment is nonnegative** (it is the integral of `|tr|² ≥ 0`).
+Together with `gauge_single_edge_trace_normSq_le` this pins the lattice second moment to
+`[0, N_c]`. -/
+theorem gauge_single_edge_trace_normSq_nonneg
+    (d Nlat : ℕ) [NeZero d] [NeZero Nlat]
+    (N_c : ℕ) [NeZero N_c]
+    (e : PosEdge d Nlat) :
+    0 ≤ ∫ A, (Complex.normSq (configToPos A e).val.trace : ℝ)
+      ∂(gaugeMeasureFrom (d := d) (N := Nlat) (sunHaarProb N_c)) :=
+  integral_nonneg (fun _ => Complex.normSq_nonneg _)
 
 end YangMills
