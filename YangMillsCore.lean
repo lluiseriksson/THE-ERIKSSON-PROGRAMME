@@ -90,6 +90,7 @@ import YangMills.ClayCore.U1FourierOrthogonality
 import YangMills.ClayCore.GaugeMarginal
 import YangMills.ClayCore.GaugeEdgeExpectation
 import YangMills.ClayCore.WilsonLoopCenter
+import YangMills.ClayCore.WilsonLine
 
 -- Paper (Eriksson, Bloque 4) — the §4/§6/§7 conditional skeleton, formalized as
 -- explicit-hypothesis theorems (the imported Balaban/KP estimates are carried as
