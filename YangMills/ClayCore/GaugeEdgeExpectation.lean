@@ -137,7 +137,7 @@ theorem gauge_single_edge_trace_normSq_le
     (fun U => (Complex.normSq U.val.trace : ℝ))
     (hcont.integrable_of_hasCompactSupport
       (HasCompactSupport.of_compactSpace _)).aestronglyMeasurable]
-  exact sunHaarProb_trace_normSq_integral_le
+  exact ClayCore.sunHaarProb_trace_normSq_integral_le (N := N_c)
 
 /-- **The single-edge second moment is nonnegative** (it is the integral of `|tr|² ≥ 0`).
 Together with `gauge_single_edge_trace_normSq_le` this pins the lattice second moment to
