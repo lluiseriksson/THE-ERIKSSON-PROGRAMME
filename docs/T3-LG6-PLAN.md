@@ -25,7 +25,36 @@ centre action through `gaugeConfigEquiv` to a **coordinatewise** map on
 `measurePreserving_mul_left μ z` (needs `[μ.IsMulLeftInvariant]` and the
 measurable-group instances on `G`), then `MeasurePreserving.integral_comp`.
 
-## ⚠ The subtlety found during scoping (do not skip)
+## ✅ RESOLVED (2026-06-10): the design is fixed
+
+`GaugeConfig` is a **structure with the constraint**
+`map_reverse : A (reverse e) = (A e)⁻¹` (`GaugeConfigurations.lean:45`),
+so the naive diagonal action is indeed ill-defined.  The correct centre
+action is the **signed action**: with an orientation `sgn : E → {±1}`
+(`sgn (reverse e) = −sgn e`; the `PosEdge` selector used by
+`gaugeConfigEquiv` in `GibbsMeasure.lean` provides it),
+
+`(z·A)(e) := z^{sgn e} * A e`.
+
+`map_reverse` holds **precisely because `z` is central**:
+`(z·A)(rev e) = z^{−s}·A(e)⁻¹ = (z^{s}·A e)⁻¹`.  Under `gaugeConfigEquiv`
+the signed action is coordinatewise left-multiplication by `z` on positive
+coordinates ⇒ measure invariance via `MeasurePreserving.pi` +
+`measurePreserving_mul_left` as planned.  Consequence for the eigenvalue:
+a loop's centre charge is its **signed length** `#pos − #neg`; the proved
+`wilsonLoop_scalarCenter_smul` (uniform `z·A e` on all traversed edges)
+applies directly to loops traversing positively-oriented edges only, where
+signed length = `L`.  State the headline selection rule for such loops
+(rectangular Wilson loops can be so oriented), or re-prove the line-scaling
+lemma for the signed action with `z^{#pos−#neg}` — both honest; the former
+is smaller.
+
+Execution order for the session: read `GibbsMeasure.lean`'s `PosEdge` /
+`gaugeConfigEquiv` definitions → define `centerAct z` (structure field +
+`map_reverse` by centrality) → `MeasurePreserving (centerAct z)` through
+the equiv → integral identity → assembly equation.
+
+## ⚠ The subtlety found during scoping (now resolved above; kept for record)
 
 The naive diagonal action `(z·A) e = z * A e` **on all edges** generally
 violates the gauge-configuration constraint `A(−e) = A(e)⁻¹`: for central
