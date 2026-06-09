@@ -58,6 +58,32 @@ No declaration depends on anything beyond Lean's three standard axioms.
   (Osterwalder–Seiler-type assembly; the IR/UV inputs remain explicit
   hypotheses pending the polymer representation and UV bound).
 
+## Addendum (2026-06-10, autonomous overnight session): T3 closed
+
+Additional headline results, each `#print axioms` =
+`[propext, Classical.choice, Quot.sound]`, core green at 8212 jobs:
+
+```
+'YangMills.integral_centerAct'                       (gauge measure centre-invariant)
+'YangMills.integral_wilsonLoop_eq_zero'              (selection rule, matrix units, abstract)
+'YangMills.integral_wilsonLoopSU_eq_zero'            (selection rule at genuine SU(n) Haar)
+'YangMills.wilsonAction_centerAct'                   (exact centre symmetry of the Wilson action)
+'YangMills.integral_centerAct_gibbs'                 (interacting Gibbs measure centre-invariant)
+'YangMills.integral_wilsonLoopSU_gibbs_eq_zero'      (Z_n selection rule, interacting, any β)
+```
+
+Plain language: the centre `Z_n ⊂ SU(n)` acts on lattice gauge fields by
+multiplying every positively-oriented edge by `ω = e^{2πi/n}`; the product
+Haar measure is invariant (Haar), and the Wilson action is *exactly*
+invariant because every plaquette crosses two edges forward and two backward
+(net centre charge zero).  A Wilson loop of length `L` is an eigenfunction
+with eigenvalue `ω^L`, so its expectation — free **or interacting, at any
+coupling** — vanishes unless `n | L`.  This is the lattice N-ality selection
+rule (centre symmetry; cf. 't Hooft's centre-symmetry analyses and standard
+LGT texts, e.g. Montvay–Münster §3), now machine-checked end to end.
+Loops here are positively-oriented edge lists; the signed-length
+generalization is routine and noted in `docs/T3-LG6-PLAN.md`.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
