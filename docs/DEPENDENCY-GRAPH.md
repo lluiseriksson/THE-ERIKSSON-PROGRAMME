@@ -66,8 +66,15 @@ M3: unconditional lattice mass gap at strong coupling
              │    |φ(X)| ≤ (m+1)^(m+1).
              └─ assembly of (i)+(ii)+(iii)          OPEN  [D]
  └─ polymer representation: lattice Gibbs correlators ⇄ polymer system
-    satisfying KPCriterion at strong coupling        OPEN  [A: large formalization;
-    the bridge that makes the KP output speak about Wilson/gauge observables]
+    satisfying KPCriterion at strong coupling        OPEN  [A]; **step 1
+    PROVED 2026-06-10** (PolymerExpansion.lean, no character theory needed):
+    boltzmann_eq_sum_plaquetteSets (exp(-βS) = ∑_{S⊆plaquettes} ∏ f_p, the
+    Mayer/high-temperature expansion), partitionFunction_eq_sum_plaquetteSets
+    (Z as a polymer-gas sum, termwise integration under explicit
+    integrability), abs_plaquetteWeight_le (|f_p| ≤ e^{|β|B} − 1 — the KP
+    smallness seed at small β).  Step 2 (group plaquette sets into connected
+    polymers on the plaquette-adjacency graph; factorize activities over
+    components via partition_union; match KPCriterion): next campaign.
  └─ T3 / LG6 — centre selection rule               **CLOSED 2026-06-10**
     integral_centerAct (gauge measure centre-invariant, left-invariant μ);
     wilsonAction_centerAct (exact centre symmetry of the Wilson action —
