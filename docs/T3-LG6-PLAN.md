@@ -1,6 +1,15 @@
 # T3 / LG6 — centre invariance of the gauge measure: scoping notes
 
-**STATUS (2026-06-10): T3 HEADLINE CLOSED.**
+**STATUS (2026-06-10): T3 CLOSED, INCLUDING THE CONCRETE SU(N) FORM.**
+`SUNSelectionRule.lean`: **`integral_wilsonLoopSU_eq_zero`** — for the
+product **Haar** gauge measure on `SU(n)`-valued configurations and any
+positively-oriented loop with `n ∤ L`, the Wilson-loop expectation vanishes.
+**No instance hypotheses remain**: Haar left-invariance, the verified
+`scalarCenterElement` (`ω·1`), its centrality, the eigenvalue `ω^L`, and
+`ω^L ≠ 1` are all machine-checked.  This is the lattice `Z_n` N-ality
+selection rule, end to end.
+
+**Abstract form (2026-06-10): also CLOSED.**
 `integral_wilsonLoop_eq_zero` (`CenterInvariance.lean`, oracle-clean, in
 `YangMillsCore`): for a left-invariant probability measure on the matrix
 units, central `z = ω·1`, and a loop on positively-oriented edges with
