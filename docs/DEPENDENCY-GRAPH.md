@@ -35,7 +35,10 @@ M3: unconditional lattice mass gap at strong coupling
              │    X-independent majorant (treeCount = all labeled trees on Fin n)
              ├─ (ii) per-tree activity walk         OPEN  [A: leaf-removal
              │    induction consuming kp_neighbor_sum_le (PROVED);
-             │    **the LAST open step of kp_per_size_bound**]
+             │    **the LAST open step of kp_per_size_bound**;
+             │    exact statement + mechanical proof plan committed in
+             │    docs/WALK-BOUND-PLAN.md; structural inputs proved:
+             │    prod_tree_eq_prod_parents, maxLevel_not_parent]
              ├─ (iii) tree counting                 **PROVED 2026-06-09**
              │    treeCount_le_pow: treeCount (m+1) ≤ (m+1)^(m+1), via the
              │    parent-function injection (trees recoverable from their
