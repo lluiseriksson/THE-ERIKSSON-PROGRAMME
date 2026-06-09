@@ -1,6 +1,17 @@
 # T3 / LG6 — centre invariance of the gauge measure: scoping notes
 
-**Status:** OPEN.  Goal: the Wilson-loop centre selection rule — combine the
+**STATUS UPDATE (2026-06-10): the measure step is PROVED.**
+`L1_GibbsMeasure/CenterInvariance.lean` (in `YangMillsCore`, oracle-clean):
+`gaugeConfigMEquiv` (the configuration equivalence as a measurable equiv),
+`centerAct` (the centre action through positive-edge coordinates — no
+`map_reverse` proof needed by construction), `centerAct_apply_pos`
+(`(z·A) e = z * A e` on positive edges), and **`integral_centerAct`**:
+`∫ f (centerAct z A) ∂(gaugeMeasureFrom μ) = ∫ f A` for left-invariant `μ`.
+Remaining for the headline selection rule: the primed line-scaling lemma
+(hypothesis `∀ e ∈ es` instead of `∀ e`) and the assembly equation — see
+the resolved design below.
+
+**Original status:** OPEN.  Goal: the Wilson-loop centre selection rule — combine the
 proved algebraic eigenvalue identity `wilsonLoop_scalarCenter_smul`
 (`WilsonLine.lean`: `wilsonLoop (z·A) es = ω^L · wilsonLoop A es` for scalar
 central `z = ω·1`) with invariance of `gaugeMeasureFrom μ` under the centre
