@@ -219,4 +219,94 @@ lemma penroseTree_of_spanningTree {m : ℕ} {H : SimpleGraph (Fin (m + 1))}
     rw [Sym2.eq_swap]
     exact hmem
 
+/-- A subgraph containing a connected spanning subgraph is connected. -/
+lemma connected_of_subset_connected {m : ℕ}
+    {T E : Finset (Sym2 (Fin (m + 1)))} (hTE : T ⊆ E)
+    (hconn : (fromEdgeSet (↑T : Set (Sym2 (Fin (m + 1))))).Connected) :
+    (fromEdgeSet (↑E : Set (Sym2 (Fin (m + 1))))).Connected := by
+  rw [SimpleGraph.connected_iff]
+  refine ⟨fun a b => ?_, ⟨0⟩⟩
+  exact SimpleGraph.Reachable.mono
+    (SimpleGraph.fromEdgeSet_mono (Finset.coe_subset.mpr hTE))
+    (hconn.preconnected a b)
+
+/-- **Level preservation on the interval (hfiber step 1):** for
+`T ⊆ E ⊆ penroseEnvelope H T`, the BFS levels of `E` coincide with those of
+the spanning tree `T`.  Downward: `T ⊆ E` only shrinks distances.  Upward:
+every admissible edge moves the `T`-level by at most one, so any `E`-walk of
+length `ℓ` from the root reaches level at most `ℓ`. -/
+lemma bfsLevel_eq_of_interval {m : ℕ} {H : SimpleGraph (Fin (m + 1))}
+    [Fintype H.edgeSet] {T E : Finset (Sym2 (Fin (m + 1)))}
+    (hT : T ∈ spanningTrees H) (hTE : T ⊆ E)
+    (hER : E ⊆ penroseEnvelope H T) (v : Fin (m + 1)) :
+    bfsLevel E v = bfsLevel T v := by
+  classical
+  have htree := isTree_of_mem_spanningTrees H hT
+  have hTconn := htree.isConnected
+  have hEconn := connected_of_subset_connected hTE hTconn
+  have hedge : ∀ u w : Fin (m + 1),
+      (fromEdgeSet (↑E : Set (Sym2 (Fin (m + 1))))).Adj u w →
+      bfsLevel T w ≤ bfsLevel T u + 1 := by
+    intro u w hadj
+    rw [SimpleGraph.fromEdgeSet_adj] at hadj
+    have hmem : s(u, w) ∈ penroseEnvelope H T :=
+      hER (Finset.mem_coe.mp hadj.1)
+    rw [mem_penroseEnvelope_iff] at hmem
+    rcases hmem.2 with h | ⟨h1, -⟩ | ⟨h1, -⟩ <;> omega
+  refine Nat.le_antisymm ?_ ?_
+  · exact dist_le_dist_of_le
+      (SimpleGraph.fromEdgeSet_mono (Finset.coe_subset.mpr hTE))
+      (hTconn.preconnected 0 v)
+  · obtain ⟨p, hp⟩ := hEconn.exists_walk_length_eq_dist 0 v
+    have hw := level_le_of_walk (bfsLevel T) hedge p
+    rw [bfsLevel_zero_eq] at hw
+    have hEv : bfsLevel E v = p.length := hp.symm
+    omega
+
+/-- **The Penrose tree preserves BFS levels (hfiber step 3):**
+`bfsLevel (penroseTree E) = bfsLevel E` for connected `E` — parents descend
+exactly one level, so the tree path to the root realizes the `E`-distance. -/
+lemma bfsLevel_penroseTree_eq {m : ℕ} {E : Finset (Sym2 (Fin (m + 1)))}
+    (hconn : (fromEdgeSet (↑E : Set (Sym2 (Fin (m + 1))))).Connected)
+    (v : Fin (m + 1)) :
+    bfsLevel (penroseTree E) v = bfsLevel E v := by
+  have hπconn := penroseTree_connected hconn
+  refine Nat.le_antisymm ?_ ?_
+  · -- descent: `dist_{π E} ≤ bfsLevel E` by induction on the level
+    have key : ∀ k (w : Fin (m + 1)), bfsLevel E w = k →
+        bfsLevel (penroseTree E) w ≤ k := by
+      intro k
+      induction k with
+      | zero =>
+        intro w hw
+        have h0 : (0 : Fin (m + 1)) = w :=
+          (SimpleGraph.Reachable.dist_eq_zero_iff (hconn.preconnected 0 w)).mp hw
+        rw [← h0]
+        simp
+      | succ k ih =>
+        intro w hw
+        have hw0 : w ≠ 0 := by
+          intro h
+          rw [h, bfsLevel_zero_eq] at hw
+          omega
+        obtain ⟨hadj, hlev⟩ := bfsParent_spec hconn hw0
+        have hadj' : (fromEdgeSet (↑(penroseTree E) :
+            Set (Sym2 (Fin (m + 1))))).Adj (bfsParent E w) w := by
+          rw [SimpleGraph.fromEdgeSet_adj]
+          refine ⟨Finset.mem_coe.mpr (parent_edge_mem_penroseTree E hw0), ?_⟩
+          intro heq
+          rw [heq] at hlev
+          omega
+        have hple : bfsLevel (penroseTree E) (bfsParent E w) ≤ k :=
+          ih _ (by omega)
+        have hstep : bfsLevel (penroseTree E) w
+            ≤ bfsLevel (penroseTree E) (bfsParent E w) + 1 :=
+          dist_le_succ_of_adj hπconn 0 hadj'
+        omega
+    exact key _ v rfl
+  · exact dist_le_dist_of_le
+      (SimpleGraph.fromEdgeSet_mono
+        (Finset.coe_subset.mpr (penroseTree_subset hconn)))
+      (hπconn.preconnected 0 v)
+
 end YangMills.KP
