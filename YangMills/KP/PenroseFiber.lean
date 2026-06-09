@@ -588,4 +588,51 @@ theorem abs_ursell_le_succ_pow (P : PolymerSystem) {m : ℕ}
   le_trans (abs_ursell_le_treeCount P X)
     (by exact_mod_cast treeCount_le_pow m)
 
+/-- **Tree products are parent-indexed products:** for a spanning tree `T`,
+a product over the edges of `T` is the product over nonroot vertices of
+their parent-edge factors.  This converts per-tree sums into the
+vertex-by-vertex form the activity walk (step (ii)) iterates over. -/
+lemma prod_tree_eq_prod_parents {m : ℕ} {H : SimpleGraph (Fin (m + 1))}
+    [Fintype H.edgeSet] {T : Finset (Sym2 (Fin (m + 1)))}
+    (hT : T ∈ spanningTrees H) {M : Type*} [CommMonoid M]
+    (f : Sym2 (Fin (m + 1)) → M) :
+    ∏ e ∈ T, f e
+      = ∏ v ∈ Finset.univ.filter (fun v : Fin (m + 1) => v ≠ 0),
+          f s(bfsParent T v, v) := by
+  classical
+  have hconn := (isTree_of_mem_spanningTrees H hT).isConnected
+  have hinj : ∀ u ∈ Finset.univ.filter (fun v : Fin (m + 1) => v ≠ 0),
+      ∀ v ∈ Finset.univ.filter (fun v : Fin (m + 1) => v ≠ 0),
+      (fun w => s(bfsParent T w, w)) u = (fun w => s(bfsParent T w, w)) v →
+      u = v := by
+    intro u hu v hv heq
+    rw [Finset.mem_filter] at hu hv
+    have heq' : s(bfsParent T u, u) = s(bfsParent T v, v) := heq
+    rw [Sym2.eq_iff] at heq'
+    rcases heq' with ⟨-, h2⟩ | ⟨h1, h2⟩
+    · exact h2
+    · have hu' := (bfsParent_spec hconn hu.2).2
+      have hv' := (bfsParent_spec hconn hv.2).2
+      rw [h1] at hu'
+      rw [← h2] at hv'
+      omega
+  conv_lhs => rw [← penroseTree_of_spanningTree hT]
+  unfold penroseTree
+  rw [Finset.prod_image hinj]
+
+/-- **Maximal-level vertices are leaves:** a vertex of maximal BFS level in
+a spanning tree is nobody's parent (its children would exceed the maximum).
+This is the leaf-removal step of the per-tree activity walk. -/
+lemma maxLevel_not_parent {m : ℕ} {H : SimpleGraph (Fin (m + 1))}
+    [Fintype H.edgeSet] {T : Finset (Sym2 (Fin (m + 1)))}
+    (hT : T ∈ spanningTrees H) {v : Fin (m + 1)}
+    (hmax : ∀ w : Fin (m + 1), bfsLevel T w ≤ bfsLevel T v) :
+    ∀ w : Fin (m + 1), w ≠ 0 → bfsParent T w ≠ v := by
+  intro w hw0 heq
+  have hconn := (isTree_of_mem_spanningTrees H hT).isConnected
+  have hspec := (bfsParent_spec hconn hw0).2
+  rw [heq] at hspec
+  have hle := hmax w
+  omega
+
 end YangMills.KP
