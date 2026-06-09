@@ -115,6 +115,18 @@ cancellation + `partition_singleton` + `Complex.exp_log`, all verified.
 > bound by walking edges with `kp_neighbor_sum_le`; (iii) Cayley-order tree counting
 > `≤ n^{n−2}` with `n^{n−2}/n! ≤ eⁿ` (crude binomial counting of `(n−1)`-edge subsets
 > is *insufficient* — it loses the geometric decay).  None of these are in Mathlib.
+>
+> **Progress on (i) and (iii) (2026-06-09):**
+> * `PenrosePrep.lean` — `spanningTrees` defined (so (i) is statable verbatim);
+>   step (iii)'s analytic half `(n+1)ⁿ ≤ eⁿ·n!` **proved**
+>   (`succ_pow_le_exp_mul_factorial`).
+> * `PenroseScheme.lean` — the **partition-scheme mechanism of (i) proved**:
+>   `interval_signed_sum` (Boolean-interval signed sum `= (−1)^{|T|}·[R = T]`) and
+>   `abs_signedSum_le_of_scheme` (fibers-are-intervals ⟹ `|signed sum| ≤ #Tr`),
+>   assembled into `abs_ursell_le_card_spanningTrees_of_scheme`.  What remains of
+>   (i) is the **concrete BFS/Penrose scheme**: construct `π` (greedy spanning tree
+>   of a connected subgraph) and envelope `R`, and verify `hmaps`/`hfiber`
+>   (each fiber is exactly the interval `[T, R T]`).  All oracle-clean, in core.
 
 **File:** `YangMills/KP/Convergence.lean` (back-half) + `Criterion.lean` (setup).
 **Goal to prove** (schematic — the per-size cluster weight obeys a geometric bound):
