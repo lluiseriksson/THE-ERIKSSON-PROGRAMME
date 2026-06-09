@@ -30,10 +30,15 @@ M3: unconditional lattice mass gap at strong coupling
              │    abs_ursell_le_card_spanningTrees
              │    |φ(X)| ≤ #spanningTrees(incompGraph P X)
              │    [Penrose 1967; partition scheme + greedy BFS, see §3]
+             ├─ uniform Penrose bound               **PROVED 2026-06-09**
+             │    abs_ursell_le_treeCount: |φ(X)| ≤ treeCount n,
+             │    X-independent majorant (treeCount = all labeled trees on Fin n)
              ├─ (ii) per-tree activity walk         OPEN  [A: leaf-removal
              │    induction consuming kp_neighbor_sum_le (PROVED)]
-             ├─ (iii) tree counting ≤ (n+1)^(n−1)   OPEN  [B: Cayley/Prüfer,
-             │    not in Mathlib; analytic half (n+1)ⁿ ≤ eⁿ·n! PROVED]
+             ├─ (iii) treeCount (m+2) ≤ Cayley order OPEN [B: Prüfer-type
+             │    injection, not in Mathlib; now a pure ℕ-statement about
+             │    the single object `treeCount`; analytic half
+             │    (n+1)ⁿ ≤ eⁿ·n! PROVED]
              └─ assembly of (i)+(ii)+(iii)          OPEN  [D]
  └─ polymer representation: lattice Gibbs correlators ⇄ polymer system
     satisfying KPCriterion at strong coupling        OPEN  [A: large formalization;

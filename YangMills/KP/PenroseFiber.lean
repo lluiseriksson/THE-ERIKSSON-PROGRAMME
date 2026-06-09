@@ -498,4 +498,43 @@ theorem abs_ursell_le_card_spanningTrees (P : PolymerSystem) {n : ℕ}
       (fun E hsub hconn => penroseTree_mem_spanningTrees hsub hconn)
       (fun T hT E => penrose_hfiber hT E)
 
+open Classical in
+/-- The **universal labeled-tree count** on `Fin n`: all diagonal-free edge
+sets whose graph is a spanning tree.  Step (iii) of Target B must bound this
+at Cayley order (`docs/DEPENDENCY-GRAPH.md`); here it serves as the
+system-independent majorant of the Ursell coefficient. -/
+noncomputable def treeCount (n : ℕ) : ℕ :=
+  ((Finset.univ : Finset (Finset (Sym2 (Fin n)))).filter
+    (fun T : Finset (Sym2 (Fin n)) =>
+      (fromEdgeSet (↑T : Set (Sym2 (Fin n)))).IsTree ∧
+      ∀ e ∈ T, ¬ e.IsDiag)).card
+
+/-- The spanning trees of any graph on `Fin n` inject into the universal
+tree count. -/
+lemma card_spanningTrees_le_treeCount {n : ℕ} (H : SimpleGraph (Fin n))
+    [Fintype H.edgeSet] : (spanningTrees H).card ≤ treeCount n := by
+  classical
+  unfold treeCount
+  apply Finset.card_le_card
+  intro T hT
+  rw [Finset.mem_filter]
+  refine ⟨Finset.mem_univ T, isTree_of_mem_spanningTrees H hT, ?_⟩
+  intro e he
+  have hmem := spanningTrees_subset H hT he
+  rw [SimpleGraph.mem_edgeFinset] at hmem
+  exact H.not_isDiag_of_mem_edgeSet hmem
+
+/-- **Uniform Penrose bound:** `|φ(X)| ≤ treeCount n` for every polymer
+system and every `n`-tuple — the tree-graph inequality with a majorant
+independent of `X`.  This is the form the per-size cluster weight estimate
+consumes; step (iii) of Target B is now exactly the pure counting statement
+that `treeCount` grows at Cayley order. -/
+theorem abs_ursell_le_treeCount (P : PolymerSystem) {n : ℕ}
+    (X : Fin n → P.Polymer) [Fintype (incompGraph P X).edgeSet] :
+    |ursell P X| ≤ (treeCount n : ℤ) := by
+  calc |ursell P X| ≤ ((spanningTrees (incompGraph P X)).card : ℤ) :=
+        abs_ursell_le_card_spanningTrees P X
+    _ ≤ (treeCount n : ℤ) := by
+        exact_mod_cast card_spanningTrees_le_treeCount (incompGraph P X)
+
 end YangMills.KP
