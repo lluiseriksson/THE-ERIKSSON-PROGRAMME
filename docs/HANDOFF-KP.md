@@ -96,7 +96,31 @@ cancellation + `partition_singleton` + `Complex.exp_log`, all verified.
 
 ---
 
-## Target B — `kp_per_size_bound`
+## Target B — `kp_per_size_bound` — **CLOSED (2026-06-10)**
+
+> **STATUS: DONE.**  The full chain is proved and oracle-clean in
+> `YangMillsCore` (see `docs/DEPENDENCY-GRAPH.md` for the graph):
+> * `abs_ursell_le_card_spanningTrees` — **Penrose 1967 tree-graph
+>   inequality**, via the verified partition scheme (`PenroseScheme.lean`)
+>   instantiated with the greedy BFS scheme (`PenroseBFS.lean`,
+>   `PenroseFiber.lean`: `hmaps` + `hfiber` both discharged);
+> * `treeCount_le_pow` — tree counting at Cayley order via the
+>   parent-function injection (no Prüfer needed);
+> * `tree_walk_bound` — the per-tree activity walk (`WalkBound.lean`,
+>   abstract leaf-removal induction over shrinking vertex types);
+> * `tree_assignment_sum_le` — the walk instantiated at the polymer
+>   objects under `KPCriterion` (`KPBound.lean`);
+> * **`kp_per_size_bound`** — `clusterWeight P n ≤ (∑‖z‖)·(e·A)ⁿ`;
+> * **`kp_convergence`**, **`kp_norm_clusterSum_le`** — absolute
+>   convergence of the Mayer series and `‖clusterSum‖ ≤ (∑‖z‖)/(1−e·A)`
+>   for `e·A < 1`.
+>
+> Honest caveat: uniform smallness `e·max(a) < 1` (slightly stronger than
+> the sharp KP criterion; refinable without architectural change).
+> Both heavy targets of this handoff (A and B) are now closed.  The
+> remaining lattice work toward M3 is the polymer representation
+> (lattice Gibbs ⇄ polymer system) and the UV bound.  Historical
+> blueprint below.
 
 > **UPDATE (2026-06-09): front glue DONE — open content now precisely stated.**
 > `YangMills/KP/ClusterWeight.lean` (in `YangMillsCore`, oracle-clean) defines the

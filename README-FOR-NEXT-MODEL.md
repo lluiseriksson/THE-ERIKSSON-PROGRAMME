@@ -134,7 +134,15 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   fibering + edge-toggle involution + `Fin.succAbove` relabeling). The closed form
   `ursellComplete_eq` (`φ(K_{n+1}) = (−1)ⁿ·n!`) and the n=1 Mayer identity
   (`partition_singlePolymer_eq_exp`) are now hypothesis-free and oracle-clean.
-- **T2 — `kp_per_size_bound`** (Penrose tree-graph inequality: size-`n` cluster weight decays
+- **T2 — `kp_per_size_bound` — CLOSED (2026-06-10).** The full KP convergence chain is
+  proved unconditionally: Penrose tree-graph inequality (`abs_ursell_le_card_spanningTrees`,
+  via the greedy BFS partition scheme), tree counting (`treeCount_le_pow`, parent-function
+  injection), the per-tree activity walk (`tree_walk_bound`), and the per-size estimate
+  `clusterWeight P n ≤ (∑‖z‖)·(e·A)ⁿ` with corollaries `kp_convergence` and
+  `kp_norm_clusterSum_le` (`e·A < 1`; uniform smallness — slightly stronger than sharp KP).
+  See `docs/DEPENDENCY-GRAPH.md`. Remaining toward M3: the polymer representation
+  (lattice Gibbs ⇄ polymer system) and the UV bound. *(Historical text below.)*
+  Original entry: (Penrose tree-graph inequality: size-`n` cluster weight decays
   geometrically). Feeds the verified convergence back-half and supplies the cluster bound that
   `lattice_mass_gap_of_clustering` assumes. Needs spanning-tree counting (Cayley) — **not in
   Mathlib**, may need its own development.
