@@ -124,12 +124,12 @@ positive gap), and finite-susceptibility corollaries.
 These are the genuine frontier. Each is carried with **no axiom** — closing one discharges a
 hypothesis or proves an open lemma.
 
-**T1 — KP Target A: `ursellComplete_recurrence`** (`docs/HANDOFF-KP.md`).
-Goal: `ursellComplete (n+1) = -n · ursellComplete n` (complete-graph Ursell recurrence).
-Everything else is in place (`closed_form_of_recurrence`, the data points, `allSubgraphs_signedSum`,
-`componentSupp_closed_under_adj`). The remaining proof is the component-of-vertex-0 bijection
-on `Finset` subgraphs (a `Finset.sum_nbij'` with a cardinality split). Closing it makes the
-complete-graph Ursell value AND the n=1 Mayer identity unconditional. **Needs interactive Lean.**
+**T1 — KP Target A: `ursellComplete_recurrence` — CLOSED (2026-06-09).**
+Proved unconditionally in `YangMills/KP/UrsellRecurrence.lean` (component-of-vertex-0
+decomposition: `reachSet` fibering + sign-reversing edge-toggle involution +
+`Fin.succAbove` relabeling). `ursellComplete_eq` (`φ(K_{n+1}) = (−1)ⁿ·n!`) and the n=1
+Mayer identity (`partition_singlePolymer_eq_exp`) are now hypothesis-free, oracle-clean,
+and wired into `YangMillsCore`.
 
 **T2 — KP Target B: `kp_per_size_bound`** (`docs/HANDOFF-KP.md`).
 Goal: the size-`n` cluster weight obeys a geometric bound (the Penrose tree-graph inequality).

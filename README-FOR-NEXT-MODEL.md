@@ -129,10 +129,11 @@ edge (`gauge_single_edge_trace_mixedPow_eq_zero` and pure/conjugate specializati
 Each is carried with **no axiom**; closing one discharges a hypothesis or proves an open
 lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
 
-- **T1 — `ursellComplete_recurrence`** (`d(n+1) = −n·d(n)`, complete-graph Ursell recurrence).
-  All scaffolding is in place; the missing step is the component-of-vertex-0 bijection on
-  `Finset` subgraphs (`Finset.sum_nbij'` + cardinality split). Closing it makes the
-  complete-graph Ursell value *and* the n=1 Mayer identity unconditional.
+- **T1 — `ursellComplete_recurrence` — CLOSED (2026-06-09).** Proved unconditionally in
+  `YangMills/KP/UrsellRecurrence.lean` (component-of-vertex-0 decomposition: `reachSet`
+  fibering + edge-toggle involution + `Fin.succAbove` relabeling). The closed form
+  `ursellComplete_eq` (`φ(K_{n+1}) = (−1)ⁿ·n!`) and the n=1 Mayer identity
+  (`partition_singlePolymer_eq_exp`) are now hypothesis-free and oracle-clean.
 - **T2 — `kp_per_size_bound`** (Penrose tree-graph inequality: size-`n` cluster weight decays
   geometrically). Feeds the verified convergence back-half and supplies the cluster bound that
   `lattice_mass_gap_of_clustering` assumes. Needs spanning-tree counting (Cayley) — **not in

@@ -30,7 +30,18 @@ paste-only loop that produced everything else.
 
 ---
 
-## Target A — `ursellComplete_recurrence`
+## Target A — `ursellComplete_recurrence` — **CLOSED (2026-06-09)**
+
+> **STATUS: DONE.** Proved unconditionally in `YangMills/KP/UrsellRecurrence.lean`
+> (wired into `YangMillsCore`; oracle `[propext, Classical.choice, Quot.sound]`).
+> The closed form `ursellComplete_eq` and the single-polymer Mayer identity
+> (`clusterSum_singlePolymer_eq_log`, `partition_singlePolymer_eq_exp`) are now
+> hypothesis-free.  The section below is kept as the historical blueprint;
+> the implemented proof follows skeleton steps 1–5 with `reachSet` (the
+> Finset of vertices reachable from 0) in place of `ConnectedComponent.supp`,
+> a sign-reversing edge-toggle involution (`Finset.sum_involution`) for the
+> small fibers, and `Fin.succAbove`-relabeling (`Finset.subset_image_iff` +
+> `Finset.sum_image`) for the codimension-one fibers.  **Only Target B remains.**
 
 **File:** `YangMills/KP/Ursell.lean`. **Goal to prove:**
 

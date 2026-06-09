@@ -206,16 +206,22 @@ full build 8195 jobs green). ~20 theorems:
   (`∑ (−1)ⁿzⁿ⁺¹/(n+1) = log(1+z)`), and `closed_form_of_recurrence` (recurrence ⇒
   `(−1)ⁿn!`).
 
-**Both heavy targets are now one lemma away** (see `docs/HANDOFF-KP.md` for exact
-statements, skeletons, and located Mathlib API):
-- **Target A** — `ursellComplete_recurrence` (`d(n+1) = −n·d(n)`, the
-  component-of-vertex-0 bijection). Closing it makes both the closed-form Ursell value
-  *and* the n=1 Mayer identity unconditional.
-- **Target B** — `kp_per_size_bound` (the Penrose tree-graph inequality giving the
-  geometric per-size bound). Closing it feeds the verified convergence back-half.
+- **Target A — DONE (2026-06-09, `UrsellRecurrence.lean`).**
+  `ursellComplete_recurrence` (`d(n+1) = −n·d(n)`) is **proved unconditionally**
+  by the component-of-vertex-0 decomposition: the all-subgraphs signed sum on
+  `K_{n+1}` (= 0 for n ≥ 1, `allSubgraphs_signedSum`) is fibered by the
+  `reachSet` of vertex 0; fibers with ≥ 2 missing vertices vanish under a
+  sign-reversing edge-toggle involution; the full fiber is `d(n+1)`; each of the
+  `n` codimension-one fibers transports to `d(n)` along `Fin.succAbove`.
+  Consequences now hypothesis-free (oracle `[propext, Classical.choice, Quot.sound]`):
+  `ursellComplete_eq` (`φ(K_{n+1}) = (−1)ⁿ·n!`),
+  `clusterSum_singlePolymer_eq_log`, `partition_singlePolymer_eq_exp`
+  (the n=1 Mayer identity `Ξ = exp(clusterSum)`).
+- **Target B — OPEN** — `kp_per_size_bound` (the Penrose tree-graph inequality giving
+  the geometric per-size bound). Closing it feeds the verified convergence back-half.
+  Large `Finset`/graph construction; carried with **no axiom**, only explicit
+  hypotheses (FOUNDATIONS discipline). See `docs/HANDOFF-KP.md`.
 
-Both remaining lemmas are large `Finset`/graph constructions that need interactive Lean;
-both are carried with **no axiom**, only explicit hypotheses (FOUNDATIONS discipline).
 This is genuine M3 progress, all on the lattice / finite-volume side — **still ~0%
 toward Clay** (§0), whose difficulty is the untouched continuum limit (M4–M5).
 
