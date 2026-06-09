@@ -537,4 +537,55 @@ theorem abs_ursell_le_treeCount (P : PolymerSystem) {n : ℕ}
     _ ≤ (treeCount n : ℤ) := by
         exact_mod_cast card_spanningTrees_le_treeCount (incompGraph P X)
 
+/-- **Step (iii) closed — tree counting at the needed order, via the
+parent-function injection.**  A spanning tree is recoverable from its greedy
+parent function (`penroseTree_of_spanningTree`), so labeled trees on
+`Fin (m+1)` inject into functions `Fin (m+1) → Fin (m+1)`:
+`treeCount (m+1) ≤ (m+1)^(m+1)`.  Combined with the proved
+`succ_pow_le_exp_mul_factorial`, this is exactly the Cayley-order growth the
+per-size cluster bound needs — the full Prüfer bijection is unnecessary. -/
+theorem treeCount_le_pow (m : ℕ) :
+    treeCount (m + 1) ≤ (m + 1) ^ (m + 1) := by
+  classical
+  unfold treeCount
+  have hcard : ((Finset.univ :
+      Finset (Fin (m + 1) → Fin (m + 1)))).card = (m + 1) ^ (m + 1) := by
+    simp
+  rw [← hcard]
+  apply Finset.card_le_card_of_injOn (fun T => bfsParent T)
+  · intro T _
+    exact Finset.mem_univ _
+  · intro T₁ h₁ T₂ h₂ heq
+    rw [Finset.mem_coe, Finset.mem_filter] at h₁ h₂
+    have hmem : ∀ {T : Finset (Sym2 (Fin (m + 1)))},
+        (fromEdgeSet (↑T : Set (Sym2 (Fin (m + 1))))).IsTree →
+        (∀ e ∈ T, ¬ e.IsDiag) →
+        T ∈ spanningTrees (⊤ : SimpleGraph (Fin (m + 1))) := by
+      intro T htree hdiag
+      unfold spanningTrees
+      rw [Finset.mem_filter, Finset.mem_powerset]
+      refine ⟨fun e he => ?_, htree⟩
+      rw [SimpleGraph.mem_edgeFinset, SimpleGraph.edgeSet_top,
+        Set.mem_compl_iff, Sym2.mem_diagSet]
+      exact hdiag e he
+    have e₁ : penroseTree T₁ = T₁ :=
+      penroseTree_of_spanningTree (hmem h₁.2.1 h₁.2.2)
+    have e₂ : penroseTree T₂ = T₂ :=
+      penroseTree_of_spanningTree (hmem h₂.2.1 h₂.2.2)
+    have heq' : bfsParent T₁ = bfsParent T₂ := heq
+    rw [← e₁, ← e₂]
+    unfold penroseTree
+    rw [heq']
+
+/-- **The Penrose bound in closed numerical form:** for any polymer system
+and any `(m+1)`-tuple, `|φ(X)| ≤ (m+1)^(m+1)`.  Together with
+`succ_pow_le_exp_mul_factorial` this supplies the tree-counting input of the
+per-size cluster estimate; of Target B's three open steps only the per-tree
+activity walk (ii) remains. -/
+theorem abs_ursell_le_succ_pow (P : PolymerSystem) {m : ℕ}
+    (X : Fin (m + 1) → P.Polymer) [Fintype (incompGraph P X).edgeSet] :
+    |ursell P X| ≤ (((m + 1) ^ (m + 1) : ℕ) : ℤ) :=
+  le_trans (abs_ursell_le_treeCount P X)
+    (by exact_mod_cast treeCount_le_pow m)
+
 end YangMills.KP

@@ -34,11 +34,15 @@ M3: unconditional lattice mass gap at strong coupling
              │    abs_ursell_le_treeCount: |φ(X)| ≤ treeCount n,
              │    X-independent majorant (treeCount = all labeled trees on Fin n)
              ├─ (ii) per-tree activity walk         OPEN  [A: leaf-removal
-             │    induction consuming kp_neighbor_sum_le (PROVED)]
-             ├─ (iii) treeCount (m+2) ≤ Cayley order OPEN [B: Prüfer-type
-             │    injection, not in Mathlib; now a pure ℕ-statement about
-             │    the single object `treeCount`; analytic half
-             │    (n+1)ⁿ ≤ eⁿ·n! PROVED]
+             │    induction consuming kp_neighbor_sum_le (PROVED);
+             │    **the LAST open step of kp_per_size_bound**]
+             ├─ (iii) tree counting                 **PROVED 2026-06-09**
+             │    treeCount_le_pow: treeCount (m+1) ≤ (m+1)^(m+1), via the
+             │    parent-function injection (trees recoverable from their
+             │    greedy parent map — no Prüfer needed); with the proved
+             │    (n+1)ⁿ ≤ eⁿ·n! this is exactly the needed order.
+             │    Closed numerical Penrose bound: abs_ursell_le_succ_pow
+             │    |φ(X)| ≤ (m+1)^(m+1).
              └─ assembly of (i)+(ii)+(iii)          OPEN  [D]
  └─ polymer representation: lattice Gibbs correlators ⇄ polymer system
     satisfying KPCriterion at strong coupling        OPEN  [A: large formalization;
