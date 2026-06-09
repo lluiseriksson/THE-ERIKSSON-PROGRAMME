@@ -3,6 +3,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.L1_GibbsMeasure.GibbsMeasure
+import YangMills.L1_GibbsMeasure.CenterInvariance
 
 /-!
 # Polymer representation, step 1 — the high-temperature expansion
@@ -124,5 +125,99 @@ theorem abs_plaquetteWeight_le (pe : G → ℝ) (β : ℝ)
       = (-β) * pe (plaquetteHolonomy A p) := by ring
   rw [h3]
   linarith
+
+/-! ### Discharging the integrability hypothesis -/
+
+section Integrability
+
+variable {d N : ℕ} [NeZero d] [NeZero N] {G : Type*} [Group G] [MeasurableSpace G]
+
+/-- Evaluation of a negatively-oriented edge is the inverse of its positive
+partner. -/
+lemma config_apply_neg (A : GaugeConfig d N G) (e : ConcreteEdge d N)
+    (he : e.sign = false) :
+    A e = (A { e with sign := true })⁻¹ := by
+  have hmr := A.map_reverse e
+  rw [finBoxGeometry_reverse] at hmr
+  have h2 : A { e with sign := true } = (A e)⁻¹ := by
+    simpa [he] using hmr
+  rw [h2, inv_inv]
+
+/-- **Edge evaluation is measurable** (inversion-measurable group). -/
+lemma measurable_config_apply [MeasurableInv G] (e : ConcreteEdge d N) :
+    Measurable (fun A : GaugeConfig d N G => A e) := by
+  have hpos : ∀ (e' : ConcreteEdge d N), e'.sign = true →
+      Measurable (fun A : GaugeConfig d N G => A e') := by
+    intro e' he'
+    have : (fun A : GaugeConfig d N G => A e')
+        = (fun f : PosEdge d N → G => f ⟨e', he'⟩) ∘
+          (gaugeConfigMEquiv (d := d) (N := N) (G := G)).symm := by
+      funext A
+      rfl
+    rw [this]
+    exact (measurable_pi_apply _).comp
+      (gaugeConfigMEquiv (d := d) (N := N) (G := G)).symm.measurable
+  by_cases he : e.sign = true
+  · exact hpos e he
+  · have he' : e.sign = false := by
+      rwa [Bool.not_eq_true] at he
+    have hrw : (fun A : GaugeConfig d N G => A e)
+        = fun A => (A { e with sign := true })⁻¹ := by
+      funext A
+      exact config_apply_neg A e he'
+    rw [hrw]
+    exact (hpos _ rfl).inv
+
+/-- **Plaquette holonomies are measurable.** -/
+lemma measurable_plaquetteHolonomy [MeasurableMul₂ G] [MeasurableInv G]
+    (p : FiniteLatticeGeometry.P (d := d) (N := N) (G := G)) :
+    Measurable (fun A : GaugeConfig d N G => plaquetteHolonomy A p) := by
+  unfold plaquetteHolonomy
+  exact (((measurable_config_apply _).mul (measurable_config_apply _)).mul
+    (measurable_config_apply _)).mul (measurable_config_apply _)
+
+/-- **Mayer-weight products are integrable** for bounded measurable
+plaquette energies — the integrability hypothesis of the polymer-gas
+formula, discharged. -/
+lemma integrable_prod_plaquetteWeight [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ}
+    (hpe_meas : Measurable pe) {B : ℝ} (hpe : ∀ g, |pe g| ≤ B) (β : ℝ)
+    (S : Finset (FiniteLatticeGeometry.P (d := d) (N := N) (G := G))) :
+    Integrable (fun A : GaugeConfig d N G => ∏ p ∈ S, plaquetteWeight pe β A p)
+      (gaugeMeasureFrom (d := d) (N := N) μ) := by
+  have hmeas : Measurable
+      (fun A : GaugeConfig d N G => ∏ p ∈ S, plaquetteWeight pe β A p) := by
+    refine Finset.measurable_prod _ fun p _ => ?_
+    unfold plaquetteWeight
+    exact (Real.measurable_exp.comp
+      ((hpe_meas.comp (measurable_plaquetteHolonomy p)).const_mul (-β))).sub
+      measurable_const
+  refine (MeasureTheory.integrable_const
+    ((Real.exp (|β| * B) - 1) ^ S.card)).mono' hmeas.aestronglyMeasurable ?_
+  refine MeasureTheory.ae_of_all _ fun A => ?_
+  rw [Real.norm_eq_abs, Finset.abs_prod]
+  calc ∏ p ∈ S, |plaquetteWeight pe β A p|
+      ≤ ∏ _p ∈ S, (Real.exp (|β| * B) - 1) :=
+        Finset.prod_le_prod (fun p _ => abs_nonneg _)
+          (fun p _ => abs_plaquetteWeight_le pe β A p hpe)
+    _ = (Real.exp (|β| * B) - 1) ^ S.card := by
+        rw [Finset.prod_const]
+
+/-- **The polymer-gas formula, unconditional for bounded measurable
+energies:** the integrability hypothesis of
+`partitionFunction_eq_sum_plaquetteSets` is discharged. -/
+theorem partitionFunction_eq_sum_plaquetteSets'
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ}
+    (hpe_meas : Measurable pe) {B : ℝ} (hpe : ∀ g, |pe g| ≤ B) (β : ℝ) :
+    partitionFunction (d := d) (N := N) μ pe β
+      = ∑ S ∈ (Finset.univ :
+          Finset (FiniteLatticeGeometry.P (d := d) (N := N) (G := G))).powerset,
+          ∫ A, ∏ p ∈ S, plaquetteWeight pe β A p
+            ∂(gaugeMeasureFrom (d := d) (N := N) μ) :=
+  partitionFunction_eq_sum_plaquetteSets μ pe β
+    (fun S _ => integrable_prod_plaquetteWeight μ hpe_meas hpe β S)
+
+end Integrability
 
 end YangMills
