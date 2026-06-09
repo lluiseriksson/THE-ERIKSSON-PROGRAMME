@@ -1,6 +1,18 @@
 # T3 / LG6 — centre invariance of the gauge measure: scoping notes
 
-**STATUS UPDATE (2026-06-10): the measure step is PROVED.**
+**STATUS (2026-06-10): T3 HEADLINE CLOSED.**
+`integral_wilsonLoop_eq_zero` (`CenterInvariance.lean`, oracle-clean, in
+`YangMillsCore`): for a left-invariant probability measure on the matrix
+units, central `z = ω·1`, and a loop on positively-oriented edges with
+`ω^L ≠ 1`, the Wilson-loop expectation vanishes — the **Z_N centre selection
+rule on the lattice**, via `(1−ω^L)·E[W] = 0`.  Instances
+(`MeasurableSpace`/`MeasurableMul`/`IsMulLeftInvariant` on the matrix units)
+are explicit binders — the caller supplies them (e.g. SU(N) Haar
+pushforward); honest, no laundering.  Remaining refinements (optional):
+signed-length version for arbitrarily-oriented loops; instantiation at
+`sunHaarProb`.
+
+**Measure step (2026-06-10): PROVED.**
 `L1_GibbsMeasure/CenterInvariance.lean` (in `YangMillsCore`, oracle-clean):
 `gaugeConfigMEquiv` (the configuration equivalence as a measurable equiv),
 `centerAct` (the centre action through positive-edge coordinates — no

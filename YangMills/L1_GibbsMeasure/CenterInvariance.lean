@@ -3,6 +3,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.L1_GibbsMeasure.GibbsMeasure
+import YangMills.ClayCore.WilsonLine
 
 /-!
 # LG6 (measure step) — centre invariance of the product gauge measure
@@ -97,5 +98,77 @@ theorem integral_centerAct (μ : Measure G) [IsProbabilityMeasure μ]
     (MeasurableEquiv.piCongrRight
       (fun _ : PosEdge d N => MeasurableEquiv.mulLeft z)).measurableEmbedding
     (fun y => f (gaugeConfigMEquiv y))
+
+/-! ### The Wilson-loop centre selection rule (T3 headline) -/
+
+open GaugeConfig in
+/-- Membership-local form of the Wilson-line centre scaling: it suffices
+that the rescaling holds on the traversed edges. -/
+lemma wilsonLine_center_smul_of_mem {z : G} (hz : ∀ y : G, Commute z y)
+    (A Az : GaugeConfig d N G)
+    (es : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := G)))
+    (hAz : ∀ e ∈ es, Az e = z * A e) :
+    wilsonLine Az es = z ^ es.length * wilsonLine A es := by
+  unfold wilsonLine
+  have hmap : (es.map (fun e => Az e))
+      = (es.map (fun e => A e)).map (fun g => z * g) := by
+    rw [List.map_map]
+    exact List.map_congr_left (fun e he => by
+      rw [Function.comp_apply, hAz e he])
+  rw [hmap, center_listProd_scaling hz, List.length_map]
+
+open GaugeConfig in
+/-- **The Wilson-loop centre selection rule (LG6/T3, headline).**
+Let `μ` be a left-invariant probability measure on the matrix units, `z` a
+central unit with scalar value `ω·1`, and `es` a loop traversing
+positively-oriented edges.  If `ω^L ≠ 1` (for `Z_N ⊂ SU(N)`: `N ∤ L`), the
+Wilson-loop expectation **vanishes**:
+`∫ wilsonLoop A es ∂(gaugeMeasureFrom μ) = 0`.
+
+Proof: the centre action fixes the measure (`integral_centerAct`) but
+multiplies the loop by `ω^L` (`wilsonLine_center_smul_of_mem` +
+`trace_scalarPow_mul`, fed by `centerAct_apply_pos` on positive edges), so
+`(1 − ω^L)·E[W] = 0`. -/
+theorem integral_wilsonLoop_eq_zero {n : ℕ}
+    [MeasurableSpace (Matrix (Fin n) (Fin n) ℂ)ˣ]
+    (μ : Measure (Matrix (Fin n) (Fin n) ℂ)ˣ) [IsProbabilityMeasure μ]
+    [MeasurableMul (Matrix (Fin n) (Fin n) ℂ)ˣ] [μ.IsMulLeftInvariant]
+    (ω : ℂ) {z : (Matrix (Fin n) (Fin n) ℂ)ˣ}
+    (hzval : (z : Matrix (Fin n) (Fin n) ℂ)
+      = ω • (1 : Matrix (Fin n) (Fin n) ℂ))
+    (hz : ∀ y, Commute z y)
+    (es : List (ConcreteEdge d N)) (hpos : ∀ e ∈ es, e.sign = true)
+    (hω : ω ^ es.length ≠ 1) :
+    ∫ A, wilsonLoop A es
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ) = 0 := by
+  -- pointwise eigenvalue under the centre action
+  have hpt : ∀ A : GaugeConfig d N (Matrix (Fin n) (Fin n) ℂ)ˣ,
+      wilsonLoop (centerAct z A) es = ω ^ es.length * wilsonLoop A es := by
+    intro A
+    unfold wilsonLoop
+    rw [wilsonLine_center_smul_of_mem hz A (centerAct z A) es
+      (fun e he => centerAct_apply_pos z A e (hpos e he)),
+      Units.val_mul, Units.val_pow_eq_pow_val, hzval, trace_scalarPow_mul]
+  -- the measure is centre-invariant
+  have hinv : ∫ A, wilsonLoop A es
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+      = ∫ A, wilsonLoop (centerAct z A) es
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ) :=
+    (integral_centerAct μ z _).symm
+  -- extract the eigenvalue
+  have hmul : ∫ A, wilsonLoop (centerAct z A) es
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+      = ω ^ es.length * ∫ A, wilsonLoop A es
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+    rw [show (fun A => wilsonLoop (centerAct z A) es)
+        = fun A => ω ^ es.length * wilsonLoop A es from funext hpt]
+    exact MeasureTheory.integral_const_mul _ _
+  rw [hmul] at hinv
+  have hfactor : (1 - ω ^ es.length) *
+      ∫ A, wilsonLoop A es ∂(gaugeMeasureFrom (d := d) (N := N) μ) = 0 := by
+    linear_combination hinv
+  rcases mul_eq_zero.mp hfactor with h1 | h2
+  · exact absurd (sub_eq_zero.mp h1).symm hω
+  · exact h2
 
 end YangMills
