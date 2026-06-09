@@ -96,6 +96,27 @@ theorem lattice_mass_gap_of_clustering
   exact Paper.mass_gap_bound (covIR t + covUV) (covIR t) covUV C1 C2 mstar c0 (t : ℝ)
     (Nat.cast_nonneg t) rfl (hIR t) hUV
 
+/-- **Strong-coupling lattice mass gap (M3) — uniform-in-separation form.**
+Strengthening of `lattice_mass_gap_of_clustering`: the gap `min(m*, c₀)` extracted there
+does not depend on the separation, so a **single** strictly positive rate works for *all*
+separations `t` simultaneously (`∃ gap, ∀ t` — the genuine one-gap mass-gap statement,
+not a per-separation bound).  The UV piece is now scale-indexed `covUV : ℕ → ℝ`, bounded
+at every scale by the §6.3 single-scale estimate.  Same hypotheses, same proof, strictly
+stronger conclusion; still conditional on the (hypothesis-carried) IR cluster bound and
+UV bound — never axioms. -/
+theorem lattice_mass_gap_of_clustering_uniform
+    (covIR covUV : ℕ → ℝ) (C1 C2 r c0 : ℝ)
+    (hr0 : 0 < r) (hr1 : r < 1) (hc0 : 0 < c0)
+    (hIRbound : ∀ d, |covIR d| ≤ C1 * r ^ d)
+    (hUV : ∀ t : ℕ, |covUV t| ≤ C2 * Real.exp (-(c0 * (t : ℝ)))) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV t| ≤ (C1 + C2) * Real.exp (-(gap * (t : ℝ))) := by
+  obtain ⟨mstar, hmpos, hIR⟩ :=
+    clustering_gives_exponential_decay covIR C1 r hr0 hr1 hIRbound
+  refine ⟨min mstar c0, lt_min hmpos hc0, fun t => ?_⟩
+  exact Paper.mass_gap_bound (covIR t + covUV t) (covIR t) (covUV t) C1 C2 mstar c0 (t : ℝ)
+    (Nat.cast_nonneg t) rfl (hIR t) (hUV t)
+
 /-! ### Finite susceptibility — the summed correlator converges
 
 Exponential clustering has a physical corollary: the **susceptibility**
