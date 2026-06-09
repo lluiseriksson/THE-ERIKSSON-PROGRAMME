@@ -98,6 +98,24 @@ cancellation + `partition_singleton` + `Complex.exp_log`, all verified.
 
 ## Target B — `kp_per_size_bound`
 
+> **UPDATE (2026-06-09): front glue DONE — open content now precisely stated.**
+> `YangMills/KP/ClusterWeight.lean` (in `YangMillsCore`, oracle-clean) defines the
+> concrete per-size weight
+> `clusterWeight P n = (1/(n+1)!)·∑_X |φ(X)|·∏‖z(Xᵢ)‖`
+> and proves `norm_clusterTerm_le`, `clusterSum_summable_of_geometric`, and
+> `norm_clusterSum_le` (`‖clusterSum P‖ ≤ C/(1−r)`).  So the abstract back-half is now
+> wired to the actual Mayer object, and **Target B is exactly one estimate**:
+>
+> ```lean
+> KPCriterion P a → ∃ C r, 0 ≤ r ∧ r < 1 ∧ ∀ n, clusterWeight P n ≤ C * r ^ n
+> ```
+>
+> The open mathematics behind it: (i) Penrose tree-graph inequality
+> `|ursell P X| ≤ #(spanning trees of incompGraph P X)`; (ii) per-tree activity sum
+> bound by walking edges with `kp_neighbor_sum_le`; (iii) Cayley-order tree counting
+> `≤ n^{n−2}` with `n^{n−2}/n! ≤ eⁿ` (crude binomial counting of `(n−1)`-edge subsets
+> is *insufficient* — it loses the geometric decay).  None of these are in Mathlib.
+
 **File:** `YangMills/KP/Convergence.lean` (back-half) + `Criterion.lean` (setup).
 **Goal to prove** (schematic — the per-size cluster weight obeys a geometric bound):
 
