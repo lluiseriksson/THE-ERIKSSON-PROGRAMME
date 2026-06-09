@@ -309,4 +309,73 @@ lemma bfsLevel_penroseTree_eq {m : ℕ} {E : Finset (Sym2 (Fin (m + 1)))}
         (Finset.coe_subset.mpr (penroseTree_subset hconn)))
       (hπconn.preconnected 0 v)
 
+/-- **Greedy-parent preservation on the interval (hfiber step 2):** for
+`T ⊆ E ⊆ penroseEnvelope H T` and `v ≠ 0`, the greedy parent of `v` in `E`
+is its tree parent — admissible extra edges into the lower level sit at or
+above the tree parent, so the minimum is unchanged. -/
+lemma bfsParent_eq_of_interval {m : ℕ} {H : SimpleGraph (Fin (m + 1))}
+    [Fintype H.edgeSet] {T E : Finset (Sym2 (Fin (m + 1)))}
+    (hT : T ∈ spanningTrees H) (hTE : T ⊆ E)
+    (hER : E ⊆ penroseEnvelope H T) {v : Fin (m + 1)} (hv : v ≠ 0) :
+    bfsParent E v = bfsParent T v := by
+  classical
+  have htree := isTree_of_mem_spanningTrees H hT
+  have hTconn := htree.isConnected
+  have hEconn := connected_of_subset_connected hTE hTconn
+  obtain ⟨hTadj, hTlev⟩ := bfsParent_spec hTconn hv
+  obtain ⟨hEadj, hElev⟩ := bfsParent_spec hEconn hv
+  -- the tree parent is an E-candidate, so the E-parent is ≤ it
+  have hmemE : bfsParent T v ∈ bfsParentSet E v := by
+    rw [mem_bfsParentSet]
+    constructor
+    · rw [SimpleGraph.fromEdgeSet_adj] at hTadj ⊢
+      exact ⟨Finset.mem_coe.mpr (hTE (Finset.mem_coe.mp hTadj.1)), hTadj.2⟩
+    · rw [bfsLevel_eq_of_interval hT hTE hER,
+        bfsLevel_eq_of_interval hT hTE hER]
+      exact hTlev
+  have hle : bfsParent E v ≤ bfsParent T v := bfsParent_min hmemE
+  -- the E-parent's edge is admissible, hence at/above the tree parent
+  have hrel : penroseRel T (bfsParent E v) v := by
+    have hedge : s(bfsParent E v, v) ∈ E := by
+      rw [SimpleGraph.fromEdgeSet_adj] at hEadj
+      exact Finset.mem_coe.mp hEadj.1
+    have hmem := hER hedge
+    rw [mem_penroseEnvelope_iff] at hmem
+    exact hmem.2
+  have hlevT : bfsLevel T (bfsParent E v) + 1 = bfsLevel T v := by
+    rw [← bfsLevel_eq_of_interval hT hTE hER,
+      ← bfsLevel_eq_of_interval hT hTE hER]
+    exact hElev
+  have hge : bfsParent T v ≤ bfsParent E v := by
+    rcases hrel with h | ⟨-, h2⟩ | ⟨h1, -⟩
+    · omega
+    · exact h2
+    · omega
+  exact le_antisymm hle hge
+
+/-- **The Penrose tree preserves greedy parents:** in the tree `π E`, the
+unique parent of `v` is its `E`-greedy parent. -/
+lemma bfsParent_penroseTree_eq {m : ℕ} {E : Finset (Sym2 (Fin (m + 1)))}
+    (hconn : (fromEdgeSet (↑E : Set (Sym2 (Fin (m + 1))))).Connected)
+    {v : Fin (m + 1)} (hv : v ≠ 0) :
+    bfsParent (penroseTree E) v = bfsParent E v := by
+  have hπtree := penroseTree_isTree hconn
+  have hπconn := penroseTree_connected hconn
+  obtain ⟨hπadj, hπlev⟩ := bfsParent_spec hπconn hv
+  obtain ⟨hEadj, hElev⟩ := bfsParent_spec hconn hv
+  -- the E-parent is a level-down neighbour of `v` in the tree π E
+  have hadj' : (fromEdgeSet (↑(penroseTree E) :
+      Set (Sym2 (Fin (m + 1))))).Adj (bfsParent E v) v := by
+    rw [SimpleGraph.fromEdgeSet_adj]
+    refine ⟨Finset.mem_coe.mpr (parent_edge_mem_penroseTree E hv), ?_⟩
+    intro heq
+    rw [heq] at hElev
+    omega
+  have hlev' : bfsLevel (penroseTree E) (bfsParent E v) + 1
+      = bfsLevel (penroseTree E) v := by
+    rw [bfsLevel_penroseTree_eq hconn, bfsLevel_penroseTree_eq hconn]
+    exact hElev
+  -- parent uniqueness in the tree π E
+  exact isTree_parent_unique hπtree 0 ⟨hπadj, hπlev⟩ ⟨hadj', hlev'⟩
+
 end YangMills.KP
