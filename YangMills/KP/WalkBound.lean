@@ -35,7 +35,7 @@ conditional neighbour sum obeys `∑ y, I x y * w y ≤ A`, then
 `∑_X (∏_{v ≠ r} I(X_{p v}, X_v)·w(X_v))·w(X_r) ≤ Aⁿ · ∑ y, w y`
 on a vertex type of cardinality `n + 1`. -/
 theorem tree_walk_bound (n : ℕ) :
-    ∀ (V : Type) [Fintype V] [DecidableEq V] (β : Type) [Fintype β]
+    ∀ (V : Type) [Fintype V] [DecidableEq V] (β : Type*) [Fintype β]
       (r : V) (p : V → V) (lev : V → ℕ)
       (I : β → β → ℝ) (w : β → ℝ) (A : ℝ),
       Fintype.card V = n + 1 →

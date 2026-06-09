@@ -39,13 +39,17 @@ M3: unconditional lattice mass gap at strong coupling
              │    ∑_X ∏_{v≠r} I(X_{p v},X_v)·w(X_v)·w(X_r) ≤ Aⁿ·∑w under
              │    the conditional neighbour bound ∑_y I x y·w y ≤ A.
              │    All three steps (i)+(ii)+(iii) of the per-size estimate
-             │    are now proved; ONLY the assembly [D] remains:
-             │    instantiate (V:=Fin (m+1), p:=bfsParent T, I:=incomp
-             │    indicator, A:=max a via kp_neighbor_sum_le), convert with
-             │    prod_tree_eq_prod_parents, swap sums with the Penrose
-             │    counting bound, divide by (n+1)! via
-             │    succ_pow_le_exp_mul_factorial ⇒ kp_per_size_bound with
-             │    r = e·A ⇒ KP convergence (Target B) closes.
+             │    are now proved.  Assembly [D] half done (2026-06-10):
+             │    **tree_assignment_sum_le PROVED** (KPBound.lean) — the
+             │    walk instantiated at the polymer objects:
+             │    ∑_X (∏_{e∈T} 𝟙[e ∈ incompEdges X])·∏‖z‖ ≤ Aᵐ·∑‖z‖ under
+             │    KPCriterion with a ≤ A.  Remaining assembly (final [D]):
+             │    expand |φ(X)| ≤ #spanningTrees as ∑_{T∈shapes} edge-
+             │    indicator products (𝟙[∀e∈T,…] ≤ ∏ pointwise by_cases),
+             │    Finset.sum_comm, apply tree_assignment_sum_le per T,
+             │    count shapes by treeCount_le_pow, divide by (n+1)! via
+             │    succ_pow_le_exp_mul_factorial ⇒ kp_per_size_bound:
+             │    clusterWeight P n ≤ (∑‖z‖)·(e·A)ⁿ ⇒ Target B closes.
              ├─ (iii) tree counting                 **PROVED 2026-06-09**
              │    treeCount_le_pow: treeCount (m+1) ≤ (m+1)^(m+1), via the
              │    parent-function injection (trees recoverable from their
