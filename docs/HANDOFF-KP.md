@@ -127,6 +127,23 @@ cancellation + `partition_singleton` + `Complex.exp_log`, all verified.
 >   (i) is the **concrete BFS/Penrose scheme**: construct `π` (greedy spanning tree
 >   of a connected subgraph) and envelope `R`, and verify `hmaps`/`hfiber`
 >   (each fiber is exactly the interval `[T, R T]`).  All oracle-clean, in core.
+> * `PenroseBFS.lean` — the **concrete greedy BFS scheme constructed, `hmaps`
+>   DISCHARGED**: `bfsLevel`/`bfsParent`/`penroseTree`/`penroseEnvelope` defined;
+>   proved: `exists_bfs_parent`, `dist_le_succ_of_adj`, `bfsParent_spec`/`_min`,
+>   `penroseTree_subset` (`π(E) ⊆ E`), `penroseTree_connected`,
+>   `penroseTree_card` (`m` edges), `penroseTree_isTree`, and
+>   **`penroseTree_mem_spanningTrees`** — exactly `hmaps` of the scheme theorem.
+>   **The single remaining lemma of step (i) is `hfiber`**: for a spanning tree
+>   `T` of `H`, and any `E` supported on `H`-edges,
+>   `(E connected ∧ penroseTree E = T) ↔ (T ⊆ E ∧ E ⊆ penroseEnvelope H T)`.
+>   Proof route (classical Penrose): `⟸` — edges within `penroseEnvelope` keep
+>   all levels (`bfsLevel E = bfsLevel T`, by `dist_le_succ_of_adj` induction up
+>   the levels) and the greedy parent choice is unaffected (admissible
+>   same-level / later-choice edges are never selected, `bfsParent_min`);
+>   `⟹` — every `E`-edge connects levels differing by ≤ 1
+>   (`dist_le_succ_of_adj`), and a lower endpoint below the greedy parent would
+>   contradict `penroseTree E = T` (it would *be* the parent).  All ingredients
+>   are in `PenroseBFS.lean`; this is one focused session of level bookkeeping.
 
 **File:** `YangMills/KP/Convergence.lean` (back-half) + `Criterion.lean` (setup).
 **Goal to prove** (schematic — the per-size cluster weight obeys a geometric bound):
