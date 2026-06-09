@@ -22,7 +22,14 @@ M3: unconditional lattice mass gap at strong coupling
  └─ lattice_mass_gap_of_clustering_uniform          PROVED (conditional form)
      ├─ UV suppression hypothesis (§6.3)            OPEN  [A: single-scale bound]
      └─ IR geometric cluster bound                  OPEN  [A; reduces to KP ↓]
-         └─ kp_per_size_bound: KPCriterion ⇒ clusterWeight P n ≤ C·rⁿ
+         └─ kp_per_size_bound                      **PROVED 2026-06-10 — TARGET B CLOSED**
+             clusterWeight P n ≤ (∑‖z‖)·(e·A)ⁿ under KPCriterion with a ≤ A
+             (KPBound.lean); corollaries kp_convergence (absolute summability
+             of the Mayer series) and kp_norm_clusterSum_le
+             (‖clusterSum‖ ≤ (∑‖z‖)/(1−e·A)) for e·A < 1.
+             Honest note: uses the UNIFORM smallness e·max(a) < 1 — slightly
+             stronger than the sharp KP criterion; refinable later without
+             touching the architecture.  Structure of the proof:
              ├─ clusterWeight glue to clusterSum    PROVED (ClusterWeight.lean)
              │    norm_clusterTerm_le, clusterSum_summable_of_geometric,
              │    norm_clusterSum_le (‖Ξ-log-series‖ ≤ C/(1−r))
