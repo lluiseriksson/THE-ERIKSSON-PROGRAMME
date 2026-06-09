@@ -118,4 +118,105 @@ lemma isTree_adj_level {V : Type*} {G : SimpleGraph V} (hT : G.IsTree)
       omega
   · right; omega
 
+/-- In a tree, a vertex strictly farther from the root than `u` cannot lie
+on a path from the root to `u` (prefix paths realize distances). -/
+lemma not_mem_support_of_dist_lt {V : Type*} {G : SimpleGraph V}
+    (hT : G.IsTree) {w₀ u v : V} (p : G.Walk w₀ u) (hp : p.IsPath)
+    (hgt : G.dist w₀ u < G.dist w₀ v) : v ∉ p.support := by
+  classical
+  intro hv
+  have hQ : (p.takeUntil v hv).IsPath := hp.takeUntil hv
+  have hQlen : (p.takeUntil v hv).length = G.dist w₀ v :=
+    isTree_path_length_eq_dist hT _ hQ
+  have hle := SimpleGraph.Walk.length_takeUntil_le p hv
+  have hplen : p.length = G.dist w₀ u := isTree_path_length_eq_dist hT p hp
+  omega
+
+/-- **Parent uniqueness in a tree:** a vertex has at most one neighbour one
+level closer to the root.  (Two such neighbours would give two distinct
+root-paths, comparing penultimate vertices.) -/
+lemma isTree_parent_unique {V : Type*} {G : SimpleGraph V} (hT : G.IsTree)
+    (w₀ : V) {v u₁ u₂ : V}
+    (h₁ : G.Adj u₁ v ∧ G.dist w₀ u₁ + 1 = G.dist w₀ v)
+    (h₂ : G.Adj u₂ v ∧ G.dist w₀ u₂ + 1 = G.dist w₀ v) : u₁ = u₂ := by
+  classical
+  obtain ⟨q₁, hq₁⟩ := hT.isConnected.exists_walk_length_eq_dist w₀ u₁
+  obtain ⟨q₂, hq₂⟩ := hT.isConnected.exists_walk_length_eq_dist w₀ u₂
+  have hp₁ := q₁.bypass_isPath
+  have hp₂ := q₂.bypass_isPath
+  have hl₁ : q₁.bypass.length = G.dist w₀ u₁ := by
+    have hb1 := SimpleGraph.Walk.length_bypass_le q₁
+    have hb2 := SimpleGraph.dist_le q₁.bypass
+    omega
+  have hl₂ : q₂.bypass.length = G.dist w₀ u₂ := by
+    have hb1 := SimpleGraph.Walk.length_bypass_le q₂
+    have hb2 := SimpleGraph.dist_le q₂.bypass
+    omega
+  have hv₁ : v ∉ q₁.bypass.support :=
+    not_mem_support_of_dist_lt hT q₁.bypass hp₁ (by omega)
+  have hv₂ : v ∉ q₂.bypass.support :=
+    not_mem_support_of_dist_lt hT q₂.bypass hp₂ (by omega)
+  have hP₁ : (q₁.bypass.concat h₁.1).IsPath := by
+    rw [SimpleGraph.Walk.concat_isPath_iff]
+    exact ⟨hp₁, hv₁⟩
+  have hP₂ : (q₂.bypass.concat h₂.1).IsPath := by
+    rw [SimpleGraph.Walk.concat_isPath_iff]
+    exact ⟨hp₂, hv₂⟩
+  obtain ⟨P, -, hPuniq⟩ :=
+    (SimpleGraph.isTree_iff_existsUnique_path.mp hT).2 w₀ v
+  have he : q₁.bypass.concat h₁.1 = q₂.bypass.concat h₂.1 := by
+    rw [hPuniq _ hP₁, hPuniq _ hP₂]
+  have hpen := congrArg SimpleGraph.Walk.penultimate he
+  rwa [SimpleGraph.Walk.penultimate_concat, SimpleGraph.Walk.penultimate_concat]
+    at hpen
+
+/-- **`π` fixes spanning trees:** `penroseTree T = T` for every spanning
+tree `T` of the ambient graph — each tree edge is the greedy parent edge of
+its lower endpoint, by parent uniqueness.  (This is the diagonal of the
+fiber characterization: `T` itself lies in the fiber over `T`.) -/
+lemma penroseTree_of_spanningTree {m : ℕ} {H : SimpleGraph (Fin (m + 1))}
+    [Fintype H.edgeSet] {T : Finset (Sym2 (Fin (m + 1)))}
+    (hT : T ∈ spanningTrees H) : penroseTree T = T := by
+  classical
+  have htree := isTree_of_mem_spanningTrees H hT
+  have hconn := htree.isConnected
+  apply Finset.Subset.antisymm (penroseTree_subset hconn)
+  intro e he
+  revert he
+  refine Sym2.ind (fun a b => ?_) e
+  intro he
+  -- the endpoints are distinct
+  have hne : a ≠ b := by
+    have hmem := spanningTrees_subset H hT he
+    rw [SimpleGraph.mem_edgeFinset] at hmem
+    intro hab
+    exact H.not_isDiag_of_mem_edgeSet hmem (Sym2.mk_isDiag_iff.mpr hab)
+  -- adjacency in the tree
+  have hadj : (fromEdgeSet (↑T : Set (Sym2 (Fin (m + 1))))).Adj a b := by
+    rw [SimpleGraph.fromEdgeSet_adj]
+    exact ⟨Finset.mem_coe.mpr he, hne⟩
+  rcases isTree_adj_level htree 0 hadj with hlev | hlev
+  · -- `b` is the lower endpoint: the edge is `b`'s parent edge
+    have hb0 : b ≠ 0 := by
+      intro h0
+      rw [h0, SimpleGraph.dist_self] at hlev
+      omega
+    have hbspec := bfsParent_spec hconn hb0
+    have hpar : bfsParent T b = a :=
+      isTree_parent_unique htree 0 ⟨hbspec.1, hbspec.2⟩ ⟨hadj, hlev⟩
+    have hmem := parent_edge_mem_penroseTree T hb0
+    rwa [hpar] at hmem
+  · -- `a` is the lower endpoint: the edge is `a`'s parent edge
+    have ha0 : a ≠ 0 := by
+      intro h0
+      rw [h0, SimpleGraph.dist_self] at hlev
+      omega
+    have haspec := bfsParent_spec hconn ha0
+    have hpar : bfsParent T a = b :=
+      isTree_parent_unique htree 0 ⟨haspec.1, haspec.2⟩ ⟨hadj.symm, hlev⟩
+    have hmem := parent_edge_mem_penroseTree T ha0
+    rw [hpar] at hmem
+    rw [Sym2.eq_swap]
+    exact hmem
+
 end YangMills.KP
