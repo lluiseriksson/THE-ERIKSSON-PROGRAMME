@@ -59,6 +59,7 @@ import YangMills.L0_Lattice.FiniteLatticeGeometryInstance
 import YangMills.L1_GibbsMeasure.GibbsMeasure
 import YangMills.L1_GibbsMeasure.CenterInvariance
 import YangMills.L1_GibbsMeasure.SUNSelectionRule
+import YangMills.L1_GibbsMeasure.GibbsSelectionRule
 
 -- SU(N) compactness and Haar state construction
 import YangMills.P8_PhysicalGap.SUN_Compact

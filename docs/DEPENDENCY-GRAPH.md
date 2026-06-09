@@ -68,6 +68,17 @@ M3: unconditional lattice mass gap at strong coupling
  └─ polymer representation: lattice Gibbs correlators ⇄ polymer system
     satisfying KPCriterion at strong coupling        OPEN  [A: large formalization;
     the bridge that makes the KP output speak about Wilson/gauge observables]
+ └─ T3 / LG6 — centre selection rule               **CLOSED 2026-06-10**
+    integral_centerAct (gauge measure centre-invariant, left-invariant μ);
+    wilsonAction_centerAct (exact centre symmetry of the Wilson action —
+    plaquettes have net centre charge 0 — any plaquette energy);
+    integral_centerAct_gibbs (the interacting Gibbs measure is
+    centre-invariant, via tilted-measure transport);
+    integral_wilsonLoopSU_eq_zero (free) and
+    **integral_wilsonLoopSU_gibbs_eq_zero** (interacting, ANY β, ANY
+    plaquette energy): SU(n) Wilson loops on positively-oriented loops with
+    n ∤ L have vanishing expectation — the lattice Z_n N-ality selection
+    rule, fully concrete at sunHaarProb, zero unproved hypotheses.
  └─ (Wilson-loop variant) T4: Peter–Weyl/characters  OPEN  [B: major]
 ```
 
