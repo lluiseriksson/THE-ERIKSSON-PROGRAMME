@@ -33,12 +33,19 @@ M3: unconditional lattice mass gap at strong coupling
              ├─ uniform Penrose bound               **PROVED 2026-06-09**
              │    abs_ursell_le_treeCount: |φ(X)| ≤ treeCount n,
              │    X-independent majorant (treeCount = all labeled trees on Fin n)
-             ├─ (ii) per-tree activity walk         OPEN  [A: leaf-removal
-             │    induction consuming kp_neighbor_sum_le (PROVED);
-             │    **the LAST open step of kp_per_size_bound**;
-             │    exact statement + mechanical proof plan committed in
-             │    docs/WALK-BOUND-PLAN.md; structural inputs proved:
-             │    prod_tree_eq_prod_parents, maxLevel_not_parent]
+             ├─ (ii) per-tree activity walk         **PROVED 2026-06-10**
+             │    tree_walk_bound (WalkBound.lean): abstract leaf-removal
+             │    induction over shrinking vertex types (funSplitAt);
+             │    ∑_X ∏_{v≠r} I(X_{p v},X_v)·w(X_v)·w(X_r) ≤ Aⁿ·∑w under
+             │    the conditional neighbour bound ∑_y I x y·w y ≤ A.
+             │    All three steps (i)+(ii)+(iii) of the per-size estimate
+             │    are now proved; ONLY the assembly [D] remains:
+             │    instantiate (V:=Fin (m+1), p:=bfsParent T, I:=incomp
+             │    indicator, A:=max a via kp_neighbor_sum_le), convert with
+             │    prod_tree_eq_prod_parents, swap sums with the Penrose
+             │    counting bound, divide by (n+1)! via
+             │    succ_pow_le_exp_mul_factorial ⇒ kp_per_size_bound with
+             │    r = e·A ⇒ KP convergence (Target B) closes.
              ├─ (iii) tree counting                 **PROVED 2026-06-09**
              │    treeCount_le_pow: treeCount (m+1) ≤ (m+1)^(m+1), via the
              │    parent-function injection (trees recoverable from their
