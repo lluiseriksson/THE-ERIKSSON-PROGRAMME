@@ -84,6 +84,31 @@ LGT texts, e.g. Montvay–Münster §3), now machine-checked end to end.
 Loops here are positively-oriented edge lists; the signed-length
 generalization is routine and noted in `docs/T3-LG6-PLAN.md`.
 
+## Addendum 2 (2026-06-10, continued autonomous session): polymer rep. step 1
+
+Headline results, each `#print axioms` = `[propext, Classical.choice, Quot.sound]`:
+
+```
+'YangMills.boltzmann_eq_sum_plaquetteSets'           (exp(-βS) = Mayer sum over plaquette sets)
+'YangMills.partitionFunction_eq_sum_plaquetteSets''  (Z as polymer-gas sum, UNCONDITIONAL for
+                                                      bounded measurable energies)
+'YangMills.abs_plaquetteWeight_le'                   (|f_p| ≤ e^{|β|B} − 1, KP smallness seed)
+'YangMills.measurable_plaquetteHolonomy'             (holonomies measurable)
+'YangMills.integrable_boltzmann'                     (Boltzmann weight integrable, bounded pe)
+'YangMills.partitionFunction_pos''                   (Z > 0, integrability hypothesis ELIMINATED)
+'YangMills.gibbsMeasure_isProbability''              (Gibbs probability, hypothesis ELIMINATED)
+```
+
+Plain language: the Gibbs weight expands as `∏_p (1 + f_p)` with Mayer
+weights `f_p = e^{-βE_p} − 1`, turning the partition function into a gas of
+plaquette sets with activities uniformly `≤ e^{|β|B} − 1` — the
+high-temperature polymer representation (standard; e.g. Montvay–Münster,
+Seiler, *Gauge Theories as a Problem of Constructive QFT*), step 1 of
+connecting the verified KP convergence to the lattice Gibbs theory.  The
+integrability hypotheses previously carried by `partitionFunction_pos` and
+`gibbsMeasure_isProbability` are now discharged for bounded measurable
+plaquette energies (e.g. `Re tr` on a compact group).
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

@@ -218,6 +218,68 @@ theorem partitionFunction_eq_sum_plaquetteSets'
   partitionFunction_eq_sum_plaquetteSets μ pe β
     (fun S _ => integrable_prod_plaquetteWeight μ hpe_meas hpe β S)
 
+/-- **The Wilson action is measurable** (bounded measurable energy not even
+needed — measurability of `pe` suffices). -/
+lemma measurable_wilsonAction [MeasurableMul₂ G] [MeasurableInv G]
+    {pe : G → ℝ} (hpe_meas : Measurable pe) :
+    Measurable (fun A : GaugeConfig d N G => wilsonAction pe A) := by
+  unfold wilsonAction
+  exact Finset.measurable_sum _ fun p _ =>
+    hpe_meas.comp (measurable_plaquetteHolonomy p)
+
+/-- **The Boltzmann weight is integrable** for bounded measurable plaquette
+energies — discharging the integrability hypothesis carried by
+`partitionFunction_pos` and `gibbsMeasure_isProbability`. -/
+lemma integrable_boltzmann [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ}
+    (hpe_meas : Measurable pe) {B : ℝ} (hpe : ∀ g, |pe g| ≤ B) (β : ℝ) :
+    Integrable
+      (fun A : GaugeConfig d N G => Real.exp (-β * wilsonAction pe A))
+      (gaugeMeasureFrom (d := d) (N := N) μ) := by
+  have hmeas : Measurable
+      (fun A : GaugeConfig d N G => Real.exp (-β * wilsonAction pe A)) :=
+    Real.measurable_exp.comp ((measurable_wilsonAction hpe_meas).const_mul (-β))
+  refine (MeasureTheory.integrable_const
+    (Real.exp (|β| * B *
+      (Fintype.card (FiniteLatticeGeometry.P (d := d) (N := N) (G := G)))))).mono'
+    hmeas.aestronglyMeasurable ?_
+  refine MeasureTheory.ae_of_all _ fun A => ?_
+  rw [Real.norm_eq_abs, Real.abs_exp]
+  refine Real.exp_le_exp.mpr ?_
+  have hS : |wilsonAction pe A|
+      ≤ B * (Fintype.card (FiniteLatticeGeometry.P (d := d) (N := N) (G := G))) := by
+    unfold wilsonAction
+    refine le_trans (Finset.abs_sum_le_sum_abs _ _) ?_
+    calc ∑ p : FiniteLatticeGeometry.P (d := d) (N := N) (G := G),
+          |pe (plaquetteHolonomy A p)|
+        ≤ ∑ _p : FiniteLatticeGeometry.P (d := d) (N := N) (G := G), B :=
+          Finset.sum_le_sum fun p _ => hpe _
+      _ = B * (Fintype.card (FiniteLatticeGeometry.P (d := d) (N := N) (G := G))) := by
+          rw [Finset.sum_const, Finset.card_univ, nsmul_eq_mul, mul_comm]
+  calc -β * wilsonAction pe A ≤ |(-β) * wilsonAction pe A| := le_abs_self _
+    _ = |β| * |wilsonAction pe A| := by rw [abs_mul, abs_neg]
+    _ ≤ |β| * (B * (Fintype.card
+          (FiniteLatticeGeometry.P (d := d) (N := N) (G := G)))) :=
+        mul_le_mul_of_nonneg_left hS (abs_nonneg β)
+    _ = |β| * B * (Fintype.card
+          (FiniteLatticeGeometry.P (d := d) (N := N) (G := G))) := by ring
+
+/-- **The partition function is positive, unconditionally** for bounded
+measurable plaquette energies. -/
+theorem partitionFunction_pos' [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ}
+    (hpe_meas : Measurable pe) {B : ℝ} (hpe : ∀ g, |pe g| ≤ B) (β : ℝ) :
+    0 < partitionFunction (d := d) (N := N) μ pe β :=
+  partitionFunction_pos μ pe β (integrable_boltzmann μ hpe_meas hpe β)
+
+/-- **The Gibbs measure is a probability measure, unconditionally** for
+bounded measurable plaquette energies. -/
+theorem gibbsMeasure_isProbability' [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ}
+    (hpe_meas : Measurable pe) {B : ℝ} (hpe : ∀ g, |pe g| ≤ B) (β : ℝ) :
+    IsProbabilityMeasure (gibbsMeasure (d := d) (N := N) μ pe β) :=
+  gibbsMeasure_isProbability d N μ pe β (integrable_boltzmann μ hpe_meas hpe β)
+
 end Integrability
 
 end YangMills
