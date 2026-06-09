@@ -378,4 +378,124 @@ lemma bfsParent_penroseTree_eq {m : ℕ} {E : Finset (Sym2 (Fin (m + 1)))}
   -- parent uniqueness in the tree π E
   exact isTree_parent_unique hπtree 0 ⟨hπadj, hπlev⟩ ⟨hadj', hlev'⟩
 
+/-- **The Penrose fiber characterization (`hfiber`), closed.**  For a
+spanning tree `T` of `H`: a subgraph `E` is a connected `H`-subgraph with
+Penrose tree `T` **iff** it lies in the Boolean interval
+`[T, penroseEnvelope H T]`.  This is the last hypothesis of the partition
+scheme (Penrose 1967). -/
+lemma penrose_hfiber {m : ℕ} {H : SimpleGraph (Fin (m + 1))}
+    [Fintype H.edgeSet] {T : Finset (Sym2 (Fin (m + 1)))}
+    (hT : T ∈ spanningTrees H) (E : Finset (Sym2 (Fin (m + 1)))) :
+    ((∀ e ∈ E, e ∈ H.edgeSet) ∧
+      (fromEdgeSet (↑E : Set (Sym2 (Fin (m + 1))))).Connected ∧
+      penroseTree E = T)
+    ↔ (T ⊆ E ∧ E ⊆ penroseEnvelope H T) := by
+  classical
+  constructor
+  · rintro ⟨hsub, hconn, hπ⟩
+    subst hπ
+    refine ⟨penroseTree_subset hconn, ?_⟩
+    intro e he
+    revert he
+    refine Sym2.ind (fun a b => ?_) e
+    intro he
+    have heSet := hsub _ he
+    have hne : a ≠ b := by
+      intro hab
+      exact H.not_isDiag_of_mem_edgeSet heSet (Sym2.mk_isDiag_iff.mpr hab)
+    have hadj : (fromEdgeSet (↑E : Set (Sym2 (Fin (m + 1))))).Adj a b := by
+      rw [SimpleGraph.fromEdgeSet_adj]
+      exact ⟨Finset.mem_coe.mpr he, hne⟩
+    rw [mem_penroseEnvelope_iff]
+    refine ⟨by rw [SimpleGraph.mem_edgeFinset]; exact heSet, ?_⟩
+    have h1 : bfsLevel E b ≤ bfsLevel E a + 1 :=
+      dist_le_succ_of_adj hconn 0 hadj
+    have h2 : bfsLevel E a ≤ bfsLevel E b + 1 :=
+      dist_le_succ_of_adj hconn 0 hadj.symm
+    unfold penroseRel
+    rcases Nat.lt_trichotomy (bfsLevel E a) (bfsLevel E b) with hlt | heq | hgt
+    · -- `b` one level below: later-choice condition via greedy minimality
+      have hb0 : b ≠ 0 := by
+        intro h
+        rw [h, bfsLevel_zero_eq] at hlt
+        omega
+      refine Or.inr (Or.inl ⟨?_, ?_⟩)
+      · rw [bfsLevel_penroseTree_eq hconn, bfsLevel_penroseTree_eq hconn]
+        omega
+      · rw [bfsParent_penroseTree_eq hconn hb0]
+        refine bfsParent_min ?_
+        rw [mem_bfsParentSet]
+        exact ⟨hadj, by omega⟩
+    · refine Or.inl ?_
+      rw [bfsLevel_penroseTree_eq hconn, bfsLevel_penroseTree_eq hconn]
+      exact heq
+    · have ha0 : a ≠ 0 := by
+        intro h
+        rw [h, bfsLevel_zero_eq] at hgt
+        omega
+      refine Or.inr (Or.inr ⟨?_, ?_⟩)
+      · rw [bfsLevel_penroseTree_eq hconn, bfsLevel_penroseTree_eq hconn]
+        omega
+      · rw [bfsParent_penroseTree_eq hconn ha0]
+        refine bfsParent_min ?_
+        rw [mem_bfsParentSet]
+        exact ⟨hadj.symm, by omega⟩
+  · rintro ⟨hTE, hER⟩
+    have htree := isTree_of_mem_spanningTrees H hT
+    have hTconn := htree.isConnected
+    have hEconn := connected_of_subset_connected hTE hTconn
+    refine ⟨?_, hEconn, ?_⟩
+    · intro e he
+      have hmem := hER he
+      revert hmem
+      refine Sym2.ind (fun a b => ?_) e
+      intro hmem
+      rw [mem_penroseEnvelope_iff] at hmem
+      have h1 := hmem.1
+      rwa [SimpleGraph.mem_edgeFinset] at h1
+    · have himg : penroseTree E = penroseTree T := by
+        unfold penroseTree
+        apply Finset.image_congr
+        intro v hv
+        rw [Finset.mem_coe, Finset.mem_filter] at hv
+        show s(bfsParent E v, v) = s(bfsParent T v, v)
+        rw [bfsParent_eq_of_interval hT hTE hER hv.2]
+      rw [himg, penroseTree_of_spanningTree hT]
+
+/-- **The Penrose tree-graph inequality — UNCONDITIONAL.**
+For any polymer tuple `X`, the Ursell/Mayer coefficient is bounded by the
+number of spanning trees of the incompatibility graph:
+`|φ(X)| ≤ #(spanning trees of incompGraph P X)`.
+
+This is Penrose's theorem (O. Penrose, *Convergence of fugacity expansions
+for classical systems*, 1967), here obtained by instantiating the verified
+partition-scheme mechanism with the greedy BFS scheme
+`(penroseTree, penroseEnvelope)` whose hypotheses `hmaps`/`hfiber` are now
+discharged.  Step (i) of Target B is closed; the remaining open content of
+the KP convergence bound is spanning-tree *counting* (Cayley/Prüfer) and the
+per-tree activity walk (`docs/HANDOFF-KP.md`). -/
+theorem abs_ursell_le_card_spanningTrees (P : PolymerSystem) {n : ℕ}
+    (X : Fin n → P.Polymer) [Fintype (incompGraph P X).edgeSet] :
+    |ursell P X| ≤ ((spanningTrees (incompGraph P X)).card : ℤ) := by
+  classical
+  cases n with
+  | zero =>
+    have h0 : ursell P X = 0 := by
+      unfold ursell
+      rw [Finset.sum_filter]
+      apply Finset.sum_eq_zero
+      intro E _
+      have hnc : ¬ (fromEdgeSet (↑E : Set (Sym2 (Fin 0)))).Connected := by
+        intro hconn
+        obtain ⟨v⟩ := hconn.nonempty
+        exact v.elim0
+      rw [if_neg hnc]
+    rw [h0, abs_zero]
+    positivity
+  | succ m =>
+    exact abs_ursell_le_card_spanningTrees_of_scheme P X penroseTree
+      (penroseEnvelope (incompGraph P X))
+      (fun E hsub hconn => penroseTree_mem_spanningTrees hsub hconn)
+      (fun T hT E => penrose_hfiber hT E)
+
 end YangMills.KP

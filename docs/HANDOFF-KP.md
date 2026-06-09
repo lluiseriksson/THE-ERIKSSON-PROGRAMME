@@ -127,6 +127,15 @@ cancellation + `partition_singleton` + `Complex.exp_log`, all verified.
 >   (i) is the **concrete BFS/Penrose scheme**: construct `π` (greedy spanning tree
 >   of a connected subgraph) and envelope `R`, and verify `hmaps`/`hfiber`
 >   (each fiber is exactly the interval `[T, R T]`).  All oracle-clean, in core.
+> **STEP (i) CLOSED (2026-06-09): the Penrose tree-graph inequality is
+> UNCONDITIONAL.**  `PenroseFiber.lean` proves `penrose_hfiber` (the fiber
+> over a spanning tree `T` is exactly the interval `[T, penroseEnvelope H T]`)
+> and the headline `abs_ursell_le_card_spanningTrees`:
+> `|ursell P X| ≤ #spanningTrees(incompGraph P X)` — Penrose 1967, no
+> hypotheses, oracle `[propext, Classical.choice, Quot.sound]`.
+> Remaining for `kp_per_size_bound`: (ii) the per-tree activity walk and
+> (iii) Cayley/Prüfer tree counting.  See `docs/DEPENDENCY-GRAPH.md`.
+>
 > * `PenroseBFS.lean` — the **concrete greedy BFS scheme constructed, `hmaps`
 >   DISCHARGED**: `bfsLevel`/`bfsParent`/`penroseTree`/`penroseEnvelope` defined;
 >   proved: `exists_bfs_parent`, `dist_le_succ_of_adj`, `bfsParent_spec`/`_min`,
