@@ -109,6 +109,30 @@ integrability hypotheses previously carried by `partitionFunction_pos` and
 `gibbsMeasure_isProbability` are now discharged for bounded measurable
 plaquette energies (e.g. `Re tr` on a compact group).
 
+## Addendum 3 (2026-06-10, autonomous loop, final): observables + correlators
+
+Each `#print axioms` = `[propext, Classical.choice, Quot.sound]`,
+core green at 8214 jobs:
+
+```
+'YangMills.norm_wilsonLoopSU_le'                     (|W| ≤ n: trace bound on SU(n))
+'YangMills.measurable_wilsonLoopSU'                  (W measurable; SU(n) MeasurableMul₂/Inv
+                                                      instances built componentwise)
+'YangMills.integrable_wilsonLoopSU_gibbs'            (W integrable under Gibbs — the
+                                                      selection-rule expectations are
+                                                      well-defined integrals)
+'YangMills.integral_wilsonLoopSU_mul_gibbs_eq_zero'  (CORRELATOR selection rule: two-loop
+                                                      Gibbs correlators vanish unless
+                                                      n | L+L', any coupling)
+```
+
+Status of the M3 campaign after this run: T1 ✓, T2 (full KP convergence) ✓,
+T3 (selection rules, free + interacting + correlator, with integrability) ✓,
+polymer representation step 1 ✓ with three integrability hypotheses
+eliminated.  Remaining: polymer step 2 (connected grouping + independence
+factorization of the product measure — next campaign, multi-session),
+UV bound, T4.  M4/M5: class C, open mathematics.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
