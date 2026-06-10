@@ -188,6 +188,38 @@ log-difference of partition functions (= difference of cluster sums
 Budgets: B0a 4–7 cycles; B0b 6–12 cycles (the hardest analysis left on
 this chain).  Both volume-free, abstract-KP level.
 
+**B0a progress (2026-06-10, same session; `KP/MayerInversion.lean`,
+commits `6074b9c..4253225`, all oracle-clean):**
+
+* Step 0: `PairwiseCompatible`, `edgeFinset_eq_empty_iff`,
+  `sum_neg_one_pow_eq_indicator` (the ungrouped side).
+* Step 1: `ursell_comp_equiv` — relabeling invariance via
+  `Finset.sum_nbij'` with `Sym2.map`-image bijections,
+  `Iso.connected_iff`, `fromEdgeSet_adj` transport.
+* Step 2: `reachable_of_walk_image` (walk pullback along an embedding —
+  image edge sets never leave the range; walk-induction with
+  `Sym2.eq_iff` case split) and `reachable_image_iff` (both
+  directions; pushforward via `Reachable.map` with an INLINE hom
+  literal `⟨⇑f, hmaprel⟩` — a `have`-bound hom is opaque and its
+  coercion will NOT reduce, a hard-won idiom).
+
+**Remaining for B0a (next session):**
+
+1. The per-block sum identification: for `B : Finset (Fin n)`,
+   `hm : B.card = m`, with `emb := fun i => ↑(B.orderIsoOfFin hm i)`:
+   `∑_{E ⊆ edgeFinset(G_X), edges within B, all of B mutually reachable}
+     (−1)^{|E|} = ursell P (X ∘ emb)` — the bijection is
+   `E' ↦ E'.image (Sym2.map emb)` (image characterized by the
+   within-`B` condition; injectivity/card as in step 1; connectivity
+   via `reachable_image_iff` + surjectivity of `emb` onto `B`).
+2. The component partition `Finpartition` of `fromEdgeSet E`
+   (via `Finpartition.ofSetoid` on the reachability setoid) and the
+   fibration of the full powerset sum over it (the ite-collapse idiom);
+   per-π fibers split as products over blocks (edges partition by
+   components; `(−1)^{|E|}` multiplicative).
+3. Compose with `sum_neg_one_pow_eq_indicator` → the partition
+   identity; then B0b.
+
 ## 3. Order of work and budgets
 
 1. A2 tail lemma (with A1 tilting as its engine): 2–3 cycles.
