@@ -233,8 +233,16 @@ commits `6074b9c..4253225`, all oracle-clean):**
    `parts.attach`), cardinality additivity (`Finset.card_biUnion` on
    disjoint within-part sets), `(−1)^{∑} = ∏(−1)^{·}`.
    The delicate spot: `componentPartition U = π` for the reconstructed
-   union `U` — prove via part-wise equality and `Finpartition.ext`
-   (check the exact Finpartition extensionality API first).
+   union `U`.  **API verified present** (Finpartition.lean): `@[ext]`
+   on the structure (parts-equality suffices, proofs irrelevant),
+   `part_mem` (`P.part a ∈ P.parts ↔ a ∈ s`), `part_eq_iff_mem`,
+   `part_eq_of_mem`, `part_surjOn` (every part is some `P.part a`),
+   `Finpartition.disjoint` (parts pairwise disjoint), `mem_part`.
+   Route: prove the POINTWISE class equality
+   `(componentPartition U).part a = π.part a` (reachability-in-`U` ↔
+   same-`π`-part, via `reachable_filter_of_closed` and the per-part
+   `g B`-connectivity), then parts-sets equal by double inclusion
+   through `part_surjOn` + `part_eq_of_mem`, then `Finpartition.ext`.
 2. Fibration of the powerset sum over `π` (ite-collapse idiom — sum
    over `Finpartition univ`, a Fintype) + compose with
    `sum_neg_one_pow_eq_indicator` and step 3 → the partition identity.
