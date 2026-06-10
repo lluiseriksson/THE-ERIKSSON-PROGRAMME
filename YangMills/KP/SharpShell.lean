@@ -83,7 +83,7 @@ forest reaching down toward the root; spanning trees of incompatibility
 graphs land here via their BFS parent/level data. -/
 def IsAdmissible {n D : ℕ} (p : Fin (n + 1) → Fin (n + 1))
     (lev : Fin (n + 1) → Fin (D + 1)) : Prop :=
-  lev 0 = 0 ∧ ∀ v, v ≠ 0 → ((lev (p v) : ℕ) < (lev v : ℕ))
+  lev 0 = 0 ∧ ∀ v, v ≠ 0 → ((lev (p v) : ℕ) + 1 = (lev v : ℕ))
 
 instance {n D : ℕ} (p : Fin (n + 1) → Fin (n + 1))
     (lev : Fin (n + 1) → Fin (D + 1)) : Decidable (IsAdmissible p lev) := by
@@ -245,9 +245,9 @@ theorem pinnedClusterWeight_le_treeSumRaw (P : PolymerSystem)
       simp only [dif_pos hconn]
       apply Fin.ext
       simp [bfsLevel_zero_eq]
-    · -- descent
+    · -- exact level increment
       intro v hv
-      show ((φ T).2 ((φ T).1 v) : ℕ) < ((φ T).2 v : ℕ)
+      show ((φ T).2 ((φ T).1 v) : ℕ) + 1 = ((φ T).2 v : ℕ)
       rw [hφdef]
       simp only [dif_pos hconn]
       have hspec := (bfsParent_spec hconn hv).2
@@ -387,7 +387,7 @@ lemma treeSumRaw_mono_depth (P : PolymerSystem) [Fintype P.Polymer]
             simp only [Fin.coe_castSucc]
             exact congrArg Fin.val hlev0
           · intro v hv
-            show (((ψ pl).2 ((ψ pl).1 v)) : ℕ) < (((ψ pl).2 v) : ℕ)
+            show (((ψ pl).2 ((ψ pl).1 v)) : ℕ) + 1 = (((ψ pl).2 v) : ℕ)
             rw [hψdef]
             simpa using hdesc v hv
         · rw [hGdef]
@@ -475,10 +475,7 @@ lemma treeSumRaw_zero_succ (P : PolymerSystem) [Fintype P.Polymer]
       have := congrArg Fin.val h
       simp at this
     have := hadm.2 1 h1
-    have hz1 : ((pl.2 (pl.1 1) : ℕ)) = 0 := by omega
-    have hz2 : ((pl.2 1 : ℕ)) = 0 := by
-      have := (pl.2 1).isLt
-      omega
+    have h2 := (pl.2 1).isLt
     omega
   rw [hfil, Finset.sum_empty]
 
