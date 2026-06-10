@@ -379,6 +379,28 @@ S2 and S3 are each single-lemma bricks against fixed data; S1 is
 `Finset.sum_fiberwise_of_maps_to`; S4 is proved.  The dependent-type
 hazard of the original step-3 formulation is gone.
 
+*S2+S3 FUSED (2026-06-10, final refinement).*  Do not give block-local
+conditions an independent axiomatization (that would need the unproved
+gluing direction).  Instead **define** each block factor as the relabeled
+canonical sum itself:
+`G_i(h) := Σ-shape over canonical depth-D structures on Fin (m_i + 1)` —
+then S3 is a free `Equiv.sum_comp` along `markedEquiv`-`arrowCongr`, and
+the entire S2+S3 content is ONE inequality per fixed `ρ`:
+
+    ∑_{(pl, σ, X) : consistent with ρ, X 0 = c} term(pl, X)
+      ≤ ∏_i ∑_{c'} 𝟙[P.incomp c c']·‖z c'‖·(treeSumRaw-inner P c' D (m i))
+
+proved by: term factorization (`master_partition` +
+`subtree_prod_transport`, PROVED), per-block canonicity of the image
+(`subtreeStructure_isAdmissible` + `subtreeParent 0 = 0`, PROVED),
+injectivity of the decomposition (recovery equations, PROVED), and the
+product-of-sums engine (`sum_coverSplit`/direct pi-expansion, PROVED).
+Budget: ~150–200 lines, all ingredients on the shelf; the only new
+content is the bookkeeping of the injection into the Π-of-triples target
+(non-dependent for fixed `ρ`).  After it: the final chain (k-partition,
+`sum_symmetrize`, fiberwise-`ρ`, `card_blockData_mul_le`, resummation)
+is arithmetic.
+
 ## 6. Honesty invariant (unchanged)
 
 All of this is M3 lattice-side.  None of it reduces M4/M5/Clay
