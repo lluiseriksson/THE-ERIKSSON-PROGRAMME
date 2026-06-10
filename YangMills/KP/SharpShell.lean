@@ -2367,6 +2367,20 @@ lemma sum_symmetrize_fn {N' nmax : ℕ} {α : Type*} [Fintype α]
         rw [Finset.sum_comm]
         exact Finset.sum_congr rfl fun k _ => (hswap k).symm
 
+open Classical in
+/-- **Filtered double-sum swap (outer step O2):** summing over objects and
+their admissible enumerations equals summing over enumerations and their
+consistent objects. -/
+lemma sum_filter_swap {α β : Type*} [Fintype β] [DecidableEq α]
+    [DecidableEq β] (A : Finset α) (P : α → β → Prop) (G : α → ℝ) :
+    ∑ a ∈ A, ∑ _σ ∈ (Finset.univ : Finset β).filter (fun σ => P a σ), G a
+    = ∑ σ : β, ∑ a ∈ A.filter (fun a => P a σ), G a := by
+  classical
+  rw [Finset.sum_congr rfl (fun a _ => Finset.sum_filter
+    (fun σ => P a σ) (fun _ => G a)), Finset.sum_comm]
+  exact Finset.sum_congr rfl fun σ _ =>
+    (Finset.sum_filter (fun a => P a σ) G).symm
+
 end MasterAssembly
 
 end BlockCount
