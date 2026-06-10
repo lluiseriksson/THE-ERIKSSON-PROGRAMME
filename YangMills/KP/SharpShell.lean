@@ -1173,6 +1173,66 @@ lemma master_partition (h : IsAdmissible p lev) {M : Type*} [CommMonoid M]
             = shellFiber p lev s := rfl
         rw [hFib, ← Finset.mul_prod_erase _ _ hsF, hps]
 
+open Classical in
+lemma mem_shellFiber {v s : Fin (n + 1)} :
+    v ∈ shellFiber p lev s ↔ v ≠ 0 ∧ shellRoot p lev v = s := by
+  classical
+  unfold shellFiber
+  rw [Finset.mem_filter]
+  simp
+
+open Classical in
+/-- **The shell forms block data over the non-root vertices:** for any
+enumeration `σ` of the first shell, the shell fibers with their roots are
+ordered rooted disjoint block data covering `univ.erase 0` — the bridge
+from admissible structures to the counting lemma. -/
+lemma shell_blockData (h : IsAdmissible p lev) {k : ℕ}
+    (σ : Fin k ≃ {s : Fin (n + 1) //
+      s ∈ (Finset.univ : Finset (Fin (n + 1))).filter
+        (fun s => s ≠ 0 ∧ p s = 0)}) :
+    IsBlockData ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+      (fun i => ((shellFiber p lev (σ i).1).erase (σ i).1).card)
+      (fun i => (shellFiber p lev (σ i).1, (σ i).1)) := by
+  classical
+  have hshell : ∀ i : Fin k, (σ i).1 ≠ 0 ∧ p (σ i).1 = 0 :=
+    fun i => (Finset.mem_filter.mp (σ i).2).2
+  have hlev1 : ∀ i : Fin k, ((lev (σ i).1 : ℕ)) = 1 :=
+    fun i => (h.parent_eq_zero_iff (hshell i).1).mp (hshell i).2
+  have hroot : ∀ i : Fin k, (σ i).1 ∈ shellFiber p lev (σ i).1 :=
+    fun i => self_mem_shellFiber (hshell i).1 (hlev1 i)
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · -- disjoint
+    intro i j hij
+    refine shell_fiber_disjoint ?_
+    intro hEq
+    exact hij (σ.injective (Subtype.ext hEq))
+  · -- cover: the fibers exhaust the non-root vertices
+    ext v
+    simp only [Finset.mem_biUnion, Finset.mem_univ, true_and,
+      Finset.mem_erase]
+    constructor
+    · rintro ⟨i, hv⟩
+      exact ⟨(mem_shellFiber.mp hv).1, trivial⟩
+    · rintro ⟨hv0, -⟩
+      have hsr0 : shellRoot p lev v ≠ 0 := h.shellRoot_ne_zero hv0
+      have hsrp : p (shellRoot p lev v) = 0 := h.parent_shellRoot hv0
+      have hmem : shellRoot p lev v ∈ (Finset.univ :
+          Finset (Fin (n + 1))).filter (fun s => s ≠ 0 ∧ p s = 0) :=
+        Finset.mem_filter.mpr ⟨Finset.mem_univ _, hsr0, hsrp⟩
+      refine ⟨σ.symm ⟨shellRoot p lev v, hmem⟩, ?_⟩
+      rw [mem_shellFiber]
+      refine ⟨hv0, ?_⟩
+      have := σ.apply_symm_apply ⟨shellRoot p lev v, hmem⟩
+      rw [this]
+  · -- roots
+    exact hroot
+  · -- cards
+    intro i
+    have h1 := Finset.card_erase_of_mem (hroot i)
+    have hpos := Finset.card_pos.mpr ⟨(σ i).1, hroot i⟩
+    dsimp only
+    omega
+
 end MasterAssembly
 
 end BlockCount
