@@ -2533,6 +2533,181 @@ theorem per_k_bound {n D : ℕ} (k : ℕ)
   exact le_trans (Finset.sum_le_sum hperρ)
     (le_of_eq (Finset.sum_filter _ _).symm)
 
+open Classical in
+/-- The **per-size shell value**: what one block of interior size `m`
+contributes — a root edge to a polymer incompatible with `c`, weighted
+by its activity, times the depth-`D` tree-sum of its subtree.  `blockS`
+reads only this (sizes, not sets). -/
+noncomputable def shellVal (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D m : ℕ) : ℝ :=
+  ∑ c' : P.Polymer, (if P.incomp c c' then (1 : ℝ) else 0)
+    * ‖P.activity c'‖ * treeSumRaw P c' D m
+
+open Classical in
+lemma blockS_eq_shellVal (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D : ℕ) {N : ℕ} (V : Finset (Fin N)) (s : Fin N) :
+    blockS P c D V s = shellVal P c D ((V.erase s).card) := rfl
+
+open Classical in
+lemma shellVal_nonneg (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D m : ℕ) : 0 ≤ shellVal P c D m := by
+  unfold shellVal
+  refine Finset.sum_nonneg fun c' _ => ?_
+  refine mul_nonneg (mul_nonneg ?_ (norm_nonneg _)) ?_
+  · split_ifs <;> norm_num
+  · rw [treeSumRaw_eq_sum_inner]
+    exact Finset.sum_nonneg fun pl _ => treeSumRawInner_nonneg P c' pl.1
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **O4 (the pricing):** the block-data sum of block factors is priced
+by the multinomial — `n!` times the size-vector sum of per-size shell
+values over factorials.  `card_blockData_mul_le` prices each size class;
+`blockS` reads only sizes. -/
+theorem rho_sum_le_price {n D : ℕ} (k : ℕ)
+    (P : PolymerSystem) [Fintype P.Polymer] (c : P.Polymer) :
+    ∑ ρ ∈ (Finset.univ :
+        Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))).filter
+        (fun ρ => IsBlockData
+          ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+          (fun i => ((ρ i).1.erase (ρ i).2).card) ρ),
+      ∏ i : Fin k, blockS P c D (ρ i).1 (ρ i).2
+    ≤ (n.factorial : ℝ) *
+      ∑ m ∈ (Fintype.piFinset
+          fun _ : Fin k => Finset.range (n + 1)).filter
+          (fun m => ∑ i, (m i + 1) = n),
+        ∏ i : Fin k, shellVal P c D (m i) / ((m i).factorial : ℝ) := by
+  classical
+  have hU : ((Finset.univ : Finset (Fin (n + 1))).erase 0).card = n := by
+    rw [Finset.card_erase_of_mem (Finset.mem_univ 0), Finset.card_univ,
+      Fintype.card_fin]
+    omega
+  -- pointwise expansion over the size-vector space (instance-free)
+  have hexpand : ∀ ρ ∈ (Finset.univ :
+      Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))).filter
+      (fun ρ => IsBlockData
+        ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+        (fun i => ((ρ i).1.erase (ρ i).2).card) ρ),
+      ∏ i : Fin k, blockS P c D (ρ i).1 (ρ i).2
+      = ∑ m ∈ (Fintype.piFinset
+          fun _ : Fin k => Finset.range (n + 1)).filter
+          (fun m => ∑ i, (m i + 1) = n),
+          if (fun i => ((ρ i).1.erase (ρ i).2).card) = m
+          then ∏ i : Fin k, blockS P c D (ρ i).1 (ρ i).2 else 0 := by
+    intro ρ hρ
+    have hbd := (Finset.mem_filter.mp hρ).2
+    have hsum := hbd.sum_card
+    rw [hU] at hsum
+    have hmem : (fun i => ((ρ i).1.erase (ρ i).2).card)
+        ∈ (Fintype.piFinset
+          fun _ : Fin k => Finset.range (n + 1)).filter
+          (fun m => ∑ i, (m i + 1) = n) := by
+      refine Finset.mem_filter.mpr
+        ⟨Fintype.mem_piFinset.mpr fun i => ?_, hsum⟩
+      refine Finset.mem_range.mpr ?_
+      have hle : ((ρ i).1.erase (ρ i).2).card + 1 ≤ n := by
+        calc ((ρ i).1.erase (ρ i).2).card + 1
+            ≤ ∑ j, (((ρ j).1.erase (ρ j).2).card + 1) :=
+              Finset.single_le_sum (f := fun j =>
+                (((ρ j).1.erase (ρ j).2).card + 1))
+                (fun j _ => Nat.zero_le _) (Finset.mem_univ i)
+          _ = n := hsum
+      omega
+    rw [Finset.sum_eq_single (fun i => ((ρ i).1.erase (ρ i).2).card)
+      (fun m _ hne => if_neg fun h => hne h.symm)
+      (fun habs => absurd hmem habs)]
+    exact (if_pos rfl).symm
+  rw [Finset.sum_congr rfl hexpand, Finset.sum_comm]
+  -- per size vector: the class count times the (size-determined) value
+  have hperm : ∀ m ∈ (Fintype.piFinset
+      fun _ : Fin k => Finset.range (n + 1)).filter
+      (fun m => ∑ i, (m i + 1) = n),
+      (∑ ρ ∈ (Finset.univ :
+        Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))).filter
+        (fun ρ => IsBlockData
+          ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+          (fun i => ((ρ i).1.erase (ρ i).2).card) ρ),
+        if (fun i => ((ρ i).1.erase (ρ i).2).card) = m
+        then ∏ i : Fin k, blockS P c D (ρ i).1 (ρ i).2 else 0)
+      ≤ (n.factorial : ℝ) *
+          ∏ i : Fin k, shellVal P c D (m i)
+            / ((m i).factorial : ℝ) := by
+    intro m hm
+    have hmsum : ∑ i, (m i + 1) = n := (Finset.mem_filter.mp hm).2
+    have hval : ∀ ρ ∈ (Finset.univ :
+        Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))).filter
+        (fun ρ => IsBlockData
+          ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+          (fun i => ((ρ i).1.erase (ρ i).2).card) ρ),
+        (if (fun i => ((ρ i).1.erase (ρ i).2).card) = m
+        then ∏ i : Fin k, blockS P c D (ρ i).1 (ρ i).2 else 0)
+        = (if (fun i => ((ρ i).1.erase (ρ i).2).card) = m
+        then ∏ i : Fin k, shellVal P c D (m i) else 0) := by
+      intro ρ _
+      by_cases h : (fun i => ((ρ i).1.erase (ρ i).2).card) = m
+      · rw [if_pos h, if_pos h]
+        refine Finset.prod_congr rfl fun i _ => ?_
+        rw [blockS_eq_shellVal, congrFun h i]
+      · rw [if_neg h, if_neg h]
+    rw [Finset.sum_congr rfl hval, ← Finset.sum_filter,
+      Finset.sum_const, nsmul_eq_mul]
+    -- the class count is priced by `card_blockData_mul_le`
+    have hsubset : ((Finset.univ :
+        Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))).filter
+        (fun ρ => IsBlockData
+          ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+          (fun i => ((ρ i).1.erase (ρ i).2).card) ρ)).filter
+        (fun ρ => (fun i => ((ρ i).1.erase (ρ i).2).card) = m)
+        ⊆ (Finset.univ :
+          Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))).filter
+          (fun ρ => IsBlockData
+            ((Finset.univ : Finset (Fin (n + 1))).erase 0) m ρ) := by
+      intro ρ hρ
+      have h1 := (Finset.mem_filter.mp
+        (Finset.mem_filter.mp hρ).1).2
+      have h2 := (Finset.mem_filter.mp hρ).2
+      exact Finset.mem_filter.mpr ⟨Finset.mem_univ _, h2 ▸ h1⟩
+    have hcount : (((Finset.univ :
+        Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))).filter
+        (fun ρ => IsBlockData
+          ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+          (fun i => ((ρ i).1.erase (ρ i).2).card) ρ)).filter
+        (fun ρ => (fun i => ((ρ i).1.erase (ρ i).2).card) = m)).card
+        * ∏ i, (m i).factorial ≤ n.factorial := by
+      calc (((Finset.univ :
+          Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))).filter
+          (fun ρ => IsBlockData
+            ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+            (fun i => ((ρ i).1.erase (ρ i).2).card) ρ)).filter
+          (fun ρ => (fun i => ((ρ i).1.erase (ρ i).2).card) = m)).card
+          * ∏ i, (m i).factorial
+          ≤ ((Finset.univ :
+            Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))).filter
+            (fun ρ => IsBlockData
+              ((Finset.univ : Finset (Fin (n + 1))).erase 0) m ρ)).card
+            * ∏ i, (m i).factorial :=
+            Nat.mul_le_mul_right _ (Finset.card_le_card hsubset)
+        _ ≤ ((Finset.univ : Finset (Fin (n + 1))).erase 0).card.factorial :=
+            card_blockData_mul_le _ m (by rw [hU]; exact hmsum)
+        _ = n.factorial := by rw [hU]
+    have hprodpos : (0 : ℝ) < ∏ i : Fin k, ((m i).factorial : ℝ) :=
+      Finset.prod_pos fun i _ => Nat.cast_pos.mpr (Nat.factorial_pos _)
+    have hcard : ((((Finset.univ :
+        Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))).filter
+        (fun ρ => IsBlockData
+          ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+          (fun i => ((ρ i).1.erase (ρ i).2).card) ρ)).filter
+        (fun ρ => (fun i => ((ρ i).1.erase (ρ i).2).card) = m)).card : ℝ)
+        ≤ (n.factorial : ℝ) / ∏ i : Fin k, ((m i).factorial : ℝ) := by
+      rw [le_div_iff₀ hprodpos]
+      exact_mod_cast hcount
+    have hSnn : (0 : ℝ) ≤ ∏ i : Fin k, shellVal P c D (m i) :=
+      Finset.prod_nonneg fun i _ => shellVal_nonneg P c D (m i)
+    refine le_trans (mul_le_mul_of_nonneg_right hcard hSnn) (le_of_eq ?_)
+    rw [div_mul_eq_mul_div, mul_div_assoc, ← Finset.prod_div_distrib]
+  exact le_trans (Finset.sum_le_sum hperm)
+    (le_of_eq (by rw [Finset.mul_sum]))
+
 end MasterAssembly
 
 end BlockCount
