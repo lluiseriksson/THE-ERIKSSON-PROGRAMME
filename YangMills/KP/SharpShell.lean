@@ -2942,6 +2942,135 @@ theorem treeSumB_succ_le (P : PolymerSystem) [Fintype P.Polymer]
         refine Finset.sum_congr rfl fun x _ => ?_
         rw [div_eq_mul_inv]; ring
 
+open Classical in
+/-- Depth monotonicity of the raw tree-sum, iterated form. -/
+lemma treeSumRaw_mono_depth_le (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) {D D' : ℕ} (h : D ≤ D') (n : ℕ) :
+    treeSumRaw P c D n ≤ treeSumRaw P c D' n := by
+  induction D' with
+  | zero => rw [Nat.le_zero.mp h]
+  | succ D' ih =>
+      rcases Nat.lt_or_ge D (D' + 1) with hlt | hge
+      · exact le_trans (ih (Nat.lt_succ_iff.mp hlt))
+          (treeSumRaw_mono_depth P c D' n)
+      · rw [Nat.le_antisymm h hge]
+
+open Classical in
+/-- **The Borel sums are dominated by the majorant** — induction on the
+depth through the master shell recursion `treeSumB_succ_le`. -/
+theorem treeSumB_le_kpMajorant (P : PolymerSystem) [Fintype P.Polymer]
+    (D : ℕ) : ∀ (c : P.Polymer) (N : ℕ),
+    treeSumB P c D N ≤ kpMajorant P D c := by
+  induction D with
+  | zero =>
+      intro c N
+      have hB : treeSumB P c 0 N = 1 := by
+        unfold treeSumB
+        rw [Finset.sum_eq_single 0
+          (fun n _ hne => by
+            obtain ⟨n', rfl⟩ := Nat.exists_eq_succ_of_ne_zero hne
+            rw [treeSumRaw_zero_succ]; ring)
+          (fun habs => absurd
+            (Finset.mem_range.mpr (Nat.succ_pos N)) habs)]
+        rw [treeSumRaw_zero_zero]
+        norm_num
+      exact le_of_eq (hB.trans (kpMajorant_zero P c).symm)
+  | succ D ih =>
+      intro c N
+      refine le_trans (treeSumB_succ_le P c D N) ?_
+      rw [kpMajorant_succ]
+      refine Real.exp_le_exp.mpr ?_
+      have hconv : ∑ c' : P.Polymer,
+          (if P.incomp c c' then (1 : ℝ) else 0) * ‖P.activity c'‖
+            * treeSumB P c' D N
+          = ∑ c' ∈ Finset.univ.filter (fun c' => P.incomp c c'),
+              ‖P.activity c'‖ * treeSumB P c' D N := by
+        rw [Finset.sum_filter]
+        refine Finset.sum_congr rfl fun c' _ => ?_
+        split_ifs <;> ring
+      rw [hconv]
+      refine Finset.sum_le_sum fun c' _ => ?_
+      exact mul_le_mul_of_nonneg_left (ih c' N) (norm_nonneg _)
+
+open Classical in
+/-- **Sharp bound for the Borel tree-sums under the bare KP criterion**
+— no uniform majorant of the weights anywhere. -/
+theorem treeSumB_le_exp (P : PolymerSystem) [Fintype P.Polymer]
+    {a : P.Polymer → ℝ} (h : KPCriterion P a) (c : P.Polymer)
+    (D N : ℕ) : treeSumB P c D N ≤ Real.exp (a c) :=
+  le_trans (treeSumB_le_kpMajorant P D c N) (kpMajorant_le_exp P h D c)
+
+open Classical in
+/-- **THE SHARP KOTECKÝ–PREISS PINNED BOUND** (campaign endpoint, (†) of
+`docs/SHARP-KP-PLAN.md`): under the bare KP criterion — with NO uniform
+majorant of the weights — every truncation of the pinned cluster series
+is bounded by `‖z(c)‖ · e^{a(c)}`, uniformly in the truncation. -/
+theorem kp_pinned_cluster_bound (P : PolymerSystem) [Fintype P.Polymer]
+    {a : P.Polymer → ℝ} (h : KPCriterion P a) (c : P.Polymer) (N : ℕ) :
+    ∑ n ∈ Finset.range (N + 1), pinnedClusterWeight P c n
+    ≤ ‖P.activity c‖ * Real.exp (a c) := by
+  classical
+  have hchain : ∑ n ∈ Finset.range (N + 1), pinnedClusterWeight P c n
+      ≤ ‖P.activity c‖ * treeSumB P c N N := by
+    unfold treeSumB
+    rw [Finset.mul_sum]
+    refine Finset.sum_le_sum fun n hn => ?_
+    have hnN : n ≤ N := by
+      have := Finset.mem_range.mp hn; omega
+    refine le_trans (pinnedClusterWeight_le_treeSumRaw P c n) ?_
+    have hmono : treeSumRaw P c n n ≤ treeSumRaw P c N n :=
+      treeSumRaw_mono_depth_le P c hnN n
+    have hfpos : (0 : ℝ) < (n.factorial : ℝ) := by
+      exact_mod_cast Nat.factorial_pos n
+    have hfle : (n.factorial : ℝ) ≤ ((n + 1).factorial : ℝ) := by
+      exact_mod_cast Nat.factorial_le (Nat.le_succ n)
+    have hfact : (((n + 1).factorial : ℝ))⁻¹
+        ≤ ((n.factorial : ℝ))⁻¹ :=
+      inv_anti₀ hfpos hfle
+    have htnn : 0 ≤ treeSumRaw P c n n := by
+      rw [treeSumRaw_eq_sum_inner]
+      exact Finset.sum_nonneg fun pl _ =>
+        treeSumRawInner_nonneg P c pl.1
+    calc (((n + 1).factorial : ℝ))⁻¹ * ‖P.activity c‖
+          * treeSumRaw P c n n
+        ≤ ((n.factorial : ℝ))⁻¹ * ‖P.activity c‖
+            * treeSumRaw P c N n := by
+          refine mul_le_mul
+            (mul_le_mul_of_nonneg_right hfact (norm_nonneg _))
+            hmono htnn
+            (mul_nonneg (inv_nonneg.mpr (Nat.cast_nonneg _))
+              (norm_nonneg _))
+      _ = ‖P.activity c‖
+            * (((n.factorial : ℝ))⁻¹ * treeSumRaw P c N n) := by
+          ring
+  exact le_trans hchain (mul_le_mul_of_nonneg_left
+    (treeSumB_le_exp P h c N N) (norm_nonneg _))
+
+open Classical in
+/-- **Sharp pinned summability**: under the bare KP criterion the pinned
+cluster series converges, with `∑' ≤ ‖z(c)‖·e^{a(c)}` — every quantity
+finite and per-polymer; no volume enters. -/
+theorem pinned_cluster_summable_sharp (P : PolymerSystem)
+    [Fintype P.Polymer] {a : P.Polymer → ℝ} (h : KPCriterion P a)
+    (c : P.Polymer) :
+    Summable (fun n => pinnedClusterWeight P c n) ∧
+    ∑' n, pinnedClusterWeight P c n
+      ≤ ‖P.activity c‖ * Real.exp (a c) := by
+  classical
+  have hb : ∀ M : ℕ, ∑ n ∈ Finset.range M, pinnedClusterWeight P c n
+      ≤ ‖P.activity c‖ * Real.exp (a c) := by
+    intro M
+    match M with
+    | 0 =>
+        simp only [Finset.range_zero, Finset.sum_empty]
+        exact mul_nonneg (norm_nonneg _) (Real.exp_pos _).le
+    | M + 1 => exact kp_pinned_cluster_bound P h c M
+  have hsum : Summable (fun n => pinnedClusterWeight P c n) :=
+    summable_of_sum_range_le
+      (fun n => pinnedClusterWeight_nonneg P c n) hb
+  exact ⟨hsum, Real.tsum_le_of_sum_range_le
+    (fun n => pinnedClusterWeight_nonneg P c n) hb⟩
+
 end MasterAssembly
 
 end BlockCount
