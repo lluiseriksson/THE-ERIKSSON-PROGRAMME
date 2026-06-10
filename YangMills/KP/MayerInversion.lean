@@ -243,4 +243,147 @@ lemma reachable_image_iff {m n : ℕ} (f : Fin m ↪ Fin n)
       exact ⟨s(a, b), hab.1, rfl⟩
     exact h.map ⟨⇑f, hmaprel⟩
 
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **The per-block identification (B0a, step 3):** the alternating sum
+over edge sets supported inside a block `B` that connect all of `B` is
+exactly the Ursell coefficient of the block-restricted tuple.  This is
+the fiber value of the forthcoming component-partition fibration. -/
+theorem sum_blockConnected_eq_ursell {n : ℕ} (X : Fin n → P.Polymer)
+    (B : Finset (Fin n)) {m : ℕ} (hm : B.card = m) (hB : B.Nonempty) :
+    ∑ E ∈ (incompGraph P X).edgeFinset.powerset.filter
+      (fun E : Finset (Sym2 (Fin n)) => (∀ e ∈ E, ∀ v ∈ e, v ∈ B) ∧
+        ∀ v ∈ B, ∀ w ∈ B, (SimpleGraph.fromEdgeSet
+          (↑E : Set (Sym2 (Fin n)))).Reachable v w),
+      (-1 : ℤ) ^ E.card
+    = ursell P (fun i : Fin m => X ((B.orderIsoOfFin hm i) : Fin n)) := by
+  classical
+  let femb : Fin m ↪ Fin n :=
+    ⟨fun i => ((B.orderIsoOfFin hm i) : Fin n),
+      fun i j hij => (B.orderIsoOfFin hm).injective
+        (Subtype.val_injective hij)⟩
+  have hmem : ∀ i : Fin m, femb i ∈ B := fun i => (B.orderIsoOfFin hm i).2
+  have hsurj : ∀ v ∈ B, ∃ i : Fin m, femb i = v := by
+    intro v hv
+    refine ⟨(B.orderIsoOfFin hm).symm ⟨v, hv⟩, ?_⟩
+    show ((B.orderIsoOfFin hm ((B.orderIsoOfFin hm).symm ⟨v, hv⟩)) : Fin n) = v
+    rw [OrderIso.apply_symm_apply]
+  have hmapinj : Function.Injective (Sym2.map femb) :=
+    Sym2.map.injective femb.injective
+  have hedge : ∀ a b : Fin m,
+      (incompGraph P (fun i : Fin m =>
+        X ((B.orderIsoOfFin hm i) : Fin n))).Adj a b
+      ↔ (incompGraph P X).Adj (femb a) (femb b) := by
+    intro a b
+    rw [incompGraph_adj, incompGraph_adj]
+    constructor
+    · rintro ⟨hne, hinc⟩
+      exact ⟨fun h => hne (femb.injective h), hinc⟩
+    · rintro ⟨hne, hinc⟩
+      exact ⟨fun h => hne (by rw [h]), hinc⟩
+  -- the retraction: within-B edge sets are images of their preimages
+  have hretract : ∀ E : Finset (Sym2 (Fin n)),
+      (∀ e ∈ E, ∀ v ∈ e, v ∈ B) →
+      ((Finset.univ : Finset (Sym2 (Fin m))).filter
+        (fun e' => Sym2.map femb e' ∈ E)).image (Sym2.map femb) = E := by
+    intro E hwithin
+    ext e
+    rw [Finset.mem_image]
+    constructor
+    · rintro ⟨e', he', rfl⟩
+      exact (Finset.mem_filter.mp he').2
+    · intro he
+      have hv : ∀ u ∈ e, u ∈ B := hwithin e he
+      revert he hv
+      refine Sym2.ind (fun v w => ?_) e
+      intro he hv
+      obtain ⟨a, ha⟩ := hsurj v (hv v (Sym2.mem_iff.mpr (Or.inl rfl)))
+      obtain ⟨b, hb⟩ := hsurj w (hv w (Sym2.mem_iff.mpr (Or.inr rfl)))
+      refine ⟨s(a, b), Finset.mem_filter.mpr
+        ⟨Finset.mem_univ _, ?_⟩, ?_⟩
+      · rw [Sym2.map_mk, ha, hb]; exact he
+      · rw [Sym2.map_mk, ha, hb]
+  unfold ursell
+  refine Eq.symm (Finset.sum_nbij'
+    (fun E' : Finset (Sym2 (Fin m)) => E'.image (Sym2.map femb))
+    (fun E : Finset (Sym2 (Fin n)) =>
+      (Finset.univ : Finset (Sym2 (Fin m))).filter
+        (fun e' => Sym2.map femb e' ∈ E)) ?_ ?_ ?_ ?_ ?_)
+  · -- forward membership
+    intro E' hE'
+    rw [Finset.mem_filter, Finset.mem_powerset] at hE'
+    obtain ⟨hsub, hconn⟩ := hE'
+    rw [Finset.mem_filter, Finset.mem_powerset]
+    refine ⟨?_, ?_, ?_⟩
+    · intro e he
+      rw [Finset.mem_image] at he
+      obtain ⟨e', he', rfl⟩ := he
+      have hmem' := hsub he'
+      revert hmem'
+      refine Sym2.ind (fun a b => ?_) e'
+      intro hmem'
+      rw [SimpleGraph.mem_edgeFinset, SimpleGraph.mem_edgeSet] at hmem'
+      rw [Sym2.map_mk, SimpleGraph.mem_edgeFinset,
+        SimpleGraph.mem_edgeSet]
+      exact (hedge a b).mp hmem'
+    · intro e he
+      rw [Finset.mem_image] at he
+      obtain ⟨e', _, rfl⟩ := he
+      refine Sym2.ind (fun a b => ?_) e'
+      intro v hv
+      rw [Sym2.map_mk, Sym2.mem_iff] at hv
+      rcases hv with rfl | rfl
+      · exact hmem a
+      · exact hmem b
+    · intro v hv w hw
+      obtain ⟨i, rfl⟩ := hsurj v hv
+      obtain ⟨j, rfl⟩ := hsurj w hw
+      exact (reachable_image_iff femb E' i j).mpr
+        (hconn.preconnected i j)
+  · -- backward membership
+    intro E hE
+    rw [Finset.mem_filter, Finset.mem_powerset] at hE
+    obtain ⟨hsub, hwithin, hreach⟩ := hE
+    rw [Finset.mem_filter, Finset.mem_powerset]
+    constructor
+    · intro e' he'
+      have hmemE := (Finset.mem_filter.mp he').2
+      revert hmemE
+      refine Sym2.ind (fun a b => ?_) e'
+      intro hmemE
+      rw [Sym2.map_mk] at hmemE
+      have := hsub hmemE
+      rw [SimpleGraph.mem_edgeFinset, SimpleGraph.mem_edgeSet] at this
+      rw [SimpleGraph.mem_edgeFinset, SimpleGraph.mem_edgeSet]
+      exact (hedge a b).mpr this
+    · rw [SimpleGraph.connected_iff]
+      have hm0 : 0 < m := by
+        rw [← hm]; exact Finset.card_pos.mpr hB
+      refine ⟨?_, ⟨⟨0, hm0⟩⟩⟩
+      intro i j
+      have h1 := hreach (femb i) (hmem i) (femb j) (hmem j)
+      rw [← hretract E hwithin] at h1
+      exact (reachable_image_iff femb _ i j).mp h1
+  · -- left inverse
+    intro E' _
+    dsimp only
+    ext e''
+    rw [Finset.mem_filter]
+    constructor
+    · rintro ⟨-, h⟩
+      rw [Finset.mem_image] at h
+      obtain ⟨e₀, he₀, heq⟩ := h
+      rwa [← hmapinj heq]
+    · intro h
+      exact ⟨Finset.mem_univ _,
+        Finset.mem_image.mpr ⟨e'', h, rfl⟩⟩
+  · -- right inverse
+    intro E hE
+    dsimp only
+    exact hretract E ((Finset.mem_filter.mp hE).2).1
+  · -- values
+    intro E' _
+    dsimp only
+    rw [Finset.card_image_of_injective E' hmapinj]
+
 end YangMills.KP
