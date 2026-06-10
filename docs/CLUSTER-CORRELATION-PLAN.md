@@ -119,9 +119,31 @@ Formal route, in dependency order:
   `d, B, β, t` only; instantiate `hIRbound` of
   `lattice_mass_gap_of_clustering_uniform`.
 
+## 2b. Half A status — CLOSED at the abstract level (2026-06-10, same
+session as the plan; `KP/ClusterTail.lean`, commit `112c2d2`)
+
+`PolymerSystem.tilt` (ursell invariant — literally `rfl`),
+`tilt_norm_activity`, `pinnedClusterWeightGE` (+ nonneg),
+`pinnedClusterWeightGE_le_tilt`, and **`kp_pinned_cluster_tail_bound`**
+(A†) are all proved and oracle-clean.  What remains of Half A is only
+the LATTICE instantiation: `KPCriterion (P_lattice.tilt (ε·|·|)) a` for
+suitable `a` — a two-parameter generalization of
+`connectedLatticePolymerSystem_kpCriterion_volumeUniform` (separate the
+exponent parameter from the weight parameter in its proof; the entropy
+engine is untouched).  Note the criterion for the tilted system is
+literally the untilted criterion shape with exponent shifted by `ε`,
+since `‖z_ε(c')‖·e^{t|c'|} = ‖z(c')‖·e^{(t+ε)|c'|}`.
+
+Parser note for the next session: long `∑ X ∈ (… : …).filter (…)`
+terms as `calc` HEADS need continuation lines indented deeper than the
+`∑` token, or the application after `.filter` fails to parse
+("unexpected '('; expected ','").  Tactic-form (`refine le_trans …`)
+avoids the issue entirely — prefer it for these shapes.
+
 ## 3. Order of work and budgets
 
 1. A2 tail lemma (with A1 tilting as its engine): 2–3 cycles.
+   **DONE except the lattice criterion instantiation (above).**
 2. B3 geometry: 1–2 cycles.
 3. B1 deformation audit: 1 cycle (reading + small lemmas).
 4. B2: the hard half; design session first (pick (i)/(ii)/(iii)),
