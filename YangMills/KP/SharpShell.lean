@@ -1720,6 +1720,36 @@ lemma block_sum_eq (P : PolymerSystem) [Fintype P.Polymer]
   unfold treeSumRawInner
   ring
 
+open Classical in
+/-- **The block functional** (top-level, per the §5d prescription): the
+integrand of `block_sum_eq` as a named function — root factor times
+relabeled subtree product, reading an assignment of one rooted block. -/
+noncomputable def blockFunctional (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) {N m : ℕ} (V : Finset (Fin N)) (s : Fin N)
+    (hsV : s ∈ V) (hm : (V.erase s).card = m)
+    (q : Fin (m + 1) → Fin (m + 1))
+    (hfun : {x // x ∈ V} → P.Polymer) : ℝ :=
+  (((if P.incomp c (hfun ⟨markedEmb V s hm 0, markedEmb_mem V hsV hm 0⟩)
+      then (1 : ℝ) else 0)
+    * ‖P.activity (hfun ⟨markedEmb V s hm 0, markedEmb_mem V hsV hm 0⟩)‖)
+  * ∏ l ∈ Finset.univ.filter (fun l : Fin (m + 1) => l ≠ 0),
+      (if P.incomp (hfun ⟨markedEmb V s hm (q l), markedEmb_mem V hsV hm (q l)⟩)
+          (hfun ⟨markedEmb V s hm l, markedEmb_mem V hsV hm l⟩)
+        then (1 : ℝ) else 0)
+        * ‖P.activity (hfun ⟨markedEmb V s hm l, markedEmb_mem V hsV hm l⟩)‖)
+
+open Classical in
+/-- `block_sum_eq`, packaged through the named functional. -/
+lemma sum_blockFunctional (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) {N m : ℕ} {V : Finset (Fin N)} {s : Fin N}
+    (hsV : s ∈ V) (hm : (V.erase s).card = m)
+    (q : Fin (m + 1) → Fin (m + 1)) :
+    ∑ hfun : {x // x ∈ V} → P.Polymer,
+      blockFunctional P c V s hsV hm q hfun
+    = ∑ c' : P.Polymer, (if P.incomp c c' then (1 : ℝ) else 0)
+        * ‖P.activity c'‖ * treeSumRawInner P c' q :=
+  block_sum_eq P c hsV hm q
+
 end MasterAssembly
 
 end BlockCount
