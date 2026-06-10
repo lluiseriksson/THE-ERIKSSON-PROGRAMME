@@ -1750,6 +1750,93 @@ lemma sum_blockFunctional (P : PolymerSystem) [Fintype P.Polymer]
         * ‖P.activity c'‖ * treeSumRawInner P c' q :=
   block_sum_eq P c hsV hm q
 
+open Classical in
+/-- **THE X-SUM FACTORIZATION (the recursion's heart):** for an admissible
+structure with enumerated shell, the inner assignment sum factorizes into
+the product over shell indices of `∑_{c'} 𝟙[incomp c c']·‖z(c')‖·
+treeSumRawInner` at the subtree parent maps. -/
+theorem inner_factorization {n D : ℕ} {p : Fin (n + 1) → Fin (n + 1)}
+    {lev : Fin (n + 1) → Fin (D + 2)} (h : IsAdmissible p lev) {k : ℕ}
+    {σ : Fin k → Fin (n + 1)} (hσinj : Function.Injective σ)
+    (hσrange : Finset.univ.image σ
+      = (Finset.univ : Finset (Fin (n + 1))).filter
+          (fun s => s ≠ 0 ∧ p s = 0))
+    (P : PolymerSystem) [Fintype P.Polymer] (c : P.Polymer)
+    (hs : ∀ i, σ i ≠ 0) (hs1 : ∀ i, ((lev (σ i) : ℕ)) = 1) :
+    treeSumRawInner P c p
+    = ∏ i : Fin k, ∑ c' : P.Polymer,
+        (if P.incomp c c' then (1 : ℝ) else 0) * ‖P.activity c'‖
+          * treeSumRawInner P c' (subtreeParent h (hs i) (hs1 i) rfl) := by
+  classical
+  have hρ := shell_blockData_fn h hσinj hσrange
+  have hsV : ∀ i, σ i ∈ shellFiber p lev (σ i) :=
+    fun i => self_mem_shellFiber (hs i) (hs1 i)
+  calc treeSumRawInner P c p
+      = ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → P.Polymer)).filter
+          (fun X => X 0 = c),
+          ∏ i : Fin k, blockFunctional P c (shellFiber p lev (σ i)) (σ i)
+            (hsV i) rfl (subtreeParent h (hs i) (hs1 i) rfl)
+            (fun x => X x.1) := by
+        unfold treeSumRawInner
+        refine Finset.sum_congr rfl fun X hX => ?_
+        refine (master_factorization_fn h hσinj hσrange
+          (fun u v => (if P.incomp (X u) (X v) then (1 : ℝ) else 0)
+            * ‖P.activity (X v)‖) hs hs1).trans ?_
+        refine Finset.prod_congr rfl fun i _ => ?_
+        have hroot : ((if P.incomp (X 0) (X (σ i)) then (1 : ℝ) else 0)
+              * ‖P.activity (X (σ i))‖)
+            = ((if P.incomp c
+                  (X (markedEmb (shellFiber p lev (σ i)) (σ i) rfl 0))
+                then (1 : ℝ) else 0)
+              * ‖P.activity
+                  (X (markedEmb (shellFiber p lev (σ i)) (σ i) rfl 0))‖) := by
+          rw [markedEmb_zero, (Finset.mem_filter.mp hX).2]
+        unfold blockFunctional
+        dsimp only
+        rw [hroot]
+      _ = ∑ g : {v : Fin (n + 1) // v ≠ 0} → P.Polymer,
+          ∏ i : Fin k, blockFunctional P c (shellFiber p lev (σ i)) (σ i)
+            (hsV i) rfl (subtreeParent h (hs i) (hs1 i) rfl)
+            (fun x => g ⟨x.1, (mem_shellFiber.mp x.2).1⟩) := by
+        refine (sum_pinned_eq c (fun X =>
+          ∏ i : Fin k, blockFunctional P c (shellFiber p lev (σ i)) (σ i)
+            (hsV i) rfl (subtreeParent h (hs i) (hs1 i) rfl)
+            (fun x => X x.1))).trans ?_
+        refine Finset.sum_congr rfl fun g _ => ?_
+        refine Finset.prod_congr rfl fun i _ => ?_
+        congr 1
+        funext x
+        dsimp only
+        rw [dif_neg (mem_shellFiber.mp x.2).1]
+      _ = ∑ g' : {v // v ∈ (Finset.univ :
+            Finset (Fin (n + 1))).erase 0} → P.Polymer,
+          ∏ i : Fin k, blockFunctional P c (shellFiber p lev (σ i)) (σ i)
+            (hsV i) rfl (subtreeParent h (hs i) (hs1 i) rfl)
+            (fun x => g' ⟨x.1, by
+              rw [Finset.mem_erase]
+              exact ⟨(mem_shellFiber.mp x.2).1, Finset.mem_univ _⟩⟩) := by
+        refine Finset.sum_nbij'
+          (i := fun g => fun v => g ⟨v.1, by
+            have hv := v.2
+            rw [Finset.mem_erase] at hv
+            exact hv.1⟩)
+          (j := fun g' => fun v => g' ⟨v.1, by
+            rw [Finset.mem_erase]
+            exact ⟨v.2, Finset.mem_univ _⟩⟩)
+          (fun _ _ => Finset.mem_univ _) (fun _ _ => Finset.mem_univ _)
+          (fun g _ => rfl) (fun g' _ => rfl) (fun g _ => rfl)
+      _ = ∏ i : Fin k, ∑ hfun : {x // x ∈ shellFiber p lev (σ i)} → P.Polymer,
+          blockFunctional P c (shellFiber p lev (σ i)) (σ i)
+            (hsV i) rfl (subtreeParent h (hs i) (hs1 i) rfl) hfun :=
+        hρ.sum_coverSplit (fun i =>
+          blockFunctional P c (shellFiber p lev (σ i)) (σ i)
+            (hsV i) rfl (subtreeParent h (hs i) (hs1 i) rfl))
+      _ = ∏ i : Fin k, ∑ c' : P.Polymer,
+          (if P.incomp c c' then (1 : ℝ) else 0) * ‖P.activity c'‖
+            * treeSumRawInner P c' (subtreeParent h (hs i) (hs1 i) rfl) :=
+        Finset.prod_congr rfl fun i _ =>
+          sum_blockFunctional P c (hsV i) rfl _
+
 end MasterAssembly
 
 end BlockCount
