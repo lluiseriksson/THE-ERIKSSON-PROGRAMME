@@ -239,6 +239,59 @@ to the `parts.pi`-side, `sum_nbij'` with within-part filters vs
 **NEXT: B0b** (the analytic resummation to `Ξ = exp(clusterSum)`) —
 see §2c.  All combinatorial inputs are now on the shelf.
 
+## 2d. B0b — the full design (2026-06-10, written after B0a closed)
+
+**The chain** (every infinite rearrangement justified by absolute
+convergence from `kp_convergence_sharp` + norm bounds):
+
+1. **exp expansion:** `Complex.exp K = ∑'_k K^k/k!`
+   (`NormedSpace.exp`/`Complex.exp_eq_tsum`-form; verify exact name).
+2. **Power Fubini (B0b-1):** `K^k = ∑'_{f : Fin k → ℕ} ∏_i a_{f i}`
+   where `a_n := ((n+1)!)⁻¹·∑_{X : Fin (n+1) → P} φ(X)·∏z`.
+   By induction on `k`: `Summable.tsum_mul_tsum_of_summable_norm`
+   (ℂ, absolute convergence) + reindex `ℕ × (Fin k → ℕ) ≃ (Fin (k+1) → ℕ)`
+   (`Fin.consEquiv`-style).
+3. **Inner expansion:** each `∏_i a_{f i}` is `(∏(f i + 1)!)⁻¹` times a
+   finite product of finite sums = sum over tuples-of-tuples
+   (`Finset.prod_univ_sum`).
+4. **Multinomial regrouping (B0b-2, finite combinatorics):** for sizes
+   `m : Fin k → ℕ` (`m i ≥ 1`), `N := ∑ m i`:
+
+       ∑_{(X,(B_i))} ∏_i F_i(X ∘ emb_{B_i}) = M(m) · ∑_{(X_i)} ∏_i F_i(X_i)
+
+   where the left sum is over `X : Fin N → Polymer` times ORDERED
+   set-partitions `(B_i)` of `Fin N` with `|B_i| = m i`, `emb_B` is
+   `orderIsoOfFin`, and `M(m)·∏(m i)! = N!` (exact multinomial count —
+   prove multiplicatively, no division; the `card_blockData_mul_le`
+   pattern but as an equality: ordered partitions × per-block
+   enumerations ≃ bijections `Fin N ≃ Fin N`).
+   Per (X,(B_i)) the assembled X is determined by the subtuples and the
+   partition — the fiber over `(X_i)` is exactly the partitions.
+5. **Ordered → unordered (B0b-3):** per fixed `X : Fin N → Polymer`,
+   `∑_k (1/k!)·∑_{ordered k-block partitions} ∏φ-blocks
+     = ∑_{π : Finpartition univ} ∏_{B ∈ π.parts} φ(X|_B)`
+   (each unordered π with `k` parts has exactly `k!` orderings —
+   `card_enumerations`-style; sizes vary per block, no per-`m` claim —
+   the §5c-correction lesson applies here too).
+6. **The partition identity (PROVED):** the π-sum is
+   `𝟙[PairwiseCompatible X]`.
+7. **Injective collapse (B0b-4):** pairwise-compatible tuples are
+   INJECTIVE (hard core: a repeat would be self-incompatible), so
+   `(1/N!)·∑_{X compatible} ∏z = ∑_{S admissible, |S|=N} ∏z`
+   (each admissible `N`-set has exactly `N!` enumerations —
+   `card_enumerations` again); summing over `N` gives
+   `partition P univ` (the `N = 0` term ↔ the `k = 0` exp term ↔ the
+   empty admissible set).
+8. **Assembly (B0b-5):** the (k, sizes, tuples) triple tsum rearranges
+   to the N-graded sum — `tsum` over a sigma/equiv with absolute
+   convergence; the infinite non-compatible tail vanishes TERMWISE
+   after step 6 (only finitely many `N ≤ #Polymer` survive).
+
+Order of work: B0b-2 and B0b-3 first (finite combinatorics, fully in
+the house style); then B0b-4 (small); then the analytic shell
+B0b-1/B0b-5 around them; step 1 last (glue).  Budgets: 2–3 cycles for
+each of B0b-2/3/4; 4–8 for the analytic shell.
+
 **(historical) Remaining-work list before the above was closed:**
 
 1. (★) per-π fiber factorization:
