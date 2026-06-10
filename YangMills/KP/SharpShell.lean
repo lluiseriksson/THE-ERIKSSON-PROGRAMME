@@ -2096,6 +2096,54 @@ lemma class_carrier_admissible {n D : ℕ}
   · unfold classParent
     rw [dif_pos rfl]
 
+open Classical in
+/-- **Per-block value transport:** the heart's block sum at the subtree
+parent equals the same sum at the class carrier (one `subst`, one
+agreement). -/
+lemma class_value_block {n D : ℕ}
+    {p : Fin (n + 1) → Fin (n + 1)} {lev : Fin (n + 1) → Fin (D + 2)}
+    (h : IsAdmissible p lev) {s : Fin (n + 1)} (hs : s ≠ 0)
+    (hs1 : (lev s : ℕ) = 1) {F : Finset (Fin (n + 1))}
+    (hF : shellFiber p lev s = F) (hsF : s ∈ F)
+    (hstab : ∀ l : Fin ((F.erase s).card + 1), l ≠ 0 →
+      p (markedEmb F s rfl l) ∈ F)
+    (P : PolymerSystem) [Fintype P.Polymer] (c : P.Polymer) :
+    (∑ c' : P.Polymer, (if P.incomp c c' then (1 : ℝ) else 0)
+      * ‖P.activity c'‖
+      * treeSumRawInner P c' (subtreeParent h hs hs1 rfl))
+    = ∑ c' : P.Polymer, (if P.incomp c c' then (1 : ℝ) else 0)
+      * ‖P.activity c'‖
+      * treeSumRawInner P c' (classParent F s hsF rfl p hstab) := by
+  subst hF
+  rw [classParent_eq_subtreeParent h hs hs1 hstab]
+
+open Classical in
+/-- **The heart at the class carriers:** for a class member, the inner
+assignment sum equals the product of block sums at the class parent
+maps — `inner_factorization` transported block-by-block. -/
+theorem class_value_eq {n D : ℕ}
+    {p : Fin (n + 1) → Fin (n + 1)} {lev : Fin (n + 1) → Fin (D + 2)}
+    (h : IsAdmissible p lev) {k : ℕ} {σ : Fin k → Fin (n + 1)}
+    (hσinj : Function.Injective σ)
+    (hσrange : Finset.univ.image σ
+      = (Finset.univ : Finset (Fin (n + 1))).filter
+          (fun s => s ≠ 0 ∧ p s = 0))
+    (P : PolymerSystem) [Fintype P.Polymer] (c : P.Polymer)
+    (hs : ∀ i, σ i ≠ 0) (hs1 : ∀ i, ((lev (σ i) : ℕ)) = 1)
+    {F : Fin k → Finset (Fin (n + 1))}
+    (hF : ∀ i, shellFiber p lev (σ i) = F i)
+    (hsF : ∀ i, σ i ∈ F i)
+    (hstab : ∀ i, ∀ l : Fin (((F i).erase (σ i)).card + 1), l ≠ 0 →
+      p (markedEmb (F i) (σ i) rfl l) ∈ F i) :
+    treeSumRawInner P c p
+    = ∏ i : Fin k, ∑ c' : P.Polymer,
+        (if P.incomp c c' then (1 : ℝ) else 0) * ‖P.activity c'‖
+          * treeSumRawInner P c'
+              (classParent (F i) (σ i) (hsF i) rfl p (hstab i)) :=
+  (inner_factorization h hσinj hσrange P c hs hs1).trans
+    (Finset.prod_congr rfl fun i _ =>
+      class_value_block h (hs i) (hs1 i) (hF i) (hsF i) (hstab i) P c)
+
 end MasterAssembly
 
 end BlockCount
