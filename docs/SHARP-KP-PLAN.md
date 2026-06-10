@@ -139,20 +139,72 @@ positivity, depth-monotonicity, and **`kpMajorant_le_exp`**:
 criterion absorbs one shell per induction step, **no uniform `A`
 anywhere**.  This is exactly the analytic engine of FV Thm 5.4.
 
-**Remaining brick — the combinatorial half** (the campaign's last core):
+**Remaining brick — the combinatorial half** (the campaign's last core).
+**Detailed design (2026-06-10), so the next session codes, not designs:**
 
-* **Pinned-cluster ≤ majorant**: show the pinned weighted cluster sums are
-  dominated by `Φ_D`-limits.  Concretely: decompose a pinned cluster's
-  Penrose/BFS tree by depth shells rooted at coordinate 0; the sum over
-  (tree, assignment) pairs of depth ≤ D, with the `1/k!` of each vertex's
-  children, is `≤ Φ_D(c) − 1`-form quantities (the exponential's series
-  reassembles the children multiplicities).  Design the exact statement
-  first — candidates: (i) induction on depth with rooted-forest generating
-  sums; (ii) injection of (cluster, Penrose tree) pairs into depth-layered
-  forests.  Budget 5–8 cycles.  Endpoint: `kp_pinned_cluster_bound` (§3),
-  then volume-uniform convergence of the connected lattice gas by
-  composing with `connectedLatticePolymerSystem_kpCriterion_volumeUniform`
-  and `kpMajorant_le_exp`.
+*Objects.*  Work at the level of (rooted labeled tree, assignment) pairs,
+never per-tree with degree-refined counting (that route needs
+Cayley-with-degrees; rejected).  Define the **depth-`D` rooted tree-sum**
+
+```lean
+-- trees on Fin (n+1) rooted at 0, recorded by their parent map
+-- (reuse the WalkBound interface: p : Fin (n+1) → Fin (n+1), levels lev)
+TreeSum P c D n :=
+  (1/n!) · ∑_{(p, lev) admissible, depth ≤ D}
+    ∑_{X : Fin (n+1) → Polymer, X 0 = c}
+      ∏_{v ≠ 0} 𝟙[P.incomp (X (p v)) (X v)] · ‖z (X v)‖
+```
+
+with "admissible" = `p` strictly decreases `lev`, `lev 0 = 0` (each
+`(p, lev)` admissible pair corresponds to ≤ one rooted forest; the same
+tree appears under several labelings — harmless, this is an upper-bound
+route).
+
+*Step C1 (root-deletion graph lemma, standalone, class B).*  In a
+connected graph, every connected component of the vertex-deleted subgraph
+`G − v₀` contains a neighbor of `v₀`.  Proof: first-exit on a walk to
+`v₀` (mirror `exists_adj_crossing_of_walk`).  Needed to know each
+child-subtree's root polymer is incompatible with `c`.
+
+*Step C2 (Penrose-tree domination).*  From `abs_ursell_le_card_spanningTrees`
++ `penroseTree`: every pinned cluster `X` contributes
+`|φ(X)| ≤ #spanningTrees ≤ ∑_{(p,lev) admissible} ∏_{v≠0} 𝟙[incomp]`
+— i.e. `pinnedClusterWeight P c n ≤ TreeSum P c n n` (depth ≤ n always
+holds on `n+1` vertices).  Mostly already proved (PinnedBound's `hpen` +
+`prod_tree_eq_prod_parents`); repackage with the `(p, lev)` indexing.
+
+*Step C3 (the shell recursion — the real work).*  Prove
+`∑_n TreeSum P c D n ≤ Φ_D(c) − 1`-form by induction on `D`:
+split `Fin (n+1) \ {0}` by `lev = 1` (the first shell `S`, say `k = |S|`
+elements); the remaining vertices organize into subtrees rooted at shell
+elements.  The function-space and index bookkeeping:
+
+  - sum over the shell-set `S` (as a `Finset (Fin n)` after relabeling),
+    with the multinomial `n! / (k! · ∏ nᵢ!)` emerging from the count of
+    labelings — formalize via `Equiv.funSplitAt`-style splitting and
+    `Finset.sum_pow`-type identities: the key algebraic lemma is
+    `∑_k (1/k!)·(∑_{c'} u(c'))^k = exp(∑ u)` at finite truncation:
+    `(∑_{c'} u c')^k = ∑_{f : Fin k → Polymer} ∏ u (f i)` (Fintype.sum_pow,
+    exists in Mathlib as `Finset.sum_pow_eq_...` / `Fintype.sum_prod_type`
+    iterated — verify name) — ordered k-tuples of children absorb `1/k!`.
+  - each child `cᵢ` must satisfy `P.incomp c cᵢ` (𝟙 from its tree edge);
+    its subtree contributes a `TreeSum P cᵢ (D−1) nᵢ`-factor.
+  - inequality direction is enough everywhere (overcounting allowed:
+    different `(S, subtree)` data may produce identical `(p, lev)`).
+
+*Step C4 (endpoint).*  `∑_n pinnedClusterWeight P c n ≤ Φ_n-limit
+≤ e^{a(c)}` (`kpMajorant_le_exp`), giving `kp_pinned_cluster_bound` (§3);
+compose with `connectedLatticePolymerSystem_kpCriterion_volumeUniform` for
+**volume-uniform convergence of the connected lattice gas** — the
+campaign's goal.
+
+*Risk register.*  C1 small; C2 medium (re-indexing only); C3 is 4–6 cycles
+of `funSplitAt` bookkeeping — the multinomial emergence is the only
+genuinely delicate point: do it at the level of ordered tuples (k-tuples of
+(child, subtree-size, sub-assignment)) where the factorials are
+definitional, and only at the end divide by `n!` using
+`Nat.choose`/`Nat.multinomial` identities (`Nat.multinomial` exists in
+Mathlib).  Budget total: 6–9 cycles.
 
 ## 6. Honesty invariant (unchanged)
 
