@@ -118,9 +118,35 @@ edge (`gauge_single_edge_trace_mixedPow_eq_zero` and pure/conjugate specializati
 `mass_gap_bound` (§7); and `ClusteringToGap.lean`:
 - `clustering_gives_exponential_decay` — a geometric cluster bound `|cov d| ≤ C·rᵈ` *is*
   exponential decay with strictly positive mass `m* = -log r`;
-- `lattice_mass_gap_of_clustering` — **full M3 assembly**: IR geometric cluster bound + UV
-  suppression ⟹ connected correlator decays with positive gap `min(m*, c₀)`;
+- `lattice_mass_gap_of_clustering` (+ `_uniform`) — **full M3 assembly**: IR geometric
+  cluster bound + UV suppression ⟹ connected correlator decays with positive gap;
 - finite-susceptibility corollaries (`∑_d |cov d| < ∞`, `≤ C/(1−r)`).
+
+**T3 / centre symmetry, CLOSED (2026-06-10)** — `YangMills/L1_GibbsMeasure/`
+`CenterInvariance.lean`, `SUNSelectionRule.lean`, `GibbsSelectionRule.lean`,
+`WilsonObservable.lean`: gauge measure centre-invariant; Wilson action *exactly*
+centre-symmetric (plaquette signs `(+,+,−,−)`); Z_n N-ality selection rules at genuine
+SU(n) Haar — free, interacting (any β), and two-loop correlators — with the Wilson loop
+proved bounded/measurable/integrable so all expectations are honest integrals.
+
+**Polymer representation + lattice KP convergence, PROVED (2026-06-10)** —
+`PolymerExpansion.lean`, `PolymerFactorization.lean`, `LatticePolymerSystem.lean`:
+high-temperature expansion `e^{−βS} = ∑_S ∏ f_p`; `|f_p| ≤ e^{|β|B}−1`; locality;
+two-block/gauge-level/iterated independence; `latticePolymerSystem` and
+`connectedLatticePolymerSystem` instantiating `PolymerSystem`; KP criteria (binomial
+entropy, volume-dependent) and **convergence of the lattice Mayer series**
+(`latticeClusterSum_summable`, `connectedLatticeClusterSum_summable`); quantitative
+`|Z−1|` bound and `Z > 0` at small coupling.
+
+**VOLUME-UNIFORMITY (criterion level), PROVED (2026-06-10)** — `ConnectedEntropy.lean`:
+local degree bound (≤ `16d` touching plaquettes), walk counting (≤ `Δ^L`), splice lemma,
+covering-walk theorem (connected sets = ranges of lazy closed walks), **lattice-animal
+entropy bound** `card_connectedPolymers_le` (≤ `(16d+1)^{2n}` connected polymers of size
+`n+1` through a point — volume-free), and
+**`connectedLatticePolymerSystem_kpCriterion_volumeUniform`**: the KP criterion for the
+connected gas under β-smallness depending only on the dimension.  Surviving
+volume-dependence is isolated in one hypothesis (`e·t·#P < 1`) of the convergence
+corollary — see `docs/SHARP-KP-PLAN.md`.
 
 ---
 
@@ -146,17 +172,28 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   geometrically). Feeds the verified convergence back-half and supplies the cluster bound that
   `lattice_mass_gap_of_clustering` assumes. Needs spanning-tree counting (Cayley) — **not in
   Mathlib**, may need its own development.
-- **T3 — LG6 measure step:** `IsMulLeftInvariant (gaugeMeasureFrom μ)` under the diagonal
-  centre action, then combine with the proved `wilsonLoop_scalarCenter_smul` (gives `ω^L`) to
-  get the Wilson-loop selection rule. Instance/transport plumbing on `GaugeConfig`.
+- **T3 — CLOSED (2026-06-10).** Centre invariance, exact action symmetry, and the Z_n
+  selection rules (free / interacting / correlator) are proved end to end at genuine
+  SU(n) Haar; see §4 above and `docs/VERIFICATION-LEDGER.md` addenda 1–3.
+- **NEXT TARGET — sharp KP bound (`docs/SHARP-KP-PLAN.md`).** The volume-uniform KP
+  *criterion* is proved; volume-uniform *convergence* needs the sharp (weight-respecting)
+  KP per-size estimate replacing the uniform-smallness form in `KP/KPBound.lean`.
+  Anchor (`KP/PinnedCluster.lean`: pinned cluster weights + exact pinning decomposition)
+  is landed; Route A (Ueltschi-style direct induction — no degree-refined Cayley needed)
+  is designed in the plan with the first two bricks stated precisely.  After that:
+  cluster-correlation chain → discharge the IR hypothesis of
+  `lattice_mass_gap_of_clustering_uniform`.
+- **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the
+  repo; needed for the other M3 hypothesis.
 - **T4 — strong-coupling character expansion → area law (LG7/8).** Needs **Peter–Weyl for
   compact groups**, NOT in Mathlib — a major standalone formalization (or a Weingarten route
-  for low moments). The genuine analytic content of M3.
+  for low moments). Only needed for the Wilson-loop form of M3.
 - **Beyond — M4/M5, the Clay wall:** continuum limit + OS/Wightman reconstruction. Open
   mathematics. Do not formalize until it exists on paper (`HORIZON.md §4`).
 
-T1–T3 are realistically reachable with **interactive Lean** (you, ideally, running Lean
-locally and iterating on goals). T4 is a project. M4/M5 is original research.
+The sharp-KP campaign is realistically reachable with **interactive Lean**. T4 is a
+project. M4/M5 is original research.  Read `docs/DEPENDENCY-GRAPH.md` and
+`docs/VERIFICATION-LEDGER.md` (5 addenda) for the complete machine-checked state.
 
 ---
 
