@@ -1311,6 +1311,31 @@ lemma shell_blockData (h : IsAdmissible p lev) {k : ℕ}
     dsimp only
     omega
 
+open Classical in
+/-- **Symmetrization (assembly step 2):** summing over structures equals
+summing over (structure, shell-enumeration) pairs weighted by `1/k!` —
+each structure has exactly `k!` enumerations of its first shell.  The
+`1/k!` of the exponential series enters the recursion exactly here. -/
+lemma sum_symmetrize {α : Type*} [DecidableEq α] (A : Finset α)
+    (F : α → ℝ) (S : α → Finset (Fin (n + 1))) :
+    ∑ pl ∈ A, F pl
+    = ∑ x ∈ A.sigma (fun pl => (Finset.univ :
+        Finset (Fin (S pl).card ≃ {s // s ∈ S pl}))),
+      (((S x.1).card.factorial : ℝ))⁻¹ * F x.1 := by
+  classical
+  rw [Finset.sum_sigma]
+  refine Finset.sum_congr rfl fun pl _ => ?_
+  dsimp only
+  rw [Finset.sum_const, Finset.card_univ]
+  have e : Fin (S pl).card ≃ {s // s ∈ S pl} :=
+    (Fintype.equivFinOfCardEq (by rw [Fintype.card_coe])).symm
+  have hcard : Fintype.card (Fin (S pl).card ≃ {s // s ∈ S pl})
+      = (S pl).card.factorial := by
+    rw [Fintype.card_equiv e, Fintype.card_fin]
+  rw [hcard, nsmul_eq_mul]
+  have hne : (((S pl).card.factorial : ℝ)) ≠ 0 := by positivity
+  field_simp
+
 end MasterAssembly
 
 end BlockCount
