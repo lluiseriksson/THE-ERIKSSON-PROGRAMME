@@ -63,6 +63,7 @@ import YangMills.L1_GibbsMeasure.GibbsSelectionRule
 import YangMills.L1_GibbsMeasure.PolymerExpansion
 import YangMills.L1_GibbsMeasure.WilsonObservable
 import YangMills.L1_GibbsMeasure.PolymerFactorization
+import YangMills.L1_GibbsMeasure.LatticePolymerSystem
 
 -- SU(N) compactness and Haar state construction
 import YangMills.P8_PhysicalGap.SUN_Compact
