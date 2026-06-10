@@ -1131,6 +1131,54 @@ lemma subtree_prod_transport {M : Type*} [CommMonoid M]
 
 end SubtreeTransport
 
+section MasterAssembly
+
+variable {n D : ℕ} {p : Fin (n + 1) → Fin (n + 1)}
+  {lev : Fin (n + 1) → Fin (D + 2)}
+
+open Classical in
+/-- **Master factorization, stage 1:** the edge-factor product of an
+admissible structure splits over the first shell — one root-edge factor
+`G 0 s` per shell element, times the subtree products.  Pure partition
+plus root-edge extraction; the relabeling happens per subtree via
+`subtree_prod_transport`. -/
+lemma master_partition (h : IsAdmissible p lev) {M : Type*} [CommMonoid M]
+    (G : Fin (n + 1) → Fin (n + 1) → M) :
+    ∏ v ∈ (Finset.univ : Finset (Fin (n + 1))).filter (fun v => v ≠ 0),
+      G (p v) v
+    = ∏ s ∈ (Finset.univ : Finset (Fin (n + 1))).filter
+        (fun s => s ≠ 0 ∧ p s = 0),
+        (G 0 s * ∏ v ∈ (shellFiber p lev s).erase s, G (p v) v) := by
+  classical
+  have hpart := shell_fiber_partition h
+  calc ∏ v ∈ (Finset.univ : Finset (Fin (n + 1))).filter (fun v => v ≠ 0),
+        G (p v) v
+      = ∏ v ∈ ((Finset.univ : Finset (Fin (n + 1))).filter
+          (fun s => s ≠ 0 ∧ p s = 0)).biUnion
+          (fun s => (Finset.univ : Finset (Fin (n + 1))).filter
+            (fun v => v ≠ 0 ∧ shellRoot p lev v = s)),
+          G (p v) v := by rw [← hpart]
+    _ = ∏ s ∈ (Finset.univ : Finset (Fin (n + 1))).filter
+          (fun s => s ≠ 0 ∧ p s = 0),
+          ∏ v ∈ (Finset.univ : Finset (Fin (n + 1))).filter
+            (fun v => v ≠ 0 ∧ shellRoot p lev v = s),
+            G (p v) v :=
+        Finset.prod_biUnion (fun a _ b _ hab => shell_fiber_disjoint hab)
+    _ = ∏ s ∈ (Finset.univ : Finset (Fin (n + 1))).filter
+          (fun s => s ≠ 0 ∧ p s = 0),
+          (G 0 s * ∏ v ∈ (shellFiber p lev s).erase s, G (p v) v) := by
+        refine Finset.prod_congr rfl fun s hs => ?_
+        rw [Finset.mem_filter] at hs
+        obtain ⟨-, hs0, hps⟩ := hs
+        have hs1 : (lev s : ℕ) = 1 := (h.parent_eq_zero_iff hs0).mp hps
+        have hsF : s ∈ shellFiber p lev s := self_mem_shellFiber hs0 hs1
+        have hFib : (Finset.univ : Finset (Fin (n + 1))).filter
+            (fun v => v ≠ 0 ∧ shellRoot p lev v = s)
+            = shellFiber p lev s := rfl
+        rw [hFib, ← Finset.mul_prod_erase _ _ hsF, hps]
+
+end MasterAssembly
+
 end BlockCount
 
 end YangMills.KP
