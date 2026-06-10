@@ -195,4 +195,36 @@ theorem kp_pinned_cluster_tail_bound (P : PolymerSystem)
             * Real.exp (a c)) := by
         rw [tilt_norm_activity]
 
+open Classical in
+/-- **Summed size-tail bound:** the restricted pinned series converges
+with `∑' ≤ e^{-εL}·e^{ε·sz(c)}·‖z(c)‖·e^{a(c)}` — the form the
+covariance chain (Half B) consumes. -/
+theorem pinned_cluster_tail_summable (P : PolymerSystem)
+    [Fintype P.Polymer] (sz : P.Polymer → ℕ) {ε : ℝ} (hε : 0 ≤ ε)
+    {a : (P.tilt fun x => ε * (sz x : ℝ)).Polymer → ℝ}
+    (h : KPCriterion (P.tilt fun x => ε * (sz x : ℝ)) a)
+    (c : P.Polymer) (L : ℕ) :
+    Summable (fun n => pinnedClusterWeightGE P sz c L n) ∧
+    ∑' n, pinnedClusterWeightGE P sz c L n
+      ≤ Real.exp (-(ε * L)) *
+          (Real.exp (ε * (sz c : ℝ)) * ‖P.activity c‖
+            * Real.exp (a c)) := by
+  classical
+  have hb : ∀ M : ℕ,
+      ∑ n ∈ Finset.range M, pinnedClusterWeightGE P sz c L n
+      ≤ Real.exp (-(ε * L)) *
+          (Real.exp (ε * (sz c : ℝ)) * ‖P.activity c‖
+            * Real.exp (a c)) := by
+    intro M
+    match M with
+    | 0 =>
+        simp only [Finset.range_zero, Finset.sum_empty]
+        positivity
+    | M + 1 => exact kp_pinned_cluster_tail_bound P sz hε h c L M
+  have hsum : Summable (fun n => pinnedClusterWeightGE P sz c L n) :=
+    summable_of_sum_range_le
+      (fun n => pinnedClusterWeightGE_nonneg P sz c L n) hb
+  exact ⟨hsum, Real.tsum_le_of_sum_range_le
+    (fun n => pinnedClusterWeightGE_nonneg P sz c L n) hb⟩
+
 end YangMills.KP
