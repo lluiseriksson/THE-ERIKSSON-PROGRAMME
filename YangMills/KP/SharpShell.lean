@@ -763,6 +763,17 @@ lemma IsBlockData.sum_coverSplit {U : Finset (Fin n)} {m : Fin k → ℕ}
   rw [Finset.sum_congr rfl (fun t _ => hsimp t)]
   rw [Finset.prod_univ_sum, Fintype.piFinset_univ]
 
+@[simp] lemma IsBlockData.partitionEquiv_apply_val {U : Finset (Fin n)}
+    {m : Fin k → ℕ} {ρ : Fin k → Finset (Fin n) × Fin n}
+    (hρ : IsBlockData U m ρ) (y : Σ i : Fin k, {x // x ∈ (ρ i).1}) :
+    ((hρ.partitionEquiv y : {x // x ∈ U}) : Fin n) = y.2.1 := rfl
+
+@[simp] lemma IsBlockData.coverSplitEquiv_apply {U : Finset (Fin n)}
+    {m : Fin k → ℕ} {ρ : Fin k → Finset (Fin n) × Fin n}
+    (hρ : IsBlockData U m ρ) {β : Type*} (g : {x // x ∈ U} → β)
+    (i : Fin k) (x : {x // x ∈ (ρ i).1}) :
+    hρ.coverSplitEquiv β g i x = g (hρ.partitionEquiv ⟨i, x⟩) := rfl
+
 /-- Roots of distinct blocks are distinct. -/
 lemma IsBlockData.root_injective {U : Finset (Fin n)} {m : Fin k → ℕ}
     {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData U m ρ)
