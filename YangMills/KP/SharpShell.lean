@@ -1463,6 +1463,43 @@ lemma shell_blockData_fn (h : IsAdmissible p lev) {k : ℕ}
     omega
 
 open Classical in
+/-- **The fully factored edge product (the per-ρ inequality's term side):**
+for an admissible structure with enumerated shell, the edge-factor product
+splits into per-block factors — root edge at `σ i`, then the relabeled
+subtree product through the marked enumeration.  Composition of
+`master_partition`, the image reindex, `subtree_prod_transport`, and the
+parent conjugation. -/
+lemma master_factorization_fn {n D : ℕ} {p : Fin (n + 1) → Fin (n + 1)}
+    {lev : Fin (n + 1) → Fin (D + 2)} (h : IsAdmissible p lev) {k : ℕ}
+    {σ : Fin k → Fin (n + 1)} (hσinj : Function.Injective σ)
+    (hσrange : Finset.univ.image σ
+      = (Finset.univ : Finset (Fin (n + 1))).filter
+          (fun s => s ≠ 0 ∧ p s = 0))
+    {M : Type*} [CommMonoid M] (G : Fin (n + 1) → Fin (n + 1) → M)
+    (hs : ∀ i, σ i ≠ 0) (hs1 : ∀ i, ((lev (σ i) : ℕ)) = 1) :
+    ∏ v ∈ (Finset.univ : Finset (Fin (n + 1))).filter (fun v => v ≠ 0),
+      G (p v) v
+    = ∏ i : Fin k,
+        (G 0 (σ i) * ∏ l ∈ (Finset.univ :
+          Finset (Fin (((shellFiber p lev (σ i)).erase (σ i)).card + 1))).filter
+            (fun l => l ≠ 0),
+          G (markedEmb (shellFiber p lev (σ i)) (σ i) rfl
+              (subtreeParent h (hs i) (hs1 i) rfl l))
+            (markedEmb (shellFiber p lev (σ i)) (σ i) rfl l)) := by
+  classical
+  rw [master_partition h G, ← hσrange]
+  rw [Finset.prod_image (fun i _ j _ hij => hσinj hij)]
+  refine Finset.prod_congr rfl fun i _ => ?_
+  congr 1
+  rw [subtree_prod_transport (hs i) (hs1 i) rfl
+    (fun v => G (p v) v)]
+  refine Finset.prod_congr rfl fun l hl => ?_
+  rw [Finset.mem_filter] at hl
+  have hkey := subtreeParent_apply_val h (hs i) (hs1 i) rfl hl.2
+  rw [markedEquiv_apply_val] at hkey
+  rw [← hkey, markedEquiv_apply_val]
+
+open Classical in
 /-- **Enumerations of a `k`-set number `k!`:** injective functions
 `Fin k → α` with image exactly `S` (where `S.card = k`) are in bijection
 with `Fin k ≃ S`.  This is the cast-free form of shell-enumeration
