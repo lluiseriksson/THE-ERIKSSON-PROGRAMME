@@ -356,6 +356,107 @@ lemma prod_plaquetteWeight_congr {d N : ℕ} [NeZero d] [NeZero N]
   exact plaquetteWeight_congr pe β p fun e he =>
     h e (Finset.mem_biUnion.mpr ⟨p, hp, he⟩)
 
+/-! ### The quantitative high-temperature estimate: `Z ≈ 1` -/
+
+/-- Binomial subset-counting (local copy):
+`∑_{c ⊆ univ} x^{|c|} = (x+1)^{#X}`. -/
+private lemma sum_powerset_pow_card' {X : Type*} [Fintype X] [DecidableEq X]
+    (x : ℝ) :
+    ∑ c ∈ (Finset.univ : Finset X).powerset, x ^ c.card
+      = (x + 1) ^ Fintype.card X := by
+  rw [← Finset.card_univ, ← Finset.prod_const (x + 1), Finset.prod_add]
+  exact Finset.sum_congr rfl fun t _ => by
+    rw [Finset.prod_const, Finset.prod_const_one, mul_one]
+
+/-- **The partition function is exponentially close to `1` at small
+coupling:** `|Z − 1| ≤ e^{|β|·B·#plaquettes} − 1`, with the error controlled
+entirely by the Mayer activities.  (The `S = ∅` term of the polymer-gas sum
+is `1`; every other term is bounded by `(e^{|β|B}−1)^{|S|}`.) -/
+theorem abs_partitionFunction_sub_one_le [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ}
+    (hpe_meas : Measurable pe) {B : ℝ} (hpe : ∀ g, |pe g| ≤ B) (β : ℝ) :
+    |partitionFunction (d := d) (N := N) μ pe β - 1|
+      ≤ ((Real.exp (|β| * B) - 1) + 1)
+          ^ Fintype.card (FiniteLatticeGeometry.P (d := d) (N := N) (G := G))
+        - 1 := by
+  classical
+  have hε0 : (0 : ℝ) ≤ Real.exp (|β| * B) - 1 := by
+    have h1 : (1 : ℝ) ≤ Real.exp (|β| * B) := by
+      rw [← Real.exp_zero]
+      refine Real.exp_le_exp.mpr ?_
+      have hB : (0 : ℝ) ≤ B := le_trans (abs_nonneg _) (hpe 1)
+      positivity
+    linarith
+  rw [partitionFunction_eq_sum_plaquetteSets' μ hpe_meas hpe β]
+  -- split off the `∅` term, which equals 1
+  have hmem : (∅ : Finset (FiniteLatticeGeometry.P (d := d) (N := N) (G := G)))
+      ∈ (Finset.univ :
+        Finset (FiniteLatticeGeometry.P (d := d) (N := N) (G := G))).powerset :=
+    Finset.empty_mem_powerset _
+  have hsum := Finset.add_sum_erase _
+    (fun S => ∫ A, ∏ p ∈ S, plaquetteWeight pe β A p
+      ∂(gaugeMeasureFrom (d := d) (N := N) μ)) hmem
+  beta_reduce at hsum
+  have hemptyterm : ∫ A : GaugeConfig d N G,
+      ∏ p ∈ (∅ : Finset (FiniteLatticeGeometry.P (d := d) (N := N) (G := G))),
+        plaquetteWeight pe β A p
+      ∂(gaugeMeasureFrom (d := d) (N := N) μ) = 1 := by
+    simp [measure_univ]
+  rw [← hsum, hemptyterm, add_sub_cancel_left]
+  -- bound the remaining sum term by term
+  refine le_trans (Finset.abs_sum_le_sum_abs _ _) ?_
+  have hbound : ∀ S : Finset (FiniteLatticeGeometry.P (d := d) (N := N) (G := G)),
+      |∫ A, ∏ p ∈ S, plaquetteWeight pe β A p
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)|
+      ≤ (Real.exp (|β| * B) - 1) ^ S.card := by
+    intro S
+    have h := MeasureTheory.norm_integral_le_of_norm_le_const
+      (μ := gaugeMeasureFrom (d := d) (N := N) μ)
+      (f := fun A : GaugeConfig d N G => ∏ p ∈ S, plaquetteWeight pe β A p)
+      (C := (Real.exp (|β| * B) - 1) ^ S.card) ?_
+    · rw [Real.norm_eq_abs] at h
+      simpa [measure_univ] using h
+    · refine MeasureTheory.ae_of_all _ fun A => ?_
+      rw [Real.norm_eq_abs, Finset.abs_prod]
+      calc ∏ p ∈ S, |plaquetteWeight pe β A p|
+          ≤ ∏ _p ∈ S, (Real.exp (|β| * B) - 1) :=
+            Finset.prod_le_prod (fun p _ => abs_nonneg _)
+              (fun p _ => abs_plaquetteWeight_le pe β A p hpe)
+        _ = (Real.exp (|β| * B) - 1) ^ S.card := by rw [Finset.prod_const]
+  calc ∑ S ∈ ((Finset.univ :
+        Finset (FiniteLatticeGeometry.P (d := d) (N := N) (G := G))).powerset).erase ∅,
+        |∫ A, ∏ p ∈ S, plaquetteWeight pe β A p
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ)|
+      ≤ ∑ S ∈ ((Finset.univ :
+          Finset (FiniteLatticeGeometry.P (d := d) (N := N) (G := G))).powerset).erase ∅,
+          (Real.exp (|β| * B) - 1) ^ S.card :=
+        Finset.sum_le_sum fun S _ => hbound S
+    _ = ((Real.exp (|β| * B) - 1) + 1)
+          ^ Fintype.card (FiniteLatticeGeometry.P (d := d) (N := N) (G := G))
+        - 1 := by
+        have h2 := Finset.add_sum_erase _
+          (fun S : Finset (FiniteLatticeGeometry.P (d := d) (N := N) (G := G)) =>
+            (Real.exp (|β| * B) - 1) ^ S.card) hmem
+        have h3 := sum_powerset_pow_card'
+          (X := FiniteLatticeGeometry.P (d := d) (N := N) (G := G))
+          (Real.exp (|β| * B) - 1)
+        simp only [Finset.card_empty, pow_zero] at h2
+        linarith
+
+/-- **Quantitative positivity:** if the total high-temperature error is
+below `1` — i.e. `(e^{|β|B})^{#P} < 2` — then `Z > 0`. -/
+theorem partitionFunction_pos_of_small [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ}
+    (hpe_meas : Measurable pe) {B : ℝ} (hpe : ∀ g, |pe g| ≤ B) (β : ℝ)
+    (hsmall : ((Real.exp (|β| * B) - 1) + 1)
+        ^ Fintype.card (FiniteLatticeGeometry.P (d := d) (N := N) (G := G))
+      < 2) :
+    0 < partitionFunction (d := d) (N := N) μ pe β := by
+  have h := abs_partitionFunction_sub_one_le (d := d) (N := N)
+    μ hpe_meas hpe β
+  have h2 := abs_le.mp h
+  linarith [h2.1]
+
 end Integrability
 
 end YangMills
