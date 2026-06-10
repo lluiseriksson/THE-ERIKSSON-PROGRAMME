@@ -522,6 +522,60 @@ theorem exists_covering_lazyWalk {V : Type*} [DecidableEq V]
   subst hL
   exact ⟨w', hw', himg⟩
 
+/-- Variant of the covering-walk theorem exposing the length as an
+existential with an equation — convenient for consumers that know `c.card`
+only propositionally. -/
+theorem exists_covering_lazyWalk_len {V : Type*} [DecidableEq V]
+    (R : V → V → Prop) (hsym : ∀ a b, R a b → R b a)
+    (c : Finset V) (v₀ : V) (hv₀ : v₀ ∈ c)
+    (hcross : ∀ s : Finset V, v₀ ∈ s → s ⊆ c → s ≠ c →
+      ∃ y ∈ s, ∃ x ∈ c, x ∉ s ∧ R y x) :
+    ∃ (L : ℕ) (w : Fin (L + 1) → V), L = 2 * (c.card - 1) ∧
+      IsLazyClosedWalk R v₀ w ∧ Finset.image w Finset.univ = c := by
+  have hbase : IsLazyClosedWalk R v₀ (fun _ : Fin 1 => v₀) :=
+    ⟨rfl, rfl, fun k => k.elim0⟩
+  have hbimg : Finset.image (fun _ : Fin 1 => v₀) Finset.univ = {v₀} := by
+    simp
+  obtain ⟨L', w', hL', hw', himg⟩ := covering_aux hsym hcross (c.card - 1)
+    {v₀} (Finset.mem_singleton_self v₀)
+    (Finset.singleton_subset_iff.mpr hv₀)
+    (by rw [Finset.card_singleton]) 0 (fun _ => v₀) hbase hbimg
+  exact ⟨L', w', by omega, hw', himg⟩
+
 end LazyWalks
+
+section ConnectedCrossing
+
+variable {d N : ℕ} [NeZero N]
+
+/-- The touching relation is symmetric. -/
+lemma plaquetteTouches_symm {p q : ConcretePlaquette d N}
+    (h : plaquetteTouches p q) : plaquetteTouches q p :=
+  fun hd => h hd.symm
+
+/-- **Connected polymers have the boundary-crossing property:** any proper
+subset of a connected polymer containing a marked plaquette is joined to its
+complement by a touching pair.  This is the `hcross` hypothesis of the
+covering-walk theorem, discharged for `IsConnectedPolymer`. -/
+lemma isConnectedPolymer_crossing
+    {c : Finset (ConcretePlaquette d N)} (hc : IsConnectedPolymer c)
+    {v₀ : ConcretePlaquette d N} (hv₀c : v₀ ∈ c) :
+    ∀ s : Finset (ConcretePlaquette d N), v₀ ∈ s → s ⊆ c → s ≠ c →
+      ∃ y ∈ s, ∃ x ∈ c, x ∉ s ∧ plaquetteTouches y x := by
+  intro s hv₀s hsub hne
+  have hss : s ⊂ c :=
+    ⟨hsub, fun h => hne (Finset.Subset.antisymm hsub h)⟩
+  obtain ⟨x₀, hx₀c, hx₀s⟩ := Finset.exists_of_ssubset hss
+  have hconn := hc
+  unfold IsConnectedPolymer at hconn
+  obtain ⟨p⟩ := hconn.preconnected ⟨v₀, hv₀c⟩ ⟨x₀, hx₀c⟩
+  obtain ⟨u, v, hadj, hu, hv⟩ := exists_adj_crossing_of_walk
+    (S := {t : ↥c | t.1 ∈ s}) p hv₀s hx₀s
+  rw [SimpleGraph.fromRel_adj] at hadj
+  rcases hadj.2 with h | h
+  · exact ⟨u.1, hu, v.1, v.2, hv, h⟩
+  · exact ⟨u.1, hu, v.1, v.2, hv, plaquetteTouches_symm h⟩
+
+end ConnectedCrossing
 
 end YangMills
