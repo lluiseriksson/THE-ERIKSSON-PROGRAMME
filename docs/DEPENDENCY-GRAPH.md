@@ -78,9 +78,23 @@ M3: unconditional lattice mass gap at strong coupling
     observables reading disjoint coordinate sets — no integrability
     hypotheses) and plaquetteSupport / prod_plaquetteWeight_congr
     (PolymerExpansion.lean: Mayer weights read only their support).
-    Remaining for step 2: transport through gaugeConfigMEquiv to
-    support-disjoint plaquette sets; connected-component grouping on the
-    plaquette-adjacency graph; match KPCriterion ⇒ lattice KP convergence.
+    **Gauge-level + iterated factorization PROVED**
+    (integral_prod_plaquetteWeight_mul_of_disjoint,
+    integral_prod_prod_plaquetteWeight_of_pairwiseDisjoint).
+    **THE LATTICE POLYMER SYSTEM EXISTS AND SATISFIES KP
+    (2026-06-10)**: latticePolymerSystem (LatticePolymerSystem.lean) —
+    nonempty plaquette sets / support-overlap incompatibility /
+    gauge-expectation activities — with Fintype,
+    norm_latticePolymerSystem_activity_le (‖z(c)‖ ≤ (e^{|β|B}−1)^{|c|}),
+    and **latticePolymerSystem_kpCriterion**: the Kotecký–Preiss smallness
+    criterion holds at small coupling (explicit volume-dependent threshold
+    via the binomial entropy bound; weight a(c) = |c|).
+    Honest caveats: (i) the threshold is volume-dependent — the
+    volume-uniform version needs *connected* polymers (entropy ≤ Cⁿ
+    locally); (ii) composing with the closed uniform-smallness KP
+    corollaries (e·max a < 1) needs the scaled-weight refinement
+    a(c) = t·|c|.  Both are scoped next-session work; all analysis
+    (expansion, smallness, locality, independence, criterion) is proved.
  └─ T3 / LG6 — centre selection rule               **CLOSED 2026-06-10**
     integral_centerAct (gauge measure centre-invariant, left-invariant μ);
     wilsonAction_centerAct (exact centre symmetry of the Wilson action —
