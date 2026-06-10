@@ -472,6 +472,41 @@ into `Fintype.piFinset` of structure spaces, value transport free (the
 `∏ S(qᵢ)` reads only data the hypotheses equate), then
 `sum_structures_blockSum` + `card_blockData_mul_le` + the §5c arithmetic.
 
+## 5f. The wrapper — current state and the one open design point
+(2026-06-10, last cycles)
+
+**PROVED this stretch:** `inner_factorization` (the heart),
+`sum_structures_blockSum`, `structure_determined` (the spine),
+`classParent` + `classParent_eq_subtreeParent` + `shellFiber_stab` (the
+carrier), `classLev` + `class_data_interior_agreement` (interior
+agreement with zero transport).  Injectivity of the final injection =
+`class_data_interior_agreement` ∘ `structure_determined` — a two-lemma
+chain, done.
+
+**The single open design point (the wrapper's class indexing):** when the
+class fixes `F : Fin k → Finset` and a structure `pl` satisfies
+`shellFiber pl (σ i) = F i`, the carrier maps built on `F` need the
+stability/`hm` arguments transported from the structure's own fiber —
+the `hm : (F.erase s).card = m` plumbing.  Partial resolution found:
+totalize the per-block factor as
+`blockS P c D V s := ∑_{c'} 𝟙[incomp c c']·‖z c'‖·treeSumRaw P c' D
+((V.erase s).card)` — total in `(V, s)`, no conditions, so
+`congrArg (blockS P c D · (σ i)) (hFi)` transports the VALUE freely; the
+remaining plumbing is only in the injection's map definition (use
+`classParent (F i) (σ i)` with stability discharged by rewriting
+`shellFiber_stab` along `hFi` at the PROP level, and `hm := rfl` on the
+`F`-side throughout — never mix `F`-side and fiber-side `hm`s).
+Recommended final shape: class = (k, σ, F)-triple, class-filter inside
+the canonical-admissible filter, wrapper proved by `Finset.sum_le_*` with
+the map `pl ↦ (i ↦ (classParent (F i) …, classLev (F i) …))` into
+`Fintype.piFinset` of canonical depth-`D` pair-filters, values matched by
+the heart + `classParent_eq_subtreeParent` transported along `hFi`, then
+`prod_univ_sum` + `sum_structures_blockSum` close each block to
+`blockS`.  After the wrapper: outer fiberwise over `(k, σ, F)`, pricing
+via `card_blockData_mul_le` (the `(F, σ)`-data IS block data —
+`shell_blockData_fn`), `card_enumerations` for the `k!`, and §5c
+arithmetic.
+
 ## 6. Honesty invariant (unchanged)
 
 All of this is M3 lattice-side.  None of it reduces M4/M5/Clay
