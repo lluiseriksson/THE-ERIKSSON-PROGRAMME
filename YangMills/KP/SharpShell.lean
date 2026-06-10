@@ -690,6 +690,80 @@ lemma IsBlockData.root_injective {m : Fin k → ℕ}
   rw [h] at hi
   exact (Finset.disjoint_left.mp (hρ.1 i j hne) hi) hj
 
+variable {m : Fin k → ℕ} {ρ : Fin k → Finset (Fin n) × Fin n}
+
+/-- The increasing enumeration of a block's non-root elements. -/
+def IsBlockData.nonRootEmb (hρ : IsBlockData m ρ) (i : Fin k) :
+    Fin (m i) ↪o Fin n :=
+  Finset.orderEmbOfFin ((ρ i).1.erase (ρ i).2) (by
+    rw [Finset.card_erase_of_mem (hρ.2.2.1 i), hρ.2.2.2 i]
+    omega)
+
+lemma IsBlockData.nonRootEmb_mem (hρ : IsBlockData m ρ) (i : Fin k)
+    (j : Fin (m i)) : hρ.nonRootEmb i j ∈ (ρ i).1 :=
+  Finset.mem_of_mem_erase (Finset.orderEmbOfFin_mem _ _ _)
+
+lemma IsBlockData.nonRootEmb_ne_root (hρ : IsBlockData m ρ) (i : Fin k)
+    (j : Fin (m i)) : hρ.nonRootEmb i j ≠ (ρ i).2 :=
+  (Finset.mem_erase.mp (Finset.orderEmbOfFin_mem _ _ _)).1
+
+/-- **The placement function**: list each block root-first, then its
+non-root elements in increasing order twisted by a local permutation. -/
+def IsBlockData.placeFun (hρ : IsBlockData m ρ)
+    (π : ∀ i, Equiv.Perm (Fin (m i))) :
+    (Σ i : Fin k, Fin (m i + 1)) → Fin n :=
+  fun x => Fin.cases ((ρ x.1).2)
+    (fun j => hρ.nonRootEmb x.1 ((π x.1) j)) x.2
+
+lemma IsBlockData.placeFun_zero (hρ : IsBlockData m ρ)
+    (π : ∀ i, Equiv.Perm (Fin (m i))) (i : Fin k) :
+    hρ.placeFun π ⟨i, 0⟩ = (ρ i).2 := rfl
+
+lemma IsBlockData.placeFun_succ (hρ : IsBlockData m ρ)
+    (π : ∀ i, Equiv.Perm (Fin (m i))) (i : Fin k) (j : Fin (m i)) :
+    hρ.placeFun π ⟨i, j.succ⟩ = hρ.nonRootEmb i ((π i) j) := by
+  simp [IsBlockData.placeFun]
+
+lemma IsBlockData.placeFun_mem (hρ : IsBlockData m ρ)
+    (π : ∀ i, Equiv.Perm (Fin (m i)))
+    (x : Σ i : Fin k, Fin (m i + 1)) :
+    hρ.placeFun π x ∈ (ρ x.1).1 := by
+  obtain ⟨i, l⟩ := x
+  refine Fin.cases ?_ ?_ l
+  · rw [hρ.placeFun_zero]
+    exact hρ.2.2.1 i
+  · intro j
+    rw [hρ.placeFun_succ]
+    exact hρ.nonRootEmb_mem i _
+
+lemma IsBlockData.placeFun_injective (hρ : IsBlockData m ρ)
+    (π : ∀ i, Equiv.Perm (Fin (m i))) :
+    Function.Injective (hρ.placeFun π) := by
+  rintro ⟨i, l⟩ ⟨i', l'⟩ h
+  have hi : i = i' := by
+    by_contra hne
+    have h2 := hρ.placeFun_mem π ⟨i', l'⟩
+    rw [← h] at h2
+    exact (Finset.disjoint_left.mp (hρ.1 i i' hne)
+      (hρ.placeFun_mem π ⟨i, l⟩)) h2
+  subst hi
+  suffices hl : l = l' by rw [hl]
+  by_cases hl0 : l = 0 <;> by_cases hl'0 : l' = 0
+  · rw [hl0, hl'0]
+  · exfalso
+    obtain ⟨j', rfl⟩ := Fin.eq_succ_of_ne_zero hl'0
+    rw [hl0, hρ.placeFun_zero, hρ.placeFun_succ] at h
+    exact hρ.nonRootEmb_ne_root i _ h.symm
+  · exfalso
+    obtain ⟨j, rfl⟩ := Fin.eq_succ_of_ne_zero hl0
+    rw [hl'0, hρ.placeFun_succ, hρ.placeFun_zero] at h
+    exact hρ.nonRootEmb_ne_root i _ h
+  · obtain ⟨j, rfl⟩ := Fin.eq_succ_of_ne_zero hl0
+    obtain ⟨j', rfl⟩ := Fin.eq_succ_of_ne_zero hl'0
+    rw [hρ.placeFun_succ, hρ.placeFun_succ] at h
+    have h1 : (π i) j = (π i) j' := (hρ.nonRootEmb i).injective h
+    rw [(π i).injective h1]
+
 end BlockCount
 
 end YangMills.KP
