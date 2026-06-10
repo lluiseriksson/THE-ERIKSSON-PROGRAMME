@@ -620,4 +620,152 @@ lemma componentPartition_biUnion_eq {n : ℕ}
         (π.parts.biUnion g)).part_mem.mpr (Finset.mem_univ x)
   exact Finpartition.ext hparts
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **(★) The fiber factorization (B0a, step A4):** the alternating sum
+over edge sets with component partition exactly `π` factorizes as the
+product over parts of within-part connecting block sums. -/
+theorem fiber_cp_factorization {n : ℕ} (A : Finset (Sym2 (Fin n)))
+    (π : Finpartition (Finset.univ : Finset (Fin n))) :
+    ∑ E ∈ A.powerset.filter
+      (fun E : Finset (Sym2 (Fin n)) => componentPartition E = π),
+      (-1 : ℤ) ^ E.card
+    = ∏ B ∈ π.parts, ∑ E' ∈ A.powerset.filter
+        (fun E' : Finset (Sym2 (Fin n)) =>
+          (∀ e ∈ E', ∀ v ∈ e, v ∈ B) ∧
+          ∀ v ∈ B, ∀ w ∈ B, (SimpleGraph.fromEdgeSet
+            (↑E' : Set (Sym2 (Fin n)))).Reachable v w),
+        (-1 : ℤ) ^ E'.card := by
+  classical
+  rw [Finset.prod_sum]
+  refine Finset.sum_nbij'
+    (fun E => fun B _ => E.filter (fun e => ∀ u ∈ e, u ∈ B))
+    (fun p => π.parts.biUnion (fun B =>
+      if h : B ∈ π.parts then p B h else ∅)) ?_ ?_ ?_ ?_ ?_
+  · -- forward membership: components are block data
+    intro E hE
+    rw [Finset.mem_filter] at hE
+    exact Finset.mem_pi.mpr fun B hB =>
+      filter_within_mem_of_cp_eq hE.1 hE.2 hB
+  · -- backward membership: unions are fiber members
+    intro p hp
+    have hpmem := Finset.mem_pi.mp hp
+    rw [Finset.mem_filter, Finset.mem_powerset]
+    constructor
+    · intro e he
+      rw [Finset.mem_biUnion] at he
+      obtain ⟨B, hB, heg⟩ := he
+      rw [dif_pos hB] at heg
+      have := (Finset.mem_filter.mp (hpmem B hB)).1
+      exact Finset.mem_powerset.mp this heg
+    · refine componentPartition_biUnion_eq _ ?_ ?_
+      · intro B hB e he u hu
+        rw [dif_pos hB] at he
+        exact (Finset.mem_filter.mp (hpmem B hB)).2.1 e he u hu
+      · intro B hB v hv w hw
+        rw [dif_pos hB]
+        exact (Finset.mem_filter.mp (hpmem B hB)).2.2 v hv w hw
+  · -- left inverse
+    intro E hE
+    dsimp only
+    have hcp := (Finset.mem_filter.mp hE).2
+    calc π.parts.biUnion (fun B =>
+          if h : B ∈ π.parts
+          then E.filter (fun e => ∀ u ∈ e, u ∈ B) else ∅)
+        = π.parts.biUnion (fun B =>
+            E.filter (fun e => ∀ u ∈ e, u ∈ B)) :=
+          Finset.biUnion_congr rfl (fun B hB => dif_pos hB)
+      _ = E := biUnion_filter_within_parts hcp
+  · -- right inverse
+    intro p hp
+    have hpmem := Finset.mem_pi.mp hp
+    dsimp only
+    funext B hB
+    ext e
+    constructor
+    · intro he
+      rw [Finset.mem_filter] at he
+      obtain ⟨hbi, hwB⟩ := he
+      rw [Finset.mem_biUnion] at hbi
+      obtain ⟨B', hB', heg⟩ := hbi
+      rw [dif_pos hB'] at heg
+      have hwB' := (Finset.mem_filter.mp (hpmem B' hB')).2.1 e heg
+      have hBB' : B' = B := by
+        by_contra hne
+        obtain ⟨u, hu⟩ : ∃ u, u ∈ e := ⟨e.out.1, Sym2.out_fst_mem e⟩
+        exact (Finset.disjoint_left.mp
+          (π.disjoint (Finset.mem_coe.mpr hB')
+            (Finset.mem_coe.mpr hB) hne) (hwB' u hu)) (hwB u hu)
+      subst hBB'
+      exact heg
+    · intro he
+      rw [Finset.mem_filter]
+      refine ⟨Finset.mem_biUnion.mpr ⟨B, hB, ?_⟩, ?_⟩
+      · rw [dif_pos hB]; exact he
+      · exact (Finset.mem_filter.mp (hpmem B hB)).2.1 e he
+  · -- values: cardinality additivity over the parts
+    intro E hE
+    dsimp only
+    have hcp := (Finset.mem_filter.mp hE).2
+    have hdisj : ∀ B ∈ π.parts, ∀ B' ∈ π.parts, B ≠ B' →
+        Disjoint (E.filter (fun e => ∀ u ∈ e, u ∈ B))
+          (E.filter (fun e => ∀ u ∈ e, u ∈ B')) := by
+      intro B hB B' hB' hne
+      exact filter_within_disjoint E
+        (π.disjoint (Finset.mem_coe.mpr hB)
+          (Finset.mem_coe.mpr hB') hne)
+    have hcard : ∑ B ∈ π.parts,
+        (E.filter (fun e => ∀ u ∈ e, u ∈ B)).card = E.card := by
+      rw [← Finset.card_biUnion hdisj, biUnion_filter_within_parts hcp]
+    calc (-1 : ℤ) ^ E.card
+        = (-1 : ℤ) ^ (∑ B ∈ π.parts,
+            (E.filter (fun e => ∀ u ∈ e, u ∈ B)).card) := by
+          rw [hcard]
+      _ = ∏ B ∈ π.parts, (-1 : ℤ)
+            ^ (E.filter (fun e => ∀ u ∈ e, u ∈ B)).card :=
+          (Finset.prod_pow_eq_pow_sum _ _ _).symm
+      _ = ∏ x ∈ π.parts.attach, (-1 : ℤ)
+            ^ (E.filter (fun e => ∀ u ∈ e, u ∈ (x : Finset (Fin n)))).card
+          := (Finset.prod_attach _ _).symm
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **THE PARTITION IDENTITY (B0a, the combinatorial heart of the
+Mayer–Ursell inversion):** summing block-Ursell products over all
+partitions of the index set yields the pairwise-compatibility
+indicator.  This is the identity that drives `Ξ = exp(clusterSum)`. -/
+theorem ursell_partition_identity {n : ℕ} (X : Fin n → P.Polymer) :
+    ∑ π : Finpartition (Finset.univ : Finset (Fin n)),
+      ∏ B ∈ π.parts,
+        ursell P (fun i : Fin B.card =>
+          X ((B.orderIsoOfFin rfl i) : Fin n))
+    = if PairwiseCompatible P X then 1 else 0 := by
+  classical
+  rw [← sum_neg_one_pow_eq_indicator P X]
+  have hfib : ∑ E ∈ (incompGraph P X).edgeFinset.powerset,
+      (-1 : ℤ) ^ E.card
+      = ∑ π : Finpartition (Finset.univ : Finset (Fin n)),
+          ∑ E ∈ (incompGraph P X).edgeFinset.powerset.filter
+            (fun E : Finset (Sym2 (Fin n)) =>
+              componentPartition E = π),
+            (-1 : ℤ) ^ E.card := by
+    have hexp : ∀ E ∈ (incompGraph P X).edgeFinset.powerset,
+        (-1 : ℤ) ^ E.card
+        = ∑ π : Finpartition (Finset.univ : Finset (Fin n)),
+            if componentPartition E = π
+            then (-1 : ℤ) ^ E.card else 0 := by
+      intro E _
+      rw [Finset.sum_eq_single (componentPartition E)
+        (fun π _ hne => if_neg fun h => hne h.symm)
+        (fun habs => absurd (Finset.mem_univ _) habs)]
+      exact (if_pos rfl).symm
+    rw [Finset.sum_congr rfl hexp, Finset.sum_comm]
+    exact Finset.sum_congr rfl fun π _ => (Finset.sum_filter _ _).symm
+  rw [hfib]
+  refine Finset.sum_congr rfl fun π _ => ?_
+  rw [fiber_cp_factorization]
+  refine Finset.prod_congr rfl fun B hB => ?_
+  exact (sum_blockConnected_eq_ursell P X B rfl
+    (π.nonempty_of_mem_parts hB)).symm
+
 end YangMills.KP
