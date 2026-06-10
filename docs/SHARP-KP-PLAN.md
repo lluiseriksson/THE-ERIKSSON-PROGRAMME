@@ -351,6 +351,34 @@ Everything in 1, 2, 4, 5, 6 is glue over proved lemmas; step 3's
 reconstruction is the one genuinely laborious proof left (≈200 lines,
 twice-precedented pattern).
 
+*Splice architecture — REFINED (2026-06-10, last; eliminates dependent
+pi-Finsets).*  Do NOT build the target index as a sigma over block data of
+dependent component tuples.  Instead, after symmetrization
+(`sum_symmetrize`, PROVED) and the k-partition:
+
+  - **S1 (group by block data):** fiberwise over
+    `(pl, σ) ↦ ρ(pl,σ) := fun i => (shellFiber pl (σ i).1, (σ i).1)`
+    (lands in `IsBlockData (univ.erase 0)` — `shell_blockData`, PROVED).
+    Recovery equations (`parent_recovery(_root)`, `lev_recovery`, PROVED)
+    show consistency determines `(p, lev)` from per-block data.
+  - **S2 (factorize the consistent sum):** for FIXED `ρ`, the sum over
+    consistent `(p, lev, X)` factorizes across fibers — the function
+    spaces split along the (fixed!) fiber partition, so the splitting
+    equivalence is non-dependent.  Output shape: per-block sums over
+    block-local structure/assignment functions.
+  - **S3 (block-local identification):** per block `(V, s)` with
+    `(V.erase s).card = m`, transport the block-local sum along
+    `markedEquiv` (function-space congruence, `Equiv.arrowCongr`-style):
+    block-local sum `= ∑_{c'≁c} ‖z c'‖ · treeSumRaw P c' D m`
+    (the root-edge factor at `s` plus `subtree_prod_transport`).
+  - **S4 (pricing and resummation):** fiberwise over the size vector `m`,
+    `#blockdata(m) ≤ n!/∏ m_i!` (`card_blockData_mul_le`), then step 6
+    unchanged.
+
+S2 and S3 are each single-lemma bricks against fixed data; S1 is
+`Finset.sum_fiberwise_of_maps_to`; S4 is proved.  The dependent-type
+hazard of the original step-3 formulation is gone.
+
 ## 6. Honesty invariant (unchanged)
 
 All of this is M3 lattice-side.  None of it reduces M4/M5/Clay
