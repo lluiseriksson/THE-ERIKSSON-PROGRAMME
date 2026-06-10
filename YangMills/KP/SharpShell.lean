@@ -1972,6 +1972,60 @@ lemma shellFiber_stab {n D : ℕ} {p : Fin (n + 1) → Fin (n + 1)}
     exact markedEmb_injective _ _ rfl (hEq.trans h0.symm)
   exact (shellFiber_parent_mem h hmem hne).2.2
 
+open Classical in
+/-- **The class level map** — `subtreeLev` against a fixed block. -/
+noncomputable def classLev {D : ℕ} (F : Finset (Fin (n + 1)))
+    (s : Fin (n + 1)) {m : ℕ} (hm : (F.erase s).card = m)
+    (lev : Fin (n + 1) → Fin (D + 2)) : Fin (m + 1) → Fin (D + 1) :=
+  fun l => ⟨(lev (markedEmb F s hm l) : ℕ) - 1, by
+    have := (lev (markedEmb F s hm l)).isLt
+    omega⟩
+
+open Classical in
+/-- **Interior agreement from carrier equality:** if two structures have
+equal class parent and level maps on a block, they agree pointwise on the
+block's interior — the hypothesis `structure_determined` consumes,
+extracted with no transport (the marked equivalence is injective). -/
+lemma class_data_interior_agreement {D : ℕ}
+    {F : Finset (Fin (n + 1))} {s : Fin (n + 1)} (hsF : s ∈ F)
+    {m : ℕ} (hm : (F.erase s).card = m)
+    {p₁ p₂ : Fin (n + 1) → Fin (n + 1)}
+    {lev₁ lev₂ : Fin (n + 1) → Fin (D + 2)}
+    (h₁ : IsAdmissible p₁ lev₁) (h₂ : IsAdmissible p₂ lev₂)
+    (hF0 : (0 : Fin (n + 1)) ∉ F)
+    {hstab₁ : ∀ l : Fin (m + 1), l ≠ 0 → p₁ (markedEmb F s hm l) ∈ F}
+    {hstab₂ : ∀ l : Fin (m + 1), l ≠ 0 → p₂ (markedEmb F s hm l) ∈ F}
+    (hq : classParent F s hsF hm p₁ hstab₁
+      = classParent F s hsF hm p₂ hstab₂)
+    (hl : classLev F s hm lev₁ = classLev F s hm lev₂) :
+    ∀ v ∈ F, v ≠ s → p₁ v = p₂ v ∧ (lev₁ v : ℕ) = (lev₂ v : ℕ) := by
+  intro v hv hvs
+  set l : Fin (m + 1) := (markedEquiv F hsF hm).symm ⟨v, hv⟩ with hldef
+  have hemb : markedEmb F s hm l = v := by
+    have := congrArg Subtype.val
+      ((markedEquiv F hsF hm).apply_symm_apply ⟨v, hv⟩)
+    rwa [markedEquiv_apply_val] at this
+  have hl0 : l ≠ 0 := by
+    intro hEq
+    apply hvs
+    rw [← hemb, hEq, markedEmb_zero]
+  constructor
+  · have hq' := congrFun hq l
+    unfold classParent at hq'
+    rw [dif_neg hl0, dif_neg hl0] at hq'
+    have h2 := (markedEquiv F hsF hm).symm.injective hq'
+    have h3 := congrArg Subtype.val h2
+    simp only at h3
+    rwa [hemb] at h3
+  · have hv0 : v ≠ 0 := fun hEq => hF0 (hEq ▸ hv)
+    have hge₁ := h₁.one_le_lev hv0
+    have hge₂ := h₂.one_le_lev hv0
+    have hl' := congrArg Fin.val (congrFun hl l)
+    unfold classLev at hl'
+    simp only at hl'
+    rw [hemb] at hl'
+    omega
+
 end MasterAssembly
 
 end BlockCount
