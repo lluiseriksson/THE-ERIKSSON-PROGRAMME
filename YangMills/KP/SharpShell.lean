@@ -2381,6 +2381,158 @@ lemma sum_filter_swap {α β : Type*} [Fintype β] [DecidableEq α]
   exact Finset.sum_congr rfl fun σ _ =>
     (Finset.sum_filter (fun a => P a σ) G).symm
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **The per-`k` bound (ρ-design):** the symmetrized inner sums at shell
+size `k` are bounded by the block-factor products over self-sized block
+data — the pricing's own index, with no auxiliary `(σ, F)` space. -/
+theorem per_k_bound {n D : ℕ} (k : ℕ)
+    (P : PolymerSystem) [Fintype P.Polymer] (c : P.Polymer) :
+    ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+        × (Fin (n + 1) → Fin (D + 2)))).filter
+        (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0),
+      ∑ _σ ∈ (Finset.univ : Finset (Fin k → Fin (n + 1))).filter
+        (fun σ => Function.Injective σ ∧ Finset.univ.image σ
+          = (Finset.univ : Finset (Fin (n + 1))).filter
+              (fun s => s ≠ 0 ∧ pl.1 s = 0)),
+        treeSumRawInner P c pl.1
+    ≤ ∑ ρ ∈ (Finset.univ :
+        Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))).filter
+        (fun ρ => IsBlockData
+          ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+          (fun i => ((ρ i).1.erase (ρ i).2).card) ρ),
+      ∏ i : Fin k, blockS P c D (ρ i).1 (ρ i).2 := by
+  classical
+  -- O2 inlined (attempt-2's proven form)
+  have hswap : ∑ pl ∈ (Finset.univ :
+      Finset ((Fin (n + 1) → Fin (n + 1))
+        × (Fin (n + 1) → Fin (D + 2)))).filter
+      (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0),
+      ∑ _σ ∈ (Finset.univ : Finset (Fin k → Fin (n + 1))).filter
+        (fun σ => Function.Injective σ ∧ Finset.univ.image σ
+          = (Finset.univ : Finset (Fin (n + 1))).filter
+              (fun s => s ≠ 0 ∧ pl.1 s = 0)),
+        treeSumRawInner P c pl.1
+      = ∑ σ : Fin k → Fin (n + 1),
+          ∑ pl ∈ ((Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+            × (Fin (n + 1) → Fin (D + 2)))).filter
+            (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0)).filter
+            (fun pl => Function.Injective σ ∧ Finset.univ.image σ
+              = (Finset.univ : Finset (Fin (n + 1))).filter
+                  (fun s => s ≠ 0 ∧ pl.1 s = 0)),
+            treeSumRawInner P c pl.1 := by
+    rw [Finset.sum_congr rfl (fun pl _ => Finset.sum_filter
+      (fun σ : Fin k → Fin (n + 1) =>
+        Function.Injective σ ∧ Finset.univ.image σ
+          = (Finset.univ : Finset (Fin (n + 1))).filter
+              (fun s => s ≠ 0 ∧ pl.1 s = 0))
+      (fun _ => treeSumRawInner P c pl.1)), Finset.sum_comm]
+    exact Finset.sum_congr rfl fun σ _ =>
+      (Finset.sum_filter _ _).symm
+  rw [hswap]
+  -- expand each class sum over the ρ-space pointwise (instance-free)
+  have hgroup : ∀ σ : Fin k → Fin (n + 1),
+      ∑ pl ∈ ((Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+        × (Fin (n + 1) → Fin (D + 2)))).filter
+        (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0)).filter
+        (fun pl => Function.Injective σ ∧ Finset.univ.image σ
+          = (Finset.univ : Finset (Fin (n + 1))).filter
+              (fun s => s ≠ 0 ∧ pl.1 s = 0)),
+        treeSumRawInner P c pl.1
+      = ∑ ρ ∈ (Finset.univ :
+          Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))),
+          ∑ pl ∈ ((Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+            × (Fin (n + 1) → Fin (D + 2)))).filter
+            (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0)).filter
+            (fun pl => Function.Injective σ ∧ Finset.univ.image σ
+              = (Finset.univ : Finset (Fin (n + 1))).filter
+                  (fun s => s ≠ 0 ∧ pl.1 s = 0)),
+            if (fun i => (shellFiber pl.1 pl.2 (σ i), σ i)) = ρ
+            then treeSumRawInner P c pl.1 else 0 := by
+    intro σ
+    rw [Finset.sum_comm]
+    refine Finset.sum_congr rfl fun pl _ => ?_
+    have hone : ∑ ρ ∈ (Finset.univ :
+        Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))),
+        (if (fun i => (shellFiber pl.1 pl.2 (σ i), σ i)) = ρ
+          then treeSumRawInner P c pl.1 else 0)
+        = treeSumRawInner P c pl.1 := by
+      rw [Finset.sum_eq_single
+        (fun i => (shellFiber pl.1 pl.2 (σ i), σ i))
+        (fun ρ _ hne => if_neg fun h => hne h.symm)
+        (fun habs => absurd (Finset.mem_univ _) habs)]
+      exact if_pos rfl
+    exact hone.symm
+  rw [Finset.sum_congr rfl (fun σ _ => hgroup σ), Finset.sum_comm]
+  -- per ρ: only its own roots contribute, then the wrapper or zero
+  have hperρ : ∀ ρ ∈ (Finset.univ :
+      Finset (Fin k → Finset (Fin (n + 1)) × Fin (n + 1))),
+      (∑ σ : Fin k → Fin (n + 1),
+        ∑ pl ∈ ((Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+          × (Fin (n + 1) → Fin (D + 2)))).filter
+          (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0)).filter
+          (fun pl => Function.Injective σ ∧ Finset.univ.image σ
+            = (Finset.univ : Finset (Fin (n + 1))).filter
+                (fun s => s ≠ 0 ∧ pl.1 s = 0)),
+          if (fun i => (shellFiber pl.1 pl.2 (σ i), σ i)) = ρ
+          then treeSumRawInner P c pl.1 else 0)
+      ≤ if IsBlockData ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+          (fun i => ((ρ i).1.erase (ρ i).2).card) ρ
+        then ∏ i : Fin k, blockS P c D (ρ i).1 (ρ i).2 else 0 := by
+    intro ρ _
+    have hzero : ∀ σ : Fin k → Fin (n + 1), σ ≠ (fun i => (ρ i).2) →
+        (∑ pl ∈ ((Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+          × (Fin (n + 1) → Fin (D + 2)))).filter
+          (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0)).filter
+          (fun pl => Function.Injective σ ∧ Finset.univ.image σ
+            = (Finset.univ : Finset (Fin (n + 1))).filter
+                (fun s => s ≠ 0 ∧ pl.1 s = 0)),
+          if (fun i => (shellFiber pl.1 pl.2 (σ i), σ i)) = ρ
+          then treeSumRawInner P c pl.1 else 0) = 0 := by
+      intro σ hσne
+      refine Finset.sum_eq_zero fun pl _ => ?_
+      by_cases h : (fun i => (shellFiber pl.1 pl.2 (σ i), σ i)) = ρ
+      · exact absurd
+          (funext fun i => congrArg Prod.snd (congrFun h i)) hσne
+      · exact if_neg h
+    rw [Fintype.sum_eq_single (fun i => (ρ i).2) hzero]
+    by_cases hbd : IsBlockData
+        ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+        (fun i => ((ρ i).1.erase (ρ i).2).card) ρ
+    · rw [if_pos hbd, ← Finset.sum_filter]
+      by_cases hinj : Function.Injective (fun i : Fin k => (ρ i).2)
+      · refine le_trans (Finset.sum_le_sum_of_subset_of_nonneg
+          (fun pl hpl => ?_)
+          (fun pl _ _ => treeSumRawInner_nonneg P c _))
+          (class_sum_le hinj (fun i => (ρ i).1) P c)
+        have hfib := (Finset.mem_filter.mp hpl).2
+        have hP₁ := (Finset.mem_filter.mp
+          (Finset.mem_filter.mp hpl).1).2
+        have hadm := (Finset.mem_filter.mp (Finset.mem_filter.mp
+          (Finset.mem_filter.mp hpl).1).1).2
+        exact Finset.mem_filter.mpr ⟨Finset.mem_univ _, hadm, hP₁.2,
+          fun i => congrArg Prod.fst (congrFun hfib i)⟩
+      · refine le_trans (le_of_eq (Finset.sum_eq_zero
+          fun pl hpl => ?_))
+          (Finset.prod_nonneg fun i _ =>
+            blockS_nonneg P c D (ρ i).1 (ρ i).2)
+        exact absurd ((Finset.mem_filter.mp
+          (Finset.mem_filter.mp hpl).1).2).1 hinj
+    · rw [if_neg hbd]
+      refine le_of_eq (Finset.sum_eq_zero fun pl hpl => ?_)
+      by_cases h : (fun i =>
+          (shellFiber pl.1 pl.2 ((ρ i).2), (ρ i).2)) = ρ
+      · exfalso
+        have hP₁ := (Finset.mem_filter.mp hpl).2
+        have hadm := (Finset.mem_filter.mp
+          (Finset.mem_filter.mp hpl).1).2
+        exact hbd (by
+          rw [← h]
+          exact shell_blockData_fn hadm.1 hP₁.1 hP₁.2)
+      · exact if_neg h
+  exact le_trans (Finset.sum_le_sum hperρ)
+    (le_of_eq (Finset.sum_filter _ _).symm)
+
 end MasterAssembly
 
 end BlockCount
