@@ -866,6 +866,72 @@ theorem card_blockData_mul_le (m : Fin k → ℕ)
     _ = n.factorial := by
         rw [Finset.card_univ, Fintype.card_equiv e₀, hcardSig]
 
+section MarkedEnum
+
+variable {N : ℕ}
+
+/-- **Marked enumeration** of a finite set with a distinguished element:
+position `0` is the mark, positions `1..m` list the remaining elements in
+increasing order.  This is the canonical relabeling that sends a shell
+subtree's root to `0` — the single-block inverse of `placeFun`. -/
+def markedEmb (F : Finset (Fin N)) (s : Fin N) {m : ℕ}
+    (hm : (F.erase s).card = m) : Fin (m + 1) → Fin N :=
+  fun l => Fin.cases s (fun j => (F.erase s).orderEmbOfFin hm j) l
+
+@[simp] lemma markedEmb_zero (F : Finset (Fin N)) (s : Fin N) {m : ℕ}
+    (hm : (F.erase s).card = m) : markedEmb F s hm 0 = s := rfl
+
+@[simp] lemma markedEmb_succ (F : Finset (Fin N)) (s : Fin N) {m : ℕ}
+    (hm : (F.erase s).card = m) (j : Fin m) :
+    markedEmb F s hm j.succ = (F.erase s).orderEmbOfFin hm j := by
+  simp [markedEmb]
+
+lemma markedEmb_mem (F : Finset (Fin N)) {s : Fin N} (hs : s ∈ F) {m : ℕ}
+    (hm : (F.erase s).card = m) (l : Fin (m + 1)) :
+    markedEmb F s hm l ∈ F := by
+  refine Fin.cases ?_ ?_ l
+  · rw [markedEmb_zero]
+    exact hs
+  · intro j
+    rw [markedEmb_succ]
+    exact Finset.mem_of_mem_erase (Finset.orderEmbOfFin_mem _ _ _)
+
+lemma markedEmb_injective (F : Finset (Fin N)) (s : Fin N) {m : ℕ}
+    (hm : (F.erase s).card = m) :
+    Function.Injective (markedEmb F s hm) := by
+  intro l l' h
+  by_cases hl0 : l = 0 <;> by_cases hl'0 : l' = 0
+  · rw [hl0, hl'0]
+  · exfalso
+    obtain ⟨j', rfl⟩ := Fin.eq_succ_of_ne_zero hl'0
+    rw [hl0, markedEmb_zero, markedEmb_succ] at h
+    exact (Finset.mem_erase.mp
+      (Finset.orderEmbOfFin_mem _ hm j')).1 h.symm
+  · exfalso
+    obtain ⟨j, rfl⟩ := Fin.eq_succ_of_ne_zero hl0
+    rw [hl'0, markedEmb_succ, markedEmb_zero] at h
+    exact (Finset.mem_erase.mp
+      (Finset.orderEmbOfFin_mem _ hm j)).1 h
+  · obtain ⟨j, rfl⟩ := Fin.eq_succ_of_ne_zero hl0
+    obtain ⟨j', rfl⟩ := Fin.eq_succ_of_ne_zero hl'0
+    rw [markedEmb_succ, markedEmb_succ] at h
+    rw [((F.erase s).orderEmbOfFin hm).injective h]
+
+/-- The marked enumeration covers the set exactly. -/
+lemma markedEmb_image (F : Finset (Fin N)) {s : Fin N} (hs : s ∈ F)
+    {m : ℕ} (hm : (F.erase s).card = m) :
+    Finset.univ.image (markedEmb F s hm) = F := by
+  refine Finset.eq_of_subset_of_card_le ?_ ?_
+  · intro v hv
+    obtain ⟨l, _, rfl⟩ := Finset.mem_image.mp hv
+    exact markedEmb_mem F hs hm l
+  · rw [Finset.card_image_of_injective _ (markedEmb_injective F s hm),
+      Finset.card_univ, Fintype.card_fin]
+    have := Finset.card_erase_of_mem hs
+    omega
+
+end MarkedEnum
+
 end BlockCount
 
 end YangMills.KP
