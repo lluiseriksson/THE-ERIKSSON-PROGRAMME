@@ -1621,6 +1621,94 @@ lemma card_enumerations {α : Type*} [DecidableEq α] [Fintype α]
           (Fintype.equivFinOfCardEq hcardS).symm
         rw [Fintype.card_equiv e₀, Fintype.card_fin]
 
+open Classical in
+/-- **The block-local sum identification (assembly step S3):** the sum over
+assignments of a single rooted block — root factor times relabeled subtree
+product — equals `∑_{c'} 𝟙[incomp c c']·‖z(c')‖·treeSumRawInner`.
+Reindex along the marked enumeration, then split at the root value. -/
+lemma block_sum_eq (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) {N m : ℕ} {V : Finset (Fin N)} {s : Fin N}
+    (hsV : s ∈ V) (hm : (V.erase s).card = m)
+    (q : Fin (m + 1) → Fin (m + 1)) :
+    ∑ h : {x // x ∈ V} → P.Polymer,
+      (((if P.incomp c (h ⟨markedEmb V s hm 0, markedEmb_mem V hsV hm 0⟩)
+          then (1 : ℝ) else 0)
+        * ‖P.activity (h ⟨markedEmb V s hm 0, markedEmb_mem V hsV hm 0⟩)‖)
+      * ∏ l ∈ Finset.univ.filter (fun l : Fin (m + 1) => l ≠ 0),
+          (if P.incomp (h ⟨markedEmb V s hm (q l), markedEmb_mem V hsV hm (q l)⟩)
+              (h ⟨markedEmb V s hm l, markedEmb_mem V hsV hm l⟩)
+            then (1 : ℝ) else 0)
+            * ‖P.activity (h ⟨markedEmb V s hm l, markedEmb_mem V hsV hm l⟩)‖)
+    = ∑ c' : P.Polymer, (if P.incomp c c' then (1 : ℝ) else 0)
+        * ‖P.activity c'‖ * treeSumRawInner P c' q := by
+  classical
+  -- reindex along the marked enumeration
+  have hreindex : ∀ (Y : Fin (m + 1) → P.Polymer) (l : Fin (m + 1)),
+      (Y ∘ (markedEquiv V hsV hm).symm)
+        ⟨markedEmb V s hm l, markedEmb_mem V hsV hm l⟩ = Y l := by
+    intro Y l
+    have : (⟨markedEmb V s hm l, markedEmb_mem V hsV hm l⟩ :
+        {x // x ∈ V}) = markedEquiv V hsV hm l :=
+      Subtype.ext (markedEquiv_apply_val V hsV hm l).symm
+    rw [Function.comp_apply, this, Equiv.symm_apply_apply]
+  rw [← Equiv.sum_comp (Equiv.arrowCongr (markedEquiv V hsV hm)
+    (Equiv.refl P.Polymer))]
+  have hcongr : ∀ Y : Fin (m + 1) → P.Polymer,
+      ((((if P.incomp c (((Equiv.arrowCongr (markedEquiv V hsV hm)
+          (Equiv.refl P.Polymer)) Y)
+            ⟨markedEmb V s hm 0, markedEmb_mem V hsV hm 0⟩)
+          then (1 : ℝ) else 0)
+        * ‖P.activity (((Equiv.arrowCongr (markedEquiv V hsV hm)
+            (Equiv.refl P.Polymer)) Y)
+            ⟨markedEmb V s hm 0, markedEmb_mem V hsV hm 0⟩)‖)
+      * ∏ l ∈ Finset.univ.filter (fun l : Fin (m + 1) => l ≠ 0),
+          (if P.incomp (((Equiv.arrowCongr (markedEquiv V hsV hm)
+              (Equiv.refl P.Polymer)) Y)
+              ⟨markedEmb V s hm (q l), markedEmb_mem V hsV hm (q l)⟩)
+              (((Equiv.arrowCongr (markedEquiv V hsV hm)
+                (Equiv.refl P.Polymer)) Y)
+                ⟨markedEmb V s hm l, markedEmb_mem V hsV hm l⟩)
+            then (1 : ℝ) else 0)
+            * ‖P.activity (((Equiv.arrowCongr (markedEquiv V hsV hm)
+                (Equiv.refl P.Polymer)) Y)
+                ⟨markedEmb V s hm l, markedEmb_mem V hsV hm l⟩)‖))
+      = (((if P.incomp c (Y 0) then (1 : ℝ) else 0) * ‖P.activity (Y 0)‖)
+        * ∏ l ∈ Finset.univ.filter (fun l : Fin (m + 1) => l ≠ 0),
+            (if P.incomp (Y (q l)) (Y l) then (1 : ℝ) else 0)
+              * ‖P.activity (Y l)‖) := by
+    intro Y
+    have happ : ∀ l : Fin (m + 1),
+        ((Equiv.arrowCongr (markedEquiv V hsV hm)
+          (Equiv.refl P.Polymer)) Y)
+          ⟨markedEmb V s hm l, markedEmb_mem V hsV hm l⟩ = Y l := by
+      intro l
+      exact hreindex Y l
+    rw [happ 0]
+    congr 1
+    refine Finset.prod_congr rfl fun l _ => ?_
+    rw [happ l, happ (q l)]
+  rw [Finset.sum_congr rfl (fun Y _ => hcongr Y)]
+  -- split at the root value
+  have hmaps : ∀ Y ∈ (Finset.univ : Finset (Fin (m + 1) → P.Polymer)),
+      Y 0 ∈ (Finset.univ : Finset P.Polymer) := fun Y _ => Finset.mem_univ _
+  rw [← Finset.sum_fiberwise_of_maps_to hmaps]
+  refine Finset.sum_congr rfl fun c' _ => ?_
+  have hterm : ∀ Y ∈ (Finset.univ :
+      Finset (Fin (m + 1) → P.Polymer)).filter (fun Y => Y 0 = c'),
+      (((if P.incomp c (Y 0) then (1 : ℝ) else 0) * ‖P.activity (Y 0)‖)
+        * ∏ l ∈ Finset.univ.filter (fun l : Fin (m + 1) => l ≠ 0),
+            (if P.incomp (Y (q l)) (Y l) then (1 : ℝ) else 0)
+              * ‖P.activity (Y l)‖)
+      = (((if P.incomp c c' then (1 : ℝ) else 0) * ‖P.activity c'‖)
+        * ∏ l ∈ Finset.univ.filter (fun l : Fin (m + 1) => l ≠ 0),
+            (if P.incomp (Y (q l)) (Y l) then (1 : ℝ) else 0)
+              * ‖P.activity (Y l)‖) := by
+    intro Y hY
+    rw [(Finset.mem_filter.mp hY).2]
+  rw [Finset.sum_congr rfl hterm, ← Finset.mul_sum]
+  unfold treeSumRawInner
+  ring
+
 end MasterAssembly
 
 end BlockCount
