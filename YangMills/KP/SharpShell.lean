@@ -2026,6 +2026,41 @@ lemma class_data_interior_agreement {D : ℕ}
     rw [hemb] at hl'
     omega
 
+open Classical in
+/-- **The totalized per-block factor** (§5f convention): defined for any
+`(V, s)` with no side conditions, so fiber-equalities transport its value
+by plain `congrArg`. -/
+noncomputable def blockS (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D : ℕ) {N : ℕ} (V : Finset (Fin N)) (s : Fin N) : ℝ :=
+  ∑ c' : P.Polymer, (if P.incomp c c' then (1 : ℝ) else 0)
+    * ‖P.activity c'‖ * treeSumRaw P c' D ((V.erase s).card)
+
+open Classical in
+lemma blockS_nonneg (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D : ℕ) {N : ℕ} (V : Finset (Fin N)) (s : Fin N) :
+    0 ≤ blockS P c D V s := by
+  unfold blockS
+  refine Finset.sum_nonneg fun c' _ => ?_
+  refine mul_nonneg (mul_nonneg ?_ (norm_nonneg _)) ?_
+  · split_ifs <;> norm_num
+  · -- treeSumRaw is a sum of nonneg inner sums
+    rw [treeSumRaw_eq_sum_inner]
+    exact Finset.sum_nonneg fun pl _ => treeSumRawInner_nonneg P c' pl.1
+
+open Classical in
+/-- **Per-block structure sums are `blockS`** — the recombination, in the
+totalized form the wrapper's right-hand side reads. -/
+lemma sum_structures_eq_blockS (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D : ℕ) {N : ℕ} (V : Finset (Fin N)) (s : Fin N) :
+    ∑ pl ∈ (Finset.univ : Finset ((Fin ((V.erase s).card + 1)
+        → Fin ((V.erase s).card + 1))
+        × (Fin ((V.erase s).card + 1) → Fin (D + 1)))).filter
+        (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0),
+      ∑ c' : P.Polymer, (if P.incomp c c' then (1 : ℝ) else 0)
+        * ‖P.activity c'‖ * treeSumRawInner P c' pl.1
+    = blockS P c D V s :=
+  sum_structures_blockSum P c D ((V.erase s).card)
+
 end MasterAssembly
 
 end BlockCount
