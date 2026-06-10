@@ -101,7 +101,34 @@ That closes volume-uniformity entirely.
 3. UV bound (§6.3 of the paper — content not yet in repo).
 4. T4 Peter–Weyl / character expansion / area law.
 
-## 5. Honesty invariant (unchanged)
+## 5. Campaign state at session close (2026-06-10, verified)
+
+**Landed (oracle-clean, pushed):** `KP/PinnedCluster.lean` —
+`pinnedClusterWeight P c n` (pin at coordinate 0), `pinnedClusterWeight_nonneg`,
+`clusterWeight_eq_sum_pinned` (exact fiberwise decomposition),
+`pinnedClusterWeight_le_clusterWeight`.
+
+**Inputs verified present in the repo** (no work needed):
+`IsCluster P X := (incompGraph P X).Connected` (KP/Cluster.lean),
+`ursell_eq_zero_of_not_isCluster` (so pinned sums are automatically
+supported on genuine clusters), `clusterSum_eq_sum_clusters`
+(KP/Expansion.lean), and the Penrose bound `abs_ursell_le_card_spanningTrees`.
+
+**First brick for the next session** (choose one):
+
+* *(easier, not sharp yet)* **Pinned walk bound**: rework
+  `tree_walk_bound` (WalkBound.lean) with the root fiber fixed:
+  `∑_{X : X r = x₀} ∏_{v≠r} I(X(p v))(X v)·w(X v) ≤ Aⁿ` — same
+  leaf-removal induction, root never summed.  Corollary: pinned per-size
+  bound `pinnedClusterWeight P c n ≤ ‖z c‖·(e·A)ⁿ`.  Warm-up that
+  factors the pin correctly but still carries the uniform `A`.
+* *(the real one)* **Shell decomposition** (§2 Route A): a cluster pinned
+  at `c` decomposes into its first shell (polymers incompatible with `c`)
+  and sub-clusters attached to shell elements.  Needs a components-of-
+  vertex-deleted-graph lemma; budget 5–8 cycles; this is where the
+  criterion's `e^{a}` weights get consumed shell by shell.
+
+## 6. Honesty invariant (unchanged)
 
 All of this is M3 lattice-side.  None of it reduces M4/M5/Clay
 (continuum limit, OS reconstruction, continuum gap — open mathematics).
