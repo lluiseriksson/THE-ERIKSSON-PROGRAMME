@@ -159,4 +159,54 @@ theorem integral_wilsonLoopSU_gibbs_eq_zero {n : ℕ} [NeZero n]
       (rootOfUnity_pow_ne_one_of_not_dvd n es.length hL)
   · exact h2
 
+/-- **The correlator selection rule:** the Gibbs expectation of a *product*
+of two Wilson loops vanishes unless their **total** length is divisible by
+`n` — the `Z_n` charge of a correlator is the sum of its loops' N-alities.
+(In particular `⟨W_L · W_{L'}⟩ = 0` whenever `n ∤ L + L'`, at any coupling.)
+This is the symmetry constraint on the two-loop correlators that
+mass-gap/clustering statements are about. -/
+theorem integral_wilsonLoopSU_mul_gibbs_eq_zero {n : ℕ} [NeZero n]
+    (pe : ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) → ℝ) (β : ℝ)
+    (es es' : List (ConcreteEdge d N))
+    (hpos : ∀ e ∈ es, e.sign = true) (hpos' : ∀ e ∈ es', e.sign = true)
+    (hL : ¬ n ∣ (es.length + es'.length)) :
+    ∫ A, wilsonLoopSU A es * wilsonLoopSU A es'
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) = 0 := by
+  have hpt : ∀ A, wilsonLoopSU (centerAct (scalarCenterElement n) A) es *
+        wilsonLoopSU (centerAct (scalarCenterElement n) A) es'
+      = rootOfUnity n ^ (es.length + es'.length) *
+        (wilsonLoopSU A es * wilsonLoopSU A es') := by
+    intro A
+    rw [wilsonLoopSU_centerAct A es hpos, wilsonLoopSU_centerAct A es' hpos',
+      pow_add]
+    ring
+  have hinv : ∫ A, wilsonLoopSU A es * wilsonLoopSU A es'
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)
+      = ∫ A, wilsonLoopSU (centerAct (scalarCenterElement n) A) es *
+          wilsonLoopSU (centerAct (scalarCenterElement n) A) es'
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) :=
+    (integral_centerAct_gibbs (sunHaarProb n) pe β (scalarCenterElement n)
+      (scalarCenterElement_commute n)
+      (fun A => wilsonLoopSU A es * wilsonLoopSU A es')).symm
+  have hmul : ∫ A, wilsonLoopSU (centerAct (scalarCenterElement n) A) es *
+        wilsonLoopSU (centerAct (scalarCenterElement n) A) es'
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)
+      = rootOfUnity n ^ (es.length + es'.length) *
+        ∫ A, wilsonLoopSU A es * wilsonLoopSU A es'
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) := by
+    rw [show (fun A => wilsonLoopSU (centerAct (scalarCenterElement n) A) es *
+        wilsonLoopSU (centerAct (scalarCenterElement n) A) es')
+        = fun A => rootOfUnity n ^ (es.length + es'.length) *
+          (wilsonLoopSU A es * wilsonLoopSU A es') from funext hpt]
+    exact MeasureTheory.integral_const_mul _ _
+  rw [hmul] at hinv
+  have hfactor : (1 - rootOfUnity n ^ (es.length + es'.length)) *
+      ∫ A, wilsonLoopSU A es * wilsonLoopSU A es'
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) = 0 := by
+    linear_combination hinv
+  rcases mul_eq_zero.mp hfactor with h1 | h2
+  · exact absurd (sub_eq_zero.mp h1).symm
+      (rootOfUnity_pow_ne_one_of_not_dvd n _ hL)
+  · exact h2
+
 end YangMills
