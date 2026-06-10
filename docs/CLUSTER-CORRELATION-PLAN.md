@@ -144,6 +144,50 @@ terms as `calc` HEADS need continuation lines indented deeper than the
 ("unexpected '('; expected ','").  Tactic-form (`refine le_trans …`)
 avoids the issue entirely — prefer it for these shapes.
 
+## 2c. B2 design DECISION (2026-06-10, same session): route through
+B0 — the Mayer–Ursell inversion
+
+**Finding (audited):** `Ξ = exp(clusterSum)` (E3) is OPEN in the repo —
+`Expansion.lean` has only the empty-system base case
+(`expansion_identity_isEmpty`) and the first-order check
+(`clusterSum_first_order`); `partition_singlePolymer_eq_exp` covers one
+polymer.  EVERY covariance route consumes this identity.  So Half B
+reorders: **B0 first**, then B1/B3/B4 with the covariance realized as a
+log-difference of partition functions (= difference of cluster sums
+= connecting-cluster sums, fed to the tail bound).
+
+**B0 (the fundamental theorem of cluster expansion, finite systems):**
+
+* **B0a — the combinatorial heart (the partition identity):** for every
+  tuple `X : Fin n → P.Polymer`,
+
+      ∑_{π : Finpartition (univ : Finset (Fin n))}
+          ∏_{B ∈ π.parts} ursell(X ∘ orderEmb_B)
+        = if (∀ i ≠ j, ¬ P.incomp (X i) (X j)) then 1 else 0
+
+  Proof shape: the RHS is `∑_{E ⊆ edges(G_X)} (−1)^{|E|}` by
+  `Finset.sum_powerset_neg_one_pow_card` (EXISTS —
+  `Mathlib/Data/Nat/Choose/Sum.lean:218`) + the edgeFinset-emptiness
+  characterization; group `E` by the **component partition** of the
+  spanning subgraph `(Fin n, E)` (reachability classes — the `reachSet`
+  machinery of `UrsellRecurrence.lean` is the precedent); the fiber over
+  `π` is the product over blocks of connected edge-sets, i.e.
+  `∏_B ursell` after relabeling each block by `Finset.orderIsoOfFin`
+  (transport precedented by `markedEmb`/`subtree_prod_transport` in
+  SharpShell).  `Fintype (Finpartition s)` EXISTS.
+* **B0b — the analytic resummation:** `exp(K) = ∑_k K^k/k!`; Cauchy-
+  multiply truncated cluster sums; regroup k-tuples-of-clusters into the
+  concatenated tuple with the multinomial as an EQUALITY (the O5b/per_k
+  machinery shape: piFinset boxes + factorial bookkeeping); apply B0a
+  per concatenated tuple; recognize `partition P univ`
+  (`∑_{S admissible} ∏ z` — note `Admissible` is about Finsets, the
+  tuple-side carries `n!/multiplicities` symmetry factors; multiplicity
+  ≥ 2 dies by hard-core `incomp_self` through B0a's indicator).
+  Absolute convergence everywhere from `kp_convergence_sharp` (PROVED).
+
+Budgets: B0a 4–7 cycles; B0b 6–12 cycles (the hardest analysis left on
+this chain).  Both volume-free, abstract-KP level.
+
 ## 3. Order of work and budgets
 
 1. A2 tail lemma (with A1 tilting as its engine): 2–3 cycles.
