@@ -734,6 +734,35 @@ noncomputable def IsBlockData.partitionEquiv {U : Finset (Fin n)}
     simp only [hcards]
     exact hρ.sum_card
 
+/-- **The cover-splitting equivalence:** functions on the cover are
+exactly tuples of functions on the blocks. -/
+noncomputable def IsBlockData.coverSplitEquiv {U : Finset (Fin n)}
+    {m : Fin k → ℕ} {ρ : Fin k → Finset (Fin n) × Fin n}
+    (hρ : IsBlockData U m ρ) (β : Type*) :
+    ({x // x ∈ U} → β) ≃ ∀ i : Fin k, ({x // x ∈ (ρ i).1} → β) :=
+  (Equiv.arrowCongr hρ.partitionEquiv.symm (Equiv.refl β)).trans
+    (Equiv.piCurry fun _ _ => β)
+
+/-- **Sums of block-products factor over the cover (S2 engine):** summing
+a product of per-block factors over all functions on the cover equals the
+product of the per-block sums. -/
+lemma IsBlockData.sum_coverSplit {U : Finset (Fin n)} {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData U m ρ)
+    {β : Type*} [Fintype β] [DecidableEq β]
+    (G : ∀ i : Fin k, ({x // x ∈ (ρ i).1} → β) → ℝ) :
+    ∑ g : {x // x ∈ U} → β, ∏ i, G i (hρ.coverSplitEquiv β g i)
+    = ∏ i, ∑ h : {x // x ∈ (ρ i).1} → β, G i h := by
+  classical
+  rw [← Equiv.sum_comp (hρ.coverSplitEquiv β).symm
+    (fun g => ∏ i, G i (hρ.coverSplitEquiv β g i))]
+  have hsimp : ∀ t : ∀ i : Fin k, ({x // x ∈ (ρ i).1} → β),
+      (∏ i, G i (hρ.coverSplitEquiv β ((hρ.coverSplitEquiv β).symm t) i))
+      = ∏ i, G i (t i) := by
+    intro t
+    rw [Equiv.apply_symm_apply]
+  rw [Finset.sum_congr rfl (fun t _ => hsimp t)]
+  rw [Finset.prod_univ_sum, Fintype.piFinset_univ]
+
 /-- Roots of distinct blocks are distinct. -/
 lemma IsBlockData.root_injective {U : Finset (Fin n)} {m : Fin k → ℕ}
     {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData U m ρ)
