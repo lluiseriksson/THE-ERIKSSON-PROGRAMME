@@ -861,4 +861,57 @@ lemma sum_pairwiseCompatible_eq [Fintype P.Polymer] {N : ℕ} :
   rw [hfull, ← Finset.sum_filter, Finset.sum_const, nsmul_eq_mul,
     card_enumerations hcard]
 
+open Classical in
+/-- **B0b-3 engine: generic symmetrization** — `sum_symmetrize_fn`
+(SharpShell) with arbitrary finite codomain and `ℂ`-values: a sum over
+objects equals the `1/k!`-weighted sum over (object, enumeration of its
+attached finite set) pairs. -/
+lemma sum_symmetrize_gen {nmax : ℕ} {α β : Type*} [Fintype α]
+    [DecidableEq α] [Fintype β] [DecidableEq β]
+    (A : Finset α) (G : α → ℂ)
+    (S : α → Finset β) (hSle : ∀ a ∈ A, (S a).card ≤ nmax) :
+    ∑ a ∈ A, G a
+    = ∑ k ∈ Finset.range (nmax + 1), ((k.factorial : ℂ))⁻¹ *
+        ∑ a ∈ A, ∑ _σ ∈ (Finset.univ : Finset (Fin k → β)).filter
+          (fun σ => Function.Injective σ ∧ Finset.univ.image σ = S a),
+          G a := by
+  classical
+  have hswap : ∀ k : ℕ, ((k.factorial : ℂ))⁻¹ *
+      ∑ a ∈ A, ∑ _σ ∈ (Finset.univ : Finset (Fin k → β)).filter
+        (fun σ => Function.Injective σ ∧ Finset.univ.image σ = S a), G a
+      = ∑ a ∈ A, ((k.factorial : ℂ))⁻¹ *
+          (((Finset.univ : Finset (Fin k → β)).filter
+            (fun σ => Function.Injective σ ∧ Finset.univ.image σ
+              = S a)).card : ℂ) * G a := by
+    intro k
+    rw [Finset.mul_sum]
+    refine Finset.sum_congr rfl fun a _ => ?_
+    rw [Finset.sum_const, nsmul_eq_mul]
+    ring
+  calc ∑ a ∈ A, G a
+      = ∑ a ∈ A, ∑ k ∈ Finset.range (nmax + 1),
+          ((k.factorial : ℂ))⁻¹ *
+          (((Finset.univ : Finset (Fin k → β)).filter
+            (fun σ => Function.Injective σ ∧ Finset.univ.image σ
+              = S a)).card : ℂ) * G a := by
+        refine Finset.sum_congr rfl fun a ha => ?_
+        have hk0 : (S a).card ∈ Finset.range (nmax + 1) := by
+          rw [Finset.mem_range]
+          exact Nat.lt_succ_of_le (hSle a ha)
+        rw [Finset.sum_eq_single_of_mem (S a).card hk0]
+        · rw [card_enumerations rfl]
+          have hne : (((S a).card.factorial : ℂ)) ≠ 0 := by
+            exact_mod_cast Nat.cast_ne_zero.mpr
+              (Nat.factorial_ne_zero _)
+          field_simp
+        · intro k _ hk
+          rw [card_enumerations_ne (fun h => hk h.symm)]
+          simp
+    _ = ∑ k ∈ Finset.range (nmax + 1), ((k.factorial : ℂ))⁻¹ *
+        ∑ a ∈ A, ∑ _σ ∈ (Finset.univ : Finset (Fin k → β)).filter
+          (fun σ => Function.Injective σ ∧ Finset.univ.image σ = S a),
+          G a := by
+        rw [Finset.sum_comm]
+        exact Finset.sum_congr rfl fun k _ => (hswap k).symm
+
 end YangMills.KP
