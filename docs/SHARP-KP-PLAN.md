@@ -232,6 +232,34 @@ ways, then a root in each block, `∏(m_i+1)` ways), the roots are distinct
 the per-fiber term equality (relabeling transport of the product);
 the resummation over `n ≤ N`.
 
+*C3 multinomial — **DESIGN CORRECTION (2026-06-10, late)**, supersedes the
+sorted-roots count above.*  The bound `#fiber(r) ≤ n!/(k!·∏ m_i!)` for a
+**fixed** component tuple `r` (hence fixed size-vector `m`) is **FALSE in
+general**: the `k!` orderings of an unordered block family have *permuted*
+size-vectors, so the `1/k!` saving cannot be claimed per fixed `m` —
+do not build that lemma.  Correct architecture:
+
+1. **Do not sort.**  Decompose pairs `(LHS datum, σ)` where `σ` orders the
+   shell: each LHS datum appears exactly `k!` times, giving
+   `∑_{LHS, shell size k} term = (1/k!)·∑_{(datum, σ)} term` — the `1/k!`
+   enters here, exactly (shell roots are distinct, so all `k!` orderings
+   are distinct).
+2. `(datum, σ) ↦ r` (unsorted component tuple).  Fiber bound per `r`, now
+   with NO `k!`:  `#fiber(r) ≤ n!/∏ m_i!`  (†′) — ordered rooted-block
+   tuples with sizes `m_i + 1`.
+3. **(†′) multiplicatively via a permutation injection** (no division, no
+   `Nat` subtleties): construct an injection
+   `D′(m) × (Π i, Equiv.Perm (Fin (m_i))) ↪ (Fin n ≃ Fin n)` —
+   concatenate the blocks in tuple order, each block listed root-first
+   and then its remaining elements through `Finset.orderEmbOfFin`
+   composed with the local permutation; `finSigmaFinEquiv`-style index
+   arithmetic splits `Fin n` by the size vector.  Injectivity: with `m`
+   fixed, the positions determine the blocks and roots, and
+   `orderEmbOfFin` is injective, so local permutations are recovered.
+   Then `card D′(m) · ∏ m_i! ≤ n!` since `card (Fin n ≃ Fin n) = n!`.
+4. Resummation unchanged: `(1/k!)·∑_r (n!/∏ m_i!)·term(r)` recombines to
+   `∑_k (1/k!)(∑ w·B_D)^k ≤ exp(...)` by `Real.sum_le_exp_of_nonneg`.
+
 *Dependency check (2026-06-10, verified against the pinned Mathlib):*
 `Real.sum_le_exp_of_nonneg : 0 ≤ x → ∑ i ∈ range n, x^i/i! ≤ exp x`
 **exists** (`Mathlib/Analysis/Complex/Exponential.lean:244`) — the
