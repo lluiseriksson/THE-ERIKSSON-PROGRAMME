@@ -983,6 +983,14 @@ def shellFiber (p : Fin (n + 1) → Fin (n + 1))
   exact (Finset.univ : Finset (Fin (n + 1))).filter
     (fun v => v ≠ 0 ∧ shellRoot p lev v = s)
 
+open Classical in
+lemma mem_shellFiber {v s : Fin (n + 1)} :
+    v ∈ shellFiber p lev s ↔ v ≠ 0 ∧ shellRoot p lev v = s := by
+  classical
+  unfold shellFiber
+  rw [Finset.mem_filter]
+  simp
+
 lemma self_mem_shellFiber (hs : s ≠ 0) (hs1 : (lev s : ℕ) = 1) :
     s ∈ shellFiber p lev s := by
   classical
@@ -1144,6 +1152,65 @@ lemma subtree_prod_transport {M : Type*} [CommMonoid M]
   · intro j _
     rw [markedEquiv_apply_val, markedEmb_succ]
 
+/-- **Location:** every non-root vertex lies in the fiber of its shell
+root. -/
+lemma mem_shellFiber_shellRoot {v : Fin (n + 1)} (hv : v ≠ 0) :
+    v ∈ shellFiber p lev (shellRoot p lev v) :=
+  mem_shellFiber.mpr ⟨hv, rfl⟩
+
+/-- **Recovery of `p` at shell roots:** within a fiber, the parent of the
+root is `0`. -/
+lemma parent_recovery_root (h' : IsAdmissible p lev) (hs' : s ≠ 0)
+    (hs1' : (lev s : ℕ) = 1) :
+    p s = 0 := (h'.parent_eq_zero_iff hs').mpr hs1'
+
+/-- **Recovery of `p` away from roots:** the original parent map is read
+back from the subtree structure through the marked enumeration.  This is
+the reconstruction equation making the shell decomposition injective. -/
+lemma parent_recovery {v : Fin (n + 1)} (hv : v ∈ shellFiber p lev s)
+    (hvs : v ≠ s) :
+    p v = markedEmb (shellFiber p lev s) s hm
+      (subtreeParent h hs hs1 hm
+        ((markedEquiv (shellFiber p lev s)
+          (self_mem_shellFiber hs hs1) hm).symm ⟨v, hv⟩)) := by
+  set e := markedEquiv (shellFiber p lev s)
+    (self_mem_shellFiber hs hs1) hm with hedef
+  set l : Fin (m + 1) := e.symm ⟨v, hv⟩ with hldef
+  have hl0 : l ≠ 0 := by
+    intro hEq
+    have : e l = e 0 := by rw [hEq]
+    rw [hldef, Equiv.apply_symm_apply] at this
+    have hval := congrArg Subtype.val this
+    rw [markedEquiv_zero_val] at hval
+    exact hvs hval
+  have hkey := subtreeParent_apply_val h hs hs1 hm hl0
+  have hev : (e l).1 = v := by
+    rw [hldef, Equiv.apply_symm_apply]
+  rw [hev] at hkey
+  rw [← hkey, markedEquiv_apply_val]
+
+/-- **Recovery of `lev`:** original levels are the subtree levels plus
+one. -/
+lemma lev_recovery (h' : IsAdmissible p lev) {v : Fin (n + 1)}
+    (hv : v ∈ shellFiber p lev s) :
+    (lev v : ℕ)
+    = ((subtreeLev hs hs1 hm
+        ((markedEquiv (shellFiber p lev s)
+          (self_mem_shellFiber hs hs1) hm).symm ⟨v, hv⟩)) : ℕ) + 1 := by
+  have hv0 : v ≠ 0 := (mem_shellFiber.mp hv).1
+  have hge := h'.one_le_lev hv0
+  have hval : ((subtreeLev hs hs1 hm
+      ((markedEquiv (shellFiber p lev s)
+        (self_mem_shellFiber hs hs1) hm).symm ⟨v, hv⟩)) : ℕ)
+      = (lev ((markedEquiv (shellFiber p lev s)
+          (self_mem_shellFiber hs hs1) hm
+          ((markedEquiv (shellFiber p lev s)
+            (self_mem_shellFiber hs hs1) hm).symm ⟨v, hv⟩)).1) : ℕ) - 1 :=
+    rfl
+  rw [hval, Equiv.apply_symm_apply]
+  show (lev v : ℕ) = ((lev v : ℕ) - 1) + 1
+  omega
+
 end SubtreeTransport
 
 section MasterAssembly
@@ -1191,14 +1258,6 @@ lemma master_partition (h : IsAdmissible p lev) {M : Type*} [CommMonoid M]
             (fun v => v ≠ 0 ∧ shellRoot p lev v = s)
             = shellFiber p lev s := rfl
         rw [hFib, ← Finset.mul_prod_erase _ _ hsF, hps]
-
-open Classical in
-lemma mem_shellFiber {v s : Fin (n + 1)} :
-    v ∈ shellFiber p lev s ↔ v ≠ 0 ∧ shellRoot p lev v = s := by
-  classical
-  unfold shellFiber
-  rw [Finset.mem_filter]
-  simp
 
 open Classical in
 /-- **The shell forms block data over the non-root vertices:** for any
