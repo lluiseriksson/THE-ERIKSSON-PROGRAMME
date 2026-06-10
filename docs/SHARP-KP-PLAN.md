@@ -519,8 +519,26 @@ preservation) · `blockS` + `sum_structures_eq_blockS` (totalized blocks) ·
 `card_enumerations(_ne)` · `sum_symmetrize_fn` (O1) ·
 `sum_filter_swap` (O2).
 
-**The one remaining theorem — `per_k_bound` (O1→O3 threading) — attempt
-log:** the statement and proof are correct in structure (one full draft
+**`per_k_bound` attempt 2 (same session) — MATURED DIAGNOSIS:** the
+inline swap WORKED (route (a) of the prescription below — the
+`have hswap`-form elaborated cleanly), and the support/`by_cases`
+machinery is sound; the surviving wall is **kernel elaboration cost of
+the `F`-sum itself**: summing over all `F : Fin k → Finset (Fin (n+1))`
+(a doubly-exponential index with heavy `Fintype` instances) times the
+`if-∃` discriminator grinds whnf past 1.6M heartbeats at the theorem
+head.  **REDESIGN for the implementing session:** do not introduce the
+`(σ, F)`-product index at all.  Key the classes by
+`ρ : Fin k → Finset (Fin (n+1)) × Fin (n+1)` directly (σ := roots,
+F := blocks read off `ρ`), restrict the ρ-sum FROM THE START to the
+self-sized blockdata filter (`IsBlockData (univ.erase 0) (sizes ρ) ρ`)
+— the index the O4 pricing wants anyway — and group structures by the
+map `pl ↦ (fun i => (shellFiber pl (σᵢ pl), σᵢ pl))`-along-enumerations.
+This collapses O2+O3+O4's indices into one already-priced space and
+removes both the `∃`-discriminator and the giant `F`-space.  The class
+filter and wrapper application then read exactly as in attempt 2's
+working parts.
+
+**The original `per_k_bound` attempt 1 log:** the statement and proof are correct in structure (one full draft
 reached only mechanical issues), but the O2 application hits a **whnf
 heartbeat grind** (>1.6M) at the `le_of_eq (sum_filter_swap …)` defeq
 check — the kernel grinds through `Fintype` instances on
