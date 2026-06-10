@@ -72,9 +72,15 @@ M3: unconditional lattice mass gap at strong coupling
     Mayer/high-temperature expansion), partitionFunction_eq_sum_plaquetteSets
     (Z as a polymer-gas sum, termwise integration under explicit
     integrability), abs_plaquetteWeight_le (|f_p| ≤ e^{|β|B} − 1 — the KP
-    smallness seed at small β).  Step 2 (group plaquette sets into connected
-    polymers on the plaquette-adjacency graph; factorize activities over
-    components via partition_union; match KPCriterion): next campaign.
+    smallness seed at small β).  **Step 2 core + locality PROVED
+    2026-06-10**: integral_mul_of_disjoint_deps (PolymerFactorization.lean:
+    two-block independence ∫F·G = ∫F·∫G on product probability measures for
+    observables reading disjoint coordinate sets — no integrability
+    hypotheses) and plaquetteSupport / prod_plaquetteWeight_congr
+    (PolymerExpansion.lean: Mayer weights read only their support).
+    Remaining for step 2: transport through gaugeConfigMEquiv to
+    support-disjoint plaquette sets; connected-component grouping on the
+    plaquette-adjacency graph; match KPCriterion ⇒ lattice KP convergence.
  └─ T3 / LG6 — centre selection rule               **CLOSED 2026-06-10**
     integral_centerAct (gauge measure centre-invariant, left-invariant μ);
     wilsonAction_centerAct (exact centre symmetry of the Wilson action —
