@@ -2144,6 +2144,167 @@ theorem class_value_eq {n D : ℕ}
     (Finset.prod_congr rfl fun i _ =>
       class_value_block h (hs i) (hs1 i) (hF i) (hsF i) (hstab i) P c)
 
+open Classical in
+/-- **THE CLASS-SUM WRAPPER (the final injection):** the inner sums of a
+class of structures — fixed shell enumeration `σ`, fixed fibers `F` —
+are bounded by the product of the totalized block factors. -/
+theorem class_sum_le {n D : ℕ} {k : ℕ} {σ : Fin k → Fin (n + 1)}
+    (hσinj : Function.Injective σ)
+    (F : Fin k → Finset (Fin (n + 1)))
+    (P : PolymerSystem) [Fintype P.Polymer] (c : P.Polymer) :
+    ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+        × (Fin (n + 1) → Fin (D + 2)))).filter
+        (fun pl => (IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0)
+          ∧ (Finset.univ.image σ
+              = (Finset.univ : Finset (Fin (n + 1))).filter
+                  (fun s => s ≠ 0 ∧ pl.1 s = 0))
+          ∧ ∀ i, shellFiber pl.1 pl.2 (σ i) = F i),
+      treeSumRawInner P c pl.1
+    ≤ ∏ i : Fin k, blockS P c D (F i) (σ i) := by
+  classical
+  set T : ∀ i : Fin k, Finset
+      ((Fin (((F i).erase (σ i)).card + 1)
+        → Fin (((F i).erase (σ i)).card + 1))
+      × (Fin (((F i).erase (σ i)).card + 1) → Fin (D + 1))) :=
+    fun i => (Finset.univ).filter
+      (fun q => IsAdmissible q.1 q.2 ∧ q.1 0 = 0) with hTdef
+  set Cond : ((Fin (n + 1) → Fin (n + 1))
+      × (Fin (n + 1) → Fin (D + 2))) → Prop :=
+    fun pl => (IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0)
+      ∧ (Finset.univ.image σ
+          = (Finset.univ : Finset (Fin (n + 1))).filter
+              (fun s => s ≠ 0 ∧ pl.1 s = 0))
+      ∧ ∀ i, shellFiber pl.1 pl.2 (σ i) = F i with hConddef
+  have hshell : ∀ pl, Cond pl → ∀ i : Fin k,
+      σ i ≠ 0 ∧ pl.1 (σ i) = 0 ∧ ((pl.2 (σ i) : ℕ)) = 1 := by
+    intro pl hc i
+    have hmem : σ i ∈ (Finset.univ : Finset (Fin (n + 1))).filter
+        (fun s => s ≠ 0 ∧ pl.1 s = 0) := by
+      rw [← hc.2.1]
+      exact Finset.mem_image_of_mem _ (Finset.mem_univ i)
+    have h2 := (Finset.mem_filter.mp hmem).2
+    exact ⟨h2.1, h2.2, (hc.1.1.parent_eq_zero_iff h2.1).mp h2.2⟩
+  have hpack : ∀ pl, Cond pl → ∀ i : Fin k, (σ i ∈ F i)
+      ∧ ∀ l : Fin (((F i).erase (σ i)).card + 1), l ≠ 0 →
+          pl.1 (markedEmb (F i) (σ i) rfl l) ∈ F i := by
+    intro pl hc i
+    obtain ⟨hs, -, hs1⟩ := hshell pl hc i
+    constructor
+    · rw [← hc.2.2 i]
+      exact self_mem_shellFiber hs hs1
+    · have hstab := shellFiber_stab hc.1.1 hs hs1
+      rw [hc.2.2 i] at hstab
+      exact hstab
+  have hF0 : ∀ pl, Cond pl → ∀ i : Fin k, (0 : Fin (n + 1)) ∉ F i := by
+    intro pl hc i h0
+    rw [← hc.2.2 i, mem_shellFiber] at h0
+    exact h0.1 rfl
+  -- the total injection map
+  set Φ : ((Fin (n + 1) → Fin (n + 1)) × (Fin (n + 1) → Fin (D + 2)))
+      → ∀ i : Fin k,
+        ((Fin (((F i).erase (σ i)).card + 1)
+          → Fin (((F i).erase (σ i)).card + 1))
+        × (Fin (((F i).erase (σ i)).card + 1) → Fin (D + 1))) :=
+    fun pl => if hc : Cond pl
+      then fun i => (classParent (F i) (σ i) (hpack pl hc i).1 rfl
+          pl.1 (hpack pl hc i).2,
+        classLev (F i) (σ i) rfl pl.2)
+      else fun i => (fun _ => 0, fun _ => 0) with hΦdef
+  -- the value of each class member factors through Φ
+  set G : (∀ i : Fin k,
+      ((Fin (((F i).erase (σ i)).card + 1)
+        → Fin (((F i).erase (σ i)).card + 1))
+      × (Fin (((F i).erase (σ i)).card + 1) → Fin (D + 1)))) → ℝ :=
+    fun t => ∏ i : Fin k, ∑ c' : P.Polymer,
+      (if P.incomp c c' then (1 : ℝ) else 0) * ‖P.activity c'‖
+        * treeSumRawInner P c' ((t i).1) with hGdef
+  have hval : ∀ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+      × (Fin (n + 1) → Fin (D + 2)))).filter Cond,
+      treeSumRawInner P c pl.1 = G (Φ pl) := by
+    intro pl hpl
+    have hc : Cond pl := (Finset.mem_filter.mp hpl).2
+    have hkey := class_value_eq hc.1.1 hσinj hc.2.1 P c
+      (fun i => (hshell pl hc i).1) (fun i => (hshell pl hc i).2.2)
+      hc.2.2 (fun i => (hpack pl hc i).1) (fun i => (hpack pl hc i).2)
+    rw [hkey, hGdef]
+    refine Finset.prod_congr rfl fun i _ => ?_
+    rw [hΦdef]
+    dsimp only
+    rw [dif_pos hc]
+  have hGnn : ∀ t, 0 ≤ G t := by
+    intro t
+    rw [hGdef]
+    refine Finset.prod_nonneg fun i _ => Finset.sum_nonneg fun c' _ => ?_
+    refine mul_nonneg (mul_nonneg ?_ (norm_nonneg _))
+      (treeSumRawInner_nonneg P c' _)
+    split_ifs <;> norm_num
+  -- injectivity on the class
+  have hinj : ∀ pl₁ ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+      × (Fin (n + 1) → Fin (D + 2)))).filter Cond,
+      ∀ pl₂ ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+        × (Fin (n + 1) → Fin (D + 2)))).filter Cond,
+      Φ pl₁ = Φ pl₂ → pl₁ = pl₂ := by
+    intro pl₁ h₁ pl₂ h₂ heq
+    have hc₁ : Cond pl₁ := (Finset.mem_filter.mp h₁).2
+    have hc₂ : Cond pl₂ := (Finset.mem_filter.mp h₂).2
+    rw [hΦdef] at heq
+    simp only [dif_pos hc₁, dif_pos hc₂] at heq
+    have hinterior : ∀ i : Fin k, ∀ v ∈ F i, v ≠ σ i →
+        pl₁.1 v = pl₂.1 v ∧ ((pl₁.2 v : ℕ)) = ((pl₂.2 v : ℕ)) := by
+      intro i
+      have hpair := congrFun heq i
+      exact class_data_interior_agreement (hpack pl₁ hc₁ i).1 rfl
+        hc₁.1.1 hc₂.1.1 (hF0 pl₁ hc₁ i)
+        (congrArg Prod.fst hpair) (congrArg Prod.snd hpair)
+    have hdet := structure_determined hc₁.1.1 hc₂.1.1
+      hc₁.1.2 hc₂.1.2 hc₁.2.1 hc₂.2.1
+      (fun i v hv hvs => by
+        rw [hc₁.2.2 i] at hv
+        exact hinterior i v hv hvs)
+    exact Prod.ext hdet.1 hdet.2
+  -- maps into the canonical product space
+  have hmaps : ∀ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+      × (Fin (n + 1) → Fin (D + 2)))).filter Cond,
+      Φ pl ∈ Fintype.piFinset T := by
+    intro pl hpl
+    have hc : Cond pl := (Finset.mem_filter.mp hpl).2
+    rw [Fintype.mem_piFinset]
+    intro i
+    rw [hΦdef]
+    dsimp only
+    rw [dif_pos hc, hTdef, Finset.mem_filter]
+    refine ⟨Finset.mem_univ _, ?_⟩
+    exact class_carrier_admissible hc.1.1 (hshell pl hc i).1
+      (hshell pl hc i).2.2 (hc.2.2 i) (hpack pl hc i).1
+      (hpack pl hc i).2
+  -- assemble
+  calc ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+        × (Fin (n + 1) → Fin (D + 2)))).filter Cond,
+        treeSumRawInner P c pl.1
+      = ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+          × (Fin (n + 1) → Fin (D + 2)))).filter Cond, G (Φ pl) :=
+        Finset.sum_congr rfl hval
+    _ = ∑ t ∈ ((Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+          × (Fin (n + 1) → Fin (D + 2)))).filter Cond).image Φ, G t :=
+        (Finset.sum_image hinj).symm
+    _ ≤ ∑ t ∈ Fintype.piFinset T, G t := by
+        refine Finset.sum_le_sum_of_subset_of_nonneg ?_
+          (fun t _ _ => hGnn t)
+        intro t ht
+        obtain ⟨pl, hpl, rfl⟩ := Finset.mem_image.mp ht
+        exact hmaps pl hpl
+    _ = ∏ i : Fin k, ∑ q ∈ T i, ∑ c' : P.Polymer,
+          (if P.incomp c c' then (1 : ℝ) else 0) * ‖P.activity c'‖
+            * treeSumRawInner P c' q.1 := by
+        rw [hGdef]
+        exact (Finset.prod_univ_sum T (fun i q =>
+          ∑ c' : P.Polymer, (if P.incomp c c' then (1 : ℝ) else 0)
+            * ‖P.activity c'‖ * treeSumRawInner P c' q.1)).symm
+    _ = ∏ i : Fin k, blockS P c D (F i) (σ i) := by
+        refine Finset.prod_congr rfl fun i _ => ?_
+        rw [hTdef]
+        exact sum_structures_eq_blockS P c D (F i) (σ i)
+
 end MasterAssembly
 
 end BlockCount
