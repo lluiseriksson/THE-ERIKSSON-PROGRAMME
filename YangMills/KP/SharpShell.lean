@@ -57,4 +57,62 @@ theorem exists_adj_reachable_in_deleted_of_connected {α : Type*}
   obtain ⟨p⟩ := hc.preconnected u v₀
   exact exists_adj_reachable_in_deleted p rfl hu
 
+/-- Graph distances on a finite connected graph are bounded by the vertex
+count: geodesics are realized by paths, and paths have fewer edges than
+vertices.  (Bounds BFS levels into `Fin (n+1)` for the `treeSumRaw`
+indexing.) -/
+theorem connected_dist_lt_card {V : Type*} [Fintype V] {G : SimpleGraph V}
+    (hc : G.Connected) (u v : V) :
+    G.dist u v < Fintype.card V := by
+  classical
+  obtain ⟨w, hw⟩ := (hc.preconnected u v).exists_walk_length_eq_dist
+  have h1 : G.dist u v ≤ w.bypass.length :=
+    SimpleGraph.dist_le _
+  have h2 : w.bypass.length < Fintype.card V :=
+    (SimpleGraph.Walk.bypass_isPath w).length_lt
+  omega
+
+section TreeSum
+
+/-- **Admissibility** of a rooted parent/level structure on `Fin (n+1)`:
+the root `0` sits at level `0`, and every non-root vertex's parent lies
+strictly below it.  Each admissible pair encodes (at most one) rooted
+forest reaching down toward the root; spanning trees of incompatibility
+graphs land here via their BFS parent/level data. -/
+def IsAdmissible {n D : ℕ} (p : Fin (n + 1) → Fin (n + 1))
+    (lev : Fin (n + 1) → Fin (D + 1)) : Prop :=
+  lev 0 = 0 ∧ ∀ v, v ≠ 0 → ((lev (p v) : ℕ) < (lev v : ℕ))
+
+instance {n D : ℕ} (p : Fin (n + 1) → Fin (n + 1))
+    (lev : Fin (n + 1) → Fin (D + 1)) : Decidable (IsAdmissible p lev) := by
+  unfold IsAdmissible
+  infer_instance
+
+open Classical in
+/-- **The raw depth-`D` rooted tree-sum** pinned at `c` (no factorial
+normalization — fixed at assembly): the sum over admissible parent/level
+structures and pinned polymer assignments of the tree-compatibility
+indicator times the non-root activities.  C2 dominates pinned cluster
+weights by `treeSumRaw`; C3 runs the shell recursion on it. -/
+noncomputable def treeSumRaw (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D n : ℕ) : ℝ :=
+  ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+      × (Fin (n + 1) → Fin (D + 1)))).filter
+      (fun pl => IsAdmissible pl.1 pl.2),
+    ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → P.Polymer)).filter
+      (fun X => X 0 = c),
+      ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+        (if P.incomp (X (pl.1 v)) (X v) then (1 : ℝ) else 0)
+          * ‖P.activity (X v)‖
+
+open Classical in
+lemma treeSumRaw_nonneg (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D n : ℕ) : 0 ≤ treeSumRaw P c D n := by
+  unfold treeSumRaw
+  refine Finset.sum_nonneg fun pl _ => Finset.sum_nonneg fun X _ =>
+    Finset.prod_nonneg fun v _ => mul_nonneg ?_ (norm_nonneg _)
+  split_ifs <;> norm_num
+
+end TreeSum
+
 end YangMills.KP
