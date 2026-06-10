@@ -2305,6 +2305,68 @@ theorem class_sum_le {n D : ℕ} {k : ℕ} {σ : Fin k → Fin (n + 1)}
         rw [hTdef]
         exact sum_structures_eq_blockS P c D (F i) (σ i)
 
+open Classical in
+/-- No enumerations at the wrong cardinality. -/
+lemma card_enumerations_ne {α : Type*} [DecidableEq α] [Fintype α]
+    {S : Finset α} {k : ℕ} (hk : S.card ≠ k) :
+    ((Finset.univ : Finset (Fin k → α)).filter
+      (fun σ => Function.Injective σ ∧ Finset.univ.image σ = S)) = ∅ := by
+  rw [Finset.filter_eq_empty_iff]
+  intro σ _ hσ
+  apply hk
+  rw [← hσ.2, Finset.card_image_of_injective _ hσ.1,
+    Finset.card_univ, Fintype.card_fin]
+
+open Classical in
+/-- **Function-form symmetrization (outer step O1):** a sum over objects
+equals the `1/k!`-weighted sum over (object, shell enumeration) pairs,
+the enumerations ranging over injective functions with prescribed image —
+only the matching cardinality contributes, with exactly `k!` terms. -/
+lemma sum_symmetrize_fn {N' nmax : ℕ} {α : Type*} [Fintype α]
+    [DecidableEq α] (A : Finset α) (G : α → ℝ)
+    (S : α → Finset (Fin N')) (hSle : ∀ a ∈ A, (S a).card ≤ nmax) :
+    ∑ a ∈ A, G a
+    = ∑ k ∈ Finset.range (nmax + 1), ((k.factorial : ℝ))⁻¹ *
+        ∑ a ∈ A, ∑ _σ ∈ (Finset.univ : Finset (Fin k → Fin N')).filter
+          (fun σ => Function.Injective σ ∧ Finset.univ.image σ = S a),
+          G a := by
+  classical
+  have hswap : ∀ k : ℕ, ((k.factorial : ℝ))⁻¹ *
+      ∑ a ∈ A, ∑ _σ ∈ (Finset.univ : Finset (Fin k → Fin N')).filter
+        (fun σ => Function.Injective σ ∧ Finset.univ.image σ = S a), G a
+      = ∑ a ∈ A, ((k.factorial : ℝ))⁻¹ *
+          (((Finset.univ : Finset (Fin k → Fin N')).filter
+            (fun σ => Function.Injective σ ∧ Finset.univ.image σ = S a)).card
+            : ℝ) * G a := by
+    intro k
+    rw [Finset.mul_sum]
+    refine Finset.sum_congr rfl fun a _ => ?_
+    rw [Finset.sum_const, nsmul_eq_mul]
+    ring
+  calc ∑ a ∈ A, G a
+      = ∑ a ∈ A, ∑ k ∈ Finset.range (nmax + 1),
+          ((k.factorial : ℝ))⁻¹ *
+          (((Finset.univ : Finset (Fin k → Fin N')).filter
+            (fun σ => Function.Injective σ ∧ Finset.univ.image σ = S a)).card
+            : ℝ) * G a := by
+        refine Finset.sum_congr rfl fun a ha => ?_
+        have hk0 : (S a).card ∈ Finset.range (nmax + 1) := by
+          rw [Finset.mem_range]
+          exact Nat.lt_succ_of_le (hSle a ha)
+        rw [Finset.sum_eq_single_of_mem (S a).card hk0]
+        · rw [card_enumerations rfl]
+          have hne : (((S a).card.factorial : ℝ)) ≠ 0 := by positivity
+          field_simp
+        · intro k _ hk
+          rw [card_enumerations_ne (fun h => hk h.symm)]
+          simp
+    _ = ∑ k ∈ Finset.range (nmax + 1), ((k.factorial : ℝ))⁻¹ *
+        ∑ a ∈ A, ∑ _σ ∈ (Finset.univ : Finset (Fin k → Fin N')).filter
+          (fun σ => Function.Injective σ ∧ Finset.univ.image σ = S a),
+          G a := by
+        rw [Finset.sum_comm]
+        exact Finset.sum_congr rfl fun k _ => (hswap k).symm
+
 end MasterAssembly
 
 end BlockCount
