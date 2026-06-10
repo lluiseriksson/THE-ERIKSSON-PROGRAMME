@@ -210,4 +210,94 @@ theorem card_plaquettesTouching_le (p : ConcretePlaquette d N) :
 
 end DegreeBound
 
+section WalkCounting
+
+/-- **The walk-counting engine:** in a relation of out-degree at most `Δ`
+on a finite type, there are at most `Δ^L` walks of length `L` from a fixed
+start (walks as functions `Fin (L+1) → V`).  Proof: chop off the last step;
+each fiber of the restriction map injects into the out-neighbourhood of the
+walk's penultimate vertex.  Combined with the degree bound `≤ 16d` and the
+(forthcoming) spanning-walk encoding of connected sets, this yields the
+volume-uniform lattice-animal entropy bound. -/
+theorem card_relWalks_le {V : Type*} [Fintype V] [DecidableEq V]
+    (R : V → V → Prop) [DecidableRel R] (Δ : ℕ)
+    (hdeg : ∀ v, ((Finset.univ : Finset V).filter (fun w => R v w)).card ≤ Δ)
+    (v₀ : V) (L : ℕ) :
+    ((Finset.univ : Finset (Fin (L + 1) → V)).filter
+      (fun w => w 0 = v₀ ∧ ∀ k : Fin L, R (w k.castSucc) (w k.succ))).card
+      ≤ Δ ^ L := by
+  induction L with
+  | zero =>
+      rw [pow_zero]
+      refine Finset.card_le_one.mpr ?_
+      intro w hw w' hw'
+      rw [Finset.mem_filter] at hw hw'
+      funext k
+      have hk : k = 0 := by omega
+      rw [hk, hw.2.1, hw'.2.1]
+  | succ n ih =>
+      set s := ((Finset.univ : Finset (Fin (n + 2) → V)).filter
+        (fun w => w 0 = v₀ ∧
+          ∀ k : Fin (n + 1), R (w k.castSucc) (w k.succ))) with hs
+      set f : (Fin (n + 2) → V) → (Fin (n + 1) → V) :=
+        (fun w => w ∘ Fin.castSucc) with hf
+      -- the image of the restriction map consists of walks of length n
+      have himage : s.image f ⊆
+          ((Finset.univ : Finset (Fin (n + 1) → V)).filter
+            (fun w => w 0 = v₀ ∧
+              ∀ k : Fin n, R (w k.castSucc) (w k.succ))) := by
+        intro y hy
+        obtain ⟨w, hw, rfl⟩ := Finset.mem_image.mp hy
+        rw [hs, Finset.mem_filter] at hw
+        rw [Finset.mem_filter]
+        refine ⟨Finset.mem_univ _, ?_, ?_⟩
+        · show w (Fin.castSucc 0) = v₀
+          rw [show (Fin.castSucc 0 : Fin (n + 2)) = 0 from rfl]
+          exact hw.2.1
+        · intro k
+          have := hw.2.2 k.castSucc
+          show R (w k.castSucc.castSucc) (w k.succ.castSucc)
+          rwa [← Fin.succ_castSucc]
+      -- each fiber injects into an out-neighbourhood
+      have hfiber : ∀ y ∈ s.image f,
+          (s.filter (fun w => f w = y)).card ≤ Δ := by
+        intro y _
+        have hmaps : ∀ w ∈ s.filter (fun w => f w = y),
+            w (Fin.last (n + 1)) ∈
+              (Finset.univ : Finset V).filter
+                (fun v => R (y (Fin.last n)) v) := by
+          intro w hw
+          rw [Finset.mem_filter] at hw
+          obtain ⟨hws, hwf⟩ := hw
+          rw [hs, Finset.mem_filter] at hws
+          have hstep := hws.2.2 (Fin.last n)
+          rw [Fin.succ_last] at hstep
+          have hpen : w (Fin.last n).castSucc = y (Fin.last n) := by
+            rw [← hwf]
+            rfl
+          rw [Finset.mem_filter]
+          exact ⟨Finset.mem_univ _, hpen ▸ hstep⟩
+        have hinj : Set.InjOn (fun w : Fin (n + 2) → V => w (Fin.last (n + 1)))
+            ↑(s.filter (fun w => f w = y)) := by
+          intro w hw w' hw' hlast
+          rw [Finset.mem_coe, Finset.mem_filter] at hw hw'
+          funext k
+          refine Fin.lastCases ?_ ?_ k
+          · exact hlast
+          · intro j
+            have h1 : f w j = f w' j := by rw [hw.2, hw'.2]
+            exact h1
+        calc (s.filter (fun w => f w = y)).card
+            ≤ ((Finset.univ : Finset V).filter
+                (fun v => R (y (Fin.last n)) v)).card :=
+              Finset.card_le_card_of_injOn _ hmaps hinj
+          _ ≤ Δ := hdeg _
+      calc s.card ≤ Δ * (s.image f).card :=
+            Finset.card_le_mul_card_image s Δ hfiber
+        _ ≤ Δ * Δ ^ n :=
+            Nat.mul_le_mul_left Δ (le_trans (Finset.card_le_card himage) ih)
+        _ = Δ ^ (n + 1) := by ring
+
+end WalkCounting
+
 end YangMills
