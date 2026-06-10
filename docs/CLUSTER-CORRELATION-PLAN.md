@@ -219,7 +219,27 @@ commits `6074b9c..4253225`, all oracle-clean):**
   `reachableSetoid`), `mem_componentPartition_part_iff`,
   `componentPartition_part_closed`, `componentPartition_edge_same_part`.
 
-**Remaining for B0a (the fibration core, next session):**
+**B0a — COMPLETE (2026-06-10, same session; commits up to `1999108`,
+all oracle-clean).**  The fibration core landed in four committed
+sub-bricks: A1 `filter_within_mem_of_cp_eq`, A2
+`biUnion_filter_within_parts` + `filter_within_disjoint`, A3
+`componentPartition_biUnion_eq` (+ `mem_of_reachable_closed`;
+partition equality via pointwise part equality →
+`nonempty_of_mem_parts`/`part_eq_of_mem` double inclusion →
+`Finpartition.ext`; Finpartition lemmas need DOT-NOTATION — the bare
+names mis-slot), A4 **`fiber_cp_factorization`** ((★); `Finset.prod_sum`
+to the `parts.pi`-side, `sum_nbij'` with within-part filters vs
+`dif`-totalized `biUnion`s, card additivity by `card_biUnion`,
+`prod_pow_eq_pow_sum`, `prod_attach`), and the endpoint
+**`ursell_partition_identity`**:
+
+    ∑_{π : Finpartition univ} ∏_{B ∈ π.parts} ursell(X∘orderIsoOfFin B)
+      = 𝟙[X pairwise compatible]
+
+**NEXT: B0b** (the analytic resummation to `Ξ = exp(clusterSum)`) —
+see §2c.  All combinatorial inputs are now on the shelf.
+
+**(historical) Remaining-work list before the above was closed:**
 
 1. (★) per-π fiber factorization:
    `∑_{E ⊆ edgeFinset(G_X) : componentPartition E = π} (−1)^{|E|}
