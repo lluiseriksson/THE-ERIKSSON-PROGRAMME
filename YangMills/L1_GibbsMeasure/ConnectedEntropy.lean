@@ -576,6 +576,58 @@ lemma isConnectedPolymer_crossing
   · exact ⟨u.1, hu, v.1, v.2, hv, h⟩
   · exact ⟨u.1, hu, v.1, v.2, hv, plaquetteTouches_symm h⟩
 
+open Classical in
+/-- **THE LATTICE-ANIMAL ENTROPY BOUND (volume-uniform):** the number of
+connected polymers of size `n+1` through a fixed plaquette is at most
+`(16d+1)^{2n}` — a constant depending only on the dimension, **not on the
+lattice volume**.  Proof: every such polymer is the exact range of a lazy
+closed walk of length `2n` from `p₀` (covering-walk theorem + crossing
+property), and there are at most `(16d+1)^{2n}` such walks (degree bound +
+walk counting).  This is the entropy input that makes the KP criterion for
+the connected gas volume-uniform. -/
+theorem card_connectedPolymers_le {d N : ℕ} [NeZero N]
+    (p₀ : ConcretePlaquette d N) (n : ℕ) :
+    ((Finset.univ : Finset (Finset (ConcretePlaquette d N))).filter
+      (fun c => p₀ ∈ c ∧ IsConnectedPolymer c ∧ c.card = n + 1)).card
+      ≤ (16 * d + 1) ^ (2 * n) := by
+  classical
+  set Rlazy : ConcretePlaquette d N → ConcretePlaquette d N → Prop :=
+    fun p q => plaquetteTouches p q ∨ p = q with hR
+  have hdeg : ∀ v, ((Finset.univ : Finset (ConcretePlaquette d N)).filter
+      (fun u => Rlazy v u)).card ≤ 16 * d + 1 := fun v =>
+    card_lazy_neighbors_le plaquetteTouches (16 * d)
+      card_plaquettesTouching_le v
+  have hsurj : Set.SurjOn
+      (fun w : Fin (2 * n + 1) → ConcretePlaquette d N =>
+        Finset.image w Finset.univ)
+      ↑((Finset.univ : Finset (Fin (2 * n + 1) → ConcretePlaquette d N)).filter
+        (fun w => w 0 = p₀ ∧
+          ∀ k : Fin (2 * n), Rlazy (w k.castSucc) (w k.succ)))
+      ↑((Finset.univ : Finset (Finset (ConcretePlaquette d N))).filter
+        (fun c => p₀ ∈ c ∧ IsConnectedPolymer c ∧ c.card = n + 1)) := by
+    intro c hcmem
+    simp only [Finset.coe_filter, Set.mem_setOf_eq, Finset.mem_univ,
+      true_and] at hcmem
+    obtain ⟨hp₀, hconn, hcard⟩ := hcmem
+    obtain ⟨L, w, hL, hw, himg⟩ := exists_covering_lazyWalk_len
+      plaquetteTouches (fun _ _ h => plaquetteTouches_symm h) c p₀ hp₀
+      (isConnectedPolymer_crossing hconn hp₀)
+    have hL' : L = 2 * n := by
+      rw [hcard] at hL
+      omega
+    subst hL'
+    refine ⟨w, ?_, himg⟩
+    simp only [Finset.coe_filter, Set.mem_setOf_eq, Finset.mem_univ, true_and]
+    exact ⟨hw.1, fun k => hw.2.2 k⟩
+  calc ((Finset.univ : Finset (Finset (ConcretePlaquette d N))).filter
+        (fun c => p₀ ∈ c ∧ IsConnectedPolymer c ∧ c.card = n + 1)).card
+      ≤ ((Finset.univ : Finset (Fin (2 * n + 1) → ConcretePlaquette d N)).filter
+          (fun w => w 0 = p₀ ∧
+            ∀ k : Fin (2 * n), Rlazy (w k.castSucc) (w k.succ))).card :=
+        Finset.card_le_card_of_surjOn _ hsurj
+    _ ≤ (16 * d + 1) ^ (2 * n) :=
+        card_relWalks_le Rlazy (16 * d + 1) hdeg p₀ (2 * n)
+
 end ConnectedCrossing
 
 end YangMills
