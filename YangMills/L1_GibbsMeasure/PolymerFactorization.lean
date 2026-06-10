@@ -2,6 +2,7 @@
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
+import YangMills.L1_GibbsMeasure.PolymerExpansion
 
 /-!
 # Polymer representation, step 2 (core) — independence over disjoint supports
@@ -108,5 +109,56 @@ theorem integral_mul_of_disjoint_deps {ι : Type*} [Fintype ι]
     simp only [one_mul] at h1
     rw [h1]
     simp
+
+/-- **Polymer activity factorization:** Mayer-weight products over plaquette
+sets with **disjoint supports** have multiplicative gauge expectations —
+`∫ (∏_S f_p)(∏_T f_p) = ∫∏_S · ∫∏_T`.  The locality interface
+(`prod_plaquetteWeight_congr`) supplies the dependency hypotheses of the
+abstract two-block factorization. -/
+theorem integral_prod_plaquetteWeight_mul_of_disjoint
+    {d N : ℕ} [NeZero d] [NeZero N] {G : Type*} [Group G] [MeasurableSpace G]
+    (μ : Measure G) [IsProbabilityMeasure μ] (pe : G → ℝ) (β : ℝ)
+    (S T : Finset (ConcretePlaquette d N))
+    (hdisj : Disjoint (S.biUnion plaquetteSupport)
+      (T.biUnion plaquetteSupport)) :
+    ∫ A, (∏ p ∈ S, plaquetteWeight pe β A p) *
+        ∏ p ∈ T, plaquetteWeight pe β A p
+      ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+    = (∫ A, ∏ p ∈ S, plaquetteWeight pe β A p
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)) *
+      ∫ A, ∏ p ∈ T, plaquetteWeight pe β A p
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+  classical
+  haveI : Nonempty G := ⟨1⟩
+  -- transport to the positive-edge coordinates
+  have htrans : ∀ H : GaugeConfig d N G → ℝ,
+      ∫ A, H A ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+        = ∫ x, H (gaugeConfigMEquiv x)
+            ∂(Measure.pi fun _ : PosEdge d N => μ) := by
+    intro H
+    have hmeas : gaugeMeasureFrom (d := d) (N := N) μ
+        = Measure.map (gaugeConfigMEquiv (d := d) (N := N) (G := G))
+            (Measure.pi fun _ : PosEdge d N => μ) := rfl
+    rw [hmeas, MeasureTheory.integral_map_equiv]
+  rw [htrans, htrans, htrans]
+  -- the abstract two-block factorization, fed by locality
+  refine integral_mul_of_disjoint_deps μ
+    (fun e => e ∈ S.biUnion plaquetteSupport) _ _ ?_ ?_
+  · intro x y hxy
+    refine prod_plaquetteWeight_congr pe β S ?_
+    intro e he
+    rw [show configToPos (gaugeConfigMEquiv x) = x from
+        (gaugeConfigEquiv (d := d) (N := N) (G := G)).left_inv x,
+      show configToPos (gaugeConfigMEquiv y) = y from
+        (gaugeConfigEquiv (d := d) (N := N) (G := G)).left_inv y]
+    exact hxy e he
+  · intro x y hxy
+    refine prod_plaquetteWeight_congr pe β T ?_
+    intro e he
+    rw [show configToPos (gaugeConfigMEquiv x) = x from
+        (gaugeConfigEquiv (d := d) (N := N) (G := G)).left_inv x,
+      show configToPos (gaugeConfigMEquiv y) = y from
+        (gaugeConfigEquiv (d := d) (N := N) (G := G)).left_inv y]
+    exact hxy e fun heS => Finset.disjoint_left.mp hdisj heS he
 
 end YangMills
