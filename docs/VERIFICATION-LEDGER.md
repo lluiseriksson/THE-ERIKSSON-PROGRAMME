@@ -133,6 +133,33 @@ eliminated.  Remaining: polymer step 2 (connected grouping + independence
 factorization of the product measure — next campaign, multi-session),
 UV bound, T4.  M4/M5: class C, open mathematics.
 
+## Addendum 4 (2026-06-10, continued loop): the lattice gas, end to end
+
+Each `#print axioms` = `[propext, Classical.choice, Quot.sound]`:
+
+```
+'YangMills.plaquetteWeight_congr' / 'prod_plaquetteWeight_congr'   (locality)
+'YangMills.integral_mul_of_disjoint_deps'                          (two-block independence,
+                                                                    product measures, no hypotheses)
+'YangMills.integral_prod_plaquetteWeight_mul_of_disjoint'          (gauge-level factorization)
+'YangMills.integral_prod_prod_plaquetteWeight_of_pairwiseDisjoint' (iterated/component form)
+'YangMills.latticePolymerSystem' (+ Fintype)                       (the physical polymer system)
+'YangMills.norm_latticePolymerSystem_activity_le'                  (‖z(c)‖ ≤ (e^{|β|B}−1)^{|c|})
+'YangMills.latticePolymerSystem_kpCriterion'                       (KP criterion, a = |c|)
+'YangMills.latticePolymerSystem_kpCriterion_scaled'                (KP criterion, a = t|c|)
+'YangMills.latticeClusterSum_summable'                             (LATTICE MAYER SERIES CONVERGES)
+'YangMills.norm_latticeClusterSum_le'                              (explicit bound)
+'YangMills.abs_partitionFunction_sub_one_le'                       (|Z−1| ≤ (e^{|β|B})^{#P} − 1)
+'YangMills.partitionFunction_pos_of_small'                         (quantitative Z > 0)
+```
+
+Plain language: the cluster expansion of finite-volume SU(N) lattice gauge
+theory at small coupling is now machine-checked from the Boltzmann factor to
+absolute convergence with explicit constants, with the partition function
+quantitatively pinned near 1.  Thresholds are volume-dependent; the
+volume-uniform refinement (connected polymers, lattice-animal entropy) is
+the scoped remaining step.  All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
