@@ -3,6 +3,8 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.KP.SharpMajorant
+import YangMills.KP.PinnedCluster
+import YangMills.KP.PenroseFiber
 
 /-!
 # Sharp KP, step 5 — the shell decomposition (combinatorial half)
@@ -112,6 +114,214 @@ lemma treeSumRaw_nonneg (P : PolymerSystem) [Fintype P.Polymer]
   refine Finset.sum_nonneg fun pl _ => Finset.sum_nonneg fun X _ =>
     Finset.prod_nonneg fun v _ => mul_nonneg ?_ (norm_nonneg _)
   split_ifs <;> norm_num
+
+open Classical in
+/-- **C2 — Penrose domination of pinned cluster weights:** every pinned
+cluster weight is controlled by the raw rooted tree-sum at full depth,
+with the pinned activity factored out:
+`pinnedClusterWeight P c n ≤ (1/(n+1)!)·‖z(c)‖·treeSumRaw P c n n`.
+Penrose expands `|φ(X)|` over spanning trees; each spanning tree embeds
+injectively into the admissible parent/level index via its BFS data
+(parents determine the tree — `penroseTree_of_spanningTree`), and BFS
+levels fit in `Fin (n+1)` by `connected_dist_lt_card`. -/
+theorem pinnedClusterWeight_le_treeSumRaw (P : PolymerSystem)
+    [Fintype P.Polymer] (c : P.Polymer) (n : ℕ) :
+    pinnedClusterWeight P c n
+      ≤ (((n + 1).factorial : ℝ))⁻¹ * ‖P.activity c‖
+          * treeSumRaw P c n n := by
+  classical
+  -- the universal tree shapes (as in `kp_per_size_bound`)
+  set Sh : Finset (Finset (Sym2 (Fin (n + 1)))) :=
+    (Finset.univ).filter (fun T : Finset (Sym2 (Fin (n + 1))) =>
+      (SimpleGraph.fromEdgeSet (↑T : Set (Sym2 (Fin (n + 1))))).IsTree ∧
+        ∀ e ∈ T, ¬ e.IsDiag) with hShdef
+  have htop : ∀ T ∈ Sh,
+      T ∈ spanningTrees (⊤ : SimpleGraph (Fin (n + 1))) := by
+    intro T hT
+    rw [hShdef, Finset.mem_filter] at hT
+    unfold spanningTrees
+    rw [Finset.mem_filter, Finset.mem_powerset]
+    refine ⟨fun e he => ?_, hT.2.1⟩
+    rw [SimpleGraph.mem_edgeFinset, SimpleGraph.edgeSet_top,
+      Set.mem_compl_iff, Sym2.mem_diagSet]
+    exact hT.2.2 e he
+  have hpen : ∀ X : Fin (n + 1) → P.Polymer,
+      |((ursell P X : ℤ) : ℝ)|
+        ≤ ∑ T ∈ Sh, ∏ e ∈ T, if e ∈ (incompGraph P X).edgeSet
+            then (1 : ℝ) else 0 := by
+    intro X
+    have h1 := abs_ursell_le_card_spanningTrees P X
+    have h2 : |((ursell P X : ℤ) : ℝ)|
+        ≤ ((spanningTrees (incompGraph P X)).card : ℝ) := by
+      rw [← Int.cast_abs]
+      exact_mod_cast h1
+    refine le_trans h2 ?_
+    have hsub : spanningTrees (incompGraph P X) ⊆ Sh := by
+      intro T hT
+      rw [hShdef, Finset.mem_filter]
+      refine ⟨Finset.mem_univ T, isTree_of_mem_spanningTrees _ hT, ?_⟩
+      intro e he
+      have hmem := spanningTrees_subset _ hT he
+      rw [SimpleGraph.mem_edgeFinset] at hmem
+      exact (incompGraph P X).not_isDiag_of_mem_edgeSet hmem
+    have h3 : ((spanningTrees (incompGraph P X)).card : ℝ)
+        = ∑ T ∈ spanningTrees (incompGraph P X),
+            ∏ e ∈ T, if e ∈ (incompGraph P X).edgeSet
+              then (1 : ℝ) else 0 := by
+      rw [Finset.sum_congr rfl (fun T hT => Finset.prod_eq_one
+        (fun e he => by
+          have hmem := spanningTrees_subset _ hT he
+          rw [SimpleGraph.mem_edgeFinset] at hmem
+          rw [if_pos hmem]))]
+      simp
+    rw [h3]
+    exact Finset.sum_le_sum_of_subset_of_nonneg hsub
+      (fun T _ _ => Finset.prod_nonneg fun e _ => by
+        split_ifs <;> norm_num)
+  -- the BFS embedding of shapes into the admissible index
+  set φ : Finset (Sym2 (Fin (n + 1)))
+      → (Fin (n + 1) → Fin (n + 1)) × (Fin (n + 1) → Fin (n + 1)) :=
+    fun T => (bfsParent T, fun v =>
+      if hco : (SimpleGraph.fromEdgeSet
+          (↑T : Set (Sym2 (Fin (n + 1))))).Connected
+      then ⟨bfsLevel T v, by
+        have := connected_dist_lt_card hco 0 v
+        simpa [bfsLevel, Fintype.card_fin] using this⟩
+      else 0) with hφdef
+  -- per-tree inner sums (the quantity transported along φ)
+  set G : (Fin (n + 1) → Fin (n + 1)) × (Fin (n + 1) → Fin (n + 1)) → ℝ :=
+    fun pl => ∑ X ∈ (Finset.univ :
+        Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
+      ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+        (if P.incomp (X (pl.1 v)) (X v) then (1 : ℝ) else 0)
+          * ‖P.activity (X v)‖ with hGdef
+  have hGnn : ∀ pl, 0 ≤ G pl := by
+    intro pl
+    rw [hGdef]
+    refine Finset.sum_nonneg fun X _ =>
+      Finset.prod_nonneg fun v _ => mul_nonneg ?_ (norm_nonneg _)
+    split_ifs <;> norm_num
+  -- each shape's compatibility-weighted pinned sum equals `G (φ T)`
+  have htreeG : ∀ T ∈ Sh,
+      ∑ X ∈ (Finset.univ :
+          Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
+        (∏ e ∈ T, if e ∈ (incompGraph P X).edgeSet then (1 : ℝ) else 0)
+          * ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+              ‖P.activity (X v)‖
+        = G (φ T) := by
+    intro T hT
+    have htree := isTree_of_mem_spanningTrees _ (htop T hT)
+    have hconn := htree.isConnected
+    rw [hGdef]
+    refine Finset.sum_congr rfl fun X _ => ?_
+    rw [prod_tree_eq_prod_parents (htop T hT)
+      (fun e => if e ∈ (incompGraph P X).edgeSet then (1 : ℝ) else 0)]
+    have hfac : ∀ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+        (if s(bfsParent T v, v) ∈ (incompGraph P X).edgeSet
+          then (1 : ℝ) else 0)
+        = if P.incomp (X (bfsParent T v)) (X v) then (1 : ℝ) else 0 := by
+      intro v hv
+      rw [Finset.mem_filter] at hv
+      have hne : bfsParent T v ≠ v := by
+        have hspec := (bfsParent_spec hconn hv.2).2
+        intro hEq
+        rw [hEq] at hspec
+        omega
+      simp [SimpleGraph.mem_edgeSet, incompGraph_adj, hne]
+    rw [Finset.prod_congr rfl hfac, ← Finset.prod_mul_distrib]
+  -- φ lands in the admissible index
+  have hmaps : ∀ T ∈ Sh, φ T ∈ (Finset.univ :
+      Finset ((Fin (n + 1) → Fin (n + 1))
+        × (Fin (n + 1) → Fin (n + 1)))).filter
+      (fun pl => IsAdmissible pl.1 pl.2) := by
+    intro T hT
+    have htree := isTree_of_mem_spanningTrees _ (htop T hT)
+    have hconn := htree.isConnected
+    rw [Finset.mem_filter]
+    refine ⟨Finset.mem_univ _, ?_, ?_⟩
+    · -- root level 0
+      show (φ T).2 0 = 0
+      rw [hφdef]
+      simp only [dif_pos hconn]
+      apply Fin.ext
+      simp [bfsLevel_zero_eq]
+    · -- descent
+      intro v hv
+      show ((φ T).2 ((φ T).1 v) : ℕ) < ((φ T).2 v : ℕ)
+      rw [hφdef]
+      simp only [dif_pos hconn]
+      have hspec := (bfsParent_spec hconn hv).2
+      omega
+  -- φ is injective on shapes: parents determine the tree
+  have hinj : ∀ T₁ ∈ Sh, ∀ T₂ ∈ Sh, φ T₁ = φ T₂ → T₁ = T₂ := by
+    intro T₁ h₁ T₂ h₂ heq
+    have e₁ : penroseTree T₁ = T₁ :=
+      penroseTree_of_spanningTree (htop T₁ h₁)
+    have e₂ : penroseTree T₂ = T₂ :=
+      penroseTree_of_spanningTree (htop T₂ h₂)
+    have hpar : bfsParent T₁ = bfsParent T₂ := by
+      have := congrArg Prod.fst heq
+      rw [hφdef] at this
+      exact this
+    rw [← e₁, ← e₂]
+    unfold penroseTree
+    rw [hpar]
+  -- assemble
+  unfold pinnedClusterWeight
+  have hfactor : ∀ X ∈ (Finset.univ :
+      Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
+      |((ursell P X : ℤ) : ℝ)| * ∏ i, ‖P.activity (X i)‖
+      = ‖P.activity c‖ * (|((ursell P X : ℤ) : ℝ)|
+          * ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+              ‖P.activity (X v)‖) := by
+    intro X hX
+    rw [Finset.mem_filter] at hX
+    have hsplit : ∏ i, ‖P.activity (X i)‖
+        = (∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+            ‖P.activity (X v)‖) * ‖P.activity (X 0)‖ := by
+      rw [Finset.filter_ne',
+        ← Finset.mul_prod_erase Finset.univ _ (Finset.mem_univ 0)]
+      ring
+    rw [hsplit, hX.2]
+    ring
+  rw [Finset.sum_congr rfl hfactor, ← Finset.mul_sum, mul_assoc]
+  refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+  refine mul_le_mul_of_nonneg_left ?_ (norm_nonneg _)
+  calc ∑ X ∈ (Finset.univ :
+        Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
+        |((ursell P X : ℤ) : ℝ)|
+          * ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+              ‖P.activity (X v)‖
+      ≤ ∑ X ∈ (Finset.univ :
+          Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
+          (∑ T ∈ Sh, ∏ e ∈ T, if e ∈ (incompGraph P X).edgeSet
+              then (1 : ℝ) else 0)
+            * ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+                ‖P.activity (X v)‖ := by
+        refine Finset.sum_le_sum fun X _ => ?_
+        exact mul_le_mul_of_nonneg_right (hpen X)
+          (Finset.prod_nonneg fun v _ => norm_nonneg _)
+    _ = ∑ T ∈ Sh, ∑ X ∈ (Finset.univ :
+          Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
+          (∏ e ∈ T, if e ∈ (incompGraph P X).edgeSet then (1 : ℝ) else 0)
+            * ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+                ‖P.activity (X v)‖ := by
+        rw [Finset.sum_comm]
+        exact Finset.sum_congr rfl fun X _ => by rw [Finset.sum_mul]
+    _ = ∑ T ∈ Sh, G (φ T) := Finset.sum_congr rfl htreeG
+    _ = ∑ pl ∈ Sh.image φ, G pl := (Finset.sum_image hinj).symm
+    _ ≤ ∑ pl ∈ (Finset.univ :
+          Finset ((Fin (n + 1) → Fin (n + 1))
+            × (Fin (n + 1) → Fin (n + 1)))).filter
+          (fun pl => IsAdmissible pl.1 pl.2), G pl := by
+        refine Finset.sum_le_sum_of_subset_of_nonneg ?_
+          (fun pl _ _ => hGnn pl)
+        intro pl hpl
+        obtain ⟨T, hT, rfl⟩ := Finset.mem_image.mp hpl
+        exact hmaps T hT
+    _ = treeSumRaw P c n n := by
+        unfold treeSumRaw
+        exact Finset.sum_congr rfl fun pl _ => by rw [hGdef]
 
 end TreeSum
 
