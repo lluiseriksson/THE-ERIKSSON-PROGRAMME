@@ -1409,6 +1409,56 @@ lemma sum_symmetrize {α : Type*} [DecidableEq α] (A : Finset α)
   have hne : (((S pl).card.factorial : ℝ)) ≠ 0 := by positivity
   field_simp
 
+open Classical in
+/-- **Enumerations of a `k`-set number `k!`:** injective functions
+`Fin k → α` with image exactly `S` (where `S.card = k`) are in bijection
+with `Fin k ≃ S`.  This is the cast-free form of shell-enumeration
+counting: the `σ`-functions have a type independent of the structure
+being enumerated. -/
+lemma card_enumerations {α : Type*} [DecidableEq α] [Fintype α]
+    {S : Finset α} {k : ℕ} (hk : S.card = k) :
+    ((Finset.univ : Finset (Fin k → α)).filter
+      (fun σ => Function.Injective σ ∧ Finset.univ.image σ = S)).card
+    = k.factorial := by
+  classical
+  have hcardS : Fintype.card {x // x ∈ S} = k := by
+    rw [Fintype.card_coe, hk]
+  have e : {σ : Fin k → α //
+      Function.Injective σ ∧ Finset.univ.image σ = S}
+      ≃ (Fin k ≃ {x // x ∈ S}) := by
+    refine
+      { toFun := fun σ => Equiv.ofBijective
+          (fun i => ⟨σ.1 i, by
+            have hmem : σ.1 i ∈ Finset.univ.image σ.1 :=
+              Finset.mem_image_of_mem _ (Finset.mem_univ i)
+            rw [σ.2.2] at hmem
+            exact hmem⟩)
+          ((Fintype.bijective_iff_injective_and_card _).mpr
+            ⟨fun i j hij => σ.2.1 (congrArg Subtype.val hij),
+              by rw [hcardS, Fintype.card_fin]⟩)
+        invFun := fun e => ⟨fun i => (e i).1, ?_, ?_⟩
+        left_inv := fun σ => Subtype.ext (funext fun i => rfl)
+        right_inv := fun e => Equiv.ext fun i => Subtype.ext rfl }
+    · intro i j hij
+      exact e.injective (Subtype.ext hij)
+    · refine Finset.eq_of_subset_of_card_le ?_ ?_
+      · intro v hv
+        obtain ⟨i, _, rfl⟩ := Finset.mem_image.mp hv
+        exact (e i).2
+      · rw [Finset.card_image_of_injective _
+          (fun i j hij => e.injective (Subtype.ext hij)),
+          Finset.card_univ, Fintype.card_fin, hk]
+  calc ((Finset.univ : Finset (Fin k → α)).filter
+        (fun σ => Function.Injective σ ∧ Finset.univ.image σ = S)).card
+      = Fintype.card {σ : Fin k → α //
+          Function.Injective σ ∧ Finset.univ.image σ = S} :=
+        (Fintype.card_subtype _).symm
+    _ = Fintype.card (Fin k ≃ {x // x ∈ S}) := Fintype.card_congr e
+    _ = k.factorial := by
+        have e₀ : Fin k ≃ {x // x ∈ S} :=
+          (Fintype.equivFinOfCardEq hcardS).symm
+        rw [Fintype.card_equiv e₀, Fintype.card_fin]
+
 end MasterAssembly
 
 end BlockCount
