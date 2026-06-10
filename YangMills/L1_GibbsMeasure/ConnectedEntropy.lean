@@ -300,4 +300,150 @@ theorem card_relWalks_le {V : Type*} [Fintype V] [DecidableEq V]
 
 end WalkCounting
 
+section LazyWalks
+
+variable {V : Type*}
+
+/-- A **lazy closed walk**: starts and ends at `v₀`, and every step either
+moves along the relation or stays put.  Laziness lets walks have any fixed
+even length without padding gymnastics; the cost is one extra unit of
+out-degree in the counting, absorbed into the entropy constant. -/
+def IsLazyClosedWalk (R : V → V → Prop) (v₀ : V) {L : ℕ}
+    (w : Fin (L + 1) → V) : Prop :=
+  w 0 = v₀ ∧ w (Fin.last L) = v₀ ∧
+    ∀ k : Fin L, R (w k.castSucc) (w k.succ) ∨ w k.castSucc = w k.succ
+
+/-- Laziness costs one unit of out-degree. -/
+lemma card_lazy_neighbors_le [Fintype V] [DecidableEq V]
+    (R : V → V → Prop) [DecidableRel R] (Δ : ℕ)
+    (hdeg : ∀ v, ((Finset.univ : Finset V).filter (fun u => R v u)).card ≤ Δ)
+    (v : V) :
+    ((Finset.univ : Finset V).filter (fun u => R v u ∨ v = u)).card ≤ Δ + 1 := by
+  classical
+  have hsub : (Finset.univ : Finset V).filter (fun u => R v u ∨ v = u)
+      ⊆ ((Finset.univ : Finset V).filter (fun u => R v u)) ∪ {v} := by
+    intro u hu
+    rw [Finset.mem_filter] at hu
+    rcases hu.2 with h | h
+    · exact Finset.mem_union_left _ (Finset.mem_filter.mpr ⟨hu.1, h⟩)
+    · exact Finset.mem_union_right _ (Finset.mem_singleton.mpr h.symm)
+  calc ((Finset.univ : Finset V).filter (fun u => R v u ∨ v = u)).card
+      ≤ (((Finset.univ : Finset V).filter (fun u => R v u)) ∪ {v}).card :=
+        Finset.card_le_card hsub
+    _ ≤ ((Finset.univ : Finset V).filter (fun u => R v u)).card + ({v} : Finset V).card :=
+        Finset.card_union_le _ _
+    _ ≤ Δ + 1 := by
+        have := hdeg v
+        simp only [Finset.card_singleton]
+        omega
+
+/-- **The splice lemma:** a lazy closed walk can be extended by two steps to
+additionally visit any vertex adjacent to a vertex it already visits.  This
+is the inductive engine of the spanning-walk encoding of connected sets. -/
+lemma IsLazyClosedWalk.extend [DecidableEq V] {R : V → V → Prop}
+    (hsym : ∀ a b, R a b → R b a) {v₀ : V} {L : ℕ} {w : Fin (L + 1) → V}
+    (hw : IsLazyClosedWalk R v₀ w) (k : Fin (L + 1)) {x : V}
+    (hx : R (w k) x) :
+    ∃ w' : Fin (L + 3) → V, IsLazyClosedWalk R v₀ w' ∧
+      Finset.image w' Finset.univ = insert x (Finset.image w Finset.univ) := by
+  obtain ⟨hw0, hwlast, hwstep⟩ := hw
+  refine ⟨fun i => if h : (i : ℕ) ≤ (k : ℕ) then w ⟨i, by omega⟩
+    else if (i : ℕ) = (k : ℕ) + 1 then x
+    else w ⟨(i : ℕ) - 2, by omega⟩, ⟨?_, ?_, ?_⟩, ?_⟩
+  · -- starts at v₀
+    dsimp only
+    have h0 : ((0 : Fin (L + 3)) : ℕ) ≤ (k : ℕ) := Nat.zero_le _
+    rw [dif_pos h0]
+    have : (⟨((0 : Fin (L + 3)) : ℕ), by omega⟩ : Fin (L + 1)) = 0 := rfl
+    rw [this, hw0]
+  · -- ends at v₀
+    dsimp only
+    have hkL : (k : ℕ) ≤ L := by omega
+    have h1 : ¬ ((Fin.last (L + 2) : ℕ) ≤ (k : ℕ)) := by
+      simp only [Fin.val_last]; omega
+    have h2 : ¬ ((Fin.last (L + 2) : ℕ) = (k : ℕ) + 1) := by
+      simp only [Fin.val_last]; omega
+    rw [dif_neg h1, if_neg h2]
+    have : (⟨(Fin.last (L + 2) : ℕ) - 2, by omega⟩ : Fin (L + 1)) = Fin.last L := by
+      apply Fin.ext
+      simp only [Fin.val_last]
+      omega
+    rw [this, hwlast]
+  · -- steps
+    intro j
+    dsimp only
+    have hjcast : ((j.castSucc : Fin (L + 3)) : ℕ) = (j : ℕ) := rfl
+    have hjsucc : ((j.succ : Fin (L + 3)) : ℕ) = (j : ℕ) + 1 := rfl
+    by_cases hc1 : (j : ℕ) + 1 ≤ (k : ℕ)
+    · -- entirely inside the prefix
+      rw [dif_pos (by omega : ((j.castSucc : Fin (L + 3)) : ℕ) ≤ (k : ℕ)),
+        dif_pos (by rw [hjsucc]; omega)]
+      have hjL : (j : ℕ) < L := by omega
+      have hcs : (⟨((j.castSucc : Fin (L + 3)) : ℕ), by omega⟩ : Fin (L + 1))
+          = (⟨(j : ℕ), hjL⟩ : Fin L).castSucc := by
+        apply Fin.ext; simp [hjcast]
+      have hsc : (⟨((j.succ : Fin (L + 3)) : ℕ), by omega⟩ : Fin (L + 1))
+          = (⟨(j : ℕ), hjL⟩ : Fin L).succ := by
+        apply Fin.ext; simp [hjsucc]
+      rw [hcs, hsc]
+      exact hwstep _
+    · by_cases hc2 : (j : ℕ) = (k : ℕ)
+      · -- the step into x
+        rw [dif_pos (by omega : ((j.castSucc : Fin (L + 3)) : ℕ) ≤ (k : ℕ)),
+          dif_neg (by rw [hjsucc]; omega), if_pos (by rw [hjsucc]; omega)]
+        have : (⟨((j.castSucc : Fin (L + 3)) : ℕ), by omega⟩ : Fin (L + 1)) = k := by
+          apply Fin.ext; simp [hjcast, hc2]
+        rw [this]
+        exact Or.inl hx
+      · by_cases hc3 : (j : ℕ) = (k : ℕ) + 1
+        · -- the step back from x
+          rw [dif_neg (by rw [hjcast]; omega), if_pos (by rw [hjcast]; omega),
+            dif_neg (by rw [hjsucc]; omega), if_neg (by rw [hjsucc]; omega)]
+          have : (⟨((j.succ : Fin (L + 3)) : ℕ) - 2, by omega⟩ : Fin (L + 1)) = k := by
+            apply Fin.ext
+            simp only [hjsucc]
+            omega
+          rw [this]
+          exact Or.inl (hsym _ _ hx)
+        · -- entirely inside the shifted suffix
+          have hge : (k : ℕ) + 2 ≤ (j : ℕ) := by omega
+          rw [dif_neg (by rw [hjcast]; omega), if_neg (by rw [hjcast]; omega),
+            dif_neg (by rw [hjsucc]; omega), if_neg (by rw [hjsucc]; omega)]
+          have hjL : (j : ℕ) - 2 < L := by omega
+          have hcs : (⟨((j.castSucc : Fin (L + 3)) : ℕ) - 2, by omega⟩ : Fin (L + 1))
+              = (⟨(j : ℕ) - 2, hjL⟩ : Fin L).castSucc := by
+            apply Fin.ext; simp [hjcast]
+          have hsc : (⟨((j.succ : Fin (L + 3)) : ℕ) - 2, by omega⟩ : Fin (L + 1))
+              = (⟨(j : ℕ) - 2, hjL⟩ : Fin L).succ := by
+            apply Fin.ext
+            simp only [hjsucc, Fin.succ_mk]
+            omega
+          rw [hcs, hsc]
+          exact hwstep _
+  · -- the range gains exactly x
+    ext v
+    simp only [Finset.mem_image, Finset.mem_univ, true_and, Finset.mem_insert]
+    constructor
+    · rintro ⟨i, rfl⟩
+      by_cases h1 : (i : ℕ) ≤ (k : ℕ)
+      · rw [dif_pos h1]
+        exact Or.inr ⟨_, rfl⟩
+      · by_cases h2 : (i : ℕ) = (k : ℕ) + 1
+        · rw [dif_neg h1, if_pos h2]
+          exact Or.inl rfl
+        · rw [dif_neg h1, if_neg h2]
+          exact Or.inr ⟨_, rfl⟩
+    · rintro (rfl | ⟨j, rfl⟩)
+      · -- x is hit at index k+1
+        refine ⟨⟨(k : ℕ) + 1, by omega⟩, ?_⟩
+        rw [dif_neg (by simp), if_pos (by simp)]
+      · by_cases h1 : (j : ℕ) ≤ (k : ℕ)
+        · refine ⟨⟨(j : ℕ), by omega⟩, ?_⟩
+          rw [dif_pos (by simpa using h1)]
+        · refine ⟨⟨(j : ℕ) + 2, by omega⟩, ?_⟩
+          rw [dif_neg (by simp; omega), if_neg (by simp; omega)]
+          congr 1
+
+end LazyWalks
+
 end YangMills
