@@ -4,6 +4,7 @@ Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.KP.Ursell
 import YangMills.KP.Cluster
+import YangMills.KP.SharpShell
 
 /-!
 # Mayer–Ursell inversion, step 0 — the indicator identity
@@ -767,5 +768,97 @@ theorem ursell_partition_identity {n : ℕ} (X : Fin n → P.Polymer) :
   refine Finset.prod_congr rfl fun B hB => ?_
   exact (sum_blockConnected_eq_ursell P X B rfl
     (π.nonempty_of_mem_parts hB)).symm
+
+open Classical in
+/-- Pairwise-compatible tuples are injective — a repeated polymer would
+be incompatible with itself (the hard core). -/
+lemma PairwiseCompatible.injective {n : ℕ} {X : Fin n → P.Polymer}
+    (h : PairwiseCompatible P X) : Function.Injective X := by
+  intro i j hij
+  by_contra hne
+  exact h i j hne (by rw [hij]; exact P.incomp_self (X j))
+
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **B0b-4 (the injective collapse):** the activity sum over
+pairwise-compatible `N`-tuples is `N!` times the admissible-set sum at
+cardinality `N` — each admissible set has exactly `N!` enumerations. -/
+lemma sum_pairwiseCompatible_eq [Fintype P.Polymer] {N : ℕ} :
+    ∑ X ∈ (Finset.univ : Finset (Fin N → P.Polymer)).filter
+      (fun X => PairwiseCompatible P X),
+      ∏ i, P.activity (X i)
+    = (N.factorial : ℂ) * ∑ S ∈ (Finset.univ :
+        Finset (Finset P.Polymer)).filter
+        (fun S => Admissible P S ∧ S.card = N),
+        ∏ c ∈ S, P.activity c := by
+  classical
+  -- expand each compatible tuple over its image
+  have hexpand : ∀ X ∈ (Finset.univ : Finset (Fin N → P.Polymer)).filter
+      (fun X => PairwiseCompatible P X),
+      (∏ i, P.activity (X i))
+      = ∑ S ∈ (Finset.univ : Finset (Finset P.Polymer)).filter
+          (fun S => Admissible P S ∧ S.card = N),
+          if Finset.univ.image X = S
+          then ∏ i, P.activity (X i) else 0 := by
+    intro X hX
+    have hcomp := (Finset.mem_filter.mp hX).2
+    have hinj := hcomp.injective P
+    have hmem : Finset.univ.image X ∈ (Finset.univ :
+        Finset (Finset P.Polymer)).filter
+        (fun S => Admissible P S ∧ S.card = N) := by
+      rw [Finset.mem_filter]
+      refine ⟨Finset.mem_univ _, ?_, ?_⟩
+      · intro c hc c' hc' hne
+        rw [Finset.mem_image] at hc hc'
+        obtain ⟨i, _, rfl⟩ := hc
+        obtain ⟨j, _, rfl⟩ := hc'
+        exact hcomp i j (fun h => hne (by rw [h]))
+      · rw [Finset.card_image_of_injective _ hinj,
+          Finset.card_univ, Fintype.card_fin]
+    rw [Finset.sum_eq_single (Finset.univ.image X)
+      (fun S _ hne => if_neg fun h => hne h.symm)
+      (fun habs => absurd hmem habs)]
+    exact (if_pos rfl).symm
+  rw [Finset.sum_congr rfl hexpand, Finset.sum_comm]
+  rw [Finset.mul_sum]
+  refine Finset.sum_congr rfl fun S hS => ?_
+  obtain ⟨-, hadm, hcard⟩ := Finset.mem_filter.mp hS
+  -- collapse the inner sum: the class is the enumerations of S
+  have hclass : ∀ X ∈ (Finset.univ : Finset (Fin N → P.Polymer)).filter
+      (fun X => PairwiseCompatible P X),
+      (if Finset.univ.image X = S
+        then ∏ i, P.activity (X i) else 0)
+      = (if Function.Injective X ∧ Finset.univ.image X = S
+        then ∏ c ∈ S, P.activity c else 0) := by
+    intro X hX
+    have hcomp := (Finset.mem_filter.mp hX).2
+    by_cases h : Finset.univ.image X = S
+    · rw [if_pos h, if_pos ⟨hcomp.injective P, h⟩]
+      rw [← h, Finset.prod_image
+        (fun i _ j _ hij => hcomp.injective P hij)]
+    · rw [if_neg h, if_neg fun hc => h hc.2]
+  rw [Finset.sum_congr rfl hclass]
+  -- extend to the full tuple space: non-compatible terms vanish
+  have hfull : ∑ X ∈ (Finset.univ : Finset (Fin N → P.Polymer)).filter
+      (fun X => PairwiseCompatible P X),
+      (if Function.Injective X ∧ Finset.univ.image X = S
+        then ∏ c ∈ S, P.activity c else 0)
+      = ∑ X : Fin N → P.Polymer,
+        (if Function.Injective X ∧ Finset.univ.image X = S
+          then ∏ c ∈ S, P.activity c else 0) := by
+    refine Finset.sum_subset (Finset.filter_subset _ _)
+      fun X _ hX => ?_
+    refine if_neg fun hc => hX ?_
+    refine Finset.mem_filter.mpr ⟨Finset.mem_univ _, ?_⟩
+    intro i j hne hinc
+    have hi : X i ∈ S := by
+      rw [← hc.2]
+      exact Finset.mem_image_of_mem X (Finset.mem_univ i)
+    have hj : X j ∈ S := by
+      rw [← hc.2]
+      exact Finset.mem_image_of_mem X (Finset.mem_univ j)
+    exact hadm (X i) hi (X j) hj (fun h => hne (hc.1 h)) hinc
+  rw [hfull, ← Finset.sum_filter, Finset.sum_const, nsmul_eq_mul,
+    card_enumerations hcard]
 
 end YangMills.KP
