@@ -690,6 +690,50 @@ lemma IsBlockData.existsUnique_mem {U : Finset (Fin n)} {m : Fin k → ℕ}
   by_contra hne
   exact (Finset.disjoint_left.mp (hρ.1 j i hne) hj) hi
 
+/-- The block index of a covered vertex. -/
+noncomputable def IsBlockData.blockIndex {U : Finset (Fin n)}
+    {m : Fin k → ℕ} {ρ : Fin k → Finset (Fin n) × Fin n}
+    (hρ : IsBlockData U m ρ) {v : Fin n} (hv : v ∈ U) : Fin k :=
+  (hρ.existsUnique_mem hv).exists.choose
+
+lemma IsBlockData.mem_blockIndex {U : Finset (Fin n)} {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData U m ρ)
+    {v : Fin n} (hv : v ∈ U) : v ∈ (ρ (hρ.blockIndex hv)).1 :=
+  (hρ.existsUnique_mem hv).exists.choose_spec
+
+lemma IsBlockData.blockIndex_eq {U : Finset (Fin n)} {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData U m ρ)
+    {v : Fin n} (hv : v ∈ U) {i : Fin k} (h : v ∈ (ρ i).1) :
+    hρ.blockIndex hv = i :=
+  (hρ.existsUnique_mem hv).unique (hρ.mem_blockIndex hv) h
+
+/-- **The partition equivalence:** the cover is the disjoint union of the
+blocks — vertices of `U` correspond exactly to (block index, block
+element) pairs.  This is the backbone of the consistent-sum factorization
+(splice step S2): function spaces over `U` split along it with no
+dependent-Finset machinery. -/
+noncomputable def IsBlockData.partitionEquiv {U : Finset (Fin n)}
+    {m : Fin k → ℕ} {ρ : Fin k → Finset (Fin n) × Fin n}
+    (hρ : IsBlockData U m ρ) :
+    (Σ i : Fin k, {x // x ∈ (ρ i).1}) ≃ {x // x ∈ U} := by
+  refine Equiv.ofBijective
+    (fun y => ⟨y.2.1, hρ.block_subset y.1 y.2.2⟩)
+    ((Fintype.bijective_iff_injective_and_card _).mpr ⟨?_, ?_⟩)
+  · rintro ⟨i, x, hx⟩ ⟨j, y, hy⟩ h
+    have hval : x = y := congrArg Subtype.val h
+    subst hval
+    have hij : i = j := by
+      by_contra hne
+      exact (Finset.disjoint_left.mp (hρ.1 i j hne) hx) hy
+    subst hij
+    rfl
+  · have hcards : ∀ i : Fin k,
+        Fintype.card {x // x ∈ (ρ i).1} = m i + 1 := fun i => by
+      rw [Fintype.card_coe, hρ.2.2.2 i]
+    rw [Fintype.card_sigma, Fintype.card_coe]
+    simp only [hcards]
+    exact hρ.sum_card
+
 /-- Roots of distinct blocks are distinct. -/
 lemma IsBlockData.root_injective {U : Finset (Fin n)} {m : Fin k → ℕ}
     {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData U m ρ)
