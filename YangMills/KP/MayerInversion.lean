@@ -441,4 +441,33 @@ lemma mem_componentPartition_part_iff {n : ℕ}
   unfold componentPartition
   exact Finpartition.mem_part_ofSetoid_iff_rel
 
+open Classical in
+/-- Parts of the component partition are adjacency-closed. -/
+lemma componentPartition_part_closed {n : ℕ}
+    (E : Finset (Sym2 (Fin n))) (c : Fin n) :
+    ∀ a b : Fin n, s(a, b) ∈ E →
+    a ∈ (componentPartition E).part c →
+    b ∈ (componentPartition E).part c := by
+  intro a b hab ha
+  rw [mem_componentPartition_part_iff] at ha ⊢
+  refine ha.trans ?_
+  have hadj : (SimpleGraph.fromEdgeSet
+      (↑E : Set (Sym2 (Fin n)))).Adj a b ∨ a = b := by
+    by_cases hne : a = b
+    · exact Or.inr hne
+    · refine Or.inl ?_
+      rw [SimpleGraph.fromEdgeSet_adj]
+      exact ⟨hab, hne⟩
+  rcases hadj with h | rfl
+  · exact h.reachable
+  · exact SimpleGraph.Reachable.refl _
+
+open Classical in
+/-- Vertices joined by an edge of the set lie in the same part. -/
+lemma componentPartition_edge_same_part {n : ℕ}
+    (E : Finset (Sym2 (Fin n))) {a b : Fin n} (hab : s(a, b) ∈ E) :
+    b ∈ (componentPartition E).part a := by
+  exact componentPartition_part_closed E a a b hab
+    ((componentPartition E).mem_part (Finset.mem_univ a))
+
 end YangMills.KP
