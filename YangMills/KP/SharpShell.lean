@@ -588,6 +588,39 @@ lemma IsAdmissible.shellRoot_parent (h : IsAdmissible p lev)
   have e1 : (lev (p v) : ℕ) - 1 = m := by omega
   rw [e1, hm, Function.iterate_succ_apply]
 
+open Classical in
+/-- **The shell-fiber partition:** the non-root vertices are the disjoint
+union, over the first shell (children of the root), of the `shellRoot`
+fibers — each vertex belongs to exactly one shell subtree. -/
+lemma shell_fiber_partition (h : IsAdmissible p lev) :
+    (Finset.univ : Finset (Fin (n + 1))).filter (fun v => v ≠ 0)
+      = ((Finset.univ : Finset (Fin (n + 1))).filter
+          (fun s => s ≠ 0 ∧ p s = 0)).biUnion
+          (fun s => (Finset.univ : Finset (Fin (n + 1))).filter
+            (fun v => v ≠ 0 ∧ shellRoot p lev v = s)) := by
+  ext v
+  simp only [Finset.mem_filter, Finset.mem_biUnion, Finset.mem_univ,
+    true_and]
+  constructor
+  · intro hv
+    exact ⟨shellRoot p lev v,
+      ⟨h.shellRoot_ne_zero hv, h.parent_shellRoot hv⟩, hv, rfl⟩
+  · rintro ⟨s, _, hv, -⟩
+    exact hv
+
+open Classical in
+/-- Shell fibers are pairwise disjoint (fibers of a function). -/
+lemma shell_fiber_disjoint {s₁ s₂ : Fin (n + 1)} (hne : s₁ ≠ s₂) :
+    Disjoint
+      ((Finset.univ : Finset (Fin (n + 1))).filter
+        (fun v => v ≠ 0 ∧ shellRoot p lev v = s₁))
+      ((Finset.univ : Finset (Fin (n + 1))).filter
+        (fun v => v ≠ 0 ∧ shellRoot p lev v = s₂)) := by
+  rw [Finset.disjoint_left]
+  intro v hv₁ hv₂
+  rw [Finset.mem_filter] at hv₁ hv₂
+  exact hne (hv₁.2.2 ▸ hv₂.2.2 ▸ rfl)
+
 end ShellRoot
 
 end TreeSum

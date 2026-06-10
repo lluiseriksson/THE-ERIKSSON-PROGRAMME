@@ -206,6 +206,32 @@ definitional, and only at the end divide by `n!` using
 `Nat.choose`/`Nat.multinomial` identities (`Nat.multinomial` exists in
 Mathlib).  Budget total: 6–9 cycles.
 
+*C3 multinomial — RESOLVED DESIGN (2026-06-10, the delicate point made
+precise).*  Decomposition map: an admissible `(p, lev, X)` on `Fin (n+1)`
+maps to `r := (k, (f_i, m_i, data_i)_{i<k} ordered by increasing shell
+roots)`, where the shell roots `s_1 < … < s_k` are the children of `0`
+(`parent_eq_zero_iff`), the blocks `V_i` are the `shellRoot` fibers
+(`shell_fiber_partition` / `shell_fiber_disjoint`, PROVED), `f_i := X s_i`,
+`m_i + 1 := |V_i|`, and `data_i` is the subtree structure relabeled by the
+canonical bijection **`s_i ↦ 0`, rest of `V_i` order-embedded into
+`{1,…,m_i}`** (the relabeling rule must send the subtree root to `0`; a
+plain order isomorphism does not).  Fiber count: LHS data over a fixed `r`
+choose disjoint rooted blocks `(V_i, s_i)` with `s_1 < … < s_k`; ordered
+rooted-block tuples number `n!/∏ m_i!` (choose the tuple `n!/∏(m_i+1)!`
+ways, then a root in each block, `∏(m_i+1)` ways), the roots are distinct
+(blocks disjoint), and exactly one of the `k!` orderings is sorted, so
+
+    #fiber(r) ≤ n! / (k! · ∏ m_i!)        (†)
+
+— **exactly** the coefficient pattern of
+`∑_k (1/k!) (∑_{c'≁c} w(c')·B_D(c'))^k` after expanding
+`B_D(c') = ∑_m (1/m!)·treeSumRaw(c', D, m)`.  Then
+`Real.sum_le_exp_of_nonneg` (partial exponential sums) and
+`kpMajorant_le_exp` finish.  Remaining formal tasks, in order:
+(†) as a standalone counting lemma on sorted rooted-block tuples;
+the per-fiber term equality (relabeling transport of the product);
+the resummation over `n ≤ N`.
+
 ## 6. Honesty invariant (unchanged)
 
 All of this is M3 lattice-side.  None of it reduces M4/M5/Clay
