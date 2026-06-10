@@ -764,6 +764,108 @@ lemma IsBlockData.placeFun_injective (hρ : IsBlockData m ρ)
     have h1 : (π i) j = (π i) j' := (hρ.nonRootEmb i).injective h
     rw [(π i).injective h1]
 
+open Classical in
+/-- **THE BLOCK-COUNTING BOUND (†′):** ordered rooted disjoint covering
+block data with sizes `m i + 1` number at most `n!/∏ (m i)!` —
+multiplicatively, `card · ∏ (m i)! ≤ n!`.  Proof: block data together
+with local permutations inject into bijections
+`(Σ i, Fin (m i + 1)) ≃ Fin n` via the placement function, and there are
+exactly `n!` such bijections. -/
+theorem card_blockData_mul_le (m : Fin k → ℕ)
+    (hsum : ∑ i, (m i + 1) = n) :
+    ((Finset.univ : Finset (Fin k → Finset (Fin n) × Fin n)).filter
+      (fun ρ => IsBlockData m ρ)).card * ∏ i, (m i).factorial
+      ≤ n.factorial := by
+  classical
+  have hcardSig : Fintype.card (Σ i : Fin k, Fin (m i + 1)) = n := by
+    rw [Fintype.card_sigma]
+    simp only [Fintype.card_fin]
+    exact hsum
+  have e₀ : (Σ i : Fin k, Fin (m i + 1)) ≃ Fin n :=
+    Fintype.equivFinOfCardEq hcardSig
+  set f : (Fin k → Finset (Fin n) × Fin n) × (∀ i, Equiv.Perm (Fin (m i)))
+      → ((Σ i : Fin k, Fin (m i + 1)) ≃ Fin n) :=
+    fun pq => if h : IsBlockData m pq.1
+      then Equiv.ofBijective (h.placeFun pq.2)
+        ((Fintype.bijective_iff_injective_and_card _).mpr
+          ⟨h.placeFun_injective pq.2, by rw [hcardSig, Fintype.card_fin]⟩)
+      else e₀ with hfdef
+  -- blocks are recovered as images of the placement function
+  have hblock : ∀ (ρ : Fin k → Finset (Fin n) × Fin n)
+      (h : IsBlockData m ρ) (π : ∀ i, Equiv.Perm (Fin (m i))) (i : Fin k),
+      (ρ i).1 = Finset.univ.image
+        (fun l : Fin (m i + 1) => h.placeFun π ⟨i, l⟩) := by
+    intro ρ h π i
+    have hinj : Function.Injective
+        (fun l : Fin (m i + 1) => h.placeFun π ⟨i, l⟩) := by
+      intro l₁ l₂ hl
+      have h2 := h.placeFun_injective π hl
+      exact eq_of_heq (Sigma.mk.inj_iff.mp h2).2
+    have hsub : Finset.univ.image
+        (fun l : Fin (m i + 1) => h.placeFun π ⟨i, l⟩) ⊆ (ρ i).1 := by
+      intro v hv
+      obtain ⟨l, _, rfl⟩ := Finset.mem_image.mp hv
+      exact h.placeFun_mem π ⟨i, l⟩
+    have hcard : (ρ i).1.card ≤ (Finset.univ.image
+        (fun l : Fin (m i + 1) => h.placeFun π ⟨i, l⟩)).card := by
+      rw [Finset.card_image_of_injective _ hinj, Finset.card_univ,
+        Fintype.card_fin, h.2.2.2 i]
+    exact (Finset.eq_of_subset_of_card_le hsub hcard).symm
+  -- the injection on the product set
+  have hinjOn : ∀ pq₁ ∈ ((Finset.univ :
+      Finset (Fin k → Finset (Fin n) × Fin n)).filter
+        (fun ρ => IsBlockData m ρ)) ×ˢ
+      (Finset.univ : Finset (∀ i, Equiv.Perm (Fin (m i)))),
+      ∀ pq₂ ∈ ((Finset.univ :
+        Finset (Fin k → Finset (Fin n) × Fin n)).filter
+          (fun ρ => IsBlockData m ρ)) ×ˢ
+        (Finset.univ : Finset (∀ i, Equiv.Perm (Fin (m i)))),
+      f pq₁ = f pq₂ → pq₁ = pq₂ := by
+    intro pq₁ h₁ pq₂ h₂ hf
+    obtain ⟨ρ₁, π₁⟩ := pq₁
+    obtain ⟨ρ₂, π₂⟩ := pq₂
+    rw [Finset.mem_product, Finset.mem_filter] at h₁ h₂
+    have hb₁ : IsBlockData m ρ₁ := h₁.1.2
+    have hb₂ : IsBlockData m ρ₂ := h₂.1.2
+    rw [hfdef] at hf
+    simp only [dif_pos hb₁, dif_pos hb₂] at hf
+    have happ : ∀ x, hb₁.placeFun π₁ x = hb₂.placeFun π₂ x := by
+      intro x
+      simpa using DFunLike.congr_fun hf x
+    have hρ : ρ₁ = ρ₂ := by
+      funext i
+      refine Prod.ext ?_ ?_
+      · rw [hblock ρ₁ hb₁ π₁ i, hblock ρ₂ hb₂ π₂ i]
+        exact Finset.image_congr (fun l _ => happ ⟨i, l⟩)
+      · have h0 := happ ⟨i, 0⟩
+        rwa [hb₁.placeFun_zero, hb₂.placeFun_zero] at h0
+    subst hρ
+    have hπ : π₁ = π₂ := by
+      funext i
+      refine Equiv.ext fun j => ?_
+      have hs := happ ⟨i, j.succ⟩
+      rw [hb₁.placeFun_succ, hb₂.placeFun_succ] at hs
+      exact (hb₁.nonRootEmb i).injective hs
+    rw [hπ]
+  -- count
+  calc ((Finset.univ : Finset (Fin k → Finset (Fin n) × Fin n)).filter
+        (fun ρ => IsBlockData m ρ)).card * ∏ i, (m i).factorial
+      = (((Finset.univ : Finset (Fin k → Finset (Fin n) × Fin n)).filter
+          (fun ρ => IsBlockData m ρ)) ×ˢ
+          (Finset.univ : Finset (∀ i, Equiv.Perm (Fin (m i))))).card := by
+        rw [Finset.card_product, Finset.card_univ]
+        congr 1
+        rw [Fintype.card_pi]
+        exact (Finset.prod_congr rfl fun i _ => by
+          rw [Fintype.card_perm, Fintype.card_fin]).symm
+    _ ≤ (Finset.univ :
+          Finset ((Σ i : Fin k, Fin (m i + 1)) ≃ Fin n)).card :=
+        Finset.card_le_card_of_injOn f (fun _ _ => Finset.mem_univ _)
+          (fun a ha b hb h => hinjOn a (Finset.mem_coe.mp ha) b
+            (Finset.mem_coe.mp hb) h)
+    _ = n.factorial := by
+        rw [Finset.card_univ, Fintype.card_equiv e₀, hcardSig]
+
 end BlockCount
 
 end YangMills.KP
