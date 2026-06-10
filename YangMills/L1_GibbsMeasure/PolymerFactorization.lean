@@ -161,4 +161,70 @@ theorem integral_prod_plaquetteWeight_mul_of_disjoint
         (gaugeConfigEquiv (d := d) (N := N) (G := G)).left_inv y]
     exact hxy e fun heS => Finset.disjoint_left.mp hdisj heS he
 
+/-- **Iterated polymer factorization:** over a family of plaquette sets with
+pairwise-disjoint supports, the gauge expectation of the full Mayer product
+is the product of the per-component expectations —
+`∫ ∏_{c ∈ C} ∏_{p ∈ c} f_p = ∏_{c ∈ C} ∫ ∏_{p ∈ c} f_p`.
+This is the multiplicativity of polymer activities over connected
+components. -/
+theorem integral_prod_prod_plaquetteWeight_of_pairwiseDisjoint
+    {d N : ℕ} [NeZero d] [NeZero N] {G : Type*} [Group G] [MeasurableSpace G]
+    (μ : Measure G) [IsProbabilityMeasure μ] (pe : G → ℝ) (β : ℝ)
+    (C : Finset (Finset (ConcretePlaquette d N)))
+    (hdisj : ∀ c ∈ C, ∀ c' ∈ C, c ≠ c' →
+      Disjoint (c.biUnion plaquetteSupport) (c'.biUnion plaquetteSupport))
+    (hsets : ∀ c ∈ C, ∀ c' ∈ C, c ≠ c' → Disjoint c c') :
+    ∫ A, ∏ c ∈ C, ∏ p ∈ c, plaquetteWeight pe β A p
+      ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+    = ∏ c ∈ C, ∫ A, ∏ p ∈ c, plaquetteWeight pe β A p
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+  classical
+  induction C using Finset.induction_on with
+  | empty => simp
+  | insert c C' hc ih =>
+    have hdisj' : ∀ a ∈ C', ∀ b ∈ C', a ≠ b →
+        Disjoint (a.biUnion plaquetteSupport) (b.biUnion plaquetteSupport) :=
+      fun a ha b hb hab => hdisj a (Finset.mem_insert_of_mem ha)
+        b (Finset.mem_insert_of_mem hb) hab
+    have hsets' : ∀ a ∈ C', ∀ b ∈ C', a ≠ b → Disjoint a b :=
+      fun a ha b hb hab => hsets a (Finset.mem_insert_of_mem ha)
+        b (Finset.mem_insert_of_mem hb) hab
+    -- the rest of the family as a single plaquette set
+    have hbig : ∀ A : GaugeConfig d N G,
+        ∏ c' ∈ C', ∏ p ∈ c', plaquetteWeight pe β A p
+          = ∏ p ∈ C'.biUnion id, plaquetteWeight pe β A p := by
+      intro A
+      exact (Finset.prod_biUnion (fun a ha b hb hab =>
+        hsets' a (Finset.mem_coe.mp ha) b (Finset.mem_coe.mp hb) hab)).symm
+    -- support disjointness of `c` against the union of the rest
+    have hcd : Disjoint (c.biUnion plaquetteSupport)
+        ((C'.biUnion id).biUnion plaquetteSupport) := by
+      rw [Finset.biUnion_biUnion]
+      rw [Finset.disjoint_biUnion_right]
+      intro c' hc'
+      have hne : c ≠ c' := fun h => hc (h ▸ hc')
+      have := hdisj c (Finset.mem_insert_self c C')
+        c' (Finset.mem_insert_of_mem hc') hne
+      rw [Finset.disjoint_biUnion_right] at this ⊢
+      intro p hp
+      exact this p hp
+    rw [Finset.prod_insert hc]
+    have hins : ∀ A : GaugeConfig d N G,
+        ∏ c' ∈ insert c C', ∏ p ∈ c', plaquetteWeight pe β A p
+          = (∏ p ∈ c, plaquetteWeight pe β A p) *
+            ∏ c' ∈ C', ∏ p ∈ c', plaquetteWeight pe β A p :=
+      fun A => Finset.prod_insert hc
+    simp only [hins]
+    have hsplit : ∫ A, (∏ p ∈ c, plaquetteWeight pe β A p) *
+          ∏ c' ∈ C', ∏ p ∈ c', plaquetteWeight pe β A p
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+        = (∫ A, ∏ p ∈ c, plaquetteWeight pe β A p
+            ∂(gaugeMeasureFrom (d := d) (N := N) μ)) *
+          ∫ A, ∏ c' ∈ C', ∏ p ∈ c', plaquetteWeight pe β A p
+            ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+      simp only [hbig]
+      exact integral_prod_plaquetteWeight_mul_of_disjoint μ pe β
+        c (C'.biUnion id) hcd
+    rw [hsplit, ih hdisj' hsets']
+
 end YangMills
