@@ -470,4 +470,76 @@ lemma componentPartition_edge_same_part {n : ℕ}
   exact componentPartition_part_closed E a a b hab
     ((componentPartition E).mem_part (Finset.mem_univ a))
 
+open Classical in
+/-- **A1: fiber components are block data.**  If the component partition
+of `E` is `π`, the within-`B` part of `E` is a within-`B`,
+`B`-connecting edge set, for every part `B`. -/
+lemma filter_within_mem_of_cp_eq {n : ℕ} {A : Finset (Sym2 (Fin n))}
+    {E : Finset (Sym2 (Fin n))} (hE : E ∈ A.powerset)
+    {π : Finpartition (Finset.univ : Finset (Fin n))}
+    (hcp : componentPartition E = π) {B : Finset (Fin n)}
+    (hB : B ∈ π.parts) :
+    E.filter (fun e => ∀ u ∈ e, u ∈ B) ∈ A.powerset.filter
+      (fun E' : Finset (Sym2 (Fin n)) =>
+        (∀ e ∈ E', ∀ v ∈ e, v ∈ B) ∧
+        ∀ v ∈ B, ∀ w ∈ B, (SimpleGraph.fromEdgeSet
+          (↑E' : Set (Sym2 (Fin n)))).Reachable v w) := by
+  subst hcp
+  rw [Finset.mem_filter, Finset.mem_powerset]
+  refine ⟨subset_trans (Finset.filter_subset _ _)
+    (Finset.mem_powerset.mp hE), ?_, ?_⟩
+  · intro e he
+    exact (Finset.mem_filter.mp he).2
+  · intro v hv w hw
+    have hBv : (componentPartition E).part v = B :=
+      (componentPartition E).part_eq_of_mem hB hv
+    have hreach : (SimpleGraph.fromEdgeSet
+        (↑E : Set (Sym2 (Fin n)))).Reachable v w := by
+      rw [← mem_componentPartition_part_iff, hBv]
+      exact hw
+    have hcl : ∀ a b : Fin n, s(a, b) ∈ E → a ∈ B → b ∈ B := by
+      intro a b hab ha
+      rw [← hBv] at ha ⊢
+      exact componentPartition_part_closed E v a b hab ha
+    obtain ⟨p⟩ := hreach
+    exact reachable_filter_of_closed E B hcl p hv
+
+open Classical in
+/-- **A2: the edge decomposition.**  An edge set is the union of its
+within-part components. -/
+lemma biUnion_filter_within_parts {n : ℕ} {E : Finset (Sym2 (Fin n))}
+    {π : Finpartition (Finset.univ : Finset (Fin n))}
+    (hcp : componentPartition E = π) :
+    π.parts.biUnion (fun B => E.filter (fun e => ∀ u ∈ e, u ∈ B))
+      = E := by
+  subst hcp
+  ext e
+  rw [Finset.mem_biUnion]
+  constructor
+  · rintro ⟨B, _, he⟩
+    exact (Finset.mem_filter.mp he).1
+  · intro he
+    revert he
+    refine Sym2.ind (fun a b => ?_) e
+    intro he
+    refine ⟨(componentPartition E).part a,
+      ((componentPartition E).part_mem).mpr (Finset.mem_univ a),
+      Finset.mem_filter.mpr ⟨he, fun u hu => ?_⟩⟩
+    rcases Sym2.mem_iff.mp hu with rfl | rfl
+    · exact (componentPartition E).mem_part (Finset.mem_univ u)
+    · exact componentPartition_edge_same_part E he
+
+open Classical in
+/-- Within-part edge sets of disjoint parts are disjoint. -/
+lemma filter_within_disjoint {n : ℕ} (E : Finset (Sym2 (Fin n)))
+    {B B' : Finset (Fin n)} (hd : Disjoint B B') :
+    Disjoint (E.filter (fun e => ∀ u ∈ e, u ∈ B))
+      (E.filter (fun e => ∀ u ∈ e, u ∈ B')) := by
+  rw [Finset.disjoint_left]
+  intro e he he'
+  have hw1 := (Finset.mem_filter.mp he).2
+  have hw2 := (Finset.mem_filter.mp he').2
+  obtain ⟨u, hu⟩ : ∃ u, u ∈ e := ⟨e.out.1, Sym2.out_fst_mem e⟩
+  exact (Finset.disjoint_left.mp hd (hw1 u hu)) (hw2 u hu)
+
 end YangMills.KP
