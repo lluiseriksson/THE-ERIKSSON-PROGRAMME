@@ -1856,6 +1856,73 @@ lemma sum_structures_blockSum (P : PolymerSystem) [Fintype P.Polymer]
   refine Finset.sum_congr rfl fun c' _ => ?_
   rw [treeSumRaw_eq_sum_inner, Finset.mul_sum]
 
+open Classical in
+/-- **Structures are determined by their fiber interiors (the injection's
+spine):** two canonical admissible structures with the same enumerated
+shell and the same fibers, agreeing on parents and levels away from the
+shell roots, are equal — roots and the origin are forced (`p = 0`,
+`lev = 1` at roots; canonicity at `0`), and the fibers cover everything
+else. -/
+lemma structure_determined {n D : ℕ}
+    {p₁ p₂ : Fin (n + 1) → Fin (n + 1)}
+    {lev₁ lev₂ : Fin (n + 1) → Fin (D + 2)}
+    (h₁ : IsAdmissible p₁ lev₁) (h₂ : IsAdmissible p₂ lev₂)
+    (hc₁ : p₁ 0 = 0) (hc₂ : p₂ 0 = 0) {k : ℕ}
+    {σ : Fin k → Fin (n + 1)}
+    (hσr₁ : Finset.univ.image σ
+      = (Finset.univ : Finset (Fin (n + 1))).filter
+          (fun s => s ≠ 0 ∧ p₁ s = 0))
+    (hσr₂ : Finset.univ.image σ
+      = (Finset.univ : Finset (Fin (n + 1))).filter
+          (fun s => s ≠ 0 ∧ p₂ s = 0))
+    (hpar : ∀ (i : Fin k) (v : Fin (n + 1)),
+      v ∈ shellFiber p₁ lev₁ (σ i) → v ≠ σ i →
+        p₁ v = p₂ v ∧ (lev₁ v : ℕ) = (lev₂ v : ℕ)) :
+    p₁ = p₂ ∧ lev₁ = lev₂ := by
+  classical
+  have hroots : ∀ i : Fin k,
+      (σ i ≠ 0 ∧ p₁ (σ i) = 0) ∧ p₂ (σ i) = 0 := by
+    intro i
+    have hm₁ : σ i ∈ (Finset.univ : Finset (Fin (n + 1))).filter
+        (fun s => s ≠ 0 ∧ p₁ s = 0) := by
+      rw [← hσr₁]
+      exact Finset.mem_image_of_mem _ (Finset.mem_univ i)
+    have hm₂ : σ i ∈ (Finset.univ : Finset (Fin (n + 1))).filter
+        (fun s => s ≠ 0 ∧ p₂ s = 0) := by
+      rw [← hσr₂]
+      exact Finset.mem_image_of_mem _ (Finset.mem_univ i)
+    exact ⟨(Finset.mem_filter.mp hm₁).2, (Finset.mem_filter.mp hm₂).2.2⟩
+  have hlev1 : ∀ i : Fin k,
+      ((lev₁ (σ i) : ℕ)) = 1 ∧ ((lev₂ (σ i) : ℕ)) = 1 := fun i =>
+    ⟨(h₁.parent_eq_zero_iff (hroots i).1.1).mp (hroots i).1.2,
+      (h₂.parent_eq_zero_iff (hroots i).1.1).mp (hroots i).2⟩
+  have hloc : ∀ v : Fin (n + 1), v ≠ 0 →
+      ∃ i, v ∈ shellFiber p₁ lev₁ (σ i) := by
+    intro v hv0
+    have hsr0 := h₁.shellRoot_ne_zero hv0
+    have hsrp := h₁.parent_shellRoot hv0
+    have hmem : shellRoot p₁ lev₁ v ∈ Finset.univ.image σ := by
+      rw [hσr₁]
+      exact Finset.mem_filter.mpr ⟨Finset.mem_univ _, hsr0, hsrp⟩
+    obtain ⟨i, -, hi⟩ := Finset.mem_image.mp hmem
+    exact ⟨i, mem_shellFiber.mpr ⟨hv0, hi.symm⟩⟩
+  constructor
+  · funext v
+    by_cases hv0 : v = 0
+    · rw [hv0, hc₁, hc₂]
+    · obtain ⟨i, hvfib⟩ := hloc v hv0
+      by_cases hvs : v = σ i
+      · rw [hvs, (hroots i).1.2, (hroots i).2]
+      · exact (hpar i v hvfib hvs).1
+  · funext v
+    apply Fin.ext
+    by_cases hv0 : v = 0
+    · rw [hv0, congrArg Fin.val h₁.1, congrArg Fin.val h₂.1]
+    · obtain ⟨i, hvfib⟩ := hloc v hv0
+      by_cases hvs : v = σ i
+      · rw [hvs, (hlev1 i).1, (hlev1 i).2]
+      · exact (hpar i v hvfib hvs).2
+
 end MasterAssembly
 
 end BlockCount
