@@ -114,19 +114,30 @@ That closes volume-uniformity entirely.
 supported on genuine clusters), `clusterSum_eq_sum_clusters`
 (KP/Expansion.lean), and the Penrose bound `abs_ursell_le_card_spanningTrees`.
 
-**First brick for the next session** (choose one):
+**Pinned walk bound — CLOSED (2026-06-10, `KP/PinnedWalk.lean`).**
+`tree_walk_bound_pinned`: `∑_{X : X r = x₀} ∏_{v≠r} I(X(p v))(X v)·w(X v)
+≤ Aⁿ` — and NOT by reworking the induction: derived from the free
+`tree_walk_bound` via the **Option-marker construction** (extend values to
+`Option β`; `none` is a synthetic root value of weight `T` interacting like
+`x₀` via `I'(none, some y) = I(x₀,y)`, forbidden at non-root vertices via
+`I'(·, none) = 0`; the free bound gives `T·Pinned ≤ Aⁿ(T + ∑w)` for all
+`T ≥ 0`, and one large `T` forces `Pinned ≤ Aⁿ`).  Oracle clean.  This
+trick is reusable wherever a fiber of a free sum is needed.
 
-* *(easier, not sharp yet)* **Pinned walk bound**: rework
-  `tree_walk_bound` (WalkBound.lean) with the root fiber fixed:
-  `∑_{X : X r = x₀} ∏_{v≠r} I(X(p v))(X v)·w(X v) ≤ Aⁿ` — same
-  leaf-removal induction, root never summed.  Corollary: pinned per-size
-  bound `pinnedClusterWeight P c n ≤ ‖z c‖·(e·A)ⁿ`.  Warm-up that
-  factors the pin correctly but still carries the uniform `A`.
-* *(the real one)* **Shell decomposition** (§2 Route A): a cluster pinned
-  at `c` decomposes into its first shell (polymers incompatible with `c`)
-  and sub-clusters attached to shell elements.  Needs a components-of-
-  vertex-deleted-graph lemma; budget 5–8 cycles; this is where the
-  criterion's `e^{a}` weights get consumed shell by shell.
+**Next bricks** (in order):
+
+1. **Pinned assignment + pinned per-size bound**: instantiate
+   `tree_walk_bound_pinned` at the polymer objects (mirror
+   `tree_assignment_sum_le` in KPBound.lean, root pinned at coordinate 0),
+   then re-trace the `kp_per_size_bound` assembly with the pin:
+   `pinnedClusterWeight P c n ≤ ‖z c‖·(e·A)ⁿ`.  Mostly mechanical
+   mirroring of the existing assembly; still carries the uniform `A`.
+2. *(the real one)* **Shell decomposition** (§2 Route A): a cluster pinned
+   at `c` decomposes into its first shell (polymers incompatible with `c`)
+   and sub-clusters attached to shell elements.  Needs a components-of-
+   vertex-deleted-graph lemma; budget 5–8 cycles; this is where the
+   criterion's `e^{a}` weights get consumed shell by shell and the uniform
+   `A` disappears.
 
 ## 6. Honesty invariant (unchanged)
 
