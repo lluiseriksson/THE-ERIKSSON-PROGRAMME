@@ -203,22 +203,42 @@ commits `6074b9c..4253225`, all oracle-clean):**
   literal `⟨⇑f, hmaprel⟩` — a `have`-bound hom is opaque and its
   coercion will NOT reduce, a hard-won idiom).
 
-**Remaining for B0a (next session):**
+**B0a progress, continued (same session, commits `043896a..f30641e`):**
 
-1. The per-block sum identification: for `B : Finset (Fin n)`,
-   `hm : B.card = m`, with `emb := fun i => ↑(B.orderIsoOfFin hm i)`:
-   `∑_{E ⊆ edgeFinset(G_X), edges within B, all of B mutually reachable}
-     (−1)^{|E|} = ursell P (X ∘ emb)` — the bijection is
-   `E' ↦ E'.image (Sym2.map emb)` (image characterized by the
-   within-`B` condition; injectivity/card as in step 1; connectivity
-   via `reachable_image_iff` + surjectivity of `emb` onto `B`).
-2. The component partition `Finpartition` of `fromEdgeSet E`
-   (via `Finpartition.ofSetoid` on the reachability setoid) and the
-   fibration of the full powerset sum over it (the ite-collapse idiom);
-   per-π fibers split as products over blocks (edges partition by
-   components; `(−1)^{|E|}` multiplicative).
-3. Compose with `sum_neg_one_pow_eq_indicator` → the partition
-   identity; then B0b.
+* Step 3 CLOSED: **`sum_blockConnected_eq_ursell`** — the per-block
+  identification (image/preimage-filter bijection with the retraction
+  lemma `hretract`; `reachable_image_iff`; `connected_iff` +
+  `card_pos`).  Hard-won: filter binders over edge-set Finsets MUST be
+  type-annotated `(fun E : Finset (Sym2 (Fin n)) => …)` or the
+  elaborator drifts to `Set`-typed binders and inserts powerset
+  coercion images.  Statement needs `hB : B.Nonempty` (for `B = ∅` the
+  LHS is 1 but `ursell` on `Fin 0` is 0).
+* Step 4a CLOSED: `reachable_filter_of_closed` (walks never leave
+  adjacency-closed sets — `[propext, Quot.sound]`-pure),
+  `componentPartition` (`Finpartition.ofSetoid` on
+  `reachableSetoid`), `mem_componentPartition_part_iff`,
+  `componentPartition_part_closed`, `componentPartition_edge_same_part`.
+
+**Remaining for B0a (the fibration core, next session):**
+
+1. (★) per-π fiber factorization:
+   `∑_{E ⊆ edgeFinset(G_X) : componentPartition E = π} (−1)^{|E|}
+     = ∏_{B ∈ π.parts} (blockConn-sum B)`.
+   Bijection: `E ↦ (fun B _ => E.filter (fun e => ∀ u ∈ e, u ∈ B))`
+   into `π.parts.pi (blockConn-sets)`, with `Finset.prod_sum` for the
+   product-of-sums ↔ choice-function side.  Ingredients all proved:
+   within-part edges (`componentPartition_edge_same_part` + part
+   disjointness), per-part connecting (`reachable_filter_of_closed`
+   with part-closure), union reconstruction (`Finset.biUnion` over
+   `parts.attach`), cardinality additivity (`Finset.card_biUnion` on
+   disjoint within-part sets), `(−1)^{∑} = ∏(−1)^{·}`.
+   The delicate spot: `componentPartition U = π` for the reconstructed
+   union `U` — prove via part-wise equality and `Finpartition.ext`
+   (check the exact Finpartition extensionality API first).
+2. Fibration of the powerset sum over `π` (ite-collapse idiom — sum
+   over `Finpartition univ`, a Fintype) + compose with
+   `sum_neg_one_pow_eq_indicator` and step 3 → the partition identity.
+3. Then B0b (the analytic resummation).
 
 ## 3. Order of work and budgets
 
