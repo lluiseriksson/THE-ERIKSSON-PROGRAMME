@@ -444,6 +444,84 @@ lemma IsLazyClosedWalk.extend [DecidableEq V] {R : V → V → Prop}
           rw [dif_neg (by simp; omega), if_neg (by simp; omega)]
           congr 1
 
+/-- **First-exit crossing:** a graph walk from inside `S` to outside `S`
+uses an edge from `S` to its complement. -/
+lemma exists_adj_crossing_of_walk {α : Type*} {G : SimpleGraph α} {S : Set α} :
+    ∀ {a b : α}, G.Walk a b → a ∈ S → b ∉ S →
+      ∃ u v, G.Adj u v ∧ u ∈ S ∧ v ∉ S := by
+  intro a b p
+  induction p with
+  | nil => intro ha hb; exact absurd ha hb
+  | @cons u v w h q ih =>
+      intro ha hb
+      by_cases hv : v ∈ S
+      · exact ih hv hb
+      · exact ⟨u, v, h, ha, hv⟩
+
+private lemma covering_aux {V : Type*} [DecidableEq V] {R : V → V → Prop}
+    (hsym : ∀ a b, R a b → R b a) {c : Finset V} {v₀ : V}
+    (hcross : ∀ s : Finset V, v₀ ∈ s → s ⊆ c → s ≠ c →
+      ∃ y ∈ s, ∃ x ∈ c, x ∉ s ∧ R y x) :
+    ∀ (m : ℕ) (s : Finset V), v₀ ∈ s → s ⊆ c → c.card - s.card = m →
+      ∀ (L : ℕ) (w : Fin (L + 1) → V), IsLazyClosedWalk R v₀ w →
+        Finset.image w Finset.univ = s →
+        ∃ (L' : ℕ) (w' : Fin (L' + 1) → V), L' = L + 2 * m ∧
+          IsLazyClosedWalk R v₀ w' ∧ Finset.image w' Finset.univ = c := by
+  intro m
+  induction m with
+  | zero =>
+      intro s hv hsub hcard L w hw himg
+      have hle : c.card ≤ s.card := by
+        have := Finset.card_le_card hsub
+        omega
+      have hsc : s = c := Finset.eq_of_subset_of_card_le hsub hle
+      exact ⟨L, w, by omega, hw, hsc ▸ himg⟩
+  | succ m ih =>
+      intro s hv hsub hcard L w hw himg
+      have hne : s ≠ c := by
+        intro h
+        rw [h] at hcard
+        omega
+      obtain ⟨y, hy, x, hxc, hxs, hxy⟩ := hcross s hv hsub hne
+      have hyim : y ∈ Finset.image w Finset.univ := himg ▸ hy
+      obtain ⟨k, -, hk⟩ := Finset.mem_image.mp hyim
+      have hRk : R (w k) x := by rw [hk]; exact hxy
+      obtain ⟨w₂, hw₂, himg₂⟩ := hw.extend hsym k hRk
+      have himg₂' : Finset.image w₂ Finset.univ = insert x s := by
+        rw [himg₂, himg]
+      obtain ⟨L', w', hL', hw', himgc⟩ := ih (insert x s)
+        (Finset.mem_insert_of_mem hv)
+        (Finset.insert_subset hxc hsub)
+        (by rw [Finset.card_insert_of_notMem hxs]; omega)
+        (L + 2) w₂ hw₂ himg₂'
+      exact ⟨L', w', by omega, hw', himgc⟩
+
+/-- **THE COVERING-WALK THEOREM:** any finite set with the boundary-crossing
+property (in particular: any connected set) containing `v₀` is the exact
+range of a lazy closed walk from `v₀` of length `2(|c| − 1)`.  Greedy
+growth: while the walk's range is a proper subset, connectivity provides a
+boundary edge and the splice lemma absorbs it.  With `card_relWalks_le`
+this caps the number of such sets by `(Δ+1)^{2(|c|−1)}` — the
+volume-independent lattice-animal entropy bound. -/
+theorem exists_covering_lazyWalk {V : Type*} [DecidableEq V]
+    (R : V → V → Prop) (hsym : ∀ a b, R a b → R b a)
+    (c : Finset V) (v₀ : V) (hv₀ : v₀ ∈ c)
+    (hcross : ∀ s : Finset V, v₀ ∈ s → s ⊆ c → s ≠ c →
+      ∃ y ∈ s, ∃ x ∈ c, x ∉ s ∧ R y x) :
+    ∃ w : Fin (2 * (c.card - 1) + 1) → V,
+      IsLazyClosedWalk R v₀ w ∧ Finset.image w Finset.univ = c := by
+  have hbase : IsLazyClosedWalk R v₀ (fun _ : Fin 1 => v₀) :=
+    ⟨rfl, rfl, fun k => k.elim0⟩
+  have hbimg : Finset.image (fun _ : Fin 1 => v₀) Finset.univ = {v₀} := by
+    simp
+  obtain ⟨L', w', hL', hw', himg⟩ := covering_aux hsym hcross (c.card - 1)
+    {v₀} (Finset.mem_singleton_self v₀)
+    (Finset.singleton_subset_iff.mpr hv₀)
+    (by rw [Finset.card_singleton]) 0 (fun _ => v₀) hbase hbimg
+  have hL : L' = 2 * (c.card - 1) := by omega
+  subst hL
+  exact ⟨w', hw', himg⟩
+
 end LazyWalks
 
 end YangMills
