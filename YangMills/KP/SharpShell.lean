@@ -1923,6 +1923,55 @@ lemma structure_determined {n D : ℕ}
       · rw [hvs, (hlev1 i).1, (hlev1 i).2]
       · exact (hpar i v hvfib hvs).2
 
+open Classical in
+/-- **The class parent map** — `subtreeParent` rebuilt against a *fixed*
+block `(F, s)` (the per-class form of the final injection; no dependence
+on the structure's own fiber in the type). -/
+noncomputable def classParent (F : Finset (Fin (n + 1))) (s : Fin (n + 1))
+    (hsF : s ∈ F) {m : ℕ} (hm : (F.erase s).card = m)
+    (p : Fin (n + 1) → Fin (n + 1))
+    (hstab : ∀ l : Fin (m + 1), l ≠ 0 → p (markedEmb F s hm l) ∈ F) :
+    Fin (m + 1) → Fin (m + 1) :=
+  fun l => if hl : l = 0 then 0
+    else (markedEquiv F hsF hm).symm
+      ⟨p (markedEmb F s hm l), hstab l hl⟩
+
+open Classical in
+/-- On a structure's own fiber, the class parent map is the subtree
+parent map. -/
+lemma classParent_eq_subtreeParent {n D : ℕ}
+    {p : Fin (n + 1) → Fin (n + 1)} {lev : Fin (n + 1) → Fin (D + 2)}
+    (h : IsAdmissible p lev) {s : Fin (n + 1)} (hs : s ≠ 0)
+    (hs1 : (lev s : ℕ) = 1)
+    (hstab : ∀ l : Fin (((shellFiber p lev s).erase s).card + 1), l ≠ 0 →
+      p (markedEmb (shellFiber p lev s) s rfl l) ∈ shellFiber p lev s) :
+    classParent (shellFiber p lev s) s (self_mem_shellFiber hs hs1) rfl
+      p hstab = subtreeParent h hs hs1 rfl := by
+  funext l
+  unfold classParent subtreeParent
+  by_cases hl : l = 0
+  · rw [dif_pos hl, dif_pos hl]
+  · rw [dif_neg hl, dif_neg hl]
+    congr 1
+
+open Classical in
+/-- The stability hypothesis holds on a structure's own fiber. -/
+lemma shellFiber_stab {n D : ℕ} {p : Fin (n + 1) → Fin (n + 1)}
+    {lev : Fin (n + 1) → Fin (D + 2)} (h : IsAdmissible p lev)
+    {s : Fin (n + 1)} (hs : s ≠ 0) (hs1 : (lev s : ℕ) = 1) :
+    ∀ l : Fin (((shellFiber p lev s).erase s).card + 1), l ≠ 0 →
+      p (markedEmb (shellFiber p lev s) s rfl l) ∈ shellFiber p lev s := by
+  intro l hl
+  have hmem : markedEmb (shellFiber p lev s) s rfl l ∈ shellFiber p lev s :=
+    markedEmb_mem _ (self_mem_shellFiber hs hs1) rfl l
+  have hne : markedEmb (shellFiber p lev s) s rfl l ≠ s := by
+    intro hEq
+    apply hl
+    have h0 : markedEmb (shellFiber p lev s) s rfl 0 = s :=
+      markedEmb_zero _ _ _
+    exact markedEmb_injective _ _ rfl (hEq.trans h0.symm)
+  exact (shellFiber_parent_mem h hmem hne).2.2
+
 end MasterAssembly
 
 end BlockCount
