@@ -125,14 +125,18 @@ session as the plan; `KP/ClusterTail.lean`, commit `112c2d2`)
 `PolymerSystem.tilt` (ursell invariant — literally `rfl`),
 `tilt_norm_activity`, `pinnedClusterWeightGE` (+ nonneg),
 `pinnedClusterWeightGE_le_tilt`, and **`kp_pinned_cluster_tail_bound`**
-(A†) are all proved and oracle-clean.  What remains of Half A is only
-the LATTICE instantiation: `KPCriterion (P_lattice.tilt (ε·|·|)) a` for
-suitable `a` — a two-parameter generalization of
-`connectedLatticePolymerSystem_kpCriterion_volumeUniform` (separate the
-exponent parameter from the weight parameter in its proof; the entropy
-engine is untouched).  Note the criterion for the tilted system is
-literally the untilted criterion shape with exponent shifted by `ε`,
-since `‖z_ε(c')‖·e^{t|c'|} = ‖z(c')‖·e^{(t+ε)|c'|}`.
+(A†) are all proved and oracle-clean.
+
+**Half A is now FULLY closed including the lattice level**
+(commit `aaa6804`):
+`connectedLatticePolymerSystem_tilt_kpCriterion_volumeUniform`
+(ConnectedEntropy.lean — the criterion proof body replicated with
+`x := (e^{|β|B}−1)·e^{t+ε}` and the tilted `hterm`; the tilt and the
+weight combine into one exponential so only the smallness window
+shifts) and **`connectedLattice_pinned_tail_volumeUniform`** — the
+exponential size-tail `e^{-εL}` for the connected lattice gas with all
+constants depending only on `d, B, β, t, ε`.  Next: Half B
+(B3 geometry, then the B2 design decision).
 
 Parser note for the next session: long `∑ X ∈ (… : …).filter (…)`
 terms as `calc` HEADS need continuation lines indented deeper than the
