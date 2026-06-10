@@ -630,59 +630,50 @@ section BlockCount
 variable {n k : ℕ}
 
 /-- **Ordered rooted-block data** with prescribed sizes: `k` pairwise
-disjoint blocks covering `Fin n`, each with a marked root, block `i` of
-size `m i + 1`.  These parametrize the fibers of the shell decomposition
-(unsorted form — see `docs/SHARP-KP-PLAN.md`, C3 design correction). -/
-def IsBlockData (m : Fin k → ℕ) (ρ : Fin k → Finset (Fin n) × Fin n) :
-    Prop :=
+disjoint blocks covering a fixed set `U`, each with a marked root,
+block `i` of size `m i + 1`.  These parametrize the fibers of the shell
+decomposition (unsorted form; `U` will be the non-root vertices — see
+`docs/SHARP-KP-PLAN.md`, C3 design correction). -/
+def IsBlockData (U : Finset (Fin n)) (m : Fin k → ℕ)
+    (ρ : Fin k → Finset (Fin n) × Fin n) : Prop :=
   (∀ i j, i ≠ j → Disjoint (ρ i).1 (ρ j).1) ∧
-  (Finset.univ.biUnion (fun i => (ρ i).1) = Finset.univ) ∧
+  (Finset.univ.biUnion (fun i => (ρ i).1) = U) ∧
   (∀ i, (ρ i).2 ∈ (ρ i).1) ∧ (∀ i, (ρ i).1.card = m i + 1)
 
-/-- Block sizes account for every vertex: `∑ (m i + 1) = n`. -/
-lemma IsBlockData.sum_card {m : Fin k → ℕ}
-    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData m ρ) :
-    ∑ i, (m i + 1) = n := by
+/-- Each block sits inside the cover. -/
+lemma IsBlockData.block_subset {U : Finset (Fin n)} {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData U m ρ)
+    (i : Fin k) : (ρ i).1 ⊆ U := by
   classical
-  have h1 : (Finset.univ : Finset (Fin n)).card = n := by simp
-  rw [← h1, ← hρ.2.1, Finset.card_biUnion]
-  · exact Finset.sum_congr rfl fun i _ => (hρ.2.2.2 i).symm
-  · intro i _ j _ hij
-    exact hρ.1 i j hij
+  rw [← hρ.2.1]
+  exact Finset.subset_biUnion_of_mem (fun j => (ρ j).1) (Finset.mem_univ i)
 
-/-- Every vertex lies in exactly one block. -/
-lemma IsBlockData.existsUnique_mem {m : Fin k → ℕ}
-    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData m ρ)
-    (v : Fin n) : ∃! i, v ∈ (ρ i).1 := by
-  have hv : v ∈ Finset.univ.biUnion (fun i => (ρ i).1) := by
+/-- Block sizes account for the whole cover: `∑ (m i + 1) = U.card`. -/
+lemma IsBlockData.sum_card {U : Finset (Fin n)} {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData U m ρ) :
+    ∑ i, (m i + 1) = U.card := by
+  classical
+  have hcb : (Finset.univ.biUnion (fun i => (ρ i).1)).card
+      = ∑ i, (ρ i).1.card :=
+    Finset.card_biUnion (fun i _ j _ hij => hρ.1 i j hij)
+  rw [← hρ.2.1, hcb]
+  exact Finset.sum_congr rfl fun i _ => (hρ.2.2.2 i).symm
+
+/-- Every covered vertex lies in exactly one block. -/
+lemma IsBlockData.existsUnique_mem {U : Finset (Fin n)} {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData U m ρ)
+    {v : Fin n} (hv : v ∈ U) : ∃! i, v ∈ (ρ i).1 := by
+  have hv' : v ∈ Finset.univ.biUnion (fun i => (ρ i).1) := by
     rw [hρ.2.1]
-    exact Finset.mem_univ v
-  obtain ⟨i, _, hi⟩ := Finset.mem_biUnion.mp hv
+    exact hv
+  obtain ⟨i, _, hi⟩ := Finset.mem_biUnion.mp hv'
   refine ⟨i, hi, fun j hj => ?_⟩
   by_contra hne
   exact (Finset.disjoint_left.mp (hρ.1 j i hne) hj) hi
 
-/-- The block index of a vertex. -/
-noncomputable def IsBlockData.blockIndex {m : Fin k → ℕ}
-    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData m ρ)
-    (v : Fin n) : Fin k :=
-  (hρ.existsUnique_mem v).exists.choose
-
-lemma IsBlockData.mem_blockIndex {m : Fin k → ℕ}
-    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData m ρ)
-    (v : Fin n) : v ∈ (ρ (hρ.blockIndex v)).1 :=
-  (hρ.existsUnique_mem v).exists.choose_spec
-
-lemma IsBlockData.blockIndex_eq {m : Fin k → ℕ}
-    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData m ρ)
-    {v : Fin n} {i : Fin k} (h : v ∈ (ρ i).1) :
-    hρ.blockIndex v = i := by
-  have huniq := hρ.existsUnique_mem v
-  exact (huniq.unique (hρ.mem_blockIndex v) h)
-
 /-- Roots of distinct blocks are distinct. -/
-lemma IsBlockData.root_injective {m : Fin k → ℕ}
-    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData m ρ)
+lemma IsBlockData.root_injective {U : Finset (Fin n)} {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData U m ρ)
     {i j : Fin k} (h : (ρ i).2 = (ρ j).2) : i = j := by
   by_contra hne
   have hi := hρ.2.2.1 i
@@ -690,41 +681,42 @@ lemma IsBlockData.root_injective {m : Fin k → ℕ}
   rw [h] at hi
   exact (Finset.disjoint_left.mp (hρ.1 i j hne) hi) hj
 
-variable {m : Fin k → ℕ} {ρ : Fin k → Finset (Fin n) × Fin n}
+variable {U : Finset (Fin n)} {m : Fin k → ℕ}
+  {ρ : Fin k → Finset (Fin n) × Fin n}
 
 /-- The increasing enumeration of a block's non-root elements. -/
-def IsBlockData.nonRootEmb (hρ : IsBlockData m ρ) (i : Fin k) :
+def IsBlockData.nonRootEmb (hρ : IsBlockData U m ρ) (i : Fin k) :
     Fin (m i) ↪o Fin n :=
   Finset.orderEmbOfFin ((ρ i).1.erase (ρ i).2) (by
     rw [Finset.card_erase_of_mem (hρ.2.2.1 i), hρ.2.2.2 i]
     omega)
 
-lemma IsBlockData.nonRootEmb_mem (hρ : IsBlockData m ρ) (i : Fin k)
+lemma IsBlockData.nonRootEmb_mem (hρ : IsBlockData U m ρ) (i : Fin k)
     (j : Fin (m i)) : hρ.nonRootEmb i j ∈ (ρ i).1 :=
   Finset.mem_of_mem_erase (Finset.orderEmbOfFin_mem _ _ _)
 
-lemma IsBlockData.nonRootEmb_ne_root (hρ : IsBlockData m ρ) (i : Fin k)
+lemma IsBlockData.nonRootEmb_ne_root (hρ : IsBlockData U m ρ) (i : Fin k)
     (j : Fin (m i)) : hρ.nonRootEmb i j ≠ (ρ i).2 :=
   (Finset.mem_erase.mp (Finset.orderEmbOfFin_mem _ _ _)).1
 
 /-- **The placement function**: list each block root-first, then its
 non-root elements in increasing order twisted by a local permutation. -/
-def IsBlockData.placeFun (hρ : IsBlockData m ρ)
+def IsBlockData.placeFun (hρ : IsBlockData U m ρ)
     (π : ∀ i, Equiv.Perm (Fin (m i))) :
     (Σ i : Fin k, Fin (m i + 1)) → Fin n :=
   fun x => Fin.cases ((ρ x.1).2)
     (fun j => hρ.nonRootEmb x.1 ((π x.1) j)) x.2
 
-lemma IsBlockData.placeFun_zero (hρ : IsBlockData m ρ)
+lemma IsBlockData.placeFun_zero (hρ : IsBlockData U m ρ)
     (π : ∀ i, Equiv.Perm (Fin (m i))) (i : Fin k) :
     hρ.placeFun π ⟨i, 0⟩ = (ρ i).2 := rfl
 
-lemma IsBlockData.placeFun_succ (hρ : IsBlockData m ρ)
+lemma IsBlockData.placeFun_succ (hρ : IsBlockData U m ρ)
     (π : ∀ i, Equiv.Perm (Fin (m i))) (i : Fin k) (j : Fin (m i)) :
     hρ.placeFun π ⟨i, j.succ⟩ = hρ.nonRootEmb i ((π i) j) := by
   simp [IsBlockData.placeFun]
 
-lemma IsBlockData.placeFun_mem (hρ : IsBlockData m ρ)
+lemma IsBlockData.placeFun_mem (hρ : IsBlockData U m ρ)
     (π : ∀ i, Equiv.Perm (Fin (m i)))
     (x : Σ i : Fin k, Fin (m i + 1)) :
     hρ.placeFun π x ∈ (ρ x.1).1 := by
@@ -736,7 +728,7 @@ lemma IsBlockData.placeFun_mem (hρ : IsBlockData m ρ)
     rw [hρ.placeFun_succ]
     exact hρ.nonRootEmb_mem i _
 
-lemma IsBlockData.placeFun_injective (hρ : IsBlockData m ρ)
+lemma IsBlockData.placeFun_injective (hρ : IsBlockData U m ρ)
     (π : ∀ i, Equiv.Perm (Fin (m i))) :
     Function.Injective (hρ.placeFun π) := by
   rintro ⟨i, l⟩ ⟨i', l'⟩ h
@@ -765,34 +757,38 @@ lemma IsBlockData.placeFun_injective (hρ : IsBlockData m ρ)
     rw [(π i).injective h1]
 
 open Classical in
-/-- **THE BLOCK-COUNTING BOUND (†′):** ordered rooted disjoint covering
-block data with sizes `m i + 1` number at most `n!/∏ (m i)!` —
-multiplicatively, `card · ∏ (m i)! ≤ n!`.  Proof: block data together
-with local permutations inject into bijections
-`(Σ i, Fin (m i + 1)) ≃ Fin n` via the placement function, and there are
-exactly `n!` such bijections. -/
-theorem card_blockData_mul_le (m : Fin k → ℕ)
-    (hsum : ∑ i, (m i + 1) = n) :
+/-- **THE BLOCK-COUNTING BOUND (†′):** ordered rooted disjoint block data
+covering a fixed set `U` with sizes `m i + 1` number at most
+`U.card!/∏ (m i)!` — multiplicatively, `card · ∏ (m i)! ≤ U.card!`.
+Proof: block data together with local permutations inject into bijections
+`(Σ i, Fin (m i + 1)) ≃ U` via the placement function, and there are
+exactly `U.card!` such bijections. -/
+theorem card_blockData_mul_le (U : Finset (Fin n)) (m : Fin k → ℕ)
+    (hsum : ∑ i, (m i + 1) = U.card) :
     ((Finset.univ : Finset (Fin k → Finset (Fin n) × Fin n)).filter
-      (fun ρ => IsBlockData m ρ)).card * ∏ i, (m i).factorial
-      ≤ n.factorial := by
+      (fun ρ => IsBlockData U m ρ)).card * ∏ i, (m i).factorial
+      ≤ U.card.factorial := by
   classical
-  have hcardSig : Fintype.card (Σ i : Fin k, Fin (m i + 1)) = n := by
+  have hcardSig : Fintype.card (Σ i : Fin k, Fin (m i + 1)) = U.card := by
     rw [Fintype.card_sigma]
     simp only [Fintype.card_fin]
     exact hsum
-  have e₀ : (Σ i : Fin k, Fin (m i + 1)) ≃ Fin n :=
-    Fintype.equivFinOfCardEq hcardSig
+  have e₀ : (Σ i : Fin k, Fin (m i + 1)) ≃ {x // x ∈ U} :=
+    Fintype.equivOfCardEq (by rw [hcardSig, Fintype.card_coe])
   set f : (Fin k → Finset (Fin n) × Fin n) × (∀ i, Equiv.Perm (Fin (m i)))
-      → ((Σ i : Fin k, Fin (m i + 1)) ≃ Fin n) :=
-    fun pq => if h : IsBlockData m pq.1
-      then Equiv.ofBijective (h.placeFun pq.2)
+      → ((Σ i : Fin k, Fin (m i + 1)) ≃ {x // x ∈ U}) :=
+    fun pq => if h : IsBlockData U m pq.1
+      then Equiv.ofBijective
+        (fun x => ⟨h.placeFun pq.2 x,
+          h.block_subset x.1 (h.placeFun_mem pq.2 x)⟩)
         ((Fintype.bijective_iff_injective_and_card _).mpr
-          ⟨h.placeFun_injective pq.2, by rw [hcardSig, Fintype.card_fin]⟩)
+          ⟨fun x y hxy => h.placeFun_injective pq.2
+            (congrArg Subtype.val hxy),
+            by rw [hcardSig, Fintype.card_coe]⟩)
       else e₀ with hfdef
   -- blocks are recovered as images of the placement function
   have hblock : ∀ (ρ : Fin k → Finset (Fin n) × Fin n)
-      (h : IsBlockData m ρ) (π : ∀ i, Equiv.Perm (Fin (m i))) (i : Fin k),
+      (h : IsBlockData U m ρ) (π : ∀ i, Equiv.Perm (Fin (m i))) (i : Fin k),
       (ρ i).1 = Finset.univ.image
         (fun l : Fin (m i + 1) => h.placeFun π ⟨i, l⟩) := by
     intro ρ h π i
@@ -814,24 +810,24 @@ theorem card_blockData_mul_le (m : Fin k → ℕ)
   -- the injection on the product set
   have hinjOn : ∀ pq₁ ∈ ((Finset.univ :
       Finset (Fin k → Finset (Fin n) × Fin n)).filter
-        (fun ρ => IsBlockData m ρ)) ×ˢ
+        (fun ρ => IsBlockData U m ρ)) ×ˢ
       (Finset.univ : Finset (∀ i, Equiv.Perm (Fin (m i)))),
       ∀ pq₂ ∈ ((Finset.univ :
         Finset (Fin k → Finset (Fin n) × Fin n)).filter
-          (fun ρ => IsBlockData m ρ)) ×ˢ
+          (fun ρ => IsBlockData U m ρ)) ×ˢ
         (Finset.univ : Finset (∀ i, Equiv.Perm (Fin (m i)))),
       f pq₁ = f pq₂ → pq₁ = pq₂ := by
     intro pq₁ h₁ pq₂ h₂ hf
     obtain ⟨ρ₁, π₁⟩ := pq₁
     obtain ⟨ρ₂, π₂⟩ := pq₂
     rw [Finset.mem_product, Finset.mem_filter] at h₁ h₂
-    have hb₁ : IsBlockData m ρ₁ := h₁.1.2
-    have hb₂ : IsBlockData m ρ₂ := h₂.1.2
+    have hb₁ : IsBlockData U m ρ₁ := h₁.1.2
+    have hb₂ : IsBlockData U m ρ₂ := h₂.1.2
     rw [hfdef] at hf
     simp only [dif_pos hb₁, dif_pos hb₂] at hf
     have happ : ∀ x, hb₁.placeFun π₁ x = hb₂.placeFun π₂ x := by
       intro x
-      simpa using DFunLike.congr_fun hf x
+      simpa using congrArg Subtype.val (DFunLike.congr_fun hf x)
     have hρ : ρ₁ = ρ₂ := by
       funext i
       refine Prod.ext ?_ ?_
@@ -849,9 +845,9 @@ theorem card_blockData_mul_le (m : Fin k → ℕ)
     rw [hπ]
   -- count
   calc ((Finset.univ : Finset (Fin k → Finset (Fin n) × Fin n)).filter
-        (fun ρ => IsBlockData m ρ)).card * ∏ i, (m i).factorial
+        (fun ρ => IsBlockData U m ρ)).card * ∏ i, (m i).factorial
       = (((Finset.univ : Finset (Fin k → Finset (Fin n) × Fin n)).filter
-          (fun ρ => IsBlockData m ρ)) ×ˢ
+          (fun ρ => IsBlockData U m ρ)) ×ˢ
           (Finset.univ : Finset (∀ i, Equiv.Perm (Fin (m i))))).card := by
         rw [Finset.card_product, Finset.card_univ]
         congr 1
@@ -859,11 +855,11 @@ theorem card_blockData_mul_le (m : Fin k → ℕ)
         exact (Finset.prod_congr rfl fun i _ => by
           rw [Fintype.card_perm, Fintype.card_fin]).symm
     _ ≤ (Finset.univ :
-          Finset ((Σ i : Fin k, Fin (m i + 1)) ≃ Fin n)).card :=
+          Finset ((Σ i : Fin k, Fin (m i + 1)) ≃ {x // x ∈ U})).card :=
         Finset.card_le_card_of_injOn f (fun _ _ => Finset.mem_univ _)
           (fun a ha b hb h => hinjOn a (Finset.mem_coe.mp ha) b
             (Finset.mem_coe.mp hb) h)
-    _ = n.factorial := by
+    _ = U.card.factorial := by
         rw [Finset.card_univ, Fintype.card_equiv e₀, hcardSig]
 
 section MarkedEnum
