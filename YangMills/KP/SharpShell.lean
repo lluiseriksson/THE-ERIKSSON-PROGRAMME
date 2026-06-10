@@ -1496,6 +1496,45 @@ lemma treeSumRawInner_nonneg (P : PolymerSystem) [Fintype P.Polymer]
   split_ifs <;> norm_num
 
 open Classical in
+/-- **Pinned sums are free sums over the non-root coordinates:** summing
+over functions with prescribed value at `0` equals summing over their
+restrictions away from `0`. -/
+lemma sum_pinned_eq {β : Type*} [Fintype β] [DecidableEq β] {N : ℕ}
+    (c : β) (F : (Fin (N + 1) → β) → ℝ) :
+    ∑ X ∈ (Finset.univ : Finset (Fin (N + 1) → β)).filter
+      (fun X => X 0 = c), F X
+    = ∑ g : {v : Fin (N + 1) // v ≠ 0} → β,
+        F (fun v => if h : v = 0 then c else g ⟨v, h⟩) := by
+  classical
+  refine Finset.sum_nbij' (i := fun X => fun v => X v.1)
+    (j := fun g => fun v => if h : v = 0 then c else g ⟨v, h⟩)
+    ?_ ?_ ?_ ?_ ?_
+  · intro X _
+    exact Finset.mem_univ _
+  · intro g _
+    rw [Finset.mem_filter]
+    exact ⟨Finset.mem_univ _, dif_pos rfl⟩
+  · intro X hX
+    rw [Finset.mem_filter] at hX
+    funext v
+    dsimp only
+    by_cases hv : v = 0
+    · rw [dif_pos hv, hv, hX.2]
+    · rw [dif_neg hv]
+  · intro g _
+    funext v
+    dsimp only
+    rw [dif_neg v.2]
+  · intro X hX
+    rw [Finset.mem_filter] at hX
+    congr 1
+    funext v
+    dsimp only
+    by_cases hv : v = 0
+    · rw [dif_pos hv, hv, hX.2]
+    · rw [dif_neg hv]
+
+open Classical in
 /-- **The fully factored edge product (the per-ρ inequality's term side):**
 for an admissible structure with enumerated shell, the edge-factor product
 splits into per-block factors — root edge at `σ i`, then the relabeled
