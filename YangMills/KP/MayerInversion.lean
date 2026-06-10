@@ -386,4 +386,59 @@ theorem sum_blockConnected_eq_ursell {n : ℕ} (X : Fin n → P.Polymer)
     dsimp only
     rw [Finset.card_image_of_injective E' hmapinj]
 
+open Classical in
+/-- **Walk restriction into an adjacency-closed set (B0a, step 4a):**
+reachability from a vertex of an adjacency-closed set is realized by
+edges inside the set — walks never leave it. -/
+lemma reachable_filter_of_closed {n : ℕ} (E : Finset (Sym2 (Fin n)))
+    (B : Finset (Fin n))
+    (hcl : ∀ a b : Fin n, s(a, b) ∈ E → a ∈ B → b ∈ B) :
+    ∀ {v w : Fin n},
+    (SimpleGraph.fromEdgeSet (↑E : Set (Sym2 (Fin n)))).Walk v w →
+    v ∈ B →
+    (SimpleGraph.fromEdgeSet
+      (↑(E.filter (fun e => ∀ u ∈ e, u ∈ B)) :
+        Set (Sym2 (Fin n)))).Reachable v w := by
+  intro v w p
+  induction p with
+  | nil => intro _; exact SimpleGraph.Reachable.refl _
+  | @cons v u w h q ih =>
+      intro hv
+      rw [SimpleGraph.fromEdgeSet_adj] at h
+      obtain ⟨hmem, hne⟩ := h
+      rw [Finset.mem_coe] at hmem
+      have hu : u ∈ B := hcl v u hmem hv
+      have hadj : (SimpleGraph.fromEdgeSet
+          (↑(E.filter (fun e => ∀ x ∈ e, x ∈ B)) :
+            Set (Sym2 (Fin n)))).Adj v u := by
+        rw [SimpleGraph.fromEdgeSet_adj]
+        refine ⟨?_, hne⟩
+        rw [Finset.mem_coe, Finset.mem_filter]
+        refine ⟨hmem, fun x hx => ?_⟩
+        rcases Sym2.mem_iff.mp hx with rfl | rfl
+        · exact hv
+        · exact hu
+      exact hadj.reachable.trans (ih hu)
+
+open Classical in
+/-- **The component partition (B0a, step 4a):** the partition of the
+vertex set into reachability classes of a spanning edge set. -/
+noncomputable def componentPartition {n : ℕ}
+    (E : Finset (Sym2 (Fin n))) :
+    Finpartition (Finset.univ : Finset (Fin n)) :=
+  letI : DecidableRel (SimpleGraph.fromEdgeSet
+      (↑E : Set (Sym2 (Fin n)))).reachableSetoid.r :=
+    Classical.decRel _
+  Finpartition.ofSetoid (SimpleGraph.fromEdgeSet
+    (↑E : Set (Sym2 (Fin n)))).reachableSetoid
+
+open Classical in
+lemma mem_componentPartition_part_iff {n : ℕ}
+    (E : Finset (Sym2 (Fin n))) (a b : Fin n) :
+    b ∈ (componentPartition E).part a
+    ↔ (SimpleGraph.fromEdgeSet
+        (↑E : Set (Sym2 (Fin n)))).Reachable a b := by
+  unfold componentPartition
+  exact Finpartition.mem_part_ofSetoid_iff_rel
+
 end YangMills.KP
