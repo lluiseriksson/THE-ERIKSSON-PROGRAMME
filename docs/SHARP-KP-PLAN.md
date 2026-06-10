@@ -232,6 +232,23 @@ ways, then a root in each block, `∏(m_i+1)` ways), the roots are distinct
 the per-fiber term equality (relabeling transport of the product);
 the resummation over `n ≤ N`.
 
+*Dependency check (2026-06-10, verified against the pinned Mathlib):*
+`Real.sum_le_exp_of_nonneg : 0 ≤ x → ∑ i ∈ range n, x^i/i! ≤ exp x`
+**exists** (`Mathlib/Analysis/Complex/Exponential.lean:244`) — the
+endgame's analytic step is free.  `Nat.multinomial` lives in
+`Mathlib/Data/Nat/Choose/Multinomial.lean`; a direct
+"number of functions with prescribed fiber sizes" lemma was **not**
+located — plan (†) via the **coloring view**: ordered disjoint covering
+tuples `(V_i)` of sizes `(c_i)` biject with colorings
+`χ : Fin n → Fin k` having fiber sizes `(c_i)` (`χ v := the i with
+v ∈ V_i`), and the fiber-size count `n!/∏ c_i!` can be proved by
+induction on `k` via `Finset.card_eq_sum_card_fiberwise` +
+`Nat.choose`-splitting on the last color — or sidestepped entirely by
+proving (†) as an *injection* into (permutations of `Fin n`) ×
+(per-block local data), where `n!` is `Fintype.card (Equiv.Perm (Fin n))`
+and the factorials `∏ m_i!·k!` arise as fiber sizes of the forgetting
+map.  Choose at build time; both are 2–3 cycle bricks.
+
 ## 6. Honesty invariant (unchanged)
 
 All of this is M3 lattice-side.  None of it reduces M4/M5/Clay
