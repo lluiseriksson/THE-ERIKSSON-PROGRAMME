@@ -3,6 +3,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.L1_GibbsMeasure.LatticePolymerSystem
+import YangMills.KP.SharpKP
 
 /-!
 # Entropy of connected polymers, step 1 — local geometry
@@ -941,6 +942,56 @@ theorem connectedLatticeClusterSum_summable_uniformCriterion
   have hcard : (c.1.card : ℝ) ≤ (Fintype.card (ConcretePlaquette d N) : ℝ) := by
     exact_mod_cast Finset.card_le_univ c.1
   exact mul_le_mul_of_nonneg_left hcard ht0
+
+/-- **VOLUME-UNIFORM CONVERGENCE OF THE CONNECTED LATTICE GAS** — the
+sharp-KP campaign's goal (`docs/SHARP-KP-PLAN.md` §3, C4).  Under
+β-smallness depending ONLY on the dimension `d` and the plaquette
+bound `B`, the Mayer cluster series of the connected lattice polymer
+gas converges absolutely, with **no hypothesis on the lattice volume**:
+the former `hA` (`e·t·#P < 1`) is gone, replaced by the sharp pinned
+Kotecký–Preiss bound (`kp_convergence_sharp`). -/
+theorem connectedLatticeClusterSum_summable_volumeUniform
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ} {B : ℝ}
+    (hpe : ∀ g, |pe g| ≤ B) (β : ℝ) (t : ℝ) (ht0 : 0 ≤ t)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((Real.exp (|β| * B) - 1) * Real.exp t) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      (((Real.exp (|β| * B) - 1) * Real.exp t) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((Real.exp (|β| * B) - 1) * Real.exp t))) ≤ t) :
+    Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) →
+        (connectedLatticePolymerSystem (d := d) (N := N) μ pe β).Polymer,
+        (ursell (connectedLatticePolymerSystem (d := d) (N := N) μ pe β) X : ℂ) *
+          ∏ i, (connectedLatticePolymerSystem (d := d) (N := N)
+            μ pe β).activity (X i)) :=
+  kp_convergence_sharp
+    (connectedLatticePolymerSystem (d := d) (N := N) μ pe β)
+    (connectedLatticePolymerSystem_kpCriterion_volumeUniform (d := d) (N := N)
+      μ hpe β t ht0 hr hsmall)
+
+/-- The sharp quantitative companion: the cluster sum of the connected
+lattice gas is bounded by `∑_c ‖z(c)‖·e^{t·|c|}` — per-polymer
+quantities only, no volume anywhere in the estimate's shape. -/
+theorem connectedLatticeClusterSum_norm_le_volumeUniform
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ} {B : ℝ}
+    (hpe : ∀ g, |pe g| ≤ B) (β : ℝ) (t : ℝ) (ht0 : 0 ≤ t)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((Real.exp (|β| * B) - 1) * Real.exp t) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      (((Real.exp (|β| * B) - 1) * Real.exp t) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((Real.exp (|β| * B) - 1) * Real.exp t))) ≤ t) :
+    ‖clusterSum (connectedLatticePolymerSystem (d := d) (N := N) μ pe β)‖
+      ≤ ∑ c : (connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β).Polymer,
+          ‖(connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β).activity c‖
+            * Real.exp (t * (c.1.card : ℝ)) :=
+  kp_norm_clusterSum_le_sharp
+    (connectedLatticePolymerSystem (d := d) (N := N) μ pe β)
+    (connectedLatticePolymerSystem_kpCriterion_volumeUniform (d := d) (N := N)
+      μ hpe β t ht0 hr hsmall)
 
 end UniformCriterion
 
