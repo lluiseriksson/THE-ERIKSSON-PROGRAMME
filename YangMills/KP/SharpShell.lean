@@ -2766,6 +2766,182 @@ noncomputable def treeSumB (P : PolymerSystem) [Fintype P.Polymer]
     (c : P.Polymer) (D N : ℕ) : ℝ :=
   ∑ n ∈ Finset.range (N + 1), ((n.factorial : ℝ))⁻¹ * treeSumRaw P c D n
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **O5b (the shell recursion):** the depth-`(D+1)` Borel sum is bounded
+by the exponential of the activity-weighted depth-`D` Borel sums — the
+exact combinatorial mirror of the `kpMajorant` recursion.  This is the
+master inequality of the sharp-KP campaign. -/
+theorem treeSumB_succ_le (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D N : ℕ) :
+    treeSumB P c (D + 1) N
+    ≤ Real.exp (∑ c' : P.Polymer,
+        (if P.incomp c c' then (1 : ℝ) else 0) * ‖P.activity c'‖
+          * treeSumB P c' D N) := by
+  classical
+  have hF0 : ∀ (k : ℕ) (m : Fin k → ℕ),
+      0 ≤ ∏ i : Fin k, shellVal P c D (m i) / ((m i).factorial : ℝ) :=
+    fun k m => Finset.prod_nonneg fun i _ =>
+      div_nonneg (shellVal_nonneg P c D (m i)) (Nat.cast_nonneg _)
+  -- per-n master bound, with the k-range enlarged to N
+  have h1 : treeSumB P c (D + 1) N
+      ≤ ∑ n ∈ Finset.range (N + 1), ∑ k ∈ Finset.range (N + 1),
+          ((k.factorial : ℝ))⁻¹ *
+          ∑ m ∈ (Fintype.piFinset
+              fun _ : Fin k => Finset.range (n + 1)).filter
+              (fun m => ∑ i, (m i + 1) = n),
+            ∏ i : Fin k, shellVal P c D (m i)
+              / ((m i).factorial : ℝ) := by
+    unfold treeSumB
+    refine Finset.sum_le_sum fun n hn => ?_
+    have hn' : n + 1 ≤ N + 1 := Finset.mem_range.mp hn
+    have h3 : ((n.factorial : ℝ))⁻¹ * treeSumRaw P c (D + 1) n
+        ≤ ∑ k ∈ Finset.range (n + 1), ((k.factorial : ℝ))⁻¹ *
+          ∑ m ∈ (Fintype.piFinset
+              fun _ : Fin k => Finset.range (n + 1)).filter
+              (fun m => ∑ i, (m i + 1) = n),
+            ∏ i : Fin k, shellVal P c D (m i)
+              / ((m i).factorial : ℝ) := by
+      refine le_trans (mul_le_mul_of_nonneg_left
+        (treeSumRaw_succ_le D P c)
+        (inv_nonneg.mpr (Nat.cast_nonneg _))) (le_of_eq ?_)
+      rw [← mul_assoc, inv_mul_cancel₀
+        (Nat.cast_ne_zero.mpr (Nat.factorial_ne_zero n)), one_mul]
+    refine le_trans h3 (Finset.sum_le_sum_of_subset_of_nonneg
+      (fun x hx => Finset.mem_range.mpr
+        (lt_of_lt_of_le (Finset.mem_range.mp hx) hn'))
+      (fun k _ _ => ?_))
+    exact mul_nonneg (inv_nonneg.mpr (Nat.cast_nonneg _))
+      (Finset.sum_nonneg fun m _ => hF0 k m)
+  -- collapse the n-sum per k into the big size box
+  have h4 : ∀ k : ℕ, ∑ n ∈ Finset.range (N + 1),
+      ∑ m ∈ (Fintype.piFinset
+          fun _ : Fin k => Finset.range (n + 1)).filter
+          (fun m => ∑ i, (m i + 1) = n),
+        ∏ i : Fin k, shellVal P c D (m i) / ((m i).factorial : ℝ)
+      ≤ ∑ m ∈ Fintype.piFinset (fun _ : Fin k => Finset.range (N + 1)),
+          ∏ i : Fin k, shellVal P c D (m i)
+            / ((m i).factorial : ℝ) := by
+    intro k
+    have hbox : ∀ n ∈ Finset.range (N + 1),
+        (Fintype.piFinset fun _ : Fin k => Finset.range (n + 1)).filter
+          (fun m => ∑ i, (m i + 1) = n)
+        = (Fintype.piFinset fun _ : Fin k => Finset.range (N + 1)).filter
+          (fun m => ∑ i, (m i + 1) = n) := by
+      intro n hn
+      have hnN : n < N + 1 := Finset.mem_range.mp hn
+      ext m
+      simp only [Finset.mem_filter, Fintype.mem_piFinset,
+        Finset.mem_range]
+      constructor
+      · rintro ⟨hb, hsum⟩
+        refine ⟨fun i => ?_, hsum⟩
+        have := hb i; omega
+      · rintro ⟨hb, hsum⟩
+        refine ⟨fun i => ?_, hsum⟩
+        have hle : m i + 1 ≤ n := by
+          calc m i + 1 ≤ ∑ j, (m j + 1) :=
+                Finset.single_le_sum (f := fun j => m j + 1)
+                  (fun j _ => Nat.zero_le _) (Finset.mem_univ i)
+            _ = n := hsum
+        omega
+    have hstep : ∀ n ∈ Finset.range (N + 1),
+        ∑ m ∈ (Fintype.piFinset
+            fun _ : Fin k => Finset.range (n + 1)).filter
+            (fun m => ∑ i, (m i + 1) = n),
+          ∏ i : Fin k, shellVal P c D (m i) / ((m i).factorial : ℝ)
+        = ∑ m ∈ Fintype.piFinset
+            (fun _ : Fin k => Finset.range (N + 1)),
+            if ∑ i, (m i + 1) = n
+            then ∏ i : Fin k, shellVal P c D (m i)
+              / ((m i).factorial : ℝ) else 0 := by
+      intro n hn
+      rw [hbox n hn]
+      exact Finset.sum_filter _ _
+    rw [Finset.sum_congr rfl hstep, Finset.sum_comm]
+    refine Finset.sum_le_sum fun m _ => ?_
+    by_cases hms : (∑ i, (m i + 1)) ∈ Finset.range (N + 1)
+    · refine le_of_eq ?_
+      rw [Finset.sum_eq_single (∑ i, (m i + 1))
+        (fun n _ hne => if_neg fun h => hne h.symm)
+        (fun habs => absurd hms habs)]
+      exact if_pos rfl
+    · refine le_trans (le_of_eq (Finset.sum_eq_zero
+        fun n hn => ?_)) (hF0 k m)
+      refine if_neg fun h => hms ?_
+      rw [h]; exact hn
+  -- the big box is a power of the per-size sum
+  have h5 : ∀ k : ℕ,
+      ∑ m ∈ Fintype.piFinset (fun _ : Fin k => Finset.range (N + 1)),
+        ∏ i : Fin k, shellVal P c D (m i) / ((m i).factorial : ℝ)
+      = (∑ x ∈ Finset.range (N + 1),
+          shellVal P c D x / ((x.factorial : ℝ))) ^ k := by
+    intro k
+    rw [← Finset.prod_univ_sum
+      (fun _ : Fin k => Finset.range (N + 1))
+      (fun _ x => shellVal P c D x / ((x.factorial : ℝ))),
+      Finset.prod_const, Finset.card_univ, Fintype.card_fin]
+  have hW0 : 0 ≤ ∑ x ∈ Finset.range (N + 1),
+      shellVal P c D x / ((x.factorial : ℝ)) :=
+    Finset.sum_nonneg fun x _ =>
+      div_nonneg (shellVal_nonneg P c D x) (Nat.cast_nonneg _)
+  -- assemble: swap, fold per k, exponentiate
+  refine le_trans h1 ?_
+  rw [Finset.sum_comm]
+  have h7 : ∀ k ∈ Finset.range (N + 1),
+      ∑ n ∈ Finset.range (N + 1), ((k.factorial : ℝ))⁻¹ *
+        ∑ m ∈ (Fintype.piFinset
+            fun _ : Fin k => Finset.range (n + 1)).filter
+            (fun m => ∑ i, (m i + 1) = n),
+          ∏ i : Fin k, shellVal P c D (m i) / ((m i).factorial : ℝ)
+      ≤ (∑ x ∈ Finset.range (N + 1),
+          shellVal P c D x / ((x.factorial : ℝ))) ^ k
+          / (k.factorial : ℝ) := by
+    intro k _
+    rw [← Finset.mul_sum]
+    calc ((k.factorial : ℝ))⁻¹ * ∑ n ∈ Finset.range (N + 1),
+          ∑ m ∈ (Fintype.piFinset
+              fun _ : Fin k => Finset.range (n + 1)).filter
+              (fun m => ∑ i, (m i + 1) = n),
+            ∏ i : Fin k, shellVal P c D (m i) / ((m i).factorial : ℝ)
+        ≤ ((k.factorial : ℝ))⁻¹ *
+            ∑ m ∈ Fintype.piFinset
+              (fun _ : Fin k => Finset.range (N + 1)),
+              ∏ i : Fin k, shellVal P c D (m i)
+                / ((m i).factorial : ℝ) :=
+          mul_le_mul_of_nonneg_left (h4 k)
+            (inv_nonneg.mpr (Nat.cast_nonneg _))
+      _ = (∑ x ∈ Finset.range (N + 1),
+            shellVal P c D x / ((x.factorial : ℝ))) ^ k
+            / (k.factorial : ℝ) := by
+          rw [h5 k, div_eq_mul_inv, mul_comm]
+  refine le_trans (Finset.sum_le_sum h7) ?_
+  refine le_trans (Real.sum_le_exp_of_nonneg hW0 (N + 1))
+    (le_of_eq (congrArg Real.exp ?_))
+  -- identify the per-size sum with the weighted Borel sums
+  unfold shellVal treeSumB
+  calc ∑ x ∈ Finset.range (N + 1),
+        (∑ c' : P.Polymer, (if P.incomp c c' then (1 : ℝ) else 0)
+          * ‖P.activity c'‖ * treeSumRaw P c' D x)
+          / ((x.factorial : ℝ))
+      = ∑ x ∈ Finset.range (N + 1), ∑ c' : P.Polymer,
+          ((if P.incomp c c' then (1 : ℝ) else 0)
+            * ‖P.activity c'‖ * treeSumRaw P c' D x)
+            / ((x.factorial : ℝ)) :=
+        Finset.sum_congr rfl fun x _ => Finset.sum_div _ _ _
+    _ = ∑ c' : P.Polymer, ∑ x ∈ Finset.range (N + 1),
+          ((if P.incomp c c' then (1 : ℝ) else 0)
+            * ‖P.activity c'‖ * treeSumRaw P c' D x)
+            / ((x.factorial : ℝ)) := Finset.sum_comm
+    _ = ∑ c' : P.Polymer, (if P.incomp c c' then (1 : ℝ) else 0)
+          * ‖P.activity c'‖ *
+          ∑ x ∈ Finset.range (N + 1),
+            ((x.factorial : ℝ))⁻¹ * treeSumRaw P c' D x := by
+        refine Finset.sum_congr rfl fun c' _ => ?_
+        rw [Finset.mul_sum]
+        refine Finset.sum_congr rfl fun x _ => ?_
+        rw [div_eq_mul_inv]; ring
+
 end MasterAssembly
 
 end BlockCount
