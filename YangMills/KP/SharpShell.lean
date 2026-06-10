@@ -1463,6 +1463,39 @@ lemma shell_blockData_fn (h : IsAdmissible p lev) {k : ℕ}
     omega
 
 open Classical in
+/-- **The inner assignment sum** of `treeSumRaw` at a fixed parent map:
+the object the shell recursion factorizes. -/
+noncomputable def treeSumRawInner (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) {m : ℕ} (q : Fin (m + 1) → Fin (m + 1)) : ℝ :=
+  ∑ X ∈ (Finset.univ : Finset (Fin (m + 1) → P.Polymer)).filter
+    (fun X => X 0 = c),
+    ∏ l ∈ Finset.univ.filter (fun l : Fin (m + 1) => l ≠ 0),
+      (if P.incomp (X (q l)) (X l) then (1 : ℝ) else 0)
+        * ‖P.activity (X l)‖
+
+open Classical in
+/-- `treeSumRaw` is the sum of the inner assignment sums over admissible
+canonical structures. -/
+lemma treeSumRaw_eq_sum_inner (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D n : ℕ) :
+    treeSumRaw P c D n
+    = ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+        × (Fin (n + 1) → Fin (D + 1)))).filter
+        (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0),
+      treeSumRawInner P c pl.1 := by
+  unfold treeSumRaw treeSumRawInner
+  rfl
+
+open Classical in
+lemma treeSumRawInner_nonneg (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) {m : ℕ} (q : Fin (m + 1) → Fin (m + 1)) :
+    0 ≤ treeSumRawInner P c q := by
+  unfold treeSumRawInner
+  refine Finset.sum_nonneg fun X _ =>
+    Finset.prod_nonneg fun l _ => mul_nonneg ?_ (norm_nonneg _)
+  split_ifs <;> norm_num
+
+open Classical in
 /-- **The fully factored edge product (the per-ρ inequality's term side):**
 for an admissible structure with enumerated shell, the edge-factor product
 splits into per-block factors — root edge at `σ i`, then the relabeled
