@@ -409,19 +409,28 @@ errors.  Fix applied and COMMITTED: `blockFunctional` as a top-level def
 + `sum_blockFunctional` (rfl-level repackaging of `block_sum_eq` — the
 shapes match exactly).
 
-Attempt 2 failure (with the named functional): the *first calc step's*
-`rw [master_factorization_fn …]` is itself motive-incorrect — the
-equation's `G` instantiation mentions the locally-bound `X`, and the
-rewrite under the `sum_congr` binder fails.  **Prescription for the
-implementing session:** do not `rw` with `master_factorization_fn` under
-a binder.  Instead state the pointwise equality as an explicit `have`
-per `X` (`have hX' : (∏ v ∈ …, …) = ∏ i, blockFunctional … (fun x => X x.1)
-:= by …`), proving it by `rw [master_factorization_fn …]` in that
-ISOLATED goal (no outer binder → motive fine — this is exactly how
-`hpoint` succeeded inside `pinnedClusterWeight_le_treeSumRaw`), then use
-`Finset.sum_congr rfl (fun X hX => hX' …)`.  The remaining calc steps
-(pinned → bridge → `sum_coverSplit` → `sum_blockFunctional`) were not
-reached; their designs are unchanged.  All ingredients remain proved.
+Attempt 2 failure (with the named functional): motive-incorrect rewrite
+in the first calc step.  Attempt 3 (same session) made REAL PROGRESS:
+**the `Eq.trans`-with-term-application pattern WORKS** — both
+`(master_factorization_fn …).trans ?_` and `(sum_pinned_eq …).trans ?_`
+elaborate cleanly (defeq absorbs the beta-mismatch; no motives).  The
+surviving failure is isolated to ONE spot: the root-factor conversion
+after `unfold blockFunctional; congr 1` — the
+`rw [markedEmb_zero, hX0]` is motive-incorrect even after `dsimp only`
+(a dependent occurrence of `markedEmb … 0` survives, likely inside an
+implicit/proof position the goal display hides).  **Prescription:** do
+not convert the root factor by rewriting in place.  State it as a
+standalone two-sided `have`:
+`have hroot : (if P.incomp (X 0) (X (σ i)) then (1:ℝ) else 0) * ‖…(X (σ i))‖
+  = (if P.incomp c (X (markedEmb (shellFiber p lev (σ i)) (σ i) rfl 0))
+     then (1:ℝ) else 0) * ‖…‖ := by
+  rw [markedEmb_zero]; rw [(Finset.mem_filter.mp hX).2]`
+(isolated goal, both sides explicit, no dependent context) — then close
+the factor-equality with `exact hroot ▸ rfl`-style or build the per-`i`
+equality as `congrArg₂ (·*·)`/`Mul.mul` from `hroot` and `rfl` for the
+subtree part.  Steps 3–5 of the calc (bridge `sum_nbij'`,
+`sum_coverSplit`, `sum_blockFunctional`) were never reached and remain
+as designed; the 6-error count included their downstream noise.
 
 ## 6. Honesty invariant (unchanged)
 
