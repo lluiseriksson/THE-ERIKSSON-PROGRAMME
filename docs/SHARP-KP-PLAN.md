@@ -432,6 +432,46 @@ subtree part.  Steps 3–5 of the calc (bridge `sum_nbij'`,
 `sum_coverSplit`, `sum_blockFunctional`) were never reached and remain
 as designed; the 6-error count included their downstream noise.
 
+## 5e. Post-heart state (2026-06-10, after `inner_factorization` LANDED)
+
+**PROVED (attempt 4, zero errors):** `inner_factorization` — the X-sum
+factorization, the campaign's deepest identity.  Also proved:
+`sum_structures_blockSum` (per-block recombination into `treeSumRaw`),
+`blockFunctional`/`sum_blockFunctional`.  The `Eq.trans`-with-term-
+application pattern + whole-factor rewrites are THE working idioms; reuse
+them.
+
+**The single remaining weave — the structure injection.**  Statement
+design (transport resolved): state injectivity with BOTH structures'
+data and the fiber agreement as a hypothesis to be substituted FIRST:
+
+```
+lemma structure_determined
+    (h₁ : IsAdmissible p₁ lev₁) (h₂ : IsAdmissible p₂ lev₂)
+    (hc₁ : p₁ 0 = 0) (hc₂ : p₂ 0 = 0)
+    (hσ-enum conditions for σ, shared)         -- σ₁ = σ₂ =: σ forced by ρ
+    (hfib : ∀ i, shellFiber p₁ lev₁ (σ i) = shellFiber p₂ lev₂ (σ i))
+    (hq : ∀ i, value-level parent agreement on the common fiber)
+    (hlev : ∀ i, value-level level agreement on the common fiber) :
+    p₁ = p₂ ∧ lev₁ = lev₂
+```
+where "value-level agreement" is stated via `parent_recovery`'s RHS shape
+(no `Fin (m+1)`-types in the hypothesis at all — quantify over
+`v ∈ shellFiber p₁ lev₁ (σ i)` directly and assert `p₁ v = p₂ v`-after-
+recovery): concretely it suffices to assume
+`∀ i, subtreeParent-data equal AFTER rewriting along hfib i` — and the
+clean way is: **subst-free**: prove `p₁ v = p₂ v` for `v` in fiber `i` by
+chaining `parent_recovery h₁ … = markedEmb F₁ … = markedEmb F₂ …
+= parent_recovery h₂ …` where the middle step is `hfib i ▸`-congruence on
+the (Finset, root) pair only (no dependent Fin types: `markedEmb` takes
+the Finset as an argument, so `congrArg`/`hfib i ▸` applies cleanly).
+The fibers partition (`shell_fiber_partition`), roots are forced
+(`parent_recovery_root`), `0` is canonical — `funext` closes.  After
+`structure_determined`: the per-ρ sum bound by `Finset.sum_le_*`-injOn
+into `Fintype.piFinset` of structure spaces, value transport free (the
+`∏ S(qᵢ)` reads only data the hypotheses equate), then
+`sum_structures_blockSum` + `card_blockData_mul_le` + the §5c arithmetic.
+
 ## 6. Honesty invariant (unchanged)
 
 All of this is M3 lattice-side.  None of it reduces M4/M5/Clay
