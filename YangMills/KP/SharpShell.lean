@@ -2708,6 +2708,64 @@ theorem rho_sum_le_price {n D : ℕ} (k : ℕ)
   exact le_trans (Finset.sum_le_sum hperm)
     (le_of_eq (by rw [Finset.mul_sum]))
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **O5a (the n-level master bound):** one shell decomposition step —
+the depth-`(D+1)` raw tree-sum at size `n` is priced by `n!` times the
+`1/k!`-weighted size-vector sums of per-size shell values.  This is
+symmetrization + `per_k_bound` + `rho_sum_le_price` composed. -/
+theorem treeSumRaw_succ_le {n : ℕ} (D : ℕ)
+    (P : PolymerSystem) [Fintype P.Polymer] (c : P.Polymer) :
+    treeSumRaw P c (D + 1) n
+    ≤ (n.factorial : ℝ) * ∑ k ∈ Finset.range (n + 1),
+        ((k.factorial : ℝ))⁻¹ *
+        ∑ m ∈ (Fintype.piFinset
+            fun _ : Fin k => Finset.range (n + 1)).filter
+            (fun m => ∑ i, (m i + 1) = n),
+          ∏ i : Fin k, shellVal P c D (m i) / ((m i).factorial : ℝ) := by
+  classical
+  have hUcard : ((Finset.univ : Finset (Fin (n + 1))).erase 0).card
+      = n := by
+    rw [Finset.card_erase_of_mem (Finset.mem_univ 0), Finset.card_univ,
+      Fintype.card_fin]
+    omega
+  have hSle : ∀ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+      × (Fin (n + 1) → Fin (D + 1 + 1)))).filter
+      (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0),
+      ((Finset.univ : Finset (Fin (n + 1))).filter
+        (fun s => s ≠ 0 ∧ pl.1 s = 0)).card ≤ n := by
+    intro pl _
+    calc ((Finset.univ : Finset (Fin (n + 1))).filter
+          (fun s => s ≠ 0 ∧ pl.1 s = 0)).card
+        ≤ ((Finset.univ : Finset (Fin (n + 1))).erase 0).card := by
+          refine Finset.card_le_card fun s hs => ?_
+          exact Finset.mem_erase.mpr
+            ⟨(Finset.mem_filter.mp hs).2.1, Finset.mem_univ _⟩
+      _ = n := hUcard
+  have hsym := sum_symmetrize_fn (N' := n + 1) (nmax := n)
+      ((Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+        × (Fin (n + 1) → Fin (D + 1 + 1)))).filter
+        (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0))
+      (fun pl => treeSumRawInner P c pl.1)
+      (fun pl => (Finset.univ : Finset (Fin (n + 1))).filter
+        (fun s => s ≠ 0 ∧ pl.1 s = 0)) hSle
+  rw [treeSumRaw_eq_sum_inner, hsym]
+  refine le_trans (Finset.sum_le_sum fun k _ =>
+    mul_le_mul_of_nonneg_left
+      (le_trans (per_k_bound k P c) (rho_sum_le_price k P c))
+      (inv_nonneg.mpr (Nat.cast_nonneg _)))
+    (le_of_eq (Eq.trans
+      (Finset.sum_congr rfl fun k _ => by ring)
+      (Finset.mul_sum _ _ _).symm))
+
+open Classical in
+/-- The truncated **Borel sum** of raw tree-sums:
+`B_D^N(c) := ∑_{n ≤ N} treeSumRaw(c, D, n) / n!` — the quantity the
+shell recursion drives to the `kpMajorant`. -/
+noncomputable def treeSumB (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D N : ℕ) : ℝ :=
+  ∑ n ∈ Finset.range (N + 1), ((n.factorial : ℝ))⁻¹ * treeSumRaw P c D n
+
 end MasterAssembly
 
 end BlockCount
