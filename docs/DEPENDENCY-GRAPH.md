@@ -98,11 +98,24 @@ M3: unconditional lattice mass gap at strong coupling
     ‖clusterSum‖ ≤ (∑‖z‖)/(1 − e·t·#P)), under explicit small-coupling
     hypotheses (scaled binomial entropy ≤ t and e·t·#P < 1 — satisfiable
     for β small, volume-dependently).
-    Honest caveat remaining: the threshold is volume-dependent — the
-    volume-uniform version needs *connected* polymers (entropy ≤ Cⁿ
-    locally); scoped next-session work.  Everything else on the polymer
-    path (expansion, smallness, locality, independence, criterion,
-    convergence) is machine-checked.
+    **VOLUME-UNIFORMITY ACHIEVED AT THE CRITERION LEVEL (2026-06-10,
+    ConnectedEntropy.lean)**: connectedLatticePolymerSystem (connected
+    polymers, the canonical gas) with KP criterion and convergence
+    (volume-dependent thresholds), then the full entropy campaign:
+    card_plaquettesTouching_le (degree ≤ 16d), card_relWalks_le (≤ Δ^L
+    walks), IsLazyClosedWalk.extend (splice), exists_covering_lazyWalk
+    (connected sets are walk ranges), isConnectedPolymer_crossing,
+    **card_connectedPolymers_le** (lattice-animal entropy:
+    ≤ (16d+1)^{2n} connected polymers of size n+1 through a point —
+    VOLUME-FREE), sum_connectedPolymers_through_le, and
+    **connectedLatticePolymerSystem_kpCriterion_volumeUniform** — the KP
+    criterion for the connected gas under β-smallness depending ONLY on
+    the dimension.  Honest remaining caveat: volume-uniform *convergence*
+    additionally needs the sharp (weight-respecting) KP per-size bound —
+    our formalized kp_per_size_bound uses the uniform smallness e·max(a)<1,
+    whose A = t·#P is volume-dependent.  Refining KPBound.lean to the
+    sharp form is the scoped next target; it is a self-contained
+    strengthening of the abstract KP layer, no new physics input.
  └─ T3 / LG6 — centre selection rule               **CLOSED 2026-06-10**
     integral_centerAct (gauge measure centre-invariant, left-invariant μ);
     wilsonAction_centerAct (exact centre symmetry of the Wilson action —

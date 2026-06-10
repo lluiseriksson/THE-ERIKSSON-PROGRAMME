@@ -160,6 +160,47 @@ quantitatively pinned near 1.  Thresholds are volume-dependent; the
 volume-uniform refinement (connected polymers, lattice-animal entropy) is
 the scoped remaining step.  All M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 5 (2026-06-10, continued loop): VOLUME-UNIFORMITY
+
+The entropy campaign (`ConnectedEntropy.lean`), opened and **closed** in one
+session.  Each `#print axioms` = `[propext, Classical.choice, Quot.sound]`:
+
+```
+'YangMills.FinBox.shift_injective' / 'mem_plaquetteSupport_iff'   (local geometry)
+'YangMills.card_plaquettesThroughEdge_le'                         (≤ 4d plaquettes per edge)
+'YangMills.card_plaquettesTouching_le'                            (DEGREE BOUND: ≤ 16d, volume-free)
+'YangMills.card_relWalks_le'                                      (walk counting: ≤ Δ^L walks)
+'YangMills.IsLazyClosedWalk.extend'                               (splice lemma)
+'YangMills.exists_adj_crossing_of_walk'                           (first-exit crossing)
+'YangMills.exists_covering_lazyWalk'                              (COVERING-WALK THEOREM)
+'YangMills.isConnectedPolymer_crossing'                           (crossing for connected polymers)
+'YangMills.card_connectedPolymers_le'                             (LATTICE-ANIMAL ENTROPY BOUND:
+                                                                   ≤ (16d+1)^{2n} animals of size n+1
+                                                                   through a point, volume-free)
+'YangMills.sum_connectedPolymers_through_le'                      (per-plaquette geometric bound)
+'YangMills.connectedLatticePolymerSystem_kpCriterion_volumeUniform'
+                                                                  (THE VOLUME-UNIFORM KP CRITERION)
+```
+
+Plain language: connected plaquette sets are ranges of lazy closed walks
+(greedy growth via splicing), walks are counted by the degree bound `16d`,
+so there are at most `(16d+1)^{2n}` connected polymers of size `n+1` through
+any plaquette — **independent of the lattice volume** (standard
+lattice-animal counting; cf. Friedli–Velenik Ch. 5/6, Simon, *The
+Statistical Mechanics of Lattice Gases*).  Consequently the Kotecký–Preiss
+criterion for the connected lattice gas holds under smallness conditions on
+`β` depending **only on the dimension** — the volume-dependence caveat of
+addendum 4 is **eliminated at the criterion level**.
+
+Honest remaining caveat: composing this with our formalized KP *convergence*
+theorem still passes through the uniform bound `a(c) ≤ A` with `A = t·#P`
+(our KP per-size estimate uses uniform smallness `e·A < 1`, stronger than
+sharp KP).  Volume-uniform *convergence* therefore needs the sharp
+(weight-respecting) KP bound — a precisely scoped refinement of
+`KPBound.lean`, recorded as the next target.  Everything else
+(criterion, entropy, geometry) is now volume-free and machine-checked.
+All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

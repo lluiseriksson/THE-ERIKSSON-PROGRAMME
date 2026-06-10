@@ -628,6 +628,285 @@ theorem card_connectedPolymers_le {d N : ℕ} [NeZero N]
     _ ≤ (16 * d + 1) ^ (2 * n) :=
         card_relWalks_le Rlazy (16 * d + 1) hdeg p₀ (2 * n)
 
+open Classical in
+/-- **Per-plaquette geometric cluster bound (volume-uniform):** the weighted
+sum over all connected polymers through a fixed plaquette, with weight
+`x^{size}`, is at most `x / (1 − (16d+1)²x)` whenever `(16d+1)²x < 1` —
+independent of the lattice volume.  Fiberwise by size + the lattice-animal
+entropy bound + a geometric series. -/
+theorem sum_connectedPolymers_through_le {d N : ℕ} [NeZero N]
+    (p : ConcretePlaquette d N) (x : ℝ) (hx : 0 ≤ x)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * x < 1) :
+    ∑ c' ∈ (Finset.univ : Finset {c : Finset (ConcretePlaquette d N) //
+        c.Nonempty ∧ IsConnectedPolymer c}).filter (fun c' => p ∈ c'.1),
+      x ^ c'.1.card ≤ x / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * x) := by
+  classical
+  set M := Fintype.card (ConcretePlaquette d N) with hM
+  set r : ℝ := ((16 * d + 1 : ℕ) : ℝ) ^ 2 * x with hrdef
+  have hr0 : (0 : ℝ) ≤ r := by positivity
+  have hden : (0 : ℝ) < 1 - r := by linarith
+  set S := (Finset.univ : Finset {c : Finset (ConcretePlaquette d N) //
+    c.Nonempty ∧ IsConnectedPolymer c}).filter (fun c' => p ∈ c'.1) with hS
+  -- fiberwise decomposition by polymer size
+  have hmaps : ∀ c' ∈ S, c'.1.card ∈ Finset.range (M + 1) := by
+    intro c' _
+    rw [Finset.mem_range]
+    have := Finset.card_le_univ c'.1
+    omega
+  have hfib := Finset.sum_fiberwise_of_maps_to hmaps
+    (fun c' => x ^ c'.1.card)
+  rw [← hfib]
+  -- each fiber is a constant times its cardinality
+  have hfiber_eq : ∀ y ∈ Finset.range (M + 1),
+      ∑ c' ∈ S.filter (fun c' => c'.1.card = y), x ^ c'.1.card
+        = (S.filter (fun c' => c'.1.card = y)).card * x ^ y := by
+    intro y _
+    rw [Finset.sum_congr rfl (fun c' hc' => by
+      rw [(Finset.mem_filter.mp hc').2]), Finset.sum_const, nsmul_eq_mul]
+  -- the size-0 fiber is empty
+  have hzero : S.filter (fun c' => c'.1.card = 0) = ∅ := by
+    rw [Finset.filter_eq_empty_iff]
+    intro c' _
+    have := c'.2.1.card_pos
+    omega
+  -- fibers of size j+1 are bounded by the animal count
+  have hcount : ∀ j : ℕ, ((S.filter (fun c' => c'.1.card = j + 1)).card : ℝ)
+      ≤ ((16 * d + 1 : ℕ) : ℝ) ^ (2 * j) := by
+    intro j
+    have hinj : Set.InjOn (fun c' : {c : Finset (ConcretePlaquette d N) //
+        c.Nonempty ∧ IsConnectedPolymer c} => c'.1)
+        ↑(S.filter (fun c' => c'.1.card = j + 1)) :=
+      fun a _ b _ h => Subtype.ext h
+    have hmaps2 : ∀ c' ∈ S.filter (fun c' => c'.1.card = j + 1),
+        c'.1 ∈ (Finset.univ : Finset (Finset (ConcretePlaquette d N))).filter
+          (fun c => p ∈ c ∧ IsConnectedPolymer c ∧ c.card = j + 1) := by
+      intro c' hc'
+      rw [Finset.mem_filter] at hc'
+      obtain ⟨hcS, hcard⟩ := hc'
+      rw [hS, Finset.mem_filter] at hcS
+      rw [Finset.mem_filter]
+      exact ⟨Finset.mem_univ _, hcS.2, c'.2.2, hcard⟩
+    have h1 : (S.filter (fun c' => c'.1.card = j + 1)).card
+        ≤ ((Finset.univ : Finset (Finset (ConcretePlaquette d N))).filter
+          (fun c => p ∈ c ∧ IsConnectedPolymer c ∧ c.card = j + 1)).card :=
+      Finset.card_le_card_of_injOn _ hmaps2 hinj
+    have h2 := card_connectedPolymers_le p j
+    exact_mod_cast le_trans h1 h2
+  -- assemble: shift the range and sum the geometric series
+  calc ∑ y ∈ Finset.range (M + 1),
+        ∑ c' ∈ S.filter (fun c' => c'.1.card = y), x ^ c'.1.card
+      = ∑ y ∈ Finset.range (M + 1),
+          ((S.filter (fun c' => c'.1.card = y)).card : ℝ) * x ^ y :=
+        Finset.sum_congr rfl hfiber_eq
+    _ = (∑ j ∈ Finset.range M,
+          ((S.filter (fun c' => c'.1.card = j + 1)).card : ℝ) * x ^ (j + 1))
+        + ((S.filter (fun c' => c'.1.card = 0)).card : ℝ) * x ^ 0 :=
+        Finset.sum_range_succ' _ M
+    _ = ∑ j ∈ Finset.range M,
+          ((S.filter (fun c' => c'.1.card = j + 1)).card : ℝ) * x ^ (j + 1) := by
+        rw [hzero]
+        simp
+    _ ≤ ∑ j ∈ Finset.range M,
+          ((16 * d + 1 : ℕ) : ℝ) ^ (2 * j) * x ^ (j + 1) := by
+        refine Finset.sum_le_sum fun j _ => ?_
+        exact mul_le_mul_of_nonneg_right (hcount j) (by positivity)
+    _ = x * ∑ j ∈ Finset.range M, r ^ j := by
+        rw [Finset.mul_sum]
+        refine Finset.sum_congr rfl fun j _ => ?_
+        rw [hrdef, mul_pow, pow_mul, pow_succ]
+        ring
+    _ ≤ x * (1 / (1 - r)) := by
+        refine mul_le_mul_of_nonneg_left ?_ hx
+        have hgeom : ∑ j ∈ Finset.range M, r ^ j = (1 - r ^ M) / (1 - r) := by
+          rw [geom_sum_eq (by linarith : r ≠ 1)]
+          rw [div_eq_div_iff (by linarith) (by linarith)]
+          ring
+        rw [hgeom, div_eq_mul_inv, div_eq_mul_inv]
+        exact mul_le_mul_of_nonneg_right
+          (by linarith [pow_nonneg hr0 M]) (inv_nonneg.mpr hden.le)
+    _ = x / (1 - r) := by
+        rw [mul_one_div]
+
 end ConnectedCrossing
+
+section UniformCriterion
+
+open MeasureTheory KP
+
+variable {d N : ℕ} [NeZero d] [NeZero N] {G : Type*} [Group G] [MeasurableSpace G]
+
+/-- **THE VOLUME-UNIFORM KOTECKÝ–PREISS CRITERION** for the connected
+lattice gas: under smallness conditions on `β` that depend **only on the
+dimension `d`** (through the local geometry constants `16d` and `(16d+1)²`)
+— never on the lattice volume — the KP criterion holds for
+`connectedLatticePolymerSystem` with weight `a(c) = t·|c|`.
+
+Every incompatible polymer is steered through a touching plaquette
+(indicator domination), counted by the per-plaquette geometric cluster
+bound, which rests on the lattice-animal entropy bound.  This discharges
+the volume-uniformity caveat recorded for the earlier (binomial-entropy)
+criterion. -/
+theorem connectedLatticePolymerSystem_kpCriterion_volumeUniform
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ} {B : ℝ}
+    (hpe : ∀ g, |pe g| ≤ B) (β : ℝ) (t : ℝ) (ht0 : 0 ≤ t)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((Real.exp (|β| * B) - 1) * Real.exp t) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      (((Real.exp (|β| * B) - 1) * Real.exp t) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((Real.exp (|β| * B) - 1) * Real.exp t))) ≤ t) :
+    KPCriterion (connectedLatticePolymerSystem (d := d) (N := N) μ pe β)
+      (fun c => t * (c.1.card : ℝ)) := by
+  classical
+  set x : ℝ := (Real.exp (|β| * B) - 1) * Real.exp t with hxdef
+  have hε0 : (0 : ℝ) ≤ Real.exp (|β| * B) - 1 := by
+    have h1 : (1 : ℝ) ≤ Real.exp (|β| * B) := by
+      rw [← Real.exp_zero]
+      refine Real.exp_le_exp.mpr ?_
+      have hB : (0 : ℝ) ≤ B := le_trans (abs_nonneg _) (hpe 1)
+      positivity
+    linarith
+  have hx : (0 : ℝ) ≤ x := by positivity
+  set S : ℝ := x / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * x) with hSdef
+  have hden : (0 : ℝ) < 1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * x := by
+    rw [hxdef]; linarith
+  have hS0 : (0 : ℝ) ≤ S := div_nonneg hx hden.le
+  -- the volume-uniform per-plaquette bound
+  have hthrough : ∀ p : ConcretePlaquette d N,
+      (∑ Y ∈ (Finset.univ :
+        Finset (connectedLatticePolymerSystem (d := d) (N := N)
+          μ pe β).Polymer).filter (fun Y => p ∈ Y.1),
+        x ^ Y.1.card) ≤ S := by
+    intro p
+    have h := sum_connectedPolymers_through_le (d := d) (N := N) p x hx
+      (by rw [hxdef] at *; exact hr)
+    convert h using 2
+  constructor
+  · intro c
+    positivity
+  · intro c
+    have hterm : ∀ Y : (connectedLatticePolymerSystem (d := d) (N := N)
+        μ pe β).Polymer,
+        ‖(connectedLatticePolymerSystem (d := d) (N := N) μ pe β).activity Y‖ *
+          Real.exp (t * (Y.1.card : ℝ)) ≤ x ^ Y.1.card := by
+      intro Y
+      have h1 := norm_connectedLatticePolymerSystem_activity_le
+        (d := d) (N := N) μ hpe β Y
+      have h2 : Real.exp (t * (Y.1.card : ℝ)) = Real.exp t ^ Y.1.card := by
+        rw [mul_comm, ← Real.exp_nat_mul]
+      rw [hxdef, h2, mul_pow]
+      exact mul_le_mul_of_nonneg_right h1 (by positivity)
+    -- indicator domination: every incompatible polymer is seen through a
+    -- touching plaquette
+    have hdom : ∀ Y ∈ (Finset.univ :
+        Finset (connectedLatticePolymerSystem (d := d) (N := N)
+          μ pe β).Polymer).filter
+        (fun Y => (connectedLatticePolymerSystem (d := d) (N := N)
+          μ pe β).incomp c Y),
+        x ^ Y.1.card ≤ ∑ q ∈ c.1, ∑ p ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).filter
+            (fun p => plaquetteTouches q p),
+          (if p ∈ Y.1 then x ^ Y.1.card else 0) := by
+      intro Y hY
+      rw [Finset.mem_filter] at hY
+      have hinc : ¬ Disjoint (c.1.biUnion plaquetteSupport)
+          (Y.1.biUnion plaquetteSupport) := hY.2
+      obtain ⟨e, hec, heY⟩ := Finset.not_disjoint_iff.mp hinc
+      obtain ⟨q₀, hq₀, heq₀⟩ := Finset.mem_biUnion.mp hec
+      obtain ⟨p₀, hp₀, hep₀⟩ := Finset.mem_biUnion.mp heY
+      have htouch : plaquetteTouches q₀ p₀ := fun hd =>
+        (Finset.disjoint_left.mp hd heq₀) hep₀
+      have hp₀mem : p₀ ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).filter
+            (fun p => plaquetteTouches q₀ p) :=
+        Finset.mem_filter.mpr ⟨Finset.mem_univ _, htouch⟩
+      have hinner : x ^ Y.1.card ≤ ∑ p ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).filter
+            (fun p => plaquetteTouches q₀ p),
+          (if p ∈ Y.1 then x ^ Y.1.card else 0) := by
+        have h := Finset.single_le_sum
+          (f := fun p => if p ∈ Y.1 then x ^ Y.1.card else 0)
+          (fun p _ => by positivity) hp₀mem
+        simp only [hp₀, if_true] at h
+        exact h
+      refine le_trans hinner ?_
+      exact Finset.single_le_sum
+        (f := fun q => ∑ p ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).filter
+            (fun p => plaquetteTouches q p),
+          (if p ∈ Y.1 then x ^ Y.1.card else 0))
+        (fun q _ => Finset.sum_nonneg fun p _ => by positivity) hq₀
+    calc ∑ Y ∈ (Finset.univ :
+          Finset (connectedLatticePolymerSystem (d := d) (N := N)
+            μ pe β).Polymer).filter
+          (fun Y => (connectedLatticePolymerSystem (d := d) (N := N)
+            μ pe β).incomp c Y),
+          ‖(connectedLatticePolymerSystem (d := d) (N := N) μ pe β).activity Y‖ *
+            Real.exp (t * (Y.1.card : ℝ))
+        ≤ ∑ Y ∈ (Finset.univ :
+            Finset (connectedLatticePolymerSystem (d := d) (N := N)
+              μ pe β).Polymer).filter
+            (fun Y => (connectedLatticePolymerSystem (d := d) (N := N)
+              μ pe β).incomp c Y),
+            x ^ Y.1.card :=
+          Finset.sum_le_sum fun Y _ => hterm Y
+      _ ≤ ∑ Y ∈ (Finset.univ :
+            Finset (connectedLatticePolymerSystem (d := d) (N := N)
+              μ pe β).Polymer).filter
+            (fun Y => (connectedLatticePolymerSystem (d := d) (N := N)
+              μ pe β).incomp c Y),
+            ∑ q ∈ c.1, ∑ p ∈ (Finset.univ :
+              Finset (ConcretePlaquette d N)).filter
+                (fun p => plaquetteTouches q p),
+              (if p ∈ Y.1 then x ^ Y.1.card else 0) :=
+          Finset.sum_le_sum hdom
+      _ ≤ ∑ Y ∈ (Finset.univ :
+            Finset (connectedLatticePolymerSystem (d := d) (N := N)
+              μ pe β).Polymer),
+            ∑ q ∈ c.1, ∑ p ∈ (Finset.univ :
+              Finset (ConcretePlaquette d N)).filter
+                (fun p => plaquetteTouches q p),
+              (if p ∈ Y.1 then x ^ Y.1.card else 0) :=
+          Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ _)
+            (fun Y _ _ => Finset.sum_nonneg fun q _ =>
+              Finset.sum_nonneg fun p _ => by positivity)
+      _ = ∑ q ∈ c.1, ∑ p ∈ (Finset.univ :
+            Finset (ConcretePlaquette d N)).filter
+              (fun p => plaquetteTouches q p),
+            ∑ Y ∈ (Finset.univ :
+              Finset (connectedLatticePolymerSystem (d := d) (N := N)
+                μ pe β).Polymer),
+              (if p ∈ Y.1 then x ^ Y.1.card else 0) := by
+          rw [Finset.sum_comm]
+          exact Finset.sum_congr rfl fun q _ => Finset.sum_comm
+      _ = ∑ q ∈ c.1, ∑ p ∈ (Finset.univ :
+            Finset (ConcretePlaquette d N)).filter
+              (fun p => plaquetteTouches q p),
+            ∑ Y ∈ (Finset.univ :
+              Finset (connectedLatticePolymerSystem (d := d) (N := N)
+                μ pe β).Polymer).filter (fun Y => p ∈ Y.1),
+              x ^ Y.1.card := by
+          refine Finset.sum_congr rfl fun q _ => ?_
+          refine Finset.sum_congr rfl fun p _ => ?_
+          exact (Finset.sum_filter _ _).symm
+      _ ≤ ∑ q ∈ c.1, ∑ p ∈ (Finset.univ :
+            Finset (ConcretePlaquette d N)).filter
+              (fun p => plaquetteTouches q p), S := by
+          refine Finset.sum_le_sum fun q _ => ?_
+          exact Finset.sum_le_sum fun p _ => hthrough p
+      _ ≤ ∑ q ∈ c.1, ((16 * d : ℕ) : ℝ) * S := by
+          refine Finset.sum_le_sum fun q _ => ?_
+          rw [Finset.sum_const, nsmul_eq_mul]
+          refine mul_le_mul_of_nonneg_right ?_ hS0
+          exact_mod_cast card_plaquettesTouching_le q
+      _ = (c.1.card : ℝ) * (((16 * d : ℕ) : ℝ) * S) := by
+          rw [Finset.sum_const, nsmul_eq_mul]
+      _ ≤ (c.1.card : ℝ) * t := by
+          refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+          rw [hSdef, hxdef]
+          exact hsmall
+      _ = t * (c.1.card : ℝ) := mul_comm _ _
+
+end UniformCriterion
 
 end YangMills
