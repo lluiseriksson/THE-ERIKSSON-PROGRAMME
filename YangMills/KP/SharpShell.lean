@@ -100,7 +100,7 @@ noncomputable def treeSumRaw (P : PolymerSystem) [Fintype P.Polymer]
     (c : P.Polymer) (D n : ℕ) : ℝ :=
   ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
       × (Fin (n + 1) → Fin (D + 1)))).filter
-      (fun pl => IsAdmissible pl.1 pl.2),
+      (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0),
     ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → P.Polymer)).filter
       (fun X => X 0 = c),
       ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
@@ -114,6 +114,18 @@ lemma treeSumRaw_nonneg (P : PolymerSystem) [Fintype P.Polymer]
   refine Finset.sum_nonneg fun pl _ => Finset.sum_nonneg fun X _ =>
     Finset.prod_nonneg fun v _ => mul_nonneg ?_ (norm_nonneg _)
   split_ifs <;> norm_num
+
+/-- The BFS parent of the root is the root itself (no candidates one level
+below `0`). -/
+lemma bfsParent_zero {m : ℕ} (E : Finset (Sym2 (Fin (m + 1)))) :
+    bfsParent E 0 = 0 := by
+  unfold bfsParent
+  rw [dif_neg]
+  rintro ⟨u, hu⟩
+  rw [mem_bfsParentSet] at hu
+  have h2 := hu.2
+  rw [bfsLevel_zero_eq] at h2
+  omega
 
 open Classical in
 /-- **C2 — Penrose domination of pinned cluster weights:** every pinned
@@ -233,12 +245,12 @@ theorem pinnedClusterWeight_le_treeSumRaw (P : PolymerSystem)
   have hmaps : ∀ T ∈ Sh, φ T ∈ (Finset.univ :
       Finset ((Fin (n + 1) → Fin (n + 1))
         × (Fin (n + 1) → Fin (n + 1)))).filter
-      (fun pl => IsAdmissible pl.1 pl.2) := by
+      (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0) := by
     intro T hT
     have htree := isTree_of_mem_spanningTrees _ (htop T hT)
     have hconn := htree.isConnected
     rw [Finset.mem_filter]
-    refine ⟨Finset.mem_univ _, ?_, ?_⟩
+    refine ⟨Finset.mem_univ _, ⟨?_, ?_⟩, ?_⟩
     · -- root level 0
       show (φ T).2 0 = 0
       rw [hφdef]
@@ -252,6 +264,10 @@ theorem pinnedClusterWeight_le_treeSumRaw (P : PolymerSystem)
       simp only [dif_pos hconn]
       have hspec := (bfsParent_spec hconn hv).2
       omega
+    · -- root canonicity
+      show (φ T).1 0 = 0
+      rw [hφdef]
+      exact bfsParent_zero T
   -- φ is injective on shapes: parents determine the tree
   have hinj : ∀ T₁ ∈ Sh, ∀ T₂ ∈ Sh, φ T₁ = φ T₂ → T₁ = T₂ := by
     intro T₁ h₁ T₂ h₂ heq
@@ -313,7 +329,7 @@ theorem pinnedClusterWeight_le_treeSumRaw (P : PolymerSystem)
     _ ≤ ∑ pl ∈ (Finset.univ :
           Finset ((Fin (n + 1) → Fin (n + 1))
             × (Fin (n + 1) → Fin (n + 1)))).filter
-          (fun pl => IsAdmissible pl.1 pl.2), G pl := by
+          (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0), G pl := by
         refine Finset.sum_le_sum_of_subset_of_nonneg ?_
           (fun pl _ _ => hGnn pl)
         intro pl hpl
@@ -337,10 +353,10 @@ lemma treeSumRaw_mono_depth (P : PolymerSystem) [Fintype P.Polymer]
     fun pl => (pl.1, fun v => (pl.2 v).castSucc) with hψdef
   have hinj : ∀ pl₁ ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
         × (Fin (n + 1) → Fin (D + 1)))).filter
-        (fun pl => IsAdmissible pl.1 pl.2),
+        (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0),
       ∀ pl₂ ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
         × (Fin (n + 1) → Fin (D + 1)))).filter
-        (fun pl => IsAdmissible pl.1 pl.2),
+        (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0),
       ψ pl₁ = ψ pl₂ → pl₁ = pl₂ := by
     intro pl₁ _ pl₂ _ h
     rw [hψdef] at h
@@ -358,7 +374,7 @@ lemma treeSumRaw_mono_depth (P : PolymerSystem) [Fintype P.Polymer]
           * ‖P.activity (X v)‖ with hGdef
   calc ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
         × (Fin (n + 1) → Fin (D + 1)))).filter
-        (fun pl => IsAdmissible pl.1 pl.2),
+        (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0),
         ∑ X ∈ (Finset.univ :
           Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
           ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
@@ -366,21 +382,21 @@ lemma treeSumRaw_mono_depth (P : PolymerSystem) [Fintype P.Polymer]
               * ‖P.activity (X v)‖
       = ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
           × (Fin (n + 1) → Fin (D + 1)))).filter
-          (fun pl => IsAdmissible pl.1 pl.2), G (ψ pl) :=
+          (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0), G (ψ pl) :=
         Finset.sum_congr rfl fun pl _ => rfl
     _ = ∑ q ∈ ((Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
           × (Fin (n + 1) → Fin (D + 1)))).filter
-          (fun pl => IsAdmissible pl.1 pl.2)).image ψ, G q :=
+          (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0)).image ψ, G q :=
         (Finset.sum_image hinj).symm
     _ ≤ ∑ q ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
           × (Fin (n + 1) → Fin (D + 2)))).filter
-          (fun pl => IsAdmissible pl.1 pl.2), G q := by
+          (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0), G q := by
         refine Finset.sum_le_sum_of_subset_of_nonneg ?_ (fun q _ _ => ?_)
         · intro q hq
           obtain ⟨pl, hpl, rfl⟩ := Finset.mem_image.mp hq
           rw [Finset.mem_filter] at hpl ⊢
-          obtain ⟨hlev0, hdesc⟩ := hpl.2
-          refine ⟨Finset.mem_univ _, ?_, ?_⟩
+          obtain ⟨⟨hlev0, hdesc⟩, hp0⟩ := hpl.2
+          refine ⟨Finset.mem_univ _, ⟨?_, ?_⟩, ?_⟩
           · show ((ψ pl).2 0) = 0
             rw [hψdef]
             apply Fin.ext
@@ -390,13 +406,16 @@ lemma treeSumRaw_mono_depth (P : PolymerSystem) [Fintype P.Polymer]
             show (((ψ pl).2 ((ψ pl).1 v)) : ℕ) + 1 = (((ψ pl).2 v) : ℕ)
             rw [hψdef]
             simpa using hdesc v hv
+          · show ((ψ pl).1 0) = 0
+            rw [hψdef]
+            exact hp0
         · rw [hGdef]
           refine Finset.sum_nonneg fun X _ =>
             Finset.prod_nonneg fun v _ => mul_nonneg ?_ (norm_nonneg _)
           split_ifs <;> norm_num
     _ = ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
           × (Fin (n + 1) → Fin (D + 2)))).filter
-          (fun pl => IsAdmissible pl.1 pl.2),
+          (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0),
           ∑ X ∈ (Finset.univ :
             Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
             ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
@@ -412,10 +431,10 @@ lemma treeSumRaw_zero_zero (P : PolymerSystem) [Fintype P.Polymer]
   classical
   unfold treeSumRaw
   have hfil : (Finset.univ : Finset ((Fin 1 → Fin 1)
-      × (Fin 1 → Fin 1))).filter (fun pl => IsAdmissible pl.1 pl.2)
+      × (Fin 1 → Fin 1))).filter (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0)
       = Finset.univ := by
     refine Finset.filter_true_of_mem fun pl _ => ?_
-    refine ⟨by omega, fun v hv => ?_⟩
+    refine ⟨⟨by omega, fun v hv => ?_⟩, by omega⟩
     exact absurd (by omega : v = 0) hv
   rw [hfil]
   have hprod : ∀ (pl : (Fin 1 → Fin 1) × (Fin 1 → Fin 1))
@@ -465,7 +484,7 @@ lemma treeSumRaw_zero_succ (P : PolymerSystem) [Fintype P.Polymer]
   classical
   unfold treeSumRaw
   have hfil : (Finset.univ : Finset ((Fin (n + 2) → Fin (n + 2))
-      × (Fin (n + 2) → Fin 1))).filter (fun pl => IsAdmissible pl.1 pl.2)
+      × (Fin (n + 2) → Fin 1))).filter (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0)
       = ∅ := by
     rw [Finset.filter_eq_empty_iff]
     intro pl _
@@ -474,7 +493,7 @@ lemma treeSumRaw_zero_succ (P : PolymerSystem) [Fintype P.Polymer]
       intro h
       have := congrArg Fin.val h
       simp at this
-    have := hadm.2 1 h1
+    have := hadm.1.2 1 h1
     have h2 := (pl.2 1).isLt
     omega
   rw [hfil, Finset.sum_empty]
