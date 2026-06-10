@@ -71,6 +71,7 @@ import YangMills.KP.PinnedBound
 import YangMills.KP.SharpMajorant
 import YangMills.KP.SharpShell
 import YangMills.KP.SharpKP
+import YangMills.KP.ClusterTail
 
 -- SU(N) compactness and Haar state construction
 import YangMills.P8_PhysicalGap.SUN_Compact
