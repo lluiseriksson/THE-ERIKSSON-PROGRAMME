@@ -280,6 +280,82 @@ theorem gibbsMeasure_isProbability' [MeasurableMul₂ G] [MeasurableInv G]
     IsProbabilityMeasure (gibbsMeasure (d := d) (N := N) μ pe β) :=
   gibbsMeasure_isProbability d N μ pe β (integrable_boltzmann μ hpe_meas hpe β)
 
+/-! ### Locality: plaquette weights read only their support coordinates -/
+
+/-- The positive-edge partner of an edge. -/
+def ConcreteEdge.pos {d N : ℕ} (e : ConcreteEdge d N) : PosEdge d N :=
+  ⟨{ e with sign := true }, rfl⟩
+
+lemma ConcreteEdge.with_sign_true_eq {d N : ℕ} (e : ConcreteEdge d N)
+    (he : e.sign = true) : ({ e with sign := true } : ConcreteEdge d N) = e := by
+  obtain ⟨s, dir, sign⟩ := e
+  cases he
+  rfl
+
+/-- Edge evaluations are determined by the positive-edge coordinates. -/
+lemma config_eval_eq_of_pos {d N : ℕ} [NeZero d] [NeZero N]
+    {G : Type*} [Group G] [MeasurableSpace G]
+    (A A' : GaugeConfig d N G) (e : ConcreteEdge d N)
+    (h : configToPos A e.pos = configToPos A' e.pos) :
+    A e = A' e := by
+  have hval : A { e with sign := true } = A' { e with sign := true } := h
+  by_cases he : e.sign = true
+  · rw [← ConcreteEdge.with_sign_true_eq e he]
+    exact hval
+  · have he' : e.sign = false := by rwa [Bool.not_eq_true] at he
+    rw [config_apply_neg A e he', config_apply_neg A' e he', hval]
+
+/-- The **support** of a plaquette: the four positive-edge coordinates its
+holonomy reads. -/
+def plaquetteSupport {d N : ℕ} [NeZero N] (p : ConcretePlaquette d N) :
+    Finset (PosEdge d N) :=
+  {(p.edges 0).pos, (p.edges 1).pos, (p.edges 2).pos, (p.edges 3).pos}
+
+/-- **Locality of the Mayer weight:** `f_p` depends only on the
+configuration's positive-edge coordinates in `plaquetteSupport p`.  This is
+the interface the polymer independence factorization (step 2) consumes. -/
+lemma plaquetteWeight_congr {d N : ℕ} [NeZero d] [NeZero N]
+    {G : Type*} [Group G] [MeasurableSpace G] (pe : G → ℝ) (β : ℝ)
+    (p : ConcretePlaquette d N) {A A' : GaugeConfig d N G}
+    (h : ∀ e ∈ plaquetteSupport p, configToPos A e = configToPos A' e) :
+    plaquetteWeight pe β A p = plaquetteWeight pe β A' p := by
+  have hhol : plaquetteHolonomy A p = plaquetteHolonomy A' p := by
+    unfold plaquetteHolonomy
+    have h0 := config_eval_eq_of_pos A A' (p.edges 0)
+      (h _ (by simp [plaquetteSupport]))
+    have h1 := config_eval_eq_of_pos A A' (p.edges 1)
+      (h _ (by simp [plaquetteSupport]))
+    have h2 := config_eval_eq_of_pos A A' (p.edges 2)
+      (h _ (by simp [plaquetteSupport]))
+    have h3 := config_eval_eq_of_pos A A' (p.edges 3)
+      (h _ (by simp [plaquetteSupport]))
+    rw [show (FiniteLatticeGeometry.plaquetteEdge
+        (d := d) (N := N) (G := G) p 0) = p.edges 0 from rfl,
+      show (FiniteLatticeGeometry.plaquetteEdge
+        (d := d) (N := N) (G := G) p 1) = p.edges 1 from rfl,
+      show (FiniteLatticeGeometry.plaquetteEdge
+        (d := d) (N := N) (G := G) p 2) = p.edges 2 from rfl,
+      show (FiniteLatticeGeometry.plaquetteEdge
+        (d := d) (N := N) (G := G) p 3) = p.edges 3 from rfl,
+      h0, h1, h2, h3]
+  unfold plaquetteWeight
+  rw [show (GaugeConfig.plaquetteHolonomy A p :
+      G) = plaquetteHolonomy A' p from hhol]
+
+/-- **Locality of Mayer-weight products** over a plaquette set `S`: they
+depend only on the coordinates in the union of supports. -/
+lemma prod_plaquetteWeight_congr {d N : ℕ} [NeZero d] [NeZero N]
+    {G : Type*} [Group G] [MeasurableSpace G] (pe : G → ℝ) (β : ℝ)
+    (S : Finset (ConcretePlaquette d N)) {A A' : GaugeConfig d N G}
+    (h : ∀ e ∈ S.biUnion plaquetteSupport,
+      configToPos A e = configToPos A' e) :
+    ∏ p ∈ S, plaquetteWeight pe β A p
+      = ∏ p ∈ S, plaquetteWeight pe β A' p := by
+  classical
+  refine Finset.prod_congr rfl fun p hp => ?_
+  exact plaquetteWeight_congr pe β p fun e he =>
+    h e (Finset.mem_biUnion.mpr ⟨p, hp, he⟩)
+
 end Integrability
 
 end YangMills
