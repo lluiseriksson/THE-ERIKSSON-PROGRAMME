@@ -1410,6 +1410,59 @@ lemma sum_symmetrize {α : Type*} [DecidableEq α] (A : Finset α)
   field_simp
 
 open Classical in
+/-- **The shell forms block data — cast-free enumeration form:** same as
+`shell_blockData`, with the enumeration given as an injective function
+with prescribed range (the form the function-version symmetrization
+produces). -/
+lemma shell_blockData_fn (h : IsAdmissible p lev) {k : ℕ}
+    {σ : Fin k → Fin (n + 1)} (hσinj : Function.Injective σ)
+    (hσrange : Finset.univ.image σ
+      = (Finset.univ : Finset (Fin (n + 1))).filter
+          (fun s => s ≠ 0 ∧ p s = 0)) :
+    IsBlockData ((Finset.univ : Finset (Fin (n + 1))).erase 0)
+      (fun i => ((shellFiber p lev (σ i)).erase (σ i)).card)
+      (fun i => (shellFiber p lev (σ i), σ i)) := by
+  classical
+  have hmem : ∀ i : Fin k, σ i ∈ (Finset.univ :
+      Finset (Fin (n + 1))).filter (fun s => s ≠ 0 ∧ p s = 0) := by
+    intro i
+    rw [← hσrange]
+    exact Finset.mem_image_of_mem _ (Finset.mem_univ i)
+  have hshell : ∀ i : Fin k, σ i ≠ 0 ∧ p (σ i) = 0 :=
+    fun i => (Finset.mem_filter.mp (hmem i)).2
+  have hlev1 : ∀ i : Fin k, ((lev (σ i) : ℕ)) = 1 :=
+    fun i => (h.parent_eq_zero_iff (hshell i).1).mp (hshell i).2
+  have hroot : ∀ i : Fin k, σ i ∈ shellFiber p lev (σ i) :=
+    fun i => self_mem_shellFiber (hshell i).1 (hlev1 i)
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · intro i j hij
+    refine shell_fiber_disjoint ?_
+    intro hEq
+    exact hij (hσinj hEq)
+  · ext v
+    simp only [Finset.mem_biUnion, Finset.mem_univ, true_and,
+      Finset.mem_erase]
+    constructor
+    · rintro ⟨i, hv⟩
+      exact ⟨(mem_shellFiber.mp hv).1, trivial⟩
+    · rintro ⟨hv0, -⟩
+      have hsr0 : shellRoot p lev v ≠ 0 := h.shellRoot_ne_zero hv0
+      have hsrp : p (shellRoot p lev v) = 0 := h.parent_shellRoot hv0
+      have hmem2 : shellRoot p lev v ∈ Finset.univ.image σ := by
+        rw [hσrange]
+        exact Finset.mem_filter.mpr ⟨Finset.mem_univ _, hsr0, hsrp⟩
+      obtain ⟨i, -, hi⟩ := Finset.mem_image.mp hmem2
+      refine ⟨i, ?_⟩
+      rw [mem_shellFiber]
+      exact ⟨hv0, hi.symm⟩
+  · exact hroot
+  · intro i
+    have h1 := Finset.card_erase_of_mem (hroot i)
+    have hpos := Finset.card_pos.mpr ⟨σ i, hroot i⟩
+    dsimp only
+    omega
+
+open Classical in
 /-- **Enumerations of a `k`-set number `k!`:** injective functions
 `Fin k → α` with image exactly `S` (where `S.card = k`) are in bijection
 with `Fin k ≃ S`.  This is the cast-free form of shell-enumeration
