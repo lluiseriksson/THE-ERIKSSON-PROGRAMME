@@ -68,6 +68,7 @@ import YangMills.L1_GibbsMeasure.ConnectedEntropy
 import YangMills.KP.PinnedCluster
 import YangMills.KP.PinnedWalk
 import YangMills.KP.PinnedBound
+import YangMills.KP.SharpMajorant
 
 -- SU(N) compactness and Haar state construction
 import YangMills.P8_PhysicalGap.SUN_Compact
