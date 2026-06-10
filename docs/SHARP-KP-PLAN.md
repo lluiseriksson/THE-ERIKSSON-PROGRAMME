@@ -401,6 +401,20 @@ content is the bookkeeping of the injection into the Π-of-triples target
 `sum_symmetrize`, fiberwise-`ρ`, `card_blockData_mul_le`, resummation)
 is arithmetic.
 
+## 5d. X-sum weave — attempt log (2026-06-10, final cycle)
+
+One full attempt at `inner_factorization` was made and **cleanly
+discarded** (never committed; repo green throughout).  Failure mode:
+`set G : ∀ i, (block_i → Polymer) → ℝ := …` (a dependent per-block
+functional) produces motive-incorrect rewrites when `hGdef` is used under
+binders.  **For the next session:** declare the per-block functional as a
+top-level `def` (like `treeSumRawInner`) with its own simp/eval lemmas,
+never as a `set` inside the proof; then the calc chain
+(pointwise `master_factorization_fn` with `markedEmb_zero`/root rewrite →
+`sum_pinned_eq` → subtype-bridge `sum_nbij'` → `sum_coverSplit` →
+per-block `block_sum_eq`) goes through as designed.  All five links are
+proved; only the binder hygiene failed.
+
 ## 6. Honesty invariant (unchanged)
 
 All of this is M3 lattice-side.  None of it reduces M4/M5/Clay
