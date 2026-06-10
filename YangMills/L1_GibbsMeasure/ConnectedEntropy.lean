@@ -907,6 +907,41 @@ theorem connectedLatticePolymerSystem_kpCriterion_volumeUniform
           exact hsmall
       _ = t * (c.1.card : ℝ) := mul_comm _ _
 
+/-- **Convergence from the volume-uniform criterion.**  The criterion
+hypotheses (`hr`, `hsmall`) depend only on the dimension; the surviving
+volume-dependence is isolated in the single hypothesis `hA`
+(`e·t·#P < 1`), inherited from the *uniform-smallness* form of our
+formalized KP per-size bound.  Replacing that bound by the sharp
+(weight-respecting) Kotecký–Preiss estimate — see
+`docs/SHARP-KP-PLAN.md` — removes `hA` and yields volume-uniform
+convergence outright. -/
+theorem connectedLatticeClusterSum_summable_uniformCriterion
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ} {B : ℝ}
+    (hpe : ∀ g, |pe g| ≤ B) (β : ℝ) (t : ℝ) (ht0 : 0 ≤ t)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((Real.exp (|β| * B) - 1) * Real.exp t) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      (((Real.exp (|β| * B) - 1) * Real.exp t) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((Real.exp (|β| * B) - 1) * Real.exp t))) ≤ t)
+    (hA : Real.exp 1 *
+      (t * (Fintype.card (ConcretePlaquette d N) : ℝ)) < 1) :
+    Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) →
+        (connectedLatticePolymerSystem (d := d) (N := N) μ pe β).Polymer,
+        (ursell (connectedLatticePolymerSystem (d := d) (N := N) μ pe β) X : ℂ) *
+          ∏ i, (connectedLatticePolymerSystem (d := d) (N := N)
+            μ pe β).activity (X i)) := by
+  refine kp_convergence (connectedLatticePolymerSystem (d := d) (N := N) μ pe β)
+    (connectedLatticePolymerSystem_kpCriterion_volumeUniform (d := d) (N := N)
+      μ hpe β t ht0 hr hsmall)
+    (A := t * (Fintype.card (ConcretePlaquette d N) : ℝ))
+    (by positivity) ?_ hA
+  intro c
+  have hcard : (c.1.card : ℝ) ≤ (Fintype.card (ConcretePlaquette d N) : ℝ) := by
+    exact_mod_cast Finset.card_le_univ c.1
+  exact mul_le_mul_of_nonneg_left hcard ht0
+
 end UniformCriterion
 
 end YangMills
