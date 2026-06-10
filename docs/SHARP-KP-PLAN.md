@@ -277,6 +277,35 @@ proving (†) as an *injection* into (permutations of `Fin n`) ×
 and the factorials `∏ m_i!·k!` arise as fiber sizes of the forgetting
 map.  Choose at build time; both are 2–3 cycle bricks.
 
+## 5b. C3 construction inventory (2026-06-10, end of session — ALL LOCAL
+INGREDIENTS PROVED, oracle clean)
+
+In `KP/SharpShell.lean`: C1 (`exists_adj_reachable_in_deleted`),
+`connected_dist_lt_card`, `IsAdmissible` (exact increments), `treeSumRaw`
+(+ nonneg, depth-mono, base cases `= 1` and `= 0` matching `kpMajorant`),
+C2 (`pinnedClusterWeight_le_treeSumRaw`), the shell-root calculus
+(`shellRoot` + 9 lemmas), the fiber partition
+(`shell_fiber_partition`/`_disjoint`), **the counting bound**
+(`card_blockData_mul_le`, via `placeFun` and the permutation injection),
+the marked enumeration (`markedEmb`/`markedEquiv` APIs), **the descent**
+(`subtreeStructure_isAdmissible` — shell subtrees of depth-(D+1)
+structures are admissible depth-D structures), and **the term transport**
+(`subtreeParent_apply_val`, `prod_filter_ne_zero_eq`,
+`subtree_prod_transport`).
+
+**The single remaining lemma — the master assembly:** for each `n`,
+decompose `treeSumRaw P c (D+1) n`'s sum over `(p, lev, X)` along
+(shell-ordering pairs ↦ block data + relabeled components); the fiber is
+priced by `card_blockData_mul_le`, the terms by `subtree_prod_transport`
++ `shell_fiber_partition` (+ `Finset.prod_biUnion` and
+`Finset.mul_prod_erase` at `v = s` where `parent_eq_zero_iff` turns the
+root edge into `𝟙[incomp c ·]`), and the resummation over `n ≤ N`
+recombines via the multinomial coefficients into
+`∑_k (1/k!)(∑_{c'≁c} w(c')·B_D(c'))^k ≤ exp(...) = Φ_{D+1}(c)`
+(`Real.sum_le_exp_of_nonneg`).  One theorem, ~300 lines, every
+ingredient on the shelf.  Endpoint: §3's `kp_pinned_cluster_bound`, then
+volume-uniform convergence by composition (§5, C4).
+
 ## 6. Honesty invariant (unchanged)
 
 All of this is M3 lattice-side.  None of it reduces M4/M5/Clay
