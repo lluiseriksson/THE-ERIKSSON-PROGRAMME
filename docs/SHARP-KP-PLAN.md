@@ -306,6 +306,51 @@ recombines via the multinomial coefficients into
 ingredient on the shelf.  Endpoint: §3's `kp_pinned_cluster_bound`, then
 volume-uniform convergence by composition (§5, C4).
 
+## 5c. The master assembly — final blueprint (2026-06-10, late session;
+includes TWO design corrections caught by adversarial review)
+
+**Corrections already applied in code:** (i) the per-fixed-`m` sorted
+count is false — `1/k!` enters via `(datum, σ)`-pairs (§ above); (ii)
+`p(0)` was unconstrained, so `treeSumRaw` overcounted each tree `n+1`
+times — fixed by root canonicity `p 0 = 0` in the filter (with
+`bfsParent_zero` keeping C2 green).  **Do not undo either.**
+
+**The sum chain, exactly:**
+
+1. *k-partition:* split the canonical-admissible `(p,lev)`-sum by
+   `k := (univ.filter (fun s => s ≠ 0 ∧ p s = 0)).card` (the shell size);
+   `n ≥ 1 ⇒ k ≥ 1`.
+2. *Symmetrization:* per class, `∑_{(p,lev)} F = (1/k!)·∑_{(p,lev,σ)} F`
+   where `σ : Fin k ≃ shell-subtype`; `#σ = k!` by `Fintype.card_equiv`.
+3. *The injection (the only remaining hard step):*
+   `(p, lev, σ, X) ↦ (ρ, comps)` where `ρ := shell_blockData`-data
+   (PROVED to be `IsBlockData (univ.erase 0)`) and
+   `comps i := (subtreeParent …, subtreeLev …, X ∘ markedEmb_i)` — each
+   canonical-admissible at depth `D` (PROVED: `subtreeStructure_isAdmissible`;
+   canonicity `subtreeParent 0 = 0` is definitional).  Term preservation:
+   `master_partition` + `subtree_prod_transport` +
+   `subtreeParent_apply_val` (ALL PROVED).  Injectivity: reconstruction —
+   `p`/`lev`/`X` are determined by `(ρ, comps)` (recovery pattern as in
+   `placeFun_injective`/`card_blockData_mul_le`'s `hblock`).
+4. *Pricing:* for fixed `(k, m, comps)`, the `ρ`-sum contributes
+   `#blockdata(m) ≤ n!/∏ m_i!` (`card_blockData_mul_le` at
+   `U := univ.erase 0`, `U.card = n`).
+5. *Per-block identification:* the comps-sum factorizes; each block's sum
+   is exactly `∑_{c' ≁ c} ‖z c'‖ · treeSumRaw P c' D (m i)` (root-edge
+   factor `𝟙[incomp c (X'_i 0)]·w(X'_i 0)` + inner = `treeSumRaw`'s
+   summand).
+6. *Resummation:* `(1/n!)·tSR(c,D+1,n) ≤ ∑_k (1/k!) ∑_{m} ∏ (S(m_i)/m_i!)`
+   with `S(m) := ∑_{c'≁c} w c'·tSR(c',D,m)`; sum over `n ≤ N`, expand the
+   power by `Finset.prod_univ_sum` (products of sums = sums over
+   `Fintype.piFinset`), bound by
+   `∑_k (1/k!)(∑_{c'≁c} w c' · B_D(c'))^k ≤ exp(…) = Φ_{D+1}(c)`
+   via `Real.sum_le_exp_of_nonneg` and (inductively) `B_D ≤ Φ_D` from
+   `kpMajorant_le_exp`-side composition.
+
+Everything in 1, 2, 4, 5, 6 is glue over proved lemmas; step 3's
+reconstruction is the one genuinely laborious proof left (≈200 lines,
+twice-precedented pattern).
+
 ## 6. Honesty invariant (unchanged)
 
 All of this is M3 lattice-side.  None of it reduces M4/M5/Clay
