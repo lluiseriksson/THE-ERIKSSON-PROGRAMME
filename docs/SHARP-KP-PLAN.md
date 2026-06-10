@@ -132,16 +132,27 @@ trick is reusable wherever a fiber of a free sum is needed.
 `∑'_n pinnedClusterWeight P c n ≤ ‖z c‖/(1 − e·A)` — the per-polymer
 pinned KP bound, uniform-A form.  All oracle-clean.
 
-**Remaining brick** (the campaign's core):
+**The analytic half — CLOSED (2026-06-10, `KP/SharpMajorant.lean`).**
+`kpMajorant` (`Φ₀ = 1`, `Φ_{D+1}(c) = exp(∑_{c'≁c} ‖z(c')‖·Φ_D(c'))`),
+positivity, depth-monotonicity, and **`kpMajorant_le_exp`**:
+`Φ_D(c) ≤ e^{a(c)}` for every depth under the bare KP criterion — the
+criterion absorbs one shell per induction step, **no uniform `A`
+anywhere**.  This is exactly the analytic engine of FV Thm 5.4.
 
-* **Shell decomposition** (§2 Route A): a cluster pinned at `c`
-  decomposes into its first shell (polymers incompatible with `c`) and
-  sub-clusters attached to shell elements.  Needs a components-of-
-  vertex-deleted-graph lemma; budget 5–8 cycles; this is where the
-  criterion's `e^{a}` weights get consumed shell by shell and the uniform
-  `A` disappears — yielding the sharp endpoint `kp_pinned_cluster_bound`
-  (§3) and, composed with the volume-uniform criterion, volume-uniform
-  convergence of the connected lattice gas.
+**Remaining brick — the combinatorial half** (the campaign's last core):
+
+* **Pinned-cluster ≤ majorant**: show the pinned weighted cluster sums are
+  dominated by `Φ_D`-limits.  Concretely: decompose a pinned cluster's
+  Penrose/BFS tree by depth shells rooted at coordinate 0; the sum over
+  (tree, assignment) pairs of depth ≤ D, with the `1/k!` of each vertex's
+  children, is `≤ Φ_D(c) − 1`-form quantities (the exponential's series
+  reassembles the children multiplicities).  Design the exact statement
+  first — candidates: (i) induction on depth with rooted-forest generating
+  sums; (ii) injection of (cluster, Penrose tree) pairs into depth-layered
+  forests.  Budget 5–8 cycles.  Endpoint: `kp_pinned_cluster_bound` (§3),
+  then volume-uniform convergence of the connected lattice gas by
+  composing with `connectedLatticePolymerSystem_kpCriterion_volumeUniform`
+  and `kpMajorant_le_exp`.
 
 ## 6. Honesty invariant (unchanged)
 
