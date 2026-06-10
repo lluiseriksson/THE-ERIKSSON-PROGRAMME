@@ -2061,6 +2061,41 @@ lemma sum_structures_eq_blockS (P : PolymerSystem) [Fintype P.Polymer]
     = blockS P c D V s :=
   sum_structures_blockSum P c D ((V.erase s).card)
 
+open Classical in
+/-- **Class carriers of class members are canonical-admissible** (the
+wrapper's maps-into condition): for a structure whose fiber at `σ i` is
+the class block `F i`, the class parent/level maps form a canonical
+admissible depth-`D` structure.  Proved by rewriting the block back to
+the structure's own fiber wholesale (`← hFi` — everything is functorial
+in the plain `Finset` argument) and invoking the subtree machinery. -/
+lemma class_carrier_admissible {n D : ℕ}
+    {p : Fin (n + 1) → Fin (n + 1)} {lev : Fin (n + 1) → Fin (D + 2)}
+    (h : IsAdmissible p lev) {s : Fin (n + 1)} {F : Finset (Fin (n + 1))}
+    (hs : s ≠ 0) (hs1 : (lev s : ℕ) = 1)
+    (hF : shellFiber p lev s = F) (hsF : s ∈ F)
+    (hstab : ∀ l : Fin ((F.erase s).card + 1), l ≠ 0 →
+      p (markedEmb F s rfl l) ∈ F) :
+    IsAdmissible (classParent F s hsF rfl p hstab)
+      (classLev F s rfl lev)
+    ∧ classParent F s hsF rfl p hstab 0 = 0 := by
+  subst hF
+  constructor
+  · rw [classParent_eq_subtreeParent h hs hs1 hstab]
+    have hlev : classLev (shellFiber p lev s) s rfl lev
+        = subtreeLev hs hs1 rfl := by
+      funext l
+      apply Fin.ext
+      show (lev (markedEmb (shellFiber p lev s) s rfl l) : ℕ) - 1
+        = ((subtreeLev hs hs1 rfl l : Fin (D + 1)) : ℕ)
+      have hval : ((subtreeLev hs hs1 rfl l : Fin (D + 1)) : ℕ)
+          = (lev ((markedEquiv (shellFiber p lev s)
+              (self_mem_shellFiber hs hs1) rfl l).1) : ℕ) - 1 := rfl
+      rw [hval, markedEquiv_apply_val]
+    rw [hlev]
+    exact subtreeStructure_isAdmissible h hs hs1 rfl
+  · unfold classParent
+    rw [dif_pos rfl]
+
 end MasterAssembly
 
 end BlockCount
