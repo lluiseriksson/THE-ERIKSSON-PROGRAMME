@@ -401,19 +401,27 @@ content is the bookkeeping of the injection into the Π-of-triples target
 `sum_symmetrize`, fiberwise-`ρ`, `card_blockData_mul_le`, resummation)
 is arithmetic.
 
-## 5d. X-sum weave — attempt log (2026-06-10, final cycle)
+## 5d. X-sum weave — attempt log (2026-06-10, two attempts, both cleanly
+discarded; repo green throughout)
 
-One full attempt at `inner_factorization` was made and **cleanly
-discarded** (never committed; repo green throughout).  Failure mode:
-`set G : ∀ i, (block_i → Polymer) → ℝ := …` (a dependent per-block
-functional) produces motive-incorrect rewrites when `hGdef` is used under
-binders.  **For the next session:** declare the per-block functional as a
-top-level `def` (like `treeSumRawInner`) with its own simp/eval lemmas,
-never as a `set` inside the proof; then the calc chain
-(pointwise `master_factorization_fn` with `markedEmb_zero`/root rewrite →
-`sum_pinned_eq` → subtype-bridge `sum_nbij'` → `sum_coverSplit` →
-per-block `block_sum_eq`) goes through as designed.  All five links are
-proved; only the binder hygiene failed.
+Attempt 1 failure: `set`-bound dependent per-block functional → motive
+errors.  Fix applied and COMMITTED: `blockFunctional` as a top-level def
++ `sum_blockFunctional` (rfl-level repackaging of `block_sum_eq` — the
+shapes match exactly).
+
+Attempt 2 failure (with the named functional): the *first calc step's*
+`rw [master_factorization_fn …]` is itself motive-incorrect — the
+equation's `G` instantiation mentions the locally-bound `X`, and the
+rewrite under the `sum_congr` binder fails.  **Prescription for the
+implementing session:** do not `rw` with `master_factorization_fn` under
+a binder.  Instead state the pointwise equality as an explicit `have`
+per `X` (`have hX' : (∏ v ∈ …, …) = ∏ i, blockFunctional … (fun x => X x.1)
+:= by …`), proving it by `rw [master_factorization_fn …]` in that
+ISOLATED goal (no outer binder → motive fine — this is exactly how
+`hpoint` succeeded inside `pinnedClusterWeight_le_treeSumRaw`), then use
+`Finset.sum_congr rfl (fun X hX => hX' …)`.  The remaining calc steps
+(pinned → bridge → `sum_coverSplit` → `sum_blockFunctional`) were not
+reached; their designs are unchanged.  All ingredients remain proved.
 
 ## 6. Honesty invariant (unchanged)
 
