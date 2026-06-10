@@ -1074,6 +1074,61 @@ theorem subtreeStructure_isAdmissible :
     rw [hval1, hval2]
     omega
 
+/-- **Parent conjugation:** through the marked enumeration, the relabeled
+parent map is exactly the original parent map (away from the root). -/
+lemma subtreeParent_apply_val {l : Fin (m + 1)} (hl : l ≠ 0) :
+    ((markedEquiv (shellFiber p lev s) (self_mem_shellFiber hs hs1) hm)
+      (subtreeParent h hs hs1 hm l)).1
+    = p ((markedEquiv (shellFiber p lev s)
+        (self_mem_shellFiber hs hs1) hm l).1) := by
+  unfold subtreeParent
+  rw [dif_neg hl, Equiv.apply_symm_apply]
+
+/-- Reindexing a product over nonzero positions by `Fin.succ`. -/
+lemma prod_filter_ne_zero_eq {M : Type*} [CommMonoid M] {m : ℕ}
+    (g : Fin (m + 1) → M) :
+    ∏ l ∈ (Finset.univ : Finset (Fin (m + 1))).filter (fun l => l ≠ 0),
+      g l = ∏ j : Fin m, g j.succ := by
+  refine (Finset.prod_nbij (fun j => j.succ) ?_ ?_ ?_ ?_).symm
+  · intro j _
+    rw [Finset.mem_filter]
+    exact ⟨Finset.mem_univ _, Fin.succ_ne_zero j⟩
+  · intro j₁ _ j₂ _ h
+    exact Fin.succ_injective _ h
+  · intro l hl
+    rw [Finset.mem_coe, Finset.mem_filter] at hl
+    obtain ⟨j, rfl⟩ := Fin.eq_succ_of_ne_zero hl.2
+    exact ⟨j, Finset.mem_coe.mpr (Finset.mem_univ _), rfl⟩
+  · intro j _
+    rfl
+
+/-- **The per-fiber product transport:** a product of per-vertex factors
+over a shell subtree (minus its root) equals the product over nonzero
+relabeled positions. -/
+lemma subtree_prod_transport {M : Type*} [CommMonoid M]
+    (G : Fin (n + 1) → M) :
+    ∏ v ∈ (shellFiber p lev s).erase s, G v
+    = ∏ l ∈ (Finset.univ : Finset (Fin (m + 1))).filter (fun l => l ≠ 0),
+        G ((markedEquiv (shellFiber p lev s)
+          (self_mem_shellFiber hs hs1) hm l).1) := by
+  rw [prod_filter_ne_zero_eq]
+  refine (Finset.prod_nbij
+    (fun j => ((shellFiber p lev s).erase s).orderEmbOfFin hm j)
+    ?_ ?_ ?_ ?_).symm
+  · intro j _
+    exact Finset.orderEmbOfFin_mem _ hm j
+  · intro j₁ _ j₂ _ hj
+    exact (((shellFiber p lev s).erase s).orderEmbOfFin hm).injective hj
+  · intro v hv
+    rw [Finset.mem_coe] at hv
+    have : v ∈ Set.range (((shellFiber p lev s).erase s).orderEmbOfFin hm) := by
+      rw [Finset.range_orderEmbOfFin]
+      exact hv
+    obtain ⟨j, hj⟩ := this
+    exact ⟨j, Finset.mem_coe.mpr (Finset.mem_univ _), hj⟩
+  · intro j _
+    rw [markedEquiv_apply_val, markedEmb_succ]
+
 end SubtreeTransport
 
 end BlockCount
