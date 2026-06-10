@@ -175,14 +175,19 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
 - **T3 — CLOSED (2026-06-10).** Centre invariance, exact action symmetry, and the Z_n
   selection rules (free / interacting / correlator) are proved end to end at genuine
   SU(n) Haar; see §4 above and `docs/VERIFICATION-LEDGER.md` addenda 1–3.
-- **NEXT TARGET — sharp KP bound (`docs/SHARP-KP-PLAN.md`).** The volume-uniform KP
-  *criterion* is proved; volume-uniform *convergence* needs the sharp (weight-respecting)
-  KP per-size estimate replacing the uniform-smallness form in `KP/KPBound.lean`.
-  Anchor (`KP/PinnedCluster.lean`: pinned cluster weights + exact pinning decomposition)
-  is landed; Route A (Ueltschi-style direct induction — no degree-refined Cayley needed)
-  is designed in the plan with the first two bricks stated precisely.  After that:
-  cluster-correlation chain → discharge the IR hypothesis of
-  `lattice_mass_gap_of_clustering_uniform`.
+- **SHARP KP — CLOSED (2026-06-10; `docs/SHARP-KP-PLAN.md` §5h).** The full
+  weight-respecting Kotecký–Preiss bound is machine-checked end to end:
+  `kp_pinned_cluster_bound` / `pinned_cluster_summable_sharp` (KP/SharpShell.lean),
+  `kp_convergence_sharp` / `kp_norm_clusterSum_le_sharp` (KP/SharpKP.lean), and the
+  campaign goal **`connectedLatticeClusterSum_summable_volumeUniform`**
+  (L1_GibbsMeasure/ConnectedEntropy.lean): the Mayer series of the connected lattice
+  gas converges absolutely under β-smallness depending ONLY on the dimension — no
+  volume hypothesis anywhere.  `docs/VERIFICATION-LEDGER.md` addendum 6 has the
+  oracle outputs.
+- **NEXT TARGET — cluster-correlation chain.** Connect `clusterSum` derivatives /
+  two-point-function expansions to Wilson-loop correlators and discharge the IR
+  hypothesis of `lattice_mass_gap_of_clustering_uniform` (M3's remaining analytic
+  input besides UV).  The volume-uniform convergence just proved is the engine.
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the
   repo; needed for the other M3 hypothesis.
 - **T4 — strong-coupling character expansion → area law (LG7/8).** Needs **Peter–Weyl for
@@ -191,9 +196,9 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
 - **Beyond — M4/M5, the Clay wall:** continuum limit + OS/Wightman reconstruction. Open
   mathematics. Do not formalize until it exists on paper (`HORIZON.md §4`).
 
-The sharp-KP campaign is realistically reachable with **interactive Lean**. T4 is a
-project. M4/M5 is original research.  Read `docs/DEPENDENCY-GRAPH.md` and
-`docs/VERIFICATION-LEDGER.md` (5 addenda) for the complete machine-checked state.
+The sharp-KP campaign is **done**. T4 is a project. M4/M5 is original research.
+Read `docs/DEPENDENCY-GRAPH.md` and `docs/VERIFICATION-LEDGER.md` (6 addenda)
+for the complete machine-checked state.
 
 ---
 

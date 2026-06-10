@@ -110,12 +110,25 @@ M3: unconditional lattice mass gap at strong coupling
     VOLUME-FREE), sum_connectedPolymers_through_le, and
     **connectedLatticePolymerSystem_kpCriterion_volumeUniform** — the KP
     criterion for the connected gas under β-smallness depending ONLY on
-    the dimension.  Honest remaining caveat: volume-uniform *convergence*
-    additionally needs the sharp (weight-respecting) KP per-size bound —
-    our formalized kp_per_size_bound uses the uniform smallness e·max(a)<1,
-    whose A = t·#P is volume-dependent.  Refining KPBound.lean to the
-    sharp form is the scoped next target; it is a self-contained
-    strengthening of the abstract KP layer, no new physics input.
+    the dimension.
+ └─ Sharp Kotecký–Preiss                            **CLOSED 2026-06-10**
+    (KP/SharpMajorant.lean, KP/SharpShell.lean, KP/SharpKP.lean; the
+    full shell-decomposition campaign, ~200 commits):
+    kpMajorant + kpMajorant_le_exp (the analytic half);
+    treeSumRaw/treeSumRawInner + Penrose domination
+    (pinnedClusterWeight_le_treeSumRaw); the block machinery
+    (IsBlockData, card_blockData_mul_le, markedEquiv, the heart
+    inner_factorization, the spine structure_determined, the wrapper
+    class_sum_le); per_k_bound (ρ-design); rho_sum_le_price (O4);
+    treeSumRaw_succ_le + treeSumB_succ_le (the master recursion);
+    treeSumB_le_kpMajorant (D-induction); **kp_pinned_cluster_bound**
+    ((†): pinned cluster sums ≤ ‖z(c)‖·e^{a(c)} under the BARE
+    criterion); pinned_cluster_summable_sharp; kp_convergence_sharp;
+    kp_norm_clusterSum_le_sharp; and the campaign goal
+    **connectedLatticeClusterSum_summable_volumeUniform** (+ norm
+    version): Mayer-series convergence of the connected lattice gas
+    with every hypothesis depending only on d, B, β, t — the volume
+    caveat is GONE.  All oracle [propext, Classical.choice, Quot.sound].
  └─ T3 / LG6 — centre selection rule               **CLOSED 2026-06-10**
     integral_centerAct (gauge measure centre-invariant, left-invariant μ);
     wilsonAction_centerAct (exact centre symmetry of the Wilson action —

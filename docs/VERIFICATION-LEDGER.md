@@ -192,14 +192,49 @@ criterion for the connected lattice gas holds under smallness conditions on
 `β` depending **only on the dimension** — the volume-dependence caveat of
 addendum 4 is **eliminated at the criterion level**.
 
-Honest remaining caveat: composing this with our formalized KP *convergence*
-theorem still passes through the uniform bound `a(c) ≤ A` with `A = t·#P`
-(our KP per-size estimate uses uniform smallness `e·A < 1`, stronger than
-sharp KP).  Volume-uniform *convergence* therefore needs the sharp
-(weight-respecting) KP bound — a precisely scoped refinement of
-`KPBound.lean`, recorded as the next target.  Everything else
-(criterion, entropy, geometry) is now volume-free and machine-checked.
-All M3 lattice-side; M4/M5/Clay untouched.
+~~Honest remaining caveat: composing this with our formalized KP
+*convergence* theorem still passes through the uniform bound `a(c) ≤ A`~~
+**RESOLVED — see addendum 6.**
+
+## Addendum 6 (2026-06-10, the sharp-KP completion) — VOLUME-UNIFORM
+CONVERGENCE, the campaign endpoint
+
+**Build:** `lake build YangMillsCore` — 8223 jobs, green, at `708d318`.
+**Source scan:** zero `sorry`/`axiom` in `YangMills/KP/` (unchanged).
+
+Oracle outputs (verbatim):
+
+```
+'YangMills.KP.per_k_bound'                            [propext, Classical.choice, Quot.sound]
+'YangMills.KP.rho_sum_le_price'                       [propext, Classical.choice, Quot.sound]
+'YangMills.KP.treeSumRaw_succ_le'                     [propext, Classical.choice, Quot.sound]
+'YangMills.KP.treeSumB_succ_le'                       [propext, Classical.choice, Quot.sound]
+'YangMills.KP.treeSumB_le_kpMajorant'                 [propext, Classical.choice, Quot.sound]
+'YangMills.KP.treeSumB_le_exp'                        [propext, Classical.choice, Quot.sound]
+'YangMills.KP.kp_pinned_cluster_bound'                [propext, Classical.choice, Quot.sound]
+'YangMills.KP.pinned_cluster_summable_sharp'          [propext, Classical.choice, Quot.sound]
+'YangMills.KP.kp_clusterWeight_summable_sharp'        [propext, Classical.choice, Quot.sound]
+'YangMills.KP.kp_convergence_sharp'                   [propext, Classical.choice, Quot.sound]
+'YangMills.KP.kp_norm_clusterSum_le_sharp'            [propext, Classical.choice, Quot.sound]
+'YangMills.connectedLatticeClusterSum_summable_volumeUniform'
+                                                      [propext, Classical.choice, Quot.sound]
+'YangMills.connectedLatticeClusterSum_norm_le_volumeUniform'
+                                                      [propext, Classical.choice, Quot.sound]
+```
+
+Plain language: the **sharp (weight-respecting) Kotecký–Preiss bound is
+fully machine-checked** — `∑_n (truncated pinned cluster sums) ≤
+‖z(c)‖·e^{a(c)}` under the bare criterion, with NO uniform majorant of
+the weights and NO geometric smallness hypothesis (FV Thm 5.4-level,
+via the shell decomposition of `SharpShell.lean`: Penrose domination →
+rooted depth-`D` tree-sums → block factorization priced by the
+multinomial → the Borel-sum recursion `B_{D+1} ≤ exp(∑ ‖z‖·B_D)` →
+induction to the `kpMajorant` → `e^{a(c)}`).  Composed with the
+volume-uniform criterion (addendum 5), the Mayer cluster series of the
+connected lattice polymer gas **converges absolutely under β-smallness
+depending only on the dimension** — the `hA` caveat of addendum 5 is
+eliminated; nothing in the convergence hypotheses references the
+lattice volume.  All M3 lattice-side; M4/M5/Clay untouched.
 
 ## Scope statement (the honest line)
 

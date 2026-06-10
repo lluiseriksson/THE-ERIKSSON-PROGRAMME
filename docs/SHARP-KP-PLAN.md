@@ -556,6 +556,60 @@ verbatim.  After `per_k_bound`: O4 pricing (fiberwise by size vector +
 `card_blockData_mul_le`) and O5 arithmetic close
 `kp_pinned_cluster_bound`.
 
+## 5h. CAMPAIGN COMPLETE (2026-06-10, the implementing session)
+
+Every brick landed, all oracle-clean at
+`[propext, Classical.choice, Quot.sound]`, all pushed (`708d318`):
+
+* **`per_k_bound`** (ρ-design, SharpShell): the σ/F/discriminator
+  machinery of attempts 1–2 replaced by the single self-sized
+  block-data index `ρ`; the kernel wall (Decidable-instance `isDefEq`
+  in `sum_fiberwise_of_maps_to` at the big function type) was removed
+  by the **instance-free ite-collapse**: pointwise expansion
+  `X = ∑_ρ ite (key = ρ) X 0` via `Finset.sum_eq_single` (no
+  `DecidableEq` lemma instance anywhere), `sum_comm`, per-ρ collapse to
+  the matching roots, then `class_sum_le` or `0 ≤ ∏ blockS`.  This
+  idiom is the file's third reusable house pattern.
+* **O4** `shellVal` + `blockS_eq_shellVal` (rfl) + `rho_sum_le_price`:
+  block-data sums priced by `n!·∑_m ∏ shellVal(m_i)/m_i!` via the same
+  ite-collapse over size vectors and `card_blockData_mul_le`.
+* **O5a** `treeSumRaw_succ_le`: symmetrize + per_k + price composed.
+  (Spelling note: state the pl-space at `Fin (D + 1 + 1)` — the form
+  `treeSumRaw_eq_sum_inner` produces at depth `D+1` — so `rw` matches
+  syntactically; elaborator unification absorbs `D+2` elsewhere.)
+* **O5b** `treeSumB` + `treeSumB_succ_le` — THE MASTER RECURSION:
+  `B_{D+1}^N(c) ≤ exp(∑_{c'} 𝟙[incomp]·‖z‖·B_D^N(c'))`, by n-box
+  collapse (boxes equalized then ite-collapsed), `prod_univ_sum`
+  (explicit instantiation needed — HO pattern), `prod_const`, and
+  `Real.sum_le_exp_of_nonneg`.
+* **Endgame** `treeSumRaw_mono_depth_le`, `treeSumB_le_kpMajorant`
+  (D-induction; base from `treeSumRaw_zero_*`), `treeSumB_le_exp`,
+  **`kp_pinned_cluster_bound`** ((†): truncations of the pinned cluster
+  series ≤ `‖z(c)‖·e^{a(c)}` under the BARE criterion),
+  **`pinned_cluster_summable_sharp`** (summability + tsum bound; via
+  `Real.tsum_le_of_sum_range_le`, `inv_anti₀`).
+* **`KP/SharpKP.lean`** — the convergence corollaries:
+  `kp_clusterWeight_summable_sharp`, **`kp_convergence_sharp`**
+  (absolute convergence of the Mayer series under the bare criterion —
+  replaces `kp_convergence`'s `e·A < 1`), and
+  **`kp_norm_clusterSum_le_sharp`**
+  (`‖clusterSum‖ ≤ ∑_c ‖z(c)‖·e^{a(c)}`; uses
+  `Summable.tsum_finsetSum`).
+* **ConnectedEntropy.lean** —
+  **`connectedLatticeClusterSum_summable_volumeUniform`** and
+  **`connectedLatticeClusterSum_norm_le_volumeUniform`**: the
+  campaign's goal.  The `hA` hypothesis is GONE; every hypothesis
+  (`hr`, `hsmall`) depends only on `d`, `B`, `β`, `t` — never on the
+  lattice volume `N`.
+
+**Hypothesis eliminated:** `e·t·#P < 1` (volume-dependent smallness).
+**Theorems unlocked:** sharp KP per-polymer bound (†) and
+volume-uniform convergence of the connected lattice gas.
+**Remaining blockers (M3):** cluster-correlation chain → IR hypothesis
+of `lattice_mass_gap_of_clustering_uniform`; UV bound (§6.3, content
+not in repo); T4 Peter–Weyl/area law.
+**M4/M5/Clay impact:** none — see §6.
+
 ## 6. Honesty invariant (unchanged)
 
 All of this is M3 lattice-side.  None of it reduces M4/M5/Clay
