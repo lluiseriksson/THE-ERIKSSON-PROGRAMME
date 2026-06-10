@@ -930,7 +930,151 @@ lemma markedEmb_image (F : Finset (Fin N)) {s : Fin N} (hs : s ∈ F)
     have := Finset.card_erase_of_mem hs
     omega
 
+/-- The marked enumeration as an equivalence onto the set. -/
+noncomputable def markedEquiv (F : Finset (Fin N)) {s : Fin N}
+    (hs : s ∈ F) {m : ℕ} (hm : (F.erase s).card = m) :
+    Fin (m + 1) ≃ {x // x ∈ F} := by
+  refine Equiv.ofBijective
+    (fun l => ⟨markedEmb F s hm l, markedEmb_mem F hs hm l⟩) ?_
+  refine (Fintype.bijective_iff_injective_and_card _).mpr ⟨?_, ?_⟩
+  · intro l l' h
+    exact markedEmb_injective F s hm (congrArg Subtype.val h)
+  · have h1 : Fintype.card {x // x ∈ F} = F.card := Fintype.card_coe F
+    have h2 := Finset.card_erase_of_mem hs
+    have h3 := Finset.card_pos.mpr ⟨s, hs⟩
+    rw [Fintype.card_fin, h1]
+    omega
+
+@[simp] lemma markedEquiv_apply_val (F : Finset (Fin N)) {s : Fin N}
+    (hs : s ∈ F) {m : ℕ} (hm : (F.erase s).card = m) (l : Fin (m + 1)) :
+    (markedEquiv F hs hm l).1 = markedEmb F s hm l := rfl
+
+@[simp] lemma markedEquiv_zero_val (F : Finset (Fin N)) {s : Fin N}
+    (hs : s ∈ F) {m : ℕ} (hm : (F.erase s).card = m) :
+    (markedEquiv F hs hm 0).1 = s := rfl
+
 end MarkedEnum
+
+section SubtreeTransport
+
+variable {n D : ℕ} {p : Fin (n + 1) → Fin (n + 1)}
+  {lev : Fin (n + 1) → Fin (D + 2)}
+
+/-- The shell fiber of a level-1 vertex. -/
+def shellFiber (p : Fin (n + 1) → Fin (n + 1))
+    (lev : Fin (n + 1) → Fin (D + 2)) (s : Fin (n + 1)) :
+    Finset (Fin (n + 1)) := by
+  classical
+  exact (Finset.univ : Finset (Fin (n + 1))).filter
+    (fun v => v ≠ 0 ∧ shellRoot p lev v = s)
+
+lemma self_mem_shellFiber (hs : s ≠ 0) (hs1 : (lev s : ℕ) = 1) :
+    s ∈ shellFiber p lev s := by
+  classical
+  unfold shellFiber
+  rw [Finset.mem_filter]
+  exact ⟨Finset.mem_univ _, hs, shellRoot_eq_self hs1⟩
+
+/-- Fiber members other than the shell root sit at level ≥ 2, and their
+parents stay in the fiber. -/
+lemma shellFiber_parent_mem (h : IsAdmissible p lev) {s v : Fin (n + 1)}
+    (hv : v ∈ shellFiber p lev s) (hvs : v ≠ s) :
+    2 ≤ (lev v : ℕ) ∧ p v ≠ 0 ∧ p v ∈ shellFiber p lev s := by
+  classical
+  unfold shellFiber at hv ⊢
+  rw [Finset.mem_filter] at hv
+  obtain ⟨-, hv0, hvroot⟩ := hv
+  have hlev2 : 2 ≤ (lev v : ℕ) := by
+    have h1 := h.one_le_lev hv0
+    rcases Nat.lt_or_ge (lev v : ℕ) 2 with h2 | h2
+    · exfalso
+      have hv1 : (lev v : ℕ) = 1 := by omega
+      exact hvs (hvroot ▸ (shellRoot_eq_self hv1).symm)
+    · exact h2
+  have hstep := h.2 v hv0
+  have hp0 : p v ≠ 0 := by
+    intro hzero
+    have : (lev (p v) : ℕ) = 0 := by
+      rw [hzero]
+      exact congrArg Fin.val h.1
+    omega
+  refine ⟨hlev2, hp0, ?_⟩
+  rw [Finset.mem_filter]
+  exact ⟨Finset.mem_univ _, hp0,
+    by rw [h.shellRoot_parent hv0 hlev2]; exact hvroot⟩
+
+variable (h : IsAdmissible p lev) {s : Fin (n + 1)}
+  (hs : s ≠ 0) (hs1 : (lev s : ℕ) = 1) {m : ℕ}
+  (hm : ((shellFiber p lev s).erase s).card = m)
+
+/-- **The relabeled subtree parent map** on `Fin (m+1)`: position `0` is
+the shell root (a fixed point); other positions follow `p` through the
+marked enumeration. -/
+noncomputable def subtreeParent : Fin (m + 1) → Fin (m + 1) :=
+  fun l => if hl : l = 0 then 0
+    else (markedEquiv (shellFiber p lev s)
+      (self_mem_shellFiber hs hs1) hm).symm
+      ⟨p ((markedEquiv (shellFiber p lev s)
+          (self_mem_shellFiber hs hs1) hm l).1),
+        (shellFiber_parent_mem h
+          ((markedEquiv (shellFiber p lev s)
+            (self_mem_shellFiber hs hs1) hm l).2)
+          (fun hEq => hl (((markedEquiv (shellFiber p lev s)
+            (self_mem_shellFiber hs hs1) hm).injective
+            (Subtype.ext (hEq.trans
+              (markedEquiv_zero_val _ _ _).symm)))))).2.2⟩
+
+/-- **The relabeled subtree levels**: shifted down by one. -/
+noncomputable def subtreeLev : Fin (m + 1) → Fin (D + 1) :=
+  fun l => ⟨(lev ((markedEquiv (shellFiber p lev s)
+      (self_mem_shellFiber hs hs1) hm l).1) : ℕ) - 1, by
+    have := (lev ((markedEquiv (shellFiber p lev s)
+      (self_mem_shellFiber hs hs1) hm l).1)).isLt
+    omega⟩
+
+/-- **The subtree structure is admissible at depth `D`.** -/
+theorem subtreeStructure_isAdmissible :
+    IsAdmissible (subtreeParent h hs hs1 hm) (subtreeLev hs hs1 hm) := by
+  classical
+  constructor
+  · -- root level
+    apply Fin.ext
+    have hval : ((subtreeLev hs hs1 hm 0 : Fin (D + 1)) : ℕ)
+        = (lev ((markedEquiv (shellFiber p lev s)
+            (self_mem_shellFiber hs hs1) hm 0).1) : ℕ) - 1 := rfl
+    rw [hval, markedEquiv_zero_val]
+    simp [hs1]
+  · -- exact increments
+    intro l hl
+    set e := markedEquiv (shellFiber p lev s)
+      (self_mem_shellFiber hs hs1) hm with hedef
+    set v : Fin (n + 1) := (e l).1 with hvdef
+    have hvF : v ∈ shellFiber p lev s := (e l).2
+    have hvs : v ≠ s := by
+      intro hEq
+      exact hl (e.injective (Subtype.ext
+        (hEq.trans (markedEquiv_zero_val _ _ _).symm)))
+    obtain ⟨hlev2, hp0, hpF⟩ := shellFiber_parent_mem h hvF hvs
+    have hv0 : v ≠ 0 := by
+      classical
+      unfold shellFiber at hvF
+      rw [Finset.mem_filter] at hvF
+      exact hvF.2.1
+    have hstep := h.2 v hv0
+    -- unfold the parent at l ≠ 0, in `v`-vocabulary
+    show ((subtreeLev hs hs1 hm) ((subtreeParent h hs hs1 hm) l) : ℕ) + 1
+      = ((subtreeLev hs hs1 hm) l : ℕ)
+    have hval1 : ((subtreeLev hs hs1 hm) l : ℕ) = (lev v : ℕ) - 1 := rfl
+    have hval2 : ((subtreeLev hs hs1 hm) ((subtreeParent h hs hs1 hm) l) : ℕ)
+        = (lev (p v) : ℕ) - 1 := by
+      unfold subtreeParent subtreeLev
+      rw [dif_neg hl]
+      simp only [Equiv.apply_symm_apply]
+      rfl
+    rw [hval1, hval2]
+    omega
+
+end SubtreeTransport
 
 end BlockCount
 
