@@ -542,4 +542,82 @@ lemma filter_within_disjoint {n : ℕ} (E : Finset (Sym2 (Fin n)))
   obtain ⟨u, hu⟩ : ∃ u, u ∈ e := ⟨e.out.1, Sym2.out_fst_mem e⟩
   exact (Finset.disjoint_left.mp hd (hw1 u hu)) (hw2 u hu)
 
+open Classical in
+/-- Endpoints of walks from an adjacency-closed set stay in the set. -/
+lemma mem_of_reachable_closed {n : ℕ} {E : Finset (Sym2 (Fin n))}
+    {B : Finset (Fin n)}
+    (hcl : ∀ a b : Fin n, s(a, b) ∈ E → a ∈ B → b ∈ B) :
+    ∀ {v w : Fin n},
+    (SimpleGraph.fromEdgeSet (↑E : Set (Sym2 (Fin n)))).Walk v w →
+    v ∈ B → w ∈ B := by
+  intro v w p
+  induction p with
+  | nil => exact id
+  | @cons v u w h q ih =>
+      intro hv
+      rw [SimpleGraph.fromEdgeSet_adj] at h
+      exact ih (hcl v u (Finset.mem_coe.mp h.1) hv)
+
+open Classical in
+/-- **A3: the reconstruction.**  The union of per-part within-part,
+part-connecting edge sets has component partition exactly `π`. -/
+lemma componentPartition_biUnion_eq {n : ℕ}
+    {π : Finpartition (Finset.univ : Finset (Fin n))}
+    (g : Finset (Fin n) → Finset (Sym2 (Fin n)))
+    (hwithin : ∀ B ∈ π.parts, ∀ e ∈ g B, ∀ u ∈ e, u ∈ B)
+    (hconn : ∀ B ∈ π.parts, ∀ v ∈ B, ∀ w ∈ B,
+      (SimpleGraph.fromEdgeSet
+        (↑(g B) : Set (Sym2 (Fin n)))).Reachable v w) :
+    componentPartition (π.parts.biUnion g) = π := by
+  classical
+  have hcl : ∀ C ∈ π.parts,
+      ∀ a b : Fin n, s(a, b) ∈ π.parts.biUnion g → a ∈ C → b ∈ C := by
+    intro C hC a b hab ha
+    rw [Finset.mem_biUnion] at hab
+    obtain ⟨B', hB', habg⟩ := hab
+    have haB' : a ∈ B' :=
+      hwithin B' hB' _ habg a (Sym2.mem_iff.mpr (Or.inl rfl))
+    have hbB' : b ∈ B' :=
+      hwithin B' hB' _ habg b (Sym2.mem_iff.mpr (Or.inr rfl))
+    have hBC : B' = C := by
+      by_contra hne
+      exact (Finset.disjoint_left.mp
+        (π.disjoint (Finset.mem_coe.mpr hB')
+          (Finset.mem_coe.mpr hC) hne) haB') ha
+    rwa [← hBC]
+  have hpoint : ∀ a : Fin n,
+      (componentPartition (π.parts.biUnion g)).part a = π.part a := by
+    intro a
+    have haπ : a ∈ π.part a := π.mem_part (Finset.mem_univ a)
+    have hπparts : π.part a ∈ π.parts :=
+      π.part_mem.mpr (Finset.mem_univ a)
+    ext b
+    rw [mem_componentPartition_part_iff]
+    constructor
+    · rintro ⟨p⟩
+      exact mem_of_reachable_closed (hcl _ hπparts) p haπ
+    · intro hb
+      have hr := hconn _ hπparts a haπ b hb
+      refine hr.mono ?_
+      refine SimpleGraph.fromEdgeSet_mono ?_
+      exact_mod_cast Finset.subset_biUnion_of_mem g hπparts
+  have hparts : (componentPartition (π.parts.biUnion g)).parts
+      = π.parts := by
+    ext C
+    constructor
+    · intro hC
+      obtain ⟨x, hx⟩ :=
+        (componentPartition (π.parts.biUnion g)).nonempty_of_mem_parts hC
+      have h1 : (componentPartition (π.parts.biUnion g)).part x = C :=
+        (componentPartition (π.parts.biUnion g)).part_eq_of_mem hC hx
+      rw [← h1, hpoint x]
+      exact π.part_mem.mpr (Finset.mem_univ x)
+    · intro hC
+      obtain ⟨x, hx⟩ := π.nonempty_of_mem_parts hC
+      have h1 : π.part x = C := π.part_eq_of_mem hC hx
+      rw [← h1, ← hpoint x]
+      exact (componentPartition
+        (π.parts.biUnion g)).part_mem.mpr (Finset.mem_univ x)
+  exact Finpartition.ext hparts
+
 end YangMills.KP
