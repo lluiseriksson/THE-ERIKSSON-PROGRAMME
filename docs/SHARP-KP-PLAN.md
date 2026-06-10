@@ -124,20 +124,24 @@ supported on genuine clusters), `clusterSum_eq_sum_clusters`
 `T ≥ 0`, and one large `T` forces `Pinned ≤ Aⁿ`).  Oracle clean.  This
 trick is reusable wherever a fiber of a free sum is needed.
 
-**Next bricks** (in order):
+**Pinned assignment + pinned per-size bound — CLOSED (2026-06-10,
+`KP/PinnedBound.lean`).**  `tree_assignment_sum_le_pinned`
+(per-tree assignment over the root fiber ≤ `Aᵐ`),
+`kp_pinned_per_size_bound` (`pinnedClusterWeight P c n ≤ ‖z c‖·(e·A)ⁿ`),
+`pinned_cluster_series_summable`, and **`pinned_cluster_tsum_le`**:
+`∑'_n pinnedClusterWeight P c n ≤ ‖z c‖/(1 − e·A)` — the per-polymer
+pinned KP bound, uniform-A form.  All oracle-clean.
 
-1. **Pinned assignment + pinned per-size bound**: instantiate
-   `tree_walk_bound_pinned` at the polymer objects (mirror
-   `tree_assignment_sum_le` in KPBound.lean, root pinned at coordinate 0),
-   then re-trace the `kp_per_size_bound` assembly with the pin:
-   `pinnedClusterWeight P c n ≤ ‖z c‖·(e·A)ⁿ`.  Mostly mechanical
-   mirroring of the existing assembly; still carries the uniform `A`.
-2. *(the real one)* **Shell decomposition** (§2 Route A): a cluster pinned
-   at `c` decomposes into its first shell (polymers incompatible with `c`)
-   and sub-clusters attached to shell elements.  Needs a components-of-
-   vertex-deleted-graph lemma; budget 5–8 cycles; this is where the
-   criterion's `e^{a}` weights get consumed shell by shell and the uniform
-   `A` disappears.
+**Remaining brick** (the campaign's core):
+
+* **Shell decomposition** (§2 Route A): a cluster pinned at `c`
+  decomposes into its first shell (polymers incompatible with `c`) and
+  sub-clusters attached to shell elements.  Needs a components-of-
+  vertex-deleted-graph lemma; budget 5–8 cycles; this is where the
+  criterion's `e^{a}` weights get consumed shell by shell and the uniform
+  `A` disappears — yielding the sharp endpoint `kp_pinned_cluster_bound`
+  (§3) and, composed with the volume-uniform criterion, volume-uniform
+  convergence of the connected lattice gas.
 
 ## 6. Honesty invariant (unchanged)
 
