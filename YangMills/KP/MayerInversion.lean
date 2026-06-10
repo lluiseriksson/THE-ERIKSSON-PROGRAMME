@@ -175,4 +175,72 @@ theorem ursell_comp_equiv {n : ℕ} (X : Fin n → P.Polymer)
     dsimp only
     rw [Finset.card_image_of_injective E hmapinj]
 
+open Classical in
+/-- **Walk pullback along an embedding (B0a, step 2a):** a walk in the
+image edge set between image vertices pulls back to reachability in the
+source — every edge of the image set joins image vertices, so the walk
+never leaves the range. -/
+lemma reachable_of_walk_image {m n : ℕ} (f : Fin m ↪ Fin n)
+    (E : Finset (Sym2 (Fin m))) :
+    ∀ {v w : Fin n}, (SimpleGraph.fromEdgeSet
+      (↑(E.image (Sym2.map f)) : Set (Sym2 (Fin n)))).Walk v w →
+    ∀ i j : Fin m, f i = v → f j = w →
+    (SimpleGraph.fromEdgeSet (↑E : Set (Sym2 (Fin m)))).Reachable i j := by
+  intro v w p
+  induction p with
+  | nil =>
+      intro i j hi hj
+      have hij : i = j := f.injective (hi.trans hj.symm)
+      rw [hij]
+  | @cons v u w h q ih =>
+      intro i j hi hj
+      rw [SimpleGraph.fromEdgeSet_adj] at h
+      obtain ⟨hmem, hne⟩ := h
+      rw [Finset.mem_coe, Finset.mem_image] at hmem
+      obtain ⟨e₀, he₀, heq⟩ := hmem
+      revert he₀ heq
+      refine Sym2.ind (fun a b => ?_) e₀
+      intro he₀ heq
+      rw [Sym2.map_mk, Sym2.eq_iff] at heq
+      rcases heq with ⟨hav, hbu⟩ | ⟨hau, hbv⟩
+      · have hia : i = a := f.injective (hi.trans hav.symm)
+        have hadj : (SimpleGraph.fromEdgeSet
+            (↑E : Set (Sym2 (Fin m)))).Adj a b := by
+          rw [SimpleGraph.fromEdgeSet_adj]
+          exact ⟨he₀, fun hab => hne (by rw [← hav, ← hbu, hab])⟩
+        rw [hia]
+        exact hadj.reachable.trans (ih b j hbu hj)
+      · have hib : i = b := f.injective (hi.trans hbv.symm)
+        have hadj : (SimpleGraph.fromEdgeSet
+            (↑E : Set (Sym2 (Fin m)))).Adj b a := by
+          rw [SimpleGraph.fromEdgeSet_adj]
+          refine ⟨?_, fun hba => hne (by rw [← hbv, ← hau, hba])⟩
+          rwa [Sym2.eq_swap]
+        rw [hib]
+        exact hadj.reachable.trans (ih a j hau hj)
+
+open Classical in
+/-- **Reachability transport along an embedding (B0a, step 2b):**
+image vertices are reachable through the image edge set iff the sources
+are reachable through the source edge set. -/
+lemma reachable_image_iff {m n : ℕ} (f : Fin m ↪ Fin n)
+    (E : Finset (Sym2 (Fin m))) (i j : Fin m) :
+    (SimpleGraph.fromEdgeSet
+      (↑(E.image (Sym2.map f)) : Set (Sym2 (Fin n)))).Reachable (f i) (f j)
+    ↔ (SimpleGraph.fromEdgeSet (↑E : Set (Sym2 (Fin m)))).Reachable i j := by
+  constructor
+  · rintro ⟨p⟩
+    exact reachable_of_walk_image f E p i j rfl rfl
+  · intro h
+    have hmaprel : ∀ {a b : Fin m},
+        (SimpleGraph.fromEdgeSet (↑E : Set (Sym2 (Fin m)))).Adj a b →
+        (SimpleGraph.fromEdgeSet
+          (↑(E.image (Sym2.map f)) : Set (Sym2 (Fin n)))).Adj (f a) (f b) := by
+      intro a b hab
+      rw [SimpleGraph.fromEdgeSet_adj] at hab ⊢
+      refine ⟨?_, fun hf => hab.2 (f.injective hf)⟩
+      rw [Finset.mem_coe, Finset.mem_image]
+      exact ⟨s(a, b), hab.1, rfl⟩
+    exact h.map ⟨⇑f, hmaprel⟩
+
 end YangMills.KP
