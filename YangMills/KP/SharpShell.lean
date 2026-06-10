@@ -1837,6 +1837,25 @@ theorem inner_factorization {n D : ℕ} {p : Fin (n + 1) → Fin (n + 1)}
         Finset.prod_congr rfl fun i _ =>
           sum_blockFunctional P c (hsV i) rfl _
 
+open Classical in
+/-- **Per-block structure sums recombine into `treeSumRaw`:** summing the
+heart's per-block factor over all canonical depth-`D` structures yields
+`∑_{c'} 𝟙[incomp c c']·‖z(c')‖·treeSumRaw P c' D m` — the quantity the
+recursion's right-hand side reads. -/
+lemma sum_structures_blockSum (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D m : ℕ) :
+    ∑ pl ∈ (Finset.univ : Finset ((Fin (m + 1) → Fin (m + 1))
+        × (Fin (m + 1) → Fin (D + 1)))).filter
+        (fun pl => IsAdmissible pl.1 pl.2 ∧ pl.1 0 = 0),
+      ∑ c' : P.Polymer, (if P.incomp c c' then (1 : ℝ) else 0)
+        * ‖P.activity c'‖ * treeSumRawInner P c' pl.1
+    = ∑ c' : P.Polymer, (if P.incomp c c' then (1 : ℝ) else 0)
+        * ‖P.activity c'‖ * treeSumRaw P c' D m := by
+  classical
+  rw [Finset.sum_comm]
+  refine Finset.sum_congr rfl fun c' _ => ?_
+  rw [treeSumRaw_eq_sum_inner, Finset.mul_sum]
+
 end MasterAssembly
 
 end BlockCount
