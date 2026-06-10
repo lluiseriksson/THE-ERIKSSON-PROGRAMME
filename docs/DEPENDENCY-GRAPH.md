@@ -89,12 +89,20 @@ M3: unconditional lattice mass gap at strong coupling
     and **latticePolymerSystem_kpCriterion**: the Kotecký–Preiss smallness
     criterion holds at small coupling (explicit volume-dependent threshold
     via the binomial entropy bound; weight a(c) = |c|).
-    Honest caveats: (i) the threshold is volume-dependent — the
+    **THE LATTICE MAYER SERIES CONVERGES — VERIFIED (2026-06-10)**:
+    latticePolymerSystem_kpCriterion_scaled (weight a = t·|c|) composes
+    with the closed KP corollaries to give
+    **latticeClusterSum_summable** (absolute convergence of the
+    cluster-expansion series of the physical plaquette gas) and
+    **norm_latticeClusterSum_le** (explicit bound
+    ‖clusterSum‖ ≤ (∑‖z‖)/(1 − e·t·#P)), under explicit small-coupling
+    hypotheses (scaled binomial entropy ≤ t and e·t·#P < 1 — satisfiable
+    for β small, volume-dependently).
+    Honest caveat remaining: the threshold is volume-dependent — the
     volume-uniform version needs *connected* polymers (entropy ≤ Cⁿ
-    locally); (ii) composing with the closed uniform-smallness KP
-    corollaries (e·max a < 1) needs the scaled-weight refinement
-    a(c) = t·|c|.  Both are scoped next-session work; all analysis
-    (expansion, smallness, locality, independence, criterion) is proved.
+    locally); scoped next-session work.  Everything else on the polymer
+    path (expansion, smallness, locality, independence, criterion,
+    convergence) is machine-checked.
  └─ T3 / LG6 — centre selection rule               **CLOSED 2026-06-10**
     integral_centerAct (gauge measure centre-invariant, left-invariant μ);
     wilsonAction_centerAct (exact centre symmetry of the Wilson action —

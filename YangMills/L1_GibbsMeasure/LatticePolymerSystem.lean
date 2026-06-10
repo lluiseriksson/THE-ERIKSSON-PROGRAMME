@@ -4,6 +4,7 @@ Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.KP.Basic
 import YangMills.KP.Criterion
+import YangMills.KP.KPBound
 import YangMills.L1_GibbsMeasure.PolymerFactorization
 
 /-!
@@ -180,5 +181,134 @@ theorem latticePolymerSystem_kpCriterion
       _ ≤ (c.1.card : ℝ) := by
           have := c.2.card_pos
           exact_mod_cast this
+
+/-- **The KP criterion with scaled weight `a(c) = t·|c|`** — the form whose
+maximum `A = t·#plaquettes` can be made small enough to compose with the
+closed uniform-smallness KP corollaries. -/
+theorem latticePolymerSystem_kpCriterion_scaled
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ} {B : ℝ}
+    (hpe : ∀ g, |pe g| ≤ B) (β : ℝ) (t : ℝ) (ht0 : 0 ≤ t)
+    (hsmall : ((Real.exp (|β| * B) - 1) * Real.exp t + 1)
+        ^ Fintype.card (ConcretePlaquette d N) - 1 ≤ t) :
+    KPCriterion (latticePolymerSystem (d := d) (N := N) μ pe β)
+      (fun c => t * (c.1.card : ℝ)) := by
+  classical
+  have hε0 : (0 : ℝ) ≤ Real.exp (|β| * B) - 1 := by
+    have h1 : (1 : ℝ) ≤ Real.exp (|β| * B) := by
+      rw [← Real.exp_zero]
+      refine Real.exp_le_exp.mpr ?_
+      have hB : (0 : ℝ) ≤ B := le_trans (abs_nonneg _) (hpe 1)
+      positivity
+    linarith
+  constructor
+  · intro c
+    positivity
+  · intro c
+    have hterm : ∀ Y : { c : Finset (ConcretePlaquette d N) // c.Nonempty },
+        ‖(latticePolymerSystem (d := d) (N := N) μ pe β).activity Y‖ *
+          Real.exp (t * (Y.1.card : ℝ))
+        ≤ ((Real.exp (|β| * B) - 1) * Real.exp t) ^ Y.1.card := by
+      intro Y
+      have h1 := norm_latticePolymerSystem_activity_le
+        (d := d) (N := N) μ hpe β Y
+      have h2 : Real.exp (t * (Y.1.card : ℝ)) = Real.exp t ^ Y.1.card := by
+        rw [mul_comm, ← Real.exp_nat_mul]
+      rw [h2, mul_pow]
+      exact mul_le_mul_of_nonneg_right h1 (by positivity)
+    calc ∑ Y ∈ Finset.univ.filter
+          (fun Y => (latticePolymerSystem (d := d) (N := N) μ pe β).incomp c Y),
+          ‖(latticePolymerSystem (d := d) (N := N) μ pe β).activity Y‖ *
+            Real.exp (t * (Y.1.card : ℝ))
+        ≤ ∑ Y : { c : Finset (ConcretePlaquette d N) // c.Nonempty },
+            ((Real.exp (|β| * B) - 1) * Real.exp t) ^ Y.1.card := by
+          refine le_trans (Finset.sum_le_sum_of_subset_of_nonneg
+            (Finset.filter_subset _ _) (fun Y _ _ =>
+              mul_nonneg (norm_nonneg _) (Real.exp_pos _).le)) ?_
+          exact Finset.sum_le_sum fun Y _ => hterm Y
+      _ = ∑ c' ∈ (Finset.univ :
+            Finset (Finset (ConcretePlaquette d N))).filter (·.Nonempty),
+            ((Real.exp (|β| * B) - 1) * Real.exp t) ^ c'.card := by
+          exact (Finset.sum_subtype
+            ((Finset.univ :
+              Finset (Finset (ConcretePlaquette d N))).filter (·.Nonempty))
+            (fun c' => by simp)
+            (fun c' => ((Real.exp (|β| * B) - 1) * Real.exp t) ^ c'.card)).symm
+      _ ≤ ((Real.exp (|β| * B) - 1) * Real.exp t + 1)
+            ^ Fintype.card (ConcretePlaquette d N) - 1 := by
+          have hfil : (Finset.univ :
+              Finset (Finset (ConcretePlaquette d N))).filter (·.Nonempty)
+              = (Finset.univ :
+                Finset (Finset (ConcretePlaquette d N))).erase ∅ := by
+            ext c'
+            simp [Finset.nonempty_iff_ne_empty]
+          rw [hfil]
+          have hsum := Finset.add_sum_erase
+            (Finset.univ : Finset (Finset (ConcretePlaquette d N)))
+            (fun c' => ((Real.exp (|β| * B) - 1) * Real.exp t) ^ c'.card)
+            (Finset.mem_univ ∅)
+          have hbin : ∑ c' ∈ (Finset.univ :
+              Finset (Finset (ConcretePlaquette d N))),
+              ((Real.exp (|β| * B) - 1) * Real.exp t) ^ c'.card
+              = ((Real.exp (|β| * B) - 1) * Real.exp t + 1)
+                ^ Fintype.card (ConcretePlaquette d N) := by
+            rw [← Finset.powerset_univ]
+            exact sum_powerset_pow_card _
+          rw [← hbin]
+          have hthis := hsum
+          simp only [Finset.card_empty, pow_zero] at hthis
+          linarith
+      _ ≤ t := hsmall
+      _ ≤ t * (c.1.card : ℝ) := by
+          have hc1 : (1 : ℝ) ≤ (c.1.card : ℝ) := by
+            exact_mod_cast c.2.card_pos
+          nlinarith
+
+/-- **CONVERGENCE OF THE LATTICE MAYER SERIES (verified, small coupling).**
+For `t` satisfying the scaled smallness and `e·t·#plaquettes < 1`, the
+cluster-expansion series of the lattice polymer gas is absolutely summable —
+the Kotecký–Preiss convergence theorem applied to the physical system. -/
+theorem latticeClusterSum_summable
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ} {B : ℝ}
+    (hpe : ∀ g, |pe g| ≤ B) (β : ℝ) (t : ℝ) (ht0 : 0 ≤ t)
+    (hsmall : ((Real.exp (|β| * B) - 1) * Real.exp t + 1)
+        ^ Fintype.card (ConcretePlaquette d N) - 1 ≤ t)
+    (hr : Real.exp 1 *
+      (t * (Fintype.card (ConcretePlaquette d N) : ℝ)) < 1) :
+    Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) →
+        (latticePolymerSystem (d := d) (N := N) μ pe β).Polymer,
+        (ursell (latticePolymerSystem (d := d) (N := N) μ pe β) X : ℂ) *
+          ∏ i, (latticePolymerSystem (d := d) (N := N) μ pe β).activity (X i)) := by
+  refine kp_convergence (latticePolymerSystem (d := d) (N := N) μ pe β)
+    (latticePolymerSystem_kpCriterion_scaled (d := d) (N := N)
+      μ hpe β t ht0 hsmall)
+    (A := t * (Fintype.card (ConcretePlaquette d N) : ℝ))
+    (by positivity) ?_ hr
+  intro c
+  have hcard : (c.1.card : ℝ) ≤ (Fintype.card (ConcretePlaquette d N) : ℝ) := by
+    exact_mod_cast Finset.card_le_univ c.1
+  exact mul_le_mul_of_nonneg_left hcard ht0
+
+/-- **Quantitative KP bound for the lattice gas:**
+`‖clusterSum‖ ≤ (∑‖z‖)/(1 − e·t·#plaquettes)` at small coupling. -/
+theorem norm_latticeClusterSum_le
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ} {B : ℝ}
+    (hpe : ∀ g, |pe g| ≤ B) (β : ℝ) (t : ℝ) (ht0 : 0 ≤ t)
+    (hsmall : ((Real.exp (|β| * B) - 1) * Real.exp t + 1)
+        ^ Fintype.card (ConcretePlaquette d N) - 1 ≤ t)
+    (hr : Real.exp 1 *
+      (t * (Fintype.card (ConcretePlaquette d N) : ℝ)) < 1) :
+    ‖clusterSum (latticePolymerSystem (d := d) (N := N) μ pe β)‖
+      ≤ (∑ y, ‖(latticePolymerSystem (d := d) (N := N) μ pe β).activity y‖) /
+        (1 - Real.exp 1 *
+          (t * (Fintype.card (ConcretePlaquette d N) : ℝ))) := by
+  refine kp_norm_clusterSum_le (latticePolymerSystem (d := d) (N := N) μ pe β)
+    (latticePolymerSystem_kpCriterion_scaled (d := d) (N := N)
+      μ hpe β t ht0 hsmall)
+    (by positivity) ?_ hr
+  intro c
+  have hcard : (c.1.card : ℝ) ≤ (Fintype.card (ConcretePlaquette d N) : ℝ) := by
+    exact_mod_cast Finset.card_le_univ c.1
+  exact mul_le_mul_of_nonneg_left hcard ht0
 
 end YangMills
