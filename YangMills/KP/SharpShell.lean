@@ -625,4 +625,71 @@ end ShellRoot
 
 end TreeSum
 
+section BlockCount
+
+variable {n k : ℕ}
+
+/-- **Ordered rooted-block data** with prescribed sizes: `k` pairwise
+disjoint blocks covering `Fin n`, each with a marked root, block `i` of
+size `m i + 1`.  These parametrize the fibers of the shell decomposition
+(unsorted form — see `docs/SHARP-KP-PLAN.md`, C3 design correction). -/
+def IsBlockData (m : Fin k → ℕ) (ρ : Fin k → Finset (Fin n) × Fin n) :
+    Prop :=
+  (∀ i j, i ≠ j → Disjoint (ρ i).1 (ρ j).1) ∧
+  (Finset.univ.biUnion (fun i => (ρ i).1) = Finset.univ) ∧
+  (∀ i, (ρ i).2 ∈ (ρ i).1) ∧ (∀ i, (ρ i).1.card = m i + 1)
+
+/-- Block sizes account for every vertex: `∑ (m i + 1) = n`. -/
+lemma IsBlockData.sum_card {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData m ρ) :
+    ∑ i, (m i + 1) = n := by
+  classical
+  have h1 : (Finset.univ : Finset (Fin n)).card = n := by simp
+  rw [← h1, ← hρ.2.1, Finset.card_biUnion]
+  · exact Finset.sum_congr rfl fun i _ => (hρ.2.2.2 i).symm
+  · intro i _ j _ hij
+    exact hρ.1 i j hij
+
+/-- Every vertex lies in exactly one block. -/
+lemma IsBlockData.existsUnique_mem {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData m ρ)
+    (v : Fin n) : ∃! i, v ∈ (ρ i).1 := by
+  have hv : v ∈ Finset.univ.biUnion (fun i => (ρ i).1) := by
+    rw [hρ.2.1]
+    exact Finset.mem_univ v
+  obtain ⟨i, _, hi⟩ := Finset.mem_biUnion.mp hv
+  refine ⟨i, hi, fun j hj => ?_⟩
+  by_contra hne
+  exact (Finset.disjoint_left.mp (hρ.1 j i hne) hj) hi
+
+/-- The block index of a vertex. -/
+noncomputable def IsBlockData.blockIndex {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData m ρ)
+    (v : Fin n) : Fin k :=
+  (hρ.existsUnique_mem v).exists.choose
+
+lemma IsBlockData.mem_blockIndex {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData m ρ)
+    (v : Fin n) : v ∈ (ρ (hρ.blockIndex v)).1 :=
+  (hρ.existsUnique_mem v).exists.choose_spec
+
+lemma IsBlockData.blockIndex_eq {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData m ρ)
+    {v : Fin n} {i : Fin k} (h : v ∈ (ρ i).1) :
+    hρ.blockIndex v = i := by
+  have huniq := hρ.existsUnique_mem v
+  exact (huniq.unique (hρ.mem_blockIndex v) h)
+
+/-- Roots of distinct blocks are distinct. -/
+lemma IsBlockData.root_injective {m : Fin k → ℕ}
+    {ρ : Fin k → Finset (Fin n) × Fin n} (hρ : IsBlockData m ρ)
+    {i j : Fin k} (h : (ρ i).2 = (ρ j).2) : i = j := by
+  by_contra hne
+  have hi := hρ.2.2.1 i
+  have hj := hρ.2.2.1 j
+  rw [h] at hi
+  exact (Finset.disjoint_left.mp (hρ.1 i j hne) hi) hj
+
+end BlockCount
+
 end YangMills.KP
