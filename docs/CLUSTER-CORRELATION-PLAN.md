@@ -292,6 +292,28 @@ the house style); then B0b-4 (small); then the analytic shell
 B0b-1/B0b-5 around them; step 1 last (glue).  Budgets: 2–3 cycles for
 each of B0b-2/3/4; 4–8 for the analytic shell.
 
+**B0b progress (2026-06-10, same session; commits `3c48c95`,
+`cddfc09`, oracle-clean):**
+
+* B0b-4 CLOSED: `PairwiseCompatible.injective` +
+  `sum_pairwiseCompatible_eq` (compatible-tuple activity sums = `N!`
+  times admissible-set sums at cardinality `N`; image-fibration via
+  the ite-collapse + `card_enumerations`; the lemma needs
+  `[Fintype P.Polymer]`).
+* B0b-3 engine CLOSED: `sum_symmetrize_gen` — the SharpShell
+  symmetrization at arbitrary finite codomain and `ℂ`-values
+  (verbatim adaptation; `card_enumerations(_ne)` were already generic).
+  Its application to partitions: `α := Finpartition univ`,
+  `β := Finset (Fin N)`, `S := Finpartition.parts`,
+  `nmax := N` — needs `π.parts.card ≤ N` (check
+  `Finpartition.card_parts_le_card` or derive from
+  `∑_{B ∈ parts} 1 ≤ ∑ |B| = N`); enumerations of `π.parts` ARE the
+  ordered partitions with part-set `π.parts`.
+* NEXT: **B0b-2** (the multinomial regrouping — the remaining big
+  finite brick; the `(X,(B_i)) ↦ (X_i)` fibration with the exact
+  multinomial count, `card_blockData_mul_le`-pattern as an EQUALITY),
+  then the analytic shell B0b-1/B0b-5.
+
 **(historical) Remaining-work list before the above was closed:**
 
 1. (★) per-π fiber factorization:
