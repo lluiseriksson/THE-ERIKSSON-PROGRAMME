@@ -323,6 +323,165 @@ theorem pinnedClusterWeight_le_treeSumRaw (P : PolymerSystem)
         unfold treeSumRaw
         exact Finset.sum_congr rfl fun pl _ => by rw [hGdef]
 
+open Classical in
+/-- `treeSumRaw` is monotone in the depth: deeper structures include the
+shallower ones (levels embed along `Fin.castSucc`; the summand reads only
+the parent map). -/
+lemma treeSumRaw_mono_depth (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (D n : ℕ) :
+    treeSumRaw P c D n ≤ treeSumRaw P c (D + 1) n := by
+  classical
+  unfold treeSumRaw
+  set ψ : (Fin (n + 1) → Fin (n + 1)) × (Fin (n + 1) → Fin (D + 1))
+      → (Fin (n + 1) → Fin (n + 1)) × (Fin (n + 1) → Fin (D + 2)) :=
+    fun pl => (pl.1, fun v => (pl.2 v).castSucc) with hψdef
+  have hinj : ∀ pl₁ ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+        × (Fin (n + 1) → Fin (D + 1)))).filter
+        (fun pl => IsAdmissible pl.1 pl.2),
+      ∀ pl₂ ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+        × (Fin (n + 1) → Fin (D + 1)))).filter
+        (fun pl => IsAdmissible pl.1 pl.2),
+      ψ pl₁ = ψ pl₂ → pl₁ = pl₂ := by
+    intro pl₁ _ pl₂ _ h
+    rw [hψdef] at h
+    have h1 := congrArg Prod.fst h
+    have h2 := congrArg Prod.snd h
+    refine Prod.ext h1 ?_
+    funext v
+    have := congrFun h2 v
+    exact Fin.castSucc_injective _ this
+  set G : ((Fin (n + 1) → Fin (n + 1)) × (Fin (n + 1) → Fin (D + 2))) → ℝ :=
+    fun pl => ∑ X ∈ (Finset.univ :
+        Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
+      ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+        (if P.incomp (X (pl.1 v)) (X v) then (1 : ℝ) else 0)
+          * ‖P.activity (X v)‖ with hGdef
+  calc ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+        × (Fin (n + 1) → Fin (D + 1)))).filter
+        (fun pl => IsAdmissible pl.1 pl.2),
+        ∑ X ∈ (Finset.univ :
+          Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
+          ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+            (if P.incomp (X (pl.1 v)) (X v) then (1 : ℝ) else 0)
+              * ‖P.activity (X v)‖
+      = ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+          × (Fin (n + 1) → Fin (D + 1)))).filter
+          (fun pl => IsAdmissible pl.1 pl.2), G (ψ pl) :=
+        Finset.sum_congr rfl fun pl _ => rfl
+    _ = ∑ q ∈ ((Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+          × (Fin (n + 1) → Fin (D + 1)))).filter
+          (fun pl => IsAdmissible pl.1 pl.2)).image ψ, G q :=
+        (Finset.sum_image hinj).symm
+    _ ≤ ∑ q ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+          × (Fin (n + 1) → Fin (D + 2)))).filter
+          (fun pl => IsAdmissible pl.1 pl.2), G q := by
+        refine Finset.sum_le_sum_of_subset_of_nonneg ?_ (fun q _ _ => ?_)
+        · intro q hq
+          obtain ⟨pl, hpl, rfl⟩ := Finset.mem_image.mp hq
+          rw [Finset.mem_filter] at hpl ⊢
+          obtain ⟨hlev0, hdesc⟩ := hpl.2
+          refine ⟨Finset.mem_univ _, ?_, ?_⟩
+          · show ((ψ pl).2 0) = 0
+            rw [hψdef]
+            apply Fin.ext
+            simp only [Fin.coe_castSucc]
+            exact congrArg Fin.val hlev0
+          · intro v hv
+            show (((ψ pl).2 ((ψ pl).1 v)) : ℕ) < (((ψ pl).2 v) : ℕ)
+            rw [hψdef]
+            simpa using hdesc v hv
+        · rw [hGdef]
+          refine Finset.sum_nonneg fun X _ =>
+            Finset.prod_nonneg fun v _ => mul_nonneg ?_ (norm_nonneg _)
+          split_ifs <;> norm_num
+    _ = ∑ pl ∈ (Finset.univ : Finset ((Fin (n + 1) → Fin (n + 1))
+          × (Fin (n + 1) → Fin (D + 2)))).filter
+          (fun pl => IsAdmissible pl.1 pl.2),
+          ∑ X ∈ (Finset.univ :
+            Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
+            ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+              (if P.incomp (X (pl.1 v)) (X v) then (1 : ℝ) else 0)
+                * ‖P.activity (X v)‖ :=
+        Finset.sum_congr rfl fun pl _ => by rw [hGdef]
+
+open Classical in
+/-- Depth `0`, size `0`: only the trivial structure, value `1`
+(`= kpMajorant P 0 c`). -/
+lemma treeSumRaw_zero_zero (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) : treeSumRaw P c 0 0 = 1 := by
+  classical
+  unfold treeSumRaw
+  have hfil : (Finset.univ : Finset ((Fin 1 → Fin 1)
+      × (Fin 1 → Fin 1))).filter (fun pl => IsAdmissible pl.1 pl.2)
+      = Finset.univ := by
+    refine Finset.filter_true_of_mem fun pl _ => ?_
+    refine ⟨by omega, fun v hv => ?_⟩
+    exact absurd (by omega : v = 0) hv
+  rw [hfil]
+  have hprod : ∀ (pl : (Fin 1 → Fin 1) × (Fin 1 → Fin 1))
+      (X : Fin 1 → P.Polymer),
+      (∏ v ∈ Finset.univ.filter (fun v : Fin 1 => v ≠ 0),
+        (if P.incomp (X (pl.1 v)) (X v) then (1 : ℝ) else 0)
+          * ‖P.activity (X v)‖) = 1 := by
+    intro pl X
+    have : (Finset.univ : Finset (Fin 1)).filter (fun v => v ≠ 0) = ∅ := by
+      rw [Finset.filter_eq_empty_iff]
+      intro v _
+      simp [show v = 0 from by omega]
+    rw [this, Finset.prod_empty]
+  have hXcard : ((Finset.univ : Finset (Fin 1 → P.Polymer)).filter
+      (fun X => X 0 = c)).card = 1 := by
+    rw [Finset.card_eq_one]
+    refine ⟨fun _ => c, ?_⟩
+    ext X
+    rw [Finset.mem_filter, Finset.mem_singleton]
+    constructor
+    · intro hX
+      funext v
+      have hv0 : v = 0 := by omega
+      rw [hv0, hX.2]
+    · intro hX
+      exact ⟨Finset.mem_univ _, by rw [hX]⟩
+  have hinner : ∀ pl : (Fin 1 → Fin 1) × (Fin 1 → Fin 1),
+      (∑ X ∈ (Finset.univ : Finset (Fin 1 → P.Polymer)).filter
+        (fun X => X 0 = c),
+        ∏ v ∈ Finset.univ.filter (fun v : Fin 1 => v ≠ 0),
+          (if P.incomp (X (pl.1 v)) (X v) then (1 : ℝ) else 0)
+            * ‖P.activity (X v)‖) = 1 := by
+    intro pl
+    rw [Finset.sum_congr rfl (fun X _ => hprod pl X), Finset.sum_const,
+      hXcard, one_smul]
+  rw [Finset.sum_congr rfl (fun pl _ => hinner pl), Finset.sum_const]
+  have hcard : (Finset.univ : Finset ((Fin 1 → Fin 1)
+      × (Fin 1 → Fin 1))).card = 1 := by
+    simp [Finset.card_univ]
+  rw [hcard, one_smul]
+
+open Classical in
+/-- Depth `0`, positive size: no admissible structures (descent is
+impossible inside `Fin 1`), value `0`. -/
+lemma treeSumRaw_zero_succ (P : PolymerSystem) [Fintype P.Polymer]
+    (c : P.Polymer) (n : ℕ) : treeSumRaw P c 0 (n + 1) = 0 := by
+  classical
+  unfold treeSumRaw
+  have hfil : (Finset.univ : Finset ((Fin (n + 2) → Fin (n + 2))
+      × (Fin (n + 2) → Fin 1))).filter (fun pl => IsAdmissible pl.1 pl.2)
+      = ∅ := by
+    rw [Finset.filter_eq_empty_iff]
+    intro pl _
+    intro hadm
+    have h1 : (1 : Fin (n + 2)) ≠ 0 := by
+      intro h
+      have := congrArg Fin.val h
+      simp at this
+    have := hadm.2 1 h1
+    have hz1 : ((pl.2 (pl.1 1) : ℕ)) = 0 := by omega
+    have hz2 : ((pl.2 1 : ℕ)) = 0 := by
+      have := (pl.2 1).isLt
+      omega
+    omega
+  rw [hfil, Finset.sum_empty]
+
 end TreeSum
 
 end YangMills.KP
