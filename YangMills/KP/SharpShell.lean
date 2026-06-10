@@ -479,6 +479,117 @@ lemma treeSumRaw_zero_succ (P : PolymerSystem) [Fintype P.Polymer]
     omega
   rw [hfil, Finset.sum_empty]
 
+section ShellRoot
+
+variable {n D : ℕ} {p : Fin (n + 1) → Fin (n + 1)}
+  {lev : Fin (n + 1) → Fin (D + 1)}
+
+/-- Non-root vertices of admissible structures sit at level ≥ 1. -/
+lemma IsAdmissible.one_le_lev (h : IsAdmissible p lev) {v : Fin (n + 1)}
+    (hv : v ≠ 0) : 1 ≤ (lev v : ℕ) := by
+  have := h.2 v hv
+  omega
+
+/-- Level `0` characterizes the root. -/
+lemma IsAdmissible.lev_eq_zero_iff (h : IsAdmissible p lev)
+    {v : Fin (n + 1)} : (lev v : ℕ) = 0 ↔ v = 0 := by
+  constructor
+  · intro hz
+    by_contra hv
+    have := h.one_le_lev hv
+    omega
+  · intro hv
+    rw [hv]
+    exact congrArg Fin.val h.1
+
+/-- **The first shell is exactly the children of the root**: for `v ≠ 0`,
+`p v = 0 ↔ lev v = 1` (this is what exact increments buy). -/
+lemma IsAdmissible.parent_eq_zero_iff (h : IsAdmissible p lev)
+    {v : Fin (n + 1)} (hv : v ≠ 0) :
+    p v = 0 ↔ (lev v : ℕ) = 1 := by
+  have hstep := h.2 v hv
+  constructor
+  · intro hp
+    have : (lev (p v) : ℕ) = 0 := by
+      rw [hp]
+      exact congrArg Fin.val h.1
+    omega
+  · intro h1
+    have : (lev (p v) : ℕ) = 0 := by omega
+    exact h.lev_eq_zero_iff.mp this
+
+/-- Iterating the parent map descends levels one step at a time. -/
+lemma IsAdmissible.lev_iterate (h : IsAdmissible p lev) (v : Fin (n + 1)) :
+    ∀ j, j ≤ (lev v : ℕ) - 1 →
+      (lev (p^[j] v) : ℕ) = (lev v : ℕ) - j := by
+  intro j
+  induction j with
+  | zero => intro _; simp
+  | succ j ih =>
+      intro hj
+      have hjle : j ≤ (lev v : ℕ) - 1 := by omega
+      have hlev := ih hjle
+      have hne : p^[j] v ≠ 0 := by
+        intro hzero
+        have : (lev (p^[j] v) : ℕ) = 0 := by
+          rw [hzero]
+          exact congrArg Fin.val h.1
+        omega
+      have hstep := h.2 _ hne
+      rw [Function.iterate_succ_apply']
+      omega
+
+/-- **The shell root**: the level-`1` ancestor of a vertex, in closed form
+(`p` iterated `lev v − 1` times).  This is the partition map of the shell
+recursion: each non-root vertex belongs to the subtree of its shell root. -/
+def shellRoot (p : Fin (n + 1) → Fin (n + 1))
+    (lev : Fin (n + 1) → Fin (D + 1)) (v : Fin (n + 1)) : Fin (n + 1) :=
+  p^[(lev v : ℕ) - 1] v
+
+/-- The shell root sits at level `1`. -/
+lemma IsAdmissible.lev_shellRoot (h : IsAdmissible p lev)
+    {v : Fin (n + 1)} (hv : v ≠ 0) :
+    (lev (shellRoot p lev v) : ℕ) = 1 := by
+  have h1 := h.one_le_lev hv
+  have := h.lev_iterate v ((lev v : ℕ) - 1) le_rfl
+  unfold shellRoot
+  omega
+
+/-- The shell root is not the root. -/
+lemma IsAdmissible.shellRoot_ne_zero (h : IsAdmissible p lev)
+    {v : Fin (n + 1)} (hv : v ≠ 0) : shellRoot p lev v ≠ 0 := by
+  intro hzero
+  have := h.lev_shellRoot hv
+  rw [hzero] at this
+  have hz : (lev (0 : Fin (n + 1)) : ℕ) = 0 := congrArg Fin.val h.1
+  omega
+
+/-- The shell root is a child of the root. -/
+lemma IsAdmissible.parent_shellRoot (h : IsAdmissible p lev)
+    {v : Fin (n + 1)} (hv : v ≠ 0) : p (shellRoot p lev v) = 0 :=
+  (h.parent_eq_zero_iff (h.shellRoot_ne_zero hv)).mpr (h.lev_shellRoot hv)
+
+/-- Level-`1` vertices are their own shell roots. -/
+lemma shellRoot_eq_self {v : Fin (n + 1)} (h1 : (lev v : ℕ) = 1) :
+    shellRoot p lev v = v := by
+  unfold shellRoot
+  rw [h1]
+  simp
+
+/-- Deeper vertices share their parent's shell root — membership in a
+shell subtree is invariant along the tree. -/
+lemma IsAdmissible.shellRoot_parent (h : IsAdmissible p lev)
+    {v : Fin (n + 1)} (hv : v ≠ 0) (h2 : 2 ≤ (lev v : ℕ)) :
+    shellRoot p lev (p v) = shellRoot p lev v := by
+  have hstep := h.2 v hv
+  unfold shellRoot
+  obtain ⟨m, hm⟩ : ∃ m, (lev v : ℕ) - 1 = m + 1 :=
+    ⟨(lev v : ℕ) - 2, by omega⟩
+  have e1 : (lev (p v) : ℕ) - 1 = m := by omega
+  rw [e1, hm, Function.iterate_succ_apply]
+
+end ShellRoot
+
 end TreeSum
 
 end YangMills.KP
