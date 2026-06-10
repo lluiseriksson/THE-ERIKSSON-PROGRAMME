@@ -65,6 +65,7 @@ import YangMills.L1_GibbsMeasure.WilsonObservable
 import YangMills.L1_GibbsMeasure.PolymerFactorization
 import YangMills.L1_GibbsMeasure.LatticePolymerSystem
 import YangMills.L1_GibbsMeasure.ConnectedEntropy
+import YangMills.KP.PinnedCluster
 
 -- SU(N) compactness and Haar state construction
 import YangMills.P8_PhysicalGap.SUN_Compact
