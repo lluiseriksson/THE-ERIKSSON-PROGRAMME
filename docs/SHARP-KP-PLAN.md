@@ -507,6 +507,37 @@ via `card_blockData_mul_le` (the `(F, σ)`-data IS block data —
 `shell_blockData_fn`), `card_enumerations` for the `k!`, and §5c
 arithmetic.
 
+## 5g. Final assembly — state at session end (2026-06-10, terminal cycles)
+
+**PROVED in the closing stretch (all oracle-clean, all pushed):**
+`inner_factorization` (the heart) · `sum_structures_blockSum` ·
+`structure_determined` (the spine) · `classParent`/`classLev` + agreements
+(the carrier) · `class_data_interior_agreement` ·
+`class_carrier_admissible` (maps-into) · `class_value_eq` (value
+preservation) · `blockS` + `sum_structures_eq_blockS` (totalized blocks) ·
+**`class_sum_le` (THE WRAPPER — the final injection)** ·
+`card_enumerations(_ne)` · `sum_symmetrize_fn` (O1) ·
+`sum_filter_swap` (O2).
+
+**The one remaining theorem — `per_k_bound` (O1→O3 threading) — attempt
+log:** the statement and proof are correct in structure (one full draft
+reached only mechanical issues), but the O2 application hits a **whnf
+heartbeat grind** (>1.6M) at the `le_of_eq (sum_filter_swap …)` defeq
+check — the kernel grinds through `Fintype` instances on
+`(Fin k → Fin (n+1))`-type products.  **Prescription:** do not apply the
+generic `sum_filter_swap` at these types.  Either (a) inline the swap:
+prove the specific instance as a `have` via `Finset.sum_filter`
+normalization + `Finset.sum_comm` directly in the proof (the generic
+lemma's own 6-line proof, repeated at concrete types — no cross-instance
+defeq), or (b) specialize `sum_filter_swap` to the concrete index types
+as a standalone lemma first.  The rest of the draft (fiberwise-`F`,
+support `by_cases` with `if_pos/if_neg`, the and-shuffle
+`filter_congr` into `class_sum_le`'s shape, the empty-class
+`sum_eq_zero`) elaborated cleanly before the timeout and can be reused
+verbatim.  After `per_k_bound`: O4 pricing (fiberwise by size vector +
+`card_blockData_mul_le`) and O5 arithmetic close
+`kp_pinned_cluster_bound`.
+
 ## 6. Honesty invariant (unchanged)
 
 All of this is M3 lattice-side.  None of it reduces M4/M5/Clay
