@@ -965,4 +965,98 @@ lemma finpartitionOfOrd_parts {N k : ℕ}
     (σ : Fin k → Finset (Fin N)) (h : IsOrdPartition σ) :
     (finpartitionOfOrd σ h).parts = Finset.univ.image σ := rfl
 
+/-- Ordered partitions are injective (disjoint nonempty blocks are
+distinct). -/
+lemma IsOrdPartition.injective {N k : ℕ}
+    {σ : Fin k → Finset (Fin N)} (h : IsOrdPartition σ) :
+    Function.Injective σ := by
+  intro i j hij
+  by_contra hne
+  have hd := h.2.1 i j hne
+  rw [hij] at hd
+  exact Finset.Nonempty.ne_empty (h.1 j) (disjoint_self.mp hd)
+
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **B0b (ii): the π-collapse** — partition sums of block products
+equal `1/k!`-weighted sums over ordered partitions.  Enumerations of a
+partition's parts are exactly the ordered partitions, each determining
+its partition uniquely. -/
+lemma sum_finpartition_eq_ordPartitions {N : ℕ}
+    (h : Finset (Fin N) → ℂ) :
+    ∑ π : Finpartition (Finset.univ : Finset (Fin N)),
+      ∏ B ∈ π.parts, h B
+    = ∑ k ∈ Finset.range (N + 1), ((k.factorial : ℂ))⁻¹ *
+        ∑ σ ∈ (Finset.univ : Finset (Fin k → Finset (Fin N))).filter
+          (fun σ => IsOrdPartition σ),
+          ∏ i, h (σ i) := by
+  classical
+  rw [sum_symmetrize_gen (nmax := N) Finset.univ
+    (fun π => ∏ B ∈ π.parts, h B) (fun π => π.parts)
+    (fun π _ => parts_card_le π)]
+  refine Finset.sum_congr rfl fun k _ => ?_
+  congr 1
+  calc ∑ π ∈ (Finset.univ :
+        Finset (Finpartition (Finset.univ : Finset (Fin N)))),
+        ∑ _σ ∈ (Finset.univ : Finset (Fin k → Finset (Fin N))).filter
+          (fun σ => Function.Injective σ
+            ∧ Finset.univ.image σ = π.parts),
+          ∏ B ∈ π.parts, h B
+      = ∑ π ∈ (Finset.univ :
+          Finset (Finpartition (Finset.univ : Finset (Fin N)))),
+          ∑ σ ∈ (Finset.univ : Finset (Fin k → Finset (Fin N))).filter
+            (fun σ => Function.Injective σ
+              ∧ Finset.univ.image σ = π.parts),
+            ∏ i, h (σ i) := by
+        refine Finset.sum_congr rfl fun π _ => ?_
+        refine Finset.sum_congr rfl fun σ hσ => ?_
+        obtain ⟨hinj, himg⟩ := (Finset.mem_filter.mp hσ).2
+        rw [← himg, Finset.prod_image
+          (fun i _ j _ hij => hinj hij)]
+    _ = ∑ σ : Fin k → Finset (Fin N),
+          ∑ π ∈ (Finset.univ :
+            Finset (Finpartition (Finset.univ : Finset (Fin N)))),
+            if Function.Injective σ
+              ∧ Finset.univ.image σ = π.parts
+            then ∏ i, h (σ i) else 0 := by
+        rw [Finset.sum_congr rfl
+          (fun π _ => Finset.sum_filter _ _), Finset.sum_comm]
+    _ = ∑ σ : Fin k → Finset (Fin N),
+          (if IsOrdPartition σ then ∏ i, h (σ i) else 0) := by
+        refine Finset.sum_congr rfl fun σ _ => ?_
+        by_cases hord : IsOrdPartition σ
+        · rw [Finset.sum_eq_single (finpartitionOfOrd σ hord)
+            (fun π _ hne => if_neg fun hc => hne
+              (Finpartition.ext
+                (by rw [finpartitionOfOrd_parts, ← hc.2])))
+            (fun habs => absurd (Finset.mem_univ _) habs)]
+          rw [if_pos (⟨hord.injective,
+            (finpartitionOfOrd_parts σ hord).symm⟩ :
+              Function.Injective σ ∧ _), if_pos hord]
+        · rw [if_neg hord]
+          refine Finset.sum_eq_zero fun π _ => ?_
+          refine if_neg fun hc => hord ?_
+          obtain ⟨hinj, himg⟩ := hc
+          refine ⟨?_, ?_, ?_⟩
+          · intro i
+            refine π.nonempty_of_mem_parts ?_
+            rw [← himg]
+            exact Finset.mem_image_of_mem σ (Finset.mem_univ i)
+          · intro i j hij
+            refine π.disjoint ?_ ?_ (fun hσ => hij (hinj hσ))
+            · rw [Finset.mem_coe, ← himg]
+              exact Finset.mem_image_of_mem σ (Finset.mem_univ i)
+            · rw [Finset.mem_coe, ← himg]
+              exact Finset.mem_image_of_mem σ (Finset.mem_univ j)
+          · calc Finset.univ.biUnion σ
+                = (Finset.univ.image σ).biUnion id := by
+                  rw [Finset.image_biUnion]
+                  rfl
+              _ = π.parts.sup id := by
+                  rw [himg, Finset.sup_eq_biUnion]
+              _ = Finset.univ := π.sup_parts
+    _ = ∑ σ ∈ (Finset.univ : Finset (Fin k → Finset (Fin N))).filter
+          (fun σ => IsOrdPartition σ),
+          ∏ i, h (σ i) := (Finset.sum_filter _ _).symm
+
 end YangMills.KP
