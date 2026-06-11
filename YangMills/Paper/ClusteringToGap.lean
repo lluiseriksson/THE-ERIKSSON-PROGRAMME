@@ -117,6 +117,31 @@ theorem lattice_mass_gap_of_clustering_uniform
   exact Paper.mass_gap_bound (covIR t + covUV t) (covIR t) (covUV t) C1 C2 mstar c0 (t : ℝ)
     (Nat.cast_nonneg t) rfl (hIR t) (hUV t)
 
+/-- **Strong-coupling lattice mass gap — exponential-IR form.**  The
+adapter consuming the IR bound in the exact shape produced by the
+cluster-correlation campaign (`gibbs_truncated_correlation_bound`:
+`|covIR k| ≤ C₁·e^{−ε·k}`): with `r := e^{−ε}` this is the geometric
+hypothesis of `lattice_mass_gap_of_clustering_uniform`.  The IR side
+of the lattice mass gap is hereby fed by a THEOREM; only the UV side
+remains hypothesis-carried (the §6.3 single-scale Balaban input). -/
+theorem lattice_mass_gap_of_exp_clustering_uniform
+    (covIR covUV : ℕ → ℝ) (C1 C2 ε c0 : ℝ)
+    (hε : 0 < ε) (hc0 : 0 < c0)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hUV : ∀ t : ℕ, |covUV t| ≤ C2 * Real.exp (-(c0 * (t : ℝ)))) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV t| ≤ (C1 + C2) * Real.exp (-(gap * (t : ℝ))) := by
+  refine lattice_mass_gap_of_clustering_uniform covIR covUV C1 C2
+    (Real.exp (-ε)) c0 (Real.exp_pos _) ?_ hc0 ?_ hUV
+  · exact Real.exp_lt_one_iff.mpr (by linarith)
+  · intro k
+    have hpow : Real.exp (-ε) ^ k = Real.exp (-(ε * (k : ℝ))) := by
+      rw [← Real.exp_nat_mul]
+      congr 1
+      ring
+    rw [hpow]
+    exact hIRbound k
+
 /-! ### Finite susceptibility — the summed correlator converges
 
 Exponential clustering has a physical corollary: the **susceptibility**
