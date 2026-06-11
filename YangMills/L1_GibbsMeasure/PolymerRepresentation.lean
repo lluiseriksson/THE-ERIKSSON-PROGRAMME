@@ -1058,4 +1058,141 @@ theorem clusterSum_inclusion_exclusion
                 (d := d) (N := N) μ (deformWeight w g T)).activity (X i)) :=
       tsum_congr fun n => cluster_layer_inclusion_exclusion μ w g S T n
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **THE COVARIANCE IDENTITY (B2, W4b):**
+`Z[FG]·Z = Z[F]·Z[G]·exp(connecting cluster sum)` — the truncated
+correlation of two multiplicative local observables is controlled by
+the cluster sum over tuples connecting their supports, under
+volume-uniform smallness at the deformed bound
+`δ' = δ_w + δ_g + δ_w·δ_g`. -/
+theorem covariance_identity
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    (hlocw : IsLocalWeight (d := d) (N := N) (G := G) w)
+    (hlocg : IsLocalWeight (d := d) (N := N) (G := G) g)
+    (hmeasw : ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N G => w A p))
+    (hmeasg : ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N G => g A p))
+    {δw δg : ℝ} (hδw0 : 0 ≤ δw) (hδg0 : 0 ≤ δg)
+    (hbdw : ∀ A p, |w A p| ≤ δw) (hbdg : ∀ A p, |g A p| ≤ δg)
+    (S T : Finset (ConcretePlaquette d N))
+    (t : ℝ) (ht0 : 0 ≤ t)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((δw + δg + δw * δg) * Real.exp t) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      (((δw + δg + δw * δg) * Real.exp t) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((δw + δg + δw * δg) * Real.exp t))) ≤ t) :
+    ((weightedPartition (d := d) (N := N) μ
+        (deformWeight w g (S ∪ T)) : ℝ) : ℂ) *
+      ((weightedPartition (d := d) (N := N) μ w : ℝ) : ℂ)
+    = ((weightedPartition (d := d) (N := N) μ
+        (deformWeight w g S) : ℝ) : ℂ) *
+      ((weightedPartition (d := d) (N := N) μ
+        (deformWeight w g T) : ℝ) : ℂ) *
+      Complex.exp (∑' n : ℕ, (((n + 1).factorial : ℂ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+            (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).Polymer)).filter
+            (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+              (∃ i, ¬ Disjoint (X i).1 T)),
+          ((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g (S ∪ T))).activity (X i)
+            + (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X i)
+            - (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g S)).activity (X i)
+            - (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g T)).activity (X i))) := by
+  classical
+  set δ' : ℝ := δw + δg + δw * δg with hδ'def
+  have hδ'0 : (0 : ℝ) ≤ δ' := by rw [hδ'def]; positivity
+  have hwle : ∀ A p, |w A p| ≤ δ' := fun A p =>
+    le_trans (hbdw A p) (by rw [hδ'def]; nlinarith)
+  have hbdU : ∀ A p, |deformWeight w g (S ∪ T) A p| ≤ δ' :=
+    fun A p => abs_deformWeight_le hbdw hbdg (S ∪ T) A p
+  have hbdS : ∀ A p, |deformWeight w g S A p| ≤ δ' :=
+    fun A p => abs_deformWeight_le hbdw hbdg S A p
+  have hbdT : ∀ A p, |deformWeight w g T A p| ≤ δ' :=
+    fun A p => abs_deformWeight_le hbdw hbdg T A p
+  -- the four exponential identities
+  have e1 := weightedPartition_eq_exp_clusterSum μ
+    (isLocalWeight_deformWeight hlocw hlocg (S ∪ T))
+    (measurable_deformWeight hmeasw hmeasg (S ∪ T))
+    hδ'0 hbdU t ht0 hr hsmall
+  have e2 := weightedPartition_eq_exp_clusterSum μ
+    hlocw hmeasw hδ'0 hwle t ht0 hr hsmall
+  have e3 := weightedPartition_eq_exp_clusterSum μ
+    (isLocalWeight_deformWeight hlocw hlocg S)
+    (measurable_deformWeight hmeasw hmeasg S)
+    hδ'0 hbdS t ht0 hr hsmall
+  have e4 := weightedPartition_eq_exp_clusterSum μ
+    (isLocalWeight_deformWeight hlocw hlocg T)
+    (measurable_deformWeight hmeasw hmeasg T)
+    hδ'0 hbdT t ht0 hr hsmall
+  -- the four summabilities
+  have hs1 : Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) → (weightedLatticePolymerSystem
+          (d := d) (N := N) μ (deformWeight w g (S ∪ T))).Polymer,
+        (KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ (deformWeight w g (S ∪ T))) X : ℂ) *
+          ∏ i, (weightedLatticePolymerSystem
+            (d := d) (N := N) μ (deformWeight w g (S ∪ T))).activity (X i)) :=
+    Summable.of_norm (Summable.of_nonneg_of_le (fun n => norm_nonneg _)
+      (fun n => KP.norm_clusterTerm_le _ n)
+      (KP.kp_clusterWeight_summable_sharp _
+        (weightedLatticePolymerSystem_kpCriterion_volumeUniform
+          μ hδ'0 hbdU t ht0 hr hsmall)))
+  have hs2 : Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) → (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer,
+        (KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℂ) *
+          ∏ i, (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).activity (X i)) :=
+    Summable.of_norm (Summable.of_nonneg_of_le (fun n => norm_nonneg _)
+      (fun n => KP.norm_clusterTerm_le _ n)
+      (KP.kp_clusterWeight_summable_sharp _
+        (weightedLatticePolymerSystem_kpCriterion_volumeUniform
+          μ hδ'0 hwle t ht0 hr hsmall)))
+  have hs3 : Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) → (weightedLatticePolymerSystem
+          (d := d) (N := N) μ (deformWeight w g S)).Polymer,
+        (KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ (deformWeight w g S)) X : ℂ) *
+          ∏ i, (weightedLatticePolymerSystem
+            (d := d) (N := N) μ (deformWeight w g S)).activity (X i)) :=
+    Summable.of_norm (Summable.of_nonneg_of_le (fun n => norm_nonneg _)
+      (fun n => KP.norm_clusterTerm_le _ n)
+      (KP.kp_clusterWeight_summable_sharp _
+        (weightedLatticePolymerSystem_kpCriterion_volumeUniform
+          μ hδ'0 hbdS t ht0 hr hsmall)))
+  have hs4 : Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) → (weightedLatticePolymerSystem
+          (d := d) (N := N) μ (deformWeight w g T)).Polymer,
+        (KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ (deformWeight w g T)) X : ℂ) *
+          ∏ i, (weightedLatticePolymerSystem
+            (d := d) (N := N) μ (deformWeight w g T)).activity (X i)) :=
+    Summable.of_norm (Summable.of_nonneg_of_le (fun n => norm_nonneg _)
+      (fun n => KP.norm_clusterTerm_le _ n)
+      (KP.kp_clusterWeight_summable_sharp _
+        (weightedLatticePolymerSystem_kpCriterion_volumeUniform
+          μ hδ'0 hbdT t ht0 hr hsmall)))
+  rw [e1, e2, e3, e4, ← Complex.exp_add, ← Complex.exp_add,
+    ← Complex.exp_add,
+    ← clusterSum_inclusion_exclusion μ w g S T hs1 hs2 hs3 hs4]
+  congr 1
+  ring
+
 end YangMills
