@@ -193,14 +193,27 @@ in positive-edge coordinates = sum over closed vertex sequences of
 positionwise DECORATED entries — for fixed `v` exactly the input of
 `prod_comp_eq_prod_fiber` + the decorated selection rule.  All six
 oracle clean.
-**Open:** J-2 (the pure-loop kill: linearity over the `v`-sum +
-grouping + DB-1 at an `N`-ality-unbalanced edge ⇒
-`∫ tr W_C dμ_gauge = 0` — the β=0 selection rule for loops; per-edge
-balance count at `e` = `(es-positions at e, sign true) − (sign
-false)`, INDEPENDENT of `v`), DB-2 (add plaquette activities: term
+**J-2 CLOSED** (`WilsonLoopMonomial.lean`):
+`integral_trace_wilsonLine_eq_zero` — **the β=0 `N`-ality selection
+rule for Wilson loops**: `∫ tr(W_es) dμ_gauge = 0` whenever one
+positive edge has `N_c`-unbalanced signed traversal count.  The first
+END-TO-END run of the whole pipeline: decorated expansion →
+`integral_finset_sum` (integrability from `entry_norm_bound_of_unitary`
++ `Integrable.bdd_mul`) → per-`v` `integral_const_mul` (term-mode
+`.trans`, keyed `rw` fails) → grouping/kill → DB-1.  In particular:
+every open line and every fundamental loop traversing some edge
+exactly once has zero Haar expectation.  Oracle clean.  House notes:
+when an ite-rewrite must hit several differently-branched ites with
+the same condition, `simp only [if_pos hs]`/`[if_neg hs]` (one pass,
+all instantiations) — full `simp [hs]` normalizes `get`→`getElem` and
+orphans `hs`.
+**Open:** DB-2 (add plaquette activities to the integrand: term
 chains `σ : P → {±1}`, balance ⟺ `∂₂(indicatorChain S σ) = loopChain
 C` over `ZMod N_c`), J-3 (contrapositive join → `chainArea_le_card_of_
-support_subset`), then AL6.
+support_subset`), then AL6.  J-2 is the template: DB-2/J-3 extend its
+integrand by `∏_{p∈S} f_p` with the activities expanded by
+`integral_mul_prod_one_add` and each term routed through the SAME
+grouping/kill.
 
 **Then AL6:** `|⟨W_C⟩·Z| ≤ ∑_{|S| ≥ Area} (N_c·δ^{|S|})·(entropy)` —
 the `x/(1−Kx)` tail pattern from the correlator campaign, plus the
