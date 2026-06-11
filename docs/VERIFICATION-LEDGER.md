@@ -236,6 +236,45 @@ depending only on the dimension** — the `hA` caveat of addendum 5 is
 eliminated; nothing in the convergence hypotheses references the
 lattice volume.  All M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 7 (2026-06-10, the Mayer–Ursell inversion) — THE
+FUNDAMENTAL THEOREM OF CLUSTER EXPANSIONS
+
+**Build:** `lake build YangMillsCore` — green at `b8dd5ee`.
+**Source scan:** zero `sorry`/`axiom` in `YangMills/KP/` (unchanged).
+
+Oracle outputs (verbatim, the headline chain of
+`KP/MayerInversion.lean`):
+
+```
+'YangMills.KP.ursell_partition_identity'              [propext, Classical.choice, Quot.sound]
+'YangMills.KP.sum_compat_eq_ordp'                     [propext, Classical.choice, Quot.sound]
+'YangMills.KP.admissible_card_sum_eq'                 [propext, Classical.choice, Quot.sound]
+'YangMills.KP.partition_univ_eq_cluster_layers'       [propext, Classical.choice, Quot.sound]
+'YangMills.KP.tsum_pow_eq_tsum_pi'                    [propext, Classical.choice, Quot.sound]
+'YangMills.KP.summable_H'                             [propext, Classical.choice, Quot.sound]
+'YangMills.KP.exp_tsum_eq_tsum_H'                     [propext, Classical.choice, Quot.sound]
+'YangMills.KP.tsum_H_eq_tsum_layers'                  [propext, Classical.choice, Quot.sound]
+'YangMills.KP.partition_eq_exp_clusterSum'            [propext, Classical.choice, Quot.sound]
+'YangMills.KP.partition_eq_exp_clusterSum_of_kp'      [propext, Classical.choice, Quot.sound]
+```
+
+Plain language: **`Ξ = exp(clusterSum)` is fully machine-checked** —
+for every finite polymer system with absolutely convergent cluster
+series, and outright under the bare KP criterion (the sharp theory of
+addendum 6 supplies the convergence).  This was the "months-long crux"
+recorded in `Expansion.lean`'s header (E3, the deferred Mayer–Ursell
+inversion).  The proof: the partition identity (sums of block-Ursell
+products over all `Finpartition`s = the compatibility indicator,
+via component-partition fibrations of the alternating subgraph sums),
+the π-collapse to ordered partitions, the exact function-space split,
+the multinomial count `#ordp(m)·∏mᵢ! = N!`, the injective collapse to
+admissible sets, and the analytic shell (power Fubini, the master
+sigma-sum, size regrouping with finite layers, tail-kill).  This
+unlocks the cluster-correlation chain (`docs/CLUSTER-CORRELATION-PLAN.md`
+Half B): correlators as differences of `log Ξ`-type quantities are now
+expressible through cluster sums with the proved volume-uniform decay
+engine (Half A).  All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

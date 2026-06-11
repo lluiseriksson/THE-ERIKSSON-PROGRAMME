@@ -184,10 +184,26 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   gas converges absolutely under β-smallness depending ONLY on the dimension — no
   volume hypothesis anywhere.  `docs/VERIFICATION-LEDGER.md` addendum 6 has the
   oracle outputs.
-- **NEXT TARGET — cluster-correlation chain.** Connect `clusterSum` derivatives /
-  two-point-function expansions to Wilson-loop correlators and discharge the IR
-  hypothesis of `lattice_mass_gap_of_clustering_uniform` (M3's remaining analytic
-  input besides UV).  The volume-uniform convergence just proved is the engine.
+- **THE MAYER–URSELL INVERSION — CLOSED (2026-06-10;
+  `KP/MayerInversion.lean`).** `Ξ = exp(clusterSum)`
+  (`partition_eq_exp_clusterSum(_of_kp)`) — the fundamental theorem of
+  cluster expansions, the "months-long crux" of `Expansion.lean`, is
+  machine-checked end to end: the partition identity
+  (`ursell_partition_identity`), the finite resummation
+  (`admissible_card_sum_eq`, `partition_univ_eq_cluster_layers`), and
+  the analytic shell (power Fubini, master sigma-sum, size layers).
+  Also closed: Half A of the correlation chain
+  (`connectedLattice_pinned_tail_volumeUniform` — exponential
+  size-tail decay).  `docs/VERIFICATION-LEDGER.md` addendum 7;
+  `docs/CLUSTER-CORRELATION-PLAN.md` is the campaign log.
+- **NEXT TARGET — cluster-correlation chain, Half B.** With
+  `Ξ = exp(clusterSum)` proved, express truncated correlators as
+  differences of cluster sums (B1: source-deformed gases; B2: the
+  covariance identity — now WITH its prerequisite in hand; B3:
+  connecting-cluster geometry), feed Half A's tail bound, and
+  discharge the IR hypothesis of
+  `lattice_mass_gap_of_clustering_uniform` (M3's remaining analytic
+  input besides UV).
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the
   repo; needed for the other M3 hypothesis.
 - **T4 — strong-coupling character expansion → area law (LG7/8).** Needs **Peter–Weyl for
