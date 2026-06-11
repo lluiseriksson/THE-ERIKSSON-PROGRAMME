@@ -3,6 +3,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.L1_GibbsMeasure.LatticePolymerSystem
+import YangMills.L1_GibbsMeasure.ConnectedEntropy
 import YangMills.KP.SharpShell
 import YangMills.KP.ClusterTail
 
@@ -279,5 +280,149 @@ lemma connecting_pinned_le_GE {G : Type*} [Group G]
       (d := d) (N := N) μ pe β).Polymer => c'.1.card) (X i)
       = ∑ i, (X i).1.card := rfl
   omega
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **THE CONNECTING-CLUSTER DECAY (volume-uniform):** the total pinned
+cluster sum over polymers through `p`, restricted to clusters touching
+`q`, decays exponentially in the touching-distance — with every
+constant depending only on `d`, `B`, `β`, `t`, `ε`.  This is the IR
+decay mechanism of the correlation chain, fully composed. -/
+theorem connecting_cluster_decay {G : Type*} [Group G]
+    [MeasurableSpace G] [NeZero d]
+    (μ : MeasureTheory.Measure G) [MeasureTheory.IsProbabilityMeasure μ]
+    {pe : G → ℝ} {B : ℝ} (hpe : ∀ g, |pe g| ≤ B) (β : ℝ)
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((Real.exp (|β| * B) - 1) * Real.exp (t + ε)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      (((Real.exp (|β| * B) - 1) * Real.exp (t + ε)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((Real.exp (|β| * B) - 1) * Real.exp (t + ε)))) ≤ t)
+    (p q : ConcretePlaquette d N) :
+    ∑ c ∈ (Finset.univ : Finset (connectedLatticePolymerSystem
+        (d := d) (N := N) μ pe β).Polymer).filter
+        (fun c => p ∈ c.1),
+      ∑' n : ℕ, (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β).Polymer)).filter
+          (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+          |((KP.ursell (connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β) X : ℤ) : ℝ)| *
+            ∏ i, ‖(connectedLatticePolymerSystem
+              (d := d) (N := N) μ pe β).activity (X i)‖
+    ≤ Real.exp (-(ε * (((touchGraph d N).dist p q / 2 : ℕ) : ℝ))) *
+        (((Real.exp (|β| * B) - 1) * Real.exp (t + ε)) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+            ((Real.exp (|β| * B) - 1) * Real.exp (t + ε)))) := by
+  classical
+  set L : ℕ := (touchGraph d N).dist p q / 2 with hL
+  set x : ℝ := (Real.exp (|β| * B) - 1) * Real.exp (t + ε) with hxdef
+  have hx : (0 : ℝ) ≤ x := by
+    have h1 : (1 : ℝ) ≤ Real.exp (|β| * B) := by
+      rw [← Real.exp_zero]
+      refine Real.exp_le_exp.mpr ?_
+      have hB : (0 : ℝ) ≤ B := le_trans (abs_nonneg _) (hpe 1)
+      positivity
+    have : (0 : ℝ) ≤ Real.exp (|β| * B) - 1 := by linarith
+    positivity
+  have hcrit := connectedLatticePolymerSystem_tilt_kpCriterion_volumeUniform
+    (d := d) (N := N) μ hpe β t ε ht0 hr hsmall
+  -- per polymer through p: the connecting tail
+  have hper : ∀ c ∈ (Finset.univ : Finset (connectedLatticePolymerSystem
+      (d := d) (N := N) μ pe β).Polymer).filter (fun c => p ∈ c.1),
+      (∑' n : ℕ, (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β).Polymer)).filter
+          (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+          |((KP.ursell (connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β) X : ℤ) : ℝ)| *
+            ∏ i, ‖(connectedLatticePolymerSystem
+              (d := d) (N := N) μ pe β).activity (X i)‖)
+      ≤ Real.exp (-(ε * L)) *
+          (Real.exp (ε * (c.1.card : ℝ)) *
+            ‖(connectedLatticePolymerSystem
+              (d := d) (N := N) μ pe β).activity c‖ *
+            Real.exp (t * (c.1.card : ℝ))) := by
+    intro c hc
+    have hp := (Finset.mem_filter.mp hc).2
+    have htail := KP.pinned_cluster_tail_summable
+      (connectedLatticePolymerSystem (d := d) (N := N) μ pe β)
+      (fun c' => c'.1.card) hε0 hcrit c L
+    have hterm := fun n => connecting_pinned_le_GE
+      (q := q) μ pe β c hp n
+    have hnn : ∀ n : ℕ, 0 ≤ (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β).Polymer)).filter
+          (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+          |((KP.ursell (connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β) X : ℤ) : ℝ)| *
+            ∏ i, ‖(connectedLatticePolymerSystem
+              (d := d) (N := N) μ pe β).activity (X i)‖ := by
+      intro n
+      refine mul_nonneg (by positivity)
+        (Finset.sum_nonneg fun X _ => mul_nonneg (abs_nonneg _)
+          (Finset.prod_nonneg fun i _ => norm_nonneg _))
+    have hsumm : Summable (fun n : ℕ =>
+        (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β).Polymer)).filter
+          (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+          |((KP.ursell (connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β) X : ℤ) : ℝ)| *
+            ∏ i, ‖(connectedLatticePolymerSystem
+              (d := d) (N := N) μ pe β).activity (X i)‖) :=
+      Summable.of_nonneg_of_le hnn hterm htail.1
+    exact le_trans
+      (Summable.tsum_le_tsum hterm hsumm htail.1) htail.2
+  refine le_trans (Finset.sum_le_sum hper) ?_
+  rw [← Finset.mul_sum]
+  refine mul_le_mul_of_nonneg_left ?_ (Real.exp_pos _).le
+  -- the through-p sum is volume-free
+  calc ∑ c ∈ (Finset.univ : Finset (connectedLatticePolymerSystem
+        (d := d) (N := N) μ pe β).Polymer).filter
+        (fun c => p ∈ c.1),
+        Real.exp (ε * (c.1.card : ℝ)) *
+          ‖(connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β).activity c‖ *
+          Real.exp (t * (c.1.card : ℝ))
+      ≤ ∑ c ∈ (Finset.univ : Finset (connectedLatticePolymerSystem
+          (d := d) (N := N) μ pe β).Polymer).filter
+          (fun c => p ∈ c.1),
+          x ^ c.1.card := by
+        refine Finset.sum_le_sum fun c _ => ?_
+        have h1 := norm_connectedLatticePolymerSystem_activity_le
+          (d := d) (N := N) μ hpe β c
+        have h2 : Real.exp ((t + ε) * (c.1.card : ℝ))
+            = Real.exp (t + ε) ^ c.1.card := by
+          rw [mul_comm, ← Real.exp_nat_mul]
+        have hcomb : Real.exp (ε * (c.1.card : ℝ)) *
+            Real.exp (t * (c.1.card : ℝ))
+            = Real.exp ((t + ε) * (c.1.card : ℝ)) := by
+          rw [← Real.exp_add]
+          congr 1
+          ring
+        calc Real.exp (ε * (c.1.card : ℝ)) *
+            ‖(connectedLatticePolymerSystem
+              (d := d) (N := N) μ pe β).activity c‖ *
+            Real.exp (t * (c.1.card : ℝ))
+            = ‖(connectedLatticePolymerSystem
+                (d := d) (N := N) μ pe β).activity c‖ *
+              (Real.exp (ε * (c.1.card : ℝ)) *
+                Real.exp (t * (c.1.card : ℝ))) := by ring
+          _ = ‖(connectedLatticePolymerSystem
+                (d := d) (N := N) μ pe β).activity c‖ *
+              Real.exp (t + ε) ^ c.1.card := by rw [hcomb, h2]
+          _ ≤ (Real.exp (|β| * B) - 1) ^ c.1.card *
+              Real.exp (t + ε) ^ c.1.card :=
+            mul_le_mul_of_nonneg_right h1 (by positivity)
+          _ = x ^ c.1.card := by rw [hxdef, mul_pow]
+    _ ≤ x / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * x) :=
+        sum_connectedPolymers_through_le (d := d) (N := N) p x hx
+          (by rw [hxdef] at *; exact hr)
 
 end YangMills
