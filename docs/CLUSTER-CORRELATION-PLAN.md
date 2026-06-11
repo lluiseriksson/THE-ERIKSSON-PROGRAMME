@@ -619,10 +619,22 @@ surfaces were `pe`-specific.  Bricks:
   `(Z[w] : ℂ) = KP.partition (weighted gas) univ` for every bounded
   measurable local weight family — verbatim transport of step 2
   (appended to `PolymerRepresentation.lean`).
-* **W3:** KP criterion for `|w| ≤ δ` (transport
-  `norm_latticePolymerSystem_activity_le` → `δ^|c|` and the
-  volume-uniform criterion with `x := δ·e^t`), giving
-  `Z[w] = exp(clusterSum[w])`.
+* **W3 (next; pure transport, sources pinned):** KP criterion for
+  `|w| ≤ δ`.  (a) `norm_weightedLatticePolymerSystem_activity_le :
+  0 ≤ δ → ‖activity c‖ ≤ δ^|c|` — transport of
+  `norm_latticePolymerSystem_activity_le`
+  (`LatticePolymerSystem.lean:67-89`: `Complex.norm_real`,
+  `norm_integral_le_of_norm_le_const`, `prod_le_prod`); the bound
+  hypothesis is `hbd : ∀ A p, |w A p| ≤ δ`.  (b)
+  `weightedLatticePolymerSystem_kpCriterion_volumeUniform` —
+  transport of `connectedLatticePolymerSystem_kpCriterion_volumeUniform`
+  (`ConnectedEntropy.lean:751-…`, ~150 lines) with
+  `x := δ·e^t` replacing `(e^{|β|B}−1)·e^t` throughout; the entropy
+  engine `sum_connectedPolymers_through_le` is weight-free and reused
+  as-is; `hε0` is replaced by `hδ0 : 0 ≤ δ` (derivable from `hbd` at
+  any point, or carried).  (c) corollary
+  `weightedPartition_eq_exp_clusterSum` via
+  `partition_eq_exp_clusterSum_of_kp` (mirror of the Wilson capstone).
 * **W4:** the covariance identity: for supports
   `S_F, S_G` and deformations `f̃ = f + g·𝟙_{S_F}` etc.,
   `⟨F⟩ = Z[f̃]/Z`, `⟨FG⟩/⟨F⟩⟨G⟩ = exp(K_{FG}+K−K_F−K_G)`; termwise
