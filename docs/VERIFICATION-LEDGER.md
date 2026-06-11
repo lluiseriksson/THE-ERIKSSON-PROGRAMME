@@ -295,6 +295,7 @@ Oracle outputs (verbatim):
 'YangMills.mem_componentFamily_iff'                   [propext, Classical.choice, Quot.sound]
 'YangMills.prod_componentFamily'                      [propext, Classical.choice, Quot.sound]
 'YangMills.partitionFunction_eq_partition'            [propext, Classical.choice, Quot.sound]
+'YangMills.partitionFunction_eq_exp_clusterSum'       [propext, Classical.choice, Quot.sound]
 ```
 
 Plain language: two campaign endpoints.  (1) **The volume-uniform IR

@@ -585,11 +585,13 @@ all oracle-clean `[propext, Classical.choice, Quot.sound]`).**
   `show … from h` before `Subtype.mk_eq_mk` fires (the `.Polymer`
   projection blocks unification).
 
-**Composition now available:** `(Z : ℂ) = Ξ = exp(clusterSum)` for
-the connected lattice gas whenever the KP criterion holds —
+**Composition DONE (commit `06b032a`, oracle clean):**
+**`partitionFunction_eq_exp_clusterSum`** — `(Z : ℂ) =
+exp(clusterSum)` for the connected lattice gas under the
+volume-uniform KP smallness (constants depend only on `d, B, β, t`);
 `partitionFunction_eq_partition` ∘ `partition_eq_exp_clusterSum_of_kp`
-with the volume-uniform tilted criterion.  In particular `Z ≠ 0` at
-high temperature.
+∘ `connectedLatticePolymerSystem_kpCriterion_volumeUniform`.  In
+particular `Z ≠ 0` at high temperature, volume-uniformly.
 
 **Then B2** (the covariance): for plaquette-local multiplicative
 observables `F` (deformations `f_p ↦ f_p·(1+s·g_p)` supported on
