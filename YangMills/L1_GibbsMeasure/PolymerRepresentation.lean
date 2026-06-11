@@ -1594,7 +1594,8 @@ position-0-pinned tuple sum.  Precompose with the transposition
 activity product (`Equiv.prod_comp`) are relabeling-invariant, and the
 second existential is permutation-stable. -/
 lemma sum_connecting_le_succ_mul_pinned (P : KP.PolymerSystem)
-    [Fintype P.Polymer] (Q R : P.Polymer → Prop) (n : ℕ) :
+    [Fintype P.Polymer] (Q R : P.Polymer → Prop)
+    [DecidablePred Q] [DecidablePred R] (n : ℕ) :
     ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → P.Polymer)).filter
       (fun X => (∃ i, Q (X i)) ∧ (∃ j, R (X j))),
       |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖
@@ -1694,6 +1695,333 @@ lemma sum_connecting_le_succ_mul_pinned (P : KP.PolymerSystem)
           (fun X => Q (X 0) ∧ (∃ j, R (X j))),
           |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖ := by
         rw [Finset.sum_filter]
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **The per-layer pinning chain (B4):** at each cluster order, the
+region-connecting tuple sum collapses — via the double union bound,
+the symmetrization, and the position-0 fibering — to plaquette-pinned
+sums with the `n!⁻¹` normalization. -/
+lemma connecting_layer_le_pinned (μ : Measure G)
+    (w : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    (S T : Finset (ConcretePlaquette d N)) (n : ℕ) :
+    (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer)).filter
+        (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+          (∃ j, ¬ Disjoint (X j).1 T)),
+        |((KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+          ∏ k, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).activity (X k)‖
+    ≤ ∑ p ∈ S, ∑ q ∈ T,
+        ∑ c ∈ (Finset.univ : Finset (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer).filter (fun c => p ∈ c.1),
+          ((n.factorial : ℝ))⁻¹ *
+            ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+              (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).Polymer)).filter
+              (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+              |((KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+                ∏ k, ‖(weightedLatticePolymerSystem
+                  (d := d) (N := N) μ w).activity (X k)‖ := by
+  classical
+  have hF0 : ∀ X : Fin (n + 1) → (weightedLatticePolymerSystem
+      (d := d) (N := N) μ w).Polymer,
+      0 ≤ |((KP.ursell (weightedLatticePolymerSystem
+        (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+        ∏ k, ‖(weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).activity (X k)‖ :=
+    fun X => mul_nonneg (abs_nonneg _)
+      (Finset.prod_nonneg fun k _ => norm_nonneg _)
+  -- step 1: the double union bound to plaquette pairs
+  have hstep1 : ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+      (weightedLatticePolymerSystem
+        (d := d) (N := N) μ w).Polymer)).filter
+      (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+        (∃ j, ¬ Disjoint (X j).1 T)),
+      |((KP.ursell (weightedLatticePolymerSystem
+        (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+        ∏ k, ‖(weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).activity (X k)‖
+      ≤ ∑ p ∈ S, ∑ q ∈ T,
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => (∃ i, p ∈ (X i).1) ∧ (∃ j, q ∈ (X j).1)),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X k)‖ := by
+    have hite0 : ∀ (X : Fin (n + 1) → (weightedLatticePolymerSystem
+        (d := d) (N := N) μ w).Polymer)
+        (p q : ConcretePlaquette d N),
+        0 ≤ (if (∃ i, p ∈ (X i).1) ∧ (∃ j, q ∈ (X j).1) then
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X k)‖ else 0) := by
+      intro X p q
+      by_cases h : (∃ i, p ∈ (X i).1) ∧ (∃ j, q ∈ (X j).1)
+      · rw [if_pos h]
+        exact hF0 X
+      · rw [if_neg h]
+    calc ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+            (∃ j, ¬ Disjoint (X j).1 T)),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X k)‖
+        ≤ ∑ X : Fin (n + 1) → (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer,
+            ∑ p ∈ S, ∑ q ∈ T,
+            (if (∃ i, p ∈ (X i).1) ∧ (∃ j, q ∈ (X j).1) then
+              |((KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+                ∏ k, ‖(weightedLatticePolymerSystem
+                  (d := d) (N := N) μ w).activity (X k)‖ else 0) := by
+          rw [Finset.sum_filter]
+          refine Finset.sum_le_sum fun X _ => ?_
+          by_cases hX : (∃ i, ¬ Disjoint (X i).1 S) ∧
+              (∃ j, ¬ Disjoint (X j).1 T)
+          · rw [if_pos hX]
+            obtain ⟨⟨i₀, hi₀⟩, ⟨j₀, hj₀⟩⟩ := hX
+            obtain ⟨p₀, hp₀X, hp₀S⟩ := Finset.not_disjoint_iff.mp hi₀
+            obtain ⟨q₀, hq₀X, hq₀T⟩ := Finset.not_disjoint_iff.mp hj₀
+            have hq : |((KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+                  ∏ k, ‖(weightedLatticePolymerSystem
+                    (d := d) (N := N) μ w).activity (X k)‖
+                ≤ ∑ q ∈ T,
+                  (if (∃ i, p₀ ∈ (X i).1) ∧ (∃ j, q ∈ (X j).1) then
+                    |((KP.ursell (weightedLatticePolymerSystem
+                      (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+                      ∏ k, ‖(weightedLatticePolymerSystem
+                        (d := d) (N := N) μ w).activity (X k)‖ else 0) := by
+              have h := Finset.single_le_sum
+                (f := fun q =>
+                  if (∃ i, p₀ ∈ (X i).1) ∧ (∃ j, q ∈ (X j).1) then
+                    |((KP.ursell (weightedLatticePolymerSystem
+                      (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+                      ∏ k, ‖(weightedLatticePolymerSystem
+                        (d := d) (N := N) μ w).activity (X k)‖ else 0)
+                (fun q _ => hite0 X p₀ q) hq₀T
+              have h' : (if (∃ i, p₀ ∈ (X i).1) ∧
+                  (∃ j, q₀ ∈ (X j).1) then
+                  |((KP.ursell (weightedLatticePolymerSystem
+                    (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+                    ∏ k, ‖(weightedLatticePolymerSystem
+                      (d := d) (N := N) μ w).activity (X k)‖ else 0)
+                  ≤ ∑ q ∈ T,
+                  (if (∃ i, p₀ ∈ (X i).1) ∧ (∃ j, q ∈ (X j).1) then
+                    |((KP.ursell (weightedLatticePolymerSystem
+                      (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+                      ∏ k, ‖(weightedLatticePolymerSystem
+                        (d := d) (N := N) μ w).activity (X k)‖ else 0) := h
+              rw [if_pos ⟨⟨i₀, hp₀X⟩, ⟨j₀, hq₀X⟩⟩] at h'
+              exact h'
+            refine le_trans hq ?_
+            have h := Finset.single_le_sum
+              (f := fun p => ∑ q ∈ T,
+                (if (∃ i, p ∈ (X i).1) ∧ (∃ j, q ∈ (X j).1) then
+                  |((KP.ursell (weightedLatticePolymerSystem
+                    (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+                    ∏ k, ‖(weightedLatticePolymerSystem
+                      (d := d) (N := N) μ w).activity (X k)‖ else 0))
+              (fun p _ => Finset.sum_nonneg fun q _ => hite0 X p q) hp₀S
+            exact h
+          · rw [if_neg hX]
+            exact Finset.sum_nonneg fun p _ =>
+              Finset.sum_nonneg fun q _ => hite0 X p q
+      _ = ∑ p ∈ S, ∑ q ∈ T,
+          ∑ X : Fin (n + 1) → (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer,
+            (if (∃ i, p ∈ (X i).1) ∧ (∃ j, q ∈ (X j).1) then
+              |((KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+                ∏ k, ‖(weightedLatticePolymerSystem
+                  (d := d) (N := N) μ w).activity (X k)‖ else 0) := by
+          rw [Finset.sum_comm]
+          exact Finset.sum_congr rfl fun p _ => Finset.sum_comm
+      _ = ∑ p ∈ S, ∑ q ∈ T,
+          ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+            (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).Polymer)).filter
+            (fun X => (∃ i, p ∈ (X i).1) ∧ (∃ j, q ∈ (X j).1)),
+            |((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+              ∏ k, ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X k)‖ := by
+          refine Finset.sum_congr rfl fun p _ => ?_
+          refine Finset.sum_congr rfl fun q _ => ?_
+          exact (Finset.sum_filter _ _).symm
+  -- step 3: position-0 fibering over the pinned polymer
+  have hstep3 : ∀ (p q : ConcretePlaquette d N),
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer)).filter
+        (fun X => p ∈ (X 0).1 ∧ ∃ j, q ∈ (X j).1),
+        |((KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+          ∏ k, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).activity (X k)‖
+      = ∑ c ∈ (Finset.univ : Finset (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer).filter (fun c => p ∈ c.1),
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X k)‖ := by
+    intro p q
+    rw [Finset.sum_filter]
+    have hinner : ∀ c, ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer)).filter
+        (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+        |((KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+          ∏ k, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).activity (X k)‖
+        = ∑ X : Fin (n + 1) → (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer,
+          (if X 0 = c ∧ ∃ j, q ∈ (X j).1 then
+            |((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+              ∏ k, ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X k)‖ else 0) :=
+      fun c => Finset.sum_filter _ _
+    calc ∑ X : Fin (n + 1) → (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer,
+          (if p ∈ (X 0).1 ∧ ∃ j, q ∈ (X j).1 then
+            |((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+              ∏ k, ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X k)‖ else 0)
+        = ∑ X : Fin (n + 1) → (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer,
+          ∑ c ∈ (Finset.univ : Finset (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer).filter (fun c => p ∈ c.1),
+          (if X 0 = c ∧ ∃ j, q ∈ (X j).1 then
+            |((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+              ∏ k, ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X k)‖ else 0) := by
+          refine Finset.sum_congr rfl fun X _ => ?_
+          by_cases hp0 : p ∈ (X 0).1
+          · have hmem : (X 0) ∈ (Finset.univ :
+                Finset (weightedLatticePolymerSystem
+                  (d := d) (N := N) μ w).Polymer).filter
+                (fun c => p ∈ c.1) :=
+              Finset.mem_filter.mpr ⟨Finset.mem_univ _, hp0⟩
+            rw [Finset.sum_eq_single (X 0)
+              (fun c _ hne => if_neg (fun hcond => hne hcond.1.symm))
+              (fun habs => absurd hmem habs)]
+            by_cases hT : ∃ j, q ∈ (X j).1
+            · rw [if_pos ⟨hp0, hT⟩, if_pos ⟨rfl, hT⟩]
+            · rw [if_neg (fun h => hT h.2), if_neg (fun h => hT h.2)]
+          · rw [if_neg (fun h => hp0 h.1)]
+            refine (Finset.sum_eq_zero fun c hc => ?_).symm
+            refine if_neg (fun hcond => ?_)
+            rw [Finset.mem_filter] at hc
+            exact hp0 (hcond.1 ▸ hc.2)
+      _ = ∑ c ∈ (Finset.univ : Finset (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer).filter (fun c => p ∈ c.1),
+          ∑ X : Fin (n + 1) → (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer,
+          (if X 0 = c ∧ ∃ j, q ∈ (X j).1 then
+            |((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+              ∏ k, ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X k)‖ else 0) :=
+          Finset.sum_comm
+      _ = ∑ c ∈ (Finset.univ : Finset (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer).filter (fun c => p ∈ c.1),
+          ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+            (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).Polymer)).filter
+            (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+            |((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+              ∏ k, ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X k)‖ :=
+          Finset.sum_congr rfl fun c _ => (hinner c).symm
+  -- assemble: factor the factorials through the chain
+  have hfac : ((n.factorial : ℝ))⁻¹
+      = (((n + 1).factorial : ℝ))⁻¹ * ((n + 1 : ℕ) : ℝ) := by
+    have h2 : ((n + 1 : ℕ) : ℝ) ≠ 0 := by positivity
+    refine Eq.symm ?_
+    have h1 : ((n + 1).factorial : ℝ)
+        = ((n + 1 : ℕ) : ℝ) * (n.factorial : ℝ) := by
+      rw [Nat.factorial_succ]
+      push_cast
+      ring
+    rw [h1, mul_inv, mul_comm (((n + 1 : ℕ) : ℝ))⁻¹
+      ((n.factorial : ℝ))⁻¹, mul_assoc, inv_mul_cancel₀ h2, mul_one]
+  calc (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer)).filter
+        (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+          (∃ j, ¬ Disjoint (X j).1 T)),
+        |((KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+          ∏ k, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).activity (X k)‖
+      ≤ (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ p ∈ S, ∑ q ∈ T,
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => (∃ i, p ∈ (X i).1) ∧ (∃ j, q ∈ (X j).1)),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X k)‖ :=
+      mul_le_mul_of_nonneg_left hstep1 (by positivity)
+    _ ≤ (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ p ∈ S, ∑ q ∈ T, ((n + 1 : ℕ) : ℝ) *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => p ∈ (X 0).1 ∧ ∃ j, q ∈ (X j).1),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X k)‖ := by
+        refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+        refine Finset.sum_le_sum fun p _ => ?_
+        refine Finset.sum_le_sum fun q _ => ?_
+        exact sum_connecting_le_succ_mul_pinned
+          (weightedLatticePolymerSystem (d := d) (N := N) μ w)
+          (fun c => p ∈ c.1) (fun c => q ∈ c.1) n
+    _ = ∑ p ∈ S, ∑ q ∈ T,
+        ∑ c ∈ (Finset.univ : Finset (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer).filter (fun c => p ∈ c.1),
+          ((n.factorial : ℝ))⁻¹ *
+            ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+              (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).Polymer)).filter
+              (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+              |((KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+                ∏ k, ‖(weightedLatticePolymerSystem
+                  (d := d) (N := N) μ w).activity (X k)‖ := by
+        rw [Finset.mul_sum]
+        refine Finset.sum_congr rfl fun p _ => ?_
+        rw [Finset.mul_sum]
+        refine Finset.sum_congr rfl fun q _ => ?_
+        rw [hstep3 p q, Finset.mul_sum, Finset.mul_sum]
+        refine Finset.sum_congr rfl fun c _ => ?_
+        rw [hfac]
+        ring
 
 set_option maxHeartbeats 1600000 in
 open Classical in
