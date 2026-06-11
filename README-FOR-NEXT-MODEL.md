@@ -233,10 +233,18 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   machine-checked end to end.  `docs/VERIFICATION-LEDGER.md`
   addendum 10 (ten oracle lines);
   `docs/CLUSTER-CORRELATION-PLAN.md` is the complete campaign log.
-- **NEXT TARGET — the UV bound (§6.3 single-scale suppression).**
-  The other M3 hypothesis: content from the paper not yet in the
-  repo.  Alternatively T4 (Peter–Weyl/area law) or consolidation
-  (e.g. the normalized-correlator corollary dividing by `Z²`).
+- **NEXT TARGET — the T4 SHORTCUT (designed, not yet implemented):**
+  the two-plaquette connected-correlator decay
+  (`PETER_WEYL_ROADMAP.md`'s `kp_cluster_decay`) follows from
+  `gibbs_truncated_correlation_bound` at SINGLETON supports with the
+  `s`-scaled encoding `O_p = 1 + s·f(hol_p)` — NO Peter–Weyl, no
+  character expansion needed.  Three mechanical pieces remain:
+  holonomy locality/measurability for the `g`-family, the bilinear
+  covariance expansion, and distance bookkeeping.  Full design in
+  `docs/CLUSTER-CORRELATION-PLAN.md` §3.  (Peter–Weyl stays necessary
+  for the area-law/Wilson-loop route — the roadmap's L1–L3 remain the
+  long-term project.)  Other open M3 input: the §6.3 single-scale UV
+  bound (Balaban, hypothesis-carried by design).
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the
   repo; needed for the other M3 hypothesis.
 - **T4 — strong-coupling character expansion → area law (LG7/8).** Needs **Peter–Weyl for

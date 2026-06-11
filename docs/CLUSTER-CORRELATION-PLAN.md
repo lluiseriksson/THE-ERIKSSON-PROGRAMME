@@ -784,6 +784,43 @@ surfaces were `pe`-specific.  Bricks:
   COMPLETE.  What remains for M3: the UV bound (§6.3, content not in
   repo) and T4.  M4/M5/Clay untouched.
 
+## 3. T4 SHORTCUT (designed 2026-06-11, post-B4): the two-plaquette
+correlator WITHOUT Peter–Weyl
+
+`PETER_WEYL_ROADMAP.md` (2026-04-19) routes the two-plaquette
+connected-correlator decay (`kp_cluster_decay`, its L4.4) through
+Peter–Weyl (L1), Schur orthogonality (L2), and the
+Osterwalder–Seiler character expansion (L3) — those layers exist to
+prove POLYMER ACTIVITY BOUNDS.  The weighted-gas campaign has now
+produced those bounds by a different route (Mayer smallness instead of
+character expansion).  Consequence:
+
+**`gibbs_truncated_correlation_bound` at singleton supports
+`S := {p}`, `T := {q}` IS the two-plaquette correlator bound.**
+Encoding: for a bounded measurable observable `f` (`|f| ≤ 1`) of the
+plaquette holonomy, set `g A p' := s·f(hol_{p'} A)` with a scaling
+`0 < s` chosen so `δ_g := s` keeps the smallness window β-driven
+(e.g. `s := δ_w`); then `O_{p} = ∏_{p'∈{p}}(1+g) = 1 + s·f_p`, the
+unnormalized covariance expands BILINEARLY:
+`D(O_p, O_q) = s²·D(f_p, f_q)` (integrability from boundedness +
+`integrable_boltzmann`), and the bound gives
+`|D(f_p,f_q)| ≤ (C/s²)·e^{−ε·k}` — exponential decay with constants
+in `d, β, B` only.  `|S| = |T| = 1` makes the constant minimal.
+
+**Remaining work for the shortcut** (no new mathematics):
+(i) holonomy locality (`hol_p` depends only on `plaquetteSupport p`
+edges — extract from `plaquetteWeight_congr`'s internals) +
+measurability (from `measurable_plaquetteHolonomy`) for the
+`g`-family; (ii) the bilinear expansion of the covariance under
+`O = 1 + s·f` (four-term integral linearity); (iii) `dist({p},{q})`
+bookkeeping (`hdist` at singletons = `2k ≤ dist p q`).  Result: the
+roadmap's `kp_cluster_decay`-shaped theorem for ARBITRARY bounded
+local plaquette observables at small β — no Peter–Weyl, no character
+expansion, no Young diagrams.  (Peter–Weyl remains necessary for the
+AREA-LAW/Wilson-loop route and for sharp β-windows; the roadmap's
+L1–L3 stay relevant for those — but the correlator-decay rung of T4
+falls to the existing machinery.)
+
 **Then B2** (the covariance): for plaquette-local multiplicative
 observables `F` (deformations `f_p ↦ f_p·(1+s·g_p)` supported on
 `S_F`), `⟨F⟩ = Ξ_F/Ξ` (step 2 applied to the deformed gas — SAME
