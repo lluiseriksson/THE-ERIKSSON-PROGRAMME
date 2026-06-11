@@ -704,20 +704,28 @@ surfaces were `pe`-specific.  Bricks:
   `Equiv.prod_comp` give relabeling-invariance; `if_congr` for the
   ite-transport; the `single_le_sum` output needs a beta-RETYPE via
   `have h' : … := h` before `rw [if_pos]`).
-  **Remaining for B4:** (i) region-to-plaquette union bounds
-  (`𝟙[(∃i,¬Disj (X i).1 S) ∧ …] ≤ ∑_{p∈S}∑_{q∈T} 𝟙[(∃i, p∈(X i).1)
-  ∧ (∃j, q∈(X j).1)]` — same single_le_sum pattern, two layers);
-  (ii) fiber the position-0-pinned sum over `c := X 0 ∋ p` and feed
-  `weighted_connecting_pinned_le_GE`-shaped filters (note the
-  `(n+1)·(n+1)!⁻¹ = n!⁻¹` bookkeeping against the tail's
-  factorials — the tail lemma `kp_pinned_cluster_tail_bound` is
-  stated with `((n+1)!)⁻¹`; the extra `(n+1)` factor needs the
-  `e·x`-style margin or a `(n+1)`-absorbing variant of the tail —
-  check `pinned_cluster_tail_summable`'s room); (iii) norm the
-  4-term combination by the four gases' products (each ≤ the
-  δ'-gas), apply `weighted_connecting_cluster_decay` per `(p,q)`,
-  and assemble
-  `‖connecting tsum‖ ≤ 4·|S|·|T|·sup-margin·e^{−ε·dist(S,T)/2}·…` →
+  **The `(n+1)`-bookkeeping RESOLVED (commit `bfbc44d`, oracle
+  clean):** **`weighted_connecting_cluster_decay'`** — the
+  `n!⁻¹`-normalized connecting tails (exactly the normalization the
+  symmetrization factor produces) decay as
+  `e^{−ε·dist(p,q)/2}·y/(1−(16d+1)²y)` with `y := δ·e^{t+ε+1}`: the
+  `(n+1)` is absorbed into a **unit tilt** via
+  `n+1 ≤ ∑|X_i| ≤ e^{∑|X_i|}` (each polymer nonempty), costing one
+  extra `e` in the smallness window.  Supporting bricks:
+  `weighted_unitTilt_kpCriterion_volumeUniform` (double tilt,
+  exponent `t+ε+1`) and `weighted_unitTilt_connecting_pinned_le_GE`.
+  Idioms paid for: the `ursell_eq_zero` underscore unifies its system
+  argument through X's TYPE (pin `P` explicitly when the goal spells
+  a different defeq system); cross-typed filter memberships resist
+  `rw [mem_filter]` — use term-level `Finset.mem_filter.mp/.mpr`;
+  `rw` auto-closes `≤`-goals via the `@[refl]` attribute (don't
+  follow with another tactic).
+  **Remaining for B4 (assembly only):** (i) per-n region-to-plaquette
+  union bounds + `sum_connecting_le_succ_mul_pinned` + fibering
+  `X 0 ∋ p` over `c`, chaining into the per-`(p,q)` LHS of
+  `weighted_connecting_cluster_decay'`; (ii) norm the 4-term
+  combination by the four δ'-bounded gases; (iii)
+  `‖connecting tsum‖ ≤ 4·|S|·|T|·e^{−ε·dist(S,T)/2}·y/(1−Ky)` →
   `hIRbound` with `covIR t := ⟨FG⟩−⟨F⟩⟨G⟩` at separation `t`.
 
 **Then B2** (the covariance): for plaquette-local multiplicative
