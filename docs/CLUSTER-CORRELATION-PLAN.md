@@ -694,14 +694,31 @@ surfaces were `pe`-specific.  Bricks:
   `weighted_connecting_pinned_le_GE`, and
   **`weighted_connecting_cluster_decay`**: pinned connecting tails of
   the weighted gas decay as `e^{−ε·dist(p,q)/2}·x/(1−(16d+1)²x)`,
-  volume-free.  **Remaining — B4 only:** symmetrize the UNPINNED
-  connecting filter of `clusterSum_inclusion_exclusion` to the pinned
-  form (`𝟙[connecting] ≤ ∑_{p∈S}∑_{q∈T} 𝟙[p pinned]·𝟙[q touched]`,
-  then tuple-symmetrization to position 0 — the `PinnedCluster.lean`
-  machinery), bound the four activity products by the worst gas, and
-  assemble `|⟨FG⟩−⟨F⟩⟨G⟩| ≤ C·|S|·|T|·e^{−ε·dist(S,T)/2}` →
-  `hIRbound` of `lattice_mass_gap_of_clustering_uniform` with
-  `covIR t := ⟨FG⟩−⟨F⟩⟨G⟩` at separation `t`.
+  volume-free.  **B4 in progress.  The symmetrization CLOSED (commit `bd4230d`,
+  oracle clean):** `sum_connecting_le_succ_mul_pinned` (abstract, any
+  polymer system, any predicates `Q R`):
+  `∑_{X : (∃i,Q(X i)) ∧ (∃j,R(X j))} |u|·∏‖z‖ ≤
+   (n+1)·∑_{X : Q(X 0) ∧ (∃j,R(X j))} |u|·∏‖z‖` — union bound over
+  the witness position, then `swap 0 i` precomposition
+  (`Fintype.sum_bijective` via involutivity; `ursell_comp_equiv` +
+  `Equiv.prod_comp` give relabeling-invariance; `if_congr` for the
+  ite-transport; the `single_le_sum` output needs a beta-RETYPE via
+  `have h' : … := h` before `rw [if_pos]`).
+  **Remaining for B4:** (i) region-to-plaquette union bounds
+  (`𝟙[(∃i,¬Disj (X i).1 S) ∧ …] ≤ ∑_{p∈S}∑_{q∈T} 𝟙[(∃i, p∈(X i).1)
+  ∧ (∃j, q∈(X j).1)]` — same single_le_sum pattern, two layers);
+  (ii) fiber the position-0-pinned sum over `c := X 0 ∋ p` and feed
+  `weighted_connecting_pinned_le_GE`-shaped filters (note the
+  `(n+1)·(n+1)!⁻¹ = n!⁻¹` bookkeeping against the tail's
+  factorials — the tail lemma `kp_pinned_cluster_tail_bound` is
+  stated with `((n+1)!)⁻¹`; the extra `(n+1)` factor needs the
+  `e·x`-style margin or a `(n+1)`-absorbing variant of the tail —
+  check `pinned_cluster_tail_summable`'s room); (iii) norm the
+  4-term combination by the four gases' products (each ≤ the
+  δ'-gas), apply `weighted_connecting_cluster_decay` per `(p,q)`,
+  and assemble
+  `‖connecting tsum‖ ≤ 4·|S|·|T|·sup-margin·e^{−ε·dist(S,T)/2}·…` →
+  `hIRbound` with `covIR t := ⟨FG⟩−⟨F⟩⟨G⟩` at separation `t`.
 
 **Then B2** (the covariance): for plaquette-local multiplicative
 observables `F` (deformations `f_p ↦ f_p·(1+s·g_p)` supported on
