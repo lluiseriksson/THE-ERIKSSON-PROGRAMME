@@ -808,12 +808,17 @@ unnormalized covariance expands BILINEARLY:
 in `d, β, B` only.  `|S| = |T| = 1` makes the constant minimal.
 
 **Remaining work for the shortcut** (no new mathematics):
-(i) holonomy locality (`hol_p` depends only on `plaquetteSupport p`
-edges — extract from `plaquetteWeight_congr`'s internals) +
-measurability (from `measurable_plaquetteHolonomy`) for the
-`g`-family; (ii) the bilinear expansion of the covariance under
-`O = 1 + s·f` (four-term integral linearity); (iii) `dist({p},{q})`
-bookkeeping (`hdist` at singletons = `2k ≤ dist p q`).  Result: the
+(i) **CLOSED** (commits `9a13956`+`dff8d25` — NOTE: `9a13956` was
+pushed BROKEN with a false green claim, corrected and disclosed in
+`dff8d25`; process rule: after adding a module to the core, confirm
+the build JOB COUNT increments before trusting the log):
+`TwoPlaquetteCorrelator.lean` — `plaquetteHolonomy_congr` +
+`isLocalWeight_obs`/`measurable_obs`/`abs_obs_le` (the `s`-scaled
+family; beta-redex needed a `show` before the holonomy rewrite);
+(ii) the bilinear expansion of the covariance under `O = 1 + s·f`
+(four-term integral linearity, integrability from boundedness +
+`integrable_boltzmann`); (iii) `dist({p},{q})` bookkeeping
+(`hdist` at singletons = `2k ≤ dist p q`).  Result: the
 roadmap's `kp_cluster_decay`-shaped theorem for ARBITRARY bounded
 local plaquette observables at small β — no Peter–Weyl, no character
 expansion, no Young diagrams.  (Peter–Weyl remains necessary for the
