@@ -383,4 +383,31 @@ theorem weightedPartition_deform (μ : Measure G) [IsProbabilityMeasure μ]
     _ = (∏ p ∈ T, (1 + g A p)) *
         ∏ p : ConcretePlaquette d N, (1 + w A p) := mul_comm _ _
 
+open Classical in
+/-- Off the left region, deforming on a union is deforming on the right
+region alone — the per-plaquette seed of the covariance cancellation. -/
+lemma deformWeight_union_of_not_mem_left
+    {w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    {S T : Finset (ConcretePlaquette d N)}
+    {A : GaugeConfig d N G} {p : ConcretePlaquette d N} (hp : p ∉ S) :
+    deformWeight w g (S ∪ T) A p = deformWeight w g T A p := by
+  unfold deformWeight
+  by_cases hpT : p ∈ T
+  · rw [if_pos (Finset.mem_union_right _ hpT), if_pos hpT]
+  · rw [if_neg (fun h => (Finset.mem_union.mp h).elim hp hpT),
+      if_neg hpT]
+
+open Classical in
+/-- Off the right region, symmetrically. -/
+lemma deformWeight_union_of_not_mem_right
+    {w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    {S T : Finset (ConcretePlaquette d N)}
+    {A : GaugeConfig d N G} {p : ConcretePlaquette d N} (hp : p ∉ T) :
+    deformWeight w g (S ∪ T) A p = deformWeight w g S A p := by
+  unfold deformWeight
+  by_cases hpS : p ∈ S
+  · rw [if_pos (Finset.mem_union_left _ hpS), if_pos hpS]
+  · rw [if_neg (fun h => (Finset.mem_union.mp h).elim hpS hp),
+      if_neg hpS]
+
 end YangMills

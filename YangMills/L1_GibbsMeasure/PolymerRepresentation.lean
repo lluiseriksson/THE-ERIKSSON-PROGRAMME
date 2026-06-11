@@ -682,4 +682,38 @@ theorem weightedPartition_eq_exp_clusterSum
     (weightedLatticePolymerSystem_kpCriterion_volumeUniform
       μ hδ0 hbd t ht0 hr hsmall)
 
+/-! ### W4c openers: activity congruence off the deformed region -/
+
+/-- Weight families that agree off a region have equal activities on
+polymers disjoint from it — the per-polymer covariance cancellation. -/
+lemma weightedLatticePolymerSystem_activity_congr
+    (μ : Measure G)
+    {w₁ w₂ : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    {T : Finset (ConcretePlaquette d N)}
+    (h : ∀ (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+      p ∉ T → w₁ A p = w₂ A p)
+    (c : (weightedLatticePolymerSystem (d := d) (N := N) μ w₁).Polymer)
+    (hc : Disjoint c.1 T) :
+    (weightedLatticePolymerSystem (d := d) (N := N) μ w₁).activity c
+      = (weightedLatticePolymerSystem (d := d) (N := N) μ w₂).activity c := by
+  show ((∫ A, ∏ p ∈ c.1, w₁ A p
+      ∂(gaugeMeasureFrom (d := d) (N := N) μ) : ℝ) : ℂ)
+    = ((∫ A, ∏ p ∈ c.1, w₂ A p
+      ∂(gaugeMeasureFrom (d := d) (N := N) μ) : ℝ) : ℂ)
+  congr 1
+  refine congrArg _ (funext fun A => ?_)
+  refine Finset.prod_congr rfl fun p hp => ?_
+  exact h A p (Finset.disjoint_left.mp hc hp)
+
+/-- The Ursell coefficients of the weighted gases agree — the
+incompatibility structure is weight-independent. -/
+lemma weightedLatticePolymerSystem_ursell_eq
+    (μ : Measure G)
+    (w₁ w₂ : GaugeConfig d N G → ConcretePlaquette d N → ℝ) {n : ℕ}
+    (X : Fin n →
+      (weightedLatticePolymerSystem (d := d) (N := N) μ w₁).Polymer) :
+    KP.ursell (weightedLatticePolymerSystem (d := d) (N := N) μ w₁) X
+      = KP.ursell (weightedLatticePolymerSystem (d := d) (N := N) μ w₂) X :=
+  rfl
+
 end YangMills
