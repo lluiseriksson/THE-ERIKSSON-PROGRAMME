@@ -54,6 +54,7 @@ import YangMills.L0_Lattice.GaugeConfigurations
 import YangMills.L0_Lattice.WilsonAction
 import YangMills.L0_Lattice.GaugeInvariance
 import YangMills.L0_Lattice.FiniteLatticeGeometryInstance
+import YangMills.L0_Lattice.ChainComplex
 
 -- Lattice Gibbs measure (L1)
 import YangMills.L1_GibbsMeasure.GibbsMeasure
