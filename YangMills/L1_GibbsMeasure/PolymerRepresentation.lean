@@ -716,4 +716,67 @@ lemma weightedLatticePolymerSystem_ursell_eq
       = KP.ursell (weightedLatticePolymerSystem (d := d) (N := N) μ w₂) X :=
   rfl
 
+open Classical in
+/-- **The four-gas cancellation (W4c):** the inclusion–exclusion
+combination of cluster terms — `FG + base − F − G` — vanishes on every
+tuple that misses either deformation region.  The surviving tuples
+meet BOTH regions: they are the connecting clusters. -/
+lemma cluster_term_four_cancel
+    (μ : Measure G)
+    (w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    (S T : Finset (ConcretePlaquette d N)) {n : ℕ}
+    (X : Fin n →
+      (weightedLatticePolymerSystem (d := d) (N := N) μ w).Polymer)
+    (hX : (∀ i, Disjoint (X i).1 S) ∨ (∀ i, Disjoint (X i).1 T)) :
+    (KP.ursell (weightedLatticePolymerSystem (d := d) (N := N) μ w) X : ℂ) *
+        ∏ i, (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (deformWeight w g (S ∪ T))).activity (X i)
+      + (KP.ursell (weightedLatticePolymerSystem (d := d) (N := N) μ w) X : ℂ) *
+        ∏ i, (weightedLatticePolymerSystem (d := d) (N := N) μ w).activity (X i)
+      - (KP.ursell (weightedLatticePolymerSystem (d := d) (N := N) μ w) X : ℂ) *
+        ∏ i, (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (deformWeight w g S)).activity (X i)
+      - (KP.ursell (weightedLatticePolymerSystem (d := d) (N := N) μ w) X : ℂ) *
+        ∏ i, (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (deformWeight w g T)).activity (X i) = 0 := by
+  rcases hX with h | h
+  · -- the tuple misses S: `FG = G` and `F = base`
+    have h1 : ∏ i, (weightedLatticePolymerSystem (d := d) (N := N) μ
+        (deformWeight w g (S ∪ T))).activity (X i)
+        = ∏ i, (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (deformWeight w g T)).activity (X i) :=
+      Finset.prod_congr rfl fun i _ =>
+        weightedLatticePolymerSystem_activity_congr μ
+          (fun A p hp => deformWeight_union_of_not_mem_left hp)
+          (X i) (h i)
+    have h2 : ∏ i, (weightedLatticePolymerSystem (d := d) (N := N) μ
+        (deformWeight w g S)).activity (X i)
+        = ∏ i, (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).activity (X i) :=
+      Finset.prod_congr rfl fun i _ =>
+        weightedLatticePolymerSystem_activity_congr μ
+          (fun A p hp => deformWeight_of_not_mem hp)
+          (X i) (h i)
+    rw [h1, h2]
+    ring
+  · -- the tuple misses T: `FG = F` and `G = base`
+    have h1 : ∏ i, (weightedLatticePolymerSystem (d := d) (N := N) μ
+        (deformWeight w g (S ∪ T))).activity (X i)
+        = ∏ i, (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (deformWeight w g S)).activity (X i) :=
+      Finset.prod_congr rfl fun i _ =>
+        weightedLatticePolymerSystem_activity_congr μ
+          (fun A p hp => deformWeight_union_of_not_mem_right hp)
+          (X i) (h i)
+    have h2 : ∏ i, (weightedLatticePolymerSystem (d := d) (N := N) μ
+        (deformWeight w g T)).activity (X i)
+        = ∏ i, (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).activity (X i) :=
+      Finset.prod_congr rfl fun i _ =>
+        weightedLatticePolymerSystem_activity_congr μ
+          (fun A p hp => deformWeight_of_not_mem hp)
+          (X i) (h i)
+    rw [h1, h2]
+    ring
+
 end YangMills
