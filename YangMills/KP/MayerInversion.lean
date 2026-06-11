@@ -1795,4 +1795,96 @@ lemma exp_tsum_eq_tsum_H {a : ℕ → ℂ}
           ((ω.1.factorial : ℂ))⁻¹ * ∏ i, a (ω.2 i) :=
         (hHsum.tsum_sigma).symm
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **B0b (vi), E4a: the size regrouping** — the master sigma-sum
+collects by total size `N := ∑(fᵢ+1)` into finite layers. -/
+lemma tsum_H_eq_tsum_layers {a : ℕ → ℂ}
+    (hA : Summable fun n => ‖a n‖) :
+    ∑' ω : Σ _k : ℕ, (Fin _k → ℕ),
+      ((ω.1.factorial : ℂ))⁻¹ * ∏ i, a (ω.2 i)
+    = ∑' N : ℕ, ∑ k ∈ Finset.range (N + 1), ((k.factorial : ℂ))⁻¹ *
+        ∑ f ∈ (Fintype.piFinset
+            fun _ : Fin k => Finset.range (N + 1)).filter
+            (fun f => ∑ i, (f i + 1) = N),
+          ∏ i, a (f i) := by
+  classical
+  have hHs : Summable (fun ω : Σ _k : ℕ, (Fin _k → ℕ) =>
+      ((ω.1.factorial : ℂ))⁻¹ * ∏ i, a (ω.2 i)) :=
+    (summable_H hA).of_norm
+  -- the candidate finsets and the fiber characterization
+  have hcand : ∀ N : ℕ, ∀ ω : Σ _k : ℕ, (Fin _k → ℕ),
+      ω ∈ ((Finset.range (N + 1)).sigma
+        (fun k => Fintype.piFinset
+          fun _ : Fin k => Finset.range (N + 1))).filter
+        (fun ω => ∑ i, (ω.2 i + 1) = N)
+      ↔ (∑ i, (ω.2 i + 1)) = N := by
+    intro N ω
+    constructor
+    · exact fun h => (Finset.mem_filter.mp h).2
+    · intro hν
+      refine Finset.mem_filter.mpr ⟨Finset.mem_sigma.mpr ⟨?_, ?_⟩, hν⟩
+      · rw [Finset.mem_range]
+        have hk : ω.1 ≤ ∑ i, (ω.2 i + 1) := by
+          calc ω.1 = ∑ _i : Fin ω.1, 1 := by
+                rw [Finset.sum_const, smul_eq_mul, mul_one,
+                  Finset.card_univ, Fintype.card_fin]
+            _ ≤ ∑ i, (ω.2 i + 1) :=
+                Finset.sum_le_sum fun i _ => Nat.le_add_left 1 _
+        omega
+      · rw [Fintype.mem_piFinset]
+        intro i
+        rw [Finset.mem_range]
+        have h1 : ω.2 i + 1 ≤ ∑ j, (ω.2 j + 1) :=
+          Finset.single_le_sum (f := fun j => ω.2 j + 1)
+            (fun j _ => Nat.zero_le _) (Finset.mem_univ i)
+        omega
+  calc ∑' ω : Σ _k : ℕ, (Fin _k → ℕ),
+      ((ω.1.factorial : ℂ))⁻¹ * ∏ i, a (ω.2 i)
+      = ∑' σ : Σ N : ℕ, {ω : Σ _k : ℕ, (Fin _k → ℕ) //
+            (∑ i, (ω.2 i + 1)) = N},
+          ((((Equiv.sigmaFiberEquiv
+            (fun ω : Σ _k : ℕ, (Fin _k → ℕ) =>
+              ∑ i, (ω.2 i + 1))) σ).1.factorial : ℂ))⁻¹
+            * ∏ i, a (((Equiv.sigmaFiberEquiv
+              (fun ω : Σ _k : ℕ, (Fin _k → ℕ) =>
+                ∑ i, (ω.2 i + 1))) σ).2 i) :=
+        (Equiv.tsum_eq (Equiv.sigmaFiberEquiv _)
+          (fun ω : Σ _k : ℕ, (Fin _k → ℕ) =>
+            ((ω.1.factorial : ℂ))⁻¹ * ∏ i, a (ω.2 i))).symm
+    _ = ∑' N : ℕ, ∑' ωf : {ω : Σ _k : ℕ, (Fin _k → ℕ) //
+          (∑ i, (ω.2 i + 1)) = N},
+          ((ωf.1.1.factorial : ℂ))⁻¹ * ∏ i, a (ωf.1.2 i) :=
+        Summable.tsum_sigma
+          (((Equiv.sigmaFiberEquiv _).summable_iff).mpr hHs)
+    _ = ∑' N : ℕ, ∑ k ∈ Finset.range (N + 1),
+          ((k.factorial : ℂ))⁻¹ *
+          ∑ f ∈ (Fintype.piFinset
+              fun _ : Fin k => Finset.range (N + 1)).filter
+              (fun f => ∑ i, (f i + 1) = N),
+            ∏ i, a (f i) := by
+        refine tsum_congr fun N => ?_
+        haveI : Fintype {ω : Σ _k : ℕ, (Fin _k → ℕ) //
+            (∑ i, (ω.2 i + 1)) = N} :=
+          Fintype.subtype _ (hcand N)
+        rw [tsum_fintype,
+          ← Finset.sum_subtype _ (hcand N)
+            (fun ω : Σ _k : ℕ, (Fin _k → ℕ) =>
+              ((ω.1.factorial : ℂ))⁻¹ * ∏ i, a (ω.2 i))]
+        have hsplit : ((Finset.range (N + 1)).sigma
+            (fun k => Fintype.piFinset
+              fun _ : Fin k => Finset.range (N + 1))).filter
+            (fun ω => ∑ i, (ω.2 i + 1) = N)
+            = (Finset.range (N + 1)).sigma
+              (fun k => (Fintype.piFinset
+                fun _ : Fin k => Finset.range (N + 1)).filter
+                (fun f => ∑ i, (f i + 1) = N)) := by
+          ext ω
+          rw [Finset.mem_filter, Finset.mem_sigma, Finset.mem_sigma,
+            Finset.mem_filter]
+          tauto
+        rw [hsplit, Finset.sum_sigma]
+        exact Finset.sum_congr rfl fun k _ => by
+          rw [Finset.mul_sum]
+
 end YangMills.KP
