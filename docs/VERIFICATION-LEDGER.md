@@ -374,6 +374,7 @@ Oracle outputs (verbatim, the B4 chain):
 'YangMills.weighted_connecting_sum_summable'          [propext, Classical.choice, Quot.sound]
 'YangMills.covariance_exponent_norm_bound'            [propext, Classical.choice, Quot.sound]
 'YangMills.truncated_correlation_bound'               [propext, Classical.choice, Quot.sound]
+'YangMills.wilson_truncated_correlation_bound'        [propext, Classical.choice, Quot.sound]
 ```
 
 Plain language: **the infrared clustering bound of the strong-coupling
