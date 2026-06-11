@@ -436,6 +436,12 @@ theory at strong coupling — actual group, actual measure, actual
 action — with constants in `d, N_c, β, s, t, ε` only.**  Still M3
 lattice-side; the continuum (M4/M5/Clay) untouched.
 
+With its own non-vacuity witness
+(`sun_clustering_window_nonempty`, oracle clean): for every `d, N_c`
+an EXPLICIT coupling window `β₀ = log(1+δ₁/4)/N_c > 0` and scaling
+`s = δ₁/4` (with `δ₁ = min(δ₀(d), 1)`) in which every hypothesis of
+the SU(N) capstone holds, at `t = ε = 1`, for every separation.
+
 Plain language: **the infrared clustering bound of the strong-coupling
 lattice theory is machine-checked end to end.**  For multiplicative
 local observables with supports at touching-distance `≥ 2k`,
