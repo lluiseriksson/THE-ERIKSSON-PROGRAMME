@@ -362,13 +362,21 @@ identity is:
 Budgets: (i)-(ii) 1–2 cycles; (iii) 1–2; (iv) 3–5 (the big one);
 (v) 1–2; (vi) 4–8.
 
-**Progress (same session, commits `cd43ae6`, `dcfdbd1`, oracle-clean):**
-(i)–(ii) CLOSED — `IsOrdPartition` (+ `.injective`), `parts_card_le`,
-`finpartitionOfOrd` (+ parts simp), and
+**Progress (same session, commits `cd43ae6`, `dcfdbd1`, `b039e99`,
+oracle-clean):** (i)–(iii) CLOSED — `IsOrdPartition` (+ `.injective`,
+`.toBlockData`), `parts_card_le`, `finpartitionOfOrd` (+ parts simp),
 **`sum_finpartition_eq_ordPartitions`** (the π-collapse; note
 `disjoint_self` is the ORDER-level name, and the biUnion/image bridge
-is `Finset.image_biUnion`).  Remaining: (iii) the X-split, (iv) the
-multinomial count, (v) cancellation, (vi) the analytic shell.
+is `Finset.image_biUnion`), `sum_coverSplit_complex`, and
+**`sum_split_ordPartition`** (the X-split).  X-split idiom worth
+keeping: build ONE composite equiv
+(`arrowCongr subtypeUnivEquiv` → `coverSplitEquiv` → `piCongrRight
+arrowCongr orderIsoOfFin.symm`) so every SUM in the statement lives on
+Fin-function spaces — separately-stated subtype-function sums hit
+Classical-vs-derived instance seams that `sum_congr rfl` cannot cross;
+with calc-spelled sides the value tracking is fully definitional
+(per-point `rfl`).  Remaining: (iv) the multinomial count, (v)
+cancellation, (vi) the analytic shell.
 
 **(historical) Remaining-work list before the above was closed:**
 
