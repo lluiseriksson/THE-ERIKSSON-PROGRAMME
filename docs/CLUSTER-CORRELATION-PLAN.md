@@ -720,13 +720,27 @@ surfaces were `pe`-specific.  Bricks:
   `rw [mem_filter]` — use term-level `Finset.mem_filter.mp/.mpr`;
   `rw` auto-closes `≤`-goals via the `@[refl]` attribute (don't
   follow with another tactic).
-  **Remaining for B4 (assembly only):** (i) per-n region-to-plaquette
-  union bounds + `sum_connecting_le_succ_mul_pinned` + fibering
-  `X 0 ∋ p` over `c`, chaining into the per-`(p,q)` LHS of
-  `weighted_connecting_cluster_decay'`; (ii) norm the 4-term
-  combination by the four δ'-bounded gases; (iii)
-  `‖connecting tsum‖ ≤ 4·|S|·|T|·e^{−ε·dist(S,T)/2}·y/(1−Ky)` →
-  `hIRbound` with `covIR t := ⟨FG⟩−⟨F⟩⟨G⟩` at separation `t`.
+  **The per-layer pinning chain CLOSED (commit `d9771a1`, oracle
+  clean):** `connecting_layer_le_pinned` —
+  `(n+1)!⁻¹·∑_{X connecting(S,T)} |u|∏‖z‖ ≤
+   ∑_{p∈S}∑_{q∈T}∑_{c∋p} n!⁻¹·∑_{X: X0=c ∧ ∃j q∈Xj} |u|∏‖z‖`:
+  the double union bound to plaquette pairs (`not_disjoint_iff` +
+  `single_le_sum` twice, each output beta-RETYPED), the
+  symmetrization (now with `[DecidablePred Q] [DecidablePred R]`
+  parameters — an abstract-`Prop` predicate elaborates its filters
+  with `propDecidable` while concrete use-sites derive instances;
+  Decidable instances are data, so carry them as params — RECORDED),
+  and the position-0 fibering via the instance-free `sum_eq_single`
+  ite-collapse (annotate the `mem_filter.mpr` membership fully — the
+  anonymous `mem_univ _` slot otherwise unifies to the wrong
+  subject).
+  **Remaining for B4 (final assembly):** (i) tsum the chain:
+  `∑'_n` of the per-layer bound, exchange with the three finite sums
+  (`Summable.tsum_finsetSum`, per-`(p,q,c)` summability from the
+  decay'-internals), and land on
+  `∑_{p,q} (decay'-LHS) ≤ ∑_{p,q} e^{−ε·dist(p,q)/2}·y/(1−Ky)`;
+  (ii) norm the 4-term combination by the four δ'-bounded gases;
+  (iii) `hIRbound` with `covIR t := ⟨FG⟩−⟨F⟩⟨G⟩` at separation `t`.
 
 **Then B2** (the covariance): for plaquette-local multiplicative
 observables `F` (deformations `f_p ↦ f_p·(1+s·g_p)` supported on
