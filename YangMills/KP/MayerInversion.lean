@@ -1608,4 +1608,46 @@ theorem admissible_card_sum_eq [Fintype P.Polymer] (N : ℕ) :
             (ursell P Y : ℂ) * ∏ l, P.activity (Y l) := by
         rw [← Finset.prod_inv_distrib, ← Finset.prod_mul_distrib]
 
+open Classical in
+/-- **B0b (vi), step 1: the cardinality grading** — the partition
+function is the sum of its fixed-cardinality admissible layers. -/
+lemma partition_univ_eq_sum_card [Fintype P.Polymer] :
+    partition P (Finset.univ : Finset P.Polymer)
+    = ∑ N ∈ Finset.range (Fintype.card P.Polymer + 1),
+        ∑ S ∈ (Finset.univ : Finset (Finset P.Polymer)).filter
+          (fun S => Admissible P S ∧ S.card = N),
+          ∏ c ∈ S, P.activity c := by
+  classical
+  unfold partition
+  rw [Finset.powerset_univ]
+  have hmaps : ∀ S ∈ (Finset.univ :
+      Finset (Finset P.Polymer)).filter (Admissible P),
+      S.card ∈ Finset.range (Fintype.card P.Polymer + 1) := by
+    intro S _
+    rw [Finset.mem_range]
+    exact Nat.lt_succ_of_le (Finset.card_le_univ S |>.trans
+      (le_of_eq Finset.card_univ))
+  rw [Finset.sum_fiberwise_of_maps_to hmaps
+    (fun S => ∏ c ∈ S, P.activity c) |>.symm]
+  refine Finset.sum_congr rfl fun N _ => ?_
+  rw [Finset.filter_filter]
+
+open Classical in
+/-- **B0b (vi), step 1': the fully finite cluster form of `Ξ`** — the
+partition function as the `N`-graded, `1/k!`-weighted size-vector sums
+of normalized per-block cluster weights.  The exp-series side of the
+Mayer–Ursell inversion matches this termwise. -/
+theorem partition_univ_eq_cluster_layers [Fintype P.Polymer] :
+    partition P (Finset.univ : Finset P.Polymer)
+    = ∑ N ∈ Finset.range (Fintype.card P.Polymer + 1),
+        ∑ k ∈ Finset.range (N + 1), ((k.factorial : ℂ))⁻¹ *
+          ∑ m ∈ (Fintype.piFinset
+              fun _ : Fin k => Finset.range (N + 1)).filter
+              (fun m => (∀ i, 1 ≤ m i) ∧ ∑ i, m i = N),
+            ∏ i, (((m i).factorial : ℂ))⁻¹ *
+              ∑ Y : Fin (m i) → P.Polymer,
+                (ursell P Y : ℂ) * ∏ l, P.activity (Y l) := by
+  rw [partition_univ_eq_sum_card P]
+  exact Finset.sum_congr rfl fun N _ => admissible_card_sum_eq P N
+
 end YangMills.KP
