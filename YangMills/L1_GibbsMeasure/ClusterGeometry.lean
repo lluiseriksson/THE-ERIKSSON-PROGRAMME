@@ -626,4 +626,132 @@ lemma plaqComponents_polymer_mem {S : Finset (ConcretePlaquette d N)}
     c.Nonempty ∧ IsConnectedPolymer c :=
   ⟨plaqComponents_nonempty hc, plaqComponents_isConnectedPolymer hc⟩
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **The reconstruction (step 2):** the touching components of the
+union of a pairwise support-disjoint family of nonempty connected
+plaquette sets are exactly the members of the family.  The class of any
+point of a member is the member itself: adjacency cannot leave it
+(support disjointness), and the member's own connectivity reaches all
+of it. -/
+lemma plaqComponents_biUnion_eq
+    {A : Finset (Finset (ConcretePlaquette d N))}
+    (hne : ∀ c ∈ A, c.Nonempty)
+    (hconn : ∀ c ∈ A, IsConnectedPolymer c)
+    (hdisj : ∀ c ∈ A, ∀ c' ∈ A, c ≠ c' →
+      Disjoint (c.biUnion plaquetteSupport)
+        (c'.biUnion plaquetteSupport)) :
+    plaqComponents (A.biUnion id) = A := by
+  classical
+  -- the reachability class of any point of `c ∈ A` is exactly `c`
+  have hclass : ∀ c ∈ A, ∀ x z : ↥(A.biUnion id), x.1 ∈ c →
+      ((SimpleGraph.fromRel (fun p q : ↥(A.biUnion id) =>
+        plaquetteTouches p.1 q.1)).Reachable x z ↔ z.1 ∈ c) := by
+    intro c hcA
+    -- adjacency cannot leave `c`
+    have hstep : ∀ {z z' : ↥(A.biUnion id)}, z.1 ∈ c →
+        (SimpleGraph.fromRel (fun p q : ↥(A.biUnion id) =>
+          plaquetteTouches p.1 q.1)).Adj z z' → z'.1 ∈ c := by
+      intro z z' hz hadj
+      rw [SimpleGraph.fromRel_adj] at hadj
+      obtain ⟨-, htouch⟩ := hadj
+      obtain ⟨c', hc'A, hz'c'⟩ := Finset.mem_biUnion.mp z'.2
+      have hz'c : z'.1 ∈ c' := hz'c'
+      by_cases hcc : c' = c
+      · rwa [← hcc]
+      · exfalso
+        have hd := hdisj c hcA c' hc'A (fun h => hcc h.symm)
+        have htch : plaquetteTouches z.1 z'.1 := by
+          rcases htouch with h | h
+          · exact h
+          · exact fun hdj => h hdj.symm
+        exact htch ((hd.mono_left
+          (Finset.subset_biUnion_of_mem _ hz)).mono_right
+          (Finset.subset_biUnion_of_mem _ hz'c))
+    -- walks cannot leave `c`
+    have hforward : ∀ {u v : ↥(A.biUnion id)}
+        (w : (SimpleGraph.fromRel (fun p q : ↥(A.biUnion id) =>
+          plaquetteTouches p.1 q.1)).Walk u v), u.1 ∈ c → v.1 ∈ c := by
+      intro u v w
+      induction w with
+      | nil => exact id
+      | @cons u z v h w' ih => exact fun hu => ih (hstep hu h)
+    have hcS : ∀ p ∈ c, p ∈ A.biUnion id := fun p hp =>
+      Finset.mem_biUnion.mpr ⟨c, hcA, hp⟩
+    intro x z hx
+    constructor
+    · rintro ⟨w⟩
+      exact hforward w hx
+    · intro hz
+      have hmap : ∀ {a b : ↥c},
+          (SimpleGraph.fromRel (fun p q : ↥c =>
+            plaquetteTouches p.1 q.1)).Adj a b →
+          (SimpleGraph.fromRel (fun p q : ↥(A.biUnion id) =>
+            plaquetteTouches p.1 q.1)).Adj
+            ⟨a.1, hcS a.1 a.2⟩ ⟨b.1, hcS b.1 b.2⟩ := by
+        intro a b hab
+        rw [SimpleGraph.fromRel_adj] at hab ⊢
+        exact ⟨fun heq => hab.1
+          (Subtype.ext (Subtype.mk_eq_mk.mp heq)), hab.2⟩
+      -- transport the member's own connectivity (endpoints match by
+      -- subtype eta)
+      exact SimpleGraph.Reachable.map
+        ⟨fun a : ↥c => (⟨a.1, hcS a.1 a.2⟩ : ↥(A.biUnion id)), hmap⟩
+        ((hconn c hcA).preconnected ⟨x.1, hx⟩ ⟨z.1, hz⟩)
+  ext c
+  constructor
+  · intro hc
+    have hcsub := plaqComponents_subset hc
+    have hcne := plaqComponents_nonempty hc
+    unfold plaqComponents at hc
+    rw [Finset.mem_image] at hc
+    obtain ⟨B, hB, rfl⟩ := hc
+    obtain ⟨p, hp⟩ := hcne
+    obtain ⟨x, hxB, hxval⟩ := Finset.mem_image.mp hp
+    obtain ⟨c₀, hc₀A, hpc₀'⟩ := Finset.mem_biUnion.mp (hcsub hp)
+    have hpc₀ : p ∈ c₀ := hpc₀'
+    have hxc₀ : x.1 ∈ c₀ := by rw [hxval]; exact hpc₀
+    suffices h : B.image Subtype.val = c₀ by rw [h]; exact hc₀A
+    have hpart := (Finpartition.ofSetoid _).part_eq_of_mem hB hxB
+    ext q
+    constructor
+    · intro hq
+      obtain ⟨z, hzB, rfl⟩ := Finset.mem_image.mp hq
+      have hzpart : z ∈ (Finpartition.ofSetoid
+          (SimpleGraph.fromRel (fun p q : ↥(A.biUnion id) =>
+            plaquetteTouches p.1 q.1)).reachableSetoid).part x := by
+        rw [hpart]; exact hzB
+      exact (hclass c₀ hc₀A x z hxc₀).mp
+        (Finpartition.mem_part_ofSetoid_iff_rel.mp hzpart)
+    · intro hq
+      have hqS : q ∈ A.biUnion id :=
+        Finset.mem_biUnion.mpr ⟨c₀, hc₀A, hq⟩
+      have hzmem : (⟨q, hqS⟩ : ↥(A.biUnion id)) ∈ (Finpartition.ofSetoid
+          (SimpleGraph.fromRel (fun p q : ↥(A.biUnion id) =>
+            plaquetteTouches p.1 q.1)).reachableSetoid).part x :=
+        Finpartition.mem_part_ofSetoid_iff_rel.mpr
+          ((hclass c₀ hc₀A x ⟨q, hqS⟩ hxc₀).mpr hq)
+      rw [hpart] at hzmem
+      exact Finset.mem_image.mpr ⟨⟨q, hqS⟩, hzmem, rfl⟩
+  · intro hcA
+    obtain ⟨p, hp⟩ := hne c hcA
+    have hpS : p ∈ A.biUnion id := Finset.mem_biUnion.mpr ⟨c, hcA, hp⟩
+    unfold plaqComponents
+    rw [Finset.mem_image]
+    refine ⟨(Finpartition.ofSetoid
+      (SimpleGraph.fromRel (fun p q : ↥(A.biUnion id) =>
+        plaquetteTouches p.1 q.1)).reachableSetoid).part ⟨p, hpS⟩,
+      (Finpartition.ofSetoid _).part_mem.mpr (Finset.mem_univ _), ?_⟩
+    ext q
+    constructor
+    · intro hq
+      obtain ⟨z, hz, rfl⟩ := Finset.mem_image.mp hq
+      exact (hclass c hcA ⟨p, hpS⟩ z hp).mp
+        (Finpartition.mem_part_ofSetoid_iff_rel.mp hz)
+    · intro hq
+      have hqS : q ∈ A.biUnion id := Finset.mem_biUnion.mpr ⟨c, hcA, hq⟩
+      exact Finset.mem_image.mpr ⟨⟨q, hqS⟩,
+        Finpartition.mem_part_ofSetoid_iff_rel.mpr
+          ((hclass c hcA ⟨p, hpS⟩ ⟨q, hqS⟩ hp).mpr hq), rfl⟩
+
 end YangMills
