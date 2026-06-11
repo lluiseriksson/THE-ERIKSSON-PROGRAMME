@@ -1585,4 +1585,114 @@ theorem weighted_connecting_cluster_decay
           p x hx (by rw [hxdef] at *; exact hr)
         convert h using 2
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **The symmetrization bound (B4):** the tuple sum over an
+anywhere-pinned connecting filter is at most `(n+1)` times the
+position-0-pinned tuple sum.  Precompose with the transposition
+`swap 0 i`: the Ursell coefficient (`ursell_comp_equiv`) and the
+activity product (`Equiv.prod_comp`) are relabeling-invariant, and the
+second existential is permutation-stable. -/
+lemma sum_connecting_le_succ_mul_pinned (P : KP.PolymerSystem)
+    [Fintype P.Polymer] (Q R : P.Polymer → Prop) (n : ℕ) :
+    ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → P.Polymer)).filter
+      (fun X => (∃ i, Q (X i)) ∧ (∃ j, R (X j))),
+      |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖
+    ≤ ((n + 1 : ℕ) : ℝ) *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → P.Polymer)).filter
+        (fun X => Q (X 0) ∧ (∃ j, R (X j))),
+        |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖ := by
+  classical
+  have hF0 : ∀ X : Fin (n + 1) → P.Polymer,
+      0 ≤ |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖ :=
+    fun X => mul_nonneg (abs_nonneg _)
+      (Finset.prod_nonneg fun k _ => norm_nonneg _)
+  have hite0 : ∀ (X : Fin (n + 1) → P.Polymer) (i : Fin (n + 1)),
+      0 ≤ (if Q (X i) ∧ (∃ j, R (X j)) then
+        |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖ else 0) := by
+    intro X i
+    by_cases h : Q (X i) ∧ (∃ j, R (X j))
+    · rw [if_pos h]
+      exact hF0 X
+    · rw [if_neg h]
+  have hswap : ∀ i : Fin (n + 1),
+      (∑ X : Fin (n + 1) → P.Polymer,
+        if Q (X i) ∧ (∃ j, R (X j)) then
+          |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖ else 0)
+      = ∑ X : Fin (n + 1) → P.Polymer,
+        if Q (X 0) ∧ (∃ j, R (X j)) then
+          |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖ else 0 := by
+    intro i
+    have hbij : Function.Bijective
+        (fun X : Fin (n + 1) → P.Polymer => X ∘ Equiv.swap 0 i) := by
+      have hinv : Function.Involutive
+          (fun X : Fin (n + 1) → P.Polymer => X ∘ Equiv.swap 0 i) := by
+        intro X
+        funext k
+        simp [Function.comp, Equiv.swap_apply_self]
+      exact hinv.bijective
+    refine Fintype.sum_bijective _ hbij _ _ ?_
+    intro X
+    have hc0 : (X ∘ Equiv.swap 0 i) 0 = X i := by
+      simp [Function.comp, Equiv.swap_apply_left]
+    have hex : (∃ j, R ((X ∘ Equiv.swap 0 i) j)) ↔ ∃ j, R (X j) := by
+      constructor
+      · rintro ⟨j, hj⟩
+        exact ⟨Equiv.swap 0 i j, hj⟩
+      · rintro ⟨j, hj⟩
+        refine ⟨Equiv.swap 0 i j, ?_⟩
+        simpa [Function.comp, Equiv.swap_apply_self] using hj
+    have hu : KP.ursell P (X ∘ Equiv.swap 0 i) = KP.ursell P X :=
+      KP.ursell_comp_equiv P X (Equiv.swap 0 i)
+    have hprod : (∏ k, ‖P.activity ((X ∘ Equiv.swap 0 i) k)‖)
+        = ∏ k, ‖P.activity (X k)‖ :=
+      Equiv.prod_comp (Equiv.swap 0 i) (fun k => ‖P.activity (X k)‖)
+    refine (if_congr (and_congr (by rw [hc0]) hex) ?_ rfl).symm
+    rw [hu, hprod]
+  calc ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → P.Polymer)).filter
+        (fun X => (∃ i, Q (X i)) ∧ (∃ j, R (X j))),
+        |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖
+      ≤ ∑ X : Fin (n + 1) → P.Polymer, ∑ i : Fin (n + 1),
+        (if Q (X i) ∧ (∃ j, R (X j)) then
+          |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖ else 0) := by
+        rw [Finset.sum_filter]
+        refine Finset.sum_le_sum fun X _ => ?_
+        by_cases hX : (∃ i, Q (X i)) ∧ (∃ j, R (X j))
+        · rw [if_pos hX]
+          obtain ⟨⟨i₀, hi₀⟩, hT⟩ := hX
+          have h := Finset.single_le_sum
+            (f := fun i => if Q (X i) ∧ (∃ j, R (X j)) then
+              |((KP.ursell P X : ℤ) : ℝ)| *
+                ∏ k, ‖P.activity (X k)‖ else 0)
+            (fun i _ => hite0 X i) (Finset.mem_univ i₀)
+          have h' : (if Q (X i₀) ∧ (∃ j, R (X j)) then
+              |((KP.ursell P X : ℤ) : ℝ)| *
+                ∏ k, ‖P.activity (X k)‖ else 0)
+              ≤ ∑ i : Fin (n + 1),
+                (if Q (X i) ∧ (∃ j, R (X j)) then
+                  |((KP.ursell P X : ℤ) : ℝ)| *
+                    ∏ k, ‖P.activity (X k)‖ else 0) := h
+          rw [if_pos ⟨hi₀, hT⟩] at h'
+          exact h'
+        · rw [if_neg hX]
+          exact Finset.sum_nonneg fun i _ => hite0 X i
+    _ = ∑ i : Fin (n + 1), ∑ X : Fin (n + 1) → P.Polymer,
+        (if Q (X i) ∧ (∃ j, R (X j)) then
+          |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖ else 0) :=
+        Finset.sum_comm
+    _ = ∑ _i : Fin (n + 1), ∑ X : Fin (n + 1) → P.Polymer,
+        (if Q (X 0) ∧ (∃ j, R (X j)) then
+          |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖ else 0) :=
+        Finset.sum_congr rfl fun i _ => hswap i
+    _ = ((n + 1 : ℕ) : ℝ) * ∑ X : Fin (n + 1) → P.Polymer,
+        (if Q (X 0) ∧ (∃ j, R (X j)) then
+          |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖ else 0) := by
+        rw [Finset.sum_const, Finset.card_univ, Fintype.card_fin,
+          nsmul_eq_mul]
+    _ = ((n + 1 : ℕ) : ℝ) *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → P.Polymer)).filter
+          (fun X => Q (X 0) ∧ (∃ j, R (X j))),
+          |((KP.ursell P X : ℤ) : ℝ)| * ∏ k, ‖P.activity (X k)‖ := by
+        rw [Finset.sum_filter]
+
 end YangMills
