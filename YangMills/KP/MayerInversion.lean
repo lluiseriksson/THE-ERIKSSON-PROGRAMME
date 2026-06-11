@@ -1527,4 +1527,85 @@ theorem sum_compat_eq_ordp [Fintype P.Polymer] (N : ℕ) :
               sum_split_ordPartition P σ hord
                 (fun _ Y => (ursell P Y : ℂ) * ∏ l, P.activity (Y l))
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **B0b (v), part M-b — THE PER-`N` ENDPOINT:** the admissible-set
+activity sum at cardinality `N` equals the `1/k!`-weighted size-vector
+sums of normalized per-block cluster weights — the `N`-th coefficient
+identity of `Ξ = exp(clusterSum)`. -/
+theorem admissible_card_sum_eq [Fintype P.Polymer] (N : ℕ) :
+    ∑ S ∈ (Finset.univ : Finset (Finset P.Polymer)).filter
+      (fun S => Admissible P S ∧ S.card = N),
+      ∏ c ∈ S, P.activity c
+    = ∑ k ∈ Finset.range (N + 1), ((k.factorial : ℂ))⁻¹ *
+        ∑ m ∈ (Fintype.piFinset
+            fun _ : Fin k => Finset.range (N + 1)).filter
+            (fun m => (∀ i, 1 ≤ m i) ∧ ∑ i, m i = N),
+          ∏ i, (((m i).factorial : ℂ))⁻¹ *
+            ∑ Y : Fin (m i) → P.Polymer,
+              (ursell P Y : ℂ) * ∏ l, P.activity (Y l) := by
+  classical
+  have hNfac : ((N.factorial : ℂ)) ≠ 0 :=
+    Nat.cast_ne_zero.mpr (Nat.factorial_ne_zero N)
+  -- from sets to compatible tuples
+  have h1 : ∑ S ∈ (Finset.univ : Finset (Finset P.Polymer)).filter
+      (fun S => Admissible P S ∧ S.card = N),
+      ∏ c ∈ S, P.activity c
+      = ((N.factorial : ℂ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin N → P.Polymer)).filter
+          (fun X => PairwiseCompatible P X),
+          ∏ j, P.activity (X j) := by
+    rw [sum_pairwiseCompatible_eq P, ← mul_assoc,
+      inv_mul_cancel₀ hNfac, one_mul]
+  rw [h1, sum_compat_eq_ordp P N, Finset.mul_sum]
+  refine Finset.sum_congr rfl fun k _ => ?_
+  have hfib := sum_ordp_fiber_sizes (N := N) (k := k)
+    (fun m => ∑ Y : Fin m → P.Polymer,
+      (ursell P Y : ℂ) * ∏ l, P.activity (Y l))
+  simp only [] at hfib
+  rw [hfib, ← mul_assoc,
+    mul_comm ((N.factorial : ℂ))⁻¹ ((k.factorial : ℂ))⁻¹,
+    mul_assoc, Finset.mul_sum]
+  congr 1
+  refine Finset.sum_congr rfl fun m hm => ?_
+  obtain ⟨hm1, hmsum⟩ := (Finset.mem_filter.mp hm).2
+  have hF : (∏ i, (((m i).factorial : ℕ) : ℂ)) ≠ 0 := by
+    refine Finset.prod_ne_zero_iff.mpr fun i _ => ?_
+    exact_mod_cast Nat.factorial_ne_zero (m i)
+  have hc : (((Finset.univ :
+      Finset (Fin k → Finset (Fin N))).filter
+      (fun σ => IsOrdPartition σ ∧ ∀ i, (σ i).card = m i)).card : ℂ)
+      * ∏ i, (((m i).factorial : ℕ) : ℂ) = ((N.factorial : ℕ) : ℂ) := by
+    exact_mod_cast congrArg (fun n : ℕ => (n : ℂ))
+      (card_ordPartition_mul m hm1 hmsum)
+  have hinv : ((N.factorial : ℂ))⁻¹ * (((Finset.univ :
+      Finset (Fin k → Finset (Fin N))).filter
+      (fun σ => IsOrdPartition σ ∧ ∀ i, (σ i).card = m i)).card : ℂ)
+      = (∏ i, (((m i).factorial : ℕ) : ℂ))⁻¹ := by
+    have h2 : ((N.factorial : ℂ))⁻¹ * (((Finset.univ :
+        Finset (Fin k → Finset (Fin N))).filter
+        (fun σ => IsOrdPartition σ ∧ ∀ i, (σ i).card = m i)).card : ℂ)
+        * (∏ i, (((m i).factorial : ℕ) : ℂ)) = 1 := by
+      rw [mul_assoc, hc, inv_mul_cancel₀ hNfac]
+    field_simp at h2 ⊢
+    linear_combination h2
+  calc ((N.factorial : ℂ))⁻¹ * ((((Finset.univ :
+        Finset (Fin k → Finset (Fin N))).filter
+        (fun σ => IsOrdPartition σ ∧ ∀ i, (σ i).card = m i)).card : ℂ)
+        * ∏ i, ∑ Y : Fin (m i) → P.Polymer,
+          (ursell P Y : ℂ) * ∏ l, P.activity (Y l))
+      = (((N.factorial : ℂ))⁻¹ * (((Finset.univ :
+          Finset (Fin k → Finset (Fin N))).filter
+          (fun σ => IsOrdPartition σ ∧ ∀ i, (σ i).card = m i)).card
+          : ℂ)) * ∏ i, ∑ Y : Fin (m i) → P.Polymer,
+            (ursell P Y : ℂ) * ∏ l, P.activity (Y l) := by ring
+    _ = (∏ i, (((m i).factorial : ℕ) : ℂ))⁻¹
+          * ∏ i, ∑ Y : Fin (m i) → P.Polymer,
+            (ursell P Y : ℂ) * ∏ l, P.activity (Y l) := by
+        rw [hinv]
+    _ = ∏ i, (((m i).factorial : ℂ))⁻¹ *
+          ∑ Y : Fin (m i) → P.Polymer,
+            (ursell P Y : ℂ) * ∏ l, P.activity (Y l) := by
+        rw [← Finset.prod_inv_distrib, ← Finset.prod_mul_distrib]
+
 end YangMills.KP
