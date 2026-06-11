@@ -505,15 +505,45 @@ ENTIRE FINITE HALF OF THE MAYER–URSELL INVERSION IS MACHINE-CHECKED.**
    `d, B, β, t, ε`.  **THE IR DECAY MECHANISM IS FULLY
    MACHINE-CHECKED AT THE CLUSTER LEVEL.**
 
-   **Remaining: B1/B2/B4 only** — the measure-side identification:
-   the covariance of plaquette-local Gibbs observables as a
-   difference of cluster sums supported on connecting clusters
-   (source-deformed gases through `Ξ = exp(clusterSum)`;
-   inclusion–exclusion `K_{FG} + K − K_F − K_G`), bounded in norm by
-   `connecting_cluster_decay`-type sums, discharging `hIRbound` of
-   `lattice_mass_gap_of_clustering_uniform`.  A design session over
-   the L1 observable layer (`WilsonObservable.lean`,
-   `PolymerFactorization.lean`) opens that campaign.
+   **Remaining: B1/B2/B4 only** — the measure-side identification.
+
+## 2e. The measure-side campaign — design (2026-06-10, audited)
+
+**Audit finding:** before any covariance identification, the polymer
+representation's STEP 2 must be closed:
+`partitionFunction = partition P univ` (the lattice `Z` equals the
+abstract polymer `Ξ` of the connected gas).  What exists:
+`partitionFunction_eq_sum_plaquetteSets'`
+(`Z = ∑_{S ⊆ plaquettes} ∫ ∏_{p∈S} f_p`) and — READY IN EXACTLY THE
+NEEDED FORM — `integral_prod_prod_plaquetteWeight_of_pairwiseDisjoint`
+(`∫∏_C∏ f = ∏_C ∫∏ f` over support-disjoint families).  The NEW work
+is the **component bijection**: plaquette sets `S` ↔ admissible
+families `A` of connected polymers, via
+`S ↦ (touching-components of S)` and `A ↦ ⋃ A` — a BIJECTION (each
+`S` decomposes uniquely; every admissible family unions back), so a
+single `sum_nbij'`, with values matched by the integral
+factorization.  The component machinery mirrors B0a's
+(`Finpartition.ofSetoid` on the reachability setoid of the touching
+graph restricted to `↥S`; the parts, coerced back to
+`Finset (ConcretePlaquette d N)`, are the components — nonempty ✓
+connected ✓ pairwise non-touching ✓ admissible ✓).  Budget: 4–8
+cycles (the component API is the bulk).
+
+**Then B2** (the covariance): for plaquette-local multiplicative
+observables `F` (deformations `f_p ↦ f_p·(1+s·g_p)` supported on
+`S_F`), `⟨F⟩ = Ξ_F/Ξ` (step 2 applied to the deformed gas — SAME
+machinery, deformed `pe`), so by `partition_eq_exp_clusterSum_of_kp`:
+`⟨FG⟩/⟨F⟩⟨G⟩ = exp(K_{FG} + K − K_F − K_G)`, and the exponent's
+cluster sums cancel termwise except on clusters touching BOTH
+supports (inclusion–exclusion: the four activities agree on clusters
+missing either support).  Bound the surviving sum by
+`connecting_cluster_decay`-type estimates → B4: `hIRbound`
+discharged with `covIR t := the two-point truncated correlator at
+separation t`.
+
+**Everything below the measure-side identification is DONE:**
+`Ξ = exp(clusterSum)` ✓, the volume-uniform tail ✓, the connecting
+geometry ✓, the composed decay ✓.
 
    (historical scoping for E4:) regroup Ω by `ν⟨k,f⟩ := ∑(fᵢ+1)`
    (`sigmaFiberEquiv` + `tsum_sigma`; Ω-fibers finite via
