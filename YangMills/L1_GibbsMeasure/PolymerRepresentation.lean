@@ -2774,4 +2774,451 @@ theorem weighted_connecting_sum_decay
         exact weighted_connecting_cluster_decay' μ hδ0 hbd t ε
           ht0 hε0 hr hsmall p q
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- Summability companion to `weighted_connecting_sum_decay`. -/
+theorem weighted_connecting_sum_summable
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {w : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    {δ : ℝ} (hδ0 : 0 ≤ δ) (hbd : ∀ A p, |w A p| ≤ δ)
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ * Real.exp (t + ε + 1)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      ((δ * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (δ * Real.exp (t + ε + 1)))) ≤ t)
+    (S T : Finset (ConcretePlaquette d N)) :
+    Summable (fun n : ℕ => (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer)).filter
+        (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+          (∃ j, ¬ Disjoint (X j).1 T)),
+        |((KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+          ∏ k, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).activity (X k)‖) := by
+  classical
+  have hcrit := weighted_unitTilt_kpCriterion_volumeUniform
+    (d := d) (N := N) μ hδ0 hbd t ε ht0 hr hsmall
+  have hg_summ : ∀ (q : ConcretePlaquette d N)
+      (c : (weightedLatticePolymerSystem
+        (d := d) (N := N) μ w).Polymer),
+      Summable (fun n : ℕ => ((n.factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ i, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X i)‖) := by
+    intro q c
+    obtain ⟨p₀, hp₀⟩ := c.2.1
+    have htail := KP.pinned_cluster_tail_summable
+      ((weightedLatticePolymerSystem (d := d) (N := N) μ w).tilt
+        (fun c' => (c'.1.card : ℝ)))
+      (fun c' => c'.1.card) hε0 hcrit c
+      ((touchGraph d N).dist p₀ q / 2)
+    refine Summable.of_nonneg_of_le (fun n => ?_)
+      (fun n => weighted_nfac_pinned_le_GE μ w c hp₀ n) htail.1
+    refine mul_nonneg (by positivity)
+      (Finset.sum_nonneg fun X _ => mul_nonneg (abs_nonneg _)
+        (Finset.prod_nonneg fun i _ => norm_nonneg _))
+  have hMaj_summ : Summable (fun n : ℕ => ∑ p ∈ S, ∑ q ∈ T,
+      ∑ c ∈ (Finset.univ : Finset (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer).filter (fun c => p ∈ c.1),
+        ((n.factorial : ℝ))⁻¹ *
+          ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+            (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).Polymer)).filter
+            (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+            |((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+              ∏ i, ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X i)‖) :=
+    summable_sum fun p _ => summable_sum fun q _ =>
+      summable_sum fun c _ => hg_summ q c
+  refine Summable.of_nonneg_of_le (fun n => ?_)
+    (fun n => connecting_layer_le_pinned μ w S T n) hMaj_summ
+  refine mul_nonneg (by positivity)
+    (Finset.sum_nonneg fun X _ => mul_nonneg (abs_nonneg _)
+      (Finset.prod_nonneg fun k _ => norm_nonneg _))
+
+set_option maxHeartbeats 3200000 in
+open Classical in
+/-- **THE COVARIANCE EXPONENT BOUND (B4):** the norm of the connecting
+cluster sum appearing in `covariance_identity` is bounded by four
+copies of the exponentially decaying plaquette double sum — with all
+constants depending only on `d, δ_w, δ_g, t, ε`. -/
+theorem covariance_exponent_norm_bound
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    {δw δg : ℝ} (hδw0 : 0 ≤ δw) (hδg0 : 0 ≤ δg)
+    (hbdw : ∀ A p, |w A p| ≤ δw) (hbdg : ∀ A p, |g A p| ≤ δg)
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((δw + δg + δw * δg) * Real.exp (t + ε + 1)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      (((δw + δg + δw * δg) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((δw + δg + δw * δg) * Real.exp (t + ε + 1)))) ≤ t)
+    (S T : Finset (ConcretePlaquette d N)) :
+    ‖∑' n : ℕ, (((n + 1).factorial : ℂ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+            (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).Polymer)).filter
+            (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+              (∃ j, ¬ Disjoint (X j).1 T)),
+          ((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g (S ∪ T))).activity (X i)
+            + (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X i)
+            - (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g S)).activity (X i)
+            - (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g T)).activity (X i))‖
+    ≤ 4 * ∑ p ∈ S, ∑ q ∈ T,
+        Real.exp (-(ε * (((touchGraph d N).dist p q / 2 : ℕ) : ℝ))) *
+          (((δw + δg + δw * δg) * Real.exp (t + ε + 1)) /
+            (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+              ((δw + δg + δw * δg) * Real.exp (t + ε + 1)))) := by
+  classical
+  set δ' : ℝ := δw + δg + δw * δg with hδ'def
+  have hδ'0 : (0 : ℝ) ≤ δ' := by rw [hδ'def]; positivity
+  have hwle : ∀ A p, |w A p| ≤ δ' := fun A p =>
+    le_trans (hbdw A p) (by rw [hδ'def]; nlinarith)
+  have hbdU : ∀ A p, |deformWeight w g (S ∪ T) A p| ≤ δ' :=
+    fun A p => abs_deformWeight_le hbdw hbdg (S ∪ T) A p
+  have hbdS : ∀ A p, |deformWeight w g S A p| ≤ δ' :=
+    fun A p => abs_deformWeight_le hbdw hbdg S A p
+  have hbdT : ∀ A p, |deformWeight w g T A p| ≤ δ' :=
+    fun A p => abs_deformWeight_le hbdw hbdg T A p
+  -- the four norm series (mixed spelling) and their decay-side forms
+  -- (the cross-gas identifications are definitional)
+  have e1 : (fun n : ℕ => (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer)).filter
+        (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+          (∃ j, ¬ Disjoint (X j).1 T)),
+        |((KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+          ∏ k, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ (deformWeight w g (S ∪ T))).activity (X k)‖)
+      = fun n : ℕ => (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (deformWeight w g (S ∪ T))).Polymer)).filter
+        (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+          (∃ j, ¬ Disjoint (X j).1 T)),
+        |((KP.ursell (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (deformWeight w g (S ∪ T))) X : ℤ) : ℝ)| *
+          ∏ k, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ (deformWeight w g (S ∪ T))).activity (X k)‖ :=
+    rfl
+  have e3 : (fun n : ℕ => (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer)).filter
+        (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+          (∃ j, ¬ Disjoint (X j).1 T)),
+        |((KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+          ∏ k, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ (deformWeight w g S)).activity (X k)‖)
+      = fun n : ℕ => (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (deformWeight w g S)).Polymer)).filter
+        (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+          (∃ j, ¬ Disjoint (X j).1 T)),
+        |((KP.ursell (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (deformWeight w g S)) X : ℤ) : ℝ)| *
+          ∏ k, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ (deformWeight w g S)).activity (X k)‖ :=
+    rfl
+  have e4 : (fun n : ℕ => (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer)).filter
+        (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+          (∃ j, ¬ Disjoint (X j).1 T)),
+        |((KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+          ∏ k, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ (deformWeight w g T)).activity (X k)‖)
+      = fun n : ℕ => (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (deformWeight w g T)).Polymer)).filter
+        (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+          (∃ j, ¬ Disjoint (X j).1 T)),
+        |((KP.ursell (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (deformWeight w g T)) X : ℤ) : ℝ)| *
+          ∏ k, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ (deformWeight w g T)).activity (X k)‖ :=
+    rfl
+  -- summability of the four norm series
+  have hs1 := weighted_connecting_sum_summable μ hδ'0 hbdU t ε
+    ht0 hε0 hr hsmall S T
+  have hs2 := weighted_connecting_sum_summable μ hδ'0 hwle t ε
+    ht0 hε0 hr hsmall S T
+  have hs3 := weighted_connecting_sum_summable μ hδ'0 hbdS t ε
+    ht0 hε0 hr hsmall S T
+  have hs4 := weighted_connecting_sum_summable μ hδ'0 hbdT t ε
+    ht0 hε0 hr hsmall S T
+  rw [← e1] at hs1
+  rw [← e3] at hs3
+  rw [← e4] at hs4
+  -- the four decay bounds
+  have hd1 := weighted_connecting_sum_decay μ hδ'0 hbdU t ε
+    ht0 hε0 hr hsmall S T
+  have hd2 := weighted_connecting_sum_decay μ hδ'0 hwle t ε
+    ht0 hε0 hr hsmall S T
+  have hd3 := weighted_connecting_sum_decay μ hδ'0 hbdS t ε
+    ht0 hε0 hr hsmall S T
+  have hd4 := weighted_connecting_sum_decay μ hδ'0 hbdT t ε
+    ht0 hε0 hr hsmall S T
+  rw [← e1] at hd1
+  rw [← e3] at hd3
+  rw [← e4] at hd4
+  -- per-layer norm bound
+  have hlayer : ∀ n : ℕ,
+      ‖(((n + 1).factorial : ℂ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+            (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).Polymer)).filter
+            (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+              (∃ j, ¬ Disjoint (X j).1 T)),
+          ((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g (S ∪ T))).activity (X i)
+            + (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X i)
+            - (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g S)).activity (X i)
+            - (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g T)).activity (X i))‖
+      ≤ (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+            (∃ j, ¬ Disjoint (X j).1 T)),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ (deformWeight w g (S ∪ T))).activity (X k)‖
+      + ((((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+            (∃ j, ¬ Disjoint (X j).1 T)),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X k)‖)
+      + ((((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+            (∃ j, ¬ Disjoint (X j).1 T)),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ (deformWeight w g S)).activity (X k)‖)
+      + ((((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+            (∃ j, ¬ Disjoint (X j).1 T)),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ (deformWeight w g T)).activity (X k)‖) := by
+    intro n
+    have hnorm4 : ∀ a b c e : ℂ, ‖a + b - c - e‖
+        ≤ ‖a‖ + ‖b‖ + ‖c‖ + ‖e‖ := by
+      intro a b c e
+      calc ‖a + b - c - e‖ ≤ ‖a + b - c‖ + ‖e‖ := norm_sub_le _ _
+        _ ≤ (‖a + b‖ + ‖c‖) + ‖e‖ :=
+            add_le_add (norm_sub_le _ _) le_rfl
+        _ ≤ ((‖a‖ + ‖b‖) + ‖c‖) + ‖e‖ :=
+            add_le_add (add_le_add (norm_add_le _ _) le_rfl) le_rfl
+    have hterm : ∀ (X : Fin (n + 1) → (weightedLatticePolymerSystem
+        (d := d) (N := N) μ w).Polymer)
+        (P' : KP.PolymerSystem)
+        (act : Fin (n + 1) → ℂ),
+        ‖(KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℂ) * ∏ i, act i‖
+        = |((KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℤ) : ℝ)| * ∏ i, ‖act i‖ := by
+      intro X P' act
+      rw [norm_mul, norm_prod]
+      congr 1
+      exact Complex.norm_intCast _
+    calc ‖(((n + 1).factorial : ℂ))⁻¹ * ∑ X ∈ _, _‖
+        ≤ ‖(((n + 1).factorial : ℂ))⁻¹‖ * ‖∑ X ∈ (Finset.univ :
+            Finset (Fin (n + 1) → (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).Polymer)).filter
+            (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+              (∃ j, ¬ Disjoint (X j).1 T)),
+          ((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g (S ∪ T))).activity (X i)
+            + (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X i)
+            - (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g S)).activity (X i)
+            - (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g T)).activity (X i))‖ :=
+          le_of_eq (norm_mul _ _)
+      _ ≤ (((n + 1).factorial : ℝ))⁻¹ *
+          ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+            (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).Polymer)).filter
+            (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+              (∃ j, ¬ Disjoint (X j).1 T)),
+            (|((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+              ∏ k, ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ
+                  (deformWeight w g (S ∪ T))).activity (X k)‖
+            + |((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+              ∏ k, ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X k)‖
+            + |((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+              ∏ k, ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g S)).activity (X k)‖
+            + |((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+              ∏ k, ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ
+                  (deformWeight w g T)).activity (X k)‖) := by
+          have hninv : ‖(((n + 1).factorial : ℂ))⁻¹‖
+              = (((n + 1).factorial : ℝ))⁻¹ := by
+            rw [norm_inv, Complex.norm_natCast]
+          rw [hninv]
+          refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+          refine le_trans (norm_sum_le _ _) (Finset.sum_le_sum
+            fun X _ => ?_)
+          refine le_trans (hnorm4 _ _ _ _) (le_of_eq ?_)
+          rw [hterm X (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) _,
+            hterm X (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) _,
+            hterm X (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) _,
+            hterm X (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) _]
+      _ = _ := by
+          rw [Finset.sum_add_distrib, Finset.sum_add_distrib,
+            Finset.sum_add_distrib]
+          ring
+  -- assemble: norm of tsum ≤ sum of the four decayed series
+  have hnsum : Summable (fun n : ℕ =>
+      (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+            (∃ j, ¬ Disjoint (X j).1 T)),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ
+                (deformWeight w g (S ∪ T))).activity (X k)‖
+      + ((((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+            (∃ j, ¬ Disjoint (X j).1 T)),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X k)‖)
+      + ((((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+            (∃ j, ¬ Disjoint (X j).1 T)),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ (deformWeight w g S)).activity (X k)‖)
+      + ((((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+            (∃ j, ¬ Disjoint (X j).1 T)),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ k, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ (deformWeight w g T)).activity (X k)‖)) :=
+    ((hs1.add hs2).add hs3).add hs4
+  have hnorm_summ : Summable (fun n : ℕ =>
+      ‖(((n + 1).factorial : ℂ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+            (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).Polymer)).filter
+            (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+              (∃ j, ¬ Disjoint (X j).1 T)),
+          ((KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g (S ∪ T))).activity (X i)
+            + (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity (X i)
+            - (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g S)).activity (X i)
+            - (KP.ursell (weightedLatticePolymerSystem
+                (d := d) (N := N) μ w) X : ℂ) *
+              ∏ i, (weightedLatticePolymerSystem
+                (d := d) (N := N) μ (deformWeight w g T)).activity (X i))‖) :=
+    Summable.of_nonneg_of_le (fun n => norm_nonneg _) hlayer hnsum
+  refine le_trans (norm_tsum_le_tsum_norm hnorm_summ) ?_
+  refine le_trans (Summable.tsum_le_tsum hlayer hnorm_summ hnsum) ?_
+  rw [Summable.tsum_add ((hs1.add hs2).add hs3) hs4,
+    Summable.tsum_add (hs1.add hs2) hs3,
+    Summable.tsum_add hs1 hs2]
+  refine le_trans
+    (add_le_add (add_le_add (add_le_add hd1 hd2) hd3) hd4)
+    (le_of_eq ?_)
+  ring
+
 end YangMills
