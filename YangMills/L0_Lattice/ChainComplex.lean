@@ -241,4 +241,45 @@ theorem chainBoundary₁_eq_zero_of_spans
   rw [← hs]
   exact chainBoundary₁_comp_chainBoundary₂ (d := d) (N := N) (G := G) s
 
+open Classical in
+/-- **AL5 interface, support-monotone form:** a spanning `2`-chain
+supported inside a plaquette set `S` bounds the area by `|S|`.  This
+is the exact shape the expansion consumes: a non-vanishing term
+indexed by `S ⊆ plaquettes` produces (via edge balance) a `ZMod N_c`
+chain supported in `S` whose boundary is the loop chain, whence
+`Area(C) ≤ |S|`. -/
+theorem chainArea_le_card_of_support_subset
+    {c : E (d := d) (N := N) (G := G) → R}
+    {s : P (d := d) (N := N) (G := G) → R}
+    {S : Finset (P (d := d) (N := N) (G := G))}
+    (h : chainBoundary₂ (d := d) (N := N) (G := G) s = c)
+    (hsupp : chainSupport (d := d) (N := N) (G := G) s ⊆ S) :
+    chainArea (d := d) (N := N) (G := G) c ≤ S.card :=
+  le_trans (chainArea_le (d := d) (N := N) (G := G) h)
+    (Finset.card_le_card hsupp)
+
+open Classical in
+/-- The **restriction of a `2`-chain to a plaquette set** — the
+coefficient chain a non-vanishing expansion term carries. -/
+noncomputable def indicatorChain
+    (S : Finset (P (d := d) (N := N) (G := G)))
+    (σ : P (d := d) (N := N) (G := G) → R) :
+    P (d := d) (N := N) (G := G) → R :=
+  fun p => if p ∈ S then σ p else 0
+
+open Classical in
+/-- The restricted chain is supported in `S`. -/
+theorem chainSupport_indicatorChain_subset
+    (S : Finset (P (d := d) (N := N) (G := G)))
+    (σ : P (d := d) (N := N) (G := G) → R) :
+    chainSupport (d := d) (N := N) (G := G)
+      (indicatorChain (d := d) (N := N) (G := G) S σ) ⊆ S := by
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N) (G := G)
+  intro p hp
+  have hmem : p ∈ Finset.univ.filter
+      (fun q => indicatorChain (d := d) (N := N) (G := G) S σ q ≠ 0) := hp
+  have hne := (Finset.mem_filter.mp hmem).2
+  by_contra hnot
+  exact hne (if_neg hnot)
+
 end YangMills
