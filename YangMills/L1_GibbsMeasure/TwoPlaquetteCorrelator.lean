@@ -3,6 +3,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.L1_GibbsMeasure.PolymerRepresentation
+import YangMills.ClayCore.SchurPhysicalBridge
 
 /-!
 # The two-plaquette correlator (T4 shortcut, opening bricks)
@@ -693,5 +694,86 @@ lemma clustering_window_nonempty (d : ℕ) :
       _ ≤ 1 := by
           rw [← mul_div_assoc, div_le_one hD]
           nlinarith
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **EXPONENTIAL CLUSTERING FOR THE GENUINE SU(N) WILSON THEORY:**
+the normalized two-plaquette covariance bound instantiated at the
+actual gauge group `SU(N_c)`, the actual Haar probability measure
+`sunHaarProb`, and the actual Wilson plaquette energy `Re tr U`
+(`fundamentalObservable`, bounded by `N_c`).  For any bounded
+measurable observable of the plaquette holonomy, at touching-distance
+`≥ 2k` and small coupling, the Gibbs covariance decays like
+`e^{−ε·k}` with constants depending only on `d, N_c, β, s, t, ε` —
+independent of the lattice volume and of the partition function. -/
+theorem sun_two_plaquette_correlator_bound
+    (N_c : ℕ) [NeZero N_c]
+    {f : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ}
+    (hfm : Measurable f) (hf : ∀ x, |f x| ≤ 1)
+    {s : ℝ} (hs0 : 0 < s) (β : ℝ)
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      (((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+        (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+        Real.exp (t + ε + 1)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      ((((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+        (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+        Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+            (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+            Real.exp (t + ε + 1)))) ≤ t)
+    (p q : ConcretePlaquette d N) (k : ℕ) (hpq : p ≠ q)
+    (hdist : 2 * k ≤ (touchGraph d N).dist p q)
+    (hone : 4 * Real.exp (-(ε * k)) *
+      ((((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+        (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+        Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+            (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+            Real.exp (t + ε + 1)))) ≤ 1) :
+    |(∫ A, f (plaquetteHolonomy A p) * f (plaquetteHolonomy A q) *
+        Real.exp (-β * wilsonAction (fundamentalObservable N_c) A)
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))) /
+      partitionFunction (d := d) (N := N) (sunHaarProb N_c)
+        (fundamentalObservable N_c) β
+      - ((∫ A, f (plaquetteHolonomy A p) *
+          Real.exp (-β * wilsonAction (fundamentalObservable N_c) A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))) /
+        partitionFunction (d := d) (N := N) (sunHaarProb N_c)
+          (fundamentalObservable N_c) β) *
+        ((∫ A, f (plaquetteHolonomy A q) *
+          Real.exp (-β * wilsonAction (fundamentalObservable N_c) A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))) /
+        partitionFunction (d := d) (N := N) (sunHaarProb N_c)
+          (fundamentalObservable N_c) β)|
+    ≤ (8 * ((((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+        (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+        Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+            (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+            Real.exp (t + ε + 1)))) *
+        (1 + s) ^ 2 / s ^ 2) *
+      Real.exp (-(ε * k)) := by
+  haveI hsc : SecondCountableTopology
+      (Matrix (Fin N_c) (Fin N_c) ℂ) := by
+    change SecondCountableTopology (Fin N_c → Fin N_c → ℂ)
+    infer_instance
+  haveI : SecondCountableTopology
+      ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) :=
+    TopologicalSpace.secondCountableTopology_induced _ _ Subtype.val
+  haveI : MeasurableMul₂
+      ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) := by
+    infer_instance
+  haveI : MeasurableInv
+      ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) := by
+    infer_instance
+  exact two_plaquette_correlator_bound_normalized (sunHaarProb N_c)
+    ((Complex.continuous_re.comp (continuous_trace_sub N_c)).measurable)
+    (fundamentalObservable_bounded N_c) β hfm hf hs0 t ε ht0 hε0
+    hr hsmall p q k hpq hdist hone
 
 end YangMills
