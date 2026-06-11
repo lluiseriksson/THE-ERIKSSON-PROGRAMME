@@ -734,13 +734,25 @@ surfaces were `pe`-specific.  Bricks:
   ite-collapse (annotate the `mem_filter.mpr` membership fully — the
   anonymous `mem_univ _` slot otherwise unifies to the wrong
   subject).
-  **Remaining for B4 (final assembly):** (i) tsum the chain:
-  `∑'_n` of the per-layer bound, exchange with the three finite sums
-  (`Summable.tsum_finsetSum`, per-`(p,q,c)` summability from the
-  decay'-internals), and land on
-  `∑_{p,q} (decay'-LHS) ≤ ∑_{p,q} e^{−ε·dist(p,q)/2}·y/(1−Ky)`;
-  (ii) norm the 4-term combination by the four δ'-bounded gases;
-  (iii) `hIRbound` with `covIR t := ⟨FG⟩−⟨F⟩⟨G⟩` at separation `t`.
+  **(i) THE NORM-LEVEL ENDPOINT CLOSED (commit `ab0f8ed`, green on
+  FIRST build, oracle clean): `weighted_connecting_sum_decay`** —
+
+      ∑'_n (n+1)!⁻¹·∑_{X connecting(S,T)} |u|∏‖z‖
+        ≤ ∑_{p∈S}∑_{q∈T} e^{−ε·dist(p,q)/2}·y/(1−(16d+1)²y),
+
+  `y := δ·e^{t+ε+1}`, volume-free.  Built from
+  `weighted_nfac_pinned_le_GE` (the `(n+1)`-absorption, standalone),
+  per-`(q,c)` summability pinned at ANY point of `c` (polymers
+  nonempty), `Summable.tsum_le_tsum`, the triple
+  `Summable.tsum_finsetSum` exchange, and the per-pair decay′.
+  **Remaining for B4:** (ii) norm the covariance exponent:
+  `‖connecting tsum (4-term)‖ ≤ ∑ of 4 norm-series` (norm_tsum_le +
+  per-gas `|ursell|·∏‖act_v‖` with each gas δ'-bounded) feeding (i)
+  at `δ := δ'` four times; (iii) `hIRbound`:
+  `covIR k := ⟨FG⟩−⟨F⟩⟨G⟩` at separation `k`, with
+  `dist(p,q) ≥ separation` for `p ∈ S_F, q ∈ S_G` ⇒
+  `|covIR k| ≤ C·r^k` with `r := e^{−ε/2}` — feed
+  `lattice_mass_gap_of_clustering_uniform`.
 
 **Then B2** (the covariance): for plaquette-local multiplicative
 observables `F` (deformations `f_p ↦ f_p·(1+s·g_p)` supported on
