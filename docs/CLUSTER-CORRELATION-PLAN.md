@@ -745,14 +745,29 @@ surfaces were `pe`-specific.  Bricks:
   per-`(q,c)` summability pinned at ANY point of `c` (polymers
   nonempty), `Summable.tsum_le_tsum`, the triple
   `Summable.tsum_finsetSum` exchange, and the per-pair decay′.
-  **Remaining for B4:** (ii) norm the covariance exponent:
-  `‖connecting tsum (4-term)‖ ≤ ∑ of 4 norm-series` (norm_tsum_le +
-  per-gas `|ursell|·∏‖act_v‖` with each gas δ'-bounded) feeding (i)
-  at `δ := δ'` four times; (iii) `hIRbound`:
-  `covIR k := ⟨FG⟩−⟨F⟩⟨G⟩` at separation `k`, with
-  `dist(p,q) ≥ separation` for `p ∈ S_F, q ∈ S_G` ⇒
-  `|covIR k| ≤ C·r^k` with `r := e^{−ε/2}` — feed
-  `lattice_mass_gap_of_clustering_uniform`.
+  **(ii) CLOSED (commit `bb69c2c`, oracle clean):
+  `covariance_exponent_norm_bound`** —
+
+      ‖connecting tsum of covariance_identity‖
+        ≤ 4·∑_{p∈S}∑_{q∈T} e^{−ε·dist(p,q)/2}·y'/(1−(16d+1)²y'),
+
+  `y' := δ'·e^{t+ε+1}`, `δ' := δ_w+δ_g+δ_wδ_g`, volume-free.  Via the
+  summability companion `weighted_connecting_sum_summable`, the
+  per-layer norm collapse (`norm_mul`, `norm_prod`,
+  `Complex.norm_intCast`, `norm_sum_le`, the four-term triangle), the
+  `rfl` cross-gas bridges (`e1/e3/e4`-pattern at FUNCTION level —
+  works), `norm_tsum_le_tsum_norm`, `Summable.tsum_le_tsum`, the
+  `tsum_add` chain, and the four decays.
+  **Remaining for B4 — (iii) only, the last brick of the IR chain:**
+  `hIRbound`.  Combine `covariance_identity` (`Z_{FG}·Z =
+  Z_F·Z_G·exp(K_conn)`) with (ii): for observables at touching-distance
+  `≥ 2k` between `S_F` and `S_G`, every `dist(p,q)/2 ≥ k` so the bound
+  is `≤ 4|S_F||S_G|·e^{−εk}·y'/(1−Ky')`; define
+  `covIR k := ⟨FG⟩−⟨F⟩⟨G⟩` (divide by `Z² > 0`,
+  `partitionFunction_pos'`), use `|e^z−1| ≤ |z|e^{|z|}`
+  (`Complex.abs_exp_sub_one_le` at `|z| ≤ 1` or the crude bound) and
+  feed `lattice_mass_gap_of_clustering_uniform` with `r := e^{−ε}`,
+  `C₁ := 4|S_F||S_G|·y'/(1−Ky')·(bound on |⟨F⟩⟨G⟩|)·e`.
 
 **Then B2** (the covariance): for plaquette-local multiplicative
 observables `F` (deformations `f_p ↦ f_p·(1+s·g_p)` supported on
