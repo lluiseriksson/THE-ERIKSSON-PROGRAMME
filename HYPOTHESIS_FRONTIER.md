@@ -2,6 +2,26 @@
 ## THE ERIKSSON PROGRAMME  Explicit Assumption Audit
 ## Date: 2026-03-31 | Version: v0.3.0
 
+> **CURRENT-STATE ADDENDUM (2026-06-11).**  Everything below this box
+> describes the LEGACY terminal chain (`L8_Terminal/ClayTheorem` and
+> its named axiom `yangMills_continuum_mass_gap`), which the cleanup
+> (`CLEANUP_PLAN.md`, `FOUNDATIONS.md`) EXCLUDED from the verified
+> core: `YangMillsCore` imports none of it and contains **zero
+> axioms** (`#print axioms` on every headline:
+> `[propext, Classical.choice, Quot.sound]`).
+>
+> **The honest hypothesis frontier of the verified core's M3
+> assembly, as of 2026-06-11:**
+>
+> | Hypothesis | Status |
+> |---|---|
+> | IR clustering bound (`hIRbound` of `lattice_mass_gap_of_clustering_uniform`) | **THEOREM-FED.** `gibbs_truncated_correlation_bound`, `sun_two_plaquette_correlator_bound` (+ explicit nonempty windows `clustering_window_nonempty`, `sun_clustering_window_nonempty`), via the adapter `lattice_mass_gap_of_exp_clustering_uniform`. No carried hypothesis remains on the IR side. |
+> | UV single-scale bound (§6.3, per-scale `\|R_k\| ≤ M·r^k`) | **CARRIED** (the sole remaining hypothesis of the M3 assembly). Balaban-RG content, deliberately hypothesis-carried — never an axiom. The summation mechanism `uv_geometric_summation` is proved. |
+> | Continuum limit / OS reconstruction / continuum gap (M4–M5, Clay) | **OPEN MATHEMATICS.** Not carried, not axiomatized, not claimed. Distance to Clay: ~0% (<0.1%). |
+>
+> See `docs/VERIFICATION-LEDGER.md` (addenda 1–10, seventeen oracle
+> lines in the final chain) for the machine-checked record.
+
 ---
 
 ## Summary

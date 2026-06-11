@@ -233,18 +233,28 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   machine-checked end to end.  `docs/VERIFICATION-LEDGER.md`
   addendum 10 (ten oracle lines);
   `docs/CLUSTER-CORRELATION-PLAN.md` is the complete campaign log.
-- **NEXT TARGET — the T4 SHORTCUT (designed, not yet implemented):**
-  the two-plaquette connected-correlator decay
-  (`PETER_WEYL_ROADMAP.md`'s `kp_cluster_decay`) follows from
-  `gibbs_truncated_correlation_bound` at SINGLETON supports with the
-  `s`-scaled encoding `O_p = 1 + s·f(hol_p)` — NO Peter–Weyl, no
-  character expansion needed.  Three mechanical pieces remain:
-  holonomy locality/measurability for the `g`-family, the bilinear
-  covariance expansion, and distance bookkeeping.  Full design in
-  `docs/CLUSTER-CORRELATION-PLAN.md` §3.  (Peter–Weyl stays necessary
-  for the area-law/Wilson-loop route — the roadmap's L1–L3 remain the
-  long-term project.)  Other open M3 input: the §6.3 single-scale UV
-  bound (Balaban, hypothesis-carried by design).
+- **THE T4 SHORTCUT — CLOSED, THROUGH THE SU(N) CAPSTONE
+  (2026-06-11, `L1_GibbsMeasure/TwoPlaquetteCorrelator.lean`).**
+  The full chain, all oracle-clean: `two_plaquette_correlator_bound`
+  (the `kp_cluster_decay`-shaped endpoint of `PETER_WEYL_ROADMAP.md`
+  Layer 4, WITHOUT Peter–Weyl/Schur/character expansion);
+  `two_plaquette_correlator_bound_normalized` (`Z`-free constants);
+  **`sun_two_plaquette_correlator_bound`** — exponential clustering
+  of two-point functions for the GENUINE SU(N_c) Wilson lattice
+  theory (actual group, actual Haar `sunHaarProb`, actual plaquette
+  energy `Re tr U`), constants in `d, N_c, β, s, t, ε` only; and the
+  non-vacuity witnesses `clustering_window_nonempty` /
+  `sun_clustering_window_nonempty` (explicit `β₀ > 0` windows).
+  Also: `lattice_mass_gap_of_exp_clustering_uniform` — the M3
+  assembly's IR hypothesis is THEOREM-FED; the §6.3 UV single-scale
+  bound is the SOLE remaining carried hypothesis (Balaban, by
+  design).  `docs/VERIFICATION-LEDGER.md` addenda 8–10 (seventeen
+  oracle lines); `HYPOTHESIS_FRONTIER.md` current-state addendum.
+- **NEXT TARGETS (both are fresh campaigns, not bricks):**
+  Peter–Weyl (`PETER_WEYL_ROADMAP.md` — now needed ONLY for the
+  area-law/Wilson-loop form; U(1)/SU(2) de-risked paths available),
+  or the Balaban single-scale UV estimate (class-C, outside the
+  current plan).
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the
   repo; needed for the other M3 hypothesis.
 - **T4 — strong-coupling character expansion → area law (LG7/8).** Needs **Peter–Weyl for
