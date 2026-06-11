@@ -135,6 +135,21 @@ inductions peel one edge structurally), `list_prod_apply`
 (`l.prod i j = pathSum l i j`), `trace_list_prod_eq_sum_pathSum`
 (trace = sum over closed paths).  Oracle clean — `[propext,
 Quot.sound]` only.
+**TE-1b CLOSED** (same file): the closed `Fin`-indexed forms —
+`pathSum_eq_sum_vertexSeq` (`pathSum l i j = ∑ v : Fin (L+1) → ι,
+δ(v 0 = i)·δ(v last = j)·∏_{idx} (l.get idx)(v idx.castSucc)(v
+idx.succ)`, by list induction transporting the sum along
+`Fin.consEquiv` and collapsing the head vertex through a common
+`w`-sum normal form) and `trace_list_prod_eq_sum_closedSeq` (trace =
+sum over CLOSED vertex sequences, `δ(v last = v 0)`).  For fixed `v`
+the integrand is a positionwise product of single matrix entries —
+the exact input of `prod_comp_eq_prod_fiber`.  Oracle clean.
+House notes: normalize `(M :: l).length` to `l.length + 1` via `show`
+BEFORE `Fintype.sum_equiv` (binder types can't be simp-rewritten);
+`simp only [Fin.consEquiv_apply]` (from `@[simps]`) reduces the equiv
+application; rewrite ites under `Fin.cons` with `simp only [hv0,…]`
+not `rw` (Decidable-instance motive); `congr 1` closes the
+`Fin.prod_univ_succ` head factor on its own (cons-defeq).
 **TE-2 CLOSED** (`ChainComplex.lean`): `loopChain` (orientation-odd
 signed edge count `count e − count (reverse e)`, matching the repo's
 `wilsonLine`-over-edge-list convention where backward traversal IS
