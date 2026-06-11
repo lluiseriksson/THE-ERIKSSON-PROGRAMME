@@ -256,4 +256,131 @@ lemma weightedPartition_plaquetteWeight (μ : Measure G)
   rw [boltzmann_eq_sum_plaquetteSets pe β A]
   exact prod_one_add_eq_sum (fun A p => plaquetteWeight pe β A p) A
 
+/-! ### Deformed weights (B2, brick W4a)
+
+A multiplicative local observable `F = ∏_{p∈T}(1+g_p)` absorbs into the
+weights: `F·∏_p(1+w_p) = ∏_p(1+w̃_p)` with `w̃ = deformWeight w g T`.
+So `⟨F⟩·Z[w] = Z[w̃]` — the numerators of Gibbs expectations of
+multiplicative observables are themselves weighted partition functions,
+and the whole `Z = Ξ = exp(K)` chain applies to them. -/
+
+open Classical in
+/-- The **multiplicative deformation** of a weight family on a region:
+`1 + w̃_p = (1+w_p)(1+g_p)` for `p ∈ T`, `w̃_p = w_p` otherwise. -/
+noncomputable def deformWeight
+    (w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    (T : Finset (ConcretePlaquette d N)) :
+    GaugeConfig d N G → ConcretePlaquette d N → ℝ :=
+  fun A p => if p ∈ T then w A p + g A p + w A p * g A p else w A p
+
+open Classical in
+lemma one_add_deformWeight_of_mem
+    {w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    {T : Finset (ConcretePlaquette d N)}
+    {A : GaugeConfig d N G} {p : ConcretePlaquette d N} (hp : p ∈ T) :
+    1 + deformWeight w g T A p = (1 + w A p) * (1 + g A p) := by
+  unfold deformWeight
+  rw [if_pos hp]
+  ring
+
+open Classical in
+lemma deformWeight_of_not_mem
+    {w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    {T : Finset (ConcretePlaquette d N)}
+    {A : GaugeConfig d N G} {p : ConcretePlaquette d N} (hp : p ∉ T) :
+    deformWeight w g T A p = w A p := by
+  unfold deformWeight
+  rw [if_neg hp]
+
+open Classical in
+/-- Deformations of local weight families are local. -/
+lemma isLocalWeight_deformWeight
+    {w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    (hw : IsLocalWeight (d := d) (N := N) (G := G) w)
+    (hg : IsLocalWeight (d := d) (N := N) (G := G) g)
+    (T : Finset (ConcretePlaquette d N)) :
+    IsLocalWeight (d := d) (N := N) (G := G) (deformWeight w g T) := by
+  intro p A A' h
+  unfold deformWeight
+  by_cases hp : p ∈ T
+  · rw [if_pos hp, if_pos hp, hw p A A' h, hg p A A' h]
+  · rw [if_neg hp, if_neg hp, hw p A A' h]
+
+open Classical in
+/-- Deformed weights stay uniformly bounded. -/
+lemma abs_deformWeight_le
+    {w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    {δw δg : ℝ} (hw : ∀ A p, |w A p| ≤ δw) (hg : ∀ A p, |g A p| ≤ δg)
+    (T : Finset (ConcretePlaquette d N))
+    (A : GaugeConfig d N G) (p : ConcretePlaquette d N) :
+    |deformWeight w g T A p| ≤ δw + δg + δw * δg := by
+  have hδw : (0 : ℝ) ≤ δw := le_trans (abs_nonneg _) (hw A p)
+  have hδg : (0 : ℝ) ≤ δg := le_trans (abs_nonneg _) (hg A p)
+  unfold deformWeight
+  by_cases hp : p ∈ T
+  · rw [if_pos hp]
+    calc |w A p + g A p + w A p * g A p|
+        ≤ |w A p + g A p| + |w A p * g A p| := abs_add_le _ _
+      _ ≤ (|w A p| + |g A p|) + |w A p| * |g A p| := by
+          rw [abs_mul]
+          exact add_le_add (abs_add_le (w A p) (g A p)) le_rfl
+      _ ≤ (δw + δg) + δw * δg := by
+          refine add_le_add (add_le_add (hw A p) (hg A p)) ?_
+          exact mul_le_mul (hw A p) (hg A p) (abs_nonneg _) hδw
+      _ = δw + δg + δw * δg := rfl
+  · rw [if_neg hp]
+    have h1 : (0 : ℝ) ≤ δg + δw * δg := by positivity
+    calc |w A p| ≤ δw := hw A p
+      _ ≤ δw + (δg + δw * δg) := le_add_of_nonneg_right h1
+      _ = δw + δg + δw * δg := by ring
+
+open Classical in
+/-- Deformed weights stay measurable. -/
+lemma measurable_deformWeight
+    {w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    (hw : ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N G => w A p))
+    (hg : ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N G => g A p))
+    (T : Finset (ConcretePlaquette d N))
+    (p : ConcretePlaquette d N) :
+    Measurable (fun A : GaugeConfig d N G => deformWeight w g T A p) := by
+  unfold deformWeight
+  by_cases hp : p ∈ T
+  · simp only [if_pos hp]
+    exact ((hw p).add (hg p)).add ((hw p).mul (hg p))
+  · simp only [if_neg hp]
+    exact hw p
+
+open Classical in
+/-- **The absorption identity (W4a):** the deformed partition function
+is the numerator of the Gibbs expectation of the multiplicative local
+observable `∏_{p∈T}(1+g_p)`. -/
+theorem weightedPartition_deform (μ : Measure G) [IsProbabilityMeasure μ]
+    (w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    (T : Finset (ConcretePlaquette d N)) :
+    weightedPartition (d := d) (N := N) μ (deformWeight w g T)
+      = ∫ A, (∏ p ∈ T, (1 + g A p)) *
+          ∏ p : ConcretePlaquette d N, (1 + w A p)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+  classical
+  unfold weightedPartition
+  congr 1
+  funext A
+  calc ∏ p : ConcretePlaquette d N, (1 + deformWeight w g T A p)
+      = ∏ p : ConcretePlaquette d N,
+          ((1 + w A p) * (if p ∈ T then 1 + g A p else 1)) := by
+        refine Finset.prod_congr rfl fun p _ => ?_
+        by_cases hp : p ∈ T
+        · rw [if_pos hp, one_add_deformWeight_of_mem hp]
+        · rw [if_neg hp, mul_one, deformWeight_of_not_mem hp]
+    _ = (∏ p : ConcretePlaquette d N, (1 + w A p)) *
+        ∏ p : ConcretePlaquette d N, (if p ∈ T then 1 + g A p else 1) :=
+        Finset.prod_mul_distrib
+    _ = (∏ p : ConcretePlaquette d N, (1 + w A p)) *
+        ∏ p ∈ T, (1 + g A p) := by
+        rw [Finset.prod_ite_mem, Finset.univ_inter]
+    _ = (∏ p ∈ T, (1 + g A p)) *
+        ∏ p : ConcretePlaquette d N, (1 + w A p) := mul_comm _ _
+
 end YangMills
