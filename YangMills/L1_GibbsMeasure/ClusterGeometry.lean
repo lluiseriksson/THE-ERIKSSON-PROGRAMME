@@ -85,4 +85,131 @@ lemma exists_touching_of_not_disjoint
   exact ⟨p, hp, q, hq,
     fun hd => (Finset.disjoint_left.mp hd hep) heq⟩
 
+open Classical in
+/-- B3a, walk form: connected polymers realize touching-walks of
+length below their size. -/
+lemma exists_touchWalk_of_connected
+    {c : Finset (ConcretePlaquette d N)} (hc : IsConnectedPolymer c)
+    {p q : ConcretePlaquette d N} (hp : p ∈ c) (hq : q ∈ c) :
+    ∃ W : (touchGraph d N).Walk p q, W.length < c.card := by
+  classical
+  have hadj : ∀ {x y : ↥c},
+      (SimpleGraph.fromRel
+        (fun p q : ↥c => plaquetteTouches p.1 q.1)).Adj x y →
+      (touchGraph d N).Adj x.1 y.1 := by
+    intro x y hxy
+    rw [SimpleGraph.fromRel_adj] at hxy
+    show (SimpleGraph.fromRel plaquetteTouches).Adj x.1 y.1
+    rw [SimpleGraph.fromRel_adj]
+    exact ⟨fun h => hxy.1 (Subtype.ext h), hxy.2⟩
+  obtain ⟨w, hw⟩ :=
+    (hc.preconnected ⟨p, hp⟩ ⟨q, hq⟩).exists_walk_length_eq_dist
+  refine ⟨w.map ⟨Subtype.val, hadj⟩, ?_⟩
+  rw [SimpleGraph.Walk.length_map, hw]
+  calc (SimpleGraph.fromRel
+      (fun p q : ↥c => plaquetteTouches p.1 q.1)).dist
+        ⟨p, hp⟩ ⟨q, hq⟩
+      < Fintype.card ↥c := connected_dist_lt_card hc _ _
+    _ = c.card := Fintype.card_coe c
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **B3c, the walk construction:** along an incompatibility path
+through a cluster of the connected gas, touching-walks thread the
+polymers — with total length bounded by the visited sizes plus the
+number of crossings. -/
+lemma exists_walk_through_cluster {G : Type*} [Group G]
+    [MeasurableSpace G] [NeZero d]
+    (μ : MeasureTheory.Measure G) (pe : G → ℝ) (β : ℝ) {n : ℕ}
+    {X : Fin n → (connectedLatticePolymerSystem
+      (d := d) (N := N) μ pe β).Polymer} :
+    ∀ {i j : Fin n}
+      (w : (KP.incompGraph (connectedLatticePolymerSystem
+        (d := d) (N := N) μ pe β) X).Walk i j),
+      w.IsPath →
+      ∀ p ∈ (X i).1, ∀ q ∈ (X j).1,
+      ∃ W : (touchGraph d N).Walk p q,
+        W.length ≤ (∑ i' ∈ w.support.toFinset, (X i').1.card)
+          + w.length := by
+  intro i j w
+  induction w with
+  | @nil u =>
+      intro _ p hp q hq
+      obtain ⟨W, hW⟩ :=
+        exists_touchWalk_of_connected (X u).2.2 hp hq
+      refine ⟨W, ?_⟩
+      rw [SimpleGraph.Walk.support_nil, SimpleGraph.Walk.length_nil]
+      simp only [List.toFinset_cons, List.toFinset_nil,
+        insert_empty_eq, Finset.sum_singleton]
+      omega
+  | @cons u v j' h w' ih =>
+      intro hpath p hp q hq
+      rw [SimpleGraph.Walk.cons_isPath_iff] at hpath
+      obtain ⟨hw'path, hinotin⟩ := hpath
+      have hinc : (connectedLatticePolymerSystem
+          (d := d) (N := N) μ pe β).incomp (X u) (X v) :=
+        ((KP.incompGraph_adj _ X u v).mp h).2
+      obtain ⟨p', hp', q', hq', htouch⟩ :=
+        exists_touching_of_not_disjoint hinc
+      obtain ⟨W₁, hW₁⟩ :=
+        exists_touchWalk_of_connected (X u).2.2 hp hp'
+      have hop : ∃ W₂ : (touchGraph d N).Walk p' q',
+          W₂.length ≤ 1 := by
+        by_cases hpq : p' = q'
+        · subst hpq
+          exact ⟨SimpleGraph.Walk.nil, Nat.zero_le 1⟩
+        · have hadj2 : (touchGraph d N).Adj p' q' := by
+            show (SimpleGraph.fromRel plaquetteTouches).Adj p' q'
+            rw [SimpleGraph.fromRel_adj]
+            exact ⟨hpq, Or.inl htouch⟩
+          refine ⟨SimpleGraph.Walk.cons hadj2 SimpleGraph.Walk.nil,
+            ?_⟩
+          rw [SimpleGraph.Walk.length_cons,
+            SimpleGraph.Walk.length_nil]
+      obtain ⟨W₂, hW₂⟩ := hop
+      obtain ⟨W₃, hW₃⟩ := ih hw'path q' hq' q hq
+      refine ⟨(W₁.append W₂).append W₃, ?_⟩
+      rw [SimpleGraph.Walk.length_append,
+        SimpleGraph.Walk.length_append,
+        SimpleGraph.Walk.length_cons,
+        SimpleGraph.Walk.support_cons]
+      rw [List.toFinset_cons,
+        Finset.sum_insert (fun hmem =>
+          hinotin (List.mem_toFinset.mp hmem))]
+      omega
+
+open Classical in
+/-- **B3c (the connecting bound):** plaquettes joined through a cluster
+of the connected lattice gas are within touching-distance twice the
+total plaquette count of the cluster. -/
+theorem cluster_dist_le {G : Type*} [Group G]
+    [MeasurableSpace G] [NeZero d]
+    (μ : MeasureTheory.Measure G) (pe : G → ℝ) (β : ℝ) {n : ℕ}
+    {X : Fin n → (connectedLatticePolymerSystem
+      (d := d) (N := N) μ pe β).Polymer}
+    (hX : KP.IsCluster (connectedLatticePolymerSystem
+      (d := d) (N := N) μ pe β) X)
+    {i₀ j₀ : Fin n} {p q : ConcretePlaquette d N}
+    (hp : p ∈ (X i₀).1) (hq : q ∈ (X j₀).1) :
+    (touchGraph d N).dist p q ≤ 2 * ∑ i, (X i).1.card := by
+  classical
+  obtain ⟨w⟩ := hX.preconnected i₀ j₀
+  obtain ⟨W, hW⟩ := exists_walk_through_cluster μ pe β
+    w.bypass (SimpleGraph.Walk.bypass_isPath w) p hp q hq
+  refine le_trans (SimpleGraph.dist_le W) (le_trans hW ?_)
+  have h1 : ∑ i' ∈ w.bypass.support.toFinset, (X i').1.card
+      ≤ ∑ i', (X i').1.card :=
+    Finset.sum_le_sum_of_subset (Finset.subset_univ _)
+  have h2 : w.bypass.length < n := by
+    have := (SimpleGraph.Walk.bypass_isPath w).length_lt
+    rwa [Fintype.card_fin] at this
+  have h3 : n ≤ ∑ i', (X i').1.card := by
+    calc n = ∑ _i' : Fin n, 1 := by
+          rw [Finset.sum_const, smul_eq_mul, mul_one,
+            Finset.card_univ, Fintype.card_fin]
+      _ ≤ ∑ i', (X i').1.card :=
+          Finset.sum_le_sum fun i' _ =>
+            Finset.card_pos.mpr (X i').2.1
+  omega
+
 end YangMills
