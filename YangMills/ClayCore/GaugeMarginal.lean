@@ -162,4 +162,49 @@ theorem integral_prod_edges_eq_zero {𝕜 : Type*} [RCLike 𝕜]
   rw [integral_prod_edges μ f hf]
   exact Finset.prod_eq_zero (Finset.mem_univ e₀) hmean
 
+/-- **Grouping a positionwise product into per-edge factors** (AL4.5,
+brick K).  A product over loop positions `i`, each factor reading the
+coordinate `x (π i)`, regroups as a product over the coordinate space
+of the collected fiber factors.  This is what turns one closed-path
+term of the trace expansion (`pathSum`, coupled across edges through
+its indices) into a genuine per-edge product `∏ₑ fₑ(x e)` — the shape
+`integral_prod_edges` consumes. -/
+theorem prod_comp_eq_prod_fiber {L : ℕ} {ε : Type*} [Fintype ε]
+    [DecidableEq ε] {α : Type*} {M : Type*} [CommMonoid M]
+    (π : Fin L → ε) (F : Fin L → α → M) (x : ε → α) :
+    ∏ i : Fin L, F i (x (π i))
+      = ∏ e : ε, ∏ i ∈ Finset.univ.filter (fun i => π i = e), F i (x e) := by
+  rw [← Finset.prod_fiberwise_of_maps_to (g := π)
+    (fun i _ => Finset.mem_univ (π i)) (fun i => F i (x (π i)))]
+  refine Finset.prod_congr rfl fun e _ => Finset.prod_congr rfl fun i hi => ?_
+  rw [(Finset.mem_filter.mp hi).2]
+
+/-- **The one-unbalanced-edge kill** (AL4.5, brick K, abstract form).
+A positionwise edge-product observable — e.g. one closed-path term of
+a Wilson-loop trace expansion times plaquette activities — has zero
+gauge expectation as soon as ONE positive edge's collected factor has
+zero Haar mean.  The SU(N) instantiation takes the collected factor
+to be an entry monomial of unbalanced `N`-ality and kills it with
+`sunHaarProb_fundMonomial_integral_zero` (AL3). -/
+theorem integral_positionProduct_eq_zero {𝕜 : Type*} [RCLike 𝕜]
+    (μ : Measure G) [IsProbabilityMeasure μ] {L : ℕ}
+    (π : Fin L → PosEdge d N) (F : Fin L → G → 𝕜)
+    (hF : ∀ i, AEStronglyMeasurable (F i) μ) (e₀ : PosEdge d N)
+    (hmean : ∫ g, ∏ i ∈ Finset.univ.filter (fun i => π i = e₀), F i g ∂μ
+      = 0) :
+    ∫ A, ∏ i : Fin L, F i (configToPos A (π i))
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ) = 0 := by
+  have hpt : (fun A : GaugeConfig d N G =>
+      ∏ i : Fin L, F i (configToPos A (π i)))
+      = fun A => ∏ e : PosEdge d N,
+          ∏ i ∈ Finset.univ.filter (fun i => π i = e),
+            F i (configToPos A e) := by
+    funext A
+    exact prod_comp_eq_prod_fiber π F (configToPos A)
+  rw [hpt]
+  exact integral_prod_edges_eq_zero μ
+    (fun e g => ∏ i ∈ Finset.univ.filter (fun i => π i = e), F i g)
+    (fun e => Finset.aestronglyMeasurable_fun_prod _ fun i _ => hF i)
+    e₀ hmean
+
 end YangMills

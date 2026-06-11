@@ -141,13 +141,28 @@ signed edge count `count e − count (reverse e)`, matching the repo's
 the reversed edge), `loopChain_reverse` (orientation-odd),
 `loopChain_append` (additive under concatenation, mirroring
 `wilsonLine_append`).  Oracle clean.
+**K (abstract form) CLOSED** (`ClayCore/GaugeMarginal.lean`):
+`prod_comp_eq_prod_fiber` (a positionwise product `∏ᵢ Fᵢ(x(π i))`
+regroups into per-edge fiber factors `∏ₑ ∏_{i: π i = e} Fᵢ(x e)` —
+what decouples one closed-path term of the trace expansion) and
+`integral_positionProduct_eq_zero` (the one-unbalanced-edge kill: the
+gauge expectation of a positionwise edge-product observable vanishes
+as soon as ONE positive edge's collected factor has zero Haar mean).
+Both oracle clean.  House note: state grouping lemmas with
+`[DecidableEq ε]`, NOT under `open Classical in` — otherwise the
+`filter`'s `DecidablePred` instance in the abstract lemma
+(`Classical.propDecidable`) mismatches the derived instance at the
+concrete type, and `exact` fails with two identically-printed types.
 **Open:** DB (per-term degree bookkeeping: each closed-path/activity
 term carries `σ : P → {±1}`; all-edge balance mod `N_c` ⟺
-`∂₂(indicatorChain S σ) = loopChain C` over `ZMod N_c`), K (the
-one-unbalanced-edge kill), J (the contrapositive join).  DB's key
+`∂₂(indicatorChain S σ) = loopChain C` over `ZMod N_c`; key
 structural fact: the per-edge SIGNED degree `n_e − m_e` of a term is
 independent of the path indices — fixed by the loop/plaquette
-incidence and the `σ` choices alone.
+incidence and the `σ` choices alone), and J (the contrapositive
+join).  The SU(N) instantiation of K's `hmean` is
+`sunHaarProb_fundMonomial_integral_zero` applied to the collected
+fiber factor — the bridge lemma "fiber factor of a path term IS a
+`fundMonomial` evaluation" is DB's first brick.
 
 **Then AL6:** `|⟨W_C⟩·Z| ≤ ∑_{|S| ≥ Area} (N_c·δ^{|S|})·(entropy)` —
 the `x/(1−Kx)` tail pattern from the correlator campaign, plus the
