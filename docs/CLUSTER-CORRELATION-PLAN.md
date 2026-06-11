@@ -362,6 +362,14 @@ identity is:
 Budgets: (i)-(ii) 1–2 cycles; (iii) 1–2; (iv) 3–5 (the big one);
 (v) 1–2; (vi) 4–8.
 
+**Progress (same session, commits `cd43ae6`, `dcfdbd1`, oracle-clean):**
+(i)–(ii) CLOSED — `IsOrdPartition` (+ `.injective`), `parts_card_le`,
+`finpartitionOfOrd` (+ parts simp), and
+**`sum_finpartition_eq_ordPartitions`** (the π-collapse; note
+`disjoint_self` is the ORDER-level name, and the biUnion/image bridge
+is `Finset.image_biUnion`).  Remaining: (iii) the X-split, (iv) the
+multinomial count, (v) cancellation, (vi) the analytic shell.
+
 **(historical) Remaining-work list before the above was closed:**
 
 1. (★) per-π fiber factorization:
