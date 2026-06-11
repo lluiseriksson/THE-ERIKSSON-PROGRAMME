@@ -1288,4 +1288,99 @@ theorem card_ordPartition_mul {N k : ℕ} (m : Fin k → ℕ)
   rw [← hfiber]
   exact hcardE
 
+open Classical in
+/-- **B0b (v-a): products split over ordered partitions** — a product
+over `Fin N` factors into per-block products through the order
+isomorphisms. -/
+lemma prod_split_ordPartition {N k : ℕ}
+    (σ : Fin k → Finset (Fin N)) (hσ : IsOrdPartition σ)
+    (f : Fin N → ℂ) :
+    ∏ j, f j
+    = ∏ i, ∏ l : Fin (σ i).card,
+        f (((σ i).orderIsoOfFin rfl l) : Fin N) := by
+  classical
+  calc ∏ j, f j = ∏ j ∈ Finset.univ.biUnion σ, f j := by
+        rw [hσ.2.2]
+    _ = ∏ i, ∏ j ∈ σ i, f j :=
+        Finset.prod_biUnion (fun i _ j _ hij => hσ.2.1 i j hij)
+    _ = ∏ i, ∏ l : Fin (σ i).card,
+          f (((σ i).orderIsoOfFin rfl l) : Fin N) := by
+        refine Finset.prod_congr rfl fun i _ => ?_
+        rw [← Finset.prod_coe_sort]
+        exact (Equiv.prod_comp ((σ i).orderIsoOfFin rfl).toEquiv
+          (fun x => f x)).symm
+
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **B0b (v-b): the size fibration** — ordered-partition sums of
+size-only weights collect by size vector, with the class count as
+coefficient. -/
+theorem sum_ordp_fiber_sizes {N k : ℕ} (W : ℕ → ℂ) :
+    ∑ σ ∈ (Finset.univ : Finset (Fin k → Finset (Fin N))).filter
+      (fun σ => IsOrdPartition σ),
+      ∏ i, W ((σ i).card)
+    = ∑ m ∈ (Fintype.piFinset
+        fun _ : Fin k => Finset.range (N + 1)).filter
+        (fun m => (∀ i, 1 ≤ m i) ∧ ∑ i, m i = N),
+        (((Finset.univ : Finset (Fin k → Finset (Fin N))).filter
+          (fun σ => IsOrdPartition σ ∧ ∀ i, (σ i).card = m i)).card
+          : ℂ) * ∏ i, W (m i) := by
+  classical
+  have hexpand : ∀ σ ∈ (Finset.univ :
+      Finset (Fin k → Finset (Fin N))).filter
+      (fun σ => IsOrdPartition σ),
+      ∏ i, W ((σ i).card)
+      = ∑ m ∈ (Fintype.piFinset
+          fun _ : Fin k => Finset.range (N + 1)).filter
+          (fun m => (∀ i, 1 ≤ m i) ∧ ∑ i, m i = N),
+          if (fun i => (σ i).card) = m
+          then ∏ i, W ((σ i).card) else 0 := by
+    intro σ hσ
+    have hord := (Finset.mem_filter.mp hσ).2
+    have hmem : (fun i => (σ i).card) ∈ (Fintype.piFinset
+        fun _ : Fin k => Finset.range (N + 1)).filter
+        (fun m => (∀ i, 1 ≤ m i) ∧ ∑ i, m i = N) := by
+      rw [Finset.mem_filter, Fintype.mem_piFinset]
+      refine ⟨fun i => Finset.mem_range.mpr ?_,
+        fun i => Finset.card_pos.mpr (hord.1 i), ?_⟩
+      · exact Nat.lt_succ_of_le (Finset.card_le_card
+          (Finset.subset_univ (σ i)) |>.trans
+          (by rw [Finset.card_univ, Fintype.card_fin]))
+      · calc ∑ i, (σ i).card
+            = (Finset.univ.biUnion σ).card :=
+              (Finset.card_biUnion
+                (fun i _ j _ hij => hord.2.1 i j hij)).symm
+          _ = N := by rw [hord.2.2, Finset.card_univ, Fintype.card_fin]
+    rw [Finset.sum_eq_single (fun i => (σ i).card)
+      (fun m _ hne => if_neg fun h => hne h.symm)
+      (fun habs => absurd hmem habs)]
+    exact (if_pos rfl).symm
+  rw [Finset.sum_congr rfl hexpand, Finset.sum_comm]
+  refine Finset.sum_congr rfl fun m hm => ?_
+  have hval : ∀ σ ∈ (Finset.univ :
+      Finset (Fin k → Finset (Fin N))).filter
+      (fun σ => IsOrdPartition σ),
+      (if (fun i => (σ i).card) = m
+        then ∏ i, W ((σ i).card) else 0)
+      = (if (fun i => (σ i).card) = m
+        then ∏ i, W (m i) else 0) := by
+    intro σ _
+    by_cases h : (fun i => (σ i).card) = m
+    · rw [if_pos h, if_pos h]
+      exact Finset.prod_congr rfl fun i _ => by rw [congrFun h i]
+    · rw [if_neg h, if_neg h]
+  rw [Finset.sum_congr rfl hval, ← Finset.sum_filter,
+    Finset.sum_const, nsmul_eq_mul, Finset.filter_filter]
+  have hsets : ((Finset.univ : Finset (Fin k → Finset (Fin N))).filter
+      (fun σ => IsOrdPartition σ ∧ (fun i => (σ i).card) = m))
+      = (Finset.univ : Finset (Fin k → Finset (Fin N))).filter
+        (fun σ => IsOrdPartition σ ∧ ∀ i, (σ i).card = m i) := by
+    refine Finset.filter_congr fun σ _ => ?_
+    constructor
+    · rintro ⟨hord, hfn⟩
+      exact ⟨hord, fun i => congrFun hfn i⟩
+    · rintro ⟨hord, hall⟩
+      exact ⟨hord, funext hall⟩
+  rw [hsets]
+
 end YangMills.KP
