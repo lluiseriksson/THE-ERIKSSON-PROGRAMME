@@ -3483,4 +3483,142 @@ theorem wilson_truncated_correlation_bound
     hδw0 hδg0 hbdw hbdg t ε ht0 hε0 hr hsmall S T k hdist hone
   rwa [weightedPartition_plaquetteWeight μ pe β] at h
 
+open Classical in
+/-- The Boltzmann weight as the full Mayer product:
+`∏_p (1 + f_p) = e^{−β·S(A)}`. -/
+lemma prod_one_add_plaquetteWeight (pe : G → ℝ) (β : ℝ)
+    (A : GaugeConfig d N G) :
+    ∏ p : ConcretePlaquette d N, (1 + plaquetteWeight pe β A p)
+      = Real.exp (-β * wilsonAction pe A) := by
+  classical
+  unfold plaquetteWeight
+  calc ∏ p : ConcretePlaquette d N,
+      (1 + (Real.exp (-β * pe (GaugeConfig.plaquetteHolonomy A p)) - 1))
+      = ∏ p : ConcretePlaquette d N,
+        Real.exp (-β * pe (GaugeConfig.plaquetteHolonomy A p)) :=
+        Finset.prod_congr rfl fun p _ => by ring
+    _ = Real.exp (∑ p : ConcretePlaquette d N,
+        -β * pe (GaugeConfig.plaquetteHolonomy A p)) :=
+        (Real.exp_sum _ _).symm
+    _ = Real.exp (-β * wilsonAction pe A) := by
+        congr 1
+        unfold wilsonAction
+        rw [← Finset.mul_sum]
+        exact rfl
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **THE GIBBS-FORM TRUNCATED-CORRELATION BOUND** — the IR clustering
+bound expressed through the genuine Gibbs integrals: for multiplicative
+local observables `O_R = ∏_{p∈R}(1+g_p)` with disjoint supports at
+touching-distance `≥ 2k`,
+
+    |E[O_S·O_T·e^{−βS}]·Z − E[O_S·e^{−βS}]·E[O_T·e^{−βS}]|
+      ≤ C·e^{−ε·k},
+
+`C` explicit and volume-free.  Dividing by `Z² > 0`
+(`partitionFunction_pos'`) gives the normalized covariance bound. -/
+theorem gibbs_truncated_correlation_bound
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B : ℝ} (hpe : ∀ g', |pe g'| ≤ B) (β : ℝ)
+    {g : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    (hlocg : IsLocalWeight (d := d) (N := N) (G := G) g)
+    (hmeasg : ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N G => g A p))
+    {δg : ℝ} (hδg0 : 0 ≤ δg) (hbdg : ∀ A p, |g A p| ≤ δg)
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      (((Real.exp (|β| * B) - 1) + δg +
+        (Real.exp (|β| * B) - 1) * δg) * Real.exp (t + ε + 1)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      ((((Real.exp (|β| * B) - 1) + δg +
+        (Real.exp (|β| * B) - 1) * δg) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (((Real.exp (|β| * B) - 1) + δg +
+            (Real.exp (|β| * B) - 1) * δg) *
+            Real.exp (t + ε + 1)))) ≤ t)
+    (S T : Finset (ConcretePlaquette d N)) (k : ℕ)
+    (hST : Disjoint S T)
+    (hdist : ∀ p ∈ S, ∀ q ∈ T, 2 * k ≤ (touchGraph d N).dist p q)
+    (hone : 4 * ((S.card : ℝ) * (T.card : ℝ)) * Real.exp (-(ε * k)) *
+      ((((Real.exp (|β| * B) - 1) + δg +
+        (Real.exp (|β| * B) - 1) * δg) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (((Real.exp (|β| * B) - 1) + δg +
+            (Real.exp (|β| * B) - 1) * δg) *
+            Real.exp (t + ε + 1)))) ≤ 1) :
+    |(∫ A, (∏ p ∈ S, (1 + g A p)) * (∏ p ∈ T, (1 + g A p)) *
+          Real.exp (-β * wilsonAction pe A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ)) *
+        partitionFunction (d := d) (N := N) μ pe β
+      - (∫ A, (∏ p ∈ S, (1 + g A p)) *
+          Real.exp (-β * wilsonAction pe A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ)) *
+        (∫ A, (∏ p ∈ T, (1 + g A p)) *
+          Real.exp (-β * wilsonAction pe A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ))|
+    ≤ (8 * ((S.card : ℝ) * (T.card : ℝ)) *
+        ((((Real.exp (|β| * B) - 1) + δg +
+          (Real.exp (|β| * B) - 1) * δg) * Real.exp (t + ε + 1)) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+            (((Real.exp (|β| * B) - 1) + δg +
+              (Real.exp (|β| * B) - 1) * δg) *
+              Real.exp (t + ε + 1)))) *
+        |∫ A, (∏ p ∈ S, (1 + g A p)) *
+          Real.exp (-β * wilsonAction pe A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ)| *
+        |∫ A, (∏ p ∈ T, (1 + g A p)) *
+          Real.exp (-β * wilsonAction pe A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ)|) *
+      Real.exp (-(ε * k)) := by
+  classical
+  have h := wilson_truncated_correlation_bound μ hpe_meas hpe β
+    hlocg hmeasg hδg0 hbdg t ε ht0 hε0 hr hsmall S T k hdist hone
+  -- the deformed partition functions ARE the Gibbs numerators
+  have hnum : ∀ R : Finset (ConcretePlaquette d N),
+      weightedPartition (d := d) (N := N) μ
+        (deformWeight (fun A p => plaquetteWeight pe β A p) g R)
+      = ∫ A, (∏ p ∈ R, (1 + g A p)) *
+          Real.exp (-β * wilsonAction pe A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+    intro R
+    rw [weightedPartition_deform]
+    congr 1
+    funext A
+    rw [prod_one_add_plaquetteWeight pe β A]
+  rw [hnum (S ∪ T), hnum S, hnum T] at h
+  -- split the union numerator over the disjoint supports
+  have hsplitInt : (∫ A, (∏ p ∈ S ∪ T, (1 + g A p)) *
+        Real.exp (-β * wilsonAction pe A)
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ))
+      = ∫ A, (∏ p ∈ S, (1 + g A p)) * (∏ p ∈ T, (1 + g A p)) *
+          Real.exp (-β * wilsonAction pe A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+    congr 1
+    funext A
+    rw [Finset.prod_union hST]
+  rw [hsplitInt] at h
+  -- collapse the complex norms to real absolute values
+  set Z1 : ℝ := ∫ A, (∏ p ∈ S, (1 + g A p)) *
+    (∏ p ∈ T, (1 + g A p)) * Real.exp (-β * wilsonAction pe A)
+    ∂(gaugeMeasureFrom (d := d) (N := N) μ) with hZ1
+  set Z2 : ℝ := partitionFunction (d := d) (N := N) μ pe β with hZ2
+  set Z3 : ℝ := ∫ A, (∏ p ∈ S, (1 + g A p)) *
+    Real.exp (-β * wilsonAction pe A)
+    ∂(gaugeMeasureFrom (d := d) (N := N) μ) with hZ3
+  set Z4 : ℝ := ∫ A, (∏ p ∈ T, (1 + g A p)) *
+    Real.exp (-β * wilsonAction pe A)
+    ∂(gaugeMeasureFrom (d := d) (N := N) μ) with hZ4
+  have hcast : ((Z1 : ℝ) : ℂ) * ((Z2 : ℝ) : ℂ)
+      - ((Z3 : ℝ) : ℂ) * ((Z4 : ℝ) : ℂ)
+      = (((Z1 * Z2 - Z3 * Z4 : ℝ)) : ℂ) := by
+    push_cast
+    ring
+  rw [hcast, Complex.norm_real, Real.norm_eq_abs,
+    Complex.norm_real, Real.norm_eq_abs,
+    Complex.norm_real, Real.norm_eq_abs] at h
+  exact h
+
 end YangMills
