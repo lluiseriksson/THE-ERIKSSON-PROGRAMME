@@ -776,4 +776,73 @@ theorem sun_two_plaquette_correlator_bound
     (fundamentalObservable_bounded N_c) β hfm hf hs0 t ε ht0 hε0
     hr hsmall p q k hpq hdist hone
 
+set_option maxHeartbeats 800000 in
+/-- **Non-vacuity of the SU(N) capstone:** for every dimension and
+every `N_c` there is an EXPLICIT coupling window `0 < |β| ≤ β₀` and
+scaling `s > 0` in which all hypotheses of
+`sun_two_plaquette_correlator_bound` hold (at `t = ε = 1`, for every
+separation `k`).  The genuine SU(N) clustering theorem has
+substance. -/
+lemma sun_clustering_window_nonempty (d N_c : ℕ) [NeZero N_c] :
+    ∃ β₀ : ℝ, 0 < β₀ ∧ ∃ s : ℝ, 0 < s ∧ ∀ β : ℝ, |β| ≤ β₀ →
+      (((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+        (((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+          (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+          Real.exp (1 + 1 + 1)) < 1 ∧
+      ((16 * d : ℕ) : ℝ) *
+        ((((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+          (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+          Real.exp (1 + 1 + 1)) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+            (((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+              (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+              Real.exp (1 + 1 + 1)))) ≤ 1 ∧
+      ∀ k : ℕ, 4 * Real.exp (-(1 * (k : ℝ))) *
+        ((((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+          (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+          Real.exp (1 + 1 + 1)) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+            (((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+              (Real.exp (|β| * (N_c : ℝ)) - 1) * s) *
+              Real.exp (1 + 1 + 1)))) ≤ 1) := by
+  classical
+  obtain ⟨δ₀, hδ₀pos, hwin⟩ := clustering_window_nonempty d
+  set δ₁ : ℝ := min δ₀ 1 with hδ₁def
+  have hδ₁pos : 0 < δ₁ := lt_min hδ₀pos one_pos
+  have hδ₁le1 : δ₁ ≤ 1 := min_le_right _ _
+  have hδ₁leδ₀ : δ₁ ≤ δ₀ := min_le_left _ _
+  have hNc : (0 : ℝ) < (N_c : ℝ) := by
+    exact_mod_cast Nat.pos_of_ne_zero (NeZero.ne N_c)
+  refine ⟨Real.log (1 + δ₁ / 4) / (N_c : ℝ), ?_, δ₁ / 4,
+    by positivity, ?_⟩
+  · refine div_pos (Real.log_pos ?_) hNc
+    linarith
+  intro β hβ
+  -- the Wilson bound in the window
+  have hδw : Real.exp (|β| * (N_c : ℝ)) - 1 ≤ δ₁ / 4 := by
+    have h1 : |β| * (N_c : ℝ) ≤ Real.log (1 + δ₁ / 4) := by
+      have h2 := mul_le_mul_of_nonneg_right hβ hNc.le
+      rwa [div_mul_cancel₀ _ hNc.ne'] at h2
+    have h3 : Real.exp (|β| * (N_c : ℝ)) ≤ 1 + δ₁ / 4 := by
+      calc Real.exp (|β| * (N_c : ℝ))
+          ≤ Real.exp (Real.log (1 + δ₁ / 4)) := Real.exp_le_exp.mpr h1
+        _ = 1 + δ₁ / 4 := Real.exp_log (by linarith)
+    linarith
+  have hδw0 : (0 : ℝ) ≤ Real.exp (|β| * (N_c : ℝ)) - 1 := by
+    have : (1 : ℝ) ≤ Real.exp (|β| * (N_c : ℝ)) := by
+      rw [← Real.exp_zero]
+      exact Real.exp_le_exp.mpr (by positivity)
+    linarith
+  -- the combined deformation bound lands in the δ₀-window
+  have hδ' : (Real.exp (|β| * (N_c : ℝ)) - 1) + δ₁ / 4 +
+      (Real.exp (|β| * (N_c : ℝ)) - 1) * (δ₁ / 4) ≤ δ₀ := by
+    have hsq : δ₁ * δ₁ ≤ δ₁ := by nlinarith
+    have hmul : (Real.exp (|β| * (N_c : ℝ)) - 1) * (δ₁ / 4)
+        ≤ (δ₁ / 4) * (δ₁ / 4) :=
+      mul_le_mul_of_nonneg_right hδw (by positivity)
+    nlinarith
+  have hδ'0 : (0 : ℝ) ≤ (Real.exp (|β| * (N_c : ℝ)) - 1) + δ₁ / 4 +
+      (Real.exp (|β| * (N_c : ℝ)) - 1) * (δ₁ / 4) := by positivity
+  exact hwin _ hδ'0 hδ'
+
 end YangMills
