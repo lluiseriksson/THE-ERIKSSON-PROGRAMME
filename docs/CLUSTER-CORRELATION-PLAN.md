@@ -656,9 +656,15 @@ surfaces were `pe`-specific.  Bricks:
   `weightedLatticePolymerSystem_ursell_eq` — the Ursell coefficients
   agree across ALL weighted gases by `rfl` (incomp never touches the
   activity field), so the four cluster sums differ only through
-  activity products.  Remaining for (c): the tuple-level four-term
-  cancellation and the restriction of the K-difference to connecting
-  tuples (tsum-level, with the four summabilities from W3).  (d) bound the
+  activity products.  **Tuple-level four-term cancellation CLOSED (commit `a5f82d9`,
+  green on first build, oracle clean):** `cluster_term_four_cancel` —
+  `ursell·(∏act_{FG} + ∏act_w − ∏act_F − ∏act_G) = 0` on every tuple
+  missing either region (activity congruence + `ring`; the cross-gas
+  type defeq lets one tuple feed all four activities).  Remaining for
+  (c): the tsum-level restriction — `K_{FG}+K−K_F−K_G =` the same
+  combination summed over tuples meeting BOTH regions (per-n
+  `Finset.sum_filter_of_ne` with the four-term zero, then tsum
+  linearity with the four W3 summabilities).  (d) bound the
   surviving sum by the weighted analogue of
   `connecting_cluster_decay` (transport of `connecting_pinned_le_GE`
   + the tilted criterion to the weighted gas) → **B4**: `hIRbound`
