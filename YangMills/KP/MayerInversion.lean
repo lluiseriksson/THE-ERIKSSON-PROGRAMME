@@ -1667,7 +1667,8 @@ def consE (k : ℕ) : ℕ × (Fin k → ℕ) ≃ (Fin (k + 1) → ℕ) where
 set_option maxHeartbeats 800000 in
 open Classical in
 /-- **B0b (vi), E1a: norm-summability of product families.** -/
-lemma summable_norm_prod_pow {a : ℕ → ℂ}
+lemma summable_norm_prod_pow {R : Type*} [NormedCommRing R]
+    [CompleteSpace R] {a : ℕ → R}
     (hA : Summable fun n => ‖a n‖) :
     ∀ k : ℕ, Summable fun f : Fin k → ℕ => ‖∏ i, a (f i)‖ := by
   intro k
@@ -1698,7 +1699,8 @@ set_option maxHeartbeats 800000 in
 open Classical in
 /-- **B0b (vi), E1b: the power Fubini** — powers of an absolutely
 convergent series are tsums over tuple spaces. -/
-lemma tsum_pow_eq_tsum_pi {a : ℕ → ℂ}
+lemma tsum_pow_eq_tsum_pi {R : Type*} [NormedCommRing R]
+    [CompleteSpace R] {a : ℕ → R}
     (hA : Summable fun n => ‖a n‖) :
     ∀ k : ℕ, (∑' n, a n) ^ k = ∑' f : Fin k → ℕ, ∏ i, a (f i) := by
   intro k
@@ -1723,5 +1725,50 @@ lemma tsum_pow_eq_tsum_pi {a : ℕ → ℂ}
             simp only [Fin.cons_zero, Fin.cons_succ]
         _ = ∑' g : Fin (k + 1) → ℕ, ∏ i, a (g i) :=
             Equiv.tsum_eq (consE k) (fun g => ∏ i, a (g i))
+
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **B0b (vi), E2: the master family is absolutely summable** over
+`Ω = Σ k, (Fin k → ℕ)` — per-`k` from E1a, across `k` by comparison
+with the exponential series. -/
+lemma summable_H {a : ℕ → ℂ} (hA : Summable fun n => ‖a n‖) :
+    Summable (fun ω : Σ _k : ℕ, (Fin _k → ℕ) =>
+      ‖((ω.1.factorial : ℂ))⁻¹ * ∏ i, a (ω.2 i)‖) := by
+  classical
+  have hnorm : ∀ (k : ℕ) (f : Fin k → ℕ),
+      ‖((k.factorial : ℂ))⁻¹ * ∏ i, a (f i)‖
+      = ((k.factorial : ℝ))⁻¹ * ‖∏ i, a (f i)‖ := by
+    intro k f
+    rw [norm_mul, norm_inv, Complex.norm_natCast]
+  have hA' : Summable fun n => ‖(‖a n‖)‖ :=
+    hA.congr fun n => (norm_norm _).symm
+  have hval : ∀ k : ℕ,
+      (∑' f : Fin k → ℕ, ‖((k.factorial : ℂ))⁻¹ * ∏ i, a (f i)‖)
+      = ((k.factorial : ℝ))⁻¹ * (∑' n, ‖a n‖) ^ k := by
+    intro k
+    calc ∑' f : Fin k → ℕ, ‖((k.factorial : ℂ))⁻¹ * ∏ i, a (f i)‖
+        = ∑' f : Fin k → ℕ,
+            ((k.factorial : ℝ))⁻¹ * ‖∏ i, a (f i)‖ :=
+          tsum_congr fun f => hnorm k f
+      _ = ((k.factorial : ℝ))⁻¹ * ∑' f : Fin k → ℕ, ‖∏ i, a (f i)‖ :=
+          tsum_mul_left
+      _ = ((k.factorial : ℝ))⁻¹
+            * ∑' f : Fin k → ℕ, ∏ i, ‖a (f i)‖ := by
+          rw [tsum_congr fun f : Fin k → ℕ => norm_prod _ _]
+      _ = ((k.factorial : ℝ))⁻¹ * (∑' n, ‖a n‖) ^ k := by
+          rw [← tsum_pow_eq_tsum_pi hA' k]
+  refine (summable_sigma_of_nonneg fun ω => norm_nonneg _).mpr
+    ⟨?_, ?_⟩
+  · intro k
+    refine Summable.congr
+      (((summable_norm_prod_pow hA k).mul_left
+        (((k.factorial : ℝ))⁻¹))) fun f => ?_
+    exact (hnorm k f).symm
+  · have hexp : Summable (fun k : ℕ =>
+        ((k.factorial : ℝ))⁻¹ * (∑' n, ‖a n‖) ^ k) := by
+      refine (Real.summable_pow_div_factorial
+        (∑' n, ‖a n‖)).congr fun k => ?_
+      rw [div_eq_mul_inv, mul_comm]
+    exact hexp.congr fun k => (hval k).symm
 
 end YangMills.KP
