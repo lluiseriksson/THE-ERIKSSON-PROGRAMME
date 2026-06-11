@@ -87,7 +87,53 @@ Total: a 6–10 session campaign — smaller than the roadmap's
 Peter–Weyl path (its L1 alone was 2500–5000 LOC, HIGH risk), with the
 single high-novelty item being AL1/AL5 (discrete surface theory).
 
-## 4. What this plan does not promise
+## 4. The join brick (AL4.5): from non-vanishing terms to balanced chains
+
+The one open brick (2026-06-11 design).  Everything else is banked:
+the expansion (`integral_mul_prod_one_add`), the per-edge split-off
+(`integral_single_coord_marginal`), the balance criterion
+(`sunHaarProb_fundMonomial_integral_zero`), and the area interface
+(`chainArea_le_card_of_support_subset` + `indicatorChain`).
+
+**Route (the one-unbalanced-edge shortcut).**  Do NOT build the full
+per-edge product factorization.  To kill a term it suffices to
+exhibit ONE unbalanced edge:
+
+1. **Trace expansion (TE):** `tr(∏_{i<L} U_i) = ∑_{k : Fin L → Fin N_c}
+   ∏_i (U_i)_{k i, k (i+1)}` — induction on `L` via `Matrix.mul_apply`.
+   Applied to `W_C` and to each `f_p` (taken in the linearized class:
+   `f_p` a `ℂ`-combination of degree-`(1,0)` and `(0,1)` monomials in
+   its four edge matrices — `tr U_p` and `conj tr U_p` terms).  After
+   full expansion, `T_S = ∑_terms ∫ ∏_{e} (fundMonomial of degree
+   (n_e, m_e) in x e)`.
+2. **Degree bookkeeping (DB):** per term, per edge `e`:
+   `n_e − m_e ≡ (loop multiplicity of e) + ∑_{p∈S} σ_p·(incidence of e
+   in p) (mod N_c)` where `σ_p ∈ {±1}` records which trace (or
+   conjugate) the term took from `f_p`.  DEFINE the term's chain as
+   `indicatorChain S σ : P → ZMod N_c`; the per-edge degree balance
+   `N_c ∣ (n_e − m_e)` for ALL `e` is then literally
+   `chainBoundary₂ σ = loopChain C` over `ZMod N_c`.
+3. **Kill (K):** if some `e₀` is unbalanced, write the integrand as
+   `F₀(x e₀)·F₁` (`F₁` ignores `e₀` — funext over the other factors),
+   apply `integral_single_coord_marginal`, then
+   `sunHaarProb_fundMonomial_integral_zero` at `e₀` ⇒ the term is `0`.
+4. **Join (J):** contrapositive — `T_S ≠ 0` ⇒ some index-term has all
+   edges balanced ⇒ its `σ`-chain satisfies `∂₂σ = loopChain C` with
+   `chainSupport σ ⊆ S` ⇒ `chainArea (loopChain C) ≤ |S|`
+   (`chainArea_le_card_of_support_subset`).  This is AL5's statement,
+   discharged.
+
+**Lean order:** TE first (self-contained `Matrix` lemma, `L0` or
+`ClayCore` level), then `loopChain` (the `1`-chain of a Wilson loop —
+needs the loop as an edge list with orientations, cf. `WilsonLine`),
+then DB+K per-term, then J.  Estimated 2–3 sessions; TE and
+`loopChain` are independent and can be built/verified separately.
+
+**Then AL6:** `|⟨W_C⟩·Z| ≤ ∑_{|S| ≥ Area} (N_c·δ^{|S|})·(entropy)` —
+the `x/(1−Kx)` tail pattern from the correlator campaign, plus the
+non-vacuity window.
+
+## 5. What this plan does not promise
 
 The area law is still M3-lattice-side (Osterwalder–Seiler).  It does
 not touch the continuum, OS reconstruction, or the Clay problem
