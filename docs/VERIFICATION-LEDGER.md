@@ -317,6 +317,43 @@ hypothesis of `lattice_mass_gap_of_clustering_uniform`: B2 (the
 covariance identity for deformed gases) + B4 (assembly).  All M3
 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 9 (2026-06-11, the weighted gas + THE COVARIANCE IDENTITY)
+
+**Build:** `lake build YangMillsCore` — green at `c700d42` (8228 jobs).
+**Source scan:** zero `sorry`/`axiom` (unchanged).
+
+Oracle outputs (verbatim):
+
+```
+'YangMills.integral_prod_prod_weight_of_pairwiseDisjoint'  [propext, Classical.choice, Quot.sound]
+'YangMills.weightedPartition_eq_sum'                  [propext, Classical.choice, Quot.sound]
+'YangMills.weightedPartition_plaquetteWeight'         [propext, Classical.choice, Quot.sound]
+'YangMills.weightedPartition_eq_partition'            [propext, Classical.choice, Quot.sound]
+'YangMills.weightedLatticePolymerSystem_kpCriterion_volumeUniform'
+                                                      [propext, Classical.choice, Quot.sound]
+'YangMills.weightedPartition_eq_exp_clusterSum'       [propext, Classical.choice, Quot.sound]
+'YangMills.weightedPartition_deform'                  [propext, Classical.choice, Quot.sound]
+'YangMills.cluster_term_four_cancel'                  [propext, Classical.choice, Quot.sound]
+'YangMills.clusterSum_inclusion_exclusion'            [propext, Classical.choice, Quot.sound]
+'YangMills.covariance_identity'                       [propext, Classical.choice, Quot.sound]
+```
+
+Plain language: the entire `Z = Ξ = exp(K)` chain now holds for
+**arbitrary bounded measurable local weight families**, volume-uniformly
+(`WeightedGas.lean` + `PolymerRepresentation.lean`).  Multiplicative
+local observables `∏_{p∈T}(1+g_p)` absorb into deformed weights, the
+four-gas inclusion–exclusion `K_{FG}+K−K_F−K_G` cancels termwise off
+clusters connecting the two regions, and the endpoint is
+
+    Z[FG]·Z = Z[F]·Z[G]·exp(connecting cluster sum)
+
+— **the covariance identity**, division-free, with all constants
+depending only on `d`, the weight bounds, and `t`.  Remaining for the
+IR side of M3: bound the connecting sum by the (already proved,
+Wilson-gas) exponential decay mechanism transported to the weighted
+gas, and assemble `hIRbound`.  All M3 lattice-side; M4/M5/Clay
+untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

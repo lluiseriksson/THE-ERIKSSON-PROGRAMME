@@ -208,14 +208,23 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   `Z = exp(clusterSum)` at high temperature; in particular `Z ≠ 0`.
   `docs/VERIFICATION-LEDGER.md` addendum 8;
   `docs/CLUSTER-CORRELATION-PLAN.md` §2e.
-- **NEXT TARGET — B2, the covariance identity.** For plaquette-local
-  multiplicative observables (deformed Mayer weights
-  `f_p ↦ f_p·(1+s·g_p)`), apply the SAME `Z = Ξ` machinery to the
-  deformed gas: `⟨F⟩·Z = Z_F` (deformed `pe`/weights), hence
-  `⟨FG⟩/⟨F⟩⟨G⟩ = exp(K_{FG} + K − K_F − K_G)`; the exponent's
-  cluster sums cancel except on clusters connecting the two supports
-  (inclusion–exclusion), which `connecting_cluster_decay` bounds →
-  B4: discharge the IR hypothesis of
+- **B2, THE COVARIANCE IDENTITY — CLOSED (2026-06-11,
+  `covariance_identity` in L1_GibbsMeasure/PolymerRepresentation.lean).**
+  The full weighted-gas campaign (W1–W4c, `WeightedGas.lean` +
+  PolymerRepresentation): arbitrary bounded measurable LOCAL weight
+  families satisfy `Z[w] = Ξ[w] = exp(K[w])` volume-uniformly;
+  multiplicative observables absorb into deformed weights
+  (`weightedPartition_deform`); the four-gas inclusion–exclusion
+  `K_{FG}+K−K_F−K_G` is supported on CONNECTING tuples
+  (`clusterSum_inclusion_exclusion`); and
+  **`Z[FG]·Z = Z[F]·Z[G]·exp(connecting cluster sum)`** — the
+  division-free covariance identity.
+  `docs/CLUSTER-CORRELATION-PLAN.md` §2e (the W-campaign log).
+- **NEXT TARGET — W4d + B4.** Bound the connecting cluster sum:
+  transport `connecting_pinned_le_GE`/`connecting_cluster_decay` to
+  the weighted gas, symmetrize the unpinned connecting filter to
+  pinned sums (the `PinnedCluster.lean` machinery), conclude
+  `|⟨FG⟩−⟨F⟩⟨G⟩| ≤ C·e^{−m·dist(S_F,S_G)}` → discharge `hIRbound` of
   `lattice_mass_gap_of_clustering_uniform` (M3's remaining analytic
   input besides UV).
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the
