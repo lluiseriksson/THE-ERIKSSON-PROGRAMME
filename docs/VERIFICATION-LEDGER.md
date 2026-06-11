@@ -388,6 +388,14 @@ Boltzmann weight,
 real absolute values, `C` explicit and volume-free.  Divide by
 `Z² > 0` (`partitionFunction_pos'`) for the normalized covariance.
 
+And the M3 adapter (`lattice_mass_gap_of_exp_clustering_uniform`,
+`Paper/ClusteringToGap.lean`, oracle clean): the uniform lattice mass
+gap consuming the IR bound in exactly this `e^{−εk}` shape
+(`r := e^{−ε}`).  **The IR hypothesis of the strong-coupling lattice
+mass gap is now fed by a theorem; the only hypothesis-carried input
+left in the M3 assembly is the §6.3 single-scale UV bound (the
+Balaban input, deliberately carried — never an axiom).**
+
 Plain language: **the infrared clustering bound of the strong-coupling
 lattice theory is machine-checked end to end.**  For multiplicative
 local observables with supports at touching-distance `≥ 2k`,
