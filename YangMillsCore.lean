@@ -70,6 +70,7 @@ import YangMills.L1_GibbsMeasure.ClusterGeometry
 import YangMills.L1_GibbsMeasure.PolymerRepresentation
 import YangMills.L1_GibbsMeasure.WeightedGas
 import YangMills.L1_GibbsMeasure.TwoPlaquetteCorrelator
+import YangMills.L1_GibbsMeasure.EdgeFactorization
 import YangMills.KP.PinnedCluster
 import YangMills.KP.PinnedWalk
 import YangMills.KP.PinnedBound
