@@ -624,4 +624,74 @@ theorem two_plaquette_correlator_bound_normalized
   refine le_trans h (le_of_eq ?_)
   field_simp <;> ring
 
+set_option maxHeartbeats 800000 in
+/-- **Non-vacuity of the clustering window (adversarial audit):** at
+`t = ε = 1`, the three smallness hypotheses of
+`two_plaquette_correlator_bound(_normalized)` are SIMULTANEOUSLY
+satisfiable for every dimension — every `0 ≤ δ' ≤ δ₀(d)` works, with
+`δ₀(d) > 0` explicit.  Since `δ' = (e^{|β|B}−1) + s + (e^{|β|B}−1)·s
+→ 0` as `β, s → 0`, the `(β, s)`-window is nonempty: the clustering
+theorems are not vacuous. -/
+lemma clustering_window_nonempty (d : ℕ) :
+    ∃ δ₀ : ℝ, 0 < δ₀ ∧ ∀ δ' : ℝ, 0 ≤ δ' → δ' ≤ δ₀ →
+      ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ' * Real.exp (1 + 1 + 1)) < 1 ∧
+      ((16 * d : ℕ) : ℝ) * ((δ' * Real.exp (1 + 1 + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (δ' * Real.exp (1 + 1 + 1)))) ≤ 1 ∧
+      ∀ k : ℕ, 4 * Real.exp (-(1 * (k : ℝ))) *
+        ((δ' * Real.exp (1 + 1 + 1)) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+            (δ' * Real.exp (1 + 1 + 1)))) ≤ 1 := by
+  set K : ℝ := ((16 * d + 1 : ℕ) : ℝ) with hKdef
+  have hK1 : (1 : ℝ) ≤ K := by
+    rw [hKdef]
+    exact_mod_cast Nat.le_add_left 1 (16 * d)
+  have hd0 : (0 : ℝ) ≤ (d : ℝ) := Nat.cast_nonneg d
+  refine ⟨((K ^ 2 + 64 * (d : ℝ) + 8) * Real.exp (1 + 1 + 1))⁻¹,
+    by positivity, ?_⟩
+  intro δ' hδ'0 hδ'le
+  set x : ℝ := δ' * Real.exp (1 + 1 + 1) with hxdef
+  have hx0 : (0 : ℝ) ≤ x := by positivity
+  -- the master inequality: x·(K² + 64d + 8) ≤ 1
+  have hxu : x * (K ^ 2 + 64 * (d : ℝ) + 8) ≤ 1 := by
+    have h2 : ((K ^ 2 + 64 * (d : ℝ) + 8) * Real.exp (1 + 1 + 1))⁻¹ *
+        Real.exp (1 + 1 + 1) = (K ^ 2 + 64 * (d : ℝ) + 8)⁻¹ := by
+      rw [mul_inv]
+      field_simp
+    calc x * (K ^ 2 + 64 * (d : ℝ) + 8)
+        ≤ (K ^ 2 + 64 * (d : ℝ) + 8)⁻¹ *
+          (K ^ 2 + 64 * (d : ℝ) + 8) := by
+          refine mul_le_mul_of_nonneg_right ?_ (by positivity)
+          rw [hxdef, ← h2]
+          exact mul_le_mul_of_nonneg_right hδ'le (Real.exp_pos _).le
+      _ = 1 := inv_mul_cancel₀ (by positivity)
+  -- hr
+  have hr : K ^ 2 * x < 1 := by
+    rcases eq_or_lt_of_le hx0 with h0 | hpos
+    · rw [← h0]
+      norm_num
+    · nlinarith
+  have hD : (0 : ℝ) < 1 - K ^ 2 * x := by linarith
+  have h16 : ((16 * d : ℕ) : ℝ) = 16 * (d : ℝ) := by push_cast; ring
+  refine ⟨hr, ?_, ?_⟩
+  · -- hsmall at t = 1
+    rw [h16, ← mul_div_assoc, div_le_one hD]
+    nlinarith
+  · -- hone for every k
+    intro k
+    have hexp1 : Real.exp (-(1 * (k : ℝ))) ≤ 1 := by
+      refine Real.exp_le_one_iff.mpr ?_
+      have hk : (0 : ℝ) ≤ (k : ℝ) := Nat.cast_nonneg k
+      linarith
+    have hM0 : (0 : ℝ) ≤ x / (1 - K ^ 2 * x) :=
+      div_nonneg hx0 hD.le
+    calc 4 * Real.exp (-(1 * (k : ℝ))) * (x / (1 - K ^ 2 * x))
+        ≤ 4 * 1 * (x / (1 - K ^ 2 * x)) := by
+          refine mul_le_mul_of_nonneg_right ?_ hM0
+          exact mul_le_mul_of_nonneg_left hexp1 (by norm_num)
+      _ = 4 * (x / (1 - K ^ 2 * x)) := by ring
+      _ ≤ 1 := by
+          rw [← mul_div_assoc, div_le_one hD]
+          nlinarith
+
 end YangMills
