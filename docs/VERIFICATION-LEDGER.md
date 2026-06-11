@@ -275,6 +275,47 @@ Half B): correlators as differences of `log Ξ`-type quantities are now
 expressible through cluster sums with the proved volume-uniform decay
 engine (Half A).  All M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 8 (2026-06-11, the connecting decay + the `Z = Ξ` gate)
+
+**Build:** `lake build YangMillsCore` — green at `6bba786` (8227 jobs).
+**Source scan:** zero `sorry`/`axiom` in
+`YangMills/L1_GibbsMeasure/` and `YangMills/KP/` (unchanged).
+
+Oracle outputs (verbatim):
+
+```
+'YangMills.cluster_dist_le'                           [propext, Classical.choice, Quot.sound]
+'YangMills.connecting_cluster_decay'                  [propext, Classical.choice, Quot.sound]
+'YangMills.plaqComponents_biUnion'                    [propext, Classical.choice, Quot.sound]
+'YangMills.plaqComponents_not_touching'               [propext, Classical.choice, Quot.sound]
+'YangMills.plaqComponents_support_disjoint'           [propext, Classical.choice, Quot.sound]
+'YangMills.plaqComponents_isConnectedPolymer'         [propext, Classical.choice, Quot.sound]
+'YangMills.plaqComponents_biUnion_eq'                 [propext, Classical.choice, Quot.sound]
+'YangMills.plaqComponents_disjoint'                   [propext, Classical.choice, Quot.sound]
+'YangMills.mem_componentFamily_iff'                   [propext, Classical.choice, Quot.sound]
+'YangMills.prod_componentFamily'                      [propext, Classical.choice, Quot.sound]
+'YangMills.partitionFunction_eq_partition'            [propext, Classical.choice, Quot.sound]
+```
+
+Plain language: two campaign endpoints.  (1) **The volume-uniform IR
+decay mechanism** (`connecting_cluster_decay`,
+`L1_GibbsMeasure/ClusterGeometry.lean`): the total pinned cluster sum
+over clusters through `p` that also touch `q` is bounded by
+`exp(−ε·d(p,q)/2)·x/(1−(16d+1)²x)` — every constant depends only on
+`d, B, β, t, ε`.  (2) **The measure-side identification**
+(`partitionFunction_eq_partition`,
+`L1_GibbsMeasure/PolymerRepresentation.lean`): the Wilson-action
+partition function equals the polymer-gas partition function of the
+connected lattice gas — proved by the component bijection
+(`plaqComponents`: parts of the reachability partition of the
+touching graph; `componentFamily`: their instance-free polymer lift),
+with values matched by the polymer factorization integral.  Composed
+with addendum 7: **`Z = exp(clusterSum)` at high temperature**, hence
+`Z ≠ 0`, with volume-uniform constants.  What remains for the IR
+hypothesis of `lattice_mass_gap_of_clustering_uniform`: B2 (the
+covariance identity for deformed gases) + B4 (assembly).  All M3
+lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

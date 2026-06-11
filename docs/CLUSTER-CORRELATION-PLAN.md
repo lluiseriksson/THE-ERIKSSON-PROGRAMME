@@ -543,6 +543,54 @@ pointwise-class pattern); (iii) the `sum_nbij'` bijection
 `integral_prod_prod_plaquetteWeight_of_pairwiseDisjoint`, yielding
 `partitionFunction = partition P univ`.
 
+**STEP 2 CLOSED (2026-06-11, commits `23008b4`, `f069760`, `6bba786`;
+all oracle-clean `[propext, Classical.choice, Quot.sound]`).**
+
+* (i) `plaqComponents_isConnectedPolymer` (+ packaging
+  `plaqComponents_polymer_mem`): a reachability part is
+  adjacency-closed (`part_eq_of_mem` + `mem_part_ofSetoid_iff_rel`),
+  so the realizing ambient walk pulls back vertex-by-vertex (walk
+  induction; the inner `≠` via `Subtype.mk_eq_mk.mp`, NOT
+  `congrArg Subtype.val` — the latter pins to the outer subtype).
+  Endpoint identification by **subtype eta**: `⟨x.1, h⟩ ≡ x` is
+  definitional in Lean 4, so `Reachable.map` along the inline hom
+  literal closes by bare `exact`, zero rewriting.
+* (ii) `plaqComponents_biUnion_eq` (green on FIRST build): the class
+  of any point of a member `c` of a pairwise support-disjoint
+  connected family is `c` itself — adjacency cannot leave `c`
+  (crossing + `Disjoint.mono_left/right`), and `c`'s own connectivity
+  reaches all of it (`Reachable.map`, endpoints by eta).  Plus
+  `plaqComponents_disjoint` (set-disjointness via double
+  `part_eq_of_mem`).
+* (iii) **`partitionFunction_eq_partition`**
+  (`L1_GibbsMeasure/PolymerRepresentation.lean`, NEW file):
+  `(Z : ℂ) = KP.partition (connectedLatticePolymerSystem μ pe β) univ`
+  under `Measurable pe`, `|pe| ≤ B`, the measurable-group instances.
+  Route: `partitionFunction_eq_sum_plaquetteSets'` →
+  `Finset.sum_nbij'` with `i := componentFamily` (components lifted
+  to polymers via **instance-free `Finset.map`**) and `j := union`;
+  inverses by `plaqComponents_biUnion` + the reconstruction; values
+  by `hfg`-rewrite inside the integral (`prod_biUnion` on
+  set-disjoint components), the factorization integral, and
+  activity-by-definition (`prod_componentFamily`, per-element `rfl`).
+  **Idioms (hard-won):** (a) do NOT use `Finset.image` for the
+  polymer lift — the `DecidableEq` elaborated inside the proof
+  (`Subtype.instDecidableEq`) differs from the `refine`-time one
+  (`Classical.propDecidable`); Decidable instances are DATA, the calc
+  link is NOT defeq.  `Finset.map` has no instance argument — seam
+  killed.  (b) Pass `i` as a partial application, not a lambda —
+  `sum_nbij'` goals then contain no unreduced redexes; `j`-side
+  lambda redexes handled by `show`-retyping at bullet starts.  (c)
+  The embedding's injectivity hypothesis must be retyped
+  `show … from h` before `Subtype.mk_eq_mk` fires (the `.Polymer`
+  projection blocks unification).
+
+**Composition now available:** `(Z : ℂ) = Ξ = exp(clusterSum)` for
+the connected lattice gas whenever the KP criterion holds —
+`partitionFunction_eq_partition` ∘ `partition_eq_exp_clusterSum_of_kp`
+with the volume-uniform tilted criterion.  In particular `Z ≠ 0` at
+high temperature.
+
 **Then B2** (the covariance): for plaquette-local multiplicative
 observables `F` (deformations `f_p ↦ f_p·(1+s·g_p)` supported on
 `S_F`), `⟨F⟩ = Ξ_F/Ξ` (step 2 applied to the deformed gas — SAME

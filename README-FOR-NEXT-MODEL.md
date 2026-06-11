@@ -196,12 +196,26 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   (`connectedLattice_pinned_tail_volumeUniform` — exponential
   size-tail decay).  `docs/VERIFICATION-LEDGER.md` addendum 7;
   `docs/CLUSTER-CORRELATION-PLAN.md` is the campaign log.
-- **NEXT TARGET — cluster-correlation chain, Half B.** With
-  `Ξ = exp(clusterSum)` proved, express truncated correlators as
-  differences of cluster sums (B1: source-deformed gases; B2: the
-  covariance identity — now WITH its prerequisite in hand; B3:
-  connecting-cluster geometry), feed Half A's tail bound, and
-  discharge the IR hypothesis of
+- **HALF B GEOMETRY + THE `Z = Ξ` GATE — CLOSED (2026-06-10/11).**
+  `connecting_cluster_decay` (L1_GibbsMeasure/ClusterGeometry.lean):
+  pinned cluster sums restricted to clusters touching a distant
+  plaquette decay exponentially in the touching-distance, all
+  constants volume-free.  And **`partitionFunction_eq_partition`**
+  (L1_GibbsMeasure/PolymerRepresentation.lean): `(Z : ℂ) =
+  KP.partition(connected gas, univ)` — the measure-side
+  identification, via the component bijection (`plaqComponents` +
+  `componentFamily`).  Composed with the Mayer–Ursell inversion:
+  `Z = exp(clusterSum)` at high temperature; in particular `Z ≠ 0`.
+  `docs/VERIFICATION-LEDGER.md` addendum 8;
+  `docs/CLUSTER-CORRELATION-PLAN.md` §2e.
+- **NEXT TARGET — B2, the covariance identity.** For plaquette-local
+  multiplicative observables (deformed Mayer weights
+  `f_p ↦ f_p·(1+s·g_p)`), apply the SAME `Z = Ξ` machinery to the
+  deformed gas: `⟨F⟩·Z = Z_F` (deformed `pe`/weights), hence
+  `⟨FG⟩/⟨F⟩⟨G⟩ = exp(K_{FG} + K − K_F − K_G)`; the exponent's
+  cluster sums cancel except on clusters connecting the two supports
+  (inclusion–exclusion), which `connecting_cluster_decay` bounds →
+  B4: discharge the IR hypothesis of
   `lattice_mass_gap_of_clustering_uniform` (M3's remaining analytic
   input besides UV).
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the
@@ -212,8 +226,9 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
 - **Beyond — M4/M5, the Clay wall:** continuum limit + OS/Wightman reconstruction. Open
   mathematics. Do not formalize until it exists on paper (`HORIZON.md §4`).
 
-The sharp-KP campaign is **done**. T4 is a project. M4/M5 is original research.
-Read `docs/DEPENDENCY-GRAPH.md` and `docs/VERIFICATION-LEDGER.md` (6 addenda)
+The sharp-KP campaign is **done**. The Mayer–Ursell inversion and the
+`Z = Ξ` gate are **done**. T4 is a project. M4/M5 is original research.
+Read `docs/DEPENDENCY-GRAPH.md` and `docs/VERIFICATION-LEDGER.md` (8 addenda)
 for the complete machine-checked state.
 
 ---
