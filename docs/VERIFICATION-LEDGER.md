@@ -420,6 +420,12 @@ of the lattice volume AND of `Z`.  **Exponential clustering of the
 lattice gauge theory's two-point functions at small coupling is
 machine-checked end to end.**
 
+Non-vacuity (adversarial audit, `clustering_window_nonempty`, oracle
+clean): at `t = ε = 1` the three smallness hypotheses are
+simultaneously satisfiable for every dimension, with explicit
+`δ₀(d) = ((K²+64d+8)·e³)⁻¹ > 0`; the `(β, s)`-window is nonempty —
+the clustering theorems are not vacuous.
+
 Plain language: **the infrared clustering bound of the strong-coupling
 lattice theory is machine-checked end to end.**  For multiplicative
 local observables with supports at touching-distance `≥ 2k`,
