@@ -282,4 +282,42 @@ theorem chainSupport_indicatorChain_subset
   by_contra hnot
   exact hne (if_neg hnot)
 
+open Classical in
+/-- The **`1`-chain of a Wilson path**: each traversed edge counted
+`+1`, antisymmetrized against the reversed orientation.  This is the
+orientation-odd representative — the object whose spanning surface
+the area law measures (TE-2 of the AL4.5 join,
+`docs/AREA-LAW-PLAN.md` §4). -/
+noncomputable def loopChain
+    (es : List (E (d := d) (N := N) (G := G))) :
+    E (d := d) (N := N) (G := G) → R :=
+  fun e => (es.count e : R) - (es.count (reverse e) : R)
+
+open Classical in
+@[simp] theorem loopChain_nil :
+    loopChain (R := R) ([] : List (E (d := d) (N := N) (G := G))) = 0 := by
+  funext e
+  simp [loopChain]
+
+open Classical in
+/-- The loop chain is **orientation-odd**: reversing the probe edge
+flips the sign. -/
+theorem loopChain_reverse
+    (es : List (E (d := d) (N := N) (G := G)))
+    (e : E (d := d) (N := N) (G := G)) :
+    loopChain (R := R) es (reverse e) = - loopChain (R := R) es e := by
+  simp only [loopChain, reverse_involutive e]
+  ring
+
+open Classical in
+/-- The loop chain is **additive under path concatenation** — Wilson
+lines compose, and so do their chains. -/
+theorem loopChain_append
+    (es₁ es₂ : List (E (d := d) (N := N) (G := G))) :
+    loopChain (R := R) (es₁ ++ es₂)
+      = fun e => loopChain (R := R) es₁ e + loopChain (R := R) es₂ e := by
+  funext e
+  simp only [loopChain, List.count_append, Nat.cast_add]
+  ring
+
 end YangMills

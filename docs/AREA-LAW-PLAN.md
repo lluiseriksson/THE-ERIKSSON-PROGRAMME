@@ -129,6 +129,26 @@ needs the loop as an edge list with orientations, cf. `WilsonLine`),
 then DB+K per-term, then J.  Estimated 2–3 sessions; TE and
 `loopChain` are independent and can be built/verified separately.
 
+**TE-1 CLOSED** (`ClayCore/TracePathExpansion.lean`): `pathSum`
+(recursive path-sum, chosen over `Fin L → ι` indexing so downstream
+inductions peel one edge structurally), `list_prod_apply`
+(`l.prod i j = pathSum l i j`), `trace_list_prod_eq_sum_pathSum`
+(trace = sum over closed paths).  Oracle clean — `[propext,
+Quot.sound]` only.
+**TE-2 CLOSED** (`ChainComplex.lean`): `loopChain` (orientation-odd
+signed edge count `count e − count (reverse e)`, matching the repo's
+`wilsonLine`-over-edge-list convention where backward traversal IS
+the reversed edge), `loopChain_reverse` (orientation-odd),
+`loopChain_append` (additive under concatenation, mirroring
+`wilsonLine_append`).  Oracle clean.
+**Open:** DB (per-term degree bookkeeping: each closed-path/activity
+term carries `σ : P → {±1}`; all-edge balance mod `N_c` ⟺
+`∂₂(indicatorChain S σ) = loopChain C` over `ZMod N_c`), K (the
+one-unbalanced-edge kill), J (the contrapositive join).  DB's key
+structural fact: the per-edge SIGNED degree `n_e − m_e` of a term is
+independent of the path indices — fixed by the loop/plaquette
+incidence and the `σ` choices alone.
+
 **Then AL6:** `|⟨W_C⟩·Z| ≤ ∑_{|S| ≥ Area} (N_c·δ^{|S|})·(entropy)` —
 the `x/(1−Kx)` tail pattern from the correlator campaign, plus the
 non-vacuity window.
