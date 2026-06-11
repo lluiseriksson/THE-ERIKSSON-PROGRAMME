@@ -537,4 +537,93 @@ lemma plaqComponents_support_disjoint
   obtain ⟨p, hp, q, hq, htouch⟩ := exists_touching_of_not_disjoint hnd
   exact plaqComponents_not_touching hc hc' hne p hp q hq htouch
 
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **Each touching component is a connected polymer** — the
+connectivity brick of step 2.  A part of the reachability partition is
+a reachability class; the class is closed under adjacency, so a
+realizing walk in the ambient subtype graph never leaves the class and
+pulls back, vertex by vertex, to the component's own touching graph. -/
+lemma plaqComponents_isConnectedPolymer
+    {S : Finset (ConcretePlaquette d N)}
+    {c : Finset (ConcretePlaquette d N)} (hc : c ∈ plaqComponents S) :
+    IsConnectedPolymer c := by
+  classical
+  have hne := plaqComponents_nonempty hc
+  unfold plaqComponents at hc
+  rw [Finset.mem_image] at hc
+  obtain ⟨B, hB, rfl⟩ := hc
+  -- membership in the imaged part is membership in the part
+  have hmemc : ∀ z : ↥S, z.1 ∈ B.image Subtype.val ↔ z ∈ B := by
+    intro z
+    rw [Finset.mem_image]
+    constructor
+    · rintro ⟨w, hw, hwz⟩
+      rwa [Subtype.ext hwz] at hw
+    · intro hz
+      exact ⟨z, hz, rfl⟩
+  -- the part is closed under ambient adjacency
+  have hclosed : ∀ {z z' : ↥S}, z ∈ B →
+      (SimpleGraph.fromRel (fun p q : ↥S =>
+        plaquetteTouches p.1 q.1)).Adj z z' → z' ∈ B := by
+    intro z z' hz hadj
+    have h1 := (Finpartition.ofSetoid _).part_eq_of_mem hB hz
+    rw [← h1]
+    exact Finpartition.mem_part_ofSetoid_iff_rel.mpr hadj.reachable
+  -- walk pullback: an ambient walk starting in the part stays in the
+  -- part and transports to the component's touching graph
+  have key : ∀ {u v : ↥S}
+      (w : (SimpleGraph.fromRel (fun p q : ↥S =>
+        plaquetteTouches p.1 q.1)).Walk u v) (hu : u ∈ B),
+      ∃ hv : v ∈ B,
+        (SimpleGraph.fromRel (fun p q : ↥(B.image Subtype.val) =>
+          plaquetteTouches p.1 q.1)).Reachable
+          ⟨u.1, (hmemc u).mpr hu⟩ ⟨v.1, (hmemc v).mpr hv⟩ := by
+    intro u v w
+    induction w with
+    | nil =>
+        intro hu
+        exact ⟨hu, ⟨SimpleGraph.Walk.nil⟩⟩
+    | @cons u z v h w' ih =>
+        intro hu
+        have hz : z ∈ B := hclosed hu h
+        obtain ⟨hv, hr⟩ := ih hz
+        have hadj : (SimpleGraph.fromRel
+            (fun p q : ↥(B.image Subtype.val) =>
+              plaquetteTouches p.1 q.1)).Adj
+            ⟨u.1, (hmemc u).mpr hu⟩ ⟨z.1, (hmemc z).mpr hz⟩ := by
+          rw [SimpleGraph.fromRel_adj] at h ⊢
+          exact ⟨fun heq => h.1
+            (Subtype.ext (Subtype.mk_eq_mk.mp heq)), h.2⟩
+        exact ⟨hv, hadj.reachable.trans hr⟩
+  unfold IsConnectedPolymer
+  rw [SimpleGraph.connected_iff]
+  refine ⟨?_, hne.to_subtype⟩
+  intro x y
+  obtain ⟨x', hx'B, hx'val⟩ := Finset.mem_image.mp x.2
+  obtain ⟨y', hy'B, hy'val⟩ := Finset.mem_image.mp y.2
+  have hpart := (Finpartition.ofSetoid _).part_eq_of_mem hB hx'B
+  have hy'mem : y' ∈ (Finpartition.ofSetoid
+      (SimpleGraph.fromRel (fun p q : ↥S =>
+        plaquetteTouches p.1 q.1)).reachableSetoid).part x' := by
+    rw [hpart]; exact hy'B
+  have hreach : (SimpleGraph.fromRel (fun p q : ↥S =>
+      plaquetteTouches p.1 q.1)).Reachable x' y' :=
+    Finpartition.mem_part_ofSetoid_iff_rel.mp hy'mem
+  obtain ⟨w⟩ := hreach
+  obtain ⟨hv, hr⟩ := key w hx'B
+  have hx : (⟨x'.1, (hmemc x').mpr hx'B⟩ :
+      ↥(B.image Subtype.val)) = x := Subtype.ext hx'val
+  have hy : (⟨y'.1, (hmemc y').mpr hv⟩ :
+      ↥(B.image Subtype.val)) = y := Subtype.ext hy'val
+  rwa [hx, hy] at hr
+
+open Classical in
+/-- The components of a plaquette set, packaged as polymers of the
+connected lattice gas. -/
+lemma plaqComponents_polymer_mem {S : Finset (ConcretePlaquette d N)}
+    {c : Finset (ConcretePlaquette d N)} (hc : c ∈ plaqComponents S) :
+    c.Nonempty ∧ IsConnectedPolymer c :=
+  ⟨plaqComponents_nonempty hc, plaqComponents_isConnectedPolymer hc⟩
+
 end YangMills
