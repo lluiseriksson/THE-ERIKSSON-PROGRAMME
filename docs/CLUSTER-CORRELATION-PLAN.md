@@ -419,9 +419,29 @@ also: `simp only [] at hii` to beta the instantiated lemma, and pin
 implicit `(N := N)` BEFORE the `↥B → Fin N` coercion fires or it
 sticks on metavariables) and **`sum_compat_eq_ordp`** — the finite
 heart: `∑_{X compat} ∏z = ∑_k (1/k!) ∑_{σ ordp} ∏ᵢ W((σ i).card)`
-with `W m = ∑_{Y : Fin m → P} φ(Y)·∏z(Y)`.  **Remaining: M-b** (chain
-M-a + B0b-4 + (v-b) + (iv) + factorial algebra into
-`admissible-set-sum-at-N = ∑_k (1/k!) ∑_m ∏ (W(mᵢ)/mᵢ!)`), then (vi).
+with `W m = ∑_{Y : Fin m → P} φ(Y)·∏z(Y)`.
+
+**M-b CLOSED (commit `75f0597`, green on FIRST build, oracle-clean):**
+**`admissible_card_sum_eq`** — the per-`N` endpoint:
+
+    ∑_{S admissible, |S| = N} ∏z
+      = ∑_{k ≤ N} (1/k!) ∑_{m : sizes, ∑mᵢ = N} ∏ᵢ (W(mᵢ)/mᵢ!)
+
+— the `N`-th coefficient identity of `Ξ = exp(clusterSum)`.  **THE
+ENTIRE FINITE HALF OF THE MAYER–URSELL INVERSION IS MACHINE-CHECKED.**
+
+**Remaining: (vi) only** — the tsum shell:
+1. `partition P univ = ∑_{N ≤ #Polymer} (admissible card-N sums)`
+   (grading the powerset filter by cardinality — finite, easy).
+2. `exp (clusterSum P) = ∑'_k (1/k!) K^k`, `K^k` by induction with
+   `Summable.tsum_mul_tsum_of_summable_norm` + `Fin.cons`-reindexing,
+   inner finite products expanded; regroup the (k, f)-tsum by
+   `N := ∑ (f i + 1)` and match `admissible_card_sum_eq` termwise
+   (note `W(m)/m! = a_{m-1}`, the `clusterSum`-term, and the
+   `m-filter` with `mᵢ ≥ 1` bijects with `f : Fin k → ℕ` via
+   `mᵢ = f i + 1`); the `N > #Polymer` tail vanishes since admissible
+   sets are subsets of the polymer type.  Absolute convergence
+   everywhere from `kp_convergence_sharp`'s summability.
 
 **(historical) Remaining-work list before the above was closed:**
 
