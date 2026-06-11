@@ -411,6 +411,18 @@ with `A_N = ∑_X 𝟙[compat]·∏z = N!·(admissible-set sum)` (B0b-4).
 Then (vi): the tsum shell (exp series + k-fold Fubini + (k,m)→N
 regrouping; absolute convergence from `kp_convergence_sharp`).
 
+**M-a CLOSED (commit `9f85611`, oracle-clean):** `indicator_eq_ordp`
+(externalize per-point instance-heavy lemma applications as STANDALONE
+lemmas — the per_k lesson recurred: a `.trans` against the
+`Finpartition`-instanced sum inside the big theorem melts isDefEq;
+also: `simp only [] at hii` to beta the instantiated lemma, and pin
+implicit `(N := N)` BEFORE the `↥B → Fin N` coercion fires or it
+sticks on metavariables) and **`sum_compat_eq_ordp`** — the finite
+heart: `∑_{X compat} ∏z = ∑_k (1/k!) ∑_{σ ordp} ∏ᵢ W((σ i).card)`
+with `W m = ∑_{Y : Fin m → P} φ(Y)·∏z(Y)`.  **Remaining: M-b** (chain
+M-a + B0b-4 + (v-b) + (iv) + factorial algebra into
+`admissible-set-sum-at-N = ∑_k (1/k!) ∑_m ∏ (W(mᵢ)/mᵢ!)`), then (vi).
+
 **(historical) Remaining-work list before the above was closed:**
 
 1. (★) per-π fiber factorization:
