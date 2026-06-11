@@ -638,13 +638,21 @@ surfaces were `pe`-specific.  Bricks:
   `abs_add` → `abs_add_le`; and `add_le_add_right`'s explicit-`c`
   form adds on the LEFT in this toolchain — use
   `add_le_add … le_rfl`.)
-* **W4b–d (remaining):** (b) the four-gas identity: with
-  `T := S_F ∪ S_G` (`S_F, S_G` support-disjoint) and a perturbation
-  `g` supported in `T`, `⟨F⟩·Z = Z[deformWeight f g S_F]` etc.
-  (from `weightedPartition_deform` + `weightedPartition_plaquetteWeight`),
-  hence `⟨FG⟩·Z/(⟨F⟩Z·⟨G⟩Z)·Z = exp(K_{FG}+K−K_F−K_G)` via the four
-  `weightedPartition_eq_exp_clusterSum`s (all four gases share the
-  SAME Polymer type — only activities differ).  (c) termwise
+* **W4b CLOSED (commit `c700d42`, green on FIRST build, oracle
+  clean): `covariance_identity`** —
+  `Z[d_{S∪T}]·Z[w] = Z[d_S]·Z[d_T]·exp(connecting cluster sum)`
+  under volume-uniform smallness at the deformed bound
+  `δ' = δ_w + δ_g + δ_wδ_g`: the four
+  `weightedPartition_eq_exp_clusterSum`s (one δ' covers all four
+  gases since `δ_w ≤ δ'`), the four summabilities
+  (`norm_clusterTerm_le` + `kp_clusterWeight_summable_sharp` +
+  `Summable.of_norm`), `clusterSum_inclusion_exclusion`, and
+  `Complex.exp_add` arithmetic (`congr 1; ring`).  Combined with
+  `weightedPartition_deform`, the left side is
+  `(∫ FG·∏(1+w))·(∫∏(1+w))` and the right side's Z-factors are
+  `(∫F·∏(1+w))·(∫G·∏(1+w))` — i.e. this IS
+  `⟨FG⟩/⟨F⟩⟨G⟩ = exp(connecting)` after division by `Z²` (kept
+  division-free).  (c) termwise
   cancellation: a tuple `X` whose polymers all miss `S_F` has
   `activity_{FG} = activity_G` and `activity_F = activity_w`
   per-polymer, so `K_{FG}+K−K_F−K_G` is supported on tuples meeting
