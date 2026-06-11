@@ -626,6 +626,30 @@ lemma plaqComponents_polymer_mem {S : Finset (ConcretePlaquette d N)}
     c.Nonempty ∧ IsConnectedPolymer c :=
   ⟨plaqComponents_nonempty hc, plaqComponents_isConnectedPolymer hc⟩
 
+open Classical in
+/-- Distinct components are disjoint as plaquette sets — they are
+images of distinct parts of a partition under the injective
+`Subtype.val`. -/
+lemma plaqComponents_disjoint {S : Finset (ConcretePlaquette d N)}
+    {c c' : Finset (ConcretePlaquette d N)}
+    (hc : c ∈ plaqComponents S) (hc' : c' ∈ plaqComponents S)
+    (hne : c ≠ c') : Disjoint c c' := by
+  classical
+  unfold plaqComponents at hc hc'
+  rw [Finset.mem_image] at hc hc'
+  obtain ⟨B, hB, rfl⟩ := hc
+  obtain ⟨B', hB', rfl⟩ := hc'
+  rw [Finset.disjoint_left]
+  intro p hp hp'
+  obtain ⟨x, hxB, hxval⟩ := Finset.mem_image.mp hp
+  obtain ⟨y, hyB', hyval⟩ := Finset.mem_image.mp hp'
+  have hxy : x = y := Subtype.ext (hxval.trans hyval.symm)
+  rw [← hxy] at hyB'
+  have h1 := (Finpartition.ofSetoid _).part_eq_of_mem hB hxB
+  have h2 := (Finpartition.ofSetoid _).part_eq_of_mem hB' hyB'
+  have hBB : B = B' := h1.symm.trans h2
+  exact hne (by rw [hBB])
+
 set_option maxHeartbeats 1600000 in
 open Classical in
 /-- **The reconstruction (step 2):** the touching components of the

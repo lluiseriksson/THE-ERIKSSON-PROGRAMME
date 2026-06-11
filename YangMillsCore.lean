@@ -66,6 +66,7 @@ import YangMills.L1_GibbsMeasure.PolymerFactorization
 import YangMills.L1_GibbsMeasure.LatticePolymerSystem
 import YangMills.L1_GibbsMeasure.ConnectedEntropy
 import YangMills.L1_GibbsMeasure.ClusterGeometry
+import YangMills.L1_GibbsMeasure.PolymerRepresentation
 import YangMills.KP.PinnedCluster
 import YangMills.KP.PinnedWalk
 import YangMills.KP.PinnedBound
