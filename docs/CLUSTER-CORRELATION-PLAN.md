@@ -451,17 +451,29 @@ ENTIRE FINITE HALF OF THE MAYER–URSELL INVERSION IS MACHINE-CHECKED.**
    use `hasSum_single`/`tsum_eq_single` at the unique point;
    `Summable.mul_norm` is an HOU sink — pin `(f := ..) (g := ..)`.
    **Remaining for the theorem:** the Ω-architecture —
-   `Ω := Σ k, (Fin k → ℕ)`, `H ⟨k,f⟩ := (k!)⁻¹·∏ a (f i)`;
-   (E2) `Summable ‖H‖` via `summable_sigma_of_nonneg` + comparison of
-   `∑'_f ‖∏‖ ≤ (∑‖a‖)^k`-type bounds with
-   `Real.summable_pow_div_factorial`; (E3) `exp K = ∑'_Ω H`
-   (`Complex.exp_eq_tsum_div`-form + `tsum_sigma` + E1b per k);
-   (E4) regroup Ω by `ν⟨k,f⟩ := ∑(fᵢ+1)` (`sigmaFiberEquiv` +
-   `tsum_sigma`; fibers finite via `Fintype.subtype` of the bounded
-   filter), per-N finite fiber-sum = the cluster layer (the
-   `f ↔ m`-shift bijection `sum_nbij'`), tail-kill by
-   `admissible_card_sum_eq` reversed + `tsum_eq_sum`, finish with
-   `partition_univ_eq_sum_card`.
+   `Ω := Σ k, (Fin k → ℕ)`, `H ⟨k,f⟩ := (k!)⁻¹·∏ a (f i)`.
+   **E2 CLOSED** (`1f8b9f4`): E1 genericized to `NormedCommRing` +
+   `summable_H` (`summable_sigma_of_nonneg` + comparison with
+   `Real.summable_pow_div_factorial` via the ℝ-power-Fubini at norms).
+   **E3 CLOSED** (`cb497d3`): `exp_tsum_eq_tsum_H` —
+   `exp(∑'a) = ∑'_Ω H` (`Complex.exp_eq_exp_ℂ` +
+   `NormedSpace.exp_eq_tsum_div` + E1b + `Summable.tsum_sigma`).
+   **Remaining: E4 only** — regroup Ω by `ν⟨k,f⟩ := ∑(fᵢ+1)`
+   (`sigmaFiberEquiv` + `tsum_sigma`; Ω-fibers finite via
+   `Fintype.subtype`-style instances — k ≤ N and f bounded), per-N
+   finite fiber-sum = the cluster layer of
+   `partition_univ_eq_cluster_layers` (the Ω-fiber unpacks to
+   `∑_{k ≤ N} (k!)⁻¹·(f-fiber sums)` and the `f ↔ m`-shift bijection
+   `mᵢ = fᵢ + 1` via `sum_nbij'` matches the `m`-filter; note
+   `a_{fᵢ} = (mᵢ!)⁻¹·W(mᵢ)` definitionally when `a` is instantiated
+   at the `clusterSum` terms), tail-kill: layers vanish for
+   `N > #Polymer` by `admissible_card_sum_eq` read backwards
+   (`tsum_eq_sum`), finish with `partition_univ_eq_sum_card`.
+   Final statement: `partition_eq_exp_clusterSum (h : Summable ‖a‖) :
+   partition P univ = Complex.exp (clusterSum P)`, then the
+   KP-instantiated corollary via `kp_clusterWeight_summable_sharp`
+   (norm-comparison `‖aₙ‖ ≤ clusterWeight n` from
+   `norm_clusterTerm_le`).
 
 **(historical) Remaining-work list before the above was closed:**
 
