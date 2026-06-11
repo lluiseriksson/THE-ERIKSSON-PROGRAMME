@@ -250,11 +250,17 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   bound is the SOLE remaining carried hypothesis (Balaban, by
   design).  `docs/VERIFICATION-LEDGER.md` addenda 8–10 (seventeen
   oracle lines); `HYPOTHESIS_FRONTIER.md` current-state addendum.
-- **NEXT TARGETS (both are fresh campaigns, not bricks):**
-  Peter–Weyl (`PETER_WEYL_ROADMAP.md` — now needed ONLY for the
-  area-law/Wilson-loop form; U(1)/SU(2) de-risked paths available),
-  or the Balaban single-scale UV estimate (class-C, outside the
-  current plan).
+- **NEXT TARGET — the AREA-LAW CAMPAIGN (`docs/AREA-LAW-PLAN.md`,
+  designed 2026-06-11):** the strong-coupling area law
+  `|⟨W_C⟩| ≤ C₀·r^{Area(C)}` via the banked N-ality selection rules
+  (per-edge balance) + NEW discrete surface theory (ℤ-chain boundary
+  maps, the spanning lower bound) + the banked expansion/entropy
+  engines.  **Peter–Weyl is off the critical path** (needed only for
+  sharp constants/character-expansion bookkeeping).  Six bricks
+  AL1–AL6, est. 6–10 sessions; start with AL1 (the chain complex —
+  self-contained discrete mathematics).  Alternative frontiers:
+  Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
+  single-scale UV estimate (class-C, outside the current plan).
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the
   repo; needed for the other M3 hypothesis.
 - **T4 — strong-coupling character expansion → area law (LG7/8).** Needs **Peter–Weyl for
