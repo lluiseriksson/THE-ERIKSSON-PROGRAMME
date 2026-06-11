@@ -256,9 +256,16 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   (per-edge balance) + NEW discrete surface theory (ℤ-chain boundary
   maps, the spanning lower bound) + the banked expansion/entropy
   engines.  **Peter–Weyl is off the critical path** (needed only for
-  sharp constants/character-expansion bookkeeping).  Six bricks
-  AL1–AL6, est. 6–10 sessions; start with AL1 (the chain complex —
-  self-contained discrete mathematics).  Alternative frontiers:
+  sharp constants/character-expansion bookkeeping).  **Status
+  2026-06-11 (ledger Addendum 12):** AL1+AL2 CLOSED (ring-generic
+  chain complex, `ChainComplex.lean`), AL3 closed by audit (banked
+  selection rule), AL4 substrate+expansion CLOSED
+  (`EdgeFactorization.lean`, `WilsonLoopExpansion.lean`), AL5
+  interface CLOSED (`chainArea_le_card_of_support_subset`).  **Open:
+  the AL4.5 join brick** — plan §4 has the full one-unbalanced-edge
+  design (TE/DB/K/J); start with TE (the trace-expansion `Matrix`
+  lemma, self-contained) and `loopChain`.  Then AL6 (banked
+  patterns).  Alternative frontiers:
   Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
   single-scale UV estimate (class-C, outside the current plan).
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the
