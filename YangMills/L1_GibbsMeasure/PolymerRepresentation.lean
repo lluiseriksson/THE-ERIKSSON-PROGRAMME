@@ -6,6 +6,7 @@ import YangMills.L1_GibbsMeasure.PolymerExpansion
 import YangMills.L1_GibbsMeasure.PolymerFactorization
 import YangMills.L1_GibbsMeasure.LatticePolymerSystem
 import YangMills.L1_GibbsMeasure.ClusterGeometry
+import YangMills.KP.MayerInversion
 
 /-!
 # The polymer representation: `Z = Ξ` (step 2, the gate)
@@ -223,5 +224,30 @@ theorem partitionFunction_eq_partition
                   (connectedLatticePolymerSystem
                     (d := d) (N := N) μ pe β).activity X :=
                 (prod_componentFamily μ pe β S).symm
+
+open Classical in
+/-- **`Z = exp(clusterSum)` for the connected lattice gas** — the
+polymer representation composed with the Mayer–Ursell inversion, under
+the volume-uniform KP smallness (constants depend only on `d, B, β, t`).
+In particular the partition function never vanishes at high
+temperature. -/
+theorem partitionFunction_eq_exp_clusterSum
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ] {pe : G → ℝ}
+    (hpe_meas : Measurable pe) {B : ℝ} (hpe : ∀ g, |pe g| ≤ B)
+    (β t : ℝ) (ht0 : 0 ≤ t)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((Real.exp (|β| * B) - 1) * Real.exp t) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      (((Real.exp (|β| * B) - 1) * Real.exp t) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((Real.exp (|β| * B) - 1) * Real.exp t))) ≤ t) :
+    ((partitionFunction (d := d) (N := N) μ pe β : ℝ) : ℂ)
+      = Complex.exp (KP.clusterSum
+          (connectedLatticePolymerSystem (d := d) (N := N) μ pe β)) := by
+  rw [partitionFunction_eq_partition μ hpe_meas hpe β]
+  exact KP.partition_eq_exp_clusterSum_of_kp _
+    (connectedLatticePolymerSystem_kpCriterion_volumeUniform
+      μ hpe β t ht0 hr hsmall)
 
 end YangMills
