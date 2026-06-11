@@ -660,11 +660,21 @@ surfaces were `pe`-specific.  Bricks:
   green on first build, oracle clean):** `cluster_term_four_cancel` —
   `ursell·(∏act_{FG} + ∏act_w − ∏act_F − ∏act_G) = 0` on every tuple
   missing either region (activity congruence + `ring`; the cross-gas
-  type defeq lets one tuple feed all four activities).  Remaining for
-  (c): the tsum-level restriction — `K_{FG}+K−K_F−K_G =` the same
-  combination summed over tuples meeting BOTH regions (per-n
-  `Finset.sum_filter_of_ne` with the four-term zero, then tsum
-  linearity with the four W3 summabilities).  (d) bound the
+  type defeq lets one tuple feed all four activities).  **(c) CLOSED (commit `6ff9e5f`, oracle clean):**
+  `cluster_layer_inclusion_exclusion` (per-layer: the four-gas
+  combination collapses to the connecting filter — `rfl` cross-gas
+  index identification, `← mul_add/mul_sub`,
+  `← sum_add_distrib/sum_sub_distrib`, `sum_filter_of_ne` fed by the
+  four-term zero) and **`clusterSum_inclusion_exclusion`**:
+  `K_{FG} + K − K_F − K_G = ∑'_n (n+1)!⁻¹·∑_{X connecting} (…)` —
+  the covariance exponent is supported on connecting tuples.  tsum
+  toolchain note: the linearity lemmas are `Summable.tsum_add` /
+  `Summable.tsum_sub` (protected, via to_additive from
+  `Multipliable.tprod_mul/div`) — bare `tsum_add/tsum_sub` only exist
+  for `ℝ≥0∞`.  The Summable hypotheses are carried explicitly;
+  instantiate from W3 via `norm_clusterTerm_le` +
+  `kp_clusterWeight_summable_sharp` (as in
+  `partition_eq_exp_clusterSum_of_kp`).  (d) bound the
   surviving sum by the weighted analogue of
   `connecting_cluster_decay` (transport of `connecting_pinned_le_GE`
   + the tilted criterion to the weighted gas) → **B4**: `hIRbound`
