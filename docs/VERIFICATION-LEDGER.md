@@ -507,6 +507,53 @@ non-vanishing expansion term to a balanced `ZMod N_c` chain (the
 AL4/AL5 join), then AL6 (entropy + tail + non-vacuity window).  All
 M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 13 (2026-06-11, AL4.5 join: kill pipeline closed end to
+end — the β=0 Wilson-loop selection rule)
+
+**Builds:** `lake build YangMillsCore` — green at `9430b58` (8233),
+`4377f85`/`71fdc0f`/`9a200a4` (8233), `95083ba`/`f001d4e` (8234 jobs).
+**Source scan:** zero `sorry`/`axiom` (unchanged).
+
+Oracle outputs (verbatim, the join bricks):
+
+```
+'YangMills.list_prod_apply'                            [propext, Quot.sound]
+'YangMills.trace_list_prod_eq_sum_pathSum'             [propext, Quot.sound]
+'YangMills.loopChain_reverse'                          [propext, Classical.choice, Quot.sound]
+'YangMills.loopChain_append'                           [propext, Classical.choice, Quot.sound]
+'YangMills.prod_comp_eq_prod_fiber'                    [propext, Classical.choice, Quot.sound]
+'YangMills.integral_positionProduct_eq_zero'           [propext, Classical.choice, Quot.sound]
+'YangMills.sunHaarProb_decoratedEntryProduct_integral_zero'
+                                                       [propext, Classical.choice, Quot.sound]
+'YangMills.pathSum_eq_sum_vertexSeq'                   [propext, Classical.choice, Quot.sound]
+'YangMills.trace_list_prod_eq_sum_closedSeq'           [propext, Classical.choice, Quot.sound]
+'YangMills.pathSum_map_eq_sum_vertexSeq'               [propext, Classical.choice, Quot.sound]
+'YangMills.trace_prod_map_eq_sum_closedSeq'            [propext, Classical.choice, Quot.sound]
+'YangMills.sun_inv_val_apply'                          [propext, Classical.choice, Quot.sound]
+'YangMills.posToFun_val_apply'                         [propext, Classical.choice, Quot.sound]
+'YangMills.wilsonLine_val'                             [propext, Classical.choice, Quot.sound]
+'YangMills.trace_wilsonLine_eq_sum_decorated'          [propext, Classical.choice, Quot.sound]
+'YangMills.integral_trace_wilsonLine_eq_zero'          [propext, Classical.choice, Quot.sound]
+```
+
+The headline (`integral_trace_wilsonLine_eq_zero`,
+`ClayCore/WilsonLoopMonomial.lean`): **for the SU(N_c) lattice gauge
+theory under the product Haar measure (β = 0), the expectation of any
+Wilson-line trace vanishes as soon as one positive edge has
+`N_c`-unbalanced signed traversal count** — in particular every open
+line and every fundamental loop traversing some edge exactly once.
+This is the first end-to-end run of the area-law kill pipeline:
+trace → closed vertex sequences (`trace_wilsonLine_eq_sum_decorated`,
+itself via the `Fin`-indexed path expansion and the entry decoration
+`posToFun_val_apply`: forward traversal = entry, backward = conjugated
+transposed entry by unitarity) → per-edge fiber grouping
+(`prod_comp_eq_prod_fiber`) → one-unbalanced-edge kill
+(`integral_positionProduct_eq_zero`) → `Finset`-indexed `N`-ality
+selection rule (`sunHaarProb_decoratedEntryProduct_integral_zero`).
+Plus `loopChain` (TE-2) feeding the `ZMod N_c` chain complex for the
+remaining DB-2/J-3 join (`docs/AREA-LAW-PLAN.md` §4).  All M3
+lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
