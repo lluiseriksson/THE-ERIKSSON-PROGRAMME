@@ -647,9 +647,18 @@ surfaces were `pe`-specific.  Bricks:
   SAME Polymer type — only activities differ).  (c) termwise
   cancellation: a tuple `X` whose polymers all miss `S_F` has
   `activity_{FG} = activity_G` and `activity_F = activity_w`
-  per-polymer (`deformWeight_of_not_mem` lifted to integrands via
-  `Finset.prod_congr`), so `K_{FG}+K−K_F−K_G` is supported on tuples
-  meeting BOTH supports — connecting clusters.  (d) bound the
+  per-polymer, so `K_{FG}+K−K_F−K_G` is supported on tuples meeting
+  BOTH supports — connecting clusters.  **Openers CLOSED (commit
+  `a5afb18`, oracle clean):** `deformWeight_union_of_not_mem_left/right`
+  (off either region, deforming on the union restricts),
+  `weightedLatticePolymerSystem_activity_congr` (off-region agreement
+  ⇒ equal activities on region-disjoint polymers), and
+  `weightedLatticePolymerSystem_ursell_eq` — the Ursell coefficients
+  agree across ALL weighted gases by `rfl` (incomp never touches the
+  activity field), so the four cluster sums differ only through
+  activity products.  Remaining for (c): the tuple-level four-term
+  cancellation and the restriction of the K-difference to connecting
+  tuples (tsum-level, with the four summabilities from W3).  (d) bound the
   surviving sum by the weighted analogue of
   `connecting_cluster_decay` (transport of `connecting_pinned_le_GE`
   + the tilted criterion to the weighted gas) → **B4**: `hIRbound`
