@@ -1650,4 +1650,78 @@ theorem partition_univ_eq_cluster_layers [Fintype P.Polymer] :
   rw [partition_univ_eq_sum_card P]
   exact Finset.sum_congr rfl fun N _ => admissible_card_sum_eq P N
 
+/-- A lightweight non-dependent cons equivalence for tuple spaces. -/
+def consE (k : ℕ) : ℕ × (Fin k → ℕ) ≃ (Fin (k + 1) → ℕ) where
+  toFun p := Fin.cons p.1 p.2
+  invFun f := (f 0, fun i => f i.succ)
+  left_inv p := by
+    refine Prod.ext ?_ ?_
+    · show Fin.cons (α := fun _ : Fin (k + 1) => ℕ) p.1 p.2 0 = p.1
+      exact Fin.cons_zero _ _
+    · funext i
+      show Fin.cons (α := fun _ : Fin (k + 1) => ℕ) p.1 p.2 i.succ
+        = p.2 i
+      exact Fin.cons_succ _ _ _
+  right_inv f := Fin.cons_self_tail f
+
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **B0b (vi), E1a: norm-summability of product families.** -/
+lemma summable_norm_prod_pow {a : ℕ → ℂ}
+    (hA : Summable fun n => ‖a n‖) :
+    ∀ k : ℕ, Summable fun f : Fin k → ℕ => ‖∏ i, a (f i)‖ := by
+  intro k
+  induction k with
+  | zero =>
+      refine (hasSum_single (f := fun f : Fin 0 → ℕ =>
+        ‖∏ i, a (f i)‖) (fun i : Fin 0 => i.elim0) ?_).summable
+      intro b' hb'
+      exact absurd (funext fun i : Fin 0 => i.elim0) hb'
+  | succ k ih =>
+      have h2 : Summable
+          (fun p : ℕ × (Fin k → ℕ) => ‖a p.1 * ∏ i, a (p.2 i)‖) :=
+        Summable.mul_norm (f := a)
+          (g := fun f : Fin k → ℕ => ∏ i, a (f i)) hA ih
+      have h3 : Summable
+          ((fun f : Fin (k + 1) → ℕ => ‖∏ i, a (f i)‖)
+            ∘ (consE k)) := by
+        refine h2.congr fun p => ?_
+        show ‖a p.1 * ∏ i, a (p.2 i)‖
+          = ‖∏ i : Fin (k + 1),
+              a (Fin.cons (α := fun _ : Fin (k + 1) => ℕ) p.1 p.2 i)‖
+        congr 1
+        rw [Fin.prod_univ_succ]
+        simp only [Fin.cons_zero, Fin.cons_succ]
+      exact (Equiv.summable_iff (consE k)).mp h3
+
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **B0b (vi), E1b: the power Fubini** — powers of an absolutely
+convergent series are tsums over tuple spaces. -/
+lemma tsum_pow_eq_tsum_pi {a : ℕ → ℂ}
+    (hA : Summable fun n => ‖a n‖) :
+    ∀ k : ℕ, (∑' n, a n) ^ k = ∑' f : Fin k → ℕ, ∏ i, a (f i) := by
+  intro k
+  induction k with
+  | zero =>
+      rw [pow_zero, tsum_eq_single (fun i : Fin 0 => i.elim0)
+        (fun b' hb' => absurd (funext fun i : Fin 0 => i.elim0) hb')]
+      simp
+  | succ k ih =>
+      rw [pow_succ', ih,
+        tsum_mul_tsum_of_summable_norm hA (summable_norm_prod_pow hA k)]
+      calc ∑' z : ℕ × (Fin k → ℕ), a z.1 * ∏ i, a (z.2 i)
+          = ∑' z : ℕ × (Fin k → ℕ),
+              (fun g : Fin (k + 1) → ℕ => ∏ i, a (g i))
+                (consE k z) := by
+            refine tsum_congr fun z => ?_
+            show a z.1 * ∏ i, a (z.2 i)
+              = ∏ i : Fin (k + 1),
+                  a (Fin.cons (α := fun _ : Fin (k + 1) => ℕ)
+                    z.1 z.2 i)
+            rw [Fin.prod_univ_succ]
+            simp only [Fin.cons_zero, Fin.cons_succ]
+        _ = ∑' g : Fin (k + 1) → ℕ, ∏ i, a (g i) :=
+            Equiv.tsum_eq (consE k) (fun g => ∏ i, a (g i))
+
 end YangMills.KP
