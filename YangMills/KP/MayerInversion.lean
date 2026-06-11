@@ -914,4 +914,55 @@ lemma sum_symmetrize_gen {nmax : ℕ} {α β : Type*} [Fintype α]
         rw [Finset.sum_comm]
         exact Finset.sum_congr rfl fun k _ => (hswap k).symm
 
+/-- **Ordered partitions** of `Fin N` into `k` labeled nonempty blocks
+(the index of B0b's regrouping — enumerations of `Finpartition` parts). -/
+def IsOrdPartition {N k : ℕ} (σ : Fin k → Finset (Fin N)) : Prop :=
+  (∀ i, (σ i).Nonempty) ∧
+  (∀ i j, i ≠ j → Disjoint (σ i) (σ j)) ∧
+  Finset.univ.biUnion σ = Finset.univ
+
+open Classical in
+/-- Partitions of `Fin N` have at most `N` parts. -/
+lemma parts_card_le {N : ℕ}
+    (π : Finpartition (Finset.univ : Finset (Fin N))) :
+    π.parts.card ≤ N := by
+  calc π.parts.card = ∑ _B ∈ π.parts, 1 := by
+        rw [Finset.sum_const, smul_eq_mul, mul_one]
+    _ ≤ ∑ B ∈ π.parts, B.card :=
+        Finset.sum_le_sum fun B hB =>
+          Finset.card_pos.mpr (π.nonempty_of_mem_parts hB)
+    _ = N := by
+        rw [Finpartition.sum_card_parts, Finset.card_univ,
+          Fintype.card_fin]
+
+open Classical in
+/-- The `Finpartition` carried by an ordered partition: its parts are
+the blocks. -/
+noncomputable def finpartitionOfOrd {N k : ℕ}
+    (σ : Fin k → Finset (Fin N)) (h : IsOrdPartition σ) :
+    Finpartition (Finset.univ : Finset (Fin N)) where
+  parts := Finset.univ.image σ
+  supIndep := by
+    rw [Finset.supIndep_iff_pairwiseDisjoint]
+    intro B hB B' hB' hne
+    rw [Finset.mem_coe, Finset.mem_image] at hB hB'
+    obtain ⟨i, _, rfl⟩ := hB
+    obtain ⟨j, _, rfl⟩ := hB'
+    exact h.2.1 i j (fun hij => hne (by rw [hij]))
+  sup_parts := by
+    rw [Finset.sup_image]
+    rw [show (id ∘ σ) = σ from rfl]
+    rw [Finset.sup_eq_biUnion]
+    exact h.2.2
+  bot_notMem := by
+    rw [Finset.mem_image]
+    rintro ⟨i, _, hi⟩
+    exact Finset.Nonempty.ne_empty (h.1 i) hi
+
+open Classical in
+@[simp]
+lemma finpartitionOfOrd_parts {N k : ℕ}
+    (σ : Fin k → Finset (Fin N)) (h : IsOrdPartition σ) :
+    (finpartitionOfOrd σ h).parts = Finset.univ.image σ := rfl
+
 end YangMills.KP
