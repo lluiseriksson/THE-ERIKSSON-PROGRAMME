@@ -593,6 +593,43 @@ volume-uniform KP smallness (constants depend only on `d, B, β, t`);
 ∘ `connectedLatticePolymerSystem_kpCriterion_volumeUniform`.  In
 particular `Z ≠ 0` at high temperature, volume-uniformly.
 
+**B2 OPENED — the W-campaign (weighted-gas generalization).**  The
+reduction: for a multiplicative local observable
+`F = ∏_{p∈S_F}(1 + s·g_p)`, `F·∏_p(1+f_p) = ∏_p(1+f̃_p)` with `f̃`
+again a LOCAL weight family — so the whole `Z = Ξ = exp(K)` chain must
+run for arbitrary local weights `w`, and then `Z·⟨F⟩ = Z[f̃]` is an
+instance.  Audit finding: the abstract two-block engine
+`integral_mul_of_disjoint_deps` was already weight-general; only the
+surfaces were `pe`-specific.  Bricks:
+
+* **W1 CLOSED (commit `ec14d71`, green on FIRST build, oracle
+  clean):** `L1_GibbsMeasure/WeightedGas.lean` — `IsLocalWeight`
+  (+ `isLocalWeight_plaquetteWeight`), `prod_weight_congr`,
+  `integral_prod_weight_mul_of_disjoint`,
+  `integral_prod_prod_weight_of_pairwiseDisjoint` (verbatim
+  transports), `weightedPartition` `Z[w] = ∫∏(1+w_p)`, binomial
+  `prod_one_add_eq_sum`, `integrable_prod_weight` (bounded measurable
+  ⇒ integrable; no `MeasurableMul₂`/`MeasurableInv` needed — `w`'s
+  measurability is a hypothesis), `weightedPartition_eq_sum`, and the
+  Wilson instantiation `weightedPartition_plaquetteWeight`.
+* **W2 (next):** `weightedLatticePolymerSystem μ w` (same Polymer
+  subtype; activity `:= coe ∫∏_{p∈c} w`) and
+  `weightedPartition_eq_partition : (Z[w] : ℂ) = partition(...)` —
+  verbatim transport of `partitionFunction_eq_partition` (the
+  component machinery is weight-independent; only `hfg`, the
+  factorization call, and activity-rfl change).
+* **W3:** KP criterion for `|w| ≤ δ` (transport
+  `norm_latticePolymerSystem_activity_le` → `δ^|c|` and the
+  volume-uniform criterion with `x := δ·e^t`), giving
+  `Z[w] = exp(clusterSum[w])`.
+* **W4:** the covariance identity: for supports
+  `S_F, S_G` and deformations `f̃ = f + g·𝟙_{S_F}` etc.,
+  `⟨F⟩ = Z[f̃]/Z`, `⟨FG⟩/⟨F⟩⟨G⟩ = exp(K_{FG}+K−K_F−K_G)`; termwise
+  cancellation off connecting clusters (activities agree on polymers
+  missing a support — integrand equality), the survivor bounded by
+  `connecting_cluster_decay` → **B4**: `hIRbound` of
+  `lattice_mass_gap_of_clustering_uniform`.
+
 **Then B2** (the covariance): for plaquette-local multiplicative
 observables `F` (deformations `f_p ↦ f_p·(1+s·g_p)` supported on
 `S_F`), `⟨F⟩ = Ξ_F/Ξ` (step 2 applied to the deformed gas — SAME
