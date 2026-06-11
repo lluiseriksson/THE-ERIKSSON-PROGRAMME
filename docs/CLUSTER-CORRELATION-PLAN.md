@@ -682,11 +682,25 @@ surfaces were `pe`-specific.  Bricks:
   for `ℝ≥0∞`.  The Summable hypotheses are carried explicitly;
   instantiate from W3 via `norm_clusterTerm_le` +
   `kp_clusterWeight_summable_sharp` (as in
-  `partition_eq_exp_clusterSum_of_kp`).  (d) bound the
-  surviving sum by the weighted analogue of
-  `connecting_cluster_decay` (transport of `connecting_pinned_le_GE`
-  + the tilted criterion to the weighted gas) → **B4**: `hIRbound`
-  of `lattice_mass_gap_of_clustering_uniform` with
+  `partition_eq_exp_clusterSum_of_kp`).  **(d) THE DECAY ENGINE CLOSED (commit `5a26bef`, ALL green on
+  FIRST build, oracle clean):**
+  `weightedLatticePolymerSystem_tilt_kpCriterion_volumeUniform`
+  (`x := δ·e^{t+ε}`), `weighted_cluster_dist_le` — proved by **defeq
+  application** of the Wilson-gas geometry at a dummy energy
+  (`cluster_dist_le μ (fun _ => 0) 0 (X := X) hX hp hq`: the two
+  system constants differ only in the `activity` field, and
+  `IsCluster`/`ursell`/`incompGraph` never project it — a major
+  transport shortcut, RECORD THIS IDIOM),
+  `weighted_connecting_pinned_le_GE`, and
+  **`weighted_connecting_cluster_decay`**: pinned connecting tails of
+  the weighted gas decay as `e^{−ε·dist(p,q)/2}·x/(1−(16d+1)²x)`,
+  volume-free.  **Remaining — B4 only:** symmetrize the UNPINNED
+  connecting filter of `clusterSum_inclusion_exclusion` to the pinned
+  form (`𝟙[connecting] ≤ ∑_{p∈S}∑_{q∈T} 𝟙[p pinned]·𝟙[q touched]`,
+  then tuple-symmetrization to position 0 — the `PinnedCluster.lean`
+  machinery), bound the four activity products by the worst gas, and
+  assemble `|⟨FG⟩−⟨F⟩⟨G⟩| ≤ C·|S|·|T|·e^{−ε·dist(S,T)/2}` →
+  `hIRbound` of `lattice_mass_gap_of_clustering_uniform` with
   `covIR t := ⟨FG⟩−⟨F⟩⟨G⟩` at separation `t`.
 
 **Then B2** (the covariance): for plaquette-local multiplicative
