@@ -3221,4 +3221,180 @@ theorem covariance_exponent_norm_bound
     (le_of_eq ?_)
   ring
 
+set_option maxHeartbeats 3200000 in
+open Classical in
+/-- **THE TRUNCATED-CORRELATION BOUND (B4, the IR endpoint):** for
+multiplicative local observables whose supports are at
+touching-distance `≥ 2k`, the division-free truncated correlation
+decays like `e^{−ε·k}` — the `hIRbound` input of the strong-coupling
+lattice mass gap, with every constant volume-free and explicit in
+`d, δ_w, δ_g, t, ε, |S|, |T|`. -/
+theorem truncated_correlation_bound
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {w g : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    (hlocw : IsLocalWeight (d := d) (N := N) (G := G) w)
+    (hlocg : IsLocalWeight (d := d) (N := N) (G := G) g)
+    (hmeasw : ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N G => w A p))
+    (hmeasg : ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N G => g A p))
+    {δw δg : ℝ} (hδw0 : 0 ≤ δw) (hδg0 : 0 ≤ δg)
+    (hbdw : ∀ A p, |w A p| ≤ δw) (hbdg : ∀ A p, |g A p| ≤ δg)
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((δw + δg + δw * δg) * Real.exp (t + ε + 1)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      (((δw + δg + δw * δg) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((δw + δg + δw * δg) * Real.exp (t + ε + 1)))) ≤ t)
+    (S T : Finset (ConcretePlaquette d N)) (k : ℕ)
+    (hdist : ∀ p ∈ S, ∀ q ∈ T, 2 * k ≤ (touchGraph d N).dist p q)
+    (hone : 4 * ((S.card : ℝ) * (T.card : ℝ)) * Real.exp (-(ε * k)) *
+      (((δw + δg + δw * δg) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((δw + δg + δw * δg) * Real.exp (t + ε + 1)))) ≤ 1) :
+    ‖((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g (S ∪ T)) : ℝ) : ℂ) *
+        ((weightedPartition (d := d) (N := N) μ w : ℝ) : ℂ)
+      - ((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g S) : ℝ) : ℂ) *
+        ((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g T) : ℝ) : ℂ)‖
+    ≤ (8 * ((S.card : ℝ) * (T.card : ℝ)) *
+        (((δw + δg + δw * δg) * Real.exp (t + ε + 1)) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+            ((δw + δg + δw * δg) * Real.exp (t + ε + 1)))) *
+        ‖((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g S) : ℝ) : ℂ)‖ *
+        ‖((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g T) : ℝ) : ℂ)‖) *
+      Real.exp (-(ε * k)) := by
+  classical
+  set δ' : ℝ := δw + δg + δw * δg with hδ'def
+  have hδ'0 : (0 : ℝ) ≤ δ' := by rw [hδ'def]; positivity
+  set M : ℝ := (δ' * Real.exp (t + ε + 1)) /
+    (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ' * Real.exp (t + ε + 1)))
+    with hMdef
+  have hden : (0 : ℝ) < 1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      (δ' * Real.exp (t + ε + 1)) := by linarith
+  have hM0 : (0 : ℝ) ≤ M := by
+    rw [hMdef]
+    exact div_nonneg (by positivity) hden.le
+  -- monotone descent to the exponent-t smallness window
+  have hxle : δ' * Real.exp t ≤ δ' * Real.exp (t + ε + 1) :=
+    mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr (by linarith)) hδ'0
+  have hr_t : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ' * Real.exp t) < 1 :=
+    lt_of_le_of_lt (mul_le_mul_of_nonneg_left hxle (by positivity)) hr
+  have hsmall_t : ((16 * d : ℕ) : ℝ) *
+      ((δ' * Real.exp t) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ' * Real.exp t))) ≤ t := by
+    refine le_trans (mul_le_mul_of_nonneg_left ?_ (by positivity)) hsmall
+    refine div_le_div₀ (by positivity) hxle hden ?_
+    have hKx : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ' * Real.exp t)
+        ≤ ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ' * Real.exp (t + ε + 1)) :=
+      mul_le_mul_of_nonneg_left hxle (by positivity)
+    linarith
+  -- the covariance identity and the exponent bound
+  have hcov := covariance_identity μ hlocw hlocg hmeasw hmeasg
+    hδw0 hδg0 hbdw hbdg S T t ht0 hr_t hsmall_t
+  have hKbound := covariance_exponent_norm_bound μ hδw0 hδg0
+    hbdw hbdg t ε ht0 hε0 hr hsmall S T
+  set K : ℂ := ∑' n : ℕ, (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => (∃ i, ¬ Disjoint (X i).1 S) ∧
+            (∃ j, ¬ Disjoint (X j).1 T)),
+        ((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℂ) *
+            ∏ i, (weightedLatticePolymerSystem
+              (d := d) (N := N) μ (deformWeight w g (S ∪ T))).activity (X i)
+          + (KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℂ) *
+            ∏ i, (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X i)
+          - (KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℂ) *
+            ∏ i, (weightedLatticePolymerSystem
+              (d := d) (N := N) μ (deformWeight w g S)).activity (X i)
+          - (KP.ursell (weightedLatticePolymerSystem
+              (d := d) (N := N) μ w) X : ℂ) *
+            ∏ i, (weightedLatticePolymerSystem
+              (d := d) (N := N) μ (deformWeight w g T)).activity (X i))
+    with hKdef
+  -- specialize the double sum at separation k
+  have hsum_le : ∑ p ∈ S, ∑ q ∈ T,
+      Real.exp (-(ε * (((touchGraph d N).dist p q / 2 : ℕ) : ℝ))) * M
+      ≤ (S.card : ℝ) * (T.card : ℝ) * (Real.exp (-(ε * k)) * M) := by
+    calc ∑ p ∈ S, ∑ q ∈ T,
+        Real.exp (-(ε * (((touchGraph d N).dist p q / 2 : ℕ) : ℝ))) * M
+        ≤ ∑ p ∈ S, ∑ q ∈ T, Real.exp (-(ε * k)) * M := by
+          refine Finset.sum_le_sum fun p hp => ?_
+          refine Finset.sum_le_sum fun q hq => ?_
+          refine mul_le_mul_of_nonneg_right ?_ hM0
+          refine Real.exp_le_exp.mpr ?_
+          have h2k := hdist p hp q hq
+          have hk : (k : ℝ)
+              ≤ (((touchGraph d N).dist p q / 2 : ℕ) : ℝ) := by
+            have hnat : k ≤ (touchGraph d N).dist p q / 2 := by omega
+            exact_mod_cast hnat
+          have hmono := mul_le_mul_of_nonneg_left hk hε0
+          linarith
+      _ = (S.card : ℝ) * (T.card : ℝ) * (Real.exp (-(ε * k)) * M) := by
+          rw [Finset.sum_const, Finset.sum_const, nsmul_eq_mul,
+            nsmul_eq_mul]
+          ring
+  have hK4 : ‖K‖ ≤ 4 * ((S.card : ℝ) * (T.card : ℝ)) *
+      Real.exp (-(ε * k)) * M := by
+    refine le_trans hKbound ?_
+    calc 4 * ∑ p ∈ S, ∑ q ∈ T,
+        Real.exp (-(ε * (((touchGraph d N).dist p q / 2 : ℕ) : ℝ))) * M
+        ≤ 4 * ((S.card : ℝ) * (T.card : ℝ) *
+            (Real.exp (-(ε * k)) * M)) :=
+          mul_le_mul_of_nonneg_left hsum_le (by norm_num)
+      _ = 4 * ((S.card : ℝ) * (T.card : ℝ)) *
+          Real.exp (-(ε * k)) * M := by ring
+  have hK1 : ‖K‖ ≤ 1 := le_trans hK4 hone
+  have hexp1 : ‖Complex.exp K - 1‖ ≤ 2 * ‖K‖ :=
+    Complex.norm_exp_sub_one_le hK1
+  have hdiff : ((weightedPartition (d := d) (N := N) μ
+        (deformWeight w g (S ∪ T)) : ℝ) : ℂ) *
+        ((weightedPartition (d := d) (N := N) μ w : ℝ) : ℂ)
+      - ((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g S) : ℝ) : ℂ) *
+        ((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g T) : ℝ) : ℂ)
+      = ((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g S) : ℝ) : ℂ) *
+        ((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g T) : ℝ) : ℂ) *
+        (Complex.exp K - 1) := by
+    rw [hcov]
+    ring
+  rw [hdiff, norm_mul, norm_mul]
+  calc ‖((weightedPartition (d := d) (N := N) μ
+        (deformWeight w g S) : ℝ) : ℂ)‖ *
+      ‖((weightedPartition (d := d) (N := N) μ
+        (deformWeight w g T) : ℝ) : ℂ)‖ *
+      ‖Complex.exp K - 1‖
+      ≤ ‖((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g S) : ℝ) : ℂ)‖ *
+        ‖((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g T) : ℝ) : ℂ)‖ * (2 * ‖K‖) :=
+        mul_le_mul_of_nonneg_left hexp1 (by positivity)
+    _ ≤ ‖((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g S) : ℝ) : ℂ)‖ *
+        ‖((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g T) : ℝ) : ℂ)‖ *
+        (2 * (4 * ((S.card : ℝ) * (T.card : ℝ)) *
+          Real.exp (-(ε * k)) * M)) := by
+        refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+        exact mul_le_mul_of_nonneg_left hK4 (by norm_num)
+    _ = (8 * ((S.card : ℝ) * (T.card : ℝ)) * M *
+        ‖((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g S) : ℝ) : ℂ)‖ *
+        ‖((weightedPartition (d := d) (N := N) μ
+          (deformWeight w g T) : ℝ) : ℂ)‖) *
+      Real.exp (-(ε * k)) := by ring
+
 end YangMills
