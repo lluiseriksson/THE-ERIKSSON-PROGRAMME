@@ -76,7 +76,7 @@ each `p ∈ S` with `e ∈ supp p`.
 
 | Brick | Content | New? | Est. effort |
 |---|---|---|---|
-| AL1 | `ℤ`-chain complex on the lattice: plaquette boundary map `∂₂`, edge boundary `∂₁`, `∂₁∘∂₂ = 0` | new, self-contained | 1–2 sessions |
+| AL1 | `ℤ`-chain complex on the lattice: plaquette boundary map `∂₂`, edge boundary `∂₁`, `∂₁∘∂₂ = 0` — **CLOSED** (commit `ad58393`, `L0_Lattice/ChainComplex.lean`, oracle clean; abstract over `FiniteLatticeGeometry`, whose `plaquetteEdge_src/dst` axioms ARE the closure of the square; Fintype class-fields bound via `letI`, the `WilsonAction` pattern) | done | — |
 | AL2 | `Area(C) :=` min `|S|` with `∂₂S = C` (well-defined for contractible `C`); monotonicity facts | new | 1 session |
 | AL3 | entry-level edge-balance vanishing (degree ≤ 2 Weingarten facts on SU(N)) | extends banked Schur | 1–2 sessions |
 | AL4 | factorized expansion of `⟨W_C⟩·Z` with per-edge integration (the `WeightedGas` engine + AL3) | assembly | 1–2 sessions |
