@@ -425,4 +425,116 @@ theorem connecting_cluster_decay {G : Type*} [Group G]
         sum_connectedPolymers_through_le (d := d) (N := N) p x hx
           (by rw [hxdef] at *; exact hr)
 
+/-! ### Touching components of plaquette sets (polymer representation,
+step 2 — the `Z = Ξ` gate of `docs/CLUSTER-CORRELATION-PLAN.md` §2e) -/
+
+open Classical in
+/-- The **touching components** of a plaquette set: the parts of the
+reachability partition of its internal touching graph, coerced back to
+plaquette sets. -/
+noncomputable def plaqComponents (S : Finset (ConcretePlaquette d N)) :
+    Finset (Finset (ConcretePlaquette d N)) := by
+  classical
+  exact (Finpartition.ofSetoid
+    (SimpleGraph.fromRel
+      (fun p q : ↥S => plaquetteTouches p.1 q.1)).reachableSetoid).parts.image
+    (fun B => B.image Subtype.val)
+
+open Classical in
+lemma plaqComponents_nonempty {S : Finset (ConcretePlaquette d N)}
+    {c : Finset (ConcretePlaquette d N)} (hc : c ∈ plaqComponents S) :
+    c.Nonempty := by
+  classical
+  unfold plaqComponents at hc
+  rw [Finset.mem_image] at hc
+  obtain ⟨B, hB, rfl⟩ := hc
+  exact ((Finpartition.ofSetoid _).nonempty_of_mem_parts hB).image _
+
+open Classical in
+lemma plaqComponents_subset {S : Finset (ConcretePlaquette d N)}
+    {c : Finset (ConcretePlaquette d N)} (hc : c ∈ plaqComponents S) :
+    c ⊆ S := by
+  classical
+  unfold plaqComponents at hc
+  rw [Finset.mem_image] at hc
+  obtain ⟨B, _, rfl⟩ := hc
+  intro p hp
+  rw [Finset.mem_image] at hp
+  obtain ⟨x, _, rfl⟩ := hp
+  exact x.2
+
+open Classical in
+/-- The components cover the set. -/
+lemma plaqComponents_biUnion (S : Finset (ConcretePlaquette d N)) :
+    (plaqComponents S).biUnion id = S := by
+  classical
+  ext p
+  rw [Finset.mem_biUnion]
+  constructor
+  · rintro ⟨c, hc, hp⟩
+    exact plaqComponents_subset hc hp
+  · intro hp
+    refine ⟨((Finpartition.ofSetoid
+        (SimpleGraph.fromRel (fun p q : ↥S =>
+          plaquetteTouches p.1 q.1)).reachableSetoid).part
+            ⟨p, hp⟩).image Subtype.val, ?_, ?_⟩
+    · unfold plaqComponents
+      rw [Finset.mem_image]
+      exact ⟨_, (Finpartition.ofSetoid _).part_mem.mpr
+        (Finset.mem_univ _), rfl⟩
+    · show p ∈ Finset.image _ _
+      rw [Finset.mem_image]
+      exact ⟨⟨p, hp⟩, (Finpartition.ofSetoid _).mem_part
+        (Finset.mem_univ _), rfl⟩
+
+open Classical in
+/-- Distinct components never touch. -/
+lemma plaqComponents_not_touching {S : Finset (ConcretePlaquette d N)}
+    {c c' : Finset (ConcretePlaquette d N)}
+    (hc : c ∈ plaqComponents S) (hc' : c' ∈ plaqComponents S)
+    (hne : c ≠ c') :
+    ∀ p ∈ c, ∀ q ∈ c', ¬ plaquetteTouches p q := by
+  classical
+  unfold plaqComponents at hc hc'
+  rw [Finset.mem_image] at hc hc'
+  obtain ⟨B, hB, rfl⟩ := hc
+  obtain ⟨B', hB', rfl⟩ := hc'
+  intro p hp q hq htouch
+  rw [Finset.mem_image] at hp hq
+  obtain ⟨x, hx, rfl⟩ := hp
+  obtain ⟨y, hy, rfl⟩ := hq
+  -- same reachability class
+  have hreach : (SimpleGraph.fromRel (fun p q : ↥S =>
+      plaquetteTouches p.1 q.1)).Reachable x y := by
+    by_cases hxy : x = y
+    · rw [hxy]
+    · refine SimpleGraph.Adj.reachable ?_
+      rw [SimpleGraph.fromRel_adj]
+      exact ⟨hxy, Or.inl htouch⟩
+  have hclass : B = B' := by
+    have h1 := (Finpartition.ofSetoid _).part_eq_of_mem hB hx
+    have h2 := (Finpartition.ofSetoid _).part_eq_of_mem hB' hy
+    have h3 : y ∈ (Finpartition.ofSetoid
+        (SimpleGraph.fromRel (fun p q : ↥S =>
+          plaquetteTouches p.1 q.1)).reachableSetoid).part x :=
+      Finpartition.mem_part_ofSetoid_iff_rel.mpr hreach
+    have h4 := (Finpartition.ofSetoid _).part_eq_of_mem
+      ((Finpartition.ofSetoid _).part_mem.mpr (Finset.mem_univ x)) h3
+    rw [← h1, ← h2, ← h4]
+  exact hne (by rw [hclass])
+
+open Classical in
+/-- Distinct components have disjoint edge supports — they are
+compatible as polymers. -/
+lemma plaqComponents_support_disjoint
+    {S : Finset (ConcretePlaquette d N)}
+    {c c' : Finset (ConcretePlaquette d N)}
+    (hc : c ∈ plaqComponents S) (hc' : c' ∈ plaqComponents S)
+    (hne : c ≠ c') :
+    Disjoint (c.biUnion plaquetteSupport)
+      (c'.biUnion plaquetteSupport) := by
+  by_contra hnd
+  obtain ⟨p, hp, q, hq, htouch⟩ := exists_touching_of_not_disjoint hnd
+  exact plaqComponents_not_touching hc hc' hne p hp q hq htouch
+
 end YangMills
