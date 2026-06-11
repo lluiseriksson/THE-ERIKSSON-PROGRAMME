@@ -177,4 +177,66 @@ theorem chainBoundary₁_comp_chainBoundary₂
       ((if dst e = v then (1 : ℤ) else 0)
         - (if src e = v then (1 : ℤ) else 0))) = 0 from h, mul_zero]
 
+/-! ### Area (brick AL2): the minimal size of a spanning surface -/
+
+open Classical in
+/-- The **support** of a `2`-chain: the plaquettes it uses. -/
+noncomputable def chainSupport (s : P (d := d) (N := N) (G := G) → ℤ) :
+    Finset (P (d := d) (N := N) (G := G)) :=
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N) (G := G)
+  Finset.univ.filter (fun p => s p ≠ 0)
+
+open Classical in
+/-- The **area of a `1`-chain**: the minimal support size of a
+`2`-chain whose boundary is `c` (the minimal discrete spanning
+surface).  Junk value `0` for unspannable chains; all lemmas guard
+with spannability. -/
+noncomputable def chainArea (c : E (d := d) (N := N) (G := G) → ℤ) : ℕ :=
+  sInf {n : ℕ | ∃ s : P (d := d) (N := N) (G := G) → ℤ,
+    chainBoundary₂ (d := d) (N := N) (G := G) s = c ∧
+      (chainSupport (d := d) (N := N) (G := G) s).card = n}
+
+open Classical in
+/-- **The defining upper bound:** every spanning surface witnesses the
+area — `Area(∂₂s) ≤ |supp s|`.  This is the inequality the area-law
+expansion consumes (AL5): a nonvanishing term of size `|S|` yields a
+spanning `2`-chain supported in `S`, hence `Area(C) ≤ |S|`. -/
+theorem chainArea_le {c : E (d := d) (N := N) (G := G) → ℤ}
+    {s : P (d := d) (N := N) (G := G) → ℤ}
+    (h : chainBoundary₂ (d := d) (N := N) (G := G) s = c) :
+    chainArea (d := d) (N := N) (G := G) c
+      ≤ (chainSupport (d := d) (N := N) (G := G) s).card :=
+  Nat.sInf_le ⟨s, h, rfl⟩
+
+open Classical in
+/-- **Attainment:** a spannable chain has a minimal spanning surface. -/
+theorem exists_minimal_spanning
+    {c : E (d := d) (N := N) (G := G) → ℤ}
+    (h : ∃ s : P (d := d) (N := N) (G := G) → ℤ,
+      chainBoundary₂ (d := d) (N := N) (G := G) s = c) :
+    ∃ s : P (d := d) (N := N) (G := G) → ℤ,
+      chainBoundary₂ (d := d) (N := N) (G := G) s = c ∧
+        (chainSupport (d := d) (N := N) (G := G) s).card
+          = chainArea (d := d) (N := N) (G := G) c := by
+  obtain ⟨s₀, hs₀⟩ := h
+  have hne : {n : ℕ | ∃ s : P (d := d) (N := N) (G := G) → ℤ,
+      chainBoundary₂ (d := d) (N := N) (G := G) s = c ∧
+        (chainSupport (d := d) (N := N) (G := G) s).card = n}.Nonempty :=
+    ⟨_, s₀, hs₀, rfl⟩
+  obtain ⟨s, hs, hcard⟩ := Nat.sInf_mem hne
+  exact ⟨s, hs, hcard⟩
+
+open Classical in
+/-- **Spannable chains are closed:** `∂₁c = 0` whenever `c = ∂₂s` —
+the necessary condition that Wilson loops (closed `1`-chains) satisfy
+and open lines violate. -/
+theorem chainBoundary₁_eq_zero_of_spans
+    {c : E (d := d) (N := N) (G := G) → ℤ}
+    (h : ∃ s : P (d := d) (N := N) (G := G) → ℤ,
+      chainBoundary₂ (d := d) (N := N) (G := G) s = c) :
+    chainBoundary₁ (d := d) (N := N) (G := G) c = 0 := by
+  obtain ⟨s, hs⟩ := h
+  rw [← hs]
+  exact chainBoundary₁_comp_chainBoundary₂ (d := d) (N := N) (G := G) s
+
 end YangMills
