@@ -487,9 +487,26 @@ ENTIRE FINITE HALF OF THE MAYER–URSELL INVERSION IS MACHINE-CHECKED.**
    `≥ dist(p,q)/2`, so the `pinnedClusterWeightGE`-tail at
    `sz c := c.1.card`, `L := dist/2` bounds the connecting-cluster
    sums by `e^{-ε·dist/2}` — volume-uniformly.
-   **Remaining: B1/B2** (the covariance identity through
-   `Ξ = exp(clusterSum)` — the fundamental theorem now available) and
-   B4 (discharge `hIRbound`).
+   **THE BRIDGE is also closed (commit `c707e06`):**
+   `connecting_pinned_le_GE` — pinned cluster sums restricted to
+   clusters touching a distant plaquette ≤ `pinnedClusterWeightGE` at
+   `L = dist(p,q)/2` (non-clusters vanish termwise, the cluster filter
+   lands in the GE filter via `cluster_dist_le`; beware the
+   beta-atom/omega mismatch — bridge `∑ (fun c' => …) (X i)` to the
+   reduced form with an `rfl`-have).  Composing with
+   `pinned_cluster_tail_summable` (Half A) gives per-`c`
+   connecting-sum decay `e^{-ε·dist/2}` immediately.
+
+   **Remaining:**
+   1. The summed form: `∑_{c ∋ p} (connecting tails)` with the
+      VOLUME-FREE constant — the `c`-sum via the through-`p`
+      machinery (`sum_connectedPolymers_through_le` at exponent
+      `t+2ε`-ish; the `hterm`-pattern bounds
+      `e^{ε|c|}·‖z c‖·e^{t|c|} ≤ x^{|c|}`).
+   2. B1/B2: the covariance identity through `Ξ = exp(clusterSum)`
+      (source-deformed gases; inclusion–exclusion of cluster sums
+      supported on connecting clusters), then B4: discharge
+      `hIRbound` of `lattice_mass_gap_of_clustering_uniform`.
 
    (historical scoping for E4:) regroup Ω by `ν⟨k,f⟩ := ∑(fᵢ+1)`
    (`sigmaFiberEquiv` + `tsum_sigma`; Ω-fibers finite via
