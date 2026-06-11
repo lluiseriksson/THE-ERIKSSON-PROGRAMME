@@ -5,6 +5,7 @@ import Mathlib
 import YangMills.KP.Ursell
 import YangMills.KP.Cluster
 import YangMills.KP.SharpShell
+import YangMills.KP.SharpKP
 
 /-!
 # Mayer–Ursell inversion, step 0 — the indicator identity
@@ -2027,5 +2028,19 @@ theorem partition_eq_exp_clusterSum [Fintype P.Polymer]
     _ = Complex.exp (clusterSum P) := by
         rw [hcs]
         exact (exp_tsum_eq_tsum_H hA).symm
+
+open Classical in
+/-- **The Mayer–Ursell inversion under the bare KP criterion** — the
+sharp convergence theory supplies the absolute convergence, so
+`Ξ = exp(clusterSum)` holds outright: the fundamental theorem of
+cluster expansions, fully instantiated. -/
+theorem partition_eq_exp_clusterSum_of_kp [Fintype P.Polymer]
+    {a : P.Polymer → ℝ} (h : KPCriterion P a) :
+    partition P (Finset.univ : Finset P.Polymer)
+    = Complex.exp (clusterSum P) := by
+  refine partition_eq_exp_clusterSum P ?_
+  exact Summable.of_nonneg_of_le (fun n => norm_nonneg _)
+    (fun n => norm_clusterTerm_le P n)
+    (kp_clusterWeight_summable_sharp P h)
 
 end YangMills.KP

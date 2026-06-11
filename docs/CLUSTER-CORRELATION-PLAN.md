@@ -458,7 +458,19 @@ ENTIRE FINITE HALF OF THE MAYER–URSELL INVERSION IS MACHINE-CHECKED.**
    **E3 CLOSED** (`cb497d3`): `exp_tsum_eq_tsum_H` —
    `exp(∑'a) = ∑'_Ω H` (`Complex.exp_eq_exp_ℂ` +
    `NormedSpace.exp_eq_tsum_div` + E1b + `Summable.tsum_sigma`).
-   **Remaining: E4 only** — regroup Ω by `ν⟨k,f⟩ := ∑(fᵢ+1)`
+   **B0 IS COMPLETE (commit `e879b6b`, all oracle-clean).**
+   E4a (`e4c1dd5`): `tsum_H_eq_tsum_layers` (the size regrouping;
+   Ω-fibers via `Fintype.subtype` of filtered sigma-candidates).
+   E4b (`e879b6b`): `layer_shift` (the `f ↔ m` reindex) and
+   **`partition_eq_exp_clusterSum`** — `Ξ = exp(clusterSum)` for any
+   finite polymer system with absolutely convergent cluster series.
+   **THE FUNDAMENTAL THEOREM OF CLUSTER EXPANSIONS — the months-long
+   crux flagged in `Expansion.lean` — IS MACHINE-CHECKED.**
+   NEXT: the KP-instantiated corollary
+   (`hA` from `kp_clusterWeight_summable_sharp` +
+   `norm_clusterTerm_le`), then B1/B3/B4 of the correlator chain.
+
+   (historical scoping for E4:) regroup Ω by `ν⟨k,f⟩ := ∑(fᵢ+1)`
    (`sigmaFiberEquiv` + `tsum_sigma`; Ω-fibers finite via
    `Fintype.subtype`-style instances — k ≤ N and f bounded), per-N
    finite fiber-sum = the cluster layer of
