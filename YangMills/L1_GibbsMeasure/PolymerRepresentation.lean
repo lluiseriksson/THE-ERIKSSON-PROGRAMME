@@ -3397,4 +3397,90 @@ theorem truncated_correlation_bound
           (deformWeight w g T) : ℝ) : ℂ)‖) *
       Real.exp (-(ε * k)) := by ring
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **The WILSON-GAS truncated-correlation bound** — the IR clustering
+bound instantiated at the genuine Wilson weights: the base partition
+function is `partitionFunction`, and every constant is explicit in
+`d, β, B, δ_g, t, ε, |S|, |T|` — never the volume.  This is the
+`hIRbound` input of `lattice_mass_gap_of_clustering_uniform` for the
+strong-coupling lattice theory, machine-checked end to end. -/
+theorem wilson_truncated_correlation_bound
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B : ℝ} (hpe : ∀ g', |pe g'| ≤ B) (β : ℝ)
+    {g : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    (hlocg : IsLocalWeight (d := d) (N := N) (G := G) g)
+    (hmeasg : ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N G => g A p))
+    {δg : ℝ} (hδg0 : 0 ≤ δg) (hbdg : ∀ A p, |g A p| ≤ δg)
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      (((Real.exp (|β| * B) - 1) + δg +
+        (Real.exp (|β| * B) - 1) * δg) * Real.exp (t + ε + 1)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      ((((Real.exp (|β| * B) - 1) + δg +
+        (Real.exp (|β| * B) - 1) * δg) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (((Real.exp (|β| * B) - 1) + δg +
+            (Real.exp (|β| * B) - 1) * δg) *
+            Real.exp (t + ε + 1)))) ≤ t)
+    (S T : Finset (ConcretePlaquette d N)) (k : ℕ)
+    (hdist : ∀ p ∈ S, ∀ q ∈ T, 2 * k ≤ (touchGraph d N).dist p q)
+    (hone : 4 * ((S.card : ℝ) * (T.card : ℝ)) * Real.exp (-(ε * k)) *
+      ((((Real.exp (|β| * B) - 1) + δg +
+        (Real.exp (|β| * B) - 1) * δg) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (((Real.exp (|β| * B) - 1) + δg +
+            (Real.exp (|β| * B) - 1) * δg) *
+            Real.exp (t + ε + 1)))) ≤ 1) :
+    ‖((weightedPartition (d := d) (N := N) μ
+          (deformWeight (fun A p => plaquetteWeight pe β A p) g
+            (S ∪ T)) : ℝ) : ℂ) *
+        ((partitionFunction (d := d) (N := N) μ pe β : ℝ) : ℂ)
+      - ((weightedPartition (d := d) (N := N) μ
+          (deformWeight (fun A p => plaquetteWeight pe β A p) g
+            S) : ℝ) : ℂ) *
+        ((weightedPartition (d := d) (N := N) μ
+          (deformWeight (fun A p => plaquetteWeight pe β A p) g
+            T) : ℝ) : ℂ)‖
+    ≤ (8 * ((S.card : ℝ) * (T.card : ℝ)) *
+        ((((Real.exp (|β| * B) - 1) + δg +
+          (Real.exp (|β| * B) - 1) * δg) * Real.exp (t + ε + 1)) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+            (((Real.exp (|β| * B) - 1) + δg +
+              (Real.exp (|β| * B) - 1) * δg) *
+              Real.exp (t + ε + 1)))) *
+        ‖((weightedPartition (d := d) (N := N) μ
+          (deformWeight (fun A p => plaquetteWeight pe β A p) g
+            S) : ℝ) : ℂ)‖ *
+        ‖((weightedPartition (d := d) (N := N) μ
+          (deformWeight (fun A p => plaquetteWeight pe β A p) g
+            T) : ℝ) : ℂ)‖) *
+      Real.exp (-(ε * k)) := by
+  classical
+  have hδw0 : (0 : ℝ) ≤ Real.exp (|β| * B) - 1 := by
+    have h1 : (1 : ℝ) ≤ Real.exp (|β| * B) := by
+      rw [← Real.exp_zero]
+      refine Real.exp_le_exp.mpr ?_
+      have hB : (0 : ℝ) ≤ B := le_trans (abs_nonneg _) (hpe 1)
+      positivity
+    linarith
+  have hbdw : ∀ (A : GaugeConfig d N G) (p : ConcretePlaquette d N),
+      |plaquetteWeight pe β A p| ≤ Real.exp (|β| * B) - 1 :=
+    fun A p => abs_plaquetteWeight_le pe β A p hpe
+  have hmeasw : ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N G =>
+        plaquetteWeight pe β A p) := by
+    intro p
+    unfold plaquetteWeight
+    exact (Real.measurable_exp.comp
+      ((hpe_meas.comp (measurable_plaquetteHolonomy p)).const_mul
+        (-β))).sub measurable_const
+  have h := truncated_correlation_bound μ
+    (isLocalWeight_plaquetteWeight pe β) hlocg hmeasw hmeasg
+    hδw0 hδg0 hbdw hbdg t ε ht0 hε0 hr hsmall S T k hdist hone
+  rwa [weightedPartition_plaquetteWeight μ pe β] at h
+
 end YangMills
