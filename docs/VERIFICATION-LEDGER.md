@@ -426,6 +426,16 @@ simultaneously satisfiable for every dimension, with explicit
 `δ₀(d) = ((K²+64d+8)·e³)⁻¹ > 0`; the `(β, s)`-window is nonempty —
 the clustering theorems are not vacuous.
 
+And the SU(N) capstone (`sun_two_plaquette_correlator_bound`, oracle
+clean at `[propext, Classical.choice, Quot.sound]`): the clustering
+bound instantiated at the **genuine** Yang–Mills data — the gauge
+group `SU(N_c)`, the Haar probability measure `sunHaarProb`, the
+Wilson plaquette energy `Re tr U` (bounded by `N_c`).  **Exponential
+clustering of two-point functions for the SU(N) Wilson lattice gauge
+theory at strong coupling — actual group, actual measure, actual
+action — with constants in `d, N_c, β, s, t, ε` only.**  Still M3
+lattice-side; the continuum (M4/M5/Clay) untouched.
+
 Plain language: **the infrared clustering bound of the strong-coupling
 lattice theory is machine-checked end to end.**  For multiplicative
 local observables with supports at touching-distance `≥ 2k`,
