@@ -375,8 +375,23 @@ arrowCongr orderIsoOfFin.symm`) so every SUM in the statement lives on
 Fin-function spaces — separately-stated subtype-function sums hit
 Classical-vs-derived instance seams that `sum_congr rfl` cannot cross;
 with calc-spelled sides the value tracking is fully definitional
-(per-point `rfl`).  Remaining: (iv) the multinomial count, (v)
-cancellation, (vi) the analytic shell.
+(per-point `rfl`).
+
+**(iv) CLOSED (commit `0aea842`, oracle-clean):**
+`enumTuplesEquivSigma` — FLATTEN the data: tuples of per-block
+injections with pairwise-disjoint ranges ≃ bijections
+`(Σ i, Fin (m i)) ≃ Fin N` directly (the image-partitions are
+determined by the tuples, so NO sigma-of-subtypes and no HEq anywhere;
+`left_inv`/`right_inv` are `rfl`-level).  Then
+**`card_ordPartition_mul`** (`#ordp(m)·∏ mᵢ! = N!`, an equality) by
+counting the tuple filter two ways: `Fintype.card_equiv` +
+`equivOfCardEq` on the bijection side;
+`Finset.card_eq_sum_card_fiberwise` over image partitions with
+`piFinset`-fibers and `card_enumerations` on the other.
+
+Remaining: (v) cancellation, (vi) the analytic shell — bookkeeping and
+standard tsum work; ALL hard combinatorics of `Ξ = exp(clusterSum)` is
+now machine-checked.
 
 **(historical) Remaining-work list before the above was closed:**
 
