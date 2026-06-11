@@ -1195,4 +1195,394 @@ theorem covariance_identity
   congr 1
   ring
 
+/-! ### W4d: the decay engine for the weighted gas -/
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **The volume-uniform KP criterion for the TILTED weighted gas** —
+the tilt and the weight combine into the exponent `t + ε`; transport
+of the Wilson-gas tilted criterion with `x := δ·e^{t+ε}`. -/
+theorem weightedLatticePolymerSystem_tilt_kpCriterion_volumeUniform
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {w : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    {δ : ℝ} (hδ0 : 0 ≤ δ) (hbd : ∀ A p, |w A p| ≤ δ)
+    (t ε : ℝ) (ht0 : 0 ≤ t)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ * Real.exp (t + ε)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      ((δ * Real.exp (t + ε)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ * Real.exp (t + ε)))) ≤ t) :
+    KPCriterion
+      ((weightedLatticePolymerSystem (d := d) (N := N) μ w).tilt
+        (fun c => ε * (c.1.card : ℝ)))
+      (fun c => t * (c.1.card : ℝ)) := by
+  classical
+  set x : ℝ := δ * Real.exp (t + ε) with hxdef
+  have hx : (0 : ℝ) ≤ x := mul_nonneg hδ0 (Real.exp_pos _).le
+  set S : ℝ := x / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * x) with hSdef
+  have hden : (0 : ℝ) < 1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * x := by
+    rw [hxdef]; linarith
+  have hS0 : (0 : ℝ) ≤ S := div_nonneg hx hden.le
+  have hthrough : ∀ p : ConcretePlaquette d N,
+      (∑ Y ∈ (Finset.univ :
+        Finset (weightedLatticePolymerSystem (d := d) (N := N)
+          μ w).Polymer).filter (fun Y => p ∈ Y.1),
+        x ^ Y.1.card) ≤ S := by
+    intro p
+    have h := sum_connectedPolymers_through_le (d := d) (N := N) p x hx
+      (by rw [hxdef] at *; exact hr)
+    convert h using 2
+  constructor
+  · intro c
+    positivity
+  · intro c
+    have hterm : ∀ Y : (weightedLatticePolymerSystem (d := d) (N := N)
+        μ w).Polymer,
+        ‖((weightedLatticePolymerSystem (d := d) (N := N) μ w).tilt
+            (fun c => ε * (c.1.card : ℝ))).activity Y‖ *
+          Real.exp (t * (Y.1.card : ℝ)) ≤ x ^ Y.1.card := by
+      intro Y
+      have h1 := norm_weightedLatticePolymerSystem_activity_le
+        (d := d) (N := N) μ hbd Y
+      have h2 : Real.exp ((t + ε) * (Y.1.card : ℝ))
+          = Real.exp (t + ε) ^ Y.1.card := by
+        rw [mul_comm, ← Real.exp_nat_mul]
+      have hcomb : Real.exp (ε * (Y.1.card : ℝ)) *
+          Real.exp (t * (Y.1.card : ℝ))
+          = Real.exp ((t + ε) * (Y.1.card : ℝ)) := by
+        rw [← Real.exp_add]
+        congr 1
+        ring
+      rw [KP.tilt_norm_activity]
+      calc Real.exp (ε * (Y.1.card : ℝ)) *
+            ‖(weightedLatticePolymerSystem (d := d) (N := N)
+              μ w).activity Y‖ * Real.exp (t * (Y.1.card : ℝ))
+          = ‖(weightedLatticePolymerSystem (d := d) (N := N)
+              μ w).activity Y‖ *
+              (Real.exp (ε * (Y.1.card : ℝ)) *
+                Real.exp (t * (Y.1.card : ℝ))) := by ring
+        _ = ‖(weightedLatticePolymerSystem (d := d) (N := N)
+              μ w).activity Y‖ *
+              Real.exp (t + ε) ^ Y.1.card := by rw [hcomb, h2]
+        _ ≤ δ ^ Y.1.card * Real.exp (t + ε) ^ Y.1.card :=
+            mul_le_mul_of_nonneg_right h1 (by positivity)
+        _ = x ^ Y.1.card := by rw [hxdef, mul_pow]
+    have hdom : ∀ Y ∈ (Finset.univ :
+        Finset (weightedLatticePolymerSystem (d := d) (N := N)
+          μ w).Polymer).filter
+        (fun Y => (weightedLatticePolymerSystem (d := d) (N := N)
+          μ w).incomp c Y),
+        x ^ Y.1.card ≤ ∑ q ∈ c.1, ∑ p ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).filter
+            (fun p => plaquetteTouches q p),
+          (if p ∈ Y.1 then x ^ Y.1.card else 0) := by
+      intro Y hY
+      rw [Finset.mem_filter] at hY
+      have hinc : ¬ Disjoint (c.1.biUnion plaquetteSupport)
+          (Y.1.biUnion plaquetteSupport) := hY.2
+      obtain ⟨e, hec, heY⟩ := Finset.not_disjoint_iff.mp hinc
+      obtain ⟨q₀, hq₀, heq₀⟩ := Finset.mem_biUnion.mp hec
+      obtain ⟨p₀, hp₀, hep₀⟩ := Finset.mem_biUnion.mp heY
+      have htouch : plaquetteTouches q₀ p₀ := fun hd =>
+        (Finset.disjoint_left.mp hd heq₀) hep₀
+      have hp₀mem : p₀ ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).filter
+            (fun p => plaquetteTouches q₀ p) :=
+        Finset.mem_filter.mpr ⟨Finset.mem_univ _, htouch⟩
+      have hinner : x ^ Y.1.card ≤ ∑ p ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).filter
+            (fun p => plaquetteTouches q₀ p),
+          (if p ∈ Y.1 then x ^ Y.1.card else 0) := by
+        have h := Finset.single_le_sum
+          (f := fun p => if p ∈ Y.1 then x ^ Y.1.card else 0)
+          (fun p _ => by positivity) hp₀mem
+        simp only [hp₀, if_true] at h
+        exact h
+      refine le_trans hinner ?_
+      exact Finset.single_le_sum
+        (f := fun q => ∑ p ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).filter
+            (fun p => plaquetteTouches q p),
+          (if p ∈ Y.1 then x ^ Y.1.card else 0))
+        (fun q _ => Finset.sum_nonneg fun p _ => by positivity) hq₀
+    calc ∑ Y ∈ (Finset.univ :
+          Finset (weightedLatticePolymerSystem (d := d) (N := N)
+            μ w).Polymer).filter
+          (fun Y => (weightedLatticePolymerSystem (d := d) (N := N)
+            μ w).incomp c Y),
+          ‖((weightedLatticePolymerSystem (d := d) (N := N) μ w).tilt
+              (fun c => ε * (c.1.card : ℝ))).activity Y‖ *
+            Real.exp (t * (Y.1.card : ℝ))
+        ≤ ∑ Y ∈ (Finset.univ :
+            Finset (weightedLatticePolymerSystem (d := d) (N := N)
+              μ w).Polymer).filter
+            (fun Y => (weightedLatticePolymerSystem (d := d) (N := N)
+              μ w).incomp c Y),
+            x ^ Y.1.card :=
+          Finset.sum_le_sum fun Y _ => hterm Y
+      _ ≤ ∑ Y ∈ (Finset.univ :
+            Finset (weightedLatticePolymerSystem (d := d) (N := N)
+              μ w).Polymer).filter
+            (fun Y => (weightedLatticePolymerSystem (d := d) (N := N)
+              μ w).incomp c Y),
+            ∑ q ∈ c.1, ∑ p ∈ (Finset.univ :
+              Finset (ConcretePlaquette d N)).filter
+                (fun p => plaquetteTouches q p),
+              (if p ∈ Y.1 then x ^ Y.1.card else 0) :=
+          Finset.sum_le_sum hdom
+      _ ≤ ∑ Y ∈ (Finset.univ :
+            Finset (weightedLatticePolymerSystem (d := d) (N := N)
+              μ w).Polymer),
+            ∑ q ∈ c.1, ∑ p ∈ (Finset.univ :
+              Finset (ConcretePlaquette d N)).filter
+                (fun p => plaquetteTouches q p),
+              (if p ∈ Y.1 then x ^ Y.1.card else 0) :=
+          Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ _)
+            (fun Y _ _ => Finset.sum_nonneg fun q _ =>
+              Finset.sum_nonneg fun p _ => by positivity)
+      _ = ∑ q ∈ c.1, ∑ p ∈ (Finset.univ :
+            Finset (ConcretePlaquette d N)).filter
+              (fun p => plaquetteTouches q p),
+            ∑ Y ∈ (Finset.univ :
+              Finset (weightedLatticePolymerSystem (d := d) (N := N)
+                μ w).Polymer),
+              (if p ∈ Y.1 then x ^ Y.1.card else 0) := by
+          rw [Finset.sum_comm]
+          exact Finset.sum_congr rfl fun q _ => Finset.sum_comm
+      _ = ∑ q ∈ c.1, ∑ p ∈ (Finset.univ :
+            Finset (ConcretePlaquette d N)).filter
+              (fun p => plaquetteTouches q p),
+            ∑ Y ∈ (Finset.univ :
+              Finset (weightedLatticePolymerSystem (d := d) (N := N)
+                μ w).Polymer).filter (fun Y => p ∈ Y.1),
+              x ^ Y.1.card := by
+          refine Finset.sum_congr rfl fun q _ => ?_
+          refine Finset.sum_congr rfl fun p _ => ?_
+          exact (Finset.sum_filter _ _).symm
+      _ ≤ ∑ q ∈ c.1, ∑ p ∈ (Finset.univ :
+            Finset (ConcretePlaquette d N)).filter
+              (fun p => plaquetteTouches q p), S := by
+          refine Finset.sum_le_sum fun q _ => ?_
+          exact Finset.sum_le_sum fun p _ => hthrough p
+      _ ≤ ∑ q ∈ c.1, ((16 * d : ℕ) : ℝ) * S := by
+          refine Finset.sum_le_sum fun q _ => ?_
+          rw [Finset.sum_const, nsmul_eq_mul]
+          refine mul_le_mul_of_nonneg_right ?_ hS0
+          exact_mod_cast card_plaquettesTouching_le q
+      _ = (c.1.card : ℝ) * (((16 * d : ℕ) : ℝ) * S) := by
+          rw [Finset.sum_const, nsmul_eq_mul]
+      _ ≤ (c.1.card : ℝ) * t := by
+          refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+          rw [hSdef, hxdef]
+          exact hsmall
+      _ = t * (c.1.card : ℝ) := mul_comm _ _
+
+open Classical in
+/-- `cluster_dist_le`, weighted-gas form: the geometry is
+weight-independent, so the Wilson-gas statement applies by defeq at a
+dummy energy. -/
+theorem weighted_cluster_dist_le
+    (μ : Measure G)
+    (w : GaugeConfig d N G → ConcretePlaquette d N → ℝ) {n : ℕ}
+    {X : Fin n →
+      (weightedLatticePolymerSystem (d := d) (N := N) μ w).Polymer}
+    (hX : KP.IsCluster
+      (weightedLatticePolymerSystem (d := d) (N := N) μ w) X)
+    {i₀ j₀ : Fin n} {p q : ConcretePlaquette d N}
+    (hp : p ∈ (X i₀).1) (hq : q ∈ (X j₀).1) :
+    (touchGraph d N).dist p q ≤ 2 * ∑ i, (X i).1.card :=
+  cluster_dist_le μ (fun _ => (0 : ℝ)) 0 (X := X) hX hp hq
+
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **Connecting-sum domination for the weighted gas** — transport of
+`connecting_pinned_le_GE`. -/
+lemma weighted_connecting_pinned_le_GE
+    (μ : Measure G)
+    (w : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    {p q : ConcretePlaquette d N}
+    (c : (weightedLatticePolymerSystem (d := d) (N := N) μ w).Polymer)
+    (hp : p ∈ c.1) (n : ℕ) :
+    (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer)).filter
+        (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+        |((KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+          ∏ i, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).activity (X i)‖
+    ≤ KP.pinnedClusterWeightGE (weightedLatticePolymerSystem
+        (d := d) (N := N) μ w)
+        (fun c' => c'.1.card) c ((touchGraph d N).dist p q / 2) n := by
+  classical
+  unfold KP.pinnedClusterWeightGE
+  refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+  rw [show ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+      (weightedLatticePolymerSystem
+        (d := d) (N := N) μ w).Polymer)).filter
+      (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+      |((KP.ursell (weightedLatticePolymerSystem
+        (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+        ∏ i, ‖(weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).activity (X i)‖
+    = ∑ X ∈ ((Finset.univ : Finset (Fin (n + 1) →
+        (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer)).filter
+        (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1)).filter
+        (fun X => KP.IsCluster (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X),
+        |((KP.ursell (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+          ∏ i, ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).activity (X i)‖
+    from (Finset.sum_filter_of_ne fun X _ hne => by
+      by_contra hnc
+      exact hne (by
+        rw [KP.ursell_eq_zero_of_not_isCluster _ X hnc]
+        simp)).symm]
+  refine Finset.sum_le_sum_of_subset_of_nonneg ?_ fun X _ _ =>
+    mul_nonneg (abs_nonneg _)
+      (Finset.prod_nonneg fun i _ => norm_nonneg _)
+  intro X hX
+  rw [Finset.mem_filter, Finset.mem_filter] at hX
+  obtain ⟨⟨-, hX0, j, hqj⟩, hclus⟩ := hX
+  rw [Finset.mem_filter]
+  refine ⟨Finset.mem_univ _, hX0, ?_⟩
+  have hp0 : p ∈ (X 0).1 := by rw [hX0]; exact hp
+  have hdist := weighted_cluster_dist_le μ w hclus hp0 hqj
+  have hsz : ∑ i, (fun c' : (weightedLatticePolymerSystem
+      (d := d) (N := N) μ w).Polymer => c'.1.card) (X i)
+      = ∑ i, (X i).1.card := rfl
+  omega
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **THE CONNECTING-CLUSTER DECAY for the weighted gas
+(volume-uniform):** transport of `connecting_cluster_decay` with
+`x := δ·e^{t+ε}`. -/
+theorem weighted_connecting_cluster_decay
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {w : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    {δ : ℝ} (hδ0 : 0 ≤ δ) (hbd : ∀ A p, |w A p| ≤ δ)
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ * Real.exp (t + ε)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      ((δ * Real.exp (t + ε)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ * Real.exp (t + ε)))) ≤ t)
+    (p q : ConcretePlaquette d N) :
+    ∑ c ∈ (Finset.univ : Finset (weightedLatticePolymerSystem
+        (d := d) (N := N) μ w).Polymer).filter
+        (fun c => p ∈ c.1),
+      ∑' n : ℕ, (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ i, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X i)‖
+    ≤ Real.exp (-(ε * (((touchGraph d N).dist p q / 2 : ℕ) : ℝ))) *
+        ((δ * Real.exp (t + ε)) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ * Real.exp (t + ε)))) := by
+  classical
+  set L : ℕ := (touchGraph d N).dist p q / 2 with hL
+  set x : ℝ := δ * Real.exp (t + ε) with hxdef
+  have hx : (0 : ℝ) ≤ x := mul_nonneg hδ0 (Real.exp_pos _).le
+  have hcrit := weightedLatticePolymerSystem_tilt_kpCriterion_volumeUniform
+    (d := d) (N := N) μ hδ0 hbd t ε ht0 hr hsmall
+  have hper : ∀ c ∈ (Finset.univ : Finset (weightedLatticePolymerSystem
+      (d := d) (N := N) μ w).Polymer).filter (fun c => p ∈ c.1),
+      (∑' n : ℕ, (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ i, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X i)‖)
+      ≤ Real.exp (-(ε * L)) *
+          (Real.exp (ε * (c.1.card : ℝ)) *
+            ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity c‖ *
+            Real.exp (t * (c.1.card : ℝ))) := by
+    intro c hc
+    have hpc := (Finset.mem_filter.mp hc).2
+    have htail := KP.pinned_cluster_tail_summable
+      (weightedLatticePolymerSystem (d := d) (N := N) μ w)
+      (fun c' => c'.1.card) hε0 hcrit c L
+    have hterm := fun n => weighted_connecting_pinned_le_GE
+      (q := q) μ w c hpc n
+    have hnn : ∀ n : ℕ, 0 ≤ (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ i, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X i)‖ := by
+      intro n
+      refine mul_nonneg (by positivity)
+        (Finset.sum_nonneg fun X _ => mul_nonneg (abs_nonneg _)
+          (Finset.prod_nonneg fun i _ => norm_nonneg _))
+    have hsumm : Summable (fun n : ℕ =>
+        (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+          (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).Polymer)).filter
+          (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+          |((KP.ursell (weightedLatticePolymerSystem
+            (d := d) (N := N) μ w) X : ℤ) : ℝ)| *
+            ∏ i, ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity (X i)‖) :=
+      Summable.of_nonneg_of_le hnn hterm htail.1
+    exact le_trans
+      (Summable.tsum_le_tsum hterm hsumm htail.1) htail.2
+  refine le_trans (Finset.sum_le_sum hper) ?_
+  rw [← Finset.mul_sum]
+  refine mul_le_mul_of_nonneg_left ?_ (Real.exp_pos _).le
+  calc ∑ c ∈ (Finset.univ : Finset (weightedLatticePolymerSystem
+        (d := d) (N := N) μ w).Polymer).filter
+        (fun c => p ∈ c.1),
+        Real.exp (ε * (c.1.card : ℝ)) *
+          ‖(weightedLatticePolymerSystem
+            (d := d) (N := N) μ w).activity c‖ *
+          Real.exp (t * (c.1.card : ℝ))
+      ≤ ∑ c ∈ (Finset.univ : Finset (weightedLatticePolymerSystem
+          (d := d) (N := N) μ w).Polymer).filter
+          (fun c => p ∈ c.1),
+          x ^ c.1.card := by
+        refine Finset.sum_le_sum fun c _ => ?_
+        have h1 := norm_weightedLatticePolymerSystem_activity_le
+          (d := d) (N := N) μ hbd c
+        have h2 : Real.exp ((t + ε) * (c.1.card : ℝ))
+            = Real.exp (t + ε) ^ c.1.card := by
+          rw [mul_comm, ← Real.exp_nat_mul]
+        have hcomb : Real.exp (ε * (c.1.card : ℝ)) *
+            Real.exp (t * (c.1.card : ℝ))
+            = Real.exp ((t + ε) * (c.1.card : ℝ)) := by
+          rw [← Real.exp_add]
+          congr 1
+          ring
+        calc Real.exp (ε * (c.1.card : ℝ)) *
+            ‖(weightedLatticePolymerSystem
+              (d := d) (N := N) μ w).activity c‖ *
+            Real.exp (t * (c.1.card : ℝ))
+            = ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity c‖ *
+              (Real.exp (ε * (c.1.card : ℝ)) *
+                Real.exp (t * (c.1.card : ℝ))) := by ring
+          _ = ‖(weightedLatticePolymerSystem
+                (d := d) (N := N) μ w).activity c‖ *
+              Real.exp (t + ε) ^ c.1.card := by rw [hcomb, h2]
+          _ ≤ δ ^ c.1.card * Real.exp (t + ε) ^ c.1.card :=
+            mul_le_mul_of_nonneg_right h1 (by positivity)
+          _ = x ^ c.1.card := by rw [hxdef, mul_pow]
+    _ ≤ x / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * x) := by
+        have h := sum_connectedPolymers_through_le (d := d) (N := N)
+          p x hx (by rw [hxdef] at *; exact hr)
+        convert h using 2
+
 end YangMills
