@@ -815,10 +815,25 @@ the build JOB COUNT increments before trusting the log):
 `TwoPlaquetteCorrelator.lean` — `plaquetteHolonomy_congr` +
 `isLocalWeight_obs`/`measurable_obs`/`abs_obs_le` (the `s`-scaled
 family; beta-redex needed a `show` before the holonomy rewrite);
-(ii) the bilinear expansion of the covariance under `O = 1 + s·f`
-(four-term integral linearity, integrability from boundedness +
-`integrable_boltzmann`); (iii) `dist({p},{q})` bookkeeping
-(`hdist` at singletons = `2k ≤ dist p q`).  Result: the
+(ii)+(iii) **CLOSED — THE SHORTCUT IS COMPLETE (commit `78966b1`,
+build 8229 jobs verified, oracle clean):
+`two_plaquette_correlator_bound`** — for ANY bounded measurable
+observable `f` of the plaquette holonomy, at touching-distance
+`≥ 2k` and small `β`:
+
+    |∫f_p·f_q·e^{−βS}·Z − ∫f_p·e^{−βS}·∫f_q·e^{−βS}|
+      ≤ (8·M·(1+s)²·Z²·e^{−ε·k})/s²,
+
+constants volume-free.  This IS the `kp_cluster_decay`-shaped
+endpoint of `PETER_WEYL_ROADMAP.md` Layer 4 — obtained WITHOUT
+Peter–Weyl, Schur orthogonality, or the character expansion.
+Idioms paid: `Integrable.bdd_mul` takes an a.e. bound (`ae_of_all`),
+not an existential; `rw [integral_add …]` with explicit integrabilities
+instantiates Pi-ADDITION lambdas that never match pointwise-sum goals
+— use term-mode `have`-ascribed `integral_add`/`integral_const_mul`
+with beta-reduced statement types instead; `gcongr` can discharge
+its relational side-goals from hypotheses by itself (trailing bullets
+then error "no goals").  Result: the
 roadmap's `kp_cluster_decay`-shaped theorem for ARBITRARY bounded
 local plaquette observables at small β — no Peter–Weyl, no character
 expansion, no Young diagrams.  (Peter–Weyl remains necessary for the

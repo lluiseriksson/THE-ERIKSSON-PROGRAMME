@@ -396,6 +396,18 @@ mass gap is now fed by a theorem; the only hypothesis-carried input
 left in the M3 assembly is the §6.3 single-scale UV bound (the
 Balaban input, deliberately carried — never an axiom).**
 
+And the T4 shortcut (`two_plaquette_correlator_bound`,
+`L1_GibbsMeasure/TwoPlaquetteCorrelator.lean`, oracle clean at
+`[propext, Classical.choice, Quot.sound]`): the connected
+two-plaquette correlator of ANY bounded measurable holonomy
+observable decays exponentially in the touching-distance at small
+`β`, volume-free — the `kp_cluster_decay`-shaped endpoint of
+`PETER_WEYL_ROADMAP.md` Layer 4, reached WITHOUT Peter–Weyl, Schur
+orthogonality, or the Osterwalder–Seiler character expansion (those
+layers were routes to polymer bounds the weighted-Mayer campaign
+produced directly).  Peter–Weyl remains the route for the
+area-law/Wilson-loop form.
+
 Plain language: **the infrared clustering bound of the strong-coupling
 lattice theory is machine-checked end to end.**  For multiplicative
 local observables with supports at touching-distance `≥ 2k`,
