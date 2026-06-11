@@ -612,12 +612,13 @@ surfaces were `pe`-specific.  Bricks:
   ⇒ integrable; no `MeasurableMul₂`/`MeasurableInv` needed — `w`'s
   measurability is a hypothesis), `weightedPartition_eq_sum`, and the
   Wilson instantiation `weightedPartition_plaquetteWeight`.
-* **W2 (next):** `weightedLatticePolymerSystem μ w` (same Polymer
-  subtype; activity `:= coe ∫∏_{p∈c} w`) and
-  `weightedPartition_eq_partition : (Z[w] : ℂ) = partition(...)` —
-  verbatim transport of `partitionFunction_eq_partition` (the
-  component machinery is weight-independent; only `hfg`, the
-  factorization call, and activity-rfl change).
+* **W2 CLOSED (commit `c1239f8`, green on FIRST build, oracle
+  clean):** `weightedLatticePolymerSystem μ w` (same Polymer subtype;
+  activity `:= coe ∫∏_{p∈c} w`), `weightedComponentFamily` (+ mem/prod
+  lemmas), and **`weightedPartition_eq_partition`**:
+  `(Z[w] : ℂ) = KP.partition (weighted gas) univ` for every bounded
+  measurable local weight family — verbatim transport of step 2
+  (appended to `PolymerRepresentation.lean`).
 * **W3:** KP criterion for `|w| ≤ δ` (transport
   `norm_latticePolymerSystem_activity_le` → `δ^|c|` and the
   volume-uniform criterion with `x := δ·e^t`), giving
