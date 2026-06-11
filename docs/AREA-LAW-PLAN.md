@@ -178,16 +178,29 @@ through `Finset.equivFin` (`prod_coe_sort` + `Fintype.prod_equiv`),
 and applying the banked `fundMonomial` rule.  This is the exact shape
 of one per-edge fiber factor after `prod_comp_eq_prod_fiber`; J never
 touches `Fin`-indexed monomials.
-**Open:** DB-2 (per-term degree bookkeeping: each closed-path/
-activity term carries `σ : P → {±1}`; all-edge balance mod `N_c` ⟺
-`∂₂(indicatorChain S σ) = loopChain C` over `ZMod N_c`; key
-structural fact: the per-edge SIGNED count `#true − #false` of a
-term's fiber at `e` is independent of the path indices — fixed by the
-loop/plaquette incidence and the `σ` choices alone), and J (the
-contrapositive join: TE-1 expansion → `prod_comp_eq_prod_fiber`
-grouping → `integral_positionProduct_eq_zero` with DB-1 as `hmean` at
-an unbalanced edge → every surviving `S` carries a spanning chain →
-`chainArea_le_card_of_support_subset`).
+**TE map-forms + J-1 CLOSED** (`TracePathExpansion.lean`,
+`ClayCore/WilsonLoopMonomial.lean`): `pathSum_map_eq_sum_vertexSeq` /
+`trace_prod_map_eq_sum_closedSeq` (the expansion stated over `(es, f)`
+directly — binder types stay at `es.length`, NO `List.length_map`
+casts; same induction); `sun_inv_val_apply` (unitarity entrywise:
+`(U⁻¹)_{ab} = conj U_{ba}`, via `Inv := star` on
+`specialUnitaryGroup`); `posEdgeOf` + `posToFun_val_apply` (the
+decoration: forward traversal reads an entry of the positive-edge
+coordinate, backward reads the conjugated transposed entry);
+`wilsonLine_val` (`SubmonoidClass.coe_list_prod` bridge); and the
+master **`trace_wilsonLine_eq_sum_decorated`**: the Wilson-loop trace
+in positive-edge coordinates = sum over closed vertex sequences of
+positionwise DECORATED entries — for fixed `v` exactly the input of
+`prod_comp_eq_prod_fiber` + the decorated selection rule.  All six
+oracle clean.
+**Open:** J-2 (the pure-loop kill: linearity over the `v`-sum +
+grouping + DB-1 at an `N`-ality-unbalanced edge ⇒
+`∫ tr W_C dμ_gauge = 0` — the β=0 selection rule for loops; per-edge
+balance count at `e` = `(es-positions at e, sign true) − (sign
+false)`, INDEPENDENT of `v`), DB-2 (add plaquette activities: term
+chains `σ : P → {±1}`, balance ⟺ `∂₂(indicatorChain S σ) = loopChain
+C` over `ZMod N_c`), J-3 (contrapositive join → `chainArea_le_card_of_
+support_subset`), then AL6.
 
 **Then AL6:** `|⟨W_C⟩·Z| ≤ ∑_{|S| ≥ Area} (N_c·δ^{|S|})·(entropy)` —
 the `x/(1−Kx)` tail pattern from the correlator campaign, plus the
