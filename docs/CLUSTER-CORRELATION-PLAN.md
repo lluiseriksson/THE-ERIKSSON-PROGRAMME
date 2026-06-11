@@ -529,6 +529,20 @@ graph restricted to `↥S`; the parts, coerced back to
 connected ✓ pairwise non-touching ✓ admissible ✓).  Budget: 4–8
 cycles (the component API is the bulk).
 
+**Step 2 OPENED (commit `2ccc561`, five lemmas green on FIRST
+build):** `plaqComponents` + `_nonempty`/`_subset`/`_biUnion`(cover)/
+`_not_touching`/`_support_disjoint` in
+`L1_GibbsMeasure/ClusterGeometry.lean`.  **Remaining for step 2:**
+(i) component connectivity (`IsConnectedPolymer c` for
+`c ∈ plaqComponents S` — a reachability-class walk stays in the class
+and pulls back through the double subtype `↥c` vs `↥S`; the
+`reachable_of_walk_image` pattern); (ii) the reconstruction
+(`plaqComponents (⋃ A) = A` for admissible families — the B0a-A3
+pointwise-class pattern); (iii) the `sum_nbij'` bijection
+`S ↔ admissible families` with values matched by
+`integral_prod_prod_plaquetteWeight_of_pairwiseDisjoint`, yielding
+`partitionFunction = partition P univ`.
+
 **Then B2** (the covariance): for plaquette-local multiplicative
 observables `F` (deformations `f_p ↦ f_p·(1+s·g_p)` supported on
 `S_F`), `⟨F⟩ = Ξ_F/Ξ` (step 2 applied to the deformed gas — SAME
