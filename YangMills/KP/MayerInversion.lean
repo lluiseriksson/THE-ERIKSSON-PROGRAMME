@@ -1059,4 +1059,78 @@ lemma sum_finpartition_eq_ordPartitions {N : ℕ}
           (fun σ => IsOrdPartition σ),
           ∏ i, h (σ i) := (Finset.sum_filter _ _).symm
 
+open Classical in
+/-- Ordered partitions carry block data (roots chosen in the nonempty
+blocks) — unlocking the SharpShell cover-splitting machinery. -/
+lemma IsOrdPartition.toBlockData {N k : ℕ}
+    {σ : Fin k → Finset (Fin N)} (h : IsOrdPartition σ) :
+    IsBlockData (Finset.univ : Finset (Fin N))
+      (fun i => (σ i).card - 1)
+      (fun i => (σ i, (h.1 i).choose)) := by
+  refine ⟨h.2.1, h.2.2, fun i => (h.1 i).choose_spec, fun i => ?_⟩
+  exact (Nat.succ_pred_eq_of_pos
+    (Finset.card_pos.mpr (h.1 i))).symm
+
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- ℂ-valued cover splitting (the SharpShell `sum_coverSplit`, verbatim
+at ℂ): block-product sums over cover functions factor into per-block
+sums. -/
+lemma sum_coverSplit_complex {n k : ℕ} {U : Finset (Fin n)}
+    {m : Fin k → ℕ} {ρ : Fin k → Finset (Fin n) × Fin n}
+    (hρ : IsBlockData U m ρ) {β : Type*} [Fintype β] [DecidableEq β]
+    (G : ∀ i : Fin k, ({x // x ∈ (ρ i).1} → β) → ℂ) :
+    ∑ g : {x // x ∈ U} → β, ∏ i, G i (hρ.coverSplitEquiv β g i)
+    = ∏ i, ∑ h : {x // x ∈ (ρ i).1} → β, G i h := by
+  classical
+  rw [← Equiv.sum_comp (hρ.coverSplitEquiv β).symm
+    (fun g => ∏ i, G i (hρ.coverSplitEquiv β g i))]
+  have hsimp : ∀ t : ∀ i : Fin k, ({x // x ∈ (ρ i).1} → β),
+      (∏ i, G i (hρ.coverSplitEquiv β
+        ((hρ.coverSplitEquiv β).symm t) i))
+      = ∏ i, G i (t i) := by
+    intro t
+    rw [Equiv.apply_symm_apply]
+  rw [Finset.sum_congr rfl (fun t _ => hsimp t)]
+  rw [Finset.prod_univ_sum, Fintype.piFinset_univ]
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **B0b (iii): the X-split** — for an ordered partition, summing a
+product of per-block functionals of the restrictions over ALL functions
+on `Fin N` factorizes exactly into the product of per-block sums. -/
+theorem sum_split_ordPartition [Fintype P.Polymer] {N k : ℕ}
+    (σ : Fin k → Finset (Fin N)) (hσ : IsOrdPartition σ)
+    (G : ∀ m : ℕ, (Fin m → P.Polymer) → ℂ) :
+    ∑ X : Fin N → P.Polymer,
+      ∏ i, G (σ i).card
+        (fun l => X (((σ i).orderIsoOfFin rfl l) : Fin N))
+    = ∏ i, ∑ Y : Fin (σ i).card → P.Polymer, G (σ i).card Y := by
+  classical
+  have hbd := hσ.toBlockData
+  -- the composite splitting equivalence (all sums stay over
+  -- Fin-function spaces; the subtype machinery lives inside the equiv)
+  let E : (Fin N → P.Polymer)
+      ≃ ∀ i : Fin k, (Fin (σ i).card → P.Polymer) :=
+    ((Equiv.arrowCongr
+        (Equiv.subtypeUnivEquiv (fun x : Fin N => Finset.mem_univ x))
+        (Equiv.refl P.Polymer)).symm).trans
+      ((hbd.coverSplitEquiv P.Polymer).trans
+        (Equiv.piCongrRight fun i =>
+          Equiv.arrowCongr ((σ i).orderIsoOfFin rfl).toEquiv.symm
+            (Equiv.refl P.Polymer)))
+  calc ∑ X : Fin N → P.Polymer,
+      ∏ i, G (σ i).card
+        (fun l => X (((σ i).orderIsoOfFin rfl l) : Fin N))
+      = ∑ X : Fin N → P.Polymer, ∏ i, G (σ i).card (E X i) := by
+        refine congrArg (Finset.sum Finset.univ) (funext fun X => ?_)
+        refine Finset.prod_congr rfl fun i _ => ?_
+        refine congrArg (G (σ i).card) (funext fun l => ?_)
+        rfl
+    _ = ∑ p : ∀ i : Fin k, (Fin (σ i).card → P.Polymer),
+          ∏ i, G (σ i).card (p i) :=
+        Equiv.sum_comp E (fun p => ∏ i, G (σ i).card (p i))
+    _ = ∏ i, ∑ Y : Fin (σ i).card → P.Polymer, G (σ i).card Y := by
+        rw [Finset.prod_univ_sum, Fintype.piFinset_univ]
+
 end YangMills.KP
