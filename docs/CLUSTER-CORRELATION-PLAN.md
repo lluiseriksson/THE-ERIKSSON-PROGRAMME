@@ -431,8 +431,9 @@ with `W m = ∑_{Y : Fin m → P} φ(Y)·∏z(Y)`.
 ENTIRE FINITE HALF OF THE MAYER–URSELL INVERSION IS MACHINE-CHECKED.**
 
 **Remaining: (vi) only** — the tsum shell:
-1. `partition P univ = ∑_{N ≤ #Polymer} (admissible card-N sums)`
-   (grading the powerset filter by cardinality — finite, easy).
+1. DONE (commit `f59918f`): `partition_univ_eq_sum_card` +
+   **`partition_univ_eq_cluster_layers`** — `Ξ` in the fully finite
+   `N`-graded cluster-layer form.
 2. `exp (clusterSum P) = ∑'_k (1/k!) K^k`, `K^k` by induction with
    `Summable.tsum_mul_tsum_of_summable_norm` + `Fin.cons`-reindexing,
    inner finite products expanded; regroup the (k, f)-tsum by
