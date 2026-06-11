@@ -193,6 +193,65 @@ theorem sunHaarProb_entry_integral_zero
     (fun _ => a) (fun _ => b) (fun _ => a) (fun _ => a) hdvd
   simpa [fundMonomial, Fin.prod_univ_one] using h
 
+/-- **Decorated-entry-product selection rule** (AL4.5, brick DB-1).
+The `Finset`-indexed form of the `N`-ality selection rule: a product
+of matrix entries `U_{aᵢbᵢ}` (positions with `dec i = true`) and
+conjugated entries (positions with `dec i = false`) integrates to
+zero against Haar unless `N_c` divides the holomorphic-minus-
+antiholomorphic count.  This is exactly the shape of one per-edge
+fiber factor of a Wilson-loop path term after the grouping
+`prod_comp_eq_prod_fiber`; the area-law join (J) consumes this
+interface and never touches the `Fin`-indexed `fundMonomial`. -/
+theorem sunHaarProb_decoratedEntryProduct_integral_zero
+    (N_c : ℕ) [NeZero N_c] {ι₀ : Type*} (s : Finset ι₀)
+    (dec : ι₀ → Bool) (a b : ι₀ → Fin N_c)
+    (hdvd : ¬ (N_c : ℤ) ∣
+      (((s.filter (fun i => dec i)).card : ℤ)
+        - ((s.filter (fun i => ¬ dec i)).card : ℤ))) :
+    ∫ U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ),
+      ∏ i ∈ s, (if dec i then U.val (a i) (b i)
+        else star (U.val (a i) (b i))) ∂(sunHaarProb N_c) = 0 := by
+  set t₁ := s.filter (fun i => dec i) with ht₁
+  set t₂ := s.filter (fun i => ¬ dec i) with ht₂
+  have hsplit : ∀ U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ),
+      (∏ i ∈ s, (if dec i then U.val (a i) (b i)
+        else star (U.val (a i) (b i))))
+      = fundMonomial N_c t₁.card t₂.card
+          (fun x => a ((t₁.equivFin.symm x) : ι₀))
+          (fun x => b ((t₁.equivFin.symm x) : ι₀))
+          (fun x => a ((t₂.equivFin.symm x) : ι₀))
+          (fun x => b ((t₂.equivFin.symm x) : ι₀)) U := by
+    intro U
+    rw [← Finset.prod_filter_mul_prod_filter_not s (fun i => dec i)]
+    unfold fundMonomial
+    congr 1
+    · have h1 : ∏ i ∈ t₁, (if dec i then U.val (a i) (b i)
+          else star (U.val (a i) (b i)))
+          = ∏ i ∈ t₁, U.val (a i) (b i) :=
+        Finset.prod_congr rfl fun i hi =>
+          if_pos (Finset.mem_filter.mp hi).2
+      rw [h1, ← Finset.prod_coe_sort]
+      exact Fintype.prod_equiv t₁.equivFin _ _ fun x => by simp
+    · have h2 : ∏ i ∈ t₂, (if dec i then U.val (a i) (b i)
+          else star (U.val (a i) (b i)))
+          = ∏ i ∈ t₂, star (U.val (a i) (b i)) :=
+        Finset.prod_congr rfl fun i hi =>
+          if_neg (Finset.mem_filter.mp hi).2
+      rw [h2, ← Finset.prod_coe_sort]
+      exact Fintype.prod_equiv t₂.equivFin _ _ fun x => by simp
+  have hfun : (fun U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+      ∏ i ∈ s, (if dec i then U.val (a i) (b i)
+        else star (U.val (a i) (b i))))
+      = fun U => fundMonomial N_c t₁.card t₂.card
+          (fun x => a ((t₁.equivFin.symm x) : ι₀))
+          (fun x => b ((t₁.equivFin.symm x) : ι₀))
+          (fun x => a ((t₂.equivFin.symm x) : ι₀))
+          (fun x => b ((t₂.equivFin.symm x) : ι₀)) U :=
+    funext hsplit
+  rw [hfun]
+  exact sunHaarProb_fundMonomial_integral_zero N_c t₁.card t₂.card
+    _ _ _ _ hdvd
+
 end
 
 end YangMills

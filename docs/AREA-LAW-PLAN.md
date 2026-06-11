@@ -153,16 +153,26 @@ Both oracle clean.  House note: state grouping lemmas with
 `filter`'s `DecidablePred` instance in the abstract lemma
 (`Classical.propDecidable`) mismatches the derived instance at the
 concrete type, and `exact` fails with two identically-printed types.
-**Open:** DB (per-term degree bookkeeping: each closed-path/activity
-term carries `σ : P → {±1}`; all-edge balance mod `N_c` ⟺
+**DB-1 CLOSED** (`ClayCore/SchurEntryNAlitySelection.lean`):
+`sunHaarProb_decoratedEntryProduct_integral_zero` — the
+`Finset`-indexed selection rule: `∫ ∏_{i∈s} (if dec i then U_{aᵢbᵢ}
+else conj U_{aᵢbᵢ}) dHaar = 0` unless `N_c` divides
+`#(dec true) − #(dec false)`.  Oracle clean.  Proved by splitting the
+product with `prod_filter_mul_prod_filter_not`, reindexing each block
+through `Finset.equivFin` (`prod_coe_sort` + `Fintype.prod_equiv`),
+and applying the banked `fundMonomial` rule.  This is the exact shape
+of one per-edge fiber factor after `prod_comp_eq_prod_fiber`; J never
+touches `Fin`-indexed monomials.
+**Open:** DB-2 (per-term degree bookkeeping: each closed-path/
+activity term carries `σ : P → {±1}`; all-edge balance mod `N_c` ⟺
 `∂₂(indicatorChain S σ) = loopChain C` over `ZMod N_c`; key
-structural fact: the per-edge SIGNED degree `n_e − m_e` of a term is
-independent of the path indices — fixed by the loop/plaquette
-incidence and the `σ` choices alone), and J (the contrapositive
-join).  The SU(N) instantiation of K's `hmean` is
-`sunHaarProb_fundMonomial_integral_zero` applied to the collected
-fiber factor — the bridge lemma "fiber factor of a path term IS a
-`fundMonomial` evaluation" is DB's first brick.
+structural fact: the per-edge SIGNED count `#true − #false` of a
+term's fiber at `e` is independent of the path indices — fixed by the
+loop/plaquette incidence and the `σ` choices alone), and J (the
+contrapositive join: TE-1 expansion → `prod_comp_eq_prod_fiber`
+grouping → `integral_positionProduct_eq_zero` with DB-1 as `hmean` at
+an unbalanced edge → every surviving `S` carries a spanning chain →
+`chainArea_le_card_of_support_subset`).
 
 **Then AL6:** `|⟨W_C⟩·Z| ≤ ∑_{|S| ≥ Area} (N_c·δ^{|S|})·(entropy)` —
 the `x/(1−Kx)` tail pattern from the correlator campaign, plus the
