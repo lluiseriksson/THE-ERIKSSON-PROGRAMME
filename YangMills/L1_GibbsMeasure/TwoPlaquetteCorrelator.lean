@@ -62,6 +62,7 @@ lemma isLocalWeight_obs (f : G → ℝ) (s : ℝ) :
     IsLocalWeight (d := d) (N := N) (G := G)
       (fun A p => s * f (plaquetteHolonomy A p)) := by
   intro p A A' h
+  show s * f (plaquetteHolonomy A p) = s * f (plaquetteHolonomy A' p)
   rw [plaquetteHolonomy_congr p h]
 
 /-- The `s`-scaled holonomy-observable family is measurable. -/
