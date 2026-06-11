@@ -1887,4 +1887,145 @@ lemma tsum_H_eq_tsum_layers {a : ℕ → ℂ}
         exact Finset.sum_congr rfl fun k _ => by
           rw [Finset.mul_sum]
 
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **B0b (vi), E4b-shift:** the `f ↔ m` reindexing (`mᵢ = fᵢ + 1`)
+between size-tuple layers and the cluster layers. -/
+lemma layer_shift [Fintype P.Polymer] (N k : ℕ) :
+    ∑ f ∈ (Fintype.piFinset
+        fun _ : Fin k => Finset.range (N + 1)).filter
+        (fun f => ∑ i, (f i + 1) = N),
+      ∏ i, (((f i + 1).factorial : ℂ))⁻¹ *
+        ∑ Y : Fin (f i + 1) → P.Polymer,
+          (ursell P Y : ℂ) * ∏ l, P.activity (Y l)
+    = ∑ m ∈ (Fintype.piFinset
+        fun _ : Fin k => Finset.range (N + 1)).filter
+        (fun m => (∀ i, 1 ≤ m i) ∧ ∑ i, m i = N),
+      ∏ i, (((m i).factorial : ℂ))⁻¹ *
+        ∑ Y : Fin (m i) → P.Polymer,
+          (ursell P Y : ℂ) * ∏ l, P.activity (Y l) := by
+  classical
+  refine Finset.sum_nbij' (fun f => fun i => f i + 1)
+    (fun m => fun i => m i - 1) ?_ ?_ ?_ ?_ ?_
+  · intro f hf
+    rw [Finset.mem_filter, Fintype.mem_piFinset] at hf
+    obtain ⟨hbox, hsum⟩ := hf
+    have hmem : ∀ i, f i + 1 ∈ Finset.range (N + 1) := by
+      intro i
+      rw [Finset.mem_range]
+      have h1 : f i + 1 ≤ ∑ j, (f j + 1) :=
+        Finset.single_le_sum (f := fun j => f j + 1)
+          (fun j _ => Nat.zero_le _) (Finset.mem_univ i)
+      omega
+    exact Finset.mem_filter.mpr ⟨Fintype.mem_piFinset.mpr hmem,
+      fun i => Nat.le_add_left 1 _, hsum⟩
+  · intro m hm
+    rw [Finset.mem_filter, Fintype.mem_piFinset] at hm
+    obtain ⟨hbox, hm1, hsum⟩ := hm
+    have hmem : ∀ i, m i - 1 ∈ Finset.range (N + 1) := by
+      intro i
+      rw [Finset.mem_range]
+      have := hbox i
+      rw [Finset.mem_range] at this
+      omega
+    have hsum' : ∑ i, (m i - 1 + 1) = N := by
+      calc ∑ i, (m i - 1 + 1) = ∑ i, m i :=
+            Finset.sum_congr rfl fun i _ => by
+              have := hm1 i; omega
+        _ = N := hsum
+    exact Finset.mem_filter.mpr
+      ⟨Fintype.mem_piFinset.mpr hmem, hsum'⟩
+  · intro f _
+    funext i
+    show f i + 1 - 1 = f i
+    omega
+  · intro m hm
+    rw [Finset.mem_filter] at hm
+    have hm1 := hm.2.1
+    funext i
+    show m i - 1 + 1 = m i
+    have := hm1 i
+    omega
+  · intro f _
+    rfl
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **THE MAYER–URSELL INVERSION (E3 of the KP programme,
+the fundamental theorem of cluster expansions):** for a finite polymer
+system with absolutely convergent cluster series,
+`Ξ = exp(clusterSum)`. -/
+theorem partition_eq_exp_clusterSum [Fintype P.Polymer]
+    (hA : Summable fun n : ℕ => ‖(((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) → P.Polymer,
+        (ursell P X : ℂ) * ∏ i, P.activity (X i)‖) :
+    partition P (Finset.univ : Finset P.Polymer)
+    = Complex.exp (clusterSum P) := by
+  classical
+  have hcs : clusterSum P = ∑' n : ℕ,
+      (((n + 1).factorial : ℂ))⁻¹ *
+        ∑ X : Fin (n + 1) → P.Polymer,
+          (ursell P X : ℂ) * ∏ i, P.activity (X i) := rfl
+  -- per-N: the layers are the admissible-set sums
+  have h2 : ∀ N : ℕ,
+      (∑ k ∈ Finset.range (N + 1), ((k.factorial : ℂ))⁻¹ *
+        ∑ f ∈ (Fintype.piFinset
+            fun _ : Fin k => Finset.range (N + 1)).filter
+            (fun f => ∑ i, (f i + 1) = N),
+          ∏ i, (((f i + 1).factorial : ℂ))⁻¹ *
+            ∑ Y : Fin (f i + 1) → P.Polymer,
+              (ursell P Y : ℂ) * ∏ l, P.activity (Y l))
+      = ∑ S ∈ (Finset.univ : Finset (Finset P.Polymer)).filter
+          (fun S => Admissible P S ∧ S.card = N),
+          ∏ c ∈ S, P.activity c := by
+    intro N
+    calc _ = ∑ k ∈ Finset.range (N + 1), ((k.factorial : ℂ))⁻¹ *
+          ∑ m ∈ (Fintype.piFinset
+              fun _ : Fin k => Finset.range (N + 1)).filter
+              (fun m => (∀ i, 1 ≤ m i) ∧ ∑ i, m i = N),
+            ∏ i, (((m i).factorial : ℂ))⁻¹ *
+              ∑ Y : Fin (m i) → P.Polymer,
+                (ursell P Y : ℂ) * ∏ l, P.activity (Y l) :=
+          Finset.sum_congr rfl fun k _ => by rw [layer_shift P N k]
+      _ = _ := (admissible_card_sum_eq P N).symm
+  -- the set-sums vanish beyond the polymer count
+  have h3 : ∀ N ∉ Finset.range (Fintype.card P.Polymer + 1),
+      (∑ S ∈ (Finset.univ : Finset (Finset P.Polymer)).filter
+        (fun S => Admissible P S ∧ S.card = N),
+        ∏ c ∈ S, P.activity c) = 0 := by
+    intro N hN
+    rw [Finset.mem_range] at hN
+    refine Finset.sum_eq_zero fun S hS => ?_
+    obtain ⟨-, -, hcard⟩ := Finset.mem_filter.mp hS
+    exact absurd hcard (by
+      have := Finset.card_le_univ S
+      omega)
+  calc partition P (Finset.univ : Finset P.Polymer)
+      = ∑ N ∈ Finset.range (Fintype.card P.Polymer + 1),
+          ∑ S ∈ (Finset.univ : Finset (Finset P.Polymer)).filter
+            (fun S => Admissible P S ∧ S.card = N),
+            ∏ c ∈ S, P.activity c := partition_univ_eq_sum_card P
+    _ = ∑' N : ℕ,
+          ∑ S ∈ (Finset.univ : Finset (Finset P.Polymer)).filter
+            (fun S => Admissible P S ∧ S.card = N),
+            ∏ c ∈ S, P.activity c := (tsum_eq_sum h3).symm
+    _ = ∑' N : ℕ,
+          ∑ k ∈ Finset.range (N + 1), ((k.factorial : ℂ))⁻¹ *
+            ∑ f ∈ (Fintype.piFinset
+                fun _ : Fin k => Finset.range (N + 1)).filter
+                (fun f => ∑ i, (f i + 1) = N),
+              ∏ i, (((f i + 1).factorial : ℂ))⁻¹ *
+                ∑ Y : Fin (f i + 1) → P.Polymer,
+                  (ursell P Y : ℂ) * ∏ l, P.activity (Y l) :=
+        tsum_congr fun N => (h2 N).symm
+    _ = ∑' ω : Σ _k : ℕ, (Fin _k → ℕ),
+          ((ω.1.factorial : ℂ))⁻¹ *
+            ∏ i, (((ω.2 i + 1).factorial : ℂ))⁻¹ *
+              ∑ Y : Fin (ω.2 i + 1) → P.Polymer,
+                (ursell P Y : ℂ) * ∏ l, P.activity (Y l) :=
+        (tsum_H_eq_tsum_layers hA).symm
+    _ = Complex.exp (clusterSum P) := by
+        rw [hcs]
+        exact (exp_tsum_eq_tsum_H hA).symm
+
 end YangMills.KP
