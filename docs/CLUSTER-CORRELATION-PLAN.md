@@ -497,16 +497,23 @@ ENTIRE FINITE HALF OF THE MAYER–URSELL INVERSION IS MACHINE-CHECKED.**
    `pinned_cluster_tail_summable` (Half A) gives per-`c`
    connecting-sum decay `e^{-ε·dist/2}` immediately.
 
-   **Remaining:**
-   1. The summed form: `∑_{c ∋ p} (connecting tails)` with the
-      VOLUME-FREE constant — the `c`-sum via the through-`p`
-      machinery (`sum_connectedPolymers_through_le` at exponent
-      `t+2ε`-ish; the `hterm`-pattern bounds
-      `e^{ε|c|}·‖z c‖·e^{t|c|} ≤ x^{|c|}`).
-   2. B1/B2: the covariance identity through `Ξ = exp(clusterSum)`
-      (source-deformed gases; inclusion–exclusion of cluster sums
-      supported on connecting clusters), then B4: discharge
-      `hIRbound` of `lattice_mass_gap_of_clustering_uniform`.
+   **THE SUMMED FORM IS CLOSED (commit `0afa558`):**
+   **`connecting_cluster_decay`** — the total pinned cluster sum
+   through `p`, restricted to clusters touching `q`, decays as
+   `e^{-ε·dist(p,q)/2} · x/(1−(16d+1)²x)` at
+   `x = (e^{|β|B}−1)e^{t+ε}` — every constant depending only on
+   `d, B, β, t, ε`.  **THE IR DECAY MECHANISM IS FULLY
+   MACHINE-CHECKED AT THE CLUSTER LEVEL.**
+
+   **Remaining: B1/B2/B4 only** — the measure-side identification:
+   the covariance of plaquette-local Gibbs observables as a
+   difference of cluster sums supported on connecting clusters
+   (source-deformed gases through `Ξ = exp(clusterSum)`;
+   inclusion–exclusion `K_{FG} + K − K_F − K_G`), bounded in norm by
+   `connecting_cluster_decay`-type sums, discharging `hIRbound` of
+   `lattice_mass_gap_of_clustering_uniform`.  A design session over
+   the L1 observable layer (`WilsonObservable.lean`,
+   `PolymerFactorization.lean`) opens that campaign.
 
    (historical scoping for E4:) regroup Ω by `ν⟨k,f⟩ := ∑(fᵢ+1)`
    (`sigmaFiberEquiv` + `tsum_sigma`; Ω-fibers finite via
