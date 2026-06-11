@@ -375,7 +375,18 @@ Oracle outputs (verbatim, the B4 chain):
 'YangMills.covariance_exponent_norm_bound'            [propext, Classical.choice, Quot.sound]
 'YangMills.truncated_correlation_bound'               [propext, Classical.choice, Quot.sound]
 'YangMills.wilson_truncated_correlation_bound'        [propext, Classical.choice, Quot.sound]
+'YangMills.gibbs_truncated_correlation_bound'         [propext, Classical.choice, Quot.sound]
 ```
+
+The final form (`gibbs_truncated_correlation_bound`): for observables
+`O_R = ∏_{p∈R}(1+g_p)` over disjoint supports `S, T` at
+touching-distance `≥ 2k`, in genuine Gibbs integrals over the Wilson
+Boltzmann weight,
+
+    |∫O_S·O_T·e^{−βS}·Z − ∫O_S·e^{−βS}·∫O_T·e^{−βS}| ≤ C·e^{−ε·k},
+
+real absolute values, `C` explicit and volume-free.  Divide by
+`Z² > 0` (`partitionFunction_pos'`) for the normalized covariance.
 
 Plain language: **the infrared clustering bound of the strong-coupling
 lattice theory is machine-checked end to end.**  For multiplicative
