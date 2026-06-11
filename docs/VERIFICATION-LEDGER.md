@@ -408,6 +408,18 @@ layers were routes to polymer bounds the weighted-Mayer campaign
 produced directly).  Peter–Weyl remains the route for the
 area-law/Wilson-loop form.
 
+And the normalized finale
+(`two_plaquette_correlator_bound_normalized`, oracle clean): dividing
+by `Z² > 0` cancels the partition function from the constant —
+
+    |⟨f_p·f_q⟩ − ⟨f_p⟩·⟨f_q⟩| ≤ (8·M·(1+s)²/s²)·e^{−ε·k},
+
+the genuine Gibbs covariance of bounded local holonomy observables,
+with the constant depending only on `d, β, B, s, t, ε` — independent
+of the lattice volume AND of `Z`.  **Exponential clustering of the
+lattice gauge theory's two-point functions at small coupling is
+machine-checked end to end.**
+
 Plain language: **the infrared clustering bound of the strong-coupling
 lattice theory is machine-checked end to end.**  For multiplicative
 local observables with supports at touching-distance `≥ 2k`,
