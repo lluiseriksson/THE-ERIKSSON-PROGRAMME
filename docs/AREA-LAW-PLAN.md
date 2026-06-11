@@ -207,13 +207,28 @@ when an ite-rewrite must hit several differently-branched ites with
 the same condition, `simp only [if_pos hs]`/`[if_neg hs]` (one pass,
 all instantiations) — full `simp [hs]` normalizes `get`→`getElem` and
 orphans `hs`.
-**Open:** DB-2 (add plaquette activities to the integrand: term
-chains `σ : P → {±1}`, balance ⟺ `∂₂(indicatorChain S σ) = loopChain
-C` over `ZMod N_c`), J-3 (contrapositive join → `chainArea_le_card_of_
-support_subset`), then AL6.  J-2 is the template: DB-2/J-3 extend its
-integrand by `∏_{p∈S} f_p` with the activities expanded by
-`integral_mul_prod_one_add` and each term routed through the SAME
-grouping/kill.
+**DB-2 engine CLOSED** (`WilsonLoopMonomial.lean`):
+`integral_prod_trace_wilsonLine_eq_zero` — **the β = 0 selection rule
+for PRODUCTS of Wilson-line traces**: `∫ ∏ⱼ tr(W_{Lⱼ}) dμ_gauge = 0`
+whenever one positive edge has `N_c`-unbalanced TOTAL signed
+traversal count across all lines (positions indexed by
+`Σ j, Fin (L j).length`; the grouping/kill lemmas in `GaugeMarginal`
+were generalized from `Fin L` to arbitrary `Fintype` position types —
+free generalization, proofs unchanged).  Oracle clean.  KEY
+STRUCTURAL FACT this exploits: a conjugated plaquette trace is the
+trace of the REVERSED plaquette loop, so the strong-coupling
+expansion terms `tr(W_C)·∏_{p∈S}(tr Hₚ or conj tr Hₚ)` all lie in the
+multi-line class — the σ-choices become reversed edge lists, and the
+balance hypothesis IS the per-edge chain equation.
+**Open (final stretch):** J-3 — (a) the bookkeeping bridge: for the
+line family `L := (loop C) :: (plaquette or reversed-plaquette loops
+of S)`, the sigma-count at `e₀` equals `loopChain C + ∂₂σ` evaluated
+at `e₀` over `ℤ` (then mod `N_c`) — pure `Finset`-card arithmetic
+connecting to `ChainComplex.lean`; (b) the contrapositive: T_S ≠ 0 ⇒
+all edges balanced ⇒ `∂₂(indicatorChain S σ) = loopChain C` over
+`ZMod N_c` ⇒ `chainArea ≤ |S|` (`chainArea_le_card_of_support_subset`);
+(c) AL6: `|⟨W_C⟩·Z| ≤ Σ_{|S| ≥ Area} N_c·δ^{|S|}·entropy` via
+`integral_mul_prod_one_add` + the banked tail patterns.
 
 **Then AL6:** `|⟨W_C⟩·Z| ≤ ∑_{|S| ≥ Area} (N_c·δ^{|S|})·(entropy)` —
 the `x/(1−Kx)` tail pattern from the correlator campaign, plus the

@@ -287,4 +287,235 @@ theorem integral_trace_wilsonLine_eq_zero
         else star (g.val (v idx.succ) (v idx.castSucc)))
       (fun idx => (hFm v idx).aestronglyMeasurable) e₀ hmean)
 
+/-! ## DB-2: the multi-line kill -/
+
+/-- **The β = 0 selection rule for PRODUCTS of Wilson-line traces:**
+the product-Haar expectation of `∏ⱼ tr(W_{Lⱼ})` vanishes as soon as
+one positive edge has `N_c`-unbalanced TOTAL signed traversal count
+across all lines.  This is DB-2's engine: the strong-coupling
+expansion terms `tr(W_C)·∏_{p∈S}(tr Hₚ or conj tr Hₚ)` are exactly
+such products — a conjugated plaquette trace is the trace of the
+REVERSED plaquette loop — so an expansion term survives only if its
+total per-edge `N`-ality balances, which is the `ZMod N_c` chain
+equation of `docs/AREA-LAW-PLAN.md` §4. -/
+theorem integral_prod_trace_wilsonLine_eq_zero
+    {n : ℕ} (L : Fin n → List (ConcreteEdge d N)) (e₀ : PosEdge d N)
+    (hdvd : ¬ (N_c : ℤ) ∣
+      ((((Finset.univ.filter fun q : (Σ j : Fin n, Fin (L j).length) =>
+            posEdgeOf ((L q.1).get q.2) = e₀)).filter
+              fun q => ((L q.1).get q.2).sign).card : ℤ)
+        - ((((Finset.univ.filter fun q : (Σ j : Fin n, Fin (L j).length) =>
+            posEdgeOf ((L q.1).get q.2) = e₀)).filter
+              fun q => ¬ ((L q.1).get q.2).sign).card : ℤ)) :
+    ∫ A, ∏ j : Fin n, Matrix.trace (wilsonLine A (L j)).val
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) = 0 := by
+  classical
+  -- expand every trace, push the product through the sums
+  have hpt : (fun A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      ∏ j : Fin n, Matrix.trace (wilsonLine A (L j)).val)
+      = fun A => ∑ V ∈ Fintype.piFinset (fun j : Fin n =>
+            (Finset.univ : Finset (Fin ((L j).length + 1) → Fin N_c))),
+          (∏ j : Fin n, (if V j (Fin.last (L j).length) = V j 0
+              then (1 : ℂ) else 0)) *
+            ∏ j : Fin n, ∏ idx : Fin (L j).length,
+              (if ((L j).get idx).sign
+                then (configToPos A (posEdgeOf ((L j).get idx))).val
+                  (V j idx.castSucc) (V j idx.succ)
+                else star ((configToPos A (posEdgeOf ((L j).get idx))).val
+                  (V j idx.succ) (V j idx.castSucc))) := by
+    funext A
+    have h1 : ∀ j : Fin n, Matrix.trace (wilsonLine A (L j)).val
+        = ∑ v : Fin ((L j).length + 1) → Fin N_c,
+            (if v (Fin.last (L j).length) = v 0 then (1 : ℂ) else 0) *
+              ∏ idx : Fin (L j).length,
+                (if ((L j).get idx).sign
+                  then (configToPos A (posEdgeOf ((L j).get idx))).val
+                    (v idx.castSucc) (v idx.succ)
+                  else star ((configToPos A (posEdgeOf ((L j).get idx))).val
+                    (v idx.succ) (v idx.castSucc))) := by
+      intro j
+      have hA : posToConfig (configToPos A) = A :=
+        gaugeConfigEquiv.apply_symm_apply A
+      conv_lhs => rw [← hA]
+      exact trace_wilsonLine_eq_sum_decorated (configToPos A) (L j)
+    rw [Finset.prod_congr rfl fun j _ => h1 j, Finset.prod_univ_sum]
+    refine Finset.sum_congr rfl fun V _ => ?_
+    exact Finset.prod_mul_distrib
+  rw [hpt]
+  -- measurability and boundedness of the decorated factors
+  have hsymm : Measurable
+      (gaugeConfigEquiv (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))).symm := by
+    rw [measurable_iff_comap_le]
+    exact le_of_eq rfl
+  have hcm : ∀ e : PosEdge d N, Measurable
+      (fun A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) => configToPos A e) :=
+    fun e => (measurable_pi_apply e).comp hsymm
+  have hFm : ∀ (j : Fin n) (v : Fin ((L j).length + 1) → Fin N_c)
+      (idx : Fin (L j).length),
+      Measurable (fun g : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+        (if ((L j).get idx).sign
+          then g.val (v idx.castSucc) (v idx.succ)
+          else star (g.val (v idx.succ) (v idx.castSucc)))) := by
+    intro j v idx
+    by_cases hs : ((L j).get idx).sign = true
+    · simp only [hs, if_true]
+      exact (continuous_entry N_c _ _).measurable
+    · simp only [hs, if_false]
+      exact ((continuous_entry N_c _ _).star).measurable
+  have hFb : ∀ (j : Fin n) (v : Fin ((L j).length + 1) → Fin N_c)
+      (idx : Fin (L j).length)
+      (g : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)),
+      ‖(if ((L j).get idx).sign
+        then g.val (v idx.castSucc) (v idx.succ)
+        else star (g.val (v idx.succ) (v idx.castSucc)))‖ ≤ 1 := by
+    intro j v idx g
+    have hg : g.val ∈ Matrix.unitaryGroup (Fin N_c) ℂ :=
+      (Matrix.mem_specialUnitaryGroup_iff.mp g.2).1
+    by_cases hs : ((L j).get idx).sign = true
+    · rw [if_pos hs]
+      exact entry_norm_bound_of_unitary hg _ _
+    · rw [if_neg hs, norm_star]
+      exact entry_norm_bound_of_unitary hg _ _
+  -- integrability of each multi-sequence term
+  have hint : ∀ V ∈ Fintype.piFinset (fun j : Fin n =>
+      (Finset.univ : Finset (Fin ((L j).length + 1) → Fin N_c))),
+      Integrable (fun A : GaugeConfig d N
+          (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+        (∏ j : Fin n, (if V j (Fin.last (L j).length) = V j 0
+            then (1 : ℂ) else 0)) *
+          ∏ j : Fin n, ∏ idx : Fin (L j).length,
+            (if ((L j).get idx).sign
+              then (configToPos A (posEdgeOf ((L j).get idx))).val
+                (V j idx.castSucc) (V j idx.succ)
+              else star ((configToPos A (posEdgeOf ((L j).get idx))).val
+                (V j idx.succ) (V j idx.castSucc))))
+        (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) := by
+    intro V _
+    refine Integrable.const_mul ?_ _
+    have hm : Measurable (fun A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+        ∏ j : Fin n, ∏ idx : Fin (L j).length,
+          (if ((L j).get idx).sign
+            then (configToPos A (posEdgeOf ((L j).get idx))).val
+              (V j idx.castSucc) (V j idx.succ)
+            else star ((configToPos A (posEdgeOf ((L j).get idx))).val
+              (V j idx.succ) (V j idx.castSucc)))) :=
+      Finset.measurable_prod _ fun j _ =>
+        Finset.measurable_prod _ fun idx _ =>
+          (hFm j (V j) idx).comp (hcm (posEdgeOf ((L j).get idx)))
+    have hb : ∀ A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)),
+        ‖∏ j : Fin n, ∏ idx : Fin (L j).length,
+          (if ((L j).get idx).sign
+            then (configToPos A (posEdgeOf ((L j).get idx))).val
+              (V j idx.castSucc) (V j idx.succ)
+            else star ((configToPos A (posEdgeOf ((L j).get idx))).val
+              (V j idx.succ) (V j idx.castSucc)))‖ ≤ 1 := by
+      intro A
+      rw [norm_prod]
+      calc ∏ j : Fin n, ‖∏ idx : Fin (L j).length,
+            (if ((L j).get idx).sign
+              then (configToPos A (posEdgeOf ((L j).get idx))).val
+                (V j idx.castSucc) (V j idx.succ)
+              else star ((configToPos A (posEdgeOf ((L j).get idx))).val
+                (V j idx.succ) (V j idx.castSucc)))‖
+          ≤ ∏ _j : Fin n, (1 : ℝ) := by
+            refine Finset.prod_le_prod (fun _ _ => norm_nonneg _)
+              (fun j _ => ?_)
+            rw [norm_prod]
+            calc ∏ idx : Fin (L j).length, ‖(if ((L j).get idx).sign
+                  then (configToPos A (posEdgeOf ((L j).get idx))).val
+                    (V j idx.castSucc) (V j idx.succ)
+                  else star ((configToPos A (posEdgeOf ((L j).get idx))).val
+                    (V j idx.succ) (V j idx.castSucc)))‖
+                ≤ ∏ _idx : Fin (L j).length, (1 : ℝ) :=
+                  Finset.prod_le_prod (fun _ _ => norm_nonneg _)
+                    (fun idx _ => hFb j (V j) idx _)
+              _ = 1 := Finset.prod_const_one
+        _ = 1 := Finset.prod_const_one
+    have h1 : Integrable (fun _ : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) => (1 : ℂ))
+        (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) :=
+      integrable_const 1
+    have h2 := h1.bdd_mul hm.aestronglyMeasurable
+      (MeasureTheory.ae_of_all _ hb)
+    simpa using h2
+  rw [MeasureTheory.integral_finset_sum _ hint]
+  refine Finset.sum_eq_zero fun V _ => ?_
+  -- regroup the double product as a product over sigma positions
+  have hsig : (fun A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      ∏ j : Fin n, ∏ idx : Fin (L j).length,
+        (if ((L j).get idx).sign
+          then (configToPos A (posEdgeOf ((L j).get idx))).val
+            (V j idx.castSucc) (V j idx.succ)
+          else star ((configToPos A (posEdgeOf ((L j).get idx))).val
+            (V j idx.succ) (V j idx.castSucc))))
+      = fun A => ∏ q : (Σ j : Fin n, Fin (L j).length),
+          (if ((L q.1).get q.2).sign
+            then (configToPos A (posEdgeOf ((L q.1).get q.2))).val
+              (V q.1 q.2.castSucc) (V q.1 q.2.succ)
+            else star ((configToPos A (posEdgeOf ((L q.1).get q.2))).val
+              (V q.1 q.2.succ) (V q.1 q.2.castSucc))) := by
+    funext A
+    exact (Fintype.prod_sigma' _).symm
+  -- the per-term kill at the unbalanced edge
+  have hmean : ∫ g, ∏ q ∈ Finset.univ.filter
+      (fun q : (Σ j : Fin n, Fin (L j).length) =>
+        posEdgeOf ((L q.1).get q.2) = e₀),
+      (if ((L q.1).get q.2).sign
+        then g.val (V q.1 q.2.castSucc) (V q.1 q.2.succ)
+        else star (g.val (V q.1 q.2.succ) (V q.1 q.2.castSucc)))
+      ∂(sunHaarProb N_c) = 0 := by
+    have h := sunHaarProb_decoratedEntryProduct_integral_zero N_c
+      (Finset.univ.filter fun q : (Σ j : Fin n, Fin (L j).length) =>
+        posEdgeOf ((L q.1).get q.2) = e₀)
+      (fun q => ((L q.1).get q.2).sign)
+      (fun q => if ((L q.1).get q.2).sign
+        then V q.1 q.2.castSucc else V q.1 q.2.succ)
+      (fun q => if ((L q.1).get q.2).sign
+        then V q.1 q.2.succ else V q.1 q.2.castSucc)
+      hdvd
+    have heq : (fun g : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+        ∏ q ∈ Finset.univ.filter
+          (fun q : (Σ j : Fin n, Fin (L j).length) =>
+            posEdgeOf ((L q.1).get q.2) = e₀),
+          (if ((L q.1).get q.2).sign
+            then g.val (V q.1 q.2.castSucc) (V q.1 q.2.succ)
+            else star (g.val (V q.1 q.2.succ) (V q.1 q.2.castSucc))))
+        = fun g => ∏ q ∈ Finset.univ.filter
+          (fun q : (Σ j : Fin n, Fin (L j).length) =>
+            posEdgeOf ((L q.1).get q.2) = e₀),
+          (if ((L q.1).get q.2).sign
+            then g.val
+              (if ((L q.1).get q.2).sign
+                then V q.1 q.2.castSucc else V q.1 q.2.succ)
+              (if ((L q.1).get q.2).sign
+                then V q.1 q.2.succ else V q.1 q.2.castSucc)
+            else star (g.val
+              (if ((L q.1).get q.2).sign
+                then V q.1 q.2.castSucc else V q.1 q.2.succ)
+              (if ((L q.1).get q.2).sign
+                then V q.1 q.2.succ else V q.1 q.2.castSucc))) := by
+      funext g
+      refine Finset.prod_congr rfl fun q _ => ?_
+      by_cases hs : ((L q.1).get q.2).sign = true
+      · simp only [if_pos hs]
+      · simp only [if_neg hs]
+    rw [heq]
+    exact h
+  refine (MeasureTheory.integral_const_mul _ _).trans ?_
+  refine mul_eq_zero_of_right _ ?_
+  rw [hsig]
+  exact integral_positionProduct_eq_zero (sunHaarProb N_c)
+    (fun q : (Σ j : Fin n, Fin (L j).length) =>
+      posEdgeOf ((L q.1).get q.2))
+    (fun q g => if ((L q.1).get q.2).sign
+      then g.val (V q.1 q.2.castSucc) (V q.1 q.2.succ)
+      else star (g.val (V q.1 q.2.succ) (V q.1 q.2.castSucc)))
+    (fun q => (hFm q.1 (V q.1) q.2).aestronglyMeasurable) e₀ hmean
+
 end YangMills
