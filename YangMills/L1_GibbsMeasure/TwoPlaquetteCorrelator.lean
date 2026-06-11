@@ -534,4 +534,94 @@ theorem two_plaquette_correlator_bound
         simp only [Finset.card_singleton, Nat.cast_one]
         ring
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **THE NORMALIZED TWO-PLAQUETTE COVARIANCE BOUND** — dividing by
+`Z² > 0` makes the constant `Z`-FREE: the genuine Gibbs covariance of
+two bounded local holonomy observables at touching-distance `≥ 2k`
+satisfies
+
+    |⟨f_p·f_q⟩ − ⟨f_p⟩·⟨f_q⟩| ≤ (8·M·(1+s)²/s²)·e^{−ε·k}
+
+with the constant depending only on `d, β, B, s, t, ε` — independent
+of the volume AND of the partition function.  This is exponential
+clustering of the lattice gauge theory's two-point functions at small
+coupling, machine-checked end to end with no Peter–Weyl input. -/
+theorem two_plaquette_correlator_bound_normalized
+    [MeasurableMul₂ G] [MeasurableInv G]
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {pe : G → ℝ} (hpe_meas : Measurable pe)
+    {B : ℝ} (hpe : ∀ g', |pe g'| ≤ B) (β : ℝ)
+    {f : G → ℝ} (hfm : Measurable f) (hf : ∀ x, |f x| ≤ 1)
+    {s : ℝ} (hs0 : 0 < s)
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      (((Real.exp (|β| * B) - 1) + s +
+        (Real.exp (|β| * B) - 1) * s) * Real.exp (t + ε + 1)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      ((((Real.exp (|β| * B) - 1) + s +
+        (Real.exp (|β| * B) - 1) * s) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (((Real.exp (|β| * B) - 1) + s +
+            (Real.exp (|β| * B) - 1) * s) *
+            Real.exp (t + ε + 1)))) ≤ t)
+    (p q : ConcretePlaquette d N) (k : ℕ) (hpq : p ≠ q)
+    (hdist : 2 * k ≤ (touchGraph d N).dist p q)
+    (hone : 4 * Real.exp (-(ε * k)) *
+      ((((Real.exp (|β| * B) - 1) + s +
+        (Real.exp (|β| * B) - 1) * s) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (((Real.exp (|β| * B) - 1) + s +
+            (Real.exp (|β| * B) - 1) * s) *
+            Real.exp (t + ε + 1)))) ≤ 1) :
+    |(∫ A, f (plaquetteHolonomy A p) * f (plaquetteHolonomy A q) *
+        Real.exp (-β * wilsonAction pe A)
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)) /
+      partitionFunction (d := d) (N := N) μ pe β
+      - ((∫ A, f (plaquetteHolonomy A p) *
+          Real.exp (-β * wilsonAction pe A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ)) /
+        partitionFunction (d := d) (N := N) μ pe β) *
+        ((∫ A, f (plaquetteHolonomy A q) *
+          Real.exp (-β * wilsonAction pe A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ)) /
+        partitionFunction (d := d) (N := N) μ pe β)|
+    ≤ (8 * ((((Real.exp (|β| * B) - 1) + s +
+        (Real.exp (|β| * B) - 1) * s) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (((Real.exp (|β| * B) - 1) + s +
+            (Real.exp (|β| * B) - 1) * s) *
+            Real.exp (t + ε + 1)))) *
+        (1 + s) ^ 2 / s ^ 2) *
+      Real.exp (-(ε * k)) := by
+  classical
+  have h := two_plaquette_correlator_bound μ hpe_meas hpe β hfm hf
+    hs0 t ε ht0 hε0 hr hsmall p q k hpq hdist hone
+  have hZpos : (0 : ℝ) < partitionFunction (d := d) (N := N) μ pe β :=
+    partitionFunction_pos' μ hpe_meas hpe β
+  set Z : ℝ := partitionFunction (d := d) (N := N) μ pe β with hZdef
+  set I1 : ℝ := ∫ A, f (plaquetteHolonomy A p) *
+    Real.exp (-β * wilsonAction pe A)
+    ∂(gaugeMeasureFrom (d := d) (N := N) μ) with hI1def
+  set I2 : ℝ := ∫ A, f (plaquetteHolonomy A q) *
+    Real.exp (-β * wilsonAction pe A)
+    ∂(gaugeMeasureFrom (d := d) (N := N) μ) with hI2def
+  set I12 : ℝ := ∫ A, f (plaquetteHolonomy A p) *
+    f (plaquetteHolonomy A q) *
+    Real.exp (-β * wilsonAction pe A)
+    ∂(gaugeMeasureFrom (d := d) (N := N) μ) with hI12def
+  set M : ℝ := (((Real.exp (|β| * B) - 1) + s +
+      (Real.exp (|β| * B) - 1) * s) * Real.exp (t + ε + 1)) /
+      (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+        (((Real.exp (|β| * B) - 1) + s +
+          (Real.exp (|β| * B) - 1) * s) *
+          Real.exp (t + ε + 1))) with hMdef
+  have hkey : I12 / Z - (I1 / Z) * (I2 / Z)
+      = (I12 * Z - I1 * I2) / Z ^ 2 := by
+    field_simp <;> ring
+  rw [hkey, abs_div, abs_of_pos (by positivity : (0 : ℝ) < Z ^ 2),
+    div_le_iff₀ (by positivity : (0 : ℝ) < Z ^ 2)]
+  refine le_trans h (le_of_eq ?_)
+  field_simp <;> ring
+
 end YangMills
