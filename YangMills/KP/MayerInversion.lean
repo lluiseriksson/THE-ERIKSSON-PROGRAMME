@@ -1133,4 +1133,159 @@ theorem sum_split_ordPartition [Fintype P.Polymer] {N k : ℕ}
     _ = ∏ i, ∑ Y : Fin (σ i).card → P.Polymer, G (σ i).card Y := by
         rw [Finset.prod_univ_sum, Fintype.piFinset_univ]
 
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **Enumeration tuples are bijections (B0b iv, the equivalence):**
+tuples of per-block injections with pairwise-disjoint ranges are exactly
+the bijections from the size-sigma to `Fin N`. -/
+noncomputable def enumTuplesEquivSigma {N k : ℕ} (m : Fin k → ℕ)
+    (hsum : ∑ i, m i = N) :
+    {τ : ∀ i : Fin k, Fin (m i) → Fin N //
+      (∀ i, Function.Injective (τ i)) ∧
+      ∀ i j, i ≠ j → ∀ l l', τ i l ≠ τ j l'}
+    ≃ ((Σ i : Fin k, Fin (m i)) ≃ Fin N) where
+  toFun τ := Equiv.ofBijective (fun p => τ.1 p.1 p.2) (by
+    refine (Fintype.bijective_iff_injective_and_card _).mpr ⟨?_, ?_⟩
+    · rintro ⟨i, l⟩ ⟨j, l'⟩ h
+      by_cases hij : i = j
+      · subst hij
+        exact congrArg (Sigma.mk i) (τ.2.1 i h)
+      · exact absurd h (τ.2.2 i j hij l l')
+    · rw [Fintype.card_sigma, Fintype.card_fin]
+      simp only [Fintype.card_fin]
+      exact hsum)
+  invFun e := ⟨fun i l => e ⟨i, l⟩, fun i l l' h => by
+      have h2 := e.injective h
+      rw [Sigma.mk.injEq] at h2
+      exact eq_of_heq h2.2,
+    fun i j hij l l' h => by
+      have h2 := e.injective h
+      rw [Sigma.mk.injEq] at h2
+      exact hij h2.1⟩
+  left_inv τ := Subtype.ext (funext fun i => funext fun l => rfl)
+  right_inv e := Equiv.ext fun p => rfl
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **B0b (iv): THE MULTINOMIAL COUNT** — the number of ordered
+partitions with prescribed block sizes, multiplicatively:
+`#ordp(m) · ∏ mᵢ! = N!`.  Counting enumeration tuples two ways: as
+bijections (via `enumTuplesEquivSigma`) and fiberwise over their image
+partitions. -/
+theorem card_ordPartition_mul {N k : ℕ} (m : Fin k → ℕ)
+    (hm : ∀ i, 1 ≤ m i) (hsum : ∑ i, m i = N) :
+    ((Finset.univ : Finset (Fin k → Finset (Fin N))).filter
+      (fun σ => IsOrdPartition σ ∧ ∀ i, (σ i).card = m i)).card
+      * ∏ i, (m i).factorial = N.factorial := by
+  classical
+  -- count the enumeration tuples as bijections
+  have hcards : Fintype.card (Σ i : Fin k, Fin (m i))
+      = Fintype.card (Fin N) := by
+    rw [Fintype.card_sigma, Fintype.card_fin]
+    simp only [Fintype.card_fin]
+    exact hsum
+  have hcardE : ((Finset.univ :
+      Finset (∀ i : Fin k, Fin (m i) → Fin N)).filter
+      (fun τ => (∀ i, Function.Injective (τ i)) ∧
+        ∀ i j, i ≠ j → ∀ l l', τ i l ≠ τ j l')).card
+      = N.factorial := by
+    rw [← Fintype.card_subtype]
+    rw [Fintype.card_congr (enumTuplesEquivSigma m hsum)]
+    rw [Fintype.card_equiv (Fintype.equivOfCardEq hcards), hcards,
+      Fintype.card_fin]
+  -- count them fiberwise over the image partition
+  have hmaps : ∀ τ ∈ (Finset.univ :
+      Finset (∀ i : Fin k, Fin (m i) → Fin N)).filter
+      (fun τ => (∀ i, Function.Injective (τ i)) ∧
+        ∀ i j, i ≠ j → ∀ l l', τ i l ≠ τ j l'),
+      (fun i => Finset.univ.image (τ i)) ∈ (Finset.univ :
+        Finset (Fin k → Finset (Fin N))).filter
+        (fun σ => IsOrdPartition σ ∧ ∀ i, (σ i).card = m i) := by
+    intro τ hτ
+    obtain ⟨hinj, hcross⟩ := (Finset.mem_filter.mp hτ).2
+    have hsurj : Function.Surjective
+        (fun p : Σ i : Fin k, Fin (m i) => τ p.1 p.2) := by
+      refine ((Fintype.bijective_iff_injective_and_card _).mpr
+        ⟨?_, hcards⟩).2
+      rintro ⟨i, l⟩ ⟨j, l'⟩ h
+      by_cases hij : i = j
+      · subst hij
+        exact congrArg (Sigma.mk i) (hinj i h)
+      · exact absurd h (hcross i j hij l l')
+    rw [Finset.mem_filter]
+    refine ⟨Finset.mem_univ _, ⟨?_, ?_, ?_⟩, ?_⟩
+    · intro i
+      haveI : Nonempty (Fin (m i)) := ⟨⟨0, hm i⟩⟩
+      exact (Finset.univ_nonempty).image _
+    · intro i j hij
+      rw [Finset.disjoint_left]
+      intro v hv hv'
+      rw [Finset.mem_image] at hv hv'
+      obtain ⟨l, _, rfl⟩ := hv
+      obtain ⟨l', _, heq⟩ := hv'
+      exact hcross i j hij l l' heq.symm
+    · rw [Finset.eq_univ_iff_forall]
+      intro v
+      obtain ⟨p, hp⟩ := hsurj v
+      rw [Finset.mem_biUnion]
+      exact ⟨p.1, Finset.mem_univ _,
+        Finset.mem_image.mpr ⟨p.2, Finset.mem_univ _, hp⟩⟩
+    · intro i
+      rw [Finset.card_image_of_injective _ (hinj i),
+        Finset.card_univ, Fintype.card_fin]
+  have hfiber := Finset.card_eq_sum_card_fiberwise hmaps
+  -- per-σ fibers are products of per-block enumerations
+  have hper : ∀ σ ∈ (Finset.univ :
+      Finset (Fin k → Finset (Fin N))).filter
+      (fun σ => IsOrdPartition σ ∧ ∀ i, (σ i).card = m i),
+      (((Finset.univ :
+        Finset (∀ i : Fin k, Fin (m i) → Fin N)).filter
+        (fun τ => (∀ i, Function.Injective (τ i)) ∧
+          ∀ i j, i ≠ j → ∀ l l', τ i l ≠ τ j l')).filter
+        (fun τ => (fun i => Finset.univ.image (τ i)) = σ)).card
+      = ∏ i, (m i).factorial := by
+    intro σ hσ
+    obtain ⟨hord, hcard⟩ := (Finset.mem_filter.mp hσ).2
+    have hset : ((Finset.univ :
+        Finset (∀ i : Fin k, Fin (m i) → Fin N)).filter
+        (fun τ => (∀ i, Function.Injective (τ i)) ∧
+          ∀ i j, i ≠ j → ∀ l l', τ i l ≠ τ j l')).filter
+        (fun τ => (fun i => Finset.univ.image (τ i)) = σ)
+        = Fintype.piFinset (fun i =>
+            (Finset.univ : Finset (Fin (m i) → Fin N)).filter
+              (fun τi => Function.Injective τi
+                ∧ Finset.univ.image τi = σ i)) := by
+      ext τ
+      rw [Finset.mem_filter, Finset.mem_filter,
+        Fintype.mem_piFinset]
+      constructor
+      · rintro ⟨⟨-, hinj, -⟩, himg⟩
+        intro i
+        rw [Finset.mem_filter]
+        exact ⟨Finset.mem_univ _, hinj i, congrFun himg i⟩
+      · intro hpi
+        have hc : ∀ i, Function.Injective (τ i)
+            ∧ Finset.univ.image (τ i) = σ i :=
+          fun i => (Finset.mem_filter.mp (hpi i)).2
+        refine ⟨⟨Finset.mem_univ _, fun i => (hc i).1, ?_⟩, ?_⟩
+        · intro i j hij l l' heq
+          have hv : τ i l ∈ σ i := by
+            rw [← (hc i).2]
+            exact Finset.mem_image_of_mem _ (Finset.mem_univ l)
+          have hv' : τ j l' ∈ σ j := by
+            rw [← (hc j).2]
+            exact Finset.mem_image_of_mem _ (Finset.mem_univ l')
+          rw [heq] at hv
+          exact (Finset.disjoint_left.mp
+            (hord.2.1 i j hij) hv) hv'
+        · funext i
+          exact (hc i).2
+    rw [hset, Fintype.card_piFinset]
+    exact Finset.prod_congr rfl fun i _ =>
+      card_enumerations (hcard i)
+  rw [Finset.sum_congr rfl hper, Finset.sum_const, smul_eq_mul]
+    at hfiber
+  rw [← hfiber]
+  exact hcardE
+
 end YangMills.KP
