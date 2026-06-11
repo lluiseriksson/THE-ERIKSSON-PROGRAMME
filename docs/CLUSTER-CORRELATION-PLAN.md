@@ -393,6 +393,24 @@ Remaining: (v) cancellation, (vi) the analytic shell — bookkeeping and
 standard tsum work; ALL hard combinatorics of `Ξ = exp(clusterSum)` is
 now machine-checked.
 
+**(v-a)+(v-b) CLOSED (commit `66c7555`, oracle-clean):**
+`prod_split_ordPartition` (the z-product cover split) and
+`sum_ordp_fiber_sizes` (the size fibration with class-count
+coefficients).  **What remains of (v): the per-`N` master calc**
+gluing the proved bricks in order — per `X`: `ursell_partition_identity`
+→ `sum_finpartition_eq_ordPartitions` (h := fun B => φ(X|_B)) → swap →
+per-(k,σ): `prod_split_ordPartition` on the z-product, then
+`sum_split_ordPartition` with `G m Y := (ursell P Y : ℂ)·∏ z(Y l)` →
+`sum_ordp_fiber_sizes` with `W m := ∑_Y G m Y` → `card_ordPartition_mul`
+(divide through: `(count : ℂ) = N!/∏ mᵢ!`, casts via
+`Nat.cast_mul`/`field_simp`) → endpoint shape:
+
+    (1/N!)·A_N = ∑_{k ≤ N} (1/k!) ∑_{m-filter} ∏ᵢ (W(mᵢ)/mᵢ!)
+
+with `A_N = ∑_X 𝟙[compat]·∏z = N!·(admissible-set sum)` (B0b-4).
+Then (vi): the tsum shell (exp series + k-fold Fubini + (k,m)→N
+regrouping; absolute convergence from `kp_convergence_sharp`).
+
 **(historical) Remaining-work list before the above was closed:**
 
 1. (★) per-π fiber factorization:
