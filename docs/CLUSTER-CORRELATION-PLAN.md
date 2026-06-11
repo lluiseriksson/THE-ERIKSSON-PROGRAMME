@@ -619,29 +619,42 @@ surfaces were `pe`-specific.  Bricks:
   `(Z[w] : ℂ) = KP.partition (weighted gas) univ` for every bounded
   measurable local weight family — verbatim transport of step 2
   (appended to `PolymerRepresentation.lean`).
-* **W3 (next; pure transport, sources pinned):** KP criterion for
-  `|w| ≤ δ`.  (a) `norm_weightedLatticePolymerSystem_activity_le :
-  0 ≤ δ → ‖activity c‖ ≤ δ^|c|` — transport of
-  `norm_latticePolymerSystem_activity_le`
-  (`LatticePolymerSystem.lean:67-89`: `Complex.norm_real`,
-  `norm_integral_le_of_norm_le_const`, `prod_le_prod`); the bound
-  hypothesis is `hbd : ∀ A p, |w A p| ≤ δ`.  (b)
-  `weightedLatticePolymerSystem_kpCriterion_volumeUniform` —
-  transport of `connectedLatticePolymerSystem_kpCriterion_volumeUniform`
-  (`ConnectedEntropy.lean:751-…`, ~150 lines) with
-  `x := δ·e^t` replacing `(e^{|β|B}−1)·e^t` throughout; the entropy
-  engine `sum_connectedPolymers_through_le` is weight-free and reused
-  as-is; `hε0` is replaced by `hδ0 : 0 ≤ δ` (derivable from `hbd` at
-  any point, or carried).  (c) corollary
-  `weightedPartition_eq_exp_clusterSum` via
-  `partition_eq_exp_clusterSum_of_kp` (mirror of the Wilson capstone).
-* **W4:** the covariance identity: for supports
-  `S_F, S_G` and deformations `f̃ = f + g·𝟙_{S_F}` etc.,
-  `⟨F⟩ = Z[f̃]/Z`, `⟨FG⟩/⟨F⟩⟨G⟩ = exp(K_{FG}+K−K_F−K_G)`; termwise
-  cancellation off connecting clusters (activities agree on polymers
-  missing a support — integrand equality), the survivor bounded by
-  `connecting_cluster_decay` → **B4**: `hIRbound` of
-  `lattice_mass_gap_of_clustering_uniform`.
+* **W3 CLOSED (commit `9def5d8`, green on FIRST build, oracle
+  clean):** `norm_weightedLatticePolymerSystem_activity_le`
+  (`‖z(c)‖ ≤ δ^|c|`),
+  `weightedLatticePolymerSystem_kpCriterion_volumeUniform` (verbatim
+  transport, `x := δ·e^t`, entropy engine weight-free, `hδ0` carried),
+  and **`weightedPartition_eq_exp_clusterSum`**:
+  `(Z[w] : ℂ) = exp(clusterSum[w])` under volume-uniform smallness
+  with constants depending only on `d, δ, t`.
+* **W4a CLOSED (commit `7b49a42`, oracle clean):** the absorption
+  identity.  `deformWeight w g T` (`1 + w̃_p = (1+w_p)(1+g_p)` on `T`)
+  with closure lemmas (`isLocalWeight_deformWeight`,
+  `abs_deformWeight_le` at `δ_w + δ_g + δ_wδ_g`,
+  `measurable_deformWeight`) and **`weightedPartition_deform`**:
+  `Z[w̃] = ∫ (∏_{p∈T}(1+g_p))·∏_p(1+w_p)` — Gibbs numerators of
+  multiplicative observables ARE weighted partition functions, so the
+  whole `Z = Ξ = exp(K)` chain applies to them.  (Toolchain rename:
+  `abs_add` → `abs_add_le`; and `add_le_add_right`'s explicit-`c`
+  form adds on the LEFT in this toolchain — use
+  `add_le_add … le_rfl`.)
+* **W4b–d (remaining):** (b) the four-gas identity: with
+  `T := S_F ∪ S_G` (`S_F, S_G` support-disjoint) and a perturbation
+  `g` supported in `T`, `⟨F⟩·Z = Z[deformWeight f g S_F]` etc.
+  (from `weightedPartition_deform` + `weightedPartition_plaquetteWeight`),
+  hence `⟨FG⟩·Z/(⟨F⟩Z·⟨G⟩Z)·Z = exp(K_{FG}+K−K_F−K_G)` via the four
+  `weightedPartition_eq_exp_clusterSum`s (all four gases share the
+  SAME Polymer type — only activities differ).  (c) termwise
+  cancellation: a tuple `X` whose polymers all miss `S_F` has
+  `activity_{FG} = activity_G` and `activity_F = activity_w`
+  per-polymer (`deformWeight_of_not_mem` lifted to integrands via
+  `Finset.prod_congr`), so `K_{FG}+K−K_F−K_G` is supported on tuples
+  meeting BOTH supports — connecting clusters.  (d) bound the
+  surviving sum by the weighted analogue of
+  `connecting_cluster_decay` (transport of `connecting_pinned_le_GE`
+  + the tilted criterion to the weighted gas) → **B4**: `hIRbound`
+  of `lattice_mass_gap_of_clustering_uniform` with
+  `covIR t := ⟨FG⟩−⟨F⟩⟨G⟩` at separation `t`.
 
 **Then B2** (the covariance): for plaquette-local multiplicative
 observables `F` (deformations `f_p ↦ f_p·(1+s·g_p)` supported on
