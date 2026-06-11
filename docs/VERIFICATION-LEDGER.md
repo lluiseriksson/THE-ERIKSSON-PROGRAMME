@@ -354,6 +354,47 @@ Wilson-gas) exponential decay mechanism transported to the weighted
 gas, and assemble `hIRbound`.  All M3 lattice-side; M4/M5/Clay
 untouched.
 
+## Addendum 10 (2026-06-11, B4 complete) — THE IR CLUSTERING BOUND,
+END TO END
+
+**Build:** `lake build YangMillsCore` — green at `e1de69b`.
+**Source scan:** zero `sorry`/`axiom` (unchanged).
+
+Oracle outputs (verbatim, the B4 chain):
+
+```
+'YangMills.sum_connecting_le_succ_mul_pinned'         [propext, Classical.choice, Quot.sound]
+'YangMills.weighted_unitTilt_kpCriterion_volumeUniform'
+                                                      [propext, Classical.choice, Quot.sound]
+'YangMills.weighted_unitTilt_connecting_pinned_le_GE' [propext, Classical.choice, Quot.sound]
+'YangMills.weighted_connecting_cluster_decay''        [propext, Classical.choice, Quot.sound]
+'YangMills.connecting_layer_le_pinned'                [propext, Classical.choice, Quot.sound]
+'YangMills.weighted_nfac_pinned_le_GE'                [propext, Classical.choice, Quot.sound]
+'YangMills.weighted_connecting_sum_decay'             [propext, Classical.choice, Quot.sound]
+'YangMills.weighted_connecting_sum_summable'          [propext, Classical.choice, Quot.sound]
+'YangMills.covariance_exponent_norm_bound'            [propext, Classical.choice, Quot.sound]
+'YangMills.truncated_correlation_bound'               [propext, Classical.choice, Quot.sound]
+```
+
+Plain language: **the infrared clustering bound of the strong-coupling
+lattice theory is machine-checked end to end.**  For multiplicative
+local observables with supports at touching-distance `≥ 2k`,
+
+    ‖Z[FG]·Z − Z[F]·Z[G]‖ ≤ C·e^{−ε·k},
+
+`C` explicit (`8|S||T|·y'/(1−Ky')·‖Z[F]‖·‖Z[G]‖`) and volume-free,
+under high-temperature smallness depending only on the dimension and
+the weight bounds.  The chain: the covariance identity (`Z = Ξ =
+exp(K)` for all four deformed gases), the inclusion–exclusion
+(supported on connecting clusters), the symmetrization (`(n+1)`
+absorbed into a unit tilt), the per-layer pinning, and the
+volume-uniform connecting decay.  Dividing by `Z² > 0` gives
+`|⟨FG⟩−⟨F⟩⟨G⟩| ≤ C'·e^{−εk}` — exactly the `hIRbound` hypothesis of
+`lattice_mass_gap_of_clustering_uniform` (M3's IR input).  The
+remaining M3 inputs are the UV single-scale bound (§6.3, content not
+yet in the repo) and the Wilson-loop/area-law route (T4).  All M3
+lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

@@ -220,13 +220,23 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   **`Z[FG]·Z = Z[F]·Z[G]·exp(connecting cluster sum)`** — the
   division-free covariance identity.
   `docs/CLUSTER-CORRELATION-PLAN.md` §2e (the W-campaign log).
-- **NEXT TARGET — W4d + B4.** Bound the connecting cluster sum:
-  transport `connecting_pinned_le_GE`/`connecting_cluster_decay` to
-  the weighted gas, symmetrize the unpinned connecting filter to
-  pinned sums (the `PinnedCluster.lean` machinery), conclude
-  `|⟨FG⟩−⟨F⟩⟨G⟩| ≤ C·e^{−m·dist(S_F,S_G)}` → discharge `hIRbound` of
-  `lattice_mass_gap_of_clustering_uniform` (M3's remaining analytic
-  input besides UV).
+- **B4 — THE IR CLUSTERING BOUND — CLOSED (2026-06-11,
+  `truncated_correlation_bound` in
+  L1_GibbsMeasure/PolymerRepresentation.lean).**  For multiplicative
+  local observables with supports at touching-distance `≥ 2k`:
+  `‖Z[FG]·Z − Z[F]·Z[G]‖ ≤ C·e^{−ε·k}`, `C` explicit and volume-free.
+  This discharges the `hIRbound` hypothesis of
+  `lattice_mass_gap_of_clustering_uniform` at the lattice level — the
+  ENTIRE cluster-correlation campaign (sharp KP → Mayer–Ursell →
+  `Z = Ξ` → weighted gases → covariance identity →
+  inclusion–exclusion → symmetrization → connecting decay) is
+  machine-checked end to end.  `docs/VERIFICATION-LEDGER.md`
+  addendum 10 (ten oracle lines);
+  `docs/CLUSTER-CORRELATION-PLAN.md` is the complete campaign log.
+- **NEXT TARGET — the UV bound (§6.3 single-scale suppression).**
+  The other M3 hypothesis: content from the paper not yet in the
+  repo.  Alternatively T4 (Peter–Weyl/area law) or consolidation
+  (e.g. the normalized-correlator corollary dividing by `Z²`).
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the
   repo; needed for the other M3 hypothesis.
 - **T4 — strong-coupling character expansion → area law (LG7/8).** Needs **Peter–Weyl for

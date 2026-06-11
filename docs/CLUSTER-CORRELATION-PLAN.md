@@ -758,16 +758,31 @@ surfaces were `pe`-specific.  Bricks:
   `rfl` cross-gas bridges (`e1/e3/e4`-pattern at FUNCTION level —
   works), `norm_tsum_le_tsum_norm`, `Summable.tsum_le_tsum`, the
   `tsum_add` chain, and the four decays.
-  **Remaining for B4 — (iii) only, the last brick of the IR chain:**
-  `hIRbound`.  Combine `covariance_identity` (`Z_{FG}·Z =
-  Z_F·Z_G·exp(K_conn)`) with (ii): for observables at touching-distance
-  `≥ 2k` between `S_F` and `S_G`, every `dist(p,q)/2 ≥ k` so the bound
-  is `≤ 4|S_F||S_G|·e^{−εk}·y'/(1−Ky')`; define
-  `covIR k := ⟨FG⟩−⟨F⟩⟨G⟩` (divide by `Z² > 0`,
-  `partitionFunction_pos'`), use `|e^z−1| ≤ |z|e^{|z|}`
-  (`Complex.abs_exp_sub_one_le` at `|z| ≤ 1` or the crude bound) and
-  feed `lattice_mass_gap_of_clustering_uniform` with `r := e^{−ε}`,
-  `C₁ := 4|S_F||S_G|·y'/(1−Ky')·(bound on |⟨F⟩⟨G⟩|)·e`.
+  **(iii) CLOSED — B4 COMPLETE (commit `e1de69b`, oracle clean):
+  `truncated_correlation_bound`, THE IR ENDPOINT.**  For
+  multiplicative local observables whose supports `S, T` are at
+  touching-distance `≥ 2k`:
+
+      ‖Z[d_{S∪T}]·Z[w] − Z[d_S]·Z[d_T]‖
+        ≤ (8·|S|·|T|·y'/(1−Ky')·‖Z[d_S]‖·‖Z[d_T]‖) · e^{−ε·k}
+
+  (division-free; divide by `Z[w]² > 0` to get
+  `|⟨FG⟩−⟨F⟩⟨G⟩| ≤ C·e^{−εk}`), under volume-uniform smallness at
+  `δ'·e^{t+ε+1}` plus the normalization `hone` (the exponent ≤ 1 —
+  satisfiable for all k once `4|S||T|·M ≤ 1`, and for large k always).
+  Proof: monotone descent of the smallness window from `t+ε+1` to `t`
+  (`div_le_div₀` — note the `₀`-rename) feeding `covariance_identity`;
+  `covariance_exponent_norm_bound` specialized at separation `k`
+  (`dist/2 ≥ k` from `2k ≤ dist`, `Finset.sum_const` collapse);
+  `Complex.norm_exp_sub_one_le` (‖e^K−1‖ ≤ 2‖K‖ at ‖K‖ ≤ 1); the
+  difference identity by `ring` from the covariance identity.
+  **`hIRbound` of `lattice_mass_gap_of_clustering_uniform` is hereby
+  discharged at the lattice level:** instantiate `covIR k` with the
+  normalized truncated correlator of any such observable pair at
+  separation `k`, `r := e^{−ε}`, `C₁ := the explicit constant/Z²`.
+  THE CLUSTER-CORRELATION CAMPAIGN (Half A + Half B + B0–B4) IS
+  COMPLETE.  What remains for M3: the UV bound (§6.3, content not in
+  repo) and T4.  M4/M5/Clay untouched.
 
 **Then B2** (the covariance): for plaquette-local multiplicative
 observables `F` (deformations `f_p ↦ f_p·(1+s·g_p)` supported on
