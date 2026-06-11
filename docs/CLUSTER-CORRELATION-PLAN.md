@@ -474,16 +474,22 @@ ENTIRE FINITE HALF OF THE MAYER–URSELL INVERSION IS MACHINE-CHECKED.**
    `touchGraph_dist_lt_card_of_connected` (B3a; subtype-walk
    pushforward needs a `show`-unfold of `touchGraph` before
    `fromRel_adj`), `exists_touching_of_not_disjoint` (B3b).
-   **Remaining B3c:** the cluster-level bound — for a cluster `X` of
-   the connected gas with `p ∈ (X i₀).1`, `q ∈ (X j₀).1`:
-   `(touchGraph d N).dist p q ≤ 2·∑ᵢ (X i).1.card`-form, by induction
-   along an `incompGraph`-walk from `i₀` to `j₀`, chaining B3a within
-   polymers and B3b at each incompatibility crossing, with
-   `SimpleGraph.dist_triangle`; then `∑|Xᵢ| ≥ dist/2` feeds
-   `pinnedClusterWeightGE` (with `sz c := c.1.card`, total size
-   `∑ sz (X i)`) and Half A's tail bound.  Then B1/B2 (the covariance
-   identity through `Ξ = exp(clusterSum)` — now WITH the fundamental
-   theorem available) and B4.
+   **B3 COMPLETE (commit `74cac7e`, oracle-clean):**
+   `exists_touchWalk_of_connected` (B3a walk form),
+   `exists_walk_through_cluster` (the threading — WALK-based, not
+   dist-triangle-based: `SimpleGraph.dist` is junk-valued on
+   unreachable pairs so the triangle inequality is a trap; `IsPath`
+   via `Walk.bypass` keeps the size accounting linear), and
+   **`cluster_dist_le`**:
+   `(touchGraph d N).dist p q ≤ 2·∑ᵢ (X i).1.card` for any cluster of
+   the connected gas touching both plaquettes.  Contrapositive feeds
+   Half A: clusters touching p and q have total size
+   `≥ dist(p,q)/2`, so the `pinnedClusterWeightGE`-tail at
+   `sz c := c.1.card`, `L := dist/2` bounds the connecting-cluster
+   sums by `e^{-ε·dist/2}` — volume-uniformly.
+   **Remaining: B1/B2** (the covariance identity through
+   `Ξ = exp(clusterSum)` — the fundamental theorem now available) and
+   B4 (discharge `hIRbound`).
 
    (historical scoping for E4:) regroup Ω by `ν⟨k,f⟩ := ∑(fᵢ+1)`
    (`sigmaFiberEquiv` + `tsum_sigma`; Ω-fibers finite via
