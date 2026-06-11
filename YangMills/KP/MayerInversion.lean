@@ -1771,4 +1771,28 @@ lemma summable_H {a : ℕ → ℂ} (hA : Summable fun n => ‖a n‖) :
       rw [div_eq_mul_inv, mul_comm]
     exact hexp.congr fun k => (hval k).symm
 
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **B0b (vi), E3: the exponential as the master sigma-sum** —
+`exp(∑'a)` is the tsum of `(k!)⁻¹·∏ a(fᵢ)` over all tuple data. -/
+lemma exp_tsum_eq_tsum_H {a : ℕ → ℂ}
+    (hA : Summable fun n => ‖a n‖) :
+    Complex.exp (∑' n, a n)
+    = ∑' ω : Σ _k : ℕ, (Fin _k → ℕ),
+        ((ω.1.factorial : ℂ))⁻¹ * ∏ i, a (ω.2 i) := by
+  classical
+  have hHsum : Summable (fun ω : Σ _k : ℕ, (Fin _k → ℕ) =>
+      ((ω.1.factorial : ℂ))⁻¹ * ∏ i, a (ω.2 i)) :=
+    (summable_H hA).of_norm
+  calc Complex.exp (∑' n, a n)
+      = ∑' k : ℕ, (∑' n, a n) ^ k / (k.factorial : ℂ) := by
+        rw [Complex.exp_eq_exp_ℂ, NormedSpace.exp_eq_tsum_div]
+    _ = ∑' k : ℕ, ∑' f : Fin k → ℕ,
+          ((k.factorial : ℂ))⁻¹ * ∏ i, a (f i) := by
+        refine tsum_congr fun k => ?_
+        rw [div_eq_inv_mul, tsum_pow_eq_tsum_pi hA k, ← tsum_mul_left]
+    _ = ∑' ω : Σ _k : ℕ, (Fin _k → ℕ),
+          ((ω.1.factorial : ℂ))⁻¹ * ∏ i, a (ω.2 i) :=
+        (hHsum.tsum_sigma).symm
+
 end YangMills.KP
