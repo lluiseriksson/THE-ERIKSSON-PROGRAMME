@@ -1383,4 +1383,148 @@ theorem sum_ordp_fiber_sizes {N k : ℕ} (W : ℕ → ℂ) :
       exact ⟨hord, funext hall⟩
   rw [hsets]
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- The compatibility indicator expands through ordered partitions
+(the partition identity + the π-collapse, ℂ-cast). -/
+lemma indicator_eq_ordp {N : ℕ} (X : Fin N → P.Polymer) :
+    (if PairwiseCompatible P X then (1 : ℂ) else 0)
+    = ∑ k ∈ Finset.range (N + 1), ((k.factorial : ℂ))⁻¹ *
+        ∑ σ ∈ (Finset.univ : Finset (Fin k → Finset (Fin N))).filter
+          (fun σ => IsOrdPartition σ),
+          ∏ i, ((ursell P (fun l : Fin (σ i).card =>
+            X (((σ i).orderIsoOfFin rfl l) : Fin N)) : ℤ) : ℂ) := by
+  classical
+  have hii := sum_finpartition_eq_ordPartitions (N := N)
+    (fun B => ((ursell P (fun l : Fin B.card =>
+      X (↑(B.orderIsoOfFin rfl l) : Fin N)) : ℤ) : ℂ))
+  simp only [] at hii
+  rw [← hii]
+  have h := ursell_partition_identity P X
+  by_cases hc : PairwiseCompatible P X
+  · rw [if_pos hc] at h ⊢
+    have h2 := congrArg (fun z : ℤ => (z : ℂ)) h
+    push_cast at h2
+    exact h2.symm
+  · rw [if_neg hc] at h ⊢
+    have h2 := congrArg (fun z : ℤ => (z : ℂ)) h
+    push_cast at h2
+    exact h2.symm
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **B0b (v), part M-a:** the compatible-tuple activity sum expands
+through the partition identity into `1/k!`-weighted ordered-partition
+sums of per-block cluster weights — the finite heart of
+`Ξ = exp(clusterSum)`, with every X-dependence factorized away. -/
+theorem sum_compat_eq_ordp [Fintype P.Polymer] (N : ℕ) :
+    ∑ X ∈ (Finset.univ : Finset (Fin N → P.Polymer)).filter
+      (fun X => PairwiseCompatible P X),
+      ∏ j, P.activity (X j)
+    = ∑ k ∈ Finset.range (N + 1), ((k.factorial : ℂ))⁻¹ *
+        ∑ σ ∈ (Finset.univ : Finset (Fin k → Finset (Fin N))).filter
+          (fun σ => IsOrdPartition σ),
+          ∏ i, ∑ Y : Fin (σ i).card → P.Polymer,
+            (ursell P Y : ℂ) * ∏ l, P.activity (Y l) := by
+  classical
+  have hX := fun X : Fin N → P.Polymer => indicator_eq_ordp P X
+  calc ∑ X ∈ (Finset.univ : Finset (Fin N → P.Polymer)).filter
+        (fun X => PairwiseCompatible P X),
+        ∏ j, P.activity (X j)
+      = ∑ X : Fin N → P.Polymer,
+          (if PairwiseCompatible P X then (1 : ℂ) else 0)
+            * ∏ j, P.activity (X j) := by
+        rw [Finset.sum_filter]
+        exact Finset.sum_congr rfl fun X _ => by split_ifs <;> ring
+    _ = ∑ X : Fin N → P.Polymer,
+          (∑ k ∈ Finset.range (N + 1), ((k.factorial : ℂ))⁻¹ *
+            ∑ σ ∈ (Finset.univ :
+              Finset (Fin k → Finset (Fin N))).filter
+              (fun σ => IsOrdPartition σ),
+              ∏ i, ((ursell P (fun l : Fin (σ i).card =>
+                X (((σ i).orderIsoOfFin rfl l) : Fin N)) : ℤ) : ℂ))
+            * ∏ j, P.activity (X j) :=
+        Finset.sum_congr rfl fun X _ => by rw [hX X]
+    _ = ∑ k ∈ Finset.range (N + 1), ((k.factorial : ℂ))⁻¹ *
+          ∑ σ ∈ (Finset.univ :
+            Finset (Fin k → Finset (Fin N))).filter
+            (fun σ => IsOrdPartition σ),
+            ∑ X : Fin N → P.Polymer,
+              (∏ i, ((ursell P (fun l : Fin (σ i).card =>
+                X (((σ i).orderIsoOfFin rfl l) : Fin N)) : ℤ) : ℂ))
+                * ∏ j, P.activity (X j) := by
+        rw [Finset.sum_congr rfl (fun X
+          (_ : X ∈ (Finset.univ : Finset (Fin N → P.Polymer))) =>
+            Finset.sum_mul _ _ _), Finset.sum_comm]
+        refine Finset.sum_congr rfl fun k _ => ?_
+        calc ∑ X : Fin N → P.Polymer, (((k.factorial : ℂ))⁻¹ *
+              ∑ σ ∈ (Finset.univ :
+                Finset (Fin k → Finset (Fin N))).filter
+                (fun σ => IsOrdPartition σ),
+                ∏ i, ((ursell P (fun l : Fin (σ i).card =>
+                  X (((σ i).orderIsoOfFin rfl l) : Fin N)) : ℤ) : ℂ))
+              * ∏ j, P.activity (X j)
+            = ∑ X : Fin N → P.Polymer, ((k.factorial : ℂ))⁻¹ *
+                ((∑ σ ∈ (Finset.univ :
+                  Finset (Fin k → Finset (Fin N))).filter
+                  (fun σ => IsOrdPartition σ),
+                  ∏ i, ((ursell P (fun l : Fin (σ i).card =>
+                    X (((σ i).orderIsoOfFin rfl l) : Fin N)) : ℤ) : ℂ))
+                  * ∏ j, P.activity (X j)) :=
+              Finset.sum_congr rfl fun X _ => by ring
+          _ = ((k.factorial : ℂ))⁻¹ * ∑ X : Fin N → P.Polymer,
+                (∑ σ ∈ (Finset.univ :
+                  Finset (Fin k → Finset (Fin N))).filter
+                  (fun σ => IsOrdPartition σ),
+                  ∏ i, ((ursell P (fun l : Fin (σ i).card =>
+                    X (((σ i).orderIsoOfFin rfl l) : Fin N)) : ℤ) : ℂ))
+                  * ∏ j, P.activity (X j) :=
+              (Finset.mul_sum _ _ _).symm
+          _ = ((k.factorial : ℂ))⁻¹ * ∑ X : Fin N → P.Polymer,
+                ∑ σ ∈ (Finset.univ :
+                  Finset (Fin k → Finset (Fin N))).filter
+                  (fun σ => IsOrdPartition σ),
+                  (∏ i, ((ursell P (fun l : Fin (σ i).card =>
+                    X (((σ i).orderIsoOfFin rfl l) : Fin N)) : ℤ) : ℂ))
+                    * ∏ j, P.activity (X j) := by
+              congr 1
+              exact Finset.sum_congr rfl fun X _ =>
+                Finset.sum_mul _ _ _
+          _ = ((k.factorial : ℂ))⁻¹ *
+                ∑ σ ∈ (Finset.univ :
+                  Finset (Fin k → Finset (Fin N))).filter
+                  (fun σ => IsOrdPartition σ),
+                  ∑ X : Fin N → P.Polymer,
+                    (∏ i, ((ursell P (fun l : Fin (σ i).card =>
+                      X (((σ i).orderIsoOfFin rfl l) : Fin N)) : ℤ) : ℂ))
+                      * ∏ j, P.activity (X j) := by
+              rw [Finset.sum_comm]
+    _ = ∑ k ∈ Finset.range (N + 1), ((k.factorial : ℂ))⁻¹ *
+          ∑ σ ∈ (Finset.univ :
+            Finset (Fin k → Finset (Fin N))).filter
+            (fun σ => IsOrdPartition σ),
+            ∏ i, ∑ Y : Fin (σ i).card → P.Polymer,
+              (ursell P Y : ℂ) * ∏ l, P.activity (Y l) := by
+        refine Finset.sum_congr rfl fun k _ => ?_
+        congr 1
+        refine Finset.sum_congr rfl fun σ hσ => ?_
+        have hord := (Finset.mem_filter.mp hσ).2
+        calc ∑ X : Fin N → P.Polymer,
+            (∏ i, ((ursell P (fun l : Fin (σ i).card =>
+              X (((σ i).orderIsoOfFin rfl l) : Fin N)) : ℤ) : ℂ))
+              * ∏ j, P.activity (X j)
+            = ∑ X : Fin N → P.Polymer,
+                ∏ i, (((ursell P (fun l : Fin (σ i).card =>
+                  X (((σ i).orderIsoOfFin rfl l) : Fin N)) : ℤ) : ℂ)
+                  * ∏ l : Fin (σ i).card,
+                    P.activity (X (((σ i).orderIsoOfFin rfl l)
+                      : Fin N))) := by
+              refine Finset.sum_congr rfl fun X _ => ?_
+              rw [prod_split_ordPartition σ hord
+                (fun j => P.activity (X j)), ← Finset.prod_mul_distrib]
+          _ = ∏ i, ∑ Y : Fin (σ i).card → P.Polymer,
+                (ursell P Y : ℂ) * ∏ l, P.activity (Y l) :=
+              sum_split_ordPartition P σ hord
+                (fun _ Y => (ursell P Y : ℂ) * ∏ l, P.activity (Y l))
+
 end YangMills.KP
