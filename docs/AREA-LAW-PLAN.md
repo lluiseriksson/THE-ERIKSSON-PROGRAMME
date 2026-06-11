@@ -77,7 +77,7 @@ each `p ∈ S` with `e ∈ supp p`.
 | Brick | Content | New? | Est. effort |
 |---|---|---|---|
 | AL1 | `ℤ`-chain complex on the lattice: plaquette boundary map `∂₂`, edge boundary `∂₁`, `∂₁∘∂₂ = 0` — **CLOSED** (commit `ad58393`, `L0_Lattice/ChainComplex.lean`, oracle clean; abstract over `FiniteLatticeGeometry`, whose `plaquetteEdge_src/dst` axioms ARE the closure of the square; Fintype class-fields bound via `letI`, the `WilsonAction` pattern) | done | — |
-| AL2 | `Area(C) :=` min `|S|` with `∂₂S = C` (well-defined for contractible `C`); monotonicity facts | new | 1 session |
+| AL2 | `Area(C) :=` min `|S|` with `∂₂S = C` — **CLOSED** (commit `7144e77`: `chainSupport`, `chainArea` (`sInf`), `chainArea_le`, `exists_minimal_spanning`, `chainBoundary₁_eq_zero_of_spans`; oracle clean) | done | — |
 | AL3 | entry-level edge-balance vanishing (degree ≤ 2 Weingarten facts on SU(N)) | extends banked Schur | 1–2 sessions |
 | AL4 | factorized expansion of `⟨W_C⟩·Z` with per-edge integration (the `WeightedGas` engine + AL3) | assembly | 1–2 sessions |
 | AL5 | the spanning-surface lower bound (AL1+AL2 ⇒ nonzero terms have `|S| ≥ Area`) | new | 1–2 sessions |
