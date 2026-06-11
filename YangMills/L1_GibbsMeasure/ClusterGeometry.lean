@@ -4,6 +4,7 @@ Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.L1_GibbsMeasure.LatticePolymerSystem
 import YangMills.KP.SharpShell
+import YangMills.KP.ClusterTail
 
 /-!
 # Cluster geometry, step B3 — connecting clusters are large
@@ -210,6 +211,73 @@ theorem cluster_dist_le {G : Type*} [Group G]
       _ ≤ ∑ i', (X i').1.card :=
           Finset.sum_le_sum fun i' _ =>
             Finset.card_pos.mpr (X i').2.1
+  omega
+
+set_option maxHeartbeats 800000 in
+open Classical in
+/-- **The connecting-sum domination:** pinned cluster sums restricted
+to clusters touching a distant plaquette are dominated by the
+size-restricted pinned weights — B3's geometry feeds Half A's tail. -/
+lemma connecting_pinned_le_GE {G : Type*} [Group G]
+    [MeasurableSpace G] [NeZero d]
+    (μ : MeasureTheory.Measure G) (pe : G → ℝ) (β : ℝ)
+    {p q : ConcretePlaquette d N}
+    (c : (connectedLatticePolymerSystem
+      (d := d) (N := N) μ pe β).Polymer)
+    (hp : p ∈ c.1) (n : ℕ) :
+    (((n + 1).factorial : ℝ))⁻¹ *
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+        (connectedLatticePolymerSystem
+          (d := d) (N := N) μ pe β).Polymer)).filter
+        (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+        |((KP.ursell (connectedLatticePolymerSystem
+          (d := d) (N := N) μ pe β) X : ℤ) : ℝ)| *
+          ∏ i, ‖(connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β).activity (X i)‖
+    ≤ KP.pinnedClusterWeightGE (connectedLatticePolymerSystem
+        (d := d) (N := N) μ pe β)
+        (fun c' => c'.1.card) c ((touchGraph d N).dist p q / 2) n := by
+  classical
+  unfold KP.pinnedClusterWeightGE
+  refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+  -- restrict to genuine clusters (non-clusters contribute zero)
+  rw [show ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) →
+      (connectedLatticePolymerSystem
+        (d := d) (N := N) μ pe β).Polymer)).filter
+      (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1),
+      |((KP.ursell (connectedLatticePolymerSystem
+        (d := d) (N := N) μ pe β) X : ℤ) : ℝ)| *
+        ∏ i, ‖(connectedLatticePolymerSystem
+          (d := d) (N := N) μ pe β).activity (X i)‖
+    = ∑ X ∈ ((Finset.univ : Finset (Fin (n + 1) →
+        (connectedLatticePolymerSystem
+          (d := d) (N := N) μ pe β).Polymer)).filter
+        (fun X => X 0 = c ∧ ∃ j, q ∈ (X j).1)).filter
+        (fun X => KP.IsCluster (connectedLatticePolymerSystem
+          (d := d) (N := N) μ pe β) X),
+        |((KP.ursell (connectedLatticePolymerSystem
+          (d := d) (N := N) μ pe β) X : ℤ) : ℝ)| *
+          ∏ i, ‖(connectedLatticePolymerSystem
+            (d := d) (N := N) μ pe β).activity (X i)‖
+    from (Finset.sum_filter_of_ne fun X _ hne => by
+      by_contra hnc
+      exact hne (by
+        rw [KP.ursell_eq_zero_of_not_isCluster _ X hnc]
+        simp)).symm]
+  -- the cluster filter lands in the size-restricted filter
+  refine Finset.sum_le_sum_of_subset_of_nonneg ?_ fun X _ _ =>
+    mul_nonneg (abs_nonneg _)
+      (Finset.prod_nonneg fun i _ => norm_nonneg _)
+  intro X hX
+  rw [Finset.mem_filter, Finset.mem_filter] at hX
+  obtain ⟨⟨-, hX0, j, hqj⟩, hclus⟩ := hX
+  rw [Finset.mem_filter]
+  refine ⟨Finset.mem_univ _, hX0, ?_⟩
+  have hp0 : p ∈ (X 0).1 := by rw [hX0]; exact hp
+  have hdist := cluster_dist_le μ pe β hclus hp0 hqj
+  have hsz : ∑ i, (fun c' : (connectedLatticePolymerSystem
+      (d := d) (N := N) μ pe β).Polymer => c'.1.card) (X i)
+      = ∑ i, (X i).1.card := rfl
   omega
 
 end YangMills
