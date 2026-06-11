@@ -444,6 +444,25 @@ ENTIRE FINITE HALF OF THE MAYER–URSELL INVERSION IS MACHINE-CHECKED.**
    sets are subsets of the polymer type.  Absolute convergence
    everywhere from `kp_convergence_sharp`'s summability.
 
+   **E1 CLOSED (commit `d83a3f7`):** `consE`,
+   `summable_norm_prod_pow`, `tsum_pow_eq_tsum_pi`.  Analysis-layer
+   pathologies paid for: `Fin.consEquiv` whnf-grinds — hand-roll a
+   non-dependent equiv; `Finite (Fin 0 → ℕ)` instance search melts —
+   use `hasSum_single`/`tsum_eq_single` at the unique point;
+   `Summable.mul_norm` is an HOU sink — pin `(f := ..) (g := ..)`.
+   **Remaining for the theorem:** the Ω-architecture —
+   `Ω := Σ k, (Fin k → ℕ)`, `H ⟨k,f⟩ := (k!)⁻¹·∏ a (f i)`;
+   (E2) `Summable ‖H‖` via `summable_sigma_of_nonneg` + comparison of
+   `∑'_f ‖∏‖ ≤ (∑‖a‖)^k`-type bounds with
+   `Real.summable_pow_div_factorial`; (E3) `exp K = ∑'_Ω H`
+   (`Complex.exp_eq_tsum_div`-form + `tsum_sigma` + E1b per k);
+   (E4) regroup Ω by `ν⟨k,f⟩ := ∑(fᵢ+1)` (`sigmaFiberEquiv` +
+   `tsum_sigma`; fibers finite via `Fintype.subtype` of the bounded
+   filter), per-N finite fiber-sum = the cluster layer (the
+   `f ↔ m`-shift bijection `sum_nbij'`), tail-kill by
+   `admissible_card_sum_eq` reversed + `tsum_eq_sum`, finish with
+   `partition_univ_eq_sum_card`.
+
 **(historical) Remaining-work list before the above was closed:**
 
 1. (★) per-π fiber factorization:
