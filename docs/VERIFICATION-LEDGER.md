@@ -461,6 +461,52 @@ remaining M3 inputs are the UV single-scale bound (§6.3, content not
 yet in the repo) and the Wilson-loop/area-law route (T4).  All M3
 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 12 (2026-06-11, area-law campaign: AL1–AL3 closed, AL4
+mostly closed, AL5 interface closed)
+
+**Builds:** `lake build YangMillsCore` — green at `ad58393` (8229),
+`9f3c322` (8230), `9dea6c1` (8231), `c985d45`/`4f1a534` (8232 jobs).
+**Source scan:** zero `sorry`/`axiom` (unchanged).
+
+Oracle outputs (verbatim, the area-law bricks):
+
+```
+'YangMills.chainBoundary₁_plaquetteChain'              [propext, Classical.choice, Quot.sound]
+'YangMills.chainBoundary₁_comp_chainBoundary₂'         [propext, Classical.choice, Quot.sound]
+'YangMills.chainArea_le'                               [propext, Classical.choice, Quot.sound]
+'YangMills.exists_minimal_spanning'                    [propext, Classical.choice, Quot.sound]
+'YangMills.chainBoundary₁_eq_zero_of_spans'            [propext, Classical.choice, Quot.sound]
+'YangMills.chainArea_le_card_of_support_subset'        [propext, Classical.choice, Quot.sound]
+'YangMills.chainSupport_indicatorChain_subset'         [propext, Classical.choice, Quot.sound]
+'YangMills.integral_mul_of_disjoint_deps_complex'      [propext, Classical.choice, Quot.sound]
+'YangMills.integral_single_coord_marginal'             [propext, Classical.choice, Quot.sound]
+'YangMills.integral_mul_prod_one_add'                  [propext, Classical.choice, Quot.sound]
+```
+
+Content (`docs/AREA-LAW-PLAN.md` for the design):
+
+* **AL1+AL2** (`L0_Lattice/ChainComplex.lean`): the lattice chain
+  complex over an arbitrary `CommRing R` — `∂₁∘∂₂ = 0` from the
+  `FiniteLatticeGeometry` square-closure axioms; `chainArea` as the
+  minimal spanning-surface size with its defining bound, attainment,
+  and closedness of spannable chains.  `R := ℤ` is the integral
+  theory, `R := ZMod N_c` the `N`-ality theory the Haar selection
+  rule feeds.
+* **AL3** — closed by audit: `sunHaarProb_fundMonomial_integral_zero`
+  (banked) IS the per-edge balance criterion.
+* **AL4 substrate + expansion** (`EdgeFactorization.lean`,
+  `WilsonLoopExpansion.lean`): the `ℂ`-valued two-block independence
+  factorization, the single-coordinate marginalization (the per-edge
+  integration step), and the integral-level binomial expansion
+  `∫ W·∏(1+f_p) = ∑_S ∫ W·∏_{p∈S} f_p`.
+* **AL5 interface**: a spanning chain supported in `S` bounds the
+  (`N`-ality) area by `|S|`.
+
+Open in the campaign: the per-edge monomial bookkeeping connecting a
+non-vanishing expansion term to a balanced `ZMod N_c` chain (the
+AL4/AL5 join), then AL6 (entropy + tail + non-vacuity window).  All
+M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
