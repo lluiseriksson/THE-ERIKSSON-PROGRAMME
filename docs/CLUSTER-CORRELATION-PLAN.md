@@ -310,9 +310,57 @@ each of B0b-2/3/4; 4–8 for the analytic shell.
   `∑_{B ∈ parts} 1 ≤ ∑ |B| = N`); enumerations of `π.parts` ARE the
   ordered partitions with part-set `π.parts`.
 * NEXT: **B0b-2** (the multinomial regrouping — the remaining big
-  finite brick; the `(X,(B_i)) ↦ (X_i)` fibration with the exact
-  multinomial count, `card_blockData_mul_le`-pattern as an EQUALITY),
-  then the analytic shell B0b-1/B0b-5.
+  finite brick), in the REFINED formulation below, then the analytic
+  shell B0b-1/B0b-5.
+
+**B0b-2/5 REFINED DESIGN (2026-06-10, supersedes §2d step 4's
+`(X,(B_i))`-formulation; derived by walking the assembly backwards):**
+
+Define `IsOrdPartition (σ : Fin k → Finset (Fin N)) :=
+(∀ i, (σ i).Nonempty) ∧ (∀ i j, i ≠ j → Disjoint (σ i) (σ j)) ∧
+univ.biUnion σ = univ`.  The per-`N` chain after the partition
+identity is:
+
+  (i)   `∑_π ∏_{B∈π.parts} φ(X|_B)` → `sum_symmetrize_gen` (PROVED)
+        with `S := Finpartition.parts`, `nmax := N` (need
+        `π.parts.card ≤ N` — from `∑_{B∈parts} 1 ≤ ∑ |B| = N`).
+  (ii)  Per (π, enumeration σ of π.parts): `∏_{B∈parts} = ∏_i (X|σᵢ)`
+        (`Finset.prod_image`-transport along injective σ), then
+        collapse the π-sum: enumerations of partitions' parts =
+        `IsOrdPartition` tuples (build the `Finpartition` FROM σ:
+        parts := image σ; `supIndep_iff_pairwiseDisjoint`,
+        `sup_eq_biUnion`, nonempty ⇒ `∅ ∉`; the ite-collapse idiom,
+        σ determines its π).
+  (iii) **The X-split (exact, bijective):** for σ with
+        `IsOrdPartition`, `m i := (σ i).card`:
+        `∑_{X : Fin N → P} ∏_i G_i(X ∘ emb_{σ i}) · (weights split)
+          = ∏_i ∑_{X_i : Fin (m i) → P} G_i(X_i)`
+        via `sum_nbij'` with restriction/assembly maps
+        (`Finset.prod_biUnion` splits `∏_j z(X j)` over the disjoint
+        cover).  After this the σ-dependence is SIZES ONLY.
+  (iv)  **The multinomial count (the genuine new content):**
+        `#{σ // IsOrdPartition σ ∧ ∀ i, |σ i| = m i} · ∏ (m i)! = N!`
+        — EQUALITY, via the explicit equivalence
+        `(Σ σ ∈ ordp(m), Π i, enumerations(σ i)) ≃ ((Σ i, Fin (m i)) ≃ Fin N)`:
+        forward = concatenation along `finSigmaFinEquiv`-offsets,
+        backward = per-interval images/restrictions; then
+        `Fintype.card_sigma` + `Fintype.card_piFinset` +
+        `card_enumerations` (= ∏ mᵢ!) on the left and
+        `Fintype.card_equiv` (= N!) on the right.  MINE
+        `card_blockData_mul_le`'s proof (SharpShell ~line 869) for the
+        placement-map machinery — it built the INJECTION half of this
+        equivalence already; the surjectivity half is new.
+  (v)   Fiber the σ-sum by the size vector (ite-collapse), apply (iv),
+        cancel `(1/N!)·N!/∏ mᵢ!` against the exp-side
+        `∏ 1/(f i + 1)!` at `m i = f i + 1` (blocks nonempty ⇒ sizes
+        ≥ 1 ⇔ the `n+1`-indexing of `clusterSum`'s tuples).
+  (vi)  Analytic shell (B0b-1/B0b-5): exp series + k-fold tsum Fubini
+        + the (k, m)-to-N regrouping of the double tsum; all
+        rearrangements by absolute convergence (`kp_convergence_sharp`
+        + termwise norm bounds).
+
+Budgets: (i)-(ii) 1–2 cycles; (iii) 1–2; (iv) 3–5 (the big one);
+(v) 1–2; (vi) 4–8.
 
 **(historical) Remaining-work list before the above was closed:**
 
