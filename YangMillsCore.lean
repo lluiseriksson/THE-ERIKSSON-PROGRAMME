@@ -72,6 +72,7 @@ import YangMills.L1_GibbsMeasure.WeightedGas
 import YangMills.L1_GibbsMeasure.TwoPlaquetteCorrelator
 import YangMills.L1_GibbsMeasure.EdgeFactorization
 import YangMills.L1_GibbsMeasure.WilsonLoopExpansion
+import YangMills.L1_GibbsMeasure.ExpActivityExpansion
 import YangMills.KP.PinnedCluster
 import YangMills.KP.PinnedWalk
 import YangMills.KP.PinnedBound
