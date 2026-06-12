@@ -963,6 +963,25 @@ them.  Remaining in R3: the assembly chain (banked weighted gate at
 `truncWeight` + `partition_eq_of_activity_eq_zero` + the activity
 congruence) into `Z_F = partition (gas w) (polymersIn F)`.
 
+**Addendum 17o (same day, R3 COMPLETE — THE RESTRICTED LATTICE
+GATE).**  Build green (8238 jobs), oracle clean:
+
+```
+'YangMills.restricted_weightedPartition_eq_partition'  [propext, Classical.choice, Quot.sound]
+```
+
+**`∫ ∏_{p∈F}(1+w_p) = Ξ_{gas(w)}(polymersIn F)`** — the
+region-restricted lattice partition function IS the polymer partition
+function over the `F`-polymers of the ORIGINAL gas, by the truncation
+device (truncate, apply the banked 3.2M-heartbeat gate unchanged, drop
+the vanished activities, restore the originals).  **R1 + R2 + R3: the
+`Z`-ratio machinery of V1 is COMPLETE** — every restricted `Z_F` is an
+`exp(clusterSum)` (R1), the log-ratio is a difference of cluster sums
+(R2a), bounded volume-free by the `Λᶜ`-pinned tilted tails (R2b).
+Remaining to close V1 outright: the lattice glue (instantiate at
+`Λ := polymersIn (farRegion es S₀)` with the banked tilted KP
+criterion) and the neighbourhood-geometry count.  All M3 lattice-side.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

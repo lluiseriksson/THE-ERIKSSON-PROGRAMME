@@ -149,4 +149,56 @@ theorem truncated_activity_eq
     = fun A => ∏ q ∈ c.1, w A q from funext hagree]
   rfl
 
+open Classical in
+/-- **R3 — THE REGION-RESTRICTED LATTICE GATE:** the region-restricted
+partition function is the polymer partition function over the
+`F`-polymers of the ORIGINAL weighted gas:
+
+`∫ ∏_{p∈F}(1+w_p) = Ξ_{gas(w)}(polymersIn F)`.
+
+Proof by the truncation device: truncate the weight, apply the banked
+full-volume gate, drop the vanished activities, restore the original
+activities on the `F`-polymers. -/
+theorem restricted_weightedPartition_eq_partition
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {w : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    (hloc : IsLocalWeight (d := d) (N := N) (G := G) w)
+    (hmeas : ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N G => w A p))
+    {δ : ℝ} (hbd : ∀ A p, |w A p| ≤ δ)
+    (F : Finset (ConcretePlaquette d N)) :
+    ((∫ A, ∏ p ∈ F, (1 + w A p)
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ) : ℝ) : ℂ)
+      = KP.partition (weightedLatticePolymerSystem (d := d) (N := N) μ w)
+          (Finset.univ.filter (fun c => c.1 ⊆ F)) := by
+  calc ((∫ A, ∏ p ∈ F, (1 + w A p)
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ) : ℝ) : ℂ)
+      = ((weightedPartition (d := d) (N := N) μ
+          (truncWeight w F) : ℝ) : ℂ) := by
+        unfold weightedPartition
+        congr 1
+        refine integral_congr_ae (Filter.Eventually.of_forall fun A => ?_)
+        exact prod_one_add_truncWeight w F A
+    _ = KP.partition (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (truncWeight w F)) Finset.univ :=
+        weightedPartition_eq_partition μ
+          (isLocalWeight_truncWeight hloc F)
+          (measurable_truncWeight hmeas F)
+          (truncWeight_bound hbd F)
+    _ = KP.partition (weightedLatticePolymerSystem (d := d) (N := N) μ
+          (truncWeight w F))
+          (Finset.univ.filter (fun c => c.1 ⊆ F)) :=
+        KP.partition_eq_of_activity_eq_zero _ _ fun c hc =>
+          truncated_activity_eq_zero μ w F c fun hsub =>
+            hc (Finset.mem_filter.mpr ⟨Finset.mem_univ _, hsub⟩)
+    _ = KP.partition (weightedLatticePolymerSystem (d := d) (N := N) μ w)
+          (Finset.univ.filter (fun c => c.1 ⊆ F)) := by
+        unfold KP.partition
+        refine Finset.sum_congr rfl fun S hS => ?_
+        refine Finset.prod_congr rfl fun X hX => ?_
+        have hXF : X.1 ⊆ F := by
+          have hS' := Finset.mem_powerset.mp (Finset.mem_filter.mp hS).1
+          exact (Finset.mem_filter.mp (hS' hX)).2
+        exact truncated_activity_eq μ w F X hXF
+
 end YangMills
