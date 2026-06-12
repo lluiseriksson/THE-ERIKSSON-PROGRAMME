@@ -515,6 +515,49 @@ theorem chainSupport_neg (s : P (d := d) (N := N) (G := G) → R) :
   exact Finset.filter_congr fun p _ => by simp
 
 open Classical in
+/-- **Non-vacuity of the area exponent:** a NONZERO spannable chain
+has `N`-ality area at least `1` — the empty surface spans only the
+zero chain.  (Unspannable chains carry the junk value `0`; the
+hypothesis `hspan` excludes them.) -/
+theorem one_le_chainAreaA {c : E (d := d) (N := N) (G := G) → R}
+    (hc : c ≠ 0)
+    (hspan : ∃ s : P (d := d) (N := N) (G := G) → R,
+      chainBoundary₂A (d := d) (N := N) (G := G) s = c) :
+    1 ≤ chainAreaA (d := d) (N := N) (G := G) c := by
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N) (G := G)
+  by_contra h
+  push_neg at h
+  interval_cases hA : chainAreaA (d := d) (N := N) (G := G) c
+  have h0 : (0 : ℕ) ∈ {n : ℕ | ∃ s : P (d := d) (N := N) (G := G) → R,
+      chainBoundary₂A (d := d) (N := N) (G := G) s = c ∧
+        (chainSupport (d := d) (N := N) (G := G) s).card = n} := by
+    obtain ⟨s₀, hs₀⟩ := hspan
+    have hne : {n : ℕ | ∃ s : P (d := d) (N := N) (G := G) → R,
+        chainBoundary₂A (d := d) (N := N) (G := G) s = c ∧
+          (chainSupport (d := d) (N := N) (G := G) s).card = n}.Nonempty :=
+      ⟨_, s₀, hs₀, rfl⟩
+    have := Nat.sInf_mem hne
+    rwa [show sInf {n : ℕ | ∃ s : P (d := d) (N := N) (G := G) → R,
+        chainBoundary₂A (d := d) (N := N) (G := G) s = c ∧
+          (chainSupport (d := d) (N := N) (G := G) s).card = n}
+      = chainAreaA (d := d) (N := N) (G := G) c from rfl, hA] at this
+  obtain ⟨s, hs, hcard⟩ := h0
+  have hs0 : s = 0 := by
+    funext p
+    by_contra hp
+    have hmem : p ∈ chainSupport (d := d) (N := N) (G := G) s := by
+      unfold chainSupport
+      exact Finset.mem_filter.mpr ⟨Finset.mem_univ p, hp⟩
+    rw [Finset.card_eq_zero] at hcard
+    rw [hcard] at hmem
+    exact absurd hmem (Finset.notMem_empty p)
+  apply hc
+  rw [← hs, hs0]
+  funext e
+  unfold chainBoundary₂A chainBoundary₂
+  simp
+
+open Classical in
 /-- **The `N`-ality area is orientation-blind:** negating the target
 chain — e.g. the sign mismatch between `loopChain C` and the chain
 equation's `−loopChain C` — does not change the area. -/
