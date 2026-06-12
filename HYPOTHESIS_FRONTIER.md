@@ -21,6 +21,18 @@
 >
 > See `docs/VERIFICATION-LEDGER.md` (addenda 1–10, seventeen oracle
 > lines in the final chain) for the machine-checked record.
+>
+> **UPDATE (2026-06-12).**  The AREA-LAW CAMPAIGN is COMPLETE
+> (ledger addenda 12–15; `docs/AREA-LAW-PLAN.md`): the finite-volume
+> area law `‖∫ (Re) tr(W_C)·∏(1+f_p)‖ ≤ N_c·2^{#P}·(2δN_c)^{Area(C)}`
+> is machine-checked for linearized activities with `2δN_c ≤ 1`,
+> `Area = chainAreaA (loopChain C)` over `ZMod N_c`, with non-vacuity
+> certified end to end (`one_le_chainAreaA_plaquette`: concrete
+> plaquette loops have area ≥ 1).  It carries NO hypothesis — fully
+> unconditional — and so does not change the frontier table above:
+> the §6.3 UV single-scale bound remains the SOLE carried hypothesis
+> of the M3 assembly.  Post-campaign refinements (volume-uniform
+> constant; exact Wilson activities) are recorded in the plan.
 
 ---
 
