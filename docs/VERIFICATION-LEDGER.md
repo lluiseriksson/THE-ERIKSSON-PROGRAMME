@@ -860,6 +860,21 @@ volume-free bound on `Z_{farRegion(S₀)}/Z` via the difference of
 cluster sums (clusters meeting the loop's neighbourhood) and the
 pinned KP tail.  All M3 lattice-side; M4/M5/Clay untouched.
 
+**Addendum 17i (same day, R1 partition transfer — `KP/Restriction.lean`
+enters the core).**  Build green (**8237 jobs**, +1 for the new
+module), oracle clean:
+
+```
+'YangMills.KP.partition_restrict'                      [propext, Classical.choice, Quot.sound]
+```
+
+`PolymerSystem.restrict P Λ` (polymers = `↥Λ`, inherited structure)
+with `partition P Λ = partition (P.restrict Λ) univ` — the
+volume-restricted Mayer inversion now reduces to the banked
+univ-version applied to the restricted system.  Remaining in R1: the
+`KPCriterion` transfer; then R2 (the cluster-sum difference) and R3
+(the restricted lattice gate).
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
