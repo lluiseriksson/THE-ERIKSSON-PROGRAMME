@@ -748,16 +748,18 @@ theorem integral_prod_trace_wilsonLine_eq_zero_of_sum_loopChain_ne_zero
 
 /-! ## The join (ii-final): surviving terms span — `T ≠ 0 ⇒ Area ≤ m` -/
 
-/-- **THE AREA-LAW JOIN:** if a strong-coupling expansion term — the
-Wilson loop times `m` σ-signed plaquette traces (conjugate choice =
-reversed list) — has NONZERO β = 0 Haar expectation, then the loop's
-`N`-ality area is at most `m`.  Pipeline: contraposition of the
-multi-line chain-side selection rule ⇒ the total chain vanishes at
-every positive edge ⇒ (orientation-oddness) everywhere ⇒ the
-antisymmetrized chain equation `∂₂A σ' = −loopChain C` with
-`supp σ' ⊆ image ps` ⇒ `chainAreaA_le_card_of_support_subset` +
-`chainAreaA_neg`. -/
-theorem chainAreaA_loopChain_le_of_integral_ne_zero
+open Classical in
+/-- **THE AREA-LAW JOIN (sharp form):** if a strong-coupling expansion
+term — the Wilson loop times `m` σ-signed plaquette traces (conjugate
+choice = reversed list) — has NONZERO β = 0 Haar expectation, then the
+loop's `N`-ality area is at most the number of DISTINCT plaquettes
+used (multiplicity-sharp: the input of the exact-activity campaign's
+E3).  Pipeline: contraposition of the multi-line chain-side selection
+rule ⇒ the total chain vanishes at every positive edge ⇒
+(orientation-oddness) everywhere ⇒ the antisymmetrized chain equation
+`∂₂A σ' = −loopChain C` with `supp σ' ⊆ image ps` ⇒
+`chainAreaA_le_card_of_support_subset` + `chainAreaA_neg`. -/
+theorem chainAreaA_loopChain_le_card_image_of_integral_ne_zero
     {m : ℕ} (es : List (ConcreteEdge d N))
     (ps : Fin m → FiniteLatticeGeometry.P (d := d) (N := N)
       (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
@@ -777,7 +779,8 @@ theorem chainAreaA_loopChain_le_of_integral_ne_zero
     chainAreaA (R := ZMod N_c) (d := d) (N := N)
         (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
         (loopChain (R := ZMod N_c) (d := d) (N := N)
-          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es) ≤ m := by
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+      ≤ (Finset.univ.image ps).card := by
   classical
   letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
     (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
@@ -922,7 +925,36 @@ theorem chainAreaA_loopChain_le_of_integral_ne_zero
   have hbound := chainAreaA_le_card_of_support_subset (d := d) (N := N)
     (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) heq hsupp
   rw [chainAreaA_neg] at hbound
-  refine le_trans hbound (le_trans Finset.card_image_le ?_)
+  exact hbound
+
+/-- **THE AREA-LAW JOIN** (multiplicity-blind form): surviving terms
+bound the area by the number of LINES.  Derived from the sharper
+image-card form; kept as the interface AL6-1 consumes. -/
+theorem chainAreaA_loopChain_le_of_integral_ne_zero
+    {m : ℕ} (es : List (ConcreteEdge d N))
+    (ps : Fin m → FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+    (σ : Fin m → Bool)
+    (hT : ∫ A, ∏ j : Fin (m + 1),
+        Matrix.trace (wilsonLine A
+          (Fin.cons (α := fun _ => List (ConcreteEdge d N)) es (fun i =>
+            if σ i
+            then plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)
+            else ((plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)).map
+                (FiniteLatticeGeometry.reverse (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))).reverse)
+            j)).val
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) ≠ 0) :
+    chainAreaA (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        (loopChain (R := ZMod N_c) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es) ≤ m := by
+  classical
+  refine le_trans
+    (chainAreaA_loopChain_le_card_image_of_integral_ne_zero es ps σ hT)
+    (le_trans Finset.card_image_le ?_)
   simp
 
 /-! ## AL6 enablers: bounds, measurability, integrability -/
