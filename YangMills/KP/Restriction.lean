@@ -636,4 +636,18 @@ theorem partition_eq_of_activity_eq_zero (P : PolymerSystem)
     obtain ⟨X, hXS, hXΛ⟩ := Finset.not_subset.mp hns
     exact Finset.prod_eq_zero hXS (hz X hXΛ)
 
+open Classical in
+/-- **The KP criterion is monotone in activity norms** (same polymers,
+same incompatibility): dominated activities inherit the criterion.
+This bridges the banked size-tilted lattice criteria to the uniform
+`scaleActivity` tilt that `tsum_offRegionClusterWeight_le` consumes. -/
+theorem KPCriterion.of_activity_norm_le {P : PolymerSystem}
+    [Fintype P.Polymer] {z₁ z₂ : P.Polymer → ℂ} {a : P.Polymer → ℝ}
+    (hz : ∀ c, ‖z₁ c‖ ≤ ‖z₂ c‖)
+    (h : KPCriterion { P with activity := z₂ } a) :
+    KPCriterion { P with activity := z₁ } a := by
+  refine ⟨h.1, fun X => ?_⟩
+  refine le_trans (Finset.sum_le_sum fun Y _ => ?_) (h.2 X)
+  exact mul_le_mul_of_nonneg_right (hz Y) (Real.exp_pos _).le
+
 end YangMills.KP
