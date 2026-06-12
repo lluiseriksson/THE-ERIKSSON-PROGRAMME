@@ -747,6 +747,25 @@ and `plaquettePosSupport_eq` is an outright Finset equality — so
 independence calculus now speak about the same sets.  Next: the
 regrouping identity (split `S` by components touching the loop).
 
+**Addendum 17c (same day, V0-2 closed — V0 COMPLETE).**  Build green
+(8236 jobs), oracle clean:
+
+```
+'YangMills.integral_wilson_obs_regroup'                [propext, Classical.choice, Quot.sound]
+'YangMills.near_far_support_disjoint'                  [propext, Classical.choice, Quot.sound]
+'YangMills.farLoop_disjoint_edgeSupport'               [propext, Classical.choice, Quot.sound]
+```
+
+**The component regrouping:** for any plaquette activities `f_p` local
+to their support, every powerset term of the loop-tagged expansion
+factorizes as
+`∫ φ(W_C)·∏_{p∈S} f_p = (∫ φ(W_C)·∏_{nearLoop es S} f_p)·(∫ ∏_{S∖nearLoop} f_p)`
+— `nearLoop` collects the `plaqComponents` of `S` touching the loop's
+edge support; far components are support-disjoint from both the loop
+and the near block (`plaqComponents_support_disjoint` + the V0-1
+independence).  V0 of `docs/AREA-LAW-VU-PLAN.md` is COMPLETE; the
+campaign's center of mass (V1, the `Z`-ratio cancellation) is next.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

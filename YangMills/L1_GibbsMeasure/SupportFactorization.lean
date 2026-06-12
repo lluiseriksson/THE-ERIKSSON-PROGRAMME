@@ -6,6 +6,7 @@ import Mathlib
 import YangMills.L1_GibbsMeasure.EdgeFactorization
 import YangMills.L1_GibbsMeasure.CenterInvariance
 import YangMills.L1_GibbsMeasure.PolymerExpansion
+import YangMills.L1_GibbsMeasure.ClusterGeometry
 import YangMills.ClayCore.WilsonLine
 import YangMills.L0_Lattice.ChainComplex
 
@@ -233,6 +234,117 @@ theorem integral_mul_prod_of_disjoint_support
   intro pe hpe
   rw [Finset.mem_compl]
   exact fun hmem => (Finset.disjoint_left.mp (hdisj i hi)) hmem hpe
+
+/-! ## V0-2: the component regrouping
+
+Split a plaquette set's activities by whether their touching component
+(`plaqComponents`, banked in `ClusterGeometry`) meets the loop's edge
+support; the far components factor out of the loop integral. -/
+
+open Classical in
+/-- The plaquettes of `S` whose touching component meets the loop's
+support — the part of a powerset term that stays coupled to `W_C`. -/
+noncomputable def nearLoop (es : List (ConcreteEdge d N))
+    (S : Finset (ConcretePlaquette d N)) :
+    Finset (ConcretePlaquette d N) :=
+  ((plaqComponents S).filter
+    (fun c => ∃ p ∈ c,
+      ¬ Disjoint (edgeSupport (d := d) (N := N) es) (plaquetteSupport p))).biUnion id
+
+open Classical in
+theorem nearLoop_subset (es : List (ConcreteEdge d N))
+    (S : Finset (ConcretePlaquette d N)) : nearLoop es S ⊆ S := by
+  intro p hp
+  rw [nearLoop, Finset.mem_biUnion] at hp
+  obtain ⟨c, hc, hpc⟩ := hp
+  exact plaqComponents_subset (Finset.mem_filter.mp hc).1 hpc
+
+open Classical in
+/-- Every plaquette of `S` lies in some touching component. -/
+theorem mem_plaqComponents_of_mem {S : Finset (ConcretePlaquette d N)}
+    {q : ConcretePlaquette d N} (hq : q ∈ S) :
+    ∃ c ∈ plaqComponents S, q ∈ c := by
+  rw [← plaqComponents_biUnion S, Finset.mem_biUnion] at hq
+  obtain ⟨c, hc, hqc⟩ := hq
+  exact ⟨c, hc, hqc⟩
+
+open Classical in
+/-- A plaquette outside `nearLoop` has support disjoint from the
+loop's. -/
+theorem farLoop_disjoint_edgeSupport {es : List (ConcreteEdge d N)}
+    {S : Finset (ConcretePlaquette d N)} {q : ConcretePlaquette d N}
+    (hq : q ∈ S) (hnear : q ∉ nearLoop es S) :
+    Disjoint (edgeSupport (d := d) (N := N) es) (plaquetteSupport q) := by
+  obtain ⟨c, hc, hqc⟩ := mem_plaqComponents_of_mem hq
+  by_contra hnd
+  exact hnear (Finset.mem_biUnion.mpr
+    ⟨c, Finset.mem_filter.mpr ⟨hc, ⟨q, hqc, hnd⟩⟩, hqc⟩)
+
+open Classical in
+/-- Near and far plaquettes have disjoint supports: they lie in
+DIFFERENT touching components, and distinct components are
+support-disjoint. -/
+theorem near_far_support_disjoint {es : List (ConcreteEdge d N)}
+    {S : Finset (ConcretePlaquette d N)} {p q : ConcretePlaquette d N}
+    (hp : p ∈ nearLoop es S) (hq : q ∈ S) (hqf : q ∉ nearLoop es S) :
+    Disjoint (plaquetteSupport p) (plaquetteSupport q) := by
+  rw [nearLoop, Finset.mem_biUnion] at hp
+  obtain ⟨cp, hcp, hpcp⟩ := hp
+  rw [Finset.mem_filter] at hcp
+  obtain ⟨cq, hcq, hqcq⟩ := mem_plaqComponents_of_mem hq
+  have hne : cp ≠ cq := by
+    rintro rfl
+    exact hqf (Finset.mem_biUnion.mpr
+      ⟨cp, Finset.mem_filter.mpr hcp, hqcq⟩)
+  exact (plaqComponents_support_disjoint hcp.1 hcq hne).mono
+    (Finset.subset_biUnion_of_mem plaquetteSupport hpcp)
+    (Finset.subset_biUnion_of_mem plaquetteSupport hqcq)
+
+open Classical in
+/-- **V0-2 — the component regrouping:** in any powerset term of the
+loop-tagged expansion, the activities of the components NOT touching
+the loop split off as an independent factor:
+
+`∫ φ(W_C)·∏_{p∈S} f_p = (∫ φ(W_C)·∏_{near} f_p) · (∫ ∏_{far} f_p)`. -/
+theorem integral_wilson_obs_regroup
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (φ : G → ℂ) (es : List (ConcreteEdge d N))
+    (f : ConcretePlaquette d N → GaugeConfig d N G → ℂ)
+    (hf : ∀ p, DependsOnPos (f p) (plaquetteSupport p))
+    (S : Finset (ConcretePlaquette d N)) :
+    ∫ A, φ (wilsonLine A es) * ∏ p ∈ S, f p A
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+      = (∫ A, φ (wilsonLine A es) * ∏ p ∈ nearLoop es S, f p A
+            ∂(gaugeMeasureFrom (d := d) (N := N) μ)) *
+        ∫ A, ∏ p ∈ S \ nearLoop es S, f p A
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+  classical
+  have hsplit : (fun A : GaugeConfig d N G =>
+      φ (wilsonLine A es) * ∏ p ∈ S, f p A)
+      = fun A => (φ (wilsonLine A es) * ∏ p ∈ nearLoop es S, f p A) *
+          ∏ p ∈ S \ nearLoop es S, f p A := by
+    funext A
+    rw [← Finset.prod_sdiff (nearLoop_subset es S)]
+    ring
+  rw [hsplit]
+  refine integral_mul_prod_of_disjoint_support μ (S \ nearLoop es S)
+    (fun A => φ (wilsonLine A es) * ∏ p ∈ nearLoop es S, f p A) f
+    (edgeSupport (d := d) (N := N) es ∪
+      (nearLoop es S).biUnion plaquetteSupport)
+    plaquetteSupport ?_ (fun q _ => hf q) ?_
+  · refine DependsOnPos.mul ?_ ?_
+    · exact (dependsOnPos_comp_wilsonLine φ es).mono
+        Finset.subset_union_left
+    · refine DependsOnPos.finset_prod _ _ _ fun p hp => ?_
+      exact (hf p).mono
+        ((Finset.subset_biUnion_of_mem plaquetteSupport hp).trans
+          Finset.subset_union_right)
+  · intro q hq
+    rw [Finset.mem_sdiff] at hq
+    rw [Finset.disjoint_union_left]
+    refine ⟨farLoop_disjoint_edgeSupport hq.1 hq.2, ?_⟩
+    rw [Finset.disjoint_biUnion_left]
+    exact fun p hp => near_far_support_disjoint hp hq.1 hq.2
 
 /-- The Wilson-loop instantiation of the V0 headline: a loop
 observable times activities supported away from the loop. -/

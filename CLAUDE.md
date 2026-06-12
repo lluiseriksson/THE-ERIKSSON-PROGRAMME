@@ -77,7 +77,9 @@ Lean; they save hours.
 * M3 assembly: IR side theorem-fed; the §6.3 Balaban UV single-scale
   bound is the **sole carried hypothesis**.
 * Live campaign: volume-uniform area-law constant —
-  `docs/AREA-LAW-VU-PLAN.md`.  V0-1 (support-disjoint factorization,
-  `L1_GibbsMeasure/SupportFactorization.lean`) is CLOSED (ledger
-  Addendum 17); next: the V0 component regrouping, then V1
-  (ratio cancellation against `Z`).
+  `docs/AREA-LAW-VU-PLAN.md`.  **V0 is COMPLETE** (ledger Addenda
+  17–17c; `L1_GibbsMeasure/SupportFactorization.lean`): the
+  `DependsOnPos` independence calculus, the `plaquettePosSupport`
+  bridge, and the component regrouping
+  `integral_wilson_obs_regroup`.  Next: V1 — the `Z`-ratio
+  cancellation (the campaign's center of mass).
