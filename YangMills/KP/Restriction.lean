@@ -666,4 +666,30 @@ theorem norm_exp_div_norm_exp_le (a b : ℂ) {C : ℝ}
   rw [show b - a = -(a - b) from by ring, norm_neg]
   exact h
 
+/-- **The normalized pinned bound (V2-3b mechanics):** dividing a
+pinned numerator bound by `Z = exp(ζ)` converts each far factor's norm
+into an exponential of the cluster-sum difference — the pure algebra
+of the `Z`-ratio cancellation. -/
+theorem norm_div_le_pinned_sum_exp {ι : Type*} (s : Finset ι)
+    (Num Z : ℂ) (ζ : ℂ) (ζf : ι → ℂ) (a : ι → ℝ) (C : ι → ℝ)
+    (ha : ∀ i ∈ s, 0 ≤ a i)
+    (hnum : ‖Num‖ ≤ ∑ i ∈ s, a i * ‖Complex.exp (ζf i)‖)
+    (hZ : Z = Complex.exp ζ)
+    (hdiff : ∀ i ∈ s, ‖ζ - ζf i‖ ≤ C i) :
+    ‖Num / Z‖ ≤ ∑ i ∈ s, a i * Real.exp (C i) := by
+  have hpos : (0 : ℝ) < ‖Complex.exp ζ‖ := by
+    rw [Complex.norm_exp]
+    exact Real.exp_pos _
+  rw [norm_div, hZ]
+  calc ‖Num‖ / ‖Complex.exp ζ‖
+      ≤ (∑ i ∈ s, a i * ‖Complex.exp (ζf i)‖) / ‖Complex.exp ζ‖ :=
+        (div_le_div_iff_of_pos_right hpos).mpr hnum
+    _ = ∑ i ∈ s, a i * (‖Complex.exp (ζf i)‖ / ‖Complex.exp ζ‖) := by
+        rw [Finset.sum_div]
+        exact Finset.sum_congr rfl fun i _ => by ring
+    _ ≤ ∑ i ∈ s, a i * Real.exp (C i) := by
+        refine Finset.sum_le_sum fun i hi => ?_
+        exact mul_le_mul_of_nonneg_left
+          (norm_exp_div_norm_exp_le ζ (ζf i) (hdiff i hi)) (ha i hi)
+
 end YangMills.KP
