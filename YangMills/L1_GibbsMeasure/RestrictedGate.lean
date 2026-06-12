@@ -5,6 +5,8 @@ Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.L1_GibbsMeasure.PolymerRepresentation
 import YangMills.L1_GibbsMeasure.SupportFactorization
+import YangMills.ClayCore.GaugeMarginal
+import YangMills.P8_PhysicalGap.SUN_StateConstruction
 import YangMills.KP.Restriction
 
 /-!
@@ -26,7 +28,7 @@ Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 
 namespace YangMills
 
-open MeasureTheory
+open MeasureTheory GaugeConfig
 
 variable {d N : ℕ} [NeZero d] [NeZero N] {G : Type*} [Group G] [MeasurableSpace G]
 
@@ -513,5 +515,50 @@ theorem card_compl_farRegion_le (es : List (ConcreteEdge d N))
           nsmul_eq_mul]
         push_cast
         ring
+
+open Classical in
+/-- Wilson lines are insensitive to configuration changes away from
+their edges, at the CONFIG level (the `IsLocalWeight` interface). -/
+theorem wilsonLine_congr_of_configToPos_eq
+    {A A' : GaugeConfig d N G} (es : List (ConcreteEdge d N))
+    (h : ∀ e ∈ es, configToPos A (ConcreteEdge.pos e)
+      = configToPos A' (ConcreteEdge.pos e)) :
+    wilsonLine A es = wilsonLine A' es := by
+  induction es with
+  | nil => rfl
+  | cons e tl ih =>
+      rw [wilsonLine_cons, wilsonLine_cons,
+        config_eval_eq_of_pos A A' e (h e List.mem_cons_self),
+        ih fun e' he' => h e' (List.mem_cons_of_mem _ he')]
+
+open Classical in
+/-- **The real linearized Wilson activity is a local weight (V2-3b′):**
+`w_p(A) := 2·Re(c_p · tr H_p)` reads only the plaquette's support —
+the form the restricted gate and the `Z`-ratio machinery consume. -/
+theorem isLocalWeight_reActivity (N_c : ℕ) [NeZero N_c]
+    (c : ConcretePlaquette d N → ℂ) :
+    IsLocalWeight (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+      (fun A p => (2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re) := by
+  intro p A A' h
+  have hW : wilsonLine A (plaquetteList (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)
+      = wilsonLine A' (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p) := by
+    refine wilsonLine_congr_of_configToPos_eq _ fun e he => h _ ?_
+    have hlist : e = p.edges 0 ∨ e = p.edges 1 ∨ e = p.edges 2
+        ∨ e = p.edges 3 := by
+      simpa [plaquetteList, List.mem_cons] using he
+    rcases hlist with rfl | rfl | rfl | rfl <;>
+      simp [plaquetteSupport, ConcreteEdge.pos]
+  show (2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re
+    = (2 : ℝ) * (c p * Matrix.trace (wilsonLine A'
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re
+  rw [hW]
 
 end YangMills
