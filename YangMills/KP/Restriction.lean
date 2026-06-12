@@ -176,4 +176,38 @@ theorem prod_activity_restrict {P : PolymerSystem} (Λ : Finset P.Polymer)
     ∏ i, (P.restrict Λ).activity (X i)
       = ∏ i, P.activity (X i).1 := rfl
 
+open Classical in
+/-- **The restricted cluster sum in ambient terms:** the cluster sum
+of `P.restrict Λ` is the ambient tuple-sum filtered to tuples valued
+in `Λ`.  The difference `clusterSum P − clusterSum (P.restrict Λ)` is
+therefore a sum over tuples MEETING `Λᶜ` — the R2 object. -/
+theorem clusterSum_restrict {P : PolymerSystem} [Fintype P.Polymer]
+    (Λ : Finset P.Polymer) :
+    clusterSum (P.restrict Λ)
+      = ∑' n : ℕ, (((n + 1).factorial : ℂ))⁻¹ *
+          ∑ X ∈ (Finset.univ :
+              Finset (Fin (n + 1) → P.Polymer)).filter
+              (fun X => ∀ i, X i ∈ Λ),
+            (ursell P X : ℂ) * ∏ i, P.activity (X i) := by
+  classical
+  unfold clusterSum
+  refine tsum_congr fun n => ?_
+  congr 1
+  refine Finset.sum_bij'
+    (fun X _ => fun k => (X k).1)
+    (fun X hX => fun k => ⟨X k, (Finset.mem_filter.mp hX).2 k⟩)
+    ?_ ?_ ?_ ?_ ?_
+  · intro X _
+    refine Finset.mem_filter.mpr ⟨Finset.mem_univ _, fun k => (X k).2⟩
+  · intro X _
+    exact Finset.mem_univ _
+  · intro X _
+    funext k
+    exact Subtype.ext rfl
+  · intro X _
+    funext k
+    rfl
+  · intro X _
+    rfl
+
 end YangMills.KP
