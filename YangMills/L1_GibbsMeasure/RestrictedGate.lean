@@ -642,4 +642,48 @@ theorem one_add_conjPair_eq_cast (N_c : ℕ) [NeZero N_c]
   push_cast
   ring
 
+open Classical in
+/-- **The far factor at the conjugate pair is the cast of the real
+restricted `Z` (V2-3b′ identification):** the ℂ-valued far factors of
+the loop-tagged expansion ARE the real restricted partition functions
+the gate machinery controls. -/
+theorem integral_conjPair_prod_eq_cast (N_c : ℕ) [NeZero N_c]
+    (μ : Measure (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+    [IsProbabilityMeasure μ]
+    (c : ConcretePlaquette d N → ℂ)
+    (F : Finset (ConcretePlaquette d N)) :
+    ∫ A, ∏ p ∈ F, ((1 : ℂ)
+        + (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + (starRingEnd ℂ) (c p) * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+      = ((∫ A, ∏ p ∈ F, (1 + (2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ) : ℝ) : ℂ) := by
+  have hpt : (fun A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      ∏ p ∈ F, ((1 : ℂ)
+        + (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + (starRingEnd ℂ) (c p) * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))))
+      = fun A => ∏ p ∈ F, ((1 : ℂ)
+          + (((2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re
+            : ℝ) : ℂ)) := by
+    funext A
+    refine Finset.prod_congr rfl fun p _ => ?_
+    rw [one_add_conjPair_eq_cast N_c c A p]
+    push_cast
+    ring
+  rw [hpt]
+  exact integral_prod_one_add_ofReal μ _ F
+
 end YangMills
