@@ -423,4 +423,26 @@ theorem offRegion_polymer_sum_le
           (x / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * x))) := by
         rw [Finset.sum_const, nsmul_eq_mul]
 
+open Classical in
+/-- **The ℝ↔ℂ bridge (V2 opening):** the far factors of the
+loop-tagged expansion (ℂ-valued) are the CASTS of the real restricted
+partition functions — so the `Z`-ratio bounds apply to them
+verbatim. -/
+theorem integral_prod_one_add_ofReal
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (w : GaugeConfig d N G → ConcretePlaquette d N → ℝ)
+    (F : Finset (ConcretePlaquette d N)) :
+    ∫ A, ∏ p ∈ F, ((1 : ℂ) + ((w A p : ℝ) : ℂ))
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+      = ((∫ A, ∏ p ∈ F, (1 + w A p)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ) : ℝ) : ℂ) := by
+  have hpt : (fun A : GaugeConfig d N G =>
+      ∏ p ∈ F, ((1 : ℂ) + ((w A p : ℝ) : ℂ)))
+      = fun A => (((∏ p ∈ F, (1 + w A p) : ℝ)) : ℂ) := by
+    funext A
+    push_cast
+    rfl
+  rw [hpt]
+  exact integral_complex_ofReal
+
 end YangMills
