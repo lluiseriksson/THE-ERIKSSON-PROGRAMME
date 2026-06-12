@@ -8,6 +8,7 @@ import YangMills.ClayCore.GaugeMarginal
 import YangMills.ClayCore.SchurEntryNAlitySelection
 import YangMills.L0_Lattice.ChainComplex
 import YangMills.L1_GibbsMeasure.GibbsMeasure
+import YangMills.L1_GibbsMeasure.WilsonLoopExpansion
 
 /-!
 # The Wilson loop as a sum of decorated entry monomials (AL4.5, J-1)
@@ -1294,5 +1295,243 @@ theorem norm_integral_trace_mul_prod_traces_le
     (MeasureTheory.ae_of_all _ fun A =>
       norm_trace_mul_prod_traces_le A es S T hTS)
   simpa using h
+
+/-! ## AL6-2b: THE FINITE-VOLUME AREA LAW -/
+
+open Classical in
+/-- **The finite-volume area law** for linearized activities: with
+plaquette couplings of size `≤ δ` and `2δN_c ≤ 1`, the full β-expanded
+Wilson-loop expectation obeys
+
+    `‖∫ tr(W_C)·∏_p(1 + cₚ·tr Hₚ + cₚ'·conj tr Hₚ)‖
+        ≤ N_c · 2^{#P} · (2δN_c)^{Area}`
+
+with `Area = chainAreaA (loopChain C)` the `N`-ality area.  Every
+sub-area term of the expansion vanishes EXACTLY
+(`integral_trace_mul_prod_traces_eq_zero`); the surviving terms are
+counted crudely (`2^{#P}`, finite volume) and bounded by
+`norm_integral_trace_mul_prod_traces_le`. -/
+theorem finite_volume_area_law
+    (es : List (ConcreteEdge d N)) (δ : ℝ) (hδ0 : 0 ≤ δ)
+    (c c' : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℂ)
+    (hc : ∀ p, ‖c p‖ ≤ δ) (hc' : ∀ p, ‖c' p‖ ≤ δ)
+    (hsmall : 2 * δ * (N_c : ℝ) ≤ 1) :
+    letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+    ‖∫ A, Matrix.trace (wilsonLine A es).val *
+        ∏ p, (1 + (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖
+      ≤ (N_c : ℝ) *
+          2 ^ (Fintype.card (FiniteLatticeGeometry.P (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))) *
+          (2 * δ * (N_c : ℝ)) ^ (chainAreaA (R := ZMod N_c) (d := d)
+            (N := N) (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+            (loopChain (R := ZMod N_c) (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)) := by
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+  set Ar := chainAreaA (R := ZMod N_c) (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+    (loopChain (R := ZMod N_c) (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es) with hAr
+  have hN0 : (0 : ℝ) ≤ (N_c : ℝ) := Nat.cast_nonneg _
+  have h2δN0 : (0 : ℝ) ≤ 2 * δ * (N_c : ℝ) := by positivity
+  -- the activity functions and their bounds
+  set f : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) →
+      GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℂ :=
+    fun p A => c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+      + c' p * star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)
+    with hf
+  have hfm : ∀ p, Measurable (f p) := by
+    intro p
+    exact ((measurable_trace_wilsonLine _).const_mul _).add
+      (((continuous_star.measurable).comp
+        (measurable_trace_wilsonLine _)).const_mul _)
+  have hfb : ∀ p A, ‖f p A‖ ≤ 2 * δ * (N_c : ℝ) := by
+    intro p A
+    have h1 : ‖c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val‖
+        ≤ δ * (N_c : ℝ) := by
+      rw [norm_mul]
+      exact mul_le_mul (hc p) (norm_trace_wilsonLine_le A _)
+        (norm_nonneg _) hδ0
+    have h2 : ‖c' p * star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)‖
+        ≤ δ * (N_c : ℝ) := by
+      rw [norm_mul, norm_star]
+      exact mul_le_mul (hc' p) (norm_trace_wilsonLine_le A _)
+        (norm_nonneg _) hδ0
+    calc ‖f p A‖ ≤ ‖c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val‖
+        + ‖c' p * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)‖ :=
+          norm_add_le _ _
+      _ ≤ 2 * δ * (N_c : ℝ) := by linarith
+  -- the powerset expansion
+  have hexp := integral_mul_prod_one_add
+    (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))
+    (Finset.univ)
+    (fun A => Matrix.trace (wilsonLine A es).val) f
+    (measurable_trace_wilsonLine es) (N_c : ℝ)
+    (fun A => norm_trace_wilsonLine_le A es)
+    hfm (2 * δ * (N_c : ℝ)) hfb
+  rw [show (fun A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      Matrix.trace (wilsonLine A es).val *
+        ∏ p, (1 + (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))))
+      = fun A => Matrix.trace (wilsonLine A es).val *
+          ∏ p, (1 + f p A) from rfl]
+  rw [hexp]
+  -- the per-S σ-split
+  have hA : ∀ S ∈ (Finset.univ : Finset (FiniteLatticeGeometry.P (d := d)
+      (N := N) (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))).powerset,
+      (∫ A, Matrix.trace (wilsonLine A es).val * ∏ p ∈ S, f p A
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)))
+      = ∑ T ∈ S.powerset,
+          ((∏ p ∈ T, c p) * ∏ p ∈ S \ T, c' p) *
+            ∫ A, Matrix.trace (wilsonLine A es).val *
+              ((∏ p ∈ T, Matrix.trace (wilsonLine A
+                  (plaquetteList (d := d) (N := N)
+                    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) *
+                ∏ p ∈ S \ T, star (Matrix.trace (wilsonLine A
+                  (plaquetteList (d := d) (N := N)
+                    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+              ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) := by
+    intro S _
+    have hpt : (fun A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+        Matrix.trace (wilsonLine A es).val * ∏ p ∈ S, f p A)
+        = fun A => ∑ T ∈ S.powerset,
+            ((∏ p ∈ T, c p) * ∏ p ∈ S \ T, c' p) *
+              (Matrix.trace (wilsonLine A es).val *
+                ((∏ p ∈ T, Matrix.trace (wilsonLine A
+                    (plaquetteList (d := d) (N := N)
+                      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) *
+                  ∏ p ∈ S \ T, star (Matrix.trace (wilsonLine A
+                    (plaquetteList (d := d) (N := N)
+                      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))) := by
+      funext A
+      simp only [hf]
+      rw [Finset.prod_add, Finset.mul_sum]
+      refine Finset.sum_congr rfl fun T _ => ?_
+      rw [Finset.prod_mul_distrib, Finset.prod_mul_distrib]
+      ring
+    rw [hpt]
+    rw [MeasureTheory.integral_finset_sum _ fun T hT =>
+      ((integrable_trace_mul_prod_traces es S T
+        (Finset.mem_powerset.mp hT)).const_mul _)]
+    exact Finset.sum_congr rfl fun T _ =>
+      MeasureTheory.integral_const_mul _ _
+  rw [Finset.sum_congr rfl hA]
+  -- triangle inequality, per-S classification, crude count
+  refine le_trans (norm_sum_le _ _) ?_
+  have hperS : ∀ S ∈ (Finset.univ : Finset (FiniteLatticeGeometry.P
+      (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))).powerset,
+      ‖∑ T ∈ S.powerset,
+        ((∏ p ∈ T, c p) * ∏ p ∈ S \ T, c' p) *
+          ∫ A, Matrix.trace (wilsonLine A es).val *
+            ((∏ p ∈ T, Matrix.trace (wilsonLine A
+                (plaquetteList (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) *
+              ∏ p ∈ S \ T, star (Matrix.trace (wilsonLine A
+                (plaquetteList (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+            ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖
+      ≤ (N_c : ℝ) * (2 * δ * (N_c : ℝ)) ^ Ar := by
+    intro S _
+    by_cases hS : S.card < Ar
+    · -- every term killed
+      rw [Finset.sum_eq_zero fun T hT => by
+        rw [integral_trace_mul_prod_traces_eq_zero es S T
+          (Finset.mem_powerset.mp hT) hS, mul_zero]]
+      simp only [norm_zero]
+      positivity
+    · push_neg at hS
+      refine le_trans (norm_sum_le _ _) ?_
+      have hterm : ∀ T ∈ S.powerset,
+          ‖((∏ p ∈ T, c p) * ∏ p ∈ S \ T, c' p) *
+            ∫ A, Matrix.trace (wilsonLine A es).val *
+              ((∏ p ∈ T, Matrix.trace (wilsonLine A
+                  (plaquetteList (d := d) (N := N)
+                    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) *
+                ∏ p ∈ S \ T, star (Matrix.trace (wilsonLine A
+                  (plaquetteList (d := d) (N := N)
+                    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+              ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖
+          ≤ δ ^ S.card * (N_c : ℝ) ^ (S.card + 1) := by
+        intro T hT
+        have hTS := Finset.mem_powerset.mp hT
+        rw [norm_mul, norm_mul]
+        have hcT : ‖∏ p ∈ T, c p‖ ≤ δ ^ T.card := by
+          rw [norm_prod]
+          calc ∏ p ∈ T, ‖c p‖ ≤ ∏ _p ∈ T, δ :=
+                Finset.prod_le_prod (fun _ _ => norm_nonneg _)
+                  (fun p _ => hc p)
+            _ = δ ^ T.card := Finset.prod_const _
+        have hcT' : ‖∏ p ∈ S \ T, c' p‖ ≤ δ ^ (S \ T).card := by
+          rw [norm_prod]
+          calc ∏ p ∈ S \ T, ‖c' p‖ ≤ ∏ _p ∈ S \ T, δ :=
+                Finset.prod_le_prod (fun _ _ => norm_nonneg _)
+                  (fun p _ => hc' p)
+            _ = δ ^ (S \ T).card := Finset.prod_const _
+        have hcards : T.card + (S \ T).card = S.card := by
+          rw [add_comm]
+          exact Finset.card_sdiff_add_card_eq_card hTS
+        calc ‖∏ p ∈ T, c p‖ * ‖∏ p ∈ S \ T, c' p‖ * _
+            ≤ (δ ^ T.card * δ ^ (S \ T).card) * (N_c : ℝ) ^ (S.card + 1) := by
+              refine mul_le_mul (mul_le_mul hcT hcT' (norm_nonneg _)
+                (by positivity)) (norm_integral_trace_mul_prod_traces_le
+                  es S T hTS) (norm_nonneg _) (by positivity)
+          _ = δ ^ S.card * (N_c : ℝ) ^ (S.card + 1) := by
+              rw [← pow_add, hcards]
+      calc (∑ T ∈ S.powerset, ‖_‖)
+          ≤ ∑ _T ∈ S.powerset, δ ^ S.card * (N_c : ℝ) ^ (S.card + 1) :=
+            Finset.sum_le_sum hterm
+        _ = 2 ^ S.card * (δ ^ S.card * (N_c : ℝ) ^ (S.card + 1)) := by
+            rw [Finset.sum_const, Finset.card_powerset, nsmul_eq_mul]
+            push_cast
+            ring
+        _ = (N_c : ℝ) * (2 * δ * (N_c : ℝ)) ^ S.card := by
+            rw [mul_pow, mul_pow, pow_succ]
+            ring
+        _ ≤ (N_c : ℝ) * (2 * δ * (N_c : ℝ)) ^ Ar := by
+            refine mul_le_mul_of_nonneg_left ?_ hN0
+            exact pow_le_pow_of_le_one h2δN0 hsmall hS
+  calc (∑ S ∈ (Finset.univ : Finset (FiniteLatticeGeometry.P (d := d)
+        (N := N) (G := ↥(Matrix.specialUnitaryGroup
+          (Fin N_c) ℂ)))).powerset, ‖_‖)
+      ≤ ∑ _S ∈ (Finset.univ : Finset (FiniteLatticeGeometry.P (d := d)
+          (N := N) (G := ↥(Matrix.specialUnitaryGroup
+            (Fin N_c) ℂ)))).powerset,
+          (N_c : ℝ) * (2 * δ * (N_c : ℝ)) ^ Ar :=
+        Finset.sum_le_sum hperS
+    _ = (N_c : ℝ) * 2 ^ (Fintype.card (FiniteLatticeGeometry.P (d := d)
+          (N := N) (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))) *
+        (2 * δ * (N_c : ℝ)) ^ Ar := by
+        rw [Finset.sum_const, Finset.card_powerset, Finset.card_univ,
+          nsmul_eq_mul]
+        push_cast
+        ring
 
 end YangMills

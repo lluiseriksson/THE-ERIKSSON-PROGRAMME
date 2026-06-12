@@ -319,7 +319,25 @@ bound: `‖∫ (S,T)-term‖ ≤ N_c^{|S|+1}`, via
 `norm_integral_le_of_norm_le_const`).  All oracle clean.  Together
 with AL6-1 every `(S,T)`-term is now classified: ZERO if `|S| <
 chainAreaA(loopChain C)`, else bounded by `N_c^{|S|+1}`.
-**Open (one brick):** AL6-2b — the final summation:
+**AL6-2b CLOSED — THE FINITE-VOLUME AREA LAW**
+(`WilsonLoopMonomial.lean`): **`finite_volume_area_law`** — for
+linearized activities `f_p = c_p·tr Hₚ + c_p'·conj tr Hₚ` with
+`‖c‖, ‖c'‖ ≤ δ` and `2δN_c ≤ 1`,
+
+    ‖∫ tr(W_C)·∏_p(1 + f_p) dμ_Haar‖
+        ≤ N_c · 2^{#P} · (2δN_c)^{chainAreaA(loopChain C)}.
+
+Oracle clean.  Constant is FINITE-VOLUME (`2^{#P}` from the crude
+subset count); volume-uniformity via the cluster machinery is the
+remaining refinement, NOT part of this campaign's promise.  The
+exponential decay in the `N`-ality area — the area law — is
+machine-checked end to end.  **THE CAMPAIGN'S MATHEMATICAL TARGET IS
+REACHED** (in linearized-activity, finite-volume form).
+**Refinements (post-campaign):** volume-uniform constant (connected-
+support resummation against `Z`), exact Wilson activities
+(exp-expansion beyond linear), `Re tr` observable form, and the
+non-vacuity window note (the hypothesis `2δN_c ≤ 1` is an explicit
+open coupling window; witnesses trivial).
 `⟨W_C⟩·Z = ∑_S T_S` via `integral_mul_prod_one_add` (+ the σ-binomial
 splitting of `∏(activities)` into the join's signed-trace terms),
 `|T_S| ≤ N_c^{|S|+1}·δ^{|S|}`-type bounds (banked

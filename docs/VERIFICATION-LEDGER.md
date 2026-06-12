@@ -619,6 +619,44 @@ high-novelty item) is hereby DISCHARGED; only AL6's quantitative
 entropy/tail assembly (banked patterns) separates the repo from
 `|⟨W_C⟩| ≤ C₀·r^{Area}`.
 
+## Addendum 15 (2026-06-12, THE FINITE-VOLUME AREA LAW)
+
+**Build:** `lake build YangMillsCore` — green (8234 jobs).
+**Source scan:** zero `sorry`/`axiom` (unchanged).
+
+Oracle outputs (verbatim, the AL6 ladder):
+
+```
+'YangMills.GaugeConfig.wilsonLine_reverse_list'        [propext, Quot.sound]
+'YangMills.star_trace_wilsonLine'                      [propext, Classical.choice, Quot.sound]
+'YangMills.norm_trace_wilsonLine_le'                   [propext, Classical.choice, Quot.sound]
+'YangMills.measurable_trace_wilsonLine'                [propext, Classical.choice, Quot.sound]
+'YangMills.integrable_prod_trace_wilsonLine'           [propext, Classical.choice, Quot.sound]
+'YangMills.integral_trace_mul_prod_traces_eq_zero'     [propext, Classical.choice, Quot.sound]
+'YangMills.integrable_trace_mul_prod_traces'           [propext, Classical.choice, Quot.sound]
+'YangMills.norm_integral_trace_mul_prod_traces_le'     [propext, Classical.choice, Quot.sound]
+'YangMills.finite_volume_area_law'                     [propext, Classical.choice, Quot.sound]
+```
+
+The headline (`finite_volume_area_law`): **for the SU(N_c) lattice
+gauge theory with linearized plaquette activities of size `≤ δ`,
+`2δN_c ≤ 1`, the Wilson-loop expectation obeys**
+
+    ‖∫ tr(W_C)·∏_p(1 + c_p·tr Hₚ + c_p'·conj tr Hₚ) dμ_Haar‖
+        ≤ N_c · 2^{#P} · (2δN_c)^{Area(C)},
+
+**with `Area(C) = chainAreaA (loopChain C)` the `N`-ality area over
+`ZMod N_c` — exponential decay in the minimal discrete spanning
+surface.**  Every sub-area expansion term vanishes EXACTLY (the
+join); survivors are bounded by `N_c^{|S|+1}` and counted.  The
+constant is finite-volume (`2^{#P}`); volume-uniformity is a
+post-campaign refinement.  The area-law campaign
+(`docs/AREA-LAW-PLAN.md`, AL1–AL6) is COMPLETE in this form: lattice
+chain complex, N-ality selection rules, the spanning-surface join,
+and the quantitative tail — all without Peter–Weyl, all
+unconditional.  All M3 lattice-side (Osterwalder–Seiler);
+M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
