@@ -350,4 +350,150 @@ theorem norm_clusterSum_sub_restrict_le (P : PolymerSystem)
   refine le_trans (norm_tsum_le_tsum_norm hnorm) ?_
   exact hnorm.tsum_le_tsum (fun n => norm_diffTerm_le P Λ n) hOff
 
+open Classical in
+/-- **R2(b3) — the index union bound:** the off-region weight is
+controlled by the pinned weights at the polymers OUTSIDE `Λ`: swap any
+escaping index to position 0 (`ursell` is permutation-invariant), then
+fiber over the pinned polymer. -/
+theorem offRegionClusterWeight_le_pinned (P : PolymerSystem)
+    [Fintype P.Polymer] (Λ : Finset P.Polymer) (n : ℕ) :
+    offRegionClusterWeight P Λ n
+      ≤ ((n : ℝ) + 1) * ∑ c ∈ Λᶜ, pinnedClusterWeight P c n := by
+  classical
+  unfold offRegionClusterWeight pinnedClusterWeight
+  set f : (Fin (n + 1) → P.Polymer) → ℝ :=
+    fun X => |((ursell P X : ℤ) : ℝ)| * ∏ i, ‖P.activity (X i)‖ with hf
+  have hf0 : ∀ X, 0 ≤ f X := fun X =>
+    mul_nonneg (abs_nonneg _) (Finset.prod_nonneg fun i _ => norm_nonneg _)
+  have hfswap : ∀ (σ : Equiv.Perm (Fin (n + 1)))
+      (X : Fin (n + 1) → P.Polymer), f (X ∘ σ) = f X := by
+    intro σ X
+    rw [hf]
+    simp only
+    rw [ursell_comp_equiv P X σ]
+    congr 1
+    exact Equiv.prod_comp σ (fun k => ‖P.activity (X k)‖)
+  have hidx : ∀ i : Fin (n + 1),
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → P.Polymer)).filter
+        (fun X => X i ∉ Λ), f X
+      = ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → P.Polymer)).filter
+          (fun Y => Y 0 ∉ Λ), f Y := by
+    intro i
+    refine Finset.sum_nbij' (i := fun X => X ∘ Equiv.swap 0 i)
+      (j := fun Y => Y ∘ Equiv.swap 0 i) ?_ ?_ ?_ ?_ ?_
+    · intro X hX
+      refine Finset.mem_filter.mpr ⟨Finset.mem_univ _, ?_⟩
+      show (X ∘ Equiv.swap 0 i) 0 ∉ Λ
+      have h0 : (X ∘ Equiv.swap 0 i) 0 = X i := by
+        simp [Function.comp, Equiv.swap_apply_left]
+      rw [h0]
+      exact (Finset.mem_filter.mp hX).2
+    · intro Y hY
+      refine Finset.mem_filter.mpr ⟨Finset.mem_univ _, ?_⟩
+      show (Y ∘ Equiv.swap 0 i) i ∉ Λ
+      have h0 : (Y ∘ Equiv.swap 0 i) i = Y 0 := by
+        simp [Function.comp, Equiv.swap_apply_right]
+      rw [h0]
+      exact (Finset.mem_filter.mp hY).2
+    · intro X _
+      funext k
+      simp [Function.comp, Equiv.swap_apply_self]
+    · intro Y _
+      funext k
+      simp [Function.comp, Equiv.swap_apply_self]
+    · intro X _
+      exact (hfswap _ X).symm
+  have hmain : ∑ X ∈ (Finset.univ :
+      Finset (Fin (n + 1) → P.Polymer)).filter
+      (fun X => ¬ ∀ i, X i ∈ Λ), f X
+      ≤ ((n : ℝ) + 1) * ∑ c ∈ Λᶜ,
+          ∑ Y ∈ (Finset.univ :
+            Finset (Fin (n + 1) → P.Polymer)).filter
+            (fun Y => Y 0 = c), f Y := by
+    calc ∑ X ∈ (Finset.univ :
+          Finset (Fin (n + 1) → P.Polymer)).filter
+          (fun X => ¬ ∀ i, X i ∈ Λ), f X
+        ≤ ∑ X ∈ (Finset.univ :
+            Finset (Fin (n + 1) → P.Polymer)).filter
+            (fun X => ¬ ∀ i, X i ∈ Λ),
+            ∑ i : Fin (n + 1), if X i ∉ Λ then f X else 0 := by
+          refine Finset.sum_le_sum fun X hX => ?_
+          obtain ⟨i₀, hi₀⟩ : ∃ i, X i ∉ Λ := by
+            have hm := (Finset.mem_filter.mp hX).2
+            push_neg at hm
+            exact hm
+          have hX0 : f X = if X i₀ ∉ Λ then f X else 0 := by
+            rw [if_pos hi₀]
+          refine le_trans (le_of_eq hX0) ?_
+          refine Finset.single_le_sum
+            (f := fun i => if X i ∉ Λ then f X else 0)
+            (fun i _ => ?_) (Finset.mem_univ i₀)
+          show (0 : ℝ) ≤ if X i ∉ Λ then f X else 0
+          split_ifs
+          · exact le_rfl
+          · exact hf0 X
+      _ ≤ ∑ X : Fin (n + 1) → P.Polymer,
+            ∑ i : Fin (n + 1), if X i ∉ Λ then f X else 0 := by
+          refine Finset.sum_le_sum_of_subset_of_nonneg
+            (Finset.filter_subset _ _) fun X _ _ => ?_
+          refine Finset.sum_nonneg fun i _ => ?_
+          show (0 : ℝ) ≤ if X i ∉ Λ then f X else 0
+          split_ifs
+          · exact le_rfl
+          · exact hf0 X
+      _ = ∑ i : Fin (n + 1), ∑ X : Fin (n + 1) → P.Polymer,
+            if X i ∉ Λ then f X else 0 := Finset.sum_comm
+      _ = ∑ i : Fin (n + 1), ∑ X ∈ (Finset.univ :
+            Finset (Fin (n + 1) → P.Polymer)).filter
+            (fun X => X i ∉ Λ), f X := by
+          refine Finset.sum_congr rfl fun i _ => ?_
+          exact (Finset.sum_filter _ _).symm
+      _ = ∑ _i : Fin (n + 1), ∑ Y ∈ (Finset.univ :
+            Finset (Fin (n + 1) → P.Polymer)).filter
+            (fun Y => Y 0 ∉ Λ), f Y :=
+          Finset.sum_congr rfl fun i _ => hidx i
+      _ = ((n : ℝ) + 1) * ∑ Y ∈ (Finset.univ :
+            Finset (Fin (n + 1) → P.Polymer)).filter
+            (fun Y => Y 0 ∉ Λ), f Y := by
+          rw [Finset.sum_const, Finset.card_univ, Fintype.card_fin,
+            nsmul_eq_mul]
+          push_cast
+          ring
+      _ = ((n : ℝ) + 1) * ∑ c ∈ Λᶜ,
+            ∑ Y ∈ (Finset.univ :
+              Finset (Fin (n + 1) → P.Polymer)).filter
+              (fun Y => Y 0 = c), f Y := by
+          congr 1
+          rw [← Finset.sum_fiberwise_of_maps_to (g := fun Y => Y 0)
+            (fun Y hY => Finset.mem_compl.mpr
+              (Finset.mem_filter.mp hY).2) f]
+          refine Finset.sum_congr rfl fun c hc => ?_
+          rw [Finset.filter_filter]
+          refine Finset.sum_congr ?_ fun _ _ => rfl
+          refine Finset.filter_congr fun Y _ => ?_
+          constructor
+          · exact fun h => h.2
+          · refine fun h => ⟨?_, h⟩
+            show Y 0 ∉ Λ
+            have h' : Y 0 = c := h
+            rw [h']
+            exact Finset.mem_compl.mp hc
+  calc (((n + 1).factorial : ℝ))⁻¹ * ∑ X ∈ (Finset.univ :
+        Finset (Fin (n + 1) → P.Polymer)).filter
+        (fun X => ¬ ∀ i, X i ∈ Λ), f X
+      ≤ (((n + 1).factorial : ℝ))⁻¹ * (((n : ℝ) + 1) * ∑ c ∈ Λᶜ,
+          ∑ Y ∈ (Finset.univ :
+            Finset (Fin (n + 1) → P.Polymer)).filter
+            (fun Y => Y 0 = c), f Y) :=
+        mul_le_mul_of_nonneg_left hmain (by positivity)
+    _ = ((n : ℝ) + 1) * ((((n + 1).factorial : ℝ))⁻¹ * ∑ c ∈ Λᶜ,
+          ∑ Y ∈ (Finset.univ :
+            Finset (Fin (n + 1) → P.Polymer)).filter
+            (fun Y => Y 0 = c), f Y) := by ring
+    _ = ((n : ℝ) + 1) * ∑ c ∈ Λᶜ, (((n + 1).factorial : ℝ))⁻¹ *
+          ∑ Y ∈ (Finset.univ :
+            Finset (Fin (n + 1) → P.Polymer)).filter
+            (fun Y => Y 0 = c), f Y := by
+        rw [Finset.mul_sum]
+
 end YangMills.KP

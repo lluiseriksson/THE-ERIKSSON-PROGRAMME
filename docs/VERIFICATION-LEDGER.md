@@ -909,6 +909,20 @@ the off-region weight tail (`norm_clusterSum_sub_restrict_le`):
 R2: render the right side volume-free via the swap-reindex union bound
 (`ursell_comp_equiv`) and the tilted pinned tails; then R3.
 
+**Addendum 17l (same day, R2(b3) — the union bound).**  Build green
+(8237 jobs), oracle clean:
+
+```
+'YangMills.KP.offRegionClusterWeight_le_pinned'        [propext, Classical.choice, Quot.sound]
+```
+
+`offRegionClusterWeight P Λ n ≤ (n+1)·∑_{c ∉ Λ} pinnedClusterWeight P c n`
+— every escaping tuple is charged to a pinned polymer OUTSIDE `Λ` by
+swapping its escaping index to position 0 (`ursell` is
+permutation-invariant) and fibering.  The `Z`-ratio exponent is now a
+sum over `Λᶜ`-pinned weights up to the `(n+1)` factor, which the
+tilted pinned tails absorb (R2(b4), the last analytic step of R2).
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
