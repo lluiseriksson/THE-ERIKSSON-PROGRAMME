@@ -427,6 +427,54 @@ theorem mem_nearLoop_iff_reachable {es : List (ConcreteEdge d N)}
         Finpartition.mem_part_ofSetoid_iff_rel.mpr hrr
       exact Finset.mem_image_of_mem _ hself
 
+open Classical in
+/-- **Walk confinement (V1-b step 2):** in the touching graph of a
+union `S₀ ∪ T` with NO cross-touching, a walk starting at a `T`-vertex
+never leaves `T`. -/
+theorem walk_confined {S₀ T : Finset (ConcretePlaquette d N)}
+    (hcross : ∀ q ∈ S₀, ∀ p ∈ T, ¬ plaquetteTouches q p)
+    {x y : ↥(S₀ ∪ T)}
+    (W : (SimpleGraph.fromRel (fun a b : ↥(S₀ ∪ T) =>
+      plaquetteTouches a.1 b.1)).Walk x y) :
+    x.1 ∈ T → y.1 ∈ T := by
+  induction W with
+  | nil => exact id
+  | @cons u v w h W ih =>
+      intro hu
+      refine ih ?_
+      rw [SimpleGraph.fromRel_adj] at h
+      obtain ⟨-, htouch⟩ := h
+      rcases Finset.mem_union.mp v.2 with hv | hv
+      · exfalso
+        rcases htouch with ht | ht
+        · exact hcross v.1 hv u.1 hu (fun hd => ht (Disjoint.symm hd))
+        · exact hcross v.1 hv u.1 hu ht
+      · exact hv
+
+open Classical in
+/-- **Walk lifting (V1-b step 3):** reachability in `S₀`'s touching
+graph transports to the union's graph along the inclusion. -/
+theorem reachable_union_of_reachable
+    {S₀ T : Finset (ConcretePlaquette d N)} {a b : ↥S₀}
+    (h : (SimpleGraph.fromRel (fun u v : ↥S₀ =>
+      plaquetteTouches u.1 v.1)).Reachable a b) :
+    (SimpleGraph.fromRel (fun u v : ↥(S₀ ∪ T) =>
+      plaquetteTouches u.1 v.1)).Reachable
+      ⟨a.1, Finset.mem_union_left T a.2⟩
+      ⟨b.1, Finset.mem_union_left T b.2⟩ := by
+  classical
+  exact h.map
+    (⟨fun a => ⟨a.1, Finset.mem_union_left T a.2⟩, by
+      intro a b hab
+      rw [SimpleGraph.fromRel_adj] at hab ⊢
+      refine ⟨fun h => hab.1 ?_, hab.2⟩
+      have h2 := congrArg Subtype.val h
+      exact Subtype.ext h2⟩ :
+      (SimpleGraph.fromRel (fun u v : ↥S₀ =>
+        plaquetteTouches u.1 v.1)) →g
+      (SimpleGraph.fromRel (fun u v : ↥(S₀ ∪ T) =>
+        plaquetteTouches u.1 v.1)))
+
 /-! ## V1 opening: the far resummation
 
 Summing the far factor of `integral_wilson_obs_regroup` over all far
