@@ -650,6 +650,134 @@ theorem sum_powerset_fiber (es : List (ConcreteEdge d N))
   · intro S _
     rw [Finset.union_sdiff_of_subset (nearLoop_subset es S)]
 
+open Classical in
+/-- Every component of a PINNED set touches the loop. -/
+theorem plaqComponents_touches_of_pinned {es : List (ConcreteEdge d N)}
+    {S₀ : Finset (ConcretePlaquette d N)} (hpin : nearLoop es S₀ = S₀)
+    {c : Finset (ConcretePlaquette d N)} (hc : c ∈ plaqComponents S₀) :
+    ∃ p ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+      (plaquetteSupport p) := by
+  obtain ⟨p, hp⟩ := plaqComponents_nonempty hc
+  have hpS : p ∈ S₀ := plaqComponents_subset hc hp
+  have hpN : p ∈ nearLoop es S₀ := by rw [hpin]; exact hpS
+  rw [nearLoop, Finset.mem_biUnion] at hpN
+  obtain ⟨c', hc', hpc'⟩ := hpN
+  rw [Finset.mem_filter] at hc'
+  have hceq : c = c' := by
+    by_contra hne
+    exact Finset.disjoint_left.mp
+      (plaqComponents_disjoint hc hc'.1 hne) hp hpc'
+  rw [hceq]
+  exact hc'.2
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **THE PINNED GAS RESUMMATION (V2-3c):** the σ-weighted sum over
+pinned sets is dominated by the independent product over the
+loop-touching connected polymers — components factorize the weight and
+the component family injects into the powerset.  Elementary: no
+cluster expansion needed. -/
+theorem sum_pinned_pow_le_prod (es : List (ConcreteEdge d N))
+    (σ : ℝ) (h0 : 0 ≤ σ) :
+    (∑ S₀ ∈ (Finset.univ :
+        Finset (ConcretePlaquette d N)).powerset.filter
+        (fun S₀ => nearLoop es S₀ = S₀),
+      σ ^ S₀.card)
+      ≤ ∏ c ∈ (Finset.univ :
+          Finset (Finset (ConcretePlaquette d N))).filter
+          (fun c => (c.Nonempty ∧ IsConnectedPolymer c) ∧
+            ∃ p ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+              (plaquetteSupport p)),
+        (1 + σ ^ c.card) := by
+  classical
+  have hfac : ∀ S₀ ∈ (Finset.univ :
+      Finset (ConcretePlaquette d N)).powerset.filter
+      (fun S₀ => nearLoop es S₀ = S₀),
+      σ ^ S₀.card = ∏ c ∈ plaqComponents S₀, σ ^ c.card := by
+    intro S₀ _
+    rw [Finset.prod_pow_eq_pow_sum]
+    congr 1
+    conv_lhs => rw [← plaqComponents_biUnion S₀]
+    exact Finset.card_biUnion fun c hc c' hc' hne =>
+      plaqComponents_disjoint hc hc' hne
+  have hinj : Set.InjOn plaqComponents
+      (((Finset.univ :
+        Finset (ConcretePlaquette d N)).powerset.filter
+        (fun S₀ => nearLoop es S₀ = S₀) :
+          Finset (Finset (ConcretePlaquette d N))) :
+        Set (Finset (ConcretePlaquette d N))) := by
+    intro S₀ _ S₀' _ heq
+    rw [← plaqComponents_biUnion S₀, ← plaqComponents_biUnion S₀', heq]
+  have hbin : (∏ c ∈ (Finset.univ :
+      Finset (Finset (ConcretePlaquette d N))).filter
+      (fun c => (c.Nonempty ∧ IsConnectedPolymer c) ∧
+        ∃ p ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+          (plaquetteSupport p)),
+      (1 + σ ^ c.card))
+      = ∑ T ∈ ((Finset.univ :
+          Finset (Finset (ConcretePlaquette d N))).filter
+          (fun c => (c.Nonempty ∧ IsConnectedPolymer c) ∧
+            ∃ p ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+              (plaquetteSupport p))).powerset,
+        ∏ c ∈ T, σ ^ c.card := by
+    have hcomm : ∀ c ∈ (Finset.univ :
+        Finset (Finset (ConcretePlaquette d N))).filter
+        (fun c => (c.Nonempty ∧ IsConnectedPolymer c) ∧
+          ∃ p ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+            (plaquetteSupport p)),
+        1 + σ ^ c.card = σ ^ c.card + 1 := fun _ _ => by ring
+    rw [Finset.prod_congr rfl hcomm, Finset.prod_add]
+    exact Finset.sum_congr rfl fun t _ => by
+      rw [Finset.prod_const_one, mul_one]
+  have hsub : ((Finset.univ :
+      Finset (ConcretePlaquette d N)).powerset.filter
+      (fun S₀ => nearLoop es S₀ = S₀)).image plaqComponents
+      ⊆ ((Finset.univ :
+        Finset (Finset (ConcretePlaquette d N))).filter
+        (fun c => (c.Nonempty ∧ IsConnectedPolymer c) ∧
+          ∃ p ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+            (plaquetteSupport p))).powerset := by
+    intro T hT
+    rw [Finset.mem_image] at hT
+    obtain ⟨S₀, hS₀, rfl⟩ := hT
+    rw [Finset.mem_powerset]
+    intro c hc
+    rw [Finset.mem_filter]
+    refine ⟨Finset.mem_univ _, ⟨plaqComponents_nonempty hc,
+      plaqComponents_isConnectedPolymer hc⟩, ?_⟩
+    exact plaqComponents_touches_of_pinned
+      (Finset.mem_filter.mp hS₀).2 hc
+  calc (∑ S₀ ∈ (Finset.univ :
+      Finset (ConcretePlaquette d N)).powerset.filter
+      (fun S₀ => nearLoop es S₀ = S₀), σ ^ S₀.card)
+      = (∑ S₀ ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).powerset.filter
+          (fun S₀ => nearLoop es S₀ = S₀),
+          ∏ c ∈ plaqComponents S₀, σ ^ c.card) :=
+        Finset.sum_congr rfl hfac
+    _ = (∑ T ∈ ((Finset.univ :
+          Finset (ConcretePlaquette d N)).powerset.filter
+          (fun S₀ => nearLoop es S₀ = S₀)).image plaqComponents,
+          ∏ c ∈ T, σ ^ c.card) :=
+        (Finset.sum_image
+          (f := fun T : Finset (Finset (ConcretePlaquette d N)) =>
+            ∏ c ∈ T, σ ^ c.card)
+          (g := plaqComponents) hinj).symm
+    _ ≤ (∑ T ∈ ((Finset.univ :
+          Finset (Finset (ConcretePlaquette d N))).filter
+          (fun c => (c.Nonempty ∧ IsConnectedPolymer c) ∧
+            ∃ p ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+              (plaquetteSupport p))).powerset,
+          ∏ c ∈ T, σ ^ c.card) :=
+        Finset.sum_le_sum_of_subset_of_nonneg hsub fun T _ _ =>
+          Finset.prod_nonneg fun c _ => pow_nonneg h0 _
+    _ = ∏ c ∈ (Finset.univ :
+          Finset (Finset (ConcretePlaquette d N))).filter
+          (fun c => (c.Nonempty ∧ IsConnectedPolymer c) ∧
+            ∃ p ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+              (plaquetteSupport p)), (1 + σ ^ c.card) :=
+        hbin.symm
+
 /-! ## V1 opening: the far resummation
 
 Summing the far factor of `integral_wilson_obs_regroup` over all far

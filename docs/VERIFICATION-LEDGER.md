@@ -1072,6 +1072,40 @@ instantiation).  Remaining for the campaign headline (V2-3c): pull
 gas into the perimeter prefactor `e^{c·|C|}`.  All M3 lattice-side;
 M4/M5/Clay untouched.
 
+## Addendum 17s (2026-06-12, V2-3c: THE PINNED GAS RESUMMATION —
+`∑_{pinned} σ^{#S₀} ≤ ∏_{loop-touching}(1+σ^{#c})`)
+
+**Build:** green (8238 jobs).  Oracle outputs (verbatim,
+`SupportFactorization.lean`):
+
+```
+'YangMills.plaqComponents_touches_of_pinned'  [propext, Classical.choice, Quot.sound]
+'YangMills.sum_pinned_pow_le_prod'            [propext, Classical.choice, Quot.sound]
+```
+
+**The pinned gas resums into a polymer-gas product over loop-touching
+connected components.**  `plaqComponents_touches_of_pinned`: every
+connected component of a pinned set (`nearLoop es S₀ = S₀`) contains a
+plaquette whose support meets the loop's edge support — pick `p ∈ c`,
+`p ∈ S₀ = nearLoop` lands `p` in a touching component `c'`, and
+component disjointness forces `c = c'`.  `sum_pinned_pow_le_prod`:
+
+    ∑_{S₀ pinned} σ^{#S₀}
+      ≤ ∏_{c connected, nonempty, loop-touching} (1 + σ^{#c})
+
+via (i) the per-pinned-set factorization `σ^{#S₀} = ∏_{c ∈
+plaqComponents S₀} σ^{#c}` (`card_biUnion` over the disjoint
+component family), (ii) injectivity of `plaqComponents` on pinned sets
+(the banked `plaqComponents_biUnion` reconstruction), (iii) the real
+binomial `∏(1+x_c) = ∑_{T ⊆ …} ∏ x_c`, and (iv) the image of pinned
+sets landing inside the powerset of loop-touching admissible polymers
+(nonemptiness + connectedness banked in V0; touching from the new
+lemma).  Elementary throughout — no KP, no measure theory.  Remaining
+for the headline: `∏(1+σ^{#c}) ≤ exp(∑ σ^{#c}) ≤ e^{c(d,δ,t)·|C|}`
+(the loop-edge charge + `sum_connectedPolymers_through_le`), then
+compose with Addendum 17r's pinned bound and the area split
+`sum_ite_pow_le`.  All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
