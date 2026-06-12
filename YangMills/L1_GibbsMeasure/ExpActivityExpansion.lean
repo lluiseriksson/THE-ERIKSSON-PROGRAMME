@@ -247,4 +247,96 @@ theorem tsum_pow_div_factorial_succ (x : ℝ) :
   simp only [pow_zero, Nat.factorial_zero, Nat.cast_one, div_one] at h
   linarith
 
+set_option maxHeartbeats 1000000 in
+open Classical in
+/-- **The per-`S` constrained factorized sum** (tail lemma, T1): the
+exponential weights summed over multiplicity functions occupying
+every plaquette of `S` factorize into `(e^x − 1)` per occupied
+plaquette and `e^x` per free one. -/
+theorem tsum_shifted_prod_pow_div_factorial {ι : Type*} [Fintype ι]
+    (x : ℝ) (hx : 0 ≤ x) (S : Finset ι) :
+    (∑' m : ι → ℕ, if ∀ p ∈ S, 1 ≤ m p
+        then ∏ i, x ^ (m i) / (Nat.factorial (m i) : ℝ) else 0)
+      = (Real.exp x - 1) ^ S.card
+          * Real.exp x ^ (Fintype.card ι - S.card) := by
+  classical
+  set φ : (ι → ℕ) → (ι → ℕ) :=
+    fun n i => if i ∈ S then n i + 1 else n i with hφ
+  have hφinj : Function.Injective φ := by
+    intro n n' h
+    funext i
+    have hi := congrFun h i
+    simp only [hφ] at hi
+    by_cases hiS : i ∈ S
+    · rw [if_pos hiS, if_pos hiS] at hi
+      omega
+    · rwa [if_neg hiS, if_neg hiS] at hi
+  have hsupp : Function.support (fun m : ι → ℕ =>
+      if ∀ p ∈ S, 1 ≤ m p
+        then ∏ i, x ^ (m i) / (Nat.factorial (m i) : ℝ) else 0)
+      ⊆ Set.range φ := by
+    intro m hm
+    have hcond : ∀ p ∈ S, 1 ≤ m p := by
+      by_contra hnot
+      exact hm (if_neg hnot)
+    refine ⟨fun i => if i ∈ S then m i - 1 else m i, ?_⟩
+    funext i
+    simp only [hφ]
+    by_cases hiS : i ∈ S
+    · rw [if_pos hiS, if_pos hiS]
+      have := hcond i hiS
+      omega
+    · rw [if_neg hiS, if_neg hiS]
+  have htrans := hφinj.tsum_eq hsupp
+  rw [← htrans]
+  have hterm : ∀ n : ι → ℕ,
+      (if ∀ p ∈ S, 1 ≤ φ n p
+        then ∏ i, x ^ (φ n i) / (Nat.factorial (φ n i) : ℝ) else 0)
+      = ∏ i, (if i ∈ S
+          then x ^ (n i + 1) / (Nat.factorial (n i + 1) : ℝ)
+          else x ^ (n i) / (Nat.factorial (n i) : ℝ)) := by
+    intro n
+    rw [if_pos (fun p hp => by simp [hφ, hp])]
+    refine Finset.prod_congr rfl fun i _ => ?_
+    by_cases hiS : i ∈ S
+    · simp only [hφ, if_pos hiS]
+    · simp only [hφ, if_neg hiS]
+  rw [tsum_congr hterm]
+  rw [← tsum_pi_prod_nonneg
+    (fun i k => if i ∈ S
+      then x ^ (k + 1) / (Nat.factorial (k + 1) : ℝ)
+      else x ^ k / (Nat.factorial k : ℝ))
+    (fun i k => by
+      dsimp only
+      by_cases hiS : i ∈ S
+      · rw [if_pos hiS]; positivity
+      · rw [if_neg hiS]; positivity)
+    (fun i => by
+      by_cases hiS : i ∈ S
+      · simp only [if_pos hiS]
+        exact (Real.summable_pow_div_factorial x).comp_injective
+          Nat.succ_injective
+      · simp only [if_neg hiS]
+        exact Real.summable_pow_div_factorial x)]
+  have hper : ∀ i : ι,
+      (∑' k : ℕ, (if i ∈ S
+        then x ^ (k + 1) / (Nat.factorial (k + 1) : ℝ)
+        else x ^ k / (Nat.factorial k : ℝ)))
+      = (if i ∈ S then Real.exp x - 1 else Real.exp x) := by
+    intro i
+    by_cases hiS : i ∈ S
+    · simp only [if_pos hiS]
+      exact tsum_pow_div_factorial_succ x
+    · simp only [if_neg hiS]
+      exact tsum_pow_div_factorial x
+  rw [Finset.prod_congr rfl fun i _ => hper i]
+  rw [Finset.prod_ite, Finset.prod_const, Finset.prod_const]
+  congr 1
+  · congr 1
+    rw [Finset.filter_mem_eq_inter, Finset.univ_inter]
+  · congr 1
+    rw [show Finset.univ.filter (fun i => i ∉ S) = Finset.univ \ S from
+      (Finset.sdiff_eq_filter _ _).symm]
+    rw [Finset.card_sdiff, Finset.inter_univ, Finset.card_univ]
+
 end YangMills
