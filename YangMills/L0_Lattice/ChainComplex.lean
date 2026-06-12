@@ -451,4 +451,71 @@ theorem chainAreaA_le_card_of_support_subset
   le_trans (chainAreaA_le (d := d) (N := N) (G := G) h)
     (Finset.card_le_card hsupp)
 
+open Classical in
+/-- **Reversing a Wilson path negates its chain** — traversing the
+list backwards with reversed edges (`conj tr U = tr U†` at the
+holonomy level) flips every signed incidence. -/
+theorem loopChain_reverse_list (l : List (E (d := d) (N := N) (G := G)))
+    (e : E (d := d) (N := N) (G := G)) :
+    loopChain (R := R) (d := d) (N := N) (G := G)
+        ((l.map (reverse (d := d) (N := N) (G := G))).reverse) e
+      = - loopChain (R := R) (d := d) (N := N) (G := G) l e := by
+  have hinj : Function.Injective (reverse (d := d) (N := N) (G := G)) :=
+    fun a b hab => by
+      rw [← reverse_involutive (d := d) (N := N) (G := G) a, hab,
+        reverse_involutive]
+  have h1 : ((l.map (reverse (d := d) (N := N) (G := G))).reverse).count e
+      = l.count (reverse (d := d) (N := N) (G := G) e) := by
+    rw [List.count_reverse]
+    conv_lhs => rw [← reverse_involutive (d := d) (N := N) (G := G) e]
+    exact List.count_map_of_injective l _ hinj _
+  have h2 : ((l.map (reverse (d := d) (N := N) (G := G))).reverse).count
+      (reverse (d := d) (N := N) (G := G) e) = l.count e := by
+    rw [List.count_reverse]
+    exact List.count_map_of_injective l _ hinj _
+  unfold loopChain
+  rw [h1, h2]
+  ring
+
+open Classical in
+/-- The antisymmetrized boundary is `R`-linear in the sign:
+`∂₂A(−s) = −∂₂A s`. -/
+theorem chainBoundary₂A_neg (s : P (d := d) (N := N) (G := G) → R) :
+    chainBoundary₂A (d := d) (N := N) (G := G) (fun p => - s p)
+      = fun e => - chainBoundary₂A (d := d) (N := N) (G := G) s e := by
+  funext e
+  unfold chainBoundary₂A chainBoundary₂
+  simp only [neg_mul, Finset.sum_neg_distrib]
+  ring
+
+open Classical in
+/-- Negating the coefficients preserves the support. -/
+theorem chainSupport_neg (s : P (d := d) (N := N) (G := G) → R) :
+    chainSupport (d := d) (N := N) (G := G) (fun p => - s p)
+      = chainSupport (d := d) (N := N) (G := G) s := by
+  unfold chainSupport
+  exact Finset.filter_congr fun p _ => by simp
+
+open Classical in
+/-- **The `N`-ality area is orientation-blind:** negating the target
+chain — e.g. the sign mismatch between `loopChain C` and the chain
+equation's `−loopChain C` — does not change the area. -/
+theorem chainAreaA_neg (c : E (d := d) (N := N) (G := G) → R) :
+    chainAreaA (d := d) (N := N) (G := G) (fun e => - c e)
+      = chainAreaA (d := d) (N := N) (G := G) c := by
+  unfold chainAreaA
+  congr 1
+  ext n
+  constructor
+  · rintro ⟨s, hs, hcard⟩
+    refine ⟨fun p => - s p, ?_, by
+      rw [chainSupport_neg (d := d) (N := N) (G := G), hcard]⟩
+    rw [chainBoundary₂A_neg (d := d) (N := N) (G := G), hs]
+    funext e
+    simp
+  · rintro ⟨s, hs, hcard⟩
+    refine ⟨fun p => - s p, ?_, by
+      rw [chainSupport_neg (d := d) (N := N) (G := G), hcard]⟩
+    rw [chainBoundary₂A_neg (d := d) (N := N) (G := G), hs]
+
 end YangMills

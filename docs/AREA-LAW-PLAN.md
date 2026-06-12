@@ -261,19 +261,27 @@ antisymmetrized chain equation.
 selection-rule output into it), `chainAreaA` (the `N`-ality area
 against `∂₂A`), `chainAreaA_le`, and the consumer
 `chainAreaA_le_card_of_support_subset`.  All oracle clean.
-**Open (the last two bricks):** (ii-end) the contrapositive
-statement itself — formalize the expansion term `T_S = ∫ tr(W_C)·
-∏_{p∈S}(σ-chosen plaquette traces)` (each σ-term IS a multi-line
-family via reversed lists for the conjugate choice — note `conj tr U
-= tr U†` and the reversed 4-edge list `[rev pe3, rev pe2, rev pe1,
-rev pe0]` has `loopChain = −loopChain(plaq list)`, supplying the
-`σ_p = −1` column), apply
-`integral_prod_trace_wilsonLine_eq_zero_of_sum_loopChain_ne_zero` +
-`loopChain_append`-style splitting of the family sum, conclude
-`T_S ≠ 0 → chainBoundary₂A (σ·indicator) = −loopChain C` →
-`chainAreaA (loopChain C) ≤ |S|` (sign via `chainAreaA` of negation —
-may need `chainAreaA_neg : chainAreaA (−c) = chainAreaA c`, trivial
-from `s ↦ −s`).  (iii) AL6: assemble `|⟨W_C⟩·Z| ≤ Σ_{|S| ≥ Area}
+**(ii-end) micro-bricks CLOSED** (`ChainComplex.lean`):
+`loopChain_reverse_list` (reversing a Wilson path — `(l.map
+reverse).reverse`, the holonomy of `tr U†` — negates its chain, via
+`List.count_reverse` + `count_map_of_injective`),
+`chainBoundary₂A_neg`, `chainSupport_neg`, `chainAreaA_neg` (the
+`N`-ality area is orientation-blind).  All oracle clean.  Every
+ingredient of the contrapositive now exists.
+**Open (the last two statements):** (ii-final) assemble the
+contrapositive: formalize `T_S` as the multi-line family
+`L : Fin (S.card + 1) → List` with `L 0 = loop C` and
+`L (j+1) = (σ-signed plaquette list)`, split
+`∑ⱼ loopChain (L j) = loopChain C + ∑_{plaq} (±plaquetteChainA)`
+(`Fin.sum_univ_succ`, `loopChain_plaquette_list`,
+`loopChain_reverse_list`, an `S.equivFin` reindex), apply the chain-
+side multi-line rule + the positive-edge determination (orientation-
+odd chains vanishing on positive edges vanish everywhere, via
+`loopChain_reverse`/`chainBoundary₂A`'s oddness + `sign`-flip of
+`reverse`), conclude `chainAreaA (loopChain C) ≤ S.card` via
+`chainAreaA_le_card_of_support_subset` + `chainAreaA_neg`.
+(iii) AL6: `|⟨W_C⟩·Z| ≤ Σ_{|S| ≥ Area} N_c·δ^{|S|}·entropy` via
+`integral_mul_prod_one_add` + banked tails + non-vacuity window.  (iii) AL6: assemble `|⟨W_C⟩·Z| ≤ Σ_{|S| ≥ Area}
 N_c·δ^{|S|}·entropy` via `integral_mul_prod_one_add` + banked tails +
 non-vacuity window.
 
