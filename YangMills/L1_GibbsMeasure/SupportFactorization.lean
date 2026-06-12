@@ -772,6 +772,33 @@ theorem integral_wilson_loop_tagged_expansion
     sum_integral_prod_eq_integral_prod_one_add μ f _
       (fun T _ => hint2 T)]
 
+open Classical in
+/-- The denominator's matching decomposition (the `φ = 1` instance):
+the partition function fibers over the SAME pinned sets, each term
+carrying the same restricted far partition function — the alignment
+the `Z`-ratio cancellation divides along. -/
+theorem partition_loop_tagged_expansion
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (es : List (ConcreteEdge d N))
+    (f : ConcretePlaquette d N → GaugeConfig d N G → ℂ)
+    (hf : ∀ p, DependsOnPos (f p) (plaquetteSupport p))
+    (hint : ∀ S : Finset (ConcretePlaquette d N),
+      Integrable (fun A => ∏ p ∈ S, f p A)
+        (gaugeMeasureFrom (d := d) (N := N) μ)) :
+    ∫ A, ∏ p : ConcretePlaquette d N, (1 + f p A)
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+      = ∑ S₀ ∈ (Finset.univ :
+            Finset (ConcretePlaquette d N)).powerset.filter
+            (fun S₀ => nearLoop es S₀ = S₀),
+          (∫ A, ∏ p ∈ S₀, f p A
+              ∂(gaugeMeasureFrom (d := d) (N := N) μ)) *
+          ∫ A, ∏ p ∈ farRegion es S₀, (1 + f p A)
+            ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+  have h := integral_wilson_loop_tagged_expansion μ
+    (fun _ => (1 : ℂ)) es f hf
+    (fun S => by simpa using hint S) hint
+  simpa using h
+
 /-- The Wilson-loop instantiation of the V0 headline: a loop
 observable times activities supported away from the loop. -/
 theorem integral_wilson_obs_mul_prod_split
