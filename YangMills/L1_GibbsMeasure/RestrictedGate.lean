@@ -6,6 +6,7 @@ import Mathlib
 import YangMills.L1_GibbsMeasure.PolymerRepresentation
 import YangMills.L1_GibbsMeasure.SupportFactorization
 import YangMills.ClayCore.GaugeMarginal
+import YangMills.ClayCore.WilsonLoopMonomial
 import YangMills.P8_PhysicalGap.SUN_StateConstruction
 import YangMills.KP.Restriction
 
@@ -560,5 +561,85 @@ theorem isLocalWeight_reActivity (N_c : ℕ) [NeZero N_c]
       (plaquetteList (d := d) (N := N)
         (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re
   rw [hW]
+
+open Classical in
+/-- The real linearized activity is measurable. -/
+theorem measurable_reActivity (N_c : ℕ) [NeZero N_c]
+    (c : ConcretePlaquette d N → ℂ) :
+    ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+        (2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re) :=
+  fun p => ((Complex.measurable_re.comp
+    ((measurable_trace_wilsonLine _).const_mul (c p))).const_mul 2)
+
+open Classical in
+/-- The real linearized activity is uniformly bounded by `2δN_c`. -/
+theorem reActivity_bound (N_c : ℕ) [NeZero N_c]
+    {δ : ℝ} (c : ConcretePlaquette d N → ℂ) (hc : ∀ p, ‖c p‖ ≤ δ) :
+    ∀ (A : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+      (p : ConcretePlaquette d N),
+      |(2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re|
+      ≤ 2 * δ * (N_c : ℝ) := by
+  intro A p
+  have hδ0 : (0 : ℝ) ≤ δ := le_trans (norm_nonneg (c p)) (hc p)
+  rw [abs_mul, abs_two]
+  have h1 := Complex.abs_re_le_norm (c p * Matrix.trace (wilsonLine A
+    (plaquetteList (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)
+  have h2 : ‖c p * Matrix.trace (wilsonLine A
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val‖
+      ≤ δ * (N_c : ℝ) := by
+    rw [norm_mul]
+    exact mul_le_mul (hc p) (norm_trace_wilsonLine_le A _)
+      (norm_nonneg _) hδ0
+  calc (2 : ℝ) * |(c p * Matrix.trace (wilsonLine A
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re|
+      ≤ 2 * (δ * (N_c : ℝ)) :=
+        mul_le_mul_of_nonneg_left (le_trans h1 h2) (by norm_num)
+    _ = 2 * δ * (N_c : ℝ) := by ring
+
+open Classical in
+/-- **The conjugate-pair activity is the cast of the real one:** at
+`c' = conj c`, the ℂ-activity factor of the loop-tagged expansion is
+the cast of `1 + w_p` — connecting V2-3a's complex form with the
+restricted gate's real form. -/
+theorem one_add_conjPair_eq_cast (N_c : ℕ) [NeZero N_c]
+    (c : ConcretePlaquette d N → ℂ)
+    (A : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+    (p : ConcretePlaquette d N) :
+    (1 : ℂ) + (c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+      + (starRingEnd ℂ) (c p) * star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+      = ((1 + (2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re
+          : ℝ) : ℂ) := by
+  have hpair : c p * Matrix.trace (wilsonLine A
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+      + (starRingEnd ℂ) (c p) * star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)
+      = (c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)
+      + (starRingEnd ℂ) (c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) := by
+    rw [map_mul]
+    rfl
+  rw [hpair, Complex.add_conj]
+  push_cast
+  ring
 
 end YangMills
