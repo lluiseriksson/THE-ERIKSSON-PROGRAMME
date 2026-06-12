@@ -242,4 +242,77 @@ theorem weighted_scale_kpCriterion
   nlinarith [hcard, hs,
     mul_nonneg hε0 (by linarith : (0 : ℝ) ≤ (c.1.card : ℝ) - 1)]
 
+open Classical in
+/-- **V1 — THE INSTANTIATED `Z`-RATIO BOUND** (the campaign's center
+of mass, assembled): at strong coupling, every region-restricted
+lattice partition function is `exp(clusterSum)` of the restricted gas,
+and the LOG-RATIO against the full `Z` is bounded by a sum over the
+polymers NOT contained in the region — volume-free when the region's
+complement is the loop's neighbourhood. -/
+theorem restricted_partition_log_ratio_bound
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {w : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    (hloc : IsLocalWeight (d := d) (N := N) (G := G) w)
+    (hmeas : ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N G => w A p))
+    {δ : ℝ} (hδ0 : 0 ≤ δ) (hbd : ∀ A p, |w A p| ≤ δ)
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ * Real.exp (t + ε + 1)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      ((δ * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (δ * Real.exp (t + ε + 1)))) ≤ t)
+    (F : Finset (ConcretePlaquette d N)) :
+    ((∫ A, ∏ p ∈ F, (1 + w A p)
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ) : ℝ) : ℂ)
+      = Complex.exp (KP.clusterSum
+          ((weightedLatticePolymerSystem (d := d) (N := N) μ w).restrict
+            (Finset.univ.filter (fun c => c.1 ⊆ F))))
+    ∧ ‖KP.clusterSum
+          (weightedLatticePolymerSystem (d := d) (N := N) μ w)
+        - KP.clusterSum
+          ((weightedLatticePolymerSystem (d := d) (N := N) μ w).restrict
+            (Finset.univ.filter (fun c => c.1 ⊆ F)))‖
+      ≤ ∑ c ∈ (Finset.univ.filter
+            (fun c : (weightedLatticePolymerSystem (d := d) (N := N) μ
+              w).Polymer => c.1 ⊆ F))ᶜ,
+          Real.exp 1 *
+            ‖(weightedLatticePolymerSystem (d := d) (N := N) μ
+              w).activity c‖ *
+            Real.exp (t * (c.1.card : ℝ)) := by
+  classical
+  have hscale1 := weighted_scale_kpCriterion μ hδ0 hbd t ε 1 ht0 hε0
+    (by linarith) hr hsmall
+  have hcrit : KP.KPCriterion
+      (weightedLatticePolymerSystem (d := d) (N := N) μ w)
+      (fun c => t * (c.1.card : ℝ)) := by
+    refine KP.KPCriterion.of_activity_norm_le
+      (z₂ := fun c : (weightedLatticePolymerSystem (d := d) (N := N) μ
+          w).Polymer =>
+        ((Real.exp 1 : ℝ) : ℂ) *
+          (weightedLatticePolymerSystem (d := d) (N := N) μ
+            w).activity c)
+      ?_ hscale1
+    intro c
+    rw [norm_mul]
+    refine le_mul_of_one_le_left (norm_nonneg _) ?_
+    rw [Complex.norm_real, Real.norm_eq_abs, abs_of_pos (Real.exp_pos _)]
+    exact Real.one_le_exp (zero_le_one (α := ℝ))
+  constructor
+  · calc ((∫ A, ∏ p ∈ F, (1 + w A p)
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ) : ℝ) : ℂ)
+        = KP.partition
+            (weightedLatticePolymerSystem (d := d) (N := N) μ w)
+            (Finset.univ.filter (fun c => c.1 ⊆ F)) :=
+          restricted_weightedPartition_eq_partition μ hloc hmeas hbd F
+      _ = Complex.exp (KP.clusterSum
+            ((weightedLatticePolymerSystem (d := d) (N := N) μ
+              w).restrict
+              (Finset.univ.filter (fun c => c.1 ⊆ F)))) :=
+          KP.partition_eq_exp_clusterSum_restrict hcrit _
+  · refine le_trans (KP.norm_clusterSum_sub_restrict_le _ hcrit _) ?_
+    refine le_trans (KP.tsum_offRegionClusterWeight_le _ 1 one_pos
+      hscale1 _) (le_of_eq ?_)
+    rw [inv_one, one_mul]
+
 end YangMills

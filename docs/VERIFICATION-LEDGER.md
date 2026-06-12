@@ -982,6 +982,31 @@ Remaining to close V1 outright: the lattice glue (instantiate at
 `Λ := polymersIn (farRegion es S₀)` with the banked tilted KP
 criterion) and the neighbourhood-geometry count.  All M3 lattice-side.
 
+**Addendum 17p (same day, THE V1 CAPSTONE — the instantiated
+`Z`-ratio bound).**  Build green (8238 jobs), oracle clean:
+
+```
+'YangMills.KP.KPCriterion.of_activity_norm_le'         [propext, Classical.choice, Quot.sound]
+'YangMills.weighted_scale_kpCriterion'                 [propext, Classical.choice, Quot.sound]
+'YangMills.restricted_partition_log_ratio_bound'       [propext, Classical.choice, Quot.sound]
+```
+
+**The `Z`-ratio cancellation is assembled at the lattice.**  For the
+weighted gas at strong coupling (the banked volume-uniform window in
+`d, δ, t, ε`), for EVERY plaquette region `F`:
+
+    Z_F = exp(clusterSum(gas|_{polymersIn F}))   and
+    ‖log Z − log Z_F‖ ≤ ∑_{c ⊄ F} e·‖z(c)‖·e^{t·|c|}
+
+— the log-ratio of the full and region-restricted partition functions
+is bounded by a sum over the polymers NOT contained in `F` alone.
+Instantiated at `F := farRegion es S₀`, the right side runs over
+polymers meeting the loop's neighbourhood — the volume-free quantity
+the campaign was built to reach.  What remains of V1 is bookkeeping
+(the neighbourhood polymer count via `ConnectedEntropy`); V2 (the
+pinned area tail) then closes the campaign.  All M3 lattice-side;
+M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
