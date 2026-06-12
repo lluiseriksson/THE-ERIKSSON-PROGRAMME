@@ -292,10 +292,11 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   N_c·e^{#loopSupp·4d·K}·σ^{Area(C)}·e^{#loopSupp·4d·S(σ)}` —
   area decay, perimeter-only prefactor, EVERY constant
   volume-free (`Z` cancelled through the restricted cluster
-  expansion).  Non-vacuity audited (17t).  Carried: the two
-  integrability hypothesis families of finite products.  Next
-  frontiers: discharge the integrability families at the Haar
-  instantiation; V4 (exact-ℂ activities);
+  expansion).  Non-vacuity audited (17t).  The integrability
+  families are DISCHARGED (17u):
+  `normalized_wilson_loop_area_law_unconditional` carries only
+  explicit smallness/geometry hypotheses.  Next
+  frontiers: V4 (exact-ℂ activities);
   Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
   single-scale UV estimate (class-C, outside the current plan).
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the

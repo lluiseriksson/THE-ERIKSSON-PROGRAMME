@@ -81,11 +81,12 @@ Lean; they save hours.
   `‖(∫ tr W_C·∏(1+f))/Z‖ ≤
   N_c·e^{#loopSupp·4d·K}·σ^{Area(C)}·e^{#loopSupp·4d·S(σ)}`,
   every constant volume-free, `Z` cancelled through the restricted
-  cluster expansion; non-vacuity audited (Addendum 17t).  Carried:
-  two integrability hypothesis families (finite products; standard).
+  cluster expansion; non-vacuity audited (Addendum 17t).  The
+  integrability families are DISCHARGED (Addendum 17u):
+  `normalized_wilson_loop_area_law_unconditional` carries only
+  explicit, jointly satisfiable smallness/geometry hypotheses.
 * M3 assembly: IR side theorem-fed; the §6.3 Balaban UV single-scale
   bound is the **sole carried hypothesis**.
-* Next frontiers (pick highest-leverage): discharge the integrability
-  families at the Haar instantiation (closes the VU headline
-  hypothesis-free on the lattice side); V4 exact-ℂ activities;
-  Peter–Weyl; the §6.3 UV bound.
+* Next frontiers (pick highest-leverage): V4 exact-ℂ activities
+  (the VU law for the true Wilson factor `∏exp(z_p)`); Peter–Weyl;
+  the §6.3 UV bound.

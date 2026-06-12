@@ -1150,6 +1150,28 @@ integrability families of finite products (standard, discharged at
 instantiation — same status as 17r).  All M3 lattice-side;
 M4/M5/Clay untouched.
 
+## Addendum 17u (2026-06-12, **THE INTEGRABILITY FAMILIES DISCHARGED —
+`normalized_wilson_loop_area_law_unconditional`**)
+
+**Build:** green (8238 jobs).  Oracle outputs (verbatim,
+`RestrictedGate.lean`):
+
+```
+'YangMills.integrable_conjPair_prod'                       [propext, Classical.choice, Quot.sound]
+'YangMills.integrable_trace_mul_conjPair_prod'             [propext, Classical.choice, Quot.sound]
+'YangMills.normalized_wilson_loop_area_law_unconditional'  [propext, Classical.choice, Quot.sound]
+```
+
+The two integrability hypothesis families carried since 17r are now
+THEOREMS: the integrands are measurable (the banked decorated
+expansion `measurable_trace_wilsonLine`) and uniformly bounded
+(`norm_trace_wilsonLine_le` through finite products — no smallness
+needed, any `c, c'`), hence integrable on the Haar probability space
+(`Integrable.bdd_mul`).  **The volume-uniform area law now carries NO
+hypothesis families** — every remaining hypothesis is an explicit,
+jointly satisfiable smallness/geometry condition (the 17t witness).
+All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

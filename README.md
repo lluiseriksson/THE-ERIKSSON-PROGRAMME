@@ -47,9 +47,10 @@ prefactor, uniformly over all finite lattices. The partition function is
 cancelled through a fully formalized volume-restricted cluster expansion
 (loop-tagged factorization, restricted Mayer inversion, Z-ratio bounds, pinned
 gas resummation — [`docs/AREA-LAW-VU-PLAN.md`](docs/AREA-LAW-VU-PLAN.md), all
-bricks closed). The hypothesis window is non-empty (ledger Addendum 17t);
-integrability of the finite products is carried as two explicit hypothesis
-families.
+bricks closed). The hypothesis window is non-empty (ledger Addendum 17t), and
+the integrability inputs are theorems, not hypotheses
+(`normalized_wilson_loop_area_law_unconditional`, Addendum 17u): every
+remaining hypothesis is an explicit smallness or geometry condition.
 
 ### 1. The exact-activity Wilson-loop area law
 
