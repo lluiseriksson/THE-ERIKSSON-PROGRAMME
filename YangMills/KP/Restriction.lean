@@ -156,4 +156,24 @@ theorem partition_eq_exp_clusterSum_restrict {P : PolymerSystem}
   rw [partition_restrict P Λ]
   exact partition_eq_exp_clusterSum_of_kp _ (h.restrict Λ)
 
+/-! ## R2 substrate: cluster data transports along the restriction -/
+
+/-- The incompatibility graph of a restricted tuple is the ambient
+incompatibility graph of its value tuple. -/
+theorem incompGraph_restrict {P : PolymerSystem} (Λ : Finset P.Polymer)
+    {n : ℕ} (X : Fin n → (P.restrict Λ).Polymer) :
+    incompGraph (P.restrict Λ) X = incompGraph P (fun i => (X i).1) := rfl
+
+/-- Ursell coefficients transport along the restriction (they read
+only the incompatibility graph). -/
+theorem ursell_restrict {P : PolymerSystem} (Λ : Finset P.Polymer)
+    {n : ℕ} (X : Fin n → (P.restrict Λ).Polymer) :
+    ursell (P.restrict Λ) X = ursell P (fun i => (X i).1) := rfl
+
+/-- Activity products transport along the restriction. -/
+theorem prod_activity_restrict {P : PolymerSystem} (Λ : Finset P.Polymer)
+    {n : ℕ} (X : Fin n → (P.restrict Λ).Polymer) :
+    ∏ i, (P.restrict Λ).activity (X i)
+      = ∏ i, P.activity (X i).1 := rfl
+
 end YangMills.KP
