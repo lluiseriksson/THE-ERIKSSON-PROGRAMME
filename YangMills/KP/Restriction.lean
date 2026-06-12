@@ -610,4 +610,30 @@ theorem tsum_offRegionClusterWeight_le (P : PolymerSystem)
   rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
     abs_of_pos (Real.exp_pos t)]
 
+open Classical in
+/-- **Vanishing activities drop from the partition function:** if the
+activities vanish off `Λ`, the full-volume partition function IS the
+`Λ`-restricted one.  This is the R3 truncation device: the
+region-restricted lattice `Z` is the FULL weighted partition of the
+truncated weight `w·1_F`, and this lemma collapses the truncated gas
+to the `F`-polymers. -/
+theorem partition_eq_of_activity_eq_zero (P : PolymerSystem)
+    [Fintype P.Polymer] (Λ : Finset P.Polymer)
+    (hz : ∀ X, X ∉ Λ → P.activity X = 0) :
+    partition P (Finset.univ : Finset P.Polymer) = partition P Λ := by
+  classical
+  unfold partition
+  refine (Finset.sum_subset ?_ ?_).symm
+  · intro S hS
+    rw [Finset.mem_filter, Finset.mem_powerset] at hS
+    exact Finset.mem_filter.mpr
+      ⟨Finset.mem_powerset.mpr (Finset.subset_univ _), hS.2⟩
+  · intro S hS hSnot
+    rw [Finset.mem_filter, Finset.mem_powerset] at hS
+    have hns : ¬ S ⊆ Λ := fun hsub =>
+      hSnot (Finset.mem_filter.mpr
+        ⟨Finset.mem_powerset.mpr hsub, hS.2⟩)
+    obtain ⟨X, hXS, hXΛ⟩ := Finset.not_subset.mp hns
+    exact Finset.prod_eq_zero hXS (hz X hXΛ)
+
 end YangMills.KP
