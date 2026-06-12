@@ -657,6 +657,47 @@ and the quantitative tail — all without Peter–Weyl, all
 unconditional.  All M3 lattice-side (Osterwalder–Seiler);
 M4/M5/Clay untouched.
 
+## Addendum 16 (2026-06-12, THE EXACT-ACTIVITY AREA LAW — campaign
+complete)
+
+**Build:** `lake build YangMillsCore` — green (8235 jobs; the
+`ExpActivityExpansion` module entered the core with the previous
+commit and the count is unchanged by this one).
+**Source scan:** zero `sorry`/`axiom` (unchanged).
+
+Oracle outputs (verbatim, the exact-activity ladder,
+`YangMills/ClayCore/WilsonLoopMonomial.lean` +
+`YangMills/L1_GibbsMeasure/ExpActivityExpansion.lean`):
+
+```
+'YangMills.norm_integral_exp_term_le'                  [propext, Classical.choice, Quot.sound]
+'YangMills.finite_volume_area_law_exp'                 [propext, Classical.choice, Quot.sound]
+```
+
+**What is now machine-checked, headline form: for SU(N_c) lattice
+gauge theory with the TRUE Wilson Boltzmann factor — activities
+`exp(zₚ)`, `zₚ = c_p·tr Hₚ + c_p'·conj tr Hₚ`, `‖c_p‖,‖c_p'‖ ≤ δ`,
+ANY `δ ≥ 0` (no smallness hypothesis) —**
+
+    ‖∫ tr(W_C)·∏_p exp(zₚ) dμ_Haar‖
+        ≤ N_c · 2^{#P} · (e^{2δN_c}−1)^{Area(C)} · (e^{2δN_c})^{#P},
+
+**with `Area(C) = chainAreaA (loopChain C)` the `N`-ality area over
+`ZMod N_c`.**  At Wilson-action coupling (`c_p = c_p' = β/(2N_c)`,
+i.e. `2δN_c = β`) the bound is
+`N_c·2^{#P}·(e^β−1)^{Area}·e^{β·#P}` — genuine area-law decay for
+`β < ln 2`, recovering the linearized law `(2δN_c)^{Area}` to first
+order.  Route (all bricks oracle-clean, `docs/AREA-LAW-EXACT-PLAN.md`
+E1–E4b-2): pointwise exp-series (Pi-Cauchy product) → dominated
+`∫↔∑'` interchange → per-multiplicity dichotomy (binomial split +
+the multiplicity join kill below the area; direct `(2δN_c)^{Σm}/m!`
+bound above it) → exact per-surface tail factorization
+`(e^x−1)^{#S}·(e^x)^{#P−#S}` with the `powersetCard` union bound.
+The exact-activity campaign is COMPLETE; the surviving refinements
+(volume-uniform constant via connected-support resummation;
+Peter–Weyl proper) are recorded, not promised.  All M3 lattice-side
+(Osterwalder–Seiler); M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

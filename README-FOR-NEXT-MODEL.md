@@ -266,10 +266,21 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   full supporting ladder (β=0 selection rules, the spanning join
   `chainAreaA_loopChain_le_of_integral_ne_zero`, the per-term
   kill/bound dichotomy).  Honest caveats: finite-volume constant
-  (`2^{#P}`), linearized activities.  **Post-campaign refinements
-  (next high-leverage targets):** volume-uniform constant
+  (`2^{#P}`), linearized activities.  **UPDATE 2026-06-12 (ledger
+  Addendum 16): THE EXACT-ACTIVITY REFINEMENT IS ALSO COMPLETE**
+  (`docs/AREA-LAW-EXACT-PLAN.md`, E1–E4b-2 all closed):
+  `finite_volume_area_law_exp` — for the TRUE Wilson factor
+  `∏ exp(zₚ)`, NO smallness hypothesis,
+  `‖∫ tr(W_C)·∏ exp(zₚ)‖ ≤ N_c·2^{#P}·(e^{2δN_c}−1)^{Area}·e^{2δN_c·#P}`
+  (area-law decay for Wilson `β < ln 2`).  Supporting machinery in
+  `L1_GibbsMeasure/ExpActivityExpansion.lean` (Pi-Cauchy products,
+  the ∫↔∑' swap, the constrained-Pi tail) +
+  `norm_integral_exp_term_le` (the per-multiplicity dichotomy).
+  READ THE E4b-2 ROW's whnf-hang house note before touching
+  `integral_tsum_of_bounded` again.  **Post-campaign refinement
+  (next high-leverage target):** volume-uniform constant
   (connected-support resummation against `Z` — cluster machinery,
-  campaign-scale) or exact Wilson activities (exp-expansion).
+  campaign-scale).
   Alternative frontiers:
   Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
   single-scale UV estimate (class-C, outside the current plan).

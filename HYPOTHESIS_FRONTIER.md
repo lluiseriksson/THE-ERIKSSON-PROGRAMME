@@ -33,6 +33,17 @@
 > the §6.3 UV single-scale bound remains the SOLE carried hypothesis
 > of the M3 assembly.  Post-campaign refinements (volume-uniform
 > constant; exact Wilson activities) are recorded in the plan.
+>
+> **UPDATE (2026-06-12, later).**  The EXACT-ACTIVITY refinement is
+> now ALSO COMPLETE (ledger addendum 16;
+> `docs/AREA-LAW-EXACT-PLAN.md`): `finite_volume_area_law_exp`
+> upgrades the area law to the TRUE Wilson Boltzmann factor
+> `∏_p exp(zₚ)` with NO smallness hypothesis —
+> `‖∫ tr(W_C)·∏ exp(zₚ)‖ ≤ N_c·2^{#P}·(e^{2δN_c}−1)^{Area}·e^{2δN_c·#P}`,
+> i.e. genuine area-law decay for Wilson coupling `β < ln 2`.  Fully
+> unconditional; the frontier table above is unchanged (the §6.3 UV
+> bound stays the sole carried hypothesis).  Remaining refinement:
+> volume-uniform constant.
 
 ---
 
