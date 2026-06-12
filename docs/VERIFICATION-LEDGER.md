@@ -782,6 +782,25 @@ bijection `S ↔ (S₀, T)` (needs `plaqComponents` stability under
 support-disjoint unions — the campaign's hard graph brick) and the
 `Z`-ratio bound via the cluster expansion.
 
+**Addendum 17e (same day, V1-b steps 1–5: THE STABILITY THEOREM).**
+Build green (8236 jobs), oracle clean:
+
+```
+'YangMills.mem_nearLoop_iff_reachable'                 [propext, Classical.choice, Quot.sound]
+'YangMills.walk_confined'                              [propext, Classical.choice, Quot.sound]
+'YangMills.reachable_union_of_reachable'               [propext, Classical.choice, Quot.sound]
+'YangMills.reachable_descend'                          [propext, Classical.choice, Quot.sound]
+'YangMills.nearLoop_union_far'                         [propext, Classical.choice, Quot.sound]
+```
+
+The campaign's hard graph brick is DISCHARGED:
+`nearLoop es (S₀ ∪ T) = S₀` for pinned `S₀` and far `T` — adjoining
+far plaquettes never changes the near part.  Proved via the
+reachability characterization of `nearLoop`, walk confinement, and
+witness lifting along the inclusion hom.  Remaining in V1-b: only the
+`Finset.sum_nbij'` fiber reindexing (`nearLoop_idem` + bookkeeping);
+then V1-c, the `Z`-ratio bound.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

@@ -508,6 +508,43 @@ theorem reachable_descend {S₀ T : Finset (ConcretePlaquette d N)}
       have h2 := congrArg Subtype.val hval
       exact h2
 
+open Classical in
+/-- **`nearLoop` is stable under far unions (V1-b step 5, the
+assembly):** adjoining plaquettes from the far region of a pinned set
+does not change the near part.  This is the heart of the fiber
+decomposition `S ↔ (S₀, T)` of the loop-tagged powerset expansion. -/
+theorem nearLoop_union_far {es : List (ConcreteEdge d N)}
+    {S₀ T : Finset (ConcretePlaquette d N)}
+    (hpin : nearLoop es S₀ = S₀) (hT : T ⊆ farRegion es S₀) :
+    nearLoop es (S₀ ∪ T) = S₀ := by
+  classical
+  have hcross : ∀ q ∈ S₀, ∀ p ∈ T, ¬ plaquetteTouches q p :=
+    fun q hq p hp => ((Finset.mem_filter.mp (hT hp)).2).2 q hq
+  have hfar : ∀ p ∈ T, Disjoint (edgeSupport (d := d) (N := N) es)
+      (plaquetteSupport p) :=
+    fun p hp => ((Finset.mem_filter.mp (hT hp)).2).1
+  apply Finset.Subset.antisymm
+  · -- ⊆ : a near witness cannot lie in T, and a T-start is confined
+    intro p hp
+    have hpU : p ∈ S₀ ∪ T := nearLoop_subset es (S₀ ∪ T) hp
+    obtain ⟨q, hreach, hq⟩ := (mem_nearLoop_iff_reachable hpU).mp hp
+    have hqT : q.1 ∉ T := fun hqT => hq (hfar q.1 hqT)
+    by_contra hpS₀
+    have hpT : p ∈ T := by
+      rcases Finset.mem_union.mp hpU with h | h
+      · exact absurd h hpS₀
+      · exact h
+    obtain ⟨W⟩ := hreach
+    exact hqT (walk_confined hcross W hpT)
+  · -- ⊇ : lift the pinned witness along the inclusion
+    intro p hpS₀
+    have hpN : p ∈ nearLoop es S₀ := by rw [hpin]; exact hpS₀
+    obtain ⟨q, hreach, hq⟩ := (mem_nearLoop_iff_reachable hpS₀).mp hpN
+    exact (mem_nearLoop_iff_reachable
+      (Finset.mem_union_left T hpS₀)).mpr
+      ⟨⟨q.1, Finset.mem_union_left T q.2⟩,
+        reachable_union_of_reachable (T := T) hreach, hq⟩
+
 /-! ## V1 opening: the far resummation
 
 Summing the far factor of `integral_wilson_obs_regroup` over all far
