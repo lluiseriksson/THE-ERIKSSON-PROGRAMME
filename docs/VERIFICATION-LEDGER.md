@@ -923,6 +923,28 @@ permutation-invariant) and fibering.  The `Z`-ratio exponent is now a
 sum over `Λᶜ`-pinned weights up to the `(n+1)` factor, which the
 tilted pinned tails absorb (R2(b4), the last analytic step of R2).
 
+**Addendum 17m (same day, R2 COMPLETE — the volume-free `Z`-ratio
+bound).**  Build green (8237 jobs), oracle clean:
+
+```
+'YangMills.KP.pinnedClusterWeight_scale'               [propext, Classical.choice, Quot.sound]
+'YangMills.KP.tsum_offRegionClusterWeight_le'          [propext, Classical.choice, Quot.sound]
+```
+
+**The abstract `Z`-ratio theory is DONE.**  Under the `e^t`-tilted KP
+criterion (`KPCriterion (P.scaleActivity (exp t)) a` — exactly the
+form the lattice gas verifies),
+
+    ‖log(Z_Λ / Z)‖ = ‖clusterSum P − clusterSum (P.restrict Λ)‖
+        ≤ ∑'_n offRegionClusterWeight P Λ n
+        ≤ t⁻¹ · ∑_{c ∉ Λ} e^t · ‖z(c)‖ · e^{a(c)}
+
+— a sum over the polymers OUTSIDE `Λ` only: volume-free when `Λᶜ` is
+the loop's neighbourhood.  Chained: the restricted Mayer inversion
+(R1), the difference identity (R2a), the off-region majorant (R2b1–2),
+the swap-reindex union bound (R2b3), the scalar tilt absorbing `(n+1)`
+(R2b4).  Remaining in V1: R3, the restricted lattice gate.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
