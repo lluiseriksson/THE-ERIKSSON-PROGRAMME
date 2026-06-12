@@ -152,4 +152,59 @@ theorem integral_tsum_of_bounded {α : Type*} [MeasurableSpace α]
   rw [← ENNReal.ofReal_tsum_of_nonneg hc0 hc]
   exact ENNReal.ofReal_ne_top
 
+/-- Norm-summability of the exponential series' coefficients. -/
+theorem summable_norm_pow_div_factorial (z : ℂ) :
+    Summable fun k : ℕ => ‖z ^ k / (Nat.factorial k : ℂ)‖ := by
+  refine Summable.congr (Real.summable_pow_div_factorial ‖z‖)
+    fun k => ?_
+  rw [norm_div, norm_pow, Complex.norm_natCast]
+
+/-- **The exp-product expansion (E4b, stage 1):** a finite product of
+exponentials is the sum over multiplicity functions of the
+term-products — the pointwise expansion of the exact Wilson
+Boltzmann factor. -/
+theorem prod_exp_eq_tsum_prod_pow {ι : Type*} [Fintype ι] (z : ι → ℂ) :
+    (∏ i, Complex.exp (z i))
+      = ∑' m : ι → ℕ, ∏ i, (z i) ^ (m i) / (Nat.factorial (m i) : ℂ) := by
+  rw [Finset.prod_congr rfl fun i _ => show Complex.exp (z i)
+    = ∑' k : ℕ, (z i) ^ k / (Nat.factorial k : ℂ) from by
+      rw [Complex.exp_eq_exp_ℂ]
+      exact congrFun NormedSpace.exp_eq_tsum_div (z i)]
+  exact tsum_pi_prod' (fun i k => (z i) ^ k / (Nat.factorial k : ℂ))
+    (fun i => summable_norm_pow_div_factorial (z i))
+
+set_option maxHeartbeats 1000000 in
+/-- Summability of the multiplicity-indexed exponential weights — the
+dominating family for the E2 interchange in the exact area law. -/
+theorem summable_prod_pow_div_factorial {ι : Type*} [Fintype ι]
+    (x : ℝ) (hx : 0 ≤ x) :
+    Summable fun m : ι → ℕ => ∏ i, x ^ (m i) / (Nat.factorial (m i) : ℝ) := by
+  classical
+  have hFin := summable_norm_pi_prod
+    (a := fun (_ : Fin (Fintype.card ι)) k =>
+      ((x : ℂ)) ^ k / (Nat.factorial k : ℂ))
+    (fun _ => summable_norm_pow_div_factorial _)
+  have hι : Summable fun m : ι → ℕ =>
+      ‖∏ i, ((x : ℂ)) ^ (m i) / (Nat.factorial (m i) : ℂ)‖ := by
+    refine ((Equiv.arrowCongr (Fintype.equivFin ι)
+      (Equiv.refl ℕ)).symm.summable_iff).mp ?_
+    refine hFin.congr fun m' => ?_
+    congr 1
+    refine Fintype.prod_equiv (Fintype.equivFin ι).symm _ _ fun j => ?_
+    show ((x : ℂ)) ^ (m' j) / (Nat.factorial (m' j) : ℂ)
+      = ((x : ℂ)) ^ ((Equiv.arrowCongr (Fintype.equivFin ι)
+            (Equiv.refl ℕ)).symm m' ((Fintype.equivFin ι).symm j))
+        / (Nat.factorial ((Equiv.arrowCongr (Fintype.equivFin ι)
+            (Equiv.refl ℕ)).symm m' ((Fintype.equivFin ι).symm j)) : ℂ)
+    rw [show ((Equiv.arrowCongr (Fintype.equivFin ι)
+        (Equiv.refl ℕ)).symm m') ((Fintype.equivFin ι).symm j)
+      = m' ((Fintype.equivFin ι) ((Fintype.equivFin ι).symm j))
+      from rfl]
+    rw [(Fintype.equivFin ι).apply_symm_apply j]
+  refine hι.congr fun m => ?_
+  rw [norm_prod]
+  refine Finset.prod_congr rfl fun i _ => ?_
+  rw [norm_div, norm_pow, Complex.norm_real, Real.norm_eq_abs,
+    abs_of_nonneg hx, Complex.norm_natCast]
+
 end YangMills
