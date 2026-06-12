@@ -475,6 +475,39 @@ theorem reachable_union_of_reachable
       (SimpleGraph.fromRel (fun u v : ↥(S₀ ∪ T) =>
         plaquetteTouches u.1 v.1)))
 
+open Classical in
+/-- **Walk descent (V1-b step 4):** in the union's touching graph,
+a walk starting at an `S₀`-vertex stays in `S₀` (no cross-touching)
+and descends to `S₀`-reachability. -/
+theorem reachable_descend {S₀ T : Finset (ConcretePlaquette d N)}
+    (hcross : ∀ q ∈ S₀, ∀ p ∈ T, ¬ plaquetteTouches q p)
+    {x y : ↥(S₀ ∪ T)}
+    (W : (SimpleGraph.fromRel (fun u v : ↥(S₀ ∪ T) =>
+      plaquetteTouches u.1 v.1)).Walk x y) :
+    ∀ hx : x.1 ∈ S₀, ∃ hy : y.1 ∈ S₀,
+      (SimpleGraph.fromRel (fun u v : ↥S₀ =>
+        plaquetteTouches u.1 v.1)).Reachable ⟨x.1, hx⟩ ⟨y.1, hy⟩ := by
+  induction W with
+  | nil => exact fun hx => ⟨hx, SimpleGraph.Reachable.refl _⟩
+  | @cons u v w h W ih =>
+      intro hu
+      rw [SimpleGraph.fromRel_adj] at h
+      obtain ⟨hne, htouch⟩ := h
+      have hv : v.1 ∈ S₀ := by
+        rcases Finset.mem_union.mp v.2 with hv | hv
+        · exact hv
+        · exfalso
+          rcases htouch with ht | ht
+          · exact hcross u.1 hu v.1 hv ht
+          · exact hcross u.1 hu v.1 hv (fun hd => ht (Disjoint.symm hd))
+      obtain ⟨hw, hreach⟩ := ih hv
+      refine ⟨hw, SimpleGraph.Reachable.trans
+        (SimpleGraph.Adj.reachable ?_) hreach⟩
+      rw [SimpleGraph.fromRel_adj]
+      refine ⟨fun hval => hne (Subtype.ext ?_), htouch⟩
+      have h2 := congrArg Subtype.val hval
+      exact h2
+
 /-! ## V1 opening: the far resummation
 
 Summing the far factor of `integral_wilson_obs_regroup` over all far
