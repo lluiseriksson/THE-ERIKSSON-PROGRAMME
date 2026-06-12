@@ -233,17 +233,27 @@ every positive edge.  All oracle clean.  House note: `loopChain` was
 defined under `open Classical in`, so its `List.count` carries the
 classical `BEq` — close the final instance seam with `congr!`
 (Subsingleton `Decidable` args), not `rfl`.
-**Open (final stretch):** J-3(b): the multi-line version of the
-bridge — for the family `loop :: plaquette-loops-of-S`, the
-sigma-count at `e₀` = `∑ⱼ loopChain (L j) e₀` (additivity of the
-sigma-filter cards over `j`, then `signed_count_eq_loopChain` per
-line); combined with `integral_prod_trace_wilsonLine_eq_zero` this
-gives: a term survives only if `∑ⱼ loopChain (L j) = 0` over
-`ZMod N_c` — the chain equation, with plaquette lines' chains as the
-`∂₂`-columns (bridge `loopChain (plaquette 4-edge list)` ↔
-`plaquetteChain`, watch the orientation conventions).  Then the
-contrapositive into `chainArea_le_card_of_support_subset`, and AL6
-via `integral_mul_prod_one_add` + banked tails.
+**J-3(b) CLOSED** (`WilsonLoopMonomial.lean`):
+`card_filter_sigma_eq_sum` (sigma-filters decompose linewise, via
+`Fintype.sum_sigma`), `sigma_signed_count_eq_sum_loopChain` (the
+multi-line bridge: total signed traversal count = `∑ⱼ loopChain (L j)
+e₀` over `ℤ`), and the capstone
+**`integral_prod_trace_wilsonLine_eq_zero_of_sum_loopChain_ne_zero`**:
+a product of Wilson-line traces has zero β=0 Haar expectation unless
+`∑ⱼ loopChain (L j) = 0` over `ZMod N_c` at every positive edge.  All
+oracle clean.  This is the area law's analytic engine in final,
+chain-side form: for the family `loop C :: plaquette-loops-of-S` the
+hypothesis IS the chain equation `loopChain C + ∂₂σ = 0`.
+**Open (assembly only):** (i) the `loopChain`-of-plaquette-4-edge-list
+↔ `plaquetteChain` orientation reconciliation (relate
+`∑_{p∈S} σ_p·loopChain(plaquette p) = ∂₂(σ·indicator)` — note
+`plaquetteChain` counts forward incidences while `loopChain`
+antisymmetrizes; the clean route may be to prove `∂₂` of the
+antisymmetrized plaquette chain directly, or to add the
+reverse-incidence convention lemma); (ii) the contrapositive
+into `chainArea_le_card_of_support_subset` (T_S ≠ 0 ⇒ Area ≤ |S|);
+(iii) AL6: `|⟨W_C⟩·Z| ≤ Σ_{|S| ≥ Area} N_c·δ^{|S|}·entropy` via
+`integral_mul_prod_one_add` + banked tails + non-vacuity window.
 
 **Then AL6:** `|⟨W_C⟩·Z| ≤ ∑_{|S| ≥ Area} (N_c·δ^{|S|})·(entropy)` —
 the `x/(1−Kx)` tail pattern from the correlator campaign, plus the

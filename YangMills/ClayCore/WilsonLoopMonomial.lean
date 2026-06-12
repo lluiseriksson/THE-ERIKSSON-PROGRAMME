@@ -673,4 +673,76 @@ theorem integral_trace_wilsonLine_eq_zero_of_loopChain_ne_zero
   rw [loopChain_zmod_eq_intCast, ← signed_count_eq_loopChain es e₀]
   exact (ZMod.intCast_zmod_eq_zero_iff_dvd _ _).mpr hdvd
 
+/-! ## J-3(b): the multi-line bridge and chain-side rule -/
+
+/-- Filters over sigma position types decompose linewise. -/
+theorem card_filter_sigma_eq_sum {n : ℕ} {κ : Fin n → Type*}
+    [∀ j, Fintype (κ j)] (Q : (Σ j : Fin n, κ j) → Prop)
+    [DecidablePred Q] :
+    (Finset.univ.filter Q).card
+      = ∑ j : Fin n, (Finset.univ.filter fun y : κ j => Q ⟨j, y⟩).card := by
+  rw [Finset.card_filter, Fintype.sum_sigma]
+  exact Finset.sum_congr rfl fun j _ => by rw [← Finset.card_filter]
+
+/-- **The multi-line bridge (J-3b):** the total signed traversal count
+of `e₀` across a family of lines — the divisibility datum of the
+multi-line kill — is the SUM of the lines' loop chains at `e₀`. -/
+theorem sigma_signed_count_eq_sum_loopChain {n : ℕ}
+    (L : Fin n → List (ConcreteEdge d N)) (e₀ : PosEdge d N) :
+    ((((Finset.univ.filter fun q : (Σ j : Fin n, Fin (L j).length) =>
+          posEdgeOf ((L q.1).get q.2) = e₀)).filter
+            fun q => ((L q.1).get q.2).sign).card : ℤ)
+      - ((((Finset.univ.filter fun q : (Σ j : Fin n, Fin (L j).length) =>
+          posEdgeOf ((L q.1).get q.2) = e₀)).filter
+            fun q => ¬ ((L q.1).get q.2).sign).card : ℤ)
+    = ∑ j : Fin n, loopChain (R := ℤ) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        (L j) (e₀ : ConcreteEdge d N) := by
+  classical
+  rw [Finset.filter_filter, Finset.filter_filter]
+  rw [card_filter_sigma_eq_sum
+        (fun q : (Σ j : Fin n, Fin (L j).length) =>
+          posEdgeOf ((L q.1).get q.2) = e₀ ∧ ((L q.1).get q.2).sign = true),
+      card_filter_sigma_eq_sum
+        (fun q : (Σ j : Fin n, Fin (L j).length) =>
+          posEdgeOf ((L q.1).get q.2) = e₀ ∧
+            ¬ ((L q.1).get q.2).sign = true)]
+  push_cast
+  rw [← Finset.sum_sub_distrib]
+  refine Finset.sum_congr rfl fun j _ => ?_
+  show ((Finset.univ.filter fun idx : Fin (L j).length =>
+      posEdgeOf ((L j).get idx) = e₀ ∧ ((L j).get idx).sign = true).card : ℤ)
+    - ((Finset.univ.filter fun idx : Fin (L j).length =>
+      posEdgeOf ((L j).get idx) = e₀ ∧
+        ¬ ((L j).get idx).sign = true).card : ℤ)
+    = _
+  rw [← Finset.filter_filter, ← Finset.filter_filter]
+  exact signed_count_eq_loopChain (L j) e₀
+
+/-- **The multi-line chain-side selection rule (J-3b):** a product of
+Wilson-line traces has zero β = 0 Haar expectation unless the SUM of
+the lines' loop chains vanishes mod `N_c` at every positive edge.
+For the strong-coupling family `loop C :: (plaquette or reversed
+plaquette loops of S)` this hypothesis at `e₀` IS the failure of the
+chain equation `loopChain C + ∂₂σ = 0` there — the area-law join's
+final analytic input. -/
+theorem integral_prod_trace_wilsonLine_eq_zero_of_sum_loopChain_ne_zero
+    {n : ℕ} (L : Fin n → List (ConcreteEdge d N)) (e₀ : PosEdge d N)
+    (h : (∑ j : Fin n, loopChain (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        (L j) (e₀ : ConcreteEdge d N)) ≠ 0) :
+    ∫ A, ∏ j : Fin n, Matrix.trace (wilsonLine A (L j)).val
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) = 0 := by
+  refine integral_prod_trace_wilsonLine_eq_zero L e₀ fun hdvd => h ?_
+  have hcast : (∑ j : Fin n, loopChain (R := ZMod N_c) (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+      (L j) (e₀ : ConcreteEdge d N))
+      = (((∑ j : Fin n, loopChain (R := ℤ) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+          (L j) (e₀ : ConcreteEdge d N)) : ℤ) : ZMod N_c) := by
+    rw [Int.cast_sum]
+    exact Finset.sum_congr rfl fun j _ => loopChain_zmod_eq_intCast (L j) _
+  rw [hcast, ← sigma_signed_count_eq_sum_loopChain L e₀]
+  exact (ZMod.intCast_zmod_eq_zero_iff_dvd _ _).mpr hdvd
+
 end YangMills
