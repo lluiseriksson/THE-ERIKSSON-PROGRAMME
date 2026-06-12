@@ -256,20 +256,20 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   (per-edge balance) + NEW discrete surface theory (ℤ-chain boundary
   maps, the spanning lower bound) + the banked expansion/entropy
   engines.  **Peter–Weyl is off the critical path** (needed only for
-  sharp constants/character-expansion bookkeeping).  **Status
-  2026-06-11 evening (ledger Addenda 12–13):** AL1+AL2 CLOSED
-  (ring-generic chain complex), AL3 closed by audit, AL4
-  substrate+expansion CLOSED, AL5 interface CLOSED, and the AL4.5
-  join is nearly done: TE/TE-1b/K/DB-1/J-1/J-2 ALL CLOSED — the
-  headline `integral_trace_wilsonLine_eq_zero` (β=0 `N`-ality
-  selection rule for Wilson loops) and the DB-2 engine
-  `integral_prod_trace_wilsonLine_eq_zero` (same for PRODUCTS of
-  Wilson-line traces, sigma-indexed positions) are oracle-clean in
-  `ClayCore/WilsonLoopMonomial.lean`.  **Open: J-3** — plan §4 "final
-  stretch": (a) the `Finset`-card ↔ `chainBoundary₂` bookkeeping
-  bridge for the line family `loop :: plaquette-loops-of-S`, (b) the
-  contrapositive to `chainArea_le_card_of_support_subset`, (c) AL6
-  assembly via `integral_mul_prod_one_add` + banked tails.
+  sharp constants/character-expansion bookkeeping).  **STATUS 2026-06-12 (ledger Addenda 12–15): THE CAMPAIGN IS
+  COMPLETE.**  Headlines, all oracle-clean in
+  `ClayCore/WilsonLoopMonomial.lean`: `finite_volume_area_law` and
+  `finite_volume_area_law_re` — `‖∫ (Re) tr(W_C)·∏(1+f_p)‖ ≤
+  N_c·2^{#P}·(2δN_c)^{Area(C)}` for linearized activities with
+  `2δN_c ≤ 1`, `Area = chainAreaA (loopChain C)` over `ZMod N_c`,
+  with `one_le_chainAreaA` (non-vacuity of the exponent) and the
+  full supporting ladder (β=0 selection rules, the spanning join
+  `chainAreaA_loopChain_le_of_integral_ne_zero`, the per-term
+  kill/bound dichotomy).  Honest caveats: finite-volume constant
+  (`2^{#P}`), linearized activities.  **Post-campaign refinements
+  (next high-leverage targets):** volume-uniform constant
+  (connected-support resummation against `Z` — cluster machinery,
+  campaign-scale) or exact Wilson activities (exp-expansion).
   Alternative frontiers:
   Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
   single-scale UV estimate (class-C, outside the current plan).
