@@ -496,4 +496,54 @@ theorem offRegionClusterWeight_le_pinned (P : PolymerSystem)
             (fun Y => Y 0 = c), f Y := by
         rw [Finset.mul_sum]
 
+/-! ## R2(b4) substrate: the scalar activity tilt -/
+
+/-- The **scalar activity tilt**: multiply every activity by `r`
+(same polymers, same incompatibility).  Each size-`(n+1)` tuple picks
+up `|r|^(n+1)`, which absorbs polynomial factors in `n`. -/
+noncomputable def PolymerSystem.scaleActivity (P : PolymerSystem)
+    (r : ℝ) : PolymerSystem where
+  Polymer := P.Polymer
+  incomp := P.incomp
+  incomp_symm := P.incomp_symm
+  incomp_self := P.incomp_self
+  activity X := (r : ℂ) * P.activity X
+
+noncomputable instance (P : PolymerSystem) [Fintype P.Polymer] (r : ℝ) :
+    Fintype (P.scaleActivity r).Polymer :=
+  inferInstanceAs (Fintype P.Polymer)
+
+open Classical in
+/-- Pinned weights of the tilted system: each tuple of size `n+1`
+carries `|r|^(n+1)`. -/
+theorem pinnedClusterWeight_scale (P : PolymerSystem)
+    [Fintype P.Polymer] (r : ℝ) (c : P.Polymer) (n : ℕ) :
+    pinnedClusterWeight (P.scaleActivity r) c n
+      = |r| ^ (n + 1) * pinnedClusterWeight P c n := by
+  unfold pinnedClusterWeight
+  have hsum : ∑ X ∈ (Finset.univ :
+      Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
+      |((ursell (P.scaleActivity r) X : ℤ) : ℝ)| *
+        ∏ i, ‖(P.scaleActivity r).activity (X i)‖
+      = |r| ^ (n + 1) * ∑ X ∈ (Finset.univ :
+          Finset (Fin (n + 1) → P.Polymer)).filter (fun X => X 0 = c),
+          |((ursell P X : ℤ) : ℝ)| * ∏ i, ‖P.activity (X i)‖ := by
+    rw [Finset.mul_sum]
+    refine Finset.sum_congr rfl fun X _ => ?_
+    show |((ursell P X : ℤ) : ℝ)| *
+        ∏ i, ‖(r : ℂ) * P.activity (X i)‖ = _
+    have hprod : ∏ i : Fin (n + 1), ‖(r : ℂ) * P.activity (X i)‖
+        = |r| ^ (n + 1) * ∏ i, ‖P.activity (X i)‖ := by
+      calc ∏ i : Fin (n + 1), ‖(r : ℂ) * P.activity (X i)‖
+          = ∏ i : Fin (n + 1), |r| * ‖P.activity (X i)‖ := by
+            refine Finset.prod_congr rfl fun i _ => ?_
+            rw [norm_mul, Complex.norm_real, Real.norm_eq_abs]
+        _ = |r| ^ (n + 1) * ∏ i, ‖P.activity (X i)‖ := by
+            rw [Finset.prod_mul_distrib, Finset.prod_const,
+              Finset.card_univ, Fintype.card_fin]
+    rw [hprod]
+    ring
+  exact (congrArg (fun s => (((n + 1).factorial : ℝ))⁻¹ * s) hsum).trans
+    (by ring)
+
 end YangMills.KP
