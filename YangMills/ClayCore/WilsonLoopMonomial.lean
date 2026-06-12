@@ -745,4 +745,183 @@ theorem integral_prod_trace_wilsonLine_eq_zero_of_sum_loopChain_ne_zero
   rw [hcast, ← sigma_signed_count_eq_sum_loopChain L e₀]
   exact (ZMod.intCast_zmod_eq_zero_iff_dvd _ _).mpr hdvd
 
+/-! ## The join (ii-final): surviving terms span — `T ≠ 0 ⇒ Area ≤ m` -/
+
+/-- **THE AREA-LAW JOIN:** if a strong-coupling expansion term — the
+Wilson loop times `m` σ-signed plaquette traces (conjugate choice =
+reversed list) — has NONZERO β = 0 Haar expectation, then the loop's
+`N`-ality area is at most `m`.  Pipeline: contraposition of the
+multi-line chain-side selection rule ⇒ the total chain vanishes at
+every positive edge ⇒ (orientation-oddness) everywhere ⇒ the
+antisymmetrized chain equation `∂₂A σ' = −loopChain C` with
+`supp σ' ⊆ image ps` ⇒ `chainAreaA_le_card_of_support_subset` +
+`chainAreaA_neg`. -/
+theorem chainAreaA_loopChain_le_of_integral_ne_zero
+    {m : ℕ} (es : List (ConcreteEdge d N))
+    (ps : Fin m → FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+    (σ : Fin m → Bool)
+    (hT : ∫ A, ∏ j : Fin (m + 1),
+        Matrix.trace (wilsonLine A
+          (Fin.cons (α := fun _ => List (ConcreteEdge d N)) es (fun i =>
+            if σ i
+            then plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)
+            else ((plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)).map
+                (FiniteLatticeGeometry.reverse (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))).reverse)
+            j)).val
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) ≠ 0) :
+    chainAreaA (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        (loopChain (R := ZMod N_c) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es) ≤ m := by
+  classical
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+  set L : Fin (m + 1) → List (ConcreteEdge d N) :=
+    Fin.cons (α := fun _ => List (ConcreteEdge d N)) es (fun i =>
+    if σ i
+    then plaquetteList (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)
+    else ((plaquetteList (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)).map
+        (FiniteLatticeGeometry.reverse (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))).reverse)
+    with hL
+  set τ : Fin m → ZMod N_c := fun i => if σ i then 1 else -1 with hτ
+  set σ' : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ZMod N_c :=
+    fun p => ∑ i ∈ Finset.univ.filter (fun i => ps i = p), τ i with hσ'
+  -- contraposition of the chain-side selection rule
+  have hsum : ∀ e₀ : PosEdge d N,
+      (∑ j : Fin (m + 1), loopChain (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        (L j) (e₀ : ConcreteEdge d N)) = 0 := by
+    intro e₀
+    by_contra hne
+    exact hT
+      (integral_prod_trace_wilsonLine_eq_zero_of_sum_loopChain_ne_zero
+        L e₀ hne)
+  -- the total chain is orientation-odd, so it vanishes everywhere
+  have hodd : ∀ e : ConcreteEdge d N,
+      (∑ j : Fin (m + 1), loopChain (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (L j)
+        (FiniteLatticeGeometry.reverse (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) e))
+      = - ∑ j : Fin (m + 1), loopChain (R := ZMod N_c) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (L j) e := by
+    intro e
+    rw [← Finset.sum_neg_distrib]
+    exact Finset.sum_congr rfl fun j _ =>
+      loopChain_reverse (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (L j) e
+  have hTc : ∀ e : ConcreteEdge d N,
+      (∑ j : Fin (m + 1), loopChain (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (L j) e) = 0 := by
+    intro e
+    by_cases hs : e.sign = true
+    · exact hsum ⟨e, hs⟩
+    · have hrs : (FiniteLatticeGeometry.reverse (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) e).sign = true := by
+        rw [finBoxGeometry_reverse]
+        cases hsb : e.sign
+        · rfl
+        · exact absurd hsb hs
+      have h0 := hsum ⟨FiniteLatticeGeometry.reverse (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) e, hrs⟩
+      have h1 := hodd e
+      rw [h0] at h1
+      exact neg_eq_zero.mp h1.symm
+  -- identify the total chain with the antisymmetrized chain equation
+  have hchain : ∀ e : ConcreteEdge d N,
+      loopChain (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es e
+      + chainBoundary₂A (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) σ' e = 0 := by
+    intro e
+    have h1 := hTc e
+    rw [Fin.sum_univ_succ] at h1
+    simp only [hL, Fin.cons_zero, Fin.cons_succ] at h1
+    have h2 : ∀ i : Fin m,
+        loopChain (R := ZMod N_c) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+          (if σ i
+            then plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)
+            else ((plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)).map
+                (FiniteLatticeGeometry.reverse (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))).reverse)
+          e
+        = τ i * loopChain (R := ZMod N_c) (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)) e := by
+      intro i
+      by_cases hsi : σ i = true
+      · rw [if_pos hsi]
+        simp only [hτ, if_pos hsi, one_mul]
+      · rw [if_neg hsi, loopChain_reverse_list]
+        simp only [hτ, if_neg hsi]
+        ring
+    rw [Finset.sum_congr rfl fun i _ => h2 i] at h1
+    have h3 : (∑ p : FiniteLatticeGeometry.P (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)),
+        σ' p * loopChain (R := ZMod N_c) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p) e)
+        = ∑ i : Fin m, τ i * loopChain (R := ZMod N_c) (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)) e := by
+      rw [Finset.sum_congr rfl fun p _ => by
+        rw [hσ', Finset.sum_mul]]
+      rw [← Finset.sum_fiberwise_of_maps_to (g := ps)
+        (fun i _ => Finset.mem_univ (ps i))
+        (fun i => τ i * loopChain (R := ZMod N_c) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)) e)]
+      refine Finset.sum_congr rfl fun p _ =>
+        Finset.sum_congr rfl fun i hi => ?_
+      rw [(Finset.mem_filter.mp hi).2]
+    rw [← h3] at h1
+    rw [show (∑ p : FiniteLatticeGeometry.P (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)),
+        σ' p * loopChain (R := ZMod N_c) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p) e)
+        = chainBoundary₂A (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) σ' e from
+      sum_mul_loopChain_plaquette_list_eq_chainBoundary₂A σ' e] at h1
+    exact h1
+  -- the chain equation and the support bound
+  have heq : chainBoundary₂A (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) σ'
+      = fun e => - loopChain (R := ZMod N_c) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es e := by
+    funext e
+    exact eq_neg_of_add_eq_zero_right (hchain e)
+  have hsupp : chainSupport (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) σ'
+      ⊆ Finset.univ.image ps := by
+    intro p hp
+    simp only [chainSupport, Finset.mem_filter] at hp
+    have hne : σ' p ≠ 0 := hp.2
+    by_contra hnotin
+    apply hne
+    have hempty : Finset.univ.filter (fun i => ps i = p) = ∅ :=
+      Finset.filter_eq_empty_iff.mpr fun {i} _ hpi =>
+        hnotin (Finset.mem_image.mpr ⟨i, Finset.mem_univ i, hpi⟩)
+    simp only [hσ', hempty, Finset.sum_empty]
+  have hbound := chainAreaA_le_card_of_support_subset (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) heq hsupp
+  rw [chainAreaA_neg] at hbound
+  refine le_trans hbound (le_trans Finset.card_image_le ?_)
+  simp
+
 end YangMills

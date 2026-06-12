@@ -596,6 +596,29 @@ expansion-term formalization (the σ-sign bookkeeping) and the AL6
 entropy/tail assembly (banked patterns).  All M3 lattice-side;
 M4/M5/Clay untouched.
 
+**Same-day completion — THE JOIN (AL5 discharged):**
+
+```
+'YangMills.loopChain_reverse_list'                     [propext, Classical.choice, Quot.sound]
+'YangMills.chainBoundary₂A_neg'                        [propext, Classical.choice, Quot.sound]
+'YangMills.chainSupport_neg'                           [propext, Classical.choice, Quot.sound]
+'YangMills.chainAreaA_neg'                             [propext, Classical.choice, Quot.sound]
+'YangMills.chainBoundary₂A_reverse'                    [propext, Classical.choice, Quot.sound]
+'YangMills.chainAreaA_loopChain_le_of_integral_ne_zero'
+                                                       [propext, Classical.choice, Quot.sound]
+```
+
+The last line is the **area-law join**: if the β=0 Haar expectation
+of a Wilson loop times `m` σ-signed plaquette traces does not vanish,
+the loop's `N`-ality area (`chainAreaA` of its `loopChain`, over
+`ZMod N_c`) is at most `m`.  Every surviving term of the
+strong-coupling expansion spans a discrete surface — machine-checked,
+unconditional, no sorry, no axioms beyond the standard three.  The
+spanning-surface lower bound (AL5, the campaign's single
+high-novelty item) is hereby DISCHARGED; only AL6's quantitative
+entropy/tail assembly (banked patterns) separates the repo from
+`|⟨W_C⟩| ≤ C₀·r^{Area}`.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

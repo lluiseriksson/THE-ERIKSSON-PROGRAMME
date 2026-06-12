@@ -477,6 +477,24 @@ theorem loopChain_reverse_list (l : List (E (d := d) (N := N) (G := G)))
   rw [h1, h2]
   ring
 
+/-- The **4-edge Wilson list of a plaquette** — the path whose
+holonomy trace is the plaquette observable. -/
+def plaquetteList (p : P (d := d) (N := N) (G := G)) :
+    List (E (d := d) (N := N) (G := G)) :=
+  [plaquetteEdge p 0, plaquetteEdge p 1, plaquetteEdge p 2,
+   plaquetteEdge p 3]
+
+open Classical in
+/-- The antisymmetrized boundary is **orientation-odd**. -/
+theorem chainBoundary₂A_reverse (s : P (d := d) (N := N) (G := G) → R)
+    (e : E (d := d) (N := N) (G := G)) :
+    chainBoundary₂A (d := d) (N := N) (G := G) s
+        (reverse (d := d) (N := N) (G := G) e)
+      = - chainBoundary₂A (d := d) (N := N) (G := G) s e := by
+  unfold chainBoundary₂A
+  rw [reverse_involutive (d := d) (N := N) (G := G) e]
+  ring
+
 open Classical in
 /-- The antisymmetrized boundary is `R`-linear in the sign:
 `∂₂A(−s) = −∂₂A s`. -/

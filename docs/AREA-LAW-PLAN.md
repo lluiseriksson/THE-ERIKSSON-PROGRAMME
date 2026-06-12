@@ -268,20 +268,28 @@ reverse).reverse`, the holonomy of `tr U†` — negates its chain, via
 `chainBoundary₂A_neg`, `chainSupport_neg`, `chainAreaA_neg` (the
 `N`-ality area is orientation-blind).  All oracle clean.  Every
 ingredient of the contrapositive now exists.
-**Open (the last two statements):** (ii-final) assemble the
-contrapositive: formalize `T_S` as the multi-line family
-`L : Fin (S.card + 1) → List` with `L 0 = loop C` and
-`L (j+1) = (σ-signed plaquette list)`, split
-`∑ⱼ loopChain (L j) = loopChain C + ∑_{plaq} (±plaquetteChainA)`
-(`Fin.sum_univ_succ`, `loopChain_plaquette_list`,
-`loopChain_reverse_list`, an `S.equivFin` reindex), apply the chain-
-side multi-line rule + the positive-edge determination (orientation-
-odd chains vanishing on positive edges vanish everywhere, via
-`loopChain_reverse`/`chainBoundary₂A`'s oddness + `sign`-flip of
-`reverse`), conclude `chainAreaA (loopChain C) ≤ S.card` via
-`chainAreaA_le_card_of_support_subset` + `chainAreaA_neg`.
-(iii) AL6: `|⟨W_C⟩·Z| ≤ Σ_{|S| ≥ Area} N_c·δ^{|S|}·entropy` via
-`integral_mul_prod_one_add` + banked tails + non-vacuity window.  (iii) AL6: assemble `|⟨W_C⟩·Z| ≤ Σ_{|S| ≥ Area}
+**(ii-final) THE JOIN CLOSED** (`WilsonLoopMonomial.lean`):
+**`chainAreaA_loopChain_le_of_integral_ne_zero`** — if the β=0 Haar
+expectation of `tr(W_C)·∏ᵢ(σ-signed plaquette traces, m of them)` is
+NONZERO, then `chainAreaA (loopChain C) ≤ m` over `ZMod N_c`.  Oracle
+clean.  Proof: contraposition of the chain-side multi-line rule ⇒
+total chain vanishes at positive edges ⇒ (oddness + sign-flip of
+`reverse`) everywhere ⇒ τ-coefficients fiber-grouped into
+`σ' : P → ZMod N_c` ⇒ `∂₂A σ' = −loopChain C` with `supp σ' ⊆ image
+ps` ⇒ `chainAreaA_le_card_of_support_subset` + `chainAreaA_neg` +
+`card_image_le` (no injectivity needed).  House notes: annotate
+`Fin.cons (α := fun _ => ...)` for constant families; unfold
+`chainSupport` with `simp only [chainSupport, Finset.mem_filter]`
+(classical-vs-derived `Decidable` on `ZMod`).
+**This was AL5 — the spanning-surface lower bound — DISCHARGED.**
+**Open (one brick):** AL6 — the quantitative assembly:
+`⟨W_C⟩·Z = ∑_S T_S` via `integral_mul_prod_one_add` (+ the σ-binomial
+splitting of `∏(activities)` into the join's signed-trace terms),
+`|T_S| ≤ N_c^{|S|+1}·δ^{|S|}`-type bounds (banked
+`entry_norm_bound_of_unitary` patterns), the join kills `|S| <
+chainAreaA(loopChain C)`, and the banked entropy/`x/(1−Kx)` tail sums
+the rest: `|⟨W_C⟩·Z| ≤ C₀·r^{chainAreaA(loopChain C)}`; non-vacuity
+window as in the correlator campaign.  (iii) AL6: assemble `|⟨W_C⟩·Z| ≤ Σ_{|S| ≥ Area}
 N_c·δ^{|S|}·entropy` via `integral_mul_prod_one_add` + banked tails +
 non-vacuity window.
 
