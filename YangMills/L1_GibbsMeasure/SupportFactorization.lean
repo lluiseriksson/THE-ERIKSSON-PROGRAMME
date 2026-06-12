@@ -545,6 +545,54 @@ theorem nearLoop_union_far {es : List (ConcreteEdge d N)}
       ⟨⟨q.1, Finset.mem_union_left T q.2⟩,
         reachable_union_of_reachable (T := T) hreach, hq⟩
 
+open Classical in
+/-- A walk to a loop-touching plaquette descends into the near part:
+every vertex along it is itself near. -/
+theorem nearLoop_walk_descend {es : List (ConcreteEdge d N)}
+    {S : Finset (ConcretePlaquette d N)} {x q : ↥S}
+    (W : (SimpleGraph.fromRel (fun u v : ↥S =>
+      plaquetteTouches u.1 v.1)).Walk x q) :
+    ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+      (plaquetteSupport q.1) →
+    ∃ (hx : x.1 ∈ nearLoop es S) (hq' : q.1 ∈ nearLoop es S),
+      (SimpleGraph.fromRel (fun u v : ↥(nearLoop es S) =>
+        plaquetteTouches u.1 v.1)).Reachable ⟨x.1, hx⟩ ⟨q.1, hq'⟩ := by
+  induction W with
+  | @nil z =>
+      intro hq
+      have hx : z.1 ∈ nearLoop es S :=
+        (mem_nearLoop_iff_reachable z.2).mpr
+          ⟨z, SimpleGraph.Reachable.refl _, hq⟩
+      exact ⟨hx, hx, SimpleGraph.Reachable.refl _⟩
+  | @cons u v w h W ih =>
+      intro hq
+      obtain ⟨hv, hw, hreach⟩ := ih hq
+      have hu : u.1 ∈ nearLoop es S :=
+        (mem_nearLoop_iff_reachable u.2).mpr
+          ⟨w, (SimpleGraph.Adj.reachable h).trans W.reachable, hq⟩
+      have hadj : (SimpleGraph.fromRel
+          (fun a b : ↥(nearLoop es S) =>
+            plaquetteTouches a.1 b.1)).Adj ⟨u.1, hu⟩ ⟨v.1, hv⟩ := by
+        rw [SimpleGraph.fromRel_adj] at h ⊢
+        refine ⟨fun hval => h.1 (Subtype.ext ?_), h.2⟩
+        have h2 := congrArg Subtype.val hval
+        exact h2
+      exact ⟨hu, hw, (SimpleGraph.Adj.reachable hadj).trans hreach⟩
+
+open Classical in
+/-- **`nearLoop` is idempotent** — the near part is itself pinned, so
+the fiber map of the powerset reindexing lands in the pinned sets. -/
+theorem nearLoop_idem (es : List (ConcreteEdge d N))
+    (S : Finset (ConcretePlaquette d N)) :
+    nearLoop es (nearLoop es S) = nearLoop es S := by
+  apply Finset.Subset.antisymm (nearLoop_subset _ _)
+  intro p hp
+  have hpS : p ∈ S := nearLoop_subset es S hp
+  obtain ⟨q, hreach, hq⟩ := (mem_nearLoop_iff_reachable hpS).mp hp
+  obtain ⟨W⟩ := hreach
+  obtain ⟨hx, hq', hreachN⟩ := nearLoop_walk_descend W hq
+  exact (mem_nearLoop_iff_reachable hx).mpr ⟨⟨q.1, hq'⟩, hreachN, hq⟩
+
 /-! ## V1 opening: the far resummation
 
 Summing the far factor of `integral_wilson_obs_regroup` over all far

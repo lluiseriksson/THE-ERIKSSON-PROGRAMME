@@ -801,6 +801,20 @@ witness lifting along the inclusion hom.  Remaining in V1-b: only the
 `Finset.sum_nbij'` fiber reindexing (`nearLoop_idem` + bookkeeping);
 then V1-c, the `Z`-ratio bound.
 
+**Addendum 17f (same day, `nearLoop` idempotence).**  Build green
+(8236 jobs), oracle clean:
+
+```
+'YangMills.nearLoop_walk_descend'                      [propext, Classical.choice, Quot.sound]
+'YangMills.nearLoop_idem'                              [propext, Classical.choice, Quot.sound]
+```
+
+A walk to a loop-touching plaquette has all its vertices near, so it
+descends into the near part's own touching graph; hence
+`nearLoop es (nearLoop es S) = nearLoop es S` — the forward fiber map
+lands in the pinned sets.  V1-b now lacks only the `sum_nbij'`
+reindexing bookkeeping.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
