@@ -1325,6 +1325,176 @@ theorem integrable_powerTraceObservable (es : List (ConcreteEdge d N))
       norm_powerTraceObservable_le A es j k)
   simpa using h2
 
+open Classical in
+/-- **The per-multiplicity dichotomy** (exact-activity E4b-2a): the
+`m`-th term of the exp-expanded Wilson integrand has expectation
+EXACTLY ZERO below the area (binomial split + the multiplicity join)
+and at most `N_c·∏(2δN_c)^{mₚ}/mₚ!` above it (direct bound). -/
+theorem norm_integral_exp_term_le
+    (es : List (ConcreteEdge d N)) (δ : ℝ) (hδ0 : 0 ≤ δ)
+    (c c' : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℂ)
+    (hc : ∀ p, ‖c p‖ ≤ δ) (hc' : ∀ p, ‖c' p‖ ≤ δ)
+    (m : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℕ) :
+    letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+    ‖∫ A, Matrix.trace (wilsonLine A es).val *
+        ∏ p, ((c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+            ^ (m p) / (Nat.factorial (m p) : ℂ))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖
+      ≤ if chainAreaA (R := ZMod N_c) (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+            (loopChain (R := ZMod N_c) (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+          ≤ (Finset.univ.filter (fun p => m p ≠ 0)).card
+        then (N_c : ℝ) * ∏ p, (2 * δ * (N_c : ℝ)) ^ (m p)
+              / (Nat.factorial (m p) : ℝ)
+        else 0 := by
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+  by_cases hA : chainAreaA (R := ZMod N_c) (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+      (loopChain (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+      ≤ (Finset.univ.filter (fun p => m p ≠ 0)).card
+  · -- survivors: direct bound, no expansion needed
+    rw [if_pos hA]
+    refine le_trans (MeasureTheory.norm_integral_le_of_norm_le_const
+      (μ := gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))
+      (C := (N_c : ℝ) * ∏ p, (2 * δ * (N_c : ℝ)) ^ (m p)
+        / (Nat.factorial (m p) : ℝ))
+      (MeasureTheory.ae_of_all _ fun A => by
+        rw [norm_mul, norm_prod]
+        refine mul_le_mul (norm_trace_wilsonLine_le A es) ?_
+          (Finset.prod_nonneg fun _ _ => norm_nonneg _) (Nat.cast_nonneg _)
+        refine Finset.prod_le_prod (fun _ _ => norm_nonneg _)
+          fun p _ => ?_
+        rw [norm_div, norm_pow, Complex.norm_natCast]
+        have hz : ‖c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)‖
+            ≤ 2 * δ * (N_c : ℝ) := by
+          have h1 : ‖c p * Matrix.trace (wilsonLine A
+              (plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val‖
+              ≤ δ * (N_c : ℝ) := by
+            rw [norm_mul]
+            exact mul_le_mul (hc p) (norm_trace_wilsonLine_le A _)
+              (norm_nonneg _) hδ0
+          have h2 : ‖c' p * star (Matrix.trace (wilsonLine A
+              (plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)‖
+              ≤ δ * (N_c : ℝ) := by
+            rw [norm_mul, norm_star]
+            exact mul_le_mul (hc' p) (norm_trace_wilsonLine_le A _)
+              (norm_nonneg _) hδ0
+          calc _ ≤ _ + _ := norm_add_le _ _
+            _ ≤ 2 * δ * (N_c : ℝ) := by linarith
+        gcongr)) ?_
+    simp
+  · -- below the area: binomial split + the multiplicity join kill
+    rw [if_neg hA]
+    have hzero : (∫ A, Matrix.trace (wilsonLine A es).val *
+        ∏ p, ((c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+            ^ (m p) / (Nat.factorial (m p) : ℂ))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))) = 0 := by
+      have hpt : (fun A : GaugeConfig d N
+          (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+          Matrix.trace (wilsonLine A es).val *
+            ∏ p, ((c p * Matrix.trace (wilsonLine A
+                (plaquetteList (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+              + c' p * star (Matrix.trace (wilsonLine A
+                (plaquetteList (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+                ^ (m p) / (Nat.factorial (m p) : ℂ)))
+          = fun A => ∑ t ∈ Fintype.piFinset
+              (fun p => Finset.range (m p + 1)),
+            (∏ p, (c p ^ (t p) * c' p ^ (m p - t p) *
+              (((m p).choose (t p) : ℂ)) / (Nat.factorial (m p) : ℂ))) *
+              powerTraceObservable es t (fun p => m p - t p) A := by
+        funext A
+        rw [Finset.prod_congr rfl fun p _ => by
+          rw [add_pow, Finset.sum_div]]
+        rw [Finset.prod_univ_sum]
+        rw [Finset.mul_sum]
+        refine Finset.sum_congr rfl fun t _ => ?_
+        have hsplit : ∀ p : FiniteLatticeGeometry.P (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)),
+            (c p * Matrix.trace (wilsonLine A
+              (plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)
+              ^ (t p) *
+            (c' p * star (Matrix.trace (wilsonLine A
+              (plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+              ^ (m p - t p) *
+            (((m p).choose (t p) : ℂ)) / (Nat.factorial (m p) : ℂ)
+            = (c p ^ (t p) * c' p ^ (m p - t p) *
+                (((m p).choose (t p) : ℂ)) / (Nat.factorial (m p) : ℂ)) *
+              (Matrix.trace (wilsonLine A
+                (plaquetteList (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+                  ^ (t p) *
+                star (Matrix.trace (wilsonLine A
+                  (plaquetteList (d := d) (N := N)
+                    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)
+                  ^ (m p - t p)) := by
+          intro p
+          rw [mul_pow, mul_pow]
+          ring
+        rw [Finset.prod_congr rfl fun p _ => hsplit p]
+        rw [Finset.prod_mul_distrib]
+        have hpow_eq : powerTraceObservable es t (fun p => m p - t p) A
+            = Matrix.trace (wilsonLine A es).val *
+              ∏ p, (Matrix.trace (wilsonLine A
+                (plaquetteList (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+                  ^ (t p) *
+                star (Matrix.trace (wilsonLine A
+                  (plaquetteList (d := d) (N := N)
+                    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)
+                  ^ (m p - t p)) := rfl
+        rw [hpow_eq]
+        ring
+      rw [hpt]
+      rw [MeasureTheory.integral_finset_sum _ fun t _ =>
+        (integrable_powerTraceObservable es t
+          (fun p => m p - t p)).const_mul _]
+      refine Finset.sum_eq_zero fun t ht => ?_
+      refine (MeasureTheory.integral_const_mul _ _).trans ?_
+      refine mul_eq_zero_of_right _ ?_
+      by_contra hne
+      have hbnd := chainAreaA_le_card_support_of_integral_pow_ne_zero
+        es t (fun p => m p - t p) hne
+      have hsupp_eq : (Finset.univ.filter
+          (fun p => t p + (m p - t p) ≠ 0))
+          = Finset.univ.filter (fun p => m p ≠ 0) := by
+        refine Finset.filter_congr fun p _ => ?_
+        have htp : t p ≤ m p := by
+          have hmem := (Fintype.mem_piFinset.mp ht) p
+          rw [Finset.mem_range] at hmem
+          omega
+        have : t p + (m p - t p) = m p := by omega
+        rw [this]
+      rw [hsupp_eq] at hbnd
+      exact absurd hbnd hA
+    rw [hzero, norm_zero]
+
 /-! ## AL6-1: the per-term kill in `Finset` form
 
 The powerset expansion of `⟨W_C⟩·Z` produces terms indexed by a
