@@ -875,6 +875,22 @@ univ-version applied to the restricted system.  Remaining in R1: the
 `KPCriterion` transfer; then R2 (the cluster-sum difference) and R3
 (the restricted lattice gate).
 
+**Addendum 17j (same day, R1 COMPLETE — the volume-restricted Mayer
+inversion).**  Build green (8237 jobs), oracle clean:
+
+```
+'YangMills.KP.KPCriterion.restrict'                    [propext, Classical.choice, Quot.sound]
+'YangMills.KP.partition_eq_exp_clusterSum_restrict'    [propext, Classical.choice, Quot.sound]
+```
+
+Under the ambient KP criterion, EVERY finite-volume partition function
+is the exponential of its restricted system's cluster sum:
+`partition P Λ = exp(clusterSum (P.restrict Λ))` — so a ratio of
+partition functions over two volumes is the exponential of a
+difference of cluster sums.  Remaining: R2 (bound that difference by
+the pinned tail over the small region) and R3 (the restricted lattice
+gate `∫∏_F(1+f) = partition gas (polymersIn F)`).
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

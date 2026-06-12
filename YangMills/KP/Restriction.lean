@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.KP.Basic
+import YangMills.KP.MayerInversion
 
 /-!
 # Restriction of a polymer system to a sub-volume (VU campaign, R1)
@@ -104,5 +105,55 @@ theorem partition_restrict (P : PolymerSystem) (Λ : Finset P.Polymer) :
             P.activity ((Function.Embedding.subtype (· ∈ Λ)) X) :=
           Finset.prod_map _ _ _
       _ = ∏ X ∈ S.subtype (· ∈ Λ), (P.restrict Λ).activity X := rfl
+
+open Classical in
+/-- **The KP criterion restricts:** the restricted system inherits the
+criterion with the restricted weight — its criterion sums are sub-sums
+of the ambient ones. -/
+theorem KPCriterion.restrict {P : PolymerSystem} [Fintype P.Polymer]
+    {a : P.Polymer → ℝ} (h : KPCriterion P a) (Λ : Finset P.Polymer) :
+    KPCriterion (P.restrict Λ) (fun X => a X.1) := by
+  classical
+  refine ⟨fun X => h.1 X.1, fun X => ?_⟩
+  have hsub : ((Finset.univ : Finset (P.restrict Λ).Polymer).filter
+      (fun Y => (P.restrict Λ).incomp X Y)).map
+        (Function.Embedding.subtype (· ∈ Λ))
+      ⊆ (Finset.univ : Finset P.Polymer).filter
+        (fun Y => P.incomp X.1 Y) := by
+    intro y hy
+    obtain ⟨Y, hY, rfl⟩ := Finset.mem_map.mp hy
+    exact Finset.mem_filter.mpr
+      ⟨Finset.mem_univ _, (Finset.mem_filter.mp hY).2⟩
+  calc ∑ Y ∈ (Finset.univ : Finset (P.restrict Λ).Polymer).filter
+        (fun Y => (P.restrict Λ).incomp X Y),
+        ‖(P.restrict Λ).activity Y‖ * Real.exp (a Y.1)
+      = ∑ y ∈ ((Finset.univ : Finset (P.restrict Λ).Polymer).filter
+          (fun Y => (P.restrict Λ).incomp X Y)).map
+            (Function.Embedding.subtype (· ∈ Λ)),
+          ‖P.activity y‖ * Real.exp (a y) :=
+        (Finset.sum_map
+          ((Finset.univ : Finset (P.restrict Λ).Polymer).filter
+            (fun Y => (P.restrict Λ).incomp X Y))
+          (Function.Embedding.subtype (· ∈ Λ))
+          (fun y => ‖P.activity y‖ * Real.exp (a y))).symm
+    _ ≤ ∑ y ∈ (Finset.univ : Finset P.Polymer).filter
+          (fun Y => P.incomp X.1 Y),
+          ‖P.activity y‖ * Real.exp (a y) :=
+        Finset.sum_le_sum_of_subset_of_nonneg hsub
+          (fun y _ _ => by positivity)
+    _ ≤ a X.1 := h.2 X.1
+
+open Classical in
+/-- **The volume-restricted Mayer–Ursell inversion (R1 complete):**
+under the ambient KP criterion, EVERY finite-volume partition function
+is the exponential of its restricted system's cluster sum.  The
+`Z`-ratio of two volumes is therefore the exponential of a DIFFERENCE
+of cluster sums — the object the volume-uniform bound (R2) controls. -/
+theorem partition_eq_exp_clusterSum_restrict {P : PolymerSystem}
+    [Fintype P.Polymer] {a : P.Polymer → ℝ} (h : KPCriterion P a)
+    (Λ : Finset P.Polymer) :
+    partition P Λ = Complex.exp (clusterSum (P.restrict Λ)) := by
+  rw [partition_restrict P Λ]
+  exact partition_eq_exp_clusterSum_of_kp _ (h.restrict Λ)
 
 end YangMills.KP
