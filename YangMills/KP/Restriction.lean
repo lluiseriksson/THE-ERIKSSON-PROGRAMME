@@ -692,4 +692,23 @@ theorem norm_div_le_pinned_sum_exp {ι : Type*} (s : Finset ι)
         exact mul_le_mul_of_nonneg_left
           (norm_exp_div_norm_exp_le ζ (ζf i) (hdiff i hi)) (ha i hi)
 
+/-- **The area-extraction split (V2-3c engine):** in a sum of
+`ρ^{size}` weights over terms of size `≥ A` with `ρ = σ²`, `σ ≤ 1`,
+one factor `σ^A` pulls out and the rest resums at rate `σ` — the step
+that turns the pinned dichotomy sum into `r^{Area}·(gas sum)`. -/
+theorem sum_ite_pow_le {ι : Type*} (s : Finset ι) (g : ι → ℕ)
+    (A : ℕ) (σ : ℝ) (h0 : 0 ≤ σ) (h1 : σ ≤ 1) :
+    (∑ i ∈ s, if A ≤ g i then (σ ^ 2) ^ (g i) else 0)
+      ≤ σ ^ A * ∑ i ∈ s, σ ^ (g i) := by
+  rw [Finset.mul_sum]
+  refine Finset.sum_le_sum fun i _ => ?_
+  split_ifs with h
+  · calc (σ ^ 2) ^ (g i)
+        = σ ^ (g i) * σ ^ (g i) := by
+          rw [← pow_mul, two_mul, pow_add]
+      _ ≤ σ ^ A * σ ^ (g i) :=
+          mul_le_mul_of_nonneg_right
+            (pow_le_pow_of_le_one h0 h1 h) (pow_nonneg h0 _)
+  · positivity
+
 end YangMills.KP
