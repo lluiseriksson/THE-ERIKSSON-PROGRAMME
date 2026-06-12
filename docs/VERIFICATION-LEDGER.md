@@ -945,6 +945,24 @@ the loop's neighbourhood.  Chained: the restricted Mayer inversion
 the swap-reindex union bound (R2b3), the scalar tilt absorbing `(n+1)`
 (R2b4).  Remaining in V1: R3, the restricted lattice gate.
 
+**Addendum 17n (same day, R3 truncation substrate —
+`L1_GibbsMeasure/RestrictedGate.lean` enters the core).**  Build green
+(**8238 jobs**, +1), oracle clean:
+
+```
+'YangMills.prod_one_add_truncWeight'                   [propext, Classical.choice, Quot.sound]
+'YangMills.truncated_activity_eq_zero'                 [propext, Classical.choice, Quot.sound]
+'YangMills.truncated_activity_eq'                      [propext, Classical.choice, Quot.sound]
+```
+
+The truncation device's substrate: `truncWeight w F = w·1_F` with the
+pointwise identity `∏_F(1+w) = ∏_univ(1+w·1_F)`, inherited
+`IsLocalWeight`/measurability/bound, and the truncated gas's
+activities — ZERO off the `F`-polymers, EQUAL to the original gas's on
+them.  Remaining in R3: the assembly chain (banked weighted gate at
+`truncWeight` + `partition_eq_of_activity_eq_zero` + the activity
+congruence) into `Z_F = partition (gas w) (polymersIn F)`.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

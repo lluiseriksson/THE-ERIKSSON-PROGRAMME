@@ -75,6 +75,7 @@ import YangMills.L1_GibbsMeasure.EdgeFactorization
 import YangMills.L1_GibbsMeasure.WilsonLoopExpansion
 import YangMills.L1_GibbsMeasure.ExpActivityExpansion
 import YangMills.L1_GibbsMeasure.SupportFactorization
+import YangMills.L1_GibbsMeasure.RestrictedGate
 import YangMills.KP.PinnedCluster
 import YangMills.KP.PinnedWalk
 import YangMills.KP.PinnedBound
