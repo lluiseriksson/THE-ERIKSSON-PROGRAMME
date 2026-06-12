@@ -346,6 +346,41 @@ theorem integral_wilson_obs_regroup
     rw [Finset.disjoint_biUnion_left]
     exact fun p hp => near_far_support_disjoint hp hq.1 hq.2
 
+/-! ## V1 opening: the far resummation
+
+Summing the far factor of `integral_wilson_obs_regroup` over all far
+subsets reconstitutes a RESTRICTED partition function — the object the
+`Z`-ratio cancellation (V1) divides against. -/
+
+/-- Binomial expansion of `∏ (1 + w)` over an arbitrary finite index
+set, `ℂ`-valued (the banked `prod_one_add_eq_sum` is `ℝ`-valued and
+`univ`-only). -/
+theorem prod_one_add_eq_sum_powerset {ι : Type*} [DecidableEq ι]
+    (F : Finset ι) (w : ι → ℂ) :
+    ∏ p ∈ F, (1 + w p) = ∑ T ∈ F.powerset, ∏ p ∈ T, w p := by
+  have hcomm : ∀ p ∈ F, 1 + w p = w p + 1 := fun p _ => by ring
+  rw [Finset.prod_congr rfl hcomm, Finset.prod_add]
+  exact Finset.sum_congr rfl fun t _ => by
+    rw [Finset.prod_const_one, mul_one]
+
+open Classical in
+/-- **The far resummation:** the sum of the far integrals over ALL
+subsets of a far region `F` is the restricted partition function
+`∫ ∏_{p∈F}(1 + f_p)`. -/
+theorem sum_integral_prod_eq_integral_prod_one_add
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (f : ConcretePlaquette d N → GaugeConfig d N G → ℂ)
+    (F : Finset (ConcretePlaquette d N))
+    (hint : ∀ T ∈ F.powerset, Integrable (fun A => ∏ p ∈ T, f p A)
+      (gaugeMeasureFrom (d := d) (N := N) μ)) :
+    ∑ T ∈ F.powerset, ∫ A, ∏ p ∈ T, f p A
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+      = ∫ A, ∏ p ∈ F, (1 + f p A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+  rw [← MeasureTheory.integral_finset_sum _ hint]
+  refine integral_congr_ae (Filter.Eventually.of_forall fun A => ?_)
+  exact (prod_one_add_eq_sum_powerset F (fun p => f p A)).symm
+
 /-- The Wilson-loop instantiation of the V0 headline: a loop
 observable times activities supported away from the loop. -/
 theorem integral_wilson_obs_mul_prod_split

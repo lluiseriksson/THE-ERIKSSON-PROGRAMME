@@ -766,6 +766,22 @@ and the near block (`plaqComponents_support_disjoint` + the V0-1
 independence).  V0 of `docs/AREA-LAW-VU-PLAN.md` is COMPLETE; the
 campaign's center of mass (V1, the `Z`-ratio cancellation) is next.
 
+**Addendum 17d (same day, V1-a: the far resummation).**  Build green
+(8236 jobs), oracle clean:
+
+```
+'YangMills.prod_one_add_eq_sum_powerset'               [propext, Classical.choice, Quot.sound]
+'YangMills.sum_integral_prod_eq_integral_prod_one_add' [propext, Classical.choice, Quot.sound]
+```
+
+Summing the far factor of the V0 regrouping over all far subsets
+reconstitutes the RESTRICTED partition function:
+`∑_{T⊆F} ∫ ∏_{p∈T} f_p = ∫ ∏_{p∈F}(1+f_p)` — the `Z_{F}` object the
+V1 ratio cancellation divides against.  Remaining in V1: the fiber
+bijection `S ↔ (S₀, T)` (needs `plaqComponents` stability under
+support-disjoint unions — the campaign's hard graph brick) and the
+`Z`-ratio bound via the cluster expansion.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
