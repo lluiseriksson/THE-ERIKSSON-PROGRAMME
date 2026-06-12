@@ -686,4 +686,208 @@ theorem integral_conjPair_prod_eq_cast (N_c : ℕ) [NeZero N_c]
   rw [hpt]
   exact integral_prod_one_add_ofReal μ _ F
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **V2-3b′ — THE NORMALIZED PINNED BOUND** (the `Z`-ratio
+cancellation executed): at strong coupling, the NORMALIZED Wilson-loop
+expectation is bounded by the pinned sum of dichotomy weights times
+loop-neighbourhood exponentials — every factor volume-free. -/
+theorem norm_normalized_wilson_loop_le_pinned_sum
+    (N_c : ℕ) [NeZero N_c]
+    (es : List (ConcreteEdge d N)) (δ : ℝ) (hδ0 : 0 ≤ δ)
+    (c c' : ConcretePlaquette d N → ℂ)
+    (hc : ∀ p, ‖c p‖ ≤ δ) (hc' : ∀ p, ‖c' p‖ ≤ δ)
+    (hpair : ∀ p, c' p = (starRingEnd ℂ) (c p))
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((2 * δ * (N_c : ℝ)) * Real.exp (t + ε + 1)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      (((2 * δ * (N_c : ℝ)) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((2 * δ * (N_c : ℝ)) * Real.exp (t + ε + 1)))) ≤ t)
+    (hint1 : ∀ S : Finset (ConcretePlaquette d N),
+      Integrable (fun A => Matrix.trace (wilsonLine A es).val *
+        ∏ p ∈ S, (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+        (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)))
+    (hint2 : ∀ S : Finset (ConcretePlaquette d N),
+      Integrable (fun A => ∏ p ∈ S,
+        (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+        (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))) :
+    ‖(∫ A, Matrix.trace (wilsonLine A es).val *
+        ∏ p : ConcretePlaquette d N,
+          (1 + (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)))
+      / ((weightedPartition (d := d) (N := N) (sunHaarProb N_c)
+          (fun A p => (2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re)
+          : ℝ) : ℂ)‖
+      ≤ ∑ S₀ ∈ (Finset.univ :
+            Finset (ConcretePlaquette d N)).powerset.filter
+            (fun S₀ => nearLoop es S₀ = S₀),
+          (if chainAreaA (R := ZMod N_c) (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+                (loopChain (R := ZMod N_c) (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+              ≤ S₀.card
+            then (N_c : ℝ) * (2 * δ * (N_c : ℝ)) ^ S₀.card
+            else 0) *
+          Real.exp
+            (((edgeSupport (d := d) (N := N) es).card * (4 * d)
+              + S₀.card * (16 * d)) *
+              (Real.exp 1 * ((2 * δ * (N_c : ℝ) * Real.exp t) /
+                (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+                  (2 * δ * (N_c : ℝ) * Real.exp t))))) := by
+  classical
+  set w : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+      → ConcretePlaquette d N → ℝ :=
+    fun A p => (2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re
+    with hw
+  have hloc := isLocalWeight_reActivity (d := d) (N := N) N_c c
+  have hmeas := measurable_reActivity (d := d) (N := N) N_c c
+  have hbd := reActivity_bound (d := d) (N := N) N_c c hc
+  have hδw0 : (0 : ℝ) ≤ 2 * δ * (N_c : ℝ) := by positivity
+  have hx0 : (0 : ℝ) ≤ 2 * δ * (N_c : ℝ) * Real.exp t := by positivity
+  have hr' : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      (2 * δ * (N_c : ℝ) * Real.exp t) < 1 := by
+    refine lt_of_le_of_lt ?_ hr
+    refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+    refine mul_le_mul_of_nonneg_left ?_ hδw0
+    exact Real.exp_le_exp.mpr (by linarith)
+  have hK0 : (0 : ℝ) ≤ Real.exp 1 *
+      ((2 * δ * (N_c : ℝ) * Real.exp t) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (2 * δ * (N_c : ℝ) * Real.exp t))) := by
+    have hden : (0 : ℝ) < 1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+        (2 * δ * (N_c : ℝ) * Real.exp t) := by linarith
+    positivity
+  -- the gate, per region
+  have hgate := fun S₀ : Finset (ConcretePlaquette d N) =>
+    restricted_partition_log_ratio_bound (sunHaarProb N_c)
+      hloc hmeas hδw0 hbd t ε ht0 hε0 hr hsmall (farRegion es S₀)
+  -- the base criterion and Z = exp ζ
+  have hscale1 := weighted_scale_kpCriterion (sunHaarProb N_c)
+    hδw0 hbd t ε 1 ht0 hε0 (by linarith) hr hsmall
+  have hcrit : KP.KPCriterion
+      (weightedLatticePolymerSystem (d := d) (N := N)
+        (sunHaarProb N_c) w)
+      (fun cc => t * (cc.1.card : ℝ)) := by
+    refine KP.KPCriterion.of_activity_norm_le
+      (z₂ := fun cc : (weightedLatticePolymerSystem (d := d) (N := N)
+          (sunHaarProb N_c) w).Polymer =>
+        ((Real.exp 1 : ℝ) : ℂ) *
+          (weightedLatticePolymerSystem (d := d) (N := N)
+            (sunHaarProb N_c) w).activity cc)
+      ?_ hscale1
+    intro cc
+    rw [norm_mul]
+    refine le_mul_of_one_le_left (norm_nonneg _) ?_
+    rw [Complex.norm_real, Real.norm_eq_abs, abs_of_pos (Real.exp_pos _)]
+    exact Real.one_le_exp (zero_le_one (α := ℝ))
+  have hZ : ((weightedPartition (d := d) (N := N) (sunHaarProb N_c) w
+      : ℝ) : ℂ)
+      = Complex.exp (KP.clusterSum
+        (weightedLatticePolymerSystem (d := d) (N := N)
+          (sunHaarProb N_c) w)) := by
+    rw [weightedPartition_eq_partition (sunHaarProb N_c) hloc hmeas hbd]
+    exact KP.partition_eq_exp_clusterSum_of_kp _ hcrit
+  -- the numerator bound with exp-identified far factors
+  have h3a := norm_integral_wilson_loop_le_pinned_sum es δ hδ0 c c'
+    hc hc' hint1 hint2
+  simp only [hpair] at h3a
+  have hnum : ‖∫ A, Matrix.trace (wilsonLine A es).val *
+      ∏ p : ConcretePlaquette d N,
+        (1 + (c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+        + (starRingEnd ℂ) (c p) * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+      ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖
+      ≤ ∑ S₀ ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).powerset.filter
+          (fun S₀ => nearLoop es S₀ = S₀),
+        (if chainAreaA (R := ZMod N_c) (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+              (loopChain (R := ZMod N_c) (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+            ≤ S₀.card
+          then (N_c : ℝ) * (2 * δ * (N_c : ℝ)) ^ S₀.card
+          else 0) *
+        ‖Complex.exp (KP.clusterSum
+          ((weightedLatticePolymerSystem (d := d) (N := N)
+            (sunHaarProb N_c) w).restrict
+            (Finset.univ.filter
+              (fun cc => cc.1 ⊆ farRegion es S₀))))‖ := by
+    refine le_trans h3a (le_of_eq (Finset.sum_congr rfl fun S₀ _ => ?_))
+    have hfar := (integral_conjPair_prod_eq_cast N_c (sunHaarProb N_c) c
+      (farRegion es S₀)).trans (hgate S₀).1
+    rw [hfar]
+  -- the difference bounds, per region
+  have hdiff : ∀ S₀ ∈ (Finset.univ :
+      Finset (ConcretePlaquette d N)).powerset.filter
+      (fun S₀ => nearLoop es S₀ = S₀),
+      ‖KP.clusterSum (weightedLatticePolymerSystem (d := d) (N := N)
+          (sunHaarProb N_c) w)
+        - KP.clusterSum ((weightedLatticePolymerSystem (d := d) (N := N)
+          (sunHaarProb N_c) w).restrict
+          (Finset.univ.filter (fun cc => cc.1 ⊆ farRegion es S₀)))‖
+      ≤ ((edgeSupport (d := d) (N := N) es).card * (4 * d)
+          + S₀.card * (16 * d)) *
+        (Real.exp 1 * ((2 * δ * (N_c : ℝ) * Real.exp t) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+            (2 * δ * (N_c : ℝ) * Real.exp t)))) := by
+    intro S₀ _
+    refine le_trans (hgate S₀).2 ?_
+    refine le_trans (offRegion_polymer_sum_le (sunHaarProb N_c)
+      hδw0 hbd t ht0 hr' (farRegion es S₀)) ?_
+    exact mul_le_mul_of_nonneg_right
+      (card_compl_farRegion_le es S₀) hK0
+  -- assemble
+  refine KP.norm_div_le_pinned_sum_exp _ _ _ _ _ _ _
+    (fun S₀ _ => ?_) ?_ hZ hdiff
+  · split_ifs
+    · positivity
+    · exact le_rfl
+  · have hNumEq : (∫ A, Matrix.trace (wilsonLine A es).val *
+        ∏ p : ConcretePlaquette d N,
+          (1 + (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)))
+        = ∫ A, Matrix.trace (wilsonLine A es).val *
+        ∏ p : ConcretePlaquette d N,
+          (1 + (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + (starRingEnd ℂ) (c p) * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) := by
+      refine integral_congr_ae (Filter.Eventually.of_forall fun A => ?_)
+      refine congrArg (fun x => Matrix.trace (wilsonLine A es).val * x) ?_
+      exact Finset.prod_congr rfl fun p _ => by rw [hpair p]
+    rw [hNumEq]
+    exact hnum
+
 end YangMills

@@ -1029,6 +1029,49 @@ pinned area tail: the N-ality kill + pinned entropy, both mechanisms
 already proved in the area-law campaigns) closes the volume-uniform
 area law.  All M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 17r (2026-06-12, V2-3b′ COMPLETE — THE NORMALIZED PINNED
+BOUND: the `Z`-ratio cancellation executed at the lattice)
+
+**Build:** green (8238 jobs).  Oracle outputs (verbatim, the V2 ladder
+since Addendum 17q — `WilsonLoopMonomial.lean`, `KP/Restriction.lean`,
+`RestrictedGate.lean`):
+
+```
+'YangMills.integral_prod_one_add_ofReal'               [propext, Classical.choice, Quot.sound]
+'YangMills.card_compl_farRegion_le'                    [propext, Classical.choice, Quot.sound]
+'YangMills.norm_integral_pinned_term_le'               [propext, Classical.choice, Quot.sound]
+'YangMills.KP.norm_exp_div_norm_exp_le'                [propext, Classical.choice, Quot.sound]
+'YangMills.norm_integral_wilson_loop_le_pinned_sum'    [propext, Classical.choice, Quot.sound]
+'YangMills.KP.norm_div_le_pinned_sum_exp'              [propext, Classical.choice, Quot.sound]
+'YangMills.wilsonLine_congr_of_configToPos_eq'         [propext, Classical.choice, Quot.sound]
+'YangMills.isLocalWeight_reActivity'                   [propext, Classical.choice, Quot.sound]
+'YangMills.measurable_reActivity'                      [propext, Classical.choice, Quot.sound]
+'YangMills.reActivity_bound'                           [propext, Classical.choice, Quot.sound]
+'YangMills.one_add_conjPair_eq_cast'                   [propext, Classical.choice, Quot.sound]
+'YangMills.integral_conjPair_prod_eq_cast'             [propext, Classical.choice, Quot.sound]
+'YangMills.norm_normalized_wilson_loop_le_pinned_sum'  [propext, Classical.choice, Quot.sound]
+```
+
+**The normalized Wilson-loop expectation is machine-checked in pinned
+form, volume-free in every factor:** for the conjugate-pair linearized
+activities (`c' = conj c`, `‖c‖ ≤ δ`), in the banked strong-coupling
+window,
+
+    ‖(∫ tr(W_C)·∏(1+f)) / Z‖
+      ≤ ∑_{S₀ pinned} ite(Area ≤ #S₀)(N_c·(2δN_c)^{#S₀})(0)
+          · exp((#loopSupp·4d + #S₀·16d)·K(d,δ,t))
+
+— the kill annihilates every sub-area pinned term, each survivor
+carries its geometric weight times a loop-neighbourhood exponential,
+and `Z` cancelled against the far factors through the restricted
+cluster expansion (the entire V0+V1 machinery executing in one
+statement).  Integrability of the finite products is carried as two
+explicit hypothesis families (standard, to be discharged at
+instantiation).  Remaining for the campaign headline (V2-3c): pull
+`r^{Area}` out of the pinned sum and resum the loop-anchored component
+gas into the perimeter prefactor `e^{c·|C|}`.  All M3 lattice-side;
+M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
