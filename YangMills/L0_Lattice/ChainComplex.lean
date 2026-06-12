@@ -515,6 +515,27 @@ theorem chainSupport_neg (s : P (d := d) (N := N) (G := G) → R) :
   exact Finset.filter_congr fun p _ => by simp
 
 open Classical in
+/-- **A single plaquette spans its own boundary loop** — the
+indicator `2`-chain witnesses spannability of `loopChain
+(plaquetteList p)`. -/
+theorem chainBoundary₂A_single (p : P (d := d) (N := N) (G := G)) :
+    chainBoundary₂A (d := d) (N := N) (G := G)
+        (fun q => if q = p then (1 : R) else 0)
+      = loopChain (R := R) (d := d) (N := N) (G := G)
+          (plaquetteList (d := d) (N := N) (G := G) p) := by
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N) (G := G)
+  funext e
+  rw [← sum_mul_loopChain_plaquette_list_eq_chainBoundary₂A
+    (fun q => if q = p then (1 : R) else 0) e]
+  rw [Finset.sum_eq_single p]
+  · rw [if_pos rfl, one_mul]
+    rfl
+  · intro q _ hq
+    rw [if_neg hq, zero_mul]
+  · intro h
+    exact absurd (Finset.mem_univ p) h
+
+open Classical in
 /-- **Non-vacuity of the area exponent:** a NONZERO spannable chain
 has `N`-ality area at least `1` — the empty surface spans only the
 zero chain.  (Unspannable chains carry the junk value `0`; the

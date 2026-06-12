@@ -1782,4 +1782,126 @@ theorem finite_volume_area_law_re
             (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
       ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)))]
 
+/-! ## The concrete non-vacuity witness: plaquette loops have area ≥ 1 -/
+
+/-- Shifting a lattice site moves it (for `N ≥ 2`). -/
+theorem FinBox.shift_ne {d N : ℕ} [NeZero N] (hN : 2 ≤ N)
+    (x : FinBox d N) (i : Fin d) : x.shift i ≠ x := by
+  intro h
+  have h1 := congrFun h i
+  simp only [FinBox.shift, if_pos rfl] at h1
+  have hval : ((x i : ℕ) + 1) % N = (x i : ℕ) := by
+    have h2 := congrArg Fin.val h1
+    exact h2
+  have hlt := (x i).isLt
+  rcases Nat.lt_or_ge ((x i : ℕ) + 1) N with hc | hc
+  · rw [Nat.mod_eq_of_lt hc] at hval
+    omega
+  · have heq : (x i : ℕ) + 1 = N := by omega
+    rw [heq, Nat.mod_self] at hval
+    omega
+
+open Classical in
+/-- **The plaquette boundary's chain is nonzero** (concrete geometry,
+`N ≥ 2`, `N_c ≥ 2`): the chain takes value `1` at the plaquette's
+first edge — the four edges are distinct and none is the reverse of
+the first. -/
+theorem loopChain_plaquetteList_ne_zero (hN2 : 2 ≤ N) (hNc : 2 ≤ N_c)
+    (p : ConcretePlaquette d N) :
+    loopChain (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p) ≠ 0 := by
+  haveI : Fact (1 < N_c) := ⟨hNc⟩
+  intro h
+  have h0 := congrFun h (FiniteLatticeGeometry.plaquetteEdge
+    (d := d) (N := N) (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p 0)
+  -- the inequality facts among the four edges
+  have hd : p.dir1 ≠ p.dir2 := Fin.ne_of_lt p.hlt
+  have hshift : p.site.shift p.dir2 ≠ p.site :=
+    FinBox.shift_ne hN2 p.site p.dir2
+  -- evaluate the chain at the first edge: count 1 forward, 0 backward
+  have hval : loopChain (R := ZMod N_c) (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)
+      (FiniteLatticeGeometry.plaquetteEdge (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p 0)
+      = 1 := by
+    show ((List.count _ _ : ℕ) : ZMod N_c) - ((List.count _ _ : ℕ) : ZMod N_c) = 1
+    rw [show (FiniteLatticeGeometry.reverse (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        (FiniteLatticeGeometry.plaquetteEdge (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p 0))
+      = ⟨p.site, p.dir1, false⟩ from rfl]
+    rw [show (FiniteLatticeGeometry.plaquetteEdge (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p 0)
+      = ⟨p.site, p.dir1, true⟩ from rfl]
+    rw [show plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p
+      = [⟨p.site, p.dir1, true⟩,
+         ⟨p.site.shift p.dir1, p.dir2, true⟩,
+         ⟨p.site.shift p.dir2, p.dir1, false⟩,
+         ⟨p.site, p.dir2, false⟩] from rfl]
+    simp only [List.count_cons, List.count_nil, beq_iff_eq]
+    have q1 : ¬ (({ source := p.site, dir := p.dir2, sign := false } :
+        FiniteLatticeGeometry.E (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+        = { source := p.site, dir := p.dir1, sign := true }) :=
+      fun hq => hd (congrArg ConcreteEdge.dir hq).symm
+    have q2 : ¬ (({ source := (p.site.shift p.dir2), dir := p.dir1, sign := false } :
+        FiniteLatticeGeometry.E (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+        = { source := p.site, dir := p.dir1, sign := true }) :=
+      fun hq => Bool.noConfusion (congrArg ConcreteEdge.sign hq)
+    have q3 : ¬ (({ source := (p.site.shift p.dir1), dir := p.dir2, sign := true } :
+        FiniteLatticeGeometry.E (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+        = { source := p.site, dir := p.dir1, sign := true }) :=
+      fun hq => hd (congrArg ConcreteEdge.dir hq).symm
+    have q4 : ¬ (({ source := p.site, dir := p.dir2, sign := false } :
+        FiniteLatticeGeometry.E (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+        = { source := p.site, dir := p.dir1, sign := false }) :=
+      fun hq => hd (congrArg ConcreteEdge.dir hq).symm
+    have q5 : ¬ (({ source := (p.site.shift p.dir2), dir := p.dir1, sign := false } :
+        FiniteLatticeGeometry.E (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+        = { source := p.site, dir := p.dir1, sign := false }) :=
+      fun hq => hshift (congrArg ConcreteEdge.source hq)
+    have q6 : ¬ (({ source := (p.site.shift p.dir1), dir := p.dir2, sign := true } :
+        FiniteLatticeGeometry.E (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+        = { source := p.site, dir := p.dir1, sign := false }) :=
+      fun hq => Bool.noConfusion (congrArg ConcreteEdge.sign hq)
+    have q7 : ¬ (({ source := p.site, dir := p.dir1, sign := true } :
+        FiniteLatticeGeometry.E (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+        = { source := p.site, dir := p.dir1, sign := false }) :=
+      fun hq => Bool.noConfusion (congrArg ConcreteEdge.sign hq)
+    simp only [if_neg q1, if_neg q2, if_neg q3, if_neg q4, if_neg q5,
+      if_neg q6, if_neg q7]
+    simp
+  rw [hval] at h0
+  rw [Pi.zero_apply] at h0
+  exact one_ne_zero h0
+
+open Classical in
+/-- **The witness:** every concrete plaquette-boundary loop has
+`N`-ality area at least `1` — the area-law exponent is genuinely
+positive on actual loops.  Closes the adversarial non-vacuity audit
+of `finite_volume_area_law`. -/
+theorem one_le_chainAreaA_plaquette (hN2 : 2 ≤ N) (hNc : 2 ≤ N_c)
+    (p : ConcretePlaquette d N) :
+    1 ≤ chainAreaA (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        (loopChain (R := ZMod N_c) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)) :=
+  one_le_chainAreaA (loopChain_plaquetteList_ne_zero hN2 hNc p)
+    ⟨fun q => if q = p then (1 : ZMod N_c) else 0,
+      chainBoundary₂A_single (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p⟩
+
 end YangMills
