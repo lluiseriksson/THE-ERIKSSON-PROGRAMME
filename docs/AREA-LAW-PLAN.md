@@ -282,6 +282,15 @@ ps` ⇒ `chainAreaA_le_card_of_support_subset` + `chainAreaA_neg` +
 `chainSupport` with `simp only [chainSupport, Finset.mem_filter]`
 (classical-vs-derived `Decidable` on `ZMod`).
 **This was AL5 — the spanning-surface lower bound — DISCHARGED.**
+**AL6 enablers CLOSED** (`WilsonLoopMonomial.lean`):
+`norm_trace_wilsonLine_le` (Wilson-line traces bounded by `N_c`),
+`trace_wilsonLine_eq_sum_decorated_config` (the decorated expansion
+at an arbitrary configuration, standalone),
+`measurable_trace_wilsonLine` (measurability via the decorated
+expansion — finite sums of coordinate-entry products, NO
+group-operation measurability needed), and
+`integrable_prod_trace_wilsonLine` (products of `n` traces
+integrable, bound `N_c^n`).  All oracle clean.
 **Open (one brick):** AL6 — the quantitative assembly:
 `⟨W_C⟩·Z = ∑_S T_S` via `integral_mul_prod_one_add` (+ the σ-binomial
 splitting of `∏(activities)` into the join's signed-trace terms),

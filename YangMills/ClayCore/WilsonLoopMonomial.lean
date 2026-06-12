@@ -924,4 +924,117 @@ theorem chainAreaA_loopChain_le_of_integral_ne_zero
   refine le_trans hbound (le_trans Finset.card_image_le ?_)
   simp
 
+/-! ## AL6 enablers: bounds, measurability, integrability -/
+
+/-- Wilson-line traces are **bounded by `N_c`** — the trace of a
+unitary matrix is a sum of `N_c` entries of norm `≤ 1`. -/
+theorem norm_trace_wilsonLine_le
+    (A : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+    (es : List (ConcreteEdge d N)) :
+    ‖Matrix.trace (wilsonLine A es).val‖ ≤ (N_c : ℝ) := by
+  have hU : (wilsonLine A es).val ∈ Matrix.unitaryGroup (Fin N_c) ℂ :=
+    (Matrix.mem_specialUnitaryGroup_iff.mp (wilsonLine A es).property).1
+  have heq : Matrix.trace (wilsonLine A es).val
+      = ∑ i : Fin N_c, (wilsonLine A es).val i i := by
+    simp [Matrix.trace, Matrix.diag]
+  rw [heq]
+  calc ‖∑ i : Fin N_c, (wilsonLine A es).val i i‖
+      ≤ ∑ i : Fin N_c, ‖(wilsonLine A es).val i i‖ := norm_sum_le _ _
+    _ ≤ ∑ _i : Fin N_c, (1 : ℝ) :=
+        Finset.sum_le_sum fun i _ => entry_norm_bound_of_unitary hU i i
+    _ = (N_c : ℝ) := by simp
+
+/-- The decorated expansion at an **arbitrary** configuration —
+`J-2`'s integrand rewrite as a standalone lemma. -/
+theorem trace_wilsonLine_eq_sum_decorated_config
+    (A : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+    (es : List (ConcreteEdge d N)) :
+    Matrix.trace (wilsonLine A es).val
+      = ∑ v : Fin (es.length + 1) → Fin N_c,
+          (if v (Fin.last es.length) = v 0 then (1 : ℂ) else 0) *
+            ∏ idx : Fin es.length,
+              (if (es.get idx).sign
+                then (configToPos A (posEdgeOf (es.get idx))).val
+                  (v idx.castSucc) (v idx.succ)
+                else star ((configToPos A (posEdgeOf (es.get idx))).val
+                  (v idx.succ) (v idx.castSucc))) := by
+  have hA : posToConfig (configToPos A) = A :=
+    gaugeConfigEquiv.apply_symm_apply A
+  conv_lhs => rw [← hA]
+  exact trace_wilsonLine_eq_sum_decorated (configToPos A) es
+
+/-- Wilson-line traces are **measurable** in the configuration —
+via the decorated expansion (a finite sum of products of measurable
+coordinate entries), avoiding group-operation measurability
+entirely. -/
+theorem measurable_trace_wilsonLine (es : List (ConcreteEdge d N)) :
+    Measurable (fun A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      Matrix.trace (wilsonLine A es).val) := by
+  have hpt : (fun A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      Matrix.trace (wilsonLine A es).val)
+      = fun A => ∑ v : Fin (es.length + 1) → Fin N_c,
+          (if v (Fin.last es.length) = v 0 then (1 : ℂ) else 0) *
+            ∏ idx : Fin es.length,
+              (if (es.get idx).sign
+                then (configToPos A (posEdgeOf (es.get idx))).val
+                  (v idx.castSucc) (v idx.succ)
+                else star ((configToPos A (posEdgeOf (es.get idx))).val
+                  (v idx.succ) (v idx.castSucc))) :=
+    funext fun A => trace_wilsonLine_eq_sum_decorated_config A es
+  rw [hpt]
+  have hsymm : Measurable
+      (gaugeConfigEquiv (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))).symm := by
+    rw [measurable_iff_comap_le]
+    exact le_of_eq rfl
+  have hcm : ∀ e : PosEdge d N, Measurable
+      (fun A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) => configToPos A e) :=
+    fun e => (measurable_pi_apply e).comp hsymm
+  refine Finset.measurable_sum _ fun v _ => ?_
+  refine Measurable.const_mul ?_ _
+  refine Finset.measurable_prod _ fun idx _ => ?_
+  by_cases hs : (es.get idx).sign = true
+  · simp only [hs, if_true]
+    exact ((continuous_entry N_c _ _).measurable).comp
+      (hcm (posEdgeOf (es.get idx)))
+  · simp only [hs, if_false]
+    exact (((continuous_entry N_c _ _).star).measurable).comp
+      (hcm (posEdgeOf (es.get idx)))
+
+/-- Products of Wilson-line traces are **integrable** under the gauge
+measure, being measurable and bounded by `N_c^n` — the integrability
+input for every AL6 expansion/swap step. -/
+theorem integrable_prod_trace_wilsonLine {n : ℕ}
+    (L : Fin n → List (ConcreteEdge d N)) :
+    Integrable (fun A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      ∏ j : Fin n, Matrix.trace (wilsonLine A (L j)).val)
+      (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) := by
+  have hm : Measurable (fun A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      ∏ j : Fin n, Matrix.trace (wilsonLine A (L j)).val) :=
+    Finset.measurable_prod _ fun j _ => measurable_trace_wilsonLine (L j)
+  have hb : ∀ A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)),
+      ‖∏ j : Fin n, Matrix.trace (wilsonLine A (L j)).val‖
+        ≤ (N_c : ℝ) ^ n := by
+    intro A
+    rw [norm_prod]
+    calc ∏ j : Fin n, ‖Matrix.trace (wilsonLine A (L j)).val‖
+        ≤ ∏ _j : Fin n, (N_c : ℝ) :=
+          Finset.prod_le_prod (fun _ _ => norm_nonneg _)
+            (fun j _ => norm_trace_wilsonLine_le A (L j))
+      _ = (N_c : ℝ) ^ n := by
+          rw [Finset.prod_const, Finset.card_univ, Fintype.card_fin]
+  have h1 : Integrable (fun _ : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) => (1 : ℂ))
+      (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) :=
+    integrable_const 1
+  have h2 := h1.bdd_mul hm.aestronglyMeasurable
+    (MeasureTheory.ae_of_all _ hb)
+  simpa using h2
+
 end YangMills
