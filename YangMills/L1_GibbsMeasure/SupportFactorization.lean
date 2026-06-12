@@ -593,6 +593,63 @@ theorem nearLoop_idem (es : List (ConcreteEdge d N))
   obtain ⟨hx, hq', hreachN⟩ := nearLoop_walk_descend W hq
   exact (mem_nearLoop_iff_reachable hx).mpr ⟨⟨q.1, hq'⟩, hreachN, hq⟩
 
+theorem plaquetteSupport_nonempty (p : ConcretePlaquette d N) :
+    (plaquetteSupport p).Nonempty := by
+  unfold plaquetteSupport
+  exact Finset.insert_nonempty _ _
+
+open Classical in
+/-- A pinned set is disjoint from its own far region (every plaquette
+touches itself). -/
+theorem disjoint_farRegion (es : List (ConcreteEdge d N))
+    (S₀ : Finset (ConcretePlaquette d N)) :
+    Disjoint S₀ (farRegion es S₀) := by
+  refine Finset.disjoint_left.mpr fun p hp hpf => ?_
+  refine ((Finset.mem_filter.mp hpf).2).2 p hp fun hd => ?_
+  exact (plaquetteSupport_nonempty p).ne_empty (disjoint_self.mp hd)
+
+open Classical in
+/-- **V1-b COMPLETE — the fiber reindexing of the powerset sum:**
+every subset `S` splits uniquely as a pinned near part `S₀` plus an
+arbitrary far subset `T`, so any powerset sum reindexes as
+
+`∑_{S ⊆ P} g S = ∑_{S₀ pinned} ∑_{T ⊆ farRegion S₀} g (S₀ ∪ T)`. -/
+theorem sum_powerset_fiber (es : List (ConcreteEdge d N))
+    (g : Finset (ConcretePlaquette d N) → ℂ) :
+    ∑ S ∈ (Finset.univ : Finset (ConcretePlaquette d N)).powerset, g S
+      = ∑ S₀ ∈ (Finset.univ :
+            Finset (ConcretePlaquette d N)).powerset.filter
+            (fun S₀ => nearLoop es S₀ = S₀),
+          ∑ T ∈ (farRegion es S₀).powerset, g (S₀ ∪ T) := by
+  classical
+  rw [Finset.sum_sigma']
+  refine Finset.sum_nbij'
+    (i := fun S => ⟨nearLoop es S, S \ nearLoop es S⟩)
+    (j := fun x => x.1 ∪ x.2) ?_ ?_ ?_ ?_ ?_
+  · intro S _
+    rw [Finset.mem_sigma, Finset.mem_filter, Finset.mem_powerset,
+      Finset.mem_powerset]
+    exact ⟨⟨Finset.subset_univ _, nearLoop_idem es S⟩,
+      sdiff_nearLoop_subset_farRegion es S⟩
+  · intro x _
+    rw [Finset.mem_powerset]
+    exact Finset.subset_univ _
+  · intro S _
+    exact Finset.union_sdiff_of_subset (nearLoop_subset es S)
+  · rintro ⟨S₀, T⟩ hx
+    rw [Finset.mem_sigma, Finset.mem_filter, Finset.mem_powerset] at hx
+    obtain ⟨⟨-, hpin⟩, hT⟩ := hx
+    rw [Finset.mem_powerset] at hT
+    have h1 : nearLoop es (S₀ ∪ T) = S₀ := nearLoop_union_far hpin hT
+    have hdisj : Disjoint S₀ T :=
+      (disjoint_farRegion es S₀).mono_right hT
+    refine Sigma.ext h1 (heq_of_eq ?_)
+    show (S₀ ∪ T) \ nearLoop es (S₀ ∪ T) = T
+    rw [h1]
+    exact Finset.union_sdiff_cancel_left hdisj
+  · intro S _
+    rw [Finset.union_sdiff_of_subset (nearLoop_subset es S)]
+
 /-! ## V1 opening: the far resummation
 
 Summing the far factor of `integral_wilson_obs_regroup` over all far

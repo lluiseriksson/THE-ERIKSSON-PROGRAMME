@@ -815,6 +815,27 @@ descends into the near part's own touching graph; hence
 lands in the pinned sets.  V1-b now lacks only the `sum_nbij'`
 reindexing bookkeeping.
 
+**Addendum 17g (same day, V1-b COMPLETE — the fiber reindexing).**
+Build green (8236 jobs), oracle clean:
+
+```
+'YangMills.disjoint_farRegion'                         [propext, Classical.choice, Quot.sound]
+'YangMills.sum_powerset_fiber'                         [propext, Classical.choice, Quot.sound]
+```
+
+**The fiber decomposition of the loop-tagged powerset expansion:**
+
+    ∑_{S ⊆ P} g(S) = ∑_{S₀ pinned} ∑_{T ⊆ farRegion(S₀)} g(S₀ ∪ T)
+
+— every subset splits uniquely as a pinned near part plus an arbitrary
+far subset (`sum_nbij'` with the V1-b stability/idempotence theorems
+as the two inverse laws).  **V1-b is COMPLETE.**  Combined with the V0
+regrouping and the V1-a far resummation, the numerator now has the
+campaign's target shape
+`∑_{S₀ pinned} (∫ φ(W_C)·∏_{S₀} f) · Z_{farRegion(S₀)}`
+(assembly + the `Z`-ratio bound = V1-c, the campaign's last analytic
+stretch).
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
