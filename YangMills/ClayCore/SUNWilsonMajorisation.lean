@@ -1,5 +1,6 @@
 /- Copyright (c) 2026 The Eriksson Programme. All rights reserved.
-Released under Apache 2.0 license as described in the file LICENSE.
+Released under the GNU Affero General Public License v3.0
+as described in the file LICENSE.
 Authors: Lluis Eriksson
 
 Phase 14a: SU(N_c) Wilson Cluster Majorisation

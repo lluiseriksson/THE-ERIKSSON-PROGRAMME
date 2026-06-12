@@ -8,7 +8,7 @@
 ![sorry](https://img.shields.io/badge/sorry-0-success)
 ![project axioms](https://img.shields.io/badge/project_axioms-0-success)
 ![Clay distance](https://img.shields.io/badge/distance_to_Clay-~0%25_(%3C0.1%25)-lightgrey)
-![License](https://img.shields.io/badge/license-Apache_2.0-lightgrey)
+![License](https://img.shields.io/badge/license-AGPL--3.0-lightgrey)
 
 This repository contains a **sound, self-contained, machine-verified core** of
 lattice Yang–Mills mathematics (`YangMillsCore`: SU(N) Haar selection rules, a
@@ -202,4 +202,4 @@ are never paid for twice.
 
 ## License
 
-Apache 2.0 — see [`LICENSE`](LICENSE). © 2026 Lluis Eriksson.
+GNU Affero General Public License v3.0 — see [`LICENSE`](LICENSE). © 2026 Lluis Eriksson.
