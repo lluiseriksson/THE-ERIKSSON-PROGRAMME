@@ -255,18 +255,27 @@ oracle clean.  So the multi-line selection rule's survival condition
 for `loop C :: plaquette-loops-of-S` reads, verbatim:
 `loopChain C + (∂₂σ − ∂₂σ∘reverse) = 0` over `ZMod N_c` — the
 antisymmetrized chain equation.
-**Open (final assembly):** (ii) the contrapositive wiring — T_S ≠ 0
-⇒ the antisymmetrized chain equation at every positive edge ⇒
-`Area ≤ |S|`; design note: since `loopChain` and the antisymmetrized
-`∂₂` are orientation-odd, the equation on positive edges determines
-it on all edges, and the spanning argument can either (a) run
-`chainArea` against the antisymmetrized boundary map (define
-`chainBoundary₂A s e := ∂₂ s e − ∂₂ s (reverse e)`, redo
-`chainArea_le` verbatim — recommended, 1 short brick since AL2 is
-ring-generic and proof-identical), or (b) restrict to geometries
-where plaquette lists use only positive edges.  Take (a).
-(iii) AL6: `|⟨W_C⟩·Z| ≤ Σ_{|S| ≥ Area} N_c·δ^{|S|}·entropy` via
-`integral_mul_prod_one_add` + banked tails + non-vacuity window.
+**Assembly (ii) chain side CLOSED** (`ChainComplex.lean`):
+`chainBoundary₂A` (the antisymmetrized boundary, with
+`sum_mul_loopChain_plaquette_list_eq_chainBoundary₂A` folding the
+selection-rule output into it), `chainAreaA` (the `N`-ality area
+against `∂₂A`), `chainAreaA_le`, and the consumer
+`chainAreaA_le_card_of_support_subset`.  All oracle clean.
+**Open (the last two bricks):** (ii-end) the contrapositive
+statement itself — formalize the expansion term `T_S = ∫ tr(W_C)·
+∏_{p∈S}(σ-chosen plaquette traces)` (each σ-term IS a multi-line
+family via reversed lists for the conjugate choice — note `conj tr U
+= tr U†` and the reversed 4-edge list `[rev pe3, rev pe2, rev pe1,
+rev pe0]` has `loopChain = −loopChain(plaq list)`, supplying the
+`σ_p = −1` column), apply
+`integral_prod_trace_wilsonLine_eq_zero_of_sum_loopChain_ne_zero` +
+`loopChain_append`-style splitting of the family sum, conclude
+`T_S ≠ 0 → chainBoundary₂A (σ·indicator) = −loopChain C` →
+`chainAreaA (loopChain C) ≤ |S|` (sign via `chainAreaA` of negation —
+may need `chainAreaA_neg : chainAreaA (−c) = chainAreaA c`, trivial
+from `s ↦ −s`).  (iii) AL6: assemble `|⟨W_C⟩·Z| ≤ Σ_{|S| ≥ Area}
+N_c·δ^{|S|}·entropy` via `integral_mul_prod_one_add` + banked tails +
+non-vacuity window.
 
 **Then AL6:** `|⟨W_C⟩·Z| ≤ ∑_{|S| ≥ Area} (N_c·δ^{|S|})·(entropy)` —
 the `x/(1−Kx)` tail pattern from the correlator campaign, plus the

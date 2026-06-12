@@ -383,4 +383,72 @@ theorem sum_mul_loopChain_plaquette_list
   rw [Finset.sum_sub_distrib]
   rfl
 
+/-! ## The antisymmetrized boundary and its area (area-law assembly ii)
+
+The Wilson-loop selection rules are orientation-odd — a backward
+traversal contributes the conjugate.  The chain object they produce is
+therefore the ANTISYMMETRIZED boundary (forward minus reverse
+incidence), and the area-law's spanning bound runs against it.  The
+ladder below replays `chainArea`/`chainArea_le` verbatim for it. -/
+
+open Classical in
+/-- The **antisymmetrized boundary of a `2`-chain**: forward minus
+reverse incidence — `∑_p σ_p·loopChain(plaquette p)` in closed form
+(`sum_mul_loopChain_plaquette_list`). -/
+noncomputable def chainBoundary₂A
+    (s : P (d := d) (N := N) (G := G) → R) :
+    E (d := d) (N := N) (G := G) → R :=
+  fun e => chainBoundary₂ (d := d) (N := N) (G := G) s e
+    - chainBoundary₂ (d := d) (N := N) (G := G) s
+        (reverse (d := d) (N := N) (G := G) e)
+
+open Classical in
+/-- The selection-rule form of `sum_mul_loopChain_plaquette_list`:
+plaquette Wilson-list combinations ARE the antisymmetrized
+boundary. -/
+theorem sum_mul_loopChain_plaquette_list_eq_chainBoundary₂A
+    (σ : P (d := d) (N := N) (G := G) → R)
+    (e : E (d := d) (N := N) (G := G)) :
+    (letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N) (G := G)
+      ∑ p : P (d := d) (N := N) (G := G),
+        σ p * loopChain (R := R) (d := d) (N := N) (G := G)
+          [plaquetteEdge p 0, plaquetteEdge p 1,
+           plaquetteEdge p 2, plaquetteEdge p 3] e)
+      = chainBoundary₂A (d := d) (N := N) (G := G) σ e :=
+  sum_mul_loopChain_plaquette_list (R := R) σ e
+
+open Classical in
+/-- The **`N`-ality area of a `1`-chain**: the minimal support size of
+a `2`-chain whose ANTISYMMETRIZED boundary is `c`.  Junk value `0` for
+unspannable chains; all lemmas guard with spannability. -/
+noncomputable def chainAreaA
+    (c : E (d := d) (N := N) (G := G) → R) : ℕ :=
+  sInf {n : ℕ | ∃ s : P (d := d) (N := N) (G := G) → R,
+    chainBoundary₂A (d := d) (N := N) (G := G) s = c ∧
+      (chainSupport (d := d) (N := N) (G := G) s).card = n}
+
+open Classical in
+/-- **The defining upper bound** for the antisymmetrized area. -/
+theorem chainAreaA_le {c : E (d := d) (N := N) (G := G) → R}
+    {s : P (d := d) (N := N) (G := G) → R}
+    (h : chainBoundary₂A (d := d) (N := N) (G := G) s = c) :
+    chainAreaA (d := d) (N := N) (G := G) c
+      ≤ (chainSupport (d := d) (N := N) (G := G) s).card :=
+  Nat.sInf_le ⟨s, h, rfl⟩
+
+open Classical in
+/-- **The AL5 interface, antisymmetrized form:** a spanning `2`-chain
+supported inside a plaquette set `S` bounds the `N`-ality area by
+`|S|` — the inequality the surviving strong-coupling expansion terms
+feed. -/
+theorem chainAreaA_le_card_of_support_subset
+    {c : E (d := d) (N := N) (G := G) → R}
+    {s : P (d := d) (N := N) (G := G) → R}
+    {S : Finset (P (d := d) (N := N) (G := G))}
+    (h : chainBoundary₂A (d := d) (N := N) (G := G) s = c)
+    (hsupp : chainSupport (d := d) (N := N) (G := G) s ⊆ S) :
+    chainAreaA (d := d) (N := N) (G := G) c ≤ S.card :=
+  le_trans (chainAreaA_le (d := d) (N := N) (G := G) h)
+    (Finset.card_le_card hsupp)
+
 end YangMills

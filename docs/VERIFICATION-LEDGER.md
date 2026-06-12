@@ -554,6 +554,48 @@ Plus `loopChain` (TE-2) feeding the `ZMod N_c` chain complex for the
 remaining DB-2/J-3 join (`docs/AREA-LAW-PLAN.md` §4).  All M3
 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 14 (2026-06-12, AL4.5 join complete through assembly)
+
+**Builds:** `lake build YangMillsCore` — green at `7649482`, `5325e0e`,
+`93c32f2`, `a161531`, and this commit (8234 jobs throughout).
+**Source scan:** zero `sorry`/`axiom` (unchanged).
+
+Oracle outputs (verbatim, the join's chain-side completion):
+
+```
+'YangMills.integral_prod_trace_wilsonLine_eq_zero'     [propext, Classical.choice, Quot.sound]
+'YangMills.card_filter_get_eq_count'                   [propext, Classical.choice, Quot.sound]
+'YangMills.signed_count_eq_loopChain'                  [propext, Classical.choice, Quot.sound]
+'YangMills.loopChain_zmod_eq_intCast'                  [propext, Classical.choice, Quot.sound]
+'YangMills.integral_trace_wilsonLine_eq_zero_of_loopChain_ne_zero'
+                                                       [propext, Classical.choice, Quot.sound]
+'YangMills.card_filter_sigma_eq_sum'                   [propext, Classical.choice, Quot.sound]
+'YangMills.sigma_signed_count_eq_sum_loopChain'        [propext, Classical.choice, Quot.sound]
+'YangMills.integral_prod_trace_wilsonLine_eq_zero_of_sum_loopChain_ne_zero'
+                                                       [propext, Classical.choice, Quot.sound]
+'YangMills.loopChain_plaquette_list'                   [propext, Classical.choice, Quot.sound]
+'YangMills.sum_mul_loopChain_plaquette_list'           [propext, Classical.choice, Quot.sound]
+'YangMills.sum_mul_loopChain_plaquette_list_eq_chainBoundary₂A'
+                                                       [propext, Classical.choice, Quot.sound]
+'YangMills.chainAreaA_le'                              [propext, Classical.choice, Quot.sound]
+'YangMills.chainAreaA_le_card_of_support_subset'       [propext, Classical.choice, Quot.sound]
+```
+
+Content: the β=0 `N`-ality selection rule now holds for PRODUCTS of
+Wilson-line traces with the hypothesis in CHAIN form — a product
+survives Haar integration only if `∑ⱼ loopChain (L j) = 0` over
+`ZMod N_c` at every positive edge
+(`integral_prod_trace_wilsonLine_eq_zero_of_sum_loopChain_ne_zero`);
+plaquette Wilson lists supply the antisymmetrized boundary columns
+(`sum_mul_loopChain_plaquette_list_eq_chainBoundary₂A`), and the
+`N`-ality area against that boundary has its spanning bound
+(`chainAreaA_le_card_of_support_subset`).  For the strong-coupling
+family `loop C :: plaquette-loops-of-S`, the survival condition is
+verbatim the chain equation; what remains of the area law is the
+expansion-term formalization (the σ-sign bookkeeping) and the AL6
+entropy/tail assembly (banked patterns).  All M3 lattice-side;
+M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
