@@ -836,6 +836,30 @@ campaign's target shape
 (assembly + the `Z`-ratio bound = V1-c, the campaign's last analytic
 stretch).
 
+**Addendum 17h (same day, THE LOOP-TAGGED EXPANSION — V1-c
+assembly).**  Build green (8236 jobs), oracle clean:
+
+```
+'YangMills.integral_wilson_loop_tagged_expansion'      [propext, Classical.choice, Quot.sound]
+```
+
+**The campaign's structural identity is machine-checked:** for any
+plaquette activities `f_p` local to their support (with the two
+natural integrability families),
+
+    ∫ φ(W_C)·∏_{p∈P}(1+f_p)
+        = ∑_{S₀ pinned} (∫ φ(W_C)·∏_{p∈S₀} f_p) · Z_{farRegion(S₀)}
+
+— the unnormalized loop expectation is a PINNED sum, each term
+carrying the restricted partition function of its far region.  One
+proof chains all of V0/V1-a/V1-b: pointwise binomial →
+`integral_finset_sum` → the fiber reindexing → per-fiber
+support-disjoint factorization → the far resummation.  Compiled first
+try on the banked bricks.  What remains of V1 is purely analytic: the
+volume-free bound on `Z_{farRegion(S₀)}/Z` via the difference of
+cluster sums (clusters meeting the loop's neighbourhood) and the
+pinned KP tail.  All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

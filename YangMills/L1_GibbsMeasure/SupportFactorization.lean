@@ -685,6 +685,93 @@ theorem sum_integral_prod_eq_integral_prod_one_add
   refine integral_congr_ae (Filter.Eventually.of_forall fun A => ?_)
   exact (prod_one_add_eq_sum_powerset F (fun p => f p A)).symm
 
+open Classical in
+/-- **THE LOOP-TAGGED EXPANSION (V1-c assembly):** the unnormalized
+loop expectation factorizes over pinned near parts, each multiplied by
+the RESTRICTED partition function of its far region:
+
+`∫ φ(W_C)·∏_P (1+f_p) = ∑_{S₀ pinned} (∫ φ(W_C)·∏_{S₀} f_p) · Z_{farRegion(S₀)}`.
+
+This is the numerator shape the `Z`-ratio cancellation consumes. -/
+theorem integral_wilson_loop_tagged_expansion
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (φ : G → ℂ) (es : List (ConcreteEdge d N))
+    (f : ConcretePlaquette d N → GaugeConfig d N G → ℂ)
+    (hf : ∀ p, DependsOnPos (f p) (plaquetteSupport p))
+    (hint1 : ∀ S : Finset (ConcretePlaquette d N),
+      Integrable (fun A => φ (wilsonLine A es) * ∏ p ∈ S, f p A)
+        (gaugeMeasureFrom (d := d) (N := N) μ))
+    (hint2 : ∀ S : Finset (ConcretePlaquette d N),
+      Integrable (fun A => ∏ p ∈ S, f p A)
+        (gaugeMeasureFrom (d := d) (N := N) μ)) :
+    ∫ A, φ (wilsonLine A es) *
+        ∏ p : ConcretePlaquette d N, (1 + f p A)
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+      = ∑ S₀ ∈ (Finset.univ :
+            Finset (ConcretePlaquette d N)).powerset.filter
+            (fun S₀ => nearLoop es S₀ = S₀),
+          (∫ A, φ (wilsonLine A es) * ∏ p ∈ S₀, f p A
+              ∂(gaugeMeasureFrom (d := d) (N := N) μ)) *
+          ∫ A, ∏ p ∈ farRegion es S₀, (1 + f p A)
+            ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+  classical
+  -- pointwise binomial expansion, then swap with the finite sum
+  have hpt : (fun A : GaugeConfig d N G => φ (wilsonLine A es) *
+      ∏ p : ConcretePlaquette d N, (1 + f p A))
+      = fun A => ∑ S ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).powerset,
+          φ (wilsonLine A es) * ∏ p ∈ S, f p A := by
+    funext A
+    rw [prod_one_add_eq_sum_powerset, Finset.mul_sum]
+  rw [hpt, MeasureTheory.integral_finset_sum _ (fun S _ => hint1 S)]
+  -- the fiber reindexing
+  rw [sum_powerset_fiber es (fun S => ∫ A, φ (wilsonLine A es) *
+      ∏ p ∈ S, f p A ∂(gaugeMeasureFrom (d := d) (N := N) μ))]
+  refine Finset.sum_congr rfl fun S₀ _ => ?_
+  -- per fiber: split off the far product and resum it
+  have hsplit : ∀ T ∈ (farRegion es S₀).powerset,
+      (∫ A, φ (wilsonLine A es) * ∏ p ∈ S₀ ∪ T, f p A
+          ∂(gaugeMeasureFrom (d := d) (N := N) μ))
+        = (∫ A, φ (wilsonLine A es) * ∏ p ∈ S₀, f p A
+            ∂(gaugeMeasureFrom (d := d) (N := N) μ)) *
+          ∫ A, ∏ p ∈ T, f p A
+            ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+    intro T hT
+    rw [Finset.mem_powerset] at hT
+    have hdisjST : Disjoint S₀ T :=
+      (disjoint_farRegion es S₀).mono_right hT
+    have hprod : (fun A : GaugeConfig d N G => φ (wilsonLine A es) *
+        ∏ p ∈ S₀ ∪ T, f p A)
+        = fun A => (φ (wilsonLine A es) * ∏ p ∈ S₀, f p A) *
+            ∏ p ∈ T, f p A := by
+      funext A
+      rw [Finset.prod_union hdisjST]
+      ring
+    rw [hprod]
+    refine integral_mul_prod_of_disjoint_support μ T
+      (fun A => φ (wilsonLine A es) * ∏ p ∈ S₀, f p A) f
+      (edgeSupport (d := d) (N := N) es ∪ S₀.biUnion plaquetteSupport)
+      plaquetteSupport ?_ (fun q _ => hf q) ?_
+    · refine DependsOnPos.mul ?_ ?_
+      · exact (dependsOnPos_comp_wilsonLine φ es).mono
+          Finset.subset_union_left
+      · refine DependsOnPos.finset_prod _ _ _ fun p hp => ?_
+        exact (hf p).mono
+          ((Finset.subset_biUnion_of_mem plaquetteSupport hp).trans
+            Finset.subset_union_right)
+    · intro q hq
+      have hqf := hT hq
+      rw [farRegion, Finset.mem_filter] at hqf
+      rw [Finset.disjoint_union_left]
+      refine ⟨hqf.2.1, ?_⟩
+      rw [Finset.disjoint_biUnion_left]
+      intro q' hq'
+      by_contra hnd
+      exact hqf.2.2 q' hq' hnd
+  rw [Finset.sum_congr rfl hsplit, ← Finset.mul_sum,
+    sum_integral_prod_eq_integral_prod_one_add μ f _
+      (fun T _ => hint2 T)]
+
 /-- The Wilson-loop instantiation of the V0 headline: a loop
 observable times activities supported away from the loop. -/
 theorem integral_wilson_obs_mul_prod_split

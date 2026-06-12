@@ -77,9 +77,10 @@ Lean; they save hours.
 * M3 assembly: IR side theorem-fed; the §6.3 Balaban UV single-scale
   bound is the **sole carried hypothesis**.
 * Live campaign: volume-uniform area-law constant —
-  `docs/AREA-LAW-VU-PLAN.md`.  **V0 is COMPLETE** (ledger Addenda
-  17–17c; `L1_GibbsMeasure/SupportFactorization.lean`): the
-  `DependsOnPos` independence calculus, the `plaquettePosSupport`
-  bridge, and the component regrouping
-  `integral_wilson_obs_regroup`.  Next: V1 — the `Z`-ratio
-  cancellation (the campaign's center of mass).
+  `docs/AREA-LAW-VU-PLAN.md`.  **V0, V1-a, V1-b and the V1-c
+  ASSEMBLY are COMPLETE** (ledger Addenda 17–17h;
+  `L1_GibbsMeasure/SupportFactorization.lean`).  Headline:
+  `integral_wilson_loop_tagged_expansion` — the loop-tagged
+  expansion `∫ φ(W_C)·∏(1+f) = ∑_{S₀ pinned} (…)·Z_{farRegion(S₀)}`.
+  Next: the `Z`-ratio bound (difference of cluster sums + pinned KP
+  tail), then V2 (the pinned area tail) closes the campaign.
