@@ -298,7 +298,18 @@ only: the reversed path's holonomy is the inverse, via
 (`WilsonLoopMonomial.lean`: `conj tr(W_es) = tr(W_{reversed es})`,
 via `Inv := star` + `Matrix.trace_conjTranspose`).  Every σ-term of
 the expansion is now PROVABLY a product of Wilson-line traces.
-**Open (one brick):** AL6 — the quantitative assembly:
+**AL6-1 CLOSED** (`WilsonLoopMonomial.lean`):
+**`integral_trace_mul_prod_traces_eq_zero`** — the expansion-term
+kill in `Finset` form: for `T ⊆ S` with `|S| < chainAreaA(loopChain
+C)`, the term `∫ tr(W_C)·(∏_{p∈T} tr Hₚ)·(∏_{p∈S\T} conj tr Hₚ)`
+vanishes.  Oracle clean.  This is the join restated in exactly the
+shape `integral_mul_prod_one_add` + `Finset.prod_add` produce —
+per-`i` Bool-decoration via `decide (· ∈ T)`, `equivFin` reindex,
+`Finset.prod_ite` + `filter_mem_eq_inter`/`sdiff_eq_filter`.  House
+note: statements with `Finset`-`SDiff`/filters over
+`FiniteLatticeGeometry.P` need `open Classical in` (the projection
+hides `ConcretePlaquette`'s derived `DecidableEq`).
+**Open (one brick):** AL6-2 — the quantitative assembly:
 `⟨W_C⟩·Z = ∑_S T_S` via `integral_mul_prod_one_add` (+ the σ-binomial
 splitting of `∏(activities)` into the join's signed-trace terms),
 `|T_S| ≤ N_c^{|S|+1}·δ^{|S|}`-type bounds (banked

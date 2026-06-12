@@ -1055,4 +1055,115 @@ theorem star_trace_wilsonLine
     _ = star (Matrix.trace (wilsonLine A es).val) := by
         rw [Matrix.star_eq_conjTranspose, Matrix.trace_conjTranspose]
 
+/-! ## AL6-1: the per-term kill in `Finset` form
+
+The powerset expansion of `⟨W_C⟩·Z` produces terms indexed by a
+plaquette set `S` and a holomorphic choice `T ⊆ S`; this is the join
+restated in exactly that shape: such a term vanishes whenever `S` is
+too small to span the loop. -/
+
+open Classical in
+/-- **The expansion-term kill:** a strong-coupling expansion term —
+the Wilson loop times holomorphic plaquette traces over `T` and
+antiholomorphic ones over `S \ T` — has zero β = 0 expectation
+whenever `|S|` is smaller than the loop's `N`-ality area. -/
+theorem integral_trace_mul_prod_traces_eq_zero
+    (es : List (ConcreteEdge d N))
+    (S T : Finset (FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))) (hTS : T ⊆ S)
+    (hlt : S.card < chainAreaA (R := ZMod N_c) (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+      (loopChain (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)) :
+    ∫ A, Matrix.trace (wilsonLine A es).val *
+        ((∏ p ∈ T, Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) *
+          ∏ p ∈ S \ T, star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) = 0 := by
+  classical
+  set ps : Fin S.card → FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) :=
+    fun i => (S.equivFin.symm i : _) with hps
+  set σb : Fin S.card → Bool := fun i => decide (ps i ∈ T) with hσb
+  -- rewrite the integrand into the join's family form
+  have hint : (fun A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      Matrix.trace (wilsonLine A es).val *
+        ((∏ p ∈ T, Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) *
+          ∏ p ∈ S \ T, star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+      = fun A => ∏ j : Fin (S.card + 1),
+          Matrix.trace (wilsonLine A
+            (Fin.cons (α := fun _ => List (ConcreteEdge d N)) es (fun i =>
+              if σb i
+              then plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)
+              else ((plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)).map
+                  (FiniteLatticeGeometry.reverse (d := d) (N := N)
+                    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))).reverse)
+              j)).val := by
+    funext A
+    rw [Fin.prod_univ_succ]
+    simp only [Fin.cons_zero, Fin.cons_succ]
+    congr 1
+    -- the m plaquette factors: per-i decoration, then reindex to `S`
+    have hper : ∀ i : Fin S.card,
+        Matrix.trace (wilsonLine A
+          (if σb i
+            then plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)
+            else ((plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)).map
+                (FiniteLatticeGeometry.reverse (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))).reverse)).val
+        = (if ps i ∈ T
+            then Matrix.trace (wilsonLine A
+              (plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i))).val
+            else star (Matrix.trace (wilsonLine A
+              (plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i))).val)) := by
+      intro i
+      by_cases hm : ps i ∈ T
+      · rw [if_pos hm, if_pos (by simp [hσb, hm])]
+      · rw [if_neg hm, if_neg (by simp [hσb, hm]),
+          star_trace_wilsonLine]
+    rw [Finset.prod_congr rfl fun i _ => hper i]
+    -- reindex `Fin S.card` to `S`
+    have hre : (∏ i : Fin S.card,
+        (if ps i ∈ T
+          then Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i))).val
+          else star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i))).val)))
+        = ∏ p ∈ S,
+          (if p ∈ T
+            then Matrix.trace (wilsonLine A
+              (plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+            else star (Matrix.trace (wilsonLine A
+              (plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) := by
+      refine Eq.trans ?_ (Finset.prod_coe_sort S _)
+      exact Fintype.prod_equiv S.equivFin.symm _ _ fun i => by rw [hps]
+    rw [hre, Finset.prod_ite]
+    congr 1
+    · rw [Finset.filter_mem_eq_inter, Finset.inter_eq_right.mpr hTS]
+    · rw [show S.filter (fun p => p ∉ T) = S \ T from
+        (Finset.sdiff_eq_filter S T).symm]
+  rw [hint]
+  by_contra hne
+  exact absurd
+    (chainAreaA_loopChain_le_of_integral_ne_zero es ps σb hne)
+    (not_le.mpr hlt)
+
 end YangMills
