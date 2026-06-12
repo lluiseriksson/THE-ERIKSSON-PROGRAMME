@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.L1_GibbsMeasure.EdgeFactorization
 import YangMills.L1_GibbsMeasure.CenterInvariance
+import YangMills.L1_GibbsMeasure.PolymerExpansion
 import YangMills.ClayCore.WilsonLine
 import YangMills.L0_Lattice.ChainComplex
 
@@ -148,6 +149,40 @@ theorem dependsOnPos_plaquette_obs (φ : G → ℂ)
       (fun A => φ (wilsonLine A (plaquetteList (d := d) (N := N) (G := G) p)))
       (plaquettePosSupport p) :=
   dependsOnPos_comp_wilsonLine φ _
+
+/-- **The support bridge (V0-2 opening):** the positive-edge support of
+a plaquette's Wilson list coincides with the polymer layer's
+`plaquetteSupport` (the four `.pos` coordinates) — so `ClusterGeometry`'s
+component/touching combinatorics and V0-1's independence speak about
+the SAME `Finset (PosEdge d N)`. -/
+theorem plaquettePosSupport_eq (p : ConcretePlaquette d N) :
+    plaquettePosSupport (d := d) (N := N) (G := G) p = plaquetteSupport p := by
+  classical
+  ext pe
+  simp only [plaquettePosSupport, edgeSupport, plaquetteList, plaquetteSupport,
+    ConcreteEdge.pos, List.mem_toFinset, List.mem_map, List.mem_cons,
+    List.mem_singleton, List.not_mem_nil, or_false, Finset.mem_insert,
+    Finset.mem_singleton]
+  constructor
+  · rintro ⟨e, (rfl | rfl | rfl | rfl), rfl⟩
+    · exact Or.inl rfl
+    · exact Or.inr (Or.inl rfl)
+    · exact Or.inr (Or.inr (Or.inl rfl))
+    · exact Or.inr (Or.inr (Or.inr rfl))
+  · rintro (rfl | rfl | rfl | rfl)
+    · exact ⟨_, Or.inl rfl, rfl⟩
+    · exact ⟨_, Or.inr (Or.inl rfl), rfl⟩
+    · exact ⟨_, Or.inr (Or.inr (Or.inl rfl)), rfl⟩
+    · exact ⟨_, Or.inr (Or.inr (Or.inr rfl)), rfl⟩
+
+/-- Plaquette observables depend only on the polymer layer's
+`plaquetteSupport` — the form the component regrouping consumes. -/
+theorem dependsOnPos_plaquette_obs' (φ : G → ℂ)
+    (p : ConcretePlaquette d N) :
+    DependsOnPos
+      (fun A => φ (wilsonLine A (plaquetteList (d := d) (N := N) (G := G) p)))
+      (plaquetteSupport p) :=
+  plaquettePosSupport_eq (G := G) p ▸ dependsOnPos_plaquette_obs φ p
 
 /-! ## The factorization theorems -/
 

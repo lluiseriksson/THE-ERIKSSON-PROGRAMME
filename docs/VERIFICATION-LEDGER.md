@@ -731,6 +731,22 @@ observable times any activities supported away from the loop
 factorizes.  This is the mechanism by which far-from-the-loop polymer
 components will cancel against `Z` (V1).  All M3 lattice-side.
 
+**Addendum 17b (same day, V0-2 opening).**  Build green (8236 jobs),
+oracle clean:
+
+```
+'YangMills.plaquettePosSupport_eq'                     [propext, Classical.choice, Quot.sound]
+'YangMills.dependsOnPos_plaquette_obs''                [propext, Classical.choice, Quot.sound]
+```
+
+The signed/positive support seam feared in the plan DISSOLVED:
+`PolymerExpansion.plaquetteSupport` was already positive-edge-level,
+and `plaquettePosSupport_eq` is an outright Finset equality — so
+`ClusterGeometry`'s component combinatorics
+(`plaqComponents_support_disjoint`, `_not_touching`) and V0-1's
+independence calculus now speak about the same sets.  Next: the
+regrouping identity (split `S` by components touching the loop).
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
