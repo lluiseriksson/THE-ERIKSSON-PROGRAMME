@@ -891,6 +891,24 @@ difference of cluster sums.  Remaining: R2 (bound that difference by
 the pinned tail over the small region) and R3 (the restricted lattice
 gate `∫∏_F(1+f) = partition gas (polymersIn F)`).
 
+**Addendum 17k (same day, R2 difference identity + exponent bound).**
+Build green (8237 jobs), oracle clean:
+
+```
+'YangMills.KP.clusterTerm_restrict'                    [propext, Classical.choice, Quot.sound]
+'YangMills.KP.clusterSum_sub_restrict'                 [propext, Classical.choice, Quot.sound]
+'YangMills.KP.norm_diffTerm_le'                        [propext, Classical.choice, Quot.sound]
+'YangMills.KP.norm_clusterSum_sub_restrict_le'         [propext, Classical.choice, Quot.sound]
+```
+
+Under the KP criterion the cluster sums of the full and restricted
+systems differ exactly by the tuple sums MEETING `Λᶜ`
+(`clusterSum_sub_restrict`), and that difference is bounded in norm by
+the off-region weight tail (`norm_clusterSum_sub_restrict_le`):
+**`‖log(Z_Λ/Z)‖ ≤ ∑'_n offRegionClusterWeight P Λ n`.**  Remaining in
+R2: render the right side volume-free via the swap-reindex union bound
+(`ursell_comp_equiv`) and the tilted pinned tails; then R3.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

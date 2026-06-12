@@ -269,4 +269,85 @@ theorem clusterSum_sub_restrict {P : PolymerSystem} [Fintype P.Polymer]
   rw [← hpart]
   ring
 
+open Classical in
+/-- The **off-region cluster weight**: the part of the per-size weight
+`clusterWeight P n` carried by tuples MEETING `Λᶜ` — the majorant of
+the R2 difference series. -/
+noncomputable def offRegionClusterWeight (P : PolymerSystem)
+    [Fintype P.Polymer] (Λ : Finset P.Polymer) (n : ℕ) : ℝ :=
+  (((n + 1).factorial : ℝ))⁻¹ *
+    ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → P.Polymer)).filter
+      (fun X => ¬ ∀ i, X i ∈ Λ),
+      |((ursell P X : ℤ) : ℝ)| * ∏ i, ‖P.activity (X i)‖
+
+open Classical in
+theorem offRegionClusterWeight_nonneg (P : PolymerSystem)
+    [Fintype P.Polymer] (Λ : Finset P.Polymer) (n : ℕ) :
+    0 ≤ offRegionClusterWeight P Λ n := by
+  unfold offRegionClusterWeight
+  refine mul_nonneg (by positivity) (Finset.sum_nonneg fun X _ => ?_)
+  exact mul_nonneg (abs_nonneg _) (Finset.prod_nonneg fun i _ => norm_nonneg _)
+
+open Classical in
+/-- The off-region weight is dominated by the total per-size weight. -/
+theorem offRegionClusterWeight_le_clusterWeight (P : PolymerSystem)
+    [Fintype P.Polymer] (Λ : Finset P.Polymer) (n : ℕ) :
+    offRegionClusterWeight P Λ n ≤ clusterWeight P n := by
+  unfold offRegionClusterWeight clusterWeight
+  refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+  refine Finset.sum_le_sum_of_subset_of_nonneg
+    (Finset.filter_subset _ _) fun X _ _ => ?_
+  exact mul_nonneg (abs_nonneg _) (Finset.prod_nonneg fun i _ => norm_nonneg _)
+
+open Classical in
+/-- **R2(b1) — term-wise norm bound for the difference series:** the
+`n`-th term of the R2 difference is bounded by the off-region weight. -/
+theorem norm_diffTerm_le (P : PolymerSystem) [Fintype P.Polymer]
+    (Λ : Finset P.Polymer) (n : ℕ) :
+    ‖(((n + 1).factorial : ℂ))⁻¹ *
+        ∑ X ∈ (Finset.univ :
+            Finset (Fin (n + 1) → P.Polymer)).filter
+            (fun X => ¬ ∀ i, X i ∈ Λ),
+          (ursell P X : ℂ) * ∏ i, P.activity (X i)‖
+      ≤ offRegionClusterWeight P Λ n := by
+  unfold offRegionClusterWeight
+  rw [norm_mul, norm_inv, Complex.norm_natCast]
+  refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+  refine le_trans (norm_sum_le _ _) ?_
+  refine Finset.sum_le_sum fun X _ => ?_
+  rw [norm_mul, norm_prod]
+  refine mul_le_mul_of_nonneg_right (le_of_eq ?_)
+    (Finset.prod_nonneg fun _ _ => norm_nonneg _)
+  rw [show ((ursell P X : ℤ) : ℂ)
+      = (((ursell P X : ℤ) : ℝ) : ℂ) from by push_cast; ring]
+  rw [Complex.norm_real, Real.norm_eq_abs]
+
+open Classical in
+/-- **R2(b2) — the `Z`-ratio exponent bound:** under the KP criterion,
+the difference of cluster sums is bounded by the off-region tail.
+Combined with R1, `‖log(Z_Λ/Z)‖ ≤ ∑' n, offRegionClusterWeight P Λ n`
+— the quantity the pinned decomposition renders volume-free. -/
+theorem norm_clusterSum_sub_restrict_le (P : PolymerSystem)
+    [Fintype P.Polymer] {a : P.Polymer → ℝ} (h : KPCriterion P a)
+    (Λ : Finset P.Polymer) :
+    ‖clusterSum P - clusterSum (P.restrict Λ)‖
+      ≤ ∑' n : ℕ, offRegionClusterWeight P Λ n := by
+  classical
+  have hOff : Summable (fun n => offRegionClusterWeight P Λ n) :=
+    Summable.of_nonneg_of_le
+      (fun n => offRegionClusterWeight_nonneg P Λ n)
+      (fun n => offRegionClusterWeight_le_clusterWeight P Λ n)
+      (kp_clusterWeight_summable_sharp P h)
+  have hnorm : Summable (fun n : ℕ =>
+      ‖(((n + 1).factorial : ℂ))⁻¹ *
+        ∑ X ∈ (Finset.univ :
+            Finset (Fin (n + 1) → P.Polymer)).filter
+            (fun X => ¬ ∀ i, X i ∈ Λ),
+          (ursell P X : ℂ) * ∏ i, P.activity (X i)‖) :=
+    Summable.of_nonneg_of_le (fun n => norm_nonneg _)
+      (fun n => norm_diffTerm_le P Λ n) hOff
+  rw [clusterSum_sub_restrict h Λ]
+  refine le_trans (norm_tsum_le_tsum_norm hnorm) ?_
+  exact hnorm.tsum_le_tsum (fun n => norm_diffTerm_le P Λ n) hOff
+
 end YangMills.KP
