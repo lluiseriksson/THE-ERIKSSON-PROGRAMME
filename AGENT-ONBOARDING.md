@@ -1,5 +1,16 @@
 # AGENT ONBOARDING — everything another AI needs to advance this project
 
+> **STATUS STAMP (2026-06-12).** This brief is current as of 2026-06-09; the
+> repository has advanced since. Completed after this file was written: the
+> finite-volume area law (linearized, ledger Addenda 12–15) and the
+> **exact-activity area law** `finite_volume_area_law_exp` (Addendum 16) —
+> core now green at **8235 jobs**. The live frontier is the volume-uniform
+> constant (`docs/AREA-LAW-VU-PLAN.md`, start at V0). For the always-current
+> picture read, in order: `CLAUDE.md` (hard rules) →
+> `README-FOR-NEXT-MODEL.md` (live frontier) →
+> `docs/VERIFICATION-LEDGER.md` (the record). Everything below remains valid
+> as background.
+
 This file is the **single complete brief** for an autonomous prover (AI or human) picking
 up `THE-ERIKSSON-PROGRAMME`. It tells you exactly where the project is, how to build and
 verify it, what is proved vs. open, the iron rules, and the precise next targets. Read it

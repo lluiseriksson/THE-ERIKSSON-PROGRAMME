@@ -1,5 +1,12 @@
 # ROADMAP — pushing the boundary toward an unconditional Yang–Mills mass gap
 
+> **STATUS STAMP (2026-06-12).** Since this roadmap was written (2026-06-09)
+> the area-law track has been completed twice over: the linearized
+> finite-volume area law (ledger Addenda 12–15) and the exact-activity area
+> law `finite_volume_area_law_exp` (Addendum 16), both unconditional and
+> oracle-clean. The next move is recorded in `docs/AREA-LAW-VU-PLAN.md`
+> (volume-uniform constant). The measurement discipline below is unchanged.
+
 This file is the honest, measurable plan for advancing the project, written so that
 a later (possibly stronger) automated prover can pick the next move, attempt it,
 and have its progress *measured against reality* rather than against a vacuous

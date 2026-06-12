@@ -66,8 +66,8 @@ Also keep at the root:
 
 ```
 YangMillsCore.lean   lakefile.lean   lake-manifest.json   lean-toolchain   LICENSE
-FOUNDATIONS.md   CLEANUP_PLAN.md   AXIOM_FRONTIER.md   PETER_WEYL_ROADMAP.md
-AI_ONBOARDING.md   STATE_OF_THE_PROJECT.md   docs/
+FOUNDATIONS.md   CLEANUP_PLAN.md   docs/legacy/AXIOM_FRONTIER.md   PETER_WEYL_ROADMAP.md
+docs/legacy/ (historical status docs)   docs/
 ```
 
 `L0_Lattice/SU2Basic.lean` is standalone and SU(2)-relevant — keep it for the
@@ -127,7 +127,7 @@ Test.lean   TestC71Full.lean   TestC72Proto.lean   OracleC69.lean   OracleC96.le
 README.proposed.md                                -- folded into the new README.md
 ```
 
-The ~25 BFS-dead axioms catalogued in `AXIOM_FRONTIER.md` live inside the
+The ~25 BFS-dead axioms catalogued in `docs/legacy/AXIOM_FRONTIER.md` live inside the
 discarded files and disappear with them. The single "live" axiom
 `lsi_normalized_gibbs_from_haar` (in `BalabanToLSI.lean`) also goes; it only ever
 fed the vacuous target.
@@ -150,7 +150,7 @@ longer drags in deleted modules.
 6. Commit + push the branch; open a PR; keep `main` intact until the branch is
    green in CI.
 
-`scripts/cleanup_and_push.ps1` performs steps 1–6 in order and **aborts before
+`docs/legacy/cleanup_and_push.ps1` performs steps 1–6 in order and **aborts before
 deleting** if `lake build YangMillsCore` fails. Read it before running.
 
 Oracle spot-checks:

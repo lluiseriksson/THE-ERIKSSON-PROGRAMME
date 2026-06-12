@@ -414,7 +414,7 @@ clustering** (F5–F7), which *is* a theorem (next section).
    `SchurMixedMomentVanishing` (the integer-cast steps are the only risk).
    `#print axioms` the headline lemmas.
 2. Prove F1 (`∫|tr U|² = 1`) for SU(2) via the Weyl integration formula.
-3. Run `scripts/cleanup_and_push.ps1` once the core is green.
+3. Run `docs/legacy/cleanup_and_push.ps1` once the core is green.
 
 **Tier 1 — bounded formalization of known mathematics (weeks–months each):**
 4. **U(1) end-to-end.** Peter–Weyl for U(1) *is* Fourier series on the circle,

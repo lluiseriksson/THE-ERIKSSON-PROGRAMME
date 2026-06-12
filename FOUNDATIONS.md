@@ -7,9 +7,9 @@ Clay problem rather than motion around a vacuous target.
 
 It supersedes, as the strategic reference, the optimistic framing in
 `README.md`, `ROADMAP.md`, and the version-stamped sections of
-`STATE_OF_THE_PROJECT.md`. It is consistent with — and builds directly on —
+`docs/legacy/STATE_OF_THE_PROJECT.md`. It is consistent with — and builds directly on —
 the three most honest documents already in the repo:
-`AI_ONBOARDING.md`, `docs/phase1-llogl-obstruction.md`, and
+`docs/legacy/AI_ONBOARDING.md`, `docs/phase1-llogl-obstruction.md`, and
 `PETER_WEYL_ROADMAP.md`, and with the `ClayPhysical.lean` "C73 fix".
 
 The audit was performed 2026-05-28 by reading the source, not the headlines.
@@ -147,7 +147,7 @@ problem (see §7).
 | `memLp_gt_two_integrable_sq_mul_log_sq` | `P8_PhysicalGap/MemLpLogIntegrability.lean` | Correct L^p→L·log·L envelope; pure Mathlib; no sorry. The one safe piece of §7.4 of the obstruction doc — already done |
 | `rpow_le_exp_kpParameter` (r^d → e^{−m d}) | `WilsonClusterProof.lean` | Algebraic bridge, sound |
 | Fubini / partition-function interchange | `integral_boltzmann_eq_sum_activities` | Sound |
-| Dependency architecture (named hypotheses, frontier ledgers) | `*_FRONTIER.md`, `registry/nodes.yaml` | The honest map of the problem is itself a deliverable |
+| Dependency architecture (named hypotheses, frontier ledgers) | `*_FRONTIER.md`, `docs/legacy/registry/nodes.yaml` | The honest map of the problem is itself a deliverable |
 
 These are the **cimientos** worth building on. They are small, true, and
 composable.
@@ -161,7 +161,7 @@ composable.
 | `sorry` at `BalabanToLSI.lean:808` | — | Asserts `f²∈L¹ ⇒ f²·log f²∈L¹`, which is **false** on Haar (Bertrand-series counterexample in the obstruction doc) |
 | The "Σ / MemLp-gated" chain | `BalabanToLSI.lean:968+` | "Closes" the sorry by assuming `MemLp f p, p>2` for all test functions — i.e. assumes the Sobolev-embedding *output*. The doc itself calls this "threading, not closure" |
 | `lsi_normalized_gibbs_from_haar` | `BalabanToLSI.lean` | The one live project axiom; routes only to the **vacuous** `ClayYangMillsTheorem` |
-| ~25 "BFS-dead" axioms | `AXIOM_FRONTIER.md` | Declared but unreachable from any target; rhetorical weight only. Safe to delete |
+| ~25 "BFS-dead" axioms | `docs/legacy/AXIOM_FRONTIER.md` | Declared but unreachable from any target; rhetorical weight only. Safe to delete |
 
 ### The structural problem behind the liabilities
 
@@ -170,7 +170,7 @@ There are **two disconnected pipelines** in the repo:
 1. **LSI / Bakry–Émery (P8_PhysicalGap)** → terminates in the *vacuous*
    `ClayYangMillsTheorem`, via tautological definitions and one false-direction
    sorry. Even if every axiom here were discharged, the result would still be
-   `∃ m > 0`. By `AXIOM_FRONTIER.md`'s own words, this effort is "structurally
+   `∃ m > 0`. By `docs/legacy/AXIOM_FRONTIER.md`'s own words, this effort is "structurally
    orthogonal to closing the Clay gap".
 
 2. **Cluster expansion / Osterwalder–Seiler / Kotecký–Preiss

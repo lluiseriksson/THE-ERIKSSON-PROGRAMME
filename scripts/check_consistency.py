@@ -2,26 +2,49 @@
 """
 check_consistency.py — Lean source consistency checker.
 
-ONLY bans:  sorry  (silent gap; always forbidden)
+Bans (comment-aware, both line and nested block comments):
+  - sorry           everywhere in the proof tree (silent gap; always forbidden);
+  - axiom           inside the VERIFIED-CORE source tree (CORE_DIRS below):
+                    the current programme carries gaps as explicit theorem
+                    HYPOTHESES, never as axioms.  Legacy modules outside the
+                    core may still contain historical axiom declarations; they
+                    are excluded from `YangMillsCore` and from every claim
+                    (see docs/legacy/ and CLEANUP_PLAN.md).
+
 Does NOT ban:
-  - axiom   (explicit named gap; this is the project's honesty mechanism;
-              all axioms must be listed in AXIOM_FRONTIER.md)
   - rfl, exact ⟨, default  (standard Lean constructs; banning them
               produces hundreds of false positives on valid proofs)
   - placeholder  (too broad; valid identifier substring in many modules)
-
-A line is flagged for 'sorry' only when 'sorry' appears outside a line comment.
-Pattern: 'sorry' present in the line AND the portion before 'sorry'
-does not contain '--' (i.e., sorry is not a comment token).
 """
 import os
 import re
 import sys
 from pathlib import Path
 
+# Windows consoles default to cp1252, which cannot print the report's
+# ✅/⚠️/❌ markers; force UTF-8 (no-op on Linux/CI).
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 # Directories subject to the sorry-free invariant (main proof pipeline).
-# Every .lean file here must have 0 sorry; all gaps must be named axiom declarations.
 LEAN_DIRS = ["YangMills", "Lean"]
+
+# The verified core's source tree (import closure of YangMillsCore.lean).
+# Every .lean file here must contain ZERO axiom declarations.
+CORE_DIRS = [
+    "YangMills/L0_Lattice",
+    "YangMills/L1_GibbsMeasure",
+    "YangMills/KP",
+    "YangMills/ClayCore",
+    "YangMills/Paper",
+]
+CORE_FILES = [
+    "YangMills/P8_PhysicalGap/SUN_Compact.lean",
+    "YangMills/P8_PhysicalGap/SUN_StateConstruction.lean",
+    "YangMills/P8_PhysicalGap/MemLpLogIntegrability.lean",
+    "YangMillsCore.lean",
+]
+_AXIOM_RE = re.compile(r'^\s*axiom\b')
 
 # Directories excluded from the sorry-free invariant.
 # Files here are experimental scratch / research-in-progress and may contain
@@ -155,11 +178,49 @@ def _collect_sorry(root_dir: Path, dirs: list[str]) -> list[str]:
     return hits
 
 
+def _collect_core_axioms(root_dir: Path) -> list[str]:
+    """Comment-aware scan of the verified-core tree for axiom declarations."""
+    hits: list[str] = []
+    paths: list[Path] = []
+    for d in CORE_DIRS:
+        dir_path = root_dir / d
+        if dir_path.is_dir():
+            paths.extend(dir_path.rglob("*.lean"))
+    for f in CORE_FILES:
+        fp = root_dir / f
+        if fp.exists():
+            paths.append(fp)
+    for p in paths:
+        try:
+            text = p.read_text(encoding="utf-8")
+        except OSError as exc:
+            hits.append(f"{p}: read error — {exc}")
+            continue
+        cleaned = strip_block_comments(text)
+        for line_no, line in enumerate(cleaned.splitlines(), 1):
+            comment_start = line.find("--")
+            code_part = line[:comment_start] if comment_start != -1 else line
+            if _AXIOM_RE.search(code_part):
+                hits.append(f"{p}:{line_no} → {text.splitlines()[line_no-1].strip()}")
+    return hits
+
+
 def scan() -> None:
     root_dir = _repo_root()
 
     # ── Main pipeline: sorry-free invariant enforced ─────────────────────────
     errors = _collect_sorry(root_dir, LEAN_DIRS)
+
+    # ── Verified core: axiom-free invariant enforced ─────────────────────────
+    axiom_hits = _collect_core_axioms(root_dir)
+    if axiom_hits:
+        print(f"❌ AXIOM DECLARATION in verified-core tree — {len(axiom_hits)} occurrence(s):")
+        for a in axiom_hits[:20]:
+            print(f"   {a}")
+        print()
+        print("The core carries gaps as explicit theorem hypotheses, never axioms.")
+        print("See HYPOTHESIS_FRONTIER.md.")
+        sys.exit(1)
 
     # ── Experimental dirs: sorry reported but NOT blocking ───────────────────
     warnings: list[str] = []
@@ -195,16 +256,16 @@ def scan() -> None:
         if len(errors) > 20:
             print(f"   ... ({len(errors) - 20} more)")
         print()
-        print("All gaps must use explicit named `axiom` declarations.")
-        print("See AXIOM_FRONTIER.md for the registered frontier.")
+        print("No silent gaps allowed: in the verified core, gaps are explicit")
+        print("theorem hypotheses (HYPOTHESIS_FRONTIER.md).")
         sys.exit(1)
 
     if warnings:
-        print("✅ Main pipeline: zero sorry — all gaps are explicit named axioms")
+        print("✅ Main pipeline: zero sorry; verified-core tree: zero axioms")
         print("   ⚠️  See experimental sorry warnings above.")
     else:
-        print("✅ Zero sorry in Lean source — all gaps are explicit named axioms")
-    print("   (Verify the axiom frontier: AXIOM_FRONTIER.md)")
+        print("✅ Zero sorry in Lean source; zero axioms in the verified-core tree")
+    print("   (Carried hypotheses: HYPOTHESIS_FRONTIER.md; record: docs/VERIFICATION-LEDGER.md)")
 
 
 if __name__ == "__main__":
