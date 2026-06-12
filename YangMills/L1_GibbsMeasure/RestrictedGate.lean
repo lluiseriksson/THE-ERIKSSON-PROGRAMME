@@ -315,4 +315,112 @@ theorem restricted_partition_log_ratio_bound
       hscale1 _) (le_of_eq ?_)
     rw [inv_one, one_mul]
 
+open Classical in
+/-- **The neighbourhood count (V1 bookkeeping):** the `Z`-ratio
+exponent is bounded by `#Fᶜ` times a volume-free constant — every
+escaping polymer is charged to a plaquette OUTSIDE `F` it contains,
+and the through-plaquette polymer sums are volume-uniform. -/
+theorem offRegion_polymer_sum_le
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {w : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    {δ : ℝ} (hδ0 : 0 ≤ δ) (hbd : ∀ A p, |w A p| ≤ δ)
+    (t : ℝ) (ht0 : 0 ≤ t)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ * Real.exp t) < 1)
+    (F : Finset (ConcretePlaquette d N)) :
+    ∑ c ∈ (Finset.univ.filter
+        (fun c : (weightedLatticePolymerSystem (d := d) (N := N) μ
+          w).Polymer => c.1 ⊆ F))ᶜ,
+        Real.exp 1 *
+          ‖(weightedLatticePolymerSystem (d := d) (N := N) μ
+            w).activity c‖ *
+          Real.exp (t * (c.1.card : ℝ))
+      ≤ (Fᶜ.card : ℝ) * (Real.exp 1 *
+          ((δ * Real.exp t) /
+            (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ * Real.exp t)))) := by
+  classical
+  set x : ℝ := δ * Real.exp t with hxdef
+  have hx0 : (0 : ℝ) ≤ x := mul_nonneg hδ0 (Real.exp_pos t).le
+  -- per-polymer: the summand is at most e·x^{|c|}
+  have hterm : ∀ c : (weightedLatticePolymerSystem (d := d) (N := N) μ
+      w).Polymer,
+      Real.exp 1 *
+        ‖(weightedLatticePolymerSystem (d := d) (N := N) μ
+          w).activity c‖ * Real.exp (t * (c.1.card : ℝ))
+      ≤ Real.exp 1 * x ^ c.1.card := by
+    intro c
+    have h1 := norm_weightedLatticePolymerSystem_activity_le μ hbd c
+    have h2 : Real.exp (t * (c.1.card : ℝ))
+        = Real.exp t ^ c.1.card := by
+      rw [← Real.exp_nat_mul]
+      congr 1
+      ring
+    calc Real.exp 1 *
+        ‖(weightedLatticePolymerSystem (d := d) (N := N) μ
+          w).activity c‖ * Real.exp (t * (c.1.card : ℝ))
+        ≤ Real.exp 1 * δ ^ c.1.card * Real.exp (t * (c.1.card : ℝ)) := by
+          refine mul_le_mul_of_nonneg_right
+            (mul_le_mul_of_nonneg_left h1 (Real.exp_pos 1).le)
+            (Real.exp_pos _).le
+      _ = Real.exp 1 * x ^ c.1.card := by
+          rw [h2, hxdef, mul_pow]
+          ring
+  -- charge each escaping polymer to a plaquette outside F
+  calc ∑ c ∈ (Finset.univ.filter
+        (fun c : (weightedLatticePolymerSystem (d := d) (N := N) μ
+          w).Polymer => c.1 ⊆ F))ᶜ,
+        Real.exp 1 *
+          ‖(weightedLatticePolymerSystem (d := d) (N := N) μ
+            w).activity c‖ *
+          Real.exp (t * (c.1.card : ℝ))
+      ≤ ∑ c ∈ (Finset.univ.filter
+          (fun c : (weightedLatticePolymerSystem (d := d) (N := N) μ
+            w).Polymer => c.1 ⊆ F))ᶜ,
+          ∑ p ∈ Fᶜ, if p ∈ c.1 then Real.exp 1 * x ^ c.1.card else 0 := by
+        refine Finset.sum_le_sum fun c hc => ?_
+        have hnc : ¬ c.1 ⊆ F := by
+          intro hsub
+          rw [Finset.mem_compl, Finset.mem_filter] at hc
+          exact hc ⟨Finset.mem_univ _, hsub⟩
+        obtain ⟨p, hpc, hpF⟩ := Finset.not_subset.mp hnc
+        have hkey : Real.exp 1 *
+            ‖(weightedLatticePolymerSystem (d := d) (N := N) μ
+              w).activity c‖ * Real.exp (t * (c.1.card : ℝ))
+            ≤ if p ∈ c.1 then Real.exp 1 * x ^ c.1.card else 0 := by
+          rw [if_pos hpc]
+          exact hterm c
+        refine le_trans hkey ?_
+        refine Finset.single_le_sum
+          (f := fun p => if p ∈ c.1 then Real.exp 1 * x ^ c.1.card else 0)
+          (fun q _ => ?_) (Finset.mem_compl.mpr hpF)
+        show (0 : ℝ) ≤ if q ∈ c.1 then Real.exp 1 * x ^ c.1.card else 0
+        split_ifs
+        · positivity
+        · exact le_rfl
+    _ = ∑ p ∈ Fᶜ, ∑ c ∈ (Finset.univ.filter
+          (fun c : (weightedLatticePolymerSystem (d := d) (N := N) μ
+            w).Polymer => c.1 ⊆ F))ᶜ,
+          if p ∈ c.1 then Real.exp 1 * x ^ c.1.card else 0 :=
+        Finset.sum_comm
+    _ ≤ ∑ p ∈ Fᶜ, ∑ c ∈ (Finset.univ :
+          Finset (weightedLatticePolymerSystem (d := d) (N := N) μ
+            w).Polymer).filter (fun c => p ∈ c.1),
+          Real.exp 1 * x ^ c.1.card := by
+        refine Finset.sum_le_sum fun p _ => ?_
+        rw [Finset.sum_filter]
+        refine Finset.sum_le_sum_of_subset_of_nonneg
+          (Finset.subset_univ _) fun c _ _ => ?_
+        show (0 : ℝ) ≤ if p ∈ c.1 then Real.exp 1 * x ^ c.1.card else 0
+        split_ifs
+        · positivity
+        · exact le_rfl
+    _ ≤ ∑ _p ∈ Fᶜ, Real.exp 1 *
+          (x / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * x)) := by
+        refine Finset.sum_le_sum fun p _ => ?_
+        rw [← Finset.mul_sum]
+        refine mul_le_mul_of_nonneg_left ?_ (Real.exp_pos 1).le
+        exact sum_connectedPolymers_through_le (d := d) (N := N) p x hx0 hr
+    _ = (Fᶜ.card : ℝ) * (Real.exp 1 *
+          (x / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * x))) := by
+        rw [Finset.sum_const, nsmul_eq_mul]
+
 end YangMills

@@ -77,10 +77,13 @@ Lean; they save hours.
 * M3 assembly: IR side theorem-fed; the §6.3 Balaban UV single-scale
   bound is the **sole carried hypothesis**.
 * Live campaign: volume-uniform area-law constant —
-  `docs/AREA-LAW-VU-PLAN.md`.  **V0, V1-a, V1-b and the V1-c
-  ASSEMBLY are COMPLETE** (ledger Addenda 17–17h;
-  `L1_GibbsMeasure/SupportFactorization.lean`).  Headline:
-  `integral_wilson_loop_tagged_expansion` — the loop-tagged
-  expansion `∫ φ(W_C)·∏(1+f) = ∑_{S₀ pinned} (…)·Z_{farRegion(S₀)}`.
-  Next: the `Z`-ratio bound (difference of cluster sums + pinned KP
-  tail), then V2 (the pinned area tail) closes the campaign.
+  `docs/AREA-LAW-VU-PLAN.md`.  **V0 AND V1 ARE COMPLETE** (ledger
+  Addenda 17–17q; `SupportFactorization.lean`, `KP/Restriction.lean`,
+  `RestrictedGate.lean`).  Headlines: the loop-tagged expansion
+  `integral_wilson_loop_tagged_expansion`, the volume-restricted
+  Mayer inversion, and the `Z`-ratio bound
+  `‖log(Z/Z_F)‖ ≤ #Fᶜ·C(d,δ,t)`
+  (`restricted_partition_log_ratio_bound` +
+  `offRegion_polymer_sum_le`).  Next: V2 — the pinned area tail
+  (N-ality kill + pinned entropy, mechanisms banked) closes the
+  campaign.

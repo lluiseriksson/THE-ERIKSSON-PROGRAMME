@@ -1007,6 +1007,28 @@ the campaign was built to reach.  What remains of V1 is bookkeeping
 pinned area tail) then closes the campaign.  All M3 lattice-side;
 M4/M5/Clay untouched.
 
+**Addendum 17q (same day, V1 COMPLETE — the neighbourhood count).**
+Build green (8238 jobs), oracle clean:
+
+```
+'YangMills.offRegion_polymer_sum_le'                   [propext, Classical.choice, Quot.sound]
+```
+
+**V1 — THE `Z`-RATIO CANCELLATION, THE CAMPAIGN'S CENTER OF MASS, IS
+COMPLETE.**  The exponent sum is bounded by
+`#Fᶜ · e·(δe^t)/(1−(16d+1)²·δe^t)` — every escaping polymer charged to
+a plaquette outside `F` it contains, the through-plaquette sums
+volume-uniform by the banked lattice-animal entropy
+(`sum_connectedPolymers_through_le`).  Chained with Addendum 17p:
+
+    ‖log(Z/Z_{farRegion(S₀)})‖ ≤ #(P ∖ farRegion(S₀)) · C(d, δ, t)
+
+— the log-ratio is linear in the size of the loop's neighbourhood,
+with constants in `d, δ, t` only.  V0 + V1 are COMPLETE; V2 (the
+pinned area tail: the N-ality kill + pinned entropy, both mechanisms
+already proved in the area-law campaigns) closes the volume-uniform
+area law.  All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
