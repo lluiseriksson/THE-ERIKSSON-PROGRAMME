@@ -69,21 +69,23 @@ Lean; they save hours.
 
 ## Current state (2026-06-12)
 
-* Core green: **8236 jobs**, zero sorry, zero axioms.
+* Core green: **8238 jobs**, zero sorry, zero axioms.
 * Done: sharp KP, Mayer–Ursell `Ξ = exp(clusterSum)`, `Z = Ξ`, the IR
   clustering bound (B4), the two-plaquette correlator decay (T4), the
-  finite-volume area law (linearized, AL1–AL6) and the
-  **exact-activity area law** (`finite_volume_area_law_exp`).
+  finite-volume area law (linearized, AL1–AL6), the
+  **exact-activity area law** (`finite_volume_area_law_exp`), and the
+  **VOLUME-UNIFORM AREA LAW** — the VU campaign
+  (`docs/AREA-LAW-VU-PLAN.md`, V0–V3) is **CLOSED** (ledger Addenda
+  17–17t).  Headline: `normalized_wilson_loop_area_law`
+  (`L1_GibbsMeasure/RestrictedGate.lean`) —
+  `‖(∫ tr W_C·∏(1+f))/Z‖ ≤
+  N_c·e^{#loopSupp·4d·K}·σ^{Area(C)}·e^{#loopSupp·4d·S(σ)}`,
+  every constant volume-free, `Z` cancelled through the restricted
+  cluster expansion; non-vacuity audited (Addendum 17t).  Carried:
+  two integrability hypothesis families (finite products; standard).
 * M3 assembly: IR side theorem-fed; the §6.3 Balaban UV single-scale
   bound is the **sole carried hypothesis**.
-* Live campaign: volume-uniform area-law constant —
-  `docs/AREA-LAW-VU-PLAN.md`.  **V0 AND V1 ARE COMPLETE** (ledger
-  Addenda 17–17q; `SupportFactorization.lean`, `KP/Restriction.lean`,
-  `RestrictedGate.lean`).  Headlines: the loop-tagged expansion
-  `integral_wilson_loop_tagged_expansion`, the volume-restricted
-  Mayer inversion, and the `Z`-ratio bound
-  `‖log(Z/Z_F)‖ ≤ #Fᶜ·C(d,δ,t)`
-  (`restricted_partition_log_ratio_bound` +
-  `offRegion_polymer_sum_le`).  Next: V2 — the pinned area tail
-  (N-ality kill + pinned entropy, mechanisms banked) closes the
-  campaign.
+* Next frontiers (pick highest-leverage): discharge the integrability
+  families at the Haar instantiation (closes the VU headline
+  hypothesis-free on the lattice side); V4 exact-ℂ activities;
+  Peter–Weyl; the §6.3 UV bound.

@@ -280,19 +280,22 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   `integral_tsum_of_bounded` again.  **Post-campaign refinement
   (next high-leverage target):** volume-uniform constant
   (connected-support resummation against `Z` — cluster machinery,
-  campaign-scale).  **CAMPAIGN DESIGNED 2026-06-12:**
-  `docs/AREA-LAW-VU-PLAN.md` (bricks V0–V4, difficulties D1–D3
-  named; reuses the B4 pinned-cluster engine).  **V0-1 CLOSED**
-  (ledger Addendum 17, core 8236):
-  `L1_GibbsMeasure/SupportFactorization.lean` — `DependsOnPos`
-  calculus, `edgeSupport`/`plaquettePosSupport`,
-  `dependsOnPos_comp_wilsonLine`, and the support-disjoint
-  factorizations `integral_mul_of_disjoint_pos_deps` /
-  `integral_mul_prod_of_disjoint_support` /
-  `integral_wilson_obs_mul_prod_split`.  Next: V0's component
-  regrouping (partition the powerset expansion by connectivity to
-  `supp(C)`), then V1.
-  Alternative frontiers:
+  campaign-scale).  **THE VOLUME-UNIFORM CAMPAIGN IS ALSO COMPLETE (2026-06-12,
+  ledger Addenda 17–17t, core 8238):** `docs/AREA-LAW-VU-PLAN.md`
+  V0–V3 all closed.  **Headline:
+  `normalized_wilson_loop_area_law`**
+  (`L1_GibbsMeasure/RestrictedGate.lean`, oracle clean) — for the
+  NORMALIZED expectation at conjugate-pair linearized activities
+  in the strong-coupling window, any rate `σ ∈ [0,1]` with
+  `(16d+1)²σ < 1` and `2δN_c·e^{16d·K} ≤ σ²`:
+  `‖(∫ tr W_C·∏(1+f))/Z‖ ≤
+  N_c·e^{#loopSupp·4d·K}·σ^{Area(C)}·e^{#loopSupp·4d·S(σ)}` —
+  area decay, perimeter-only prefactor, EVERY constant
+  volume-free (`Z` cancelled through the restricted cluster
+  expansion).  Non-vacuity audited (17t).  Carried: the two
+  integrability hypothesis families of finite products.  Next
+  frontiers: discharge the integrability families at the Haar
+  instantiation; V4 (exact-ℂ activities);
   Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
   single-scale UV estimate (class-C, outside the current plan).
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the

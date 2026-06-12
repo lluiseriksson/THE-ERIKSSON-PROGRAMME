@@ -1106,6 +1106,50 @@ for the headline: `∏(1+σ^{#c}) ≤ exp(∑ σ^{#c}) ≤ e^{c(d,δ,t)·|C|}`
 compose with Addendum 17r's pinned bound and the area split
 `sum_ite_pow_le`.  All M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 17t (2026-06-12, **THE VU CAMPAIGN HEADLINE —
+`normalized_wilson_loop_area_law`, THE VOLUME-UNIFORM AREA LAW**)
+
+**Build:** green (8238 jobs).  Oracle outputs (verbatim,
+`SupportFactorization.lean` + `RestrictedGate.lean`):
+
+```
+'YangMills.prod_one_add_le_exp_sum'          [propext, Classical.choice, Quot.sound]
+'YangMills.loopTouching_polymer_sum_le'      [propext, Classical.choice, Quot.sound]
+'YangMills.sum_pinned_pow_le_exp'            [propext, Classical.choice, Quot.sound]
+'YangMills.sum_pinned_dichotomy_le'          [propext, Classical.choice, Quot.sound]
+'YangMills.normalized_wilson_loop_area_law'  [propext, Classical.choice, Quot.sound]
+```
+
+**The volume-uniform area law is machine-checked.**  For the
+conjugate-pair linearized activities (`c' = conj c`, `‖c‖ ≤ δ`) in the
+banked strong-coupling window, and ANY rate `σ ∈ [0,1]` with
+`(16d+1)²σ < 1` and `2δN_c·e^{16d·K} ≤ σ²`:
+
+    ‖(∫ tr(W_C)·∏(1+f)) / Z‖
+      ≤ N_c · e^{#loopSupp·4d·K} · σ^{Area(C)} · e^{#loopSupp·4d·S(σ)}
+
+with `K = e·(2δN_c e^t)/(1−(16d+1)²·2δN_c e^t)` and
+`S(σ) = σ/(1−(16d+1)²σ)` — **area-law decay with a perimeter-only
+prefactor, every constant volume-free**: the bound holds on every
+finite lattice uniformly.  The chain: the loop-tagged expansion (V0),
+the restricted-`Z` cancellation (V1), the N-ality kill + pinned
+dichotomy (V2-2/3a), the `Z`-ratio exponentials (3b′), the
+`√ρ` area split (`sum_ite_pow_le`), and the pinned gas resummation
+(17s) exponentiated by `prod_one_add_le_exp_sum` and charged to the
+loop by `loopTouching_polymer_sum_le` (the loop-touching plaquette set
+is exactly `(farRegion es ∅)ᶜ`, so the V2-1 count gives
+`#loopSupp·4d`).
+
+**Non-vacuity audit:** the hypothesis window is jointly satisfiable
+for every `d, N_c` — e.g. `d=4, N_c=2, t=1, ε=0, δ=10⁻¹⁰, σ=2·10⁻⁴`
+checks `hr`, `hsmall`, `hrσ`, `hρσ` simultaneously (binding constraint
+`(16d+1)²σ < 1`; `δ` shrinks to fit `σ²`).  The conclusion is
+non-trivial: `σ^{Area}` decays exponentially in the area against a
+perimeter-exponential prefactor.  Carried hypotheses: the two
+integrability families of finite products (standard, discharged at
+instantiation — same status as 17r).  All M3 lattice-side;
+M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

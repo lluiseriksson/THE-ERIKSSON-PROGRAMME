@@ -890,4 +890,325 @@ theorem norm_normalized_wilson_loop_le_pinned_sum
     rw [hNumEq]
     exact hnum
 
+open Classical in
+/-- **The loop-touching polymer sum (V2-3c entropy):** the σ-weighted
+sum over connected polymers touching the loop's edge support is at most
+the loop-neighbourhood count `#loopSupp·4d` times the volume-free
+per-plaquette geometric sum — every touching polymer is charged to a
+loop-adjacent plaquette it contains. -/
+theorem loopTouching_polymer_sum_le (es : List (ConcreteEdge d N))
+    (σ : ℝ) (h0 : 0 ≤ σ)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ < 1) :
+    (∑ c ∈ (Finset.univ :
+        Finset (Finset (ConcretePlaquette d N))).filter
+        (fun c => (c.Nonempty ∧ IsConnectedPolymer c) ∧
+          ∃ p ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+            (plaquetteSupport p)),
+      σ ^ c.card)
+    ≤ ((edgeSupport (d := d) (N := N) es).card : ℝ) * (4 * (d : ℝ)) *
+        (σ / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ)) := by
+  classical
+  set L : Finset (ConcretePlaquette d N) := Finset.univ.filter
+    (fun p => ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+      (plaquetteSupport p)) with hLdef
+  have hden : (0 : ℝ) < 1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ := by linarith
+  have hconst0 : (0 : ℝ) ≤ σ / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ) :=
+    div_nonneg h0 hden.le
+  -- the per-plaquette injection into the subtype filter
+  have hsub_p : ∀ p : ConcretePlaquette d N,
+      ((Finset.univ :
+        Finset (Finset (ConcretePlaquette d N))).filter
+        (fun c => (c.Nonempty ∧ IsConnectedPolymer c) ∧
+          ∃ q ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+            (plaquetteSupport q))).filter (fun c => p ∈ c)
+      ⊆ ((Finset.univ : Finset {c : Finset (ConcretePlaquette d N) //
+          c.Nonempty ∧ IsConnectedPolymer c}).filter
+          (fun c' => p ∈ c'.1)).image (fun c' => c'.1) := by
+    intro p c hc
+    have hc1 := Finset.mem_filter.mp hc
+    have hc2 := Finset.mem_filter.mp hc1.1
+    refine Finset.mem_image.mpr ⟨⟨c, hc2.2.1⟩, ?_, rfl⟩
+    exact Finset.mem_filter.mpr ⟨Finset.mem_univ _, hc1.2⟩
+  have himg : ∀ p : ConcretePlaquette d N,
+      (∑ T ∈ ((Finset.univ :
+          Finset {c : Finset (ConcretePlaquette d N) //
+            c.Nonempty ∧ IsConnectedPolymer c}).filter
+          (fun c' => p ∈ c'.1)).image (fun c' => c'.1),
+        σ ^ T.card)
+      = ∑ c' ∈ (Finset.univ :
+          Finset {c : Finset (ConcretePlaquette d N) //
+            c.Nonempty ∧ IsConnectedPolymer c}).filter
+          (fun c' => p ∈ c'.1),
+        σ ^ c'.1.card :=
+    fun p => Finset.sum_image
+      (f := fun T : Finset (ConcretePlaquette d N) => σ ^ T.card)
+      (g := fun c' : {c : Finset (ConcretePlaquette d N) //
+        c.Nonempty ∧ IsConnectedPolymer c} => c'.1)
+      (fun a _ b _ h => Subtype.ext h)
+  calc (∑ c ∈ (Finset.univ :
+        Finset (Finset (ConcretePlaquette d N))).filter
+        (fun c => (c.Nonempty ∧ IsConnectedPolymer c) ∧
+          ∃ p ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+            (plaquetteSupport p)),
+      σ ^ c.card)
+      ≤ ∑ c ∈ (Finset.univ :
+          Finset (Finset (ConcretePlaquette d N))).filter
+          (fun c => (c.Nonempty ∧ IsConnectedPolymer c) ∧
+            ∃ p ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+              (plaquetteSupport p)),
+          ∑ p ∈ L, (if p ∈ c then σ ^ c.card else 0) := by
+        refine Finset.sum_le_sum fun c hc => ?_
+        obtain ⟨-, -, p, hpc, hptouch⟩ := Finset.mem_filter.mp hc
+        have hpL : p ∈ L := by
+          rw [hLdef]
+          exact Finset.mem_filter.mpr ⟨Finset.mem_univ _, hptouch⟩
+        have hkey : σ ^ c.card ≤ if p ∈ c then σ ^ c.card else 0 := by
+          rw [if_pos hpc]
+        refine le_trans hkey ?_
+        refine Finset.single_le_sum
+          (f := fun q => if q ∈ c then σ ^ c.card else 0)
+          (fun q _ => ?_) hpL
+        show (0 : ℝ) ≤ if q ∈ c then σ ^ c.card else 0
+        split_ifs
+        · exact pow_nonneg h0 _
+        · exact le_rfl
+    _ = ∑ p ∈ L, ∑ c ∈ (Finset.univ :
+          Finset (Finset (ConcretePlaquette d N))).filter
+          (fun c => (c.Nonempty ∧ IsConnectedPolymer c) ∧
+            ∃ q ∈ c, ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+              (plaquetteSupport q)),
+          (if p ∈ c then σ ^ c.card else 0) :=
+        Finset.sum_comm
+    _ ≤ ∑ _p ∈ L, σ / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ) := by
+        refine Finset.sum_le_sum fun p _ => ?_
+        rw [← Finset.sum_filter]
+        refine le_trans (Finset.sum_le_sum_of_subset_of_nonneg (hsub_p p)
+          (fun c _ _ => pow_nonneg h0 _)) ?_
+        rw [himg p]
+        exact sum_connectedPolymers_through_le (d := d) (N := N) p σ h0 hr
+    _ = (L.card : ℝ) * (σ / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ)) := by
+        rw [Finset.sum_const, nsmul_eq_mul]
+    _ ≤ ((edgeSupport (d := d) (N := N) es).card : ℝ) * (4 * (d : ℝ)) *
+          (σ / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ)) := by
+        refine mul_le_mul_of_nonneg_right ?_ hconst0
+        have hLeq : L
+            = (farRegion es (∅ : Finset (ConcretePlaquette d N)))ᶜ := by
+          rw [hLdef]
+          ext p
+          rw [Finset.mem_filter, Finset.mem_compl, farRegion,
+            Finset.mem_filter]
+          constructor
+          · rintro ⟨-, h⟩ hcon
+            exact h hcon.2.1
+          · intro h
+            refine ⟨Finset.mem_univ _, fun hd => ?_⟩
+            exact h ⟨Finset.mem_univ _, hd,
+              fun q hq => absurd hq (Finset.notMem_empty q)⟩
+        rw [hLeq]
+        have hcompl := card_compl_farRegion_le (d := d) (N := N) es
+          (∅ : Finset (ConcretePlaquette d N))
+        simpa using hcompl
+
+open Classical in
+/-- **THE PINNED GAS TAIL (V2-3c closed):** the σ-weighted sum over
+pinned sets is bounded by a PERIMETER exponential — volume-free in
+every factor.  Chains the pinned resummation
+(`sum_pinned_pow_le_prod`), the elementary gas exponentiation
+(`prod_one_add_le_exp_sum`), and the loop-touching entropy bound. -/
+theorem sum_pinned_pow_le_exp (es : List (ConcreteEdge d N))
+    (σ : ℝ) (h0 : 0 ≤ σ)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ < 1) :
+    (∑ S₀ ∈ (Finset.univ :
+        Finset (ConcretePlaquette d N)).powerset.filter
+        (fun S₀ => nearLoop es S₀ = S₀),
+      σ ^ S₀.card)
+    ≤ Real.exp (((edgeSupport (d := d) (N := N) es).card : ℝ)
+        * (4 * (d : ℝ))
+        * (σ / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ))) := by
+  refine le_trans (sum_pinned_pow_le_prod es σ h0) ?_
+  refine le_trans (prod_one_add_le_exp_sum _ _
+    (fun c _ => pow_nonneg h0 _)) ?_
+  exact Real.exp_le_exp.mpr (loopTouching_polymer_sum_le es σ h0 hr)
+
+open Classical in
+/-- **The pinned dichotomy collapse (V2-3c arithmetic):** the pinned
+sum of dichotomy weights times size-linear exponentials collapses to
+`area weight × perimeter exponential` — abstract constants, ready for
+the 3b′ instantiation. -/
+theorem sum_pinned_dichotomy_le (es : List (ConcreteEdge d N)) (A : ℕ)
+    (Cn K₁ K₂ ρ₀ σ : ℝ) (hCn : 0 ≤ Cn) (hρ₀ : 0 ≤ ρ₀)
+    (hσ0 : 0 ≤ σ) (hσ1 : σ ≤ 1)
+    (hrσ : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ < 1)
+    (hρσ : ρ₀ * Real.exp K₂ ≤ σ ^ 2) :
+    (∑ S₀ ∈ (Finset.univ :
+        Finset (ConcretePlaquette d N)).powerset.filter
+        (fun S₀ => nearLoop es S₀ = S₀),
+      (if A ≤ S₀.card then Cn * ρ₀ ^ S₀.card else 0) *
+        Real.exp (K₁ + (S₀.card : ℝ) * K₂))
+    ≤ Cn * Real.exp K₁ * σ ^ A *
+        Real.exp (((edgeSupport (d := d) (N := N) es).card : ℝ)
+          * (4 * (d : ℝ))
+          * (σ / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ))) := by
+  classical
+  have hCnK : (0 : ℝ) ≤ Cn * Real.exp K₁ :=
+    mul_nonneg hCn (Real.exp_pos _).le
+  have hterm : ∀ S₀ : Finset (ConcretePlaquette d N),
+      (if A ≤ S₀.card then Cn * ρ₀ ^ S₀.card else 0) *
+        Real.exp (K₁ + (S₀.card : ℝ) * K₂)
+      ≤ Cn * Real.exp K₁ *
+          (if A ≤ S₀.card then (σ ^ 2) ^ S₀.card else 0) := by
+    intro S₀
+    split_ifs with h
+    · have hexp : Real.exp (K₁ + (S₀.card : ℝ) * K₂)
+          = Real.exp K₁ * Real.exp K₂ ^ S₀.card := by
+        rw [Real.exp_add, Real.exp_nat_mul]
+      calc (Cn * ρ₀ ^ S₀.card) * Real.exp (K₁ + (S₀.card : ℝ) * K₂)
+          = Cn * Real.exp K₁ * (ρ₀ * Real.exp K₂) ^ S₀.card := by
+            rw [hexp, mul_pow]
+            ring
+        _ ≤ Cn * Real.exp K₁ * (σ ^ 2) ^ S₀.card := by
+            refine mul_le_mul_of_nonneg_left ?_ hCnK
+            exact pow_le_pow_left₀
+              (mul_nonneg hρ₀ (Real.exp_pos _).le) hρσ _
+    · rw [zero_mul, mul_zero]
+  calc (∑ S₀ ∈ (Finset.univ :
+        Finset (ConcretePlaquette d N)).powerset.filter
+        (fun S₀ => nearLoop es S₀ = S₀),
+      (if A ≤ S₀.card then Cn * ρ₀ ^ S₀.card else 0) *
+        Real.exp (K₁ + (S₀.card : ℝ) * K₂))
+      ≤ ∑ S₀ ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).powerset.filter
+          (fun S₀ => nearLoop es S₀ = S₀),
+          Cn * Real.exp K₁ *
+            (if A ≤ S₀.card then (σ ^ 2) ^ S₀.card else 0) :=
+        Finset.sum_le_sum fun S₀ _ => hterm S₀
+    _ = Cn * Real.exp K₁ * ∑ S₀ ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).powerset.filter
+          (fun S₀ => nearLoop es S₀ = S₀),
+          (if A ≤ S₀.card then (σ ^ 2) ^ S₀.card else 0) := by
+        rw [Finset.mul_sum]
+    _ ≤ Cn * Real.exp K₁ * (σ ^ A * ∑ S₀ ∈ (Finset.univ :
+          Finset (ConcretePlaquette d N)).powerset.filter
+          (fun S₀ => nearLoop es S₀ = S₀),
+          σ ^ S₀.card) := by
+        refine mul_le_mul_of_nonneg_left ?_ hCnK
+        exact KP.sum_ite_pow_le _ Finset.card A σ hσ0 hσ1
+    _ ≤ Cn * Real.exp K₁ * (σ ^ A *
+          Real.exp (((edgeSupport (d := d) (N := N) es).card : ℝ)
+            * (4 * (d : ℝ))
+            * (σ / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ)))) := by
+        refine mul_le_mul_of_nonneg_left ?_ hCnK
+        exact mul_le_mul_of_nonneg_left
+          (sum_pinned_pow_le_exp es σ hσ0 hrσ) (pow_nonneg hσ0 _)
+    _ = Cn * Real.exp K₁ * σ ^ A *
+          Real.exp (((edgeSupport (d := d) (N := N) es).card : ℝ)
+            * (4 * (d : ℝ))
+            * (σ / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ))) := by
+        ring
+
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **THE VOLUME-UNIFORM AREA LAW — the VU campaign headline.**
+
+At strong coupling (conjugate-pair linearized activities, `‖c‖ ≤ δ`,
+in the banked smallness window), for ANY area-extraction rate
+`σ ∈ [0,1)` with `2δN_c·e^{16d·K} ≤ σ²`:
+
+`‖⟨tr W_C⟩‖ ≤ N_c · e^{#loopSupp·4d·K} · σ^{Area(C)} · e^{#loopSupp·4d·S(σ)}`
+
+— the area-law decay `σ^{Area}` with a PERIMETER-ONLY prefactor:
+every constant is volume-free, the bound holds on every finite
+lattice uniformly.  `Z` cancelled through the restricted cluster
+expansion; the pinned gas resummed by elementary entropy. -/
+theorem normalized_wilson_loop_area_law
+    (N_c : ℕ) [NeZero N_c]
+    (es : List (ConcreteEdge d N)) (δ : ℝ) (hδ0 : 0 ≤ δ)
+    (c c' : ConcretePlaquette d N → ℂ)
+    (hc : ∀ p, ‖c p‖ ≤ δ) (hc' : ∀ p, ‖c' p‖ ≤ δ)
+    (hpair : ∀ p, c' p = (starRingEnd ℂ) (c p))
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((2 * δ * (N_c : ℝ)) * Real.exp (t + ε + 1)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      (((2 * δ * (N_c : ℝ)) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((2 * δ * (N_c : ℝ)) * Real.exp (t + ε + 1)))) ≤ t)
+    (σ : ℝ) (hσ0 : 0 ≤ σ) (hσ1 : σ ≤ 1)
+    (hrσ : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ < 1)
+    (hρσ : (2 * δ * (N_c : ℝ)) *
+        Real.exp ((16 * (d : ℝ)) *
+          (Real.exp 1 * ((2 * δ * (N_c : ℝ) * Real.exp t) /
+            (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+              (2 * δ * (N_c : ℝ) * Real.exp t)))))
+        ≤ σ ^ 2)
+    (hint1 : ∀ S : Finset (ConcretePlaquette d N),
+      Integrable (fun A => Matrix.trace (wilsonLine A es).val *
+        ∏ p ∈ S, (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+        (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)))
+    (hint2 : ∀ S : Finset (ConcretePlaquette d N),
+      Integrable (fun A => ∏ p ∈ S,
+        (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+        (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))) :
+    ‖(∫ A, Matrix.trace (wilsonLine A es).val *
+        ∏ p : ConcretePlaquette d N,
+          (1 + (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)))
+      / ((weightedPartition (d := d) (N := N) (sunHaarProb N_c)
+          (fun A p => (2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re)
+          : ℝ) : ℂ)‖
+      ≤ (N_c : ℝ) *
+          Real.exp (((edgeSupport (d := d) (N := N) es).card : ℝ)
+            * (4 * (d : ℝ))
+            * (Real.exp 1 * ((2 * δ * (N_c : ℝ) * Real.exp t) /
+              (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+                (2 * δ * (N_c : ℝ) * Real.exp t))))) *
+          σ ^ (chainAreaA (R := ZMod N_c) (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+            (loopChain (R := ZMod N_c) (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)) *
+          Real.exp (((edgeSupport (d := d) (N := N) es).card : ℝ)
+            * (4 * (d : ℝ))
+            * (σ / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ))) := by
+  classical
+  refine le_trans (norm_normalized_wilson_loop_le_pinned_sum N_c es δ hδ0
+    c c' hc hc' hpair t ε ht0 hε0 hr hsmall hint1 hint2) ?_
+  refine le_trans (le_of_eq (Finset.sum_congr rfl fun S₀ _ => ?_))
+    (sum_pinned_dichotomy_le es
+      (chainAreaA (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        (loopChain (R := ZMod N_c) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es))
+      ((N_c : ℝ))
+      (((edgeSupport (d := d) (N := N) es).card : ℝ) * (4 * (d : ℝ))
+        * (Real.exp 1 * ((2 * δ * (N_c : ℝ) * Real.exp t) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+            (2 * δ * (N_c : ℝ) * Real.exp t)))))
+      ((16 * (d : ℝ))
+        * (Real.exp 1 * ((2 * δ * (N_c : ℝ) * Real.exp t) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+            (2 * δ * (N_c : ℝ) * Real.exp t)))))
+      (2 * δ * (N_c : ℝ)) σ
+      (Nat.cast_nonneg _)
+      (mul_nonneg (mul_nonneg (by norm_num) hδ0) (Nat.cast_nonneg _))
+      hσ0 hσ1 hrσ hρσ)
+  congr 1
+  exact congrArg Real.exp (by ring)
+
 end YangMills

@@ -778,6 +778,19 @@ theorem sum_pinned_pow_le_prod (es : List (ConcreteEdge d N))
               (plaquetteSupport p)), (1 + σ ^ c.card) :=
         hbin.symm
 
+/-- **Elementary gas bound:** `∏ (1 + x_i) ≤ exp (∑ x_i)` for
+nonnegative weights — the standard polymer-gas exponentiation,
+no cluster expansion. -/
+theorem prod_one_add_le_exp_sum {ι : Type*} (s : Finset ι) (x : ι → ℝ)
+    (hx : ∀ i ∈ s, 0 ≤ x i) :
+    (∏ i ∈ s, (1 + x i)) ≤ Real.exp (∑ i ∈ s, x i) := by
+  rw [Real.exp_sum]
+  refine Finset.prod_le_prod (fun i hi => ?_) (fun i hi => ?_)
+  · have := hx i hi
+    linarith
+  · have h := Real.add_one_le_exp (x i)
+    linarith
+
 /-! ## V1 opening: the far resummation
 
 Summing the far factor of `integral_wilson_obs_regroup` over all far

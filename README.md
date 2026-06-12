@@ -31,7 +31,27 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 
 ## Headline results (all oracle-clean, all in the core)
 
-### 1. The exact-activity Wilson-loop area law — *the current flagship*
+### 0. The volume-uniform area law — *the current flagship*
+
+For the **normalized** Wilson-loop expectation at conjugate-pair linearized
+activities (the physical `Re tr` weight, ‖c<sub>p</sub>‖ ≤ δ) in an explicit
+strong-coupling window, and any rate σ ∈ [0,1] with (16d+1)²σ < 1 and
+2δN<sub>c</sub>·e<sup>16d·K</sup> ≤ σ²:
+
+$$\Bigl\lVert \frac{\int \mathrm{tr}(W_C)\cdot\prod_p (1+f_p)}{Z} \Bigr\rVert \;\le\; N_c \cdot e^{\#\mathrm{loopSupp}\cdot 4d\cdot K} \cdot \sigma^{\mathrm{Area}(C)} \cdot e^{\#\mathrm{loopSupp}\cdot 4d\cdot S(\sigma)}$$
+
+`theorem normalized_wilson_loop_area_law` — [`YangMills/L1_GibbsMeasure/RestrictedGate.lean`](YangMills/L1_GibbsMeasure/RestrictedGate.lean)
+
+**Every constant is volume-free** — area-law decay with a perimeter-only
+prefactor, uniformly over all finite lattices. The partition function is
+cancelled through a fully formalized volume-restricted cluster expansion
+(loop-tagged factorization, restricted Mayer inversion, Z-ratio bounds, pinned
+gas resummation — [`docs/AREA-LAW-VU-PLAN.md`](docs/AREA-LAW-VU-PLAN.md), all
+bricks closed). The hypothesis window is non-empty (ledger Addendum 17t);
+integrability of the finite products is carried as two explicit hypothesis
+families.
+
+### 1. The exact-activity Wilson-loop area law
 
 For SU(N<sub>c</sub>) lattice gauge theory with the **true Wilson Boltzmann
 factor** ∏<sub>p</sub> exp(z<sub>p</sub>), where
@@ -51,8 +71,9 @@ have `Area ≥ 1` (`one_le_chainAreaA_plaquette`). The linearized-activity
 versions `finite_volume_area_law` / `finite_volume_area_law_re` (the physical
 `Re tr` observable) bound the same integral by `N_c·2^{#P}·(2δN_c)^{Area}`.
 
-*Honest caveat:* the constant is finite-volume (`2^{#P}`); making it
-volume-uniform is the next campaign ([`docs/AREA-LAW-VU-PLAN.md`](docs/AREA-LAW-VU-PLAN.md)).
+*Honest caveat:* the constant here is finite-volume (`2^{#P}`); the
+volume-uniform refinement is result 0 above (linearized activities; the
+exact-activity volume-uniform version is the V4 stretch goal).
 
 ### 2. The unconditional IR clustering bound
 
@@ -91,7 +112,7 @@ for N ∤ (a−b), the decorated-entry monomial kill, ∫ |tr U|² ≤ N
 of the area law's "kill" mechanism.
 
 The complete machine-checked record — verbatim oracle outputs for every result
-above, sixteen addenda — is [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
+above, thirty-plus addenda — is [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 
 ---
 
