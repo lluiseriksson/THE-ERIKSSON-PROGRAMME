@@ -280,7 +280,9 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   `integral_tsum_of_bounded` again.  **Post-campaign refinement
   (next high-leverage target):** volume-uniform constant
   (connected-support resummation against `Z` — cluster machinery,
-  campaign-scale).
+  campaign-scale).  **CAMPAIGN DESIGNED 2026-06-12:**
+  `docs/AREA-LAW-VU-PLAN.md` (bricks V0–V4, difficulties D1–D3
+  named; reuses the B4 pinned-cluster engine).  Start at V0.
   Alternative frontiers:
   Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
   single-scale UV estimate (class-C, outside the current plan).
