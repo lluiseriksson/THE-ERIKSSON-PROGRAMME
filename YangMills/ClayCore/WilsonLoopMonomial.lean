@@ -1088,6 +1088,153 @@ theorem star_trace_wilsonLine
     _ = star (Matrix.trace (wilsonLine A es).val) := by
         rw [Matrix.star_eq_conjTranspose, Matrix.trace_conjTranspose]
 
+open Classical in
+/-- The **power-trace observable**: the Wilson loop times
+plaquette-trace powers — the generic term of the exp-expanded Wilson
+Boltzmann factor. -/
+noncomputable def powerTraceObservable (es : List (ConcreteEdge d N))
+    (j k : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℕ)
+    (A : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))) :
+    ℂ :=
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+  Matrix.trace (wilsonLine A es).val *
+    ∏ p, (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val ^ (j p) *
+      star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) ^ (k p))
+
+open Classical in
+/-- **The multiplicity join (exact-activity E3b):** if the Wilson loop
+times plaquette-trace POWERS `∏_p tr(Hₚ)^{jₚ}·(conj tr Hₚ)^{kₚ}` has
+nonzero β = 0 expectation, the loop's `N`-ality area is bounded by
+the number of plaquettes actually used — `#{p : jₚ + kₚ ≠ 0}`.
+Powers become repeated lines over `Σ p, Fin (jₚ) ⊕ Fin (kₚ)`, and the
+SHARP join counts distinct plaquettes only. -/
+theorem chainAreaA_le_card_support_of_integral_pow_ne_zero
+    (es : List (ConcreteEdge d N))
+    (j k : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℕ)
+    (hT : ∫ A, powerTraceObservable es j k A
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) ≠ 0) :
+    letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+    chainAreaA (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        (loopChain (R := ZMod N_c) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+      ≤ (Finset.univ.filter (fun p => j p + k p ≠ 0)).card := by
+  classical
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+  set κ := (Σ p : FiniteLatticeGeometry.P (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)),
+    (Fin (j p) ⊕ Fin (k p))) with hκ
+  set eκ := Fintype.equivFin κ with heκ
+  set ps : Fin (Fintype.card κ) → FiniteLatticeGeometry.P (d := d)
+      (N := N) (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) :=
+    fun i => (eκ.symm i).1 with hps
+  set σb : Fin (Fintype.card κ) → Bool :=
+    fun i => ((eκ.symm i).2).isLeft with hσb
+  -- the integrand in family form
+  have hint : (fun A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      powerTraceObservable es j k A)
+      = fun A => ∏ i : Fin (Fintype.card κ + 1),
+          Matrix.trace (wilsonLine A
+            (Fin.cons (α := fun _ => List (ConcreteEdge d N)) es (fun i =>
+              if σb i
+              then plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)
+              else ((plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) (ps i)).map
+                  (FiniteLatticeGeometry.reverse (d := d) (N := N)
+                    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))).reverse)
+              i)).val := by
+    funext A
+    show Matrix.trace (wilsonLine A es).val *
+      ∏ p, (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val ^ (j p) *
+        star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) ^ (k p))
+      = _
+    rw [Fin.prod_univ_succ]
+    simp only [Fin.cons_zero, Fin.cons_succ]
+    congr 1
+    -- per plaquette: powers as products over the sum type
+    have hper : ∀ p : FiniteLatticeGeometry.P (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)),
+        (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val ^ (j p) *
+          star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) ^ (k p))
+        = ∏ s : Fin (j p) ⊕ Fin (k p),
+            (if s.isLeft
+              then Matrix.trace (wilsonLine A
+                (plaquetteList (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+              else star (Matrix.trace (wilsonLine A
+                (plaquetteList (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) := by
+      intro p
+      rw [Fintype.prod_sum_type]
+      congr 1
+      · refine ((Finset.prod_congr rfl fun s _ =>
+          (if_pos rfl)).trans ?_).symm
+        rw [Finset.prod_const, Finset.card_univ, Fintype.card_fin]
+      · refine ((Finset.prod_congr rfl fun s _ =>
+          (if_neg Bool.false_ne_true)).trans ?_).symm
+        rw [Finset.prod_const, Finset.card_univ, Fintype.card_fin]
+    rw [Finset.prod_congr rfl fun p _ => hper p]
+    rw [← Fintype.prod_sigma' (fun p (s : Fin (j p) ⊕ Fin (k p)) =>
+      (if s.isLeft
+        then Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+        else star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))]
+    -- reindex the sigma product through `eκ`
+    refine (Fintype.prod_equiv eκ.symm _ _ fun i => ?_).symm
+    by_cases hs : ((eκ.symm i).2).isLeft = true
+    · rw [if_pos hs, if_pos (by simp [hσb, hs])]
+    · rw [if_neg hs, if_neg (by simp [hσb, hs]),
+        star_trace_wilsonLine]
+  rw [hint] at hT
+  have hsharp := chainAreaA_loopChain_le_card_image_of_integral_ne_zero
+    es ps σb hT
+  refine le_trans hsharp (le_of_eq ?_)
+  congr 1
+  -- the image of `ps` is exactly the support of the multiplicities
+  ext p
+  simp only [Finset.mem_image, Finset.mem_univ, true_and,
+    Finset.mem_filter]
+  constructor
+  · rintro ⟨i, hi⟩
+    intro hzero
+    have hj : j p = 0 := by omega
+    have hk : k p = 0 := by omega
+    have hp' : (eκ.symm i).1 = p := hi
+    have hq2 := (eκ.symm i).2
+    rw [hp', hj, hk] at hq2
+    exact hq2.elim (fun a => a.elim0) (fun b => b.elim0)
+  · intro hne
+    by_cases hj : j p ≠ 0
+    · refine ⟨eκ ⟨p, Sum.inl ⟨0, Nat.pos_of_ne_zero hj⟩⟩, ?_⟩
+      show (eκ.symm (eκ ⟨p, Sum.inl ⟨0, Nat.pos_of_ne_zero hj⟩⟩)).1 = p
+      rw [eκ.symm_apply_apply]
+    · have hk : k p ≠ 0 := by omega
+      refine ⟨eκ ⟨p, Sum.inr ⟨0, Nat.pos_of_ne_zero hk⟩⟩, ?_⟩
+      show (eκ.symm (eκ ⟨p, Sum.inr ⟨0, Nat.pos_of_ne_zero hk⟩⟩)).1 = p
+      rw [eκ.symm_apply_apply]
+
 /-! ## AL6-1: the per-term kill in `Finset` form
 
 The powerset expansion of `⟨W_C⟩·Z` produces terms indexed by a
