@@ -1235,6 +1235,96 @@ theorem chainAreaA_le_card_support_of_integral_pow_ne_zero
       show (eκ.symm (eκ ⟨p, Sum.inr ⟨0, Nat.pos_of_ne_zero hk⟩⟩)).1 = p
       rw [eκ.symm_apply_apply]
 
+open Classical in
+/-- The power-trace observable is **measurable**. -/
+theorem measurable_powerTraceObservable (es : List (ConcreteEdge d N))
+    (j k : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℕ) :
+    Measurable (powerTraceObservable es j k) := by
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+  refine (measurable_trace_wilsonLine es).mul
+    (Finset.measurable_prod _ fun p _ => Measurable.mul ?_ ?_)
+  · exact (measurable_trace_wilsonLine _).pow_const _
+  · exact ((continuous_star.measurable).comp
+      (measurable_trace_wilsonLine _)).pow_const _
+
+open Classical in
+/-- The power-trace observable is **pointwise bounded by
+`N_c^(1 + Σ(jₚ + kₚ))`**. -/
+theorem norm_powerTraceObservable_le
+    (A : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+    (es : List (ConcreteEdge d N))
+    (j k : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℕ) :
+    letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+    ‖powerTraceObservable es j k A‖
+      ≤ (N_c : ℝ) ^ (1 + ∑ p, (j p + k p)) := by
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+  have hN0 : (0 : ℝ) ≤ (N_c : ℝ) := Nat.cast_nonneg _
+  show ‖Matrix.trace (wilsonLine A es).val * ∏ p, _‖ ≤ _
+  rw [norm_mul, norm_prod, pow_add, pow_one]
+  refine mul_le_mul (norm_trace_wilsonLine_le A es) ?_ ?_ hN0
+  · calc (∏ p, ‖(Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val ^ (j p) *
+      star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) ^ (k p))‖)
+        ≤ ∏ p, (N_c : ℝ) ^ (j p + k p) := by
+          refine Finset.prod_le_prod (fun _ _ => norm_nonneg _) fun p _ => ?_
+          rw [norm_mul, norm_pow, norm_pow, norm_star, pow_add]
+          refine mul_le_mul (pow_le_pow_left₀ (norm_nonneg _)
+            (norm_trace_wilsonLine_le A _) _)
+            (pow_le_pow_left₀ (norm_nonneg _)
+              (norm_trace_wilsonLine_le A _) _)
+            (by positivity) (by positivity)
+      _ = (N_c : ℝ) ^ (∑ p, (j p + k p)) := by
+          rw [Finset.prod_pow_eq_pow_sum]
+  · exact Finset.prod_nonneg fun _ _ => norm_nonneg _
+
+open Classical in
+/-- The power-trace observable is **integrable**, with
+`‖∫ powerTraceObservable‖ ≤ N_c^(1 + Σ(jₚ+kₚ))` — the survivor bound
+of the exp-expanded area law (E4). -/
+theorem norm_integral_powerTraceObservable_le
+    (es : List (ConcreteEdge d N))
+    (j k : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℕ) :
+    letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+    ‖∫ A, powerTraceObservable es j k A
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖
+      ≤ (N_c : ℝ) ^ (1 + ∑ p, (j p + k p)) := by
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+  have h := MeasureTheory.norm_integral_le_of_norm_le_const
+    (μ := gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))
+    (MeasureTheory.ae_of_all _ fun A =>
+      norm_powerTraceObservable_le A es j k)
+  simpa using h
+
+open Classical in
+/-- The power-trace observable is integrable. -/
+theorem integrable_powerTraceObservable (es : List (ConcreteEdge d N))
+    (j k : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℕ) :
+    Integrable (powerTraceObservable es j k)
+      (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) := by
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+  have h1 : Integrable (fun _ : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) => (1 : ℂ))
+      (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) :=
+    integrable_const 1
+  have h2 := h1.bdd_mul
+    (measurable_powerTraceObservable es j k).aestronglyMeasurable
+    (MeasureTheory.ae_of_all _ fun A =>
+      norm_powerTraceObservable_le A es j k)
+  simpa using h2
+
 /-! ## AL6-1: the per-term kill in `Finset` form
 
 The powerset expansion of `⟨W_C⟩·Z` produces terms indexed by a
