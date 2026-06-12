@@ -100,6 +100,28 @@ theorem wilsonLine_one
     List.map_congr_left (fun e _ => hA e)]
   simp
 
+/-- **The Wilson line of the reversed path is the inverse** — traversing
+the path backwards with reversed edges inverts the holonomy.  The
+group-level source of `conj tr U = tr(reversed line)` in the area-law
+expansion. -/
+theorem wilsonLine_reverse_list (A : GaugeConfig d N G)
+    (es : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := G))) :
+    wilsonLine A
+        ((es.map (FiniteLatticeGeometry.reverse (d := d) (N := N)
+          (G := G))).reverse)
+      = (wilsonLine A es)⁻¹ := by
+  unfold wilsonLine
+  rw [List.map_reverse, List.map_map]
+  rw [show (es.map ((fun e => A e) ∘ FiniteLatticeGeometry.reverse
+      (d := d) (N := N) (G := G)))
+      = es.map (fun e => (A e)⁻¹) from
+    List.map_congr_left fun e _ => A.map_reverse e]
+  rw [show es.map (fun e => (A e)⁻¹)
+      = (es.map (fun e => A e)).map (fun x => x⁻¹) from by
+    rw [List.map_map]
+    rfl]
+  exact (List.prod_inv_reverse _).symm
+
 /-- **Length additivity under concatenation** (a sanity invariant of the path length used
 by the centre exponent `z^L`): the centre exponent of a concatenated path is the sum. -/
 theorem wilsonLine_append_length

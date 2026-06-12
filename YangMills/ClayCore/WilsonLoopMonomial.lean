@@ -1037,4 +1037,22 @@ theorem integrable_prod_trace_wilsonLine {n : ℕ}
     (MeasureTheory.ae_of_all _ hb)
   simpa using h2
 
+/-- **The conjugated trace is the reversed-line trace** — the last
+semantic bridge of the area-law expansion: the antiholomorphic
+activity choice `conj tr(Hₚ)` IS the Wilson trace of the reversed
+plaquette list, so every σ-term of the strong-coupling expansion is a
+product of Wilson-line traces, as the join requires. -/
+theorem star_trace_wilsonLine
+    (A : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+    (es : List (ConcreteEdge d N)) :
+    Matrix.trace (wilsonLine A
+        ((es.map (FiniteLatticeGeometry.reverse (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))).reverse)).val
+      = star (Matrix.trace (wilsonLine A es).val) := by
+  rw [wilsonLine_reverse_list]
+  calc Matrix.trace ((wilsonLine A es)⁻¹).val
+      = Matrix.trace (star ((wilsonLine A es).val)) := rfl
+    _ = star (Matrix.trace (wilsonLine A es).val) := by
+        rw [Matrix.star_eq_conjTranspose, Matrix.trace_conjTranspose]
+
 end YangMills

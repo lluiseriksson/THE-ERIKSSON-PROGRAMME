@@ -291,6 +291,13 @@ expansion — finite sums of coordinate-entry products, NO
 group-operation measurability needed), and
 `integrable_prod_trace_wilsonLine` (products of `n` traces
 integrable, bound `N_c^n`).  All oracle clean.
+**Conjugate-trace bridge CLOSED**: `wilsonLine_reverse_list`
+(`WilsonLine.lean`, abstract group fact, `[propext, Quot.sound]`
+only: the reversed path's holonomy is the inverse, via
+`List.prod_inv_reverse` + `map_reverse`) and `star_trace_wilsonLine`
+(`WilsonLoopMonomial.lean`: `conj tr(W_es) = tr(W_{reversed es})`,
+via `Inv := star` + `Matrix.trace_conjTranspose`).  Every σ-term of
+the expansion is now PROVABLY a product of Wilson-line traces.
 **Open (one brick):** AL6 — the quantitative assembly:
 `⟨W_C⟩·Z = ∑_S T_S` via `integral_mul_prod_one_add` (+ the σ-binomial
 splitting of `∏(activities)` into the join's signed-trace terms),
