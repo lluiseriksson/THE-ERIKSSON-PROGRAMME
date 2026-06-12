@@ -1,0 +1,216 @@
+/- Copyright (c) 2026 Lluis Eriksson. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Lluis Eriksson -/
+import Mathlib
+import YangMills.L1_GibbsMeasure.EdgeFactorization
+import YangMills.L1_GibbsMeasure.CenterInvariance
+import YangMills.ClayCore.WilsonLine
+import YangMills.L0_Lattice.ChainComplex
+
+/-!
+# Support-disjoint factorization over the gauge measure (VU campaign, V0)
+
+`docs/AREA-LAW-VU-PLAN.md` V0: the β = 0 gauge measure is the product
+of per-positive-edge Haar coordinates, so observables with **disjoint
+positive-edge supports are independent** — the factorization that lets
+polymer components disjoint from a Wilson loop's support split off the
+loop-tagged expansion (the first step of the connected-support
+resummation against `Z`).
+
+* `DependsOnPos F S` — `F` reads only the positive-edge coordinates
+  in `S`;
+* `edgeSupport es` / `plaquetteSupport p` — the positive-edge support
+  of a Wilson list / of a plaquette;
+* `dependsOnPos_comp_wilsonLine` — `φ(W_es)` depends only on
+  `edgeSupport es` (covers traces, linearized AND exponential
+  activities uniformly, via the post-composition `φ`);
+* `integral_mul_of_disjoint_pos_deps` — the two-block independence
+  `∫ F·K = ∫F · ∫K` over `gaugeMeasureFrom μ`;
+* `integral_mul_prod_of_disjoint_support` — **V0 headline**: an
+  observable times a product of activities whose supports avoid the
+  observable's support factorizes;
+* `integral_wilson_obs_mul_prod_split` — the Wilson-loop
+  instantiation.
+
+Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
+-/
+
+namespace YangMills
+
+open MeasureTheory GaugeConfig
+
+variable {d N : ℕ} [NeZero d] [NeZero N] {G : Type*} [Group G] [MeasurableSpace G]
+
+/-! ## Dependence on a set of positive-edge coordinates -/
+
+/-- `F` depends only on the positive-edge coordinates in `S`: its value
+on the gauge field built from coordinates `x` is unchanged when `x` is
+modified outside `S`. -/
+def DependsOnPos (F : GaugeConfig d N G → ℂ) (S : Finset (PosEdge d N)) : Prop :=
+  ∀ x y : PosEdge d N → G, (∀ pe ∈ S, x pe = y pe) →
+    F (posToConfig x) = F (posToConfig y)
+
+theorem DependsOnPos.mono {F : GaugeConfig d N G → ℂ}
+    {S T : Finset (PosEdge d N)} (hST : S ⊆ T)
+    (hF : DependsOnPos F S) : DependsOnPos F T :=
+  fun x y h => hF x y fun pe hpe => h pe (hST hpe)
+
+theorem DependsOnPos.mul {F K : GaugeConfig d N G → ℂ}
+    {S : Finset (PosEdge d N)}
+    (hF : DependsOnPos F S) (hK : DependsOnPos K S) :
+    DependsOnPos (fun A => F A * K A) S := fun x y h => by
+  show F (posToConfig x) * K (posToConfig x)
+      = F (posToConfig y) * K (posToConfig y)
+  rw [hF x y h, hK x y h]
+
+theorem DependsOnPos.finset_prod {ι : Type*} (s : Finset ι)
+    (g : ι → GaugeConfig d N G → ℂ) (S : Finset (PosEdge d N))
+    (hg : ∀ i ∈ s, DependsOnPos (g i) S) :
+    DependsOnPos (fun A => ∏ i ∈ s, g i A) S := fun x y h =>
+  Finset.prod_congr rfl fun i hi => hg i hi x y h
+
+/-! ## Edge supports -/
+
+open Classical in
+/-- The **positive-edge support** of a Wilson list: the set of Haar
+coordinates its holonomy reads. -/
+noncomputable def edgeSupport (es : List (ConcreteEdge d N)) :
+    Finset (PosEdge d N) :=
+  (es.map fun e => (⟨{ e with sign := true }, rfl⟩ : PosEdge d N)).toFinset
+
+open Classical in
+theorem mem_edgeSupport_of_mem {es : List (ConcreteEdge d N)}
+    {e : ConcreteEdge d N} (he : e ∈ es) :
+    (⟨{ e with sign := true }, rfl⟩ : PosEdge d N) ∈ edgeSupport es := by
+  unfold edgeSupport
+  rw [List.mem_toFinset]
+  exact List.mem_map.mpr ⟨e, he, rfl⟩
+
+/-- The **positive-edge support of a plaquette**: the coordinates its
+holonomy trace (and hence any plaquette activity) reads.  (Named to
+avoid clashing with `plaquetteSupport : Finset (ConcreteEdge d N)` of
+`PolymerExpansion`, which lives at the signed-edge level.) -/
+noncomputable def plaquettePosSupport
+    (p : FiniteLatticeGeometry.P (d := d) (N := N) (G := G)) :
+    Finset (PosEdge d N) :=
+  edgeSupport (plaquetteList (d := d) (N := N) (G := G) p)
+
+/-! ## Dependence of Wilson observables on their support -/
+
+/-- Evaluating the gauge field built from coordinates `x` on a concrete
+edge reads only the coordinate at the edge's positive representative. -/
+theorem posToFun_congr_at (x y : PosEdge d N → G) (e : ConcreteEdge d N)
+    (h : x ⟨{ e with sign := true }, rfl⟩ = y ⟨{ e with sign := true }, rfl⟩) :
+    posToFun x e = posToFun y e := by
+  obtain ⟨src, dir, sign⟩ := e
+  unfold posToFun
+  cases sign
+  · rw [dif_neg (by simp), dif_neg (by simp)]
+    exact congrArg Inv.inv h
+  · rw [dif_pos rfl, dif_pos rfl]
+    exact h
+
+/-- Wilson lines are insensitive to coordinate changes outside their
+edge list. -/
+theorem wilsonLine_posToConfig_congr (x y : PosEdge d N → G)
+    (es : List (ConcreteEdge d N))
+    (h : ∀ e ∈ es,
+      x ⟨{ e with sign := true }, rfl⟩ = y ⟨{ e with sign := true }, rfl⟩) :
+    wilsonLine (posToConfig x) es = wilsonLine (posToConfig y) es := by
+  induction es with
+  | nil => rfl
+  | cons e tl ih =>
+      rw [wilsonLine_cons, wilsonLine_cons]
+      have h1 : posToConfig x e = posToConfig y e :=
+        posToFun_congr_at x y e (h e List.mem_cons_self)
+      rw [h1, ih fun e' he' => h e' (List.mem_cons_of_mem _ he')]
+
+/-- **Any post-composed Wilson-line observable depends only on the
+line's edge support.**  Instantiations: the loop trace
+(`φ = fun U => Matrix.trace U.val`), the linearized activity
+(`φ = fun U => c·tr U + c'·conj tr U`), and the exact Wilson activity
+(`φ = fun U => exp(c·tr U + c'·conj tr U)`). -/
+theorem dependsOnPos_comp_wilsonLine (φ : G → ℂ)
+    (es : List (ConcreteEdge d N)) :
+    DependsOnPos (fun A => φ (wilsonLine A es)) (edgeSupport es) := by
+  intro x y h
+  have hW : wilsonLine (posToConfig x) es = wilsonLine (posToConfig y) es :=
+    wilsonLine_posToConfig_congr x y es fun e he =>
+      h _ (mem_edgeSupport_of_mem he)
+  show φ (wilsonLine (posToConfig x) es) = φ (wilsonLine (posToConfig y) es)
+  rw [hW]
+
+/-- Plaquette observables depend only on the plaquette's support. -/
+theorem dependsOnPos_plaquette_obs (φ : G → ℂ)
+    (p : FiniteLatticeGeometry.P (d := d) (N := N) (G := G)) :
+    DependsOnPos
+      (fun A => φ (wilsonLine A (plaquetteList (d := d) (N := N) (G := G) p)))
+      (plaquettePosSupport p) :=
+  dependsOnPos_comp_wilsonLine φ _
+
+/-! ## The factorization theorems -/
+
+/-- **Two-block independence over the gauge measure:** observables
+reading disjoint blocks of positive-edge coordinates have factorizing
+expectations.  This is `integral_mul_of_disjoint_deps_complex`
+transported along `gaugeConfigMEquiv`. -/
+theorem integral_mul_of_disjoint_pos_deps
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    (S : Finset (PosEdge d N)) (F K : GaugeConfig d N G → ℂ)
+    (hF : DependsOnPos F S) (hK : DependsOnPos K Sᶜ) :
+    ∫ A, F A * K A ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+      = (∫ A, F A ∂(gaugeMeasureFrom (d := d) (N := N) μ)) *
+        ∫ A, K A ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+  classical
+  have hmeas : gaugeMeasureFrom (d := d) (N := N) μ
+      = Measure.map (gaugeConfigMEquiv (d := d) (N := N) (G := G))
+          (Measure.pi (fun _ : PosEdge d N => μ)) := rfl
+  rw [hmeas, MeasureTheory.integral_map_equiv,
+    MeasureTheory.integral_map_equiv, MeasureTheory.integral_map_equiv]
+  exact integral_mul_of_disjoint_deps_complex μ (fun pe => pe ∈ S)
+    (fun x => F (posToConfig x)) (fun x => K (posToConfig x))
+    (fun x y hxy => hF x y hxy)
+    (fun x y hxy => hK x y fun pe hpe => hxy pe (Finset.mem_compl.mp hpe))
+
+/-- **V0 headline — support-disjoint activities split off:** an
+observable `F` supported on `SF` times a product of activities whose
+supports all avoid `SF` factorizes over the gauge measure.  This is
+the mechanism by which polymer components disjoint from the Wilson
+loop's support will cancel against `Z` in the connected-support
+resummation. -/
+theorem integral_mul_prod_of_disjoint_support
+    (μ : Measure G) [IsProbabilityMeasure μ] {ι : Type*}
+    (s : Finset ι) (F : GaugeConfig d N G → ℂ)
+    (g : ι → GaugeConfig d N G → ℂ)
+    (SF : Finset (PosEdge d N)) (Sg : ι → Finset (PosEdge d N))
+    (hF : DependsOnPos F SF) (hg : ∀ i ∈ s, DependsOnPos (g i) (Sg i))
+    (hdisj : ∀ i ∈ s, Disjoint SF (Sg i)) :
+    ∫ A, F A * ∏ i ∈ s, g i A ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+      = (∫ A, F A ∂(gaugeMeasureFrom (d := d) (N := N) μ)) *
+        ∫ A, ∏ i ∈ s, g i A ∂(gaugeMeasureFrom (d := d) (N := N) μ) := by
+  classical
+  refine integral_mul_of_disjoint_pos_deps μ SF F
+    (fun A => ∏ i ∈ s, g i A) hF ?_
+  refine DependsOnPos.finset_prod s g SFᶜ ?_
+  intro i hi
+  refine (hg i hi).mono ?_
+  intro pe hpe
+  rw [Finset.mem_compl]
+  exact fun hmem => (Finset.disjoint_left.mp (hdisj i hi)) hmem hpe
+
+/-- The Wilson-loop instantiation of the V0 headline: a loop
+observable times activities supported away from the loop. -/
+theorem integral_wilson_obs_mul_prod_split
+    (μ : Measure G) [IsProbabilityMeasure μ] {ι : Type*}
+    (s : Finset ι) (φ : G → ℂ) (es : List (ConcreteEdge d N))
+    (g : ι → GaugeConfig d N G → ℂ) (Sg : ι → Finset (PosEdge d N))
+    (hg : ∀ i ∈ s, DependsOnPos (g i) (Sg i))
+    (hdisj : ∀ i ∈ s, Disjoint (edgeSupport es) (Sg i)) :
+    ∫ A, φ (wilsonLine A es) * ∏ i ∈ s, g i A
+        ∂(gaugeMeasureFrom (d := d) (N := N) μ)
+      = (∫ A, φ (wilsonLine A es) ∂(gaugeMeasureFrom (d := d) (N := N) μ)) *
+        ∫ A, ∏ i ∈ s, g i A ∂(gaugeMeasureFrom (d := d) (N := N) μ) :=
+  integral_mul_prod_of_disjoint_support μ s _ g (edgeSupport es) Sg
+    (dependsOnPos_comp_wilsonLine φ es) hg hdisj
+
+end YangMills

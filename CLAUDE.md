@@ -30,7 +30,7 @@ never repeat that.
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
 7. **After adding a module to the core, confirm the build job count
-   incremented** (currently 8235).
+   incremented** (currently 8236).
 
 ## The autonomous loop
 
@@ -69,12 +69,15 @@ Lean; they save hours.
 
 ## Current state (2026-06-12)
 
-* Core green: **8235 jobs**, zero sorry, zero axioms.
+* Core green: **8236 jobs**, zero sorry, zero axioms.
 * Done: sharp KP, Mayer–Ursell `Ξ = exp(clusterSum)`, `Z = Ξ`, the IR
   clustering bound (B4), the two-plaquette correlator decay (T4), the
   finite-volume area law (linearized, AL1–AL6) and the
   **exact-activity area law** (`finite_volume_area_law_exp`).
 * M3 assembly: IR side theorem-fed; the §6.3 Balaban UV single-scale
   bound is the **sole carried hypothesis**.
-* Next campaign: volume-uniform area-law constant —
-  `docs/AREA-LAW-VU-PLAN.md` (start at V0).
+* Live campaign: volume-uniform area-law constant —
+  `docs/AREA-LAW-VU-PLAN.md`.  V0-1 (support-disjoint factorization,
+  `L1_GibbsMeasure/SupportFactorization.lean`) is CLOSED (ledger
+  Addendum 17); next: the V0 component regrouping, then V1
+  (ratio cancellation against `Z`).

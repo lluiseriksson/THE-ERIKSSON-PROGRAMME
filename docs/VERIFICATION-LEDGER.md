@@ -698,6 +698,39 @@ The exact-activity campaign is COMPLETE; the surviving refinements
 Peter–Weyl proper) are recorded, not promised.  All M3 lattice-side
 (Osterwalder–Seiler); M4/M5/Clay untouched.
 
+## Addendum 17 (2026-06-12, VU campaign V0-1: support-disjoint
+factorization)
+
+**Build:** `lake build YangMillsCore` — green (**8236 jobs**; +1 for
+the new module `L1_GibbsMeasure/SupportFactorization.lean`).
+**Source scan:** zero `sorry`; zero `axiom` in the core tree
+(now CI-enforced by `scripts/check_consistency.py`).
+
+Oracle outputs (verbatim):
+
+```
+'YangMills.integral_mul_of_disjoint_pos_deps'          [propext, Classical.choice, Quot.sound]
+'YangMills.integral_mul_prod_of_disjoint_support'      [propext, Classical.choice, Quot.sound]
+'YangMills.integral_wilson_obs_mul_prod_split'         [propext, Classical.choice, Quot.sound]
+'YangMills.dependsOnPos_comp_wilsonLine'               [propext, Classical.choice, Quot.sound]
+```
+
+**Content (the volume-uniform campaign's opening brick,
+`docs/AREA-LAW-VU-PLAN.md` V0-1):** the β = 0 gauge measure is the
+per-positive-edge product measure, so observables with disjoint
+positive-edge supports are independent.  `DependsOnPos` formalizes
+"reads only the coordinates in `S`" (with a `mono`/`mul`/`finset_prod`
+calculus); `dependsOnPos_comp_wilsonLine` certifies in one stroke that
+every post-composed Wilson-line observable `φ(W_es)` — the loop trace,
+linearized activities, and the exact `exp` activities alike — depends
+only on `edgeSupport es`; `integral_mul_of_disjoint_pos_deps`
+transports the banked two-block factorization along
+`gaugeConfigMEquiv`; and `integral_mul_prod_of_disjoint_support` /
+`integral_wilson_obs_mul_prod_split` give the campaign shape: a loop
+observable times any activities supported away from the loop
+factorizes.  This is the mechanism by which far-from-the-loop polymer
+components will cancel against `Z` (V1).  All M3 lattice-side.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

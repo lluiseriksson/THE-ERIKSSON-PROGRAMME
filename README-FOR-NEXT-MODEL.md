@@ -282,7 +282,16 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   (connected-support resummation against `Z` — cluster machinery,
   campaign-scale).  **CAMPAIGN DESIGNED 2026-06-12:**
   `docs/AREA-LAW-VU-PLAN.md` (bricks V0–V4, difficulties D1–D3
-  named; reuses the B4 pinned-cluster engine).  Start at V0.
+  named; reuses the B4 pinned-cluster engine).  **V0-1 CLOSED**
+  (ledger Addendum 17, core 8236):
+  `L1_GibbsMeasure/SupportFactorization.lean` — `DependsOnPos`
+  calculus, `edgeSupport`/`plaquettePosSupport`,
+  `dependsOnPos_comp_wilsonLine`, and the support-disjoint
+  factorizations `integral_mul_of_disjoint_pos_deps` /
+  `integral_mul_prod_of_disjoint_support` /
+  `integral_wilson_obs_mul_prod_split`.  Next: V0's component
+  regrouping (partition the powerset expansion by connectivity to
+  `supp(C)`), then V1.
   Alternative frontiers:
   Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
   single-scale UV estimate (class-C, outside the current plan).
