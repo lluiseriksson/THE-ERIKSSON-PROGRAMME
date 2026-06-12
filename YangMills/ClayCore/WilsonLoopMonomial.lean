@@ -1497,6 +1497,127 @@ theorem norm_integral_exp_term_le
       exact absurd hbnd hA
     rw [hzero, norm_zero]
 
+open Classical in
+/-- **The pinned-term dichotomy in SET form (VU campaign, V2-2):** the
+indicator instantiation of the per-multiplicity dichotomy — a pinned
+linear-activity term is EXACTLY ZERO below the `N`-ality area and at
+most `N_c·(2δN_c)^{#S₀}` above it. -/
+theorem norm_integral_pinned_term_le
+    (es : List (ConcreteEdge d N)) (δ : ℝ) (hδ0 : 0 ≤ δ)
+    (c c' : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℂ)
+    (hc : ∀ p, ‖c p‖ ≤ δ) (hc' : ∀ p, ‖c' p‖ ≤ δ)
+    (S₀ : Finset (FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))) :
+    ‖∫ A, Matrix.trace (wilsonLine A es).val *
+        ∏ p ∈ S₀, (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖
+      ≤ if chainAreaA (R := ZMod N_c) (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+            (loopChain (R := ZMod N_c) (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+          ≤ S₀.card
+        then (N_c : ℝ) * (2 * δ * (N_c : ℝ)) ^ S₀.card
+        else 0 := by
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+  have h := norm_integral_exp_term_le es δ hδ0 c c' hc hc'
+    (fun p => if p ∈ S₀ then 1 else 0)
+  -- the indicator support is S₀
+  have hsupp : (Finset.univ.filter
+      (fun p => (if p ∈ S₀ then 1 else 0) ≠ 0)) = S₀ := by
+    ext p
+    rw [Finset.mem_filter]
+    constructor
+    · rintro ⟨-, hne⟩
+      by_contra hp
+      exact hne (by rw [if_neg hp])
+    · intro hp
+      refine ⟨Finset.mem_univ _, ?_⟩
+      rw [if_pos hp]
+      exact one_ne_zero
+  -- the indicator product is the set product (ℂ side)
+  have hprodC : ∀ A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)),
+      (∏ p, ((c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+        + c' p * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+          ^ (if p ∈ S₀ then 1 else 0)
+          / (Nat.factorial (if p ∈ S₀ then 1 else 0) : ℂ)))
+      = ∏ p ∈ S₀, (c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+        + c' p * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) := by
+    intro A
+    rw [← Finset.prod_filter_mul_prod_filter_not Finset.univ (· ∈ S₀),
+      Finset.filter_mem_eq_inter, Finset.univ_inter]
+    have h2 : ∏ p ∈ Finset.univ.filter (· ∉ S₀),
+        ((c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+            ^ (if p ∈ S₀ then 1 else 0)
+            / (Nat.factorial (if p ∈ S₀ then 1 else 0) : ℂ))
+        = 1 := by
+      refine Finset.prod_eq_one fun p hp => ?_
+      have hpn : p ∉ S₀ := (Finset.mem_filter.mp hp).2
+      rw [if_neg hpn, pow_zero, Nat.factorial_zero, Nat.cast_one, div_one]
+    rw [h2, mul_one]
+    refine Finset.prod_congr rfl fun p hp => ?_
+    rw [if_pos hp, pow_one, Nat.factorial_one, Nat.cast_one, div_one]
+  -- the indicator weight product is the set power (ℝ side)
+  have hprodR : (∏ p, (2 * δ * (N_c : ℝ)) ^ (if p ∈ S₀ then 1 else 0)
+      / (Nat.factorial (if p ∈ S₀ then 1 else 0) : ℝ))
+      = (2 * δ * (N_c : ℝ)) ^ S₀.card := by
+    rw [← Finset.prod_filter_mul_prod_filter_not Finset.univ (· ∈ S₀),
+      Finset.filter_mem_eq_inter, Finset.univ_inter]
+    have h2 : ∏ p ∈ Finset.univ.filter (· ∉ S₀),
+        ((2 * δ * (N_c : ℝ)) ^ (if p ∈ S₀ then 1 else 0)
+          / (Nat.factorial (if p ∈ S₀ then 1 else 0) : ℝ)) = 1 := by
+      refine Finset.prod_eq_one fun p hp => ?_
+      have hpn : p ∉ S₀ := (Finset.mem_filter.mp hp).2
+      rw [if_neg hpn, pow_zero, Nat.factorial_zero, Nat.cast_one, div_one]
+    rw [h2, mul_one]
+    have h3 : ∏ p ∈ S₀, ((2 * δ * (N_c : ℝ)) ^ (if p ∈ S₀ then 1 else 0)
+        / (Nat.factorial (if p ∈ S₀ then 1 else 0) : ℝ))
+        = ∏ _p ∈ S₀, (2 * δ * (N_c : ℝ)) := by
+      refine Finset.prod_congr rfl fun p hp => ?_
+      rw [if_pos hp, pow_one, Nat.factorial_one, Nat.cast_one, div_one]
+    rw [h3, Finset.prod_const]
+  rw [show (fun A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      Matrix.trace (wilsonLine A es).val *
+        ∏ p, ((c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+            ^ (if p ∈ S₀ then 1 else 0)
+            / (Nat.factorial (if p ∈ S₀ then 1 else 0) : ℂ)))
+    = fun A => Matrix.trace (wilsonLine A es).val *
+        ∏ p ∈ S₀, (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+    from funext fun A => by rw [hprodC A]] at h
+  rw [hsupp, hprodR] at h
+  exact h
+
 set_option maxHeartbeats 1000000 in
 open Classical in
 /-- **THE EXACT-ACTIVITY FINITE-VOLUME AREA LAW** (E4b-2, campaign
