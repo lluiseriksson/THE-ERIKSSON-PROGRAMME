@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.L1_GibbsMeasure.PolymerRepresentation
+import YangMills.L1_GibbsMeasure.SupportFactorization
 import YangMills.KP.Restriction
 
 /-!
@@ -444,5 +445,73 @@ theorem integral_prod_one_add_ofReal
     rfl
   rw [hpt]
   exact integral_complex_ofReal
+
+open Classical in
+/-- **V2-1 — the neighbourhood-size count:** the far region's
+complement is linear in the loop length and the pinned size, with
+lattice-coordination constants only — every excluded plaquette either
+meets the loop's support or touches a pinned plaquette. -/
+theorem card_compl_farRegion_le (es : List (ConcreteEdge d N))
+    (S₀ : Finset (ConcretePlaquette d N)) :
+    (((farRegion es S₀)ᶜ).card : ℝ)
+      ≤ (edgeSupport (d := d) (N := N) es).card * (4 * d)
+        + S₀.card * (16 * d) := by
+  classical
+  have hsub : (farRegion es S₀)ᶜ
+      ⊆ (edgeSupport (d := d) (N := N) es).biUnion
+          (fun pe => (Finset.univ :
+            Finset (ConcretePlaquette d N)).filter
+            (fun q => pe ∈ plaquetteSupport q))
+        ∪ S₀.biUnion (fun q => (Finset.univ :
+            Finset (ConcretePlaquette d N)).filter
+            (fun p => plaquetteTouches q p)) := by
+    intro p hp
+    rw [Finset.mem_compl, farRegion, Finset.mem_filter] at hp
+    push_neg at hp
+    rcases Classical.em (Disjoint (edgeSupport (d := d) (N := N) es)
+        (plaquetteSupport p)) with hd | hd
+    · obtain ⟨q, hqS, hqt⟩ := hp (Finset.mem_univ p) hd
+      exact Finset.mem_union_right _ (Finset.mem_biUnion.mpr
+        ⟨q, hqS, Finset.mem_filter.mpr ⟨Finset.mem_univ _, hqt⟩⟩)
+    · obtain ⟨pe, hpe1, hpe2⟩ := Finset.not_disjoint_iff.mp hd
+      exact Finset.mem_union_left _ (Finset.mem_biUnion.mpr
+        ⟨pe, hpe1, Finset.mem_filter.mpr ⟨Finset.mem_univ _, hpe2⟩⟩)
+  calc (((farRegion es S₀)ᶜ).card : ℝ)
+      ≤ ((((edgeSupport (d := d) (N := N) es).biUnion
+          (fun pe => (Finset.univ :
+            Finset (ConcretePlaquette d N)).filter
+            (fun q => pe ∈ plaquetteSupport q))
+        ∪ S₀.biUnion (fun q => (Finset.univ :
+            Finset (ConcretePlaquette d N)).filter
+            (fun p => plaquetteTouches q p))).card : ℕ) : ℝ) := by
+        exact_mod_cast Finset.card_le_card hsub
+    _ ≤ (((edgeSupport (d := d) (N := N) es).biUnion
+          (fun pe => (Finset.univ :
+            Finset (ConcretePlaquette d N)).filter
+            (fun q => pe ∈ plaquetteSupport q))).card : ℝ)
+        + ((S₀.biUnion (fun q => (Finset.univ :
+            Finset (ConcretePlaquette d N)).filter
+            (fun p => plaquetteTouches q p))).card : ℝ) := by
+        exact_mod_cast Finset.card_union_le _ _
+    _ ≤ (∑ pe ∈ edgeSupport (d := d) (N := N) es,
+          (((Finset.univ : Finset (ConcretePlaquette d N)).filter
+            (fun q => pe ∈ plaquetteSupport q)).card : ℝ))
+        + ∑ q ∈ S₀,
+          (((Finset.univ : Finset (ConcretePlaquette d N)).filter
+            (fun p => plaquetteTouches q p)).card : ℝ) := by
+        gcongr
+        · exact_mod_cast Finset.card_biUnion_le
+        · exact_mod_cast Finset.card_biUnion_le
+    _ ≤ (∑ _pe ∈ edgeSupport (d := d) (N := N) es, ((4 * d : ℕ) : ℝ))
+        + ∑ _q ∈ S₀, ((16 * d : ℕ) : ℝ) := by
+        gcongr with pe _ q _
+        · exact_mod_cast card_plaquettesThroughEdge_le pe
+        · exact_mod_cast card_plaquettesTouching_le q
+    _ = (edgeSupport (d := d) (N := N) es).card * (4 * d)
+        + S₀.card * (16 * d) := by
+        rw [Finset.sum_const, Finset.sum_const, nsmul_eq_mul,
+          nsmul_eq_mul]
+        push_cast
+        ring
 
 end YangMills
