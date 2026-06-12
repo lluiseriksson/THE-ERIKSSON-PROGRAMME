@@ -220,15 +220,30 @@ trace of the REVERSED plaquette loop, so the strong-coupling
 expansion terms `tr(W_C)·∏_{p∈S}(tr Hₚ or conj tr Hₚ)` all lie in the
 multi-line class — the σ-choices become reversed edge lists, and the
 balance hypothesis IS the per-edge chain equation.
-**Open (final stretch):** J-3 — (a) the bookkeeping bridge: for the
-line family `L := (loop C) :: (plaquette or reversed-plaquette loops
-of S)`, the sigma-count at `e₀` equals `loopChain C + ∂₂σ` evaluated
-at `e₀` over `ℤ` (then mod `N_c`) — pure `Finset`-card arithmetic
-connecting to `ChainComplex.lean`; (b) the contrapositive: T_S ≠ 0 ⇒
-all edges balanced ⇒ `∂₂(indicatorChain S σ) = loopChain C` over
-`ZMod N_c` ⇒ `chainArea ≤ |S|` (`chainArea_le_card_of_support_subset`);
-(c) AL6: `|⟨W_C⟩·Z| ≤ Σ_{|S| ≥ Area} N_c·δ^{|S|}·entropy` via
-`integral_mul_prod_one_add` + the banked tail patterns.
+**J-3(a) single-loop CLOSED** (`WilsonLoopMonomial.lean`):
+`card_filter_get_eq_count` (positions carrying a value = `List.count`),
+`posEdgeOf_eq_and_sign_iff` / `..._not_sign_iff` (forward traversal =
+the edge itself, backward = its sign-flip),
+`signed_count_eq_loopChain` (**the bridge**: the kill theorems'
+`Finset`-card divisibility datum IS `loopChain es e₀` over `ℤ`),
+`loopChain_zmod_eq_intCast`, and the chain-side selection rule
+**`integral_trace_wilsonLine_eq_zero_of_loopChain_ne_zero`**:
+`∫ tr W_es dμ_Haar = 0` unless `loopChain es` vanishes mod `N_c` at
+every positive edge.  All oracle clean.  House note: `loopChain` was
+defined under `open Classical in`, so its `List.count` carries the
+classical `BEq` — close the final instance seam with `congr!`
+(Subsingleton `Decidable` args), not `rfl`.
+**Open (final stretch):** J-3(b): the multi-line version of the
+bridge — for the family `loop :: plaquette-loops-of-S`, the
+sigma-count at `e₀` = `∑ⱼ loopChain (L j) e₀` (additivity of the
+sigma-filter cards over `j`, then `signed_count_eq_loopChain` per
+line); combined with `integral_prod_trace_wilsonLine_eq_zero` this
+gives: a term survives only if `∑ⱼ loopChain (L j) = 0` over
+`ZMod N_c` — the chain equation, with plaquette lines' chains as the
+`∂₂`-columns (bridge `loopChain (plaquette 4-edge list)` ↔
+`plaquetteChain`, watch the orientation conventions).  Then the
+contrapositive into `chainArea_le_card_of_support_subset`, and AL6
+via `integral_mul_prod_one_add` + banked tails.
 
 **Then AL6:** `|⟨W_C⟩·Z| ≤ ∑_{|S| ≥ Area} (N_c·δ^{|S|})·(entropy)` —
 the `x/(1−Kx)` tail pattern from the correlator campaign, plus the

@@ -6,6 +6,7 @@ import YangMills.ClayCore.WilsonLine
 import YangMills.ClayCore.TracePathExpansion
 import YangMills.ClayCore.GaugeMarginal
 import YangMills.ClayCore.SchurEntryNAlitySelection
+import YangMills.L0_Lattice.ChainComplex
 import YangMills.L1_GibbsMeasure.GibbsMeasure
 
 /-!
@@ -517,5 +518,159 @@ theorem integral_prod_trace_wilsonLine_eq_zero
       then g.val (V q.1 q.2.castSucc) (V q.1 q.2.succ)
       else star (g.val (V q.1 q.2.succ) (V q.1 q.2.castSucc)))
     (fun q => (hFm q.1 (V q.1) q.2).aestronglyMeasurable) e₀ hmean
+
+/-! ## J-3(a): the bookkeeping bridge — traversal counts are the loop chain
+
+The kill theorems' divisibility hypotheses are stated in raw
+`Finset`-card form; the area-law join consumes them chain-side.  The
+bridge: the signed traversal count of a positive edge `e₀` along an
+edge list `es` IS `loopChain es e₀` over `ℤ`. -/
+
+/-- Positions of a list carrying a given value, counted: the
+`Fin`-indexed filter card is `List.count`. -/
+theorem card_filter_get_eq_count {α : Type*} [DecidableEq α]
+    (es : List α) (a : α) :
+    (Finset.univ.filter fun idx : Fin es.length => es.get idx = a).card
+      = es.count a := by
+  induction es with
+  | nil => simp
+  | cons b l ih =>
+      rw [Finset.card_filter]
+      show (∑ idx : Fin (l.length + 1),
+        if (b :: l).get idx = a then (1 : ℕ) else 0) = (b :: l).count a
+      rw [Fin.sum_univ_succ]
+      have hhead : ((b :: l).get 0) = b := rfl
+      have htail : ∀ idx : Fin l.length, (b :: l).get idx.succ = l.get idx :=
+        fun _ => rfl
+      simp only [hhead, htail]
+      rw [← Finset.card_filter, ih, List.count_cons]
+      by_cases h : b = a <;> simp [h] <;> try omega
+
+/-- A concrete edge traverses the positive edge `e₀` FORWARD iff it
+equals `e₀` itself. -/
+theorem posEdgeOf_eq_and_sign_iff (e : ConcreteEdge d N)
+    (e₀ : PosEdge d N) :
+    (posEdgeOf e = e₀ ∧ e.sign = true) ↔ e = (e₀ : ConcreteEdge d N) := by
+  obtain ⟨ev, hev⟩ := e₀
+  constructor
+  · rintro ⟨hpe, hs⟩
+    have h1 : ({ e with sign := true } : ConcreteEdge d N) = ev :=
+      congrArg Subtype.val hpe
+    have h2 : ({ e with sign := true } : ConcreteEdge d N) = e := by
+      cases e with
+      | mk s dir sg =>
+          cases sg
+          · exact absurd hs (by simp)
+          · rfl
+    exact h2.symm.trans h1
+  · rintro rfl
+    refine ⟨Subtype.ext ?_, hev⟩
+    show ({ e with sign := true } : ConcreteEdge d N) = e
+    cases e with
+    | mk s dir sg =>
+        cases sg
+        · exact absurd hev (by simp)
+        · rfl
+
+/-- A concrete edge traverses the positive edge `e₀` BACKWARD iff it
+equals the sign-flip of `e₀`. -/
+theorem posEdgeOf_eq_and_not_sign_iff (e : ConcreteEdge d N)
+    (e₀ : PosEdge d N) :
+    (posEdgeOf e = e₀ ∧ ¬ e.sign = true)
+      ↔ e = { (e₀ : ConcreteEdge d N) with sign := false } := by
+  obtain ⟨ev, hev⟩ := e₀
+  constructor
+  · rintro ⟨hpe, hs⟩
+    have h1 : ({ e with sign := true } : ConcreteEdge d N) = ev :=
+      congrArg Subtype.val hpe
+    have hsf : e.sign = false := by
+      cases hsg : e.sign
+      · rfl
+      · exact absurd hsg hs
+    cases e with
+    | mk s dir sg =>
+        cases ev with
+        | mk s' dir' sg' =>
+            simp only [ConcreteEdge.mk.injEq] at h1 ⊢
+            simp only at hsf
+            exact ⟨h1.1, h1.2.1, hsf⟩
+  · rintro rfl
+    constructor
+    · refine Subtype.ext ?_
+      show ({ { ev with sign := false } with sign := true } :
+        ConcreteEdge d N) = ev
+      cases ev with
+      | mk s dir sg =>
+          cases sg
+          · exact absurd hev (by simp)
+          · rfl
+    · simp
+/-- **The bridge (J-3a):** the signed traversal count of a positive
+edge along an edge list — exactly the divisibility datum of the kill
+theorems — IS the `ℤ`-valued loop chain at that edge. -/
+theorem signed_count_eq_loopChain (es : List (ConcreteEdge d N))
+    (e₀ : PosEdge d N) :
+    ((((Finset.univ.filter fun idx : Fin es.length =>
+          posEdgeOf (es.get idx) = e₀)).filter
+            fun idx => (es.get idx).sign).card : ℤ)
+      - ((((Finset.univ.filter fun idx : Fin es.length =>
+          posEdgeOf (es.get idx) = e₀)).filter
+            fun idx => ¬ (es.get idx).sign).card : ℤ)
+    = loopChain (R := ℤ) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        es (e₀ : ConcreteEdge d N) := by
+  classical
+  rw [Finset.filter_filter, Finset.filter_filter]
+  have h1 : (Finset.univ.filter fun idx : Fin es.length =>
+      posEdgeOf (es.get idx) = e₀ ∧ (es.get idx).sign = true)
+      = Finset.univ.filter fun idx =>
+          es.get idx = (e₀ : ConcreteEdge d N) :=
+    Finset.filter_congr fun idx _ => by
+      rw [posEdgeOf_eq_and_sign_iff]
+  have h2 : (Finset.univ.filter fun idx : Fin es.length =>
+      posEdgeOf (es.get idx) = e₀ ∧ ¬ (es.get idx).sign = true)
+      = Finset.univ.filter fun idx =>
+          es.get idx = { (e₀ : ConcreteEdge d N) with sign := false } :=
+    Finset.filter_congr fun idx _ => by
+      rw [posEdgeOf_eq_and_not_sign_iff]
+  rw [h1, h2, card_filter_get_eq_count, card_filter_get_eq_count]
+  unfold loopChain
+  rw [finBoxGeometry_reverse]
+  have hflip : ({ (e₀ : ConcreteEdge d N) with
+      sign := !(e₀ : ConcreteEdge d N).sign } : ConcreteEdge d N)
+      = { (e₀ : ConcreteEdge d N) with sign := false } := by
+    rw [e₀.2]
+    rfl
+  rw [hflip]
+  -- the two `List.count`s differ only in their (subsingleton) `Decidable`
+  -- instance arguments: `loopChain` was defined under `open Classical in`
+  congr!
+/-- `loopChain` over `ZMod N_c` is the mod-`N_c` reduction of the
+`ℤ`-valued chain. -/
+theorem loopChain_zmod_eq_intCast (es : List (ConcreteEdge d N))
+    (e : ConcreteEdge d N) :
+    loopChain (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es e
+      = ((loopChain (R := ℤ) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es e : ℤ) :
+            ZMod N_c) := by
+  unfold loopChain
+  push_cast
+  ring
+
+/-- **The chain-side selection rule (J-3, single loop):** the β = 0
+Haar expectation of a Wilson-loop trace vanishes unless the loop's
+`1`-chain vanishes mod `N_c` at every (positive) edge — the statement
+the area-law spanning argument consumes. -/
+theorem integral_trace_wilsonLine_eq_zero_of_loopChain_ne_zero
+    (es : List (ConcreteEdge d N)) (e₀ : PosEdge d N)
+    (h : loopChain (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        es (e₀ : ConcreteEdge d N) ≠ 0) :
+    ∫ A, Matrix.trace (wilsonLine A es).val
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) = 0 := by
+  refine integral_trace_wilsonLine_eq_zero es e₀ fun hdvd => h ?_
+  rw [loopChain_zmod_eq_intCast, ← signed_count_eq_loopChain es e₀]
+  exact (ZMod.intCast_zmod_eq_zero_iff_dvd _ _).mpr hdvd
 
 end YangMills
