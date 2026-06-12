@@ -22,8 +22,8 @@ injectivity was used in the join).
 
 | Brick | Content | Status |
 |---|---|---|
-| E1 | **Pi-Cauchy product:** `∏_{i : ι} ∑'_k a i k = ∑'_{m : ι → ℕ} ∏_i a i (m i)` for norm-summable `ℂ`-families over a Fintype.  Mathlib has only the two-factor `tsum_mul_tsum`; induct over `Fin n` via `ℕ × (Fin n → ℕ) ≃ (Fin (n+1) → ℕ)` (`Fin.consEquiv` + `Equiv.tsum_eq`), transport to `ι` by `Fintype.equivFin`. | open |
-| E2 | **∫↔∑' interchange:** `∫ ∑'_m F_m = ∑'_m ∫ F_m` via `MeasureTheory.integral_tsum` (norm-summable dominating family: `∑_m ∏ δ^{mₚ} N^{mₚ}/mₚ! = e^{δN·#P} < ∞`). | open |
+| E1 | **Pi-Cauchy product** — `summable_norm_pi_prod`, `tsum_pi_prod`, `tsum_pi_prod'` (`L1_GibbsMeasure/ExpActivityExpansion.lean`).  House note: unifying `Summable`-lemma metas against families containing a SYMBOLIC `∏ i : Fin n` hangs `whnf` (it unfolds `Finset.univ`) — hide the product behind `set G := fun m => ∏ …` before applying, unfold via the set-equation in the congr step. | **CLOSED** (oracle clean) |
+| E2 | **∫↔∑' interchange** — `integral_tsum_of_bounded`: measurable + pointwise-dominated-by-summable ⇒ swap, via `integral_tsum` (enorm form, `ofReal_norm_eq_enorm` + `ENNReal.ofReal_tsum_of_nonneg`). | **CLOSED** (oracle clean) |
 | E3 | **Per-m σ-split:** `zₚ^{mₚ}` via `add_pow` (binomial) → per-`(m, j ≤ m)` term = const · multi-line family with plaquette `p` repeated `mₚ` times (index `Σ p, Fin (m p)`); kill iff the chain `σ' p = (2jₚ − mₚ)` satisfies `∂₂A σ' = −loopChain C`; surviving support `{p : mₚ ≠ 0}` ⊇ a spanning set ⇒ `Area ≤ #supp m`. | open |
 | E4 | **Tail:** `∑_{m : Area ≤ #supp} ∏ (2δN_c)^{mₚ}/mₚ! ≤ (e^{2δN_c}−1)^{Area}·e^{2δN_c·#P}`-type bound ⇒ `‖∫ tr(W_C)·∏ exp(zₚ)‖ ≤ N_c·e^{2δN_c·#P}·(e^{2δN_c}−1)^{Area}`. | open |
 

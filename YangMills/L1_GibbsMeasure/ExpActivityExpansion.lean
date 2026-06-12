@@ -125,4 +125,31 @@ theorem tsum_pi_prod' {ι : Type*} [Fintype ι] (a : ι → ℕ → ℂ)
   rw [show (Fintype.equivFin ι) (e j) = j from
     (Fintype.equivFin ι).apply_symm_apply j]
 
+/-- **∫↔∑' interchange under uniform summable domination** (E2): for
+a countable family of measurable observables pointwise dominated by a
+summable sequence, the integral of the sum is the sum of the
+integrals — the analytic step that turns the expanded Boltzmann
+factor into a sum of multiplicity terms under the Haar integral. -/
+theorem integral_tsum_of_bounded {α : Type*} [MeasurableSpace α]
+    (μ : MeasureTheory.Measure α) [MeasureTheory.IsProbabilityMeasure μ]
+    {κ : Type*} [Countable κ] (F : κ → α → ℂ) (c : κ → ℝ)
+    (hFm : ∀ m, Measurable (F m)) (hFb : ∀ m a, ‖F m a‖ ≤ c m)
+    (hc0 : ∀ m, 0 ≤ c m) (hc : Summable c) :
+    ∫ a, ∑' m, F m a ∂μ = ∑' m, ∫ a, F m a ∂μ := by
+  refine MeasureTheory.integral_tsum
+    (fun m => (hFm m).aestronglyMeasurable) ?_
+  have hb : ∀ m, (∫⁻ a, ‖F m a‖ₑ ∂μ) ≤ ENNReal.ofReal (c m) := by
+    intro m
+    calc ∫⁻ a, ‖F m a‖ₑ ∂μ
+        ≤ ∫⁻ _a, ENNReal.ofReal (c m) ∂μ := by
+          refine MeasureTheory.lintegral_mono fun a => ?_
+          rw [← ofReal_norm_eq_enorm]
+          exact ENNReal.ofReal_le_ofReal (hFb m a)
+      _ = ENNReal.ofReal (c m) := by
+          rw [MeasureTheory.lintegral_const]
+          simp
+  refine ne_top_of_le_ne_top ?_ (ENNReal.tsum_le_tsum hb)
+  rw [← ENNReal.ofReal_tsum_of_nonneg hc0 hc]
+  exact ENNReal.ofReal_ne_top
+
 end YangMills
