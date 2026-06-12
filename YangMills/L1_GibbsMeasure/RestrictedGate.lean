@@ -201,4 +201,45 @@ theorem restricted_weightedPartition_eq_partition
           exact (Finset.mem_filter.mp (hS' hX)).2
         exact truncated_activity_eq μ w F X hXF
 
+open Classical in
+/-- **The lattice gas satisfies the uniform-scale KP criterion** —
+the form `tsum_offRegionClusterWeight_le` consumes: the banked
+double-tilt criterion dominates the uniform `e^s` tilt for
+`s ≤ 1 + ε` (polymers are nonempty, so `|c| ≥ 1`). -/
+theorem weighted_scale_kpCriterion
+    (μ : Measure G) [IsProbabilityMeasure μ]
+    {w : GaugeConfig d N G → ConcretePlaquette d N → ℝ}
+    {δ : ℝ} (hδ0 : 0 ≤ δ) (hbd : ∀ A p, |w A p| ≤ δ)
+    (t ε s : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε) (hs : s ≤ 1 + ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * (δ * Real.exp (t + ε + 1)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      ((δ * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          (δ * Real.exp (t + ε + 1)))) ≤ t) :
+    KP.KPCriterion
+      ((weightedLatticePolymerSystem (d := d) (N := N) μ
+          w).scaleActivity (Real.exp s))
+      (fun c => t * (c.1.card : ℝ)) := by
+  refine KP.KPCriterion.of_activity_norm_le
+    (z₂ := fun c : (weightedLatticePolymerSystem (d := d) (N := N) μ
+        w).Polymer =>
+      ((Real.exp (ε * (c.1.card : ℝ)) : ℝ) : ℂ) *
+      (((Real.exp (c.1.card : ℝ) : ℝ) : ℂ) *
+        (weightedLatticePolymerSystem (d := d) (N := N) μ
+          w).activity c))
+    ?_ (weighted_unitTilt_kpCriterion_volumeUniform μ hδ0 hbd t ε
+      ht0 hr hsmall)
+  intro c
+  rw [norm_mul, norm_mul, norm_mul, Complex.norm_real,
+    Complex.norm_real, Complex.norm_real, Real.norm_eq_abs,
+    Real.norm_eq_abs, Real.norm_eq_abs,
+    abs_of_pos (Real.exp_pos _), abs_of_pos (Real.exp_pos _),
+    abs_of_pos (Real.exp_pos _), ← mul_assoc, ← Real.exp_add]
+  refine mul_le_mul_of_nonneg_right
+    (Real.exp_le_exp.mpr ?_) (norm_nonneg _)
+  have hcard : (1 : ℝ) ≤ (c.1.card : ℝ) := by
+    exact_mod_cast Finset.card_pos.mpr c.2.1
+  nlinarith [hcard, hs,
+    mul_nonneg hε0 (by linarith : (0 : ℝ) ≤ (c.1.card : ℝ) - 1)]
+
 end YangMills
