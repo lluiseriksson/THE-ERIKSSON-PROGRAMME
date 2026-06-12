@@ -177,21 +177,20 @@ theorem prod_activity_restrict {P : PolymerSystem} (Λ : Finset P.Polymer)
       = ∏ i, P.activity (X i).1 := rfl
 
 open Classical in
-/-- **The restricted cluster sum in ambient terms:** the cluster sum
-of `P.restrict Λ` is the ambient tuple-sum filtered to tuples valued
-in `Λ`.  The difference `clusterSum P − clusterSum (P.restrict Λ)` is
-therefore a sum over tuples MEETING `Λᶜ` — the R2 object. -/
-theorem clusterSum_restrict {P : PolymerSystem} [Fintype P.Polymer]
-    (Λ : Finset P.Polymer) :
-    clusterSum (P.restrict Λ)
-      = ∑' n : ℕ, (((n + 1).factorial : ℂ))⁻¹ *
+/-- The `n`-th restricted cluster term in ambient terms: the tuple sum
+over `↥Λ` is the ambient tuple sum filtered to tuples valued in `Λ`. -/
+theorem clusterTerm_restrict {P : PolymerSystem} [Fintype P.Polymer]
+    (Λ : Finset P.Polymer) (n : ℕ) :
+    (((n + 1).factorial : ℂ))⁻¹ *
+        ∑ X : Fin (n + 1) → (P.restrict Λ).Polymer,
+          (ursell (P.restrict Λ) X : ℂ) *
+            ∏ i, (P.restrict Λ).activity (X i)
+      = (((n + 1).factorial : ℂ))⁻¹ *
           ∑ X ∈ (Finset.univ :
               Finset (Fin (n + 1) → P.Polymer)).filter
               (fun X => ∀ i, X i ∈ Λ),
             (ursell P X : ℂ) * ∏ i, P.activity (X i) := by
   classical
-  unfold clusterSum
-  refine tsum_congr fun n => ?_
   congr 1
   refine Finset.sum_bij'
     (fun X _ => fun k => (X k).1)
@@ -209,5 +208,65 @@ theorem clusterSum_restrict {P : PolymerSystem} [Fintype P.Polymer]
     rfl
   · intro X _
     rfl
+
+open Classical in
+/-- **The restricted cluster sum in ambient terms.** -/
+theorem clusterSum_restrict {P : PolymerSystem} [Fintype P.Polymer]
+    (Λ : Finset P.Polymer) :
+    clusterSum (P.restrict Λ)
+      = ∑' n : ℕ, (((n + 1).factorial : ℂ))⁻¹ *
+          ∑ X ∈ (Finset.univ :
+              Finset (Fin (n + 1) → P.Polymer)).filter
+              (fun X => ∀ i, X i ∈ Λ),
+            (ursell P X : ℂ) * ∏ i, P.activity (X i) := by
+  unfold clusterSum
+  exact tsum_congr fun n => clusterTerm_restrict Λ n
+
+open Classical in
+/-- **R2(a) — the difference identity:** under the KP criterion, the
+cluster sums of the full and restricted systems differ exactly by the
+tuple sums MEETING `Λᶜ` — the object the pinned tail bounds. -/
+theorem clusterSum_sub_restrict {P : PolymerSystem} [Fintype P.Polymer]
+    {a : P.Polymer → ℝ} (h : KPCriterion P a) (Λ : Finset P.Polymer) :
+    clusterSum P - clusterSum (P.restrict Λ)
+      = ∑' n : ℕ, (((n + 1).factorial : ℂ))⁻¹ *
+          ∑ X ∈ (Finset.univ :
+              Finset (Fin (n + 1) → P.Polymer)).filter
+              (fun X => ¬ ∀ i, X i ∈ Λ),
+            (ursell P X : ℂ) * ∏ i, P.activity (X i) := by
+  classical
+  have hsum1 : Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) → P.Polymer,
+        (ursell P X : ℂ) * ∏ i, P.activity (X i)) :=
+    Summable.of_norm (Summable.of_nonneg_of_le (fun n => norm_nonneg _)
+      (fun n => norm_clusterTerm_le P n)
+      (kp_clusterWeight_summable_sharp P h))
+  have hsum2R : Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) → (P.restrict Λ).Polymer,
+        (ursell (P.restrict Λ) X : ℂ) *
+          ∏ i, (P.restrict Λ).activity (X i)) :=
+    Summable.of_norm (Summable.of_nonneg_of_le (fun n => norm_nonneg _)
+      (fun n => norm_clusterTerm_le (P.restrict Λ) n)
+      (kp_clusterWeight_summable_sharp (P.restrict Λ) (h.restrict Λ)))
+  have hsum2 : Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X ∈ (Finset.univ :
+          Finset (Fin (n + 1) → P.Polymer)).filter
+          (fun X => ∀ i, X i ∈ Λ),
+        (ursell P X : ℂ) * ∏ i, P.activity (X i)) :=
+    hsum2R.congr fun n => clusterTerm_restrict Λ n
+  rw [clusterSum_restrict,
+    show clusterSum P = ∑' n : ℕ, (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) → P.Polymer,
+        (ursell P X : ℂ) * ∏ i, P.activity (X i) from rfl,
+    ← hsum1.tsum_sub hsum2]
+  refine tsum_congr fun n => ?_
+  rw [← mul_sub]
+  congr 1
+  have hpart := Finset.sum_filter_add_sum_filter_not
+    (Finset.univ : Finset (Fin (n + 1) → P.Polymer))
+    (fun X => ∀ i, X i ∈ Λ)
+    (fun X => (ursell P X : ℂ) * ∏ i, P.activity (X i))
+  rw [← hpart]
+  ring
 
 end YangMills.KP
