@@ -346,6 +346,30 @@ theorem integral_wilson_obs_regroup
     rw [Finset.disjoint_biUnion_left]
     exact fun p hp => near_far_support_disjoint hp hq.1 hq.2
 
+open Classical in
+/-- The **far region** of a pinned set `S₀`: the plaquettes whose
+support avoids both the loop and `S₀` — the index set the far subsets
+`T` of the fiber decomposition `S = S₀ ⊎ T` range over. -/
+noncomputable def farRegion (es : List (ConcreteEdge d N))
+    (S₀ : Finset (ConcretePlaquette d N)) :
+    Finset (ConcretePlaquette d N) :=
+  Finset.univ.filter (fun p =>
+    Disjoint (edgeSupport (d := d) (N := N) es) (plaquetteSupport p) ∧
+    ∀ q ∈ S₀, ¬ plaquetteTouches q p)
+
+open Classical in
+/-- The forward half of the V1-b fiber map: the far part of any `S`
+lies in the far region of its near part. -/
+theorem sdiff_nearLoop_subset_farRegion (es : List (ConcreteEdge d N))
+    (S : Finset (ConcretePlaquette d N)) :
+    S \ nearLoop es S ⊆ farRegion es (nearLoop es S) := by
+  intro p hp
+  rw [Finset.mem_sdiff] at hp
+  rw [farRegion, Finset.mem_filter]
+  refine ⟨Finset.mem_univ _,
+    farLoop_disjoint_edgeSupport hp.1 hp.2, fun q hq htouch => ?_⟩
+  exact htouch (near_far_support_disjoint hq hp.1 hp.2)
+
 /-! ## V1 opening: the far resummation
 
 Summing the far factor of `integral_wilson_obs_regroup` over all far
