@@ -207,4 +207,44 @@ theorem summable_prod_pow_div_factorial {ι : Type*} [Fintype ι]
   rw [norm_div, norm_pow, Complex.norm_real, Real.norm_eq_abs,
     abs_of_nonneg hx, Complex.norm_natCast]
 
+set_option maxHeartbeats 1000000 in
+/-- **The real Pi-Cauchy product** for nonnegative families —
+the form the tail estimate factorizes through. -/
+theorem tsum_pi_prod_nonneg {ι : Type*} [Fintype ι] (a : ι → ℕ → ℝ)
+    (h0 : ∀ i k, 0 ≤ a i k) (ha : ∀ i, Summable (a i)) :
+    (∏ i, ∑' k, a i k) = ∑' m : ι → ℕ, ∏ i, a i (m i) := by
+  have hC := tsum_pi_prod' (fun i k => ((a i k : ℝ) : ℂ))
+    (fun i => (ha i).congr fun k =>
+      (by rw [Complex.norm_real, Real.norm_eq_abs,
+        abs_of_nonneg (h0 i k)] :
+          ‖((a i k : ℝ) : ℂ)‖ = a i k).symm)
+  refine Complex.ofReal_injective ?_
+  calc ((∏ i, ∑' k, a i k : ℝ) : ℂ)
+      = ∏ i, ∑' k, ((a i k : ℝ) : ℂ) := by
+        rw [Complex.ofReal_prod]
+        exact Finset.prod_congr rfl fun i _ => Complex.ofReal_tsum _
+    _ = ∑' m : ι → ℕ, ∏ i, ((a i (m i) : ℝ) : ℂ) := hC
+    _ = ((∑' m : ι → ℕ, ∏ i, a i (m i) : ℝ) : ℂ) := by
+        rw [Complex.ofReal_tsum]
+        exact tsum_congr fun m => (Complex.ofReal_prod _ _).symm
+
+/-- The exponential series sums to `exp`. -/
+theorem tsum_pow_div_factorial (x : ℝ) :
+    (∑' k : ℕ, x ^ k / (Nat.factorial k : ℝ)) = Real.exp x := by
+  rw [Real.exp_eq_exp_ℝ]
+  exact (congrFun NormedSpace.exp_eq_tsum_div x).symm
+
+/-- The `k ≥ 1` tail of the exponential series sums to `exp x − 1` —
+the per-plaquette factor of an OCCUPIED plaquette in the exact tail
+estimate. -/
+theorem tsum_pow_div_factorial_succ (x : ℝ) :
+    (∑' k : ℕ, x ^ (k + 1) / (Nat.factorial (k + 1) : ℝ))
+      = Real.exp x - 1 := by
+  have hsum : Summable fun k : ℕ => x ^ k / (Nat.factorial k : ℝ) :=
+    Real.summable_pow_div_factorial x
+  have h := hsum.tsum_eq_zero_add
+  rw [tsum_pow_div_factorial] at h
+  simp only [pow_zero, Nat.factorial_zero, Nat.cast_one, div_one] at h
+  linarith
+
 end YangMills
