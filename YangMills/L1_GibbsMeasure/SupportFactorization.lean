@@ -370,6 +370,63 @@ theorem sdiff_nearLoop_subset_farRegion (es : List (ConcreteEdge d N))
     farLoop_disjoint_edgeSupport hp.1 hp.2, fun q hq htouch => ?_⟩
   exact htouch (near_far_support_disjoint hq hp.1 hp.2)
 
+open Classical in
+/-- **Membership in `nearLoop` is reachability to a loop-touching
+plaquette** in the internal touching graph — the characterization that
+makes `nearLoop` stable under far unions (V1-b). -/
+theorem mem_nearLoop_iff_reachable {es : List (ConcreteEdge d N)}
+    {S : Finset (ConcretePlaquette d N)} {p : ConcretePlaquette d N}
+    (hp : p ∈ S) :
+    p ∈ nearLoop es S ↔ ∃ q : ↥S,
+      (SimpleGraph.fromRel (fun a b : ↥S =>
+        plaquetteTouches a.1 b.1)).Reachable ⟨p, hp⟩ q ∧
+      ¬ Disjoint (edgeSupport (d := d) (N := N) es)
+        (plaquetteSupport q.1) := by
+  classical
+  constructor
+  · intro hmem
+    rw [nearLoop, Finset.mem_biUnion] at hmem
+    obtain ⟨c, hc, hpc⟩ := hmem
+    rw [Finset.mem_filter] at hc
+    obtain ⟨hcparts, q', hq'c, hq'⟩ := hc
+    unfold plaqComponents at hcparts
+    rw [Finset.mem_image] at hcparts
+    obtain ⟨B, hB, rfl⟩ := hcparts
+    simp only [id_eq] at hpc
+    rw [Finset.mem_image] at hpc hq'c
+    obtain ⟨x, hxB, hxp⟩ := hpc
+    obtain ⟨y, hyB, hyq⟩ := hq'c
+    have h1 := (Finpartition.ofSetoid _).part_eq_of_mem hB hxB
+    have hyPx : y ∈ (Finpartition.ofSetoid
+        ((SimpleGraph.fromRel (fun a b : ↥S =>
+          plaquetteTouches a.1 b.1)).reachableSetoid)).part x := h1 ▸ hyB
+    have hreach : (SimpleGraph.fromRel (fun a b : ↥S =>
+        plaquetteTouches a.1 b.1)).Reachable x y :=
+      Finpartition.mem_part_ofSetoid_iff_rel.mp hyPx
+    have hxe : x = ⟨p, hp⟩ := Subtype.ext hxp
+    exact ⟨y, hxe ▸ hreach, hyq ▸ hq'⟩
+  · rintro ⟨q, hreach, hq⟩
+    rw [nearLoop, Finset.mem_biUnion]
+    refine ⟨((Finpartition.ofSetoid
+        ((SimpleGraph.fromRel (fun a b : ↥S =>
+          plaquetteTouches a.1 b.1)).reachableSetoid)).part
+            ⟨p, hp⟩).image Subtype.val, ?_, ?_⟩
+    · rw [Finset.mem_filter]
+      refine ⟨?_, q.1, Finset.mem_image_of_mem _
+        (Finpartition.mem_part_ofSetoid_iff_rel.mpr hreach), hq⟩
+      unfold plaqComponents
+      rw [Finset.mem_image]
+      exact ⟨_, (Finpartition.ofSetoid _).part_mem.mpr
+        (Finset.mem_univ _), rfl⟩
+    · have hrr : (SimpleGraph.fromRel (fun a b : ↥S =>
+          plaquetteTouches a.1 b.1)).Reachable ⟨p, hp⟩ ⟨p, hp⟩ :=
+        SimpleGraph.Reachable.refl _
+      have hself : (⟨p, hp⟩ : ↥S) ∈ (Finpartition.ofSetoid
+          ((SimpleGraph.fromRel (fun a b : ↥S =>
+            plaquetteTouches a.1 b.1)).reachableSetoid)).part ⟨p, hp⟩ :=
+        Finpartition.mem_part_ofSetoid_iff_rel.mpr hrr
+      exact Finset.mem_image_of_mem _ hself
+
 /-! ## V1 opening: the far resummation
 
 Summing the far factor of `integral_wilson_obs_regroup` over all far
