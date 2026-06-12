@@ -650,4 +650,20 @@ theorem KPCriterion.of_activity_norm_le {P : PolymerSystem}
   refine le_trans (Finset.sum_le_sum fun Y _ => ?_) (h.2 X)
   exact mul_le_mul_of_nonneg_right (hz Y) (Real.exp_pos _).le
 
+/-- **The exponential-ratio bound (V2-3 substrate):** partition
+functions given as `exp(clusterSum)` never vanish, and their norm
+ratios are controlled by the cluster-sum difference — the form in
+which the `Z`-ratio enters the pinned sum. -/
+theorem norm_exp_div_norm_exp_le (a b : ℂ) {C : ℝ}
+    (h : ‖a - b‖ ≤ C) :
+    ‖Complex.exp b‖ / ‖Complex.exp a‖ ≤ Real.exp C := by
+  rw [Complex.norm_exp, Complex.norm_exp, ← Real.exp_sub]
+  refine Real.exp_le_exp.mpr ?_
+  have h1 : b.re - a.re ≤ |(b - a).re| := by
+    rw [Complex.sub_re]
+    exact le_abs_self _
+  refine le_trans h1 (le_trans (Complex.abs_re_le_norm _) ?_)
+  rw [show b - a = -(a - b) from by ring, norm_neg]
+  exact h
+
 end YangMills.KP
