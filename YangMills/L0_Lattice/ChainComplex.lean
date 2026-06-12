@@ -320,4 +320,67 @@ theorem loopChain_append
   simp only [loopChain, List.count_append, Nat.cast_add]
   ring
 
+open Classical in
+/-- **The plaquette's Wilson list and its chain** (area-law assembly):
+the `1`-chain of the plaquette's 4-edge Wilson list is the
+ANTISYMMETRIZED plaquette chain — forward incidences minus
+reverse incidences. -/
+theorem loopChain_plaquette_list (p : P (d := d) (N := N) (G := G))
+    (e : E (d := d) (N := N) (G := G)) :
+    loopChain (R := R) (d := d) (N := N) (G := G)
+        [plaquetteEdge p 0, plaquetteEdge p 1,
+         plaquetteEdge p 2, plaquetteEdge p 3] e
+      = plaquetteChain (R := R) p e
+          - plaquetteChain (R := R) p (reverse e) := by
+  have hcount : ∀ x : E (d := d) (N := N) (G := G),
+      (([plaquetteEdge p 0, plaquetteEdge p 1, plaquetteEdge p 2,
+        plaquetteEdge p 3].count x : R))
+        = ∑ i : Fin 4, if plaquetteEdge p i = x then (1 : R) else 0 := by
+    intro x
+    rw [Fin.sum_univ_four]
+    simp only [List.count_cons, List.count_nil, beq_iff_eq]
+    push_cast
+    by_cases h0 : plaquetteEdge p 0 = x <;>
+      by_cases h1 : plaquetteEdge p 1 = x <;>
+        by_cases h2 : plaquetteEdge p 2 = x <;>
+          by_cases h3 : plaquetteEdge p 3 = x <;>
+            simp [h0, h1, h2, h3, eq_comm] <;> ring
+  calc loopChain (R := R) (d := d) (N := N) (G := G)
+        [plaquetteEdge p 0, plaquetteEdge p 1,
+         plaquetteEdge p 2, plaquetteEdge p 3] e
+      = (([plaquetteEdge p 0, plaquetteEdge p 1, plaquetteEdge p 2,
+          plaquetteEdge p 3].count e : R))
+        - (([plaquetteEdge p 0, plaquetteEdge p 1, plaquetteEdge p 2,
+          plaquetteEdge p 3].count
+            (reverse (d := d) (N := N) (G := G) e) : R)) := rfl
+    _ = (∑ i : Fin 4, if plaquetteEdge p i = e then (1 : R) else 0)
+        - ∑ i : Fin 4, if plaquetteEdge p i
+            = reverse (d := d) (N := N) (G := G) e then (1 : R) else 0 := by
+        rw [hcount e, hcount (reverse e)]
+    _ = plaquetteChain (R := R) p e
+        - plaquetteChain (R := R) p (reverse e) := rfl
+
+open Classical in
+/-- **Coefficient combinations of plaquette Wilson lists are the
+antisymmetrized `∂₂`** — the chain-equation form the multi-line
+selection rule (`integral_prod_trace_wilsonLine_eq_zero_of_sum_
+loopChain_ne_zero`) produces for the family
+`loop :: plaquette-loops-of-S`. -/
+theorem sum_mul_loopChain_plaquette_list
+    (σ : P (d := d) (N := N) (G := G) → R)
+    (e : E (d := d) (N := N) (G := G)) :
+    (letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N) (G := G)
+      ∑ p : P (d := d) (N := N) (G := G),
+        σ p * loopChain (R := R) (d := d) (N := N) (G := G)
+          [plaquetteEdge p 0, plaquetteEdge p 1,
+           plaquetteEdge p 2, plaquetteEdge p 3] e)
+      = chainBoundary₂ (d := d) (N := N) (G := G) σ e
+          - chainBoundary₂ (d := d) (N := N) (G := G) σ
+              (reverse (d := d) (N := N) (G := G) e) := by
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N) (G := G)
+  rw [Finset.sum_congr rfl fun p _ => by
+    rw [loopChain_plaquette_list (R := R) p e, mul_sub]]
+  rw [Finset.sum_sub_distrib]
+  rfl
+
 end YangMills

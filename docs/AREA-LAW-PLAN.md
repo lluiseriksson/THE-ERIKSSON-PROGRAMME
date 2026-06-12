@@ -244,14 +244,27 @@ a product of Wilson-line traces has zero β=0 Haar expectation unless
 oracle clean.  This is the area law's analytic engine in final,
 chain-side form: for the family `loop C :: plaquette-loops-of-S` the
 hypothesis IS the chain equation `loopChain C + ∂₂σ = 0`.
-**Open (assembly only):** (i) the `loopChain`-of-plaquette-4-edge-list
-↔ `plaquetteChain` orientation reconciliation (relate
-`∑_{p∈S} σ_p·loopChain(plaquette p) = ∂₂(σ·indicator)` — note
-`plaquetteChain` counts forward incidences while `loopChain`
-antisymmetrizes; the clean route may be to prove `∂₂` of the
-antisymmetrized plaquette chain directly, or to add the
-reverse-incidence convention lemma); (ii) the contrapositive
-into `chainArea_le_card_of_support_subset` (T_S ≠ 0 ⇒ Area ≤ |S|);
+**Assembly (i) CLOSED** (`ChainComplex.lean`):
+`loopChain_plaquette_list` — the `1`-chain of a plaquette's 4-edge
+Wilson list is the ANTISYMMETRIZED plaquette chain (`plaquetteChain p
+e − plaquetteChain p (reverse e)`); and
+`sum_mul_loopChain_plaquette_list` — coefficient combinations of
+plaquette Wilson lists are the antisymmetrized `∂₂`:
+`∑_p σ_p·loopChain(plaq p) e = ∂₂σ e − ∂₂σ (reverse e)`.  Both
+oracle clean.  So the multi-line selection rule's survival condition
+for `loop C :: plaquette-loops-of-S` reads, verbatim:
+`loopChain C + (∂₂σ − ∂₂σ∘reverse) = 0` over `ZMod N_c` — the
+antisymmetrized chain equation.
+**Open (final assembly):** (ii) the contrapositive wiring — T_S ≠ 0
+⇒ the antisymmetrized chain equation at every positive edge ⇒
+`Area ≤ |S|`; design note: since `loopChain` and the antisymmetrized
+`∂₂` are orientation-odd, the equation on positive edges determines
+it on all edges, and the spanning argument can either (a) run
+`chainArea` against the antisymmetrized boundary map (define
+`chainBoundary₂A s e := ∂₂ s e − ∂₂ s (reverse e)`, redo
+`chainArea_le` verbatim — recommended, 1 short brick since AL2 is
+ring-generic and proof-identical), or (b) restrict to geometries
+where plaquette lists use only positive edges.  Take (a).
 (iii) AL6: `|⟨W_C⟩·Z| ≤ Σ_{|S| ≥ Area} N_c·δ^{|S|}·entropy` via
 `integral_mul_prod_one_add` + banked tails + non-vacuity window.
 
