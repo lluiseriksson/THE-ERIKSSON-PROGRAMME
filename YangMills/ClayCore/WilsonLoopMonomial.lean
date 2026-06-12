@@ -1166,4 +1166,133 @@ theorem integral_trace_mul_prod_traces_eq_zero
     (chainAreaA_loopChain_le_of_integral_ne_zero es ps σb hne)
     (not_le.mpr hlt)
 
+/-! ## AL6-2a: the surviving-term toolkit -/
+
+open Classical in
+/-- The `(S, T)`-expansion term is **measurable**. -/
+theorem measurable_trace_mul_prod_traces
+    (es : List (ConcreteEdge d N))
+    (S T : Finset (FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))) :
+    Measurable (fun A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      Matrix.trace (wilsonLine A es).val *
+        ((∏ p ∈ T, Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) *
+          ∏ p ∈ S \ T, star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))) := by
+  refine (measurable_trace_wilsonLine es).mul (Measurable.mul ?_ ?_)
+  · exact Finset.measurable_prod _ fun p _ =>
+      measurable_trace_wilsonLine _
+  · exact Finset.measurable_prod _ fun p _ =>
+      (continuous_star.measurable).comp (measurable_trace_wilsonLine _)
+
+open Classical in
+/-- The `(S, T)`-expansion term is **pointwise bounded by
+`N_c^(|S|+1)`**. -/
+theorem norm_trace_mul_prod_traces_le
+    (A : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+    (es : List (ConcreteEdge d N))
+    (S T : Finset (FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))) (hTS : T ⊆ S) :
+    ‖Matrix.trace (wilsonLine A es).val *
+        ((∏ p ∈ T, Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) *
+          ∏ p ∈ S \ T, star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))‖
+      ≤ (N_c : ℝ) ^ (S.card + 1) := by
+  rw [norm_mul, norm_mul, norm_prod, norm_prod]
+  have h1 : (∏ p ∈ T, ‖Matrix.trace (wilsonLine A
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val‖)
+      ≤ (N_c : ℝ) ^ T.card := by
+    calc (∏ p ∈ T, ‖Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val‖)
+        ≤ ∏ _p ∈ T, (N_c : ℝ) :=
+          Finset.prod_le_prod (fun _ _ => norm_nonneg _)
+            (fun p _ => norm_trace_wilsonLine_le A _)
+      _ = (N_c : ℝ) ^ T.card := Finset.prod_const _
+  have h2 : (∏ p ∈ S \ T, ‖star (Matrix.trace (wilsonLine A
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)‖)
+      ≤ (N_c : ℝ) ^ (S \ T).card := by
+    calc (∏ p ∈ S \ T, ‖star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)‖)
+        ≤ ∏ _p ∈ S \ T, (N_c : ℝ) :=
+          Finset.prod_le_prod (fun _ _ => norm_nonneg _)
+            (fun p _ => by rw [norm_star]; exact norm_trace_wilsonLine_le A _)
+      _ = (N_c : ℝ) ^ (S \ T).card := Finset.prod_const _
+  have hcard : T.card + (S \ T).card = S.card := by
+    rw [add_comm]
+    exact Finset.card_sdiff_add_card_eq_card hTS
+  have hN0 : (0 : ℝ) ≤ (N_c : ℝ) := Nat.cast_nonneg _
+  calc ‖Matrix.trace (wilsonLine A es).val‖ *
+        ((∏ p ∈ T, ‖Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val‖) *
+          ∏ p ∈ S \ T, ‖star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)‖)
+      ≤ (N_c : ℝ) * ((N_c : ℝ) ^ T.card * (N_c : ℝ) ^ (S \ T).card) := by
+        refine mul_le_mul (norm_trace_wilsonLine_le A es) ?_
+          (by positivity) hN0
+        exact mul_le_mul h1 h2 (Finset.prod_nonneg fun _ _ => norm_nonneg _)
+          (by positivity)
+    _ = (N_c : ℝ) ^ (S.card + 1) := by
+        rw [← pow_add, hcard, ← pow_succ']
+
+open Classical in
+/-- The `(S, T)`-expansion term is **integrable**. -/
+theorem integrable_trace_mul_prod_traces
+    (es : List (ConcreteEdge d N))
+    (S T : Finset (FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))) (hTS : T ⊆ S) :
+    Integrable (fun A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      Matrix.trace (wilsonLine A es).val *
+        ((∏ p ∈ T, Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) *
+          ∏ p ∈ S \ T, star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)))
+      (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) := by
+  have h1 : Integrable (fun _ : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) => (1 : ℂ))
+      (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) :=
+    integrable_const 1
+  have h2 := h1.bdd_mul
+    (measurable_trace_mul_prod_traces es S T).aestronglyMeasurable
+    (MeasureTheory.ae_of_all _ fun A =>
+      norm_trace_mul_prod_traces_le A es S T hTS)
+  simpa using h2
+
+open Classical in
+/-- **The surviving-term bound:** every `(S, T)`-expansion term has
+β = 0 expectation of norm at most `N_c^(|S|+1)`. -/
+theorem norm_integral_trace_mul_prod_traces_le
+    (es : List (ConcreteEdge d N))
+    (S T : Finset (FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))) (hTS : T ⊆ S) :
+    ‖∫ A, Matrix.trace (wilsonLine A es).val *
+        ((∏ p ∈ T, Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) *
+          ∏ p ∈ S \ T, star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖
+      ≤ (N_c : ℝ) ^ (S.card + 1) := by
+  have h := MeasureTheory.norm_integral_le_of_norm_le_const
+    (μ := gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))
+    (MeasureTheory.ae_of_all _ fun A =>
+      norm_trace_mul_prod_traces_le A es S T hTS)
+  simpa using h
+
 end YangMills

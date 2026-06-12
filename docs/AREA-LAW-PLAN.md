@@ -309,7 +309,17 @@ per-`i` Bool-decoration via `decide (· ∈ T)`, `equivFin` reindex,
 note: statements with `Finset`-`SDiff`/filters over
 `FiniteLatticeGeometry.P` need `open Classical in` (the projection
 hides `ConcretePlaquette`'s derived `DecidableEq`).
-**Open (one brick):** AL6-2 — the quantitative assembly:
+**AL6-2a CLOSED** (`WilsonLoopMonomial.lean`):
+`measurable_trace_mul_prod_traces`,
+`norm_trace_mul_prod_traces_le` (the `(S,T)`-term pointwise bounded
+by `N_c^{|S|+1}`, via `card_sdiff_add_card_eq_card`),
+`integrable_trace_mul_prod_traces`, and
+**`norm_integral_trace_mul_prod_traces_le`** (the surviving-term
+bound: `‖∫ (S,T)-term‖ ≤ N_c^{|S|+1}`, via
+`norm_integral_le_of_norm_le_const`).  All oracle clean.  Together
+with AL6-1 every `(S,T)`-term is now classified: ZERO if `|S| <
+chainAreaA(loopChain C)`, else bounded by `N_c^{|S|+1}`.
+**Open (one brick):** AL6-2b — the final summation:
 `⟨W_C⟩·Z = ∑_S T_S` via `integral_mul_prod_one_add` (+ the σ-binomial
 splitting of `∏(activities)` into the join's signed-trace terms),
 `|T_S| ≤ N_c^{|S|+1}·δ^{|S|}`-type bounds (banked
