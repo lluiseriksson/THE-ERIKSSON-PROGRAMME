@@ -333,11 +333,16 @@ remaining refinement, NOT part of this campaign's promise.  The
 exponential decay in the `N`-ality area — the area law — is
 machine-checked end to end.  **THE CAMPAIGN'S MATHEMATICAL TARGET IS
 REACHED** (in linearized-activity, finite-volume form).
+**`Re tr` form CLOSED** (`finite_volume_area_law_re`, with
+`integrable_trace_mul_prod_one_add`): the area law for the PHYSICAL
+observable `Re tr(W_C)` — the real part is the average of the loop
+and its reversal, and the reversal has the same `N`-ality area
+(`loopChain_reverse_list` + `chainAreaA_neg`).  Oracle clean.
 **Refinements (post-campaign):** volume-uniform constant (connected-
 support resummation against `Z`), exact Wilson activities
-(exp-expansion beyond linear), `Re tr` observable form, and the
-non-vacuity window note (the hypothesis `2δN_c ≤ 1` is an explicit
-open coupling window; witnesses trivial).
+(exp-expansion beyond linear), and the non-vacuity window note (the
+hypothesis `2δN_c ≤ 1` is an explicit open coupling window;
+witnesses trivial).
 `⟨W_C⟩·Z = ∑_S T_S` via `integral_mul_prod_one_add` (+ the σ-binomial
 splitting of `∏(activities)` into the join's signed-trace terms),
 `|T_S| ≤ N_c^{|S|+1}·δ^{|S|}`-type bounds (banked
