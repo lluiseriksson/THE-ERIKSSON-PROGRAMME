@@ -339,4 +339,122 @@ theorem tsum_shifted_prod_pow_div_factorial {ι : Type*} [Fintype ι]
       (Finset.sdiff_eq_filter _ _).symm]
     rw [Finset.card_sdiff, Finset.inter_univ, Finset.card_univ]
 
+set_option maxHeartbeats 1000000 in
+/-- **THE TAIL ESTIMATE** (T2+T3): the exponential weights summed over
+multiplicity functions occupying at least `A` plaquettes decay like
+`(e^x − 1)^A` — the quantitative engine of the exact area law. -/
+theorem tsum_constrained_prod_pow_div_factorial_le {ι : Type*}
+    [Fintype ι] (x : ℝ) (hx : 0 ≤ x) (A : ℕ) :
+    (∑' m : ι → ℕ, if A ≤ (Finset.univ.filter (fun i => m i ≠ 0)).card
+        then ∏ i, x ^ (m i) / (Nat.factorial (m i) : ℝ) else 0)
+      ≤ 2 ^ (Fintype.card ι) *
+          ((Real.exp x - 1) ^ A * Real.exp x ^ (Fintype.card ι)) := by
+  classical
+  set f : (ι → ℕ) → ℝ :=
+    fun m => ∏ i, x ^ (m i) / (Nat.factorial (m i) : ℝ) with hf
+  have hf0 : ∀ m, 0 ≤ f m := fun m =>
+    Finset.prod_nonneg fun i _ => by positivity
+  have hfs : Summable f := summable_prod_pow_div_factorial x hx
+  set gS : Finset ι → (ι → ℕ) → ℝ :=
+    fun S m => if ∀ p ∈ S, 1 ≤ m p then f m else 0 with hgS
+  have hgS0 : ∀ S m, 0 ≤ gS S m := fun S m => by
+    by_cases h : ∀ p ∈ S, 1 ≤ m p
+    · simp only [hgS, if_pos h]; exact hf0 m
+    · simp only [hgS, if_neg h]
+      exact le_rfl
+  have hgSle : ∀ S m, gS S m ≤ f m := fun S m => by
+    by_cases h : ∀ p ∈ S, 1 ≤ m p
+    · simp only [hgS, if_pos h]
+      exact le_refl _
+    · simp only [hgS, if_neg h]; exact hf0 m
+  have hgSs : ∀ S, Summable (gS S) := fun S =>
+    hfs.of_nonneg_of_le (hgS0 S) (hgSle S)
+  -- T2: pointwise union bound over `A`-subsets
+  have hpt : ∀ m : ι → ℕ,
+      (if A ≤ (Finset.univ.filter (fun i => m i ≠ 0)).card
+        then f m else 0)
+      ≤ ∑ S ∈ Finset.univ.powersetCard A, gS S m := by
+    intro m
+    by_cases hc : A ≤ (Finset.univ.filter (fun i => m i ≠ 0)).card
+    · rw [if_pos hc]
+      obtain ⟨S₀, hS₀sub, hS₀card⟩ :=
+        Finset.exists_subset_card_eq hc
+      have hS₀mem : S₀ ∈ Finset.univ.powersetCard A := by
+        rw [Finset.mem_powersetCard]
+        exact ⟨Finset.subset_univ _, hS₀card⟩
+      have hval : gS S₀ m = f m := by
+        have hcond : ∀ p ∈ S₀, 1 ≤ m p := by
+          intro p hp
+          have hmem := hS₀sub hp
+          rw [Finset.mem_filter] at hmem
+          omega
+        simp only [hgS, if_pos hcond]
+      calc f m = gS S₀ m := hval.symm
+        _ ≤ ∑ S ∈ Finset.univ.powersetCard A, gS S m :=
+          Finset.single_le_sum (fun S _ => hgS0 S m) hS₀mem
+    · rw [if_neg hc]
+      exact Finset.sum_nonneg fun S _ => hgS0 S m
+  -- T3: sum, swap, evaluate per `S`, count
+  have hlhs_s : Summable fun m : ι → ℕ =>
+      (if A ≤ (Finset.univ.filter (fun i => m i ≠ 0)).card
+        then f m else 0) := by
+    refine hfs.of_nonneg_of_le (fun m => ?_) (fun m => ?_)
+    · by_cases hc : A ≤ (Finset.univ.filter (fun i => m i ≠ 0)).card
+      · simp only [if_pos hc]; exact hf0 m
+      · simp only [if_neg hc]
+        exact le_rfl
+    · by_cases hc : A ≤ (Finset.univ.filter (fun i => m i ≠ 0)).card
+      · simp only [if_pos hc]
+        exact le_rfl
+      · simp only [if_neg hc]; exact hf0 m
+  have hsum_s : Summable fun m : ι → ℕ =>
+      ∑ S ∈ Finset.univ.powersetCard A, gS S m :=
+    summable_sum fun S _ => hgSs S
+  refine le_trans (hlhs_s.tsum_le_tsum hpt hsum_s) ?_
+  rw [Summable.tsum_finsetSum fun S _ => hgSs S]
+  have hper : ∀ S ∈ Finset.univ.powersetCard A,
+      (∑' m, gS S m)
+      = (Real.exp x - 1) ^ A
+          * Real.exp x ^ (Fintype.card ι - A) := by
+    intro S hS
+    have hcard : S.card = A :=
+      (Finset.mem_powersetCard.mp hS).2
+    rw [hgS]
+    rw [show (∑' m, if ∀ p ∈ S, 1 ≤ m p then f m else 0)
+        = (Real.exp x - 1) ^ S.card
+            * Real.exp x ^ (Fintype.card ι - S.card) from
+      tsum_shifted_prod_pow_div_factorial x hx S]
+    rw [hcard]
+  rw [Finset.sum_congr rfl hper]
+  rw [Finset.sum_const, Finset.card_powersetCard, Finset.card_univ,
+    nsmul_eq_mul]
+  have h1exp : (1 : ℝ) ≤ Real.exp x := Real.one_le_exp hx
+  have hpow : Real.exp x ^ (Fintype.card ι - A)
+      ≤ Real.exp x ^ (Fintype.card ι) :=
+    pow_le_pow_right₀ h1exp (Nat.sub_le _ _)
+  have hchoose : ((Fintype.card ι).choose A : ℝ)
+      ≤ 2 ^ (Fintype.card ι) := by
+    have h2 : (Fintype.card ι).choose A ≤ 2 ^ (Fintype.card ι) := by
+      by_cases h : A ≤ Fintype.card ι
+      · calc (Fintype.card ι).choose A
+            ≤ ∑ k ∈ Finset.range (Fintype.card ι + 1),
+                (Fintype.card ι).choose k :=
+              Finset.single_le_sum (fun k _ => Nat.zero_le _)
+                (Finset.mem_range.mpr (by omega))
+          _ = 2 ^ (Fintype.card ι) := Nat.sum_range_choose _
+      · push_neg at h
+        rw [Nat.choose_eq_zero_of_lt h]
+        positivity
+    exact_mod_cast h2
+  have hnn : (0 : ℝ) ≤ (Real.exp x - 1) ^ A := by
+    have : (0 : ℝ) ≤ Real.exp x - 1 := by linarith
+    positivity
+  calc ((Fintype.card ι).choose A : ℝ) *
+        ((Real.exp x - 1) ^ A * Real.exp x ^ (Fintype.card ι - A))
+      ≤ 2 ^ (Fintype.card ι) *
+        ((Real.exp x - 1) ^ A * Real.exp x ^ (Fintype.card ι)) := by
+        refine mul_le_mul hchoose ?_ (by positivity) (by positivity)
+        exact mul_le_mul_of_nonneg_left hpow hnn
+    _ = _ := rfl
+
 end YangMills
