@@ -295,8 +295,13 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   expansion).  Non-vacuity audited (17t).  The integrability
   families are DISCHARGED (17u):
   `normalized_wilson_loop_area_law_unconditional` carries only
-  explicit smallness/geometry hypotheses.  Next
-  frontiers: V4 (exact-ℂ activities);
+  explicit smallness/geometry hypotheses.  **V4 (exact Wilson
+  factor `∏exp(z_p)`) IN PROGRESS** — V4-0 (activity interface
+  `expReActivity`) + V4-1 (pinned exp dichotomy
+  `norm_integral_exp_pinned_term_le`) CLOSED (ledger Addenda
+  18–18b); REMAINING V4-2: the headline re-composition reusing the
+  activity-agnostic V0/V1 machinery.  Other next
+  frontiers:
   Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
   single-scale UV estimate (class-C, outside the current plan).
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the

@@ -87,6 +87,15 @@ Lean; they save hours.
   explicit, jointly satisfiable smallness/geometry hypotheses.
 * M3 assembly: IR side theorem-fed; the §6.3 Balaban UV single-scale
   bound is the **sole carried hypothesis**.
-* Next frontiers (pick highest-leverage): V4 exact-ℂ activities
-  (the VU law for the true Wilson factor `∏exp(z_p)`); Peter–Weyl;
-  the §6.3 UV bound.
+* **V4 in progress** — the VU area law for the TRUE Wilson factor
+  `∏exp(z_p)` (`docs/AREA-LAW-VU-PLAN.md`).  **V4-0 + V4-1 CLOSED**
+  (ledger Addenda 18–18b): the exp-activity interface
+  (`expReActivity` local/measurable/bounded/cast) and the pinned exp
+  dichotomy `norm_integral_exp_pinned_term_le`
+  (`‖∫ tr W_C·∏_{S₀}(exp z−1)‖ ≤ ite(Area ≤ #S₀)(N_c(e^{2δN_c}−1)^{#S₀})(0)`,
+  the exp analog of the linear pinned bound).  REMAINING: V4-2 — the
+  headline re-composition (exp analogs of
+  `norm_normalized_wilson_loop_le_pinned_sum` +
+  `normalized_wilson_loop_area_law`, reusing the activity-agnostic
+  V0/V1 machinery with the V4-0 interface + the V4-1 dichotomy).
+* Other frontiers: Peter–Weyl; the §6.3 UV bound.
