@@ -2521,6 +2521,31 @@ Faria da Veiga–O'Carroll; strategy **Lluis Eriksson**
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
+## Addendum 56 (2026-06-12, **gauge-RG — non-vacuity of the end-to-end UV
+conditional** `YangMills.RG.lattice_mass_gap_uv_conditional_nonvacuous`;
+core 8252)
+
+**Build:** green (8252 jobs).  Oracle:
+`'…lattice_mass_gap_uv_conditional_nonvacuous' [propext, Classical.choice, Quot.sound]`.
+
+A FOUNDATIONS-style **non-vacuity audit** of
+`lattice_mass_gap_of_cluster_and_logistic_coupling` (Add. 55): its entire
+hypothesis bundle is exhibited as **jointly satisfiable with non-degenerate
+data** — an explicit witness `g_k = (1/2)ᵏ` (geometric coupling),
+`R_{t,k} = e^{−t}·(1/2)ᵏ` (nonzero remainders, certified `R_{0,0}=1≠0`),
+IR profile `covIR k = e^{−k}`, `nsc ≡ 1`, constants
+`ε=c0=A=κ₀=C1=1, r=1/2, β=0`.  All eleven hypotheses
+(positivity/window conditions, the logistic recursion, the IR bound, the
+covariance scale-sum, and the cluster activity bound) are proved for this
+witness.  So the conditional is **not a vacuously-applicable implication**:
+its premise set is inhabited by genuine data.  (`β=0` is the simplest
+valid logistic step; β>0 witnesses also exist.)
+
+This closes the audit loop for the UV chain: the end-to-end conditional
+is verified AND certified non-vacuous.  Strategy/framing **Lluis
+Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance
+~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

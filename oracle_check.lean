@@ -72,6 +72,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.lattice_mass_gap_of_cluster_and_coupling
 -- tighter form: coupling decay discharged from the logistic RG recursion
 #print axioms YangMills.RG.lattice_mass_gap_of_cluster_and_logistic_coupling
+-- non-vacuity: the end-to-end conditional's hypotheses are jointly satisfiable (nonzero data)
+#print axioms YangMills.RG.lattice_mass_gap_uv_conditional_nonvacuous
 -- the coupling-flow bridge (faithful polymer bound + coupling decay ⟹ M·rᵏ surrogate)
 #print axioms YangMills.RG.coupling_flow_bridge
 -- coupling-flow decay from the irrelevant logistic recursion; full assembled conditional

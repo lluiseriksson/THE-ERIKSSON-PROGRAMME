@@ -105,4 +105,48 @@ theorem lattice_mass_gap_of_cluster_and_logistic_coupling
   exact lattice_mass_gap_of_cluster_and_coupling covIR covUV Rsc nsc g
     hε hc0 hA (hg0 0) hr0 hr1 hκ hg0 hg hIRbound hcovUV hRpoly
 
+/-- **Non-vacuity of the end-to-end UV conditional** (FOUNDATIONS
+discipline): the hypotheses of `lattice_mass_gap_of_cluster_and_logistic_coupling`
+are **jointly satisfiable with nonzero data** — an explicit witness with
+a geometric coupling `g_k = (1/2)ᵏ`, nonzero remainders
+`R_{t,k} = e^{−t}·(1/2)ᵏ`, and the IR profile `e^{−k}`.  So the
+conditional is NOT a vacuously-applicable implication: its premise set is
+inhabited by genuine (non-degenerate) data.  (The witness uses `β = 0`,
+the simplest valid logistic step; non-degeneracy is certified by
+`R_{0,0} = 1 ≠ 0`.) -/
+theorem lattice_mass_gap_uv_conditional_nonvacuous :
+    ∃ (covIR covUV : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (g : ℕ → ℝ)
+      (C1 ε c0 A r β κ₀ : ℝ),
+      0 < ε ∧ 0 < c0 ∧ 0 ≤ A ∧ 0 < r ∧ r < 1 ∧ 1 ≤ κ₀ ∧
+      (∀ k, 0 ≤ g k) ∧ (∀ k, 0 ≤ β * g k ∧ β * g k ≤ 1) ∧
+      (∀ k, g (k + 1) ≤ r * g k * (1 - β * g k)) ∧
+      (∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ)))) ∧
+      (∀ t : ℕ, covUV t = ∑ k ∈ Finset.range (nsc t), Rsc t k) ∧
+      (∀ t k : ℕ, |Rsc t k| ≤ A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) ∧
+      (∃ t k : ℕ, Rsc t k ≠ 0) := by
+  refine ⟨fun k => Real.exp (-(k : ℝ)), fun t => Real.exp (-(t : ℝ)),
+    fun t k => Real.exp (-(t : ℝ)) * (1 / 2) ^ k, fun _ => 1,
+    fun k => (1 / 2) ^ k, 1, 1, 1, 1, 1 / 2, 0, 1,
+    one_pos, one_pos, zero_le_one, by norm_num, by norm_num, le_refl 1,
+    fun k => by positivity, fun k => by constructor <;> norm_num,
+    ?_, ?_, ?_, ?_, ?_⟩
+  · intro k
+    apply le_of_eq
+    show (1 / 2 : ℝ) ^ (k + 1) = 1 / 2 * (1 / 2) ^ k * (1 - 0 * (1 / 2) ^ k)
+    rw [zero_mul, sub_zero, mul_one]; ring
+  · intro k
+    apply le_of_eq
+    show |Real.exp (-(k : ℝ))| = 1 * Real.exp (-(1 * (k : ℝ)))
+    rw [abs_of_nonneg (Real.exp_nonneg _), one_mul, one_mul]
+  · intro t
+    show Real.exp (-(t : ℝ)) = ∑ k ∈ Finset.range 1, Real.exp (-(t : ℝ)) * (1 / 2) ^ k
+    rw [Finset.sum_range_one]; simp
+  · intro t k
+    apply le_of_eq
+    show |Real.exp (-(t : ℝ)) * (1 / 2) ^ k|
+        = 1 * Real.exp (-(1 * (t : ℝ))) * ((1 / 2) ^ k) ^ 1
+    rw [abs_of_nonneg (by positivity)]
+    simp only [one_mul, Real.rpow_one]
+  · exact ⟨0, 0, by norm_num [Real.exp_zero]⟩
+
 end YangMills.RG
