@@ -123,6 +123,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- asymmetric composition + fixed-rate iterated composition (Neumann engine)
 #print axioms YangMills.RG.expDecay_comp_asym
 #print axioms YangMills.RG.expDecay_pow
+-- resolvent / Neumann-series decay (the Combes-Thomas conclusion)
+#print axioms YangMills.RG.expDecay_resolvent
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

@@ -2938,6 +2938,42 @@ level.  Still source-independent and still NOT the YM activity bound (carried
 satisfiable on any bounded-degree lattice (`cubeAdj`) via the animal-count
 summability.  Continuum (M4) track; Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 68 (2026-06-13, **resolvent / Neumann decay — the Combes–Thomas
+conclusion** `YangMills.RG.expDecay_resolvent`; core 8258)
+
+**Build:** green (8258 jobs — theorem added to `RG/KernelDecay.lean`, no new
+module).  Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+The capstone of the exponential-decay kernel calculus (Add. 66–67):
+
+* **`expDecay_resolvent`** — if `K` decays at rate `κ` (amplitude `a`), the
+  lattice has exponential summability `∑_z e^{−σ d(x,z)} ≤ S`, and the
+  **smallness `a·S < 1`** holds, then the Neumann series
+  `(1 − K)⁻¹ = ∑ₙ Kⁿ` converges to a kernel decaying at the **fixed** rate
+  `κ − σ` with amplitude `a/(1 − a·S)`.  Sums `expDecay_pow` over the geometric
+  amplitudes `a·(a·S)ⁿ` (`summable_geometric_of_lt_one`,
+  `tsum_geometric_of_lt_one`).
+
+This is the operator-theoretic heart of every Bałaban propagator bound — a
+bounded-range, weakly-coupled operator has an **exponentially-decaying
+resolvent**; the YM activity-decay constant `κ` (CMP 116 Lemma 3) is inherited
+from precisely this resolvent decay of the background-field propagator
+(CMP 95/99).  The kernel-decay calculus is now complete through the resolvent
+level: `ExpDecay`, sum/scalar/`mono`, composition (`expDecay_comp` /
+`_comp_asym`), powers (`expDecay_pow`), and resolvent (`expDecay_resolvent`) —
+a coherent, source-independent analytic toolkit the YM activity bound's proof
+must consume.
+
+**Dependency moved.**  The full source-independent analytic substrate toward
+`hRpoly` is now built (combinatorial summability + marginal coupling +
+kernel-decay/resolvent calculus).  The remaining gap is exactly the **carried
+YM activity bound** `hRpoly` itself, which requires the concrete gauge
+construction (the lattice gauge-covariant Laplacian / background-field operator
+as a specific `ExpDecay` instance — the months-scale CMP 95/99/109/116 work),
+not further abstract substrate.  **Non-vacuity:** genuine quantitative bound;
+hypotheses jointly satisfiable on `cubeAdj` with small `a`.  Clay distance
+**~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

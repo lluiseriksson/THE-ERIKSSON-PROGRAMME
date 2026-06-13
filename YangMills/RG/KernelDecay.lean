@@ -217,4 +217,45 @@ theorem expDecay_pow {d : V → V → ℝ} {a κ σ S : ℝ} {K : V → V → �
     rw [hamp] at hcomp
     simpa only [Kpow] using hcomp
 
+/-- **Resolvent / Neumann-series decay** (the Combes–Thomas conclusion).  If a
+kernel `K` decays at rate `κ` with amplitude `a`, the lattice has exponential
+summability `∑_z e^{−σ d(x,z)} ≤ S`, and the smallness `a·S < 1` holds, then the
+geometric series `(1 − K)⁻¹ = ∑ₙ Kⁿ` converges to a kernel decaying at the
+**fixed** rate `κ − σ` with amplitude `a/(1 − a·S)`.  This is the operator-
+theoretic heart of every Bałaban propagator bound: a bounded-range, small
+operator has an exponentially-decaying resolvent, and the YM activity-decay
+constant `κ` (CMP 116 Lemma 3) is inherited from exactly this resolvent decay
+of the background-field propagator (CMP 95/99).  Sums `expDecay_pow` over the
+geometric amplitudes `a·(a·S)ⁿ`. -/
+theorem expDecay_resolvent {d : V → V → ℝ} {a κ σ S : ℝ} {K : V → V → ℝ}
+    (ha : 0 ≤ a) (hS0 : 0 ≤ S) (haS : a * S < 1) (hd : ∀ x y, 0 ≤ d x y)
+    (htri : ∀ x y z, d x y ≤ d x z + d z y)
+    (hσ : 0 ≤ σ) (hσκ : σ ≤ κ)
+    (hK : ExpDecay d a κ K)
+    (hsum : ∀ x, Summable (fun z => Real.exp (-σ * d x z)))
+    (hS : ∀ x, ∑' z, Real.exp (-σ * d x z) ≤ S) :
+    ExpDecay d (a * (1 - a * S)⁻¹) (κ - σ) (fun x y => ∑' n, Kpow K n x y) := by
+  have hpow := expDecay_pow ha hS0 hd htri hσ hσκ hK hsum hS
+  have haS0 : 0 ≤ a * S := mul_nonneg ha hS0
+  intro x y
+  set E : ℝ := Real.exp (-(κ - σ) * d x y) with hE
+  have hkey : ∀ n, |Kpow K n x y| ≤ (a * E) * (a * S) ^ n := by
+    intro n
+    calc |Kpow K n x y|
+        ≤ (a * (a * S) ^ n) * E := hpow n x y
+      _ = (a * E) * (a * S) ^ n := by ring
+  have hgeo : Summable (fun n => (a * E) * (a * S) ^ n) :=
+    (summable_geometric_of_lt_one haS0 haS).mul_left _
+  have hdom : Summable (fun n => |Kpow K n x y|) :=
+    Summable.of_nonneg_of_le (fun n => abs_nonneg _) hkey hgeo
+  calc |∑' n, Kpow K n x y|
+      ≤ ∑' n, |Kpow K n x y| := by
+        have h := norm_tsum_le_tsum_norm (f := fun n => Kpow K n x y)
+          (by simpa [Real.norm_eq_abs] using hdom)
+        simpa [Real.norm_eq_abs] using h
+    _ ≤ ∑' n, (a * E) * (a * S) ^ n := Summable.tsum_le_tsum hkey hdom hgeo
+    _ = (a * E) * ∑' n, (a * S) ^ n := tsum_mul_left
+    _ = (a * E) * (1 - a * S)⁻¹ := by rw [tsum_geometric_of_lt_one haS0 haS]
+    _ = (a * (1 - a * S)⁻¹) * Real.exp (-(κ - σ) * d x y) := by rw [hE]; ring
+
 end YangMills.RG
