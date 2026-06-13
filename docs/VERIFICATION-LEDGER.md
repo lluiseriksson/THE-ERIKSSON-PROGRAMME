@@ -1766,6 +1766,48 @@ Source: Bałaban CMP 109 (0.6),(0.11); CMP 98 (11).  Strategy/framing
 **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay
 distance ~0% (<0.1%), unchanged.
 
+## Addendum 31 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-1
+— the near-identity logarithm: definition, convergence, norm bound**;
+core 8245)
+
+**Build:** green (**8245 jobs** — new module `RG/NearLog.lean`).
+Oracle (verbatim):
+
+```
+'YangMills.RG.summable_logCoeff_smul_pow'  [propext, Classical.choice, Quot.sound]
+'YangMills.RG.norm_nearLog_le'             [propext, Classical.choice, Quot.sound]
+'YangMills.RG.nearLog_zero'                [propext, Classical.choice, Quot.sound]
+```
+
+The averaging operator `Ū` (CMP 109 (0.12)) is built from the logarithm
+of group elements near the identity, and Mathlib provides `NormedSpace.exp`
+for Banach algebras but **no logarithm**.  This opens the from-scratch
+matrix-`log` layer.  In any complete normed `ℝ`-algebra `𝔸` (matrices
+over `ℝ`/`ℂ`, hence the `SU(N)` Lie algebra, qualify):
+
+* `logCoeff n = (-1)^{n+1}/n` (`0` at `n=0`); `abs_logCoeff_le_one`;
+* `nearLog Y = ∑' n, logCoeff n • Y^n` (the Mercator series for
+  `log(1+Y)`);
+* `norm_logCoeff_smul_pow_le : ‖logCoeff n • Y^n‖ ≤ ‖Y‖^n` (`|coeff|≤1`
+  + `norm_pow_le'`);
+* `summable_logCoeff_smul_pow` (‖Y‖<1): absolute convergence by
+  comparison with the geometric series (`Summable.of_norm_bounded`,
+  `summable_geometric_of_lt_one`);
+* `norm_nearLog_le : ‖nearLog Y‖ ≤ (1-‖Y‖)⁻¹` — the geometric majorant
+  the BCH estimates of CMP 109/122 consume (`norm_tsum_le_tsum_norm`,
+  `Summable.tsum_le_tsum`, `tsum_geometric_of_lt_one`);
+* `nearLog_zero : nearLog 0 = 0`.
+
+Non-vacuity: the inhabiting algebra (`Matrix … ℝ`, `ℂ`) is a genuine
+complete normed `ℝ`-algebra, and the convergence/bound are quantitative
+(not existential).  The **next** brick (M-log-2) is the local-inverse
+identity `log(exp X) = X` near `0` with the `O(‖X‖²)` remainder, which
+unblocks the linearisation axiom (0.8) and then `Ū`.  Source: standard
+analytic construction; applied to CMP 109 (0.8),(0.12); BCH references
+(BCHD.pdf) in hand.  Strategy/framing **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

@@ -173,3 +173,8 @@ import YangMills.RG.HolonomyGauge
 -- B4: gauge covariance of the averaged contour variable (CMP 109 (0.11)) —
 -- the holonomy law (B4-prep) composed with the bi-equivariance of `M`.
 import YangMills.RG.AveragedContour
+-- matrix-`log` layer M-log-1: the near-identity logarithm series
+-- log(1+Y) = Σ (-1)^{n+1}/n Y^n, its convergence and norm bound (the
+-- analytic substrate of `Ū`, CMP 109 (0.12); built since Mathlib has no
+-- Banach-algebra logarithm).
+import YangMills.RG.NearLog
