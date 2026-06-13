@@ -1902,6 +1902,28 @@ applied to CMP 109 (0.8)/(0.12).  Strategy/framing **Lluis Eriksson**
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
+## Addendum 35 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-3
+— conjugation-equivariance of `nearLog`** `YangMills.RG.nearLog_conj`;
+core 8245)
+
+**Build:** green (8245 jobs).  Oracle:
+`'YangMills.RG.nearLog_conj' [propext, Classical.choice, Quot.sound]`.
+
+`nearLog (u·Y·u⁻¹) = u·(nearLog Y)·u⁻¹` for a unit `u : 𝔸ˣ` and `‖Y‖<1`.
+This is the **algebraic core of B4-Ū** (gauge covariance of the field map
+`Ū`, CMP 109 (0.12)): conjugation `z ↦ u·z·u⁻¹` is a continuous linear
+map (`ContinuousLinearMap.mulLeftRight ℝ 𝔸 u u⁻¹`), so it commutes with
+the convergent Mercator series via `ContinuousLinearMap.map_tsum`.
+Proof: `(u·Y·u⁻¹)^n = u·Y^n·u⁻¹` (induction, `Units.inv_mul`), the
+scalar `•` slides through (`mul_smul_comm`, `smul_mul_assoc`), then
+`map_tsum` on the summable series.  Needs **no** `log(exp)=id` — so
+together with B4-prep (holonomy law) and `GroupAverage.biequiv` it
+supplies every algebraic ingredient of `Ū`'s gauge covariance, leaving
+only the analytic linearisation (0.8, brick M-log-2b) as the carried
+gap.  Source CMP 98 (11)/109 (0.12); strategy **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

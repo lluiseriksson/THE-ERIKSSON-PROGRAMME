@@ -197,6 +197,37 @@ theorem nearLog_exp_sub_one_real {x : ℝ} (hx : Real.exp x < 2) :
   rw [nearLog_real h1,
     show (1 : ℝ) + (Real.exp x - 1) = Real.exp x from by ring, Real.log_exp]
 
+/-- **Conjugation-equivariance of `nearLog`** (brick M-log-3, the
+algebraic core of B4-Ū): for a unit `u`,
+`nearLog (u·Y·u⁻¹) = u·(nearLog Y)·u⁻¹`.  Conjugation `z ↦ u·z·u⁻¹` is a
+continuous linear map, so it commutes with the convergent Mercator
+series — this is precisely the input that makes the renormalization-group
+field map `Ū` (CMP 109 (0.12)) gauge covariant, and it needs **no**
+`log(exp)=id`.  (`‖Y‖<1` ensures the series for `Y` converges; the
+conjugated series then converges automatically.) -/
+theorem nearLog_conj (u : 𝔸ˣ) {Y : 𝔸} (hY : ‖Y‖ < 1) :
+    nearLog ((↑u : 𝔸) * Y * ↑u⁻¹) = (↑u : 𝔸) * nearLog Y * ↑u⁻¹ := by
+  have hsum : Summable (fun n : ℕ => logCoeff n • Y ^ n) :=
+    summable_logCoeff_smul_pow hY
+  have hpow : ∀ n : ℕ,
+      ((↑u : 𝔸) * Y * ↑u⁻¹) ^ n = (↑u : 𝔸) * Y ^ n * ↑u⁻¹ := by
+    intro n
+    induction n with
+    | zero => simp
+    | succ k ih =>
+        rw [pow_succ, ih, pow_succ]
+        simp only [mul_assoc]
+        rw [← mul_assoc (↑u⁻¹ : 𝔸) (↑u : 𝔸), u.inv_mul, one_mul]
+  have hconj : nearLog ((↑u : 𝔸) * Y * ↑u⁻¹)
+      = ∑' n : ℕ, (↑u : 𝔸) * (logCoeff n • Y ^ n) * ↑u⁻¹ := by
+    rw [nearLog]
+    refine tsum_congr (fun n => ?_)
+    rw [hpow n, mul_smul_comm, smul_mul_assoc]
+  rw [hconj]
+  have key := (ContinuousLinearMap.mulLeftRight ℝ 𝔸 (↑u) (↑u⁻¹)).map_tsum hsum
+  simp only [ContinuousLinearMap.mulLeftRight_apply] at key
+  exact key.symm
+
 /-- `log(1 + 0) = log 1 = 0`. -/
 @[simp] theorem nearLog_zero : nearLog (0 : 𝔸) = 0 := by
   have hz : (fun n : ℕ => logCoeff n • (0 : 𝔸) ^ n) = fun _ => 0 := by
