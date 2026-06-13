@@ -3034,6 +3034,38 @@ toolkit Bałaban's gauge construction consumes; the remaining gap is the carried
 genuine operator bound; hypotheses satisfiable on `cubeAdj`.  Clay distance
 **~0% (<0.1%), unchanged**.
 
+## Addendum 71 (2026-06-13, **PSD covariance-kernel interface** —
+`YangMills.RG.psd_cauchy_schwarz` + diagonal bounds; core 8260)
+
+**Build:** green (**8260 jobs**, +1 — new module `RG/CovarianceKernel.lean`).
+Oracle (`psd_diag_nonneg`, `psd_cauchy_schwarz`): `[propext, Classical.choice, Quot.sound]`.
+
+The covariance layer of the `hRpoly` analytic substrate, connecting the
+exponential-decay/Schur calculus to a Gaussian field's covariance:
+
+* **`expDecay_diag_abs_le`** — the diagonal (field variance at coincident
+  points) of an `ExpDecay` kernel is `≤ a` (when `d x x = 0`).
+* **`IsPSDKernel K`** := `∀ u, 0 ≤ ∑_{x,y} u x K x y u y` (the covariance
+  property).
+* **`psd_diag_nonneg`** — a PSD kernel has nonnegative diagonal (variance ≥ 0),
+  via the indicator test vector.
+* **`psd_cauchy_schwarz`** — the **covariance Cauchy–Schwarz**
+  `(∑ u K v)² ≤ (∑ u K u)(∑ v K v)` for a symmetric PSD kernel, via the
+  discriminant of the nonnegative quadratic `t ↦ ∑ (u+t v) K (u+t v) ≥ 0`
+  (`discrim_le_zero`).
+
+**Dependency moved.**  Combined with the Schur operator-norm bound
+(`expDecay_op_bilinear_le`, Add. 70), a background-field propagator that is a
+symmetric PSD `ExpDecay` kernel now has: covariance form `≤ a·S`, variances
+`≤ a`, the covariance Cauchy–Schwarz, and exponentially-decaying powers/
+resolvent — the **complete finite-lattice covariance/operator toolkit** a
+Gaussian fluctuation bound consumes.  This closes the source-independent
+analytic substrate toward `hRpoly`; the remaining gap is exhibiting the
+concrete lattice gauge-covariant operator as such a kernel (CMP 95/99/102/
+109/116, months-scale).  **Non-vacuity:** genuine PSD-form inequalities; the
+zero kernel and any Gram kernel `K x y = ⟨e_x, e_y⟩` are PSD instances.  Clay
+distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

@@ -222,6 +222,9 @@ import YangMills.RG.KernelDecay
 -- Schur boundedness of exponentially-decaying kernels (finite lattice): the
 -- ℓ¹ row-sum bound and the quadratic-form (covariance) bound ≤ a·S.
 import YangMills.RG.KernelSchur
+-- PSD covariance-kernel interface: diagonal/variance bounds and the covariance
+-- Cauchy–Schwarz, connecting ExpDecay/Schur to the Gaussian covariance form.
+import YangMills.RG.CovarianceKernel
 -- hRpoly campaign brick P1a: the bounded-degree walk-count engine (≤ Δⁿ) — the
 -- combinatorial substrate for the lattice animal count `c_n ≤ Cⁿ` (branch C of
 -- `hRpoly`). Pure graph combinatorics; consumer = animal count → polymer_weight_summability.

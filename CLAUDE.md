@@ -30,7 +30,7 @@ never repeat that.
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
 7. **After adding a module to the core, confirm the build job count
-   incremented** (currently 8259).
+   incremented** (currently 8260).
 
 ## The autonomous loop
 
@@ -69,7 +69,7 @@ Lean; they save hours.
 
 ## Current state (2026-06-13)
 
-* Core green: **8259 jobs**, zero sorry, zero axioms.  Mathlib **pinned**
+* Core green: **8260 jobs**, zero sorry, zero axioms.  Mathlib **pinned**
   to an exact commit (lakefile + manifest agree); see `REPRODUCIBILITY.md`.
 * **`hRpoly` campaign OPEN** (`docs/HRPOLY-CAMPAIGN-PLAN.md`): the sole
   remaining analytic input of the §6.3 UV conditional.  **Branch C (the
