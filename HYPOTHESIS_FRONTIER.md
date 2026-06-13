@@ -42,8 +42,25 @@
 > `‖∫ tr(W_C)·∏ exp(zₚ)‖ ≤ N_c·2^{#P}·(e^{2δN_c}−1)^{Area}·e^{2δN_c·#P}`,
 > i.e. genuine area-law decay for Wilson coupling `β < ln 2`.  Fully
 > unconditional; the frontier table above is unchanged (the §6.3 UV
-> bound stays the sole carried hypothesis).  Remaining refinement:
-> volume-uniform constant.
+> bound stays the sole carried hypothesis).
+>
+> **UPDATE (2026-06-12, latest).**  The VOLUME-UNIFORM area-law
+> campaign is now COMPLETE in BOTH the linearized and exact-activity
+> forms (ledger addenda 17–18d; `docs/AREA-LAW-VU-PLAN.md`, V0–V4
+> closed).  Linearized headline `normalized_wilson_loop_area_law`
+> (+`_unconditional`) and exact-activity headline
+> `normalized_exp_wilson_loop_area_law`
+> (`L1_GibbsMeasure/RestrictedGate.lean`):
+> `‖(∫ tr W_C·∏ exp(z_p))/Z‖ ≤
+> N_c·e^{#loopSupp·4d·K}·σ^{Area(C)}·e^{#loopSupp·4d·S(σ)}` for the
+> NORMALIZED Gibbs expectation, every constant volume-free (`Z`
+> cancelled through the restricted cluster expansion), carrying only
+> explicit smallness/geometry hypotheses (NO integrability families).
+> This was the post-campaign refinement noted above; it is now
+> machine-checked.  The frontier table is UNCHANGED: the §6.3 UV
+> single-scale bound remains the SOLE carried hypothesis of the M3
+> assembly, and the distance to Clay is ~0% (<0.1%), unchanged — the
+> area law is M3 lattice-side and reduces no M4/M5 obstruction.
 
 ---
 
