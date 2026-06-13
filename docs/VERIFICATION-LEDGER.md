@@ -3365,6 +3365,34 @@ region is `ExpDecay` via the resolvent series, and (ii) the CMP-116 single-scale
 raw-activity bound — both carried as honest hypotheses, never axioms.  Clay
 distance **~0% (<0.1%), unchanged**.
 
+## Addendum 81 (2026-06-13, **the resolvent of a small finite-range operator
+decays exponentially — concrete Combes–Thomas**
+`YangMills.RG.finiteRange_resolvent_isExpDecay`; core 8262)
+
+**Build:** green (8262 jobs — theorem added to `RG/KernelDecay.lean`).  Oracle:
+`[propext, Classical.choice, Quot.sound]`.
+
+The single composite that turns the abstract resolvent calculus into the literal
+mechanism of the Bałaban propagator bound.
+
+* **`finiteRange_resolvent_isExpDecay`** — a finite-range kernel `K` (range `R`,
+  bound `M`), small enough that `M·e^{κR}·S < 1` for some rate `κ > σ` (with
+  `∑_z e^{−σ d(x,z)} ≤ S`), has Neumann-series resolvent
+  `(1 − K)⁻¹ = ∑ₙ Kⁿ` that is `ExpDecay` at the *positive* rate `κ − σ`, with
+  amplitude `M·e^{κR}/(1 − M·e^{κR}·S)`.  Pure composition of
+  `finiteRange_isExpDecay` (Add. 80: range ⇒ decay at any rate) with
+  `expDecay_resolvent` (Add. 56: decay + smallness ⇒ resolvent decay).
+
+This is exactly how the YM activity-decay constant `κ` (CMP 116 Lemma 3) arises:
+the background-field covariant difference operator is finite-range, and its
+inverse — the propagator (CMP 95/99) — inherits exponential decay from this
+resolvent estimate.  The chain is now concrete end-to-end at the *operator* level:
+**finite-range operator ⇒ resolvent ExpDecay ⇒ (Gram) covariance ExpDecay ⇒ Schur
+quadratic-form bound ⇒ Gaussian field-size bound**.  The remaining inputs are the
+two faithful source facts — the concrete operator's finite range / small-field
+smallness (CMP 95/99) and the CMP-116 raw-activity bound — carried as honest
+hypotheses, never axioms.  Clay distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

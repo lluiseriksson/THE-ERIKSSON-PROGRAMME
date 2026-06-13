@@ -128,6 +128,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.expDecay_pow
 -- resolvent / Neumann-series decay (the Combes-Thomas conclusion)
 #print axioms YangMills.RG.expDecay_resolvent
+-- concrete Combes-Thomas: the resolvent of a small finite-range operator decays
+-- exponentially (the literal mechanism of the Balaban propagator bound)
+#print axioms YangMills.RG.finiteRange_resolvent_isExpDecay
 -- Schur boundedness: row-sum + quadratic-form (covariance) bound ≤ a·S
 #print axioms YangMills.RG.expDecay_finset_row_le
 #print axioms YangMills.RG.expDecay_quadratic_form_le

@@ -290,4 +290,29 @@ theorem expDecay_resolvent {d : V → V → ℝ} {a κ σ S : ℝ} {K : V → V 
     _ = (a * E) * (1 - a * S)⁻¹ := by rw [tsum_geometric_of_lt_one haS0 haS]
     _ = (a * (1 - a * S)⁻¹) * Real.exp (-(κ - σ) * d x y) := by rw [hE]; ring
 
+/-- **The resolvent of a small finite-range operator decays exponentially** — the
+concrete Combes–Thomas theorem, the literal mechanism of the Bałaban propagator
+bound.  A finite-range kernel `K` (range `R`, bound `M`), small enough that
+`M·e^{κR}·S < 1` for some rate `κ > σ` (with `∑_z e^{−σ d(x,z)} ≤ S`), has a
+Neumann-series resolvent `(1 − K)⁻¹ = ∑ₙ Kⁿ` that is `ExpDecay` at the positive
+rate `κ − σ`.  Pure composition of `finiteRange_isExpDecay` (range ⇒ decay at
+*any* rate) with `expDecay_resolvent` (decay + smallness ⇒ resolvent decay).
+This is exactly how the YM activity-decay constant `κ` (CMP 116 Lemma 3) arises:
+the background-field covariant difference operator is finite-range, and its
+inverse — the propagator (CMP 95/99) — inherits exponential decay from this. -/
+theorem finiteRange_resolvent_isExpDecay {d : V → V → ℝ} {K : V → V → ℝ}
+    {M R κ σ S : ℝ}
+    (hM : 0 ≤ M) (hS0 : 0 ≤ S) (hσ : 0 ≤ σ) (hσκ : σ ≤ κ)
+    (hd : ∀ x y, 0 ≤ d x y) (htri : ∀ x y z, d x y ≤ d x z + d z y)
+    (hsupp : ∀ x y, R < d x y → K x y = 0) (hbd : ∀ x y, |K x y| ≤ M)
+    (hsum : ∀ x, Summable (fun z => Real.exp (-σ * d x z)))
+    (hStsum : ∀ x, ∑' z, Real.exp (-σ * d x z) ≤ S)
+    (hsmall : M * Real.exp (κ * R) * S < 1) :
+    ExpDecay d (M * Real.exp (κ * R) * (1 - M * Real.exp (κ * R) * S)⁻¹) (κ - σ)
+      (fun x y => ∑' n, Kpow K n x y) := by
+  have hK : ExpDecay d (M * Real.exp (κ * R)) κ K :=
+    finiteRange_isExpDecay (le_trans hσ hσκ) hM hsupp hbd
+  exact expDecay_resolvent (mul_nonneg hM (Real.exp_pos _).le) hS0 hsmall hd htri hσ hσκ hK
+    hsum hStsum
+
 end YangMills.RG
