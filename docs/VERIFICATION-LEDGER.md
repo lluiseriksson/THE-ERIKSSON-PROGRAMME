@@ -3128,6 +3128,46 @@ months-scale CMP 95/99/102/109/116 gauge construction.  **Non-vacuity:** any
 centered `gaussianReal`-type measure satisfies the hypotheses.  Clay distance
 **~0% (<0.1%), unchanged**.
 
+## Addendum 74 (2026-06-13, **the concrete multivariate Gaussian as an
+`IsGaussian` measure** `YangMills.RG.isGaussian_pi` + `isGaussian_pi_map_clm`;
+core 8262)
+
+**Build:** green (**8262 jobs** — incremented from 8261 by the new module
+`RG/GaussianPi.lean`).  Oracle: both `[propext, Classical.choice, Quot.sound]`.
+
+This closes the gap flagged at the end of Add. 73 — "no constructive Gaussian
+measure."  Add. 72/73 bounded the field-size integral for *any abstract*
+`[IsGaussian μ]`; the open question was whether a concrete finite-dimensional
+Gaussian measure exists in Mathlib as an `IsGaussian` instance.  It does not
+ship one (Mathlib has 1-D `gaussianReal` and the abstract predicate, but no
+multivariate Gaussian).  This module supplies the missing primitive.
+
+* **`isGaussian_pi`** — `Measure.pi (fun i => gaussianReal (m i) (v i))` on
+  `ι → ℝ` (`[Fintype ι]`), the standard multivariate Gaussian with mean `m` and
+  diagonal covariance `diag v`, **is** an `IsGaussian` measure.  Proof: the
+  coordinate projections are independent (`iIndepFun_pi`) and each has 1-D
+  Gaussian law (`Measure.pi_map_eval` + `isGaussian_gaussianReal`), hence
+  *jointly* Gaussian (Mathlib's `iIndepFun.hasGaussianLaw`); the joint law of the
+  coordinates is the identity pushforward, i.e. the measure itself.
+
+* **`isGaussian_pi_map_clm`** — pushing the standard multivariate Gaussian
+  forward through **any continuous linear map** `A : (ι → ℝ) →L[ℝ] F` yields an
+  `IsGaussian` measure on `F` (via `isGaussian_map_of_measurable`).  Taking `A`
+  a square-root / Cholesky factor of a target PSD covariance realizes a centered
+  Gaussian field with covariance bilinear form `A ∘ Aᵀ` — the constructive
+  Gaussian-from-covariance object the small-field fluctuation integral integrates
+  against.
+
+**Dependency moved.**  `gaussian_exp_integral_le_isGaussian` (Add. 73) now has
+concrete, non-abstract `IsGaussian` measures to consume — the field-size bound is
+instantiable on a genuine constructed measure, not only on a hypothesis.  The
+remaining `hRpoly` gap is now purely: (i) match `A ∘ Aᵀ` to the specific
+gauge-covariant background-field propagator (`ExpDecay`+PSD kernel; Cholesky /
+spectral factor + the CMP 99 propagator bound), and (ii) the full single-scale
+raw-activity bound (CMP 116) — both carried as honest hypotheses, never axioms.
+**Non-vacuity:** `ι := Fin n`, `m := 0`, `v := 1` gives the standard `n`-dim
+Gaussian; `A := id` recovers it.  Clay distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

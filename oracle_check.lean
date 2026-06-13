@@ -137,6 +137,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.gaussian_exp_integral_le
 -- self-contained MGF bound for an abstract centered IsGaussian measure
 #print axioms YangMills.RG.gaussian_exp_integral_le_isGaussian
+-- the concrete multivariate Gaussian as an IsGaussian measure (missing primitive)
+-- and its closure under continuous-linear images (constructive covariance route)
+#print axioms YangMills.RG.isGaussian_pi
+#print axioms YangMills.RG.isGaussian_pi_map_clm
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

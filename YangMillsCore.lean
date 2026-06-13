@@ -228,6 +228,11 @@ import YangMills.RG.CovarianceKernel
 -- Gaussian field-size / MGF bound from a covariance bound: a Gaussian
 -- fluctuation field with bounded covariance has bounded exponential moments.
 import YangMills.RG.GaussianMGF
+-- The finite-dimensional multivariate Gaussian as a concrete `IsGaussian` measure
+-- (`isGaussian_pi`) and its closure under linear images (`isGaussian_pi_map_clm`) —
+-- the missing constructive Gaussian-from-covariance object the fluctuation integral
+-- consumes; built from Mathlib's `iIndepFun.hasGaussianLaw`.
+import YangMills.RG.GaussianPi
 -- hRpoly campaign brick P1a: the bounded-degree walk-count engine (≤ Δⁿ) — the
 -- combinatorial substrate for the lattice animal count `c_n ≤ Cⁿ` (branch C of
 -- `hRpoly`). Pure graph combinatorics; consumer = animal count → polymer_weight_summability.
