@@ -1504,4 +1504,165 @@ theorem exp_conjPair_eq_cast (N_c : ℕ) [NeZero N_c]
     from by ring]
   rw [Complex.ofReal_exp]
 
+open Classical in
+/-- **(V4-2 integrability i)** the EXACT pinned product
+`∏_{p∈S}(exp z_p − 1)` is integrable — measurable (exp of measurable)
+and bounded (`‖exp z_p − 1‖ ≤ e^{2δN_c}+1` through finite products). -/
+theorem integrable_exp_conjPair_prod (N_c : ℕ) [NeZero N_c]
+    {δ : ℝ} (c c' : ConcretePlaquette d N → ℂ)
+    (hc : ∀ p, ‖c p‖ ≤ δ) (hc' : ∀ p, ‖c' p‖ ≤ δ)
+    (S : Finset (ConcretePlaquette d N)) :
+    Integrable (fun A => ∏ p ∈ S,
+      (Complex.exp (c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+        + c' p * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1))
+      (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) := by
+  classical
+  have hm : Measurable (fun A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) => ∏ p ∈ S,
+      (Complex.exp (c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+        + c' p * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1)) :=
+    Finset.measurable_prod _ fun p _ =>
+      (Complex.measurable_exp.comp
+        ((measurable_const.mul (measurable_trace_wilsonLine _)).add
+          (measurable_const.mul (continuous_star.measurable.comp
+            (measurable_trace_wilsonLine _))))).sub measurable_const
+  have hb : ∀ A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)),
+      ‖∏ p ∈ S,
+        (Complex.exp (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1)‖
+        ≤ ∏ _p ∈ S, (Real.exp (2 * δ * (N_c : ℝ)) + 1) := by
+    intro A
+    rw [norm_prod]
+    refine Finset.prod_le_prod (fun p _ => norm_nonneg _) (fun p _ => ?_)
+    have hδ0 : (0 : ℝ) ≤ δ := le_trans (norm_nonneg (c p)) (hc p)
+    set z : ℂ := c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+      + c' p * star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) with hz
+    have hznorm : ‖z‖ ≤ 2 * δ * (N_c : ℝ) := by
+      rw [hz]
+      have h1 : ‖c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val‖
+          ≤ δ * (N_c : ℝ) := by
+        rw [norm_mul]
+        exact mul_le_mul (hc p) (norm_trace_wilsonLine_le A _)
+          (norm_nonneg _) hδ0
+      have h2 : ‖c' p * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)‖
+          ≤ δ * (N_c : ℝ) := by
+        rw [norm_mul, norm_star]
+        exact mul_le_mul (hc' p) (norm_trace_wilsonLine_le A _)
+          (norm_nonneg _) hδ0
+      calc ‖_ + _‖ ≤ _ + _ := norm_add_le _ _
+        _ ≤ 2 * δ * (N_c : ℝ) := by linarith
+    have hexp : ‖Complex.exp z‖ ≤ Real.exp (2 * δ * (N_c : ℝ)) := by
+      rw [Complex.norm_exp]
+      exact Real.exp_le_exp.mpr (le_trans (Complex.re_le_norm z) hznorm)
+    calc ‖Complex.exp z - 1‖ ≤ ‖Complex.exp z‖ + ‖(1 : ℂ)‖ := norm_sub_le _ _
+      _ ≤ Real.exp (2 * δ * (N_c : ℝ)) + 1 := by rw [norm_one]; linarith
+  have h2 := (integrable_const (1 : ℂ)
+    (μ := gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))).bdd_mul
+    hm.aestronglyMeasurable (MeasureTheory.ae_of_all _ hb)
+  simpa using h2
+
+open Classical in
+/-- **(V4-2 integrability ii)** the trace times the EXACT pinned
+product is integrable. -/
+theorem integrable_trace_mul_exp_conjPair_prod (N_c : ℕ) [NeZero N_c]
+    (es : List (ConcreteEdge d N))
+    {δ : ℝ} (c c' : ConcretePlaquette d N → ℂ)
+    (hc : ∀ p, ‖c p‖ ≤ δ) (hc' : ∀ p, ‖c' p‖ ≤ δ)
+    (S : Finset (ConcretePlaquette d N)) :
+    Integrable (fun A => Matrix.trace (wilsonLine A es).val * ∏ p ∈ S,
+      (Complex.exp (c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+        + c' p * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1))
+      (gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) := by
+  classical
+  have hm : Measurable (fun A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      Matrix.trace (wilsonLine A es).val * ∏ p ∈ S,
+      (Complex.exp (c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+        + c' p * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1)) :=
+    (measurable_trace_wilsonLine es).mul
+      (Finset.measurable_prod _ fun p _ =>
+        (Complex.measurable_exp.comp
+          ((measurable_const.mul (measurable_trace_wilsonLine _)).add
+            (measurable_const.mul (continuous_star.measurable.comp
+              (measurable_trace_wilsonLine _))))).sub measurable_const)
+  have hb : ∀ A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)),
+      ‖Matrix.trace (wilsonLine A es).val * ∏ p ∈ S,
+        (Complex.exp (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1)‖
+        ≤ (N_c : ℝ) * ∏ _p ∈ S, (Real.exp (2 * δ * (N_c : ℝ)) + 1) := by
+    intro A
+    rw [norm_mul]
+    refine mul_le_mul (norm_trace_wilsonLine_le A es) ?_
+      (norm_nonneg _) (Nat.cast_nonneg _)
+    rw [norm_prod]
+    refine Finset.prod_le_prod (fun p _ => norm_nonneg _) (fun p _ => ?_)
+    have hδ0 : (0 : ℝ) ≤ δ := le_trans (norm_nonneg (c p)) (hc p)
+    set z : ℂ := c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+      + c' p * star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) with hz
+    have hznorm : ‖z‖ ≤ 2 * δ * (N_c : ℝ) := by
+      rw [hz]
+      have h1 : ‖c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val‖
+          ≤ δ * (N_c : ℝ) := by
+        rw [norm_mul]
+        exact mul_le_mul (hc p) (norm_trace_wilsonLine_le A _)
+          (norm_nonneg _) hδ0
+      have h2 : ‖c' p * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)‖
+          ≤ δ * (N_c : ℝ) := by
+        rw [norm_mul, norm_star]
+        exact mul_le_mul (hc' p) (norm_trace_wilsonLine_le A _)
+          (norm_nonneg _) hδ0
+      calc ‖_ + _‖ ≤ _ + _ := norm_add_le _ _
+        _ ≤ 2 * δ * (N_c : ℝ) := by linarith
+    have hexp : ‖Complex.exp z‖ ≤ Real.exp (2 * δ * (N_c : ℝ)) := by
+      rw [Complex.norm_exp]
+      exact Real.exp_le_exp.mpr (le_trans (Complex.re_le_norm z) hznorm)
+    calc ‖Complex.exp z - 1‖ ≤ ‖Complex.exp z‖ + ‖(1 : ℂ)‖ := norm_sub_le _ _
+      _ ≤ Real.exp (2 * δ * (N_c : ℝ)) + 1 := by rw [norm_one]; linarith
+  have h2 := (integrable_const (1 : ℂ)
+    (μ := gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))).bdd_mul
+    hm.aestronglyMeasurable (MeasureTheory.ae_of_all _ hb)
+  simpa using h2
+
 end YangMills
