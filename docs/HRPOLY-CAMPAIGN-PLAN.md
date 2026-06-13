@@ -70,22 +70,25 @@ verification** (see §4).
 | Brick | Content | Kind | Status |
 |---|---|---|---|
 | **P0** | this spec | design | done |
-| **P1** | **Lattice animal count** `c_n ≤ Cⁿ`: the number of connected `n`-polymers (unions of `M`-cubes) containing a fixed cube, on the bounded-degree cube-adjacency, is `≤ Cⁿ` — via a spanning-tree / BFS encoding into bounded-branching words.  Consumer: `polymer_weight_summability` (closes branch C). | **code** — pure combinatorics, self-contained, no measure theory | **next** |
+| **P1a** | **Bounded-degree walk-count engine** `card_walks_length_le_degree_pow`: for any `SimpleGraph` of max degree `≤ Δ`, the number of length-`n` walks from a fixed vertex is `≤ Δⁿ`.  The combinatorial engine behind the animal count.  (`RG/AnimalCount.lean`, ledger Add. 57.) | **code** — pure combinatorics, self-contained | **DONE** (core 8253) |
+| **P1b** | **Lattice animal count** `c_n ≤ Cⁿ`: the number of connected `n`-polymers (unions of `M`-cubes) containing a fixed cube is `≤ Cⁿ`, by injecting a connected size-`n` set into a length-`≤ 2n` DFS walk (P1a) via `Fintype.card_le_of_injective`.  Consumer: `polymer_weight_summability` (closes branch C). | **code** — combinatorics; needs the cube-adjacency/DFS encoding | **next** |
 | **P2** | **Polymer-with-holes model**: the polymer type (connected `M`-cube unions), the modified distance `d_M(·, mod Ω^c)`, and the `KP.PolymerSystem` instance / bridge.  Define + non-vacuity. | code (definitional, with P1/P3 consumers) | open |
 | **P3** | **Cluster-expansion-with-holes convergence (Appendix F)**: the renormalized-activity decay `|H^#(Y)| ≤ O(1)H₀ e^{−(κ−3κ₀−3)d}` from the raw bound + summability.  Generalises `KP` convergence to the modified metric.  **The crux of (B).** | code — HARD, months-scale | open (source §4) |
 | **P4** | **Fluctuation integral → raw activity bound (§3.8)**: `|H_k(X)| ≤ H₀ e^{−κ d}` from the Gaussian step, `H₀ ∝ g_k^{κ₀}`.  **The crux of (A).** | code — HARD, months-scale, needs the lattice Gaussian covariance | open (source §4) |
 | **P5** | **Assemble `hRpoly`**: combine P3 (renormalized decay) + P4 (raw bound) + P1/P2 (summability) ⟹ `|R_{t,k}| ≤ A e^{−c₀t} g_k^{κ₀}`; feed `lattice_mass_gap_of_cluster_and_coupling` ⟹ the **unconditional lattice mass gap**. | code (glue, once P1–P4 land) | open |
 
-**Smallest non-vacuous first code brick = P1** (the lattice animal
-count).  It is pure combinatorics, has an existing consumer
-(`polymer_weight_summability`), needs neither the Gaussian measure nor
-the cluster expansion, and closes the last input on the summability
-branch.  Sub-structure: a cube-adjacency graph on `FinBox`, connected
-size-`n` subsets, a spanning-tree/BFS encoding into `Fin n → Fin B`
-(bounded branching `B`), then `Fintype.card_le_of_injective` +
-`Fintype.card_fun`.  (Cf. the abstract counting already done in
-`KP.PenroseBFS`/`KP.WalkBound` for the incompatibility-graph setting —
-review for reuse before rebuilding.)
+**Progress.**  The smallest non-vacuous first code brick (**P1a**, the
+bounded-degree walk-count engine `≤ Δⁿ`) is **DONE** — `RG/AnimalCount.lean`,
+oracle-clean, core 8253, ledger Add. 57.  It is pure combinatorics over
+Mathlib's `SimpleGraph.finsetWalkLength`, needs no Bałaban/Dimock source,
+and is the engine for the animal count.  **Next: P1b** — the animal count
+`c_n ≤ Cⁿ` itself: build the cube-adjacency graph (degree bound from the
+`M`-cube geometry), encode a connected size-`n` polymer as a length-`≤ 2n`
+DFS walk rooted at the fixed cube (an injection), then
+`Fintype.card_le_of_injective` against P1a gives `c_n ≤ (Δ)^{2n} = C ⁿ`
+with `C = Δ²`.  The remaining genuine content is the **encoding injection**
+(a connected set ↪ its canonical DFS walk); the count is then immediate
+from P1a.  Consumer: `polymer_weight_summability` (closes branch C).
 
 ## 4. Precise source material requested (for P3, P4)
 

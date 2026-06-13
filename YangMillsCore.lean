@@ -207,3 +207,7 @@ import YangMills.RG.PolymerRemainder
 -- mass-gap assembly into one theorem — (RG remainder activity bound + coupling
 -- decay) ⟹ the lattice mass gap. The §6.3 obligation in faithful assembled form.
 import YangMills.RG.UVMassGap
+-- hRpoly campaign brick P1a: the bounded-degree walk-count engine (≤ Δⁿ) — the
+-- combinatorial substrate for the lattice animal count `c_n ≤ Cⁿ` (branch C of
+-- `hRpoly`). Pure graph combinatorics; consumer = animal count → polymer_weight_summability.
+import YangMills.RG.AnimalCount

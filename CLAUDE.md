@@ -30,7 +30,7 @@ never repeat that.
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
 7. **After adding a module to the core, confirm the build job count
-   incremented** (currently 8252).
+   incremented** (currently 8253).
 
 ## The autonomous loop
 
@@ -67,10 +67,18 @@ are recorded **in the campaign plans** — primarily
 `README-FOR-NEXT-MODEL.md`. Read them before writing analysis-flavoured
 Lean; they save hours.
 
-## Current state (2026-06-12)
+## Current state (2026-06-13)
 
-* Core green: **8252 jobs**, zero sorry, zero axioms.  Mathlib **pinned**
+* Core green: **8253 jobs**, zero sorry, zero axioms.  Mathlib **pinned**
   to an exact commit (lakefile + manifest agree); see `REPRODUCIBILITY.md`.
+* **`hRpoly` campaign OPEN** (`docs/HRPOLY-CAMPAIGN-PLAN.md`): the sole
+  remaining analytic input of the §6.3 UV conditional.  P0 (design/source
+  spec) done; **P1a done** — `RG.card_walks_length_le_degree_pow`
+  (`RG/AnimalCount.lean`), the bounded-degree walk-count engine `≤ Δⁿ`,
+  the combinatorial substrate of the animal count `c_n ≤ Cⁿ` (ledger
+  Add. 57).  Next: P1b (the animal-count injection), then the hard cores
+  P3 (cluster expansion with holes) / P4 (fluctuation integral) which
+  need verbatim Dimock App F / §3.8 source (requested in the plan §4).
 * **Gauge-RG continuum track (current frontier, `YangMills/RG/**`, 36
   oracle-clean bricks, ledger Addenda 23–52):** the local
   averaging-operator theory is COMPLETE (block geometry; the linear

@@ -2546,6 +2546,41 @@ is verified AND certified non-vacuous.  Strategy/framing **Lluis
 Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance
 ~0% (<0.1%), unchanged.
 
+## Addendum 57 (2026-06-13, **hRpoly campaign brick P1a — the bounded-degree
+walk-count engine** `YangMills.RG.card_walks_length_le_degree_pow`; core 8253)
+
+**Build:** green (**8253 jobs**, +1 over Add. 56's 8252 — module
+`YangMills/RG/AnimalCount.lean` added to the core).  Oracle:
+`'…card_walks_length_le_degree_pow' [propext, Classical.choice, Quot.sound]`.
+
+First **code** brick of the `hRpoly` campaign (`docs/HRPOLY-CAMPAIGN-PLAN.md`,
+opened by the P0 design doc, Add. preceding).  Branch C of `hRpoly` (the
+geometric summability `∑_{X⊇□} e^{−κ₀ d_M} ≤ K₀`) was already reduced to the
+**lattice animal count** `c_n ≤ Cⁿ` (Add. 53, `polymer_weight_summability`).
+The standard route to that geometric count encodes a connected size-`n`
+polymer as a bounded-length DFS **walk** on the cube-adjacency graph; this
+brick supplies the engine controlling the walk count:
+
+> **`card_walks_length_le_degree_pow`** — for any `SimpleGraph` with
+> `∀ w, G.degree w ≤ Δ`, the total number of length-`n` walks from a fixed
+> vertex `u` satisfies `∑_v #{p : Walk u v | p.length = n} ≤ Δⁿ`.
+
+Proof: induction on `n` via Mathlib's recursive `finsetWalkLength` description
+(`card_finsetWalkLength_succ_le`, itself `Finset.card_biUnion_le` +
+`Finset.card_map`), `Finset.sum_comm`, and `card_neighborSet_eq_degree`.
+Pure graph combinatorics — no measure theory, no cluster expansion; needs
+no Bałaban/Dimock source material (only the degree bound enters the
+constant).  **Non-vacuity:** a genuine `≤` on a generally-nonzero count
+(at `n = 0` it is exactly `1 ≤ Δ⁰`); the hypothesis `∀ w, G.degree w ≤ Δ`
+is satisfiable for every finite graph.  Not a restatement, not vacuous.
+
+**Documented consumer:** the animal-count brick **P1b** (encode a connected
+size-`n` polymer into a length-`≤ 2n` walk, then `Fintype.card_le_of_injective`)
+→ `RG.polymer_weight_summability`.  Source: standard self-avoiding-walk /
+lattice-animal counting (Madras–Slade); strategy/framing **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance **~0% (<0.1%),
+unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
