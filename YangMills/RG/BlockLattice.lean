@@ -102,4 +102,42 @@ open scoped Classical in
     x ∈ blockOf L N' y ↔ blockSite L N' x = y := by
   simp [blockOf]
 
+open scoped Classical in
+/-- **Every order-1 block has exactly `Lᵈ` fine sites** (CMP 98 eq (2):
+the block is an `L`-cube).  The quantitative geometry fact underlying
+the `L^{d/2}` field rescaling of the renormalization step. -/
+theorem blockOf_card (L N' : ℕ) [NeZero L] (y : FinBox d N') :
+    (blockOf L N' y).card = L ^ d := by
+  classical
+  have hL : 0 < L := Nat.pos_of_ne_zero (NeZero.ne L)
+  -- the offset embedding `(Fin d → Fin L) ↪ block of y`
+  let g : (Fin d → Fin L) → FinBox d (L * N') :=
+    fun r i => ⟨L * (y i).val + (r i).val, by
+      have hr := (r i).isLt
+      have hub : L * (y i).val + L ≤ L * N' := by
+        calc L * (y i).val + L = L * ((y i).val + 1) := by ring
+          _ ≤ L * N' := Nat.mul_le_mul_left L (y i).isLt
+      omega⟩
+  have hginj : Function.Injective g := by
+    intro r r' h
+    funext i
+    have hi : L * (y i).val + (r i).val = L * (y i).val + (r' i).val :=
+      congrArg Fin.val (congrFun h i)
+    exact Fin.ext (by omega)
+  have himg : blockOf L N' y = Finset.univ.image g := by
+    ext x
+    rw [mem_blockOf, blockSite_eq_iff_cube, Finset.mem_image]
+    constructor
+    · intro h
+      refine ⟨fun i => ⟨(x i).val - L * (y i).val, ?_⟩, Finset.mem_univ _, ?_⟩
+      · have h1 := (h i).1; have h2 := (h i).2; omega
+      · funext i
+        have h1 := (h i).1
+        exact Fin.ext (by simp only [g]; omega)
+    · rintro ⟨r, -, rfl⟩ i
+      have hr := (r i).isLt
+      exact ⟨by simp only [g]; omega, by simp only [g]; omega⟩
+  rw [himg, Finset.card_image_of_injective _ hginj, Finset.card_univ,
+    Fintype.card_fun, Fintype.card_fin, Fintype.card_fin]
+
 end YangMills.RG

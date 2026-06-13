@@ -36,7 +36,7 @@ field.  Blocking with block size `L` requires the fine torus side to be
 
 | # | Brick | Source | Lean target (signature shape) | Status |
 |---|---|---|---|---|
-| **B1** | **Block lattice geometry.** The order-1 block map and its cube fiber. | CMP 98 (1)–(3) | `blockSite (L N') (x : FinBox d (L*N')) : FinBox d N' := fun i => ⟨(x i)/L, _⟩`; `mem_blockOf_iff` (cube characterisation `L·yᵢ ≤ xᵢ < L·yᵢ+L`); `blockSite_surjective`; `blockOf_card : (blockOf y).card = L^d`. | **in progress** |
+| **B1** | **Block lattice geometry.** The order-1 block map and its cube fiber. | CMP 98 (1)–(3) | `blockSite`, `blockSite_eq_iff_cube` (cube char `L·yᵢ ≤ xᵢ < L·yᵢ+L`), `blockSite_surjective`, `blockOf`/`mem_blockOf`, `blockOf_card = L^d`. | **CLOSED** (ledger Add. 23, core 8239) |
 | **B2** | **Coarse/fine edge & plaquette maps.** Coarse bonds/plaquettes on `FinBox d N'`; the fine bonds inside a coarse bond's block-pair; `blockEdge`/`refineEdge` relations. | CMP 98 (4)–(5) | `blockEdge : ConcreteEdge d (L*N') → ...`; `coarseEdgeBlocks : ConcreteEdge d N' → Finset (FinBox d (L*N'))` (the two blocks at its ends). | open |
 | **B3** | **Gauge-covariant averaging operator.** `avg : GaugeConfig(L*N') G → GaugeConfig(N') G`, the order-1 RG field map with parallel transport along the block contours `Γ_{c,x}`. | CMP 98 (14)–(15) | `avg (U : GaugeConfig d (L*N') G) : GaugeConfig d N' G`. **BLOCKED on a clean scan of eqs (14)–(15)** — the uploaded CMP 98 OCR mangles them (see §"Missing source" below). | **blocked** |
 | **B4** | **Gauge covariance.** Averaging intertwines gauge transformations. | CMP 98 (11) | `avg_gaugeTransform : avg (U.gauge u) = (avg U).gauge (u ∘ blockSite-section)`. | open (needs B3) |
