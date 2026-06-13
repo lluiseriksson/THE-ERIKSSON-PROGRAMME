@@ -228,6 +228,23 @@ theorem nearLog_conj (u : 𝔸ˣ) {Y : 𝔸} (hY : ‖Y‖ < 1) :
   simp only [ContinuousLinearMap.mulLeftRight_apply] at key
   exact key.symm
 
+/-- **Conjugation-equivariance of the renormalized exponent argument**
+(brick M-log-3, the B4-Ū exponent): the weighted sum of near-identity
+logarithms appearing in Bałaban's `Ū` (CMP 109 (0.12), the exponent
+`L^{-d} Σ_x log(...)`) conjugates as a whole,
+`Σ wᵢ • nearLog(u·Yᵢ·u⁻¹) = u · (Σ wᵢ • nearLog Yᵢ) · u⁻¹`.  Lifts
+`nearLog_conj` across the finite sum.  Composed with Mathlib's
+`NormedSpace.exp_units_conj` (the matching exp law) this gives the gauge
+covariance of the full `exp[ Σ … ]` field map — modulo only the carried
+analytic linearisation (0.8). -/
+theorem nearLog_sum_smul_conj (u : 𝔸ˣ) {ι : Type*} (s : Finset ι)
+    (w : ι → ℝ) (Y : ι → 𝔸) (hY : ∀ i ∈ s, ‖Y i‖ < 1) :
+    ∑ i ∈ s, w i • nearLog ((↑u : 𝔸) * Y i * ↑u⁻¹)
+      = (↑u : 𝔸) * (∑ i ∈ s, w i • nearLog (Y i)) * ↑u⁻¹ := by
+  rw [Finset.mul_sum, Finset.sum_mul]
+  refine Finset.sum_congr rfl (fun i hi => ?_)
+  rw [nearLog_conj u (hY i hi), mul_smul_comm, smul_mul_assoc]
+
 /-- `log(1 + 0) = log 1 = 0`. -/
 @[simp] theorem nearLog_zero : nearLog (0 : 𝔸) = 0 := by
   have hz : (fun n : ℕ => logCoeff n • (0 : 𝔸) ^ n) = fun _ => 0 := by

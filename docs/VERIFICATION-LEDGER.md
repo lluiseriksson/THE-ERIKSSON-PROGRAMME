@@ -1924,6 +1924,28 @@ gap.  Source CMP 98 (11)/109 (0.12); strategy **Lluis Eriksson**
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
+## Addendum 36 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-3
+(exponent) — conjugation-equivariance of the renormalized exponent
+argument** `YangMills.RG.nearLog_sum_smul_conj`; core 8245)
+
+**Build:** green (8245 jobs).  Oracle:
+`'YangMills.RG.nearLog_sum_smul_conj' [propext, Classical.choice, Quot.sound]`.
+
+`Σ_{i∈s} wᵢ • nearLog(u·Yᵢ·u⁻¹) = u·(Σ_{i∈s} wᵢ • nearLog Yᵢ)·u⁻¹` —
+the weighted sum of near-identity logarithms forming Bałaban's `Ū`
+exponent (CMP 109 (0.12), `L^{-d} Σ_x log(...)`) conjugates as a whole.
+Lifts `nearLog_conj` (Add. 35) across the finite sum
+(`Finset.mul_sum`/`Finset.sum_mul` + the per-term `•`-slide).
+Determination recorded: Mathlib already provides the matching exp law,
+`NormedSpace.exp_units_conj : exp(u·x·u⁻¹) = u·(exp x)·u⁻¹` (field-free
+`NormedSpace.exp`), so the gauge covariance of the **full** `exp[ Σ … ]`
+field map is now assembled from existing oracle-clean pieces —
+`nearLog_sum_smul_conj` (this) ∘ `exp_units_conj` (Mathlib) — modulo
+only the carried analytic linearisation (0.8, brick M-log-2b, still
+open).  No `log(exp)=id` used.  Source CMP 109 (0.12); strategy **Lluis
+Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance
+~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
