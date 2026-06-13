@@ -3,8 +3,8 @@
 **A Lean 4 / Mathlib formalization toward the Yang–Mills mass gap — with honest goalposts.**
 
 ![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-blue)
-![Mathlib](https://img.shields.io/badge/Mathlib-master-blue)
-![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8238_jobs)-success)
+![Mathlib](https://img.shields.io/badge/Mathlib-pinned_commit-blue)
+![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8252_jobs)-success)
 ![sorry](https://img.shields.io/badge/sorry-0-success)
 ![project axioms](https://img.shields.io/badge/project_axioms-0-success)
 ![Clay distance](https://img.shields.io/badge/distance_to_Clay-~0%25_(%3C0.1%25)-lightgrey)
@@ -19,7 +19,7 @@ proved. The defining principle is **honesty over progress**: a smaller true
 claim always beats a larger hollow one.
 
 ```bash
-lake build YangMillsCore          # the verified core — green, 8238 jobs
+lake build YangMillsCore          # the verified core — green, 8252 jobs
 lake env lean oracle_check.lean   # prints the axiom oracle for every headline
 ```
 
@@ -120,10 +120,30 @@ sharpens that carried hypothesis to the renormalization-group level: the UV
 covariance is the finite sum of per-scale RG remainders, and a **single
 geometric per-scale contraction** |R<sub>t,k</sub>| ≤ (C₂·e<sup>−c₀t</sup>)·rᵏ —
 exactly the form Balaban's Lemma 6.2 supplies — already yields the mass gap, via
-the proved §6.3 summation mechanism (`uv_geometric_summation`). The clean-core
-discharge of that contraction is scoped in
-[`docs/UV-SINGLE-SCALE-PLAN.md`](docs/UV-SINGLE-SCALE-PLAN.md) (bricks U0–U4;
-U0 closed).
+the proved §6.3 summation mechanism (`uv_geometric_summation`).
+
+`theorem lattice_mass_gap_of_cluster_and_coupling`
+([`YangMills/RG/UVMassGap.lean`](YangMills/RG/UVMassGap.lean), ledger Addendum 52)
+takes this one honest step further: it reduces the §6.3 obligation, **end to
+end**, to the two *faithful* Balaban analytic inputs — the cluster-expansion
+remainder activity bound |R<sub>t,k</sub>| ≤ A·e<sup>−c₀t</sup>·g<sub>k</sub><sup>κ₀</sup>
+(`hRpoly`) and the coupling-flow decay g<sub>k</sub> ≤ C·rᵏ (`hg`) — and derives
+the lattice mass gap by composing the gauge-RG **coupling-flow bridge** with the
+banked assembly. The entire **gauge-RG continuum track** (`YangMills/RG/**`, 36
+oracle-clean bricks: block-spin geometry, the averaging operator with covariance
+and ℓ²-contraction, a near-identity matrix-logarithm calculus, the
+coupling-flow geometric decay, the polymer cluster-sum, and this end-to-end
+conditional) is scoped in [`docs/BALABAN-RG-PLAN.md`](docs/BALABAN-RG-PLAN.md),
+[`docs/UV-SINGLE-SCALE-PLAN.md`](docs/UV-SINGLE-SCALE-PLAN.md), and
+[`docs/BALABAN-SOURCE-BOUNDS.md`](docs/BALABAN-SOURCE-BOUNDS.md).
+
+**Honest caveat.** This is the §6.3 obligation's *logical skeleton*, fully
+verified as a conditional. The two inputs `hRpoly`/`hg` are **carried
+hypotheses**, not theorems: discharging `hRpoly` (the Dimock cluster expansion
+with holes) is genuine, months-scale constructive QFT with no Mathlib
+primitives, and the geometric `hg` is the irrelevant-operator mechanism (the 4D
+*marginal* gauge coupling decays only logarithmically). None of this is a
+continuum result; the Clay distance is unchanged at ~0%.
 
 ### 4. The cluster-expansion layer
 
@@ -183,7 +203,7 @@ part of any claim this README makes.
 
 ```mermaid
 graph TD
-    subgraph core["YangMillsCore  (8238 jobs, oracle-clean)"]
+    subgraph core["YangMillsCore  (8252 jobs, oracle-clean)"]
         L0["L0_Lattice<br/>geometry, gauge fields, Wilson action,<br/>chain complex + N-ality area"]
         L1["L1_GibbsMeasure<br/>Gibbs measure, polymer representation,<br/>weighted gas, exp-activity expansion"]
         KP["KP layer<br/>Ursell, Penrose-BFS, sharp KP bound,<br/>Mayer inversion Ξ = exp(clusterSum),<br/>pinned clusters"]
@@ -211,11 +231,14 @@ Green: unconditional flagship. Amber: conditional on the named UV hypothesis.
 | Step | Command | Expected |
 |---|---|---|
 | Toolchain | `elan` picks up [`lean-toolchain`](lean-toolchain) | `leanprover/lean4:v4.29.0-rc6` |
-| Build the core | `lake build YangMillsCore` | `Build completed successfully (8238 jobs)` |
+| Mathlib cache | `lake exe cache get` | downloads the pinned-commit `.olean` cache |
+| Build the core | `lake build YangMillsCore` | `Build completed successfully (8252 jobs)` |
 | Axiom oracle | `lake env lean oracle_check.lean` | every line ends `[propext, Classical.choice, Quot.sound]` |
 | Sorry scan | `python scripts/check_consistency.py` | `0` forbidden tokens |
 
 The default `lake build` target (`YangMills.lean`) is just an alias for the core.
+**Mathlib is pinned to an exact commit** (lakefile + manifest agree), so the
+verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
 
 ---
 
@@ -230,7 +253,9 @@ The default `lake build` target (`YangMills.lean`) is just an alias for the core
 | [`HORIZON.md`](HORIZON.md) | The formal dependency DAG to a real mass gap, as fill-in-the-blank Lean signatures. |
 | [`ROADMAP.md`](ROADMAP.md) | The measurable plan, written against reality rather than a vacuous target. |
 | [`docs/AREA-LAW-PLAN.md`](docs/AREA-LAW-PLAN.md) · [`AREA-LAW-EXACT-PLAN.md`](docs/AREA-LAW-EXACT-PLAN.md) · [`AREA-LAW-VU-PLAN.md`](docs/AREA-LAW-VU-PLAN.md) | The area-law campaigns — all **complete**: linearized, exact-activity, and volume-uniform (V0–V4 closed, both linearized and exact). |
-| [`docs/UV-SINGLE-SCALE-PLAN.md`](docs/UV-SINGLE-SCALE-PLAN.md) | The §6.3 UV-bound campaign — discharging the sole carried hypothesis. Brick ladder U0–U4; **U0 closed**, U1/U2 (Balaban single-scale stability) are the **next** real work. |
+| [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | How to rebuild the exact verified state (pinned Mathlib commit) and re-run the oracle checks. |
+| [`docs/BALABAN-RG-PLAN.md`](docs/BALABAN-RG-PLAN.md) · [`UV-S2-GAUSSIAN-PLAN.md`](docs/UV-S2-GAUSSIAN-PLAN.md) · [`UV-U1-SMALL-FIELD-PLAN.md`](docs/UV-U1-SMALL-FIELD-PLAN.md) · [`BALABAN-SOURCE-BOUNDS.md`](docs/BALABAN-SOURCE-BOUNDS.md) | The **gauge-RG continuum track** (`YangMills/RG/**`): the local averaging-operator theory (complete, oracle-clean) and the end-to-end UV conditional; with the faithful Balaban/Dimock source bounds and the open `hRpoly`/`hg` inputs. |
+| [`docs/UV-SINGLE-SCALE-PLAN.md`](docs/UV-SINGLE-SCALE-PLAN.md) | The §6.3 UV-bound campaign — discharging the sole carried hypothesis. **U0 closed**; the whole branch is now one oracle-clean conditional (`lattice_mass_gap_of_cluster_and_coupling`) on the two carried Balaban inputs `hRpoly`/`hg`, which remain the genuine (months-scale) open work. |
 | [`docs/SHARP-KP-PLAN.md`](docs/SHARP-KP-PLAN.md) · [`kp-cluster-expansion-plan.md`](docs/kp-cluster-expansion-plan.md) · [`CLUSTER-CORRELATION-PLAN.md`](docs/CLUSTER-CORRELATION-PLAN.md) | The cluster-expansion campaigns (complete). |
 | [`PETER_WEYL_ROADMAP.md`](PETER_WEYL_ROADMAP.md) | The standalone Peter–Weyl formalization plan (off the critical path). |
 | [`docs/legacy/`](docs/legacy/) | Pre-cleanup era, kept as history. Nothing in it is current. |
