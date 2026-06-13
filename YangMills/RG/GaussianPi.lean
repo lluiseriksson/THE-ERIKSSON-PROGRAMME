@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.RG.GaussianMGF
+import YangMills.RG.KernelSchur
 
 /-!
 # The finite-dimensional multivariate Gaussian as an `IsGaussian` measure (gauge-RG substrate)
@@ -281,5 +282,75 @@ theorem pi_gaussian_map_exp_integral_le {ι F : Type*} [Fintype ι] [DecidableEq
   have hvar : Var[L; (Measure.pi (fun i => gaussianReal 0 (v i))).map A] ≤ B := by
     rw [pi_gaussian_map_variance v A L]; exact hB
   exact gaussian_exp_integral_le_isGaussian L hcenter hvar
+
+set_option maxHeartbeats 1000000 in
+/-- **The covariance of the transformed Gaussian is the Gram quadratic form of its
+kernel.**  For the field `μ.map A`, the variance of a dual `L` is the quadratic
+form `Var[L; μ.map A] = ∑ₓ∑ᵧ cₓ·Kₓᵧ·cᵧ` of the (Gram) covariance kernel
+`Kₓᵧ = ∑ᵢ vᵢ·(A eᵢ)ₓ·(A eᵢ)ᵧ` evaluated at the coefficient vector `cₓ = L eₓ`.
+(`set_option maxHeartbeats` raised for the triple-sum reorganization.)
+This puts the covariance into the exact shape consumed by the Schur quadratic-form
+bound `expDecay_quadratic_form_le`.  Proof: expand `L (A eᵢ) = ∑ₓ (A eᵢ)ₓ·cₓ`,
+square, and reorganize the triple sum (`Finset.sum_mul_sum`, `Finset.sum_comm`). -/
+theorem pi_gaussian_map_variance_quadratic {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (v : ι → NNReal) (A : (ι → ℝ) →L[ℝ] (ι → ℝ)) (L : StrongDual ℝ (ι → ℝ)) :
+    Var[L; (Measure.pi (fun i => gaussianReal 0 (v i))).map A]
+      = ∑ x, ∑ y, (L (Pi.single x 1))
+          * (∑ i, (v i : ℝ) * ((A (Pi.single i 1)) x * (A (Pi.single i 1)) y))
+          * (L (Pi.single y 1)) := by
+  rw [pi_gaussian_map_variance v A L]
+  have hLA : ∀ i, L (A (Pi.single i 1))
+      = ∑ x, (A (Pi.single i 1)) x * L (Pi.single x 1) := by
+    intro i
+    conv_lhs => rw [← Finset.univ_sum_single (A (Pi.single i 1)), map_sum]
+    refine Finset.sum_congr rfl (fun x _ => ?_)
+    have hsm : (Pi.single x ((A (Pi.single i 1)) x) : ι → ℝ)
+        = ((A (Pi.single i 1)) x) • (Pi.single x (1 : ℝ) : ι → ℝ) := by
+      funext j; rcases eq_or_ne j x with h | h <;> simp [Pi.single_apply, h]
+    rw [hsm, map_smul, smul_eq_mul]
+  have step : ∀ i, (L (A (Pi.single i 1))) ^ 2 * (v i : ℝ)
+      = ∑ x, ∑ y, (L (Pi.single x 1))
+          * ((v i : ℝ) * ((A (Pi.single i 1)) x * (A (Pi.single i 1)) y))
+          * (L (Pi.single y 1)) := by
+    intro i
+    rw [hLA i, sq, Finset.sum_mul_sum, Finset.sum_mul]
+    refine Finset.sum_congr rfl (fun x _ => ?_)
+    rw [Finset.sum_mul]
+    refine Finset.sum_congr rfl (fun y _ => by ring)
+  rw [Finset.sum_congr rfl (fun i _ => step i)]
+  rw [Finset.sum_comm]
+  refine Finset.sum_congr rfl (fun x _ => ?_)
+  rw [Finset.sum_comm]
+  refine Finset.sum_congr rfl (fun y _ => ?_)
+  rw [Finset.mul_sum, Finset.sum_mul]
+
+/-- **The faithful closure: an exponentially-decaying covariance kernel gives the
+Gaussian field-size bound.**  If the Gram covariance kernel
+`Kₓᵧ = ∑ᵢ vᵢ·(A eᵢ)ₓ·(A eᵢ)ᵧ` of the field `μ.map A` is exponentially decaying
+(`ExpDecay d a κ K`, symmetric metric `d`, row-sum `≤ S`), then
+`∫ exp(L z) d(μ.map A) ≤ exp(a·S·(∑ₓ (L eₓ)²)/2)`.  This is the end-to-end
+"ExpDecay covariance kernel ⟹ small-field fluctuation bound" on a genuine
+constructed Gaussian: the variance is the kernel quadratic form
+(`pi_gaussian_map_variance_quadratic`), bounded by the finite-dimensional Schur
+test (`expDecay_quadratic_form_le`, `RG/KernelSchur.lean`), feeding the field-size
+bound.  The decay constants `(a, κ, S)` are exactly those the Combes–Thomas /
+gauge-propagator analysis supplies for the Bałaban background-field covariance. -/
+theorem pi_gaussian_map_exp_integral_le_of_expDecay {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (v : ι → NNReal) (A : (ι → ℝ) →L[ℝ] (ι → ℝ)) (L : StrongDual ℝ (ι → ℝ))
+    {d : ι → ι → ℝ} {a κ S : ℝ} (ha : 0 ≤ a) (hsym : ∀ x y, d x y = d y x)
+    (hA : ExpDecay d a κ
+      (fun x y => ∑ i, (v i : ℝ) * ((A (Pi.single i 1)) x * (A (Pi.single i 1)) y)))
+    (hrow : ∀ x, ∑ y, Real.exp (-κ * d x y) ≤ S) :
+    ∫ z, Real.exp (L z) ∂((Measure.pi (fun i => gaussianReal 0 (v i))).map A)
+      ≤ Real.exp (a * S * (∑ x, (L (Pi.single x 1)) ^ 2) / 2) := by
+  refine pi_gaussian_map_exp_integral_le v A L ?_
+  calc ∑ i, (L (A (Pi.single i 1))) ^ 2 * (v i : ℝ)
+      = ∑ x, ∑ y, (L (Pi.single x 1))
+          * (∑ i, (v i : ℝ) * ((A (Pi.single i 1)) x * (A (Pi.single i 1)) y))
+          * (L (Pi.single y 1)) := by
+        rw [← pi_gaussian_map_variance v A L, pi_gaussian_map_variance_quadratic v A L]
+    _ ≤ a * S * ∑ x, (L (Pi.single x 1)) ^ 2 :=
+        le_trans (le_abs_self _)
+          (expDecay_quadratic_form_le ha hsym hA hrow (fun x => L (Pi.single x 1)))
 
 end YangMills.RG

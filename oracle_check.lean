@@ -153,6 +153,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- general (off-diagonal) covariance via the A-pushforward: variance form + field-size bound
 #print axioms YangMills.RG.pi_gaussian_map_variance
 #print axioms YangMills.RG.pi_gaussian_map_exp_integral_le
+-- the faithful closure: covariance = Gram quadratic form of its kernel, and an
+-- ExpDecay covariance kernel ⟹ Gaussian field-size bound (Schur → variance → MGF)
+#print axioms YangMills.RG.pi_gaussian_map_variance_quadratic
+#print axioms YangMills.RG.pi_gaussian_map_exp_integral_le_of_expDecay
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

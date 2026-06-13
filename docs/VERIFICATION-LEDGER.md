@@ -3271,6 +3271,43 @@ propagator-bound step) and the CMP-116 single-scale raw-activity bound — both
 carried as honest hypotheses, never axioms.  Clay distance **~0% (<0.1%),
 unchanged**.
 
+## Addendum 78 (2026-06-13, **the faithful closure: ExpDecay covariance kernel ⟹
+Gaussian field-size bound** `YangMills.RG.pi_gaussian_map_variance_quadratic` +
+`pi_gaussian_map_exp_integral_le_of_expDecay`; core 8262)
+
+**Build:** green (8262 jobs — theorems added to `RG/GaussianPi.lean`; the module
+now also imports `RG/KernelSchur.lean`).  Oracle: both
+`[propext, Classical.choice, Quot.sound]`.
+
+This is the end-to-end join of the two independent substrates built this session:
+the kernel decay / Schur test (`RG/KernelDecay.lean`, `RG/KernelSchur.lean`,
+Add. 53–71) and the constructed Gaussian field (`RG/GaussianPi.lean`,
+Add. 74–77).  *An exponentially-decaying covariance kernel now provably yields the
+small-field fluctuation bound on a genuine constructed Gaussian.*
+
+* **`pi_gaussian_map_variance_quadratic`** — the covariance of the transformed
+  field is the Gram quadratic form of its kernel:
+  `Var[L; μ.map A] = ∑ₓ∑ᵧ cₓ·Kₓᵧ·cᵧ` with `Kₓᵧ = ∑ᵢ vᵢ·(A eᵢ)ₓ·(A eᵢ)ᵧ`,
+  `cₓ = L eₓ`.  Proof: expand `L(A eᵢ) = ∑ₓ (A eᵢ)ₓ·cₓ`, square via
+  `Finset.sum_mul_sum`, reorganize the triple sum (`Finset.sum_comm`).  Puts the
+  covariance into the exact shape `expDecay_quadratic_form_le` consumes.
+
+* **`pi_gaussian_map_exp_integral_le_of_expDecay`** — the closure: if the Gram
+  covariance kernel `K` is `ExpDecay d a κ K` (symmetric metric, row-sum `≤ S`),
+  then `∫ exp(L z) d(μ.map A) ≤ exp(a·S·(∑ₓ (L eₓ)²)/2)`.  Variance = kernel
+  quadratic form (above) `≤ a·S·∑cₓ²` by the finite-dimensional Schur test
+  (`expDecay_quadratic_form_le`, Add. 69), feeding the field-size bound
+  (`pi_gaussian_map_exp_integral_le`, Add. 77).  The decay constants `(a, κ, S)`
+  are exactly those a Combes–Thomas / gauge-propagator analysis supplies.
+
+The Gaussian-fluctuation toolkit is now complete and self-joined: *ExpDecay
+covariance kernel ⟹ Schur quadratic-form bound ⟹ variance bound ⟹ field-size /
+MGF bound*, all on an explicitly constructed Gaussian measure, zero axioms.  The
+sole remaining input to instantiate it on the real Bałaban fluctuation field is
+the concrete CMP-99 gauge-covariant propagator (showing its kernel is `ExpDecay`
+with the right `κ`) and the CMP-116 single-scale raw-activity bound — carried as
+honest hypotheses, never axioms.  Clay distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
