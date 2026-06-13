@@ -1567,6 +1567,46 @@ BLOCKED on a clean scan of CMP 98 p.19–20 (request in
 ai.viXra:2602.0069, 2602.0088.  Continuum (M4) track; reduces no M4/M5
 obstruction yet; Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 25 (2026-06-12, **gauge-RG brick B2 — coarse/fine block
+maps**; + B3-full design unblocked via CMP 109; core 8241)
+
+**Build:** green (**8241 jobs**).  Oracle outputs (verbatim,
+`YangMills/RG/BlockMaps.lean`; all axiom sets ⊆ the standard three):
+
+```
+'YangMills.RG.blockBasepoint'             [propext]
+'YangMills.RG.blockSite_blockBasepoint'   [propext, Classical.choice, Quot.sound]
+'YangMills.RG.iterShift_apply_self'       [propext, Quot.sound]
+'YangMills.RG.iterShift_apply_ne'         [propext, Quot.sound]
+```
+
+Two outcomes after auditing the new uploads (CMP 116, CMP 119 — new;
+1.pdf/2.pdf = CMP 122-I/II already held; `ssrn-5836022` = a third-party
+claimed Clay solution by S. Borom, set aside as unrefereed/not
+source-faithful for our constructions):
+
+1. **B3-full design UNBLOCKED.**  CMP 119 recalls the averaging by
+   reference to CMP 109 §0; **CMP 109 (1987) eqs (0.5)–(0.12)** give it
+   in clean *axiomatic* form (Bałaban states results hold "universally
+   for all averages satisfying the above properties"): a group average
+   `M({U_j})` — analytic, permutation-invariant (0.7), with
+   linearisation `log M({exp A_j}) = (1/n)ΣA_j + O(‖A‖²)` (0.8) [the tie
+   to the linear `Q` of Add. 24], group-closed (0.9), inhabited by the
+   **Federbush average** (0.10).  This replaces the OCR-garbled CMP 98
+   eq (15) blocker at the design level (recorded in
+   `docs/BALABAN-RG-PLAN.md`).
+
+2. **B2 closed** (Bałaban CMP 98 (4)–(5), CMP 109 (0.4)/(0.12)):
+   `blockBasepoint` — the lower-corner section of `blockSite`
+   (`blockSite_blockBasepoint`, the axial-gauge representative); and the
+   iterated-shift coordinate formula `iterShift_apply_self`
+   (`shiftᵏ` advances the `μ`-coordinate by `k mod M`, the arithmetic of
+   the block-translated site `x(c) = x + L·e_μ`) with `iterShift_apply_ne`
+   (other coordinates fixed).  Pure lattice geometry; reused by the
+   averaging operator.  Strategy/framing: **Lluis Eriksson**
+   (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0%
+   (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

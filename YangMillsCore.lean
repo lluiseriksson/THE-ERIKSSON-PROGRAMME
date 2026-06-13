@@ -158,5 +158,8 @@ import YangMills.KP.KPBound
 -- lattice geometry, the substrate of the block-spin renormalization group.
 -- B3-linear: the linear averaging operator Q (Bałaban CMP 95 eq (1.8)),
 -- the Gaussian/small-field limit of the gauge-covariant averaging.
+-- B2: coarse/fine block maps (block basepoint section, iterated-shift
+-- coordinate formula; Bałaban CMP 98 (4)–(5), CMP 109 (0.4)/(0.12)).
 import YangMills.RG.BlockLattice
 import YangMills.RG.LinearAveraging
+import YangMills.RG.BlockMaps
