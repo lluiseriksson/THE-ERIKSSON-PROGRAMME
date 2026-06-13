@@ -1621,6 +1621,272 @@ theorem norm_integral_pinned_term_le
 
 set_option maxHeartbeats 1600000 in
 open Classical in
+/-- **V4-1 — the pinned EXP dichotomy:** the unnormalized loop
+integral against the EXACT Wilson factor `∏_{p∈S₀}(exp z_p − 1)` over a
+pinned set `S₀` is killed below the area and bounded by
+`N_c·(e^{2δN_c}−1)^{#S₀}` above it.  Route: the shifted exp-product
+expansion (`prod_exp_sub_one_eq_tsum_prod_pow_succ` over `↥S₀`, every
+exponent `≥ 1` so the occupied set is exactly `S₀`) → `∫↔∑'` swap
+(`integral_tsum_of_bounded`) → per-multiplicity kill/bound
+(`norm_integral_exp_term_le` at the extended multiplicity) → survivor
+resummation (`tsum_prod_pow_succ_div_factorial`). -/
+theorem norm_integral_exp_pinned_term_le
+    (es : List (ConcreteEdge d N)) (δ : ℝ) (hδ0 : 0 ≤ δ)
+    (c c' : FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℂ)
+    (hc : ∀ p, ‖c p‖ ≤ δ) (hc' : ∀ p, ‖c' p‖ ≤ δ)
+    (S₀ : Finset (FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))) :
+    ‖∫ A, Matrix.trace (wilsonLine A es).val *
+        ∏ p ∈ S₀, (Complex.exp (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1)
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖
+      ≤ if chainAreaA (R := ZMod N_c) (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+            (loopChain (R := ZMod N_c) (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+          ≤ S₀.card
+        then (N_c : ℝ) * (Real.exp (2 * δ * (N_c : ℝ)) - 1) ^ S₀.card
+        else 0 := by
+  letI := FiniteLatticeGeometry.fintypeP (d := d) (N := N)
+    (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+  classical
+  have hx0 : (0 : ℝ) ≤ 2 * δ * (N_c : ℝ) :=
+    mul_nonneg (mul_nonneg (by norm_num) hδ0) (Nat.cast_nonneg _)
+  -- abbreviation: the per-plaquette exponent `z_p(A)`
+  set zA : (GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+      → FiniteLatticeGeometry.P (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℂ :=
+    fun A p => c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+      + c' p * star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) with hzA
+  -- the extension of a `↥S₀`-multiplicity to all of `P`
+  set ext : ((↥S₀) → ℕ) → FiniteLatticeGeometry.P (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) → ℕ :=
+    fun m p => if h : p ∈ S₀ then m ⟨p, h⟩ + 1 else 0 with hext
+  -- the support of an extended multiplicity is exactly S₀
+  have hsupp : ∀ m : (↥S₀) → ℕ,
+      (Finset.univ.filter (fun p => ext m p ≠ 0)) = S₀ := by
+    intro m
+    ext p
+    rw [Finset.mem_filter]
+    constructor
+    · rintro ⟨-, hne⟩
+      by_contra hp
+      exact hne (by rw [hext]; simp [hp])
+    · intro hp
+      exact ⟨Finset.mem_univ _, by rw [hext]; simp [hp]⟩
+  -- the extended full-P product equals the subtype product (off-S₀ = 1)
+  have hprodext : ∀ (m : (↥S₀) → ℕ)
+      (A : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))),
+      (∏ p, (zA A p) ^ (ext m p) / (Nat.factorial (ext m p) : ℂ))
+      = ∏ q : ↥S₀, (zA A q.1) ^ (m q + 1) / (Nat.factorial (m q + 1) : ℂ) := by
+    intro m A
+    rw [← Finset.prod_filter_mul_prod_filter_not Finset.univ (· ∈ S₀)]
+    have h2 : ∏ p ∈ Finset.univ.filter (· ∉ S₀),
+        ((zA A p) ^ (ext m p) / (Nat.factorial (ext m p) : ℂ)) = 1 := by
+      refine Finset.prod_eq_one fun p hp => ?_
+      have hpn : p ∉ S₀ := (Finset.mem_filter.mp hp).2
+      rw [hext]
+      simp [hpn]
+    rw [h2, mul_one, Finset.filter_mem_eq_inter, Finset.univ_inter]
+    rw [← Finset.prod_attach S₀ (fun p =>
+      (zA A p) ^ (ext m p) / (Nat.factorial (ext m p) : ℂ))]
+    refine Finset.prod_congr rfl fun q _ => ?_
+    rw [hext]
+    simp [q.2]
+  -- pointwise: the pinned exp product is the shifted multiplicity tsum,
+  -- with the loop trace pulled inside
+  have hpt : (fun A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      Matrix.trace (wilsonLine A es).val *
+        ∏ p ∈ S₀, (Complex.exp (zA A p) - 1))
+      = fun A => ∑' m : (↥S₀) → ℕ,
+          Matrix.trace (wilsonLine A es).val *
+            ∏ p, (zA A p) ^ (ext m p) / (Nat.factorial (ext m p) : ℂ) := by
+    funext A
+    rw [← Finset.prod_coe_sort S₀ (fun p => Complex.exp (zA A p) - 1)]
+    rw [prod_exp_sub_one_eq_tsum_prod_pow_succ (fun q : ↥S₀ => zA A q.1)]
+    rw [← tsum_mul_left]
+    refine tsum_congr fun m => ?_
+    rw [hprodext m A]
+  -- measurability of each multiplicity term
+  have hFm : ∀ m : (↥S₀) → ℕ,
+      Measurable (fun A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+        Matrix.trace (wilsonLine A es).val *
+          ∏ p, (zA A p) ^ (ext m p) / (Nat.factorial (ext m p) : ℂ)) := by
+    intro m
+    refine (measurable_trace_wilsonLine es).mul (Finset.measurable_prod _ ?_)
+    intro p _
+    rw [hzA]
+    exact Measurable.div_const
+      ((((measurable_trace_wilsonLine _).const_mul (c p)).add
+        (((continuous_star.measurable).comp
+          (measurable_trace_wilsonLine _)).const_mul (c' p))).pow_const _) _
+  -- pointwise domination
+  have hFb : ∀ (m : (↥S₀) → ℕ)
+      (A : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))),
+      ‖Matrix.trace (wilsonLine A es).val *
+          ∏ p, (zA A p) ^ (ext m p) / (Nat.factorial (ext m p) : ℂ)‖
+      ≤ (N_c : ℝ) * ∏ p, (2 * δ * (N_c : ℝ)) ^ (ext m p)
+          / (Nat.factorial (ext m p) : ℝ) := by
+    intro m A
+    rw [norm_mul, norm_prod]
+    refine mul_le_mul (norm_trace_wilsonLine_le A es) ?_
+      (Finset.prod_nonneg fun _ _ => norm_nonneg _) (Nat.cast_nonneg _)
+    refine Finset.prod_le_prod (fun _ _ => norm_nonneg _) fun p _ => ?_
+    rw [norm_div, norm_pow, Complex.norm_natCast]
+    have hz : ‖zA A p‖ ≤ 2 * δ * (N_c : ℝ) := by
+      rw [hzA]
+      have h1 : ‖c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val‖
+          ≤ δ * (N_c : ℝ) := by
+        rw [norm_mul]
+        exact mul_le_mul (hc p) (norm_trace_wilsonLine_le A _)
+          (norm_nonneg _) hδ0
+      have h2 : ‖c' p * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)‖
+          ≤ δ * (N_c : ℝ) := by
+        rw [norm_mul, norm_star]
+        exact mul_le_mul (hc' p) (norm_trace_wilsonLine_le A _)
+          (norm_nonneg _) hδ0
+      calc _ ≤ _ + _ := norm_add_le _ _
+        _ ≤ 2 * δ * (N_c : ℝ) := by linarith
+    gcongr
+  -- the bound family is nonneg and summable
+  have hcw : ∀ m : (↥S₀) → ℕ,
+      (0 : ℝ) ≤ (N_c : ℝ) * ∏ p, (2 * δ * (N_c : ℝ)) ^ (ext m p)
+        / (Nat.factorial (ext m p) : ℝ) := fun m =>
+    mul_nonneg (Nat.cast_nonneg _) (Finset.prod_nonneg fun p _ =>
+      div_nonneg (pow_nonneg hx0 _) (Nat.cast_nonneg _))
+  have hcs : Summable (fun m : (↥S₀) → ℕ =>
+      (N_c : ℝ) * ∏ p, (2 * δ * (N_c : ℝ)) ^ (ext m p)
+        / (Nat.factorial (ext m p) : ℝ)) := by
+    refine Summable.mul_left _ ?_
+    have hrw : (fun m : (↥S₀) → ℕ =>
+        ∏ p, (2 * δ * (N_c : ℝ)) ^ (ext m p)
+          / (Nat.factorial (ext m p) : ℝ))
+        = fun m => ∏ q : ↥S₀, (2 * δ * (N_c : ℝ)) ^ (m q + 1)
+          / (Nat.factorial (m q + 1) : ℝ) := by
+      funext m
+      rw [← Finset.prod_filter_mul_prod_filter_not Finset.univ (· ∈ S₀)]
+      have h2 : ∏ p ∈ Finset.univ.filter (· ∉ S₀),
+          ((2 * δ * (N_c : ℝ)) ^ (ext m p)
+            / (Nat.factorial (ext m p) : ℝ)) = 1 := by
+        refine Finset.prod_eq_one fun p hp => ?_
+        have hpn : p ∉ S₀ := (Finset.mem_filter.mp hp).2
+        rw [hext]; simp [hpn]
+      rw [h2, mul_one, Finset.filter_mem_eq_inter, Finset.univ_inter]
+      rw [← Finset.prod_attach S₀ (fun p =>
+        (2 * δ * (N_c : ℝ)) ^ (ext m p) / (Nat.factorial (ext m p) : ℝ))]
+      refine Finset.prod_congr rfl fun q _ => ?_
+      rw [hext]; simp [q.2]
+    rw [hrw]
+    exact summable_prod_pow_succ_div_factorial (2 * δ * (N_c : ℝ)) hx0
+  -- the ∫↔∑' swap
+  have hswap : (∫ A, ∑' m : (↥S₀) → ℕ,
+        Matrix.trace (wilsonLine A es).val *
+          ∏ p, (zA A p) ^ (ext m p) / (Nat.factorial (ext m p) : ℂ)
+      ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)))
+      = ∑' m : (↥S₀) → ℕ,
+          ∫ A, Matrix.trace (wilsonLine A es).val *
+            ∏ p, (zA A p) ^ (ext m p) / (Nat.factorial (ext m p) : ℂ)
+            ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) :=
+    integral_tsum_of_bounded _ _ _ hFm hFb hcw hcs
+  rw [hpt, hswap]
+  -- per-term kill/bound
+  have hdich : ∀ m : (↥S₀) → ℕ,
+      ‖∫ A, Matrix.trace (wilsonLine A es).val *
+          ∏ p, (zA A p) ^ (ext m p) / (Nat.factorial (ext m p) : ℂ)
+          ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖
+        ≤ if chainAreaA (R := ZMod N_c) (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+              (loopChain (R := ZMod N_c) (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+            ≤ S₀.card
+          then (N_c : ℝ) * ∏ p, (2 * δ * (N_c : ℝ)) ^ (ext m p)
+                / (Nat.factorial (ext m p) : ℝ)
+          else 0 := by
+    intro m
+    have h := norm_integral_exp_term_le es δ hδ0 c c' hc hc' (ext m)
+    rw [hsupp m] at h
+    exact h
+  -- summability of the dichotomy bound
+  have hite : Summable (fun m : (↥S₀) → ℕ =>
+      if chainAreaA (R := ZMod N_c) (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+            (loopChain (R := ZMod N_c) (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+          ≤ S₀.card
+        then (N_c : ℝ) * ∏ p, (2 * δ * (N_c : ℝ)) ^ (ext m p)
+              / (Nat.factorial (ext m p) : ℝ)
+        else 0) := by
+    refine Summable.of_nonneg_of_le (fun m => ?_) (fun m => ?_) hcs
+    · split_ifs
+      · exact hcw m
+      · exact le_rfl
+    · split_ifs
+      · exact le_rfl
+      · exact hcw m
+  have hnorms : Summable (fun m : (↥S₀) → ℕ =>
+      ‖∫ A, Matrix.trace (wilsonLine A es).val *
+          ∏ p, (zA A p) ^ (ext m p) / (Nat.factorial (ext m p) : ℂ)
+          ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖) :=
+    Summable.of_nonneg_of_le (fun m => norm_nonneg _) hdich hite
+  refine le_trans (norm_tsum_le_tsum_norm hnorms) ?_
+  refine le_trans (hnorms.tsum_le_tsum hdich hite) ?_
+  by_cases hA : chainAreaA (R := ZMod N_c) (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+      (loopChain (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+      ≤ S₀.card
+  · rw [if_pos hA]
+    -- resum the survivors
+    have hfac : (fun m : (↥S₀) → ℕ =>
+        if chainAreaA (R := ZMod N_c) (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+              (loopChain (R := ZMod N_c) (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+            ≤ S₀.card
+          then (N_c : ℝ) * ∏ p, (2 * δ * (N_c : ℝ)) ^ (ext m p)
+                / (Nat.factorial (ext m p) : ℝ)
+          else 0)
+        = fun m => (N_c : ℝ) * ∏ q : ↥S₀,
+            (2 * δ * (N_c : ℝ)) ^ (m q + 1)
+              / (Nat.factorial (m q + 1) : ℝ) := by
+      funext m
+      rw [if_pos hA]
+      congr 1
+      rw [← Finset.prod_filter_mul_prod_filter_not Finset.univ (· ∈ S₀)]
+      have h2 : ∏ p ∈ Finset.univ.filter (· ∉ S₀),
+          ((2 * δ * (N_c : ℝ)) ^ (ext m p)
+            / (Nat.factorial (ext m p) : ℝ)) = 1 := by
+        refine Finset.prod_eq_one fun p hp => ?_
+        have hpn : p ∉ S₀ := (Finset.mem_filter.mp hp).2
+        rw [hext]; simp [hpn]
+      rw [h2, mul_one, Finset.filter_mem_eq_inter, Finset.univ_inter]
+      rw [← Finset.prod_attach S₀ (fun p =>
+        (2 * δ * (N_c : ℝ)) ^ (ext m p) / (Nat.factorial (ext m p) : ℝ))]
+      refine Finset.prod_congr rfl fun q _ => ?_
+      rw [hext]; simp [q.2]
+    rw [hfac, tsum_mul_left, tsum_prod_pow_succ_div_factorial _ hx0]
+    rw [Fintype.card_coe]
+  · rw [if_neg hA]
+    refine le_of_eq ?_
+    rw [tsum_congr fun m => if_neg hA, tsum_zero]
+
+set_option maxHeartbeats 1600000 in
+open Classical in
 /-- **V2-3a — the pinned numerator bound:** the unnormalized loop
 expectation is bounded by the pinned sum of dichotomy weights times
 the norms of the far partition functions — the kill removes every

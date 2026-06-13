@@ -1237,6 +1237,49 @@ V4-1: the ∫↔∑' swap over the pinned product (`integral_tsum_of_bounded`)
 (banked `tsum_shifted_prod_pow_div_factorial`); then V4-2.
 All M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 18b (2026-06-12, **V4-1 CLOSED — the pinned EXP
+dichotomy** `norm_integral_exp_pinned_term_le`)
+
+**Build:** green (8238 jobs).  Oracle outputs (verbatim,
+`ExpActivityExpansion.lean` + `WilsonLoopMonomial.lean`):
+
+```
+'YangMills.summable_prod_pow_succ_div_factorial'  [propext, Classical.choice, Quot.sound]
+'YangMills.norm_integral_exp_pinned_term_le'      [propext, Classical.choice, Quot.sound]
+```
+
+The exp analog of `norm_integral_pinned_term_le` — the single piece
+the (otherwise activity-agnostic) VU pipeline needs to lift to the
+exact Wilson factor:
+
+    ‖∫ tr(W_C)·∏_{p∈S₀}(exp z_p − 1)‖
+      ≤ ite(Area ≤ #S₀)(N_c·(e^{2δN_c}−1)^{#S₀})(0)
+
+— the N-ality KILL below the area, the geometric `(e^{2δN_c}−1)^{#S₀}`
+survivor bound above it.  Route (mirrors `finite_volume_area_law_exp`
+but pinned to `S₀` over the subtype `↥S₀`): the shifted exp-product
+expansion `prod_exp_sub_one_eq_tsum_prod_pow_succ` (every exponent
+`m_q+1 ≥ 1`) → `Finset.prod_coe_sort` to cross the `S₀`↔`↥S₀` seam →
+the `∫↔∑'` swap `integral_tsum_of_bounded` (dominated by
+`summable_prod_pow_succ_div_factorial`) → per-multiplicity
+`norm_integral_exp_term_le` at the EXTENDED multiplicity
+`ext m p = if p∈S₀ then m⟨p⟩+1 else 0` (whose support is EXACTLY `S₀`,
+so the kill condition `Area ≤ #supp` becomes the uniform `Area ≤ #S₀`)
+→ survivor resummation `tsum_prod_pow_succ_div_factorial`
+(`= (e^{2δN_c}−1)^{card ↥S₀}`, `Fintype.card_coe`).  Supporting engine
+lemmas (Addendum 18a + here): `tsum_pow_succ_div_factorial_succ`,
+`prod_exp_sub_one_eq_tsum_prod_pow_succ`,
+`tsum_prod_pow_succ_div_factorial`, `summable_prod_pow_succ_div_factorial`.
+House notes: the full-P↔subtype multiplicity bridge is
+`prod_filter_mul_prod_filter_not (·∈S₀)` + `prod_attach` + `simp [q.2]`
+(off-S₀ factors are `z^0/0! = 1`); the zero-area branch collapses via
+`tsum_congr (fun m => if_neg hA)` + `tsum_zero`.  REMAINING: V4-2 — the
+headline re-composition (the exp analogs of
+`norm_normalized_wilson_loop_le_pinned_sum` and
+`normalized_wilson_loop_area_law`, reusing the generic V0/V1 machinery
+with the V4-0 interface and this dichotomy).
+All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

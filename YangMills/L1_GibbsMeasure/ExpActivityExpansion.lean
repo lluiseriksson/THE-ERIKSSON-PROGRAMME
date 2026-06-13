@@ -296,6 +296,22 @@ theorem tsum_prod_pow_succ_div_factorial {ι : Type*} [Fintype ι]
   rw [Finset.prod_congr rfl fun i _ => tsum_pow_div_factorial_succ x]
   rw [Finset.prod_const, Finset.card_univ]
 
+/-- Summability of the shifted multiplicity weights — the dominating
+family for the pinned exp dichotomy's `∫↔∑'` swap. -/
+theorem summable_prod_pow_succ_div_factorial {ι : Type*} [Fintype ι]
+    (x : ℝ) (hx : 0 ≤ x) :
+    Summable fun m : ι → ℕ =>
+      ∏ i, x ^ (m i + 1) / (Nat.factorial (m i + 1) : ℝ) := by
+  have hinj : Function.Injective (fun (m : ι → ℕ) i => m i + 1) := by
+    intro a b h
+    funext i
+    have := congrFun h i
+    simp only at this
+    omega
+  refine ((summable_prod_pow_div_factorial x hx).comp_injective
+    hinj).congr fun m => ?_
+  rfl
+
 set_option maxHeartbeats 1000000 in
 open Classical in
 /-- **The per-`S` constrained factorized sum** (tail lemma, T1): the
