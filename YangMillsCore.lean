@@ -189,3 +189,7 @@ import YangMills.RG.AveragingL2
 -- transformation law `Cov(μ.map Q) = Q·Cov(μ)·Qᵀ` (on Mathlib's IsGaussian),
 -- the free fixed-point half of the small-field per-scale contraction.
 import YangMills.RG.GaussianStep
+-- UV audit-gap closer: the coupling-flow bridge — the only logical step
+-- from Bałaban's faithful polymer bound `|R_k| ≤ A·g_k^{κ₀}` + coupling decay
+-- `g_k ≤ C·rᵏ` to the surrogate `|R_k| ≤ M·rᵏ` the assembly consumes.
+import YangMills.RG.CouplingFlowBridge

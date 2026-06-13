@@ -109,6 +109,14 @@ coupling-flow assumption.  This does not weaken the existing oracle-clean
 theorems (they are honest implications from their stated hypotheses) but
 it sharpens what "discharging §6.3" actually requires.
 
+**Bridge CLOSED (2026-06-12, ledger Add. 48).**  `RG/CouplingFlowBridge.coupling_flow_bridge`
+proves the faithful transfer `(g_k ≤ C·rᵏ) ∧ (|R_k| ≤ A·g_k^{κ₀}) ⟹
+|R_k| ≤ (A·C^{κ₀})·rᵏ` — oracle-clean.  So the surrogate `(UV-core)` now
+follows from Bałaban's true polymer bound plus the coupling-flow decay,
+both carried as explicit hypotheses; the open analytic content is exactly
+those two inputs (the cluster expansion / Dimock fluctuation integral,
+and the coupling RG stability), nothing hidden.
+
 This is Balaban's single-scale stability (large-field / small-field
 decomposition + the RG-step contraction).  The pre-existing
 development under `YangMills/ClayCore/` (`BalabanH1H2H3`,

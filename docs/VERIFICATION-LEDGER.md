@@ -2262,6 +2262,38 @@ polymer bound + coupling-flow assumption.  Source CMP 95/122-II, Dimock
 arXiv:1212.5562; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
 Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 48 (2026-06-12, **gauge-RG UV audit-gap closer — the
+coupling-flow bridge** `YangMills.RG.coupling_flow_bridge`; core 8249)
+
+**Build:** green (**8249 jobs** — new module `RG/CouplingFlowBridge.lean`).
+Oracle:
+`'YangMills.RG.coupling_flow_bridge' [propext, Classical.choice, Quot.sound]`.
+
+Closes the audit gap exposed in Add. 47.  For `0 < r ≤ 1`, `1 ≤ κ₀`,
+`0 ≤ A`, `0 ≤ C`, running coupling `g_k ≥ 0`:
+`(∀k, g_k ≤ C·rᵏ)` (coupling-flow decay) and `(∀k, |R_k| ≤ A·g_k^{κ₀})`
+(Bałaban's faithful polymer bound, CMP 122-II / [III] §2 2.31[III]/1.100)
+together give `∀k, |R_k| ≤ (A·C^{κ₀})·rᵏ` — the surrogate consumed by
+`Paper.uv_geometric_summation`.  Proof: `g_k^{κ₀} ≤ (C·rᵏ)^{κ₀} =
+C^{κ₀}·(rᵏ)^{κ₀} ≤ C^{κ₀}·rᵏ` (the last via `Real.rpow_le_rpow_of_exponent_ge`,
+`(rᵏ)^{κ₀} ≤ (rᵏ)^1` for `0 < rᵏ ≤ 1`, `κ₀ ≥ 1`), then `Real.rpow_le_rpow`/
+`Real.mul_rpow`.
+
+**Why this is the honest closer, not a shortcut.**  It encodes ONLY the
+logical transfer; the two analytically-hard facts are the explicit
+hypotheses `hg` (coupling-flow decay — the RG stability of the coupling)
+and `hpoly` (the polymer/cluster bound — the Dimock fluctuation integral
++ cluster-expansion-with-holes).  Neither is claimed proved.  The
+`sorry`-containing `cluster_expansion_with_holes` sketch from the
+supplied research was **deliberately not imported** (iron rule: no
+`sorry`).  So the assembly can now depend on the surrogate `|R_k| ≤ M·rᵏ`
+via a faithful, oracle-clean implication from Bałaban's true bound +
+coupling decay, with the open content sharply isolated.  Sources
+(BALABAN-SOURCE-BOUNDS.md): CMP 122-II Thm 1; Dimock arXiv:1212.5562
+§§3.8/3.13–3.14.  Strategy/framing **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
