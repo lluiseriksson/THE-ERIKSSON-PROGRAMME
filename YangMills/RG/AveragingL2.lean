@@ -84,4 +84,89 @@ theorem norm_linAvg_sq_le (L N' : ℕ) [NeZero L] [NeZero N']
     _ = ((L : ℝ) ^ d)⁻¹ * (L : ℝ) * ∑ p ∈ s, ‖g p‖ ^ 2 := by
         rw [hcard]; field_simp
 
+open scoped Classical in
+/-- **Blocks tile the fine lattice**: summing over each coarse block and
+then over coarse sites recovers the sum over all fine sites (the blocks
+are the fibers of `blockSite`). -/
+theorem sum_blockOf {M : Type*} [AddCommMonoid M] (L N' : ℕ) [NeZero L]
+    (g : FinBox d (L * N') → M) :
+    ∑ y' : FinBox d N', ∑ x ∈ blockOf L N' y', g x
+      = ∑ x : FinBox d (L * N'), g x := by
+  simp only [blockOf]
+  exact Finset.sum_fiberwise_of_maps_to (fun x _ => Finset.mem_univ _) g
+
+/-- `y ↦ shift y μ` is a bijection of the fine torus (two-sided inverse
+`shiftBack`). -/
+theorem shift_bijective (N : ℕ) [NeZero N] (μ : Fin d) :
+    Function.Bijective (fun y : FinBox d N => FinBox.shift y μ) :=
+  Function.bijective_iff_has_inverse.mpr
+    ⟨fun y => FinBox.shiftBack y μ,
+      fun y => FinBox.shiftBack_shift y μ, fun y => FinBox.shift_shiftBack y μ⟩
+
+/-- Iterated shift is a bijection (iterate of a bijection). -/
+theorem iterShift_bijective (N : ℕ) [NeZero N] (μ : Fin d) (k : ℕ) :
+    Function.Bijective ((fun y : FinBox d N => FinBox.shift y μ)^[k]) :=
+  (shift_bijective N μ).iterate k
+
+open scoped Classical in
+/-- **ℓ²(lattice) operator bound for `Q`** (UV-U1, brick S1', the genuine
+deterministic contraction): summing the per-bond Cauchy–Schwarz bound
+over all positively-oriented bonds, each fine bond is hit by exactly `L`
+of the block/line triples (blocks tile the lattice, the shift is a
+bijection), so
+`∑_bonds ‖Q A‖² ≤ (L^d)⁻¹·L² · ∑_bonds ‖A‖² = L^{2-d}·∑_bonds ‖A‖²`.
+The factor `L^{2-d}` is `< 1` for `d ≥ 3` (in particular the physical
+`d = 4`): the bare averaging operator is an **ℓ²-contraction** — the
+deterministic backbone of Bałaban's small-field RG step (before field
+rescaling and the Gaussian covariance analysis, brick S2). -/
+theorem linAvg_l2_le (L N' : ℕ) [NeZero L] [NeZero N']
+    (A : ConcreteEdge d (L * N') → V) :
+    ∑ y' : FinBox d N', ∑ μ : Fin d, ‖linAvg L N' A ⟨y', μ, true⟩‖ ^ 2
+      ≤ ((L : ℝ) ^ d)⁻¹ * (L : ℝ) ^ 2
+        * ∑ z : FinBox d (L * N'), ∑ μ : Fin d, ‖A ⟨z, μ, true⟩‖ ^ 2 := by
+  -- per-bond Cauchy–Schwarz bound (S1), as a double sum over block × line
+  have hpb : ∀ (y' : FinBox d N') (μ : Fin d),
+      ‖linAvg L N' A ⟨y', μ, true⟩‖ ^ 2
+        ≤ ((L : ℝ) ^ d)⁻¹ * L * ∑ x ∈ blockOf L N' y', ∑ k ∈ Finset.range L,
+            ‖A ⟨(fun y => FinBox.shift y μ)^[k] x, μ, true⟩‖ ^ 2 := by
+    intro y' μ
+    have h := norm_linAvg_sq_le L N' A ⟨y', μ, true⟩
+    rwa [Finset.sum_product] at h
+  -- reindex the inner double sum to all fine bonds: each fine bond is hit L times
+  have hreindex : ∀ μ : Fin d,
+      ∑ x : FinBox d (L * N'), ∑ k ∈ Finset.range L,
+          ‖A ⟨(fun y => FinBox.shift y μ)^[k] x, μ, true⟩‖ ^ 2
+        = (L : ℝ) * ∑ z : FinBox d (L * N'), ‖A ⟨z, μ, true⟩‖ ^ 2 := by
+    intro μ
+    rw [Finset.sum_comm]
+    have hbij : ∀ k ∈ Finset.range L,
+        ∑ x : FinBox d (L * N'),
+            ‖A ⟨(fun y => FinBox.shift y μ)^[k] x, μ, true⟩‖ ^ 2
+          = ∑ z : FinBox d (L * N'), ‖A ⟨z, μ, true⟩‖ ^ 2 := fun k _ =>
+      (iterShift_bijective (L * N') μ k).sum_comp
+        (fun z => ‖A ⟨z, μ, true⟩‖ ^ 2)
+    rw [Finset.sum_congr rfl hbij, Finset.sum_const, Finset.card_range,
+      nsmul_eq_mul]
+  calc ∑ y' : FinBox d N', ∑ μ : Fin d, ‖linAvg L N' A ⟨y', μ, true⟩‖ ^ 2
+      ≤ ∑ y' : FinBox d N', ∑ μ : Fin d, ((L : ℝ) ^ d)⁻¹ * L
+          * ∑ x ∈ blockOf L N' y', ∑ k ∈ Finset.range L,
+              ‖A ⟨(fun y => FinBox.shift y μ)^[k] x, μ, true⟩‖ ^ 2 := by
+        gcongr with y' _ μ _
+        exact hpb y' μ
+    _ = ((L : ℝ) ^ d)⁻¹ * L * ∑ μ : Fin d, ∑ x : FinBox d (L * N'),
+          ∑ k ∈ Finset.range L,
+            ‖A ⟨(fun y => FinBox.shift y μ)^[k] x, μ, true⟩‖ ^ 2 := by
+        simp only [← Finset.mul_sum]
+        rw [Finset.sum_comm]
+        congr 1
+        refine Finset.sum_congr rfl fun μ _ => ?_
+        exact sum_blockOf L N' _
+    _ = ((L : ℝ) ^ d)⁻¹ * L
+          * ∑ μ : Fin d, (L : ℝ) * ∑ z : FinBox d (L * N'), ‖A ⟨z, μ, true⟩‖ ^ 2 := by
+        rw [Finset.sum_congr rfl fun μ _ => hreindex μ]
+    _ = ((L : ℝ) ^ d)⁻¹ * (L : ℝ) ^ 2
+          * ∑ z : FinBox d (L * N'), ∑ μ : Fin d, ‖A ⟨z, μ, true⟩‖ ^ 2 := by
+        rw [← Finset.mul_sum, Finset.sum_comm]
+        ring
+
 end YangMills.RG

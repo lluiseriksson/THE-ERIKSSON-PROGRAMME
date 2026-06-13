@@ -2114,6 +2114,42 @@ renormalized Gaussian measure (not in Mathlib).  Source CMP 95; strategy
 **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay
 distance ~0% (<0.1%), unchanged.
 
+## Addendum 43 (2026-06-12, **gauge-RG UV-U1 brick S1′ — the ℓ²(lattice)
+operator contraction of `Q`** `YangMills.RG.linAvg_l2_le`; core 8247)
+
+**Build:** green (8247 jobs).  Oracle (verbatim):
+
+```
+'YangMills.RG.linAvg_l2_le'  [propext, Classical.choice, Quot.sound]
+'YangMills.RG.sum_blockOf'   [propext, Classical.choice, Quot.sound]
+```
+
+`∑_{y',μ} ‖linAvg A ⟨y',μ,+⟩‖² ≤ (L^d)⁻¹·L² · ∑_{z,μ} ‖A⟨z,μ,+⟩‖²`, i.e.
+`∑_bonds ‖Q A‖² ≤ L^{2-d}·∑_bonds ‖A‖²`.  **This corrects and completes
+the S1 audit (Add. 42):** while the *per-bond* Cauchy–Schwarz bound is
+not a contraction (the line sum grows by `L`), the *ℓ²-summed* bound IS
+— the factor is `L^{2-d}`, which is `< 1` for `d ≥ 3` (the physical
+`d = 4` gives `L^{-2}`).  The bare averaging operator is a genuine
+**ℓ²-contraction**, the deterministic backbone of Bałaban's small-field
+RG step.
+
+Mechanism (and why the exponent is `2-d` not `1-d`): summing the
+per-bond bound (Add. 42, factor `L^{1-d}`) over all bonds, each fine
+bond `⟨z,μ,+⟩` is hit by **exactly `L`** of the block/line triples — the
+blocks tile the lattice (`sum_blockOf`, the fibers of `blockSite`) and
+for each line offset `k` the shift `(shift μ)^[k]` is a bijection
+(`shift_bijective`/`iterShift_bijective`, two-sided inverse
+`shiftBack`).  So the multiplicity is `L`, giving `L^{1-d}·L = L^{2-d}`.
+Proof: `Finset.sum_fiberwise_of_maps_to` (partition),
+`Function.Bijective.sum_comp` (reindex per `k`), `Finset.sum_const`
+(the `L` copies).
+
+This is the genuine, certified deterministic contraction of brick S1′;
+the remaining **S2** (the rescaled version against the renormalized
+Gaussian covariance, Bałaban CMP 95–96) is the months-scale analytic
+core.  Source CMP 95; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
+Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
