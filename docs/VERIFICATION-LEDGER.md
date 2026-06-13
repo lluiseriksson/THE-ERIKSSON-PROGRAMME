@@ -1172,6 +1172,43 @@ hypothesis families** — every remaining hypothesis is an explicit,
 jointly satisfiable smallness/geometry condition (the 17t witness).
 All M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 18 (2026-06-12, **V4 OPENING — the exact-Wilson-factor
+activity interface** for the volume-uniform area law)
+
+**Build:** green (8238 jobs).  Oracle outputs (verbatim,
+`RestrictedGate.lean`):
+
+```
+'YangMills.isLocalWeight_expReActivity'  [propext, Classical.choice, Quot.sound]
+'YangMills.measurable_expReActivity'     [propext, Classical.choice, Quot.sound]
+'YangMills.expReActivity_bound'          [propext, Classical.choice, Quot.sound]
+'YangMills.exp_conjPair_eq_cast'         [propext, Classical.choice, Quot.sound]
+```
+
+**V4** (`docs/AREA-LAW-VU-PLAN.md`) lifts the volume-uniform area law
+from the linearized factor `∏(1+f_p)` to the TRUE Wilson Boltzmann
+factor `∏ exp(z_p)`.  Key observation: at the conjugate pair
+`c' = conj c` the exponent `z_p = 2·Re(c_p · tr H_p)` is REAL, so
+`exp(z_p) = 1 + (exp(z_p) − 1)` is the linearized form with the real
+activity `expReActivity := exp(2 Re(c · tr H)) − 1`.  The generic VU
+pipeline (loop-tagged expansion + restricted `Z` cancellation) is
+agnostic to the activity; only the per-pinned dichotomy must be
+re-derived.  This addendum closes the activity interface (V4-0):
+`isLocalWeight_expReActivity` (locality, via the banked reActivity
+locality after a beta-reducing ascription — house note: an
+`IsLocalWeight` result applied at `p A A'` is a beta-redex `rw` won't
+see; ascribe the reduced equality to a `have`),
+`measurable_expReActivity` (`Real.measurable_exp.comp` the banked
+measurable reActivity), `expReActivity_bound`
+(`|exp w − 1| ≤ exp(2δN_c) − 1` for `|w| ≤ 2δN_c`, by the elementary
+AM–GM `2 ≤ e^B + e^{−B}`), and `exp_conjPair_eq_cast` (the ℂ factor
+`exp(z_p)` IS the cast of the real `1 + expReActivity`, via
+`Complex.add_conj` + `Complex.ofReal_exp`).  REMAINING: V4-1 (the
+pinned-set exp dichotomy — the N-ality kill for `∏_{S₀}(exp z − 1)`,
+reusing the banked `tsum_shifted_prod_pow_div_factorial` +
+`norm_integral_exp_term_le`) and V4-2 (re-compose the headline).
+All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

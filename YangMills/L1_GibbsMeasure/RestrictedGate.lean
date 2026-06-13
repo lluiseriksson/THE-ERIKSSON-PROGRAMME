@@ -1382,4 +1382,126 @@ theorem normalized_wilson_loop_area_law_unconditional
     (fun S => integrable_trace_mul_conjPair_prod N_c es c c' S)
     (fun S => integrable_conjPair_prod N_c c c' S)
 
+/-! ## V4 opening: the exact Wilson factor `∏ exp(z_p)`
+
+`docs/AREA-LAW-VU-PLAN.md` V4.  At the conjugate pair `c' = conj c`
+the Wilson Boltzmann exponent is REAL,
+`z_p(A) = 2·Re(c_p · tr H_p)`, so the exact factor
+`exp(z_p) = 1 + (exp(z_p) − 1)` is the linearized form with the REAL,
+bounded, local activity `expReActivity := exp(2 Re(c·tr H)) − 1`.  The
+generic VU pipeline (loop-tagged expansion + restricted `Z`
+cancellation) consumes exactly the interface below; only the per-pinned
+dichotomy must be re-derived (the exp version of the N-ality kill,
+V4-1). -/
+
+/-- The **exact (exponential) Wilson activity** at the conjugate pair:
+`exp(z_p) − 1` with the real exponent `z_p = 2·Re(c_p · tr H_p)`. -/
+noncomputable def expReActivity (N_c : ℕ)
+    (c : ConcretePlaquette d N → ℂ) :
+    GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) →
+      ConcretePlaquette d N → ℝ :=
+  fun A p => Real.exp ((2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+    (plaquetteList (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re) - 1
+
+open Classical in
+/-- **(V4-0 i) The exact Wilson activity is a local weight.** -/
+theorem isLocalWeight_expReActivity (N_c : ℕ) [NeZero N_c]
+    (c : ConcretePlaquette d N → ℂ) :
+    IsLocalWeight (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+      (expReActivity N_c c) := by
+  intro p A A' h
+  have hre : (2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re
+    = (2 : ℝ) * (c p * Matrix.trace (wilsonLine A'
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re :=
+    isLocalWeight_reActivity (d := d) (N := N) N_c c p A A' h
+  show Real.exp ((2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re) - 1
+    = Real.exp ((2 : ℝ) * (c p * Matrix.trace (wilsonLine A'
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re) - 1
+  rw [hre]
+
+open Classical in
+/-- **(V4-0 ii) The exact Wilson activity is measurable.** -/
+theorem measurable_expReActivity (N_c : ℕ) [NeZero N_c]
+    (c : ConcretePlaquette d N → ℂ) :
+    ∀ p : ConcretePlaquette d N,
+      Measurable (fun A : GaugeConfig d N
+        (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+        expReActivity N_c c A p) :=
+  fun p => (Real.measurable_exp.comp
+    (measurable_reActivity (d := d) (N := N) N_c c p)).sub measurable_const
+
+open Classical in
+/-- **(V4-0 iii) The exact Wilson activity is uniformly bounded** by
+`exp(2δN_c) − 1` — by the elementary `|e^w − 1| ≤ e^B − 1` for
+`|w| ≤ B` (AM–GM: `2 ≤ e^B + e^{−B}`). -/
+theorem expReActivity_bound (N_c : ℕ) [NeZero N_c]
+    {δ : ℝ} (c : ConcretePlaquette d N → ℂ) (hc : ∀ p, ‖c p‖ ≤ δ) :
+    ∀ (A : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+      (p : ConcretePlaquette d N),
+      |expReActivity N_c c A p| ≤ Real.exp (2 * δ * (N_c : ℝ)) - 1 := by
+  intro A p
+  set w : ℝ := (2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+    (plaquetteList (d := d) (N := N)
+      (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re with hw
+  set B : ℝ := 2 * δ * (N_c : ℝ) with hB
+  have hwB : |w| ≤ B := reActivity_bound (d := d) (N := N) N_c c hc A p
+  have hB0 : 0 ≤ B := le_trans (abs_nonneg _) hwB
+  show |Real.exp w - 1| ≤ Real.exp B - 1
+  rw [abs_le]
+  have hwle : w ≤ B := le_trans (le_abs_self _) hwB
+  have hnwle : -B ≤ w := neg_le_of_abs_le hwB
+  constructor
+  · -- lower: e^w - 1 ≥ -(e^B - 1), i.e. e^w + e^B ≥ 2... use e^w ≥ e^{-B} ≥ 2 - e^B
+    have h1 : Real.exp (-B) ≤ Real.exp w := Real.exp_le_exp.mpr hnwle
+    have h2 : (2 : ℝ) ≤ Real.exp B + Real.exp (-B) := by
+      have := Real.add_one_le_exp B
+      have hneg := Real.add_one_le_exp (-B)
+      linarith
+    have h3 : Real.exp (-B) = 1 / Real.exp B := by
+      rw [Real.exp_neg]; ring
+    linarith
+  · -- upper: e^w - 1 ≤ e^B - 1
+    have h1 : Real.exp w ≤ Real.exp B := Real.exp_le_exp.mpr hwle
+    linarith
+
+open Classical in
+/-- **(V4-0 iv) The exact factor is the cast of `1 + expReActivity`.**
+At the conjugate pair the ℂ Wilson factor `exp(z_p)` equals the cast of
+the real `1 + (exp(z_p) − 1) = exp(z_p)`. -/
+theorem exp_conjPair_eq_cast (N_c : ℕ) [NeZero N_c]
+    (c : ConcretePlaquette d N → ℂ)
+    (A : GaugeConfig d N (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)))
+    (p : ConcretePlaquette d N) :
+    Complex.exp (c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+      + (starRingEnd ℂ) (c p) * star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+      = ((1 + expReActivity N_c c A p : ℝ) : ℂ) := by
+  have hstar : (starRingEnd ℂ) (c p) * star (Matrix.trace (wilsonLine A
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)
+      = (starRingEnd ℂ) (c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val) := by
+    rw [map_mul]; rfl
+  rw [hstar, Complex.add_conj, expReActivity]
+  rw [show (1 : ℝ) + (Real.exp ((2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re) - 1)
+    = Real.exp ((2 : ℝ) * (c p * Matrix.trace (wilsonLine A
+      (plaquetteList (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val).re)
+    from by ring]
+  rw [Complex.ofReal_exp]
+
 end YangMills
