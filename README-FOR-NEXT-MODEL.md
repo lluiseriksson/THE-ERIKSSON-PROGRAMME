@@ -301,7 +301,13 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   TRUE Wilson Boltzmann factor, NO integrability hypothesis families
   — built by mirroring the linearized headline with the single
   substitution `2δN_c → e^{2δN_c}−1` (the V0/V1 machinery is
-  activity-agnostic).  Next
+  activity-agnostic).  **The area-law programme is now COMPLETE in
+  all four forms** (finite-volume linearized/exact, volume-uniform
+  linearized/exact).  The sole carried hypothesis of the M3 lattice
+  mass gap is the §6.3 Balaban UV single-scale bound; a clean-core
+  discharge is scoped with a brick ladder (U0–U4) in
+  `docs/UV-SINGLE-SCALE-PLAN.md` — recommended next campaign, start at
+  U0.  Next
   frontiers:
   Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
   single-scale UV estimate (class-C, outside the current plan).
