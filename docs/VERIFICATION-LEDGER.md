@@ -2227,6 +2227,41 @@ is reusable and instantiates at `linAvgCLM`.  The interacting correction
 strategy **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track;
 Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 47 (2026-06-12, **gauge-RG UV-S2 brick G4 — free covariance
+contraction + Bałaban source-bound audit**
+`YangMills.RG.covarianceBilinDual_map_le`; core 8248)
+
+**Build:** green (8248 jobs).  Oracle:
+`'YangMills.RG.covarianceBilinDual_map_le' [propext, Classical.choice, Quot.sound]`.
+
+`covarianceBilinDual (μ.map Q) L L ≤ B·‖Q‖²·‖L‖²` given a covariance
+bound `∀ M, covarianceBilinDual μ M M ≤ B·‖M‖²` (`0 ≤ B`).  The
+operator-norm form of the free RG step `C ↦ Q C Qᵀ`: the pushed-forward
+covariance contracts by `‖Q‖²`.  Hypothesis `B` is exactly the Bałaban
+fluctuation-covariance bound `‖C_k‖ ≤ c·L²` (CMP 95 Prop 1.1/1.2); with
+the deterministic `‖Q‖² ≤ L^{2-d}` (`linAvg_l2_le`, Add. 43) at
+`Q = linAvgCLM` this is the per-scale **free** covariance contraction
+(S2 brick G4).  Proof: transformation law (`covarianceBilinDual_map_clm`,
+Add. 46) + `‖L∘Q‖ ≤ ‖L‖‖Q‖`.  Stated with the covariance bound as an
+explicit hypothesis (not `‖covarianceBilinDual μ‖`, whose bilinear
+opNorm instance did not synthesise), which is also the faithful CMP 95
+input shape.
+
+**Source audit (this addendum's second half).**  The user supplied the
+requested Bałaban/Dimock material; faithful transcriptions are recorded
+in **`docs/BALABAN-SOURCE-BOUNDS.md`** with citations: CMP 95 covariance
+bound (`‖∇^r C_k ∇^{*s}‖ ≤ c L^{2-r-s}`, eqs 1.89/1.114); CMP 122-II
+Theorem 1 polymer bounds (2.31[III] `g_j^{κ₀}e^{−κd}`, 1.100
+`e^{−p₀(g_k)}e^{−κd}`); Dimock II fluctuation-integral architecture.
+**Honesty correction:** Bałaban does NOT state `|R_k| ≤ M·rᵏ` — that is a
+simplified surrogate valid only under an extra coupling-flow assumption
+(`g_k^{κ₀} ≤ C·rᵏ`).  `docs/UV-SINGLE-SCALE-PLAN.md` §3 now records this
+caveat; the existing U0 theorems remain honest implications from their
+stated (surrogate) hypothesis, but the true §6.3 obligation is the
+polymer bound + coupling-flow assumption.  Source CMP 95/122-II, Dimock
+arXiv:1212.5562; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
+Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

@@ -94,6 +94,21 @@ The open obligation reduces to **one** per-scale estimate:
 > **(UV-core)**  `∀ k, |R_k| ≤ M·r^k` — the renormalized single-scale
 > error contracts geometrically across RG scales.
 
+**HONESTY CAVEAT (2026-06-12, source audit — see
+`docs/BALABAN-SOURCE-BOUNDS.md` §2).**  The scalar `|R_k| ≤ M·r^k` is a
+**simplified surrogate**, NOT Bałaban's literal bound.  Bałaban CMP 122-II
+Theorem 1 / [III] §2 give the *polymer-localized* bounds
+`|R^{(j)}(X,…)| ≤ g_j^{κ₀}·e^{−κ d_j(X)}` (2.31[III]) and
+`|R'^{(k)}(X,…)| ≤ e^{−p₀(g_k)}·e^{−κ d_k(X)}` (1.100).  The `M·r^k` form
+follows ONLY under an additional coupling-flow assumption
+(`g_k^{κ₀} ≤ C·r^k` or `e^{−p₀(g_k)} ≤ C·r^k`).  Thus
+`uv_geometric_summation` / `lattice_mass_gap_of_per_scale_uv` (U0) consume
+a hypothesis that is *weaker/simpler* than the true Bałaban statement;
+the faithful carried obligation is the polymer bound PLUS the
+coupling-flow assumption.  This does not weaken the existing oracle-clean
+theorems (they are honest implications from their stated hypotheses) but
+it sharpens what "discharging §6.3" actually requires.
+
 This is Balaban's single-scale stability (large-field / small-field
 decomposition + the RG-step contraction).  The pre-existing
 development under `YangMills/ClayCore/` (`BalabanH1H2H3`,

@@ -59,4 +59,28 @@ theorem covarianceBilinDual_map_clm (μ : Measure E) [IsGaussian μ]
     variance_map (by fun_prop) (by fun_prop)]
   rfl
 
+/-- **Free covariance contraction by `‖Q‖²`** (UV-S2, brick G4): if the
+Gaussian `μ` has a covariance bound `Cov(μ)[M,M] ≤ B·‖M‖²` (the input
+form of the Bałaban fluctuation-covariance bound `‖C_k‖ ≤ c·L²`, CMP 95
+Prop 1.1/1.2 — see `docs/BALABAN-SOURCE-BOUNDS.md`), then the
+pushed-forward covariance contracts by `‖Q‖²`,
+`Cov(μ.map Q)[L,L] ≤ B·‖Q‖²·‖L‖²`.  This is the operator-norm form of the
+free renormalization-group step `C ↦ Q C Qᵀ`: with the deterministic
+operator bound `linAvg_l2_le` (giving `‖Q‖² ≤ L^{2-d}` at `Q = linAvgCLM`)
+it yields the per-scale **free** covariance contraction.  From the
+transformation law (`covarianceBilinDual_map_clm`) and
+`‖L∘Q‖ ≤ ‖L‖·‖Q‖`. -/
+theorem covarianceBilinDual_map_le (μ : Measure E) [IsGaussian μ]
+    (Q : E →L[ℝ] F) {B : ℝ} (hB0 : 0 ≤ B)
+    (hB : ∀ M : StrongDual ℝ E, covarianceBilinDual μ M M ≤ B * ‖M‖ ^ 2)
+    (L : StrongDual ℝ F) :
+    covarianceBilinDual (μ.map Q) L L ≤ B * ‖Q‖ ^ 2 * ‖L‖ ^ 2 := by
+  rw [covarianceBilinDual_map_clm]
+  have hcomp : ‖L.comp Q‖ ≤ ‖L‖ * ‖Q‖ := ContinuousLinearMap.opNorm_comp_le L Q
+  calc covarianceBilinDual μ (L.comp Q) (L.comp Q)
+      ≤ B * ‖L.comp Q‖ ^ 2 := hB (L.comp Q)
+    _ ≤ B * (‖L‖ * ‖Q‖) ^ 2 :=
+        mul_le_mul_of_nonneg_left (pow_le_pow_left₀ (norm_nonneg _) hcomp 2) hB0
+    _ = B * ‖Q‖ ^ 2 * ‖L‖ ^ 2 := by ring
+
 end YangMills.RG
