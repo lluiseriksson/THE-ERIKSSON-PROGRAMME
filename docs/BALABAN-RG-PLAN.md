@@ -94,8 +94,21 @@ field.  Blocking with block size `L` requires the fine torus side to be
 | **B4-Ū (full)** | Instantiate `UbarBlock_conj` on the concrete lattice `Ū` built from the realized contour variables. | CMP 98 (11) | `Ubar_gaugeAct`. | open (needs concrete lattice `Ū` def) |
 | **B5-linear** | **Locality of `Q`.** `linAvg A c` reads only the fine bonds `⟨shiftᵏ x, c.dir, +⟩` (`x ∈` block of `c`, `k<L`). | CMP 95 (1.8), CMP 116 | `fineLineSum_congr`, `linAvg_congr`. | **CLOSED** (ledger Add. 29, core 8243) |
 | **B5-full** | **Locality of `Ū`.** `Ū U` on a coarse bond reads only fine links in the adjacent blocks. | CMP 98 §A–B | `avg_local`. | open (needs `Ū`, B3-full analytic) |
-| **B6** | **Norm / small-field stability.** `log avg(e^{iA}) = (linear average of A) + O(‖A‖²)`; the per-step renormalized-error bound `|R_k| ≤ M r^k`. | CMP 98 (14); 109 (small field); 122 (large field) | the bound feeding `(UV-core)` of `UV-SINGLE-SCALE-PLAN.md`. | open (needs B3–B5) |
-| **B7** | **Connection to the assembly.** B6's per-scale bound is exactly the `hRsc` hypothesis of `lattice_mass_gap_of_per_scale_uv`; instantiating it discharges §6.3 and yields the continuum-uniform gap. | Eriksson [63] §6.3; UV-plan U0/U3/U4 | feed `hRsc` ⟹ `∃ gap, …` | open (needs B6) |
+| **B6 (small-field stability)** | `exp(nearLog Y) = 1 + Y + O(‖Y‖²)` and `‖exp(nearLog Y) − 1‖ ≤ ‖Y‖ + O(‖Y‖²)` — the small-field region is preserved by the RG step. | CMP 98 (14); 109 small field | `norm_exp_nearLog_sub_one_sub_self_le` (= M-log-5), `norm_exp_nearLog_sub_one_le`. | **CLOSED** (ledger Add. 39, 41) |
+| **S1 / S1′ — ℓ² contraction of `Q`** | per-bond Cauchy–Schwarz bound; ℓ²(lattice) operator contraction `∑‖QA‖² ≤ L^{2−d}∑‖A‖²` (a contraction for `d ≥ 4`), explicit ratio `≤ L⁻¹`. | CMP 95 | `norm_linAvg_sq_le`, `sum_blockOf`, `shift_bijective`, `linAvg_l2_le`, `linAvg_l2_contraction`. | **CLOSED** (ledger Add. 42–44) |
+| **G1–G4 — free Gaussian RG step** | `Q` as a CLM (`linAvgCLM`); the free RG step pushes Gaussian→Gaussian with covariance transformation `Cov(μ.map Q)=Q·Cov(μ)·Qᵀ` and contraction `Cov ≤ ‖Q‖²·Cov`. | Mathlib `IsGaussian`/`isGaussian_map`; CMP 95–96 | `linAvgCLM`, `covarianceBilinDual_map_clm`, `covarianceBilinDual_map_le`. | **CLOSED** (ledger Add. 45–47); `docs/UV-S2-GAUSSIAN-PLAN.md` (G5 = the interacting `hRpoly`, open) |
+| **Coupling flow `hg`** | the bridge `(g_k ≤ C·rᵏ) ∧ (|R_k| ≤ A·g_k^{κ₀}) ⟹ |R_k| ≤ M·rᵏ`; geometric decay from the irrelevant logistic recursion; **asymptotic freedom** (4D marginal coupling is logarithmic). | CMP 122-II; Faria da Veiga–O'Carroll 2024 | `coupling_flow_bridge`, `logistic_geometric_decay`, `remainder_geometric_of_logistic`, `inv_coupling_linear_growth`. | **CLOSED** (ledger Add. 48–49, 54) |
+| **Polymer remainder + summability** | `|∑ H_k(Y)| ≤ amp·K₀`; the KP/Appendix-F geometric summability core; `hwK` **reduced to the animal count** `c_n ≤ Cⁿ`. | Dimock I/II/III, Kotecký–Preiss | `polymer_remainder_bound`, `geometric_size_summability`, `polymer_weight_summability`. | **CLOSED** (ledger Add. 50–51, 53) |
+| **B7 = end-to-end UV conditional** | **(cluster activity bound `hRpoly` + β-function recursion + IR bound + covariance scale-sum) ⟹ the lattice mass gap.** Coupling discharged from the recursion; certified **non-vacuous**. | CMP 122-II; Dimock; Eriksson §6.3 | `lattice_mass_gap_of_cluster_and_coupling`, `lattice_mass_gap_of_cluster_and_logistic_coupling`, `lattice_mass_gap_uv_conditional_nonvacuous`. | **CLOSED** (ledger Add. 52, 55–56) |
+| **`hRpoly` — the cluster expansion with holes** | the renormalized polymer **activity-decay** bound `|H_k(Y)| ≤ amp·e^{−κ₀ d_M(Y, mod Ω^c)}` (Dimock fluctuation integral + holes localization, Appendix F). The SOLE remaining genuinely-analytic input of the UV chain. | Dimock II/III (`docs/BALABAN-SOURCE-BOUNDS.md`) | (carried hypothesis `hRpoly`) | **OPEN — months-scale, no Mathlib primitives** |
+
+**Status (2026-06-12):** the §6.3 UV obligation is a single oracle-clean
+conditional (`lattice_mass_gap_of_cluster_and_coupling`) whose only
+unproved input is the cluster-expansion **activity-decay** bound `hRpoly`
+(`B7`'s carried hypothesis above).  Coupling flow, summability, and
+gauge covariance are theorems or reduced to combinatorics; the
+conditional is certified non-vacuous.  `hRpoly` is the genuine
+months-scale next campaign.
 
 ## B3-full design UNBLOCKED (2026-06-12) — the axiomatic group average (CMP 109)
 
