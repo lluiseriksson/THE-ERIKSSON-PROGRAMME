@@ -1448,6 +1448,60 @@ campaign is **blocked on this source material**; everything proved to
 date is unchanged and remains honest.  All M3 lattice-side;
 M4/M5/Clay untouched.
 
+## Addendum 22 (2026-06-12, **UNCONDITIONAL fixed-lattice exponential
+clustering** `sun_lattice_exponential_clustering`; source-material
+campaign, paper audit)
+
+**Build:** green (8238 jobs).  Oracle output (verbatim,
+`L1_GibbsMeasure/TwoPlaquetteCorrelator.lean`):
+
+```
+'YangMills.sun_lattice_exponential_clustering'  [propext, Classical.choice, Quot.sound]
+```
+
+After the user supplied the Balaban gauge series (CMP 95/96/98/99/102/
+109/116/122-I/122-II), the Dimock trilogy ("RG according to Balaban"
+I/II/III, φ⁴), and the Eriksson AQFT collection, a paper-grounded audit
+of the UV frontier produced a **decisive strategic finding**: the §6.3
+Balaban single-scale bound is needed only for the **continuum**
+(lattice-spacing → 0) limit; the **fixed-lattice** clustering is
+already UNCONDITIONAL via the banked cluster expansion.  Concretely,
+`sun_two_plaquette_correlator_bound` (no carried hypothesis, only an
+explicit smallness window certified non-empty by
+`sun_clustering_window_nonempty`) is combined here, at separation
+`k = ⌊dist/2⌋`, into:
+
+> **`sun_lattice_exponential_clustering`** — for every `d, N_c` there
+> is an explicit `β₀ > 0` such that for all `|β| ≤ β₀`, every bounded
+> measurable plaquette observable `f` (`|f| ≤ 1`), and every pair of
+> distinct plaquettes `p ≠ q`, the connected (truncated) two-plaquette
+> correlator of the genuine SU(N_c) Wilson Gibbs measure satisfies
+> `|⟨f_p f_q⟩ − ⟨f_p⟩⟨f_q⟩| ≤ C · exp(−(1/2)·dist(p,q))`, with `C`
+> depending only on `d, N_c, β` — NO carried hypothesis.
+
+In exactly the exponential-clustering sense the M3 assembly
+(`lattice_mass_gap_of_exp_clustering_uniform`) calls "the lattice mass
+gap", this is that statement, UNCONDITIONALLY, at strong coupling.
+Proof: `sun_two_plaquette_correlator_bound` at `t = ε = 1`, the
+non-empty window for all `k`, and the elementary
+`exp(−k) ≤ e^{1/2}·e^{−dist/2}` from `dist ≤ 2⌊dist/2⌋+1`.
+
+**HONEST SCOPE (no inflation).**  This is (i) FIXED lattice spacing —
+the correlation length is in lattice units; (ii) STRONG coupling
+(small `β`, the cluster-expansion/confining regime), not all `β`;
+(iii) a EUCLIDEAN correlation-decay statement — it is NOT a
+transfer-matrix/Hamiltonian spectral gap (that needs reflection
+positivity + OS), and NOT the continuum mass gap (that needs the
+lattice-spacing → 0 control the Balaban §6.3 input provides, plus
+OS/Wightman reconstruction — M4/M5, open mathematics).  The §6.3
+carried hypothesis therefore remains the sole obstruction to the
+*continuum-uniform* statement, and is correctly localized there.
+Distance to the Clay prize: **~0% (<0.1%), UNCHANGED** — this
+strengthens and clarifies the lattice side, reducing no M4/M5
+obstruction.  The Balaban/Dimock source material and the precise
+remaining targets are catalogued in `docs/UV-SHOPPING-LIST.md` and
+`docs/UV-SINGLE-SCALE-PLAN.md`.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

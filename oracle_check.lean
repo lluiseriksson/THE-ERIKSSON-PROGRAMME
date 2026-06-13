@@ -33,6 +33,8 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.truncated_correlation_bound
 #print axioms YangMills.gibbs_truncated_correlation_bound
 #print axioms YangMills.sun_two_plaquette_correlator_bound
+-- UNCONDITIONAL fixed-lattice exponential clustering (no carried hypothesis):
+#print axioms YangMills.sun_lattice_exponential_clustering
 
 /-! ## The M3 mass-gap assembly (UV bound carried as a hypothesis) -/
 #print axioms YangMills.lattice_mass_gap_of_clustering_uniform

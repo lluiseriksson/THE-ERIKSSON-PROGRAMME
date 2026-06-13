@@ -846,4 +846,105 @@ lemma sun_clustering_window_nonempty (d N_c : ℕ) [NeZero N_c] :
       (Real.exp (|β| * (N_c : ℝ)) - 1) * (δ₁ / 4) := by positivity
   exact hwin _ hδ'0 hδ'
 
+open Classical in
+/-- **UNCONDITIONAL FIXED-LATTICE EXPONENTIAL CLUSTERING FOR SU(N)
+WILSON THEORY.**  Assembling `sun_two_plaquette_correlator_bound` with
+the non-empty window `sun_clustering_window_nonempty` (at `t = ε = 1`,
+separation `k = ⌊dist/2⌋`): for every dimension `d` and rank `N_c`
+there is an EXPLICIT coupling window `|β| ≤ β₀` (`β₀ > 0`) in which the
+connected (truncated) two-plaquette correlator of the genuine SU(N_c)
+Wilson Gibbs measure decays exponentially in the plaquette-graph
+distance,
+
+  `|⟨f_p f_q⟩ − ⟨f_p⟩⟨f_q⟩| ≤ C · exp(−(1/2)·dist(p,q))`,
+
+for EVERY bounded measurable plaquette observable `f` (`|f| ≤ 1`) and
+EVERY pair of distinct plaquettes, with `C` depending only on
+`d, N_c, β`.  This carries **NO** hypothesis — it is the fixed-lattice
+mass-gap (exponential-clustering) statement, unconditional, with a
+certified non-empty coupling window; the §6.3 Balaban single-scale
+input is needed only for the *continuum* (lattice-spacing → 0) limit,
+not for this fixed-lattice result. -/
+theorem sun_lattice_exponential_clustering (N_c : ℕ) [NeZero N_c] :
+    ∃ β₀ : ℝ, 0 < β₀ ∧ ∀ β : ℝ, |β| ≤ β₀ → ∃ C : ℝ, 0 ≤ C ∧
+      ∀ (f : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ),
+        Measurable f → (∀ x, |f x| ≤ 1) →
+      ∀ p q : ConcretePlaquette d N, p ≠ q →
+      |(∫ A, f (plaquetteHolonomy A p) * f (plaquetteHolonomy A q) *
+          Real.exp (-β * wilsonAction (fundamentalObservable N_c) A)
+          ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))) /
+        partitionFunction (d := d) (N := N) (sunHaarProb N_c)
+          (fundamentalObservable N_c) β
+        - ((∫ A, f (plaquetteHolonomy A p) *
+            Real.exp (-β * wilsonAction (fundamentalObservable N_c) A)
+            ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))) /
+          partitionFunction (d := d) (N := N) (sunHaarProb N_c)
+            (fundamentalObservable N_c) β) *
+          ((∫ A, f (plaquetteHolonomy A q) *
+            Real.exp (-β * wilsonAction (fundamentalObservable N_c) A)
+            ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))) /
+          partitionFunction (d := d) (N := N) (sunHaarProb N_c)
+            (fundamentalObservable N_c) β)|
+        ≤ C * Real.exp (-((1 : ℝ)/2 * ((touchGraph d N).dist p q : ℝ))) := by
+  classical
+  obtain ⟨β₀, hβ₀, s, hs, hwin⟩ := sun_clustering_window_nonempty d N_c
+  refine ⟨β₀, hβ₀, fun β hβ => ?_⟩
+  obtain ⟨hr, hsmall, hone⟩ := hwin β hβ
+  -- nonnegativity of the source's amplitude bracket (raw form, t = ε = 1)
+  have he1 : (1 : ℝ) ≤ Real.exp (|β| * (N_c : ℝ)) := by
+    rw [← Real.exp_zero]; exact Real.exp_le_exp.mpr (by positivity)
+  have he10 : (0 : ℝ) ≤ Real.exp (|β| * (N_c : ℝ)) - 1 := by linarith
+  have hBR0 : (0 : ℝ) ≤ ((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+      (Real.exp (|β| * (N_c : ℝ)) - 1) * s) * Real.exp (1 + 1 + 1) :=
+    mul_nonneg (by nlinarith [he10, hs.le, mul_nonneg he10 hs.le])
+      (Real.exp_pos _).le
+  have hden : (0 : ℝ) < 1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      (((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+        (Real.exp (|β| * (N_c : ℝ)) - 1) * s) * Real.exp (1 + 1 + 1)) := by
+    linarith [hr]
+  -- the amplitude `that ≥ 0`
+  have hthat0 : (0 : ℝ) ≤ 8 * ((((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+        (Real.exp (|β| * (N_c : ℝ)) - 1) * s) * Real.exp (1 + 1 + 1)) /
+      (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+        (((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+          (Real.exp (|β| * (N_c : ℝ)) - 1) * s) * Real.exp (1 + 1 + 1)))) *
+      (1 + s) ^ 2 / s ^ 2 :=
+    div_nonneg (mul_nonneg (mul_nonneg (by norm_num)
+      (div_nonneg hBR0 hden.le)) (sq_nonneg _)) (sq_nonneg _)
+  refine ⟨(8 * ((((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+        (Real.exp (|β| * (N_c : ℝ)) - 1) * s) * Real.exp (1 + 1 + 1)) /
+      (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+        (((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+          (Real.exp (|β| * (N_c : ℝ)) - 1) * s) * Real.exp (1 + 1 + 1)))) *
+      (1 + s) ^ 2 / s ^ 2) * Real.exp ((1 : ℝ) / 2),
+    mul_nonneg hthat0 (Real.exp_pos _).le, fun f hfm hf p q hpq => ?_⟩
+  set D : ℕ := (touchGraph d N).dist p q with hDdef
+  set k : ℕ := D / 2 with hkdef
+  have hdist : 2 * k ≤ D := by omega
+  have hbd := sun_two_plaquette_correlator_bound N_c hfm hf hs β 1 1
+    (by norm_num) (by norm_num) hr hsmall p q k hpq hdist (hone k)
+  refine le_trans hbd ?_
+  -- fold the (identical) source amplitude on both sides
+  set RAW : ℝ := 8 * ((((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+        (Real.exp (|β| * (N_c : ℝ)) - 1) * s) * Real.exp (1 + 1 + 1)) /
+      (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+        (((Real.exp (|β| * (N_c : ℝ)) - 1) + s +
+          (Real.exp (|β| * (N_c : ℝ)) - 1) * s) * Real.exp (1 + 1 + 1)))) *
+      (1 + s) ^ 2 / s ^ 2 with hRAWdef
+  have hRAW0 : 0 ≤ RAW := by rw [hRAWdef]; exact hthat0
+  have hkge : (D : ℝ) ≤ 2 * (k : ℝ) + 1 := by
+    have : D ≤ 2 * k + 1 := by omega
+    exact_mod_cast this
+  have hexp : Real.exp (-(1 * (k : ℝ)))
+      ≤ Real.exp ((1 : ℝ) / 2) * Real.exp (-((1 : ℝ) / 2 * (D : ℝ))) := by
+    rw [← Real.exp_add]
+    refine Real.exp_le_exp.mpr ?_
+    nlinarith [hkge]
+  calc RAW * Real.exp (-(1 * (k : ℝ)))
+      ≤ RAW * (Real.exp ((1 : ℝ) / 2) *
+          Real.exp (-((1 : ℝ) / 2 * (D : ℝ)))) :=
+        mul_le_mul_of_nonneg_left hexp hRAW0
+    _ = RAW * Real.exp ((1 : ℝ) / 2) *
+          Real.exp (-((1 : ℝ) / 2 * (D : ℝ))) := by ring
+
 end YangMills
