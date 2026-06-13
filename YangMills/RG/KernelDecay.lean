@@ -52,6 +52,38 @@ and rate `κ` relative to a distance `d`: `|K x y| ≤ a·e^{−κ·d x y}`. -/
 def ExpDecay (d : V → V → ℝ) (a κ : ℝ) (K : V → V → ℝ) : Prop :=
   ∀ x y, |K x y| ≤ a * Real.exp (-κ * d x y)
 
+/-- **Finite-range kernels are exponentially decaying** — the operator-level
+input to Combes–Thomas.  A kernel `K` supported within range `R`
+(`K x y = 0` whenever `d x y > R`) and bounded by `M` decays exponentially at
+*any* rate `κ ≥ 0`, with amplitude `M·e^{κR}`: on the support `e^{-κ d} ≥ e^{-κR}`
+absorbs the constant, off the support `K = 0`.  Hence every finite-range lattice
+operator (the nearest-neighbour Laplacian, the Wilson hopping term, the
+background-field covariant difference operator) is `ExpDecay`, and — composed
+through `expDecay_comp` / `expDecay_pow` — its resolvent / Green's function is too
+(`expDecay_resolvent`).  This is the concrete source of the exponentially-decaying
+covariance kernels that `RG/GaussianPi.lean`'s field-size bound consumes. -/
+theorem finiteRange_isExpDecay {d : V → V → ℝ} {K : V → V → ℝ} {M R κ : ℝ}
+    (hκ : 0 ≤ κ) (hM : 0 ≤ M)
+    (hsupp : ∀ x y, R < d x y → K x y = 0)
+    (hbd : ∀ x y, |K x y| ≤ M) :
+    ExpDecay d (M * Real.exp (κ * R)) κ K := by
+  intro x y
+  by_cases h : R < d x y
+  · rw [hsupp x y h, abs_zero]
+    exact mul_nonneg (mul_nonneg hM (Real.exp_pos _).le) (Real.exp_pos _).le
+  · push_neg at h
+    have h1 : (1 : ℝ) ≤ Real.exp (κ * R) * Real.exp (-κ * d x y) := by
+      rw [← Real.exp_add]
+      have ht : (0 : ℝ) ≤ κ * R + -κ * d x y := by
+        nlinarith [mul_nonneg hκ (by linarith : (0 : ℝ) ≤ R - d x y)]
+      calc (1 : ℝ) = Real.exp 0 := Real.exp_zero.symm
+        _ ≤ Real.exp (κ * R + -κ * d x y) := Real.exp_le_exp.mpr ht
+    calc |K x y| ≤ M := hbd x y
+      _ = M * 1 := (mul_one M).symm
+      _ ≤ M * (Real.exp (κ * R) * Real.exp (-κ * d x y)) :=
+            mul_le_mul_of_nonneg_left h1 hM
+      _ = M * Real.exp (κ * R) * Real.exp (-κ * d x y) := by ring
+
 /-- **Exponential decay is preserved under kernel composition** (the
 Combes–Thomas / Neumann-series engine).  If `A`, `B` decay at rate `κ`, the
 distance is a metric (`htri`, `hd`), and the lattice has uniform exponential

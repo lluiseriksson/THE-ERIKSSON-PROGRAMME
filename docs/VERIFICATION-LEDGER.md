@@ -3335,6 +3335,36 @@ remaining input is the concrete CMP-99 gauge propagator (its kernel `ExpDecay`)
 and the CMP-116 raw-activity bound — carried hypotheses, never axioms.  Clay
 distance **~0% (<0.1%), unchanged**.
 
+## Addendum 80 (2026-06-13, **finite-range ⟹ ExpDecay: the operator-level
+Combes–Thomas input** `YangMills.RG.finiteRange_isExpDecay`; core 8262)
+
+**Build:** green (8262 jobs — theorem added to `RG/KernelDecay.lean`, no new
+module).  Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+Opens the concrete-propagator track.  Until now the `ExpDecay` calculus
+(composition, powers, resolvent — Add. 53–56) and the field-size bound
+(Add. 78) consumed `ExpDecay` kernels *hypothetically*.  This supplies the first
+concrete source of them.
+
+* **`finiteRange_isExpDecay`** — a kernel `K` of finite range `R`
+  (`K x y = 0` whenever `d x y > R`) and bounded by `M` is `ExpDecay d (M·e^{κR}) κ K`
+  for *any* rate `κ ≥ 0`.  On the support `e^{-κ d} ≥ e^{-κR}` absorbs the
+  constant; off it `K = 0`.  Hence every finite-range lattice operator — the
+  nearest-neighbour Laplacian, the Wilson hopping term, the background-field
+  covariant difference operator — is `ExpDecay`, and by `expDecay_comp` /
+  `expDecay_pow` / `expDecay_resolvent` its resolvent (the lattice propagator) is
+  too.  Composed with `gram_kernel_isPSDKernel` +
+  `pi_gaussian_map_exp_integral_le_of_expDecay` (Add. 78–79), this is the
+  concrete origin of the exponentially-decaying Gaussian covariance the
+  fluctuation integral needs.
+
+This reduces the gauge-propagator obstruction to two faithful, source-grounded
+facts: (i) the concrete Bałaban background-field covariant operator is
+finite-range (immediate from its definition) so its inverse on the small-field
+region is `ExpDecay` via the resolvent series, and (ii) the CMP-116 single-scale
+raw-activity bound — both carried as honest hypotheses, never axioms.  Clay
+distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

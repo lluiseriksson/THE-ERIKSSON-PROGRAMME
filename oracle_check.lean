@@ -117,6 +117,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.lattice_mass_gap_of_cluster_and_marginal_coupling
 -- non-vacuity: the marginal-coupling recursion is satisfiable (logistic flow)
 #print axioms YangMills.RG.exists_marginal_coupling_flow
+-- finite-range ⟹ ExpDecay (the operator-level Combes-Thomas input: nearest-
+-- neighbour Laplacian / Wilson hopping / covariant difference operators)
+#print axioms YangMills.RG.finiteRange_isExpDecay
 -- exponential-decay kernel calculus: composition (Combes-Thomas engine), sum
 #print axioms YangMills.RG.expDecay_comp
 #print axioms YangMills.RG.expDecay_add
