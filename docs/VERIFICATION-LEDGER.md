@@ -2078,6 +2078,35 @@ linearisation (M-log-5, Add. 39) by the triangle inequality.  Carries
 **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay
 distance ~0% (<0.1%), unchanged.
 
+## Addendum 42 (2026-06-12, **gauge-RG UV-U1 brick S1 — ℓ² averaging
+bound for the linear operator `Q`** `YangMills.RG.norm_linAvg_sq_le`;
+core 8247)
+
+**Build:** green (**8247 jobs** — incremented, new module
+`RG/AveragingL2.lean`).  Oracle:
+`'YangMills.RG.norm_linAvg_sq_le' [propext, Classical.choice, Quot.sound]`.
+
+Opens the small-field per-scale-contraction campaign
+(`docs/UV-U1-SMALL-FIELD-PLAN.md`, brick S1):
+`‖linAvg A c‖² ≤ (L^d)⁻¹·L · ∑_{(x,k)∈block×range L} ‖A⟨shiftᵏ x, dir, +⟩‖²`.
+The block average at a coarse bond reduces the **mean square** by the
+factor `(L^d)⁻¹·L = L^{1-d}` — a genuine contraction for `d ≥ 2` — the
+deterministic seed of Bałaban's small-field RG-step stability.  Proof:
+collapse the block double sum to a sum over `blockOf ×ˢ range L`
+(`Finset.sum_product`), bound the smul-norm by the ℓ¹ sum
+(`norm_smul`, `norm_sum_le`), square (`pow_le_pow_left₀`), and apply
+Cauchy–Schwarz (`sq_sum_le_card_mul_sum_sq`) with
+`#(blockOf ×ˢ range L) = L^d·L` (`Finset.card_product`, `blockOf_card`).
+
+This is the **first brick of U1** (`docs/UV-SINGLE-SCALE-PLAN.md`), the
+small-field half of the per-scale RG-stability bound `|R_k| ≤ M·rᵏ`.
+Honest scope: S1 is the deterministic Cauchy–Schwarz seed; the genuine
+analytic core (**S2**, the Gaussian/propagator covariance contraction,
+Bałaban CMP 95–96) remains a months-scale campaign requiring the
+renormalized Gaussian measure (not in Mathlib).  Source CMP 95; strategy
+**Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay
+distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

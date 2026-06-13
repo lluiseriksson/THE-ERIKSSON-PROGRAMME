@@ -182,3 +182,6 @@ import YangMills.RG.NearLog
 -- group, transporting the holonomy gauge law into the matrix algebra where
 -- `Ū`'s `exp`/`log` covariance lives.
 import YangMills.RG.MatrixRealization
+-- UV-U1 brick S1: the ℓ² averaging bound for `Q` — the `L^{1-d}` per-bond
+-- mean-square contraction (deterministic seed of the small-field RG step).
+import YangMills.RG.AveragingL2
