@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.RG.CouplingFlowBridge
+import YangMills.RG.CouplingFlow
 import YangMills.Paper.ClusteringToGap
 
 /-!
@@ -75,5 +76,33 @@ theorem lattice_mass_gap_of_cluster_and_coupling
   exact lattice_mass_gap_of_per_scale_uv covIR covUV Rsc nsc C1 (A * C ^ κ₀)
     ε c0 r hε hc0 (mul_nonneg hA (Real.rpow_nonneg hC κ₀)) hr0.le hr1
     hIRbound hcovUV hRsc
+
+/-- **End-to-end UV conditional with the coupling discharged** (tighter
+form): the same conclusion as `lattice_mass_gap_of_cluster_and_coupling`,
+but the coupling-flow *decay* hypothesis `hg` is replaced by the more
+fundamental **logistic RG recursion** `g_{k+1} ≤ r·g_k·(1−β·g_k)` (the
+canonically-irrelevant β-function step; `0 ≤ β·g_k ≤ 1` small field).
+The decay `g_k ≤ g_0·rᵏ` is derived internally (`logistic_geometric_decay`),
+so the coupling input is now the RG recursion itself.  From the cluster
+activity bound + the coupling recursion (+ IR bound + covariance
+scale-sum), the **lattice mass gap** follows. -/
+theorem lattice_mass_gap_of_cluster_and_logistic_coupling
+    (covIR covUV : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (g : ℕ → ℝ)
+    {C1 ε c0 A r β κ₀ : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hA : 0 ≤ A)
+    (hr0 : 0 < r) (hr1 : r < 1) (hκ : 1 ≤ κ₀)
+    (hg0 : ∀ k, 0 ≤ g k) (hb : ∀ k, 0 ≤ β * g k ∧ β * g k ≤ 1)
+    (hrec : ∀ k, g (k + 1) ≤ r * g k * (1 - β * g k))
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hcovUV : ∀ t : ℕ, covUV t = ∑ k ∈ Finset.range (nsc t), Rsc t k)
+    (hRpoly : ∀ t k : ℕ,
+      |Rsc t k| ≤ A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV t|
+        ≤ (C1 + A * g 0 ^ κ₀ * (1 - r)⁻¹) * Real.exp (-(gap * (t : ℝ))) := by
+  have hg : ∀ k, g k ≤ g 0 * r ^ k := fun k => by
+    rw [mul_comm]; exact logistic_geometric_decay g hr0.le hg0 hb hrec k
+  exact lattice_mass_gap_of_cluster_and_coupling covIR covUV Rsc nsc g
+    hε hc0 hA (hg0 0) hr0 hr1 hκ hg0 hg hIRbound hcovUV hRpoly
 
 end YangMills.RG

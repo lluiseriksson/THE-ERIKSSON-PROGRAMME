@@ -2497,6 +2497,30 @@ case); the inverse-square form is Bałaban CMP 109 / 1988 eq (2.24)
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
+## Addendum 55 (2026-06-12, **gauge-RG — end-to-end UV conditional with
+the coupling discharged from the RG recursion**
+`YangMills.RG.lattice_mass_gap_of_cluster_and_logistic_coupling`; core 8252)
+
+**Build:** green (8252 jobs).  Oracle:
+`'…lattice_mass_gap_of_cluster_and_logistic_coupling' [propext, Classical.choice, Quot.sound]`.
+
+Tighter form of `lattice_mass_gap_of_cluster_and_coupling` (Add. 52): the
+coupling-flow *decay* hypothesis `hg : g_k ≤ C·rᵏ` is **replaced by the
+fundamental logistic RG recursion** `g_{k+1} ≤ r·g_k·(1−β·g_k)`
+(`0 ≤ β·g_k ≤ 1`).  The decay is derived internally
+(`logistic_geometric_decay`, Add. 49), so the coupling input is now the
+β-function recursion itself, not an assumed bound.  Conclusion unchanged:
+(cluster activity bound `hRpoly` + coupling recursion `hrec` + IR bound +
+covariance scale-sum) ⟹ the lattice mass gap.
+
+So the UV conditional's coupling input is now the **RG recursion**, and
+the only remaining genuinely-analytic carried input is the
+cluster-expansion activity-decay bound `hRpoly` (the Dimock fluctuation
+integral with holes — months-scale).  Source CMP 122-II / Dimock /
+Faria da Veiga–O'Carroll; strategy **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
