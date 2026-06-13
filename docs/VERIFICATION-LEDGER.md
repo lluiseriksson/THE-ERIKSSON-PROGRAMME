@@ -2341,6 +2341,48 @@ now transcribed: Dimock II Appendix F, §4–5 of BALABAN-SOURCE-BOUNDS).
 Strategy/framing **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4)
 track; Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 50 (2026-06-12, **gauge-RG UV `hpoly` summation step + full
+assembled conditional** `YangMills.RG.polymer_remainder_bound` /
+`geometric_remainder_assembled`; core 8251)
+
+**Build:** green (**8251 jobs** — new module `RG/PolymerRemainder.lean`).
+Oracle (verbatim):
+
+```
+'YangMills.RG.polymer_remainder_bound'      [propext, Classical.choice, Quot.sound]
+'YangMills.RG.geometric_remainder_assembled' [propext, Classical.choice, Quot.sound]
+```
+
+* `polymer_remainder_bound`: if `R_k = ∑_Y H_k(Y)` (absolutely summable),
+  each activity `|H_k(Y)| ≤ A·g_k^{κ₀}·w(Y)`, and `∑_Y w(Y) ≤ K₀`, then
+  `|R_k| ≤ (A·K₀)·g_k^{κ₀}` — the `hpoly` input of `coupling_flow_bridge`.
+  Proof: `norm_tsum_le_tsum_norm` + `Summable.tsum_le_tsum` +
+  `tsum_mul_left`.  The two hypotheses `hact` (activity decay) and `hwK`
+  (geometric summability) are **exactly Dimock's two cluster-expansion-
+  with-holes estimates**, carried explicitly; this proves the *summation*
+  that consumes them.
+* `geometric_remainder_assembled`: composing with Add. 49, the full UV
+  chain — (cluster-expansion estimates `hact`/`hwK`) + (irrelevant
+  coupling recursion `hrec`/`hb`) ⟹ `|R_k| ≤ (A·K₀·g_0^{κ₀})·r^k`, the
+  geometric remainder consumed by `Paper.uv_geometric_summation`.
+
+**Honest status (the fork, resolved per iron rules).**  Three external
+analyses (ChatGPT, Opus, Gemini) framed the choice: *state* `hpoly` as
+interface+axiom (forbidden: no `sorry`/axiom) vs *prove* the full cluster
+expansion (months-scale, Mathlib-empty).  Taken: the **third path** —
+prove the genuine *summation step* abstractly, with Dimock's two
+estimates as explicit carried hypotheses (NOT axioms) and the
+cluster-expansion constants (`κ`, `κ₀`, `3κ₀+3`) kept as **parameters**
+(per Opus's miscalibration warning; verbatim values, Dimock II Appendix F
+vs Dimock III arXiv:1304.0705, must be read off the page).  This shrinks
+the frontier by the summation step and isolates the remaining content
+precisely: the carried `hact`/`hwK` (the cluster expansion itself) and
+`hrec` (the coupling recursion) are the genuinely-unproved analytic
+inputs — the months-scale core, NOT done here, NOT claimed.
+
+Source Dimock I/II/III; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
+Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

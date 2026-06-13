@@ -198,3 +198,8 @@ import YangMills.RG.CouplingFlowBridge
 -- bridge into the geometric remainder bound. Honest caveat: irrelevant-operator
 -- mechanism (4D marginal coupling is only logarithmic) — see the module header.
 import YangMills.RG.CouplingFlow
+-- UV `hpoly` summation step: the polymer cluster-sum bound — `|∑ activities|
+-- ≤ amplitude·K₀` from Dimock's activity-decay + geometric-summability
+-- estimates (carried hypotheses), and the assembled conditional geometric
+-- remainder bound chaining cluster-sum → coupling decay → bridge.
+import YangMills.RG.PolymerRemainder
