@@ -6,16 +6,24 @@ import Mathlib
 import YangMills.RG.LinearAveraging
 
 /-!
-# ℓ² averaging bound for the linear operator Q (gauge-RG, UV-U1 brick S1)
+# ℓ² Cauchy–Schwarz bound for the linear operator Q (gauge-RG, UV-U1 brick S1)
 
-`docs/UV-U1-SMALL-FIELD-PLAN.md` S1.  The small-field per-scale
-contraction of Bałaban's renormalization group rests on the fact that
-the block-averaging operator `Q = linAvg` reduces the **mean square** of
-a bond field: a coarse bond averages the `L`-step line integrals over an
-`L^d`-point block, so by Cauchy–Schwarz its squared norm is bounded by
-`L^{1-d}` times the sum of squared fine-bond norms over the block — a
-genuine contraction for `d ≥ 2`.  This is the deterministic seed of the
-Gaussian/propagator contraction (brick S2).
+`docs/UV-U1-SMALL-FIELD-PLAN.md` S1.  The block-averaging operator
+`Q = linAvg` at a coarse bond is an `L^{-d}`-normalised sum, over the
+`L^d`-point source block, of the `L`-step fine line integrals.  This
+file proves the **Cauchy–Schwarz mean-square bound**
+`‖linAvg A c‖² ≤ L^{1-d}·∑_{(x,k)} ‖A⟨shiftᵏ x,dir,+⟩‖²` — the standard
+ℓ²-type operator estimate the small-field analysis consumes.
+
+**Honest calibration (not a standalone contraction).**  This bound is
+*not* by itself a contraction: the line integral sums `L` fine bonds, so
+on a constant field of size `ε` the right side is `L^{1-d}·L^{d+1}·ε²`,
+giving `‖linAvg A c‖ ≤ L·ε` — coarse-bond *growth* by `L`, which is
+correct (a coarse bond spans `L` fine bonds).  Bałaban's per-scale
+contraction emerges only after the RG **field rescaling** and the
+**ℓ²(lattice) operator assembly with multiplicity accounting** (brick
+S2) — it is a property of the rescaled covariance, not of this single
+estimate.  S1 is the certified Cauchy–Schwarz input to that analysis.
 
 **Source.** T. Bałaban, CMP 95 (1984); strategy/framing Lluis Eriksson
 (ai.viXra:2602.0088).
@@ -31,13 +39,14 @@ open scoped BigOperators
 variable {d : ℕ} {V : Type*} [NormedAddCommGroup V] [NormedSpace ℝ V]
 
 open scoped Classical in
-/-- **ℓ² averaging bound for `Q`** (brick S1): the squared norm of the
-block average at a coarse bond is bounded by `L^{1-d}` times the sum of
-squared fine-bond norms over the block,
+/-- **ℓ² Cauchy–Schwarz bound for `Q`** (brick S1): the squared norm of
+the block average at a coarse bond is bounded by `(L^d)⁻¹·L = L^{1-d}`
+times the sum of squared fine-bond norms over the block,
 `‖linAvg A c‖² ≤ (L^d)⁻¹·L · ∑_{(x,k)} ‖A⟨shiftᵏ x, dir, +⟩‖²`.
-Cauchy–Schwarz on the `L^d`-fold average of the `L`-term line integrals;
-the factor `(L^d)⁻¹·L = L^{1-d}` is the per-bond mean-square contraction
-(`< 1` for `d ≥ 2`). -/
+Cauchy–Schwarz on the `L^d`-fold average of the `L`-term line integrals.
+(This is the certified ℓ²-type operator input; it is *not* a standalone
+contraction — see the module docstring — the per-scale contraction needs
+the RG rescaling + ℓ² assembly of brick S2.) -/
 theorem norm_linAvg_sq_le (L N' : ℕ) [NeZero L] [NeZero N']
     (A : ConcreteEdge d (L * N') → V) (c : ConcreteEdge d N') :
     ‖linAvg L N' A c‖ ^ 2

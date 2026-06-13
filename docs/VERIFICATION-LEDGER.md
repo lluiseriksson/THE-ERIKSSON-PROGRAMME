@@ -2089,9 +2089,16 @@ core 8247)
 Opens the small-field per-scale-contraction campaign
 (`docs/UV-U1-SMALL-FIELD-PLAN.md`, brick S1):
 `‖linAvg A c‖² ≤ (L^d)⁻¹·L · ∑_{(x,k)∈block×range L} ‖A⟨shiftᵏ x, dir, +⟩‖²`.
-The block average at a coarse bond reduces the **mean square** by the
-factor `(L^d)⁻¹·L = L^{1-d}` — a genuine contraction for `d ≥ 2` — the
-deterministic seed of Bałaban's small-field RG-step stability.  Proof:
+The certified Cauchy–Schwarz mean-square bound on the block average,
+with factor `(L^d)⁻¹·L = L^{1-d}`.  **Honest calibration (adversarial
+self-audit):** this is *not* a standalone contraction — the line
+integral sums `L` fine bonds, so on a constant field of size `ε` the
+right side is `L^{1-d}·L^{d+1}·ε² = L²ε²`, i.e. coarse-bond *growth* by
+`L` (correct: a coarse bond spans `L` fine bonds).  Bałaban's per-scale
+contraction appears only after the RG **field rescaling** and the
+**ℓ²(lattice) operator assembly with multiplicity** (brick S2); S1 is
+the certified Cauchy–Schwarz input to that, not the contraction itself.
+Proof:
 collapse the block double sum to a sum over `blockOf ×ˢ range L`
 (`Finset.sum_product`), bound the smul-norm by the ℓ¹ sum
 (`norm_smul`, `norm_sum_le`), square (`pow_le_pow_left₀`), and apply
