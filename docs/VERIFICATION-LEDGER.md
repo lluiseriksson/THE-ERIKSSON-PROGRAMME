@@ -1390,6 +1390,30 @@ U1–U4): define `covUV`/`R_{t,k}` concretely against the KP `clusterSum`
 per-scale contraction itself (U2, the genuine Balaban analytic core —
 a months-scale campaign).  All M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 20 (2026-06-12, **manifest confinement repackaging**
+`area_law_to_exp_area_decay`)
+
+**Build:** green (8238 jobs).  Oracle output (verbatim,
+`RestrictedGate.lean`):
+
+```
+'YangMills.area_law_to_exp_area_decay'  [propext, Classical.choice, Quot.sound]
+```
+
+A reusable real-analysis repackaging that turns EITHER area-law
+headline bound `Nc·e^{P·K}·σ^{Area}·e^{P·S}` (`P = #loopSupp·4d` the
+perimeter charge, `σ < 1` the area rate — the shape of both
+`normalized_wilson_loop_area_law` and
+`normalized_exp_wilson_loop_area_law`) into MANIFEST exponential decay
+in the area, `Nc·e^{−τ·Area}` with a strictly positive string tension
+`τ = (−log σ) − λ > 0`, on any loop family whose perimeter
+contribution is area-subdominant (`P·(K+S) ≤ λ·Area`, `λ < −log σ`).
+Pure analysis (`σ^{Area} = e^{Area·log σ}` via `Real.rpow_def_of_pos`,
+`exp` monotonicity); the inequality reduces exactly to the
+subdominance hypothesis.  Makes the confinement physics (positive
+string tension) of the area law explicit.  All M3 lattice-side;
+M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

@@ -1211,6 +1211,42 @@ theorem normalized_wilson_loop_area_law
   congr 1
   exact congrArg Real.exp (by ring)
 
+/-- **Manifest confinement repackaging (string-tension positivity):**
+the area-law headline bound
+`Nc·e^{P·K}·σ^{Area}·e^{P·S}` (the shape of BOTH
+`normalized_wilson_loop_area_law` and
+`normalized_exp_wilson_loop_area_law`, with `P = #loopSupp·4d` the
+perimeter charge and `σ < 1` the area rate) becomes MANIFEST
+exponential decay in the area, `Nc·e^{−τ·Area}` with a strictly
+positive string tension `τ = (−log σ) − λ`, on any loop family whose
+perimeter contribution is area-subdominant: `P·(K+S) ≤ λ·Area` with
+`λ < −log σ`.  Pure real analysis (`σ^{Area} = e^{Area·log σ}`,
+monotonicity of `exp`); reusable against either headline. -/
+theorem area_law_to_exp_area_decay
+    (Nc P K S σ lam : ℝ) (Area : ℕ)
+    (hNc : 0 ≤ Nc) (hσpos : 0 < σ)
+    (hsub : P * (K + S) ≤ lam * (Area : ℝ))
+    (hlam : lam < -Real.log σ) :
+    Nc * Real.exp (P * K) * σ ^ Area * Real.exp (P * S)
+      ≤ Nc * Real.exp (-((-Real.log σ) - lam) * (Area : ℝ)) := by
+  have hpow : σ ^ Area = Real.exp (Real.log σ * (Area : ℝ)) := by
+    rw [← Real.rpow_natCast σ Area, Real.rpow_def_of_pos hσpos]
+  rw [hpow]
+  have hcollect : Real.exp (P * K) * Real.exp (Real.log σ * (Area : ℝ))
+      * Real.exp (P * S)
+      = Real.exp (P * K + Real.log σ * (Area : ℝ) + P * S) := by
+    rw [← Real.exp_add, ← Real.exp_add]
+  rw [show Nc * Real.exp (P * K) * Real.exp (Real.log σ * (Area : ℝ))
+        * Real.exp (P * S)
+      = Nc * (Real.exp (P * K) * Real.exp (Real.log σ * (Area : ℝ))
+        * Real.exp (P * S)) from by ring, hcollect]
+  refine mul_le_mul_of_nonneg_left ?_ hNc
+  refine Real.exp_le_exp.mpr ?_
+  have e1 : P * K + P * S = P * (K + S) := by ring
+  have e2 : -((-Real.log σ) - lam) * (Area : ℝ)
+      = Real.log σ * (Area : ℝ) + lam * (Area : ℝ) := by ring
+  linarith [hsub, e1, e2]
+
 open Classical in
 /-- **Integrability discharge (i):** the conjugate-pair product
 integrands are integrable — measurable (decorated expansion) and
