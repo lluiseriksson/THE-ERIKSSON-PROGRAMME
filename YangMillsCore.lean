@@ -193,3 +193,8 @@ import YangMills.RG.GaussianStep
 -- from Bałaban's faithful polymer bound `|R_k| ≤ A·g_k^{κ₀}` + coupling decay
 -- `g_k ≤ C·rᵏ` to the surrogate `|R_k| ≤ M·rᵏ` the assembly consumes.
 import YangMills.RG.CouplingFlowBridge
+-- UV `hg` discharge: geometric coupling decay from the irrelevant logistic RG
+-- recursion (`g_{k+1} ≤ r·g_k(1−β g_k)` ⟹ `g_k ≤ r^k·g_0`), composed with the
+-- bridge into the geometric remainder bound. Honest caveat: irrelevant-operator
+-- mechanism (4D marginal coupling is only logarithmic) — see the module header.
+import YangMills.RG.CouplingFlow

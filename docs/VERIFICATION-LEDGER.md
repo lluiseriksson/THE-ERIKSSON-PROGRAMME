@@ -2294,6 +2294,53 @@ coupling decay, with the open content sharply isolated.  Sources
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
+## Addendum 49 (2026-06-12, **gauge-RG UV `hg` discharge — geometric
+coupling decay from the irrelevant logistic recursion**
+`YangMills.RG.logistic_geometric_decay` / `remainder_geometric_of_logistic`;
+core 8250)
+
+**Build:** green (**8250 jobs** — new module `RG/CouplingFlow.lean`).
+Oracle (verbatim):
+
+```
+'YangMills.RG.logistic_geometric_decay'        [propext, Classical.choice, Quot.sound]
+'YangMills.RG.remainder_geometric_of_logistic' [propext, Classical.choice, Quot.sound]
+```
+
+Discharges the coupling-flow hypothesis `hg : g_k ≤ C·rᵏ` of
+`coupling_flow_bridge` (Add. 48) from the explicit RG recursion, **for the
+canonically-irrelevant mechanism**:
+
+* `geometric_decay_of_contraction`: `0 ≤ a`, `a_{k+1} ≤ r·a_k` ⟹
+  `a_k ≤ rᵏ·a_0` (induction).
+* `logistic_step_le`: `r·x·(1−β·x) ≤ r·x` for `0 ≤ βx ≤ 1` (small field).
+* `logistic_geometric_decay`: the irrelevant logistic recursion
+  `g_{k+1} ≤ r·g_k·(1−β·g_k)` ⟹ `g_k ≤ rᵏ·g_0`.
+* `remainder_geometric_of_logistic`: composing with the bridge,
+  (irrelevant coupling recursion) + (polymer bound `|R_k| ≤ A·g_k^{κ₀}`)
+  ⟹ `|R_k| ≤ (A·g_0^{κ₀})·rᵏ`.
+
+Source: Faria da Veiga–O'Carroll, Physica Scripta 99 (2024) 095262
+(irrelevant logistic case); Goswami AHP 2019 (`V^{irr}_k ≤ C·rᵏ`,
+`r=L^{−2}`).
+
+**HONESTY CAVEAT (critical, recorded in the module header and
+`docs/BALABAN-SOURCE-BOUNDS.md` §4).**  This geometric decay is the
+**irrelevant-operator** mechanism (`r < 1` = canonical scaling of an
+irrelevant operator, e.g. `L^{−2}`).  The **4D marginal gauge coupling**
+decays only **logarithmically** (`λ_n ∼ 1/(βn)`, asymptotic freedom — the
+`α=1` telescoping of the same reference), so `g_k ≤ C·rᵏ` is FALSE for the
+4D marginal coupling.  In 4D YM the geometric remainder contraction comes
+from the irrelevant operators' scaling; the recursion `hrec` here models
+those, `r` is their factor.  No inflation of 4D applicability.
+
+This discharges one of the bridge's two hypotheses (`hg`) for the
+relevant mechanism; the other (`hpoly`, the cluster expansion / Dimock
+fluctuation integral) remains the months-scale analytic core (sources
+now transcribed: Dimock II Appendix F, §4–5 of BALABAN-SOURCE-BOUNDS).
+Strategy/framing **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4)
+track; Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

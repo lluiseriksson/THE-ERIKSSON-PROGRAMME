@@ -86,6 +86,49 @@ polymer activity `E_k(X)`, large-field factor.  Lemmas:
 `DeltaE_localization`, `ClusterExpansion_with_holes`,
 `RGStep_preserves_density_class`.
 
+## 4. Coupling-flow decay — the `hg` input (sources received 2026-06-12)
+
+**Irrelevant / super-renormalizable case (geometric, ENCODED).**  Faria
+da Veiga–O'Carroll, *Asymptotics for some logistic maps and the RG*,
+Physica Scripta 99 (2024) 095262: the canonically-irrelevant logistic
+map `λ_{k+1} = r·λ_k·(1 − β·λ_k)` (`0 < r < 1`, `0 ≤ βλ_k ≤ 1`) gives
+`λ_{k+1} ≤ r·λ_k`, hence `λ_k ≤ λ_0·rᵏ`.  Goswami (AHP 2019): irrelevant
+remainders `V^{irr}_{k+1} = L^{−2}·V^{irr}_k + O(·²)`, so
+`V^{irr}_k ≤ C·rᵏ`, `r = L^{−2}`.  **This is now an oracle-clean Lean
+theorem** (`RG/CouplingFlow.logistic_geometric_decay`,
+`remainder_geometric_of_logistic`, ledger Add. 49), discharging the
+bridge's `hg` for the irrelevant mechanism.
+
+**4D marginal case (LOGARITHMIC, NOT geometric — honesty caveat).**  Same
+reference, marginal case `α = 1`: `λ_{n+1} = λ_n(1 − βλ_n)` telescopes via
+`1/λ_{k+1} − 1/λ_k = β/(1−βλ_k)` to `1/λ_0 + βn ≤ 1/λ_n ≤ 1/λ_0 + βn/(1−βλ_0)`,
+i.e. `λ_n ∼ 1/(βn)` — **logarithmic decay, independent of `λ_0`**
+(asymptotic freedom).  So `g_k ≤ C·rᵏ` is **FALSE for the 4D marginal
+gauge coupling**.  In 4D Bałaban the geometric remainder contraction
+`|R_k| ≤ M·rᵏ` is supplied by the **irrelevant operators' scaling**
+(the `e^{−κ d(X)}` / `L^{−2k}` factors), with the marginal coupling only
+a logarithmic prefactor.  Hence `RG/CouplingFlow`'s `hrec` models the
+*irrelevant remainder operators*, `r` their contraction factor — not the
+marginal coupling.  Coupling-recursion sources: Bałaban CMP 109 (1987)
+pp. 249–301 (4D, `1/g²_{j−1} = 1/g²_j + β_j φ_j`, the inverse-square /
+`O(g³)` form); Bałaban 1988 "Convergent Renormalization Expansions" eq
+(2.24); Bałaban–Imbrie–Jaffe CMP 114 (1988) (Abelian Higgs).
+
+## 5. Cluster expansion with holes — the `hpoly` input (Dimock)
+
+Reusable theorem: **Dimock II, Appendix F** (NOT only §3.13–3.14, which
+*apply* it).  If `|H(X,Φ',Φ)| ≤ H_0·e^{−κ d_M(X, mod Ω^c)}` with
+`H_0 ≤ c_0` and `κ ≥ 3κ_0+3`, then `Ξ = exp(Σ_Y H^#(Y,Φ'))` with
+`|H^#(Y,Φ')| ≤ O(1)·H_0·e^{−(κ−3κ_0−3) d_M(Y, mod Ω^c)}`.  Convergence is
+phrased as `H_0 ≤ c_0 ∧ κ ≥ 3κ_0+3` (the source-level replacement for the
+informal `C_d e^{−κ} < 1`).  Geometric substrate: `Σ_{X ⊇ □} e^{−κ_0 d_M(X, mod Ω^c)} ≤ K_0`
+(Part II `D_k(mod Ω_k^c)`).  Normalization: Dimock II Theorem 3.1 item 1
+`Z_{k+1} = Z_k·N^{−1}_{a,T¹}·(2π)^{|T⁰|/2}·(det C_k)^{1/2}`, and
+`dμ*_{Λ_{k+1}}(W_k) = (N^w)^{−1}χ^w_k dμ_{Λ_{k+1}}(W_k)`,
+`N^w = exp(−ε⁰_k·Vol(Λ_{k+1}))`.  Sources: Dimock I arXiv:1108.1335
+(small-field CE + normalization); Dimock II arXiv:1212.5562 (holes CE,
+Appendix F, §§3.8/3.13–3.18).
+
 ## Honest scope
 
 These bounds make G5 *specifiable*; they do not make it short.  G5 (the
