@@ -112,4 +112,27 @@ theorem marginal_coupling_pow_summable_of_recursion (g : ℕ → ℝ) {β κ₀ 
   marginal_coupling_pow_summable g hβ hpos
     (inv_coupling_linear_growth g hβ.le hpos hsmall hrec) hκ
 
+/-- **Marginal-coupling remainder scale-sum bound** (the honest YM analogue of
+the geometric coupling bridge).  Given the renormalization-remainder activity
+bound `|R_{t,k}| ≤ A·e^{−c₀t}·g_k^{κ₀}` (the carried Bałaban YM activity input)
+and the summability of `g_k^{κ₀}` over scales (`marginal_coupling_pow_summable`,
+the marginal coupling — NOT geometric), the scale-summed remainder at distance
+`t` decays as `e^{−c₀t}` with a **finite, scale-summed** constant:
+`∑ₖ |R_{t,k}| ≤ A·e^{−c₀t}·(∑ₖ g_k^{κ₀})`.  So the UV remainder still gives
+the spatial gap factor `e^{−c₀t}`, with the scale series contributing only a
+bounded constant — discharging the coupling side for the marginal YM flow
+without any false geometric-decay assumption. -/
+theorem marginal_coupling_remainder_tsum_le (g : ℕ → ℝ) (R : ℕ → ℕ → ℝ)
+    {A c0 κ₀ : ℝ} (hg : ∀ k, 0 ≤ g k) (hsum : Summable (fun k => g k ^ κ₀))
+    (hpoly : ∀ t k, |R t k| ≤ A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) (t : ℕ) :
+    ∑' k, |R t k| ≤ A * Real.exp (-(c0 * (t : ℝ))) * ∑' k, g k ^ κ₀ := by
+  have hRHSsum : Summable (fun k => A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) :=
+    hsum.mul_left _
+  have hLHSsum : Summable (fun k => |R t k|) :=
+    Summable.of_nonneg_of_le (fun k => abs_nonneg _) (fun k => hpoly t k) hRHSsum
+  calc ∑' k, |R t k|
+      ≤ ∑' k, A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀ :=
+        Summable.tsum_le_tsum (fun k => hpoly t k) hLHSsum hRHSsum
+    _ = A * Real.exp (-(c0 * (t : ℝ))) * ∑' k, g k ^ κ₀ := tsum_mul_left
+
 end YangMills.RG

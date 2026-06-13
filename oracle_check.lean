@@ -109,6 +109,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- coupling still yields a summable scale-series for activity power κ₀ > 1
 #print axioms YangMills.RG.marginal_coupling_pow_summable
 #print axioms YangMills.RG.marginal_coupling_tendsto_zero
+-- the marginal-coupling remainder scale-sum bound (honest YM coupling bridge)
+#print axioms YangMills.RG.marginal_coupling_remainder_tsum_le
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

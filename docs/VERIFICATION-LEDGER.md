@@ -2804,6 +2804,22 @@ For the genuine YM `hRpoly` activity input (NOT Dimock φ⁴₃):
   open conjecture, carried as a hypothesis, never a cited lemma.  Clay distance
   **~0% (<0.1%), unchanged.**
 
+## Addendum 63 (2026-06-13, **the marginal-coupling remainder scale-sum bound**
+`YangMills.RG.marginal_coupling_remainder_tsum_le`; core 8256)
+
+**Build:** green (8256 jobs — theorem added to `RG/MarginalCoupling.lean`, no
+new module).  Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+The honest YM analogue of the geometric coupling bridge, consuming Add. 62's
+marginal-coupling summability: given the carried Bałaban YM activity bound
+`|R_{t,k}| ≤ A·e^{−c₀t}·g_k^{κ₀}` and `Summable (g_·^{κ₀})` (the marginal
+coupling, NOT geometric), the scale-summed remainder satisfies
+`∑ₖ |R_{t,k}| ≤ A·e^{−c₀t}·(∑ₖ g_k^{κ₀})`.  So the UV remainder retains the
+spatial gap factor `e^{−c₀t}`, with the scale series contributing only a
+bounded constant — the coupling side discharged for the marginal YM flow with
+no false geometric-decay assumption.  `tsum_le_tsum` + `tsum_mul_left`, the
+summand summability by comparison.  Clay distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
