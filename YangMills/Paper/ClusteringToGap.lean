@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.Paper.MassGapAssembly
+import YangMills.Paper.UVSummation
 import YangMills.KP.Convergence
 
 /-!
@@ -142,6 +143,47 @@ theorem lattice_mass_gap_of_exp_clustering_uniform
       ring
     rw [hpow]
     exact hIRbound k
+
+/-- **UV brick U0 — the lattice mass gap from the per-scale RG
+contraction.**  Reduces the covariance-level UV hypothesis `hUV` of
+`lattice_mass_gap_of_exp_clustering_uniform` to the SHARP per-scale
+obligation Balaban's Lemma 6.2 actually supplies: the UV covariance at
+distance `t` is the finite sum of renormalization-group remainders
+`R_{t,k}` over scales `k`, each contracting geometrically in the scale
+index with the §7 leading factor `C₂·e^{−c₀t}`.  The summation
+mechanism (`Paper.uv_geometric_summation`, §6.3, proved outright)
+collapses the per-scale family into the `hUV` shape with constant
+`C₂·(1−r)⁻¹`, then the assembly delivers the single positive gap.
+
+This is the honest restatement of the sole carried M3 hypothesis at the
+RG level: the lattice mass gap holds given a single geometric per-scale
+contraction `|R_{t,k}| ≤ (C₂·e^{−c₀t})·rᵏ` — the input the multiscale
+single-scale stability estimate produces (`docs/UV-SINGLE-SCALE-PLAN.md`,
+brick U2).  Still hypothesis-carried, never an axiom. -/
+theorem lattice_mass_gap_of_per_scale_uv
+    (covIR covUV : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (C1 C2 ε c0 r : ℝ)
+    (hε : 0 < ε) (hc0 : 0 < c0) (hC2 : 0 ≤ C2)
+    (hr0 : 0 ≤ r) (hr1 : r < 1)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hcovUV : ∀ t : ℕ, covUV t = ∑ k ∈ Finset.range (nsc t), Rsc t k)
+    (hRsc : ∀ t k : ℕ,
+      |Rsc t k| ≤ (C2 * Real.exp (-(c0 * (t : ℝ)))) * r ^ k) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV t| ≤ (C1 + C2 * (1 - r)⁻¹) * Real.exp (-(gap * (t : ℝ))) := by
+  have hUV : ∀ t : ℕ,
+      |covUV t| ≤ (C2 * (1 - r)⁻¹) * Real.exp (-(c0 * (t : ℝ))) := by
+    intro t
+    have hM : (0 : ℝ) ≤ C2 * Real.exp (-(c0 * (t : ℝ))) :=
+      mul_nonneg hC2 (Real.exp_pos _).le
+    have hsum := Paper.uv_geometric_summation (Rsc t)
+      (C2 * Real.exp (-(c0 * (t : ℝ)))) r (nsc t) hM hr0 hr1 (fun k => hRsc t k)
+    rw [hcovUV t]
+    calc |∑ k ∈ Finset.range (nsc t), Rsc t k|
+        ≤ (C2 * Real.exp (-(c0 * (t : ℝ)))) * (1 - r)⁻¹ := hsum
+      _ = (C2 * (1 - r)⁻¹) * Real.exp (-(c0 * (t : ℝ))) := by ring
+  exact lattice_mass_gap_of_exp_clustering_uniform covIR covUV C1
+    (C2 * (1 - r)⁻¹) ε c0 hε hc0 hIRbound hUV
 
 /-! ### Finite susceptibility — the summed correlator converges
 

@@ -1359,6 +1359,37 @@ every `d, N_c`, take `δ` small: `e^{2δN_c}−1 → 0`, so `hr/hsmall/hrσ/hρ�
 hold simultaneously with e.g. `σ = 2·10⁻⁴`).  **THE V4 CAMPAIGN IS
 CLOSED.**  All M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 19 (2026-06-12, **UV brick U0 — the per-scale reduction of
+the sole carried M3 hypothesis** `lattice_mass_gap_of_per_scale_uv`)
+
+**Build:** green (8238 jobs).  Oracle output (verbatim,
+`Paper/ClusteringToGap.lean`):
+
+```
+'YangMills.lattice_mass_gap_of_per_scale_uv'  [propext, Classical.choice, Quot.sound]
+```
+
+The opening brick of the UV campaign (`docs/UV-SINGLE-SCALE-PLAN.md`).
+It restates the SOLE carried M3 hypothesis at the renormalization-group
+level: the covariance-level `hUV : ∀ t, |covUV t| ≤ C₂·e^{−c₀t}` is
+reduced to the SHARP per-scale contraction
+
+    ∀ t k, |R_{t,k}| ≤ (C₂·e^{−c₀t})·rᵏ        (0 ≤ r < 1)
+
+with `covUV t = ∑_{k<n(t)} R_{t,k}` — exactly the form Balaban's
+single-scale stability (Lemma 6.2) supplies.  Proof: the banked,
+unconditional `Paper.uv_geometric_summation` (§6.3) collapses the scale
+sum to the constant `C₂·(1−r)⁻¹`, recovering the `hUV` shape, and the
+banked `lattice_mass_gap_of_exp_clustering_uniform` then delivers the
+single strictly-positive gap `∃ gap > 0, ∀ t, |cov t| ≤
+(C₁+C₂(1−r)⁻¹)·e^{−gap·t}`.  Still hypothesis-carried (never an axiom);
+the carried object is now the RG-level per-scale bound `hRsc` rather
+than the covariance-level `hUV`.  REMAINING (UV-SINGLE-SCALE-PLAN
+U1–U4): define `covUV`/`R_{t,k}` concretely against the KP `clusterSum`
++ the scale dictionary (so `hcovUV` is a theorem), then discharge the
+per-scale contraction itself (U2, the genuine Balaban analytic core —
+a months-scale campaign).  All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

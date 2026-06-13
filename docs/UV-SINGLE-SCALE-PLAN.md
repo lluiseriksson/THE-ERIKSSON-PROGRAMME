@@ -60,7 +60,7 @@ core-clean, so it cannot feed the core assembly as-is.
 
 | Brick | Content | Est. |
 |---|---|---|
-| U0 | **Define `covUV` concretely** as the high-scale tail of the polymer-expansion covariance (reuse the banked KP `clusterSum` machinery, restricted to short-range polymers / high RG scale).  Pin the scale–distance dictionary `a_k = a*/L^{k*−k}`. | 1 session |
+| U0 | **The per-scale reduction — CLOSED** (oracle clean, ledger Addendum 19): `lattice_mass_gap_of_per_scale_uv` (`Paper/ClusteringToGap.lean`) reduces the covariance-level `hUV` to the sharp per-scale RG contraction `\|R_{t,k}\| ≤ (C₂·e^{−c₀t})·rᵏ`, via `Paper.uv_geometric_summation` collapsing the scale sum to constant `C₂(1−r)⁻¹`, then the banked assembly.  The lattice mass gap now holds given a SINGLE geometric per-scale contraction — the RG-level obligation Balaban's Lemma 6.2 supplies.  (Still to do: define `covUV`/`Rsc` concretely against the KP `clusterSum` + the scale dictionary `a_k = a*/L^{k*−k}` so `hcovUV` is itself a theorem.) | **U0 closed** |
 | U1 | **Small-field per-scale bound:** on the small-field region the RG step is a contraction; `|R_k^{sf}| ≤ M_sf·r^k` from the analytic stability of the Gaussian-dominated step (reuse `SmallFieldBound` content, rebuilt clean). | campaign |
 | U2 | **Large-field suppression:** the large-field region carries `e^{−c·(field)²}` suppression beating its entropy; `|R_k^{lf}| ≤ M_lf·r^k` (the P80/P81 content — the genuine analytic core, currently carried as named hypotheses even in the excluded tree). | campaign (hardest) |
 | U3 | **Per-scale assembly** `|R_k| ≤ M·r^k` from U1+U2 (large/small split), then `uv_geometric_summation` ⟹ `hUV`. | 1 session |
