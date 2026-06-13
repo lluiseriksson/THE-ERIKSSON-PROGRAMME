@@ -129,6 +129,36 @@ informal `C_d e^{−κ} < 1`).  Geometric substrate: `Σ_{X ⊇ □} e^{−κ_0 
 (small-field CE + normalization); Dimock II arXiv:1212.5562 (holes CE,
 Appendix F, §§3.8/3.13–3.18).
 
+## 6. Connection to the existing `KP` layer (architectural finding, 2026-06-12)
+
+The repository **already contains an abstract Kotecký–Preiss
+cluster-expansion framework** in `YangMills/KP/**`, built for the IR
+polymer gas but **general**:
+
+* `KP.PolymerSystem` — an abstract polymer gas (polymer type,
+  incompatibility relation, activities);
+* `KP.kp_per_size_bound` (`KP/KPBound.lean`):
+  `clusterWeight P n ≤ (∑_y ‖activity y‖)·(e·A)ⁿ` — the per-size /
+  animal-weighted bound, the Kotecký–Preiss output;
+* `KP.Convergence` / `cluster_series_summable` — the geometric summation
+  `∑_n b_n ≤ ∑_n C·rⁿ` for `b_n ≤ C·rⁿ`.
+
+This is exactly the abstract polymer-CE machinery the RG `hpoly`/`hwK`
+branch needs.  The new `RG/PolymerRemainder.geometric_size_summability`
+(Add. 51) is the standalone convergence core aligned with
+`KP.Convergence`.  **The genuine path to discharge `hwK`** (for a future
+worker) is to instantiate the RG remainder polymers as a `KP.PolymerSystem`
+(with the `mod Ω^c` holes metric) and reuse `kp_per_size_bound` —
+NOT to rebuild cluster-expansion convergence from scratch.
+
+**What remains genuinely months-scale and Mathlib-empty:** the
+*activity-decay* bound `hact` itself — the renormalized polymer activity
+estimate `|H_k(X)| ≤ amplitude·e^{−κ d_M(X, mod Ω^c)}` produced by the
+Dimock fluctuation integral + the holes localization (Dimock II/III) — and
+the raw lattice-animal count in the holes metric.  These are the
+constructive-QFT core; the convergence/summation scaffolding around them
+is now in place (KP layer + the RG-UV bricks).
+
 ## Honest scope
 
 These bounds make G5 *specifiable*; they do not make it short.  G5 (the
