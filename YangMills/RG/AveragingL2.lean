@@ -169,4 +169,36 @@ theorem linAvg_l2_le (L N' : ℕ) [NeZero L] [NeZero N']
         rw [← Finset.mul_sum, Finset.sum_comm]
         ring
 
+open scoped Classical in
+/-- **Explicit ℓ²-contraction ratio** (UV-U1, brick S1′ corollary): in
+dimension `d ≥ 3` (the physical `d = 4`), the averaging operator `Q`
+contracts the bond ℓ²-norm by a factor of at least `1/L`,
+`∑_bonds ‖Q A‖² ≤ L⁻¹ · ∑_bonds ‖A‖²`.  Since `L⁻¹ < 1` for `L ≥ 2`,
+this is the clean geometric-contraction seed the per-scale RG decay
+(`uv_geometric_summation`, UV plan U3) consumes.  From `linAvg_l2_le`
+and `L^{2-d} ≤ L^{-1}` (i.e. `L³ ≤ L^d`). -/
+theorem linAvg_l2_contraction (L N' : ℕ) [NeZero L] [NeZero N']
+    (hd : 3 ≤ d) (A : ConcreteEdge d (L * N') → V) :
+    ∑ y' : FinBox d N', ∑ μ : Fin d, ‖linAvg L N' A ⟨y', μ, true⟩‖ ^ 2
+      ≤ (L : ℝ)⁻¹
+        * ∑ z : FinBox d (L * N'), ∑ μ : Fin d, ‖A ⟨z, μ, true⟩‖ ^ 2 := by
+  have hL1 : (1 : ℝ) ≤ L := by
+    exact_mod_cast Nat.one_le_iff_ne_zero.mpr (NeZero.ne L)
+  have hLpos : (0 : ℝ) < L := by
+    exact_mod_cast Nat.pos_of_ne_zero (NeZero.ne L)
+  have hLne : (L : ℝ) ≠ 0 := hLpos.ne'
+  have hconst : ((L : ℝ) ^ d)⁻¹ * (L : ℝ) ^ 2 ≤ (L : ℝ)⁻¹ := by
+    have heq : ((L : ℝ) ^ 3)⁻¹ * (L : ℝ) ^ 2 = (L : ℝ)⁻¹ := by
+      field_simp
+    calc ((L : ℝ) ^ d)⁻¹ * (L : ℝ) ^ 2
+        ≤ ((L : ℝ) ^ 3)⁻¹ * (L : ℝ) ^ 2 := by gcongr <;> assumption
+      _ = (L : ℝ)⁻¹ := heq
+  calc ∑ y' : FinBox d N', ∑ μ : Fin d, ‖linAvg L N' A ⟨y', μ, true⟩‖ ^ 2
+      ≤ ((L : ℝ) ^ d)⁻¹ * (L : ℝ) ^ 2
+          * ∑ z : FinBox d (L * N'), ∑ μ : Fin d, ‖A ⟨z, μ, true⟩‖ ^ 2 :=
+        linAvg_l2_le L N' A
+    _ ≤ (L : ℝ)⁻¹
+          * ∑ z : FinBox d (L * N'), ∑ μ : Fin d, ‖A ⟨z, μ, true⟩‖ ^ 2 :=
+        mul_le_mul_of_nonneg_right hconst (by positivity)
+
 end YangMills.RG

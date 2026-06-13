@@ -2150,6 +2150,22 @@ Gaussian covariance, Bałaban CMP 95–96) is the months-scale analytic
 core.  Source CMP 95; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
 Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 44 (2026-06-12, **gauge-RG UV-U1 — explicit ℓ²-contraction
+ratio of `Q`** `YangMills.RG.linAvg_l2_contraction`; core 8247)
+
+**Build:** green (8247 jobs).  Oracle:
+`'YangMills.RG.linAvg_l2_contraction' [propext, Classical.choice, Quot.sound]`.
+
+For `d ≥ 3` (the physical `d = 4`):
+`∑_bonds ‖Q A‖² ≤ L⁻¹ · ∑_bonds ‖A‖²`.  The bare averaging operator
+contracts the bond ℓ²-norm by a factor of at least `1/L` (`< 1` for
+`L ≥ 2`) — the explicit geometric-contraction ratio the per-scale RG
+decay (`Paper.uv_geometric_summation`, UV plan U3) consumes.  From
+`linAvg_l2_le` (Add. 43) and `L^{2-d} ≤ L^{-1}` (i.e. `L³ ≤ L^d`,
+`gcongr` on the inverse-power) with `(L^3)⁻¹·L² = L⁻¹` (`field_simp`).
+Source CMP 95; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
+Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
