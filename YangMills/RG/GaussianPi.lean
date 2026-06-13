@@ -3,6 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
+import YangMills.RG.GaussianMGF
 
 /-!
 # The finite-dimensional multivariate Gaussian as an `IsGaussian` measure (gauge-RG substrate)
@@ -93,5 +94,52 @@ theorem isGaussian_pi_map_clm {ι : Type*} [Fintype ι] {F : Type*}
     IsGaussian ((Measure.pi (fun i => gaussianReal (m i) (v i))).map A) := by
   haveI : IsGaussian (Measure.pi (fun i => gaussianReal (m i) (v i))) := isGaussian_pi m v
   exact isGaussian_map_of_measurable A.continuous.measurable
+
+/-- **The standard centered multivariate Gaussian is centered.**  For
+`μ = Measure.pi (fun i => gaussianReal 0 (v i))` (mean-zero coordinates) and any
+continuous linear functional `L`, the mean `μ[L] = 0`.  Proof by symmetry: each
+`gaussianReal 0 (v i)` is invariant under `x ↦ -x` (`gaussianReal_map_neg`,
+`neg_zero`), so the product measure is too (`Measure.pi_map_pi`); hence
+`μ[L] = μ[L ∘ (-·)] = -μ[L]` (`L` linear, `IsGaussian.integrable_dual` for
+integrability), forcing `μ[L] = 0`.  This discharges the centering hypothesis of
+`gaussian_exp_integral_le_isGaussian`. -/
+theorem pi_gaussian_centered {ι : Type*} [Fintype ι] (v : ι → NNReal)
+    (L : StrongDual ℝ (ι → ℝ)) :
+    (Measure.pi (fun i => gaussianReal 0 (v i)))[L] = 0 := by
+  classical
+  haveI : IsGaussian (Measure.pi (fun i => gaussianReal 0 (v i))) :=
+    isGaussian_pi (fun _ => 0) v
+  have hsymm : (Measure.pi (fun i => gaussianReal 0 (v i))).map (fun x : ι → ℝ => -x)
+      = Measure.pi (fun i => gaussianReal 0 (v i)) := by
+    rw [show (fun x : ι → ℝ => -x) = (fun (x : ι → ℝ) i => -(x i)) from rfl,
+      Measure.pi_map_pi (fun _ => measurable_neg.aemeasurable)]
+    have hfac : (fun i => (gaussianReal (0 : ℝ) (v i)).map (fun x => -x))
+        = (fun i => gaussianReal (0 : ℝ) (v i)) := by
+      funext i; rw [gaussianReal_map_neg, neg_zero]
+    rw [hfac]
+  have key : (Measure.pi (fun i => gaussianReal 0 (v i)))[L]
+      = -(Measure.pi (fun i => gaussianReal 0 (v i)))[L] := by
+    conv_lhs => rw [← hsymm]
+    rw [integral_map (by fun_prop) (by fun_prop)]
+    simp only [map_neg, integral_neg]
+  linarith [key]
+
+/-- **Concrete field-size / MGF bound on the standard multivariate Gaussian.**
+Combining `isGaussian_pi` (the constructed measure), `pi_gaussian_centered` (the
+centering), and `gaussian_exp_integral_le_isGaussian` (the abstract bound): for
+the centered standard multivariate Gaussian on `ι → ℝ` and any continuous linear
+observable `L` with variance bounded by `B`, the exponential field-size integral
+is bounded, `∫ exp(L φ) dμ ≤ exp(B/2)`.  Unlike the abstract bound, this is
+instantiated on a genuine constructed `IsGaussian` measure — fully non-vacuous.
+With the kernel/Schur/PSD substrate supplying `Var[L; μ] ≤ a·S·‖L‖²`, this is the
+small-field fluctuation-integral input on an explicit Gaussian field. -/
+theorem pi_gaussian_exp_integral_le {ι : Type*} [Fintype ι] (v : ι → NNReal)
+    (L : StrongDual ℝ (ι → ℝ)) {B : ℝ}
+    (hvar : Var[L; Measure.pi (fun i => gaussianReal 0 (v i))] ≤ B) :
+    ∫ x, Real.exp (L x) ∂(Measure.pi (fun i => gaussianReal 0 (v i)))
+      ≤ Real.exp (B / 2) := by
+  haveI : IsGaussian (Measure.pi (fun i => gaussianReal 0 (v i))) :=
+    isGaussian_pi (fun _ => 0) v
+  exact gaussian_exp_integral_le_isGaussian L (pi_gaussian_centered v L) hvar
 
 end YangMills.RG

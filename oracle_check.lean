@@ -141,6 +141,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- and its closure under continuous-linear images (constructive covariance route)
 #print axioms YangMills.RG.isGaussian_pi
 #print axioms YangMills.RG.isGaussian_pi_map_clm
+-- the standard multivariate Gaussian is centered, and the resulting fully
+-- concrete (non-abstract) field-size / MGF bound instantiated on it
+#print axioms YangMills.RG.pi_gaussian_centered
+#print axioms YangMills.RG.pi_gaussian_exp_integral_le
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

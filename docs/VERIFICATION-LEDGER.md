@@ -3168,6 +3168,38 @@ raw-activity bound (CMP 116) — both carried as honest hypotheses, never axioms
 **Non-vacuity:** `ι := Fin n`, `m := 0`, `v := 1` gives the standard `n`-dim
 Gaussian; `A := id` recovers it.  Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 75 (2026-06-13, **the standard multivariate Gaussian is centered +
+the fully concrete field-size bound** `YangMills.RG.pi_gaussian_centered` +
+`pi_gaussian_exp_integral_le`; core 8262)
+
+**Build:** green (8262 jobs — theorems added to `RG/GaussianPi.lean`, no new
+module).  Oracle: both `[propext, Classical.choice, Quot.sound]`.
+
+This ties Add. 74 (`isGaussian_pi`) to Add. 73 (the abstract field-size bound),
+turning the latter from hypothesis-fed into instantiated-on-an-explicit-measure.
+
+* **`pi_gaussian_centered`** — for `μ = Measure.pi (fun i => gaussianReal 0 vᵢ)`
+  and any dual `L`, `μ[L] = 0`.  Proof by symmetry: each `gaussianReal 0 vᵢ` is
+  `x ↦ -x`-invariant (`gaussianReal_map_neg` + `neg_zero`), so the product
+  measure is (`Measure.pi_map_pi`); hence `μ[L] = μ[L∘(-·)] = -μ[L]`
+  (`L` linear; `IsGaussian.integrable_dual` for integrability), so `μ[L] = 0`.
+
+* **`pi_gaussian_exp_integral_le`** — the capstone: for the centered standard
+  multivariate Gaussian and any dual `L` with `Var[L;μ] ≤ B`,
+  `∫ exp(L φ) dμ ≤ exp(B/2)`.  This is `gaussian_exp_integral_le_isGaussian`
+  (Add. 73) instantiated via `isGaussian_pi` + `pi_gaussian_centered` — a fully
+  concrete, non-vacuous fluctuation-integral bound on a genuine constructed
+  measure (no abstract `IsGaussian` hypothesis, no carried centering).
+
+The abstract Gaussian-from-covariance layer is now end-to-end concrete: construct
+`μ` (`isGaussian_pi`), it is centered (`pi_gaussian_centered`), and bounded
+covariance gives the field-size bound (`pi_gaussian_exp_integral_le`); the
+kernel/Schur/PSD substrate (Add. 66–71) supplies `Var[L;μ] ≤ a·S·‖L‖²`.  The
+remaining `hRpoly` gap is unchanged: the concrete gauge-covariant propagator
+(CMP 99) realizing the covariance, and the CMP 116 single-scale raw-activity
+bound — both carried as honest hypotheses.  Clay distance **~0% (<0.1%),
+unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
