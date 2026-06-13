@@ -280,6 +280,22 @@ theorem tsum_pow_div_factorial_succ (x : ℝ) :
   simp only [pow_zero, Nat.factorial_zero, Nat.cast_one, div_one] at h
   linarith
 
+/-- **The survivor resummation (V4-1 stage 2 tail):** the real shifted
+multiplicity weights, summed over ALL multiplicity functions on a
+finite carrier, factorize into one `(e^x − 1)` per index — the exact
+sum the pinned exp dichotomy's survivors collapse to. -/
+theorem tsum_prod_pow_succ_div_factorial {ι : Type*} [Fintype ι]
+    (x : ℝ) (hx : 0 ≤ x) :
+    (∑' m : ι → ℕ, ∏ i, x ^ (m i + 1) / (Nat.factorial (m i + 1) : ℝ))
+      = (Real.exp x - 1) ^ (Fintype.card ι) := by
+  rw [← tsum_pi_prod_nonneg
+    (fun (_ : ι) k => x ^ (k + 1) / (Nat.factorial (k + 1) : ℝ))
+    (fun _ k => by positivity)
+    (fun _ => (Real.summable_pow_div_factorial x).comp_injective
+      (add_left_injective 1))]
+  rw [Finset.prod_congr rfl fun i _ => tsum_pow_div_factorial_succ x]
+  rw [Finset.prod_const, Finset.card_univ]
+
 set_option maxHeartbeats 1000000 in
 open Classical in
 /-- **The per-`S` constrained factorized sum** (tail lemma, T1): the
