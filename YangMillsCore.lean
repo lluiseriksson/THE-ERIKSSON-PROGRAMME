@@ -167,3 +167,6 @@ import YangMills.RG.BlockLattice
 import YangMills.RG.LinearAveraging
 import YangMills.RG.BlockMaps
 import YangMills.RG.GroupAverage
+-- B4-prep: the holonomy gauge-covariance law along a connected path
+-- (Bałaban CMP 98 (11) / CMP 109 §0) — the foundation of `Ū` gauge covariance.
+import YangMills.RG.HolonomyGauge

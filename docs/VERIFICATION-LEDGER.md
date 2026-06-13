@@ -1678,6 +1678,37 @@ framework.  Source: Bałaban CMP 109 (0.5)–(0.10); Federbush [35];
 strategy **Lluis Eriksson** (ai.viXra:2602.0069).  Continuum (M4) track;
 Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 28 (2026-06-12, **gauge-RG brick B4-prep — holonomy
+gauge-covariance along a path** `YangMills.RG.wilsonLine_gaugeAct_path`;
+core 8243)
+
+**Build:** green (**8243 jobs**).  Oracle (verbatim,
+`YangMills/RG/HolonomyGauge.lean`; all ⊆ the standard three):
+
+```
+'YangMills.RG.pathEnd'                   [propext, Quot.sound]
+'YangMills.RG.IsPathFrom'                [propext, Quot.sound]
+'YangMills.RG.wilsonLine_gaugeAct_path'  [propext, Classical.choice, Quot.sound]
+```
+
+A determination first: the pinned Mathlib provides `Matrix.exp` and a
+continuous-functional-calculus `log` (self-adjoint elements only) but
+**no near-identity matrix logarithm with `log(exp X) = X` and BCH
+bounds** — so the analytic axiom (0.8) and the operator `Ū` (CMP 109
+(0.12)) genuinely require a from-scratch matrix-`log` layer (a real
+sub-campaign; the BCH references are now in hand).  Rather than fake
+that, this brick advances the **algebraic** B4 foundation, which needs
+no matrix `log`: `wilsonLine_gaugeAct_path` — along a connected path
+(`IsPathFrom a es`, the contour structure of CMP 95 (1.7)) the
+gauge-transformed Wilson line conjugates by the gauge function at its
+endpoints, `wilsonLine (gaugeAct u A) es = u(a)·wilsonLine A es·u(pathEnd a es)⁻¹`,
+by a clean telescoping induction over the core `wilsonLine`/`gaugeAct`.
+This is exactly the law (CMP 98 (11)) that, combined with
+`GroupAverage.conj_equiv`/`biequiv`, makes the averaged contour variable
+(0.11) — and hence `Ū` — gauge covariant (brick B4).  Strategy/framing:
+**Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay
+distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
