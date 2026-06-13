@@ -1837,6 +1837,39 @@ analytic brick.  Source: standard; applied to CMP 109 (0.8).
 Strategy/framing **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum
 (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 33 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-2a′
+— sharp linear bound on `nearLog`** `YangMills.RG.norm_nearLog_le_linear`;
+core 8245)
+
+**Build:** green (8245 jobs).  Oracle:
+`'YangMills.RG.norm_nearLog_le_linear' [propext, Classical.choice, Quot.sound]`.
+
+`‖nearLog Y‖ ≤ ‖Y‖/(1-‖Y‖)` for `‖Y‖ < 1`.  This **supersedes**
+`norm_nearLog_le` (`≤ (1-‖Y‖)⁻¹`) near the identity: the earlier bound
+is `≥ 1` and does not vanish as `Y → 0`, whereas this one exhibits
+`nearLog Y = O(‖Y‖)` — the correct small-field behaviour the RG analysis
+requires.  Immediate from the linearisation (Add. 32) by the triangle
+inequality: `‖nearLog Y‖ ≤ ‖nearLog Y - Y‖ + ‖Y‖ ≤ ‖Y‖²/(1-‖Y‖) + ‖Y‖
+= ‖Y‖/(1-‖Y‖)`.
+
+**Honest design note for M-log-2b (the next, genuinely hard brick).**
+`log(exp X) = X` near `0` is the local-inverse identity.  Mathlib has
+`NormedSpace.exp` (a Banach-algebra `exp`) but **no** matrix/operator
+`log` and **no** Banach-algebra functional-calculus substitution lemma,
+so the composition `log ∘ exp = id` is not available off the shelf.  The
+viable route is the formal-power-series framework
+(`FormalMultilinearSeries.comp` / formal inverse): realise the Mercator
+series and `expSeries` as formal multilinear series, compose them to the
+identity formally, then transfer to `nearLog`/`exp` on the radius of
+convergence.  This is a multi-session sub-campaign; it is **not** faked
+or stubbed here.  Until it lands, `Ū` (CMP 109 (0.12)) is **not**
+defined (a `Ū` without its linearisation/covariance theorems would be
+hollow, which the honesty rule forbids), and axiom (0.8) is **not**
+claimed proved — only its `O(‖·‖²)` remainder (Add. 32) and the linear
+bound (this addendum) are.  Strategy/framing **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

@@ -136,6 +136,22 @@ theorem norm_nearLog_sub_self_le {Y : 𝔸} (hY : ‖Y‖ < 1) :
         rw [hre, tsum_mul_left,
           tsum_geometric_of_lt_one (norm_nonneg Y) hY, div_eq_mul_inv]
 
+/-- **Sharp linear bound** (brick M-log-2a, corollary): `‖nearLog Y‖ ≤
+‖Y‖/(1-‖Y‖)`.  Unlike `norm_nearLog_le` this **vanishes as `Y → 0`**,
+exhibiting `nearLog Y = O(‖Y‖)` (the constant term of the Mercator series
+is zero) — the bound the small-field RG analysis actually needs.
+Immediate from the linearisation `norm_nearLog_sub_self_le`. -/
+theorem norm_nearLog_le_linear {Y : 𝔸} (hY : ‖Y‖ < 1) :
+    ‖nearLog Y‖ ≤ ‖Y‖ / (1 - ‖Y‖) := by
+  have hne : (1 - ‖Y‖) ≠ 0 := by
+    have : (0 : ℝ) < 1 - ‖Y‖ := by linarith
+    exact this.ne'
+  calc ‖nearLog Y‖ = ‖(nearLog Y - Y) + Y‖ := by congr 1; abel
+    _ ≤ ‖nearLog Y - Y‖ + ‖Y‖ := norm_add_le _ _
+    _ ≤ ‖Y‖ ^ 2 / (1 - ‖Y‖) + ‖Y‖ := by
+        linarith [norm_nearLog_sub_self_le hY]
+    _ = ‖Y‖ / (1 - ‖Y‖) := by field_simp; ring
+
 /-- `log(1 + 0) = log 1 = 0`. -/
 @[simp] theorem nearLog_zero : nearLog (0 : 𝔸) = 0 := by
   have hz : (fun n : ℕ => logCoeff n • (0 : 𝔸) ^ n) = fun _ => 0 := by
