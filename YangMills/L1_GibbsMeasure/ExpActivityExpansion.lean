@@ -174,6 +174,38 @@ theorem prod_exp_eq_tsum_prod_pow {ι : Type*} [Fintype ι] (z : ι → ℂ) :
   exact tsum_pi_prod' (fun i k => (z i) ^ k / (Nat.factorial k : ℂ))
     (fun i => summable_norm_pow_div_factorial (z i))
 
+/-- **The complex shifted exponential series:** `exp z − 1` is the
+power series with the constant term removed — every term carries a
+factor `z` (exponent `≥ 1`). -/
+theorem tsum_pow_succ_div_factorial_succ (z : ℂ) :
+    (∑' k : ℕ, (z) ^ (k + 1) / (Nat.factorial (k + 1) : ℂ))
+      = Complex.exp z - 1 := by
+  have hexp : Complex.exp z
+      = ∑' k : ℕ, (z) ^ k / (Nat.factorial k : ℂ) := by
+    rw [Complex.exp_eq_exp_ℂ]
+    exact congrFun NormedSpace.exp_eq_tsum_div z
+  have hsum : Summable fun k : ℕ => (z) ^ k / (Nat.factorial k : ℂ) :=
+    (summable_norm_pow_div_factorial z).of_norm
+  have h := hsum.tsum_eq_zero_add
+  rw [← hexp] at h
+  simp only [pow_zero, Nat.factorial_zero, Nat.cast_one, div_one] at h
+  rw [h]; ring
+
+/-- **The pinned exp-product expansion (V4-1, stage 1):** a finite
+product of `exp z − 1` factors is the sum over multiplicity functions
+of SHIFTED term-products — every exponent is `≥ 1`, so the occupied
+index set is the full carrier `ι`. -/
+theorem prod_exp_sub_one_eq_tsum_prod_pow_succ {ι : Type*} [Fintype ι]
+    (z : ι → ℂ) :
+    (∏ i, (Complex.exp (z i) - 1))
+      = ∑' m : ι → ℕ,
+          ∏ i, (z i) ^ (m i + 1) / (Nat.factorial (m i + 1) : ℂ) := by
+  rw [Finset.prod_congr rfl fun i _ =>
+    (tsum_pow_succ_div_factorial_succ (z i)).symm]
+  exact tsum_pi_prod' (fun i k => (z i) ^ (k + 1) / (Nat.factorial (k + 1) : ℂ))
+    (fun i => (summable_norm_pow_div_factorial (z i)).comp_injective
+      (add_left_injective 1))
+
 set_option maxHeartbeats 1000000 in
 /-- Summability of the multiplicity-indexed exponential weights — the
 dominating family for the E2 interchange in the exact area law. -/

@@ -1209,6 +1209,34 @@ reusing the banked `tsum_shifted_prod_pow_div_factorial` +
 `norm_integral_exp_term_le`) and V4-2 (re-compose the headline).
 All M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 18a (2026-06-12, **V4-1 stage 1 — the shifted complex
+exp-product expansion**)
+
+**Build:** green (8238 jobs).  Oracle outputs (verbatim,
+`ExpActivityExpansion.lean`):
+
+```
+'YangMills.tsum_pow_succ_div_factorial_succ'         [propext, Classical.choice, Quot.sound]
+'YangMills.prod_exp_sub_one_eq_tsum_prod_pow_succ'   [propext, Classical.choice, Quot.sound]
+```
+
+The pointwise engine for the pinned exp dichotomy.
+`tsum_pow_succ_div_factorial_succ`: the complex shifted series
+`∑'_k z^{k+1}/(k+1)! = exp z − 1` (the constant term removed via
+`Summable.tsum_eq_zero_add`).  `prod_exp_sub_one_eq_tsum_prod_pow_succ`:
+`∏_i (exp(z_i) − 1) = ∑'_{m : ι→ℕ} ∏_i z_i^{m_i+1}/(m_i+1)!` over any
+`Fintype ι`, via the banked complex Pi-Cauchy product `tsum_pi_prod'`
+with the succ-shifted summands (summability by
+`Summable.comp_injective (add_left_injective 1)`).  The SHIFT is the
+design choice: every term has exponent `m_i+1 ≥ 1`, so when this is
+instantiated at `ι = ↥S₀` every contributing monomial occupies EXACTLY
+`S₀` — the N-ality kill (`norm_integral_exp_term_le`) then fires
+uniformly when `Area > #S₀`, with no support bookkeeping.  REMAINING in
+V4-1: the ∫↔∑' swap over the pinned product (`integral_tsum_of_bounded`)
++ the per-term kill + the survivor resummation to `(e^{2δN_c}−1)^{#S₀}`
+(banked `tsum_shifted_prod_pow_div_factorial`); then V4-2.
+All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
