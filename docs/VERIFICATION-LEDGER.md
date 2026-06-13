@@ -2383,6 +2383,30 @@ inputs — the months-scale core, NOT done here, NOT claimed.
 Source Dimock I/II/III; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
 Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 51 (2026-06-12, **gauge-RG UV — geometric summability core**
+`YangMills.RG.geometric_size_summability`; core 8251)
+
+**Build:** green (8251 jobs).  Oracle:
+`'YangMills.RG.geometric_size_summability' [propext, Classical.choice, Quot.sound]`.
+
+`∑_n c_n·qⁿ ≤ (1 − C·q)⁻¹` for `0 ≤ c_n ≤ Cⁿ`, `0 ≤ q`, `0 ≤ C`,
+`C·q < 1`.  The Kotecký–Preiss / Appendix-F convergence criterion in its
+analytic core: per-size polymer count `c_n` bounded by the animal bound
+`Cⁿ`, per-size decay `q = e^{−κ₀}`, smallness `C·q < 1` ⟹ geometric
+summability with `K₀ = (1−Cq)⁻¹`.  This **reduces the cluster-expansion
+summability `hwK`** (consumed by `polymer_remainder_bound`, Add. 50) to
+the **polymer animal-counting bound `c_n ≤ Cⁿ`** — pure lattice
+combinatorics, the one remaining elementary input on the summability
+branch.  Proof: termwise comparison `c_n qⁿ ≤ (Cq)ⁿ` + `tsum_geometric_of_lt_one`.
+
+Status: the cluster-expansion-with-holes (`hact`/`hwK`) now decomposes
+into (i) the activity-decay bound `hact` (the renormalized polymer
+activity estimate, Dimock II/III — still the months-scale core) and
+(ii) the summability `hwK`, whose analytic convergence is now reduced
+(this addendum) to the combinatorial animal count.  Source Dimock I/II/III,
+Kotecký–Preiss; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
+Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

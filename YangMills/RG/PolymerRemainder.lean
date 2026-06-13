@@ -100,4 +100,30 @@ theorem geometric_remainder_assembled {ι : Type*} {κ₀ A K₀ r β : ℝ}
   have hpoly := polymer_remainder_bound R H w g hA hg hR hHsummable hact hwsum hwK
   exact remainder_geometric_of_logistic g R (mul_nonneg hA hK₀) hr0 hr1 hκ hg hb hrec hpoly
 
+/-- **Geometric summability core** (the convergence substrate of `hwK`):
+if the per-size polymer count `c_n` is bounded by the animal bound `Cⁿ`
+and the per-size decay factor `q` satisfies the Kotecký–Preiss-style
+smallness `C·q < 1`, then the size-graded weight sum converges,
+`∑_n c_n·qⁿ ≤ (1 − C·q)⁻¹`.  This is exactly the geometric criterion
+behind Dimock's `∑_{X⊇□} e^{−κ₀ d(X)} ≤ K₀` (with `q = e^{−κ₀}`,
+`K₀ = (1−Cq)⁻¹`): it reduces the cluster-expansion summability `hwK` to
+the **polymer animal-counting bound** `c_n ≤ Cⁿ` — pure lattice
+combinatorics, the one remaining elementary input on this branch.
+Termwise comparison with the geometric series. -/
+theorem geometric_size_summability (c : ℕ → ℝ) {C q : ℝ}
+    (hc : ∀ n, 0 ≤ c n) (hcC : ∀ n, c n ≤ C ^ n) (hq : 0 ≤ q)
+    (hC : 0 ≤ C) (hCq : C * q < 1) :
+    ∑' n, c n * q ^ n ≤ (1 - C * q)⁻¹ := by
+  have hCq0 : 0 ≤ C * q := mul_nonneg hC hq
+  have hgeo : Summable (fun n => (C * q) ^ n) :=
+    summable_geometric_of_lt_one hCq0 hCq
+  have hterm : ∀ n, c n * q ^ n ≤ (C * q) ^ n := by
+    intro n
+    rw [mul_pow]
+    exact mul_le_mul_of_nonneg_right (hcC n) (pow_nonneg hq n)
+  have hsumm : Summable (fun n => c n * q ^ n) :=
+    hgeo.of_nonneg_of_le (fun n => mul_nonneg (hc n) (pow_nonneg hq n)) hterm
+  calc ∑' n, c n * q ^ n ≤ ∑' n, (C * q) ^ n := hsumm.tsum_le_tsum hterm hgeo
+    _ = (1 - C * q)⁻¹ := tsum_geometric_of_lt_one hCq0 hCq
+
 end YangMills.RG
