@@ -145,6 +145,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- concrete (non-abstract) field-size / MGF bound instantiated on it
 #print axioms YangMills.RG.pi_gaussian_centered
 #print axioms YangMills.RG.pi_gaussian_exp_integral_le
+-- the variance bridge: covariance form of the product Gaussian computed as a
+-- diagonal sum, and the field-size bounds it feeds (Schur/PSD → variance → MGF)
+#print axioms YangMills.RG.pi_gaussian_variance
+#print axioms YangMills.RG.pi_gaussian_exp_integral_le_of_covariance_sum
+#print axioms YangMills.RG.pi_gaussian_exp_integral_le_of_uniform_variance
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

@@ -3200,6 +3200,45 @@ remaining `hRpoly` gap is unchanged: the concrete gauge-covariant propagator
 bound — both carried as honest hypotheses.  Clay distance **~0% (<0.1%),
 unchanged**.
 
+## Addendum 76 (2026-06-13, **the variance bridge: covariance form of the
+product Gaussian computed + the Schur→variance→MGF connection**
+`YangMills.RG.pi_gaussian_variance` + `_of_covariance_sum` +
+`_of_uniform_variance`; core 8262)
+
+**Build:** green (8262 jobs — theorems added to `RG/GaussianPi.lean`, no new
+module).  Oracle: all three `[propext, Classical.choice, Quot.sound]`.
+
+Closes the bridge flagged at the end of Add. 75: the covariance form of the
+constructed Gaussian is now *computed*, not abstract, and wired to the
+field-size bound — realizing the chain *(uniform) covariance bound → variance
+bound → field-size/MGF bound* on a genuine constructed measure.
+
+* **`pi_gaussian_variance`** — for `μ = Measure.pi (fun i => gaussianReal 0 vᵢ)`
+  and any dual `L`, `Var[L; μ] = ∑ᵢ (L eᵢ)²·vᵢ` (`eᵢ = Pi.single i 1`).  Proof:
+  `L = ∑ᵢ (L eᵢ)·(·ᵢ)` (`Finset.univ_sum_single` + linearity); coordinates are
+  independent (`iIndepFun_pi`) and `L²`-integrable (`IsGaussian.memLp_dual`), so
+  `Var` of the sum splits (`IndepFun.variance_sum`); each term is
+  `(L eᵢ)²·Var[(·ᵢ)] = (L eᵢ)²·vᵢ` (`variance_const_mul` +
+  `variance_id_gaussianReal` via the coordinate marginal `Measure.pi_map_eval`).
+
+* **`pi_gaussian_exp_integral_le_of_covariance_sum`** — `∑ᵢ (L eᵢ)²·vᵢ ≤ B ⟹
+  ∫ exp(L φ) dμ ≤ exp(B/2)` (substitute the computed variance into Add. 75's
+  bound): the "variance bound ⟹ MGF" link with the variance *computed*.
+
+* **`pi_gaussian_exp_integral_le_of_uniform_variance`** — `vᵢ ≤ a` (uniform
+  covariance bound) `⟹ ∫ exp(L φ) dμ ≤ exp(a·(∑ᵢ (L eᵢ)²)/2)`.  The small-field
+  fluctuation-integral input in canonical shape `exp(½ a·‖·‖²)`; the `a·S` of the
+  Schur bound (`expDecay_quadratic_form_le` / `psd_cauchy_schwarz`, Add. 69–71)
+  plugs directly into `a`.
+
+The diagonal product-Gaussian covariance is now end-to-end concrete and connected
+to the kernel/Schur substrate.  The off-diagonal (general PSD) covariance remains
+via the `A`-pushforward (`isGaussian_pi_map_clm`, Add. 74) with `A∘Aᵀ = C` — the
+Cholesky/spectral-factor step, still ahead.  The `hRpoly` gap is unchanged: the
+concrete CMP-99 gauge-covariant propagator realizing `C`, and the CMP-116
+single-scale raw-activity bound — carried as honest hypotheses, never axioms.
+Clay distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

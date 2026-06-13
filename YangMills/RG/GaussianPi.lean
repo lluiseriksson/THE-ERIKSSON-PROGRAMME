@@ -142,4 +142,100 @@ theorem pi_gaussian_exp_integral_le {ι : Type*} [Fintype ι] (v : ι → NNReal
     isGaussian_pi (fun _ => 0) v
   exact gaussian_exp_integral_le_isGaussian L (pi_gaussian_centered v L) hvar
 
+set_option maxHeartbeats 1000000 in
+/-- **The variance bridge: the covariance form of the standard multivariate
+Gaussian, explicitly computed.**  For `μ = Measure.pi (fun i => gaussianReal 0 vᵢ)`
+and any continuous linear observable `L`, the variance of `L` is the diagonal
+quadratic form `Var[L; μ] = ∑ᵢ (L eᵢ)²·vᵢ`, where `eᵢ = Pi.single i 1` is the
+`i`-th coordinate vector.  Proof: write `L = ∑ᵢ (L eᵢ)·(·ᵢ)` (`Finset.univ_sum_single`
++ linearity), the coordinates are independent (`iIndepFun_pi`) and square-integrable
+(`IsGaussian.memLp_dual`), so the variance of the sum splits
+(`IndepFun.variance_sum`); each term contributes `(L eᵢ)²·Var[(·ᵢ)] = (L eᵢ)²·vᵢ`
+(`variance_const_mul` + `variance_id_gaussianReal` via the coordinate marginal).
+This is the linchpin connecting the kernel/Schur covariance substrate to the
+Gaussian field-size bound: the covariance form is now a concrete sum, bounded by
+the Schur/PSD machinery. -/
+theorem pi_gaussian_variance {ι : Type*} [Fintype ι] [DecidableEq ι] (v : ι → NNReal)
+    (L : StrongDual ℝ (ι → ℝ)) :
+    Var[L; Measure.pi (fun i => gaussianReal 0 (v i))]
+      = ∑ i, (L (Pi.single i 1)) ^ 2 * (v i : ℝ) := by
+  set μ : Measure (ι → ℝ) := Measure.pi (fun i => gaussianReal 0 (v i)) with hμ
+  haveI : IsGaussian μ := isGaussian_pi (fun _ => 0) v
+  haveI : IsProbabilityMeasure μ := by rw [hμ]; infer_instance
+  set X : ι → (ι → ℝ) → ℝ := fun i ω => (L (Pi.single i 1)) * ω i with hX
+  have hLrep : (⇑L) = ∑ i, X i := by
+    funext ω
+    have h1 : (∑ i, Pi.single i (ω i)) = ω := Finset.univ_sum_single ω
+    have hsum : L ω = ∑ i, (L (Pi.single i 1)) * ω i := by
+      conv_lhs => rw [← h1]
+      rw [map_sum]
+      refine Finset.sum_congr rfl (fun i _ => ?_)
+      have hsm : (Pi.single i (ω i) : ι → ℝ) = (ω i) • (Pi.single i (1 : ℝ) : ι → ℝ) := by
+        funext j; rcases eq_or_ne j i with h | h <;> simp [Pi.single_apply, h]
+      rw [hsm, map_smul, smul_eq_mul, mul_comm]
+    rw [hsum]; simp [hX, Finset.sum_apply]
+  have hcoordvar : ∀ i, Var[fun ω : ι → ℝ => ω i; μ] = (v i : ℝ) := by
+    intro i
+    have hmap : μ.map (fun ω : ι → ℝ => ω i) = gaussianReal 0 (v i) := by
+      rw [hμ, show (fun ω : ι → ℝ => ω i) = Function.eval i from rfl, Measure.pi_map_eval,
+        Finset.prod_eq_one (fun j _ => measure_univ), one_smul]
+    rw [← variance_id_map (measurable_pi_apply i).aemeasurable, hmap]
+    exact variance_id_gaussianReal
+  have hmem : ∀ i, MemLp (X i) 2 μ := by
+    intro i
+    have hproj : MemLp (fun ω : ι → ℝ => ω i) 2 μ := by
+      have := IsGaussian.memLp_dual μ
+        (ContinuousLinearMap.proj i : StrongDual ℝ (ι → ℝ)) 2 (by simp)
+      simpa using this
+    have := hproj.const_mul (L (Pi.single i 1))
+    simpa [hX] using this
+  have hpair : Set.Pairwise (↑(Finset.univ : Finset ι)) (fun i j => X i ⟂ᵢ[μ] X j) := by
+    intro i _ j _ hij
+    have hcoord : IndepFun (fun ω : ι → ℝ => ω i) (fun ω : ι → ℝ => ω j) μ := by
+      have := (iIndepFun_pi (μ := fun i => gaussianReal 0 (v i)) (X := fun _ => id)
+        (fun _ => aemeasurable_id)).indepFun hij
+      simpa using this
+    have := hcoord.comp (measurable_id.const_mul (L (Pi.single i 1)))
+      (measurable_id.const_mul (L (Pi.single j 1)))
+    simpa [hX, Function.comp] using this
+  calc Var[L; μ] = Var[∑ i, X i; μ] := by rw [hLrep]
+    _ = ∑ i, Var[X i; μ] := IndepFun.variance_sum (fun i _ => hmem i) hpair
+    _ = ∑ i, (L (Pi.single i 1)) ^ 2 * (v i : ℝ) := by
+        refine Finset.sum_congr rfl (fun i _ => ?_)
+        have hvi : Var[X i; μ]
+            = (L (Pi.single i 1)) ^ 2 * Var[fun ω : ι → ℝ => ω i; μ] :=
+          variance_const_mul (L (Pi.single i 1)) (fun ω => ω i) μ
+        rw [hvi, hcoordvar i]
+
+/-- **Field-size bound from the explicit covariance sum.**  Combining
+`pi_gaussian_variance` with `pi_gaussian_exp_integral_le`: if the explicit
+diagonal covariance form `∑ᵢ (L eᵢ)²·vᵢ` is bounded by `B`, then
+`∫ exp(L φ) dμ ≤ exp(B/2)`.  The "variance bound ⟹ MGF bound" link with the
+variance now *computed*, ready for the Schur/PSD covariance bound to supply `B`. -/
+theorem pi_gaussian_exp_integral_le_of_covariance_sum {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (v : ι → NNReal) (L : StrongDual ℝ (ι → ℝ)) {B : ℝ}
+    (hB : ∑ i, (L (Pi.single i 1)) ^ 2 * (v i : ℝ) ≤ B) :
+    ∫ x, Real.exp (L x) ∂(Measure.pi (fun i => gaussianReal 0 (v i)))
+      ≤ Real.exp (B / 2) := by
+  have hvar : Var[L; Measure.pi (fun i => gaussianReal 0 (v i))] ≤ B := by
+    rw [pi_gaussian_variance v L]; exact hB
+  exact pi_gaussian_exp_integral_le v L hvar
+
+/-- **Field-size bound from a uniform covariance (variance) bound.**  If every
+coordinate variance is bounded, `vᵢ ≤ a`, then
+`∫ exp(L φ) dμ ≤ exp(a·(∑ᵢ (L eᵢ)²)/2)`.  This is the small-field
+fluctuation-integral input in its canonical shape `exp(½ a·‖·‖²)`: a uniform
+bound on the (diagonal) covariance gives uniform exponential moments.  The
+`a := a·S` of the Schur bound `expDecay_quadratic_form_le` / `psd_cauchy_schwarz`
+plugs directly into the `a` here. -/
+theorem pi_gaussian_exp_integral_le_of_uniform_variance {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (v : ι → NNReal) (a : ℝ) (ha : ∀ i, (v i : ℝ) ≤ a) (L : StrongDual ℝ (ι → ℝ)) :
+    ∫ x, Real.exp (L x) ∂(Measure.pi (fun i => gaussianReal 0 (v i)))
+      ≤ Real.exp (a * (∑ i, (L (Pi.single i 1)) ^ 2) / 2) := by
+  refine pi_gaussian_exp_integral_le_of_covariance_sum v L ?_
+  rw [Finset.mul_sum]
+  refine Finset.sum_le_sum (fun i _ => ?_)
+  rw [mul_comm a]
+  exact mul_le_mul_of_nonneg_left (ha i) (sq_nonneg _)
+
 end YangMills.RG
