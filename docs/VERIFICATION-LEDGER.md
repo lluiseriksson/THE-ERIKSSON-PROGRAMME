@@ -2872,6 +2872,41 @@ stays in `(0, 1/2]` by induction (`nlinarith` + `sq_nonneg (g_n − 1/2)`); the
 recursion holds definitionally (`Nat.rec`).  Clay distance **~0% (<0.1%),
 unchanged**.
 
+## Addendum 66 (2026-06-13, **the exponential-decay kernel calculus — Combes–
+Thomas / Neumann engine** `YangMills.RG.expDecay_comp`; core 8258)
+
+**Build:** green (**8258 jobs**, +1 — new module `RG/KernelDecay.lean`).
+Oracle (`expDecay_comp`, `expDecay_add`): `[propext, Classical.choice, Quot.sound]`.
+
+The first analytic substrate toward the YM activity decay `hRpoly`.  Every
+Bałaban multiscale propagator/activity bound rests on the fact that
+exponentially-decaying operator kernels form a **calculus**; this file builds
+it abstractly and source-independently for real kernels on a metric `(V, d)`:
+
+* **`ExpDecay d a κ K`** := `∀ x y, |K x y| ≤ a·e^{−κ·d x y}`.
+* **`expDecay_comp`** (the crux) — composition preserves decay: `A`, `B` at
+  rate `κ` give `(x,y) ↦ ∑_z A x z·B z y` at rate `κ − σ`, amplitude `a·b·S`,
+  using the uniform exponential summability `∑_z e^{−σ d(x,z)} ≤ S`
+  (`0 ≤ σ ≤ κ`).  Triangle inequality extracts `e^{−(κ−σ)d(x,y)}`; the
+  summability absorbs `e^{−σ d(x,z)}`.  This is the Combes–Thomas /
+  Neumann-series engine (the resolvent/propagator of a bounded-range operator
+  decays exponentially; the YM decay constant `κ` of CMP 116 Lemma 3 is
+  inherited from CMP 95/99 via exactly this mechanism).
+* **`expDecay_add` / `expDecay_smul` / `ExpDecay.mono`** — closure under sums,
+  nonnegative scalars, amplitude/rate weakening.
+
+**Dependency moved.**  The summability hypothesis `∑_z e^{−σ d(x,z)} ≤ S` is
+exactly what `RG/AnimalTour.lean` / `RG/CubeLattice.lean` supply on the
+`M`-cube graph — so this calculus is *connected* to the closed combinatorial
+substrate, not free-floating.  **It does NOT prove the YM activity bound**
+(the carried `hRpoly`, needing the full gauge fluctuation construction); it is
+the analytic toolkit that bound's proof must consume.  **Non-vacuity:** the
+composition is a genuine quantitative inequality; the hypotheses are jointly
+satisfiable (any bounded-degree lattice with `d` the graph distance gives the
+summability via the animal count, e.g. `cubeAdj`).  Source: Combes–Thomas,
+Bałaban CMP 95/99; strategy/framing **Lluis Eriksson** (ai.viXra:2602.0088).
+Continuum (M4) track; Clay distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

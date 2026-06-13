@@ -215,6 +215,10 @@ import YangMills.RG.UVMassGap
 -- geometric-profile assembly generalized to any nonnegative summable scale
 -- profile, specialized to the (asymptotically-free) marginal coupling flow.
 import YangMills.RG.MarginalUVMassGap
+-- Analytic substrate for the YM activity decay: the exponential-decay kernel
+-- calculus (decay preserved under sum/scalar/composition — the Combes-Thomas /
+-- Neumann-series engine), consuming the lattice exponential summability.
+import YangMills.RG.KernelDecay
 -- hRpoly campaign brick P1a: the bounded-degree walk-count engine (≤ Δⁿ) — the
 -- combinatorial substrate for the lattice animal count `c_n ≤ Cⁿ` (branch C of
 -- `hRpoly`). Pure graph combinatorics; consumer = animal count → polymer_weight_summability.
