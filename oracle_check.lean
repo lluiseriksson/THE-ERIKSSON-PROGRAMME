@@ -111,6 +111,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.marginal_coupling_tendsto_zero
 -- the marginal-coupling remainder scale-sum bound (honest YM coupling bridge)
 #print axioms YangMills.RG.marginal_coupling_remainder_tsum_le
+-- the summable-profile UV assembly + the honest YM end-to-end UV conditional
+-- with the MARGINAL coupling (no geometric assumption)
+#print axioms YangMills.RG.lattice_mass_gap_of_per_scale_uv_summable
+#print axioms YangMills.RG.lattice_mass_gap_of_cluster_and_marginal_coupling
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

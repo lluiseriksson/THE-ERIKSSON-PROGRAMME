@@ -2820,6 +2820,41 @@ bounded constant — the coupling side discharged for the marginal YM flow with
 no false geometric-decay assumption.  `tsum_le_tsum` + `tsum_mul_left`, the
 summand summability by comparison.  Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 64 (2026-06-13, **the marginal-coupling UV mass-gap conditional**
+`YangMills.RG.lattice_mass_gap_of_cluster_and_marginal_coupling`; core 8257)
+
+**Build:** green (**8257 jobs**, +1 — new module `RG/MarginalUVMassGap.lean`).
+Oracle (both headlines): `[propext, Classical.choice, Quot.sound]`.
+
+Generalizes the geometric-profile UV assembly to the marginal (YM) coupling,
+the honest 4D replacement for `lattice_mass_gap_of_cluster_and_coupling`:
+
+* **`uv_summable_summation`** — finite partial sums of `|R k| ≤ amp·w_k` are
+  `≤ amp·S` for `w ≥ 0` summable with `∑' w ≤ S` (`Summable.sum_le_tsum`).
+* **`lattice_mass_gap_of_per_scale_uv_summable`** — the banked geometric-profile
+  assembly (`lattice_mass_gap_of_per_scale_uv`, Add. 19) generalized from `rᵏ`
+  to ANY nonnegative summable `w_k`: from `|R_{t,k}| ≤ (C₂·e^{−c₀t})·w_k` (+ the
+  theorem-fed IR bound + the covariance scale-sum), the lattice mass gap with
+  constant `C₁ + C₂·S`.  Feeds `lattice_mass_gap_of_exp_clustering_uniform`.
+* **`lattice_mass_gap_of_cluster_and_marginal_coupling`** — the headline: the
+  coupling flows by the marginal recursion `g_{k+1} = g_k(1 − β g_k)`
+  (asymptotically free, NOT geometric), the carried Bałaban YM activity bound
+  is `|R_{t,k}| ≤ (C₂·e^{−c₀t})·g_k^{κ₀}` (`κ₀ > 1`), and the lattice mass gap
+  follows with the **finite** constant `C₁ + C₂·∑_k g_k^{κ₀}` — the scale-sum
+  convergent by `marginal_coupling_pow_summable_of_recursion` (Add. 62) even
+  though `g_k` does not decay geometrically.
+
+**Dependency moved.**  The §6.3 UV obligation now has an end-to-end conditional
+with the **correct (marginal) YM coupling flow** — no false `g_k ≤ C·rᵏ`.  The
+sole carried analytic input is `hRpoly` (the Bałaban YM single-scale activity
+bound, CMP 116 Lemma 3 / Large Field II — months-scale gauge construction, NOT
+formalized).  The IR side is theorem-fed; the `R_{t,k}`-as-covariance-remainder
+reading is carried framing (Bałaban proves UV *stability*, not a mass gap).
+**Non-vacuity:** the general `_summable` assembly is non-vacuous for any
+geometric `w` (e.g. `(1/2)ᵏ`); the marginal recursion is satisfiable by the
+logistic flow `g_0 = 1/2, β = 1` (stays in `(0,1/2]`).  Clay distance **~0%
+(<0.1%), unchanged** — a lattice conditional, no continuum/OS content.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
