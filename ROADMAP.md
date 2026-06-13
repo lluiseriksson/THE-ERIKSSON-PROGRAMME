@@ -1,11 +1,22 @@
 # ROADMAP — pushing the boundary toward an unconditional Yang–Mills mass gap
 
-> **STATUS STAMP (2026-06-12).** Since this roadmap was written (2026-06-09)
-> the area-law track has been completed twice over: the linearized
-> finite-volume area law (ledger Addenda 12–15) and the exact-activity area
-> law `finite_volume_area_law_exp` (Addendum 16), both unconditional and
-> oracle-clean. The next move is recorded in `docs/AREA-LAW-VU-PLAN.md`
-> (volume-uniform constant). The measurement discipline below is unchanged.
+> **STATUS STAMP (2026-06-12, latest).** Core green at **8252 jobs**,
+> Mathlib pinned (see `REPRODUCIBILITY.md`).  Since this roadmap was first
+> written (2026-06-09) several tracks closed: the area-law track (all four
+> variants — finite-volume/volume-uniform × linearized/exact-activity,
+> ledger Addenda 12–18d); the IR clustering bound (theorem-fed, M3 IR side
+> done); and the **gauge-RG continuum track** (`YangMills/RG/**`, 36
+> oracle-clean bricks, Addenda 23–52) — the local averaging-operator theory
+> is complete and the §6.3 UV branch is now ONE oracle-clean conditional
+> `lattice_mass_gap_of_cluster_and_coupling` on two carried Bałaban inputs
+> (`hRpoly`, `hg`).  **The current frontier is those two inputs** (the
+> Dimock cluster-expansion-with-holes and the coupling-flow decay), the
+> genuine months-scale work; see `docs/BALABAN-RG-PLAN.md`,
+> `docs/UV-SINGLE-SCALE-PLAN.md`, `docs/BALABAN-SOURCE-BOUNDS.md`.  The
+> §3 "immediate next moves" and §4 "Target B" notes below are
+> **superseded** (kept as a historical 2026-05/06 record); the measurement
+> discipline (§0, §2) is unchanged and still governs.  Clay distance
+> **~0% (<0.1%)**, unchanged.
 
 This file is the honest, measurable plan for advancing the project, written so that
 a later (possibly stronger) automated prover can pick the next move, attempt it,
@@ -148,6 +159,13 @@ history of this repo.
 
 ## 3. Immediate next moves (concrete, in priority order)
 
+> **SUPERSEDED (see status stamp).** The list below is the 2026-05/06
+> SU(N)-Haar-era front line; it has been overtaken by the area-law and
+> gauge-RG tracks.  The current frontier is the two carried Bałaban inputs
+> `hRpoly`/`hg` of `lattice_mass_gap_of_cluster_and_coupling` (the Dimock
+> cluster expansion with holes + coupling-flow decay).  Items 1–5 below are
+> retained as a historical record of lower-priority hygiene/warm-up tasks.
+
 1. **Repair `SchurEntryOffDiag.lean`** against current Mathlib (`star_mul`
    disambiguation, `Filter.EventuallyEq.of_forall` rename, `NeZero` synthesis), or
    re-derive its content; then re-add it to `YangMillsCore`. *(Hygiene, low risk.)*
@@ -224,10 +242,13 @@ full build 8195 jobs green). ~20 theorems:
   `ursellComplete_eq` (`φ(K_{n+1}) = (−1)ⁿ·n!`),
   `clusterSum_singlePolymer_eq_log`, `partition_singlePolymer_eq_exp`
   (the n=1 Mayer identity `Ξ = exp(clusterSum)`).
-- **Target B — OPEN** — `kp_per_size_bound` (the Penrose tree-graph inequality giving
-  the geometric per-size bound). Closing it feeds the verified convergence back-half.
-  Large `Finset`/graph construction; carried with **no axiom**, only explicit
-  hypotheses (FOUNDATIONS discipline). See `docs/HANDOFF-KP.md`.
+- **Target B — CLOSED** (superseding the "OPEN" note that was here).
+  `kp_per_size_bound` (`KP/KPBound.lean`): `clusterWeight P n ≤
+  (∑_y ‖activity y‖)·(e·A)ⁿ`, the geometric per-size bound via BFS-Penrose
+  tree counting — proved oracle-clean, no axiom (ledger; the KP convergence
+  back-half is now theorem-fed).  This is exactly the abstract
+  Kotecký–Preiss framework the gauge-RG `hwK`/animal-count branch reuses
+  (see `docs/BALABAN-SOURCE-BOUNDS.md` §6).
 
 This is genuine M3 progress, all on the lattice / finite-volume side — **still ~0%
 toward Clay** (§0), whose difficulty is the untouched continuum limit (M4–M5).

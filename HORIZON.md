@@ -18,6 +18,21 @@ does three things:
 Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 (what was kept/discarded and why) first. This file extends them outward.
 
+> **CURRENCY STAMP (2026-06-12).** The "Ground truth as of 2026-05" below is
+> a historical snapshot.  Since then the core advanced substantially (now
+> **8252 jobs**, Mathlib pinned — `REPRODUCIBILITY.md`): the strong-coupling
+> **area law** (all four variants) and **IR exponential clustering** are
+> oracle-clean theorems; the **gauge-RG continuum track** (`YangMills/RG/**`,
+> 36 bricks) is built, and the §6.3 UV obligation is now a single oracle-clean
+> conditional `lattice_mass_gap_of_cluster_and_coupling` on two carried
+> Bałaban inputs (`hRpoly`, `hg`).  **The live frontier is those two inputs**
+> (Dimock cluster expansion with holes + coupling-flow decay); see
+> `docs/BALABAN-RG-PLAN.md`, `docs/BALABAN-SOURCE-BOUNDS.md`,
+> `HYPOTHESIS_FRONTIER.md`.  The DAG, triage, and goalpost discipline in this
+> file remain valid; only the "what is already done" snapshot below is dated.
+> **Clay distance unchanged: ~0% (<0.1%)** — M4 (continuum) and M5 (OS/Wightman
+> reconstruction) are untouched open mathematics.
+
 ---
 
 ## 0. Ground truth as of 2026-05
