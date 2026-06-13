@@ -1732,6 +1732,40 @@ With B4-prep (the holonomy gauge law, Add. 28) this completes the
 (1.8)/116; strategy **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum
 (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 30 (2026-06-12, **gauge-RG brick B4 — gauge covariance of the
+averaged contour variable** `YangMills.RG.averagedContour_gaugeAct`;
+core 8244)
+
+**Build:** green (**8244 jobs** — incremented, new module
+`RG/AveragedContour.lean`).  Oracle (verbatim):
+
+```
+'YangMills.RG.averagedContour_gaugeAct'  [propext, Classical.choice, Quot.sound]
+```
+
+Bałaban's averaged contour variable (CMP 109 (0.11)) `U(y,x) =
+M({U(Γ)}_{Γ∈G(y,x)})` — the group average of the holonomies along all
+contours from `y` to `x` — is **gauge covariant**:
+`Avg.M (paths.map (wilsonLine (gaugeAct u A))) =
+u(y)·Avg.M (paths.map (wilsonLine A))·u(x)⁻¹`, for any group average
+`Avg`, gauge transform `u`, config `A`, and any **nonempty** family
+`paths` of connected contours all running `y→x`.  Proof: each contour
+holonomy conjugates by `u` at the **same** endpoints (B4-prep,
+`wilsonLine_gaugeAct_path`, Add. 28), so the whole `Multiset` of
+holonomies is `(map (wilsonLine A)).map (W ↦ u(y)·W·u(x)⁻¹)`, and
+bi-equivariance (0.6) of the average (`GroupAverage.biequiv`, Add. 26)
+pulls the endpoint factors out.  Nonemptiness routed through
+`Multiset.map_eq_zero` so `biequiv`'s `L ≠ 0` side condition is met
+(the same non-vacuity discipline as Add. 27).
+
+This needs **no matrix logarithm** — it is the gauge covariance (CMP 98
+(11)) at the level of the averaged variable, the algebraic heart of B4.
+What remains for the full field map `Ū` (brick B4-Ū) is to apply this
+pointwise once `Ū` is defined (which does need the matrix-`log` layer).
+Source: Bałaban CMP 109 (0.6),(0.11); CMP 98 (11).  Strategy/framing
+**Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay
+distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

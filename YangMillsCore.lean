@@ -170,3 +170,6 @@ import YangMills.RG.GroupAverage
 -- B4-prep: the holonomy gauge-covariance law along a connected path
 -- (Bałaban CMP 98 (11) / CMP 109 §0) — the foundation of `Ū` gauge covariance.
 import YangMills.RG.HolonomyGauge
+-- B4: gauge covariance of the averaged contour variable (CMP 109 (0.11)) —
+-- the holonomy law (B4-prep) composed with the bi-equivariance of `M`.
+import YangMills.RG.AveragedContour
