@@ -315,4 +315,45 @@ theorem finiteRange_resolvent_isExpDecay {d : V → V → ℝ} {K : V → V → 
   exact expDecay_resolvent (mul_nonneg hM (Real.exp_pos _).le) hS0 hsmall hd htri hσ hσκ hK
     hsum hStsum
 
+/-- **Volume-uniform lattice exponential summability from a shell-growth bound.**
+This supplies the recurring geometric hypothesis (`∑_z e^{−σ d(x,z)} ≤ S`) of the
+whole decay stack — `expDecay_comp`, `expDecay_resolvent`,
+`expDecay_quadratic_form_le` — for a lattice whose graph distance from a fixed
+point is the level function `ℓ`.  If the shell cardinalities `#{z : ℓ z = k}` are
+bounded by `N k` and `∑ₖ N k · e^{−σk}` is summable, then
+`∑_z e^{−σ·ℓ z} ≤ ∑'ₖ N k · e^{−σk}` — a bound **independent of the lattice
+size** (volume-uniform).  On `ℤ^d` the shells grow polynomially
+(`N k = C·(k+1)^{d−1}`), so the dominating series is a polynomial × geometric
+sum, finite for every `σ > 0`; this is the geometric origin of the uniform
+summability constant `S` in the Combes–Thomas / Bałaban propagator estimates.
+Proof: group the sum into shells (`Finset.sum_fiberwise_of_maps_to`), bound each
+shell cardinality by `N k`, and compare the finite shell-sum to the full series
+(`Summable.sum_le_tsum`). -/
+theorem lattice_exp_sum_le_of_shell {V : Type*} [Fintype V] [DecidableEq V]
+    (ℓ : V → ℕ) {σ : ℝ} (N : ℕ → ℝ)
+    (hN : ∀ k, ((Finset.univ.filter (fun z => ℓ z = k)).card : ℝ) ≤ N k)
+    (hsummable : Summable (fun k => N k * Real.exp (-σ * (k : ℝ)))) :
+    ∑ z, Real.exp (-σ * (ℓ z : ℝ)) ≤ ∑' k, N k * Real.exp (-σ * (k : ℝ)) := by
+  classical
+  set g : ℕ → ℝ := fun k => Real.exp (-σ * (k : ℝ)) with hg
+  have hgnn : ∀ k, 0 ≤ g k := fun k => (Real.exp_pos _).le
+  have hNnn : ∀ k, 0 ≤ N k := fun k => le_trans (Nat.cast_nonneg _) (hN k)
+  have hfib : ∑ z, g (ℓ z)
+      = ∑ k ∈ Finset.univ.image ℓ,
+          ((Finset.univ.filter (fun z => ℓ z = k)).card : ℝ) * g k := by
+    rw [← Finset.sum_fiberwise_of_maps_to
+      (t := Finset.univ.image ℓ)
+      (fun z _ => Finset.mem_image_of_mem ℓ (Finset.mem_univ z)) (fun z => g (ℓ z))]
+    refine Finset.sum_congr rfl (fun k _ => ?_)
+    have hc : ∀ z ∈ Finset.univ.filter (fun z => ℓ z = k), g (ℓ z) = g k :=
+      fun z hz => by rw [(Finset.mem_filter.mp hz).2]
+    rw [Finset.sum_congr rfl hc, Finset.sum_const, nsmul_eq_mul]
+  calc ∑ z, Real.exp (-σ * (ℓ z : ℝ))
+      = ∑ k ∈ Finset.univ.image ℓ,
+          ((Finset.univ.filter (fun z => ℓ z = k)).card : ℝ) * g k := hfib
+    _ ≤ ∑ k ∈ Finset.univ.image ℓ, N k * g k :=
+        Finset.sum_le_sum (fun k _ => mul_le_mul_of_nonneg_right (hN k) (hgnn k))
+    _ ≤ ∑' k, N k * g k :=
+        hsummable.sum_le_tsum _ (fun k _ => mul_nonneg (hNnn k) (hgnn k))
+
 end YangMills.RG

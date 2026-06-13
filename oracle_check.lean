@@ -131,6 +131,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- concrete Combes-Thomas: the resolvent of a small finite-range operator decays
 -- exponentially (the literal mechanism of the Balaban propagator bound)
 #print axioms YangMills.RG.finiteRange_resolvent_isExpDecay
+-- volume-uniform lattice exponential summability from a shell-growth bound
+-- (discharges the recurring geometric hypothesis of the whole decay stack)
+#print axioms YangMills.RG.lattice_exp_sum_le_of_shell
 -- Schur boundedness: row-sum + quadratic-form (covariance) bound ≤ a·S
 #print axioms YangMills.RG.expDecay_finset_row_le
 #print axioms YangMills.RG.expDecay_quadratic_form_le

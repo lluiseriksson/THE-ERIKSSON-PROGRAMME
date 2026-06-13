@@ -3393,6 +3393,37 @@ two faithful source facts — the concrete operator's finite range / small-field
 smallness (CMP 95/99) and the CMP-116 raw-activity bound — carried as honest
 hypotheses, never axioms.  Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 82 (2026-06-13, **volume-uniform lattice exponential summability from
+a shell-growth bound** `YangMills.RG.lattice_exp_sum_le_of_shell`; core 8262)
+
+**Build:** green (8262 jobs — theorem added to `RG/KernelDecay.lean`).  Oracle:
+`[propext, Classical.choice, Quot.sound]`.
+
+Discharges the *recurring* geometric hypothesis of the entire decay stack — the
+summability `∑_z e^{−σ d(x,z)} ≤ S` consumed (as `hsum`/`hS`/`hrow`) by
+`expDecay_comp`, `expDecay_resolvent`, `finiteRange_resolvent_isExpDecay`, and
+`expDecay_quadratic_form_le`.
+
+* **`lattice_exp_sum_le_of_shell`** — if the shell cardinalities
+  `#{z : ℓ z = k}` (with `ℓ` the graph distance from a fixed point) are bounded by
+  `N k`, and `∑ₖ N k · e^{−σk}` is summable, then
+  `∑_z e^{−σ·ℓ z} ≤ ∑'ₖ N k · e^{−σk}` — a bound **independent of the lattice
+  size**.  On `ℤ^d` the shells grow polynomially (`N k = C·(k+1)^{d−1}`), so the
+  dominating series is polynomial × geometric, finite for every `σ > 0`: this is
+  the geometric origin of the uniform summability constant `S` in the
+  Combes–Thomas / Bałaban propagator estimates.  Proof: group into shells
+  (`Finset.sum_fiberwise_of_maps_to`), bound each shell by `N k`, compare the
+  finite shell-sum to the full series (`Summable.sum_le_tsum`).
+
+With this, the decay-and-fluctuation substrate is geometrically self-contained:
+the lattice geometry supplies `S`, finite-range operators are `ExpDecay`
+(Add. 80), their resolvents decay (Add. 81), the resulting Gram covariance is PSD
+(Add. 79) and its quadratic form is Schur-bounded (Add. 69), giving the Gaussian
+field-size bound (Add. 78).  The remaining inputs are the two faithful source
+facts — the concrete Bałaban operator's finite range / smallness (CMP 95/99) and
+the CMP-116 raw-activity bound — carried as honest hypotheses, never axioms.
+Clay distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
