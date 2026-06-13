@@ -2855,6 +2855,23 @@ geometric `w` (e.g. `(1/2)ᵏ`); the marginal recursion is satisfiable by the
 logistic flow `g_0 = 1/2, β = 1` (stays in `(0,1/2]`).  Clay distance **~0%
 (<0.1%), unchanged** — a lattice conditional, no continuum/OS content.
 
+## Addendum 65 (2026-06-13, **non-vacuity of the marginal conditional**
+`YangMills.RG.exists_marginal_coupling_flow`; core 8257)
+
+**Build:** green (8257 jobs — theorem added to `RG/MarginalUVMassGap.lean`, no
+new module).  Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+FOUNDATIONS-discipline non-vacuity certificate for Add. 64's marginal
+conditional (matching the geometric `lattice_mass_gap_uv_conditional_nonvacuous`,
+Add. 56): the logistic flow `g_{k+1} = g_k(1 − β g_k)` with `β = 1`, `g_0 = 1/2`
+satisfies all the coupling hypotheses of
+`lattice_mass_gap_of_cluster_and_marginal_coupling` — positivity, smallness
+`β·g_k < 1`, and the recursion — so the marginal conditional's coupling premise
+is inhabited by genuine data and is NOT vacuously applicable.  Proof: the flow
+stays in `(0, 1/2]` by induction (`nlinarith` + `sq_nonneg (g_n − 1/2)`); the
+recursion holds definitionally (`Nat.rec`).  Clay distance **~0% (<0.1%),
+unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

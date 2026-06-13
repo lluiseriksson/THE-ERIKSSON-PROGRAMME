@@ -123,4 +123,27 @@ theorem lattice_mass_gap_of_cluster_and_marginal_coupling
     (fun k => g k ^ κ₀) C1 C2 ε c0 (∑' k, g k ^ κ₀)
     hε hc0 hC2 hw hsum le_rfl hIRbound hcovUV hRpoly
 
+/-- **Non-vacuity of the marginal-coupling recursion.**  The logistic flow
+`g_{k+1} = g_k(1 − β g_k)` with `β = 1`, `g_0 = 1/2` satisfies all the coupling
+hypotheses of `lattice_mass_gap_of_cluster_and_marginal_coupling` — positivity,
+smallness `β·g_k < 1`, and the recursion — so the marginal conditional is not
+vacuously applicable: its coupling premise set is inhabited by genuine data.
+(The flow stays in `(0, 1/2]`, by induction.) -/
+theorem exists_marginal_coupling_flow :
+    ∃ (g : ℕ → ℝ) (β : ℝ), 0 < β ∧ (∀ k, 0 < g k) ∧ (∀ k, β * g k < 1) ∧
+      (∀ k, g (k + 1) = g k * (1 - β * g k)) := by
+  set g : ℕ → ℝ := fun k => Nat.rec (1 / 2 : ℝ) (fun _ x => x * (1 - x)) k with hg
+  have hrec : ∀ k, g (k + 1) = g k * (1 - g k) := fun k => rfl
+  have hinv : ∀ k, 0 < g k ∧ g k ≤ 1 / 2 := by
+    intro k
+    induction k with
+    | zero => exact ⟨by rw [hg]; norm_num, by rw [hg]; norm_num⟩
+    | succ n ih =>
+      obtain ⟨hp, hle⟩ := ih
+      rw [hrec n]
+      exact ⟨by nlinarith, by nlinarith [sq_nonneg (g n - 1 / 2)]⟩
+  refine ⟨g, 1, one_pos, fun k => (hinv k).1, fun k => ?_, fun k => ?_⟩
+  · rw [one_mul]; linarith [(hinv k).2]
+  · rw [hrec k, one_mul]
+
 end YangMills.RG
