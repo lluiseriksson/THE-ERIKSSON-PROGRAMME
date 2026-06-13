@@ -2749,6 +2749,61 @@ the (logarithmic, marginal) 4D coupling flow come from Bałaban's YM papers,
 not from these `φ⁴₃` numbers.  **Clay distance ~0% (<0.1%), unchanged** — this
 is lattice combinatorics on a concrete graph; no continuum/OS content.
 
+## Addendum 62 (2026-06-13, **the YM coupling is marginal — summable scale-series
+without geometric decay** `YangMills.RG.marginal_coupling_pow_summable`; core 8256)
+
+**Build:** green (**8256 jobs**, +1 — new module `RG/MarginalCoupling.lean`).
+Oracle (both headlines): `[propext, Classical.choice, Quot.sound]`.
+
+The Bałaban Yang–Mills source review (now done; map below) confirms the
+load-bearing correction: **the 4D YM coupling `g_k` is marginal /
+asymptotically free — it runs logarithmically, NOT geometrically.**  A
+geometric bound `g_k ≤ C·rᵏ` (`r < 1`) is **false** for the marginal coupling
+(it holds only for *irrelevant* couplings, as in Dimock's superrenormalizable
+φ⁴₃).  This addendum supplies the *honest* YM coupling side:
+
+* **`marginal_coupling_pow_summable`** — from the asymptotic-freedom lower
+  bound `1/g₀ + β·n ≤ 1/gₙ` (the conclusion of `inv_coupling_linear_growth`,
+  Add. ~46), `β > 0`, `κ₀ > 1`: the series `∑ₙ gₙ^{κ₀}` **converges**.  So
+  although the marginal coupling does not decay geometrically, the
+  renormalization-remainder series over scales is still summable for activity
+  power `κ₀ > 1`.  Proof: `gₙ ≤ 1/(c(n+1))` then comparison with the `p`-series
+  `∑ n^{−κ₀}` (`Real.summable_nat_rpow_inv`).
+* **`marginal_coupling_tendsto_zero`** — asymptotic freedom: `gₙ → 0`.
+* **`marginal_coupling_pow_summable_of_recursion`** — the same, directly from
+  the marginal recursion `g_{k+1} = g_k(1 − β g_k)`.
+
+**Dependency moved.**  The UV `hg` side of `lattice_mass_gap_of_cluster_and_coupling`
+used a geometric `g_k ≤ C·rᵏ` — *model-incorrect for YM*.  This brick gives the
+correct marginal-coupling summability `∑ g_k^{κ₀} < ∞` (`κ₀ > 1`), the honest
+object on which a YM remainder assembly should rest.  It does **not** supply
+the YM activity-decay bound (carried; see source map).  **Non-vacuity:** the
+hypotheses are satisfiable (e.g. `g_n = g_0/(1+β g_0 n)`-type flows); the
+series bound is a genuine convergence, not vacuous.
+
+### Bałaban Yang–Mills source map (lattice SU(N) RG series, all CMP)
+For the genuine YM `hRpoly` activity input (NOT Dimock φ⁴₃):
+* **CMP 116 (1988), "RG approach to LGT II: Cluster expansions", Lemma 3 /
+  eq. (2.38):** the single-scale YM activity bound
+  `|H(Z)| ≤ C₃ ε₁ exp(−(1−8δ)^{1/2} L κ d_{k+1}(Z))`; eq. (2.41) exponentiates
+  to the effective-action bound `|E^{(k+1)}(X)| ≤ O(1)C₃ε₁ e^{−(1−10δ)^{1/2}Lκ d(X)}`,
+  giving the inductive `(I.1.18)`.  **This is the closest source-faithful
+  `hRpoly`.**
+* **CMP 122-I/II (1989), "Large field renormalization":** the `R`-operation and
+  the complete-model remainder bound `|R^{(k)}(X)| ≤ e^{−p₀(g_k)} e^{−κ d_k(X)}`
+  (the large-field/holes part); 122-II Theorem 1 = UV stability.
+* **CMP 119 (1988), "Convergent renormalization expansions":** the complete
+  effective density `A_k = A + E_k + R_k + B_k`, large-field domains.
+* **CMP 109 (1987), "RG approach to LGT I":** small-field effective actions and
+  the **recursive (marginal) coupling renormalization** — the source for the
+  marginal/logarithmic flow this addendum formalizes.
+* **CMP 99 (1985), background-field propagators:** the source of the decay
+  constant `κ`.
+* **Critical:** Bałaban's series proves **UV stability**, *not* a mass gap.
+  There is **no Bałaban mass-gap theorem**; any `R_k → mass gap` step is an
+  open conjecture, carried as a hypothesis, never a cited lemma.  Clay distance
+  **~0% (<0.1%), unchanged.**
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

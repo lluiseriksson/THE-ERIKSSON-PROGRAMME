@@ -105,6 +105,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- cube-lattice polymer summability on Dimock's geometry
 #print axioms YangMills.RG.cubeAdj_degree_le
 #print axioms YangMills.RG.cube_polymer_summable
+-- the YM coupling is marginal (asymptotically free), NOT geometric: the marginal
+-- coupling still yields a summable scale-series for activity power κ₀ > 1
+#print axioms YangMills.RG.marginal_coupling_pow_summable
+#print axioms YangMills.RG.marginal_coupling_tendsto_zero
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

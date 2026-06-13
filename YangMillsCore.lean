@@ -198,6 +198,10 @@ import YangMills.RG.CouplingFlowBridge
 -- bridge into the geometric remainder bound. Honest caveat: irrelevant-operator
 -- mechanism (4D marginal coupling is only logarithmic) — see the module header.
 import YangMills.RG.CouplingFlow
+-- The YM coupling is MARGINAL (asymptotically free, logarithmic), NOT geometric.
+-- `g_k ≤ C·rᵏ` is false for YM; yet the marginal coupling still gives a summable
+-- scale-series `∑ g_k^{κ₀}` for activity power `κ₀ > 1` (the honest YM coupling side).
+import YangMills.RG.MarginalCoupling
 -- UV `hpoly` summation step: the polymer cluster-sum bound — `|∑ activities|
 -- ≤ amplitude·K₀` from Dimock's activity-decay + geometric-summability
 -- estimates (carried hypotheses), and the assembled conditional geometric
