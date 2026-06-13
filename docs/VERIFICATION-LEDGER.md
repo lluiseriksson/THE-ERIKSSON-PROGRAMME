@@ -1419,6 +1419,35 @@ string tension `τ = log 2 − 1/2 > 0` (via `Real.log_two_gt_d9`),
 certifying the confinement conclusion is genuinely non-trivial.  All M3
 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 21 (2026-06-12, **UV frontier audit — negative result +
+shopping list**; no Lean change, core unchanged at 8238)
+
+A research-grade audit of the UV frontier (the sole carried M3
+hypothesis) established a clean negative result: the only UV-side
+material in the tree — the `ClayCore` Balaban scaffolding
+(`BalabanH1H2H3`, `SmallFieldBound`, `LargeFieldBound`,
+`MultiscaleDecoupling`, `OscillationBound`, `CouplingControl`) — is
+**physically vacuous**.  Its hypotheses bound *unconstrained*
+existential reals (`∀ n, ∃ R, 0 ≤ R ∧ R ≤ …`, met by `R = 0`); the
+"activity" is an arbitrary `Nat → Real` never tied to the Wilson action;
+the files contain no `gaugeMeasureFrom`/`WilsonAction`/`sunHaarProb`/
+integral; so `balaban_combined_bound : BalabanHyps ⟹ …` is a sound but
+EMPTY implication.  This is why the files are correctly excluded from
+`YangMillsCore`, and connecting them to the assembly is forbidden
+(it would manufacture a green theorem that says nothing about
+Yang–Mills — the hollow-progress pattern).  Genuine progress requires
+DEFINING the per-scale RG contribution `R_{t,k}` against the actual
+gauge measure and PROVING its bound — the Balaban block-spin
+construction + single-scale stability estimates, which are NOT in the
+repo.  Per mandate, reconstructing them from memory is declined on
+honesty grounds; the precise source request (Eriksson [55] Thms
+6.2/6.3/8.5; Bałaban CMP 116, 122-II Eq (1.98)–(1.100); Dimock's
+"RG according to Balaban" I–III; the paper's `covUV` scale
+decomposition) is recorded in `docs/UV-SHOPPING-LIST.md`.  The UV
+campaign is **blocked on this source material**; everything proved to
+date is unchanged and remains honest.  All M3 lattice-side;
+M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

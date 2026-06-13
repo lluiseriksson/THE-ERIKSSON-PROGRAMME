@@ -37,6 +37,32 @@ on the lattice side.
 * `MassGapAssembly.mass_gap_bound` — the `IR + UV → single-rate`
   combiner.
 
+## 2a. AUDIT FINDING (2026-06-12) — the existing scaffolding is vacuous
+
+A research-grade audit of the `ClayCore` Balaban material
+(`BalabanH1H2H3`, `SmallFieldBound`, `LargeFieldBound`,
+`MultiscaleDecoupling`, `OscillationBound`, `CouplingControl`)
+established that it is **physically vacuous** and must NOT be wired into
+the assembly:
+
+* its hypotheses are existential upper bounds on *unconstrained*
+  nonnegative reals (`∀ n, ∃ R, 0 ≤ R ∧ R ≤ …`, satisfied by `R = 0`);
+* `SmallFieldActivityBound.activity : Nat → Real` is an arbitrary
+  sequence, never tied to the Wilson action / gauge measure;
+* `MultiscaleDecoupling.lean` &c. contain no `gaugeMeasureFrom`,
+  `WilsonAction`, `sunHaarProb`, or integral whatsoever;
+* hence `balaban_combined_bound : BalabanHyps ⟹ …` is a sound but EMPTY
+  implication (its antecedent is trivially inhabited).
+
+This is why those files are correctly excluded from `YangMillsCore`.
+**Connecting them to the mass-gap assembly is forbidden** — it would
+produce a green theorem that says nothing about Yang–Mills.  The real
+work is to DEFINE `R_{t,k}` as an actual RG contribution to the
+two-point function and PROVE its bound, which requires the source
+material specified in `docs/UV-SHOPPING-LIST.md`.  **The campaign is
+blocked on that source material** (mandate point 7/8); see the shopping
+list for the exact papers, definitions, and estimates needed.
+
 ## 3. The genuine hard content — Balaban Lemma 6.2 (the per-scale bound)
 
 The open obligation reduces to **one** per-scale estimate:

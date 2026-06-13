@@ -306,8 +306,14 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   linearized/exact).  The sole carried hypothesis of the M3 lattice
   mass gap is the §6.3 Balaban UV single-scale bound; a clean-core
   discharge is scoped with a brick ladder (U0–U4) in
-  `docs/UV-SINGLE-SCALE-PLAN.md` — recommended next campaign, start at
-  U0.  Next
+  `docs/UV-SINGLE-SCALE-PLAN.md`; U0 (the per-scale reduction) is
+  closed.  **BUT the campaign is BLOCKED on source material** — a
+  2026-06-12 audit (ledger Add. 21) found the in-tree `ClayCore`
+  Balaban scaffolding to be physically vacuous (existential bounds on
+  unconstrained reals, no contact with the gauge measure), so it CANNOT
+  be connected to the assembly.  The exact papers/definitions/estimates
+  needed to build the UV side non-vacuously are listed in
+  `docs/UV-SHOPPING-LIST.md` — obtain those before opening U1.  Next
   frontiers:
   Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
   single-scale UV estimate (class-C, outside the current plan).
