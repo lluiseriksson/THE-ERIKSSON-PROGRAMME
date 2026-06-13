@@ -90,6 +90,33 @@ with `C = Δ²`.  The remaining genuine content is the **encoding injection**
 (a connected set ↪ its canonical DFS walk); the count is then immediate
 from P1a.  Consumer: `polymer_weight_summability` (closes branch C).
 
+**P1b Mathlib reconnaissance + sub-ladder (design, 2026-06-13).**  Mathlib
+*has* the tree predicates — `SimpleGraph.IsTree`, `IsAcyclic`,
+`isTree_iff_existsUnique_path` (unique path between any two tree vertices),
+`isTree_iff_minimal_connected`, `IsTree.card_edgeFinset` (`#E = #V − 1`) —
+but **no Euler-tour / spanning-walk construction** (no "a tree on `m+1`
+vertices has a closed walk of length `2m` visiting every vertex").  That
+tour is the crux and must be built.  Honest sub-ladder:
+
+* **P1b-i** — *spanning tree of a connected set*: from `G[S]` connected,
+  obtain a tree subgraph spanning `S`.  Mathlib route: `Minimal Connected`
+  /`Maximal IsAcyclic` (`isTree_iff_minimal_connected`,
+  `maximal_isAcyclic_iff_isTree`) + extraction on the finite subgraph.
+  Medium; reuses Mathlib.
+* **P1b-ii** — *the tree Euler tour* (**the crux, not in Mathlib**): a
+  finite tree on `m+1` vertices admits a closed walk from any root of
+  length `2m` whose vertex support is all of `V`.  Build by induction on
+  `#V` (peel a leaf — `IsTree` has a degree-1 vertex — splice its two
+  tour-edges).  Its own focused construction; well-founded recursion.
+* **P1b-iii** — *the injection + count*: `S ↦ tour(S)` with `S` recovered
+  as `(tour S).support.toFinset`, giving injectivity; then
+  `Fintype.card_le_of_injective` into `{walks of length 2(n−1) from r}`
+  and **P1a** (`card_walks_length_le_degree_pow`) yield
+  `c_n ≤ Δ^{2(n−1)} ≤ (Δ²)ⁿ`.  Medium, given P1b-ii.
+
+P1b-ii is a genuine standalone combinatorial development (no Mathlib
+primitive); it — not a quick follow-on — is the real next working brick.
+
 ## 4. Precise source material requested (for P3, P4)
 
 To build P3/P4 non-vacuously (not a faked interface), I need the
