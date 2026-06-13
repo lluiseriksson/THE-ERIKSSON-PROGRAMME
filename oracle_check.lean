@@ -37,14 +37,23 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 /-! ## The M3 mass-gap assembly (UV bound carried as a hypothesis) -/
 #print axioms YangMills.lattice_mass_gap_of_clustering_uniform
 #print axioms YangMills.lattice_mass_gap_of_exp_clustering_uniform
+-- UV brick U0: the carried hypothesis sharpened to a per-scale RG contraction
+#print axioms YangMills.lattice_mass_gap_of_per_scale_uv
 
-/-! ## The Wilson-loop area laws -/
+/-! ## The Wilson-loop area laws — finite volume -/
 #print axioms YangMills.finite_volume_area_law          -- linearized activities
 #print axioms YangMills.finite_volume_area_law_re       -- physical Re tr observable
 #print axioms YangMills.norm_integral_exp_term_le       -- per-multiplicity dichotomy
-#print axioms YangMills.finite_volume_area_law_exp      -- TRUE Wilson factor (flagship)
+#print axioms YangMills.finite_volume_area_law_exp      -- TRUE Wilson factor
 
-/-! ## Non-vacuity witnesses (the exponent and the windows are real) -/
+/-! ## The Wilson-loop area laws — VOLUME-UNIFORM (the flagship) -/
+#print axioms YangMills.normalized_wilson_loop_area_law              -- linearized, normalized by Z
+#print axioms YangMills.normalized_wilson_loop_area_law_unconditional -- integrability discharged
+#print axioms YangMills.normalized_exp_wilson_loop_area_law          -- TRUE Wilson factor, volume-uniform
+#print axioms YangMills.area_law_to_exp_area_decay                   -- manifest exp area decay (confinement)
+
+/-! ## Non-vacuity witnesses (the exponent, the windows, the tension are real) -/
 #print axioms YangMills.one_le_chainAreaA_plaquette
 #print axioms YangMills.clustering_window_nonempty
 #print axioms YangMills.sun_clustering_window_nonempty
+#print axioms YangMills.area_law_to_exp_area_decay_window_nonempty    -- positive string tension log 2 − ½
