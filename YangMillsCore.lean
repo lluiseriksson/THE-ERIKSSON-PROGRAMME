@@ -152,3 +152,8 @@ import YangMills.KP.PenroseBFS
 import YangMills.KP.PenroseFiber
 import YangMills.KP.WalkBound
 import YangMills.KP.KPBound
+
+-- Balaban gauge-RG layer (continuum track, `docs/BALABAN-RG-PLAN.md`).
+-- B1: the block-lattice geometry (Bałaban CMP 98 eqs (1)–(3)); pure
+-- lattice geometry, the substrate of the block-spin renormalization group.
+import YangMills.RG.BlockLattice

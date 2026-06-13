@@ -1502,6 +1502,41 @@ obstruction.  The Balaban/Dimock source material and the precise
 remaining targets are catalogued in `docs/UV-SHOPPING-LIST.md` and
 `docs/UV-SINGLE-SCALE-PLAN.md`.
 
+## Addendum 23 (2026-06-12, **GAUGE-RG CAMPAIGN OPENED — brick B1, the
+Balaban block-lattice geometry** `YangMills.RG.blockSite`; core 8239)
+
+**Build:** green (**8239 jobs** — first new core module of the
+continuum track; the job count incremented from 8238, per the standing
+rule).  Oracle outputs (verbatim, `YangMills/RG/BlockLattice.lean`):
+
+```
+'YangMills.RG.blockSite'              [propext, Classical.choice, Quot.sound]
+'YangMills.RG.blockSite_eq_iff_cube'  [propext, Classical.choice, Quot.sound]
+'YangMills.RG.blockSite_surjective'   [propext, Classical.choice, Quot.sound]
+'YangMills.RG.mem_blockOf'            [propext, Classical.choice, Quot.sound]
+```
+
+The user supplied the full Balaban gauge series (CMP 95/96/98/99/102/
+109/116/122) plus Dimock and reference material, and directed the
+continuum-facing Balaban renormalization-group track.  After producing
+the exact 7-brick Lean-facing ladder (`docs/BALABAN-RG-PLAN.md`, B1–B7),
+this addendum closes **B1**, the block-lattice geometry, source-faithful
+to **Bałaban, CMP 98 (1985) eqs (1)–(3)** (strategy/framing: **Lluis
+Eriksson**, ai.viXra:2602.0088): `blockSite L N' : FinBox d (L·N') →
+FinBox d N'`, coordinatewise integer division by the block size `L`
+(the order-1 block map of the torus `(ℤ/(L·N'))^d → (ℤ/N')^d`), with
+`blockSite_eq_iff_cube` (the half-open `L`-cube characterisation
+`L·yᵢ ≤ xᵢ < L·yᵢ+L`, eq (2)), `blockSite_surjective` (every coarse
+site is a block, via its lower corner), and `blockOf`/`mem_blockOf` (the
+block as a `Finset`).  Pure lattice geometry — no gauge field, no
+measure — built against the existing `FinBox` core and reused by every
+later brick.  **B3 (the gauge-covariant averaging operator, CMP 98 eqs
+(14)–(15)) is BLOCKED** on a clean scan of CMP 98 p.19–20: the uploaded
+OCR mangles those formulas (request recorded in `BALABAN-RG-PLAN.md`
+§"Missing source").  All M3 lattice-side; continuum (M4)/M5/Clay
+untouched — this opens the continuum track but does not yet reduce any
+M4/M5 obstruction; Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
