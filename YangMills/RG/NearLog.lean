@@ -96,6 +96,46 @@ theorem norm_nearLog_le {Y : 𝔸} (hY : ‖Y‖ < 1) :
         hsum_norm.tsum_le_tsum (norm_logCoeff_smul_pow_le Y) hgeo
     _ = (1 - ‖Y‖)⁻¹ := tsum_geometric_of_lt_one (norm_nonneg Y) hY
 
+/-- **First-order linearisation of the near-identity logarithm**
+(brick M-log-2a): `nearLog Y = Y + O(‖Y‖²)`, quantitatively
+`‖nearLog Y - Y‖ ≤ ‖Y‖²/(1-‖Y‖)`.  This is exactly the `O(‖·‖²)`
+remainder content of Bałaban's linearisation axiom (0.8) of CMP 109
+(the tie of the averaging `M` to the linear operator `Q = linAvg`),
+obtained directly from the `n ≥ 2` tail of the Mercator series — it does
+**not** yet require the local-inverse identity `log(exp X) = X`. -/
+theorem norm_nearLog_sub_self_le {Y : 𝔸} (hY : ‖Y‖ < 1) :
+    ‖nearLog Y - Y‖ ≤ ‖Y‖ ^ 2 / (1 - ‖Y‖) := by
+  have hF : Summable (fun n : ℕ => logCoeff n • Y ^ n) :=
+    summable_logCoeff_smul_pow hY
+  have hF1 : Summable (fun n : ℕ => logCoeff (n + 1) • Y ^ (n + 1)) :=
+    (summable_nat_add_iff 1).mpr hF
+  have e1 : logCoeff (0 + 1) • Y ^ (0 + 1) = Y := by
+    norm_num [logCoeff]
+  have hsplit : nearLog Y = Y + ∑' n : ℕ, logCoeff (n + 2) • Y ^ (n + 2) := by
+    rw [nearLog, hF.tsum_eq_zero_add]
+    simp only [logCoeff_zero, zero_smul, zero_add]
+    rw [hF1.tsum_eq_zero_add, e1]
+  rw [hsplit, add_sub_cancel_left]
+  have hgeo2 : Summable (fun n : ℕ => ‖Y‖ ^ (n + 2)) :=
+    (summable_nat_add_iff 2).mpr
+      (summable_geometric_of_lt_one (norm_nonneg Y) hY)
+  have hnorm_tail :
+      Summable (fun n : ℕ => ‖logCoeff (n + 2) • Y ^ (n + 2)‖) :=
+    hgeo2.of_nonneg_of_le (fun _ => norm_nonneg _)
+      (fun n => norm_logCoeff_smul_pow_le Y (n + 2))
+  calc ‖∑' n : ℕ, logCoeff (n + 2) • Y ^ (n + 2)‖
+      ≤ ∑' n : ℕ, ‖logCoeff (n + 2) • Y ^ (n + 2)‖ :=
+        norm_tsum_le_tsum_norm hnorm_tail
+    _ ≤ ∑' n : ℕ, ‖Y‖ ^ (n + 2) :=
+        hnorm_tail.tsum_le_tsum
+          (fun n => norm_logCoeff_smul_pow_le Y (n + 2)) hgeo2
+    _ = ‖Y‖ ^ 2 / (1 - ‖Y‖) := by
+        have hre : (fun n : ℕ => ‖Y‖ ^ (n + 2))
+            = fun n : ℕ => ‖Y‖ ^ 2 * ‖Y‖ ^ n := by
+          funext n; rw [pow_add, mul_comm]
+        rw [hre, tsum_mul_left,
+          tsum_geometric_of_lt_one (norm_nonneg Y) hY, div_eq_mul_inv]
+
 /-- `log(1 + 0) = log 1 = 0`. -/
 @[simp] theorem nearLog_zero : nearLog (0 : 𝔸) = 0 := by
   have hz : (fun n : ℕ => logCoeff n • (0 : 𝔸) ^ n) = fun _ => 0 := by

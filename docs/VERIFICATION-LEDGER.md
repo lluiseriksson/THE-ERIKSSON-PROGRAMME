@@ -1808,6 +1808,35 @@ analytic construction; applied to CMP 109 (0.8),(0.12); BCH references
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
+## Addendum 32 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-2a
+— first-order linearisation of the near-identity logarithm**
+`YangMills.RG.norm_nearLog_sub_self_le`; core 8245)
+
+**Build:** green (8245 jobs, `RG/NearLog.lean`).  Oracle (verbatim):
+
+```
+'YangMills.RG.norm_nearLog_sub_self_le'  [propext, Classical.choice, Quot.sound]
+```
+
+`‖nearLog Y - Y‖ ≤ ‖Y‖²/(1-‖Y‖)` for `‖Y‖ < 1` — i.e.
+`nearLog Y = Y + O(‖Y‖²)`.  This is **exactly the `O(‖·‖²)` remainder
+content of Bałaban's linearisation axiom (0.8)** (CMP 109), the tie of
+the averaging operator `M` to the linear operator `Q = linAvg`
+(brick B3-linear), and it is obtained directly from the `n ≥ 2` tail of
+the Mercator series — it does **not** require the local-inverse identity
+`log(exp X)=X` (the still-open brick M-log-2b).  Proof: split the series
+with `Summable.tsum_eq_zero_add` twice (`logCoeff 0 = 0` kills the
+constant term, `logCoeff 1 = 1` gives the linear term `Y`), leaving the
+tail `Σ_{n≥2} logCoeff n • Y^n`; bound it by `Σ_{n≥2} ‖Y‖^n =
+‖Y‖²/(1-‖Y‖)` via `norm_tsum_le_tsum_norm`, `Summable.tsum_le_tsum`,
+`tsum_mul_left`, `tsum_geometric_of_lt_one`.
+
+What remains for the full (0.8) is **M-log-2b**, `log(exp X) = X` near
+`0` (composition of the `exp`/`log` power series) — the genuinely hard
+analytic brick.  Source: standard; applied to CMP 109 (0.8).
+Strategy/framing **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum
+(M4) track; Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
