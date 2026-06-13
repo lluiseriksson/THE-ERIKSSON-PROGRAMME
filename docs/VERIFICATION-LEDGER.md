@@ -1537,6 +1537,36 @@ OCR mangles those formulas (request recorded in `BALABAN-RG-PLAN.md`
 untouched — this opens the continuum track but does not yet reduce any
 M4/M5 obstruction; Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 24 (2026-06-12, **gauge-RG brick B3-linear — the linear
+averaging operator `Q`** `YangMills.RG.linAvg`; core 8240)
+
+**Build:** green (**8240 jobs**).  Oracle outputs (verbatim,
+`YangMills/RG/LinearAveraging.lean`):
+
+```
+'YangMills.RG.fineLineSum'  [propext, Classical.choice, Quot.sound]
+'YangMills.RG.linAvg'       [propext, Classical.choice, Quot.sound]
+'YangMills.RG.linAvg_add'   [propext, Classical.choice, Quot.sound]
+'YangMills.RG.linAvg_smul'  [propext, Classical.choice, Quot.sound]
+```
+
+Source-faithful to **Bałaban, CMP 95 (1984) eqs (1.6)–(1.8)** (located
+after the CMP 98 averaging formula (15) was found OCR-garbled; CMP 95 is
+the Gaussian/abelian prototype where the averaging is the explicit
+LINEAR operator).  `fineLineSum L N' A μ x` = the fine line integral
+`A(Γ_{c,x}) = Σ_{k<L} A⟨shiftᵏ x, μ, +⟩` (eq (1.7)); `linAvg L N' A c`
+= `L^{-d} • Σ_{x ∈ blockOf c.source} fineLineSum A c.dir x` (eq (1.8)),
+the `L^{-d}`-averaged block line integral, on additive bond fields
+valued in any real vector space `V` (the Lie algebra in the gauge
+application).  `linAvg_add`/`linAvg_smul` prove `Q` is linear — its
+defining algebraic property.  This is the **small-field linearisation**
+of the non-abelian averaging operator `Ū` of CMP 98 (14)–(15)
+(`log Ū(e^{iA}) = QA + O(‖A‖²)`); the full `Ū` (brick B3-full) remains
+BLOCKED on a clean scan of CMP 98 p.19–20 (request in
+`docs/BALABAN-RG-PLAN.md`).  Strategy/framing: **Lluis Eriksson**,
+ai.viXra:2602.0069, 2602.0088.  Continuum (M4) track; reduces no M4/M5
+obstruction yet; Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

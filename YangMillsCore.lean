@@ -156,4 +156,7 @@ import YangMills.KP.KPBound
 -- Balaban gauge-RG layer (continuum track, `docs/BALABAN-RG-PLAN.md`).
 -- B1: the block-lattice geometry (Bałaban CMP 98 eqs (1)–(3)); pure
 -- lattice geometry, the substrate of the block-spin renormalization group.
+-- B3-linear: the linear averaging operator Q (Bałaban CMP 95 eq (1.8)),
+-- the Gaussian/small-field limit of the gauge-covariant averaging.
 import YangMills.RG.BlockLattice
+import YangMills.RG.LinearAveraging
