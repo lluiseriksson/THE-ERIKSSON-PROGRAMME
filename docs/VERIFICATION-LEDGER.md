@@ -1709,6 +1709,29 @@ This is exactly the law (CMP 98 (11)) that, combined with
 **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay
 distance ~0% (<0.1%), unchanged.
 
+## Addendum 29 (2026-06-12, **gauge-RG brick B5-linear — locality of the
+linear averaging operator** `YangMills.RG.linAvg_congr`; core 8243)
+
+**Build:** green (8243 jobs).  Oracle (verbatim, `RG/LinearAveraging.lean`):
+
+```
+'YangMills.RG.fineLineSum_congr'  [propext, Classical.choice, Quot.sound]
+'YangMills.RG.linAvg_congr'       [propext, Classical.choice, Quot.sound]
+```
+
+The locality the renormalization-group cluster expansion relies on
+(Bałaban CMP 116), for the linear averaging operator `Q` (needs no
+matrix `log`): `linAvg A c` depends only on `A`'s values on the fine
+bonds `⟨shiftᵏ x, c.dir, +⟩` for `x ∈ blockOf c.source`, `k < L` — the
+fine links inside the coarse bond's block.  `fineLineSum_congr` (the
+per-line version) + `linAvg_congr` (the block average) prove that two
+bond fields agreeing on those bonds have equal `Q`-averages at `c`.
+With B4-prep (the holonomy gauge law, Add. 28) this completes the
+*algebraic* half of B4/B5 for the linear operator; the full non-abelian
+`Ū` versions await the matrix-`log` layer.  Source: Bałaban CMP 95
+(1.8)/116; strategy **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum
+(M4) track; Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

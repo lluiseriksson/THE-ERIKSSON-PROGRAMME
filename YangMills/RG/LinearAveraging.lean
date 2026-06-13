@@ -97,4 +97,34 @@ theorem linAvg_smul (L N' : ℕ) [NeZero L] [NeZero N']
   rw [Finset.sum_congr rfl fun x _ => fineLineSum_smul L N' r A c.dir x,
     ← Finset.smul_sum, smul_comm]
 
+/-- **The fine line integral is local** (Bałaban CMP 95: `A(Γ_{c,x})`
+reads only the bonds on its straight path): if two bond fields agree on
+the `L` positively-oriented bonds of the length-`L` line in direction
+`μ` from `x`, their line integrals agree. -/
+theorem fineLineSum_congr (L N' : ℕ) [NeZero L] [NeZero N']
+    (A A' : ConcreteEdge d (L * N') → V) (μ : Fin d) (x : FinBox d (L * N'))
+    (h : ∀ k < L,
+      A ⟨(fun y => FinBox.shift y μ)^[k] x, μ, true⟩
+        = A' ⟨(fun y => FinBox.shift y μ)^[k] x, μ, true⟩) :
+    fineLineSum L N' A μ x = fineLineSum L N' A' μ x := by
+  refine Finset.sum_congr rfl fun k hk => ?_
+  exact h k (Finset.mem_range.mp hk)
+
+open scoped Classical in
+/-- **The linear averaging operator `Q` is LOCAL** (the locality the
+renormalization-group cluster expansion relies on, Bałaban CMP 116):
+`linAvg A c` depends only on the values of `A` on the fine bonds
+`⟨shiftᵏ x, c.dir, +⟩` (`x ∈` the source block of `c`, `k < L`) — i.e.
+on the fine links inside the coarse bond's block.  If two bond fields
+agree on those bonds, their averages at `c` agree. -/
+theorem linAvg_congr (L N' : ℕ) [NeZero L] [NeZero N']
+    (A A' : ConcreteEdge d (L * N') → V) (c : ConcreteEdge d N')
+    (h : ∀ x ∈ blockOf L N' c.source, ∀ k < L,
+      A ⟨(fun y => FinBox.shift y c.dir)^[k] x, c.dir, true⟩
+        = A' ⟨(fun y => FinBox.shift y c.dir)^[k] x, c.dir, true⟩) :
+    linAvg L N' A c = linAvg L N' A' c := by
+  simp only [linAvg]
+  refine congrArg _ (Finset.sum_congr rfl fun x hx => ?_)
+  exact fineLineSum_congr L N' A A' c.dir x (h x hx)
+
 end YangMills.RG
