@@ -92,6 +92,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- hRpoly campaign brick P1b-ii (engine): the detour splice — the inductive
 -- step of the tree Euler tour (add a leaf, length +2, support +{u})
 #print axioms YangMills.RG.exists_detour_walk
+-- hRpoly campaign bricks P1b/P1c: the farthest-vertex peel, the spanning
+-- closed walk (full tour), and the lattice animal count `c_n ≤ Δ^{2(n-1)}`
+#print axioms YangMills.RG.exists_peel
+#print axioms YangMills.RG.exists_spanning_closed_walk
+#print axioms YangMills.RG.animal_card_le
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

@@ -2615,6 +2615,50 @@ lattice-animal counting; strategy/framing **Lluis Eriksson**
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance **~0% (<0.1%),
 unchanged**.
 
+## Addendum 59 (2026-06-13, **hRpoly P1b/P1c — the lattice animal count**
+`YangMills.RG.animal_card_le` + the spanning-tour chain; core 8254)
+
+**Build:** green (**8254 jobs**, +1 over Add. 58 — new module
+`YangMills/RG/AnimalTour.lean`).  Oracle (all three):
+`[propext, Classical.choice, Quot.sound]`.
+
+Branch C of `hRpoly` (the geometric summability) was reduced to the lattice
+animal count `c_n ≤ Cⁿ` (Add. 53).  This addendum **closes that count**:
+
+> **`animal_card_le`** — any family `A` of `S`-connected vertex sets of size
+> `n`, each containing the root `r`, on a graph of max degree `≤ Δ`, has
+> `A.card ≤ Δ^{2(n−1)}` (i.e. `c_n ≤ Cⁿ` with `C = Δ²`).
+
+Proven via the classical spanning-walk encoding, all in the ambient graph
+(no induced-subgraph type surgery), through two reusable lemmas:
+
+* **`exists_peel`** (P1b-i) — the `r`-farthest vertex (max `mlen`, the
+  minimal in-`S` walk length, defined by `sInf`) of an `S`-connected set is
+  removable: deletion preserves `S`-connectivity and it keeps an inside
+  neighbour.  The "max-distance vertex is not a cut vertex" fact, proved by a
+  `takeUntil`/`dropUntil` length comparison (`dropUntil` length `0 ⇒ u = z`).
+* **`exists_spanning_closed_walk`** (P1b-ii) — induction on `#S`: peel the
+  farthest vertex, recurse, splice it back with `exists_detour_walk`
+  (Add. 58).  Gives a closed walk from `r` of length `2(n−1)`, support `= S`.
+* **`animal_card_le`** (P1c) — the guarded map `animal ↦ spanning closed walk`
+  is injective (animal `=` walk support); the length-`2(n−1)` closed walks
+  number `≤ Δ^{2(n−1)}` by P1a (`card_walks_length_le_degree_pow`).
+
+Pure graph combinatorics; no measure theory, no cluster expansion, no
+Bałaban/Dimock source.  **Non-vacuity:** a genuine cardinality bound on a
+satisfiable hypothesis set (e.g. `A = {{r}}`, `n = 1`: `1 ≤ Δ⁰ = 1`); the
+spanning walk is produced by construction with the stated support and length.
+
+**Dependency moved.** Branch C of `hRpoly` is now closed *as graph
+combinatorics* down to its single remaining interface task — **P2**, the
+polymer model: define the cube-adjacency graph (degree `2d`), the polymer
+type, and feed `animal_card_le` into `RG.polymer_weight_summability` (whose
+`hcount` wants `c_n` as a `Fintype.card`).  The hard analytic cores P3/P4
+(cluster expansion with holes; fluctuation integral) still await verbatim
+Dimock source.  Source: Madras–Slade; strategy/framing **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance **~0% (<0.1%),
+unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
