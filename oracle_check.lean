@@ -150,6 +150,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.pi_gaussian_variance
 #print axioms YangMills.RG.pi_gaussian_exp_integral_le_of_covariance_sum
 #print axioms YangMills.RG.pi_gaussian_exp_integral_le_of_uniform_variance
+-- general (off-diagonal) covariance via the A-pushforward: variance form + field-size bound
+#print axioms YangMills.RG.pi_gaussian_map_variance
+#print axioms YangMills.RG.pi_gaussian_map_exp_integral_le
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

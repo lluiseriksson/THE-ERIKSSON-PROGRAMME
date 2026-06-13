@@ -3239,6 +3239,38 @@ concrete CMP-99 gauge-covariant propagator realizing `C`, and the CMP-116
 single-scale raw-activity bound — carried as honest hypotheses, never axioms.
 Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 77 (2026-06-13, **general / off-diagonal covariance via the
+A-pushforward** `YangMills.RG.pi_gaussian_map_variance` +
+`pi_gaussian_map_exp_integral_le`; core 8262)
+
+**Build:** green (8262 jobs — theorems added to `RG/GaussianPi.lean`, no new
+module).  Oracle: both `[propext, Classical.choice, Quot.sound]`.
+
+Lifts Add. 76 from the diagonal product Gaussian to an *arbitrary* constructed
+Gaussian covariance `A∘Aᵀ` — the realistic shape of the Bałaban fluctuation
+propagator (off-diagonal in general).
+
+* **`pi_gaussian_map_variance`** — for `A : (ι → ℝ) →L[ℝ] F` and a dual `L` on
+  `F`, `Var[L; μ.map A] = ∑ᵢ (L (A eᵢ))²·vᵢ`.  Proof: `variance_map` reduces to
+  `Var[L∘A; μ]`, then `pi_gaussian_variance` on the composite dual `L∘L A`.
+
+* **`pi_gaussian_map_exp_integral_le`** — for the field `μ.map A` and any dual
+  `L` with `∑ᵢ (L (A eᵢ))²·vᵢ ≤ B`, `∫ exp(L φ) d(μ.map A) ≤ exp(B/2)`.  Centering
+  transported through `A` (`pi_gaussian_centered` on `L∘L A`), variance the
+  explicit form above — the small-field bound for an arbitrary (off-diagonal)
+  constructed Gaussian covariance.
+
+The Gaussian-from-covariance layer is now complete at the constructed level:
+build the standard Gaussian (`isGaussian_pi`), push through any factor `A`
+(`isGaussian_pi_map_clm`), it is centered (`pi_gaussian_centered` transported),
+its covariance form is explicit (`pi_gaussian_map_variance`), and a bound on that
+form gives the field-size bound (`pi_gaussian_map_exp_integral_le`).  The only
+remaining step to a fully-realized fluctuation field is matching `A∘Aᵀ` to the
+concrete CMP-99 gauge-covariant propagator (the Cholesky / spectral-factor +
+propagator-bound step) and the CMP-116 single-scale raw-activity bound — both
+carried as honest hypotheses, never axioms.  Clay distance **~0% (<0.1%),
+unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

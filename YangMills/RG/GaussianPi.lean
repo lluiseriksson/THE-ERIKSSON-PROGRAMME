@@ -238,4 +238,48 @@ theorem pi_gaussian_exp_integral_le_of_uniform_variance {ι : Type*} [Fintype ι
   rw [mul_comm a]
   exact mul_le_mul_of_nonneg_left (ha i) (sq_nonneg _)
 
+/-- **Variance of the linearly-transformed Gaussian (general / off-diagonal
+covariance).**  Pushing the standard multivariate Gaussian through a continuous
+linear map `A : (ι → ℝ) →L[ℝ] F`, the variance of any dual `L` on `F` is
+`Var[L; μ.map A] = ∑ᵢ (L (A eᵢ))²·vᵢ`.  This is the genuine covariance form of
+the constructed field with covariance `A∘Aᵀ` (off-diagonal in general) — the
+realistic shape of the Bałaban fluctuation propagator, not just the diagonal
+case.  Proof: `variance_map` turns it into `Var[L∘A; μ]`, then
+`pi_gaussian_variance` applied to the composite dual `L∘L A`. -/
+theorem pi_gaussian_map_variance {ι F : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup F] [NormedSpace ℝ F] [MeasurableSpace F] [BorelSpace F]
+    [SecondCountableTopology F] [CompleteSpace F]
+    (v : ι → NNReal) (A : (ι → ℝ) →L[ℝ] F) (L : StrongDual ℝ F) :
+    Var[L; (Measure.pi (fun i => gaussianReal 0 (v i))).map A]
+      = ∑ i, (L (A (Pi.single i 1))) ^ 2 * (v i : ℝ) := by
+  rw [variance_map (by fun_prop) (by fun_prop), ← ContinuousLinearMap.coe_comp',
+    pi_gaussian_variance v (L.comp A)]
+  simp [ContinuousLinearMap.comp_apply]
+
+/-- **Field-size bound for the linearly-transformed (general-covariance)
+Gaussian.**  For the Gaussian field `μ.map A` (covariance `A∘Aᵀ`) and any dual
+`L` with `∑ᵢ (L (A eᵢ))²·vᵢ ≤ B`, the exponential field-size integral is bounded,
+`∫ exp(L φ) d(μ.map A) ≤ exp(B/2)`.  Centering is automatic
+(`pi_gaussian_centered` transported through `A`); the variance is the explicit
+form of `pi_gaussian_map_variance`.  This is the small-field fluctuation-integral
+bound for an arbitrary (off-diagonal) constructed Gaussian covariance. -/
+theorem pi_gaussian_map_exp_integral_le {ι F : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup F] [NormedSpace ℝ F] [MeasurableSpace F] [BorelSpace F]
+    [SecondCountableTopology F] [CompleteSpace F]
+    (v : ι → NNReal) (A : (ι → ℝ) →L[ℝ] F) (L : StrongDual ℝ F) {B : ℝ}
+    (hB : ∑ i, (L (A (Pi.single i 1))) ^ 2 * (v i : ℝ) ≤ B) :
+    ∫ x, Real.exp (L x) ∂((Measure.pi (fun i => gaussianReal 0 (v i))).map A)
+      ≤ Real.exp (B / 2) := by
+  haveI : IsGaussian ((Measure.pi (fun i => gaussianReal 0 (v i))).map A) :=
+    isGaussian_pi_map_clm (fun _ => 0) v A
+  have hcenter : ((Measure.pi (fun i => gaussianReal 0 (v i))).map A)[L] = 0 := by
+    rw [integral_map (by fun_prop) (by fun_prop)]
+    have hcomp : (fun x => L (A x)) = (⇑(L.comp A)) := by
+      funext x; simp [ContinuousLinearMap.comp_apply]
+    rw [hcomp]
+    exact pi_gaussian_centered v (L.comp A)
+  have hvar : Var[L; (Measure.pi (fun i => gaussianReal 0 (v i))).map A] ≤ B := by
+    rw [pi_gaussian_map_variance v A L]; exact hB
+  exact gaussian_exp_integral_le_isGaussian L hcenter hvar
+
 end YangMills.RG
