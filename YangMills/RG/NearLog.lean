@@ -322,6 +322,39 @@ theorem norm_exp_sub_one_sub_self_le [NormOneClass 𝔸] {Z : 𝔸} (hZ : ‖Z�
         rw [hre, tsum_mul_left,
           tsum_geometric_of_lt_one (norm_nonneg Z) hZ, div_eq_mul_inv]
 
+/-- **The renormalization-group map linearises to the identity** (brick
+M-log-5, the quantitative form of Bałaban's axiom (0.8)): for `‖Y‖<1/2`,
+`exp(nearLog Y) = 1 + Y + O(‖Y‖²)`, with the remainder bounded explicitly
+by the two second-order tails,
+`‖exp(nearLog Y) - 1 - Y‖ ≤ ‖nearLog Y‖²/(1-‖nearLog Y‖) + ‖Y‖²/(1-‖Y‖)`.
+Assembled by the triangle inequality from the exp remainder (M-log-4)
+and the `nearLog` remainder (M-log-2a); `‖nearLog Y‖<1` is discharged
+from `‖Y‖<1/2` via the sharp bound (M-log-2a′).  This is the genuine
+content of (0.8) — the RG field map is the identity to first order plus
+a quadratic correction — obtained **without** the exact local-inverse
+identity `log(exp)=id`. -/
+theorem norm_exp_nearLog_sub_one_sub_self_le [NormOneClass 𝔸] {Y : 𝔸}
+    (hY : ‖Y‖ < 1 / 2) :
+    ‖NormedSpace.exp (nearLog Y) - 1 - Y‖
+      ≤ ‖nearLog Y‖ ^ 2 / (1 - ‖nearLog Y‖) + ‖Y‖ ^ 2 / (1 - ‖Y‖) := by
+  have hY1 : ‖Y‖ < 1 := by linarith
+  have hnl : ‖nearLog Y‖ < 1 := by
+    have hb := norm_nearLog_le_linear hY1
+    have hlt : ‖Y‖ / (1 - ‖Y‖) < 1 := by
+      rw [div_lt_one (by linarith)]; linarith
+    linarith
+  have hdecomp : NormedSpace.exp (nearLog Y) - 1 - Y
+      = (NormedSpace.exp (nearLog Y) - 1 - nearLog Y) + (nearLog Y - Y) := by
+    abel
+  rw [hdecomp]
+  calc ‖(NormedSpace.exp (nearLog Y) - 1 - nearLog Y) + (nearLog Y - Y)‖
+      ≤ ‖NormedSpace.exp (nearLog Y) - 1 - nearLog Y‖ + ‖nearLog Y - Y‖ :=
+        norm_add_le _ _
+    _ ≤ ‖nearLog Y‖ ^ 2 / (1 - ‖nearLog Y‖) + ‖Y‖ ^ 2 / (1 - ‖Y‖) := by
+        gcongr
+        · exact norm_exp_sub_one_sub_self_le hnl
+        · exact norm_nearLog_sub_self_le hY1
+
 /-- `log(1 + 0) = log 1 = 0`. -/
 @[simp] theorem nearLog_zero : nearLog (0 : 𝔸) = 0 := by
   have hz : (fun n : ℕ => logCoeff n • (0 : 𝔸) ^ n) = fun _ => 0 := by

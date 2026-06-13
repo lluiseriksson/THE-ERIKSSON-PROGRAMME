@@ -2003,6 +2003,33 @@ Source standard / CMP 109 (0.8); strategy **Lluis Eriksson**
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
+## Addendum 39 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-5
+— the RG map linearises to the identity (quantitative axiom (0.8))**
+`YangMills.RG.norm_exp_nearLog_sub_one_sub_self_le`; core 8245)
+
+**Build:** green (8245 jobs).  Oracle:
+`'YangMills.RG.norm_exp_nearLog_sub_one_sub_self_le' [propext, Classical.choice, Quot.sound]`.
+
+For `‖Y‖ < 1/2`,
+`‖exp(nearLog Y) - 1 - Y‖ ≤ ‖nearLog Y‖²/(1-‖nearLog Y‖) + ‖Y‖²/(1-‖Y‖)`,
+i.e. **`exp(nearLog Y) = 1 + Y + O(‖Y‖²)`**.  This is the genuine
+quantitative content of Bałaban's linearisation axiom (0.8): the
+renormalization-group field map is the identity to first order plus an
+explicitly-bounded quadratic correction.  Assembled by the triangle
+inequality from the operator-exp remainder (M-log-4, Add. 38) applied
+at `Z = nearLog Y` and the `nearLog` remainder (M-log-2a, Add. 32);
+`‖nearLog Y‖<1` is discharged from `‖Y‖<1/2` via the sharp linear bound
+(M-log-2a′, Add. 33).  The two quadratic contributions are kept explicit
+(no constant-chasing).  Carries `[NormOneClass 𝔸]` (satisfiable, matrix
+algebras).
+
+**Strategic consequence.** The exact local-inverse identity `log(exp)=id`
+(M-log-2b) is now demoted from blocker to optional polish: gauge
+covariance never needed it (B4-Ū closed, Add. 37) and the (0.8)
+linearisation is obtained without it (this addendum).  Source CMP 109
+(0.8); strategy **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4)
+track; Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
