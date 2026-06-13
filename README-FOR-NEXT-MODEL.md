@@ -250,6 +250,28 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   bound is the SOLE remaining carried hypothesis (Balaban, by
   design).  `docs/VERIFICATION-LEDGER.md` addenda 8–10 (seventeen
   oracle lines); `HYPOTHESIS_FRONTIER.md` current-state addendum.
+- **GAUGE-RG CONTINUUM TRACK (`docs/BALABAN-RG-PLAN.md`) — local
+  averaging-operator theory COMPLETE (2026-06-12, ledger Add. 23–41,
+  21 oracle-clean bricks, `YangMills/RG/**`).**  This is the campaign to
+  discharge the §6.3 UV hypothesis above.  Built, oracle-clean, in core:
+  block geometry (`BlockLattice`, `BlockMaps`); the averaging operators
+  (`LinearAveraging` linear `Q` + locality; `GroupAverage` axiomatic
+  average + non-vacuous `meanAverage`); the full **gauge-covariance
+  chain** (`HolonomyGauge.wilsonLine_gaugeAct_path`,
+  `AveragedContour.averagedContour_gaugeAct`, `NearLog.UbarBlock_conj`,
+  `MatrixRealization.rep_wilsonLine_gaugeAct`); and the **near-identity
+  log/exp layer** (`NearLog`): convergence + sharp/quadratic bounds,
+  scalar correctness `nearLog y = Real.log(1+y)` and scalar
+  `log(exp)=id`, conjugation-equivariance, operator-exp 2nd-order
+  remainder, **the quantitative axiom (0.8)** `exp(nearLog Y)=1+Y+O(‖Y‖²)`,
+  and small-field stability (U1 ingredient).  Bałaban's two demands on
+  the averaging operator — gauge covariance and first-order
+  linearisation — are now THEOREMS; the exact `log(exp)=id` is demoted
+  to optional.  **OPEN:** B4-Ū full (concrete lattice `Ū`,
+  definitional) and the **U1/U2 per-scale RG-stability campaign**
+  (`docs/UV-SINGLE-SCALE-PLAN.md`) — `|R_k| ≤ M·rᵏ` for the actual RG
+  flow on `gaugeMeasureFrom`; **U2 is months-scale**, the analytic heart.
+  Distance to Clay unchanged at ~0% (<0.1%): M4/M5 untouched.
 - **NEXT TARGET — the AREA-LAW CAMPAIGN (`docs/AREA-LAW-PLAN.md`,
   designed 2026-06-11):** the strong-coupling area law
   `|⟨W_C⟩| ≤ C₀·r^{Area(C)}` via the banked N-ality selection rules

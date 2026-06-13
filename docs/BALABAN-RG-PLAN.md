@@ -1,6 +1,44 @@
 # BALABAN GAUGE-RG CAMPAIGN — the continuum track
 
-**Date:** 2026-06-12.  **Status:** OPEN (brick B1 in progress).
+**Date:** 2026-06-12.  **Status:** the **local averaging-operator theory
+is COMPLETE** (21 oracle-clean bricks, core 8246); the per-scale
+RG-stability campaign (U1/U2) is the open, months-scale heart.
+
+**Status detail (read before continuing).**  CLOSED, oracle-clean, in
+`YangMillsCore`:
+
+* **Geometry/maps** — B1 (`BlockLattice`), B2 (`BlockMaps`).
+* **Averaging operators** — B3-linear (`LinearAveraging`: `linAvg`,
+  linearity, locality `linAvg_congr`), B3-full interface
+  (`GroupAverage` + non-vacuous `meanAverage`).
+* **Gauge-covariance chain** — B4-prep holonomy law
+  (`wilsonLine_gaugeAct_path`), B4 averaged-contour covariance
+  (`averagedContour_gaugeAct`), B4-Ū algebra
+  (`UbarBlock_conj`), B4-Ū lattice bridge (`MatrixRealization`,
+  `rep_wilsonLine_gaugeAct`).
+* **Near-identity log/exp layer** (`NearLog`) — `nearLog` definition +
+  convergence + sharp `O(‖Y‖)` bound + `O(‖Y‖²)` linearisation; scalar
+  correctness (`= Real.log`) and scalar `log(exp)=id`;
+  conjugation-equivariance (single + finite-sum); operator-exp
+  second-order remainder; **the quantitative axiom (0.8)**
+  `exp(nearLog Y)=1+Y+O(‖Y‖²)`; small-field stability
+  `‖exp(nearLog Y)-1‖ ≤ ‖Y‖+O(‖Y‖²)` (U1 ingredient).
+
+The two things Bałaban's (0.5)–(0.12) framework demands of the averaging
+operator — **gauge covariance and first-order linearisation** — are now
+verified theorems, and the once-feared exact identity `log(exp)=id`
+(M-log-2b) is demoted to optional (covariance never needed it; (0.8) is
+obtained without it).
+
+OPEN (the genuine remaining work): **B4-Ū full** (assemble the concrete
+lattice `Ū` and instantiate `UbarBlock_conj` — definitional), and the
+**U1/U2 per-scale RG-stability campaign** (`docs/UV-SINGLE-SCALE-PLAN.md`):
+the contraction `|R_k| ≤ M·rᵏ` for the actual RG flow on
+`gaugeMeasureFrom` — small-field contraction (U1) + large-field
+suppression (U2).  **U2 is months-scale**, the analytic heart of
+Bałaban's ~10-paper programme.  Direct Clay relevance remains
+~0% (<0.1%): even a full UV discharge leaves M4/M5 (continuum limit,
+OS/Wightman reconstruction) untouched.
 
 The continuum-facing renormalization-group construction.  Goal: discharge
 the §6.3 UV input of the M3 assembly (`lattice_mass_gap_of_per_scale_uv`,
