@@ -69,7 +69,23 @@ Lean; they save hours.
 
 ## Current state (2026-06-12)
 
-* Core green: **8238 jobs**, zero sorry, zero axioms.
+* Core green: **8252 jobs**, zero sorry, zero axioms.  Mathlib **pinned**
+  to an exact commit (lakefile + manifest agree); see `REPRODUCIBILITY.md`.
+* **Gauge-RG continuum track (current frontier, `YangMills/RG/**`, 36
+  oracle-clean bricks, ledger Addenda 23–52):** the local
+  averaging-operator theory is COMPLETE (block geometry; the linear
+  averaging operator `Q` with linearity, locality, and the ℓ²-operator
+  contraction `linAvg_l2_le`/`_contraction`; the axiomatic group average;
+  the gauge-covariance chain `wilsonLine_gaugeAct_path` →
+  `averagedContour_gaugeAct` → `UbarBlock_conj` → `MatrixRealization`;
+  the near-identity matrix-log calculus `NearLog` with convergence,
+  bounds, scalar correctness, conjugation-equivariance, and the
+  quantitative (0.8) `exp(nearLog Y)=1+Y+O(‖Y‖²)`).  The §6.3 UV branch
+  is now ONE oracle-clean conditional `lattice_mass_gap_of_cluster_and_coupling`
+  (`RG/UVMassGap.lean`) on two faithful Bałaban inputs: `hRpoly` (cluster
+  expansion with holes) and `hg` (coupling-flow decay).  Both carried,
+  never axioms; `docs/BALABAN-SOURCE-BOUNDS.md` records the sources +
+  honest caveats (4D marginal coupling is logarithmic, not geometric).
 * Done: sharp KP, Mayer–Ursell `Ξ = exp(clusterSum)`, `Z = Ξ`, the IR
   clustering bound (B4), the two-plaquette correlator decay (T4), the
   finite-volume area law (linearized, AL1–AL6), the
