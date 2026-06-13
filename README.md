@@ -4,7 +4,7 @@
 
 ![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-blue)
 ![Mathlib](https://img.shields.io/badge/Mathlib-master-blue)
-![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8235_jobs)-success)
+![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8238_jobs)-success)
 ![sorry](https://img.shields.io/badge/sorry-0-success)
 ![project axioms](https://img.shields.io/badge/project_axioms-0-success)
 ![Clay distance](https://img.shields.io/badge/distance_to_Clay-~0%25_(%3C0.1%25)-lightgrey)
@@ -13,13 +13,13 @@
 This repository contains a **sound, self-contained, machine-verified core** of
 lattice Yang–Mills mathematics (`YangMillsCore`: SU(N) Haar selection rules, a
 Kotecký–Preiss cluster-expansion layer, an unconditional IR clustering bound, and
-a strong-coupling **Wilson-loop area law** for the true Wilson Boltzmann factor) —
+a **volume-uniform Wilson-loop area law** for the true Wilson Boltzmann factor) —
 together with an explicit, adversarially-audited account of what is **not**
 proved. The defining principle is **honesty over progress**: a smaller true
 claim always beats a larger hollow one.
 
 ```bash
-lake build YangMillsCore          # the verified core — green, 8235 jobs
+lake build YangMillsCore          # the verified core — green, 8238 jobs
 lake env lean oracle_check.lean   # prints the axiom oracle for every headline
 ```
 
@@ -59,7 +59,17 @@ Boltzmann factor** ∏<sub>p</sub> exp(z<sub>p</sub>) — area decay σ<sup>Area
 with a perimeter-only prefactor and rate (e<sup>2δN<sub>c</sub></sup>−1), again with
 no integrability hypotheses. Because the volume-restricted cluster machinery is
 activity-agnostic, the exact version is the linearized proof with the single
-substitution 2δN<sub>c</sub> → e<sup>2δN<sub>c</sub></sup>−1.
+substitution 2δN<sub>c</sub> → e<sup>2δN<sub>c</sub></sup>−1. **The area-law
+programme is thus complete in all four variants** (finite-volume and
+volume-uniform, each linearized and exact).
+
+A reusable repackaging `area_law_to_exp_area_decay` turns either headline into
+**manifest exponential area decay** N<sub>c</sub>·e<sup>−τ·Area(C)</sup> with a
+strictly positive string tension τ = (−log σ) − λ, on any loop family whose
+perimeter charge is area-subdominant — making the confinement physics explicit.
+Its non-vacuity is itself machine-checked
+(`area_law_to_exp_area_decay_window_nonempty`: an explicit witness with positive
+tension log 2 − ½, ledger Addendum 20).
 
 ### 1. The exact-activity Wilson-loop area law
 
@@ -82,8 +92,8 @@ versions `finite_volume_area_law` / `finite_volume_area_law_re` (the physical
 `Re tr` observable) bound the same integral by `N_c·2^{#P}·(2δN_c)^{Area}`.
 
 *Honest caveat:* the constant here is finite-volume (`2^{#P}`); the
-volume-uniform refinement is result 0 above (linearized activities; the
-exact-activity volume-uniform version is the V4 stretch goal).
+volume-uniform refinement — for both this exact factor and the linearized one —
+is result 0 above (now closed).
 
 ### 2. The unconditional IR clustering bound
 
@@ -104,6 +114,16 @@ result 2 — and (ii) the §6.3 Balaban single-scale UV bound, which is the
 **sole remaining carried hypothesis** of the whole assembly. It is a named
 hypothesis of a theorem, never an axiom. See
 [`HYPOTHESIS_FRONTIER.md`](HYPOTHESIS_FRONTIER.md).
+
+`theorem lattice_mass_gap_of_per_scale_uv` (same file, ledger Addendum 19)
+sharpens that carried hypothesis to the renormalization-group level: the UV
+covariance is the finite sum of per-scale RG remainders, and a **single
+geometric per-scale contraction** |R<sub>t,k</sub>| ≤ (C₂·e<sup>−c₀t</sup>)·rᵏ —
+exactly the form Balaban's Lemma 6.2 supplies — already yields the mass gap, via
+the proved §6.3 summation mechanism (`uv_geometric_summation`). The clean-core
+discharge of that contraction is scoped in
+[`docs/UV-SINGLE-SCALE-PLAN.md`](docs/UV-SINGLE-SCALE-PLAN.md) (bricks U0–U4;
+U0 closed).
 
 ### 4. The cluster-expansion layer
 
@@ -135,9 +155,7 @@ above, thirty-plus addenda — is [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICAT
 * **The §6.3 Balaban UV single-scale bound is a carried hypothesis** of the M3
   assembly (deliberately: it is real mathematics that we have not formalized,
   so it appears as a theorem hypothesis, not an axiom).
-* **The area-law constant is finite-volume**; the physical Wilson-loop
-  expectation also requires normalizing by Z (the volume-uniform campaign).
-* Everything proved is **lattice, finite-volume, strong-coupling
+* Everything proved is **lattice, strong-coupling
   (Osterwalder–Seiler regime)** — the regime where confinement is classical
   physics lore; the achievement here is the *machine-checked* mathematics, not
   new physics.
@@ -165,7 +183,7 @@ part of any claim this README makes.
 
 ```mermaid
 graph TD
-    subgraph core["YangMillsCore  (8235 jobs, oracle-clean)"]
+    subgraph core["YangMillsCore  (8238 jobs, oracle-clean)"]
         L0["L0_Lattice<br/>geometry, gauge fields, Wilson action,<br/>chain complex + N-ality area"]
         L1["L1_GibbsMeasure<br/>Gibbs measure, polymer representation,<br/>weighted gas, exp-activity expansion"]
         KP["KP layer<br/>Ursell, Penrose-BFS, sharp KP bound,<br/>Mayer inversion Ξ = exp(clusterSum),<br/>pinned clusters"]
@@ -193,7 +211,7 @@ Green: unconditional flagship. Amber: conditional on the named UV hypothesis.
 | Step | Command | Expected |
 |---|---|---|
 | Toolchain | `elan` picks up [`lean-toolchain`](lean-toolchain) | `leanprover/lean4:v4.29.0-rc6` |
-| Build the core | `lake build YangMillsCore` | `Build completed successfully (8235 jobs)` |
+| Build the core | `lake build YangMillsCore` | `Build completed successfully (8238 jobs)` |
 | Axiom oracle | `lake env lean oracle_check.lean` | every line ends `[propext, Classical.choice, Quot.sound]` |
 | Sorry scan | `python scripts/check_consistency.py` | `0` forbidden tokens |
 
@@ -205,13 +223,14 @@ The default `lake build` target (`YangMills.lean`) is just an alias for the core
 
 | Document | What it is |
 |---|---|
-| [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, 16 addenda. Start here to check any claim. |
-| [`HYPOTHESIS_FRONTIER.md`](HYPOTHESIS_FRONTIER.md) | The carried hypotheses, audited. Currently exactly one (§6.3 UV). |
+| [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, 20+ addenda. Start here to check any claim. |
+| [`HYPOTHESIS_FRONTIER.md`](HYPOTHESIS_FRONTIER.md) | The carried hypotheses, audited. Currently exactly one (§6.3 UV), now sharpened to a per-scale RG contraction. |
 | [`FOUNDATIONS.md`](FOUNDATIONS.md) | What "proved" means here; the vacuity audit doctrine. |
 | [`CLEANUP_PLAN.md`](CLEANUP_PLAN.md) | How the sound core was carved out of the legacy sprawl. |
 | [`HORIZON.md`](HORIZON.md) | The formal dependency DAG to a real mass gap, as fill-in-the-blank Lean signatures. |
 | [`ROADMAP.md`](ROADMAP.md) | The measurable plan, written against reality rather than a vacuous target. |
-| [`docs/AREA-LAW-PLAN.md`](docs/AREA-LAW-PLAN.md) · [`AREA-LAW-EXACT-PLAN.md`](docs/AREA-LAW-EXACT-PLAN.md) · [`AREA-LAW-VU-PLAN.md`](docs/AREA-LAW-VU-PLAN.md) | The area-law campaigns: linearized (complete), exact-activity (complete), volume-uniform (designed — **next**). |
+| [`docs/AREA-LAW-PLAN.md`](docs/AREA-LAW-PLAN.md) · [`AREA-LAW-EXACT-PLAN.md`](docs/AREA-LAW-EXACT-PLAN.md) · [`AREA-LAW-VU-PLAN.md`](docs/AREA-LAW-VU-PLAN.md) | The area-law campaigns — all **complete**: linearized, exact-activity, and volume-uniform (V0–V4 closed, both linearized and exact). |
+| [`docs/UV-SINGLE-SCALE-PLAN.md`](docs/UV-SINGLE-SCALE-PLAN.md) | The §6.3 UV-bound campaign — discharging the sole carried hypothesis. Brick ladder U0–U4; **U0 closed**, U1/U2 (Balaban single-scale stability) are the **next** real work. |
 | [`docs/SHARP-KP-PLAN.md`](docs/SHARP-KP-PLAN.md) · [`kp-cluster-expansion-plan.md`](docs/kp-cluster-expansion-plan.md) · [`CLUSTER-CORRELATION-PLAN.md`](docs/CLUSTER-CORRELATION-PLAN.md) | The cluster-expansion campaigns (complete). |
 | [`PETER_WEYL_ROADMAP.md`](PETER_WEYL_ROADMAP.md) | The standalone Peter–Weyl formalization plan (off the critical path). |
 | [`docs/legacy/`](docs/legacy/) | Pre-cleanup era, kept as history. Nothing in it is current. |
