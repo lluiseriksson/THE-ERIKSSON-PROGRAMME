@@ -63,6 +63,30 @@ material specified in `docs/UV-SHOPPING-LIST.md`.  **The campaign is
 blocked on that source material** (mandate point 7/8); see the shopping
 list for the exact papers, definitions, and estimates needed.
 
+## 2b. SOURCE-GROUNDED UPDATE (2026-06-12) — papers received & audited
+
+The Balaban gauge series (CMP 95/96/98/99/102/109/116/122-I/122-II),
+the Dimock trilogy (φ⁴ exposition), and the Eriksson collection were
+received and audited (full mapping in `docs/UV-SHOPPING-LIST.md` §7).
+Two outcomes:
+
+1. **The fixed-lattice clustering is now UNCONDITIONAL in Lean.**
+   `sun_lattice_exponential_clustering` (ledger Add. 22,
+   `TwoPlaquetteCorrelator.lean`): no carried hypothesis, explicit
+   non-empty β-window, `|connected corr| ≤ C·e^{−(1/2)·dist}`.  The
+   §6.3 input is confirmed **continuum-only** — it is not needed for
+   the fixed-lattice statement.
+
+2. **The §6.3 target = Balaban's full UV-stability theorem** for 4D
+   non-Abelian gauge theory (CMP 122-II Theorem 1, the culmination of
+   his ~10-paper series).  Dimock gives the cleanest method shape but
+   for scalar φ⁴, not gauge.  The realistic first brick of the
+   continuum campaign is the gauge-covariant **block-averaging
+   operator** (Balaban CMP 98) defined against the existing
+   `gaugeMeasureFrom` core — a dedicated multi-month effort, not a
+   session task.  Reconstructing it from memory is declined on honesty
+   grounds; with the papers now in hand it is at least *specifiable*.
+
 ## 3. The genuine hard content — Balaban Lemma 6.2 (the per-scale bound)
 
 The open obligation reduces to **one** per-scale estimate:

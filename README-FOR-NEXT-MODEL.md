@@ -313,8 +313,17 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   unconstrained reals, no contact with the gauge measure), so it CANNOT
   be connected to the assembly.  The exact papers/definitions/estimates
   needed to build the UV side non-vacuously are listed in
-  `docs/UV-SHOPPING-LIST.md` — obtain those before opening U1.  Next
-  frontiers:
+  `docs/UV-SHOPPING-LIST.md`.  **UPDATE (2026-06-12): source material
+  received & audited** (Balaban gauge series CMP 95–122, Dimock
+  trilogy, Eriksson collection; full mapping in UV-SHOPPING-LIST §7).
+  Two outcomes: (a) the FIXED-LATTICE clustering is now UNCONDITIONAL —
+  `sun_lattice_exponential_clustering` (ledger Add. 22), no carried
+  hypothesis, so the §6.3 input is continuum-only; (b) the §6.3 target
+  is confirmed = Balaban's full 4D non-Abelian UV-stability theorem
+  (CMP 122-II Thm 1, the ~10-paper culmination), a multi-month
+  formalization whose first brick is the gauge block-averaging operator
+  (CMP 98).  Do NOT connect the vacuous `ClayCore/Balaban*`
+  scaffolding.  Next frontiers:
   Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
   single-scale UV estimate (class-C, outside the current plan).
 - **UV bound (§6.3 single-scale suppression):** content from the paper not yet in the

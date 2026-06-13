@@ -1,6 +1,12 @@
 # UV single-scale bound — precise shopping list
 
-**Date:** 2026-06-12.  **Status:** blocking request for source material.
+**Date:** 2026-06-12.  **Status:** source material RECEIVED and audited
+(2026-06-12, later) — see §7 for the source-grounded mapping and the
+revised honest scope.  The headline outcome of the audit: the
+**fixed-lattice** clustering is now UNCONDITIONAL in Lean
+(`sun_lattice_exponential_clustering`, ledger Add. 22), and the §6.3
+bound is confirmed to be a **continuum-only** obstruction equal to
+Balaban's full UV-stability theorem for 4D non-Abelian gauge theory.
 
 This document is the output of a research-grade investigation of the
 UV frontier (the sole carried hypothesis of the M3 lattice mass gap).
@@ -127,3 +133,66 @@ never been fully formalized).  It should be opened as its own campaign
 once the source material above is in hand; reconstructing the gauge
 block-spin construction from memory is NOT responsible and is declined
 on honesty grounds.
+
+## 7. SOURCE-GROUNDED MAPPING (2026-06-12, after receiving the papers)
+
+The user supplied: the Balaban gauge series (CMP **95**, **96** —
+propagators/RG transformations; **98** — averaging operations; **99**,
+**102** — regular-config spaces, gauge fixing, the variational/background
+field; **109** — effective actions, small field; **116** — cluster
+expansions; **122-I**, **122-II** — large-field renormalization), the
+**Dimock** trilogy ("RG according to Balaban" I/II/III, arXiv
+1108.1335 / 1212.5562 / 1304.0705), and the Eriksson AQFT collection
+(`Master4.pdf`).  Audit findings, precise:
+
+* **The target estimate IS Balaban's UV-stability theorem.**  CMP
+  122-II states (abstract, verbatim) that it "complete[s] the proof of
+  the ultraviolet stability of four-dimensional pure gauge field
+  theories, as formulated in Theorem 1," and is "the main result of
+  the whole sequence of papers... on non-Abelian gauge field theories."
+  The §6.3 UV bound is therefore not a single lemma but the culmination
+  of Balaban's ~10-paper programme; the cited "(1.98)–(1.100)" point to
+  formula (1.100) of paper **[IV]** of that chain, i.e. the estimate
+  depends transitively on the whole series.
+
+* **Dimock is the cleanest *method* reference, but it is scalar φ⁴ in
+  d = 3, NOT gauge.**  Dimock I, Theorem 1 (the stability bound):
+  `exp(−c·Vol(T_M)) ≤ Z_{M,N}/Z_{M,N}(0) ≤ exp(c·Vol(T_M))`, uniformly
+  in the UV cutoff `L^{−N}` — the partition-function stability that
+  underlies the continuum limit.  Dimock explicitly notes φ⁴ "is a
+  special case of the scalar QED model treated by Balaban"; the pure
+  Yang–Mills case is harder still (gauge fixing, the non-Abelian
+  background-field variational problem of CMP 99/102, the R operation).
+  Dimock is invaluable for the *shape* of the formalization (block-spin
+  `Q`, fluctuation covariance, small/large-field split, cluster
+  expansion, convergence) but does not itself discharge the YM bound.
+
+* **Lean-facing target statement (the honest shape).**  The continuum
+  UV input the assembly ultimately needs has the Dimock/Balaban
+  stability shape: with `Q_k` the `k`-fold block average and `Γ_k` the
+  fluctuation covariance, the renormalized single-scale error `R_k`
+  (small-field + large-field) obeys `|R_k| ≤ M·r^k` (`docs/UV-SINGLE-
+  SCALE-PLAN.md` (UV-core)), which `lattice_mass_gap_of_per_scale_uv`
+  already turns into the gap.  Stating this NON-vacuously requires
+  first DEFINING, against the existing `gaugeMeasureFrom` core: the
+  gauge-covariant block average (CMP 98), the background field /
+  variational problem (CMP 99/102), and the fluctuation effective
+  action (CMP 109).  None are in the core.
+
+* **What is genuinely missing (and is NOT being faked).**  The entire
+  gauge RG construction.  Even the first object — Balaban's
+  gauge-covariant averaging operator on SU(N) link configurations
+  (CMP 98) — is a substantial definitional commitment whose precise
+  form must match the later estimates; it is the natural first brick of
+  a dedicated multi-month campaign, not a session-sized task.
+
+* **What WAS achieved instead (real, unconditional).**  The audit
+  established that the fixed-lattice clustering does not need any of
+  this: `sun_lattice_exponential_clustering` (ledger Add. 22) proves
+  exponential decay of the connected two-plaquette correlator with NO
+  carried hypothesis, at strong coupling, directly from the banked
+  cluster expansion.  The §6.3/Balaban content is thereby correctly
+  localized to the continuum (lattice-spacing → 0) limit — the M4
+  problem — alongside OS/Wightman reconstruction (M5).  Clay distance
+  is UNCHANGED (~0%, <0.1%): this clarifies and strengthens the lattice
+  side without reducing any continuum obstruction.
