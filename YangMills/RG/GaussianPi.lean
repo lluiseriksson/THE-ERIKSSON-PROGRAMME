@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.RG.GaussianMGF
 import YangMills.RG.KernelSchur
+import YangMills.RG.CovarianceKernel
 
 /-!
 # The finite-dimensional multivariate Gaussian as an `IsGaussian` measure (gauge-RG substrate)
@@ -352,5 +353,28 @@ theorem pi_gaussian_map_exp_integral_le_of_expDecay {ι : Type*} [Fintype ι] [D
     _ ≤ a * S * ∑ x, (L (Pi.single x 1)) ^ 2 :=
         le_trans (le_abs_self _)
           (expDecay_quadratic_form_le ha hsym hA hrow (fun x => L (Pi.single x 1)))
+
+/-- **The constructed Gram covariance kernel is a genuine PSD kernel.**  The
+covariance kernel `Kₓᵧ = ∑ᵢ vᵢ·(A eᵢ)ₓ·(A eᵢ)ᵧ` of the transformed Gaussian
+`μ.map A` satisfies `IsPSDKernel` (`RG/CovarianceKernel.lean`): every quadratic
+form `∑ₓ∑ᵧ uₓ·Kₓᵧ·uᵧ ≥ 0`.  This certifies that the Gram construction always
+yields a valid covariance — the non-vacuity witness tying the constructed
+Gaussian to the PSD-kernel interface (`psd_cauchy_schwarz` etc.).  Proof: any
+coefficient vector `u` is realized by the dual `L = ∑ₓ uₓ·projₓ` (so `L eₓ = uₓ`),
+whence the quadratic form equals `Var[L; μ.map A] ≥ 0`
+(`pi_gaussian_map_variance_quadratic` + `variance_nonneg`). -/
+theorem gram_kernel_isPSDKernel {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (v : ι → NNReal) (A : (ι → ℝ) →L[ℝ] (ι → ℝ)) :
+    IsPSDKernel
+      (fun x y => ∑ i, (v i : ℝ) * ((A (Pi.single i 1)) x * (A (Pi.single i 1)) y)) := by
+  intro u
+  set L : StrongDual ℝ (ι → ℝ) := ∑ x, (u x) • (ContinuousLinearMap.proj x) with hLdef
+  have hLe : ∀ y, L (Pi.single y 1) = u y := by
+    intro y
+    simp [hLdef, ContinuousLinearMap.sum_apply, ContinuousLinearMap.proj_apply,
+      Pi.single_apply]
+  have hnn := variance_nonneg (⇑L) ((Measure.pi (fun i => gaussianReal 0 (v i))).map A)
+  rw [pi_gaussian_map_variance_quadratic v A L] at hnn
+  simpa only [hLe] using hnn
 
 end YangMills.RG

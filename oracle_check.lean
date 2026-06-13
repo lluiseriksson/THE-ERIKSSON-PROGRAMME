@@ -157,6 +157,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- ExpDecay covariance kernel ⟹ Gaussian field-size bound (Schur → variance → MGF)
 #print axioms YangMills.RG.pi_gaussian_map_variance_quadratic
 #print axioms YangMills.RG.pi_gaussian_map_exp_integral_le_of_expDecay
+-- the constructed Gram covariance kernel is a genuine PSD kernel (non-vacuity)
+#print axioms YangMills.RG.gram_kernel_isPSDKernel
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

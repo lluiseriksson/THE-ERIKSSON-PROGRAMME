@@ -3308,6 +3308,33 @@ the concrete CMP-99 gauge-covariant propagator (showing its kernel is `ExpDecay`
 with the right `κ`) and the CMP-116 single-scale raw-activity bound — carried as
 honest hypotheses, never axioms.  Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 79 (2026-06-13, **the constructed Gram covariance kernel is PSD**
+`YangMills.RG.gram_kernel_isPSDKernel`; core 8262)
+
+**Build:** green (8262 jobs — theorem added to `RG/GaussianPi.lean`; module now
+also imports `RG/CovarianceKernel.lean`).  Oracle:
+`[propext, Classical.choice, Quot.sound]`.
+
+Coherence / non-vacuity capstone of the Gaussian layer: the Gram covariance
+kernel `Kₓᵧ = ∑ᵢ vᵢ·(A eᵢ)ₓ·(A eᵢ)ᵧ` of the transformed field `μ.map A` is a
+genuine `IsPSDKernel` (`RG/CovarianceKernel.lean`, Add. 71) — every quadratic
+form `∑ₓ∑ᵧ uₓ·Kₓᵧ·uᵧ ≥ 0`.  This certifies the Gram construction always realizes
+a *valid* covariance, tying the constructed Gaussian to the PSD-kernel interface
+(`psd_diag_nonneg`, `psd_cauchy_schwarz`).  Slick proof: any coefficient vector
+`u` is realized by the dual `L = ∑ₓ uₓ·projₓ` (so `L eₓ = uₓ`), whence the
+quadratic form equals `Var[L; μ.map A] ≥ 0`
+(`pi_gaussian_map_variance_quadratic` + `variance_nonneg`).
+
+The Gaussian-from-covariance layer (`RG/GaussianPi.lean`) is now a closed,
+self-consistent toolkit: construct (`isGaussian_pi`), transform
+(`isGaussian_pi_map_clm`), centered (`pi_gaussian_centered`), covariance is a
+valid PSD kernel (`gram_kernel_isPSDKernel`) computed as a quadratic form
+(`pi_gaussian_map_variance_quadratic`), and an ExpDecay covariance kernel gives
+the field-size bound (`pi_gaussian_map_exp_integral_le_of_expDecay`).  The only
+remaining input is the concrete CMP-99 gauge propagator (its kernel `ExpDecay`)
+and the CMP-116 raw-activity bound — carried hypotheses, never axioms.  Clay
+distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
