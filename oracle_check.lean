@@ -59,3 +59,38 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.clustering_window_nonempty
 #print axioms YangMills.sun_clustering_window_nonempty
 #print axioms YangMills.area_law_to_exp_area_decay_window_nonempty    -- positive string tension log 2 − ½
+
+/-! ## The gauge-RG continuum track (`YangMills/RG/**`) — the §6.3 UV branch
+
+All carried gaps are explicit theorem hypotheses, never axioms; every
+result below is oracle-clean.  The §6.3 UV obligation is the single
+end-to-end conditional `lattice_mass_gap_of_cluster_and_coupling` on two
+faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
+`docs/BALABAN-SOURCE-BOUNDS.md`, `HYPOTHESIS_FRONTIER.md`. -/
+
+-- End-to-end UV conditional: (cluster activity bound + coupling decay) ⟹ lattice mass gap
+#print axioms YangMills.RG.lattice_mass_gap_of_cluster_and_coupling
+-- the coupling-flow bridge (faithful polymer bound + coupling decay ⟹ M·rᵏ surrogate)
+#print axioms YangMills.RG.coupling_flow_bridge
+-- coupling-flow decay from the irrelevant logistic recursion; full assembled conditional
+#print axioms YangMills.RG.remainder_geometric_of_logistic
+#print axioms YangMills.RG.geometric_remainder_assembled
+-- the polymer cluster-sum bound + the KP/Appendix-F geometric summability core
+#print axioms YangMills.RG.polymer_remainder_bound
+#print axioms YangMills.RG.geometric_size_summability
+
+/-! ### Gauge covariance and the averaging operator -/
+-- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge
+#print axioms YangMills.RG.UbarBlock_conj
+#print axioms YangMills.RG.rep_wilsonLine_gaugeAct
+-- the ℓ²(lattice) operator contraction of Q (L^{2-d}; a contraction for d ≥ 4)
+#print axioms YangMills.RG.linAvg_l2_contraction
+-- the free RG step's covariance transformation law (on Mathlib's IsGaussian)
+#print axioms YangMills.RG.covarianceBilinDual_map_clm
+
+/-! ### The near-identity matrix-logarithm calculus -/
+-- the quantitative axiom (0.8): exp(nearLog Y) = 1 + Y + O(‖Y‖²)
+#print axioms YangMills.RG.norm_exp_nearLog_sub_one_sub_self_le
+-- scalar correctness (non-vacuity: nearLog IS the logarithm) + conjugation-equivariance
+#print axioms YangMills.RG.nearLog_real
+#print axioms YangMills.RG.nearLog_conj
