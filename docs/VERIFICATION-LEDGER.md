@@ -2442,6 +2442,36 @@ a full discharge gives only the *lattice* gap (M4/M5 untouched, Clay
 distance ~0% (<0.1%)).  Source CMP 122-II / Dimock; strategy **Lluis
 Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track.
 
+## Addendum 53 (2026-06-12, **gauge-RG UV — summability `hwK` reduced to
+the polymer animal-count** `YangMills.RG.polymer_weight_summability`;
+core 8252)
+
+**Build:** green (8252 jobs).  Oracle:
+`'YangMills.RG.polymer_weight_summability' [propext, Classical.choice, Quot.sound]`.
+
+For polymers `Y` graded by `size : ι → ℕ` with finite per-size fibers,
+animal-count bound `#{size = n} ≤ Cⁿ`, per-size decay `q` with `C·q < 1`
+(and the weights summable):
+`∑_Y q^{size Y} ≤ (1 − C·q)⁻¹`.  This **reduces the cluster-expansion
+summability `hwK`** (the `∑_{X⊇□} e^{−κ₀ d} ≤ K₀` substrate, with
+`q = e^{−κ₀}`, `K₀ = (1−Cq)⁻¹`) to the **polymer animal-counting bound
+`c_n ≤ Cⁿ`** — pure lattice combinatorics.  So the summability branch of
+`hRpoly` no longer needs a carried *analytic* hypothesis; it needs only a
+combinatorial count.  Proof: fiber decomposition by `size`
+(`Equiv.sigmaFiberEquiv`, `Summable.tsum_sigma`, per-fiber
+`tsum_fintype`/`Finset.sum_const`), landing on `geometric_size_summability`
+(Add. 51).
+
+The cluster-expansion-with-holes now decomposes as: (i) the
+activity-*decay* bound `|H_k(Y)| ≤ amp·q^{size Y}` (the Dimock fluctuation
+integral + holes localization — the months-scale analytic core, carried);
+(ii) the summability, now reduced (this addendum) to the animal count.
+Source Dimock I/II/III, Kotecký–Preiss; the existing `KP` layer's
+`kp_per_size_bound` is the matching abstract framework
+(`docs/BALABAN-SOURCE-BOUNDS.md` §6).  Strategy/framing **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

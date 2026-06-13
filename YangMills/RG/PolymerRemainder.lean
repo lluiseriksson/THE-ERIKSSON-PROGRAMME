@@ -126,4 +126,41 @@ theorem geometric_size_summability (c : ℕ → ℝ) {C q : ℝ}
   calc ∑' n, c n * q ^ n ≤ ∑' n, (C * q) ^ n := hsumm.tsum_le_tsum hterm hgeo
     _ = (1 - C * q)⁻¹ := tsum_geometric_of_lt_one hCq0 hCq
 
+/-- **Polymer-indexed geometric summability** (reduces `hwK` to the
+animal count): polymers `Y` graded by `size : ι → ℕ` with finite per-size
+fibers whose count obeys the animal bound `#{size = n} ≤ Cⁿ`, and per-size
+decay `q` with `C·q < 1`, give `∑_Y q^{size Y} ≤ (1 − C·q)⁻¹`.  This is the
+cluster-expansion summability `hwK` (`q = e^{−κ₀}`, `K₀ = (1−Cq)⁻¹`)
+**reduced to the polymer animal-counting bound** `c_n ≤ Cⁿ` — pure lattice
+combinatorics, the last elementary input on the summability branch.
+Fiber decomposition (`Equiv.sigmaFiberEquiv`, `Summable.tsum_sigma`) onto
+`geometric_size_summability`. -/
+theorem polymer_weight_summability {ι : Type*} (size : ι → ℕ)
+    [∀ n, Fintype {Y : ι // size Y = n}] {C q : ℝ}
+    (hq0 : 0 ≤ q) (hC0 : 0 ≤ C) (hCq : C * q < 1)
+    (hcount : ∀ n, (Fintype.card {Y : ι // size Y = n} : ℝ) ≤ C ^ n)
+    (hsumm : Summable (fun Y : ι => q ^ size Y)) :
+    ∑' Y : ι, q ^ size Y ≤ (1 - C * q)⁻¹ := by
+  have hsig : Summable
+      (fun p : Σ n, {Y : ι // size Y = n} =>
+        q ^ size ((Equiv.sigmaFiberEquiv size) p)) :=
+    ((Equiv.sigmaFiberEquiv size).summable_iff).mpr hsumm
+  have hval : ∀ (n : ℕ) (b : {Y : ι // size Y = n}),
+      q ^ size ((Equiv.sigmaFiberEquiv size) ⟨n, b⟩) = q ^ n := by
+    intro n b
+    show q ^ size (b : ι) = q ^ n
+    rw [b.2]
+  calc ∑' Y : ι, q ^ size Y
+      = ∑' p : Σ n, {Y : ι // size Y = n},
+          q ^ size ((Equiv.sigmaFiberEquiv size) p) :=
+        ((Equiv.sigmaFiberEquiv size).tsum_eq (fun Y => q ^ size Y)).symm
+    _ = ∑' n : ℕ, ∑' b : {Y : ι // size Y = n},
+          q ^ size ((Equiv.sigmaFiberEquiv size) ⟨n, b⟩) := hsig.tsum_sigma
+    _ = ∑' n : ℕ, (Fintype.card {Y : ι // size Y = n} : ℝ) * q ^ n := by
+        refine tsum_congr (fun n => ?_)
+        rw [tsum_congr (fun b => hval n b), tsum_fintype, Finset.sum_const,
+          Finset.card_univ, nsmul_eq_mul]
+    _ ≤ (1 - C * q)⁻¹ :=
+        geometric_size_summability _ (fun _ => by positivity) hcount hq0 hC0 hCq
+
 end YangMills.RG

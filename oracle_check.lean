@@ -78,6 +78,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- the polymer cluster-sum bound + the KP/Appendix-F geometric summability core
 #print axioms YangMills.RG.polymer_remainder_bound
 #print axioms YangMills.RG.geometric_size_summability
+-- the summability `hwK` reduced to the polymer animal-count `c_n ≤ Cⁿ`
+#print axioms YangMills.RG.polymer_weight_summability
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge
