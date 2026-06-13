@@ -2059,6 +2059,25 @@ Source CMP 98 (11)/109; strategy **Lluis Eriksson**
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
+## Addendum 41 (2026-06-12, **gauge-RG matrix-`log` layer — small-field
+stability of the renormalized field** `YangMills.RG.norm_exp_nearLog_sub_one_le`;
+core 8246, U1 ingredient)
+
+**Build:** green (8246 jobs).  Oracle:
+`'YangMills.RG.norm_exp_nearLog_sub_one_le' [propext, Classical.choice, Quot.sound]`.
+
+For `‖Y‖ < 1/2`,
+`‖exp(nearLog Y) - 1‖ ≤ ‖Y‖ + (‖nearLog Y‖²/(1-‖nearLog Y‖) + ‖Y‖²/(1-‖Y‖))`,
+i.e. `‖exp(nearLog Y) - 1‖ ≤ ‖Y‖ + O(‖Y‖²)`: the **renormalized field
+deviation is controlled by the original deviation**, equal to it at
+leading order.  This is the boundedness Bałaban's small-field
+single-scale bound (UV plan **U1**) is built on — the small-field region
+is preserved by the `exp ∘ nearLog` step.  Immediate from the
+linearisation (M-log-5, Add. 39) by the triangle inequality.  Carries
+`[NormOneClass 𝔸]`.  Source CMP 109 small-field / UV plan U1; strategy
+**Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay
+distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

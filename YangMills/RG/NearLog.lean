@@ -355,6 +355,27 @@ theorem norm_exp_nearLog_sub_one_sub_self_le [NormOneClass 𝔸] {Y : 𝔸}
         · exact norm_exp_sub_one_sub_self_le hnl
         · exact norm_nearLog_sub_self_le hY1
 
+/-- **Small-field stability of the renormalized field** (U1 ingredient):
+the renormalized deviation `exp(nearLog Y) - 1` is controlled by the
+original deviation `Y`, namely `‖exp(nearLog Y) - 1‖ ≤ ‖Y‖ + O(‖Y‖²)`
+for `‖Y‖<1/2` — to leading order the renormalized deviation equals the
+original, so the small-field region is preserved under the
+`exp ∘ nearLog` step.  Immediate from the linearisation (M-log-5) by the
+triangle inequality.  This is the boundedness Bałaban's small-field
+single-scale bound (UV plan U1) is built on. -/
+theorem norm_exp_nearLog_sub_one_le [NormOneClass 𝔸] {Y : 𝔸}
+    (hY : ‖Y‖ < 1 / 2) :
+    ‖NormedSpace.exp (nearLog Y) - 1‖
+      ≤ ‖Y‖ + (‖nearLog Y‖ ^ 2 / (1 - ‖nearLog Y‖) + ‖Y‖ ^ 2 / (1 - ‖Y‖)) := by
+  calc ‖NormedSpace.exp (nearLog Y) - 1‖
+      = ‖(NormedSpace.exp (nearLog Y) - 1 - Y) + Y‖ := by congr 1; abel
+    _ ≤ ‖NormedSpace.exp (nearLog Y) - 1 - Y‖ + ‖Y‖ := norm_add_le _ _
+    _ ≤ (‖nearLog Y‖ ^ 2 / (1 - ‖nearLog Y‖) + ‖Y‖ ^ 2 / (1 - ‖Y‖)) + ‖Y‖ := by
+        have h := norm_exp_nearLog_sub_one_sub_self_le hY
+        linarith
+    _ = ‖Y‖ + (‖nearLog Y‖ ^ 2 / (1 - ‖nearLog Y‖) + ‖Y‖ ^ 2 / (1 - ‖Y‖)) := by
+        ring
+
 /-- `log(1 + 0) = log 1 = 0`. -/
 @[simp] theorem nearLog_zero : nearLog (0 : 𝔸) = 0 := by
   have hz : (fun n : ℕ => logCoeff n • (0 : 𝔸) ^ n) = fun _ => 0 := by
