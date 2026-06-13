@@ -135,6 +135,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.psd_cauchy_schwarz
 -- Gaussian field-size / MGF bound from a covariance bound (fluctuation input)
 #print axioms YangMills.RG.gaussian_exp_integral_le
+-- self-contained MGF bound for an abstract centered IsGaussian measure
+#print axioms YangMills.RG.gaussian_exp_integral_le_isGaussian
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

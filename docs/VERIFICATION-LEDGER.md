@@ -3095,6 +3095,39 @@ NOT prove `hRpoly`.  **Non-vacuity:** `gaussianReal 0 v` itself (with `μ = `
 pushforward, `L = id`) satisfies the hypothesis.  Clay distance **~0% (<0.1%),
 unchanged**.
 
+## Addendum 73 (2026-06-13, **self-contained Gaussian MGF bound for an abstract
+centered Gaussian** `YangMills.RG.gaussian_exp_integral_le_isGaussian`; core 8261)
+
+**Build:** green (8261 jobs — theorem added to `RG/GaussianMGF.lean`, no new
+module).  Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+Completes the prompt's target objective: the Gaussian field-size bound with
+**no carried marginal hypothesis**, reduced fully to abstract Gaussianity +
+centering + the variance bound.
+
+* **`gaussian_exp_integral_le_isGaussian`** — for any `[IsGaussian μ]` on a
+  separable Banach space, a centered linear observable `L` (`μ[L] = 0`) with
+  bounded variance (`Var[L; μ] ≤ B`, the value `expDecay_quadratic_form_le` /
+  `psd_cauchy_schwarz` supply, `B = a·S·‖L‖²`) satisfies
+  `∫ exp(L φ) dμ ≤ exp(B/2)`.  Derives the 1-D marginal
+  `μ.map L = gaussianReal 0 (Var[L;μ])` from Mathlib's
+  `IsGaussian.map_eq_gaussianReal`, then applies `gaussian_exp_integral_le`
+  (Add. 72).
+
+**Dependency moved.**  The Gaussian-from-covariance layer is now closed at the
+abstract level: *centered Gaussian + covariance bound `a·S` ⇒ exponential
+field-size bound* `exp(½ a·S ‖L‖²)` — exactly the small-field fluctuation
+integral input, with the covariance bound supplied by the kernel/Schur/PSD
+substrate (Add. 66–71).  The full source-independent analytic toolkit toward
+`hRpoly` — combinatorial summability, marginal coupling, kernel decay/resolvent,
+Schur/operator boundedness, PSD covariance, and now the Gaussian MGF bound — is
+in place and oracle-clean.  The remaining gap is the carried `hRpoly`:
+constructing the concrete lattice gauge `IsGaussian` fluctuation measure with
+its covariance the gauge-covariant propagator (an `ExpDecay`+PSD kernel) — the
+months-scale CMP 95/99/102/109/116 gauge construction.  **Non-vacuity:** any
+centered `gaussianReal`-type measure satisfies the hypotheses.  Clay distance
+**~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

@@ -58,4 +58,24 @@ theorem gaussian_exp_integral_le {E : Type*} [MeasurableSpace E]
   rw [he]
   linarith
 
+/-- **Self-contained Gaussian MGF bound** for an abstract centered Gaussian
+measure (the prompt's target objective).  If `μ` is Gaussian, the linear
+observable `L` is centered (`μ[L] = 0`), and its variance is bounded
+(`Var[L; μ] ≤ B`, the value the covariance/Schur bound supplies, `B = a·S·‖L‖²`),
+then `∫ exp(L φ) dμ ≤ exp(B/2)`.  Derives the 1-D marginal
+`μ.map L = gaussianReal 0 (Var[L; μ])` from Mathlib's
+`IsGaussian.map_eq_gaussianReal`, then applies `gaussian_exp_integral_le`.  No
+carried marginal hypothesis — fully reduced to `[IsGaussian μ]` + centering +
+the variance bound. -/
+theorem gaussian_exp_integral_le_isGaussian {E : Type*} [NormedAddCommGroup E]
+    [NormedSpace ℝ E] [MeasurableSpace E] [BorelSpace E] [SecondCountableTopology E]
+    [CompleteSpace E] {μ : Measure E} [IsGaussian μ] (L : StrongDual ℝ E) {B : ℝ}
+    (hcenter : μ[L] = 0) (hvar : Var[L; μ] ≤ B) :
+    ∫ x, Real.exp (L x) ∂μ ≤ Real.exp (B / 2) := by
+  have hL : μ.map L = gaussianReal 0 (Var[L; μ]).toNNReal := by
+    rw [IsGaussian.map_eq_gaussianReal L, hcenter]
+  refine gaussian_exp_integral_le hL ?_
+  rw [Real.coe_toNNReal _ (variance_nonneg _ _)]
+  exact hvar
+
 end YangMills.RG
