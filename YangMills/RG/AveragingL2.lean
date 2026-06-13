@@ -201,4 +201,27 @@ theorem linAvg_l2_contraction (L N' : ℕ) [NeZero L] [NeZero N']
           * ∑ z : FinBox d (L * N'), ∑ μ : Fin d, ‖A ⟨z, μ, true⟩‖ ^ 2 :=
         mul_le_mul_of_nonneg_right hconst (by positivity)
 
+open scoped Classical in
+/-- **The linear averaging operator `Q` as a continuous linear map**
+(UV-S2, brick G1): on finite-dimensional fibres `linAvg` is a bounded
+linear map between the (finite-dimensional) bond-field spaces.  This is
+the object whose Gaussian pushforward is the free renormalization-group
+step (`ProbabilityTheory.isGaussian_map`): if the fine bond field is a
+Gaussian measure, `(linAvgCLM)_* μ` is Gaussian, with covariance
+`Q C Qᵀ` controlled by `linAvg_l2_le`. -/
+noncomputable def linAvgCLM (L N' : ℕ) [NeZero L] [NeZero N']
+    [FiniteDimensional ℝ V] :
+    (ConcreteEdge d (L * N') → V) →L[ℝ] (ConcreteEdge d N' → V) :=
+  LinearMap.toContinuousLinearMap
+    { toFun := fun A => linAvg L N' A
+      map_add' := fun A A' => by
+        funext c; simp only [Pi.add_apply]; exact linAvg_add L N' A A' c
+      map_smul' := fun r A => by
+        funext c; simp only [RingHom.id_apply, Pi.smul_apply]
+        exact linAvg_smul L N' r A c }
+
+@[simp] theorem linAvgCLM_apply (L N' : ℕ) [NeZero L] [NeZero N']
+    [FiniteDimensional ℝ V] (A : ConcreteEdge d (L * N') → V) :
+    linAvgCLM L N' A = linAvg L N' A := rfl
+
 end YangMills.RG

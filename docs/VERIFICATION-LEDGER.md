@@ -2166,6 +2166,35 @@ decay (`Paper.uv_geometric_summation`, UV plan U3) consumes.  From
 Source CMP 95; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
 Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 45 (2026-06-12, **gauge-RG UV-S2 brick G1 — the averaging
+operator as a continuous linear map** `YangMills.RG.linAvgCLM`; core 8247)
+
+**Build:** green (8247 jobs).  Oracle:
+`'YangMills.RG.linAvgCLM' [propext, Classical.choice, Quot.sound]`.
+
+`linAvgCLM L N' : (ConcreteEdge d (L*N') → V) →L[ℝ] (ConcreteEdge d N' → V)`
+(for `[FiniteDimensional ℝ V]`): the linear averaging operator `Q`
+bundled as a **continuous linear map** (`LinearMap.toContinuousLinearMap`
+on finite-dimensional fibres; linearity from `linAvg_add`/`linAvg_smul`),
+with `linAvgCLM_apply : linAvgCLM L N' A = linAvg L N' A`.
+
+**Why this is on the critical path (not scaffolding).**  A verified
+Mathlib finding (2026-06-12): `ProbabilityTheory.isGaussian_map
+(L : E →L[ℝ] F) : IsGaussian (μ.map L)` is an *instance* — the
+pushforward of a Gaussian under a CLM is Gaussian.  So `linAvgCLM` is
+exactly the object whose Gaussian pushforward is the **free
+renormalization-group step** (`docs/UV-S2-GAUSSIAN-PLAN.md`, opening the
+S2 campaign): the coarse free field is automatically Gaussian, and its
+covariance is controlled by the proven operator contraction
+`linAvg_l2_le`/`linAvg_l2_contraction` (Add. 43–44).  S2's free-field
+core (G1–G4) is therefore reachable on existing Mathlib infrastructure;
+the interacting correction (G5, the gauge fluctuation integral) remains
+the months-scale wall and is the subject of a precise source request
+(UV-S2 plan §"Precise source request": Bałaban CMP 95 §2–3 covariance
+bound, CMP 96 transformation law, CMP 122-II Thm 1).  Source CMP 95;
+strategy **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track;
+Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
