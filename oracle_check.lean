@@ -133,6 +133,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- PSD covariance-kernel interface: variance ≥ 0 and the covariance Cauchy–Schwarz
 #print axioms YangMills.RG.psd_diag_nonneg
 #print axioms YangMills.RG.psd_cauchy_schwarz
+-- Gaussian field-size / MGF bound from a covariance bound (fluctuation input)
+#print axioms YangMills.RG.gaussian_exp_integral_le
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

@@ -225,6 +225,9 @@ import YangMills.RG.KernelSchur
 -- PSD covariance-kernel interface: diagonal/variance bounds and the covariance
 -- Cauchy–Schwarz, connecting ExpDecay/Schur to the Gaussian covariance form.
 import YangMills.RG.CovarianceKernel
+-- Gaussian field-size / MGF bound from a covariance bound: a Gaussian
+-- fluctuation field with bounded covariance has bounded exponential moments.
+import YangMills.RG.GaussianMGF
 -- hRpoly campaign brick P1a: the bounded-degree walk-count engine (≤ Δⁿ) — the
 -- combinatorial substrate for the lattice animal count `c_n ≤ Cⁿ` (branch C of
 -- `hRpoly`). Pure graph combinatorics; consumer = animal count → polymer_weight_summability.

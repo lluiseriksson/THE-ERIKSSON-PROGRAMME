@@ -3066,6 +3066,35 @@ concrete lattice gauge-covariant operator as such a kernel (CMP 95/99/102/
 zero kernel and any Gram kernel `K x y = ⟨e_x, e_y⟩` are PSD instances.  Clay
 distance **~0% (<0.1%), unchanged**.
 
+## Addendum 72 (2026-06-13, **Gaussian field-size / MGF bound from a covariance
+bound** `YangMills.RG.gaussian_exp_integral_le`; core 8261)
+
+**Build:** green (**8261 jobs**, +1 — new module `RG/GaussianMGF.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+First brick of the **Gaussian-from-covariance layer** (new campaign): the
+fluctuation-integral input that a Gaussian field with bounded covariance has
+uniformly bounded exponential moments.
+
+* **`gaussian_exp_integral_le`** — if the 1-D marginal of a centered measure
+  `μ` under the linear observable `L` is `gaussianReal 0 v` (the defining
+  centered-marginal property of a Gaussian field), and the variance `v ≤ B`
+  (with `B = a·S·‖L‖²` the value `expDecay_quadratic_form_le` / `psd_cauchy_schwarz`
+  supply), then `∫ exp(L φ) dμ ≤ exp(B/2)`.  Built directly on Mathlib's
+  `mgf_gaussianReal` (the 1-D Gaussian MGF) via `mgf L μ 1 = ∫ exp(L φ)`.
+
+**Dependency moved.**  The covariance/operator substrate (Add. 66–71) now feeds
+a genuine Gaussian fluctuation bound: bounded covariance ⇒ bounded exponential
+field moments, the small-field integral input.  **Honest scope:** the
+hypothesis `μ.map L = gaussianReal 0 v` is the genuine centered-1-D-marginal
+property (true for every Gaussian measure), a faithful carried hypothesis, NOT
+a fabricated constructor.  Deriving it from an abstract `[IsGaussian μ]`
+(centered, via `isGaussian_map` + the charFun characterization + the
+`IsGaussian`-on-ℝ = `gaussianReal` identity) is the natural next brick.  Does
+NOT prove `hRpoly`.  **Non-vacuity:** `gaussianReal 0 v` itself (with `μ = `
+pushforward, `L = id`) satisfies the hypothesis.  Clay distance **~0% (<0.1%),
+unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
