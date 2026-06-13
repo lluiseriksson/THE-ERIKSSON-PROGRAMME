@@ -1967,4 +1967,90 @@ theorem norm_normalized_exp_wilson_loop_le_pinned_sum
     rw [hNumEq]
     exact hnum
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **V4-2(c) — THE EXACT VOLUME-UNIFORM AREA LAW.**  The volume-uniform
+Wilson-loop area law for the TRUE Wilson Boltzmann factor `∏ exp(z_p)`
+at the conjugate pair, with geometric rate `r = σ` and effective
+activity `e^{2δN_c}−1`:
+
+`‖(∫ tr W_C·∏ exp(z_p))/Z‖ ≤
+  N_c·e^{#loopSupp·4d·K}·σ^{Area(C)}·e^{#loopSupp·4d·S(σ)}`
+
+— every constant volume-free.  The exp analog of
+`normalized_wilson_loop_area_law`; chains
+`norm_normalized_exp_wilson_loop_le_pinned_sum` with the abstract
+`sum_pinned_dichotomy_le` at `ρ₀ := e^{2δN_c}−1`. -/
+theorem normalized_exp_wilson_loop_area_law
+    (N_c : ℕ) [NeZero N_c]
+    (es : List (ConcreteEdge d N)) (δ : ℝ) (hδ0 : 0 ≤ δ)
+    (c c' : ConcretePlaquette d N → ℂ)
+    (hc : ∀ p, ‖c p‖ ≤ δ) (hc' : ∀ p, ‖c' p‖ ≤ δ)
+    (hpair : ∀ p, c' p = (starRingEnd ℂ) (c p))
+    (t ε : ℝ) (ht0 : 0 ≤ t) (hε0 : 0 ≤ ε)
+    (hr : ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+      ((Real.exp (2 * δ * (N_c : ℝ)) - 1) * Real.exp (t + ε + 1)) < 1)
+    (hsmall : ((16 * d : ℕ) : ℝ) *
+      (((Real.exp (2 * δ * (N_c : ℝ)) - 1) * Real.exp (t + ε + 1)) /
+        (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+          ((Real.exp (2 * δ * (N_c : ℝ)) - 1) * Real.exp (t + ε + 1)))) ≤ t)
+    (σ : ℝ) (hσ0 : 0 ≤ σ) (hσ1 : σ ≤ 1)
+    (hrσ : ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ < 1)
+    (hρσ : (Real.exp (2 * δ * (N_c : ℝ)) - 1) *
+        Real.exp ((16 * (d : ℝ)) *
+          (Real.exp 1 * (((Real.exp (2 * δ * (N_c : ℝ)) - 1)
+              * Real.exp t) /
+            (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+              ((Real.exp (2 * δ * (N_c : ℝ)) - 1) * Real.exp t)))))
+        ≤ σ ^ 2) :
+    ‖(∫ A, Matrix.trace (wilsonLine A es).val *
+        ∏ p : ConcretePlaquette d N,
+          (1 + (Complex.exp (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)))
+      / ((weightedPartition (d := d) (N := N) (sunHaarProb N_c)
+          (expReActivity N_c c) : ℝ) : ℂ)‖
+      ≤ (N_c : ℝ) *
+          Real.exp (((edgeSupport (d := d) (N := N) es).card : ℝ)
+            * (4 * (d : ℝ))
+            * (Real.exp 1 * (((Real.exp (2 * δ * (N_c : ℝ)) - 1)
+                * Real.exp t) /
+              (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+                ((Real.exp (2 * δ * (N_c : ℝ)) - 1) * Real.exp t))))) *
+          σ ^ (chainAreaA (R := ZMod N_c) (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+            (loopChain (R := ZMod N_c) (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)) *
+          Real.exp (((edgeSupport (d := d) (N := N) es).card : ℝ)
+            * (4 * (d : ℝ))
+            * (σ / (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 * σ))) := by
+  classical
+  refine le_trans (norm_normalized_exp_wilson_loop_le_pinned_sum N_c es δ
+    hδ0 c c' hc hc' hpair t ε ht0 hε0 hr hsmall) ?_
+  refine le_trans (le_of_eq (Finset.sum_congr rfl fun S₀ _ => ?_))
+    (sum_pinned_dichotomy_le es
+      (chainAreaA (R := ZMod N_c) (d := d) (N := N)
+        (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+        (loopChain (R := ZMod N_c) (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es))
+      ((N_c : ℝ))
+      (((edgeSupport (d := d) (N := N) es).card : ℝ) * (4 * (d : ℝ))
+        * (Real.exp 1 * (((Real.exp (2 * δ * (N_c : ℝ)) - 1) * Real.exp t) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+            ((Real.exp (2 * δ * (N_c : ℝ)) - 1) * Real.exp t)))))
+      ((16 * (d : ℝ))
+        * (Real.exp 1 * (((Real.exp (2 * δ * (N_c : ℝ)) - 1) * Real.exp t) /
+          (1 - ((16 * d + 1 : ℕ) : ℝ) ^ 2 *
+            ((Real.exp (2 * δ * (N_c : ℝ)) - 1) * Real.exp t)))))
+      (Real.exp (2 * δ * (N_c : ℝ)) - 1) σ
+      (Nat.cast_nonneg _)
+      (sub_nonneg.mpr (Real.one_le_exp (by positivity)))
+      hσ0 hσ1 hrσ hρσ)
+  congr 1
+  exact congrArg Real.exp (by ring)
+
 end YangMills

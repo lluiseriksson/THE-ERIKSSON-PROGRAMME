@@ -1317,6 +1317,48 @@ via `exp_conjPair_eq_cast` + `integral_prod_one_add_ofReal`) is also
 banked (oracle clean), so every input to V4-2(b) is now in place.
 All M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 18d (2026-06-12, **V4 CLOSED — THE EXACT-ACTIVITY
+VOLUME-UNIFORM AREA LAW** `normalized_exp_wilson_loop_area_law`)
+
+**Build:** green (8238 jobs).  Oracle outputs (verbatim,
+`RestrictedGate.lean`):
+
+```
+'YangMills.norm_normalized_exp_wilson_loop_le_pinned_sum'  [propext, Classical.choice, Quot.sound]
+'YangMills.normalized_exp_wilson_loop_area_law'            [propext, Classical.choice, Quot.sound]
+```
+
+The volume-uniform area law now holds for the **TRUE Wilson
+Boltzmann factor** `∏ exp(z_p)` (not just the linearized `∏(1+f_p)`).
+For the conjugate-pair exponent `z_p = c_p·tr H_p + conj(c_p)·conj tr H_p
+= 2 Re(c_p·tr H_p)` (`‖c_p‖ ≤ δ`) in the banked strong-coupling
+window, and any rate `σ ∈ [0,1]` with `(16d+1)²σ < 1` and
+`(e^{2δN_c}−1)·e^{16d·K} ≤ σ²`:
+
+    ‖(∫ tr(W_C)·∏_p exp(z_p)) / Z‖
+      ≤ N_c·e^{#loopSupp·4d·K}·σ^{Area(C)}·e^{#loopSupp·4d·S(σ)}
+
+with `K = e·((e^{2δN_c}−1)e^t)/(1−(16d+1)²(e^{2δN_c}−1)e^t)` and
+`S(σ) = σ/(1−(16d+1)²σ)` — area decay, perimeter prefactor, every
+constant volume-free, `Z` cancelled through the restricted cluster
+expansion.  The composition exactly mirrors the linearized headline
+`normalized_wilson_loop_area_law` with the SINGLE substitution
+`2δN_c ↦ e^{2δN_c}−1` (the bound on `expReActivity`): the generic V0/V1
+machinery (loop-tagged expansion, restricted-`Z` gate) is
+activity-agnostic, so only the per-pinned dichotomy changed.
+`norm_normalized_exp_wilson_loop_le_pinned_sum` runs the `Z`-ratio
+cancellation at `w := expReActivity` (gate via the V4-0 interface,
+numerator via V4-2(a), far factor via
+`integral_exp_conjPair_prod_eq_cast`), and the headline chains it with
+the abstract `sum_pinned_dichotomy_le` at `ρ₀ := e^{2δN_c}−1`.
+
+**NO integrability hypothesis families** — discharged internally by the
+banked exact-activity integrability lemmas; every remaining hypothesis
+is an explicit, jointly satisfiable smallness/geometry condition (for
+every `d, N_c`, take `δ` small: `e^{2δN_c}−1 → 0`, so `hr/hsmall/hrσ/hρσ`
+hold simultaneously with e.g. `σ = 2·10⁻⁴`).  **THE V4 CAMPAIGN IS
+CLOSED.**  All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

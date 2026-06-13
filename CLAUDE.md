@@ -87,15 +87,16 @@ Lean; they save hours.
   explicit, jointly satisfiable smallness/geometry hypotheses.
 * M3 assembly: IR side theorem-fed; the §6.3 Balaban UV single-scale
   bound is the **sole carried hypothesis**.
-* **V4 in progress** — the VU area law for the TRUE Wilson factor
-  `∏exp(z_p)` (`docs/AREA-LAW-VU-PLAN.md`).  **V4-0 + V4-1 CLOSED**
-  (ledger Addenda 18–18b): the exp-activity interface
-  (`expReActivity` local/measurable/bounded/cast) and the pinned exp
-  dichotomy `norm_integral_exp_pinned_term_le`
-  (`‖∫ tr W_C·∏_{S₀}(exp z−1)‖ ≤ ite(Area ≤ #S₀)(N_c(e^{2δN_c}−1)^{#S₀})(0)`,
-  the exp analog of the linear pinned bound).  REMAINING: V4-2 — the
-  headline re-composition (exp analogs of
-  `norm_normalized_wilson_loop_le_pinned_sum` +
-  `normalized_wilson_loop_area_law`, reusing the activity-agnostic
-  V0/V1 machinery with the V4-0 interface + the V4-1 dichotomy).
+* **V4 CLOSED** — the VU area law for the TRUE Wilson factor
+  `∏exp(z_p)` (`docs/AREA-LAW-VU-PLAN.md`, ledger Addenda 18–18d).
+  Headline: `normalized_exp_wilson_loop_area_law`
+  (`L1_GibbsMeasure/RestrictedGate.lean`) —
+  `‖(∫ tr W_C·∏exp(z_p))/Z‖ ≤
+  N_c·e^{#loopSupp·4d·K}·σ^{Area(C)}·e^{#loopSupp·4d·S(σ)}` for the
+  exact Wilson factor at the conjugate pair, every constant
+  volume-free, NO integrability hypothesis families (only explicit
+  smallness/geometry).  Built by mirroring the linearized headline
+  with the single substitution `2δN_c → e^{2δN_c}−1` — the generic
+  V0/V1 machinery is activity-agnostic, so only the per-pinned
+  dichotomy (`norm_integral_exp_pinned_term_le`) changed.
 * Other frontiers: Peter–Weyl; the §6.3 UV bound.

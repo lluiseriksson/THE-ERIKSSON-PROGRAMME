@@ -296,11 +296,12 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   families are DISCHARGED (17u):
   `normalized_wilson_loop_area_law_unconditional` carries only
   explicit smallness/geometry hypotheses.  **V4 (exact Wilson
-  factor `∏exp(z_p)`) IN PROGRESS** — V4-0 (activity interface
-  `expReActivity`) + V4-1 (pinned exp dichotomy
-  `norm_integral_exp_pinned_term_le`) CLOSED (ledger Addenda
-  18–18b); REMAINING V4-2: the headline re-composition reusing the
-  activity-agnostic V0/V1 machinery.  Other next
+  factor `∏exp(z_p)`) CLOSED** (ledger Addenda 18–18d): the headline
+  `normalized_exp_wilson_loop_area_law` extends the VU area law to the
+  TRUE Wilson Boltzmann factor, NO integrability hypothesis families
+  — built by mirroring the linearized headline with the single
+  substitution `2δN_c → e^{2δN_c}−1` (the V0/V1 machinery is
+  activity-agnostic).  Next
   frontiers:
   Peter–Weyl proper (`PETER_WEYL_ROADMAP.md`) or the Balaban
   single-scale UV estimate (class-C, outside the current plan).

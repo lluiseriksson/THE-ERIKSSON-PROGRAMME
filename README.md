@@ -52,6 +52,15 @@ the integrability inputs are theorems, not hypotheses
 (`normalized_wilson_loop_area_law_unconditional`, Addendum 17u): every
 remaining hypothesis is an explicit smallness or geometry condition.
 
+The **exact-activity** version `normalized_exp_wilson_loop_area_law`
+([`RestrictedGate.lean`](YangMills/L1_GibbsMeasure/RestrictedGate.lean), ledger
+Addenda 18–18d) extends the same volume-uniform bound to the **true Wilson
+Boltzmann factor** ∏<sub>p</sub> exp(z<sub>p</sub>) — area decay σ<sup>Area(C)</sup>
+with a perimeter-only prefactor and rate (e<sup>2δN<sub>c</sub></sup>−1), again with
+no integrability hypotheses. Because the volume-restricted cluster machinery is
+activity-agnostic, the exact version is the linearized proof with the single
+substitution 2δN<sub>c</sub> → e<sup>2δN<sub>c</sub></sup>−1.
+
 ### 1. The exact-activity Wilson-loop area law
 
 For SU(N<sub>c</sub>) lattice gauge theory with the **true Wilson Boltzmann
