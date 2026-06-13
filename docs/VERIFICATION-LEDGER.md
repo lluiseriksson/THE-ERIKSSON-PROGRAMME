@@ -1280,6 +1280,38 @@ headline re-composition (the exp analogs of
 with the V4-0 interface and this dichotomy).
 All M3 lattice-side; M4/M5/Clay untouched.
 
+## Addendum 18c (2026-06-12, **V4-2(a) — the EXACT pinned numerator
+bound** `norm_integral_exp_wilson_loop_le_pinned_sum`)
+
+**Build:** green (8238 jobs).  Oracle outputs (verbatim,
+`RestrictedGate.lean`):
+
+```
+'YangMills.integrable_exp_conjPair_prod'                [propext, Classical.choice, Quot.sound]
+'YangMills.integrable_trace_mul_exp_conjPair_prod'      [propext, Classical.choice, Quot.sound]
+'YangMills.norm_integral_exp_wilson_loop_le_pinned_sum' [propext, Classical.choice, Quot.sound]
+```
+
+The exp analog of `norm_integral_wilson_loop_le_pinned_sum`:
+
+    ‖∫ tr(W_C)·∏_p exp(z_p)‖
+      ≤ ∑_{S₀ pinned} ite(Area ≤ #S₀)(N_c·(e^{2δN_c}−1)^{#S₀})(0)·‖Z_far(S₀)‖
+
+— chaining the (activity-agnostic) loop-tagged expansion
+`integral_wilson_loop_tagged_expansion` at the activity
+`f_p = exp(z_p) − 1` (so `∏(1 + f_p) = ∏ exp(z_p)`) with `norm_sum_le`
+and the V4-1 pinned exp dichotomy.  Supporting: the exact-activity
+integrability families `integrable_exp_conjPair_prod` and
+`integrable_trace_mul_exp_conjPair_prod` (measurable via
+`Complex.measurable_exp`, bounded by `(e^{2δN_c}+1)^{#S}` through
+`Complex.norm_exp` + `Complex.re_le_norm`).  REMAINING: V4-2(b) the
+normalized bound (exp analog of
+`norm_normalized_wilson_loop_le_pinned_sum`, using the gate at
+`w := expReActivity` + `exp_conjPair_eq_cast`) and V4-2(c) the headline
+(exp analog of `normalized_wilson_loop_area_law` with
+`ρ₀ := e^{2δN_c}−1`, reusing the abstract `sum_pinned_dichotomy_le`).
+All M3 lattice-side; M4/M5/Clay untouched.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

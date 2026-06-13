@@ -1665,4 +1665,78 @@ theorem integrable_trace_mul_exp_conjPair_prod (N_c : ℕ) [NeZero N_c]
     hm.aestronglyMeasurable (MeasureTheory.ae_of_all _ hb)
   simpa using h2
 
+set_option maxHeartbeats 1600000 in
+open Classical in
+/-- **V4-2(a) — the EXACT pinned numerator bound:** the unnormalized
+loop integral against the TRUE Wilson factor `∏_p exp(z_p)` is bounded
+by the pinned sum of exp-dichotomy weights times the norms of the far
+factors — the exp analog of `norm_integral_wilson_loop_le_pinned_sum`,
+chaining the loop-tagged expansion (at activity `f_p = exp(z_p) − 1`)
+with the V4-1 pinned exp dichotomy. -/
+theorem norm_integral_exp_wilson_loop_le_pinned_sum
+    (N_c : ℕ) [NeZero N_c]
+    (es : List (ConcreteEdge d N)) (δ : ℝ) (hδ0 : 0 ≤ δ)
+    (c c' : ConcretePlaquette d N → ℂ)
+    (hc : ∀ p, ‖c p‖ ≤ δ) (hc' : ∀ p, ‖c' p‖ ≤ δ) :
+    ‖∫ A, Matrix.trace (wilsonLine A es).val *
+        ∏ p : ConcretePlaquette d N,
+          (1 + (Complex.exp (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + c' p * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖
+      ≤ ∑ S₀ ∈ (Finset.univ :
+            Finset (ConcretePlaquette d N)).powerset.filter
+            (fun S₀ => nearLoop es S₀ = S₀),
+          (if chainAreaA (R := ZMod N_c) (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ))
+                (loopChain (R := ZMod N_c) (d := d) (N := N)
+                  (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) es)
+              ≤ S₀.card
+            then (N_c : ℝ) * (Real.exp (2 * δ * (N_c : ℝ)) - 1) ^ S₀.card
+            else 0) *
+          ‖∫ A, ∏ p ∈ farRegion es S₀,
+            (1 + (Complex.exp (c p * Matrix.trace (wilsonLine A
+              (plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+            + c' p * star (Matrix.trace (wilsonLine A
+              (plaquetteList (d := d) (N := N)
+                (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1))
+            ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))‖ := by
+  classical
+  have hf : ∀ p : ConcretePlaquette d N,
+      DependsOnPos (fun A => Complex.exp (c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+        + c' p * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1)
+        (plaquetteSupport p) := fun p =>
+    dependsOnPos_plaquette_obs'
+      (fun U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+        Complex.exp (c p * Matrix.trace U.val
+          + c' p * star (Matrix.trace U.val)) - 1) p
+  have heq := integral_wilson_loop_tagged_expansion
+    (sunHaarProb N_c)
+    (fun U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) =>
+      Matrix.trace U.val) es
+    (fun p A => Complex.exp (c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+      + c' p * star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1)
+    hf
+    (fun S => integrable_trace_mul_exp_conjPair_prod N_c es c c' hc hc' S)
+    (fun S => integrable_exp_conjPair_prod N_c c c' hc hc' S)
+  refine le_trans (le_of_eq (congrArg norm heq)) ?_
+  refine le_trans (norm_sum_le _ _) ?_
+  refine Finset.sum_le_sum fun S₀ _ => ?_
+  rw [norm_mul]
+  exact mul_le_mul_of_nonneg_right
+    (norm_integral_exp_pinned_term_le es δ hδ0 c c' hc hc' S₀)
+    (norm_nonneg _)
+
 end YangMills
