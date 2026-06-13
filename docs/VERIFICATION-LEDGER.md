@@ -2907,6 +2907,37 @@ summability via the animal count, e.g. `cubeAdj`).  Source: Combes–Thomas,
 Bałaban CMP 95/99; strategy/framing **Lluis Eriksson** (ai.viXra:2602.0088).
 Continuum (M4) track; Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 67 (2026-06-13, **fixed-rate iterated kernel composition — the
+Neumann engine** `YangMills.RG.expDecay_pow`; core 8258)
+
+**Build:** green (8258 jobs — theorems added to `RG/KernelDecay.lean`, no new
+module).  Oracle (`expDecay_comp_asym`, `expDecay_pow`):
+`[propext, Classical.choice, Quot.sound]`.
+
+Extends the kernel-decay calculus (Add. 66) to the iteration needed for a
+resolvent/propagator decay:
+
+* **`expDecay_comp_asym`** — asymmetric composition: `A` at the higher rate
+  `β + σ` composed with `B` at rate `β` gives `A∘B` at the **unreduced** rate
+  `β` (amplitude `a·b·S`).  The extra `σ` of `A` pays for the intermediate
+  summation, so the output keeps `B`'s rate — the form that iterates at a
+  fixed rate.
+* **`Kpow`** — the `n`-fold compositional power of a kernel.
+* **`expDecay_pow`** — the Neumann engine: a kernel `K` at rate `κ` has all
+  powers `Kⁿ` decaying at the **fixed** rate `κ − σ` with geometric amplitude
+  `a·(a·S)ⁿ`.  Induction on `n` via `expDecay_comp_asym` (`K` at rate
+  `κ = (κ−σ)+σ` ∘ `Kⁿ` at rate `κ−σ` stays at `κ−σ`).  This is the per-power
+  input to `∑ₙ Kⁿ` (the resolvent `(1−K)⁻¹`): with `a·S < 1` the amplitudes
+  `a·(a·S)ⁿ` are geometrically summable, giving a fixed-rate exponentially-
+  decaying resolvent — the Combes–Thomas conclusion (Bałaban CMP 95/99), the
+  source of the YM activity decay constant `κ`.
+
+**Dependency moved.**  The analytic substrate now reaches the iterated/resolvent
+level.  Still source-independent and still NOT the YM activity bound (carried
+`hRpoly`).  **Non-vacuity:** genuine quantitative bounds; hypotheses jointly
+satisfiable on any bounded-degree lattice (`cubeAdj`) via the animal-count
+summability.  Continuum (M4) track; Clay distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

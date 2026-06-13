@@ -120,6 +120,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- exponential-decay kernel calculus: composition (Combes-Thomas engine), sum
 #print axioms YangMills.RG.expDecay_comp
 #print axioms YangMills.RG.expDecay_add
+-- asymmetric composition + fixed-rate iterated composition (Neumann engine)
+#print axioms YangMills.RG.expDecay_comp_asym
+#print axioms YangMills.RG.expDecay_pow
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

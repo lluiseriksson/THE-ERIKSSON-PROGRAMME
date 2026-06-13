@@ -136,4 +136,85 @@ theorem ExpDecay.mono {d : V → V → ℝ} {a a' κ κ' : ℝ} {A : V → V →
   apply mul_le_mul ha _ (Real.exp_nonneg _) (le_trans ha0 ha)
   exact Real.exp_le_exp.mpr (by nlinarith [hd x y])
 
+/-- **Asymmetric composition**: if `A` decays at the higher rate `β + σ` and `B`
+at rate `β`, with summability `∑_z e^{−σ d(x,z)} ≤ S`, then `A∘B` decays at the
+**unreduced** rate `β` (amplitude `a·b·S`).  The extra `σ` of `A` pays for the
+intermediate summation, so the output keeps `B`'s rate — the form needed to
+iterate at a fixed rate (Neumann series). -/
+theorem expDecay_comp_asym {d : V → V → ℝ} {a b β σ S : ℝ} {A B : V → V → ℝ}
+    (ha : 0 ≤ a) (hb : 0 ≤ b)
+    (htri : ∀ x y z, d x y ≤ d x z + d z y)
+    (hβ : 0 ≤ β)
+    (hA : ExpDecay d a (β + σ) A) (hB : ExpDecay d b β B)
+    (hsum : ∀ x, Summable (fun z => Real.exp (-σ * d x z)))
+    (hS : ∀ x, ∑' z, Real.exp (-σ * d x z) ≤ S) :
+    ExpDecay d (a * b * S) β (fun x y => ∑' z, A x z * B z y) := by
+  intro x y
+  set C : ℝ := Real.exp (-β * d x y) with hC
+  have hkey : ∀ z, |A x z * B z y| ≤ (a * b * C) * Real.exp (-σ * d x z) := by
+    intro z
+    rw [abs_mul]
+    have hprod : |A x z| * |B z y|
+        ≤ (a * Real.exp (-(β + σ) * d x z)) * (b * Real.exp (-β * d z y)) :=
+      mul_le_mul (hA x z) (hB z y) (abs_nonneg _) (by positivity)
+    refine le_trans hprod ?_
+    have hexp : Real.exp (-(β + σ) * d x z) * Real.exp (-β * d z y)
+        ≤ C * Real.exp (-σ * d x z) := by
+      rw [hC, ← Real.exp_add, ← Real.exp_add]
+      apply Real.exp_le_exp.mpr
+      nlinarith [mul_le_mul_of_nonneg_left (htri x y z) hβ]
+    calc (a * Real.exp (-(β + σ) * d x z)) * (b * Real.exp (-β * d z y))
+        = (a * b) * (Real.exp (-(β + σ) * d x z) * Real.exp (-β * d z y)) := by ring
+      _ ≤ (a * b) * (C * Real.exp (-σ * d x z)) :=
+          mul_le_mul_of_nonneg_left hexp (by positivity)
+      _ = (a * b * C) * Real.exp (-σ * d x z) := by ring
+  have hmaj : Summable (fun z => (a * b * C) * Real.exp (-σ * d x z)) :=
+    (hsum x).mul_left _
+  have hdom : Summable (fun z => |A x z * B z y|) :=
+    Summable.of_nonneg_of_le (fun z => abs_nonneg _) hkey hmaj
+  calc |∑' z, A x z * B z y|
+      ≤ ∑' z, |A x z * B z y| := by
+        have h := norm_tsum_le_tsum_norm (f := fun z => A x z * B z y)
+          (by simpa [Real.norm_eq_abs] using hdom)
+        simpa [Real.norm_eq_abs] using h
+    _ ≤ ∑' z, (a * b * C) * Real.exp (-σ * d x z) :=
+        Summable.tsum_le_tsum hkey hdom hmaj
+    _ = (a * b * C) * ∑' z, Real.exp (-σ * d x z) := tsum_mul_left
+    _ ≤ (a * b * C) * S := mul_le_mul_of_nonneg_left (hS x) (by positivity)
+    _ = (a * b * S) * Real.exp (-β * d x y) := by rw [hC]; ring
+
+/-- The `n`-fold composition (kernel power) of `K`. -/
+noncomputable def Kpow (K : V → V → ℝ) : ℕ → V → V → ℝ
+  | 0 => K
+  | (n + 1) => fun x y => ∑' z, K x z * Kpow K n z y
+
+/-- **Fixed-rate iterated composition** (the Neumann-series engine).  A kernel
+`K` decaying at rate `κ` (amplitude `a`) has all its compositional powers
+decaying at the **fixed** rate `κ − σ` with geometric amplitude `a·(a·S)ⁿ` —
+the input to a resolvent/propagator decay `∑ₙ Kⁿ`.  Induction on `n` via
+`expDecay_comp_asym` (`K` at rate `κ = (κ−σ)+σ` composed with `Kⁿ` at rate
+`κ−σ` stays at `κ−σ`). -/
+theorem expDecay_pow {d : V → V → ℝ} {a κ σ S : ℝ} {K : V → V → ℝ}
+    (ha : 0 ≤ a) (hS0 : 0 ≤ S) (hd : ∀ x y, 0 ≤ d x y)
+    (htri : ∀ x y z, d x y ≤ d x z + d z y)
+    (hσ : 0 ≤ σ) (hσκ : σ ≤ κ)
+    (hK : ExpDecay d a κ K)
+    (hsum : ∀ x, Summable (fun z => Real.exp (-σ * d x z)))
+    (hS : ∀ x, ∑' z, Real.exp (-σ * d x z) ≤ S) :
+    ∀ n, ExpDecay d (a * (a * S) ^ n) (κ - σ) (Kpow K n) := by
+  intro n
+  induction n with
+  | zero =>
+    simp only [Kpow, pow_zero, mul_one]
+    exact hK.mono hd le_rfl ha (by linarith)
+  | succ n ih =>
+    have hKshift : ExpDecay d a ((κ - σ) + σ) K := by
+      have he : (κ - σ) + σ = κ := by ring
+      rw [he]; exact hK
+    have hcomp := expDecay_comp_asym (a := a) (b := a * (a * S) ^ n) (β := κ - σ)
+      (σ := σ) (S := S) ha (by positivity) htri (by linarith) hKshift ih hsum hS
+    have hamp : a * (a * (a * S) ^ n) * S = a * (a * S) ^ (n + 1) := by ring
+    rw [hamp] at hcomp
+    simpa only [Kpow] using hcomp
+
 end YangMills.RG
