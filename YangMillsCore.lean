@@ -203,3 +203,7 @@ import YangMills.RG.CouplingFlow
 -- estimates (carried hypotheses), and the assembled conditional geometric
 -- remainder bound chaining cluster-sum → coupling decay → bridge.
 import YangMills.RG.PolymerRemainder
+-- End-to-end UV conditional: composes the coupling-flow bridge with the banked
+-- mass-gap assembly into one theorem — (RG remainder activity bound + coupling
+-- decay) ⟹ the lattice mass gap. The §6.3 obligation in faithful assembled form.
+import YangMills.RG.UVMassGap

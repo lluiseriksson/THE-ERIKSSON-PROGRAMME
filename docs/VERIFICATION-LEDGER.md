@@ -2407,6 +2407,41 @@ activity estimate, Dimock II/III — still the months-scale core) and
 Kotecký–Preiss; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
 Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 52 (2026-06-12, **gauge-RG — end-to-end UV conditional:
+cluster bound + coupling decay ⟹ lattice mass gap**
+`YangMills.RG.lattice_mass_gap_of_cluster_and_coupling`; core 8252)
+
+**Build:** green (**8252 jobs** — new module `RG/UVMassGap.lean`).
+Oracle:
+`'YangMills.RG.lattice_mass_gap_of_cluster_and_coupling' [propext, Classical.choice, Quot.sound]`.
+
+Closes the loop end-to-end.  From
+* `hRpoly`: the RG remainder activity bound `|R_{t,k}| ≤ A·e^{−c₀t}·g_k^{κ₀}`
+  (spatial decay × coupling power — the Dimock cluster-expansion output),
+* `hg`: the coupling-flow decay `g_k ≤ C·rᵏ`,
+* `hIRbound`: the theorem-fed IR clustering bound,
+* `hcovUV`: `covUV t = ∑_{k<nsc t} R_{t,k}` (covariance as scale-sum),
+
+it derives the **lattice mass gap**
+`∃ gap > 0, ∀ t, |covIR t + covUV t| ≤ (C₁ + A·C^{κ₀}·(1−r)⁻¹)·e^{−gap·t}`.
+Proof: for each distance `t`, `coupling_flow_bridge` (Add. 48) with
+amplitude `A·e^{−c₀t}` turns `hRpoly`/`hg` into the per-scale bound
+`|R_{t,k}| ≤ (A·C^{κ₀}·e^{−c₀t})·rᵏ` = the `hRsc` hypothesis of the banked
+`lattice_mass_gap_of_per_scale_uv` (Add. 19), which then yields the gap.
+
+**Significance.**  The entire §6.3 UV branch is now a SINGLE oracle-clean
+conditional theorem whose only unproved inputs are the two faithful
+Bałaban analytic facts — the cluster-expansion activity bound `hRpoly`
+and the coupling-flow decay `hg`.  Everything from those to the lattice
+mass gap (the bridge, the geometric summation, the assembly) is verified.
+The §6.3 obligation is thus reduced, end to end, to `hRpoly` + `hg`.
+Honest caveats unchanged: `hg`'s geometric form is the irrelevant
+mechanism (4D marginal coupling is logarithmic, Add. 49); discharging
+`hRpoly` is the months-scale cluster-expansion-with-holes core; and even
+a full discharge gives only the *lattice* gap (M4/M5 untouched, Clay
+distance ~0% (<0.1%)).  Source CMP 122-II / Dimock; strategy **Lluis
+Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
