@@ -2581,6 +2581,40 @@ lattice-animal counting (Madras–Slade); strategy/framing **Lluis Eriksson**
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance **~0% (<0.1%),
 unchanged**.
 
+## Addendum 58 (2026-06-13, **hRpoly P1b-ii engine — the detour splice**
+`YangMills.RG.exists_detour_walk`; core 8253)
+
+**Build:** green (8253 jobs — new *theorem* in the existing
+`RG/AnimalCount.lean`, no new module, so the job count is unchanged per
+rule 7).  Oracle: `'…exists_detour_walk' [propext, Classical.choice, Quot.sound]`.
+
+The inductive engine of the tree Euler tour (campaign sub-brick P1b-ii,
+`docs/HRPOLY-CAMPAIGN-PLAN.md`):
+
+> **`exists_detour_walk`** — for a closed walk `w : G.Walk r r`, a vertex
+> `p ∈ w.support`, and a neighbour `u` of `p` (`G.Adj p u`), there is a
+> closed walk `w'` with `w'.length = w.length + 2` and
+> `w'.support.toFinset = insert u w.support.toFinset`.
+
+Construction: `(w.takeUntil p hp).append (cons hpu (cons hpu.symm (w.dropUntil p hp)))`
+— split `w` at `p`, splice the detour `p→u→p`, rejoin.  Length via
+`take_spec` + `length_append`/`length_cons`; support via `support_append` +
+`mem_support_append_iff` (the duplicate `x = p` disjunct is absorbed because
+`p` is the endpoint of `takeUntil`, `end_mem_support`).  Pure Mathlib walk
+surgery — no trees, no measure theory, no source material.  **Non-vacuity:**
+a constructive existence with exact, non-degenerate length/support equalities
+(length strictly grows by 2; support strictly gains `u` when `u ∉ w.support`).
+
+**Role.**  Iterating this over the leaves of a spanning tree (P1b-i) yields a
+closed walk of length `2·(#S−1)` whose support is a connected set `S`; that
+walk is the injection `animal ↪ walk` consumed against P1a
+(`card_walks_length_le_degree_pow`) to give the animal count `c_n ≤ (Δ²)ⁿ`
+(P1b-iii → branch C).  Remaining in P1b: the leaf-induction assembly
+(P1b-i/ii glue) and the injection/count (P1b-iii).  Source: standard
+lattice-animal counting; strategy/framing **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance **~0% (<0.1%),
+unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

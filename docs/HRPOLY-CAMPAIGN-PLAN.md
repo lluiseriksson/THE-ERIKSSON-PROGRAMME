@@ -107,7 +107,12 @@ tour is the crux and must be built.  Honest sub-ladder:
   finite tree on `m+1` vertices admits a closed walk from any root of
   length `2m` whose vertex support is all of `V`.  Build by induction on
   `#V` (peel a leaf — `IsTree` has a degree-1 vertex — splice its two
-  tour-edges).  Its own focused construction; well-founded recursion.
+  tour-edges).  **Engine DONE** — `exists_detour_walk` (`RG/AnimalCount.lean`,
+  ledger Add. 58): the inductive *step* (splice a `p→u→p` detour into a
+  closed walk; length `+2`, support `+{u}`), oracle-clean.  Remaining: the
+  leaf-induction *assembly* (iterate the engine over a spanning tree's
+  leaves) — `IsTree.exists_vert_degree_one_of_nontrivial` +
+  `Connected.induce_compl_singleton_of_degree_eq_one` supply the leaf-peel.
 * **P1b-iii** — *the injection + count*: `S ↦ tour(S)` with `S` recovered
   as `(tour S).support.toFinset`, giving injectivity; then
   `Fintype.card_le_of_injective` into `{walks of length 2(n−1) from r}`

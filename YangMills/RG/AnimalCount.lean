@@ -89,4 +89,42 @@ theorem card_walks_length_le_degree_pow {Δ : ℕ}
           gcongr
           exact hΔ u
 
+/-- **Detour splice** (campaign brick P1b-ii, the inductive engine of the
+tree Euler tour).  Given a closed walk `w` from `r`, a vertex `p` on it, and
+a neighbour `u` of `p`, insert the detour `p → u → p` at an occurrence of
+`p`.  The resulting closed walk has length `w.length + 2` and visits exactly
+the vertices of `w` together with `u`.  Iterating this over the leaves of a
+spanning tree builds a closed walk of length `2·(#S−1)` whose support is a
+connected vertex set `S` — the encoding that injects size-`n` animals into
+length-`≤2n` walks (consumed against `card_walks_length_le_degree_pow`).
+Self-contained walk surgery: `takeUntil`/`dropUntil` + `take_spec`. -/
+theorem exists_detour_walk {V : Type*} [DecidableEq V] {G : SimpleGraph V}
+    {r p u : V} (w : G.Walk r r) (hp : p ∈ w.support) (hpu : G.Adj p u) :
+    ∃ w' : G.Walk r r, w'.length = w.length + 2 ∧
+      w'.support.toFinset = insert u w.support.toFinset := by
+  refine ⟨(w.takeUntil p hp).append
+      (Walk.cons hpu (Walk.cons hpu.symm (w.dropUntil p hp))), ?_, ?_⟩
+  · have hlen : (w.takeUntil p hp).length + (w.dropUntil p hp).length = w.length := by
+      rw [← Walk.length_append, Walk.take_spec]
+    rw [Walk.length_append, Walk.length_cons, Walk.length_cons]
+    omega
+  · have hp_take : p ∈ (w.takeUntil p hp).support := Walk.end_mem_support _
+    ext x
+    simp only [List.mem_toFinset, Finset.mem_insert,
+      Walk.mem_support_append_iff, Walk.support_cons, List.mem_cons]
+    have hw : x ∈ w.support ↔
+        x ∈ (w.takeUntil p hp).support ∨ x ∈ (w.dropUntil p hp).support := by
+      rw [← Walk.mem_support_append_iff, Walk.take_spec]
+    constructor
+    · rintro (htake | rfl | rfl | hdrop)
+      · exact Or.inr (hw.mpr (Or.inl htake))
+      · exact Or.inr (hw.mpr (Or.inl hp_take))
+      · exact Or.inl rfl
+      · exact Or.inr (hw.mpr (Or.inr hdrop))
+    · rintro (rfl | hxw)
+      · exact Or.inr (Or.inr (Or.inl rfl))
+      · rcases hw.mp hxw with htake | hdrop
+        · exact Or.inl htake
+        · exact Or.inr (Or.inr (Or.inr hdrop))
+
 end YangMills.RG

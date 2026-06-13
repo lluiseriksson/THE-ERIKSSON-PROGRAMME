@@ -89,6 +89,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- hRpoly campaign brick P1a: the bounded-degree walk-count engine `≤ Δⁿ`
 -- (combinatorial substrate of the animal count `c_n ≤ Cⁿ`)
 #print axioms YangMills.RG.card_walks_length_le_degree_pow
+-- hRpoly campaign brick P1b-ii (engine): the detour splice — the inductive
+-- step of the tree Euler tour (add a leaf, length +2, support +{u})
+#print axioms YangMills.RG.exists_detour_walk
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge
