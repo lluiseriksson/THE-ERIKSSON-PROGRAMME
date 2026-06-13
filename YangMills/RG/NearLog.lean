@@ -245,6 +245,26 @@ theorem nearLog_sum_smul_conj (u : 𝔸ˣ) {ι : Type*} (s : Finset ι)
   refine Finset.sum_congr rfl (fun i hi => ?_)
   rw [nearLog_conj u (hY i hi), mul_smul_comm, smul_mul_assoc]
 
+/-- **Gauge covariance of the abstract `Ū`-block** (brick B4-Ū, algebra
+level): Bałaban's renormalized field element (CMP 109 (0.12) shape)
+`Ū = exp[ Σ wᵢ • nearLog(deviationᵢ) ] · g` is gauge covariant — under
+the gauge action conjugating the base `g` and every deviation `Yᵢ` by a
+unit `u`, the whole block conjugates,
+`exp[Σ wᵢ•nearLog(u·Yᵢ·u⁻¹)]·(u·g·u⁻¹) = u·(exp[Σ wᵢ•nearLog Yᵢ]·g)·u⁻¹`.
+Assembled from `nearLog_sum_smul_conj` and Mathlib's
+`NormedSpace.exp_units_conj`; **no** `log(exp)=id` is used (covariance is
+purely conjugation-equivariance).  This is the gauge covariance the
+M3-assembly's §6.3 input ultimately requires of the RG transformation. -/
+theorem UbarBlock_conj [NormedAlgebra ℚ 𝔸] (u g : 𝔸ˣ) {ι : Type*} (s : Finset ι)
+    (w : ι → ℝ) (Y : ι → 𝔸) (hY : ∀ i ∈ s, ‖Y i‖ < 1) :
+    NormedSpace.exp (∑ i ∈ s, w i • nearLog ((↑u : 𝔸) * Y i * ↑u⁻¹))
+        * ((↑u : 𝔸) * ↑g * ↑u⁻¹)
+      = (↑u : 𝔸)
+        * (NormedSpace.exp (∑ i ∈ s, w i • nearLog (Y i)) * ↑g) * ↑u⁻¹ := by
+  rw [nearLog_sum_smul_conj u s w Y hY, NormedSpace.exp_units_conj]
+  simp only [mul_assoc]
+  rw [← mul_assoc (↑u⁻¹ : 𝔸) (↑u : 𝔸), u.inv_mul, one_mul]
+
 /-- `log(1 + 0) = log 1 = 0`. -/
 @[simp] theorem nearLog_zero : nearLog (0 : 𝔸) = 0 := by
   have hz : (fun n : ℕ => logCoeff n • (0 : 𝔸) ^ n) = fun _ => 0 := by

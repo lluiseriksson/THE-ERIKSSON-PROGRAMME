@@ -1946,6 +1946,34 @@ open).  No `log(exp)=id` used.  Source CMP 109 (0.12); strategy **Lluis
 Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance
 ~0% (<0.1%), unchanged.
 
+## Addendum 37 (2026-06-12, **gauge-RG brick B4-Ū (algebra level) — gauge
+covariance of the abstract `Ū`-block** `YangMills.RG.UbarBlock_conj`;
+core 8245)
+
+**Build:** green (8245 jobs).  Oracle:
+`'YangMills.RG.UbarBlock_conj' [propext, Classical.choice, Quot.sound]`.
+
+Bałaban's renormalized field element (CMP 109 (0.12) shape)
+`Ū = exp[ Σ wᵢ • nearLog(deviationᵢ) ] · g` is **gauge covariant**:
+`exp[Σ wᵢ•nearLog(u·Yᵢ·u⁻¹)]·(u·g·u⁻¹) = u·(exp[Σ wᵢ•nearLog Yᵢ]·g)·u⁻¹`
+for a unit `u`.  Assembled entirely from oracle-clean pieces —
+`nearLog_sum_smul_conj` (Add. 36) for the exponent and Mathlib's
+`NormedSpace.exp_units_conj` for the exponential — then a base-conjugation
+cancellation (`u⁻¹·u = 1`).  **No** `log(exp)=id` (covariance is pure
+conjugation-equivariance).  Carries one explicit, satisfiable instance
+hypothesis `[NormedAlgebra ℚ 𝔸]` (needed by `NormedSpace.exp`'s lemmas;
+satisfied by `Matrix _ _ ℝ`/`ℂ`, so non-vacuous).
+
+This closes the **algebra-level** B4-Ū: every analytic/algebraic
+ingredient of the RG field map's gauge covariance is now verified.  What
+remains (B4-Ū lattice) is the **definitional** bridge from the abstract
+lattice group `G` to `𝔸ˣ` and instantiation on the concrete `Ū` — not an
+analytic gap.  The fixed-point linearisation (0.8) still needs the
+operator `log(exp)=id` (M-log-2b), which covariance does not.  Source
+CMP 109 (0.12)/CMP 98 (11); strategy **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
