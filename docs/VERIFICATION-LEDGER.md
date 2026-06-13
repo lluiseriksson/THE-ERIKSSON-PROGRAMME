@@ -1310,6 +1310,11 @@ normalized bound (exp analog of
 `w := expReActivity` + `exp_conjPair_eq_cast`) and V4-2(c) the headline
 (exp analog of `normalized_wilson_loop_area_law` with
 `ρ₀ := e^{2δN_c}−1`, reusing the abstract `sum_pinned_dichotomy_le`).
+The far-factor cast `integral_exp_conjPair_prod_eq_cast` (the exp
+analog of `integral_conjPair_prod_eq_cast`, identifying the ℂ far
+factor with the cast of the real restricted `Z` of `expReActivity`
+via `exp_conjPair_eq_cast` + `integral_prod_one_add_ofReal`) is also
+banked (oracle clean), so every input to V4-2(b) is now in place.
 All M3 lattice-side; M4/M5/Clay untouched.
 
 ## Scope statement (the honest line)

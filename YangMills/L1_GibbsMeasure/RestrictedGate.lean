@@ -1505,6 +1505,55 @@ theorem exp_conjPair_eq_cast (N_c : ℕ) [NeZero N_c]
   rw [Complex.ofReal_exp]
 
 open Classical in
+/-- **(V4-2(b) the far-factor cast)** the ℂ far factor of the exact
+loop-tagged expansion at the conjugate pair IS the cast of the real
+restricted `Z` of the activity `expReActivity` — the exp analog of
+`integral_conjPair_prod_eq_cast`. -/
+theorem integral_exp_conjPair_prod_eq_cast (N_c : ℕ) [NeZero N_c]
+    (c : ConcretePlaquette d N → ℂ)
+    (F : Finset (ConcretePlaquette d N)) :
+    ∫ A, ∏ p ∈ F, ((1 : ℂ)
+        + (Complex.exp (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + (starRingEnd ℂ) (c p) * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1))
+        ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c))
+      = ((∫ A, ∏ p ∈ F, (1 + expReActivity N_c c A p)
+          ∂(gaugeMeasureFrom (d := d) (N := N) (sunHaarProb N_c)) : ℝ) : ℂ) := by
+  have hpt : (fun A : GaugeConfig d N
+      (↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) =>
+      ∏ p ∈ F, ((1 : ℂ)
+        + (Complex.exp (c p * Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+          + (starRingEnd ℂ) (c p) * star (Matrix.trace (wilsonLine A
+            (plaquetteList (d := d) (N := N)
+              (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1)))
+      = fun A => ∏ p ∈ F, ((1 : ℂ) + ((expReActivity N_c c A p : ℝ) : ℂ)) := by
+    funext A
+    refine Finset.prod_congr rfl fun p _ => ?_
+    rw [show (1 : ℂ) + (Complex.exp (c p * Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+      + (starRingEnd ℂ) (c p) * star (Matrix.trace (wilsonLine A
+        (plaquetteList (d := d) (N := N)
+          (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val)) - 1)
+      = Complex.exp (c p * Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val
+        + (starRingEnd ℂ) (c p) * star (Matrix.trace (wilsonLine A
+          (plaquetteList (d := d) (N := N)
+            (G := ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ)) p)).val))
+      from by ring]
+    rw [exp_conjPair_eq_cast N_c c A p]
+    push_cast
+    ring
+  rw [hpt]
+  exact integral_prod_one_add_ofReal (sunHaarProb N_c) _ F
+
+open Classical in
 /-- **(V4-2 integrability i)** the EXACT pinned product
 `∏_{p∈S}(exp z_p − 1)` is integrable — measurable (exp of measurable)
 and bounded (`‖exp z_p − 1‖ ≤ e^{2δN_c}+1` through finite products). -/
