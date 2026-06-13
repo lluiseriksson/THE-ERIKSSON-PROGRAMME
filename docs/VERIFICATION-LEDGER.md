@@ -2195,6 +2195,38 @@ bound, CMP 96 transformation law, CMP 122-II Thm 1).  Source CMP 95;
 strategy **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track;
 Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 46 (2026-06-12, **gauge-RG UV-S2 brick G3 — covariance
+transformation law of the free RG step** `YangMills.RG.covarianceBilinDual_map_clm`;
+core 8248)
+
+**Build:** green (**8248 jobs** — incremented, new module
+`RG/GaussianStep.lean`).  Oracle:
+`'YangMills.RG.covarianceBilinDual_map_clm' [propext, Classical.choice, Quot.sound]`.
+
+For a Gaussian measure `μ` on `E`, a continuous linear map `Q : E →L[ℝ] F`,
+and a dual functional `L`:
+`covarianceBilinDual (μ.map Q) L L = covarianceBilinDual μ (L∘Q) (L∘Q)`.
+Pushing a Gaussian forward under `Q` transforms its covariance bilinear
+form by precomposition with `Q` on the dual — the free
+renormalization-group step on the covariance, `C ↦ Q C Qᵀ`.  Proved on
+Mathlib's `ProbabilityTheory.IsGaussian` framework: the diagonal of the
+covariance form is the variance (`covarianceBilinDual_self_eq_variance`,
+using `IsGaussian.memLp_two_id` — valid for `μ.map Q` too, Gaussian via
+the `isGaussian_map` instance), and variance pushes back under the map
+(`variance_map`).
+
+**Significance.** Together with `isGaussian_map` (coarse field is
+Gaussian) and the proven operator contraction `linAvg_l2_le`/
+`linAvg_l2_contraction` (Add. 43–44), this is the **free fixed-point**
+half of S2 (`docs/UV-S2-GAUSSIAN-PLAN.md`, G3): the free RG step maps a
+Gaussian to a Gaussian whose covariance is `Q C Qᵀ`, with ℓ²-scale
+contracting by `≤ L⁻¹` in `d = 4`.  Stated abstractly for any CLM, so it
+is reusable and instantiates at `linAvgCLM`.  The interacting correction
+(G5, the gauge fluctuation integral) remains the months-scale wall
+(precise source request: UV-S2 plan).  Source standard / CMP 95–96;
+strategy **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track;
+Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

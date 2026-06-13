@@ -185,3 +185,7 @@ import YangMills.RG.MatrixRealization
 -- UV-U1 brick S1: the ℓ² averaging bound for `Q` — the `L^{1-d}` per-bond
 -- mean-square contraction (deterministic seed of the small-field RG step).
 import YangMills.RG.AveragingL2
+-- UV-S2 brick G3: the free RG step on a Gaussian field — the covariance
+-- transformation law `Cov(μ.map Q) = Q·Cov(μ)·Qᵀ` (on Mathlib's IsGaussian),
+-- the free fixed-point half of the small-field per-scale contraction.
+import YangMills.RG.GaussianStep

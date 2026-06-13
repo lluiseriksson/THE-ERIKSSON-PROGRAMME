@@ -36,7 +36,7 @@ and the specific gauge propagator bound.
 |---|---|---|
 | **G1** | **`Q` as a continuous linear map** `linAvgCLM : (E_fine) →L[ℝ] (E_coarse)` (finite-dimensional fibres; linearity is `linAvg_add`/`linAvg_smul`).  The object `isGaussian_map` consumes. `RG/AveragingL2.linAvgCLM` (+ `linAvgCLM_apply`). | **CLOSED** (ledger Add. 45, core 8247) |
 | **G2** | **Free lattice Gaussian field** as an `IsGaussian` measure on the bond-field space `E = ConcreteEdge → V` with a prescribed covariance (the prototype: mass-term / identity covariance). | reachable |
-| **G3** | **Free RG step = Gaussian pushforward**: `(linAvgCLM)_* μ` is Gaussian (`isGaussian_map`); its covariance is `Q C Qᵀ`. | reachable (G1+G2) |
+| **G3** | **Free RG step = Gaussian pushforward**: `(linAvgCLM)_* μ` is Gaussian (`isGaussian_map`); its covariance is `Q C Qᵀ` — the **covariance transformation law** `covarianceBilinDual (μ.map Q) L L = covarianceBilinDual μ (L∘Q) (L∘Q)`, proved abstractly for any CLM. `RG/GaussianStep.covarianceBilinDual_map_clm`. | **CLOSED** (ledger Add. 46, core 8248) |
 | **G4** | **Free covariance contraction**: the pushed-forward covariance's ℓ²-scale contracts, `Var[L∘Q] ≤ L⁻¹·(…)`, from `linAvg_l2_contraction` — the free per-scale contraction `|R_k^{free}| ≤ M·rᵏ`. | reachable (G3 + Add. 44) |
 | **G5** | **Interacting correction** (the genuine analytic core): the Yang–Mills measure is `Gaussian · exp(−interaction)`; the RG step is the fluctuation integral with the small/large-field split, and the covariance contraction must survive the interaction.  Bałaban CMP 95–96 + 122; months-scale. | **campaign (the wall)** |
 
