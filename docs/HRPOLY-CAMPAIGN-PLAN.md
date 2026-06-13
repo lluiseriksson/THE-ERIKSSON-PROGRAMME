@@ -41,9 +41,12 @@ the geometric summability `∑_{X⊇□} e^{−κ₀ d_M(X, mod Ω^c)} ≤ K₀`
 (`docs/BALABAN-SOURCE-BOUNDS.md` §5).  **Constants flagged for
 verification** (see §4).
 
-**(C) The geometric summability** `∑_{X⊇□} e^{−κ₀ d_M} ≤ K₀` is
-**already reduced** to the polymer animal-count `c_n ≤ Cⁿ`
-(`RG/PolymerRemainder.polymer_weight_summability`, ledger Add. 53).
+**(C) The geometric summability** `∑_{X⊇□} e^{−κ₀ d_M} ≤ K₀` is **CLOSED as
+graph combinatorics** (ledger Add. 57–60): the animal count `c_n ≤ (Δ²)ⁿ`
+(`rooted_connected_card_le_pow`) composed with `polymer_weight_summability`
+gives `rooted_connected_weight_summable` (`RG/AnimalTour.lean`):
+`∑_Y q^{#Y} ≤ (1−Δ²q)⁻¹` for `Δ²q < 1`.  Remaining: the **P2 instantiation**
+(identify Dimock `M`-cube polymers with rooted connected sets, `q = e^{−κ₀}`).
 
 ## 2. What is reusable (do NOT rebuild)
 

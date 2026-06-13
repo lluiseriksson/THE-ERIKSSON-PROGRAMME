@@ -3,6 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import YangMills.RG.AnimalCount
+import YangMills.RG.PolymerRemainder
 
 /-!
 # The lattice animal count `c_n ≤ Cⁿ` (gauge-RG, `hRpoly` campaign bricks P1b/P1c)
@@ -207,5 +208,69 @@ theorem animal_card_le [Fintype V] [DecidableRel G.Adj] (A : Finset (Finset V))
         Finset.single_le_sum (f := fun v => (G.finsetWalkLength (2 * (n - 1)) r v).card)
           (fun i _ => Nat.zero_le _) (Finset.mem_univ r)
     _ ≤ Δ ^ (2 * (n - 1)) := card_walks_length_le_degree_pow G hΔ (2 * (n - 1)) r
+
+/-- The lattice animal count as an actual cardinal: the number of
+`S`-connected size-`n` vertex sets containing the root `r` is `≤ Δ^{2(n−1)}`.
+The `Fintype.card`/`Nat.card` shape consumed by
+`polymer_weight_summability`'s `hcount` (branch C of `hRpoly`). -/
+theorem rooted_connected_card_le [Fintype V] [DecidableRel G.Adj] {Δ n : ℕ}
+    (hΔ : ∀ w, G.degree w ≤ Δ) :
+    Nat.card {S : Finset V //
+        r ∈ S ∧ S.card = n ∧ ∀ x ∈ S, ∃ w : G.Walk r x, IsSWalk S w}
+      ≤ Δ ^ (2 * (n - 1)) := by
+  classical
+  rw [Nat.card_eq_fintype_card, Fintype.card_subtype]
+  exact animal_card_le _ hΔ (fun S hS => (Finset.mem_filter.mp hS).2)
+
+/-- The animal count in the `c_n ≤ Cⁿ` form (`C = Δ²`), valid for `Δ ≥ 1` —
+the exact input shape of `polymer_weight_summability`'s `hcount`. -/
+theorem rooted_connected_card_le_pow [Fintype V] [DecidableRel G.Adj] {Δ n : ℕ}
+    (hΔ : ∀ w, G.degree w ≤ Δ) (hΔ1 : 1 ≤ Δ) :
+    Nat.card {S : Finset V //
+        r ∈ S ∧ S.card = n ∧ ∀ x ∈ S, ∃ w : G.Walk r x, IsSWalk S w}
+      ≤ (Δ ^ 2) ^ n := by
+  refine le_trans (rooted_connected_card_le hΔ) ?_
+  rw [← pow_mul]
+  exact Nat.pow_le_pow_right hΔ1 (by omega)
+
+/-- **Branch C of `hRpoly` closed**: the cluster-expansion geometric
+summability `hwK`, discharged from the lattice animal count.  For a
+bounded-degree graph (`Δ ≥ 1`) and decay `q` with `Δ²·q < 1`, the size-graded
+weight sum over all `S`-connected rooted sets converges with the explicit
+Kotecký–Preiss bound `(1 − Δ²q)⁻¹`.  This composes `rooted_connected_card_le_pow`
+(the animal count `c_n ≤ (Δ²)ⁿ`) with `polymer_weight_summability`
+(`RG/PolymerRemainder.lean`); the summability premise is free because the
+polymer index type is finite.  This is the Dimock `∑_{X⊇□} e^{−κ₀ d(X)} ≤ K₀`
+estimate with `q = e^{−κ₀}`, `K₀ = (1−Δ²q)⁻¹` — reduced to pure graph
+combinatorics. -/
+theorem rooted_connected_weight_summable [Fintype V] [DecidableRel G.Adj]
+    {Δ : ℕ} {q : ℝ} (hΔ : ∀ w, G.degree w ≤ Δ) (hΔ1 : 1 ≤ Δ) (hq0 : 0 ≤ q)
+    (hCq : (Δ : ℝ) ^ 2 * q < 1) :
+    ∑' Y : {S : Finset V // r ∈ S ∧ ∀ x ∈ S, ∃ w : G.Walk r x, IsSWalk S w},
+        q ^ (Y : Finset V).card ≤ (1 - (Δ : ℝ) ^ 2 * q)⁻¹ := by
+  classical
+  haveI : ∀ n, Fintype {Y : {S : Finset V //
+      r ∈ S ∧ ∀ x ∈ S, ∃ w : G.Walk r x, IsSWalk S w} // (Y : Finset V).card = n} :=
+    fun n => Fintype.ofFinite _
+  refine polymer_weight_summability
+    (ι := {S : Finset V // r ∈ S ∧ ∀ x ∈ S, ∃ w : G.Walk r x, IsSWalk S w})
+    (fun Y => (Y : Finset V).card)
+    hq0 (by positivity) hCq ?_ Summable.of_finite
+  intro n
+  have hcard_eq : Fintype.card {Y : {S : Finset V //
+        r ∈ S ∧ ∀ x ∈ S, ∃ w : G.Walk r x, IsSWalk S w} // (Y : Finset V).card = n}
+      = Nat.card {S : Finset V //
+          r ∈ S ∧ S.card = n ∧ ∀ x ∈ S, ∃ w : G.Walk r x, IsSWalk S w} := by
+    rw [Nat.card_eq_fintype_card]
+    apply Fintype.card_congr
+    refine (Equiv.subtypeSubtypeEquivSubtypeInter
+      (p := fun S : Finset V => r ∈ S ∧ ∀ x ∈ S, ∃ w : G.Walk r x, IsSWalk S w)
+      (q := fun S => S.card = n)).trans ?_
+    exact Equiv.subtypeEquivRight (fun S => by tauto)
+  rw [hcard_eq]
+  calc ((Nat.card {S : Finset V //
+          r ∈ S ∧ S.card = n ∧ ∀ x ∈ S, ∃ w : G.Walk r x, IsSWalk S w} : ℕ) : ℝ)
+      ≤ (((Δ ^ 2) ^ n : ℕ) : ℝ) := by exact_mod_cast rooted_connected_card_le_pow hΔ hΔ1
+    _ = ((Δ : ℝ) ^ 2) ^ n := by push_cast; ring
 
 end YangMills.RG

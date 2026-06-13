@@ -97,6 +97,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.exists_peel
 #print axioms YangMills.RG.exists_spanning_closed_walk
 #print axioms YangMills.RG.animal_card_le
+-- the animal count as a cardinal (`c_n ≤ Cⁿ`) and **branch C closed**: the
+-- geometric summability `hwK` discharged from the animal count
+#print axioms YangMills.RG.rooted_connected_card_le_pow
+#print axioms YangMills.RG.rooted_connected_weight_summable
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

@@ -2659,6 +2659,46 @@ Dimock source.  Source: Madras–Slade; strategy/framing **Lluis Eriksson**
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance **~0% (<0.1%),
 unchanged**.
 
+## Addendum 60 (2026-06-13, **hRpoly branch C closed as graph combinatorics**
+`YangMills.RG.rooted_connected_weight_summable`; core 8254)
+
+**Build:** green (8254 jobs — new theorems in `RG/AnimalTour.lean`, no new
+module).  Oracle (both): `[propext, Classical.choice, Quot.sound]`.
+
+Two bridge theorems convert the animal count (Add. 59) into the form the
+cluster-expansion summability consumes, and then **close the summability
+branch**:
+
+* **`rooted_connected_card_le` / `rooted_connected_card_le_pow`** — the
+  animal count as an actual cardinal:
+  `Nat.card {S : Finset V // r ∈ S ∧ S.card = n ∧ S-connected} ≤ Δ^{2(n−1)}`,
+  and (for `Δ ≥ 1`) `≤ (Δ²)ⁿ` — the exact `c_n ≤ Cⁿ` shape of
+  `polymer_weight_summability`'s `hcount` (`Fintype.card_subtype` + P1c).
+* **`rooted_connected_weight_summable`** — for a bounded-degree graph
+  (`Δ ≥ 1`) and `q` with `Δ²q < 1`,
+  `∑_Y q^{#Y} ≤ (1 − Δ²q)⁻¹` over all `S`-connected rooted sets `Y`.
+  Composes `rooted_connected_card_le_pow` with `polymer_weight_summability`
+  (`RG/PolymerRemainder.lean`); the `Summable` premise is free (the polymer
+  index type is finite, `Summable.of_finite`).  This **is** Dimock's
+  `∑_{X⊇□} e^{−κ₀ d(X)} ≤ K₀` (with `q = e^{−κ₀}`, `K₀ = (1−Δ²q)⁻¹`) —
+  now reduced to pure graph combinatorics with explicit constants.
+
+**Dependency moved.**  Branch C of `hRpoly` (the geometric summability
+substrate `hwK`) is **closed as graph combinatorics**: from the
+bounded-degree hypothesis it is now a *proved theorem*, not a carried input,
+on the abstract rooted-connected-set model.  The remaining link is the **P2
+instantiation** — identify Dimock's `M`-cube polymers with rooted connected
+sets of the cube-adjacency graph (degree `2d`), and set `q = e^{−κ₀}` — at
+which point `hwK` is literally discharged in the §6.3 UV conditional.  The
+hard analytic cores P3 (cluster expansion with holes) / P4 (fluctuation
+integral) still await verbatim Dimock source.  **Non-vacuity:** the
+summability bound holds on a satisfiable hypothesis set (`Δ ≥ 1`, `Δ²q < 1`,
+e.g. small `q`); the constants are explicit and finite.  Source:
+Madras–Slade (animal counting), Kotecký–Preiss (the geometric criterion);
+strategy/framing **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4)
+track; Clay distance **~0% (<0.1%), unchanged** — this is a lattice
+combinatorial estimate, not a continuum or OS-reconstruction result.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
