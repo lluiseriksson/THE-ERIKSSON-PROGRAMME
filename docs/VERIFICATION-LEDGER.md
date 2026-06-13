@@ -3006,6 +3006,34 @@ scale), not further abstract substrate.  **Non-vacuity:** genuine quadratic
 bound; hypotheses satisfiable on any finite bounded-degree lattice (`cubeAdj`).
 Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 70 (2026-06-13, **operator-norm Schur bound — the full ℓ² Schur
+test** `YangMills.RG.expDecay_op_bilinear_le`; core 8259)
+
+**Build:** green (8259 jobs — theorem added to `RG/KernelSchur.lean`, no new
+module).  Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+The sharp operator-norm form of the Schur test (strengthening the
+covariance/quadratic bound of Add. 69):
+
+* **`expDecay_op_bilinear_le`** — an exponentially-decaying kernel `K`
+  (symmetric metric, summability `S`) is bounded as a bilinear form by
+  `a·S·‖u‖·‖v‖`: `|∑_{x,y} u x · K x y · v y| ≤ a·S·√(∑ u²)·√(∑ v²)`, i.e.
+  `‖K‖_{op} ≤ a·S`.  Proof: bound by `∑∑|u_x||K_xy||v_y|`, write it as
+  `∑_{(x,y)} (√|K_xy| |u_x|)(√|K_xy| |v_y|)`, apply Cauchy–Schwarz over the
+  product index (`Finset.sum_mul_sq_le_sq_mul_sq`), bound the two factors by
+  row/column summability (`a·S·‖u‖²`, `a·S·‖v‖²`), and take square roots.  The
+  `u = v` case recovers `expDecay_quadratic_form_le`.
+
+**Dependency moved.**  This completes the source-independent
+operator/kernel/covariance substrate toward `hRpoly`: decay (`ExpDecay`,
+composition, resolvent — Add. 66–68) **and** boundedness (row-sum, quadratic
+form, and now the sharp operator norm — Add. 69–70).  This is the full analytic
+toolkit Bałaban's gauge construction consumes; the remaining gap is the carried
+`hRpoly`, i.e. exhibiting the concrete lattice gauge-covariant operator as an
+`ExpDecay` instance (CMP 95/99/102/109/116, months-scale).  **Non-vacuity:**
+genuine operator bound; hypotheses satisfiable on `cubeAdj`.  Clay distance
+**~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

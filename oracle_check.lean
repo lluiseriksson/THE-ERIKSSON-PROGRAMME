@@ -128,6 +128,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- Schur boundedness: row-sum + quadratic-form (covariance) bound ≤ a·S
 #print axioms YangMills.RG.expDecay_finset_row_le
 #print axioms YangMills.RG.expDecay_quadratic_form_le
+-- the full ℓ² Schur test: operator-norm bound ‖K‖op ≤ a·S
+#print axioms YangMills.RG.expDecay_op_bilinear_le
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge
