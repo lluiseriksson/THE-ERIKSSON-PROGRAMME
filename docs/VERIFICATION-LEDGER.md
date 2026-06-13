@@ -2974,6 +2974,38 @@ not further abstract substrate.  **Non-vacuity:** genuine quantitative bound;
 hypotheses jointly satisfiable on `cubeAdj` with small `a`.  Clay distance
 **~0% (<0.1%), unchanged**.
 
+## Addendum 69 (2026-06-13, **Schur boundedness of decaying kernels — the
+covariance face** `YangMills.RG.expDecay_quadratic_form_le`; core 8259)
+
+**Build:** green (**8259 jobs**, +1 — new module `RG/KernelSchur.lean`).
+Oracle (both): `[propext, Classical.choice, Quot.sound]`.
+
+The boundedness companion to the kernel-decay calculus (Add. 66–68), on a
+finite lattice:
+
+* **`expDecay_finset_row_le`** — the ℓ¹ row-sum bound `∑_y |K x y| ≤ a·S`.
+* **`expDecay_quadratic_form_le`** — the finite-dimensional **Schur test**:
+  an exponentially-decaying kernel (symmetric metric) gives a quadratic form
+  `|∑_{x,y} u x · K x y · u y| ≤ (a·S)·∑_x (u x)²`.  Proof: `|bilinear| ≤
+  ∑∑|u_x||K_xy||u_y|`, then the Schur AM–GM `2|u_x||u_y| ≤ u_x²+u_y²` and
+  row/column summability (`Finset.sum_comm`).
+
+This is exactly the shape of a **covariance bound** `Cov ≤ a·S`: a background-
+field propagator with an `ExpDecay` kernel induces a covariance form controlled
+by `a·S` (cf. `RG/GaussianStep.lean`, Bałaban CMP 95–96).  Source-independent,
+finite-dimensional, and **volume-free** (the bound `a·S` is volume-uniform).
+
+**Dependency moved.**  The source-independent operator/kernel/covariance
+substrate toward `hRpoly` is now complete: spatial **decay** (kernel calculus +
+resolvent, Add. 66–68) and **boundedness** (Schur row-sum + quadratic form,
+this addendum).  Together they are the full analytic toolkit Bałaban's gauge
+construction consumes to produce the YM activity bound `|H_k(X)| ≤ H₀ e^{−κ d}`.
+The remaining gap is the **carried `hRpoly`** — instantiating this toolkit on
+the concrete lattice gauge-covariant operator (CMP 95/99/102/109/116, months-
+scale), not further abstract substrate.  **Non-vacuity:** genuine quadratic
+bound; hypotheses satisfiable on any finite bounded-degree lattice (`cubeAdj`).
+Clay distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

@@ -219,6 +219,9 @@ import YangMills.RG.MarginalUVMassGap
 -- calculus (decay preserved under sum/scalar/composition — the Combes-Thomas /
 -- Neumann-series engine), consuming the lattice exponential summability.
 import YangMills.RG.KernelDecay
+-- Schur boundedness of exponentially-decaying kernels (finite lattice): the
+-- ℓ¹ row-sum bound and the quadratic-form (covariance) bound ≤ a·S.
+import YangMills.RG.KernelSchur
 -- hRpoly campaign brick P1a: the bounded-degree walk-count engine (≤ Δⁿ) — the
 -- combinatorial substrate for the lattice animal count `c_n ≤ Cⁿ` (branch C of
 -- `hRpoly`). Pure graph combinatorics; consumer = animal count → polymer_weight_summability.
