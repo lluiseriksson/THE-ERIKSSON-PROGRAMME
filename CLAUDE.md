@@ -30,7 +30,7 @@ never repeat that.
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
 7. **After adding a module to the core, confirm the build job count
-   incremented** (currently 8254).
+   incremented** (currently 8255).
 
 ## The autonomous loop
 
@@ -69,7 +69,7 @@ Lean; they save hours.
 
 ## Current state (2026-06-13)
 
-* Core green: **8254 jobs**, zero sorry, zero axioms.  Mathlib **pinned**
+* Core green: **8255 jobs**, zero sorry, zero axioms.  Mathlib **pinned**
   to an exact commit (lakefile + manifest agree); see `REPRODUCIBILITY.md`.
 * **`hRpoly` campaign OPEN** (`docs/HRPOLY-CAMPAIGN-PLAN.md`): the sole
   remaining analytic input of the §6.3 UV conditional.  **Branch C (the
@@ -78,10 +78,14 @@ Lean; they save hours.
   engine (`exists_detour_walk`, the closed-walk splice), and P1b/P1c
   (`exists_peel`, `exists_spanning_closed_walk`, `animal_card_le` — the
   lattice animal count `c_n ≤ Δ^{2(n−1)}`), all in `RG/AnimalCount.lean`
-  + `RG/AnimalTour.lean` (ledger Add. 57–59).  Next: **P2** (the polymer
-  model — feed `animal_card_le` into `polymer_weight_summability`), then
-  the hard cores P3 (cluster expansion with holes) / P4 (fluctuation
-  integral) which need verbatim Dimock App F / §3.8 source (plan §4).
+  + `RG/AnimalTour.lean` (ledger Add. 57–60); and **P2a** — the `M`-cube
+  king-adjacency graph `cubeAdj` (Dimock II §3.1.2), `cubeAdj_degree_le`
+  (`≤ 3^d`), `cube_polymer_summable` (`RG/CubeLattice.lean`, Add. 61).
+  Dimock II/III source received + attributions corrected (App F is in
+  Part II; `d_M`/summability in §3.1.2; raw activity in §3.14; coupling
+  `λ_k`; **and it is `φ⁴₃`, NOT YM** — `BALABAN-SOURCE-BOUNDS.md`).  Next:
+  **P2b** (holes / modified metric), then P3 (Appendix F cluster expansion
+  with holes) / P4 (YM single-scale raw activity bound).
 * **Gauge-RG continuum track (current frontier, `YangMills/RG/**`, 36
   oracle-clean bricks, ledger Addenda 23–52):** the local
   averaging-operator theory is COMPLETE (block geometry; the linear

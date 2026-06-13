@@ -101,6 +101,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- geometric summability `hwK` discharged from the animal count
 #print axioms YangMills.RG.rooted_connected_card_le_pow
 #print axioms YangMills.RG.rooted_connected_weight_summable
+-- P2 geometry: the M-cube king-adjacency degree bound ≤ 3^d and the concrete
+-- cube-lattice polymer summability on Dimock's geometry
+#print axioms YangMills.RG.cubeAdj_degree_le
+#print axioms YangMills.RG.cube_polymer_summable
 
 /-! ### Gauge covariance and the averaging operator -/
 -- gauge covariance of the Ū-block (CMP 109 (0.12)) and the lattice realization bridge

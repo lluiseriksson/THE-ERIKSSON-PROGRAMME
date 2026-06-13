@@ -214,3 +214,6 @@ import YangMills.RG.AnimalCount
 -- hRpoly campaign bricks P1b/P1c: the spanning closed walk (tree Euler tour)
 -- and the lattice animal count `c_n ≤ Δ^{2(n-1)}` (branch C of `hRpoly`).
 import YangMills.RG.AnimalTour
+-- hRpoly campaign P2 geometry: the M-cube king-adjacency graph (Dimock II
+-- §3.1.2), its degree bound ≤ 3^d, and the concrete lattice polymer summability.
+import YangMills.RG.CubeLattice

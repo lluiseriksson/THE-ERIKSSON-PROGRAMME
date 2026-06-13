@@ -76,7 +76,8 @@ gives `rooted_connected_weight_summable` (`RG/AnimalTour.lean`):
 | **P1a** | **Bounded-degree walk-count engine** `card_walks_length_le_degree_pow`: for any `SimpleGraph` of max degree `≤ Δ`, the number of length-`n` walks from a fixed vertex is `≤ Δⁿ`.  The combinatorial engine behind the animal count.  (`RG/AnimalCount.lean`, ledger Add. 57.) | **code** — pure combinatorics, self-contained | **DONE** (core 8253) |
 | **P1b** | **Spanning closed walk** (`exists_peel` + `exists_spanning_closed_walk`, `RG/AnimalTour.lean`, ledger Add. 59): an `S`-connected size-`n` set gets a closed walk from `r` of length `2(n−1)`, support `= S`, by peeling the farthest vertex and splicing with `exists_detour_walk`. | **code** — combinatorics, self-contained | **DONE** (core 8254) |
 | **P1c** | **Lattice animal count** `animal_card_le` (`RG/AnimalTour.lean`, Add. 59): `A.card ≤ Δ^{2(n−1)}` for any family of `S`-connected size-`n` rooted sets — `c_n ≤ Cⁿ`, `C = Δ²` — via the injective `animal ↦ spanning walk` + P1a. | **code** — combinatorics | **DONE** (core 8254) |
-| **P2** | **Polymer-with-holes model**: the polymer type (connected `M`-cube unions), the modified distance `d_M(·, mod Ω^c)`, the `KP.PolymerSystem` instance / bridge, and the **interface task** of feeding `animal_card_le` (P1c) into `polymer_weight_summability` (`hcount`).  Define + non-vacuity. | code (definitional, with P1/P3 consumers) | **next** |
+| **P2a** | **`M`-cube adjacency graph + concrete summability** (`RG/CubeLattice.lean`, ledger Add. 61): `cubeAdj d L` (king-adjacency, Dimock II §3.1.2), `cubeAdj_degree_le` (`≤ 3^d`), `cube_polymer_summable` (`∑_Y q^{#Y} ≤ (1−(3^d)²q)⁻¹`).  Bulk / hole-free case. | code | **DONE** (core 8255) |
+| **P2b** | **Holes / modified metric** `d_M(·, mod Ω^c)`: define the large-field-hole structure and the modified distance (Dimock II §3.1.2, eqs 150–151), and the full modified-metric summability (needs the holes' Gaussian suppression). | code — HARD (geometry + suppression) | open |
 | **P3** | **Cluster-expansion-with-holes convergence (Appendix F)**: the renormalized-activity decay `|H^#(Y)| ≤ O(1)H₀ e^{−(κ−3κ₀−3)d}` from the raw bound + summability.  Generalises `KP` convergence to the modified metric.  **The crux of (B).** | code — HARD, months-scale | open (source §4) |
 | **P4** | **Fluctuation integral → raw activity bound (§3.8)**: `|H_k(X)| ≤ H₀ e^{−κ d}` from the Gaussian step, `H₀ ∝ g_k^{κ₀}`.  **The crux of (A).** | code — HARD, months-scale, needs the lattice Gaussian covariance | open (source §4) |
 | **P5** | **Assemble `hRpoly`**: combine P3 (renormalized decay) + P4 (raw bound) + P1/P2 (summability) ⟹ `|R_{t,k}| ≤ A e^{−c₀t} g_k^{κ₀}`; feed `lattice_mass_gap_of_cluster_and_coupling` ⟹ the **unconditional lattice mass gap**. | code (glue, once P1–P4 land) | open |
@@ -126,30 +127,42 @@ tour is the crux and must be built.  Honest sub-ladder:
 P1b-ii is a genuine standalone combinatorial development (no Mathlib
 primitive); it — not a quick follow-on — is the real next working brick.
 
-## 4. Precise source material requested (for P3, P4)
+## 4. Source material — RECEIVED + corrections (2026-06-13)
 
-To build P3/P4 non-vacuously (not a faked interface), I need the
-**verbatim statements with exact constants** — the transcriptions in
-`BALABAN-SOURCE-BOUNDS.md` are second-hand and the constants are flagged:
+The Dimock II/III page-level statements have now been provided and
+cross-checked.  Corrections to earlier (second-hand) attributions, now
+recorded in `BALABAN-SOURCE-BOUNDS.md` and ledger Add. 61:
 
-1. **Dimock II, arXiv:1212.5562, Appendix F** — the cluster-expansion-
-   with-holes theorem: the exact hypotheses (`H₀ ≤ c₀`, the relation
-   `κ ≥ 3κ₀+3`), the exact conclusion (`|H^#(Y)| ≤ O(1)H₀ e^{−(κ−3κ₀−3)d}`),
-   the definition of `d_M(X, mod Ω^c)`, and the `∘`-product/polymer
-   conventions.  **Confirm whether the convergence with the summable
-   conclusion is in Part II App F or in Part III (arXiv:1304.0705)** — the
-   convergence is deferred to Part III in Part II's front matter.
-2. **Dimock §3.8** (Part I arXiv:1108.1335 small-field, or Part II) — the
-   explicit fluctuation integral: the covariance `C_{k,Ω}`, the change of
-   variables to the local field `W_k`, and the resulting **raw activity
-   bound** `|H_k(X)| ≤ H₀ e^{−κ d_M(X)}` with `H₀` in terms of `g_k`,
-   `p_k = (−log λ_k)^p`, `α_k`.
-3. (P1, optional) the exact **polymer/`M`-cube adjacency** and the
-   `d_M(·, mod Ω^c)` definition, so the animal-count constant `C` is
-   faithful to Dimock's geometry.
+1. **Appendix F is in Part II** (arXiv:1212.5562), and its convergence is
+   self-contained there (it follows Part I App B) — **NOT** Part III.
+   Theorem F.1: `H₀ ≤ c₀`, `κ ≥ 3κ₀+3`, hypothesis `|H(X)| ≤ H₀ e^{−κ d_M(X, mod Ω^c)}`,
+   conclusion `|H^#(Y)| ≤ O(1)H₀ e^{−(κ−3κ₀−3) d_M(Y, mod Ω^c)}` — confirmed.
+2. The `d_M(X, mod Ω^c)` definition + summability `∑_{X⊇□} e^{−κ₀ d_M} ≤ K₀`
+   are in the **§3 main text (§3.1.2, eqs ~150–151)**, not Appendix F.
+   `M`-cube adjacency = king-move (shared boundary of any dimension),
+   coordination `3^d−1` — now formalized as `cubeAdj` (`RG/CubeLattice.lean`).
+3. The raw activity bound is in **§3.14** (Lemma 3.18, eq. ~500/506:
+   `|H_{k,Π}^+(Y)| ≤ O(1)L³ λ_k^{1/4−10ε} e^{−L(κ−3κ₀−3) d_{LM}(Y, mod Ω^c)}`),
+   **not §3.8** (§3.8 = the fluctuation-integral / covariance-localization
+   setup).  Coupling is **`λ_k`** (`= L^{−(N−k)}λ`), not `g_k`;
+   `p_k = (−log λ_k)^p`, `α_k = max(λ_k^{1/4}, μ̄_k^{1/2})`; `H₀ ≍ O(1)L³ λ_k^{1/4−10ε}`.
 
+**CRITICAL: Dimock II/III is `φ⁴₃` (3D scalar), not 4D Yang–Mills.**  App F
+is a *general polymer lemma* reusable across models, but its constants
+(`λ_k^{1/4−10ε}`, `L³`, the *relevant* coupling `λ_k = L^{−(N−k)}λ`) are
+`φ⁴₃`-specific.  The 4D YM activity bounds and the (logarithmic, *marginal*)
+YM coupling flow must come from Bałaban's YM papers — do NOT transcribe these
+`φ⁴₃` numbers into the YM target.
+
+Remaining genuinely-open analytic work (now source-grounded, still large):
+**P2b** (the holes / modified-metric `d_M` + the with-holes summability,
+needing the Gaussian suppression), **P3** (Appendix F cluster expansion with
+holes, on top of the repo's KP layer), **P4** (the §3.14 raw activity bound,
+which for YM needs the YM single-scale integral — not the `φ⁴₃` §3.14).
+
+(Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the
-request is for the **specific page-level theorem statements** so the Lean
+request was for the **specific page-level theorem statements** so the Lean
 constants are read off the page, not reconstructed (per the Opus
 miscalibration warning recorded in `BALABAN-SOURCE-BOUNDS.md` §2).
 

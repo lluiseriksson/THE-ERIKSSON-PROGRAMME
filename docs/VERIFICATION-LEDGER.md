@@ -2699,6 +2699,56 @@ strategy/framing **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4)
 track; Clay distance **~0% (<0.1%), unchanged** — this is a lattice
 combinatorial estimate, not a continuum or OS-reconstruction result.
 
+## Addendum 61 (2026-06-13, **hRpoly P2 geometry — the `M`-cube adjacency graph
++ concrete lattice summability** `YangMills.RG.cube_polymer_summable`; core 8255)
+
+**Build:** green (**8255 jobs**, +1 — new module `RG/CubeLattice.lean`).
+Oracle (both): `[propext, Classical.choice, Quot.sound]`.
+
+With the Dimock II source now in hand (see the source-attribution corrections
+below), the `M`-cube polymer geometry is made concrete:
+
+* **`cubeAdj d L`** — the `M`-cube **king-adjacency** `SimpleGraph` on
+  `(ZMod L)^d` (differ by `0,±1` in each coordinate; Chebyshev `ℓ^∞`
+  distance 1), Dimock II §3.1.2's adjacency, coordination number `3^d − 1`.
+* **`cubeAdj_degree_le`** — `degree ≤ 3^d`, via the displacement injection
+  `y ↦ (i ↦ y i − x i) ∈ {0,1,−1}^d` (`Fintype.piFinset` + `prod_le_pow_card`).
+* **`cube_polymer_summable`** — instantiates `rooted_connected_weight_summable`
+  on `cubeAdj`: `∑_Y q^{#Y} ≤ (1 − (3^d)²q)⁻¹` for `(3^d)²q < 1`, the
+  geometric summability on the actual lattice geometry with the explicit
+  coordination constant `Δ = 3^d`.
+
+The source confirms this is the right object: Dimock II §3.1.2 says a polymer
+is a connected union of `M`-cubes, a spanning tree on `n` cubes is explored by
+a walk of `≤ 2n` steps, and size-`n` polymers containing a fixed cube number
+`≤ cⁿ` with `c ∝ 3^d − 1` — exactly `exists_spanning_closed_walk` /
+`animal_card_le`.  **Non-vacuity:** `cubeAdj` is a genuine graph (`L ≥ 1`),
+the bound holds for satisfiable `q` (e.g. small `q`), and the rooted-polymer
+index type is inhabited by `{r}`.
+
+### Source-attribution corrections (Dimock arXiv:1212.5562, confirmed)
+Prior docs had three misattributions, now corrected (see
+`docs/BALABAN-SOURCE-BOUNDS.md`, `HRPOLY-CAMPAIGN-PLAN.md` §4):
+1. **Appendix F ("cluster expansion with holes") is in Part II**, and its
+   convergence is self-contained there (it follows Part I App B), **not** in
+   Part III.  Theorem F.1 constants `H₀ ≤ c₀`, `κ ≥ 3κ₀+3`, conclusion
+   `O(1)H₀ e^{−(κ−3κ₀−3)d_M(Y, mod Ω^c)}` — confirmed verbatim.
+2. The `d_M(X, mod Ω^c)` definition + the summability `∑_{X⊇□} e^{−κ₀ d_M} ≤ K₀`
+   are in the **§3 main text (§3.1.2, ~eqs 150–151)**, not Appendix F.
+3. The raw activity bound feeding F.1 is in **§3.14** (Lemma 3.18, eq. ~500/506:
+   `|H_{k,Π}^+(Y)| ≤ O(1)L³ λ_k^{1/4−10ε} e^{−L(κ−3κ₀−3)d_{LM}(Y, mod Ω^c)}`),
+   **not §3.8** (§3.8 is the fluctuation-integral / covariance-localization
+   setup).  The coupling is **`λ_k`** (`λ_k = L^{−(N−k)}λ`), not `g_k`;
+   `p_k = (−log λ_k)^p`, `α_k = max(λ_k^{1/4}, μ̄_k^{1/2})`; and `H₀ ≍ O(1)L³ λ_k^{1/4−10ε}`.
+
+**CRITICAL model caveat.**  Dimock II/III treats **`φ⁴₃`** (3D scalar UV
+problem), so its activity constants (`λ_k^{1/4−10ε}`, the `L³`, the
+relevant-coupling `λ_k = L^{−(N−k)}λ`) are **NOT** the 4D Yang–Mills values.
+Appendix F is reused as a *general polymer lemma*; the YM activity bounds and
+the (logarithmic, marginal) 4D coupling flow come from Bałaban's YM papers,
+not from these `φ⁴₃` numbers.  **Clay distance ~0% (<0.1%), unchanged** — this
+is lattice combinatorics on a concrete graph; no continuum/OS content.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
