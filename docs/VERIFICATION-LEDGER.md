@@ -2030,6 +2030,35 @@ linearisation is obtained without it (this addendum).  Source CMP 109
 (0.8); strategy **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4)
 track; Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 40 (2026-06-12, **gauge-RG brick B4-Ū lattice bridge —
+matrix realization of the gauge group + transported holonomy law**
+`YangMills.RG.rep_wilsonLine_gaugeAct`; core 8246)
+
+**Build:** green (**8246 jobs** — incremented, new module
+`RG/MatrixRealization.lean`).  Oracle:
+`'YangMills.RG.rep_wilsonLine_gaugeAct' [propext, Classical.choice, Quot.sound]`.
+
+Introduces the bridge between the abstract lattice gauge group and the
+matrix algebra where `Ū`'s `exp`/`log` covariance lives:
+
+* `class MatrixRealization (G) (𝔸)` — a representation `rep : G →* 𝔸ˣ`
+  of the lattice gauge group as units of a complete normed ℝ-algebra.
+  Inhabited (e.g. `G = 𝔸ˣ`, identity hom), hence **non-vacuous**; the
+  physical instance is `SU(N)`'s defining representation.
+* `rep_wilsonLine_gaugeAct` — the lattice holonomy gauge law
+  (`wilsonLine_gaugeAct_path`, Add. 28) transported into `𝔸ˣ` through
+  `rep`: `rep(wilsonLine(gaugeAct u A) es) = rep(u a)·rep(wilsonLine A es)·rep(u end)⁻¹`
+  (just `map_mul`/`map_inv` on the group-level law).
+
+This connects the abstract `GaugeConfig`/`wilsonLine` core to the
+algebra-level conjugation laws (`nearLog_conj`, `UbarBlock_conj`) that
+make `Ū` gauge covariant.  What remains (B4-Ū full) is to assemble the
+concrete lattice `Ū` from the realized contour variables and instantiate
+`UbarBlock_conj` — a definitional task on top of this bridge, no analysis.
+Source CMP 98 (11)/109; strategy **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

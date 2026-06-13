@@ -178,3 +178,7 @@ import YangMills.RG.AveragedContour
 -- analytic substrate of `Ū`, CMP 109 (0.12); built since Mathlib has no
 -- Banach-algebra logarithm).
 import YangMills.RG.NearLog
+-- B4-Ū lattice bridge: a matrix realization of the abstract lattice gauge
+-- group, transporting the holonomy gauge law into the matrix algebra where
+-- `Ū`'s `exp`/`log` covariance lives.
+import YangMills.RG.MatrixRealization
