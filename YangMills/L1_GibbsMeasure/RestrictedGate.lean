@@ -1247,6 +1247,31 @@ theorem area_law_to_exp_area_decay
       = Real.log σ * (Area : ℝ) + lam * (Area : ℝ) := by ring
   linarith [hsub, e1, e2]
 
+/-- **Non-vacuity audit (hard rule #3) for the confinement repackaging:**
+the hypothesis window of `area_law_to_exp_area_decay` is non-empty with
+a NON-degenerate perimeter charge (`P, K, S > 0`) and a STRICTLY
+POSITIVE string tension `τ = (−log σ) − λ > 0`.  Witness:
+`σ = 1/2` (so `−log σ = log 2 ≈ 0.693`), `P = K = S = 1`, `λ = 1/2`,
+`Area = 4` (`P(K+S) = 2 = λ·Area`, `λ = 1/2 < log 2`).  Certifies the
+manifest exponential area decay is a genuine, non-trivial conclusion. -/
+theorem area_law_to_exp_area_decay_window_nonempty :
+    ∃ (Nc P K S σ lam : ℝ) (Area : ℕ),
+      0 ≤ Nc ∧ 0 < σ ∧ 0 < P ∧ 0 < K ∧ 0 < S
+      ∧ P * (K + S) ≤ lam * (Area : ℝ)
+      ∧ lam < -Real.log σ
+      ∧ 0 < (-Real.log σ) - lam := by
+  refine ⟨1, 1, 1, 1, 1/2, 1/2, 4, le_of_lt one_pos, by norm_num,
+    one_pos, one_pos, one_pos, by norm_num, ?_, ?_⟩
+  · have h2 : -Real.log (1/2 : ℝ) = Real.log 2 := by
+      rw [show (1/2 : ℝ) = 2⁻¹ by norm_num, Real.log_inv, neg_neg]
+    rw [h2]
+    exact lt_trans (by norm_num) Real.log_two_gt_d9
+  · have h2 : -Real.log (1/2 : ℝ) = Real.log 2 := by
+      rw [show (1/2 : ℝ) = 2⁻¹ by norm_num, Real.log_inv, neg_neg]
+    rw [h2]
+    have := Real.log_two_gt_d9
+    linarith
+
 open Classical in
 /-- **Integrability discharge (i):** the conjugate-pair product
 integrands are integrable — measurable (decorated expansion) and

@@ -1411,8 +1411,13 @@ contribution is area-subdominant (`P·(K+S) ≤ λ·Area`, `λ < −log σ`).
 Pure analysis (`σ^{Area} = e^{Area·log σ}` via `Real.rpow_def_of_pos`,
 `exp` monotonicity); the inequality reduces exactly to the
 subdominance hypothesis.  Makes the confinement physics (positive
-string tension) of the area law explicit.  All M3 lattice-side;
-M4/M5/Clay untouched.
+string tension) of the area law explicit.  ALSO (hard rule #3,
+machine-checked non-vacuity): `area_law_to_exp_area_decay_window_nonempty`
+exhibits an explicit witness (`σ = 1/2`, `P = K = S = 1`, `λ = 1/2`,
+`Area = 4`) with non-degenerate perimeter charge AND strictly positive
+string tension `τ = log 2 − 1/2 > 0` (via `Real.log_two_gt_d9`),
+certifying the confinement conclusion is genuinely non-trivial.  All M3
+lattice-side; M4/M5/Clay untouched.
 
 ## Scope statement (the honest line)
 
