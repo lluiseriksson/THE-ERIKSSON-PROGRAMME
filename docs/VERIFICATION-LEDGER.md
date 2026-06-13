@@ -1645,6 +1645,39 @@ Strategy/framing: **Lluis Eriksson** (ai.viXra:2602.0069, 2602.0088);
 group average due to Bałaban (CMP 109) / Federbush.  Continuum (M4)
 track; Clay distance ~0% (<0.1%), unchanged.
 
+## Addendum 27 (2026-06-12, **GroupAverage honesty fix + non-vacuity
+certificate** `YangMills.RG.meanAverage`; core 8242)
+
+**Build:** green (8242 jobs).  Oracle (verbatim, `RG/GroupAverage.lean`):
+
+```
+'YangMills.RG.GroupAverage.conj_equiv'  [propext, Quot.sound]
+'YangMills.RG.meanAverage'              [propext, Classical.choice, Quot.sound]
+```
+
+**Adversarial self-audit (correction of Add. 26).**  The `GroupAverage`
+interface as first committed (Add. 26) stated its axioms over ALL
+multisets, including the empty one — where bi-equivariance (0.6) reads
+`M(∅) = u·M(∅)·v` for all `u,v`, forcing the group to be trivial.  So
+the unrestricted interface was **unsatisfiable for `SU(N)`, i.e. vacuous**
+(any `∀ GroupAverage, …` theorem would be hollow).  Fixed by restricting
+the axioms (0.5),(0.6) — and the derived `left/right/conj_equiv` — to
+**nonempty** multisets (`L ≠ 0`), exactly as Bałaban states them
+(`{U_j : j = 1,…,n}`, `n ≥ 1`).  **Non-vacuity now certified
+constructively:** `meanAverage V` inhabits the fixed interface for the
+abelian prototype `G = Multiplicative V` (`V` a real vector space) via
+the arithmetic mean `M(L) = (#L)⁻¹ • Σ_j A_j`; the proofs of (0.5)/(0.6)
+are the genuine mean computations (the nonempty hypothesis enters as
+`(#L : ℝ) ≠ 0`).  In additive terms this is precisely the linear
+average, so the linearisation axiom (0.8) holds EXACTLY (no
+higher-order terms) for this inhabitant — the abelian shadow of the
+non-abelian (0.8) tying `M` to `linAvg`.  The non-abelian (0.8), the
+Federbush characterisation (0.10), and the operator `Ū` (CMP 109 (0.12))
+remain carried obligations awaiting a near-identity matrix-`log`
+framework.  Source: Bałaban CMP 109 (0.5)–(0.10); Federbush [35];
+strategy **Lluis Eriksson** (ai.viXra:2602.0069).  Continuum (M4) track;
+Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
