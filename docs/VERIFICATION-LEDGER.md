@@ -1870,6 +1870,38 @@ bound (this addendum) are.  Strategy/framing **Lluis Eriksson**
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
+## Addendum 34 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-2c
+— scalar correctness + scalar local inverse of `nearLog`**; core 8245)
+
+**Build:** green (8245 jobs).  Oracle (verbatim):
+
+```
+'YangMills.RG.nearLog_real'             [propext, Classical.choice, Quot.sound]
+'YangMills.RG.nearLog_exp_sub_one_real' [propext, Classical.choice, Quot.sound]
+```
+
+Two facts certifying the matrix-`log` layer is **not vacuous**:
+
+* `nearLog_real : nearLog (y : ℝ) = Real.log (1 + y)` for `|y| < 1` —
+  on the real line the abstract Mercator sum `nearLog` agrees with the
+  genuine `Real.log`.  Proof: drop the (zero) `n=0` term
+  (`hasSum_nat_add_iff' 1`), match the tail termwise (`push_cast; ring`)
+  against Mathlib's real Mercator series
+  `Real.hasSum_pow_div_log_of_abs_lt_one` (negated, `x := -y`), then
+  `HasSum.tsum_eq`.
+* `nearLog_exp_sub_one_real : nearLog (Real.exp x - 1) = x` for
+  `Real.exp x < 2` — the genuine **`log(exp x) = x`** identity in the
+  commutative base case (`Real.log_exp`).
+
+This is the **scalar instance of the operator brick M-log-2b**.  It does
+NOT establish the operator identity `log(exp X) = X` in a noncommutative
+Banach algebra (that still needs formal-power-series composition, the
+Mathlib gap), and `Ū`/(0.8) remain unclaimed — but it removes any doubt
+that `nearLog` is the right object.  Source: Mathlib real-log series;
+applied to CMP 109 (0.8)/(0.12).  Strategy/framing **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

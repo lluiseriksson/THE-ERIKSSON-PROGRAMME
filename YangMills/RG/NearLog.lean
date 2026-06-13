@@ -152,6 +152,51 @@ theorem norm_nearLog_le_linear {Y : 𝔸} (hY : ‖Y‖ < 1) :
         linarith [norm_nearLog_sub_self_le hY]
     _ = ‖Y‖ / (1 - ‖Y‖) := by field_simp; ring
 
+/-- **Scalar correctness of `nearLog`** (brick M-log-2c, non-vacuity
+certificate): on the real line the abstract Mercator sum `nearLog`
+computes the genuine logarithm, `nearLog (y : ℝ) = Real.log (1 + y)` for
+`|y| < 1`.  This proves the abstract construction is **not vacuous** — it
+agrees with `Real.log` — and is the commutative base case of the
+local-inverse identity (with `Real.exp_log`, `nearLog (Real.exp x - 1)
+= x`).  Built on Mathlib's real Mercator series
+`Real.hasSum_pow_div_log_of_abs_lt_one`. -/
+theorem nearLog_real {y : ℝ} (hy : |y| < 1) :
+    nearLog y = Real.log (1 + y) := by
+  have hterm : ∀ n : ℕ,
+      logCoeff (n + 1) • y ^ (n + 1) = -((-y) ^ (n + 1) / ((n : ℝ) + 1)) := by
+    intro n
+    have hne : n + 1 ≠ 0 := Nat.succ_ne_zero n
+    simp only [logCoeff, if_neg hne, smul_eq_mul]
+    push_cast
+    ring
+  have h0 : HasSum (fun n : ℕ => logCoeff (n + 1) • y ^ (n + 1))
+      (Real.log (1 + y)) := by
+    have hbase := (Real.hasSum_pow_div_log_of_abs_lt_one
+      (x := -y) (by rwa [abs_neg])).neg
+    have hval : -(-Real.log (1 - -y)) = Real.log (1 + y) := by
+      rw [neg_neg, sub_neg_eq_add]
+    rw [hval] at hbase
+    have hfe : (fun n : ℕ => logCoeff (n + 1) • y ^ (n + 1))
+        = fun n : ℕ => -((-y) ^ (n + 1) / ((n : ℝ) + 1)) := funext hterm
+    rw [hfe]; exact hbase
+  have hfull : HasSum (fun n : ℕ => logCoeff n • y ^ n) (Real.log (1 + y)) := by
+    rw [← hasSum_nat_add_iff' 1]
+    simpa using h0
+  rw [nearLog]; exact hfull.tsum_eq
+
+/-- **Scalar local-inverse identity** (brick M-log-2c): `nearLog(exp x - 1)
+= x` on the real line, for `x < log 2` (so that `exp x - 1 ∈ (-1,1)`).
+This is the genuine `log(exp x) = x` identity in the commutative base
+case — the scalar instance of the still-open operator brick M-log-2b. -/
+theorem nearLog_exp_sub_one_real {x : ℝ} (hx : Real.exp x < 2) :
+    nearLog (Real.exp x - 1) = x := by
+  have h1 : |Real.exp x - 1| < 1 := by
+    rw [abs_lt]
+    refine ⟨?_, by linarith⟩
+    have := Real.exp_pos x; linarith
+  rw [nearLog_real h1,
+    show (1 : ℝ) + (Real.exp x - 1) = Real.exp x from by ring, Real.log_exp]
+
 /-- `log(1 + 0) = log 1 = 0`. -/
 @[simp] theorem nearLog_zero : nearLog (0 : 𝔸) = 0 := by
   have hz : (fun n : ℕ => logCoeff n • (0 : 𝔸) ^ n) = fun _ => 0 := by
