@@ -32,7 +32,7 @@ axioms.
 
 namespace YangMills.RG
 
-open scoped BigOperators
+open scoped BigOperators Nat
 
 variable {𝔸 : Type*} [NormedRing 𝔸] [NormedAlgebra ℝ 𝔸] [CompleteSpace 𝔸]
 
@@ -264,6 +264,63 @@ theorem UbarBlock_conj [NormedAlgebra ℚ 𝔸] (u g : 𝔸ˣ) {ι : Type*} (s :
   rw [nearLog_sum_smul_conj u s w Y hY, NormedSpace.exp_units_conj]
   simp only [mul_assoc]
   rw [← mul_assoc (↑u⁻¹ : 𝔸) (↑u : 𝔸), u.inv_mul, one_mul]
+
+/-- Termwise geometric bound for the exponential series:
+`‖(n!)⁻¹ • Z^n‖ ≤ ‖Z‖^n` (`(n!)⁻¹ ≤ 1` and `‖Z^n‖ ≤ ‖Z‖^n`). -/
+theorem norm_expTerm_le [NormOneClass 𝔸] (Z : 𝔸) (n : ℕ) :
+    ‖((n ! : ℝ)⁻¹) • Z ^ n‖ ≤ ‖Z‖ ^ n := by
+  rcases Nat.eq_zero_or_pos n with h | h
+  · subst h; simp
+  · rw [norm_smul, Real.norm_eq_abs, abs_of_nonneg (by positivity)]
+    have hpos : (0 : ℝ) < (n ! : ℝ) := by exact_mod_cast n.factorial_pos
+    have hfac : (1 : ℝ) ≤ (n ! : ℝ) := by exact_mod_cast n.factorial_pos
+    have hcoeff : ((n ! : ℝ)⁻¹) ≤ 1 := by rw [inv_le_one₀ hpos]; exact hfac
+    calc ((n ! : ℝ)⁻¹) * ‖Z ^ n‖
+        ≤ 1 * ‖Z‖ ^ n :=
+          mul_le_mul hcoeff (norm_pow_le' Z h) (norm_nonneg _) zero_le_one
+      _ = ‖Z‖ ^ n := one_mul _
+
+/-- **Second-order remainder of the operator exponential** (brick
+M-log-4): `NormedSpace.exp Z = 1 + Z + O(‖Z‖²)`, quantitatively
+`‖exp Z - 1 - Z‖ ≤ ‖Z‖²/(1-‖Z‖)` for `‖Z‖<1`.  Proved directly from the
+`n ≥ 2` tail of the exponential series (`NormedSpace.exp_eq_tsum ℝ`),
+mirroring `norm_nearLog_sub_self_le`.  Together with that linearisation
+of `nearLog`, this gives `exp(nearLog Y) = 1 + Y + O(‖Y‖²)` — the genuine
+linearisation content of Bałaban's (0.8) (the RG map is the identity to
+first order) **without** the exact local-inverse identity `log(exp)=id`. -/
+theorem norm_exp_sub_one_sub_self_le [NormOneClass 𝔸] {Z : 𝔸} (hZ : ‖Z‖ < 1) :
+    ‖NormedSpace.exp Z - 1 - Z‖ ≤ ‖Z‖ ^ 2 / (1 - ‖Z‖) := by
+  have hsum : Summable (fun n : ℕ => ((n ! : ℝ)⁻¹) • Z ^ n) :=
+    Summable.of_norm_bounded (g := fun n => ‖Z‖ ^ n)
+      (summable_geometric_of_lt_one (norm_nonneg Z) hZ) (norm_expTerm_le Z)
+  have hF1 : Summable (fun n : ℕ => (((n + 1)! : ℝ)⁻¹) • Z ^ (n + 1)) :=
+    (summable_nat_add_iff 1).mpr hsum
+  have e0 : ((0 ! : ℝ)⁻¹) • Z ^ 0 = (1 : 𝔸) := by simp
+  have e1 : (((0 + 1)! : ℝ)⁻¹) • Z ^ (0 + 1) = Z := by simp
+  have hexp : NormedSpace.exp Z = ∑' n : ℕ, ((n ! : ℝ)⁻¹) • Z ^ n := by
+    rw [NormedSpace.exp_eq_tsum ℝ]
+  have hsplit : NormedSpace.exp Z
+      = 1 + (Z + ∑' n : ℕ, (((n + 2)! : ℝ)⁻¹) • Z ^ (n + 2)) := by
+    rw [hexp, hsum.tsum_eq_zero_add, e0, hF1.tsum_eq_zero_add, e1]
+  rw [hsplit, add_sub_cancel_left, add_sub_cancel_left]
+  have hgeo2 : Summable (fun n : ℕ => ‖Z‖ ^ (n + 2)) :=
+    (summable_nat_add_iff 2).mpr
+      (summable_geometric_of_lt_one (norm_nonneg Z) hZ)
+  have hnorm_tail :
+      Summable (fun n : ℕ => ‖(((n + 2)! : ℝ)⁻¹) • Z ^ (n + 2)‖) :=
+    hgeo2.of_nonneg_of_le (fun _ => norm_nonneg _)
+      (fun n => norm_expTerm_le Z (n + 2))
+  calc ‖∑' n : ℕ, (((n + 2)! : ℝ)⁻¹) • Z ^ (n + 2)‖
+      ≤ ∑' n : ℕ, ‖(((n + 2)! : ℝ)⁻¹) • Z ^ (n + 2)‖ :=
+        norm_tsum_le_tsum_norm hnorm_tail
+    _ ≤ ∑' n : ℕ, ‖Z‖ ^ (n + 2) :=
+        hnorm_tail.tsum_le_tsum (fun n => norm_expTerm_le Z (n + 2)) hgeo2
+    _ = ‖Z‖ ^ 2 / (1 - ‖Z‖) := by
+        have hre : (fun n : ℕ => ‖Z‖ ^ (n + 2))
+            = fun n : ℕ => ‖Z‖ ^ 2 * ‖Z‖ ^ n := by
+          funext n; rw [pow_add, mul_comm]
+        rw [hre, tsum_mul_left,
+          tsum_geometric_of_lt_one (norm_nonneg Z) hZ, div_eq_mul_inv]
 
 /-- `log(1 + 0) = log 1 = 0`. -/
 @[simp] theorem nearLog_zero : nearLog (0 : 𝔸) = 0 := by

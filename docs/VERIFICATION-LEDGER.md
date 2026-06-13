@@ -1974,6 +1974,35 @@ CMP 109 (0.12)/CMP 98 (11); strategy **Lluis Eriksson**
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
+## Addendum 38 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-4
+— second-order remainder of the operator exponential**
+`YangMills.RG.norm_exp_sub_one_sub_self_le`; core 8245)
+
+**Build:** green (8245 jobs).  Oracle (verbatim):
+
+```
+'YangMills.RG.norm_expTerm_le'                [propext, Classical.choice, Quot.sound]
+'YangMills.RG.norm_exp_sub_one_sub_self_le'   [propext, Classical.choice, Quot.sound]
+```
+
+`‖NormedSpace.exp Z - 1 - Z‖ ≤ ‖Z‖²/(1-‖Z‖)` for `‖Z‖<1`, i.e.
+`exp Z = 1 + Z + O(‖Z‖²)`.  Proved from the `n ≥ 2` tail of the
+exponential series (`NormedSpace.exp_eq_tsum ℝ`), mirroring
+`norm_nearLog_sub_self_le`: split off the `n=0` term (`= 1`) and `n=1`
+term (`= Z`), bound the remaining tail by `Σ_{n≥2} ‖Z‖^n = ‖Z‖²/(1-‖Z‖)`
+(termwise `‖(n!)⁻¹•Z^n‖ ≤ ‖Z‖^n`, brick `norm_expTerm_le`).
+
+**Significance for (0.8):** combined with `nearLog Y = Y + O(‖Y‖²)`
+(Add. 32) and the sharp bound `‖nearLog Y‖ ≤ ‖Y‖/(1-‖Y‖)` (Add. 33),
+this gives `exp(nearLog Y) = 1 + Y + O(‖Y‖²)` — the genuine content of
+Bałaban's linearisation axiom (0.8) (the RG map is the identity to first
+order) **without** the exact local-inverse identity `log(exp)=id` (brick
+M-log-2b).  Carries one explicit, satisfiable instance `[NormOneClass 𝔸]`
+(the `n=0` term `1` needs `‖1‖=1`; satisfied by matrix algebras).
+Source standard / CMP 109 (0.8); strategy **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
