@@ -1607,6 +1607,44 @@ source-faithful for our constructions):
    (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0%
    (<0.1%), unchanged.
 
+## Addendum 26 (2026-06-12, **gauge-RG brick B3-full interface — the
+axiomatic group average** `YangMills.RG.GroupAverage`; core 8242)
+
+**Build:** green (**8242 jobs**).  Oracle outputs (verbatim,
+`YangMills/RG/GroupAverage.lean`; all ⊆ the standard three):
+
+```
+'YangMills.RG.GroupAverage.left_equiv'   [propext, Quot.sound]
+'YangMills.RG.GroupAverage.right_equiv'  [propext, Quot.sound]
+'YangMills.RG.GroupAverage.conj_equiv'   [propext, Quot.sound]
+```
+
+The user supplied clean transcriptions of BOTH CMP 98 (14)–(15) and CMP
+109 (0.5)–(0.12).  Per the source-faithful route, this brick formalises
+**Bałaban's axiomatic group average** (CMP 109 (0.5)–(0.9)) — which he
+states governs the construction "universally for all averages satisfying
+the above properties": `structure GroupAverage G` over a `Group G`, with
+`M : Multiset G → G`, inverse-equivariance `M({U⁻¹}) = (M)⁻¹` (0.5),
+bi-equivariance `M({uUv}) = u·M·v` (0.6); permutation invariance (0.7) is
+automatic (the domain is a `Multiset`) and group closure (0.9) automatic
+(codomain `G`).  Derived: `left_equiv`, `right_equiv`, and the
+**gauge-covariance seed** `conj_equiv : M({uU u⁻¹}) = u·M·u⁻¹` (0.6 at
+`v=u⁻¹`) — the algebraic root of B4.  Non-vacuous: a constant/trivial `M`
+violates (0.6).  The analytic axioms — the near-identity linearisation
+(0.8) `(1/i)log M(exp iA_j) = n⁻¹ΣA_j + O(‖A‖²)` (tying `M` to the linear
+operator `Q`=`linAvg` of Add. 24) and the Federbush characterisation
+(0.10) — plus the averaging operator `Ū` itself (CMP 109 (0.12) / CMP 98
+(15)) require a near-identity matrix-`log` framework not yet in the core;
+they are carried as named obligations (never axioms), the next sub-brick.
+Cross-check (honest): `linAvg` faithfully realises **CMP 95 (1.8)** (the
+straight length-`L` line, `L^{-d}`); CMP 98 (14)/CMP 109 (0.12) use the
+Euclidean-symmetric refined contour `Γ_{c,x}` with `L^{-(d+1)}`, so
+`linAvg` is the CMP 95 prototype, not (yet) Balaban's final averaging —
+not overclaimed.  `ssrn-5836022` (Borom) remains set aside.
+Strategy/framing: **Lluis Eriksson** (ai.viXra:2602.0069, 2602.0088);
+group average due to Bałaban (CMP 109) / Federbush.  Continuum (M4)
+track; Clay distance ~0% (<0.1%), unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

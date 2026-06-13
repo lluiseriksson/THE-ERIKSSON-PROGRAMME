@@ -160,6 +160,10 @@ import YangMills.KP.KPBound
 -- the Gaussian/small-field limit of the gauge-covariant averaging.
 -- B2: coarse/fine block maps (block basepoint section, iterated-shift
 -- coordinate formula; Bałaban CMP 98 (4)–(5), CMP 109 (0.4)/(0.12)).
+-- B3-full (interface): Bałaban's axiomatic group average (CMP 109 eqs
+-- (0.5)–(0.9), algebraic part) — the source-faithful route to the
+-- non-abelian averaging operator Ū.
 import YangMills.RG.BlockLattice
 import YangMills.RG.LinearAveraging
 import YangMills.RG.BlockMaps
+import YangMills.RG.GroupAverage
