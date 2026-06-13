@@ -2472,6 +2472,31 @@ Source Dimock I/II/III, Kotecký–Preiss; the existing `KP` layer's
 (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
+## Addendum 54 (2026-06-12, **gauge-RG — asymptotic freedom: the 4D
+marginal coupling decays only logarithmically**
+`YangMills.RG.inv_coupling_linear_growth`; core 8252)
+
+**Build:** green (8252 jobs).  Oracle:
+`'YangMills.RG.inv_coupling_linear_growth' [propext, Classical.choice, Quot.sound]`.
+
+For the marginal recursion `g_{k+1} = g_k·(1 − β·g_k)` (`α = 1`, the 4D
+case) with `0 < g_k`, `β·g_k < 1`, `0 ≤ β`: **the inverse coupling grows
+at least linearly**, `1/g_0 + β·n ≤ 1/g_n`.  Hence `g_n ≤ (1/g_0 + βn)⁻¹
+→ 0` like `1/(βn)` — **logarithmic, not geometric**.  Proof: reciprocal
+telescoping, `1/g_{k+1} = (1/g_k)·(1−x)⁻¹ ≥ (1/g_k)(1+x) = 1/g_k + β`
+(`x = β g_k`, `(1−x)(1+x) = 1−x² ≤ 1`), then induction.
+
+This is the **honest counterpart** to the geometric (irrelevant) decay
+`logistic_geometric_decay` (Add. 49): it *proves* that `g_k ≤ C·rᵏ` is
+FALSE for the 4D marginal gauge coupling (asymptotic freedom), confirming
+in Lean the honesty caveat carried throughout — the geometric remainder
+contraction in 4D comes from the *irrelevant operators'* scaling, not the
+marginal coupling.  Source: Faria da Veiga–O'Carroll 2024 (marginal
+case); the inverse-square form is Bałaban CMP 109 / 1988 eq (2.24)
+(`docs/BALABAN-SOURCE-BOUNDS.md` §4).  Strategy/framing **Lluis Eriksson**
+(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+unchanged.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

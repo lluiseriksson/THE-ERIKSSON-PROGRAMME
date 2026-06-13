@@ -75,6 +75,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- coupling-flow decay from the irrelevant logistic recursion; full assembled conditional
 #print axioms YangMills.RG.remainder_geometric_of_logistic
 #print axioms YangMills.RG.geometric_remainder_assembled
+-- asymptotic freedom: the 4D MARGINAL coupling decays only logarithmically (1/g_n ≥ 1/g_0 + βn)
+#print axioms YangMills.RG.inv_coupling_linear_growth
 -- the polymer cluster-sum bound + the KP/Appendix-F geometric summability core
 #print axioms YangMills.RG.polymer_remainder_bound
 #print axioms YangMills.RG.geometric_size_summability

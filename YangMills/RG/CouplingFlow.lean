@@ -97,4 +97,36 @@ theorem remainder_geometric_of_logistic (g R : ℕ → ℝ) {A r β κ₀ : ℝ}
     rw [mul_comm]; exact logistic_geometric_decay g hr0.le hg hb hrec k
   exact coupling_flow_bridge g R hA (hg 0) hr0 hr1 hκ hg hg_decay hpoly
 
+/-- **Asymptotic freedom — the 4D MARGINAL coupling decays only
+logarithmically** (the honest counterpart to the geometric/irrelevant
+decay above; Faria da Veiga–O'Carroll, marginal case `α = 1`).  For the
+marginal recursion `g_{k+1} = g_k·(1 − β·g_k)` with `0 < g_k`,
+`β·g_k < 1`, the **inverse coupling grows at least linearly**:
+`1/g_0 + β·n ≤ 1/g_n`.  Hence `g_n ≤ 1/(1/g_0 + β·n) → 0` like `1/(βn)`
+— NOT geometric.  This is exactly why `g_k ≤ C·rᵏ` is FALSE for the 4D
+marginal gauge coupling (`docs/BALABAN-SOURCE-BOUNDS.md` §4), and why the
+geometric remainder contraction in 4D must come from the *irrelevant*
+operators, not the coupling.  Proof: reciprocal telescoping using
+`1/(1−x) ≥ 1+x`. -/
+theorem inv_coupling_linear_growth (g : ℕ → ℝ) {β : ℝ} (hβ : 0 ≤ β)
+    (hpos : ∀ k, 0 < g k) (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k)) :
+    ∀ n, 1 / g 0 + β * n ≤ 1 / g n := by
+  intro n
+  induction n with
+  | zero => simp
+  | succ k ih =>
+      have hLpos := hpos k
+      have h1x : 0 < 1 - β * g k := by have := hsmall k; linarith
+      have hstep : 1 / g k + β ≤ 1 / g (k + 1) := by
+        rw [hrec k, le_div_iff₀ (mul_pos hLpos h1x)]
+        have hexp : (1 / g k + β) * (g k * (1 - β * g k)) = 1 - (β * g k) ^ 2 := by
+          field_simp; ring
+        rw [hexp]
+        nlinarith [sq_nonneg (β * g k)]
+      calc 1 / g 0 + β * ((k + 1 : ℕ) : ℝ)
+          = (1 / g 0 + β * (k : ℝ)) + β := by push_cast; ring
+        _ ≤ 1 / g k + β := by linarith [ih]
+        _ ≤ 1 / g (k + 1) := hstep
+
 end YangMills.RG
