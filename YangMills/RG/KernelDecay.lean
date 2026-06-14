@@ -356,4 +356,34 @@ theorem lattice_exp_sum_le_of_shell {V : Type*} [Fintype V] [DecidableEq V]
     _ ≤ ∑' k, N k * g k :=
         hsummable.sum_le_tsum _ (fun k _ => mul_nonneg (hNnn k) (hgnn k))
 
+/-- **Explicit volume-uniform summability for a bounded-degree lattice.**  When
+the shells grow geometrically, `#{z : ℓ z = k} ≤ C·rᵏ` (e.g. `r =` max degree,
+from the walk-count bound `card_walks_length_le_degree_pow`), and the rate beats
+the growth, `r·e^{−σ} < 1` (i.e. `σ > log r`), the lattice exponential sum has the
+closed-form, volume-independent bound `∑_z e^{−σ·ℓ z} ≤ C·(1 − r·e^{−σ})⁻¹`.
+This is the concrete summability constant `S` that the Combes–Thomas / Bałaban
+propagator estimates use: a bounded-degree lattice with a rate above its
+connective constant is uniformly exponentially summable.  Specializes
+`lattice_exp_sum_le_of_shell` with `N k = C·rᵏ`, summing the resulting
+polynomial-free geometric series. -/
+theorem lattice_exp_sum_le_geometric {V : Type*} [Fintype V] [DecidableEq V]
+    (ℓ : V → ℕ) {σ C r : ℝ} (hr : 0 ≤ r)
+    (hshell : ∀ k, ((Finset.univ.filter (fun z => ℓ z = k)).card : ℝ) ≤ C * r ^ k)
+    (hlt : r * Real.exp (-σ) < 1) :
+    ∑ z, Real.exp (-σ * (ℓ z : ℝ)) ≤ C * (1 - r * Real.exp (-σ))⁻¹ := by
+  have hid : (fun (k : ℕ) => (C * r ^ k) * Real.exp (-σ * (k : ℝ)))
+      = fun (k : ℕ) => C * (r * Real.exp (-σ)) ^ k := by
+    funext k
+    have he : Real.exp (-σ * (k : ℝ)) = (Real.exp (-σ)) ^ k := by
+      rw [mul_comm, Real.exp_nat_mul]
+    rw [he, mul_pow]; ring
+  have hge0 : (0 : ℝ) ≤ r * Real.exp (-σ) := mul_nonneg hr (Real.exp_pos _).le
+  have hsummable : Summable (fun (k : ℕ) => (C * r ^ k) * Real.exp (-σ * (k : ℝ))) := by
+    rw [hid]; exact (summable_geometric_of_lt_one hge0 hlt).mul_left C
+  calc ∑ z, Real.exp (-σ * (ℓ z : ℝ))
+      ≤ ∑' (k : ℕ), (C * r ^ k) * Real.exp (-σ * (k : ℝ)) :=
+        lattice_exp_sum_le_of_shell ℓ (fun k => C * r ^ k) hshell hsummable
+    _ = C * (1 - r * Real.exp (-σ))⁻¹ := by
+        rw [hid, tsum_mul_left, tsum_geometric_of_lt_one hge0 hlt]
+
 end YangMills.RG

@@ -3424,6 +3424,27 @@ facts — the concrete Bałaban operator's finite range / smallness (CMP 95/99) 
 the CMP-116 raw-activity bound — carried as honest hypotheses, never axioms.
 Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 83 (2026-06-14, **explicit geometric shell constant**
+`YangMills.RG.lattice_exp_sum_le_geometric`; core 8262)
+
+**Build:** green (theorem added to `RG/KernelDecay.lean`).  Oracle:
+`[propext, Classical.choice, Quot.sound]`.
+
+Specializes Addendum 82 to the bounded-degree / geometric-shell form most
+directly consumed by the Combes–Thomas constants.
+
+* **`lattice_exp_sum_le_geometric`** — if
+  `#{z : ℓ z = k} ≤ C·r^k` and the exponential rate beats the shell growth,
+  `r·exp(-σ) < 1`, then
+
+      ∑_z exp(-σ·ℓ z) ≤ C · (1 - r·exp(-σ))⁻¹.
+
+This packages the uniform summability constant `S` in closed form, rather than
+leaving it as an abstract `∑'_k N k·exp(-σk)`.  It is the exact bounded-degree
+lattice version used by the finite-range resolvent and Schur bounds: shell
+growth supplies `r`; decay supplies `exp(-σ)`; the smallness condition is the
+ordinary geometric-series condition.  Clay distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
