@@ -37,6 +37,7 @@ CORE_DIRS = [
     "YangMills/KP",
     "YangMills/ClayCore",
     "YangMills/Paper",
+    "YangMills/RG",
 ]
 CORE_FILES = [
     "YangMills/P8_PhysicalGap/SUN_Compact.lean",

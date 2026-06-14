@@ -11,7 +11,9 @@ exact verified state and re-run every oracle check.
   * `lake-manifest.json`: mathlib `rev` and `inputRev` both that SHA.
 * **All transitive dependencies** (batteries, aesop, Qq, proofwidgets,
   importGraph, Cli, plausible, LeanSearchClient) — pinned to exact
-  `rev` commits in `lake-manifest.json`.
+  `rev` commits in `lake-manifest.json`. Some inherited `inputRev` fields
+  still record upstream branch names such as `main`/`master`; the effective
+  checkout is the fixed `rev`, which is what Lake uses to reproduce the build.
 
 Because every dependency is pinned to a commit SHA (not a moving branch),
 `lake build` reproduces the exact verified state.  Pinning Mathlib in the
@@ -28,7 +30,7 @@ lake exe cache get        # downloads prebuilt Mathlib .olean (fast)
 lake build YangMillsCore
 ```
 
-Expected: `Build completed successfully (8252 jobs).` (the job count is
+Expected: `Build completed successfully (8262 jobs).` (the job count is
 recorded in `CLAUDE.md` rule 7 and updated on every core change).
 
 ## Re-verify the oracle discipline (no sorry, no project axioms)
@@ -45,6 +47,12 @@ lake env lean <scratch>.lean
 
 The standing oracle script is `oracle_check.lean` (covers the headline
 results).  Run it with `lake env lean oracle_check.lean`.
+
+For the lightweight CI-style source scan, run:
+
+```sh
+python scripts/check_consistency.py
+```
 
 A reachable declaration that printed any other axiom (e.g. `sorryAx`, or
 a project-specific `axiom`) would violate the project's iron rules

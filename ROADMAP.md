@@ -1,18 +1,18 @@
 # ROADMAP — pushing the boundary toward an unconditional Yang–Mills mass gap
 
-> **STATUS STAMP (2026-06-12, latest).** Core green at **8252 jobs**,
+> **STATUS STAMP (2026-06-14, latest).** Core green at **8262 jobs**,
 > Mathlib pinned (see `REPRODUCIBILITY.md`).  Since this roadmap was first
 > written (2026-06-09) several tracks closed: the area-law track (all four
 > variants — finite-volume/volume-uniform × linearized/exact-activity,
 > ledger Addenda 12–18d); the IR clustering bound (theorem-fed, M3 IR side
-> done); and the **gauge-RG continuum track** (`YangMills/RG/**`, 36
-> oracle-clean bricks, Addenda 23–52) — the local averaging-operator theory
-> is complete and the §6.3 UV branch is now ONE oracle-clean conditional
-> `lattice_mass_gap_of_cluster_and_coupling` on two carried Bałaban inputs
-> (`hRpoly`, `hg`).  **The current frontier is those two inputs** (the
-> Dimock cluster-expansion-with-holes and the coupling-flow decay), the
-> genuine months-scale work; see `docs/BALABAN-RG-PLAN.md`,
-> `docs/UV-SINGLE-SCALE-PLAN.md`, `docs/BALABAN-SOURCE-BOUNDS.md`.  The
+> done); and the **gauge-RG continuum-facing track** (`YangMills/RG/**`,
+> ledger Addenda 23–83).  The averaging/Gaussian/kernel/animal-count
+> substrate and the marginal-coupling summability branch are theorem-fed.
+> **The current frontier is `hRpoly`**: the concrete Yang-Mills
+> cluster-expansion-with-holes activity-decay bound for the actual gauge RG
+> operator.  See `CURRENT-STATE.md`, `docs/HRPOLY-CAMPAIGN-PLAN.md`,
+> `docs/BALABAN-RG-PLAN.md`, `docs/UV-SINGLE-SCALE-PLAN.md`, and
+> `docs/BALABAN-SOURCE-BOUNDS.md`.  The
 > §3 "immediate next moves" and §4 "Target B" notes below are
 > **superseded** (kept as a historical 2026-05/06 record); the measurement
 > discipline (§0, §2) is unchanged and still governs.  Clay distance
@@ -161,9 +161,9 @@ history of this repo.
 
 > **SUPERSEDED (see status stamp).** The list below is the 2026-05/06
 > SU(N)-Haar-era front line; it has been overtaken by the area-law and
-> gauge-RG tracks.  The current frontier is the two carried Bałaban inputs
-> `hRpoly`/`hg` of `lattice_mass_gap_of_cluster_and_coupling` (the Dimock
-> cluster expansion with holes + coupling-flow decay).  Items 1–5 below are
+> gauge-RG tracks.  The current frontier is `hRpoly`, the concrete YM
+> activity-decay estimate from the cluster expansion with holes; the
+> coupling/summability scaffolding around it is now theorem-fed.  Items 1–5 below are
 > retained as a historical record of lower-priority hygiene/warm-up tasks.
 
 1. **Repair `SchurEntryOffDiag.lean`** against current Mathlib (`star_mul`

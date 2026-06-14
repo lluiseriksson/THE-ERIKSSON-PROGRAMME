@@ -1,8 +1,17 @@
 # BALABAN GAUGE-RG CAMPAIGN — the continuum track
 
-**Date:** 2026-06-12.  **Status:** the **local averaging-operator theory
-is COMPLETE** (21 oracle-clean bricks, core 8246); the per-scale
-RG-stability campaign (U1/U2) is the open, months-scale heart.
+**Live status (2026-06-14).** Core green at **8262 jobs**.  The local
+averaging-operator theory is complete; the later RG substrate now also includes
+the free Gaussian pushforward, marginal-coupling summability, exponential-decay
+kernel calculus, Schur/PSD/Gaussian bounds, animal counting, cube summability,
+and explicit shell-growth summability (ledger Addenda 23–83).  The live
+frontier is **`hRpoly`**: the concrete Yang-Mills
+cluster-expansion-with-holes activity-decay bound for the actual gauge RG
+operator.  See `CURRENT-STATE.md` for the short checkpoint.
+
+**Original date:** 2026-06-12.  The ladder below is retained as the auditable
+history of the campaign; individual rows may describe intermediate states that
+have since been superseded by the live status above.
 
 **Status detail (read before continuing).**  CLOSED, oracle-clean, in
 `YangMillsCore`:
@@ -30,15 +39,13 @@ verified theorems, and the once-feared exact identity `log(exp)=id`
 (M-log-2b) is demoted to optional (covariance never needed it; (0.8) is
 obtained without it).
 
-OPEN (the genuine remaining work): **B4-Ū full** (assemble the concrete
-lattice `Ū` and instantiate `UbarBlock_conj` — definitional), and the
-**U1/U2 per-scale RG-stability campaign** (`docs/UV-SINGLE-SCALE-PLAN.md`):
-the contraction `|R_k| ≤ M·rᵏ` for the actual RG flow on
-`gaugeMeasureFrom` — small-field contraction (U1) + large-field
-suppression (U2).  **U2 is months-scale**, the analytic heart of
-Bałaban's ~10-paper programme.  Direct Clay relevance remains
-~0% (<0.1%): even a full UV discharge leaves M4/M5 (continuum limit,
-OS/Wightman reconstruction) untouched.
+Historical OPEN note (superseded in detail by the live status above):
+**B4-Ū full** and the **U1/U2 per-scale RG-stability campaign** were the
+frontier at the time this plan opened.  Since then, much of the deterministic,
+Gaussian, coupling, summability, and kernel substrate has been theorem-fed.
+The remaining hard content is now localized to the concrete activity-decay
+input `hRpoly`.  Direct Clay relevance remains ~0% (<0.1%): even a full UV
+discharge leaves M4/M5 (continuum limit, OS/Wightman reconstruction) untouched.
 
 The continuum-facing renormalization-group construction.  Goal: discharge
 the §6.3 UV input of the M3 assembly (`lattice_mass_gap_of_per_scale_uv`,

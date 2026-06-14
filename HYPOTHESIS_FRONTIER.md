@@ -1,6 +1,6 @@
 # Hypothesis Frontier — THE ERIKSSON PROGRAMME
 
-**Current as of 2026-06-12.**  This document states the honest assumption
+**Current as of 2026-06-14.**  This document states the honest assumption
 frontier of the **verified core** (`YangMillsCore`).  Read the current
 section first; the legacy section at the bottom is **archived, pre-cleanup
 material that describes the EXCLUDED vacuous chain and is NOT the current
@@ -29,21 +29,22 @@ the import closure of `YangMillsCore`.  Gaps are carried as explicit
 |---|---|
 | **IR clustering bound** (`hIRbound`) | **THEOREM-FED.** Discharged by `gibbs_truncated_correlation_bound` / `sun_two_plaquette_correlator_bound` with explicit non-empty coupling windows. No carried hypothesis remains on the IR side. |
 | **Strong-coupling area law** (confinement, lattice) | **THEOREM, unconditional.** Finite-volume and volume-uniform, linearized and exact-activity (`finite_volume_area_law_exp`, `normalized_exp_wilson_loop_area_law`). Carries no hypothesis. |
-| **UV single-scale bound** (§6.3 Bałaban) | **CARRIED**, and now *decomposed*. The whole UV branch is one oracle-clean conditional `lattice_mass_gap_of_cluster_and_coupling` (`RG/UVMassGap.lean`) on two faithful Bałaban inputs: `hRpoly` (the cluster-expansion-with-holes remainder activity bound) and `hg` (the coupling-flow decay). Both are carried hypotheses — never axioms. The bridge, geometric summation, and assembly connecting them to the gap are all proved. |
+| **UV single-scale bound** (§6.3 Bałaban) | **CARRIED**, and now *decomposed*. The geometric-profile conditional `lattice_mass_gap_of_cluster_and_coupling` and the marginal-coupling conditional in `RG/MarginalUVMassGap.lean` are oracle-clean; coupling/summability/kernel/Gaussian scaffolding has been theorem-fed. The remaining carried input is `hRpoly`: the concrete Yang-Mills cluster-expansion-with-holes remainder activity bound for the actual gauge RG operator. It is a theorem hypothesis — never an axiom. |
 | **Continuum limit / OS–Wightman reconstruction / continuum mass gap** (M4–M5, the actual Clay problem) | **OPEN MATHEMATICS.** Not carried, not axiomatized, not claimed. **Distance to the Clay prize: ~0% (<0.1%).** |
 
 ### What discharging the carried UV inputs would (and would not) buy
 
-* Discharging `hRpoly` + `hg` would make the **lattice** (M3) mass gap
-  unconditional.  `hRpoly` is the Dimock cluster expansion with holes —
-  genuine, **months-scale** constructive QFT with no Mathlib primitives;
-  `hg`'s geometric form is the *irrelevant-operator* mechanism (the 4D
-  *marginal* gauge coupling decays only logarithmically — see
-  `docs/BALABAN-SOURCE-BOUNDS.md` §4).
+* Discharging `hRpoly` would make the **lattice** (M3) mass gap
+  unconditional through the existing conditional assembly.  `hRpoly` is the
+  Dimock/Balaban cluster expansion with holes plus the fluctuation-integral
+  estimate — genuine, **months-scale** constructive QFT with no Mathlib
+  primitives.  The older geometric `hg` branch remains documented as the
+  irrelevant-operator mechanism; the 4D *marginal* coupling side now uses the
+  theorem-fed summable profile instead (see `docs/BALABAN-SOURCE-BOUNDS.md` §4).
 * Even a full M3 discharge **does not** touch M4/M5.  The Clay distance
   stays ~0% (<0.1%) until the continuum limit and reconstruction exist.
 
-Machine-checked record: `docs/VERIFICATION-LEDGER.md` (52 addenda).
+Machine-checked record: `docs/VERIFICATION-LEDGER.md` (83 addenda).
 Source-grounding for the carried inputs: `docs/BALABAN-SOURCE-BOUNDS.md`.
 
 ---

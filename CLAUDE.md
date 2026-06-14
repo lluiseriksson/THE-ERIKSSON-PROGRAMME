@@ -42,7 +42,8 @@ highest-leverage target, continue. Do not wait for confirmation.
 
 ## Build & verification mechanics (Windows host)
 
-* Toolchain: `leanprover/lean4:v4.29.0-rc6`, Mathlib master (pinned by
+* Toolchain: `leanprover/lean4:v4.29.0-rc6`, Mathlib pinned to
+  `07642720480157414db592fa85b626dafb71355b` (`lakefile.lean` +
   `lake-manifest.json`). Build: `lake build YangMillsCore` (~minutes
   when cached). Oracle: `lake env lean oracle_check.lean`.
 * Long builds: detached
@@ -67,40 +68,25 @@ are recorded **in the campaign plans** — primarily
 `README-FOR-NEXT-MODEL.md`. Read them before writing analysis-flavoured
 Lean; they save hours.
 
-## Current state (2026-06-13)
+## Current state (2026-06-14)
 
 * Core green: **8262 jobs**, zero sorry, zero axioms.  Mathlib **pinned**
   to an exact commit (lakefile + manifest agree); see `REPRODUCIBILITY.md`.
+* Read `CURRENT-STATE.md` first.  It is the short live checkpoint; the long
+  campaign docs are historical/auditable detail.
 * **`hRpoly` campaign OPEN** (`docs/HRPOLY-CAMPAIGN-PLAN.md`): the sole
-  remaining analytic input of the §6.3 UV conditional.  **Branch C (the
-  geometric summability) is now closed as graph combinatorics:** P1a
-  (`card_walks_length_le_degree_pow`, walk-count engine `≤ Δⁿ`), P1b-ii
-  engine (`exists_detour_walk`, the closed-walk splice), and P1b/P1c
-  (`exists_peel`, `exists_spanning_closed_walk`, `animal_card_le` — the
-  lattice animal count `c_n ≤ Δ^{2(n−1)}`), all in `RG/AnimalCount.lean`
-  + `RG/AnimalTour.lean` (ledger Add. 57–60); and **P2a** — the `M`-cube
-  king-adjacency graph `cubeAdj` (Dimock II §3.1.2), `cubeAdj_degree_le`
-  (`≤ 3^d`), `cube_polymer_summable` (`RG/CubeLattice.lean`, Add. 61).
-  Dimock II/III source received + attributions corrected (App F is in
-  Part II; `d_M`/summability in §3.1.2; raw activity in §3.14; coupling
-  `λ_k`; **and it is `φ⁴₃`, NOT YM** — `BALABAN-SOURCE-BOUNDS.md`).  Next:
-  **P2b** (holes / modified metric), then P3 (Appendix F cluster expansion
-  with holes) / P4 (YM single-scale raw activity bound).
-* **Gauge-RG continuum track (current frontier, `YangMills/RG/**`, 36
-  oracle-clean bricks, ledger Addenda 23–52):** the local
-  averaging-operator theory is COMPLETE (block geometry; the linear
-  averaging operator `Q` with linearity, locality, and the ℓ²-operator
-  contraction `linAvg_l2_le`/`_contraction`; the axiomatic group average;
-  the gauge-covariance chain `wilsonLine_gaugeAct_path` →
-  `averagedContour_gaugeAct` → `UbarBlock_conj` → `MatrixRealization`;
-  the near-identity matrix-log calculus `NearLog` with convergence,
-  bounds, scalar correctness, conjugation-equivariance, and the
-  quantitative (0.8) `exp(nearLog Y)=1+Y+O(‖Y‖²)`).  The §6.3 UV branch
-  is now ONE oracle-clean conditional `lattice_mass_gap_of_cluster_and_coupling`
-  (`RG/UVMassGap.lean`) on two faithful Bałaban inputs: `hRpoly` (cluster
-  expansion with holes) and `hg` (coupling-flow decay).  Both carried,
-  never axioms; `docs/BALABAN-SOURCE-BOUNDS.md` records the sources +
-  honest caveats (4D marginal coupling is logarithmic, not geometric).
+  remaining analytic input of the §6.3 UV conditional.  The theorem-fed
+  substrate now includes animal counting, cube summability, marginal-coupling
+  summability, exponential-decay kernel calculus, Schur bounds, PSD kernels,
+  Gaussian MGF bounds, finite-dimensional Gaussian construction, and explicit
+  shell-growth summability.  The open work is the concrete YM
+  cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
+  operator (`hRpoly`): gauge-covariant operator, background-field minimizer,
+  propagator decay, localization, and raw activity bound.
+* **Gauge-RG continuum-facing track (`YangMills/RG/**`, ledger Addenda
+  23–83):** local averaging/Gaussian/kernel/combinatorial substrate is
+  oracle-clean.  The branch remains lattice/M3-side and conditional on
+  `hRpoly`; M4/M5/Clay are untouched.
 * Done: sharp KP, Mayer–Ursell `Ξ = exp(clusterSum)`, `Z = Ξ`, the IR
   clustering bound (B4), the two-plaquette correlator decay (T4), the
   finite-volume area law (linearized, AL1–AL6), the

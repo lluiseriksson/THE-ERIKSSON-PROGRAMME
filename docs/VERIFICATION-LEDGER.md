@@ -3445,6 +3445,35 @@ lattice version used by the finite-range resolvent and Schur bounds: shell
 growth supplies `r`; decay supplies `exp(-σ)`; the smallness condition is the
 ordinary geometric-series condition.  Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 84 (2026-06-14, **repository coherence hardening**; current-state
+docs + RG axiom-scan coverage; core 8262)
+
+No new theorem was added in this checkpoint.  The improvement is
+certification/reproducibility:
+
+* added `CURRENT-STATE.md` as the short live entry point;
+* updated README / frontier / roadmap / handoff docs from the stale
+  `hRpoly`+`hg` frontier to the current `hRpoly` frontier, with the
+  marginal-coupling and summability scaffolding recorded as theorem-fed;
+* updated live build-count references to **8262 jobs**;
+* corrected `YangMillsCore.lean` comments so the modern clean `YangMills/RG/**`
+  layer is not confused with the excluded legacy Balaban-RG packet;
+* extended `scripts/check_consistency.py` so verified-core axiom scanning now
+  includes `YangMills/RG`.
+
+Verification rerun:
+
+```text
+python scripts/check_consistency.py
+✅ Zero sorry in Lean source; zero axioms in the verified-core tree
+
+lake env lean oracle_check.lean
+every headline line ends [propext, Classical.choice, Quot.sound]
+
+lake build YangMillsCore
+Build completed successfully (8262 jobs).
+```
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

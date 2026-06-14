@@ -1,11 +1,16 @@
 # `hRpoly` CAMPAIGN — the cluster-expansion-with-holes activity bound
 
-**Date:** 2026-06-12.  **Status:** P0 (design / source-grounding).  This
-is a **design + source-transcription** document (no Lean proved here),
-per the campaign rules.  It opens the months-scale campaign to discharge
-`hRpoly`, the **sole remaining genuinely-analytic carried input** of the
-end-to-end UV conditional `lattice_mass_gap_of_cluster_and_coupling`
-(`RG/UVMassGap.lean`).
+**Live status (2026-06-14).** Core green at **8262 jobs**.  The campaign has
+already closed substantial substrate: animal counting, cube summability,
+marginal-coupling summability, exponential-decay kernel calculus, Schur/PSD
+kernel bounds, Gaussian MGF bounds, concrete finite-dimensional Gaussian
+construction, finite-range/resolvent decay, and explicit shell-growth
+summability.  The remaining genuinely analytic target is still `hRpoly`: the
+concrete Yang-Mills activity-decay estimate for the actual gauge RG operator.
+
+**Original date:** 2026-06-12.  This is the source-grounded campaign document
+for discharging `hRpoly`, the **sole remaining genuinely-analytic carried
+input** of the end-to-end UV conditional.
 
 ## 0. The target
 

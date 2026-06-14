@@ -8,6 +8,27 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 
 ---
 
+## Live snapshot (2026-06-14)
+
+Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
+handoff below.  The verified core is green at **8262 jobs**, with Mathlib
+pinned and every headline oracle-clean at
+`[propext, Classical.choice, Quot.sound]`.
+
+The live frontier is **`hRpoly`**: the concrete Yang-Mills
+cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
+operator.  The surrounding scaffolding is largely theorem-fed: strong-coupling
+lattice clustering and area laws, the RG averaging/Gaussian/kernel substrate,
+marginal-coupling summability, animal counting, cube summability, and
+shell-growth summability.  Do not replace `hRpoly` by an axiom or a hollow
+interface; build it from source-grounded constructive-QFT bricks or leave it as
+an explicit theorem hypothesis.
+
+Clay distance remains **~0% (<0.1%)**: no continuum limit, no OS/Wightman
+reconstruction, no continuum mass gap.
+
+---
+
 ## 0. Purpose and the honesty mandate
 
 The project formalizes mathematics around the **Yang–Mills mass gap** (a Clay Millennium

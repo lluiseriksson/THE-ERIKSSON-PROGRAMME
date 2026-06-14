@@ -10,7 +10,7 @@ This root module imports **only** the parts of the development that are:
 
 * mathematically sound (no `sorry`, no project-specific axioms),
 * genuinely about Yang–Mills / SU(N) (not a vacuous target predicate), and
-* structurally separable from the LSI / Balaban-RG sprawl.
+* structurally separable from the LSI / legacy Balaban-RG sprawl.
 
 Its entire import closure was verified (by `import`-graph analysis, 2026-05-28)
 to avoid `YangMills/ClayCore/BalabanRG/**`, `YangMills/P8_PhysicalGap/BalabanToLSI`
@@ -43,10 +43,13 @@ Expected oracle on every declaration reachable from here:
 ## What is deliberately NOT in the core
 
 The vacuous targets (`ClayYangMillsTheorem`, `ClayYangMillsStrong`), the
-LSI/Bakry–Émery pipeline, the Balaban-RG packet/coherence/frontier sprawl, and
-the ~25 BFS-dead axioms.  They route only to the empty `∃ m > 0` statement;
-keeping them out of this root is the point.  `CLEANUP_PLAN.md` lists them and
-the staged plan for removing them once this core is confirmed green.
+LSI/Bakry–Émery pipeline, the legacy Balaban-RG packet/coherence/frontier
+sprawl, and the ~25 BFS-dead axioms.  They route only to the empty `∃ m > 0`
+statement; keeping them out of this root is the point.  The modern
+`YangMills/RG/**` modules imported below are the clean, explicit-hypothesis
+replacement track, not the excluded legacy packet.  `CLEANUP_PLAN.md` lists the
+legacy material and the staged plan for removing it once this core is confirmed
+green.
 -/
 
 -- Lattice + gauge layer (L0)
@@ -133,10 +136,10 @@ import YangMills.Paper.ClusteringToGap
 
 -- Kotecký–Preiss / Mayer cluster-expansion layer (`docs/kp-cluster-expansion-plan.md`).
 -- KP0–KP2a (substrate, partition identities, incompatibility graph, Ursell coefficient)
--- plus the KP2b attack: the cluster sum (Mayer RHS), its support on clusters, the
--- empty-system and first-order checks of `Ξ = exp(clusterSum)`, and the KP smallness
--- criterion with its base estimates.  The general Ursell value on complete graphs and
--- the inductive KP convergence bound remain open (and are NOT imported as axioms).
+-- plus the completed cluster-expansion campaigns: the cluster sum (Mayer RHS), its
+-- support on clusters, the Mayer-Ursell inversion `Ξ = exp(clusterSum)`, the sharp
+-- KP convergence bound, and the pinned-tail estimates consumed by the lattice
+-- correlation and area-law layers.
 import YangMills.KP.Basic
 import YangMills.KP.Cluster
 import YangMills.KP.Ursell
