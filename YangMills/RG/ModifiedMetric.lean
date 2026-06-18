@@ -1035,4 +1035,84 @@ theorem discreteModifiedMetric_d_one_empty_holes {L : ℕ} (H : HoleFamily 1 L) 
     discreteModifiedMetric H X = X.card - 1 :=
   discreteModifiedMetric_empty_holes H hH X hconn
 
+theorem discreteModifiedMetric_d_one_concrete_hole (s₀ s₁ : Cube 1 3)
+    (h₀ : s₀ = fun _ => 0) (h₁ : s₁ = fun _ => 1) :
+    let H : HoleFamily 1 3 := ⟨{{s₀}}⟩;
+    let X : Finset (Cube 1 3) := {s₀, s₁};
+    discreteModifiedMetric H X = 0 := by
+  intro H X
+  have hskel_conj : skeleton H X = {s₁} ∧ s₀ = s₀ ∧ h₀ = h₀ ∧ h₁ = h₁ := by
+    refine ⟨?_, rfl, rfl, rfl⟩
+    dsimp [X]
+    unfold skeleton
+    ext z
+    simp only [mem_filter, mem_insert, mem_singleton]
+    constructor
+    · rintro ⟨h1 | rfl, h2⟩
+      · exfalso
+        apply h2
+        refine ⟨{s₀}, ?_, ?_⟩
+        · simp [H]
+        · subst h1
+          simp
+      · rfl
+    · rintro rfl
+      refine ⟨Or.inr rfl, ?_⟩
+      rintro ⟨H₀, hH₀, hz_in⟩
+      simp [H] at hH₀
+      subst hH₀
+      simp at hz_in
+      have h_eq : z (0 : Fin 1) = s₀ (0 : Fin 1) := by rw [hz_in]
+      rw [h₁, h₀] at h_eq
+      simp at h_eq
+  have hskel : skeleton H X = {s₁} := hskel_conj.1
+  have hconn_conj : cubeConnected X ∧ s₀ = s₀ ∧ s₁ = s₁ ∧ h₀ = h₀ ∧ h₁ = h₁ := by
+    refine ⟨?_, rfl, rfl, rfl, rfl⟩
+    dsimp [X]
+    intro x hx y hy
+    simp only [mem_insert, mem_singleton] at hx hy
+    rcases hx with hx | hx <;> rcases hy with hy | hy
+    · subst hx; subst hy
+      exact ⟨Walk.nil, fun v hv => by simp [Walk.support] at hv; subst hv; simp⟩
+    · subst hx; subst hy
+      have hadj : (cubeAdj 1 3).Adj x y ∧ h₀ = h₀ ∧ h₁ = h₁ := by
+        refine ⟨?_, rfl, rfl⟩
+        constructor
+        · intro h_contra
+          have h_eq : x (0 : Fin 1) = y (0 : Fin 1) := by rw [h_contra]
+          rw [h₀, h₁] at h_eq
+          simp at h_eq
+        · intro i
+          right; left
+          rw [h₁, h₀]
+          simp
+      refine ⟨Walk.cons hadj.1 Walk.nil, ?_⟩
+      intro v hv
+      simp only [Walk.support, List.mem_cons, List.not_mem_nil, or_false] at hv
+      rcases hv with rfl | rfl
+      · simp
+      · simp
+    · subst hx; subst hy
+      have hadj : (cubeAdj 1 3).Adj x y ∧ h₀ = h₀ ∧ h₁ = h₁ := by
+        refine ⟨?_, rfl, rfl⟩
+        constructor
+        · intro h_contra
+          have h_eq : x (0 : Fin 1) = y (0 : Fin 1) := by rw [h_contra]
+          rw [h₁, h₀] at h_eq
+          simp at h_eq
+        · intro i
+          right; right
+          rw [h₀, h₁]
+          simp
+      refine ⟨Walk.cons hadj.1 Walk.nil, ?_⟩
+      intro v hv
+      simp only [Walk.support, List.mem_cons, List.not_mem_nil, or_false] at hv
+      rcases hv with rfl | rfl
+      · simp
+      · simp
+    · subst hx; subst hy
+      exact ⟨Walk.nil, fun v hv => by simp [Walk.support] at hv; subst hv; simp⟩
+  have hconn : cubeConnected X := hconn_conj.1
+  exact discreteModifiedMetric_singleton_skeleton H X hconn s₁ hskel
+
 end YangMills.RG
