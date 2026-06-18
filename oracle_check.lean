@@ -204,5 +204,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.discreteModifiedMetric_le_bulkTreeLength
 #print axioms YangMills.RG.discreteModifiedMetric_mono_skeleton
 #print axioms YangMills.RG.discreteModifiedMetric_mono_holes
+#print axioms YangMills.RG.discreteModifiedMetric_weight_summable_of_skeleton_count
+
 
 

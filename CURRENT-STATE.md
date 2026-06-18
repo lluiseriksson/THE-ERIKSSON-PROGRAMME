@@ -1,8 +1,8 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-18
-(`feat(rg): prove metric comparison theorems (P2b-ii-b-3 closed)`,
-ledger Addendum 91).
+(`feat(rg): prove modified-metric summability theorem (P2b-ii-c closed)`,
+ledger Addendum 92).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look

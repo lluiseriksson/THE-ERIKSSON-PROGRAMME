@@ -3645,3 +3645,22 @@ We proved that $X$ itself is a valid candidate for the Steiner tree spanning the
 **Honest scope.** This is purely combinatorial lattice geometry, establishing discrete comparison bounds for the modified metric. It does not construct the continuum tree-length metric from first principles. Clay distance **~0% (<0.1%), unchanged**.
 
 
+## Addendum 92 (2026-06-18, **discrete modified-metric summability theorem**
+`YangMills.RG.discreteModifiedMetric_weight_summable_of_skeleton_count`; core 8264)
+
+**Build:** green (summability theorem added to `ModifiedMetric.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum formalises the discrete modified-metric summability result (under standard combinatorial hypotheses, proving progress on **P2b-ii-c**):
+
+* **`discreteModifiedMetric_weight_summable_of_skeleton_count`** — Proves that the polymer sum over all connected skeletons $Y$ containing a fixed root $r$ of the fillings card multiplied by the exponential metric weight $q^{|Y|}$ converges and is bounded by a volume-independent constant:
+  $$\sum'_{Y \ni r} |admissibleFillings(Y)| \cdot q^{|Y|} \leq (1 - 3^{2d} \cdot q \cdot 2^{3^d})^{-1}$$
+  under the coordination entropy-suppression condition.
+
+**How compilation was resolved.**
+We bounded the filling multiplicity term using `cube_fillings_card_le_two_pow` (yielding $2^{3^d \cdot |Y|}$) and combined it with the metric factor $q^{|Y|}$ into a single unified base $q' = q \cdot 2^{3^d}$. The resulting sum was then majorized by the standard lattice polymer sum using `Summable.tsum_le_tsum` and bounded using `cube_polymer_summable`. Finiteness of the index type was used to discharge the summability premise via `Summable.of_finite`.
+
+**Honest scope.** This is purely combinatorial lattice geometry, proving that the skeleton-growth series converges under sufficient exponential suppression. It does not resolve the analytic Gaussian suppression factor for large field regions (which belongs to P4). Clay distance **~0% (<0.1%), unchanged**.
+
+
+

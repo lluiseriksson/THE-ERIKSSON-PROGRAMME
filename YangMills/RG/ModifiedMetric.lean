@@ -710,5 +710,53 @@ theorem discreteModifiedMetric_mono_holes {d L : ℕ} (H₁ H₂ : HoleFamily d 
   refine ⟨S, ?_, hS_sub, hS_conn, h_eq⟩
   exact h_mono.trans hS_skel
 
+/-- **Modified-Metric Summability** (Dimock Appendix E, proof of Lemma E.3).
+    The polymer sum over all connected skeletons Y containing a fixed root r,
+    weighted by the filling multiplicity and the exponential metric decay,
+    is summable and bounded by a volume-independent constant. -/
+theorem discreteModifiedMetric_weight_summable_of_skeleton_count {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (r : Cube d L) (q : ℝ)
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hq0 : 0 ≤ q)
+    (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d)) < 1) :
+    ∑' Y : {S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w},
+        ((admissibleFillings (cubeAdj d L) (Y : Finset (Cube d L)) H.holes).card : ℝ) * q ^ (Y : Finset (Cube d L)).card
+      ≤ (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d)))⁻¹ := by
+  classical
+  let q' := q * 2 ^ (3 ^ d)
+  have hq'0 : 0 ≤ q' := by
+    dsimp [q']
+    positivity
+  have h_sum_le := cube_polymer_summable d L r hq'0 hCq
+  have h_term_le : ∀ Y : {S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w},
+      ((admissibleFillings (cubeAdj d L) (Y : Finset (Cube d L)) H.holes).card : ℝ) * q ^ (Y : Finset (Cube d L)).card ≤
+      q' ^ (Y : Finset (Cube d L)).card := by
+    intro Y
+    let S := (Y : Finset (Cube d L))
+    have hS_ne : S.Nonempty := ⟨r, Y.2.1⟩
+    have h_card := cube_fillings_card_le_two_pow d L S H hdisj hnoedges hS_ne hholes_ne
+    have h_two_pow : (2 ^ (3 ^ d * S.card) : ℝ) = (2 ^ (3 ^ d)) ^ S.card := by
+      rw [pow_mul]
+    have h_card_real : ((admissibleFillings (cubeAdj d L) S H.holes).card : ℝ) ≤ (2 ^ (3 ^ d)) ^ S.card := by
+      rw [← h_two_pow]
+      exact_mod_cast h_card
+    have h_term_mul : ((admissibleFillings (cubeAdj d L) S H.holes).card : ℝ) * q ^ S.card ≤ ((2 ^ (3 ^ d)) ^ S.card) * q ^ S.card := by
+      gcongr
+    have h_pow_mul : ((2 ^ (3 ^ d)) ^ S.card) * q ^ S.card = q' ^ S.card := by
+      dsimp [q']
+      rw [mul_pow, mul_comm]
+    exact h_term_mul.trans (h_pow_mul.symm ▸ le_refl _)
+  have hf_summable : Summable (fun Y : {S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w} =>
+      ((admissibleFillings (cubeAdj d L) (Y : Finset (Cube d L)) H.holes).card : ℝ) * q ^ (Y : Finset (Cube d L)).card) :=
+    Summable.of_finite
+  have hg_summable : Summable (fun Y : {S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w} =>
+      q' ^ (Y : Finset (Cube d L)).card) :=
+    Summable.of_finite
+  have h_tsum := Summable.tsum_le_tsum h_term_le hf_summable hg_summable
+  exact h_tsum.trans h_sum_le
+
 end YangMills.RG
+
 
