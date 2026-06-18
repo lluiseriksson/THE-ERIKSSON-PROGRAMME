@@ -1,8 +1,8 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-18
-(`feat(rg): prove fillings multiplicity bounds (P2b-ii-b-2 closed)`,
-ledger Addendum 90).
+(`feat(rg): prove metric comparison theorems (P2b-ii-b-3 closed)`,
+ledger Addendum 91).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look

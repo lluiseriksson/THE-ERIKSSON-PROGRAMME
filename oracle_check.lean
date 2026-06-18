@@ -201,4 +201,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.discreteModifiedMetric_empty_holes
 #print axioms YangMills.RG.fillings_card_le_two_pow
 #print axioms YangMills.RG.cube_fillings_card_le_two_pow
+#print axioms YangMills.RG.discreteModifiedMetric_le_bulkTreeLength
+#print axioms YangMills.RG.discreteModifiedMetric_mono_skeleton
+#print axioms YangMills.RG.discreteModifiedMetric_mono_holes
+
 

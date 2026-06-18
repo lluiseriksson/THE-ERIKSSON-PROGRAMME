@@ -3626,3 +3626,22 @@ We defined the injection from admissible fillings to subsets of touching holes u
 
 **Honest scope.** This is purely combinatorial lattice geometry, bounding the number of polymers corresponding to a skeleton. Clay distance **~0% (<0.1%), unchanged**.
 
+
+## Addendum 91 (2026-06-18, **discrete modified metric comparison bounds**
+`YangMills.RG.discreteModifiedMetric_le_bulkTreeLength`, `YangMills.RG.discreteModifiedMetric_mono_skeleton`, and `YangMills.RG.discreteModifiedMetric_mono_holes`; core 8264)
+
+**Build:** green (metric comparison theorems added to `ModifiedMetric.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum formalises the source-faithful comparison bounds for the discrete modified metric, marking progress on **P2b-ii-b-2**:
+
+* **`discreteModifiedMetric_le_bulkTreeLength`** — Proves that the discrete modified metric is bounded above by the standard bulk tree metric: $d_M(X, \bmod H) \leq |X| - 1$ for connected $X$.
+* **`discreteModifiedMetric_mono_skeleton`** — Proves that a larger skeleton $Y_1 \subseteq Y_2$ (for a fixed polymer $X$) yields a larger metric: $d_M(X, \bmod H_1) \leq d_M(X, \bmod H_2)$ when $\text{skeleton } H_1\ X \subseteq \text{skeleton } H_2\ X$.
+* **`discreteModifiedMetric_mono_holes`** — Proves that more holes $H_1.holes \subseteq H_2.holes$ (which reduces the skeleton size) yields a smaller metric: $d_M(X, \bmod H_2) \leq d_M(X, \bmod H_1)$.
+
+**How compilation was resolved.**
+We proved that $X$ itself is a valid candidate for the Steiner tree spanning the skeleton, which immediately bounds the `sInf` of Steiner tree lengths by $|X| - 1$. For the monotonicity theorems, we showed that if $Y_1 \subseteq Y_2 \subseteq X$, any valid connected set $S$ spanning $Y_2$ also spans $Y_1$. Thus, the set of spanning tree lengths of $Y_2$ is a subset of the set of spanning tree lengths of $Y_1$. We then leveraged `Nat.sInf_le` and `Nat.sInf_mem` to prove the inequalities, avoiding typeclass synthesis or constructive decidability errors by working with classical decidability locally inside the proofs.
+
+**Honest scope.** This is purely combinatorial lattice geometry, establishing discrete comparison bounds for the modified metric. It does not construct the continuum tree-length metric from first principles. Clay distance **~0% (<0.1%), unchanged**.
+
+

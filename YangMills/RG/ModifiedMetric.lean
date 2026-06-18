@@ -639,4 +639,76 @@ theorem cube_fillings_card_le_two_pow (d L : ℕ) [NeZero L] (Y : Finset (Cube d
     (admissibleFillings (cubeAdj d L) Y H.holes).card ≤ 2 ^ (3 ^ d * Y.card) :=
   fillings_card_le_two_pow (cubeAdj d L) Y H.holes (3 ^ d) (fun x => cubeAdj_degree_le d L x) hdisj hnoedges hYne hholes_ne
 
+/-- The discrete modified metric is bounded above by the bulk tree length (card X - 1) for connected X. -/
+theorem discreteModifiedMetric_le_bulkTreeLength {d L : ℕ} (H : HoleFamily d L) (X : Finset (Cube d L))
+    (hconn : cubeConnected X) :
+    discreteModifiedMetric H X ≤ X.card - 1 := by
+  classical
+  have h_ex : ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S :=
+    ⟨X, skeleton_subset H X, by rfl, hconn⟩
+  have h_met : discreteModifiedMetric H X = sInf {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
+    unfold discreteModifiedMetric
+    rw [dif_pos h_ex]
+  rw [h_met]
+  apply Nat.sInf_le
+  simp only [Set.mem_setOf_eq]
+  refine ⟨X, skeleton_subset H X, by rfl, hconn, rfl⟩
+
+/-- Skeletal monotonicity of the discrete modified metric: a larger skeleton implies a larger metric. -/
+theorem discreteModifiedMetric_mono_skeleton {d L : ℕ} (H₁ H₂ : HoleFamily d L) (X : Finset (Cube d L))
+    (hskel : skeleton H₁ X ⊆ skeleton H₂ X) (hconn : cubeConnected X) :
+    discreteModifiedMetric H₁ X ≤ discreteModifiedMetric H₂ X := by
+  classical
+  have h_ex₁ : ∃ S : Finset (Cube d L), skeleton H₁ X ⊆ S ∧ S ⊆ X ∧ cubeConnected S :=
+    ⟨X, skeleton_subset H₁ X, by rfl, hconn⟩
+  have h_ex₂ : ∃ S : Finset (Cube d L), skeleton H₂ X ⊆ S ∧ S ⊆ X ∧ cubeConnected S :=
+    ⟨X, skeleton_subset H₂ X, by rfl, hconn⟩
+  have h_met₁ : discreteModifiedMetric H₁ X = sInf {n | ∃ S : Finset (Cube d L), skeleton H₁ X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
+    unfold discreteModifiedMetric
+    rw [dif_pos h_ex₁]
+  have h_met₂ : discreteModifiedMetric H₂ X = sInf {n | ∃ S : Finset (Cube d L), skeleton H₂ X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
+    unfold discreteModifiedMetric
+    rw [dif_pos h_ex₂]
+  rw [h_met₁, h_met₂]
+  have h_ne : {n | ∃ S : Finset (Cube d L), skeleton H₂ X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n}.Nonempty :=
+    ⟨X.card - 1, X, skeleton_subset H₂ X, by rfl, hconn, rfl⟩
+  have h_mem := Nat.sInf_mem h_ne
+  apply Nat.sInf_le
+  simp only [Set.mem_setOf_eq] at h_mem ⊢
+  rcases h_mem with ⟨S, hS_skel, hS_sub, hS_conn, h_eq⟩
+  refine ⟨S, hskel.trans hS_skel, hS_sub, hS_conn, h_eq⟩
+
+/-- Hole monotonicity of the discrete modified metric: more holes imply a smaller metric. -/
+theorem discreteModifiedMetric_mono_holes {d L : ℕ} (H₁ H₂ : HoleFamily d L) (hH : H₁.holes ⊆ H₂.holes)
+    (X : Finset (Cube d L)) (hconn : cubeConnected X) :
+    discreteModifiedMetric H₂ X ≤ discreteModifiedMetric H₁ X := by
+  classical
+  have h_mono : skeleton H₂ X ⊆ skeleton H₁ X := by
+    intro z hz
+    simp only [skeleton, mem_filter] at hz ⊢
+    refine ⟨hz.1, ?_⟩
+    intro ⟨H₀, hH₀, hzH₀⟩
+    apply hz.2
+    exact ⟨H₀, hH hH₀, hzH₀⟩
+  have h_ex₁ : ∃ S : Finset (Cube d L), skeleton H₁ X ⊆ S ∧ S ⊆ X ∧ cubeConnected S :=
+    ⟨X, skeleton_subset H₁ X, by rfl, hconn⟩
+  have h_ex₂ : ∃ S : Finset (Cube d L), skeleton H₂ X ⊆ S ∧ S ⊆ X ∧ cubeConnected S :=
+    ⟨X, skeleton_subset H₂ X, by rfl, hconn⟩
+  have h_met₁ : discreteModifiedMetric H₁ X = sInf {n | ∃ S : Finset (Cube d L), skeleton H₁ X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
+    unfold discreteModifiedMetric
+    rw [dif_pos h_ex₁]
+  have h_met₂ : discreteModifiedMetric H₂ X = sInf {n | ∃ S : Finset (Cube d L), skeleton H₂ X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
+    unfold discreteModifiedMetric
+    rw [dif_pos h_ex₂]
+  rw [h_met₁, h_met₂]
+  have h_ne : {n | ∃ S : Finset (Cube d L), skeleton H₁ X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n}.Nonempty :=
+    ⟨X.card - 1, X, skeleton_subset H₁ X, by rfl, hconn, rfl⟩
+  have h_mem := Nat.sInf_mem h_ne
+  apply Nat.sInf_le
+  simp only [Set.mem_setOf_eq] at h_mem ⊢
+  rcases h_mem with ⟨S, hS_skel, hS_sub, hS_conn, h_eq⟩
+  refine ⟨S, ?_, hS_sub, hS_conn, h_eq⟩
+  exact h_mono.trans hS_skel
+
 end YangMills.RG
+
