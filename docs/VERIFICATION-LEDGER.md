@@ -3663,4 +3663,19 @@ We bounded the filling multiplicity term using `cube_fillings_card_le_two_pow` (
 **Honest scope.** This is purely combinatorial lattice geometry, proving that the skeleton-growth series converges under sufficient exponential suppression. It is a preliminary combinatorial estimate, not the modified-metric summability itself. Clay distance **~0% (<0.1%), unchanged**.
 
 
+## Addendum 93 (2026-06-18, **discrete modified-metric summability**
+`YangMills.RG.discreteModifiedMetric_weight_summable`; core 8264)
 
+**Build:** green (the genuine modified-metric summability theorem added to `ModifiedMetric.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum proves the genuine discrete modified-metric summability on the cube lattice, closing **P2b-ii-d**:
+
+* **`discreteModifiedMetric_weight_summable`** — Proves that the polymer sum over all connected, hole-respecting polymers $X$ containing a fixed root $r$ in their skeleton, weighted by the exponential metric decay $q^{d_M(X, \bmod H) + 1}$, converges and is bounded by a volume-independent constant:
+  $$\sum'_{X : r \in \text{skel } X} q^{d_M(X, \bmod H) + 1} \leq (1 - 3^{2d} \cdot q \cdot 2^{3^d + 1})^{-1}$$
+  under the coordination entropy-suppression condition.
+
+**How compilation was resolved.**
+We grouped the polymer sum fiberwise over their connected minimal spanning sets $S$ using `exists_minimal_spanning_set` to associate each polymer $X$ with a spanning set $S$ of cardinality $d_M(X, \bmod H) + 1$. By partitioning the sum via `Finset.sum_fiberwise_of_maps_to`, the multiplicity of polymers matching a given spanning set $S$ was bounded by the powerset of $S$ times the maximum fillings of each subset, yielding $2^{(3^d + 1)|S|}$. The resulting sum was then majorized by the standard lattice polymer sum with base $q' = q \cdot 2^{3^d + 1}$ and bounded using `cube_polymer_summable`. All summability premises were discharged via `Summable.of_finite` over the finite torus.
+
+**Honest scope.** This is purely combinatorial lattice geometry, establishing the discrete modified-metric summability on the cube lattice. It does not resolve the analytic Gaussian suppressions of the holes or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.

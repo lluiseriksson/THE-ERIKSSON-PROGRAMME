@@ -1,8 +1,8 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-18
-(`feat(rg): rename theorem to skeleton_fillings_weight_summable and reopen P2b-ii-d`,
-ledger Addendum 92).
+(`feat(rg): prove genuine discrete modified-metric summability (Phase 3 / P2b-ii-d closed)`,
+ ledger Addendum 93).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -44,11 +44,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * marginal-coupling summability and conditional UV mass-gap assembly;
 * exponential-decay kernel calculus, Schur bounds, PSD kernel interface,
   Gaussian MGF bounds;
-* lattice animal counting, cube adjacency, and shell-growth summability.
+* lattice animal counting, cube adjacency, and shell-growth summability;
+* polymer-with-holes multi-hole combinatorics, multiplicity bounds, and discrete modified-metric summability.
 
-The latest theorem is `YangMills.RG.lattice_exp_sum_le_geometric`: shell growth
-`# {z : ell z = k} <= C*r^k` plus `r*exp(-sigma) < 1` gives the closed
-summability constant `C*(1-r*exp(-sigma))^-1`.
+The latest theorem is `YangMills.RG.discreteModifiedMetric_weight_summable`: polymer sum over connected, hole-respecting polymers containing $r$ in their skeleton weighted by $q^{d_M(X) + 1}$ is bounded volume-uniformly by $(1 - 3^{2d} \cdot q \cdot 2^{3^d + 1})^{-1}$ when $3^{2d} \cdot q \cdot 2^{3^d + 1} < 1$.
 
 ## Live Frontier
 

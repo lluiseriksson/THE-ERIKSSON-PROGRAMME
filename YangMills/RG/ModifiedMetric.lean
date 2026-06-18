@@ -710,6 +710,28 @@ theorem discreteModifiedMetric_mono_holes {d L : ℕ} (H₁ H₂ : HoleFamily d 
   refine ⟨S, ?_, hS_sub, hS_conn, h_eq⟩
   exact h_mono.trans hS_skel
 
+/-- For a connected polymer X with r in its skeleton, there exists a minimal connected
+    spanning set S containing r and the skeleton, whose size is exactly the modified metric plus 1. -/
+lemma exists_minimal_spanning_set {d L : ℕ} (H : HoleFamily d L) (X : Finset (Cube d L)) (r : Cube d L)
+    (hr : r ∈ skeleton H X) (hconn : cubeConnected X) :
+    ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ r ∈ S ∧ S.card = discreteModifiedMetric H X + 1 := by
+  classical
+  have h_ex : ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S :=
+    ⟨X, skeleton_subset H X, by rfl, hconn⟩
+  have h_metric : discreteModifiedMetric H X = sInf {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
+    unfold discreteModifiedMetric
+    rw [dif_pos h_ex]
+  have h_ne : {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n}.Nonempty :=
+    ⟨X.card - 1, X, skeleton_subset H X, by rfl, hconn, rfl⟩
+  have h_mem := Nat.sInf_mem h_ne
+  rw [← h_metric] at h_mem
+  rcases h_mem with ⟨S, hS_skel, hS_sub, hS_conn, h_eq⟩
+  have hrS : r ∈ S := hS_skel hr
+  have hS_card : S.card ≥ 1 := Finset.card_pos.mpr ⟨r, hrS⟩
+  refine ⟨S, hS_skel, hS_sub, hS_conn, hrS, ?_⟩
+  omega
+
+
 /-- **Skeleton-Fillings Multiplicity Bound** (Dimock Appendix E, preliminary combinatorial estimate for Lemma E.3).
     The polymer sum over all connected skeletons Y containing a fixed root r,
     weighted by the filling multiplicity and the exponential metric decay,
@@ -757,6 +779,155 @@ theorem skeleton_fillings_weight_summable {d L : ℕ} [NeZero L]
     Summable.of_finite
   have h_tsum := Summable.tsum_le_tsum h_term_le hf_summable hg_summable
   exact h_tsum.trans h_sum_le
+
+/-- **Discrete Modified-Metric Summability** (Dimock Appendix E, Lemma E.3).
+    The polymer sum over all connected, hole-respecting polymers X containing a fixed root r in their skeleton,
+    weighted by the exponential metric decay q^(d_M(X) + 1), converges and is bounded by a volume-independent constant
+    under the coordination entropy-suppression condition. -/
+theorem discreteModifiedMetric_weight_summable {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (r : Cube d L) (q : ℝ)
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hq0 : 0 ≤ q)
+    (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)) < 1) :
+    ∑' X : { X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X },
+        q ^ (discreteModifiedMetric H (X : Finset (Cube d L)) + 1)
+      ≤ (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹ := by
+  classical
+  let q' := q * 2 ^ (3 ^ d + 1)
+  have hq'0 : 0 ≤ q' := by
+    dsimp [q']
+    positivity
+  have h_sum_le := cube_polymer_summable d L r hq'0 hCq
+  have h_S : ∀ X : { X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X },
+      ∃ S : { S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w },
+        skeleton H X.1 ⊆ S.1 ∧ S.1 ⊆ X.1 ∧ S.1.card = discreteModifiedMetric H X.1 + 1 := by
+    intro X
+    obtain ⟨S, hS_skel, hS_sub, hS_conn, hrS, hS_card⟩ := exists_minimal_spanning_set H X.1 r X.2.1 X.2.2.1
+    refine ⟨⟨S, hrS, ?_⟩, hS_skel, hS_sub, hS_card⟩
+    intro x hx
+    obtain ⟨w, hw⟩ := hS_conn r hrS x hx
+    exact ⟨w, hw⟩
+  let S_fn := fun X : { X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X } =>
+    Classical.choose (h_S X)
+  have S_spec : ∀ X, skeleton H X.1 ⊆ (S_fn X).1 ∧ (S_fn X).1 ⊆ X.1 ∧ (S_fn X).1.card = discreteModifiedMetric H X.1 + 1 := by
+    intro X
+    exact Classical.choose_spec (h_S X)
+  have h_tsum_eq : ∑' X : { X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X },
+      q ^ (discreteModifiedMetric H X.1 + 1) =
+      ∑ X : { X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X },
+        q ^ (discreteModifiedMetric H X.1 + 1) := by
+    rw [tsum_fintype]
+  have h_fiber : ∑ X : { X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X },
+      q ^ (discreteModifiedMetric H X.1 + 1) =
+      ∑ S : { S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w },
+        ∑ X ∈ Finset.filter (fun X => S_fn X = S) Finset.univ,
+          q ^ (discreteModifiedMetric H X.1 + 1) := by
+    rw [← Finset.sum_fiberwise_of_maps_to (fun X _ => Finset.mem_univ (S_fn X))]
+  have h_inner_eq : ∀ S : { S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w },
+      ∑ X ∈ Finset.filter (fun X => S_fn X = S) Finset.univ, q ^ (discreteModifiedMetric H X.1 + 1) =
+      ((Finset.filter (fun X => S_fn X = S) Finset.univ).card : ℝ) * q ^ S.1.card := by
+    intro S
+    have h_const : ∀ X ∈ Finset.filter (fun X => S_fn X = S) Finset.univ, q ^ (discreteModifiedMetric H X.1 + 1) = q ^ S.1.card := by
+      intro X hX
+      rw [mem_filter] at hX
+      have hS_eq : S_fn X = S := hX.2
+      have hS_card := (S_spec X).2.2
+      rw [hS_eq] at hS_card
+      rw [hS_card]
+    rw [Finset.sum_congr rfl h_const, Finset.sum_const, nsmul_eq_mul]
+  have h_card_le : ∀ S : { S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w },
+      ((Finset.filter (fun X => S_fn X = S) Finset.univ).card : ℝ) ≤ 2 ^ ((3 ^ d + 1) * S.1.card) := by
+    intro S
+    let Y_set := (powerset S.1).filter (fun Y => r ∈ Y)
+    have h_subset : (Finset.filter (fun X => S_fn X = S) Finset.univ).map ⟨fun X => X.1, Subtype.val_injective⟩ ⊆
+        Y_set.biUnion (fun Y => admissibleFillings (cubeAdj d L) Y H.holes) := by
+      intro X hX
+      rw [mem_map] at hX
+      rcases hX with ⟨X_orig, hX_orig, rfl⟩
+      rw [mem_filter] at hX_orig
+      have hS_eq : S_fn X_orig = S := hX_orig.2
+      have h_spec := S_spec X_orig
+      rw [hS_eq] at h_spec
+      rw [mem_biUnion]
+      refine ⟨skeleton H X_orig.1, ?_, ?_⟩
+      · rw [mem_filter, mem_powerset]
+        refine ⟨h_spec.1, X_orig.2.1⟩
+      · rw [admissibleFillings, mem_filter]
+        refine ⟨mem_univ _, X_orig.2.2.1, X_orig.2.2.2, rfl⟩
+    have h_card_map : (Finset.filter (fun X => S_fn X = S) Finset.univ).card =
+        ((Finset.filter (fun X => S_fn X = S) Finset.univ).map ⟨fun X => X.1, Subtype.val_injective⟩).card := by
+      rw [card_map]
+    have h_biunion_card : (Y_set.biUnion (fun Y => admissibleFillings (cubeAdj d L) Y H.holes)).card ≤
+        ∑ Y ∈ Y_set, (admissibleFillings (cubeAdj d L) Y H.holes).card :=
+      card_biUnion_le
+    have h_sum_fillings_le : ∑ Y ∈ Y_set, (admissibleFillings (cubeAdj d L) Y H.holes).card ≤
+        ∑ Y ∈ Y_set, 2 ^ (3 ^ d * S.1.card) := by
+      apply Finset.sum_le_sum
+      intro Y hY
+      rw [mem_filter, mem_powerset] at hY
+      have hYne : Y.Nonempty := ⟨r, hY.2⟩
+      have h_fillings := cube_fillings_card_le_two_pow d L Y H hdisj hnoedges hYne hholes_ne
+      have h_card_mono : Y.card ≤ S.1.card := card_le_card hY.1
+      have h_pow_mono : 3 ^ d * Y.card ≤ 3 ^ d * S.1.card := by
+        gcongr
+      have h_two_pow : 2 ^ (3 ^ d * Y.card) ≤ 2 ^ (3 ^ d * S.1.card) :=
+        Nat.pow_le_pow_right (by decide) h_pow_mono
+      exact h_fillings.trans h_two_pow
+    have h_sum_const : ∑ Y ∈ Y_set, 2 ^ (3 ^ d * S.1.card) = Y_set.card * 2 ^ (3 ^ d * S.1.card) :=
+      sum_const _
+    have h_Y_set_card : Y_set.card ≤ 2 ^ S.1.card := by
+      dsimp [Y_set]
+      have : (powerset S.1).filter (fun Y => r ∈ Y) ⊆ powerset S.1 := filter_subset _ _
+      have h_card := card_le_card this
+      rw [card_powerset] at h_card
+      exact h_card
+    have h_total_le : Y_set.card * 2 ^ (3 ^ d * S.1.card) ≤ 2 ^ S.1.card * 2 ^ (3 ^ d * S.1.card) := by
+      gcongr
+    have h_exponents : 2 ^ S.1.card * 2 ^ (3 ^ d * S.1.card) = 2 ^ ((3 ^ d + 1) * S.1.card) := by
+      rw [← pow_add]
+      congr 1
+      ring
+    have h_card_le_nat : (Finset.filter (fun X => S_fn X = S) Finset.univ).card ≤ 2 ^ ((3 ^ d + 1) * S.1.card) := by
+      have h1 : (Finset.filter (fun X => S_fn X = S) Finset.univ).card ≤ (Y_set.biUnion (fun Y => admissibleFillings (cubeAdj d L) Y H.holes)).card := by
+        rw [h_card_map]
+        exact card_le_card h_subset
+      exact h1.trans (h_biunion_card.trans (h_sum_fillings_le.trans (h_sum_const ▸ h_total_le.trans_eq h_exponents)))
+    exact_mod_cast h_card_le_nat
+  have h_final_term_le : ∀ S : { S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w },
+      ((Finset.filter (fun X => S_fn X = S) Finset.univ).card : ℝ) * q ^ S.1.card ≤ q' ^ S.1.card := by
+    intro S
+    have h_le := h_card_le S
+    have h_pos_q : 0 ≤ q ^ S.1.card := by positivity
+    have h_mul := mul_le_mul_of_nonneg_right h_le h_pos_q
+    have h_geom : (2 ^ ((3 ^ d + 1) * S.1.card) : ℝ) * q ^ S.1.card = q' ^ S.1.card := by
+      dsimp [q']
+      rw [pow_mul, ← mul_pow, mul_comm]
+    exact h_mul.trans (h_geom ▸ le_refl _)
+  have h_sum_fiber_le : ∑ S : { S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w },
+      ((Finset.filter (fun X => S_fn X = S) Finset.univ).card : ℝ) * q ^ S.1.card ≤
+      (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹ := by
+    have hf_summable : Summable (fun S => ((Finset.filter (fun X => S_fn X = S) Finset.univ).card : ℝ) * q ^ S.1.card) :=
+      Summable.of_finite
+    have hg_summable : Summable (fun S : { S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w } => q' ^ S.1.card) :=
+      Summable.of_finite
+    have h_tsum := Summable.tsum_le_tsum h_final_term_le hf_summable hg_summable
+    have h_tsum_eq_sum : ∑ S : { S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w },
+        ((Finset.filter (fun X => S_fn X = S) Finset.univ).card : ℝ) * q ^ S.1.card =
+        ∑' S : { S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w },
+          ((Finset.filter (fun X => S_fn X = S) Finset.univ).card : ℝ) * q ^ S.1.card := by
+      rw [tsum_fintype]
+    rw [h_tsum_eq_sum]
+    exact h_tsum.trans h_sum_le
+  rw [h_tsum_eq, h_fiber]
+  have h_congr : ∑ S : { S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w },
+      ∑ X ∈ Finset.filter (fun X => S_fn X = S) Finset.univ, q ^ (discreteModifiedMetric H X.1 + 1) =
+      ∑ S : { S : Finset (Cube d L) // r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w },
+        ((Finset.filter (fun X => S_fn X = S) Finset.univ).card : ℝ) * q ^ S.1.card := by
+    refine Finset.sum_congr rfl (fun S _ => h_inner_eq S)
+  rw [h_congr]
+  exact h_sum_fiber_le
 
 end YangMills.RG
 
