@@ -101,13 +101,21 @@ lemma skeleton_subset {d L : ℕ} (H : HoleFamily d L) (X : Finset (Cube d L)) :
   simp only [skeleton, mem_filter] at hz
   exact hz.1
 
+/-- A set of vertices `S` is **walk-connected** in a graph `G`. -/
+def walkConnected {V : Type*} (G : SimpleGraph V) (S : Finset V) : Prop :=
+  ∀ x ∈ S, ∀ y ∈ S, ∃ w : G.Walk x y, ∀ v ∈ w.support, v ∈ S
+
+/-- There are no adjacency edges between different holes in the hole collection. -/
+def noEdgesBetweenHoles {V : Type*} (G : SimpleGraph V) (holes : Finset (Finset V)) : Prop :=
+  ∀ H₁ ∈ holes, ∀ H₂ ∈ holes, H₁ ≠ H₂ → ∀ x ∈ H₁, ∀ y ∈ H₂, ¬ G.Adj x y
+
 /-- A cube-set `S` is **walk-connected** in `cubeAdj` (the walk-based form of
 connectivity used throughout `RG/AnimalTour.lean`): every vertex of `S` is
 reachable from every other by a `cubeAdj`-walk staying inside `S`.  This is
 the self-contained form of "connected polymer" avoiding the `Set`-vs-`Finset`
 `SimpleGraph.Connected` API. -/
 def cubeConnected {d L : ℕ} (S : Finset (Cube d L)) : Prop :=
-  ∀ x ∈ S, ∀ y ∈ S, ∃ w : (cubeAdj d L).Walk x y, ∀ v ∈ w.support, v ∈ S
+  walkConnected (cubeAdj d L) S
 
 /-- **Walk-bridge lemma (the elementary frontier-edge argument).**  If a walk
 from `z` to `w` stays inside `A ∪ B`, starts at `z ∈ A \ B` and ends at
@@ -171,5 +179,232 @@ theorem absorbedHole_touches_skeleton_single {d L : ℕ} [NeZero L]
   obtain ⟨a, haH₀, b, hbY, hab⟩ :=
     walk_crosses_frontier (cubeAdj d L) H₀ Y p hp' hz hznotY hw hwH₀
   exact ⟨a, haH₀, b, hbY, hab⟩
+
+/-- **Absorbed-hole touching (multi-hole case) — extension of Dimock Appendix E Lemma E.3.**
+If a polymer is connected and contains a set of disjoint holes with no edges between them,
+then every absorbed hole must touch the skeleton. -/
+theorem absorbedHole_touches_skeleton_multi {V : Type*} [DecidableEq V] (G : SimpleGraph V)
+    (Y : Finset V) (holes : Finset (Finset V)) (H_absorbed : Finset (Finset V))
+    (hsub : H_absorbed ⊆ holes)
+    (hnoedges : noEdgesBetweenHoles G holes)
+    (hdisj_Y : ∀ H₀ ∈ H_absorbed, Disjoint Y H₀)
+    (hYne : Y.Nonempty) (H₀ : Finset V) (hH₀mem : H₀ ∈ H_absorbed) (hH₀ne : H₀.Nonempty)
+    (hconn : walkConnected G (Y ∪ H_absorbed.biUnion id)) :
+    ∃ z ∈ H₀, ∃ w ∈ Y, G.Adj z w := by
+  obtain ⟨z, hz⟩ := hH₀ne
+  obtain ⟨w, hw⟩ := hYne
+  have hzX : z ∈ Y ∪ H_absorbed.biUnion id := by
+    apply Finset.mem_union.mpr
+    right
+    rw [Finset.mem_biUnion]
+    exact ⟨H₀, hH₀mem, hz⟩
+  have hwX : w ∈ Y ∪ H_absorbed.biUnion id := by
+    apply Finset.mem_union.mpr
+    left
+    exact hw
+  obtain ⟨p, hp⟩ := hconn z hzX w hwX
+  let B := (Y ∪ H_absorbed.biUnion id) \ H₀
+  have hzA : z ∈ H₀ := hz
+  have hzB : z ∉ B := by
+    intro h
+    rw [Finset.mem_sdiff] at h
+    exact h.2 hz
+  have hwB : w ∈ B := by
+    rw [Finset.mem_sdiff]
+    refine ⟨hwX, ?_⟩
+    intro hwH₀
+    have hdj := Finset.disjoint_iff_ne.mp (hdisj_Y H₀ hH₀mem)
+    exact absurd rfl (hdj w hw w hwH₀)
+  have hwA : w ∉ H₀ := by
+    intro h
+    have hdj := Finset.disjoint_iff_ne.mp (hdisj_Y H₀ hH₀mem)
+    exact absurd rfl (hdj w hw w h)
+  have hAB_eq : H₀ ∪ B = Y ∪ H_absorbed.biUnion id := by
+    ext x
+    simp only [B, Finset.mem_union, Finset.mem_sdiff, Finset.mem_biUnion, id_eq]
+    by_cases hx : x ∈ H₀
+    · simp only [hx, true_or, not_true, and_false, true_iff]
+      right
+      exact ⟨H₀, hH₀mem, hx⟩
+    · simp only [hx, false_or, not_false_iff, and_true]
+  have hpB : ∀ v ∈ p.support, v ∈ H₀ ∪ B := by
+    intro v hv
+    rw [hAB_eq]
+    exact hp v hv
+  obtain ⟨a, haH₀, b, hbB, hab⟩ := walk_crosses_frontier G H₀ B p hpB hzA hzB hwB hwA
+  rw [Finset.mem_sdiff, Finset.mem_union, Finset.mem_biUnion] at hbB
+  rcases hbB.1 with hbY | ⟨H₁, hH₁mem, hbH₁⟩
+  · exact ⟨a, haH₀, b, hbY, hab⟩
+  · have hneq : H₀ ≠ H₁ := by
+      rintro rfl
+      exact hbB.2 hbH₁
+    have hH₀holes : H₀ ∈ holes := hsub hH₀mem
+    have hH₁holes : H₁ ∈ holes := hsub hH₁mem
+    have hno := hnoedges H₀ hH₀holes H₁ hH₁holes hneq a haH₀ b hbH₁
+    exfalso
+    exact hno hab
+
+/-- The set of holes absorbed by a polymer `X`. -/
+def absorbedHoles {V : Type*} [DecidableEq V] (holes : Finset (Finset V)) (X : Finset V) : Finset (Finset V) :=
+  holes.filter (· ⊆ X)
+
+/-- If `X` respects the hole family, it is the union of the skeleton and the absorbed holes. -/
+lemma eq_union_absorbed {V : Type*} [DecidableEq V] (holes : Finset (Finset V)) (X : Finset V)
+    (hresp : ∀ H₀ ∈ holes, H₀ ⊆ X ∨ Disjoint H₀ X) :
+    X = (X.filter (fun z => ¬ ∃ H₀ ∈ holes, z ∈ H₀)) ∪ (absorbedHoles holes X).biUnion id := by
+  ext x
+  simp only [absorbedHoles, Finset.mem_union, Finset.mem_filter, Finset.mem_biUnion, id_eq]
+  constructor
+  · intro hxX
+    by_cases hxH : ∃ H₀ ∈ holes, x ∈ H₀
+    · right
+      rcases hxH with ⟨H₀, hH₀, hxH₀⟩
+      refine ⟨H₀, ⟨hH₀, ?_⟩, hxH₀⟩
+      have hresp₀ := hresp H₀ hH₀
+      rcases hresp₀ with hsub | hdj
+      · exact hsub
+      · have h_not_dj : ¬ Disjoint H₀ X := by
+          rw [disjoint_iff_ne]
+          push_neg
+          exact ⟨x, hxH₀, x, hxX, rfl⟩
+        exact absurd hdj h_not_dj
+    · left
+      refine ⟨hxX, hxH⟩
+  · rintro (⟨hxX, _⟩ | ⟨H₀, ⟨_, hsub⟩, hxH₀⟩)
+    · exact hxX
+    · exact hsub hxH₀
+
+/-- The holes in `holes` that touch the skeleton `Y` via a graph edge. -/
+def touchingHoles {V : Type*} [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (Y : Finset V)
+    (holes : Finset (Finset V)) : Finset (Finset V) :=
+  holes.filter (fun (H₀ : Finset V) => ∃ z ∈ H₀, ∃ w ∈ Y, G.Adj z w)
+
+/-- Every absorbed hole in a connected polymer must touch the skeleton. -/
+lemma absorbed_subset_touching {V : Type*} [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (Y : Finset V) (holes : Finset (Finset V)) (X : Finset V)
+    (hresp : ∀ H₀ ∈ holes, H₀ ⊆ X ∨ Disjoint H₀ X)
+    (hskel : Y = X.filter (fun z => ¬ ∃ H₀ ∈ holes, z ∈ H₀))
+    (hnoedges : noEdgesBetweenHoles G holes)
+    (hdisj_Y : ∀ H₀ ∈ holes, Disjoint Y H₀)
+    (hYne : Y.Nonempty) (hholes_ne : ∀ H₀ ∈ holes, H₀.Nonempty)
+    (hconn : walkConnected G X) :
+    absorbedHoles holes X ⊆ touchingHoles G Y holes := by
+  intro H₀ hH₀
+  rw [absorbedHoles] at hH₀
+  have hH₀' : H₀ ∈ holes.filter (· ⊆ X) := hH₀
+  rw [mem_filter] at hH₀'
+  rw [touchingHoles, mem_filter]
+  refine ⟨hH₀'.1, ?_⟩
+  have hH₀ne : H₀.Nonempty := hholes_ne H₀ hH₀'.1
+  have hsub : absorbedHoles holes X ⊆ holes := by
+    intro H hH
+    rw [absorbedHoles] at hH
+    exact (mem_filter.mp hH).1
+  have hH₀mem : H₀ ∈ absorbedHoles holes X := hH₀
+  have hX_eq : X = Y ∪ (absorbedHoles holes X).biUnion id := by
+    rw [hskel]
+    exact eq_union_absorbed holes X hresp
+  have hconn_eq : walkConnected G (Y ∪ (absorbedHoles holes X).biUnion id) := by
+    rw [← hX_eq]
+    exact hconn
+  have hdisj_Y' : ∀ H ∈ absorbedHoles holes X, Disjoint Y H := by
+    intro H hH
+    exact hdisj_Y H (hsub hH)
+  exact absorbedHole_touches_skeleton_multi G Y holes (absorbedHoles holes X) hsub hnoedges hdisj_Y' hYne H₀ hH₀mem hH₀ne hconn_eq
+
+/-- The neighbor pairs of a set `Y` in `G`. -/
+def neighborPairs {V : Type*} [DecidableEq V] [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (Y : Finset V) : Finset (V × V) :=
+  Y.biUnion (fun w => (G.neighborSet w).toFinset.map ⟨fun z => (w, z), fun _ _ h => by injection h⟩)
+
+lemma card_neighborPairs {V : Type*} [DecidableEq V] [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (Y : Finset V) :
+    (neighborPairs G Y).card = ∑ w ∈ Y, G.degree w := by
+  rw [neighborPairs, card_biUnion]
+  · simp only [card_map, Set.toFinset_card, card_neighborSet_eq_degree]
+  · intro x hx y hy hne
+    dsimp [Function.onFun]
+    rw [disjoint_iff_ne]
+    rintro ⟨x1, x2⟩ hx' ⟨y1, y2⟩ hy' h
+    simp only [mem_map, Set.mem_toFinset, Function.Embedding.coeFn_mk] at hx' hy'
+    obtain ⟨a, ha, hx_eq⟩ := hx'
+    obtain ⟨b, hb, hy_eq⟩ := hy'
+    injection hx_eq with hx1 _
+    injection hy_eq with hy1 _
+    injection h with h1 _
+    have h_xy : x = y := by
+      rw [hx1, h1, ← hy1]
+    exact hne h_xy
+
+/-- **Multiplicity Bound (the combinatorial crux of Dimock Lemma E.3).**
+The number of holes that touch `Y` is at most `Δ * |Y|`. Since the holes are disjoint,
+the map from `touchingHoles` to `neighborPairs` is injective, yielding the bound. -/
+theorem touchingHoles_card_le {V : Type*} [DecidableEq V] [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (Y : Finset V) (holes : Finset (Finset V)) (Δ : ℕ)
+    (hdeg : ∀ v, G.degree v ≤ Δ)
+    (hdisj : ∀ H₁ ∈ holes, ∀ H₂ ∈ holes, H₁ ≠ H₂ → Disjoint H₁ H₂) :
+    (touchingHoles G Y holes).card ≤ Δ * Y.card := by
+  classical
+  by_cases hV : Nonempty V
+  · have : Inhabited (V × V) := ⟨(Classical.choice hV, Classical.choice hV)⟩
+    let f (H₀ : Finset V) : V × V :=
+      if h : ∃ (wz : V × V), wz.1 ∈ Y ∧ wz.2 ∈ H₀ ∧ G.Adj wz.2 wz.1 then
+        Classical.choose h
+      else default
+    have h_inj : ∀ H₁ ∈ touchingHoles G Y holes, ∀ H₂ ∈ touchingHoles G Y holes, f H₁ = f H₂ → H₁ = H₂ := by
+      intro H₁ hH₁ H₂ hH₂ hf
+      rw [touchingHoles, mem_filter] at hH₁ hH₂
+      have h1 : ∃ (wz : V × V), wz.1 ∈ Y ∧ wz.2 ∈ H₁ ∧ G.Adj wz.2 wz.1 := by
+        rcases hH₁.2 with ⟨z, hz, w, hw, hadj⟩
+        exact ⟨(w, z), hw, hz, hadj⟩
+      have h2 : ∃ (wz : V × V), wz.1 ∈ Y ∧ wz.2 ∈ H₂ ∧ G.Adj wz.2 wz.1 := by
+        rcases hH₂.2 with ⟨z, hz, w, hw, hadj⟩
+        exact ⟨(w, z), hw, hz, hadj⟩
+      have hf1 : f H₁ = Classical.choose h1 := dif_pos h1
+      have hf2 : f H₂ = Classical.choose h2 := dif_pos h2
+      rw [hf1, hf2] at hf
+      have hc1 := Classical.choose_spec h1
+      have hc2 := Classical.choose_spec h2
+      have h_same : (Classical.choose h1).2 = (Classical.choose h2).2 := by
+        congr 1
+      have h_in_H₂ : (Classical.choose h1).2 ∈ H₂ := by
+        rw [h_same]
+        exact hc2.2.1
+      by_contra h_ne
+      have h_dj := hdisj H₁ hH₁.1 H₂ hH₂.1 h_ne
+      rw [disjoint_iff_ne] at h_dj
+      exact h_dj _ hc1.2.1 _ h_in_H₂ rfl
+    have h_maps : ∀ H₀ ∈ touchingHoles G Y holes, f H₀ ∈ neighborPairs G Y := by
+      intro H₀ hH₀
+      rw [touchingHoles, mem_filter] at hH₀
+      have h1 : ∃ (wz : V × V), wz.1 ∈ Y ∧ wz.2 ∈ H₀ ∧ G.Adj wz.2 wz.1 := by
+        rcases hH₀.2 with ⟨z, hz, w, hw, hadj⟩
+        exact ⟨(w, z), hw, hz, hadj⟩
+      have hf1 : f H₀ = Classical.choose h1 := dif_pos h1
+      rw [hf1]
+      have hc := Classical.choose_spec h1
+      rw [neighborPairs, mem_biUnion]
+      refine ⟨(Classical.choose h1).1, hc.1, ?_⟩
+      rw [mem_map]
+      refine ⟨(Classical.choose h1).2, ?_, ?_⟩
+      · rw [Set.mem_toFinset]
+        exact hc.2.2.symm
+      · rfl
+    have h_le := Finset.card_le_card_of_injOn f h_maps h_inj
+    have h_card := card_neighborPairs G Y
+    have h_sum : ∑ w ∈ Y, G.degree w ≤ Δ * Y.card := by
+      calc ∑ w ∈ Y, G.degree w
+        _ ≤ ∑ w ∈ Y, Δ := sum_le_sum (fun w _ => hdeg w)
+        _ = Y.card * Δ := by simp only [sum_const, nsmul_eq_mul, Nat.cast_id]
+        _ = Δ * Y.card := by rw [mul_comm]
+    omega
+  · have h_empty : touchingHoles G Y holes = ∅ := by
+      ext H₀
+      rw [touchingHoles, mem_filter]
+      simp
+      rintro _ x
+      exact (hV ⟨x⟩).elim
+    rw [h_empty, card_empty]
+    omega
 
 end YangMills.RG

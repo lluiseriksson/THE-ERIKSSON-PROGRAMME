@@ -190,6 +190,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.nearLog_real
 #print axioms YangMills.RG.nearLog_conj
 
-/-! ### The polymer modified metric (brick P2b-i) -/
+/-! ### The polymer modified metric (bricks P2b-i and P2b-ii) -/
 #print axioms YangMills.RG.walk_crosses_frontier
 #print axioms YangMills.RG.absorbedHole_touches_skeleton_single
+#print axioms YangMills.RG.absorbedHole_touches_skeleton_multi
+#print axioms YangMills.RG.touchingHoles_card_le

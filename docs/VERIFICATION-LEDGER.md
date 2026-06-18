@@ -3541,6 +3541,23 @@ This addendum closes the combinatorial core of the polymer-with-holes campaign b
 
 **Honest scope.** This is purely combinatorial lattice geometry, providing the walk-based topological lemma for single-hole absorption (Appendix E, Lemma E.3). It does not resolve any multi-hole configurations or the analytic Gaussian suppressions of the holes. Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 87 (2026-06-18, **multi-hole skeleton touching and multiplicity bounds**
+`YangMills.RG.absorbedHole_touches_skeleton_multi` and `YangMills.RG.touchingHoles_card_le`; core 8164)
+
+**Build:** green (multiplicity bounds and associated theorems added to `ModifiedMetric.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum closes the multi-hole combinatorial bounds of the polymer-with-holes campaign brick **P2b-ii-a**:
+
+* **`absorbedHole_touches_skeleton_multi`** — in a connected polymer with multiple disjoint holes having no adjacency edges between them, every absorbed hole must share a boundary edge with the skeleton.
+* **`touchingHoles_card_le`** — the number of absorbed holes touching the skeleton $Y$ is at most $\Delta \cdot |Y|$, where $\Delta$ is the maximum degree of the adjacency graph.
+
+**How compilation was resolved.**
+1. To ensure all typeclass resolutions remain clean and constructive, we annotated the type parameter `(H₀ : Finset V)` explicitly inside the `touchingHoles` filter predicate. This allowed Lean to constructively synthesize decidability of the bounded existential properties without relying on noncomputable axioms.
+2. In the `card_neighborPairs` proof, the `subst` tactic was bypassed by obtaining elementwise projections from the tuple equality `(x, a) = (x1, x2)` and showing `x = y` through a chain of rewrites (`hx1, h1, ← hy1`), avoiding complex unification issues.
+3. In `touchingHoles_card_le`, we resolved the `Nat.cast` type coercion issue in the sum-majorant inequality by explicitly adding `Nat.cast_id` to the `simp only` list, simplifying the cast term `↑(#Y) * Δ` directly to `#Y * Δ`.
+4. In the empty-vertex case, the contradiction was solved by simplifying the membership predicate to `False` and using `(hV ⟨x⟩).elim` under `¬ Nonempty V`.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces
