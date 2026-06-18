@@ -103,10 +103,7 @@ import YangMills.ClayCore.SchurOffDiagonal
 import YangMills.ClayCore.SchurNormSquared
 import YangMills.ClayCore.SchurDiagPhase
 import YangMills.ClayCore.SchurEntryOrthogonality
--- NOTE: SchurEntryOffDiag bit-rotted against current Mathlib (v4.29):
---   `star_mul` ambiguous, `Filter.EventuallyEq.of_forall` removed, NeZero synthesis.
---   Excluded from the verified core until repaired; not needed by the headline results.
--- import YangMills.ClayCore.SchurEntryOffDiag
+import YangMills.ClayCore.SchurEntryOffDiag
 import YangMills.ClayCore.SchurL25
 import YangMills.ClayCore.SchurPhysicalBridge
 import YangMills.ClayCore.SchurMomentVanishing

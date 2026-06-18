@@ -1,7 +1,8 @@
 # Current State
 
-**Last certified checkpoint:** 2026-06-14, commit `1b20528`
-(`RG: explicit geometric shell summability constant`).
+**Last certified checkpoint:** 2026-06-18
+(`ClayCore: off-diagonal matrix-coefficient vanishing repaired into the core`,
+ledger Addendum 85).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -9,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8262 jobs**.
+* `lake build YangMillsCore` is green at **8263 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree

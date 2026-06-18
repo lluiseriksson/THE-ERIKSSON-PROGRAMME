@@ -3474,6 +3474,58 @@ lake build YangMillsCore
 Build completed successfully (8262 jobs).
 ```
 
+## Addendum 85 (2026-06-18, **off-diagonal matrix-coefficient vanishing
+repaired back into the verified core**
+`YangMills.ClayCore.sunHaarProb_entry_offdiag`; core 8263)
+
+**Build:** green (the bit-rotted `ClayCore/SchurEntryOffDiag.lean`, excluded
+since the 2026-05 cleanup, repaired and re-imported by `YangMillsCore`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+The module states the Schur off-diagonal entry-orthogonality
+**L2.6 step 1b-ii**:
+
+* **`sunHaarProb_entry_offdiag`** — for `i ≠ k`,
+
+      ∫ U, U.val i j * star (U.val k l) ∂(sunHaarProb N) = 0.
+
+  This generalizes the on-diagonal / off-diagonal entry vanishing already in
+  the core (`SchurEntryOrthogonality`, `SchurEntryNAlitySelection`) to
+  *arbitrary* column indices `j, l`: any matrix-coefficient pair with distinct
+  **row** indices has zero Haar mean. This is the row-index half of the
+  Schur-orthogonality structure (node F4 in `HORIZON.md`): together with the
+  N-ality selection rules it is the algebraic engine of the area law's kill
+  mechanism, and a stepping stone toward the full `∫ U_{ij} conj(U_{kl}) =
+  (1/N) δ_{ik} δ_{jl}`.
+
+**What bit-rotted and how it was repaired.** Three Mathlib-v4.29 elaboration
+seams had broken the file:
+
+1. `rw [star_mul]` was ambiguous on `ℂ` (both the `StarMul` reverse-order law
+   `star_mul` and its commutative variant `star_mul'` apply). Repaired by
+   computing the conjugation through the explicit ring endomorphism,
+   `show (starRingEnd ℂ) (a*b) = _` then `(starRingEnd ℂ).map_mul` + `mul_comm`,
+   following the idiom already used in `SchurDiagPhase` (`star_I_mul_ofReal`).
+2. `Filter.EventuallyEq.of_forall` is no longer a public name. Repaired by
+   carrying the invariance through `MeasureTheory.integral_mul_left_eq_self`
+   + `funext` instead of `integral_congr_ae` + `EventuallyEq.of_forall`,
+   following the idiom of `SchurZeroMean.sunHaarProb_trace_complex_integral_zero`.
+3. `sunHaarProb N` requires `[NeZero N]`; the original left it implicit.
+   Repaired by adding `[NeZero N]` to the headline theorem (the auxiliary
+   lemmas need only `Fin N`).
+
+The mathematics is unchanged (left-invariance of Haar against `piAntiSymSU i k`,
+whose phase factor is `exp(I·π) = -1`, forces `I₀ = -I₀`, hence `I₀ = 0`); only
+the proof scripts were hardened against the rename/ambiguity. The module is
+re-imported by `YangMillsCore` (the `NOTE: bit-rotted` guard is removed), the
+build job count incremented **8262 → 8263**, and the headline is wired into
+`oracle_check.lean`.
+
+**Honest scope.** This is lattice-side SU(N) Haar algebra, one step of the
+character-orthogonality programme toward F4 (which itself is downstream of
+Peter–Weyl, still not in Mathlib). It discharges *no* `hRpoly`/§6.3/continuum
+obligation; Clay distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

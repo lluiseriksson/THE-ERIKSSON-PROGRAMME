@@ -20,7 +20,7 @@ Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 
 > **CURRENCY STAMP (2026-06-14).** The "Ground truth as of 2026-05" below is
 > a historical snapshot.  Since then the core advanced substantially (now
-> **8262 jobs**, Mathlib pinned — `REPRODUCIBILITY.md`): the strong-coupling
+> **8263 jobs**, Mathlib pinned — `REPRODUCIBILITY.md`): the strong-coupling
 > **area law** (all four variants) and **IR exponential clustering** are
 > oracle-clean theorems; the **gauge-RG continuum-facing track**
 > (`YangMills/RG/**`, ledger Addenda 23–83) has a theorem-fed

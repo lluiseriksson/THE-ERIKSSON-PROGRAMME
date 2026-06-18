@@ -1,6 +1,6 @@
 # ROADMAP — pushing the boundary toward an unconditional Yang–Mills mass gap
 
-> **STATUS STAMP (2026-06-14, latest).** Core green at **8262 jobs**,
+> **STATUS STAMP (2026-06-18, latest).** Core green at **8263 jobs**,
 > Mathlib pinned (see `REPRODUCIBILITY.md`).  Since this roadmap was first
 > written (2026-06-09) several tracks closed: the area-law track (all four
 > variants — finite-volume/volume-uniform × linearized/exact-activity,
@@ -152,8 +152,10 @@ history of this repo.
   `SUOneDegenerate.lean`).
 - **Laundering** a hard analytic fact into a hypothesis/axiom by dropping its
   premises (the `L·log·L` `sorry`; `docs/phase1-llogl-obstruction.md`).
-- Resting a "green" build on **cached oleans of bit-rotted files** (e.g.
-  `SchurEntryOffDiag.lean`, excluded from the verified core pending repair).
+- Resting a "green" build on **cached oleans of bit-rotted files** (the
+  historical example `SchurEntryOffDiag.lean` is now repaired back into the
+  core — ledger Addendum 85 — but the lesson stands: a module excluded from
+  the import graph silently stops being checked).
 
 ---
 
@@ -169,6 +171,10 @@ history of this repo.
 1. **Repair `SchurEntryOffDiag.lean`** against current Mathlib (`star_mul`
    disambiguation, `Filter.EventuallyEq.of_forall` rename, `NeZero` synthesis), or
    re-derive its content; then re-add it to `YangMillsCore`. *(Hygiene, low risk.)*
+   — **DONE (2026-06-18, ledger Addendum 85).** The off-diagonal entry
+   orthogonality `∫ U_{ij}·star(U_{kl}) = 0` for `i ≠ k` (L2.6 step 1b-ii) is
+   repaired and re-imported by `YangMillsCore`; core now **8263 jobs**,
+   oracle `[propext, Classical.choice, Quot.sound]`.
 2. **Sharp second moment** `∫|tr U|² = 1` for SU(2) via the Weyl integration
    formula. First genuinely *quantitative* Schur fact; base case of M1. *(Medium.)*
 3. **`Weingarten.lean`** — U(N) Haar polynomial integrals in closed form for small

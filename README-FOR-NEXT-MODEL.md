@@ -11,7 +11,7 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 ## Live snapshot (2026-06-14)
 
 Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
-handoff below.  The verified core is green at **8262 jobs**, with Mathlib
+handoff below.  The verified core is green at **8263 jobs**, with Mathlib
 pinned and every headline oracle-clean at
 `[propext, Classical.choice, Quot.sound]`.
 
