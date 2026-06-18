@@ -3607,3 +3607,22 @@ This addendum formalises the polymer modified metric definition and its basic co
 We used `Nat.sInf_mem` to extract the minimal connected vertex set $S$ spanning the skeleton, and verified that its card is related to the modified metric. For `modifiedMetric_empty_holes`, we showed that when holes are empty, the set of connected sets containing the skeleton and contained in $X$ is the singleton $\{X\}$. We then proved that the `sInf` of a singleton $\{x\}$ equals $x$ by utilizing `Nat.sInf_mem` and `Set.mem_singleton_iff`.
 
 **Honest scope.** This is purely combinatorial lattice geometry, defining the modified metric and its skeleton cardinality bound. It does not resolve the analytic Gaussian suppressions of the holes required for full summability. Clay distance **~0% (<0.1%), unchanged**.
+
+
+## Addendum 90 (2026-06-18, **multi-hole polymer fillings multiplicity bounds**
+`YangMills.RG.fillings_card_le_two_pow` and `YangMills.RG.cube_fillings_card_le_two_pow`; core 8264)
+
+**Build:** green (fillings bounds added to `ModifiedMetric.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum completes the multi-hole polymer multiplicity bounds:
+
+* **`admissibleFillings`** — Defines the set of connected, hole-respecting polymers with a fixed skeleton Y.
+* **`fillings_card_le_two_pow`** — Proves that the number of admissible fillings is bounded by $2^{\Delta \cdot |Y|}$.
+* **`cube_fillings_card_le_two_pow`** — Proves the corresponding $2^{3^d \cdot |Y|}$ bound on the d-dimensional cube lattice.
+
+**How compilation was resolved.**
+We defined the injection from admissible fillings to subsets of touching holes using `absorbedHoles`. By proving injectivity of this mapping (`admissibleFillings_inj`) and leveraging the cardinality of the powerset, we bounded the number of fillings by $2^{|\text{touching holes}|}$ and combined it with the touching holes cardinality bound `touchingHoles_card_le` to yield $2^{\Delta \cdot |Y|}$.
+
+**Honest scope.** This is purely combinatorial lattice geometry, bounding the number of polymers corresponding to a skeleton. Clay distance **~0% (<0.1%), unchanged**.
+

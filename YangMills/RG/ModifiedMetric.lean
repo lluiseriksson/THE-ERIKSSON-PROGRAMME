@@ -563,4 +563,80 @@ theorem discreteModifiedMetric_empty_holes {d L : ℕ} (H : HoleFamily d L) (hH 
   have h_mem : sInf ({X.card - 1} : Set ℕ) ∈ ({X.card - 1} : Set ℕ) := Nat.sInf_mem ⟨X.card - 1, Set.mem_singleton _⟩
   exact Set.mem_singleton_iff.mp h_mem
 
+/-- The family of connected, hole-respecting polymers with skeleton Y. -/
+noncomputable def admissibleFillings {V : Type*} [DecidableEq V] [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (Y : Finset V) (holes : Finset (Finset V)) : Finset (Finset V) := by
+  classical
+  exact Finset.univ.filter (fun X =>
+    walkConnected G X ∧
+    (∀ H₀ ∈ holes, H₀ ⊆ X ∨ Disjoint H₀ X) ∧
+    X.filter (fun z => ¬ ∃ H₀ ∈ holes, z ∈ H₀) = Y)
+
+lemma skeleton_disjoint_absorbed {V : Type*} [DecidableEq V] (holes : Finset (Finset V)) (X : Finset V)
+    (H₀ : Finset V) (hH₀ : H₀ ∈ absorbedHoles holes X) :
+    Disjoint (X.filter (fun z => ¬ ∃ H₀ ∈ holes, z ∈ H₀)) H₀ := by
+  rw [disjoint_iff_ne]
+  rintro x hx y hy rfl
+  rw [mem_filter] at hx
+  apply hx.2
+  exact ⟨H₀, (mem_filter.mp hH₀).1, hy⟩
+
+lemma admissibleFillings_inj {V : Type*} [DecidableEq V] [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (Y : Finset V) (holes : Finset (Finset V)) (X₁ X₂ : Finset V)
+    (hX₁ : X₁ ∈ admissibleFillings G Y holes) (hX₂ : X₂ ∈ admissibleFillings G Y holes)
+    (h_eq : absorbedHoles holes X₁ = absorbedHoles holes X₂) :
+    X₁ = X₂ := by
+  classical
+  rw [admissibleFillings, mem_filter] at hX₁ hX₂
+  have h_eq1 := eq_union_absorbed holes X₁ hX₁.2.2.1
+  have h_eq2 := eq_union_absorbed holes X₂ hX₂.2.2.1
+  rw [hX₁.2.2.2] at h_eq1
+  rw [hX₂.2.2.2] at h_eq2
+  rw [h_eq1, h_eq2, h_eq]
+
+/-- **Multi-hole Polymer Multiplicity Bound** (Dimock Appendix E, Lemma E.3).
+    The number of connected, hole-respecting polymers X with a fixed skeleton Y
+    is bounded by 2^(Δ * |Y|). -/
+theorem fillings_card_le_two_pow {V : Type*} [DecidableEq V] [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (Y : Finset V) (holes : Finset (Finset V)) (Δ : ℕ)
+    (hdeg : ∀ v, G.degree v ≤ Δ)
+    (hdisj : ∀ H₁ ∈ holes, ∀ H₂ ∈ holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles G holes)
+    (hYne : Y.Nonempty)
+    (hholes_ne : ∀ H₀ ∈ holes, H₀.Nonempty) :
+    (admissibleFillings G Y holes).card ≤ 2 ^ (Δ * Y.card) := by
+  classical
+  have h_maps : ∀ X ∈ admissibleFillings G Y holes, absorbedHoles holes X ∈ (touchingHoles G Y holes).powerset := by
+    intro X hX
+    rw [mem_powerset]
+    have hX_mem := hX
+    rw [admissibleFillings, mem_filter] at hX
+    have hdisj_Y : ∀ H₀ ∈ holes, Disjoint Y H₀ := by
+      intro H₀ hH₀
+      rw [disjoint_iff_ne]
+      rintro x hx y hy rfl
+      rw [← hX.2.2.2, mem_filter] at hx
+      apply hx.2
+      exact ⟨H₀, hH₀, hy⟩
+    exact absorbed_subset_touching G Y holes X hX.2.2.1 hX.2.2.2.symm hnoedges hdisj_Y hYne hholes_ne hX.2.1
+  have h_inj : ∀ X₁ ∈ admissibleFillings G Y holes, ∀ X₂ ∈ admissibleFillings G Y holes,
+      absorbedHoles holes X₁ = absorbedHoles holes X₂ → X₁ = X₂ := by
+    intro X₁ hX₁ X₂ hX₂ h_eq
+    exact admissibleFillings_inj G Y holes X₁ X₂ hX₁ hX₂ h_eq
+  have h_le := card_le_card_of_injOn (fun X => absorbedHoles holes X) h_maps h_inj
+  rw [card_powerset] at h_le
+  have h_th := touchingHoles_card_le G Y holes Δ hdeg hdisj
+  have h_pow : 2 ^ (touchingHoles G Y holes).card ≤ 2 ^ (Δ * Y.card) :=
+    Nat.pow_le_pow_right (by decide) h_th
+  exact h_le.trans h_pow
+
+/-- The polymer multiplicity bound on the cube lattice. -/
+theorem cube_fillings_card_le_two_pow (d L : ℕ) [NeZero L] (Y : Finset (Cube d L))
+    (H : HoleFamily d L) (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hYne : Y.Nonempty)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty) :
+    (admissibleFillings (cubeAdj d L) Y H.holes).card ≤ 2 ^ (3 ^ d * Y.card) :=
+  fillings_card_le_two_pow (cubeAdj d L) Y H.holes (3 ^ d) (fun x => cubeAdj_degree_le d L x) hdisj hnoedges hYne hholes_ne
+
 end YangMills.RG
