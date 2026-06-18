@@ -3570,3 +3570,22 @@ Reproduce this audit:
 lake build YangMillsCore
 # then #print axioms on any name above via lake env lean
 ```
+
+
+## Addendum 88 (2026-06-18, **active-edge cardinality bound for connected sets**
+`YangMills.RG.card_le_activeEdges_add_one`; core 8264)
+
+**Build:** green (active-edge cardinality bound added to `ModifiedMetric.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum completes the active-edge cardinality bound for connected sets:
+
+* **`card_le_activeEdges_add_one`** — For any connected vertex set `S` in a graph `G`, its cardinality is bounded by the number of active edges in `S` plus 1: $|S| \leq |E(G[S])| + 1$.
+
+**How compilation was resolved.**
+1. We resolved a walk support type mismatch in `walkConnected_of_walk_from_root` by using `List.mem_reverse` for the reversed walk support and implementing a self-contained helper `mem_of_mem_tail` to convert membership in `List.tail` to list membership.
+2. We fixed the `Sym2.mk` constructor arity mismatch where `Sym2.mk` expects two arguments (`Sym2.mk p u` via notation `s(p, u)`) instead of a pair tuple `Sym2.mk (p, u)`.
+3. We assisted the `omega` solver by explicitly adding `h_card_erase : S'.card = S.card - 1` using `card_erase_of_mem huS` to the context, which allowed `omega` to linearly solve the cardinality induction step without encountering non-linear subtraction issues.
+4. We cleaned up the unused variable warning for `hr` in `walkConnected_of_walk_from_root` and updated the calling code.
+
+**Honest scope.** This is purely combinatorial lattice geometry, providing a cardinality bound for connected sets. Clay distance **~0% (<0.1%), unchanged**.

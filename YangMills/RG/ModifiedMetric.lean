@@ -407,4 +407,105 @@ theorem touchingHoles_card_le {V : Type*} [DecidableEq V] [Fintype V] (G : Simpl
     rw [h_empty, card_empty]
     omega
 
+
+lemma mem_of_mem_tail {α : Type*} {x : α} {l : List α} (h : x ∈ l.tail) : x ∈ l := by
+  cases l with
+  | nil => cases h
+  | cons hd tl => exact List.mem_cons_of_mem hd h
+
+lemma walkConnected_of_walk_from_root {V : Type*} (G : SimpleGraph V) (S : Finset V) (r : V)
+    (h : ∀ x ∈ S, ∃ w : G.Walk r x, ∀ y ∈ w.support, y ∈ S) :
+    walkConnected G S := by
+  intro x hx y hy
+  obtain ⟨wx, hwx⟩ := h x hx
+  obtain ⟨wy, hwy⟩ := h y hy
+  refine ⟨wx.reverse.append wy, ?_⟩
+  intro v hv
+  rw [Walk.support_append, List.mem_append, Walk.support_reverse] at hv
+  rcases hv with hv | hv
+  · rw [List.mem_reverse] at hv
+    exact hwx v hv
+  · have hv' : v ∈ wy.support := mem_of_mem_tail hv
+    exact hwy v hv'
+
+/-- The active edges of `G` with both endpoints in `S`. -/
+def activeEdges {V : Type*} [DecidableEq V] [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (S : Finset V) : Finset (Sym2 V) :=
+  G.edgeFinset.filter (fun e => ∀ v ∈ e, v ∈ S)
+
+lemma card_le_activeEdges_add_one_of_card {V : Type*} [DecidableEq V] [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (n : ℕ) (S : Finset V) (hconn : walkConnected G S) (hne : S.Nonempty) (hcard : S.card = n) :
+    S.card ≤ (activeEdges G S).card + 1 := by
+  induction n generalizing S with
+  | zero =>
+    omega
+  | succ n ih =>
+    by_cases hn : S.card = 1
+    · omega
+    · have h_gt : 2 ≤ S.card := by omega
+      obtain ⟨r, hr⟩ := hne
+      have hconn_root : ∀ x ∈ S, ∃ w : G.Walk r x, ∀ y ∈ w.support, y ∈ S := by
+        intro x hx
+        exact hconn r hr x hx
+      obtain ⟨u, huS, hune, hS'conn, p, hp, hp_adj⟩ := exists_peel S hr h_gt hconn_root
+      let S' := S.erase u
+      have hS'ne : S'.Nonempty := by
+        use r
+        rw [mem_erase]
+        exact ⟨hune.symm, hr⟩
+      have hS'card : S'.card = n := by
+        rw [card_erase_of_mem huS, hcard]
+        omega
+      have hS'conn_wc : walkConnected G S' := by
+        refine walkConnected_of_walk_from_root G S' r ?_
+        · intro x hx
+          exact hS'conn x hx
+      have ih_S' := ih S' hS'conn_wc hS'ne hS'card
+      have h_subset : activeEdges G S' ⊆ activeEdges G S := by
+        intro e he
+        rw [activeEdges, mem_filter] at he ⊢
+        refine ⟨he.1, ?_⟩
+        intro v hv
+        have := he.2 v hv
+        exact mem_of_mem_erase this
+      have h_strict : activeEdges G S' ⊂ activeEdges G S := by
+        rw [ssubset_iff_of_subset h_subset]
+        let e := s(p, u)
+        have he_edge : e ∈ G.edgeFinset := by
+          rw [mem_edgeFinset]
+          exact hp_adj
+        have he_S : e ∈ activeEdges G S := by
+          unfold activeEdges; rw [mem_filter]
+          refine ⟨he_edge, ?_⟩
+          intro v hv
+          rw [Sym2.mem_iff] at hv
+          rcases hv with rfl | rfl
+          · exact mem_of_mem_erase hp
+          · exact huS
+        have he_not_S' : e ∉ activeEdges G S' := by
+          unfold activeEdges; rw [mem_filter]
+          push_neg
+          intro _
+          use u
+          refine ⟨?_, ?_⟩
+          · rw [Sym2.mem_iff]
+            right
+            rfl
+          · rw [mem_erase]
+            push_neg
+            intro h
+            contradiction
+        exact ⟨e, he_S, he_not_S'⟩
+      have h_card_strict : (activeEdges G S').card < (activeEdges G S).card :=
+        card_lt_card h_strict
+      have h_card_erase : S'.card = S.card - 1 := card_erase_of_mem huS
+      have h_S_card : S.card = S'.card + 1 := by omega
+      omega
+
+/-- For any connected vertex set `S`, its cardinality is bounded by the number of active edges plus 1. -/
+theorem card_le_activeEdges_add_one {V : Type*} [DecidableEq V] [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (S : Finset V) (hconn : walkConnected G S) (hne : S.Nonempty) :
+    S.card ≤ (activeEdges G S).card + 1 :=
+  card_le_activeEdges_add_one_of_card G S.card S hconn hne rfl
+
 end YangMills.RG
