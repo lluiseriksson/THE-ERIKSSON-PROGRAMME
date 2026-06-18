@@ -3786,3 +3786,24 @@ This addendum formalises the volume-uniform Kotecký–Preiss criterion and abso
 We bounded the cardinality of the closed neighborhood by first showing it is a subset of the big union of the single-element inserts and neighbor sets, and then majorized each neighbor set cardinality by $3^d$ (using the graph degree bound `cubeAdj_degree_le`). We established that incompatibility implies intersection with `closedNeigh` via a disjunction on overlap versus adjacency. The KP criterion was proved by bounding the sum over incompatible polymers by a big union over cubes in `closedNeigh X`, majorizing this by the local summability bound, and cancelling the $(3^d + 1)$ factors using `mul_inv_cancel₀` for `ℝ`.
 
 **Honest scope.** This completes the volume-uniform convergence substrate of the cluster expansion for the holes-respected polymer gas under local summability. It does not prove the analytical Gaussian bounds on the activities. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 100 (2026-06-18, **cluster modified metric and cluster decay weight base cases**
+`YangMills.RG.clusterUnion`, `clusterModifiedMetric`, `clusterUnion_skeleton`, `clusterUnion_fin_one`, `clusterModifiedMetric_fin_one`, `clusterDecayWeight`, and `clusterDecayWeight_fin_one`; core 8268)
+
+**Build:** green (cluster definitions and theorems added to `ClusterDecay.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum formalises the union and modified metric of polymer clusters, and defines the cluster decay weight function under the modified metric:
+
+* **`clusterUnion`** — Defines the union of all polymers in a cluster.
+* **`clusterModifiedMetric`** — Defines the modified metric of a cluster.
+* **`clusterUnion_skeleton`** — Proves that the skeleton of a cluster union equals the big union of the individual polymer skeletons.
+* **`clusterUnion_fin_one`** — Proves that for a single-polymer cluster ($n=1$), the cluster union reduces exactly to that polymer.
+* **`clusterModifiedMetric_fin_one`** — Proves that for $n=1$, the cluster metric equals the individual polymer's modified metric.
+* **`clusterDecayWeight`** — Defines the decay weight $q^{d_M(Union X) + 1}$ of a cluster.
+* **`clusterDecayWeight_fin_one`** — Proves that for $n=1$, the cluster decay weight reduces to the single polymer's decay weight.
+
+**How compilation was resolved.**
+We defined `clusterUnion` as a big union over `Finset.univ` of the polymer values. We proved the skeleton union lemma `skeleton_biUnion` showing skeleton distributes over big unions, which resolved `clusterUnion_skeleton`. The single-polymer base case lemmas were proved using a subsingleton elimination on `Fin 1` to reduce the index of `Fin 1` to `0`.
+
+**Honest scope.** This completes the first mathematical target of the polymer cluster remainder convergence substrate. It does not prove the analytical Gaussian activity bounds on clusters. Clay distance **~0% (<0.1%), unchanged**.
