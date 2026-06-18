@@ -508,4 +508,66 @@ theorem card_le_activeEdges_add_one {V : Type*} [DecidableEq V] [Fintype V] (G :
     S.card ≤ (activeEdges G S).card + 1 :=
   card_le_activeEdges_add_one_of_card G S.card S hconn hne rfl
 
+/-- The modified metric d_M(X, mod H) defined as the Steiner tree length of the skeleton in G[X]. -/
+noncomputable def modifiedMetric {d L : ℕ} (H : HoleFamily d L) (X : Finset (Cube d L)) : ℕ := by
+  classical
+  let Y := skeleton H X
+  exact if h : ∃ S : Finset (Cube d L), Y ⊆ S ∧ S ⊆ X ∧ cubeConnected S then
+    sInf {n | ∃ S : Finset (Cube d L), Y ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n}
+  else
+    0
+
+theorem skeleton_card_le_modifiedMetric_add_one {d L : ℕ} (H : HoleFamily d L)
+    (X : Finset (Cube d L)) (hconn : cubeConnected X) :
+    (skeleton H X).card ≤ modifiedMetric H X + 1 := by
+  classical
+  have h_ex : ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S := by
+    refine ⟨X, skeleton_subset H X, by rfl, hconn⟩
+  have h_metric : modifiedMetric H X = sInf {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
+    unfold modifiedMetric
+    rw [dif_pos h_ex]
+  have h_ne : {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n}.Nonempty := by
+    refine ⟨X.card - 1, X, skeleton_subset H X, by rfl, hconn, rfl⟩
+  have h_mem := Nat.sInf_mem h_ne
+  rw [← h_metric] at h_mem
+  rcases h_mem with ⟨S, hY, _, _, hS_card⟩
+  by_cases hS : S.card = 0
+  · have hY_empty : skeleton H X = ∅ := by
+      rw [card_eq_zero] at hS
+      exact subset_empty.mp (hS ▸ hY)
+    rw [hY_empty, card_empty]
+    omega
+  · have hS_pos : 1 ≤ S.card := by omega
+    have h_le : (skeleton H X).card ≤ S.card := card_le_card hY
+    omega
+
+theorem modifiedMetric_empty_holes {d L : ℕ} (H : HoleFamily d L) (hH : H.holes = ∅)
+    (X : Finset (Cube d L)) (hconn : cubeConnected X) :
+    modifiedMetric H X = X.card - 1 := by
+  classical
+  have hY : skeleton H X = X := by
+    unfold skeleton
+    rw [hH]
+    ext z
+    simp
+  have h_ex : ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S := by
+    refine ⟨X, by rw [hY], by rfl, hconn⟩
+  have h_metric : modifiedMetric H X = sInf {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
+    unfold modifiedMetric
+    rw [dif_pos h_ex]
+  rw [h_metric]
+  have h_eq : {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} = {X.card - 1} := by
+    ext n
+    simp only [Set.mem_setOf_eq, Set.mem_singleton_iff]
+    constructor
+    · rintro ⟨S, hS1, hS2, _, rfl⟩
+      rw [hY] at hS1
+      have : S = X := by exact subset_antisymm hS2 hS1
+      rw [this]
+    · rintro rfl
+      refine ⟨X, by rw [hY], by rfl, hconn, rfl⟩
+  rw [h_eq]
+  have h_mem : sInf ({X.card - 1} : Set ℕ) ∈ ({X.card - 1} : Set ℕ) := Nat.sInf_mem ⟨X.card - 1, Set.mem_singleton _⟩
+  exact Set.mem_singleton_iff.mp h_mem
+
 end YangMills.RG

@@ -196,3 +196,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.absorbedHole_touches_skeleton_multi
 #print axioms YangMills.RG.touchingHoles_card_le
 #print axioms YangMills.RG.card_le_activeEdges_add_one
+#print axioms YangMills.RG.modifiedMetric
+#print axioms YangMills.RG.skeleton_card_le_modifiedMetric_add_one
+#print axioms YangMills.RG.modifiedMetric_empty_holes

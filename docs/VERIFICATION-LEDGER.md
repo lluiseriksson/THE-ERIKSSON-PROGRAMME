@@ -3589,3 +3589,21 @@ This addendum completes the active-edge cardinality bound for connected sets:
 4. We cleaned up the unused variable warning for `hr` in `walkConnected_of_walk_from_root` and updated the calling code.
 
 **Honest scope.** This is purely combinatorial lattice geometry, providing a cardinality bound for connected sets. Clay distance **~0% (<0.1%), unchanged**.
+
+
+## Addendum 89 (2026-06-18, **polymer modified metric definition and properties**
+`YangMills.RG.modifiedMetric`, `YangMills.RG.skeleton_card_le_modifiedMetric_add_one`, and `YangMills.RG.modifiedMetric_empty_holes`; core 8264)
+
+**Build:** green (modified metric and associated theorems added to `ModifiedMetric.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum formalises the polymer modified metric definition and its basic combinatorial properties, marking progress on **P2b-ii-b**:
+
+* **`modifiedMetric`** — The genuine modified metric $d_M(X, \bmod H)$ defined as the Steiner tree length of the skeleton in the induced subgraph on $X$. To ensure classical decidability of the existential properties, we used a `by classical` block in its definition.
+* **`skeleton_card_le_modifiedMetric_add_one`** — Proves that the cardinality of the skeleton is bounded by the modified metric plus 1: $|\text{skeleton } H\ X| \leq d_M(X, \bmod H) + 1$.
+* **`modifiedMetric_empty_holes`** — Proves that when the hole family $H$ has no holes, the modified metric simplifies to the standard bulk tree metric: $d_M(X, \bmod \emptyset) = |X| - 1$.
+
+**How compilation was resolved.**
+We used `Nat.sInf_mem` to extract the minimal connected vertex set $S$ spanning the skeleton, and verified that its card is related to the modified metric. For `modifiedMetric_empty_holes`, we showed that when holes are empty, the set of connected sets containing the skeleton and contained in $X$ is the singleton $\{X\}$. We then proved that the `sInf` of a singleton $\{x\}$ equals $x$ by utilizing `Nat.sInf_mem` and `Set.mem_singleton_iff`.
+
+**Honest scope.** This is purely combinatorial lattice geometry, defining the modified metric and its skeleton cardinality bound. It does not resolve the analytic Gaussian suppressions of the holes required for full summability. Clay distance **~0% (<0.1%), unchanged**.
