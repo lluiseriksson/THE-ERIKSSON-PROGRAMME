@@ -16,7 +16,15 @@ namespace YangMills.RG
 
 /-- The **holes-respected polymer system** on the cube lattice.
     Polymers are nonempty, connected finsets of cubes that respect the hole family H.
-    Two polymers are incompatible if they overlap or touch (share a boundary of any dimension). -/
+    Two polymers are incompatible if they overlap or touch (share a boundary of any dimension).
+
+    Audit note on the incompatibility relation:
+    Adjacency/touching (sharing a boundary edge in `cubeAdj`) is mathematically required
+    for incompatibility on the lattice. If two polymers were only incompatible when they
+    overlapped, then two disjoint but adjacent polymers could be compatible. However,
+    their union would be connected, and their activities would not factorize as independent
+    factors in the partition function. Thus, the reflexive closure of the adjacency relation
+    (overlap or touch) is the source-faithful incompatibility relation for lattice polymers. -/
 noncomputable def holePolymerSystem {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) :
     KP.PolymerSystem where
   Polymer := { X : Finset (Cube d L) // X.Nonempty ∧ cubeConnected X ∧ polymerWithHoles H X }

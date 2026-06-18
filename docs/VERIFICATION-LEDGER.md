@@ -3738,7 +3738,7 @@ We bounded the norm of the activity sum by the sum of the norms using `norm_tsum
 **Build:** green (convergence theorems added to `HolePolymerSystem.lean`).
 Oracle: `[propext, Classical.choice, Quot.sound]`.
 
-This addendum connects the holes-respected polymer system to the abstract Kotecký–Preiss convergence machinery, completing **P3**:
+This addendum connects the holes-respected polymer system to the abstract Kotecký–Preiss convergence machinery, advancing **P3** (proving structural convergence under bare KP, while the analytical modified-metric decay bound on clusters remains open):
 
 * **`holePolymerSystem_KPCriterion`** — Proves that under the modified-metric bound, a constant weight function $a(X) = 1$ satisfies the KP criterion for sufficiently small $q$.
 * **`holePolymerSystem_converges`** — Proves that the Mayer cluster series for the holes-respected polymer system converges absolutely under the bare KP criterion.
@@ -3747,4 +3747,4 @@ This addendum connects the holes-respected polymer system to the abstract Koteck
 **How compilation was resolved.**
 We verified that $q \leq 1$ holds since the polymer system has cardinality at least 1 (nonempty hypothesis), and used a `calc` block with `gcongr` to show that $q^{d_M + 1} \leq q$ for $0 \leq q \leq 1$ without external lemmas. We then instantiated `KP.kp_convergence_sharp` and `KP.kp_norm_clusterSum_le_sharp` directly.
 
-**Honest scope.** This completes the combinatorial and structural convergence substrate of the cluster expansion with holes. It does not prove the analytical Gaussian activity bounds for the renormalization group or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
+**Honest scope.** This completes the combinatorial and structural convergence substrate of the cluster expansion with holes. It does not prove the analytical Gaussian activity bounds for the renormalization group or the continuum limit, nor does it establish the modified-metric decay bound on the cluster activities themselves. Clay distance **~0% (<0.1%), unchanged**.

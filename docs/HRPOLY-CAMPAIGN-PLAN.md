@@ -50,8 +50,8 @@ verification** (see §4).
 graph combinatorics** (ledger Add. 57–60): the animal count `c_n ≤ (Δ²)ⁿ`
 (`rooted_connected_card_le_pow`) composed with `polymer_weight_summability`
 gives `rooted_connected_weight_summable` (`RG/AnimalTour.lean`):
-`∑_Y q^{#Y} ≤ (1−Δ²q)⁻¹` for `Δ²q < 1`.  Remaining: the **P2 instantiation**
-(identify Dimock `M`-cube polymers with rooted connected sets, `q = e^{−κ₀}`).
+`∑_Y q^{#Y} ≤ (1−Δ²q)⁻¹` for `Δ²q < 1`.  **Closed: the discrete modified-metric summability**
+(identifies Dimock `M`-cube polymers with rooted connected sets, `q = e^{−κ₀}`).
 
 ## 2. What is reusable (do NOT rebuild)
 

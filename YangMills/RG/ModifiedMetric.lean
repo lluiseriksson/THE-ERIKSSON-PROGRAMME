@@ -1015,4 +1015,24 @@ theorem discreteModifiedMetric_L_one {d : ℕ} (H : HoleFamily d 1) (X : Finset 
       refine ⟨S, hS_skel, hS_sub, hS_conn, by omega⟩
   · rw [dif_neg h_ex]
 
+theorem discreteModifiedMetric_empty_skeleton {d L : ℕ} (H : HoleFamily d L) (X : Finset (Cube d L))
+    (hskel : skeleton H X = ∅) :
+    discreteModifiedMetric H X = 0 := by
+  classical
+  unfold discreteModifiedMetric
+  by_cases h_ex : ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S
+  · rw [dif_pos h_ex]
+    apply Nat.sInf_eq_zero.mpr
+    left
+    simp only [Set.mem_setOf_eq]
+    refine ⟨∅, by rw [hskel], Finset.empty_subset _, ?_, by simp⟩
+    intro x hx y hy
+    simp at hx
+  · rw [dif_neg h_ex]
+
+theorem discreteModifiedMetric_d_one_empty_holes {L : ℕ} (H : HoleFamily 1 L) (hH : H.holes = ∅)
+    (X : Finset (Cube 1 L)) (hconn : cubeConnected X) :
+    discreteModifiedMetric H X = X.card - 1 :=
+  discreteModifiedMetric_empty_holes H hH X hconn
+
 end YangMills.RG
