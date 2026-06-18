@@ -3539,7 +3539,7 @@ This addendum closes the combinatorial core of the polymer-with-holes campaign b
 
 **How compilation was resolved.** The initial implementation relied on a nonexistent `SimpleGraph.Walk.exists_cons_of_not_nil` decomposition lemma, which caused compilation errors under Mathlib v4.29. This was replaced with a direct induction proof using a strong induction recursor on the walk length (`n`) combined with `match p with` and the explicit recursor constructor pattern `@Walk.cons`. The induction variables were generalized, and the `omega` linter was assisted by rewriting the definition of `Walk.length_cons` explicitly to resolve inequality proofs.
 
-**Honest scope.** This is purely combinatorial lattice geometry, providing the walk-based topological lemma for single-hole absorption (Appendix E, Lemma E.3). It does not resolve any multi-hole configurations or the analytic Gaussian suppressions of the holes. Clay distance **~0% (<0.1%), unchanged**.
+**Honest scope.** This is purely combinatorial lattice geometry, providing the walk-based topological lemma for single-hole absorption (Dimock II (arXiv:1212.5562) Section 5, Lemma \label{summit}). It does not resolve any multi-hole configurations or the analytic Gaussian suppressions of the holes. Clay distance **~0% (<0.1%), unchanged**.
 
 ## Addendum 87 (2026-06-18, **multi-hole skeleton touching and multiplicity bounds**
 `YangMills.RG.absorbedHole_touches_skeleton_multi` and `YangMills.RG.touchingHoles_card_le`; core 8264)
@@ -3748,3 +3748,41 @@ This addendum connects the holes-respected polymer system to the abstract Koteck
 We verified that $q \leq 1$ holds since the polymer system has cardinality at least 1 (nonempty hypothesis), and used a `calc` block with `gcongr` to show that $q^{d_M + 1} \leq q$ for $0 \leq q \leq 1$ without external lemmas. We then instantiated `KP.kp_convergence_sharp` and `KP.kp_norm_clusterSum_le_sharp` directly.
 
 **Honest scope.** This completes the combinatorial and structural convergence substrate of the cluster expansion with holes. It does not prove the analytical Gaussian activity bounds for the renormalization group or the continuum limit, nor does it establish the modified-metric decay bound on the cluster activities themselves. Clay distance **~0% (<0.1%), unchanged**.
+
+
+## Addendum 98 (2026-06-18, **translation-invariance of the modified metric and polymer system**
+`YangMills.RG.translatePolymer`, `YangMills.RG.holePolymerSystem_incomp_translate`, and `YangMills.RG.rootedHolePolymerSum_translate`; core 8265)
+
+**Build:** green (translation theorems added to `Translation.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum formalises the translation-invariance of the discrete modified metric, the holes-respected polymer system, and its rooted activity sum:
+
+* **`translatePolymer`** — Defines the translation operator on polymers.
+* **`holePolymerSystem_incomp_translate`** — Proves that translation preserves the incompatibility relation (overlap or touching) on the lattice.
+* **`rootedHolePolymerSum_translate`** — Proves that the rooted polymer activity sum is translation-invariant on the torus under translated activity.
+
+**How compilation was resolved.**
+We constructed the bijection `g` between the root-centered polymer subtype and the translated root-centered subtype. We proved injectivity and surjectivity of `g` using the injection/surjection lemmas for polymer translation. Fintype sum equivalence was utilized to reduce the translated sum to the original sum, and `translateActivity_apply` resolved the activity identity.
+
+**Honest scope.** This completes the translation-invariance substrate for the holes-respected polymer gas. It does not prove the analytical Gaussian activity bounds or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 99 (2026-06-18, **volume-uniform Kotecky-Preiss criterion and convergence under local summability**
+`YangMills.RG.closedNeigh`, `closedNeigh_card_le`, `incomp_imp_intersect`, `holePolymerSystem_KPCriterion_volumeUniform`, `holePolymerSystem_converges_volumeUniform`, and `holePolymerSystem_norm_clusterSum_le_volumeUniform`; core 8267)
+
+**Build:** green (volume-uniform theorems added to `LocalKP.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum formalises the volume-uniform Kotecký–Preiss criterion and absolute convergence of the holes-respected polymer system under a local volume-independent activity summability condition:
+
+* **`closedNeigh`** — Defines the closed neighborhood of a set of cubes on the lattice.
+* **`closedNeigh_card_le`** — Bounds the cardinality of the closed neighborhood of a set $X$ of cubes by $(3^d + 1) |X|$.
+* **`incomp_imp_intersect`** — Proves that if two polymers $X, Y$ are incompatible, then $Y$ must intersect the closed neighborhood of $X$.
+* **`holePolymerSystem_KPCriterion_volumeUniform`** — Establishes that the polymer system satisfies the KP criterion with weight function $a(X) = |X|$ under local volume-independent summability.
+* **`holePolymerSystem_converges_volumeUniform`** — Proves the absolute convergence of the cluster series volume-uniformly.
+* **`holePolymerSystem_norm_clusterSum_le_volumeUniform`** — Bounds the norm of the cluster sum volume-uniformly.
+
+**How compilation was resolved.**
+We bounded the cardinality of the closed neighborhood by first showing it is a subset of the big union of the single-element inserts and neighbor sets, and then majorized each neighbor set cardinality by $3^d$ (using the graph degree bound `cubeAdj_degree_le`). We established that incompatibility implies intersection with `closedNeigh` via a disjunction on overlap versus adjacency. The KP criterion was proved by bounding the sum over incompatible polymers by a big union over cubes in `closedNeigh X`, majorizing this by the local summability bound, and cancelling the $(3^d + 1)$ factors using `mul_inv_cancel₀` for `ℝ`.
+
+**Honest scope.** This completes the volume-uniform convergence substrate of the cluster expansion for the holes-respected polymer gas under local summability. It does not prove the analytical Gaussian bounds on the activities. Clay distance **~0% (<0.1%), unchanged**.

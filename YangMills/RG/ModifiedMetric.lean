@@ -19,10 +19,10 @@ weight), and is the geometric input of the with-holes summability (eq. 151)
 
     ∑_{X ⊇ □}  e^{−κ₀ d_M(X, mod Ω_k^c)}  ≤  K₀ ,
 
-proved in **Lemma E.3** (Appendix E).  The full eq-151 result additionally
+proved in Section 5 (Lemma \label{summit}).  The full eq-151 result additionally
 needs the holes' Gaussian suppression (P4, the months-scale fluctuation
 integral; **NOT** here).  This file opens the **purely combinatorial core**
-of Lemma E.3's proof.
+of the summability proof.
 
 ## What this file proves (faithful, non-vacuous, oracle-clean)
 
@@ -50,8 +50,7 @@ of Lemma E.3's proof.
   constants are `φ⁴₃`; the 4D YM activity bounds come from Bałaban's YM
   papers, not transcribed here.  Clay distance **~0% (<0.1%), unchanged**.
 
-**Source.**  Dimock II (arXiv:1212.5562) §3.1.2 eqs. 149–151 and Appendix E
-(Lemma E.3); strategy/framing Lluis Eriksson.
+**Source.**  Dimock II (arXiv:1212.5562) §3.1.2 eqs. 149–151 and Section 5 (Lemma \label{summit}); strategy/framing Lluis Eriksson.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/
@@ -140,7 +139,7 @@ lemma walk_crosses_frontier {V : Type*} [DecidableEq V] (G : SimpleGraph V)
       · exact ⟨z, hzA, v, hvB, h⟩
 
 /-- **Absorbed-hole touching (single-hole case) — the combinatorial heart of
-Dimock Lemma E.3.**  Suppose `X = Y ∪ H₀` (skeleton `Y`, single absorbed hole
+Dimock II (arXiv:1212.5562) Section 5, Lemma \label{summit}.**  Suppose `X = Y ∪ H₀` (skeleton `Y`, single absorbed hole
 `H₀`), `X` is `cubeConnected`, both `Y` and `H₀` nonempty and disjoint.  Then
 `H₀` touches `Y`: there exist `z ∈ H₀`, `w ∈ Y` with `cubeAdj`-adjacent.
 
@@ -173,7 +172,7 @@ theorem absorbedHole_touches_skeleton_single {d L : ℕ} [NeZero L]
     walk_crosses_frontier (cubeAdj d L) H₀ Y p hp' hz hznotY hw hwH₀
   exact ⟨a, haH₀, b, hbY, hab⟩
 
-/-- **Absorbed-hole touching (multi-hole case) — extension of Dimock Appendix E Lemma E.3.**
+/-- **Absorbed-hole touching (multi-hole case) — extension of Dimock II (arXiv:1212.5562) Section 5, Lemma \label{summit}.**
 If a polymer is connected and contains a set of disjoint holes with no edges between them,
 then every absorbed hole must touch the skeleton. -/
 theorem absorbedHole_touches_skeleton_multi {V : Type*} [DecidableEq V] (G : SimpleGraph V)
@@ -329,7 +328,7 @@ lemma card_neighborPairs {V : Type*} [DecidableEq V] [Fintype V] (G : SimpleGrap
       rw [hx1, h1, ← hy1]
     exact hne h_xy
 
-/-- **Multiplicity Bound (the combinatorial crux of Dimock Lemma E.3).**
+/-- **Multiplicity Bound (the combinatorial crux of Dimock II (arXiv:1212.5562) Section 5, Lemma \label{summit}).**
 The number of holes that touch `Y` is at most `Δ * |Y|`. Since the holes are disjoint,
 the map from `touchingHoles` to `neighborPairs` is injective, yielding the bound. -/
 theorem touchingHoles_card_le {V : Type*} [DecidableEq V] [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
@@ -594,7 +593,7 @@ lemma admissibleFillings_inj {V : Type*} [DecidableEq V] [Fintype V] (G : Simple
   rw [hX₂.2.2.2] at h_eq2
   rw [h_eq1, h_eq2, h_eq]
 
-/-- **Multi-hole Polymer Multiplicity Bound** (Dimock Appendix E, Lemma E.3).
+/-- **Multi-hole Polymer Multiplicity Bound** (Dimock II (arXiv:1212.5562) Section 5, Lemma \label{summit}).
     The number of connected, hole-respecting polymers X with a fixed skeleton Y
     is bounded by 2^(Δ * |Y|). -/
 theorem fillings_card_le_two_pow {V : Type*} [DecidableEq V] [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
@@ -732,7 +731,7 @@ lemma exists_minimal_spanning_set {d L : ℕ} (H : HoleFamily d L) (X : Finset (
   omega
 
 
-/-- **Skeleton-Fillings Multiplicity Bound** (Dimock Appendix E, preliminary combinatorial estimate for Lemma E.3).
+/-- **Skeleton-Fillings Multiplicity Bound** (Dimock II (arXiv:1212.5562) Section 5, preliminary combinatorial estimate for Lemma \label{summit}).
     The polymer sum over all connected skeletons Y containing a fixed root r,
     weighted by the filling multiplicity and the exponential metric decay,
     is summable and bounded by a volume-independent constant.
@@ -780,7 +779,7 @@ theorem skeleton_fillings_weight_summable {d L : ℕ} [NeZero L]
   have h_tsum := Summable.tsum_le_tsum h_term_le hf_summable hg_summable
   exact h_tsum.trans h_sum_le
 
-/-- **Discrete Modified-Metric Summability** (Dimock Appendix E, Lemma E.3).
+/-- **Discrete Modified-Metric Summability** (Dimock II (arXiv:1212.5562) Section 5, Lemma \label{summit}).
     The polymer sum over all connected, hole-respecting polymers X containing a fixed root r in their skeleton,
     weighted by the exponential metric decay q^(d_M(X) + 1), converges and is bounded by a volume-independent constant
     under the coordination entropy-suppression condition. -/
