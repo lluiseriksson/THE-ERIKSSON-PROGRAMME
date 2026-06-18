@@ -5,6 +5,9 @@ Authors: Lluis Eriksson -/
 
 import Mathlib
 import YangMills.KP.Basic
+import YangMills.KP.Criterion
+import YangMills.KP.SharpKP
+import YangMills.KP.Ursell
 import YangMills.RG.ModifiedMetric
 
 attribute [local instance] Classical.propDecidable
@@ -96,5 +99,87 @@ theorem rootedHolePolymerSum_bound {d L : ℕ} [NeZero L] (H : HoleFamily d L) (
       q ^ (discreteModifiedMetric H X.val + 1) ≤ (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹ :=
     discreteModifiedMetric_weight_summable H r q hdisj hnoedges hholes_ne hq0 hCq
   exact h_norm.trans (h_le.trans h_summable)
+
+/-- **Holes-Respected Polymer System KP Criterion Satisfiability:**
+    Under the modified-metric bound, the holes-respected polymer system satisfies the Kotecký–Preiss criterion
+    for sufficiently small `q`. -/
+theorem holePolymerSystem_KPCriterion {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (q : ℝ) (h_bound : ∀ X : (holePolymerSystem H z).Polymer, ‖(holePolymerSystem H z).activity X‖ ≤ q ^ (discreteModifiedMetric H X.1 + 1))
+    (hq0 : 0 ≤ q)
+    [h_nonempty : Nonempty (holePolymerSystem H z).Polymer]
+    (hq_small : q * (Fintype.card (holePolymerSystem H z).Polymer : ℝ) * Real.exp 1 ≤ 1) :
+    KP.KPCriterion (holePolymerSystem H z) (fun _ => 1) := by
+  constructor
+  · intro X
+    norm_num
+  · intro X
+    have h_q1 : q ≤ 1 := by
+      have h_card_ge : (1 : ℝ) ≤ (Fintype.card (holePolymerSystem H z).Polymer : ℝ) := by
+        exact_mod_cast Fintype.card_pos
+      have h_exp_ge : Real.exp 1 ≥ 1 := by
+        rw [← Real.exp_zero]; exact Real.exp_le_exp.mpr (by norm_num)
+      have h_mul_ge : (1 : ℝ) ≤ (Fintype.card (holePolymerSystem H z).Polymer : ℝ) * Real.exp 1 := by
+        calc (1 : ℝ) = 1 * 1 := by norm_num
+          _ ≤ (Fintype.card (holePolymerSystem H z).Polymer : ℝ) * Real.exp 1 := by gcongr
+      have h_q_mul : q * 1 ≤ q * ((Fintype.card (holePolymerSystem H z).Polymer : ℝ) * Real.exp 1) := by
+        gcongr
+      rw [mul_one, ← mul_assoc] at h_q_mul
+      exact h_q_mul.trans hq_small
+    have h_sum_le : ∑ Y ∈ Finset.univ.filter (fun Y => (holePolymerSystem H z).incomp X Y),
+        ‖(holePolymerSystem H z).activity Y‖ * Real.exp ((fun _ : (holePolymerSystem H z).Polymer => (1 : ℝ)) Y)
+        ≤ ∑ Y ∈ Finset.univ.filter (fun Y => (holePolymerSystem H z).incomp X Y), q * Real.exp 1 := by
+      apply Finset.sum_le_sum
+      intro Y _
+      have h_act := h_bound Y
+      have h_qn_le : q ^ (discreteModifiedMetric H Y.1) ≤ 1 := by
+        calc q ^ (discreteModifiedMetric H Y.1) ≤ 1 ^ (discreteModifiedMetric H Y.1) := by gcongr
+          _ = 1 := by simp
+      have h_pow_eq : q ^ (discreteModifiedMetric H Y.1 + 1) = q * q ^ (discreteModifiedMetric H Y.1) := by
+        rw [pow_succ', mul_comm]
+      have h_mul_le : q * q ^ (discreteModifiedMetric H Y.1) ≤ q * 1 := by
+        gcongr
+      have h_q_le : q ^ (discreteModifiedMetric H Y.1 + 1) ≤ q := by
+        rw [h_pow_eq]
+        exact h_mul_le.trans (by rw [mul_one])
+      have h_act_le : ‖(holePolymerSystem H z).activity Y‖ ≤ q := h_act.trans h_q_le
+      gcongr
+    have h_sum_const : ∑ Y ∈ Finset.univ.filter (fun Y => (holePolymerSystem H z).incomp X Y), q * Real.exp 1
+        = ((Finset.univ.filter (fun Y => (holePolymerSystem H z).incomp X Y)).card : ℝ) * (q * Real.exp 1) := by
+      simp
+    have h_card_le : ((Finset.univ.filter (fun Y => (holePolymerSystem H z).incomp X Y)).card : ℝ)
+        ≤ (Fintype.card (holePolymerSystem H z).Polymer : ℝ) := by
+      exact_mod_cast Finset.card_le_card (Finset.filter_subset _ _)
+    have h_bound_final : ((Finset.univ.filter (fun Y => (holePolymerSystem H z).incomp X Y)).card : ℝ) * (q * Real.exp 1) ≤ 1 := by
+      have : ((Finset.univ.filter (fun Y => (holePolymerSystem H z).incomp X Y)).card : ℝ) * (q * Real.exp 1)
+          = q * ((Finset.univ.filter (fun Y => (holePolymerSystem H z).incomp X Y)).card : ℝ) * Real.exp 1 := by ring
+      rw [this]
+      have : q * ((Finset.univ.filter (fun Y => (holePolymerSystem H z).incomp X Y)).card : ℝ) * Real.exp 1
+          ≤ q * (Fintype.card (holePolymerSystem H z).Polymer : ℝ) * Real.exp 1 := by gcongr
+      exact this.trans hq_small
+    exact h_sum_le.trans (h_sum_const.trans_le h_bound_final)
+
+/-- **Holes-Respected Polymer System KP Convergence:**
+    For any activity z satisfying the modified-metric bound with q sufficiently small
+    (dependent on the total number of polymers), the cluster expansion converges. -/
+theorem holePolymerSystem_converges {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (q : ℝ) (h_bound : ∀ X : (holePolymerSystem H z).Polymer, ‖(holePolymerSystem H z).activity X‖ ≤ q ^ (discreteModifiedMetric H X.1 + 1))
+    (hq0 : 0 ≤ q)
+    [h_nonempty : Nonempty (holePolymerSystem H z).Polymer]
+    (hq_small : q * (Fintype.card (holePolymerSystem H z).Polymer : ℝ) * Real.exp 1 ≤ 1) :
+    Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) → (holePolymerSystem H z).Polymer,
+        (KP.ursell (holePolymerSystem H z) X : ℂ) * ∏ i, (holePolymerSystem H z).activity (X i)) :=
+  KP.kp_convergence_sharp (holePolymerSystem H z) (holePolymerSystem_KPCriterion H z q h_bound hq0 hq_small)
+
+/-- **Holes-Respected Polymer System Quantitative Cluster Sum Bound:**
+    The cluster sum is bounded in norm by the total weighted activity of the polymers. -/
+theorem holePolymerSystem_norm_clusterSum_le {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (q : ℝ) (h_bound : ∀ X : (holePolymerSystem H z).Polymer, ‖(holePolymerSystem H z).activity X‖ ≤ q ^ (discreteModifiedMetric H X.1 + 1))
+    (hq0 : 0 ≤ q)
+    [h_nonempty : Nonempty (holePolymerSystem H z).Polymer]
+    (hq_small : q * (Fintype.card (holePolymerSystem H z).Polymer : ℝ) * Real.exp 1 ≤ 1) :
+    ‖KP.clusterSum (holePolymerSystem H z)‖
+      ≤ ∑ c : (holePolymerSystem H z).Polymer, ‖(holePolymerSystem H z).activity c‖ * Real.exp 1 :=
+  KP.kp_norm_clusterSum_le_sharp (holePolymerSystem H z) (holePolymerSystem_KPCriterion H z q h_bound hq0 hq_small)
 
 end YangMills.RG

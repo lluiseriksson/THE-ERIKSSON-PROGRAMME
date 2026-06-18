@@ -3730,3 +3730,21 @@ This addendum formalises the rooted polymer activity sum and its volume-independ
 We bounded the norm of the activity sum by the sum of the norms using `norm_tsum_le_tsum_norm` (discharged via the finite-sum summability proof). We then mapped the sum over the subtype of polymers to a sum over all connected, hole-respecting finsets using `Fintype.sum_equiv` with a bijection `f1`, and majorized it via the discrete modified-metric summability theorem.
 
 **Honest scope.** This provides the convergent activity sum bound required by the cluster expansion consumer. It does not prove the analytical Gaussian activity bounds for the renormalization group or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
+
+
+## Addendum 97 (2026-06-18, **holes-respected polymer system KP convergence and bounds**
+`YangMills.RG.holePolymerSystem_KPCriterion`, `YangMills.RG.holePolymerSystem_converges`, and `YangMills.RG.holePolymerSystem_norm_clusterSum_le`; core 8265)
+
+**Build:** green (convergence theorems added to `HolePolymerSystem.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum connects the holes-respected polymer system to the abstract Kotecký–Preiss convergence machinery, completing **P3**:
+
+* **`holePolymerSystem_KPCriterion`** — Proves that under the modified-metric bound, a constant weight function $a(X) = 1$ satisfies the KP criterion for sufficiently small $q$.
+* **`holePolymerSystem_converges`** — Proves that the Mayer cluster series for the holes-respected polymer system converges absolutely under the bare KP criterion.
+* **`holePolymerSystem_norm_clusterSum_le`** — Establishes a quantitative bound on the norm of the cluster sum.
+
+**How compilation was resolved.**
+We verified that $q \leq 1$ holds since the polymer system has cardinality at least 1 (nonempty hypothesis), and used a `calc` block with `gcongr` to show that $q^{d_M + 1} \leq q$ for $0 \leq q \leq 1$ without external lemmas. We then instantiated `KP.kp_convergence_sharp` and `KP.kp_norm_clusterSum_le_sharp` directly.
+
+**Honest scope.** This completes the combinatorial and structural convergence substrate of the cluster expansion with holes. It does not prove the analytical Gaussian activity bounds for the renormalization group or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
