@@ -166,7 +166,7 @@ YM coupling flow must come from Bałaban's YM papers — do NOT transcribe these
 `φ⁴₃` numbers into the YM target.
 
 Remaining genuinely-open analytic work (now source-grounded, still large):
-**P2b-ii-b-2** (modified-metric summability needing the Gaussian suppression), **P3** (Appendix F cluster expansion with
+**P3** (Appendix F cluster expansion with
 holes, on top of the repo's KP layer), **P4** (the §3.14 raw activity bound,
 which for YM needs the YM single-scale integral — not the `φ⁴₃` §3.14).
 

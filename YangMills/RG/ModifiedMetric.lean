@@ -929,6 +929,90 @@ theorem discreteModifiedMetric_weight_summable {d L : ℕ} [NeZero L]
   rw [h_congr]
   exact h_sum_fiber_le
 
+theorem discreteModifiedMetric_singleton_skeleton {d L : ℕ} (H : HoleFamily d L)
+    (X : Finset (Cube d L)) (_hconn : cubeConnected X) (s : Cube d L)
+    (hskel : skeleton H X = {s}) :
+    discreteModifiedMetric H X = 0 := by
+  classical
+  have h_ex : ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S := by
+    refine ⟨{s}, by rw [hskel], ?_, ?_⟩
+    · rw [← hskel]
+      exact skeleton_subset H X
+    · intro x hx y hy
+      rw [mem_singleton] at hx hy
+      subst hx hy
+      exact ⟨Walk.nil, fun v hv => by simp [Walk.support] at hv; subst hv; simp⟩
+  have h_metric : discreteModifiedMetric H X = sInf {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
+    unfold discreteModifiedMetric
+    rw [dif_pos h_ex]
+  rw [h_metric]
+  apply Nat.sInf_eq_zero.mpr
+  left
+  simp only [Set.mem_setOf_eq]
+  refine ⟨{s}, by rw [hskel], ?_, ?_, by simp⟩
+  · rw [← hskel]
+    exact skeleton_subset H X
+  · intro x hx y hy
+    rw [mem_singleton] at hx hy
+    subst hx hy
+    exact ⟨Walk.nil, fun v hv => by simp [Walk.support] at hv; subst hv; simp⟩
+
+theorem discreteModifiedMetric_weight_summable_zero {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (r : Cube d L) :
+    ∑' X : { X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X },
+        (0 : ℝ) ^ (discreteModifiedMetric H (X : Finset (Cube d L)) + 1)
+      ≤ 1 := by
+  have h_zero : (fun X : { X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X } =>
+      (0 : ℝ) ^ (discreteModifiedMetric H (X : Finset (Cube d L)) + 1)) = fun _ => 0 := by
+    ext X
+    rw [zero_pow (Nat.succ_ne_zero _)]
+  rw [h_zero, tsum_zero]
+  exact zero_le_one
+
+theorem discreteModifiedMetric_d_zero (H : HoleFamily 0 L) (X : Finset (Cube 0 L)) :
+    discreteModifiedMetric H X = 0 := by
+  classical
+  unfold discreteModifiedMetric
+  by_cases h_ex : ∃ S : Finset (Cube 0 L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S
+  · rw [dif_pos h_ex]
+    apply Nat.sInf_eq_zero.mpr
+    left
+    simp only [Set.mem_setOf_eq]
+    obtain ⟨S, hS_skel, hS_sub, hS_conn⟩ := h_ex
+    have h_card_le : S.card ≤ 1 := by
+      by_contra h_gt
+      push_neg at h_gt
+      obtain ⟨x, hx, y, hy, hne⟩ := Finset.one_lt_card.mp h_gt
+      have : x = y := funext (fun i => nomatch i)
+      exact hne this
+    by_cases hS_empty : S.card = 0
+    · refine ⟨S, hS_skel, hS_sub, hS_conn, by omega⟩
+    · have hS_one : S.card = 1 := by omega
+      refine ⟨S, hS_skel, hS_sub, hS_conn, by omega⟩
+  · rw [dif_neg h_ex]
+
+theorem discreteModifiedMetric_L_one {d : ℕ} (H : HoleFamily d 1) (X : Finset (Cube d 1)) :
+    discreteModifiedMetric H X = 0 := by
+  classical
+  unfold discreteModifiedMetric
+  by_cases h_ex : ∃ S : Finset (Cube d 1), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S
+  · rw [dif_pos h_ex]
+    apply Nat.sInf_eq_zero.mpr
+    left
+    simp only [Set.mem_setOf_eq]
+    obtain ⟨S, hS_skel, hS_sub, hS_conn⟩ := h_ex
+    have h_card_le : S.card ≤ 1 := by
+      by_contra h_gt
+      push_neg at h_gt
+      obtain ⟨x, hx, y, hy, hne⟩ := Finset.one_lt_card.mp h_gt
+      have h_eq : x = y := by
+        funext i
+        exact Subsingleton.elim (x i) (y i)
+      exact hne h_eq
+    by_cases hS_empty : S.card = 0
+    · refine ⟨S, hS_skel, hS_sub, hS_conn, by omega⟩
+    · have hS_one : S.card = 1 := by omega
+      refine ⟨S, hS_skel, hS_sub, hS_conn, by omega⟩
+  · rw [dif_neg h_ex]
+
 end YangMills.RG
-
-

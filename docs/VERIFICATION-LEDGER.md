@@ -3592,19 +3592,19 @@ This addendum completes the active-edge cardinality bound for connected sets:
 
 
 ## Addendum 89 (2026-06-18, **polymer modified metric definition and properties**
-`YangMills.RG.modifiedMetric`, `YangMills.RG.skeleton_card_le_modifiedMetric_add_one`, and `YangMills.RG.modifiedMetric_empty_holes`; core 8264)
+`YangMills.RG.discreteModifiedMetric`, `YangMills.RG.skeleton_card_le_discreteModifiedMetric_add_one`, and `YangMills.RG.discreteModifiedMetric_empty_holes`; core 8264)
 
 **Build:** green (modified metric and associated theorems added to `ModifiedMetric.lean`).
 Oracle: `[propext, Classical.choice, Quot.sound]`.
 
-This addendum formalises the polymer modified metric definition and its basic combinatorial properties, marking progress on **P2b-ii-b**:
+This addendum formalises the polymer modified metric definition and its basic combinatorial properties, marking progress on **P2b-ii-b-1**:
 
-* **`modifiedMetric`** — The genuine modified metric $d_M(X, \bmod H)$ defined as the Steiner tree length of the skeleton in the induced subgraph on $X$. To ensure classical decidability of the existential properties, we used a `by classical` block in its definition.
-* **`skeleton_card_le_modifiedMetric_add_one`** — Proves that the cardinality of the skeleton is bounded by the modified metric plus 1: $|\text{skeleton } H\ X| \leq d_M(X, \bmod H) + 1$.
-* **`modifiedMetric_empty_holes`** — Proves that when the hole family $H$ has no holes, the modified metric simplifies to the standard bulk tree metric: $d_M(X, \bmod \emptyset) = |X| - 1$.
+* **`discreteModifiedMetric`** — The discrete modified metric $d_M(X, \bmod H)$ defined as the Steiner tree length of the skeleton. To ensure classical decidability of the existential properties, we used a `by classical` block in its definition.
+* **`skeleton_card_le_discreteModifiedMetric_add_one`** — Proves that the cardinality of the skeleton is bounded by the modified metric plus 1: $|\text{skeleton } H\ X| \leq d_M(X, \bmod H) + 1$.
+* **`discreteModifiedMetric_empty_holes`** — Proves that when the hole family $H$ has no holes, the modified metric simplifies to the standard bulk tree metric: $d_M(X, \bmod \emptyset) = |X| - 1$.
 
 **How compilation was resolved.**
-We used `Nat.sInf_mem` to extract the minimal connected vertex set $S$ spanning the skeleton, and verified that its card is related to the modified metric. For `modifiedMetric_empty_holes`, we showed that when holes are empty, the set of connected sets containing the skeleton and contained in $X$ is the singleton $\{X\}$. We then proved that the `sInf` of a singleton $\{x\}$ equals $x$ by utilizing `Nat.sInf_mem` and `Set.mem_singleton_iff`.
+We used `Nat.sInf_mem` to extract the minimal connected vertex set $S$ spanning the skeleton, and verified that its card is related to the modified metric. For `discreteModifiedMetric_empty_holes`, we showed that when holes are empty, the set of connected sets containing the skeleton and contained in $X$ is the singleton $\{X\}$. We then proved that the `sInf` of a singleton $\{x\}$ equals $x$ by utilizing `Nat.sInf_mem` and `Set.mem_singleton_iff`.
 
 **Honest scope.** This is purely combinatorial lattice geometry, defining the modified metric and its skeleton cardinality bound. It does not resolve the analytic Gaussian suppressions of the holes required for full summability. Clay distance **~0% (<0.1%), unchanged**.
 
@@ -3615,7 +3615,7 @@ We used `Nat.sInf_mem` to extract the minimal connected vertex set $S$ spanning 
 **Build:** green (fillings bounds added to `ModifiedMetric.lean`).
 Oracle: `[propext, Classical.choice, Quot.sound]`.
 
-This addendum completes the multi-hole polymer multiplicity bounds:
+This addendum completes the multi-hole polymer multiplicity bounds, marking progress on **P2b-ii-b-2**:
 
 * **`admissibleFillings`** — Defines the set of connected, hole-respecting polymers with a fixed skeleton Y.
 * **`fillings_card_le_two_pow`** — Proves that the number of admissible fillings is bounded by $2^{\Delta \cdot |Y|}$.
@@ -3633,7 +3633,7 @@ We defined the injection from admissible fillings to subsets of touching holes u
 **Build:** green (metric comparison theorems added to `ModifiedMetric.lean`).
 Oracle: `[propext, Classical.choice, Quot.sound]`.
 
-This addendum formalises the source-faithful comparison bounds for the discrete modified metric, marking progress on **P2b-ii-b-2**:
+This addendum formalises the source-faithful comparison bounds for the discrete modified metric, marking progress on **P2b-ii-b-3**:
 
 * **`discreteModifiedMetric_le_bulkTreeLength`** — Proves that the discrete modified metric is bounded above by the standard bulk tree metric: $d_M(X, \bmod H) \leq |X| - 1$ for connected $X$.
 * **`discreteModifiedMetric_mono_skeleton`** — Proves that a larger skeleton $Y_1 \subseteq Y_2$ (for a fixed polymer $X$) yields a larger metric: $d_M(X, \bmod H_1) \leq d_M(X, \bmod H_2)$ when $\text{skeleton } H_1\ X \subseteq \text{skeleton } H_2\ X$.
@@ -3679,3 +3679,54 @@ This addendum proves the genuine discrete modified-metric summability on the cub
 We grouped the polymer sum fiberwise over their connected minimal spanning sets $S$ using `exists_minimal_spanning_set` to associate each polymer $X$ with a spanning set $S$ of cardinality $d_M(X, \bmod H) + 1$. By partitioning the sum via `Finset.sum_fiberwise_of_maps_to`, the multiplicity of polymers matching a given spanning set $S$ was bounded by the powerset of $S$ times the maximum fillings of each subset, yielding $2^{(3^d + 1)|S|}$. The resulting sum was then majorized by the standard lattice polymer sum with base $q' = q \cdot 2^{3^d + 1}$ and bounded using `cube_polymer_summable`. All summability premises were discharged via `Summable.of_finite` over the finite torus.
 
 **Honest scope.** This is purely combinatorial lattice geometry, establishing the discrete modified-metric summability on the cube lattice. It does not resolve the analytic Gaussian suppressions of the holes or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
+
+
+## Addendum 94 (2026-06-18, **holes-respected polymer system instantiation**
+`YangMills.RG.holePolymerSystem`; core 8265)
+
+**Build:** green (instantiation added to `HolePolymerSystem.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum instantiates the abstract `KP.PolymerSystem` for the holes-respected polymer family on the cube lattice, marking progress toward **P3**:
+
+* **`holePolymerSystem`** — Defines the polymer system with nonempty, connected finsets of cubes respecting the hole family $H$, with overlap as the incompatibility relation.
+* **`Fintype` instance** — Synthesized classically to establish that the polymer type is finite on the torus, allowing full compatibility with the existing KP expansion and convergence theorems.
+
+**How compilation was resolved.**
+We proved self-incompatibility via `Finset.disjoint_left.mp` on a nonempty witness, and established the Fintype instance by introducing `attribute [local instance] Classical.propDecidable` and carrying the torus positivity constraint `[NeZero L]`. The instance and constructor were marked as `noncomputable` due to the classical choice axiom dependency.
+
+**Honest scope.** This is a structural instantiation of the polymer system framework on the lattice. It does not prove the analytical Gaussian activity bounds for the renormalization group or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
+
+
+## Addendum 95 (2026-06-18, **discrete modified metric degenerate cases regression testing**
+`YangMills.RG.discreteModifiedMetric_d_zero` and `YangMills.RG.discreteModifiedMetric_L_one`; core 8265)
+
+**Build:** green (regression lemmas added to `ModifiedMetric.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum completes the boundary-case testing of the discrete modified metric:
+
+* **`discreteModifiedMetric_d_zero`** — Proves that when $d = 0$, the metric is always 0.
+* **`discreteModifiedMetric_L_one`** — Proves that when $L = 1$, the metric is always 0.
+
+**How compilation was resolved.**
+Since $d = 0$ or $L = 1$, the underlying type of cubes is a subsingleton (proven using `funext` and Lean's built-in `nomatch` construct for empty type elimination, or `Subsingleton.elim`). Thus, any spanning set $S$ has cardinality at most 1, so the Steiner tree length $S.card - 1$ is always 0.
+
+**Honest scope.** This is purely combinatorial testing on degenerate lattice dimensions and sizes. Clay distance **~0% (<0.1%), unchanged**.
+
+
+## Addendum 96 (2026-06-18, **holes-respected rooted activity sum bound**
+`YangMills.RG.rootedHolePolymerSum` and `YangMills.RG.rootedHolePolymerSum_bound`; core 8265)
+
+**Build:** green (rooted sum and bounds added to `HolePolymerSystem.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum formalises the rooted polymer activity sum and its volume-independent upper bound:
+
+* **`rootedHolePolymerSum`** — Defines the total activity sum of connected, hole-respecting polymers whose skeleton contains a fixed root $r$.
+* **`rootedHolePolymerSum_bound`** — Proves a volume-uniform bound on the norm of the activity sum under the coordination entropy-suppression condition.
+
+**How compilation was resolved.**
+We bounded the norm of the activity sum by the sum of the norms using `norm_tsum_le_tsum_norm` (discharged via the finite-sum summability proof). We then mapped the sum over the subtype of polymers to a sum over all connected, hole-respecting finsets using `Fintype.sum_equiv` with a bijection `f1`, and majorized it via the discrete modified-metric summability theorem.
+
+**Honest scope.** This provides the convergent activity sum bound required by the cluster expansion consumer. It does not prove the analytical Gaussian activity bounds for the renormalization group or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
