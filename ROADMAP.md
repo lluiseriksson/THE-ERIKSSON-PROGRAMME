@@ -1,6 +1,6 @@
 # ROADMAP — pushing the boundary toward an unconditional Yang–Mills mass gap
 
-> **STATUS STAMP (2026-06-18, latest).** Core green at **8263 jobs**,
+> **STATUS STAMP (2026-06-18, latest).** Core green at **8264 jobs**,
 > Mathlib pinned (see `REPRODUCIBILITY.md`).  Since this roadmap was first
 > written (2026-06-09) several tracks closed: the area-law track (all four
 > variants — finite-volume/volume-uniform × linearized/exact-activity,
@@ -173,7 +173,7 @@ history of this repo.
    re-derive its content; then re-add it to `YangMillsCore`. *(Hygiene, low risk.)*
    — **DONE (2026-06-18, ledger Addendum 85).** The off-diagonal entry
    orthogonality `∫ U_{ij}·star(U_{kl}) = 0` for `i ≠ k` (L2.6 step 1b-ii) is
-   repaired and re-imported by `YangMillsCore`; core now **8263 jobs**,
+   repaired and re-imported by `YangMillsCore`; core now **8264 jobs**,
    oracle `[propext, Classical.choice, Quot.sound]`.
 2. **Sharp second moment** `∫|tr U|² = 1` for SU(2) via the Weyl integration
    formula. First genuinely *quantitative* Schur fact; base case of M1. *(Medium.)*

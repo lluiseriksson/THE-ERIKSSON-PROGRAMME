@@ -189,3 +189,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- scalar correctness (non-vacuity: nearLog IS the logarithm) + conjugation-equivariance
 #print axioms YangMills.RG.nearLog_real
 #print axioms YangMills.RG.nearLog_conj
+
+/-! ### The polymer modified metric (brick P2b-i) -/
+#print axioms YangMills.RG.walk_crosses_frontier
+#print axioms YangMills.RG.absorbedHole_touches_skeleton_single

@@ -3526,6 +3526,21 @@ character-orthogonality programme toward F4 (which itself is downstream of
 Peter–Weyl, still not in Mathlib). It discharges *no* `hRpoly`/§6.3/continuum
 obligation; Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 86 (2026-06-18, **polymer modified metric combinatorial core**
+`YangMills.RG.walk_crosses_frontier` and `YangMills.RG.absorbedHole_touches_skeleton_single`; core 8264)
+
+**Build:** green (the new module `YangMills/RG/ModifiedMetric.lean` added and imported by `YangMillsCore`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum closes the combinatorial core of the polymer-with-holes campaign brick **P2b-i**:
+
+* **`walk_crosses_frontier`** — a walk staying inside `A ∪ B` that starts in `A \ B` and ends in `B \ A` must contain an edge crossing from `A` to `B`.
+* **`absorbedHole_touches_skeleton_single`** — for a walk-connected polymer `Y ∪ H₀` composed of skeleton `Y` and a single disjoint absorbed hole `H₀`, the hole `H₀` must touch the skeleton `Y` via a `cubeAdj`-edge.
+
+**How compilation was resolved.** The initial implementation relied on a nonexistent `SimpleGraph.Walk.exists_cons_of_not_nil` decomposition lemma, which caused compilation errors under Mathlib v4.29. This was replaced with a direct induction proof using a strong induction recursor on the walk length (`n`) combined with `match p with` and the explicit recursor constructor pattern `@Walk.cons`. The induction variables were generalized, and the `omega` linter was assisted by rewriting the definition of `Walk.length_cons` explicitly to resolve inequality proofs.
+
+**Honest scope.** This is purely combinatorial lattice geometry, providing the walk-based topological lemma for single-hole absorption (Appendix E, Lemma E.3). It does not resolve any multi-hole configurations or the analytic Gaussian suppressions of the holes. Clay distance **~0% (<0.1%), unchanged**.
+
 ## Scope statement (the honest line)
 
 Everything above is **lattice, finite-volume, M3-side**.  None of it reduces

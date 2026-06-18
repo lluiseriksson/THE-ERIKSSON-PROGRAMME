@@ -243,3 +243,6 @@ import YangMills.RG.AnimalTour
 -- hRpoly campaign P2 geometry: the M-cube king-adjacency graph (Dimock II
 -- §3.1.2), its degree bound ≤ 3^d, and the concrete lattice polymer summability.
 import YangMills.RG.CubeLattice
+
+-- hRpoly campaign brick P2b-i: polymer modified metric
+import YangMills.RG.ModifiedMetric

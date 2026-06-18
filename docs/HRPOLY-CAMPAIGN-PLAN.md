@@ -1,6 +1,6 @@
 # `hRpoly` CAMPAIGN — the cluster-expansion-with-holes activity bound
 
-**Live status (2026-06-14).** Core green at **8262 jobs**.  The campaign has
+**Live status (2026-06-18).** Core green at **8264 jobs**.  The campaign has
 already closed substantial substrate: animal counting, cube summability,
 marginal-coupling summability, exponential-decay kernel calculus, Schur/PSD
 kernel bounds, Gaussian MGF bounds, concrete finite-dimensional Gaussian
@@ -82,7 +82,8 @@ gives `rooted_connected_weight_summable` (`RG/AnimalTour.lean`):
 | **P1b** | **Spanning closed walk** (`exists_peel` + `exists_spanning_closed_walk`, `RG/AnimalTour.lean`, ledger Add. 59): an `S`-connected size-`n` set gets a closed walk from `r` of length `2(n−1)`, support `= S`, by peeling the farthest vertex and splicing with `exists_detour_walk`. | **code** — combinatorics, self-contained | **DONE** (core 8254) |
 | **P1c** | **Lattice animal count** `animal_card_le` (`RG/AnimalTour.lean`, Add. 59): `A.card ≤ Δ^{2(n−1)}` for any family of `S`-connected size-`n` rooted sets — `c_n ≤ Cⁿ`, `C = Δ²` — via the injective `animal ↦ spanning walk` + P1a. | **code** — combinatorics | **DONE** (core 8254) |
 | **P2a** | **`M`-cube adjacency graph + concrete summability** (`RG/CubeLattice.lean`, ledger Add. 61): `cubeAdj d L` (king-adjacency, Dimock II §3.1.2), `cubeAdj_degree_le` (`≤ 3^d`), `cube_polymer_summable` (`∑_Y q^{#Y} ≤ (1−(3^d)²q)⁻¹`).  Bulk / hole-free case. | code | **DONE** (core 8255) |
-| **P2b** | **Holes / modified metric** `d_M(·, mod Ω^c)`: define the large-field-hole structure and the modified distance (Dimock II §3.1.2, eqs 150–151), and the full modified-metric summability (needs the holes' Gaussian suppression). | code — HARD (geometry + suppression) | open |
+| **P2b-i** | **Holes / modified metric combinatorial core** (`walk_crosses_frontier` and `absorbedHole_touches_skeleton_single`, `RG/ModifiedMetric.lean`): the topological lemma for a walk crossing the frontier and the single-hole touching proof. | code — pure combinatorics | **DONE** (core 8264) |
+| **P2b-ii** | **Holes / modified metric full summability**: define the modified distance `d_M(·, mod Ω^c)` (Dimock II §3.1.2, eqs 150–151), and the full modified-metric summability (needs the holes' Gaussian suppression). | code — HARD (geometry + suppression) | open |
 | **P3** | **Cluster-expansion-with-holes convergence (Appendix F)**: the renormalized-activity decay `|H^#(Y)| ≤ O(1)H₀ e^{−(κ−3κ₀−3)d}` from the raw bound + summability.  Generalises `KP` convergence to the modified metric.  **The crux of (B).** | code — HARD, months-scale | open (source §4) |
 | **P4** | **Fluctuation integral → raw activity bound (§3.8)**: `|H_k(X)| ≤ H₀ e^{−κ d}` from the Gaussian step, `H₀ ∝ g_k^{κ₀}`.  **The crux of (A).** | code — HARD, months-scale, needs the lattice Gaussian covariance | open (source §4) |
 | **P5** | **Assemble `hRpoly`**: combine P3 (renormalized decay) + P4 (raw bound) + P1/P2 (summability) ⟹ `|R_{t,k}| ≤ A e^{−c₀t} g_k^{κ₀}`; feed `lattice_mass_gap_of_cluster_and_coupling` ⟹ the **unconditional lattice mass gap**. | code (glue, once P1–P4 land) | open |
@@ -160,7 +161,7 @@ YM coupling flow must come from Bałaban's YM papers — do NOT transcribe these
 `φ⁴₃` numbers into the YM target.
 
 Remaining genuinely-open analytic work (now source-grounded, still large):
-**P2b** (the holes / modified-metric `d_M` + the with-holes summability,
+**P2b-ii** (the holes / modified-metric `d_M` + the with-holes summability,
 needing the Gaussian suppression), **P3** (Appendix F cluster expansion with
 holes, on top of the repo's KP layer), **P4** (the §3.14 raw activity bound,
 which for YM needs the YM single-scale integral — not the `φ⁴₃` §3.14).
