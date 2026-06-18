@@ -3542,7 +3542,7 @@ This addendum closes the combinatorial core of the polymer-with-holes campaign b
 **Honest scope.** This is purely combinatorial lattice geometry, providing the walk-based topological lemma for single-hole absorption (Appendix E, Lemma E.3). It does not resolve any multi-hole configurations or the analytic Gaussian suppressions of the holes. Clay distance **~0% (<0.1%), unchanged**.
 
 ## Addendum 87 (2026-06-18, **multi-hole skeleton touching and multiplicity bounds**
-`YangMills.RG.absorbedHole_touches_skeleton_multi` and `YangMills.RG.touchingHoles_card_le`; core 8164)
+`YangMills.RG.absorbedHole_touches_skeleton_multi` and `YangMills.RG.touchingHoles_card_le`; core 8264)
 
 **Build:** green (multiplicity bounds and associated theorems added to `ModifiedMetric.lean`).
 Oracle: `[propext, Classical.choice, Quot.sound]`.

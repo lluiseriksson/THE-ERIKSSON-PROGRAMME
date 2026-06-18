@@ -1,8 +1,8 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-18
-(`ClayCore: off-diagonal matrix-coefficient vanishing repaired into the core`,
-ledger Addendum 85).
+(`feat(rg): define modifiedMetric and prove skeleton card bound (P2b-ii-b-1 closed)`,
+ledger Addendum 89).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look

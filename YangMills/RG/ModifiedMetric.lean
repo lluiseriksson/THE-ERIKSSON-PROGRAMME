@@ -30,29 +30,22 @@ of Lemma E.3's proof.
   a hole-component family `H`, and the predicate "`X` respects `H`" (each
   hole is either fully contained in `X` or disjoint from `X`).
 * **`skeleton`** — the cubes of `X` lying in no hole (`X ∩ (⋃H)ᶜ`); the part
-  of the polymer the modified metric `d_M` actually weights.
-* **`cubeConnected`** — the walk-based form of "connected polymer" (the
-  self-contained idiom of `RG/AnimalTour.lean`, avoiding the
-  `Set`/`Finset` `SimpleGraph.Connected` API).
+  of the polymer the discrete modified metric actually weights.
+* **`cubeConnected`** — the walk-based form of "connected polymer".
 * **`walk_crosses_frontier`** — the elementary bridge lemma: a walk that
   stays in `A ∪ B`, starts in `A \ B` and ends in `B \ A`, must cross an
-  `Adj`-edge from `A` to `B`.  Proved by induction on the walk.
-* **`absorbedHole_touches_skeleton_single`** — the combinatorial heart of
-  Dimock Lemma E.3, **single-hole case** `X = Y ∪ H₀`: if `X` is
-  `cubeConnected` with `Y`, `H₀` nonempty and disjoint, then `H₀` touches
-  `Y` via a `cubeAdj`-edge.  This is exactly the step by which Dimock bounds
-  the number of absorbable holes by the *per-cube frontier* of the skeleton
-  (rather than the global hole family), turning a hole-discounted decay into
-  a uniform polymer count.
+  `Adj`-edge from `A` to `B`.
+* **`absorbedHole_touches_skeleton_single`** and **`absorbedHole_touches_skeleton_multi`** —
+  every absorbed hole in a connected polymer must touch the skeleton $Y$ via an edge.
+* **`touchingHoles_card_le`** — the number of absorbed holes touching the skeleton $Y$ is at most $\Delta \cdot |Y|$.
+* **`card_le_activeEdges_add_one`** — the active-edge cardinality bound for connected sets: $|S| \leq |E(G[S])| + 1$.
+* **`discreteModifiedMetric`** — the discrete modified metric $d_M(X, \bmod H)$ defined as the Steiner tree length of the skeleton.
+* **`skeleton_card_le_discreteModifiedMetric_add_one`** — the skeleton size is bounded by the discrete modified metric plus 1: $|Y| \leq d_M(X, \bmod H) + 1$.
+* **`discreteModifiedMetric_empty_holes`** — when there are no holes, the metric reduces to $|X| - 1$.
 
 ## What is NOT here (honest scope)
 
-* The full multi-hole hole-multiplicity bound `#{X : skeleton = Y} ≤
-  2^{2d·|Y|}` (Dimock eq. ~630), the sharp `2d` face-coordination, and the
-  eq-151 summability with the Gaussian suppression are **open** (P4,
-  months-scale).  This file supplies the single-hole touching lemma (fully
-  rigorous); the multi-hole assembly, the per-cube frontier count, and the
-  analytic `e^{−c|Ω_k^c|_M}` suppression remain.
+* The full modified-metric summability under Gaussian suppression is **open** (requires P4, months-scale). Without the P4 large-field analytic suppression $e^{-c |H_0|}$, the sum over all polymers for a fixed skeleton can diverge.
 * Everything is **lattice / finite-volume / φ⁴₃-combinatorics**.  Dimock's
   constants are `φ⁴₃`; the 4D YM activity bounds come from Bałaban's YM
   papers, not transcribed here.  Clay distance **~0% (<0.1%), unchanged**.
@@ -508,8 +501,8 @@ theorem card_le_activeEdges_add_one {V : Type*} [DecidableEq V] [Fintype V] (G :
     S.card ≤ (activeEdges G S).card + 1 :=
   card_le_activeEdges_add_one_of_card G S.card S hconn hne rfl
 
-/-- The modified metric d_M(X, mod H) defined as the Steiner tree length of the skeleton in G[X]. -/
-noncomputable def modifiedMetric {d L : ℕ} (H : HoleFamily d L) (X : Finset (Cube d L)) : ℕ := by
+/-- The discrete modified metric d_M(X, mod H) defined as the Steiner tree length of the skeleton in G[X]. -/
+noncomputable def discreteModifiedMetric {d L : ℕ} (H : HoleFamily d L) (X : Finset (Cube d L)) : ℕ := by
   classical
   let Y := skeleton H X
   exact if h : ∃ S : Finset (Cube d L), Y ⊆ S ∧ S ⊆ X ∧ cubeConnected S then
@@ -517,14 +510,14 @@ noncomputable def modifiedMetric {d L : ℕ} (H : HoleFamily d L) (X : Finset (C
   else
     0
 
-theorem skeleton_card_le_modifiedMetric_add_one {d L : ℕ} (H : HoleFamily d L)
+theorem skeleton_card_le_discreteModifiedMetric_add_one {d L : ℕ} (H : HoleFamily d L)
     (X : Finset (Cube d L)) (hconn : cubeConnected X) :
-    (skeleton H X).card ≤ modifiedMetric H X + 1 := by
+    (skeleton H X).card ≤ discreteModifiedMetric H X + 1 := by
   classical
   have h_ex : ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S := by
     refine ⟨X, skeleton_subset H X, by rfl, hconn⟩
-  have h_metric : modifiedMetric H X = sInf {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
-    unfold modifiedMetric
+  have h_metric : discreteModifiedMetric H X = sInf {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
+    unfold discreteModifiedMetric
     rw [dif_pos h_ex]
   have h_ne : {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n}.Nonempty := by
     refine ⟨X.card - 1, X, skeleton_subset H X, by rfl, hconn, rfl⟩
@@ -541,9 +534,9 @@ theorem skeleton_card_le_modifiedMetric_add_one {d L : ℕ} (H : HoleFamily d L)
     have h_le : (skeleton H X).card ≤ S.card := card_le_card hY
     omega
 
-theorem modifiedMetric_empty_holes {d L : ℕ} (H : HoleFamily d L) (hH : H.holes = ∅)
+theorem discreteModifiedMetric_empty_holes {d L : ℕ} (H : HoleFamily d L) (hH : H.holes = ∅)
     (X : Finset (Cube d L)) (hconn : cubeConnected X) :
-    modifiedMetric H X = X.card - 1 := by
+    discreteModifiedMetric H X = X.card - 1 := by
   classical
   have hY : skeleton H X = X := by
     unfold skeleton
@@ -552,8 +545,8 @@ theorem modifiedMetric_empty_holes {d L : ℕ} (H : HoleFamily d L) (hH : H.hole
     simp
   have h_ex : ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S := by
     refine ⟨X, by rw [hY], by rfl, hconn⟩
-  have h_metric : modifiedMetric H X = sInf {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
-    unfold modifiedMetric
+  have h_metric : discreteModifiedMetric H X = sInf {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} := by
+    unfold discreteModifiedMetric
     rw [dif_pos h_ex]
   rw [h_metric]
   have h_eq : {n | ∃ S : Finset (Cube d L), skeleton H X ⊆ S ∧ S ⊆ X ∧ cubeConnected S ∧ S.card - 1 = n} = {X.card - 1} := by
