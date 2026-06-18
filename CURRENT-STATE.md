@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-18
-(`feat(rg): prove modified-metric summability theorem (P2b-ii-c closed)`,
+(`feat(rg): rename theorem to skeleton_fillings_weight_summable and reopen P2b-ii-d`,
 ledger Addendum 92).
 
 This file is the short, live entry point. Historical plans and ledgers are kept

@@ -710,11 +710,12 @@ theorem discreteModifiedMetric_mono_holes {d L : ℕ} (H₁ H₂ : HoleFamily d 
   refine ⟨S, ?_, hS_sub, hS_conn, h_eq⟩
   exact h_mono.trans hS_skel
 
-/-- **Modified-Metric Summability** (Dimock Appendix E, proof of Lemma E.3).
+/-- **Skeleton-Fillings Multiplicity Bound** (Dimock Appendix E, preliminary combinatorial estimate for Lemma E.3).
     The polymer sum over all connected skeletons Y containing a fixed root r,
     weighted by the filling multiplicity and the exponential metric decay,
-    is summable and bounded by a volume-independent constant. -/
-theorem discreteModifiedMetric_weight_summable_of_skeleton_count {d L : ℕ} [NeZero L]
+    is summable and bounded by a volume-independent constant.
+    This is a preliminary combinatorial estimate, not the modified-metric summability itself. -/
+theorem skeleton_fillings_weight_summable {d L : ℕ} [NeZero L]
     (H : HoleFamily d L) (r : Cube d L) (q : ℝ)
     (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
     (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
