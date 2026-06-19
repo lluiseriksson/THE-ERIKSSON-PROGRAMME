@@ -510,5 +510,27 @@ theorem characterL2_sum_eq_sum_iff
     subst h
     rfl
 
+/-- A finite character expansion in a fixed pairwise-inequivalent irreducible
+family vanishes iff all its coefficients vanish. -/
+theorem characterL2_sum_eq_zero_iff
+    {α : Type*} [Fintype α] [DecidableEq α]
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : α → ContinuousUnitaryMatrixRep G ι)
+    [∀ a, (ρ a).IsIrreducible] [Nonempty ι]
+    (hineq : ∀ ⦃a b : α⦄, a ≠ b →
+      IsEmpty (Representation.Equiv (ρ a).toRepresentation (ρ b).toRepresentation))
+    (c : α → ℂ) :
+    (∑ a, c a • (ρ a).characterL2 μ = 0) ↔ c = 0 := by
+  classical
+  have hzero :
+      (∑ a, (0 : α → ℂ) a • (ρ a).characterL2 μ) = 0 := by
+    simp
+  constructor
+  · intro h
+    exact (characterL2_sum_eq_sum_iff μ ρ hineq c 0).1 (by simpa [hzero] using h)
+  · intro h
+    subst h
+    simp
+
 end ContinuousUnitaryMatrixRep
 end YangMills.ClayCore

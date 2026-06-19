@@ -4593,3 +4593,21 @@ basis character.
 It does not assert Peter-Weyl completeness, infinite expansion convergence,
 SU(N) irreducible classification, continuum construction, or the open
 `hRpoly` activity-decay estimate. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 131 (2026-06-19, **finite character zero-expansion criterion**
+`YangMills.ClayCore.ContinuousUnitaryMatrixRep.characterL2_sum_eq_zero_iff`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum records the zero-expansion consumer of Addendum 130: in a fixed
+finite pairwise-inequivalent family of irreducible continuous unitary matrix
+characters, a finite Haar-`L²` character expansion is zero if and only if every
+coefficient is zero.  The proof is the uniqueness theorem specialized to the
+zero coefficient function.
+
+**Honest scope.** This is still only a finite-family Hilbert-space fact.  It
+does not assert Peter-Weyl completeness, infinite expansion convergence,
+SU(N) irreducible classification, continuum construction, or the open
+`hRpoly` activity-decay estimate. Clay distance **~0% (<0.1%), unchanged**.

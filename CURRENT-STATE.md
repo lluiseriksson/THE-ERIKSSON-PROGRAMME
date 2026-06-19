@@ -143,7 +143,8 @@ independence statement. The finite coefficient-extraction identity
 `inner_characterL2_sum` recovers expansion coefficients by Haar `L²` inner
 product inside such finite orthonormal character families, and
 `characterL2_sum_eq_sum_iff` packages uniqueness of finite character expansion
-coefficients in the same fixed family.
+coefficients in the same fixed family. Its zero-expansion consumer
+`characterL2_sum_eq_zero_iff` gives the common "all coefficients vanish" form.
 
 ## What Is Not Claimed
 
