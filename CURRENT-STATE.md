@@ -58,7 +58,8 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`,
   which derives that active local KP window from the pointwise modified-metric
   majorant `exp(t)‖z(Y)‖exp(|Y|) ≤ A q^(d_M(Y)+1)` and the already-proved
-  discrete modified-metric summability.
+  discrete modified-metric summability, with direct convergence and
+  cluster-sum norm-bound companions for the same metric-bound hypotheses.
 
 The latest RG skeleton-tail interface is local-KP-shaped throughout:
 

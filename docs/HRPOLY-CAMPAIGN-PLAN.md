@@ -213,7 +213,9 @@ metric-bound bridge
 `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`
 now derives that local KP window from the source-shaped pointwise estimate
 `exp(t)‖z(Y)‖exp(|Y|) ≤ A q^(d_M(Y)+1)` plus the discrete modified-metric
-summability already proved in P2b.
+summability already proved in P2b.  Its direct convergence and norm-bound
+companions package the same metric-bound hypotheses all the way to the
+active-system Mayer cluster series.
 
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the

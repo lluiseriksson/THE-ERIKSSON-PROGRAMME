@@ -4756,3 +4756,23 @@ decay is assumed hiddenly beyond the explicit pointwise majorant.
 pointwise modified-metric decay + summability ⟹ active KP convergence for the
 literal `Ω` relation.  It does not prove the Yang-Mills pointwise activity
 decay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 138 (2026-06-19, **Appendix-F metric-bound convergence wrappers**
+`YangMills.RG.omegaHolePolymerSystem_converges_volumeUniform_skeleton_exp_of_metric_bound`,
+`YangMills.RG.omegaHolePolymerSystem_norm_clusterSum_le_volumeUniform_skeleton_exp_of_metric_bound`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum packages Addendum 137 through the standard KP consumers.  Under
+the same explicit pointwise modified-metric activity majorant and smallness
+hypotheses, the exponential-tilted source-facing `Ω`-active Mayer series is
+summable, and its cluster-sum norm is bounded by the usual KP activity norm
+sum.  This gives the future activity-decay theorem a direct consumer theorem
+instead of requiring it to separately invoke the KP criterion.
+
+**Honest scope.** These are wrappers around the already-verified active KP
+criterion and sharp KP convergence theorem.  The Yang-Mills pointwise activity
+decay remains the open analytic input.  Clay distance **~0% (<0.1%),
+unchanged**.

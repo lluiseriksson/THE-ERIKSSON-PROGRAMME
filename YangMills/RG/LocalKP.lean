@@ -577,6 +577,57 @@ theorem omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_
     exact mul_le_mul_of_nonneg_left hmetric hA0
   exact hpoint.trans (hAmetric.trans hsmall)
 
+/-- Source-facing `Ω`-active Mayer convergence directly from the pointwise
+modified-metric majorant. -/
+theorem omegaHolePolymerSystem_converges_volumeUniform_skeleton_exp_of_metric_bound
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (t q A : ℝ)
+    (hA0 : 0 ≤ A)
+    (hact : ∀ Y : OmegaPolymerType H z,
+      Real.exp t * ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ)
+        ≤ A * q ^ (discreteModifiedMetric H Y.val + 1))
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hq0 : 0 ≤ q)
+    (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)) < 1)
+    (hsmall : A *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹ ≤ 1) :
+    Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) →
+          ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)).Polymer,
+        (KP.ursell ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)) X : ℂ) *
+          ∏ i, ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)).activity (X i)) :=
+  KP.kp_convergence_sharp ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t))
+    (omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound
+      H z t q A hA0 hact hdisj hnoedges hholes_ne hq0 hCq hsmall)
+
+/-- Source-facing `Ω`-active cluster-sum norm bound directly from the
+pointwise modified-metric majorant. -/
+theorem omegaHolePolymerSystem_norm_clusterSum_le_volumeUniform_skeleton_exp_of_metric_bound
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (t q A : ℝ)
+    (hA0 : 0 ≤ A)
+    (hact : ∀ Y : OmegaPolymerType H z,
+      Real.exp t * ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ)
+        ≤ A * q ^ (discreteModifiedMetric H Y.val + 1))
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hq0 : 0 ≤ q)
+    (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)) < 1)
+    (hsmall : A *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹ ≤ 1) :
+    ‖KP.clusterSum ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t))‖
+      ≤ ∑ c : ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)).Polymer,
+          ‖((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)).activity c‖ *
+            Real.exp (c.val.card : ℝ) :=
+  KP.kp_norm_clusterSum_le_sharp ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t))
+    (omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound
+      H z t q A hA0 hact hdisj hnoedges hholes_ne hq0 hCq hsmall)
+
 /-- **Volume-Uniform Mayer Cluster Series Convergence:**
     The cluster series converges absolutely and volume-uniformly under the local summability condition. -/
 theorem holePolymerSystem_converges_volumeUniform {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
