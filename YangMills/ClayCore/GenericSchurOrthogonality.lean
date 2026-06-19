@@ -456,5 +456,17 @@ theorem orthonormal_characterL2
       hineq h
     simpa [h] using inner_characterL2_eq_zero_of_not_equiv μ (ρ b) (ρ a)
 
+/-- Finite families of pairwise inequivalent irreducible unitary characters are
+linearly independent in Haar `L²`. -/
+theorem linearIndependent_characterL2
+    {α : Type*} [Fintype α] [DecidableEq α]
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : α → ContinuousUnitaryMatrixRep G ι)
+    [∀ a, (ρ a).IsIrreducible] [Nonempty ι]
+    (hineq : ∀ ⦃a b : α⦄, a ≠ b →
+      IsEmpty (Representation.Equiv (ρ a).toRepresentation (ρ b).toRepresentation)) :
+    LinearIndependent ℂ (fun a => (ρ a).characterL2 μ) :=
+  (orthonormal_characterL2 μ ρ hineq).linearIndependent
+
 end ContinuousUnitaryMatrixRep
 end YangMills.ClayCore

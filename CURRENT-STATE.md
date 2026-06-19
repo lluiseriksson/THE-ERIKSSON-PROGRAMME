@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(ClayCore): package finite character orthonormality`).
+(`feat(ClayCore): expose character linear independence`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -136,8 +136,10 @@ The character-level corollaries are also packaged:
 inequivalent irreducible characters, and `integral_character_mul_star` proves
 that an irreducible character has Haar `L²` norm one. The same facts are now
 available directly through the Hilbert-space wrappers
-`inner_characterL2_eq_zero_of_not_equiv` and `inner_characterL2`, and finite
-pairwise-inequivalent families are packaged as `orthonormal_characterL2`.
+`inner_characterL2_eq_zero_of_not_equiv` and `inner_characterL2`; finite
+pairwise-inequivalent families are packaged as `orthonormal_characterL2`, and
+`linearIndependent_characterL2` exposes the resulting finite linear
+independence statement.
 
 ## What Is Not Claimed
 

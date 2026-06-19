@@ -4537,3 +4537,21 @@ remains blocked pending a Yang-Mills source giving raw-support activity
 control, hole-interior suppression, or a polymer-class restriction.  The
 theorem is a verified consumer for such a source input, not a proof of the
 Yang-Mills activity estimate. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 128 (2026-06-19, **finite character linear independence**
+`YangMills.ClayCore.ContinuousUnitaryMatrixRep.linearIndependent_characterL2`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum extracts the classical finite-family consequence of Addendum 126:
+pairwise inequivalent irreducible continuous unitary matrix characters are
+linearly independent in Haar `L²`.  The proof uses the Hilbert-space route:
+`orthonormal_characterL2` followed by Mathlib's
+`Orthonormal.linearIndependent`.
+
+**Honest scope.** This is still finite-family F2/Peter-Weyl substrate.  It does
+not prove Peter-Weyl completeness, classify SU(N) irreducibles, construct a
+continuum theory, or discharge the open `hRpoly` activity-decay estimate. Clay
+distance **~0% (<0.1%), unchanged**.

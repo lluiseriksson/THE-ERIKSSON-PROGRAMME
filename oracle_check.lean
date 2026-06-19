@@ -304,3 +304,4 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.inner_characterL2_eq_zero_of_not_equiv
 #print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.inner_characterL2
 #print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.orthonormal_characterL2
+#print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.linearIndependent_characterL2
