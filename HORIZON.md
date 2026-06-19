@@ -162,7 +162,8 @@ L25 [DONE]  ∫ ‖tr U‖² ≤ N                       SchurL25
  │
  ├─► F2  [PARTIAL] matrix-coefficient L² API on Haar       ◄ Mathlib-grade
  │        │  ├ generic continuous-unitary matrix API DONE:
- │        │  │  ContinuousUnitaryRep (coefficients/characters in C(G) and L²)
+ │        │  │  ContinuousUnitaryRep (coefficients/characters in C(G) and L²;
+ │        │  │  algebraic Representation bridge; scalar Schur intertwiners)
  │        │  ├ fundamental SU(N) case DONE: SchurFundamentalOrthogonality
  │        │  │  (continuous/L² coefficients, exact δᵢₖδⱼₗ/N inner products,
  │        │  │   and the normalized orthonormal family)
@@ -207,8 +208,11 @@ def matrixCoeff (ρ : Representation ℂ G V) (i j : ι) : G → ℂ := fun g =>
 -- `inner_fundamentalMatrixCoeffL2`, capped by
 -- `orthonormal_normalizedFundamentalMatrixCoeffL2`.
 -- Generic matrix-realized continuous unitary representation API DONE in
--- ContinuousUnitaryRep.lean. STUB: basis-free representations, irreducibility,
--- inter-representation orthogonality, and Peter-Weyl completeness.
+-- ContinuousUnitaryRep.lean, including a bridge to Mathlib's algebraic
+-- `Representation`, irreducibility, and intertwiner API. Algebraic Schur is
+-- consumable: irreducible intertwiners are zero/bijective and self-intertwiners
+-- are scalar. STUB: generic Haar inter-representation orthogonality and
+-- Peter-Weyl completeness.
 ```
 
 ### F3 — Peter–Weyl (the bottleneck; likely a standalone Mathlib contribution)

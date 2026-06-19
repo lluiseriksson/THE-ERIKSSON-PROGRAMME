@@ -3,8 +3,10 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
+import Mathlib.Analysis.Complex.Polynomial.Basic
 import Mathlib.LinearAlgebra.UnitaryGroup
 import Mathlib.MeasureTheory.Function.L2Space
+import Mathlib.RepresentationTheory.Irreducible
 import Mathlib.Topology.Algebra.Star.Unitary
 import Mathlib.Topology.Instances.Matrix
 
@@ -53,6 +55,61 @@ theorem map_one (ρ : ContinuousUnitaryMatrixRep G ι) :
 theorem map_mul (ρ : ContinuousUnitaryMatrixRep G ι) (g h : G) :
     ρ (g * h) = ρ g * ρ h :=
   ρ.toMonoidHom.map_mul g h
+
+/-- The algebraic representation underlying a continuous unitary matrix
+representation. This is the bridge to Mathlib's representation-theory API. -/
+def toRepresentation (ρ : ContinuousUnitaryMatrixRep G ι) :
+    Representation ℂ G (ι → ℂ) where
+  toFun g := Matrix.UnitaryGroup.toLin' (ρ g)
+  map_one' := by
+    rw [map_one, Matrix.UnitaryGroup.toLin'_one]
+    ext
+    rfl
+  map_mul' g h := by
+    rw [map_mul, Matrix.UnitaryGroup.toLin'_mul]
+    rfl
+
+@[simp]
+theorem toRepresentation_apply (ρ : ContinuousUnitaryMatrixRep G ι)
+    (g : G) (v : ι → ℂ) :
+    ρ.toRepresentation g v = (ρ g : Matrix ι ι ℂ) *ᵥ v :=
+  rfl
+
+/-- Irreducibility of the underlying algebraic representation. -/
+abbrev IsIrreducible (ρ : ContinuousUnitaryMatrixRep G ι) : Prop :=
+  Representation.IsIrreducible ρ.toRepresentation
+
+/-- Intertwining maps between the underlying algebraic representations. -/
+abbrev IntertwiningMap {κ : Type*} [Fintype κ] [DecidableEq κ]
+    (ρ : ContinuousUnitaryMatrixRep G ι)
+    (σ : ContinuousUnitaryMatrixRep G κ) :=
+  Representation.IntertwiningMap ρ.toRepresentation σ.toRepresentation
+
+/-- An intertwiner between irreducible continuous unitary matrix
+representations is either an isomorphism or zero. -/
+theorem intertwiner_bijective_or_eq_zero
+    {κ : Type*} [Fintype κ] [DecidableEq κ]
+    (ρ : ContinuousUnitaryMatrixRep G ι)
+    (σ : ContinuousUnitaryMatrixRep G κ)
+    [ρ.IsIrreducible] [σ.IsIrreducible]
+    (f : ρ.IntertwiningMap σ) :
+    Function.Bijective f ∨ f = 0 :=
+  Representation.IsIrreducible.bijective_or_eq_zero f
+
+/-- Schur's scalar-intertwiner conclusion for a finite-dimensional irreducible
+continuous unitary matrix representation over `ℂ`. -/
+theorem exists_eq_smul_one_of_self_intertwiner
+    (ρ : ContinuousUnitaryMatrixRep G ι) [ρ.IsIrreducible]
+    (f : ρ.IntertwiningMap ρ) :
+    ∃ c : ℂ, f = c • 1 := by
+  have hbij :
+      Function.Bijective
+        (algebraMap ℂ (Representation.IntertwiningMap
+          ρ.toRepresentation ρ.toRepresentation)) :=
+    Representation.IsIrreducible.algebraMap_intertwiningMap_bijective_of_isAlgClosed
+      (ρ := ρ.toRepresentation)
+  rcases hbij.2 f with ⟨c, hc⟩
+  exact ⟨c, by simpa using hc.symm⟩
 
 /-- A matrix coefficient as a continuous complex-valued function. -/
 def matrixCoeff (ρ : ContinuousUnitaryMatrixRep G ι) (i j : ι) : C(G, ℂ) :=

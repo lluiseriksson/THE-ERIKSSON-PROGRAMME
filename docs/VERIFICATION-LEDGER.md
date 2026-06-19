@@ -3963,6 +3963,28 @@ irreducibility, compare inequivalent representations, or establish
 Peter-Weyl density. It is infrastructure directly consumed by those future
 statements. Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 108 (2026-06-19, **continuous-unitary representations bridged to
+Mathlib's algebraic Schur theory**; core 8272)
+
+**Build:** green. Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+`ContinuousUnitaryMatrixRep.toRepresentation` turns the unitary matrix action
+into Mathlib's algebraic `Representation ℂ G (ι → ℂ)`, with the action
+computing definitionally as matrix-vector multiplication. This makes the
+existing representation-theory library directly consumable:
+
+* `intertwiner_bijective_or_eq_zero` states that an intertwiner between
+  irreducible continuous unitary matrix representations is either bijective
+  or zero.
+* `exists_eq_smul_one_of_self_intertwiner` is the scalar form of Schur's
+  lemma: every self-intertwiner of an irreducible finite-dimensional complex
+  representation is a scalar multiple of the identity.
+
+These are algebraic Schur conclusions, not generic Haar orthogonality. No
+irreducibility classification, inter-representation integral formula, or
+Peter-Weyl density theorem is claimed. Clay distance **~0% (<0.1%),
+unchanged**.
+
 
 
 

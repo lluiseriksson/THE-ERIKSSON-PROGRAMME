@@ -1,8 +1,8 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(ClayCore): add the generic continuous-unitary representation L2 API`,
- ledger Addendum 107).
+(`feat(ClayCore): bridge continuous unitary reps to algebraic Schur theory`,
+ ledger Addendum 108).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -73,8 +73,12 @@ generic irreducible representations remain open.
 The reusable F2 substrate now also includes
 `ContinuousUnitaryMatrixRep`: a continuous homomorphism into Mathlib's unitary
 matrix group, with continuous matrix coefficients, finite-measure Haar `L²`
-vectors, a continuous character, and conjugation invariance. The defining
-representation `fundamentalUnitaryRep` instantiates this API.
+vectors, a continuous character, and conjugation invariance. Its
+`toRepresentation` bridge exposes Mathlib's algebraic irreducibility and
+intertwiner API; consequently, intertwiners between irreducibles are zero or
+bijective and self-intertwiners are scalar. The defining representation
+`fundamentalUnitaryRep` instantiates the analytic API. Generic Haar
+orthogonality and Peter-Weyl completeness remain open.
 
 ## What Is Not Claimed
 
