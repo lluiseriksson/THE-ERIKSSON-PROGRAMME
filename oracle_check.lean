@@ -137,6 +137,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.LocalFunctional.globalEval_finsetProd
 #print axioms YangMills.RG.LocalActivity.globalEval_eq_of_agreeOn
 #print axioms YangMills.RG.LocalActivity.globalEval_finsetProd
+-- ultralocal product-measure factorization for disjoint type-local supports
+#print axioms YangMills.RG.LocalFunctional.integral_mul_of_disjoint_support
+#print axioms YangMills.RG.LocalActivity.integral_mul_of_disjoint_fluctuationSupport
 -- raw Mayer transform on type-local supports
 #print axioms YangMills.RG.LocalFunctional.rawMayer_globalEval_eq_of_agreeOn
 #print axioms YangMills.RG.LocalFunctional.norm_globalEval_rawMayer_le_two

@@ -329,6 +329,15 @@ and finite products automatically carry the union of supports.  This is the
 typed locality layer that the next F.1 constructions should consume; it is not
 Appendix F itself.
 
+The ultralocal independence substrate is now
+`YangMills/RG/UltralocalFactorization.lean`.  It proves that two
+`LocalFunctional`s with disjoint supports factorize under an explicit finite
+product probability measure, and that two `LocalActivity`s with disjoint
+fluctuation supports factorize for a fixed spectator field.  This is the
+finite product-measure step needed by future fluctuation-integral compilers;
+it is not the Gaussian covariance estimate, not the Appendix-F polymer loss,
+and not the Yang-Mills activity-decay theorem.
+
 The raw local Mayer step is now in `YangMills/RG/RawMayerWithHoles.lean`.  It
 defines `rawMayer` on both `LocalFunctional` and two-field `LocalActivity` as
 `H ↦ exp H - 1`, preserving supports by construction, inheriting the

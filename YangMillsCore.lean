@@ -229,6 +229,9 @@ import YangMills.RG.SingleScaleUVDecay
 -- compiler: local activities can only inspect restricted fields on their finite
 -- supports; global adapters are invariant under changes off support.
 import YangMills.RG.LocalFunctional
+-- Ultralocal product-measure factorization for disjoint type-local supports:
+-- the finite independence step used by future fluctuation-integral compilers.
+import YangMills.RG.UltralocalFactorization
 -- Raw Mayer transform on the type-local substrate: `H ↦ exp H - 1` preserves
 -- supports, inherits off-support invariance, and satisfies the elementary
 -- small-activity bound `‖exp H - 1‖ ≤ 2‖H‖`.

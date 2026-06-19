@@ -10,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8281 jobs**.
+* `lake build YangMillsCore` is green at **8282 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -59,6 +59,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   supports, `LocalFunctional`, two-field `LocalActivity`, global adapters
   invariant under off-support changes, and finite products supported on support
   unions;
+* the ultralocal product-measure factorization substrate
+  `YangMills/RG/UltralocalFactorization.lean`: disjoint `LocalFunctional`
+  supports, and disjoint `LocalActivity` fluctuation supports for fixed
+  spectator field, factorize under an explicit finite product probability
+  measure;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

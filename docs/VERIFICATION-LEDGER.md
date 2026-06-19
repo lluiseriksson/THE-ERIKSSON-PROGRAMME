@@ -5233,3 +5233,32 @@ amplitude rather than requiring a fresh cluster-expansion proof.
 construct the regulator, prove any Yang-Mills fluctuation-integral estimate,
 prove `hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 152 (2026-06-20, **ultralocal product-measure factorization**
+`YangMills.RG.LocalFunctional.integral_mul_of_disjoint_support`,
+`YangMills.RG.LocalActivity.integral_mul_of_disjoint_fluctuationSupport`;
+core 8282)
+
+**Build:** green (`lake env lean YangMills/RG/UltralocalFactorization.lean`).
+Full-core and oracle verification are recorded with the commit carrying this
+addendum.
+
+This addendum adds the finite ultralocal independence step for the type-local
+F.1 substrate.  The new module `YangMills/RG/UltralocalFactorization.lean`
+reuses the existing product-measure factorization theorem from
+`YangMills/L1_GibbsMeasure/EdgeFactorization.lean` and packages it for:
+
+* two `LocalFunctional`s with disjoint finite supports; and
+* two `LocalActivity`s with disjoint fluctuation supports, with the spectator
+  field held fixed.
+
+Both theorems factorize the integral of a product under an explicit finite
+`Measure.pi` probability measure.  This gives future fluctuation-integral and
+polymer compilers a theorem-fed ultralocal independence brick instead of
+requiring them to restate support-dependence by hand.
+
+**Honest scope.** This is finite product-measure independence only.  It does
+not construct the Yang-Mills Gaussian fluctuation measure, prove covariance
+decay, prove Dimock Appendix F, establish the renormalized activity bound
+`hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.
