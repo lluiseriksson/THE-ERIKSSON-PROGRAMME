@@ -255,5 +255,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 
 -- target F1: second moment trace norm-squared
 #print axioms YangMills.ClayCore.sunHaarProb_trace_normSq_integral_eq_one
+#print axioms YangMills.ClayCore.sunHaarProb_fundamental_entry_orthogonality
+#print axioms YangMills.ClayCore.inner_fundamentalMatrixCoeffL2
 
 

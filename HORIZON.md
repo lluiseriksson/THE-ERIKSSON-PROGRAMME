@@ -18,9 +18,9 @@ does three things:
 Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 (what was kept/discarded and why) first. This file extends them outward.
 
-> **CURRENCY STAMP (2026-06-14).** The "Ground truth as of 2026-05" below is
+> **CURRENCY STAMP (2026-06-19).** The "Ground truth as of 2026-05" below is
 > a historical snapshot.  Since then the core advanced substantially (now
-> **8264 jobs**, Mathlib pinned — `REPRODUCIBILITY.md`): the strong-coupling
+> **8271 jobs**, Mathlib pinned — `REPRODUCIBILITY.md`): the strong-coupling
 > **area law** (all four variants) and **IR exponential clustering** are
 > oracle-clean theorems; the **gauge-RG continuum-facing track**
 > (`YangMills/RG/**`, ledger Addenda 23–83) has a theorem-fed
@@ -161,6 +161,8 @@ L25 [DONE]  ∫ ‖tr U‖² ≤ N                       SchurL25
  ├─► F1  [DONE]  ∫ ‖tr U‖² = 1  (sharp L25)               ◄ SchurNormOne
  │
  ├─► F2  [PARTIAL] matrix-coefficient L² API on Haar       ◄ Mathlib-grade
+ │        │  ├ fundamental SU(N) case DONE: SchurFundamentalOrthogonality
+ │        │  │  (continuous/L² coefficients and exact δᵢₖδⱼₗ/N inner products)
  │        │  └ selection-rule fragment DONE: SchurEntryNAlitySelection (∫∏U_{ij}∏conj=0, N∤(n−m))
  │        │
  │        ├─► F3 [STUB] Peter–Weyl for compact Lie groups  ◄ THE bottleneck
@@ -197,7 +199,10 @@ measure) is wired correctly end-to-end.
 -- For an f.d. unitary rep ρ of SU(N_c), its matrix coefficients ρ_{ij}(U) are in
 -- L²(Haar); package the map and its continuity/measurability.
 def matrixCoeff (ρ : Representation ℂ G V) (i j : ι) : G → ℂ := fun g => (ρ g) i j
--- STUB: matrixCoeff ρ i j ∈ Lp 2 (haar) ; the assignment is L²-bounded; etc.
+-- Fundamental SU(N) specialization DONE in SchurFundamentalOrthogonality.lean:
+-- `fundamentalMatrixCoeff`, `fundamentalMatrixCoeffL2`, and
+-- `inner_fundamentalMatrixCoeffL2`.
+-- STUB: generic finite-dimensional continuous unitary representations.
 ```
 
 ### F3 — Peter–Weyl (the bottleneck; likely a standalone Mathlib contribution)

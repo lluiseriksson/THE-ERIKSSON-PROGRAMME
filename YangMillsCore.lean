@@ -105,6 +105,7 @@ import YangMills.ClayCore.SchurDiagPhase
 import YangMills.ClayCore.SchurEntryOrthogonality
 import YangMills.ClayCore.SchurEntryOffDiag
 import YangMills.ClayCore.SchurNormOne
+import YangMills.ClayCore.SchurFundamentalOrthogonality
 import YangMills.ClayCore.SchurL25
 import YangMills.ClayCore.SchurPhysicalBridge
 import YangMills.ClayCore.SchurMomentVanishing

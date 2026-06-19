@@ -1,8 +1,8 @@
 # Current State
 
-**Last certified checkpoint:** 2026-06-18
-(`feat(rg): prove genuine discrete modified-metric summability (Phase 3 / P2b-ii-d closed)`,
- ledger Addendum 93).
+**Last certified checkpoint:** 2026-06-19
+(`feat(ClayCore): prove fundamental SU(N) Schur orthogonality and its Haar L2 form`,
+ ledger Addendum 106).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -10,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8264 jobs**.
+* `lake build YangMillsCore` is green at **8271 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -61,6 +61,12 @@ The scaffolding around it is mostly theorem-fed. What is missing is the
 model-specific constructive-QFT proof: concrete gauge-covariant operator,
 background-field minimizer, propagator decay, localization, and the activity
 bound that feeds the existing KP-with-holes/summability shell.
+
+Independently, the fundamental representation now has exact Schur
+orthogonality in Haar `L²`:
+`inner_fundamentalMatrixCoeffL2` proves the coefficient inner products
+`δᵢₖ δⱼₗ / N`. Generic compact-group Peter-Weyl and generic irreducible
+representations remain open.
 
 ## What Is Not Claimed
 

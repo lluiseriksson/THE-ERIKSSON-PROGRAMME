@@ -3906,6 +3906,33 @@ We solved compilation issues by ensuring all inequality symmetry relations (e.g.
 
 **Honest scope.** This completes the sharp second moment of the fundamental character (Target F1). It does not prove the mass gap of the 4D Yang-Mills theory in the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 106 (2026-06-19, **exact Schur orthogonality for the fundamental SU(N) representation**
+`YangMills.ClayCore.sunHaarProb_fundamental_entry_orthogonality` and
+`YangMills.ClayCore.inner_fundamentalMatrixCoeffL2`; core 8271)
+
+**Build:** green (`SchurFundamentalOrthogonality.lean` added to the verified core).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum closes the defining-representation case of the matrix-coefficient
+Haar `L²` API:
+
+* **`sunHaarProb_entry_offdiag_right`** — distinct columns are orthogonal, by
+  right Haar invariance under a traceless diagonal phase. Together with the
+  existing row-off-diagonal theorem, this covers every unequal coefficient.
+* **`sunHaarProb_entry_normSq_integral_eq_inv_N`** — each fundamental matrix
+  coefficient has squared Haar norm `1 / N`.
+* **`sunHaarProb_fundamental_entry_orthogonality`** — the full four-index
+  identity
+  `∫ Uᵢⱼ conj(Uₖₗ) dHaar = if i = k ∧ j = l then 1 / N else 0`.
+* **`fundamentalMatrixCoeffL2`** and
+  **`inner_fundamentalMatrixCoeffL2`** — package the coefficients as vectors in
+  Haar `L²` and restate the same identity as their Hilbert-space inner product.
+
+**Honest scope.** This is Schur orthogonality for the defining representation
+only. It does not prove generic compact-group Peter-Weyl, classify irreducible
+SU(N) representations, construct the continuum limit, or prove the Clay mass
+gap. Clay distance **~0% (<0.1%), unchanged**.
+
 
 
 
