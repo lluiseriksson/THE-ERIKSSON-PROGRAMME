@@ -2,6 +2,7 @@ import YangMillsCore
 import YangMills.RG.NearLog
 import YangMills.RG.LocalFunctional
 import YangMills.RG.RawMayerWithHoles
+import YangMills.RG.OmegaConnectedCover
 
 /-! # Oracle check — one command, every headline
 
@@ -141,6 +142,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.LocalFunctional.norm_globalEval_rawMayer_le_two
 #print axioms YangMills.RG.LocalActivity.rawMayer_globalEval_eq_of_agreeOn
 #print axioms YangMills.RG.LocalActivity.norm_globalEval_rawMayer_le_two
+-- Ω-connected cover substrate and Mayer-cover product
+#print axioms YangMills.RG.omegaOverlapGraph_adj_iff
+#print axioms YangMills.RG.LocalActivity.globalEval_mayerCoverActivity
+#print axioms YangMills.RG.LocalActivity.mayerCoverActivity_globalEval_eq_of_agreeOn
+#print axioms YangMills.RG.OmegaConnectedCover.globalEval_mayerActivity
+#print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_globalEval_eq_of_agreeOn
 -- decoupling/regularisation bridge: a uniform activity profile bound passes to
 -- the pointwise limiting activity
 #print axioms YangMills.RG.activity_profile_bound_of_tendsto

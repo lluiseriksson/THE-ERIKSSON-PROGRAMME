@@ -326,6 +326,17 @@ bound `‖exp z - 1‖ ≤ 2‖z‖` under `‖z‖ ≤ 1`.  This is the local `
 map of the future Dimock-F.1 compiler, not the Ω-connected cover, not
 ultralocal integration, and not the Yang-Mills activity-decay estimate.
 
+The next source-shaped cover substrate is now in
+`YangMills/RG/OmegaConnectedCover.lean`.  It defines the Ω-overlap graph on
+cover indices, the predicate/structure carrying Ω-connectedness, and the
+finite Mayer-cover activity `∏ᵢ (exp Hᵢ - 1)` as a type-local `LocalActivity`.
+The spectator and fluctuation supports are exactly the unions of the supports
+of the factors, and global evaluation is the product of the raw Mayer factors.
+This is still algebraic F.1 scaffolding: it records the combinatorial
+Ω-connected cover and product locality, but it does not perform ultralocal
+integration, prove the Appendix-F polymer loss, or establish the Yang-Mills
+activity-decay bound.
+
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the
 request was for the **specific page-level theorem statements** so the Lean

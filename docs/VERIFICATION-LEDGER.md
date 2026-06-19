@@ -5130,3 +5130,44 @@ Dimock-F.1 compiler.  It does **not** define Ω-connected covers, ultralocal
 integration, the renormalized effective activity, Appendix F, the Yang-Mills
 raw activity-decay bound, continuum limit, or OS/Wightman reconstruction.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 149 (2026-06-20, **Ω-connected Mayer-cover substrate**
+`YangMills.RG.omegaOverlapGraph`,
+`YangMills.RG.omegaConnectedIndex`,
+`YangMills.RG.OmegaConnectedCover`,
+`YangMills.RG.LocalActivity.mayerCoverActivity`,
+`YangMills.RG.LocalActivity.globalEval_mayerCoverActivity`,
+`YangMills.RG.LocalActivity.mayerCoverActivity_globalEval_eq_of_agreeOn`,
+`YangMills.RG.OmegaConnectedCover.mayerActivity`,
+`YangMills.RG.OmegaConnectedCover.globalEval_mayerActivity`,
+`YangMills.RG.OmegaConnectedCover.mayerActivity_globalEval_eq_of_agreeOn`;
+core 8280)
+
+**Build:** green (`lake env lean YangMills/RG/OmegaConnectedCover.lean`).
+Full-core and oracle verification are recorded with the commit carrying this
+addendum.
+
+This addendum closes the next algebraic step in the constructive F.1 ladder.
+The new module `YangMills/RG/OmegaConnectedCover.lean` defines:
+
+* `omegaOverlapGraph Ω activeSupport`, the graph on cover indices whose edges
+  mean that two active supports intersect inside Ω;
+* `omegaConnectedIndex`, a walk-connectedness predicate in that graph;
+* `OmegaConnectedCover`, a source-shaped package carrying the finite index set,
+  Ω, active supports, and the connectedness certificate;
+* `LocalActivity.mayerCoverActivity I H`, the finite product of raw Mayer
+  activities `∏ᵢ (exp Hᵢ - 1)`;
+* `OmegaConnectedCover.mayerActivity`, the same product attached to a
+  connected cover package.
+
+The cover product is theorem-fed: its spectator and fluctuation supports are
+the corresponding support unions, `globalEval_mayerCoverActivity` and
+`globalEval_mayerActivity` evaluate it as the product of the raw Mayer factors,
+and the off-support invariance theorems prove that changing either field
+outside those unions cannot change the value.
+
+**Honest scope.** The Ω-connectedness condition is recorded but no quantitative
+Appendix-F estimate is claimed.  This does **not** prove ultralocal
+integration, the renormalized effective activity, the polymer loss
+`κ → κ - 3κ₀ - 3`, the Yang-Mills raw activity-decay bound, continuum limit, or
+OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.

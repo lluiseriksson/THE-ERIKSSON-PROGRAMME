@@ -233,6 +233,10 @@ import YangMills.RG.LocalFunctional
 -- supports, inherits off-support invariance, and satisfies the elementary
 -- small-activity bound `‖exp H - 1‖ ≤ 2‖H‖`.
 import YangMills.RG.RawMayerWithHoles
+-- Ω-connected Mayer covers: source-shaped Ω-overlap graph on cover indices and
+-- the finite product `∏ᵢ (exp Hᵢ - 1)` as a type-local activity with support
+-- equal to the union of factor supports.
+import YangMills.RG.OmegaConnectedCover
 -- The honest YM end-to-end UV conditional with the MARGINAL coupling: the
 -- geometric-profile assembly generalized to any nonnegative summable scale
 -- profile, specialized to the (asymptotically-free) marginal coupling flow.
