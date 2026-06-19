@@ -235,6 +235,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.holePolymerSystem_norm_clusterSum_le_volumeUniform
 
 #print axioms YangMills.RG.clusterUnion
+#print axioms YangMills.RG.polymerWithHoles_biUnion
+#print axioms YangMills.RG.clusterUnion_polymerWithHoles
+#print axioms YangMills.RG.clusterUnion_nonempty
+#print axioms YangMills.RG.clusterUnionPolymer
 #print axioms YangMills.RG.clusterModifiedMetric
 #print axioms YangMills.RG.clusterUnion_skeleton
 #print axioms YangMills.RG.clusterUnion_fin_one

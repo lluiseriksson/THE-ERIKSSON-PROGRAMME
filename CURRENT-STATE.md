@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(RG): control cluster skeleton size by modified metric`).
+(`feat(RG): package cluster unions as hole polymers`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -47,12 +47,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * polymer-with-holes multi-hole combinatorics, multiplicity bounds, discrete
   modified-metric summability, and the cluster-union modified-metric interface.
 
-The latest RG theorem is
-`YangMills.RG.clusterUnion_skeleton_card_le_clusterModifiedMetric_add_one`:
-for a genuine hole-polymer cluster, the active skeleton of the source-shaped
-cluster union is controlled by the cluster modified metric,
-`|skeleton(clusterUnion)| ≤ d_M(clusterUnion) + 1`.  This is the valid
-cluster-level replacement for the false arbitrary constituent-metric
+The latest RG package is `YangMills.RG.clusterUnionPolymer`: a nonempty genuine
+hole-polymer cluster tuple can be collapsed to the single polymer given by its
+raw union.  The package uses `clusterUnion_nonempty`, `clusterUnion_connected`,
+and `clusterUnion_polymerWithHoles`; together with
+`clusterUnion_skeleton_card_le_clusterModifiedMetric_add_one`, this gives the
+valid cluster-level replacement for the false arbitrary constituent-metric
 monotonicity claim rejected by the Extra High audit.
 
 ## Live Frontier

@@ -4090,3 +4090,35 @@ unsupported constituent-polymer monotonicity.
 **Honest scope.** This is an RG-substrate theorem toward the Balaban/Dimock
 `hRpoly` activity estimate.  It does not prove the activity decay, the continuum
 limit, or OS/Wightman reconstruction. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 112 (2026-06-19, **cluster unions packaged as hole polymers**
+`YangMills.RG.polymerWithHoles_biUnion`, `YangMills.RG.clusterUnion_polymerWithHoles`,
+`YangMills.RG.clusterUnion_nonempty`, `YangMills.RG.clusterUnionPolymer`; core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum packages the source-shaped cluster object as an actual polymer of
+the holes-respected polymer system whenever the cluster tuple is nonempty.
+
+* `polymerWithHoles_biUnion` proves that a finite union of hole-respecting sets
+  is hole-respecting: if a hole is contained in one summand, it is contained in
+  the union; otherwise it is disjoint from every summand and hence from the
+  union.
+* `clusterUnion_polymerWithHoles` specializes that statement to the raw union of
+  a tuple of hole polymers.
+* `clusterUnion_nonempty` records that a `Fin (n+1)` tuple of nonempty polymers
+  has nonempty raw union.
+* `clusterUnionPolymer` combines nonemptiness, `clusterUnion_connected`, and
+  `clusterUnion_polymerWithHoles` into a single subtype package:
+  the raw union of a nonempty genuine cluster is itself a valid
+  `(holePolymerSystem H z).Polymer`.
+
+Together with Addendum 111, this gives downstream `hRpoly` work a clean object:
+the cluster can be collapsed to its union polymer, and the modified metric of
+that union controls its active skeleton.  No unsupported constituent-polymer
+metric monotonicity is used.
+
+**Honest scope.** This is still RG substrate for the Balaban/Dimock activity
+estimate.  It does not prove the activity decay, continuum limit, or
+OS/Wightman reconstruction. Clay distance **~0% (<0.1%), unchanged**.

@@ -25,6 +25,52 @@ def clusterUnion {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d
     {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer) : Finset (Cube d L) :=
   univ.biUnion (fun i => (X i).val)
 
+/-- A finite union of sets that each respect the hole family still respects the
+hole family.  A hole is either contained in one summand, hence in the union, or
+disjoint from every summand, hence disjoint from the union. -/
+lemma polymerWithHoles_biUnion {d L : ℕ} {α : Type*} [DecidableEq α]
+    (H : HoleFamily d L) (S : Finset α) (F : α → Finset (Cube d L))
+    (hF : ∀ a ∈ S, polymerWithHoles H (F a)) :
+    polymerWithHoles H (S.biUnion F) := by
+  intro H₀ hH₀
+  by_cases hsome : ∃ a ∈ S, H₀ ⊆ F a
+  · left
+    obtain ⟨a, ha, hsub⟩ := hsome
+    intro x hx
+    rw [mem_biUnion]
+    exact ⟨a, ha, hsub hx⟩
+  · right
+    rw [disjoint_iff_ne]
+    intro x hx y hy hxy
+    subst y
+    rw [mem_biUnion] at hy
+    obtain ⟨a, ha, hyF⟩ := hy
+    have hpoly := hF a ha H₀ hH₀
+    rcases hpoly with hsub | hdisj
+    · exact hsome ⟨a, ha, hsub⟩
+    · rw [disjoint_iff_ne] at hdisj
+      exact hdisj x hx x hyF rfl
+
+/-- The raw union of a tuple of hole polymers is itself hole-respecting. -/
+lemma clusterUnion_polymerWithHoles {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin n → (holePolymerSystem H z).Polymer) :
+    polymerWithHoles H (clusterUnion H z X) := by
+  dsimp [clusterUnion]
+  exact polymerWithHoles_biUnion H univ (fun i => (X i).val)
+    (fun i _ => (X i).property.right.right)
+
+/-- A nonempty tuple of hole polymers has a nonempty raw union. -/
+lemma clusterUnion_nonempty {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin (n + 1) → (holePolymerSystem H z).Polymer) :
+    (clusterUnion H z X).Nonempty := by
+  obtain ⟨x, hx⟩ := (X 0).property.left
+  refine ⟨x, ?_⟩
+  dsimp [clusterUnion]
+  rw [mem_biUnion]
+  exact ⟨0, mem_univ 0, hx⟩
+
 /-- The modified metric of a cluster, defined as the modified metric of its union.
 
 This is the source-shaped cluster object `d_M(Y, mod Ωᶜ)`: the cluster is first
@@ -353,6 +399,20 @@ lemma clusterUnion_connected {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Fi
   dsimp [clusterUnion]
   rw [mem_biUnion]
   exact ⟨k, mem_univ k, hv_in⟩
+
+/-- A nonempty genuine cluster tuple can be collapsed to the single
+hole-respecting polymer given by its raw union.  This packages the three
+cluster-union facts needed downstream: nonemptiness, connectedness, and the
+hole-respecting condition. -/
+def clusterUnionPolymer {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin (n + 1) → (holePolymerSystem H z).Polymer)
+    (hcl : IsCluster (holePolymerSystem H z) X) :
+    (holePolymerSystem H z).Polymer :=
+  ⟨clusterUnion H z X,
+    clusterUnion_nonempty H z X,
+    clusterUnion_connected H z X hcl,
+    clusterUnion_polymerWithHoles H z X⟩
 
 /-- For a genuine cluster, the cluster modified metric controls the size of the
 active skeleton of the cluster union.  This is the source-faithful cluster-level
