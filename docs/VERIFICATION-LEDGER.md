@@ -3827,3 +3827,23 @@ We defined the connectivity of the union of closed neighborhoods using a path in
 
 **Honest scope.** This completes the Phase 8 targets. Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 102 (2026-06-19, **coarse gauge-renormalization operator Ū and its gauge covariance**
+`YangMills.RG.UbarDeviation`, `coarseTransform`, `UbarDeviation_gaugeAct`, `rep_UbarDeviation_gaugeAct`, `Ubar`, and `Ubar_gaugeAct`; core 8269)
+
+**Build:** green (the B4-Ū targets added to `Ubar.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum formalises the coarse gauge-renormalization operator `Ū` on the lattice and proves its gauge covariance under a matrix representation of the gauge group:
+
+* **`UbarDeviation`** — Defines the orientation-consistent path cancellation deviation term for a coarse edge $C$ at a fine site $x$.
+* **`coarseTransform`** — Restricts a fine gauge transform to coarse lattice basepoints.
+* **`UbarDeviation_gaugeAct`** — Proves that the deviation term conjugates by the source basepoint under gauge transformations.
+* **`rep_UbarDeviation_gaugeAct`** — Transports the deviation gauge act theorem to the matrix algebra unit group representation.
+* **`Ubar`** — Defines the coarse gauge-renormalization operator `Ū` using the matrix exponential, block average weights, and `nearLog`.
+* **`Ubar_gaugeAct`** — Proves that `Ū` behaves like a coarse gauge configuration under gauge transformations (transforming by conjugation at the coarse edge endpoints).
+
+**How compilation was resolved.**
+We replaced implicit algebra coercions with explicit `.val` projections for `Units 𝔸` throughout the proof steps of `Ubar_gaugeAct` to avoid typeclass synthesis failures for `Inv 𝔸`. We resolved a stuck typeclass instance problem by supplying `(𝔸 := 𝔸)` explicitly to `rep_UbarDeviation_gaugeAct`. Finally, we proved the sum conjugation identity by constructing a sum-rewriting lemma `h_rw` and finished the main proof using precise right-associative rewriting (`← mul_assoc`, `Units.inv_mul`, `one_mul`).
+
+**Honest scope.** This completes the target B4-Ū (full) from the gauge-RG campaign plan. It does not prove the analytical Gaussian activity bounds or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
+
