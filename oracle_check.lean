@@ -1,4 +1,5 @@
 import YangMillsCore
+import YangMills.RG.NearLog
 
 /-! # Oracle check — one command, every headline
 
@@ -192,6 +193,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 /-! ### The near-identity matrix-logarithm calculus -/
 -- the quantitative axiom (0.8): exp(nearLog Y) = 1 + Y + O(‖Y‖²)
 #print axioms YangMills.RG.norm_exp_nearLog_sub_one_sub_self_le
+-- near-identity dictionary: ‖Y‖ and ‖nearLog Y‖ control each other locally
+#print axioms YangMills.RG.norm_nearLog_two_sided_of_norm_le_third
 -- scalar correctness (non-vacuity: nearLog IS the logarithm) + conjugation-equivariance
 #print axioms YangMills.RG.nearLog_real
 #print axioms YangMills.RG.nearLog_conj

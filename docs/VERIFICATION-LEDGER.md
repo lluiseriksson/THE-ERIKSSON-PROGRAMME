@@ -4898,3 +4898,41 @@ does not prove the Gaussian integration-by-parts formula, the gauge-fixed
 fluctuation covariance decay, the Yang-Mills activity estimate, the continuum
 limit, or OS/Wightman reconstruction.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 143 (2026-06-19, **nearLog two-sided cutoff dictionary**
+`YangMills.RG.norm_self_le_norm_nearLog_add_tail`,
+`YangMills.RG.norm_self_le_two_norm_nearLog_of_norm_le_third`,
+`YangMills.RG.norm_nearLog_le_two_norm_self_of_norm_le_half`,
+`YangMills.RG.norm_nearLog_two_sided_of_norm_le_third`; core 8273)
+
+**Build:** green (`lake env lean YangMills/RG/NearLog.lean`).  Full-core and
+oracle verification are recorded with the commit carrying this addendum.
+
+This addendum records the green part of the block-1 paper audit around large
+fields and near-identity charts.  The source-facing claim is the local
+dictionary between a near-identity group deviation and its logarithmic
+coordinate: Bałaban's analytic logarithm is applied to the deviation from the
+identity, so the Lean variable is `Y = D - 1`, not the represented group
+element `D` itself.
+
+The raw comparison theorem is
+
+`‖Y‖ ≤ ‖nearLog Y‖ + ‖Y‖²/(1 - ‖Y‖)`.
+
+Under the small-ball hypothesis `‖Y‖ ≤ 1/3`, the tail is absorbed and yields the
+coarse but robust two-sided dictionary
+
+`‖Y‖ ≤ 2‖nearLog Y‖ ∧ ‖nearLog Y‖ ≤ 2‖Y‖`.
+
+This matches the formal need behind the large-field cutoff translation
+highlighted in Lluis Eriksson's `ai.vixra:2602.0056` (Lemma 2.1 shape:
+Hilbert-Schmidt deviation versus principal logarithm), but in the repository it
+is proved at the existing Banach-algebra `nearLog` level and consumed only as a
+local analytic comparison.  It also reinforces the semantic correction already
+made in `Ubar.lean`: `Ubar` averages `nearLog (rep(D).val - 1)`.
+
+**Honest scope.** This does **not** prove the matrix principal-log theorem for
+`SU(N)` with Hilbert-Schmidt constants, and it does **not** prove the interface
+identifying a conditional fast-field measure with Bałaban's `T`-operation.  It
+only closes the local cutoff-conversion brick already available from the
+Mercator calculus.  Clay distance **~0% (<0.1%), unchanged**.

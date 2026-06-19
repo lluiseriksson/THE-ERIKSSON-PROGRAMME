@@ -152,6 +152,66 @@ theorem norm_nearLog_le_linear {Y : 𝔸} (hY : ‖Y‖ < 1) :
         linarith [norm_nearLog_sub_self_le hY]
     _ = ‖Y‖ / (1 - ‖Y‖) := by field_simp; ring
 
+/-- **Reverse comparison with the Mercator tail.**  Since
+`nearLog Y = Y + O(‖Y‖²)`, the original identity deviation is controlled by the
+logarithmic coordinate plus the same quadratic tail:
+`‖Y‖ ≤ ‖nearLog Y‖ + ‖Y‖²/(1-‖Y‖)`.
+
+This is the raw form of the near-identity dictionary converting geometric
+smallness of a group deviation `D - 1` and analytic smallness of
+`nearLog (D - 1)`. -/
+theorem norm_self_le_norm_nearLog_add_tail {Y : 𝔸} (hY : ‖Y‖ < 1) :
+    ‖Y‖ ≤ ‖nearLog Y‖ + ‖Y‖ ^ 2 / (1 - ‖Y‖) := by
+  calc ‖Y‖ = ‖nearLog Y - (nearLog Y - Y)‖ := by congr 1; abel
+    _ ≤ ‖nearLog Y‖ + ‖nearLog Y - Y‖ := norm_sub_le _ _
+    _ ≤ ‖nearLog Y‖ + ‖Y‖ ^ 2 / (1 - ‖Y‖) := by
+        gcongr
+        exact norm_nearLog_sub_self_le hY
+
+/-- **Near-identity dictionary, geometric coordinate from logarithmic coordinate.**
+For `‖Y‖ ≤ 1/3`, the Mercator logarithm is bi-Lipschitz at the coarse constant
+level: `‖Y‖ ≤ 2‖nearLog Y‖`.
+
+The constant is intentionally non-sharp; it is the robust cutoff conversion used
+when translating a small holonomy deviation `D - 1` into Bałaban's analytic
+logarithmic coordinate. -/
+theorem norm_self_le_two_norm_nearLog_of_norm_le_third {Y : 𝔸}
+    (hY : ‖Y‖ ≤ 1 / 3) :
+    ‖Y‖ ≤ 2 * ‖nearLog Y‖ := by
+  have hYlt : ‖Y‖ < 1 := by linarith [norm_nonneg Y]
+  have hbase := norm_self_le_norm_nearLog_add_tail hYlt
+  have htail : ‖Y‖ ^ 2 / (1 - ‖Y‖) ≤ ‖Y‖ / 2 := by
+    have hden : 0 < 1 - ‖Y‖ := by linarith [norm_nonneg Y]
+    field_simp [hden.ne']
+    nlinarith [norm_nonneg Y, hY]
+  linarith
+
+/-- **Near-identity dictionary, logarithmic coordinate from geometric coordinate.**
+For `‖Y‖ ≤ 1/2`, the logarithmic coordinate is controlled by the geometric
+deviation: `‖nearLog Y‖ ≤ 2‖Y‖`. -/
+theorem norm_nearLog_le_two_norm_self_of_norm_le_half {Y : 𝔸}
+    (hY : ‖Y‖ ≤ 1 / 2) :
+    ‖nearLog Y‖ ≤ 2 * ‖Y‖ := by
+  have hYlt : ‖Y‖ < 1 := by linarith [norm_nonneg Y]
+  have hlin := norm_nearLog_le_linear hYlt
+  have hfrac : ‖Y‖ / (1 - ‖Y‖) ≤ 2 * ‖Y‖ := by
+    have hden : 0 < 1 - ‖Y‖ := by linarith [norm_nonneg Y]
+    field_simp [hden.ne']
+    nlinarith [norm_nonneg Y, hY]
+  exact le_trans hlin hfrac
+
+/-- **Two-sided near-identity dictionary.**  In the small ball `‖Y‖ ≤ 1/3`,
+`Y` and `nearLog Y` control each other up to the fixed constant `2`.
+
+For the lattice gauge application one substitutes
+`Y = rep(UbarDeviation ...).val - 1`, the faithful argument of `nearLog`.
+This is deliberately a local analytic comparison, not a claim about the full
+Bałaban `T`-operation or large-field measure decomposition. -/
+theorem norm_nearLog_two_sided_of_norm_le_third {Y : 𝔸} (hY : ‖Y‖ ≤ 1 / 3) :
+    ‖Y‖ ≤ 2 * ‖nearLog Y‖ ∧ ‖nearLog Y‖ ≤ 2 * ‖Y‖ := by
+  refine ⟨norm_self_le_two_norm_nearLog_of_norm_le_third hY, ?_⟩
+  exact norm_nearLog_le_two_norm_self_of_norm_le_half (by linarith)
+
 /-- **Scalar correctness of `nearLog`** (brick M-log-2c, non-vacuity
 certificate): on the real line the abstract Mercator sum `nearLog`
 computes the genuine logarithm, `nearLog (y : ℝ) = Real.log (1 + y)` for

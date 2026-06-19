@@ -258,6 +258,19 @@ It does not prove the Yang-Mills fluctuation-integral activity bound; it
 removes one clean finite-sum step between covariance decay and polymer
 decoupling.
 
+The same block-1 audit also identifies a separate, local large-field cutoff
+dictionary: Bałaban's analytic logarithmic coordinate must be compared to the
+geometric group deviation through `Y = D - 1`, not through `D` itself.  This is
+now a verified near-identity theorem in `NearLog.lean`:
+`norm_nearLog_two_sided_of_norm_le_third`, namely
+
+`‖Y‖ ≤ 1/3 → ‖Y‖ ≤ 2‖nearLog Y‖ ∧ ‖nearLog Y‖ ≤ 2‖Y‖`.
+
+This is a **green** local cutoff-conversion brick.  The much stronger claim
+that a conditioned fast-field measure is literally Bałaban's `T`-operation
+remains an **amber/dark** interface until the disintegration and density
+comparison are reconstructed from the primary Bałaban source.
+
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the
 request was for the **specific page-level theorem statements** so the Lean

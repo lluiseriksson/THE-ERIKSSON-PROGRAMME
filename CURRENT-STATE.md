@@ -37,7 +37,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 
 * block geometry and the linear averaging operator `Q`;
 * gauge covariance of the averaged-contour interface;
-* near-identity logarithm and small-field stability lemmas;
+* near-identity logarithm, small-field stability lemmas, and the local
+  two-sided cutoff dictionary `norm_nearLog_two_sided_of_norm_le_third`,
+  converting `‖Y‖ ≤ 1/3` into mutual control of `Y` and `nearLog Y` up to the
+  constant `2` for the faithful variable `Y = D - 1`;
 * explicit l2 contraction of `Q`;
 * free Gaussian covariance pushforward and finite-dimensional Gaussian
   construction;
