@@ -910,18 +910,8 @@ theorem clusterSkeletonRemainderSum_summable_of_local {d L : ℕ} [NeZero L]
         Real.exp t * ‖(holePolymerSystem H z).activity Y‖ *
           Real.exp (Y.val.card : ℝ) ≤ ((3 ^ d + 1 : ℕ) : ℝ)⁻¹) :
     Summable (fun n => clusterSkeletonRemainderSumTerm H z r n) := by
-  have hlocal_scaled : ∀ s : Cube d L,
-      ∑ Y ∈ Finset.univ.filter (fun Y : PolymerType H z => s ∈ Y.val),
-        ‖((Real.exp t : ℝ) : ℂ) * (holePolymerSystem H z).activity Y‖ *
-          Real.exp (Y.val.card : ℝ) ≤ ((3 ^ d + 1 : ℕ) : ℝ)⁻¹ := by
-    intro s
-    refine (le_of_eq ?_).trans (hlocal s)
-    refine Finset.sum_congr rfl fun Y _ => ?_
-    rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
-      abs_of_pos (Real.exp_pos t)]
   exact clusterSkeletonRemainderSum_summable H z r t ht
-    (holePolymerSystem_KPCriterion_volumeUniform_scaled H z (Real.exp t)
-      hlocal_scaled)
+    (holePolymerSystem_KPCriterion_volumeUniform_exp H z t hlocal)
 
 /-- Source-shaped skeleton-pinned cluster remainder bound from the local
 tilted activity-sum window.  This is the pre-metric form of
@@ -937,18 +927,8 @@ theorem clusterSkeletonRemainderSum_tsum_le_of_local {d L : ℕ} [NeZero L]
       ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
         Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
           Real.exp ((c.val.card : ℝ)) := by
-  have hlocal_scaled : ∀ s : Cube d L,
-      ∑ Y ∈ Finset.univ.filter (fun Y : PolymerType H z => s ∈ Y.val),
-        ‖((Real.exp t : ℝ) : ℂ) * (holePolymerSystem H z).activity Y‖ *
-          Real.exp (Y.val.card : ℝ) ≤ ((3 ^ d + 1 : ℕ) : ℝ)⁻¹ := by
-    intro s
-    refine (le_of_eq ?_).trans (hlocal s)
-    refine Finset.sum_congr rfl fun Y _ => ?_
-    rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
-      abs_of_pos (Real.exp_pos t)]
   exact clusterSkeletonRemainderSum_tsum_le H z r t ht
-    (holePolymerSystem_KPCriterion_volumeUniform_scaled H z (Real.exp t)
-      hlocal_scaled)
+    (holePolymerSystem_KPCriterion_volumeUniform_exp H z t hlocal)
 
 /-- Source-shaped skeleton cluster remainder bound from a modified-metric
 activity estimate.
@@ -1073,18 +1053,8 @@ theorem clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local {d L : ℕ}
     ∑' n, clusterSkeletonRemainderSumTerm H z r n
       ≤ t⁻¹ * (A *
         (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹) := by
-  have hlocal_scaled : ∀ s : Cube d L,
-      ∑ Y ∈ Finset.univ.filter (fun Y : PolymerType H z => s ∈ Y.val),
-        ‖((Real.exp t : ℝ) : ℂ) * (holePolymerSystem H z).activity Y‖ *
-          Real.exp (Y.val.card : ℝ) ≤ ((3 ^ d + 1 : ℕ) : ℝ)⁻¹ := by
-    intro s
-    refine (le_of_eq ?_).trans (hlocal s)
-    refine Finset.sum_congr rfl fun Y _ => ?_
-    rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
-      abs_of_pos (Real.exp_pos t)]
   exact clusterSkeletonRemainderSum_tsum_le_metric_bound H z r t q A ht
-    (holePolymerSystem_KPCriterion_volumeUniform_scaled H z (Real.exp t)
-      hlocal_scaled)
+    (holePolymerSystem_KPCriterion_volumeUniform_exp H z t hlocal)
     hA0 hact hdisj hnoedges hholes_ne hq0 hCq
 
 lemma polymer_subset_clusterUnion {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)

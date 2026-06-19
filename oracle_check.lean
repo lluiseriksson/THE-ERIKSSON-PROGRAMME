@@ -232,10 +232,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.incomp_imp_intersect
 #print axioms YangMills.RG.holePolymerSystem_KPCriterion_volumeUniform
 #print axioms YangMills.RG.holePolymerSystem_KPCriterion_volumeUniform_scaled
+#print axioms YangMills.RG.holePolymerSystem_KPCriterion_volumeUniform_exp
 #print axioms YangMills.RG.holePolymerSystem_converges_volumeUniform
 #print axioms YangMills.RG.holePolymerSystem_norm_clusterSum_le_volumeUniform
 #print axioms YangMills.RG.holePolymerSystem_converges_volumeUniform_scaled
 #print axioms YangMills.RG.holePolymerSystem_norm_clusterSum_le_volumeUniform_scaled
+#print axioms YangMills.RG.holePolymerSystem_converges_volumeUniform_exp
+#print axioms YangMills.RG.holePolymerSystem_norm_clusterSum_le_volumeUniform_exp
 
 #print axioms YangMills.RG.clusterUnion
 #print axioms YangMills.RG.polymerWithHoles_biUnion

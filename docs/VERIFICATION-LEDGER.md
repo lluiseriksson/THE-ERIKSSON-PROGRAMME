@@ -4332,3 +4332,32 @@ and the modified-metric consumer theorem without carrying a separate
 raw-support local smallness from skeleton-rooted modified-metric summability,
 and they do not prove the Balaban/Dimock Yang-Mills activity-decay estimate.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 120 (2026-06-19, **explicit exponential-tilt local KP bridge**
+`YangMills.RG.holePolymerSystem_KPCriterion_volumeUniform_exp`,
+`YangMills.RG.holePolymerSystem_converges_volumeUniform_exp`,
+`YangMills.RG.holePolymerSystem_norm_clusterSum_le_volumeUniform_exp`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum names the exact `ρ = exp(t)` specialization repeatedly consumed
+by the RG tail estimates.  The local smallness window is source-shaped as
+
+`Σ_{Y∋s} exp(t) * ‖z(Y)‖ * exp(|Y|) ≤ (3^d+1)⁻¹`,
+
+while the polymer system is the scalar-tilted system
+`(holePolymerSystem H z).scaleActivity (Real.exp t)`.  The bridge theorem
+`holePolymerSystem_KPCriterion_volumeUniform_exp` converts between these two
+presentations once, using positivity of `exp(t)`.  The companion convergence
+and norm-bound theorems expose the same specialization at the cluster-series
+API level.
+
+The skeleton-tail `_of_local` theorems now call this named bridge instead of
+rebuilding the scalar-norm conversion internally.
+
+**Honest scope.** This is an API consolidation for the already-carried local
+activity window.  It does not prove local smallness, the Yang-Mills
+activity-decay estimate, or any continuum/OS result. Clay distance **~0%
+(<0.1%), unchanged**.

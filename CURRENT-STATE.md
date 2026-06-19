@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(RG): derive skeleton tails from local KP window`).
+(`feat(RG): name exponential local KP bridge`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -61,11 +61,18 @@ The latest RG skeleton-tail interface is local-KP-shaped throughout:
   `A * q^(d_M+1)`, the full skeleton-pinned cluster remainder series is
   bounded by
   `t⁻¹ * A * (1 - (3^d)^2 * (q * 2^(3^d+1)))⁻¹`.
+* `YangMills.RG.holePolymerSystem_KPCriterion_volumeUniform_exp` names the
+  `ρ = exp(t)` bridge from the source-shaped local window
+  `Σ_{Y∋s} exp(t) * ‖z(Y)‖ * exp(|Y|)` to the scalar-tilted KP criterion,
+  with matching convergence and norm-bound companions.
 
 Together with `clusterSkeletonRemainderSum_tsum_le`,
 `holePolymerSystem_KPCriterion_volumeUniform_scaled`,
+`holePolymerSystem_KPCriterion_volumeUniform_exp`,
 `holePolymerSystem_converges_volumeUniform_scaled`,
 `holePolymerSystem_norm_clusterSum_le_volumeUniform_scaled`,
+`holePolymerSystem_converges_volumeUniform_exp`,
+`holePolymerSystem_norm_clusterSum_le_volumeUniform_exp`,
 `clusterSkeletonRemainderSum_term_le_skeletonPinned`,
 `clusterSkeletonRemainderSum_term_le_pinned`,
 `clusterSkeletonRemainderSum_summable`, `clusterUnionPolymer`, and
