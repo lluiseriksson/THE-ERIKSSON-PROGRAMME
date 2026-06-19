@@ -14,17 +14,21 @@ attribute [local instance] Classical.propDecidable
 
 namespace YangMills.RG
 
-/-- The **holes-respected polymer system** on the cube lattice.
+/-- The **touching hard-core holes-respected polymer system** on the cube lattice.
     Polymers are nonempty, connected finsets of cubes that respect the hole family H.
     Two polymers are incompatible if they overlap or touch (share a boundary of any dimension).
 
     Audit note on the incompatibility relation:
     Adjacency/touching (sharing a boundary edge in `cubeAdj`) is mathematically required
-    for incompatibility on the lattice. If two polymers were only incompatible when they
-    overlapped, then two disjoint but adjacent polymers could be compatible. However,
-    their union would be connected, and their activities would not factorize as independent
-    factors in the partition function. Thus, the reflexive closure of the adjacency relation
-    (overlap or touch) is the source-faithful incompatibility relation for lattice polymers. -/
+    for the hard-core lattice-polymer system used by the existing local-KP consumers.
+    It is deliberately stronger/geometric: disjoint but adjacent polymers are also
+    incompatible.
+
+    Dimock II Appendix F uses a different with-holes cluster relation: polymers are
+    `Ω`-connected when their active parts intersect inside `Ω`
+    (`X₁ ∩ X₂ ∩ Ω ≠ ∅`), and `Ω`-disjoint need not mean disjoint.  The parallel
+    `omegaHolePolymerSystem` below records that source-facing relation without
+    changing the already-verified touching-system consumers. -/
 noncomputable def holePolymerSystem {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) :
     KP.PolymerSystem where
   Polymer := { X : Finset (Cube d L) // X.Nonempty ∧ cubeConnected X ∧ polymerWithHoles H X }
@@ -49,6 +53,68 @@ noncomputable def holePolymerSystem {d L : ℕ} [NeZero L] (H : HoleFamily d L) 
 noncomputable instance {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) :
     Fintype (holePolymerSystem H z).Polymer :=
   inferInstanceAs (Fintype { X : Finset (Cube d L) // X.Nonempty ∧ cubeConnected X ∧ polymerWithHoles H X })
+
+/-- The **source-facing active with-holes polymer system**.
+
+This is the discrete form of Dimock II Appendix F's `Ω`-connected relation.
+For a polymer `X`, `skeleton H X = X ∩ Ω` is its active part outside the
+large-field holes.  Two active polymers are incompatible exactly when these
+active parts intersect.  We restrict the polymer type to nonempty skeletons so
+that hard-core self-incompatibility is true in `KP.PolymerSystem`; the Appendix
+F sums of interest are likewise pinned to polymers meeting the active region.
+
+This definition is intentionally separate from `holePolymerSystem`: the latter
+is the already-verified touching hard-core system, while this one is the
+source-shaped target for future Appendix-F consumers. -/
+noncomputable def omegaHolePolymerSystem {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) : KP.PolymerSystem where
+  Polymer := { X : Finset (Cube d L) //
+    X.Nonempty ∧ cubeConnected X ∧ polymerWithHoles H X ∧ (skeleton H X).Nonempty }
+  incomp X Y := ¬ Disjoint (skeleton H X.val) (skeleton H Y.val)
+  incomp_symm := by
+    intro X Y h
+    rwa [disjoint_comm]
+  incomp_self := by
+    intro X hd
+    obtain ⟨x, hx⟩ := X.property.right.right.right
+    have h_ne := Finset.disjoint_iff_ne.mp hd x hx x hx
+    exact h_ne rfl
+  activity X := z X.val
+
+noncomputable instance {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) :
+    Fintype (omegaHolePolymerSystem H z).Polymer :=
+  inferInstanceAs (Fintype { X : Finset (Cube d L) //
+    X.Nonempty ∧ cubeConnected X ∧ polymerWithHoles H X ∧ (skeleton H X).Nonempty })
+
+/-- The `omegaHolePolymerSystem` incompatibility is precisely intersection of
+the active skeletons. -/
+theorem omegaHolePolymerSystem_incomp_iff {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (X Y : (omegaHolePolymerSystem H z).Polymer) :
+    (omegaHolePolymerSystem H z).incomp X Y ↔
+      ¬ Disjoint (skeleton H X.val) (skeleton H Y.val) :=
+  Iff.rfl
+
+/-- Elementwise form of Appendix F's `Ω`-connected relation:
+two active hole-polymers are incompatible iff their skeletons share a cube. -/
+theorem omegaHolePolymerSystem_incomp_iff_exists {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (X Y : (omegaHolePolymerSystem H z).Polymer) :
+    (omegaHolePolymerSystem H z).incomp X Y ↔
+      ∃ s, s ∈ skeleton H X.val ∧ s ∈ skeleton H Y.val := by
+  constructor
+  · intro h
+    rw [omegaHolePolymerSystem_incomp_iff] at h
+    rw [Finset.disjoint_iff_inter_eq_empty] at h
+    obtain ⟨s, hs⟩ := Finset.nonempty_iff_ne_empty.mpr h
+    rw [Finset.mem_inter] at hs
+    exact ⟨s, hs.1, hs.2⟩
+  · rintro ⟨s, hsX, hsY⟩
+    rw [omegaHolePolymerSystem_incomp_iff]
+    intro hd
+    have h_ne := Finset.disjoint_iff_ne.mp hd s hsX s hsY
+    exact h_ne rfl
 
 /-- The activity sum of all connected, hole-respecting polymers containing a fixed root r in their skeleton. -/
 noncomputable def rootedHolePolymerSum {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) (r : Cube d L) : ℂ :=

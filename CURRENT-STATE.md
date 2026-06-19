@@ -46,6 +46,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * lattice animal counting, cube adjacency, and shell-growth summability;
 * polymer-with-holes multi-hole combinatorics, multiplicity bounds, discrete
   modified-metric summability, and the cluster-union modified-metric interface.
+* a source-facing active with-holes polymer system
+  `omegaHolePolymerSystem`, whose incompatibility is intersection of active
+  skeletons (`X₁ ∩ Ω` with `X₂ ∩ Ω`), matching Dimock II Appendix F's
+  `Ω`-connected relation and kept separate from the existing touching
+  hard-core `holePolymerSystem`.
 
 The latest RG skeleton-tail interface is local-KP-shaped throughout:
 
@@ -104,6 +109,12 @@ The remaining hard input is still **not** a compiler trick:
 * `hRpoly`: the concrete Yang-Mills single-scale activity-decay bound, i.e. the
   Dimock/Balaban cluster expansion with holes plus the fluctuation-integral
   estimate for the actual gauge RG operator.
+
+The immediate P3 design constraint is now source-pinned: Dimock Appendix F
+clusters use `Ω`-connectedness (`X₁ ∩ X₂ ∩ Ω ≠ ∅`), while the existing
+`holePolymerSystem` uses full-polymer overlap/touching.  Future Appendix-F
+formalization must use `omegaHolePolymerSystem` or prove a comparison theorem
+before reusing the touching-system local-KP consumers.
 
 The scaffolding around it is mostly theorem-fed. What is missing is the
 model-specific constructive-QFT proof: concrete gauge-covariant operator,

@@ -4676,3 +4676,34 @@ coefficients `c-d`, then applies `norm_sq_characterL2_sum`.
 does not assert Peter-Weyl completeness, infinite expansion convergence,
 SU(N) irreducible classification, continuum construction, or the open
 `hRpoly` activity-decay estimate. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 135 (2026-06-19, **Appendix-F active compatibility interface**
+`YangMills.RG.omegaHolePolymerSystem`,
+`YangMills.RG.omegaHolePolymerSystem_incomp_iff`,
+`YangMills.RG.omegaHolePolymerSystem_incomp_iff_exists`; core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum records a source-audit correction and the corresponding Lean
+interface.  Direct extraction of Dimock II Appendix F (arXiv:1212.5562,
+PDF pp. 91–92) shows that the with-holes cluster expansion uses
+`Ω`-connectedness: two polymers are connected for the cluster relation when
+`X₁ ∩ Ω` and `X₂ ∩ Ω` have nonempty intersection, equivalently
+`X₁ ∩ X₂ ∩ Ω ≠ ∅`; `Ω`-disjoint need not be disjoint.  This is not the same
+relation as the existing touching hard-core `holePolymerSystem`, whose
+incompatibility is ordinary full-polymer overlap or one-step cube adjacency.
+
+The new `omegaHolePolymerSystem` keeps the same connected,
+hole-respecting finite cube sets, restricts to nonempty active skeletons, and
+sets incompatibility to `¬ Disjoint (skeleton H X) (skeleton H Y)`.  The
+elementwise theorem
+`omegaHolePolymerSystem_incomp_iff_exists` packages the Appendix-F form:
+incompatibility iff there exists an active cube contained in both skeletons.
+
+**Honest scope.** This does not prove the cluster expansion with holes, the
+Yang-Mills activity-decay estimate, or any continuum theorem.  It prevents a
+semantic overclaim: future P3 work must either use the source-facing
+`omegaHolePolymerSystem` or prove a comparison theorem before reusing the
+already-verified touching-system local-KP consumers. Clay distance
+**~0% (<0.1%), unchanged**.

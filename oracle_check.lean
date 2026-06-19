@@ -211,6 +211,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.skeleton_fillings_weight_summable
 #print axioms YangMills.RG.discreteModifiedMetric_weight_summable
 #print axioms YangMills.RG.holePolymerSystem
+#print axioms YangMills.RG.omegaHolePolymerSystem
+#print axioms YangMills.RG.omegaHolePolymerSystem_incomp_iff
+#print axioms YangMills.RG.omegaHolePolymerSystem_incomp_iff_exists
 #print axioms YangMills.RG.discreteModifiedMetric_singleton_skeleton
 #print axioms YangMills.RG.discreteModifiedMetric_weight_summable_zero
 #print axioms YangMills.RG.discreteModifiedMetric_d_zero

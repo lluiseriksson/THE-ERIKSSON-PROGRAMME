@@ -371,9 +371,11 @@ lemma walk_union_connected_touching {V : Type*} [DecidableEq V] (G : SimpleGraph
           rw [SimpleGraph.Walk.support_cons]
           exact List.mem_cons_of_mem _ hk_tail
 
-/-- A genuine cluster's raw polymer union is connected.  This uses the
-source-faithful incompatibility relation on hole polymers: polymers in the same
-cluster are chained by overlaps or one-step cube adjacency. -/
+/-- A genuine cluster's raw polymer union is connected for the touching
+hard-core `holePolymerSystem`: polymers in the same cluster are chained by
+overlaps or one-step cube adjacency.  This is the correct geometry for the
+existing touching-system consumers; Dimock Appendix F's literal `Ω`-connected
+relation is represented separately by `omegaHolePolymerSystem`. -/
 lemma clusterUnion_connected {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer)
     (hcl : IsCluster (holePolymerSystem H z) X) :

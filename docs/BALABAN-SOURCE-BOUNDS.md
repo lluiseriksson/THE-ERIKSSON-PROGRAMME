@@ -129,6 +129,19 @@ informal `C_d e^{−κ} < 1`).  Geometric substrate: `Σ_{X ⊇ □} e^{−κ_0 
 (small-field CE + normalization); Dimock II arXiv:1212.5562 (holes CE,
 Appendix F, §§3.8/3.13–3.18).
 
+**Compatibility audit (2026-06-19).**  Direct extraction of Dimock II
+Appendix F (PDF pp. 91–92) shows that the with-holes cluster relation is
+not ordinary full-polymer overlap/touching.  Dimock says the modified
+notion is `Ω`-connected: `X₁ ∩ Ω` and `X₂ ∩ Ω` have nonempty
+intersection, equivalently `X₁ ∩ X₂ ∩ Ω ≠ ∅`; `Ω`-disjoint does **not**
+imply disjoint.  In Lean, the active region `Ω` is represented by
+`skeleton H X`, so the source-facing relation is intersection of
+skeletons.  The existing `holePolymerSystem` is the stronger touching
+hard-core lattice system used by already-verified local-KP consumers; the
+new `omegaHolePolymerSystem` records the Appendix-F-facing active relation
+separately.  Future P3 work must use this source-facing system or prove a
+comparison theorem before reusing the touching-system consumers.
+
 ## 6. Connection to the existing `KP` layer (architectural finding, 2026-06-12)
 
 The repository **already contains an abstract Kotecký–Preiss

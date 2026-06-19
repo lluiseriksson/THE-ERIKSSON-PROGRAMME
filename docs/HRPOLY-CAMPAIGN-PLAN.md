@@ -89,7 +89,7 @@ gives `rooted_connected_weight_summable` (`RG/AnimalTour.lean`):
 | **P2b-ii-b-3** | **Discrete metric comparison bounds** (`discreteModifiedMetric_le_bulkTreeLength`, `discreteModifiedMetric_mono_skeleton`, and `discreteModifiedMetric_mono_holes`, `RG/ModifiedMetric.lean`): prove comparison bounds with bulk tree length and monotonicity. | code — combinatorics | **DONE** (core 8264) |
 | **P2b-ii-c** | **Skeleton-fillings weight summability** (`skeleton_fillings_weight_summable`, `RG/ModifiedMetric.lean`): preliminary combinatorial estimate showing that the skeleton-growth series converges under sufficient exponential metric decay. | code — combinatorics | **DONE** (core 8264) |
 | **P2b-ii-d** | **Discrete modified-metric summability** (`discreteModifiedMetric_weight_summable`, `RG/ModifiedMetric.lean`): prove a volume-uniform summability theorem whose summand actually contains `discreteModifiedMetric H X` under coordination entropy-suppression. | code — combinatorics | **DONE** (core 8264) |
-| **P3** | **Cluster-expansion-with-holes convergence (Appendix F)**: the renormalized-activity decay `|H^#(Y)| ≤ O(1)H₀ e^{−(κ−3κ₀−3)d}` from the raw bound + summability.  Generalises `KP` convergence to the modified metric.  **The crux of (B).** | code — HARD, months-scale | open (source §4) |
+| **P3** | **Cluster-expansion-with-holes convergence (Appendix F)**: the renormalized-activity decay `|H^#(Y)| ≤ O(1)H₀ e^{−(κ−3κ₀−3)d}` from the raw bound + summability.  Generalises `KP` convergence to the modified metric.  **The crux of (B).**  Source audit: Appendix F clusters are `Ω`-connected (`X₁ ∩ X₂ ∩ Ω ≠ ∅`), not ordinary full-polymer touching.  Use the new `omegaHolePolymerSystem` or prove a comparison theorem before reusing `holePolymerSystem` consumers. | code — HARD, months-scale | open (source §4) |
 | **P4** | **Fluctuation integral → raw activity bound (§3.8)**: `|H_k(X)| ≤ H₀ e^{−κ d}` from the Gaussian step, `H₀ ∝ g_k^{κ₀}`.  **The crux of (A).** | code — HARD, months-scale, needs the lattice Gaussian covariance | open (source §4) |
 | **P5** | **Assemble `hRpoly`**: combine P3 (renormalized decay) + P4 (raw bound) + P1/P2 (summability) ⟹ `|R_{t,k}| ≤ A e^{−c₀t} g_k^{κ₀}`; feed `lattice_mass_gap_of_cluster_and_coupling` ⟹ the **unconditional lattice mass gap**. | code (glue, once P1–P4 land) | open |
 
@@ -193,6 +193,16 @@ companions, so RG proofs can consume the source-shaped
 `exp(t) * ‖z(Y)‖ * exp(|Y|)` local window without rebuilding scalar-norm
 bookkeeping.  This does **not** prove the P3/P4 activity-decay theorem; it
 proves the exact summability consumer interface that P3/P4 must feed.
+
+**Appendix-F compatibility audit (2026-06-19).**  Direct source extraction
+from Dimock II Appendix F confirms the with-holes cluster relation:
+`Ω`-connected means `X₁ ∩ Ω` and `X₂ ∩ Ω` intersect, equivalently
+`X₁ ∩ X₂ ∩ Ω ≠ ∅`; `Ω`-disjoint need not be disjoint.  The existing
+`holePolymerSystem` remains the touching hard-core system supporting the
+verified local-KP consumers, but it is not to be advertised as the literal
+Appendix-F compatibility relation.  The new `omegaHolePolymerSystem`
+uses nonempty active skeletons and incompatibility by skeleton intersection,
+giving P3 a source-faithful entry point.
 
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the
