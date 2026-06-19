@@ -123,7 +123,7 @@ the spatial gap factor `e^{−c₀t}`, with the scale series contributing only a
 bounded constant — discharging the coupling side for the marginal YM flow
 without any false geometric-decay assumption. -/
 theorem marginal_coupling_remainder_tsum_le (g : ℕ → ℝ) (R : ℕ → ℕ → ℝ)
-    {A c0 κ₀ : ℝ} (hg : ∀ k, 0 ≤ g k) (hsum : Summable (fun k => g k ^ κ₀))
+    {A c0 κ₀ : ℝ} (_hg : ∀ k, 0 ≤ g k) (hsum : Summable (fun k => g k ^ κ₀))
     (hpoly : ∀ t k, |R t k| ≤ A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) (t : ℕ) :
     ∑' k, |R t k| ≤ A * Real.exp (-(c0 * (t : ℝ))) * ∑' k, g k ^ κ₀ := by
   have hRHSsum : Summable (fun k => A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) :=

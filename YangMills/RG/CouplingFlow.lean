@@ -47,7 +47,7 @@ namespace YangMills.RG
 /-- **Abstract geometric decay**: a nonnegative sequence obeying a
 one-step contraction `a_{k+1} ≤ r·a_k` decays as `a_k ≤ r^k·a_0`. -/
 theorem geometric_decay_of_contraction (a : ℕ → ℝ) {r : ℝ} (hr0 : 0 ≤ r)
-    (ha : ∀ k, 0 ≤ a k) (hrec : ∀ k, a (k + 1) ≤ r * a k) :
+    (_ha : ∀ k, 0 ≤ a k) (hrec : ∀ k, a (k + 1) ≤ r * a k) :
     ∀ k, a k ≤ r ^ k * a 0 := by
   intro k
   induction k with
@@ -61,7 +61,7 @@ theorem geometric_decay_of_contraction (a : ℕ → ℝ) {r : ℝ} (hr0 : 0 ≤ 
 contraction**: `r·x·(1 − β·x) ≤ r·x` when `0 ≤ r`, `0 ≤ x`,
 `0 ≤ β·x ≤ 1` (the small-field regime). -/
 theorem logistic_step_le {r β x : ℝ} (hr0 : 0 ≤ r) (hx : 0 ≤ x)
-    (hbx0 : 0 ≤ β * x) (hbx1 : β * x ≤ 1) :
+    (hbx0 : 0 ≤ β * x) (_hbx1 : β * x ≤ 1) :
     r * x * (1 - β * x) ≤ r * x := by
   have hrx : 0 ≤ r * x := mul_nonneg hr0 hx
   calc r * x * (1 - β * x) ≤ r * x * 1 :=
@@ -108,7 +108,7 @@ marginal gauge coupling (`docs/BALABAN-SOURCE-BOUNDS.md` §4), and why the
 geometric remainder contraction in 4D must come from the *irrelevant*
 operators, not the coupling.  Proof: reciprocal telescoping using
 `1/(1−x) ≥ 1+x`. -/
-theorem inv_coupling_linear_growth (g : ℕ → ℝ) {β : ℝ} (hβ : 0 ≤ β)
+theorem inv_coupling_linear_growth (g : ℕ → ℝ) {β : ℝ} (_hβ : 0 ≤ β)
     (hpos : ∀ k, 0 < g k) (hsmall : ∀ k, β * g k < 1)
     (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k)) :
     ∀ n, 1 / g 0 + β * n ≤ 1 / g n := by

@@ -65,6 +65,7 @@ noncomputable def linAvg (L N' : ℕ) [NeZero L] [NeZero N']
     (A : ConcreteEdge d (L * N') → V) (c : ConcreteEdge d N') : V :=
   (L ^ d : ℝ)⁻¹ • ∑ x ∈ blockOf L N' c.source, fineLineSum L N' A c.dir x
 
+omit [Module ℝ V] in
 theorem fineLineSum_add (L N' : ℕ) [NeZero L] [NeZero N']
     (A A' : ConcreteEdge d (L * N') → V) (μ : Fin d)
     (x : FinBox d (L * N')) :
@@ -97,6 +98,7 @@ theorem linAvg_smul (L N' : ℕ) [NeZero L] [NeZero N']
   rw [Finset.sum_congr rfl fun x _ => fineLineSum_smul L N' r A c.dir x,
     ← Finset.smul_sum, smul_comm]
 
+omit [Module ℝ V] in
 /-- **The fine line integral is local** (Bałaban CMP 95: `A(Γ_{c,x})`
 reads only the bonds on its straight path): if two bond fields agree on
 the `L` positively-oriented bonds of the length-`L` line in direction
