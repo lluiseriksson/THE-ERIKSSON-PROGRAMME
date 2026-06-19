@@ -4574,3 +4574,22 @@ followed by Mathlib's `Orthonormal.inner_right_sum`.
 Peter-Weyl completeness, convergence of infinite character expansions,
 SU(N) irreducible classification, continuum construction, or `hRpoly`. Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 130 (2026-06-19, **finite character expansion uniqueness**
+`YangMills.ClayCore.ContinuousUnitaryMatrixRep.characterL2_sum_eq_sum_iff`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum packages the consumer form of the coefficient-extraction theorem:
+inside a fixed finite pairwise-inequivalent family of irreducible continuous
+unitary matrix representations, two finite Haar-`L²` character expansions are
+equal if and only if their coefficient functions are equal.  The proof applies
+`inner_characterL2_sum` to both sides after taking inner product with each
+basis character.
+
+**Honest scope.** This is finite-dimensional/finite-family uniqueness only.
+It does not assert Peter-Weyl completeness, infinite expansion convergence,
+SU(N) irreducible classification, continuum construction, or the open
+`hRpoly` activity-decay estimate. Clay distance **~0% (<0.1%), unchanged**.

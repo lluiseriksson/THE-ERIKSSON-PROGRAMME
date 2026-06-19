@@ -141,7 +141,9 @@ pairwise-inequivalent families are packaged as `orthonormal_characterL2`, and
 `linearIndependent_characterL2` exposes the resulting finite linear
 independence statement. The finite coefficient-extraction identity
 `inner_characterL2_sum` recovers expansion coefficients by Haar `L²` inner
-product inside such finite orthonormal character families.
+product inside such finite orthonormal character families, and
+`characterL2_sum_eq_sum_iff` packages uniqueness of finite character expansion
+coefficients in the same fixed family.
 
 ## What Is Not Claimed
 

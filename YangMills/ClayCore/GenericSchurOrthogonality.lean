@@ -485,5 +485,30 @@ theorem inner_characterL2_sum
     (orthonormal_characterL2 μ ρ hineq).inner_right_sum c
       (s := Finset.univ) (i := a) (Finset.mem_univ a)
 
+/-- Finite character expansions in a fixed pairwise-inequivalent irreducible
+family have unique coefficients.  This is still a finite-family statement, not
+Peter-Weyl completeness. -/
+theorem characterL2_sum_eq_sum_iff
+    {α : Type*} [Fintype α] [DecidableEq α]
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : α → ContinuousUnitaryMatrixRep G ι)
+    [∀ a, (ρ a).IsIrreducible] [Nonempty ι]
+    (hineq : ∀ ⦃a b : α⦄, a ≠ b →
+      IsEmpty (Representation.Equiv (ρ a).toRepresentation (ρ b).toRepresentation))
+    (c d : α → ℂ) :
+    (∑ a, c a • (ρ a).characterL2 μ =
+      ∑ a, d a • (ρ a).characterL2 μ) ↔ c = d := by
+  classical
+  constructor
+  · intro h
+    funext a
+    have hinner := congrArg
+      (fun v => inner ℂ ((ρ a).characterL2 μ) v) h
+    simpa [inner_characterL2_sum μ ρ hineq c a,
+      inner_characterL2_sum μ ρ hineq d a] using hinner
+  · intro h
+    subst h
+    rfl
+
 end ContinuousUnitaryMatrixRep
 end YangMills.ClayCore
