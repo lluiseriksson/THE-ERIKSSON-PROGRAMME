@@ -1406,6 +1406,42 @@ theorem omegaClusterSkeletonRemainderSum_tsum_le {d L : ℕ} [NeZero L]
   exact YangMills.KP.scaleActivity_exp_norm_activity_mul_exp
     (omegaHolePolymerSystem H z) (fun c => (c.val.card : ℝ)) t c
 
+/-- Summability of the Appendix-F-facing `Ω`-active skeleton-pinned cluster
+remainder directly from the local active-skeleton activity window.  This is the
+source-facing form to use when Balaban/Dimock supplies a polymer norm or local
+KP window rather than an explicit pointwise modified-metric majorant. -/
+theorem omegaClusterSkeletonRemainderSum_summable_of_local {d L : ℕ}
+    [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t : ℝ) (ht : 0 < t)
+    (hlocal : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        Real.exp t * ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ 1) :
+    Summable (fun n => omegaClusterSkeletonRemainderSumTerm H z r n) := by
+  exact omegaClusterSkeletonRemainderSum_summable H z r t ht
+    (omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp H z t hlocal)
+
+/-- Quantitative `Ω`-active skeleton-pinned cluster remainder bound directly
+from the local active-skeleton activity window.  This avoids committing to a
+particular metric majorant: the right-hand side is the actual local activity
+mass pinned at the root. -/
+theorem omegaClusterSkeletonRemainderSum_tsum_le_of_local {d L : ℕ}
+    [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t : ℝ) (ht : 0 < t)
+    (hlocal : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        Real.exp t * ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ 1) :
+    ∑' n, omegaClusterSkeletonRemainderSumTerm H z r n
+      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter
+          (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        Real.exp t * ‖(omegaHolePolymerSystem H z).activity c‖ *
+          Real.exp ((c.val.card : ℝ)) := by
+  exact omegaClusterSkeletonRemainderSum_tsum_le H z r t ht
+    (omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp H z t hlocal)
+
 /-- One-shot `Ω`-active skeleton remainder bound from the pointwise
 modified-metric activity majorant.  This is the cluster-tail consumer matching
 Dimock Appendix F's active relation; the model-specific activity decay remains

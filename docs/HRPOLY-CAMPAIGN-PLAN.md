@@ -223,6 +223,11 @@ Appendix-F-facing skeleton-pinned remainder term and bounds its `tsum` by
 modified-metric activity majorant.  Thus future P3/P4 work can feed the
 literal `Ω`-connected relation without detouring through the older touching
 hard-core system.
+The same active cluster-tail path also has local-window consumers
+`omegaClusterSkeletonRemainderSum_summable_of_local` and
+`omegaClusterSkeletonRemainderSum_tsum_le_of_local`: if a primary source gives
+the activity estimate as a local active-skeleton polymer norm rather than a
+literal pointwise metric majorant, the repo can consume that form directly.
 
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the

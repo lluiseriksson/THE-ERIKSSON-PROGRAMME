@@ -4814,3 +4814,31 @@ skeleton-pinned remainder tail, without detouring through the older touching
 hard-core system.  It still does not prove the Yang-Mills activity-decay
 majorant, the continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 140 (2026-06-19, **Appendix-F active cluster-tail local-window consumers**
+`YangMills.RG.omegaClusterSkeletonRemainderSum_summable_of_local`,
+`YangMills.RG.omegaClusterSkeletonRemainderSum_tsum_le_of_local`; core 8273)
+
+**Build:** green (`lake env lean YangMills/RG/ClusterDecay.lean`).
+Full-core and oracle verification are recorded with the commit carrying this
+addendum.
+
+This addendum adds the intermediate source-facing forms for the literal
+`Ω`-active Appendix-F relation.  Addendum 139 consumed either a tilted KP
+criterion directly or a pointwise modified-metric majorant.  The new theorems
+consume the local active-skeleton window
+
+`Σ_{Y : s ∈ skeleton(Y)} exp(t) · ‖z(Y)‖ · exp(|Y|) ≤ 1`
+
+and derive, respectively, summability of the skeleton-pinned active cluster
+tail and the quantitative bound by the root-pinned local activity mass.
+
+**Why this matters.**  The Balaban/Yang-Mills source may present the remaining
+activity control as a polymer norm or local KP window rather than as a literal
+pointwise `A · q^(d_M+1)` estimate.  These theorems let future P3/P4 work feed
+that local-window form directly, without inventing an unnecessary metric
+majorant or detouring through the older touching hard-core system.
+
+**Honest scope.** This is still a consumer-side theorem.  It does not prove the
+Yang-Mills activity-decay estimate, the continuum limit, or OS/Wightman
+reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
