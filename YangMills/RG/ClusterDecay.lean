@@ -639,6 +639,16 @@ lemma clusterSkeletonRemainderSumTerm_le {d L : ℕ} [NeZero L]
     exact ⟨hX.1, hX.2.1, skeleton_subset H (clusterUnion H z X) hX.2.2⟩
   · exact mul_nonneg (abs_nonneg _) (Finset.prod_nonneg fun i _ => norm_nonneg _)
 
+/-- The skeleton-pinned cluster remainder term is bounded by the same pinned
+cluster-weight expression as the larger raw-union-pinned term. -/
+lemma clusterSkeletonRemainderSum_term_le_pinned {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) (r : Cube d L) (n : ℕ) :
+    clusterSkeletonRemainderSumTerm H z r n
+      ≤ ((n : ℝ) + 1) * ∑ c ∈ Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val),
+        pinnedClusterWeight (holePolymerSystem H z) c n :=
+  (clusterSkeletonRemainderSumTerm_le H z r n).trans
+    (clusterRemainderSum_term_le H z r n)
+
 /-- Skeleton-pinned cluster remainders are summable whenever the larger
 union-pinned cluster remainders are summable.  The only set-theoretic input is
 `skeleton_subset`: active-skeleton pinning is a genuine restriction of raw-union

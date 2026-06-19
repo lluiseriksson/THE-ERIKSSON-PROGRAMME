@@ -4154,3 +4154,24 @@ claimed.
 Balaban/Dimock activity-decay estimate itself remains open.  It does not prove
 the continuum limit or OS/Wightman reconstruction. Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 114 (2026-06-19, **skeleton-pinned terms bounded by pinned cluster weights**
+`YangMills.RG.clusterSkeletonRemainderSum_term_le_pinned`; core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum exposes the termwise bound that Addendum 113 implicitly uses:
+
+`clusterSkeletonRemainderSumTerm H z r n ≤ (n+1) · Σ_{c∋r} pinnedClusterWeight (holePolymerSystem H z) c n`.
+
+The proof is a clean two-lemma chain: skeleton-pinned terms are dominated by
+raw-union-pinned terms (`clusterSkeletonRemainderSumTerm_le`), and raw-union
+terms are bounded by the already-proved pinned-cluster-weight estimate
+(`clusterRemainderSum_term_le`).  This gives future `hRpoly` work a single named
+inequality from the source-shaped skeleton support condition to the banked KP
+pinned-weight machinery.
+
+**Honest scope.** This is still summability/weight substrate only.  The
+Balaban/Dimock activity-decay estimate remains open; no continuum limit or
+OS/Wightman reconstruction is claimed. Clay distance **~0% (<0.1%), unchanged**.
