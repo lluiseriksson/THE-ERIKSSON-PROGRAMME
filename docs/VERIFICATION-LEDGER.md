@@ -4632,3 +4632,25 @@ The proof is Mathlib's `Orthonormal.inner_sum` applied to
 It does not assert Peter-Weyl completeness, infinite expansion convergence,
 SU(N) irreducible classification, continuum construction, or the open
 `hRpoly` activity-decay estimate. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 133 (2026-06-19, **finite character Parseval formula**
+`YangMills.ClayCore.ContinuousUnitaryMatrixRep.norm_sq_characterL2_sum`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum records the norm-square consumer of Addendum 132.  For a finite
+pairwise-inequivalent irreducible character family,
+
+`‖Σ a, c a • χ_a‖² = Σ a, ‖c a‖²`.
+
+The proof combines the finite Gram formula with
+`InnerProductSpace.norm_sq_eq_re_inner` and the elementary complex identity
+`star z * z = ‖z‖²`.
+
+**Honest scope.** This is a finite Parseval identity for a fixed finite
+orthonormal character family.  It does not assert Peter-Weyl completeness,
+infinite expansion convergence, SU(N) irreducible classification, continuum
+construction, or the open `hRpoly` activity-decay estimate. Clay distance
+**~0% (<0.1%), unchanged**.

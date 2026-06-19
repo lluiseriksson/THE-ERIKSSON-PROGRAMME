@@ -549,5 +549,32 @@ theorem inner_characterL2_sum_sum
   simpa using
     (orthonormal_characterL2 μ ρ hineq).inner_sum c d Finset.univ
 
+/-- Finite character expansions in a fixed pairwise-inequivalent irreducible
+family satisfy the expected Haar `L²` norm-square formula. -/
+theorem norm_sq_characterL2_sum
+    {α : Type*} [Fintype α] [DecidableEq α]
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : α → ContinuousUnitaryMatrixRep G ι)
+    [∀ a, (ρ a).IsIrreducible] [Nonempty ι]
+    (hineq : ∀ ⦃a b : α⦄, a ≠ b →
+      IsEmpty (Representation.Equiv (ρ a).toRepresentation (ρ b).toRepresentation))
+    (c : α → ℂ) :
+    ‖(∑ a, c a • (ρ a).characterL2 μ)‖ ^ 2 = ∑ a, ‖c a‖ ^ 2 := by
+  classical
+  rw [InnerProductSpace.norm_sq_eq_re_inner (𝕜 := ℂ),
+    inner_characterL2_sum_sum μ ρ hineq c c]
+  have hcomplex :
+      (∑ a, star (c a) * c a) = (∑ a, ((‖c a‖ ^ 2 : ℝ) : ℂ)) := by
+    apply Finset.sum_congr rfl
+    intro a _
+    simpa using Complex.conj_mul' (c a)
+  rw [hcomplex]
+  change (∑ a, ((‖c a‖ ^ 2 : ℝ) : ℂ)).re = ∑ a, ‖c a‖ ^ 2
+  rw [Complex.re_sum]
+  apply Finset.sum_congr rfl
+  intro a _
+  rw [pow_two]
+  exact Complex.ofReal_re (‖c a‖ * ‖c a‖)
+
 end ContinuousUnitaryMatrixRep
 end YangMills.ClayCore
