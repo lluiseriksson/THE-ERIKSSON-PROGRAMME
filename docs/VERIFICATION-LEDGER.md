@@ -3927,6 +3927,9 @@ Haar `L²` API:
 * **`fundamentalMatrixCoeffL2`** and
   **`inner_fundamentalMatrixCoeffL2`** — package the coefficients as vectors in
   Haar `L²` and restate the same identity as their Hilbert-space inner product.
+* **`orthonormal_normalizedFundamentalMatrixCoeffL2`** — after multiplication
+  by `√N`, the `Fin N × Fin N` coefficient family is an `Orthonormal ℂ` family
+  in Haar `L²`, the interface consumed by the orthonormal half of Peter-Weyl.
 
 **Honest scope.** This is Schur orthogonality for the defining representation
 only. It does not prove generic compact-group Peter-Weyl, classify irreducible

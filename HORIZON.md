@@ -162,7 +162,8 @@ L25 [DONE]  ∫ ‖tr U‖² ≤ N                       SchurL25
  │
  ├─► F2  [PARTIAL] matrix-coefficient L² API on Haar       ◄ Mathlib-grade
  │        │  ├ fundamental SU(N) case DONE: SchurFundamentalOrthogonality
- │        │  │  (continuous/L² coefficients and exact δᵢₖδⱼₗ/N inner products)
+ │        │  │  (continuous/L² coefficients, exact δᵢₖδⱼₗ/N inner products,
+ │        │  │   and the normalized orthonormal family)
  │        │  └ selection-rule fragment DONE: SchurEntryNAlitySelection (∫∏U_{ij}∏conj=0, N∤(n−m))
  │        │
  │        ├─► F3 [STUB] Peter–Weyl for compact Lie groups  ◄ THE bottleneck
@@ -201,7 +202,8 @@ measure) is wired correctly end-to-end.
 def matrixCoeff (ρ : Representation ℂ G V) (i j : ι) : G → ℂ := fun g => (ρ g) i j
 -- Fundamental SU(N) specialization DONE in SchurFundamentalOrthogonality.lean:
 -- `fundamentalMatrixCoeff`, `fundamentalMatrixCoeffL2`, and
--- `inner_fundamentalMatrixCoeffL2`.
+-- `inner_fundamentalMatrixCoeffL2`, capped by
+-- `orthonormal_normalizedFundamentalMatrixCoeffL2`.
 -- STUB: generic finite-dimensional continuous unitary representations.
 ```
 

@@ -65,8 +65,10 @@ bound that feeds the existing KP-with-holes/summability shell.
 Independently, the fundamental representation now has exact Schur
 orthogonality in Haar `L²`:
 `inner_fundamentalMatrixCoeffL2` proves the coefficient inner products
-`δᵢₖ δⱼₗ / N`. Generic compact-group Peter-Weyl and generic irreducible
-representations remain open.
+`δᵢₖ δⱼₗ / N`, and
+`orthonormal_normalizedFundamentalMatrixCoeffL2` packages the normalized
+coefficients as an orthonormal family. Generic compact-group Peter-Weyl and
+generic irreducible representations remain open.
 
 ## What Is Not Claimed
 

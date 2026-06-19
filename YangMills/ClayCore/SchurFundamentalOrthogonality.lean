@@ -165,4 +165,32 @@ theorem inner_fundamentalMatrixCoeffL2
     ContinuousMap.inner_toLp]
   exact sunHaarProb_fundamental_entry_orthogonality i j k l
 
+/-- Fundamental matrix coefficients normalized to unit Haar `L²` norm. -/
+noncomputable def normalizedFundamentalMatrixCoeffL2 (ij : Fin N × Fin N) :
+    Lp ℂ 2 (sunHaarProb N) :=
+  (Real.sqrt (N : ℝ) : ℂ) • fundamentalMatrixCoeffL2 ij.1 ij.2
+
+/-- The normalized fundamental matrix coefficients form an orthonormal family. -/
+theorem orthonormal_normalizedFundamentalMatrixCoeffL2 :
+    Orthonormal ℂ (normalizedFundamentalMatrixCoeffL2 (N := N)) := by
+  classical
+  rw [orthonormal_iff_ite]
+  rintro ⟨i, j⟩ ⟨k, l⟩
+  simp only [normalizedFundamentalMatrixCoeffL2, inner_smul_left, inner_smul_right,
+    inner_fundamentalMatrixCoeffL2]
+  rw [show (starRingEnd ℂ) (Real.sqrt (N : ℝ) : ℂ) =
+      (Real.sqrt (N : ℝ) : ℂ) from Complex.conj_ofReal _]
+  have hsqrt : Real.sqrt (N : ℝ) * Real.sqrt (N : ℝ) = (N : ℝ) :=
+    by simpa [pow_two] using Real.sq_sqrt (Nat.cast_nonneg N)
+  by_cases hik : i = k
+  · subst k
+    by_cases hjl : j = l
+    · subst l
+      simp only [if_pos, and_self]
+      rw [← mul_assoc, ← Complex.ofReal_mul, hsqrt]
+      have hN : (N : ℂ) ≠ 0 := Nat.cast_ne_zero.mpr (NeZero.ne N)
+      simpa using mul_inv_cancel₀ hN
+    · simp [hjl, Ne.symm hjl]
+  · simp [hik, Ne.symm hik]
+
 end YangMills.ClayCore
