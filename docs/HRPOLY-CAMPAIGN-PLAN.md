@@ -291,6 +291,10 @@ use an exact or approximate Ward identity to kill the `Q`-exact part before
 norming, and feed the remaining scalar profile to the existing with-holes KP
 consumers.  The opening substrate is `YangMills/SUSY/WardComplex.lean`, plus
 the regulator-limit bridge `YangMills/RG/ActivityLimit.lean`.
+The regulator bridge now includes the telescopic form
+`activity_profile_bound_of_tendsto_telescope`: a pointwise regulator sequence
+with initial amplitude `amp` and summable profile-weighted increments of total
+budget `S` passes to a limiting activity with amplitude `amp + S`.
 The next bridge is now also theorem-fed in `YangMills/SUSY/WardPolymer.lean`:
 an exact or approximate Ward decomposition of the raw activity produces the
 literal pointwise modified-metric hypothesis consumed by

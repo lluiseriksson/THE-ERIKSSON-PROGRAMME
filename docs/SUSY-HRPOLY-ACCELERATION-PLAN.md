@@ -49,6 +49,10 @@ the integrated activity obeys that profile with amplitude
 `activity_profile_bound_of_tendsto`: a pointwise limit of uniformly
 profile-bounded complex activities obeys the same profile bound.  This is the
 abstract consumer for decoupling or regulator-removal arguments.
+It also provides the telescopic variant
+`activity_profile_bound_of_tendsto_telescope`: if
+`‖z_{n+1}(X)-z_n(X)‖ ≤ B_n * profile X` and `∑' B_n ≤ S`, then the limiting
+activity has amplitude `amp + S`.
 
 `YangMills/SUSY/WardPolymer.lean` now connects the Ward layer to the literal
 `Ω`-active with-holes skeleton-tail consumer:
@@ -84,10 +88,7 @@ The following are **not** proved by this substrate:
 2. Bound the regulator/Ward defect and primitive norm in the same
    modified-metric profile consumed by `WardPolymer`.
 3. Bound the surviving cohomological remainder.
-4. `ActivityLimit.lean` telescopic variant: if
-   `‖z_{n+1}(X)-z_n(X)‖ ≤ B_n * q^(d X+1)` and `∑ B_n < ∞`, prove the limiting
-   activity obeys `(A + ∑ B_n) * q^(d X+1)`.
-5. A finite super-Gaussian/Berezin toy model can be useful only if it produces
+4. A finite super-Gaussian/Berezin toy model can be useful only if it produces
    one of the three concrete inputs above; it is not a physical shortcut to
    pure Yang--Mills by itself.
 

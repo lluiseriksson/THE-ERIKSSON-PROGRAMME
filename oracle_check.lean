@@ -149,8 +149,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.OmegaConnectedCover.globalEval_mayerActivity
 #print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_globalEval_eq_of_agreeOn
 -- decoupling/regularisation bridge: a uniform activity profile bound passes to
--- the pointwise limiting activity
+-- the pointwise limiting activity, and a summable telescopic regulator defect
+-- increases only the amplitude budget.
 #print axioms YangMills.RG.activity_profile_bound_of_tendsto
+#print axioms YangMills.RG.activity_profile_bound_of_finite_telescope
+#print axioms YangMills.RG.activity_profile_bound_of_tendsto_telescope
 -- finite-range ⟹ ExpDecay (the operator-level Combes-Thomas input: nearest-
 -- neighbour Laplacian / Wilson hopping / covariant difference operators)
 #print axioms YangMills.RG.finiteRange_isExpDecay

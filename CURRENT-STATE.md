@@ -70,7 +70,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   fluctuation supports are the corresponding unions;
 * the abstract activity-limit bridge
   `activity_profile_bound_of_tendsto`: a metric/profile bound uniform in a
-  regulator passes to the pointwise limiting activity;
+  regulator passes to the pointwise limiting activity.  The same module also
+  contains the telescopic regulator bridge
+  `activity_profile_bound_of_tendsto_telescope`: if the initial activity has
+  amplitude `amp` and the profile-weighted increments have summable budget
+  `S`, then the pointwise limit has amplitude `amp + S`;
 * exponential-decay kernel calculus, Schur bounds, PSD kernel interface,
   Gaussian MGF bounds, and the collar-separated cross-sum bound
   `expDecay_separated_finset_sum_le`: an `ExpDecay` covariance kernel pays

@@ -5204,3 +5204,32 @@ Grassmann/Berezin integration, a regulator, a concrete decomposition
 `H_X = Q B_X + R_X` for the Yang--Mills fluctuation integral, the
 cohomological-remainder bound, `hRpoly`, continuum limit, or OS/Wightman
 reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 151 (2026-06-20, **telescopic regulator activity-limit bridge**
+`YangMills.RG.activity_profile_bound_of_finite_telescope`,
+`YangMills.RG.activity_profile_bound_of_tendsto_telescope`; core 8281)
+
+**Build:** green (`lake env lean YangMills/RG/ActivityLimit.lean`).  Full-core
+and oracle verification are recorded with the commit carrying this addendum.
+
+This addendum closes the telescopic variant requested by the SUSY/Ward
+acceleration plan.  The finite theorem proves that if
+`‖z 0 X‖ ≤ amp * profile X` and each increment satisfies
+`‖z (n+1) X - z n X‖ ≤ B n * profile X`, then
+
+`‖z N X‖ ≤ (amp + ∑_{n<N} B n) * profile X`.
+
+The limit theorem adds nonnegativity of the profile and `B`, summability of
+`B`, the bound `∑' n, B n ≤ S`, and pointwise convergence `z n X → zLim X`,
+and concludes
+
+`‖zLim X‖ ≤ (amp + S) * profile X`.
+
+This is the regulator-removal consumer needed by future Ward/decoupling
+arguments: profile-bounded approximation error budgets add to the final
+amplitude rather than requiring a fresh cluster-expansion proof.
+
+**Honest scope.** This is an abstract topological/metric bridge.  It does not
+construct the regulator, prove any Yang-Mills fluctuation-integral estimate,
+prove `hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.
