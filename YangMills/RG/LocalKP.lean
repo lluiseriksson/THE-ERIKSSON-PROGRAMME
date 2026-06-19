@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import Mathlib
 import YangMills.RG.HolePolymerSystem
+import YangMills.KP.Restriction
 
 attribute [local instance] Classical.propDecidable
 
@@ -175,6 +176,89 @@ theorem holePolymerSystem_KPCriterion_volumeUniform {d L : ℕ} [NeZero L] (H : 
       rw [h_sum_const]
       exact h_card_le.trans (by rw [h_cancel])
     ))))
+
+/-- **Volume-uniform Kotecký-Preiss criterion for a scalar activity tilt.**
+
+This is the form consumed by the cluster-tail estimates: the `e^t` tilt
+multiplies every polymer activity by the same scalar, but the polymer type and
+incompatibility relation are unchanged. -/
+theorem holePolymerSystem_KPCriterion_volumeUniform_scaled {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) (ρ : ℝ)
+    (h_local : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter (fun Y : PolymerType H z => s ∈ Y.val),
+        ‖(ρ : ℂ) * (holePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ ((3 ^ d + 1 : ℕ) : ℝ)⁻¹) :
+    KP.KPCriterion ((holePolymerSystem H z).scaleActivity ρ)
+      (fun X => (X.val.card : ℝ)) := by
+  constructor
+  · intro X
+    positivity
+  · intro X
+    have h_sub := filter_incomp_subset H z X
+    have h_sum_le := Finset.sum_le_sum_of_subset_of_nonneg
+        (f := fun Y => ‖(ρ : ℂ) * (holePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ))
+        h_sub (fun Y _ _ => by positivity)
+    have h_biunion : Finset.filter (fun Y : PolymerType H z =>
+        ∃ s ∈ closedNeigh X.val, s ∈ Y.val) Finset.univ ⊆
+        (closedNeigh X.val).biUnion
+          (fun s => Finset.filter (fun Y => s ∈ Y.val) Finset.univ) := by
+      intro Y hY
+      rw [mem_filter] at hY
+      rcases hY.2 with ⟨s, hs_S, hs_m⟩
+      rw [mem_biUnion]
+      refine ⟨s, hs_S, ?_⟩
+      rw [mem_filter]
+      exact ⟨mem_univ Y, hs_m⟩
+    have h_biunion_sum := Finset.sum_le_sum_of_subset_of_nonneg
+        (f := fun Y => ‖(ρ : ℂ) * (holePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ))
+        h_biunion (fun Y _ _ => by positivity)
+    have h_sum_biunion_le := sum_biUnion_le (closedNeigh X.val)
+        (fun s => Finset.filter (fun Y => s ∈ Y.val) Finset.univ)
+        (fun Y => ‖(ρ : ℂ) * (holePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ)) (fun Y => by positivity)
+    have h_sum_local_le : ∑ s ∈ closedNeigh X.val,
+        ∑ Y ∈ Finset.filter (fun Y => s ∈ Y.val) Finset.univ,
+          ‖(ρ : ℂ) * (holePolymerSystem H z).activity Y‖ *
+            Real.exp (Y.val.card : ℝ)
+        ≤ ∑ s ∈ closedNeigh X.val, ((3 ^ d + 1 : ℕ) : ℝ)⁻¹ := by
+      apply Finset.sum_le_sum
+      intro s _
+      exact h_local s
+    have h_sum_const : ∑ s ∈ closedNeigh X.val, ((3 ^ d + 1 : ℕ) : ℝ)⁻¹ =
+        ((closedNeigh X.val).card : ℝ) * ((3 ^ d + 1 : ℕ) : ℝ)⁻¹ := by
+      rw [sum_const, nsmul_eq_mul]
+    have h_card_le : ((closedNeigh X.val).card : ℝ) *
+        ((3 ^ d + 1 : ℕ) : ℝ)⁻¹
+        ≤ ((3 ^ d + 1 : ℕ) : ℝ) * (X.val.card : ℝ) *
+          ((3 ^ d + 1 : ℕ) : ℝ)⁻¹ := by
+      have h_geom := closedNeigh_card_le X.val
+      have h_cast : ((closedNeigh X.val).card : ℝ)
+          ≤ ((3 ^ d + 1 : ℕ) : ℝ) * (X.val.card : ℝ) := by
+        exact_mod_cast h_geom
+      gcongr
+    have h_cancel : ((3 ^ d + 1 : ℕ) : ℝ) * (X.val.card : ℝ) *
+        ((3 ^ d + 1 : ℕ) : ℝ)⁻¹ = (X.val.card : ℝ) := by
+      have h3d : (3 ^ d : ℝ) + 1 ≠ 0 := by positivity
+      exact calc ((3 ^ d + 1 : ℕ) : ℝ) * (X.val.card : ℝ) *
+            ((3 ^ d + 1 : ℕ) : ℝ)⁻¹
+          _ = (((3 ^ d + 1 : ℕ) : ℝ) *
+              ((3 ^ d + 1 : ℕ) : ℝ)⁻¹) * (X.val.card : ℝ) := by ring
+          _ = 1 * (X.val.card : ℝ) := by
+            have h_eq : ((3 ^ d + 1 : ℕ) : ℝ) = (3 ^ d : ℝ) + 1 := by
+              push_cast
+              rfl
+            rw [h_eq, mul_inv_cancel₀ h3d]
+          _ = (X.val.card : ℝ) := by ring
+    show ∑ Y ∈ Finset.univ.filter
+        (fun Y => ((holePolymerSystem H z).scaleActivity ρ).incomp X Y),
+        ‖((holePolymerSystem H z).scaleActivity ρ).activity Y‖ *
+          Real.exp ((Y.val.card : ℝ)) ≤ (X.val.card : ℝ)
+    exact h_sum_le.trans
+      (h_biunion_sum.trans (h_sum_biunion_le.trans (h_sum_local_le.trans (by
+        rw [h_sum_const]
+        exact h_card_le.trans (by rw [h_cancel])))))
 
 /-- **Volume-Uniform Mayer Cluster Series Convergence:**
     The cluster series converges absolutely and volume-uniformly under the local summability condition. -/

@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(RG): consume metric activity decay for skeleton remainders`).
+(`feat(RG): derive skeleton metric bound from local summability`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -48,13 +48,15 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   modified-metric summability, and the cluster-union modified-metric interface.
 
 The latest RG theorem is
-`YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound`: if the tilted,
-cardinality-weighted activity of every hole polymer is bounded by
-`A * q^(d_M+1)`, then the full skeleton-pinned cluster remainder series is
+`YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local`: if
+the tilted local activity sum satisfies the volume-uniform KP smallness window
+and the tilted, cardinality-weighted activity of every hole polymer is bounded
+by `A * q^(d_M+1)`, then the full skeleton-pinned cluster remainder series is
 bounded by
 `t⁻¹ * A * (1 - (3^d)^2 * (q * 2^(3^d+1)))⁻¹`.
 
 Together with `clusterSkeletonRemainderSum_tsum_le`,
+`holePolymerSystem_KPCriterion_volumeUniform_scaled`,
 `clusterSkeletonRemainderSum_term_le_skeletonPinned`,
 `clusterSkeletonRemainderSum_term_le_pinned`,
 `clusterSkeletonRemainderSum_summable`, `clusterUnionPolymer`, and

@@ -231,6 +231,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.closedNeigh_card_le
 #print axioms YangMills.RG.incomp_imp_intersect
 #print axioms YangMills.RG.holePolymerSystem_KPCriterion_volumeUniform
+#print axioms YangMills.RG.holePolymerSystem_KPCriterion_volumeUniform_scaled
 #print axioms YangMills.RG.holePolymerSystem_converges_volumeUniform
 #print axioms YangMills.RG.holePolymerSystem_norm_clusterSum_le_volumeUniform
 
@@ -258,6 +259,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.clusterSkeletonRemainderSum_summable
 #print axioms YangMills.RG.clusterSkeletonRemainderSum_tsum_le
 #print axioms YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound
+#print axioms YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local
 #print axioms YangMills.RG.discreteModifiedMetric_le_clusterModifiedMetric
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

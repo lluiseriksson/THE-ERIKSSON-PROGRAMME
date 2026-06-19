@@ -996,6 +996,46 @@ theorem clusterSkeletonRemainderSum_tsum_le_metric_bound {d L : ℕ} [NeZero L]
       _ ≤ A * K := mul_le_mul_of_nonneg_left hmetric hA0
   exact hfinite
 
+/-- One-shot source-shaped skeleton remainder bound from local tilted
+summability plus modified-metric activity decay.
+
+Compared with `clusterSkeletonRemainderSum_tsum_le_metric_bound`, this theorem
+does not carry the tilted KP criterion as a separate hypothesis: it derives it
+from the volume-uniform local summability criterion for the scaled activity. -/
+theorem clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local {d L : ℕ}
+    [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t q A : ℝ) (ht : 0 < t)
+    (hlocal : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter (fun Y : PolymerType H z => s ∈ Y.val),
+        Real.exp t * ‖(holePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ ((3 ^ d + 1 : ℕ) : ℝ)⁻¹)
+    (hA0 : 0 ≤ A)
+    (hact : ∀ c : PolymerType H z,
+      Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
+          Real.exp ((c.val.card : ℝ))
+        ≤ A * q ^ (discreteModifiedMetric H c.val + 1))
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hq0 : 0 ≤ q)
+    (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)) < 1) :
+    ∑' n, clusterSkeletonRemainderSumTerm H z r n
+      ≤ t⁻¹ * (A *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹) := by
+  have hlocal_scaled : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter (fun Y : PolymerType H z => s ∈ Y.val),
+        ‖((Real.exp t : ℝ) : ℂ) * (holePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ ((3 ^ d + 1 : ℕ) : ℝ)⁻¹ := by
+    intro s
+    refine (le_of_eq ?_).trans (hlocal s)
+    refine Finset.sum_congr rfl fun Y _ => ?_
+    rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_pos (Real.exp_pos t)]
+  exact clusterSkeletonRemainderSum_tsum_le_metric_bound H z r t q A ht
+    (holePolymerSystem_KPCriterion_volumeUniform_scaled H z (Real.exp t)
+      hlocal_scaled)
+    hA0 hact hdisj hnoedges hholes_ne hq0 hCq
+
 lemma polymer_subset_clusterUnion {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer) (i : Fin n) :
     (X i).val ⊆ clusterUnion H z X := by

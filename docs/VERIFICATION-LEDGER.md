@@ -4241,3 +4241,40 @@ activity-decay input.  It still does not prove that activity estimate for the
 actual Yang-Mills RG operator; that remains the `hRpoly`/P3-P4 analytic core.
 No continuum limit or OS/Wightman reconstruction is claimed. Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 117 (2026-06-19, **tilted local KP criterion and one-shot skeleton metric bound**
+`YangMills.RG.holePolymerSystem_KPCriterion_volumeUniform_scaled`,
+`YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum removes a technical carried hypothesis from Addendum 116's
+consumer theorem.  The new theorem
+`holePolymerSystem_KPCriterion_volumeUniform_scaled` proves the
+volume-uniform Kotecký-Preiss criterion for the scalar-tilted hole polymer
+system directly from the local tilted activity-sum smallness condition:
+
+`Σ_{Y∋s} ‖ρ · z(Y)‖ · exp(|Y|) ≤ (3^d+1)⁻¹`.
+
+The proof is the same local-neighbourhood argument as the unscaled
+`holePolymerSystem_KPCriterion_volumeUniform`: incompatibilities are covered by
+the closed neighbourhood, whose cardinality is bounded by `(3^d+1)|X|`.
+
+The follow-up theorem
+`clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local` then combines:
+
+* the scaled local KP criterion at `ρ = exp(t)`;
+* the skeleton-rooted cluster remainder estimate;
+* the modified-metric activity-decay hypothesis;
+* the discrete modified-metric summability theorem.
+
+It yields the same volume-uniform skeleton remainder bound as Addendum 116 but
+with the KP criterion derived internally from the local summability window.
+
+**Honest scope.** The theorem still assumes the local activity-sum smallness
+and the modified-metric activity-decay estimate.  Those are exactly the
+Balaban/Dimock `hRpoly`/P3-P4 analytic inputs; they are not proved here.  No
+continuum limit or OS/Wightman reconstruction is claimed. Clay distance **~0%
+(<0.1%), unchanged**.

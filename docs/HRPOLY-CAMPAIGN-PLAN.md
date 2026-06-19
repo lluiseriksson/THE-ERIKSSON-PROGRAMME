@@ -179,9 +179,12 @@ metric, and proves the skeleton-pinned cluster remainder series bound
 with the discrete modified-metric summability theorem: an explicit
 Dimock-shaped activity estimate
 `exp(t) * ‖z(c)‖ * exp(|c|) ≤ A * q^(d_M(c)+1)` implies a volume-uniform
-bound by `t⁻¹ * A * (1 - (3^d)^2 * (q * 2^(3^d+1)))⁻¹`.  This does **not**
-prove the P3/P4 activity-decay theorem; it proves the exact summability
-consumer interface that P3/P4 must feed.
+bound by `t⁻¹ * A * (1 - (3^d)^2 * (q * 2^(3^d+1)))⁻¹`.  The follow-up
+`clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local` derives the
+needed tilted KP criterion from the local tilted activity-sum smallness
+condition, using `holePolymerSystem_KPCriterion_volumeUniform_scaled`.  This
+does **not** prove the P3/P4 activity-decay theorem; it proves the exact
+summability consumer interface that P3/P4 must feed.
 
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the
