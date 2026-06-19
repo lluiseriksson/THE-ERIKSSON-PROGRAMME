@@ -532,5 +532,22 @@ theorem characterL2_sum_eq_zero_iff
     subst h
     simp
 
+/-- Finite character expansions in a fixed pairwise-inequivalent irreducible
+family have the expected diagonal Haar `L²` inner product. -/
+theorem inner_characterL2_sum_sum
+    {α : Type*} [Fintype α] [DecidableEq α]
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : α → ContinuousUnitaryMatrixRep G ι)
+    [∀ a, (ρ a).IsIrreducible] [Nonempty ι]
+    (hineq : ∀ ⦃a b : α⦄, a ≠ b →
+      IsEmpty (Representation.Equiv (ρ a).toRepresentation (ρ b).toRepresentation))
+    (c d : α → ℂ) :
+    inner ℂ (∑ a, c a • (ρ a).characterL2 μ)
+      (∑ a, d a • (ρ a).characterL2 μ) =
+        ∑ a, star (c a) * d a := by
+  classical
+  simpa using
+    (orthonormal_characterL2 μ ρ hineq).inner_sum c d Finset.univ
+
 end ContinuousUnitaryMatrixRep
 end YangMills.ClayCore

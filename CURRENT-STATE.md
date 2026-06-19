@@ -144,7 +144,9 @@ independence statement. The finite coefficient-extraction identity
 product inside such finite orthonormal character families, and
 `characterL2_sum_eq_sum_iff` packages uniqueness of finite character expansion
 coefficients in the same fixed family. Its zero-expansion consumer
-`characterL2_sum_eq_zero_iff` gives the common "all coefficients vanish" form.
+`characterL2_sum_eq_zero_iff` gives the common "all coefficients vanish" form,
+and `inner_characterL2_sum_sum` gives the finite diagonal Gram/Plancherel
+identity for two such expansions.
 
 ## What Is Not Claimed
 

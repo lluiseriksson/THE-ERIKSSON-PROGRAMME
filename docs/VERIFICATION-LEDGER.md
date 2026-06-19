@@ -4611,3 +4611,24 @@ zero coefficient function.
 does not assert Peter-Weyl completeness, infinite expansion convergence,
 SU(N) irreducible classification, continuum construction, or the open
 `hRpoly` activity-decay estimate. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 132 (2026-06-19, **finite character Gram formula**
+`YangMills.ClayCore.ContinuousUnitaryMatrixRep.inner_characterL2_sum_sum`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum adds the finite Plancherel/Gram identity for the same substrate:
+for two coefficient functions `c,d` on a fixed finite pairwise-inequivalent
+irreducible character family,
+
+`⟪Σ a, c a • χ_a, Σ a, d a • χ_a⟫ = Σ a, star (c a) * d a`.
+
+The proof is Mathlib's `Orthonormal.inner_sum` applied to
+`orthonormal_characterL2`.
+
+**Honest scope.** This is a finite-family orthonormal-expansion identity only.
+It does not assert Peter-Weyl completeness, infinite expansion convergence,
+SU(N) irreducible classification, continuum construction, or the open
+`hRpoly` activity-decay estimate. Clay distance **~0% (<0.1%), unchanged**.
