@@ -3865,4 +3865,25 @@ We resolved a type mismatch in `wilsonLine_congr` by passing the prepended edge 
 
 **Honest scope.** This completes the locality proof for the coarse averaging operator on the lattice. It does not prove the analytical Gaussian bounds on the activities or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 104 (2026-06-19, **UV scale dictionary and concrete covUV target**
+`YangMills.RG.scaleSpacing`, `YangMills.RG.covUV_concrete`, `YangMills.RG.covUV_polymer`, `YangMills.RG.covUV_polymer_eq`, `YangMills.RG.hUV_of_per_scale`, `YangMills.RG.lattice_mass_gap_of_cluster_and_coupling`, `YangMills.RG.lattice_mass_gap_of_cluster_and_logistic_coupling`, `YangMills.RG.lattice_mass_gap_uv_conditional_nonvacuous`, `YangMills.RG.lattice_mass_gap_of_per_scale_uv_summable`, and `YangMills.RG.lattice_mass_gap_of_cluster_and_marginal_coupling`; core 8269)
+
+**Build:** green (the U0/U3 targets and mass gap refactoring added to `UVMassGap.lean` and `MarginalUVMassGap.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum formalises the concrete representation of the ultraviolet covariance `covUV` and the scale-to-spacing dictionary, refactoring the mass gap conditionals to discharge the carried abstract covariance parameter:
+
+* **`scaleSpacing`** — Defines the scale-to-spacing dictionary $a_k = a_* / L^{k_* - k}$.
+* **`covUV_concrete`** — Defines the UV covariance as the concrete finite sum of scale remainders $\sum_{k < n(t)} R_{t,k}$.
+* **`covUV_polymer`** — Defines the UV covariance in terms of underlying polymer activities.
+* **`covUV_polymer_eq`** — Proves the equivalence of the polymer and remainder representation of the UV covariance.
+* **`hUV_of_per_scale`** — Collapses the per-scale remainder geometric decay to the covariance-level UV decay.
+* **Refactored mass gap theorems** — Refactors `lattice_mass_gap_of_cluster_and_coupling`, `lattice_mass_gap_of_cluster_and_logistic_coupling`, `lattice_mass_gap_uv_conditional_nonvacuous`, `lattice_mass_gap_of_per_scale_uv_summable`, and `lattice_mass_gap_of_cluster_and_marginal_coupling` to use `covUV_concrete` directly, eliminating the carried `covUV` parameter and `hcovUV` hypothesis.
+
+**How compilation was resolved.**
+We added the `noncomputable` keyword to `scaleSpacing`, `covUV_concrete`, and `covUV_polymer` to resolve Lean compiler errors regarding noncomputable division (`ℝ`) and `tsum`. We removed the unused `hc0` parameter from `hUV_of_per_scale` to clean up linter warnings, and eliminated `nsc` from the existential list in `lattice_mass_gap_uv_conditional_nonvacuous` to match the discharged `hcovUV` hypothesis. We added the missing `import YangMills.RG.UVMassGap` to `MarginalUVMassGap.lean` to make `covUV_concrete` visible.
+
+**Honest scope.** This completes the UV scale dictionary and concrete target formulation (Target U0/U3). It does not prove the analytical Gaussian bounds on the activities or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
+
+
 

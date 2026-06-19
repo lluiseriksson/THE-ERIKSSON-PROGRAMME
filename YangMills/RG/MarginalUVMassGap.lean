@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import YangMills.RG.MarginalCoupling
 import YangMills.Paper.ClusteringToGap
+import YangMills.RG.UVMassGap
 
 /-!
 # The marginal-coupling UV mass-gap conditional (gauge-RG, honest YM coupling)
@@ -71,27 +72,26 @@ remainder bound `|R_{t,k}| ≤ (C₂·e^{−c₀t})·w_k` (plus the theorem-fed 
 and the covariance scale-sum), the lattice mass gap follows with constant
 `C₁ + C₂·S`. -/
 theorem lattice_mass_gap_of_per_scale_uv_summable
-    (covIR covUV : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (w : ℕ → ℝ)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (w : ℕ → ℝ)
     (C1 C2 ε c0 S : ℝ)
     (hε : 0 < ε) (hc0 : 0 < c0) (hC2 : 0 ≤ C2)
     (hw : ∀ k, 0 ≤ w k) (hsum : Summable w) (hS : ∑' k, w k ≤ S)
     (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
-    (hcovUV : ∀ t : ℕ, covUV t = ∑ k ∈ Finset.range (nsc t), Rsc t k)
     (hRsc : ∀ t k : ℕ,
       |Rsc t k| ≤ (C2 * Real.exp (-(c0 * (t : ℝ)))) * w k) :
     ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
-      |covIR t + covUV t| ≤ (C1 + C2 * S) * Real.exp (-(gap * (t : ℝ))) := by
+      |covIR t + covUV_concrete Rsc nsc t| ≤ (C1 + C2 * S) * Real.exp (-(gap * (t : ℝ))) := by
   have hUV : ∀ t : ℕ,
-      |covUV t| ≤ (C2 * S) * Real.exp (-(c0 * (t : ℝ))) := by
+      |covUV_concrete Rsc nsc t| ≤ (C2 * S) * Real.exp (-(c0 * (t : ℝ))) := by
     intro t
     have hamp : (0 : ℝ) ≤ C2 * Real.exp (-(c0 * (t : ℝ))) :=
       mul_nonneg hC2 (Real.exp_pos _).le
     have hsumm := uv_summable_summation (Rsc t) w hamp hw hsum hS (fun k => hRsc t k) (nsc t)
-    rw [hcovUV t]
+    dsimp [covUV_concrete]
     calc |∑ k ∈ Finset.range (nsc t), Rsc t k|
         ≤ (C2 * Real.exp (-(c0 * (t : ℝ)))) * S := hsumm
       _ = (C2 * S) * Real.exp (-(c0 * (t : ℝ))) := by ring
-  exact lattice_mass_gap_of_exp_clustering_uniform covIR covUV C1 (C2 * S) ε c0
+  exact lattice_mass_gap_of_exp_clustering_uniform covIR (covUV_concrete Rsc nsc) C1 (C2 * S) ε c0
     hε hc0 hIRbound hUV
 
 /-- **End-to-end UV conditional with the MARGINAL (Yang–Mills) coupling.**  The
@@ -104,24 +104,23 @@ does not decay geometrically, `∑ g_k^{κ₀}` converges
 follows with the finite constant `C₁ + C₂·∑_k g_k^{κ₀}`.  No geometric-coupling
 assumption; `hRpoly` is the sole carried YM-analytic input. -/
 theorem lattice_mass_gap_of_cluster_and_marginal_coupling
-    (covIR covUV : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (g : ℕ → ℝ)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (g : ℕ → ℝ)
     {C1 C2 ε c0 β κ₀ : ℝ}
     (hε : 0 < ε) (hc0 : 0 < c0) (hC2 : 0 ≤ C2) (hκ : 1 < κ₀)
     (hβ : 0 < β) (hpos : ∀ k, 0 < g k) (hsmall : ∀ k, β * g k < 1)
     (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
     (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
-    (hcovUV : ∀ t : ℕ, covUV t = ∑ k ∈ Finset.range (nsc t), Rsc t k)
     (hRpoly : ∀ t k : ℕ,
       |Rsc t k| ≤ (C2 * Real.exp (-(c0 * (t : ℝ)))) * g k ^ κ₀) :
     ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
-      |covIR t + covUV t|
+      |covIR t + covUV_concrete Rsc nsc t|
         ≤ (C1 + C2 * ∑' k, g k ^ κ₀) * Real.exp (-(gap * (t : ℝ))) := by
   have hsum : Summable (fun k => g k ^ κ₀) :=
     marginal_coupling_pow_summable_of_recursion g hβ hpos hsmall hrec hκ
   have hw : ∀ k, 0 ≤ g k ^ κ₀ := fun k => Real.rpow_nonneg (hpos k).le _
-  exact lattice_mass_gap_of_per_scale_uv_summable covIR covUV Rsc nsc
+  exact lattice_mass_gap_of_per_scale_uv_summable covIR Rsc nsc
     (fun k => g k ^ κ₀) C1 C2 ε c0 (∑' k, g k ^ κ₀)
-    hε hc0 hC2 hw hsum le_rfl hIRbound hcovUV hRpoly
+    hε hc0 hC2 hw hsum le_rfl hIRbound hRpoly
 
 /-- **Non-vacuity of the marginal-coupling recursion.**  The logistic flow
 `g_{k+1} = g_k(1 − β g_k)` with `β = 1`, `g_0 = 1/2` satisfies all the coupling

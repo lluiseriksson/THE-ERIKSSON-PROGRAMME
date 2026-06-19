@@ -40,11 +40,44 @@ axioms.
 namespace YangMills.RG
 
 open YangMills
+open scoped BigOperators
+
+/-- The scale-to-spacing dictionary: a_k = a* / L^(kstar - k). -/
+noncomputable def scaleSpacing (L : ℕ) (kstar k : ℕ) (astar : ℝ) : ℝ :=
+  astar / (L : ℝ) ^ (kstar - k)
+
+/-- The ultraviolet covariance defined as the sum of renormalization-group remainders. -/
+noncomputable def covUV_concrete (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (t : ℕ) : ℝ :=
+  ∑ k ∈ Finset.range (nsc t), Rsc t k
+
+/-- The ultraviolet covariance defined in terms of polymer activities. -/
+noncomputable def covUV_polymer {ι : Type*} (H : ℕ → ℕ → ι → ℝ) (nsc : ℕ → ℕ) (t : ℕ) : ℝ :=
+  ∑ k ∈ Finset.range (nsc t), ∑' Y, H t k Y
+
+theorem covUV_polymer_eq {ι : Type*} (H : ℕ → ℕ → ι → ℝ) (nsc : ℕ → ℕ) (t : ℕ)
+    (Rsc : ℕ → ℕ → ℝ) (hR : ∀ k, Rsc t k = ∑' Y, H t k Y) :
+    covUV_polymer H nsc t = covUV_concrete Rsc nsc t := by
+  dsimp [covUV_polymer, covUV_concrete]
+  refine Finset.sum_congr rfl (fun k _ => by rw [hR k])
+
+theorem hUV_of_per_scale
+    (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (C2 c0 r : ℝ)
+    (hC2 : 0 ≤ C2) (hr0 : 0 ≤ r) (hr1 : r < 1)
+    (hRsc : ∀ t k : ℕ, |Rsc t k| ≤ (C2 * Real.exp (-(c0 * (t : ℝ)))) * r ^ k) (t : ℕ) :
+    |covUV_concrete Rsc nsc t| ≤ (C2 * (1 - r)⁻¹) * Real.exp (-(c0 * (t : ℝ))) := by
+  have hM : (0 : ℝ) ≤ C2 * Real.exp (-(c0 * (t : ℝ))) :=
+    mul_nonneg hC2 (Real.exp_pos _).le
+  have hsum := Paper.uv_geometric_summation (Rsc t)
+    (C2 * Real.exp (-(c0 * (t : ℝ)))) r (nsc t) hM hr0 hr1 (fun k => hRsc t k)
+  dsimp [covUV_concrete]
+  calc |∑ k ∈ Finset.range (nsc t), Rsc t k|
+      ≤ (C2 * Real.exp (-(c0 * (t : ℝ)))) * (1 - r)⁻¹ := hsum
+    _ = (C2 * (1 - r)⁻¹) * Real.exp (-(c0 * (t : ℝ))) := by ring
 
 /-- **End-to-end UV conditional**: the renormalization-group remainder
 activity bound `|R_{t,k}| ≤ A·e^{−c₀t}·g_k^{κ₀}` together with the
 coupling-flow decay `g_k ≤ C·rᵏ` (and the theorem-fed IR bound + the
-covariance-as-scale-sum structure) imply the **lattice mass gap**.
+concrete UV covariance structure) imply the **lattice mass gap**.
 Composes `coupling_flow_bridge` (applied per distance `t`, with amplitude
 `A·e^{−c₀t}`, turning `g_k^{κ₀}` into `C^{κ₀}·rᵏ`) with the banked
 `lattice_mass_gap_of_per_scale_uv`.  This is the §6.3 UV obligation in
@@ -52,17 +85,16 @@ its faithful, fully-assembled conditional form: the two carried
 hypotheses `hRpoly` and `hg` are exactly the Bałaban cluster-expansion
 and coupling-flow inputs. -/
 theorem lattice_mass_gap_of_cluster_and_coupling
-    (covIR covUV : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (g : ℕ → ℝ)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (g : ℕ → ℝ)
     {C1 ε c0 A C r κ₀ : ℝ}
     (hε : 0 < ε) (hc0 : 0 < c0) (hA : 0 ≤ A) (hC : 0 ≤ C)
     (hr0 : 0 < r) (hr1 : r < 1) (hκ : 1 ≤ κ₀)
     (hg0 : ∀ k, 0 ≤ g k) (hg : ∀ k, g k ≤ C * r ^ k)
     (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
-    (hcovUV : ∀ t : ℕ, covUV t = ∑ k ∈ Finset.range (nsc t), Rsc t k)
     (hRpoly : ∀ t k : ℕ,
       |Rsc t k| ≤ A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) :
     ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
-      |covIR t + covUV t|
+      |covIR t + covUV_concrete Rsc nsc t|
         ≤ (C1 + A * C ^ κ₀ * (1 - r)⁻¹) * Real.exp (-(gap * (t : ℝ))) := by
   have hRsc : ∀ t k : ℕ,
       |Rsc t k| ≤ (A * C ^ κ₀ * Real.exp (-(c0 * (t : ℝ)))) * r ^ k := by
@@ -73,9 +105,9 @@ theorem lattice_mass_gap_of_cluster_and_coupling
     calc |Rsc t k|
         ≤ A * Real.exp (-(c0 * (t : ℝ))) * C ^ κ₀ * r ^ k := hb
       _ = (A * C ^ κ₀ * Real.exp (-(c0 * (t : ℝ)))) * r ^ k := by ring
-  exact lattice_mass_gap_of_per_scale_uv covIR covUV Rsc nsc C1 (A * C ^ κ₀)
+  exact lattice_mass_gap_of_per_scale_uv covIR (covUV_concrete Rsc nsc) Rsc nsc C1 (A * C ^ κ₀)
     ε c0 r hε hc0 (mul_nonneg hA (Real.rpow_nonneg hC κ₀)) hr0.le hr1
-    hIRbound hcovUV hRsc
+    hIRbound (fun _ => rfl) hRsc
 
 /-- **End-to-end UV conditional with the coupling discharged** (tighter
 form): the same conclusion as `lattice_mass_gap_of_cluster_and_coupling`,
@@ -84,26 +116,25 @@ fundamental **logistic RG recursion** `g_{k+1} ≤ r·g_k·(1−β·g_k)` (the
 canonically-irrelevant β-function step; `0 ≤ β·g_k ≤ 1` small field).
 The decay `g_k ≤ g_0·rᵏ` is derived internally (`logistic_geometric_decay`),
 so the coupling input is now the RG recursion itself.  From the cluster
-activity bound + the coupling recursion (+ IR bound + covariance
-scale-sum), the **lattice mass gap** follows. -/
+activity bound + the coupling recursion (+ IR bound + concrete UV covariance),
+the **lattice mass gap** follows. -/
 theorem lattice_mass_gap_of_cluster_and_logistic_coupling
-    (covIR covUV : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (g : ℕ → ℝ)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (g : ℕ → ℝ)
     {C1 ε c0 A r β κ₀ : ℝ}
     (hε : 0 < ε) (hc0 : 0 < c0) (hA : 0 ≤ A)
     (hr0 : 0 < r) (hr1 : r < 1) (hκ : 1 ≤ κ₀)
     (hg0 : ∀ k, 0 ≤ g k) (hb : ∀ k, 0 ≤ β * g k ∧ β * g k ≤ 1)
     (hrec : ∀ k, g (k + 1) ≤ r * g k * (1 - β * g k))
     (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
-    (hcovUV : ∀ t : ℕ, covUV t = ∑ k ∈ Finset.range (nsc t), Rsc t k)
     (hRpoly : ∀ t k : ℕ,
       |Rsc t k| ≤ A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) :
     ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
-      |covIR t + covUV t|
+      |covIR t + covUV_concrete Rsc nsc t|
         ≤ (C1 + A * g 0 ^ κ₀ * (1 - r)⁻¹) * Real.exp (-(gap * (t : ℝ))) := by
   have hg : ∀ k, g k ≤ g 0 * r ^ k := fun k => by
     rw [mul_comm]; exact logistic_geometric_decay g hr0.le hg0 hb hrec k
-  exact lattice_mass_gap_of_cluster_and_coupling covIR covUV Rsc nsc g
-    hε hc0 hA (hg0 0) hr0 hr1 hκ hg0 hg hIRbound hcovUV hRpoly
+  exact lattice_mass_gap_of_cluster_and_coupling covIR Rsc nsc g
+    hε hc0 hA (hg0 0) hr0 hr1 hκ hg0 hg hIRbound hRpoly
 
 /-- **Non-vacuity of the end-to-end UV conditional** (FOUNDATIONS
 discipline): the hypotheses of `lattice_mass_gap_of_cluster_and_logistic_coupling`
@@ -115,21 +146,20 @@ inhabited by genuine (non-degenerate) data.  (The witness uses `β = 0`,
 the simplest valid logistic step; non-degeneracy is certified by
 `R_{0,0} = 1 ≠ 0`.) -/
 theorem lattice_mass_gap_uv_conditional_nonvacuous :
-    ∃ (covIR covUV : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (g : ℕ → ℝ)
+    ∃ (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (g : ℕ → ℝ)
       (C1 ε c0 A r β κ₀ : ℝ),
       0 < ε ∧ 0 < c0 ∧ 0 ≤ A ∧ 0 < r ∧ r < 1 ∧ 1 ≤ κ₀ ∧
       (∀ k, 0 ≤ g k) ∧ (∀ k, 0 ≤ β * g k ∧ β * g k ≤ 1) ∧
       (∀ k, g (k + 1) ≤ r * g k * (1 - β * g k)) ∧
       (∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ)))) ∧
-      (∀ t : ℕ, covUV t = ∑ k ∈ Finset.range (nsc t), Rsc t k) ∧
       (∀ t k : ℕ, |Rsc t k| ≤ A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) ∧
       (∃ t k : ℕ, Rsc t k ≠ 0) := by
-  refine ⟨fun k => Real.exp (-(k : ℝ)), fun t => Real.exp (-(t : ℝ)),
-    fun t k => Real.exp (-(t : ℝ)) * (1 / 2) ^ k, fun _ => 1,
+  refine ⟨fun k => Real.exp (-(k : ℝ)),
+    fun t k => Real.exp (-(t : ℝ)) * (1 / 2) ^ k,
     fun k => (1 / 2) ^ k, 1, 1, 1, 1, 1 / 2, 0, 1,
     one_pos, one_pos, zero_le_one, by norm_num, by norm_num, le_refl 1,
     fun k => by positivity, fun k => by constructor <;> norm_num,
-    ?_, ?_, ?_, ?_, ?_⟩
+    ?_, ?_, ?_, ?_⟩
   · intro k
     apply le_of_eq
     show (1 / 2 : ℝ) ^ (k + 1) = 1 / 2 * (1 / 2) ^ k * (1 - 0 * (1 / 2) ^ k)
@@ -138,9 +168,6 @@ theorem lattice_mass_gap_uv_conditional_nonvacuous :
     apply le_of_eq
     show |Real.exp (-(k : ℝ))| = 1 * Real.exp (-(1 * (k : ℝ)))
     rw [abs_of_nonneg (Real.exp_nonneg _), one_mul, one_mul]
-  · intro t
-    show Real.exp (-(t : ℝ)) = ∑ k ∈ Finset.range 1, Real.exp (-(t : ℝ)) * (1 / 2) ^ k
-    rw [Finset.sum_range_one]; simp
   · intro t k
     apply le_of_eq
     show |Real.exp (-(t : ℝ)) * (1 / 2) ^ k|

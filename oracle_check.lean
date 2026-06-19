@@ -249,3 +249,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality
 
+#print axioms YangMills.RG.scaleSpacing
+#print axioms YangMills.RG.covUV_concrete
+#print axioms YangMills.RG.hUV_of_per_scale
+
