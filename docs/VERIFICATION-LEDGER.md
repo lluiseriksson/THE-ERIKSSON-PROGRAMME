@@ -4304,3 +4304,31 @@ Both theorems are direct applications of `KP.kp_convergence_sharp` and
 They do not prove the Yang-Mills activity-decay estimate, the cluster expansion
 with holes, the continuum limit, or OS/Wightman reconstruction. Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 119 (2026-06-19, **local skeleton-tail interfaces**
+`YangMills.RG.clusterSkeletonRemainderSum_summable_of_local`,
+`YangMills.RG.clusterSkeletonRemainderSum_tsum_le_of_local`; core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum removes the explicit tilted KP hypothesis from the two lower
+skeleton-tail interfaces:
+
+* `clusterSkeletonRemainderSum_summable_of_local` proves summability of the
+  skeleton-pinned cluster remainder series from the local tilted
+  activity-sum window;
+* `clusterSkeletonRemainderSum_tsum_le_of_local` proves the pre-metric
+  quantitative skeleton-pinned bound from the same local window.
+
+Both theorems derive the scalar-tilted KP criterion through
+`holePolymerSystem_KPCriterion_volumeUniform_scaled`, exactly as the later
+metric-bound theorem does.  The skeleton-tail ladder is now uniformly
+source-shaped: local tilted smallness feeds summability, the pinned KP bound,
+and the modified-metric consumer theorem without carrying a separate
+`KPCriterion` hypothesis at each layer.
+
+**Honest scope.** These are still consumer theorems.  They do not bridge
+raw-support local smallness from skeleton-rooted modified-metric summability,
+and they do not prove the Balaban/Dimock Yang-Mills activity-decay estimate.
+Clay distance **~0% (<0.1%), unchanged**.

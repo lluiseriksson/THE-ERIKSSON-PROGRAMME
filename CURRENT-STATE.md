@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(RG): derive skeleton metric bound from local summability`).
+(`feat(RG): derive skeleton tails from local KP window`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -47,16 +47,25 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * polymer-with-holes multi-hole combinatorics, multiplicity bounds, discrete
   modified-metric summability, and the cluster-union modified-metric interface.
 
-The latest RG theorem is
-`YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local`: if
-the tilted local activity sum satisfies the volume-uniform KP smallness window
-and the tilted, cardinality-weighted activity of every hole polymer is bounded
-by `A * q^(d_M+1)`, then the full skeleton-pinned cluster remainder series is
-bounded by
-`t⁻¹ * A * (1 - (3^d)^2 * (q * 2^(3^d+1)))⁻¹`.
+The latest RG skeleton-tail interface is local-KP-shaped throughout:
+
+* `YangMills.RG.clusterSkeletonRemainderSum_summable_of_local` proves
+  summability of the skeleton-pinned cluster remainder series from the tilted
+  local activity-sum window;
+* `YangMills.RG.clusterSkeletonRemainderSum_tsum_le_of_local` proves the
+  pre-metric quantitative skeleton-pinned bound from the same local window;
+* `YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local`
+  then adds the modified-metric activity estimate.  If the tilted local
+  activity sum satisfies the volume-uniform KP smallness window and the
+  tilted, cardinality-weighted activity of every hole polymer is bounded by
+  `A * q^(d_M+1)`, the full skeleton-pinned cluster remainder series is
+  bounded by
+  `t⁻¹ * A * (1 - (3^d)^2 * (q * 2^(3^d+1)))⁻¹`.
 
 Together with `clusterSkeletonRemainderSum_tsum_le`,
 `holePolymerSystem_KPCriterion_volumeUniform_scaled`,
+`holePolymerSystem_converges_volumeUniform_scaled`,
+`holePolymerSystem_norm_clusterSum_le_volumeUniform_scaled`,
 `clusterSkeletonRemainderSum_term_le_skeletonPinned`,
 `clusterSkeletonRemainderSum_term_le_pinned`,
 `clusterSkeletonRemainderSum_summable`, `clusterUnionPolymer`, and
