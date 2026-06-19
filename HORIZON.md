@@ -20,7 +20,7 @@ Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 
 > **CURRENCY STAMP (2026-06-19).** The "Ground truth as of 2026-05" below is
 > a historical snapshot.  Since then the core advanced substantially (now
-> **8271 jobs**, Mathlib pinned — `REPRODUCIBILITY.md`): the strong-coupling
+> **8272 jobs**, Mathlib pinned — `REPRODUCIBILITY.md`): the strong-coupling
 > **area law** (all four variants) and **IR exponential clustering** are
 > oracle-clean theorems; the **gauge-RG continuum-facing track**
 > (`YangMills/RG/**`, ledger Addenda 23–83) has a theorem-fed
@@ -161,6 +161,8 @@ L25 [DONE]  ∫ ‖tr U‖² ≤ N                       SchurL25
  ├─► F1  [DONE]  ∫ ‖tr U‖² = 1  (sharp L25)               ◄ SchurNormOne
  │
  ├─► F2  [PARTIAL] matrix-coefficient L² API on Haar       ◄ Mathlib-grade
+ │        │  ├ generic continuous-unitary matrix API DONE:
+ │        │  │  ContinuousUnitaryRep (coefficients/characters in C(G) and L²)
  │        │  ├ fundamental SU(N) case DONE: SchurFundamentalOrthogonality
  │        │  │  (continuous/L² coefficients, exact δᵢₖδⱼₗ/N inner products,
  │        │  │   and the normalized orthonormal family)
@@ -204,7 +206,9 @@ def matrixCoeff (ρ : Representation ℂ G V) (i j : ι) : G → ℂ := fun g =>
 -- `fundamentalMatrixCoeff`, `fundamentalMatrixCoeffL2`, and
 -- `inner_fundamentalMatrixCoeffL2`, capped by
 -- `orthonormal_normalizedFundamentalMatrixCoeffL2`.
--- STUB: generic finite-dimensional continuous unitary representations.
+-- Generic matrix-realized continuous unitary representation API DONE in
+-- ContinuousUnitaryRep.lean. STUB: basis-free representations, irreducibility,
+-- inter-representation orthogonality, and Peter-Weyl completeness.
 ```
 
 ### F3 — Peter–Weyl (the bottleneck; likely a standalone Mathlib contribution)

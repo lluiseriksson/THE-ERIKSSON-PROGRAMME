@@ -1,6 +1,6 @@
 # ROADMAP — pushing the boundary toward an unconditional Yang–Mills mass gap
 
-> **STATUS STAMP (2026-06-18, latest).** Core green at **8264 jobs**,
+> **STATUS STAMP (2026-06-19, latest).** Core green at **8272 jobs**,
 > Mathlib pinned (see `REPRODUCIBILITY.md`).  Since this roadmap was first
 > written (2026-06-09) several tracks closed: the area-law track (all four
 > variants — finite-volume/volume-uniform × linearized/exact-activity,

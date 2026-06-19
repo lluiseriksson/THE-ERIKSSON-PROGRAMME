@@ -3936,6 +3936,33 @@ only. It does not prove generic compact-group Peter-Weyl, classify irreducible
 SU(N) representations, construct the continuum limit, or prove the Clay mass
 gap. Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 107 (2026-06-19, **generic continuous-unitary matrix representation API**
+`YangMills.ClayCore.ContinuousUnitaryMatrixRep` and
+`YangMills.ClayCore.ContinuousUnitaryMatrixRep.character_conj`; core 8272)
+
+**Build:** green (`ContinuousUnitaryRep.lean` added to the verified core).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum adds the reusable analytic half of the F2 representation API:
+
+* **`ContinuousUnitaryMatrixRep G ι`** — a continuous monoid homomorphism from
+  a topological group into Mathlib's `Matrix.unitaryGroup ι ℂ`.
+* **`matrixCoeff` / `matrixCoeffL2`** — every coefficient is a continuous
+  function and, on a compact domain with a finite Borel measure, has a
+  canonical vector in `L²`.
+* **`character` / `characterL2`** — the trace character has the same
+  continuous and `L²` interfaces.
+* **`character_conj`** — characters are invariant under group conjugation,
+  proved using the unitary inclusion into matrix units and cyclicity of trace.
+* **`fundamentalUnitaryRep`** — the defining representation of `SU(N)`
+  instantiates the generic API, and its generic coefficients reduce
+  definitionally to the entry functions used in Addendum 106.
+
+**Honest scope.** This does not bundle basis-free representations, prove
+irreducibility, compare inequivalent representations, or establish
+Peter-Weyl density. It is infrastructure directly consumed by those future
+statements. Clay distance **~0% (<0.1%), unchanged**.
+
 
 
 

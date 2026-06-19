@@ -258,5 +258,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.ClayCore.sunHaarProb_fundamental_entry_orthogonality
 #print axioms YangMills.ClayCore.inner_fundamentalMatrixCoeffL2
 #print axioms YangMills.ClayCore.orthonormal_normalizedFundamentalMatrixCoeffL2
+#print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.character_conj
 
 

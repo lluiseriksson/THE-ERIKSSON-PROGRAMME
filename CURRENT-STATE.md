@@ -1,8 +1,8 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(ClayCore): prove fundamental SU(N) Schur orthogonality and its Haar L2 form`,
- ledger Addendum 106).
+(`feat(ClayCore): add the generic continuous-unitary representation L2 API`,
+ ledger Addendum 107).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -10,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8271 jobs**.
+* `lake build YangMillsCore` is green at **8272 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -69,6 +69,12 @@ orthogonality in Haar `L²`:
 `orthonormal_normalizedFundamentalMatrixCoeffL2` packages the normalized
 coefficients as an orthonormal family. Generic compact-group Peter-Weyl and
 generic irreducible representations remain open.
+
+The reusable F2 substrate now also includes
+`ContinuousUnitaryMatrixRep`: a continuous homomorphism into Mathlib's unitary
+matrix group, with continuous matrix coefficients, finite-measure Haar `L²`
+vectors, a continuous character, and conjugation invariance. The defining
+representation `fundamentalUnitaryRep` instantiates this API.
 
 ## What Is Not Claimed
 

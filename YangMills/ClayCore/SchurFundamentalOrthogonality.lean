@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import Mathlib.MeasureTheory.Function.L2Space
+import YangMills.ClayCore.ContinuousUnitaryRep
 import YangMills.ClayCore.SchurEntryOffDiag
 import YangMills.ClayCore.SchurNormOne
 
@@ -37,6 +38,28 @@ open scoped BigOperators ComplexConjugate
 namespace YangMills.ClayCore
 
 variable {N : ℕ} [NeZero N]
+
+/-- The defining representation of `SU(N)` in the generic continuous-unitary API. -/
+def fundamentalUnitaryRep :
+    ContinuousUnitaryMatrixRep (Matrix.specialUnitaryGroup (Fin N) ℂ) (Fin N) where
+  toMonoidHom :=
+    { toFun := fun U => ⟨U.val, U.property.1⟩
+      map_one' := rfl
+      map_mul' := fun _ _ => rfl }
+  continuous_toFun :=
+    Continuous.subtype_mk continuous_subtype_val (fun U => U.property.1)
+
+@[simp]
+theorem fundamentalUnitaryRep_apply
+    (U : Matrix.specialUnitaryGroup (Fin N) ℂ) :
+    (fundamentalUnitaryRep U : Matrix (Fin N) (Fin N) ℂ) = U.val :=
+  rfl
+
+@[simp]
+theorem fundamentalUnitaryRep_matrixCoeff_apply
+    (i j : Fin N) (U : Matrix.specialUnitaryGroup (Fin N) ℂ) :
+    (fundamentalUnitaryRep.matrixCoeff i j) U = U.val i j :=
+  rfl
 
 /-- Right multiplication by a diagonal phase scales a matrix column. -/
 lemma diagPhaseSU_apply_entry_right (θ : Fin N → ℝ) (hθ : ∑ k, θ k = 0)
