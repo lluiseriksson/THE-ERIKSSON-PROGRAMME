@@ -50,7 +50,8 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 The latest RG theorem is `YangMills.RG.clusterSkeletonRemainderSum_tsum_le`:
 under the tilted KP criterion for `holePolymerSystem H z`, the full
 skeleton-pinned cluster remainder series is bounded by a finite pinned sum of
-tilted activity weights over polymers containing the root.  Together with
+tilted activity weights over polymers whose active skeleton contains the root.
+Together with `clusterSkeletonRemainderSum_term_le_skeletonPinned`,
 `clusterSkeletonRemainderSum_term_le_pinned`,
 `clusterSkeletonRemainderSum_summable`, `clusterUnionPolymer`, and
 `clusterUnion_skeleton_card_le_clusterModifiedMetric_add_one`, this gives a

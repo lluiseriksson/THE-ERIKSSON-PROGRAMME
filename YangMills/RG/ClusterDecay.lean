@@ -649,6 +649,160 @@ lemma clusterSkeletonRemainderSum_term_le_pinned {d L : ℕ} [NeZero L]
   (clusterSkeletonRemainderSumTerm_le H z r n).trans
     (clusterRemainderSum_term_le H z r n)
 
+/-- Sharper skeleton-pinned domination: if the root lies in the active skeleton
+of the cluster union, then after symmetrization one may pin at a constituent
+polymer whose own active skeleton contains the root. -/
+lemma clusterSkeletonRemainderSum_term_le_skeletonPinned {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) (r : Cube d L) (n : ℕ) :
+    clusterSkeletonRemainderSumTerm H z r n
+      ≤ ((n : ℝ) + 1) *
+        ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
+          pinnedClusterWeight (holePolymerSystem H z) c n := by
+  classical
+  let P := holePolymerSystem H z
+  set f : (Fin (n + 1) → PolymerType H z) → ℝ :=
+    fun X => |((ursell P X : ℤ) : ℝ)| * ∏ i, ‖P.activity (X i)‖ with hf
+  have hf0 : ∀ X, 0 ≤ f X := fun X =>
+    mul_nonneg (abs_nonneg _) (Finset.prod_nonneg fun i _ => norm_nonneg _)
+  have hfswap : ∀ (σ : Equiv.Perm (Fin (n + 1))) (X : Fin (n + 1) → PolymerType H z),
+      f (X ∘ σ) = f X := by
+    intro σ X
+    rw [hf]
+    simp only
+    rw [ursell_comp_equiv P X σ]
+    congr 1
+    exact Equiv.prod_comp σ (fun k => ‖P.activity (X k)‖)
+  have hidx : ∀ i : Fin (n + 1),
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+          (fun X => r ∈ skeleton H (X i).val), f X
+      = ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+          (fun Y => r ∈ skeleton H (Y 0).val), f Y := by
+    intro i
+    refine Finset.sum_nbij' (i := fun X => X ∘ Equiv.swap 0 i)
+      (j := fun Y => Y ∘ Equiv.swap 0 i) ?_ ?_ ?_ ?_ ?_
+    · intro X hX
+      refine Finset.mem_filter.mpr ⟨Finset.mem_univ _, ?_⟩
+      show r ∈ skeleton H ((X ∘ Equiv.swap 0 i) 0).val
+      have h0 : (X ∘ Equiv.swap 0 i) 0 = X i := by
+        simp [Function.comp, Equiv.swap_apply_left]
+      rw [h0]
+      exact (Finset.mem_filter.mp hX).2
+    · intro Y hY
+      refine Finset.mem_filter.mpr ⟨Finset.mem_univ _, ?_⟩
+      show r ∈ skeleton H ((Y ∘ Equiv.swap 0 i) i).val
+      have h0 : (Y ∘ Equiv.swap 0 i) i = Y 0 := by
+        simp [Function.comp, Equiv.swap_apply_right]
+      rw [h0]
+      exact (Finset.mem_filter.mp hY).2
+    · intro X _
+      funext k
+      simp [Function.comp, Equiv.swap_apply_self]
+    · intro Y _
+      funext k
+      simp [Function.comp, Equiv.swap_apply_self]
+    · intro X _
+      exact (hfswap _ X).symm
+  have hmain : ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+        (fun X => IsCluster P X ∧ r ∈ skeleton H (clusterUnion H z X)), f X
+      ≤ ((n : ℝ) + 1) *
+        ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
+          ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+            (fun Y => Y 0 = c), f Y := by
+    calc ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+          (fun X => IsCluster P X ∧ r ∈ skeleton H (clusterUnion H z X)), f X
+        ≤ ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+            (fun X => r ∈ skeleton H (clusterUnion H z X)), f X := by
+          refine Finset.sum_le_sum_of_subset_of_nonneg ?_ (fun X _ _ => hf0 X)
+          intro X hX
+          rw [mem_filter] at hX ⊢
+          exact ⟨hX.1, hX.2.2⟩
+      _ ≤ ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+            (fun X => r ∈ skeleton H (clusterUnion H z X)),
+            ∑ i : Fin (n + 1), if r ∈ skeleton H (X i).val then f X else 0 := by
+          refine Finset.sum_le_sum fun X hX => ?_
+          obtain ⟨i₀, hi₀⟩ : ∃ i, r ∈ skeleton H (X i).val := by
+            have hm := (Finset.mem_filter.mp hX).2
+            rw [clusterUnion_skeleton H z X] at hm
+            rw [mem_biUnion] at hm
+            rcases hm with ⟨i, _, hi⟩
+            exact ⟨i, hi⟩
+          have hX0 : f X = if r ∈ skeleton H (X i₀).val then f X else 0 := by
+            rw [if_pos hi₀]
+          refine le_trans (le_of_eq hX0) ?_
+          refine Finset.single_le_sum
+            (f := fun i => if r ∈ skeleton H (X i).val then f X else 0)
+            (fun i _ => ?_) (Finset.mem_univ i₀)
+          show 0 ≤ if r ∈ skeleton H (X i).val then f X else 0
+          split_ifs
+          · exact hf0 X
+          · exact le_rfl
+      _ ≤ ∑ X : Fin (n + 1) → PolymerType H z,
+            ∑ i : Fin (n + 1), if r ∈ skeleton H (X i).val then f X else 0 := by
+          refine Finset.sum_le_sum_of_subset_of_nonneg (Finset.subset_univ _) (fun X _ _ => ?_)
+          refine Finset.sum_nonneg fun i _ => ?_
+          split_ifs
+          · exact hf0 X
+          · exact le_rfl
+      _ = ∑ i : Fin (n + 1), ∑ X : Fin (n + 1) → PolymerType H z,
+            if r ∈ skeleton H (X i).val then f X else 0 := Finset.sum_comm
+      _ = ∑ i : Fin (n + 1),
+            ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+              (fun X => r ∈ skeleton H (X i).val), f X := by
+          refine Finset.sum_congr rfl fun i _ => ?_
+          exact (Finset.sum_filter _ _).symm
+      _ = ∑ _i : Fin (n + 1),
+            ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+              (fun Y => r ∈ skeleton H (Y 0).val), f Y :=
+          Finset.sum_congr rfl fun i _ => hidx i
+      _ = ((n : ℝ) + 1) *
+            ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+              (fun Y => r ∈ skeleton H (Y 0).val), f Y := by
+          rw [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul]
+          push_cast; ring
+      _ = ((n : ℝ) + 1) *
+          ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
+            ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+              (fun Y => Y 0 = c), f Y := by
+          congr 1
+          rw [← Finset.sum_fiberwise_of_maps_to (g := fun Y => Y 0) (fun Y hY => ?_) f]
+          · refine Finset.sum_congr rfl fun c hc => ?_
+            rw [Finset.filter_filter]
+            refine Finset.sum_congr ?_ fun _ _ => rfl
+            refine Finset.filter_congr fun Y _ => ?_
+            constructor
+            · exact fun h => h.2
+            · intro h
+              refine ⟨?_, h⟩
+              show r ∈ skeleton H (Y 0).val
+              rw [h]
+              exact Finset.mem_filter.mp hc |>.2
+          · rw [mem_filter] at hY
+            refine Finset.mem_filter.mpr ⟨mem_univ _, hY.2⟩
+  calc clusterSkeletonRemainderSumTerm H z r n
+      = (((n + 1).factorial : ℝ))⁻¹ *
+          ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+            (fun X => IsCluster P X ∧ r ∈ skeleton H (clusterUnion H z X)), f X := by
+        rfl
+    _ ≤ (((n + 1).factorial : ℝ))⁻¹ *
+        (((n : ℝ) + 1) *
+          ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
+            ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+              (fun Y => Y 0 = c), f Y) := by
+        exact mul_le_mul_of_nonneg_left hmain (by positivity)
+    _ = ((n : ℝ) + 1) * ((((n + 1).factorial : ℝ))⁻¹ *
+        ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
+          ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+            (fun Y => Y 0 = c), f Y) := by ring
+    _ = ((n : ℝ) + 1) *
+        ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
+          (((n + 1).factorial : ℝ))⁻¹ *
+            ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+              (fun Y => Y 0 = c), f Y := by
+        rw [Finset.mul_sum]
+    _ = ((n : ℝ) + 1) *
+        ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
+          pinnedClusterWeight P c n := rfl
+
 /-- The same termwise bound after paying the factor `(n+1)` by an `e^t`
 activity tilt.  This is the source-shaped skeleton-pinned analogue of the
 off-region tail comparison in the KP restriction layer. -/
@@ -656,9 +810,9 @@ lemma clusterSkeletonRemainderSum_term_le_tilt {d L : ℕ} [NeZero L]
     (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     (r : Cube d L) (t : ℝ) (ht : 0 < t) (n : ℕ) :
     clusterSkeletonRemainderSumTerm H z r n
-      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val),
+      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
         pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
-  refine le_trans (clusterSkeletonRemainderSum_term_le_pinned H z r n) ?_
+  refine le_trans (clusterSkeletonRemainderSum_term_le_skeletonPinned H z r n) ?_
   rw [Finset.mul_sum, Finset.mul_sum]
   refine Finset.sum_le_sum fun c _ => ?_
   have hfac : ((n : ℝ) + 1) ≤ t⁻¹ * Real.exp t ^ (n + 1) := by
@@ -702,7 +856,7 @@ theorem clusterSkeletonRemainderSum_summable {d L : ℕ} [NeZero L]
 
 /-- Quantitative skeleton-pinned cluster remainder bound.  After the `e^t`
 tilt pays the order factor, the total skeleton-pinned remainder is bounded by a
-finite pinned KP sum over polymers whose support contains the skeleton root.
+finite pinned KP sum over polymers whose active skeleton contains the root.
 
 This is still only a KP/summability substrate: the model-specific
 Balaban-Dimock activity-decay estimate is not proved here. -/
@@ -712,16 +866,16 @@ theorem clusterSkeletonRemainderSum_tsum_le {d L : ℕ} [NeZero L]
     (hkp : KPCriterion ((holePolymerSystem H z).scaleActivity (Real.exp t))
       (fun X => (X.val.card : ℝ))) :
     ∑' n, clusterSkeletonRemainderSumTerm H z r n
-      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val),
+      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
         Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
           Real.exp ((c.val.card : ℝ)) := by
   have hle : ∀ n, clusterSkeletonRemainderSumTerm H z r n
-      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val),
+      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
         pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
     intro n
     exact clusterSkeletonRemainderSum_term_le_tilt H z r t ht n
   have hgsum : Summable (fun n => t⁻¹ * ∑ c ∈ Finset.univ.filter
-      (fun c => r ∈ (c : PolymerType H z).val),
+      (fun c => r ∈ skeleton H (c : PolymerType H z).val),
       pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n) := by
     refine Summable.mul_left _ ?_
     exact summable_sum fun c _ =>
@@ -732,7 +886,7 @@ theorem clusterSkeletonRemainderSum_tsum_le {d L : ℕ} [NeZero L]
   rw [tsum_mul_left]
   refine mul_le_mul_of_nonneg_left ?_ (inv_nonneg.mpr ht.le)
   have hswap := Summable.tsum_finsetSum
-    (s := Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val))
+    (s := Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val))
     (f := fun c n =>
       pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n)
     (fun c _ => (pinned_cluster_summable_sharp _ hkp c).1)

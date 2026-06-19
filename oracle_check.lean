@@ -253,6 +253,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.clusterSkeletonRemainderSumTerm
 #print axioms YangMills.RG.clusterSkeletonRemainderSumTerm_le
 #print axioms YangMills.RG.clusterSkeletonRemainderSum_term_le_pinned
+#print axioms YangMills.RG.clusterSkeletonRemainderSum_term_le_skeletonPinned
 #print axioms YangMills.RG.clusterSkeletonRemainderSum_term_le_tilt
 #print axioms YangMills.RG.clusterSkeletonRemainderSum_summable
 #print axioms YangMills.RG.clusterSkeletonRemainderSum_tsum_le
