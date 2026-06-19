@@ -55,6 +55,8 @@ The latest RG skeleton-tail interface is local-KP-shaped throughout:
 * `YangMills.RG.clusterRemainderSum_summable_of_local` proves the analogous
   raw-union-pinned cluster remainder summability from the same tilted local
   activity-sum window;
+* `YangMills.RG.clusterRemainderSum_tsum_le_of_local` proves the corresponding
+  quantitative raw-union-pinned bound from that same window;
 * `YangMills.RG.clusterSkeletonRemainderSum_tsum_le_of_local` proves the
   pre-metric quantitative skeleton-pinned bound from the same local window;
 * `YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local`

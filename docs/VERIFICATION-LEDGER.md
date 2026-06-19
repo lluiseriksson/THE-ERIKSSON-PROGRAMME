@@ -4383,3 +4383,28 @@ with the later skeleton-pinned `_of_local` API.
 smallness hypothesis.  It does not prove that local smallness from the
 modified-metric activity decay, nor the Balaban/Dimock cluster expansion with
 holes. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 122 (2026-06-19, **raw cluster-tail quantitative local bound**
+`YangMills.RG.clusterRemainderSum_tsum_le`,
+`YangMills.RG.clusterRemainderSum_tsum_le_of_local`; core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum completes the raw-union-pinned lower tail API.  The theorem
+`clusterRemainderSum_tsum_le` bounds the full raw-pinned cluster remainder
+series by the pinned KP one-polymer sum after the `exp(t)` tilt pays the order
+factor:
+
+`Σ'_n R_raw(r,n) ≤ t⁻¹ Σ_{c∋r} exp(t) * ‖z(c)‖ * exp(|c|)`.
+
+The wrapper `clusterRemainderSum_tsum_le_of_local` derives the required
+tilted KP criterion from the source-shaped local smallness window via
+`holePolymerSystem_KPCriterion_volumeUniform_exp`.  Together with Addendum
+121, the raw tail layer now has both summability and a quantitative local
+consumer theorem, matching the shape already available for the skeleton layer.
+
+**Honest scope.** This theorem consumes raw-support local smallness; it does
+not derive that smallness from skeleton-rooted modified-metric estimates.  The
+Balaban/Dimock activity-decay theorem and the cluster expansion with holes
+remain the open analytic inputs. Clay distance **~0% (<0.1%), unchanged**.

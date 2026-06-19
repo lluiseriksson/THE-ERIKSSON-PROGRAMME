@@ -185,7 +185,8 @@ needed tilted KP criterion from the local tilted activity-sum smallness
 condition, using `holePolymerSystem_KPCriterion_volumeUniform_scaled`.  This
 scaled local criterion also now feeds the tilted cluster-series convergence
 and tilted norm-bound APIs, plus the local versions of raw-tail summability,
-skeleton-tail summability, and the pre-metric skeleton-pinned bound.  Addendum 120 names the
+the quantitative raw-pinned bound, skeleton-tail summability, and the
+pre-metric skeleton-pinned bound.  Addendum 120 names the
 `ρ = exp(t)` specialization directly as
 `holePolymerSystem_KPCriterion_volumeUniform_exp` and its convergence/norm
 companions, so RG proofs can consume the source-shaped
