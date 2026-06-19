@@ -170,7 +170,9 @@ L25 [DONE]  ∫ ‖tr U‖² ≤ N                       SchurL25
  │        │  └ selection-rule fragment DONE: SchurEntryNAlitySelection (∫∏U_{ij}∏conj=0, N∤(n−m))
  │        │
  │        ├─► F3 [STUB] Peter–Weyl for compact Lie groups  ◄ THE bottleneck
- │        │        └─► F4 [STUB] Schur orthogonality (matrix coeffs / characters)
+ │        │        └─► F4 [PARTIAL] generic Schur orthogonality
+ │        │             (inequivalent coefficients vanish; self average scalar;
+ │        │              exact 1/dim normalization remains)
  │        │
  │        └─► F4 ───► F5 [STUB] character expansion of exp(−β Re tr U)
  │                         └─► F6 [STUB] Kotecký–Preiss cluster expansion
@@ -211,8 +213,9 @@ def matrixCoeff (ρ : Representation ℂ G V) (i j : ι) : G → ℂ := fun g =>
 -- ContinuousUnitaryRep.lean, including a bridge to Mathlib's algebraic
 -- `Representation`, irreducibility, and intertwiner API. Algebraic Schur is
 -- consumable: irreducible intertwiners are zero/bijective and self-intertwiners
--- are scalar. STUB: generic Haar inter-representation orthogonality and
--- Peter-Weyl completeness.
+-- are scalar. Generic Haar averaging and orthogonality between inequivalent
+-- irreducibles are DONE in GenericSchurOrthogonality.lean. STUB: exact
+-- same-representation 1/dim normalization and Peter-Weyl completeness.
 ```
 
 ### F3 — Peter–Weyl (the bottleneck; likely a standalone Mathlib contribution)
@@ -232,6 +235,11 @@ help far more than this repo. If not, route around it via U(1)/SU(2) (§5) and t
 Weingarten calculus (§3.2), both of which avoid generic Peter–Weyl.
 
 ### F4 — Schur orthogonality
+
+**PARTIAL:** `GenericSchurOrthogonality.lean` constructs the Haar-averaged
+intertwiner. It proves that coefficients of inequivalent irreducibles are
+orthogonal and that the self-average is scalar. The trace normalization that
+identifies that scalar as `δⱼₗ / dim ρ` remains open.
 
 ```lean
 theorem schur_orthogonality

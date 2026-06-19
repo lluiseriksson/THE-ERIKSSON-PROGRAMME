@@ -1,8 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(ClayCore): bridge continuous unitary reps to algebraic Schur theory`,
- ledger Addendum 108).
+(`feat(ClayCore): add generic Haar averaging and Schur orthogonality`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -77,8 +76,12 @@ vectors, a continuous character, and conjugation invariance. Its
 `toRepresentation` bridge exposes Mathlib's algebraic irreducibility and
 intertwiner API; consequently, intertwiners between irreducibles are zero or
 bijective and self-intertwiners are scalar. The defining representation
-`fundamentalUnitaryRep` instantiates the analytic API. Generic Haar
-orthogonality and Peter-Weyl completeness remain open.
+`fundamentalUnitaryRep` instantiates the analytic API. Haar averaging now turns
+an arbitrary matrix into an intertwiner: it vanishes between inequivalent
+irreducibles and is scalar within one irreducible. Thus generic
+inter-representation coefficient orthogonality is theorem-fed. The exact
+same-representation normalization by dimension and Peter-Weyl completeness
+remain open.
 
 ## What Is Not Claimed
 

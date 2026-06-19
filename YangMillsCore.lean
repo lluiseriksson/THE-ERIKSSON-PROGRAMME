@@ -106,6 +106,7 @@ import YangMills.ClayCore.SchurEntryOrthogonality
 import YangMills.ClayCore.SchurEntryOffDiag
 import YangMills.ClayCore.SchurNormOne
 import YangMills.ClayCore.ContinuousUnitaryRep
+import YangMills.ClayCore.GenericSchurOrthogonality
 import YangMills.ClayCore.SchurFundamentalOrthogonality
 import YangMills.ClayCore.SchurL25
 import YangMills.ClayCore.SchurPhysicalBridge

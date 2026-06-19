@@ -261,5 +261,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.character_conj
 #print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.intertwiner_bijective_or_eq_zero
 #print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.exists_eq_smul_one_of_self_intertwiner
+#print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.haarAverageMatrix_mul_eq_mul_haarAverageMatrix
+#print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.haarAverageMatrix_eq_zero_of_not_equiv
+#print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.exists_haarAverageMatrix_eq_smul_one
+#print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.integral_matrixCoeff_mul_star_eq_zero_of_not_equiv
 
 
