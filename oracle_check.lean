@@ -145,6 +145,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.lattice_exp_sum_le_geometric
 -- Schur boundedness: row-sum + quadratic-form (covariance) bound ≤ a·S
 #print axioms YangMills.RG.expDecay_finset_row_le
+-- collar-separated cross interaction: ExpDecay + separation ε pays exp(-κ ε)
+#print axioms YangMills.RG.expDecay_separated_finset_sum_le
 #print axioms YangMills.RG.expDecay_quadratic_form_le
 -- the full ℓ² Schur test: operator-norm bound ‖K‖op ≤ a·S
 #print axioms YangMills.RG.expDecay_op_bilinear_le

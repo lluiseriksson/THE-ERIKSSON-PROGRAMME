@@ -234,6 +234,30 @@ The uniform local-window variants
 source form `local active-skeleton norm ≤ B ≤ 1`, yielding the tail bound
 `≤ t⁻¹ B` without exposing the root-pinned finite sum in downstream statements.
 
+### P4 route refinement: collar factorization from covariance decay
+
+Lluis Eriksson's outlook paper
+`The Heisenberg Cut as a Resource Boundary` (`ai.vixra:2512.0064v1`) should not
+be imported literally into `YangMillsCore`: its thermodynamic power,
+battery-assisted operations, Heisenberg-cut interpretation, and Type-III
+maintenance discussion are a different physical programme.  The useful
+mathematical idea is narrower and source-compatible:
+
+`auxiliary RG spectral mass / coercivity → ExpDecay covariance → collar
+suppression → local decoupling`.
+
+The first theorem from this route is now in `KernelSchur.lean`:
+`expDecay_separated_finset_sum_le`.  If `|K i j| ≤ a exp(-κ d(i,j))` and two
+finite regions are separated by a collar `ε`, then
+
+`Σ_{i∈A,j∈B} |K i j| L_i M_j ≤ a exp(-κ ε) (Σ_i L_i)(Σ_j M_j)`.
+
+This is the deterministic algebraic core that a future Gaussian interpolation
+proof will consume after integration by parts supplies the derivative weights.
+It does not prove the Yang-Mills fluctuation-integral activity bound; it
+removes one clean finite-sum step between covariance decay and polymer
+decoupling.
+
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the
 request was for the **specific page-level theorem statements** so the Lean

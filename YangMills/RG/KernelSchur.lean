@@ -36,19 +36,65 @@ open scoped BigOperators
 
 namespace YangMills.RG
 
-variable {V : Type*} [Fintype V]
+variable {V : Type*}
 
 /-- **Row-sum (ℓ¹) bound** of an exponentially-decaying kernel on a finite
 lattice: `∑_y |K x y| ≤ a·S` when `∑_y e^{−κ d(x,y)} ≤ S`.  The Schur-test
 input and the bound on the kernel's action in sup-norm. -/
 theorem expDecay_finset_row_le {d : V → V → ℝ} {a κ S : ℝ} {K : V → V → ℝ}
-    (ha : 0 ≤ a) (hA : ExpDecay d a κ K)
+    [Fintype V] (ha : 0 ≤ a) (hA : ExpDecay d a κ K)
     (hrow : ∀ x, ∑ y, Real.exp (-κ * d x y) ≤ S) (x : V) :
     ∑ y, |K x y| ≤ a * S := by
   calc ∑ y, |K x y|
       ≤ ∑ y, a * Real.exp (-κ * d x y) := Finset.sum_le_sum (fun y _ => hA x y)
     _ = a * ∑ y, Real.exp (-κ * d x y) := by rw [Finset.mul_sum]
     _ ≤ a * S := mul_le_mul_of_nonneg_left (hrow x) ha
+
+/-- **Collar-separated cross-sum bound.**  If a kernel has exponential decay
+and every pair `(i,j) ∈ A × B` is separated by a collar of width `ε`, then the
+weighted cross interaction is suppressed by `e^{-κ ε}`:
+`∑_{i∈A,j∈B} |K i j| Lᵢ Mⱼ ≤ a e^{-κ ε} (∑ Lᵢ)(∑ Mⱼ)`.
+
+This is the finite-dimensional algebraic core behind the Gaussian collar
+factorization route: Gaussian integration by parts will supply the derivative
+weights, while this lemma supplies the exponential price of the collar. -/
+theorem expDecay_separated_finset_sum_le {d : V → V → ℝ} {a κ ε : ℝ}
+    {K : V → V → ℝ} (A B : Finset V) (Lf Lg : V → ℝ)
+    (ha : 0 ≤ a) (hκ : 0 ≤ κ) (hA : ExpDecay d a κ K)
+    (hsep : ∀ i ∈ A, ∀ j ∈ B, ε ≤ d i j)
+    (hLf : ∀ i ∈ A, 0 ≤ Lf i) (hLg : ∀ j ∈ B, 0 ≤ Lg j) :
+    ∑ i ∈ A, ∑ j ∈ B, |K i j| * Lf i * Lg j
+      ≤ a * Real.exp (-κ * ε) * (∑ i ∈ A, Lf i) * (∑ j ∈ B, Lg j) := by
+  have hterm : ∀ i ∈ A, ∀ j ∈ B,
+      |K i j| * Lf i * Lg j ≤
+        (a * Real.exp (-κ * ε)) * Lf i * Lg j := by
+    intro i hi j hj
+    have hdecay := hA i j
+    have hexp : Real.exp (-κ * d i j) ≤ Real.exp (-κ * ε) := by
+      exact Real.exp_le_exp.mpr (by nlinarith [hκ, hsep i hi j hj])
+    have hbound : |K i j| ≤ a * Real.exp (-κ * ε) := by
+      exact hdecay.trans (mul_le_mul_of_nonneg_left hexp ha)
+    exact mul_le_mul_of_nonneg_right
+      (mul_le_mul_of_nonneg_right hbound (hLf i hi)) (hLg j hj)
+  calc ∑ i ∈ A, ∑ j ∈ B, |K i j| * Lf i * Lg j
+      ≤ ∑ i ∈ A, ∑ j ∈ B, (a * Real.exp (-κ * ε)) * Lf i * Lg j := by
+        exact Finset.sum_le_sum fun i hi =>
+          Finset.sum_le_sum fun j hj => hterm i hi j hj
+    _ = a * Real.exp (-κ * ε) * (∑ i ∈ A, Lf i) * (∑ j ∈ B, Lg j) := by
+        set c : ℝ := a * Real.exp (-κ * ε)
+        have hinner : ∀ i ∈ A,
+            ∑ j ∈ B, c * Lf i * Lg j = (c * Lf i) * ∑ j ∈ B, Lg j := by
+          intro i hi
+          rw [← Finset.mul_sum]
+        calc ∑ i ∈ A, ∑ j ∈ B, c * Lf i * Lg j
+            = ∑ i ∈ A, (c * Lf i) * ∑ j ∈ B, Lg j := by
+              exact Finset.sum_congr rfl fun i hi => hinner i hi
+          _ = (∑ i ∈ A, c * Lf i) * ∑ j ∈ B, Lg j := by
+              rw [Finset.sum_mul]
+          _ = c * (∑ i ∈ A, Lf i) * ∑ j ∈ B, Lg j := by
+              rw [← Finset.mul_sum]
+          _ = a * Real.exp (-κ * ε) * (∑ i ∈ A, Lf i) * (∑ j ∈ B, Lg j) := by
+              rfl
 
 /-- **Schur quadratic-form bound** (the covariance face of kernel decay): on a
 finite lattice with symmetric metric `d`, an exponentially-decaying kernel `K`
@@ -58,7 +104,7 @@ test (`2|u_x||u_y| ≤ u_x²+u_y²`, then row/column summability) — the exact 
 a covariance/Gaussian bound consumes, so a propagator with `ExpDecay` kernel
 has a covariance form bounded by `a·S`. -/
 theorem expDecay_quadratic_form_le {d : V → V → ℝ} {a κ S : ℝ} {K : V → V → ℝ}
-    (ha : 0 ≤ a) (hsym : ∀ x y, d x y = d y x) (hA : ExpDecay d a κ K)
+    [Fintype V] (ha : 0 ≤ a) (hsym : ∀ x y, d x y = d y x) (hA : ExpDecay d a κ K)
     (hrow : ∀ x, ∑ y, Real.exp (-κ * d x y) ≤ S) (u : V → ℝ) :
     |∑ x, ∑ y, u x * K x y * u y| ≤ (a * S) * ∑ x, (u x) ^ 2 := by
   have hKrow : ∀ x, ∑ y, |K x y| ≤ a * S := expDecay_finset_row_le ha hA hrow
@@ -122,7 +168,7 @@ Cauchy–Schwarz over the product index with weights `√|K x y|`
 (`Finset.sum_mul_sq_le_sq_mul_sq`), then row/column summability.  The sharp
 operator-norm form (the `u = v` case recovers `expDecay_quadratic_form_le`). -/
 theorem expDecay_op_bilinear_le {d : V → V → ℝ} {a κ S : ℝ} {K : V → V → ℝ}
-    (ha : 0 ≤ a) (hS0 : 0 ≤ S) (hsym : ∀ x y, d x y = d y x) (hA : ExpDecay d a κ K)
+    [Fintype V] (ha : 0 ≤ a) (hS0 : 0 ≤ S) (hsym : ∀ x y, d x y = d y x) (hA : ExpDecay d a κ K)
     (hrow : ∀ x, ∑ y, Real.exp (-κ * d x y) ≤ S) (u v : V → ℝ) :
     |∑ x, ∑ y, u x * K x y * v y|
       ≤ a * S * (Real.sqrt (∑ x, (u x) ^ 2) * Real.sqrt (∑ x, (v x) ^ 2)) := by

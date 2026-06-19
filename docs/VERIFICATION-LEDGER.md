@@ -4867,3 +4867,34 @@ not the missing Yang-Mills activity estimate itself.  It closes a statement
 shape mismatch for P3/P4 sources while leaving the activity-decay theorem, the
 continuum limit, and OS/Wightman reconstruction open.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 142 (2026-06-19, **collar-separated ExpDecay cross-sum**
+`YangMills.RG.expDecay_separated_finset_sum_le`; core 8273)
+
+**Build:** green (`lake env lean YangMills/RG/KernelSchur.lean`).
+Full-core and oracle verification are recorded with the commit carrying this
+addendum.
+
+This addendum records the first Lean brick extracted from the collar
+factorization idea suggested by Lluis Eriksson's `ai.vixra:2512.0064v1`
+outlook and the follow-up audit notes.  The thermodynamic maintenance-power
+interpretation is deliberately **not** imported into `YangMillsCore`; the useful
+mathematical content is the static covariance-decay step.
+
+The theorem states that if an exponentially-decaying kernel satisfies
+`|K i j| ≤ a exp(-κ d(i,j))`, and finite regions `A` and `B` are separated by a
+collar `ε`, then for nonnegative derivative weights `L_i`, `M_j`,
+
+`Σ_{i∈A,j∈B} |K i j| L_i M_j ≤
+ a exp(-κ ε) (Σ_{i∈A} L_i)(Σ_{j∈B} M_j)`.
+
+This is the deterministic finite-sum core that a future Gaussian interpolation
+or integration-by-parts factorization theorem will consume.  It turns covariance
+`ExpDecay` plus collar separation into the exact exponential price paid by a
+cross-region influence term.
+
+**Honest scope.** This is a source-independent algebraic substrate theorem.  It
+does not prove the Gaussian integration-by-parts formula, the gauge-fixed
+fluctuation covariance decay, the Yang-Mills activity estimate, the continuum
+limit, or OS/Wightman reconstruction.  Clay distance **~0% (<0.1%),
+unchanged**.

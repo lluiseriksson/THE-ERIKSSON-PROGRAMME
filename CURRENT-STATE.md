@@ -43,7 +43,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   construction;
 * marginal-coupling summability and conditional UV mass-gap assembly;
 * exponential-decay kernel calculus, Schur bounds, PSD kernel interface,
-  Gaussian MGF bounds;
+  Gaussian MGF bounds, and the collar-separated cross-sum bound
+  `expDecay_separated_finset_sum_le`: an `ExpDecay` covariance kernel pays
+  `exp(-κ ε)` across a separated collar, the algebraic core needed by the
+  Gaussian collar-factorization route inspired by Lluis Eriksson's
+  `2512.0064v1` outlook;
 * lattice animal counting, cube adjacency, and shell-growth summability;
 * polymer-with-holes multi-hole combinatorics, multiplicity bounds, discrete
   modified-metric summability, and the cluster-union modified-metric interface.
