@@ -3847,3 +3847,22 @@ We replaced implicit algebra coercions with explicit `.val` projections for `Uni
 
 **Honest scope.** This completes the target B4-Ū (full) from the gauge-RG campaign plan. It does not prove the analytical Gaussian activity bounds or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
 
+
+## Addendum 103 (2026-06-19, **locality of the coarse gauge-renormalization operator Ū**
+`YangMills.RG.wilsonLine_congr`, `YangMills.RG.UbarDeviation_congr`, and `YangMills.RG.Ubar_locality`; core 8269)
+
+**Build:** green (locality theorems added to `Ubar.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum formalises the locality of the coarse gauge-renormalization operator `Ū` on the lattice (Target B5-full):
+
+* **`wilsonLine_congr`** — Proves that two gauge configurations that agree on all edges of a path produce the same Wilson line.
+* **`UbarDeviation_congr`** — Proves that the deviation term `UbarDeviation` is local, depending only on the coarse edge value and the fine gauge configuration on the adjacent paths.
+* **`Ubar_locality`** — Proves that `Ū` at a coarse edge $C$ depends only on the fine configuration on the paths within the blocks adjacent to the endpoints of $C$, and the coarse configuration at $C$.
+
+**How compilation was resolved.**
+We resolved a type mismatch in `wilsonLine_congr` by passing the prepended edge explicitly as `e` to `List.mem_cons_of_mem e he'` instead of omitting it. We resolved a let-binder definition mismatch in rewriting the sum inside `Ubar_locality` by defining the sum-equivalence lemma `h_sum` directly in terms of `blockOf L N' (FiniteLatticeGeometry.src C)` and applying `dsimp [Ubar]` prior to rewriting, which substituted local let bindings and allowed the rewrite to match exactly.
+
+**Honest scope.** This completes the locality proof for the coarse averaging operator on the lattice. It does not prove the analytical Gaussian bounds on the activities or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
+
+

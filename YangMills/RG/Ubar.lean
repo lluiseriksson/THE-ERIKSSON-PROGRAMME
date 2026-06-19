@@ -124,7 +124,7 @@ theorem Ubar_gaugeAct {d N' : ℕ} [NeZero N'] {G : Type*} [Group G] [FiniteLatt
     have h_eq := rep_UbarDeviation_gaugeAct (𝔸 := 𝔸) u A_fine A_coarse C x Γ_1 Γ_2 Γ_3
       (hpath1 x hx) (hend1 x hx) (hpath2 x hx) (hpath3 x hx) (hend3 x hx)
     have h_val := congrArg (fun (z : Units 𝔸) => z.val) h_eq
-    simp only [Units.val_mul, Units.val_inv] at h_val
+    simp only [Units.val_mul] at h_val
     exact h_val
 
   have h_log : ∀ x ∈ S,
@@ -162,5 +162,58 @@ theorem Ubar_gaugeAct {d N' : ℕ} [NeZero N'] {G : Type*} [Group G] [FiniteLatt
   rw [h_exp_conj, h_coarse_gauge]
   simp only [mul_assoc]
   rw [← mul_assoc u_src⁻¹.val, Units.inv_mul u_src, one_mul]
+
+theorem wilsonLine_congr {d N : ℕ} {G : Type*} [Group G] [FiniteLatticeGeometry d N G]
+    (A A' : GaugeConfig d N G) (es : List (FiniteLatticeGeometry.E (d := d) (N := N) (G := G)))
+    (h : ∀ e ∈ es, A e = A' e) :
+    wilsonLine A es = wilsonLine A' es := by
+  induction es with
+  | nil => rfl
+  | cons e es ih =>
+    rw [wilsonLine_cons, wilsonLine_cons]
+    rw [h e (List.mem_cons_self)]
+    rw [ih (fun e' he' => h e' (List.mem_cons_of_mem e he'))]
+
+lemma UbarDeviation_congr {d N' : ℕ} [NeZero N'] {G : Type*} [Group G] [FiniteLatticeGeometry d N' G]
+    {L : ℕ} [NeZero L] [FiniteLatticeGeometry d (L * N') G]
+    (A_fine A_fine' : GaugeConfig d (L * N') G) (A_coarse A_coarse' : GaugeConfig d N' G)
+    (C : FiniteLatticeGeometry.E (d := d) (N := N') (G := G)) (x : FinBox d (L * N'))
+    (Γ_1 Γ_2 Γ_3 : FinBox d (L * N') → List (FiniteLatticeGeometry.E (d := d) (N := L * N') (G := G)))
+    (h_coarse : A_coarse C = A_coarse' C)
+    (h_fine1 : ∀ e ∈ Γ_1 x, A_fine e = A_fine' e)
+    (h_fine2 : ∀ e ∈ Γ_2 x, A_fine e = A_fine' e)
+    (h_fine3 : ∀ e ∈ Γ_3 x, A_fine e = A_fine' e) :
+    UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3 = UbarDeviation A_fine' A_coarse' C x Γ_1 Γ_2 Γ_3 := by
+  unfold UbarDeviation
+  rw [wilsonLine_congr A_fine A_fine' (Γ_1 x) h_fine1]
+  rw [wilsonLine_congr A_fine A_fine' (Γ_2 x) h_fine2]
+  rw [wilsonLine_congr A_fine A_fine' (Γ_3 x) h_fine3]
+  rw [h_coarse]
+
+/-- **Locality of the coarse averaging operator Ū** (Target B5-full).
+    If two fine gauge configurations agree on the fine paths inside the blocks
+    adjacent to the coarse edge, and the coarse configurations agree on that coarse
+    edge, then the coarse averaged fields are identical. -/
+theorem Ubar_locality {d N' : ℕ} [NeZero N'] {G : Type*} [Group G] [FiniteLatticeGeometry d N' G]
+    {L : ℕ} [NeZero L] [FiniteLatticeGeometry d (L * N') G]
+    {𝔸 : Type*} [NormedRing 𝔸] [NormedAlgebra ℝ 𝔸] [CompleteSpace 𝔸] [MatrixRealization G 𝔸]
+    (A_fine A_fine' : GaugeConfig d (L * N') G) (A_coarse A_coarse' : GaugeConfig d N' G)
+    (C : FiniteLatticeGeometry.E (d := d) (N := N') (G := G))
+    (Γ_1 Γ_2 Γ_3 : FinBox d (L * N') → List (FiniteLatticeGeometry.E (d := d) (N := L * N') (G := G)))
+    (h_coarse : A_coarse C = A_coarse' C)
+    (h_fine1 : ∀ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), ∀ e ∈ Γ_1 x, A_fine e = A_fine' e)
+    (h_fine2 : ∀ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), ∀ e ∈ Γ_2 x, A_fine e = A_fine' e)
+    (h_fine3 : ∀ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), ∀ e ∈ Γ_3 x, A_fine e = A_fine' e) :
+    (Ubar A_fine A_coarse C Γ_1 Γ_2 Γ_3 : 𝔸) = Ubar A_fine' A_coarse' C Γ_1 Γ_2 Γ_3 := by
+  have h_sum : (∑ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), nearLog (MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val)
+      = (∑ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), nearLog (MatrixRealization.rep (UbarDeviation A_fine' A_coarse' C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val) := by
+    have h_dev : ∀ x ∈ blockOf L N' (FiniteLatticeGeometry.src C),
+        UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3 = UbarDeviation A_fine' A_coarse' C x Γ_1 Γ_2 Γ_3 := by
+      intro x hx
+      exact UbarDeviation_congr A_fine A_fine' A_coarse A_coarse' C x Γ_1 Γ_2 Γ_3 h_coarse (h_fine1 x hx) (h_fine2 x hx) (h_fine3 x hx)
+    refine Finset.sum_congr rfl (fun x hx => ?_)
+    rw [h_dev x hx]
+  dsimp [Ubar]
+  rw [h_sum, h_coarse]
 
 end YangMills.RG
