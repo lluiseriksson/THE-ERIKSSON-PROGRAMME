@@ -4973,3 +4973,47 @@ does **not** identify the full Yang-Mills fluctuation covariance, does **not**
 prove finite-range kernel decay, and does **not** discharge the activity-decay
 input `hRpoly`.  It is a local Hilbert-space substrate theorem only.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 145 (2026-06-19, **abstract Ward-cancellation and activity-limit
+bridges** `YangMills.SUSY.ApproxWardComplex`,
+`YangMills.SUSY.expect_decomposition_bound`,
+`YangMills.SUSY.expect_decomposition_profile_bound`,
+`YangMills.SUSY.expect_profile_bound_of_exact_ward`,
+`YangMills.RG.activity_profile_bound_of_tendsto`; core 8276)
+
+**Build:** green (`lake env lean YangMills/SUSY/WardComplex.lean`,
+`lake env lean YangMills/RG/ActivityLimit.lean`).  Full-core and oracle
+verification are recorded with the commit carrying this addendum.
+
+This addendum records the green, low-risk part of the supersymmetry audit.  It
+does **not** add a supersymmetric Yang-Mills theory to the verified core.
+Instead it formalizes the algebraic cancellation pattern that could later feed
+the existing `hRpoly` consumers:
+
+`H_X = Q B_X + R_X`, then integrate/cancel before taking norms.
+
+`ApproxWardComplex` carries a continuous linear operator `Q`, an expectation
+functional, and a quantitative Ward-defect estimate
+
+`‖expect (Q F)‖ ≤ defect * ‖F‖`.
+
+The exact theorem `expect_Q_eq_zero_of_defect_eq_zero` proves true Ward
+cancellation when `defect = 0`.  The main approximate theorem
+`expect_decomposition_bound` proves
+
+`‖expect H‖ ≤ defect * ‖B‖ + ‖expect R‖`
+
+from `H = Q B + R`.  The profile theorem
+`expect_decomposition_profile_bound` lifts this pointwise to indexed activity
+families: if `B` and `expect R` obey the same profile `w X`, then the integrated
+activity obeys that profile with amplitude `defect * Bamp + Ramp`.
+
+`ActivityLimit.lean` adds the corresponding regulator/decoupling consumer:
+if complex activities are uniformly bounded by a profile and converge
+pointwise, the limit obeys the same profile bound.
+
+**Honest scope.** This is only an abstract algebraic/topological substrate.  It
+does **not** construct Grassmann variables, Berezin integration, Pfaffians,
+heavy-gluino decoupling, a Nicolai map, the Yang-Mills fluctuation activity
+bound, the continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

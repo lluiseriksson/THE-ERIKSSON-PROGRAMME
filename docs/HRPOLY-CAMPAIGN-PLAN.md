@@ -283,6 +283,15 @@ This is only the deterministic mass algebra for a future Gaussian block
 kernel; the finite-range kernel, Hessian coercivity, influence matrix, and
 activity-decay theorem remain open.
 
+A separate SUSY-style audit is recorded in
+`docs/SUSY-HRPOLY-ACCELERATION-PLAN.md`.  It does **not** add a supersymmetric
+physical theory to the Clay target.  Its useful content is an abstract
+cohomological cancellation layer: decompose local activities as `H = Q B + R`,
+use an exact or approximate Ward identity to kill the `Q`-exact part before
+norming, and feed the remaining scalar profile to the existing with-holes KP
+consumers.  The opening substrate is `YangMills/SUSY/WardComplex.lean`, plus
+the regulator-limit bridge `YangMills/RG/ActivityLimit.lean`.
+
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the
 request was for the **specific page-level theorem statements** so the Lean

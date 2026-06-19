@@ -10,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8274 jobs**.
+* `lake build YangMillsCore` is green at **8276 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -49,6 +49,9 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * free Gaussian covariance pushforward and finite-dimensional Gaussian
   construction;
 * marginal-coupling summability and conditional UV mass-gap assembly;
+* the abstract activity-limit bridge
+  `activity_profile_bound_of_tendsto`: a metric/profile bound uniform in a
+  regulator passes to the pointwise limiting activity;
 * exponential-decay kernel calculus, Schur bounds, PSD kernel interface,
   Gaussian MGF bounds, and the collar-separated cross-sum bound
   `expDecay_separated_finset_sum_le`: an `ExpDecay` covariance kernel pays
@@ -86,6 +89,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `omegaClusterSkeletonRemainderSum_tsum_le_of_uniform_local` further package
   the common source shape `local active-skeleton norm ≤ B ≤ 1` into the
   tail bound `≤ t⁻¹ B`.
+* the abstract approximate-Ward cancellation layer
+  `YangMills/SUSY/WardComplex.lean`: if an activity decomposes as `H = QB + R`,
+  the `Q`-exact contribution is killed up to a quantitative defect before
+  norms are applied, with pointwise profile consumers for polymer activities.
 
 The latest RG skeleton-tail interface is local-KP-shaped throughout:
 

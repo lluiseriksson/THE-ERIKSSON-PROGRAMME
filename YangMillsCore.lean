@@ -214,6 +214,9 @@ import YangMills.RG.MarginalCoupling
 -- estimates (carried hypotheses), and the assembled conditional geometric
 -- remainder bound chaining cluster-sum → coupling decay → bridge.
 import YangMills.RG.PolymerRemainder
+-- Abstract activity-limit bridge: a profile bound uniform in a regulator
+-- passes to the pointwise limiting activity.
+import YangMills.RG.ActivityLimit
 -- End-to-end UV conditional: composes the coupling-flow bridge with the banked
 -- mass-gap assembly into one theorem — (RG remainder activity bound + coupling
 -- decay) ⟹ the lattice mass gap. The §6.3 obligation in faithful assembled form.
@@ -260,3 +263,7 @@ import YangMills.RG.Translation
 import YangMills.RG.LocalKP
 import YangMills.RG.ClusterDecay
 import YangMills.RG.Ubar
+-- Abstract approximate Ward-complex layer: if a local activity decomposes as
+-- Q-exact plus a remainder, the Q-exact contribution is killed up to a
+-- quantitative Ward defect before norms are applied.
+import YangMills.SUSY.WardComplex

@@ -125,6 +125,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.lattice_mass_gap_of_cluster_and_marginal_coupling
 -- non-vacuity: the marginal-coupling recursion is satisfiable (logistic flow)
 #print axioms YangMills.RG.exists_marginal_coupling_flow
+-- decoupling/regularisation bridge: a uniform activity profile bound passes to
+-- the pointwise limiting activity
+#print axioms YangMills.RG.activity_profile_bound_of_tendsto
 -- finite-range ⟹ ExpDecay (the operator-level Combes-Thomas input: nearest-
 -- neighbour Laplacian / Wilson hopping / covariant difference operators)
 #print axioms YangMills.RG.finiteRange_isExpDecay
@@ -202,6 +205,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- scalar correctness (non-vacuity: nearLog IS the logarithm) + conjugation-equivariance
 #print axioms YangMills.RG.nearLog_real
 #print axioms YangMills.RG.nearLog_conj
+
+/-! ### Approximate Ward cancellation -/
+-- Abstract SUSY/cohomological cancellation interface: cancel Q-exact pieces
+-- before applying absolute values, with an explicit Ward defect.
+#print axioms YangMills.SUSY.expect_Q_eq_zero_of_defect_eq_zero
+#print axioms YangMills.SUSY.expect_decomposition_bound
+#print axioms YangMills.SUSY.expect_decomposition_profile_bound
+#print axioms YangMills.SUSY.expect_profile_bound_of_exact_ward
 
 /-! ### The polymer modified metric (bricks P2b-i and P2b-ii) -/
 #print axioms YangMills.RG.walk_crosses_frontier
