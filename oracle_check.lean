@@ -253,3 +253,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.covUV_concrete
 #print axioms YangMills.RG.hUV_of_per_scale
 
+-- target F1: second moment trace norm-squared
+#print axioms YangMills.ClayCore.sunHaarProb_trace_normSq_integral_eq_one
+
+

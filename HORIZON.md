@@ -158,7 +158,7 @@ F0' [DONE]  ∫ (tr U)^k = 0,  N∤k               SchurMomentVanishing
 F0''[DONE]  ∫ (tr U)^a conj^b = 0, N∤(a−b)     SchurMixedMomentVanishing   (new)
 L25 [DONE]  ∫ ‖tr U‖² ≤ N                       SchurL25
  │
- ├─► F1  [STUB]  ∫ ‖tr U‖² = 1  (sharp L25)               ◄ §3.1, cheap, high value
+ ├─► F1  [DONE]  ∫ ‖tr U‖² = 1  (sharp L25)               ◄ SchurNormOne
  │
  ├─► F2  [PARTIAL] matrix-coefficient L² API on Haar       ◄ Mathlib-grade
  │        │  └ selection-rule fragment DONE: SchurEntryNAlitySelection (∫∏U_{ij}∏conj=0, N∤(n−m))
@@ -180,11 +180,10 @@ L25 [DONE]  ∫ ‖tr U‖² ≤ N                       SchurL25
 -- The fundamental character has unit L²-norm: ∫ |tr U|² = 1, not merely ≤ N.
 -- For SU(2)/U(1) provable now via the explicit Weyl integration formula;
 -- in general it is the ρ = fundamental case of F4.
-theorem sunHaarProb_trace_normSq_integral_eq_one
-    (N_c : ℕ) [NeZero N_c] (hN : 2 ≤ N_c) :
-    ∫ U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ),
-      ‖U.val.trace‖ ^ 2 ∂(sunHaarProb N_c) = 1 := by
-  sorry
+-- Proved in SchurNormOne.lean:
+-- theorem sunHaarProb_trace_normSq_integral_eq_one (N_c : ℕ) [NeZero N_c] :
+--     ∫ U : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ),
+--       ‖U.val.trace‖ ^ 2 ∂(sunHaarProb N_c) = 1
 ```
 
 Why it matters: `L25` (`≤ N`) is loose by a factor of `N`. The sharp value `= 1`

@@ -3885,5 +3885,27 @@ We added the `noncomputable` keyword to `scaleSpacing`, `covUV_concrete`, and `c
 
 **Honest scope.** This completes the UV scale dictionary and concrete target formulation (Target U0/U3). It does not prove the analytical Gaussian bounds on the activities or the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
 
+## Addendum 105 (2026-06-19, **sharp second moment of the fundamental character**
+`YangMills.ClayCore.signedSwapMat`, `YangMills.ClayCore.signedSwapSU`, `YangMills.ClayCore.instIsHaarMeasureSUN`, `YangMills.ClayCore.instIsMulRightInvariantSUN`, `YangMills.ClayCore.sunHaarProb_entry_normSq_eq`, `YangMills.ClayCore.sunHaarProb_entry_normSq_eq_inv_Nc`, and `YangMills.ClayCore.sunHaarProb_trace_normSq_integral_eq_one`; core 8270)
+
+**Build:** green (the F1 target added to `SchurNormOne.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum formalises the sharp second moment of the fundamental character trace norm-squared:
+\[ \int_{\text{SU}(N_c)} \|\text{tr } U\|^2 d\text{Haar} = 1 \]
+for $N_c \ge 2$, closing the target F1 from the Schur-orthogonality program:
+
+* **`signedSwapMat` & `signedSwapSU`** — Defines the signed swap matrix and shows it is a member of the special unitary group $\text{SU}(N)$.
+* **Haar uniqueness on compact non-commutative groups** — Instantiates the compact Haar probability measure `sunHaarProb` and registers `IsHaarMeasure` and `IsMulRightInvariant` instances, bypassing the lack of generic Mathlib instances.
+* **`sunHaarProb_entry_normSq_eq`** — Proves column-level entry norm-squared integral equality $\int |U_{mi}|^2 d\text{Haar} = \int |U_{mj}|^2 d\text{Haar}$ for any $i \neq j$ via right invariance under `signedSwapSU`.
+* **`sunHaarProb_entry_normSq_eq_inv_Nc`** — Shows that each entry has integral $1/N_c$.
+* **`sunHaarProb_trace_normSq_integral_eq_one`** — Proves the final Target F1 of the fundamental character trace norm-squared.
+
+**How compilation was resolved.**
+We solved compilation issues by ensuring all inequality symmetry relations (e.g., passing `hij.symm`, `Ne.symm hbi`, `Ne.symm hbj`, `Ne.symm hab`) were provided to `simp` to discharge sub-goals in matrix entry evaluations. We simplified the disjointness proof in `prod_decomp_two` to a direct contradiction, avoiding Let-binder and case-split variable renaming clashes. We removed duplicate and unused variables (`[NeZero N]` and `hN`) from the signatures of `sunHaarProb_entry_normSq_eq` and `sunHaarProb_trace_normSq_integral_eq_one` to address linter warnings.
+
+**Honest scope.** This completes the sharp second moment of the fundamental character (Target F1). It does not prove the mass gap of the 4D Yang-Mills theory in the continuum limit. Clay distance **~0% (<0.1%), unchanged**.
+
+
 
 
