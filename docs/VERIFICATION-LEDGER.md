@@ -4430,14 +4430,17 @@ raw-support/skeleton-rooted local-smallness issue. Clay distance **~0%
 (<0.1%), unchanged**.
 
 ## Addendum 124 (2026-06-19, **finite-pin pinned-weight exchange**
+`YangMills.KP.scaleActivity_exp_norm_activity_mul_exp`,
 `YangMills.KP.summable_finset_pinnedClusterWeight`,
 `YangMills.KP.tsum_finset_pinnedClusterWeight_le`; core 8273)
 
 **Build:** green (`lake build YangMillsCore`, 8273 jobs).
 Oracle: `[propext, Classical.choice, Quot.sound]`.
 
-This addendum names the finite-pin `tsum` exchange repeatedly used by
-off-region and RG cluster-tail estimates.  Under a sharp KP criterion,
+This addendum names the scalar-norm and finite-pin `tsum` bookkeeping
+repeatedly used by off-region and RG cluster-tail estimates.
+`scaleActivity_exp_norm_activity_mul_exp` identifies the weighted norm of the
+`exp(t)`-tilted activity with `exp(t) * ‖z(c)‖ * exp(a(c))`.  Under a sharp KP criterion,
 `summable_finset_pinnedClusterWeight` proves summability of
 `n ↦ Σ_{c∈s} pinnedClusterWeight P c n`, and
 `tsum_finset_pinnedClusterWeight_le` proves

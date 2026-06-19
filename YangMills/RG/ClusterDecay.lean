@@ -667,11 +667,8 @@ theorem clusterRemainderSum_tsum_le {d L : ℕ} [NeZero L]
   refine le_trans (YangMills.KP.tsum_finset_pinnedClusterWeight_le _ hkp _) ?_
   refine le_of_eq ?_
   refine Finset.sum_congr rfl fun c _ => ?_
-  show ‖((Real.exp t : ℝ) : ℂ) * (holePolymerSystem H z).activity c‖ *
-      Real.exp ((c.val.card : ℝ))
-    = Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
-      Real.exp ((c.val.card : ℝ))
-  rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos (Real.exp_pos t)]
+  exact YangMills.KP.scaleActivity_exp_norm_activity_mul_exp
+    (holePolymerSystem H z) (fun c => (c.val.card : ℝ)) t c
 
 /-- Source-shaped raw-union-pinned cluster remainder bound from the local
 tilted activity-sum window. -/
@@ -931,11 +928,8 @@ theorem clusterSkeletonRemainderSum_tsum_le {d L : ℕ} [NeZero L]
   refine le_trans (YangMills.KP.tsum_finset_pinnedClusterWeight_le _ hkp _) ?_
   refine le_of_eq ?_
   refine Finset.sum_congr rfl fun c _ => ?_
-  show ‖((Real.exp t : ℝ) : ℂ) * (holePolymerSystem H z).activity c‖ *
-      Real.exp ((c.val.card : ℝ))
-    = Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
-      Real.exp ((c.val.card : ℝ))
-  rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos (Real.exp_pos t)]
+  exact YangMills.KP.scaleActivity_exp_norm_activity_mul_exp
+    (holePolymerSystem H z) (fun c => (c.val.card : ℝ)) t c
 
 /-- Source-shaped summability companion for skeleton-pinned cluster
 remainders.  The tilted KP criterion is derived from the local tilted

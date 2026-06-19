@@ -513,6 +513,16 @@ noncomputable instance (P : PolymerSystem) [Fintype P.Polymer] (r : ℝ) :
     Fintype (P.scaleActivity r).Polymer :=
   inferInstanceAs (Fintype P.Polymer)
 
+/-- Norm bookkeeping for the exponential scalar activity tilt, in the exact
+weighted form consumed by sharp KP tail bounds. -/
+theorem scaleActivity_exp_norm_activity_mul_exp (P : PolymerSystem)
+    (a : P.Polymer → ℝ) (t : ℝ) (c : P.Polymer) :
+    ‖(P.scaleActivity (Real.exp t)).activity c‖ * Real.exp (a c)
+      = Real.exp t * ‖P.activity c‖ * Real.exp (a c) := by
+  show ‖((Real.exp t : ℝ) : ℂ) * P.activity c‖ * Real.exp (a c) = _
+  rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+    abs_of_pos (Real.exp_pos t)]
+
 open Classical in
 /-- Pinned weights of the tilted system: each tuple of size `n+1`
 carries `|r|^(n+1)`. -/
@@ -632,9 +642,7 @@ theorem tsum_offRegionClusterWeight_le (P : PolymerSystem)
   refine le_trans (tsum_finset_pinnedClusterWeight_le _ hkp Λᶜ) ?_
   refine le_of_eq ?_
   refine Finset.sum_congr rfl fun c _ => ?_
-  show ‖((Real.exp t : ℝ) : ℂ) * P.activity c‖ * Real.exp (a c) = _
-  rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
-    abs_of_pos (Real.exp_pos t)]
+  exact scaleActivity_exp_norm_activity_mul_exp P a t c
 
 open Classical in
 /-- **Vanishing activities drop from the partition function:** if the
