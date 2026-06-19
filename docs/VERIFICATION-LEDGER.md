@@ -5289,3 +5289,27 @@ Mayer-cover components.  It does not prove Dimock Appendix F, the
 renormalized activity estimate, the Yang-Mills fluctuation integral,
 continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 154 (2026-06-20, **finite disjoint-union Mayer-cover split**
+`YangMills.RG.LocalActivity.globalEval_mayerCoverActivity_union`,
+`YangMills.RG.LocalActivity.mayerCoverActivity_union_integral_of_pairwise_disjoint_fluctuationSupport`;
+core 8283)
+
+This addendum adds the next finite compiler step on top of Addendum 153.  The
+new evaluation theorem proves that a raw Mayer-cover product over a disjoint
+union of index sets splits pointwise into the product of the two subcover
+products.  The integration theorem combines that split with the ultralocal
+factorization bridge: if the two index blocks are disjoint and every
+fluctuation support in the first block is disjoint from every fluctuation
+support in the second block, then the integral of the product over the union
+equals the product of the two subcover integrals.
+
+This is the finite "disconnected cover" reduction that future Appendix-F work
+can consume before imposing the source-specific Ω-connectedness and
+quantitative polymer-loss estimates.
+
+**Honest scope.** This is still finite algebra plus product-measure
+independence.  It does not prove the Appendix-F convergence theorem, the
+renormalized activity estimate, the Yang-Mills fluctuation integral,
+continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

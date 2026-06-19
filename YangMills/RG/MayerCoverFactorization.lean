@@ -32,6 +32,29 @@ open scoped BigOperators
 
 namespace LocalActivity
 
+/-- Evaluation of a Mayer-cover product over a disjoint union of index sets
+splits into the product of the two evaluations. -/
+theorem globalEval_mayerCoverActivity_union
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    {Ψ Φ : Site → Type*}
+    (I J : Finset ι) (H : ι → LocalActivity Site Ψ Φ ℂ)
+    (hIJ : Disjoint I J)
+    (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x) :
+    (mayerCoverActivity (I ∪ J) H).globalEval ψ φ =
+      (mayerCoverActivity I H).globalEval ψ φ *
+        (mayerCoverActivity J H).globalEval ψ φ := by
+  classical
+  let f : ι → ℂ := fun i => Complex.exp ((H i).globalEval ψ φ) - 1
+  have hprod : ∏ i ∈ I ∪ J, f i =
+      (∏ i ∈ I, f i) * ∏ i ∈ J, f i := by
+    exact Finset.prod_union hIJ
+  rw [globalEval_mayerCoverActivity, globalEval_mayerCoverActivity,
+    globalEval_mayerCoverActivity]
+  change (∏ i : {i // i ∈ I ∪ J}, f i.1) =
+    (∏ i : {i // i ∈ I}, f i.1) * ∏ i : {i // i ∈ J}, f i.1
+  rw [Finset.prod_coe_sort, Finset.prod_coe_sort, Finset.prod_coe_sort]
+  exact hprod
+
 /-- Pairwise disjoint fluctuation supports imply disjoint support unions for
 two finite Mayer covers. -/
 theorem fluctuationSupport_biUnion_disjoint_of_pairwise
@@ -98,6 +121,32 @@ theorem mayerCoverActivity_integral_mul_of_pairwise_disjoint_fluctuationSupport
         ∂(Measure.pi fun _ : Site => μ) :=
   mayerCoverActivity_integral_mul_of_disjoint_fluctuationSupport μ I J H K ψ
     (fluctuationSupport_biUnion_disjoint_of_pairwise I J H K hpair)
+
+/-- If a finite Mayer cover splits into two disjoint index blocks whose
+fluctuation supports are pairwise disjoint across the split, then the
+integrated product over the union factorizes into the product of the two
+integrated subproducts. -/
+theorem mayerCoverActivity_union_integral_of_pairwise_disjoint_fluctuationSupport
+    {Site β ι : Type*} [Fintype Site] [DecidableEq Site] [DecidableEq ι]
+    [MeasurableSpace β] [Nonempty β]
+    {Ψ : Site → Type*}
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    (I J : Finset ι)
+    (H : ι → LocalActivity Site Ψ (fun _ => β) ℂ)
+    (ψ : ∀ x, Ψ x)
+    (hIJ : Disjoint I J)
+    (hpair : ∀ i, i ∈ I → ∀ j, j ∈ J →
+      Disjoint (H i).fluctuationSupport (H j).fluctuationSupport) :
+    ∫ φ, (mayerCoverActivity (I ∪ J) H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ)
+      =
+      (∫ φ, (mayerCoverActivity I H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ)) *
+      ∫ φ, (mayerCoverActivity J H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ) := by
+  simpa [globalEval_mayerCoverActivity_union I J H hIJ] using
+    mayerCoverActivity_integral_mul_of_pairwise_disjoint_fluctuationSupport
+      μ I J H H ψ hpair
 
 end LocalActivity
 
