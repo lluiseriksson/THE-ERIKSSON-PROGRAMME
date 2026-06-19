@@ -649,6 +649,40 @@ lemma clusterSkeletonRemainderSum_term_le_pinned {d L : ℕ} [NeZero L]
   (clusterSkeletonRemainderSumTerm_le H z r n).trans
     (clusterRemainderSum_term_le H z r n)
 
+/-- The same termwise bound after paying the factor `(n+1)` by an `e^t`
+activity tilt.  This is the source-shaped skeleton-pinned analogue of the
+off-region tail comparison in the KP restriction layer. -/
+lemma clusterSkeletonRemainderSum_term_le_tilt {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t : ℝ) (ht : 0 < t) (n : ℕ) :
+    clusterSkeletonRemainderSumTerm H z r n
+      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val),
+        pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
+  refine le_trans (clusterSkeletonRemainderSum_term_le_pinned H z r n) ?_
+  rw [Finset.mul_sum, Finset.mul_sum]
+  refine Finset.sum_le_sum fun c _ => ?_
+  have hfac : ((n : ℝ) + 1) ≤ t⁻¹ * Real.exp t ^ (n + 1) := by
+    have h1 : t * ((n : ℝ) + 1) ≤ Real.exp (t * ((n : ℝ) + 1)) := by
+      have h2 := Real.add_one_le_exp (t * ((n : ℝ) + 1))
+      linarith
+    have h3 : (Real.exp t : ℝ) ^ (n + 1)
+        = Real.exp (t * ((n : ℝ) + 1)) := by
+      rw [← Real.exp_nat_mul]
+      congr 1
+      push_cast
+      ring
+    rw [h3]
+    exact (le_inv_mul_iff₀ ht).mpr h1
+  calc ((n : ℝ) + 1) * pinnedClusterWeight (holePolymerSystem H z) c n
+      ≤ (t⁻¹ * Real.exp t ^ (n + 1)) *
+          pinnedClusterWeight (holePolymerSystem H z) c n := by
+        refine mul_le_mul_of_nonneg_right hfac
+          (pinnedClusterWeight_nonneg (holePolymerSystem H z) c n)
+    _ = t⁻¹ * pinnedClusterWeight
+          ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
+        rw [pinnedClusterWeight_scale, abs_of_pos (Real.exp_pos t)]
+        ring
+
 /-- Skeleton-pinned cluster remainders are summable whenever the larger
 union-pinned cluster remainders are summable.  The only set-theoretic input is
 `skeleton_subset`: active-skeleton pinning is a genuine restriction of raw-union
@@ -665,6 +699,51 @@ theorem clusterSkeletonRemainderSum_summable {d L : ℕ} [NeZero L]
     positivity
   exact Summable.of_nonneg_of_le hnn (clusterSkeletonRemainderSumTerm_le H z r)
     (clusterRemainderSum_summable H z r t ht hkp)
+
+/-- Quantitative skeleton-pinned cluster remainder bound.  After the `e^t`
+tilt pays the order factor, the total skeleton-pinned remainder is bounded by a
+finite pinned KP sum over polymers whose support contains the skeleton root.
+
+This is still only a KP/summability substrate: the model-specific
+Balaban-Dimock activity-decay estimate is not proved here. -/
+theorem clusterSkeletonRemainderSum_tsum_le {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t : ℝ) (ht : 0 < t)
+    (hkp : KPCriterion ((holePolymerSystem H z).scaleActivity (Real.exp t))
+      (fun X => (X.val.card : ℝ))) :
+    ∑' n, clusterSkeletonRemainderSumTerm H z r n
+      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val),
+        Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
+          Real.exp ((c.val.card : ℝ)) := by
+  have hle : ∀ n, clusterSkeletonRemainderSumTerm H z r n
+      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val),
+        pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
+    intro n
+    exact clusterSkeletonRemainderSum_term_le_tilt H z r t ht n
+  have hgsum : Summable (fun n => t⁻¹ * ∑ c ∈ Finset.univ.filter
+      (fun c => r ∈ (c : PolymerType H z).val),
+      pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n) := by
+    refine Summable.mul_left _ ?_
+    exact summable_sum fun c _ =>
+      (pinned_cluster_summable_sharp _ hkp c).1
+  have hskel : Summable (fun n => clusterSkeletonRemainderSumTerm H z r n) :=
+    clusterSkeletonRemainderSum_summable H z r t ht hkp
+  refine le_trans (hskel.tsum_le_tsum hle hgsum) ?_
+  rw [tsum_mul_left]
+  refine mul_le_mul_of_nonneg_left ?_ (inv_nonneg.mpr ht.le)
+  have hswap := Summable.tsum_finsetSum
+    (s := Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val))
+    (f := fun c n =>
+      pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n)
+    (fun c _ => (pinned_cluster_summable_sharp _ hkp c).1)
+  refine le_trans (le_of_eq hswap) ?_
+  refine Finset.sum_le_sum fun c _ => ?_
+  refine le_trans (pinned_cluster_summable_sharp _ hkp c).2 (le_of_eq ?_)
+  show ‖((Real.exp t : ℝ) : ℂ) * (holePolymerSystem H z).activity c‖ *
+      Real.exp ((c.val.card : ℝ))
+    = Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
+      Real.exp ((c.val.card : ℝ))
+  rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos (Real.exp_pos t)]
 
 lemma polymer_subset_clusterUnion {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer) (i : Fin n) :

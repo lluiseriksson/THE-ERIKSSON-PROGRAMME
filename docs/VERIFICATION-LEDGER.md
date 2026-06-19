@@ -4175,3 +4175,31 @@ pinned-weight machinery.
 **Honest scope.** This is still summability/weight substrate only.  The
 Balaban/Dimock activity-decay estimate remains open; no continuum limit or
 OS/Wightman reconstruction is claimed. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 115 (2026-06-19, **skeleton-pinned cluster remainder sum bound**
+`YangMills.RG.clusterSkeletonRemainderSum_term_le_tilt` and
+`YangMills.RG.clusterSkeletonRemainderSum_tsum_le`; core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum turns the termwise skeleton-pinned bridge into the quantitative
+total-series estimate consumed by the next `hRpoly` interface:
+
+* `clusterSkeletonRemainderSum_term_le_tilt` pays the order factor `(n+1)` by
+  the standard `scaleActivity (exp t)` tilt, producing a bound by the tilted
+  pinned-cluster weights under an explicit `0 < t`.
+* `clusterSkeletonRemainderSum_tsum_le` sums over all orders and applies
+  `pinned_cluster_summable_sharp` under the explicit tilted KP criterion,
+  bounding the skeleton-pinned remainder series by
+  `t⁻¹ * Σ_{c∋r} exp(t) * ‖activity c‖ * exp(|c|)`.
+
+This is the source-shaped skeleton analogue of the KP restriction/off-region
+tail estimate, but for a root lying in the active skeleton of the cluster union
+before passing to the larger support-pinned sum.
+
+**Honest scope.** The theorem still assumes the tilted KP criterion and does
+not prove the concrete Yang-Mills activity decay.  The remaining hard input is
+the Balaban/Dimock fluctuation-integral estimate for the actual gauge RG
+operator.  No continuum limit or OS/Wightman reconstruction is claimed. Clay
+distance **~0% (<0.1%), unchanged**.

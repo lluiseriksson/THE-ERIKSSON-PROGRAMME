@@ -170,6 +170,14 @@ Remaining genuinely-open analytic work (now source-grounded, still large):
 holes, on top of the repo's KP layer), **P4** (the §3.14 raw activity bound,
 which for YM needs the YM single-scale integral — not the `φ⁴₃` §3.14).
 
+**Cluster-level substrate update (2026-06-19, Addenda 113–115).**  The
+cluster-union interface now packages clusters as source-shaped hole polymers
+(`clusterUnionPolymer`), controls their active skeleton by the cluster modified
+metric, and proves the skeleton-pinned cluster remainder series bound
+`clusterSkeletonRemainderSum_tsum_le`.  This does **not** prove the P3
+activity-decay theorem; it exposes the KP/summability consumer interface that
+P3/P4 must feed.
+
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the
 request was for the **specific page-level theorem statements** so the Lean

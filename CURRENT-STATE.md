@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(RG): bound skeleton-pinned cluster terms by pinned weights`).
+(`feat(RG): bound skeleton-pinned cluster remainder sums`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -47,14 +47,15 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * polymer-with-holes multi-hole combinatorics, multiplicity bounds, discrete
   modified-metric summability, and the cluster-union modified-metric interface.
 
-The latest RG theorem is
-`YangMills.RG.clusterSkeletonRemainderSum_term_le_pinned`: the skeleton-pinned
-cluster remainder term is bounded by the same pinned-cluster-weight expression
-as the larger raw-union-pinned term.  Together with
+The latest RG theorem is `YangMills.RG.clusterSkeletonRemainderSum_tsum_le`:
+under the tilted KP criterion for `holePolymerSystem H z`, the full
+skeleton-pinned cluster remainder series is bounded by a finite pinned sum of
+tilted activity weights over polymers containing the root.  Together with
+`clusterSkeletonRemainderSum_term_le_pinned`,
 `clusterSkeletonRemainderSum_summable`, `clusterUnionPolymer`, and
 `clusterUnion_skeleton_card_le_clusterModifiedMetric_add_one`, this gives a
-source-shaped cluster object, skeleton-pinned summability, and the named
-termwise bound later `hRpoly` activity-decay work will consume.
+source-shaped cluster object, skeleton-pinned summability, and a quantitative
+KP bound later `hRpoly` activity-decay work can consume.
 
 ## Live Frontier
 
