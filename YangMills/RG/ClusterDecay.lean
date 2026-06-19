@@ -899,6 +899,103 @@ theorem clusterSkeletonRemainderSum_tsum_le {d L : ℕ} [NeZero L]
       Real.exp ((c.val.card : ℝ))
   rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos (Real.exp_pos t)]
 
+/-- Source-shaped skeleton cluster remainder bound from a modified-metric
+activity estimate.
+
+This is the consumer side of the Balaban-Dimock activity-decay input: if the
+tilted, cardinality-weighted polymer activity is bounded by
+`A * q^(d_M + 1)`, then the full skeleton-rooted cluster remainder is bounded by
+the already-proved modified-metric summability constant.  The activity-decay
+estimate itself is still an explicit hypothesis, not proved here. -/
+theorem clusterSkeletonRemainderSum_tsum_le_metric_bound {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t q A : ℝ) (ht : 0 < t)
+    (hkp : KPCriterion ((holePolymerSystem H z).scaleActivity (Real.exp t))
+      (fun X => (X.val.card : ℝ)))
+    (hA0 : 0 ≤ A)
+    (hact : ∀ c : PolymerType H z,
+      Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
+          Real.exp ((c.val.card : ℝ))
+        ≤ A * q ^ (discreteModifiedMetric H c.val + 1))
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hq0 : 0 ≤ q)
+    (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)) < 1) :
+    ∑' n, clusterSkeletonRemainderSumTerm H z r n
+      ≤ t⁻¹ * (A *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹) := by
+  classical
+  let K := (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹
+  have hbase := clusterSkeletonRemainderSum_tsum_le H z r t ht hkp
+  refine hbase.trans ?_
+  refine mul_le_mul_of_nonneg_left ?_ (inv_nonneg.mpr ht.le)
+  have hfinite : ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
+        Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
+          Real.exp ((c.val.card : ℝ))
+      ≤ A * K := by
+    have hterm : ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
+        Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
+          Real.exp ((c.val.card : ℝ))
+      ≤ ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
+          A * q ^ (discreteModifiedMetric H c.val + 1) := by
+      exact Finset.sum_le_sum fun c _ => hact c
+    have hfilter_eq :
+        ∑ c ∈ Finset.univ.filter (fun c : PolymerType H z => r ∈ skeleton H c.val),
+          q ^ (discreteModifiedMetric H c.val + 1)
+        =
+        ∑ c : {c : PolymerType H z // r ∈ skeleton H c.val},
+          q ^ (discreteModifiedMetric H c.val.val + 1) := by
+      exact (Finset.sum_subtype
+        ((Finset.univ : Finset (PolymerType H z)).filter
+          (fun c => r ∈ skeleton H c.val))
+        (fun c => by simp)
+        (fun c => q ^ (discreteModifiedMetric H c.val + 1)))
+    let f1 := fun c : {c : PolymerType H z // r ∈ skeleton H c.val} =>
+      (⟨c.val.val, ⟨c.property, c.val.property.right.left, c.val.property.right.right⟩⟩ :
+        {X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X})
+    have hf1_inj : Function.Injective f1 := by
+      intro a b h
+      have h_eq : a.val.val = b.val.val := congrArg (fun x => x.val) h
+      have h_val_eq : a.val = b.val := Subtype.ext h_eq
+      exact Subtype.ext h_val_eq
+    have hf1_surj : Function.Surjective f1 := by
+      intro b
+      refine ⟨⟨⟨b.val, ⟨?_, b.property.right.left, b.property.right.right⟩⟩,
+        b.property.left⟩, rfl⟩
+      rw [Finset.nonempty_iff_ne_empty]
+      intro he
+      have hr : r ∈ skeleton H b.val := b.property.left
+      have hr_sub := skeleton_subset H b.val hr
+      rw [he] at hr_sub
+      cases hr_sub
+    have hsum_eq :
+        ∑ c : {c : PolymerType H z // r ∈ skeleton H c.val},
+          q ^ (discreteModifiedMetric H c.val.val + 1)
+        =
+        ∑ X : {X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X},
+          q ^ (discreteModifiedMetric H X.val + 1) := by
+      refine Fintype.sum_equiv (Equiv.ofBijective f1 ⟨hf1_inj, hf1_surj⟩) _ _ ?_
+      intro c
+      rfl
+    have hmetric :
+        ∑ c ∈ Finset.univ.filter (fun c : PolymerType H z => r ∈ skeleton H c.val),
+          q ^ (discreteModifiedMetric H c.val + 1)
+        ≤ K := by
+      rw [hfilter_eq, hsum_eq]
+      simpa [K] using
+        discreteModifiedMetric_weight_summable H r q hdisj hnoedges hholes_ne hq0 hCq
+    calc ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
+          Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
+            Real.exp ((c.val.card : ℝ))
+        ≤ ∑ c ∈ Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val),
+            A * q ^ (discreteModifiedMetric H c.val + 1) := hterm
+      _ = A * ∑ c ∈ Finset.univ.filter (fun c : PolymerType H z => r ∈ skeleton H c.val),
+            q ^ (discreteModifiedMetric H c.val + 1) := by
+          rw [Finset.mul_sum]
+      _ ≤ A * K := mul_le_mul_of_nonneg_left hmetric hA0
+  exact hfinite
+
 lemma polymer_subset_clusterUnion {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer) (i : Fin n) :
     (X i).val ⊆ clusterUnion H z X := by

@@ -4207,3 +4207,37 @@ not prove the concrete Yang-Mills activity decay.  The remaining hard input is
 the Balaban/Dimock fluctuation-integral estimate for the actual gauge RG
 operator.  No continuum limit or OS/Wightman reconstruction is claimed. Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 116 (2026-06-19, **metric activity decay consumed by skeleton remainders**
+`YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound`; core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum closes the next connector after Addendum 115.  The theorem
+`clusterSkeletonRemainderSum_tsum_le_metric_bound` proves:
+
+if the tilted, cardinality-weighted hole-polymer activity satisfies the
+Dimock-shaped bound
+
+`exp(t) * ‖activity(c)‖ * exp(|c|) ≤ A * q^(discreteModifiedMetric(c)+1)`,
+
+then the total skeleton-pinned cluster remainder is bounded by
+
+`t⁻¹ * A * (1 - (3^d)^2 * (q * 2^(3^d+1)))⁻¹`,
+
+under the already-formalized hole-disjointness / no-cross-edge / nonempty-hole
+conditions and the smallness condition on `q`.
+
+The proof composes the skeleton-rooted pinned cluster estimate
+(`clusterSkeletonRemainderSum_tsum_le`) with the discrete modified-metric
+summability theorem (`discreteModifiedMetric_weight_summable`).  The only
+bookkeeping is the subtype/equivalence bridge from
+`{c : PolymerType H z // r ∈ skeleton H c.val}` to raw connected
+hole-respecting finsets.
+
+**Honest scope.** This proves the exact consumer side of the Balaban-Dimock
+activity-decay input.  It still does not prove that activity estimate for the
+actual Yang-Mills RG operator; that remains the `hRpoly`/P3-P4 analytic core.
+No continuum limit or OS/Wightman reconstruction is claimed. Clay distance
+**~0% (<0.1%), unchanged**.
