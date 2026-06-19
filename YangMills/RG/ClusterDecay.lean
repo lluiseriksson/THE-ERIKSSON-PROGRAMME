@@ -585,6 +585,37 @@ noncomputable def clusterSkeletonRemainderSumTerm {d L : ℕ} [NeZero L]
         r ∈ skeleton H (clusterUnion H z X)),
       |((ursell (holePolymerSystem H z) X : ℤ) : ℝ)| * ∏ i, ‖(holePolymerSystem H z).activity (X i)‖
 
+/-- Termwise raw-pinned domination after the `e^t` activity tilt.  This is the
+raw-union analogue of `clusterSkeletonRemainderSum_term_le_tilt`. -/
+lemma clusterRemainderSum_term_le_tilt {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t : ℝ) (ht : 0 < t) (n : ℕ) :
+    clusterRemainderSumTerm H z r n
+      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val),
+        pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
+  unfold clusterRemainderSumTerm
+  have h_term := clusterRemainderSum_term_le H z r n
+  refine le_trans h_term ?_
+  rw [mul_sum, Finset.mul_sum]
+  refine Finset.sum_le_sum fun c _ => ?_
+  have h1 : t * ((n : ℝ) + 1) ≤ Real.exp (t * ((n : ℝ) + 1)) := by
+    have h2 := Real.add_one_le_exp (t * ((n : ℝ) + 1))
+    linarith
+  have h3 : (Real.exp t : ℝ) ^ (n + 1) = Real.exp (t * ((n : ℝ) + 1)) := by
+    rw [← Real.exp_nat_mul]
+    congr 1
+    push_cast
+    ring
+  have hfac : ((n : ℝ) + 1) ≤ t⁻¹ * Real.exp t ^ (n + 1) := by
+    rw [h3]
+    exact (le_inv_mul_iff₀ ht).mpr h1
+  calc ((n : ℝ) + 1) * pinnedClusterWeight (holePolymerSystem H z) c n
+    _ ≤ (t⁻¹ * Real.exp t ^ (n + 1)) * pinnedClusterWeight (holePolymerSystem H z) c n := by
+      refine mul_le_mul_of_nonneg_right hfac (pinnedClusterWeight_nonneg _ _ _)
+    _ = t⁻¹ * pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
+      rw [pinnedClusterWeight_scale, abs_of_pos (Real.exp_pos t)]
+      ring
+
 theorem clusterRemainderSum_summable {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     (r : Cube d L) (t : ℝ) (ht : 0 < t)
     (hkp : KPCriterion ((holePolymerSystem H z).scaleActivity (Real.exp t)) (fun X => (X.val.card : ℝ))) :
@@ -597,27 +628,7 @@ theorem clusterRemainderSum_summable {d L : ℕ} [NeZero L] (H : HoleFamily d L)
       ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val),
         pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
     intro n
-    have h_term := clusterRemainderSum_term_le H z r n
-    refine le_trans h_term ?_
-    rw [mul_sum, Finset.mul_sum]
-    refine Finset.sum_le_sum fun c _ => ?_
-    have h1 : t * ((n : ℝ) + 1) ≤ Real.exp (t * ((n : ℝ) + 1)) := by
-      have h2 := Real.add_one_le_exp (t * ((n : ℝ) + 1))
-      linarith
-    have h3 : (Real.exp t : ℝ) ^ (n + 1) = Real.exp (t * ((n : ℝ) + 1)) := by
-      rw [← Real.exp_nat_mul]
-      congr 1
-      push_cast
-      ring
-    have hfac : ((n : ℝ) + 1) ≤ t⁻¹ * Real.exp t ^ (n + 1) := by
-      rw [h3]
-      exact (le_inv_mul_iff₀ ht).mpr h1
-    calc ((n : ℝ) + 1) * pinnedClusterWeight (holePolymerSystem H z) c n
-      _ ≤ (t⁻¹ * Real.exp t ^ (n + 1)) * pinnedClusterWeight (holePolymerSystem H z) c n := by
-        refine mul_le_mul_of_nonneg_right hfac (pinnedClusterWeight_nonneg _ _ _)
-      _ = t⁻¹ * pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
-        rw [pinnedClusterWeight_scale, abs_of_pos (Real.exp_pos t)]
-        ring
+    exact clusterRemainderSum_term_le_tilt H z r t ht n
   have h_sum : Summable (fun n => t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val),
       pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n) := by
     refine Summable.mul_left _ ?_
@@ -659,28 +670,7 @@ theorem clusterRemainderSum_tsum_le {d L : ℕ} [NeZero L]
       ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val),
         pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
     intro n
-    have h_term := clusterRemainderSum_term_le H z r n
-    refine le_trans h_term ?_
-    rw [mul_sum, Finset.mul_sum]
-    refine Finset.sum_le_sum fun c _ => ?_
-    have h1 : t * ((n : ℝ) + 1) ≤ Real.exp (t * ((n : ℝ) + 1)) := by
-      have h2 := Real.add_one_le_exp (t * ((n : ℝ) + 1))
-      linarith
-    have h3 : (Real.exp t : ℝ) ^ (n + 1) = Real.exp (t * ((n : ℝ) + 1)) := by
-      rw [← Real.exp_nat_mul]
-      congr 1
-      push_cast
-      ring
-    have hfac : ((n : ℝ) + 1) ≤ t⁻¹ * Real.exp t ^ (n + 1) := by
-      rw [h3]
-      exact (le_inv_mul_iff₀ ht).mpr h1
-    calc ((n : ℝ) + 1) * pinnedClusterWeight (holePolymerSystem H z) c n
-      _ ≤ (t⁻¹ * Real.exp t ^ (n + 1)) *
-            pinnedClusterWeight (holePolymerSystem H z) c n := by
-        refine mul_le_mul_of_nonneg_right hfac (pinnedClusterWeight_nonneg _ _ _)
-      _ = t⁻¹ * pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
-        rw [pinnedClusterWeight_scale, abs_of_pos (Real.exp_pos t)]
-        ring
+    exact clusterRemainderSum_term_le_tilt H z r t ht n
   have hgsum : Summable (fun n => t⁻¹ * ∑ c ∈ Finset.univ.filter
       (fun c => r ∈ (c : PolymerType H z).val),
       pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n) := by

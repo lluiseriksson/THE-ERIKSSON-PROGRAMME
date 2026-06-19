@@ -256,6 +256,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.clusterUnion_skeleton_card_le_clusterModifiedMetric_add_one
 #print axioms YangMills.RG.cluster_closedNeigh_union_connected
 #print axioms YangMills.RG.clusterRemainderSum_summable
+#print axioms YangMills.RG.clusterRemainderSum_term_le_tilt
 #print axioms YangMills.RG.clusterRemainderSum_summable_of_local
 #print axioms YangMills.RG.clusterRemainderSum_tsum_le
 #print axioms YangMills.RG.clusterRemainderSum_tsum_le_of_local
