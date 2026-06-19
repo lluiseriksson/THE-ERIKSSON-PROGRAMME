@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`refactor(KP): share pinned cluster tilt estimate`).
+(`feat(ClayCore): add generic irreducible character orthogonality`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -127,6 +127,10 @@ irreducibles and is scalar within one irreducible. Probability-Haar trace
 normalization identifies the scalar exactly, giving coefficient inner products
 `δᵢₖ δⱼₗ / dim ρ`. Thus generic Schur orthogonality is theorem-fed for this
 matrix-realized irreducible API. Peter-Weyl completeness remains open.
+The character-level corollaries are also packaged:
+`integral_character_mul_star_eq_zero_of_not_equiv` proves orthogonality of
+inequivalent irreducible characters, and `integral_character_mul_star` proves
+that an irreducible character has Haar `L²` norm one.
 
 ## What Is Not Claimed
 

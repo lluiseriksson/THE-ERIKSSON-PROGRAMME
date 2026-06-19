@@ -4457,3 +4457,30 @@ summability substrate.  It does not strengthen the physical hypotheses and
 does not address the open Balaban/Dimock activity-decay or
 raw-support/skeleton-rooted local-smallness bridge. Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 125 (2026-06-19, **generic irreducible character orthogonality**
+`YangMills.ClayCore.ContinuousUnitaryMatrixRep.integral_character_mul_star_eq_zero_of_not_equiv`
+and `YangMills.ClayCore.ContinuousUnitaryMatrixRep.integral_character_mul_star`; core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum packages the character-level corollaries of the generic
+matrix-coefficient Schur orthogonality API.
+
+* `integral_character_mul_star_eq_zero_of_not_equiv` proves that characters of
+  inequivalent irreducible continuous unitary matrix representations are
+  orthogonal in Haar `L²`.
+* `integral_character_mul_star` proves that an irreducible character has Haar
+  `L²` norm one.
+
+Both proofs expand characters as finite traces, exchange the finite sums with
+the integral, and consume the already-verified coefficient identities
+`integral_matrixCoeff_mul_star_eq_zero_of_not_equiv` and
+`integral_matrixCoeff_mul_star`.
+
+**Honest scope.** This is the character-level Schur orthogonality corollary for
+the repo's matrix-realized irreducible API.  It does not prove Peter-Weyl
+completeness, classify SU(N) irreducibles, construct a continuum limit, or
+discharge the open `hRpoly` activity-decay estimate. Clay distance **~0%
+(<0.1%), unchanged**.

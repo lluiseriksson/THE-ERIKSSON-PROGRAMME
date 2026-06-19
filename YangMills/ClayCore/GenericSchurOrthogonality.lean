@@ -306,8 +306,8 @@ theorem integral_matrixCoeff_mul_star
       trace (Matrix.single j l (1 : ℂ)) = if j = l then 1 else 0 := by
     by_cases hjl : j = l
     · subst l
-      simp [trace, Matrix.single_apply]
-    · simp [trace, Matrix.single_apply, hjl]
+      simp [trace]
+    · simp [trace, hjl]
   rw [hsingle] at h
   by_cases hik : i = k
   · subst k
@@ -316,6 +316,103 @@ theorem integral_matrixCoeff_mul_star
       simpa [Matrix.one_apply] using h
     · simpa [Matrix.one_apply, hjl] using h
   · simpa [Matrix.one_apply, hik] using h
+
+/-- Characters of inequivalent irreducible unitary representations are
+orthogonal in Haar `L²`. -/
+theorem integral_character_mul_star_eq_zero_of_not_equiv
+    (μ : Measure G) [IsFiniteMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : ContinuousUnitaryMatrixRep G ι)
+    (σ : ContinuousUnitaryMatrixRep G κ)
+    [ρ.IsIrreducible] [σ.IsIrreducible]
+    [IsEmpty (Representation.Equiv σ.toRepresentation ρ.toRepresentation)] :
+    (∫ g, ρ.character g * star (σ.character g) ∂μ) = 0 := by
+  have hsplit :
+      (fun g : G => ρ.character g * star (σ.character g)) =
+        fun g => ∑ i, ∑ k,
+          (ρ g : Matrix ι ι ℂ) i i *
+            star ((σ g : Matrix κ κ ℂ) k k) := by
+    funext g
+    simp [character_apply, trace, Finset.sum_mul, Finset.mul_sum]
+    rw [Finset.sum_comm]
+  rw [hsplit]
+  rw [integral_finset_sum]
+  · apply Finset.sum_eq_zero
+    intro i _
+    rw [integral_finset_sum]
+    · apply Finset.sum_eq_zero
+      intro k _
+      exact integral_matrixCoeff_mul_star_eq_zero_of_not_equiv μ ρ σ i i k k
+    · intro k _
+      have hcont : Continuous (fun a : G =>
+          (ρ a : Matrix ι ι ℂ) i i *
+            star ((σ a : Matrix κ κ ℂ) k k)) := by
+        exact ((continuous_subtype_val.comp ρ.continuous_toFun).matrix_elem i i).mul
+          (((continuous_subtype_val.comp σ.continuous_toFun).matrix_elem k k).star)
+      exact hcont.integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace _)
+  · intro i _
+    have hcont : Continuous (fun g : G => ∑ k,
+        (ρ g : Matrix ι ι ℂ) i i *
+          star ((σ g : Matrix κ κ ℂ) k k)) := by
+      refine continuous_finset_sum _ (fun k _ => ?_)
+      exact ((continuous_subtype_val.comp ρ.continuous_toFun).matrix_elem i i).mul
+        (((continuous_subtype_val.comp σ.continuous_toFun).matrix_elem k k).star)
+    exact hcont.integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace _)
+
+/-- An irreducible unitary character has Haar `L²` norm one. -/
+theorem integral_character_mul_star
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : ContinuousUnitaryMatrixRep G ι) [ρ.IsIrreducible] [Nonempty ι] :
+    (∫ g, ρ.character g * star (ρ.character g) ∂μ) = 1 := by
+  classical
+  have hsplit :
+      (fun g : G => ρ.character g * star (ρ.character g)) =
+        fun g => ∑ i, ∑ k,
+          (ρ g : Matrix ι ι ℂ) i i *
+            star ((ρ g : Matrix ι ι ℂ) k k) := by
+    funext g
+    simp [character_apply, trace, Finset.sum_mul, Finset.mul_sum]
+    rw [Finset.sum_comm]
+  rw [hsplit]
+  rw [integral_finset_sum]
+  · calc
+      (∑ i, ∫ g, ∑ k, (ρ g : Matrix ι ι ℂ) i i *
+          star ((ρ g : Matrix ι ι ℂ) k k) ∂μ)
+          = ∑ i, ∑ k, ∫ g, (ρ g : Matrix ι ι ℂ) i i *
+              star ((ρ g : Matrix ι ι ℂ) k k) ∂μ := by
+            apply Finset.sum_congr rfl
+            intro i _
+            rw [integral_finset_sum]
+            intro k _
+            have hcont : Continuous (fun g : G =>
+                (ρ g : Matrix ι ι ℂ) i i *
+                  star ((ρ g : Matrix ι ι ℂ) k k)) := by
+              exact ((continuous_subtype_val.comp ρ.continuous_toFun).matrix_elem i i).mul
+                (((continuous_subtype_val.comp ρ.continuous_toFun).matrix_elem k k).star)
+            exact hcont.integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace _)
+      _ = ∑ i : ι, (1 : ℂ) / (Fintype.card ι : ℂ) := by
+            apply Finset.sum_congr rfl
+            intro i _
+            rw [Finset.sum_eq_single i]
+            · rw [integral_matrixCoeff_mul_star μ ρ i i i i]
+              simp
+            · intro k _ hki
+              rw [integral_matrixCoeff_mul_star μ ρ i i k k]
+              simp [Ne.symm hki]
+            · intro hnot
+              exact absurd (Finset.mem_univ i) hnot
+      _ = 1 := by
+            have hcard : (Fintype.card ι : ℂ) ≠ 0 :=
+              Nat.cast_ne_zero.mpr Fintype.card_ne_zero
+            rw [Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
+            simp [div_eq_mul_inv, hcard]
+  · intro i _
+    have hcont : Continuous (fun g : G => ∑ k,
+        (ρ g : Matrix ι ι ℂ) i i *
+          star ((ρ g : Matrix ι ι ℂ) k k)) := by
+      refine continuous_finset_sum _ (fun k _ => ?_)
+      exact ((continuous_subtype_val.comp ρ.continuous_toFun).matrix_elem i i).mul
+        (((continuous_subtype_val.comp ρ.continuous_toFun).matrix_elem k k).star)
+    exact hcont.integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace _)
 
 end ContinuousUnitaryMatrixRep
 end YangMills.ClayCore
