@@ -576,5 +576,31 @@ theorem norm_sq_characterL2_sum
   rw [pow_two]
   exact Complex.ofReal_re (‖c a‖ * ‖c a‖)
 
+/-- The Haar `L²` distance between two finite character expansions in a fixed
+pairwise-inequivalent irreducible family is the Euclidean distance between
+their coefficient vectors. -/
+theorem norm_sq_characterL2_sum_sub_sum
+    {α : Type*} [Fintype α] [DecidableEq α]
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : α → ContinuousUnitaryMatrixRep G ι)
+    [∀ a, (ρ a).IsIrreducible] [Nonempty ι]
+    (hineq : ∀ ⦃a b : α⦄, a ≠ b →
+      IsEmpty (Representation.Equiv (ρ a).toRepresentation (ρ b).toRepresentation))
+    (c d : α → ℂ) :
+    ‖(∑ a, c a • (ρ a).characterL2 μ) -
+        (∑ a, d a • (ρ a).characterL2 μ)‖ ^ 2 =
+      ∑ a, ‖c a - d a‖ ^ 2 := by
+  classical
+  have hsum :
+      (∑ a, c a • (ρ a).characterL2 μ) -
+          (∑ a, d a • (ρ a).characterL2 μ) =
+        ∑ a, (c a - d a) • (ρ a).characterL2 μ := by
+    rw [← Finset.sum_sub_distrib]
+    apply Finset.sum_congr rfl
+    intro a _
+    rw [sub_smul]
+  rw [hsum]
+  exact norm_sq_characterL2_sum μ ρ hineq (fun a => c a - d a)
+
 end ContinuousUnitaryMatrixRep
 end YangMills.ClayCore

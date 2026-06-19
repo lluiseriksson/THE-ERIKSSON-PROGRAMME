@@ -147,7 +147,9 @@ coefficients in the same fixed family. Its zero-expansion consumer
 `characterL2_sum_eq_zero_iff` gives the common "all coefficients vanish" form,
 and `inner_characterL2_sum_sum` gives the finite diagonal Gram/Plancherel
 identity for two such expansions. The norm-square corollary
-`norm_sq_characterL2_sum` gives the corresponding finite Parseval identity.
+`norm_sq_characterL2_sum` gives the corresponding finite Parseval identity,
+and `norm_sq_characterL2_sum_sub_sum` gives the finite distance formula between
+two coefficient vectors and their character expansions.
 
 ## What Is Not Claimed
 

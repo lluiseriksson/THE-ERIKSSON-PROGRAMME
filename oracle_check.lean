@@ -310,3 +310,4 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.characterL2_sum_eq_zero_iff
 #print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.inner_characterL2_sum_sum
 #print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.norm_sq_characterL2_sum
+#print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.norm_sq_characterL2_sum_sub_sum

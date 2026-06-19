@@ -4654,3 +4654,25 @@ orthonormal character family.  It does not assert Peter-Weyl completeness,
 infinite expansion convergence, SU(N) irreducible classification, continuum
 construction, or the open `hRpoly` activity-decay estimate. Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 134 (2026-06-19, **finite character expansion distance formula**
+`YangMills.ClayCore.ContinuousUnitaryMatrixRep.norm_sq_characterL2_sum_sub_sum`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum adds the finite-distance consumer of the Parseval formula.  For
+two coefficient functions `c,d` on a fixed finite pairwise-inequivalent
+irreducible character family, the Haar-`L²` squared norm of the difference of
+the two finite character expansions is exactly
+
+`Σ a, ‖c a - d a‖²`.
+
+The proof rewrites the difference of the two sums as the expansion with
+coefficients `c-d`, then applies `norm_sq_characterL2_sum`.
+
+**Honest scope.** This is still finite-family Hilbert-space geometry only.  It
+does not assert Peter-Weyl completeness, infinite expansion convergence,
+SU(N) irreducible classification, continuum construction, or the open
+`hRpoly` activity-decay estimate. Clay distance **~0% (<0.1%), unchanged**.
