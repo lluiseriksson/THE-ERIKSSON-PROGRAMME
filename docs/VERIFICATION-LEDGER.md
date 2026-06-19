@@ -5171,3 +5171,36 @@ Appendix-F estimate is claimed.  This does **not** prove ultralocal
 integration, the renormalized effective activity, the polymer loss
 `κ → κ - 3κ₀ - 3`, the Yang-Mills raw activity-decay bound, continuum limit, or
 OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 150 (2026-06-20, **Ward-cancelled polymer activities**
+`YangMills.SUSY.norm_finset_sum_expect_Q_le`,
+`YangMills.SUSY.wardActivity`,
+`YangMills.SUSY.wardActivity_metric_bound_of_decomposition`,
+`YangMills.SUSY.wardActivity_metric_bound_of_exact`,
+`YangMills.SUSY.omegaClusterSkeletonRemainderSum_tsum_le_of_ward`,
+`YangMills.SUSY.omegaClusterSkeletonRemainderSum_tsum_le_of_exact_ward`;
+core 8281)
+
+**Build:** green (`lake env lean YangMills/SUSY/WardPolymer.lean`).
+Full-core and oracle verification are recorded with the commit carrying this
+addendum.
+
+This addendum records the verified salvage of the SUSY/Ward acceleration idea.
+The external delivery package supplied for audit was not applied as a patch:
+its unified patch was empty, it contained no Lean source files, and its own
+build log reported a no-toolchain/no-repository failure.  The useful idea was
+therefore reconstructed directly in the repo as a compiled Lean module.
+
+The new module `YangMills/SUSY/WardPolymer.lean` connects the abstract
+`ApproxWardComplex` layer to the literal `Ω`-active skeleton-tail consumer.  It
+proves the finite Ward-defect summation estimate, packages the integrated
+activity `wardActivity W Hraw = fun X => W.expect (Hraw X)`, derives the
+pointwise modified-metric bound from approximate and exact Ward decompositions,
+and feeds both forms directly into
+`omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`.
+
+**Honest scope.** This does not construct supersymmetric Yang--Mills,
+Grassmann/Berezin integration, a regulator, a concrete decomposition
+`H_X = Q B_X + R_X` for the Yang--Mills fluctuation integral, the
+cohomological-remainder bound, `hRpoly`, continuum limit, or OS/Wightman
+reconstruction.  Clay distance **~0% (<0.1%), unchanged**.

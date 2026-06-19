@@ -1,6 +1,6 @@
 # SUSY-STYLE CANCELLATION PLAN FOR `hRpoly`
 
-**Date:** 2026-06-19.  **Status:** opening algebraic substrate CLOSED.
+**Date:** 2026-06-19.  **Status:** algebraic Ward-to-polymer bridge CLOSED.
 
 This plan records the useful part of the supersymmetry audit without changing
 the mathematical target.  Clay asks for pure four-dimensional Yang--Mills, not
@@ -50,6 +50,21 @@ the integrated activity obeys that profile with amplitude
 profile-bounded complex activities obeys the same profile bound.  This is the
 abstract consumer for decoupling or regulator-removal arguments.
 
+`YangMills/SUSY/WardPolymer.lean` now connects the Ward layer to the literal
+`Ω`-active with-holes skeleton-tail consumer:
+
+* `norm_finset_sum_expect_Q_le` proves the finite defect-sum estimate
+  `‖∑ expect(Q B_k)‖ ≤ ∑ defect_k * ‖B_k‖`;
+* `wardActivity` packages the integrated complex polymer activity
+  `X ↦ expect(H_X)`;
+* `wardActivity_metric_bound_of_decomposition` and
+  `wardActivity_metric_bound_of_exact` produce the pointwise modified-metric
+  activity bound from approximate/exact Ward decompositions;
+* `omegaClusterSkeletonRemainderSum_tsum_le_of_ward` and
+  `omegaClusterSkeletonRemainderSum_tsum_le_of_exact_ward` feed those
+  Ward-cancelled activities directly into
+  `omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`.
+
 ## What remains open
 
 The following are **not** proved by this substrate:
@@ -63,13 +78,18 @@ The following are **not** proved by this substrate:
 
 ## Next useful bricks
 
-1. `WardPolymer.lean`: instantiate the profile theorem against the existing
-   with-holes polymer activity profile, so `omegaHolePolymerSystem` can consume
-   Ward-cancelled activities directly.
-2. `ActivityLimit.lean` telescopic variant: if
+1. Construct the model-specific decomposition
+   `raw X = Q (primitive X) + remainder X` for the actual fluctuation
+   integral.
+2. Bound the regulator/Ward defect and primitive norm in the same
+   modified-metric profile consumed by `WardPolymer`.
+3. Bound the surviving cohomological remainder.
+4. `ActivityLimit.lean` telescopic variant: if
    `‖z_{n+1}(X)-z_n(X)‖ ≤ B_n * q^(d X+1)` and `∑ B_n < ∞`, prove the limiting
    activity obeys `(A + ∑ B_n) * q^(d X+1)`.
-3. `Grassmann/Berezin` only after a concrete source-facing consumer exists.
+5. A finite super-Gaussian/Berezin toy model can be useful only if it produces
+   one of the three concrete inputs above; it is not a physical shortcut to
+   pure Yang--Mills by itself.
 
 **Honest Clay scope:** this may reorganize the lattice `hRpoly` proof
 obligation into smaller Ward-defect/cohomology estimates.  It does not by

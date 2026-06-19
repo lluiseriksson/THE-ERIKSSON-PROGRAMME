@@ -283,3 +283,6 @@ import YangMills.RG.Ubar
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
 -- quantitative Ward defect before norms are applied.
 import YangMills.SUSY.WardComplex
+-- Ward-cancelled polymer activities: exact/approximate Ward decomposition
+-- hypotheses feed the source-facing `Ω`-active skeleton-tail consumer.
+import YangMills.SUSY.WardPolymer

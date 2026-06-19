@@ -10,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8280 jobs**.
+* `lake build YangMillsCore` is green at **8281 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -112,6 +112,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `YangMills/SUSY/WardComplex.lean`: if an activity decomposes as `H = QB + R`,
   the `Q`-exact contribution is killed up to a quantitative defect before
   norms are applied, with pointwise profile consumers for polymer activities.
+* the Ward-cancelled polymer bridge `YangMills/SUSY/WardPolymer.lean`: finite
+  Ward-defect sums, integrated activities `wardActivity`, and exact/approximate
+  Ward consumers feeding `omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`
+  for the literal `Ω`-active skeleton-tail system.
 
 The latest RG skeleton-tail interface is local-KP-shaped throughout:
 

@@ -291,6 +291,13 @@ use an exact or approximate Ward identity to kill the `Q`-exact part before
 norming, and feed the remaining scalar profile to the existing with-holes KP
 consumers.  The opening substrate is `YangMills/SUSY/WardComplex.lean`, plus
 the regulator-limit bridge `YangMills/RG/ActivityLimit.lean`.
+The next bridge is now also theorem-fed in `YangMills/SUSY/WardPolymer.lean`:
+an exact or approximate Ward decomposition of the raw activity produces the
+literal pointwise modified-metric hypothesis consumed by
+`omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`.  This closes the
+consumer side of the Ward route; the model-specific decomposition, regulator
+defect estimate, primitive bound, and cohomological remainder bound remain
+open.
 
 The kinetic-sweep audit also recommended separating the final scalar consumer
 from its possible producers.  This is now theorem-fed in

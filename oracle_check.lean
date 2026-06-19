@@ -236,6 +236,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.SUSY.expect_decomposition_bound
 #print axioms YangMills.SUSY.expect_decomposition_profile_bound
 #print axioms YangMills.SUSY.expect_profile_bound_of_exact_ward
+-- Ward-cancelled activities feeding the `Ω`-active skeleton-tail consumer.
+#print axioms YangMills.SUSY.norm_finset_sum_expect_Q_le
+#print axioms YangMills.SUSY.wardActivity_metric_bound_of_decomposition
+#print axioms YangMills.SUSY.wardActivity_metric_bound_of_exact
+#print axioms YangMills.SUSY.omegaClusterSkeletonRemainderSum_tsum_le_of_ward
+#print axioms YangMills.SUSY.omegaClusterSkeletonRemainderSum_tsum_le_of_exact_ward
 
 /-! ### The polymer modified metric (bricks P2b-i and P2b-ii) -/
 #print axioms YangMills.RG.walk_crosses_frontier
