@@ -4776,3 +4776,41 @@ instead of requiring it to separately invoke the KP criterion.
 criterion and sharp KP convergence theorem.  The Yang-Mills pointwise activity
 decay remains the open analytic input.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 139 (2026-06-19, **Appendix-F active cluster-tail consumer**
+`YangMills.RG.omegaClusterSkeletonRemainderSumTerm`,
+`YangMills.RG.omegaClusterSkeletonRemainderSum_term_le_skeletonPinned`,
+`YangMills.RG.omegaClusterSkeletonRemainderSum_tsum_le`,
+`YangMills.RG.omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`;
+core 8273)
+
+**Build:** green (`lake env lean YangMills/RG/ClusterDecay.lean`).
+Full-core and oracle verification are recorded with the commit carrying this
+addendum.
+
+This addendum extends the source-facing `Ω`-active Appendix-F path from the
+global KP criterion/cluster-sum consumer to the skeleton-pinned cluster-tail
+consumer used by the RG remainder estimates.  The new term
+`omegaClusterSkeletonRemainderSumTerm` sums genuine clusters of
+`omegaHolePolymerSystem`, pinned when the root lies in the active skeleton of
+the raw cluster union.  The symmetrization lemma
+`omegaClusterSkeletonRemainderSum_term_le_skeletonPinned` shows that such a
+cluster can be pinned at one constituent polymer whose own active skeleton
+contains the root; the `exp(t)` tilt then pays the cluster order exactly as in
+the older touching-system proof.  Consequently
+`omegaClusterSkeletonRemainderSum_tsum_le_metric_bound` proves the active
+cluster-tail estimate
+
+`Σₙ omegaClusterSkeletonRemainderSumTerm ≤
+ t⁻¹ · A · (1 - (3^d)^2 · (q · 2^(3^d+1)))⁻¹`
+
+under the same pointwise modified-metric majorant
+`exp(t) · ‖z(Y)‖ · exp(|Y|) ≤ A · q^(d_M(Y)+1)` and smallness hypotheses
+used by Addenda 137–138.
+
+**Honest scope.** This closes another consumer-side mismatch: future P3/P4
+work can feed the literal `Ω`-connected Appendix-F relation all the way to a
+skeleton-pinned remainder tail, without detouring through the older touching
+hard-core system.  It still does not prove the Yang-Mills activity-decay
+majorant, the continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

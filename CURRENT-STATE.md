@@ -1,7 +1,8 @@
 # Current State
 
-**Last certified checkpoint:** 2026-06-19
-(`386e236 feat(ClayCore): add finite character distance formula`).
+**Last certified checkpoint:** 2026-06-19, updated through the latest
+oracle-clean public `origin/main` commit (see `git log` and
+`docs/VERIFICATION-LEDGER.md`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -60,6 +61,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   majorant `exp(t)‖z(Y)‖exp(|Y|) ≤ A q^(d_M(Y)+1)` and the already-proved
   discrete modified-metric summability, with direct convergence and
   cluster-sum norm-bound companions for the same metric-bound hypotheses.
+* the matching Appendix-F-facing skeleton-pinned cluster-tail consumer
+  `omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`: the literal
+  `Ω`-connected cluster relation now has a source-shaped `tsum` remainder
+  bound under the same pointwise modified-metric activity majorant.
 
 The latest RG skeleton-tail interface is local-KP-shaped throughout:
 

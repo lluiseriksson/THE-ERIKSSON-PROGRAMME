@@ -216,6 +216,13 @@ now derives that local KP window from the source-shaped pointwise estimate
 summability already proved in P2b.  Its direct convergence and norm-bound
 companions package the same metric-bound hypotheses all the way to the
 active-system Mayer cluster series.
+The active relation now also has a cluster-tail consumer:
+`omegaClusterSkeletonRemainderSum_tsum_le_metric_bound` defines the
+Appendix-F-facing skeleton-pinned remainder term and bounds its `tsum` by
+`t⁻¹ A (1 - (3^d)^2(q 2^(3^d+1)))⁻¹` under the same pointwise
+modified-metric activity majorant.  Thus future P3/P4 work can feed the
+literal `Ω`-connected relation without detouring through the older touching
+hard-core system.
 
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the

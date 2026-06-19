@@ -1131,6 +1131,384 @@ theorem clusterSkeletonRemainderSum_tsum_le_metric_bound_of_raw_local_metric
   exact clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local H z r t q A ht
     hlocal hA0 hact hdisj hnoedges hholes_ne hq0 hCq
 
+/-- The raw union of an `Ω`-active cluster tuple.  This is the Appendix-F-facing
+analogue of `clusterUnion`, with polymers drawn from
+`omegaHolePolymerSystem`. -/
+def omegaClusterUnion {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin n → OmegaPolymerType H z) : Finset (Cube d L) :=
+  univ.biUnion (fun i => (X i).val)
+
+/-- The active skeleton of an `Ω`-active cluster union is the union of the
+constituent active skeletons. -/
+lemma omegaClusterUnion_skeleton {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin n → OmegaPolymerType H z) :
+    skeleton H (omegaClusterUnion H z X) =
+      univ.biUnion (fun i => skeleton H (X i).val) := by
+  dsimp [omegaClusterUnion]
+  exact skeleton_biUnion H univ (fun i => (X i).val)
+
+/-- Appendix-F-facing skeleton-pinned cluster remainder term for the literal
+`Ω`-connected polymer system.  The pin is imposed on the active skeleton of the
+cluster union, matching the source relation rather than the older touching
+hard-core system. -/
+noncomputable def omegaClusterSkeletonRemainderSumTerm {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (n : ℕ) : ℝ :=
+  (((n + 1).factorial : ℝ))⁻¹ *
+    ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+      (fun X => IsCluster (omegaHolePolymerSystem H z) X ∧
+        r ∈ skeleton H (omegaClusterUnion H z X)),
+      |((ursell (omegaHolePolymerSystem H z) X : ℤ) : ℝ)| *
+        ∏ i, ‖(omegaHolePolymerSystem H z).activity (X i)‖
+
+/-- Symmetrized domination for the `Ω`-active skeleton-pinned term: if the root
+lies in the active skeleton of the cluster union, one may pin at a constituent
+polymer whose own active skeleton contains the root. -/
+lemma omegaClusterSkeletonRemainderSum_term_le_skeletonPinned {d L : ℕ}
+    [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (n : ℕ) :
+    omegaClusterSkeletonRemainderSumTerm H z r n
+      ≤ ((n : ℝ) + 1) *
+        ∑ c ∈ Finset.univ.filter
+            (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+          pinnedClusterWeight (omegaHolePolymerSystem H z) c n := by
+  classical
+  let P := omegaHolePolymerSystem H z
+  set f : (Fin (n + 1) → OmegaPolymerType H z) → ℝ :=
+    fun X => |((ursell P X : ℤ) : ℝ)| * ∏ i, ‖P.activity (X i)‖ with hf
+  have hf0 : ∀ X, 0 ≤ f X := fun X =>
+    mul_nonneg (abs_nonneg _) (Finset.prod_nonneg fun i _ => norm_nonneg _)
+  have hfswap : ∀ (σ : Equiv.Perm (Fin (n + 1))) (X : Fin (n + 1) → OmegaPolymerType H z),
+      f (X ∘ σ) = f X := by
+    intro σ X
+    rw [hf]
+    simp only
+    rw [ursell_comp_equiv P X σ]
+    congr 1
+    exact Equiv.prod_comp σ (fun k => ‖P.activity (X k)‖)
+  have hidx : ∀ i : Fin (n + 1),
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+          (fun X => r ∈ skeleton H (X i).val), f X
+      =
+      ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+          (fun Y => r ∈ skeleton H (Y 0).val), f Y := by
+    intro i
+    refine Finset.sum_nbij' (i := fun X => X ∘ Equiv.swap 0 i)
+      (j := fun Y => Y ∘ Equiv.swap 0 i) ?_ ?_ ?_ ?_ ?_
+    · intro X hX
+      refine Finset.mem_filter.mpr ⟨Finset.mem_univ _, ?_⟩
+      show r ∈ skeleton H ((X ∘ Equiv.swap 0 i) 0).val
+      have h0 : (X ∘ Equiv.swap 0 i) 0 = X i := by
+        simp [Function.comp, Equiv.swap_apply_left]
+      rw [h0]
+      exact (Finset.mem_filter.mp hX).2
+    · intro Y hY
+      refine Finset.mem_filter.mpr ⟨Finset.mem_univ _, ?_⟩
+      show r ∈ skeleton H ((Y ∘ Equiv.swap 0 i) i).val
+      have h0 : (Y ∘ Equiv.swap 0 i) i = Y 0 := by
+        simp [Function.comp, Equiv.swap_apply_right]
+      rw [h0]
+      exact (Finset.mem_filter.mp hY).2
+    · intro X _
+      funext k
+      simp [Function.comp, Equiv.swap_apply_self]
+    · intro Y _
+      funext k
+      simp [Function.comp, Equiv.swap_apply_self]
+    · intro X _
+      exact (hfswap _ X).symm
+  have hmain :
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+          (fun X => IsCluster P X ∧ r ∈ skeleton H (omegaClusterUnion H z X)), f X
+      ≤ ((n : ℝ) + 1) *
+          ∑ c ∈ Finset.univ.filter
+              (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+            ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+                (fun Y => Y 0 = c), f Y := by
+    calc
+      ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+          (fun X => IsCluster P X ∧ r ∈ skeleton H (omegaClusterUnion H z X)), f X
+          ≤ ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+              (fun X => r ∈ skeleton H (omegaClusterUnion H z X)), f X := by
+            refine Finset.sum_le_sum_of_subset_of_nonneg ?_ (fun X _ _ => hf0 X)
+            intro X hX
+            rw [mem_filter] at hX ⊢
+            exact ⟨hX.1, hX.2.2⟩
+      _ ≤ ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+              (fun X => r ∈ skeleton H (omegaClusterUnion H z X)),
+            ∑ i : Fin (n + 1), if r ∈ skeleton H (X i).val then f X else 0 := by
+            refine Finset.sum_le_sum fun X hX => ?_
+            obtain ⟨i₀, hi₀⟩ : ∃ i : Fin (n + 1), r ∈ skeleton H (X i).val := by
+              have hm := (Finset.mem_filter.mp hX).2
+              rw [omegaClusterUnion_skeleton] at hm
+              rw [mem_biUnion] at hm
+              rcases hm with ⟨i, _, hi⟩
+              exact ⟨i, hi⟩
+            have hX0 : f X = if r ∈ skeleton H (X i₀).val then f X else 0 := by
+              rw [if_pos hi₀]
+            refine le_trans (le_of_eq hX0) ?_
+            refine Finset.single_le_sum
+              (f := fun i => if r ∈ skeleton H (X i).val then f X else 0)
+              (fun i _ => ?_) (Finset.mem_univ i₀)
+            by_cases hi : r ∈ skeleton H (X i).val
+            · simp [hi, hf0 X]
+            · simp [hi]
+      _ ≤ ∑ X : Fin (n + 1) → OmegaPolymerType H z,
+            ∑ i : Fin (n + 1), if r ∈ skeleton H (X i).val then f X else 0 := by
+            refine Finset.sum_le_sum_of_subset_of_nonneg (Finset.subset_univ _) (fun X _ _ => ?_)
+            refine Finset.sum_nonneg fun i _ => ?_
+            by_cases hi : r ∈ skeleton H (X i).val
+            · simp [hi, hf0 X]
+            · simp [hi]
+      _ = ∑ i : Fin (n + 1),
+            ∑ X : Fin (n + 1) → OmegaPolymerType H z,
+              if r ∈ skeleton H (X i).val then f X else 0 := Finset.sum_comm
+      _ = ∑ i : Fin (n + 1),
+            ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+                (fun X => r ∈ skeleton H (X i).val), f X := by
+            refine Finset.sum_congr rfl fun i _ => ?_
+            exact (Finset.sum_filter _ _).symm
+      _ = ∑ _i : Fin (n + 1),
+            ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+                (fun Y => r ∈ skeleton H (Y 0).val), f Y :=
+            Finset.sum_congr rfl fun i _ => hidx i
+      _ = ((n : ℝ) + 1) *
+            ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+                (fun Y => r ∈ skeleton H (Y 0).val), f Y := by
+            rw [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul]
+            push_cast
+            ring
+      _ = ((n : ℝ) + 1) *
+            ∑ c ∈ Finset.univ.filter
+                (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+              ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+                  (fun Y => Y 0 = c), f Y := by
+            congr 1
+            rw [← Finset.sum_fiberwise_of_maps_to (g := fun Y => Y 0) (fun Y hY => ?_) f]
+            · refine Finset.sum_congr rfl fun c hc => ?_
+              rw [Finset.filter_filter]
+              refine Finset.sum_congr ?_ fun _ _ => rfl
+              refine Finset.filter_congr fun Y _ => ?_
+              constructor
+              · exact fun h => h.2
+              · intro h
+                refine ⟨?_, h⟩
+                show r ∈ skeleton H (Y 0).val
+                rw [h]
+                exact Finset.mem_filter.mp hc |>.2
+            · rw [mem_filter] at hY
+              refine Finset.mem_filter.mpr ⟨mem_univ _, hY.2⟩
+  calc
+    omegaClusterSkeletonRemainderSumTerm H z r n
+        = (((n + 1).factorial : ℝ))⁻¹ *
+            ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+              (fun X => IsCluster P X ∧ r ∈ skeleton H (omegaClusterUnion H z X)), f X := rfl
+    _ ≤ (((n + 1).factorial : ℝ))⁻¹ *
+          (((n : ℝ) + 1) *
+            ∑ c ∈ Finset.univ.filter
+                (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+              ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+                  (fun Y => Y 0 = c), f Y) := by
+          exact mul_le_mul_of_nonneg_left hmain (by positivity)
+    _ = ((n : ℝ) + 1) *
+          ((((n + 1).factorial : ℝ))⁻¹ *
+            ∑ c ∈ Finset.univ.filter
+                (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+              ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+                  (fun Y => Y 0 = c), f Y) := by ring
+    _ = ((n : ℝ) + 1) *
+          ∑ c ∈ Finset.univ.filter
+              (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+            (((n + 1).factorial : ℝ))⁻¹ *
+              ∑ Y ∈ (Finset.univ : Finset (Fin (n + 1) → OmegaPolymerType H z)).filter
+                  (fun Y => Y 0 = c), f Y := by
+          rw [Finset.mul_sum]
+    _ = ((n : ℝ) + 1) *
+          ∑ c ∈ Finset.univ.filter
+              (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+            pinnedClusterWeight P c n := rfl
+
+/-- The `e^t` activity tilt pays the order factor in the `Ω`-active
+skeleton-pinned remainder. -/
+lemma omegaClusterSkeletonRemainderSum_term_le_tilt {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t : ℝ) (ht : 0 < t) (n : ℕ) :
+    omegaClusterSkeletonRemainderSumTerm H z r n
+      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter
+          (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        pinnedClusterWeight ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
+  refine (omegaClusterSkeletonRemainderSum_term_le_skeletonPinned H z r n).trans ?_
+  rw [mul_sum, Finset.mul_sum]
+  refine Finset.sum_le_sum fun c _ => ?_
+  exact YangMills.KP.orderFactor_pinnedClusterWeight_le_tilt
+    (omegaHolePolymerSystem H z) c t ht n
+
+/-- Summability of the Appendix-F-facing `Ω`-active skeleton-pinned cluster
+remainder from the tilted KP criterion. -/
+theorem omegaClusterSkeletonRemainderSum_summable {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t : ℝ) (ht : 0 < t)
+    (hkp : KPCriterion ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t))
+      (fun X => (X.val.card : ℝ))) :
+    Summable (fun n => omegaClusterSkeletonRemainderSumTerm H z r n) := by
+  have hnn : ∀ n, 0 ≤ omegaClusterSkeletonRemainderSumTerm H z r n := by
+    intro n
+    unfold omegaClusterSkeletonRemainderSumTerm
+    positivity
+  have hle : ∀ n, omegaClusterSkeletonRemainderSumTerm H z r n
+      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter
+          (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        pinnedClusterWeight ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
+    intro n
+    exact omegaClusterSkeletonRemainderSum_term_le_tilt H z r t ht n
+  have hsum : Summable (fun n =>
+      t⁻¹ * ∑ c ∈ Finset.univ.filter
+          (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        pinnedClusterWeight ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)) c n) := by
+    refine Summable.mul_left _ ?_
+    exact YangMills.KP.summable_finset_pinnedClusterWeight _ hkp _
+  exact Summable.of_nonneg_of_le hnn hle hsum
+
+/-- Quantitative bound for the Appendix-F-facing `Ω`-active skeleton-pinned
+cluster remainder from the tilted KP criterion. -/
+theorem omegaClusterSkeletonRemainderSum_tsum_le {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t : ℝ) (ht : 0 < t)
+    (hkp : KPCriterion ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t))
+      (fun X => (X.val.card : ℝ))) :
+    ∑' n, omegaClusterSkeletonRemainderSumTerm H z r n
+      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter
+          (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        Real.exp t * ‖(omegaHolePolymerSystem H z).activity c‖ *
+          Real.exp ((c.val.card : ℝ)) := by
+  have hle : ∀ n, omegaClusterSkeletonRemainderSumTerm H z r n
+      ≤ t⁻¹ * ∑ c ∈ Finset.univ.filter
+          (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        pinnedClusterWeight ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
+    intro n
+    exact omegaClusterSkeletonRemainderSum_term_le_tilt H z r t ht n
+  have hgsum : Summable (fun n =>
+      t⁻¹ * ∑ c ∈ Finset.univ.filter
+          (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        pinnedClusterWeight ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)) c n) := by
+    refine Summable.mul_left _ ?_
+    exact YangMills.KP.summable_finset_pinnedClusterWeight _ hkp _
+  have hskel : Summable (fun n => omegaClusterSkeletonRemainderSumTerm H z r n) :=
+    omegaClusterSkeletonRemainderSum_summable H z r t ht hkp
+  refine le_trans (hskel.tsum_le_tsum hle hgsum) ?_
+  rw [tsum_mul_left]
+  refine mul_le_mul_of_nonneg_left ?_ (inv_nonneg.mpr ht.le)
+  refine le_trans (YangMills.KP.tsum_finset_pinnedClusterWeight_le _ hkp _) ?_
+  refine le_of_eq ?_
+  refine Finset.sum_congr rfl fun c _ => ?_
+  exact YangMills.KP.scaleActivity_exp_norm_activity_mul_exp
+    (omegaHolePolymerSystem H z) (fun c => (c.val.card : ℝ)) t c
+
+/-- One-shot `Ω`-active skeleton remainder bound from the pointwise
+modified-metric activity majorant.  This is the cluster-tail consumer matching
+Dimock Appendix F's active relation; the model-specific activity decay remains
+the explicit hypothesis `hact`. -/
+theorem omegaClusterSkeletonRemainderSum_tsum_le_metric_bound {d L : ℕ}
+    [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t q A : ℝ) (ht : 0 < t)
+    (hA0 : 0 ≤ A)
+    (hact : ∀ c : OmegaPolymerType H z,
+      Real.exp t * ‖(omegaHolePolymerSystem H z).activity c‖ *
+          Real.exp ((c.val.card : ℝ))
+        ≤ A * q ^ (discreteModifiedMetric H c.val + 1))
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hq0 : 0 ≤ q)
+    (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)) < 1)
+    (hsmall : A *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹ ≤ 1) :
+    ∑' n, omegaClusterSkeletonRemainderSumTerm H z r n
+      ≤ t⁻¹ * (A *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹) := by
+  classical
+  let K := (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹
+  have hkp :
+      KPCriterion ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t))
+        (fun X => (X.val.card : ℝ)) :=
+    omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound
+      H z t q A hA0 hact hdisj hnoedges hholes_ne hq0 hCq hsmall
+  have hbase := omegaClusterSkeletonRemainderSum_tsum_le H z r t ht hkp
+  refine hbase.trans ?_
+  refine mul_le_mul_of_nonneg_left ?_ (inv_nonneg.mpr ht.le)
+  have hterm :
+      ∑ c ∈ Finset.univ.filter
+          (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        Real.exp t * ‖(omegaHolePolymerSystem H z).activity c‖ *
+          Real.exp ((c.val.card : ℝ))
+      ≤ ∑ c ∈ Finset.univ.filter
+          (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        A * q ^ (discreteModifiedMetric H c.val + 1) := by
+    exact Finset.sum_le_sum fun c _ => hact c
+  have hfilter_eq :
+      ∑ c ∈ Finset.univ.filter (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        q ^ (discreteModifiedMetric H c.val + 1)
+      =
+      ∑ c : {c : OmegaPolymerType H z // r ∈ skeleton H c.val},
+        q ^ (discreteModifiedMetric H c.val.val + 1) := by
+    exact (Finset.sum_subtype
+      ((Finset.univ : Finset (OmegaPolymerType H z)).filter
+        (fun c => r ∈ skeleton H c.val))
+      (fun c => by simp)
+      (fun c => q ^ (discreteModifiedMetric H c.val + 1)))
+  let f1 := fun c : {c : OmegaPolymerType H z // r ∈ skeleton H c.val} =>
+    (⟨c.val.val, ⟨c.property, c.val.property.right.left,
+      c.val.property.right.right.left⟩⟩ :
+      {X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X})
+  have hf1_inj : Function.Injective f1 := by
+    intro a b h
+    have h_eq : a.val.val = b.val.val := congrArg (fun x => x.val) h
+    have h_val_eq : a.val = b.val := Subtype.ext h_eq
+    exact Subtype.ext h_val_eq
+  have hf1_surj : Function.Surjective f1 := by
+    intro b
+    have hne : b.val.Nonempty := by
+      rw [Finset.nonempty_iff_ne_empty]
+      intro he
+      have hr : r ∈ skeleton H b.val := b.property.left
+      have hr_sub := skeleton_subset H b.val hr
+      rw [he] at hr_sub
+      cases hr_sub
+    have hskel_ne : (skeleton H b.val).Nonempty := ⟨r, b.property.left⟩
+    refine ⟨⟨⟨b.val, ⟨hne, b.property.right.left,
+      b.property.right.right, hskel_ne⟩⟩, b.property.left⟩, rfl⟩
+  have hsum_eq :
+      ∑ c : {c : OmegaPolymerType H z // r ∈ skeleton H c.val},
+        q ^ (discreteModifiedMetric H c.val.val + 1)
+      =
+      ∑ X : {X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X},
+        q ^ (discreteModifiedMetric H X.val + 1) := by
+    refine Fintype.sum_equiv (Equiv.ofBijective f1 ⟨hf1_inj, hf1_surj⟩) _ _ ?_
+    intro c
+    rfl
+  have hmetric :
+      ∑ c ∈ Finset.univ.filter (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        q ^ (discreteModifiedMetric H c.val + 1)
+      ≤ K := by
+    rw [hfilter_eq, hsum_eq]
+    simpa [K] using
+      discreteModifiedMetric_weight_summable H r q hdisj hnoedges hholes_ne hq0 hCq
+  calc
+    ∑ c ∈ Finset.univ.filter
+          (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        Real.exp t * ‖(omegaHolePolymerSystem H z).activity c‖ *
+          Real.exp ((c.val.card : ℝ))
+        ≤ ∑ c ∈ Finset.univ.filter
+            (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+          A * q ^ (discreteModifiedMetric H c.val + 1) := hterm
+    _ = A * ∑ c ∈ Finset.univ.filter
+          (fun c : OmegaPolymerType H z => r ∈ skeleton H c.val),
+        q ^ (discreteModifiedMetric H c.val + 1) := by
+          rw [Finset.mul_sum]
+    _ ≤ A * K := mul_le_mul_of_nonneg_left hmetric hA0
+
 lemma polymer_subset_clusterUnion {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer) (i : Fin n) :
     (X i).val ⊆ clusterUnion H z X := by
