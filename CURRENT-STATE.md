@@ -54,7 +54,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * the corresponding source-facing local KP consumer
   `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp` and
   convergence/norm companions: a local window pinned at each active skeleton
-  cube feeds the KP criterion for the Ω-active Appendix-F relation.
+  cube feeds the KP criterion for the Ω-active Appendix-F relation;
+* `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`,
+  which derives that active local KP window from the pointwise modified-metric
+  majorant `exp(t)‖z(Y)‖exp(|Y|) ≤ A q^(d_M(Y)+1)` and the already-proved
+  discrete modified-metric summability.
 
 The latest RG skeleton-tail interface is local-KP-shaped throughout:
 

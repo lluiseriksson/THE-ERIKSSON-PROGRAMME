@@ -144,7 +144,11 @@ separately.  Its local KP consumer
 that a skeleton-pinned local activity window feeds KP convergence for this
 literal `Ω`-connected relation.  Future P3 work should feed that
 source-facing consumer directly, or prove a comparison theorem before reusing
-the touching-system consumers.
+the touching-system consumers.  The follow-up theorem
+`omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`
+derives the active local window from the Dimock-shaped pointwise modified
+metric majorant and the discrete modified-metric summability, leaving the
+model-specific activity estimate as the remaining analytic input.
 
 ## 6. Connection to the existing `KP` layer (architectural finding, 2026-06-12)
 

@@ -484,6 +484,99 @@ theorem omegaHolePolymerSystem_norm_clusterSum_le_volumeUniform_skeleton_exp
   KP.kp_norm_clusterSum_le_sharp ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t))
     (omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp H z t h_local)
 
+/-- Source-facing `Ω`-active KP criterion from a pointwise modified-metric
+activity majorant and the discrete modified-metric summability theorem. -/
+theorem omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (t q A : ℝ)
+    (hA0 : 0 ≤ A)
+    (hact : ∀ Y : OmegaPolymerType H z,
+      Real.exp t * ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ)
+        ≤ A * q ^ (discreteModifiedMetric H Y.val + 1))
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hq0 : 0 ≤ q)
+    (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)) < 1)
+    (hsmall : A *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹ ≤ 1) :
+    KP.KPCriterion ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t))
+      (fun X => (X.val.card : ℝ)) := by
+  refine omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp H z t ?_
+  intro s
+  have hpoint :
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        Real.exp t * ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ)
+      ≤ ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        A * q ^ (discreteModifiedMetric H Y.val + 1) := by
+    apply Finset.sum_le_sum
+    intro Y _
+    exact hact Y
+  have hmetric :
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        q ^ (discreteModifiedMetric H Y.val + 1)
+      ≤ (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹ := by
+    let f1 := fun Y : { P : OmegaPolymerType H z // s ∈ skeleton H P.val } =>
+      (⟨Y.val.val, ⟨Y.property, Y.val.property.right.left,
+        Y.val.property.right.right.left⟩⟩ :
+        { X : Finset (Cube d L) // s ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X })
+    have hf1_inj : Function.Injective f1 := by
+      intro a b h
+      have h_eq : a.val.val = b.val.val := congrArg (fun x => x.val) h
+      have h_poly : a.val = b.val := Subtype.ext h_eq
+      exact Subtype.ext h_poly
+    have hf1_surj : Function.Surjective f1 := by
+      intro b
+      have hne : b.val.Nonempty := by
+        rw [Finset.nonempty_iff_ne_empty]
+        intro he
+        have hs_sub := skeleton_subset H b.val b.property.left
+        rw [he] at hs_sub
+        cases hs_sub
+      have hskel_ne : (skeleton H b.val).Nonempty := ⟨s, b.property.left⟩
+      refine ⟨⟨⟨b.val, ⟨hne, b.property.right.left,
+        b.property.right.right, hskel_ne⟩⟩, b.property.left⟩, ?_⟩
+      rfl
+    have h_filter_eq :
+        ∑ Y ∈ Finset.univ.filter
+            (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+          q ^ (discreteModifiedMetric H Y.val + 1)
+        =
+        ∑ Y : { P : OmegaPolymerType H z // s ∈ skeleton H P.val },
+          q ^ (discreteModifiedMetric H Y.val.val + 1) := by
+      exact (Finset.sum_subtype
+        ((Finset.univ : Finset (OmegaPolymerType H z)).filter
+          (fun Y => s ∈ skeleton H Y.val))
+        (fun Y => by simp)
+        (fun Y => q ^ (discreteModifiedMetric H Y.val + 1)))
+    rw [h_filter_eq]
+    have h_sum_eq :
+        ∑ Y : { P : OmegaPolymerType H z // s ∈ skeleton H P.val },
+          q ^ (discreteModifiedMetric H Y.val.val + 1)
+        =
+        ∑ X : { X : Finset (Cube d L) // s ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X },
+          q ^ (discreteModifiedMetric H X.val + 1) := by
+      refine Fintype.sum_equiv (Equiv.ofBijective f1 ⟨hf1_inj, hf1_surj⟩) _ _ ?_
+      intro Y
+      rfl
+    rw [h_sum_eq]
+    simpa [tsum_fintype] using
+      (discreteModifiedMetric_weight_summable H s q hdisj hnoedges hholes_ne hq0 hCq)
+  have hAmetric :
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        A * q ^ (discreteModifiedMetric H Y.val + 1)
+      ≤ A * (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (q * 2 ^ (3 ^ d + 1)))⁻¹ := by
+    rw [← Finset.mul_sum]
+    exact mul_le_mul_of_nonneg_left hmetric hA0
+  exact hpoint.trans (hAmetric.trans hsmall)
+
 /-- **Volume-Uniform Mayer Cluster Series Convergence:**
     The cluster series converges absolutely and volume-uniformly under the local summability condition. -/
 theorem holePolymerSystem_converges_volumeUniform {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)

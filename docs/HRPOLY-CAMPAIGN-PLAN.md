@@ -208,7 +208,12 @@ KP package is now also theorem-fed:
 convergence/norm companions show that a local window pinned at active skeleton
 cubes is enough to run the KP convergence machinery for the literal
 Appendix-F relation.  This still carries the model-specific activity estimate;
-it closes the consumer side, not the Yang-Mills activity-decay theorem.
+it closes the consumer side, not the Yang-Mills activity-decay theorem.  The
+metric-bound bridge
+`omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`
+now derives that local KP window from the source-shaped pointwise estimate
+`exp(t)‖z(Y)‖exp(|Y|) ≤ A q^(d_M(Y)+1)` plus the discrete modified-metric
+summability already proved in P2b.
 
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the

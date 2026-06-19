@@ -4732,3 +4732,27 @@ Mayer-series convergence and cluster-sum norm bounds.
 `Ω`-connected cluster relation, not the Yang-Mills single-scale activity
 decay itself.  The hard analytic bound still has to supply the local active
 window.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 137 (2026-06-19, **Appendix-F metric-to-active-KP bridge**
+`YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum records the metric bridge for the source-facing active system.
+If every active polymer satisfies the Dimock-shaped pointwise majorant
+
+`exp(t) · ‖z(Y)‖ · exp(|Y|) ≤ A · q^(d_M(Y)+1)`
+
+and the P2b discrete modified-metric summability constant obeys
+`A · (1 - (3^d)^2 · (q · 2^(3^d+1)))⁻¹ ≤ 1`, then
+`omegaHolePolymerSystem` satisfies the exponential-tilted KP criterion with
+weight `|X|`.  The proof reindexes the active-skeleton local sum into the
+already-proved modified-metric summability theorem; no Appendix-F activity
+decay is assumed hiddenly beyond the explicit pointwise majorant.
+
+**Honest scope.** This closes the consumer path
+pointwise modified-metric decay + summability ⟹ active KP convergence for the
+literal `Ω` relation.  It does not prove the Yang-Mills pointwise activity
+decay.  Clay distance **~0% (<0.1%), unchanged**.
