@@ -573,6 +573,18 @@ noncomputable def clusterRemainderSumTerm {d L : ℕ} [NeZero L] (H : HoleFamily
       (fun X => IsCluster (holePolymerSystem H z) X ∧ r ∈ clusterUnion H z X),
       |((ursell (holePolymerSystem H z) X : ℤ) : ℝ)| * ∏ i, ‖(holePolymerSystem H z).activity (X i)‖
 
+/-- The source-shaped skeleton-pinned cluster remainder term: the cluster is
+pinned only when `r` lies in the active skeleton of the cluster union, not
+merely anywhere in the raw union. -/
+noncomputable def clusterSkeletonRemainderSumTerm {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (n : ℕ) : ℝ :=
+  (((n + 1).factorial : ℝ))⁻¹ *
+    ∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → PolymerType H z)).filter
+      (fun X => IsCluster (holePolymerSystem H z) X ∧
+        r ∈ skeleton H (clusterUnion H z X)),
+      |((ursell (holePolymerSystem H z) X : ℤ) : ℝ)| * ∏ i, ‖(holePolymerSystem H z).activity (X i)‖
+
 theorem clusterRemainderSum_summable {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     (r : Cube d L) (t : ℝ) (ht : 0 < t)
     (hkp : KPCriterion ((holePolymerSystem H z).scaleActivity (Real.exp t)) (fun X => (X.val.card : ℝ))) :
@@ -612,6 +624,37 @@ theorem clusterRemainderSum_summable {d L : ℕ} [NeZero L] (H : HoleFamily d L)
     refine summable_sum fun c _ => ?_
     exact (pinned_cluster_summable_sharp ((holePolymerSystem H z).scaleActivity (Real.exp t)) hkp c).1
   exact Summable.of_nonneg_of_le hnn h_le h_sum
+
+/-- Termwise domination of the skeleton-pinned remainder by the raw-union pinned
+remainder. -/
+lemma clusterSkeletonRemainderSumTerm_le {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (n : ℕ) :
+    clusterSkeletonRemainderSumTerm H z r n ≤ clusterRemainderSumTerm H z r n := by
+  unfold clusterSkeletonRemainderSumTerm clusterRemainderSumTerm
+  refine mul_le_mul_of_nonneg_left ?_ (by positivity)
+  refine Finset.sum_le_sum_of_subset_of_nonneg ?_ (fun X _ _ => ?_)
+  · intro X hX
+    rw [mem_filter] at hX ⊢
+    exact ⟨hX.1, hX.2.1, skeleton_subset H (clusterUnion H z X) hX.2.2⟩
+  · exact mul_nonneg (abs_nonneg _) (Finset.prod_nonneg fun i _ => norm_nonneg _)
+
+/-- Skeleton-pinned cluster remainders are summable whenever the larger
+union-pinned cluster remainders are summable.  The only set-theoretic input is
+`skeleton_subset`: active-skeleton pinning is a genuine restriction of raw-union
+pinning. -/
+theorem clusterSkeletonRemainderSum_summable {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t : ℝ) (ht : 0 < t)
+    (hkp : KPCriterion ((holePolymerSystem H z).scaleActivity (Real.exp t))
+      (fun X => (X.val.card : ℝ))) :
+    Summable (fun n => clusterSkeletonRemainderSumTerm H z r n) := by
+  have hnn : ∀ n, 0 ≤ clusterSkeletonRemainderSumTerm H z r n := by
+    intro n
+    unfold clusterSkeletonRemainderSumTerm
+    positivity
+  exact Summable.of_nonneg_of_le hnn (clusterSkeletonRemainderSumTerm_le H z r)
+    (clusterRemainderSum_summable H z r t ht hkp)
 
 lemma polymer_subset_clusterUnion {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer) (i : Fin n) :

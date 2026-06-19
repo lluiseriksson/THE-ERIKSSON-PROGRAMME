@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(RG): package cluster unions as hole polymers`).
+(`feat(RG): prove skeleton-pinned cluster summability`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -47,13 +47,15 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * polymer-with-holes multi-hole combinatorics, multiplicity bounds, discrete
   modified-metric summability, and the cluster-union modified-metric interface.
 
-The latest RG package is `YangMills.RG.clusterUnionPolymer`: a nonempty genuine
-hole-polymer cluster tuple can be collapsed to the single polymer given by its
-raw union.  The package uses `clusterUnion_nonempty`, `clusterUnion_connected`,
-and `clusterUnion_polymerWithHoles`; together with
-`clusterUnion_skeleton_card_le_clusterModifiedMetric_add_one`, this gives the
-valid cluster-level replacement for the false arbitrary constituent-metric
-monotonicity claim rejected by the Extra High audit.
+The latest RG theorem is `YangMills.RG.clusterSkeletonRemainderSum_summable`:
+cluster remainders pinned at a point of the active skeleton of the cluster union
+are summable under the same KP input as the larger raw-union-pinned remainder.
+The termwise bridge is
+`clusterSkeletonRemainderSumTerm_le`, using only `skeleton_subset`.  Together
+with `clusterUnionPolymer` and
+`clusterUnion_skeleton_card_le_clusterModifiedMetric_add_one`, this gives a
+source-shaped cluster object and a skeleton-pinned summability interface for
+later `hRpoly` activity-decay work.
 
 ## Live Frontier
 

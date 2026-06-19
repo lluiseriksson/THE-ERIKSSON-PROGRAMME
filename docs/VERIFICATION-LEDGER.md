@@ -4122,3 +4122,35 @@ metric monotonicity is used.
 **Honest scope.** This is still RG substrate for the Balaban/Dimock activity
 estimate.  It does not prove the activity decay, continuum limit, or
 OS/Wightman reconstruction. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 113 (2026-06-19, **skeleton-pinned cluster remainder summability**
+`YangMills.RG.clusterSkeletonRemainderSumTerm`,
+`YangMills.RG.clusterSkeletonRemainderSumTerm_le`,
+`YangMills.RG.clusterSkeletonRemainderSum_summable`; core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum adds the source-shaped cluster remainder variant pinned at the
+active skeleton of the cluster union, rather than merely at any point of the raw
+cluster union.
+
+* `clusterSkeletonRemainderSumTerm` is the skeleton-pinned analogue of
+  `clusterRemainderSumTerm`: the filter is
+  `IsCluster P X ∧ r ∈ skeleton H (clusterUnion H z X)`.
+* `clusterSkeletonRemainderSumTerm_le` proves termwise domination by the
+  existing raw-union-pinned term.  The proof uses only the defining inclusion
+  `skeleton_subset H (clusterUnion H z X)` and nonnegativity of the Ursell/activity
+  norm factor.
+* `clusterSkeletonRemainderSum_summable` transfers the existing summability
+  theorem to the skeleton-pinned series by `Summable.of_nonneg_of_le`.
+
+This is the correct support shape for the later activity-decay theorem: Dimock's
+modified metric weights the active skeleton of the cluster object.  No new
+activity estimate, paper constant, or constituent-polymer metric monotonicity is
+claimed.
+
+**Honest scope.** This is RG summability substrate toward `hRpoly`; the
+Balaban/Dimock activity-decay estimate itself remains open.  It does not prove
+the continuum limit or OS/Wightman reconstruction. Clay distance **~0%
+(<0.1%), unchanged**.
