@@ -78,10 +78,10 @@ intertwiner API; consequently, intertwiners between irreducibles are zero or
 bijective and self-intertwiners are scalar. The defining representation
 `fundamentalUnitaryRep` instantiates the analytic API. Haar averaging now turns
 an arbitrary matrix into an intertwiner: it vanishes between inequivalent
-irreducibles and is scalar within one irreducible. Thus generic
-inter-representation coefficient orthogonality is theorem-fed. The exact
-same-representation normalization by dimension and Peter-Weyl completeness
-remain open.
+irreducibles and is scalar within one irreducible. Probability-Haar trace
+normalization identifies the scalar exactly, giving coefficient inner products
+`δᵢₖ δⱼₗ / dim ρ`. Thus generic Schur orthogonality is theorem-fed for this
+matrix-realized irreducible API. Peter-Weyl completeness remains open.
 
 ## What Is Not Claimed
 

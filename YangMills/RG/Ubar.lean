@@ -14,6 +14,12 @@ import YangMills.RG.MatrixRealization
 
 This file defines the coarse gauge-renormalization operator `Ū` on the lattice and
 proves its gauge covariance under a matrix representation.
+
+Important convention: `nearLog Y` is the Mercator series for `log (1 + Y)`.
+Therefore the small-field variable for a represented group element `D` is
+`D - 1`, not `D` itself.  In Bałaban's CMP 109 (0.12) formula the logarithm is
+applied to a near-identity deviation group element; the Lean series argument is
+the deviation from the identity.
 -/
 
 namespace YangMills.RG
@@ -82,7 +88,110 @@ lemma rep_UbarDeviation_gaugeAct {d N' : ℕ} [NeZero N'] {G : Type*} [Group G] 
   rw [UbarDeviation_gaugeAct u A_fine A_coarse C x Γ_1 Γ_2 Γ_3 hpath1 hend1 hpath2 hpath3 hend3]
   simp only [map_mul, map_inv]
 
-/-- The coarse gauge-renormalization operator `Ū` (represented in the algebra `𝔸`). -/
+/-- Conjugating a near-identity group element subtracts the identity by
+conjugating the deviation from the identity:
+`u * D * u⁻¹ - 1 = u * (D - 1) * u⁻¹`. -/
+lemma units_conj_sub_one {𝔸 : Type*} [NormedRing 𝔸] (u : 𝔸ˣ) (D : 𝔸) :
+    u.val * D * u⁻¹.val - 1 = u.val * (D - 1) * u⁻¹.val := by
+  rw [mul_sub, sub_mul]
+  simp [mul_assoc]
+
+/-- The actual Mercator-series argument for the `Ū` logarithm: the represented
+deviation group element minus the identity.  `nearLog` computes `log(1 + Y)`,
+so this is the faithful small-field variable corresponding to
+`log(U(c₋,x)·U(x,x(c))⁻¹·U(x(c),c₊)·U(-c))` in CMP 109 (0.12). -/
+noncomputable def UbarDeviationLogArg {d N' : ℕ} [NeZero N'] {G : Type*} [Group G]
+    [FiniteLatticeGeometry d N' G]
+    {L : ℕ} [NeZero L] [FiniteLatticeGeometry d (L * N') G]
+    {𝔸 : Type*} [NormedRing 𝔸] [NormedAlgebra ℝ 𝔸] [CompleteSpace 𝔸]
+    [MatrixRealization G 𝔸]
+    (A_fine : GaugeConfig d (L * N') G) (A_coarse : GaugeConfig d N' G)
+    (C : FiniteLatticeGeometry.E (d := d) (N := N') (G := G)) (x : FinBox d (L * N'))
+    (Γ_1 Γ_2 Γ_3 : FinBox d (L * N') → List (FiniteLatticeGeometry.E (d := d) (N := L * N') (G := G))) :
+    𝔸 :=
+  (MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val - 1
+
+/-- If the represented physical group element has operator norm one, the old
+small-field condition `‖D‖ < 1` is impossible.  Physical unitary matrix
+realizations satisfy this calibration, so `Ū` must use `D - 1` as its
+small-field variable. -/
+theorem represented_group_element_norm_lt_one_impossible_of_norm_eq_one
+    {G : Type*} [Group G]
+    {𝔸 : Type*} [NormedRing 𝔸] [NormedAlgebra ℝ 𝔸] [CompleteSpace 𝔸]
+    [MatrixRealization G 𝔸] (g : G)
+    (hunit : ‖(MatrixRealization.rep g : Units 𝔸).val‖ = 1) :
+    ¬ ‖(MatrixRealization.rep g : Units 𝔸).val‖ < 1 := by
+  rw [hunit]
+  exact not_lt_of_ge le_rfl
+
+/-- The corrected small-field premise is inhabited at the identity deviation:
+if the path/coarse mismatch is exactly the identity group element, then the
+Mercator argument is `0`. -/
+theorem UbarDeviationLogArg_eq_zero_of_deviation_eq_one {d N' : ℕ} [NeZero N']
+    {G : Type*} [Group G] [FiniteLatticeGeometry d N' G]
+    {L : ℕ} [NeZero L] [FiniteLatticeGeometry d (L * N') G]
+    {𝔸 : Type*} [NormedRing 𝔸] [NormedAlgebra ℝ 𝔸] [CompleteSpace 𝔸]
+    [MatrixRealization G 𝔸]
+    (A_fine : GaugeConfig d (L * N') G) (A_coarse : GaugeConfig d N' G)
+    (C : FiniteLatticeGeometry.E (d := d) (N := N') (G := G)) (x : FinBox d (L * N'))
+    (Γ_1 Γ_2 Γ_3 : FinBox d (L * N') → List (FiniteLatticeGeometry.E (d := d) (N := L * N') (G := G)))
+    (h : UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3 = 1) :
+    UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3 = 0 := by
+  dsimp [UbarDeviationLogArg]
+  rw [h]
+  simp
+
+/-- The corrected small-field premise is non-vacuous at exact matching
+deviation. -/
+theorem UbarDeviationLogArg_small_of_deviation_eq_one {d N' : ℕ} [NeZero N']
+    {G : Type*} [Group G] [FiniteLatticeGeometry d N' G]
+    {L : ℕ} [NeZero L] [FiniteLatticeGeometry d (L * N') G]
+    {𝔸 : Type*} [NormedRing 𝔸] [NormedAlgebra ℝ 𝔸] [CompleteSpace 𝔸]
+    [MatrixRealization G 𝔸]
+    (A_fine : GaugeConfig d (L * N') G) (A_coarse : GaugeConfig d N' G)
+    (C : FiniteLatticeGeometry.E (d := d) (N := N') (G := G)) (x : FinBox d (L * N'))
+    (Γ_1 Γ_2 Γ_3 : FinBox d (L * N') → List (FiniteLatticeGeometry.E (d := d) (N := L * N') (G := G)))
+    (h : UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3 = 1) :
+    ‖UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3‖ < 1 := by
+  rw [UbarDeviationLogArg_eq_zero_of_deviation_eq_one
+    (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3 h]
+  simp
+
+/-- The represented Mercator argument `D - 1` transforms by conjugation under a
+gauge transformation. -/
+lemma UbarDeviationLogArg_gaugeAct {d N' : ℕ} [NeZero N'] {G : Type*} [Group G]
+    [FiniteLatticeGeometry d N' G]
+    {L : ℕ} [NeZero L] [FiniteLatticeGeometry d (L * N') G]
+    {𝔸 : Type*} [NormedRing 𝔸] [NormedAlgebra ℝ 𝔸] [CompleteSpace 𝔸]
+    [MatrixRealization G 𝔸]
+    (u : GaugeTransform d (L * N') G) (A_fine : GaugeConfig d (L * N') G)
+    (A_coarse : GaugeConfig d N' G)
+    (C : FiniteLatticeGeometry.E (d := d) (N := N') (G := G)) (x : FinBox d (L * N'))
+    (Γ_1 Γ_2 Γ_3 : FinBox d (L * N') → List (FiniteLatticeGeometry.E (d := d) (N := L * N') (G := G)))
+    (hpath1 : IsPathFrom (blockBasepoint L N' (FiniteLatticeGeometry.src C)) (Γ_1 x))
+    (hend1 : pathEnd (blockBasepoint L N' (FiniteLatticeGeometry.src C)) (Γ_1 x) = x)
+    (hpath2 : IsPathFrom x (Γ_2 x))
+    (hpath3 : IsPathFrom (pathEnd x (Γ_2 x)) (Γ_3 x))
+    (hend3 : pathEnd (pathEnd x (Γ_2 x)) (Γ_3 x) = blockBasepoint L N' (FiniteLatticeGeometry.dst C)) :
+    UbarDeviationLogArg (𝔸 := 𝔸) (gaugeAct u A_fine) (gaugeAct (coarseTransform u) A_coarse)
+        C x Γ_1 Γ_2 Γ_3
+      = (MatrixRealization.rep (u (blockBasepoint L N' (FiniteLatticeGeometry.src C))) : Units 𝔸).val
+        * UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3
+        * (MatrixRealization.rep (u (blockBasepoint L N' (FiniteLatticeGeometry.src C))) : Units 𝔸)⁻¹.val := by
+  let u_src : Units 𝔸 := MatrixRealization.rep (u (blockBasepoint L N' (FiniteLatticeGeometry.src C)))
+  have h_eq := rep_UbarDeviation_gaugeAct (𝔸 := 𝔸) u A_fine A_coarse C x Γ_1 Γ_2 Γ_3
+    hpath1 hend1 hpath2 hpath3 hend3
+  have h_val := congrArg (fun (z : Units 𝔸) => z.val) h_eq
+  simp only [Units.val_mul] at h_val
+  dsimp [UbarDeviationLogArg]
+  rw [h_val]
+  simpa [u_src] using
+    units_conj_sub_one u_src
+      ((MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val)
+
+/-- The coarse gauge-renormalization operator `Ū` (represented in the algebra `𝔸`).
+The logarithm is fed the identity deviation `D - 1`, since `nearLog Y` is
+`log(1 + Y)`. -/
 noncomputable def Ubar {d N' : ℕ} [NeZero N'] {G : Type*} [Group G] [FiniteLatticeGeometry d N' G]
     {L : ℕ} [NeZero L] [FiniteLatticeGeometry d (L * N') G]
     {𝔸 : Type*} [NormedRing 𝔸] [NormedAlgebra ℝ 𝔸] [CompleteSpace 𝔸] [MatrixRealization G 𝔸]
@@ -91,7 +200,7 @@ noncomputable def Ubar {d N' : ℕ} [NeZero N'] {G : Type*} [Group G] [FiniteLat
     (Γ_1 Γ_2 Γ_3 : FinBox d (L * N') → List (FiniteLatticeGeometry.E (d := d) (N := L * N') (G := G))) : 𝔸 :=
   let y_minus := FiniteLatticeGeometry.src C
   let S := blockOf L N' y_minus
-  let term_x := fun x => nearLog (MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val
+  let term_x := fun x => nearLog (UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3)
   let exponent := (L ^ d : ℝ)⁻¹ • ∑ x ∈ S, term_x x
   NormedSpace.exp exponent * (MatrixRealization.rep (A_coarse C) : Units 𝔸).val
 
@@ -107,7 +216,8 @@ theorem Ubar_gaugeAct {d N' : ℕ} [NeZero N'] {G : Type*} [Group G] [FiniteLatt
     (hpath2 : ∀ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), IsPathFrom x (Γ_2 x))
     (hpath3 : ∀ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), IsPathFrom (pathEnd x (Γ_2 x)) (Γ_3 x))
     (hend3 : ∀ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), pathEnd (pathEnd x (Γ_2 x)) (Γ_3 x) = blockBasepoint L N' (FiniteLatticeGeometry.dst C))
-    (hY : ∀ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), ‖(MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val‖ < 1) :
+    (hY : ∀ x ∈ blockOf L N' (FiniteLatticeGeometry.src C),
+      ‖UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3‖ < 1) :
     Ubar (gaugeAct u A_fine) (gaugeAct (coarseTransform u) A_coarse) C Γ_1 Γ_2 Γ_3
       = (MatrixRealization.rep (u (blockBasepoint L N' (FiniteLatticeGeometry.src C))) : Units 𝔸).val
         * Ubar A_fine A_coarse C Γ_1 Γ_2 Γ_3
@@ -116,41 +226,51 @@ theorem Ubar_gaugeAct {d N' : ℕ} [NeZero N'] {G : Type*} [Group G] [FiniteLatt
   let S := blockOf L N' y_minus
   let u_src : Units 𝔸 := MatrixRealization.rep (u (blockBasepoint L N' (FiniteLatticeGeometry.src C)))
   let u_dst : Units 𝔸 := MatrixRealization.rep (u (blockBasepoint L N' (FiniteLatticeGeometry.dst C)))
-  
+
   have h_dev : ∀ x ∈ S,
-      (MatrixRealization.rep (UbarDeviation (gaugeAct u A_fine) (gaugeAct (coarseTransform u) A_coarse) C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val
-      = u_src.val * (MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val * u_src⁻¹.val := by
+      UbarDeviationLogArg (𝔸 := 𝔸) (gaugeAct u A_fine)
+          (gaugeAct (coarseTransform u) A_coarse) C x Γ_1 Γ_2 Γ_3
+        = u_src.val * UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3
+          * u_src⁻¹.val := by
     intro x hx
-    have h_eq := rep_UbarDeviation_gaugeAct (𝔸 := 𝔸) u A_fine A_coarse C x Γ_1 Γ_2 Γ_3
+    exact UbarDeviationLogArg_gaugeAct (𝔸 := 𝔸) u A_fine A_coarse C x Γ_1 Γ_2 Γ_3
       (hpath1 x hx) (hend1 x hx) (hpath2 x hx) (hpath3 x hx) (hend3 x hx)
-    have h_val := congrArg (fun (z : Units 𝔸) => z.val) h_eq
-    simp only [Units.val_mul] at h_val
-    exact h_val
 
   have h_log : ∀ x ∈ S,
-      nearLog (MatrixRealization.rep (UbarDeviation (gaugeAct u A_fine) (gaugeAct (coarseTransform u) A_coarse) C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val
-      = u_src.val * nearLog (MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val * u_src⁻¹.val := by
+      nearLog (UbarDeviationLogArg (𝔸 := 𝔸) (gaugeAct u A_fine)
+          (gaugeAct (coarseTransform u) A_coarse) C x Γ_1 Γ_2 Γ_3)
+      = u_src.val * nearLog (UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3) * u_src⁻¹.val := by
     intro x hx
     rw [h_dev x hx]
     exact nearLog_conj u_src (hY x hx)
 
-  have h_sum : ∑ x ∈ S, nearLog (MatrixRealization.rep (UbarDeviation (gaugeAct u A_fine) (gaugeAct (coarseTransform u) A_coarse) C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val
-      = u_src.val * (∑ x ∈ S, nearLog (MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val) * u_src⁻¹.val := by
-    have h_conj := nearLog_sum_smul_conj u_src S (fun _ => 1) (fun x => (MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val) hY
+  have h_sum : ∑ x ∈ S, nearLog (UbarDeviationLogArg (𝔸 := 𝔸) (gaugeAct u A_fine)
+        (gaugeAct (coarseTransform u) A_coarse) C x Γ_1 Γ_2 Γ_3)
+      = u_src.val * (∑ x ∈ S, nearLog (UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3)) * u_src⁻¹.val := by
+    have h_conj := nearLog_sum_smul_conj u_src S (fun _ => 1)
+      (fun x => UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3) hY
     simp only [one_smul] at h_conj
-    have h_rw : ∑ x ∈ S, nearLog (MatrixRealization.rep (UbarDeviation (gaugeAct u A_fine) (gaugeAct (coarseTransform u) A_coarse) C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val
-        = ∑ x ∈ S, nearLog (u_src.val * (MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val * u_src⁻¹.val) := by
+    have h_rw : ∑ x ∈ S, nearLog (UbarDeviationLogArg (𝔸 := 𝔸) (gaugeAct u A_fine)
+          (gaugeAct (coarseTransform u) A_coarse) C x Γ_1 Γ_2 Γ_3)
+        = ∑ x ∈ S, nearLog (u_src.val *
+            UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3 * u_src⁻¹.val) := by
       refine Finset.sum_congr rfl (fun x hx => ?_)
       rw [h_dev x hx]
     rw [h_rw]
     exact h_conj
 
-  have h_exp_scale : (L ^ d : ℝ)⁻¹ • (∑ x ∈ S, nearLog (MatrixRealization.rep (UbarDeviation (gaugeAct u A_fine) (gaugeAct (coarseTransform u) A_coarse) C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val)
-      = u_src.val * ((L ^ d : ℝ)⁻¹ • ∑ x ∈ S, nearLog (MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val) * u_src⁻¹.val := by
+  have h_exp_scale : (L ^ d : ℝ)⁻¹ • (∑ x ∈ S, nearLog
+        (UbarDeviationLogArg (𝔸 := 𝔸) (gaugeAct u A_fine)
+          (gaugeAct (coarseTransform u) A_coarse) C x Γ_1 Γ_2 Γ_3))
+      = u_src.val * ((L ^ d : ℝ)⁻¹ • ∑ x ∈ S, nearLog
+          (UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3)) * u_src⁻¹.val := by
     rw [h_sum, ← smul_mul_assoc, ← mul_smul_comm]
 
-  have h_exp_conj : NormedSpace.exp ((L ^ d : ℝ)⁻¹ • ∑ x ∈ S, nearLog (MatrixRealization.rep (UbarDeviation (gaugeAct u A_fine) (gaugeAct (coarseTransform u) A_coarse) C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val)
-      = u_src.val * NormedSpace.exp ((L ^ d : ℝ)⁻¹ • ∑ x ∈ S, nearLog (MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val) * u_src⁻¹.val := by
+  have h_exp_conj : NormedSpace.exp ((L ^ d : ℝ)⁻¹ • ∑ x ∈ S, nearLog
+        (UbarDeviationLogArg (𝔸 := 𝔸) (gaugeAct u A_fine)
+          (gaugeAct (coarseTransform u) A_coarse) C x Γ_1 Γ_2 Γ_3))
+      = u_src.val * NormedSpace.exp ((L ^ d : ℝ)⁻¹ • ∑ x ∈ S, nearLog
+          (UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3)) * u_src⁻¹.val := by
     rw [h_exp_scale, NormedSpace.exp_units_conj]
 
   have h_coarse_gauge : (MatrixRealization.rep (coarseTransform u (FiniteLatticeGeometry.src C) * A_coarse C * (coarseTransform u (FiniteLatticeGeometry.dst C))⁻¹) : Units 𝔸).val
@@ -205,13 +325,16 @@ theorem Ubar_locality {d N' : ℕ} [NeZero N'] {G : Type*} [Group G] [FiniteLatt
     (h_fine2 : ∀ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), ∀ e ∈ Γ_2 x, A_fine e = A_fine' e)
     (h_fine3 : ∀ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), ∀ e ∈ Γ_3 x, A_fine e = A_fine' e) :
     (Ubar A_fine A_coarse C Γ_1 Γ_2 Γ_3 : 𝔸) = Ubar A_fine' A_coarse' C Γ_1 Γ_2 Γ_3 := by
-  have h_sum : (∑ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), nearLog (MatrixRealization.rep (UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val)
-      = (∑ x ∈ blockOf L N' (FiniteLatticeGeometry.src C), nearLog (MatrixRealization.rep (UbarDeviation A_fine' A_coarse' C x Γ_1 Γ_2 Γ_3) : Units 𝔸).val) := by
+  have h_sum : (∑ x ∈ blockOf L N' (FiniteLatticeGeometry.src C),
+        nearLog (UbarDeviationLogArg (𝔸 := 𝔸) A_fine A_coarse C x Γ_1 Γ_2 Γ_3))
+      = (∑ x ∈ blockOf L N' (FiniteLatticeGeometry.src C),
+        nearLog (UbarDeviationLogArg (𝔸 := 𝔸) A_fine' A_coarse' C x Γ_1 Γ_2 Γ_3)) := by
     have h_dev : ∀ x ∈ blockOf L N' (FiniteLatticeGeometry.src C),
         UbarDeviation A_fine A_coarse C x Γ_1 Γ_2 Γ_3 = UbarDeviation A_fine' A_coarse' C x Γ_1 Γ_2 Γ_3 := by
       intro x hx
       exact UbarDeviation_congr A_fine A_fine' A_coarse A_coarse' C x Γ_1 Γ_2 Γ_3 h_coarse (h_fine1 x hx) (h_fine2 x hx) (h_fine3 x hx)
     refine Finset.sum_congr rfl (fun x hx => ?_)
+    dsimp [UbarDeviationLogArg]
     rw [h_dev x hx]
   dsimp [Ubar]
   rw [h_sum, h_coarse]

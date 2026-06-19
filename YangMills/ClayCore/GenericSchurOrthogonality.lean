@@ -230,6 +230,53 @@ theorem exists_haarAverageMatrix_eq_smul_one
       ext i k
       simp [LinearMap.toMatrix'_apply, Matrix.one_apply, Pi.single_apply]
 
+/-- Probability-Haar averaging preserves matrix trace. -/
+theorem trace_haarAverageMatrix
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : ContinuousUnitaryMatrixRep G ι)
+    (A : Matrix ι ι ℂ) :
+    trace (haarAverageMatrix μ ρ ρ A) = trace A := by
+  rw [trace]
+  change (∑ i, ∫ g, ((ρ g : Matrix ι ι ℂ) * A *
+    (ρ g : Matrix ι ι ℂ)ᴴ) i i ∂μ) = trace A
+  rw [← integral_finset_sum]
+  · calc
+      (∫ g, ∑ i, ((ρ g : Matrix ι ι ℂ) * A *
+          (ρ g : Matrix ι ι ℂ)ᴴ) i i ∂μ) =
+          ∫ g, trace ((ρ g : Matrix ι ι ℂ) * A *
+            (ρ g : Matrix ι ι ℂ)ᴴ) ∂μ := by
+            congr 1
+      _ = ∫ _g : G, trace A ∂μ := by
+            apply integral_congr_ae
+            filter_upwards with g
+            simpa using
+              (Matrix.trace_units_conj (Unitary.toUnits (ρ g)) A)
+      _ = trace A := by
+        rw [integral_const]
+        simp [measureReal_def]
+        exact one_smul ℝ (trace A)
+  · intro i _
+    exact integrable_haarAverageMatrix_entry μ ρ ρ A i i
+
+/-- The exact scalar in the self-representation Haar average. -/
+theorem haarAverageMatrix_eq_trace_div_card_smul_one
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : ContinuousUnitaryMatrixRep G ι) [ρ.IsIrreducible]
+    [Nonempty ι] (A : Matrix ι ι ℂ) :
+    haarAverageMatrix μ ρ ρ A =
+      (trace A / (Fintype.card ι : ℂ)) • 1 := by
+  rcases exists_haarAverageMatrix_eq_smul_one μ ρ A with ⟨c, hc⟩
+  have htrace := congrArg trace hc
+  rw [trace_haarAverageMatrix] at htrace
+  have hcard : (Fintype.card ι : ℂ) ≠ 0 :=
+    Nat.cast_ne_zero.mpr Fintype.card_ne_zero
+  have hcval : c = trace A / (Fintype.card ι : ℂ) := by
+    have hmul : trace A = c * (Fintype.card ι : ℂ) := by
+      simpa [trace, Matrix.one_apply, mul_comm] using htrace
+    apply (eq_div_iff hcard).2
+    exact hmul.symm
+  rw [hc, hcval]
+
 /-- Matrix coefficients of inequivalent irreducible unitary representations
 are orthogonal in Haar `L²`. -/
 theorem integral_matrixCoeff_mul_star_eq_zero_of_not_equiv
@@ -244,6 +291,31 @@ theorem integral_matrixCoeff_mul_star_eq_zero_of_not_equiv
   have h := congrArg (fun M : Matrix ι κ ℂ => M i k)
     (haarAverageMatrix_eq_zero_of_not_equiv μ ρ σ (Matrix.single j l 1))
   simpa using h
+
+/-- **Generic Schur orthogonality within one irreducible representation.** -/
+theorem integral_matrixCoeff_mul_star
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : ContinuousUnitaryMatrixRep G ι) [ρ.IsIrreducible]
+    [Nonempty ι] (i j k l : ι) :
+    (∫ g, (ρ g : Matrix ι ι ℂ) i j *
+      star ((ρ g : Matrix ι ι ℂ) k l) ∂μ) =
+      if i = k ∧ j = l then (1 : ℂ) / (Fintype.card ι : ℂ) else 0 := by
+  have h := congrArg (fun M : Matrix ι ι ℂ => M i k)
+    (haarAverageMatrix_eq_trace_div_card_smul_one μ ρ (Matrix.single j l 1))
+  have hsingle :
+      trace (Matrix.single j l (1 : ℂ)) = if j = l then 1 else 0 := by
+    by_cases hjl : j = l
+    · subst l
+      simp [trace, Matrix.single_apply]
+    · simp [trace, Matrix.single_apply, hjl]
+  rw [hsingle] at h
+  by_cases hik : i = k
+  · subst k
+    by_cases hjl : j = l
+    · subst l
+      simpa [Matrix.one_apply] using h
+    · simpa [Matrix.one_apply, hjl] using h
+  · simpa [Matrix.one_apply, hik] using h
 
 end ContinuousUnitaryMatrixRep
 end YangMills.ClayCore

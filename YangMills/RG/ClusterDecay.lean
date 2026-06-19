@@ -25,7 +25,16 @@ def clusterUnion {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d
     {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer) : Finset (Cube d L) :=
   univ.biUnion (fun i => (X i).val)
 
-/-- The modified metric of a cluster, defined as the modified metric of its union. -/
+/-- The modified metric of a cluster, defined as the modified metric of its union.
+
+This is the source-shaped cluster object `d_M(Y, mod Ωᶜ)`: the cluster is first
+collected into one polymer-like union `Y`, then the modified metric is evaluated
+on that union.  Do not infer from `X i ⊆ clusterUnion H z X` that
+`discreteModifiedMetric H (X i).val ≤ clusterModifiedMetric H z X` for arbitrary
+clusters: the modified metric is a constrained Steiner minimum, and enlarging
+the ambient set can introduce shortcuts.  The comparison below is proved only
+for the degenerate `Fin 1` case, where the union is definitionally the polymer
+itself. -/
 noncomputable def clusterModifiedMetric {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer) : ℕ :=
   discreteModifiedMetric H (clusterUnion H z X)
@@ -252,6 +261,99 @@ lemma walk_union_connected {V : Type*} [DecidableEq V] (G : SimpleGraph V)
         rw [SimpleGraph.Walk.support_cons]
         exact List.mem_cons_of_mem _ hk_tail
 
+/-- General graph union connectivity lemma when adjacent index-vertices carry
+sets that either overlap or touch by one edge. -/
+lemma walk_union_connected_touching {V : Type*} [DecidableEq V] (G : SimpleGraph V)
+    {H_type : Type*} [DecidableEq H_type] (H : SimpleGraph H_type)
+    (A : V → Finset H_type) (hA : ∀ i, walkConnected H (A i))
+    (hadj : ∀ i j, G.Adj i j →
+      ¬ Disjoint (A i) (A j) ∨ ∃ a ∈ A i, ∃ b ∈ A j, H.Adj a b)
+    {i j : V} (w : G.Walk i j) (x : H_type) (hx : x ∈ A i)
+    (y : H_type) (hy : y ∈ A j) :
+    ∃ w_H : H.Walk x y, ∀ v ∈ w_H.support, ∃ k ∈ w.support, v ∈ A k := by
+  induction w generalizing x with
+  | nil =>
+      obtain ⟨w_H, hw_H⟩ := hA _ x hx y hy
+      refine ⟨w_H, ?_⟩
+      intro v hv
+      refine ⟨_, ?_, hw_H v hv⟩
+      simp [SimpleGraph.Walk.support_nil]
+  | cons hadj_edge w' ih =>
+      rcases hadj _ _ hadj_edge with h_int | h_touch
+      · rw [disjoint_iff_ne] at h_int
+        push_neg at h_int
+        obtain ⟨z_val, hz_u, z', hz_next, rfl⟩ := h_int
+        have h_tail := ih z_val hz_next hy
+        obtain ⟨w_tail, hw_tail⟩ := h_tail
+        obtain ⟨w_head, hw_head⟩ := hA _ x hx z_val hz_u
+        let w_total := w_head.append w_tail
+        refine ⟨w_total, ?_⟩
+        intro v hv
+        rw [SimpleGraph.Walk.mem_support_append_iff] at hv
+        rcases hv with hv_head | hv_tail
+        · refine ⟨_, ?_, hw_head v hv_head⟩
+          simp [SimpleGraph.Walk.support_cons]
+        · obtain ⟨k, hk_tail, hv_in⟩ := hw_tail v hv_tail
+          refine ⟨k, ?_, hv_in⟩
+          rw [SimpleGraph.Walk.support_cons]
+          exact List.mem_cons_of_mem _ hk_tail
+      · obtain ⟨a, ha_u, b, hb_next, hab⟩ := h_touch
+        have h_tail := ih b hb_next hy
+        obtain ⟨w_tail, hw_tail⟩ := h_tail
+        obtain ⟨w_head, hw_head⟩ := hA _ x hx a ha_u
+        let w_edge := SimpleGraph.Walk.cons hab SimpleGraph.Walk.nil
+        let w_total := (w_head.append w_edge).append w_tail
+        refine ⟨w_total, ?_⟩
+        intro v hv
+        rw [SimpleGraph.Walk.mem_support_append_iff] at hv
+        rcases hv with hv_head_edge | hv_tail
+        · rw [SimpleGraph.Walk.mem_support_append_iff] at hv_head_edge
+          rcases hv_head_edge with hv_head | hv_edge
+          · refine ⟨_, ?_, hw_head v hv_head⟩
+            simp [SimpleGraph.Walk.support_cons]
+          · dsimp [w_edge] at hv_edge
+            simp at hv_edge
+            rcases hv_edge with rfl | hv_edge
+            · refine ⟨_, ?_, ha_u⟩
+              simp [SimpleGraph.Walk.support_cons]
+            · rcases hv_edge with rfl
+              refine ⟨_, ?_, hb_next⟩
+              rw [SimpleGraph.Walk.support_cons]
+              exact List.mem_cons_of_mem _ (by simp)
+        · obtain ⟨k, hk_tail, hv_in⟩ := hw_tail v hv_tail
+          refine ⟨k, ?_, hv_in⟩
+          rw [SimpleGraph.Walk.support_cons]
+          exact List.mem_cons_of_mem _ hk_tail
+
+/-- A genuine cluster's raw polymer union is connected.  This uses the
+source-faithful incompatibility relation on hole polymers: polymers in the same
+cluster are chained by overlaps or one-step cube adjacency. -/
+lemma clusterUnion_connected {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer)
+    (hcl : IsCluster (holePolymerSystem H z) X) :
+    cubeConnected (clusterUnion H z X) := by
+  intro x hx y hy
+  dsimp [clusterUnion] at hx hy
+  rw [mem_biUnion] at hx hy
+  obtain ⟨i, _, hx_i⟩ := hx
+  obtain ⟨j, _, hy_j⟩ := hy
+  obtain ⟨w⟩ := hcl.1 i j
+  have h_walk := walk_union_connected_touching (incompGraph (holePolymerSystem H z) X)
+    (cubeAdj d L)
+    (fun k => (X k).val)
+    (fun k => (X k).property.right.left)
+    (fun a b hab => by
+      rw [incompGraph_adj] at hab
+      exact hab.2)
+    w x hx_i y hy_j
+  obtain ⟨w_H, hw_H⟩ := h_walk
+  refine ⟨w_H, ?_⟩
+  intro v hv
+  obtain ⟨k, _, hv_in⟩ := hw_H v hv
+  dsimp [clusterUnion]
+  rw [mem_biUnion]
+  exact ⟨k, mem_univ k, hv_in⟩
+
 -- Target 8.3: cluster union of closed neighborhoods is connected
 lemma cluster_closedNeigh_union_connected {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer) (hcl : IsCluster (holePolymerSystem H z) X) :
@@ -446,6 +548,11 @@ lemma polymer_subset_clusterUnion {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z
   rw [mem_biUnion]
   refine ⟨i, mem_univ i, hx⟩
 
+/-- The only currently justified comparison between a constituent polymer metric
+and the cluster-union metric is the single-polymer case.  For genuine
+multi-polymer clusters, subset inclusion is not enough: the modified metric is
+not an abstract monotone function of the ambient set because its Steiner
+minimization is constrained to lie inside that ambient set. -/
 lemma discreteModifiedMetric_le_clusterModifiedMetric {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     (X : Fin 1 → (holePolymerSystem H z).Polymer) (i : Fin 1) :
     discreteModifiedMetric H (X i).val ≤ clusterModifiedMetric H z X := by

@@ -3815,17 +3815,26 @@ We defined `clusterUnion` as a big union over `Finset.univ` of the polymer value
 **Build:** green (the remaining Phase 8 targets added to `ClusterDecay.lean`).
 Oracle: `[propext, Classical.choice, Quot.sound]`.
 
-This addendum formalises the remaining Phase 8 targets:
+This addendum formalises the Phase 8 substrate targets that were actually
+proved:
 
 * **`walk_union_connected`** — Proves that if we have a path in the incompatibility graph of a polymer cluster, we can connect the endpoints of the path in the big union of their closed neighborhoods.
 * **`cluster_closedNeigh_union_connected`** — Proves that if `IsCluster` holds, then the union of the closed neighborhoods of all polymers in the cluster is connected.
 * **`clusterRemainderSum_summable`** — Proves the absolute volume-uniform convergence of the cluster activity remainder sum under the local Kotecký–Preiss criterion.
-* **`discreteModifiedMetric_le_clusterModifiedMetric`** — Establishes the metric monotonicity for the base case $n=1$, showing the polymer modified metric is bounded by the cluster modified metric.
+* **`discreteModifiedMetric_le_clusterModifiedMetric`** — Establishes only the
+  base case $n=1$, where the cluster union is exactly the single polymer.
 
 **How compilation was resolved.**
-We defined the connectivity of the union of closed neighborhoods using a path induction on the incompatibility graph. The remainder sum absolute convergence was bounded by introducing a parameter $t > 0$ and scaling the polymer activities, then applying the Kotecký–Preiss criterion to the scaled system to achieve a volume-uniform bound. The metric monotonicity target was resolved for the base case $n=1$ by using subsingleton elimination on the single polymer cluster index.
+We defined the connectivity of the union of closed neighborhoods using a path induction on the incompatibility graph. The remainder sum absolute convergence was bounded by introducing a parameter $t > 0$ and scaling the polymer activities, then applying the Kotecký–Preiss criterion to the scaled system to achieve a volume-uniform bound. The metric comparison was resolved only for the base case $n=1$ by using subsingleton elimination on the single polymer cluster index.
 
-**Honest scope.** This completes the Phase 8 targets. Clay distance **~0% (<0.1%), unchanged**.
+**Honest scope correction.** This does **not** prove an arbitrary-cluster
+comparison `discreteModifiedMetric H (X i).val ≤ clusterModifiedMetric H z X`.
+Subset inclusion of a polymer into the union is insufficient because
+`discreteModifiedMetric` is a Steiner minimum constrained to lie inside its
+ambient finset; enlarging the ambient set can introduce shortcuts.  The source
+shape remains `d_M` of the cluster object/union, but downstream work must not
+treat the `Fin 1` theorem as a general monotonicity lemma. Clay distance **~0%
+(<0.1%), unchanged**.
 
 ## Addendum 102 (2026-06-19, **coarse gauge-renormalization operator Ū and its gauge covariance**
 `YangMills.RG.UbarDeviation`, `coarseTransform`, `UbarDeviation_gaugeAct`, `rep_UbarDeviation_gaugeAct`, `Ubar`, and `Ubar_gaugeAct`; core 8269)
@@ -3986,5 +3995,68 @@ Peter-Weyl density theorem is claimed. Clay distance **~0% (<0.1%),
 unchanged**.
 
 
+## Addendum 110 (2026-06-19, **Extra High audit correction of the lattice `Ū` logarithm**
+`YangMills.RG.UbarDeviationLogArg`, `YangMills.RG.UbarDeviationLogArg_gaugeAct`,
+repaired `YangMills.RG.Ubar` / `YangMills.RG.Ubar_gaugeAct` /
+`YangMills.RG.Ubar_locality`, `YangMills.RG.clusterUnion_connected`, and the
+current `YangMills.ClayCore.GenericSchurOrthogonality` scalar self-average)
 
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
 
+The Extra High audit found a semantic error in Addenda 102–103: `nearLog Y` is the
+Mercator series for `log(1 + Y)`, but the lattice `Ū` definition fed it the represented
+deviation group element `D` itself.  CMP 109 (0.12) applies `log` to the near-identity
+deviation group element
+`U(c₋,x)·U(x,x(c))⁻¹·U(x(c),c₊)·U(-c)`.  Therefore the Lean Mercator argument must be
+`D - 1`.
+
+Repair:
+
+* `UbarDeviationLogArg` now packages the faithful logarithm variable
+  `(MatrixRealization.rep (UbarDeviation ...)).val - 1`.
+* `Ubar` averages `nearLog (UbarDeviationLogArg ...)`; the covariance hypothesis is now
+  `‖UbarDeviationLogArg ...‖ < 1`, not `‖rep(D).val‖ < 1`.
+* `units_conj_sub_one` and `UbarDeviationLogArg_gaugeAct` prove the required subtraction
+  covariance
+  `u·D·u⁻¹ - 1 = u·(D - 1)·u⁻¹`, so `nearLog_conj` applies to the faithful variable.
+* `represented_group_element_norm_lt_one_impossible_of_norm_eq_one` records the physical
+  calibration: in a unitary realization where `‖D‖ = 1`, the old strict premise
+  `‖D‖ < 1` is impossible.
+* `UbarDeviationLogArg_small_of_deviation_eq_one` records non-vacuity of the corrected
+  small-field premise at exact identity deviation.
+
+The audit also checked the latest
+`sunHaarProb_trace_normSq_integral_eq_one` and the concrete/marginal UV assembly for
+scope overclaim: the Haar theorem is an exact SU(N) Haar character-norm statement, while
+the UV mass-gap assembly continues to carry the analytic RG activity and IR inputs as
+explicit hypotheses.  No repair was needed there.
+
+The second Extra High escalation, `clusterModifiedMetric`, was also audited against the
+Dimock source notes.  The definition as `discreteModifiedMetric` of the cluster union is
+the source-shaped `d_M(Y, mod Ωᶜ)` for the cluster object.  However, the requested
+arbitrary constituent comparison is not a formal monotonicity fact and should not be
+claimed: the metric is a constrained Steiner minimum, so enlarging the ambient finset can
+add shortcuts.  The code already proved only the valid `Fin 1` comparison; this audit
+repairs the documentation and the Phase 8 ledger wording so downstream work cannot treat
+that base case as a general theorem.
+
+As the next source-grounded RG-activity substrate step, the audit adds
+`clusterUnion_connected`: a genuine hole-polymer cluster has connected raw union because
+the incompatibility graph chains constituent polymers by overlap or one-step cube
+adjacency.  This supports the `d_M`-of-union design without asserting the false
+constituent-metric monotonicity.
+
+During full-core verification, the tracked `GenericSchurOrthogonality.lean` changes failed
+on a fragile probability-Haar constant-integral rewrite and on the final diagonal
+coefficient simplification.  This checkpoint repairs those proofs and verifies
+`trace_haarAverageMatrix`, `haarAverageMatrix_eq_trace_div_card_smul_one`, and
+`integral_matrixCoeff_mul_star`: for an irreducible finite-dimensional continuous unitary
+representation, the self matrix-coefficient integral is
+`δᵢₖ δⱼₗ / Fintype.card ι`.  This closes the scalar half that the previous generic-Haar
+entry had left open; Peter-Weyl density remains open.
+
+**Honest scope.** This fixes a real source-faithfulness bug in the `Ū` layer and prevents
+downstream work from relying on the physically impossible old `‖D‖ < 1` premise.  It does
+not prove the Balaban/Dimock activity estimate, the continuum limit, or OS/Wightman
+reconstruction. Clay distance **~0% (<0.1%), unchanged**.
