@@ -295,6 +295,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.omegaClusterSkeletonRemainderSum_tsum_le
 #print axioms YangMills.RG.omegaClusterSkeletonRemainderSum_summable_of_local
 #print axioms YangMills.RG.omegaClusterSkeletonRemainderSum_tsum_le_of_local
+#print axioms YangMills.RG.omegaClusterSkeletonRemainderSum_summable_of_uniform_local
+#print axioms YangMills.RG.omegaClusterSkeletonRemainderSum_tsum_le_of_uniform_local
 #print axioms YangMills.RG.omegaClusterSkeletonRemainderSum_tsum_le_metric_bound
 #print axioms YangMills.RG.discreteModifiedMetric_le_clusterModifiedMetric
 #print axioms YangMills.RG.Ubar_gaugeAct

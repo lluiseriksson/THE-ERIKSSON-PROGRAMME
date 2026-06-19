@@ -69,7 +69,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `omegaClusterSkeletonRemainderSum_summable_of_local` and
   `omegaClusterSkeletonRemainderSum_tsum_le_of_local` are also available for
   sources that provide a polymer norm/local KP estimate directly, without first
-  rewriting it into an explicit pointwise `q^(d_M+1)` majorant.
+  rewriting it into an explicit pointwise `q^(d_M+1)` majorant.  The uniform
+  local-window forms
+  `omegaClusterSkeletonRemainderSum_summable_of_uniform_local` and
+  `omegaClusterSkeletonRemainderSum_tsum_le_of_uniform_local` further package
+  the common source shape `local active-skeleton norm ≤ B ≤ 1` into the
+  tail bound `≤ t⁻¹ B`.
 
 The latest RG skeleton-tail interface is local-KP-shaped throughout:
 

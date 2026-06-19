@@ -4842,3 +4842,28 @@ majorant or detouring through the older touching hard-core system.
 **Honest scope.** This is still a consumer-side theorem.  It does not prove the
 Yang-Mills activity-decay estimate, the continuum limit, or OS/Wightman
 reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 141 (2026-06-19, **Appendix-F active cluster-tail uniform local window**
+`YangMills.RG.omegaClusterSkeletonRemainderSum_summable_of_uniform_local`,
+`YangMills.RG.omegaClusterSkeletonRemainderSum_tsum_le_of_uniform_local`; core 8273)
+
+**Build:** green (`lake env lean YangMills/RG/ClusterDecay.lean`).
+Full-core and oracle verification are recorded with the commit carrying this
+addendum.
+
+This addendum packages Addendum 140's local-window consumer in the form most
+likely to be read directly from a source theorem: a uniform local
+active-skeleton polymer norm bound
+
+`Σ_{Y : s ∈ skeleton(Y)} exp(t) · ‖z(Y)‖ · exp(|Y|) ≤ B ≤ 1`.
+
+The new summability theorem derives the same skeleton-pinned active cluster
+tail convergence, and the quantitative theorem gives the compact bound
+
+`Σₙ omegaClusterSkeletonRemainderSumTerm ≤ t⁻¹ · B`.
+
+**Honest scope.** This is a downstream consumer of a local polymer norm bound,
+not the missing Yang-Mills activity estimate itself.  It closes a statement
+shape mismatch for P3/P4 sources while leaving the activity-decay theorem, the
+continuum limit, and OS/Wightman reconstruction open.  Clay distance
+**~0% (<0.1%), unchanged**.

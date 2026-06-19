@@ -228,6 +228,11 @@ The same active cluster-tail path also has local-window consumers
 `omegaClusterSkeletonRemainderSum_tsum_le_of_local`: if a primary source gives
 the activity estimate as a local active-skeleton polymer norm rather than a
 literal pointwise metric majorant, the repo can consume that form directly.
+The uniform local-window variants
+`omegaClusterSkeletonRemainderSum_summable_of_uniform_local` and
+`omegaClusterSkeletonRemainderSum_tsum_le_of_uniform_local` package the common
+source form `local active-skeleton norm ≤ B ≤ 1`, yielding the tail bound
+`≤ t⁻¹ B` without exposing the root-pinned finite sum in downstream statements.
 
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the

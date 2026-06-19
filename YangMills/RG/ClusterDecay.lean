@@ -1442,6 +1442,39 @@ theorem omegaClusterSkeletonRemainderSum_tsum_le_of_local {d L : ℕ}
   exact omegaClusterSkeletonRemainderSum_tsum_le H z r t ht
     (omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp H z t hlocal)
 
+/-- Summability of the `Ω`-active skeleton-pinned cluster remainder from a
+uniform local active-skeleton activity bound.  This is the exact form consumed
+when the source estimate is stated as a polymer norm `≤ B` rather than with the
+root-pinned local mass left explicit. -/
+theorem omegaClusterSkeletonRemainderSum_summable_of_uniform_local {d L : ℕ}
+    [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t B : ℝ) (ht : 0 < t) (hB : B ≤ 1)
+    (hlocal : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        Real.exp t * ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ B) :
+    Summable (fun n => omegaClusterSkeletonRemainderSumTerm H z r n) := by
+  exact omegaClusterSkeletonRemainderSum_summable_of_local H z r t ht
+    (fun s => (hlocal s).trans hB)
+
+/-- Quantitative `Ω`-active skeleton-pinned cluster remainder bound from a
+uniform local active-skeleton activity bound.  The conclusion has the
+source-facing constant `B`: if every local active-skeleton window is at most
+`B ≤ 1`, the pinned cluster tail is at most `t⁻¹ B`. -/
+theorem omegaClusterSkeletonRemainderSum_tsum_le_of_uniform_local {d L : ℕ}
+    [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t B : ℝ) (ht : 0 < t) (hB : B ≤ 1)
+    (hlocal : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        Real.exp t * ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ B) :
+    ∑' n, omegaClusterSkeletonRemainderSumTerm H z r n ≤ t⁻¹ * B := by
+  have hbase := omegaClusterSkeletonRemainderSum_tsum_le_of_local H z r t ht
+    (fun s => (hlocal s).trans hB)
+  exact hbase.trans (mul_le_mul_of_nonneg_left (hlocal r) (inv_nonneg.mpr ht.le))
+
 /-- One-shot `Ω`-active skeleton remainder bound from the pointwise
 modified-metric activity majorant.  This is the cluster-tail consumer matching
 Dimock Appendix F's active relation; the model-specific activity decay remains
