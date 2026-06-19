@@ -4428,3 +4428,29 @@ the skeleton termwise tilt theorem also consumes the same KP lemma.
 not add a new physical estimate and does not bridge the unresolved
 raw-support/skeleton-rooted local-smallness issue. Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 124 (2026-06-19, **finite-pin pinned-weight exchange**
+`YangMills.KP.summable_finset_pinnedClusterWeight`,
+`YangMills.KP.tsum_finset_pinnedClusterWeight_le`; core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum names the finite-pin `tsum` exchange repeatedly used by
+off-region and RG cluster-tail estimates.  Under a sharp KP criterion,
+`summable_finset_pinnedClusterWeight` proves summability of
+`n ↦ Σ_{c∈s} pinnedClusterWeight P c n`, and
+`tsum_finset_pinnedClusterWeight_le` proves
+
+`Σ'_n Σ_{c∈s} pinnedClusterWeight P c n ≤ Σ_{c∈s} ‖z(c)‖ e^{a(c)}`.
+
+The proof is the finite exchange `Summable.tsum_finsetSum` followed by the
+per-polymer sharp pinned theorem.  The existing off-region, raw-tail, and
+skeleton-tail bounds now consume this KP-level helper instead of rebuilding
+the exchange locally.
+
+**Honest scope.** This is proof factoring inside the verified KP/RG
+summability substrate.  It does not strengthen the physical hypotheses and
+does not address the open Balaban/Dimock activity-decay or
+raw-support/skeleton-rooted local-smallness bridge. Clay distance **~0%
+(<0.1%), unchanged**.

@@ -616,8 +616,7 @@ theorem clusterRemainderSum_summable {d L : ℕ} [NeZero L] (H : HoleFamily d L)
   have h_sum : Summable (fun n => t⁻¹ * ∑ c ∈ Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val),
       pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n) := by
     refine Summable.mul_left _ ?_
-    refine summable_sum fun c _ => ?_
-    exact (pinned_cluster_summable_sharp ((holePolymerSystem H z).scaleActivity (Real.exp t)) hkp c).1
+    exact YangMills.KP.summable_finset_pinnedClusterWeight _ hkp _
   exact Summable.of_nonneg_of_le hnn h_le h_sum
 
 /-- Source-shaped summability companion for raw-union-pinned cluster
@@ -659,21 +658,15 @@ theorem clusterRemainderSum_tsum_le {d L : ℕ} [NeZero L]
       (fun c => r ∈ (c : PolymerType H z).val),
       pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n) := by
     refine Summable.mul_left _ ?_
-    exact summable_sum fun c _ =>
-      (pinned_cluster_summable_sharp _ hkp c).1
+    exact YangMills.KP.summable_finset_pinnedClusterWeight _ hkp _
   have hraw : Summable (fun n => clusterRemainderSumTerm H z r n) :=
     clusterRemainderSum_summable H z r t ht hkp
   refine le_trans (hraw.tsum_le_tsum hle hgsum) ?_
   rw [tsum_mul_left]
   refine mul_le_mul_of_nonneg_left ?_ (inv_nonneg.mpr ht.le)
-  have hswap := Summable.tsum_finsetSum
-    (s := Finset.univ.filter (fun c => r ∈ (c : PolymerType H z).val))
-    (f := fun c n =>
-      pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n)
-    (fun c _ => (pinned_cluster_summable_sharp _ hkp c).1)
-  refine le_trans (le_of_eq hswap) ?_
-  refine Finset.sum_le_sum fun c _ => ?_
-  refine le_trans (pinned_cluster_summable_sharp _ hkp c).2 (le_of_eq ?_)
+  refine le_trans (YangMills.KP.tsum_finset_pinnedClusterWeight_le _ hkp _) ?_
+  refine le_of_eq ?_
+  refine Finset.sum_congr rfl fun c _ => ?_
   show ‖((Real.exp t : ℝ) : ℂ) * (holePolymerSystem H z).activity c‖ *
       Real.exp ((c.val.card : ℝ))
     = Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
@@ -929,21 +922,15 @@ theorem clusterSkeletonRemainderSum_tsum_le {d L : ℕ} [NeZero L]
       (fun c => r ∈ skeleton H (c : PolymerType H z).val),
       pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n) := by
     refine Summable.mul_left _ ?_
-    exact summable_sum fun c _ =>
-      (pinned_cluster_summable_sharp _ hkp c).1
+    exact YangMills.KP.summable_finset_pinnedClusterWeight _ hkp _
   have hskel : Summable (fun n => clusterSkeletonRemainderSumTerm H z r n) :=
     clusterSkeletonRemainderSum_summable H z r t ht hkp
   refine le_trans (hskel.tsum_le_tsum hle hgsum) ?_
   rw [tsum_mul_left]
   refine mul_le_mul_of_nonneg_left ?_ (inv_nonneg.mpr ht.le)
-  have hswap := Summable.tsum_finsetSum
-    (s := Finset.univ.filter (fun c => r ∈ skeleton H (c : PolymerType H z).val))
-    (f := fun c n =>
-      pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n)
-    (fun c _ => (pinned_cluster_summable_sharp _ hkp c).1)
-  refine le_trans (le_of_eq hswap) ?_
-  refine Finset.sum_le_sum fun c _ => ?_
-  refine le_trans (pinned_cluster_summable_sharp _ hkp c).2 (le_of_eq ?_)
+  refine le_trans (YangMills.KP.tsum_finset_pinnedClusterWeight_le _ hkp _) ?_
+  refine le_of_eq ?_
+  refine Finset.sum_congr rfl fun c _ => ?_
   show ‖((Real.exp t : ℝ) : ℂ) * (holePolymerSystem H z).activity c‖ *
       Real.exp ((c.val.card : ℝ))
     = Real.exp t * ‖(holePolymerSystem H z).activity c‖ *

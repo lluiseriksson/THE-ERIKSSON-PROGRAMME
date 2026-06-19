@@ -573,6 +573,32 @@ theorem orderFactor_pinnedClusterWeight_le_tilt (P : PolymerSystem)
         ring
 
 open Classical in
+/-- A finite sum of pinned cluster-weight series is summable under the sharp KP
+criterion.  This packages the finite-pin exchange used by region tails and the
+RG cluster-remainder consumers. -/
+theorem summable_finset_pinnedClusterWeight (P : PolymerSystem)
+    [Fintype P.Polymer] {a : P.Polymer → ℝ}
+    (hkp : KPCriterion P a) (s : Finset P.Polymer) :
+    Summable (fun n => ∑ c ∈ s, pinnedClusterWeight P c n) := by
+  exact summable_sum fun c _ => (pinned_cluster_summable_sharp P hkp c).1
+
+open Classical in
+/-- Finite-pin version of the sharp pinned cluster bound: exchange the `tsum`
+with a finite sum of pinning polymers, then apply the per-polymer sharp KP
+bound. -/
+theorem tsum_finset_pinnedClusterWeight_le (P : PolymerSystem)
+    [Fintype P.Polymer] {a : P.Polymer → ℝ}
+    (hkp : KPCriterion P a) (s : Finset P.Polymer) :
+    ∑' n, ∑ c ∈ s, pinnedClusterWeight P c n
+      ≤ ∑ c ∈ s, ‖P.activity c‖ * Real.exp (a c) := by
+  have hswap := Summable.tsum_finsetSum
+    (s := s)
+    (f := fun c n => pinnedClusterWeight P c n)
+    (fun c _ => (pinned_cluster_summable_sharp P hkp c).1)
+  refine le_trans (le_of_eq hswap) ?_
+  exact Finset.sum_le_sum fun c _ => (pinned_cluster_summable_sharp P hkp c).2
+
+open Classical in
 /-- **R2(b4) — THE VOLUME-FREE `Z`-RATIO EXPONENT BOUND:** under the
 `e^t`-tilted KP criterion (exactly what the lattice gas verifies), the
 off-region tail — hence `‖log(Z_Λ/Z)‖` — is bounded by a sum over the
@@ -596,22 +622,16 @@ theorem tsum_offRegionClusterWeight_le (P : PolymerSystem)
   have hgsum : Summable (fun n => t⁻¹ * ∑ c ∈ Λᶜ,
       pinnedClusterWeight (P.scaleActivity (Real.exp t)) c n) := by
     refine Summable.mul_left _ ?_
-    exact summable_sum fun c _ =>
-      (pinned_cluster_summable_sharp _ hkp c).1
+    exact summable_finset_pinnedClusterWeight _ hkp Λᶜ
   have hOffSum : Summable (fun n => offRegionClusterWeight P Λ n) :=
     Summable.of_nonneg_of_le
       (fun n => offRegionClusterWeight_nonneg P Λ n) hle hgsum
   refine le_trans (hOffSum.tsum_le_tsum hle hgsum) ?_
   rw [tsum_mul_left]
   refine mul_le_mul_of_nonneg_left ?_ (inv_nonneg.mpr ht.le)
-  have hswap := Summable.tsum_finsetSum
-    (s := Λᶜ)
-    (f := fun c n => pinnedClusterWeight
-      (P.scaleActivity (Real.exp t)) c n)
-    (fun c _ => (pinned_cluster_summable_sharp _ hkp c).1)
-  refine le_trans (le_of_eq hswap) ?_
-  refine Finset.sum_le_sum fun c _ => ?_
-  refine le_trans (pinned_cluster_summable_sharp _ hkp c).2 (le_of_eq ?_)
+  refine le_trans (tsum_finset_pinnedClusterWeight_le _ hkp Λᶜ) ?_
+  refine le_of_eq ?_
+  refine Finset.sum_congr rfl fun c _ => ?_
   show ‖((Real.exp t : ℝ) : ℂ) * P.activity c‖ * Real.exp (a c) = _
   rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
     abs_of_pos (Real.exp_pos t)]

@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(RG): name exponential local KP bridge`).
+(`refactor(KP): share pinned cluster tilt estimate`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -60,6 +60,9 @@ The latest RG skeleton-tail interface is local-KP-shaped throughout:
 * `YangMills.RG.clusterRemainderSum_term_le_tilt` packages the raw termwise
   `exp(t)` tilt domination consumed by both raw-tail theorems, using the
   reusable KP lemma `YangMills.KP.orderFactor_pinnedClusterWeight_le_tilt`;
+* `YangMills.KP.summable_finset_pinnedClusterWeight` and
+  `YangMills.KP.tsum_finset_pinnedClusterWeight_le` package the finite-pin
+  `tsum` exchange used by off-region and RG cluster-tail estimates;
 * `YangMills.RG.clusterSkeletonRemainderSum_tsum_le_of_local` proves the
   pre-metric quantitative skeleton-pinned bound from the same local window;
 * `YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local`
