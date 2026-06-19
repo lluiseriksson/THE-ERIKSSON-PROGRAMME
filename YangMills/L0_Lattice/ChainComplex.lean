@@ -345,7 +345,7 @@ theorem loopChain_plaquette_list (p : P (d := d) (N := N) (G := G))
       by_cases h1 : plaquetteEdge p 1 = x <;>
         by_cases h2 : plaquetteEdge p 2 = x <;>
           by_cases h3 : plaquetteEdge p 3 = x <;>
-            simp [h0, h1, h2, h3, eq_comm] <;> ring
+            simp [h0, h1, h2, h3]
   calc loopChain (R := R) (d := d) (N := N) (G := G)
         [plaquetteEdge p 0, plaquetteEdge p 1,
          plaquetteEdge p 2, plaquetteEdge p 3] e

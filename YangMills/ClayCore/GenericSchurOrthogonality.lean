@@ -33,6 +33,7 @@ def haarAverageMatrix (μ : Measure G)
   fun i k => ∫ g,
     ((ρ g : Matrix ι ι ℂ) * A * (σ g : Matrix κ κ ℂ)ᴴ) i k ∂μ
 
+omit [IsTopologicalGroup G] [BorelSpace G] [CompactSpace G] in
 @[simp]
 theorem haarAverageMatrix_single_apply
     (μ : Measure G)
@@ -53,6 +54,7 @@ theorem haarAverageMatrix_single_apply
     simp
   · exact fun hnot => absurd (Finset.mem_univ l) hnot
 
+omit [IsTopologicalGroup G] [MeasurableSpace G] [BorelSpace G] [CompactSpace G] in
 theorem continuous_haarAverageMatrix_entry
     (ρ : ContinuousUnitaryMatrixRep G ι)
     (σ : ContinuousUnitaryMatrixRep G κ)
@@ -66,6 +68,7 @@ theorem continuous_haarAverageMatrix_entry
   exact ((hρ.matrix_mul continuous_const).matrix_mul
     hσ.matrix_conjTranspose).matrix_elem i k
 
+omit [IsTopologicalGroup G] in
 theorem integrable_haarAverageMatrix_entry
     (μ : Measure G) [IsFiniteMeasure μ]
     (ρ : ContinuousUnitaryMatrixRep G ι)
@@ -230,6 +233,7 @@ theorem exists_haarAverageMatrix_eq_smul_one
       ext i k
       simp [LinearMap.toMatrix'_apply, Matrix.one_apply, Pi.single_apply]
 
+omit [IsTopologicalGroup G] in
 /-- Probability-Haar averaging preserves matrix trace. -/
 theorem trace_haarAverageMatrix
     (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
