@@ -414,5 +414,25 @@ theorem integral_character_mul_star
         (((continuous_subtype_val.comp ρ.continuous_toFun).matrix_elem k k).star)
     exact hcont.integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace _)
 
+/-- Characters of inequivalent irreducible unitary representations are
+orthogonal as vectors in Haar `L²`. -/
+theorem inner_characterL2_eq_zero_of_not_equiv
+    (μ : Measure G) [IsFiniteMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : ContinuousUnitaryMatrixRep G ι)
+    (σ : ContinuousUnitaryMatrixRep G κ)
+    [ρ.IsIrreducible] [σ.IsIrreducible]
+    [IsEmpty (Representation.Equiv σ.toRepresentation ρ.toRepresentation)] :
+    inner ℂ (σ.characterL2 μ) (ρ.characterL2 μ) = 0 := by
+  rw [characterL2, characterL2, ContinuousMap.inner_toLp]
+  exact integral_character_mul_star_eq_zero_of_not_equiv μ ρ σ
+
+/-- An irreducible unitary character has unit norm as a vector in Haar `L²`. -/
+theorem inner_characterL2
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : ContinuousUnitaryMatrixRep G ι) [ρ.IsIrreducible] [Nonempty ι] :
+    inner ℂ (ρ.characterL2 μ) (ρ.characterL2 μ) = 1 := by
+  rw [characterL2, ContinuousMap.inner_toLp]
+  exact integral_character_mul_star μ ρ
+
 end ContinuousUnitaryMatrixRep
 end YangMills.ClayCore

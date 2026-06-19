@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(ClayCore): add generic irreducible character orthogonality`).
+(`feat(ClayCore): package character orthogonality in L2`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -130,7 +130,9 @@ matrix-realized irreducible API. Peter-Weyl completeness remains open.
 The character-level corollaries are also packaged:
 `integral_character_mul_star_eq_zero_of_not_equiv` proves orthogonality of
 inequivalent irreducible characters, and `integral_character_mul_star` proves
-that an irreducible character has Haar `L²` norm one.
+that an irreducible character has Haar `L²` norm one. The same facts are now
+available directly through the Hilbert-space wrappers
+`inner_characterL2_eq_zero_of_not_equiv` and `inner_characterL2`.
 
 ## What Is Not Claimed
 
