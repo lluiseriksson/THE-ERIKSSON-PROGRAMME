@@ -625,6 +625,20 @@ theorem clusterRemainderSum_summable {d L : ℕ} [NeZero L] (H : HoleFamily d L)
     exact (pinned_cluster_summable_sharp ((holePolymerSystem H z).scaleActivity (Real.exp t)) hkp c).1
   exact Summable.of_nonneg_of_le hnn h_le h_sum
 
+/-- Source-shaped summability companion for raw-union-pinned cluster
+remainders.  The tilted KP criterion is derived from the local tilted
+activity-sum window rather than carried as a separate hypothesis. -/
+theorem clusterRemainderSum_summable_of_local {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (r : Cube d L) (t : ℝ) (ht : 0 < t)
+    (hlocal : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter (fun Y : PolymerType H z => s ∈ Y.val),
+        Real.exp t * ‖(holePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ ((3 ^ d + 1 : ℕ) : ℝ)⁻¹) :
+    Summable (fun n => clusterRemainderSumTerm H z r n) := by
+  exact clusterRemainderSum_summable H z r t ht
+    (holePolymerSystem_KPCriterion_volumeUniform_exp H z t hlocal)
+
 /-- Termwise domination of the skeleton-pinned remainder by the raw-union pinned
 remainder. -/
 lemma clusterSkeletonRemainderSumTerm_le {d L : ℕ} [NeZero L]

@@ -4361,3 +4361,25 @@ rebuilding the scalar-norm conversion internally.
 activity window.  It does not prove local smallness, the Yang-Mills
 activity-decay estimate, or any continuum/OS result. Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 121 (2026-06-19, **raw cluster-tail local interface**
+`YangMills.RG.clusterRemainderSum_summable_of_local`; core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum adds the raw-union-pinned companion to the skeleton local-tail
+interfaces.  `clusterRemainderSum_summable_of_local` proves summability of the
+raw cluster remainder series from the source-shaped tilted local window
+
+`Σ_{Y∋s} exp(t) * ‖z(Y)‖ * exp(|Y|) ≤ (3^d+1)⁻¹`,
+
+deriving the scalar-tilted KP criterion through
+`holePolymerSystem_KPCriterion_volumeUniform_exp` rather than carrying an
+abstract `KPCriterion` hypothesis.  This keeps the lower tail layer aligned
+with the later skeleton-pinned `_of_local` API.
+
+**Honest scope.** This is still a consumer theorem for an explicit local
+smallness hypothesis.  It does not prove that local smallness from the
+modified-metric activity decay, nor the Balaban/Dimock cluster expansion with
+holes. Clay distance **~0% (<0.1%), unchanged**.
