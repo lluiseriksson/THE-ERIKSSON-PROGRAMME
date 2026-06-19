@@ -31,6 +31,7 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 /-! ## The cluster-expansion layer (sharp KP + Mayer inversion) -/
 #print axioms YangMills.KP.partition_eq_exp_clusterSum
 #print axioms YangMills.KP.partition_eq_exp_clusterSum_of_kp
+#print axioms YangMills.KP.orderFactor_pinnedClusterWeight_le_tilt
 
 /-! ## The IR clustering bound and the correlator decay -/
 #print axioms YangMills.truncated_correlation_bound

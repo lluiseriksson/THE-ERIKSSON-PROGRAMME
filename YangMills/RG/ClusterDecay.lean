@@ -598,23 +598,7 @@ lemma clusterRemainderSum_term_le_tilt {d L : ℕ} [NeZero L]
   refine le_trans h_term ?_
   rw [mul_sum, Finset.mul_sum]
   refine Finset.sum_le_sum fun c _ => ?_
-  have h1 : t * ((n : ℝ) + 1) ≤ Real.exp (t * ((n : ℝ) + 1)) := by
-    have h2 := Real.add_one_le_exp (t * ((n : ℝ) + 1))
-    linarith
-  have h3 : (Real.exp t : ℝ) ^ (n + 1) = Real.exp (t * ((n : ℝ) + 1)) := by
-    rw [← Real.exp_nat_mul]
-    congr 1
-    push_cast
-    ring
-  have hfac : ((n : ℝ) + 1) ≤ t⁻¹ * Real.exp t ^ (n + 1) := by
-    rw [h3]
-    exact (le_inv_mul_iff₀ ht).mpr h1
-  calc ((n : ℝ) + 1) * pinnedClusterWeight (holePolymerSystem H z) c n
-    _ ≤ (t⁻¹ * Real.exp t ^ (n + 1)) * pinnedClusterWeight (holePolymerSystem H z) c n := by
-      refine mul_le_mul_of_nonneg_right hfac (pinnedClusterWeight_nonneg _ _ _)
-    _ = t⁻¹ * pinnedClusterWeight ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
-      rw [pinnedClusterWeight_scale, abs_of_pos (Real.exp_pos t)]
-      ring
+  exact YangMills.KP.orderFactor_pinnedClusterWeight_le_tilt (holePolymerSystem H z) c t ht n
 
 theorem clusterRemainderSum_summable {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     (r : Cube d L) (t : ℝ) (ht : 0 < t)
@@ -902,27 +886,7 @@ lemma clusterSkeletonRemainderSum_term_le_tilt {d L : ℕ} [NeZero L]
   refine le_trans (clusterSkeletonRemainderSum_term_le_skeletonPinned H z r n) ?_
   rw [Finset.mul_sum, Finset.mul_sum]
   refine Finset.sum_le_sum fun c _ => ?_
-  have hfac : ((n : ℝ) + 1) ≤ t⁻¹ * Real.exp t ^ (n + 1) := by
-    have h1 : t * ((n : ℝ) + 1) ≤ Real.exp (t * ((n : ℝ) + 1)) := by
-      have h2 := Real.add_one_le_exp (t * ((n : ℝ) + 1))
-      linarith
-    have h3 : (Real.exp t : ℝ) ^ (n + 1)
-        = Real.exp (t * ((n : ℝ) + 1)) := by
-      rw [← Real.exp_nat_mul]
-      congr 1
-      push_cast
-      ring
-    rw [h3]
-    exact (le_inv_mul_iff₀ ht).mpr h1
-  calc ((n : ℝ) + 1) * pinnedClusterWeight (holePolymerSystem H z) c n
-      ≤ (t⁻¹ * Real.exp t ^ (n + 1)) *
-          pinnedClusterWeight (holePolymerSystem H z) c n := by
-        refine mul_le_mul_of_nonneg_right hfac
-          (pinnedClusterWeight_nonneg (holePolymerSystem H z) c n)
-    _ = t⁻¹ * pinnedClusterWeight
-          ((holePolymerSystem H z).scaleActivity (Real.exp t)) c n := by
-        rw [pinnedClusterWeight_scale, abs_of_pos (Real.exp_pos t)]
-        ring
+  exact YangMills.KP.orderFactor_pinnedClusterWeight_le_tilt (holePolymerSystem H z) c t ht n
 
 /-- Skeleton-pinned cluster remainders are summable whenever the larger
 union-pinned cluster remainders are summable.  The only set-theoretic input is

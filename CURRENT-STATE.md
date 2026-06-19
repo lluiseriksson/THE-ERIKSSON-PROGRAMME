@@ -58,7 +58,8 @@ The latest RG skeleton-tail interface is local-KP-shaped throughout:
 * `YangMills.RG.clusterRemainderSum_tsum_le_of_local` proves the corresponding
   quantitative raw-union-pinned bound from that same window;
 * `YangMills.RG.clusterRemainderSum_term_le_tilt` packages the raw termwise
-  `exp(t)` tilt domination consumed by both raw-tail theorems;
+  `exp(t)` tilt domination consumed by both raw-tail theorems, using the
+  reusable KP lemma `YangMills.KP.orderFactor_pinnedClusterWeight_le_tilt`;
 * `YangMills.RG.clusterSkeletonRemainderSum_tsum_le_of_local` proves the
   pre-metric quantitative skeleton-pinned bound from the same local window;
 * `YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local`

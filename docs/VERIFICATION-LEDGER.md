@@ -4409,19 +4409,20 @@ not derive that smallness from skeleton-rooted modified-metric estimates.  The
 Balaban/Dimock activity-decay theorem and the cluster expansion with holes
 remain the open analytic inputs. Clay distance **~0% (<0.1%), unchanged**.
 
-## Addendum 123 (2026-06-19, **raw termwise tilt lemma**
+## Addendum 123 (2026-06-19, **pinned-weight tilt lemma**
+`YangMills.KP.orderFactor_pinnedClusterWeight_le_tilt`,
 `YangMills.RG.clusterRemainderSum_term_le_tilt`; core 8273)
 
 **Build:** green (`lake build YangMillsCore`, 8273 jobs).
 Oracle: `[propext, Classical.choice, Quot.sound]`.
 
-This addendum extracts the order-factor tilt algebra used by the raw tail
-theorems as a named termwise lemma.  `clusterRemainderSum_term_le_tilt` proves
-directly that each raw-union-pinned cluster layer is dominated by the
-`exp(t)`-tilted pinned KP weight, using `t(n+1) ≤ exp(t(n+1))` and
-`pinnedClusterWeight_scale`.  Both `clusterRemainderSum_summable` and
-`clusterRemainderSum_tsum_le` now consume this lemma instead of duplicating
-the same argument.
+This addendum extracts the order-factor tilt algebra as a reusable pinned
+cluster-weight lemma.  `orderFactor_pinnedClusterWeight_le_tilt` proves at the
+KP layer that `(n+1) * pinnedClusterWeight P c n` is dominated by the
+`exp(t)`-tilted pinned weight with a global `t⁻¹` loss, using
+`t(n+1) ≤ exp(t(n+1))` and `pinnedClusterWeight_scale`.
+`clusterRemainderSum_term_le_tilt` is now the raw-tail specialization, and
+the skeleton termwise tilt theorem also consumes the same KP lemma.
 
 **Honest scope.** This is proof infrastructure for the raw tail API.  It does
 not add a new physical estimate and does not bridge the unresolved

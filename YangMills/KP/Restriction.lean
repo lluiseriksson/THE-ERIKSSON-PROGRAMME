@@ -546,6 +546,32 @@ theorem pinnedClusterWeight_scale (P : PolymerSystem)
   exact (congrArg (fun s => (((n + 1).factorial : ℝ))⁻¹ * s) hsum).trans
     (by ring)
 
+/-- The elementary `e^t` tilt estimate used by pinned tail bounds: the
+factor `(n+1)` can be paid by scaling all activities by `exp(t)` and losing a
+global factor `t⁻¹`. -/
+theorem orderFactor_pinnedClusterWeight_le_tilt (P : PolymerSystem)
+    [Fintype P.Polymer] (c : P.Polymer) (t : ℝ) (ht : 0 < t) (n : ℕ) :
+    ((n : ℝ) + 1) * pinnedClusterWeight P c n
+      ≤ t⁻¹ * pinnedClusterWeight (P.scaleActivity (Real.exp t)) c n := by
+  have hfac : ((n : ℝ) + 1) ≤ t⁻¹ * Real.exp t ^ (n + 1) := by
+    have h1 : t * ((n : ℝ) + 1) ≤ Real.exp (t * ((n : ℝ) + 1)) := by
+      have h2 := Real.add_one_le_exp (t * ((n : ℝ) + 1))
+      linarith
+    have h3 : (Real.exp t : ℝ) ^ (n + 1)
+        = Real.exp (t * ((n : ℝ) + 1)) := by
+      rw [← Real.exp_nat_mul]
+      congr 1
+      push_cast
+      ring
+    rw [h3]
+    exact (le_inv_mul_iff₀ ht).mpr h1
+  calc ((n : ℝ) + 1) * pinnedClusterWeight P c n
+      ≤ (t⁻¹ * Real.exp t ^ (n + 1)) * pinnedClusterWeight P c n := by
+        refine mul_le_mul_of_nonneg_right hfac (pinnedClusterWeight_nonneg P c n)
+    _ = t⁻¹ * pinnedClusterWeight (P.scaleActivity (Real.exp t)) c n := by
+        rw [pinnedClusterWeight_scale, abs_of_pos (Real.exp_pos t)]
+        ring
+
 open Classical in
 /-- **R2(b4) — THE VOLUME-FREE `Z`-RATIO EXPONENT BOUND:** under the
 `e^t`-tilted KP criterion (exactly what the lattice gas verifies), the
@@ -566,27 +592,7 @@ theorem tsum_offRegionClusterWeight_le (P : PolymerSystem)
     refine le_trans (offRegionClusterWeight_le_pinned P Λ n) ?_
     rw [Finset.mul_sum, Finset.mul_sum]
     refine Finset.sum_le_sum fun c _ => ?_
-    have hfac : ((n : ℝ) + 1) ≤ t⁻¹ * Real.exp t ^ (n + 1) := by
-      have h1 : t * ((n : ℝ) + 1) ≤ Real.exp (t * ((n : ℝ) + 1)) := by
-        have h2 := Real.add_one_le_exp (t * ((n : ℝ) + 1))
-        linarith
-      have h3 : (Real.exp t : ℝ) ^ (n + 1)
-          = Real.exp (t * ((n : ℝ) + 1)) := by
-        rw [← Real.exp_nat_mul]
-        congr 1
-        push_cast
-        ring
-      rw [h3]
-      exact (le_inv_mul_iff₀ ht).mpr h1
-    calc ((n : ℝ) + 1) * pinnedClusterWeight P c n
-        ≤ (t⁻¹ * Real.exp t ^ (n + 1)) * pinnedClusterWeight P c n :=
-          mul_le_mul_of_nonneg_right hfac
-            (pinnedClusterWeight_nonneg P c n)
-      _ = t⁻¹ * pinnedClusterWeight
-            (P.scaleActivity (Real.exp t)) c n := by
-          rw [pinnedClusterWeight_scale,
-            abs_of_pos (Real.exp_pos t)]
-          ring
+    exact orderFactor_pinnedClusterWeight_le_tilt P c t ht n
   have hgsum : Summable (fun n => t⁻¹ * ∑ c ∈ Λᶜ,
       pinnedClusterWeight (P.scaleActivity (Real.exp t)) c n) := by
     refine Summable.mul_left _ ?_
