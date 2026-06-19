@@ -4487,7 +4487,9 @@ discharge the open `hRpoly` activity-decay estimate. Clay distance **~0%
 
 ## Addendum 126 (2026-06-19, **character orthogonality in Haar L2**
 `YangMills.ClayCore.ContinuousUnitaryMatrixRep.inner_characterL2_eq_zero_of_not_equiv`
-and `YangMills.ClayCore.ContinuousUnitaryMatrixRep.inner_characterL2`; core 8273)
+and `YangMills.ClayCore.ContinuousUnitaryMatrixRep.inner_characterL2`,
+plus `YangMills.ClayCore.ContinuousUnitaryMatrixRep.orthonormal_characterL2`;
+core 8273)
 
 **Build:** green (`lake build YangMillsCore`, 8273 jobs).
 Oracle: `[propext, Classical.choice, Quot.sound]`.
@@ -4499,8 +4501,39 @@ inequivalent irreducible continuous unitary matrix representations are
 orthogonal, and `inner_characterL2` says that an irreducible character has unit
 inner product with itself.  Both wrappers are direct applications of
 `ContinuousMap.inner_toLp` followed by the integral character identities.
+The theorem `orthonormal_characterL2` then packages any finite family of
+pairwise inequivalent irreducible characters as an `Orthonormal` family.
 
 **Honest scope.** This is API packaging for the F2/Peter-Weyl substrate.  It
 does not add Peter-Weyl completeness, SU(N) representation classification,
 continuum construction, or the open `hRpoly` activity-decay estimate. Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 127 (2026-06-19, **raw-local metric majorant for skeleton tails**
+`YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound_of_raw_local_metric`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum adds the source-facing consumer for the current `hRpoly`
+frontier.  If a source proves the pointwise activity decay
+
+`exp(t) * ‖z(c)‖ * exp(|c|) ≤ A * q^(d_M(c)+1)`
+
+and also proves the **raw-support** local smallness of that same majorant,
+
+`Σ_{Y∋s} A * q^(d_M(Y)+1) ≤ (3^d+1)^(-1)`,
+
+then
+`clusterSkeletonRemainderSum_tsum_le_metric_bound_of_raw_local_metric`
+derives the local KP window and applies the existing skeleton metric
+consumer, yielding the usual
+`t^(-1) * A * (1 - (3^d)^2 * (q * 2^(3^d+1)))^(-1)` bound.
+
+**Honest scope.** This deliberately does **not** derive raw-support local
+smallness from skeleton-rooted modified-metric summability.  That bridge
+remains blocked pending a Yang-Mills source giving raw-support activity
+control, hole-interior suppression, or a polymer-class restriction.  The
+theorem is a verified consumer for such a source input, not a proof of the
+Yang-Mills activity estimate. Clay distance **~0% (<0.1%), unchanged**.

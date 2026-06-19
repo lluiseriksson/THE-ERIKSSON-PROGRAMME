@@ -434,5 +434,27 @@ theorem inner_characterL2
   rw [characterL2, ContinuousMap.inner_toLp]
   exact integral_character_mul_star μ ρ
 
+/-- A finite family of pairwise inequivalent irreducible unitary characters is
+orthonormal in Haar `L²`. This is still only the finite-family substrate; it
+does not assert Peter-Weyl completeness. -/
+theorem orthonormal_characterL2
+    {α : Type*} [Fintype α] [DecidableEq α]
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : α → ContinuousUnitaryMatrixRep G ι)
+    [∀ a, (ρ a).IsIrreducible] [Nonempty ι]
+    (hineq : ∀ ⦃a b : α⦄, a ≠ b →
+      IsEmpty (Representation.Equiv (ρ a).toRepresentation (ρ b).toRepresentation)) :
+    Orthonormal ℂ (fun a => (ρ a).characterL2 μ) := by
+  classical
+  rw [orthonormal_iff_ite]
+  intro a b
+  by_cases h : a = b
+  · subst b
+    simpa using inner_characterL2 μ (ρ a)
+  · haveI : IsEmpty
+        (Representation.Equiv (ρ a).toRepresentation (ρ b).toRepresentation) :=
+      hineq h
+    simpa [h] using inner_characterL2_eq_zero_of_not_equiv μ (ρ b) (ρ a)
+
 end ContinuousUnitaryMatrixRep
 end YangMills.ClayCore

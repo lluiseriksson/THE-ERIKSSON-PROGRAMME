@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(ClayCore): package character orthogonality in L2`).
+(`feat(ClayCore): package finite character orthonormality`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -74,6 +74,10 @@ The latest RG skeleton-tail interface is local-KP-shaped throughout:
   `A * q^(d_M+1)`, the full skeleton-pinned cluster remainder series is
   bounded by
   `t⁻¹ * A * (1 - (3^d)^2 * (q * 2^(3^d+1)))⁻¹`.
+* `YangMills.RG.clusterSkeletonRemainderSum_tsum_le_metric_bound_of_raw_local_metric`
+  is the source-facing variant: it derives the local KP window from a
+  raw-support local sum of the same modified-metric majorant, without
+  inferring raw-support smallness from skeleton-rooted summability.
 * `YangMills.RG.holePolymerSystem_KPCriterion_volumeUniform_exp` names the
   `ρ = exp(t)` bridge from the source-shaped local window
   `Σ_{Y∋s} exp(t) * ‖z(Y)‖ * exp(|Y|)` to the scalar-tilted KP criterion,
@@ -132,7 +136,8 @@ The character-level corollaries are also packaged:
 inequivalent irreducible characters, and `integral_character_mul_star` proves
 that an irreducible character has Haar `L²` norm one. The same facts are now
 available directly through the Hilbert-space wrappers
-`inner_characterL2_eq_zero_of_not_equiv` and `inner_characterL2`.
+`inner_characterL2_eq_zero_of_not_equiv` and `inner_characterL2`, and finite
+pairwise-inequivalent families are packaged as `orthonormal_characterL2`.
 
 ## What Is Not Claimed
 

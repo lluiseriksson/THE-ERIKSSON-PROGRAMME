@@ -1089,6 +1089,46 @@ theorem clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local {d L : ℕ}
     (holePolymerSystem_KPCriterion_volumeUniform_exp H z t hlocal)
     hA0 hact hdisj hnoedges hholes_ne hq0 hCq
 
+/-- One-shot source-shaped skeleton remainder bound from a **raw-support local
+modified-metric majorant**.
+
+This is the honest interface for the current `hRpoly` frontier: a source may
+prove both the pointwise activity decay
+`exp(t) * ‖z(c)‖ * exp(|c|) ≤ A * q^(d_M(c)+1)` and the raw-support local
+smallness of that same majorant.  The theorem then derives the local KP window
+and applies the metric summability consumer.  It deliberately does not derive
+raw-support local smallness from skeleton-rooted modified-metric summability. -/
+theorem clusterSkeletonRemainderSum_tsum_le_metric_bound_of_raw_local_metric
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) (r : Cube d L) (t q A : ℝ) (ht : 0 < t)
+    (hrawLocal : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter (fun Y : PolymerType H z => s ∈ Y.val),
+        A * q ^ (discreteModifiedMetric H Y.val + 1)
+          ≤ ((3 ^ d + 1 : ℕ) : ℝ)⁻¹)
+    (hA0 : 0 ≤ A)
+    (hact : ∀ c : PolymerType H z,
+      Real.exp t * ‖(holePolymerSystem H z).activity c‖ *
+          Real.exp ((c.val.card : ℝ))
+        ≤ A * q ^ (discreteModifiedMetric H c.val + 1))
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hq0 : 0 ≤ q)
+    (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)) < 1) :
+    ∑' n, clusterSkeletonRemainderSumTerm H z r n
+      ≤ t⁻¹ * (A *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * (q * 2 ^ (3 ^ d + 1)))⁻¹) := by
+  have hlocal : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter (fun Y : PolymerType H z => s ∈ Y.val),
+        Real.exp t * ‖(holePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ ((3 ^ d + 1 : ℕ) : ℝ)⁻¹ := by
+    intro s
+    refine (Finset.sum_le_sum ?_).trans (hrawLocal s)
+    intro Y _
+    exact hact Y
+  exact clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local H z r t q A ht
+    hlocal hA0 hact hdisj hnoedges hholes_ne hq0 hCq
+
 lemma polymer_subset_clusterUnion {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer) (i : Fin n) :
     (X i).val ⊆ clusterUnion H z X := by
