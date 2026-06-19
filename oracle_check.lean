@@ -241,3 +241,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.clusterModifiedMetric_fin_one
 #print axioms YangMills.RG.clusterDecayWeight
 #print axioms YangMills.RG.clusterDecayWeight_fin_one
+#print axioms YangMills.RG.walkConnected_union
+#print axioms YangMills.RG.walk_union_connected
+#print axioms YangMills.RG.cluster_closedNeigh_union_connected
+#print axioms YangMills.RG.clusterRemainderSum_summable
+#print axioms YangMills.RG.discreteModifiedMetric_le_clusterModifiedMetric

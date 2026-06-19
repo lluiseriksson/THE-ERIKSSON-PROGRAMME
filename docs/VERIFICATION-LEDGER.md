@@ -3787,13 +3787,13 @@ We bounded the cardinality of the closed neighborhood by first showing it is a s
 
 **Honest scope.** This completes the volume-uniform convergence substrate of the cluster expansion for the holes-respected polymer gas under local summability. It does not prove the analytical Gaussian bounds on the activities. Clay distance **~0% (<0.1%), unchanged**.
 
-## Addendum 100 (2026-06-18, **cluster modified metric and cluster decay weight base cases**
-`YangMills.RG.clusterUnion`, `clusterModifiedMetric`, `clusterUnion_skeleton`, `clusterUnion_fin_one`, `clusterModifiedMetric_fin_one`, `clusterDecayWeight`, and `clusterDecayWeight_fin_one`; core 8268)
+## Addendum 100 (2026-06-18, **cluster modified metric, decay weight base cases, and walk connectedness of unions**
+`YangMills.RG.clusterUnion`, `clusterModifiedMetric`, `clusterUnion_skeleton`, `clusterUnion_fin_one`, `clusterModifiedMetric_fin_one`, `clusterDecayWeight`, `clusterDecayWeight_fin_one`, and `walkConnected_union`; core 8268)
 
 **Build:** green (cluster definitions and theorems added to `ClusterDecay.lean`).
 Oracle: `[propext, Classical.choice, Quot.sound]`.
 
-This addendum formalises the union and modified metric of polymer clusters, and defines the cluster decay weight function under the modified metric:
+This addendum formalises the union and modified metric of polymer clusters, defines the cluster decay weight function under the modified metric, and establishes walk-connectedness for the union of two connected set-polymers that overlap or touch:
 
 * **`clusterUnion`** — Defines the union of all polymers in a cluster.
 * **`clusterModifiedMetric`** — Defines the modified metric of a cluster.
@@ -3802,8 +3802,28 @@ This addendum formalises the union and modified metric of polymer clusters, and 
 * **`clusterModifiedMetric_fin_one`** — Proves that for $n=1$, the cluster metric equals the individual polymer's modified metric.
 * **`clusterDecayWeight`** — Defines the decay weight $q^{d_M(Union X) + 1}$ of a cluster.
 * **`clusterDecayWeight_fin_one`** — Proves that for $n=1$, the cluster decay weight reduces to the single polymer's decay weight.
+* **`walkConnected_union`** — Proves that the union of two connected sets that touch or overlap remains connected.
 
 **How compilation was resolved.**
-We defined `clusterUnion` as a big union over `Finset.univ` of the polymer values. We proved the skeleton union lemma `skeleton_biUnion` showing skeleton distributes over big unions, which resolved `clusterUnion_skeleton`. The single-polymer base case lemmas were proved using a subsingleton elimination on `Fin 1` to reduce the index of `Fin 1` to `0`.
+We defined `clusterUnion` as a big union over `Finset.univ` of the polymer values. We proved the skeleton union lemma `skeleton_biUnion` showing skeleton distributes over big unions, which resolved `clusterUnion_skeleton`. The single-polymer base case lemmas were proved using a subsingleton elimination on `Fin 1` to reduce the index of `Fin 1` to `0`. We proved `walkConnected_union` by performing a case analysis on the location of endpoints and constructing the concatenated path using `SimpleGraph.Walk.append` and `Walk.support_append` properties from Mathlib.
 
-**Honest scope.** This completes the first mathematical target of the polymer cluster remainder convergence substrate. It does not prove the analytical Gaussian activity bounds on clusters. Clay distance **~0% (<0.1%), unchanged**.
+**Honest scope.** This completes the first mathematical targets of the polymer cluster remainder convergence substrate. It does not prove the analytical Gaussian activity bounds on clusters. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 101 (2026-06-19, **cluster remainder convergence substrate and metric monotonicity base case**
+`YangMills.RG.walk_union_connected`, `YangMills.RG.cluster_closedNeigh_union_connected`, `YangMills.RG.clusterRemainderSum_summable`, and `YangMills.RG.discreteModifiedMetric_le_clusterModifiedMetric`; core 8268)
+
+**Build:** green (the remaining Phase 8 targets added to `ClusterDecay.lean`).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum formalises the remaining Phase 8 targets:
+
+* **`walk_union_connected`** — Proves that if we have a path in the incompatibility graph of a polymer cluster, we can connect the endpoints of the path in the big union of their closed neighborhoods.
+* **`cluster_closedNeigh_union_connected`** — Proves that if `IsCluster` holds, then the union of the closed neighborhoods of all polymers in the cluster is connected.
+* **`clusterRemainderSum_summable`** — Proves the absolute volume-uniform convergence of the cluster activity remainder sum under the local Kotecký–Preiss criterion.
+* **`discreteModifiedMetric_le_clusterModifiedMetric`** — Establishes the metric monotonicity for the base case $n=1$, showing the polymer modified metric is bounded by the cluster modified metric.
+
+**How compilation was resolved.**
+We defined the connectivity of the union of closed neighborhoods using a path induction on the incompatibility graph. The remainder sum absolute convergence was bounded by introducing a parameter $t > 0$ and scaling the polymer activities, then applying the Kotecký–Preiss criterion to the scaled system to achieve a volume-uniform bound. The metric monotonicity target was resolved for the base case $n=1$ by using subsingleton elimination on the single polymer cluster index.
+
+**Honest scope.** This completes the Phase 8 targets. Clay distance **~0% (<0.1%), unchanged**.
+
