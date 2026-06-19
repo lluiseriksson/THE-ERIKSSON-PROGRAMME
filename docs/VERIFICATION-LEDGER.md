@@ -4060,3 +4060,33 @@ entry had left open; Peter-Weyl density remains open.
 downstream work from relying on the physically impossible old `‖D‖ < 1` premise.  It does
 not prove the Balaban/Dimock activity estimate, the continuum limit, or OS/Wightman
 reconstruction. Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 111 (2026-06-19, **cluster-level modified-metric skeleton control**
+`YangMills.RG.clusterUnion_skeleton_card_le_clusterModifiedMetric_add_one`; core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum closes the immediate post-audit cluster-metric interface.  The
+Extra High audit rejected the tempting but false arbitrary comparison
+`discreteModifiedMetric H (X i).val ≤ clusterModifiedMetric H z X`: the modified
+metric is a constrained Steiner minimum, so enlarging the ambient set can create
+shortcuts and is not monotone in that direction.  The source-faithful object is
+instead the whole cluster union.
+
+The new theorem states exactly that valid cluster-level fact:
+`clusterUnion_skeleton_card_le_clusterModifiedMetric_add_one` proves that if
+`X` is a genuine `IsCluster` tuple in the hole-polymer system, then
+
+`(skeleton H (clusterUnion H z X)).card ≤ clusterModifiedMetric H z X + 1`.
+
+The proof is intentionally short: `clusterUnion_connected` supplies connectedness
+of the raw cluster union, and the already-proved
+`skeleton_card_le_discreteModifiedMetric_add_one` applies to that union.  This
+is the interface the later activity-decay proof can consume: metric decay of the
+cluster object controls the size of its active skeleton, without asserting any
+unsupported constituent-polymer monotonicity.
+
+**Honest scope.** This is an RG-substrate theorem toward the Balaban/Dimock
+`hRpoly` activity estimate.  It does not prove the activity decay, the continuum
+limit, or OS/Wightman reconstruction. Clay distance **~0% (<0.1%), unchanged**.

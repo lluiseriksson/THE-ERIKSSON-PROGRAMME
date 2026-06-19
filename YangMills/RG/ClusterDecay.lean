@@ -354,6 +354,19 @@ lemma clusterUnion_connected {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Fi
   rw [mem_biUnion]
   exact ⟨k, mem_univ k, hv_in⟩
 
+/-- For a genuine cluster, the cluster modified metric controls the size of the
+active skeleton of the cluster union.  This is the source-faithful cluster-level
+version of `skeleton_card_le_discreteModifiedMetric_add_one`: the metric is
+evaluated on the whole cluster union, not on an arbitrary constituent polymer. -/
+lemma clusterUnion_skeleton_card_le_clusterModifiedMetric_add_one {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer)
+    (hcl : IsCluster (holePolymerSystem H z) X) :
+    (skeleton H (clusterUnion H z X)).card ≤ clusterModifiedMetric H z X + 1 := by
+  dsimp [clusterModifiedMetric]
+  exact skeleton_card_le_discreteModifiedMetric_add_one H (clusterUnion H z X)
+    (clusterUnion_connected H z X hcl)
+
 -- Target 8.3: cluster union of closed neighborhoods is connected
 lemma cluster_closedNeigh_union_connected {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     {n : ℕ} (X : Fin n → (holePolymerSystem H z).Polymer) (hcl : IsCluster (holePolymerSystem H z) X) :

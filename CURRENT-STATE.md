@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(ClayCore): add generic Haar averaging and Schur orthogonality`).
+(`feat(RG): control cluster skeleton size by modified metric`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -9,7 +9,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8272 jobs**.
+* `lake build YangMillsCore` is green at **8273 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -44,9 +44,16 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * exponential-decay kernel calculus, Schur bounds, PSD kernel interface,
   Gaussian MGF bounds;
 * lattice animal counting, cube adjacency, and shell-growth summability;
-* polymer-with-holes multi-hole combinatorics, multiplicity bounds, and discrete modified-metric summability.
+* polymer-with-holes multi-hole combinatorics, multiplicity bounds, discrete
+  modified-metric summability, and the cluster-union modified-metric interface.
 
-The latest theorem is `YangMills.RG.discreteModifiedMetric_weight_summable`: polymer sum over connected, hole-respecting polymers containing $r$ in their skeleton weighted by $q^{d_M(X) + 1}$ is bounded volume-uniformly by $(1 - 3^{2d} \cdot q \cdot 2^{3^d + 1})^{-1}$ when $3^{2d} \cdot q \cdot 2^{3^d + 1} < 1$.
+The latest RG theorem is
+`YangMills.RG.clusterUnion_skeleton_card_le_clusterModifiedMetric_add_one`:
+for a genuine hole-polymer cluster, the active skeleton of the source-shaped
+cluster union is controlled by the cluster modified metric,
+`|skeleton(clusterUnion)| ≤ d_M(clusterUnion) + 1`.  This is the valid
+cluster-level replacement for the false arbitrary constituent-metric
+monotonicity claim rejected by the Extra High audit.
 
 ## Live Frontier
 
