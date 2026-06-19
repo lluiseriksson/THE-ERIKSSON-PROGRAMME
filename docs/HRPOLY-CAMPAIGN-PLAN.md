@@ -315,9 +315,16 @@ evaluate a `RestrictedField` on its finite support, and a two-field
 `LocalActivity` has separate spectator/fluctuation supports.  The global
 adapters satisfy oracle-clean invariance theorems under changes off support,
 and finite products automatically carry the union of supports.  This is the
-typed locality layer that future `rawMayer`, `omegaConnectedCoverActivity`,
-ultralocal integration, and `dimockEffectiveActivity` definitions should
-consume; it is not Appendix F itself.
+typed locality layer that the next F.1 constructions should consume; it is not
+Appendix F itself.
+
+The raw local Mayer step is now in `YangMills/RG/RawMayerWithHoles.lean`.  It
+defines `rawMayer` on both `LocalFunctional` and two-field `LocalActivity` as
+`H ↦ exp H - 1`, preserving supports by construction, inheriting the
+off-support invariance theorem, and proving the elementary small-activity
+bound `‖exp z - 1‖ ≤ 2‖z‖` under `‖z‖ ≤ 1`.  This is the local `H_X ↦ m_X`
+map of the future Dimock-F.1 compiler, not the Ω-connected cover, not
+ultralocal integration, and not the Yang-Mills activity-decay estimate.
 
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the

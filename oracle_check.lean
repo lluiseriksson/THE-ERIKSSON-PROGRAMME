@@ -1,6 +1,7 @@
 import YangMillsCore
 import YangMills.RG.NearLog
 import YangMills.RG.LocalFunctional
+import YangMills.RG.RawMayerWithHoles
 
 /-! # Oracle check — one command, every headline
 
@@ -135,6 +136,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.LocalFunctional.globalEval_finsetProd
 #print axioms YangMills.RG.LocalActivity.globalEval_eq_of_agreeOn
 #print axioms YangMills.RG.LocalActivity.globalEval_finsetProd
+-- raw Mayer transform on type-local supports
+#print axioms YangMills.RG.LocalFunctional.rawMayer_globalEval_eq_of_agreeOn
+#print axioms YangMills.RG.LocalFunctional.norm_globalEval_rawMayer_le_two
+#print axioms YangMills.RG.LocalActivity.rawMayer_globalEval_eq_of_agreeOn
+#print axioms YangMills.RG.LocalActivity.norm_globalEval_rawMayer_le_two
 -- decoupling/regularisation bridge: a uniform activity profile bound passes to
 -- the pointwise limiting activity
 #print axioms YangMills.RG.activity_profile_bound_of_tendsto

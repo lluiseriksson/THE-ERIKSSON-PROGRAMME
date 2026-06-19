@@ -5096,3 +5096,37 @@ constructive Dimock-F.1 compiler.  It does **not** define `rawMayer`,
 `dimockEffectiveActivity`, Appendix F, the Yang-Mills raw activity bound,
 continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 148 (2026-06-20, **raw Mayer transform on type-local supports**
+`YangMills.RG.LocalFunctional.rawMayer`,
+`YangMills.RG.LocalFunctional.rawMayer_globalEval_eq_of_agreeOn`,
+`YangMills.RG.LocalFunctional.norm_globalEval_rawMayer_le_two`,
+`YangMills.RG.LocalActivity.rawMayer`,
+`YangMills.RG.LocalActivity.rawMayer_globalEval_eq_of_agreeOn`,
+`YangMills.RG.LocalActivity.norm_globalEval_rawMayer_le_two`; core 8279)
+
+**Build:** green (`lake env lean YangMills/RG/RawMayerWithHoles.lean`).
+Full-core and oracle verification are recorded with the commit carrying this
+addendum.
+
+This addendum closes the next local F.1 substrate after Addendum 147.  The new
+module `YangMills/RG/RawMayerWithHoles.lean` defines the raw Mayer transform
+`H ↦ exp H - 1` on both:
+
+* scalar complex `LocalFunctional` values;
+* scalar complex two-field `LocalActivity` values.
+
+Because the transform is implemented by `map`, the finite supports are
+preserved by construction.  The theorems
+`rawMayer_globalEval_eq_of_agreeOn` for both substrates prove that the Mayer
+activity remains insensitive to off-support changes in the relevant global
+fields.  The theorems `norm_globalEval_rawMayer_le_two` import the elementary
+Mathlib estimate `‖exp z - 1‖ ≤ 2‖z‖` under the smallness hypothesis
+`‖z‖ ≤ 1`, providing the first local analytic bound for future activity
+decay.
+
+**Honest scope.** This is the local `H_X ↦ m_X` step of a future constructive
+Dimock-F.1 compiler.  It does **not** define Ω-connected covers, ultralocal
+integration, the renormalized effective activity, Appendix F, the Yang-Mills
+raw activity-decay bound, continuum limit, or OS/Wightman reconstruction.  Clay
+distance **~0% (<0.1%), unchanged**.
