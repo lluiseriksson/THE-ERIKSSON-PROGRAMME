@@ -4555,3 +4555,22 @@ linearly independent in Haar `L²`.  The proof uses the Hilbert-space route:
 not prove Peter-Weyl completeness, classify SU(N) irreducibles, construct a
 continuum theory, or discharge the open `hRpoly` activity-decay estimate. Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 129 (2026-06-19, **finite character coefficient extraction**
+`YangMills.ClayCore.ContinuousUnitaryMatrixRep.inner_characterL2_sum`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum adds the finite Fourier-coefficient identity for the generic
+character substrate.  For a finite pairwise-inequivalent family of irreducible
+continuous unitary matrix representations, the coefficient `c a` in
+`Σ b, c b • characterL2(ρ b)` is recovered as the Haar `L²` inner product with
+`characterL2(ρ a)`.  The proof is the existing finite orthonormal family theorem
+followed by Mathlib's `Orthonormal.inner_right_sum`.
+
+**Honest scope.** This is a finite-family coefficient API.  It does not prove
+Peter-Weyl completeness, convergence of infinite character expansions,
+SU(N) irreducible classification, continuum construction, or `hRpoly`. Clay
+distance **~0% (<0.1%), unchanged**.

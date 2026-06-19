@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-19
-(`feat(ClayCore): expose character linear independence`).
+(`feat(ClayCore): add character coefficient extraction`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -139,7 +139,9 @@ available directly through the Hilbert-space wrappers
 `inner_characterL2_eq_zero_of_not_equiv` and `inner_characterL2`; finite
 pairwise-inequivalent families are packaged as `orthonormal_characterL2`, and
 `linearIndependent_characterL2` exposes the resulting finite linear
-independence statement.
+independence statement. The finite coefficient-extraction identity
+`inner_characterL2_sum` recovers expansion coefficients by Haar `L²` inner
+product inside such finite orthonormal character families.
 
 ## What Is Not Claimed
 

@@ -468,5 +468,22 @@ theorem linearIndependent_characterL2
     LinearIndependent ℂ (fun a => (ρ a).characterL2 μ) :=
   (orthonormal_characterL2 μ ρ hineq).linearIndependent
 
+/-- Finite character expansion coefficients are recovered by Haar `L²` inner
+product against the corresponding irreducible character. -/
+theorem inner_characterL2_sum
+    {α : Type*} [Fintype α] [DecidableEq α]
+    (μ : Measure G) [IsProbabilityMeasure μ] [μ.IsMulLeftInvariant]
+    (ρ : α → ContinuousUnitaryMatrixRep G ι)
+    [∀ a, (ρ a).IsIrreducible] [Nonempty ι]
+    (hineq : ∀ ⦃a b : α⦄, a ≠ b →
+      IsEmpty (Representation.Equiv (ρ a).toRepresentation (ρ b).toRepresentation))
+    (c : α → ℂ) (a : α) :
+    inner ℂ ((ρ a).characterL2 μ)
+      (∑ b, c b • (ρ b).characterL2 μ) = c a := by
+  classical
+  simpa using
+    (orthonormal_characterL2 μ ρ hineq).inner_right_sum c
+      (s := Finset.univ) (i := a) (Finset.mem_univ a)
+
 end ContinuousUnitaryMatrixRep
 end YangMills.ClayCore
