@@ -64,6 +64,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   supports, and disjoint `LocalActivity` fluctuation supports for fixed
   spectator field, factorize under an explicit finite product probability
   measure;
+* the Mayer-cover factorization bridge
+  `YangMills/RG/MayerCoverFactorization.lean`: two finite raw-Mayer cover
+  products factorize under that product fluctuation measure whenever their
+  fluctuation supports are pairwise disjoint;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

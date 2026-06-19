@@ -240,6 +240,9 @@ import YangMills.RG.RawMayerWithHoles
 -- the finite product `∏ᵢ (exp Hᵢ - 1)` as a type-local activity with support
 -- equal to the union of factor supports.
 import YangMills.RG.OmegaConnectedCover
+-- Ultralocal factorization specialized to finite Mayer-cover products:
+-- disconnected fluctuation-support components factor under product measure.
+import YangMills.RG.MayerCoverFactorization
 -- The honest YM end-to-end UV conditional with the MARGINAL coupling: the
 -- geometric-profile assembly generalized to any nonnegative summable scale
 -- profile, specialized to the (asymptotically-free) marginal coupling flow.

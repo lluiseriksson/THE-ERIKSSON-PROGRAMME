@@ -3,6 +3,7 @@ import YangMills.RG.NearLog
 import YangMills.RG.LocalFunctional
 import YangMills.RG.RawMayerWithHoles
 import YangMills.RG.OmegaConnectedCover
+import YangMills.RG.MayerCoverFactorization
 
 /-! # Oracle check — one command, every headline
 
@@ -151,6 +152,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.LocalActivity.mayerCoverActivity_globalEval_eq_of_agreeOn
 #print axioms YangMills.RG.OmegaConnectedCover.globalEval_mayerActivity
 #print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_globalEval_eq_of_agreeOn
+-- ultralocal independence for finite Mayer-cover products
+#print axioms YangMills.RG.LocalActivity.mayerCoverActivity_integral_mul_of_pairwise_disjoint_fluctuationSupport
+#print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_integral_mul_of_pairwise_disjoint_fluctuationSupport
 -- decoupling/regularisation bridge: a uniform activity profile bound passes to
 -- the pointwise limiting activity, and a summable telescopic regulator defect
 -- increases only the amplitude budget.

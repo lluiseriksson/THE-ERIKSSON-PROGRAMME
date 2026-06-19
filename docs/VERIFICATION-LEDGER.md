@@ -5262,3 +5262,30 @@ not construct the Yang-Mills Gaussian fluctuation measure, prove covariance
 decay, prove Dimock Appendix F, establish the renormalized activity bound
 `hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 153 (2026-06-20, **Mayer-cover ultralocal factorization**
+`YangMills.RG.LocalActivity.fluctuationSupport_biUnion_disjoint_of_pairwise`,
+`YangMills.RG.LocalActivity.mayerCoverActivity_integral_mul_of_disjoint_fluctuationSupport`,
+`YangMills.RG.LocalActivity.mayerCoverActivity_integral_mul_of_pairwise_disjoint_fluctuationSupport`,
+`YangMills.RG.OmegaConnectedCover.mayerActivity_integral_mul_of_disjoint_fluctuationSupport`,
+`YangMills.RG.OmegaConnectedCover.mayerActivity_integral_mul_of_pairwise_disjoint_fluctuationSupport`;
+core 8283)
+
+This addendum connects the type-local Mayer-cover product to the ultralocal
+product-measure independence theorem.  The new module
+`YangMills/RG/MayerCoverFactorization.lean` proves that two finite products of
+raw Mayer activities factorize under an explicit `Measure.pi` fluctuation
+measure when their fluctuation-support unions are disjoint.  The pairwise
+version derives that union disjointness from pairwise disjoint factor supports,
+which is the natural output shape for a disconnected-cover compiler.
+
+The same bridge is packaged for `OmegaConnectedCover.mayerActivity`: the
+Ω-connectedness certificates remain part of the cover objects, while the
+factorization hypothesis is exactly disjointness of the actual fluctuation
+dependencies.
+
+**Honest scope.** This is finite ultralocal independence for disconnected
+Mayer-cover components.  It does not prove Dimock Appendix F, the
+renormalized activity estimate, the Yang-Mills fluctuation integral,
+continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.
