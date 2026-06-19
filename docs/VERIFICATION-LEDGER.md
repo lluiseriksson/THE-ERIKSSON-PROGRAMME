@@ -5057,3 +5057,42 @@ specific activity representation.
 Appendix F, direct covariance identities, Hessian coercivity, continuum limit,
 or OS/Wightman reconstruction.  It is an interface and verified summation
 bridge only.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 147 (2026-06-20, **type-local functional/activity substrate**
+`YangMills.RG.RestrictedField`,
+`YangMills.RG.LocalFunctional`,
+`YangMills.RG.LocalActivity`,
+`YangMills.RG.LocalFunctional.globalEval_eq_of_agreeOn`,
+`YangMills.RG.LocalFunctional.globalEval_finsetProd`,
+`YangMills.RG.LocalActivity.globalEval_eq_of_agreeOn`,
+`YangMills.RG.LocalActivity.globalEval_finsetProd`; core 8278)
+
+**Build:** green (`lake env lean YangMills/RG/LocalFunctional.lean`).
+Full-core and oracle verification are recorded with the commit carrying this
+addendum.
+
+This addendum closes the first constructive F.1 substrate recommended by the
+kinetic-sweep audit: represent locality in the types, not as a late global
+`DependsOnlyOn` proposition.  The new module
+`YangMills/RG/LocalFunctional.lean` defines:
+
+* `RestrictedField S V := ∀ x : {x // x ∈ S}, V x.1`;
+* `LocalFunctional Site V α`, whose `eval` can only inspect a field restricted
+  to its finite `support`;
+* `LocalActivity Site Ψ Φ α`, with separate spectator and fluctuation supports;
+* global adapters back to full fields;
+* finite sums/products via support unions, including a finite-product
+  constructor over a subtype-indexed cover.
+
+The locality bridges are theorem-fed.  `globalEval_eq_of_agreeOn` for both
+`LocalFunctional` and `LocalActivity` proves that changing global fields outside
+the declared support cannot change the value.  The product theorems
+`globalEval_finsetProd` prove that the typed finite product evaluates as the
+product of global evaluations while carrying the union of supports.
+
+**Honest scope.** This is the algebraic locality substrate for a future
+constructive Dimock-F.1 compiler.  It does **not** define `rawMayer`,
+`omegaConnectedCoverActivity`, ultralocal product integration,
+`dimockEffectiveActivity`, Appendix F, the Yang-Mills raw activity bound,
+continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

@@ -309,6 +309,16 @@ This permits parallel producers such as Appendix F, direct covariance, or Ward
 cancellation to target the same scalar interface without relabelling their
 unproved analytic inputs.
 
+The first constructive F.1 substrate is now `YangMills/RG/LocalFunctional.lean`.
+It follows the "locality in the types" design: a `LocalFunctional` can only
+evaluate a `RestrictedField` on its finite support, and a two-field
+`LocalActivity` has separate spectator/fluctuation supports.  The global
+adapters satisfy oracle-clean invariance theorems under changes off support,
+and finite products automatically carry the union of supports.  This is the
+typed locality layer that future `rawMayer`, `omegaConnectedCoverActivity`,
+ultralocal integration, and `dimockEffectiveActivity` definitions should
+consume; it is not Appendix F itself.
+
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the
 request was for the **specific page-level theorem statements** so the Lean

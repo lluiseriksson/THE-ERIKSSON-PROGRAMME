@@ -225,6 +225,10 @@ import YangMills.RG.UVMassGap
 -- renormalized with-holes activities, and scalar `SingleScaleUVDecay`, with
 -- the summation bridge from hole activities to the scalar bound.
 import YangMills.RG.SingleScaleUVDecay
+-- Type-local functional/activity substrate for the constructive Dimock-F.1
+-- compiler: local activities can only inspect restricted fields on their finite
+-- supports; global adapters are invariant under changes off support.
+import YangMills.RG.LocalFunctional
 -- The honest YM end-to-end UV conditional with the MARGINAL coupling: the
 -- geometric-profile assembly generalized to any nonnegative summable scale
 -- profile, specialized to the (asymptotically-free) marginal coupling flow.

@@ -1,5 +1,6 @@
 import YangMillsCore
 import YangMills.RG.NearLog
+import YangMills.RG.LocalFunctional
 
 /-! # Oracle check — one command, every headline
 
@@ -129,6 +130,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- scalar single-scale UV decay consumed by the mass-gap assembly
 #print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities
 #print axioms YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_geometric
+-- type-local support substrate for constructive Dimock F.1 activities
+#print axioms YangMills.RG.LocalFunctional.globalEval_eq_of_agreeOn
+#print axioms YangMills.RG.LocalFunctional.globalEval_finsetProd
+#print axioms YangMills.RG.LocalActivity.globalEval_eq_of_agreeOn
+#print axioms YangMills.RG.LocalActivity.globalEval_finsetProd
 -- decoupling/regularisation bridge: a uniform activity profile bound passes to
 -- the pointwise limiting activity
 #print axioms YangMills.RG.activity_profile_bound_of_tendsto

@@ -10,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8277 jobs**.
+* `lake build YangMillsCore` is green at **8278 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -54,6 +54,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `SingleScaleUVDecay`, with
   `singleScaleUVDecay_of_renormalizedHoleActivities` bridging with-holes
   activities to the scalar bound consumed by `UVMassGap`;
+* the type-local functional/activity substrate
+  `YangMills/RG/LocalFunctional.lean`: restricted fields indexed by finite
+  supports, `LocalFunctional`, two-field `LocalActivity`, global adapters
+  invariant under off-support changes, and finite products supported on support
+  unions;
 * the abstract activity-limit bridge
   `activity_profile_bound_of_tendsto`: a metric/profile bound uniform in a
   regulator passes to the pointwise limiting activity;
