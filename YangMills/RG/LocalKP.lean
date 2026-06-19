@@ -279,4 +279,39 @@ theorem holePolymerSystem_norm_clusterSum_le_volumeUniform {d L : ℕ} [NeZero L
       ≤ ∑ c : (holePolymerSystem H z).Polymer, ‖(holePolymerSystem H z).activity c‖ * Real.exp (c.val.card : ℝ) :=
   KP.kp_norm_clusterSum_le_sharp (holePolymerSystem H z) (holePolymerSystem_KPCriterion_volumeUniform H z h_local)
 
+/-- **Scaled volume-uniform Mayer cluster series convergence.**
+
+The same local criterion as `holePolymerSystem_KPCriterion_volumeUniform_scaled`
+feeds the sharp KP convergence theorem for a scalar-tilted activity field. -/
+theorem holePolymerSystem_converges_volumeUniform_scaled {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) (ρ : ℝ)
+    (h_local : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter (fun Y : PolymerType H z => s ∈ Y.val),
+        ‖(ρ : ℂ) * (holePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ ((3 ^ d + 1 : ℕ) : ℝ)⁻¹) :
+    Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) → ((holePolymerSystem H z).scaleActivity ρ).Polymer,
+        (KP.ursell ((holePolymerSystem H z).scaleActivity ρ) X : ℂ) *
+          ∏ i, ((holePolymerSystem H z).scaleActivity ρ).activity (X i)) :=
+  KP.kp_convergence_sharp ((holePolymerSystem H z).scaleActivity ρ)
+    (holePolymerSystem_KPCriterion_volumeUniform_scaled H z ρ h_local)
+
+/-- **Scaled volume-uniform quantitative cluster-sum bound.**
+
+This is the scalar-tilted analogue of
+`holePolymerSystem_norm_clusterSum_le_volumeUniform`, with the same local
+smallness criterion used by the RG cluster-tail estimates. -/
+theorem holePolymerSystem_norm_clusterSum_le_volumeUniform_scaled {d L : ℕ}
+    [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) (ρ : ℝ)
+    (h_local : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter (fun Y : PolymerType H z => s ∈ Y.val),
+        ‖(ρ : ℂ) * (holePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ ((3 ^ d + 1 : ℕ) : ℝ)⁻¹) :
+    ‖KP.clusterSum ((holePolymerSystem H z).scaleActivity ρ)‖
+      ≤ ∑ c : ((holePolymerSystem H z).scaleActivity ρ).Polymer,
+          ‖((holePolymerSystem H z).scaleActivity ρ).activity c‖ *
+            Real.exp (c.val.card : ℝ) :=
+  KP.kp_norm_clusterSum_le_sharp ((holePolymerSystem H z).scaleActivity ρ)
+    (holePolymerSystem_KPCriterion_volumeUniform_scaled H z ρ h_local)
+
 end YangMills.RG

@@ -170,7 +170,7 @@ Remaining genuinely-open analytic work (now source-grounded, still large):
 holes, on top of the repo's KP layer), **P4** (the §3.14 raw activity bound,
 which for YM needs the YM single-scale integral — not the `φ⁴₃` §3.14).
 
-**Cluster-level substrate update (2026-06-19, Addenda 113–116).**  The
+**Cluster-level substrate update (2026-06-19, Addenda 113–118).**  The
 cluster-union interface now packages clusters as source-shaped hole polymers
 (`clusterUnionPolymer`), controls their active skeleton by the cluster modified
 metric, and proves the skeleton-pinned cluster remainder series bound
@@ -183,8 +183,10 @@ bound by `t⁻¹ * A * (1 - (3^d)^2 * (q * 2^(3^d+1)))⁻¹`.  The follow-up
 `clusterSkeletonRemainderSum_tsum_le_metric_bound_of_local` derives the
 needed tilted KP criterion from the local tilted activity-sum smallness
 condition, using `holePolymerSystem_KPCriterion_volumeUniform_scaled`.  This
-does **not** prove the P3/P4 activity-decay theorem; it proves the exact
-summability consumer interface that P3/P4 must feed.
+scaled local criterion also now feeds the tilted cluster-series convergence
+and tilted norm-bound APIs.  This does **not** prove the P3/P4 activity-decay
+theorem; it proves the exact summability consumer interface that P3/P4 must
+feed.
 
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the

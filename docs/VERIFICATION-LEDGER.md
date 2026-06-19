@@ -4278,3 +4278,29 @@ and the modified-metric activity-decay estimate.  Those are exactly the
 Balaban/Dimock `hRpoly`/P3-P4 analytic inputs; they are not proved here.  No
 continuum limit or OS/Wightman reconstruction is claimed. Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 118 (2026-06-19, **scaled local KP convergence API**
+`YangMills.RG.holePolymerSystem_converges_volumeUniform_scaled`,
+`YangMills.RG.holePolymerSystem_norm_clusterSum_le_volumeUniform_scaled`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum rounds off the API opened in Addendum 117.  The scaled local KP
+criterion now feeds the same two sharp KP interfaces already available in the
+unscaled local theory:
+
+* `holePolymerSystem_converges_volumeUniform_scaled` — absolute convergence of
+  the scalar-tilted hole-polymer cluster series;
+* `holePolymerSystem_norm_clusterSum_le_volumeUniform_scaled` — the matching
+  volume-uniform norm bound for the tilted cluster sum.
+
+Both theorems are direct applications of `KP.kp_convergence_sharp` and
+`KP.kp_norm_clusterSum_le_sharp` to the scalar-tilted polymer system, with
+`holePolymerSystem_KPCriterion_volumeUniform_scaled` supplying the criterion.
+
+**Honest scope.** These are consumer/API theorems for a scalar activity tilt.
+They do not prove the Yang-Mills activity-decay estimate, the cluster expansion
+with holes, the continuum limit, or OS/Wightman reconstruction. Clay distance
+**~0% (<0.1%), unchanged**.
