@@ -69,7 +69,9 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   products factorize under that product fluctuation measure whenever their
   fluctuation supports are pairwise disjoint, and a disjoint union of cover
   indices integrates as the product of the two integrated subcover products
-  under the same cross-support disjointness hypothesis;
+  under the same cross-support disjointness hypothesis.  The same module now
+  defines the fluctuation-overlap graph on cover indices and proves the
+  no-cross-edge criterion that supplies that pairwise disjointness hypothesis;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

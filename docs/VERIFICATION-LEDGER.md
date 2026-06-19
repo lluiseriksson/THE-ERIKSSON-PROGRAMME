@@ -5313,3 +5313,30 @@ independence.  It does not prove the Appendix-F convergence theorem, the
 renormalized activity estimate, the Yang-Mills fluctuation integral,
 continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 155 (2026-06-20, **fluctuation-overlap no-cross-edge split**
+`YangMills.RG.LocalActivity.fluctuationOverlapGraph_adj_iff`,
+`YangMills.RG.LocalActivity.pairwise_disjoint_fluctuationSupport_of_no_cross_adj`,
+`YangMills.RG.LocalActivity.mayerCoverActivity_union_integral_of_no_cross_fluctuationAdj`;
+core 8283)
+
+This addendum adds the finite graph criterion for disconnected Mayer-cover
+components.  The new `fluctuationOverlapGraph` has an edge exactly when two
+type-local activities have overlapping fluctuation supports.  If two disjoint
+index blocks have no cross-edge in this graph, then
+`pairwise_disjoint_fluctuationSupport_of_no_cross_adj` supplies the pairwise
+cross-support disjointness hypothesis consumed by Addendum 154.  The
+integrated theorem
+`mayerCoverActivity_union_integral_of_no_cross_fluctuationAdj` packages the
+result as a graph-theoretic disconnected-cover split.
+
+This is the finite connected-component extraction precursor for future F.1 /
+Appendix-F work: a source-specific compiler may identify disconnected blocks
+in the fluctuation-overlap graph and feed them directly to the existing
+ultralocal factorization theorem.
+
+**Honest scope.** This is still finite graph algebra plus product-measure
+independence.  It does not construct the Yang-Mills Gaussian fluctuation
+measure, prove covariance decay, prove Dimock Appendix F, establish `hRpoly`,
+continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

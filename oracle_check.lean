@@ -153,9 +153,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.OmegaConnectedCover.globalEval_mayerActivity
 #print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_globalEval_eq_of_agreeOn
 -- ultralocal independence for finite Mayer-cover products
+#print axioms YangMills.RG.LocalActivity.fluctuationOverlapGraph_adj_iff
+#print axioms YangMills.RG.LocalActivity.pairwise_disjoint_fluctuationSupport_of_no_cross_adj
 #print axioms YangMills.RG.LocalActivity.globalEval_mayerCoverActivity_union
 #print axioms YangMills.RG.LocalActivity.mayerCoverActivity_integral_mul_of_pairwise_disjoint_fluctuationSupport
 #print axioms YangMills.RG.LocalActivity.mayerCoverActivity_union_integral_of_pairwise_disjoint_fluctuationSupport
+#print axioms YangMills.RG.LocalActivity.mayerCoverActivity_union_integral_of_no_cross_fluctuationAdj
 #print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_integral_mul_of_pairwise_disjoint_fluctuationSupport
 -- decoupling/regularisation bridge: a uniform activity profile bound passes to
 -- the pointwise limiting activity, and a summable telescopic regulator defect

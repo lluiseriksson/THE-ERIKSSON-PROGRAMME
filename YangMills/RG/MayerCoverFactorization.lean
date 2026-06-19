@@ -32,6 +32,58 @@ open scoped BigOperators
 
 namespace LocalActivity
 
+/-- Index graph whose edges record overlap of fluctuation supports for a
+family of type-local activities.  This is the finite graph a disconnected-cover
+compiler can use before handing cross-component disjointness to the
+product-measure factorization theorem below. -/
+def fluctuationOverlapGraph {Site ι : Type*} [DecidableEq Site]
+    {Ψ Φ : Site → Type*} (H : ι → LocalActivity Site Ψ Φ ℂ) :
+    SimpleGraph ι where
+  Adj i j :=
+    i ≠ j ∧ ¬ Disjoint (H i).fluctuationSupport (H j).fluctuationSupport
+  symm := by
+    intro i j h
+    exact ⟨h.1.symm, by simpa [disjoint_comm] using h.2⟩
+  loopless := ⟨fun i h => h.1 rfl⟩
+
+@[simp]
+theorem fluctuationOverlapGraph_adj_iff
+    {Site ι : Type*} [DecidableEq Site]
+    {Ψ Φ : Site → Type*} (H : ι → LocalActivity Site Ψ Φ ℂ)
+    {i j : ι} :
+    (fluctuationOverlapGraph H).Adj i j ↔
+      i ≠ j ∧
+        ¬ Disjoint (H i).fluctuationSupport (H j).fluctuationSupport :=
+  Iff.rfl
+
+/-- If two distinct indices are not adjacent in the fluctuation-overlap graph,
+their fluctuation supports are disjoint. -/
+theorem fluctuationSupport_disjoint_of_not_adj
+    {Site ι : Type*} [DecidableEq Site]
+    {Ψ Φ : Site → Type*} (H : ι → LocalActivity Site Ψ Φ ℂ)
+    {i j : ι} (hij : i ≠ j)
+    (hnadj : ¬ (fluctuationOverlapGraph H).Adj i j) :
+    Disjoint (H i).fluctuationSupport (H j).fluctuationSupport := by
+  by_contra hdisj
+  exact hnadj ⟨hij, hdisj⟩
+
+/-- No cross-edges in the fluctuation-overlap graph give the pairwise
+cross-disjointness hypothesis consumed by Mayer-cover factorization. -/
+theorem pairwise_disjoint_fluctuationSupport_of_no_cross_adj
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    {Ψ Φ : Site → Type*}
+    (I J : Finset ι) (H : ι → LocalActivity Site Ψ Φ ℂ)
+    (hIJ : Disjoint I J)
+    (hno : ∀ i, i ∈ I → ∀ j, j ∈ J →
+      ¬ (fluctuationOverlapGraph H).Adj i j) :
+    ∀ i, i ∈ I → ∀ j, j ∈ J →
+      Disjoint (H i).fluctuationSupport (H j).fluctuationSupport := by
+  intro i hi j hj
+  have hij : i ≠ j := by
+    intro h
+    exact (Finset.disjoint_left.mp hIJ hi) (by simpa [h] using hj)
+  exact fluctuationSupport_disjoint_of_not_adj H hij (hno i hi j hj)
+
 /-- Evaluation of a Mayer-cover product over a disjoint union of index sets
 splits into the product of the two evaluations. -/
 theorem globalEval_mayerCoverActivity_union
@@ -147,6 +199,31 @@ theorem mayerCoverActivity_union_integral_of_pairwise_disjoint_fluctuationSuppor
   simpa [globalEval_mayerCoverActivity_union I J H hIJ] using
     mayerCoverActivity_integral_mul_of_pairwise_disjoint_fluctuationSupport
       μ I J H H ψ hpair
+
+/-- Graph-theoretic form of the finite disconnected-cover split: if two
+disjoint index blocks have no cross-edge in the fluctuation-overlap graph, then
+the integrated Mayer-cover product over their union factorizes. -/
+theorem mayerCoverActivity_union_integral_of_no_cross_fluctuationAdj
+    {Site β ι : Type*} [Fintype Site] [DecidableEq Site] [DecidableEq ι]
+    [MeasurableSpace β] [Nonempty β]
+    {Ψ : Site → Type*}
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    (I J : Finset ι)
+    (H : ι → LocalActivity Site Ψ (fun _ => β) ℂ)
+    (ψ : ∀ x, Ψ x)
+    (hIJ : Disjoint I J)
+    (hno : ∀ i, i ∈ I → ∀ j, j ∈ J →
+      ¬ (fluctuationOverlapGraph H).Adj i j) :
+    ∫ φ, (mayerCoverActivity (I ∪ J) H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ)
+      =
+      (∫ φ, (mayerCoverActivity I H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ)) *
+      ∫ φ, (mayerCoverActivity J H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ) := by
+  exact mayerCoverActivity_union_integral_of_pairwise_disjoint_fluctuationSupport
+    μ I J H ψ hIJ
+    (pairwise_disjoint_fluctuationSupport_of_no_cross_adj I J H hIJ hno)
 
 end LocalActivity
 
