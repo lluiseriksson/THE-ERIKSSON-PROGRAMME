@@ -50,7 +50,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `omegaHolePolymerSystem`, whose incompatibility is intersection of active
   skeletons (`X₁ ∩ Ω` with `X₂ ∩ Ω`), matching Dimock II Appendix F's
   `Ω`-connected relation and kept separate from the existing touching
-  hard-core `holePolymerSystem`.
+  hard-core `holePolymerSystem`;
+* the corresponding source-facing local KP consumer
+  `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp` and
+  convergence/norm companions: a local window pinned at each active skeleton
+  cube feeds the KP criterion for the Ω-active Appendix-F relation.
 
 The latest RG skeleton-tail interface is local-KP-shaped throughout:
 
@@ -112,9 +116,11 @@ The remaining hard input is still **not** a compiler trick:
 
 The immediate P3 design constraint is now source-pinned: Dimock Appendix F
 clusters use `Ω`-connectedness (`X₁ ∩ X₂ ∩ Ω ≠ ∅`), while the existing
-`holePolymerSystem` uses full-polymer overlap/touching.  Future Appendix-F
-formalization must use `omegaHolePolymerSystem` or prove a comparison theorem
-before reusing the touching-system local-KP consumers.
+`holePolymerSystem` uses full-polymer overlap/touching.  The Ω-active system
+now has its own local KP criterion and cluster-sum consumers, so future
+Appendix-F formalization can feed the source-facing relation directly.  The
+touching-system local-KP consumers remain valid only for their stronger
+hard-core system unless a comparison theorem is proved.
 
 The scaffolding around it is mostly theorem-fed. What is missing is the
 model-specific constructive-QFT proof: concrete gauge-covariant operator,

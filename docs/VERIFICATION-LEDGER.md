@@ -4707,3 +4707,28 @@ semantic overclaim: future P3 work must either use the source-facing
 `omegaHolePolymerSystem` or prove a comparison theorem before reusing the
 already-verified touching-system local-KP consumers. Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 136 (2026-06-19, **Appendix-F active local KP consumer**
+`YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp`;
+core 8273)
+
+**Build:** green (`lake build YangMillsCore`, 8273 jobs).
+Oracle: `[propext, Classical.choice, Quot.sound]`.
+
+This addendum records the source-facing local KP package for the active
+Appendix-F relation.  The key inclusion
+`omega_filter_incomp_subset_skeleton` proves that every polymer incompatible
+with `X` in `omegaHolePolymerSystem` is covered by a root in the active
+skeleton of `X`.  Therefore a local window
+
+`Σ_{Y : s ∈ skeleton(Y)} exp(t) · ‖z(Y)‖ · exp(|Y|) ≤ 1`
+
+at every active cube `s` implies the Kotecký-Preiss criterion for
+`(omegaHolePolymerSystem H z).scaleActivity (exp t)` with weight `|X|`.
+The same package includes unscaled/scaled criteria and the corresponding
+Mayer-series convergence and cluster-sum norm bounds.
+
+**Honest scope.** This is the KP consumer for Dimock's literal
+`Ω`-connected cluster relation, not the Yang-Mills single-scale activity
+decay itself.  The hard analytic bound still has to supply the local active
+window.  Clay distance **~0% (<0.1%), unchanged**.

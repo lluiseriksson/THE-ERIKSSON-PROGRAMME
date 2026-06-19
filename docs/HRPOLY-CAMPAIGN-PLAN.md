@@ -202,7 +202,13 @@ from Dimock II Appendix F confirms the with-holes cluster relation:
 verified local-KP consumers, but it is not to be advertised as the literal
 Appendix-F compatibility relation.  The new `omegaHolePolymerSystem`
 uses nonempty active skeletons and incompatibility by skeleton intersection,
-giving P3 a source-faithful entry point.
+giving P3 a source-faithful entry point.  The follow-up source-facing local
+KP package is now also theorem-fed:
+`omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp` and its
+convergence/norm companions show that a local window pinned at active skeleton
+cubes is enough to run the KP convergence machinery for the literal
+Appendix-F relation.  This still carries the model-specific activity estimate;
+it closes the consumer side, not the Yang-Mills activity-decay theorem.
 
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the

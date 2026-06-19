@@ -250,6 +250,8 @@ import YangMills.RG.CubeLattice
 
 -- hRpoly campaign brick P2b-i: polymer modified metric
 import YangMills.RG.ModifiedMetric
+-- hRpoly P3 substrate: touching hard-core hole polymers plus the source-facing
+-- Appendix-F `Ω`-active polymer system, with local KP consumers for both.
 import YangMills.RG.HolePolymerSystem
 import YangMills.RG.Translation
 import YangMills.RG.LocalKP

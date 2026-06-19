@@ -139,8 +139,12 @@ imply disjoint.  In Lean, the active region `Ω` is represented by
 skeletons.  The existing `holePolymerSystem` is the stronger touching
 hard-core lattice system used by already-verified local-KP consumers; the
 new `omegaHolePolymerSystem` records the Appendix-F-facing active relation
-separately.  Future P3 work must use this source-facing system or prove a
-comparison theorem before reusing the touching-system consumers.
+separately.  Its local KP consumer
+`omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp` now proves
+that a skeleton-pinned local activity window feeds KP convergence for this
+literal `Ω`-connected relation.  Future P3 work should feed that
+source-facing consumer directly, or prove a comparison theorem before reusing
+the touching-system consumers.
 
 ## 6. Connection to the existing `KP` layer (architectural finding, 2026-06-12)
 

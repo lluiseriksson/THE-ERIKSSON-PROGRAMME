@@ -17,6 +17,11 @@ namespace YangMills.RG
 abbrev PolymerType {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) :=
   (holePolymerSystem H z).Polymer
 
+/-- Abbreviation for the source-facing active-polymer subtype. -/
+abbrev OmegaPolymerType {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) :=
+  (omegaHolePolymerSystem H z).Polymer
+
 /-- The closed neighborhood of a finset of cubes on the lattice. -/
 def closedNeigh {d L : ℕ} [NeZero L] (X : Finset (Cube d L)) : Finset (Cube d L) :=
   X ∪ X.biUnion (fun x => (cubeAdj d L).neighborFinset x)
@@ -279,6 +284,205 @@ theorem holePolymerSystem_KPCriterion_volumeUniform_exp {d L : ℕ} [NeZero L]
   refine Finset.sum_congr rfl fun Y _ => ?_
   rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
     abs_of_pos (Real.exp_pos t)]
+
+/-- For the Appendix-F-facing `Ω`-active system, all polymers incompatible with
+`X` are covered by the active skeleton roots of `X`. -/
+lemma omega_filter_incomp_subset_skeleton {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (X : OmegaPolymerType H z) :
+    Finset.filter (fun Y : OmegaPolymerType H z =>
+        (omegaHolePolymerSystem H z).incomp X Y) Finset.univ ⊆
+      (skeleton H X.val).biUnion
+        (fun s => Finset.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val) Finset.univ) := by
+  intro Y hY
+  rw [mem_filter] at hY
+  rw [mem_biUnion]
+  obtain ⟨s, hsX, hsY⟩ :=
+    (omegaHolePolymerSystem_incomp_iff_exists H z X Y).mp hY.2
+  refine ⟨s, hsX, ?_⟩
+  rw [mem_filter]
+  exact ⟨mem_univ Y, hsY⟩
+
+/-- **Source-facing `Ω`-active volume-uniform KP criterion.**
+
+Dimock Appendix F connects polymers through intersections of their active parts
+inside `Ω`, represented here by `skeleton H X`.  Thus a local activity window
+pinned at each active cube, with total mass at most `1`, gives the KP criterion
+with weight `a(X)=|X|`. -/
+theorem omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton {d L : ℕ}
+    [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (h_local : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ 1) :
+    KP.KPCriterion (omegaHolePolymerSystem H z)
+      (fun X => (X.val.card : ℝ)) := by
+  constructor
+  · intro X
+    positivity
+  · intro X
+    have h_sub := omega_filter_incomp_subset_skeleton H z X
+    have h_sum_le := Finset.sum_le_sum_of_subset_of_nonneg
+        (f := fun Y : OmegaPolymerType H z =>
+          ‖(omegaHolePolymerSystem H z).activity Y‖ *
+            Real.exp (Y.val.card : ℝ))
+        h_sub (fun Y _ _ => by positivity)
+    have h_sum_biunion_le := sum_biUnion_le (skeleton H X.val)
+        (fun s => Finset.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val) Finset.univ)
+        (fun Y : OmegaPolymerType H z =>
+          ‖(omegaHolePolymerSystem H z).activity Y‖ *
+            Real.exp (Y.val.card : ℝ)) (fun Y => by positivity)
+    have h_sum_local_le :
+        ∑ s ∈ skeleton H X.val,
+          ∑ Y ∈ Finset.filter
+              (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val) Finset.univ,
+            ‖(omegaHolePolymerSystem H z).activity Y‖ *
+              Real.exp (Y.val.card : ℝ)
+        ≤ ∑ s ∈ skeleton H X.val, (1 : ℝ) := by
+      apply Finset.sum_le_sum
+      intro s _
+      exact h_local s
+    have h_card :
+        ∑ s ∈ skeleton H X.val, (1 : ℝ) ≤ (X.val.card : ℝ) := by
+      rw [sum_const, nsmul_eq_mul]
+      simp only [mul_one]
+      exact_mod_cast Finset.card_le_card (skeleton_subset H X.val)
+    exact h_sum_le.trans (h_sum_biunion_le.trans (h_sum_local_le.trans h_card))
+
+/-- Scalar-tilted version of the source-facing `Ω`-active KP criterion. -/
+theorem omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_scaled
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (ρ : ℝ)
+    (h_local : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        ‖(ρ : ℂ) * (omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ 1) :
+    KP.KPCriterion ((omegaHolePolymerSystem H z).scaleActivity ρ)
+      (fun X => (X.val.card : ℝ)) := by
+  constructor
+  · intro X
+    positivity
+  · intro X
+    have h_sub := omega_filter_incomp_subset_skeleton H z X
+    have h_sum_le := Finset.sum_le_sum_of_subset_of_nonneg
+        (f := fun Y : OmegaPolymerType H z =>
+          ‖(ρ : ℂ) * (omegaHolePolymerSystem H z).activity Y‖ *
+            Real.exp (Y.val.card : ℝ))
+        h_sub (fun Y _ _ => by positivity)
+    have h_sum_biunion_le := sum_biUnion_le (skeleton H X.val)
+        (fun s => Finset.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val) Finset.univ)
+        (fun Y : OmegaPolymerType H z =>
+          ‖(ρ : ℂ) * (omegaHolePolymerSystem H z).activity Y‖ *
+            Real.exp (Y.val.card : ℝ)) (fun Y => by positivity)
+    have h_sum_local_le :
+        ∑ s ∈ skeleton H X.val,
+          ∑ Y ∈ Finset.filter
+              (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val) Finset.univ,
+            ‖(ρ : ℂ) * (omegaHolePolymerSystem H z).activity Y‖ *
+              Real.exp (Y.val.card : ℝ)
+        ≤ ∑ s ∈ skeleton H X.val, (1 : ℝ) := by
+      apply Finset.sum_le_sum
+      intro s _
+      exact h_local s
+    have h_card :
+        ∑ s ∈ skeleton H X.val, (1 : ℝ) ≤ (X.val.card : ℝ) := by
+      rw [sum_const, nsmul_eq_mul]
+      simp only [mul_one]
+      exact_mod_cast Finset.card_le_card (skeleton_subset H X.val)
+    show ∑ Y ∈ Finset.univ.filter
+        (fun Y => ((omegaHolePolymerSystem H z).scaleActivity ρ).incomp X Y),
+        ‖((omegaHolePolymerSystem H z).scaleActivity ρ).activity Y‖ *
+          Real.exp ((Y.val.card : ℝ)) ≤ (X.val.card : ℝ)
+    exact h_sum_le.trans (h_sum_biunion_le.trans (h_sum_local_le.trans h_card))
+
+/-- Exponential-tilted version of the source-facing `Ω`-active KP criterion. -/
+theorem omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (t : ℝ)
+    (h_local : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        Real.exp t * ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ 1) :
+    KP.KPCriterion ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t))
+      (fun X => (X.val.card : ℝ)) := by
+  refine omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_scaled H z
+    (Real.exp t) ?_
+  intro s
+  refine (le_of_eq ?_).trans (h_local s)
+  refine Finset.sum_congr rfl fun Y _ => ?_
+  rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+    abs_of_pos (Real.exp_pos t)]
+
+/-- Source-facing `Ω`-active Mayer series convergence from the local active
+skeleton window. -/
+theorem omegaHolePolymerSystem_converges_volumeUniform_skeleton {d L : ℕ}
+    [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (h_local : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ 1) :
+    Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) → (omegaHolePolymerSystem H z).Polymer,
+        (KP.ursell (omegaHolePolymerSystem H z) X : ℂ) *
+          ∏ i, (omegaHolePolymerSystem H z).activity (X i)) :=
+  KP.kp_convergence_sharp (omegaHolePolymerSystem H z)
+    (omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton H z h_local)
+
+/-- Source-facing `Ω`-active cluster-sum norm bound from the local active
+skeleton window. -/
+theorem omegaHolePolymerSystem_norm_clusterSum_le_volumeUniform_skeleton
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (h_local : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ 1) :
+    ‖KP.clusterSum (omegaHolePolymerSystem H z)‖
+      ≤ ∑ c : (omegaHolePolymerSystem H z).Polymer,
+          ‖(omegaHolePolymerSystem H z).activity c‖ *
+            Real.exp (c.val.card : ℝ) :=
+  KP.kp_norm_clusterSum_le_sharp (omegaHolePolymerSystem H z)
+    (omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton H z h_local)
+
+/-- Exponential-tilted source-facing `Ω`-active Mayer series convergence. -/
+theorem omegaHolePolymerSystem_converges_volumeUniform_skeleton_exp
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (t : ℝ)
+    (h_local : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        Real.exp t * ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ 1) :
+    Summable (fun n : ℕ => (((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) →
+          ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)).Polymer,
+        (KP.ursell ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)) X : ℂ) *
+          ∏ i, ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)).activity (X i)) :=
+  KP.kp_convergence_sharp ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t))
+    (omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp H z t h_local)
+
+/-- Exponential-tilted source-facing `Ω`-active quantitative cluster-sum bound. -/
+theorem omegaHolePolymerSystem_norm_clusterSum_le_volumeUniform_skeleton_exp
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
+    (t : ℝ)
+    (h_local : ∀ s : Cube d L,
+      ∑ Y ∈ Finset.univ.filter
+          (fun Y : OmegaPolymerType H z => s ∈ skeleton H Y.val),
+        Real.exp t * ‖(omegaHolePolymerSystem H z).activity Y‖ *
+          Real.exp (Y.val.card : ℝ) ≤ 1) :
+    ‖KP.clusterSum ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t))‖
+      ≤ ∑ c : ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)).Polymer,
+          ‖((omegaHolePolymerSystem H z).scaleActivity (Real.exp t)).activity c‖ *
+            Real.exp (c.val.card : ℝ) :=
+  KP.kp_norm_clusterSum_le_sharp ((omegaHolePolymerSystem H z).scaleActivity (Real.exp t))
+    (omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp H z t h_local)
 
 /-- **Volume-Uniform Mayer Cluster Series Convergence:**
     The cluster series converges absolutely and volume-uniformly under the local summability condition. -/
