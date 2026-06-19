@@ -187,6 +187,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.rep_wilsonLine_gaugeAct
 -- the ℓ²(lattice) operator contraction of Q (L^{2-d}; a contraction for d ≥ 4)
 #print axioms YangMills.RG.linAvg_l2_contraction
+-- Hilbert-space Q†Q mass: energy identity, PSD, and operator-norm control
+#print axioms YangMills.RG.inner_qMassCLM_self
+#print axioms YangMills.RG.qMassCLM_psd
+#print axioms YangMills.RG.qMassCLM_opNorm_le
 -- the free RG step's covariance transformation law (on Mathlib's IsGaussian)
 #print axioms YangMills.RG.covarianceBilinDual_map_clm
 

@@ -38,6 +38,7 @@ and the specific gauge propagator bound.
 | **G2** | **Free lattice Gaussian field** as an `IsGaussian` measure on the bond-field space `E = ConcreteEdge → V` with a prescribed covariance (the prototype: mass-term / identity covariance). | reachable |
 | **G3** | **Free RG step = Gaussian pushforward**: `(linAvgCLM)_* μ` is Gaussian (`isGaussian_map`); its covariance is `Q C Qᵀ` — the **covariance transformation law** `covarianceBilinDual (μ.map Q) L L = covarianceBilinDual μ (L∘Q) (L∘Q)`, proved abstractly for any CLM. `RG/GaussianStep.covarianceBilinDual_map_clm`. | **CLOSED** (ledger Add. 46, core 8248) |
 | **G4** | **Free covariance contraction by `‖Q‖²`**: given a covariance bound `Cov(μ)[M,M] ≤ B‖M‖²` (the CMP 95 input `‖C_k‖ ≤ cL²`), `Cov(μ.map Q)[L,L] ≤ B·‖Q‖²·‖L‖²`. With `‖Q‖² ≤ L^{2-d}` (linAvg_l2) this is the free per-scale contraction. `RG/GaussianStep.covarianceBilinDual_map_le`. | **CLOSED** (ledger Add. 47, core 8248) |
+| **G4′** | **Hilbert-space adjoint mass `Q†Q`**: the scaled averaging map on bond `ℓ²`/`PiLp 2` spaces, with explicit scalar `s`, and the positive mass `qMassCLM = (sQ)†(sQ)`.  Proves `⟪A,Q†Q A⟫ = ‖QA‖²`, PSD, and `‖Q†Q‖ ≤ ‖Q‖²`. | **CLOSED** (ledger Add. 144, core 8274) |
 | **G5** | **Interacting correction** (the genuine analytic core): the Yang–Mills measure is `Gaussian · exp(−interaction)`; the RG step is the fluctuation integral with the small/large-field split, and the covariance contraction must survive the interaction.  Bałaban CMP 95–96 + 122; months-scale. | **campaign (the wall)** |
 
 ## Honest scope

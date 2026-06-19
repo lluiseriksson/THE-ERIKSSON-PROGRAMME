@@ -4936,3 +4936,40 @@ made in `Ubar.lean`: `Ubar` averages `nearLog (rep(D).val - 1)`.
 identifying a conditional fast-field measure with Bałaban's `T`-operation.  It
 only closes the local cutoff-conversion brick already available from the
 Mercator calculus.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 144 (2026-06-19, **Hilbert-space averaging adjoint mass**
+`YangMills.RG.scaledLinAvgCLM`, `YangMills.RG.qMassCLM`,
+`YangMills.RG.inner_qMassCLM_self`, `YangMills.RG.qMassCLM_psd`,
+`YangMills.RG.qMassCLM_opNorm_le`; core 8274)
+
+**Build:** green (`lake env lean YangMills/RG/AveragingAdjoint.lean`).
+Full-core and oracle verification are recorded with the commit carrying this
+addendum.
+
+This addendum records the first theorem-fed brick of the direct covariance
+route suggested by the latest Eriksson-paper audit.  The useful mathematical
+step is not the broad interpretive thermodynamic language, but the concrete
+Hilbert-space operator that a Gaussian block kernel consumes:
+
+`qMassCLM = (sQ)†(sQ)`.
+
+The implementation deliberately does **not** reuse the older `linAvgCLM`
+directly, because the plain function space carries Mathlib's sup norm and does
+not expose the Hilbert adjoint wanted here.  Instead the new module
+`YangMills/RG/AveragingAdjoint.lean` defines fine and coarse bond fields on the
+finite-dimensional `ℓ²`/`PiLp 2` Hilbert spaces, keeps the scalar rescaling
+`s : ℝ` explicit, and proves:
+
+* `inner_qMassCLM_self`:
+  `⟪A, Q†Q A⟫ = ‖Q A‖²`;
+* `qMassCLM_psd`: the adjoint mass is positive semidefinite;
+* `qMassCLM_opNorm_le`: `‖Q†Q‖ ≤ ‖Q‖²`.
+
+This is the deterministic mass/coercivity algebra behind a future
+`GaussianBlockKernel` or finite-range `Q†Q` kernel theorem.
+
+**Honest scope.** This does **not** prove the gauge-fixed Hessian is coercive,
+does **not** identify the full Yang-Mills fluctuation covariance, does **not**
+prove finite-range kernel decay, and does **not** discharge the activity-decay
+input `hRpoly`.  It is a local Hilbert-space substrate theorem only.  Clay
+distance **~0% (<0.1%), unchanged**.

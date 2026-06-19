@@ -271,6 +271,18 @@ that a conditioned fast-field measure is literally Bałaban's `T`-operation
 remains an **amber/dark** interface until the disintegration and density
 comparison are reconstructed from the primary Bałaban source.
 
+The later paper audit also sharpens a potentially shorter covariance route:
+the scalar UV assembly consumes a terminal decay estimate, so some of the full
+renormalized-activity machinery may be bypassable if one can prove the needed
+single-scale covariance/influence decay directly.  The first safe Lean brick
+of that route is now in `AveragingAdjoint.lean`: the scaled Hilbert-space
+averaging map `scaledLinAvgCLM` on bond `ℓ²`/`PiLp 2` spaces and its adjoint
+mass `qMassCLM = Q†Q`, with the energy identity, positivity, and
+`‖Q†Q‖ ≤ ‖Q‖²`.  The scalar normalization is deliberately left as `s : ℝ`.
+This is only the deterministic mass algebra for a future Gaussian block
+kernel; the finite-range kernel, Hessian coercivity, influence matrix, and
+activity-decay theorem remain open.
+
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the
 request was for the **specific page-level theorem statements** so the Lean

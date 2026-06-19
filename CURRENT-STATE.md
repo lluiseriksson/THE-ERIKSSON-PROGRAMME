@@ -10,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8273 jobs**.
+* `lake build YangMillsCore` is green at **8274 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -36,6 +36,10 @@ The strong-coupling lattice side is now extensive and oracle-clean:
 The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 
 * block geometry and the linear averaging operator `Q`;
+* Hilbert-space adjoint mass for the averaging operator:
+  `scaledLinAvgCLM`, `qMassCLM = Q†Q`, `inner_qMassCLM_self`,
+  `qMassCLM_psd`, and `qMassCLM_opNorm_le`, formulated on the bond
+  `ℓ²`/`PiLp 2` spaces with the rescaling scalar left explicit;
 * gauge covariance of the averaged-contour interface;
 * near-identity logarithm, small-field stability lemmas, and the local
   two-sided cutoff dictionary `norm_nearLog_two_sided_of_norm_le_third`,
