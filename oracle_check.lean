@@ -125,6 +125,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.lattice_mass_gap_of_cluster_and_marginal_coupling
 -- non-vacuity: the marginal-coupling recursion is satisfiable (logistic flow)
 #print axioms YangMills.RG.exists_marginal_coupling_flow
+-- semantic producer/consumer split: renormalized hole activities imply the
+-- scalar single-scale UV decay consumed by the mass-gap assembly
+#print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities
+#print axioms YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_geometric
 -- decoupling/regularisation bridge: a uniform activity profile bound passes to
 -- the pointwise limiting activity
 #print axioms YangMills.RG.activity_profile_bound_of_tendsto

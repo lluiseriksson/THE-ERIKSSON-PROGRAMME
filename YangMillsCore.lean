@@ -221,6 +221,10 @@ import YangMills.RG.ActivityLimit
 -- mass-gap assembly into one theorem — (RG remainder activity bound + coupling
 -- decay) ⟹ the lattice mass gap. The §6.3 obligation in faithful assembled form.
 import YangMills.RG.UVMassGap
+-- Semantic split of the UV producer/consumer interface: raw activities,
+-- renormalized with-holes activities, and scalar `SingleScaleUVDecay`, with
+-- the summation bridge from hole activities to the scalar bound.
+import YangMills.RG.SingleScaleUVDecay
 -- The honest YM end-to-end UV conditional with the MARGINAL coupling: the
 -- geometric-profile assembly generalized to any nonnegative summable scale
 -- profile, specialized to the (asymptotically-free) marginal coupling flow.

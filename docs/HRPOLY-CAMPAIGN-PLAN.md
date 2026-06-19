@@ -292,6 +292,23 @@ norming, and feed the remaining scalar profile to the existing with-holes KP
 consumers.  The opening substrate is `YangMills/SUSY/WardComplex.lean`, plus
 the regulator-limit bridge `YangMills/RG/ActivityLimit.lean`.
 
+The kinetic-sweep audit also recommended separating the final scalar consumer
+from its possible producers.  This is now theorem-fed in
+`YangMills/RG/SingleScaleUVDecay.lean`:
+
+* `SingleScaleUVDecay` is the scalar per-scale estimate consumed by
+  `UVMassGap`;
+* `RawYMActivityDecay` names the pre-renormalized fluctuation-integral profile;
+* `RenormalizedHoleActivityDecay` names the Appendix-F with-holes output
+  profile;
+* `singleScaleUVDecay_of_renormalizedHoleActivities` proves the actual
+  summation bridge from renormalized activities plus `∑ w ≤ K₀` to scalar
+  `SingleScaleUVDecay`.
+
+This permits parallel producers such as Appendix F, direct covariance, or Ward
+cancellation to target the same scalar interface without relabelling their
+unproved analytic inputs.
+
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the
 request was for the **specific page-level theorem statements** so the Lean

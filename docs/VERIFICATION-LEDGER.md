@@ -5017,3 +5017,43 @@ does **not** construct Grassmann variables, Berezin integration, Pfaffians,
 heavy-gluino decoupling, a Nicolai map, the Yang-Mills fluctuation activity
 bound, the continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 146 (2026-06-19, **single-scale UV decay producer/consumer split**
+`YangMills.RG.SingleScaleUVDecay`,
+`YangMills.RG.RawYMActivityDecay`,
+`YangMills.RG.RenormalizedHoleActivityDecay`,
+`YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities`,
+`YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_geometric`; core 8277)
+
+**Build:** green (`lake env lean YangMills/RG/SingleScaleUVDecay.lean`).
+Full-core and oracle verification are recorded with the commit carrying this
+addendum.
+
+This addendum records the architectural split suggested by the kinetic-sweep
+audit.  The mass-gap assembly consumes a scalar terminal estimate, while the
+with-holes polymer construction is only one possible producer of that estimate.
+The new module `YangMills/RG/SingleScaleUVDecay.lean` names the three layers:
+
+* `RawYMActivityDecay` — the pre-renormalized fluctuation-integral activity
+  profile;
+* `RenormalizedHoleActivityDecay` — the Appendix-F output profile for
+  renormalized with-holes activities;
+* `SingleScaleUVDecay` — the scalar per-scale estimate actually consumed by
+  `UVMassGap`.
+
+The theorem `singleScaleUVDecay_of_renormalizedHoleActivities` proves the real
+summation bridge: if `Rsc t k = ∑' Y, Hsharp t k Y`, the activities are
+absolutely summable, each `Hsharp` obeys the renormalized with-holes profile,
+and `∑' Y, w Y ≤ K₀`, then the scalar `SingleScaleUVDecay` holds with amplitude
+`A * K₀`.  The proof consumes the already-verified `polymer_remainder_bound`,
+so it is not merely a definitional wrapper.
+
+The theorem `lattice_mass_gap_of_singleScaleUVDecay_geometric` restates the
+geometric-coupling assembly through the named scalar predicate, so future
+producers can feed the existing mass-gap theorem without being forced through a
+specific activity representation.
+
+**Honest scope.** This does **not** prove raw Yang-Mills activity decay,
+Appendix F, direct covariance identities, Hessian coercivity, continuum limit,
+or OS/Wightman reconstruction.  It is an interface and verified summation
+bridge only.  Clay distance **~0% (<0.1%), unchanged**.

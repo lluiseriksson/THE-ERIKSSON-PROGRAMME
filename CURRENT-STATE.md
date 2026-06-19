@@ -10,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8276 jobs**.
+* `lake build YangMillsCore` is green at **8277 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -49,6 +49,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * free Gaussian covariance pushforward and finite-dimensional Gaussian
   construction;
 * marginal-coupling summability and conditional UV mass-gap assembly;
+* the explicit producer/consumer split for the UV scalar estimate:
+  `RawYMActivityDecay`, `RenormalizedHoleActivityDecay`, and
+  `SingleScaleUVDecay`, with
+  `singleScaleUVDecay_of_renormalizedHoleActivities` bridging with-holes
+  activities to the scalar bound consumed by `UVMassGap`;
 * the abstract activity-limit bridge
   `activity_profile_bound_of_tendsto`: a metric/profile bound uniform in a
   regulator passes to the pointwise limiting activity;
