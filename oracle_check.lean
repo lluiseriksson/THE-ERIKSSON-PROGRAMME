@@ -453,6 +453,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixF_finite_cover_expansion
 #print axioms YangMills.RG.sum_connectedCovers_eq_sum_appendixFConnectedActivity
 #print axioms YangMills.RG.appendixFConnectedActivity_congr
+#print axioms YangMills.RG.confinedComponent_eq_of_connected_no_exit
+#print axioms YangMills.RG.appendixFCanonicalCoverFamilies_eq_admissibleConnectedCoverFamilies
+#print axioms YangMills.RG.prod_one_add_eq_sum_appendixFAdmissibleConnectedCoverFamilies
 #print axioms YangMills.RG.omegaOverlapGraph_univ_skeleton_adj_iff
 #print axioms YangMills.RG.appendixFHoleConnectedActivity_congr
 
