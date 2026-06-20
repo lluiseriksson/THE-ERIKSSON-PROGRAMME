@@ -7221,3 +7221,50 @@ of the finite partial activities to the totalized `appendixFHoleHsharp`, does
 not justify exchange with an infinite target/cluster-size sum, does not prove
 Dimock's residual estimate, and does not establish any continuum/Clay theorem.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 204 (2026-06-20, **finite partial H# convergence interface**
+`YangMills.RG.appendixFHoleHsharpPartial_tendsto`,
+`YangMills.RG.norm_appendixFHoleHsharp_le_of_partial_bound`,
+`YangMills.RG.clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_limit_le`,
+`YangMills.RG.rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_limit_le`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_of_partial_bounds`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_of_partial_bounds_four_mul_margin`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_of_partial_bounds`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_of_partial_bounds_four_mul_margin`;
+core 8301)
+
+This addendum adds `YangMills/RG/AppendixFHsharpConvergence.lean`, the
+contract layer between finite `H#` truncations and the totalized second Ursell
+activity.
+
+The theorem `appendixFHoleHsharpPartial_tendsto` proves that, for a fixed
+target `Y`, summability of
+`n ↦ appendixFHoleHsharpTerm HF zK Y n` implies convergence of the finite
+partial activities to `appendixFHoleHsharp HF zK Y`.  The theorem
+`norm_appendixFHoleHsharp_le_of_partial_bound` then passes any residual
+complex-norm estimate uniform in the finite cutoff `N` to the totalized `H#`
+by `le_of_tendsto'`.
+
+The remaining theorems package that limit passage into the existing residual
+adapters: totalized `ClusterWithHolesActivityDecay`, the rooted version, the
+omega-rooted `SingleScaleUVDecay` producer, the sufficient source margin
+`κ >= 4κ₀ + 3`, and the real-part specialization.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpConvergence.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is not Dimock (642) and not a convergence proof from
+source estimates.  It only states the exact consumer contract: once fixed-target
+summability and uniform finite-partial residual estimates are supplied, the
+previous totalized `H#` residual adapter is theorem-fed.  Clay distance
+**~0% (<0.1%), unchanged**.

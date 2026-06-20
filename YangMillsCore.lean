@@ -338,6 +338,9 @@ import YangMills.RG.AppendixFHsharpResidual
 -- Finite partial H# truncations: convergence-free Ursell partial sums and the
 -- same residual UV adapter at finite cutoff.
 import YangMills.RG.AppendixFHsharpPartial
+-- Convergence interface for H# truncations: summability of fixed-target terms
+-- plus uniform finite-partial bounds feeds the totalized residual adapter.
+import YangMills.RG.AppendixFHsharpConvergence
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

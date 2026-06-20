@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8300 jobs**.
+* `lake build YangMillsCore` is green at **8301 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -313,6 +313,17 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   specializations with and without the margin `κ >= 4κ₀ + 3`.  This is
   convergence-free staging: it does not prove that the partial objects
   converge to `appendixFHoleHsharp`, nor any residual analytic estimate;
+* the convergence interface for the second-Ursell layer
+  `YangMills/RG/AppendixFHsharpConvergence.lean`: it proves that fixed-target
+  summability of the `appendixFHoleHsharpTerm` sequence makes the finite
+  truncations converge to the totalized `appendixFHoleHsharp`, and that any
+  residual complex-norm bound uniform over all finite partial cutoffs passes
+  to the totalized `H#`.  The same module then packages this limit passage into
+  the total residual activity-decay and omega-rooted `SingleScaleUVDecay`
+  producers, including the real-part specialization and the sufficient margin
+  `κ >= 4κ₀ + 3`.  This is still a contract interface: it does not prove the
+  fixed-target summability, the uniform finite-partial residual bound, Dimock
+  (642), or any continuum/Clay theorem;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound

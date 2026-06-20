@@ -16,6 +16,7 @@ import YangMills.RG.AppendixFSecondGas
 import YangMills.RG.AppendixFHsharp
 import YangMills.RG.AppendixFHsharpResidual
 import YangMills.RG.AppendixFHsharpPartial
+import YangMills.RG.AppendixFHsharpConvergence
 
 /-! # Oracle check — one command, every headline
 
@@ -599,6 +600,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial_four_mul_margin
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial_re
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial_re_four_mul_margin
+-- convergence interface: fixed-target summability + uniform partial bounds.
+#print axioms YangMills.RG.appendixFHoleHsharpPartial_tendsto
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_le_of_partial_bound
+#print axioms YangMills.RG.clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_limit_le
+#print axioms YangMills.RG.rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_limit_le
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_of_partial_bounds
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_of_partial_bounds_four_mul_margin
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_of_partial_bounds
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_of_partial_bounds_four_mul_margin
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality
