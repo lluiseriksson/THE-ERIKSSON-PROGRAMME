@@ -70,6 +70,14 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `SingleScaleUVDecay`, with
   `singleScaleUVDecay_of_renormalizedHoleActivities` bridging with-holes
   activities to the scalar bound consumed by `UVMassGap`;
+* the residual Appendix-F with-holes bridge
+  `YangMills/RG/PolymerClusterWithHolesBridge.lean`: it defines
+  `polymerClusterResidualRate κ κ₀ = κ - 3κ₀ - 3`, proves that
+  `κ ≥ 3κ₀ + 3` only gives nonnegative residual decay, proves the reusable
+  summability margin `κ₀ ≤ κ - 3κ₀ - 3` from the stronger
+  `κ ≥ 4κ₀ + 3`, and packages both the static aggregate
+  `polymerClusterWithHoles_abs_tsum_le` and the producer bridge
+  `singleScaleUVDecay_of_clusterWithHolesActivities`;
 * the type-local functional/activity substrate
   `YangMills/RG/LocalFunctional.lean`: restricted fields indexed by finite
   supports, `LocalFunctional`, two-field `LocalActivity`, global adapters
@@ -195,6 +203,17 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   the closed Dimock (642) activity bound, the `B0` local summability adapter,
   ultralocal integration/factorization to `K#`, the second Ursell expansion
   to `H#`, or any concrete Yang-Mills raw activity decay;
+* the residual with-holes `hpoly` bridge
+  `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
+  pointwise bound
+  `|H#(Y)| <= C H₀ exp (-(κ - 3κ₀ - 3) d(Y))` is supplied and the already
+  available `κ₀`-weighted geometric summability holds, the bridge sums the
+  activities to `C H₀ K₀` under the explicit condition
+  `κ₀ <= κ - 3κ₀ - 3`.  Thus the source-side margin can be closed either by
+  strengthening to `κ >= 4κ₀ + 3` or by proving geometric summability directly
+  at the residual exponent.  This module is summation bookkeeping only: it does
+  not prove Dimock (642), the Yang-Mills raw activity estimate, or the
+  continuum/OS reconstruction steps;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

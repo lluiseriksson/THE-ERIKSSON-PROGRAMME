@@ -228,6 +228,10 @@ import YangMills.RG.UVMassGap
 -- renormalized with-holes activities, and scalar `SingleScaleUVDecay`, with
 -- the summation bridge from hole activities to the scalar bound.
 import YangMills.RG.SingleScaleUVDecay
+-- Residual Appendix-F with-holes bridge: the loss `κ - 3κ₀ - 3` only feeds
+-- the existing `κ₀`-geometric summability substrate under the explicit
+-- stronger margin `κ₀ ≤ κ - 3κ₀ - 3` (e.g. `κ ≥ 4κ₀ + 3`).
+import YangMills.RG.PolymerClusterWithHolesBridge
 -- Type-local functional/activity substrate for the constructive Dimock-F.1
 -- compiler: local activities can only inspect restricted fields on their finite
 -- supports; global adapters are invariant under changes off support.

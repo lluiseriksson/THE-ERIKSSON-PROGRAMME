@@ -9,6 +9,7 @@ import YangMills.RG.AppendixFHoleTarget
 import YangMills.RG.AppendixFKsharp
 import YangMills.RG.AppendixFQuantitative
 import YangMills.RG.AppendixFFiberEntropy
+import YangMills.RG.PolymerClusterWithHolesBridge
 
 /-! # Oracle check — one command, every headline
 
@@ -138,6 +139,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- scalar single-scale UV decay consumed by the mass-gap assembly
 #print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities
 #print axioms YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_geometric
+-- residual with-holes bridge: Appendix-F loss `κ - 3κ₀ - 3`, the stronger
+-- summability margin `κ₀ ≤ κ - 3κ₀ - 3`, and the resulting `hpoly` producer
+#print axioms YangMills.RG.polymerClusterResidualRate_nonneg_of_three_mul_add_le
+#print axioms YangMills.RG.kappa0_le_polymerClusterResidualRate_of_four_mul_add_le
+#print axioms YangMills.RG.polymerClusterWithHoles_abs_tsum_le
+#print axioms YangMills.RG.renormalizedHoleActivityDecay_of_clusterWithHolesActivityDecay
+#print axioms YangMills.RG.singleScaleUVDecay_of_clusterWithHolesActivities
 -- type-local support substrate for constructive Dimock F.1 activities
 #print axioms YangMills.RG.LocalFunctional.globalEval_eq_of_agreeOn
 #print axioms YangMills.RG.LocalFunctional.globalEval_finsetProd

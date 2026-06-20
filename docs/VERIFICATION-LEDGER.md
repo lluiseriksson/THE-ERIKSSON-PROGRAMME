@@ -6664,3 +6664,55 @@ modified-metric local summability adapter, ultralocal integration/factorization
 for `K#`, the second target gas and Ursell expansion to `H#`, or a concrete
 Yang-Mills raw activity bound.  It also does not change the continuum,
 OS/Wightman, or Clay obligations.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 193 (2026-06-20, **Residual with-holes cluster bridge to hpoly**
+`YangMills.RG.polymerClusterResidualRate_nonneg_of_three_mul_add_le`,
+`YangMills.RG.kappa0_le_polymerClusterResidualRate_of_four_mul_add_le`,
+`YangMills.RG.polymerClusterWithHoles_abs_tsum_le`,
+`YangMills.RG.singleScaleUVDecay_of_clusterWithHolesActivities`; core 8294)
+
+This addendum adds `YangMills/RG/PolymerClusterWithHolesBridge.lean`, the
+quantitative bookkeeping bridge from a residual Appendix-F with-holes activity
+estimate to the existing scalar `hpoly` / `SingleScaleUVDecay` consumer.
+
+The new module defines the residual rate
+
+```
+polymerClusterResidualRate κ κ₀ = κ - 3 * κ₀ - 3
+```
+
+and records the important margin distinction:
+
+* `κ ≥ 3κ₀ + 3` proves only nonnegative residual decay;
+* reusing a geometric summability estimate at exponent `κ₀` requires
+  `κ₀ ≤ κ - 3κ₀ - 3`, for instance the stronger source-side condition
+  `κ ≥ 4κ₀ + 3`.
+
+It proves the static aggregate theorem
+`polymerClusterWithHoles_abs_tsum_le`: a pointwise residual bound
+`|H#(Y)| <= C H₀ exp (-(κ - 3κ₀ - 3) d(Y))`, together with
+`Σ exp (-κ₀ d(Y)) <= K₀`, implies `Σ |H#(Y)| <= C H₀ K₀` under the explicit
+margin `κ₀ <= κ - 3κ₀ - 3`.  It also proves
+`singleScaleUVDecay_of_clusterWithHolesActivities`, feeding the same residual
+activity estimate directly into the already verified `SingleScaleUVDecay`
+interface.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PolymerClusterWithHolesBridge.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint does not prove the with-holes expansion, the
+Dimock (642) bound, ultralocal integration to `K#`, the second Ursell
+expansion to `H#`, any concrete Yang-Mills fluctuation estimate, or the
+continuum/OS reconstruction.  It only exposes the exact residual decay margin
+needed to reuse the existing geometric summability substrate.  Clay distance
+**~0% (<0.1%), unchanged**.
