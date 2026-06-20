@@ -782,6 +782,35 @@ theorem biUnion_confinedComponentCoverFamily_index_eq
     rw [confinedComponentCoverFamily_index]
     exact hiC
 
+/-- Distinct entries of the canonical confined-component cover family have
+disjoint index sets. -/
+theorem disjoint_confinedComponentCoverFamily_index_of_ne
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site) (K : Finset ι)
+    {C D : {C // C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K}}
+    (hne : C ≠ D) :
+    Disjoint (confinedComponentCoverFamily Ω activeSupport K C).index
+      (confinedComponentCoverFamily Ω activeSupport K D).index := by
+  rw [confinedComponentCoverFamily_index, confinedComponentCoverFamily_index]
+  have hne_index : C.1 ≠ D.1 := by
+    intro h
+    exact hne (Subtype.ext h)
+  exact disjoint_of_mem_confinedComponents_ne
+    (omegaOverlapGraph Ω activeSupport) K C.2 D.2 hne_index
+
+/-- Pairwise-disjoint form of the canonical confined-component cover-family
+indices. -/
+theorem pairwise_disjoint_confinedComponentCoverFamily_index
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site) (K : Finset ι) :
+    ∀ C, C ∈ (confinedComponents (omegaOverlapGraph Ω activeSupport) K).attach →
+      ∀ D, D ∈ (confinedComponents (omegaOverlapGraph Ω activeSupport) K).attach →
+        C ≠ D →
+          Disjoint (confinedComponentCoverFamily Ω activeSupport K C).index
+            (confinedComponentCoverFamily Ω activeSupport K D).index := by
+  intro C _hC D _hD hne
+  exact disjoint_confinedComponentCoverFamily_index_of_ne Ω activeSupport K hne
+
 /-- Distinct confined components of the Ω-overlap graph have disjoint active
 supports inside Ω, pointwise across their index sets. -/
 theorem omegaActiveSupport_disjoint_of_mem_confinedComponents_ne

@@ -83,7 +83,8 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   source-shaped Ω-cover API; distinct confined components of the Ω-overlap
   graph also have pairwise disjoint active supports inside Ω.  The canonical
   `confinedComponentCoverFamily` indexed by the confined components has cover
-  indices whose union is exactly the original finite cover set `K`;
+  indices whose union is exactly the original finite cover set `K`, and these
+  indices are pairwise disjoint for distinct family entries;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

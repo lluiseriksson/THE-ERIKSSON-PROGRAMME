@@ -167,6 +167,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_confinedComponentCoverOfComponent
 #print axioms YangMills.RG.OmegaConnectedCover.confinedComponentCoverFamily
 #print axioms YangMills.RG.OmegaConnectedCover.biUnion_confinedComponentCoverFamily_index_eq
+#print axioms YangMills.RG.OmegaConnectedCover.disjoint_confinedComponentCoverFamily_index_of_ne
+#print axioms YangMills.RG.OmegaConnectedCover.pairwise_disjoint_confinedComponentCoverFamily_index
 #print axioms YangMills.RG.OmegaConnectedCover.omegaActiveSupport_disjoint_of_mem_confinedComponents_ne
 #print axioms YangMills.RG.OmegaConnectedCover.pairwise_omegaActiveSupport_disjoint_of_mem_confinedComponents_ne
 #print axioms YangMills.RG.OmegaConnectedCover.pairwise_omegaActiveSupport_disjoint_confinedComponentCoverFamily

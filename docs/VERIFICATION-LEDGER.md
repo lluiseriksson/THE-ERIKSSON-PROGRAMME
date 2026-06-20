@@ -5508,3 +5508,24 @@ Dimock-F.1/with-holes layer.  It does not prove Appendix-F activity decay,
 construct the Yang-Mills fluctuation measure, establish `hRpoly`, continuum
 limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 162 (2026-06-20, **canonical confined-component cover partition**
+`YangMills.RG.OmegaConnectedCover.disjoint_confinedComponentCoverFamily_index_of_ne`,
+`YangMills.RG.OmegaConnectedCover.pairwise_disjoint_confinedComponentCoverFamily_index`;
+core 8283)
+
+This addendum completes the finite partition interface for the canonical
+confined-component cover family from Addendum 161.  The theorem
+`disjoint_confinedComponentCoverFamily_index_of_ne` proves that distinct
+entries of `confinedComponentCoverFamily Ω activeSupport K` have disjoint
+index sets.  The pairwise wrapper packages the same fact in the family-indexed
+form expected by later n-ary factorization and cover-product consumers.
+
+Together with `biUnion_confinedComponentCoverFamily_index_eq`, the family now
+has the exact compiler shape needed downstream: it covers all of `K` and its
+component indices are pairwise disjoint.
+
+**Honest scope.** This is finite Ω-overlap component packaging only.  It does
+not prove Appendix-F activity decay, construct the Yang-Mills fluctuation
+measure, establish `hRpoly`, continuum limit, or OS/Wightman reconstruction.
+Clay distance **~0% (<0.1%), unchanged**.
