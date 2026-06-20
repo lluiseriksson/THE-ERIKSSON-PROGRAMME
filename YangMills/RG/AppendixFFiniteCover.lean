@@ -18,6 +18,8 @@ convergence assumptions,
 
 * the raw Mayer expansion
   `exp (∑ i ∈ Λ, h i) = ∑ I ⊆ Λ, ∏ i ∈ I, (exp (h i) - 1)`;
+* the pointwise local-activity version regrouped by
+  `confinedComponents (omegaOverlapGraph Ω activeSupport) I`;
 * the canonical decomposition of every selected family `I` into the connected
   components of the literal `Ω`-overlap graph;
 * the exact reindexing of the powerset sum by those canonical component
@@ -321,6 +323,49 @@ theorem complex_exp_sum_eq_sum_powerset_rawMayer
   rw [Finset.prod_congr rfl hfac, Finset.prod_add]
   exact Finset.sum_congr rfl fun I _hI => by
     rw [Finset.prod_const_one, mul_one]
+
+/-- Finset-indexed form of the pointwise value of a Mayer-cover activity. -/
+theorem globalEval_mayerCoverActivity_eq_finsetProd
+    {Site : Type*} [DecidableEq Site] {Ψ Φ : Site → Type*} {ι : Type*}
+    (I : Finset ι) (H : ι → LocalActivity Site Ψ Φ ℂ)
+    (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x) :
+    (LocalActivity.mayerCoverActivity I H).globalEval ψ φ =
+      ∏ i ∈ I, (Complex.exp ((H i).globalEval ψ φ) - 1) := by
+  classical
+  rw [LocalActivity.globalEval_mayerCoverActivity]
+  exact Finset.prod_coe_sort I
+    (fun i => Complex.exp ((H i).globalEval ψ φ) - 1)
+
+/-- Pointwise Appendix-F component expansion for local activities.  This is
+the finite Mayer expansion regrouped by the canonical `Ω`-connected components
+of each selected raw subfamily; it carries no measure or decay hypothesis. -/
+theorem exp_finsetSum_eq_sum_powerset_prod_confinedOmegaComponents
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    {Ψ Φ : Site → Type*}
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K : Finset ι) (H : ι → LocalActivity Site Ψ Φ ℂ)
+    (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x) :
+    Complex.exp (∑ i ∈ K, (H i).globalEval ψ φ) =
+      ∑ I ∈ K.powerset,
+        ∏ C ∈ confinedComponents
+            (omegaOverlapGraph Ω activeSupport) I,
+          (LocalActivity.mayerCoverActivity C H).globalEval ψ φ := by
+  classical
+  rw [complex_exp_sum_eq_sum_powerset_rawMayer K
+    (fun i => (H i).globalEval ψ φ)]
+  refine Finset.sum_congr rfl ?_
+  intro I _hI
+  let G := omegaOverlapGraph Ω activeSupport
+  let w : ι → ℂ := fun i => Complex.exp ((H i).globalEval ψ φ) - 1
+  calc
+    (∏ i ∈ I, (Complex.exp ((H i).globalEval ψ φ) - 1))
+        = ∏ C ∈ confinedComponents G I, ∏ i ∈ C, w i := by
+          simpa [G, w] using (prod_confinedComponents_eq_prod G w I).symm
+    _ = ∏ C ∈ confinedComponents G I,
+          (LocalActivity.mayerCoverActivity C H).globalEval ψ φ := by
+          refine Finset.prod_congr rfl ?_
+          intro C _hC
+          rw [globalEval_mayerCoverActivity_eq_finsetProd]
 
 /-- **Appendix-F finite-cover expansion.**  The exponential of the finite raw
 activity sum is exactly the sum over canonical families of `Ω`-connected raw

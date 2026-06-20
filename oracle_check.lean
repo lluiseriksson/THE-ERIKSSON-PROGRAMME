@@ -450,6 +450,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFCanonicalComponents_omegaSupport_disjoint
 #print axioms YangMills.RG.sum_powerset_eq_sum_appendixFCanonicalCoverFamilies
 #print axioms YangMills.RG.complex_exp_sum_eq_sum_powerset_rawMayer
+#print axioms YangMills.RG.exp_finsetSum_eq_sum_powerset_prod_confinedOmegaComponents
 #print axioms YangMills.RG.appendixF_finite_cover_expansion
 #print axioms YangMills.RG.sum_connectedCovers_eq_sum_appendixFConnectedActivity
 #print axioms YangMills.RG.appendixFConnectedActivity_congr
