@@ -111,7 +111,8 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   for `OmegaConnectedCover`, and also proves the pointwise quantitative
   product bound `‖∏ᵢ (exp Hᵢ - 1)‖ ≤ ∏ᵢ 2 Aᵢ` from factorwise small raw
   activity bounds `‖Hᵢ‖ ≤ Aᵢ ≤ 1`, together with the uniform-amplitude
-  size profile `‖∏ᵢ (exp Hᵢ - 1)‖ ≤ (2A)^{|I|}`;
+  size profile `‖∏ᵢ (exp Hᵢ - 1)‖ ≤ (2A)^{|I|}` and its decay corollary
+  `≤ (2A)^n` whenever `n ≤ |I|` and `2A ≤ 1`;
 * the abstract activity-limit bridge
   `activity_profile_bound_of_tendsto`: a metric/profile bound uniform in a
   regulator passes to the pointwise limiting activity.  The same module also

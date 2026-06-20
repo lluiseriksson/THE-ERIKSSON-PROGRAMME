@@ -5686,3 +5686,30 @@ not a Yang-Mills activity estimate.  It does not prove the source amplitude
 `A`, the source smallness window, Appendix-F activity decay, `hRpoly`,
 continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 169 (2026-06-20, **Mayer-cover decay from a cardinal lower bound**
+`YangMills.RG.LocalActivity.norm_globalEval_mayerCoverActivity_le_two_mul_pow_of_le_card`,
+`YangMills.RG.OmegaConnectedCover.norm_globalEval_mayerActivity_le_two_mul_pow_of_le_card`;
+core 8283)
+
+This addendum turns the uniform cover-size profile of Addendum 168 into the
+decay form needed by future metric/skeleton compilers.  If every factor has
+raw-activity amplitude `≤ A`, `0 ≤ A`, `A ≤ 1`, the one-factor Mayer cost
+satisfies `2 * A ≤ 1`, and a source-side combinatorial argument proves a
+lower bound `n ≤ I.card`, then
+
+`‖(mayerCoverActivity I H).globalEval ψ φ‖ ≤ (2 * A) ^ n`.
+
+The proof is finite real algebra: first use the verified cardinal profile
+`≤ (2A)^{|I|}`, then use monotonicity of powers for a base in `[0,1]`.
+The cover-facing theorem packages the same result for `OmegaConnectedCover`.
+
+This is the exact non-model-specific bridge between a future source theorem
+such as "the cover has at least the active skeleton size / modified metric"
+and an exponentially small Mayer-cover product.
+
+**Honest scope.** This is finite power monotonicity plus the Mayer product
+bound.  It does not prove the source-side lower bound `n ≤ |I|`, the
+Yang-Mills raw amplitude `A`, Appendix-F activity decay, `hRpoly`, continuum
+limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

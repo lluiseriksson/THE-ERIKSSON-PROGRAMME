@@ -150,6 +150,30 @@ theorem norm_globalEval_mayerCoverActivity_le_two_mul_pow_card_of_norm_le
     norm_globalEval_mayerCoverActivity_le_prod_two_of_norm_le
       I H (fun _ => A) ψ φ hA (fun _ _ => hsmall)
 
+/-- Decay form of the uniform Mayer-cover bound.  If the cover has at least
+`n` factors and the one-factor cost `2 * A` is at most one, the finite product
+is bounded by the metric-style profile `(2 * A) ^ n`.  A source compiler can
+instantiate `n` with a skeleton-size or modified-metric lower bound. -/
+theorem norm_globalEval_mayerCoverActivity_le_two_mul_pow_of_le_card
+    (I : Finset ι) (H : ι → LocalActivity Site Ψ Φ ℂ)
+    (A : ℝ) (n : ℕ) (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x)
+    (hA0 : 0 ≤ A)
+    (hA : ∀ i, i ∈ I → ‖(H i).globalEval ψ φ‖ ≤ A)
+    (hsmall : A ≤ 1) (hcost : 2 * A ≤ 1) (hn : n ≤ I.card) :
+    ‖(mayerCoverActivity I H).globalEval ψ φ‖ ≤ (2 * A) ^ n := by
+  refine (norm_globalEval_mayerCoverActivity_le_two_mul_pow_card_of_norm_le
+    I H A ψ φ hA hsmall).trans ?_
+  let a : ℝ := 2 * A
+  have ha0 : 0 ≤ a := mul_nonneg zero_le_two hA0
+  have ha1 : a ≤ 1 := hcost
+  have hpow : a ^ I.card ≤ a ^ n := by
+    obtain ⟨k, hk⟩ := Nat.exists_eq_add_of_le hn
+    rw [hk, pow_add]
+    nth_rewrite 2 [← mul_one (a ^ n)]
+    have hk1 : a ^ k ≤ 1 := pow_le_one₀ ha0 ha1
+    exact mul_le_mul_of_nonneg_left hk1 (pow_nonneg ha0 n)
+  simpa [a] using hpow
+
 /-- The Mayer cover product remains insensitive to off-support changes in both
 field families, with supports equal to the corresponding support unions. -/
 theorem mayerCoverActivity_globalEval_eq_of_agreeOn (I : Finset ι)
@@ -225,6 +249,17 @@ theorem norm_globalEval_mayerActivity_le_two_mul_pow_card_of_norm_le
     ‖(C.mayerActivity H).globalEval ψ φ‖ ≤ (2 * A) ^ C.index.card := by
   exact LocalActivity.norm_globalEval_mayerCoverActivity_le_two_mul_pow_card_of_norm_le
     C.index H A ψ φ hA hsmall
+
+/-- Cover-facing decay form of the uniform Mayer product norm bound. -/
+theorem norm_globalEval_mayerActivity_le_two_mul_pow_of_le_card
+    (C : OmegaConnectedCover Site ι) (H : ι → LocalActivity Site Ψ Φ ℂ)
+    (A : ℝ) (n : ℕ) (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x)
+    (hA0 : 0 ≤ A)
+    (hA : ∀ i, i ∈ C.index → ‖(H i).globalEval ψ φ‖ ≤ A)
+    (hsmall : A ≤ 1) (hcost : 2 * A ≤ 1) (hn : n ≤ C.index.card) :
+    ‖(C.mayerActivity H).globalEval ψ φ‖ ≤ (2 * A) ^ n := by
+  exact LocalActivity.norm_globalEval_mayerCoverActivity_le_two_mul_pow_of_le_card
+    C.index H A n ψ φ hA0 hA hsmall hcost hn
 
 theorem mayerActivity_globalEval_eq_of_agreeOn (C : OmegaConnectedCover Site ι)
     (H : ι → LocalActivity Site Ψ Φ ℂ)

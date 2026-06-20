@@ -440,6 +440,12 @@ and
 `OmegaConnectedCover.norm_globalEval_mayerActivity_le_two_mul_pow_card_of_norm_le`
 specialize this to the source-common profile
 `‖∏ᵢ (exp Hᵢ - 1)‖ ≤ (2A)^{|I|}`.
+The decay forms
+`LocalActivity.norm_globalEval_mayerCoverActivity_le_two_mul_pow_of_le_card`
+and
+`OmegaConnectedCover.norm_globalEval_mayerActivity_le_two_mul_pow_of_le_card`
+then turn any source-proved lower bound `n ≤ |I|` into
+`‖∏ᵢ (exp Hᵢ - 1)‖ ≤ (2A)^n`, provided `2A ≤ 1`.
 `LocalActivity.fluctuationOverlapGraph_adj_imp_omegaOverlapGraph_adj_of_fluctuationSupport_subset`
 proves the graph-level adapter: if each local fluctuation support is contained
 in its declared `Ω ∩ activeSupport i`, then every actual fluctuation-overlap
