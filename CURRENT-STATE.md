@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8292 jobs**.
+* `lake build YangMillsCore` is green at **8293 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -182,6 +182,19 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   connected-cover entropy estimate, activity bound (642), ultralocal
   integration to `K#`, second Ursell expansion to `H#`, or Yang-Mills raw
   activity estimate is hidden here;
+* the finite target-fiber entropy layer
+  `YangMills/RG/AppendixFFiberEntropy.lean`: the target-fiber
+  overcounting step is now theorem-fed.  It proves skeleton monotonicity,
+  the inclusion of a target fiber into the nonempty powerset of raw indices
+  whose full target support lies in `Y`, and
+  `appendixFTargetFiber_prod_le_exp_sub_one`, which bounds the nonnegative
+  fiber product sum by
+  `exp (sum_{X subset Y} w X) - 1`.  This is exactly the finite
+  "forget connectivity and exact union, then exponentiate" step needed before
+  the local modified-metric summability estimate.  It still does not prove
+  the closed Dimock (642) activity bound, the `B0` local summability adapter,
+  ultralocal integration/factorization to `K#`, the second Ursell expansion
+  to `H#`, or any concrete Yang-Mills raw activity decay;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

@@ -310,6 +310,9 @@ import YangMills.RG.AppendixFKsharp
 -- Finite quantitative first-activity step above the target-family compiler:
 -- a raw exponential pointwise bound yields a connected-cover metric majorant.
 import YangMills.RG.AppendixFQuantitative
+-- Finite target-fiber entropy step: overcount a target fiber by the nonempty
+-- powerset of raw supports contained in the target and absorb it into exp(sum)-1.
+import YangMills.RG.AppendixFFiberEntropy
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

@@ -8,6 +8,7 @@ import YangMills.RG.AppendixFFiniteCover
 import YangMills.RG.AppendixFHoleTarget
 import YangMills.RG.AppendixFKsharp
 import YangMills.RG.AppendixFQuantitative
+import YangMills.RG.AppendixFFiberEntropy
 
 /-! # Oracle check — one command, every headline
 
@@ -530,6 +531,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.discreteModifiedMetric_add_one_le_card_of_spanning_set
 #print axioms YangMills.RG.appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum
 #print axioms YangMills.RG.appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum
+-- finite target-fiber entropy: forget connectedness/exact-union constraints,
+-- overcount by a nonempty powerset, and absorb into exp(sum)-1.
+#print axioms YangMills.RG.skeleton_mono_of_subset
+#print axioms YangMills.RG.appendixFTargetFiber_subset_nonemptyPowerset
+#print axioms YangMills.RG.sum_powerset_erase_empty_prod_le_exp_sub_one
+#print axioms YangMills.RG.appendixFTargetFiber_prod_le_exp_sub_one
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

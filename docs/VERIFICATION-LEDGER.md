@@ -6620,3 +6620,47 @@ the Ursell-defined `H#`, the connected-cover entropy estimate behind (642), or
 any concrete Yang-Mills raw activity decay.  It also does not change the
 continuum, OS/Wightman, or Clay obligations.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 192 (2026-06-20, **Appendix-F target-fiber entropy overcount**
+`YangMills.RG.skeleton_mono_of_subset`,
+`YangMills.RG.appendixFTargetFiber_subset_nonemptyPowerset`,
+`YangMills.RG.sum_powerset_erase_empty_prod_le_exp_sub_one`,
+`YangMills.RG.appendixFTargetFiber_prod_le_exp_sub_one`; core 8293)
+
+This addendum adds `YangMills/RG/AppendixFFiberEntropy.lean`, the finite
+combinatorial entropy step immediately after the Appendix-F connected-activity
+majorant and metric stitching.
+
+The new module proves:
+
+* skeleton monotonicity under full-polymer inclusion;
+* every target fiber is contained in the nonempty powerset of raw indices whose
+  full target support is contained in the target `Y`;
+* the elementary nonempty-powerset product bound
+  `sum prod <= exp (sum weights) - 1`;
+* the target-fiber version
+  `appendixFTargetFiber_prod_le_exp_sub_one`.
+
+This is the certified finite form of the "forget connectedness/exact-union
+constraints and exponentiate the remaining raw-index sum" step.  It is meant
+to feed the later local modified-metric summability estimate for `K(Y)`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFFiberEntropy.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint is finite combinatorial entropy only.  It
+does not prove the closed Dimock (642) activity estimate, the `B0`
+modified-metric local summability adapter, ultralocal integration/factorization
+for `K#`, the second target gas and Ursell expansion to `H#`, or a concrete
+Yang-Mills raw activity bound.  It also does not change the continuum,
+OS/Wightman, or Clay obligations.  Clay distance **~0% (<0.1%), unchanged**.
