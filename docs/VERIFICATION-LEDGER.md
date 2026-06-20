@@ -5390,7 +5390,43 @@ needed before an n-ary Mayer-cover integral factorization over connected
 components can replace repeated binary splitting.
 
 **Honest scope.** This is finite graph algebra for the F.1 compiler
-substrate.  It does not prove the n-ary integral factorization yet, does not
+substrate.  At this checkpoint it did not prove the n-ary integral
+factorization yet, did not
 identify Dimock Appendix-F polymers, does not prove activity decay or
 `hRpoly`, and does not move the continuum / OS reconstruction frontier.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 158 (2026-06-20, **n-ary confined-component Mayer-cover
+factorization**
+`YangMills.RG.no_adj_of_mem_confinedComponents_ne`,
+`YangMills.RG.LocalActivity.mayerCoverActivity_biUnion_integral_of_no_cross_components`,
+`YangMills.RG.LocalActivity.mayerCoverActivity_integral_factor_confinedComponents`;
+core 8283)
+
+This addendum consumes the finite partition substrate of Addendum 157.  The
+new graph lemma `no_adj_of_mem_confinedComponents_ne` proves that two distinct
+confined components of a finite cover set have no edge between them.  For the
+fluctuation-overlap graph, this supplies exactly the no-cross-edge hypothesis
+needed by the product-measure factorization theorem.
+
+The generic theorem
+`mayerCoverActivity_biUnion_integral_of_no_cross_components` proves the n-ary
+finite disconnected-cover formula: for any finite family of pairwise disjoint
+index blocks with no fluctuation-overlap graph edge between distinct blocks,
+the Mayer-cover integral over the union of all blocks is the product of the
+block integrals.  The proof is by finite induction, using the existing binary
+no-cross-edge split at each step.
+
+The consumer
+`mayerCoverActivity_integral_factor_confinedComponents` instantiates that
+generic theorem for the confined-component partition
+`confinedComponents (fluctuationOverlapGraph H) K`.  Thus a finite Mayer cover
+now factorizes directly over all its fluctuation-overlap connected components,
+instead of requiring an external hand iteration of the binary root/complement
+split.
+
+**Honest scope.** This closes another finite algebra/product-measure compiler
+step for the future Dimock-F.1 formalization.  It does not identify the actual
+Appendix-F polymers, prove the quantitative activity loss, construct the
+Yang-Mills fluctuation measure, establish `hRpoly`, continuum limit, or
+OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.

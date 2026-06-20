@@ -157,6 +157,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.biUnion_confinedComponents_eq
 #print axioms YangMills.RG.confinedComponents_eq_of_nonempty_inter
 #print axioms YangMills.RG.disjoint_of_mem_confinedComponents_ne
+#print axioms YangMills.RG.no_adj_of_mem_confinedComponents_ne
 #print axioms YangMills.RG.LocalActivity.fluctuationOverlapGraph_adj_iff
 #print axioms YangMills.RG.LocalActivity.pairwise_disjoint_fluctuationSupport_of_no_cross_adj
 #print axioms YangMills.RG.LocalActivity.globalEval_mayerCoverActivity_union
@@ -164,6 +165,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.LocalActivity.mayerCoverActivity_union_integral_of_pairwise_disjoint_fluctuationSupport
 #print axioms YangMills.RG.LocalActivity.mayerCoverActivity_union_integral_of_no_cross_fluctuationAdj
 #print axioms YangMills.RG.LocalActivity.mayerCoverActivity_integral_split_confinedComponent
+#print axioms YangMills.RG.LocalActivity.mayerCoverActivity_biUnion_integral_of_no_cross_components
+#print axioms YangMills.RG.LocalActivity.mayerCoverActivity_integral_factor_confinedComponents
 #print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_integral_mul_of_pairwise_disjoint_fluctuationSupport
 -- decoupling/regularisation bridge: a uniform activity profile bound passes to
 -- the pointwise limiting activity, and a summable telescopic regulator defect

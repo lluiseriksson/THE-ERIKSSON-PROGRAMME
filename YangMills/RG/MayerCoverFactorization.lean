@@ -205,6 +205,22 @@ theorem no_adj_confinedComponent_compl {ι : Type*} (G : SimpleGraph ι)
   · exact hwK z hz
   · exact hyK
 
+/-- There are no graph edges between two distinct confined components. -/
+theorem no_adj_of_mem_confinedComponents_ne {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) (K : Finset ι) {C D : Finset ι}
+    (hC : C ∈ confinedComponents G K) (hD : D ∈ confinedComponents G K)
+    (hne : C ≠ D) {i j : ι} (hi : i ∈ C) (hj : j ∈ D) :
+    ¬ G.Adj i j := by
+  classical
+  have hdisj : Disjoint C D :=
+    disjoint_of_mem_confinedComponents_ne G K hC hD hne
+  have hj_not_C : j ∉ C := by
+    intro hjC
+    exact (Finset.disjoint_left.mp hdisj hjC) hj
+  have hjK : j ∈ K := subset_of_mem_confinedComponents G K hD hj
+  rcases (mem_confinedComponents_iff G K C).mp hC with ⟨r, _hr, rfl⟩
+  exact no_adj_confinedComponent_compl G K hi hjK hj_not_C
+
 namespace LocalActivity
 
 /-- Index graph whose edges record overlap of fluctuation supports for a
@@ -400,6 +416,75 @@ theorem mayerCoverActivity_union_integral_of_no_cross_fluctuationAdj
     μ I J H ψ hIJ
     (pairwise_disjoint_fluctuationSupport_of_no_cross_adj I J H hIJ hno)
 
+/-- N-ary finite disconnected-cover split.  If a finite family of index blocks
+is pairwise disjoint and has no cross-edge in the fluctuation-overlap graph,
+then the Mayer-cover integral over the union of all blocks factorizes into the
+product of the block integrals. -/
+theorem mayerCoverActivity_biUnion_integral_of_no_cross_components
+    {Site β ι : Type*} [Fintype Site] [DecidableEq Site] [DecidableEq ι]
+    [MeasurableSpace β] [Nonempty β]
+    {Ψ : Site → Type*}
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    (Γ : Finset (Finset ι))
+    (H : ι → LocalActivity Site Ψ (fun _ => β) ℂ)
+    (ψ : ∀ x, Ψ x)
+    (hdisj : ∀ C, C ∈ Γ → ∀ D, D ∈ Γ → C ≠ D → Disjoint C D)
+    (hno : ∀ C, C ∈ Γ → ∀ D, D ∈ Γ → C ≠ D →
+      ∀ i, i ∈ C → ∀ j, j ∈ D → ¬ (fluctuationOverlapGraph H).Adj i j) :
+    ∫ φ, (mayerCoverActivity (Γ.biUnion id) H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ)
+      =
+      ∏ C ∈ Γ,
+        (∫ φ, (mayerCoverActivity C H).globalEval ψ φ
+          ∂(Measure.pi fun _ : Site => μ)) := by
+  classical
+  revert hdisj hno
+  induction Γ using Finset.induction_on with
+  | empty =>
+      intro _hdisj _hno
+      simp [globalEval_mayerCoverActivity]
+  | insert C Γ hCnot ih =>
+      intro hdisj hno
+      let R : Finset ι := Γ.biUnion id
+      have hdisj' :
+          ∀ A, A ∈ Γ → ∀ B, B ∈ Γ → A ≠ B → Disjoint A B := by
+        intro A hA B hB hne
+        exact hdisj A (by simp [hA]) B (by simp [hB]) hne
+      have hno' :
+          ∀ A, A ∈ Γ → ∀ B, B ∈ Γ → A ≠ B →
+            ∀ i, i ∈ A → ∀ j, j ∈ B →
+              ¬ (fluctuationOverlapGraph H).Adj i j := by
+        intro A hA B hB hne i hi j hj
+        exact hno A (by simp [hA]) B (by simp [hB]) hne i hi j hj
+      have hih := ih hdisj' hno'
+      have hCR : Disjoint C R := by
+        rw [Finset.disjoint_left]
+        intro x hxC hxR
+        rw [Finset.mem_biUnion] at hxR
+        rcases hxR with ⟨D, hD, hxD⟩
+        have hne : C ≠ D := by
+          intro hCD
+          exact hCnot (by simpa [hCD] using hD)
+        exact (Finset.disjoint_left.mp
+          (hdisj C (by simp) D (by simp [hD]) hne) hxC) hxD
+      have hnoCR : ∀ i, i ∈ C → ∀ j, j ∈ R →
+          ¬ (fluctuationOverlapGraph H).Adj i j := by
+        intro i hi j hjR
+        rw [Finset.mem_biUnion] at hjR
+        rcases hjR with ⟨D, hD, hjD⟩
+        have hne : C ≠ D := by
+          intro hCD
+          exact hCnot (by simpa [hCD] using hD)
+        exact hno C (by simp) D (by simp [hD]) hne i hi j hjD
+      have hsplit :=
+        mayerCoverActivity_union_integral_of_no_cross_fluctuationAdj
+          μ C R H ψ hCR hnoCR
+      have hUnion : (insert C Γ).biUnion id = C ∪ R := by
+        ext x
+        simp [R]
+      rw [hUnion, hsplit, hih]
+      simp [hCnot]
+
 /-- Component-extraction form of the finite disconnected-cover split.  Splitting
 a finite index set `K` into the confined component of `r` in the
 fluctuation-overlap graph and its complement inside `K` gives the Mayer-cover
@@ -444,6 +529,44 @@ theorem mayerCoverActivity_integral_split_confinedComponent
       · exact Finset.mem_union_left _ hxI
       · exact Finset.mem_union_right _ (Finset.mem_sdiff.mpr ⟨hxK, hxI⟩)
   simpa [I, G, hUnion] using hsplit
+
+/-- N-ary component-extraction form of the finite disconnected-cover split.
+The confined components of the fluctuation-overlap graph partition `K`, so the
+Mayer-cover integral over `K` factorizes into the product of the integrals over
+all confined components. -/
+theorem mayerCoverActivity_integral_factor_confinedComponents
+    {Site β ι : Type*} [Fintype Site] [DecidableEq Site] [DecidableEq ι]
+    [MeasurableSpace β] [Nonempty β]
+    {Ψ : Site → Type*}
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    (K : Finset ι)
+    (H : ι → LocalActivity Site Ψ (fun _ => β) ℂ)
+    (ψ : ∀ x, Ψ x) :
+    let Γ := confinedComponents (fluctuationOverlapGraph H) K
+    ∫ φ, (mayerCoverActivity K H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ)
+      =
+      ∏ C ∈ Γ,
+        (∫ φ, (mayerCoverActivity C H).globalEval ψ φ
+          ∂(Measure.pi fun _ : Site => μ)) := by
+  classical
+  let G := fluctuationOverlapGraph H
+  let Γ := confinedComponents G K
+  have hdisj : ∀ C, C ∈ Γ → ∀ D, D ∈ Γ → C ≠ D → Disjoint C D := by
+    intro C hC D hD hne
+    exact disjoint_of_mem_confinedComponents_ne G K
+      (by simpa [Γ] using hC) (by simpa [Γ] using hD) hne
+  have hno : ∀ C, C ∈ Γ → ∀ D, D ∈ Γ → C ≠ D →
+      ∀ i, i ∈ C → ∀ j, j ∈ D → ¬ G.Adj i j := by
+    intro C hC D hD hne i hi j hj
+    exact no_adj_of_mem_confinedComponents_ne G K
+      (by simpa [Γ] using hC) (by simpa [Γ] using hD) hne hi hj
+  have hfactor :=
+    mayerCoverActivity_biUnion_integral_of_no_cross_components
+      μ Γ H ψ hdisj hno
+  have hcover : Γ.biUnion id = K := by
+    simpa [Γ, G] using biUnion_confinedComponents_eq G K
+  simpa [Γ, G, hcover] using hfactor
 
 end LocalActivity
 

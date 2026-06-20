@@ -89,7 +89,7 @@ gives `rooted_connected_weight_summable` (`RG/AnimalTour.lean`):
 | **P2b-ii-b-3** | **Discrete metric comparison bounds** (`discreteModifiedMetric_le_bulkTreeLength`, `discreteModifiedMetric_mono_skeleton`, and `discreteModifiedMetric_mono_holes`, `RG/ModifiedMetric.lean`): prove comparison bounds with bulk tree length and monotonicity. | code — combinatorics | **DONE** (core 8264) |
 | **P2b-ii-c** | **Skeleton-fillings weight summability** (`skeleton_fillings_weight_summable`, `RG/ModifiedMetric.lean`): preliminary combinatorial estimate showing that the skeleton-growth series converges under sufficient exponential metric decay. | code — combinatorics | **DONE** (core 8264) |
 | **P2b-ii-d** | **Discrete modified-metric summability** (`discreteModifiedMetric_weight_summable`, `RG/ModifiedMetric.lean`): prove a volume-uniform summability theorem whose summand actually contains `discreteModifiedMetric H X` under coordination entropy-suppression. | code — combinatorics | **DONE** (core 8264) |
-| **P2c** | **Type-local F.1 algebra and ultralocal independence** (`RG/LocalFunctional.lean`, `RG/RawMayerWithHoles.lean`, `RG/OmegaConnectedCover.lean`, `RG/UltralocalFactorization.lean`, `RG/MayerCoverFactorization.lean`): local activities, raw Mayer factors, Ω-connected cover products, product-measure factorization of disconnected fluctuation-support components, the finite disjoint-union integration split for Mayer-cover products, the fluctuation-overlap graph criterion turning no cross-edges into pairwise support disjointness, the finite confined-component split `K = I ∪ (K \ I)`, and the all-components decomposition of `K` into disjoint confined components. | code — finite algebra/measure theory | **DONE** (core 8283) |
+| **P2c** | **Type-local F.1 algebra and ultralocal independence** (`RG/LocalFunctional.lean`, `RG/RawMayerWithHoles.lean`, `RG/OmegaConnectedCover.lean`, `RG/UltralocalFactorization.lean`, `RG/MayerCoverFactorization.lean`): local activities, raw Mayer factors, Ω-connected cover products, product-measure factorization of disconnected fluctuation-support components, the finite disjoint-union integration split for Mayer-cover products, the fluctuation-overlap graph criterion turning no cross-edges into pairwise support disjointness, the finite confined-component split `K = I ∪ (K \ I)`, the all-components decomposition of `K` into disjoint confined components, and the n-ary Mayer-cover integral factorization over those components. | code — finite algebra/measure theory | **DONE** (core 8283) |
 | **P3** | **Cluster-expansion-with-holes convergence (Appendix F)**: the renormalized-activity decay `|H^#(Y)| ≤ O(1)H₀ e^{−(κ−3κ₀−3)d}` from the raw bound + summability.  Generalises `KP` convergence to the modified metric.  **The crux of (B).**  Source audit: Appendix F clusters are `Ω`-connected (`X₁ ∩ X₂ ∩ Ω ≠ ∅`), not ordinary full-polymer touching.  Use the new `omegaHolePolymerSystem` or prove a comparison theorem before reusing `holePolymerSystem` consumers. | code — HARD, months-scale | open (source §4) |
 | **P4** | **Fluctuation integral → raw activity bound (§3.8)**: `|H_k(X)| ≤ H₀ e^{−κ d}` from the Gaussian step, `H₀ ∝ g_k^{κ₀}`.  **The crux of (A).** | code — HARD, months-scale, needs the lattice Gaussian covariance | open (source §4) |
 | **P5** | **Assemble `hRpoly`**: combine P3 (renormalized decay) + P4 (raw bound) + P1/P2 (summability) ⟹ `|R_{t,k}| ≤ A e^{−c₀t} g_k^{κ₀}`; feed `lattice_mass_gap_of_cluster_and_coupling` ⟹ the **unconditional lattice mass gap**. | code (glue, once P1–P4 land) | open |
@@ -381,6 +381,14 @@ confined components are equal, and hence that distinct confined components are
 disjoint.  This is still the finite compiler substrate only: it prepares the
 n-ary component factorization over a Mayer cover, but it does not prove
 Dimock Appendix F, source-specific activity decay, or any continuum statement.
+
+That n-ary finite factorization is now also theorem-fed:
+`mayerCoverActivity_biUnion_integral_of_no_cross_components` proves the
+generic product formula over a finite family of pairwise disjoint blocks with no
+cross-edge in the fluctuation-overlap graph, and
+`mayerCoverActivity_integral_factor_confinedComponents` instantiates it for the
+confined-component partition of a cover `K`.  This removes the need to iterate
+the binary root/complement split by hand in future finite F.1 compiler work.
 
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the

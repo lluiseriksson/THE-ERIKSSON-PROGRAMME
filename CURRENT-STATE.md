@@ -10,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8282 jobs**.
+* `lake build YangMillsCore` is green at **8283 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -75,7 +75,9 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   it also defines finite confined components, splits a cover `K` into the
   component of a root and its complement inside `K`, and now packages the full
   finite component decomposition: confined components cover `K`, intersecting
-  components coincide, and distinct components are disjoint;
+  components coincide, and distinct components are disjoint.  The same finite
+  partition now feeds an n-ary Mayer-cover integral factorization over all
+  confined components at once;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound
