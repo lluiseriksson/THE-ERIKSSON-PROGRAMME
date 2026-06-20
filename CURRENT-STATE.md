@@ -193,7 +193,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `finiteBerezinWeighted n (finiteBerezinTopWeight n a) =
   finiteBerezinTop n + a • finiteBerezinEmptyCoeff n` in positive fermionic
   dimension, so later finite Gaussian/Pfaffian expansions can consume the
-  top and empty coefficients directly.
+  top and empty coefficients directly.  The product-facing companions now
+  evaluate this same top-density on exterior-basis products: overlapping
+  generator support gives zero, a disjoint product filling the positive top
+  degree gives Mathlib's explicit exterior orientation sign, and disjoint
+  nonempty non-top products give zero.
   This is only the algebraic Berezin/Ward coefficient layer, not yet a
   super-Gaussian determinant/Pfaffian theorem.
 * the Ward-cancelled polymer bridge `YangMills/SUSY/WardPolymer.lean`: finite

@@ -397,6 +397,72 @@ theorem finiteBerezinWeighted_topWeight_apply_eq_top_add_empty_of_pos {n : ℕ}
   rw [finiteBerezinWeighted_topWeight_eq_top_add_empty_of_pos hn a]
   rfl
 
+/-- Products with repeated generators still integrate to zero against the
+elementary top-density weight. -/
+@[simp] theorem finiteBerezinWeighted_topWeight_basis_mul_of_not_disjoint
+    {n : ℕ} (a : ℂ) {s t : Finset (Fin n)} (h : ¬ Disjoint s t) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+        ((finiteExteriorBasis n s) * (finiteExteriorBasis n t)) = 0 := by
+  rw [finiteExteriorBasis_mul_of_not_disjoint h]
+  simp
+
+/-- If two disjoint cardinality-indexed basis monomials fill the positive top
+degree, the elementary top-density weight extracts the same explicit
+orientation sign as the ordinary top-coefficient functional. -/
+theorem finiteBerezinWeighted_topWeight_powersetCard_mul_of_disjoint_top_of_pos
+    {n m k : ℕ} (hn : 0 < n) (a : ℂ)
+    (s : Set.powersetCard (Fin n) m)
+    (t : Set.powersetCard (Fin n) k)
+    (h : Disjoint (s : Finset (Fin n)) (t : Finset (Fin n)))
+    (htop : (Set.powersetCard.disjUnion h : Finset (Fin n)) =
+      (Finset.univ : Finset (Fin n))) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+        ((finiteExteriorBasis n (s : Finset (Fin n))) *
+          (finiteExteriorBasis n (t : Finset (Fin n)))) =
+      (Set.powersetCard.permOfDisjoint h).sign • (1 : ℂ) := by
+  have hunion : (s : Finset (Fin n)) ∪ (t : Finset (Fin n)) =
+      (Finset.univ : Finset (Fin n)) := by
+    ext x
+    have hx :
+        (x ∈ (Set.powersetCard.disjUnion h : Finset (Fin n))) ↔
+          x ∈ (Finset.univ : Finset (Fin n)) := by
+      rw [htop]
+    simpa [Set.powersetCard.mem_disjUnion, Finset.mem_union] using hx
+  rw [finiteExteriorBasis_powersetCard_mul_of_disjoint s t h]
+  simp [hunion,
+    finiteBerezinWeighted_topWeight_top_basis_of_pos hn a]
+
+/-- If two disjoint cardinality-indexed basis monomials multiply to a nonempty
+non-top monomial, the elementary top-density weight gives zero. -/
+theorem finiteBerezinWeighted_topWeight_powersetCard_mul_of_disjoint_nonempty_ne_top
+    {n m k : ℕ} (a : ℂ)
+    (s : Set.powersetCard (Fin n) m)
+    (t : Set.powersetCard (Fin n) k)
+    (h : Disjoint (s : Finset (Fin n)) (t : Finset (Fin n)))
+    (hnonempty :
+      (Set.powersetCard.disjUnion h : Finset (Fin n)).Nonempty)
+    (hne_top : (Set.powersetCard.disjUnion h : Finset (Fin n)) ≠
+      (Finset.univ : Finset (Fin n))) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+        ((finiteExteriorBasis n (s : Finset (Fin n))) *
+          (finiteExteriorBasis n (t : Finset (Fin n)))) = 0 := by
+  have hunion_eq :
+      (s : Finset (Fin n)) ∪ (t : Finset (Fin n)) =
+        (Set.powersetCard.disjUnion h : Finset (Fin n)) := by
+    ext x
+    simp [Finset.mem_union]
+  have hunion_nonempty : ((s : Finset (Fin n)) ∪ (t : Finset (Fin n))).Nonempty := by
+    rw [hunion_eq]
+    exact hnonempty
+  have hunion_ne_top :
+      (s : Finset (Fin n)) ∪ (t : Finset (Fin n)) ≠
+        (Finset.univ : Finset (Fin n)) := by
+    intro htop'
+    exact hne_top (by rw [← hunion_eq, htop'])
+  rw [finiteExteriorBasis_powersetCard_mul_of_disjoint s t h]
+  simp [finiteBerezinWeighted_topWeight_basis_of_nonempty_ne_top
+      a hunion_nonempty hunion_ne_top]
+
 /-- Grassmann nilpotence for finite exterior basis generators: each degree-one
 basis monomial squares to zero.  This is the first generator-level algebraic
 fact needed before finite Gaussian/Pfaffian identities can be stated honestly. -/

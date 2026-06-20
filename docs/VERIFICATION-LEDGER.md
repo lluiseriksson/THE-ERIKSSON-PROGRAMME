@@ -5968,3 +5968,30 @@ the toy top-density seed.  It does not construct a Gaussian Berezin integral,
 fermionic covariance, determinant/Pfaffian formula, physical supersymmetry,
 Yang-Mills activity bound, `hRpoly`, continuum limit, or OS/Wightman
 reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 178 (2026-06-20, **top-density product coefficient rules**
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_basis_mul_of_not_disjoint`,
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_powersetCard_mul_of_disjoint_top_of_pos`,
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_powersetCard_mul_of_disjoint_nonempty_ne_top`;
+core 8284)
+
+This addendum evaluates the elementary top-density weight on products of
+finite exterior basis monomials.
+
+* If the two supports overlap, repeated-generator nilpotence kills the product,
+  so the weighted Berezin integral is zero.
+* If the supports are disjoint and their union is the full generator set in
+  positive fermionic dimension, the weighted integral is exactly Mathlib's
+  explicit exterior orientation sign.
+* If the disjoint union is nonempty but not top-degree, the weighted integral
+  is zero.
+
+These are deliberately sign-exposed product rules.  They are meant to feed a
+future finite Gaussian/Pfaffian expansion without hiding the orientation
+convention in an opaque decision procedure.
+
+**Honest scope.** This is finite exterior-algebra coefficient bookkeeping for
+the toy top-density seed.  It does not construct a Gaussian Berezin integral,
+fermionic covariance, determinant/Pfaffian formula, physical supersymmetry,
+Yang-Mills activity bound, `hRpoly`, continuum limit, or OS/Wightman
+reconstruction.  Clay distance **~0% (<0.1%), unchanged**.

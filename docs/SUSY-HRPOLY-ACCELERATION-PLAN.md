@@ -118,6 +118,11 @@ activity has amplitude `amp + S`.
   integration against `1 + a • topBasis` equals top-coefficient extraction plus
   `a` times empty-coefficient extraction.  This is the finite linear API needed
   before expanding honest Gaussian/Pfaffian weights.
+* Product-facing top-density rules are now available too:
+  `finiteBerezinWeighted_topWeight_basis_mul_of_not_disjoint` kills products
+  with repeated generators, while the disjoint cardinality-indexed rules
+  extract the explicit orientation sign in the positive top-degree case and
+  give zero in the nonempty non-top case.
 
 This is the first concrete finite Grassmann/Berezin layer underneath the
 abstract Ward interface.  The weighted functional is the algebraic slot into
