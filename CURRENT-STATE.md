@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8293 jobs**.
+* `lake build YangMillsCore` is green at **8294 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -85,7 +85,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `q = exp (-κ₀)`.  It now also exposes the same rooted aggregate directly on
   the source-facing `OmegaPolymerType` via `omegaRootedPolymerEquiv`,
   `omega_rooted_exp_discreteModifiedMetric_tsum_le`, and
-  `omega_rooted_polymerClusterWithHoles_abs_tsum_le`;
+  `omega_rooted_polymerClusterWithHoles_abs_tsum_le`.  The same concrete
+  rooted omega-pinned hypotheses now feed the scalar UV consumer through
+  `singleScaleUVDecay_of_omegaRootedClusterWithHolesActivities`, with the
+  explicit sufficient margin corollary
+  `singleScaleUVDecay_of_omegaRootedClusterWithHolesActivities_four_mul_margin`;
 * the type-local functional/activity substrate
   `YangMills/RG/LocalFunctional.lean`: restricted fields indexed by finite
   supports, `LocalFunctional`, two-field `LocalActivity`, global adapters
@@ -228,7 +232,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   smallness condition
   `((3^d)^2) * (exp(-κ₀) * 2^(3^d+1)) < 1`.  The same bound is now available
   for the `OmegaPolymerType`/`omegaHolePolymerSystem` index shape through
-  `omega_rooted_polymerClusterWithHoles_abs_tsum_le`;
+  `omega_rooted_polymerClusterWithHoles_abs_tsum_le`, and a source-facing
+  omega-rooted activity family can now be promoted directly to
+  `SingleScaleUVDecay` by
+  `singleScaleUVDecay_of_omegaRootedClusterWithHolesActivities`;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

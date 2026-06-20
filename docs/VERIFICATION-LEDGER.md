@@ -6817,3 +6817,67 @@ It does not prove the residual pointwise bound, Dimock (642), the integrated
 estimate, or any continuum/OS/Clay theorem.  It removes one local impedance
 mismatch between the finite Appendix-F polymer type and the residual `hpoly`
 bridge.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 196 (2026-06-20, **omega-rooted scalar UV producer**
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedClusterWithHolesActivities`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedClusterWithHolesActivities_four_mul_margin`;
+core 8294)
+
+This addendum finishes the immediate consumer-facing adapter after Addendum
+195.  The rooted `OmegaPolymerType` residual bridge now feeds the scalar
+`SingleScaleUVDecay` predicate consumed by the UV mass-gap assembly.
+
+The theorem
+`singleScaleUVDecay_of_omegaRootedClusterWithHolesActivities` takes a
+scale-indexed rooted omega-pinned activity family
+
+```
+Hsharp : ℕ → ℕ → {P : OmegaPolymerType H z // r ∈ skeleton H P.val} → ℝ
+```
+
+together with the residual Appendix-F decay bound in the concrete modified
+metric
+
+```
+d_M(P.val.val, holes) + 1
+```
+
+and the already-proved rooted geometric summability assumptions.  If
+
+```
+Rsc t k = ∑' P, Hsharp t k P,
+```
+
+then the scalar consumer receives
+
+```
+SingleScaleUVDecay Rsc g
+  ((C * H₀) *
+    (1 - ((3^d)^2) * (exp(-κ₀) * 2^(3^d+1)))⁻¹)
+  c₀ κ₀.
+```
+
+The companion
+`singleScaleUVDecay_of_omegaRootedClusterWithHolesActivities_four_mul_margin`
+packages the sufficient margin `κ ≥ 4κ₀ + 3`, using the previously verified
+residual inequality `κ₀ ≤ κ - 3κ₀ - 3`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PolymerClusterWithHolesBridge.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is still an adapter theorem: it does not prove the
+residual pointwise `Hsharp` estimate, Dimock (642), the integrated `K#`
+bound, the second Ursell expansion to `H#`, or any continuum construction.
+It closes the formal route from an already-supplied omega-rooted residual
+activity estimate to the scalar UV hypothesis.  Clay distance **~0%
+(<0.1%), unchanged**.
