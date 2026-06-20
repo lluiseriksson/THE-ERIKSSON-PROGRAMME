@@ -7268,3 +7268,52 @@ source estimates.  It only states the exact consumer contract: once fixed-target
 summability and uniform finite-partial residual estimates are supplied, the
 previous totalized `H#` residual adapter is theorem-fed.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 205 (2026-06-20, **finite partial H# tail error interface**
+`YangMills.RG.appendixFHoleHsharp_eq_partial_add_tail`,
+`YangMills.RG.appendixFHoleHsharp_sub_partial_tendsto_zero`,
+`YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_tail_norm_tsum`,
+`YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_of_tail_norm_bound`;
+core 8301)
+
+This addendum extends `YangMills/RG/AppendixFHsharpConvergence.lean` with the
+tail/Cauchy form of the finite-to-total `H#` interface.
+
+The theorem `appendixFHoleHsharp_eq_partial_add_tail` proves the exact
+decomposition
+
+```
+appendixFHoleHsharp HF zK Y
+  = appendixFHoleHsharpPartial HF zK N Y
+    + ∑' i, appendixFHoleHsharpTerm HF zK Y (i + N).
+```
+
+The theorem `appendixFHoleHsharp_sub_partial_tendsto_zero` records that the
+finite truncation error tends to zero under the fixed-target summability
+hypothesis.  The quantitative theorem
+`norm_appendixFHoleHsharp_sub_partial_le_tail_norm_tsum` bounds the truncation
+error by the shifted norm-tail sum, and
+`norm_appendixFHoleHsharp_sub_partial_le_of_tail_norm_bound` packages the same
+statement when the source analysis has already supplied an explicit scalar
+tail bound.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpConvergence.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This does not prove the source-side fixed-target
+summability or any quantitative decay of the second-Ursell tail.  It names the
+exact tail object and the norm inequality that future KP/Ursell estimates must
+feed before one can claim a source proof of the residual bound.  Dimock (642),
+the `κ - 3κ₀ - 3` analytic loss, concrete Yang-Mills raw activity decay,
+continuum construction, and Clay remain open.  Clay distance **~0% (<0.1%),
+unchanged**.

@@ -602,6 +602,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial_re_four_mul_margin
 -- convergence interface: fixed-target summability + uniform partial bounds.
 #print axioms YangMills.RG.appendixFHoleHsharpPartial_tendsto
+#print axioms YangMills.RG.appendixFHoleHsharp_eq_partial_add_tail
+#print axioms YangMills.RG.appendixFHoleHsharp_sub_partial_tendsto_zero
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_tail_norm_tsum
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_of_tail_norm_bound
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_of_partial_bound
 #print axioms YangMills.RG.clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_limit_le
 #print axioms YangMills.RG.rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_limit_le

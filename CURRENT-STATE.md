@@ -316,14 +316,18 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * the convergence interface for the second-Ursell layer
   `YangMills/RG/AppendixFHsharpConvergence.lean`: it proves that fixed-target
   summability of the `appendixFHoleHsharpTerm` sequence makes the finite
-  truncations converge to the totalized `appendixFHoleHsharp`, and that any
-  residual complex-norm bound uniform over all finite partial cutoffs passes
-  to the totalized `H#`.  The same module then packages this limit passage into
-  the total residual activity-decay and omega-rooted `SingleScaleUVDecay`
-  producers, including the real-part specialization and the sufficient margin
-  `κ >= 4κ₀ + 3`.  This is still a contract interface: it does not prove the
-  fixed-target summability, the uniform finite-partial residual bound, Dimock
-  (642), or any continuum/Clay theorem;
+  truncations converge to the totalized `appendixFHoleHsharp`.  It now also
+  exposes the exact decomposition
+  `appendixFHoleHsharp = appendixFHoleHsharpPartial + tail`, proves that the
+  truncation error tends to zero, and bounds the error norm by the shifted
+  norm-tail sum.  Any residual complex-norm bound uniform over all finite
+  partial cutoffs passes to the totalized `H#`.  The same module packages this
+  limit passage into the total residual activity-decay and omega-rooted
+  `SingleScaleUVDecay` producers, including the real-part specialization and
+  the sufficient margin `κ >= 4κ₀ + 3`.  This is still a contract interface:
+  it does not prove the fixed-target summability, quantitative tail decay, the
+  uniform finite-partial residual bound, Dimock (642), or any continuum/Clay
+  theorem;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound

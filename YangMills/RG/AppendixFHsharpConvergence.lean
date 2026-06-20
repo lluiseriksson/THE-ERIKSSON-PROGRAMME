@@ -43,6 +43,86 @@ theorem appendixFHoleHsharpPartial_tendsto
   simpa [appendixFHoleHsharp, appendixFHoleHsharpPartial] using
     hsum.hasSum.tendsto_sum_nat
 
+/-- Exact finite-plus-tail decomposition of totalized `H#`.  The tail is
+written with the shifted index `i + N`, so later analytic estimates can bound
+the remaining second-gas Ursell contribution after a finite cutoff. -/
+theorem appendixFHoleHsharp_eq_partial_add_tail
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (Y : Finset (Cube d L))
+    (N : ℕ)
+    (hsum : Summable (fun n : ℕ => appendixFHoleHsharpTerm HF zK Y n)) :
+    appendixFHoleHsharp HF zK Y =
+      appendixFHoleHsharpPartial HF zK N Y +
+        ∑' i : ℕ, appendixFHoleHsharpTerm HF zK Y (i + N) := by
+  simpa [appendixFHoleHsharp, appendixFHoleHsharpPartial] using
+    (hsum.sum_add_tsum_nat_add N).symm
+
+/-- The truncation error tends to zero whenever the fixed-target `H#` term
+sequence is summable.  This is the Cauchy/tail form of
+`appendixFHoleHsharpPartial_tendsto`. -/
+theorem appendixFHoleHsharp_sub_partial_tendsto_zero
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (Y : Finset (Cube d L))
+    (hsum : Summable (fun n : ℕ => appendixFHoleHsharpTerm HF zK Y n)) :
+    Filter.Tendsto
+      (fun N : ℕ =>
+        appendixFHoleHsharp HF zK Y -
+          appendixFHoleHsharpPartial HF zK N Y)
+      Filter.atTop
+      (nhds 0) := by
+  simpa using
+    (appendixFHoleHsharpPartial_tendsto HF zK Y hsum).const_sub
+      (appendixFHoleHsharp HF zK Y)
+
+/-- Quantitative tail estimate for the finite `H#` truncation error.  It
+reduces a future analytic residual proof to bounding the norm-sum of the
+shifted tail `n ↦ appendixFHoleHsharpTerm ... (n + N)`. -/
+theorem norm_appendixFHoleHsharp_sub_partial_le_tail_norm_tsum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (Y : Finset (Cube d L))
+    (N : ℕ)
+    (htail :
+      Summable
+        (fun i : ℕ => ‖appendixFHoleHsharpTerm HF zK Y (i + N)‖)) :
+    ‖appendixFHoleHsharp HF zK Y -
+        appendixFHoleHsharpPartial HF zK N Y‖ ≤
+      ∑' i : ℕ, ‖appendixFHoleHsharpTerm HF zK Y (i + N)‖ := by
+  have hsum :
+      Summable (fun n : ℕ => appendixFHoleHsharpTerm HF zK Y n) :=
+    Summable.comp_nat_add (k := N) htail.of_norm
+  have hdecomp :=
+    appendixFHoleHsharp_eq_partial_add_tail HF zK Y N hsum
+  have hdiff :
+      appendixFHoleHsharp HF zK Y -
+          appendixFHoleHsharpPartial HF zK N Y =
+        ∑' i : ℕ, appendixFHoleHsharpTerm HF zK Y (i + N) := by
+    rw [hdecomp]
+    abel
+  rw [hdiff]
+  exact norm_tsum_le_tsum_norm htail
+
+/-- Convenient wrapper around
+`norm_appendixFHoleHsharp_sub_partial_le_tail_norm_tsum` when the source work
+has already packaged the shifted norm-tail sum by an explicit scalar bound. -/
+theorem norm_appendixFHoleHsharp_sub_partial_le_of_tail_norm_bound
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (Y : Finset (Cube d L))
+    (N : ℕ)
+    {B : ℝ}
+    (htail :
+      Summable
+        (fun i : ℕ => ‖appendixFHoleHsharpTerm HF zK Y (i + N)‖))
+    (hB :
+      (∑' i : ℕ, ‖appendixFHoleHsharpTerm HF zK Y (i + N)‖) ≤ B) :
+    ‖appendixFHoleHsharp HF zK Y -
+        appendixFHoleHsharpPartial HF zK N Y‖ ≤ B :=
+  (norm_appendixFHoleHsharp_sub_partial_le_tail_norm_tsum
+    HF zK Y N htail).trans hB
+
 /-- A residual complex-norm bound that is uniform in the finite partial cutoff
 passes to the totalized `H#`, assuming the fixed-target term sequence is
 summable. -/
