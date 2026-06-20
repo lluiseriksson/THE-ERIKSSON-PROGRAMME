@@ -100,6 +100,64 @@ theorem finiteBerezinEmptyCoeff_basis_of_nonempty {n : ℕ}
   have hsne : s ≠ (∅ : Finset (Fin n)) := Finset.nonempty_iff_ne_empty.mp hs
   simp [hsne]
 
+/-- The empty-coefficient functional sends the algebra unit to one. -/
+@[simp] theorem finiteBerezinEmptyCoeff_one (n : ℕ) :
+    finiteBerezinEmptyCoeff n (1 : FiniteExterior n) = 1 := by
+  rw [← finiteExteriorBasis_empty n]
+  exact finiteBerezinEmptyCoeff_empty_basis n
+
+/-- Top-coefficient extraction on a finite linear combination of exterior-basis
+monomials selects the top coefficient if that monomial is present, and zero
+otherwise. -/
+theorem finiteBerezinTop_sum_basis_eq_if_mem
+    (n : ℕ) (S : Finset (Finset (Fin n))) (c : Finset (Fin n) → ℂ) :
+    finiteBerezinTop n (S.sum fun s => c s • finiteExteriorBasis n s) =
+      if (Finset.univ : Finset (Fin n)) ∈ S then
+        c (Finset.univ : Finset (Fin n))
+      else 0 := by
+  rw [map_sum]
+  by_cases htop : (Finset.univ : Finset (Fin n)) ∈ S
+  · rw [if_pos htop]
+    rw [Finset.sum_eq_single (Finset.univ : Finset (Fin n))]
+    · simp
+    · intro b hb hbne
+      have hbne_top : b ≠ (Finset.univ : Finset (Fin n)) := hbne
+      simp [finiteBerezinTop_basis_of_ne_top n hbne_top]
+    · intro hnot
+      exact False.elim (hnot htop)
+  · rw [if_neg htop]
+    rw [Finset.sum_eq_zero]
+    intro b hb
+    have hbne_top : b ≠ (Finset.univ : Finset (Fin n)) := by
+      intro hbtop
+      exact htop (hbtop ▸ hb)
+    simp [finiteBerezinTop_basis_of_ne_top n hbne_top]
+
+/-- Empty-coefficient extraction on a finite linear combination of exterior-basis
+monomials selects the empty coefficient if that monomial is present, and zero
+otherwise. -/
+theorem finiteBerezinEmptyCoeff_sum_basis_eq_if_mem
+    (n : ℕ) (S : Finset (Finset (Fin n))) (c : Finset (Fin n) → ℂ) :
+    finiteBerezinEmptyCoeff n (S.sum fun s => c s • finiteExteriorBasis n s) =
+      if (∅ : Finset (Fin n)) ∈ S then c (∅ : Finset (Fin n)) else 0 := by
+  rw [map_sum]
+  by_cases hempty : (∅ : Finset (Fin n)) ∈ S
+  · rw [if_pos hempty]
+    rw [Finset.sum_eq_single (∅ : Finset (Fin n))]
+    · simp
+    · intro b hb hbne
+      have hbne_empty : b ≠ (∅ : Finset (Fin n)) := hbne
+      simp [finiteBerezinEmptyCoeff_basis, hbne_empty]
+    · intro hnot
+      exact False.elim (hnot hempty)
+  · rw [if_neg hempty]
+    rw [Finset.sum_eq_zero]
+    intro b hb
+    have hbne_empty : b ≠ (∅ : Finset (Fin n)) := by
+      intro hbempty
+      exact hempty (hbempty ▸ hb)
+    simp [finiteBerezinEmptyCoeff_basis, hbne_empty]
+
 /-- In positive fermionic dimension, constants have zero Berezin integral. -/
 @[simp] theorem finiteBerezinTop_one_of_pos {n : ℕ} (hn : 0 < n) :
     finiteBerezinTop n (1 : FiniteExterior n) = 0 := by
@@ -397,6 +455,23 @@ theorem finiteBerezinWeighted_topWeight_apply_eq_top_add_empty_of_pos {n : ℕ}
   rw [finiteBerezinWeighted_topWeight_eq_top_add_empty_of_pos hn a]
   rfl
 
+/-- On finite basis expansions, the elementary top-density weight sees only
+the top and empty coefficients. -/
+theorem finiteBerezinWeighted_topWeight_sum_basis_eq_coeffs_of_pos
+    {n : ℕ} (hn : 0 < n) (a : ℂ)
+    (S : Finset (Finset (Fin n))) (c : Finset (Fin n) → ℂ) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+        (S.sum fun s => c s • finiteExteriorBasis n s) =
+      (if (Finset.univ : Finset (Fin n)) ∈ S then
+        c (Finset.univ : Finset (Fin n))
+      else 0) +
+        a * (if (∅ : Finset (Fin n)) ∈ S then
+          c (∅ : Finset (Fin n))
+        else 0) := by
+  rw [finiteBerezinWeighted_topWeight_apply_eq_top_add_empty_of_pos hn a]
+  rw [finiteBerezinTop_sum_basis_eq_if_mem]
+  rw [finiteBerezinEmptyCoeff_sum_basis_eq_if_mem]
+
 /-- Products with repeated generators still integrate to zero against the
 elementary top-density weight. -/
 @[simp] theorem finiteBerezinWeighted_topWeight_basis_mul_of_not_disjoint
@@ -462,6 +537,29 @@ theorem finiteBerezinWeighted_topWeight_powersetCard_mul_of_disjoint_nonempty_ne
   rw [finiteExteriorBasis_powersetCard_mul_of_disjoint s t h]
   simp [finiteBerezinWeighted_topWeight_basis_of_nonempty_ne_top
       a hunion_nonempty hunion_ne_top]
+
+/-- Weighted finite Berezin integration expands bilinearly over two finite
+linear combinations of exterior-basis monomials.  This is the finite-sum bridge
+from monomial coefficient rules to later toy Gaussian/Pfaffian expansions. -/
+theorem finiteBerezinWeighted_sum_basis_mul_sum_basis
+    {n : ℕ} (weight : FiniteExterior n)
+    (S T : Finset (Finset (Fin n))) (c d : Finset (Fin n) → ℂ) :
+    finiteBerezinWeighted n weight
+        ((S.sum fun s => c s • finiteExteriorBasis n s) *
+          (T.sum fun t => d t • finiteExteriorBasis n t)) =
+      S.sum fun s => T.sum fun t =>
+        (c s * d t) *
+          finiteBerezinWeighted n weight
+            ((finiteExteriorBasis n s) * (finiteExteriorBasis n t)) := by
+  rw [Finset.sum_mul]
+  rw [map_sum]
+  refine Finset.sum_congr rfl ?_
+  intro s hs
+  rw [Finset.mul_sum]
+  rw [map_sum]
+  refine Finset.sum_congr rfl ?_
+  intro t ht
+  simp [smul_smul, mul_assoc, mul_comm]
 
 /-- Grassmann nilpotence for finite exterior basis generators: each degree-one
 basis monomial squares to zero.  This is the first generator-level algebraic

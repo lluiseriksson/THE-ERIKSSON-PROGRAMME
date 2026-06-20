@@ -295,6 +295,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.SUSY.finiteBerezinEmptyCoeff_basis
 #print axioms YangMills.SUSY.finiteBerezinEmptyCoeff_empty_basis
 #print axioms YangMills.SUSY.finiteBerezinEmptyCoeff_basis_of_nonempty
+#print axioms YangMills.SUSY.finiteBerezinEmptyCoeff_one
+#print axioms YangMills.SUSY.finiteBerezinTop_sum_basis_eq_if_mem
+#print axioms YangMills.SUSY.finiteBerezinEmptyCoeff_sum_basis_eq_if_mem
 #print axioms YangMills.SUSY.finiteBerezinWeighted_apply
 #print axioms YangMills.SUSY.finiteBerezinWeighted_one
 #print axioms YangMills.SUSY.finiteBerezinWeighted_top_basis_one
@@ -314,9 +317,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_basis_of_nonempty_ne_top
 #print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_eq_top_add_empty_of_pos
 #print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_apply_eq_top_add_empty_of_pos
+#print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_sum_basis_eq_coeffs_of_pos
 #print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_basis_mul_of_not_disjoint
 #print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_powersetCard_mul_of_disjoint_top_of_pos
 #print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_powersetCard_mul_of_disjoint_nonempty_ne_top
+#print axioms YangMills.SUSY.finiteBerezinWeighted_sum_basis_mul_sum_basis
 #print axioms YangMills.SUSY.finiteExteriorBasis_singleton_mul_self
 #print axioms YangMills.SUSY.finiteBerezin_expect_Q_eq_zero
 #print axioms YangMills.SUSY.finiteBerezin_eq_expect_remainder_of_exactWard

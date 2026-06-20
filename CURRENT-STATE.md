@@ -198,6 +198,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   generator support gives zero, a disjoint product filling the positive top
   degree gives Mathlib's explicit exterior orientation sign, and disjoint
   nonempty non-top products give zero.
+  The finite-sum layer now lifts these basis facts to explicit coefficient
+  extraction on finite basis expansions: `finiteBerezinTop` selects the top
+  coefficient, `finiteBerezinEmptyCoeff` selects the empty coefficient, the
+  top-density weight sees exactly those two coefficients, and
+  `finiteBerezinWeighted_sum_basis_mul_sum_basis` expands the weighted integral
+  of two finite basis sums into the double sum of monomial products.
   This is only the algebraic Berezin/Ward coefficient layer, not yet a
   super-Gaussian determinant/Pfaffian theorem.
 * the Ward-cancelled polymer bridge `YangMills/SUSY/WardPolymer.lean`: finite

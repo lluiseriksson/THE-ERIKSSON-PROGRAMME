@@ -5995,3 +5995,35 @@ the toy top-density seed.  It does not construct a Gaussian Berezin integral,
 fermionic covariance, determinant/Pfaffian formula, physical supersymmetry,
 Yang-Mills activity bound, `hRpoly`, continuum limit, or OS/Wightman
 reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 179 (2026-06-20, **finite Berezin coefficient-sum expansion**
+`YangMills.SUSY.finiteBerezinEmptyCoeff_one`,
+`YangMills.SUSY.finiteBerezinTop_sum_basis_eq_if_mem`,
+`YangMills.SUSY.finiteBerezinEmptyCoeff_sum_basis_eq_if_mem`,
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_sum_basis_eq_coeffs_of_pos`,
+`YangMills.SUSY.finiteBerezinWeighted_sum_basis_mul_sum_basis`;
+core 8284)
+
+This addendum lifts the finite Berezin monomial calculus to finite coefficient
+expansions.
+
+* `finiteBerezinTop` applied to a finite exterior-basis sum selects the
+  coefficient of the top monomial if it is present in the finite index set, and
+  gives zero otherwise.
+* `finiteBerezinEmptyCoeff` does the same for the empty monomial; the same
+  functional also sends the algebra unit to one.
+* In positive fermionic dimension, the elementary top-density weight
+  `1 + a • topBasis` applied to a finite basis sum is exactly
+  `top coefficient + a * empty coefficient`.
+* For any algebraic weight, the weighted finite Berezin integral of the product
+  of two finite basis sums expands bilinearly as the double sum of the weighted
+  monomial-product integrals.
+
+These theorems are intended as the finite-sum bridge between the existing
+sign-exposed monomial rules and a later tiny Gaussian/Pfaffian toy expansion.
+
+**Honest scope.** This is still finite exterior-algebra coefficient
+bookkeeping.  It does not construct a Gaussian Berezin integral, fermionic
+covariance, determinant/Pfaffian formula, physical supersymmetry, Yang-Mills
+activity bound, `hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay
+distance **~0% (<0.1%), unchanged**.

@@ -123,6 +123,14 @@ activity has amplitude `amp + S`.
   with repeated generators, while the disjoint cardinality-indexed rules
   extract the explicit orientation sign in the positive top-degree case and
   give zero in the nonempty non-top case.
+* The monomial rules now lift to finite coefficient expansions:
+  `finiteBerezinTop_sum_basis_eq_if_mem` and
+  `finiteBerezinEmptyCoeff_sum_basis_eq_if_mem` select the top and empty
+  coefficients from a finite basis sum,
+  `finiteBerezinWeighted_topWeight_sum_basis_eq_coeffs_of_pos` shows that the
+  elementary top-density weight sees exactly those two coefficients, and
+  `finiteBerezinWeighted_sum_basis_mul_sum_basis` expands a weighted integral
+  of two finite basis sums into the double sum of monomial-product integrals.
 
 This is the first concrete finite Grassmann/Berezin layer underneath the
 abstract Ward interface.  The weighted functional is the algebraic slot into
