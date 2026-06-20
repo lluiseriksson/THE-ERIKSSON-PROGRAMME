@@ -5,14 +5,17 @@
 campaign targets, so G5 is *specifiable* from sources rather than
 reconstructed from memory.  **Honest caveats are flagged in bold.**
 
-**Source-targeting audit (2026-06-20).**  For the remaining `hRpoly`
-Yang-Mills activity/locality package, do not cite mirror metadata without
-checking the Springer/DOI record and the paper text.  The worker confirmed
-the bibliographic spine below, but full PDFs were not accessible from the
-automation environment: Project Euclid downloads returned Incapsula pages,
-SciSpace returned 403, and Springer PDF endpoints served subscription HTML.
-The next source-fed theorem must therefore be extracted from PDFs/excerpts
-supplied by a human or an authenticated browser session.
+**Source-targeting audit (2026-06-20, corrected).**  For the remaining
+`hRpoly` Yang-Mills activity/locality package, do not cite mirror metadata
+without checking the Springer/DOI record and the paper text.  Web downloads
+were blocked from the automation environment: Project Euclid downloads
+returned Incapsula pages, SciSpace returned 403, and Springer PDF endpoints
+served subscription HTML.  A later local-source search found user-provided
+PDFs for the Balaban spine below, and the worker copied text extracts,
+rendered page images, and the split CMP 119 paper into the persistent
+runtime source cache.  The blocker is therefore no longer "all PDFs
+unavailable"; it is the more precise extraction of support/locality and
+raw-activity hypotheses from the now-available primary text.
 
 Primary Balaban targets for `hRpoly`:
 
@@ -39,6 +42,31 @@ overlap relation used by the cluster expansion, and the pointwise
 Yang-Mills polymer activity majorant that can feed the existing
 `omegaHolePolymerSystem_*_metric_bound` consumers.  Until those equations
 are in hand, keep the activity/locality package as explicit hypotheses.
+
+Visually confirmed source anchors already located:
+
+* CMP 116 (1988), PDF page 20, Lemma 3 / eq. (2.38): the cluster-expansion
+  activity `H(Z)` for `Z in D_{k+1}` satisfies
+  `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.
+  This is an activity-decay anchor for the localized fluctuation-integral
+  expansion, not yet the full Lean support theorem.
+* CMP 119 (1988), PDF page 18 / printed page 260, eq. (2.31): localized
+  `R`-terms satisfy
+  `|R^(j)(X,(U,J))| <= g_j^kappa_0 exp(-kappa d_j(X))`, with
+  `kappa_0` selectable large after fixing the other parameters.  PDF page
+  19 / printed page 261, eq. (2.42), gives the analogous localized
+  boundary-term bound
+  `|B^(j)(X,(U,J),A,{S_i cap X})| < B_0 exp(-kappa d_j(X))`.
+* CMP 122-I (1989), PDF page 18 / printed page 192, eq. (1.70): the
+  intermediate large-field `C_k^(n)` terms satisfy
+  `|C_k^(n)(X,(U,J))| <= C_0 exp(-(1 + 3 beta) kappa d_m(X))` for
+  `X in D_m`.
+* CMP 122-II (1989), PDF page 36 / printed page 390, eqs. (1.98)-(1.100):
+  the exponentiated `R'^(k)` cluster expansion separates boundary terms
+  from the second-group `R`-terms, and those second-group terms satisfy
+  `|R'^(k)(X,(U,J))| <= exp(-p_0(g_k)) exp(-kappa d_k(X))`.
+  This is the sharp local large-field `R`-operation bound; it should not be
+  relabeled as a global scalar mass-gap estimate.
 
 ## 1. Fluctuation-covariance bound (Bałaban CMP 95 (1984), Prop 1.1/1.2)
 
