@@ -553,6 +553,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFTargetFiber_subset_nonemptyPowerset
 #print axioms YangMills.RG.sum_powerset_erase_empty_prod_le_exp_sub_one
 #print axioms YangMills.RG.appendixFTargetFiber_prod_le_exp_sub_one
+-- local modified-metric summability adapters before the first K# estimate.
+#print axioms YangMills.RG.appendixFHole_rootedFiniteExpWeightSum_le
+#print axioms YangMills.RG.appendixFHole_containedWeightSum_le_metric_mul_of_rooted
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

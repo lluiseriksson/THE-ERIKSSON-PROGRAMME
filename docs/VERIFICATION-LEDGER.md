@@ -6881,3 +6881,60 @@ bound, the second Ursell expansion to `H#`, or any continuum construction.
 It closes the formal route from an already-supplied omega-rooted residual
 activity estimate to the scalar UV hypothesis.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 197 (2026-06-20, **Appendix-F local summability adapter**
+`YangMills.RG.appendixFHole_rootedFiniteExpWeightSum_le`,
+`YangMills.RG.appendixFHole_containedWeightSum_le_metric_mul_of_rooted`;
+core 8295)
+
+This addendum follows the dependency-order audit recommending that the first
+`K#` estimate be preceded by a local modified-metric summability adapter,
+rather than by the final residual `H#` bridge.  A new module
+`YangMills/RG/AppendixFLocalSummability.lean` defines
+
+```
+appendixFHoleExpWeight HF κ X = exp (-(κ * (d_M(X, holes) + 1)))
+appendixFKsharpRate κ κ₀ = κ - κ₀ - 2
+```
+
+The theorem `appendixFHole_rootedFiniteExpWeightSum_le` restricts the
+existing rooted omega modified-metric summability theorem to any finite raw
+family `Λ`.
+
+The theorem `appendixFHole_containedWeightSum_le_metric_mul_of_rooted`
+converts rooted control
+
+```
+Σ_{X ∈ Λ, r ∈ skeleton X} w(X) ≤ K₀
+```
+
+into target-contained control
+
+```
+Σ_{X ∈ Λ, X.val ⊆ Y} w(X) ≤ (d_M(Y) + 1) K₀
+```
+
+for representable Appendix-F full targets `Y`.  The proof overcounts through
+roots in `skeleton HF Y`, uses `sum_biUnion_le`, and closes the root count with
+`skeleton_card_le_discreteModifiedMetric_add_one`.  The local nonnegativity
+hypothesis remains only on `X ∈ Λ`; internally the proof uses a zero extension
+off `Λ` to reuse the existing global nonnegativity summation lemma.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFLocalSummability.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is the first preparatory local-summability brick for
+the `K(Y)`/`K#` estimate.  It does not prove the pointwise raw activity decay,
+the exact exponential-minus-one `K(Y)` estimate, Dimock (642), the
+factorization (643), the second Ursell expansion, or any continuum theorem.
+Clay distance **~0% (<0.1%), unchanged**.

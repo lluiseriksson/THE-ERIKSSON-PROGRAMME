@@ -215,6 +215,19 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   the closed Dimock (642) activity bound, the `B0` local summability adapter,
   ultralocal integration/factorization to `K#`, the second Ursell expansion
   to `H#`, or any concrete Yang-Mills raw activity decay;
+* the local Appendix-F summability adapter
+  `YangMills/RG/AppendixFLocalSummability.lean`: it defines the shifted
+  weight `appendixFHoleExpWeight HF κ X = exp(-κ(d_M(X)+1))` and the
+  first-gas rate `appendixFKsharpRate κ κ₀ = κ - κ₀ - 2`.  It proves
+  `appendixFHole_rootedFiniteExpWeightSum_le`, restricting the concrete
+  rooted omega modified-metric summability theorem to any finite raw family
+  `Λ`, and
+  `appendixFHole_containedWeightSum_le_metric_mul_of_rooted`, converting
+  rooted local control into a target-contained estimate by overcounting
+  through roots in `skeleton HF Y` and using
+  `skeleton_card_le_discreteModifiedMetric_add_one`.  This is still finite
+  summability bookkeeping before the pointwise `K(Y)` estimate, not Dimock
+  (642), not `K#` integration, and not the second gas;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound

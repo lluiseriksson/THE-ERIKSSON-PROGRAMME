@@ -317,6 +317,10 @@ import YangMills.RG.AppendixFQuantitative
 -- Finite target-fiber entropy step: overcount a target fiber by the nonempty
 -- powerset of raw supports contained in the target and absorb it into exp(sum)-1.
 import YangMills.RG.AppendixFFiberEntropy
+-- Appendix-F local modified-metric summability adapters: restrict rooted
+-- geometric sums to finite raw families and convert rooted control to
+-- target-contained local control.
+import YangMills.RG.AppendixFLocalSummability
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
