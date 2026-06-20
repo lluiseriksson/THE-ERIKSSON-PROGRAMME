@@ -136,6 +136,20 @@ theorem norm_globalEval_mayerCoverActivity_le_prod_two_of_norm_le
           ≤ 2 * ‖(H i.1).globalEval ψ φ‖ := by simpa using hraw
       _ ≤ 2 * A i.1 := mul_le_mul_of_nonneg_left (hA i.1 i.2) zero_le_two
 
+/-- Uniform-amplitude form of
+`norm_globalEval_mayerCoverActivity_le_prod_two_of_norm_le`.  A source proof
+often supplies a single small amplitude for every member of a cover; this
+corollary exposes the resulting size profile `(2 * A) ^ |I|`. -/
+theorem norm_globalEval_mayerCoverActivity_le_two_mul_pow_card_of_norm_le
+    (I : Finset ι) (H : ι → LocalActivity Site Ψ Φ ℂ)
+    (A : ℝ) (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x)
+    (hA : ∀ i, i ∈ I → ‖(H i).globalEval ψ φ‖ ≤ A)
+    (hsmall : A ≤ 1) :
+    ‖(mayerCoverActivity I H).globalEval ψ φ‖ ≤ (2 * A) ^ I.card := by
+  simpa using
+    norm_globalEval_mayerCoverActivity_le_prod_two_of_norm_le
+      I H (fun _ => A) ψ φ hA (fun _ _ => hsmall)
+
 /-- The Mayer cover product remains insensitive to off-support changes in both
 field families, with supports equal to the corresponding support unions. -/
 theorem mayerCoverActivity_globalEval_eq_of_agreeOn (I : Finset ι)
@@ -200,6 +214,16 @@ theorem norm_globalEval_mayerActivity_le_prod_two_of_norm_le
     ‖(C.mayerActivity H).globalEval ψ φ‖ ≤
       ∏ i : {i // i ∈ C.index}, (2 * A i.1) := by
   exact LocalActivity.norm_globalEval_mayerCoverActivity_le_prod_two_of_norm_le
+    C.index H A ψ φ hA hsmall
+
+/-- Cover-facing uniform-amplitude form of the Mayer product norm bound. -/
+theorem norm_globalEval_mayerActivity_le_two_mul_pow_card_of_norm_le
+    (C : OmegaConnectedCover Site ι) (H : ι → LocalActivity Site Ψ Φ ℂ)
+    (A : ℝ) (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x)
+    (hA : ∀ i, i ∈ C.index → ‖(H i).globalEval ψ φ‖ ≤ A)
+    (hsmall : A ≤ 1) :
+    ‖(C.mayerActivity H).globalEval ψ φ‖ ≤ (2 * A) ^ C.index.card := by
+  exact LocalActivity.norm_globalEval_mayerCoverActivity_le_two_mul_pow_card_of_norm_le
     C.index H A ψ φ hA hsmall
 
 theorem mayerActivity_globalEval_eq_of_agreeOn (C : OmegaConnectedCover Site ι)

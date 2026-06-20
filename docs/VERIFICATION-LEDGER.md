@@ -5662,3 +5662,27 @@ one-factor Mayer estimate.  It does not prove the Yang-Mills raw activity
 bound, the source smallness window, Appendix-F activity decay, `hRpoly`,
 continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 168 (2026-06-20, **uniform Mayer-cover size profile**
+`YangMills.RG.LocalActivity.norm_globalEval_mayerCoverActivity_le_two_mul_pow_card_of_norm_le`,
+`YangMills.RG.OmegaConnectedCover.norm_globalEval_mayerActivity_le_two_mul_pow_card_of_norm_le`;
+core 8283)
+
+This addendum specializes the Addendum 167 product bound to the common
+source-facing case where every member of a finite cover has the same small
+raw-activity amplitude `A`.  The local theorem
+`norm_globalEval_mayerCoverActivity_le_two_mul_pow_card_of_norm_le` assumes
+`‖(H i).globalEval ψ φ‖ ≤ A` for all `i ∈ I` and `A ≤ 1`, and proves
+
+`‖(mayerCoverActivity I H).globalEval ψ φ‖ ≤ (2 * A) ^ I.card`.
+
+The cover-facing theorem packages the same statement for
+`OmegaConnectedCover`.  This is the finite cardinality profile a later
+source compiler can combine with cover-size or skeleton-size estimates before
+feeding the existing local-window/metric-bound KP consumers.
+
+**Honest scope.** This is a corollary of the finite product-norm estimate,
+not a Yang-Mills activity estimate.  It does not prove the source amplitude
+`A`, the source smallness window, Appendix-F activity decay, `hRpoly`,
+continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

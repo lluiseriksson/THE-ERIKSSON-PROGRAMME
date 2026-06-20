@@ -434,6 +434,12 @@ The same source-facing product API now has a pointwise quantitative bound:
 `OmegaConnectedCover.norm_globalEval_mayerActivity_le_prod_two_of_norm_le`
 show that factorwise raw estimates `‖Hᵢ‖ ≤ Aᵢ ≤ 1` imply
 `‖∏ᵢ (exp Hᵢ - 1)‖ ≤ ∏ᵢ 2Aᵢ`.
+The uniform-amplitude forms
+`LocalActivity.norm_globalEval_mayerCoverActivity_le_two_mul_pow_card_of_norm_le`
+and
+`OmegaConnectedCover.norm_globalEval_mayerActivity_le_two_mul_pow_card_of_norm_le`
+specialize this to the source-common profile
+`‖∏ᵢ (exp Hᵢ - 1)‖ ≤ (2A)^{|I|}`.
 `LocalActivity.fluctuationOverlapGraph_adj_imp_omegaOverlapGraph_adj_of_fluctuationSupport_subset`
 proves the graph-level adapter: if each local fluctuation support is contained
 in its declared `Ω ∩ activeSupport i`, then every actual fluctuation-overlap
