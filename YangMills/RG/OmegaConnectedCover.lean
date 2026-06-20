@@ -111,6 +111,31 @@ theorem mayerCoverActivity_fluctuationSupport_subset_omega_biUnion_activeSupport
       ∏ i : {i // i ∈ I}, (Complex.exp ((H i.1).globalEval ψ φ) - 1) := by
   simp [mayerCoverActivity]
 
+/-- Pointwise norm bound for a raw Mayer-cover product.  If every local
+activity is bounded by a small amplitude `A i`, then each raw Mayer factor
+costs at most `2 * A i`, and the finite cover product costs the product of
+those bounds.  This is the quantitative finite step sitting between a
+source-proved raw activity estimate and the polymer majorant consumed by the
+with-holes KP layer. -/
+theorem norm_globalEval_mayerCoverActivity_le_prod_two_of_norm_le
+    (I : Finset ι) (H : ι → LocalActivity Site Ψ Φ ℂ)
+    (A : ι → ℝ) (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x)
+    (hA : ∀ i, i ∈ I → ‖(H i).globalEval ψ φ‖ ≤ A i)
+    (hsmall : ∀ i, i ∈ I → A i ≤ 1) :
+    ‖(mayerCoverActivity I H).globalEval ψ φ‖ ≤
+      ∏ i : {i // i ∈ I}, (2 * A i.1) := by
+  rw [globalEval_mayerCoverActivity, norm_prod]
+  refine Finset.prod_le_prod ?nonneg ?bound
+  · intro i hi
+    exact norm_nonneg (Complex.exp ((H i.1).globalEval ψ φ) - 1)
+  · intro i hi
+    have hraw := norm_globalEval_rawMayer_le_two (H i.1) ψ φ
+      (le_trans (hA i.1 i.2) (hsmall i.1 i.2))
+    calc
+      ‖Complex.exp ((H i.1).globalEval ψ φ) - 1‖
+          ≤ 2 * ‖(H i.1).globalEval ψ φ‖ := by simpa using hraw
+      _ ≤ 2 * A i.1 := mul_le_mul_of_nonneg_left (hA i.1 i.2) zero_le_two
+
 /-- The Mayer cover product remains insensitive to off-support changes in both
 field families, with supports equal to the corresponding support unions. -/
 theorem mayerCoverActivity_globalEval_eq_of_agreeOn (I : Finset ι)
@@ -164,6 +189,18 @@ theorem mayerActivity_fluctuationSupport_subset_omega_biUnion_activeSupport
     (C.mayerActivity H).globalEval ψ φ =
       ∏ i : {i // i ∈ C.index}, (Complex.exp ((H i.1).globalEval ψ φ) - 1) := by
   simp [mayerActivity]
+
+/-- Cover-facing form of
+`LocalActivity.norm_globalEval_mayerCoverActivity_le_prod_two_of_norm_le`. -/
+theorem norm_globalEval_mayerActivity_le_prod_two_of_norm_le
+    (C : OmegaConnectedCover Site ι) (H : ι → LocalActivity Site Ψ Φ ℂ)
+    (A : ι → ℝ) (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x)
+    (hA : ∀ i, i ∈ C.index → ‖(H i).globalEval ψ φ‖ ≤ A i)
+    (hsmall : ∀ i, i ∈ C.index → A i ≤ 1) :
+    ‖(C.mayerActivity H).globalEval ψ φ‖ ≤
+      ∏ i : {i // i ∈ C.index}, (2 * A i.1) := by
+  exact LocalActivity.norm_globalEval_mayerCoverActivity_le_prod_two_of_norm_le
+    C.index H A ψ φ hA hsmall
 
 theorem mayerActivity_globalEval_eq_of_agreeOn (C : OmegaConnectedCover Site ι)
     (H : ι → LocalActivity Site Ψ Φ ℂ)

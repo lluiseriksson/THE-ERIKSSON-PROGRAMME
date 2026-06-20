@@ -5631,3 +5631,34 @@ supports.  It does not prove the support-containment hypothesis for
 Yang-Mills, the Appendix-F activity decay, the fluctuation measure, `hRpoly`,
 continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 167 (2026-06-20, **Mayer-cover pointwise product norm bound**
+`YangMills.RG.LocalActivity.norm_globalEval_mayerCoverActivity_le_prod_two_of_norm_le`,
+`YangMills.RG.OmegaConnectedCover.norm_globalEval_mayerActivity_le_prod_two_of_norm_le`;
+core 8283)
+
+This addendum records the finite quantitative companion to Addendum 166.
+The local theorem
+`norm_globalEval_mayerCoverActivity_le_prod_two_of_norm_le` assumes a
+factorwise pointwise raw-activity majorant over a finite cover,
+`‖(H i).globalEval ψ φ‖ ≤ A i`, together with the smallness window
+`A i ≤ 1` for each `i ∈ I`.  It proves the raw Mayer-cover estimate
+
+`‖(mayerCoverActivity I H).globalEval ψ φ‖ ≤ ∏ i : {i // i ∈ I}, 2 * A i.1`.
+
+The proof is purely finite: rewrite the cover activity as
+`∏ᵢ (exp (Hᵢ) - 1)`, use `norm_prod`, apply the already-verified one-factor
+Mayer estimate `‖exp z - 1‖ ≤ 2‖z‖`, and multiply the factorwise bounds.
+The `OmegaConnectedCover` theorem packages the same estimate for the
+source-shaped cover object.
+
+This gives future Appendix-F/Yang-Mills source compilers a direct quantitative
+handoff: once the primary source supplies factorwise raw estimates, the
+verified layer converts them into the finite product majorant without redoing
+complex-norm product algebra.
+
+**Honest scope.** This is finite complex norm algebra plus the elementary
+one-factor Mayer estimate.  It does not prove the Yang-Mills raw activity
+bound, the source smallness window, Appendix-F activity decay, `hRpoly`,
+continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

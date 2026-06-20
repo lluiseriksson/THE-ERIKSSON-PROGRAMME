@@ -429,6 +429,11 @@ lift factorwise containment
 `(H i).fluctuationSupport ⊆ Ω ∩ activeSupport i` to the corresponding
 Mayer-cover product support containment inside the union of declared active
 supports.
+The same source-facing product API now has a pointwise quantitative bound:
+`LocalActivity.norm_globalEval_mayerCoverActivity_le_prod_two_of_norm_le` and
+`OmegaConnectedCover.norm_globalEval_mayerActivity_le_prod_two_of_norm_le`
+show that factorwise raw estimates `‖Hᵢ‖ ≤ Aᵢ ≤ 1` imply
+`‖∏ᵢ (exp Hᵢ - 1)‖ ≤ ∏ᵢ 2Aᵢ`.
 `LocalActivity.fluctuationOverlapGraph_adj_imp_omegaOverlapGraph_adj_of_fluctuationSupport_subset`
 proves the graph-level adapter: if each local fluctuation support is contained
 in its declared `Ω ∩ activeSupport i`, then every actual fluctuation-overlap

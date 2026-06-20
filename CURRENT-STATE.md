@@ -108,7 +108,9 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   fluctuation supports are the corresponding unions.  The same file now lifts
   factorwise support containment into `Ω ∩ activeSupport i` to support
   containment for the whole Mayer-cover product, both for raw index sets and
-  for `OmegaConnectedCover`;
+  for `OmegaConnectedCover`, and also proves the pointwise quantitative
+  product bound `‖∏ᵢ (exp Hᵢ - 1)‖ ≤ ∏ᵢ 2 Aᵢ` from factorwise small raw
+  activity bounds `‖Hᵢ‖ ≤ Aᵢ ≤ 1`;
 * the abstract activity-limit bridge
   `activity_profile_bound_of_tendsto`: a metric/profile bound uniform in a
   regulator passes to the pointwise limiting activity.  The same module also
