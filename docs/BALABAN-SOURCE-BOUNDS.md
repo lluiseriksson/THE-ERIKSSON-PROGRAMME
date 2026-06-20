@@ -5,6 +5,41 @@
 campaign targets, so G5 is *specifiable* from sources rather than
 reconstructed from memory.  **Honest caveats are flagged in bold.**
 
+**Source-targeting audit (2026-06-20).**  For the remaining `hRpoly`
+Yang-Mills activity/locality package, do not cite mirror metadata without
+checking the Springer/DOI record and the paper text.  The worker confirmed
+the bibliographic spine below, but full PDFs were not accessible from the
+automation environment: Project Euclid downloads returned Incapsula pages,
+SciSpace returned 403, and Springer PDF endpoints served subscription HTML.
+The next source-fed theorem must therefore be extracted from PDFs/excerpts
+supplied by a human or an authenticated browser session.
+
+Primary Balaban targets for `hRpoly`:
+
+* T. Balaban, "Renormalization group approach to lattice gauge field
+  theories. I. Generation of effective actions in a small field
+  approximation and a coupling constant renormalization in four dimensions",
+  Comm. Math. Phys. 109 (1987), 249-301, DOI `10.1007/BF01215223`.
+* T. Balaban, "Renormalization group approach to lattice gauge field
+  theories. II. Cluster expansions", Comm. Math. Phys. 116 (1988), 1-22,
+  DOI `10.1007/BF01239022`.
+* T. Balaban, "Convergent renormalization expansions for lattice gauge
+  theories", Comm. Math. Phys. 119 (1988), 243-285,
+  DOI `10.1007/BF01217741`.
+* T. Balaban, "Large field renormalization. I. The basic step of the R
+  operation", Comm. Math. Phys. 122 (1989), 175-202,
+  DOI `10.1007/BF01257412`.
+* T. Balaban, "Large field renormalization. II. Localization,
+  exponentiation, and bounds for the R operation", Comm. Math. Phys. 122
+  (1989), 355-392, DOI `10.1007/BF01238433`.
+
+Lean-facing extraction request: find the exact pages/equations for
+fluctuation-integral locality/support containment, the small/active-field
+overlap relation used by the cluster expansion, and the pointwise
+Yang-Mills polymer activity majorant that can feed the existing
+`omegaHolePolymerSystem_*_metric_bound` consumers.  Until those equations
+are in hand, keep the activity/locality package as explicit hypotheses.
+
 ## 1. Fluctuation-covariance bound (Bałaban CMP 95 (1984), Prop 1.1/1.2)
 
 CMP 95 Part I gives the Green/propagator `G_k` estimates; the
