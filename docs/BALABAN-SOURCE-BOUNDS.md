@@ -86,6 +86,20 @@ Support/locality extraction pass (2026-06-20):
   `E_0/2` budget.  This supplies the missing post-Lemma-3 bridge; the
   remaining Lean obligation is to express those constants as a pointwise
   modified-metric activity majorant.
+* CMP 116 (1988), PDF pages 18-20, gives the restrictions feeding Lemma 3.
+  The proof extracts factors of the form `alpha_6 exp(-delta kappa d_k(Y))`,
+  uses the geometric inequalities (2.27), (2.30), (2.32), the summability
+  input (2.29), and the scale-transfer inequality (2.36).  It introduces
+  `eps_2 = 2 E_0 eps_1 C_1 alpha_4^-1 alpha_6^-1 M^q exp(C_2 kappa_1)` and
+  then defines
+  `C_3 = 2 (L+2)^4 O(1) 2 E_0 C_1 alpha_4^-1 alpha_6^-1 M^q exp(C_2 kappa_1)`.
+  The restrictions include smallness of `eps_2`, smallness of
+  `(L+2)^4 O(1) eps_2`, a bound of the form
+  `2 (L+2)^4 O(1) eps_2 exp(5 kappa) <= 1`, the scale condition
+  `(kappa_1 - 1)/2 >= 2 L kappa`, and boundedness of
+  `(LM)^4 alpha_0`, `(LM)^4 alpha_1`, `(LM)^4 alpha_4`, `(LM)^4 gamma_2`.
+  These are source restrictions for the activity-decay constant, not yet a
+  formal Lean parameter hierarchy.
 * CMP 119 (1988), split PDF pages 15-17 / printed pages 257-259, gives the
   localized density decomposition.  Large-field operations factor over
   connected large-field regions, the effective action is decomposed into
