@@ -14,6 +14,7 @@ import YangMills.RG.AppendixFLocalSummability
 import YangMills.RG.AppendixFKsharpEstimate
 import YangMills.RG.AppendixFSecondGas
 import YangMills.RG.AppendixFHsharp
+import YangMills.RG.AppendixFHsharpResidual
 
 /-! # Oracle check — one command, every headline
 
@@ -575,6 +576,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpTerm_eq_zero_of_no_union
 #print axioms YangMills.RG.sum_appendixFHoleHsharpTerm_eq_clusterSum_term
 #print axioms YangMills.RG.appendixFHoleHsharpOfKsharp_eq
+-- residual H# adapter: source complex-norm estimates feed the real
+-- omega-rooted UV-decay producer without hiding Dimock's analytic bound.
+#print axioms YangMills.RG.clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharp_le
+#print axioms YangMills.RG.rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharp_le
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_four_mul_margin
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

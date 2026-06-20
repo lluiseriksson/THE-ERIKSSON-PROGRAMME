@@ -332,6 +332,9 @@ import YangMills.RG.AppendixFSecondGas
 -- target activity, with convergence and residual estimates kept explicit for
 -- later source theorems.
 import YangMills.RG.AppendixFHsharp
+-- Residual H# adapter: a source-supplied complex-norm bound for the second
+-- Ursell activity feeds the real omega-rooted `SingleScaleUVDecay` producer.
+import YangMills.RG.AppendixFHsharpResidual
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

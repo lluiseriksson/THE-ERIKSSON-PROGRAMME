@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8298 jobs**.
+* `lake build YangMillsCore` is green at **8299 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -274,6 +274,20 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   only: it does not justify exchanging the finite target sum with the outer
   `tsum`, prove convergence, identify a partition logarithm, prove the
   residual decay rate, or extract a real scalar remainder;
+* the residual second-Ursell adapter
+  `YangMills/RG/AppendixFHsharpResidual.lean`: it converts a source-supplied
+  complex-norm estimate for `appendixFHoleHsharp` at residual rate
+  `κ - 3κ₀ - 3` into the real-valued `ClusterWithHolesActivityDecay`
+  predicate for any explicitly contractive real extraction
+  `|toReal w| <= ‖w‖`.  Its rooted theorem then feeds the existing concrete
+  omega-rooted modified-metric summability bridge and obtains
+  `SingleScaleUVDecay` for the scalar remainder
+  `Rsc t k = ∑' P, toReal (appendixFHoleHsharp ... P)`, either under the
+  direct residual domination hypothesis `κ₀ <= κ - 3κ₀ - 3` or under the
+  sufficient margin `κ >= 4κ₀ + 3`.  This is only the adapter from a proved
+  source residual estimate to the UV consumer; it does not prove Dimock
+  (642), convergence of the `H#` Ursell series, or the physical real
+  projection;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound

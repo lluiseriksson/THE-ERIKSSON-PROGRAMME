@@ -7083,3 +7083,50 @@ second-gas partition logarithm, prove Dimock's residual estimate
 `κ - 3κ₀ - 3`, extract a real scalar remainder, prove a concrete Yang-Mills
 activity bound, or establish any continuum/Clay theorem.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 201 (2026-06-20, **residual H# adapter to UV decay**
+`YangMills.RG.clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharp_le`,
+`YangMills.RG.rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharp_le`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_four_mul_margin`;
+core 8299)
+
+This addendum adds `YangMills/RG/AppendixFHsharpResidual.lean`, the bridge from
+a source-supplied residual estimate on the complex second-Ursell object `H#`
+to the existing real scalar UV-decay consumer.
+
+The theorem
+`clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharp_le` states that if
+`‖appendixFHoleHsharp HF (zK t k) Y‖` satisfies the residual bound with rate
+`κ - 3κ₀ - 3`, then any real extraction `toReal` with
+`|toReal w| <= ‖w‖` satisfies the real-valued
+`ClusterWithHolesActivityDecay` predicate.  The rooted variant matches the
+index type used by the omega-rooted modified-metric summability theorem.
+
+The theorem `singleScaleUVDecay_of_omegaRootedAppendixFHsharp` composes that
+real extraction with
+`singleScaleUVDecay_of_omegaRootedClusterWithHolesActivities`, obtaining
+`SingleScaleUVDecay` for scalar remainders of the form
+`Rsc t k = ∑' P, toReal (appendixFHoleHsharp HF (zK t k) P)`, under the explicit
+residual domination condition `κ₀ <= κ - 3κ₀ - 3`.  The theorem
+`singleScaleUVDecay_of_omegaRootedAppendixFHsharp_four_mul_margin` supplies the
+source-facing sufficient margin `κ >= 4κ₀ + 3`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpResidual.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is an adapter only.  It does not prove convergence of
+the `H#` `tsum`, Dimock's residual estimate, the analytic KP/Ursell loss
+behind `κ - 3κ₀ - 3`, the physical real projection, a concrete Yang-Mills raw
+activity estimate, or any continuum/Clay theorem.  Clay distance **~0%
+(<0.1%), unchanged**.
