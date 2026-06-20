@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8297 jobs**.
+* `lake build YangMillsCore` is green at **8298 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -260,6 +260,20 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   This does not prove Dimock (642), the conversion from the exact nonlinear
   `K#` estimate to the KP-ready majorant, the ultralocal product
   factorization (643), the second Ursell `H#`, or any residual decay theorem;
+* the second Ursell object layer
+  `YangMills/RG/AppendixFHsharp.lean`: it defines the fixed-size
+  union-fiber contribution `appendixFHoleHsharpTerm`, the totalized
+  `appendixFHoleHsharp = tsum_n appendixFHoleHsharpTerm`, and the actual
+  `K#`-fed specialization `appendixFHoleHsharpOfKsharp`.  The finite theorem
+  `appendixFHoleHsharpTerm_eq_sum_filter` rewrites each term as a sum over
+  the exact fiber of tuples whose `omegaClusterUnion` is the target `Y`;
+  `appendixFHoleHsharpTerm_eq_zero_of_no_union` records the zero-fiber case;
+  and `sum_appendixFHoleHsharpTerm_eq_clusterSum_term` proves that summing
+  fixed-size fiber terms over all targets recovers exactly the fixed-size
+  term of the KP `clusterSum` of the second gas.  This is finite bookkeeping
+  only: it does not justify exchanging the finite target sum with the outer
+  `tsum`, prove convergence, identify a partition logarithm, prove the
+  residual decay rate, or extract a real scalar remainder;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound

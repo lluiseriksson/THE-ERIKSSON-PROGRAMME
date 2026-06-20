@@ -328,6 +328,10 @@ import YangMills.RG.AppendixFKsharpEstimate
 -- of the source-facing omega-hole polymer system, with KP kept as an explicit
 -- majorant hypothesis.
 import YangMills.RG.AppendixFSecondGas
+-- Second Ursell layer H#: union-fiber fixed-size terms and the totalized
+-- target activity, with convergence and residual estimates kept explicit for
+-- later source theorems.
+import YangMills.RG.AppendixFHsharp
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

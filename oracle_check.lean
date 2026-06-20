@@ -13,6 +13,7 @@ import YangMills.RG.PolymerClusterWithHolesBridge
 import YangMills.RG.AppendixFLocalSummability
 import YangMills.RG.AppendixFKsharpEstimate
 import YangMills.RG.AppendixFSecondGas
+import YangMills.RG.AppendixFHsharp
 
 /-! # Oracle check — one command, every headline
 
@@ -568,6 +569,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleSecondGas_activity
 #print axioms YangMills.RG.appendixFHoleSecondGasActivity_eq_zero_of_not_mem_targetRegion
 #print axioms YangMills.RG.appendixFHoleSecondGas_KPCriterion_of_majorant
+-- second Ursell object H#: finite union-fiber bookkeeping only; no convergence
+-- or residual estimate is hidden in the totalized `tsum` definition.
+#print axioms YangMills.RG.appendixFHoleHsharpTerm_eq_sum_filter
+#print axioms YangMills.RG.appendixFHoleHsharpTerm_eq_zero_of_no_union
+#print axioms YangMills.RG.sum_appendixFHoleHsharpTerm_eq_clusterSum_term
+#print axioms YangMills.RG.appendixFHoleHsharpOfKsharp_eq
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

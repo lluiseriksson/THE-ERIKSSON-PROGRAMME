@@ -7038,3 +7038,48 @@ Dimock (642), the ultralocal product factorization (643), the Ursell-defined
 `H#`, the residual rate `κ - 3κ₀ - 3`, the concrete Yang-Mills raw activity
 decay, or any continuum/Clay theorem.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 200 (2026-06-20, **union-fiber second Ursell object H#**
+`YangMills.RG.appendixFHoleHsharpTerm_eq_sum_filter`,
+`YangMills.RG.appendixFHoleHsharpTerm_eq_zero_of_no_union`,
+`YangMills.RG.sum_appendixFHoleHsharpTerm_eq_clusterSum_term`,
+`YangMills.RG.appendixFHoleHsharpOfKsharp_eq`; core 8298)
+
+This addendum adds `YangMills/RG/AppendixFHsharp.lean`, the definition-level
+second Ursell layer after the second Appendix-F gas.
+
+The fixed-size term `appendixFHoleHsharpTerm HF zK Y n` is the
+`1/(n+1)!` Ursell monomial sum over tuples of second-gas polymers whose full
+`omegaClusterUnion` is exactly the target `Y`.  The total object
+`appendixFHoleHsharp HF zK Y` is the corresponding totalized `tsum` over
+`n`, and `appendixFHoleHsharpOfKsharp` feeds in the evaluated `K#` activity
+from `appendixFHoleSecondGasActivity`.
+
+The finite theorem `appendixFHoleHsharpTerm_eq_sum_filter` rewrites the
+`if`-guarded term as an explicit fiber sum.  The theorem
+`appendixFHoleHsharpTerm_eq_zero_of_no_union` closes empty fibers.  The main
+finite bookkeeping identity
+`sum_appendixFHoleHsharpTerm_eq_clusterSum_term` proves that summing a fixed
+cluster-size term over every target `Y` recovers exactly the matching
+fixed-size term in the ordinary KP `clusterSum` for the second gas.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharp.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This defines `H#` and proves finite union-fiber
+bookkeeping at each fixed cluster size.  It does not prove convergence of the
+outer `tsum`, justify exchanging the target sum with that `tsum`, identify a
+second-gas partition logarithm, prove Dimock's residual estimate
+`κ - 3κ₀ - 3`, extract a real scalar remainder, prove a concrete Yang-Mills
+activity bound, or establish any continuum/Clay theorem.  Clay distance
+**~0% (<0.1%), unchanged**.
