@@ -290,6 +290,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.SUSY.finiteBerezinTop_top_basis
 #print axioms YangMills.SUSY.finiteBerezinTop_basis_of_ne_top
 #print axioms YangMills.SUSY.finiteBerezinTop_one_of_pos
+#print axioms YangMills.SUSY.finiteBerezinTop_one_zero
+#print axioms YangMills.SUSY.finiteBerezinTop_algebraMap_of_pos
+#print axioms YangMills.SUSY.finiteBerezin_expect_Q_eq_zero
+#print axioms YangMills.SUSY.finiteBerezin_eq_expect_remainder_of_exactWard
 -- Ward-cancelled activities feeding the `Ω`-active skeleton-tail consumer.
 #print axioms YangMills.SUSY.norm_finset_sum_expect_Q_le
 #print axioms YangMills.SUSY.wardActivity_metric_bound_of_decomposition

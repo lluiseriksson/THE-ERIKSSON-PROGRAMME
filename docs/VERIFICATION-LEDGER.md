@@ -5751,3 +5751,39 @@ It does not construct a Gaussian Berezin weight, fermionic covariance,
 Pfaffian/determinant cancellation, a regulator/decoupling theorem, the
 Yang-Mills fluctuation activity bound, `hRpoly`, continuum limit, or
 OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 171 (2026-06-20, **finite Berezin exact-Ward cancellation**
+`YangMills.SUSY.finiteBerezinTop_one_zero`,
+`YangMills.SUSY.finiteBerezinTop_algebraMap_of_pos`,
+`YangMills.SUSY.finiteBerezin_expect_Q_eq_zero`,
+`YangMills.SUSY.finiteBerezin_eq_expect_remainder_of_exactWard`;
+core 8284)
+
+This addendum extends the finite Berezin substrate with the exact algebraic
+Ward rule for the concrete top-coefficient functional.  The file now names
+the finite exterior algebra as `FiniteExterior n`, proves the scalar endpoint
+rules
+
+* `finiteBerezinTop_one_zero`: in zero fermionic dimension, `∫ 1 = 1`;
+* `finiteBerezinTop_algebraMap_of_pos`: in positive fermionic dimension,
+  every scalar constant has finite Berezin integral `0`;
+
+and introduces `FiniteBerezinExactWard n`, a linear operator `Q` on
+`FiniteExterior n` satisfying the exact finite Ward identity
+`finiteBerezinTop n (Q F) = 0`.
+
+The theorem `finiteBerezin_eq_expect_remainder_of_exactWard` proves the
+concrete cancellation rule:
+
+`H = Q B + R ⟹ finiteBerezinTop n H = finiteBerezinTop n R`.
+
+This is the finite Berezin analogue of the exact branch of
+`ApproxWardComplex`, but deliberately remains algebraic: no artificial
+norm/topology is placed on Mathlib's exterior algebra merely to fit a
+continuous-linear API.
+
+**Honest scope.** This is exact algebraic Ward cancellation for a finite
+top-coefficient functional.  It does not construct the Ward differential from
+a physical supersymmetry, prove Gaussian Berezin determinant/Pfaffian
+identities, bound any Yang-Mills activity, discharge `hRpoly`, or affect the
+continuum Clay obligations.  Clay distance **~0% (<0.1%), unchanged**.

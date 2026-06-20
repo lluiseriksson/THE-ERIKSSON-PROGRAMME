@@ -166,8 +166,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   canonical exterior basis `finiteExteriorBasis` and the top-coefficient
   functional `finiteBerezinTop`.  It proves that the functional is `1` on the
   top monomial, `0` on every non-top basis monomial, and kills constants in
-  positive fermionic dimension.  This is only the algebraic Berezin coefficient
-  layer, not yet a super-Gaussian determinant/Pfaffian theorem.
+  positive fermionic dimension.  It also contains the algebraic exact-Ward
+  package `FiniteBerezinExactWard`, proving that a finite linear `Q` with
+  `finiteBerezinTop (Q F) = 0` cancels in decompositions `H = Q B + R`.
+  This is only the algebraic Berezin/Ward coefficient layer, not yet a
+  super-Gaussian determinant/Pfaffian theorem.
 * the Ward-cancelled polymer bridge `YangMills/SUSY/WardPolymer.lean`: finite
   Ward-defect sums, integrated activities `wardActivity`, and exact/approximate
   Ward consumers feeding `omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`

@@ -79,7 +79,12 @@ activity has amplitude `amp + S`.
   `finiteBerezinTop_basis_of_ne_top` prove the usual algebraic rule: top
   monomial integrates to `1`, all other basis monomials integrate to `0`;
 * `finiteBerezinTop_one_of_pos` records that constants have zero Berezin
-  integral in positive fermionic dimension.
+  integral in positive fermionic dimension;
+* `finiteBerezinTop_algebraMap_of_pos` packages the same rule for arbitrary
+  scalar constants;
+* `FiniteBerezinExactWard`, `finiteBerezin_expect_Q_eq_zero`, and
+  `finiteBerezin_eq_expect_remainder_of_exactWard` give the exact algebraic
+  Ward-cancellation rule for this concrete finite Berezin functional.
 
 This is the first concrete finite Grassmann/Berezin layer underneath the
 abstract Ward interface.  It is not yet a Gaussian Berezin weight,
