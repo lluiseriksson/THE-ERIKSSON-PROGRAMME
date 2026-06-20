@@ -31,6 +31,9 @@ convergence assumptions,
 * the exact fiberwise grouping of connected covers by their target union;
 * local influence of `K(Y)`: changing a raw activity whose declared target
   support is not contained in `Y` cannot change `K(Y)`.
+* the finite hard-core target system on representable unions, with
+  incompatibility given by literal active `Ω`-intersection and activity
+  `K(Y)`;
 * the finite inverse from canonical components to admissible families of
   `Ω`-connected covers with pairwise `Ω`-disjoint declared-support unions
   for a single support map, plus the product identity `∏ᵢ (1 + wᵢ)` as a sum
@@ -492,6 +495,200 @@ theorem appendixFConnectedActivity_congr
       Ω overlapSupport targetSupport Λ Y hC hi
   rw [heq i hiΛ hisub]
 
+/-! ## The finite hard-core target system -/
+
+/-- A connected cover whose raw active supports are all nonempty inside `Ω`
+has a nonempty active target union.  This is the finite self-incompatibility
+input needed by the target hard-core gas. -/
+theorem omega_inter_coverUnion_nonempty_of_mem_appendixFConnectedCoverRegion
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty)
+    {C : Finset ι}
+    (hC : C ∈ appendixFConnectedCoverRegion Ω support Λ) :
+    (Ω ∩ appendixFCoverUnion support C).Nonempty := by
+  classical
+  have hCdata := (mem_appendixFConnectedCoverRegion_iff Ω support Λ C).mp hC
+  rcases hCdata.2.1 with ⟨i, hiC⟩
+  rcases hactive i (hCdata.1 hiC) with ⟨x, hx⟩
+  rw [Finset.mem_inter] at hx
+  refine ⟨x, Finset.mem_inter.mpr ⟨hx.1, ?_⟩⟩
+  exact Finset.mem_biUnion.mpr ⟨i, hiC, hx.2⟩
+
+/-- Every representable target union has nonempty active part when every raw
+support selected from `Λ` does. -/
+theorem omega_inter_target_nonempty_of_mem_appendixFTargetRegion
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty)
+    {Y : Finset Site}
+    (hY : Y ∈ appendixFTargetRegion Ω support support Λ) :
+    (Ω ∩ Y).Nonempty := by
+  classical
+  unfold appendixFTargetRegion at hY
+  rcases Finset.mem_image.mp hY with ⟨C, hC, rfl⟩
+  exact omega_inter_coverUnion_nonempty_of_mem_appendixFConnectedCoverRegion
+    Ω support Λ hactive hC
+
+/-- The exact finite Appendix-F hard-core gas on representable target unions.
+Its incompatibility is literal `Ω`-active intersection of targets, and its
+activity is the connected-cover fiber sum `K(Y)`. -/
+noncomputable def appendixFTargetPolymerSystem
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (w : ι → ℂ)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty) :
+    KP.PolymerSystem where
+  Polymer := {Y : Finset Site // Y ∈ appendixFTargetRegion Ω support support Λ}
+  incomp Y Z := ¬ Disjoint (Ω ∩ Y.val) (Ω ∩ Z.val)
+  incomp_symm := by
+    intro Y Z hYZ hZY
+    exact hYZ (by rwa [disjoint_comm])
+  incomp_self := by
+    intro Y hdisj
+    rcases omega_inter_target_nonempty_of_mem_appendixFTargetRegion
+        Ω support Λ hactive Y.property with ⟨x, hx⟩
+    exact (Finset.disjoint_left.mp hdisj hx) hx
+  activity Y :=
+    appendixFConnectedMayerActivity Ω support support Λ w Y.val
+
+/-- The target polymer type is finite because it is the subtype cut out by the
+finite representable-target set. -/
+noncomputable instance appendixFTargetPolymerSystem_fintype
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (w : ι → ℂ)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty) :
+    Fintype (appendixFTargetPolymerSystem Ω support Λ w hactive).Polymer := by
+  dsimp [appendixFTargetPolymerSystem]
+  exact Fintype.ofFinset (appendixFTargetRegion Ω support support Λ) (by
+    intro Y
+    rfl)
+
+/-- A finite target family is admissible for `appendixFTargetPolymerSystem`
+exactly when its distinct active target unions are pairwise `Ω`-disjoint. -/
+theorem appendixFTargetPolymerSystem_admissible_iff
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (w : ι → ℂ)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty)
+    (S : Finset (appendixFTargetPolymerSystem Ω support Λ w hactive).Polymer) :
+    KP.Admissible (appendixFTargetPolymerSystem Ω support Λ w hactive) S ↔
+      ∀ Y ∈ S, ∀ Z ∈ S, Y ≠ Z →
+        Disjoint (Ω ∩ Y.val) (Ω ∩ Z.val) := by
+  classical
+  constructor
+  · intro h Y hY Z hZ hYZ
+    by_contra hdisj
+    exact h Y hY Z hZ hYZ hdisj
+  · intro h Y hY Z hZ hYZ hincomp
+    exact hincomp (h Y hY Z hZ hYZ)
+
+/-- Finite target families admitted by the Appendix-F target hard-core gas,
+written without the subtype wrapper used by `KP.partition`. -/
+noncomputable def appendixFAdmissibleTargetFamilies
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι) :
+    Finset (Finset (Finset Site)) :=
+  (appendixFTargetRegion Ω support support Λ).powerset.filter fun Υ =>
+    ∀ Y ∈ Υ, ∀ Z ∈ Υ, Y ≠ Z →
+      Disjoint (Ω ∩ Y) (Ω ∩ Z)
+
+@[simp] theorem mem_appendixFAdmissibleTargetFamilies_iff
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (Υ : Finset (Finset Site)) :
+    Υ ∈ appendixFAdmissibleTargetFamilies Ω support Λ ↔
+      Υ ⊆ appendixFTargetRegion Ω support support Λ ∧
+        ∀ Y ∈ Υ, ∀ Z ∈ Υ, Y ≠ Z →
+          Disjoint (Ω ∩ Y) (Ω ∩ Z) := by
+  classical
+  simp [appendixFAdmissibleTargetFamilies]
+
+theorem appendixFTargetPolymerSystem_partition_eq_sum_admissibleTargetFamilies
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (w : ι → ℂ)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty) :
+    KP.partition (appendixFTargetPolymerSystem Ω support Λ w hactive) Finset.univ =
+      ∑ Υ ∈ appendixFAdmissibleTargetFamilies Ω support Λ,
+        ∏ Y ∈ Υ, appendixFConnectedMayerActivity Ω support support Λ w Y := by
+  classical
+  let P := appendixFTargetPolymerSystem Ω support Λ w hactive
+  let T := appendixFTargetRegion Ω support support Λ
+  rw [KP.partition]
+  refine Finset.sum_bij'
+    (fun S _ => S.image (fun Y : P.Polymer => Y.val))
+    (fun Υ hΥ =>
+      let hΥdata := (mem_appendixFAdmissibleTargetFamilies_iff Ω support Λ Υ).mp hΥ
+      Υ.attach.image (fun Y : {Y // Y ∈ Υ} =>
+        (⟨Y.val, hΥdata.1 Y.property⟩ : P.Polymer))) ?_ ?_ ?_ ?_ ?_
+  · intro S hS
+    rw [mem_appendixFAdmissibleTargetFamilies_iff]
+    rw [Finset.mem_filter] at hS
+    have hAdm := hS.2
+    have hpair :=
+      (appendixFTargetPolymerSystem_admissible_iff Ω support Λ w hactive S).mp hAdm
+    refine ⟨?_, ?_⟩
+    · intro Y hY
+      rcases Finset.mem_image.mp hY with ⟨Yp, _hYp, rfl⟩
+      exact Yp.property
+    · intro Y hY Z hZ hYZ
+      rcases Finset.mem_image.mp hY with ⟨Yp, hYp, rfl⟩
+      rcases Finset.mem_image.mp hZ with ⟨Zp, hZp, rfl⟩
+      exact hpair Yp hYp Zp hZp (by
+        intro hYZp
+        exact hYZ (by simp [hYZp]))
+  · intro Υ hΥ
+    rw [Finset.mem_filter]
+    refine ⟨Finset.mem_powerset.mpr (by intro Y _hY; simp), ?_⟩
+    rw [appendixFTargetPolymerSystem_admissible_iff]
+    intro Y hY Z hZ hYZ
+    rw [mem_appendixFAdmissibleTargetFamilies_iff] at hΥ
+    rcases Finset.mem_image.mp hY with ⟨Yraw, hYraw, rfl⟩
+    rcases Finset.mem_image.mp hZ with ⟨Zraw, hZraw, rfl⟩
+    exact hΥ.2 Yraw.val Yraw.property Zraw.val Zraw.property (by
+      intro hval
+      exact hYZ (Subtype.ext hval))
+  · intro S hS
+    ext Y
+    constructor
+    · intro hY
+      rcases Finset.mem_image.mp hY with ⟨Yraw, hYraw, hYeq⟩
+      rcases Finset.mem_image.mp Yraw.property with ⟨Z, hZ, hZeq⟩
+      have hYZ : Y = Z := by
+        apply Subtype.ext
+        have hYval : Yraw.val = Y.val := congrArg Subtype.val hYeq
+        exact hYval.symm.trans hZeq.symm
+      rw [hYZ]
+      exact hZ
+    · intro hY
+      rw [Finset.mem_image]
+      refine ⟨⟨Y.val, ?_⟩, ?_, ?_⟩
+      · exact Finset.mem_image.mpr ⟨Y, hY, rfl⟩
+      · simp
+      · exact Subtype.ext rfl
+  · intro Υ hΥ
+    ext Y
+    constructor
+    · intro hY
+      rcases Finset.mem_image.mp hY with ⟨Yp, hYp, rfl⟩
+      rcases Finset.mem_image.mp hYp with ⟨Yraw, hYraw, hYeq⟩
+      have hval : Yraw.val = Yp.val := congrArg Subtype.val hYeq
+      rw [← hval]
+      exact Yraw.property
+    · intro hY
+      rw [Finset.mem_image]
+      rw [mem_appendixFAdmissibleTargetFamilies_iff] at hΥ
+      refine ⟨⟨Y, hΥ.1 hY⟩, ?_, rfl⟩
+      rw [Finset.mem_image]
+      exact ⟨⟨Y, hY⟩, by simp, rfl⟩
+  · intro S hS
+    dsimp [P, appendixFTargetPolymerSystem]
+    rw [Finset.prod_image]
+    intro Y hY Z hZ hYZ
+    exact Subtype.ext hYZ
+
 /-- A finite family of connected raw covers is Appendix-F admissible when
 distinct connected covers have disjoint declared-support union inside `Ω`.
 
@@ -518,6 +715,54 @@ noncomputable def appendixFAdmissibleConnectedCoverFamilies
             (Ω ∩ appendixFCoverUnion support D) := by
   classical
   simp [appendixFAdmissibleConnectedCoverFamilies]
+
+/-- Mapping an admissible connected-cover family to its target unions gives an
+admissible target family.  This is the forward half of the finite
+Appendix-F target-lumping map. -/
+theorem image_coverUnion_mem_appendixFAdmissibleTargetFamilies
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    {Γ : Finset (Finset ι)}
+    (hΓ : Γ ∈ appendixFAdmissibleConnectedCoverFamilies Ω support Λ) :
+    Γ.image (appendixFCoverUnion support) ∈
+      appendixFAdmissibleTargetFamilies Ω support Λ := by
+  classical
+  rw [mem_appendixFAdmissibleTargetFamilies_iff]
+  rw [mem_appendixFAdmissibleConnectedCoverFamilies_iff] at hΓ
+  refine ⟨?_, ?_⟩
+  · intro Y hY
+    rcases Finset.mem_image.mp hY with ⟨C, hC, rfl⟩
+    exact Finset.mem_image.mpr ⟨C, hΓ.1 hC, rfl⟩
+  · intro Y hY Z hZ hYZ
+    rcases Finset.mem_image.mp hY with ⟨C, hC, rfl⟩
+    rcases Finset.mem_image.mp hZ with ⟨D, hD, rfl⟩
+    have hCD : C ≠ D := by
+      intro hCD
+      exact hYZ (by simp [hCD])
+    exact hΓ.2 C hC D hD hCD
+
+/-- Under nonempty active raw supports, an admissible connected-cover family
+cannot contain two distinct connected covers with the same target union. -/
+theorem appendixFCoverUnion_injective_on_admissibleConnectedCoverFamily
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty)
+    {Γ : Finset (Finset ι)}
+    (hΓ : Γ ∈ appendixFAdmissibleConnectedCoverFamilies Ω support Λ)
+    {C D : Finset ι} (hC : C ∈ Γ) (hD : D ∈ Γ)
+    (hCD : appendixFCoverUnion support C = appendixFCoverUnion support D) :
+    C = D := by
+  classical
+  by_contra hne
+  rw [mem_appendixFAdmissibleConnectedCoverFamilies_iff] at hΓ
+  have hdisj := hΓ.2 C hC D hD hne
+  rw [← hCD] at hdisj
+  have hnonempty :
+      (Ω ∩ appendixFCoverUnion support C).Nonempty :=
+    omega_inter_coverUnion_nonempty_of_mem_appendixFConnectedCoverRegion
+      Ω support Λ hactive (hΓ.1 hC)
+  rcases hnonempty with ⟨x, hx⟩
+  exact (Finset.disjoint_left.mp hdisj hx) hx
 
 theorem no_adj_of_omegaCoverUnion_disjoint
     {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
