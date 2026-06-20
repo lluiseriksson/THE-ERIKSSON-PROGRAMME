@@ -653,6 +653,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleHsharpTerm_le_absTerm
 #print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_absTerm_geometric
 #print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_factorized_absTerm_geometric
+#print axioms YangMills.RG.AppendixFHsharpSourceMajorant.summable_terms
+#print axioms YangMills.RG.AppendixFHsharpSourceMajorant.tail_bound
+#print axioms YangMills.RG.AppendixFHsharpSourceMajorant.residual_bound
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_source_majorant
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
 -- source-facing packaged geometric H# profiles: one record now supplies the

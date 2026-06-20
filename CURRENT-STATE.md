@@ -380,10 +380,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   constructors from an absolute geometric estimate and from the preferred
   factorized shape
   `B(t,k) * exp(-r * (d_M(P)+1)) * rho(t,k)^n`, plus residual and UV
-  adapters into the existing geometric consumers.  This proves only finite
-  algebra and packaging; it does not prove the fixed-union absolute geometric
-  source estimate, Dimock F.1/(636), Dimock (642), or any continuum/Clay
-  theorem;
+  adapters into the existing geometric consumers.  The namespace methods
+  `summable_terms`, `tail_bound`, and `residual_bound` now expose the same
+  convergence, truncation-tail, and pointwise residual consequences directly
+  from a packaged source majorant.  This proves only finite algebra and
+  packaging; it does not prove the fixed-union absolute geometric source
+  estimate, Dimock F.1/(636), Dimock (642), or any continuum/Clay theorem;
 * the source-facing geometric `H#` profile
   `YangMills/RG/AppendixFHsharpProfile.lean`: it packages the amplitudes
   `A`, ratios `q`, positivity/strict-ratio hypotheses, termwise `H#` bound,

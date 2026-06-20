@@ -7574,6 +7574,9 @@ Clay distance **~0% (<0.1%), unchanged**.
 `YangMills.RG.AppendixFHsharpSourceMajorant`,
 `YangMills.RG.appendixFHsharpSourceMajorant_of_absTerm_geometric`,
 `YangMills.RG.appendixFHsharpSourceMajorant_of_factorized_absTerm_geometric`,
+`YangMills.RG.AppendixFHsharpSourceMajorant.summable_terms`,
+`YangMills.RG.AppendixFHsharpSourceMajorant.tail_bound`,
+`YangMills.RG.AppendixFHsharpSourceMajorant.residual_bound`,
 `YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_source_majorant`,
 `YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant`;
 core 8306)
@@ -7597,9 +7600,14 @@ The constructor `appendixFHsharpSourceMajorant_of_absTerm_geometric` turns an
 estimate on the absolute finite term into that contract.  The constructor
 `appendixFHsharpSourceMajorant_of_factorized_absTerm_geometric` records the
 preferred source shape, with target geometry isolated as
-`exp(-r * (d_M(P)+1))` and order decay as `rho(t,k)^n`.  The final two
-theorems feed the packaged source contract into the existing total residual
-and omega-rooted real-part `SingleScaleUVDecay` consumers.
+`exp(-r * (d_M(P)+1))` and order decay as `rho(t,k)^n`.  The namespace theorems
+`AppendixFHsharpSourceMajorant.summable_terms`,
+`AppendixFHsharpSourceMajorant.tail_bound`, and
+`AppendixFHsharpSourceMajorant.residual_bound` expose fixed-target summability,
+closed shifted-tail control, and the pointwise residual estimate from the
+packaged source object.  The final two global theorems feed the same contract
+into the existing total residual and omega-rooted real-part `SingleScaleUVDecay`
+consumers.
 
 Verification:
 

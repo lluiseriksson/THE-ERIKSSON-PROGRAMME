@@ -156,6 +156,70 @@ noncomputable def appendixFHsharpSourceMajorant_of_absTerm_geometric
       HF (zK t k) P.val n).trans
       (habs t k P n)
 
+namespace AppendixFHsharpSourceMajorant
+
+variable
+    {HF : HoleFamily d L}
+    {zCarrier : Finset (Cube d L) → ℂ}
+    {zK : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    {g : ℕ → ℝ}
+    {C H₀ c₀ κ κ₀ : ℝ}
+
+/-- A source majorant supplies fixed-target summability of the `H#`
+cluster-size terms. -/
+theorem summable_terms
+    (hsrc :
+      AppendixFHsharpSourceMajorant
+        HF zCarrier zK g C H₀ c₀ κ κ₀)
+    (t k : ℕ)
+    (P : OmegaPolymerType HF zCarrier) :
+    Summable (fun n : ℕ =>
+      appendixFHoleHsharpTerm HF (zK t k) P.val n) := by
+  exact summable_appendixFHoleHsharpTerm_of_norm_le_majorant
+    HF (zK t k) P.val
+    (fun n : ℕ => hsrc.A t k P * hsrc.q t k P ^ n)
+    (summable_geometric_majorant
+      (hsrc.q_nonneg t k P) (hsrc.q_lt_one t k P))
+    (hsrc.term_le t k P)
+
+/-- A source majorant supplies the closed shifted-tail error estimate for
+finite `H#` truncations. -/
+theorem tail_bound
+    (hsrc :
+      AppendixFHsharpSourceMajorant
+        HF zCarrier zK g C H₀ c₀ κ κ₀)
+    (t k : ℕ)
+    (P : OmegaPolymerType HF zCarrier)
+    (N : ℕ) :
+    ‖appendixFHoleHsharp HF (zK t k) P.val -
+        appendixFHoleHsharpPartial HF (zK t k) N P.val‖ ≤
+      hsrc.A t k P * hsrc.q t k P ^ N *
+        (1 - hsrc.q t k P)⁻¹ := by
+  exact norm_appendixFHoleHsharp_sub_partial_le_geometric_tail
+    HF (zK t k) P.val N
+    (hsrc.q_nonneg t k P)
+    (hsrc.q_lt_one t k P)
+    (hsrc.term_le t k P)
+
+/-- A source majorant supplies the pointwise total residual estimate for
+`H#`. -/
+theorem residual_bound
+    (hsrc :
+      AppendixFHsharpSourceMajorant
+        HF zCarrier zK g C H₀ c₀ κ κ₀) :
+    ∀ t k (P : OmegaPolymerType HF zCarrier),
+      ‖appendixFHoleHsharp HF (zK t k) P.val‖ ≤
+        C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+          Real.exp
+            (-(polymerClusterResidualRate κ κ₀ *
+              ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))) := by
+  exact norm_appendixFHoleHsharp_le_residual_of_geometric_term_majorant
+    HF zCarrier zK g hsrc.A hsrc.q
+    hsrc.A_nonneg hsrc.q_nonneg hsrc.q_lt_one
+    hsrc.term_le hsrc.closed_le_residual
+
+end AppendixFHsharpSourceMajorant
+
 /-- A factorized constructor for the preferred source shape: target geometry is
 isolated in the modified-metric exponential, while the cluster-order decay is
 carried by a ratio `ρ t k` independent of the target polymer. -/
