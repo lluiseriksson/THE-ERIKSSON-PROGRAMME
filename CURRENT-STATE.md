@@ -89,7 +89,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `LocalActivity.mayerCoverActivity_integral_factor_confinedOmegaComponents_of_fluctuationSupport_subset`
   states the exact finite hypothesis under which these Ω-components factorize
   the ultralocal fluctuation integral: every fluctuation support must lie inside
-  its declared Ω-active support;
+  its declared Ω-active support.  The companion
+  `OmegaConnectedCover.mayerActivity_integral_factor_confinedComponentCoverFamily_of_fluctuationSupport_subset`
+  exposes the same factorization directly as a product over the canonical
+  `confinedComponentCoverFamily`;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

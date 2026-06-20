@@ -929,6 +929,43 @@ theorem pairwise_omegaActiveSupport_disjoint_confinedComponentCoverFamily
   exact omegaActiveSupport_disjoint_of_mem_confinedComponents_ne
     Ω activeSupport K C.2 D.2 hne_index hi hj
 
+/-- Cover-family form of the Ω-component factorization.  Under the explicit
+support-containment hypothesis connecting fluctuation dependencies to the
+declared active supports inside `Ω`, the Mayer-cover integral over `K`
+factorizes as a product over the canonical Ω-connected cover family. -/
+theorem mayerActivity_integral_factor_confinedComponentCoverFamily_of_fluctuationSupport_subset
+    {Site β ι : Type*} [Fintype Site] [DecidableEq Site] [DecidableEq ι]
+    [MeasurableSpace β] [Nonempty β]
+    {Ψ : Site → Type*}
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site) (K : Finset ι)
+    (H : ι → LocalActivity Site Ψ (fun _ => β) ℂ)
+    (ψ : ∀ x, Ψ x)
+    (hsub : ∀ i, i ∈ K →
+      (H i).fluctuationSupport ⊆ Ω ∩ activeSupport i) :
+    let Γ := confinedComponents (omegaOverlapGraph Ω activeSupport) K
+    ∫ φ, (LocalActivity.mayerCoverActivity K H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ)
+      =
+      Γ.attach.prod fun C =>
+        ∫ φ, ((confinedComponentCoverFamily Ω activeSupport K C).mayerActivity H).globalEval
+            ψ φ
+          ∂(Measure.pi fun _ : Site => μ) := by
+  classical
+  let Γ := confinedComponents (omegaOverlapGraph Ω activeSupport) K
+  have hbase :=
+    LocalActivity.mayerCoverActivity_integral_factor_confinedOmegaComponents_of_fluctuationSupport_subset
+      μ Ω activeSupport K H ψ hsub
+  dsimp only at hbase ⊢
+  rw [hbase]
+  rw [← Finset.prod_attach Γ
+    (fun C =>
+      ∫ φ, (LocalActivity.mayerCoverActivity C H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ))]
+  refine Finset.prod_congr rfl ?_
+  intro C _hC
+  simp [confinedComponentCoverFamily, mayerActivity_confinedComponentCoverOfComponent]
+
 /-- Two Ω-connected Mayer activities with disjoint fluctuation-support unions
 factorize under an ultralocal product probability measure, with the spectator
 field held fixed.  The Ω-connectedness certificates travel with the covers;

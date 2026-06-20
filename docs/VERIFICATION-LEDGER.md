@@ -5554,3 +5554,28 @@ factorization.  It does not prove the support containment for Yang-Mills,
 Appendix-F activity decay, the Yang-Mills fluctuation measure, `hRpoly`,
 continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 164 (2026-06-20, **canonical Ω-cover-family factorization
+wrapper**
+`YangMills.RG.OmegaConnectedCover.mayerActivity_integral_factor_confinedComponentCoverFamily_of_fluctuationSupport_subset`;
+core 8283)
+
+This addendum gives the finite F.1 compiler a source-shaped consumer for
+Addendum 163.  The theorem
+`mayerActivity_integral_factor_confinedComponentCoverFamily_of_fluctuationSupport_subset`
+starts from the same explicit containment hypothesis
+`(H i).fluctuationSupport ⊆ Ω ∩ activeSupport i` for all `i ∈ K`, but states
+the resulting ultralocal Mayer-cover integral factorization directly as a
+product over the canonical `confinedComponentCoverFamily`.
+
+The proof reuses the Ω-component support bridge from Addendum 163, converts the
+raw component product through `Finset.prod_attach`, and rewrites each selected
+component using `mayerActivity_confinedComponentCoverOfComponent`.  This avoids
+forcing later source compilers to unfold the chosen root/component witnesses by
+hand.
+
+**Honest scope.** This is finite cover-family packaging for the future
+Appendix-F compiler.  It does not prove the support-containment hypothesis for
+Yang-Mills, the Appendix-F activity decay, the fluctuation measure, `hRpoly`,
+continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.
