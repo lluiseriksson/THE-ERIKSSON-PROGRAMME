@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8291 jobs**.
+* `lake build YangMillsCore` is green at **8292 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -147,6 +147,20 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   still exact finite combinatorics, not the metric estimate (641), activity
   bound (642), `K#` integration, second Ursell expansion, or Yang-Mills raw
   activity decay;
+* the first integrated Appendix-F activity layer
+  `YangMills/RG/AppendixFKsharp.lean`: the connected target-fiber scalar
+  activity `K(Y)` is lifted to the type-local object
+  `appendixFHoleConnectedLocalActivity`, whose global evaluation is exactly the
+  existing scalar `appendixFHoleConnectedMayerActivity` applied to the
+  pointwise raw Mayer factors.  The same checkpoint adds
+  `LocalActivity.finsetSum`, `LocalActivity.integrateFluctuation`,
+  `appendixFHoleKsharp`, and
+  `norm_appendixFHoleKsharp_globalEval_le`, carrying an explicit
+  `Integrable` hypothesis so later Appendix-F integration statements do not
+  hide totalized integrals.  This is Dimock (644)'s finite `K -> K#` object
+  layer only; the n-ary target-family factorization (643), second target gas,
+  Ursell `H#`, metric estimate (642), and concrete Yang-Mills raw activity
+  producer remain open;
 * the finite quantitative first-activity layer
   `YangMills/RG/AppendixFQuantitative.lean`: a raw pointwise exponential
   bound `‖h X‖ ≤ H0 * exp(-κ * metric X)` with `0 ≤ H0 ≤ 1` and `0 ≤ κ`

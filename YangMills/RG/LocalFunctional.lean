@@ -28,6 +28,7 @@ Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 
 namespace YangMills.RG
 
+open MeasureTheory
 open scoped BigOperators
 
 /-- A field restricted to the finite support `S`.  The type of the value may
@@ -228,6 +229,75 @@ noncomputable def finsetProd [DecidableEq Site] [CommMonoid α] {ι : Type*}
     (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x) :
     (finsetProd I F).globalEval ψ φ =
       ∏ i : {i // i ∈ I}, (F i.1).globalEval ψ φ := rfl
+
+/-- Finite sum of two-field local activities, supported on the union of the
+spectator supports and the union of the fluctuation supports. -/
+noncomputable def finsetSum [DecidableEq Site] [AddCommMonoid α] {ι : Type*}
+    (I : Finset ι) (F : ι → LocalActivity Site Ψ Φ α) :
+    LocalActivity Site Ψ Φ α where
+  spectatorSupport := I.biUnion fun i => (F i).spectatorSupport
+  fluctuationSupport := I.biUnion fun i => (F i).fluctuationSupport
+  eval ψ φ :=
+    ∑ i : {i // i ∈ I},
+      (F i.1).eval
+        (restrictRestricted
+          (by
+            intro x hx
+            exact Finset.mem_biUnion.mpr ⟨i.1, i.2, hx⟩)
+          ψ)
+        (restrictRestricted
+          (by
+            intro x hx
+            exact Finset.mem_biUnion.mpr ⟨i.1, i.2, hx⟩)
+          φ)
+
+@[simp] theorem globalEval_finsetSum [DecidableEq Site] [AddCommMonoid α]
+    {ι : Type*} (I : Finset ι) (F : ι → LocalActivity Site Ψ Φ α)
+    (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x) :
+    (finsetSum I F).globalEval ψ φ =
+      ∑ i ∈ I, (F i).globalEval ψ φ := by
+  change (∑ i : {i // i ∈ I}, (F i.1).globalEval ψ φ) =
+    ∑ i ∈ I, (F i).globalEval ψ φ
+  simpa using
+    (Finset.sum_attach I (fun i : ι => (F i).globalEval ψ φ))
+
+/-- Integrate the fluctuation field of a two-field local activity against an
+ultralocal product measure, leaving a spectator-field local functional. -/
+noncomputable def integrateFluctuation
+    {β : Type*} [Fintype Site] [MeasurableSpace β]
+    (F : LocalActivity Site Ψ (fun _ => β) ℂ) (μ : Measure β) :
+    LocalFunctional Site Ψ ℂ where
+  support := F.spectatorSupport
+  eval ψ :=
+    ∫ φ : (∀ _ : Site, β),
+      F.eval ψ (restrictGlobal F.fluctuationSupport φ)
+      ∂(Measure.pi fun _ : Site => μ)
+
+@[simp] theorem globalEval_integrateFluctuation
+    {β : Type*} [Fintype Site] [MeasurableSpace β]
+    (F : LocalActivity Site Ψ (fun _ => β) ℂ) (μ : Measure β)
+    (ψ : ∀ x, Ψ x) :
+    (F.integrateFluctuation μ).globalEval ψ =
+      ∫ φ : (∀ _ : Site, β), F.globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ) := rfl
+
+/-- A uniform pointwise bound on a local activity bounds its integrated
+fluctuation functional.  The explicit `Integrable` hypothesis is carried in
+the interface so later Appendix-F statements do not silently rely on Lean's
+default value for non-integrable integrals. -/
+theorem norm_globalEval_integrateFluctuation_le_of_norm_le
+    {β : Type*} [Fintype Site] [MeasurableSpace β]
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    (F : LocalActivity Site Ψ (fun _ => β) ℂ)
+    (ψ : ∀ x, Ψ x) {B : ℝ}
+    (_hint : Integrable (fun φ => F.globalEval ψ φ)
+      (Measure.pi fun _ : Site => μ))
+    (hB : ∀ φ, ‖F.globalEval ψ φ‖ ≤ B) :
+    ‖(F.integrateFluctuation μ).globalEval ψ‖ ≤ B := by
+  have hconst := norm_integral_le_of_norm_le_const
+    (μ := Measure.pi fun _ : Site => μ)
+    (Filter.Eventually.of_forall hB)
+  simpa using hconst
 
 end LocalActivity
 

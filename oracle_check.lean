@@ -6,6 +6,7 @@ import YangMills.RG.OmegaConnectedCover
 import YangMills.RG.MayerCoverFactorization
 import YangMills.RG.AppendixFFiniteCover
 import YangMills.RG.AppendixFHoleTarget
+import YangMills.RG.AppendixFKsharp
 import YangMills.RG.AppendixFQuantitative
 
 /-! # Oracle check — one command, every headline
@@ -141,6 +142,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.LocalFunctional.globalEval_finsetProd
 #print axioms YangMills.RG.LocalActivity.globalEval_eq_of_agreeOn
 #print axioms YangMills.RG.LocalActivity.globalEval_finsetProd
+#print axioms YangMills.RG.LocalActivity.globalEval_finsetSum
+#print axioms YangMills.RG.LocalActivity.globalEval_integrateFluctuation
+#print axioms YangMills.RG.LocalActivity.norm_globalEval_integrateFluctuation_le_of_norm_le
 -- ultralocal product-measure factorization for disjoint type-local supports
 #print axioms YangMills.RG.LocalFunctional.integral_mul_of_disjoint_support
 #print axioms YangMills.RG.LocalActivity.integral_mul_of_disjoint_fluctuationSupport
@@ -503,6 +507,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.sum_appendixFHoleAdmissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies
 #print axioms YangMills.RG.prod_one_add_eq_sum_appendixFHoleAdmissibleTargetFamilies
 #print axioms YangMills.RG.complex_exp_sum_eq_sum_appendixFHoleAdmissibleTargetFamilies
+-- first integrated Appendix-F activity K#: local K(Y,ψ,φ), K#(Y,ψ), and norm inheritance.
+#print axioms YangMills.RG.appendixFHoleConnectedLocalActivity_globalEval
+#print axioms YangMills.RG.appendixFHoleKsharp_globalEval
+#print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le
 -- finite quantitative first-activity majorant: raw exponential pointwise
 -- decay implies a connected-cover metric sum, still before (641)--(642).
 #print axioms YangMills.RG.norm_appendixFComponentWeight_expSubOne_le_metricProduct

@@ -303,6 +303,10 @@ import YangMills.RG.AppendixFHoleTarget
 -- active-skeleton hard-core admissibility, full-target fiber activities, and
 -- the exact finite reindexing back to the raw Mayer product.
 import YangMills.RG.AppendixFHoleTargetFamily
+-- First integrated Appendix-F activity K#: turn the connected local activity
+-- K(Y,ψ,φ) into the fluctuation-integrated local functional K#(Y,ψ), with
+-- explicit integrability in norm bounds.
+import YangMills.RG.AppendixFKsharp
 -- Finite quantitative first-activity step above the target-family compiler:
 -- a raw exponential pointwise bound yields a connected-cover metric majorant.
 import YangMills.RG.AppendixFQuantitative

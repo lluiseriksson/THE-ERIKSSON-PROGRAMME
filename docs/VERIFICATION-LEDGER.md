@@ -6569,3 +6569,54 @@ prove a Schur/Combes-Thomas bound, does not expose finite-range support for
 `Q†Q`, does not instantiate Balaban's fluctuation Hessian, does not prove
 Dimock's activity bound (642), and does not affect any continuum/Clay theorem.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 191 (2026-06-20, **Appendix-F first integrated activity Ksharp**
+`YangMills.RG.LocalActivity.finsetSum`,
+`YangMills.RG.LocalActivity.integrateFluctuation`,
+`YangMills.RG.appendixFHoleConnectedLocalActivity`,
+`YangMills.RG.appendixFHoleKsharp`,
+`YangMills.RG.norm_appendixFHoleKsharp_globalEval_le`; core 8292)
+
+This addendum follows the latest Appendix-F strategy handoff by introducing the
+first defined `K -> K#` layer before attempting the second polymer gas.
+
+The type-local substrate now has:
+
+* `LocalActivity.finsetSum`, a finite sum of local activities whose spectator
+  and fluctuation supports are the corresponding finite support unions;
+* `LocalActivity.integrateFluctuation`, integrating the fluctuation field
+  against the ultralocal product measure to produce a spectator-field
+  `LocalFunctional`;
+* `LocalActivity.norm_globalEval_integrateFluctuation_le_of_norm_le`, carrying
+  an explicit `Integrable` hypothesis and proving that a uniform pointwise
+  bound transfers through the probability integral.
+
+The new module `YangMills/RG/AppendixFKsharp.lean` defines
+`appendixFHoleConnectedLocalActivity`, the type-local version of the already
+proved scalar connected target-fiber activity.  Its evaluation theorem states
+that global evaluation is exactly
+`appendixFHoleConnectedMayerActivity` with the pointwise raw Mayer factors
+`exp (H X) - 1`.  The module then defines
+`appendixFHoleKsharp` as the fluctuation integral of this local activity and
+proves `norm_appendixFHoleKsharp_globalEval_le`.
+
+Verification:
+
+```
+lake build YangMills.RG.AppendixFKsharp
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint defines and verifies the finite first
+integrated activity object `K#`.  It does not yet prove the n-ary target-family
+integration factorization (Dimock (643)), the second hard-core target gas,
+the Ursell-defined `H#`, the connected-cover entropy estimate behind (642), or
+any concrete Yang-Mills raw activity decay.  It also does not change the
+continuum, OS/Wightman, or Clay obligations.  Clay distance **~0% (<0.1%),
+unchanged**.
