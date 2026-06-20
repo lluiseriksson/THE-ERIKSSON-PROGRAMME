@@ -105,7 +105,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `YangMills/RG/OmegaConnectedCover.lean`: Ω-overlap graph on cover indices,
   `OmegaConnectedCover`, and the finite product
   `∏ᵢ (exp Hᵢ - 1)` as a type-local `LocalActivity` whose spectator and
-  fluctuation supports are the corresponding unions;
+  fluctuation supports are the corresponding unions.  The same file now lifts
+  factorwise support containment into `Ω ∩ activeSupport i` to support
+  containment for the whole Mayer-cover product, both for raw index sets and
+  for `OmegaConnectedCover`;
 * the abstract activity-limit bridge
   `activity_profile_bound_of_tendsto`: a metric/profile bound uniform in a
   regulator passes to the pointwise limiting activity.  The same module also

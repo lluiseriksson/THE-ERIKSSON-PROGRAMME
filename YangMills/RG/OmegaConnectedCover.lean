@@ -86,6 +86,24 @@ noncomputable def mayerCoverActivity (I : Finset ι)
       I.biUnion fun i => (H i).fluctuationSupport :=
   rfl
 
+/-- If each factor's fluctuation support is contained in its declared
+`Ω`-active support, then the whole Mayer-cover product has fluctuation support
+contained in the union of those declared active supports inside `Ω`.  This is
+the finite support-lifting step a source compiler needs before applying the
+Ω-component factorization layer. -/
+theorem mayerCoverActivity_fluctuationSupport_subset_omega_biUnion_activeSupport
+    (I : Finset ι) (H : ι → LocalActivity Site Ψ Φ ℂ)
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (hsub : ∀ i, i ∈ I → (H i).fluctuationSupport ⊆ Ω ∩ activeSupport i) :
+    (mayerCoverActivity I H).fluctuationSupport ⊆
+      Ω ∩ I.biUnion activeSupport := by
+  rw [mayerCoverActivity_fluctuationSupport]
+  intro x hx
+  rcases Finset.mem_biUnion.mp hx with ⟨i, hi, hxi⟩
+  have hxsub := hsub i hi hxi
+  exact Finset.mem_inter.mpr ⟨(Finset.mem_inter.mp hxsub).1,
+    Finset.mem_biUnion.mpr ⟨i, hi, (Finset.mem_inter.mp hxsub).2⟩⟩
+
 @[simp] theorem globalEval_mayerCoverActivity (I : Finset ι)
     (H : ι → LocalActivity Site Ψ Φ ℂ)
     (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x) :
@@ -128,6 +146,17 @@ noncomputable def mayerActivity (C : OmegaConnectedCover Site ι)
     (C.mayerActivity H).fluctuationSupport =
       C.index.biUnion fun i => (H i).fluctuationSupport :=
   rfl
+
+/-- Cover-facing form of
+`LocalActivity.mayerCoverActivity_fluctuationSupport_subset_omega_biUnion_activeSupport`. -/
+theorem mayerActivity_fluctuationSupport_subset_omega_biUnion_activeSupport
+    (C : OmegaConnectedCover Site ι) (H : ι → LocalActivity Site Ψ Φ ℂ)
+    (hsub : ∀ i, i ∈ C.index →
+      (H i).fluctuationSupport ⊆ C.omega ∩ C.activeSupport i) :
+    (C.mayerActivity H).fluctuationSupport ⊆
+      C.omega ∩ C.index.biUnion C.activeSupport := by
+  exact LocalActivity.mayerCoverActivity_fluctuationSupport_subset_omega_biUnion_activeSupport
+    C.index H C.omega C.activeSupport hsub
 
 @[simp] theorem globalEval_mayerActivity (C : OmegaConnectedCover Site ι)
     (H : ι → LocalActivity Site Ψ Φ ℂ)

@@ -5605,3 +5605,29 @@ finite F.1 machinery.
 support-containment hypothesis for Yang-Mills, the Appendix-F activity decay,
 the fluctuation measure, `hRpoly`, continuum limit, or OS/Wightman
 reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 166 (2026-06-20, **Mayer-cover support-containment lifting**
+`YangMills.RG.LocalActivity.mayerCoverActivity_fluctuationSupport_subset_omega_biUnion_activeSupport`,
+`YangMills.RG.OmegaConnectedCover.mayerActivity_fluctuationSupport_subset_omega_biUnion_activeSupport`;
+core 8283)
+
+This addendum records the finite support-lifting step for the source-facing
+Mayer-cover compiler.  The local theorem
+`mayerCoverActivity_fluctuationSupport_subset_omega_biUnion_activeSupport`
+assumes that each factor in a finite cover has fluctuation support contained
+in its declared active support inside `Ω`,
+`(H i).fluctuationSupport ⊆ Ω ∩ activeSupport i`.  It proves that the whole
+raw-Mayer product over the cover has fluctuation support contained in
+`Ω ∩ I.biUnion activeSupport`.  The `OmegaConnectedCover` theorem packages the
+same statement for the cover object used by the F.1-facing APIs.
+
+This is the local support analogue of Addendum 165: once a future
+Yang-Mills source compiler proves factorwise support containment, the verified
+finite layer now propagates that containment to the product activity and to
+the Ω-overlap/factorization graph without redoing `biUnion` algebra.
+
+**Honest scope.** This is finite support algebra for already-declared
+supports.  It does not prove the support-containment hypothesis for
+Yang-Mills, the Appendix-F activity decay, the fluctuation measure, `hRpoly`,
+continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

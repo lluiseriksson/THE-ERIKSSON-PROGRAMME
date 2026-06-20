@@ -149,8 +149,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- Ω-connected cover substrate and Mayer-cover product
 #print axioms YangMills.RG.omegaOverlapGraph_adj_iff
 #print axioms YangMills.RG.LocalActivity.globalEval_mayerCoverActivity
+#print axioms YangMills.RG.LocalActivity.mayerCoverActivity_fluctuationSupport_subset_omega_biUnion_activeSupport
 #print axioms YangMills.RG.LocalActivity.mayerCoverActivity_globalEval_eq_of_agreeOn
 #print axioms YangMills.RG.OmegaConnectedCover.globalEval_mayerActivity
+#print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_fluctuationSupport_subset_omega_biUnion_activeSupport
 #print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_globalEval_eq_of_agreeOn
 -- ultralocal independence for finite Mayer-cover products
 #print axioms YangMills.RG.mem_confinedComponent_of_mem_confinedWalk_support
