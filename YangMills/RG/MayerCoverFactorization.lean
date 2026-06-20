@@ -37,6 +37,36 @@ def confinedReachable {ι : Type*} (G : SimpleGraph ι) (K : Finset ι)
     (r x : ι) : Prop :=
   ∃ w : G.Walk r x, ∀ y, y ∈ w.support → y ∈ K
 
+theorem confinedReachable_refl {ι : Type*} (G : SimpleGraph ι)
+    (K : Finset ι) {r : ι} (hr : r ∈ K) :
+    confinedReachable G K r r := by
+  refine ⟨Walk.nil, ?_⟩
+  intro y hy
+  rw [Walk.support_nil, List.mem_singleton] at hy
+  simpa [hy] using hr
+
+theorem confinedReachable_symm {ι : Type*} (G : SimpleGraph ι)
+    (K : Finset ι) {r x : ι} (h : confinedReachable G K r x) :
+    confinedReachable G K x r := by
+  rcases h with ⟨w, hwK⟩
+  refine ⟨w.reverse, ?_⟩
+  intro y hy
+  exact hwK y (by simpa [Walk.support_reverse] using hy)
+
+theorem confinedReachable_trans {ι : Type*} (G : SimpleGraph ι)
+    (K : Finset ι) {r x y : ι}
+    (hrx : confinedReachable G K r x)
+    (hxy : confinedReachable G K x y) :
+    confinedReachable G K r y := by
+  rcases hrx with ⟨w₁, hw₁K⟩
+  rcases hxy with ⟨w₂, hw₂K⟩
+  refine ⟨w₁.append w₂, ?_⟩
+  intro z hz
+  rw [Walk.mem_support_append_iff] at hz
+  rcases hz with hz | hz
+  · exact hw₁K z hz
+  · exact hw₂K z hz
+
 /-- The finite component of `r` inside `K`, using only walks whose supports
 stay in `K`.  This is noncomputable only because reachability is a proposition
 used as a `Finset.filter` predicate. -/
@@ -63,11 +93,96 @@ theorem root_mem_confinedComponent {ι : Type*} (G : SimpleGraph ι)
     r ∈ confinedComponent G K r := by
   classical
   rw [mem_confinedComponent_iff]
-  refine ⟨hr, ?_⟩
-  refine ⟨Walk.nil, ?_⟩
-  intro y hy
-  rw [Walk.support_nil, List.mem_singleton] at hy
-  simpa [hy] using hr
+  exact ⟨hr, confinedReachable_refl G K hr⟩
+
+/-- Changing the root to a vertex inside a confined component gives the same
+component. -/
+theorem confinedComponent_eq_of_mem {ι : Type*} (G : SimpleGraph ι)
+    (K : Finset ι) {r x : ι} (hx : x ∈ confinedComponent G K r) :
+    confinedComponent G K x = confinedComponent G K r := by
+  classical
+  rw [mem_confinedComponent_iff] at hx
+  ext y
+  rw [mem_confinedComponent_iff, mem_confinedComponent_iff]
+  constructor
+  · intro hy
+    exact ⟨hy.1, confinedReachable_trans G K hx.2 hy.2⟩
+  · intro hy
+    exact ⟨hy.1,
+      confinedReachable_trans G K (confinedReachable_symm G K hx.2) hy.2⟩
+
+/-- The finite set of confined components of `K`. -/
+noncomputable def confinedComponents {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) (K : Finset ι) : Finset (Finset ι) := by
+  classical
+  exact K.image fun r => confinedComponent G K r
+
+@[simp]
+theorem mem_confinedComponents_iff {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) (K : Finset ι) (C : Finset ι) :
+    C ∈ confinedComponents G K ↔
+      ∃ r ∈ K, C = confinedComponent G K r := by
+  classical
+  rw [confinedComponents, Finset.mem_image]
+  constructor
+  · rintro ⟨r, hrK, rfl⟩
+    exact ⟨r, hrK, rfl⟩
+  · rintro ⟨r, hrK, rfl⟩
+    exact ⟨r, hrK, rfl⟩
+
+theorem confinedComponent_mem_confinedComponents {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) (K : Finset ι) {r : ι} (hr : r ∈ K) :
+    confinedComponent G K r ∈ confinedComponents G K :=
+  (mem_confinedComponents_iff G K (confinedComponent G K r)).mpr
+    ⟨r, hr, rfl⟩
+
+theorem subset_of_mem_confinedComponents {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) (K : Finset ι) {C : Finset ι}
+    (hC : C ∈ confinedComponents G K) :
+    C ⊆ K := by
+  rcases (mem_confinedComponents_iff G K C).mp hC with ⟨r, _hr, rfl⟩
+  exact confinedComponent_subset G K r
+
+/-- The confined components cover exactly the original finite set `K`. -/
+theorem biUnion_confinedComponents_eq {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) (K : Finset ι) :
+    (confinedComponents G K).biUnion id = K := by
+  classical
+  ext x
+  constructor
+  · intro hx
+    rw [Finset.mem_biUnion] at hx
+    rcases hx with ⟨C, hC, hxC⟩
+    exact subset_of_mem_confinedComponents G K hC hxC
+  · intro hxK
+    rw [Finset.mem_biUnion]
+    refine ⟨confinedComponent G K x,
+      confinedComponent_mem_confinedComponents G K hxK,
+      root_mem_confinedComponent G K hxK⟩
+
+/-- Two confined components that intersect are equal. -/
+theorem confinedComponents_eq_of_nonempty_inter {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) (K : Finset ι) {C D : Finset ι}
+    (hC : C ∈ confinedComponents G K) (hD : D ∈ confinedComponents G K)
+    (hinter : ∃ x, x ∈ C ∧ x ∈ D) :
+    C = D := by
+  rcases (mem_confinedComponents_iff G K C).mp hC with ⟨r, _hr, rfl⟩
+  rcases (mem_confinedComponents_iff G K D).mp hD with ⟨s, _hs, rfl⟩
+  rcases hinter with ⟨x, hxC, hxD⟩
+  have hxCeq := confinedComponent_eq_of_mem G K hxC
+  have hxDeq := confinedComponent_eq_of_mem G K hxD
+  exact hxCeq.symm.trans hxDeq
+
+/-- Distinct confined components are disjoint. -/
+theorem disjoint_of_mem_confinedComponents_ne {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) (K : Finset ι) {C D : Finset ι}
+    (hC : C ∈ confinedComponents G K) (hD : D ∈ confinedComponents G K)
+    (hne : C ≠ D) :
+    Disjoint C D := by
+  rw [Finset.disjoint_left]
+  intro x hxC hxD
+  exact hne (confinedComponents_eq_of_nonempty_inter G K hC hD
+    ⟨x, hxC, hxD⟩)
 
 /-- A confined component has no edge from a vertex in the component to a vertex
 of `K` outside the component. -/
