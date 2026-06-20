@@ -414,8 +414,13 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   adapters into the existing geometric consumers.  The namespace methods
   `summable_terms`, `tail_bound`, and `residual_bound` now expose the same
   convergence, truncation-tail, and pointwise residual consequences directly
-  from a packaged source majorant.  This proves only finite algebra and
-  packaging; it does not prove the fixed-union absolute geometric source
+  from a packaged source majorant.  It now also names the scale-indexed
+  spectator-integrated first activity family
+  `appendixFHoleIntegratedKsharpActivityFamily` and specializes the
+  source-majorant constructors, residual estimate, and real-part omega-rooted
+  UV consumer to the concrete normal form
+  `appendixFHoleHsharpOfIntegratedKsharp`.  This proves only finite algebra
+  and packaging; it does not prove the fixed-union absolute geometric source
   estimate, Dimock F.1/(636), Dimock (642), or any continuum/Clay theorem;
 * the finite source-facing second-Ursell tree majorant
   `YangMills/RG/AppendixFSecondUrsellSource.lean`: it defines

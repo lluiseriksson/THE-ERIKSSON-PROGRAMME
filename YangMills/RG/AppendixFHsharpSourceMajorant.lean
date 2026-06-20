@@ -288,6 +288,184 @@ noncomputable def appendixFHsharpSourceMajorant_of_factorized_absTerm_geometric
               ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))) := by
           ring
 
+/-! ## Integrated `K#` source specialization -/
+
+/-- Scale-indexed family of spectator-integrated scalar first activities.
+This is just a named `zK t k` carrier for the concrete normalization
+`z_K(Y) = ∫ K#(Y, ψ) dν(ψ)`; it does not include any quantitative estimate. -/
+noncomputable def appendixFHoleIntegratedKsharpActivityFamily
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (HF : HoleFamily d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (Hraw : ∀ t k,
+      OmegaPolymerType HF (z t k) →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : ℕ → ℕ → MeasureTheory.Measure γ)
+    (ν : ℕ → ℕ → MeasureTheory.Measure β)
+    (t k : ℕ)
+    (Y : Finset (Cube d L)) : ℂ :=
+  appendixFHoleIntegratedKsharpActivity
+    HF (z t k) (Λ t k) (Hraw t k) (μ t k) (ν t k) Y
+
+@[simp] theorem appendixFHoleIntegratedKsharpActivityFamily_eq
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (HF : HoleFamily d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (Hraw : ∀ t k,
+      OmegaPolymerType HF (z t k) →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : ℕ → ℕ → MeasureTheory.Measure γ)
+    (ν : ℕ → ℕ → MeasureTheory.Measure β)
+    (t k : ℕ)
+    (Y : Finset (Cube d L)) :
+    appendixFHoleIntegratedKsharpActivityFamily
+      HF z Λ Hraw μ ν t k Y =
+      appendixFHoleIntegratedKsharpActivity
+        HF (z t k) (Λ t k) (Hraw t k) (μ t k) (ν t k) Y := rfl
+
+/-- Integrated-`K#` specialization of the absolute-term geometric source
+majorant constructor.  A source proof still supplies the finite fixed-union
+absolute estimate and the closed residual comparison explicitly. -/
+noncomputable def
+    appendixFHsharpSourceMajorant_of_integratedKsharp_absTerm_geometric
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (Hraw : ∀ t k,
+      OmegaPolymerType HF (z t k) →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : ℕ → ℕ → MeasureTheory.Measure γ)
+    (ν : ℕ → ℕ → MeasureTheory.Measure β)
+    (g : ℕ → ℝ)
+    (A q : ℕ → ℕ → OmegaPolymerType HF zCarrier → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hA :
+      ∀ t k (P : OmegaPolymerType HF zCarrier), 0 ≤ A t k P)
+    (hq0 :
+      ∀ t k (P : OmegaPolymerType HF zCarrier), 0 ≤ q t k P)
+    (hq1 :
+      ∀ t k (P : OmegaPolymerType HF zCarrier), q t k P < 1)
+    (habs :
+      ∀ t k (P : OmegaPolymerType HF zCarrier) n,
+        appendixFHoleHsharpAbsTerm HF
+            (appendixFHoleIntegratedKsharpActivityFamily
+              HF z Λ Hraw μ ν t k) P.val n ≤
+          A t k P * q t k P ^ n)
+    (hclosed :
+      ∀ t k (P : OmegaPolymerType HF zCarrier),
+        A t k P * (1 - q t k P)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))) :
+    AppendixFHsharpSourceMajorant HF zCarrier
+      (fun t k Y =>
+        appendixFHoleIntegratedKsharpActivityFamily
+          HF z Λ Hraw μ ν t k Y)
+      g C H₀ c₀ κ κ₀ :=
+  appendixFHsharpSourceMajorant_of_absTerm_geometric
+    HF zCarrier
+    (fun t k Y =>
+      appendixFHoleIntegratedKsharpActivityFamily
+        HF z Λ Hraw μ ν t k Y)
+    g A q hA hq0 hq1 habs hclosed
+
+/-- Factorized integrated-`K#` source-majorant constructor, isolating target
+geometry in the modified-metric exponential and leaving the source proof to
+supply only the finite tree/absolute estimate and closed amplitude bound. -/
+noncomputable def
+    appendixFHsharpSourceMajorant_of_integratedKsharp_factorized_absTerm_geometric
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (Hraw : ∀ t k,
+      OmegaPolymerType HF (z t k) →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : ℕ → ℕ → MeasureTheory.Measure γ)
+    (ν : ℕ → ℕ → MeasureTheory.Measure β)
+    (g : ℕ → ℝ)
+    (B ρ : ℕ → ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hB0 : ∀ t k, 0 ≤ B t k)
+    (hρ0 : ∀ t k, 0 ≤ ρ t k)
+    (hρ1 : ∀ t k, ρ t k < 1)
+    (habs :
+      ∀ t k (P : OmegaPolymerType HF zCarrier) n,
+        appendixFHoleHsharpAbsTerm HF
+            (appendixFHoleIntegratedKsharpActivityFamily
+              HF z Λ Hraw μ ν t k) P.val n ≤
+          (B t k *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))) *
+            ρ t k ^ n)
+    (hBclosed :
+      ∀ t k,
+        B t k * (1 - ρ t k)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    AppendixFHsharpSourceMajorant HF zCarrier
+      (fun t k Y =>
+        appendixFHoleIntegratedKsharpActivityFamily
+          HF z Λ Hraw μ ν t k Y)
+      g C H₀ c₀ κ κ₀ :=
+  appendixFHsharpSourceMajorant_of_factorized_absTerm_geometric
+    HF zCarrier
+    (fun t k Y =>
+      appendixFHoleIntegratedKsharpActivityFamily
+        HF z Λ Hraw μ ν t k Y)
+    g B ρ hB0 hρ0 hρ1 habs hBclosed
+
+/-- Residual estimate rewritten for the named integrated `H#` object. -/
+theorem norm_appendixFHoleHsharpOfIntegratedKsharp_le_residual_of_source_majorant
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (Hraw : ∀ t k,
+      OmegaPolymerType HF (z t k) →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : ℕ → ℕ → MeasureTheory.Measure γ)
+    (ν : ℕ → ℕ → MeasureTheory.Measure β)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpSourceMajorant HF zCarrier
+        (fun t k Y =>
+          appendixFHoleIntegratedKsharpActivityFamily
+            HF z Λ Hraw μ ν t k Y)
+        g C H₀ c₀ κ κ₀)
+    (t k : ℕ)
+    (P : OmegaPolymerType HF zCarrier) :
+    ‖appendixFHoleHsharpOfIntegratedKsharp
+        HF (z t k) (Λ t k) (Hraw t k) (μ t k) (ν t k) P.val‖ ≤
+      C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+        Real.exp
+          (-(polymerClusterResidualRate κ κ₀ *
+            ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))) := by
+  change
+    ‖appendixFHoleHsharp HF
+        (appendixFHoleIntegratedKsharpActivity
+          HF (z t k) (Λ t k) (Hraw t k) (μ t k) (ν t k)) P.val‖ ≤
+      C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+        Real.exp
+          (-(polymerClusterResidualRate κ κ₀ *
+            ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))
+  exact
+    norm_appendixFHoleHsharp_le_residual_of_geometric_term_majorant
+      HF zCarrier
+      (fun t k Y =>
+        appendixFHoleIntegratedKsharpActivityFamily
+          HF z Λ Hraw μ ν t k Y)
+      g hsrc.A hsrc.q hsrc.A_nonneg hsrc.q_nonneg hsrc.q_lt_one
+      hsrc.term_le hsrc.closed_le_residual t k P
+
 /-- The source contract feeds directly into the existing closed-form geometric
 total residual consumer. -/
 theorem norm_appendixFHoleHsharp_le_residual_of_source_majorant
@@ -358,5 +536,79 @@ theorem
       hsrc.A_nonneg hsrc.q_nonneg hsrc.q_lt_one
       hsrc.term_le hsrc.closed_le_residual
       hdisj hnoedges hholes_ne hCq
+
+/-- Real-part omega-rooted UV consumer for the integrated `H#` normal form.
+The source majorant remains an explicit hypothesis; this theorem only performs
+the specialization from the abstract `zK` family to the spectator-integrated
+first activity. -/
+theorem
+    singleScaleUVDecay_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (Hraw : ∀ t k,
+      OmegaPolymerType HF (z t k) →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : ℕ → ℕ → MeasureTheory.Measure γ)
+    (ν : ℕ → ℕ → MeasureTheory.Measure β)
+    (Rsc : ℕ → ℕ → ℝ)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpSourceMajorant HF zCarrier
+        (fun t k Y =>
+          appendixFHoleIntegratedKsharpActivityFamily
+            HF z Λ Hraw μ ν t k Y)
+        g C H₀ c₀ κ κ₀)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (appendixFHoleHsharpOfIntegratedKsharp
+                HF (z t k) (Λ t k) (Hraw t k)
+                (μ t k) (ν t k) P.val.val))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    SingleScaleUVDecay Rsc g
+      ((C * H₀) *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹)
+      c₀ κ₀ := by
+  refine
+    singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
+      HF zCarrier r
+      (fun t k Y =>
+        appendixFHoleIntegratedKsharpActivityFamily
+          HF z Λ Hraw μ ν t k Y)
+      Rsc g hsrc hC hH₀ hg hκ ?_
+      hdisj hnoedges hholes_ne hCq
+  intro t k
+  change
+    Rsc t k =
+      ∑' P : { P : OmegaPolymerType HF zCarrier //
+          r ∈ skeleton HF P.val },
+        Complex.re
+          (appendixFHoleHsharp HF
+            (appendixFHoleIntegratedKsharpActivity
+              HF (z t k) (Λ t k) (Hraw t k) (μ t k) (ν t k))
+            P.val.val)
+  exact hR t k
 
 end YangMills.RG

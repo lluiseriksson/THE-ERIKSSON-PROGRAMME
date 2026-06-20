@@ -7847,3 +7847,54 @@ It does not prove the spectator-integrability hypotheses for the concrete
 Yang-Mills RG measure, Dimock (642), the source `H#` estimate F.1/(636), any
 KP smallness condition, concrete raw activity decay, continuum construction,
 or Clay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 217 (2026-06-21, **integrated Ksharp source-majorant specialization**
+`YangMills.RG.appendixFHoleIntegratedKsharpActivityFamily_eq`,
+`YangMills.RG.appendixFHsharpSourceMajorant_of_integratedKsharp_absTerm_geometric`,
+`YangMills.RG.appendixFHsharpSourceMajorant_of_integratedKsharp_factorized_absTerm_geometric`,
+`YangMills.RG.norm_appendixFHoleHsharpOfIntegratedKsharp_le_residual_of_source_majorant`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant`;
+core 8307)
+
+This addendum connects Addendum 216's spectator-integrated scalar `K#`
+normal form to Addendum 211's source-majorant contract.
+
+`YangMills/RG/AppendixFHsharpSourceMajorant.lean` now names the scale-indexed
+family
+
+```
+zK(t,k,Y) = appendixFHoleIntegratedKsharpActivity HF (z t k) ... Y
+```
+
+as `appendixFHoleIntegratedKsharpActivityFamily`.  It then specializes both
+source-majorant constructors to this concrete `zK` family: one constructor
+from an arbitrary absolute fixed-union geometric estimate, and one from the
+preferred factorized form with a modified-metric exponential and a
+target-independent cluster-order ratio.
+
+The same module also rewrites the pointwise residual consumer and the
+real-part omega-rooted UV consumer for the named object
+`appendixFHoleHsharpOfIntegratedKsharp`.  The source proof still must supply
+the termwise absolute/tree estimate, positivity, ratio bound, and closed
+residual comparison explicitly.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpSourceMajorant.lean
+lake build YangMills.RG.AppendixFHsharpSourceMajorant
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is a specialization/adapter layer.  It does not prove
+the absolute fixed-union estimate, the Balaban/Dimock second-Ursell leaf
+summation, Dimock F.1/(636), Dimock (642), concrete Yang-Mills raw activity
+decay, continuum construction, or Clay.  Clay distance **~0% (<0.1%),
+unchanged**.
