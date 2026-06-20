@@ -7130,3 +7130,44 @@ the `H#` `tsum`, Dimock's residual estimate, the analytic KP/Ursell loss
 behind `κ - 3κ₀ - 3`, the physical real projection, a concrete Yang-Mills raw
 activity estimate, or any continuum/Clay theorem.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 202 (2026-06-20, **real/imaginary H# scalar projections**
+`YangMills.RG.complex_re_contracts_norm`,
+`YangMills.RG.complex_im_contracts_norm`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_im`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_im_four_mul_margin`;
+core 8299)
+
+This addendum extends `YangMills/RG/AppendixFHsharpResidual.lean` with concrete
+scalar projections for the residual `H#` adapter.
+
+The theorems `complex_re_contracts_norm` and `complex_im_contracts_norm`
+record the elementary contractions `|Complex.re w| <= ‖w‖` and
+`|Complex.im w| <= ‖w‖`.  The real-part specializations
+`singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re` and
+`singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin` now feed
+`Rsc t k = ∑' P, Complex.re (appendixFHoleHsharp HF (zK t k) P)` directly into
+the scalar `SingleScaleUVDecay` consumer.  The corresponding imaginary-part
+specializations are also available for auditing complex remainders.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpResidual.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This chooses no new physical semantics.  It proves that the
+ordinary real and imaginary coordinate projections are contractive and can
+therefore instantiate the already verified residual adapter.  If the final
+physical scalar projection is not literally `Complex.re`, it still needs its
+own definition and contraction theorem.  Clay distance **~0% (<0.1%),
+unchanged**.

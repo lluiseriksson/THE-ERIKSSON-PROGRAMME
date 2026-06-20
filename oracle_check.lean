@@ -578,10 +578,16 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpOfKsharp_eq
 -- residual H# adapter: source complex-norm estimates feed the real
 -- omega-rooted UV-decay producer without hiding Dimock's analytic bound.
+#print axioms YangMills.RG.complex_re_contracts_norm
+#print axioms YangMills.RG.complex_im_contracts_norm
 #print axioms YangMills.RG.clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharp_le
 #print axioms YangMills.RG.rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharp_le
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_four_mul_margin
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_im
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_im_four_mul_margin
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

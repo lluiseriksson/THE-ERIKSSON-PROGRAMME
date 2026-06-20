@@ -287,7 +287,16 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   sufficient margin `κ >= 4κ₀ + 3`.  This is only the adapter from a proved
   source residual estimate to the UV consumer; it does not prove Dimock
   (642), convergence of the `H#` Ursell series, or the physical real
-  projection;
+  projection.  The module now also names the canonical contractions
+  `complex_re_contracts_norm` and `complex_im_contracts_norm`, and specializes
+  the producer to real and imaginary parts through
+  `singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re`,
+  `singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin`,
+  `singleScaleUVDecay_of_omegaRootedAppendixFHsharp_im`, and
+  `singleScaleUVDecay_of_omegaRootedAppendixFHsharp_im_four_mul_margin`.
+  The real-part theorem is the current concrete scalar adapter; a later
+  physically normalized projection still needs its own definition and
+  contraction proof if it differs from `Complex.re`;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound
