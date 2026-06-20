@@ -6938,3 +6938,58 @@ the `K(Y)`/`K#` estimate.  It does not prove the pointwise raw activity decay,
 the exact exponential-minus-one `K(Y)` estimate, Dimock (642), the
 factorization (643), the second Ursell expansion, or any continuum theorem.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 198 (2026-06-20, **source-shaped exact first K# estimate**
+`YangMills.RG.norm_appendixFHoleConnectedLocalActivity_globalEval_le_expSubOne`,
+`YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay`,
+`YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay_rooted`;
+core 8296)
+
+This addendum adds `YangMills/RG/AppendixFKsharpEstimate.lean`, the first
+source-shaped `K(Y)`/`K#` estimate after the local summability adapter.
+
+The pointwise theorem
+`norm_appendixFHoleConnectedLocalActivity_globalEval_le_expSubOne` combines
+the existing finite ingredients:
+
+```
+raw metric decay
++ target-fiber entropy
++ with-holes metric stitching
++ target-contained local summability
+```
+
+to prove the exact nonlinear first-activity bound
+
+```
+‖K(Y, ψ, φ)‖
+  ≤ exp(-(κ-κ₀)(d_M(Y)+1))
+      * (exp(2 H₀ K₀ (d_M(Y)+1)) - 1).
+```
+
+The integrated theorem
+`norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay` transfers
+the same bound to `K#(Y, ψ)` through the already verified probability-integral
+bridge, with the `Integrable` hypothesis still explicit.  The rooted variant
+`norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay_rooted`
+derives the contained-support local estimate from rooted modified-metric
+summability.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFKsharpEstimate.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This closes the exact finite nonlinear `K(Y)`/`K#` estimate
+but deliberately does not prove the linearized `κ - κ₀ - 2` corollary, Dimock
+(643) target-family factorization, the second hard-core target gas, the final
+`H#` residual rate `κ - 3κ₀ - 3`, the concrete Yang-Mills raw activity decay,
+or any continuum/Clay theorem.  Clay distance **~0% (<0.1%), unchanged**.

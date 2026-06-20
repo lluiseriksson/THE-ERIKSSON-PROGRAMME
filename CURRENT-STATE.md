@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8294 jobs**.
+* `lake build YangMillsCore` is green at **8296 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -225,9 +225,23 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `appendixFHole_containedWeightSum_le_metric_mul_of_rooted`, converting
   rooted local control into a target-contained estimate by overcounting
   through roots in `skeleton HF Y` and using
-  `skeleton_card_le_discreteModifiedMetric_add_one`.  This is still finite
-  summability bookkeeping before the pointwise `K(Y)` estimate, not Dimock
-  (642), not `K#` integration, and not the second gas;
+  `skeleton_card_le_discreteModifiedMetric_add_one`.  This is finite
+  summability bookkeeping before the first-activity estimate, not the second
+  gas;
+* the source-shaped first `K#` estimate
+  `YangMills/RG/AppendixFKsharpEstimate.lean`: it proves the exact pointwise
+  exponential-minus-one bound
+  `norm_appendixFHoleConnectedLocalActivity_globalEval_le_expSubOne` by
+  combining raw metric decay, finite target-fiber entropy, modified-metric
+  stitching, and target-contained local summability.  It then transfers the
+  same bound to the integrated first activity through
+  `norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay`, with
+  integrability still explicit, and provides the rooted-summability consumer
+  `norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay_rooted`.
+  The output is the exact nonlinear factor
+  `exp(2 H₀ K₀ (d_M(Y)+1)) - 1`; the linearized `κ - κ₀ - 2` corollary,
+  Dimock (643) factorization, second Ursell gas, final `H#` residual rate,
+  and concrete Yang-Mills raw activity estimate remain open;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound

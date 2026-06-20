@@ -10,6 +10,8 @@ import YangMills.RG.AppendixFKsharp
 import YangMills.RG.AppendixFQuantitative
 import YangMills.RG.AppendixFFiberEntropy
 import YangMills.RG.PolymerClusterWithHolesBridge
+import YangMills.RG.AppendixFLocalSummability
+import YangMills.RG.AppendixFKsharpEstimate
 
 /-! # Oracle check — one command, every headline
 
@@ -556,6 +558,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- local modified-metric summability adapters before the first K# estimate.
 #print axioms YangMills.RG.appendixFHole_rootedFiniteExpWeightSum_le
 #print axioms YangMills.RG.appendixFHole_containedWeightSum_le_metric_mul_of_rooted
+-- source-shaped exact first K(Y)/K# estimate before second-gas residual losses.
+#print axioms YangMills.RG.norm_appendixFHoleConnectedLocalActivity_globalEval_le_expSubOne
+#print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay
+#print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay_rooted
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

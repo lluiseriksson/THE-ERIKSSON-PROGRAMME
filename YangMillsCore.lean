@@ -321,6 +321,9 @@ import YangMills.RG.AppendixFFiberEntropy
 -- geometric sums to finite raw families and convert rooted control to
 -- target-contained local control.
 import YangMills.RG.AppendixFLocalSummability
+-- Source-shaped first K# estimate: raw metric decay plus local summability
+-- give the exact exponential-minus-one K(Y) bound and its integrated K# form.
+import YangMills.RG.AppendixFKsharpEstimate
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
