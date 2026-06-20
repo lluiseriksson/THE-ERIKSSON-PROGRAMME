@@ -101,6 +101,11 @@ activity has amplitude `amp + S`.
 * `finiteExteriorBasis_singleton_mul_self` proves the generator-level
   Grassmann nilpotence rule `e_i * e_i = 0` for every finite exterior basis
   generator.
+* `finiteExteriorBasis_mul_of_not_disjoint` and
+  `finiteBerezinTop_basis_mul_of_not_disjoint` provide the corresponding
+  monomial and Berezin-top-coefficient zero rules whenever two basis monomials
+  share a generator.  The disjoint `powersetCard` wrapper keeps the
+  orientation sign explicit for later Pfaffian work.
 
 This is the first concrete finite Grassmann/Berezin layer underneath the
 abstract Ward interface.  The weighted functional is the algebraic slot into

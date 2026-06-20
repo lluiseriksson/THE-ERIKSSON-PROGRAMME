@@ -5875,3 +5875,30 @@ algebra.  It does not prove a Gaussian Berezin integral, determinant/Pfaffian
 formula, physical supersymmetry, Yang-Mills activity bound, `hRpoly`,
 continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 175 (2026-06-20, **finite exterior basis product rules**
+`YangMills.SUSY.finiteExteriorBasis_powersetCard_mul_of_not_disjoint`,
+`YangMills.SUSY.finiteExteriorBasis_powersetCard_mul_of_disjoint`,
+`YangMills.SUSY.finiteExteriorBasis_mul_of_not_disjoint`,
+`YangMills.SUSY.finiteBerezinTop_basis_mul_of_not_disjoint`;
+core 8284)
+
+This addendum generalizes the previous singleton nilpotence brick into the
+finite exterior-basis product API needed for explicit Berezin expansions.
+
+* If two basis monomials have overlapping generator support, their product is
+  zero.
+* Consequently, the Berezin top coefficient of such a product is zero.
+* If two cardinality-indexed basis monomials are disjoint, their product is the
+  exterior basis monomial of the disjoint union multiplied by Mathlib's explicit
+  permutation sign.
+
+The disjoint case intentionally leaves the orientation sign visible.  This
+avoids the earlier rejected shortcut through concrete decision-procedure signs
+and sets up finite Gaussian/Pfaffian identities so their sign conventions
+remain auditable.
+
+**Honest scope.** These are algebraic exterior-basis product rules only.  They
+do not prove a Gaussian Berezin integral, determinant/Pfaffian formula,
+physical supersymmetry, Yang-Mills activity bound, `hRpoly`, continuum limit,
+or OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.

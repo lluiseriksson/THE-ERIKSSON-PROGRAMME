@@ -178,7 +178,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   normalization facts: in positive fermionic dimension it integrates `1` to
   `a` and scalar constants to `a * z`.  The generator-level theorem
   `finiteExteriorBasis_singleton_mul_self` proves Grassmann nilpotence:
-  every degree-one exterior basis generator squares to zero.
+  every degree-one exterior basis generator squares to zero.  The same file now
+  exposes the general basis-product rules
+  `finiteExteriorBasis_mul_of_not_disjoint` and
+  `finiteExteriorBasis_powersetCard_mul_of_disjoint`: repeated generators kill
+  a product, while disjoint products carry Mathlib's explicit orientation sign.
   This is only the algebraic Berezin/Ward coefficient layer, not yet a
   super-Gaussian determinant/Pfaffian theorem.
 * the Ward-cancelled polymer bridge `YangMills/SUSY/WardPolymer.lean`: finite

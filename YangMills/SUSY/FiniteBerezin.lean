@@ -159,6 +159,55 @@ constants by multiplying them with the top coefficient. -/
   simp [finiteBerezinTopWeight, finiteBerezinWeighted_apply,
     finiteBerezinTop_one_of_pos hn, mul_comm]
 
+/-- Exterior basis multiplication for non-disjoint finite generator sets, in the
+cardinality-indexed form used internally by Mathlib's exterior-algebra basis
+API.  Repeated Grassmann generators kill the product. -/
+@[simp] theorem finiteExteriorBasis_powersetCard_mul_of_not_disjoint
+    {n m k : ℕ} (s : Set.powersetCard (Fin n) m)
+    (t : Set.powersetCard (Fin n) k)
+    (h : ¬ Disjoint (s : Finset (Fin n)) (t : Finset (Fin n))) :
+    (finiteExteriorBasis n (s : Finset (Fin n))) *
+      (finiteExteriorBasis n (t : Finset (Fin n))) = 0 := by
+  simpa [finiteExteriorBasis] using
+    ExteriorAlgebra.basis_mul_of_not_disjoint (Pi.basisFun ℂ (Fin n)) s t h
+
+/-- Exterior basis multiplication for disjoint finite generator sets.  The
+orientation sign is kept explicit; later finite Gaussian/Pfaffian work must
+consume this sign rather than hide it in a concrete decision procedure. -/
+theorem finiteExteriorBasis_powersetCard_mul_of_disjoint
+    {n m k : ℕ} (s : Set.powersetCard (Fin n) m)
+    (t : Set.powersetCard (Fin n) k)
+    (h : Disjoint (s : Finset (Fin n)) (t : Finset (Fin n))) :
+    (finiteExteriorBasis n (s : Finset (Fin n))) *
+      (finiteExteriorBasis n (t : Finset (Fin n))) =
+        (Set.powersetCard.permOfDisjoint h).sign •
+          finiteExteriorBasis n
+            (Set.powersetCard.disjUnion h : Finset (Fin n)) := by
+  simpa [finiteExteriorBasis] using
+    ExteriorAlgebra.basis_mul_of_disjoint (Pi.basisFun ℂ (Fin n)) s t h
+
+/-- Finset-facing Grassmann product rule: if two exterior basis monomials share
+a generator, their product is zero. -/
+@[simp] theorem finiteExteriorBasis_mul_of_not_disjoint {n : ℕ}
+    {s t : Finset (Fin n)} (h : ¬ Disjoint s t) :
+    (finiteExteriorBasis n s) * (finiteExteriorBasis n t) = 0 := by
+  let sp : Set.powersetCard (Fin n) s.card :=
+    Set.powersetCard.ofCard (s := s) rfl
+  let tp : Set.powersetCard (Fin n) t.card :=
+    Set.powersetCard.ofCard (s := t) rfl
+  have hp : ¬ Disjoint (sp : Finset (Fin n)) (tp : Finset (Fin n)) := by
+    simpa [sp, tp] using h
+  have hmul := finiteExteriorBasis_powersetCard_mul_of_not_disjoint sp tp hp
+  simpa [sp, tp] using hmul
+
+/-- The Berezin top coefficient of a product with a repeated generator is zero. -/
+@[simp] theorem finiteBerezinTop_basis_mul_of_not_disjoint {n : ℕ}
+    {s t : Finset (Fin n)} (h : ¬ Disjoint s t) :
+    finiteBerezinTop n ((finiteExteriorBasis n s) * (finiteExteriorBasis n t)) =
+      0 := by
+  rw [finiteExteriorBasis_mul_of_not_disjoint h]
+  simp
+
 /-- Grassmann nilpotence for finite exterior basis generators: each degree-one
 basis monomial squares to zero.  This is the first generator-level algebraic
 fact needed before finite Gaussian/Pfaffian identities can be stated honestly. -/
