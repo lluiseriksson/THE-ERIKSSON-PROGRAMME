@@ -350,6 +350,9 @@ import YangMills.RG.AppendixFHsharpMajorant
 -- Closed-form geometric H# majorants: term bounds of the form A·q^n discharge
 -- the summability, finite-partial, tail, and total residual bookkeeping.
 import YangMills.RG.AppendixFHsharpGeometricMajorant
+-- Source-facing H# profile: a single packaged geometric majorant record
+-- exposes summability, tail, residual, and UV consumers.
+import YangMills.RG.AppendixFHsharpProfile
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

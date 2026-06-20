@@ -20,6 +20,7 @@ import YangMills.RG.AppendixFHsharpConvergence
 import YangMills.RG.AppendixFHsharpLimit
 import YangMills.RG.AppendixFHsharpMajorant
 import YangMills.RG.AppendixFHsharpGeometricMajorant
+import YangMills.RG.AppendixFHsharpProfile
 
 /-! # Oracle check — one command, every headline
 
@@ -640,6 +641,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_geometric_tail
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_geometric_term_majorant
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_geometric_term_majorant
+-- source-facing packaged geometric H# profiles: one record now supplies the
+-- summability, tail, residual, and UV consumers without duplicating fields.
+#print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.summable_terms
+#print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.tail_bound
+#print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.residual_bound
+#print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.singleScaleUVDecay_of_profile
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8304 jobs**.
+* `lake build YangMillsCore` is green at **8305 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -363,6 +363,17 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   it does not prove that the source second-Ursell/KP analysis supplies such
   an `A,q`, the source `H#` estimate (Dimock F.1/(636)), the preceding `K/K#`
   estimate (Dimock (642)), or any continuum/Clay theorem;
+* the source-facing geometric `H#` profile
+  `YangMills/RG/AppendixFHsharpProfile.lean`: it packages the amplitudes
+  `A`, ratios `q`, positivity/strict-ratio hypotheses, termwise `H#` bound,
+  and closed-total residual comparison into one
+  `AppendixFHsharpGeometricMajorantProfile` record.  The profile exposes
+  `summable_terms`, `tail_bound`, `residual_bound`, and
+  `singleScaleUVDecay_of_profile`, so a future KP/Ursell proof can feed the
+  existing consumers with one object instead of repeating the same contract
+  fields.  This is still packaging of the geometric-majorant obligation; it
+  does not prove the source second-Ursell/KP estimate, Dimock F.1/(636),
+  Dimock (642), or any continuum/Clay theorem;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound

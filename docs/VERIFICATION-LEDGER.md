@@ -7472,3 +7472,48 @@ in a later source-facing module.  The source `H#` estimate (Dimock II Theorem
 F.1/(636)), the preceding `K/K#` estimate (642), concrete Yang-Mills raw
 activity decay, continuum construction, and Clay remain open.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 209 (2026-06-20, **packaged geometric H# majorant profiles**
+`YangMills.RG.AppendixFHsharpGeometricMajorantProfile.summable_terms`,
+`YangMills.RG.AppendixFHsharpGeometricMajorantProfile.tail_bound`,
+`YangMills.RG.AppendixFHsharpGeometricMajorantProfile.residual_bound`,
+`YangMills.RG.AppendixFHsharpGeometricMajorantProfile.singleScaleUVDecay_of_profile`;
+core 8305)
+
+This addendum adds `YangMills/RG/AppendixFHsharpProfile.lean`, a
+source-facing record for the closed-form geometric `H#` majorant contract.
+
+The new structure `AppendixFHsharpGeometricMajorantProfile` packages the data a
+future second-Ursell/KP source proof should provide: amplitudes `A`, ratios
+`q`, the hypotheses `0 <= A`, `0 <= q < 1`, the termwise estimate
+`‖appendixFHoleHsharpTerm ... n‖ <= A*q^n`, and the comparison of the closed
+total `A*(1-q)⁻¹` with the residual profile.  The profile theorems expose the
+already-verified consequences from one object: fixed-target summability,
+closed shifted-tail control for finite truncations, the total pointwise
+residual bound, and the omega-rooted real-part `SingleScaleUVDecay` consumer
+under the sufficient margin `κ >= 4κ₀ + 3`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpProfile.lean
+lake --rehash build YangMills.RG.UltralocalFactorization
+lake build YangMillsCore
+lake env lean YangMillsCore.lean
+lake --rehash build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The first full build attempt exposed a stale/missing
+local `.olean` for `UltralocalFactorization` in this public worker checkout;
+refreshing that dependency and then rebuilding the root target fixed the cache
+state.  The first oracle attempt timed out at 304s with no Lean error; after
+the root target was refreshed, the long oracle run completed and the new
+entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is a packaging layer only.  It does not prove the
+geometric majorant, the second-Ursell/KP estimate, Dimock II Theorem F.1/(636),
+Dimock (642), concrete Yang-Mills raw activity decay, continuum construction,
+or Clay.  Clay distance **~0% (<0.1%), unchanged**.
