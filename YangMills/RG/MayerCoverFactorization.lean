@@ -28,7 +28,67 @@ Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 namespace YangMills.RG
 
 open MeasureTheory
+open SimpleGraph
 open scoped BigOperators
+
+/-- Reachability from `r` to `x` by a walk whose support stays inside the
+finite index set `K`. -/
+def confinedReachable {ι : Type*} (G : SimpleGraph ι) (K : Finset ι)
+    (r x : ι) : Prop :=
+  ∃ w : G.Walk r x, ∀ y, y ∈ w.support → y ∈ K
+
+/-- The finite component of `r` inside `K`, using only walks whose supports
+stay in `K`.  This is noncomputable only because reachability is a proposition
+used as a `Finset.filter` predicate. -/
+noncomputable def confinedComponent {ι : Type*} (G : SimpleGraph ι)
+    (K : Finset ι) (r : ι) : Finset ι := by
+  classical
+  exact K.filter fun x => confinedReachable G K r x
+
+@[simp]
+theorem mem_confinedComponent_iff {ι : Type*} (G : SimpleGraph ι)
+    (K : Finset ι) (r x : ι) :
+    x ∈ confinedComponent G K r ↔ x ∈ K ∧ confinedReachable G K r x := by
+  classical
+  simp [confinedComponent]
+
+theorem confinedComponent_subset {ι : Type*} (G : SimpleGraph ι)
+    (K : Finset ι) (r : ι) :
+    confinedComponent G K r ⊆ K := by
+  intro x hx
+  exact (mem_confinedComponent_iff G K r x).mp hx |>.1
+
+theorem root_mem_confinedComponent {ι : Type*} (G : SimpleGraph ι)
+    (K : Finset ι) {r : ι} (hr : r ∈ K) :
+    r ∈ confinedComponent G K r := by
+  classical
+  rw [mem_confinedComponent_iff]
+  refine ⟨hr, ?_⟩
+  refine ⟨Walk.nil, ?_⟩
+  intro y hy
+  rw [Walk.support_nil, List.mem_singleton] at hy
+  simpa [hy] using hr
+
+/-- A confined component has no edge from a vertex in the component to a vertex
+of `K` outside the component. -/
+theorem no_adj_confinedComponent_compl {ι : Type*} (G : SimpleGraph ι)
+    (K : Finset ι) {r x y : ι}
+    (hx : x ∈ confinedComponent G K r) (hyK : y ∈ K)
+    (hy : y ∉ confinedComponent G K r) :
+    ¬ G.Adj x y := by
+  classical
+  intro hxy
+  rw [mem_confinedComponent_iff] at hx hy
+  rcases hx.2 with ⟨w, hwK⟩
+  apply hy
+  refine ⟨hyK, ?_⟩
+  refine ⟨w.concat hxy, ?_⟩
+  intro z hz
+  rw [Walk.support_concat, List.concat_eq_append, List.mem_append,
+    List.mem_singleton] at hz
+  rcases hz with hz | rfl
+  · exact hwK z hz
+  · exact hyK
 
 namespace LocalActivity
 
@@ -224,6 +284,51 @@ theorem mayerCoverActivity_union_integral_of_no_cross_fluctuationAdj
   exact mayerCoverActivity_union_integral_of_pairwise_disjoint_fluctuationSupport
     μ I J H ψ hIJ
     (pairwise_disjoint_fluctuationSupport_of_no_cross_adj I J H hIJ hno)
+
+/-- Component-extraction form of the finite disconnected-cover split.  Splitting
+a finite index set `K` into the confined component of `r` in the
+fluctuation-overlap graph and its complement inside `K` gives the Mayer-cover
+integral factorization. -/
+theorem mayerCoverActivity_integral_split_confinedComponent
+    {Site β ι : Type*} [Fintype Site] [DecidableEq Site] [DecidableEq ι]
+    [MeasurableSpace β] [Nonempty β]
+    {Ψ : Site → Type*}
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    (K : Finset ι) (r : ι)
+    (H : ι → LocalActivity Site Ψ (fun _ => β) ℂ)
+    (ψ : ∀ x, Ψ x) :
+    let I := confinedComponent (fluctuationOverlapGraph H) K r
+    ∫ φ, (mayerCoverActivity K H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ)
+      =
+      (∫ φ, (mayerCoverActivity I H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ)) *
+      ∫ φ, (mayerCoverActivity (K \ I) H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ) := by
+  classical
+  let G := fluctuationOverlapGraph H
+  let I := confinedComponent G K r
+  have hI_sub : I ⊆ K := confinedComponent_subset G K r
+  have hIJ : Disjoint I (K \ I) := Finset.disjoint_sdiff
+  have hno : ∀ i, i ∈ I → ∀ j, j ∈ K \ I → ¬ G.Adj i j := by
+    intro i hi j hj
+    exact no_adj_confinedComponent_compl G K hi
+      (Finset.mem_sdiff.mp hj).1 (Finset.mem_sdiff.mp hj).2
+  have hsplit :=
+    mayerCoverActivity_union_integral_of_no_cross_fluctuationAdj
+      μ I (K \ I) H ψ hIJ hno
+  have hUnion : I ∪ (K \ I) = K := by
+    ext x
+    constructor
+    · intro hx
+      rcases Finset.mem_union.mp hx with hxI | hxK
+      · exact hI_sub hxI
+      · exact (Finset.mem_sdiff.mp hxK).1
+    · intro hxK
+      by_cases hxI : x ∈ I
+      · exact Finset.mem_union_left _ hxI
+      · exact Finset.mem_union_right _ (Finset.mem_sdiff.mpr ⟨hxK, hxI⟩)
+  simpa [I, G, hUnion] using hsplit
 
 end LocalActivity
 

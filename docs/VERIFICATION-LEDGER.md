@@ -5340,3 +5340,29 @@ independence.  It does not construct the Yang-Mills Gaussian fluctuation
 measure, prove covariance decay, prove Dimock Appendix F, establish `hRpoly`,
 continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 156 (2026-06-20, **confined-component Mayer-cover split**
+`YangMills.RG.no_adj_confinedComponent_compl`,
+`YangMills.RG.LocalActivity.mayerCoverActivity_integral_split_confinedComponent`;
+core 8283)
+
+This addendum adds the component-extraction producer for Addendum 155.  The
+generic finite definitions `confinedReachable` and `confinedComponent` describe
+the component of a root `r` inside a finite index set `K`, using only walks
+whose support stays in `K`.  The graph lemma
+`no_adj_confinedComponent_compl` proves that no edge can run from this
+component to a vertex of `K` outside it: otherwise appending that edge to the
+confined walk would put the outside vertex back in the component.
+
+For the fluctuation-overlap graph of a family of local activities, the theorem
+`mayerCoverActivity_integral_split_confinedComponent` uses this lemma to split
+the Mayer-cover integral over `K` into the integral over the root component
+times the integral over the complement `K \ I`.  Thus the finite disconnected
+component compiler no longer needs an externally supplied no-cross-edge
+hypothesis for a root component; it derives it from confined reachability.
+
+**Honest scope.** This is finite graph/component algebra plus the already
+proved product-measure independence.  It does not identify the actual
+Appendix-F polymers of Yang-Mills, prove any quantitative polymer loss,
+construct the fluctuation measure, establish `hRpoly`, continuum limit, or
+OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.

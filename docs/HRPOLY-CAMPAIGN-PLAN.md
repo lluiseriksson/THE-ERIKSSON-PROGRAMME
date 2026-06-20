@@ -89,7 +89,7 @@ gives `rooted_connected_weight_summable` (`RG/AnimalTour.lean`):
 | **P2b-ii-b-3** | **Discrete metric comparison bounds** (`discreteModifiedMetric_le_bulkTreeLength`, `discreteModifiedMetric_mono_skeleton`, and `discreteModifiedMetric_mono_holes`, `RG/ModifiedMetric.lean`): prove comparison bounds with bulk tree length and monotonicity. | code — combinatorics | **DONE** (core 8264) |
 | **P2b-ii-c** | **Skeleton-fillings weight summability** (`skeleton_fillings_weight_summable`, `RG/ModifiedMetric.lean`): preliminary combinatorial estimate showing that the skeleton-growth series converges under sufficient exponential metric decay. | code — combinatorics | **DONE** (core 8264) |
 | **P2b-ii-d** | **Discrete modified-metric summability** (`discreteModifiedMetric_weight_summable`, `RG/ModifiedMetric.lean`): prove a volume-uniform summability theorem whose summand actually contains `discreteModifiedMetric H X` under coordination entropy-suppression. | code — combinatorics | **DONE** (core 8264) |
-| **P2c** | **Type-local F.1 algebra and ultralocal independence** (`RG/LocalFunctional.lean`, `RG/RawMayerWithHoles.lean`, `RG/OmegaConnectedCover.lean`, `RG/UltralocalFactorization.lean`, `RG/MayerCoverFactorization.lean`): local activities, raw Mayer factors, Ω-connected cover products, product-measure factorization of disconnected fluctuation-support components, the finite disjoint-union integration split for Mayer-cover products, and the fluctuation-overlap graph criterion turning no cross-edges into the needed pairwise support disjointness. | code — finite algebra/measure theory | **DONE** (core 8283) |
+| **P2c** | **Type-local F.1 algebra and ultralocal independence** (`RG/LocalFunctional.lean`, `RG/RawMayerWithHoles.lean`, `RG/OmegaConnectedCover.lean`, `RG/UltralocalFactorization.lean`, `RG/MayerCoverFactorization.lean`): local activities, raw Mayer factors, Ω-connected cover products, product-measure factorization of disconnected fluctuation-support components, the finite disjoint-union integration split for Mayer-cover products, the fluctuation-overlap graph criterion turning no cross-edges into pairwise support disjointness, and the finite confined-component split `K = I ∪ (K \ I)`. | code — finite algebra/measure theory | **DONE** (core 8283) |
 | **P3** | **Cluster-expansion-with-holes convergence (Appendix F)**: the renormalized-activity decay `|H^#(Y)| ≤ O(1)H₀ e^{−(κ−3κ₀−3)d}` from the raw bound + summability.  Generalises `KP` convergence to the modified metric.  **The crux of (B).**  Source audit: Appendix F clusters are `Ω`-connected (`X₁ ∩ X₂ ∩ Ω ≠ ∅`), not ordinary full-polymer touching.  Use the new `omegaHolePolymerSystem` or prove a comparison theorem before reusing `holePolymerSystem` consumers. | code — HARD, months-scale | open (source §4) |
 | **P4** | **Fluctuation integral → raw activity bound (§3.8)**: `|H_k(X)| ≤ H₀ e^{−κ d}` from the Gaussian step, `H₀ ∝ g_k^{κ₀}`.  **The crux of (A).** | code — HARD, months-scale, needs the lattice Gaussian covariance | open (source §4) |
 | **P5** | **Assemble `hRpoly`**: combine P3 (renormalized decay) + P4 (raw bound) + P1/P2 (summability) ⟹ `|R_{t,k}| ≤ A e^{−c₀t} g_k^{κ₀}`; feed `lattice_mass_gap_of_cluster_and_coupling` ⟹ the **unconditional lattice mass gap**. | code (glue, once P1–P4 land) | open |
@@ -366,6 +366,14 @@ disjoint index blocks with no cross-edge in that graph satisfy the finite
 Mayer-cover integral split.  This is still finite algebra plus product-measure
 independence; it does not identify the source-specific Appendix-F components
 or prove any quantitative polymer loss.
+
+The same module also defines `confinedComponent G K r`, the finite component
+of a root inside a cover index set using only walks whose support remains in
+`K`.  The theorem
+`mayerCoverActivity_integral_split_confinedComponent` packages the automatic
+split of `K` into that component and its complement under the
+fluctuation-overlap graph.  This is the component-extraction producer for the
+no-cross-edge theorem above.
 
 (Historical note: the request below is satisfied; kept for provenance.)
 All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the

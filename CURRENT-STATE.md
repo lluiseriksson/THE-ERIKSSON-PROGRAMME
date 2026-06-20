@@ -72,6 +72,8 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   under the same cross-support disjointness hypothesis.  The same module now
   defines the fluctuation-overlap graph on cover indices and proves the
   no-cross-edge criterion that supplies that pairwise disjointness hypothesis;
+  it also defines finite confined components and splits a cover `K` into the
+  component of a root and its complement inside `K`;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound
