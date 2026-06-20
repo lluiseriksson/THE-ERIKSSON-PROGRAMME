@@ -24,7 +24,7 @@ Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 
 namespace YangMills.RG
 
-open MeasureTheory
+open MeasureTheory ProbabilityTheory
 
 variable {E F : Type*}
   [NormedAddCommGroup E] [NormedSpace ℝ E]
@@ -58,9 +58,26 @@ theorem gaussianBlockKernel_univ (Q : E →L[ℝ] F) (gamma : Measure F)
   have hprob := gaussianBlockKernel_isProbability Q gamma A
   rw [measure_univ]
 
+/-- If the fluctuation law is Gaussian, then each translated conditional block
+kernel is Gaussian. -/
+theorem gaussianBlockKernel_isGaussian (Q : E →L[ℝ] F) (gamma : Measure F)
+    [IsGaussian gamma] (A : E) :
+    IsGaussian (gaussianBlockKernel Q gamma A) := by
+  unfold gaussianBlockKernel
+  infer_instance
+
 end Kernel
 
 section Transform
+
+/-- The continuous linear map underlying the free block transform:
+`(coarse field, fluctuation) |-> Q coarse field + fluctuation`. -/
+def gaussianBlockCLM (Q : E →L[ℝ] F) : E × F →L[ℝ] F :=
+  Q.comp (ContinuousLinearMap.fst ℝ E F) + ContinuousLinearMap.snd ℝ E F
+
+@[simp]
+theorem gaussianBlockCLM_apply (Q : E →L[ℝ] F) (p : E × F) :
+    gaussianBlockCLM Q p = Q p.1 + p.2 := rfl
 
 variable [MeasurableSpace E] [MeasurableSpace F]
 
@@ -69,9 +86,20 @@ fluctuation from `gamma`, and output `Q A + noise`.  This is the finite normaliz
 Appendix-F activity is inserted. -/
 noncomputable def gaussianBlockTransform (Q : E →L[ℝ] F) (mu : Measure E) (gamma : Measure F) :
     Measure F :=
-  (mu.prod gamma).map fun p : E × F => Q p.1 + p.2
+  (mu.prod gamma).map (gaussianBlockCLM Q)
 
-variable [BorelSpace E] [BorelSpace F] [SecondCountableTopology F]
+variable [BorelSpace E] [BorelSpace F]
+
+/-- If both input laws are Gaussian, then the full free block transform is
+Gaussian.  This is only the algebraic Gaussian-closure statement; no covariance
+bound or Balaban Hessian normalization is claimed here. -/
+theorem gaussianBlockTransform_isGaussian (Q : E →L[ℝ] F) (mu : Measure E) (gamma : Measure F)
+    [SecondCountableTopologyEither E F] [IsGaussian mu] [IsGaussian gamma] :
+    IsGaussian (gaussianBlockTransform Q mu gamma) := by
+  unfold gaussianBlockTransform
+  infer_instance
+
+variable [SecondCountableTopology F]
 
 /-- A product of probability laws pushed through the finite block map is still a
 probability law.  This is the normalization theorem for the free finite block

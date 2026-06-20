@@ -59,7 +59,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   construction, and finite Gaussian block collars
   `gaussianBlockKernel` / `gaussianBlockTransform`, whose translated
   fluctuation kernel and product block transform are proved to remain
-  probability measures before any interacting Appendix-F activity is inserted;
+  probability measures before any interacting Appendix-F activity is inserted.
+  The finite collar now also exposes the continuous linear block map
+  `gaussianBlockCLM` and proves Gaussian closure:
+  `gaussianBlockKernel_isGaussian` and
+  `gaussianBlockTransform_isGaussian`;
 * marginal-coupling summability and conditional UV mass-gap assembly;
 * the explicit producer/consumer split for the UV scalar estimate:
   `RawYMActivityDecay`, `RenormalizedHoleActivityDecay`, and

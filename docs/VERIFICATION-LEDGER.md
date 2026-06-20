@@ -6527,3 +6527,45 @@ does not compute or bound its covariance, does not prove finite-range support
 for `Q†Q`, does not instantiate Balaban's fluctuation Hessian, does not prove
 Dimock's activity bound (642), and does not affect any continuum/Clay theorem.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 190 (2026-06-20, **finite Gaussian collar Gaussian closure**
+`YangMills.RG.gaussianBlockCLM`,
+`YangMills.RG.gaussianBlockKernel_isGaussian`,
+`YangMills.RG.gaussianBlockTransform_isGaussian`; core 8291)
+
+This addendum strengthens `YangMills/RG/GaussianBlockKernel.lean` without
+adding analytic assumptions.  The finite block map
+`(coarse field, fluctuation) |-> Q coarse field + fluctuation` is now exposed
+as the continuous linear map `gaussianBlockCLM Q`, and the block transform is
+defined as the pushforward along this map.
+
+The new theorem-fed facts are:
+
+* `gaussianBlockKernel_isGaussian`: if the fluctuation law is Gaussian, then
+  every translated conditional block kernel is Gaussian;
+* `gaussianBlockTransform_isGaussian`: if the coarse law and fluctuation law
+  are Gaussian, then their independent finite block transform is Gaussian.
+
+The proof uses Mathlib's existing Gaussian closure under translation, product
+measures, and continuous linear maps.  No source constants or Yang-Mills
+normalizations are introduced.
+
+Verification:
+
+```
+lake env lean YangMills\RG\GaussianBlockKernel.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This proves Gaussian closure of the finite collar, not a
+covariance formula or decay estimate.  It does not compute covariance, does not
+prove a Schur/Combes-Thomas bound, does not expose finite-range support for
+`Q†Q`, does not instantiate Balaban's fluctuation Hessian, does not prove
+Dimock's activity bound (642), and does not affect any continuum/Clay theorem.
+Clay distance **~0% (<0.1%), unchanged**.

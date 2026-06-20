@@ -276,6 +276,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- finite Gaussian block collar: normalization of translated kernels and product block transforms
 #print axioms YangMills.RG.gaussianBlockKernel_isProbability
 #print axioms YangMills.RG.gaussianBlockTransform_isProbability
+-- Gaussian closure of the finite collar under translation, product, and the linear block map
+#print axioms YangMills.RG.gaussianBlockKernel_isGaussian
+#print axioms YangMills.RG.gaussianBlockTransform_isGaussian
 
 /-! ### The near-identity matrix-logarithm calculus -/
 -- the quantitative axiom (0.8): exp(nearLog Y) = 1 + Y + O(‖Y‖²)
