@@ -346,12 +346,18 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   sequence supplies summability of the complex term sequence, finite partial
   norm bounds by finite majorant sums, shifted-tail bounds by shifted majorant
   sums, and a direct total `H#` residual bound when those finite majorant sums
-  obey the residual profile.  The real-part omega-rooted four-margin theorem
-  then feeds that termwise majorant contract into the existing UV consumer.
-  This is only the Lean-facing shape of the second-Ursell majorant obligation;
-  it does not prove the source majorant, the source `H#` estimate
-  (Dimock F.1/(636)), the preceding `K/K#` estimate (Dimock (642)), or any
-  continuum/Clay theorem;
+  obey the residual profile.  It now also proves the finite exact-union
+  bound `norm_appendixFHoleHsharpTerm_le_clusterWeight`: each target fiber is
+  bounded by the global per-size KP `clusterWeight`, so the sharp
+  `KP.KPCriterion` theorem gives fixed-target summability through
+  `summable_appendixFHoleHsharpTerm_of_KPCriterion`.  The size-majorant
+  residual consumers package the `tsum` residual-budget form needed by later
+  source estimates, and the real-part omega-rooted four-margin theorem then
+  feeds that termwise majorant contract into the existing UV consumer.  The
+  global KP weight forgets the target `Y`, so this is not a target-sensitive
+  residual decay estimate.  It does not prove the source majorant, the source
+  `H#` estimate (Dimock F.1/(636)), the preceding `K/K#` estimate
+  (Dimock (642)), or any continuum/Clay theorem;
 * the closed-form geometric `H#` majorant interface
   `YangMills/RG/AppendixFHsharpGeometricMajorant.lean`: it specializes the
   termwise majorant contract to bounds of the form

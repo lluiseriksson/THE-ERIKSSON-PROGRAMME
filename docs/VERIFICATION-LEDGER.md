@@ -7517,3 +7517,53 @@ entries report only `[propext, Classical.choice, Quot.sound]`.
 geometric majorant, the second-Ursell/KP estimate, Dimock II Theorem F.1/(636),
 Dimock (642), concrete Yang-Mills raw activity decay, continuum construction,
 or Clay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 210 (2026-06-20, **fixed-target H# summability from sharp KP**
+`YangMills.RG.norm_appendixFHoleHsharpTerm_le_clusterWeight`,
+`YangMills.RG.summable_appendixFHoleHsharpTerm_of_sizeMajorant`,
+`YangMills.RG.summable_appendixFHoleHsharpTerm_of_KPCriterion`,
+`YangMills.RG.norm_appendixFHoleHsharpPartial_le_residual_of_sizeMajorant`,
+`YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_sizeMajorant`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_sizeMajorant`;
+core 8305)
+
+This addendum strengthens `YangMills/RG/AppendixFHsharpMajorant.lean` at the
+exact finite interface between the Appendix-F `H#` target fibers and the
+already-formalized sharp KP cluster-weight theorem.
+
+The theorem `norm_appendixFHoleHsharpTerm_le_clusterWeight` proves that a
+fixed-target exact-union term
+`appendixFHoleHsharpTerm HF zK Y n` is bounded by the global absolute
+per-size cluster weight `KP.clusterWeight (omegaHolePolymerSystem HF zK) n`.
+Consequently, `summable_appendixFHoleHsharpTerm_of_KPCriterion` combines that
+finite fiber bound with `KP.kp_clusterWeight_summable_sharp` to obtain
+fixed-target summability directly from `KP.KPCriterion`.
+
+The new size-majorant residual consumers accept a target-sensitive scalar
+majorant `M t k P n` whose total `tsum` is already bounded by the desired
+residual profile.  They then produce finite-partial residual bounds, total
+pointwise `H#` residual bounds, and the omega-rooted real-part
+`SingleScaleUVDecay` consumer under the sufficient margin
+`κ >= 4κ₀ + 3`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpMajorant.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** The KP consequence is fixed-target summability only: the
+global `clusterWeight` has forgotten the target `Y`, so it does not prove the
+target-sensitive residual profile needed for Dimock F.1/(636).  The
+size-majorant theorems are consumers for a future source proof of that
+target-sensitive bound, not the proof itself.  Dimock (642), concrete
+Yang-Mills raw activity decay, continuum construction, and Clay remain open.
+Clay distance **~0% (<0.1%), unchanged**.
