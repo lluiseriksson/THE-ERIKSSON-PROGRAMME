@@ -5579,3 +5579,29 @@ Appendix-F compiler.  It does not prove the support-containment hypothesis for
 Yang-Mills, the Appendix-F activity decay, the fluctuation measure, `hRpoly`,
 continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 165 (2026-06-20, **support-containment edge adapter**
+`YangMills.RG.LocalActivity.fluctuationOverlapGraph_adj_imp_omegaOverlapGraph_adj_of_fluctuationSupport_subset`;
+core 8283)
+
+This addendum extracts the graph-level adapter used by the Ω-component
+support bridge.  The theorem
+`fluctuationOverlapGraph_adj_imp_omegaOverlapGraph_adj_of_fluctuationSupport_subset`
+assumes the same local containment hypotheses
+`(H i).fluctuationSupport ⊆ Ω ∩ activeSupport i` and
+`(H j).fluctuationSupport ⊆ Ω ∩ activeSupport j`.  Under those hypotheses, an
+actual fluctuation-overlap edge between `i` and `j` implies an Ω-overlap edge
+for the declared active supports.  The proof is the finite contrapositive:
+if the declared Ω-active supports are disjoint, the contained fluctuation
+supports are disjoint, contradicting the fluctuation edge.
+
+This separates the source-side obligation from the measure-theoretic
+factorization: a future Yang-Mills source compiler only has to prove the
+support-containment statement for its local activities, and this adapter turns
+actual dependencies into the Ω-cover graph relation consumed by the existing
+finite F.1 machinery.
+
+**Honest scope.** This is finite support/graph algebra.  It does not prove the
+support-containment hypothesis for Yang-Mills, the Appendix-F activity decay,
+the fluctuation measure, `hRpoly`, continuum limit, or OS/Wightman
+reconstruction.  Clay distance **~0% (<0.1%), unchanged**.

@@ -285,6 +285,30 @@ theorem fluctuationOverlapGraph_adj_iff
         ¬ Disjoint (H i).fluctuationSupport (H j).fluctuationSupport :=
   Iff.rfl
 
+/-- If the actual fluctuation supports are contained in the declared
+Ω-active supports, then every fluctuation-overlap edge is an Ω-overlap edge.
+This is the graph-level adapter from type-local dependencies to the
+source-shaped Ω-cover relation. -/
+theorem fluctuationOverlapGraph_adj_imp_omegaOverlapGraph_adj_of_fluctuationSupport_subset
+    {Site ι : Type*} [DecidableEq Site]
+    {Ψ Φ : Site → Type*}
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (H : ι → LocalActivity Site Ψ Φ ℂ) {i j : ι}
+    (hi : (H i).fluctuationSupport ⊆ Ω ∩ activeSupport i)
+    (hj : (H j).fluctuationSupport ⊆ Ω ∩ activeSupport j)
+    (hadj : (fluctuationOverlapGraph H).Adj i j) :
+    (omegaOverlapGraph Ω activeSupport).Adj i j := by
+  rw [fluctuationOverlapGraph_adj_iff] at hadj
+  rw [omegaOverlapGraph_adj_iff]
+  refine ⟨hadj.1, ?_⟩
+  by_contra hΩdisj
+  have hflucDisj :
+      Disjoint (H i).fluctuationSupport (H j).fluctuationSupport := by
+    rw [Finset.disjoint_left]
+    intro x hxi hxj
+    exact (Finset.disjoint_left.mp hΩdisj (hi hxi)) (hj hxj)
+  exact hadj.2 hflucDisj
+
 /-- If two distinct indices are not adjacent in the fluctuation-overlap graph,
 their fluctuation supports are disjoint. -/
 theorem fluctuationSupport_disjoint_of_not_adj
@@ -644,21 +668,9 @@ theorem mayerCoverActivity_integral_factor_confinedOmegaComponents_of_fluctuatio
     have hnoΩ : ¬ Gω.Adj i j :=
       no_adj_of_mem_confinedComponents_ne Gω K
         (by simpa [Γ] using hC) (by simpa [Γ] using hD) hne hi hj
-    have hΩdisj : Disjoint (Ω ∩ activeSupport i) (Ω ∩ activeSupport j) := by
-      by_contra hnot
-      have hCD : Disjoint C D :=
-        disjoint_of_mem_confinedComponents_ne Gω K
-          (by simpa [Γ] using hC) (by simpa [Γ] using hD) hne
-      have hij : i ≠ j := by
-        intro h
-        exact (Finset.disjoint_left.mp hCD hi) (by simpa [h] using hj)
-      exact hnoΩ ((omegaOverlapGraph_adj_iff Ω activeSupport i j).mpr ⟨hij, hnot⟩)
-    have hflucDisj :
-        Disjoint (H i).fluctuationSupport (H j).fluctuationSupport := by
-      rw [Finset.disjoint_left]
-      intro x hxi hxj
-      exact (Finset.disjoint_left.mp hΩdisj (hsub i hiK hxi)) (hsub j hjK hxj)
-    exact ((fluctuationOverlapGraph_adj_iff H).mp hadj).2 hflucDisj
+    exact hnoΩ
+      (fluctuationOverlapGraph_adj_imp_omegaOverlapGraph_adj_of_fluctuationSupport_subset
+        Ω activeSupport H (hsub i hiK) (hsub j hjK) hadj)
   have hfactor :=
     mayerCoverActivity_biUnion_integral_of_no_cross_components
       μ Γ H ψ hdisj hno

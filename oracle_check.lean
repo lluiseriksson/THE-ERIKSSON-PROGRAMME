@@ -174,6 +174,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.OmegaConnectedCover.pairwise_omegaActiveSupport_disjoint_confinedComponentCoverFamily
 #print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_integral_factor_confinedComponentCoverFamily_of_fluctuationSupport_subset
 #print axioms YangMills.RG.LocalActivity.fluctuationOverlapGraph_adj_iff
+#print axioms YangMills.RG.LocalActivity.fluctuationOverlapGraph_adj_imp_omegaOverlapGraph_adj_of_fluctuationSupport_subset
 #print axioms YangMills.RG.LocalActivity.pairwise_disjoint_fluctuationSupport_of_no_cross_adj
 #print axioms YangMills.RG.LocalActivity.globalEval_mayerCoverActivity_union
 #print axioms YangMills.RG.LocalActivity.mayerCoverActivity_integral_mul_of_pairwise_disjoint_fluctuationSupport

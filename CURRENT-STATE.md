@@ -89,7 +89,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `LocalActivity.mayerCoverActivity_integral_factor_confinedOmegaComponents_of_fluctuationSupport_subset`
   states the exact finite hypothesis under which these Ω-components factorize
   the ultralocal fluctuation integral: every fluctuation support must lie inside
-  its declared Ω-active support.  The companion
+  its declared Ω-active support.  The graph-level adapter
+  `LocalActivity.fluctuationOverlapGraph_adj_imp_omegaOverlapGraph_adj_of_fluctuationSupport_subset`
+  isolates the edge implication used by that bridge: under the same support
+  containment, every actual fluctuation-overlap edge is an Ω-overlap edge.
+  The companion
   `OmegaConnectedCover.mayerActivity_integral_factor_confinedComponentCoverFamily_of_fluctuationSupport_subset`
   exposes the same factorization directly as a product over the canonical
   `confinedComponentCoverFamily`;
