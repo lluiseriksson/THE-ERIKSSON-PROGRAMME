@@ -147,6 +147,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.exp_neg_kappa0_nat_eq_exp_neg_pow
 #print axioms YangMills.RG.rooted_exp_discreteModifiedMetric_tsum_le
 #print axioms YangMills.RG.rooted_polymerClusterWithHoles_abs_tsum_le
+#print axioms YangMills.RG.omegaRootedPolymerEquiv
+#print axioms YangMills.RG.omega_rooted_exp_discreteModifiedMetric_tsum_le
+#print axioms YangMills.RG.omega_rooted_polymerClusterWithHoles_abs_tsum_le
 #print axioms YangMills.RG.renormalizedHoleActivityDecay_of_clusterWithHolesActivityDecay
 #print axioms YangMills.RG.singleScaleUVDecay_of_clusterWithHolesActivities
 -- type-local support substrate for constructive Dimock F.1 activities

@@ -4,7 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.SingleScaleUVDecay
-import YangMills.RG.ModifiedMetric
+import YangMills.RG.LocalKP
 
 /-!
 # Polymer cluster-with-holes bridge
@@ -193,6 +193,115 @@ theorem rooted_polymerClusterWithHoles_abs_tsum_le
           (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹ := by
     simpa [metric] using
       rooted_exp_discreteModifiedMetric_tsum_le H r κ₀
+        hdisj hnoedges hholes_ne hCq
+  exact polymerClusterWithHoles_abs_tsum_le Hsharp metric hC hH₀ hres hact hgeom hgeomK
+
+/-- Equivalence between rooted active `Ω`-polymers and the rooted concrete
+modified-metric subtype.  The only additional datum in `OmegaPolymerType` is
+nonempty skeleton; the root membership supplies it. -/
+noncomputable def omegaRootedPolymerEquiv {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) (r : Cube d L) :
+    { P : OmegaPolymerType H z // r ∈ skeleton H P.val } ≃
+      { X : Finset (Cube d L) //
+        r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X } := by
+  classical
+  let f := fun P : { P : OmegaPolymerType H z // r ∈ skeleton H P.val } =>
+    (⟨P.val.val, ⟨P.property, P.val.property.right.left,
+      P.val.property.right.right.left⟩⟩ :
+      { X : Finset (Cube d L) //
+        r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X })
+  have hf_inj : Function.Injective f := by
+    intro a b h
+    have h_eq : a.val.val = b.val.val := congrArg (fun x => x.val) h
+    have h_poly : a.val = b.val := Subtype.ext h_eq
+    exact Subtype.ext h_poly
+  have hf_surj : Function.Surjective f := by
+    intro X
+    have hne : X.val.Nonempty := by
+      rw [Finset.nonempty_iff_ne_empty]
+      intro he
+      have hr_sub := skeleton_subset H X.val X.property.left
+      rw [he] at hr_sub
+      cases hr_sub
+    have hskel_ne : (skeleton H X.val).Nonempty := ⟨r, X.property.left⟩
+    refine ⟨⟨⟨X.val, ⟨hne, X.property.right.left,
+      X.property.right.right, hskel_ne⟩⟩, X.property.left⟩, ?_⟩
+    rfl
+  exact Equiv.ofBijective f ⟨hf_inj, hf_surj⟩
+
+/-- `OmegaPolymerType` form of the concrete `κ₀`-exponential rooted
+modified-metric summability theorem. -/
+theorem omega_rooted_exp_discreteModifiedMetric_tsum_le
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) (r : Cube d L) (κ₀ : ℝ)
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    ∑' P : { P : OmegaPolymerType H z // r ∈ skeleton H P.val },
+      Real.exp (-(κ₀ *
+        ((discreteModifiedMetric H (P.val.val : Finset (Cube d L)) + 1 : ℕ) : ℝ)))
+      ≤ (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹ := by
+  classical
+  let e := omegaRootedPolymerEquiv H z r
+  have hsum_eq :
+      ∑ P : { P : OmegaPolymerType H z // r ∈ skeleton H P.val },
+        Real.exp (-(κ₀ *
+          ((discreteModifiedMetric H (P.val.val : Finset (Cube d L)) + 1 : ℕ) : ℝ)))
+      =
+      ∑ X : { X : Finset (Cube d L) //
+          r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X },
+        Real.exp (-(κ₀ *
+          ((discreteModifiedMetric H (X : Finset (Cube d L)) + 1 : ℕ) : ℝ))) := by
+    refine Fintype.sum_equiv e _ _ ?_
+    intro P
+    rfl
+  rw [tsum_fintype, hsum_eq]
+  simpa [tsum_fintype] using
+    rooted_exp_discreteModifiedMetric_tsum_le H r κ₀
+      hdisj hnoedges hholes_ne hCq
+
+/-- `OmegaPolymerType` rooted aggregate bridge.  This is the same residual
+with-holes estimate as `rooted_polymerClusterWithHoles_abs_tsum_le`, but
+stated directly on the source-facing active polymer type used by Appendix F
+and `omegaHolePolymerSystem`. -/
+theorem omega_rooted_polymerClusterWithHoles_abs_tsum_le
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) (r : Cube d L)
+    (Hsharp : { P : OmegaPolymerType H z // r ∈ skeleton H P.val } → ℝ)
+    {C H₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C) (hH₀ : 0 ≤ H₀)
+    (hres : κ₀ ≤ polymerClusterResidualRate κ κ₀)
+    (hact : ∀ P,
+      |Hsharp P| ≤ C * H₀ *
+        Real.exp (-(polymerClusterResidualRate κ κ₀ *
+          ((discreteModifiedMetric H (P.val.val : Finset (Cube d L)) + 1 : ℕ) : ℝ))))
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    Summable (fun P => |Hsharp P|) ∧
+      (∑' P, |Hsharp P|) ≤ C * H₀ *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹ := by
+  classical
+  let metric : { P : OmegaPolymerType H z // r ∈ skeleton H P.val } → ℕ :=
+    fun P => discreteModifiedMetric H (P.val.val : Finset (Cube d L)) + 1
+  have hgeom :
+      Summable fun P =>
+        Real.exp (-(κ₀ * (metric P : ℝ))) :=
+    Summable.of_finite
+  have hgeomK :
+      (∑' P, Real.exp (-(κ₀ * (metric P : ℝ)))) ≤
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹ := by
+    simpa [metric] using
+      omega_rooted_exp_discreteModifiedMetric_tsum_le H z r κ₀
         hdisj hnoedges hholes_ne hCq
   exact polymerClusterWithHoles_abs_tsum_le Hsharp metric hC hH₀ hres hact hgeom hgeomK
 

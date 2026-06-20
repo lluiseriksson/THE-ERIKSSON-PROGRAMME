@@ -6770,3 +6770,50 @@ integrated `K#` estimates, the second Ursell expansion to `H#`, or any
 continuum/OS/Clay theorem.  It does, however, connect the residual bridge to
 the repo's actual modified-metric polymer summability theorem instead of an
 abstract `K₀` hypothesis.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 195 (2026-06-20, **OmegaPolymerType residual bridge**
+`YangMills.RG.omegaRootedPolymerEquiv`,
+`YangMills.RG.omega_rooted_exp_discreteModifiedMetric_tsum_le`,
+`YangMills.RG.omega_rooted_polymerClusterWithHoles_abs_tsum_le`; core 8294)
+
+This addendum extends `YangMills/RG/PolymerClusterWithHolesBridge.lean` one
+step closer to the Appendix-F consumer by lifting the rooted modified-metric
+bridge from the plain concrete subtype
+
+```
+{X : Finset (Cube d L) // r ∈ skeleton H X ∧ cubeConnected X ∧ polymerWithHoles H X}
+```
+
+to the source-facing active polymer subtype
+
+```
+{P : OmegaPolymerType H z // r ∈ skeleton H P.val}.
+```
+
+The reusable equivalence `omegaRootedPolymerEquiv` records that the only extra
+field in `OmegaPolymerType` is nonempty skeleton, supplied by the root
+membership hypothesis.  The theorem
+`omega_rooted_exp_discreteModifiedMetric_tsum_le` transports the concrete
+summability bound to the `OmegaPolymerType` index shape, and
+`omega_rooted_polymerClusterWithHoles_abs_tsum_le` applies the residual
+with-holes bridge directly to rooted active Appendix-F polymers.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PolymerClusterWithHolesBridge.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is still a type/index adapter plus summation theorem.
+It does not prove the residual pointwise bound, Dimock (642), the integrated
+`K#` estimate, the second Ursell expansion to `H#`, any Yang-Mills fluctuation
+estimate, or any continuum/OS/Clay theorem.  It removes one local impedance
+mismatch between the finite Appendix-F polymer type and the residual `hpoly`
+bridge.  Clay distance **~0% (<0.1%), unchanged**.

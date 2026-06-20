@@ -82,7 +82,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   metric via `rooted_exp_discreteModifiedMetric_tsum_le` and
   `rooted_polymerClusterWithHoles_abs_tsum_le`, translating
   `exp (-κ₀(d_M+1))` into the existing `q^(d_M+1)` theorem with
-  `q = exp (-κ₀)`;
+  `q = exp (-κ₀)`.  It now also exposes the same rooted aggregate directly on
+  the source-facing `OmegaPolymerType` via `omegaRootedPolymerEquiv`,
+  `omega_rooted_exp_discreteModifiedMetric_tsum_le`, and
+  `omega_rooted_polymerClusterWithHoles_abs_tsum_le`;
 * the type-local functional/activity substrate
   `YangMills/RG/LocalFunctional.lean`: restricted fields indexed by finite
   supports, `LocalFunctional`, two-field `LocalActivity`, global adapters
@@ -223,7 +226,9 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `rooted_polymerClusterWithHoles_abs_tsum_le`, which uses
   `discreteModifiedMetric_weight_summable` directly and exposes the actual
   smallness condition
-  `((3^d)^2) * (exp(-κ₀) * 2^(3^d+1)) < 1`;
+  `((3^d)^2) * (exp(-κ₀) * 2^(3^d+1)) < 1`.  The same bound is now available
+  for the `OmegaPolymerType`/`omegaHolePolymerSystem` index shape through
+  `omega_rooted_polymerClusterWithHoles_abs_tsum_le`;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound
