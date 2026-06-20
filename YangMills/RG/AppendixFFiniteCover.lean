@@ -1,0 +1,454 @@
+/- Copyright (c) 2026 Lluis Eriksson. All rights reserved.
+Released under the GNU Affero General Public License v3.0
+as described in the file LICENSE.
+Authors: Lluis Eriksson -/
+
+import Mathlib
+import YangMills.RG.MayerCoverFactorization
+import YangMills.RG.HolePolymerSystem
+
+/-!
+# Dimock Appendix F: exact finite-cover expansion
+
+This file formalizes the finite combinatorial compiler underlying Dimock II,
+Appendix F, equations (639)--(640).
+
+For a finite family `Λ` of raw local activities it proves, exactly and without
+convergence assumptions,
+
+* the raw Mayer expansion
+  `exp (∑ i ∈ Λ, h i) = ∑ I ⊆ Λ, ∏ i ∈ I, (exp (h i) - 1)`;
+* the canonical decomposition of every selected family `I` into the connected
+  components of the literal `Ω`-overlap graph;
+* the exact reindexing of the powerset sum by those canonical component
+  families;
+* nonemptiness, `Ω`-connectedness, and mutual `Ω`-disjointness of the canonical
+  components;
+* the first connected activity `K(Y)`, obtained by summing connected Mayer
+  covers with declared raw-support union exactly `Y`;
+* the exact fiberwise grouping of connected covers by their target union;
+* local influence of `K(Y)`: changing a raw activity whose declared active
+  support is not contained in `Y` cannot change `K(Y)`.
+
+This is the finite algebraic part of Appendix F.  It does **not** prove the
+modified-metric bound (642), ultralocal integration (643)--(644), the second
+Ursell exponentiation (645)--(646), or the final loss
+`κ - 3 * κ₀ - 3`.  Those remain separate analytic/quantitative steps.
+
+Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
+-/
+
+attribute [local instance] Classical.propDecidable
+
+namespace YangMills.RG
+
+open Finset
+open scoped BigOperators
+
+/-! ## Generic finite connected-component bookkeeping -/
+
+/-- The union of the declared supports of the members of a finite cover. -/
+noncomputable def appendixFCoverUnion {Site ι : Type*} [DecidableEq Site]
+    (support : ι → Finset Site) (C : Finset ι) : Finset Site :=
+  C.biUnion support
+
+/-- The finite component decomposition is injective: the original finite set is
+recovered by taking the union of its confined components. -/
+theorem confinedComponents_injective {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) : Function.Injective (confinedComponents G) := by
+  intro A B hAB
+  calc
+    A = (confinedComponents G A).biUnion id :=
+      (biUnion_confinedComponents_eq G A).symm
+    _ = (confinedComponents G B).biUnion id := by rw [hAB]
+    _ = B := biUnion_confinedComponents_eq G B
+
+/-- Every member of the finite confined-component family is nonempty. -/
+theorem nonempty_of_mem_confinedComponents {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) (K C : Finset ι)
+    (hC : C ∈ confinedComponents G K) : C.Nonempty := by
+  rcases (mem_confinedComponents_iff G K C).mp hC with ⟨r, hr, rfl⟩
+  exact ⟨r, root_mem_confinedComponent G K hr⟩
+
+/-- Every member of the finite confined-component family is walk-connected. -/
+theorem walkConnected_of_mem_confinedComponents {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) (K C : Finset ι)
+    (hC : C ∈ confinedComponents G K) : walkConnected G C := by
+  rcases (mem_confinedComponents_iff G K C).mp hC with ⟨r, _hr, rfl⟩
+  exact confinedComponent_walkConnected G K r
+
+/-- A product over a finite set is exactly the iterated product over its
+canonical graph components. -/
+theorem prod_confinedComponents_eq_prod {ι M : Type*} [DecidableEq ι]
+    [CommMonoid M] (G : SimpleGraph ι) (w : ι → M) (K : Finset ι) :
+    (∏ C ∈ confinedComponents G K, ∏ i ∈ C, w i) = ∏ i ∈ K, w i := by
+  classical
+  have hpair : Set.PairwiseDisjoint
+      (↑(confinedComponents G K) : Set (Finset ι))
+      (id : Finset ι → Finset ι) :=
+    fun C hC D hD hne =>
+      disjoint_of_mem_confinedComponents_ne G K hC hD hne
+  calc
+    (∏ C ∈ confinedComponents G K, ∏ i ∈ C, w i)
+        = ∏ i ∈ (confinedComponents G K).biUnion id, w i := by
+          simpa using (Finset.prod_biUnion hpair).symm
+    _ = ∏ i ∈ K, w i := by
+          rw [biUnion_confinedComponents_eq G K]
+
+/-! ## Canonical families of Ω-connected covers -/
+
+/-- The finite set of canonical connected-cover families obtained from all
+subfamilies of `Λ`.  Each member is the component family of one selected raw
+subfamily. -/
+noncomputable def appendixFCanonicalCoverFamilies {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) (Λ : Finset ι) : Finset (Finset (Finset ι)) :=
+  Λ.powerset.image (confinedComponents G)
+
+@[simp] theorem mem_appendixFCanonicalCoverFamilies_iff
+    {ι : Type*} [DecidableEq ι] (G : SimpleGraph ι) (Λ : Finset ι)
+    (Γ : Finset (Finset ι)) :
+    Γ ∈ appendixFCanonicalCoverFamilies G Λ ↔
+      ∃ I ∈ Λ.powerset, Γ = confinedComponents G I := by
+  classical
+  constructor
+  · intro hΓ
+    rw [appendixFCanonicalCoverFamilies, Finset.mem_image] at hΓ
+    rcases hΓ with ⟨I, hI, hEq⟩
+    exact ⟨I, hI, hEq.symm⟩
+  · rintro ⟨I, hI, rfl⟩
+    rw [appendixFCanonicalCoverFamilies, Finset.mem_image]
+    exact ⟨I, hI, rfl⟩
+
+/-- The members of a canonical cover family cover a subfamily of `Λ`. -/
+theorem biUnion_subset_of_mem_appendixFCanonicalCoverFamilies
+    {ι : Type*} [DecidableEq ι] (G : SimpleGraph ι) (Λ : Finset ι)
+    {Γ : Finset (Finset ι)}
+    (hΓ : Γ ∈ appendixFCanonicalCoverFamilies G Λ) :
+    Γ.biUnion id ⊆ Λ := by
+  rcases (mem_appendixFCanonicalCoverFamilies_iff G Λ Γ).mp hΓ with
+    ⟨I, hI, rfl⟩
+  rw [biUnion_confinedComponents_eq G I]
+  exact Finset.mem_powerset.mp hI
+
+/-- Every member of a canonical cover family is nonempty. -/
+theorem nonempty_of_mem_appendixFCanonicalCoverFamily
+    {ι : Type*} [DecidableEq ι] (G : SimpleGraph ι) (Λ : Finset ι)
+    {Γ : Finset (Finset ι)}
+    (hΓ : Γ ∈ appendixFCanonicalCoverFamilies G Λ)
+    {C : Finset ι} (hC : C ∈ Γ) : C.Nonempty := by
+  rcases (mem_appendixFCanonicalCoverFamilies_iff G Λ Γ).mp hΓ with
+    ⟨I, _hI, rfl⟩
+  exact nonempty_of_mem_confinedComponents G I C hC
+
+/-- Every member of a canonical cover family is connected in the graph used to
+form the components. -/
+theorem walkConnected_of_mem_appendixFCanonicalCoverFamily
+    {ι : Type*} [DecidableEq ι] (G : SimpleGraph ι) (Λ : Finset ι)
+    {Γ : Finset (Finset ι)}
+    (hΓ : Γ ∈ appendixFCanonicalCoverFamilies G Λ)
+    {C : Finset ι} (hC : C ∈ Γ) : walkConnected G C := by
+  rcases (mem_appendixFCanonicalCoverFamilies_iff G Λ Γ).mp hΓ with
+    ⟨I, _hI, rfl⟩
+  exact walkConnected_of_mem_confinedComponents G I C hC
+
+/-- Distinct members of a canonical cover family are disjoint as index sets. -/
+theorem disjoint_of_mem_appendixFCanonicalCoverFamily_ne
+    {ι : Type*} [DecidableEq ι] (G : SimpleGraph ι) (Λ : Finset ι)
+    {Γ : Finset (Finset ι)}
+    (hΓ : Γ ∈ appendixFCanonicalCoverFamilies G Λ)
+    {C D : Finset ι} (hC : C ∈ Γ) (hD : D ∈ Γ) (hCD : C ≠ D) :
+    Disjoint C D := by
+  rcases (mem_appendixFCanonicalCoverFamilies_iff G Λ Γ).mp hΓ with
+    ⟨I, _hI, rfl⟩
+  exact disjoint_of_mem_confinedComponents_ne G I hC hD hCD
+
+/-- Distinct members of a canonical cover family have no graph edge between
+any pair of their indices. -/
+theorem no_adj_of_mem_appendixFCanonicalCoverFamily_ne
+    {ι : Type*} [DecidableEq ι] (G : SimpleGraph ι) (Λ : Finset ι)
+    {Γ : Finset (Finset ι)}
+    (hΓ : Γ ∈ appendixFCanonicalCoverFamilies G Λ)
+    {C D : Finset ι} (hC : C ∈ Γ) (hD : D ∈ Γ) (hCD : C ≠ D)
+    {i j : ι} (hi : i ∈ C) (hj : j ∈ D) : ¬ G.Adj i j := by
+  rcases (mem_appendixFCanonicalCoverFamilies_iff G Λ Γ).mp hΓ with
+    ⟨I, _hI, rfl⟩
+  exact no_adj_of_mem_confinedComponents_ne G I hC hD hCD hi hj
+
+/-- For the literal Appendix-F graph, distinct canonical components have
+pairwise disjoint raw supports inside `Ω`. -/
+theorem appendixFCanonicalComponents_omegaSupport_disjoint
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    {Γ : Finset (Finset ι)}
+    (hΓ : Γ ∈ appendixFCanonicalCoverFamilies
+      (omegaOverlapGraph Ω support) Λ)
+    {C D : Finset ι} (hC : C ∈ Γ) (hD : D ∈ Γ) (hCD : C ≠ D) :
+    Disjoint (Ω ∩ appendixFCoverUnion support C)
+      (Ω ∩ appendixFCoverUnion support D) := by
+  classical
+  rw [Finset.disjoint_left]
+  intro x hxC hxD
+  rcases Finset.mem_inter.mp hxC with ⟨hxΩ, hxCU⟩
+  rcases Finset.mem_inter.mp hxD with ⟨_hxΩ', hxDU⟩
+  rcases Finset.mem_biUnion.mp hxCU with ⟨i, hiC, hxi⟩
+  rcases Finset.mem_biUnion.mp hxDU with ⟨j, hjD, hxj⟩
+  have hno : ¬ (omegaOverlapGraph Ω support).Adj i j :=
+    no_adj_of_mem_appendixFCanonicalCoverFamily_ne
+      (omegaOverlapGraph Ω support) Λ hΓ hC hD hCD hiC hjD
+  have hCDdisj : Disjoint C D :=
+    disjoint_of_mem_appendixFCanonicalCoverFamily_ne
+      (omegaOverlapGraph Ω support) Λ hΓ hC hD hCD
+  have hij : i ≠ j := by
+    intro hij
+    subst j
+    exact (Finset.disjoint_left.mp hCDdisj hiC) hjD
+  exact hno ((omegaOverlapGraph_adj_iff Ω support i j).mpr
+    ⟨hij, by
+      intro hd
+      exact (Finset.disjoint_left.mp hd (Finset.mem_inter.mpr ⟨hxΩ, hxi⟩))
+        (Finset.mem_inter.mpr ⟨hxΩ, hxj⟩)⟩)
+
+/-! ## Exact finite Mayer reindexing -/
+
+/-- Product weight of one connected raw cover. -/
+noncomputable def appendixFComponentWeight {ι M : Type*} [DecidableEq ι]
+    [CommMonoid M] (w : ι → M) (C : Finset ι) : M :=
+  ∏ i ∈ C, w i
+
+/-- Product weight of a finite family of connected raw covers. -/
+noncomputable def appendixFCoverFamilyWeight {ι M : Type*} [DecidableEq ι]
+    [CommMonoid M] (w : ι → M) (Γ : Finset (Finset ι)) : M :=
+  ∏ C ∈ Γ, appendixFComponentWeight w C
+
+/-- Exact reindexing of a finite powerset sum by canonical connected-component
+families.  This is the purely finite combinatorial content of Appendix F (639).
+-/
+theorem sum_powerset_eq_sum_appendixFCanonicalCoverFamilies
+    {ι A : Type*} [DecidableEq ι] [AddCommMonoid A] [CommMonoid A]
+    (G : SimpleGraph ι) (Λ : Finset ι) (w : ι → A) :
+    (∑ I ∈ Λ.powerset, ∏ i ∈ I, w i) =
+      ∑ Γ ∈ appendixFCanonicalCoverFamilies G Λ,
+        appendixFCoverFamilyWeight w Γ := by
+  classical
+  unfold appendixFCoverFamilyWeight appendixFComponentWeight
+  refine Finset.sum_nbij'
+    (confinedComponents G)
+    (fun Γ => Γ.biUnion id) ?_ ?_ ?_ ?_ ?_
+  · intro I hI
+    rw [appendixFCanonicalCoverFamilies, Finset.mem_image]
+    exact ⟨I, hI, rfl⟩
+  · intro Γ hΓ
+    rcases (mem_appendixFCanonicalCoverFamilies_iff G Λ Γ).mp hΓ with
+      ⟨I, hI, rfl⟩
+    change (confinedComponents G I).biUnion id ∈ Λ.powerset
+    rw [biUnion_confinedComponents_eq G I]
+    exact hI
+  · intro I _hI
+    exact biUnion_confinedComponents_eq G I
+  · intro Γ hΓ
+    rcases (mem_appendixFCanonicalCoverFamilies_iff G Λ Γ).mp hΓ with
+      ⟨I, _hI, rfl⟩
+    change confinedComponents G ((confinedComponents G I).biUnion id) =
+      confinedComponents G I
+    rw [biUnion_confinedComponents_eq G I]
+  · intro I _hI
+    exact (prod_confinedComponents_eq_prod G w I).symm
+
+/-- The elementary finite raw-Mayer identity. -/
+theorem complex_exp_sum_eq_sum_powerset_rawMayer
+    {ι : Type*} [DecidableEq ι] (Λ : Finset ι) (h : ι → ℂ) :
+    Complex.exp (∑ i ∈ Λ, h i) =
+      ∑ I ∈ Λ.powerset, ∏ i ∈ I, (Complex.exp (h i) - 1) := by
+  classical
+  rw [Complex.exp_sum]
+  have hfac : ∀ i ∈ Λ,
+      Complex.exp (h i) = (Complex.exp (h i) - 1) + 1 := by
+    intro i _hi
+    ring
+  rw [Finset.prod_congr rfl hfac, Finset.prod_add]
+  exact Finset.sum_congr rfl fun I _hI => by
+    rw [Finset.prod_const_one, mul_one]
+
+/-- **Appendix-F finite-cover expansion.**  The exponential of the finite raw
+activity sum is exactly the sum over canonical families of `Ω`-connected raw
+Mayer covers.  No convergence or smallness hypothesis is used. -/
+theorem appendixF_finite_cover_expansion
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site)
+    (Λ : Finset ι) (h : ι → ℂ) :
+    Complex.exp (∑ i ∈ Λ, h i) =
+      ∑ Γ ∈ appendixFCanonicalCoverFamilies
+          (omegaOverlapGraph Ω support) Λ,
+        appendixFCoverFamilyWeight
+          (fun i => Complex.exp (h i) - 1) Γ := by
+  rw [complex_exp_sum_eq_sum_powerset_rawMayer Λ h]
+  exact sum_powerset_eq_sum_appendixFCanonicalCoverFamilies
+    (omegaOverlapGraph Ω support) Λ
+    (fun i => Complex.exp (h i) - 1)
+
+/-! ## The first connected activity K(Y), Appendix F (640) -/
+
+/-- All nonempty `Ω`-connected raw covers selected from a finite raw family.
+`overlapSupport` controls the `Ω`-overlap graph.  It is deliberately separate
+from the support map used to form the target union `Y`: in the concrete
+with-holes system, connectivity is through skeletons while `Y` is the union of
+full hole-polymers. -/
+noncomputable def appendixFConnectedCoverRegion
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (overlapSupport : ι → Finset Site) (Λ : Finset ι) :
+    Finset (Finset ι) :=
+  Λ.powerset.filter fun C =>
+    C.Nonempty ∧ omegaConnectedIndex Ω C overlapSupport
+
+@[simp] theorem mem_appendixFConnectedCoverRegion_iff
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (overlapSupport : ι → Finset Site)
+    (Λ C : Finset ι) :
+    C ∈ appendixFConnectedCoverRegion Ω overlapSupport Λ ↔
+      C ⊆ Λ ∧ C.Nonempty ∧ omegaConnectedIndex Ω C overlapSupport := by
+  classical
+  simp [appendixFConnectedCoverRegion]
+
+/-- The finite set of target full-support unions carried by connected covers. -/
+noncomputable def appendixFTargetRegion
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (overlapSupport targetSupport : ι → Finset Site)
+    (Λ : Finset ι) : Finset (Finset Site) :=
+  (appendixFConnectedCoverRegion Ω overlapSupport Λ).image
+    (appendixFCoverUnion targetSupport)
+
+/-- Dimock's first connected activity `K(Y)`: sum all connected raw Mayer covers
+whose declared full-support union is exactly `Y`. -/
+noncomputable def appendixFConnectedActivity
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (overlapSupport targetSupport : ι → Finset Site)
+    (Λ : Finset ι) (h : ι → ℂ) (Y : Finset Site) : ℂ :=
+  ∑ C ∈ (appendixFConnectedCoverRegion Ω overlapSupport Λ).filter
+      (fun C => appendixFCoverUnion targetSupport C = Y),
+    ∏ i ∈ C, (Complex.exp (h i) - 1)
+
+/-- Exact fiberwise grouping of all connected raw covers by their target union.
+This is the finite summation content of Appendix F (640). -/
+theorem sum_connectedCovers_eq_sum_appendixFConnectedActivity
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (overlapSupport targetSupport : ι → Finset Site)
+    (Λ : Finset ι) (h : ι → ℂ) :
+    (∑ C ∈ appendixFConnectedCoverRegion Ω overlapSupport Λ,
+        ∏ i ∈ C, (Complex.exp (h i) - 1)) =
+      ∑ Y ∈ appendixFTargetRegion Ω overlapSupport targetSupport Λ,
+        appendixFConnectedActivity Ω overlapSupport targetSupport Λ h Y := by
+  classical
+  unfold appendixFTargetRegion appendixFConnectedActivity
+  exact (Finset.sum_fiberwise_of_maps_to
+    (fun C hC => Finset.mem_image.mpr ⟨C, hC, rfl⟩) _).symm
+
+/-- Every raw index in a cover contributing to `K(Y)` has its declared full
+support contained in `Y`. -/
+theorem targetSupport_subset_of_mem_appendixFConnectedActivityFiber
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (overlapSupport targetSupport : ι → Finset Site)
+    (Λ : Finset ι) (Y : Finset Site) {C : Finset ι}
+    (hC : C ∈ (appendixFConnectedCoverRegion Ω overlapSupport Λ).filter
+      (fun C => appendixFCoverUnion targetSupport C = Y))
+    {i : ι} (hi : i ∈ C) : targetSupport i ⊆ Y := by
+  intro x hx
+  have hxU : x ∈ appendixFCoverUnion targetSupport C :=
+    Finset.mem_biUnion.mpr ⟨i, hi, hx⟩
+  have htarget := (Finset.mem_filter.mp hC).2
+  rwa [htarget] at hxU
+
+/-- **Local influence of the first connected activity.**  To determine `K(Y)`
+it is enough to know raw activities whose indices belong to `Λ` and whose full
+support is contained in `Y`. -/
+theorem appendixFConnectedActivity_congr
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (overlapSupport targetSupport : ι → Finset Site)
+    (Λ : Finset ι) (h₁ h₂ : ι → ℂ) (Y : Finset Site)
+    (heq : ∀ i, i ∈ Λ → targetSupport i ⊆ Y → h₁ i = h₂ i) :
+    appendixFConnectedActivity Ω overlapSupport targetSupport Λ h₁ Y =
+      appendixFConnectedActivity Ω overlapSupport targetSupport Λ h₂ Y := by
+  classical
+  unfold appendixFConnectedActivity
+  refine Finset.sum_congr rfl ?_
+  intro C hC
+  refine Finset.prod_congr rfl ?_
+  intro i hi
+  have hCregion : C ∈ appendixFConnectedCoverRegion Ω overlapSupport Λ :=
+    (Finset.mem_filter.mp hC).1
+  have hCsubset : C ⊆ Λ :=
+    ((mem_appendixFConnectedCoverRegion_iff Ω overlapSupport Λ C).mp hCregion).1
+  have hiΛ : i ∈ Λ := hCsubset hi
+  have hisub : targetSupport i ⊆ Y :=
+    targetSupport_subset_of_mem_appendixFConnectedActivityFiber
+      Ω overlapSupport targetSupport Λ Y hC hi
+  rw [heq i hiΛ hisub]
+
+/-- Every component appearing in a canonical Appendix-F family is one of the
+connected covers admitted by `appendixFConnectedCoverRegion`. -/
+theorem mem_appendixFConnectedCoverRegion_of_mem_canonicalComponent
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (overlapSupport : ι → Finset Site) (Λ : Finset ι)
+    {Γ : Finset (Finset ι)}
+    (hΓ : Γ ∈ appendixFCanonicalCoverFamilies
+      (omegaOverlapGraph Ω overlapSupport) Λ)
+    {C : Finset ι} (hC : C ∈ Γ) :
+    C ∈ appendixFConnectedCoverRegion Ω overlapSupport Λ := by
+  rw [mem_appendixFConnectedCoverRegion_iff]
+  refine ⟨?_, ?_, ?_⟩
+  · intro i hi
+    exact (biUnion_subset_of_mem_appendixFCanonicalCoverFamilies
+      (omegaOverlapGraph Ω overlapSupport) Λ hΓ)
+      (Finset.mem_biUnion.mpr ⟨C, hC, hi⟩)
+  · exact nonempty_of_mem_appendixFCanonicalCoverFamily
+      (omegaOverlapGraph Ω overlapSupport) Λ hΓ hC
+  · exact walkConnected_of_mem_appendixFCanonicalCoverFamily
+      (omegaOverlapGraph Ω overlapSupport) Λ hΓ hC
+
+/-! ## Concrete adapter to the existing with-holes carrier -/
+
+/-- In the concrete `omegaHolePolymerSystem`, using the skeleton as overlap
+support and `univ` as the explicit active region reproduces its literal
+incompatibility relation (apart from the graph's required inequality of
+indices). -/
+@[simp] theorem omegaOverlapGraph_univ_skeleton_adj_iff
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (X Y : (omegaHolePolymerSystem HF z).Polymer) :
+    (omegaOverlapGraph (Finset.univ : Finset (Cube d L))
+      (fun P : (omegaHolePolymerSystem HF z).Polymer => skeleton HF P.val)).Adj X Y
+      ↔ X ≠ Y ∧ (omegaHolePolymerSystem HF z).incomp X Y := by
+  rw [omegaOverlapGraph_adj_iff, omegaHolePolymerSystem_incomp_iff]
+  simp
+
+/-- The first Appendix-F connected activity on the repository's concrete
+with-holes polymer carrier.  Connectivity is through active skeletons, while
+the target `Y` is the union of the full polymers, exactly as in (639)--(640). -/
+noncomputable def appendixFHoleConnectedActivity
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (omegaHolePolymerSystem HF z).Polymer)
+    (h : (omegaHolePolymerSystem HF z).Polymer → ℂ)
+    (Y : Finset (Cube d L)) : ℂ :=
+  appendixFConnectedActivity
+    (Finset.univ : Finset (Cube d L))
+    (fun P : (omegaHolePolymerSystem HF z).Polymer => skeleton HF P.val)
+    (fun P : (omegaHolePolymerSystem HF z).Polymer => P.val)
+    Λ h Y
+
+/-- Concrete local influence for the with-holes first connected activity. -/
+theorem appendixFHoleConnectedActivity_congr
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (omegaHolePolymerSystem HF z).Polymer)
+    (h₁ h₂ : (omegaHolePolymerSystem HF z).Polymer → ℂ)
+    (Y : Finset (Cube d L))
+    (heq : ∀ X, X ∈ Λ → X.val ⊆ Y → h₁ X = h₂ X) :
+    appendixFHoleConnectedActivity HF z Λ h₁ Y =
+      appendixFHoleConnectedActivity HF z Λ h₂ Y := by
+  exact appendixFConnectedActivity_congr
+    (Finset.univ : Finset (Cube d L))
+    (fun P : (omegaHolePolymerSystem HF z).Polymer => skeleton HF P.val)
+    (fun P : (omegaHolePolymerSystem HF z).Polymer => P.val)
+    Λ h₁ h₂ Y heq
+
+end YangMills.RG

@@ -4,6 +4,7 @@ import YangMills.RG.LocalFunctional
 import YangMills.RG.RawMayerWithHoles
 import YangMills.RG.OmegaConnectedCover
 import YangMills.RG.MayerCoverFactorization
+import YangMills.RG.AppendixFFiniteCover
 
 /-! # Oracle check — one command, every headline
 
@@ -442,6 +443,19 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.omegaClusterSkeletonRemainderSum_tsum_le_of_uniform_local
 #print axioms YangMills.RG.omegaClusterSkeletonRemainderSum_tsum_le_metric_bound
 #print axioms YangMills.RG.discreteModifiedMetric_le_clusterModifiedMetric
+
+/-! ### Appendix-F exact finite-cover compiler, equations (639)--(640) -/
+#print axioms YangMills.RG.confinedComponents_injective
+#print axioms YangMills.RG.prod_confinedComponents_eq_prod
+#print axioms YangMills.RG.appendixFCanonicalComponents_omegaSupport_disjoint
+#print axioms YangMills.RG.sum_powerset_eq_sum_appendixFCanonicalCoverFamilies
+#print axioms YangMills.RG.complex_exp_sum_eq_sum_powerset_rawMayer
+#print axioms YangMills.RG.appendixF_finite_cover_expansion
+#print axioms YangMills.RG.sum_connectedCovers_eq_sum_appendixFConnectedActivity
+#print axioms YangMills.RG.appendixFConnectedActivity_congr
+#print axioms YangMills.RG.omegaOverlapGraph_univ_skeleton_adj_iff
+#print axioms YangMills.RG.appendixFHoleConnectedActivity_congr
+
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality
 

@@ -249,6 +249,10 @@ import YangMills.RG.MayerCoverFactorization
 -- Appendix-F target-cover wrapper for the existing Ω-component Mayer
 -- factorization, keeping the explicit active target union in the interface.
 import YangMills.RG.AppendixFFactorization
+-- Appendix-F finite-cover compiler: exact finite raw-Mayer expansion,
+-- canonical Ω-connected component families, connected activity `K(Y)`,
+-- grouping by target union, and local influence.
+import YangMills.RG.AppendixFFiniteCover
 -- The honest YM end-to-end UV conditional with the MARGINAL coupling: the
 -- geometric-profile assembly generalized to any nonnegative summable scale
 -- profile, specialized to the (asymptotically-free) marginal coupling flow.
