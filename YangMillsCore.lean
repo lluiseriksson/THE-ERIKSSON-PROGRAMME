@@ -240,6 +240,9 @@ import YangMills.RG.RawMayerWithHoles
 -- the finite product `∏ᵢ (exp Hᵢ - 1)` as a type-local activity with support
 -- equal to the union of factor supports.
 import YangMills.RG.OmegaConnectedCover
+-- Appendix-F target covers: finite Ω-connected cover packages carrying the
+-- explicit active target union consumed by future source-derived P3 estimates.
+import YangMills.RG.AppendixFCover
 -- Ultralocal factorization specialized to finite Mayer-cover products:
 -- disconnected fluctuation-support components factor under product measure.
 import YangMills.RG.MayerCoverFactorization
