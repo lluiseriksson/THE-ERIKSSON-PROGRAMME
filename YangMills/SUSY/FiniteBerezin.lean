@@ -38,6 +38,11 @@ def finiteExteriorBasis (n : ℕ) :
 def finiteBerezinTop (n : ℕ) : FiniteExterior n →ₗ[ℂ] ℂ :=
   (finiteExteriorBasis n).coord (Finset.univ : Finset (Fin n))
 
+/-- The coefficient of the empty exterior monomial.  This is the finite
+Grassmann analogue of evaluating the constant term in a polynomial expansion. -/
+def finiteBerezinEmptyCoeff (n : ℕ) : FiniteExterior n →ₗ[ℂ] ℂ :=
+  (finiteExteriorBasis n).coord (∅ : Finset (Fin n))
+
 /-- The empty exterior basis vector is the unit. -/
 @[simp] theorem finiteExteriorBasis_empty (n : ℕ) :
     finiteExteriorBasis n (∅ : Finset (Fin n)) =
@@ -68,6 +73,32 @@ theorem finiteBerezinTop_basis_of_ne_top (n : ℕ) {s : Finset (Fin n)}
     (hs : s ≠ (Finset.univ : Finset (Fin n))) :
     finiteBerezinTop n ((finiteExteriorBasis n) s) = 0 := by
   simp [hs]
+
+/-- The empty-coefficient functional reads `1` on the empty monomial and `0`
+on all other exterior basis monomials. -/
+@[simp] theorem finiteBerezinEmptyCoeff_basis (n : ℕ) (s : Finset (Fin n)) :
+    finiteBerezinEmptyCoeff n ((finiteExteriorBasis n) s) =
+      if s = (∅ : Finset (Fin n)) then 1 else 0 := by
+  simp only [finiteBerezinEmptyCoeff, finiteExteriorBasis,
+    Module.Basis.coord_apply, Module.Basis.repr_self]
+  by_cases h : s = (∅ : Finset (Fin n))
+  · subst h
+    simp
+  · rw [Finsupp.single_eq_of_ne (Ne.symm h)]
+    simp [h]
+
+/-- The empty exterior monomial has empty coefficient one. -/
+@[simp] theorem finiteBerezinEmptyCoeff_empty_basis (n : ℕ) :
+    finiteBerezinEmptyCoeff n
+        ((finiteExteriorBasis n) (∅ : Finset (Fin n))) = 1 := by
+  simpa using finiteBerezinEmptyCoeff_basis n (∅ : Finset (Fin n))
+
+/-- Nonempty exterior basis monomials have empty coefficient zero. -/
+theorem finiteBerezinEmptyCoeff_basis_of_nonempty {n : ℕ}
+    {s : Finset (Fin n)} (hs : s.Nonempty) :
+    finiteBerezinEmptyCoeff n ((finiteExteriorBasis n) s) = 0 := by
+  have hsne : s ≠ (∅ : Finset (Fin n)) := Finset.nonempty_iff_ne_empty.mp hs
+  simp [hsne]
 
 /-- In positive fermionic dimension, constants have zero Berezin integral. -/
 @[simp] theorem finiteBerezinTop_one_of_pos {n : ℕ} (hn : 0 < n) :
@@ -312,6 +343,59 @@ theorem finiteBerezinWeighted_topWeight_basis_of_nonempty_ne_top {n : ℕ}
         (finiteExteriorBasis n s) = 0 := by
   rw [finiteBerezinWeighted_topWeight_basis_of_nonempty a hs]
   exact finiteBerezinTop_basis_of_ne_top n hstop
+
+/-- In positive fermionic dimension, the elementary top-density weight
+`1 + a • topBasis` is exactly the linear functional
+`top coefficient + a * empty coefficient`.  This packages the basis-level
+calculus into the form consumed by later finite Gaussian/Pfaffian expansions. -/
+theorem finiteBerezinWeighted_topWeight_eq_top_add_empty_of_pos {n : ℕ}
+    (hn : 0 < n) (a : ℂ) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a) =
+      finiteBerezinTop n + a • finiteBerezinEmptyCoeff n := by
+  apply (finiteExteriorBasis n).ext
+  intro s
+  by_cases hsempty : s = (∅ : Finset (Fin n))
+  · subst hsempty
+    rw [finiteBerezinWeighted_topWeight_basis_empty_of_pos hn a]
+    have hempty_ne_top :
+        (∅ : Finset (Fin n)) ≠ (Finset.univ : Finset (Fin n)) := by
+      intro h
+      have hcard := congrArg Finset.card h
+      have hzero : 0 = n := by simpa using hcard
+      exact (Nat.ne_of_gt hn) hzero.symm
+    have htop :
+        finiteBerezinTop n
+            (finiteExteriorBasis n (∅ : Finset (Fin n))) = 0 :=
+      finiteBerezinTop_basis_of_ne_top n hempty_ne_top
+    have hempty :
+        finiteBerezinEmptyCoeff n
+            (finiteExteriorBasis n (∅ : Finset (Fin n))) = 1 :=
+      finiteBerezinEmptyCoeff_empty_basis n
+    change a =
+      finiteBerezinTop n (finiteExteriorBasis n (∅ : Finset (Fin n))) +
+        a * finiteBerezinEmptyCoeff n
+          (finiteExteriorBasis n (∅ : Finset (Fin n)))
+    rw [htop, hempty]
+    ring
+  · have hsnonempty : s.Nonempty := Finset.nonempty_iff_ne_empty.mpr hsempty
+    rw [finiteBerezinWeighted_topWeight_basis_of_nonempty a hsnonempty]
+    have hempty :
+        finiteBerezinEmptyCoeff n (finiteExteriorBasis n s) = 0 :=
+      finiteBerezinEmptyCoeff_basis_of_nonempty hsnonempty
+    change finiteBerezinTop n (finiteExteriorBasis n s) =
+      finiteBerezinTop n (finiteExteriorBasis n s) +
+        a * finiteBerezinEmptyCoeff n (finiteExteriorBasis n s)
+    rw [hempty]
+    ring
+
+/-- Pointwise form of
+`finiteBerezinWeighted_topWeight_eq_top_add_empty_of_pos`. -/
+theorem finiteBerezinWeighted_topWeight_apply_eq_top_add_empty_of_pos {n : ℕ}
+    (hn : 0 < n) (a : ℂ) (F : FiniteExterior n) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a) F =
+      finiteBerezinTop n F + a * finiteBerezinEmptyCoeff n F := by
+  rw [finiteBerezinWeighted_topWeight_eq_top_add_empty_of_pos hn a]
+  rfl
 
 /-- Grassmann nilpotence for finite exterior basis generators: each degree-one
 basis monomial squares to zero.  This is the first generator-level algebraic

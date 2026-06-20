@@ -5937,3 +5937,34 @@ top-degree density seed.  It does not construct a Gaussian Berezin integral,
 determinant/Pfaffian formula, physical supersymmetry, Yang-Mills activity
 bound, `hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 177 (2026-06-20, **top-density linear coefficient functional**
+`YangMills.SUSY.finiteBerezinEmptyCoeff_basis`,
+`YangMills.SUSY.finiteBerezinEmptyCoeff_empty_basis`,
+`YangMills.SUSY.finiteBerezinEmptyCoeff_basis_of_nonempty`,
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_eq_top_add_empty_of_pos`,
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_apply_eq_top_add_empty_of_pos`;
+core 8284)
+
+This addendum promotes the previous basis-by-basis top-density computation into
+a global linear identity on the finite exterior algebra.  The new
+`finiteBerezinEmptyCoeff` reads the coefficient of the empty exterior monomial,
+and in positive fermionic dimension the elementary density
+
+`finiteBerezinTopWeight n a = 1 + a • topBasis`
+
+acts by
+
+`finiteBerezinTop + a • finiteBerezinEmptyCoeff`.
+
+Equivalently, integrating an arbitrary finite exterior element against that
+weight extracts its top coefficient and adds `a` times its empty coefficient.
+This is a small but useful interface for later finite Gaussian/Pfaffian
+expansions, where weights must be reduced to coefficient extraction before any
+determinant identity can be stated honestly.
+
+**Honest scope.** This is a finite-dimensional linear coefficient identity for
+the toy top-density seed.  It does not construct a Gaussian Berezin integral,
+fermionic covariance, determinant/Pfaffian formula, physical supersymmetry,
+Yang-Mills activity bound, `hRpoly`, continuum limit, or OS/Wightman
+reconstruction.  Clay distance **~0% (<0.1%), unchanged**.

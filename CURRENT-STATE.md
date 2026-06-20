@@ -188,7 +188,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   The weighted top-density calculus is now basis-explicit as well: the empty
   monomial integrates to the prescribed coefficient `a`, the top monomial
   integrates to `1` in positive dimension, and every nonempty non-top monomial
-  integrates to `0`.
+  integrates to `0`.  The same top-density weight is now promoted from
+  basis cases to a global linear identity:
+  `finiteBerezinWeighted n (finiteBerezinTopWeight n a) =
+  finiteBerezinTop n + a • finiteBerezinEmptyCoeff n` in positive fermionic
+  dimension, so later finite Gaussian/Pfaffian expansions can consume the
+  top and empty coefficients directly.
   This is only the algebraic Berezin/Ward coefficient layer, not yet a
   super-Gaussian determinant/Pfaffian theorem.
 * the Ward-cancelled polymer bridge `YangMills/SUSY/WardPolymer.lean`: finite

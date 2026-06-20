@@ -292,6 +292,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.SUSY.finiteBerezinTop_one_of_pos
 #print axioms YangMills.SUSY.finiteBerezinTop_one_zero
 #print axioms YangMills.SUSY.finiteBerezinTop_algebraMap_of_pos
+#print axioms YangMills.SUSY.finiteBerezinEmptyCoeff_basis
+#print axioms YangMills.SUSY.finiteBerezinEmptyCoeff_empty_basis
+#print axioms YangMills.SUSY.finiteBerezinEmptyCoeff_basis_of_nonempty
 #print axioms YangMills.SUSY.finiteBerezinWeighted_apply
 #print axioms YangMills.SUSY.finiteBerezinWeighted_one
 #print axioms YangMills.SUSY.finiteBerezinWeighted_top_basis_one
@@ -309,6 +312,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_basis_of_nonempty
 #print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_top_basis_of_pos
 #print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_basis_of_nonempty_ne_top
+#print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_eq_top_add_empty_of_pos
+#print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_apply_eq_top_add_empty_of_pos
 #print axioms YangMills.SUSY.finiteExteriorBasis_singleton_mul_self
 #print axioms YangMills.SUSY.finiteBerezin_expect_Q_eq_zero
 #print axioms YangMills.SUSY.finiteBerezin_eq_expect_remainder_of_exactWard

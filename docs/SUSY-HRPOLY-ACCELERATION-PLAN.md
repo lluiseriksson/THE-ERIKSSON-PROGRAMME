@@ -113,6 +113,11 @@ activity has amplitude `amp + S`.
   `finiteBerezinWeighted_topWeight_top_basis_of_pos`, and
   `finiteBerezinWeighted_topWeight_basis_of_nonempty_ne_top` isolate the
   empty, top, and nonempty non-top cases in positive fermionic dimension.
+* The same seed is also available as a global coefficient functional:
+  `finiteBerezinWeighted_topWeight_eq_top_add_empty_of_pos` says that
+  integration against `1 + a • topBasis` equals top-coefficient extraction plus
+  `a` times empty-coefficient extraction.  This is the finite linear API needed
+  before expanding honest Gaussian/Pfaffian weights.
 
 This is the first concrete finite Grassmann/Berezin layer underneath the
 abstract Ward interface.  The weighted functional is the algebraic slot into
