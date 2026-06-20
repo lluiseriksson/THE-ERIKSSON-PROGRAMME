@@ -6027,3 +6027,29 @@ bookkeeping.  It does not construct a Gaussian Berezin integral, fermionic
 covariance, determinant/Pfaffian formula, physical supersymmetry, Yang-Mills
 activity bound, `hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 180 (2026-06-20, **disjoint-support filter for finite Berezin sums**
+`YangMills.SUSY.finiteBerezinWeighted_basis_mul_of_not_disjoint`,
+`YangMills.SUSY.finiteBerezinWeighted_sum_basis_mul_sum_basis_filter_disjoint`,
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_sum_basis_mul_sum_basis_filter_disjoint`;
+core 8284)
+
+This addendum combines the previous bilinear finite-sum expansion with
+Grassmann nilpotence.
+
+* Products of exterior-basis monomials with overlapping generator support
+  integrate to zero against any algebraic Berezin weight.
+* Therefore the weighted Berezin integral of a product of two finite
+  exterior-basis sums can be rewritten as a double sum filtered by
+  `Disjoint s t`.
+* The same filtered form is exposed for the elementary top-density weight.
+
+This is the next mechanical bridge toward finite Gaussian/Pfaffian toy
+expansions: coefficient sums can now discard repeated-generator pairs before
+the surviving disjoint monomial terms are handed to the sign/top-degree rules.
+
+**Honest scope.** This is finite exterior-algebra bookkeeping.  It does not
+construct a Gaussian Berezin integral, fermionic covariance,
+determinant/Pfaffian formula, physical supersymmetry, Yang-Mills activity
+bound, `hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

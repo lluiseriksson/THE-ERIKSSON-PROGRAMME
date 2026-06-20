@@ -131,6 +131,10 @@ activity has amplitude `amp + S`.
   elementary top-density weight sees exactly those two coefficients, and
   `finiteBerezinWeighted_sum_basis_mul_sum_basis` expands a weighted integral
   of two finite basis sums into the double sum of monomial-product integrals.
+  The filtered form
+  `finiteBerezinWeighted_sum_basis_mul_sum_basis_filter_disjoint` removes every
+  non-disjoint pair from that double sum; the top-density specialization is
+  `finiteBerezinWeighted_topWeight_sum_basis_mul_sum_basis_filter_disjoint`.
 
 This is the first concrete finite Grassmann/Berezin layer underneath the
 abstract Ward interface.  The weighted functional is the algebraic slot into

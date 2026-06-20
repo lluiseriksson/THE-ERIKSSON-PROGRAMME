@@ -538,6 +538,16 @@ theorem finiteBerezinWeighted_topWeight_powersetCard_mul_of_disjoint_nonempty_ne
   simp [finiteBerezinWeighted_topWeight_basis_of_nonempty_ne_top
       a hunion_nonempty hunion_ne_top]
 
+/-- Weighted finite Berezin integration kills products of basis monomials with
+repeated generators, for any algebraic weight. -/
+theorem finiteBerezinWeighted_basis_mul_of_not_disjoint
+    {n : ℕ} (weight : FiniteExterior n) {s t : Finset (Fin n)}
+    (h : ¬ Disjoint s t) :
+    finiteBerezinWeighted n weight
+        ((finiteExteriorBasis n s) * (finiteExteriorBasis n t)) = 0 := by
+  rw [finiteExteriorBasis_mul_of_not_disjoint h]
+  simp
+
 /-- Weighted finite Berezin integration expands bilinearly over two finite
 linear combinations of exterior-basis monomials.  This is the finite-sum bridge
 from monomial coefficient rules to later toy Gaussian/Pfaffian expansions. -/
@@ -560,6 +570,47 @@ theorem finiteBerezinWeighted_sum_basis_mul_sum_basis
   refine Finset.sum_congr rfl ?_
   intro t ht
   simp [smul_smul, mul_assoc, mul_comm]
+
+/-- Filtered form of `finiteBerezinWeighted_sum_basis_mul_sum_basis`: after
+expanding two finite basis sums, only disjoint generator supports can survive.
+The surviving disjoint monomial integrals still expose their orientation signs
+through the monomial-level product rules. -/
+theorem finiteBerezinWeighted_sum_basis_mul_sum_basis_filter_disjoint
+    {n : ℕ} (weight : FiniteExterior n)
+    (S T : Finset (Finset (Fin n))) (c d : Finset (Fin n) → ℂ) :
+    finiteBerezinWeighted n weight
+        ((S.sum fun s => c s • finiteExteriorBasis n s) *
+          (T.sum fun t => d t • finiteExteriorBasis n t)) =
+      S.sum fun s => T.sum fun t =>
+        if Disjoint s t then
+          (c s * d t) *
+            finiteBerezinWeighted n weight
+              ((finiteExteriorBasis n s) * (finiteExteriorBasis n t))
+        else 0 := by
+  rw [finiteBerezinWeighted_sum_basis_mul_sum_basis]
+  refine Finset.sum_congr rfl ?_
+  intro s hs
+  refine Finset.sum_congr rfl ?_
+  intro t ht
+  by_cases h : Disjoint s t
+  · simp [h]
+  · simp [h]
+
+/-- Top-density specialization of the disjoint-support finite-sum filter. -/
+theorem finiteBerezinWeighted_topWeight_sum_basis_mul_sum_basis_filter_disjoint
+    {n : ℕ} (a : ℂ)
+    (S T : Finset (Finset (Fin n))) (c d : Finset (Fin n) → ℂ) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+        ((S.sum fun s => c s • finiteExteriorBasis n s) *
+          (T.sum fun t => d t • finiteExteriorBasis n t)) =
+      S.sum fun s => T.sum fun t =>
+        if Disjoint s t then
+          (c s * d t) *
+            finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+              ((finiteExteriorBasis n s) * (finiteExteriorBasis n t))
+        else 0 :=
+  finiteBerezinWeighted_sum_basis_mul_sum_basis_filter_disjoint
+    (finiteBerezinTopWeight n a) S T c d
 
 /-- Grassmann nilpotence for finite exterior basis generators: each degree-one
 basis monomial squares to zero.  This is the first generator-level algebraic
