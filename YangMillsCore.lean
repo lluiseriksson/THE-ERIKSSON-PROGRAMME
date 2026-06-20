@@ -347,6 +347,9 @@ import YangMills.RG.AppendixFHsharpLimit
 -- Termwise majorant API for H#: a summable second-Ursell majorant supplies
 -- fixed-target summability, finite-partial bounds, tails, and the UV consumer.
 import YangMills.RG.AppendixFHsharpMajorant
+-- Closed-form geometric H# majorants: term bounds of the form A·q^n discharge
+-- the summability, finite-partial, tail, and total residual bookkeeping.
+import YangMills.RG.AppendixFHsharpGeometricMajorant
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

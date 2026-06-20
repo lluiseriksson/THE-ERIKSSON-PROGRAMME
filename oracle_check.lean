@@ -19,6 +19,7 @@ import YangMills.RG.AppendixFHsharpPartial
 import YangMills.RG.AppendixFHsharpConvergence
 import YangMills.RG.AppendixFHsharpLimit
 import YangMills.RG.AppendixFHsharpMajorant
+import YangMills.RG.AppendixFHsharpGeometricMajorant
 
 /-! # Oracle check — one command, every headline
 
@@ -629,6 +630,16 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_majorant_tail
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_term_majorant
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_term_majorant
+-- closed-form geometric second-Ursell majorants: A*q^n supplies the
+-- summability, finite-partial, shifted-tail, and residual bookkeeping.
+#print axioms YangMills.RG.sum_range_le_tsum_of_nonneg
+#print axioms YangMills.RG.summable_geometric_majorant
+#print axioms YangMills.RG.tsum_geometric_majorant
+#print axioms YangMills.RG.sum_range_geometric_majorant_le_closed
+#print axioms YangMills.RG.tsum_geometric_majorant_tail
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_geometric_tail
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_geometric_term_majorant
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_geometric_term_majorant
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

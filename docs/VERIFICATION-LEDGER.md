@@ -7417,3 +7417,58 @@ tail estimates.  The source `H#` estimate (Dimock II Theorem F.1/(636)), the
 preceding `K/K#` estimate (642), concrete Yang-Mills raw activity decay,
 continuum construction, and Clay remain open.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 208 (2026-06-20, **closed-form geometric H# majorants**
+`YangMills.RG.sum_range_le_tsum_of_nonneg`,
+`YangMills.RG.summable_geometric_majorant`,
+`YangMills.RG.tsum_geometric_majorant`,
+`YangMills.RG.sum_range_geometric_majorant_le_closed`,
+`YangMills.RG.tsum_geometric_majorant_tail`,
+`YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_geometric_tail`,
+`YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_geometric_term_majorant`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_geometric_term_majorant`;
+core 8304)
+
+This addendum adds `YangMills/RG/AppendixFHsharpGeometricMajorant.lean`, the
+closed-form geometric specialization of the termwise `H#` majorant interface.
+
+The preliminary theorem `sum_range_le_tsum_of_nonneg` records the elementary
+order fact that finite partial sums of a nonnegative summable real sequence are
+bounded by the total `tsum`.  The theorems `summable_geometric_majorant` and
+`tsum_geometric_majorant` package Mathlib's geometric series for the profile
+`A * q^n` under `0 <= q < 1`, while
+`sum_range_geometric_majorant_le_closed` bounds every finite partial sum by
+`A * (1 - q)⁻¹` when `0 <= A`.  The theorem
+`tsum_geometric_majorant_tail` gives the shifted-tail identity
+`∑' i, A*q^(i+N) = A*q^N*(1-q)⁻¹`.
+
+The `H#` theorem `norm_appendixFHoleHsharp_sub_partial_le_geometric_tail`
+turns a termwise bound
+`‖appendixFHoleHsharpTerm ... n‖ <= A*q^n` into the closed shifted-tail error
+bound.  The theorem
+`norm_appendixFHoleHsharp_le_residual_of_geometric_term_majorant` says that if
+the closed total `A*(1-q)⁻¹` is below the residual profile, then total
+`appendixFHoleHsharp` satisfies the pointwise residual estimate.  The real-part
+omega-rooted theorem then feeds that geometric majorant contract into the
+existing UV consumer under the sufficient margin `κ >= 4κ₀ + 3`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpGeometricMajorant.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This module does not prove that Dimock's second-Ursell/KP
+analysis supplies an `A,q` geometric majorant.  It only discharges the
+geometric-series bookkeeping once such a majorant has been proved externally or
+in a later source-facing module.  The source `H#` estimate (Dimock II Theorem
+F.1/(636)), the preceding `K/K#` estimate (642), concrete Yang-Mills raw
+activity decay, continuum construction, and Clay remain open.  Clay distance
+**~0% (<0.1%), unchanged**.
