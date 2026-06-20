@@ -98,6 +98,9 @@ activity has amplitude `amp + S`.
   `finiteBerezinWeighted_topWeight_one_of_pos` integrates `1` to `a`, and
   `finiteBerezinWeighted_topWeight_algebraMap_of_pos` integrates a scalar
   constant `z` to `a * z`.
+* `finiteExteriorBasis_singleton_mul_self` proves the generator-level
+  Grassmann nilpotence rule `e_i * e_i = 0` for every finite exterior basis
+  generator.
 
 This is the first concrete finite Grassmann/Berezin layer underneath the
 abstract Ward interface.  The weighted functional is the algebraic slot into

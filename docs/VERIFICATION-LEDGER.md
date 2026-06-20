@@ -5853,3 +5853,25 @@ honestly stated.
 construct a Gaussian covariance, determinant/Pfaffian identity, physical
 supersymmetry, Yang-Mills activity bound, `hRpoly`, continuum limit, or
 OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 174 (2026-06-20, **finite Berezin generator nilpotence**
+`YangMills.SUSY.finiteExteriorBasis_singleton_mul_self`;
+core 8284)
+
+This addendum records the first generator-level Grassmann algebra theorem in
+the finite Berezin substrate.  For every finite fermionic dimension and every
+generator index `i`, the degree-one exterior basis monomial squares to zero:
+
+`e_i * e_i = 0`.
+
+The proof uses Mathlib's exterior-algebra basis multiplication theorem for
+non-disjoint exterior basis monomials, avoiding any sign-convention shortcut.
+This is a basic input for future finite Gaussian/Pfaffian work: any honest
+finite Berezin Gaussian expansion needs the nilpotence of repeated generators
+before pairings and top-degree coefficients can be computed.
+
+**Honest scope.** This is only generator nilpotence in the finite exterior
+algebra.  It does not prove a Gaussian Berezin integral, determinant/Pfaffian
+formula, physical supersymmetry, Yang-Mills activity bound, `hRpoly`,
+continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

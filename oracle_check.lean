@@ -298,6 +298,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.SUSY.finiteBerezinTopWeight_zero
 #print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_one_of_pos
 #print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_algebraMap_of_pos
+#print axioms YangMills.SUSY.finiteExteriorBasis_singleton_mul_self
 #print axioms YangMills.SUSY.finiteBerezin_expect_Q_eq_zero
 #print axioms YangMills.SUSY.finiteBerezin_eq_expect_remainder_of_exactWard
 #print axioms YangMills.SUSY.finiteBerezinWeighted_expect_Q_eq_zero

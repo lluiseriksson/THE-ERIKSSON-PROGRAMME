@@ -176,7 +176,9 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   theorem for weighted finite Berezin integrals.  The top-density seed
   `finiteBerezinTopWeight n a = 1 + a • topBasis` proves the first
   normalization facts: in positive fermionic dimension it integrates `1` to
-  `a` and scalar constants to `a * z`.
+  `a` and scalar constants to `a * z`.  The generator-level theorem
+  `finiteExteriorBasis_singleton_mul_self` proves Grassmann nilpotence:
+  every degree-one exterior basis generator squares to zero.
   This is only the algebraic Berezin/Ward coefficient layer, not yet a
   super-Gaussian determinant/Pfaffian theorem.
 * the Ward-cancelled polymer bridge `YangMills/SUSY/WardPolymer.lean`: finite

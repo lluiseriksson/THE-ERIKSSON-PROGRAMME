@@ -159,6 +159,23 @@ constants by multiplying them with the top coefficient. -/
   simp [finiteBerezinTopWeight, finiteBerezinWeighted_apply,
     finiteBerezinTop_one_of_pos hn, mul_comm]
 
+/-- Grassmann nilpotence for finite exterior basis generators: each degree-one
+basis monomial squares to zero.  This is the first generator-level algebraic
+fact needed before finite Gaussian/Pfaffian identities can be stated honestly. -/
+@[simp] theorem finiteExteriorBasis_singleton_mul_self {n : ℕ} (i : Fin n) :
+    (finiteExteriorBasis n ({i} : Finset (Fin n))) *
+      (finiteExteriorBasis n ({i} : Finset (Fin n))) = 0 := by
+  let s : Set.powersetCard (Fin n) 1 :=
+    Set.powersetCard.ofCard (s := ({i} : Finset (Fin n))) (by simp)
+  have hndisj : ¬ Disjoint (s : Finset (Fin n)) (s : Finset (Fin n)) := by
+    simp [s]
+  have hmul :=
+    ExteriorAlgebra.basis_mul_of_not_disjoint (Pi.basisFun ℂ (Fin n)) s s
+      hndisj
+  change (Pi.basisFun ℂ (Fin n)).ExteriorAlgebra ({i} : Finset (Fin n)) *
+      (Pi.basisFun ℂ (Fin n)).ExteriorAlgebra ({i} : Finset (Fin n)) = 0
+  simpa [s] using hmul
+
 /-- A finite algebraic exact-Ward package for the Berezin top-coefficient
 functional.  This is deliberately linear/algebraic, not an `ApproxWardComplex`:
 the exterior algebra is not given an artificial norm or topology here. -/
