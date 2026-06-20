@@ -36,12 +36,13 @@ Primary Balaban targets for `hRpoly`:
   exponentiation, and bounds for the R operation", Comm. Math. Phys. 122
   (1989), 355-392, DOI `10.1007/BF01238433`.
 
-Lean-facing extraction request: find the exact pages/equations for
-fluctuation-integral locality/support containment, the small/active-field
-overlap relation used by the cluster expansion, and the pointwise
-Yang-Mills polymer activity majorant that can feed the existing
-`omegaHolePolymerSystem_*_metric_bound` consumers.  Until those equations
-are in hand, keep the activity/locality package as explicit hypotheses.
+Lean-facing extraction request: the first pages/equations for
+fluctuation-integral locality/support containment, localized effective
+actions, and Yang-Mills polymer activity decay are now located below.  The
+remaining gap is the source-to-Lean translation from Balaban's localized
+domains/components to `LocalActivity.fluctuationSupport`, `HoleFamily`,
+`activeSupport`, and `discreteModifiedMetric`.  Until that translation is
+formalized, keep the activity/locality package as explicit hypotheses.
 
 Visually confirmed source anchors already located:
 
@@ -67,6 +68,36 @@ Visually confirmed source anchors already located:
   `|R'^(k)(X,(U,J))| <= exp(-p_0(g_k)) exp(-kappa d_k(X))`.
   This is the sharp local large-field `R`-operation bound; it should not be
   relabeled as a global scalar mass-gap estimate.
+
+Support/locality extraction pass (2026-06-20):
+
+* CMP 116 (1988), PDF pages 4-5, derives the one-step component
+  localization used before the cluster bound.  A source term indexed by a
+  connected component `Y0` is built from propagators and fields restricted
+  to `Y0`; the term depends only on the gauge/source variables restricted
+  to that localized set together with the base cube.  This is the source
+  analogue of the Lean support-containment input, but it is not yet a Lean
+  theorem because the paper's component `Y0` and base-cube enlargement must
+  still be mapped to `activeSupport` and `fluctuationSupport`.
+* CMP 116 (1988), PDF page 21, eqs. (2.39)-(2.41), records how the
+  localized cluster estimate following Lemma 3 is converted into the
+  effective-action bound `(I.1.18)`, after choosing the `delta,L`
+  normalization and making the small constant `O(1) C_3 eps_1` fit the
+  `E_0/2` budget.  This supplies the missing post-Lemma-3 bridge; the
+  remaining Lean obligation is to express those constants as a pointwise
+  modified-metric activity majorant.
+* CMP 119 (1988), split PDF pages 15-17 / printed pages 257-259, gives the
+  localized density decomposition.  Large-field operations factor over
+  connected large-field regions, the effective action is decomposed into
+  regular `E`, remainder `R`, and boundary/large-field-near `B` pieces, and
+  the regular terms have a representation by domains `X` whose kernels
+  depend only on the gauge field restricted to `X`.
+* CMP 119 (1988), split PDF pages 18-19 / printed pages 260-261, extends
+  the same localized-domain representation to `R` and `B` terms and supplies
+  the already-recorded decay bounds (2.31) and (2.42).  This confirms that
+  the source-level package is polymer-local and scale-local; it does not by
+  itself identify Balaban's domains with the current Lean hole-polymer
+  metric.
 
 ## 1. Fluctuation-covariance bound (Bałaban CMP 95 (1984), Prop 1.1/1.2)
 
