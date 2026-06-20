@@ -7671,3 +7671,40 @@ first activity.  It does not prove ultralocal factorization (643) for the full
 target-family sum, Dimock (642), the second-Ursell/tree estimate, concrete
 Yang-Mills raw activity decay, continuum construction, or Clay.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 213 (2026-06-20, **finite Hsharp second-Ursell tree majorant**
+`YangMills.RG.appendixFHoleHsharpTreeTerm`,
+`YangMills.RG.appendixFHoleHsharpAbsTerm_le_treeTerm`; core 8307)
+
+This addendum adds `YangMills/RG/AppendixFSecondUrsellSource.lean`, the first
+source-independent coefficientwise tree step for the Appendix-F second-Ursell
+`H#` layer.
+
+The definition `appendixFHoleHsharpTreeTerm` has exactly the same target fiber
+and factorial normalization as `appendixFHoleHsharpAbsTerm`, but replaces the
+absolute Ursell coefficient by the finite sum over spanning trees of the tuple
+incompatibility graph.  The theorem
+`appendixFHoleHsharpAbsTerm_le_treeTerm` is a direct finite application of the
+already-verified Penrose tree-graph inequality
+`KP.abs_ursell_le_card_spanningTrees`, followed by multiplication by the
+nonnegative product of activity norms and summation over the fixed-union fiber.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFSecondUrsellSource.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is finite Penrose domination only.  It does not prove
+the Dimock leaf summation, the shifted `K#` estimate (642)/(644), the source
+`H#` estimate F.1/(636), the scalar smallness condition, concrete Yang-Mills
+raw activity decay, continuum construction, or Clay.  Clay distance **~0%
+(<0.1%), unchanged**.

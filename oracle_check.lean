@@ -21,6 +21,7 @@ import YangMills.RG.AppendixFHsharpLimit
 import YangMills.RG.AppendixFHsharpMajorant
 import YangMills.RG.AppendixFHsharpGeometricMajorant
 import YangMills.RG.AppendixFHsharpSourceMajorant
+import YangMills.RG.AppendixFSecondUrsellSource
 import YangMills.RG.AppendixFHsharpProfile
 
 /-! # Oracle check — one command, every headline
@@ -661,6 +662,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.AppendixFHsharpSourceMajorant.residual_bound
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_source_majorant
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
+-- finite tree majorant for the exact fixed-union absolute H# coefficient.
+#print axioms YangMills.RG.appendixFHoleHsharpTreeTerm
+#print axioms YangMills.RG.appendixFHoleHsharpAbsTerm_le_treeTerm
 -- source-facing packaged geometric H# profiles: one record now supplies the
 -- summability, tail, residual, and UV consumers without duplicating fields.
 #print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.summable_terms

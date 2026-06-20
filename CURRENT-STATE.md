@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8306 jobs**.
+* `lake build YangMillsCore` is green at **8307 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -391,6 +391,17 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   from a packaged source majorant.  This proves only finite algebra and
   packaging; it does not prove the fixed-union absolute geometric source
   estimate, Dimock F.1/(636), Dimock (642), or any continuum/Clay theorem;
+* the finite source-facing second-Ursell tree majorant
+  `YangMills/RG/AppendixFSecondUrsellSource.lean`: it defines
+  `appendixFHoleHsharpTreeTerm`, the exact fixed-union fiber with the same
+  factorial normalization as `appendixFHoleHsharpAbsTerm` but with the absolute
+  Ursell coefficient replaced by the finite sum over spanning trees of the
+  tuple incompatibility graph.  The theorem
+  `appendixFHoleHsharpAbsTerm_le_treeTerm` applies the already-proved Penrose
+  tree-graph inequality coefficientwise.  This is source-independent finite
+  tree domination only; it does not prove Dimock's leaf summation, the `K#`
+  estimate (642)/(644), the source `H#` estimate F.1/(636), the smallness
+  condition, or any Yang-Mills raw activity bound;
 * the source-facing geometric `H#` profile
   `YangMills/RG/AppendixFHsharpProfile.lean`: it packages the amplitudes
   `A`, ratios `q`, positivity/strict-ratio hypotheses, termwise `H#` bound,
