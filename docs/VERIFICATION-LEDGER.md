@@ -6053,3 +6053,55 @@ construct a Gaussian Berezin integral, fermionic covariance,
 determinant/Pfaffian formula, physical supersymmetry, Yang-Mills activity
 bound, `hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 181 (2026-06-20, **single-support Appendix-F target-gas Fubini closure**
+`YangMills.RG.appendixFConnectedCoverFamilyTargetChoiceSigma_targetChoiceCoverFamily_eq`,
+`YangMills.RG.sum_appendixFAdmissibleTargetChoices_eq_sum_admissibleConnectedCoverFamilies`,
+`YangMills.RG.sum_admissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies`,
+`YangMills.RG.prod_one_add_eq_appendixFTargetPolymerSystem_partition`,
+`YangMills.RG.complex_exp_sum_eq_appendixFTargetPolymerSystem_partition`;
+core 8287)
+
+This addendum closes the exact finite target-family Fubini/lumping identity
+for the single-support Appendix-F compiler in
+`YangMills/RG/AppendixFFiniteCover.lean`.
+
+The new dependent left-inverse theorem proves that erasing a target choice to
+its selected connected-cover family and reconstructing the target-choice datum
+recovers the original choice, under the explicit active-nonempty hypothesis.
+The proof uses the already-verified injectivity of the cover-union map on an
+admissible connected-cover family and a small private transport lemma for
+membership-indexed finite functions.
+
+The new sum identity
+`sum_appendixFAdmissibleTargetChoices_eq_sum_admissibleConnectedCoverFamilies`
+then reindexes the explicit finite choice domain by admissible connected-cover
+families.  Composed with the product-over-fibers expansion, this gives
+`sum_admissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies`.
+Finally,
+`prod_one_add_eq_appendixFTargetPolymerSystem_partition` identifies the
+single-support target hard-core gas partition with the raw finite Mayer
+product, and
+`complex_exp_sum_eq_appendixFTargetPolymerSystem_partition` records the
+exponential specialization.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFFiniteCover.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is the finite first Mayer/Appendix-F target identity
+for the case where the same support map controls Ω-connectivity and target
+unions.  It does not yet prove the two-support holes adapter
+`overlapSupport = skeleton`, `targetSupport = full union`, `activePart =
+skeleton`; it does not prove the metric bound (642), define or integrate
+`K#`, construct the second Ursell activity `H#`, prove the Yang-Mills raw
+activity estimate, discharge `hRpoly`, construct a continuum limit, or affect
+OS/Wightman/Clay obligations.  Clay distance **~0% (<0.1%), unchanged**.

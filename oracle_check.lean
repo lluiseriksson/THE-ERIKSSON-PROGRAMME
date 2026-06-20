@@ -459,6 +459,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFTargetChoiceCoverFamily_mem_admissible
 #print axioms YangMills.RG.appendixFCoverFamilyWeight_targetChoiceCoverFamily_eq
 #print axioms YangMills.RG.appendixFTargetChoiceCoverFamily_image_coverUnion_eq
+#print axioms YangMills.RG.appendixFConnectedCoverFamilyTargetChoiceSigma_targetChoiceCoverFamily_eq
+#print axioms YangMills.RG.sum_appendixFAdmissibleTargetChoices_eq_sum_admissibleConnectedCoverFamilies
+#print axioms YangMills.RG.sum_admissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies
 #print axioms YangMills.RG.image_coverUnion_mem_appendixFAdmissibleTargetFamilies
 #print axioms YangMills.RG.appendixFCoverUnion_injective_on_admissibleConnectedCoverFamily
 #print axioms YangMills.RG.appendixFConnectedCoverFamilyTargetChoiceSigma_mem_choices
@@ -466,6 +469,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.confinedComponent_eq_of_connected_no_exit
 #print axioms YangMills.RG.appendixFCanonicalCoverFamilies_eq_admissibleConnectedCoverFamilies
 #print axioms YangMills.RG.prod_one_add_eq_sum_appendixFAdmissibleConnectedCoverFamilies
+#print axioms YangMills.RG.prod_one_add_eq_appendixFTargetPolymerSystem_partition
+#print axioms YangMills.RG.complex_exp_sum_eq_appendixFTargetPolymerSystem_partition
 #print axioms YangMills.RG.omegaOverlapGraph_univ_skeleton_adj_iff
 #print axioms YangMills.RG.appendixFHoleConnectedActivity_congr
 

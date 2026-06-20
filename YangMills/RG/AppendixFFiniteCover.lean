@@ -759,6 +759,15 @@ theorem sum_admissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_targetCh
           rw [Finset.sum_sigma']
           rfl
 
+private theorem cast_forall_mem_finset_apply
+    {α β : Type*} [DecidableEq α]
+    {A B : Finset α} (h : A = B)
+    (f : ∀ x : α, x ∈ A → β) (x : α) (hx : x ∈ B) :
+    cast (congrArg (fun U : Finset α => ∀ x : α, x ∈ U → β) h) f x hx =
+      f x (by rw [h]; exact hx) := by
+  cases h
+  rfl
+
 /-- A finite family of connected raw covers is Appendix-F admissible when
 distinct connected covers have disjoint declared-support union inside `Ω`.
 
@@ -1008,6 +1017,111 @@ theorem appendixFTargetChoiceCoverFamily_image_coverUnion_eq
     · exact ((mem_appendixFTargetFiber_iff Ω support support Λ
         Y (Ξ.2 Y hY)).mp (hΞ.2 Y hY)).2
 
+/-- Reconstructing the inverse target-choice datum from the erased connected
+cover family recovers the original target choice.  This is the dependent
+left-inverse needed for the finite Fubini/lumping reindexing. -/
+theorem appendixFConnectedCoverFamilyTargetChoiceSigma_targetChoiceCoverFamily_eq
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty)
+    {Ξ : Σ Υ : Finset (Finset Site), ∀ Y, Y ∈ Υ → Finset ι}
+    (hΞ : Ξ ∈ appendixFAdmissibleTargetChoices Ω support Λ) :
+    appendixFConnectedCoverFamilyTargetChoiceSigma support
+      (appendixFTargetChoiceCoverFamily Ξ) = Ξ := by
+  classical
+  cases Ξ with
+  | mk Υ choice =>
+    let Γ : Finset (Finset ι) := appendixFTargetChoiceCoverFamily (Sigma.mk Υ choice)
+    have hΞ' : Sigma.mk Υ choice ∈
+        appendixFAdmissibleTargetChoices Ω support Λ := hΞ
+    have hΓ : Γ ∈ appendixFAdmissibleConnectedCoverFamilies Ω support Λ :=
+      appendixFTargetChoiceCoverFamily_mem_admissible Ω support Λ hΞ'
+    have hfirst :
+        (appendixFConnectedCoverFamilyTargetChoiceSigma support Γ).1 = Υ := by
+      simpa [Γ, appendixFConnectedCoverFamilyTargetChoiceSigma]
+        using appendixFTargetChoiceCoverFamily_image_coverUnion_eq Ω support Λ hΞ'
+    change appendixFConnectedCoverFamilyTargetChoiceSigma support Γ =
+      Sigma.mk Υ choice
+    refine Sigma.ext hfirst ?_
+    let left := (appendixFConnectedCoverFamilyTargetChoiceSigma support Γ).2
+    let hty := congrArg (fun U : Finset (Finset Site) =>
+      ((Y : Finset Site) → Y ∈ U → Finset ι)) hfirst
+    have hcast : cast hty left = choice := by
+      funext Y hY
+      let hYleft : Y ∈ (appendixFConnectedCoverFamilyTargetChoiceSigma support Γ).1 := by
+        rw [hfirst]
+        exact hY
+      have happly : cast hty left Y hY = left Y hYleft := by
+        simpa [hty, hYleft] using
+          cast_forall_mem_finset_apply (α := Finset Site) (β := Finset ι)
+            hfirst left Y hY
+      rw [happly]
+      have hspec :=
+        appendixFConnectedCoverFamilyTargetChoice_spec support Γ Y hYleft
+      have hchoice_mem : choice Y hY ∈ Γ := by
+        dsimp [Γ, appendixFTargetChoiceCoverFamily]
+        exact Finset.mem_image.mpr ⟨⟨Y, hY⟩, by simp, rfl⟩
+      have hchoice_data :=
+        (mem_appendixFAdmissibleTargetChoices_iff Ω support Λ
+          (Sigma.mk Υ choice :
+            Sigma (fun Υ : Finset (Finset Site) =>
+              ∀ Y, Y ∈ Υ → Finset ι))).mp hΞ'
+      have hchoice_cover : appendixFCoverUnion support (choice Y hY) = Y :=
+        ((mem_appendixFTargetFiber_iff Ω support support Λ Y
+          (choice Y hY)).mp (hchoice_data.2 Y hY)).2
+      exact appendixFCoverUnion_injective_on_admissibleConnectedCoverFamily
+        Ω support Λ hactive hΓ hspec.1 hchoice_mem
+        (hspec.2.trans hchoice_cover.symm)
+    exact HEq.trans (HEq.symm (cast_heq hty left)) (heq_of_eq hcast)
+
+/-- The explicit finite Fubini target-choice sum is exactly the connected-cover
+family sum.  This is the last single-support finite lumping step before the
+target hard-core partition can be identified with the raw Mayer product. -/
+theorem sum_appendixFAdmissibleTargetChoices_eq_sum_admissibleConnectedCoverFamilies
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (w : ι → ℂ)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty) :
+    (∑ Ξ ∈ appendixFAdmissibleTargetChoices Ω support Λ,
+        ∏ Y ∈ Ξ.1.attach, ∏ i ∈ Ξ.2 Y.1 Y.2, w i) =
+      ∑ Γ ∈ appendixFAdmissibleConnectedCoverFamilies Ω support Λ,
+        appendixFCoverFamilyWeight w Γ := by
+  classical
+  refine Finset.sum_bij'
+    (fun Ξ _hΞ => appendixFTargetChoiceCoverFamily Ξ)
+    (fun Γ _hΓ => appendixFConnectedCoverFamilyTargetChoiceSigma support Γ)
+    ?_ ?_ ?_ ?_ ?_
+  · intro Ξ hΞ
+    exact appendixFTargetChoiceCoverFamily_mem_admissible Ω support Λ hΞ
+  · intro Γ hΓ
+    exact appendixFConnectedCoverFamilyTargetChoiceSigma_mem_choices
+      Ω support Λ hΓ
+  · intro Ξ hΞ
+    exact appendixFConnectedCoverFamilyTargetChoiceSigma_targetChoiceCoverFamily_eq
+      Ω support Λ hactive hΞ
+  · intro Γ hΓ
+    exact appendixFTargetChoiceCoverFamily_connectedCoverFamilyTargetChoiceSigma_eq
+      Ω support Λ hactive hΓ
+  · intro Ξ hΞ
+    exact (appendixFCoverFamilyWeight_targetChoiceCoverFamily_eq
+      Ω support Λ w hΞ).symm
+
+/-- Combining product expansion over target fibers with the finite Fubini
+reindexing gives the single-support target-family form of the Appendix-F
+connected-cover identity. -/
+theorem sum_admissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (w : ι → ℂ)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty) :
+    (∑ Υ ∈ appendixFAdmissibleTargetFamilies Ω support Λ,
+        ∏ Y ∈ Υ, appendixFConnectedMayerActivity Ω support support Λ w Y) =
+      ∑ Γ ∈ appendixFAdmissibleConnectedCoverFamilies Ω support Λ,
+        appendixFCoverFamilyWeight w Γ := by
+  rw [sum_admissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_targetChoices]
+  exact sum_appendixFAdmissibleTargetChoices_eq_sum_admissibleConnectedCoverFamilies
+    Ω support Λ w hactive
+
 theorem no_adj_of_omegaCoverUnion_disjoint
     {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
     (Ω : Finset Site) (support : ι → Finset Site)
@@ -1141,6 +1255,65 @@ theorem prod_one_add_eq_sum_appendixFAdmissibleConnectedCoverFamilies
         appendixFCoverFamilyWeight w Γ := by
           rw [appendixFCanonicalCoverFamilies_eq_admissibleConnectedCoverFamilies
             Ω support Λ]
+
+/-- The single-support finite Appendix-F target gas has the same partition
+function as the raw finite Mayer product.  This closes the finite
+target-family Fubini/lumping identity for the case where the same support map
+controls connectivity and target unions. -/
+theorem prod_one_add_eq_appendixFTargetPolymerSystem_partition
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site)
+    (Λ : Finset ι) (w : ι → ℂ)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty) :
+    (∏ i ∈ Λ, (1 + w i)) =
+      KP.partition (appendixFTargetPolymerSystem Ω support Λ w hactive) Finset.univ := by
+  classical
+  have hprod :=
+    prod_one_add_eq_sum_appendixFAdmissibleConnectedCoverFamilies
+      Ω support Λ w
+  have hpart :
+      KP.partition (appendixFTargetPolymerSystem Ω support Λ w hactive) Finset.univ =
+        ∑ Γ ∈ appendixFAdmissibleConnectedCoverFamilies Ω support Λ,
+          appendixFCoverFamilyWeight w Γ := by
+    calc
+      KP.partition (appendixFTargetPolymerSystem Ω support Λ w hactive) Finset.univ
+          =
+        ∑ Υ ∈ appendixFAdmissibleTargetFamilies Ω support Λ,
+          ∏ Y ∈ Υ, appendixFConnectedMayerActivity Ω support support Λ w Y :=
+            appendixFTargetPolymerSystem_partition_eq_sum_admissibleTargetFamilies
+              Ω support Λ w hactive
+      _ =
+        ∑ Γ ∈ appendixFAdmissibleConnectedCoverFamilies Ω support Λ,
+          appendixFCoverFamilyWeight w Γ :=
+            sum_admissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies
+              Ω support Λ w hactive
+  exact hprod.trans hpart.symm
+
+/-- Exponential specialization of the finite target-gas identity.  This is
+still only the exact finite first Mayer/Appendix-F target identity, not the
+metric bound, integration step, second Ursell expansion, or Yang-Mills
+activity producer. -/
+theorem complex_exp_sum_eq_appendixFTargetPolymerSystem_partition
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (h : ι → ℂ)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty) :
+    Complex.exp (∑ i ∈ Λ, h i) =
+      KP.partition
+        (appendixFTargetPolymerSystem Ω support Λ
+          (fun i => Complex.exp (h i) - 1) hactive)
+        Finset.univ := by
+  classical
+  rw [Complex.exp_sum]
+  have hprod :
+      (∏ i ∈ Λ, Complex.exp (h i)) =
+        ∏ i ∈ Λ, (1 + (Complex.exp (h i) - 1)) := by
+    refine Finset.prod_congr rfl ?_
+    intro i _hi
+    ring
+  rw [hprod]
+  exact prod_one_add_eq_appendixFTargetPolymerSystem_partition
+    Ω support Λ (fun i => Complex.exp (h i) - 1) hactive
 
 /-- Every component appearing in a canonical Appendix-F family is one of the
 connected covers admitted by `appendixFConnectedCoverRegion`. -/

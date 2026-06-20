@@ -235,6 +235,21 @@ The uniform local-window variants
 source form `local active-skeleton norm ≤ B ≤ 1`, yielding the tail bound
 `≤ t⁻¹ B` without exposing the root-pinned finite sum in downstream statements.
 
+**Finite target-gas checkpoint (2026-06-20).**  The single-support
+Appendix-F compiler now has the exact finite Fubini/lumping bridge from
+admissible connected-cover families to admissible target families with
+fiber activities `K(Y)`.  The verified chain includes the dependent
+left-inverse for target choices, the choice-sum reindexing, the target-family
+sum identity, and the target hard-core partition identity:
+`prod_one_add_eq_appendixFTargetPolymerSystem_partition` plus the exponential
+specialization `complex_exp_sum_eq_appendixFTargetPolymerSystem_partition`.
+This closes the finite first Mayer identity only when the same support map
+defines both Ω-connectivity and target unions.  The next source-faithful
+Appendix-F brick is still the two-support holes adapter:
+`overlapSupport X = skeleton HF X.val`, `targetSupport X = X.val`, and
+`activePart Y = skeleton HF Y`.  It must prove the full-union target geometry
+and target-family reindexing without using full-target disjointness.
+
 ### P4 route refinement: collar factorization from covariance decay
 
 Lluis Eriksson's outlook paper

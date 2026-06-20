@@ -10,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8284 jobs**.
+* `lake build YangMillsCore` is green at **8287 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -97,6 +97,20 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `OmegaConnectedCover.mayerActivity_integral_factor_confinedComponentCoverFamily_of_fluctuationSupport_subset`
   exposes the same factorization directly as a product over the canonical
   `confinedComponentCoverFamily`;
+* the finite Appendix-F target compiler
+  `YangMills/RG/AppendixFFiniteCover.lean` now closes the single-support
+  target-family Fubini/lumping identity: target choices are reindexed by
+  admissible connected-cover families, the connected-cover family sum equals
+  the product over target fiber activities `K(Y)`, and the exact finite target
+  hard-core partition is identified with the raw Mayer product.  The headline
+  theorems are
+  `sum_appendixFAdmissibleTargetChoices_eq_sum_admissibleConnectedCoverFamilies`,
+  `sum_admissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies`,
+  `prod_one_add_eq_appendixFTargetPolymerSystem_partition`, and
+  `complex_exp_sum_eq_appendixFTargetPolymerSystem_partition`.  This remains
+  finite algebra for the case where the same support map controls
+  connectivity and target unions; the source-faithful two-support
+  skeleton/full-target holes adapter is still a separate next step;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound
