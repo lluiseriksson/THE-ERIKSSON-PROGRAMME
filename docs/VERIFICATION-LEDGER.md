@@ -6716,3 +6716,57 @@ expansion to `H#`, any concrete Yang-Mills fluctuation estimate, or the
 continuum/OS reconstruction.  It only exposes the exact residual decay margin
 needed to reuse the existing geometric summability substrate.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 194 (2026-06-20, **Concrete rooted residual bridge over the
+modified metric** `YangMills.RG.exp_neg_kappa0_nat_eq_exp_neg_pow`,
+`YangMills.RG.rooted_exp_discreteModifiedMetric_tsum_le`,
+`YangMills.RG.rooted_polymerClusterWithHoles_abs_tsum_le`; core 8294)
+
+This addendum extends `YangMills/RG/PolymerClusterWithHolesBridge.lean` from an
+abstract metric bridge to a concrete rooted with-holes polymer bridge over the
+already verified modified-metric summability theorem.
+
+The new adapter proves the exact translation
+
+```
+exp (-(κ₀ * n)) = exp (-κ₀)^n
+```
+
+and applies it to the existing theorem
+`discreteModifiedMetric_weight_summable` with `q = exp (-κ₀)`.  The resulting
+bound is
+
+```
+Σ_{X : r ∈ skeleton X} exp (-κ₀ * (d_M(X)+1))
+  ≤ (1 - ((3^d)^2) * (exp(-κ₀) * 2^(3^d+1)))⁻¹
+```
+
+under the existing hole-disjointness/no-cross-edge/nonempty-hole hypotheses and
+the explicit coordination smallness condition
+`((3^d)^2) * (exp(-κ₀) * 2^(3^d+1)) < 1`.
+
+The final theorem
+`rooted_polymerClusterWithHoles_abs_tsum_le` combines this concrete
+summability with the residual margin bridge.  It is the direct rooted
+`hpoly`-style aggregate estimate for activities satisfying the concrete
+residual modified-metric pointwise bound.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PolymerClusterWithHolesBridge.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is still a rooted summability/aggregation adapter.  It
+does not prove the analytic residual pointwise estimate, Dimock (642), the
+integrated `K#` estimates, the second Ursell expansion to `H#`, or any
+continuum/OS/Clay theorem.  It does, however, connect the residual bridge to
+the repo's actual modified-metric polymer summability theorem instead of an
+abstract `K₀` hypothesis.  Clay distance **~0% (<0.1%), unchanged**.

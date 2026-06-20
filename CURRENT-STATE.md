@@ -77,7 +77,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   summability margin `κ₀ ≤ κ - 3κ₀ - 3` from the stronger
   `κ ≥ 4κ₀ + 3`, and packages both the static aggregate
   `polymerClusterWithHoles_abs_tsum_le` and the producer bridge
-  `singleScaleUVDecay_of_clusterWithHolesActivities`;
+  `singleScaleUVDecay_of_clusterWithHolesActivities`.  It now also instantiates
+  the summability substrate over the concrete rooted, hole-respecting modified
+  metric via `rooted_exp_discreteModifiedMetric_tsum_le` and
+  `rooted_polymerClusterWithHoles_abs_tsum_le`, translating
+  `exp (-κ₀(d_M+1))` into the existing `q^(d_M+1)` theorem with
+  `q = exp (-κ₀)`;
 * the type-local functional/activity substrate
   `YangMills/RG/LocalFunctional.lean`: restricted fields indexed by finite
   supports, `LocalFunctional`, two-field `LocalActivity`, global adapters
@@ -213,7 +218,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   strengthening to `κ >= 4κ₀ + 3` or by proving geometric summability directly
   at the residual exponent.  This module is summation bookkeeping only: it does
   not prove Dimock (642), the Yang-Mills raw activity estimate, or the
-  continuum/OS reconstruction steps;
+  continuum/OS reconstruction steps.  The module now includes the rooted
+  concrete adapter
+  `rooted_polymerClusterWithHoles_abs_tsum_le`, which uses
+  `discreteModifiedMetric_weight_summable` directly and exposes the actual
+  smallness condition
+  `((3^d)^2) * (exp(-κ₀) * 2^(3^d+1)) < 1`;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound
