@@ -668,6 +668,45 @@ theorem exists_confinedComponentCover_of_mem_confinedComponents
     with ⟨r, _hr, rfl⟩
   exact ⟨confinedComponentCover Ω activeSupport K r, rfl, rfl, rfl⟩
 
+/-- Distinct confined components of the Ω-overlap graph have disjoint active
+supports inside Ω, pointwise across their index sets. -/
+theorem omegaActiveSupport_disjoint_of_mem_confinedComponents_ne
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K : Finset ι) {C D : Finset ι}
+    (hC : C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K)
+    (hD : D ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K)
+    (hne : C ≠ D) {i j : ι} (hi : i ∈ C) (hj : j ∈ D) :
+    Disjoint (Ω ∩ activeSupport i) (Ω ∩ activeSupport j) := by
+  classical
+  have hno :
+      ¬ (omegaOverlapGraph Ω activeSupport).Adj i j :=
+    no_adj_of_mem_confinedComponents_ne (omegaOverlapGraph Ω activeSupport) K
+      hC hD hne hi hj
+  have hCD : Disjoint C D :=
+    disjoint_of_mem_confinedComponents_ne
+      (omegaOverlapGraph Ω activeSupport) K hC hD hne
+  have hij : i ≠ j := by
+    intro h
+    exact (Finset.disjoint_left.mp hCD hi) (by simpa [h] using hj)
+  by_contra hnot
+  exact hno ((omegaOverlapGraph_adj_iff Ω activeSupport i j).mpr ⟨hij, hnot⟩)
+
+/-- Pairwise form of active-support disjointness for two distinct confined
+Ω-overlap components. -/
+theorem pairwise_omegaActiveSupport_disjoint_of_mem_confinedComponents_ne
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K : Finset ι) {C D : Finset ι}
+    (hC : C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K)
+    (hD : D ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K)
+    (hne : C ≠ D) :
+    ∀ i, i ∈ C → ∀ j, j ∈ D →
+      Disjoint (Ω ∩ activeSupport i) (Ω ∩ activeSupport j) := by
+  intro i hi j hj
+  exact omegaActiveSupport_disjoint_of_mem_confinedComponents_ne
+    Ω activeSupport K hC hD hne hi hj
+
 /-- Two Ω-connected Mayer activities with disjoint fluctuation-support unions
 factorize under an ultralocal product probability measure, with the spectator
 field held fixed.  The Ω-connectedness certificates travel with the covers;

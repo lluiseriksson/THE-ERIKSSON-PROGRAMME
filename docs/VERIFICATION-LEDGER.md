@@ -5456,3 +5456,26 @@ blocks directly to the Ω-connected Mayer-product layer.
 Dimock-F.1 compiler.  It does not prove Appendix-F activity decay, construct
 the Yang-Mills fluctuation measure, establish `hRpoly`, continuum limit, or
 OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 160 (2026-06-20, **Ω-active disjointness across confined
+components**
+`YangMills.RG.OmegaConnectedCover.omegaActiveSupport_disjoint_of_mem_confinedComponents_ne`,
+`YangMills.RG.OmegaConnectedCover.pairwise_omegaActiveSupport_disjoint_of_mem_confinedComponents_ne`;
+core 8283)
+
+This addendum records the source-facing separation fact associated to
+Addendum 159.  If two finite confined components of the Ω-overlap graph are
+distinct, then any index in one component and any index in the other have
+disjoint active supports inside Ω:
+`Disjoint (Ω ∩ activeSupport i) (Ω ∩ activeSupport j)`.  The proof combines the
+existing no-edge theorem for distinct confined components with the defining
+adjacency criterion of `omegaOverlapGraph`.
+
+The pairwise wrapper packages this as the hypothesis shape expected by later
+finite compiler or factorization steps.  It is the finite graph-to-source
+translation layer: separated Ω-components give separated Ω-active supports.
+
+**Honest scope.** This is finite Ω-overlap graph algebra only.  It does not
+prove Appendix-F activity decay, the Yang-Mills fluctuation measure,
+`hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

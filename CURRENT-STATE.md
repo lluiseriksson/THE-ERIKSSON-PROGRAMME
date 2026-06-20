@@ -80,7 +80,8 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   confined components at once.  Each confined component is also proved
   walk-connected and can be repackaged as an `OmegaConnectedCover`, so the
   disconnected-component compiler can hand its finite blocks back to the
-  source-shaped Ω-cover API;
+  source-shaped Ω-cover API; distinct confined components of the Ω-overlap
+  graph also have pairwise disjoint active supports inside Ω;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound
