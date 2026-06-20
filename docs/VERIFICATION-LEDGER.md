@@ -7171,3 +7171,53 @@ therefore instantiate the already verified residual adapter.  If the final
 physical scalar projection is not literally `Complex.re`, it still needs its
 own definition and contraction theorem.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 203 (2026-06-20, **finite partial H# truncations**
+`YangMills.RG.appendixFHoleHsharpPartial_zero`,
+`YangMills.RG.appendixFHoleHsharpPartial_succ`,
+`YangMills.RG.sum_appendixFHoleHsharpPartial_eq_sum_clusterSum_terms`,
+`YangMills.RG.clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_le`,
+`YangMills.RG.rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_le`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial_four_mul_margin`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial_re`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial_re_four_mul_margin`;
+core 8300)
+
+This addendum adds `YangMills/RG/AppendixFHsharpPartial.lean`, the finite
+cutoff version of the Appendix-F second Ursell layer.
+
+The definition `appendixFHoleHsharpPartial HF zK N Y` is the finite sum of
+`appendixFHoleHsharpTerm HF zK Y n` over `n < N`.  The lemmas
+`appendixFHoleHsharpPartial_zero` and `appendixFHoleHsharpPartial_succ`
+record the cutoff recursion.  The theorem
+`sum_appendixFHoleHsharpPartial_eq_sum_clusterSum_terms` proves the finite
+target-lumping identity: summing this partial `H#` over all target unions is
+exactly the finite sum of the matching fixed-size ordinary KP cluster-sum
+terms.
+
+The residual-adapter half mirrors the totalized `H#` bridge.  A source-supplied
+complex-norm estimate on the finite partial object feeds
+`ClusterWithHolesActivityDecay`, then the omega-rooted
+`SingleScaleUVDecay` producer, with the usual explicit residual domination
+`κ₀ <= κ - 3κ₀ - 3` or sufficient margin `κ >= 4κ₀ + 3`.  Real-part
+specializations are provided for the canonical scalar projection.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpPartial.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is finite staging only.  It does not prove convergence
+of the finite partial activities to the totalized `appendixFHoleHsharp`, does
+not justify exchange with an infinite target/cluster-size sum, does not prove
+Dimock's residual estimate, and does not establish any continuum/Clay theorem.
+Clay distance **~0% (<0.1%), unchanged**.

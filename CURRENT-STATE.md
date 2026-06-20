@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8299 jobs**.
+* `lake build YangMillsCore` is green at **8300 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -297,6 +297,22 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   The real-part theorem is the current concrete scalar adapter; a later
   physically normalized projection still needs its own definition and
   contraction proof if it differs from `Complex.re`;
+* the finite partial second-Ursell layer
+  `YangMills/RG/AppendixFHsharpPartial.lean`: it defines
+  `appendixFHoleHsharpPartial HF zK N Y` as the finite sum of
+  `appendixFHoleHsharpTerm` over cluster sizes `< N`.  The theorems
+  `appendixFHoleHsharpPartial_zero` and
+  `appendixFHoleHsharpPartial_succ` give the truncation recursion, while
+  `sum_appendixFHoleHsharpPartial_eq_sum_clusterSum_terms` proves that
+  summing the finite partial object over all target unions equals the finite
+  sum of the corresponding ordinary KP cluster-sum terms.  The same module
+  mirrors the residual adapter at finite cutoff via
+  `clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_le`,
+  `rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_le`,
+  `singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial`, and real-part
+  specializations with and without the margin `κ >= 4κ₀ + 3`.  This is
+  convergence-free staging: it does not prove that the partial objects
+  converge to `appendixFHoleHsharp`, nor any residual analytic estimate;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound

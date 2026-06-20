@@ -15,6 +15,7 @@ import YangMills.RG.AppendixFKsharpEstimate
 import YangMills.RG.AppendixFSecondGas
 import YangMills.RG.AppendixFHsharp
 import YangMills.RG.AppendixFHsharpResidual
+import YangMills.RG.AppendixFHsharpPartial
 
 /-! # Oracle check — one command, every headline
 
@@ -588,6 +589,16 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_im
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_im_four_mul_margin
+-- finite partial H# truncations: no convergence of the outer tsum is used.
+#print axioms YangMills.RG.appendixFHoleHsharpPartial_zero
+#print axioms YangMills.RG.appendixFHoleHsharpPartial_succ
+#print axioms YangMills.RG.sum_appendixFHoleHsharpPartial_eq_sum_clusterSum_terms
+#print axioms YangMills.RG.clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_le
+#print axioms YangMills.RG.rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_le
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial_four_mul_margin
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial_re
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial_re_four_mul_margin
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

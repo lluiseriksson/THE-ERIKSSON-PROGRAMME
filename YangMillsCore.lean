@@ -335,6 +335,9 @@ import YangMills.RG.AppendixFHsharp
 -- Residual H# adapter: a source-supplied complex-norm bound for the second
 -- Ursell activity feeds the real omega-rooted `SingleScaleUVDecay` producer.
 import YangMills.RG.AppendixFHsharpResidual
+-- Finite partial H# truncations: convergence-free Ursell partial sums and the
+-- same residual UV adapter at finite cutoff.
+import YangMills.RG.AppendixFHsharpPartial
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
