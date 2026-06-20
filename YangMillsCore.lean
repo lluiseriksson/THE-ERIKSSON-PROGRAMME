@@ -246,6 +246,9 @@ import YangMills.RG.AppendixFCover
 -- Ultralocal factorization specialized to finite Mayer-cover products:
 -- disconnected fluctuation-support components factor under product measure.
 import YangMills.RG.MayerCoverFactorization
+-- Appendix-F target-cover wrapper for the existing Ω-component Mayer
+-- factorization, keeping the explicit active target union in the interface.
+import YangMills.RG.AppendixFFactorization
 -- The honest YM end-to-end UV conditional with the MARGINAL coupling: the
 -- geometric-profile assembly generalized to any nonnegative summable scale
 -- profile, specialized to the (asymptotically-free) marginal coupling flow.
