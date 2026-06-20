@@ -208,6 +208,30 @@ a generator, their product is zero. -/
   rw [finiteExteriorBasis_mul_of_not_disjoint h]
   simp
 
+/-- If two disjoint cardinality-indexed basis monomials fill the top degree,
+their Berezin top coefficient is exactly the explicit exterior orientation
+sign. -/
+theorem finiteBerezinTop_powersetCard_mul_of_disjoint_top
+    {n m k : ℕ} (s : Set.powersetCard (Fin n) m)
+    (t : Set.powersetCard (Fin n) k)
+    (h : Disjoint (s : Finset (Fin n)) (t : Finset (Fin n)))
+    (htop : (Set.powersetCard.disjUnion h : Finset (Fin n)) =
+      (Finset.univ : Finset (Fin n))) :
+    finiteBerezinTop n
+        ((finiteExteriorBasis n (s : Finset (Fin n))) *
+          (finiteExteriorBasis n (t : Finset (Fin n)))) =
+      (Set.powersetCard.permOfDisjoint h).sign • (1 : ℂ) := by
+  have hunion : (s : Finset (Fin n)) ∪ (t : Finset (Fin n)) =
+      (Finset.univ : Finset (Fin n)) := by
+    ext x
+    have hx :
+        (x ∈ (Set.powersetCard.disjUnion h : Finset (Fin n))) ↔
+          x ∈ (Finset.univ : Finset (Fin n)) := by
+      rw [htop]
+    simpa [Set.powersetCard.mem_disjUnion, Finset.mem_union] using hx
+  rw [finiteExteriorBasis_powersetCard_mul_of_disjoint s t h]
+  simp [finiteBerezinTop, hunion]
+
 /-- Grassmann nilpotence for finite exterior basis generators: each degree-one
 basis monomial squares to zero.  This is the first generator-level algebraic
 fact needed before finite Gaussian/Pfaffian identities can be stated honestly. -/

@@ -5880,7 +5880,8 @@ continuum limit, or OS/Wightman reconstruction.  Clay distance
 `YangMills.SUSY.finiteExteriorBasis_powersetCard_mul_of_not_disjoint`,
 `YangMills.SUSY.finiteExteriorBasis_powersetCard_mul_of_disjoint`,
 `YangMills.SUSY.finiteExteriorBasis_mul_of_not_disjoint`,
-`YangMills.SUSY.finiteBerezinTop_basis_mul_of_not_disjoint`;
+`YangMills.SUSY.finiteBerezinTop_basis_mul_of_not_disjoint`,
+`YangMills.SUSY.finiteBerezinTop_powersetCard_mul_of_disjoint_top`;
 core 8284)
 
 This addendum generalizes the previous singleton nilpotence brick into the
@@ -5892,6 +5893,9 @@ finite exterior-basis product API needed for explicit Berezin expansions.
 * If two cardinality-indexed basis monomials are disjoint, their product is the
   exterior basis monomial of the disjoint union multiplied by Mathlib's explicit
   permutation sign.
+* If that disjoint union is the full generator set, the Berezin top coefficient
+  of the product is exactly the same explicit orientation sign acting on
+  `(1 : ℂ)`.
 
 The disjoint case intentionally leaves the orientation sign visible.  This
 avoids the earlier rejected shortcut through concrete decision-procedure signs

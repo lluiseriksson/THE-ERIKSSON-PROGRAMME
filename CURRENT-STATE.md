@@ -183,6 +183,8 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `finiteExteriorBasis_mul_of_not_disjoint` and
   `finiteExteriorBasis_powersetCard_mul_of_disjoint`: repeated generators kill
   a product, while disjoint products carry Mathlib's explicit orientation sign.
+  `finiteBerezinTop_powersetCard_mul_of_disjoint_top` then extracts that sign
+  as the top coefficient whenever the disjoint union fills all generators.
   This is only the algebraic Berezin/Ward coefficient layer, not yet a
   super-Gaussian determinant/Pfaffian theorem.
 * the Ward-cancelled polymer bridge `YangMills/SUSY/WardPolymer.lean`: finite

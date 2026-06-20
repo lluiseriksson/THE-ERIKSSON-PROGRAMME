@@ -105,7 +105,9 @@ activity has amplitude `amp + S`.
   `finiteBerezinTop_basis_mul_of_not_disjoint` provide the corresponding
   monomial and Berezin-top-coefficient zero rules whenever two basis monomials
   share a generator.  The disjoint `powersetCard` wrapper keeps the
-  orientation sign explicit for later Pfaffian work.
+  orientation sign explicit for later Pfaffian work, and
+  `finiteBerezinTop_powersetCard_mul_of_disjoint_top` extracts exactly that
+  sign when the disjoint union is top-degree.
 
 This is the first concrete finite Grassmann/Berezin layer underneath the
 abstract Ward interface.  The weighted functional is the algebraic slot into
