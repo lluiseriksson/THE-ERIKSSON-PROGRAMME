@@ -99,6 +99,26 @@ dimension. -/
   rw [Algebra.algebraMap_eq_smul_one, map_smul,
     finiteBerezinTop_one_of_pos hn, smul_zero]
 
+/-- The finite Berezin functional with an algebraic left weight.  This is the
+finite-dimensional Grassmann analogue of integrating `F` against the weight
+`weight`: it extracts the top coefficient of `weight * F`. -/
+def finiteBerezinWeighted (n : ℕ) (weight : FiniteExterior n) :
+    FiniteExterior n →ₗ[ℂ] ℂ :=
+  (finiteBerezinTop n).comp (LinearMap.mulLeft ℂ weight)
+
+/-- Weighted finite Berezin integration is top-coefficient extraction after
+left multiplication by the weight. -/
+@[simp] theorem finiteBerezinWeighted_apply (n : ℕ)
+    (weight F : FiniteExterior n) :
+    finiteBerezinWeighted n weight F = finiteBerezinTop n (weight * F) := by
+  rfl
+
+/-- Unit weight recovers the unweighted finite Berezin top functional. -/
+@[simp] theorem finiteBerezinWeighted_one (n : ℕ) :
+    finiteBerezinWeighted n (1 : FiniteExterior n) = finiteBerezinTop n := by
+  ext F
+  simp [finiteBerezinWeighted]
+
 /-- A finite algebraic exact-Ward package for the Berezin top-coefficient
 functional.  This is deliberately linear/algebraic, not an `ApproxWardComplex`:
 the exterior algebra is not given an artificial norm or topology here. -/
@@ -125,6 +145,39 @@ theorem finiteBerezin_eq_expect_remainder_of_exactWard {n : ℕ}
     _ = 0 + finiteBerezinTop n R := by
       rw [finiteBerezin_expect_Q_eq_zero W B]
     _ = finiteBerezinTop n R := by rw [zero_add]
+
+/-- A finite algebraic exact-Ward package for a weighted Berezin functional.
+The Ward identity is deliberately an explicit field: later Gaussian/Berezin
+work must construct a weight and a differential that satisfy it. -/
+structure FiniteBerezinWeightedExactWard (n : ℕ)
+    (weight : FiniteExterior n) where
+  /-- The exact finite Ward differential. -/
+  Q : FiniteExterior n →ₗ[ℂ] FiniteExterior n
+  /-- Exact Ward identity for the weighted finite Berezin functional. -/
+  ward_exact : ∀ F : FiniteExterior n, finiteBerezinWeighted n weight (Q F) = 0
+
+/-- Exact weighted finite Berezin Ward cancellation of a `Q`-exact term. -/
+theorem finiteBerezinWeighted_expect_Q_eq_zero {n : ℕ}
+    {weight : FiniteExterior n}
+    (W : FiniteBerezinWeightedExactWard n weight) (F : FiniteExterior n) :
+    finiteBerezinWeighted n weight (W.Q F) = 0 :=
+  W.ward_exact F
+
+/-- Exact weighted finite Berezin cancellation for a decomposition
+`H = Q B + R`. -/
+theorem finiteBerezinWeighted_eq_expect_remainder_of_exactWard {n : ℕ}
+    {weight : FiniteExterior n}
+    (W : FiniteBerezinWeightedExactWard n weight) (H B R : FiniteExterior n)
+    (hdec : H = W.Q B + R) :
+    finiteBerezinWeighted n weight H = finiteBerezinWeighted n weight R := by
+  calc
+    finiteBerezinWeighted n weight H =
+        finiteBerezinWeighted n weight (W.Q B + R) := by rw [hdec]
+    _ = finiteBerezinWeighted n weight (W.Q B) +
+        finiteBerezinWeighted n weight R := by rw [map_add]
+    _ = 0 + finiteBerezinWeighted n weight R := by
+      rw [finiteBerezinWeighted_expect_Q_eq_zero W B]
+    _ = finiteBerezinWeighted n weight R := by rw [zero_add]
 
 end
 

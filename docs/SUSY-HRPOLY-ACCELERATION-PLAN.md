@@ -85,11 +85,20 @@ activity has amplitude `amp + S`.
 * `FiniteBerezinExactWard`, `finiteBerezin_expect_Q_eq_zero`, and
   `finiteBerezin_eq_expect_remainder_of_exactWard` give the exact algebraic
   Ward-cancellation rule for this concrete finite Berezin functional.
+* `finiteBerezinWeighted n weight` is the algebraic weighted Berezin
+  functional `F ↦ finiteBerezinTop n (weight * F)`;
+* `finiteBerezinWeighted_one` proves that unit weight recovers
+  `finiteBerezinTop`;
+* `FiniteBerezinWeightedExactWard`,
+  `finiteBerezinWeighted_expect_Q_eq_zero`, and
+  `finiteBerezinWeighted_eq_expect_remainder_of_exactWard` give the same exact
+  cancellation rule for weighted finite Berezin integrals.
 
 This is the first concrete finite Grassmann/Berezin layer underneath the
-abstract Ward interface.  It is not yet a Gaussian Berezin weight,
-fermionic covariance, Pfaffian/determinant cancellation, or physical SUSY/YM
-construction.
+abstract Ward interface.  The weighted functional is the algebraic slot into
+which a finite Gaussian Berezin weight can later be inserted.  It is not yet a
+constructed Gaussian Berezin weight with covariance, a Pfaffian/determinant
+cancellation identity, or a physical SUSY/YM construction.
 
 ## What remains open
 

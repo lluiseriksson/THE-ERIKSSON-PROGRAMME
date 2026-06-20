@@ -5787,3 +5787,34 @@ top-coefficient functional.  It does not construct the Ward differential from
 a physical supersymmetry, prove Gaussian Berezin determinant/Pfaffian
 identities, bound any Yang-Mills activity, discharge `hRpoly`, or affect the
 continuum Clay obligations.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 172 (2026-06-20, **weighted finite Berezin Ward functional**
+`YangMills.SUSY.finiteBerezinWeighted_apply`,
+`YangMills.SUSY.finiteBerezinWeighted_one`,
+`YangMills.SUSY.finiteBerezinWeighted_expect_Q_eq_zero`,
+`YangMills.SUSY.finiteBerezinWeighted_eq_expect_remainder_of_exactWard`;
+core 8284)
+
+This addendum adds the algebraic weighted Berezin functional
+
+`finiteBerezinWeighted n weight F = finiteBerezinTop n (weight * F)`.
+
+The theorem `finiteBerezinWeighted_one` proves that unit weight recovers the
+unweighted top-coefficient functional.  The new structure
+`FiniteBerezinWeightedExactWard n weight` then packages an exact finite Ward
+identity for this weighted functional, and
+`finiteBerezinWeighted_eq_expect_remainder_of_exactWard` proves the weighted
+cancellation rule:
+
+`H = Q B + R ⟹ ∫_weight H = ∫_weight R`.
+
+This is the next finite-dimensional substrate needed before a super-Gaussian
+toy model: future work can instantiate `weight` by an exterior-algebra
+Gaussian weight and then prove, from primary finite Berezin algebra, the
+determinant/Pfaffian cancellation identities.
+
+**Honest scope.** The weight is only an algebraic multiplier.  This checkpoint
+does not construct a covariance, prove a Gaussian Berezin determinant/Pfaffian
+formula, instantiate a physical supersymmetry, bound any Yang-Mills activity,
+discharge `hRpoly`, or affect the continuum Clay obligations.  Clay distance
+**~0% (<0.1%), unchanged**.
