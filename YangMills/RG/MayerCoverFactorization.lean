@@ -111,6 +111,44 @@ theorem confinedComponent_eq_of_mem {ι : Type*} (G : SimpleGraph ι)
     exact ⟨hy.1,
       confinedReachable_trans G K (confinedReachable_symm G K hx.2) hy.2⟩
 
+/-- Every vertex on a confined walk from the root to a component point is still
+in the same confined component. -/
+theorem mem_confinedComponent_of_mem_confinedWalk_support {ι : Type*} [DecidableEq ι]
+    (G : SimpleGraph ι) (K : Finset ι) {r x y : ι} (w : G.Walk r x)
+    (hwK : ∀ z, z ∈ w.support → z ∈ K) (hy : y ∈ w.support) :
+    y ∈ confinedComponent G K r := by
+  rw [mem_confinedComponent_iff]
+  exact ⟨hwK y hy,
+    ⟨w.takeUntil y hy, by
+      intro z hz
+      exact hwK z (w.support_takeUntil_subset hy hz)⟩⟩
+
+/-- A confined component is walk-connected in the ambient graph. -/
+theorem confinedComponent_walkConnected {ι : Type*} (G : SimpleGraph ι)
+    (K : Finset ι) (r : ι) :
+    walkConnected G (confinedComponent G K r) := by
+  classical
+  intro x hx y hy
+  rw [mem_confinedComponent_iff] at hx hy
+  rcases hx.2 with ⟨wx, hwxK⟩
+  rcases hy.2 with ⟨wy, hwyK⟩
+  refine ⟨wx.reverse.append wy, ?_⟩
+  intro z hz
+  rw [Walk.mem_support_append_iff] at hz
+  rcases hz with hz | hz
+  · rw [Walk.support_reverse] at hz
+    rw [List.mem_reverse] at hz
+    rw [mem_confinedComponent_iff]
+    exact ⟨hwxK z hz,
+      ⟨wx.takeUntil z hz, by
+        intro a ha
+        exact hwxK a (wx.support_takeUntil_subset hz ha)⟩⟩
+  · rw [mem_confinedComponent_iff]
+    exact ⟨hwyK z hz,
+      ⟨wy.takeUntil z hz, by
+        intro a ha
+        exact hwyK a (wy.support_takeUntil_subset hz ha)⟩⟩
+
 /-- The finite set of confined components of `K`. -/
 noncomputable def confinedComponents {ι : Type*} [DecidableEq ι]
     (G : SimpleGraph ι) (K : Finset ι) : Finset (Finset ι) := by
@@ -571,6 +609,64 @@ theorem mayerCoverActivity_integral_factor_confinedComponents
 end LocalActivity
 
 namespace OmegaConnectedCover
+
+/-- The confined component of a root in the Ω-overlap graph, packaged as an
+Ω-connected cover.  This is the finite compiler step from disconnected
+component extraction back into the source-shaped cover API. -/
+noncomputable def confinedComponentCover
+    {Site ι : Type*} [DecidableEq Site]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K : Finset ι) (r : ι) : OmegaConnectedCover Site ι where
+  index := confinedComponent (omegaOverlapGraph Ω activeSupport) K r
+  omega := Ω
+  activeSupport := activeSupport
+  connected := confinedComponent_walkConnected (omegaOverlapGraph Ω activeSupport) K r
+
+@[simp]
+theorem confinedComponentCover_index
+    {Site ι : Type*} [DecidableEq Site]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K : Finset ι) (r : ι) :
+    (confinedComponentCover Ω activeSupport K r).index =
+      confinedComponent (omegaOverlapGraph Ω activeSupport) K r := rfl
+
+@[simp]
+theorem confinedComponentCover_omega
+    {Site ι : Type*} [DecidableEq Site]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K : Finset ι) (r : ι) :
+    (confinedComponentCover Ω activeSupport K r).omega = Ω := rfl
+
+@[simp]
+theorem confinedComponentCover_activeSupport
+    {Site ι : Type*} [DecidableEq Site]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K : Finset ι) (r : ι) :
+    (confinedComponentCover Ω activeSupport K r).activeSupport = activeSupport := rfl
+
+@[simp]
+theorem mayerActivity_confinedComponentCover
+    {Site ι : Type*} [DecidableEq Site]
+    {Ψ Φ : Site → Type*}
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K : Finset ι) (r : ι)
+    (H : ι → LocalActivity Site Ψ Φ ℂ) :
+    ((confinedComponentCover Ω activeSupport K r).mayerActivity H) =
+      LocalActivity.mayerCoverActivity
+        (confinedComponent (omegaOverlapGraph Ω activeSupport) K r) H := rfl
+
+/-- Any finite component extracted from the Ω-overlap graph can be repackaged
+as an Ω-connected cover with the same index set. -/
+theorem exists_confinedComponentCover_of_mem_confinedComponents
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K C : Finset ι)
+    (hC : C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K) :
+    ∃ D : OmegaConnectedCover Site ι,
+      D.index = C ∧ D.omega = Ω ∧ D.activeSupport = activeSupport := by
+  rcases (mem_confinedComponents_iff (omegaOverlapGraph Ω activeSupport) K C).mp hC
+    with ⟨r, _hr, rfl⟩
+  exact ⟨confinedComponentCover Ω activeSupport K r, rfl, rfl, rfl⟩
 
 /-- Two Ω-connected Mayer activities with disjoint fluctuation-support unions
 factorize under an ultralocal product probability measure, with the spectator

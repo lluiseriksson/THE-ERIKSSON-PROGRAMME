@@ -153,11 +153,16 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.OmegaConnectedCover.globalEval_mayerActivity
 #print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_globalEval_eq_of_agreeOn
 -- ultralocal independence for finite Mayer-cover products
+#print axioms YangMills.RG.mem_confinedComponent_of_mem_confinedWalk_support
+#print axioms YangMills.RG.confinedComponent_walkConnected
 #print axioms YangMills.RG.no_adj_confinedComponent_compl
 #print axioms YangMills.RG.biUnion_confinedComponents_eq
 #print axioms YangMills.RG.confinedComponents_eq_of_nonempty_inter
 #print axioms YangMills.RG.disjoint_of_mem_confinedComponents_ne
 #print axioms YangMills.RG.no_adj_of_mem_confinedComponents_ne
+#print axioms YangMills.RG.OmegaConnectedCover.confinedComponentCover
+#print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_confinedComponentCover
+#print axioms YangMills.RG.OmegaConnectedCover.exists_confinedComponentCover_of_mem_confinedComponents
 #print axioms YangMills.RG.LocalActivity.fluctuationOverlapGraph_adj_iff
 #print axioms YangMills.RG.LocalActivity.pairwise_disjoint_fluctuationSupport_of_no_cross_adj
 #print axioms YangMills.RG.LocalActivity.globalEval_mayerCoverActivity_union

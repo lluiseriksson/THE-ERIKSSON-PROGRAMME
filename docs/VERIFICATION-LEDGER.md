@@ -5430,3 +5430,29 @@ step for the future Dimock-F.1 formalization.  It does not identify the actual
 Appendix-F polymers, prove the quantitative activity loss, construct the
 Yang-Mills fluctuation measure, establish `hRpoly`, continuum limit, or
 OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 159 (2026-06-20, **confined components as Ω-connected covers**
+`YangMills.RG.confinedComponent_walkConnected`,
+`YangMills.RG.OmegaConnectedCover.confinedComponentCover`,
+`YangMills.RG.OmegaConnectedCover.exists_confinedComponentCover_of_mem_confinedComponents`;
+core 8283)
+
+This addendum closes the finite handoff from the disconnected-component
+compiler back into the source-shaped Ω-cover API.  The support lemma
+`mem_confinedComponent_of_mem_confinedWalk_support` shows that every vertex
+appearing on a confined walk remains in the same confined component.  The
+theorem `confinedComponent_walkConnected` then proves that each confined
+component is walk-connected in the ambient graph.
+
+For the Ω-overlap graph, `OmegaConnectedCover.confinedComponentCover` packages
+the confined component of a root as an `OmegaConnectedCover` with the same
+Ω-region and active-support map.  The theorem
+`exists_confinedComponentCover_of_mem_confinedComponents` lifts every member of
+`confinedComponents (omegaOverlapGraph Ω activeSupport) K` to such a cover,
+so the finite all-components decomposition from Addendum 158 can hand its
+blocks directly to the Ω-connected Mayer-product layer.
+
+**Honest scope.** This is finite graph/component packaging for the future
+Dimock-F.1 compiler.  It does not prove Appendix-F activity decay, construct
+the Yang-Mills fluctuation measure, establish `hRpoly`, continuum limit, or
+OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
