@@ -199,6 +199,186 @@ theorem appendixFMetricCoverWeight_nonneg
     (pow_nonneg (mul_nonneg zero_le_two hH0) C.card)
     (Real.exp_nonneg _)
 
+/-- If a finite connected set `S` spans the active skeleton of `X`, then the
+modified metric of `X` plus one is bounded by `|S|`.  This is the reusable
+finite variational inequality behind the Appendix-F metric-stitching step. -/
+theorem discreteModifiedMetric_add_one_le_card_of_spanning_set
+    {d L : ℕ} (HF : HoleFamily d L)
+    (X S : Finset (Cube d L))
+    (hskel_ne : (skeleton HF X).Nonempty)
+    (hskel : skeleton HF X ⊆ S)
+    (hSsub : S ⊆ X) (hSconn : cubeConnected S) :
+    discreteModifiedMetric HF X + 1 ≤ S.card := by
+  classical
+  have h_ex :
+      ∃ T : Finset (Cube d L),
+        skeleton HF X ⊆ T ∧ T ⊆ X ∧ cubeConnected T :=
+    ⟨S, hskel, hSsub, hSconn⟩
+  have h_metric :
+      discreteModifiedMetric HF X =
+        sInf {n | ∃ T : Finset (Cube d L),
+          skeleton HF X ⊆ T ∧ T ⊆ X ∧ cubeConnected T ∧
+            T.card - 1 = n} := by
+    unfold discreteModifiedMetric
+    rw [dif_pos h_ex]
+  have hS_ne : S.Nonempty := by
+    rcases hskel_ne with ⟨r, hr⟩
+    exact ⟨r, hskel hr⟩
+  have hS_pos : 1 ≤ S.card := Finset.card_pos.mpr hS_ne
+  have hle : discreteModifiedMetric HF X ≤ S.card - 1 := by
+    rw [h_metric]
+    apply Nat.sInf_le
+    exact ⟨S, hskel, hSsub, hSconn, rfl⟩
+  omega
+
+/-- Metric stitching for a finite `Ω`-connected cover of source-facing
+with-holes polymers.  The target metric of the full cover union is bounded by
+the sum of the shifted metrics of the raw polymers in the cover:
+
+`d_M(⋃ X, mod holes) + 1 ≤ Σ_X (d_M(X, mod holes) + 1)`.
+
+This is the finite geometric part of Dimock's Appendix-F inequality (641), for
+the repository's discrete modified metric and the active-skeleton/full-target
+split.  It carries no analytic constants and no entropy estimate. -/
+theorem appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    {C : Finset (OmegaPolymerType HF z)}
+    (hC : C ∈ appendixFConnectedCoverRegion
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val) Λ) :
+    discreteModifiedMetric HF
+        (appendixFCoverUnion (fun X : OmegaPolymerType HF z => X.val) C) + 1
+      ≤ ∑ X ∈ C, (discreteModifiedMetric HF X.val + 1) := by
+  classical
+  let root : OmegaPolymerType HF z → Cube d L := fun X =>
+    Classical.choose X.property.right.right.right
+  have hroot : ∀ X : OmegaPolymerType HF z, root X ∈ skeleton HF X.val := by
+    intro X
+    exact Classical.choose_spec X.property.right.right.right
+  let S : OmegaPolymerType HF z → Finset (Cube d L) := fun X =>
+    Classical.choose
+      (exists_minimal_spanning_set HF X.val (root X) (hroot X)
+        X.property.right.left)
+  have hS_skel : ∀ X : OmegaPolymerType HF z, skeleton HF X.val ⊆ S X := by
+    intro X
+    exact (Classical.choose_spec
+      (exists_minimal_spanning_set HF X.val (root X) (hroot X)
+        X.property.right.left)).1
+  have hS_sub : ∀ X : OmegaPolymerType HF z, S X ⊆ X.val := by
+    intro X
+    exact (Classical.choose_spec
+      (exists_minimal_spanning_set HF X.val (root X) (hroot X)
+        X.property.right.left)).2.1
+  have hS_conn : ∀ X : OmegaPolymerType HF z, cubeConnected (S X) := by
+    intro X
+    exact (Classical.choose_spec
+      (exists_minimal_spanning_set HF X.val (root X) (hroot X)
+        X.property.right.left)).2.2.1
+  have hS_card :
+      ∀ X : OmegaPolymerType HF z,
+        (S X).card = discreteModifiedMetric HF X.val + 1 := by
+    intro X
+    exact (Classical.choose_spec
+      (exists_minimal_spanning_set HF X.val (root X) (hroot X)
+        X.property.right.left)).2.2.2.2
+  have hSUnion_skel :
+      skeleton HF
+          (appendixFCoverUnion (fun X : OmegaPolymerType HF z => X.val) C)
+        ⊆ C.biUnion S := by
+    intro r hr
+    rw [appendixFHoleCoverUnion_skeleton HF z C] at hr
+    rw [appendixFCoverUnion, Finset.mem_biUnion] at hr
+    rw [Finset.mem_biUnion]
+    rcases hr with ⟨X, hX, hrX⟩
+    exact ⟨X, hX, hS_skel X hrX⟩
+  have hSUnion_sub :
+      C.biUnion S ⊆
+        appendixFCoverUnion (fun X : OmegaPolymerType HF z => X.val) C := by
+    intro r hr
+    rw [Finset.mem_biUnion] at hr
+    rw [appendixFCoverUnion, Finset.mem_biUnion]
+    rcases hr with ⟨X, hX, hrS⟩
+    exact ⟨X, hX, hS_sub X hrS⟩
+  have hS_hadj :
+      ∀ X Y : OmegaPolymerType HF z,
+        (omegaOverlapGraph (Finset.univ : Finset (Cube d L))
+          (fun P : OmegaPolymerType HF z => skeleton HF P.val)).Adj X Y →
+          ¬ Disjoint (S X) (S Y) := by
+    intro X Y hAdj hdisj
+    rw [omegaOverlapGraph_adj_iff] at hAdj
+    apply hAdj.2
+    rw [Finset.disjoint_left]
+    intro r hrX hrY
+    have hrX' : r ∈ S X := hS_skel X (by simpa using hrX)
+    have hrY' : r ∈ S Y := hS_skel Y (by simpa using hrY)
+    exact (Finset.disjoint_left.mp hdisj hrX') hrY'
+  have hCdata :=
+    (mem_appendixFConnectedCoverRegion_iff
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val) Λ C).mp hC
+  have hSUnion_conn : cubeConnected (C.biUnion S) := by
+    rw [cubeConnected]
+    intro x hx y hy
+    rw [Finset.mem_biUnion] at hx hy
+    rcases hx with ⟨X, hX, hxS⟩
+    rcases hy with ⟨Y, hY, hyS⟩
+    obtain ⟨w, hwC⟩ := hCdata.2.2 X hX Y hY
+    obtain ⟨wCube, hwCube⟩ :=
+      walk_union_connected
+        (omegaOverlapGraph (Finset.univ : Finset (Cube d L))
+          (fun P : OmegaPolymerType HF z => skeleton HF P.val))
+        (cubeAdj d L) S hS_conn hS_hadj w x hxS y hyS
+    refine ⟨wCube, ?_⟩
+    intro v hv
+    rcases hwCube v hv with ⟨P, hPw, hvP⟩
+    exact Finset.mem_biUnion.mpr ⟨P, hwC P hPw, hvP⟩
+  have hskel_ne :
+      (skeleton HF
+        (appendixFCoverUnion (fun X : OmegaPolymerType HF z => X.val) C)).Nonempty := by
+    rw [appendixFHoleCoverUnion_skeleton]
+    exact appendixFHoleActiveCoverUnion_nonempty HF z Λ hC
+  have hmetric :
+      discreteModifiedMetric HF
+          (appendixFCoverUnion (fun X : OmegaPolymerType HF z => X.val) C) + 1
+        ≤ (C.biUnion S).card :=
+    discreteModifiedMetric_add_one_le_card_of_spanning_set HF
+      (appendixFCoverUnion (fun X : OmegaPolymerType HF z => X.val) C)
+      (C.biUnion S) hskel_ne hSUnion_skel hSUnion_sub hSUnion_conn
+  have hcard :
+      (C.biUnion S).card ≤ ∑ X ∈ C, (S X).card :=
+    Finset.card_biUnion_le
+  have hsum :
+      ∑ X ∈ C, (S X).card =
+        ∑ X ∈ C, (discreteModifiedMetric HF X.val + 1) := by
+    simp [hS_card]
+  exact hmetric.trans (hcard.trans_eq hsum)
+
+/-- Fiber form of the with-holes metric-stitching inequality. -/
+theorem appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    {Y : Finset (Cube d L)} {C : Finset (OmegaPolymerType HF z)}
+    (hC : C ∈ appendixFTargetFiber
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ Y) :
+    discreteModifiedMetric HF Y + 1
+      ≤ ∑ X ∈ C, (discreteModifiedMetric HF X.val + 1) := by
+  classical
+  have hCdata :=
+    (mem_appendixFTargetFiber_iff
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ Y C).mp hC
+  rw [← hCdata.2]
+  exact appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum
+    HF z Λ hCdata.1
+
 /-- The finite target-fiber metric majorant for the first connected activity.
 This is the right-hand side of
 `norm_appendixFConnectedActivity_le_metricCoverSum`, packaged for reuse. -/

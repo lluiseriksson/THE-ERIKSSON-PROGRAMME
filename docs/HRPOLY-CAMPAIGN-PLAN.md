@@ -8,8 +8,11 @@ construction, finite-range/resolvent decay, explicit shell-growth summability,
 the source-faithful Appendix-F target-family compiler, and the first finite
 quantitative connected-activity majorant.  The remaining genuinely analytic
 target is still `hRpoly`: the concrete Yang-Mills activity-decay estimate for
-the actual gauge RG operator, plus the Appendix-F metric/entropy estimates
-that convert the finite connected-cover sum into Dimock's exponential bound.
+the actual gauge RG operator, plus the Appendix-F connected-cover entropy and
+activity estimates that convert the finite connected-cover sum into Dimock's
+exponential bound.  The source-faithful finite modified-metric stitching
+`d_M(Y)+1 ≤ Σ_X(d_M(X)+1)` is now theorem-fed; the analytic bound on the
+resulting cover sum is still open.
 
 **Original date:** 2026-06-12.  This is the source-grounded campaign document
 for discharging `hRpoly`, the **sole remaining genuinely-analytic carried
@@ -248,16 +251,16 @@ valid active hole-polymer, and the full-target union map is
 injective/cardinality-preserving on admissible connected-cover families even
 though admissibility uses only active-skeleton disjointness.  The follow-up
 module `AppendixFHoleTargetFamily.lean` closes the corresponding two-support
-target-choice Fubini/lumping identity, with `overlapSupport X = skeleton HF
-X.val` and `targetSupport X = X.val`: target choices are reindexed by
+target-choice Fubini/lumping identity, with active support
+`skeleton HF X.val` and target support `X.val`: target choices are reindexed by
 connected-cover families, the product over full-target fiber activities equals
 the connected-cover family sum, and the finite raw Mayer product is recovered
 as `prod_one_add_eq_sum_appendixFHoleAdmissibleTargetFamilies` (plus
 `complex_exp_sum_eq_sum_appendixFHoleAdmissibleTargetFamilies`).  The remaining
 Appendix-F work is now analytic/geometric rather than this finite lumping
-step: metric inequality (641), activity bound (642), integration to `K#`,
+step: connected-cover entropy/activity bound (642), integration to `K#`,
 second Ursell expansion to `H#`, and the source-specific raw Yang-Mills
-activity estimate.
+activity estimate.  The finite metric stitching item is closed below.
 
 **Finite first-activity quantitative checkpoint (2026-06-20).**
 `AppendixFQuantitative.lean` adds the first source-independent quantitative
@@ -268,10 +271,11 @@ activity `K(Y)` by the explicit finite connected-cover sum
 `Σ_C (2H0)^{|C|} exp(-κ Σ_{X∈C} metric X)`.  The source-facing theorem
 `norm_appendixFHoleConnectedMayerActivity_expSubOne_le_metricCoverSum`
 specializes this to `omegaHolePolymerSystem`, using active skeletons for
-connectivity and full hole-polymer unions for targets.  This is not yet
-Dimock (641)--(642): the remaining P3 work is to control that connected-cover
-sum by the modified metric of the target `Y`, then integrate to `K#` and run
-the second Ursell/logarithmic expansion to `H#`.
+connectivity and full hole-polymer unions for targets.  This is not yet the
+full Dimock (641)--(642): the remaining P3 work is to combine finite metric
+stitching with connected-cover entropy to control that sum by the modified
+metric of the target `Y`, then integrate to `K#` and run the second
+Ursell/logarithmic expansion to `H#`.
 The finite localization bridge is now also theorem-fed:
 `norm_appendixFHoleConnectedMayerActivity_expSubOne_le_pinnedMetricCoverSum`
 shows that, for any `r ∈ Y`, the same first activity is bounded by the pinned
@@ -279,6 +283,14 @@ connected-cover sum over covers containing some raw full polymer through `r`.
 This is the source-facing local-influence form needed before applying a
 Dimock-style entropy/metric estimate; it deliberately leaves that pinned sum
 unestimated.
+
+The finite with-holes modified-metric stitching is also theorem-fed:
+`appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum` proves that
+every active-skeleton connected target-fiber cover satisfies
+`d_M(Y, mod holes)+1 ≤ Σ_X (d_M(X, mod holes)+1)`, using the repository's
+`discreteModifiedMetric` and the active-skeleton/full-target split.  This is
+the geometric part of Dimock's (641).  It still leaves the connected-cover
+entropy estimate and the final activity bound (642) open.
 
 ### P4 route refinement: collar factorization from covariance decay
 

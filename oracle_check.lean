@@ -508,6 +508,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFConnectedActivity_le_pinnedMetricCoverSum
 #print axioms YangMills.RG.appendixFHoleTargetMetricCoverSum_le_pinnedMetricCoverSum
 #print axioms YangMills.RG.norm_appendixFHoleConnectedMayerActivity_expSubOne_le_pinnedMetricCoverSum
+-- finite with-holes modified-metric stitching: the geometric part of (641),
+-- still before connected-cover entropy and the activity bound (642).
+#print axioms YangMills.RG.discreteModifiedMetric_add_one_le_card_of_spanning_set
+#print axioms YangMills.RG.appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum
+#print axioms YangMills.RG.appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

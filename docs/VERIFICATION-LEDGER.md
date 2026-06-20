@@ -6342,3 +6342,69 @@ constant or by `exp(-c d_M(Y))`; it does not prove metric inequality (641),
 activity bound (642), connected-cover entropy, `K#`, `H#`, Yang-Mills raw
 activity, `hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 186 (2026-06-20, **finite Appendix-F with-holes metric stitching**
+`YangMills.RG.discreteModifiedMetric_add_one_le_card_of_spanning_set`,
+`YangMills.RG.appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum`,
+`YangMills.RG.appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum`;
+core 8290)
+
+This addendum extends `YangMills/RG/AppendixFQuantitative.lean` with the finite
+geometric stitching step for the source-facing Appendix-F with-holes carrier.
+
+The reusable variational lemma
+`discreteModifiedMetric_add_one_le_card_of_spanning_set` proves that any finite
+connected set `S` spanning the active skeleton of a full polymer `X` bounds the
+repository's modified metric:
+
+```
+discreteModifiedMetric HF X + 1 ≤ S.card.
+```
+
+The main cover theorem
+`appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum` applies this
+to an active-skeleton connected cover of `OmegaPolymerType` polymers.  For each
+raw polymer it chooses a minimal connected skeleton-spanning set, then uses the
+already-proved `walk_union_connected` transport along the Appendix-F
+Ω-overlap graph to show that the union of those spanning sets is connected.
+Together with subadditivity of finite-cardinality under `biUnion`, this gives
+the finite shifted metric inequality
+
+```
+d_M(⋃ full targets, mod holes) + 1
+  ≤ Σ_X (d_M(X, mod holes) + 1).
+```
+
+The fiber theorem
+`appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum` rewrites the
+full target union as the target `Y`, yielding the exact source-facing form
+
+```
+d_M(Y, mod holes) + 1
+  ≤ Σ_{X in C} (d_M(X, mod holes) + 1)
+```
+
+for every `C ∈ appendixFTargetFiber` built from active skeletons and full
+hole-polymer targets.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFQuantitative.lean
+lake build YangMills.RG.AppendixFQuantitative
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This closes the finite geometric part of Dimock-style
+metric stitching for the repository's discrete modified metric and the
+active-skeleton/full-target split.  It does not prove connected-cover entropy,
+does not sum the target-fiber majorant, does not prove activity bound (642),
+does not construct `K#` or `H#`, does not prove the Yang-Mills raw activity
+estimate, and does not discharge `hRpoly` or any continuum/Clay/OS/Wightman
+statement.  Clay distance **~0% (<0.1%), unchanged**.
