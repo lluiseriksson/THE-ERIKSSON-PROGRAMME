@@ -185,6 +185,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   a product, while disjoint products carry Mathlib's explicit orientation sign.
   `finiteBerezinTop_powersetCard_mul_of_disjoint_top` then extracts that sign
   as the top coefficient whenever the disjoint union fills all generators.
+  The weighted top-density calculus is now basis-explicit as well: the empty
+  monomial integrates to the prescribed coefficient `a`, the top monomial
+  integrates to `1` in positive dimension, and every nonempty non-top monomial
+  integrates to `0`.
   This is only the algebraic Berezin/Ward coefficient layer, not yet a
   super-Gaussian determinant/Pfaffian theorem.
 * the Ward-cancelled polymer bridge `YangMills/SUSY/WardPolymer.lean`: finite

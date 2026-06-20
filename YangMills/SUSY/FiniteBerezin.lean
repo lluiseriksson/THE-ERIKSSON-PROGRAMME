@@ -232,6 +232,87 @@ theorem finiteBerezinTop_powersetCard_mul_of_disjoint_top
   rw [finiteExteriorBasis_powersetCard_mul_of_disjoint s t h]
   simp [finiteBerezinTop, hunion]
 
+/-- The top exterior monomial annihilates every nonempty basis monomial on the
+right: multiplying by a repeated generator gives zero. -/
+@[simp] theorem finiteExteriorBasis_univ_mul_of_nonempty {n : ℕ}
+    {s : Finset (Fin n)} (hs : s.Nonempty) :
+    (finiteExteriorBasis n (Finset.univ : Finset (Fin n))) *
+      (finiteExteriorBasis n s) = 0 := by
+  apply finiteExteriorBasis_mul_of_not_disjoint
+  intro hdisj
+  rcases hs with ⟨i, hi⟩
+  exact (Finset.disjoint_left.mp hdisj (Finset.mem_univ i) hi)
+
+/-- Every nonempty basis monomial annihilates the top exterior monomial on the
+right: again, multiplying by a repeated generator gives zero. -/
+@[simp] theorem finiteExteriorBasis_mul_univ_of_nonempty {n : ℕ}
+    {s : Finset (Fin n)} (hs : s.Nonempty) :
+    (finiteExteriorBasis n s) *
+      (finiteExteriorBasis n (Finset.univ : Finset (Fin n))) = 0 := by
+  apply finiteExteriorBasis_mul_of_not_disjoint
+  intro hdisj
+  rcases hs with ⟨i, hi⟩
+  exact (Finset.disjoint_left.mp hdisj hi (Finset.mem_univ i))
+
+/-- In positive fermionic dimension, the top-density weight integrates the
+empty basis monomial to its prescribed top coefficient. -/
+@[simp] theorem finiteBerezinWeighted_topWeight_basis_empty_of_pos {n : ℕ}
+    (hn : 0 < n) (a : ℂ) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+        (finiteExteriorBasis n (∅ : Finset (Fin n))) = a := by
+  rw [finiteExteriorBasis_empty]
+  exact finiteBerezinWeighted_topWeight_one_of_pos hn a
+
+/-- On nonempty basis monomials, the top-density weight contributes no extra
+term: the added top monomial has repeated generator support and annihilates the
+observable before top-coefficient extraction. -/
+theorem finiteBerezinWeighted_topWeight_basis_of_nonempty {n : ℕ}
+    (a : ℂ) {s : Finset (Fin n)} (hs : s.Nonempty) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+        (finiteExteriorBasis n s) =
+      finiteBerezinTop n (finiteExteriorBasis n s) := by
+  calc
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+        (finiteExteriorBasis n s) =
+        finiteBerezinTop n
+          ((1 + a • finiteExteriorBasis n (Finset.univ : Finset (Fin n))) *
+            finiteExteriorBasis n s) := by
+      rfl
+    _ = finiteBerezinTop n
+        (finiteExteriorBasis n s +
+          (a • finiteExteriorBasis n (Finset.univ : Finset (Fin n))) *
+            finiteExteriorBasis n s) := by
+      rw [add_mul, one_mul]
+    _ = finiteBerezinTop n
+        (finiteExteriorBasis n s +
+          a • ((finiteExteriorBasis n (Finset.univ : Finset (Fin n))) *
+            finiteExteriorBasis n s)) := by
+      rw [smul_mul_assoc]
+    _ = finiteBerezinTop n (finiteExteriorBasis n s + a • 0) := by
+      rw [finiteExteriorBasis_univ_mul_of_nonempty hs]
+    _ = finiteBerezinTop n (finiteExteriorBasis n s) := by simp
+
+/-- In positive fermionic dimension, the top-density weight integrates the top
+basis monomial to one. -/
+@[simp] theorem finiteBerezinWeighted_topWeight_top_basis_of_pos {n : ℕ}
+    (hn : 0 < n) (a : ℂ) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+        (finiteExteriorBasis n (Finset.univ : Finset (Fin n))) = 1 := by
+  have huniv_nonempty : (Finset.univ : Finset (Fin n)).Nonempty :=
+    ⟨⟨0, hn⟩, by simp⟩
+  rw [finiteBerezinWeighted_topWeight_basis_of_nonempty a huniv_nonempty]
+  simp
+
+/-- Nonempty, non-top basis monomials still integrate to zero against the
+top-density weight. -/
+theorem finiteBerezinWeighted_topWeight_basis_of_nonempty_ne_top {n : ℕ}
+    (a : ℂ) {s : Finset (Fin n)} (hs : s.Nonempty)
+    (hstop : s ≠ (Finset.univ : Finset (Fin n))) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+        (finiteExteriorBasis n s) = 0 := by
+  rw [finiteBerezinWeighted_topWeight_basis_of_nonempty a hs]
+  exact finiteBerezinTop_basis_of_ne_top n hstop
+
 /-- Grassmann nilpotence for finite exterior basis generators: each degree-one
 basis monomial squares to zero.  This is the first generator-level algebraic
 fact needed before finite Gaussian/Pfaffian identities can be stated honestly. -/

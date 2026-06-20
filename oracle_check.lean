@@ -303,6 +303,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.SUSY.finiteExteriorBasis_mul_of_not_disjoint
 #print axioms YangMills.SUSY.finiteBerezinTop_basis_mul_of_not_disjoint
 #print axioms YangMills.SUSY.finiteBerezinTop_powersetCard_mul_of_disjoint_top
+#print axioms YangMills.SUSY.finiteExteriorBasis_univ_mul_of_nonempty
+#print axioms YangMills.SUSY.finiteExteriorBasis_mul_univ_of_nonempty
+#print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_basis_empty_of_pos
+#print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_basis_of_nonempty
+#print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_top_basis_of_pos
+#print axioms YangMills.SUSY.finiteBerezinWeighted_topWeight_basis_of_nonempty_ne_top
 #print axioms YangMills.SUSY.finiteExteriorBasis_singleton_mul_self
 #print axioms YangMills.SUSY.finiteBerezin_expect_Q_eq_zero
 #print axioms YangMills.SUSY.finiteBerezin_eq_expect_remainder_of_exactWard

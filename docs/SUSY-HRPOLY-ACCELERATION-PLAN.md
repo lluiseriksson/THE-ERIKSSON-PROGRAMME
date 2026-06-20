@@ -108,6 +108,11 @@ activity has amplitude `amp + S`.
   orientation sign explicit for later Pfaffian work, and
   `finiteBerezinTop_powersetCard_mul_of_disjoint_top` extracts exactly that
   sign when the disjoint union is top-degree.
+* The weighted top-density seed is now computed on basis monomials:
+  `finiteBerezinWeighted_topWeight_basis_empty_of_pos`,
+  `finiteBerezinWeighted_topWeight_top_basis_of_pos`, and
+  `finiteBerezinWeighted_topWeight_basis_of_nonempty_ne_top` isolate the
+  empty, top, and nonempty non-top cases in positive fermionic dimension.
 
 This is the first concrete finite Grassmann/Berezin layer underneath the
 abstract Ward interface.  The weighted functional is the algebraic slot into

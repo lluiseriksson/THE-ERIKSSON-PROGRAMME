@@ -5906,3 +5906,34 @@ remain auditable.
 do not prove a Gaussian Berezin integral, determinant/Pfaffian formula,
 physical supersymmetry, Yang-Mills activity bound, `hRpoly`, continuum limit,
 or OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 176 (2026-06-20, **top-density basis calculus**
+`YangMills.SUSY.finiteExteriorBasis_univ_mul_of_nonempty`,
+`YangMills.SUSY.finiteExteriorBasis_mul_univ_of_nonempty`,
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_basis_empty_of_pos`,
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_basis_of_nonempty`,
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_top_basis_of_pos`,
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_basis_of_nonempty_ne_top`;
+core 8284)
+
+This addendum computes the elementary top-density weight
+
+`finiteBerezinTopWeight n a = 1 + a • topBasis`
+
+on exterior basis monomials in positive fermionic dimension.
+
+* The top basis monomial annihilates any nonempty basis monomial on either
+  side, by repeated-generator nilpotence.
+* The empty basis monomial integrates to the prescribed coefficient `a`.
+* The top basis monomial integrates to `1`.
+* Every nonempty, non-top basis monomial integrates to `0`.
+
+This makes the toy finite Berezin density genuinely usable as a basis-level
+coefficient extractor before any Gaussian/Pfaffian determinant statement is
+attempted.
+
+**Honest scope.** This is still only finite exterior-algebra bookkeeping for a
+top-degree density seed.  It does not construct a Gaussian Berezin integral,
+determinant/Pfaffian formula, physical supersymmetry, Yang-Mills activity
+bound, `hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.
