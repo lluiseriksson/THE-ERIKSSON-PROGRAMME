@@ -6408,3 +6408,42 @@ does not sum the target-fiber majorant, does not prove activity bound (642),
 does not construct `K#` or `H#`, does not prove the Yang-Mills raw activity
 estimate, and does not discharge `hRpoly` or any continuum/Clay/OS/Wightman
 statement.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 187 (2026-06-20, **adversarial Dimock-Balaban source-claim
+audit**; documentation only; core 8290)
+
+This addendum adds `docs/SOURCE-CLAIM-AUDIT.md` and cross-links it from
+`CURRENT-STATE.md`, `docs/BALABAN-SOURCE-BOUNDS.md`,
+`HYPOTHESIS_FRONTIER.md`, and `README-FOR-NEXT-MODEL.md`.
+
+The audit records contradicted source attributions, the replacement
+Dimock-facing statements, the still-pending Balaban extraction queue, and the
+provenance fields required before any source statement may be promoted from
+`source-pending` to source-verified input.  It is intentionally adversarial:
+source extraction is not a Lean proof, scalar `phi^4_3` constants are not
+Yang-Mills constants, and polymer-local Balaban bounds are not a scalar
+`hRpoly` theorem until the exact support/activity bridge is built.
+
+No Lean theorem was added, no oracle entry changed, no build-job increase is
+claimed, and no source-pending Balaban statement was promoted.  The live P3
+frontier is now stated as: theorem-fed finite metric stitching in the source
+shape of (641), followed by the open connected-cover summation to (642),
+`K#`, `H#`, and the final loss.  P4 remains the concrete Yang-Mills raw
+activity estimate for the actual gauge RG operator.
+
+Verification:
+
+```
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The oracle output remains
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is documentation and source discipline only.  It closes
+no analytic estimate, does not prove activity bound (642), does not construct
+`K#` or `H#`, does not prove `hRpoly`, and does not affect the continuum/Clay
+frontier.  Clay distance **~0% (<0.1%), unchanged**.

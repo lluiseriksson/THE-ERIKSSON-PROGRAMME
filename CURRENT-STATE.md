@@ -8,6 +8,10 @@ This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
 before deciding what is actually proved and what remains open.
 
+Adversarial source-claim status, contradicted attributions, provenance fields,
+and the remaining Balaban extraction queue are tracked separately in
+[`docs/SOURCE-CLAIM-AUDIT.md`](docs/SOURCE-CLAIM-AUDIT.md).
+
 ## Verified Core
 
 * `lake build YangMillsCore` is green at **8290 jobs**.

@@ -4,14 +4,15 @@ You are a (more powerful) AI being handed this Lean 4 / Mathlib repository to ad
 single file is self-contained: it gives you the project's purpose, the build/verify loop,
 the iron rules, the complete map of what is proved, and the exact open targets. Read it once,
 top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
-`FOUNDATIONS.md`, `HORIZON.md`, `ROADMAP.md`, `docs/HANDOFF-KP.md`.)
+`FOUNDATIONS.md`, `HORIZON.md`, `ROADMAP.md`, `docs/HANDOFF-KP.md`,
+`docs/SOURCE-CLAIM-AUDIT.md`.)
 
 ---
 
-## Live snapshot (2026-06-14)
+## Live snapshot (2026-06-20)
 
 Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
-handoff below.  The verified core is green at **8264 jobs**, with Mathlib
+handoff below.  The verified core is green at **8290 jobs**, with Mathlib
 pinned and every headline oracle-clean at
 `[propext, Classical.choice, Quot.sound]`.
 

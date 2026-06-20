@@ -44,8 +44,11 @@ the import closure of `YangMillsCore`.  Gaps are carried as explicit
 * Even a full M3 discharge **does not** touch M4/M5.  The Clay distance
   stays ~0% (<0.1%) until the continuum limit and reconstruction exist.
 
-Machine-checked record: `docs/VERIFICATION-LEDGER.md` (83 addenda).
-Source-grounding for the carried inputs: `docs/BALABAN-SOURCE-BOUNDS.md`.
+Machine-checked record: `docs/VERIFICATION-LEDGER.md` (latest addenda).
+Source-grounding for the carried inputs:
+[`docs/BALABAN-SOURCE-BOUNDS.md`](docs/BALABAN-SOURCE-BOUNDS.md).
+Adversarial attribution/provenance audit:
+[`docs/SOURCE-CLAIM-AUDIT.md`](docs/SOURCE-CLAIM-AUDIT.md).
 
 ---
 

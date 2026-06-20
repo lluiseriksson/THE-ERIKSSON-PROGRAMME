@@ -5,6 +5,11 @@
 campaign targets, so G5 is *specifiable* from sources rather than
 reconstructed from memory.  **Honest caveats are flagged in bold.**
 
+Companion audit: [`SOURCE-CLAIM-AUDIT.md`](SOURCE-CLAIM-AUDIT.md) records
+contradicted claims, source-pending statements, local-PDF provenance, and the
+requirements for promoting an extraction to a source-verified input.  This file
+remains the positive quantitative transcription ledger.
+
 **Source-targeting audit (2026-06-20, corrected).**  For the remaining
 `hRpoly` Yang-Mills activity/locality package, do not cite mirror metadata
 without checking the Springer/DOI record and the paper text.  Web downloads
