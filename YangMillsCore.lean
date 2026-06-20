@@ -296,6 +296,10 @@ import YangMills.RG.LocalKP
 import YangMills.RG.ClusterDecay
 -- Source-faithful Appendix-F hole targets: skeleton connectivity, full target unions.
 import YangMills.RG.AppendixFHoleTarget
+-- Source-faithful two-support Appendix-F finite target-family compiler:
+-- active-skeleton hard-core admissibility, full-target fiber activities, and
+-- the exact finite reindexing back to the raw Mayer product.
+import YangMills.RG.AppendixFHoleTargetFamily
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

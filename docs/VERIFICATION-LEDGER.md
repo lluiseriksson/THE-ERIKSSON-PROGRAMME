@@ -6159,3 +6159,70 @@ activity bound (642), ultralocal integration (643)--(644), the second
 Ursell/logarithmic expansion (645)--(646), the Yang-Mills raw activity
 estimate, `hRpoly`, a continuum limit, or any Clay/OS/Wightman statement.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 183 (2026-06-20, **source-faithful two-support Appendix-F
+target-family Fubini closure**
+`YangMills.RG.appendixFHoleTargetChoiceCoverFamily_mem_admissible`,
+`YangMills.RG.appendixFHoleConnectedCoverFamilyTargetChoiceSigma_targetChoiceCoverFamily_eq`,
+`YangMills.RG.sum_appendixFHoleAdmissibleTargetChoices_eq_sum_admissibleConnectedCoverFamilies`,
+`YangMills.RG.sum_appendixFHoleAdmissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies`,
+`YangMills.RG.prod_one_add_eq_sum_appendixFHoleAdmissibleTargetFamilies`,
+`YangMills.RG.complex_exp_sum_eq_sum_appendixFHoleAdmissibleTargetFamilies`;
+core 8289)
+
+This addendum adds `YangMills/RG/AppendixFHoleTargetFamily.lean`, the exact
+finite two-support target-family compiler for `omegaHolePolymerSystem`.
+
+The new module uses active skeletons for the Appendix-F compatibility relation
+and full hole-polymer unions for target fibers:
+
+```
+overlapSupport X = skeleton HF X.val
+targetSupport  X = X.val
+activePart     Y = skeleton HF Y
+```
+
+It defines the connected Mayer activity by full target `Y`, admissible
+full-target families whose active skeletons are pairwise disjoint, and the
+dependent target-choice domain.  The main proof shows that erasing a target
+choice to its selected connected-cover family and then reconstructing the
+canonical full-target choice is a dependent left inverse, relying on the
+full-target injectivity theorem from Addendum 182.  Conversely, reconstructing
+from an admissible connected-cover family and erasing returns the original
+family.
+
+Consequently, the explicit finite choice sum is reindexed by admissible
+connected-cover families:
+
+```
+sum_appendixFHoleAdmissibleTargetChoices_eq_sum_admissibleConnectedCoverFamilies
+```
+
+Composing this with the product-over-fibers expansion gives the two-support
+target-family identity
+`sum_appendixFHoleAdmissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies`.
+Finally, the finite raw Mayer product is recovered as
+`prod_one_add_eq_sum_appendixFHoleAdmissibleTargetFamilies`, with the
+exponential specialization
+`complex_exp_sum_eq_sum_appendixFHoleAdmissibleTargetFamilies`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHoleTargetFamily.lean
+lake build YangMills.RG.AppendixFHoleTargetFamily
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This closes the finite Appendix-F target-family
+Fubini/lumping step for the concrete with-holes carrier.  It still does not
+prove the metric inequality (641), the activity bound (642), ultralocal
+integration to `K#`, the second Ursell/logarithmic expansion to `H#`, the
+Yang-Mills raw activity estimate, `hRpoly`, a continuum limit, or any
+Clay/OS/Wightman statement.  Clay distance **~0% (<0.1%), unchanged**.

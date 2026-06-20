@@ -10,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8287 jobs**.
+* `lake build YangMillsCore` is green at **8289 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -109,18 +109,28 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `prod_one_add_eq_appendixFTargetPolymerSystem_partition`, and
   `complex_exp_sum_eq_appendixFTargetPolymerSystem_partition`.  This remains
   finite algebra for the case where the same support map controls
-  connectivity and target unions; the source-faithful two-support
-  skeleton/full-target holes adapter is still a separate next step;
-* the first source-faithful two-support holes bridge
+  connectivity and target unions; the concrete with-holes two-support closure
+  lives in the next two modules;
+* the source-faithful two-support holes geometry bridge
   `YangMills/RG/AppendixFHoleTarget.lean`: for `omegaHolePolymerSystem`, it
   proves `skeleton (⋃ full targets) = ⋃ skeletons`, nonemptiness of full
   targets and target skeletons, connectedness and hole-respect of representable
   full targets, a coercion back to `OmegaPolymerType`, and
   injectivity/cardinality preservation of the full-target union map on
   admissible connected-cover families whose disjointness is only
-  active-skeleton disjointness.  This closes the finite target-geometry hazard
-  before the full two-support target-choice Fubini identity, but does not yet
-  prove that identity;
+  active-skeleton disjointness;
+* the source-faithful two-support Appendix-F target-family compiler
+  `YangMills/RG/AppendixFHoleTargetFamily.lean`: using active skeletons for
+  admissibility and full unions for target fibers, it reindexes admissible
+  target choices by connected-cover families and proves the finite raw Mayer
+  product identity.  The headline theorems are
+  `sum_appendixFHoleAdmissibleTargetChoices_eq_sum_admissibleConnectedCoverFamilies`,
+  `sum_appendixFHoleAdmissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies`,
+  `prod_one_add_eq_sum_appendixFHoleAdmissibleTargetFamilies`, and
+  `complex_exp_sum_eq_sum_appendixFHoleAdmissibleTargetFamilies`.  This is
+  still exact finite combinatorics, not the metric estimate (641), activity
+  bound (642), `K#` integration, second Ursell expansion, or Yang-Mills raw
+  activity decay;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

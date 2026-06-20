@@ -485,6 +485,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleCoverUnion_image_card_eq
 #print axioms YangMills.RG.omegaOverlapGraph_univ_skeleton_adj_iff
 #print axioms YangMills.RG.appendixFHoleConnectedActivity_congr
+-- two-support with-holes target-family Fubini/lumping: active skeletons for
+-- compatibility, full unions for target fibers.
+#print axioms YangMills.RG.appendixFHoleTargetChoiceCoverFamily_mem_admissible
+#print axioms YangMills.RG.appendixFHoleConnectedCoverFamilyTargetChoiceSigma_targetChoiceCoverFamily_eq
+#print axioms YangMills.RG.sum_appendixFHoleAdmissibleTargetChoices_eq_sum_admissibleConnectedCoverFamilies
+#print axioms YangMills.RG.sum_appendixFHoleAdmissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies
+#print axioms YangMills.RG.prod_one_add_eq_sum_appendixFHoleAdmissibleTargetFamilies
+#print axioms YangMills.RG.complex_exp_sum_eq_sum_appendixFHoleAdmissibleTargetFamilies
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

@@ -236,26 +236,25 @@ source form `local active-skeleton norm ≤ B ≤ 1`, yielding the tail bound
 `≤ t⁻¹ B` without exposing the root-pinned finite sum in downstream statements.
 
 **Finite target-gas checkpoint (2026-06-20).**  The single-support
-Appendix-F compiler now has the exact finite Fubini/lumping bridge from
-admissible connected-cover families to admissible target families with
-fiber activities `K(Y)`.  The verified chain includes the dependent
-left-inverse for target choices, the choice-sum reindexing, the target-family
-sum identity, and the target hard-core partition identity:
-`prod_one_add_eq_appendixFTargetPolymerSystem_partition` plus the exponential
-specialization `complex_exp_sum_eq_appendixFTargetPolymerSystem_partition`.
-This closes the finite first Mayer identity only when the same support map
-defines both Ω-connectivity and target unions.  The next source-faithful
-Appendix-F brick is still the two-support holes adapter:
-`overlapSupport X = skeleton HF X.val`, `targetSupport X = X.val`, and
-`activePart Y = skeleton HF Y`.  The first precondition for that adapter is
-now theorem-fed in `AppendixFHoleTarget.lean`: for the actual
-`omegaHolePolymerSystem`, `skeleton (⋃ X_i) = ⋃ skeleton(X_i)`, every
-representable full target is again a valid active hole-polymer, and the
-full-target union map is injective/cardinality-preserving on admissible
-connected-cover families even though admissibility uses only active-skeleton
-disjointness.
-The remaining finite Appendix-F task is the full two-support target-choice
-Fubini/lumping theorem without using full-target disjointness.
+Appendix-F compiler has the exact finite Fubini/lumping bridge from
+admissible connected-cover families to admissible target families with fiber
+activities `K(Y)`.  The source-faithful with-holes adapter is now also
+theorem-fed for `omegaHolePolymerSystem`: `AppendixFHoleTarget.lean` proves
+that `skeleton (⋃ X_i) = ⋃ skeleton(X_i)`, every representable full target is a
+valid active hole-polymer, and the full-target union map is
+injective/cardinality-preserving on admissible connected-cover families even
+though admissibility uses only active-skeleton disjointness.  The follow-up
+module `AppendixFHoleTargetFamily.lean` closes the corresponding two-support
+target-choice Fubini/lumping identity, with `overlapSupport X = skeleton HF
+X.val` and `targetSupport X = X.val`: target choices are reindexed by
+connected-cover families, the product over full-target fiber activities equals
+the connected-cover family sum, and the finite raw Mayer product is recovered
+as `prod_one_add_eq_sum_appendixFHoleAdmissibleTargetFamilies` (plus
+`complex_exp_sum_eq_sum_appendixFHoleAdmissibleTargetFamilies`).  The remaining
+Appendix-F work is now analytic/geometric rather than this finite lumping
+step: metric inequality (641), activity bound (642), integration to `K#`,
+second Ursell expansion to `H#`, and the source-specific raw Yang-Mills
+activity estimate.
 
 ### P4 route refinement: collar factorization from covariance decay
 
