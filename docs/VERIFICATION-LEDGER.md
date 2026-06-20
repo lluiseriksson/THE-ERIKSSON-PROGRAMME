@@ -7628,3 +7628,46 @@ It does not prove the absolute fixed-union geometric estimate, the
 second-Ursell/tree/KP source theorem, Dimock F.1/(636), Dimock (642),
 concrete Yang-Mills raw activity decay, continuum construction, or Clay.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 212 (2026-06-20, **support containment for the first Appendix-F Ksharp layer**
+`YangMills.RG.appendixFHoleConnectedLocalActivity_spectatorSupport_subset`,
+`YangMills.RG.appendixFHoleConnectedLocalActivity_fluctuationSupport_subset`,
+`YangMills.RG.appendixFHoleKsharp_support_subset`; core 8306)
+
+This addendum strengthens `YangMills/RG/AppendixFKsharp.lean`, the finite
+`K(Y) -> K#(Y)` object layer.
+
+The two new local-activity theorems prove the finite support bridge that had
+previously been an explicit obligation around the Appendix-F factorization
+layer: if each raw local activity indexed by `X ∈ Λ` has spectator support
+contained in the full source polymer `X.val`, then the connected first
+activity over a target union `Y` has spectator support contained in `Y`; and
+the analogous statement holds for fluctuation support.  The proof uses only
+the target-fiber equality
+`appendixFCoverUnion (fun X => X.val) C = Y` and the finite fact that every
+index contributing to that fiber lies in `Λ`.
+
+The third theorem transfers the spectator-support statement through
+`appendixFHoleKsharp`: after integrating the fluctuation field, the resulting
+spectator `LocalFunctional` has support contained in the same target union
+`Y`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFKsharp.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is finite support bookkeeping for the already-defined
+first activity.  It does not prove ultralocal factorization (643) for the full
+target-family sum, Dimock (642), the second-Ursell/tree estimate, concrete
+Yang-Mills raw activity decay, continuum construction, or Clay.  Clay distance
+**~0% (<0.1%), unchanged**.

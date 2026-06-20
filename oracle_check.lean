@@ -538,8 +538,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.complex_exp_sum_eq_sum_appendixFHoleAdmissibleTargetFamilies
 -- first integrated Appendix-F activity K#: local K(Y,ψ,φ), K#(Y,ψ), and norm inheritance.
 #print axioms YangMills.RG.appendixFHoleConnectedLocalActivity_globalEval
+#print axioms YangMills.RG.appendixFHoleConnectedLocalActivity_spectatorSupport_subset
+#print axioms YangMills.RG.appendixFHoleConnectedLocalActivity_fluctuationSupport_subset
 #print axioms YangMills.RG.appendixFHoleKsharp_globalEval
 #print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le
+#print axioms YangMills.RG.appendixFHoleKsharp_support_subset
 -- finite quantitative first-activity majorant: raw exponential pointwise
 -- decay implies a connected-cover metric sum, still before (641)--(642).
 #print axioms YangMills.RG.norm_appendixFComponentWeight_expSubOne_le_metricProduct

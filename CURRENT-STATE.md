@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8305 jobs**.
+* `lake build YangMillsCore` is green at **8306 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -177,10 +177,15 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `appendixFHoleKsharp`, and
   `norm_appendixFHoleKsharp_globalEval_le`, carrying an explicit
   `Integrable` hypothesis so later Appendix-F integration statements do not
-  hide totalized integrals.  This is Dimock (644)'s finite `K -> K#` object
-  layer only; the n-ary target-family factorization (643), second target gas,
-  Ursell `H#`, metric estimate (642), and concrete Yang-Mills raw activity
-  producer remain open;
+  hide totalized integrals.  The same file now records the exact finite
+  support-containment bridge: if each raw local activity has spectator and/or
+  fluctuation support inside its full source polymer, then
+  `appendixFHoleConnectedLocalActivity ... Y` has the corresponding support
+  inside `Y`; after fluctuation integration, `appendixFHoleKsharp ... Y` has
+  spectator support inside `Y`.  This is Dimock (644)'s finite `K -> K#`
+  object layer only; the n-ary target-family factorization (643), second
+  target gas, Ursell `H#`, metric estimate (642), and concrete Yang-Mills raw
+  activity producer remain open;
 * the finite quantitative first-activity layer
   `YangMills/RG/AppendixFQuantitative.lean`: a raw pointwise exponential
   bound `‖h X‖ ≤ H0 * exp(-κ * metric X)` with `0 ≤ H0 ≤ 1` and `0 ≤ κ`
