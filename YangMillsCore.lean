@@ -300,6 +300,9 @@ import YangMills.RG.AppendixFHoleTarget
 -- active-skeleton hard-core admissibility, full-target fiber activities, and
 -- the exact finite reindexing back to the raw Mayer product.
 import YangMills.RG.AppendixFHoleTargetFamily
+-- Finite quantitative first-activity step above the target-family compiler:
+-- a raw exponential pointwise bound yields a connected-cover metric majorant.
+import YangMills.RG.AppendixFQuantitative
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

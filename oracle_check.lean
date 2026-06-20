@@ -6,6 +6,7 @@ import YangMills.RG.OmegaConnectedCover
 import YangMills.RG.MayerCoverFactorization
 import YangMills.RG.AppendixFFiniteCover
 import YangMills.RG.AppendixFHoleTarget
+import YangMills.RG.AppendixFQuantitative
 
 /-! # Oracle check — one command, every headline
 
@@ -493,6 +494,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.sum_appendixFHoleAdmissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies
 #print axioms YangMills.RG.prod_one_add_eq_sum_appendixFHoleAdmissibleTargetFamilies
 #print axioms YangMills.RG.complex_exp_sum_eq_sum_appendixFHoleAdmissibleTargetFamilies
+-- finite quantitative first-activity majorant: raw exponential pointwise
+-- decay implies a connected-cover metric sum, still before (641)--(642).
+#print axioms YangMills.RG.norm_appendixFComponentWeight_expSubOne_le_metricProduct
+#print axioms YangMills.RG.norm_appendixFConnectedActivity_le_metricProductCoverSum
+#print axioms YangMills.RG.appendixF_metricProduct_eq_metricCoverWeight
+#print axioms YangMills.RG.norm_appendixFConnectedActivity_le_metricCoverSum
+#print axioms YangMills.RG.norm_appendixFHoleConnectedMayerActivity_expSubOne_le_metricCoverSum
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

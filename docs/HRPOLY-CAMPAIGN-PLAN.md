@@ -1,12 +1,15 @@
 # `hRpoly` CAMPAIGN — the cluster-expansion-with-holes activity bound
 
-**Live status (2026-06-18).** Core green at **8264 jobs**.  The campaign has
+**Live status (2026-06-20).** Core green at **8290 jobs**.  The campaign has
 already closed substantial substrate: animal counting, cube summability,
 marginal-coupling summability, exponential-decay kernel calculus, Schur/PSD
 kernel bounds, Gaussian MGF bounds, concrete finite-dimensional Gaussian
-construction, finite-range/resolvent decay, and explicit shell-growth
-summability.  The remaining genuinely analytic target is still `hRpoly`: the
-concrete Yang-Mills activity-decay estimate for the actual gauge RG operator.
+construction, finite-range/resolvent decay, explicit shell-growth summability,
+the source-faithful Appendix-F target-family compiler, and the first finite
+quantitative connected-activity majorant.  The remaining genuinely analytic
+target is still `hRpoly`: the concrete Yang-Mills activity-decay estimate for
+the actual gauge RG operator, plus the Appendix-F metric/entropy estimates
+that convert the finite connected-cover sum into Dimock's exponential bound.
 
 **Original date:** 2026-06-12.  This is the source-grounded campaign document
 for discharging `hRpoly`, the **sole remaining genuinely-analytic carried
@@ -255,6 +258,20 @@ Appendix-F work is now analytic/geometric rather than this finite lumping
 step: metric inequality (641), activity bound (642), integration to `K#`,
 second Ursell expansion to `H#`, and the source-specific raw Yang-Mills
 activity estimate.
+
+**Finite first-activity quantitative checkpoint (2026-06-20).**
+`AppendixFQuantitative.lean` adds the first source-independent quantitative
+layer above that compiler.  If each raw activity satisfies
+`‖h X‖ ≤ H0 * exp(-κ * metric X)` with `0 ≤ H0 ≤ 1` and `0 ≤ κ`, then
+`norm_appendixFConnectedActivity_le_metricCoverSum` bounds the first connected
+activity `K(Y)` by the explicit finite connected-cover sum
+`Σ_C (2H0)^{|C|} exp(-κ Σ_{X∈C} metric X)`.  The source-facing theorem
+`norm_appendixFHoleConnectedMayerActivity_expSubOne_le_metricCoverSum`
+specializes this to `omegaHolePolymerSystem`, using active skeletons for
+connectivity and full hole-polymer unions for targets.  This is not yet
+Dimock (641)--(642): the remaining P3 work is to control that connected-cover
+sum by the modified metric of the target `Y`, then integrate to `K#` and run
+the second Ursell/logarithmic expansion to `H#`.
 
 ### P4 route refinement: collar factorization from covariance decay
 

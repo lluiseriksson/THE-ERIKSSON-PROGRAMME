@@ -10,7 +10,7 @@ before deciding what is actually proved and what remains open.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8289 jobs**.
+* `lake build YangMillsCore` is green at **8290 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -131,6 +131,18 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   still exact finite combinatorics, not the metric estimate (641), activity
   bound (642), `K#` integration, second Ursell expansion, or Yang-Mills raw
   activity decay;
+* the finite quantitative first-activity layer
+  `YangMills/RG/AppendixFQuantitative.lean`: a raw pointwise exponential
+  bound `‖h X‖ ≤ H0 * exp(-κ * metric X)` with `0 ≤ H0 ≤ 1` and `0 ≤ κ`
+  implies the connected-cover majorant
+  `norm_appendixFConnectedActivity_le_metricCoverSum`, and the with-holes
+  specialization
+  `norm_appendixFHoleConnectedMayerActivity_expSubOne_le_metricCoverSum`.
+  This proves only the triangle/product-norm step for the first activity
+  `K(Y)`: the right-hand side is still the finite sum over connected covers,
+  so no connected-cover entropy estimate, Dimock metric inequality (641),
+  activity bound (642), ultralocal integration to `K#`, second Ursell
+  expansion to `H#`, or Yang-Mills raw activity estimate is hidden here;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

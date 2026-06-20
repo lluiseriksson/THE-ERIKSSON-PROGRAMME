@@ -6226,3 +6226,64 @@ prove the metric inequality (641), the activity bound (642), ultralocal
 integration to `K#`, the second Ursell/logarithmic expansion to `H#`, the
 Yang-Mills raw activity estimate, `hRpoly`, a continuum limit, or any
 Clay/OS/Wightman statement.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 184 (2026-06-20, **finite Appendix-F first-activity metric majorant**
+`YangMills.RG.norm_appendixFComponentWeight_expSubOne_le_metricProduct`,
+`YangMills.RG.norm_appendixFConnectedActivity_le_metricProductCoverSum`,
+`YangMills.RG.appendixF_metricProduct_eq_metricCoverWeight`,
+`YangMills.RG.norm_appendixFConnectedActivity_le_metricCoverSum`,
+`YangMills.RG.norm_appendixFHoleConnectedMayerActivity_expSubOne_le_metricCoverSum`;
+core 8290)
+
+This addendum adds `YangMills/RG/AppendixFQuantitative.lean`, the first finite
+quantitative layer above the Appendix-F target-family compiler.
+
+The new theorem
+`norm_appendixFComponentWeight_expSubOne_le_metricProduct` proves the one-cover
+product estimate: if each raw term satisfies
+
+```
+‖h i‖ ≤ H0 * Real.exp (-κ * metric i)
+```
+
+with `0 ≤ H0`, `H0 ≤ 1`, and `0 ≤ κ`, then the raw Mayer product
+`∏ i ∈ C, (exp (h i) - 1)` is bounded by the product of the factorwise weights
+`∏ i ∈ C, 2H0 * exp(-κ metric i)`.  The proof uses the already-verified
+small raw-Mayer inequality `‖exp z - 1‖ ≤ 2‖z‖` and no source-specific
+constant.
+
+The finite first-activity theorem
+`norm_appendixFConnectedActivity_le_metricCoverSum` then applies the triangle
+inequality over the target fiber and collapses the product weights to
+
+```
+Σ C in appendixFTargetFiber Ω overlapSupport targetSupport Λ Y,
+  (2 * H0) ^ C.card * Real.exp (-κ * Σ i ∈ C, metric i).
+```
+
+The source-facing specialization
+`norm_appendixFHoleConnectedMayerActivity_expSubOne_le_metricCoverSum` applies
+the same bound to the with-holes carrier: active skeletons control
+Ω-connectivity, while full hole-polymer unions control the target fiber.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFQuantitative.lean
+lake build YangMills.RG.AppendixFQuantitative
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This proves a finite triangle/product-norm majorant for the
+first connected activity `K(Y)`.  The right-hand side is still the explicit
+finite sum over connected covers.  This does not prove Dimock's metric
+inequality (641), the activity bound (642), connected-cover entropy, the
+ultralocal integration to `K#`, the second Ursell/logarithmic expansion to
+`H#`, the Yang-Mills raw activity estimate, `hRpoly`, a continuum limit, or any
+Clay/OS/Wightman statement.  Clay distance **~0% (<0.1%), unchanged**.
