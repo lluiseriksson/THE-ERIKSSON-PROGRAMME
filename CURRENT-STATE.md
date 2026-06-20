@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8302 jobs**.
+* `lake build YangMillsCore` is green at **8303 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -340,6 +340,18 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   the rooted polymer `tsum`.  This does not prove the second-Ursell majorant,
   the source `H#` estimate (Dimock F.1/(636)), the preceding `K/K#` estimate
   (Dimock (642)), or any continuum/Clay theorem;
+* the termwise second-Ursell majorant interface
+  `YangMills/RG/AppendixFHsharpMajorant.lean`: it proves that a summable
+  real majorant for the norms of the fixed-target `appendixFHoleHsharpTerm`
+  sequence supplies summability of the complex term sequence, finite partial
+  norm bounds by finite majorant sums, shifted-tail bounds by shifted majorant
+  sums, and a direct total `H#` residual bound when those finite majorant sums
+  obey the residual profile.  The real-part omega-rooted four-margin theorem
+  then feeds that termwise majorant contract into the existing UV consumer.
+  This is only the Lean-facing shape of the second-Ursell majorant obligation;
+  it does not prove the source majorant, the source `H#` estimate
+  (Dimock F.1/(636)), the preceding `K/K#` estimate (Dimock (642)), or any
+  continuum/Clay theorem;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound

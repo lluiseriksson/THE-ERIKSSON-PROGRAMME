@@ -344,6 +344,9 @@ import YangMills.RG.AppendixFHsharpConvergence
 -- Pointwise limit API for H# truncations: explicit convergence hypotheses
 -- transfer uniform finite-cutoff bounds to the totalized H# activity.
 import YangMills.RG.AppendixFHsharpLimit
+-- Termwise majorant API for H#: a summable second-Ursell majorant supplies
+-- fixed-target summability, finite-partial bounds, tails, and the UV consumer.
+import YangMills.RG.AppendixFHsharpMajorant
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

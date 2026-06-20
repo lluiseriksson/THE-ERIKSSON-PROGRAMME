@@ -7366,3 +7366,54 @@ Theorem F.1 estimate recorded as (636), while (642) is the preceding `K/K#`
 estimate feeding the second gas.  This module proves neither source estimate,
 nor the second-Ursell majorant, nor any continuum/Clay theorem.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 207 (2026-06-20, **termwise H# majorant interface**
+`YangMills.RG.summable_appendixFHoleHsharpTerm_of_norm_le_majorant`,
+`YangMills.RG.norm_appendixFHoleHsharpPartial_le_majorant_sum`,
+`YangMills.RG.appendixFHoleHsharp_tail_norm_tsum_le_majorant_tail`,
+`YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_majorant_tail`,
+`YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_term_majorant`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_term_majorant`;
+core 8303)
+
+This addendum adds `YangMills/RG/AppendixFHsharpMajorant.lean`, the explicit
+termwise-majorant contract for the second-Ursell `H#` layer.
+
+The theorem `summable_appendixFHoleHsharpTerm_of_norm_le_majorant` proves that
+a summable real majorant of
+`‖appendixFHoleHsharpTerm HF zK Y n‖` gives fixed-target summability of the
+complex `H#` term sequence.  The theorem
+`norm_appendixFHoleHsharpPartial_le_majorant_sum` bounds finite `H#` partials
+by the corresponding finite majorant sums.  The theorems
+`appendixFHoleHsharp_tail_norm_tsum_le_majorant_tail` and
+`norm_appendixFHoleHsharp_sub_partial_le_majorant_tail` package the shifted-tail
+obligation: the truncation error is bounded by the shifted tail of the same
+majorant.
+
+The theorem `norm_appendixFHoleHsharp_le_residual_of_term_majorant` is the
+source-facing bridge: if the termwise majorant is summable and its finite sums
+obey the residual profile, then the totalized `appendixFHoleHsharp` satisfies
+the pointwise residual estimate.  The real-part theorem
+`singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_term_majorant`
+feeds that contract into the existing omega-rooted UV consumer.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpMajorant.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This module does not prove the analytic second-Ursell
+majorant.  It only identifies the exact Lean shape a source proof must supply
+to discharge fixed-target summability, finite-partial residual bounds, and
+tail estimates.  The source `H#` estimate (Dimock II Theorem F.1/(636)), the
+preceding `K/K#` estimate (642), concrete Yang-Mills raw activity decay,
+continuum construction, and Clay remain open.  Clay distance **~0% (<0.1%),
+unchanged**.

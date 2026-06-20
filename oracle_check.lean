@@ -18,6 +18,7 @@ import YangMills.RG.AppendixFHsharpResidual
 import YangMills.RG.AppendixFHsharpPartial
 import YangMills.RG.AppendixFHsharpConvergence
 import YangMills.RG.AppendixFHsharpLimit
+import YangMills.RG.AppendixFHsharpMajorant
 
 /-! # Oracle check — one command, every headline
 
@@ -620,6 +621,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_partial_limit
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_summable_terms
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_partial_limit
+-- termwise second-Ursell majorant interface: summable majorants supply
+-- fixed-target summability, finite-partial residual bounds, and tails.
+#print axioms YangMills.RG.summable_appendixFHoleHsharpTerm_of_norm_le_majorant
+#print axioms YangMills.RG.norm_appendixFHoleHsharpPartial_le_majorant_sum
+#print axioms YangMills.RG.appendixFHoleHsharp_tail_norm_tsum_le_majorant_tail
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_majorant_tail
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_term_majorant
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_term_majorant
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality
