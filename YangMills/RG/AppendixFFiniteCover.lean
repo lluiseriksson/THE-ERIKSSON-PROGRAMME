@@ -34,6 +34,11 @@ convergence assumptions,
 * the finite hard-core target system on representable unions, with
   incompatibility given by literal active `Ω`-intersection and activity
   `K(Y)`;
+* the explicit finite Fubini domain of admissible target families equipped
+  with one connected-cover choice in each target fiber, together with the
+  forward map to admissible connected-cover families and the inverse
+  choice datum that recovers any admissible connected-cover family under
+  the active-nonempty hypothesis;
 * the finite inverse from canonical components to admissible families of
   `Ω`-connected covers with pairwise `Ω`-disjoint declared-support unions
   for a single support map, plus the product identity `∏ᵢ (1 + wᵢ)` as a sum
@@ -418,6 +423,24 @@ noncomputable def appendixFTargetRegion
   (appendixFConnectedCoverRegion Ω overlapSupport Λ).image
     (appendixFCoverUnion targetSupport)
 
+/-- The connected-cover fiber over one declared target union. -/
+noncomputable def appendixFTargetFiber
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (overlapSupport targetSupport : ι → Finset Site)
+    (Λ : Finset ι) (Y : Finset Site) : Finset (Finset ι) :=
+  (appendixFConnectedCoverRegion Ω overlapSupport Λ).filter
+    (fun C => appendixFCoverUnion targetSupport C = Y)
+
+@[simp] theorem mem_appendixFTargetFiber_iff
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (overlapSupport targetSupport : ι → Finset Site)
+    (Λ : Finset ι) (Y : Finset Site) (C : Finset ι) :
+    C ∈ appendixFTargetFiber Ω overlapSupport targetSupport Λ Y ↔
+      C ∈ appendixFConnectedCoverRegion Ω overlapSupport Λ ∧
+        appendixFCoverUnion targetSupport C = Y := by
+  classical
+  simp [appendixFTargetFiber]
+
 /-- The first connected activity for already-formed Mayer weights `w i`.
 This is the algebraic core of `K(Y)` before specializing
 `w i = exp (h i) - 1`. -/
@@ -425,8 +448,7 @@ noncomputable def appendixFConnectedMayerActivity
     {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
     (Ω : Finset Site) (overlapSupport targetSupport : ι → Finset Site)
     (Λ : Finset ι) (w : ι → ℂ) (Y : Finset Site) : ℂ :=
-  ∑ C ∈ (appendixFConnectedCoverRegion Ω overlapSupport Λ).filter
-      (fun C => appendixFCoverUnion targetSupport C = Y),
+  ∑ C ∈ appendixFTargetFiber Ω overlapSupport targetSupport Λ Y,
     ∏ i ∈ C, w i
 
 /-- Dimock's first connected activity `K(Y)`: sum all connected raw Mayer covers
@@ -689,6 +711,54 @@ theorem appendixFTargetPolymerSystem_partition_eq_sum_admissibleTargetFamilies
     intro Y hY Z hZ hYZ
     exact Subtype.ext hYZ
 
+/-- The finite domain obtained by choosing, for each admissible target `Y` in
+an admissible target family, one connected raw cover in the fiber over `Y`.
+This is the explicit finite Fubini domain for the target-lumping theorem. -/
+noncomputable def appendixFAdmissibleTargetChoices
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι) :
+    Finset (Σ Υ : Finset (Finset Site),
+      ∀ Y, Y ∈ Υ → Finset ι) :=
+  (appendixFAdmissibleTargetFamilies Ω support Λ).sigma fun Υ =>
+    Υ.pi fun Y => appendixFTargetFiber Ω support support Λ Y
+
+@[simp] theorem mem_appendixFAdmissibleTargetChoices_iff
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (Ξ : Σ Υ : Finset (Finset Site), ∀ Y, Y ∈ Υ → Finset ι) :
+    Ξ ∈ appendixFAdmissibleTargetChoices Ω support Λ ↔
+      Ξ.1 ∈ appendixFAdmissibleTargetFamilies Ω support Λ ∧
+        ∀ Y hY, Ξ.2 Y hY ∈ appendixFTargetFiber Ω support support Λ Y := by
+  classical
+  simp [appendixFAdmissibleTargetChoices]
+
+theorem sum_admissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_targetChoices
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (w : ι → ℂ) :
+    (∑ Υ ∈ appendixFAdmissibleTargetFamilies Ω support Λ,
+        ∏ Y ∈ Υ, appendixFConnectedMayerActivity Ω support support Λ w Y) =
+      ∑ Ξ ∈ appendixFAdmissibleTargetChoices Ω support Λ,
+        ∏ Y ∈ Ξ.1.attach, ∏ i ∈ Ξ.2 Y.1 Y.2, w i := by
+  classical
+  calc
+    (∑ Υ ∈ appendixFAdmissibleTargetFamilies Ω support Λ,
+        ∏ Y ∈ Υ, appendixFConnectedMayerActivity Ω support support Λ w Y)
+        =
+          ∑ Υ ∈ appendixFAdmissibleTargetFamilies Ω support Λ,
+            ∑ p ∈ Υ.pi (fun Y => appendixFTargetFiber Ω support support Λ Y),
+              ∏ Y ∈ Υ.attach, ∏ i ∈ p Y.1 Y.2, w i := by
+            refine Finset.sum_congr rfl ?_
+            intro Υ _hΥ
+            exact Finset.prod_sum Υ
+              (fun Y => appendixFTargetFiber Ω support support Λ Y)
+              (fun _Y C => ∏ i ∈ C, w i)
+    _ =
+      ∑ Ξ ∈ appendixFAdmissibleTargetChoices Ω support Λ,
+        ∏ Y ∈ Ξ.1.attach, ∏ i ∈ Ξ.2 Y.1 Y.2, w i := by
+          rw [Finset.sum_sigma']
+          rfl
+
 /-- A finite family of connected raw covers is Appendix-F admissible when
 distinct connected covers have disjoint declared-support union inside `Ω`.
 
@@ -715,6 +785,72 @@ noncomputable def appendixFAdmissibleConnectedCoverFamilies
             (Ω ∩ appendixFCoverUnion support D) := by
   classical
   simp [appendixFAdmissibleConnectedCoverFamilies]
+
+/-- A target choice family, with the target labels erased, is the finite family
+of connected raw covers selected in each target fiber. -/
+noncomputable def appendixFTargetChoiceCoverFamily
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ξ : Σ Υ : Finset (Finset Site), ∀ Y, Y ∈ Υ → Finset ι) :
+    Finset (Finset ι) :=
+  Ξ.1.attach.image fun Y => Ξ.2 Y.1 Y.2
+
+theorem appendixFTargetChoiceCoverFamily_mem_admissible
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    {Ξ : Σ Υ : Finset (Finset Site), ∀ Y, Y ∈ Υ → Finset ι}
+    (hΞ : Ξ ∈ appendixFAdmissibleTargetChoices Ω support Λ) :
+    appendixFTargetChoiceCoverFamily Ξ ∈
+      appendixFAdmissibleConnectedCoverFamilies Ω support Λ := by
+  classical
+  rw [mem_appendixFAdmissibleConnectedCoverFamilies_iff]
+  rw [mem_appendixFAdmissibleTargetChoices_iff] at hΞ
+  refine ⟨?_, ?_⟩
+  · intro C hC
+    rw [appendixFTargetChoiceCoverFamily] at hC
+    rcases Finset.mem_image.mp hC with ⟨Y, _hY, rfl⟩
+    exact ((mem_appendixFTargetFiber_iff Ω support support Λ
+      Y.1 (Ξ.2 Y.1 Y.2)).mp (hΞ.2 Y.1 Y.2)).1
+  · intro C hC D hD hCD
+    rw [appendixFTargetChoiceCoverFamily] at hC hD
+    rcases Finset.mem_image.mp hC with ⟨Y, _hY, rfl⟩
+    rcases Finset.mem_image.mp hD with ⟨Z, _hZ, rfl⟩
+    have hYfiber := (mem_appendixFTargetFiber_iff Ω support support Λ
+      Y.1 (Ξ.2 Y.1 Y.2)).mp (hΞ.2 Y.1 Y.2)
+    have hZfiber := (mem_appendixFTargetFiber_iff Ω support support Λ
+      Z.1 (Ξ.2 Z.1 Z.2)).mp (hΞ.2 Z.1 Z.2)
+    have hYZ : Y.1 ≠ Z.1 := by
+      intro hval
+      have hYZsub : Y = Z := Subtype.ext hval
+      exact hCD (by subst Z; rfl)
+    have htarget :=
+      ((mem_appendixFAdmissibleTargetFamilies_iff Ω support Λ Ξ.1).mp hΞ.1).2
+        Y.1 Y.2 Z.1 Z.2 hYZ
+    simpa [hYfiber.2, hZfiber.2] using htarget
+
+theorem appendixFCoverFamilyWeight_targetChoiceCoverFamily_eq
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (w : ι → ℂ)
+    {Ξ : Σ Υ : Finset (Finset Site), ∀ Y, Y ∈ Υ → Finset ι}
+    (hΞ : Ξ ∈ appendixFAdmissibleTargetChoices Ω support Λ) :
+    appendixFCoverFamilyWeight w (appendixFTargetChoiceCoverFamily Ξ) =
+      ∏ Y ∈ Ξ.1.attach, ∏ i ∈ Ξ.2 Y.1 Y.2, w i := by
+  classical
+  rw [mem_appendixFAdmissibleTargetChoices_iff] at hΞ
+  unfold appendixFCoverFamilyWeight appendixFComponentWeight
+    appendixFTargetChoiceCoverFamily
+  rw [Finset.prod_image]
+  intro Y _hY Z _hZ hYZ
+  apply Subtype.ext
+  have hYfiber := (mem_appendixFTargetFiber_iff Ω support support Λ
+    Y.1 (Ξ.2 Y.1 Y.2)).mp (hΞ.2 Y.1 Y.2)
+  have hZfiber := (mem_appendixFTargetFiber_iff Ω support support Λ
+    Z.1 (Ξ.2 Z.1 Z.2)).mp (hΞ.2 Z.1 Z.2)
+  have hcover :
+      appendixFCoverUnion support (Ξ.2 Y.1 Y.2) =
+        appendixFCoverUnion support (Ξ.2 Z.1 Z.2) := by
+    exact congrArg (appendixFCoverUnion support) hYZ
+  exact hYfiber.2.symm.trans (hcover.trans hZfiber.2)
 
 /-- Mapping an admissible connected-cover family to its target unions gives an
 admissible target family.  This is the forward half of the finite
@@ -763,6 +899,114 @@ theorem appendixFCoverUnion_injective_on_admissibleConnectedCoverFamily
       Ω support Λ hactive (hΓ.1 hC)
   rcases hnonempty with ⟨x, hx⟩
   exact (Finset.disjoint_left.mp hdisj hx) hx
+
+/-- Choose one connected cover from an admissible cover family over a target
+union in its image.  This is intentionally noncomputable and local to the
+finite Fubini/lumping construction. -/
+noncomputable def appendixFConnectedCoverFamilyTargetChoice
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (support : ι → Finset Site) (Γ : Finset (Finset ι))
+    (Y : Finset Site) (hY : Y ∈ Γ.image (appendixFCoverUnion support)) :
+    Finset ι :=
+  Classical.choose (Finset.mem_image.mp hY)
+
+theorem appendixFConnectedCoverFamilyTargetChoice_spec
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (support : ι → Finset Site) (Γ : Finset (Finset ι))
+    (Y : Finset Site) (hY : Y ∈ Γ.image (appendixFCoverUnion support)) :
+    appendixFConnectedCoverFamilyTargetChoice support Γ Y hY ∈ Γ ∧
+      appendixFCoverUnion support
+        (appendixFConnectedCoverFamilyTargetChoice support Γ Y hY) = Y := by
+  classical
+  exact Classical.choose_spec (Finset.mem_image.mp hY)
+
+/-- The inverse finite Fubini datum attached to an admissible connected-cover
+family: targets are the cover unions, and each target carries a chosen cover
+from its fiber. -/
+noncomputable def appendixFConnectedCoverFamilyTargetChoiceSigma
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (support : ι → Finset Site) (Γ : Finset (Finset ι)) :
+    Σ Υ : Finset (Finset Site), ∀ Y, Y ∈ Υ → Finset ι :=
+  ⟨Γ.image (appendixFCoverUnion support),
+    appendixFConnectedCoverFamilyTargetChoice support Γ⟩
+
+theorem appendixFConnectedCoverFamilyTargetChoiceSigma_mem_choices
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    {Γ : Finset (Finset ι)}
+    (hΓ : Γ ∈ appendixFAdmissibleConnectedCoverFamilies Ω support Λ) :
+    appendixFConnectedCoverFamilyTargetChoiceSigma support Γ ∈
+      appendixFAdmissibleTargetChoices Ω support Λ := by
+  classical
+  rw [mem_appendixFAdmissibleTargetChoices_iff]
+  refine ⟨image_coverUnion_mem_appendixFAdmissibleTargetFamilies
+    Ω support Λ hΓ, ?_⟩
+  intro Y hY
+  rw [mem_appendixFTargetFiber_iff]
+  have hspec :=
+    appendixFConnectedCoverFamilyTargetChoice_spec support Γ Y hY
+  rw [mem_appendixFAdmissibleConnectedCoverFamilies_iff] at hΓ
+  exact ⟨hΓ.1 hspec.1, hspec.2⟩
+
+theorem appendixFTargetChoiceCoverFamily_connectedCoverFamilyTargetChoiceSigma_eq
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    (hactive : ∀ i, i ∈ Λ → (Ω ∩ support i).Nonempty)
+    {Γ : Finset (Finset ι)}
+    (hΓ : Γ ∈ appendixFAdmissibleConnectedCoverFamilies Ω support Λ) :
+    appendixFTargetChoiceCoverFamily
+      (appendixFConnectedCoverFamilyTargetChoiceSigma support Γ) = Γ := by
+  classical
+  ext C
+  constructor
+  · intro hC
+    rw [appendixFTargetChoiceCoverFamily,
+      appendixFConnectedCoverFamilyTargetChoiceSigma] at hC
+    rcases Finset.mem_image.mp hC with ⟨Y, _hY, hCY⟩
+    rw [← hCY]
+    exact (appendixFConnectedCoverFamilyTargetChoice_spec
+      support Γ Y.1 Y.2).1
+  · intro hCΓ
+    rw [appendixFTargetChoiceCoverFamily,
+      appendixFConnectedCoverFamilyTargetChoiceSigma]
+    let Y : Finset Site := appendixFCoverUnion support C
+    have hY : Y ∈ Γ.image (appendixFCoverUnion support) :=
+      Finset.mem_image.mpr ⟨C, hCΓ, rfl⟩
+    refine Finset.mem_image.mpr ⟨⟨Y, hY⟩, by simp, ?_⟩
+    have hspec :=
+      appendixFConnectedCoverFamilyTargetChoice_spec support Γ Y hY
+    exact appendixFCoverUnion_injective_on_admissibleConnectedCoverFamily
+      Ω support Λ hactive hΓ hspec.1 hCΓ hspec.2
+
+/-- The target labels carried by a target-choice family are exactly the target
+unions of its selected connected covers. -/
+theorem appendixFTargetChoiceCoverFamily_image_coverUnion_eq
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (support : ι → Finset Site) (Λ : Finset ι)
+    {Ξ : Σ Υ : Finset (Finset Site), ∀ Y, Y ∈ Υ → Finset ι}
+    (hΞ : Ξ ∈ appendixFAdmissibleTargetChoices Ω support Λ) :
+    (appendixFTargetChoiceCoverFamily Ξ).image (appendixFCoverUnion support) = Ξ.1 := by
+  classical
+  rw [mem_appendixFAdmissibleTargetChoices_iff] at hΞ
+  ext Y
+  constructor
+  · intro hY
+    rcases Finset.mem_image.mp hY with ⟨C, hC, hCY⟩
+    rw [appendixFTargetChoiceCoverFamily] at hC
+    rcases Finset.mem_image.mp hC with ⟨Z, _hZ, hZC⟩
+    have hZfiber := (mem_appendixFTargetFiber_iff Ω support support Λ
+      Z.1 (Ξ.2 Z.1 Z.2)).mp (hΞ.2 Z.1 Z.2)
+    have hYZ : Y = Z.1 := by
+      exact hCY.symm.trans
+        ((congrArg (appendixFCoverUnion support) hZC.symm).trans hZfiber.2)
+    rw [hYZ]
+    exact Z.2
+  · intro hY
+    refine Finset.mem_image.mpr ⟨Ξ.2 Y hY, ?_, ?_⟩
+    · rw [appendixFTargetChoiceCoverFamily]
+      exact Finset.mem_image.mpr ⟨⟨Y, hY⟩, by simp, rfl⟩
+    · exact ((mem_appendixFTargetFiber_iff Ω support support Λ
+        Y (Ξ.2 Y hY)).mp (hΞ.2 Y hY)).2
 
 theorem no_adj_of_omegaCoverUnion_disjoint
     {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
