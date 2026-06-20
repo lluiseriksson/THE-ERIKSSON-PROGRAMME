@@ -6287,3 +6287,58 @@ inequality (641), the activity bound (642), connected-cover entropy, the
 ultralocal integration to `K#`, the second Ursell/logarithmic expansion to
 `H#`, the Yang-Mills raw activity estimate, `hRpoly`, a continuum limit, or any
 Clay/OS/Wightman statement.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 185 (2026-06-20, **finite Appendix-F pinned first-activity localization**
+`YangMills.RG.appendixFMetricCoverWeight_nonneg`,
+`YangMills.RG.appendixFTargetMetricCoverSum_le_pinnedMetricCoverSum`,
+`YangMills.RG.norm_appendixFConnectedActivity_le_pinnedMetricCoverSum`,
+`YangMills.RG.appendixFHoleTargetMetricCoverSum_le_pinnedMetricCoverSum`,
+`YangMills.RG.norm_appendixFHoleConnectedMayerActivity_expSubOne_le_pinnedMetricCoverSum`;
+core 8290)
+
+This addendum extends `YangMills/RG/AppendixFQuantitative.lean` with the finite
+localization bridge immediately after Addendum 184's metric-cover majorant.
+
+The new definitions package the repeated right-hand sides:
+
+* `appendixFMetricCoverWeight metric H0 κ C`
+* `appendixFTargetMetricCoverSum Ω overlapSupport targetSupport Λ metric Y H0 κ`
+* `appendixFPinnedMetricCoverSum Ω overlapSupport targetSupport Λ metric r H0 κ`
+
+The pinned sum ranges over all connected raw covers containing at least one
+raw target support through the chosen site `r`.  The finite theorem
+`appendixFTargetMetricCoverSum_le_pinnedMetricCoverSum` proves the elementary
+but important local-influence step: if `r ∈ Y`, every cover in the target
+fiber over `Y` contributes to the pinned cover domain, since its target union
+is exactly `Y`.  The proof uses only finite set inclusion plus positivity of
+the metric cover weight.
+
+Composing this localization with Addendum 184 gives
+`norm_appendixFConnectedActivity_le_pinnedMetricCoverSum`, and the source-facing
+with-holes theorem
+`norm_appendixFHoleConnectedMayerActivity_expSubOne_le_pinnedMetricCoverSum`.
+For `omegaHolePolymerSystem`, this says: active skeletons control
+Ω-connectivity, full hole-polymer unions control targets, and any pin `r ∈ Y`
+dominates the first activity by a local pinned connected-cover sum through
+`r`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFQuantitative.lean
+lake build YangMills.RG.AppendixFQuantitative
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is still finite localization, not Dimock's analytic
+estimate.  It does not bound the pinned connected-cover sum by a closed
+constant or by `exp(-c d_M(Y))`; it does not prove metric inequality (641),
+activity bound (642), connected-cover entropy, `K#`, `H#`, Yang-Mills raw
+activity, `hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay
+distance **~0% (<0.1%), unchanged**.

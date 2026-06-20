@@ -183,6 +183,107 @@ theorem norm_appendixFConnectedActivity_le_metricCoverSum
           intro C _hC
           exact appendixF_metricProduct_eq_metricCoverWeight C metric H0 κ
 
+/-- The positive weight attached to one connected raw cover by the finite
+Appendix-F first-activity majorant. -/
+noncomputable def appendixFMetricCoverWeight
+    {ι : Type*} [DecidableEq ι]
+    (metric : ι → ℕ) (H0 κ : ℝ) (C : Finset ι) : ℝ :=
+  (2 * H0) ^ C.card * Real.exp (-κ * ∑ i ∈ C, (metric i : ℝ))
+
+theorem appendixFMetricCoverWeight_nonneg
+    {ι : Type*} [DecidableEq ι]
+    (metric : ι → ℕ) {H0 κ : ℝ} (hH0 : 0 ≤ H0) (C : Finset ι) :
+    0 ≤ appendixFMetricCoverWeight metric H0 κ C := by
+  unfold appendixFMetricCoverWeight
+  exact mul_nonneg
+    (pow_nonneg (mul_nonneg zero_le_two hH0) C.card)
+    (Real.exp_nonneg _)
+
+/-- The finite target-fiber metric majorant for the first connected activity.
+This is the right-hand side of
+`norm_appendixFConnectedActivity_le_metricCoverSum`, packaged for reuse. -/
+noncomputable def appendixFTargetMetricCoverSum
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site)
+    (overlapSupport targetSupport : ι → Finset Site)
+    (Λ : Finset ι) (metric : ι → ℕ)
+    (Y : Finset Site) (H0 κ : ℝ) : ℝ :=
+  ∑ C ∈ appendixFTargetFiber Ω overlapSupport targetSupport Λ Y,
+    appendixFMetricCoverWeight metric H0 κ C
+
+/-- The local/pinned metric majorant: all connected covers having at least one
+raw target support through the pin `r`.  This is the finite localization step
+toward the source's local-influence estimates; it still does not bound this
+sum by a closed Dimock constant. -/
+noncomputable def appendixFPinnedMetricCoverSum
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site)
+    (overlapSupport targetSupport : ι → Finset Site)
+    (Λ : Finset ι) (metric : ι → ℕ)
+    (r : Site) (H0 κ : ℝ) : ℝ :=
+  ∑ C ∈ (appendixFConnectedCoverRegion Ω overlapSupport Λ).filter
+      (fun C => ∃ i ∈ C, r ∈ targetSupport i),
+    appendixFMetricCoverWeight metric H0 κ C
+
+/-- A target-fiber metric sum is bounded by any pinned connected-cover sum
+through a site of the target.  This is a pure finite localization/lumping
+lemma: if `r ∈ Y`, every cover whose target union is `Y` contains at least one
+raw support through `r`. -/
+theorem appendixFTargetMetricCoverSum_le_pinnedMetricCoverSum
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site)
+    (overlapSupport targetSupport : ι → Finset Site)
+    (Λ : Finset ι) (metric : ι → ℕ)
+    (Y : Finset Site) (r : Site) (H0 κ : ℝ)
+    (hH0 : 0 ≤ H0) (hr : r ∈ Y) :
+    appendixFTargetMetricCoverSum Ω overlapSupport targetSupport Λ metric
+        Y H0 κ ≤
+      appendixFPinnedMetricCoverSum Ω overlapSupport targetSupport Λ metric
+        r H0 κ := by
+  classical
+  unfold appendixFTargetMetricCoverSum appendixFPinnedMetricCoverSum
+  refine Finset.sum_le_sum_of_subset_of_nonneg ?subset ?nonneg
+  · intro C hC
+    rw [Finset.mem_filter]
+    have hfiber := (mem_appendixFTargetFiber_iff Ω overlapSupport
+      targetSupport Λ Y C).mp hC
+    refine ⟨hfiber.1, ?_⟩
+    have hrUnion : r ∈ appendixFCoverUnion targetSupport C := by
+      rw [hfiber.2]
+      exact hr
+    rcases Finset.mem_biUnion.mp hrUnion with ⟨i, hiC, hri⟩
+    exact ⟨i, hiC, hri⟩
+  · intro C _hpinned _hCnotFiber
+    exact appendixFMetricCoverWeight_nonneg metric hH0 C
+
+/-- Finite localized first-activity bound: after the raw pointwise exponential
+estimate, a target activity `K(Y)` is controlled by the pinned connected-cover
+metric sum through any `r ∈ Y`. -/
+theorem norm_appendixFConnectedActivity_le_pinnedMetricCoverSum
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site)
+    (overlapSupport targetSupport : ι → Finset Site)
+    (Λ : Finset ι) (metric : ι → ℕ) (h : ι → ℂ)
+    (Y : Finset Site) (r : Site) (H0 κ : ℝ)
+    (hH0 : 0 ≤ H0) (hH01 : H0 ≤ 1) (hκ : 0 ≤ κ)
+    (hraw : ∀ i, i ∈ Λ →
+      ‖h i‖ ≤ H0 * Real.exp (-κ * (metric i : ℝ)))
+    (hr : r ∈ Y) :
+    ‖appendixFConnectedActivity Ω overlapSupport targetSupport Λ h Y‖ ≤
+      appendixFPinnedMetricCoverSum Ω overlapSupport targetSupport Λ metric
+        r H0 κ := by
+  classical
+  have hmetric :=
+    norm_appendixFConnectedActivity_le_metricCoverSum
+      Ω overlapSupport targetSupport Λ metric h Y H0 κ
+      hH0 hH01 hκ hraw
+  have hpinned :=
+    appendixFTargetMetricCoverSum_le_pinnedMetricCoverSum
+      Ω overlapSupport targetSupport Λ metric Y r H0 κ hH0 hr
+  exact hmetric.trans (by
+    simpa [appendixFTargetMetricCoverSum, appendixFMetricCoverWeight] using
+      hpinned)
+
 /-- Source-facing with-holes specialization of the finite first-activity
 majorant.  Connectivity uses active skeletons and target fibers use full
 hole-polymer unions, exactly as in `AppendixFHoleTargetFamily`. -/
@@ -213,5 +314,77 @@ theorem norm_appendixFHoleConnectedMayerActivity_expSubOne_le_metricCoverSum
       (fun X : OmegaPolymerType HF z => skeleton HF X.val)
       (fun X : OmegaPolymerType HF z => X.val)
       Λ metric h Y H0 κ hH0 hH01 hκ hraw
+
+/-- Source-facing target-fiber metric majorant for `omegaHolePolymerSystem`. -/
+noncomputable def appendixFHoleTargetMetricCoverSum
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (metric : OmegaPolymerType HF z → ℕ)
+    (Y : Finset (Cube d L)) (H0 κ : ℝ) : ℝ :=
+  appendixFTargetMetricCoverSum
+    (Finset.univ : Finset (Cube d L))
+    (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+    (fun X : OmegaPolymerType HF z => X.val)
+    Λ metric Y H0 κ
+
+/-- Source-facing pinned connected-cover metric majorant for
+`omegaHolePolymerSystem`.  It sums all skeleton-connected covers containing a
+raw full polymer through the pinned cube `r`. -/
+noncomputable def appendixFHolePinnedMetricCoverSum
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (metric : OmegaPolymerType HF z → ℕ)
+    (r : Cube d L) (H0 κ : ℝ) : ℝ :=
+  appendixFPinnedMetricCoverSum
+    (Finset.univ : Finset (Cube d L))
+    (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+    (fun X : OmegaPolymerType HF z => X.val)
+    Λ metric r H0 κ
+
+theorem appendixFHoleTargetMetricCoverSum_le_pinnedMetricCoverSum
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (metric : OmegaPolymerType HF z → ℕ)
+    (Y : Finset (Cube d L)) (r : Cube d L) (H0 κ : ℝ)
+    (hH0 : 0 ≤ H0) (hr : r ∈ Y) :
+    appendixFHoleTargetMetricCoverSum HF z Λ metric Y H0 κ ≤
+      appendixFHolePinnedMetricCoverSum HF z Λ metric r H0 κ := by
+  classical
+  simpa [appendixFHoleTargetMetricCoverSum, appendixFHolePinnedMetricCoverSum]
+    using appendixFTargetMetricCoverSum_le_pinnedMetricCoverSum
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ metric Y r H0 κ hH0 hr
+
+/-- Source-facing localized first-activity bound for the with-holes carrier.
+This is the finite bridge from a raw pointwise estimate to a pinned local
+connected-cover sum.  The pinned sum still needs the later Appendix-F
+metric/entropy estimate. -/
+theorem norm_appendixFHoleConnectedMayerActivity_expSubOne_le_pinnedMetricCoverSum
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (metric : OmegaPolymerType HF z → ℕ)
+    (h : OmegaPolymerType HF z → ℂ)
+    (Y : Finset (Cube d L)) (r : Cube d L) (H0 κ : ℝ)
+    (hH0 : 0 ≤ H0) (hH01 : H0 ≤ 1) (hκ : 0 ≤ κ)
+    (hraw : ∀ X, X ∈ Λ →
+      ‖h X‖ ≤ H0 * Real.exp (-κ * (metric X : ℝ)))
+    (hr : r ∈ Y) :
+    ‖appendixFHoleConnectedMayerActivity HF z Λ
+        (fun X => Complex.exp (h X) - 1) Y‖ ≤
+      appendixFHolePinnedMetricCoverSum HF z Λ metric r H0 κ := by
+  classical
+  simpa [appendixFHoleConnectedMayerActivity, appendixFConnectedActivity,
+    appendixFConnectedMayerActivity, appendixFHolePinnedMetricCoverSum] using
+    norm_appendixFConnectedActivity_le_pinnedMetricCoverSum
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ metric h Y r H0 κ hH0 hH01 hκ hraw hr
 
 end YangMills.RG

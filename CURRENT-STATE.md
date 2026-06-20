@@ -138,11 +138,16 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `norm_appendixFConnectedActivity_le_metricCoverSum`, and the with-holes
   specialization
   `norm_appendixFHoleConnectedMayerActivity_expSubOne_le_metricCoverSum`.
-  This proves only the triangle/product-norm step for the first activity
-  `K(Y)`: the right-hand side is still the finite sum over connected covers,
-  so no connected-cover entropy estimate, Dimock metric inequality (641),
-  activity bound (642), ultralocal integration to `K#`, second Ursell
-  expansion to `H#`, or Yang-Mills raw activity estimate is hidden here;
+  The same module now packages the finite metric weight/sum and proves the
+  local pinned bridge
+  `norm_appendixFHoleConnectedMayerActivity_expSubOne_le_pinnedMetricCoverSum`:
+  if `r ∈ Y`, the target-fiber sum is dominated by the finite sum over all
+  connected covers containing some raw full polymer through `r`.  This proves
+  only triangle/product-norm and finite localization for the first activity
+  `K(Y)`: the right-hand side is still a pinned connected-cover sum, so no
+  connected-cover entropy estimate, Dimock metric inequality (641), activity
+  bound (642), ultralocal integration to `K#`, second Ursell expansion to
+  `H#`, or Yang-Mills raw activity estimate is hidden here;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

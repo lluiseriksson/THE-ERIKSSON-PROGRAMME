@@ -501,6 +501,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixF_metricProduct_eq_metricCoverWeight
 #print axioms YangMills.RG.norm_appendixFConnectedActivity_le_metricCoverSum
 #print axioms YangMills.RG.norm_appendixFHoleConnectedMayerActivity_expSubOne_le_metricCoverSum
+-- finite localization: a target-fiber cover sum is bounded by any pinned
+-- connected-cover sum through a site/cube of the target.
+#print axioms YangMills.RG.appendixFMetricCoverWeight_nonneg
+#print axioms YangMills.RG.appendixFTargetMetricCoverSum_le_pinnedMetricCoverSum
+#print axioms YangMills.RG.norm_appendixFConnectedActivity_le_pinnedMetricCoverSum
+#print axioms YangMills.RG.appendixFHoleTargetMetricCoverSum_le_pinnedMetricCoverSum
+#print axioms YangMills.RG.norm_appendixFHoleConnectedMayerActivity_expSubOne_le_pinnedMetricCoverSum
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

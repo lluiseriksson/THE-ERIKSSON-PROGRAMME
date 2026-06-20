@@ -272,6 +272,13 @@ connectivity and full hole-polymer unions for targets.  This is not yet
 Dimock (641)--(642): the remaining P3 work is to control that connected-cover
 sum by the modified metric of the target `Y`, then integrate to `K#` and run
 the second Ursell/logarithmic expansion to `H#`.
+The finite localization bridge is now also theorem-fed:
+`norm_appendixFHoleConnectedMayerActivity_expSubOne_le_pinnedMetricCoverSum`
+shows that, for any `r ∈ Y`, the same first activity is bounded by the pinned
+connected-cover sum over covers containing some raw full polymer through `r`.
+This is the source-facing local-influence form needed before applying a
+Dimock-style entropy/metric estimate; it deliberately leaves that pinned sum
+unestimated.
 
 ### P4 route refinement: collar factorization from covariance decay
 
