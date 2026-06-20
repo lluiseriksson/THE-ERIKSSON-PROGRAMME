@@ -7758,3 +7758,45 @@ Dimock (643)--(644).  It does not prove ultralocal factorization for the
 actual Yang-Mills fluctuation measure, the Dimock (642) activity estimate, the
 source `H#` estimate F.1/(636), concrete raw activity decay, continuum
 construction, or Clay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 215 (2026-06-21, **finite Appendix-F Ksharp target-family integration**
+`YangMills.RG.integral_sum_appendixFHoleConnectedLocalActivity_eq_sum_prod_Ksharp_of_local_fluctuationSupport_subset_skeleton`,
+`YangMills.RG.integral_sum_appendixFHoleKsharp_eq_sum_prod_integral_of_admissibleTargetFamilies`;
+core 8307)
+
+This addendum closes the finite target-family sum layer on top of Addendum
+214's product factorization.
+
+`YangMills/RG/AppendixFKsharp.lean` now proves that the finite sum over
+admissible source-facing target families commutes with the first fluctuation
+integration and then factors termwise into the corresponding finite `K#`
+target-family gas, assuming only per-target-family integrability and the
+source-local active-skeleton fluctuation-support bridge.
+
+It also proves the spectator-side finite target-family identity: integrating
+the finite `K#` target-family gas under an ultralocal spectator product
+measure equals the sum over admissible target families of products of the
+single-target spectator integrals, again with per-summand integrability kept
+explicit.  This is the finite algebraic/measure-theoretic substrate behind
+Dimock (643)--(644), not a quantitative activity estimate.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFKsharp.lean
+lake build YangMills.RG.AppendixFKsharp
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is finite Fubini plus finite ultralocal product
+factorization over admissible target families.  It does not prove the
+integrability hypotheses for the actual Yang-Mills RG measure, Dimock (642),
+the second-Ursell `H#` estimate, concrete raw activity decay, continuum
+construction, or Clay.  Clay distance **~0% (<0.1%), unchanged**.

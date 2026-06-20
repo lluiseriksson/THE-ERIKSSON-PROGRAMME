@@ -21,9 +21,10 @@ K(Y, psi, phi)  ->  K#(Y, psi) = ∫ K(Y, psi, phi) dmu(phi)
 
 with integrability kept explicit in norm statements.  This is the first
 defined-object layer needed before the second polymer gas and the Ursell
-activity `H#`.  It does not prove the n-ary target-family factorization, the
-Dimock (642) activity estimate, the second Ursell expansion, or any concrete
-Yang--Mills raw activity bound.
+activity `H#`.  The finite target-family product and sum-under-integral
+factorizations are proved below.  The Dimock (642) activity estimate, the
+second Ursell expansion, and any concrete Yang--Mills raw activity bound remain
+separate analytic obligations.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/
@@ -619,5 +620,127 @@ theorem integral_prod_appendixFHoleKsharp_eq_prod_integral_of_admissibleTargetFa
           (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ
           ∂(Measure.pi fun _ : Cube d L => ν) := by
           rfl
+
+/-- Finite target-family Fubini for the first Appendix-F fluctuation
+integration.  The summands are connected target-family products before the
+fluctuation integral; the right-hand side is the same finite target-family
+partition sum with each connected target replaced by `K#`.
+
+The theorem is purely finite: per-target-family integrability is an explicit
+hypothesis, and the source-local support bridge is stated separately from the
+combinatorics. -/
+theorem integral_sum_appendixFHoleConnectedLocalActivity_eq_sum_prod_Ksharp_of_local_fluctuationSupport_subset_skeleton
+    {d L : ℕ} [NeZero L] {β : Type*} [MeasurableSpace β] [Nonempty β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    (ψ : ∀ x, Ψ x)
+    (hHsub : ∀ X, X ∈ Λ → (H X).fluctuationSupport ⊆ skeleton HF X.val)
+    (hint : ∀ targets,
+      targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ →
+        Integrable
+          (fun φ : (∀ _ : Cube d L, β) =>
+            ∏ Y ∈ targets,
+              (appendixFHoleConnectedLocalActivity HF z Λ H Y).globalEval ψ φ)
+          (Measure.pi fun _ : Cube d L => μ)) :
+    ∫ φ : (∀ _ : Cube d L, β),
+        (∑ targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ,
+          ∏ Y ∈ targets,
+            (appendixFHoleConnectedLocalActivity HF z Λ H Y).globalEval ψ φ)
+        ∂(Measure.pi fun _ : Cube d L => μ)
+      =
+      ∑ targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ,
+        ∏ Y ∈ targets,
+          (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ := by
+  classical
+  calc
+    (∫ φ : (∀ _ : Cube d L, β),
+        (∑ targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ,
+          ∏ Y ∈ targets,
+            (appendixFHoleConnectedLocalActivity HF z Λ H Y).globalEval ψ φ)
+        ∂(Measure.pi fun _ : Cube d L => μ))
+        =
+      ∑ targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ,
+        ∫ φ : (∀ _ : Cube d L, β),
+          ∏ Y ∈ targets,
+            (appendixFHoleConnectedLocalActivity HF z Λ H Y).globalEval ψ φ
+          ∂(Measure.pi fun _ : Cube d L => μ) := by
+        exact MeasureTheory.integral_finset_sum
+          (appendixFHoleAdmissibleTargetFamilies HF z Λ) hint
+    _ =
+      ∑ targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ,
+        ∏ Y ∈ targets,
+          (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ := by
+        refine Finset.sum_congr rfl ?_
+        intro targets htargets
+        exact
+          integral_prod_appendixFHoleConnectedLocalActivity_eq_prod_Ksharp_of_local_fluctuationSupport_subset_skeleton
+            HF z Λ H μ htargets ψ hHsub
+
+/-- Finite target-family Fubini after the first integration.  For an admissible
+target family, the product of `K#` activities factorizes under a spectator
+product measure; summing those finite identities gives the integrated
+target-family partition identity.
+
+This is the finite algebraic/measure-theoretic bridge behind the Appendix-F
+`K#`-to-integrated-target-family step.  It does not assert any bound on the
+resulting single-target integrals. -/
+theorem integral_sum_appendixFHoleKsharp_eq_sum_prod_integral_of_admissibleTargetFamilies
+    {d L : ℕ} [NeZero L] {β γ : Type*}
+    [MeasurableSpace β] [MeasurableSpace γ] [Nonempty β]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : Measure γ)
+    (ν : Measure β) [IsProbabilityMeasure ν]
+    (hHsub : ∀ X, X ∈ Λ → (H X).spectatorSupport ⊆ skeleton HF X.val)
+    (hint : ∀ targets,
+      targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ →
+        Integrable
+          (fun ψ : (∀ _ : Cube d L, β) =>
+            ∏ Y ∈ targets,
+              (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ)
+          (Measure.pi fun _ : Cube d L => ν)) :
+    ∫ ψ : (∀ _ : Cube d L, β),
+        (∑ targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ,
+          ∏ Y ∈ targets,
+            (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ)
+        ∂(Measure.pi fun _ : Cube d L => ν)
+      =
+      ∑ targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ,
+        ∏ Y ∈ targets,
+          ∫ ψ : (∀ _ : Cube d L, β),
+            (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ
+            ∂(Measure.pi fun _ : Cube d L => ν) := by
+  classical
+  calc
+    (∫ ψ : (∀ _ : Cube d L, β),
+        (∑ targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ,
+          ∏ Y ∈ targets,
+            (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ)
+        ∂(Measure.pi fun _ : Cube d L => ν))
+        =
+      ∑ targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ,
+        ∫ ψ : (∀ _ : Cube d L, β),
+          ∏ Y ∈ targets,
+            (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ
+          ∂(Measure.pi fun _ : Cube d L => ν) := by
+        exact MeasureTheory.integral_finset_sum
+          (appendixFHoleAdmissibleTargetFamilies HF z Λ) hint
+    _ =
+      ∑ targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ,
+        ∏ Y ∈ targets,
+          ∫ ψ : (∀ _ : Cube d L, β),
+            (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ
+            ∂(Measure.pi fun _ : Cube d L => ν) := by
+        refine Finset.sum_congr rfl ?_
+        intro targets htargets
+        exact
+          integral_prod_appendixFHoleKsharp_eq_prod_integral_of_admissibleTargetFamilies
+            HF z Λ H μ ν htargets hHsub
 
 end YangMills.RG
