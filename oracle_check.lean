@@ -12,6 +12,7 @@ import YangMills.RG.AppendixFFiberEntropy
 import YangMills.RG.PolymerClusterWithHolesBridge
 import YangMills.RG.AppendixFLocalSummability
 import YangMills.RG.AppendixFKsharpEstimate
+import YangMills.RG.AppendixFSecondGas
 
 /-! # Oracle check — one command, every headline
 
@@ -562,6 +563,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleConnectedLocalActivity_globalEval_le_expSubOne
 #print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay
 #print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay_rooted
+-- second Appendix-F hard-core gas from evaluated K#: structural only, with KP
+-- exposed as a pointwise majorant hypothesis rather than as Dimock (642).
+#print axioms YangMills.RG.appendixFHoleSecondGas_activity
+#print axioms YangMills.RG.appendixFHoleSecondGasActivity_eq_zero_of_not_mem_targetRegion
+#print axioms YangMills.RG.appendixFHoleSecondGas_KPCriterion_of_majorant
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

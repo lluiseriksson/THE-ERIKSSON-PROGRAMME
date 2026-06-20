@@ -324,6 +324,10 @@ import YangMills.RG.AppendixFLocalSummability
 -- Source-shaped first K# estimate: raw metric decay plus local summability
 -- give the exact exponential-minus-one K(Y) bound and its integrated K# form.
 import YangMills.RG.AppendixFKsharpEstimate
+-- Second Appendix-F hard-core gas: evaluated K# becomes the scalar activity
+-- of the source-facing omega-hole polymer system, with KP kept as an explicit
+-- majorant hypothesis.
+import YangMills.RG.AppendixFSecondGas
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

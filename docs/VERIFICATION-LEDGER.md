@@ -6993,3 +6993,48 @@ but deliberately does not prove the linearized `κ - κ₀ - 2` corollary, Dimoc
 (643) target-family factorization, the second hard-core target gas, the final
 `H#` residual rate `κ - 3κ₀ - 3`, the concrete Yang-Mills raw activity decay,
 or any continuum/Clay theorem.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 199 (2026-06-20, **second Appendix-F hard-core gas from evaluated K#**
+`YangMills.RG.appendixFHoleSecondGas_activity`,
+`YangMills.RG.appendixFHoleSecondGasActivity_eq_zero_of_not_mem_targetRegion`,
+`YangMills.RG.appendixFHoleSecondGas_KPCriterion_of_majorant`; core 8297)
+
+This addendum adds `YangMills/RG/AppendixFSecondGas.lean`, the structural
+second-gas layer after the first integrated activity `K#`.
+
+The new evaluated activity
+`appendixFHoleSecondGasActivity HF z Λ Hraw μ ψ Y` is definitionally
+`(appendixFHoleKsharp HF z Λ Hraw μ Y).globalEval ψ`, and
+`appendixFHoleSecondGas` instantiates that scalar activity through the
+source-facing `omegaHolePolymerSystem`.  The theorem
+`appendixFHoleSecondGas_activity` exposes this projection on the carrier, and
+`appendixFHoleSecondGasActivity_eq_zero_of_not_mem_targetRegion` proves that
+nonrepresentable first-stage targets have zero activity.
+
+The KP entry point is intentionally not called Dimock (642):
+`AppendixFHoleSecondGasKPMajorant` includes the exact tilt and full-cardinality
+factor required by the current `omegaHolePolymerSystem` KP consumer.  The
+theorem `appendixFHoleSecondGas_KPCriterion_of_majorant` then applies
+`omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`
+directly under the explicit geometry, smallness, and pointwise-majorant
+hypotheses.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFSecondGas.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This exposes the second hard-core gas object and its
+existing KP consumer, but it does not prove the source-to-majorant conversion,
+Dimock (642), the ultralocal product factorization (643), the Ursell-defined
+`H#`, the residual rate `κ - 3κ₀ - 3`, the concrete Yang-Mills raw activity
+decay, or any continuum/Clay theorem.  Clay distance **~0% (<0.1%),
+unchanged**.

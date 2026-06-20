@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8296 jobs**.
+* `lake build YangMillsCore` is green at **8297 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -242,6 +242,24 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `exp(2 H₀ K₀ (d_M(Y)+1)) - 1`; the linearized `κ - κ₀ - 2` corollary,
   Dimock (643) factorization, second Ursell gas, final `H#` residual rate,
   and concrete Yang-Mills raw activity estimate remain open;
+* the second Appendix-F hard-core gas layer
+  `YangMills/RG/AppendixFSecondGas.lean`: it defines the evaluated scalar
+  activity
+  `appendixFHoleSecondGasActivity HF z Λ Hraw μ ψ Y =
+  (appendixFHoleKsharp HF z Λ Hraw μ Y).globalEval ψ` and instantiates it as
+  `appendixFHoleSecondGas` through the existing source-facing
+  `omegaHolePolymerSystem`.  The projection theorem
+  `appendixFHoleSecondGas_activity` identifies the gas activity with `K#`,
+  while `appendixFHoleSecondGasActivity_eq_zero_of_not_mem_targetRegion`
+  proves the zero extension outside representable first connected-cover
+  targets.  The KP interface is deliberately honest:
+  `AppendixFHoleSecondGasKPMajorant` includes the exact tilt/cardinality
+  factors required by the current KP theorem, and
+  `appendixFHoleSecondGas_KPCriterion_of_majorant` applies the existing
+  `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`.
+  This does not prove Dimock (642), the conversion from the exact nonlinear
+  `K#` estimate to the KP-ready majorant, the ultralocal product
+  factorization (643), the second Ursell `H#`, or any residual decay theorem;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound
