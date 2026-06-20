@@ -284,6 +284,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.SUSY.expect_decomposition_bound
 #print axioms YangMills.SUSY.expect_decomposition_profile_bound
 #print axioms YangMills.SUSY.expect_profile_bound_of_exact_ward
+-- Algebraic finite Berezin substrate: top exterior coefficient functional.
+#print axioms YangMills.SUSY.finiteExteriorBasis_empty
+#print axioms YangMills.SUSY.finiteBerezinTop_basis
+#print axioms YangMills.SUSY.finiteBerezinTop_top_basis
+#print axioms YangMills.SUSY.finiteBerezinTop_basis_of_ne_top
+#print axioms YangMills.SUSY.finiteBerezinTop_one_of_pos
 -- Ward-cancelled activities feeding the `Ω`-active skeleton-tail consumer.
 #print axioms YangMills.SUSY.norm_finset_sum_expect_Q_le
 #print axioms YangMills.SUSY.wardActivity_metric_bound_of_decomposition

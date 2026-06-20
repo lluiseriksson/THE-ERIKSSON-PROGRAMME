@@ -5713,3 +5713,41 @@ bound.  It does not prove the source-side lower bound `n ≤ |I|`, the
 Yang-Mills raw amplitude `A`, Appendix-F activity decay, `hRpoly`, continuum
 limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 170 (2026-06-20, **finite Berezin top-coefficient substrate**
+`YangMills.SUSY.finiteExteriorBasis_empty`,
+`YangMills.SUSY.finiteBerezinTop_basis`,
+`YangMills.SUSY.finiteBerezinTop_top_basis`,
+`YangMills.SUSY.finiteBerezinTop_basis_of_ne_top`,
+`YangMills.SUSY.finiteBerezinTop_one_of_pos`;
+core 8283)
+
+This addendum records the first concrete finite Grassmann/Berezin algebra
+under the abstract Ward layer.  The new file `YangMills/SUSY/FiniteBerezin.lean`
+uses Mathlib's exterior algebra over the finite complex vector space
+`Fin n → ℂ`.  Its canonical basis is indexed by finite subsets of `Fin n`.
+
+The main definition
+`finiteBerezinTop n : ExteriorAlgebra ℂ (Fin n → ℂ) →ₗ[ℂ] ℂ`
+is the coefficient functional of the top exterior monomial.  The verified
+rules are:
+
+* `finiteExteriorBasis_empty` identifies the empty exterior monomial with the
+  unit;
+* `finiteBerezinTop_basis` proves that the top-coefficient functional is `1`
+  on the top basis monomial and `0` on all other exterior basis monomials;
+* `finiteBerezinTop_top_basis` and `finiteBerezinTop_basis_of_ne_top` expose
+  those two cases separately;
+* `finiteBerezinTop_one_of_pos` proves that constants have zero finite
+  Berezin integral when the fermionic dimension is positive.
+
+This gives the Ward/SUSY track a real algebraic object beneath the previously
+abstract cancellation interface: future finite super-Gaussian work can now
+target an actual top-coefficient Berezin functional instead of a purely
+schematic expectation symbol.
+
+**Honest scope.** This is only the algebraic Berezin coefficient functional.
+It does not construct a Gaussian Berezin weight, fermionic covariance,
+Pfaffian/determinant cancellation, a regulator/decoupling theorem, the
+Yang-Mills fluctuation activity bound, `hRpoly`, continuum limit, or
+OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.

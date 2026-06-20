@@ -69,12 +69,30 @@ activity has amplitude `amp + S`.
   Ward-cancelled activities directly into
   `omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`.
 
+`YangMills/SUSY/FiniteBerezin.lean` now starts the finite Berezin substrate:
+
+* `finiteExteriorBasis n` is the canonical basis of the complex exterior
+  algebra over `Fin n → ℂ`, indexed by subsets of `Fin n`;
+* `finiteBerezinTop n` is the coefficient functional of the top exterior
+  monomial;
+* `finiteBerezinTop_basis`, `finiteBerezinTop_top_basis`, and
+  `finiteBerezinTop_basis_of_ne_top` prove the usual algebraic rule: top
+  monomial integrates to `1`, all other basis monomials integrate to `0`;
+* `finiteBerezinTop_one_of_pos` records that constants have zero Berezin
+  integral in positive fermionic dimension.
+
+This is the first concrete finite Grassmann/Berezin layer underneath the
+abstract Ward interface.  It is not yet a Gaussian Berezin weight,
+fermionic covariance, Pfaffian/determinant cancellation, or physical SUSY/YM
+construction.
+
 ## What remains open
 
 The following are **not** proved by this substrate:
 
 * a lattice `N=1` super-Yang--Mills construction;
-* Grassmann/Berezin integration;
+* Gaussian Berezin integration with a covariance and determinant/Pfaffian
+  evaluation;
 * a Pfaffian/determinant cancellation theorem;
 * a heavy-gluino decoupling theorem to pure Yang--Mills;
 * the Yang--Mills fluctuation-integral activity bound `hRpoly`;

@@ -289,6 +289,10 @@ import YangMills.RG.Ubar
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
 -- quantitative Ward defect before norms are applied.
 import YangMills.SUSY.WardComplex
+-- Algebraic finite Berezin substrate: the top-coefficient functional on a
+-- finite complex exterior algebra, the first concrete layer underneath future
+-- supergaussian/Ward-model instantiations.
+import YangMills.SUSY.FiniteBerezin
 -- Ward-cancelled polymer activities: exact/approximate Ward decomposition
 -- hypotheses feed the source-facing `Ω`-active skeleton-tail consumer.
 import YangMills.SUSY.WardPolymer

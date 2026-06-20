@@ -161,6 +161,13 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `YangMills/SUSY/WardComplex.lean`: if an activity decomposes as `H = QB + R`,
   the `Q`-exact contribution is killed up to a quantitative defect before
   norms are applied, with pointwise profile consumers for polymer activities.
+* the finite Berezin algebra seed `YangMills/SUSY/FiniteBerezin.lean`: the
+  exterior algebra over the finite complex space `Fin n → ℂ` now has the
+  canonical exterior basis `finiteExteriorBasis` and the top-coefficient
+  functional `finiteBerezinTop`.  It proves that the functional is `1` on the
+  top monomial, `0` on every non-top basis monomial, and kills constants in
+  positive fermionic dimension.  This is only the algebraic Berezin coefficient
+  layer, not yet a super-Gaussian determinant/Pfaffian theorem.
 * the Ward-cancelled polymer bridge `YangMills/SUSY/WardPolymer.lean`: finite
   Ward-defect sums, integrated activities `wardActivity`, and exact/approximate
   Ward consumers feeding `omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`
