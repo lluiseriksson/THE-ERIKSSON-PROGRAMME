@@ -5479,3 +5479,32 @@ translation layer: separated Ω-components give separated Ω-active supports.
 prove Appendix-F activity decay, the Yang-Mills fluctuation measure,
 `hRpoly`, continuum limit, or OS/Wightman reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 161 (2026-06-20, **canonical confined-component cover family**
+`YangMills.RG.OmegaConnectedCover.confinedComponentCoverOfComponent`,
+`YangMills.RG.OmegaConnectedCover.confinedComponentCoverFamily`,
+`YangMills.RG.OmegaConnectedCover.biUnion_confinedComponentCoverFamily_index_eq`,
+`YangMills.RG.OmegaConnectedCover.pairwise_omegaActiveSupport_disjoint_confinedComponentCoverFamily`;
+core 8283)
+
+This addendum packages Addenda 159–160 as a reusable finite family interface.
+For any known member `C` of
+`confinedComponents (omegaOverlapGraph Ω activeSupport) K`, the noncomputable
+choice `confinedComponentCoverOfComponent` selects an `OmegaConnectedCover`
+whose index is exactly `C`, whose Ω-region is `Ω`, and whose active-support map
+is the original `activeSupport`.  The theorem
+`mayerActivity_confinedComponentCoverOfComponent` rewrites its Mayer activity
+back to `LocalActivity.mayerCoverActivity C H`.
+
+The family wrapper `confinedComponentCoverFamily` indexes these covers by the
+finite subtype of confined Ω-overlap components.  The theorem
+`biUnion_confinedComponentCoverFamily_index_eq` proves that the union of the
+family's cover indices is exactly the original finite cover set `K`, and
+`pairwise_omegaActiveSupport_disjoint_confinedComponentCoverFamily` gives the
+pairwise Ω-active support disjointness across distinct family entries.
+
+**Honest scope.** This is finite compiler packaging for the future
+Dimock-F.1/with-holes layer.  It does not prove Appendix-F activity decay,
+construct the Yang-Mills fluctuation measure, establish `hRpoly`, continuum
+limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

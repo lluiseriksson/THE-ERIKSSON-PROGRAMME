@@ -668,6 +668,120 @@ theorem exists_confinedComponentCover_of_mem_confinedComponents
     with ⟨r, _hr, rfl⟩
   exact ⟨confinedComponentCover Ω activeSupport K r, rfl, rfl, rfl⟩
 
+/-- A canonical choice of Ω-connected cover for a component already known to
+belong to `confinedComponents (omegaOverlapGraph Ω activeSupport) K`.  This
+avoids repeatedly exposing the root-witness chosen by `confinedComponents`. -/
+noncomputable def confinedComponentCoverOfComponent
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K C : Finset ι)
+    (hC : C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K) :
+    OmegaConnectedCover Site ι :=
+  Classical.choose
+    (exists_confinedComponentCover_of_mem_confinedComponents Ω activeSupport K C hC)
+
+theorem confinedComponentCoverOfComponent_index
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K C : Finset ι)
+    (hC : C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K) :
+    (confinedComponentCoverOfComponent Ω activeSupport K C hC).index = C :=
+  (Classical.choose_spec
+    (exists_confinedComponentCover_of_mem_confinedComponents Ω activeSupport K C hC)).1
+
+theorem confinedComponentCoverOfComponent_omega
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K C : Finset ι)
+    (hC : C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K) :
+    (confinedComponentCoverOfComponent Ω activeSupport K C hC).omega = Ω :=
+  (Classical.choose_spec
+    (exists_confinedComponentCover_of_mem_confinedComponents Ω activeSupport K C hC)).2.1
+
+theorem confinedComponentCoverOfComponent_activeSupport
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K C : Finset ι)
+    (hC : C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K) :
+    (confinedComponentCoverOfComponent Ω activeSupport K C hC).activeSupport =
+      activeSupport :=
+  (Classical.choose_spec
+    (exists_confinedComponentCover_of_mem_confinedComponents Ω activeSupport K C hC)).2.2
+
+@[simp]
+theorem mayerActivity_confinedComponentCoverOfComponent
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    {Ψ Φ : Site → Type*}
+    (Ω : Finset Site) (activeSupport : ι → Finset Site)
+    (K C : Finset ι)
+    (hC : C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K)
+    (H : ι → LocalActivity Site Ψ Φ ℂ) :
+    ((confinedComponentCoverOfComponent Ω activeSupport K C hC).mayerActivity H) =
+      LocalActivity.mayerCoverActivity C H := by
+  rw [mayerActivity, confinedComponentCoverOfComponent_index]
+
+/-- The canonical component-cover family indexed by the finite subtype of
+confined Ω-overlap components. -/
+noncomputable def confinedComponentCoverFamily
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site) (K : Finset ι)
+    (C : {C // C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K}) :
+    OmegaConnectedCover Site ι :=
+  confinedComponentCoverOfComponent Ω activeSupport K C.1 C.2
+
+theorem confinedComponentCoverFamily_index
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site) (K : Finset ι)
+    (C : {C // C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K}) :
+    (confinedComponentCoverFamily Ω activeSupport K C).index = C.1 :=
+  confinedComponentCoverOfComponent_index Ω activeSupport K C.1 C.2
+
+theorem confinedComponentCoverFamily_omega
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site) (K : Finset ι)
+    (C : {C // C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K}) :
+    (confinedComponentCoverFamily Ω activeSupport K C).omega = Ω :=
+  confinedComponentCoverOfComponent_omega Ω activeSupport K C.1 C.2
+
+theorem confinedComponentCoverFamily_activeSupport
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site) (K : Finset ι)
+    (C : {C // C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K}) :
+    (confinedComponentCoverFamily Ω activeSupport K C).activeSupport = activeSupport :=
+  confinedComponentCoverOfComponent_activeSupport Ω activeSupport K C.1 C.2
+
+/-- The canonical family of Ω-connected covers extracted from the confined
+components covers exactly the original finite index set. -/
+theorem biUnion_confinedComponentCoverFamily_index_eq
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site) (K : Finset ι) :
+    (confinedComponents (omegaOverlapGraph Ω activeSupport) K).attach.biUnion
+      (fun C => (confinedComponentCoverFamily Ω activeSupport K C).index) = K := by
+  classical
+  let Γ := confinedComponents (omegaOverlapGraph Ω activeSupport) K
+  have hΓ : Γ.biUnion id = K := by
+    simpa [Γ] using
+      biUnion_confinedComponents_eq (omegaOverlapGraph Ω activeSupport) K
+  ext i
+  constructor
+  · intro hi
+    rw [Finset.mem_biUnion] at hi
+    rcases hi with ⟨C, _hCattach, hiC⟩
+    rw [confinedComponentCoverFamily_index] at hiC
+    have hiΓ : i ∈ Γ.biUnion id := by
+      rw [Finset.mem_biUnion]
+      exact ⟨C.1, C.2, by simpa using hiC⟩
+    simpa [hΓ] using hiΓ
+  · intro hiK
+    have hiΓ : i ∈ Γ.biUnion id := by
+      simpa [hΓ] using hiK
+    rw [Finset.mem_biUnion] at hiΓ
+    rcases hiΓ with ⟨C, hC, hiC⟩
+    rw [Finset.mem_biUnion]
+    refine ⟨⟨C, hC⟩, by simp, ?_⟩
+    rw [confinedComponentCoverFamily_index]
+    exact hiC
+
 /-- Distinct confined components of the Ω-overlap graph have disjoint active
 supports inside Ω, pointwise across their index sets. -/
 theorem omegaActiveSupport_disjoint_of_mem_confinedComponents_ne
@@ -706,6 +820,25 @@ theorem pairwise_omegaActiveSupport_disjoint_of_mem_confinedComponents_ne
   intro i hi j hj
   exact omegaActiveSupport_disjoint_of_mem_confinedComponents_ne
     Ω activeSupport K hC hD hne hi hj
+
+/-- Cover-family form: distinct entries of the canonical confined-component
+cover family have pairwise disjoint active supports inside Ω. -/
+theorem pairwise_omegaActiveSupport_disjoint_confinedComponentCoverFamily
+    {Site ι : Type*} [DecidableEq Site] [DecidableEq ι]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site) (K : Finset ι)
+    {C D : {C // C ∈ confinedComponents (omegaOverlapGraph Ω activeSupport) K}}
+    (hne : C ≠ D) :
+    ∀ i, i ∈ (confinedComponentCoverFamily Ω activeSupport K C).index →
+      ∀ j, j ∈ (confinedComponentCoverFamily Ω activeSupport K D).index →
+        Disjoint (Ω ∩ activeSupport i) (Ω ∩ activeSupport j) := by
+  intro i hi j hj
+  rw [confinedComponentCoverFamily_index] at hi
+  rw [confinedComponentCoverFamily_index] at hj
+  have hne_index : C.1 ≠ D.1 := by
+    intro h
+    exact hne (Subtype.ext h)
+  exact omegaActiveSupport_disjoint_of_mem_confinedComponents_ne
+    Ω activeSupport K C.2 D.2 hne_index hi hj
 
 /-- Two Ω-connected Mayer activities with disjoint fluctuation-support unions
 factorize under an ultralocal product probability measure, with the spectator
