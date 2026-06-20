@@ -341,6 +341,9 @@ import YangMills.RG.AppendixFHsharpPartial
 -- Convergence interface for H# truncations: summability of fixed-target terms
 -- plus uniform finite-partial bounds feeds the totalized residual adapter.
 import YangMills.RG.AppendixFHsharpConvergence
+-- Pointwise limit API for H# truncations: explicit convergence hypotheses
+-- transfer uniform finite-cutoff bounds to the totalized H# activity.
+import YangMills.RG.AppendixFHsharpLimit
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

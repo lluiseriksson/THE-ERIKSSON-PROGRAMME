@@ -17,6 +17,7 @@ import YangMills.RG.AppendixFHsharp
 import YangMills.RG.AppendixFHsharpResidual
 import YangMills.RG.AppendixFHsharpPartial
 import YangMills.RG.AppendixFHsharpConvergence
+import YangMills.RG.AppendixFHsharpLimit
 
 /-! # Oracle check — one command, every headline
 
@@ -613,6 +614,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_of_partial_bounds_four_mul_margin
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_of_partial_bounds
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_of_partial_bounds_four_mul_margin
+-- pointwise limit interface: explicit convergence hypotheses transfer
+-- finite-cutoff residual estimates before the rooted polymer tsum is used.
+#print axioms YangMills.RG.tendsto_appendixFHoleHsharpPartial_of_summable
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_partial_limit
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_summable_terms
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_partial_limit
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8301 jobs**.
+* `lake build YangMillsCore` is green at **8302 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -285,8 +285,9 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `Rsc t k = ∑' P, toReal (appendixFHoleHsharp ... P)`, either under the
   direct residual domination hypothesis `κ₀ <= κ - 3κ₀ - 3` or under the
   sufficient margin `κ >= 4κ₀ + 3`.  This is only the adapter from a proved
-  source residual estimate to the UV consumer; it does not prove Dimock
-  (642), convergence of the `H#` Ursell series, or the physical real
+  source residual estimate to the UV consumer; it does not prove the source
+  `H#` estimate (Dimock F.1/(636)), convergence of the `H#` Ursell series,
+  or the physical real
   projection.  The module now also names the canonical contractions
   `complex_re_contracts_norm` and `complex_im_contracts_norm`, and specializes
   the producer to real and imaginary parts through
@@ -326,8 +327,19 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `SingleScaleUVDecay` producers, including the real-part specialization and
   the sufficient margin `κ >= 4κ₀ + 3`.  This is still a contract interface:
   it does not prove the fixed-target summability, quantitative tail decay, the
-  uniform finite-partial residual bound, Dimock (642), or any continuum/Clay
-  theorem;
+  uniform finite-partial residual bound, the source `H#` estimate
+  (Dimock F.1/(636)), or any continuum/Clay theorem;
+* the pointwise limit-transfer interface
+  `YangMills/RG/AppendixFHsharpLimit.lean`: it separates explicit convergence
+  of finite `H#` partials from the analytic proof of that convergence.  A
+  pointwise limit hypothesis plus a residual bound uniform in cutoff yields
+  the same residual norm bound for the total `appendixFHoleHsharp`; fixed-target
+  summability supplies that convergence as a corollary; and the real-part
+  four-margin theorem feeds this pointwise total bound into the existing
+  omega-rooted `SingleScaleUVDecay` consumer without passing limits through
+  the rooted polymer `tsum`.  This does not prove the second-Ursell majorant,
+  the source `H#` estimate (Dimock F.1/(636)), the preceding `K/K#` estimate
+  (Dimock (642)), or any continuum/Clay theorem;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound
@@ -337,7 +349,8 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `κ₀ <= κ - 3κ₀ - 3`.  Thus the source-side margin can be closed either by
   strengthening to `κ >= 4κ₀ + 3` or by proving geometric summability directly
   at the residual exponent.  This module is summation bookkeeping only: it does
-  not prove Dimock (642), the Yang-Mills raw activity estimate, or the
+  not prove the source `H#` estimate (Dimock F.1/(636)), the Yang-Mills raw
+  activity estimate, or the
   continuum/OS reconstruction steps.  The module now includes the rooted
   concrete adapter
   `rooted_polymerClusterWithHoles_abs_tsum_le`, which uses

@@ -7317,3 +7317,52 @@ feed before one can claim a source proof of the residual bound.  Dimock (642),
 the `κ - 3κ₀ - 3` analytic loss, concrete Yang-Mills raw activity decay,
 continuum construction, and Clay remain open.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 206 (2026-06-20, **pointwise H# limit transfer**
+`YangMills.RG.tendsto_appendixFHoleHsharpPartial_of_summable`,
+`YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_partial_limit`,
+`YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_summable_terms`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_partial_limit`;
+core 8302)
+
+This addendum adds `YangMills/RG/AppendixFHsharpLimit.lean`, the pointwise
+limit-transfer API for finite second-Ursell `H#` truncations.
+
+The theorem `tendsto_appendixFHoleHsharpPartial_of_summable` records the
+fixed-target convergence consequence of an explicit
+`Summable (fun n => appendixFHoleHsharpTerm HF zK Y n)` hypothesis.  The
+theorem `norm_appendixFHoleHsharp_le_residual_of_partial_limit` keeps the
+analytic convergence premise even more explicit: if the finite partials
+converge pointwise to the repository's totalized `appendixFHoleHsharp`, and if
+the finite partials satisfy a residual norm estimate uniformly in the cutoff,
+then the same residual estimate holds for total `H#`.  The proof is the
+minimal order-theoretic limit transfer by `le_of_tendsto'`.
+
+The summability version
+`norm_appendixFHoleHsharp_le_residual_of_summable_terms` feeds the fixed-target
+summability theorem into that pointwise limit transfer.  The UV theorem
+`singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_partial_limit`
+then applies the existing total `H#` real-part residual consumer after the
+pointwise bound is obtained.  No limit is passed through the outer rooted
+polymer `tsum`, so the future dominated-convergence/majorant obligation remains
+localized to the second-Ursell source proof.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpLimit.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is still a contract interface, not the analytic source
+estimate.  In the Dimock II numbering, the final `H#` destination is the
+Theorem F.1 estimate recorded as (636), while (642) is the preceding `K/K#`
+estimate feeding the second gas.  This module proves neither source estimate,
+nor the second-Ursell majorant, nor any continuum/Clay theorem.  Clay distance
+**~0% (<0.1%), unchanged**.
