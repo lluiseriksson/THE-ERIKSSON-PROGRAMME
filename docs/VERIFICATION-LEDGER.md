@@ -6105,3 +6105,57 @@ skeleton`; it does not prove the metric bound (642), define or integrate
 `K#`, construct the second Ursell activity `H#`, prove the Yang-Mills raw
 activity estimate, discharge `hRpoly`, construct a continuum limit, or affect
 OS/Wightman/Clay obligations.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 182 (2026-06-20, **source-faithful Appendix-F hole target geometry**
+`YangMills.RG.appendixFHoleCoverUnion_skeleton`,
+`YangMills.RG.appendixFHoleFullCoverUnion_nonempty`,
+`YangMills.RG.appendixFHoleCoverUnion_cubeConnected`,
+`YangMills.RG.appendixFHoleCoverUnion_polymerWithHoles`,
+`YangMills.RG.appendixFHoleTargetRegion_cubeConnected`,
+`YangMills.RG.appendixFHoleTargetRegion_polymerWithHoles`,
+`YangMills.RG.appendixFHoleTargetRegion_skeleton_nonempty`,
+`YangMills.RG.appendixFHoleTargetRegion_toOmegaPolymer`,
+`YangMills.RG.appendixFHoleCoverUnion_injective_on_admissibleConnectedCoverFamily`,
+`YangMills.RG.appendixFHoleCoverUnion_image_card_eq`;
+core 8288)
+
+This addendum adds `YangMills/RG/AppendixFHoleTarget.lean`, the first finite
+two-support bridge for the concrete `omegaHolePolymerSystem` carrier.
+
+The new module proves that the skeleton of a full connected-cover union is
+exactly the connected-cover union of the active skeletons:
+
+```
+skeleton HF (appendixFCoverUnion (fun X => X.val) C)
+  = appendixFCoverUnion (fun X => skeleton HF X.val) C
+```
+
+It also proves that every connected cover has a nonempty full target, that
+representable full targets are cube-connected, respect the hole family, and
+have nonempty active skeleton, and packages them back as `OmegaPolymerType`.
+Most importantly for the forthcoming two-support Fubini theorem, an
+admissible family whose disjointness is only active-skeleton disjointness
+cannot contain two distinct connected covers with the same full target union.
+The map from connected covers to full targets is therefore `Set.InjOn` on the
+admissible family, and its image preserves cardinality.
+
+Verification:
+
+```
+lake build YangMills.RG.AppendixFHoleTarget
+lake env lean YangMillsCore.lean
+lake env lean oracle_check.lean
+lake build YangMillsCore
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is finite target geometry for the source-faithful
+two-support holes adapter.  It does not yet prove the full two-support
+target-choice Fubini/lumping identity, the metric inequality (641), the
+activity bound (642), ultralocal integration (643)--(644), the second
+Ursell/logarithmic expansion (645)--(646), the Yang-Mills raw activity
+estimate, `hRpoly`, a continuum limit, or any Clay/OS/Wightman statement.
+Clay distance **~0% (<0.1%), unchanged**.

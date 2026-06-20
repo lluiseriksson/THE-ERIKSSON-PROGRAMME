@@ -111,6 +111,16 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   finite algebra for the case where the same support map controls
   connectivity and target unions; the source-faithful two-support
   skeleton/full-target holes adapter is still a separate next step;
+* the first source-faithful two-support holes bridge
+  `YangMills/RG/AppendixFHoleTarget.lean`: for `omegaHolePolymerSystem`, it
+  proves `skeleton (⋃ full targets) = ⋃ skeletons`, nonemptiness of full
+  targets and target skeletons, connectedness and hole-respect of representable
+  full targets, a coercion back to `OmegaPolymerType`, and
+  injectivity/cardinality preservation of the full-target union map on
+  admissible connected-cover families whose disjointness is only
+  active-skeleton disjointness.  This closes the finite target-geometry hazard
+  before the full two-support target-choice Fubini identity, but does not yet
+  prove that identity;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

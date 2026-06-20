@@ -294,6 +294,8 @@ import YangMills.RG.HolePolymerSystem
 import YangMills.RG.Translation
 import YangMills.RG.LocalKP
 import YangMills.RG.ClusterDecay
+-- Source-faithful Appendix-F hole targets: skeleton connectivity, full target unions.
+import YangMills.RG.AppendixFHoleTarget
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

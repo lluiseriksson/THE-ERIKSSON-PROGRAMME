@@ -5,6 +5,7 @@ import YangMills.RG.RawMayerWithHoles
 import YangMills.RG.OmegaConnectedCover
 import YangMills.RG.MayerCoverFactorization
 import YangMills.RG.AppendixFFiniteCover
+import YangMills.RG.AppendixFHoleTarget
 
 /-! # Oracle check — one command, every headline
 
@@ -471,6 +472,17 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.prod_one_add_eq_sum_appendixFAdmissibleConnectedCoverFamilies
 #print axioms YangMills.RG.prod_one_add_eq_appendixFTargetPolymerSystem_partition
 #print axioms YangMills.RG.complex_exp_sum_eq_appendixFTargetPolymerSystem_partition
+-- two-support with-holes target geometry: skeleton compatibility and full-target injectivity
+#print axioms YangMills.RG.appendixFHoleCoverUnion_skeleton
+#print axioms YangMills.RG.appendixFHoleFullCoverUnion_nonempty
+#print axioms YangMills.RG.appendixFHoleCoverUnion_cubeConnected
+#print axioms YangMills.RG.appendixFHoleCoverUnion_polymerWithHoles
+#print axioms YangMills.RG.appendixFHoleTargetRegion_cubeConnected
+#print axioms YangMills.RG.appendixFHoleTargetRegion_polymerWithHoles
+#print axioms YangMills.RG.appendixFHoleTargetRegion_skeleton_nonempty
+#print axioms YangMills.RG.appendixFHoleTargetRegion_toOmegaPolymer
+#print axioms YangMills.RG.appendixFHoleCoverUnion_injective_on_admissibleConnectedCoverFamily
+#print axioms YangMills.RG.appendixFHoleCoverUnion_image_card_eq
 #print axioms YangMills.RG.omegaOverlapGraph_univ_skeleton_adj_iff
 #print axioms YangMills.RG.appendixFHoleConnectedActivity_congr
 

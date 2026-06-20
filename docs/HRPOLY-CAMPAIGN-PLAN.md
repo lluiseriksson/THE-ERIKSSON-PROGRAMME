@@ -247,8 +247,15 @@ This closes the finite first Mayer identity only when the same support map
 defines both Ω-connectivity and target unions.  The next source-faithful
 Appendix-F brick is still the two-support holes adapter:
 `overlapSupport X = skeleton HF X.val`, `targetSupport X = X.val`, and
-`activePart Y = skeleton HF Y`.  It must prove the full-union target geometry
-and target-family reindexing without using full-target disjointness.
+`activePart Y = skeleton HF Y`.  The first precondition for that adapter is
+now theorem-fed in `AppendixFHoleTarget.lean`: for the actual
+`omegaHolePolymerSystem`, `skeleton (⋃ X_i) = ⋃ skeleton(X_i)`, every
+representable full target is again a valid active hole-polymer, and the
+full-target union map is injective/cardinality-preserving on admissible
+connected-cover families even though admissibility uses only active-skeleton
+disjointness.
+The remaining finite Appendix-F task is the full two-support target-choice
+Fubini/lumping theorem without using full-target disjointness.
 
 ### P4 route refinement: collar factorization from covariance decay
 
