@@ -181,6 +181,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.LocalActivity.mayerCoverActivity_integral_split_confinedComponent
 #print axioms YangMills.RG.LocalActivity.mayerCoverActivity_biUnion_integral_of_no_cross_components
 #print axioms YangMills.RG.LocalActivity.mayerCoverActivity_integral_factor_confinedComponents
+#print axioms YangMills.RG.LocalActivity.mayerCoverActivity_integral_factor_confinedOmegaComponents_of_fluctuationSupport_subset
 #print axioms YangMills.RG.OmegaConnectedCover.mayerActivity_integral_mul_of_pairwise_disjoint_fluctuationSupport
 -- decoupling/regularisation bridge: a uniform activity profile bound passes to
 -- the pointwise limiting activity, and a summable telescopic regulator defect

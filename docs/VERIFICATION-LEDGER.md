@@ -5529,3 +5529,28 @@ component indices are pairwise disjoint.
 not prove Appendix-F activity decay, construct the Yang-Mills fluctuation
 measure, establish `hRpoly`, continuum limit, or OS/Wightman reconstruction.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 163 (2026-06-20, **Ω-component support bridge to ultralocal
+factorization**
+`YangMills.RG.LocalActivity.mayerCoverActivity_integral_factor_confinedOmegaComponents_of_fluctuationSupport_subset`;
+core 8283)
+
+This addendum records the finite bridge from source-shaped Ω-components to the
+measure-theoretic disconnected-cover factorization.  The theorem
+`mayerCoverActivity_integral_factor_confinedOmegaComponents_of_fluctuationSupport_subset`
+assumes the explicit containment
+`(H i).fluctuationSupport ⊆ Ω ∩ activeSupport i` for each `i ∈ K`.  Under that
+hypothesis, distinct confined components of the Ω-overlap graph have disjoint
+fluctuation supports, so the ultralocal product probability measure factorizes
+the Mayer-cover integral over `K` into the product over those Ω-components.
+
+This is the exact finite adapter a later Appendix-F source compiler needs:
+prove that the analytic/local construction declares active supports large
+enough to contain the fluctuation dependencies, then the already-verified
+component machinery supplies independence.
+
+**Honest scope.** This is finite support algebra plus product-measure
+factorization.  It does not prove the support containment for Yang-Mills,
+Appendix-F activity decay, the Yang-Mills fluctuation measure, `hRpoly`,
+continuum limit, or OS/Wightman reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.

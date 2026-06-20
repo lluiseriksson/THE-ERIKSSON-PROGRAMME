@@ -84,7 +84,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   graph also have pairwise disjoint active supports inside Ω.  The canonical
   `confinedComponentCoverFamily` indexed by the confined components has cover
   indices whose union is exactly the original finite cover set `K`, and these
-  indices are pairwise disjoint for distinct family entries;
+  indices are pairwise disjoint for distinct family entries.  The support
+  bridge
+  `LocalActivity.mayerCoverActivity_integral_factor_confinedOmegaComponents_of_fluctuationSupport_subset`
+  states the exact finite hypothesis under which these Ω-components factorize
+  the ultralocal fluctuation integral: every fluctuation support must lie inside
+  its declared Ω-active support;
 * the raw Mayer local transform `YangMills/RG/RawMayerWithHoles.lean`:
   `H ↦ exp H - 1` on `LocalFunctional` and `LocalActivity`, support
   preservation, off-support invariance, and the elementary small-activity bound

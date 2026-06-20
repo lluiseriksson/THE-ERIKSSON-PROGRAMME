@@ -606,6 +606,66 @@ theorem mayerCoverActivity_integral_factor_confinedComponents
     simpa [Γ, G] using biUnion_confinedComponents_eq G K
   simpa [Γ, G, hcover] using hfactor
 
+/-- Ω-component factorization under an explicit support inclusion.  If every
+fluctuation support is contained in its declared active support inside `Ω`,
+then confined components of the Ω-overlap graph are independent for the
+ultralocal fluctuation measure. -/
+theorem mayerCoverActivity_integral_factor_confinedOmegaComponents_of_fluctuationSupport_subset
+    {Site β ι : Type*} [Fintype Site] [DecidableEq Site] [DecidableEq ι]
+    [MeasurableSpace β] [Nonempty β]
+    {Ψ : Site → Type*}
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    (Ω : Finset Site) (activeSupport : ι → Finset Site) (K : Finset ι)
+    (H : ι → LocalActivity Site Ψ (fun _ => β) ℂ)
+    (ψ : ∀ x, Ψ x)
+    (hsub : ∀ i, i ∈ K →
+      (H i).fluctuationSupport ⊆ Ω ∩ activeSupport i) :
+    let Γ := confinedComponents (omegaOverlapGraph Ω activeSupport) K
+    ∫ φ, (mayerCoverActivity K H).globalEval ψ φ
+        ∂(Measure.pi fun _ : Site => μ)
+      =
+      ∏ C ∈ Γ,
+        (∫ φ, (mayerCoverActivity C H).globalEval ψ φ
+          ∂(Measure.pi fun _ : Site => μ)) := by
+  classical
+  let Gω := omegaOverlapGraph Ω activeSupport
+  let Γ := confinedComponents Gω K
+  have hdisj : ∀ C, C ∈ Γ → ∀ D, D ∈ Γ → C ≠ D → Disjoint C D := by
+    intro C hC D hD hne
+    exact disjoint_of_mem_confinedComponents_ne Gω K
+      (by simpa [Γ] using hC) (by simpa [Γ] using hD) hne
+  have hno : ∀ C, C ∈ Γ → ∀ D, D ∈ Γ → C ≠ D →
+      ∀ i, i ∈ C → ∀ j, j ∈ D → ¬ (fluctuationOverlapGraph H).Adj i j := by
+    intro C hC D hD hne i hi j hj hadj
+    have hiK : i ∈ K :=
+      subset_of_mem_confinedComponents Gω K (by simpa [Γ] using hC) hi
+    have hjK : j ∈ K :=
+      subset_of_mem_confinedComponents Gω K (by simpa [Γ] using hD) hj
+    have hnoΩ : ¬ Gω.Adj i j :=
+      no_adj_of_mem_confinedComponents_ne Gω K
+        (by simpa [Γ] using hC) (by simpa [Γ] using hD) hne hi hj
+    have hΩdisj : Disjoint (Ω ∩ activeSupport i) (Ω ∩ activeSupport j) := by
+      by_contra hnot
+      have hCD : Disjoint C D :=
+        disjoint_of_mem_confinedComponents_ne Gω K
+          (by simpa [Γ] using hC) (by simpa [Γ] using hD) hne
+      have hij : i ≠ j := by
+        intro h
+        exact (Finset.disjoint_left.mp hCD hi) (by simpa [h] using hj)
+      exact hnoΩ ((omegaOverlapGraph_adj_iff Ω activeSupport i j).mpr ⟨hij, hnot⟩)
+    have hflucDisj :
+        Disjoint (H i).fluctuationSupport (H j).fluctuationSupport := by
+      rw [Finset.disjoint_left]
+      intro x hxi hxj
+      exact (Finset.disjoint_left.mp hΩdisj (hsub i hiK hxi)) (hsub j hjK hxj)
+    exact ((fluctuationOverlapGraph_adj_iff H).mp hadj).2 hflucDisj
+  have hfactor :=
+    mayerCoverActivity_biUnion_integral_of_no_cross_components
+      μ Γ H ψ hdisj hno
+  have hcover : Γ.biUnion id = K := by
+    simpa [Γ, Gω] using biUnion_confinedComponents_eq Gω K
+  simpa [Γ, Gω, hcover] using hfactor
+
 end LocalActivity
 
 namespace OmegaConnectedCover
