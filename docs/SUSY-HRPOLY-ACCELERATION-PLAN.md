@@ -93,6 +93,11 @@ activity has amplitude `amp + S`.
   `finiteBerezinWeighted_expect_Q_eq_zero`, and
   `finiteBerezinWeighted_eq_expect_remainder_of_exactWard` give the same exact
   cancellation rule for weighted finite Berezin integrals.
+* `finiteBerezinTopWeight n a = 1 + a • topBasis` is the first concrete
+  top-degree density seed; in positive fermionic dimension,
+  `finiteBerezinWeighted_topWeight_one_of_pos` integrates `1` to `a`, and
+  `finiteBerezinWeighted_topWeight_algebraMap_of_pos` integrates a scalar
+  constant `z` to `a * z`.
 
 This is the first concrete finite Grassmann/Berezin layer underneath the
 abstract Ward interface.  The weighted functional is the algebraic slot into

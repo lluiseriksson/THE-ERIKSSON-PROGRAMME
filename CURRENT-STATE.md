@@ -173,7 +173,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `finiteBerezinWeighted n weight F = finiteBerezinTop n (weight * F)`,
   proves that unit weight recovers `finiteBerezinTop`, and packages
   `FiniteBerezinWeightedExactWard` with the corresponding exact cancellation
-  theorem for weighted finite Berezin integrals.
+  theorem for weighted finite Berezin integrals.  The top-density seed
+  `finiteBerezinTopWeight n a = 1 + a • topBasis` proves the first
+  normalization facts: in positive fermionic dimension it integrates `1` to
+  `a` and scalar constants to `a * z`.
   This is only the algebraic Berezin/Ward coefficient layer, not yet a
   super-Gaussian determinant/Pfaffian theorem.
 * the Ward-cancelled polymer bridge `YangMills/SUSY/WardPolymer.lean`: finite

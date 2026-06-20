@@ -5818,3 +5818,38 @@ does not construct a covariance, prove a Gaussian Berezin determinant/Pfaffian
 formula, instantiate a physical supersymmetry, bound any Yang-Mills activity,
 discharge `hRpoly`, or affect the continuum Clay obligations.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 173 (2026-06-20, **finite Berezin top-density normalization**
+`YangMills.SUSY.finiteBerezinWeighted_top_basis_one`,
+`YangMills.SUSY.finiteBerezinTopWeight_zero`,
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_one_of_pos`,
+`YangMills.SUSY.finiteBerezinWeighted_topWeight_algebraMap_of_pos`;
+core 8284)
+
+This addendum adds the first concrete weighted-density seed for the finite
+Berezin substrate:
+
+`finiteBerezinTopWeight n a = 1 + a • finiteExteriorBasis n univ`.
+
+The theorem `finiteBerezinWeighted_top_basis_one` proves that weighting by the
+top exterior basis monomial integrates the constant observable `1` to `1`.
+The theorem `finiteBerezinTopWeight_zero` records that zero top coefficient is
+the unit density.  In positive fermionic dimension,
+`finiteBerezinWeighted_topWeight_one_of_pos` proves
+
+`∫_(finiteBerezinTopWeight n a) 1 = a`,
+
+and `finiteBerezinWeighted_topWeight_algebraMap_of_pos` proves the scalar
+normalization rule
+
+`∫_(finiteBerezinTopWeight n a) z = a * z`.
+
+This is a small but concrete preparation for finite super-Gaussian work: a
+future exterior-algebra Gaussian weight must reduce to explicit top-degree
+coefficients before any determinant/Pfaffian cancellation theorem can be
+honestly stated.
+
+**Honest scope.** This is top-degree density normalization only.  It does not
+construct a Gaussian covariance, determinant/Pfaffian identity, physical
+supersymmetry, Yang-Mills activity bound, `hRpoly`, continuum limit, or
+OS/Wightman reconstruction.  Clay distance **~0% (<0.1%), unchanged**.

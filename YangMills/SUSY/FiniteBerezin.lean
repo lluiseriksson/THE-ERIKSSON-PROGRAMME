@@ -119,6 +119,46 @@ left multiplication by the weight. -/
   ext F
   simp [finiteBerezinWeighted]
 
+/-- The simplest finite Berezin density with a prescribed top-degree
+coefficient.  This is not yet a Gaussian/Pfaffian construction; it is the
+algebraic normalization seed saying that a top-degree density controls the
+weighted integral of constants. -/
+def finiteBerezinTopWeight (n : ℕ) (a : ℂ) : FiniteExterior n :=
+  1 + a • (finiteExteriorBasis n (Finset.univ : Finset (Fin n)))
+
+/-- The top exterior basis monomial has weighted integral one against the
+constant observable. -/
+@[simp] theorem finiteBerezinWeighted_top_basis_one (n : ℕ) :
+    finiteBerezinWeighted n
+        ((finiteExteriorBasis n) (Finset.univ : Finset (Fin n)))
+        (1 : FiniteExterior n) = 1 := by
+  simp [finiteBerezinWeighted_apply]
+
+/-- Zero top coefficient leaves the unit density. -/
+@[simp] theorem finiteBerezinTopWeight_zero (n : ℕ) :
+    finiteBerezinTopWeight n 0 = 1 := by
+  simp [finiteBerezinTopWeight]
+
+/-- In positive fermionic dimension, the top-density weight integrates the
+constant observable `1` to its top coefficient. -/
+@[simp] theorem finiteBerezinWeighted_topWeight_one_of_pos {n : ℕ}
+    (hn : 0 < n) (a : ℂ) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+        (1 : FiniteExterior n) = a := by
+  simp [finiteBerezinTopWeight, finiteBerezinWeighted_apply,
+    finiteBerezinTop_one_of_pos hn]
+
+/-- In positive fermionic dimension, the top-density weight integrates scalar
+constants by multiplying them with the top coefficient. -/
+@[simp] theorem finiteBerezinWeighted_topWeight_algebraMap_of_pos {n : ℕ}
+    (hn : 0 < n) (a z : ℂ) :
+    finiteBerezinWeighted n (finiteBerezinTopWeight n a)
+        (algebraMap ℂ (FiniteExterior n) z) = a * z := by
+  rw [Algebra.algebraMap_eq_smul_one]
+  rw [map_smul]
+  simp [finiteBerezinTopWeight, finiteBerezinWeighted_apply,
+    finiteBerezinTop_one_of_pos hn, mul_comm]
+
 /-- A finite algebraic exact-Ward package for the Berezin top-coefficient
 functional.  This is deliberately linear/algebraic, not an `ApproxWardComplex`:
 the exterior algebra is not given an artificial norm or topology here. -/
