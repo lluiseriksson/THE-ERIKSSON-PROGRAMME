@@ -6447,3 +6447,43 @@ All completed green.  The oracle output remains
 no analytic estimate, does not prove activity bound (642), does not construct
 `K#` or `H#`, does not prove `hRpoly`, and does not affect the continuum/Clay
 frontier.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 188 (2026-06-20, **finite-stencil locality for the scaled
+averaging operator**
+`YangMills.RG.fineLineSupport`, `YangMills.RG.linAvgSupport`,
+`YangMills.RG.linAvg_congr_of_eqOn_support`,
+`YangMills.RG.scaledLinAvgCLM_congr_of_eqOn_support`; core 8290)
+
+This addendum closes the next safe part of the averaging-adjoint frontier.  The
+linear RG averaging operator `Q` already had its pointwise locality theorem in
+quantified form.  This checkpoint names the finite stencils explicitly:
+
+* `fineLineSupport L N' μ x`, the `L` positively-oriented fine bonds read by a
+  line integral from `x` in direction `μ`;
+* `linAvgSupport L N' c`, the finite block/line stencil read by `linAvg` at
+  coarse bond `c`.
+
+The new theorem `linAvg_congr_of_eqOn_support` packages locality as agreement
+on that finite stencil.  `scaledLinAvgCLM_congr_of_eqOn_support` lifts the same
+finite-stencil locality to the Hilbert-space operator used to form
+`qMassCLM = Q†Q`, keeping the scalar normalization `s` explicit.
+
+Verification:
+
+```
+lake env lean YangMills\RG\LinearAveraging.lean
+lake build YangMills.RG.AveragingAdjoint
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This proves finite-input locality for `Q` and for the scaled
+Hilbert-space averaging map.  It does not yet expose an explicit kernel for the
+adjoint, does not prove finite-range support for `Q†Q`, does not prove gauge
+Hessian coercivity, and does not discharge `hRpoly` or any continuum/Clay
+statement.  Clay distance **~0% (<0.1%), unchanged**.

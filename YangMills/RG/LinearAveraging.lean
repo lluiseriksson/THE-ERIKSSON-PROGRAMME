@@ -98,6 +98,43 @@ theorem linAvg_smul (L N' : ℕ) [NeZero L] [NeZero N']
   rw [Finset.sum_congr rfl fun x _ => fineLineSum_smul L N' r A c.dir x,
     ← Finset.smul_sum, smul_comm]
 
+open scoped Classical in
+/-- The finite set of fine bonds read by the line integral from `x` in
+direction `μ`.  This is the named stencil behind `fineLineSum_congr`. -/
+noncomputable def fineLineSupport (L N' : ℕ) [NeZero L] [NeZero N']
+    (μ : Fin d) (x : FinBox d (L * N')) :
+    Finset (ConcreteEdge d (L * N')) :=
+  (Finset.range L).image fun k =>
+    ⟨(fun y => FinBox.shift y μ)^[k] x, μ, true⟩
+
+open scoped Classical in
+/-- Membership in the finite line stencil. -/
+theorem mem_fineLineSupport_iff (L N' : ℕ) [NeZero L] [NeZero N']
+    (μ : Fin d) (x : FinBox d (L * N')) (e : ConcreteEdge d (L * N')) :
+    e ∈ fineLineSupport L N' μ x ↔
+      ∃ k < L, e = ⟨(fun y => FinBox.shift y μ)^[k] x, μ, true⟩ := by
+  constructor
+  · intro he
+    rcases (Finset.mem_image.mp he) with ⟨k, hk, hke⟩
+    exact ⟨k, Finset.mem_range.mp hk, hke.symm⟩
+  · rintro ⟨k, hk, rfl⟩
+    exact Finset.mem_image.mpr ⟨k, Finset.mem_range.mpr hk, rfl⟩
+
+open scoped Classical in
+/-- The finite set of fine bonds read by `linAvg` at the coarse bond `c`. -/
+noncomputable def linAvgSupport (L N' : ℕ) [NeZero L] [NeZero N']
+    (c : ConcreteEdge d N') : Finset (ConcreteEdge d (L * N')) :=
+  (blockOf L N' c.source).biUnion fun x => fineLineSupport L N' c.dir x
+
+open scoped Classical in
+/-- Membership in the finite block-averaging stencil. -/
+theorem mem_linAvgSupport_iff (L N' : ℕ) [NeZero L] [NeZero N']
+    (c : ConcreteEdge d N') (e : ConcreteEdge d (L * N')) :
+    e ∈ linAvgSupport L N' c ↔
+      ∃ x ∈ blockOf L N' c.source, ∃ k < L,
+        e = ⟨(fun y => FinBox.shift y c.dir)^[k] x, c.dir, true⟩ := by
+  simp [linAvgSupport, mem_fineLineSupport_iff]
+
 omit [Module ℝ V] in
 /-- **The fine line integral is local** (Bałaban CMP 95: `A(Γ_{c,x})`
 reads only the bonds on its straight path): if two bond fields agree on
@@ -111,6 +148,17 @@ theorem fineLineSum_congr (L N' : ℕ) [NeZero L] [NeZero N']
     fineLineSum L N' A μ x = fineLineSum L N' A' μ x := by
   refine Finset.sum_congr rfl fun k hk => ?_
   exact h k (Finset.mem_range.mp hk)
+
+omit [Module ℝ V] in
+/-- Locality of the fine line integral, stated through the named finite
+stencil `fineLineSupport`. -/
+theorem fineLineSum_congr_of_eqOn_support (L N' : ℕ) [NeZero L] [NeZero N']
+    (A A' : ConcreteEdge d (L * N') → V) (μ : Fin d) (x : FinBox d (L * N'))
+    (h : ∀ e ∈ fineLineSupport L N' μ x, A e = A' e) :
+    fineLineSum L N' A μ x = fineLineSum L N' A' μ x := by
+  refine fineLineSum_congr L N' A A' μ x ?_
+  intro k hk
+  exact h _ ((mem_fineLineSupport_iff L N' μ x _).mpr ⟨k, hk, rfl⟩)
 
 open scoped Classical in
 /-- **The linear averaging operator `Q` is LOCAL** (the locality the
@@ -128,5 +176,18 @@ theorem linAvg_congr (L N' : ℕ) [NeZero L] [NeZero N']
   simp only [linAvg]
   refine congrArg _ (Finset.sum_congr rfl fun x hx => ?_)
   exact fineLineSum_congr L N' A A' c.dir x (h x hx)
+
+open scoped Classical in
+/-- Locality of the linear averaging operator through the named finite stencil
+`linAvgSupport`.  This is the finite-support form later kernel/locality
+interfaces can consume. -/
+theorem linAvg_congr_of_eqOn_support (L N' : ℕ) [NeZero L] [NeZero N']
+    (A A' : ConcreteEdge d (L * N') → V) (c : ConcreteEdge d N')
+    (h : ∀ e ∈ linAvgSupport L N' c, A e = A' e) :
+    linAvg L N' A c = linAvg L N' A' c := by
+  refine linAvg_congr L N' A A' c ?_
+  intro x hx k hk
+  exact h _
+    ((mem_linAvgSupport_iff L N' c _).mpr ⟨x, hx, k, hk, rfl⟩)
 
 end YangMills.RG

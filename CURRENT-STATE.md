@@ -43,7 +43,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * Hilbert-space adjoint mass for the averaging operator:
   `scaledLinAvgCLM`, `qMassCLM = Q†Q`, `inner_qMassCLM_self`,
   `qMassCLM_psd`, and `qMassCLM_opNorm_le`, formulated on the bond
-  `ℓ²`/`PiLp 2` spaces with the rescaling scalar left explicit;
+  `ℓ²`/`PiLp 2` spaces with the rescaling scalar left explicit.  The same
+  averaging layer now exposes named finite stencils `fineLineSupport` and
+  `linAvgSupport`, together with
+  `linAvg_congr_of_eqOn_support` and
+  `scaledLinAvgCLM_congr_of_eqOn_support`, so later kernel/locality work can
+  consume finite support of `Q` without hard-coding its block/line indices;
 * gauge covariance of the averaged-contour interface;
 * near-identity logarithm, small-field stability lemmas, and the local
   two-sided cutoff dictionary `norm_nearLog_two_sided_of_norm_le_third`,
