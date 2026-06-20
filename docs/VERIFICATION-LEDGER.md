@@ -7800,3 +7800,50 @@ factorization over admissible target families.  It does not prove the
 integrability hypotheses for the actual Yang-Mills RG measure, Dimock (642),
 the second-Ursell `H#` estimate, concrete raw activity decay, continuum
 construction, or Clay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 216 (2026-06-21, **spectator-integrated Ksharp scalar normalization**
+`YangMills.RG.appendixFHoleIntegratedKsharpActivity_eq_integral`,
+`YangMills.RG.appendixFHoleIntegratedKsharpActivity_eq_zero_of_not_mem_targetRegion`,
+`YangMills.RG.appendixFHoleIntegratedSecondGas_activity`,
+`YangMills.RG.integral_sum_appendixFHoleKsharp_eq_sum_prod_integratedKsharpActivity_of_admissibleTargetFamilies`,
+`YangMills.RG.appendixFHoleHsharpOfIntegratedKsharp_eq`;
+core 8307)
+
+This addendum connects Addendum 215's finite integrated target-family identity
+to the scalar activity family consumed by the second `omegaHolePolymerSystem`
+and the later `H#` source-majorant layer.
+
+`YangMills/RG/AppendixFSecondGas.lean` now defines
+`appendixFHoleIntegratedKsharpActivity`, the scalar target activity obtained by
+integrating the local `K#(Y, psi)` functional over the spectator product
+measure.  It packages this scalar activity as
+`appendixFHoleIntegratedSecondGas`, proves that it vanishes outside the first
+connected-cover target region, and rewrites the spectator integral of the
+finite `K#` target-family gas as a finite admissible-family sum using this
+scalar `z_K` activity.
+
+`YangMills/RG/AppendixFHsharp.lean` now exposes
+`appendixFHoleHsharpOfIntegratedKsharp`, the definitional `H#` specialization
+obtained by feeding this spectator-integrated scalar `z_K` into the existing
+second-Ursell object.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFSecondGas.lean
+lake build YangMills.RG.AppendixFSecondGas YangMills.RG.AppendixFHsharp
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is scalar normalization and finite Fubini bookkeeping.
+It does not prove the spectator-integrability hypotheses for the concrete
+Yang-Mills RG measure, Dimock (642), the source `H#` estimate F.1/(636), any
+KP smallness condition, concrete raw activity decay, continuum construction,
+or Clay.  Clay distance **~0% (<0.1%), unchanged**.

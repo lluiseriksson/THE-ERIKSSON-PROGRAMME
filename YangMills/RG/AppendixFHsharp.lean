@@ -171,4 +171,36 @@ noncomputable def appendixFHoleHsharpOfKsharp
       appendixFHoleHsharp HF
         (appendixFHoleSecondGasActivity HF z Λ Hraw μ ψ) Y := rfl
 
+/-- The scalar `H#` object obtained after integrating both the fluctuation
+field and the spectator field in the first Appendix-F activity.  This is the
+normal-form `z_K` input expected by the source-facing `H#` majorant layer. -/
+noncomputable def appendixFHoleHsharpOfIntegratedKsharp
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (Hraw :
+      OmegaPolymerType HF z →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : MeasureTheory.Measure γ)
+    (ν : MeasureTheory.Measure β)
+    (Y : Finset (Cube d L)) : ℂ :=
+  appendixFHoleHsharp HF
+    (appendixFHoleIntegratedKsharpActivity HF z Λ Hraw μ ν) Y
+
+@[simp] theorem appendixFHoleHsharpOfIntegratedKsharp_eq
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (Hraw :
+      OmegaPolymerType HF z →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : MeasureTheory.Measure γ)
+    (ν : MeasureTheory.Measure β)
+    (Y : Finset (Cube d L)) :
+    appendixFHoleHsharpOfIntegratedKsharp HF z Λ Hraw μ ν Y =
+      appendixFHoleHsharp HF
+        (appendixFHoleIntegratedKsharpActivity HF z Λ Hraw μ ν) Y := rfl
+
 end YangMills.RG

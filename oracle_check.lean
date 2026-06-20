@@ -590,12 +590,19 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleSecondGas_activity
 #print axioms YangMills.RG.appendixFHoleSecondGasActivity_eq_zero_of_not_mem_targetRegion
 #print axioms YangMills.RG.appendixFHoleSecondGas_KPCriterion_of_majorant
+-- spectator-integrated scalar K# normalization: structural bridge from the
+-- finite K# target-family identity to the scalar zK family used by H#.
+#print axioms YangMills.RG.appendixFHoleIntegratedKsharpActivity_eq_integral
+#print axioms YangMills.RG.appendixFHoleIntegratedKsharpActivity_eq_zero_of_not_mem_targetRegion
+#print axioms YangMills.RG.appendixFHoleIntegratedSecondGas_activity
+#print axioms YangMills.RG.integral_sum_appendixFHoleKsharp_eq_sum_prod_integratedKsharpActivity_of_admissibleTargetFamilies
 -- second Ursell object H#: finite union-fiber bookkeeping only; no convergence
 -- or residual estimate is hidden in the totalized `tsum` definition.
 #print axioms YangMills.RG.appendixFHoleHsharpTerm_eq_sum_filter
 #print axioms YangMills.RG.appendixFHoleHsharpTerm_eq_zero_of_no_union
 #print axioms YangMills.RG.sum_appendixFHoleHsharpTerm_eq_clusterSum_term
 #print axioms YangMills.RG.appendixFHoleHsharpOfKsharp_eq
+#print axioms YangMills.RG.appendixFHoleHsharpOfIntegratedKsharp_eq
 -- residual H# adapter: source complex-norm estimates feed the real
 -- omega-rooted UV-decay producer without hiding Dimock's analytic bound.
 #print axioms YangMills.RG.complex_re_contracts_norm

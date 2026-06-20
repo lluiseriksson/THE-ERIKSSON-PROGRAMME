@@ -276,14 +276,26 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   factors required by the current KP theorem, and
   `appendixFHoleSecondGas_KPCriterion_of_majorant` applies the existing
   `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`.
+  The same module now records the spectator-integrated scalar normal form
+  `appendixFHoleIntegratedKsharpActivity HF z Λ Hraw μ ν Y =
+  ∫ ψ, (appendixFHoleKsharp HF z Λ Hraw μ Y).globalEval ψ dν`, the
+  corresponding scalar hard-core gas `appendixFHoleIntegratedSecondGas`, the
+  zero-extension theorem outside the first target region, and the finite
+  normalization identity
+  `integral_sum_appendixFHoleKsharp_eq_sum_prod_integratedKsharpActivity_of_admissibleTargetFamilies`,
+  which rewrites the integrated finite `K#` target-family gas as a finite
+  target-family sum using this scalar `z_K` activity.
   This does not prove Dimock (642), the conversion from the exact nonlinear
-  `K#` estimate to the KP-ready majorant, the ultralocal product
-  factorization (643), the second Ursell `H#`, or any residual decay theorem;
+  `K#` estimate to the KP-ready majorant, any concrete integrability/source
+  estimate for the integrated scalar activity, the second Ursell `H#`
+  estimate, or any residual decay theorem;
 * the second Ursell object layer
   `YangMills/RG/AppendixFHsharp.lean`: it defines the fixed-size
   union-fiber contribution `appendixFHoleHsharpTerm`, the totalized
   `appendixFHoleHsharp = tsum_n appendixFHoleHsharpTerm`, and the actual
-  `K#`-fed specialization `appendixFHoleHsharpOfKsharp`.  The finite theorem
+  evaluated `K#` specialization `appendixFHoleHsharpOfKsharp`, together with
+  the spectator-integrated scalar specialization
+  `appendixFHoleHsharpOfIntegratedKsharp`.  The finite theorem
   `appendixFHoleHsharpTerm_eq_sum_filter` rewrites each term as a sum over
   the exact fiber of tuples whose `omegaClusterUnion` is the target `Y`;
   `appendixFHoleHsharpTerm_eq_zero_of_no_union` records the zero-fiber case;
