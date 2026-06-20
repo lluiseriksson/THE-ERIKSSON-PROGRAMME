@@ -182,10 +182,17 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   fluctuation support inside its full source polymer, then
   `appendixFHoleConnectedLocalActivity ... Y` has the corresponding support
   inside `Y`; after fluctuation integration, `appendixFHoleKsharp ... Y` has
-  spectator support inside `Y`.  This is Dimock (644)'s finite `K -> K#`
-  object layer only; the n-ary target-family factorization (643), second
-  target gas, Ursell `H#`, metric estimate (642), and concrete Yang-Mills raw
-  activity producer remain open;
+  spectator support inside `Y`.  It now also proves the active-skeleton
+  support form needed by admissible target families and uses the n-ary
+  ultralocal product-measure factorization from
+  `YangMills/RG/UltralocalFactorization.lean` to factor finite products of
+  connected target activities into products of `K#(Y)` whenever raw
+  one-polymer fluctuation supports lie inside their active skeletons.  The
+  spectator analogue factors products of `K#(Y)` over admissible target
+  families under a second ultralocal product measure.  This is Dimock
+  (643)--(644)'s finite support/factorization substrate only; it does not
+  prove the source activity estimate, the second target gas, Ursell `H#`,
+  metric estimate (642), or any concrete Yang-Mills raw activity producer;
 * the finite quantitative first-activity layer
   `YangMills/RG/AppendixFQuantitative.lean`: a raw pointwise exponential
   bound `‖h X‖ ≤ H0 * exp(-κ * metric X)` with `0 ≤ H0 ≤ 1` and `0 ≤ κ`

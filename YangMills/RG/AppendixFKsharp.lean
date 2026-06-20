@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.AppendixFHoleTargetFamily
 import YangMills.RG.OmegaConnectedCover
+import YangMills.RG.UltralocalFactorization
 
 /-!
 # Appendix F: the first integrated activity `K#`
@@ -157,6 +158,125 @@ theorem appendixFHoleConnectedLocalActivity_fluctuationSupport_subset
     Finset.mem_biUnion.mpr ⟨X, hX, hxFull⟩
   rwa [hCdata.2] at hxUnion
 
+/-- The connected target activity depends on fluctuation fields only in the
+active skeleton of the declared target, provided each input local activity has
+its fluctuation support inside the active skeleton of its source polymer.
+
+The source-local hypothesis is necessary because `H` is an arbitrary
+type-local activity family in this interface; without it an input activity
+could depend on unrelated fluctuation sites. -/
+theorem appendixFHoleConnectedLocalActivity_fluctuationSupport_subset_skeleton
+    {d L : ℕ} [NeZero L] {β : Type*} {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (Y : Finset (Cube d L))
+    (hHsub : ∀ X, X ∈ Λ → (H X).fluctuationSupport ⊆ skeleton HF X.val) :
+    (appendixFHoleConnectedLocalActivity HF z Λ H Y).fluctuationSupport ⊆
+      skeleton HF Y := by
+  classical
+  intro x hx
+  rw [appendixFHoleConnectedLocalActivity] at hx
+  change x ∈
+    (appendixFTargetFiber
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ Y).biUnion
+        (fun C => (LocalActivity.mayerCoverActivity C H).fluctuationSupport) at hx
+  rcases Finset.mem_biUnion.mp hx with ⟨C, hC, hxC⟩
+  rw [LocalActivity.mayerCoverActivity_fluctuationSupport] at hxC
+  rcases Finset.mem_biUnion.mp hxC with ⟨X, hX, hxX⟩
+  have hCfiber := (mem_appendixFTargetFiber_iff
+    (Finset.univ : Finset (Cube d L))
+    (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+    (fun X : OmegaPolymerType HF z => X.val)
+    Λ Y C).mp hC
+  have hCsubset : C ⊆ Λ :=
+    ((mem_appendixFConnectedCoverRegion_iff
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      Λ C).mp hCfiber.1).1
+  have hxSkelX : x ∈ skeleton HF X.val :=
+    hHsub X (hCsubset hX) hxX
+  have hxUnion :
+      x ∈ appendixFCoverUnion
+        (fun X : OmegaPolymerType HF z => skeleton HF X.val) C := by
+    exact Finset.mem_biUnion.mpr ⟨X, hX, hxSkelX⟩
+  have hUnion :
+      appendixFCoverUnion
+          (fun X : OmegaPolymerType HF z => skeleton HF X.val) C =
+        skeleton HF Y := by
+    calc
+      appendixFCoverUnion
+          (fun X : OmegaPolymerType HF z => skeleton HF X.val) C =
+          skeleton HF
+            (appendixFCoverUnion (fun X : OmegaPolymerType HF z => X.val) C) := by
+        exact (appendixFHoleCoverUnion_skeleton HF z C).symm
+      _ = skeleton HF Y := by
+        rw [hCfiber.2]
+  simpa [hUnion] using hxUnion
+
+/-- The connected target activity depends on spectator fields only in the
+active skeleton of the declared target, provided each input local activity has
+its spectator support inside the active skeleton of its source polymer.
+
+This is the spectator-field analogue of
+`appendixFHoleConnectedLocalActivity_fluctuationSupport_subset_skeleton`. -/
+theorem appendixFHoleConnectedLocalActivity_spectatorSupport_subset_skeleton
+    {d L : ℕ} [NeZero L] {β : Type*} {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (Y : Finset (Cube d L))
+    (hHsub : ∀ X, X ∈ Λ → (H X).spectatorSupport ⊆ skeleton HF X.val) :
+    (appendixFHoleConnectedLocalActivity HF z Λ H Y).spectatorSupport ⊆
+      skeleton HF Y := by
+  classical
+  intro x hx
+  rw [appendixFHoleConnectedLocalActivity] at hx
+  change x ∈
+    (appendixFTargetFiber
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ Y).biUnion
+        (fun C => (LocalActivity.mayerCoverActivity C H).spectatorSupport) at hx
+  rcases Finset.mem_biUnion.mp hx with ⟨C, hC, hxC⟩
+  rw [LocalActivity.mayerCoverActivity_spectatorSupport] at hxC
+  rcases Finset.mem_biUnion.mp hxC with ⟨X, hX, hxX⟩
+  have hCfiber := (mem_appendixFTargetFiber_iff
+    (Finset.univ : Finset (Cube d L))
+    (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+    (fun X : OmegaPolymerType HF z => X.val)
+    Λ Y C).mp hC
+  have hCsubset : C ⊆ Λ :=
+    ((mem_appendixFConnectedCoverRegion_iff
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      Λ C).mp hCfiber.1).1
+  have hxSkelX : x ∈ skeleton HF X.val :=
+    hHsub X (hCsubset hX) hxX
+  have hxUnion :
+      x ∈ appendixFCoverUnion
+        (fun X : OmegaPolymerType HF z => skeleton HF X.val) C := by
+    exact Finset.mem_biUnion.mpr ⟨X, hX, hxSkelX⟩
+  have hUnion :
+      appendixFCoverUnion
+          (fun X : OmegaPolymerType HF z => skeleton HF X.val) C =
+        skeleton HF Y := by
+    calc
+      appendixFCoverUnion
+          (fun X : OmegaPolymerType HF z => skeleton HF X.val) C =
+          skeleton HF
+            (appendixFCoverUnion (fun X : OmegaPolymerType HF z => X.val) C) := by
+        exact (appendixFHoleCoverUnion_skeleton HF z C).symm
+      _ = skeleton HF Y := by
+        rw [hCfiber.2]
+  simpa [hUnion] using hxUnion
+
 /-- The integrated first activity `K#(Y, psi)`: integrate the fluctuation
 field of the connected local activity against the ultralocal product measure. -/
 noncomputable def appendixFHoleKsharp
@@ -226,5 +346,278 @@ theorem appendixFHoleKsharp_support_subset
     (appendixFHoleKsharp HF z Λ H μ Y).support ⊆ Y := by
   exact appendixFHoleConnectedLocalActivity_spectatorSupport_subset
     HF z Λ H Y hsub
+
+/-- The integrated first activity `K#(Y, psi)` depends on spectator fields only
+inside the active skeleton of the declared target, provided the input
+one-polymer activities have spectator support inside their own active
+skeletons. -/
+theorem appendixFHoleKsharp_support_subset_skeleton
+    {d L : ℕ} [NeZero L] {β : Type*} [MeasurableSpace β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β)
+    (Y : Finset (Cube d L))
+    (hHsub : ∀ X, X ∈ Λ → (H X).spectatorSupport ⊆ skeleton HF X.val) :
+    (appendixFHoleKsharp HF z Λ H μ Y).support ⊆ skeleton HF Y := by
+  exact appendixFHoleConnectedLocalActivity_spectatorSupport_subset_skeleton
+    HF z Λ H Y hHsub
+
+/-- In an admissible target family, the integrated first activities `K#(Y)`
+have pairwise-disjoint spectator supports as soon as each source one-polymer
+activity has spectator support inside its own active skeleton. -/
+theorem appendixFHoleKsharp_pairwise_disjoint_support_of_admissibleTargetFamilies
+    {d L : ℕ} [NeZero L] {β : Type*} [MeasurableSpace β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β)
+    {targets : Finset (Finset (Cube d L))}
+    (htargets : targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ)
+    (hHsub : ∀ X, X ∈ Λ → (H X).spectatorSupport ⊆ skeleton HF X.val) :
+    ∀ Y, Y ∈ targets → ∀ Z, Z ∈ targets → Y ≠ Z →
+      Disjoint
+        (appendixFHoleKsharp HF z Λ H μ Y).support
+        (appendixFHoleKsharp HF z Λ H μ Z).support := by
+  intro Y hY Z hZ hYZ
+  have htargetData :=
+    (mem_appendixFHoleAdmissibleTargetFamilies_iff HF z Λ targets).mp htargets
+  have hskel : Disjoint (skeleton HF Y) (skeleton HF Z) :=
+    htargetData.2 Y hY Z hZ hYZ
+  have hYsub :
+      (appendixFHoleKsharp HF z Λ H μ Y).support ⊆ skeleton HF Y :=
+    appendixFHoleKsharp_support_subset_skeleton HF z Λ H μ Y hHsub
+  have hZsub :
+      (appendixFHoleKsharp HF z Λ H μ Z).support ⊆ skeleton HF Z :=
+    appendixFHoleKsharp_support_subset_skeleton HF z Λ H μ Z hHsub
+  rw [Finset.disjoint_left]
+  intro x hxY hxZ
+  exact (Finset.disjoint_left.mp hskel (hYsub hxY)) (hZsub hxZ)
+
+/-- Direct scalar form of `K#`: the fluctuation integral of the connected
+target-fiber Mayer activity with the pointwise raw factors `exp (H X) - 1`. -/
+theorem appendixFHoleKsharp_globalEval_eq_integral_connectedMayerActivity
+    {d L : ℕ} [NeZero L] {β : Type*} [MeasurableSpace β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β)
+    (Y : Finset (Cube d L))
+    (ψ : ∀ x, Ψ x) :
+    (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ =
+      ∫ φ : (∀ _ : Cube d L, β),
+        appendixFHoleConnectedMayerActivity HF z Λ
+          (fun X => Complex.exp ((H X).globalEval ψ φ) - 1) Y
+        ∂(Measure.pi fun _ : Cube d L => μ) := by
+  rw [appendixFHoleKsharp_globalEval]
+  refine integral_congr_ae (Filter.Eventually.of_forall ?_)
+  intro φ
+  exact appendixFHoleConnectedLocalActivity_globalEval HF z Λ H Y ψ φ
+
+/-- Pairwise-disjoint target connected activities factorize after fluctuation
+integration.  This is the `K#`-level ultralocal factorization step with the
+actual fluctuation-support hypothesis kept explicit. -/
+theorem integral_prod_appendixFHoleConnectedLocalActivity_eq_prod_Ksharp_of_pairwise_disjoint_fluctuationSupport
+    {d L : ℕ} [NeZero L] {β : Type*} [MeasurableSpace β] [Nonempty β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    (targets : Finset (Finset (Cube d L)))
+    (ψ : ∀ x, Ψ x)
+    (hdisj : ∀ Y, Y ∈ targets → ∀ Z, Z ∈ targets → Y ≠ Z →
+      Disjoint
+        (appendixFHoleConnectedLocalActivity HF z Λ H Y).fluctuationSupport
+        (appendixFHoleConnectedLocalActivity HF z Λ H Z).fluctuationSupport) :
+    ∫ φ : (∀ _ : Cube d L, β),
+        ∏ Y ∈ targets,
+          (appendixFHoleConnectedLocalActivity HF z Λ H Y).globalEval ψ φ
+        ∂(Measure.pi fun _ : Cube d L => μ)
+      =
+      ∏ Y ∈ targets,
+        (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ := by
+  let Ftarget : Finset (Cube d L) →
+      LocalActivity (Cube d L) Ψ (fun _ => β) ℂ :=
+    fun Y => appendixFHoleConnectedLocalActivity HF z Λ H Y
+  have hfactor :=
+    LocalActivity.integral_finsetProd_of_pairwise_disjoint_fluctuationSupport
+      μ targets Ftarget ψ hdisj
+  have hleft :
+      (∫ φ : (∀ _ : Cube d L, β),
+          ∏ Y ∈ targets, (Ftarget Y).globalEval ψ φ
+          ∂(Measure.pi fun _ : Cube d L => μ))
+        =
+      ∫ φ : (∀ _ : Cube d L, β),
+        (LocalActivity.finsetProd targets Ftarget).globalEval ψ φ
+          ∂(Measure.pi fun _ : Cube d L => μ) := by
+    refine MeasureTheory.integral_congr_ae (Filter.Eventually.of_forall ?_)
+    intro φ
+    rw [LocalActivity.globalEval_finsetProd]
+    exact (Finset.prod_attach targets
+      (fun Y => (Ftarget Y).globalEval ψ φ)).symm
+  calc
+    (∫ φ : (∀ _ : Cube d L, β),
+        ∏ Y ∈ targets, (appendixFHoleConnectedLocalActivity HF z Λ H Y).globalEval ψ φ
+        ∂(Measure.pi fun _ : Cube d L => μ))
+        =
+      ∫ φ : (∀ _ : Cube d L, β),
+        (LocalActivity.finsetProd targets Ftarget).globalEval ψ φ
+          ∂(Measure.pi fun _ : Cube d L => μ) := by
+          simpa [Ftarget] using hleft
+    _ =
+      ∏ Y ∈ targets,
+        ∫ φ : (∀ _ : Cube d L, β), (Ftarget Y).globalEval ψ φ
+          ∂(Measure.pi fun _ : Cube d L => μ) := hfactor
+    _ =
+      ∏ Y ∈ targets,
+        (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ := by
+          refine Finset.prod_congr rfl ?_
+          intro Y _hY
+          exact (appendixFHoleKsharp_globalEval HF z Λ H μ Y ψ).symm
+
+/-- Admissible Appendix-F target families factorize at the `K#` level once each
+target connected activity's actual fluctuation support is contained in the
+target's active skeleton.  The theorem keeps that support bridge explicit
+instead of replacing the physical dependency proof by target-family
+combinatorics. -/
+theorem integral_prod_appendixFHoleConnectedLocalActivity_eq_prod_Ksharp
+    {d L : ℕ} [NeZero L] {β : Type*} [MeasurableSpace β] [Nonempty β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    {targets : Finset (Finset (Cube d L))}
+    (htargets : targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ)
+    (ψ : ∀ x, Ψ x)
+    (hsub : ∀ Y, Y ∈ targets →
+      (appendixFHoleConnectedLocalActivity HF z Λ H Y).fluctuationSupport ⊆
+        skeleton HF Y) :
+    ∫ φ : (∀ _ : Cube d L, β),
+        ∏ Y ∈ targets,
+          (appendixFHoleConnectedLocalActivity HF z Λ H Y).globalEval ψ φ
+        ∂(Measure.pi fun _ : Cube d L => μ)
+      =
+      ∏ Y ∈ targets,
+        (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ := by
+  refine
+    integral_prod_appendixFHoleConnectedLocalActivity_eq_prod_Ksharp_of_pairwise_disjoint_fluctuationSupport
+      HF z Λ H μ targets ψ ?_
+  intro Y hY Z hZ hYZ
+  have htargetData :=
+    (mem_appendixFHoleAdmissibleTargetFamilies_iff HF z Λ targets).mp htargets
+  have hskel : Disjoint (skeleton HF Y) (skeleton HF Z) :=
+    htargetData.2 Y hY Z hZ hYZ
+  rw [Finset.disjoint_left]
+  intro x hxY hxZ
+  exact (Finset.disjoint_left.mp hskel (hsub Y hY hxY)) (hsub Z hZ hxZ)
+
+/-- Source-local support form of the admissible Appendix-F `K#` product
+factorization.  The target-level containment hypothesis is derived from the
+input condition that every one-polymer activity depends only on fluctuation
+sites in that polymer's active skeleton. -/
+theorem integral_prod_appendixFHoleConnectedLocalActivity_eq_prod_Ksharp_of_local_fluctuationSupport_subset_skeleton
+    {d L : ℕ} [NeZero L] {β : Type*} [MeasurableSpace β] [Nonempty β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    {targets : Finset (Finset (Cube d L))}
+    (htargets : targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ)
+    (ψ : ∀ x, Ψ x)
+    (hHsub : ∀ X, X ∈ Λ → (H X).fluctuationSupport ⊆ skeleton HF X.val) :
+    ∫ φ : (∀ _ : Cube d L, β),
+        ∏ Y ∈ targets,
+          (appendixFHoleConnectedLocalActivity HF z Λ H Y).globalEval ψ φ
+        ∂(Measure.pi fun _ : Cube d L => μ)
+      =
+      ∏ Y ∈ targets,
+        (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ := by
+  exact integral_prod_appendixFHoleConnectedLocalActivity_eq_prod_Ksharp
+    HF z Λ H μ htargets ψ
+    (fun Y _hY =>
+      appendixFHoleConnectedLocalActivity_fluctuationSupport_subset_skeleton
+        HF z Λ H Y hHsub)
+
+/-- If the source one-polymer activities are spectator-local in their active
+skeletons, then `K#` activities indexed by an admissible target family
+factorize under a further ultralocal product measure on the spectator field.
+
+This is only a support/factorization bridge; the source-locality hypothesis is
+still explicit and no Appendix-F activity estimate is inferred. -/
+theorem integral_prod_appendixFHoleKsharp_eq_prod_integral_of_admissibleTargetFamilies
+    {d L : ℕ} [NeZero L] {β γ : Type*}
+    [MeasurableSpace β] [MeasurableSpace γ] [Nonempty β]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : Measure γ)
+    (ν : Measure β) [IsProbabilityMeasure ν]
+    {targets : Finset (Finset (Cube d L))}
+    (htargets : targets ∈ appendixFHoleAdmissibleTargetFamilies HF z Λ)
+    (hHsub : ∀ X, X ∈ Λ → (H X).spectatorSupport ⊆ skeleton HF X.val) :
+    ∫ ψ : (∀ _ : Cube d L, β),
+        ∏ Y ∈ targets,
+          (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ
+        ∂(Measure.pi fun _ : Cube d L => ν)
+      =
+      ∏ Y ∈ targets,
+        ∫ ψ : (∀ _ : Cube d L, β),
+          (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ
+          ∂(Measure.pi fun _ : Cube d L => ν) := by
+  classical
+  let Ftarget : Finset (Cube d L) →
+      LocalFunctional (Cube d L) (fun _ => β) ℂ :=
+    fun Y => appendixFHoleKsharp HF z Λ H μ Y
+  have hfactor :=
+    LocalFunctional.integral_finsetProd_of_pairwise_disjoint_support
+      ν targets Ftarget
+      (appendixFHoleKsharp_pairwise_disjoint_support_of_admissibleTargetFamilies
+        HF z Λ H μ htargets hHsub)
+  have hleft :
+      (∫ ψ : (∀ _ : Cube d L, β),
+          ∏ Y ∈ targets, (Ftarget Y).globalEval ψ
+          ∂(Measure.pi fun _ : Cube d L => ν))
+        =
+      ∫ ψ : (∀ _ : Cube d L, β),
+        (LocalFunctional.finsetProd targets Ftarget).globalEval ψ
+          ∂(Measure.pi fun _ : Cube d L => ν) := by
+    refine MeasureTheory.integral_congr_ae (Filter.Eventually.of_forall ?_)
+    intro ψ
+    rw [LocalFunctional.globalEval_finsetProd]
+    exact (Finset.prod_attach targets
+      (fun Y => (Ftarget Y).globalEval ψ)).symm
+  calc
+    (∫ ψ : (∀ _ : Cube d L, β),
+        ∏ Y ∈ targets,
+          (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ
+        ∂(Measure.pi fun _ : Cube d L => ν))
+        =
+      ∫ ψ : (∀ _ : Cube d L, β),
+        (LocalFunctional.finsetProd targets Ftarget).globalEval ψ
+          ∂(Measure.pi fun _ : Cube d L => ν) := by
+          simpa [Ftarget] using hleft
+    _ =
+      ∏ Y ∈ targets,
+        ∫ ψ : (∀ _ : Cube d L, β), (Ftarget Y).globalEval ψ
+          ∂(Measure.pi fun _ : Cube d L => ν) := hfactor
+    _ =
+      ∏ Y ∈ targets,
+        ∫ ψ : (∀ _ : Cube d L, β),
+          (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ
+          ∂(Measure.pi fun _ : Cube d L => ν) := by
+          rfl
 
 end YangMills.RG

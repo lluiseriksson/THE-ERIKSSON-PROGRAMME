@@ -7708,3 +7708,53 @@ the Dimock leaf summation, the shifted `K#` estimate (642)/(644), the source
 `H#` estimate F.1/(636), the scalar smallness condition, concrete Yang-Mills
 raw activity decay, continuum construction, or Clay.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 214 (2026-06-21, **finite admissible Ksharp product factorization**
+`YangMills.RG.LocalFunctional.integral_finsetProd_of_pairwise_disjoint_support`,
+`YangMills.RG.LocalActivity.integral_finsetProd_of_pairwise_disjoint_fluctuationSupport`,
+`YangMills.RG.integral_prod_appendixFHoleConnectedLocalActivity_eq_prod_Ksharp_of_local_fluctuationSupport_subset_skeleton`,
+`YangMills.RG.integral_prod_appendixFHoleKsharp_eq_prod_integral_of_admissibleTargetFamilies`;
+core 8307)
+
+This addendum strengthens the finite `K -> K#` layer before the source
+second-Ursell estimates.
+
+`YangMills/RG/UltralocalFactorization.lean` now has n-ary product-measure
+factorization theorems for finite products of `LocalFunctional`s with
+pairwise-disjoint supports and finite products of `LocalActivity`s with
+pairwise-disjoint fluctuation supports.  These are finite products over an
+explicit ultralocal probability measure, not Gaussian covariance estimates.
+
+`YangMills/RG/AppendixFKsharp.lean` now derives active-skeleton support
+containment for first connected target activities from source-local
+one-polymer support containment.  It then proves two finite admissible-family
+factorization adapters:
+
+* a fluctuation-field factorization turning a finite admissible product of
+  connected target activities into the product of their integrated `K#(Y)`
+  values, when each raw one-polymer fluctuation support lies inside its active
+  skeleton;
+* a spectator-field factorization for finite products of `K#(Y)` over
+  admissible target families, when each raw one-polymer spectator support lies
+  inside its active skeleton.
+
+Verification:
+
+```
+lake env lean YangMills\RG\UltralocalFactorization.lean
+lake env lean YangMills\RG\AppendixFKsharp.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is finite support/factorization bookkeeping around
+Dimock (643)--(644).  It does not prove ultralocal factorization for the
+actual Yang-Mills fluctuation measure, the Dimock (642) activity estimate, the
+source `H#` estimate F.1/(636), concrete raw activity decay, continuum
+construction, or Clay.  Clay distance **~0% (<0.1%), unchanged**.
