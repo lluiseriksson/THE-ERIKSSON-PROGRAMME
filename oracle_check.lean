@@ -273,6 +273,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.qMassCLM_opNorm_le
 -- the free RG step's covariance transformation law (on Mathlib's IsGaussian)
 #print axioms YangMills.RG.covarianceBilinDual_map_clm
+-- finite Gaussian block collar: normalization of translated kernels and product block transforms
+#print axioms YangMills.RG.gaussianBlockKernel_isProbability
+#print axioms YangMills.RG.gaussianBlockTransform_isProbability
 
 /-! ### The near-identity matrix-logarithm calculus -/
 -- the quantitative axiom (0.8): exp(nearLog Y) = 1 + Y + O(‖Y‖²)

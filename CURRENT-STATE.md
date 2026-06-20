@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8290 jobs**.
+* `lake build YangMillsCore` is green at **8291 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -55,8 +55,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   converting `‖Y‖ ≤ 1/3` into mutual control of `Y` and `nearLog Y` up to the
   constant `2` for the faithful variable `Y = D - 1`;
 * explicit l2 contraction of `Q`;
-* free Gaussian covariance pushforward and finite-dimensional Gaussian
-  construction;
+* free Gaussian covariance pushforward, finite-dimensional Gaussian
+  construction, and finite Gaussian block collars
+  `gaussianBlockKernel` / `gaussianBlockTransform`, whose translated
+  fluctuation kernel and product block transform are proved to remain
+  probability measures before any interacting Appendix-F activity is inserted;
 * marginal-coupling summability and conditional UV mass-gap assembly;
 * the explicit producer/consumer split for the UV scalar estimate:
   `RawYMActivityDecay`, `RenormalizedHoleActivityDecay`, and

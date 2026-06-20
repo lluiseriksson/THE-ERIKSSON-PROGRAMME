@@ -6487,3 +6487,43 @@ Hilbert-space averaging map.  It does not yet expose an explicit kernel for the
 adjoint, does not prove finite-range support for `Q†Q`, does not prove gauge
 Hessian coercivity, and does not discharge `hRpoly` or any continuum/Clay
 statement.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 189 (2026-06-20, **finite Gaussian block collar normalization**
+`YangMills.RG.gaussianBlockKernel`,
+`YangMills.RG.gaussianBlockTransform`,
+`YangMills.RG.gaussianBlockKernel_isProbability`,
+`YangMills.RG.gaussianBlockTransform_isProbability`; core 8291)
+
+This addendum adds `YangMills/RG/GaussianBlockKernel.lean`, a small
+measure-theoretic brick for the Balaban/Appendix-F route.  For a continuous
+linear averaging map `Q`, a fluctuation law `γ`, and a coarse field `A`, the
+conditional block law is the translate of `γ` by `Q A`.  The full finite block
+transform samples `A ∼ μ` and `ξ ∼ γ` independently and pushes the product
+measure forward by `(A, ξ) ↦ Q A + ξ`.
+
+The new theorem-fed facts are:
+
+* `gaussianBlockKernel_isProbability`: a translated probability fluctuation law
+  is still a probability conditional block kernel;
+* `gaussianBlockTransform_isProbability`: the finite product block transform is
+  a probability measure when both input laws are probability measures.
+
+Verification:
+
+```
+lake env lean YangMills\RG\GaussianBlockKernel.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is normalization infrastructure for a finite Gaussian
+collar.  It does not prove Gaussianity of the translated conditional kernel,
+does not compute or bound its covariance, does not prove finite-range support
+for `Q†Q`, does not instantiate Balaban's fluctuation Hessian, does not prove
+Dimock's activity bound (642), and does not affect any continuum/Clay theorem.
+Clay distance **~0% (<0.1%), unchanged**.
