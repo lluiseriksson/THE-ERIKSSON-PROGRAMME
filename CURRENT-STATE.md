@@ -369,6 +369,21 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   it does not prove that the source second-Ursell/KP analysis supplies such
   an `A,q`, the source `H#` estimate (Dimock F.1/(636)), the preceding `K/K#`
   estimate (Dimock (642)), or any continuum/Clay theorem;
+* the source-facing absolute `H#` majorant bridge
+  `YangMills/RG/AppendixFHsharpSourceMajorant.lean`: it defines the finite
+  nonnegative fixed-union object `appendixFHoleHsharpAbsTerm`, proves the
+  triangle-inequality bridge
+  `norm_appendixFHoleHsharpTerm_le_absTerm`, and packages
+  `AppendixFHsharpSourceMajorant` as the contract a future source proof should
+  provide: amplitudes `A`, ratios `q`, `0 <= A`, `0 <= q < 1`, a termwise
+  geometric bound, and the closed residual comparison.  It also supplies
+  constructors from an absolute geometric estimate and from the preferred
+  factorized shape
+  `B(t,k) * exp(-r * (d_M(P)+1)) * rho(t,k)^n`, plus residual and UV
+  adapters into the existing geometric consumers.  This proves only finite
+  algebra and packaging; it does not prove the fixed-union absolute geometric
+  source estimate, Dimock F.1/(636), Dimock (642), or any continuum/Clay
+  theorem;
 * the source-facing geometric `H#` profile
   `YangMills/RG/AppendixFHsharpProfile.lean`: it packages the amplitudes
   `A`, ratios `q`, positivity/strict-ratio hypotheses, termwise `H#` bound,

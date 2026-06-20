@@ -350,6 +350,9 @@ import YangMills.RG.AppendixFHsharpMajorant
 -- Closed-form geometric H# majorants: term bounds of the form A·q^n discharge
 -- the summability, finite-partial, tail, and total residual bookkeeping.
 import YangMills.RG.AppendixFHsharpGeometricMajorant
+-- Source-facing absolute H# majorant bridge: finite absolute union-fiber
+-- terms feed packaged geometric source contracts and the existing consumers.
+import YangMills.RG.AppendixFHsharpSourceMajorant
 -- Source-facing H# profile: a single packaged geometric majorant record
 -- exposes summability, tail, residual, and UV consumers.
 import YangMills.RG.AppendixFHsharpProfile

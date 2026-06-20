@@ -7567,3 +7567,56 @@ size-majorant theorems are consumers for a future source proof of that
 target-sensitive bound, not the proof itself.  Dimock (642), concrete
 Yang-Mills raw activity decay, continuum construction, and Clay remain open.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 211 (2026-06-20, **source-facing absolute H# majorant bridge**
+`YangMills.RG.appendixFHoleHsharpAbsTerm`,
+`YangMills.RG.norm_appendixFHoleHsharpTerm_le_absTerm`,
+`YangMills.RG.AppendixFHsharpSourceMajorant`,
+`YangMills.RG.appendixFHsharpSourceMajorant_of_absTerm_geometric`,
+`YangMills.RG.appendixFHsharpSourceMajorant_of_factorized_absTerm_geometric`,
+`YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_source_majorant`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant`;
+core 8306)
+
+This addendum adds `YangMills/RG/AppendixFHsharpSourceMajorant.lean`, the
+source-facing absolute finite-sum bridge for the Appendix-F second-Ursell
+`H#` layer.
+
+The definition `appendixFHoleHsharpAbsTerm` is the nonnegative fixed-union
+counterpart of `appendixFHoleHsharpTerm`: it keeps the same finite
+`1/(n+1)!` Ursell fiber over tuples whose `omegaClusterUnion` is the target
+`Y`, but replaces the complex summand by
+`|ursell(X)| * prod_i ‖activity(X_i)‖`.  The theorem
+`norm_appendixFHoleHsharpTerm_le_absTerm` is pure finite triangle inequality.
+
+The structure `AppendixFHsharpSourceMajorant` packages the exact geometric
+contract expected from a later source proof: amplitudes `A`, ratios `q`,
+positivity, `q < 1`, a termwise bound
+`‖appendixFHoleHsharpTerm ... n‖ <= A*q^n`, and the closed residual comparison.
+The constructor `appendixFHsharpSourceMajorant_of_absTerm_geometric` turns an
+estimate on the absolute finite term into that contract.  The constructor
+`appendixFHsharpSourceMajorant_of_factorized_absTerm_geometric` records the
+preferred source shape, with target geometry isolated as
+`exp(-r * (d_M(P)+1))` and order decay as `rho(t,k)^n`.  The final two
+theorems feed the packaged source contract into the existing total residual
+and omega-rooted real-part `SingleScaleUVDecay` consumers.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpSourceMajorant.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is still a finite bridge and source-contract package.
+It does not prove the absolute fixed-union geometric estimate, the
+second-Ursell/tree/KP source theorem, Dimock F.1/(636), Dimock (642),
+concrete Yang-Mills raw activity decay, continuum construction, or Clay.
+Clay distance **~0% (<0.1%), unchanged**.

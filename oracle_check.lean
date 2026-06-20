@@ -20,6 +20,7 @@ import YangMills.RG.AppendixFHsharpConvergence
 import YangMills.RG.AppendixFHsharpLimit
 import YangMills.RG.AppendixFHsharpMajorant
 import YangMills.RG.AppendixFHsharpGeometricMajorant
+import YangMills.RG.AppendixFHsharpSourceMajorant
 import YangMills.RG.AppendixFHsharpProfile
 
 /-! # Oracle check — one command, every headline
@@ -647,6 +648,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_geometric_tail
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_geometric_term_majorant
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_geometric_term_majorant
+-- source-facing absolute H# majorants: a finite nonnegative union-fiber term
+-- is the explicit source object feeding the geometric consumers.
+#print axioms YangMills.RG.norm_appendixFHoleHsharpTerm_le_absTerm
+#print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_absTerm_geometric
+#print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_factorized_absTerm_geometric
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_source_majorant
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
 -- source-facing packaged geometric H# profiles: one record now supplies the
 -- summability, tail, residual, and UV consumers without duplicating fields.
 #print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.summable_terms
