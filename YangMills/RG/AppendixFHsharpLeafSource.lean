@@ -402,6 +402,65 @@ theorem
       (hraw t k ψ)
       (hmeas t k Y hY ψ)
 
+/-- Ordinary strong measurability is enough to build the source-facing
+fluctuation-integrability `hint`.
+
+This is a thin source-facing adapter for future CMP/Balaban inputs that prove
+the connected first-activity integrand is `StronglyMeasurable` under the
+Gaussian product measure.  The raw decay and rooted summability assumptions
+are unchanged. -/
+theorem
+    balabanCMP116AppendixFConnectedLocalActivity_hint_of_rawMetricDecay_rooted_of_stronglyMeasurable
+    {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (Hraw Kroot : ℕ → ℕ → ℝ)
+    {κ κ₀ : ℝ}
+    (hHraw : ∀ t k, 0 ≤ Hraw t k)
+    (hHraw_one : ∀ t k, Hraw t k ≤ 1)
+    (hKroot : ∀ t k, 0 ≤ Kroot t k)
+    (hκ₀ : 0 ≤ κ₀)
+    (hκ : κ₀ ≤ κ)
+    (hroot : ∀ t k r,
+      (∑ X ∈ (Λ t k).filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ Kroot t k)
+    (hraw : ∀ t k ψ φ X, X ∈ Λ t k →
+      ‖((F t k).activity X).globalEval ψ φ‖ ≤
+        Hraw t k * appendixFHoleExpWeight HF κ X.val)
+    (hmeas : ∀ t k Y,
+      Y ∈ appendixFTargetRegion
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF (z t k) => skeleton HF X.val)
+        (fun X : OmegaPolymerType HF (z t k) => X.val)
+        (Λ t k) →
+      ∀ ψ : (∀ _ : Cube d L, β),
+        StronglyMeasurable
+          (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+            (balabanCMP116AppendixFConnectedLocalActivity
+              HF (z t k) (Λ t k) (F t k) Y).globalEval ψ φ)) :
+    ∀ t k Y,
+      Y ∈ appendixFTargetRegion
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF (z t k) => skeleton HF X.val)
+        (fun X : OmegaPolymerType HF (z t k) => X.val)
+        (Λ t k) →
+      ∀ ψ : (∀ _ : Cube d L, β),
+        Integrable
+          (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+            (balabanCMP116AppendixFConnectedLocalActivity
+              HF (z t k) (Λ t k) (F t k) Y).globalEval ψ φ)
+          (balabanCMP116Dmu0 (Cube d L) lieDim) :=
+  balabanCMP116AppendixFConnectedLocalActivity_hint_of_rawMetricDecay_rooted
+    HF z Λ F Hraw Kroot hHraw hHraw_one hKroot hκ₀ hκ
+    hroot hraw
+    (fun t k Y hY ψ => (hmeas t k Y hY ψ).aestronglyMeasurable)
+
 /-- CMP116 geometric `H#` profile from rooted raw-metric first-activity data.
 
 This is the source-facing composition of the rooted `K#` estimate with the
@@ -1508,5 +1567,89 @@ theorem
       HF zCarrier r z Λ F ν Rsc g A₀
       hC hHbar hg hκ hκ₀ hR hν hA₀ hA₀_one hraw hint
       hdisj hnoedges hholes_ne hCq hhalf hprofile
+
+/-- Omega-rooted real-part UV decay from rooted raw-metric first-activity data
+and ordinary strong measurability of the connected first-activity integrand.
+
+This is the same canonical-root half-budget endpoint as
+`..._of_aestronglyMeasurable`, with the source measurability obligation stated
+in the ordinary `StronglyMeasurable` form. -/
+theorem
+    singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_stronglyMeasurable
+    {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (Rsc : ℕ → ℕ → ℝ)
+    (g : ℕ → ℝ)
+    (A₀ : ℕ → ℕ → ℝ)
+    {C Hbar c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C)
+    (hHbar : 0 ≤ Hbar)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hκ₀ : 0 < κ₀)
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+                HF (z t k) (Λ t k) (F t k) (ν t k) P.val.val))
+    (hν : ∀ t k, IsProbabilityMeasure (ν t k))
+    (hA₀ : ∀ t k, 0 ≤ A₀ t k)
+    (hA₀_one : ∀ t k, A₀ t k ≤ 1)
+    (hraw : ∀ t k ψ φ X, X ∈ Λ t k →
+      ‖((F t k).activity X).globalEval ψ φ‖ ≤
+        A₀ t k * appendixFHoleExpWeight HF κ X.val)
+    (hmeas : ∀ t k Y,
+      Y ∈ appendixFTargetRegion
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF (z t k) => skeleton HF X.val)
+        (fun X : OmegaPolymerType HF (z t k) => X.val)
+        (Λ t k) →
+      ∀ ψ : (∀ _ : Cube d L, β),
+        StronglyMeasurable
+          (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+            (balabanCMP116AppendixFConnectedLocalActivity
+              HF (z t k) (Λ t k) (F t k) Y).globalEval ψ φ))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H ∈ HF.holes, H.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1)
+    (hhalf :
+      ∀ t k,
+        appendixFSecondUrsellLeafConstant d κ₀ *
+            (2 * A₀ t k * appendixFHoleRootSumConstant d κ₀) ≤ 1 / 2)
+    (hprofile :
+      ∀ t k,
+        4 * appendixFSecondUrsellMomentConstant d κ₀ *
+            A₀ t k * appendixFHoleRootSumConstant d κ₀ ≤
+          C * Hbar * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    SingleScaleUVDecay Rsc g
+      ((C * Hbar) *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹)
+      c₀ κ₀ :=
+  singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_aestronglyMeasurable
+    (C := C) (Hbar := Hbar) (c₀ := c₀) (κ := κ) (κ₀ := κ₀)
+    HF zCarrier r z Λ F ν Rsc g A₀
+    hC hHbar hg hκ hκ₀ hR hν hA₀ hA₀_one hraw
+    (fun t k Y hY ψ => (hmeas t k Y hY ψ).aestronglyMeasurable)
+    hdisj hnoedges hholes_ne hCq hhalf hprofile
 
 end YangMills.RG
