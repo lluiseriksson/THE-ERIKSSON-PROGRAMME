@@ -406,6 +406,9 @@ import YangMills.RG.Ubar
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
 -- quantitative Ward defect before norms are applied.
 import YangMills.SUSY.WardComplex
+-- Cohomological valence-carry interface: closed-shell contraction
+-- Q h + h Q = id - Π leaves only valence under Ward cancellation.
+import YangMills.SUSY.ValenceCarry
 -- Algebraic finite Berezin substrate: the top-coefficient functional on a
 -- finite complex exterior algebra, the first concrete layer underneath future
 -- supergaussian/Ward-model instantiations.

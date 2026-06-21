@@ -367,6 +367,17 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.SUSY.expect_decomposition_bound
 #print axioms YangMills.SUSY.expect_decomposition_profile_bound
 #print axioms YangMills.SUSY.expect_profile_bound_of_exact_ward
+-- Cohomological valence carry: closed-shell contraction leaves only valence.
+#print axioms YangMills.SUSY.ValenceCarryComplex.contracting_apply
+#print axioms YangMills.SUSY.ValenceCarryComplex.Q_Q_apply
+#print axioms YangMills.SUSY.ValenceCarryComplex.decomposition_of_closed
+#print axioms YangMills.SUSY.ValenceCarryComplex.expect_eq_expect_valence_of_closed
+#print axioms YangMills.SUSY.ValenceCarryComplex.expect_eq_zero_of_closedShell
+#print axioms YangMills.SUSY.ValenceCarryComplex.expect_eq_expect_singlet_valence_of_closed
+#print axioms YangMills.SUSY.ValenceCarryComplex.norm_expect_sub_expect_valence_le
+#print axioms YangMills.SUSY.ValenceCarryComplex.expect_norm_le_of_valence_bound
+#print axioms YangMills.SUSY.ValenceCarryComplex.expect_norm_le_of_valence_bound_approx
+#print axioms YangMills.SUSY.ValenceCarryComplex.expect_norm_le_of_rooted_obligations
 -- Algebraic finite Berezin substrate: top exterior coefficient functional.
 #print axioms YangMills.SUSY.finiteExteriorBasis_empty
 #print axioms YangMills.SUSY.finiteBerezinTop_basis
