@@ -376,6 +376,9 @@ import YangMills.RG.AppendixFSecondUrsellWeightedTree
 -- Finite second-Ursell geometry: a KP tree in the omega-hole polymer system
 -- stitches leaf modified metrics into the modified metric of the full union.
 import YangMills.RG.AppendixFSecondUrsellGeometry
+-- Source-facing cluster3 hole geometry: package holes/Ω/skeletons and expose
+-- the rooted local incompatibility contract for direct Dimock-II inputs.
+import YangMills.RG.AppendixFCluster3Geometry
 -- Source-facing closed Dimock-II `cluster3` contract for H#: consumes the
 -- final Appendix-F with-holes theorem directly, while keeping the Yang-Mills
 -- input decay/locality obligations explicit.
