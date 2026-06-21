@@ -292,6 +292,194 @@ theorem omegaClusterUnion_discreteModifiedMetric_add_one_le_sum_of_spanningTree
     simp [hS_card]
   exact_mod_cast hmetric.trans (hcard.trans_eq hsum)
 
+/-- Target-preserving exponential extraction for the source-facing weighted
+second-Ursell tree term.  If each vertex weight splits into a residual
+modified-metric exponential times a new weight `u`, then the fixed-union tree
+term can extract one exponential weight at the target `Y`.
+
+The point is that this lemma is applied before marker insertion or global
+vertex summation erase the exact union constraint `omegaClusterUnion X = Y`.
+The proof uses the KP spanning tree to stitch the leaf modified metrics into
+the target metric. -/
+theorem appendixFHoleHsharpWeightedTreeTerm_le_targetExpWeight_mul
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w u : OmegaPolymerType HF zK → ℝ)
+    (Y : Finset (Cube d L))
+    (n : ℕ)
+    (rate : ℝ)
+    (hrate : 0 ≤ rate)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P)
+    (hu : ∀ P : OmegaPolymerType HF zK, 0 ≤ u P)
+    (hsplit : ∀ P : OmegaPolymerType HF zK,
+      w P ≤ appendixFHoleExpWeight HF rate P.val * u P) :
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Y n ≤
+      appendixFHoleExpWeight HF rate Y *
+        appendixFHoleHsharpWeightedTreeTerm HF zK u Y n := by
+  classical
+  let P := omegaHolePolymerSystem HF zK
+  let target := appendixFHoleExpWeight HF rate Y
+  let fiber : Finset (Fin (n + 1) → OmegaPolymerType HF zK) :=
+    (Finset.univ :
+        Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+      (fun X => omegaClusterUnion HF zK X = Y)
+  have hprod :
+      ∀ (X : Fin (n + 1) → OmegaPolymerType HF zK),
+        omegaClusterUnion HF zK X = Y →
+        ∀ {T : Finset (Sym2 (Fin (n + 1)))},
+          T ∈ KP.spanningTrees (KP.incompGraph P X) →
+          ∏ i, w (X i) ≤ target * ∏ i, u (X i) := by
+    intro X hX T hT
+    let S : ℝ := ∑ i : Fin (n + 1),
+      ((discreteModifiedMetric HF (X i).val + 1 : ℕ) : ℝ)
+    let mY : ℝ := ((discreteModifiedMetric HF Y + 1 : ℕ) : ℝ)
+    have hmetricUnion :
+        ((discreteModifiedMetric HF (omegaClusterUnion HF zK X) + 1 : ℕ) : ℝ)
+          ≤ S :=
+      omegaClusterUnion_discreteModifiedMetric_add_one_le_sum_of_spanningTree
+        HF zK X hT
+    have hmetric : mY ≤ S := by
+      simpa [mY, S, hX] using hmetricUnion
+    have hexpProd :
+        (∏ i : Fin (n + 1),
+            appendixFHoleExpWeight HF rate (X i).val)
+          ≤ target := by
+      have hmul : rate * mY ≤ rate * S :=
+        mul_le_mul_of_nonneg_left hmetric hrate
+      have hexp :
+          Real.exp (-(rate * S)) ≤ Real.exp (-(rate * mY)) :=
+        Real.exp_le_exp.mpr (neg_le_neg hmul)
+      have hprod_eq :
+          (∏ i : Fin (n + 1),
+              appendixFHoleExpWeight HF rate (X i).val)
+            = Real.exp (-(rate * S)) := by
+        calc
+          (∏ i : Fin (n + 1),
+              appendixFHoleExpWeight HF rate (X i).val)
+              =
+            Real.exp
+              (∑ i : Fin (n + 1),
+                -(rate *
+                  (((discreteModifiedMetric HF (X i).val + 1 : ℕ) : ℝ)))) := by
+                rw [Real.exp_sum]
+                simp [appendixFHoleExpWeight]
+          _ = Real.exp (-(rate * S)) := by
+                have hsum :
+                    (∑ i : Fin (n + 1),
+                      -(rate *
+                        (((discreteModifiedMetric HF (X i).val + 1 : ℕ) : ℝ))))
+                      = -(rate * S) := by
+                  calc
+                    (∑ i : Fin (n + 1),
+                      -(rate *
+                        (((discreteModifiedMetric HF (X i).val + 1 : ℕ) : ℝ))))
+                        =
+                      -(∑ i : Fin (n + 1),
+                        rate *
+                          (((discreteModifiedMetric HF (X i).val + 1 : ℕ) : ℝ))) := by
+                          rw [Finset.sum_neg_distrib]
+                    _ = -(rate *
+                          ∑ i : Fin (n + 1),
+                            (((discreteModifiedMetric HF (X i).val + 1 : ℕ) : ℝ))) := by
+                          rw [← Finset.mul_sum]
+                    _ = -(rate * S) := by rfl
+                rw [hsum]
+      exact hprod_eq.trans_le (by simpa [target, mY, appendixFHoleExpWeight] using hexp)
+    have hsplitProd :
+        (∏ i : Fin (n + 1), w (X i)) ≤
+          ∏ i : Fin (n + 1),
+            appendixFHoleExpWeight HF rate (X i).val * u (X i) :=
+      Finset.prod_le_prod
+        (fun i _hi => hw (X i))
+        (fun i _hi => hsplit (X i))
+    have huProd : 0 ≤ ∏ i : Fin (n + 1), u (X i) :=
+      Finset.prod_nonneg fun i _hi => hu (X i)
+    calc
+      (∏ i : Fin (n + 1), w (X i))
+          ≤ ∏ i : Fin (n + 1),
+              appendixFHoleExpWeight HF rate (X i).val * u (X i) :=
+            hsplitProd
+      _ =
+          (∏ i : Fin (n + 1),
+              appendixFHoleExpWeight HF rate (X i).val) *
+            ∏ i : Fin (n + 1), u (X i) := by
+            rw [Finset.prod_mul_distrib]
+      _ ≤ target * ∏ i : Fin (n + 1), u (X i) :=
+            mul_le_mul_of_nonneg_right hexpProd huProd
+  have htrees :
+      ∀ X ∈ fiber,
+        (∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+            ∏ i, w (X i)) ≤
+          target *
+            ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+              ∏ i, u (X i) := by
+    intro X hXfiber
+    have hX : omegaClusterUnion HF zK X = Y := by
+      exact (Finset.mem_filter.mp hXfiber).2
+    calc
+      (∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+          ∏ i, w (X i))
+          ≤ ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+              target * ∏ i, u (X i) :=
+            Finset.sum_le_sum fun T hT => hprod X hX hT
+      _ =
+          target *
+            ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+              ∏ i, u (X i) := by
+            rw [Finset.mul_sum]
+  have hfiber :
+      (∑ X ∈ fiber,
+          ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+            ∏ i, w (X i)) ≤
+        target *
+          ∑ X ∈ fiber,
+            ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+              ∏ i, u (X i) := by
+    calc
+      (∑ X ∈ fiber,
+          ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+            ∏ i, w (X i))
+          ≤ ∑ X ∈ fiber,
+              target *
+                ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+                  ∏ i, u (X i) :=
+            Finset.sum_le_sum fun X hX => htrees X hX
+      _ =
+          target *
+            ∑ X ∈ fiber,
+              ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+                ∏ i, u (X i) := by
+            rw [Finset.mul_sum]
+  have hfinal :
+      (((n + 1).factorial : ℝ))⁻¹ *
+          (∑ X ∈ fiber,
+            ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+              ∏ i, w (X i)) ≤
+        target *
+          ((((n + 1).factorial : ℝ))⁻¹ *
+            (∑ X ∈ fiber,
+              ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+                ∏ i, u (X i))) := by
+    calc
+      (((n + 1).factorial : ℝ))⁻¹ *
+          (∑ X ∈ fiber,
+            ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+              ∏ i, w (X i))
+          ≤ (((n + 1).factorial : ℝ))⁻¹ *
+              (target *
+                ∑ X ∈ fiber,
+                  ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+                    ∏ i, u (X i)) :=
+            mul_le_mul_of_nonneg_left hfiber (by positivity)
+      _ =
+          target *
+            ((((n + 1).factorial : ℝ))⁻¹ *
+              (∑ X ∈ fiber,
+                ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+                  ∏ i, u (X i))) := by
+            ring
+  simpa [appendixFHoleHsharpWeightedTreeTerm, fiber, P, target] using hfinal
+
 /-- Finite rooted overcount for the source-facing hard-core relation: summing
 the modified-metric exponential weight over all polymers incompatible with a
 fixed polymer `Q` is bounded by the number of active skeleton roots of `Q`
