@@ -361,6 +361,49 @@ theorem integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDe
     norm_appendixFHoleConnectedLocalActivity_globalEval_le_expSubOne
       HF z Λ H Y ψ φ hH₀ hH₀_one hκ₀ hκ (hraw φ) hlocal
 
+/-- Ordinary strong measurability form of
+`integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay`.
+
+This adapter keeps source-facing measurability proofs in the common
+`StronglyMeasurable` form and derives the a.e. strong measurability needed by
+the generic probability-integrability compiler. -/
+theorem integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_of_stronglyMeasurable
+    {d L : ℕ} [NeZero L]
+    {β : Type*} [MeasurableSpace β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z →
+      LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    (Y : Finset (Cube d L))
+    (ψ : ∀ x, Ψ x)
+    {H₀ K₀ κ κ₀ : ℝ}
+    (hH₀ : 0 ≤ H₀) (hH₀_one : H₀ ≤ 1)
+    (hκ₀ : 0 ≤ κ₀) (hκ : κ₀ ≤ κ)
+    (hlocal :
+      (∑ X ∈ Λ.filter (fun X => X.val ⊆ Y),
+        appendixFHoleExpWeight HF κ₀ X.val)
+        ≤
+      (((discreteModifiedMetric HF Y + 1 : ℕ) : ℝ)) * K₀)
+    (hraw : ∀ φ X, X ∈ Λ →
+      ‖(H X).globalEval ψ φ‖ ≤
+        H₀ * appendixFHoleExpWeight HF κ X.val)
+    (hmeas :
+      StronglyMeasurable
+        (fun φ : (∀ _ : Cube d L, β) =>
+          (appendixFHoleConnectedLocalActivity
+            HF z Λ H Y).globalEval ψ φ)) :
+    Integrable
+      (fun φ : (∀ _ : Cube d L, β) =>
+        (appendixFHoleConnectedLocalActivity
+          HF z Λ H Y).globalEval ψ φ)
+      (Measure.pi fun _ : Cube d L => μ) :=
+  integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay
+    HF z Λ H μ Y ψ hH₀ hH₀_one hκ₀ hκ hlocal hraw
+    hmeas.aestronglyMeasurable
+
 /-- Source-shaped integrated exact `K#` estimate from raw pointwise metric
 decay and local contained-support summability.  Integrability stays explicit,
 and the exponential-minus-one factor is intentionally not linearized here. -/
@@ -513,6 +556,49 @@ theorem integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDe
   exact
     integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay
       HF z Λ H μ Y ψ hH₀ hH₀_one hκ₀ hκ hlocal hraw hmeas
+
+/-- Ordinary strong measurability form of the rooted raw integrability compiler. -/
+theorem integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_rooted_of_stronglyMeasurable
+    {d L : ℕ} [NeZero L]
+    {β : Type*} [MeasurableSpace β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z →
+      LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    {Y : Finset (Cube d L)}
+    (hY : Y ∈ appendixFTargetRegion
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ)
+    (ψ : ∀ x, Ψ x)
+    {H₀ K₀ κ κ₀ : ℝ}
+    (hH₀ : 0 ≤ H₀) (hH₀_one : H₀ ≤ 1)
+    (hK₀ : 0 ≤ K₀)
+    (hκ₀ : 0 ≤ κ₀) (hκ : κ₀ ≤ κ)
+    (hroot : ∀ r : Cube d L,
+      (∑ X ∈ Λ.filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀)
+    (hraw : ∀ φ X, X ∈ Λ →
+      ‖(H X).globalEval ψ φ‖ ≤
+        H₀ * appendixFHoleExpWeight HF κ X.val)
+    (hmeas :
+      StronglyMeasurable
+        (fun φ : (∀ _ : Cube d L, β) =>
+          (appendixFHoleConnectedLocalActivity
+            HF z Λ H Y).globalEval ψ φ)) :
+    Integrable
+      (fun φ : (∀ _ : Cube d L, β) =>
+        (appendixFHoleConnectedLocalActivity
+          HF z Λ H Y).globalEval ψ φ)
+      (Measure.pi fun _ : Cube d L => μ) :=
+  integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_rooted
+    HF z Λ H μ hY ψ hH₀ hH₀_one hK₀ hκ₀ hκ hroot hraw
+    hmeas.aestronglyMeasurable
 
 /-- Linearized rooted first-activity estimate at the Appendix-F `K#` rate.
 

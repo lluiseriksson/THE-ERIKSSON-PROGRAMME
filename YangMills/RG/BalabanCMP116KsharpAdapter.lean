@@ -470,4 +470,49 @@ theorem integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDeca
         simpa [balabanCMP116AppendixFConnectedLocalActivity,
           balabanCMP116Dmu0] using hmeas))
 
+/-- Ordinary strong measurability form of the CMP116 source-shaped
+integrability compiler for the first connected Appendix-F activity. -/
+theorem integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDecay_rooted_of_stronglyMeasurable
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    {Y : Finset (Cube d L)}
+    (hY : Y ∈ appendixFTargetRegion
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ)
+    (ψ : ∀ x, Ψ x)
+    {H₀ K₀ κ κ₀ : ℝ}
+    (hH₀ : 0 ≤ H₀)
+    (hH₀_one : H₀ ≤ 1)
+    (hK₀ : 0 ≤ K₀)
+    (hκ₀ : 0 ≤ κ₀)
+    (hκ : κ₀ ≤ κ)
+    (hroot : ∀ r : Cube d L,
+      (∑ X ∈ Λ.filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀)
+    (hraw : ∀ φ X, X ∈ Λ →
+      ‖(F.activity X).globalEval ψ φ‖ ≤
+        H₀ * appendixFHoleExpWeight HF κ X.val)
+    (hmeas :
+      StronglyMeasurable
+        (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+          (balabanCMP116AppendixFConnectedLocalActivity
+            HF z Λ F Y).globalEval ψ φ)) :
+    Integrable
+      (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+        (balabanCMP116AppendixFConnectedLocalActivity
+          HF z Λ F Y).globalEval ψ φ)
+      (balabanCMP116Dmu0 (Cube d L) lieDim) :=
+  integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDecay_rooted
+    HF z Λ F hY ψ hH₀ hH₀_one hK₀ hκ₀ hκ hroot hraw
+    hmeas.aestronglyMeasurable
+
 end YangMills.RG

@@ -672,8 +672,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleConnectedLocalActivity_globalEval_le_expSubOne
 #print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay
 #print axioms YangMills.RG.integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay
+#print axioms YangMills.RG.integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_of_stronglyMeasurable
 #print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_rooted
+#print axioms YangMills.RG.integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_rooted_of_stronglyMeasurable
 #print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted
 -- second Appendix-F hard-core gas from evaluated K#: structural only, with KP
 -- exposed as a pointwise majorant hypothesis rather than as Dimock (642).
@@ -897,6 +899,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_pointwise_expWeight_leafSummation
 #print axioms YangMills.RG.norm_balabanCMP116AppendixFKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDecay_rooted
+#print axioms YangMills.RG.integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDecay_rooted_of_stronglyMeasurable
 #print axioms YangMills.RG.norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_residual_mul_leaf_of_ksharpRate
