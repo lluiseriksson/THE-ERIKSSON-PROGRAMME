@@ -7898,3 +7898,46 @@ the absolute fixed-union estimate, the Balaban/Dimock second-Ursell leaf
 summation, Dimock F.1/(636), Dimock (642), concrete Yang-Mills raw activity
 decay, continuum construction, or Clay.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 218 (2026-06-21, **tree-term source-majorant constructors**
+`YangMills.RG.appendixFHsharpSourceMajorant_of_treeTerm_geometric`,
+`YangMills.RG.appendixFHsharpSourceMajorant_of_factorized_treeTerm_geometric`,
+`YangMills.RG.appendixFHsharpSourceMajorant_of_integratedKsharp_treeTerm_geometric`,
+`YangMills.RG.appendixFHsharpSourceMajorant_of_integratedKsharp_factorized_treeTerm_geometric`;
+core 8307)
+
+This addendum connects Addendum 212's finite Penrose tree coefficient to
+Addendum 217's integrated-`K#` source-majorant normal form.
+
+`YangMills/RG/AppendixFSecondUrsellSource.lean` now proves four constructor
+bridges.  The general constructors turn a geometric estimate on the finite
+tree term `appendixFHoleHsharpTreeTerm` into an
+`AppendixFHsharpSourceMajorant`, either with arbitrary amplitudes `A,q` or
+with the preferred factorized modified-metric shape.  The integrated
+constructors specialize the same bridge to
+`appendixFHoleIntegratedKsharpActivityFamily`.
+
+The proof is purely finite: compose
+`appendixFHoleHsharpAbsTerm_le_treeTerm` with the source-supplied tree-term
+estimate, then reuse the already verified source-majorant constructors.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFSecondUrsellSource.lean
+lake build YangMills.RG.AppendixFSecondUrsellSource
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This commit does not prove the tree-term estimate itself.
+It only exposes that as the next exact source obligation.  Dimock's leaf
+summation, Dimock F.1/(636), Dimock (642), concrete Yang-Mills raw activity
+decay, continuum construction, and Clay remain open.  Clay distance
+**~0% (<0.1%), unchanged**.

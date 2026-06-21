@@ -429,8 +429,13 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   Ursell coefficient replaced by the finite sum over spanning trees of the
   tuple incompatibility graph.  The theorem
   `appendixFHoleHsharpAbsTerm_le_treeTerm` applies the already-proved Penrose
-  tree-graph inequality coefficientwise.  This is source-independent finite
-  tree domination only; it does not prove Dimock's leaf summation, the `K#`
+  tree-graph inequality coefficientwise.  The same module now supplies
+  source-majorant constructors from tree-term geometric estimates, including
+  the factorized modified-metric shape and the spectator-integrated `K#`
+  specialization.  Thus the remaining finite source obligation is exposed as
+  an estimate on `appendixFHoleHsharpTreeTerm` rather than on the more opaque
+  absolute Ursell coefficient.  This is source-independent finite tree
+  domination only; it does not prove Dimock's leaf summation, the `K#`
   estimate (642)/(644), the source `H#` estimate F.1/(636), the smallness
   condition, or any Yang-Mills raw activity bound;
 * the source-facing geometric `H#` profile

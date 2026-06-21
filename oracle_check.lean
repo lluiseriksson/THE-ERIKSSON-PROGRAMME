@@ -686,6 +686,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- finite tree majorant for the exact fixed-union absolute H# coefficient.
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm
 #print axioms YangMills.RG.appendixFHoleHsharpAbsTerm_le_treeTerm
+#print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_treeTerm_geometric
+#print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_factorized_treeTerm_geometric
+#print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_integratedKsharp_treeTerm_geometric
+#print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_integratedKsharp_factorized_treeTerm_geometric
 -- source-facing packaged geometric H# profiles: one record now supplies the
 -- summability, tail, residual, and UV consumers without duplicating fields.
 #print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.summable_terms
