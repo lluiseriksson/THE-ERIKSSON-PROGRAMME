@@ -794,6 +794,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleIncompMomentKernel_childMoment_mul
 #print axioms YangMills.RG.appendixFHoleIncompMomentKernel_childMoment_sum_le_factorial_mul
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootRawSum_le_completeTreeParentSum
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum_le_kernelSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation_of_skeleton_nonempty
 -- source-facing cluster3 hole geometry: Ω as the active complement of holes

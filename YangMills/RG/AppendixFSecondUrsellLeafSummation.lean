@@ -300,6 +300,128 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootRawSum_le_completeTreeParentSum
           simp [appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum,
             marked, all, topTrees, parentIndicator, W, P]
 
+/-- Kernelized complete-tree parent sum.  The root still carries the marked
+root weight, while every nonroot child choice is charged through the
+hard-core moment kernel with moment index `0`.
+
+This is the finite object that the later fixed-tree leaf recursion should
+consume with `appendixFHoleIncompMomentKernel_childMoment_sum_le_factorial_mul`.
+-/
+noncomputable def appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentKernelSum
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (κ₀ : ℝ)
+    (r : Cube d L)
+    (n : ℕ) : ℝ :=
+  ∑ X ∈ (Finset.univ :
+      Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+        (fun X => r ∈ skeleton HF (X 0).val),
+    ∑ T ∈ KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
+      (∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+        appendixFHoleIncompMomentKernel HF zK κ₀ 0
+          (X (KP.bfsParent T v)) (X v)) *
+        w (X 0)
+
+/-- If the vertex weight is bounded by the spare exponential weight used in
+the hard-core moment kernel, the parent-oriented complete-tree overcount is
+bounded by the kernelized complete-tree sum.  This is the bridge from the
+finite tree overcount to the factorial-moment leaf estimates. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum_le_kernelSum
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (κ₀ : ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ Q : OmegaPolymerType HF zK, 0 ≤ w Q)
+    (hw_exp :
+      ∀ Q : OmegaPolymerType HF zK,
+        w Q ≤ appendixFHoleExpWeight HF (2 * κ₀) Q.val) :
+    appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum
+        HF zK w r n ≤
+      appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentKernelSum
+        HF zK w κ₀ r n := by
+  classical
+  let P := omegaHolePolymerSystem HF zK
+  let all : Finset (Fin (n + 1) → OmegaPolymerType HF zK) := Finset.univ
+  let marked : Finset (Fin (n + 1) → OmegaPolymerType HF zK) :=
+    all.filter (fun X => r ∈ skeleton HF (X 0).val)
+  let topTrees : Finset (Finset (Sym2 (Fin (n + 1)))) :=
+    KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1)))
+  let nonroot : Finset (Fin (n + 1)) :=
+    Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0)
+  let indicator
+      (X : Fin (n + 1) → OmegaPolymerType HF zK)
+      (T : Finset (Sym2 (Fin (n + 1)))) (v : Fin (n + 1)) : ℝ :=
+    if P.incomp (X (KP.bfsParent T v)) (X v) then (1 : ℝ) else 0
+  let kernel
+      (X : Fin (n + 1) → OmegaPolymerType HF zK)
+      (T : Finset (Sym2 (Fin (n + 1)))) (v : Fin (n + 1)) : ℝ :=
+    appendixFHoleIncompMomentKernel HF zK κ₀ 0
+      (X (KP.bfsParent T v)) (X v)
+  have hfactor :
+      ∀ X : Fin (n + 1) → OmegaPolymerType HF zK,
+        ∏ j, w (X j) =
+          (∏ v ∈ nonroot, w (X v)) * w (X 0) := by
+    intro X
+    dsimp [nonroot]
+    rw [Finset.filter_ne',
+      ← Finset.mul_prod_erase Finset.univ _ (Finset.mem_univ 0)]
+    ring
+  have hleft_nonneg :
+      ∀ X T v, 0 ≤ indicator X T v * w (X v) := by
+    intro X T v
+    exact mul_nonneg (by dsimp [indicator]; split_ifs <;> norm_num) (hw (X v))
+  have hkernel_nonneg : ∀ X T v, 0 ≤ kernel X T v := by
+    intro X T v
+    exact appendixFHoleIncompMomentKernel_nonneg HF zK κ₀ 0
+      (X (KP.bfsParent T v)) (X v)
+  have hpoint_le :
+      ∀ X T,
+        (∏ v ∈ nonroot, indicator X T v) * ∏ j, w (X j) ≤
+          (∏ v ∈ nonroot, kernel X T v) * w (X 0) := by
+    intro X T
+    have hprod_le :
+        (∏ v ∈ nonroot, indicator X T v * w (X v)) ≤
+          ∏ v ∈ nonroot, kernel X T v := by
+      refine Finset.prod_le_prod ?_ ?_
+      · intro v _hv
+        exact hleft_nonneg X T v
+      · intro v _hv
+        by_cases hinc : P.incomp (X (KP.bfsParent T v)) (X v)
+        · simpa [indicator, kernel, appendixFHoleIncompMomentKernel, P, hinc]
+            using hw_exp (X v)
+        · simp [indicator, kernel, appendixFHoleIncompMomentKernel, P, hinc]
+    calc
+      (∏ v ∈ nonroot, indicator X T v) * ∏ j, w (X j)
+          = (∏ v ∈ nonroot, indicator X T v * w (X v)) * w (X 0) := by
+            rw [hfactor X, ← mul_assoc, ← Finset.prod_mul_distrib]
+      _ ≤ (∏ v ∈ nonroot, kernel X T v) * w (X 0) := by
+            exact mul_le_mul_of_nonneg_right hprod_le (hw (X 0))
+  calc
+    appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum HF zK w r n
+        =
+      ∑ X ∈ marked,
+        ∑ T ∈ topTrees,
+          (∏ v ∈ nonroot, indicator X T v) * ∏ j, w (X j) := by
+          simp [appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum,
+            marked, all, topTrees, nonroot, indicator, P]
+    _ ≤
+      ∑ X ∈ marked,
+        ∑ T ∈ topTrees,
+          (∏ v ∈ nonroot, kernel X T v) * w (X 0) := by
+          refine Finset.sum_le_sum fun X _hX => ?_
+          refine Finset.sum_le_sum fun T _hT => ?_
+          exact hpoint_le X T
+    _ =
+      appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentKernelSum
+        HF zK w κ₀ r n := by
+          simp [appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentKernelSum,
+            marked, all, topTrees, nonroot, kernel]
+
 /-- Target-decaying composition from a marked-root leaf-summation bound.
 
 The order matters: first use the fixed-union metric stitching theorem to
