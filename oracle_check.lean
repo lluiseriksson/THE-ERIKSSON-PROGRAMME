@@ -883,6 +883,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFSecondUrsellLeafConstant_nonneg
 #print axioms YangMills.RG.appendixFSecondUrsellLeafConstant_one_le
 #print axioms YangMills.RG.appendixFSecondUrsellMomentConstant_le_leafConstant
+#print axioms YangMills.RG.appendixFHoleRootSumConstant_nonneg_of_hCq
 #print axioms YangMills.RG.one_sub_inv_le_two_of_nonneg_of_le_half
 #print axioms YangMills.RG.appendixFSecondUrsell_closed_le_four_mul_rawRoot
 #print axioms YangMills.RG.appendixFSecondUrsell_sourceObligations_of_halfBudget
@@ -903,6 +904,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_rawMetricDecay_rooted_ksharpRate
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_ksharpRate
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_leafSummation
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

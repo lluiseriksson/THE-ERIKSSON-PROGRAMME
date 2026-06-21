@@ -46,6 +46,17 @@ theorem appendixFSecondUrsellMomentConstant_le_leafConstant
     appendixFSecondUrsellMomentConstant_one_le d κ₀
   nlinarith [sq_nonneg (appendixFSecondUrsellMomentConstant d κ₀)]
 
+/-- The rooted geometric constant is nonnegative under the same smallness
+condition that makes its denominator strictly positive. -/
+theorem appendixFHoleRootSumConstant_nonneg_of_hCq
+    {d : ℕ} {κ₀ : ℝ}
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+        (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    0 ≤ appendixFHoleRootSumConstant d κ₀ := by
+  unfold appendixFHoleRootSumConstant
+  exact (inv_pos.mpr (by linarith)).le
+
 /-- If `x` spends at most half of the unit budget, the geometric denominator is
 bounded by `2`. -/
 theorem one_sub_inv_le_two_of_nonneg_of_le_half

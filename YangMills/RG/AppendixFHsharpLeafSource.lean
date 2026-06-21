@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.AppendixFHsharpMarkedVertexSource
 import YangMills.RG.AppendixFSecondUrsellLeafSummation
+import YangMills.RG.AppendixFSecondUrsellClosure
 
 /-!
 # Source-facing leaf-summation contracts for Appendix-F `H#`
@@ -1200,5 +1201,129 @@ theorem
     hC hHbar hg hκ hκ₀ hR hν
     hA₀ hA₀_one hK₀ hsmall hρ1 hroot hraw hint
     hdisj hnoedges hholes_ne hCq hBclosed
+
+/-- Omega-rooted real-part UV decay from rooted raw-metric first-activity data,
+with the rooted finite summability constant specialized to the canonical
+Appendix-F geometric constant.
+
+Compared with
+`singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_leafSummation`,
+this corollary generates `hroot`, `hsmall`, `hρ1`, and `hBclosed` internally
+from the rooted finite summability theorem and the half-budget closure lemma.
+The source-facing analytic inputs `hraw`, `hint`, and the physical
+identification `hR` remain explicit. -/
+theorem
+    singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget
+    {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (Rsc : ℕ → ℕ → ℝ)
+    (g : ℕ → ℝ)
+    (A₀ : ℕ → ℕ → ℝ)
+    {C Hbar c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C)
+    (hHbar : 0 ≤ Hbar)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hκ₀ : 0 < κ₀)
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+                HF (z t k) (Λ t k) (F t k) (ν t k) P.val.val))
+    (hν : ∀ t k, IsProbabilityMeasure (ν t k))
+    (hA₀ : ∀ t k, 0 ≤ A₀ t k)
+    (hA₀_one : ∀ t k, A₀ t k ≤ 1)
+    (hraw : ∀ t k ψ φ X, X ∈ Λ t k →
+      ‖((F t k).activity X).globalEval ψ φ‖ ≤
+        A₀ t k * appendixFHoleExpWeight HF κ X.val)
+    (hint : ∀ t k Y,
+      Y ∈ appendixFTargetRegion
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF (z t k) => skeleton HF X.val)
+        (fun X : OmegaPolymerType HF (z t k) => X.val)
+        (Λ t k) →
+      ∀ ψ : (∀ _ : Cube d L, β),
+        Integrable
+          (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+            (balabanCMP116AppendixFConnectedLocalActivity
+              HF (z t k) (Λ t k) (F t k) Y).globalEval ψ φ)
+          (balabanCMP116Dmu0 (Cube d L) lieDim))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H ∈ HF.holes, H.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1)
+    (hhalf :
+      ∀ t k,
+        appendixFSecondUrsellLeafConstant d κ₀ *
+            (2 * A₀ t k * appendixFHoleRootSumConstant d κ₀) ≤ 1 / 2)
+    (hprofile :
+      ∀ t k,
+        4 * appendixFSecondUrsellMomentConstant d κ₀ *
+            A₀ t k * appendixFHoleRootSumConstant d κ₀ ≤
+          C * Hbar * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    SingleScaleUVDecay Rsc g
+      ((C * Hbar) *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹)
+      c₀ κ₀ := by
+  let Kroot : ℕ → ℕ → ℝ :=
+    fun _ _ => appendixFHoleRootSumConstant d κ₀
+  have hKroot : ∀ t k, 0 ≤ Kroot t k := by
+    intro t k
+    exact appendixFHoleRootSumConstant_nonneg_of_hCq hCq
+  have hroot : ∀ t k r',
+      (∑ X ∈ (Λ t k).filter
+          (fun X => r' ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ Kroot t k := by
+    intro t k r'
+    simpa [Kroot, appendixFHoleRootSumConstant] using
+      appendixFHole_rootedFiniteExpWeightSum_le
+        HF (z t k) (Λ t k) r' κ₀
+        hdisj hnoedges hholes_ne hCq
+  have hoblig :
+      ∀ t k,
+        2 * A₀ t k * Kroot t k ≤ 1 ∧
+        appendixFSecondUrsellLeafConstant d κ₀ *
+            (2 * A₀ t k * Kroot t k) < 1 ∧
+        (appendixFSecondUrsellMomentConstant d κ₀ *
+            (2 * A₀ t k * Kroot t k)) *
+            (1 - appendixFSecondUrsellLeafConstant d κ₀ *
+              (2 * A₀ t k * Kroot t k))⁻¹ ≤
+          C * Hbar * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ := by
+    intro t k
+    exact
+      appendixFSecondUrsell_sourceObligations_of_halfBudget
+        (d := d) (κ₀ := κ₀) (A := A₀ t k) (K := Kroot t k)
+        (S := C * Hbar * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀)
+        (hA₀ t k) (hKroot t k)
+        (by simpa [Kroot] using hhalf t k)
+        (by simpa [Kroot] using hprofile t k)
+  exact
+    singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_leafSummation
+      (C := C) (Hbar := Hbar) (c₀ := c₀) (κ := κ) (κ₀ := κ₀)
+      HF zCarrier r z Λ F ν Rsc g A₀ Kroot
+      hC hHbar hg hκ hκ₀ hR hν hA₀ hA₀_one hKroot
+      (fun t k => (hoblig t k).1)
+      (fun t k => (hoblig t k).2.1)
+      hroot hraw hint hdisj hnoedges hholes_ne hCq
+      (fun t k => (hoblig t k).2.2)
 
 end YangMills.RG
