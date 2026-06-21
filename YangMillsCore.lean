@@ -411,6 +411,9 @@ import YangMills.RG.BalabanCMP116HsharpSource
 -- Marked-vertex source contracts for H#: a bound on the root-marked
 -- vertex-product sum feeds the CMP116 profile/cluster3/UV consumers.
 import YangMills.RG.AppendixFHsharpMarkedVertexSource
+-- Leaf-summation source contracts for H#: the finite marked-root
+-- leaf-summation theorem feeds the CMP116 profile/cluster3/UV consumers.
+import YangMills.RG.AppendixFHsharpLeafSource
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
