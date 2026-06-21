@@ -24,11 +24,118 @@ Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 attribute [local instance] Classical.propDecidable
 
 open Finset
+open SimpleGraph
 open scoped BigOperators
 
 namespace YangMills.RG
 
 variable {d L : ℕ} [NeZero L]
+
+private lemma spanningTrees_image_perm_incomp
+    (P : KP.PolymerSystem) {n : ℕ}
+    (X : Fin n → P.Polymer) (σ : Equiv.Perm (Fin n))
+    (E : Finset (Sym2 (Fin n))) :
+    E.image (Sym2.map σ) ∈ KP.spanningTrees (KP.incompGraph P X) ↔
+      E ∈ KP.spanningTrees (KP.incompGraph P (X ∘ σ)) := by
+  classical
+  have hmapinj : Function.Injective (Sym2.map σ) :=
+    Sym2.map.injective σ.injective
+  have hedge : ∀ i j : Fin n,
+      (KP.incompGraph P (X ∘ σ)).Adj i j
+        ↔ (KP.incompGraph P X).Adj (σ i) (σ j) := by
+    intro i j
+    rw [KP.incompGraph_adj, KP.incompGraph_adj]
+    constructor
+    · rintro ⟨hne, hinc⟩
+      exact ⟨fun h => hne (σ.injective h), hinc⟩
+    · rintro ⟨hne, hinc⟩
+      exact ⟨fun h => hne (by rw [h]), hinc⟩
+  have hadj : ∀ (F : Finset (Sym2 (Fin n))) (i j : Fin n),
+      (SimpleGraph.fromEdgeSet
+        (↑(F.image (Sym2.map σ)) : Set (Sym2 (Fin n)))).Adj (σ i) (σ j)
+      ↔ (SimpleGraph.fromEdgeSet (↑F : Set (Sym2 (Fin n)))).Adj i j := by
+    intro F i j
+    rw [SimpleGraph.fromEdgeSet_adj, SimpleGraph.fromEdgeSet_adj]
+    constructor
+    · rintro ⟨hmem, hne⟩
+      refine ⟨?_, fun h => hne (by rw [h])⟩
+      rw [Finset.mem_coe, Finset.mem_image] at hmem
+      obtain ⟨e', he', heq⟩ := hmem
+      have he : e' = s(i, j) := hmapinj (by rw [heq, Sym2.map_mk])
+      rwa [he] at he'
+    · rintro ⟨hmem, hne⟩
+      refine ⟨?_, fun h => hne (σ.injective h)⟩
+      rw [Finset.mem_coe, Finset.mem_image]
+      exact ⟨s(i, j), hmem, rfl⟩
+  have htree : ∀ F : Finset (Sym2 (Fin n)),
+      (SimpleGraph.fromEdgeSet
+        (↑(F.image (Sym2.map σ)) : Set (Sym2 (Fin n)))).IsTree
+      ↔ (SimpleGraph.fromEdgeSet (↑F : Set (Sym2 (Fin n)))).IsTree := by
+    intro F
+    have iso : SimpleGraph.fromEdgeSet (↑F : Set (Sym2 (Fin n)))
+        ≃g SimpleGraph.fromEdgeSet
+          (↑(F.image (Sym2.map σ)) : Set (Sym2 (Fin n))) :=
+      { toEquiv := σ
+        map_rel_iff' := by intro i j; exact hadj F i j }
+    exact iso.isTree_iff.symm
+  unfold KP.spanningTrees
+  constructor
+  · intro hE
+    rw [Finset.mem_filter, Finset.mem_powerset] at hE ⊢
+    refine ⟨?_, (htree E).mp hE.2⟩
+    intro e he
+    revert he
+    refine Sym2.ind (fun i j he => ?_) e
+    have hmem_image : Sym2.map σ s(i, j) ∈ (KP.incompGraph P X).edgeFinset := by
+      exact hE.1 (Finset.mem_image.mpr ⟨s(i, j), he, rfl⟩)
+    rw [Sym2.map_mk, SimpleGraph.mem_edgeFinset, SimpleGraph.mem_edgeSet] at hmem_image
+    rw [SimpleGraph.mem_edgeFinset, SimpleGraph.mem_edgeSet]
+    exact (hedge i j).mpr hmem_image
+  · intro hE
+    rw [Finset.mem_filter, Finset.mem_powerset] at hE ⊢
+    refine ⟨?_, (htree E).mpr hE.2⟩
+    intro e he
+    rw [Finset.mem_image] at he
+    obtain ⟨e', he', rfl⟩ := he
+    revert he'
+    refine Sym2.ind (fun i j he' => ?_) e'
+    have hmem := hE.1 he'
+    rw [SimpleGraph.mem_edgeFinset, SimpleGraph.mem_edgeSet] at hmem
+    rw [Sym2.map_mk, SimpleGraph.mem_edgeFinset, SimpleGraph.mem_edgeSet]
+    exact (hedge i j).mp hmem
+
+private lemma weightedTreeSum_comp_perm
+    (P : KP.PolymerSystem) {n : ℕ}
+    (X : Fin n → P.Polymer) (σ : Equiv.Perm (Fin n))
+    (w : P.Polymer → ℝ) :
+    (∑ _T ∈ KP.spanningTrees (KP.incompGraph P (X ∘ σ)),
+        ∏ j, w ((X ∘ σ) j)) =
+      ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+        ∏ j, w (X j) := by
+  classical
+  have hprod : (∏ j, w ((X ∘ σ) j)) = ∏ j, w (X j) :=
+    Equiv.prod_comp σ (fun j => w (X j))
+  refine Finset.sum_nbij'
+    (i := fun T => T.image (Sym2.map σ))
+    (j := fun T => T.image (Sym2.map σ.symm)) ?_ ?_ ?_ ?_ ?_
+  · intro T hT
+    exact (spanningTrees_image_perm_incomp P X σ T).mpr hT
+  · intro T hT
+    have hEimg : (T.image (Sym2.map σ.symm)).image (Sym2.map σ) = T := by
+      rw [Finset.image_image, ← Sym2.map_comp, Equiv.self_comp_symm,
+        Sym2.map_id, Finset.image_id]
+    exact (spanningTrees_image_perm_incomp P X σ
+      (T.image (Sym2.map σ.symm))).mp (by simpa [hEimg] using hT)
+  · intro T _hT
+    dsimp only
+    rw [Finset.image_image, ← Sym2.map_comp, Equiv.symm_comp_self,
+      Sym2.map_id, Finset.image_id]
+  · intro T _hT
+    dsimp only
+    rw [Finset.image_image, ← Sym2.map_comp, Equiv.self_comp_symm,
+      Sym2.map_id, Finset.image_id]
+  · intro T _hT
+    exact hprod
 
 /-- Coordinate-indexed target-skeleton marked weighted tree sum.  Compared
 with `appendixFHoleHsharpWeightedTreeTerm`, this drops the fixed target-union
@@ -48,6 +155,86 @@ noncomputable def appendixFHoleHsharpWeightedTreeMarkedIndexSum
         ∑ _T ∈ KP.spanningTrees
             (KP.incompGraph (omegaHolePolymerSystem HF zK) X),
           ∏ j, w (X j)
+
+/-- Root-coordinate version of the target-skeleton marked weighted tree sum.
+This is the form that the pinned KP/tree-walk machinery should consume next. -/
+noncomputable def appendixFHoleHsharpWeightedTreeMarkedRootSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ) : ℝ :=
+  (((n + 1).factorial : ℝ))⁻¹ *
+    ∑ X ∈ (Finset.univ :
+        Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+          (fun X => r ∈ skeleton HF (X 0).val),
+      ∑ _T ∈ KP.spanningTrees
+          (KP.incompGraph (omegaHolePolymerSystem HF zK) X),
+        ∏ j, w (X j)
+
+/-- Coordinate symmetry of the marked weighted tree sum.  A coordinate marked
+at `i` is transported to the root coordinate by precomposing the tuple with
+`Equiv.swap 0 i`; the private relabeling lemma transports the corresponding
+spanning-tree sum. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedIndexSum_eq_card_mul_root
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ) :
+    appendixFHoleHsharpWeightedTreeMarkedIndexSum HF zK w r n =
+      ((n : ℝ) + 1) *
+        appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n := by
+  classical
+  let P := omegaHolePolymerSystem HF zK
+  let slice (i : Fin (n + 1)) : ℝ :=
+    ∑ X ∈ (Finset.univ :
+        Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+          (fun X => r ∈ skeleton HF (X i).val),
+      ∑ _T ∈ KP.spanningTrees (KP.incompGraph P X),
+        ∏ j, w (X j)
+  have hidx : ∀ i : Fin (n + 1), slice i = slice 0 := by
+    intro i
+    let σ : Equiv.Perm (Fin (n + 1)) := Equiv.swap 0 i
+    refine Finset.sum_nbij' (i := fun X => X ∘ σ) (j := fun X => X ∘ σ)
+      ?_ ?_ ?_ ?_ ?_
+    · intro X hX
+      refine Finset.mem_filter.mpr ⟨Finset.mem_univ _, ?_⟩
+      have hi : r ∈ skeleton HF (X i).val := (Finset.mem_filter.mp hX).2
+      have h0 : (X ∘ σ) 0 = X i := by
+        simp [σ, Function.comp, Equiv.swap_apply_left]
+      change r ∈ skeleton HF ((X ∘ σ) 0).val
+      rwa [h0]
+    · intro X hX
+      refine Finset.mem_filter.mpr ⟨Finset.mem_univ _, ?_⟩
+      have h0 : r ∈ skeleton HF (X 0).val := (Finset.mem_filter.mp hX).2
+      have hi : (X ∘ σ) i = X 0 := by
+        simp [σ, Function.comp, Equiv.swap_apply_right]
+      change r ∈ skeleton HF ((X ∘ σ) i).val
+      rwa [hi]
+    · intro X _hX
+      funext k
+      simp [σ, Function.comp, Equiv.swap_apply_self]
+    · intro X _hX
+      funext k
+      simp [σ, Function.comp, Equiv.swap_apply_self]
+    · intro X _hX
+      exact (weightedTreeSum_comp_perm P X σ w).symm
+  have hsum :
+      (∑ i : Fin (n + 1), slice i) =
+        ∑ _i : Fin (n + 1), slice 0 := by
+    exact Finset.sum_congr rfl fun i _hi => hidx i
+  calc
+    appendixFHoleHsharpWeightedTreeMarkedIndexSum HF zK w r n
+        = (((n + 1).factorial : ℝ))⁻¹ * ∑ i : Fin (n + 1), slice i := by
+          simp [appendixFHoleHsharpWeightedTreeMarkedIndexSum, slice, P]
+    _ = (((n + 1).factorial : ℝ))⁻¹ * ∑ _i : Fin (n + 1), slice 0 := by
+          rw [hsum]
+    _ = ((n : ℝ) + 1) *
+          appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n := by
+          simp [appendixFHoleHsharpWeightedTreeMarkedRootSum, slice, P,
+            Finset.sum_const, nsmul_eq_mul]
+          ring
 
 /-- Insert a target-skeleton marker into the weighted fixed-union `H#` tree
 term.  The hypothesis `r ∈ skeleton HF Q.val` is the finite target marker: in
@@ -233,5 +420,27 @@ theorem appendixFHoleHsharpWeightedTreeTerm_le_markedIndexSum
   refine hmarked.trans ?_
   simpa [appendixFHoleHsharpWeightedTreeMarkedIndexSum, all, fiber, trees, W, mark] using
     mul_le_mul_of_nonneg_left hmarked_inner (by positivity)
+
+/-- Fixed-target weighted `H#` tree term reduced to the root-coordinate marked
+tree sum.  This is the finite pinned-coordinate consumer; the remaining
+analytic task is to bound the root-marked tree sum by a KP/tree-walk or
+fugacity estimate. -/
+theorem appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (Q : OmegaPolymerType HF zK)
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P)
+    (hr : r ∈ skeleton HF Q.val) :
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Q.val n ≤
+      ((n : ℝ) + 1) *
+        appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n := by
+  exact
+    (appendixFHoleHsharpWeightedTreeTerm_le_markedIndexSum
+      HF zK w Q r n hw hr).trans_eq
+      (appendixFHoleHsharpWeightedTreeMarkedIndexSum_eq_card_mul_root
+        HF zK w r n)
 
 end YangMills.RG
