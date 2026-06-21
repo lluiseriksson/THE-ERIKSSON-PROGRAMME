@@ -359,4 +359,58 @@ theorem norm_balabanCMP116AppendixFKsharp_globalEval_le_expSubOne_of_rawMetricDe
         simpa [balabanCMP116AppendixFConnectedLocalActivity,
           balabanCMP116Dmu0] using hint))
 
+/-- Linearized source-shaped rooted first-activity estimate, specialized to
+CMP116 `dmu0`.
+
+This is the CMP116 wrapper around
+`norm_appendixFHoleKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted`;
+the raw pointwise decay and fluctuation-integrability hypotheses remain the
+source obligations. -/
+theorem norm_balabanCMP116AppendixFKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    {Y : Finset (Cube d L)}
+    (hY : Y ∈ appendixFTargetRegion
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ)
+    (ψ : ∀ x, Ψ x)
+    {H₀ K₀ κ κ₀ : ℝ}
+    (hH₀ : 0 ≤ H₀)
+    (hH₀_one : H₀ ≤ 1)
+    (hK₀ : 0 ≤ K₀)
+    (hsmall : 2 * H₀ * K₀ ≤ 1)
+    (hκ₀ : 0 ≤ κ₀)
+    (hκ : κ₀ ≤ κ)
+    (hroot : ∀ r : Cube d L,
+      (∑ X ∈ Λ.filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀)
+    (hraw : ∀ φ X, X ∈ Λ →
+      ‖(F.activity X).globalEval ψ φ‖ ≤
+        H₀ * appendixFHoleExpWeight HF κ X.val)
+    (hint : Integrable
+      (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+        (balabanCMP116AppendixFConnectedLocalActivity HF z Λ F Y).globalEval ψ φ)
+      (balabanCMP116Dmu0 (Cube d L) lieDim)) :
+    ‖(balabanCMP116AppendixFKsharp HF z Λ F Y).globalEval ψ‖ ≤
+      (2 * H₀ * K₀) *
+        appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Y := by
+  haveI : IsProbabilityMeasure (balabanCMP116BondGaussian lieDim) :=
+    balabanCMP116BondGaussian_isProbability lieDim
+  simpa [balabanCMP116AppendixFKsharp] using
+    (norm_appendixFHoleKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted
+      HF z Λ F.activity (balabanCMP116BondGaussian lieDim) hY ψ
+      hH₀ hH₀_one hK₀ hsmall hκ₀ hκ hroot hraw
+      (by
+        simpa [balabanCMP116AppendixFConnectedLocalActivity,
+          balabanCMP116Dmu0] using hint))
+
 end YangMills.RG

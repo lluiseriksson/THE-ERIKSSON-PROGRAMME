@@ -28,6 +28,7 @@ attribute [local instance] Classical.propDecidable
 namespace YangMills.RG
 
 open MeasureTheory
+open scoped BigOperators
 
 /-! ## Scale-indexed CMP116 integrated first activity -/
 
@@ -67,6 +68,91 @@ noncomputable def balabanCMP116AppendixFIntegratedKsharpActivityFamily
         HF z Λ (fun t k => (F t k).activity)
         (fun _ _ => balabanCMP116BondGaussian lieDim) ν t k Y := by
   rfl
+
+/-- Scale-indexed CMP116 integrated first-activity estimate at the canonical
+first-gas `K#` rate, derived from the rooted raw-metric estimate.
+
+This theorem produces exactly the pointwise `K#` activity hypothesis consumed by
+the leaf-summation wrappers when `epsilon t k = 2 * H₀ t k * K₀ t k`.  The raw
+decay, rooted first-cover budget, spectator probability measure, and
+fluctuation integrability remain explicit source hypotheses. -/
+theorem
+    balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_rooted
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (H₀ K₀ : ℕ → ℕ → ℝ)
+    {κ κ₀ : ℝ}
+    (hν : ∀ t k, IsProbabilityMeasure (ν t k))
+    (hH₀ : ∀ t k, 0 ≤ H₀ t k)
+    (hH₀_one : ∀ t k, H₀ t k ≤ 1)
+    (hK₀ : ∀ t k, 0 ≤ K₀ t k)
+    (hsmall : ∀ t k, 2 * H₀ t k * K₀ t k ≤ 1)
+    (hκ₀ : 0 ≤ κ₀)
+    (hκ : κ₀ ≤ κ)
+    (hroot : ∀ t k r,
+      (∑ X ∈ (Λ t k).filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀ t k)
+    (hraw : ∀ t k ψ φ X, X ∈ Λ t k →
+      ‖((F t k).activity X).globalEval ψ φ‖ ≤
+        H₀ t k * appendixFHoleExpWeight HF κ X.val)
+    (hint : ∀ t k Y,
+      Y ∈ appendixFTargetRegion
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF (z t k) => skeleton HF X.val)
+        (fun X : OmegaPolymerType HF (z t k) => X.val)
+        (Λ t k) →
+      ∀ ψ : (∀ _ : Cube d L, β),
+        Integrable
+          (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+            (balabanCMP116AppendixFConnectedLocalActivity
+              HF (z t k) (Λ t k) (F t k) Y).globalEval ψ φ)
+          (balabanCMP116Dmu0 (Cube d L) lieDim)) :
+    ∀ t k (Q : OmegaPolymerType HF
+      (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+        HF z Λ F ν t k)),
+      ‖balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k Q.val‖ ≤
+        (2 * H₀ t k * K₀ t k) *
+          appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Q.val := by
+  intro t k Q
+  by_cases hQ :
+      Q.val ∈ appendixFTargetRegion
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF (z t k) => skeleton HF X.val)
+        (fun X : OmegaPolymerType HF (z t k) => X.val)
+        (Λ t k)
+  · haveI : IsProbabilityMeasure (ν t k) := hν t k
+    simpa [balabanCMP116AppendixFIntegratedKsharpActivityFamily] using
+      (norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_rawMetricDecay_rooted
+        HF (z t k) (Λ t k) (F t k) (ν t k) hQ
+        (hH₀ t k) (hH₀_one t k) (hK₀ t k) (hsmall t k)
+        hκ₀ hκ (hroot t k) (hraw t k) (hint t k Q.val hQ))
+  · have hzero :=
+      balabanCMP116AppendixFIntegratedKsharpActivity_eq_zero_of_not_mem_targetRegion
+        HF (z t k) (Λ t k) (F t k) (ν t k) Q.val hQ
+    calc
+      ‖balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k Q.val‖ = 0 := by
+        change
+          ‖balabanCMP116AppendixFIntegratedKsharpActivity
+              HF (z t k) (Λ t k) (F t k) (ν t k) Q.val‖ = 0
+        rw [hzero]
+        simp
+      _ ≤
+          (2 * H₀ t k * K₀ t k) *
+            appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Q.val :=
+        mul_nonneg
+          (mul_nonneg (mul_nonneg zero_le_two (hH₀ t k)) (hK₀ t k))
+          (appendixFHoleExpWeight_nonneg HF
+            (appendixFKsharpRate κ κ₀) Q.val)
 
 /-- The CMP116 integrated `H#` normal form: the second-Ursell `H#` applied to
 the spectator-integrated CMP116 first activity. -/

@@ -668,6 +668,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- spectator-integrated scalar K# normalization: structural bridge from the
 -- finite K# target-family identity to the scalar zK family used by H#.
 #print axioms YangMills.RG.appendixFHoleIntegratedKsharpActivity_eq_integral
+#print axioms YangMills.RG.norm_appendixFHoleIntegratedKsharpActivity_le_of_globalEval_bound
 #print axioms YangMills.RG.appendixFHoleIntegratedKsharpActivity_eq_zero_of_not_mem_targetRegion
 #print axioms YangMills.RG.appendixFHoleIntegratedSecondGas_activity
 #print axioms YangMills.RG.integral_sum_appendixFHoleKsharp_eq_sum_prod_integratedKsharpActivity_of_admissibleTargetFamilies
@@ -873,6 +874,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_pointwise_expWeight_leafSummation
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_expWeight_leafSummation
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_pointwise_expWeight_leafSummation
+#print axioms YangMills.RG.norm_balabanCMP116AppendixFKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted
+#print axioms YangMills.RG.norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_rawMetricDecay_rooted
+#print axioms YangMills.RG.balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_residual_mul_leaf_of_ksharpRate
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_pointwise_ksharpRate_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_pointwise_ksharpRate_leafSummation

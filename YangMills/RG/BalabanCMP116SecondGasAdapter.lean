@@ -201,6 +201,65 @@ noncomputable def balabanCMP116AppendixFIntegratedKsharpActivity
         ∂(Measure.pi fun _ : Cube d L => ν) := by
   rfl
 
+/-- Spectator-integrated CMP116 `K#` scalar estimate at the canonical first-gas
+rate, derived from the rooted raw-metric estimate.
+
+The theorem still carries the genuine source obligations explicitly: raw
+pointwise decay for every spectator field, fluctuation integrability for every
+spectator field, and probability normalization of the spectator measure. -/
+theorem norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_rawMetricDecay_rooted
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF z))
+    (ν : Measure β) [IsProbabilityMeasure ν]
+    {Y : Finset (Cube d L)}
+    (hY : Y ∈ appendixFTargetRegion
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ)
+    {H₀ K₀ κ κ₀ : ℝ}
+    (hH₀ : 0 ≤ H₀)
+    (hH₀_one : H₀ ≤ 1)
+    (hK₀ : 0 ≤ K₀)
+    (hsmall : 2 * H₀ * K₀ ≤ 1)
+    (hκ₀ : 0 ≤ κ₀)
+    (hκ : κ₀ ≤ κ)
+    (hroot : ∀ r : Cube d L,
+      (∑ X ∈ Λ.filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀)
+    (hraw : ∀ ψ φ X, X ∈ Λ →
+      ‖(F.activity X).globalEval ψ φ‖ ≤
+        H₀ * appendixFHoleExpWeight HF κ X.val)
+    (hint : ∀ ψ : (∀ _ : Cube d L, β),
+      Integrable
+        (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+          (balabanCMP116AppendixFConnectedLocalActivity HF z Λ F Y).globalEval
+            ψ φ)
+        (balabanCMP116Dmu0 (Cube d L) lieDim)) :
+    ‖balabanCMP116AppendixFIntegratedKsharpActivity HF z Λ F ν Y‖ ≤
+      (2 * H₀ * K₀) *
+        appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Y := by
+  haveI : IsProbabilityMeasure (balabanCMP116BondGaussian lieDim) :=
+    balabanCMP116BondGaussian_isProbability lieDim
+  simpa [balabanCMP116AppendixFIntegratedKsharpActivity,
+    balabanCMP116AppendixFKsharp] using
+    (norm_appendixFHoleIntegratedKsharpActivity_le_of_globalEval_bound
+      HF z Λ F.activity (balabanCMP116BondGaussian lieDim) ν Y
+      (B := (2 * H₀ * K₀) *
+        appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Y)
+      (fun ψ =>
+        norm_balabanCMP116AppendixFKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted
+          HF z Λ F hY ψ hH₀ hH₀_one hK₀ hsmall hκ₀ hκ hroot
+          (fun φ X hX => hraw ψ φ X hX)
+          (hint ψ)))
+
 /-- The spectator-integrated CMP116 activity vanishes away from the first
 connected-cover target region. -/
 theorem balabanCMP116AppendixFIntegratedKsharpActivity_eq_zero_of_not_mem_targetRegion
