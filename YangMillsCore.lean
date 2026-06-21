@@ -82,6 +82,7 @@ import YangMills.L1_GibbsMeasure.RestrictedGate
 import YangMills.KP.PinnedCluster
 import YangMills.KP.PinnedWalk
 import YangMills.KP.PinnedBound
+import YangMills.KP.RootedChildCount
 import YangMills.KP.SharpMajorant
 import YangMills.KP.SharpShell
 import YangMills.KP.SharpKP

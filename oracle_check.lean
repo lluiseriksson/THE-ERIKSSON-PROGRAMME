@@ -61,6 +61,15 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.orderFactor_pinnedClusterWeight_le_tilt
 #print axioms YangMills.KP.summable_finset_pinnedClusterWeight
 #print axioms YangMills.KP.tsum_finset_pinnedClusterWeight_le
+#print axioms YangMills.KP.rootedChildren
+#print axioms YangMills.KP.rootedChildCount
+#print axioms YangMills.KP.mem_rootedChildren
+#print axioms YangMills.KP.rootedChild_ne_zero
+#print axioms YangMills.KP.rootedChild_parent_eq
+#print axioms YangMills.KP.mem_rootedChildren_parent
+#print axioms YangMills.KP.rootedChild_parent_unique
+#print axioms YangMills.KP.rootedChild_parent_edge_mem
+#print axioms YangMills.KP.sum_rootedChildCount_eq
 
 /-! ## The IR clustering bound and the correlator decay -/
 #print axioms YangMills.truncated_correlation_bound
