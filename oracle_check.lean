@@ -705,7 +705,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_scaled_weightedTreeTerm
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_bound
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_geometric
+#print axioms YangMills.RG.appendixFHoleHsharpMarkedSkeletonTreeTerm
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonSum
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonTreeTerm
+#print axioms YangMills.RG.appendixFHoleHsharpMarkedSkeletonTreeTerm_le_markedIndexSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedIndexSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_markedIndexSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootSum
