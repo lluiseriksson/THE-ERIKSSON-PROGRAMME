@@ -459,6 +459,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.SUSY.finiteBerezinWeighted_expect_Q_eq_zero
 #print axioms YangMills.SUSY.finiteBerezinWeighted_eq_expect_remainder_of_exactWard
 -- Ward-cancelled activities feeding the `Ω`-active skeleton-tail consumer.
+#print axioms YangMills.SUSY.mayerProduct_decomp_eq_sum_powerset
+#print axioms YangMills.SUSY.mayerProduct_sub_base_eq_sum_powerset_erase_empty
+#print axioms YangMills.SUSY.mem_mayerProduct_defectSubsets_iff
+#print axioms YangMills.SUSY.mayerProduct_defectSupport_subset
 #print axioms YangMills.SUSY.norm_finset_sum_expect_Q_le
 #print axioms YangMills.SUSY.wardActivity_metric_bound_of_decomposition
 #print axioms YangMills.SUSY.wardActivity_metric_bound_of_exact

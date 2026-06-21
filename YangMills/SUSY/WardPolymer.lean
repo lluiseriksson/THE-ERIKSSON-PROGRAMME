@@ -35,6 +35,72 @@ open YangMills.RG
 
 attribute [local instance] Classical.propDecidable
 
+/-! ## Finite algebraic Mayer transgression substrate -/
+
+/-- Expanding a finite product after a base/defect split marks exactly the
+subfamily `T` of factors where the defect is used.
+
+This is the purely algebraic Mayer brick behind a future Ward transgression:
+it does not assume exponentials, a derivation `Q`, integration, or any support
+semantics beyond the finite index set. -/
+theorem mayerProduct_decomp_eq_sum_powerset {ι R : Type*} [DecidableEq ι]
+    [CommSemiring R] (S : Finset ι) (base defect : ι → R) :
+    ∏ i ∈ S, (base i + defect i) =
+      ∑ T ∈ S.powerset, (∏ i ∈ T, defect i) * ∏ i ∈ S \ T, base i := by
+  classical
+  simpa [add_comm] using (Finset.prod_add defect base S)
+
+/-- The non-base part of a finite Mayer product is a sum over nonempty
+defect-marked subfamilies.  In the intended Ward use, these are the finite
+sites at which a cohomological transgression has actually been spent. -/
+theorem mayerProduct_sub_base_eq_sum_powerset_erase_empty {ι R : Type*}
+    [DecidableEq ι] [CommRing R] (S : Finset ι) (base defect : ι → R) :
+    (∏ i ∈ S, (base i + defect i)) - ∏ i ∈ S, base i =
+      ∑ T ∈ S.powerset.erase (∅ : Finset ι),
+        (∏ i ∈ T, defect i) * ∏ i ∈ S \ T, base i := by
+  classical
+  let term : Finset ι → R :=
+    fun T => (∏ i ∈ T, defect i) * ∏ i ∈ S \ T, base i
+  have hprod : ∏ i ∈ S, (base i + defect i) = ∑ T ∈ S.powerset, term T := by
+    dsimp [term]
+    simpa [add_comm] using (Finset.prod_add defect base S)
+  have hmem_empty : (∅ : Finset ι) ∈ S.powerset := by
+    simp
+  have hempty : term (∅ : Finset ι) = ∏ i ∈ S, base i := by
+    simp [term]
+  calc
+    (∏ i ∈ S, (base i + defect i)) - ∏ i ∈ S, base i
+        = (∑ T ∈ S.powerset, term T) - ∏ i ∈ S, base i := by
+          rw [hprod]
+    _ = (∑ T ∈ S.powerset.erase (∅ : Finset ι), term T
+            + term (∅ : Finset ι)) - ∏ i ∈ S, base i := by
+          rw [Finset.sum_erase_add S.powerset term hmem_empty]
+    _ = ∑ T ∈ S.powerset.erase (∅ : Finset ι), term T := by
+          rw [hempty]
+          ring
+
+/-- Membership in the defect-marked part of the product expansion is exactly
+"a nonempty subfamily of the original finite family". -/
+theorem mem_mayerProduct_defectSubsets_iff {ι : Type*} [DecidableEq ι]
+    {S T : Finset ι} :
+    T ∈ S.powerset.erase (∅ : Finset ι) ↔ T ⊆ S ∧ T.Nonempty := by
+  classical
+  simp [Finset.mem_powerset, Finset.nonempty_iff_ne_empty, and_comm]
+
+/-- Defect-marked subfamilies cannot create new support: their support union is
+contained in the support union of the original Mayer family.  This is the finite
+support-preservation guard needed before any analytic Ward or BV semantics are
+added later. -/
+theorem mayerProduct_defectSupport_subset {ι Site : Type*}
+    [DecidableEq ι] [DecidableEq Site] (S T : Finset ι)
+    (support : ι → Finset Site)
+    (hT : T ∈ S.powerset.erase (∅ : Finset ι)) :
+    T.biUnion support ⊆ S.biUnion support := by
+  intro x hx
+  rw [Finset.mem_biUnion] at hx ⊢
+  rcases hx with ⟨i, hiT, hxi⟩
+  exact ⟨i, (mem_mayerProduct_defectSubsets_iff.mp hT).1 hiT, hxi⟩
+
 variable {A : Type*} [NormedAddCommGroup A] [NormedSpace ℂ A]
 
 /-- A finite-scale version of the Ward-defect estimate.  The norm of a finite
