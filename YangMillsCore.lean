@@ -373,6 +373,9 @@ import YangMills.RG.AppendixFSecondUrsellSource
 -- Weighted finite tree transfer for H#: separates the activity-size factor
 -- from the geometric/source leaf-summation obligation.
 import YangMills.RG.AppendixFSecondUrsellWeightedTree
+-- Finite second-Ursell geometry: a KP tree in the omega-hole polymer system
+-- stitches leaf modified metrics into the modified metric of the full union.
+import YangMills.RG.AppendixFSecondUrsellGeometry
 -- Source-facing closed Dimock-II `cluster3` contract for H#: consumes the
 -- final Appendix-F with-holes theorem directly, while keeping the Yang-Mills
 -- input decay/locality obligations explicit.
