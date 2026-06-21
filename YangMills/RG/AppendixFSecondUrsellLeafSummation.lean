@@ -16,7 +16,9 @@ zero outside the incompatible fiber.
 
 No source theorem, continuum statement, or infinite tree summation is added
 here.  The only analytic content is the already-proved finite hard-core
-metric-moment estimate, repackaged for downstream tree recursions.
+metric-moment estimate, repackaged for downstream tree recursions.  The
+moment-lift lemma records the elementary bookkeeping needed when a child
+subtree leaves a power of the child metric to be summed at the parent edge.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`.
 -/
@@ -110,5 +112,52 @@ theorem appendixFHoleIncompMomentKernel_sum_le_factorial_mul
   simpa [p, w] using
     appendixFHole_incomp_expWeight_metricMomentSum_le_factorial_mul
       HF zK Q κ₀ j hκ₀ hdisj hnoedges hholes_ne hCq
+
+/-- Multiplying a child-choice kernel by an additional child metric moment is
+the same as increasing its moment index.  This is the one-edge bookkeeping
+identity used before applying the finite hard-core moment estimate. -/
+theorem appendixFHoleIncompMomentKernel_childMoment_mul
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ) (κ₀ : ℝ) (j k : ℕ)
+    (Q Q' : OmegaPolymerType HF zK) :
+    (((discreteModifiedMetric HF Q'.val + 1 : ℕ) : ℝ) ^ k) *
+      appendixFHoleIncompMomentKernel HF zK κ₀ j Q Q'
+      =
+    appendixFHoleIncompMomentKernel HF zK κ₀ (j + k) Q Q' := by
+  classical
+  by_cases hinc : (omegaHolePolymerSystem HF zK).incomp Q Q'
+  · simp [appendixFHoleIncompMomentKernel, hinc, pow_add, mul_comm,
+      mul_assoc]
+  · simp [appendixFHoleIncompMomentKernel, hinc]
+
+/-- Child-moment version of the hard-core kernel bound.  Any extra metric
+moment produced by a child subtree can be absorbed into the factorial moment
+index on the local parent-edge sum. -/
+theorem appendixFHoleIncompMomentKernel_childMoment_sum_le_factorial_mul
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (Q : OmegaPolymerType HF zK) (κ₀ : ℝ) (j k : ℕ)
+    (hκ₀ : 0 < κ₀)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne : ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    (∑ Q' : OmegaPolymerType HF zK,
+      (((discreteModifiedMetric HF Q'.val + 1 : ℕ) : ℝ) ^ k) *
+        appendixFHoleIncompMomentKernel HF zK κ₀ j Q Q')
+      ≤
+    ((j + k).factorial : ℝ) *
+      appendixFSecondUrsellMomentConstant d κ₀ ^ (j + k + 1) *
+        (((discreteModifiedMetric HF Q.val + 1 : ℕ) : ℝ)) := by
+  classical
+  rw [Finset.sum_congr rfl (fun Q' _ =>
+    appendixFHoleIncompMomentKernel_childMoment_mul HF zK κ₀ j k Q Q')]
+  exact appendixFHoleIncompMomentKernel_sum_le_factorial_mul
+    HF zK Q κ₀ (j + k) hκ₀ hdisj hnoedges hholes_ne hCq
 
 end YangMills.RG

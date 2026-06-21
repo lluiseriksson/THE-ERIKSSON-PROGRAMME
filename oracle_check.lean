@@ -791,6 +791,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHole_incomp_expWeight_metricMomentSum_le_factorial_mul
 #print axioms YangMills.RG.appendixFHoleIncompMomentKernel_nonneg
 #print axioms YangMills.RG.appendixFHoleIncompMomentKernel_sum_le_factorial_mul
+#print axioms YangMills.RG.appendixFHoleIncompMomentKernel_childMoment_mul
+#print axioms YangMills.RG.appendixFHoleIncompMomentKernel_childMoment_sum_le_factorial_mul
 -- source-facing cluster3 hole geometry: Ω as the active complement of holes
 -- and the rooted local incompatibility contract consumed by Route A.
 #print axioms YangMills.RG.skeleton_eq_inter_omegaRegion
