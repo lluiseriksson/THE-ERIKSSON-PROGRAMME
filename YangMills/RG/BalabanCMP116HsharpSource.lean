@@ -171,6 +171,152 @@ abbrev BalabanCMP116AppendixFHsharpGeometricMajorantProfile
         HF z Λ F ν t k Y)
     g C H₀ c₀ κ κ₀
 
+/-- Direct constructor for a CMP116 geometric `H#` profile from a termwise
+bound on the finite fixed-union second-Ursell terms.  This is the exact profile
+shape consumed by the tail, residual, and UV theorems below. -/
+noncomputable def
+    balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_term_geometric
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    (A q : ℕ → ℕ → OmegaPolymerType HF zCarrier → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hA :
+      ∀ t k (P : OmegaPolymerType HF zCarrier), 0 ≤ A t k P)
+    (hq0 :
+      ∀ t k (P : OmegaPolymerType HF zCarrier), 0 ≤ q t k P)
+    (hq1 :
+      ∀ t k (P : OmegaPolymerType HF zCarrier), q t k P < 1)
+    (hterm :
+      ∀ t k (P : OmegaPolymerType HF zCarrier) n,
+        ‖appendixFHoleHsharpTerm HF
+            (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+              HF z Λ F ν t k) P.val n‖ ≤
+          A t k P * q t k P ^ n)
+    (hclosed :
+      ∀ t k (P : OmegaPolymerType HF zCarrier),
+        A t k P * (1 - q t k P)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))) :
+    BalabanCMP116AppendixFHsharpGeometricMajorantProfile
+      HF zCarrier z Λ F ν g C H₀ c₀ κ κ₀ where
+  A := A
+  q := q
+  A_nonneg := hA
+  q_nonneg := hq0
+  q_lt_one := hq1
+  term_bound := hterm
+  closed_total_le_residual := hclosed
+
+/-- Build the CMP116 geometric profile from a bound on the finite absolute
+fixed-union term.  The only formal step here is the already-proved triangle
+inequality
+`‖appendixFHoleHsharpTerm‖ ≤ appendixFHoleHsharpAbsTerm`. -/
+noncomputable def
+    balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_absTerm_geometric
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    (A q : ℕ → ℕ → OmegaPolymerType HF zCarrier → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hA :
+      ∀ t k (P : OmegaPolymerType HF zCarrier), 0 ≤ A t k P)
+    (hq0 :
+      ∀ t k (P : OmegaPolymerType HF zCarrier), 0 ≤ q t k P)
+    (hq1 :
+      ∀ t k (P : OmegaPolymerType HF zCarrier), q t k P < 1)
+    (habs :
+      ∀ t k (P : OmegaPolymerType HF zCarrier) n,
+        appendixFHoleHsharpAbsTerm HF
+            (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+              HF z Λ F ν t k) P.val n ≤
+          A t k P * q t k P ^ n)
+    (hclosed :
+      ∀ t k (P : OmegaPolymerType HF zCarrier),
+        A t k P * (1 - q t k P)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))) :
+    BalabanCMP116AppendixFHsharpGeometricMajorantProfile
+      HF zCarrier z Λ F ν g C H₀ c₀ κ κ₀ :=
+  balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_term_geometric
+    HF zCarrier z Λ F ν g A q hA hq0 hq1
+    (fun t k P n =>
+      (norm_appendixFHoleHsharpTerm_le_absTerm
+        HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k) P.val n).trans
+        (habs t k P n))
+    hclosed
+
+/-- Build the CMP116 geometric profile from a finite Penrose tree-term bound.
+This is the preferred source-extraction target when the analytic theorem gives
+tree/leaf estimates rather than the exact absolute fixed-union term. -/
+noncomputable def
+    balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_treeTerm_geometric
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    (A q : ℕ → ℕ → OmegaPolymerType HF zCarrier → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hA :
+      ∀ t k (P : OmegaPolymerType HF zCarrier), 0 ≤ A t k P)
+    (hq0 :
+      ∀ t k (P : OmegaPolymerType HF zCarrier), 0 ≤ q t k P)
+    (hq1 :
+      ∀ t k (P : OmegaPolymerType HF zCarrier), q t k P < 1)
+    (htree :
+      ∀ t k (P : OmegaPolymerType HF zCarrier) n,
+        appendixFHoleHsharpTreeTerm HF
+            (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+              HF z Λ F ν t k) P.val n ≤
+          A t k P * q t k P ^ n)
+    (hclosed :
+      ∀ t k (P : OmegaPolymerType HF zCarrier),
+        A t k P * (1 - q t k P)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))) :
+    BalabanCMP116AppendixFHsharpGeometricMajorantProfile
+      HF zCarrier z Λ F ν g C H₀ c₀ κ κ₀ :=
+  balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_absTerm_geometric
+    HF zCarrier z Λ F ν g A q hA hq0 hq1
+    (fun t k P n =>
+      (appendixFHoleHsharpAbsTerm_le_treeTerm
+        HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k) P.val n).trans
+        (htree t k P n))
+    hclosed
+
 /-- A CMP116 geometric profile supplies the pointwise residual estimate for the
 named CMP116 integrated `H#` activity. -/
 theorem
