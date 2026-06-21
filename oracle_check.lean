@@ -22,6 +22,7 @@ import YangMills.RG.AppendixFHsharpMajorant
 import YangMills.RG.AppendixFHsharpGeometricMajorant
 import YangMills.RG.AppendixFHsharpSourceMajorant
 import YangMills.RG.AppendixFSecondUrsellSource
+import YangMills.RG.AppendixFHsharpCluster3
 import YangMills.RG.AppendixFHsharpProfile
 
 /-! # Oracle check — one command, every headline
@@ -690,6 +691,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_factorized_treeTerm_geometric
 #print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_integratedKsharp_treeTerm_geometric
 #print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_integratedKsharp_factorized_treeTerm_geometric
+-- closed source-facing Dimock-II `cluster3` contract for H#.
+#print axioms YangMills.RG.AppendixFHsharpCluster3Contract.residual_bound
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_cluster3_contract
+#print axioms YangMills.RG.norm_appendixFHoleHsharpOfIntegratedKsharp_le_residual_of_cluster3_contract
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_cluster3_contract
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_cluster3_contract
 -- source-facing packaged geometric H# profiles: one record now supplies the
 -- summability, tail, residual, and UV consumers without duplicating fields.
 #print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.summable_terms
