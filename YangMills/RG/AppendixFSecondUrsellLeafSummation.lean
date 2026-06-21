@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.AppendixFSecondUrsellMarkedFugacity
 import YangMills.RG.AppendixFSecondUrsellGeometry
+import YangMills.KP.PenroseFiber
 
 /-!
 # Appendix F second-Ursell leaf-summation input
@@ -23,6 +24,9 @@ subtree leaves a power of the child metric to be summed at the parent edge.
 The final two lemmas in this file are the target-decay composition layer:
 extract the fixed-union exponential first, then consume any marked-root
 leaf-summation estimate.
+We also expose a parent-oriented complete-tree overcount that keeps the
+hard-core incompatibility indicators on BFS parent edges instead of erasing
+them into a vertex-product sum.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`.
 -/
@@ -31,6 +35,7 @@ attribute [local instance] Classical.propDecidable
 
 open Finset
 open scoped BigOperators
+open SimpleGraph
 
 namespace YangMills.RG
 
@@ -163,6 +168,137 @@ theorem appendixFHoleIncompMomentKernel_childMoment_sum_le_factorial_mul
     appendixFHoleIncompMomentKernel_childMoment_mul HF zK κ₀ j k Q Q')]
   exact appendixFHoleIncompMomentKernel_sum_le_factorial_mul
     HF zK Q κ₀ (j + k) hκ₀ hdisj hnoedges hholes_ne hCq
+
+/-- Complete-tree parent-oriented overcount for the marked root raw sum.
+
+Compared with `appendixFHoleHsharpWeightedTreeMarkedRootRawSum`, this sum
+forgets that the tree must be a spanning tree of the tuple's incompatibility
+graph, but it keeps one explicit hard-core indicator on each BFS parent edge
+of the complete-tree shape. -/
+noncomputable def appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ) : ℝ :=
+  ∑ X ∈ (Finset.univ :
+      Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+        (fun X => r ∈ skeleton HF (X 0).val),
+    ∑ T ∈ KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
+      (∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+        if (omegaHolePolymerSystem HF zK).incomp
+            (X (KP.bfsParent T v)) (X v) then (1 : ℝ) else 0) *
+        ∏ j, w (X j)
+
+/-- The root-marked raw tree sum is bounded by the complete-tree parent
+indicator sum.  This preserves the incompatibility data in a parent-indexed
+form, preparing the fixed-tree leaf recursion without passing to the coarser
+marked vertex-product sum. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootRawSum_le_completeTreeParentSum
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ Q : OmegaPolymerType HF zK, 0 ≤ w Q) :
+    appendixFHoleHsharpWeightedTreeMarkedRootRawSum HF zK w r n ≤
+      appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum HF zK w r n := by
+  classical
+  let P := omegaHolePolymerSystem HF zK
+  let all : Finset (Fin (n + 1) → OmegaPolymerType HF zK) := Finset.univ
+  let marked : Finset (Fin (n + 1) → OmegaPolymerType HF zK) :=
+    all.filter (fun X => r ∈ skeleton HF (X 0).val)
+  let trees (X : Fin (n + 1) → OmegaPolymerType HF zK) :=
+    KP.spanningTrees (KP.incompGraph P X)
+  let topTrees : Finset (Finset (Sym2 (Fin (n + 1)))) :=
+    KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1)))
+  let W (X : Fin (n + 1) → OmegaPolymerType HF zK) : ℝ := ∏ j, w (X j)
+  let parentIndicator
+      (X : Fin (n + 1) → OmegaPolymerType HF zK)
+      (T : Finset (Sym2 (Fin (n + 1)))) : ℝ :=
+    ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+      if P.incomp (X (KP.bfsParent T v)) (X v) then (1 : ℝ) else 0
+  have hW : ∀ X, 0 ≤ W X := by
+    intro X
+    exact Finset.prod_nonneg fun j _ => hw (X j)
+  have hInd_nonneg : ∀ X T, 0 ≤ parentIndicator X T := by
+    intro X T
+    exact Finset.prod_nonneg fun v _ => by
+      split_ifs <;> norm_num
+  have htrees_subset_top : ∀ X, trees X ⊆ topTrees := by
+    intro X T hT
+    have hT' : T ∈ KP.spanningTrees (KP.incompGraph P X) := by
+      simpa [trees] using hT
+    unfold KP.spanningTrees at hT'
+    unfold topTrees KP.spanningTrees
+    rw [Finset.mem_filter, Finset.mem_powerset] at hT' ⊢
+    refine ⟨?_, hT'.2⟩
+    intro e he
+    rw [SimpleGraph.mem_edgeFinset, SimpleGraph.edgeSet_top,
+      Set.mem_compl_iff, Sym2.mem_diagSet]
+    have hmem : e ∈ (KP.incompGraph P X).edgeFinset := hT'.1 he
+    rw [SimpleGraph.mem_edgeFinset] at hmem
+    exact (KP.incompGraph P X).not_isDiag_of_mem_edgeSet hmem
+  have hparent_eq_one :
+      ∀ X T, T ∈ trees X → parentIndicator X T = 1 := by
+    intro X T hT
+    have hT' : T ∈ KP.spanningTrees (KP.incompGraph P X) := by
+      simpa [trees] using hT
+    let f : Sym2 (Fin (n + 1)) → ℝ := fun e =>
+      if e ∈ (KP.incompGraph P X).edgeSet then (1 : ℝ) else 0
+    have hedge_prod : (∏ e ∈ T, f e) = 1 := by
+      refine Finset.prod_eq_one fun e he => ?_
+      have hmem := KP.spanningTrees_subset (KP.incompGraph P X) hT' he
+      rw [SimpleGraph.mem_edgeFinset] at hmem
+      simp [f, hmem]
+    have hparent_edges :
+        (∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+          f (s(KP.bfsParent T v, v))) = parentIndicator X T := by
+      have htree := KP.isTree_of_mem_spanningTrees (KP.incompGraph P X) hT'
+      have hconn := htree.isConnected
+      refine Finset.prod_congr rfl fun v hv => ?_
+      rw [Finset.mem_filter] at hv
+      have hne : KP.bfsParent T v ≠ v := by
+        have hspec := (KP.bfsParent_spec hconn hv.2).2
+        intro hEq
+        rw [hEq] at hspec
+        omega
+      simp [f, P, SimpleGraph.mem_edgeSet,
+        KP.incompGraph_adj, hne]
+    calc
+      parentIndicator X T
+          = ∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+              f (s(KP.bfsParent T v, v)) := hparent_edges.symm
+      _ = ∏ e ∈ T, f e := by
+            exact (KP.prod_tree_eq_prod_parents hT' f).symm
+      _ = 1 := hedge_prod
+  have hpoint : ∀ X ∈ marked,
+      (∑ T ∈ trees X, W X) ≤
+        ∑ T ∈ topTrees, parentIndicator X T * W X := by
+    intro X _hX
+    calc
+      (∑ T ∈ trees X, W X)
+          = ∑ T ∈ trees X, parentIndicator X T * W X := by
+              refine Finset.sum_congr rfl fun T hT => ?_
+              rw [hparent_eq_one X T hT, one_mul]
+      _ ≤ ∑ T ∈ topTrees, parentIndicator X T * W X :=
+          Finset.sum_le_sum_of_subset_of_nonneg
+            (htrees_subset_top X)
+            (fun T _hT _hnot =>
+              mul_nonneg (hInd_nonneg X T) (hW X))
+  calc
+    appendixFHoleHsharpWeightedTreeMarkedRootRawSum HF zK w r n
+        = ∑ X ∈ marked, ∑ T ∈ trees X, W X := by
+          simp [appendixFHoleHsharpWeightedTreeMarkedRootRawSum,
+            marked, all, trees, W, P]
+    _ ≤ ∑ X ∈ marked, ∑ T ∈ topTrees, parentIndicator X T * W X := by
+          exact Finset.sum_le_sum fun X hX => hpoint X hX
+    _ = appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum
+          HF zK w r n := by
+          simp [appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum,
+            marked, all, topTrees, parentIndicator, W, P]
 
 /-- Target-decaying composition from a marked-root leaf-summation bound.
 
