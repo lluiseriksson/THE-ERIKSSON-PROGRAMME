@@ -392,6 +392,8 @@ import YangMills.RG.AppendixFSecondUrsellGeometry
 -- Finite leaf-summation input for weighted H#: packages the hard-core
 -- neighbor moment estimate as a nonnegative child-choice kernel.
 import YangMills.RG.AppendixFSecondUrsellLeafSummation
+-- Elementary half-budget closure for the second-Ursell denominator obligations.
+import YangMills.RG.AppendixFSecondUrsellClosure
 -- Source-facing cluster3 hole geometry: package holes/Ω/skeletons and expose
 -- the rooted local incompatibility contract for direct Dimock-II inputs.
 import YangMills.RG.AppendixFCluster3Geometry

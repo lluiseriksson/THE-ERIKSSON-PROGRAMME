@@ -25,6 +25,7 @@ import YangMills.RG.AppendixFHsharpGeometricMajorant
 import YangMills.RG.AppendixFHsharpSourceMajorant
 import YangMills.RG.AppendixFSecondUrsellSource
 import YangMills.RG.AppendixFSecondUrsellLeafSummation
+import YangMills.RG.AppendixFSecondUrsellClosure
 import YangMills.RG.AppendixFCluster3Geometry
 import YangMills.RG.AppendixFHsharpCluster3
 import YangMills.RG.AppendixFHsharpProfile
@@ -880,6 +881,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- leaf-summation source endpoint: the finite marked-root leaf theorem now
 -- feeds CMP116 profile/cluster3/UV consumers under explicit weight splits.
 #print axioms YangMills.RG.appendixFSecondUrsellLeafConstant_nonneg
+#print axioms YangMills.RG.appendixFSecondUrsellLeafConstant_one_le
+#print axioms YangMills.RG.appendixFSecondUrsellMomentConstant_le_leafConstant
+#print axioms YangMills.RG.one_sub_inv_le_two_of_nonneg_of_le_half
+#print axioms YangMills.RG.appendixFSecondUrsell_closed_le_four_mul_rawRoot
+#print axioms YangMills.RG.appendixFSecondUrsell_sourceObligations_of_halfBudget
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_expWeight_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_pointwise_expWeight_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_expWeight_leafSummation
