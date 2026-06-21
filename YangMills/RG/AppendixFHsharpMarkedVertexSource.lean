@@ -25,6 +25,7 @@ Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 attribute [local instance] Classical.propDecidable
 
 open MeasureTheory
+open Finset
 open scoped BigOperators
 
 namespace YangMills.RG
@@ -64,6 +65,151 @@ theorem omegaPolymerSkeletonRoot_mem
     (P : OmegaPolymerType HF z) :
     omegaPolymerSkeletonRoot HF P ∈ skeleton HF P.val :=
   Classical.choose_spec P.property.right.right.right
+
+/-! ## Finite marked-vertex factorization -/
+
+/-- Split a finite root-marked vertex-product sum into the marked-coordinate
+budget times the independent unmarked-coordinate budget.  This is pure
+`Fin.cons` bookkeeping: the root condition sees only coordinate `0`, while the
+remaining `n` coordinates are summed freely. -/
+theorem finiteMarkedZeroProductSum_eq_rootSum_mul_leafSum_pow
+    {α : Type*} [Fintype α]
+    (p : α → Prop) (w : α → ℝ) (n : ℕ) :
+    (∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → α)).filter
+        (fun X => p (X 0)),
+      ∏ j, w (X j))
+      =
+    (∑ a ∈ (Finset.univ : Finset α).filter p, w a) *
+      (∑ a : α, w a) ^ n := by
+  classical
+  let roots : Finset α := (Finset.univ : Finset α).filter p
+  let tails : Finset (Fin n → α) := Finset.univ
+  let source : Finset (Fin (n + 1) → α) :=
+    (Finset.univ : Finset (Fin (n + 1) → α)).filter (fun X => p (X 0))
+  have hbij :
+      (∑ X ∈ source, ∏ j, w (X j))
+        =
+      ∑ z ∈ roots.product tails, w z.1 * ∏ j, w (z.2 j) := by
+    refine Finset.sum_bij
+      (fun X _hX => (X 0, fun j : Fin n => X j.succ)) ?_ ?_ ?_ ?_
+    · intro X hX
+      dsimp [source] at hX
+      rw [mem_filter] at hX
+      dsimp [roots, tails]
+      rw [mem_product, mem_filter]
+      exact ⟨⟨mem_univ _, hX.2⟩, mem_univ _⟩
+    · intro X hX₁ Y hY₁ hXY
+      dsimp at hXY
+      funext j
+      cases j using Fin.cases with
+      | zero =>
+          exact congrArg Prod.fst hXY
+      | succ j =>
+          exact congrFun (congrArg Prod.snd hXY) j
+    · intro z hz
+      dsimp [roots, tails] at hz
+      rw [mem_product, mem_filter] at hz
+      refine ⟨Fin.cons (α := fun _ : Fin (n + 1) => α) z.1 z.2, ?_, ?_⟩
+      · dsimp [source]
+        rw [mem_filter]
+        exact ⟨mem_univ _, by simpa only [Fin.cons_zero] using hz.1.2⟩
+      · ext <;> simp only [Fin.cons_zero, Fin.cons_succ]
+    · intro X hX
+      dsimp
+      rw [← Fin.cons_self_tail X]
+      rw [Fin.prod_univ_succ]
+  have hproduct :
+      (∑ z ∈ roots.product tails, w z.1 * ∏ j, w (z.2 j))
+        =
+      (∑ a ∈ roots, w a) *
+        ∑ T ∈ tails, ∏ j, w (T j) := by
+    calc
+      (∑ z ∈ roots.product tails, w z.1 * ∏ j, w (z.2 j))
+          =
+        ∑ a ∈ roots, ∑ T ∈ tails, w a * ∏ j, w (T j) := by
+          simpa [Finset.product] using
+            (Finset.sum_product roots tails
+              (fun z : α × (Fin n → α) => w z.1 * ∏ j, w (z.2 j)))
+      _ =
+        ∑ a ∈ roots, w a * ∑ T ∈ tails, ∏ j, w (T j) := by
+          refine Finset.sum_congr rfl fun a _ha => ?_
+          rw [Finset.mul_sum]
+      _ =
+        (∑ a ∈ roots, w a) *
+          ∑ T ∈ tails, ∏ j, w (T j) := by
+          rw [Finset.sum_mul]
+  have htail :
+      (∑ T ∈ tails, ∏ j, w (T j)) = (∑ a : α, w a) ^ n := by
+    dsimp [tails]
+    simpa [Fintype.piFinset_univ] using
+      (Finset.sum_pow' (Finset.univ : Finset α) w n).symm
+  calc
+    (∑ X ∈ (Finset.univ : Finset (Fin (n + 1) → α)).filter
+        (fun X => p (X 0)),
+      ∏ j, w (X j))
+        =
+      ∑ X ∈ source, ∏ j, w (X j) := rfl
+    _ =
+      ∑ z ∈ roots.product tails, w z.1 * ∏ j, w (z.2 j) := hbij
+    _ =
+      (∑ a ∈ roots, w a) *
+        ∑ T ∈ tails, ∏ j, w (T j) := hproduct
+    _ =
+      (∑ a ∈ (Finset.univ : Finset α).filter p, w a) *
+        (∑ a : α, w a) ^ n := by
+        rw [htail]
+
+/-- Finite root/leaf budget bound for the root-marked Appendix-F
+vertex-product sum.  It exposes the exact combinatorial obligation left to the
+source theorem: a rooted coordinate budget and a total leaf budget. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootVertexSum_le_rootBudget_mul_leafBudget_pow
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (Broot Bleaf : ℝ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P)
+    (hroot :
+      (∑ Q ∈ (Finset.univ : Finset (OmegaPolymerType HF zK)).filter
+          (fun Q => r ∈ skeleton HF Q.val), w Q) ≤ Broot)
+    (hleaf : (∑ Q : OmegaPolymerType HF zK, w Q) ≤ Bleaf) :
+    appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n ≤
+      Broot * Bleaf ^ n := by
+  classical
+  let pRoot : OmegaPolymerType HF zK → Prop :=
+    fun Q => r ∈ skeleton HF Q.val
+  let rootSum : ℝ :=
+    ∑ Q ∈ (Finset.univ : Finset (OmegaPolymerType HF zK)).filter pRoot, w Q
+  let leafSum : ℝ := ∑ Q : OmegaPolymerType HF zK, w Q
+  have hroot_le : rootSum ≤ Broot := by
+    simpa [rootSum, pRoot] using hroot
+  have hfactor :
+      appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n =
+        rootSum * leafSum ^ n := by
+    change
+      (∑ X ∈ (Finset.univ :
+          Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+            (fun X => pRoot (X 0)),
+        ∏ j, w (X j))
+        =
+      rootSum * leafSum ^ n
+    dsimp [rootSum, leafSum]
+    convert
+      finiteMarkedZeroProductSum_eq_rootSum_mul_leafSum_pow
+        (α := OmegaPolymerType HF zK)
+        pRoot w n
+  have hroot0 : 0 ≤ rootSum := by
+    dsimp [rootSum]
+    exact Finset.sum_nonneg fun Q _hQ => hw Q
+  have hleaf0 : 0 ≤ leafSum := by
+    dsimp [leafSum]
+    exact Finset.sum_nonneg fun Q _hQ => hw Q
+  have hBroot0 : 0 ≤ Broot := hroot0.trans hroot_le
+  have hpow : leafSum ^ n ≤ Bleaf ^ n :=
+    pow_le_pow_left₀ hleaf0 hleaf n
+  rw [hfactor]
+  exact mul_le_mul hroot_le hpow (pow_nonneg hleaf0 n) hBroot0
 
 /-! ## From marked vertex sums to weighted tree sums -/
 
