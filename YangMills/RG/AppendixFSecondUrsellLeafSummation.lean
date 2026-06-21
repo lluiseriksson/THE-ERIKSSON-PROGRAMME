@@ -6,6 +6,8 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.AppendixFSecondUrsellMarkedFugacity
 import YangMills.RG.AppendixFSecondUrsellGeometry
 import YangMills.KP.PenroseFiber
+import YangMills.KP.WalkBound
+import YangMills.KP.RootedChildCount
 
 /-!
 # Appendix F second-Ursell leaf-summation input
@@ -323,6 +325,197 @@ noncomputable def appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentKernelS
         appendixFHoleIncompMomentKernel HF zK κ₀ 0
           (X (KP.bfsParent T v)) (X v)) *
         w (X 0)
+
+/-- Root moment left by the normalized fixed-tree kernel recursion.
+
+The exponent is the rooted BFS child count of the root in the fixed tree
+shape.  Later summability/source estimates can bound this pinned root sum;
+the finite recursion below keeps it explicit. -/
+noncomputable def appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeRootMomentSum
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (T : Finset (Sym2 (Fin (n + 1)))) : ℝ :=
+  ∑ Q ∈ (Finset.univ : Finset (OmegaPolymerType HF zK)).filter
+      (fun Q => r ∈ skeleton HF Q.val),
+    (((discreteModifiedMetric HF Q.val + 1 : ℕ) : ℝ) ^
+        KP.rootedChildCount T 0) *
+      w Q
+
+/-- Normalized fixed-tree kernel sum for the parent-oriented `H#` recursion.
+
+Each nonroot edge contributes the hard-core moment kernel, multiplied by the
+child metric to the child's rooted child count and divided by the parent
+metric.  The parent denominators are the algebraic device that will later
+cancel against child powers when this normalized object is compared with the
+unnormalized complete-parent kernel sum. -/
+noncomputable def
+    appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeNormalizedKernelSum
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (κ₀ : ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (T : Finset (Sym2 (Fin (n + 1)))) : ℝ :=
+  ∑ X : Fin (n + 1) → OmegaPolymerType HF zK,
+    (∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+      ((((discreteModifiedMetric HF (X v).val + 1 : ℕ) : ℝ) ^
+            KP.rootedChildCount T v) *
+          appendixFHoleIncompMomentKernel HF zK κ₀ 0
+            (X (KP.bfsParent T v)) (X v)) /
+        (((discreteModifiedMetric HF (X (KP.bfsParent T v)).val + 1 : ℕ) : ℝ))) *
+      (if r ∈ skeleton HF (X 0).val then
+        (((discreteModifiedMetric HF (X 0).val + 1 : ℕ) : ℝ) ^
+            KP.rootedChildCount T 0) *
+          w (X 0)
+      else
+        0)
+
+/-- Fixed-tree normalized kernel recursion.
+
+For a fixed complete-tree shape, the vertexwise walk bound and the hard-core
+moment estimate give independent child budgets
+`childCount(v)! * C^(childCount(v)+1)`, leaving only the pinned root moment
+sum.  This is the finite moment-budget step needed before the later
+cancellation back to the unnormalized complete-parent kernel sum. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeNormalizedKernelSum_le_momentBudget
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (κ₀ : ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (T : Finset (Sym2 (Fin (n + 1))))
+    (hT : T ∈ KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1))))
+    (hw : ∀ Q : OmegaPolymerType HF zK, 0 ≤ w Q)
+    (hκ₀ : 0 < κ₀)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne : ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeNormalizedKernelSum
+        HF zK w κ₀ r n T ≤
+      (∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+        ((KP.rootedChildCount T v).factorial : ℝ) *
+          appendixFSecondUrsellMomentConstant d κ₀ ^
+            (KP.rootedChildCount T v + 1)) *
+        appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeRootMomentSum
+          HF zK w r n T := by
+  classical
+  let β := OmegaPolymerType HF zK
+  let metric : β → ℝ := fun Q =>
+    (((discreteModifiedMetric HF Q.val + 1 : ℕ) : ℝ))
+  let childCount : Fin (n + 1) → ℕ := fun v => KP.rootedChildCount T v
+  let C : ℝ := appendixFSecondUrsellMomentConstant d κ₀
+  let I : Fin (n + 1) → β → β → ℝ := fun v Q Q' =>
+    (metric Q' ^ childCount v *
+        appendixFHoleIncompMomentKernel HF zK κ₀ 0 Q Q') / metric Q
+  let wroot : β → ℝ := fun Q =>
+    if r ∈ skeleton HF Q.val then metric Q ^ childCount 0 * w Q else 0
+  let A : Fin (n + 1) → ℝ := fun v =>
+    ((childCount v).factorial : ℝ) * C ^ (childCount v + 1)
+  have htree := KP.isTree_of_mem_spanningTrees
+    (⊤ : SimpleGraph (Fin (n + 1))) hT
+  have hconn := htree.isConnected
+  have hcard : Fintype.card (Fin (n + 1)) = n + 1 := by
+    simp
+  have hdesc :
+      ∀ v : Fin (n + 1), v ≠ 0 →
+        KP.bfsLevel T (KP.bfsParent T v) < KP.bfsLevel T v := by
+    intro v hv
+    have hspec := (KP.bfsParent_spec hconn hv).2
+    omega
+  have hI_nonneg : ∀ v Q Q', 0 ≤ I v Q Q' := by
+    intro v Q Q'
+    have hmetric : 0 ≤ metric Q := by positivity
+    have hnum :
+        0 ≤ metric Q' ^ childCount v *
+          appendixFHoleIncompMomentKernel HF zK κ₀ 0 Q Q' := by
+      exact mul_nonneg (pow_nonneg (by positivity) _)
+        (appendixFHoleIncompMomentKernel_nonneg HF zK κ₀ 0 Q Q')
+    exact div_nonneg hnum hmetric
+  have hwroot_nonneg : ∀ Q, 0 ≤ wroot Q := by
+    intro Q
+    by_cases hmark : r ∈ skeleton HF Q.val
+    · dsimp [wroot]
+      rw [if_pos hmark]
+      exact mul_nonneg (pow_nonneg (by positivity) _) (hw Q)
+    · simp [wroot, hmark]
+  have hC_nonneg : 0 ≤ C := by
+    have hC_one : 1 ≤ C := by
+      exact le_max_left _ _
+    exact (zero_le_one).trans hC_one
+  have hA_nonneg : ∀ v, v ≠ 0 → 0 ≤ A v := by
+    intro v _hv
+    exact mul_nonneg (by positivity) (pow_nonneg hC_nonneg _)
+  have hsum : ∀ v, v ≠ 0 → ∀ Q : β, ∑ Q' : β, I v Q Q' ≤ A v := by
+    intro v _hv Q
+    have hmetric_pos : 0 < metric Q := by positivity
+    have hmoment :=
+      appendixFHoleIncompMomentKernel_childMoment_sum_le_factorial_mul
+        HF zK Q κ₀ 0 (childCount v) hκ₀ hdisj hnoedges hholes_ne hCq
+    have hdiv :
+        (∑ Q' : β,
+          metric Q' ^ childCount v *
+            appendixFHoleIncompMomentKernel HF zK κ₀ 0 Q Q') /
+            metric Q ≤ A v := by
+      calc
+        (∑ Q' : β,
+          metric Q' ^ childCount v *
+            appendixFHoleIncompMomentKernel HF zK κ₀ 0 Q Q') /
+            metric Q
+            ≤
+          (A v * metric Q) / metric Q := by
+            exact div_le_div_of_nonneg_right (by simpa [A, C, childCount, metric]
+              using hmoment) hmetric_pos.le
+        _ = A v := by
+            field_simp [hmetric_pos.ne']
+    calc
+      (∑ Q' : β, I v Q Q')
+          =
+        (∑ Q' : β,
+          metric Q' ^ childCount v *
+            appendixFHoleIncompMomentKernel HF zK κ₀ 0 Q Q') /
+            metric Q := by
+          simp [I, Finset.sum_div]
+      _ ≤ A v := hdiv
+  have hwalk :=
+    KP.tree_walk_bound_vertexwise n (Fin (n + 1)) β 0 (KP.bfsParent T)
+      (KP.bfsLevel T) I wroot A hcard hdesc hI_nonneg hwroot_nonneg
+      hA_nonneg hsum
+  have hroot :
+      (∑ Q : β, wroot Q) =
+        appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeRootMomentSum
+          HF zK w r n T := by
+    let p : β → Prop := fun Q => r ∈ skeleton HF Q.val
+    let f : β → ℝ := fun Q => metric Q ^ childCount 0 * w Q
+    calc
+      (∑ Q : β, wroot Q)
+          = ∑ Q : β, if p Q then f Q else 0 := by
+              simp [wroot, p, f]
+      _ = ∑ Q ∈ (Finset.univ : Finset β).filter p, f Q := by
+              simpa using
+                (Finset.sum_filter
+                  (s := (Finset.univ : Finset β)) (p := p) (f := f)).symm
+      _ =
+          appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeRootMomentSum
+            HF zK w r n T := by
+              rfl
+  have hwalk' := hwalk
+  rw [hroot] at hwalk'
+  simpa [appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeNormalizedKernelSum,
+    I, A, C, wroot, metric, childCount] using hwalk'
 
 /-- If the vertex weight is bounded by the spare exponential weight used in
 the hard-core moment kernel, the parent-oriented complete-tree overcount is

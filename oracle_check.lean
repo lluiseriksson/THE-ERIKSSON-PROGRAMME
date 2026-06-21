@@ -13,6 +13,8 @@ import YangMills.RG.PolymerClusterWithHolesBridge
 import YangMills.RG.AppendixFLocalSummability
 import YangMills.RG.AppendixFKsharpEstimate
 import YangMills.RG.AppendixFSecondGas
+import YangMills.RG.RelativeBVRetraction
+import YangMills.RG.PolymerSummabilityBridge
 import YangMills.RG.AppendixFHsharp
 import YangMills.RG.AppendixFHsharpResidual
 import YangMills.RG.AppendixFHsharpPartial
@@ -22,10 +24,15 @@ import YangMills.RG.AppendixFHsharpMajorant
 import YangMills.RG.AppendixFHsharpGeometricMajorant
 import YangMills.RG.AppendixFHsharpSourceMajorant
 import YangMills.RG.AppendixFSecondUrsellSource
+import YangMills.RG.AppendixFSecondUrsellLeafSummation
 import YangMills.RG.AppendixFCluster3Geometry
 import YangMills.RG.AppendixFHsharpCluster3
 import YangMills.RG.AppendixFHsharpProfile
 import YangMills.RG.AppendixFHsharpMarkedVertexSource
+import YangMills.Paper.GapRefinementChallenge
+import YangMills.SUSY.ValenceCarry
+import YangMills.SUSY.FiniteBerezin
+import YangMills.SUSY.WardPolymer
 
 /-! # Oracle check — one command, every headline
 
@@ -797,6 +804,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleIncompMomentKernel_childMoment_sum_le_factorial_mul
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootRawSum_le_completeTreeParentSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum_le_kernelSum
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeNormalizedKernelSum_le_momentBudget
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation_of_skeleton_nonempty
 -- source-facing cluster3 hole geometry: Ω as the active complement of holes
