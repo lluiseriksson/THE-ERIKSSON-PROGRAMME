@@ -143,6 +143,86 @@ noncomputable def
   simpa [zInt, Q, appendixFHoleExpWeight]
     using hleaf
 
+/-- CMP116 geometric `H#` profile from a single pointwise activity bound with
+the source-normal split already multiplied out.
+
+This constructor is a convenience wrapper around
+`balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_expWeight_leafSummation`
+with
+
+`u(Q) = exp(-2κ₀ d_M(Q))` and
+`w(Q) = exp(-residualRate d_M(Q)) * u(Q)`.
+
+Thus a source theorem can state the first-activity input directly as one
+pointwise estimate, without separately manufacturing the intermediate weights.
+-/
+noncomputable def
+    balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_pointwise_expWeight_leafSummation
+    {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    (epsilon : ℕ → ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hmargin : 3 * κ₀ + 3 ≤ κ)
+    (hκ₀ : 0 < κ₀)
+    (hε : ∀ t k, 0 ≤ epsilon t k)
+    (hρ1 :
+      ∀ t k,
+        appendixFSecondUrsellLeafConstant d κ₀ * epsilon t k < 1)
+    (hactivity :
+      ∀ t k (Q : OmegaPolymerType HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k)),
+        ‖balabanCMP116AppendixFIntegratedKsharpActivityFamily
+            HF z Λ F ν t k Q.val‖ ≤
+          epsilon t k *
+            (appendixFHoleExpWeight HF
+                (polymerClusterResidualRate κ κ₀) Q.val *
+              appendixFHoleExpWeight HF (2 * κ₀) Q.val))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1)
+    (hBclosed :
+      ∀ t k,
+        (appendixFSecondUrsellMomentConstant d κ₀ * epsilon t k) *
+            (1 - appendixFSecondUrsellLeafConstant d κ₀ *
+              epsilon t k)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    BalabanCMP116AppendixFHsharpGeometricMajorantProfile
+      HF zCarrier z Λ F ν g C H₀ c₀ κ κ₀ :=
+  balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_expWeight_leafSummation
+    HF zCarrier z Λ F ν g
+    (fun _t _k Q =>
+      appendixFHoleExpWeight HF (polymerClusterResidualRate κ κ₀) Q.val *
+        appendixFHoleExpWeight HF (2 * κ₀) Q.val)
+    (fun _t _k Q => appendixFHoleExpWeight HF (2 * κ₀) Q.val)
+    epsilon hmargin hκ₀ hε hρ1
+    (fun _t _k Q =>
+      mul_nonneg
+        (appendixFHoleExpWeight_nonneg HF
+          (polymerClusterResidualRate κ κ₀) Q.val)
+        (appendixFHoleExpWeight_nonneg HF (2 * κ₀) Q.val))
+    (fun _t _k Q => appendixFHoleExpWeight_nonneg HF (2 * κ₀) Q.val)
+    hactivity
+    (fun _t _k _Q => le_rfl)
+    (fun _t _k _Q => le_rfl)
+    hdisj hnoedges hholes_ne hCq hBclosed
+
 /-- Source-normal `cluster3` constructor from the finite leaf summation plus
 pointwise first-activity extraction and explicit weight splitting. -/
 noncomputable def
