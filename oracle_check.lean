@@ -62,6 +62,7 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.orderFactor_pinnedClusterWeight_le_tilt
 #print axioms YangMills.KP.summable_finset_pinnedClusterWeight
 #print axioms YangMills.KP.tsum_finset_pinnedClusterWeight_le
+#print axioms YangMills.KP.tree_walk_bound_vertexwise
 #print axioms YangMills.KP.rootedChildren
 #print axioms YangMills.KP.rootedChildCount
 #print axioms YangMills.KP.mem_rootedChildren
@@ -73,6 +74,7 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.biUnion_rootedChildren_eq_nonroot
 #print axioms YangMills.KP.rootedChild_parent_edge_mem
 #print axioms YangMills.KP.sum_rootedChildCount_eq
+#print axioms YangMills.KP.prod_bfsParent_nonroot_eq_prod_pow_rootedChildCount
 #print axioms YangMills.KP.card_rootedChildOrderAssignments
 #print axioms YangMills.KP.prod_factorial_dvd_factorial_sum
 #print axioms YangMills.KP.prod_factorial_le_factorial_sum

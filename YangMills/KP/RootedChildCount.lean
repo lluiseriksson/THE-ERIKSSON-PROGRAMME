@@ -184,6 +184,54 @@ theorem sum_rootedChildCount_eq
         Finset.card_univ, Fintype.card_fin]
       omega
 
+/-- Grouping a parent-indexed product by BFS child fibers.  Every nonroot
+vertex contributes one factor evaluated at its parent; regrouping by parent
+turns this into the product over vertices of that factor raised to the rooted
+child count. -/
+theorem prod_bfsParent_nonroot_eq_prod_pow_rootedChildCount
+    {M : Type*} [CommMonoid M]
+    (T : Finset (Sym2 (Fin (n + 1)))) (f : Fin (n + 1) → M) :
+    (∏ w ∈ (Finset.univ : Finset (Fin (n + 1))).filter (fun w => w ≠ 0),
+      f (bfsParent T w)) =
+      ∏ v : Fin (n + 1), f v ^ rootedChildCount T v := by
+  classical
+  let nonroot : Finset (Fin (n + 1)) :=
+    (Finset.univ : Finset (Fin (n + 1))).filter (fun w => w ≠ 0)
+  have hmaps :
+      Set.MapsTo (fun w : Fin (n + 1) => bfsParent T w)
+        ↑nonroot ↑(Finset.univ : Finset (Fin (n + 1))) := by
+    intro w _hw
+    exact Finset.mem_univ _
+  have hfilter :
+      ∀ v : Fin (n + 1),
+        nonroot.filter (fun w => bfsParent T w = v) = rootedChildren T v := by
+    intro v
+    ext w
+    simp [nonroot, rootedChildren]
+  calc
+    (∏ w ∈ (Finset.univ : Finset (Fin (n + 1))).filter (fun w => w ≠ 0),
+      f (bfsParent T w))
+        = ∏ w ∈ nonroot, f (bfsParent T w) := by rfl
+    _ =
+        ∏ v ∈ (Finset.univ : Finset (Fin (n + 1))),
+          ∏ w ∈ nonroot.filter (fun w => bfsParent T w = v),
+            f (bfsParent T w) := by
+          rw [← Finset.prod_fiberwise_of_maps_to hmaps
+            (fun w => f (bfsParent T w))]
+    _ =
+        ∏ v ∈ (Finset.univ : Finset (Fin (n + 1))),
+          ∏ _w ∈ nonroot.filter (fun w => bfsParent T w = v), f v := by
+          refine Finset.prod_congr rfl fun v _hv => ?_
+          refine Finset.prod_congr rfl fun w hw => ?_
+          rw [(Finset.mem_filter.mp hw).2]
+    _ =
+        ∏ v ∈ (Finset.univ : Finset (Fin (n + 1))),
+          f v ^ rootedChildCount T v := by
+          refine Finset.prod_congr rfl fun v _hv => ?_
+          rw [hfilter v, Finset.prod_const, rootedChildCount]
+    _ = ∏ v : Fin (n + 1), f v ^ rootedChildCount T v := by
+          rfl
+
 /-- A finite factorial product divides the factorial of the total sum.  This
 is the reusable multinomial bookkeeping lemma needed when independent child
 orders are priced by parent fibers. -/
