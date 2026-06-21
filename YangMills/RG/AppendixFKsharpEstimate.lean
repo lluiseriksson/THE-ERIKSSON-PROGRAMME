@@ -309,6 +309,58 @@ theorem norm_appendixFHoleConnectedLocalActivity_globalEval_le_expSubOne
             (((discreteModifiedMetric HF Y + 1 : ℕ) : ℝ))) - 1) :=
       hentropy_target
 
+/-- Raw pointwise metric decay plus strong measurability makes the connected
+first activity integrable.
+
+This is the explicit compiler for the `hint` obligation used by the integrated
+`K#` estimates: the analytic/source side may provide measurability of the
+connected integrand, while the already-verified finite Appendix-F estimate
+supplies a uniform pointwise bound from the raw one-polymer decay. -/
+theorem integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay
+    {d L : ℕ} [NeZero L]
+    {β : Type*} [MeasurableSpace β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z →
+      LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    (Y : Finset (Cube d L))
+    (ψ : ∀ x, Ψ x)
+    {H₀ K₀ κ κ₀ : ℝ}
+    (hH₀ : 0 ≤ H₀) (hH₀_one : H₀ ≤ 1)
+    (hκ₀ : 0 ≤ κ₀) (hκ : κ₀ ≤ κ)
+    (hlocal :
+      (∑ X ∈ Λ.filter (fun X => X.val ⊆ Y),
+        appendixFHoleExpWeight HF κ₀ X.val)
+        ≤
+      (((discreteModifiedMetric HF Y + 1 : ℕ) : ℝ)) * K₀)
+    (hraw : ∀ φ X, X ∈ Λ →
+      ‖(H X).globalEval ψ φ‖ ≤
+        H₀ * appendixFHoleExpWeight HF κ X.val)
+    (hmeas :
+      AEStronglyMeasurable
+        (fun φ : (∀ _ : Cube d L, β) =>
+          (appendixFHoleConnectedLocalActivity
+            HF z Λ H Y).globalEval ψ φ)
+        (Measure.pi fun _ : Cube d L => μ)) :
+    Integrable
+      (fun φ : (∀ _ : Cube d L, β) =>
+        (appendixFHoleConnectedLocalActivity
+          HF z Λ H Y).globalEval ψ φ)
+      (Measure.pi fun _ : Cube d L => μ) := by
+  haveI : IsProbabilityMeasure (Measure.pi fun _ : Cube d L => μ) :=
+    inferInstance
+  refine Integrable.of_bound hmeas
+    (appendixFHoleExpWeight HF (κ - κ₀) Y *
+      (Real.exp
+        (2 * H₀ * K₀ *
+          (((discreteModifiedMetric HF Y + 1 : ℕ) : ℝ))) - 1)) ?_
+  exact Filter.Eventually.of_forall fun φ =>
+    norm_appendixFHoleConnectedLocalActivity_globalEval_le_expSubOne
+      HF z Λ H Y ψ φ hH₀ hH₀_one hκ₀ hκ (hraw φ) hlocal
+
 /-- Source-shaped integrated exact `K#` estimate from raw pointwise metric
 decay and local contained-support summability.  Integrability stays explicit,
 and the exponential-minus-one factor is intentionally not linearized here. -/
@@ -408,6 +460,59 @@ theorem norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay_roote
   exact norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay
     HF z Λ H μ ψ hH₀ hH₀_one hκ₀ hκ
     hlocal hraw hint
+
+/-- Rooted-summability version of the raw integrability compiler. -/
+theorem integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_rooted
+    {d L : ℕ} [NeZero L]
+    {β : Type*} [MeasurableSpace β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z →
+      LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    {Y : Finset (Cube d L)}
+    (hY : Y ∈ appendixFTargetRegion
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ)
+    (ψ : ∀ x, Ψ x)
+    {H₀ K₀ κ κ₀ : ℝ}
+    (hH₀ : 0 ≤ H₀) (hH₀_one : H₀ ≤ 1)
+    (hK₀ : 0 ≤ K₀)
+    (hκ₀ : 0 ≤ κ₀) (hκ : κ₀ ≤ κ)
+    (hroot : ∀ r : Cube d L,
+      (∑ X ∈ Λ.filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀)
+    (hraw : ∀ φ X, X ∈ Λ →
+      ‖(H X).globalEval ψ φ‖ ≤
+        H₀ * appendixFHoleExpWeight HF κ X.val)
+    (hmeas :
+      AEStronglyMeasurable
+        (fun φ : (∀ _ : Cube d L, β) =>
+          (appendixFHoleConnectedLocalActivity
+            HF z Λ H Y).globalEval ψ φ)
+        (Measure.pi fun _ : Cube d L => μ)) :
+    Integrable
+      (fun φ : (∀ _ : Cube d L, β) =>
+        (appendixFHoleConnectedLocalActivity
+          HF z Λ H Y).globalEval ψ φ)
+      (Measure.pi fun _ : Cube d L => μ) := by
+  have hlocal :
+      (∑ X ∈ Λ.filter (fun X => X.val ⊆ Y),
+        appendixFHoleExpWeight HF κ₀ X.val)
+        ≤
+      (((discreteModifiedMetric HF Y + 1 : ℕ) : ℝ)) * K₀ :=
+    appendixFHole_containedWeightSum_le_metric_mul_of_rooted
+      HF z Λ (fun X => appendixFHoleExpWeight HF κ₀ X.val)
+      (fun X _hX => appendixFHoleExpWeight_nonneg HF κ₀ X.val)
+      hK₀ hroot hY
+  exact
+    integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay
+      HF z Λ H μ Y ψ hH₀ hH₀_one hκ₀ hκ hlocal hraw hmeas
 
 /-- Linearized rooted first-activity estimate at the Appendix-F `K#` rate.
 

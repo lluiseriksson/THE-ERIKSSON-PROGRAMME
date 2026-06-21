@@ -338,6 +338,70 @@ noncomputable def
       HF z Λ F ν epsilon hε hactivityKsharp)
     hdisj hnoedges hholes_ne hCq hBclosed
 
+/-- Build the fluctuation-integrability `hint` used by the source-facing
+`H#` endpoints from raw one-polymer decay plus strong measurability of the
+connected first-activity integrand.
+
+This keeps the analytic source obligation honest: future CMP/Balaban input
+still has to prove `hmeas` and `hraw`, but downstream `K#`/`H#` consumers no
+longer need an opaque, separately stated `Integrable` hypothesis. -/
+theorem
+    balabanCMP116AppendixFConnectedLocalActivity_hint_of_rawMetricDecay_rooted
+    {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (Hraw Kroot : ℕ → ℕ → ℝ)
+    {κ κ₀ : ℝ}
+    (hHraw : ∀ t k, 0 ≤ Hraw t k)
+    (hHraw_one : ∀ t k, Hraw t k ≤ 1)
+    (hKroot : ∀ t k, 0 ≤ Kroot t k)
+    (hκ₀ : 0 ≤ κ₀)
+    (hκ : κ₀ ≤ κ)
+    (hroot : ∀ t k r,
+      (∑ X ∈ (Λ t k).filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ Kroot t k)
+    (hraw : ∀ t k ψ φ X, X ∈ Λ t k →
+      ‖((F t k).activity X).globalEval ψ φ‖ ≤
+        Hraw t k * appendixFHoleExpWeight HF κ X.val)
+    (hmeas : ∀ t k Y,
+      Y ∈ appendixFTargetRegion
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF (z t k) => skeleton HF X.val)
+        (fun X : OmegaPolymerType HF (z t k) => X.val)
+        (Λ t k) →
+      ∀ ψ : (∀ _ : Cube d L, β),
+        AEStronglyMeasurable
+          (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+            (balabanCMP116AppendixFConnectedLocalActivity
+              HF (z t k) (Λ t k) (F t k) Y).globalEval ψ φ)
+          (balabanCMP116Dmu0 (Cube d L) lieDim)) :
+    ∀ t k Y,
+      Y ∈ appendixFTargetRegion
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF (z t k) => skeleton HF X.val)
+        (fun X : OmegaPolymerType HF (z t k) => X.val)
+        (Λ t k) →
+      ∀ ψ : (∀ _ : Cube d L, β),
+        Integrable
+          (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+            (balabanCMP116AppendixFConnectedLocalActivity
+              HF (z t k) (Λ t k) (F t k) Y).globalEval ψ φ)
+          (balabanCMP116Dmu0 (Cube d L) lieDim) := by
+  intro t k Y hY ψ
+  exact
+    integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDecay_rooted
+      HF (z t k) (Λ t k) (F t k) hY ψ
+      (hHraw t k) (hHraw_one t k) (hKroot t k)
+      hκ₀ hκ (hroot t k)
+      (hraw t k ψ)
+      (hmeas t k Y hY ψ)
+
 /-- CMP116 geometric `H#` profile from rooted raw-metric first-activity data.
 
 This is the source-facing composition of the rooted `K#` estimate with the
