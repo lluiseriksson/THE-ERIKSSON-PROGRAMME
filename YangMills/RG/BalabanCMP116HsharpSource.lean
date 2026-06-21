@@ -519,6 +519,63 @@ noncomputable def
       norm_balabanCMP116AppendixFHsharpOfIntegratedKsharp_le_residual_of_profile
         HF zCarrier z Λ F ν g profile t k P)
 
+/-- Source-normal `cluster3` constructor from a factorized finite tree-term
+estimate.  This is the shortest closed CMP116 path from the preferred source
+shape
+
+`treeTerm ≤ (B t k * exp (-residualRate * (d_M(P)+1))) * ρ(t,k)^n`
+
+to the `AppendixFHsharpCluster3Contract` consumers.  The analytic estimate and
+the four semantic source obligations remain explicit hypotheses. -/
+noncomputable def
+    balabanCMP116AppendixFHsharpCluster3Contract_of_factorized_treeTerm_geometric
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    (B ρ : ℕ → ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hinput : Prop) (hinput_holds : hinput)
+    (hultralocal : Prop) (hultralocal_holds : hultralocal)
+    (hlocal : Prop) (hlocal_holds : hlocal)
+    (hinfluence : Prop) (hinfluence_holds : hinfluence)
+    (hmargin : 3 * κ₀ + 3 ≤ κ)
+    (hB0 : ∀ t k, 0 ≤ B t k)
+    (hρ0 : ∀ t k, 0 ≤ ρ t k)
+    (hρ1 : ∀ t k, ρ t k < 1)
+    (htree :
+      ∀ t k (P : OmegaPolymerType HF zCarrier) n,
+        appendixFHoleHsharpTreeTerm HF
+            (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+              HF z Λ F ν t k) P.val n ≤
+          (B t k *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))) *
+            ρ t k ^ n)
+    (hBclosed :
+      ∀ t k,
+        B t k * (1 - ρ t k)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    AppendixFHsharpCluster3Contract HF zCarrier
+      (fun t k Y =>
+        balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k Y)
+      g C H₀ c₀ κ κ₀ :=
+  balabanCMP116AppendixFHsharpCluster3Contract_of_profile
+    HF zCarrier z Λ F ν g
+    hinput hinput_holds hultralocal hultralocal_holds
+    hlocal hlocal_holds hinfluence hinfluence_holds hmargin
+    (balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_factorized_treeTerm_geometric
+      HF zCarrier z Λ F ν g B ρ hB0 hρ0 hρ1 htree hBclosed)
+
 /-- Real-part omega-rooted UV decay for the CMP116 integrated `H#` object,
 fed directly by a packaged CMP116 geometric profile. -/
 theorem
