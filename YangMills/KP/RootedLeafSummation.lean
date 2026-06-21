@@ -299,10 +299,10 @@ theorem parentMap_profile_sum_factorial_le
         rw [hFams]
         exact card_parentFiberFamily_mul_prod_factorial_le m hm
 
-/-- The set of parent-map profiles has at most `4^n` elements. -/
-theorem parentMapProfileCount_le_four_pow (n : ℕ) :
+/-- Exact stars-and-bars count for parent-map child-count profiles. -/
+theorem parentMapProfileCount_eq_centralBinom (n : ℕ) :
     (Finset.piAntidiag (Finset.univ : Finset (Fin (n + 1))) n).card
-      ≤ 4 ^ n := by
+      = (2 * n).choose n := by
   classical
   have hmap := Finset.map_sym_eq_piAntidiag
     (s := (Finset.univ : Finset (Fin (n + 1)))) n
@@ -315,18 +315,26 @@ theorem parentMapProfileCount_le_four_pow (n : ℕ) :
       ((Fintype.card (Fin (n + 1)) + n - 1).choose n) =
         (2 * n).choose n := by
     simp [Nat.add_comm, two_mul]
-  rw [hsimp]
+  exact hsimp
+
+/-- The set of parent-map profiles has at most `4^n` elements. -/
+theorem parentMapProfileCount_le_four_pow (n : ℕ) :
+    (Finset.piAntidiag (Finset.univ : Finset (Fin (n + 1))) n).card
+      ≤ 4 ^ n := by
+  rw [parentMapProfileCount_eq_centralBinom]
   calc
     (2 * n).choose n ≤ 2 ^ (2 * n) := Nat.choose_le_two_pow (2 * n) n
     _ = 4 ^ n := by
       rw [show (4 : ℕ) = 2 ^ 2 by rfl, pow_mul]
 
-/-- Aggregate child-factorial cost over all abstract parent maps. -/
-theorem sum_parentMapChildCount_factorialProduct_le_factorial_mul_four_pow
+/-- Aggregate child-factorial cost over all abstract parent maps, keeping the
+exact profile-count factor visible. -/
+theorem sum_parentMapChildCount_factorialProduct_le_factorial_mul_profileCount
     (n : ℕ) :
     (∑ p : Fin n → Fin (n + 1),
       ∏ v : Fin (n + 1), (parentMapChildCount p v).factorial)
-      ≤ n.factorial * 4 ^ n := by
+      ≤ n.factorial *
+        (Finset.piAntidiag (Finset.univ : Finset (Fin (n + 1))) n).card := by
   classical
   let profile : (Fin n → Fin (n + 1)) → (Fin (n + 1) → ℕ) :=
     fun p => parentMapChildCount p
@@ -361,10 +369,36 @@ theorem sum_parentMapChildCount_factorialProduct_le_factorial_mul_four_pow
           rw [Finset.sum_const_nat]
           intro _m _hm
           rfl
-    _ ≤ (4 ^ n) * n.factorial := by
-          exact Nat.mul_le_mul_right _ (parentMapProfileCount_le_four_pow n)
-    _ = n.factorial * 4 ^ n := by
+    _ = n.factorial *
+          (Finset.piAntidiag
+            (Finset.univ : Finset (Fin (n + 1))) n).card := by
           rw [Nat.mul_comm]
+
+/-- Aggregate child-factorial cost over all abstract parent maps, with the
+profile count evaluated as a central binomial coefficient. -/
+theorem sum_parentMapChildCount_factorialProduct_le_factorial_mul_centralBinom
+    (n : ℕ) :
+    (∑ p : Fin n → Fin (n + 1),
+      ∏ v : Fin (n + 1), (parentMapChildCount p v).factorial)
+      ≤ n.factorial * (2 * n).choose n := by
+  simpa [parentMapProfileCount_eq_centralBinom] using
+    sum_parentMapChildCount_factorialProduct_le_factorial_mul_profileCount n
+
+/-- Aggregate child-factorial cost over all abstract parent maps. -/
+theorem sum_parentMapChildCount_factorialProduct_le_factorial_mul_four_pow
+    (n : ℕ) :
+    (∑ p : Fin n → Fin (n + 1),
+      ∏ v : Fin (n + 1), (parentMapChildCount p v).factorial)
+      ≤ n.factorial * 4 ^ n := by
+  calc
+    (∑ p : Fin n → Fin (n + 1),
+      ∏ v : Fin (n + 1), (parentMapChildCount p v).factorial)
+        ≤ n.factorial *
+            (Finset.piAntidiag
+              (Finset.univ : Finset (Fin (n + 1))) n).card :=
+          sum_parentMapChildCount_factorialProduct_le_factorial_mul_profileCount n
+    _ ≤ n.factorial * 4 ^ n := by
+          exact Nat.mul_le_mul_left _ (parentMapProfileCount_le_four_pow n)
 
 /-- The BFS parent of the root is the root itself. -/
 lemma rootedLeaf_bfsParent_zero
@@ -405,13 +439,15 @@ theorem rootedChildCount_eq_parentMapChildCount_succ
     simp
 
 /-- Aggregate rooted child-factorial cost over all complete-graph spanning
-trees.  The proof injects each tree into its nonroot BFS parent map and then
-uses the parent-profile summation bound. -/
-theorem sum_rootedChildCount_factorialProduct_le_factorial_mul_four_pow
+trees, keeping the exact parent-profile count visible.  The proof injects each
+tree into its nonroot BFS parent map and then uses the parent-profile
+summation bound. -/
+theorem sum_rootedChildCount_factorialProduct_le_factorial_mul_profileCount
     (n : ℕ) :
     (∑ T ∈ spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
       ∏ v : Fin (n + 1), (rootedChildCount T v).factorial)
-      ≤ n.factorial * 4 ^ n := by
+      ≤ n.factorial *
+        (Finset.piAntidiag (Finset.univ : Finset (Fin (n + 1))) n).card := by
   classical
   let treeParent :
       Finset (Sym2 (Fin (n + 1))) → Fin n → Fin (n + 1) :=
@@ -454,8 +490,75 @@ theorem sum_rootedChildCount_factorialProduct_le_factorial_mul_four_pow
           exact Finset.sum_le_sum_of_subset_of_nonneg
             (by intro p hp; exact Finset.mem_univ p)
             (fun p _hp _hnot => Nat.zero_le (F p))
-    _ ≤ n.factorial * 4 ^ n :=
-          sum_parentMapChildCount_factorialProduct_le_factorial_mul_four_pow n
+    _ ≤ n.factorial *
+          (Finset.piAntidiag
+            (Finset.univ : Finset (Fin (n + 1))) n).card :=
+          sum_parentMapChildCount_factorialProduct_le_factorial_mul_profileCount n
+
+/-- Aggregate rooted child-factorial cost over all complete-graph spanning
+trees, with the profile count evaluated as a central binomial coefficient. -/
+theorem sum_rootedChildCount_factorialProduct_le_factorial_mul_centralBinom
+    (n : ℕ) :
+    (∑ T ∈ spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
+      ∏ v : Fin (n + 1), (rootedChildCount T v).factorial)
+      ≤ n.factorial * (2 * n).choose n := by
+  simpa [parentMapProfileCount_eq_centralBinom] using
+    sum_rootedChildCount_factorialProduct_le_factorial_mul_profileCount n
+
+/-- Aggregate rooted child-factorial cost over all complete-graph spanning
+trees.  The proof injects each tree into its nonroot BFS parent map and then
+uses the parent-profile summation bound. -/
+theorem sum_rootedChildCount_factorialProduct_le_factorial_mul_four_pow
+    (n : ℕ) :
+    (∑ T ∈ spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
+      ∏ v : Fin (n + 1), (rootedChildCount T v).factorial)
+      ≤ n.factorial * 4 ^ n := by
+  calc
+    (∑ T ∈ spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
+      ∏ v : Fin (n + 1), (rootedChildCount T v).factorial)
+        ≤ n.factorial *
+            (Finset.piAntidiag
+              (Finset.univ : Finset (Fin (n + 1))) n).card :=
+          sum_rootedChildCount_factorialProduct_le_factorial_mul_profileCount n
+    _ ≤ n.factorial * 4 ^ n := by
+          exact Nat.mul_le_mul_left _ (parentMapProfileCount_le_four_pow n)
+
+/-- Real normalized form of the aggregate rooted child-factorial tree bound
+with the central-binomial profile count left visible.  A future Catalan
+closure must improve this parent-map profile loss by the rooted plane-tree
+enumeration factor. -/
+theorem rootedChildCount_factorialTreeSum_normalized_le_centralBinom
+    (n : ℕ) :
+    ((n : ℝ) + 1) *
+        (((n + 1).factorial : ℝ))⁻¹ *
+        (∑ T ∈ spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
+          ∏ v : Fin (n + 1), ((rootedChildCount T v).factorial : ℝ))
+      ≤ ((2 * n).choose n : ℕ) := by
+  classical
+  have hnat :=
+    sum_rootedChildCount_factorialProduct_le_factorial_mul_centralBinom n
+  have hreal :
+      (∑ T ∈ spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
+        ∏ v : Fin (n + 1), ((rootedChildCount T v).factorial : ℝ))
+        ≤ ((n.factorial * (2 * n).choose n : ℕ) : ℝ) := by
+    exact_mod_cast hnat
+  have hleft :
+      0 ≤ ((n : ℝ) + 1) * (((n + 1).factorial : ℝ))⁻¹ := by
+    positivity
+  calc
+    ((n : ℝ) + 1) *
+        (((n + 1).factorial : ℝ))⁻¹ *
+        (∑ T ∈ spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
+          ∏ v : Fin (n + 1), ((rootedChildCount T v).factorial : ℝ))
+        ≤ ((n : ℝ) + 1) *
+            (((n + 1).factorial : ℝ))⁻¹ *
+            ((n.factorial * (2 * n).choose n : ℕ) : ℝ) := by
+          exact mul_le_mul_of_nonneg_left hreal hleft
+    _ = ((2 * n).choose n : ℕ) := by
+          rw [Nat.cast_mul, Nat.factorial_succ]
+          push_cast
+          field_simp [show ((n : ℝ) + 1) ≠ 0 by positivity,
+            show ((n.factorial : ℝ)) ≠ 0 by positivity]
 
 /-- Real normalized form of the aggregate rooted child-factorial tree bound.
 This is the form consumed by the second-Ursell `(n+1)!` normalization. -/
