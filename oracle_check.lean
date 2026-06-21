@@ -192,6 +192,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- with the MARGINAL coupling (no geometric assumption)
 #print axioms YangMills.RG.lattice_mass_gap_of_per_scale_uv_summable
 #print axioms YangMills.RG.lattice_mass_gap_of_cluster_and_marginal_coupling
+#print axioms YangMills.RG.lattice_mass_gap_of_cluster_and_marginal_coupling_with_summable_exception
+#print axioms YangMills.RG.lattice_mass_gap_of_cluster_and_marginal_coupling_split_exception
 -- non-vacuity: the marginal-coupling recursion is satisfiable (logistic flow)
 #print axioms YangMills.RG.exists_marginal_coupling_flow
 -- semantic producer/consumer split: renormalized hole activities imply the

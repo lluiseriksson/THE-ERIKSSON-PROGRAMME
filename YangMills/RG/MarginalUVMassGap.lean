@@ -122,6 +122,81 @@ theorem lattice_mass_gap_of_cluster_and_marginal_coupling
     (fun k => g k ^ κ₀) C1 C2 ε c0 (∑' k, g k ^ κ₀)
     hε hc0 hC2 hw hsum le_rfl hIRbound hRpoly
 
+/-- **Marginal coupling with a summable exceptional scale profile.**  The
+mass-gap assembly does not require every scale to obey the rigid marginal
+profile alone.  It is enough to bound the UV remainder by
+`g_k^{κ₀} + b_k`, where the regular marginal profile is summable by the
+logistic flow and the exceptional profile `b` is nonnegative and summable.
+
+This formalizes the useful warning that "rare" exceptions are not enough:
+the assembly consumes absolute `ℓ¹` mass, not density. -/
+theorem lattice_mass_gap_of_cluster_and_marginal_coupling_with_summable_exception
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (g b : ℕ → ℝ) {C1 C2 ε c0 β κ₀ : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hC2 : 0 ≤ C2) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k) (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hb_nonneg : ∀ k, 0 ≤ b k) (hb_sum : Summable b)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hRpoly : ∀ t k : ℕ,
+      |Rsc t k| ≤
+        (C2 * Real.exp (-(c0 * (t : ℝ)))) * (g k ^ κ₀ + b k)) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + C2 * (∑' k : ℕ, (g k ^ κ₀ + b k))) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  let w : ℕ → ℝ := fun k => g k ^ κ₀ + b k
+  have hsumg : Summable (fun k => g k ^ κ₀) :=
+    marginal_coupling_pow_summable_of_recursion g hβ hpos hsmall hrec hκ
+  have hw : ∀ k, 0 ≤ w k := fun k =>
+    add_nonneg (Real.rpow_nonneg (hpos k).le _) (hb_nonneg k)
+  have hsumw : Summable w := by
+    simpa [w] using hsumg.add hb_sum
+  have hRpolyW : ∀ t k : ℕ,
+      |Rsc t k| ≤ (C2 * Real.exp (-(c0 * (t : ℝ)))) * w k := by
+    simpa [w] using hRpoly
+  have hgap := lattice_mass_gap_of_per_scale_uv_summable covIR Rsc nsc w
+    C1 C2 ε c0 (∑' k : ℕ, w k) hε hc0 hC2 hw hsumw le_rfl
+    hIRbound hRpolyW
+  simpa [w] using hgap
+
+/-- **Regular plus exceptional UV decomposition.**  A scalar remainder split
+`Rsc = Rreg + Rexc` feeds the summable-exception assembly when the regular
+part has the marginal profile `g_k^{κ₀}` and the exceptional part has a
+nonnegative summable profile `b_k`. -/
+theorem lattice_mass_gap_of_cluster_and_marginal_coupling_split_exception
+    (covIR : ℕ → ℝ) (Rsc Rreg Rexc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (g b : ℕ → ℝ) {C1 C2 ε c0 β κ₀ : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hC2 : 0 ≤ C2) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k) (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hb_nonneg : ∀ k, 0 ≤ b k) (hb_sum : Summable b)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hRsplit : ∀ t k : ℕ, Rsc t k = Rreg t k + Rexc t k)
+    (hRreg : ∀ t k : ℕ,
+      |Rreg t k| ≤ (C2 * Real.exp (-(c0 * (t : ℝ)))) * g k ^ κ₀)
+    (hRexc : ∀ t k : ℕ,
+      |Rexc t k| ≤ (C2 * Real.exp (-(c0 * (t : ℝ)))) * b k) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + C2 * (∑' k : ℕ, (g k ^ κ₀ + b k))) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  refine
+    lattice_mass_gap_of_cluster_and_marginal_coupling_with_summable_exception
+      covIR Rsc nsc g b hε hc0 hC2 hκ hβ hpos hsmall hrec
+      hb_nonneg hb_sum hIRbound ?_
+  intro t k
+  have htri : |Rsc t k| ≤ |Rreg t k| + |Rexc t k| := by
+    rw [hRsplit t k]
+    exact abs_add_le (Rreg t k) (Rexc t k)
+  calc
+    |Rsc t k| ≤ |Rreg t k| + |Rexc t k| := htri
+    _ ≤ (C2 * Real.exp (-(c0 * (t : ℝ)))) * g k ^ κ₀ +
+          (C2 * Real.exp (-(c0 * (t : ℝ)))) * b k := by
+        exact add_le_add (hRreg t k) (hRexc t k)
+    _ = (C2 * Real.exp (-(c0 * (t : ℝ)))) * (g k ^ κ₀ + b k) := by
+        ring
+
 /-- **Non-vacuity of the marginal-coupling recursion.**  The logistic flow
 `g_{k+1} = g_k(1 − β g_k)` with `β = 1`, `g_0 = 1/2` satisfies all the coupling
 hypotheses of `lattice_mass_gap_of_cluster_and_marginal_coupling` — positivity,
