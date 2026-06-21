@@ -7941,3 +7941,52 @@ It only exposes that as the next exact source obligation.  Dimock's leaf
 summation, Dimock F.1/(636), Dimock (642), concrete Yang-Mills raw activity
 decay, continuum construction, and Clay remain open.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 219 (2026-06-21, **weighted finite tree transfer**
+`YangMills.RG.appendixFHoleHsharpWeightedTreeTerm`,
+`YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_nonneg`,
+`YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_zero`,
+`YangMills.RG.appendixFHoleHsharpTreeTerm_le_scaled_weightedTreeTerm`;
+core 8315)
+
+This addendum starts the source-faithful decomposition of the missing finite
+second-Ursell leaf estimate.
+
+`YangMills/RG/AppendixFSecondUrsellWeightedTree.lean` defines a weighted
+fixed-union tree term with the same target fiber and factorial normalization
+as `appendixFHoleHsharpTreeTerm`, replacing each activity norm by a supplied
+weight `w`.
+
+The main theorem is finite algebra:
+
+```
+appendixFHoleHsharpTreeTerm HF zK Y n <=
+  epsilon^(n+1) *
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Y n
+```
+
+under the explicit pointwise hypothesis
+`||zK Q.val|| <= epsilon * w Q`.  The exponent is `n+1`, matching the
+repository convention that term index `n` uses tuples of size `n + 1`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFSecondUrsellWeightedTree.lean
+lake build YangMills.RG.AppendixFSecondUrsellWeightedTree
+lake env lean YangMillsCore.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This commit does not prove the weighted tree geometric
+estimate, Dimock's leaf summation, the Ksharp source decay, Dimock F.1/(636),
+Dimock (642), concrete Yang-Mills raw activity decay, continuum construction,
+or Clay.  It only extracts the scalar activity-size factor from the finite
+tree term so that the remaining geometric/source estimate has a sharper
+Lean-facing target.  Clay distance **~0% (<0.1%), unchanged**.

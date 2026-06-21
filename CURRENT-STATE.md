@@ -639,6 +639,15 @@ Together with `clusterSkeletonRemainderSum_tsum_le`,
 source-shaped cluster object, skeleton-pinned summability, and the
 modified-metric consumer step that later `hRpoly` activity-decay work must feed.
 
+The Appendix-F second-Ursell source path now also has a weighted finite tree
+transfer layer.  `YangMills/RG/AppendixFSecondUrsellWeightedTree.lean` defines
+`appendixFHoleHsharpWeightedTreeTerm`, proves its nonnegativity and the
+order-zero normalization, and proves
+`appendixFHoleHsharpTreeTerm_le_scaled_weightedTreeTerm`: a pointwise activity
+bound `||zK Q|| <= epsilon * w Q` extracts the exact scalar
+`epsilon^(n+1)` from the finite tree term.  The remaining missing theorem is
+the source/geometry leaf summation bounding the weighted tree term itself.
+
 ## Live Frontier
 
 The remaining hard input is still **not** a compiler trick:

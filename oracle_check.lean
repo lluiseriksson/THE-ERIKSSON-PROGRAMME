@@ -691,6 +691,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_factorized_treeTerm_geometric
 #print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_integratedKsharp_treeTerm_geometric
 #print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_integratedKsharp_factorized_treeTerm_geometric
+-- weighted finite tree transfer: extracts an activity-size epsilon^(n+1)
+-- from the source-facing tree term and leaves a purely weighted tree sum.
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_nonneg
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_zero
+#print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_scaled_weightedTreeTerm
 -- closed source-facing Dimock-II `cluster3` contract for H#.
 #print axioms YangMills.RG.AppendixFHsharpCluster3Contract.of_unshifted_residual_bound
 #print axioms YangMills.RG.AppendixFHsharpCluster3Contract.residual_bound

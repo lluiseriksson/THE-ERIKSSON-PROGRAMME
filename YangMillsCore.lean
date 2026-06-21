@@ -370,6 +370,9 @@ import YangMills.RG.AppendixFHsharpSourceMajorant
 -- Finite source-facing tree majorant for H#: Penrose tree-graph domination
 -- of the exact fixed-union absolute second-Ursell coefficient.
 import YangMills.RG.AppendixFSecondUrsellSource
+-- Weighted finite tree transfer for H#: separates the activity-size factor
+-- from the geometric/source leaf-summation obligation.
+import YangMills.RG.AppendixFSecondUrsellWeightedTree
 -- Source-facing closed Dimock-II `cluster3` contract for H#: consumes the
 -- final Appendix-F with-holes theorem directly, while keeping the Yang-Mills
 -- input decay/locality obligations explicit.
