@@ -282,6 +282,9 @@ import YangMills.RG.GaussianMGF
 -- the missing constructive Gaussian-from-covariance object the fluctuation integral
 -- consumes; built from Mathlib's `iIndepFun.hasGaussianLaw`.
 import YangMills.RG.GaussianPi
+-- CMP116 small-field bridge seed: after `B' = (C^(k))^(1/2) X`, the `X`
+-- fluctuation law `dmu0` is an ultralocal product Gaussian over bonds.
+import YangMills.RG.BalabanCMP116Dmu0
 -- hRpoly campaign brick P1a: the bounded-degree walk-count engine (≤ Δⁿ) — the
 -- combinatorial substrate for the lattice animal count `c_n ≤ Cⁿ` (branch C of
 -- `hRpoly`). Pure graph combinatorics; consumer = animal count → polymer_weight_summability.
