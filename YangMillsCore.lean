@@ -293,6 +293,9 @@ import YangMills.RG.BalabanCMP116Localization
 -- first connected with-holes compiler and its rooted estimate under explicit
 -- source support/decay/integrability obligations.
 import YangMills.RG.BalabanCMP116KsharpAdapter
+-- CMP116-to-second-gas adapter: the specialized `K#` activity becomes the
+-- evaluated and spectator-integrated hard-core gas consumed by the `H#` layer.
+import YangMills.RG.BalabanCMP116SecondGasAdapter
 -- hRpoly campaign brick P1a: the bounded-degree walk-count engine (≤ Δⁿ) — the
 -- combinatorial substrate for the lattice animal count `c_n ≤ Cⁿ` (branch C of
 -- `hRpoly`). Pure graph combinatorics; consumer = animal count → polymer_weight_summability.
