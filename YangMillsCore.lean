@@ -285,6 +285,10 @@ import YangMills.RG.GaussianPi
 -- CMP116 small-field bridge seed: after `B' = (C^(k))^(1/2) X`, the `X`
 -- fluctuation law `dmu0` is an ultralocal product Gaussian over bonds.
 import YangMills.RG.BalabanCMP116Dmu0
+-- CMP116 localization bridge: once Balaban's generalized random-walk support
+-- theorem supplies localized `H(Z)` supports, `dmu0` gives Ω-component
+-- factorization for the Appendix-F local-activity substrate.
+import YangMills.RG.BalabanCMP116Localization
 -- hRpoly campaign brick P1a: the bounded-degree walk-count engine (≤ Δⁿ) — the
 -- combinatorial substrate for the lattice animal count `c_n ≤ Cⁿ` (branch C of
 -- `hRpoly`). Pure graph combinatorics; consumer = animal count → polymer_weight_summability.
