@@ -380,6 +380,9 @@ import YangMills.RG.BalabanCMP116HsharpAdapter
 -- Source-facing H# profile: a single packaged geometric majorant record
 -- exposes summability, tail, residual, and UV consumers.
 import YangMills.RG.AppendixFHsharpProfile
+-- CMP116 source-facing H# contracts: source theorems stated directly for the
+-- named CMP116 integrated H# object package into cluster3/profile consumers.
+import YangMills.RG.BalabanCMP116HsharpSource
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
