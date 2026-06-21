@@ -7946,7 +7946,9 @@ decay, continuum construction, and Clay remain open.  Clay distance
 `YangMills.RG.appendixFHoleHsharpWeightedTreeTerm`,
 `YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_nonneg`,
 `YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_zero`,
-`YangMills.RG.appendixFHoleHsharpTreeTerm_le_scaled_weightedTreeTerm`;
+`YangMills.RG.appendixFHoleHsharpTreeTerm_le_scaled_weightedTreeTerm`,
+`YangMills.RG.appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_bound`,
+`YangMills.RG.appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_geometric`;
 core 8315)
 
 This addendum starts the source-faithful decomposition of the missing finite
@@ -7968,6 +7970,19 @@ appendixFHoleHsharpTreeTerm HF zK Y n <=
 under the explicit pointwise hypothesis
 `||zK Q.val|| <= epsilon * w Q`.  The exponent is `n+1`, matching the
 repository convention that term index `n` uses tuples of size `n + 1`.
+
+The same module now also packages the exact finite reassociation needed by
+the source-facing factorized tree constructors:
+
+```
+epsilon^(n+1) * (Croot * decay * Cleaf^n)
+  =
+(Croot * epsilon * decay) * (Cleaf * epsilon)^n.
+```
+
+Thus a source theorem may target the weighted tree estimate
+`Croot * residualDecay(P) * Cleaf^n`; the Lean side turns it into the
+preferred root/leaf factorization under the first-activity size bound.
 
 Verification:
 

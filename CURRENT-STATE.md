@@ -647,6 +647,11 @@ order-zero normalization, and proves
 bound `||zK Q|| <= epsilon * w Q` extracts the exact scalar
 `epsilon^(n+1)` from the finite tree term.  The remaining missing theorem is
 the source/geometry leaf summation bounding the weighted tree term itself.
+The same module also now includes the finite factorized consumers
+`appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_bound` and
+`appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_geometric`, which turn
+a weighted estimate `Croot * decay * Cleaf^n` into the preferred
+`(Croot * epsilon * decay) * (Cleaf * epsilon)^n` tree-term shape.
 
 ## Live Frontier
 

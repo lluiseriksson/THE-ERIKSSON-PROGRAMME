@@ -697,6 +697,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_nonneg
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_zero
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_scaled_weightedTreeTerm
+#print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_bound
+#print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_geometric
 -- closed source-facing Dimock-II `cluster3` contract for H#.
 #print axioms YangMills.RG.AppendixFHsharpCluster3Contract.of_unshifted_residual_bound
 #print axioms YangMills.RG.AppendixFHsharpCluster3Contract.residual_bound

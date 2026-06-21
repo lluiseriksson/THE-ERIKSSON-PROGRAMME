@@ -197,4 +197,74 @@ theorem appendixFHoleHsharpTreeTerm_le_scaled_weightedTreeTerm
   simpa [appendixFHoleHsharpTreeTerm, appendixFHoleHsharpWeightedTreeTerm,
     fiber, P, epow] using hfinal
 
+/-- Algebraic reassociation of the weighted tree transfer.  If the weighted
+tree term has a bound `Croot * decay * Cleaf^n`, then extracting the activity
+size `epsilon` from each of the `n+1` vertices gives the source-normal
+factorization with one root factor and `n` leaf factors. -/
+theorem appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_bound
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (Y : Finset (Cube d L))
+    (n : ℕ)
+    (epsilon Croot Cleaf decay : ℝ)
+    (hε : 0 ≤ epsilon)
+    (hw : ∀ Q, 0 ≤ w Q)
+    (hactivity :
+      ∀ Q : OmegaPolymerType HF zK,
+        ‖zK Q.val‖ ≤ epsilon * w Q)
+    (hweighted :
+      appendixFHoleHsharpWeightedTreeTerm HF zK w Y n ≤
+        Croot * decay * Cleaf ^ n) :
+    appendixFHoleHsharpTreeTerm HF zK Y n ≤
+      (Croot * epsilon * decay) * (Cleaf * epsilon) ^ n := by
+  have hscaled :=
+    appendixFHoleHsharpTreeTerm_le_scaled_weightedTreeTerm
+      HF zK w Y n epsilon hε hw hactivity
+  have hpow_nonneg : 0 ≤ epsilon ^ (n + 1) := pow_nonneg hε _
+  have hweighted_scaled :
+      epsilon ^ (n + 1) *
+          appendixFHoleHsharpWeightedTreeTerm HF zK w Y n ≤
+        epsilon ^ (n + 1) * (Croot * decay * Cleaf ^ n) :=
+    mul_le_mul_of_nonneg_left hweighted hpow_nonneg
+  refine hscaled.trans ?_
+  refine hweighted_scaled.trans_eq ?_
+  ring
+
+/-- Source-shaped geometric consumer for the weighted tree estimate.  The
+future leaf-summation theorem should supply `hleaf`; this theorem performs
+only the finite scalar extraction and algebraic rearrangement. -/
+theorem appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_geometric
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (epsilon Croot Cleaf κ κ₀ : ℝ)
+    (hε : 0 ≤ epsilon)
+    (hw : ∀ Q, 0 ≤ w Q)
+    (hactivity :
+      ∀ Q : OmegaPolymerType HF zK,
+        ‖zK Q.val‖ ≤ epsilon * w Q)
+    (hleaf :
+      ∀ (P : OmegaPolymerType HF zK) n,
+        appendixFHoleHsharpWeightedTreeTerm HF zK w P.val n ≤
+          Croot *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))) *
+            Cleaf ^ n) :
+    ∀ (P : OmegaPolymerType HF zK) n,
+      appendixFHoleHsharpTreeTerm HF zK P.val n ≤
+        (Croot * epsilon *
+          Real.exp
+            (-(polymerClusterResidualRate κ κ₀ *
+              ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))) *
+          (Cleaf * epsilon) ^ n := by
+  intro P n
+  exact appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_bound
+    HF zK w P.val n epsilon Croot Cleaf
+    (Real.exp
+      (-(polymerClusterResidualRate κ κ₀ *
+        ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))))
+    hε hw hactivity (hleaf P n)
+
 end YangMills.RG
