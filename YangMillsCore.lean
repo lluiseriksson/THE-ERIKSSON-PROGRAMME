@@ -134,6 +134,7 @@ import YangMills.Paper.CouplingControl
 import YangMills.Paper.MassGapAssembly
 import YangMills.Paper.UVSummation
 import YangMills.Paper.ClusteringToGap
+import YangMills.Paper.GapRefinementChallenge
 
 -- Kotecký–Preiss / Mayer cluster-expansion layer (`docs/kp-cluster-expansion-plan.md`).
 -- KP0–KP2a (substrate, partition identities, incompatibility graph, Ursell coefficient)

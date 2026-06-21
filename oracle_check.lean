@@ -74,6 +74,11 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.lattice_mass_gap_of_exp_clustering_uniform
 -- UV brick U0: the carried hypothesis sharpened to a per-scale RG contraction
 #print axioms YangMills.lattice_mass_gap_of_per_scale_uv
+-- Gap-refinement obstruction: arbitrarily small positive excitations defeat a
+-- positive gap, and stagewise regulator gaps need not give a uniform gap.
+#print axioms YangMills.not_hasPositiveEnergyGap_of_arbitrarilySmallPositiveExcitations
+#print axioms YangMills.not_hasUniformPositiveEnergyGap_of_refinementsProduceArbitrarilySmallPositiveExcitations
+#print axioms YangMills.halfScaleExcitation_stagewise_but_not_uniform
 
 /-! ## The Wilson-loop area laws — finite volume -/
 #print axioms YangMills.finite_volume_area_law          -- linearized activities
