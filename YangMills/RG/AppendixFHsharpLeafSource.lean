@@ -337,6 +337,92 @@ noncomputable def
       HF z Λ F ν epsilon hε hactivityKsharp)
     hdisj hnoedges hholes_ne hCq hBclosed
 
+/-- CMP116 geometric `H#` profile from rooted raw-metric first-activity data.
+
+This is the source-facing composition of the rooted `K#` estimate with the
+canonical Ksharp-rate leaf-summation profile.  The hypotheses still name the
+true source obligations: raw pointwise decay, the rooted first-cover budget,
+spectator probability, fluctuation integrability, and the closed geometric
+smallness condition for the second gas. -/
+noncomputable def
+    balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_rawMetricDecay_rooted_ksharpRate
+    {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    (Hraw Kroot : ℕ → ℕ → ℝ)
+    {C Hscale c₀ κ κ₀ : ℝ}
+    (hmargin : 3 * κ₀ + 3 ≤ κ)
+    (hκ₀ : 0 < κ₀)
+    (hν : ∀ t k, IsProbabilityMeasure (ν t k))
+    (hHraw : ∀ t k, 0 ≤ Hraw t k)
+    (hHraw_one : ∀ t k, Hraw t k ≤ 1)
+    (hKroot : ∀ t k, 0 ≤ Kroot t k)
+    (hsmall : ∀ t k, 2 * Hraw t k * Kroot t k ≤ 1)
+    (hρ1 :
+      ∀ t k,
+        appendixFSecondUrsellLeafConstant d κ₀ *
+            (2 * Hraw t k * Kroot t k) < 1)
+    (hroot : ∀ t k r,
+      (∑ X ∈ (Λ t k).filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ Kroot t k)
+    (hraw : ∀ t k ψ φ X, X ∈ Λ t k →
+      ‖((F t k).activity X).globalEval ψ φ‖ ≤
+        Hraw t k * appendixFHoleExpWeight HF κ X.val)
+    (hint : ∀ t k Y,
+      Y ∈ appendixFTargetRegion
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF (z t k) => skeleton HF X.val)
+        (fun X : OmegaPolymerType HF (z t k) => X.val)
+        (Λ t k) →
+      ∀ ψ : (∀ _ : Cube d L, β),
+        Integrable
+          (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+            (balabanCMP116AppendixFConnectedLocalActivity
+              HF (z t k) (Λ t k) (F t k) Y).globalEval ψ φ)
+          (balabanCMP116Dmu0 (Cube d L) lieDim))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1)
+    (hBclosed :
+      ∀ t k,
+        (appendixFSecondUrsellMomentConstant d κ₀ *
+            (2 * Hraw t k * Kroot t k)) *
+            (1 - appendixFSecondUrsellLeafConstant d κ₀ *
+              (2 * Hraw t k * Kroot t k))⁻¹ ≤
+          C * Hscale * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    BalabanCMP116AppendixFHsharpGeometricMajorantProfile
+      HF zCarrier z Λ F ν g C Hscale c₀ κ κ₀ := by
+  have hε : ∀ t k, 0 ≤ 2 * Hraw t k * Kroot t k := by
+    intro t k
+    exact mul_nonneg (mul_nonneg zero_le_two (hHraw t k)) (hKroot t k)
+  have hκ : κ₀ ≤ κ := by
+    linarith
+  exact
+    balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_pointwise_ksharpRate_leafSummation
+      HF zCarrier z Λ F ν g
+      (fun t k => 2 * Hraw t k * Kroot t k)
+      hmargin hκ₀ hε hρ1
+      (balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_rooted
+        HF z Λ F ν Hraw Kroot hν hHraw hHraw_one hKroot hsmall
+        (le_of_lt hκ₀) hκ hroot hraw hint)
+      hdisj hnoedges hholes_ne hCq hBclosed
+
 /-- Source-normal `cluster3` constructor from the finite leaf summation plus
 pointwise first-activity extraction and explicit weight splitting. -/
 noncomputable def
@@ -570,6 +656,98 @@ noncomputable def
       (κ := κ) (κ₀ := κ₀)
       HF z Λ F ν epsilon hε hactivityKsharp)
     hdisj hnoedges hholes_ne hCq hBclosed
+
+/-- Source-normal `cluster3` contract from rooted raw-metric first-activity
+data, via the canonical Ksharp-rate leaf summation. -/
+noncomputable def
+    balabanCMP116AppendixFHsharpCluster3Contract_of_rawMetricDecay_rooted_ksharpRate
+    {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    (Hraw Kroot : ℕ → ℕ → ℝ)
+    {C Hscale c₀ κ κ₀ : ℝ}
+    (hinput : Prop) (hinput_holds : hinput)
+    (hultralocal : Prop) (hultralocal_holds : hultralocal)
+    (hlocal : Prop) (hlocal_holds : hlocal)
+    (hinfluence : Prop) (hinfluence_holds : hinfluence)
+    (hmargin : 3 * κ₀ + 3 ≤ κ)
+    (hκ₀ : 0 < κ₀)
+    (hν : ∀ t k, IsProbabilityMeasure (ν t k))
+    (hHraw : ∀ t k, 0 ≤ Hraw t k)
+    (hHraw_one : ∀ t k, Hraw t k ≤ 1)
+    (hKroot : ∀ t k, 0 ≤ Kroot t k)
+    (hsmall : ∀ t k, 2 * Hraw t k * Kroot t k ≤ 1)
+    (hρ1 :
+      ∀ t k,
+        appendixFSecondUrsellLeafConstant d κ₀ *
+            (2 * Hraw t k * Kroot t k) < 1)
+    (hroot : ∀ t k r,
+      (∑ X ∈ (Λ t k).filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ Kroot t k)
+    (hraw : ∀ t k ψ φ X, X ∈ Λ t k →
+      ‖((F t k).activity X).globalEval ψ φ‖ ≤
+        Hraw t k * appendixFHoleExpWeight HF κ X.val)
+    (hint : ∀ t k Y,
+      Y ∈ appendixFTargetRegion
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF (z t k) => skeleton HF X.val)
+        (fun X : OmegaPolymerType HF (z t k) => X.val)
+        (Λ t k) →
+      ∀ ψ : (∀ _ : Cube d L, β),
+        Integrable
+          (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+            (balabanCMP116AppendixFConnectedLocalActivity
+              HF (z t k) (Λ t k) (F t k) Y).globalEval ψ φ)
+          (balabanCMP116Dmu0 (Cube d L) lieDim))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1)
+    (hBclosed :
+      ∀ t k,
+        (appendixFSecondUrsellMomentConstant d κ₀ *
+            (2 * Hraw t k * Kroot t k)) *
+            (1 - appendixFSecondUrsellLeafConstant d κ₀ *
+              (2 * Hraw t k * Kroot t k))⁻¹ ≤
+          C * Hscale * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    AppendixFHsharpCluster3Contract HF zCarrier
+      (fun t k Y =>
+        balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k Y)
+      g C Hscale c₀ κ κ₀ := by
+  have hε : ∀ t k, 0 ≤ 2 * Hraw t k * Kroot t k := by
+    intro t k
+    exact mul_nonneg (mul_nonneg zero_le_two (hHraw t k)) (hKroot t k)
+  have hκ : κ₀ ≤ κ := by
+    linarith
+  exact
+    balabanCMP116AppendixFHsharpCluster3Contract_of_pointwise_ksharpRate_leafSummation
+      HF zCarrier z Λ F ν g
+      (fun t k => 2 * Hraw t k * Kroot t k)
+      hinput hinput_holds
+      hultralocal hultralocal_holds
+      hlocal hlocal_holds
+      hinfluence hinfluence_holds
+      hmargin hκ₀ hε hρ1
+      (balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_rooted
+        HF z Λ F ν Hraw Kroot hν hHraw hHraw_one hKroot hsmall
+        (le_of_lt hκ₀) hκ hroot hraw hint)
+      hdisj hnoedges hholes_ne hCq hBclosed
 
 /-- Real-part omega-rooted UV decay fed by the finite leaf summation plus
 pointwise first-activity extraction and explicit weight splitting.  The
@@ -830,5 +1008,104 @@ theorem
       (κ := κ) (κ₀ := κ₀)
       HF z Λ F ν epsilon hε hactivityKsharp)
     hdisj hnoedges hholes_ne hCq hBclosed
+
+/-- Real-part omega-rooted UV decay from rooted raw-metric first-activity data,
+using the canonical Ksharp-rate first gas and the leaf-summation `H#`
+consumer.  The four-margin is retained because the final rooted UV summability
+uses the residual comparison with `κ₀`. -/
+theorem
+    singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_ksharpRate
+    {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (Rsc : ℕ → ℕ → ℝ)
+    (g : ℕ → ℝ)
+    (Hraw Kroot : ℕ → ℕ → ℝ)
+    {C Hscale c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C)
+    (hHscale : 0 ≤ Hscale)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hκ₀ : 0 < κ₀)
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+                HF (z t k) (Λ t k) (F t k) (ν t k) P.val.val))
+    (hν : ∀ t k, IsProbabilityMeasure (ν t k))
+    (hHraw : ∀ t k, 0 ≤ Hraw t k)
+    (hHraw_one : ∀ t k, Hraw t k ≤ 1)
+    (hKroot : ∀ t k, 0 ≤ Kroot t k)
+    (hsmall : ∀ t k, 2 * Hraw t k * Kroot t k ≤ 1)
+    (hρ1 :
+      ∀ t k,
+        appendixFSecondUrsellLeafConstant d κ₀ *
+            (2 * Hraw t k * Kroot t k) < 1)
+    (hroot : ∀ t k r,
+      (∑ X ∈ (Λ t k).filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ Kroot t k)
+    (hraw : ∀ t k ψ φ X, X ∈ Λ t k →
+      ‖((F t k).activity X).globalEval ψ φ‖ ≤
+        Hraw t k * appendixFHoleExpWeight HF κ X.val)
+    (hint : ∀ t k Y,
+      Y ∈ appendixFTargetRegion
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF (z t k) => skeleton HF X.val)
+        (fun X : OmegaPolymerType HF (z t k) => X.val)
+        (Λ t k) →
+      ∀ ψ : (∀ _ : Cube d L, β),
+        Integrable
+          (fun φ : (∀ _ : Cube d L, Fin lieDim -> Real) =>
+            (balabanCMP116AppendixFConnectedLocalActivity
+              HF (z t k) (Λ t k) (F t k) Y).globalEval ψ φ)
+          (balabanCMP116Dmu0 (Cube d L) lieDim))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1)
+    (hBclosed :
+      ∀ t k,
+        (appendixFSecondUrsellMomentConstant d κ₀ *
+            (2 * Hraw t k * Kroot t k)) *
+            (1 - appendixFSecondUrsellLeafConstant d κ₀ *
+              (2 * Hraw t k * Kroot t k))⁻¹ ≤
+          C * Hscale * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    SingleScaleUVDecay Rsc g
+      ((C * Hscale) *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹)
+      c₀ κ₀ := by
+  have hε : ∀ t k, 0 ≤ 2 * Hraw t k * Kroot t k := by
+    intro t k
+    exact mul_nonneg (mul_nonneg zero_le_two (hHraw t k)) (hKroot t k)
+  have hκle : κ₀ ≤ κ := by
+    linarith
+  exact
+    singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_pointwise_ksharpRate_leafSummation
+      HF zCarrier r z Λ F ν Rsc g
+      (fun t k => 2 * Hraw t k * Kroot t k)
+      hC hHscale hg hκ hκ₀ hR hε hρ1
+      (balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_rooted
+        HF z Λ F ν Hraw Kroot hν hHraw hHraw_one hKroot hsmall
+        (le_of_lt hκ₀) hκle hroot hraw hint)
+      hdisj hnoedges hholes_ne hCq hBclosed
 
 end YangMills.RG
