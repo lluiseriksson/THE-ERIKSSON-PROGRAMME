@@ -401,6 +401,9 @@ import YangMills.RG.AppendixFHsharpProfile
 -- CMP116 source-facing H# contracts: source theorems stated directly for the
 -- named CMP116 integrated H# object package into cluster3/profile consumers.
 import YangMills.RG.BalabanCMP116HsharpSource
+-- Marked-vertex source contracts for H#: a bound on the root-marked
+-- vertex-product sum feeds the CMP116 profile/cluster3/UV consumers.
+import YangMills.RG.AppendixFHsharpMarkedVertexSource
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

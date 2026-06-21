@@ -25,6 +25,7 @@ import YangMills.RG.AppendixFSecondUrsellSource
 import YangMills.RG.AppendixFCluster3Geometry
 import YangMills.RG.AppendixFHsharpCluster3
 import YangMills.RG.AppendixFHsharpProfile
+import YangMills.RG.AppendixFHsharpMarkedVertexSource
 
 /-! # Oracle check — one command, every headline
 
@@ -795,6 +796,16 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_weighted_tree_geometric
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_weighted_tree_geometric
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_weighted_tree_geometric
+-- marked-vertex source endpoint: the remaining leaf/root estimate may be
+-- stated directly for the root-marked vertex-product sum.
+#print axioms YangMills.RG.omegaPolymerReindex
+#print axioms YangMills.RG.omegaPolymerReindex_val
+#print axioms YangMills.RG.omegaPolymerSkeletonRoot
+#print axioms YangMills.RG.omegaPolymerSkeletonRoot_mem
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_canonicalMarkedRootVertexSum
+#print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_markedRootVertex_geometric
+#print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_markedRootVertex_geometric
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_markedRootVertex_geometric
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality
