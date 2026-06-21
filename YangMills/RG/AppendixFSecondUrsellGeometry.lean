@@ -41,23 +41,23 @@ noncomputable def appendixFHoleRootSumConstant (d : ℕ) (κ₀ : ℝ) : ℝ :=
 noncomputable def appendixFSecondUrsellMomentConstant (d : ℕ) (κ₀ : ℝ) : ℝ :=
   max 1 (max κ₀⁻¹ (appendixFHoleRootSumConstant d κ₀))
 
-private theorem appendixFSecondUrsellMomentConstant_one_le
+theorem appendixFSecondUrsellMomentConstant_one_le
     (d : ℕ) (κ₀ : ℝ) :
     1 ≤ appendixFSecondUrsellMomentConstant d κ₀ := by
   exact le_max_left _ _
 
-private theorem appendixFSecondUrsellMomentConstant_inv_le
+theorem appendixFSecondUrsellMomentConstant_inv_le
     (d : ℕ) (κ₀ : ℝ) :
     κ₀⁻¹ ≤ appendixFSecondUrsellMomentConstant d κ₀ := by
   exact (le_max_left _ _).trans (le_max_right _ _)
 
-private theorem appendixFSecondUrsellMomentConstant_root_le
+theorem appendixFSecondUrsellMomentConstant_root_le
     (d : ℕ) (κ₀ : ℝ) :
     appendixFHoleRootSumConstant d κ₀
       ≤ appendixFSecondUrsellMomentConstant d κ₀ := by
   exact (le_max_right _ _).trans (le_max_right _ _)
 
-private theorem appendixFSecondUrsellMomentConstant_nonneg
+theorem appendixFSecondUrsellMomentConstant_nonneg
     (d : ℕ) (κ₀ : ℝ) :
     0 ≤ appendixFSecondUrsellMomentConstant d κ₀ :=
   (zero_le_one).trans (appendixFSecondUrsellMomentConstant_one_le d κ₀)

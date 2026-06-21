@@ -795,6 +795,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.omegaClusterUnion_discreteModifiedMetric_add_one_le_sum_of_spanningTree
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_targetExpWeight_mul
 #print axioms YangMills.RG.appendixFHole_incomp_expWeightSum_le_skeletonCard_mul
+#print axioms YangMills.RG.appendixFSecondUrsellMomentConstant_one_le
+#print axioms YangMills.RG.appendixFSecondUrsellMomentConstant_inv_le
+#print axioms YangMills.RG.appendixFSecondUrsellMomentConstant_root_le
+#print axioms YangMills.RG.appendixFSecondUrsellMomentConstant_nonneg
 #print axioms YangMills.RG.appendixFHole_rootedFiniteMetricMomentExpWeightSum_le
 #print axioms YangMills.RG.appendixFHole_containedMetricMomentExpWeightSum_le_metric_mul
 #print axioms YangMills.RG.appendixFHole_incomp_expWeight_metricMomentSum_le_factorial_mul
@@ -811,7 +815,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum_le_of_vertexwise_walk_budget
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum_le_kernelSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeNormalizedKernelSum_le_momentBudget
+#print axioms YangMills.RG.appendixFSecondUrsellLeafConstant
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum_le_prod_childMomentBudget_mul_rootMoment
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum_le_childFactor_mul_momentPow
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootSum_le_geometric_of_expWeight
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_expWeight_leafSummation
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation_of_skeleton_nonempty
 -- source-facing cluster3 hole geometry: Ω as the active complement of holes
 -- and the rooted local incompatibility contract consumed by Route A.

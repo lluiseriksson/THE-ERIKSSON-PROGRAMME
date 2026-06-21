@@ -895,6 +895,179 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeNormalizedKernelSum_le
     appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeNormalizedKernelSum_le_of_vertexwise_walk_budget
       HF zK w κ₀ r n T A hT hw hA_nonneg hstep
 
+/-- Closed ratio for the finite second-Ursell leaf summation after summing
+complete-tree shapes.  The factor `4` is purely combinatorial; the moment
+constant itself does not contain it. -/
+noncomputable def appendixFSecondUrsellLeafConstant
+    (d : ℕ) (κ₀ : ℝ) : ℝ :=
+  4 * appendixFSecondUrsellMomentConstant d κ₀ ^ 2
+
+/-- Concrete fixed-parent child-moment bound before summing the marked root.
+
+This is the fixed-tree adapter with the normalized child budgets instantiated
+by the finite hard-core moment estimate. -/
+theorem
+    appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum_le_prod_childMomentBudget_mul_rootMoment
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (κ₀ : ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (T : Finset (Sym2 (Fin (n + 1))))
+    (hT : T ∈ KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1))))
+    (hw : ∀ Q : OmegaPolymerType HF zK, 0 ≤ w Q)
+    (hκ₀ : 0 < κ₀)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne : ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum
+        HF zK w κ₀ r n T ≤
+      (∏ v ∈ Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0),
+        ((KP.rootedChildCount T v).factorial : ℝ) *
+          appendixFSecondUrsellMomentConstant d κ₀ ^
+            (KP.rootedChildCount T v + 1)) *
+        appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeRootMomentSum
+          HF zK w r n T := by
+  rw [appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum_eq_normalizedKernelSum]
+  exact
+    appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeNormalizedKernelSum_le_momentBudget
+      HF zK w κ₀ r n T hT hw hκ₀ hdisj hnoedges hholes_ne hCq
+
+/-- Fixed-tree `H#` parent-kernel bound after summing the marked root.
+
+For one complete-tree shape, all finite child and root metric moments close to
+the child-factorial product times the exact moment power `M^(2n+1)`. -/
+theorem
+    appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum_le_childFactor_mul_momentPow
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (κ₀ : ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (T : Finset (Sym2 (Fin (n + 1))))
+    (hT : T ∈ KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1))))
+    (hw : ∀ Q : OmegaPolymerType HF zK, 0 ≤ w Q)
+    (hw_exp :
+      ∀ Q : OmegaPolymerType HF zK,
+        w Q ≤ appendixFHoleExpWeight HF (2 * κ₀) Q.val)
+    (hκ₀ : 0 < κ₀)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne : ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum
+        HF zK w κ₀ r n T
+      ≤
+    (∏ v : Fin (n + 1),
+      ((KP.rootedChildCount T v).factorial : ℝ)) *
+      appendixFSecondUrsellMomentConstant d κ₀ ^ (2 * n + 1) := by
+  classical
+  let nonroot : Finset (Fin (n + 1)) :=
+    Finset.univ.filter (fun v : Fin (n + 1) => v ≠ 0)
+  let c : Fin (n + 1) → ℕ := fun v => KP.rootedChildCount T v
+  let M : ℝ := appendixFSecondUrsellMomentConstant d κ₀
+  have hfixed :=
+    appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum_le_prod_childMomentBudget_mul_rootMoment
+      HF zK w κ₀ r n T hT hw hκ₀ hdisj hnoedges hholes_ne hCq
+  have hroot :
+      appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeRootMomentSum
+          HF zK w r n T
+        ≤ ((c 0).factorial : ℝ) * M ^ (c 0 + 1) := by
+    simpa [appendixFHoleHsharpWeightedTreeMarkedRootFixedTreeRootMomentSum,
+      c, M] using
+      appendixFHole_markedRootMetricMomentSum_le_factorial_mul
+        HF zK w κ₀ r (c 0) hw hw_exp hκ₀ hdisj hnoedges hholes_ne hCq
+  have hM_nonneg : 0 ≤ M := by
+    simpa [M] using appendixFSecondUrsellMomentConstant_nonneg d κ₀
+  have hchild_nonneg :
+      0 ≤ ∏ v ∈ nonroot,
+        ((c v).factorial : ℝ) * M ^ (c v + 1) := by
+    exact Finset.prod_nonneg fun v _hv =>
+      mul_nonneg (by positivity) (pow_nonneg hM_nonneg _)
+  have hbounded :
+      appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum
+          HF zK w κ₀ r n T
+        ≤
+      (∏ v ∈ nonroot,
+        ((c v).factorial : ℝ) * M ^ (c v + 1)) *
+        (((c 0).factorial : ℝ) * M ^ (c 0 + 1)) := by
+    refine hfixed.trans ?_
+    exact mul_le_mul_of_nonneg_left hroot hchild_nonneg
+  have hfactor_split :
+      (∏ v ∈ nonroot, ((c v).factorial : ℝ)) *
+          ((c 0).factorial : ℝ)
+        =
+      ∏ v : Fin (n + 1), ((c v).factorial : ℝ) := by
+    dsimp [nonroot]
+    rw [Finset.filter_ne',
+      ← Finset.mul_prod_erase Finset.univ
+        (fun v : Fin (n + 1) => ((c v).factorial : ℝ))
+        (Finset.mem_univ 0)]
+    ring
+  have hpow_split :
+      (∏ v ∈ nonroot, M ^ (c v + 1)) * M ^ (c 0 + 1)
+        =
+      ∏ v : Fin (n + 1), M ^ (c v + 1) := by
+    dsimp [nonroot]
+    rw [Finset.filter_ne',
+      ← Finset.mul_prod_erase Finset.univ
+        (fun v : Fin (n + 1) => M ^ (c v + 1))
+        (Finset.mem_univ 0)]
+    ring
+  have hsum_exp :
+      (∑ v : Fin (n + 1), (c v + 1)) = 2 * n + 1 := by
+    have hsum_c : (∑ v : Fin (n + 1), c v) = n := by
+      simpa [c] using KP.sum_rootedChildCount_eq (T := T)
+    rw [Finset.sum_add_distrib, hsum_c]
+    simp [Fintype.card_fin]
+    omega
+  have hpow_all :
+      (∏ v : Fin (n + 1), M ^ (c v + 1)) =
+        M ^ (2 * n + 1) := by
+    calc
+      (∏ v : Fin (n + 1), M ^ (c v + 1))
+          = M ^ (∑ v : Fin (n + 1), (c v + 1)) := by
+            rw [Finset.prod_pow_eq_pow_sum]
+      _ = M ^ (2 * n + 1) := by
+            rw [hsum_exp]
+  have hbudget :
+      (∏ v ∈ nonroot,
+        ((c v).factorial : ℝ) * M ^ (c v + 1)) *
+        (((c 0).factorial : ℝ) * M ^ (c 0 + 1))
+        =
+      (∏ v : Fin (n + 1), ((c v).factorial : ℝ)) *
+        M ^ (2 * n + 1) := by
+    rw [Finset.prod_mul_distrib]
+    calc
+      ((∏ v ∈ nonroot, ((c v).factorial : ℝ)) *
+          (∏ v ∈ nonroot, M ^ (c v + 1))) *
+          (((c 0).factorial : ℝ) * M ^ (c 0 + 1))
+          =
+        ((∏ v ∈ nonroot, ((c v).factorial : ℝ)) *
+            ((c 0).factorial : ℝ)) *
+          ((∏ v ∈ nonroot, M ^ (c v + 1)) * M ^ (c 0 + 1)) := by
+            ring
+      _ =
+        (∏ v : Fin (n + 1), ((c v).factorial : ℝ)) *
+          M ^ (2 * n + 1) := by
+            rw [hfactor_split, hpow_split, hpow_all]
+  exact hbounded.trans_eq hbudget
+
 /-- If the vertex weight is bounded by the spare exponential weight used in
 the hard-core moment kernel, the parent-oriented complete-tree overcount is
 bounded by the kernelized complete-tree sum.  This is the bridge from the
@@ -993,6 +1166,136 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum_le_kernelSum
           simp [appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentKernelSum,
             marked, all, topTrees, nonroot, kernel]
 
+/-- Marked-root `H#` leaf summation with the closed finite geometric ratio.
+
+This is the aggregate finite theorem: the raw marked-root tree sum is
+overcounted by complete-tree parent kernels, each fixed tree is bounded by the
+child-factorial moment power, and the complete-tree shapes are summed by the
+rooted child-count `4^n` theorem. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootSum_le_geometric_of_expWeight
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (κ₀ : ℝ)
+    (hκ₀ : 0 < κ₀)
+    (hw : ∀ Q : OmegaPolymerType HF zK, 0 ≤ w Q)
+    (hw_exp :
+      ∀ Q : OmegaPolymerType HF zK,
+        w Q ≤ appendixFHoleExpWeight HF (2 * κ₀) Q.val)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne : ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    ((n : ℝ) + 1) *
+        appendixFHoleHsharpWeightedTreeMarkedRootSum
+          HF zK w r n
+      ≤
+    appendixFSecondUrsellMomentConstant d κ₀ *
+      appendixFSecondUrsellLeafConstant d κ₀ ^ n := by
+  classical
+  let topTrees : Finset (Finset (Sym2 (Fin (n + 1)))) :=
+    KP.spanningTrees (⊤ : SimpleGraph (Fin (n + 1)))
+  let M : ℝ := appendixFSecondUrsellMomentConstant d κ₀
+  let norm : ℝ := ((n : ℝ) + 1) * (((n + 1).factorial : ℝ))⁻¹
+  let S : ℝ :=
+    ∑ T ∈ topTrees,
+      ∏ v : Fin (n + 1), ((KP.rootedChildCount T v).factorial : ℝ)
+  have hM_nonneg : 0 ≤ M := by
+    simpa [M] using appendixFSecondUrsellMomentConstant_nonneg d κ₀
+  have hnorm_nonneg : 0 ≤ norm := by
+    dsimp [norm]
+    positivity
+  have hraw_kernel :
+      appendixFHoleHsharpWeightedTreeMarkedRootRawSum HF zK w r n
+        ≤
+      appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentKernelSum
+        HF zK w κ₀ r n := by
+    exact
+      (appendixFHoleHsharpWeightedTreeMarkedRootRawSum_le_completeTreeParentSum
+        HF zK w r n hw).trans
+        (appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentSum_le_kernelSum
+          HF zK w κ₀ r n hw hw_exp)
+  have hkernel :
+      appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentKernelSum
+          HF zK w κ₀ r n
+        ≤
+      ∑ T ∈ topTrees,
+        (∏ v : Fin (n + 1),
+          ((KP.rootedChildCount T v).factorial : ℝ)) *
+          M ^ (2 * n + 1) := by
+    calc
+      appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentKernelSum
+          HF zK w κ₀ r n
+          =
+        ∑ T ∈ topTrees,
+          appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum
+            HF zK w κ₀ r n T := by
+            simpa [topTrees] using
+              appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentKernelSum_eq_sum_fixed
+                HF zK w κ₀ r n
+      _ ≤
+        ∑ T ∈ topTrees,
+          (∏ v : Fin (n + 1),
+            ((KP.rootedChildCount T v).factorial : ℝ)) *
+            M ^ (2 * n + 1) := by
+            refine Finset.sum_le_sum ?_
+            intro T hT
+            simpa [M] using
+              appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum_le_childFactor_mul_momentPow
+                HF zK w κ₀ r n T hT hw hw_exp hκ₀ hdisj hnoedges
+                hholes_ne hCq
+  have htree_sum : norm * S ≤ (4 : ℝ) ^ n := by
+    simpa [norm, S, topTrees] using
+      KP.rootedChildCount_factorialTreeSum_normalized_le_four_pow n
+  have hsum_const :
+      (∑ T ∈ topTrees,
+        (∏ v : Fin (n + 1),
+          ((KP.rootedChildCount T v).factorial : ℝ)) *
+          M ^ (2 * n + 1))
+        = S * M ^ (2 * n + 1) := by
+    dsimp [S]
+    rw [Finset.sum_mul]
+  calc
+    ((n : ℝ) + 1) *
+        appendixFHoleHsharpWeightedTreeMarkedRootSum
+          HF zK w r n
+        =
+      norm * appendixFHoleHsharpWeightedTreeMarkedRootRawSum HF zK w r n := by
+        rw [appendixFHoleHsharpWeightedTreeMarkedRootSum_eq_inv_factorial_mul_rawSum]
+        simp [norm]
+        ring
+    _ ≤
+      norm *
+        appendixFHoleHsharpWeightedTreeMarkedRootCompleteParentKernelSum
+          HF zK w κ₀ r n := by
+        exact mul_le_mul_of_nonneg_left hraw_kernel hnorm_nonneg
+    _ ≤
+      norm *
+        (∑ T ∈ topTrees,
+          (∏ v : Fin (n + 1),
+            ((KP.rootedChildCount T v).factorial : ℝ)) *
+            M ^ (2 * n + 1)) := by
+        exact mul_le_mul_of_nonneg_left hkernel hnorm_nonneg
+    _ =
+      M ^ (2 * n + 1) * (norm * S) := by
+        rw [hsum_const]
+        ring
+    _ ≤ M ^ (2 * n + 1) * (4 : ℝ) ^ n := by
+        exact mul_le_mul_of_nonneg_left htree_sum (pow_nonneg hM_nonneg _)
+    _ =
+      appendixFSecondUrsellMomentConstant d κ₀ *
+        appendixFSecondUrsellLeafConstant d κ₀ ^ n := by
+        simp [appendixFSecondUrsellLeafConstant, M]
+        ring_nf
+
 /-- Target-decaying composition from a marked-root leaf-summation bound.
 
 The order matters: first use the fixed-union metric stitching theorem to
@@ -1046,6 +1349,52 @@ theorem appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummat
           appendixFHoleExpWeight HF rate Y *
           Cleaf ^ n := by
       ring
+
+/-- Direct target-decaying weighted-tree bound from the finite leaf summation.
+
+The target exponential is extracted first, then the new marked-root geometric
+leaf bound supplies `Croot = M` and `Cleaf = 4*M^2`. -/
+theorem appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_expWeight_leafSummation
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w u : OmegaPolymerType HF zK → ℝ)
+    (Y : Finset (Cube d L))
+    (r : Cube d L)
+    (n : ℕ)
+    (rate κ₀ : ℝ)
+    (hrate : 0 ≤ rate)
+    (hw : ∀ Q : OmegaPolymerType HF zK, 0 ≤ w Q)
+    (hu : ∀ Q : OmegaPolymerType HF zK, 0 ≤ u Q)
+    (hsplit :
+      ∀ Q : OmegaPolymerType HF zK,
+        w Q ≤ appendixFHoleExpWeight HF rate Q.val * u Q)
+    (hu_exp :
+      ∀ Q : OmegaPolymerType HF zK,
+        u Q ≤ appendixFHoleExpWeight HF (2 * κ₀) Q.val)
+    (hr : r ∈ skeleton HF Y)
+    (hκ₀ : 0 < κ₀)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne : ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Y n ≤
+      appendixFSecondUrsellMomentConstant d κ₀ *
+        appendixFHoleExpWeight HF rate Y *
+        appendixFSecondUrsellLeafConstant d κ₀ ^ n := by
+  exact
+    appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation
+      HF zK w u Y r n rate
+      (appendixFSecondUrsellMomentConstant d κ₀)
+      (appendixFSecondUrsellLeafConstant d κ₀)
+      hrate hw hu hsplit hr
+      (appendixFHoleHsharpWeightedTreeMarkedRootSum_le_geometric_of_expWeight
+        HF zK u r n κ₀ hκ₀ hu hu_exp hdisj hnoedges hholes_ne hCq)
 
 /-- Nonempty-target version of
 `appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation`.
