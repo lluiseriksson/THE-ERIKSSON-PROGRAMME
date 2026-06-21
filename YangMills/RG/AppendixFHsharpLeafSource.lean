@@ -143,6 +143,59 @@ noncomputable def
   simpa [zInt, Q, appendixFHoleExpWeight]
     using hleaf
 
+/-- Normalize a source-facing pointwise `K#` estimate at the canonical
+first-gas rate into the residual-times-leaf product expected by the finite
+marked-root leaf summation. -/
+theorem
+    balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_residual_mul_leaf_of_ksharpRate
+    {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β)
+          (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (epsilon : ℕ → ℕ → ℝ)
+    {κ κ₀ : ℝ}
+    (hε : ∀ t k, 0 ≤ epsilon t k)
+    (hactivityKsharp :
+      ∀ t k (Q : OmegaPolymerType HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k)),
+        ‖balabanCMP116AppendixFIntegratedKsharpActivityFamily
+            HF z Λ F ν t k Q.val‖ ≤
+          epsilon t k *
+            appendixFHoleExpWeight HF
+              (appendixFKsharpRate κ κ₀) Q.val) :
+    ∀ t k (Q : OmegaPolymerType HF
+      (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+        HF z Λ F ν t k)),
+      ‖balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k Q.val‖ ≤
+        epsilon t k *
+          (appendixFHoleExpWeight HF
+              (polymerClusterResidualRate κ κ₀) Q.val *
+            appendixFHoleExpWeight HF (2 * κ₀) Q.val) := by
+  intro t k Q
+  calc
+    ‖balabanCMP116AppendixFIntegratedKsharpActivityFamily
+        HF z Λ F ν t k Q.val‖
+        ≤ epsilon t k *
+            appendixFHoleExpWeight HF
+              (appendixFKsharpRate κ κ₀) Q.val :=
+      hactivityKsharp t k Q
+    _ ≤ epsilon t k *
+        (appendixFHoleExpWeight HF
+            (polymerClusterResidualRate κ κ₀) Q.val *
+          appendixFHoleExpWeight HF (2 * κ₀) Q.val) :=
+      mul_le_mul_of_nonneg_left
+        (appendixFHoleExpWeight_ksharpRate_le_residual_mul_leafBudget
+          HF κ κ₀ Q.val)
+        (hε t k)
+
 /-- CMP116 geometric `H#` profile from a single pointwise activity bound with
 the source-normal split already multiplied out.
 

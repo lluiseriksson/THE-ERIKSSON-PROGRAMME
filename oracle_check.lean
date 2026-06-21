@@ -221,6 +221,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleExpWeight_ksharpRate_factor
 #print axioms YangMills.RG.appendixFHoleExpWeight_antitone
 #print axioms YangMills.RG.appendixFHoleExpWeight_leafRemainder_le
+#print axioms YangMills.RG.appendixFHoleExpWeight_ksharpRate_le_residual_mul_leafBudget
 -- residual summability interface: the source estimate itself is packaged
 -- separately from either residual-rate or reference-`κ₀` geometric summability.
 #print axioms YangMills.RG.ClusterExpansionWithHolesEstimate.residualRate_nonneg_of_three_mul_add_le
@@ -872,6 +873,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_pointwise_expWeight_leafSummation
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_expWeight_leafSummation
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_pointwise_expWeight_leafSummation
+#print axioms YangMills.RG.balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_residual_mul_leaf_of_ksharpRate
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

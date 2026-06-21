@@ -105,6 +105,21 @@ theorem appendixFHoleExpWeight_leafRemainder_le
       appendixFHoleExpWeight HF (2 * κ₀) X :=
   appendixFHoleExpWeight_antitone HF (by linarith) X
 
+/-- A first-gas `K#` exponential weight is bounded by the product of the
+final residual weight and the hard-core `2κ₀` leaf weight. -/
+theorem appendixFHoleExpWeight_ksharpRate_le_residual_mul_leafBudget
+    {d L : ℕ} (HF : HoleFamily d L) (κ κ₀ : ℝ)
+    (X : Finset (Cube d L)) :
+    appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) X ≤
+      appendixFHoleExpWeight HF
+          (polymerClusterResidualRate κ κ₀) X *
+        appendixFHoleExpWeight HF (2 * κ₀) X := by
+  rw [appendixFHoleExpWeight_ksharpRate_factor]
+  exact mul_le_mul_of_nonneg_left
+    (appendixFHoleExpWeight_leafRemainder_le HF κ₀ X)
+    (appendixFHoleExpWeight_nonneg HF
+      (polymerClusterResidualRate κ κ₀) X)
+
 /-- Restrict the existing rooted geometric modified-metric sum to a finite
 raw family `Λ`.  This adds no analytic content: it is the finite subsum of the
 rooted `OmegaPolymerType` summability theorem. -/
