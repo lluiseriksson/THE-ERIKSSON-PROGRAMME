@@ -466,6 +466,65 @@ theorem appendixFHole_rootedFiniteMetricMomentExpWeightSum_le
         simpa [Cj, mul_assoc] using
           metricMomentEnvelope_le (d := d) hκ₀ j
 
+/-- Target-contained finite metric-moment bound.  If a full target `Y` is
+representable by an active connected with-holes cover, then all polymers in a
+finite family whose full support is contained in `Y` can be summed by
+overcounting through active skeleton roots in `Y`.  This is the root-sum
+input needed by the later second-Ursell leaf-removal recursion. -/
+theorem appendixFHole_containedMetricMomentExpWeightSum_le_metric_mul
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF zK))
+    {Y : Finset (Cube d L)} (κ₀ : ℝ) (j : ℕ)
+    (hκ₀ : 0 < κ₀)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne : ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1)
+    (hY : Y ∈ appendixFTargetRegion
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF zK => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF zK => X.val)
+      Λ) :
+    (∑ Q ∈ Λ.filter (fun Q => Q.val ⊆ Y),
+      (((discreteModifiedMetric HF Q.val + 1 : ℕ) : ℝ) ^ j) *
+        appendixFHoleExpWeight HF (2 * κ₀) Q.val)
+      ≤
+    (((discreteModifiedMetric HF Y + 1 : ℕ) : ℝ)) *
+      ((j.factorial : ℝ) *
+        appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1)) := by
+  classical
+  let w : OmegaPolymerType HF zK → ℝ := fun Q =>
+    (((discreteModifiedMetric HF Q.val + 1 : ℕ) : ℝ) ^ j) *
+      appendixFHoleExpWeight HF (2 * κ₀) Q.val
+  let K₀ : ℝ :=
+    (j.factorial : ℝ) *
+      appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1)
+  have hw : ∀ Q, Q ∈ Λ → 0 ≤ w Q := by
+    intro Q _hQ
+    dsimp [w]
+    exact mul_nonneg (pow_nonneg (by positivity) j)
+      (appendixFHoleExpWeight_nonneg HF (2 * κ₀) Q.val)
+  have hK₀ : 0 ≤ K₀ := by
+    dsimp [K₀]
+    exact mul_nonneg (by positivity)
+      (pow_nonneg (appendixFSecondUrsellMomentConstant_nonneg d κ₀) _)
+  have hroot : ∀ r : Cube d L,
+      (∑ Q ∈ Λ.filter
+          (fun Q => r ∈ skeleton HF Q.val), w Q) ≤ K₀ := by
+    intro r
+    simpa [w, K₀] using
+      appendixFHole_rootedFiniteMetricMomentExpWeightSum_le
+        HF zK Λ r κ₀ j hκ₀ hdisj hnoedges hholes_ne hCq
+  simpa [w, K₀] using
+    appendixFHole_containedWeightSum_le_metric_mul_of_rooted
+      HF zK Λ w hw hK₀ hroot hY
+
 /-- Finite metric-moment bound over the source-facing hard-core
 incompatibility fiber.  Incompatibility is overcounted through active skeleton
 roots of `Q`; the number of such roots is then bounded by `d_M(Q)+1`. -/

@@ -699,6 +699,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_scaled_weightedTreeTerm
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_bound
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_geometric
+-- finite second-Ursell geometry for the future weighted leaf summation:
+-- target metric stitching, rooted hard-core sums, and factorial moments.
+#print axioms YangMills.RG.omegaClusterUnion_discreteModifiedMetric_add_one_le_sum_of_spanningTree
+#print axioms YangMills.RG.appendixFHole_incomp_expWeightSum_le_skeletonCard_mul
+#print axioms YangMills.RG.appendixFHole_rootedFiniteMetricMomentExpWeightSum_le
+#print axioms YangMills.RG.appendixFHole_containedMetricMomentExpWeightSum_le_metric_mul
+#print axioms YangMills.RG.appendixFHole_incomp_expWeight_metricMomentSum_le_factorial_mul
 -- closed source-facing Dimock-II `cluster3` contract for H#.
 #print axioms YangMills.RG.AppendixFHsharpCluster3Contract.of_unshifted_residual_bound
 #print axioms YangMills.RG.AppendixFHsharpCluster3Contract.residual_bound
