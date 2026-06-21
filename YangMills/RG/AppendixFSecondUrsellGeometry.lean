@@ -36,6 +36,129 @@ noncomputable def appendixFHoleRootSumConstant (d : ℕ) (κ₀ : ℝ) : ℝ :=
   (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
     (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹
 
+/-- A transparent envelope constant for rooted metric moments.  It dominates
+`1`, the inverse spare decay `κ₀⁻¹`, and the rooted geometric constant. -/
+noncomputable def appendixFSecondUrsellMomentConstant (d : ℕ) (κ₀ : ℝ) : ℝ :=
+  max 1 (max κ₀⁻¹ (appendixFHoleRootSumConstant d κ₀))
+
+private theorem appendixFSecondUrsellMomentConstant_one_le
+    (d : ℕ) (κ₀ : ℝ) :
+    1 ≤ appendixFSecondUrsellMomentConstant d κ₀ := by
+  exact le_max_left _ _
+
+private theorem appendixFSecondUrsellMomentConstant_inv_le
+    (d : ℕ) (κ₀ : ℝ) :
+    κ₀⁻¹ ≤ appendixFSecondUrsellMomentConstant d κ₀ := by
+  exact (le_max_left _ _).trans (le_max_right _ _)
+
+private theorem appendixFSecondUrsellMomentConstant_root_le
+    (d : ℕ) (κ₀ : ℝ) :
+    appendixFHoleRootSumConstant d κ₀
+      ≤ appendixFSecondUrsellMomentConstant d κ₀ := by
+  exact (le_max_right _ _).trans (le_max_right _ _)
+
+private theorem appendixFSecondUrsellMomentConstant_nonneg
+    (d : ℕ) (κ₀ : ℝ) :
+    0 ≤ appendixFSecondUrsellMomentConstant d κ₀ :=
+  (zero_le_one).trans (appendixFSecondUrsellMomentConstant_one_le d κ₀)
+
+private theorem real_pow_div_factorial_le_exp {x : ℝ} (hx : 0 ≤ x)
+    (j : ℕ) :
+    x ^ j / (j.factorial : ℝ) ≤ Real.exp x := by
+  have hnonneg :
+      ∀ i ∈ Finset.range (j + 1), 0 ≤ x ^ i / (i.factorial : ℝ) := by
+    intro i _hi
+    exact div_nonneg (pow_nonneg hx i) (by positivity)
+  have hsingle :
+      x ^ j / (j.factorial : ℝ) ≤
+        ∑ i ∈ Finset.range (j + 1), x ^ i / (i.factorial : ℝ) := by
+    exact Finset.single_le_sum hnonneg (by simp)
+  exact hsingle.trans (Real.sum_le_exp_of_nonneg hx (j + 1))
+
+private theorem real_pow_le_factorial_mul_exp {x : ℝ} (hx : 0 ≤ x)
+    (j : ℕ) :
+    x ^ j ≤ (j.factorial : ℝ) * Real.exp x := by
+  have h := real_pow_div_factorial_le_exp hx j
+  have hfact : 0 < (j.factorial : ℝ) := by
+    exact_mod_cast Nat.factorial_pos j
+  rw [div_le_iff₀ hfact] at h
+  simpa [mul_comm, mul_left_comm, mul_assoc] using h
+
+private theorem metric_pow_exp_two_mul_le_factorial_inv_pow_exp
+    {κ : ℝ} (hκ : 0 < κ) (j m : ℕ) :
+    ((m : ℝ) ^ j) * Real.exp (-((2 * κ) * (m : ℝ))) ≤
+      (j.factorial : ℝ) * κ⁻¹ ^ j *
+        Real.exp (-(κ * (m : ℝ))) := by
+  have hm_nonneg : 0 ≤ (m : ℝ) := Nat.cast_nonneg m
+  have hx : 0 ≤ κ * (m : ℝ) := mul_nonneg hκ.le hm_nonneg
+  have hpow := real_pow_le_factorial_mul_exp hx j
+  have hκpow_nonneg : 0 ≤ (κ ^ j)⁻¹ :=
+    inv_nonneg.mpr (pow_nonneg hκ.le j)
+  have hκpow_ne : κ ^ j ≠ 0 := pow_ne_zero j hκ.ne'
+  have hmpow :
+      (m : ℝ) ^ j ≤
+        (κ ^ j)⁻¹ * ((j.factorial : ℝ) * Real.exp (κ * (m : ℝ))) := by
+    calc
+      (m : ℝ) ^ j = (κ ^ j)⁻¹ * ((κ * (m : ℝ)) ^ j) := by
+        rw [mul_pow]
+        rw [← mul_assoc]
+        rw [inv_mul_cancel₀ hκpow_ne]
+        simp
+      _ ≤ (κ ^ j)⁻¹ *
+            ((j.factorial : ℝ) * Real.exp (κ * (m : ℝ))) := by
+          exact mul_le_mul_of_nonneg_left hpow hκpow_nonneg
+  have hexp_nonneg : 0 ≤ Real.exp (-((2 * κ) * (m : ℝ))) :=
+    Real.exp_nonneg _
+  calc
+    ((m : ℝ) ^ j) * Real.exp (-((2 * κ) * (m : ℝ)))
+        ≤ ((κ ^ j)⁻¹ * ((j.factorial : ℝ) *
+              Real.exp (κ * (m : ℝ)))) *
+            Real.exp (-((2 * κ) * (m : ℝ))) :=
+          mul_le_mul_of_nonneg_right hmpow hexp_nonneg
+    _ = (j.factorial : ℝ) * (κ ^ j)⁻¹ *
+          (Real.exp (κ * (m : ℝ)) *
+            Real.exp (-((2 * κ) * (m : ℝ)))) := by ring
+    _ = (j.factorial : ℝ) * (κ ^ j)⁻¹ *
+          Real.exp (κ * (m : ℝ) + -((2 * κ) * (m : ℝ))) := by
+          rw [Real.exp_add]
+    _ = (j.factorial : ℝ) * κ⁻¹ ^ j *
+          Real.exp (-(κ * (m : ℝ))) := by
+          rw [inv_pow]
+          ring_nf
+
+private theorem metricMomentEnvelope_le
+    {d : ℕ} {κ₀ : ℝ} (hκ₀ : 0 < κ₀) (j : ℕ) :
+    (j.factorial : ℝ) * κ₀⁻¹ ^ j *
+        appendixFHoleRootSumConstant d κ₀
+      ≤
+    (j.factorial : ℝ) *
+      appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1) := by
+  let C := appendixFSecondUrsellMomentConstant d κ₀
+  have hC_nonneg : 0 ≤ C :=
+    appendixFSecondUrsellMomentConstant_nonneg d κ₀
+  have hC_inv : κ₀⁻¹ ≤ C :=
+    appendixFSecondUrsellMomentConstant_inv_le d κ₀
+  have hC_root : appendixFHoleRootSumConstant d κ₀ ≤ C :=
+    appendixFSecondUrsellMomentConstant_root_le d κ₀
+  have hinv_nonneg : 0 ≤ κ₀⁻¹ := inv_nonneg.mpr hκ₀.le
+  have hinv_pow_nonneg : 0 ≤ κ₀⁻¹ ^ j := pow_nonneg hinv_nonneg j
+  have hpow : κ₀⁻¹ ^ j ≤ C ^ j :=
+    pow_le_pow_left₀ hinv_nonneg hC_inv j
+  have hfactor :
+      κ₀⁻¹ ^ j * appendixFHoleRootSumConstant d κ₀
+        ≤ C ^ (j + 1) := by
+    calc
+      κ₀⁻¹ ^ j * appendixFHoleRootSumConstant d κ₀
+          ≤ κ₀⁻¹ ^ j * C :=
+            mul_le_mul_of_nonneg_left hC_root hinv_pow_nonneg
+      _ ≤ C ^ j * C :=
+            mul_le_mul_of_nonneg_right hpow hC_nonneg
+      _ = C ^ (j + 1) := by
+            rw [pow_succ]
+  have hfact_nonneg : 0 ≤ (j.factorial : ℝ) := by positivity
+  simpa [C, mul_assoc] using
+    mul_le_mul_of_nonneg_left hfactor hfact_nonneg
+
 /-- A KP spanning tree for the `Ω`-active with-holes polymer system stitches
 minimal modified-metric spanning sets for the leaves into one connected
 spanning set for the full cluster union.  Consequently the shifted modified
@@ -260,5 +383,213 @@ theorem appendixFHole_incomp_expWeightSum_le_skeletonCard_mul
       ≤ ((skeleton HF Q.val).card : ℝ) *
         appendixFHoleRootSumConstant d κ₀
   exact hfinite.trans (hbi.trans (hroots.trans_eq hsum_const))
+
+/-- Rooted finite metric-moment bound.  The extra factor
+`(d_M(Q')+1)^j` is paid for by one spare exponential decay `κ₀`, using the
+elementary inequality `x^j / j! ≤ exp x`, and the remaining `κ₀`-decay is
+summed by the rooted modified-metric theorem. -/
+theorem appendixFHole_rootedFiniteMetricMomentExpWeightSum_le
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF zK))
+    (r : Cube d L) (κ₀ : ℝ) (j : ℕ)
+    (hκ₀ : 0 < κ₀)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne : ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    (∑ Q' ∈ Λ.filter (fun Q' => r ∈ skeleton HF Q'.val),
+      (((discreteModifiedMetric HF Q'.val + 1 : ℕ) : ℝ) ^ j) *
+        appendixFHoleExpWeight HF (2 * κ₀) Q'.val)
+      ≤
+    (j.factorial : ℝ) *
+      appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1) := by
+  classical
+  let Cj : ℝ := (j.factorial : ℝ) * κ₀⁻¹ ^ j
+  have hCj_nonneg : 0 ≤ Cj := by
+    dsimp [Cj]
+    positivity
+  have hpoint :
+      ∀ Q' ∈ Λ.filter (fun Q' => r ∈ skeleton HF Q'.val),
+        (((discreteModifiedMetric HF Q'.val + 1 : ℕ) : ℝ) ^ j) *
+          appendixFHoleExpWeight HF (2 * κ₀) Q'.val
+          ≤
+        Cj * appendixFHoleExpWeight HF κ₀ Q'.val := by
+    intro Q' _hQ'
+    simpa [Cj, appendixFHoleExpWeight, mul_assoc] using
+      metric_pow_exp_two_mul_le_factorial_inv_pow_exp hκ₀ j
+        (discreteModifiedMetric HF Q'.val + 1)
+  have hsum_point :
+      (∑ Q' ∈ Λ.filter (fun Q' => r ∈ skeleton HF Q'.val),
+        (((discreteModifiedMetric HF Q'.val + 1 : ℕ) : ℝ) ^ j) *
+          appendixFHoleExpWeight HF (2 * κ₀) Q'.val)
+        ≤
+      ∑ Q' ∈ Λ.filter (fun Q' => r ∈ skeleton HF Q'.val),
+        Cj * appendixFHoleExpWeight HF κ₀ Q'.val := by
+    refine Finset.sum_le_sum ?_
+    intro Q' hQ'
+    exact hpoint Q' hQ'
+  have hfactor :
+      (∑ Q' ∈ Λ.filter (fun Q' => r ∈ skeleton HF Q'.val),
+        Cj * appendixFHoleExpWeight HF κ₀ Q'.val)
+        =
+      Cj *
+        (∑ Q' ∈ Λ.filter (fun Q' => r ∈ skeleton HF Q'.val),
+          appendixFHoleExpWeight HF κ₀ Q'.val) := by
+    rw [Finset.mul_sum]
+  have hroot :
+      (∑ Q' ∈ Λ.filter (fun Q' => r ∈ skeleton HF Q'.val),
+        appendixFHoleExpWeight HF κ₀ Q'.val)
+        ≤ appendixFHoleRootSumConstant d κ₀ := by
+    simpa [appendixFHoleRootSumConstant] using
+      appendixFHole_rootedFiniteExpWeightSum_le HF zK Λ r κ₀
+        hdisj hnoedges hholes_ne hCq
+  calc
+    (∑ Q' ∈ Λ.filter (fun Q' => r ∈ skeleton HF Q'.val),
+      (((discreteModifiedMetric HF Q'.val + 1 : ℕ) : ℝ) ^ j) *
+        appendixFHoleExpWeight HF (2 * κ₀) Q'.val)
+        ≤
+      ∑ Q' ∈ Λ.filter (fun Q' => r ∈ skeleton HF Q'.val),
+        Cj * appendixFHoleExpWeight HF κ₀ Q'.val := hsum_point
+    _ = Cj *
+        (∑ Q' ∈ Λ.filter (fun Q' => r ∈ skeleton HF Q'.val),
+          appendixFHoleExpWeight HF κ₀ Q'.val) := hfactor
+    _ ≤ Cj * appendixFHoleRootSumConstant d κ₀ :=
+        mul_le_mul_of_nonneg_left hroot hCj_nonneg
+    _ ≤ (j.factorial : ℝ) *
+        appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1) := by
+        simpa [Cj, mul_assoc] using
+          metricMomentEnvelope_le (d := d) hκ₀ j
+
+/-- Finite metric-moment bound over the source-facing hard-core
+incompatibility fiber.  Incompatibility is overcounted through active skeleton
+roots of `Q`; the number of such roots is then bounded by `d_M(Q)+1`. -/
+theorem appendixFHole_incomp_expWeight_metricMomentSum_le_factorial_mul
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (Q : OmegaPolymerType HF zK) (κ₀ : ℝ) (j : ℕ)
+    (hκ₀ : 0 < κ₀)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne : ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    (∑ Q' ∈ (Finset.univ : Finset (OmegaPolymerType HF zK)).filter
+        (fun Q' => (omegaHolePolymerSystem HF zK).incomp Q Q'),
+      (((discreteModifiedMetric HF Q'.val + 1 : ℕ) : ℝ) ^ j) *
+        appendixFHoleExpWeight HF (2 * κ₀) Q'.val)
+      ≤
+    (j.factorial : ℝ) *
+      appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1) *
+        (((discreteModifiedMetric HF Q.val + 1 : ℕ) : ℝ)) := by
+  classical
+  let w : OmegaPolymerType HF zK → ℝ := fun Q' =>
+    (((discreteModifiedMetric HF Q'.val + 1 : ℕ) : ℝ) ^ j) *
+      appendixFHoleExpWeight HF (2 * κ₀) Q'.val
+  let incompFiber : Finset (OmegaPolymerType HF zK) :=
+    (Finset.univ : Finset (OmegaPolymerType HF zK)).filter
+      (fun Q' => (omegaHolePolymerSystem HF zK).incomp Q Q')
+  let rootFiber : Cube d L → Finset (OmegaPolymerType HF zK) := fun r =>
+    (Finset.univ : Finset (OmegaPolymerType HF zK)).filter
+      (fun Q' => r ∈ skeleton HF Q'.val)
+  have hw : ∀ Q' : OmegaPolymerType HF zK, 0 ≤ w Q' := by
+    intro Q'
+    dsimp [w]
+    exact mul_nonneg (pow_nonneg (by positivity) j)
+      (appendixFHoleExpWeight_nonneg HF (2 * κ₀) Q'.val)
+  have hsub : incompFiber ⊆ (skeleton HF Q.val).biUnion rootFiber := by
+    intro Q' hQ'
+    dsimp [incompFiber] at hQ'
+    rw [Finset.mem_filter] at hQ'
+    have hinc : (omegaHolePolymerSystem HF zK).incomp Q Q' := hQ'.2
+    rcases (omegaHolePolymerSystem_incomp_iff_exists HF zK Q Q').mp hinc
+      with ⟨r, hrQ, hrQ'⟩
+    rw [Finset.mem_biUnion]
+    refine ⟨r, hrQ, ?_⟩
+    dsimp [rootFiber]
+    rw [Finset.mem_filter]
+    exact ⟨Finset.mem_univ Q', hrQ'⟩
+  have hfinite :
+      (∑ Q' ∈ incompFiber, w Q') ≤
+        ∑ Q' ∈ (skeleton HF Q.val).biUnion rootFiber, w Q' := by
+    exact Finset.sum_le_sum_of_subset_of_nonneg hsub
+      (fun Q' _ _ => hw Q')
+  have hbi :
+      (∑ Q' ∈ (skeleton HF Q.val).biUnion rootFiber, w Q')
+        ≤ ∑ r ∈ skeleton HF Q.val, ∑ Q' ∈ rootFiber r, w Q' := by
+    exact sum_biUnion_le (skeleton HF Q.val) rootFiber w hw
+  have hroot : ∀ r : Cube d L,
+      (∑ Q' ∈ rootFiber r, w Q')
+        ≤ (j.factorial : ℝ) *
+          appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1) := by
+    intro r
+    change
+      (∑ Q' ∈ (Finset.univ : Finset (OmegaPolymerType HF zK)).filter
+          (fun Q' => r ∈ skeleton HF Q'.val),
+        (((discreteModifiedMetric HF Q'.val + 1 : ℕ) : ℝ) ^ j) *
+          appendixFHoleExpWeight HF (2 * κ₀) Q'.val)
+        ≤ (j.factorial : ℝ) *
+          appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1)
+    exact appendixFHole_rootedFiniteMetricMomentExpWeightSum_le
+      HF zK (Finset.univ : Finset (OmegaPolymerType HF zK)) r κ₀ j
+      hκ₀ hdisj hnoedges hholes_ne hCq
+  have hroots :
+      (∑ r ∈ skeleton HF Q.val, ∑ Q' ∈ rootFiber r, w Q')
+        ≤ ∑ _r ∈ skeleton HF Q.val,
+          (j.factorial : ℝ) *
+            appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1) := by
+    refine Finset.sum_le_sum ?_
+    intro r _hr
+    exact hroot r
+  have hsum_const :
+      (∑ _r ∈ skeleton HF Q.val,
+        (j.factorial : ℝ) *
+          appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1))
+        =
+      ((skeleton HF Q.val).card : ℝ) *
+        ((j.factorial : ℝ) *
+          appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1)) := by
+    rw [sum_const, nsmul_eq_mul]
+  have hcard :
+      ((skeleton HF Q.val).card : ℝ) ≤
+        (((discreteModifiedMetric HF Q.val + 1 : ℕ) : ℝ)) := by
+    exact_mod_cast
+      skeleton_card_le_discreteModifiedMetric_add_one HF Q.val
+        Q.property.right.left
+  have hconst_nonneg :
+      0 ≤ (j.factorial : ℝ) *
+        appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1) := by
+    exact mul_nonneg (by positivity)
+      (pow_nonneg (appendixFSecondUrsellMomentConstant_nonneg d κ₀) _)
+  change (∑ Q' ∈ incompFiber, w Q')
+      ≤ (j.factorial : ℝ) *
+        appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1) *
+          (((discreteModifiedMetric HF Q.val + 1 : ℕ) : ℝ))
+  calc
+    (∑ Q' ∈ incompFiber, w Q')
+        ≤ ∑ Q' ∈ (skeleton HF Q.val).biUnion rootFiber, w Q' := hfinite
+    _ ≤ ∑ r ∈ skeleton HF Q.val, ∑ Q' ∈ rootFiber r, w Q' := hbi
+    _ ≤ ∑ _r ∈ skeleton HF Q.val,
+          (j.factorial : ℝ) *
+            appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1) := hroots
+    _ = ((skeleton HF Q.val).card : ℝ) *
+        ((j.factorial : ℝ) *
+          appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1)) := hsum_const
+    _ ≤ (((discreteModifiedMetric HF Q.val + 1 : ℕ) : ℝ)) *
+        ((j.factorial : ℝ) *
+          appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1)) :=
+          mul_le_mul_of_nonneg_right hcard hconst_nonneg
+    _ = (j.factorial : ℝ) *
+        appendixFSecondUrsellMomentConstant d κ₀ ^ (j + 1) *
+          (((discreteModifiedMetric HF Q.val + 1 : ℕ) : ℝ)) := by ring
 
 end YangMills.RG
