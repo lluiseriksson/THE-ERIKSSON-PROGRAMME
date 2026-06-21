@@ -374,6 +374,9 @@ import YangMills.RG.AppendixFSecondUrsellSource
 -- final Appendix-F with-holes theorem directly, while keeping the Yang-Mills
 -- input decay/locality obligations explicit.
 import YangMills.RG.AppendixFHsharpCluster3
+-- CMP116-specialized H# consumers: source/tree majorants and cluster3
+-- contracts for the spectator-integrated first activity with dmu0 fixed.
+import YangMills.RG.BalabanCMP116HsharpAdapter
 -- Source-facing H# profile: a single packaged geometric majorant record
 -- exposes summability, tail, residual, and UV consumers.
 import YangMills.RG.AppendixFHsharpProfile
