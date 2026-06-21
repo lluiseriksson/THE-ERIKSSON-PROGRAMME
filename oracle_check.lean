@@ -752,8 +752,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_inv_succ_mul_rawSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_four_pow_inv_succ_mul_vertexSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_four_pow_inv_succ_mul_vertexSum
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootSum_le_childFactorSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedIndexSum_eq_card_mul_root
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_four_pow_markedRootVertexSum
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootVertexSum
 -- finite second-Ursell geometry for the future weighted leaf summation:
 -- target metric stitching, rooted hard-core sums, and factorial moments.
 #print axioms YangMills.RG.omegaClusterUnion_discreteModifiedMetric_add_one_le_sum_of_spanningTree

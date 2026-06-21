@@ -475,6 +475,52 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_four_pow_inv_s
     appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_four_pow_inv_succ_mul_vertexSum
       HF zK w r n hw
 
+/-- The root-marked normalized tree sum is bounded by the child-factor version:
+each rooted child factorial is at least `1`, so the inserted product of
+factorials can only increase a nonnegative vertex weight. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootSum_le_childFactorSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P) :
+    appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n ≤
+      appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum HF zK w r n := by
+  classical
+  let all : Finset (Fin (n + 1) → OmegaPolymerType HF zK) := Finset.univ
+  let marked : Finset (Fin (n + 1) → OmegaPolymerType HF zK) :=
+    all.filter (fun X => r ∈ skeleton HF (X 0).val)
+  let trees (X : Fin (n + 1) → OmegaPolymerType HF zK) :=
+    KP.spanningTrees (KP.incompGraph (omegaHolePolymerSystem HF zK) X)
+  let W (X : Fin (n + 1) → OmegaPolymerType HF zK) : ℝ := ∏ j, w (X j)
+  let C (T : Finset (Sym2 (Fin (n + 1)))) : ℝ :=
+    ∏ v : Fin (n + 1), ((KP.rootedChildCount T v).factorial : ℝ)
+  have hW : ∀ X, 0 ≤ W X := by
+    intro X
+    exact Finset.prod_nonneg fun j _ => hw (X j)
+  have hC_one : ∀ T, 1 ≤ C T := by
+    intro T
+    dsimp [C]
+    refine Finset.one_le_prod ?_
+    intro v _hv
+    exact_mod_cast
+      (Nat.succ_le_of_lt
+        (Nat.factorial_pos (KP.rootedChildCount T v)))
+  have hsum :
+      (∑ X ∈ marked, ∑ _T ∈ trees X, W X) ≤
+        ∑ X ∈ marked, ∑ T ∈ trees X, C T * W X := by
+    refine Finset.sum_le_sum ?_
+    intro X _hX
+    refine Finset.sum_le_sum ?_
+    intro T _hT
+    simpa [one_mul] using
+      mul_le_mul_of_nonneg_right (hC_one T) (hW X)
+  simpa [appendixFHoleHsharpWeightedTreeMarkedRootSum,
+    appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum,
+    marked, all, trees, W, C, Finset.mul_sum] using
+    mul_le_mul_of_nonneg_left hsum (by positivity)
+
 /-- Fixed-union weighted tree term with an inserted target-skeleton marker.
 This names the finite object produced by the marker-insertion step before the
 fixed target-union fiber is forgotten. -/
@@ -801,5 +847,83 @@ theorem appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum
       HF zK w Q r n hw hr).trans_eq
       (appendixFHoleHsharpWeightedTreeMarkedIndexSum_eq_card_mul_root
         HF zK w r n)
+
+/-- Fixed-target weighted tree term reduced all the way to the root-marked
+vertex-product sum.  The factor `4^n` is exactly the aggregate rooted
+child-factorial tree-shape cost; no analytic leaf summation is used here. -/
+theorem appendixFHoleHsharpWeightedTreeTerm_le_four_pow_markedRootVertexSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (Q : OmegaPolymerType HF zK)
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P)
+    (hr : r ∈ skeleton HF Q.val) :
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Q.val n ≤
+      (4 : ℝ) ^ n *
+        appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n := by
+  have hmarked :
+      appendixFHoleHsharpWeightedTreeTerm HF zK w Q.val n ≤
+        ((n : ℝ) + 1) *
+          appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n :=
+    appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum
+      HF zK w Q r n hw hr
+  have hroot_child :
+      appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n ≤
+        appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum HF zK w r n :=
+    appendixFHoleHsharpWeightedTreeMarkedRootSum_le_childFactorSum
+      HF zK w r n hw
+  have hchild_vertex :
+      appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum HF zK w r n ≤
+        ((((n : ℝ) + 1)⁻¹) * (4 : ℝ) ^ n) *
+          appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n :=
+    appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_four_pow_inv_succ_mul_vertexSum
+      HF zK w r n hw
+  have hpos : 0 < (n : ℝ) + 1 := by positivity
+  calc
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Q.val n
+        ≤ ((n : ℝ) + 1) *
+          appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n := hmarked
+    _ ≤ ((n : ℝ) + 1) *
+          appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum HF zK w r n := by
+          exact mul_le_mul_of_nonneg_left hroot_child hpos.le
+    _ ≤ ((n : ℝ) + 1) *
+          (((((n : ℝ) + 1)⁻¹) * (4 : ℝ) ^ n) *
+            appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n) := by
+          exact mul_le_mul_of_nonneg_left hchild_vertex hpos.le
+    _ = (4 : ℝ) ^ n *
+          appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n := by
+          rw [mul_assoc, ← mul_assoc ((n : ℝ) + 1) (((n : ℝ) + 1)⁻¹)]
+          rw [mul_inv_cancel₀ hpos.ne', one_mul]
+
+/-- Geometric wrapper for the vertex-product consumer.  A future source or
+leaf-summation proof may bound the marked root vertex sum with ratio `Cleaf`;
+the finite tree-shape aggregation turns this into the weighted tree estimate
+with ratio `4 * Cleaf`. -/
+theorem appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootVertexSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (Q : OmegaPolymerType HF zK)
+    (r : Cube d L)
+    (n : ℕ)
+    (Croot Cleaf decay : ℝ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P)
+    (hr : r ∈ skeleton HF Q.val)
+    (hvertex :
+      appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n ≤
+        Croot * decay * Cleaf ^ n) :
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Q.val n ≤
+      Croot * decay * ((4 : ℝ) * Cleaf) ^ n := by
+  have hbase :=
+    appendixFHoleHsharpWeightedTreeTerm_le_four_pow_markedRootVertexSum
+      HF zK w Q r n hw hr
+  have hscaled :
+      (4 : ℝ) ^ n *
+          appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n ≤
+        (4 : ℝ) ^ n * (Croot * decay * Cleaf ^ n) :=
+    mul_le_mul_of_nonneg_left hvertex (pow_nonneg (by norm_num) n)
+  exact hbase.trans (hscaled.trans_eq (by rw [mul_pow]; ring))
 
 end YangMills.RG
