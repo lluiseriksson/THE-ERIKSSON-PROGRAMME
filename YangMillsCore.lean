@@ -374,6 +374,9 @@ import YangMills.RG.AppendixFSecondUrsellSource
 -- Weighted finite tree transfer for H#: separates the activity-size factor
 -- from the geometric/source leaf-summation obligation.
 import YangMills.RG.AppendixFSecondUrsellWeightedTree
+-- Finite marker insertion for weighted H#: target skeleton membership marks
+-- at least one vertex inside every fixed-union tree tuple.
+import YangMills.RG.AppendixFSecondUrsellMarkedFugacity
 -- Finite second-Ursell geometry: a KP tree in the omega-hole polymer system
 -- stitches leaf modified metrics into the modified metric of the full union.
 import YangMills.RG.AppendixFSecondUrsellGeometry

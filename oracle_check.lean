@@ -705,6 +705,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_scaled_weightedTreeTerm
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_bound
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_geometric
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonSum
 -- finite second-Ursell geometry for the future weighted leaf summation:
 -- target metric stitching, rooted hard-core sums, and factorial moments.
 #print axioms YangMills.RG.omegaClusterUnion_discreteModifiedMetric_add_one_le_sum_of_spanningTree
