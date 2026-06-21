@@ -79,6 +79,10 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.rootedChildCount_factorialProduct_le_factorial
 #print axioms YangMills.KP.rootedChildCount_factorialProduct_real_le_factorial
 #print axioms YangMills.KP.rootedChildCount_factorialProduct_inv_succ_factorial_le_inv_succ
+#print axioms YangMills.KP.parentMapProfileCount_le_four_pow
+#print axioms YangMills.KP.sum_parentMapChildCount_factorialProduct_le_factorial_mul_four_pow
+#print axioms YangMills.KP.sum_rootedChildCount_factorialProduct_le_factorial_mul_four_pow
+#print axioms YangMills.KP.rootedChildCount_factorialTreeSum_normalized_le_four_pow
 
 /-! ## The IR clustering bound and the correlator decay -/
 #print axioms YangMills.truncated_correlation_bound
