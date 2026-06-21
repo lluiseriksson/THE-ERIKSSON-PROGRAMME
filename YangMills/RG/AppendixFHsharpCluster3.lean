@@ -70,6 +70,64 @@ variable
     {g : ℕ → ℝ}
     {C H₀ c₀ κ κ₀ : ℝ}
 
+/-- Convert a source statement written with the unshifted modified metric
+`exp (-r d_M(P))` into the repository's shifted rooted-consumer normalization
+`exp (-r (d_M(P)+1))`.  The conversion is exact after paying the constant
+factor `exp r`, where `r = κ - 3κ₀ - 3`. -/
+def of_unshifted_residual_bound
+    (hinput : Prop) (hinput_holds : hinput)
+    (hultralocal : Prop) (hultralocal_holds : hultralocal)
+    (hlocal : Prop) (hlocal_holds : hlocal)
+    (hinfluence : Prop) (hinfluence_holds : hinfluence)
+    (hmargin : 3 * κ₀ + 3 ≤ κ)
+    (hraw :
+      ∀ t k (P : OmegaPolymerType HF zCarrier),
+        ‖appendixFHoleHsharp HF (zK t k) P.val‖ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                (discreteModifiedMetric HF P.val : ℝ)))) :
+    AppendixFHsharpCluster3Contract HF zCarrier zK g
+      (C * Real.exp (polymerClusterResidualRate κ κ₀)) H₀ c₀ κ κ₀ where
+  input_decay := hinput
+  input_decay_holds := hinput_holds
+  ultralocal_independence := hultralocal
+  ultralocal_independence_holds := hultralocal_holds
+  local_dependence := hlocal
+  local_dependence_holds := hlocal_holds
+  local_influence := hinfluence
+  local_influence_holds := hinfluence_holds
+  cluster3_margin := hmargin
+  hsharp_residual_bound := by
+    intro t k P
+    have hshift :
+        Real.exp
+            (-(polymerClusterResidualRate κ κ₀ *
+              (discreteModifiedMetric HF P.val : ℝ))) =
+          Real.exp (polymerClusterResidualRate κ κ₀) *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))) := by
+      rw [← Real.exp_add]
+      congr 1
+      norm_num [Nat.cast_add, Nat.cast_one]
+      ring
+    calc
+      ‖appendixFHoleHsharp HF (zK t k) P.val‖
+          ≤ C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+              Real.exp
+                (-(polymerClusterResidualRate κ κ₀ *
+                  (discreteModifiedMetric HF P.val : ℝ))) :=
+        hraw t k P
+      _ =
+          (C * Real.exp (polymerClusterResidualRate κ κ₀)) * H₀ *
+              Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+                Real.exp
+                  (-(polymerClusterResidualRate κ κ₀ *
+                    ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))) := by
+        rw [hshift]
+        ring
+
 /-- The closed residual estimate carried by a `cluster3` source contract. -/
 theorem residual_bound
     (hsrc :

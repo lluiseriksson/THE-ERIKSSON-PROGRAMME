@@ -692,6 +692,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_integratedKsharp_treeTerm_geometric
 #print axioms YangMills.RG.appendixFHsharpSourceMajorant_of_integratedKsharp_factorized_treeTerm_geometric
 -- closed source-facing Dimock-II `cluster3` contract for H#.
+#print axioms YangMills.RG.AppendixFHsharpCluster3Contract.of_unshifted_residual_bound
 #print axioms YangMills.RG.AppendixFHsharpCluster3Contract.residual_bound
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_cluster3_contract
 #print axioms YangMills.RG.norm_appendixFHoleHsharpOfIntegratedKsharp_le_residual_of_cluster3_contract
