@@ -68,8 +68,16 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.rootedChild_parent_eq
 #print axioms YangMills.KP.mem_rootedChildren_parent
 #print axioms YangMills.KP.rootedChild_parent_unique
+#print axioms YangMills.KP.disjoint_rootedChildren_of_ne
+#print axioms YangMills.KP.biUnion_rootedChildren_eq_nonroot
 #print axioms YangMills.KP.rootedChild_parent_edge_mem
 #print axioms YangMills.KP.sum_rootedChildCount_eq
+#print axioms YangMills.KP.prod_factorial_dvd_factorial_sum
+#print axioms YangMills.KP.prod_factorial_le_factorial_sum
+#print axioms YangMills.KP.rootedChildCount_factorialProduct_dvd_factorial
+#print axioms YangMills.KP.rootedChildCount_factorialProduct_le_factorial
+#print axioms YangMills.KP.rootedChildCount_factorialProduct_real_le_factorial
+#print axioms YangMills.KP.rootedChildCount_factorialProduct_inv_succ_factorial_le_inv_succ
 
 /-! ## The IR clustering bound and the correlator decay -/
 #print axioms YangMills.truncated_correlation_bound

@@ -70,6 +70,32 @@ theorem rootedChild_parent_unique
     u = v :=
   (rootedChild_parent_eq hu).symm.trans (rootedChild_parent_eq hv)
 
+/-- Distinct parent fibers of the rooted child partition are disjoint. -/
+theorem disjoint_rootedChildren_of_ne
+    {T : Finset (Sym2 (Fin (n + 1)))} {u v : Fin (n + 1)}
+    (huv : u ≠ v) : Disjoint (rootedChildren T u) (rootedChildren T v) := by
+  classical
+  rw [Finset.disjoint_left]
+  intro w hwu hwv
+  exact huv (rootedChild_parent_unique hwu hwv)
+
+/-- The rooted child fibers cover exactly the nonroot vertices. -/
+theorem biUnion_rootedChildren_eq_nonroot
+    (T : Finset (Sym2 (Fin (n + 1)))) :
+    (Finset.univ : Finset (Fin (n + 1))).biUnion (rootedChildren T) =
+      (Finset.univ : Finset (Fin (n + 1))).filter (fun w => w ≠ 0) := by
+  classical
+  ext w
+  constructor
+  · intro hw
+    rw [Finset.mem_biUnion] at hw
+    rcases hw with ⟨v, _hv, hwv⟩
+    exact Finset.mem_filter.mpr ⟨Finset.mem_univ w, rootedChild_ne_zero hwv⟩
+  · intro hw
+    have hw0 : w ≠ 0 := (Finset.mem_filter.mp hw).2
+    rw [Finset.mem_biUnion]
+    exact ⟨bfsParent T w, Finset.mem_univ _, mem_rootedChildren_parent T hw0⟩
+
 /-- For a genuine spanning tree, every named child has its parent edge in the
 tree edge set. -/
 theorem rootedChild_parent_edge_mem {H : SimpleGraph (Fin (n + 1))}
@@ -128,5 +154,76 @@ theorem sum_rootedChildCount_eq
         Finset.card_erase_of_mem (Finset.mem_univ (0 : Fin (n + 1))),
         Finset.card_univ, Fintype.card_fin]
       omega
+
+/-- A finite factorial product divides the factorial of the total sum.  This
+is the reusable multinomial bookkeeping lemma needed when independent child
+orders are priced by parent fibers. -/
+theorem prod_factorial_dvd_factorial_sum {α : Type*} [DecidableEq α]
+    (s : Finset α) (m : α → ℕ) :
+    (∏ i ∈ s, (m i).factorial) ∣ (∑ i ∈ s, m i).factorial := by
+  classical
+  refine Finset.induction_on s ?base ?step
+  · simp
+  · intro a s ha ih
+    have hbin : (∑ i ∈ s, m i).factorial * (m a).factorial ∣
+        ((∑ i ∈ s, m i) + m a).factorial :=
+      Nat.factorial_mul_factorial_dvd_factorial_add _ _
+    have hmul : (∏ i ∈ s, (m i).factorial) * (m a).factorial ∣
+        (∑ i ∈ s, m i).factorial * (m a).factorial :=
+      Nat.mul_dvd_mul_right ih _
+    have h := dvd_trans hmul hbin
+    simpa [Finset.sum_insert, Finset.prod_insert, ha, Nat.add_comm,
+      Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc] using h
+
+/-- Inequality form of `prod_factorial_dvd_factorial_sum`. -/
+theorem prod_factorial_le_factorial_sum {α : Type*} [DecidableEq α]
+    (s : Finset α) (m : α → ℕ) :
+    (∏ i ∈ s, (m i).factorial) ≤ (∑ i ∈ s, m i).factorial := by
+  exact Nat.le_of_dvd (Nat.factorial_pos _)
+    (prod_factorial_dvd_factorial_sum s m)
+
+/-- The product of factorials of all rooted child counts divides `n!`. -/
+theorem rootedChildCount_factorialProduct_dvd_factorial
+    (T : Finset (Sym2 (Fin (n + 1)))) :
+    (∏ v : Fin (n + 1), (rootedChildCount T v).factorial) ∣ n.factorial := by
+  classical
+  have h := prod_factorial_dvd_factorial_sum
+    (Finset.univ : Finset (Fin (n + 1))) (fun v => rootedChildCount T v)
+  simpa [sum_rootedChildCount_eq T] using h
+
+/-- The product of factorials of all rooted child counts is bounded by `n!`.
+This is the finite child-fiber price used by degree-sensitive leaf summation. -/
+theorem rootedChildCount_factorialProduct_le_factorial
+    (T : Finset (Sym2 (Fin (n + 1)))) :
+    (∏ v : Fin (n + 1), (rootedChildCount T v).factorial) ≤ n.factorial := by
+  exact Nat.le_of_dvd (Nat.factorial_pos n)
+    (rootedChildCount_factorialProduct_dvd_factorial T)
+
+/-- Real-cast form of the rooted child factorial product bound. -/
+theorem rootedChildCount_factorialProduct_real_le_factorial
+    (T : Finset (Sym2 (Fin (n + 1)))) :
+    (∏ v : Fin (n + 1), ((rootedChildCount T v).factorial : ℝ)) ≤
+      (n.factorial : ℝ) := by
+  exact_mod_cast rootedChildCount_factorialProduct_le_factorial T
+
+/-- After the second-Ursell `(n+1)!` normalization, independent child-order
+factorials cost at most the single marked-root factor `(n+1)⁻¹`. -/
+theorem rootedChildCount_factorialProduct_inv_succ_factorial_le_inv_succ
+    (T : Finset (Sym2 (Fin (n + 1)))) :
+    (((n + 1).factorial : ℝ))⁻¹ *
+        (∏ v : Fin (n + 1), ((rootedChildCount T v).factorial : ℝ)) ≤
+      (((n : ℝ) + 1)⁻¹) := by
+  have hprod := rootedChildCount_factorialProduct_real_le_factorial T
+  have hfacpos : 0 < (((n + 1).factorial : ℕ) : ℝ) := by positivity
+  have hnfacpos : 0 < ((n.factorial : ℕ) : ℝ) := by positivity
+  calc
+    (((n + 1).factorial : ℝ))⁻¹ *
+        (∏ v : Fin (n + 1), ((rootedChildCount T v).factorial : ℝ))
+        ≤ (((n + 1).factorial : ℝ))⁻¹ * (n.factorial : ℝ) := by
+          exact mul_le_mul_of_nonneg_left hprod (inv_nonneg.mpr hfacpos.le)
+    _ = (((n : ℝ) + 1)⁻¹) := by
+          rw [Nat.factorial_succ]
+          push_cast
+          field_simp [hnfacpos.ne']
 
 end YangMills.KP
