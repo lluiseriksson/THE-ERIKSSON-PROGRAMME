@@ -652,6 +652,14 @@ The same module also now includes the finite factorized consumers
 `appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_geometric`, which turn
 a weighted estimate `Croot * decay * Cleaf^n` into the preferred
 `(Croot * epsilon * decay) * (Cleaf * epsilon)^n` tree-term shape.
+`BalabanCMP116HsharpSource.lean` now exposes the corresponding CMP116
+weighted-tree entry points:
+`balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_weighted_tree_geometric`,
+`balabanCMP116AppendixFHsharpCluster3Contract_of_weighted_tree_geometric`, and
+`singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_weighted_tree_geometric`.
+They take the weighted leaf estimate, the first-activity bound, and the
+closed `(Croot * epsilon)/(1 - Cleaf * epsilon)` comparison as explicit
+hypotheses, then feed the existing profile/cluster3/UV consumer stack.
 
 ## Live Frontier
 

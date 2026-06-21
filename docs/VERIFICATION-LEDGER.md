@@ -8005,3 +8005,60 @@ Dimock (642), concrete Yang-Mills raw activity decay, continuum construction,
 or Clay.  It only extracts the scalar activity-size factor from the finite
 tree term so that the remaining geometric/source estimate has a sharper
 Lean-facing target.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 220 (2026-06-21, **CMP116 weighted-tree profile bridge**
+`YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_weighted_tree_geometric`,
+`YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_weighted_tree_geometric`,
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_weighted_tree_geometric`;
+core 8315)
+
+This addendum specializes Addendum 219's weighted finite tree transfer to the
+CMP116 integrated `K#` family.
+
+`YangMills/RG/BalabanCMP116HsharpSource.lean` now imports the weighted tree
+transfer and exposes three source-facing constructors.  The source theorem may
+now supply:
+
+```
+appendixFHoleHsharpWeightedTreeTerm HF zK w P.val n <=
+  Croot(t,k) *
+    exp (-(residualRate * (d_M(P)+1))) *
+  Cleaf(t,k)^n
+```
+
+together with the pointwise first-activity estimate
+`||zK Q.val|| <= epsilon(t,k) * w Q`, nonnegativity of the weights and
+constants, `Cleaf(t,k) * epsilon(t,k) < 1`, and the closed comparison
+
+```
+(Croot(t,k) * epsilon(t,k)) *
+  (1 - Cleaf(t,k) * epsilon(t,k))^-1
+<= C * H0 * exp (-c0*t) * g(k)^kappa0.
+```
+
+The Lean side turns those hypotheses into the existing CMP116 geometric
+profile, the closed `cluster3` contract, or the one-shot omega-rooted UV
+consumer.  No analytic leaf estimate is proved; it remains the external
+CMP116/Dimock source obligation.
+
+Verification:
+
+```
+lake env lean YangMills\RG\BalabanCMP116HsharpSource.lean
+lake build YangMills.RG.BalabanCMP116HsharpSource
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This commit does not prove the weighted tree estimate, the
+first-activity decay, the closed smallness comparison, Dimock's leaf summation,
+Dimock F.1/(636), Dimock (642), concrete Yang-Mills raw activity decay,
+continuum construction, or Clay.  It only wires the already verified finite
+algebra to the CMP116 source endpoints.  Clay distance **~0% (<0.1%),
+unchanged**.

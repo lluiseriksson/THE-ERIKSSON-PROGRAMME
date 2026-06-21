@@ -712,6 +712,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.tail_bound
 #print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.residual_bound
 #print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.singleScaleUVDecay_of_profile
+#print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_weighted_tree_geometric
+#print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_weighted_tree_geometric
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_weighted_tree_geometric
 
 #print axioms YangMills.RG.Ubar_gaugeAct
 #print axioms YangMills.RG.Ubar_locality

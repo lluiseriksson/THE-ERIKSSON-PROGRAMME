@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116HsharpAdapter
 import YangMills.RG.AppendixFHsharpProfile
+import YangMills.RG.AppendixFSecondUrsellWeightedTree
 
 /-!
 # Source-facing CMP116 contracts for Appendix-F `H#`
@@ -436,6 +437,79 @@ noncomputable def
     (balabanCMP116AppendixFHsharpSourceMajorant_of_factorized_treeTerm_geometric
       HF zCarrier z Λ F ν g B ρ hB0 hρ0 hρ1 htree hBclosed)
 
+/-- Weighted-tree constructor for the CMP116 geometric profile.  The source
+may now prove the purely weighted leaf estimate and the first-activity bound
+separately; the verified finite algebra below turns them into the factorized
+tree estimate consumed by the existing profile machinery. -/
+noncomputable def
+    balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_weighted_tree_geometric
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    (w : ∀ t k,
+      OmegaPolymerType HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k) → ℝ)
+    (epsilon Croot Cleaf : ℕ → ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hε : ∀ t k, 0 ≤ epsilon t k)
+    (hCroot0 : ∀ t k, 0 ≤ Croot t k)
+    (hCleaf0 : ∀ t k, 0 ≤ Cleaf t k)
+    (hρ1 : ∀ t k, Cleaf t k * epsilon t k < 1)
+    (hw :
+      ∀ t k (Q : OmegaPolymerType HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k)), 0 ≤ w t k Q)
+    (hactivity :
+      ∀ t k (Q : OmegaPolymerType HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k)),
+        ‖balabanCMP116AppendixFIntegratedKsharpActivityFamily
+            HF z Λ F ν t k Q.val‖ ≤ epsilon t k * w t k Q)
+    (hleaf :
+      ∀ t k (P : OmegaPolymerType HF zCarrier) n,
+        appendixFHoleHsharpWeightedTreeTerm HF
+            (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+              HF z Λ F ν t k) (w t k) P.val n ≤
+          Croot t k *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))) *
+            Cleaf t k ^ n)
+    (hBclosed :
+      ∀ t k,
+        (Croot t k * epsilon t k) *
+            (1 - Cleaf t k * epsilon t k)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    BalabanCMP116AppendixFHsharpGeometricMajorantProfile
+      HF zCarrier z Λ F ν g C H₀ c₀ κ κ₀ :=
+  balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_factorized_treeTerm_geometric
+    HF zCarrier z Λ F ν g
+    (fun t k => Croot t k * epsilon t k)
+    (fun t k => Cleaf t k * epsilon t k)
+    (fun t k => mul_nonneg (hCroot0 t k) (hε t k))
+    (fun t k => mul_nonneg (hCleaf0 t k) (hε t k))
+    hρ1
+    (fun t k P n =>
+      appendixFHoleHsharpTreeTerm_le_factorized_of_weighted_bound
+        HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k)
+        (w t k) P.val n (epsilon t k) (Croot t k) (Cleaf t k)
+        (Real.exp
+          (-(polymerClusterResidualRate κ κ₀ *
+            ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))))
+        (hε t k) (hw t k) (hactivity t k) (hleaf t k P n))
+    hBclosed
+
 /-- A CMP116 geometric profile supplies the pointwise residual estimate for the
 named CMP116 integrated `H#` activity. -/
 theorem
@@ -576,6 +650,75 @@ noncomputable def
     (balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_factorized_treeTerm_geometric
       HF zCarrier z Λ F ν g B ρ hB0 hρ0 hρ1 htree hBclosed)
 
+/-- Source-normal `cluster3` constructor from the weighted finite tree
+estimate plus a pointwise first-activity extraction.  The analytic leaf bound,
+smallness, and semantic source obligations remain explicit hypotheses. -/
+noncomputable def
+    balabanCMP116AppendixFHsharpCluster3Contract_of_weighted_tree_geometric
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    (w : ∀ t k,
+      OmegaPolymerType HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k) → ℝ)
+    (epsilon Croot Cleaf : ℕ → ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hinput : Prop) (hinput_holds : hinput)
+    (hultralocal : Prop) (hultralocal_holds : hultralocal)
+    (hlocal : Prop) (hlocal_holds : hlocal)
+    (hinfluence : Prop) (hinfluence_holds : hinfluence)
+    (hmargin : 3 * κ₀ + 3 ≤ κ)
+    (hε : ∀ t k, 0 ≤ epsilon t k)
+    (hCroot0 : ∀ t k, 0 ≤ Croot t k)
+    (hCleaf0 : ∀ t k, 0 ≤ Cleaf t k)
+    (hρ1 : ∀ t k, Cleaf t k * epsilon t k < 1)
+    (hw :
+      ∀ t k (Q : OmegaPolymerType HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k)), 0 ≤ w t k Q)
+    (hactivity :
+      ∀ t k (Q : OmegaPolymerType HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k)),
+        ‖balabanCMP116AppendixFIntegratedKsharpActivityFamily
+            HF z Λ F ν t k Q.val‖ ≤ epsilon t k * w t k Q)
+    (hleaf :
+      ∀ t k (P : OmegaPolymerType HF zCarrier) n,
+        appendixFHoleHsharpWeightedTreeTerm HF
+            (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+              HF z Λ F ν t k) (w t k) P.val n ≤
+          Croot t k *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))) *
+            Cleaf t k ^ n)
+    (hBclosed :
+      ∀ t k,
+        (Croot t k * epsilon t k) *
+            (1 - Cleaf t k * epsilon t k)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    AppendixFHsharpCluster3Contract HF zCarrier
+      (fun t k Y =>
+        balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k Y)
+      g C H₀ c₀ κ κ₀ :=
+  balabanCMP116AppendixFHsharpCluster3Contract_of_profile
+    HF zCarrier z Λ F ν g
+    hinput hinput_holds hultralocal hultralocal_holds
+    hlocal hlocal_holds hinfluence hinfluence_holds hmargin
+    (balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_weighted_tree_geometric
+      HF zCarrier z Λ F ν g w epsilon Croot Cleaf
+      hε hCroot0 hCleaf0 hρ1 hw hactivity hleaf hBclosed)
+
 /-- Real-part omega-rooted UV decay for the CMP116 integrated `H#` object,
 fed directly by a packaged CMP116 geometric profile. -/
 theorem
@@ -713,6 +856,95 @@ theorem
     hC hH₀ hg hκ hR
     (balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_factorized_treeTerm_geometric
       HF zCarrier z Λ F ν g B ρ hB0 hρ0 hρ1 htree hBclosed)
+    hdisj hnoedges hholes_ne hCq
+
+/-- Real-part omega-rooted UV decay fed directly by the weighted finite tree
+estimate plus pointwise first-activity extraction.  This is the source-facing
+endpoint for the weighted tree theorem: Lean performs only finite algebra and
+then reuses the existing geometric-profile UV consumer. -/
+theorem
+    singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_weighted_tree_geometric
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (Rsc : ℕ → ℕ → ℝ)
+    (g : ℕ → ℝ)
+    (w : ∀ t k,
+      OmegaPolymerType HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k) → ℝ)
+    (epsilon Croot Cleaf : ℕ → ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+                HF (z t k) (Λ t k) (F t k) (ν t k) P.val.val))
+    (hε : ∀ t k, 0 ≤ epsilon t k)
+    (hCroot0 : ∀ t k, 0 ≤ Croot t k)
+    (hCleaf0 : ∀ t k, 0 ≤ Cleaf t k)
+    (hρ1 : ∀ t k, Cleaf t k * epsilon t k < 1)
+    (hw :
+      ∀ t k (Q : OmegaPolymerType HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k)), 0 ≤ w t k Q)
+    (hactivity :
+      ∀ t k (Q : OmegaPolymerType HF
+        (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k)),
+        ‖balabanCMP116AppendixFIntegratedKsharpActivityFamily
+            HF z Λ F ν t k Q.val‖ ≤ epsilon t k * w t k Q)
+    (hleaf :
+      ∀ t k (P : OmegaPolymerType HF zCarrier) n,
+        appendixFHoleHsharpWeightedTreeTerm HF
+            (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+              HF z Λ F ν t k) (w t k) P.val n ≤
+          Croot t k *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))) *
+            Cleaf t k ^ n)
+    (hBclosed :
+      ∀ t k,
+        (Croot t k * epsilon t k) *
+            (1 - Cleaf t k * epsilon t k)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    SingleScaleUVDecay Rsc g
+      ((C * H₀) *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹)
+      c₀ κ₀ :=
+  singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_profile
+    HF zCarrier r z Λ F ν Rsc g
+    hC hH₀ hg hκ hR
+    (balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_weighted_tree_geometric
+      HF zCarrier z Λ F ν g w epsilon Croot Cleaf
+      hε hCroot0 hCleaf0 hρ1 hw hactivity hleaf hBclosed)
     hdisj hnoedges hholes_ne hCq
 
 end YangMills.RG
