@@ -3,6 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
+import YangMills.RG.AppendixFSecondUrsellMarkedFugacity
 import YangMills.RG.AppendixFSecondUrsellGeometry
 
 /-!
@@ -19,6 +20,9 @@ here.  The only analytic content is the already-proved finite hard-core
 metric-moment estimate, repackaged for downstream tree recursions.  The
 moment-lift lemma records the elementary bookkeeping needed when a child
 subtree leaves a power of the child metric to be summed at the parent edge.
+The final two lemmas in this file are the target-decay composition layer:
+extract the fixed-union exponential first, then consume any marked-root
+leaf-summation estimate.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`.
 -/
@@ -159,5 +163,96 @@ theorem appendixFHoleIncompMomentKernel_childMoment_sum_le_factorial_mul
     appendixFHoleIncompMomentKernel_childMoment_mul HF zK κ₀ j k Q Q')]
   exact appendixFHoleIncompMomentKernel_sum_le_factorial_mul
     HF zK Q κ₀ (j + k) hκ₀ hdisj hnoedges hholes_ne hCq
+
+/-- Target-decaying composition from a marked-root leaf-summation bound.
+
+The order matters: first use the fixed-union metric stitching theorem to
+extract the target exponential weight, and only then pass to the marked-root
+overcount.  Thus the marked-root estimate may be proved later without needing
+to remember the exact union fiber. -/
+theorem appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w u : OmegaPolymerType HF zK → ℝ)
+    (Y : Finset (Cube d L))
+    (r : Cube d L)
+    (n : ℕ)
+    (rate Croot Cleaf : ℝ)
+    (hrate : 0 ≤ rate)
+    (hw : ∀ Q : OmegaPolymerType HF zK, 0 ≤ w Q)
+    (hu : ∀ Q : OmegaPolymerType HF zK, 0 ≤ u Q)
+    (hsplit :
+      ∀ Q : OmegaPolymerType HF zK,
+        w Q ≤ appendixFHoleExpWeight HF rate Q.val * u Q)
+    (hr : r ∈ skeleton HF Y)
+    (hleaf :
+      ((n : ℝ) + 1) *
+          appendixFHoleHsharpWeightedTreeMarkedRootSum
+            HF zK u r n
+        ≤ Croot * Cleaf ^ n) :
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Y n ≤
+      Croot *
+        appendixFHoleExpWeight HF rate Y *
+        Cleaf ^ n := by
+  calc
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Y n
+        ≤ appendixFHoleExpWeight HF rate Y *
+            appendixFHoleHsharpWeightedTreeTerm HF zK u Y n :=
+      appendixFHoleHsharpWeightedTreeTerm_le_targetExpWeight_mul
+        HF zK w u Y n rate hrate hw hu hsplit
+    _ ≤ appendixFHoleExpWeight HF rate Y *
+          (((n : ℝ) + 1) *
+            appendixFHoleHsharpWeightedTreeMarkedRootSum
+              HF zK u r n) := by
+      exact mul_le_mul_of_nonneg_left
+        (appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum_of_mem_skeleton
+          HF zK u Y r n hu hr)
+        (appendixFHoleExpWeight_nonneg HF rate Y)
+    _ ≤ appendixFHoleExpWeight HF rate Y *
+          (Croot * Cleaf ^ n) := by
+      exact mul_le_mul_of_nonneg_left hleaf
+        (appendixFHoleExpWeight_nonneg HF rate Y)
+    _ = Croot *
+          appendixFHoleExpWeight HF rate Y *
+          Cleaf ^ n := by
+      ring
+
+/-- Nonempty-target version of
+`appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation`.
+It chooses a skeleton root after the target exponential has been made
+available, while requiring the marked-root bound uniformly over skeleton
+roots. -/
+theorem appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation_of_skeleton_nonempty
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w u : OmegaPolymerType HF zK → ℝ)
+    (Y : Finset (Cube d L))
+    (n : ℕ)
+    (rate Croot Cleaf : ℝ)
+    (hrate : 0 ≤ rate)
+    (hw : ∀ Q : OmegaPolymerType HF zK, 0 ≤ w Q)
+    (hu : ∀ Q : OmegaPolymerType HF zK, 0 ≤ u Q)
+    (hsplit :
+      ∀ Q : OmegaPolymerType HF zK,
+        w Q ≤ appendixFHoleExpWeight HF rate Q.val * u Q)
+    (hY : (skeleton HF Y).Nonempty)
+    (hleaf :
+      ∀ r : Cube d L, r ∈ skeleton HF Y →
+        ((n : ℝ) + 1) *
+            appendixFHoleHsharpWeightedTreeMarkedRootSum
+              HF zK u r n
+          ≤ Croot * Cleaf ^ n) :
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Y n ≤
+      Croot *
+        appendixFHoleExpWeight HF rate Y *
+        Cleaf ^ n := by
+  classical
+  rcases hY with ⟨r, hr⟩
+  exact
+    appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation
+      HF zK w u Y r n rate Croot Cleaf hrate hw hu hsplit hr
+      (hleaf r hr)
 
 end YangMills.RG
