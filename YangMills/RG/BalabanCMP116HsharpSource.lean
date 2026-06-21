@@ -317,6 +317,125 @@ noncomputable def
         (htree t k P n))
     hclosed
 
+/-- Repackage the older CMP116 `AppendixFHsharpSourceMajorant` interface as
+the newer geometric profile consumed by the closed tail/residual/UV theorems
+below.  This keeps the two source-facing endpoints synchronized: anything
+already proved in the source-majorant form can immediately feed the profile
+consumer stack. -/
+noncomputable def
+    balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_source_majorant
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpSourceMajorant HF zCarrier
+        (fun t k Y =>
+          balabanCMP116AppendixFIntegratedKsharpActivityFamily
+            HF z Λ F ν t k Y)
+        g C H₀ c₀ κ κ₀) :
+    BalabanCMP116AppendixFHsharpGeometricMajorantProfile
+      HF zCarrier z Λ F ν g C H₀ c₀ κ κ₀ where
+  A := hsrc.A
+  q := hsrc.q
+  A_nonneg := hsrc.A_nonneg
+  q_nonneg := hsrc.q_nonneg
+  q_lt_one := hsrc.q_lt_one
+  term_bound := hsrc.term_le
+  closed_total_le_residual := hsrc.closed_le_residual
+
+/-- Factorized absolute-term constructor for the CMP116 geometric profile.
+The source supplies only a scale amplitude `B t k`, a cluster-order ratio
+`ρ t k`, and the explicit modified-metric exponential. -/
+noncomputable def
+    balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_factorized_absTerm_geometric
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    (B ρ : ℕ → ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hB0 : ∀ t k, 0 ≤ B t k)
+    (hρ0 : ∀ t k, 0 ≤ ρ t k)
+    (hρ1 : ∀ t k, ρ t k < 1)
+    (habs :
+      ∀ t k (P : OmegaPolymerType HF zCarrier) n,
+        appendixFHoleHsharpAbsTerm HF
+            (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+              HF z Λ F ν t k) P.val n ≤
+          (B t k *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))) *
+            ρ t k ^ n)
+    (hBclosed :
+      ∀ t k,
+        B t k * (1 - ρ t k)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    BalabanCMP116AppendixFHsharpGeometricMajorantProfile
+      HF zCarrier z Λ F ν g C H₀ c₀ κ κ₀ :=
+  balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_source_majorant
+    HF zCarrier z Λ F ν g
+    (balabanCMP116AppendixFHsharpSourceMajorant_of_factorized_absTerm_geometric
+      HF zCarrier z Λ F ν g B ρ hB0 hρ0 hρ1 habs hBclosed)
+
+/-- Factorized finite-tree constructor for the CMP116 geometric profile.  This
+is the source-normal form expected from a finite Penrose/tree estimate before
+the analytic leaf summation is supplied. -/
+noncomputable def
+    balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_factorized_treeTerm_geometric
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    (B ρ : ℕ → ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hB0 : ∀ t k, 0 ≤ B t k)
+    (hρ0 : ∀ t k, 0 ≤ ρ t k)
+    (hρ1 : ∀ t k, ρ t k < 1)
+    (htree :
+      ∀ t k (P : OmegaPolymerType HF zCarrier) n,
+        appendixFHoleHsharpTreeTerm HF
+            (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+              HF z Λ F ν t k) P.val n ≤
+          (B t k *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))) *
+            ρ t k ^ n)
+    (hBclosed :
+      ∀ t k,
+        B t k * (1 - ρ t k)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    BalabanCMP116AppendixFHsharpGeometricMajorantProfile
+      HF zCarrier z Λ F ν g C H₀ c₀ κ κ₀ :=
+  balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_source_majorant
+    HF zCarrier z Λ F ν g
+    (balabanCMP116AppendixFHsharpSourceMajorant_of_factorized_treeTerm_geometric
+      HF zCarrier z Λ F ν g B ρ hB0 hρ0 hρ1 htree hBclosed)
+
 /-- A CMP116 geometric profile supplies the pointwise residual estimate for the
 named CMP116 integrated `H#` activity. -/
 theorem
