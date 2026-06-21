@@ -691,6 +691,92 @@ theorem appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonSum
   simpa [appendixFHoleHsharpWeightedTreeTerm] using
     mul_le_mul_of_nonneg_left hfiber (by positivity)
 
+/-- Bare-target version of
+`appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonSum`: if the marker
+root belongs to the active skeleton of the fixed target `Y`, then the
+fixed-union weighted tree term is bounded by the same fixed-union term with a
+marked target-skeleton coordinate inserted.  No `OmegaPolymerType` witness for
+`Y` is needed. -/
+theorem appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonSum_of_mem_skeleton
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (Y : Finset (Cube d L))
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P)
+    (hr : r ∈ skeleton HF Y) :
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Y n ≤
+      (((n + 1).factorial : ℝ))⁻¹ *
+        ∑ X ∈ (Finset.univ :
+            Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+              (fun X => omegaClusterUnion HF zK X = Y),
+          ∑ _T ∈ KP.spanningTrees
+              (KP.incompGraph (omegaHolePolymerSystem HF zK) X),
+            ∑ i : Fin (n + 1),
+              if r ∈ skeleton HF (X i).val then
+                ∏ j, w (X j)
+              else
+                0 := by
+  classical
+  have hfiber :
+      (∑ X ∈ (Finset.univ :
+          Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+            (fun X => omegaClusterUnion HF zK X = Y),
+        ∑ _T ∈ KP.spanningTrees
+            (KP.incompGraph (omegaHolePolymerSystem HF zK) X),
+          ∏ j, w (X j)) ≤
+        ∑ X ∈ (Finset.univ :
+            Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+              (fun X => omegaClusterUnion HF zK X = Y),
+          ∑ _T ∈ KP.spanningTrees
+              (KP.incompGraph (omegaHolePolymerSystem HF zK) X),
+            ∑ i : Fin (n + 1),
+              if r ∈ skeleton HF (X i).val then
+                ∏ j, w (X j)
+              else
+                0 := by
+    refine Finset.sum_le_sum fun X hX => ?_
+    have hXeq : omegaClusterUnion HF zK X = Y := (Finset.mem_filter.mp hX).2
+    have hrUnion : r ∈ skeleton HF (omegaClusterUnion HF zK X) := by
+      rw [hXeq]
+      exact hr
+    rw [omegaClusterUnion_skeleton HF zK X] at hrUnion
+    rw [mem_biUnion] at hrUnion
+    rcases hrUnion with ⟨i₀, _hi₀univ, hi₀⟩
+    refine Finset.sum_le_sum fun _T _hT => ?_
+    have hweight_nonneg : 0 ≤ ∏ j : Fin (n + 1), w (X j) :=
+      Finset.prod_nonneg fun j _ => hw (X j)
+    have hmarked_nonneg :
+        ∀ i ∈ (Finset.univ : Finset (Fin (n + 1))),
+          0 ≤
+            if r ∈ skeleton HF (X i).val then
+              ∏ j, w (X j)
+            else
+              0 := by
+      intro i _hi
+      split_ifs
+      · exact hweight_nonneg
+      · exact le_rfl
+    have hhit :
+        (∏ j : Fin (n + 1), w (X j)) =
+          if r ∈ skeleton HF (X i₀).val then
+            ∏ j, w (X j)
+          else
+            0 := by
+      rw [if_pos hi₀]
+    refine (le_of_eq hhit).trans ?_
+    exact Finset.single_le_sum
+      (f := fun i : Fin (n + 1) =>
+        if r ∈ skeleton HF (X i).val then
+          ∏ j, w (X j)
+        else
+          0)
+      hmarked_nonneg
+      (Finset.mem_univ i₀)
+  simpa [appendixFHoleHsharpWeightedTreeTerm] using
+    mul_le_mul_of_nonneg_left hfiber (by positivity)
+
 /-- Named form of `appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonSum`:
 the fixed-target weighted tree term is bounded by the fixed-union marked
 target-skeleton tree term. -/
@@ -708,6 +794,23 @@ theorem appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonTreeTerm
   simpa [appendixFHoleHsharpMarkedSkeletonTreeTerm] using
     appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonSum
       HF zK w Q r n hw hr
+
+/-- Bare-target named form: marker insertion into the fixed-union
+target-skeleton tree term without requiring a polymer witness for `Y`. -/
+theorem appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonTreeTerm_of_mem_skeleton
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (Y : Finset (Cube d L))
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P)
+    (hr : r ∈ skeleton HF Y) :
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Y n ≤
+      appendixFHoleHsharpMarkedSkeletonTreeTerm HF zK w r Y n := by
+  simpa [appendixFHoleHsharpMarkedSkeletonTreeTerm] using
+    appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonSum_of_mem_skeleton
+      HF zK w Y r n hw hr
 
 /-- Forget the fixed target-union fiber after the target-skeleton marker has
 been inserted.  This isolates the finite overcounting step from the marker
@@ -805,6 +908,26 @@ theorem appendixFHoleHsharpMarkedSkeletonTreeTerm_le_markedIndexSum
     appendixFHoleHsharpWeightedTreeMarkedIndexSum, all, fiber, trees, W, mark] using
     mul_le_mul_of_nonneg_left hmarked_inner (by positivity)
 
+/-- Bare-target version of the marked-index reduction.  The fixed target `Y`
+is still present during marker insertion and only the subsequent overcounting
+forgets the fixed-union fiber. -/
+theorem appendixFHoleHsharpWeightedTreeTerm_le_markedIndexSum_of_mem_skeleton
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (Y : Finset (Cube d L))
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P)
+    (hr : r ∈ skeleton HF Y) :
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Y n ≤
+      appendixFHoleHsharpWeightedTreeMarkedIndexSum HF zK w r n := by
+  exact
+    (appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonTreeTerm_of_mem_skeleton
+      HF zK w Y r n hw hr).trans
+      (appendixFHoleHsharpMarkedSkeletonTreeTerm_le_markedIndexSum
+        HF zK w Y r n hw)
+
 /-- Drop the fixed-union fiber after inserting the target-skeleton marker.
 This is the finite bridge from a fixed target polymer `Q` to a sum over marked
 coordinates.  The remaining task is to compare the coordinate-marked tree sums
@@ -820,11 +943,29 @@ theorem appendixFHoleHsharpWeightedTreeTerm_le_markedIndexSum
     (hr : r ∈ skeleton HF Q.val) :
     appendixFHoleHsharpWeightedTreeTerm HF zK w Q.val n ≤
       appendixFHoleHsharpWeightedTreeMarkedIndexSum HF zK w r n := by
+  exact appendixFHoleHsharpWeightedTreeTerm_le_markedIndexSum_of_mem_skeleton
+    HF zK w Q.val r n hw hr
+
+/-- Bare-target weighted `H#` tree term reduced to the root-coordinate marked
+tree sum.  This preserves the fixed target through marker insertion and only
+then applies the finite coordinate symmetrization. -/
+theorem appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum_of_mem_skeleton
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (Y : Finset (Cube d L))
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P)
+    (hr : r ∈ skeleton HF Y) :
+    appendixFHoleHsharpWeightedTreeTerm HF zK w Y n ≤
+      ((n : ℝ) + 1) *
+        appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n := by
   exact
-    (appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonTreeTerm
-      HF zK w Q r n hw hr).trans
-      (appendixFHoleHsharpMarkedSkeletonTreeTerm_le_markedIndexSum
-        HF zK w Q.val r n hw)
+    (appendixFHoleHsharpWeightedTreeTerm_le_markedIndexSum_of_mem_skeleton
+      HF zK w Y r n hw hr).trans_eq
+      (appendixFHoleHsharpWeightedTreeMarkedIndexSum_eq_card_mul_root
+        HF zK w r n)
 
 /-- Fixed-target weighted `H#` tree term reduced to the root-coordinate marked
 tree sum.  This is the finite pinned-coordinate consumer; the remaining
@@ -843,10 +984,8 @@ theorem appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum
       ((n : ℝ) + 1) *
         appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n := by
   exact
-    (appendixFHoleHsharpWeightedTreeTerm_le_markedIndexSum
-      HF zK w Q r n hw hr).trans_eq
-      (appendixFHoleHsharpWeightedTreeMarkedIndexSum_eq_card_mul_root
-        HF zK w r n)
+    appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum_of_mem_skeleton
+      HF zK w Q.val r n hw hr
 
 /-- Fixed-target weighted tree term reduced all the way to the root-marked
 vertex-product sum.  The factor `4^n` is exactly the aggregate rooted
@@ -900,7 +1039,12 @@ theorem appendixFHoleHsharpWeightedTreeTerm_le_four_pow_markedRootVertexSum
 /-- Geometric wrapper for the vertex-product consumer.  A future source or
 leaf-summation proof may bound the marked root vertex sum with ratio `Cleaf`;
 the finite tree-shape aggregation turns this into the weighted tree estimate
-with ratio `4 * Cleaf`. -/
+with ratio `4 * Cleaf`.
+
+This wrapper does not itself preserve target-polymer decay: the vertex sum
+contains neither the fixed target nor the incompatibility tree.  A
+target-dependent `decay` must therefore have been obtained before this
+abstraction; the remaining global vertex sum is generally not volume-uniform. -/
 theorem appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootVertexSum
     (HF : HoleFamily d L)
     (zK : Finset (Cube d L) → ℂ)

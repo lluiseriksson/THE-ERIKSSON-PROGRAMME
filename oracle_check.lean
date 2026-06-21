@@ -766,6 +766,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_four_pow_inv_succ_mul_vertexSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootSum_le_childFactorSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedIndexSum_eq_card_mul_root
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonSum_of_mem_skeleton
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonTreeTerm_of_mem_skeleton
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_markedIndexSum_of_mem_skeleton
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum_of_mem_skeleton
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_four_pow_markedRootVertexSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootVertexSum
@@ -803,6 +807,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.omegaPolymerSkeletonRoot
 #print axioms YangMills.RG.omegaPolymerSkeletonRoot_mem
 #print axioms YangMills.RG.finiteMarkedZeroProductSum_eq_rootSum_mul_leafSum_pow
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootVertexSum_eq_rooted_mul_total_pow
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootVertexSum_le_rootBudget_mul_leafBudget_pow
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_canonicalMarkedRootVertexSum
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_markedRootVertex_geometric

@@ -159,6 +159,36 @@ theorem finiteMarkedZeroProductSum_eq_rootSum_mul_leafSum_pow
         (∑ a : α, w a) ^ n := by
         rw [htail]
 
+/-- Diagnostic exact factorization of the root-marked Appendix-F
+vertex-product sum.  It records why this abstraction is too coarse to produce
+target-polymer decay by itself: after the tree and fixed target are forgotten,
+only a rooted coordinate sum and a global unpinned total sum remain. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootVertexSum_eq_rooted_mul_total_pow
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ) :
+    appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n =
+      (∑ P ∈ (Finset.univ : Finset (OmegaPolymerType HF zK)).filter
+          (fun P => r ∈ skeleton HF P.val), w P) *
+        (∑ P : OmegaPolymerType HF zK, w P) ^ n := by
+  classical
+  let pRoot : OmegaPolymerType HF zK → Prop :=
+    fun P => r ∈ skeleton HF P.val
+  change
+    (∑ X ∈ (Finset.univ :
+        Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+          (fun X => pRoot (X 0)),
+      ∏ j, w (X j))
+      =
+    (∑ P ∈ (Finset.univ : Finset (OmegaPolymerType HF zK)).filter
+        pRoot, w P) *
+      (∑ P : OmegaPolymerType HF zK, w P) ^ n
+  convert
+    finiteMarkedZeroProductSum_eq_rootSum_mul_leafSum_pow
+      (α := OmegaPolymerType HF zK) pRoot w n
+
 /-- Finite root/leaf budget bound for the root-marked Appendix-F
 vertex-product sum.  It exposes the exact combinatorial obligation left to the
 source theorem: a rooted coordinate budget and a total leaf budget. -/
@@ -187,18 +217,9 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootVertexSum_le_rootBudget_mul_lea
   have hfactor :
       appendixFHoleHsharpWeightedTreeMarkedRootVertexSum HF zK w r n =
         rootSum * leafSum ^ n := by
-    change
-      (∑ X ∈ (Finset.univ :
-          Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
-            (fun X => pRoot (X 0)),
-        ∏ j, w (X j))
-        =
-      rootSum * leafSum ^ n
-    dsimp [rootSum, leafSum]
-    convert
-      finiteMarkedZeroProductSum_eq_rootSum_mul_leafSum_pow
-        (α := OmegaPolymerType HF zK)
-        pRoot w n
+    simpa [rootSum, leafSum, pRoot] using
+      appendixFHoleHsharpWeightedTreeMarkedRootVertexSum_eq_rooted_mul_total_pow
+        HF zK w r n
   have hroot0 : 0 ≤ rootSum := by
     dsimp [rootSum]
     exact Finset.sum_nonneg fun Q _hQ => hw Q
