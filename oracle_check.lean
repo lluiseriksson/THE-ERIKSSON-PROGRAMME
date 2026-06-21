@@ -205,6 +205,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedClusterWithHolesActivities_four_mul_margin
 #print axioms YangMills.RG.renormalizedHoleActivityDecay_of_clusterWithHolesActivityDecay
 #print axioms YangMills.RG.singleScaleUVDecay_of_clusterWithHolesActivities
+-- residual summability interface: the source estimate itself is packaged
+-- separately from either residual-rate or reference-`κ₀` geometric summability.
+#print axioms YangMills.RG.ClusterExpansionWithHolesEstimate.residualRate_nonneg_of_three_mul_add_le
+#print axioms YangMills.RG.ClusterExpansionWithHolesEstimate.finite_sum_abs_le_residualWeightSum
+#print axioms YangMills.RG.ClusterExpansionWithHolesEstimate.abs_tsum_le_of_residual_summability
+#print axioms YangMills.RG.ClusterExpansionWithHolesEstimate.residualRate_nonneg_and_abs_tsum_le_of_residual_summability
+#print axioms YangMills.RG.ClusterExpansionWithHolesEstimate.abs_tsum_le_of_reference_summability
+#print axioms YangMills.RG.ClusterExpansionWithHolesEstimate.abs_tsum_le_of_reference_summability_four_mul_margin
 -- type-local support substrate for constructive Dimock F.1 activities
 #print axioms YangMills.RG.LocalFunctional.globalEval_eq_of_agreeOn
 #print axioms YangMills.RG.LocalFunctional.globalEval_finsetProd

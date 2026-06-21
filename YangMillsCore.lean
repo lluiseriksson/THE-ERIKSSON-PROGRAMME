@@ -238,6 +238,10 @@ import YangMills.RG.RelativeBVRetraction
 -- the existing `κ₀`-geometric summability substrate under the explicit
 -- stronger margin `κ₀ ≤ κ - 3κ₀ - 3` (e.g. `κ ≥ 4κ₀ + 3`).
 import YangMills.RG.PolymerClusterWithHolesBridge
+-- Residual summability interface: package a pointwise with-holes expansion
+-- estimate and keep the residual-rate and reference-`κ₀` summation routes
+-- formally separate.
+import YangMills.RG.PolymerSummabilityBridge
 -- Type-local functional/activity substrate for the constructive Dimock-F.1
 -- compiler: local activities can only inspect restricted fields on their finite
 -- supports; global adapters are invariant under changes off support.
