@@ -215,6 +215,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedClusterWithHolesActivities_four_mul_margin
 #print axioms YangMills.RG.renormalizedHoleActivityDecay_of_clusterWithHolesActivityDecay
 #print axioms YangMills.RG.singleScaleUVDecay_of_clusterWithHolesActivities
+-- Appendix-F first/final rate normalization and canonical exponential-weight split.
+#print axioms YangMills.RG.appendixFKsharpRate_eq_residual_add_leafRemainder
+#print axioms YangMills.RG.appendixFHoleExpWeight_add
+#print axioms YangMills.RG.appendixFHoleExpWeight_ksharpRate_factor
+#print axioms YangMills.RG.appendixFHoleExpWeight_antitone
+#print axioms YangMills.RG.appendixFHoleExpWeight_leafRemainder_le
 -- residual summability interface: the source estimate itself is packaged
 -- separately from either residual-rate or reference-`κ₀` geometric summability.
 #print axioms YangMills.RG.ClusterExpansionWithHolesEstimate.residualRate_nonneg_of_three_mul_add_le

@@ -50,6 +50,61 @@ theorem appendixFHoleExpWeight_nonneg
     0 ≤ appendixFHoleExpWeight HF κ X :=
   Real.exp_nonneg _
 
+/-- The first-gas `K#` rate is the final second-Ursell residual rate plus the
+extra leaf budget `2κ₀ + 1`. -/
+theorem appendixFKsharpRate_eq_residual_add_leafRemainder
+    (κ κ₀ : ℝ) :
+    appendixFKsharpRate κ κ₀ =
+      polymerClusterResidualRate κ κ₀ + (2 * κ₀ + 1) := by
+  unfold appendixFKsharpRate polymerClusterResidualRate
+  ring
+
+/-- Shifted modified-metric exponential weights multiply when rates add. -/
+theorem appendixFHoleExpWeight_add
+    {d L : ℕ} (HF : HoleFamily d L) (a b : ℝ)
+    (X : Finset (Cube d L)) :
+    appendixFHoleExpWeight HF (a + b) X =
+      appendixFHoleExpWeight HF a X *
+        appendixFHoleExpWeight HF b X := by
+  unfold appendixFHoleExpWeight
+  rw [← Real.exp_add]
+  congr 1
+  ring
+
+/-- The canonical first-gas rate factors into the final residual rate and the
+spare leaf budget used by the hard-core leaf summation. -/
+theorem appendixFHoleExpWeight_ksharpRate_factor
+    {d L : ℕ} (HF : HoleFamily d L) (κ κ₀ : ℝ)
+    (X : Finset (Cube d L)) :
+    appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) X =
+      appendixFHoleExpWeight HF
+          (polymerClusterResidualRate κ κ₀) X *
+        appendixFHoleExpWeight HF (2 * κ₀ + 1) X := by
+  rw [appendixFKsharpRate_eq_residual_add_leafRemainder,
+    appendixFHoleExpWeight_add]
+
+/-- The shifted modified-metric exponential weight is antitone in its rate. -/
+theorem appendixFHoleExpWeight_antitone
+    {d L : ℕ} (HF : HoleFamily d L) {a b : ℝ}
+    (hab : a ≤ b) (X : Finset (Cube d L)) :
+    appendixFHoleExpWeight HF b X ≤
+      appendixFHoleExpWeight HF a X := by
+  unfold appendixFHoleExpWeight
+  apply Real.exp_le_exp.mpr
+  have hm :
+      0 ≤ (((discreteModifiedMetric HF X + 1 : ℕ) : ℝ)) := by
+    positivity
+  nlinarith [mul_le_mul_of_nonneg_right hab hm]
+
+/-- The canonical spare leaf budget is bounded by the hard-core `2κ₀` leaf
+budget consumed by the finite leaf summation. -/
+theorem appendixFHoleExpWeight_leafRemainder_le
+    {d L : ℕ} (HF : HoleFamily d L) (κ₀ : ℝ)
+    (X : Finset (Cube d L)) :
+    appendixFHoleExpWeight HF (2 * κ₀ + 1) X ≤
+      appendixFHoleExpWeight HF (2 * κ₀) X :=
+  appendixFHoleExpWeight_antitone HF (by linarith) X
+
 /-- Restrict the existing rooted geometric modified-metric sum to a finite
 raw family `Λ`.  This adds no analytic content: it is the finite subsum of the
 rooted `OmegaPolymerType` summability theorem. -/
