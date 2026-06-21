@@ -660,6 +660,11 @@ weighted-tree entry points:
 They take the weighted leaf estimate, the first-activity bound, and the
 closed `(Croot * epsilon)/(1 - Cleaf * epsilon)` comparison as explicit
 hypotheses, then feed the existing profile/cluster3/UV consumer stack.
+The source audit in `docs/CMP116-WEIGHTED-HSHARP-SOURCE-MAP.md` records the
+current attribution boundary: CMP116 supports the first localized activity
+candidate, Dimock I Appendix B supplies the no-hole leaf-summation mechanism,
+and Dimock II Appendix F supplies the hole-aware final theorem, but the exact
+weighted order-wise `H#` tree estimate remains unproved in the repository.
 
 ## Live Frontier
 

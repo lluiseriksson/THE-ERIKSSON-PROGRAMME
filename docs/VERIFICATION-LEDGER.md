@@ -8062,3 +8062,44 @@ Dimock F.1/(636), Dimock (642), concrete Yang-Mills raw activity decay,
 continuum construction, or Clay.  It only wires the already verified finite
 algebra to the CMP116 source endpoints.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 221 (2026-06-21, **CMP116 weighted Hsharp source map**;
+documentation only)
+
+This addendum adds `docs/CMP116-WEIGHTED-HSHARP-SOURCE-MAP.md` and updates the
+live state to record the current source boundary for the CMP116 weighted
+`H#` bridge.
+
+The source map distinguishes three facts that should not be collapsed:
+
+* CMP116, especially (2.4)-(2.11) and Lemma 3/(2.38), is a source-backed
+  candidate for the first localized activity estimate after constants,
+  supports, and metrics are translated;
+* Dimock I Appendix B Step 4 is the printed no-hole mechanism for the
+  tree/Ursell leaf summation;
+* Dimock II Appendix F theorem `cluster3` is the hole-aware final theorem, but
+  it does not print the repository's exact order-wise weighted tree term.
+
+The immediate fork is therefore explicit: either formalize the with-holes
+order-wise leaf summation, or expose a direct consumer for Dimock II `cluster3`.
+CMP116 alone should not be used as if it proved the weighted `H#` tree
+hypothesis.
+
+Verification:
+
+```
+git diff --check
+git diff --cached --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+```
+
+All completed green.  Since this commit changes documentation only, no new Lean
+theorem or oracle entry is introduced.
+
+**Honest scope.** This is provenance/control-plane documentation only.  It does
+not prove the first-activity estimate, the weighted tree estimate, the closed
+smallness comparison, Dimock's leaf summation, Dimock (642), concrete
+Yang-Mills raw activity decay, continuum construction, or Clay.  Clay distance
+**~0% (<0.1%), unchanged**.
