@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.AppendixFSecondUrsellWeightedTree
+import YangMills.KP.RootedChildCount
 
 /-!
 # Appendix F: marked target vertices for the weighted second-Ursell tree term
@@ -171,6 +172,111 @@ noncomputable def appendixFHoleHsharpWeightedTreeMarkedRootSum
       ∑ _T ∈ KP.spanningTrees
           (KP.incompGraph (omegaHolePolymerSystem HF zK) X),
         ∏ j, w (X j)
+
+/-- Unnormalized root-coordinate marked weighted tree sum.  This is the raw
+finite tree sum underlying `appendixFHoleHsharpWeightedTreeMarkedRootSum`,
+before the second-Ursell `(n+1)!` normalization is applied. -/
+noncomputable def appendixFHoleHsharpWeightedTreeMarkedRootRawSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ) : ℝ :=
+  ∑ X ∈ (Finset.univ :
+      Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+        (fun X => r ∈ skeleton HF (X 0).val),
+    ∑ _T ∈ KP.spanningTrees
+        (KP.incompGraph (omegaHolePolymerSystem HF zK) X),
+      ∏ j, w (X j)
+
+/-- Root-coordinate marked tree sum with the independent child-order
+factorials inserted for each rooted BFS/Penrose tree.  The next leaf-summation
+step can overcount by this term, while the theorem below prices the factorial
+loss against the standard second-Ursell normalization. -/
+noncomputable def appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ) : ℝ :=
+  (((n + 1).factorial : ℝ))⁻¹ *
+    ∑ X ∈ (Finset.univ :
+        Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+          (fun X => r ∈ skeleton HF (X 0).val),
+      ∑ T ∈ KP.spanningTrees
+          (KP.incompGraph (omegaHolePolymerSystem HF zK) X),
+        (∏ v : Fin (n + 1), ((KP.rootedChildCount T v).factorial : ℝ)) *
+          ∏ j, w (X j)
+
+/-- The named raw-sum form of the root-marked tree term. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootSum_eq_inv_factorial_mul_rawSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ) :
+    appendixFHoleHsharpWeightedTreeMarkedRootSum HF zK w r n =
+      (((n + 1).factorial : ℝ))⁻¹ *
+        appendixFHoleHsharpWeightedTreeMarkedRootRawSum HF zK w r n := by
+  simp [appendixFHoleHsharpWeightedTreeMarkedRootSum,
+    appendixFHoleHsharpWeightedTreeMarkedRootRawSum]
+
+/-- First consumer of the rooted child-factorial price.  If the vertex
+weights are nonnegative, then inserting the independent child-order factorials
+inside each rooted tree and applying the `(n+1)!` second-Ursell normalization
+costs at most the single marked-root factor `(n+1)⁻¹` times the unnormalized
+root-marked tree sum. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_inv_succ_mul_rawSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P) :
+    appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum HF zK w r n ≤
+      (((n : ℝ) + 1)⁻¹) *
+        appendixFHoleHsharpWeightedTreeMarkedRootRawSum HF zK w r n := by
+  classical
+  let all : Finset (Fin (n + 1) → OmegaPolymerType HF zK) := Finset.univ
+  let marked : Finset (Fin (n + 1) → OmegaPolymerType HF zK) :=
+    all.filter (fun X => r ∈ skeleton HF (X 0).val)
+  let trees (X : Fin (n + 1) → OmegaPolymerType HF zK) :=
+    KP.spanningTrees (KP.incompGraph (omegaHolePolymerSystem HF zK) X)
+  let W (X : Fin (n + 1) → OmegaPolymerType HF zK) : ℝ := ∏ j, w (X j)
+  let C (T : Finset (Sym2 (Fin (n + 1)))) : ℝ :=
+    ∏ v : Fin (n + 1), ((KP.rootedChildCount T v).factorial : ℝ)
+  let c : ℝ := (((n : ℝ) + 1)⁻¹)
+  have hW : ∀ X, 0 ≤ W X := by
+    intro X
+    exact Finset.prod_nonneg fun j _ => hw (X j)
+  have hpoint : ∀ X ∈ marked, ∀ T ∈ trees X,
+      (((n + 1).factorial : ℝ))⁻¹ * (C T * W X) ≤ c * W X := by
+    intro X _hX T _hT
+    calc
+      (((n + 1).factorial : ℝ))⁻¹ * (C T * W X)
+          = ((((n + 1).factorial : ℝ))⁻¹ * C T) * W X := by ring
+      _ ≤ c * W X := by
+          exact mul_le_mul_of_nonneg_right
+            (KP.rootedChildCount_factorialProduct_inv_succ_factorial_le_inv_succ T)
+            (hW X)
+  calc
+    appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum HF zK w r n
+        = ∑ X ∈ marked, ∑ T ∈ trees X,
+            (((n + 1).factorial : ℝ))⁻¹ * (C T * W X) := by
+          simp [appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum,
+            marked, all, trees, W, C, Finset.mul_sum]
+    _ ≤ ∑ X ∈ marked, ∑ T ∈ trees X, c * W X := by
+          refine Finset.sum_le_sum fun X hX => ?_
+          refine Finset.sum_le_sum fun T hT => ?_
+          exact hpoint X hX T hT
+    _ = ∑ X ∈ marked, c * ∑ T ∈ trees X, W X := by
+          refine Finset.sum_congr rfl fun X _hX => ?_
+          rw [Finset.mul_sum]
+    _ = c * ∑ X ∈ marked, ∑ T ∈ trees X, W X := by
+          rw [Finset.mul_sum]
+    _ = c * appendixFHoleHsharpWeightedTreeMarkedRootRawSum HF zK w r n := by
+          simp [appendixFHoleHsharpWeightedTreeMarkedRootRawSum,
+            marked, all, trees, W]
 
 /-- Fixed-union weighted tree term with an inserted target-skeleton marker.
 This names the finite object produced by the marker-insertion step before the
