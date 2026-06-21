@@ -8103,3 +8103,51 @@ not prove the first-activity estimate, the weighted tree estimate, the closed
 smallness comparison, Dimock's leaf summation, Dimock (642), concrete
 Yang-Mills raw activity decay, continuum construction, or Clay.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 222 (2026-06-21, **rooted child-order assignments for marked
+Hsharp trees**; core 8320)
+
+This addendum strengthens the finite Appendix-F Route-B spine around
+`YangMills/RG/AppendixFSecondUrsellMarkedFugacity.lean`.
+
+`YangMills/KP/RootedChildCount.lean` now names the finite type
+`rootedChildOrderAssignments T`: an independent permutation of each rooted BFS
+child fiber of a tree edge set `T`.  The theorem
+`card_rootedChildOrderAssignments` proves that its cardinality is exactly
+
+```
+prod_v (rootedChildCount T v)!
+```
+
+the factorial product previously used abstractly in the marked-root
+second-Ursell majorant.
+
+`AppendixFSecondUrsellMarkedFugacity.lean` now exposes the corresponding
+root-marked sum
+`appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum`, proves it is equal
+to the earlier factorial-product form
+`appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum`, and gives the
+direct priced consumer
+`appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_inv_succ_mul_rawSum`.
+This turns the child-factorial loss into an actual finite assignment object
+that a future leaf-summation map can target.
+
+Verification:
+
+```
+lake env lean YangMills\KP\RootedChildCount.lean
+lake env lean YangMills\RG\AppendixFSecondUrsellMarkedFugacity.lean
+lake build YangMills.RG.AppendixFSecondUrsellMarkedFugacity
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is finite child-fiber bookkeeping only.  It does not
+prove the leaf-summation map, the weighted tree estimate, Dimock F.1/(636),
+Dimock (642), concrete Yang-Mills raw activity decay, continuum construction,
+OS reconstruction, or Clay.  Clay distance **~0% (<0.1%), unchanged**.

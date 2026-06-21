@@ -39,11 +39,40 @@ noncomputable def rootedChildCount
     (T : Finset (Sym2 (Fin (n + 1)))) (v : Fin (n + 1)) : ℕ :=
   (rootedChildren T v).card
 
+/-- Independent child-order choices for every rooted BFS child fiber of `T`.
+This is the finite assignment object whose cardinality is the product of the
+child-factorials used in the Appendix-F leaf bookkeeping. -/
+abbrev rootedChildOrderAssignments
+    (T : Finset (Sym2 (Fin (n + 1)))) : Type :=
+  ∀ v : Fin (n + 1), Equiv.Perm {w : Fin (n + 1) // w ∈ rootedChildren T v}
+
 @[simp] theorem mem_rootedChildren
     (T : Finset (Sym2 (Fin (n + 1)))) (v w : Fin (n + 1)) :
     w ∈ rootedChildren T v ↔ w ≠ 0 ∧ bfsParent T w = v := by
   classical
   simp [rootedChildren]
+
+/-- The number of independent child-order assignments is exactly the product
+of the rooted child-factorials. -/
+theorem card_rootedChildOrderAssignments
+    (T : Finset (Sym2 (Fin (n + 1)))) :
+    Fintype.card (rootedChildOrderAssignments T) =
+      ∏ v : Fin (n + 1), (rootedChildCount T v).factorial := by
+  classical
+  have hcard :
+      ∀ v : Fin (n + 1),
+        Fintype.card {w : Fin (n + 1) // w ∈ rootedChildren T v} =
+          rootedChildCount T v := by
+    intro v
+    simpa [rootedChildCount] using Fintype.card_coe (rootedChildren T v)
+  change
+    Fintype.card
+        (∀ v : Fin (n + 1),
+          Equiv.Perm {w : Fin (n + 1) // w ∈ rootedChildren T v}) =
+      ∏ v : Fin (n + 1), (rootedChildCount T v).factorial
+  rw [Fintype.card_pi]
+  exact Finset.prod_congr rfl fun v _hv => by
+    rw [Fintype.card_perm, hcard v]
 
 theorem rootedChild_ne_zero
     {T : Finset (Sym2 (Fin (n + 1)))} {v w : Fin (n + 1)}

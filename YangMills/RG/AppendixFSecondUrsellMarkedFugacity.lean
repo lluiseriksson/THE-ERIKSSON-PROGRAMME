@@ -208,6 +208,25 @@ noncomputable def appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum
         (∏ v : Fin (n + 1), ((KP.rootedChildCount T v).factorial : ℝ)) *
           ∏ j, w (X j)
 
+/-- Root-coordinate marked tree sum with the child-order assignments made
+explicit.  The sum over `KP.rootedChildOrderAssignments T` is only finite
+bookkeeping; the next leaf-summation step can map its local choices into this
+object before applying the factorial-price theorem. -/
+noncomputable def appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ) : ℝ :=
+  (((n + 1).factorial : ℝ))⁻¹ *
+    ∑ X ∈ (Finset.univ :
+        Finset (Fin (n + 1) → OmegaPolymerType HF zK)).filter
+          (fun X => r ∈ skeleton HF (X 0).val),
+      ∑ T ∈ KP.spanningTrees
+          (KP.incompGraph (omegaHolePolymerSystem HF zK) X),
+        ∑ _π : KP.rootedChildOrderAssignments T,
+          ∏ j, w (X j)
+
 /-- The named raw-sum form of the root-marked tree term. -/
 theorem appendixFHoleHsharpWeightedTreeMarkedRootSum_eq_inv_factorial_mul_rawSum
     (HF : HoleFamily d L)
@@ -220,6 +239,27 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootSum_eq_inv_factorial_mul_rawSum
         appendixFHoleHsharpWeightedTreeMarkedRootRawSum HF zK w r n := by
   simp [appendixFHoleHsharpWeightedTreeMarkedRootSum,
     appendixFHoleHsharpWeightedTreeMarkedRootRawSum]
+
+/-- The explicit child-order assignment sum is exactly the child-factorial
+marked root sum. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_eq_childFactorSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ) :
+    appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum HF zK w r n =
+      appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum HF zK w r n := by
+  classical
+  unfold appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum
+    appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum
+  congr 1
+  refine Finset.sum_congr rfl fun X _hX => ?_
+  refine Finset.sum_congr rfl fun T _hT => ?_
+  rw [Finset.sum_const, nsmul_eq_mul, Finset.card_univ,
+    KP.card_rootedChildOrderAssignments]
+  push_cast
+  rfl
 
 /-- First consumer of the rooted child-factorial price.  If the vertex
 weights are nonnegative, then inserting the independent child-order factorials
@@ -277,6 +317,23 @@ theorem appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_inv_succ_mul_
     _ = c * appendixFHoleHsharpWeightedTreeMarkedRootRawSum HF zK w r n := by
           simp [appendixFHoleHsharpWeightedTreeMarkedRootRawSum,
             marked, all, trees, W]
+
+/-- Child-order assignment form of the rooted child-factorial price.  This is
+the version consumed by future leaf-summation maps whose choices are actual
+orders of the rooted child fibers rather than an abstract factorial product. -/
+theorem appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_inv_succ_mul_rawSum
+    (HF : HoleFamily d L)
+    (zK : Finset (Cube d L) → ℂ)
+    (w : OmegaPolymerType HF zK → ℝ)
+    (r : Cube d L)
+    (n : ℕ)
+    (hw : ∀ P : OmegaPolymerType HF zK, 0 ≤ w P) :
+    appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum HF zK w r n ≤
+      (((n : ℝ) + 1)⁻¹) *
+        appendixFHoleHsharpWeightedTreeMarkedRootRawSum HF zK w r n := by
+  rw [appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_eq_childFactorSum]
+  exact appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_inv_succ_mul_rawSum
+    HF zK w r n hw
 
 /-- Fixed-union weighted tree term with an inserted target-skeleton marker.
 This names the finite object produced by the marker-insertion step before the

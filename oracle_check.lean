@@ -72,6 +72,7 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.biUnion_rootedChildren_eq_nonroot
 #print axioms YangMills.KP.rootedChild_parent_edge_mem
 #print axioms YangMills.KP.sum_rootedChildCount_eq
+#print axioms YangMills.KP.card_rootedChildOrderAssignments
 #print axioms YangMills.KP.prod_factorial_dvd_factorial_sum
 #print axioms YangMills.KP.prod_factorial_le_factorial_sum
 #print axioms YangMills.KP.rootedChildCount_factorialProduct_dvd_factorial
@@ -731,8 +732,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootRawSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootSum_eq_inv_factorial_mul_rawSum
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_eq_childFactorSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_inv_succ_mul_rawSum
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_inv_succ_mul_rawSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedIndexSum_eq_card_mul_root
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum
 -- finite second-Ursell geometry for the future weighted leaf summation:
