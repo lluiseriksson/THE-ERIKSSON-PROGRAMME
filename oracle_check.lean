@@ -181,6 +181,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- scalar single-scale UV decay consumed by the mass-gap assembly
 #print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities
 #print axioms YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_geometric
+-- relative BV/BRST retraction interface: exact/approximate cancellation
+-- leaves only the lifted effective observable plus a boundary defect.
+#print axioms YangMills.RG.RelativeBVOneStep.push_chain_apply
+#print axioms YangMills.RG.RelativeBVOneStep.effective_closed_of_closed
+#print axioms YangMills.RG.RelativeBVOneStep.relative_sdr_apply
+#print axioms YangMills.RG.RelativeBVOneStep.expectation_defect_identity
+#print axioms YangMills.RG.RelativeBVOneStep.expectation_defect_bound_of_approx_ward
+#print axioms YangMills.RG.RelativeBVOneStep.expectation_defect_bound_of_rooted_obligations
 -- residual with-holes bridge: Appendix-F loss `κ - 3κ₀ - 3`, the stronger
 -- summability margin `κ₀ ≤ κ - 3κ₀ - 3`, and the resulting `hpoly` producer
 #print axioms YangMills.RG.polymerClusterResidualRate_nonneg_of_three_mul_add_le

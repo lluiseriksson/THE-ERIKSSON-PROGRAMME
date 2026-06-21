@@ -231,6 +231,9 @@ import YangMills.RG.UVMassGap
 -- renormalized with-holes activities, and scalar `SingleScaleUVDecay`, with
 -- the summation bridge from hole activities to the scalar bound.
 import YangMills.RG.SingleScaleUVDecay
+-- Relative BV/BRST one-step retraction interface: an abstract homotopy identity
+-- whose boundary defect can later be localized on holes before norms are taken.
+import YangMills.RG.RelativeBVRetraction
 -- Residual Appendix-F with-holes bridge: the loss `κ - 3κ₀ - 3` only feeds
 -- the existing `κ₀`-geometric summability substrate under the explicit
 -- stronger margin `κ₀ ≤ κ - 3κ₀ - 3` (e.g. `κ ≥ 4κ₀ + 3`).
