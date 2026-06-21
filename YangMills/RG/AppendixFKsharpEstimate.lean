@@ -33,6 +33,28 @@ open MeasureTheory
 open Finset
 open scoped BigOperators
 
+private theorem appendixF_exp_mul_sub_one_le_mul_exp_two_mul
+    {a m : ℝ} (ha0 : 0 ≤ a) (ha1 : a ≤ 1) (hm0 : 0 ≤ m) :
+    Real.exp (a * m) - 1 ≤ a * Real.exp (2 * m) := by
+  have hb0 : 0 ≤ 1 - a := sub_nonneg.mpr ha1
+  have hsum : a + (1 - a) = (1 : ℝ) := by ring
+  have hconvFn := (convexOn_exp : ConvexOn ℝ Set.univ Real.exp).2
+  have hconv := hconvFn (x := m) (by simp) (y := 0) (by simp)
+    (a := a) (b := 1 - a) ha0 hb0 hsum
+  have hconv' : Real.exp (a * m) ≤ a * Real.exp m + (1 - a) := by
+    simpa [smul_eq_mul] using hconv
+  have hsub : Real.exp (a * m) - 1 ≤ a * (Real.exp m - 1) := by
+    nlinarith
+  have hminus : Real.exp m - 1 ≤ Real.exp m := by linarith
+  have hstep : a * (Real.exp m - 1) ≤ a * Real.exp m :=
+    mul_le_mul_of_nonneg_left hminus ha0
+  have hexpmono : Real.exp m ≤ Real.exp (2 * m) := by
+    apply Real.exp_le_exp.mpr
+    linarith
+  have hstep2 : a * Real.exp m ≤ a * Real.exp (2 * m) :=
+    mul_le_mul_of_nonneg_left hexpmono ha0
+  exact hsub.trans (hstep.trans hstep2)
+
 private theorem appendixFHole_metricCoverWeight_le_targetEntropyProduct
     {d L : ℕ} [NeZero L]
     (HF : HoleFamily d L)
@@ -386,5 +408,95 @@ theorem norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay_roote
   exact norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay
     HF z Λ H μ ψ hH₀ hH₀_one hκ₀ hκ
     hlocal hraw hint
+
+/-- Linearized rooted first-activity estimate at the Appendix-F `K#` rate.
+
+The exact estimate above has the nonlinear factor
+`exp (2 * H₀ * K₀ * (d_M(Y)+1)) - 1`.  Under the standard smallness
+`2 * H₀ * K₀ ≤ 1`, convexity of `exp` extracts the scalar
+`2 * H₀ * K₀` and pays the two spare metric units, producing the canonical
+first-gas rate `κ - κ₀ - 2`. -/
+theorem norm_appendixFHoleKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted
+    {d L : ℕ} [NeZero L]
+    {β : Type*} [MeasurableSpace β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z →
+      LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β) [IsProbabilityMeasure μ]
+    {Y : Finset (Cube d L)}
+    (hY : Y ∈ appendixFTargetRegion
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ)
+    (ψ : ∀ x, Ψ x)
+    {H₀ K₀ κ κ₀ : ℝ}
+    (hH₀ : 0 ≤ H₀)
+    (hH₀_one : H₀ ≤ 1)
+    (hK₀ : 0 ≤ K₀)
+    (hsmall : 2 * H₀ * K₀ ≤ 1)
+    (hκ₀ : 0 ≤ κ₀)
+    (hκ : κ₀ ≤ κ)
+    (hroot : ∀ r : Cube d L,
+      (∑ X ∈ Λ.filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀)
+    (hraw : ∀ φ X, X ∈ Λ →
+      ‖(H X).globalEval ψ φ‖ ≤
+        H₀ * appendixFHoleExpWeight HF κ X.val)
+    (hint : Integrable
+      (fun φ =>
+        (appendixFHoleConnectedLocalActivity
+          HF z Λ H Y).globalEval ψ φ)
+      (Measure.pi fun _ : Cube d L => μ)) :
+    ‖(appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ‖ ≤
+      (2 * H₀ * K₀) *
+        appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Y := by
+  classical
+  let a : ℝ := 2 * H₀ * K₀
+  let m : ℝ := (((discreteModifiedMetric HF Y + 1 : ℕ) : ℝ))
+  have hbase :=
+    norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay_rooted
+      HF z Λ H μ hY ψ hH₀ hH₀_one hK₀ hκ₀ hκ hroot hraw hint
+  have ha0 : 0 ≤ a := by
+    dsimp [a]
+    exact mul_nonneg (mul_nonneg zero_le_two hH₀) hK₀
+  have hm0 : 0 ≤ m := by
+    dsimp [m]
+    positivity
+  have hlin : Real.exp (a * m) - 1 ≤ a * Real.exp (2 * m) :=
+    appendixF_exp_mul_sub_one_le_mul_exp_two_mul ha0
+      (by simpa [a] using hsmall) hm0
+  have hmul :
+      appendixFHoleExpWeight HF (κ - κ₀) Y *
+          (Real.exp (a * m) - 1) ≤
+        appendixFHoleExpWeight HF (κ - κ₀) Y *
+          (a * Real.exp (2 * m)) :=
+    mul_le_mul_of_nonneg_left hlin
+      (appendixFHoleExpWeight_nonneg HF (κ - κ₀) Y)
+  have hrewrite :
+      appendixFHoleExpWeight HF (κ - κ₀) Y *
+          (a * Real.exp (2 * m)) =
+        a * appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Y := by
+    have hrate : -((κ - κ₀) * m) + 2 * m =
+        -(appendixFKsharpRate κ κ₀ * m) := by
+      unfold appendixFKsharpRate
+      ring
+    calc
+      appendixFHoleExpWeight HF (κ - κ₀) Y *
+          (a * Real.exp (2 * m))
+          = a * (Real.exp (-((κ - κ₀) * m)) * Real.exp (2 * m)) := by
+            simp [appendixFHoleExpWeight, m]
+            ring
+      _ = a * Real.exp (-((κ - κ₀) * m) + 2 * m) := by
+            rw [Real.exp_add]
+      _ = a * Real.exp (-(appendixFKsharpRate κ κ₀ * m)) := by
+            rw [hrate]
+      _ = a * appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Y := by
+            simp [appendixFHoleExpWeight, m]
+  exact hbase.trans (hmul.trans (le_of_eq hrewrite))
 
 end YangMills.RG

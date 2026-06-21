@@ -658,6 +658,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleConnectedLocalActivity_globalEval_le_expSubOne
 #print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay
 #print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay_rooted
+#print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted
 -- second Appendix-F hard-core gas from evaluated K#: structural only, with KP
 -- exposed as a pointwise majorant hypothesis rather than as Dimock (642).
 #print axioms YangMills.RG.appendixFHoleSecondGas_activity
