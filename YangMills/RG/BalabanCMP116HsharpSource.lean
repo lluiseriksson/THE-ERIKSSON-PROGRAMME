@@ -643,4 +643,76 @@ theorem
               HF z Λ F ν t k) P.val.val)
   exact hR t k
 
+/-- Real-part omega-rooted UV decay fed directly by the source-normal
+factorized finite tree-term estimate.  This combines the factorized-tree
+profile constructor with the profile UV consumer; all positivity, four-margin,
+holes-geometry, and source tree estimates remain explicit hypotheses. -/
+theorem
+    singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_factorized_treeTerm_geometric
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (Rsc : ℕ → ℕ → ℝ)
+    (g : ℕ → ℝ)
+    (B ρ : ℕ → ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+                HF (z t k) (Λ t k) (F t k) (ν t k) P.val.val))
+    (hB0 : ∀ t k, 0 ≤ B t k)
+    (hρ0 : ∀ t k, 0 ≤ ρ t k)
+    (hρ1 : ∀ t k, ρ t k < 1)
+    (htree :
+      ∀ t k (P : OmegaPolymerType HF zCarrier) n,
+        appendixFHoleHsharpTreeTerm HF
+            (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+              HF z Λ F ν t k) P.val n ≤
+          (B t k *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))) *
+            ρ t k ^ n)
+    (hBclosed :
+      ∀ t k,
+        B t k * (1 - ρ t k)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    SingleScaleUVDecay Rsc g
+      ((C * H₀) *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹)
+      c₀ κ₀ :=
+  singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_profile
+    HF zCarrier r z Λ F ν Rsc g
+    hC hH₀ hg hκ hR
+    (balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_factorized_treeTerm_geometric
+      HF zCarrier z Λ F ν g B ρ hB0 hρ0 hρ1 htree hBclosed)
+    hdisj hnoedges hholes_ne hCq
+
 end YangMills.RG
