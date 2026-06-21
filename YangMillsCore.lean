@@ -289,6 +289,10 @@ import YangMills.RG.BalabanCMP116Dmu0
 -- theorem supplies localized `H(Z)` supports, `dmu0` gives Ω-component
 -- factorization for the Appendix-F local-activity substrate.
 import YangMills.RG.BalabanCMP116Localization
+-- CMP116-to-Appendix-F `K#` adapter: localized Balaban activities feed the
+-- first connected with-holes compiler and its rooted estimate under explicit
+-- source support/decay/integrability obligations.
+import YangMills.RG.BalabanCMP116KsharpAdapter
 -- hRpoly campaign brick P1a: the bounded-degree walk-count engine (≤ Δⁿ) — the
 -- combinatorial substrate for the lattice animal count `c_n ≤ Cⁿ` (branch C of
 -- `hRpoly`). Pure graph combinatorics; consumer = animal count → polymer_weight_summability.
