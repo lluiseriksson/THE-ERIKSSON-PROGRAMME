@@ -9354,3 +9354,54 @@ curl/divergence/block estimate for the repository's line-integral `Q`, with
 the expected dependence on the RG block size `L`.  It does not identify the
 Wilson Hessian, prove small-background stability, construct a covariance, or
 produce `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 251 (2026-06-22, **block constraint on constant physical one-cochains**
+`YangMills.RG.PhysicalGaugeCochains`; core 8338)
+
+This addendum records the finite-combinatorial constant-sector calculation
+needed before a flat harmonic-kernel audit.  The averaging layer now proves
+
+```
+fineLineSum_constant
+linAvg_constant
+```
+
+for direction-wise constant concrete-edge fields `A(e) = v(e.dir)`.  The
+length-`L` line integral is `(L : ℝ) • v μ`, and the normalized block average
+is `(L : ℝ) • v c.dir`; the `L^d` block cardinality cancels the normalization.
+
+The physical cochain layer now defines
+
+```
+constantPhysicalGaugeOneCochain
+```
+
+and proves
+
+```
+flatBlockConstraintQCLM_constant_apply
+flatBlockConstraintQCLM_injective_on_constants
+```
+
+so the full-periodic flat block constraint sends a direction-wise constant
+physical one-cochain to `L` times the corresponding coarse directional value
+and is injective on that constant sector.
+
+Verification:
+
+```
+lake env lean YangMills\RG\LinearAveraging.lean
+lake build YangMills.RG.LinearAveraging
+lake env lean YangMills\RG\PhysicalGaugeCochains.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\LinearAveraging.lean YangMills\RG\PhysicalGaugeCochains.lean
+```
+
+**Honest scope.** This proves only that the soft block term removes
+direction-wise constant candidate harmonic modes at the finite algebraic
+level.  It does not classify the full flat harmonic kernel, prove the periodic
+curl-div identity, prove a volume-uniform block Poincare theorem, identify the
+Wilson Hessian, or produce `hraw`.  Clay distance **~0% (<0.1%), unchanged**.

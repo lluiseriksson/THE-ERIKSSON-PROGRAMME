@@ -438,6 +438,18 @@ abbrev FinePhysicalOneCochain (d L N' Nc : ℕ) [NeZero L] [NeZero N'] :=
 abbrev CoarsePhysicalOneCochain (d N' Nc : ℕ) [NeZero N'] :=
   PhysicalGaugeOneCochain d N' Nc
 
+/-- Direction-wise constant physical one-cochains on the periodic lattice. -/
+noncomputable def constantPhysicalGaugeOneCochain {d N Nc : ℕ} [NeZero N]
+    (v : Fin d → SUNLieCoord Nc) :
+    PhysicalGaugeOneCochain d N Nc :=
+  WithLp.toLp 2 fun b : PhysicalBond d N => v b.2
+
+@[simp]
+theorem constantPhysicalGaugeOneCochain_apply {d N Nc : ℕ} [NeZero N]
+    (v : Fin d → SUNLieCoord Nc) (b : PhysicalBond d N) :
+    constantPhysicalGaugeOneCochain (d := d) (N := N) (Nc := Nc) v b =
+      v b.2 := rfl
+
 /-- The flat block constraint obtained by averaging positive-bond fields. -/
 noncomputable def flatBlockConstraintQCLM (L N' : ℕ) [NeZero L] [NeZero N'] :
     FinePhysicalOneCochain d L N' Nc →L[ℝ] CoarsePhysicalOneCochain d N' Nc :=
@@ -500,6 +512,42 @@ theorem flatBlockConstraintQCLM_congr_of_eqOn_support
         h (physicalBondOfEdge e)
           (mem_flatBlockConstraintSupport_of_mem_linAvgSupport
             (d := d) (L := L) (N' := N') (b := b) he))
+
+/-- The flat block constraint reads a direction-wise constant physical field as
+`L` times the constant in the coarse bond direction. -/
+@[simp]
+theorem flatBlockConstraintQCLM_constant_apply
+    (v : Fin d → SUNLieCoord Nc) (b : PhysicalBond d N') :
+    flatBlockConstraintQCLM
+        (d := d) (Nc := Nc) L N'
+        (constantPhysicalGaugeOneCochain (N := L * N') v) b =
+      (L : ℝ) • v b.2 := by
+  rw [flatBlockConstraintQCLM_apply]
+  simpa using
+    (linAvg_constant (d := d) (V := SUNLieCoord Nc) L N' v
+      (ConcreteEdge.mk b.1 b.2 true))
+
+/-- The flat block constraint is injective on direction-wise constant physical
+one-cochains.  This is the finite-combinatorial part of the statement that the
+soft block term removes the torus harmonic one-form sector. -/
+theorem flatBlockConstraintQCLM_injective_on_constants
+    [NeZero Nc] {v : Fin d → SUNLieCoord Nc}
+    (hQ :
+      flatBlockConstraintQCLM
+          (d := d) (Nc := Nc) L N'
+          (constantPhysicalGaugeOneCochain (N := L * N') v) = 0) :
+    v = 0 := by
+  funext i
+  let b : PhysicalBond d N' := (fun _ => 0, i)
+  have hb :
+      flatBlockConstraintQCLM
+          (d := d) (Nc := Nc) L N'
+          (constantPhysicalGaugeOneCochain (N := L * N') v) b = 0 := by
+    simpa [b] using congrArg (fun A : CoarsePhysicalOneCochain d N' Nc => A b) hQ
+  rw [flatBlockConstraintQCLM_constant_apply] at hb
+  have hL : (L : ℝ) ≠ 0 := by
+    exact_mod_cast NeZero.ne L
+  exact (smul_eq_zero.mp hb).resolve_left hL
 
 end FlatBlockConstraint
 

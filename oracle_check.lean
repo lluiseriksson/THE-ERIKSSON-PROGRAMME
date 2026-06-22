@@ -419,6 +419,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.covarianceOfGaugeFixedPrecisionCLM_psd
 -- full-periodic physical gauge cochains with explicit background adjoint data
 #print axioms YangMills.RG.SUNAdjointModel.ad_inv_comp
+#print axioms YangMills.RG.fineLineSum_constant
+#print axioms YangMills.RG.linAvg_constant
 #print axioms YangMills.RG.orientedOneValue_reverse
 #print axioms YangMills.RG.covariantD0CLM_apply
 #print axioms YangMills.RG.covariantD1CLM_apply
@@ -434,6 +436,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatBlockConstraintQCLM_apply
 #print axioms YangMills.RG.mem_flatBlockConstraintSupport_of_mem_linAvgSupport
 #print axioms YangMills.RG.flatBlockConstraintQCLM_congr_of_eqOn_support
+#print axioms YangMills.RG.flatBlockConstraintQCLM_constant_apply
+#print axioms YangMills.RG.flatBlockConstraintQCLM_injective_on_constants
 -- full-periodic flat Hodge/block-Poincare interface; source estimate remains external
 #print axioms YangMills.RG.flatGaugeHodgePoincare
 -- finite physical gauge-operator interface and soft full-space precision shell

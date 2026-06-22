@@ -13,6 +13,10 @@ The full-periodic flat Hodge/block-Poincare predicate and source-input
 repackaging theorem are isolated in
 `YangMills/RG/PhysicalGaugeHodgePoincare.lean`; the active-region API remains a
 later branch.
+The first finite-combinatorial kernel check is also in place: direction-wise
+constant physical one-cochains are sent by `flatBlockConstraintQCLM` to `L`
+times the corresponding coarse directional value, so the block constraint is
+injective on that constant sector.
 The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose
@@ -177,12 +181,17 @@ finite operator slots they must fill.
 
 ```lean
 FlatGaugeHodgePoincare
+constantPhysicalGaugeOneCochain
 ```
 
 ### New theorems
 
 ```lean
 flatGaugeHodgePoincare
+fineLineSum_constant
+linAvg_constant
+flatBlockConstraintQCLM_constant_apply
+flatBlockConstraintQCLM_injective_on_constants
 ```
 
 ### Meaning
@@ -200,7 +209,9 @@ curl/divergence/block inequality using the already proved
 The theorem does not prove the curl/divergence/block estimate, does not assert
 volume-uniformity of the supplied constant, and does not identify the unit flat
 Hodge operator with the Wilson Hessian.  It is the target shape that a later
-source theorem must fill.
+source theorem must fill.  The constant-sector calculation is only the finite
+kernel bookkeeping showing that the soft block term removes direction-wise
+constant harmonic candidates; it is not a uniform Poincare estimate.
 
 ## 4. Brick P4.1 — physical tangent spaces and covariant cochains
 

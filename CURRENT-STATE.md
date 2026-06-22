@@ -79,11 +79,18 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   The trivial-background flat specialization also exposes both orientations of
   the exact Hodge quadratic identity as named theorems, so a future
   `flatGaugeHodgePoincare` source theorem can target the flat operator directly
-  without unfolding the background definition.  The flat physical block
-  constraint now also carries a named positive-bond stencil
-  `flatBlockConstraintSupport`, together with
-  `flatBlockConstraintQCLM_congr_of_eqOn_support`, lifting the existing
-  `linAvgSupport` locality theorem to the physical cochain API.  The
+  without unfolding the background definition.  The averaging layer now proves
+  the exact direction-wise constant calculations `fineLineSum_constant` and
+  `linAvg_constant`: a bond field constant in each direction averages to `L`
+  times that directional value.  The flat physical block constraint now also
+  carries a named positive-bond stencil `flatBlockConstraintSupport`, together
+  with `flatBlockConstraintQCLM_congr_of_eqOn_support`, lifting the existing
+  `linAvgSupport` locality theorem to the physical cochain API.  It also has
+  direction-wise constant one-cochains `constantPhysicalGaugeOneCochain`, the
+  exact formula `flatBlockConstraintQCLM_constant_apply`, and
+  `flatBlockConstraintQCLM_injective_on_constants`, certifying that the block
+  term removes the direction-constant sector at the finite-combinatorial
+  level.  The
   full-periodic flat Hodge/block-Poincare interface is now isolated in
   `YangMills/RG/PhysicalGaugeHodgePoincare.lean`: the predicate
   `FlatGaugeHodgePoincare` states the exact physical-cochain estimate for

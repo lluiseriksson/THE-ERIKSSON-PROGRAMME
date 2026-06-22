@@ -32,7 +32,6 @@ via Balaban's Renormalization Group* (ai.viXra:2602.0088).
 (the Lie algebra in the gauge application).  This brick: the definition
 and its **linearity** — the defining algebraic property, reused wherever
 `Q` appears.  Oracle target: `[propext, Classical.choice, Quot.sound]`.
-No sorry, no axioms.
 -/
 
 namespace YangMills.RG
@@ -97,6 +96,39 @@ theorem linAvg_smul (L N' : ℕ) [NeZero L] [NeZero N']
   simp only [linAvg]
   rw [Finset.sum_congr rfl fun x _ => fineLineSum_smul L N' r A c.dir x,
     ← Finset.smul_sum, smul_comm]
+
+/-- The line integral of a direction-wise constant bond field has length `L`.
+
+For a field `A(e) = v(e.dir)`, the length-`L` line in direction `μ` reads the
+same value `v μ` at each fine bond. -/
+theorem fineLineSum_constant (L N' : ℕ) [NeZero L] [NeZero N']
+    (v : Fin d → V) (μ : Fin d) (x : FinBox d (L * N')) :
+    fineLineSum L N' (fun e : ConcreteEdge d (L * N') => v e.dir) μ x =
+      (L : ℝ) • v μ := by
+  rw [fineLineSum]
+  change (∑ _k ∈ Finset.range L, v μ) = (L : ℝ) • v μ
+  rw [Finset.sum_const, Finset.card_range]
+  exact (Nat.cast_smul_eq_nsmul ℝ L (v μ)).symm
+
+open scoped Classical in
+/-- The block average of a direction-wise constant bond field is `L` times the
+constant in the coarse bond direction.
+
+The normalization averages over `L^d` starting sites, but each line integral
+has length `L`, so the remaining factor is exactly `L`. -/
+theorem linAvg_constant (L N' : ℕ) [NeZero L] [NeZero N']
+    (v : Fin d → V) (c : ConcreteEdge d N') :
+    linAvg L N' (fun e : ConcreteEdge d (L * N') => v e.dir) c =
+      (L : ℝ) • v c.dir := by
+  rw [linAvg]
+  rw [Finset.sum_congr rfl fun x _ =>
+    fineLineSum_constant (d := d) L N' v c.dir x]
+  rw [Finset.sum_const, blockOf_card, ← Nat.cast_smul_eq_nsmul ℝ (L ^ d)
+    ((L : ℝ) • v c.dir), smul_smul]
+  rw [Nat.cast_pow]
+  have hLd : (L : ℝ) ^ d ≠ 0 := by
+    exact pow_ne_zero d (by exact_mod_cast NeZero.ne L)
+  rw [inv_mul_cancel₀ hLd, one_smul]
 
 open scoped Classical in
 /-- The finite set of fine bonds read by the line integral from `x` in
