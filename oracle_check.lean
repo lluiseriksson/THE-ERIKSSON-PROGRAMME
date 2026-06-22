@@ -334,6 +334,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.expDecay_quadratic_form_le
 -- the full ℓ² Schur test: operator-norm bound ‖K‖op ≤ a·S
 #print axioms YangMills.RG.expDecay_op_bilinear_le
+-- scalar Schur-Catalan budget closure: base coercivity beats finite defects
+#print axioms YangMills.RG.schurCatalanBudget
+#print axioms YangMills.RG.quadraticBudget_sub_finset_le
+#print axioms YangMills.RG.quadraticBudget_sub_finset_pos
+#print axioms YangMills.RG.schurCatalan_lower_bound_of_finset_budget
+#print axioms YangMills.RG.schurCatalan_coercive_of_finset_budget
 -- PSD covariance-kernel interface: variance ≥ 0 and the covariance Cauchy–Schwarz
 #print axioms YangMills.RG.psd_diag_nonneg
 #print axioms YangMills.RG.psd_cauchy_schwarz

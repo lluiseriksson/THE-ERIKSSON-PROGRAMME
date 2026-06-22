@@ -281,6 +281,9 @@ import YangMills.RG.KernelDecay
 -- Schur boundedness of exponentially-decaying kernels (finite lattice): the
 -- ℓ¹ row-sum bound and the quadratic-form (covariance) bound ≤ a·S.
 import YangMills.RG.KernelSchur
+-- Scalar Schur-Catalan budget closure: base coercivity remains positive when
+-- finite multiscale defect budgets sum below the base coercivity.
+import YangMills.RG.SchurCatalanBudget
 -- PSD covariance-kernel interface: diagonal/variance bounds and the covariance
 -- Cauchy–Schwarz, connecting ExpDecay/Schur to the Gaussian covariance form.
 import YangMills.RG.CovarianceKernel

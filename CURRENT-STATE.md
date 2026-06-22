@@ -527,12 +527,19 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `activity_profile_bound_of_tendsto_telescope`: if the initial activity has
   amplitude `amp` and the profile-weighted increments have summable budget
   `S`, then the pointwise limit has amplitude `amp + S`;
-* exponential-decay kernel calculus, Schur bounds, PSD kernel interface,
-  Gaussian MGF bounds, and the collar-separated cross-sum bound
+* exponential-decay kernel calculus, Schur bounds, the scalar
+  Schur-Catalan budget closure, PSD kernel interface, Gaussian MGF bounds,
+  and the collar-separated cross-sum bound
   `expDecay_separated_finset_sum_le`: an `ExpDecay` covariance kernel pays
   `exp(-κ ε)` across a separated collar, the algebraic core needed by the
   Gaussian collar-factorization route inspired by Lluis Eriksson's
-  `2512.0064v1` outlook;
+  `2512.0064v1` outlook.  The new
+  `schurCatalan_coercive_of_finset_budget` theorem records the finite
+  scalar principle that a base coercivity constant stays positive after
+  subtracting multiscale defects whose Schur-Catalan budgets sum below the
+  base; it is bookkeeping only and does not prove the gauge-fixed Hessian,
+  Schur-complement, propagator, R-operation, or raw activity estimates needed
+  for P4;
 * lattice animal counting, cube adjacency, and shell-growth summability;
 * polymer-with-holes multi-hole combinatorics, multiplicity bounds, discrete
   modified-metric summability, and the cluster-union modified-metric interface.

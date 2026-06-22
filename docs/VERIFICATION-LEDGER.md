@@ -8638,3 +8638,51 @@ obligation.  It also does not prove Dimock (642), CMP116 localization, raw
 activity decay, spectator-field law, `hR`, `hRpoly`, continuum construction,
 OS/Wightman reconstruction, or Clay.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 236 (2026-06-22, **finite Schur-Catalan coercivity budget**
+`YangMills.RG.schurCatalanBudget`,
+`YangMills.RG.quadraticBudget_sub_finset_le`,
+`YangMills.RG.quadraticBudget_sub_finset_pos`,
+`YangMills.RG.schurCatalan_lower_bound_of_finset_budget`,
+`YangMills.RG.schurCatalan_coercive_of_finset_budget`;
+core 8329)
+
+This addendum records the scalar positivity bookkeeping highlighted by the
+P4/Riemann comparison note, without turning it into a physical source claim.
+
+`YangMills/RG/SchurCatalanBudget.lean` introduces the scalar envelope
+
+```
+(1 - sqrt (1 - 4 * M^2 * epsilon)) / (2 * M)
+```
+
+as `schurCatalanBudget`, and proves the finite coercivity principle:
+if a base quadratic form dominates `cBase * q v` and each selected finite
+multiscale defect is bounded by its scalar budget times `q v`, then the base
+minus defects dominates the remaining budget.  In particular,
+`schurCatalan_coercive_of_finset_budget` proves strict positivity whenever
+
+```
+sum_i schurCatalanBudget (M i) (epsilon i) < cBase
+```
+
+and `0 < q v`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\SchurCatalanBudget.lean
+lake build YangMills.RG.SchurCatalanBudget
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is a finite scalar closure theorem only.  It does not
+prove that the Yang--Mills gauge-fixed Hessian is self-adjoint/coercive, does
+not prove a Schur-complement self-energy expansion, does not prove propagator
+localization, does not prove the R-operation gain, and does not construct or
+bound the concrete raw gauge activity.  Those remain exactly the P4
+source/geometric obligations.  It also does not prove or use RH.  Clay distance
+**~0% (<0.1%), unchanged**.
