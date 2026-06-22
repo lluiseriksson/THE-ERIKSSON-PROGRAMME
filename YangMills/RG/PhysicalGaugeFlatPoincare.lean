@@ -7,7 +7,9 @@ import YangMills.RG.PhysicalGaugeHodgePoincare
 
 This module records the exact norm bookkeeping for direction-wise constant
 physical one-cochains under the current unscaled full-periodic block map.  It
-does not prove the full periodic curl/divergence/block Poincare theorem.
+now proves the full-periodic curl/divergence kernel classification and the
+resulting fixed-volume flat Hodge/block Poincare theorem.  The Poincare
+constant is not volume-uniform.
 -/
 
 namespace YangMills.RG
@@ -55,6 +57,29 @@ theorem flatHarmonicKernelClassified_of_curl_div
   apply PiLp.ext
   rintro ⟨x, i⟩
   simpa [constantPhysicalGaugeOneCochain_apply] using hv x i
+
+/-- Flat harmonic physical one-cochains on the finite periodic lattice are
+direction-wise constant. -/
+theorem flatHarmonicKernelClassified
+    {d N Nc : ℕ}
+    [NeZero d] [NeZero N] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc) :
+    FlatHarmonicKernelClassified d N Nc ρ :=
+  flatHarmonicKernelClassified_of_curl_div
+    ρ periodicCurlDivKernelClassified
+
+/-- Readable one-field form of the flat harmonic classification. -/
+theorem flatHarmonic_eq_constantPhysicalGaugeOneCochain
+    {d N Nc : ℕ}
+    [NeZero d] [NeZero N] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    {A : PhysicalGaugeOneCochain d N Nc}
+    (hA : IsFlatHarmonicOneCochain ρ A) :
+    ∃ v : Fin d → SUNLieCoord Nc,
+      A =
+        constantPhysicalGaugeOneCochain
+          (d := d) (N := N) (Nc := Nc) v :=
+  flatHarmonicKernelClassified ρ A hA
 
 /-- Every site of the one-dimensional periodic box is reached from the default
 site by iterating the positive shift. -/
@@ -367,6 +392,18 @@ theorem exists_flatGaugeHodgePoincare_of_periodicCurlDivClassification
     flatGaugeHodgeBlockPoincare_of_harmonicClassification
       ρ
       (flatHarmonicKernelClassified_of_curl_div ρ hcd)
+
+/-- Unconditional fixed-volume flat Hodge/block Poincare on the finite
+periodic lattice.  The resulting constant may depend on the fixed volume. -/
+theorem exists_flatGaugeHodgePoincare
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc) :
+    ∃ CP : ℝ,
+      FlatGaugeHodgePoincare d L N' Nc ρ CP := by
+  exact
+    flatGaugeHodgeBlockPoincare_of_harmonicClassification
+      ρ (flatHarmonicKernelClassified ρ)
 
 /-- One-dimensional fixed-volume flat Hodge/block Poincare, obtained without
 carrying an external classification hypothesis.  The constant is still the

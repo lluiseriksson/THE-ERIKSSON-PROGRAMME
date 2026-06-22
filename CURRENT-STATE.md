@@ -133,14 +133,19 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   normalization
   `‖const_{L*N'} v‖² = ((L : ℝ)^d / (L : ℝ)^2) ‖Q const_{L*N'} v‖²`
   for the current unscaled line-integral block map.  The same module now
-  defines the conditional bridge `FlatHarmonicKernelClassified`, consumes the
-  explicit source-facing periodic curl/divergence boundary
-  `PeriodicCurlDivKernelClassified` from
-  `YangMills/RG/FiniteTorusCurlDiv.lean` through
-  `flatHarmonicKernelClassified_of_curl_div`, and proves
-  `exists_flatGaugeHodgePoincare_of_periodicCurlDivClassification`, where the
-  missing coordinate classification remains an explicit hypothesis.  It also
-  proves the
+  defines the conditional bridge `FlatHarmonicKernelClassified`.  The finite
+  torus module `YangMills/RG/FiniteTorusCurlDiv.lean` now proves the direct
+  Laplacian classification theorem `periodicCurlDivKernelClassified` from the
+  ordered plaquette curl and backward-divergence stencils, using
+  `sum_inner_torusBackwardDiff`,
+  `sum_inner_torusLaplacian_eq_neg_sum_norm_sq`,
+  `torusLaplacian_component_eq_forwardDiff_divergence`, and
+  `eq_default_of_torusLaplacian_eq_zero`.  The physical adapter
+  `flatHarmonicKernelClassified_of_curl_div` now feeds the unconditional
+  theorem into `flatHarmonicKernelClassified` and
+  `flatHarmonic_eq_constantPhysicalGaugeOneCochain`; the fixed-volume theorem
+  `exists_flatGaugeHodgePoincare` follows without carrying an external
+  classification hypothesis.  It also proves the
   exact classified-kernel characterizations
   `flatHarmonicKernel_eq_constantSector` and
   `flatGaugeHodgeKernel_eq_constantSector`, and combines the carried
@@ -161,8 +166,7 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `flatCurlDivBlockPoincare_one` give fixed-volume one-dimensional
   Hodge/block-Poincare statements without carrying an external classification
   hypothesis.  The resulting Poincare constants may depend on the fixed volume;
-  the higher-dimensional reverse classification and the uniform full-periodic
-  Poincare theorem remain unproved.  The
+  the volume-uniform full-periodic Poincare theorem remains unproved.  The
   full-periodic flat Hodge/block-Poincare interface is now isolated in
   `YangMills/RG/PhysicalGaugeHodgePoincare.lean`: the predicate
   `FlatGaugeHodgePoincare` states the exact physical-cochain estimate for

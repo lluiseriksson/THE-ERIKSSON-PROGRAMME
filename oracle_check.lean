@@ -464,7 +464,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatConstant_jointKernel_eq_zero_iff
 #print axioms YangMills.RG.PeriodicCurlDivKernelClassified
 #print axioms YangMills.RG.torusForwardDiff_torusBackwardDiff_comm
+#print axioms YangMills.RG.sum_inner_torusBackwardDiff
+#print axioms YangMills.RG.sum_inner_torusLaplacian_eq_neg_sum_norm_sq
+#print axioms YangMills.RG.torusLaplacian_component_eq_forwardDiff_divergence
+#print axioms YangMills.RG.eq_default_of_torusLaplacian_eq_zero
+#print axioms YangMills.RG.periodicCurlDivKernelClassified
 #print axioms YangMills.RG.flatHarmonicKernelClassified_of_curl_div
+#print axioms YangMills.RG.flatHarmonicKernelClassified
+#print axioms YangMills.RG.flatHarmonic_eq_constantPhysicalGaugeOneCochain
 #print axioms YangMills.RG.flatHarmonicKernel_eq_constantSector
 #print axioms YangMills.RG.flatGaugeHodgeKernel_eq_constantSector
 #print axioms YangMills.RG.flatJointKernel_trivial_of_harmonicClassification
@@ -473,6 +480,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatGaugeHodgeBlockPoincare_of_harmonicClassification
 #print axioms YangMills.RG.flatCurlDivBlockPoincare_of_harmonicClassification
 #print axioms YangMills.RG.exists_flatGaugeHodgePoincare_of_periodicCurlDivClassification
+#print axioms YangMills.RG.exists_flatGaugeHodgePoincare
 #print axioms YangMills.RG.finBox_one_eq_iterShift
 #print axioms YangMills.RG.constant_of_shift_invariant_finBox_one
 #print axioms YangMills.RG.flatHarmonicKernelClassified_one

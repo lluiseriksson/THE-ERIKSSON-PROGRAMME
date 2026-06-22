@@ -36,24 +36,23 @@ coordinate lemmas, and `FinBox.eq_default_of_shift_invariant`.
 The companion module `YangMills/RG/PhysicalGaugeFlatPoincare.lean` now proves
 the exact constant-sector norm identities and the sharp block-control ratio
 `L^d / L^2` for the current `linAvg` normalization.  It also carries the
-conditional bridge `FlatHarmonicKernelClassified`, which reduces a future
-reverse flat-harmonic classification theorem to exact constant-sector kernel
-statements and triviality of the joint flat-Hodge/block kernel.  The
-source-facing coordinate boundary
-`PeriodicCurlDivKernelClassified` is isolated in
-`YangMills/RG/FiniteTorusCurlDiv.lean`, with finite-difference primitives and
-the first forward/backward commutation lemma; the physical adapter
-`flatHarmonicKernelClassified_of_curl_div` and fixed-volume theorem
-`exists_flatGaugeHodgePoincare_of_periodicCurlDivClassification` consume that
-boundary without hiding it.  From trivial
+conditional bridge `FlatHarmonicKernelClassified`.  The coordinate theorem
+`periodicCurlDivKernelClassified` is now proved in
+`YangMills/RG/FiniteTorusCurlDiv.lean` by the direct finite-difference
+Laplacian route: summation by parts, the negative energy identity, component
+Laplacian equals forward-difference of divergence, and shift-invariance
+implies constancy on `FinBox`.  The physical adapter
+`flatHarmonicKernelClassified_of_curl_div` now produces the unconditional
+`flatHarmonicKernelClassified`, the readable
+`flatHarmonic_eq_constantPhysicalGaugeOneCochain`, and the fixed-volume
+closure `exists_flatGaugeHodgePoincare`.  From trivial
 joint kernel, it now derives a non-uniform fixed-volume flat Hodge/block
 Poincare theorem using Mathlib's finite-dimensional anti-Lipschitz theorem.  In
 the one-dimensional base case it proves the reverse classification directly
 from the pointwise flat divergence equation, and therefore obtains
 fixed-volume one-dimensional Hodge/block-Poincare statements without carrying
-an external classification hypothesis.  The higher-dimensional reverse
-harmonic classification and volume-uniform full-periodic estimate remain
-frontier obligations.
+an external classification hypothesis.  The volume-uniform full-periodic
+estimate remains a frontier obligation.
 The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose
@@ -239,6 +238,11 @@ isFlatHarmonicOneCochain_divergence_apply_eq_zero
 isFlatHarmonicOneCochain_div_apply_eq_zero
 PeriodicCurlDivKernelClassified
 torusForwardDiff_torusBackwardDiff_comm
+sum_inner_torusBackwardDiff
+sum_inner_torusLaplacian_eq_neg_sum_norm_sq
+torusLaplacian_component_eq_forwardDiff_divergence
+eq_default_of_torusLaplacian_eq_zero
+periodicCurlDivKernelClassified
 covariantD1CLM_trivial_constantPhysicalGaugeOneCochain
 inner_constantPhysicalGaugeOneCochain_covariantD0CLM_trivial
 gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain
@@ -248,6 +252,8 @@ isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero
 isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_eq_zero
 FlatHarmonicKernelClassified
 flatHarmonicKernelClassified_of_curl_div
+flatHarmonicKernelClassified
+flatHarmonic_eq_constantPhysicalGaugeOneCochain
 flatHarmonicKernel_eq_constantSector
 flatGaugeHodgeKernel_eq_constantSector
 flatJointKernel_trivial_of_harmonicClassification
@@ -256,6 +262,7 @@ exists_flatGaugeHodgeBlockPoincare_of_jointKernel_trivial
 flatGaugeHodgeBlockPoincare_of_harmonicClassification
 flatCurlDivBlockPoincare_of_harmonicClassification
 exists_flatGaugeHodgePoincare_of_periodicCurlDivClassification
+exists_flatGaugeHodgePoincare
 finBox_one_eq_iterShift
 constant_of_shift_invariant_finBox_one
 flatHarmonicKernelClassified_one

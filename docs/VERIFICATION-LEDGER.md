@@ -9963,3 +9963,67 @@ curl/divergence classification boundary, but does not prove
 a volume-uniform full-periodic Poincare constant, any Wilson-Hessian
 identification, propagator localization, covariance-root localization, or
 `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 263 (2026-06-23, **finite-torus curl/divergence classification**
+`YangMills.RG.FiniteTorusCurlDiv`; core 8340)
+
+This addendum discharges the finite-coordinate theorem boundary isolated in
+Addendum 262.  The module
+
+```
+YangMills/RG/FiniteTorusCurlDiv.lean
+```
+
+now proves the direct finite-difference Laplacian route:
+
+```
+sum_inner_torusBackwardDiff
+sum_inner_torusLaplacian_eq_neg_sum_norm_sq
+torusLaplacian_component_eq_forwardDiff_divergence
+eq_default_of_torusLaplacian_eq_zero
+periodicCurlDivKernelClassified
+```
+
+The proof is finite-dimensional and full-periodic.  It turns ordered plaquette
+curl into symmetric forward differences, uses backward-divergence zero to make
+each component torus Laplacian vanish, applies the energy identity to force
+all forward differences to be zero, and then uses
+`FinBox.eq_default_of_shift_invariant` to conclude direction-wise constancy.
+
+The physical bridge
+
+```
+YangMills/RG/PhysicalGaugeFlatPoincare.lean
+```
+
+now uses that theorem to prove
+
+```
+flatHarmonicKernelClassified
+flatHarmonic_eq_constantPhysicalGaugeOneCochain
+exists_flatGaugeHodgePoincare
+```
+
+so the fixed-volume flat Hodge/block Poincare theorem no longer carries an
+external flat-harmonic classification hypothesis.  The resulting constant is
+still obtained by finite-dimensional compactness and may depend on the fixed
+volume.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\FiniteTorusCurlDiv.lean
+lake build YangMills.RG.FiniteTorusCurlDiv
+lake env lean YangMills\RG\PhysicalGaugeFlatPoincare.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\FiniteTorusCurlDiv.lean YangMills\RG\PhysicalGaugeFlatPoincare.lean
+```
+
+**Honest scope.** This proves the finite full-periodic classification and the
+non-uniform fixed-volume flat Hodge/block Poincare closure.  It does not prove
+a volume-uniform Poincare/Gaffney estimate, an explicit numerical constant,
+Wilson-Hessian identification, propagator localization, covariance-root
+localization, or `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
