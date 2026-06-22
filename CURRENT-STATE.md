@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8328 jobs**.
+* `lake build YangMillsCore` is green at **8330 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -48,7 +48,14 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `linAvgSupport`, together with
   `linAvg_congr_of_eqOn_support` and
   `scaledLinAvgCLM_congr_of_eqOn_support`, so later kernel/locality work can
-  consume finite support of `Q` without hard-coding its block/line indices;
+  consume finite support of `Q` without hard-coding its block/line indices.
+  The gauge-precision bookkeeping layer now proves
+  `coercive_add_adjointMass_of_blockPoincare` and
+  `coercive_add_qMassCLM_of_blockPoincare`: an explicit block
+  Poincare/Hodge inequality plus positivity of the background form gives
+  coercivity of `K + a Q†Q` with constant `min 1 a / C_P`.  This is still
+  abstract Hilbert-space algebra; it does not construct the physical
+  Yang--Mills Hessian or prove a source Poincare theorem;
 * gauge covariance of the averaged-contour interface;
 * near-identity logarithm, small-field stability lemmas, and the local
   two-sided cutoff dictionary `norm_nearLog_two_sided_of_norm_le_third`,

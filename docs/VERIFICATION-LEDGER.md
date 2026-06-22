@@ -8686,3 +8686,58 @@ localization, does not prove the R-operation gain, and does not construct or
 bound the concrete raw gauge activity.  Those remain exactly the P4
 source/geometric obligations.  It also does not prove or use RH.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 237 (2026-06-22, **gauge precision coercivity bookkeeping**
+`YangMills.RG.coercive_add_adjointMass_of_blockPoincare`,
+`YangMills.RG.coercive_add_qMassCLM_of_blockPoincare`,
+`YangMills.RG.coercive_add_perturbation`;
+core 8330)
+
+This addendum records the first source-independent P4 coercivity brick prompted
+by the spectral/coercivity diagnosis.  The relevant P3 fixed-tree and
+target-sensitive `H#` leaf-summation estimates were already present on current
+`main`, so this checkpoint moves to the next safe algebraic layer rather than
+duplicating the existing leaf-summation route.
+
+`YangMills/RG/GaugePrecision.lean` proves that an explicit block
+Poincare/Hodge estimate
+
+```
+||x||^2 <= C_P * (<x, K x> + ||Q x||^2)
+```
+
+together with positivity of the background quadratic form implies coercivity
+of the precision operator
+
+```
+K + a * Q†Q
+```
+
+with constant
+
+```
+min(1,a) / C_P.
+```
+
+The theorem `coercive_add_qMassCLM_of_blockPoincare` specializes the abstract
+statement to the existing scaled averaging mass `qMassCLM = Q†Q`; the
+perturbative closure `coercive_add_perturbation` records the elementary
+stability under a quadratic-form defect bounded below by `-delta * ||x||^2`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\GaugePrecision.lean
+lake build YangMills.RG.GaugePrecision
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is Hilbert-space coercivity algebra only.  It does not
+prove the Yang--Mills block Poincare/Hodge theorem, does not identify the
+physical gauge-fixed Hessian as `K`, does not prove propagator/covariance
+decay, does not construct the raw RG activity, and does not discharge `hRpoly`.
+It is designed to be consumed by a future source-backed Hessian/coercivity
+packet.  Clay distance **~0% (<0.1%), unchanged**.

@@ -195,6 +195,9 @@ import YangMills.RG.AveragingL2
 -- Hilbert-space adjoint mass for the linear averaging operator:
 -- the scaled `Q†Q` operator on the bond ℓ²/PiLp space, PSD with norm ≤ ‖Q‖².
 import YangMills.RG.AveragingAdjoint
+-- Abstract gauge-precision coercivity bookkeeping: a block Poincare/Hodge
+-- estimate plus a positive `Q†Q` mass gives coercivity of `K + a Q†Q`.
+import YangMills.RG.GaugePrecision
 -- UV-S2 brick G3: the free RG step on a Gaussian field — the covariance
 -- transformation law `Cov(μ.map Q) = Q·Cov(μ)·Qᵀ` (on Mathlib's IsGaussian),
 -- the free fixed-point half of the small-field per-scale contraction.

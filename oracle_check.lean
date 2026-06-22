@@ -383,6 +383,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.inner_qMassCLM_self
 #print axioms YangMills.RG.qMassCLM_psd
 #print axioms YangMills.RG.qMassCLM_opNorm_le
+-- gauge precision coercivity: block Poincare/Hodge + Q†Q mass bookkeeping
+#print axioms YangMills.RG.coercive_add_adjointMass_of_blockPoincare
+#print axioms YangMills.RG.coercive_add_qMassCLM_of_blockPoincare
+#print axioms YangMills.RG.coercive_add_perturbation
 -- the free RG step's covariance transformation law (on Mathlib's IsGaussian)
 #print axioms YangMills.RG.covarianceBilinDual_map_clm
 -- finite Gaussian block collar: normalization of translated kernels and product block transforms
