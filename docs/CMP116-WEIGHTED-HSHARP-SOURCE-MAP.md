@@ -2,7 +2,9 @@
 
 Updated: 2026-06-22
 
-Public checkpoint inspected: `9c2f42c`
+Public checkpoint inspected: `a901214`
+
+Latest theorem frontier referenced below: `9c2f42c`.
 
 Lean endpoints now in view:
 

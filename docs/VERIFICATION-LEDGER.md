@@ -8419,3 +8419,27 @@ live-state checkpoint references and keeps completed theorem work auditable.  It
 does not prove a new Lean theorem, instantiate the CMP116 support package,
 discharge `hraw`, `hR`, `hRpoly`, continuum construction, OS/Wightman
 reconstruction, or Clay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 231 (2026-06-22, **checkpoint header correction**; docs only)
+
+This addendum corrects a small stale-checkpoint mismatch left after Addendum
+230.
+
+`CURRENT-STATE.md` now names
+`a901214da57491603d86756a35768d727ebe012e` as the last certified public
+checkpoint.  `docs/CMP116-WEIGHTED-HSHARP-SOURCE-MAP.md` distinguishes the
+public documentation checkpoint `a901214` from the latest theorem frontier
+`9c2f42c`.
+
+Verification:
+
+```
+git diff --check
+python scripts\check_consistency.py
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+**Honest scope.** This is documentation/audit work only.  It corrects stale
+checkpoint metadata and does not prove a new Lean theorem or discharge any
+CMP116/CMP119/CMP122 source obligation.

@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-22, updated through public
-`origin/main` commit `9c2f42c0fc482d51223915b2eacda142dfef97c8`
+`origin/main` commit `a901214da57491603d86756a35768d727ebe012e`
 (see `git log` and `docs/VERIFICATION-LEDGER.md`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
