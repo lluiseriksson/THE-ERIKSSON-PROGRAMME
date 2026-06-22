@@ -9503,3 +9503,46 @@ does not prove the uniform full-periodic curl/divergence/block Poincare
 theorem, does not establish independence of a Poincare constant from `N'`,
 `Nc`, or `ρ`, and does not identify the Wilson Hessian.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 254 (2026-06-22, **constant-sector Hodge kernel and block-zero test**
+`YangMills.RG.PhysicalGaugeCochains`; core 8338)
+
+This addendum records the operator-level closure of the constant-sector audit.
+The new theorem
+
+```
+flatGaugeHodgeK0CLM_constantPhysicalGaugeOneCochain
+```
+
+proves that every direction-wise constant physical one-cochain is killed by
+the flat Hodge operator itself at the trivial background, not merely that its
+quadratic form vanishes.  The proof unfolds
+`flatGaugeHodgeK0CLM = D₁†D₁ + D₀D₀†` and uses the already verified zero flat
+curl and zero flat divergence results.
+
+The new theorem
+
+```
+flatBlockConstraintQCLM_constant_eq_zero_iff
+```
+
+packages the constant-sector block normalization and injectivity as an exact
+zero test: the flat block constraint vanishes on a direction-wise constant
+field iff the underlying directional value is zero.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCochains.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
+```
+
+**Honest scope.** This is still a constant-sector fact.  It does not prove the
+reverse flat-harmonic classification, the uniform full-periodic
+curl/divergence/block Poincare theorem, Wilson-Hessian identification,
+propagator localization, covariance-root localization, or `hraw`.  Clay
+distance **~0% (<0.1%), unchanged**.

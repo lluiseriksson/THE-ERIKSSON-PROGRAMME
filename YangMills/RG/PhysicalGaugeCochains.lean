@@ -614,6 +614,22 @@ theorem flatBlockConstraintQCLM_constant
   rw [flatBlockConstraintQCLM_constant_apply]
   rfl
 
+/-- On the direction-wise constant sector, the flat block constraint vanishes
+exactly when the underlying directional value is zero. -/
+theorem flatBlockConstraintQCLM_constant_eq_zero_iff
+    [NeZero Nc] (v : Fin d → SUNLieCoord Nc) :
+    flatBlockConstraintQCLM
+        (d := d) (Nc := Nc) L N'
+        (constantPhysicalGaugeOneCochain (N := L * N') v) = 0 ↔
+      v = 0 := by
+  constructor
+  · exact flatBlockConstraintQCLM_injective_on_constants
+  · intro hv
+    apply PiLp.ext
+    intro b
+    rw [flatBlockConstraintQCLM_constant_apply]
+    simp [hv]
+
 end FlatBlockConstraint
 
 section FlatConstantHarmonic
@@ -688,6 +704,17 @@ theorem isFlatHarmonicOneCochain_constantPhysicalGaugeOneCochain
       (constantPhysicalGaugeOneCochain (d := d) (N := N) (Nc := Nc) v) := by
   exact ⟨covariantD1CLM_trivial_constantPhysicalGaugeOneCochain ρ v,
     gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain ρ v⟩
+
+/-- Direction-wise constant one-cochains lie in the operator kernel of the flat
+Hodge operator at the trivial background. -/
+theorem flatGaugeHodgeK0CLM_constantPhysicalGaugeOneCochain
+    (ρ : SUNAdjointModel Nc) (v : Fin d → SUNLieCoord Nc) :
+    flatGaugeHodgeK0CLM d N Nc ρ
+        (constantPhysicalGaugeOneCochain (d := d) (N := N) (Nc := Nc) v) = 0 := by
+  rw [flatGaugeHodgeK0CLM, backgroundGaugeHodgeK0CLM]
+  simp [gaugeFixingMassCLM,
+    covariantD1CLM_trivial_constantPhysicalGaugeOneCochain,
+    gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain]
 
 end FlatConstantHarmonic
 

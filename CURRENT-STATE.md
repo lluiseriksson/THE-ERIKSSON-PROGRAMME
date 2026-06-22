@@ -105,8 +105,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain`, and
   `isFlatHarmonicOneCochain_constantPhysicalGaugeOneCochain`: every
   direction-wise constant one-cochain is a flat harmonic at the trivial
-  background, while the reverse classification and the uniform full-periodic
-  Poincare theorem remain unproved.  The
+  background.  The audit also exposes
+  `flatGaugeHodgeK0CLM_constantPhysicalGaugeOneCochain`, the corresponding
+  operator-kernel statement for the flat Hodge operator, and
+  `flatBlockConstraintQCLM_constant_eq_zero_iff`, the exact detection of
+  zero constants by the block map.  The reverse classification and the
+  uniform full-periodic Poincare theorem remain unproved.  The
   full-periodic flat Hodge/block-Poincare interface is now isolated in
   `YangMills/RG/PhysicalGaugeHodgePoincare.lean`: the predicate
   `FlatGaugeHodgePoincare` states the exact physical-cochain estimate for

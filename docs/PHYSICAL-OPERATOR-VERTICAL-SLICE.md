@@ -19,9 +19,11 @@ times the corresponding coarse directional value, so the block constraint is
 injective on that constant sector.  Those direction-wise constants are now
 also proved to be flat harmonic at the trivial background, by an explicit flat
 curl calculation and finite periodic summation by parts for the flat
-divergence.  The same flat cochain layer now also names the flat harmonic
-condition and proves that the flat Hodge quadratic form vanishes exactly on
-simultaneous flat-curl and gauge-divergence-zero fields.
+divergence; the layer also exposes the corresponding flat-Hodge
+operator-kernel statement and the exact block-zero test on constants.  The
+same flat cochain layer now also names the flat harmonic condition and proves
+that the flat Hodge quadratic form vanishes exactly on simultaneous flat-curl
+and gauge-divergence-zero fields.
 The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose
@@ -198,11 +200,13 @@ fineLineSum_constant
 linAvg_constant
 flatBlockConstraintQCLM_constant_apply
 flatBlockConstraintQCLM_constant
+flatBlockConstraintQCLM_constant_eq_zero_iff
 flatBlockConstraintQCLM_injective_on_constants
 covariantD1CLM_trivial_constantPhysicalGaugeOneCochain
 inner_constantPhysicalGaugeOneCochain_covariantD0CLM_trivial
 gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain
 isFlatHarmonicOneCochain_constantPhysicalGaugeOneCochain
+flatGaugeHodgeK0CLM_constantPhysicalGaugeOneCochain
 isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero
 isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_eq_zero
 ```
@@ -230,9 +234,10 @@ kernel bookkeeping showing that the soft block term removes direction-wise
 constant harmonic candidates; it is not a uniform Poincare estimate.  The new
 constant-sector flat-harmonic theorem proves the forward inclusion from
 direction-wise constants to flat harmonics at the trivial background, but the
-reverse classification is still open.  The zero-form harmonic test does not
-classify the full harmonic kernel and does not prove that all flat harmonics
-are direction-wise constants.
+reverse classification is still open.  The operator-kernel and block-zero
+tests are constant-sector consequences only.  The zero-form harmonic test does
+not classify the full harmonic kernel and does not prove that all flat
+harmonics are direction-wise constants.
 
 ## 4. Brick P4.1 — physical tangent spaces and covariant cochains
 
