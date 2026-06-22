@@ -365,6 +365,74 @@ noncomputable instance appendixFHoleIntegratedSecondGas_fintype
       appendixFHoleIntegratedKsharpActivity HF z Λ Hraw μ ν Y.val := by
   rfl
 
+/-- A KP-ready pointwise majorant for the spectator-integrated scalar second
+gas.  This is the integrated analogue of
+`AppendixFHoleSecondGasKPMajorant`; it packages exactly the tilted activity
+bound consumed by the existing with-holes KP criterion. -/
+def AppendixFHoleIntegratedSecondGasKPMajorant
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (Hraw :
+      OmegaPolymerType HF z →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : Measure γ)
+    (ν : Measure β)
+    (t q A : ℝ) : Prop :=
+  ∀ Y : (appendixFHoleIntegratedSecondGas HF z Λ Hraw μ ν).Polymer,
+    Real.exp t *
+        ‖(appendixFHoleIntegratedSecondGas HF z Λ Hraw μ ν).activity Y‖ *
+        Real.exp (Y.val.card : ℝ)
+      ≤ A * q ^ (discreteModifiedMetric HF Y.val + 1)
+
+/-- The spectator-integrated scalar second gas satisfies the same with-holes KP
+criterion once its activity is supplied with the KP-ready pointwise majorant. -/
+theorem appendixFHoleIntegratedSecondGas_KPCriterion_of_majorant
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (Hraw :
+      OmegaPolymerType HF z →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : Measure γ)
+    (ν : Measure β)
+    (t q A : ℝ)
+    (hA0 : 0 ≤ A)
+    (hK :
+      AppendixFHoleIntegratedSecondGasKPMajorant
+        HF z Λ Hraw μ ν t q A)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hq0 : 0 ≤ q)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (q * 2 ^ (3 ^ d + 1)) < 1)
+    (hsmall :
+      A * (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (q * 2 ^ (3 ^ d + 1)))⁻¹ ≤ 1) :
+    KP.KPCriterion
+      ((appendixFHoleIntegratedSecondGas HF z Λ Hraw μ ν).scaleActivity
+        (Real.exp t))
+      (fun Y => (Y.val.card : ℝ)) := by
+  change
+    KP.KPCriterion
+      ((omegaHolePolymerSystem HF
+          (appendixFHoleIntegratedKsharpActivity HF z Λ Hraw μ ν)).scaleActivity
+        (Real.exp t))
+      (fun Y => (Y.val.card : ℝ))
+  refine
+    omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound
+      HF (appendixFHoleIntegratedKsharpActivity HF z Λ Hraw μ ν)
+      t q A hA0 ?_ hdisj hnoedges hholes_ne hq0 hCq hsmall
+  intro Y
+  simpa [AppendixFHoleIntegratedSecondGasKPMajorant,
+    appendixFHoleIntegratedSecondGas] using hK Y
+
 /-- Finite target-family integration rewritten in the scalar `z_K` language.
 The left side is the spectator integral of the finite `K#` target-family gas;
 the right side is the same finite hard-core target-family sum using the

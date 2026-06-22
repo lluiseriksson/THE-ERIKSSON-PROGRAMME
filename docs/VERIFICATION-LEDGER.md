@@ -8443,3 +8443,45 @@ lake env lean oracle_check.lean
 **Honest scope.** This is documentation/audit work only.  It corrects stale
 checkpoint metadata and does not prove a new Lean theorem or discharge any
 CMP116/CMP119/CMP122 source obligation.
+
+## Addendum 232 (2026-06-22, **integrated scalar second-gas KP adapter**
+`YangMills.RG.AppendixFHoleIntegratedSecondGasKPMajorant`,
+`YangMills.RG.appendixFHoleIntegratedSecondGas_KPCriterion_of_majorant`,
+`YangMills.RG.BalabanCMP116AppendixFIntegratedSecondGasKPMajorant`,
+`YangMills.RG.balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant`;
+core 8328)
+
+This addendum gives the spectator-integrated scalar second gas the same
+KP-ready interface already available for the evaluated second gas.
+
+`YangMills/RG/AppendixFSecondGas.lean` now defines
+`AppendixFHoleIntegratedSecondGasKPMajorant`, the tilted pointwise majorant
+for `appendixFHoleIntegratedSecondGas`, and proves
+`appendixFHoleIntegratedSecondGas_KPCriterion_of_majorant` by feeding that
+majorant into
+`omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`.
+
+`YangMills/RG/BalabanCMP116SecondGasAdapter.lean` exposes the CMP116
+specialization
+`BalabanCMP116AppendixFIntegratedSecondGasKPMajorant` and
+`balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant`, so the
+scalar `z_K` carrier produced after spectator integration can be handed
+directly to the with-holes KP criterion once a source majorant is supplied.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFSecondGas.lean
+lake build YangMills.RG.AppendixFSecondGas
+lake env lean YangMills\RG\BalabanCMP116SecondGasAdapter.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is a finite consumer adapter only.  It does not prove
+Dimock (642), the integrated scalar majorant, the spectator-field law, CMP116
+localization, raw activity decay, `hR`, `hRpoly`, continuum construction,
+OS/Wightman reconstruction, or Clay.  Clay distance **~0% (<0.1%),
+unchanged**.

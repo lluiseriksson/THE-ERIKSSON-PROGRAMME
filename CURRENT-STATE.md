@@ -1,8 +1,8 @@
 # Current State
 
-**Last certified checkpoint:** 2026-06-22, updated through public
-`origin/main` commit `a901214da57491603d86756a35768d727ebe012e`
-(see `git log` and `docs/VERIFICATION-LEDGER.md`).
+**Verified public baseline for this live-state snapshot:** 2026-06-22,
+`origin/main` commit `1e4add8fb450880c671590dcf265d0a72139f46b`
+(see `git log` and `docs/VERIFICATION-LEDGER.md` for later commits).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -280,11 +280,17 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `appendixFHoleIntegratedKsharpActivity HF z Λ Hraw μ ν Y =
   ∫ ψ, (appendixFHoleKsharp HF z Λ Hraw μ Y).globalEval ψ dν`, the
   corresponding scalar hard-core gas `appendixFHoleIntegratedSecondGas`, the
-  zero-extension theorem outside the first target region, and the finite
+  zero-extension theorem outside the first target region, the integrated
+  scalar KP interface
+  `AppendixFHoleIntegratedSecondGasKPMajorant` /
+  `appendixFHoleIntegratedSecondGas_KPCriterion_of_majorant`, and the finite
   normalization identity
   `integral_sum_appendixFHoleKsharp_eq_sum_prod_integratedKsharpActivity_of_admissibleTargetFamilies`,
   which rewrites the integrated finite `K#` target-family gas as a finite
-  target-family sum using this scalar `z_K` activity.
+  target-family sum using this scalar `z_K` activity.  The CMP116 adapter
+  exposes the same integrated scalar KP entry point as
+  `BalabanCMP116AppendixFIntegratedSecondGasKPMajorant` and
+  `balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant`.
   This does not prove Dimock (642), the conversion from the exact nonlinear
   `K#` estimate to the KP-ready majorant, any concrete integrability/source
   estimate for the integrated scalar activity, the second Ursell `H#`
@@ -671,6 +677,12 @@ Appendix-F skeleton-overlap edges, and skeleton-disjoint source polymers have
 `F.zeta X Y = 1` and no CMP116 Ω-overlap edge.  These are consequences of the
 single support hypothesis `F.activeSupport X subset skeleton HF X.val`; they do
 not prove that CMP116 localization satisfies that hypothesis.
+The scalar second-gas CMP116 layer also has the same KP-ready interface after
+spectator integration:
+`balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant` applies the
+with-holes KP criterion to `balabanCMP116AppendixFIntegratedSecondGas` whenever
+the explicit integrated scalar majorant, geometry, and smallness hypotheses are
+supplied.
 The source audit in `docs/CMP116-WEIGHTED-HSHARP-SOURCE-MAP.md` records the
 current attribution boundary: CMP116 supports the product-Gaussian change of
 variables, localized `H(Z)`, component factorization, hard-core `zeta`, and

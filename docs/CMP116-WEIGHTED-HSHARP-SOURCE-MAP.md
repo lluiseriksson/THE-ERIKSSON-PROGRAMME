@@ -2,9 +2,10 @@
 
 Updated: 2026-06-22
 
-Public checkpoint inspected: `a901214`
+Public checkpoint inspected: `1e4add8`
 
-Latest theorem frontier referenced below: `9c2f42c`.
+Latest theorem frontier referenced below: the `9c2f42c` support frontier plus
+the integrated scalar second-gas KP wrapper in the current snapshot.
 
 Lean endpoints now in view:
 
@@ -12,6 +13,7 @@ Lean endpoints now in view:
 * `BalabanCMP116AppendixFSupportHypotheses.omegaGraph_adj_imp_skeletonOverlapGraph_adj_of_activeSupport_subset_target_inter_omegaRegion`;
 * `BalabanCMP116AppendixFSupportHypotheses.omegaGraph_adj_imp_skeletonOverlapGraph_adj_of_supportHypotheses`;
 * `BalabanCMP116AppendixFSupportHypotheses.not_omegaGraph_adj_of_disjoint_skeleton_of_supportHypotheses`;
+* `balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant`;
 * `singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_sourceMeasurable`.
 
 This note maps the new weighted `H#` tree bridge onto the local primary-source
@@ -79,6 +81,14 @@ Together, these two graph directions are the finite hard-core dictionary
 available from the support package.  They do not discharge the package itself:
 the next source theorem must still prove `F.activeSupport X subset skeleton HF
 X.val` or supply the exact enlargement convention that replaces that target.
+
+The integrated scalar second-gas side now has the same KP-ready interface as
+the evaluated second gas:
+`balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant` consumes
+`BalabanCMP116AppendixFIntegratedSecondGasKPMajorant` plus the with-holes
+geometry and smallness hypotheses.  This is still a consumer interface: it does
+not prove Dimock (642), the integrated scalar majorant, or the spectator-field
+measure identification.
 
 Latest OCR/source-extraction verdict: CMP116 (2.5)--(2.11) supports the
 product-Gaussian change of variables and the existence of localized activities

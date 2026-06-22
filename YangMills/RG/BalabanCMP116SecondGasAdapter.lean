@@ -379,6 +379,62 @@ noncomputable instance balabanCMP116AppendixFIntegratedSecondGas_fintype
       balabanCMP116AppendixFIntegratedKsharpActivity HF z Λ F ν Y.val := by
   rfl
 
+/-- KP-ready pointwise majorant for the spectator-integrated scalar CMP116
+second gas. -/
+def BalabanCMP116AppendixFIntegratedSecondGasKPMajorant
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF z))
+    (ν : Measure β)
+    (t q A : ℝ) : Prop :=
+  AppendixFHoleIntegratedSecondGasKPMajorant HF z Λ F.activity
+    (balabanCMP116BondGaussian lieDim) ν t q A
+
+/-- CMP116 wrapper for the with-holes KP criterion of the spectator-integrated
+scalar second gas. -/
+theorem balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF z))
+    (ν : Measure β)
+    (t q A : ℝ)
+    (hA0 : 0 ≤ A)
+    (hK : BalabanCMP116AppendixFIntegratedSecondGasKPMajorant
+      HF z Λ F ν t q A)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hq0 : 0 ≤ q)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (q * 2 ^ (3 ^ d + 1)) < 1)
+    (hsmall :
+      A * (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (q * 2 ^ (3 ^ d + 1)))⁻¹ ≤ 1) :
+    KP.KPCriterion
+      ((balabanCMP116AppendixFIntegratedSecondGas HF z Λ F ν).scaleActivity
+        (Real.exp t))
+      (fun Y => (Y.val.card : ℝ)) := by
+  simpa [balabanCMP116AppendixFIntegratedSecondGas,
+    BalabanCMP116AppendixFIntegratedSecondGasKPMajorant] using
+    (appendixFHoleIntegratedSecondGas_KPCriterion_of_majorant
+      HF z Λ F.activity (balabanCMP116BondGaussian lieDim) ν
+      t q A hA0 hK hdisj hnoedges hholes_ne hq0 hCq hsmall)
+
 /-- Finite target-family spectator integration, specialized to the CMP116
 `K#` adapter and rewritten in terms of the CMP116 scalar `z_K` activity. -/
 theorem integral_sum_balabanCMP116AppendixFKsharp_eq_sum_prod_integratedKsharpActivity
