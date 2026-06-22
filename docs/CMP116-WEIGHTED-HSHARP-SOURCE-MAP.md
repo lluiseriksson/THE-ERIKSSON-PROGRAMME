@@ -1,8 +1,8 @@
 # CMP116 Weighted Hsharp Source Map
 
-Updated: 2026-06-21
+Updated: 2026-06-22
 
-Public checkpoint inspected: `43e14d7`
+Public checkpoint inspected: `47140047`
 
 Lean endpoint:
 `singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_weighted_tree_geometric`
@@ -27,6 +27,15 @@ The current bridge in `YangMills/RG/BalabanCMP116HsharpSource.lean` consumes:
 
 The Lean side then supplies only the finite transfer from those assumptions to
 the existing geometric profile, cluster3 contract, and scalar UV consumer.
+
+Current-main support correction: after `47140047`,
+`BalabanCMP116AppendixFSupportHypotheses` has only one source support field,
+`activeSupport_subset_skeleton`.  The former full-support inclusion is now
+derived in Lean as
+`BalabanCMP116AppendixFSupportHypotheses.activeSupport_subset_full` using
+`skeleton_subset`.  Source extraction should therefore target skeleton-local
+active support, activity measurability, and the raw decay/integrability
+statement, rather than asking for an independent full-support theorem.
 
 ## Source Anchors
 
@@ -95,7 +104,7 @@ directly as a final theorem-shaped contract.
 
 | Lean hypothesis | Source status | Remaining translation |
 | --- | --- | --- |
-| `hactivity` | Source-backed candidate from CMP116 (2.4)-(2.11) and Lemma 3/(2.38). | Identify `zK`, `epsilon`, `w`, support carrier, and metric constants exactly. |
+| `hactivity` | Source-backed candidate from CMP116 (2.4)-(2.11) and Lemma 3/(2.38). | Identify `zK`, `epsilon`, `w`, skeleton-local active support, measurability, and metric constants exactly; full support is Lean-derived from skeleton support. |
 | `hleaf` / weighted tree estimate | Not printed in exact Lean form. | Prove the order-wise with-holes leaf summation, or switch to a direct `cluster3` consumer. |
 | `hsmall` / ratio `< 1` | Compatible with Dimock smallness and CMP116 restrictions. | Translate source constants into `Cleaf * epsilon < 1`. |
 | `hBclosed` | Not printed in the weighted split. | Derive the closed comparison after fixing source constants. |
@@ -104,12 +113,16 @@ directly as a final theorem-shaped contract.
 
 ## Recommended Next Formal Move
 
-The safest next step is not another algebraic wrapper.  Choose one source route:
+The safest next step is not another algebraic wrapper.  Choose one source route
+while keeping the current support interface in view:
 
 1. Direct route: add a theorem-shaped consumer for Dimock II `cluster3` and prove
    that the current finite Appendix-F objects match its inputs.
 2. Deeper route: formalize the order-wise with-holes leaf summation proving the
    weighted tree estimate from Dimock I Step 4 plus the Appendix F geometry.
+3. In either route, extract only the support fact now consumed by Lean:
+   `F.activeSupport X ⊆ skeleton HF X.val`; the full-target inclusion is no
+   longer a separate source obligation.
 
 Until one of those is done, CMP116 alone should not be treated as proving the
 weighted `H#` tree hypothesis.

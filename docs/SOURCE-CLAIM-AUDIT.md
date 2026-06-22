@@ -4,7 +4,8 @@
 **Document status:** adversarial documentation only; not a Lean theorem and
 not source evidence by itself  
 **Audit date:** 2026-06-20  
-**Live code reference:** `48b5de5d0a3d763cdf51458485c6dd005936ef78`  
+**Last updated:** 2026-06-22
+**Live code reference:** `47140047e70cddcd1e30263c56cbd57ec7cb342c`
 **Primary frontier:** `hRpoly`, the concrete single-scale Yang-Mills
 activity-decay estimate for the actual gauge RG operator
 
@@ -448,6 +449,14 @@ fluctuation support  = X cap Lambda
 
 Guardrail: never replace the full target `Y = union_i X_i` by the union of
 active skeletons.
+
+Current Lean interface note: at `47140047`,
+`BalabanCMP116AppendixFSupportHypotheses` asks the source side only for
+`F.activeSupport X subset skeleton HF X.val`.  The theorem
+`BalabanCMP116AppendixFSupportHypotheses.activeSupport_subset_full` derives
+`F.activeSupport X subset X.val` from that skeleton fact and `skeleton_subset`.
+Do not list full-target containment as an independent CMP116 source obligation
+unless a later consumer requires a stronger enlargement convention.
 
 ### `Omega`-Disjoint Versus Fully Disjoint
 
