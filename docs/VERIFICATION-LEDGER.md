@@ -8527,3 +8527,56 @@ estimate.  It does not prove the scalar profile inequality, Dimock (642), the
 spectator-field law, CMP116 localization, raw activity decay, `hR`, `hRpoly`,
 continuum construction, OS/Wightman reconstruction, or Clay.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 234 (2026-06-22, **full-cardinality profile route to integrated second-gas KP**
+`YangMills.RG.appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric`,
+`YangMills.RG.BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source_of_card_le_metric`,
+`YangMills.RG.balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_rawMetricDecay_rooted_of_source_of_card_le_metric`;
+core 8328)
+
+This addendum splits the scalar `A,q` profile left by Addendum 233 into a
+finite exponential-calculus lemma and a source-facing CMP116 consumer.
+
+`YangMills/RG/AppendixFLocalSummability.lean` now proves
+`appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric`: if the full
+cardinality of a target satisfies
+
+```
+|X| <= theta * (d_M(X)+1),
+```
+
+then the KP tilt `exp t * exp |X|` can be absorbed into the shifted
+modified-metric weight by choosing
+
+```
+q = exp (-(rate - theta))
+```
+
+and assuming the scalar amplitude comparison `exp t * C <= A`.
+
+`YangMills/RG/BalabanCMP116SecondGasAdapter.lean` now applies this finite lemma
+to the spectator-integrated CMP116 second gas.  The majorant wrapper
+`BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source_of_card_le_metric`
+and the direct KP consumer
+`balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_rawMetricDecay_rooted_of_source_of_card_le_metric`
+combine the source-measurable rooted raw-metric `K#` estimate with the explicit
+full-cardinality budget.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFLocalSummability.lean
+lake build YangMills.RG.AppendixFLocalSummability
+lake env lean YangMills\RG\BalabanCMP116SecondGasAdapter.lean
+lake build YangMills.RG.BalabanCMP116SecondGasAdapter
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This does not prove the full-cardinality budget; in fact it
+makes that missing geometric/source input more visible.  It also does not prove
+Dimock (642), CMP116 localization, raw activity decay, spectator-field law,
+`hR`, `hRpoly`, continuum construction, OS/Wightman reconstruction, or Clay.
+Clay distance **~0% (<0.1%), unchanged**.

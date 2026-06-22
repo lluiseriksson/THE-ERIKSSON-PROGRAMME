@@ -15,6 +15,9 @@ Lean endpoints now in view:
 * `BalabanCMP116AppendixFSupportHypotheses.not_omegaGraph_adj_of_disjoint_skeleton_of_supportHypotheses`;
 * `balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant`;
 * `BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source`;
+* `appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric`;
+* `BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source_of_card_le_metric`;
+* `balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_rawMetricDecay_rooted_of_source_of_card_le_metric`;
 * `singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_sourceMeasurable`.
 
 This note maps the new weighted `H#` tree bridge onto the local primary-source
@@ -94,6 +97,14 @@ measure identification.  The source-package helper
 now composes the already-formalized integrated `K#` norm estimate with that
 consumer, reducing the remaining Lean-side input to a single scalar profile
 inequality absorbing `exp t`, `exp |Y|`, and the chosen `A,q` metric constants.
+That profile has now been separated once more:
+`appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric` proves the finite
+exponential absorption from a full-cardinality budget
+`|Y| <= theta * (d_M(Y)+1)`, and
+`balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_rawMetricDecay_rooted_of_source_of_card_le_metric`
+feeds the resulting `A,q` profile into the integrated second-gas KP criterion.
+The full-cardinality budget is intentionally not inferred from the skeleton
+metric; it is the next explicit geometric/source obligation.
 
 Latest OCR/source-extraction verdict: CMP116 (2.5)--(2.11) supports the
 product-Gaussian change of variables and the existence of localized activities

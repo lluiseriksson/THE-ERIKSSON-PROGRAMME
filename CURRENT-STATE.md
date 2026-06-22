@@ -295,7 +295,18 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   now composes the source-measurable rooted raw-metric `K#` estimate into that
   majorant through
   `BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source`
-  once the remaining scalar KP profile inequality is supplied.
+  once the remaining scalar KP profile inequality is supplied.  The scalar
+  profile has also been split into a reusable exponential absorption lemma,
+  `appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric`, and the CMP116
+  wrappers
+  `BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source_of_card_le_metric`
+  and
+  `balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_rawMetricDecay_rooted_of_source_of_card_le_metric`.
+  These reduce the profile to an explicit full-cardinality budget
+  `|Y| <= theta * (d_M(Y)+1)` plus the choice
+  `q = exp (-(appendixFKsharpRate kappa kappa0 - theta))`.  The full-cardinality
+  budget is not automatic from the skeleton metric and remains a source/geometric
+  obligation.
   This does not prove Dimock (642), the conversion from the exact nonlinear
   `K#` estimate to the KP-ready majorant, any concrete integrability/source
   estimate for the integrated scalar activity, the second Ursell `H#`
@@ -692,7 +703,11 @@ supplied.  The source-package helper
 discharges the integrated scalar activity norm bound from `hraw`,
 source-measurability, probability normalization, and the first-gas rooted
 summability inputs; it still deliberately leaves the final tilted
-`A,q` scalar profile as an explicit hypothesis.
+`A,q` scalar profile as an explicit hypothesis.  The profile-calculus endpoint
+`balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_rawMetricDecay_rooted_of_source_of_card_le_metric`
+discharges this scalar profile when a source/geometric theorem controls the
+full target cardinality by `theta * (d_M+1)` and the constants are chosen with
+`q = exp (-(appendixFKsharpRate kappa kappa0 - theta))`.
 The source audit in `docs/CMP116-WEIGHTED-HSHARP-SOURCE-MAP.md` records the
 current attribution boundary: CMP116 supports the product-Gaussian change of
 variables, localized `H(Z)`, component factorization, hard-core `zeta`, and

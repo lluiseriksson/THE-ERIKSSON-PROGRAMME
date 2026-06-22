@@ -120,6 +120,63 @@ theorem appendixFHoleExpWeight_ksharpRate_le_residual_mul_leafBudget
     (appendixFHoleExpWeight_nonneg HF
       (polymerClusterResidualRate κ κ₀) X)
 
+/-- Absorb the KP volume tilt `exp |X|` into a shifted modified-metric
+exponential weight, provided the full cardinality of `X` is controlled by
+`d_M(X)+1`.
+
+This lemma is deliberately conditional on the full-cardinality budget.  The
+modified metric only controls the active skeleton in general, so this hypothesis
+is the finite place where any hole-volume or target-thickening estimate must be
+supplied by later source work. -/
+theorem appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric
+    {d L : ℕ} (HF : HoleFamily d L)
+    (rate θ t C A q : ℝ)
+    (X : Finset (Cube d L))
+    (hC : 0 ≤ C)
+    (hA : Real.exp t * C ≤ A)
+    (hq : q = Real.exp (-(rate - θ)))
+    (hcard :
+      (X.card : ℝ) ≤ θ *
+        (((discreteModifiedMetric HF X + 1 : ℕ) : ℝ))) :
+    Real.exp t * (C * appendixFHoleExpWeight HF rate X) *
+        Real.exp (X.card : ℝ)
+      ≤ A * q ^ (discreteModifiedMetric HF X + 1) := by
+  let m : ℕ := discreteModifiedMetric HF X + 1
+  have hcard_exp :
+      Real.exp (X.card : ℝ) ≤ Real.exp (θ * (m : ℝ)) := by
+    exact Real.exp_le_exp.mpr (by simpa [m] using hcard)
+  have hweight_nonneg :
+      0 ≤ Real.exp t * (C * appendixFHoleExpWeight HF rate X) := by
+    exact mul_nonneg (Real.exp_nonneg t)
+      (mul_nonneg hC (appendixFHoleExpWeight_nonneg HF rate X))
+  have htail :
+      appendixFHoleExpWeight HF rate X * Real.exp (θ * (m : ℝ)) =
+        Real.exp (-(rate - θ) * (m : ℝ)) := by
+    unfold appendixFHoleExpWeight
+    rw [← Real.exp_add]
+    congr 1
+    simp [m, Nat.cast_add, Nat.cast_one]
+    ring
+  have hpow :
+      q ^ m = Real.exp (-(rate - θ) * (m : ℝ)) := by
+    rw [hq, ← Real.exp_nat_mul]
+    congr 1
+    ring
+  calc
+    Real.exp t * (C * appendixFHoleExpWeight HF rate X) *
+        Real.exp (X.card : ℝ)
+        ≤ Real.exp t * (C * appendixFHoleExpWeight HF rate X) *
+            Real.exp (θ * (m : ℝ)) := by
+          exact mul_le_mul_of_nonneg_left hcard_exp hweight_nonneg
+    _ = (Real.exp t * C) *
+          Real.exp (-(rate - θ) * (m : ℝ)) := by
+          rw [← htail]
+          ring
+    _ ≤ A * Real.exp (-(rate - θ) * (m : ℝ)) := by
+          exact mul_le_mul_of_nonneg_right hA (Real.exp_nonneg _)
+    _ = A * q ^ (discreteModifiedMetric HF X + 1) := by
+          rw [hpow]
+
 /-- Restrict the existing rooted geometric modified-metric sum to a finite
 raw family `Λ`.  This adds no analytic content: it is the finite subsum of the
 rooted `OmegaPolymerType` summability theorem. -/

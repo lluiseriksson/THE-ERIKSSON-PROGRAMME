@@ -512,6 +512,122 @@ theorem
     rw [hactivity_zero]
     simpa using hB_nonneg
 
+/-- Source-package route to the spectator-integrated scalar CMP116 second-gas
+majorant when the remaining scalar profile is supplied by a full-cardinality
+budget against the shifted modified metric.
+
+The hypothesis `hcard` is intentionally explicit: Appendix-F geometry controls
+the active skeleton by `d_M+1`, but the KP tilt here contains the full target
+cardinality.  Any source theorem that thickens skeletons through holes must
+instantiate this budget. -/
+theorem
+    BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source_of_card_le_metric
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF z))
+    (ν : Measure β) [IsProbabilityMeasure ν]
+    {H₀ K₀ κ κ₀ t q A θ : ℝ}
+    (hH₀ : 0 ≤ H₀)
+    (hH₀_one : H₀ ≤ 1)
+    (hK₀ : 0 ≤ K₀)
+    (hsmall : 2 * H₀ * K₀ ≤ 1)
+    (hκ₀ : 0 ≤ κ₀)
+    (hκ : κ₀ ≤ κ)
+    (hroot : ∀ r : Cube d L,
+      (∑ X ∈ Λ.filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀)
+    (hraw : ∀ ψ φ X, X ∈ Λ →
+      ‖(F.activity X).globalEval ψ φ‖ ≤
+        H₀ * appendixFHoleExpWeight HF κ X.val)
+    (hA : Real.exp t * (2 * H₀ * K₀) ≤ A)
+    (hq : q = Real.exp (-(appendixFKsharpRate κ κ₀ - θ)))
+    (hcard :
+      ∀ Y : (balabanCMP116AppendixFIntegratedSecondGas HF z Λ F ν).Polymer,
+        (Y.val.card : ℝ) ≤ θ *
+          (((discreteModifiedMetric HF Y.val + 1 : ℕ) : ℝ))) :
+    BalabanCMP116AppendixFIntegratedSecondGasKPMajorant
+      HF z Λ F ν t q A := by
+  refine
+    BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source
+      HF z Λ F ν hH₀ hH₀_one hK₀ hsmall hκ₀ hκ hroot hraw ?_
+  intro Y
+  exact
+    appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric
+      HF (appendixFKsharpRate κ κ₀) θ t (2 * H₀ * K₀) A q Y.val
+      (mul_nonneg (mul_nonneg zero_le_two hH₀) hK₀) hA hq (hcard Y)
+
+/-- Full KP-criterion consumer obtained from rooted raw-metric CMP116 decay
+once the full-cardinality tilt is controlled by the shifted modified metric.
+
+This theorem is still conditional on the source-side cardinality budget and KP
+smallness constants.  Its purpose is to keep the remaining scalar profile
+obligation visible while avoiding repeated proof assembly at later call sites. -/
+theorem
+    balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_rawMetricDecay_rooted_of_source_of_card_le_metric
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF z))
+    (ν : Measure β) [IsProbabilityMeasure ν]
+    {H₀ K₀ κ κ₀ t q A θ : ℝ}
+    (hH₀ : 0 ≤ H₀)
+    (hH₀_one : H₀ ≤ 1)
+    (hK₀ : 0 ≤ K₀)
+    (hsourceSmall : 2 * H₀ * K₀ ≤ 1)
+    (hκ₀ : 0 ≤ κ₀)
+    (hκ : κ₀ ≤ κ)
+    (hroot : ∀ r : Cube d L,
+      (∑ X ∈ Λ.filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀)
+    (hraw : ∀ ψ φ X, X ∈ Λ →
+      ‖(F.activity X).globalEval ψ φ‖ ≤
+        H₀ * appendixFHoleExpWeight HF κ X.val)
+    (hA0 : 0 ≤ A)
+    (hA : Real.exp t * (2 * H₀ * K₀) ≤ A)
+    (hq : q = Real.exp (-(appendixFKsharpRate κ κ₀ - θ)))
+    (hcard :
+      ∀ Y : (balabanCMP116AppendixFIntegratedSecondGas HF z Λ F ν).Polymer,
+        (Y.val.card : ℝ) ≤ θ *
+          (((discreteModifiedMetric HF Y.val + 1 : ℕ) : ℝ)))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (q * 2 ^ (3 ^ d + 1)) < 1)
+    (hkpSmall :
+      A * (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (q * 2 ^ (3 ^ d + 1)))⁻¹ ≤ 1) :
+    KP.KPCriterion
+      ((balabanCMP116AppendixFIntegratedSecondGas HF z Λ F ν).scaleActivity
+        (Real.exp t))
+      (fun Y => (Y.val.card : ℝ)) := by
+  have hq0 : 0 ≤ q := by
+    rw [hq]
+    exact Real.exp_nonneg _
+  exact
+    balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant
+      HF z Λ F ν t q A hA0
+      (BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source_of_card_le_metric
+        HF z Λ F ν hH₀ hH₀_one hK₀ hsourceSmall hκ₀ hκ hroot hraw
+        hA hq hcard)
+      hdisj hnoedges hholes_ne hq0 hCq hkpSmall
+
 /-- Finite target-family spectator integration, specialized to the CMP116
 `K#` adapter and rewritten in terms of the CMP116 scalar `z_K` activity. -/
 theorem integral_sum_balabanCMP116AppendixFKsharp_eq_sum_prod_integratedKsharpActivity

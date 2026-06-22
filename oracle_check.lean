@@ -667,6 +667,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.sum_powerset_erase_empty_prod_le_exp_sub_one
 #print axioms YangMills.RG.appendixFTargetFiber_prod_le_exp_sub_one
 -- local modified-metric summability adapters before the first K# estimate.
+#print axioms YangMills.RG.appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric
 #print axioms YangMills.RG.appendixFHole_rootedFiniteExpWeightSum_le
 #print axioms YangMills.RG.appendixFHole_containedWeightSum_le_metric_mul_of_rooted
 -- source-shaped exact first K(Y)/K# estimate before second-gas residual losses.
@@ -921,6 +922,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_rawMetricDecay_rooted_of_source
 #print axioms YangMills.RG.BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source
+#print axioms YangMills.RG.BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source_of_card_le_metric
+#print axioms YangMills.RG.balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_rawMetricDecay_rooted_of_source_of_card_le_metric
 #print axioms YangMills.RG.balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_rooted_of_source
 #print axioms YangMills.RG.balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_residual_mul_leaf_of_ksharpRate
