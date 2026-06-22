@@ -392,6 +392,24 @@ noncomputable def flatGaugeHodgeK0CLM (d N Nc : ℕ) [NeZero d] [NeZero N]
     PhysicalGaugeOneCochain d N Nc →L[ℝ] PhysicalGaugeOneCochain d N Nc :=
   backgroundGaugeHodgeK0CLM ρ (trivialPhysicalGaugeBackground d N Nc)
 
+theorem flatGaugeHodgeK0_inner (ρ : SUNAdjointModel Nc)
+    (A : PhysicalGaugeOneCochain d N Nc) :
+    inner ℝ (flatGaugeHodgeK0CLM d N Nc ρ A) A
+      = ‖covariantD1CLM ρ (trivialPhysicalGaugeBackground d N Nc) A‖ ^ 2
+        + ‖gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d N Nc) A‖ ^ 2 := by
+  simpa [flatGaugeHodgeK0CLM] using
+    backgroundGaugeHodgeK0_inner ρ
+      (trivialPhysicalGaugeBackground d N Nc) A
+
+theorem flatGaugeHodgeK0_inner_right (ρ : SUNAdjointModel Nc)
+    (A : PhysicalGaugeOneCochain d N Nc) :
+    inner ℝ A (flatGaugeHodgeK0CLM d N Nc ρ A)
+      = ‖covariantD1CLM ρ (trivialPhysicalGaugeBackground d N Nc) A‖ ^ 2
+        + ‖gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d N Nc) A‖ ^ 2 := by
+  simpa [flatGaugeHodgeK0CLM] using
+    backgroundGaugeHodgeK0_inner_right ρ
+      (trivialPhysicalGaugeBackground d N Nc) A
+
 theorem flatGaugeHodgeK0_nonnegative (ρ : SUNAdjointModel Nc)
     (A : PhysicalGaugeOneCochain d N Nc) :
     0 ≤ inner ℝ (flatGaugeHodgeK0CLM d N Nc ρ A) A := by

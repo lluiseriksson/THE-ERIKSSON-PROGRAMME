@@ -6,7 +6,8 @@ implemented in `YangMills/RG/CoerciveCovariance.lean` and
 interface is now implemented in `YangMills/RG/PhysicalGaugeOperator.lean`,
 and the full-periodic physical Hodge form in
 `YangMills/RG/PhysicalGaugeCochains.lean` now has right-oriented quadratic
-identities matching the coercivity input shape.
+identities matching the coercivity input shape, including named
+trivial-background flat specializations.
 The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose

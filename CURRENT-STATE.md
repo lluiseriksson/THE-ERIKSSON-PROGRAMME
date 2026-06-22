@@ -76,6 +76,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   Its Hodge and gauge-fixing quadratic identities are now exposed in the
   `inner A (K A)` orientation consumed by the generic coercivity API, while
   the older symmetric orientation is retained for direct adjoint calculations.
+  The trivial-background flat specialization also exposes both orientations of
+  the exact Hodge quadratic identity as named theorems, so a future
+  `flatGaugeHodgePoincare` source theorem can target the flat operator directly
+  without unfolding the background definition.
   The finite physical interface `YangMills/RG/PhysicalGaugeOperator.lean`
   separately defines active regions with Dirichlet zero-extension/restriction
   maps, flat `d0`/`d1` operators with `d1 ∘ d0 = 0`, the flat gauge constraint,

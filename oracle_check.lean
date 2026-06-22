@@ -428,6 +428,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.backgroundGaugeHodgeK0_nonnegative
 #print axioms YangMills.RG.backgroundGaugeHodgeK0_inner_right
 #print axioms YangMills.RG.backgroundGaugeHodgeK0_nonnegative_right
+#print axioms YangMills.RG.flatGaugeHodgeK0_inner
+#print axioms YangMills.RG.flatGaugeHodgeK0_inner_right
 #print axioms YangMills.RG.flatGaugeHodgeK0_nonnegative_right
 #print axioms YangMills.RG.flatBlockConstraintQCLM_apply
 -- finite physical gauge-operator interface and soft full-space precision shell

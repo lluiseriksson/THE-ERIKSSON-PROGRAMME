@@ -9233,3 +9233,38 @@ rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
 operator.  It does not prove the uniform Hodge/Poincare theorem, identify the
 Wilson Hessian, prove a small-background defect estimate, construct a
 propagator, or produce `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 248 (2026-06-22, **flat physical Hodge quadratic identities**
+`YangMills.RG.PhysicalGaugeCochains`; core 8337)
+
+This addendum records the direct flat specialization of the physical Hodge
+quadratic identity at the trivial background.  The new theorems are
+
+```
+flatGaugeHodgeK0_inner
+flatGaugeHodgeK0_inner_right
+```
+
+They state that the quadratic form of `flatGaugeHodgeK0CLM` is exactly the sum
+of the squared norms of the trivial-background `covariantD1CLM` and
+`gaugeConstraintQCLM`, in both `inner (K A) A` and `inner A (K A)` orientations.
+The proofs are `simpa` specializations of the already verified background
+Hodge identities.  This keeps the next source-facing theorem
+`flatGaugeHodgePoincare` pinned to the flat operator directly, rather than
+requiring downstream code to unfold `flatGaugeHodgeK0CLM`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCochains.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
+```
+
+**Honest scope.** This is still deterministic Hodge-form bookkeeping.  It does
+not prove the uniform flat Hodge/Poincare inequality, identify the Wilson
+Hessian, supply the small-background operator-norm estimate, construct a
+propagator, or produce `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
