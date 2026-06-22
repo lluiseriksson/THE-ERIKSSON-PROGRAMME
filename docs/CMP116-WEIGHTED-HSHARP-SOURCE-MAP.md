@@ -50,6 +50,12 @@ skeleton-overlap graph on the polymers in `Λ`.  Thus the source still only has
 to identify the localized active domain; the hard-core graph translation is
 finite set theory.
 
+If the source only gives the inclusion
+`F.activeSupport X ⊆ X.val ∩ F.Omega`, Lean still proves the safe one-way
+translation: every CMP116 Ω-overlap edge maps to an Appendix-F
+skeleton-overlap edge.  The reverse direction remains tied to the equality
+form above.
+
 ## Source Anchors
 
 ### CMP116: first localized activity
