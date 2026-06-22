@@ -8890,3 +8890,47 @@ source full-cardinality budget, does not compare the full target cardinality
 directly with `d_M(Y)+1`, does not prove Dimock (642), does not construct
 `hraw`, and does not advance the physical Yang--Mills Hessian/covariance
 construction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 241 (2026-06-22, **gauge-fixed precision coercivity composition**
+`YangMills.RG.gaugeFixedPrecision_coerciveWithPositiveConstant`;
+core 8332)
+
+This addendum records the first P4 gauge-fixed precision composition layer.
+The new module `YangMills/RG/GaugeFixedPrecision.lean` introduces
+
+```
+gaugeFixedBasePrecisionCLM K0 Q a = K0 + a Q†Q
+gaugeFixedPrecisionCLM K0 Q a Sigma =
+  gaugeFixedBasePrecisionCLM K0 Q a - sum' i, Sigma i
+```
+
+and proves that the existing block-Poincare adjoint-mass coercivity theorem
+survives a summable operator-norm perturbation budget:
+
+```
+IsCoerciveCLM (gaugeFixedPrecisionCLM K0 Q a Sigma)
+  (min 1 a / CP - sum' i, delta i).
+```
+
+The strictly positive wrapper separates the scalar smallness condition
+`sum' i, delta i < min 1 a / CP` from the non-strict coercivity predicate.
+The same file also specializes the theorem to the concrete `qMassCLM`, and
+adds finite Schur-Catalan corollaries when the source provides one-sided
+quadratic-form defect estimates rather than operator norms.
+
+Verification:
+
+```
+lake build YangMills.RG.GaugeFixedPrecision
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is deterministic Hilbert-space composition only.  It
+does not define the physical Yang--Mills Hessian, prove the decomposition
+`HYM = Kslice + a Q†Q - Σ`, prove the block Hodge/Poincare estimate, prove
+perturbation budgets from Balaban sources, construct the inverse covariance,
+or produce the raw CMP116 activity estimate `hraw`.  Clay distance **~0%
+(<0.1%), unchanged**.

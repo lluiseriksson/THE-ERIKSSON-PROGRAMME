@@ -202,6 +202,9 @@ import YangMills.RG.GaugePrecision
 -- subtracting a summable perturbation family lowers the coercivity constant by
 -- at most the summable norm budget.
 import YangMills.RG.CoercivePerturbation
+-- Gauge-fixed precision composition layer: base `K + a Q†Q` coercivity plus
+-- summable and finite Schur-Catalan perturbation budgets.
+import YangMills.RG.GaugeFixedPrecision
 -- UV-S2 brick G3: the free RG step on a Gaussian field — the covariance
 -- transformation law `Cov(μ.map Q) = Q·Cov(μ)·Qᵀ` (on Mathlib's IsGaussian),
 -- the free fixed-point half of the small-field per-scale contraction.

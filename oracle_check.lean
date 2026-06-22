@@ -395,6 +395,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.isCoercive_sub_tsum_of_norm_budget
 #print axioms YangMills.RG.isCoerciveCLM_qMassCLM_zero
 #print axioms YangMills.RG.isCoerciveCLM_add_qMassCLM_of_blockPoincare
+#print axioms YangMills.RG.isCoerciveCLM_gaugeFixedBasePrecision_of_blockPoincare
+#print axioms YangMills.RG.isCoerciveCLM_gaugeFixedPrecision_of_blockPoincare_normBudget
+#print axioms YangMills.RG.gaugeFixedPrecision_coerciveWithPositiveConstant
+#print axioms YangMills.RG.isCoerciveCLM_qMass_sub_tsum_of_blockPoincare_normBudget
+#print axioms YangMills.RG.qMass_sub_tsum_coerciveWithPositiveConstant_of_blockPoincare_normBudget
+#print axioms YangMills.RG.isCoerciveCLM_sub_finset_of_schurCatalan_blockPoincare
+#print axioms YangMills.RG.inner_sub_finset_pos_of_schurCatalan_blockPoincare
 -- the free RG step's covariance transformation law (on Mathlib's IsGaussian)
 #print axioms YangMills.RG.covarianceBilinDual_map_clm
 -- finite Gaussian block collar: normalization of translated kernels and product block transforms

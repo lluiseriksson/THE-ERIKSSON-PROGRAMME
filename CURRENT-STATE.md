@@ -53,9 +53,15 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `coercive_add_adjointMass_of_blockPoincare` and
   `coercive_add_qMassCLM_of_blockPoincare`: an explicit block
   Poincare/Hodge inequality plus positivity of the background form gives
-  coercivity of `K + a Q†Q` with constant `min 1 a / C_P`.  This is still
+  coercivity of `K + a Q†Q` with constant `min 1 a / C_P`.  The companion
+  composition layer `YangMills/RG/GaugeFixedPrecision.lean` packages the
+  intended precision form `Kslice + a Q†Q - Σ`, proves the generic summable
+  operator-budget theorem, records the strictly positive residual constant
+  when `∑' δ < min 1 a / C_P`, specializes the result to `qMassCLM`, and adds
+  finite Schur-Catalan quadratic-form budget corollaries.  This is still
   abstract Hilbert-space algebra; it does not construct the physical
-  Yang--Mills Hessian or prove a source Poincare theorem;
+  Yang--Mills Hessian, prove the physical decomposition equality, or prove a
+  source Poincare theorem;
 * gauge covariance of the averaged-contour interface;
 * near-identity logarithm, small-field stability lemmas, and the local
   two-sided cutoff dictionary `norm_nearLog_two_sided_of_norm_le_third`,
