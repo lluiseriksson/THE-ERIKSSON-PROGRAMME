@@ -205,6 +205,10 @@ import YangMills.RG.CoercivePerturbation
 -- Gauge-fixed precision composition layer: base `K + a Q†Q` coercivity plus
 -- summable and finite Schur-Catalan perturbation budgets.
 import YangMills.RG.GaugeFixedPrecision
+-- Exact finite-dimensional covariance from strict coercivity: construct the
+-- inverse precision operator, prove both inverse identities, PSD, and the
+-- operator bound `‖C‖ ≤ c⁻¹`.
+import YangMills.RG.CoerciveCovariance
 -- UV-S2 brick G3: the free RG step on a Gaussian field — the covariance
 -- transformation law `Cov(μ.map Q) = Q·Cov(μ)·Qᵀ` (on Mathlib's IsGaussian),
 -- the free fixed-point half of the small-field per-scale contraction.

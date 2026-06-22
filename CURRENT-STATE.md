@@ -58,10 +58,15 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   intended precision form `Kslice + a Q†Q - Σ`, proves the generic summable
   operator-budget theorem, records the strictly positive residual constant
   when `∑' δ < min 1 a / C_P`, specializes the result to `qMassCLM`, and adds
-  finite Schur-Catalan quadratic-form budget corollaries.  This is still
-  abstract Hilbert-space algebra; it does not construct the physical
-  Yang--Mills Hessian, prove the physical decomposition equality, or prove a
-  source Poincare theorem;
+  finite Schur-Catalan quadratic-form budget corollaries.  The exact
+  finite-dimensional covariance bridge `YangMills/RG/CoerciveCovariance.lean`
+  turns any strictly coercive finite-dimensional precision operator into the
+  continuous linear inverse `covarianceOfIsCoerciveCLM`, proves `C ∘ K = id`
+  and `K ∘ C = id`, establishes `‖C‖ ≤ c⁻¹`, and proves nonnegativity of the
+  inverse quadratic form.  These layers remain abstract Hilbert-space algebra:
+  they do not construct the physical Yang--Mills Hessian, prove the physical
+  decomposition equality, prove a source Poincare theorem, establish
+  propagator decay, or construct a localized covariance root;
 * gauge covariance of the averaged-contour interface;
 * near-identity logarithm, small-field stability lemmas, and the local
   two-sided cutoff dictionary `norm_nearLog_two_sided_of_norm_le_third`,

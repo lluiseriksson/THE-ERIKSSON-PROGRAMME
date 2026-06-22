@@ -8934,3 +8934,46 @@ does not define the physical Yang--Mills Hessian, prove the decomposition
 perturbation budgets from Balaban sources, construct the inverse covariance,
 or produce the raw CMP116 activity estimate `hraw`.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 242 (2026-06-22, **exact covariance from strict coercivity**
+`YangMills.RG.covarianceOfIsCoerciveCLM_comp_precision`;
+core 8333)
+
+This addendum records the first P4 covariance construction layer.  The new
+module `YangMills/RG/CoerciveCovariance.lean` proves that a strictly coercive
+finite-dimensional real precision operator has an exact continuous linear
+inverse:
+
+```
+covarianceOfIsCoerciveCLM A hc hA : E →L[ℝ] E
+```
+
+and establishes both operator inverse identities:
+
+```
+covarianceOfIsCoerciveCLM A hc hA ∘ A = id
+A ∘ covarianceOfIsCoerciveCLM A hc hA = id.
+```
+
+The same brick proves the lower image bound from coercivity, injectivity,
+surjectivity in finite dimension, the pointwise estimate
+`‖C y‖ <= ‖y‖ / c`, the operator estimate `‖C‖ <= c⁻¹`, and positivity of
+the covariance quadratic form.  This separates the deterministic inverse
+construction from the later physical tasks of defining the gauge-fixed Hessian
+and proving its coercivity.
+
+Verification:
+
+```
+lake build YangMills.RG.CoerciveCovariance
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is finite-dimensional deterministic functional analysis
+only.  It does not define the physical Yang--Mills Hessian, prove
+`flatGaugeHodgePoincare`, construct Combes--Thomas decay, construct a
+localized covariance square root, or produce the raw CMP116 activity estimate
+`hraw`.  Clay distance **~0% (<0.1%), unchanged**.
