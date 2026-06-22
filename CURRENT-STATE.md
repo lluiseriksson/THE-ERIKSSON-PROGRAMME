@@ -114,8 +114,16 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   zero constants by the block map.  The theorem
   `flatConstant_jointKernel_eq_zero_iff` packages these facts as the exact
   triviality of the joint flat-Hodge/block kernel on the direction-wise
-  constant sector.  The reverse classification and the uniform
-  full-periodic Poincare theorem remain unproved.  The
+  constant sector.  The constant-sector norm layer
+  `YangMills/RG/PhysicalGaugeFlatPoincare.lean` now proves
+  `norm_sq_constantPhysicalGaugeOneCochain`,
+  `flatBlockConstraintQCLM_constant_norm_sq`, and
+  `flatBlockConstraint_controls_constantSector`, including the exact
+  normalization
+  `‖const_{L*N'} v‖² = ((L : ℝ)^d / (L : ℝ)^2) ‖Q const_{L*N'} v‖²`
+  for the current unscaled line-integral block map.  The reverse
+  classification and the uniform full-periodic Poincare theorem remain
+  unproved.  The
   full-periodic flat Hodge/block-Poincare interface is now isolated in
   `YangMills/RG/PhysicalGaugeHodgePoincare.lean`: the predicate
   `FlatGaugeHodgePoincare` states the exact physical-cochain estimate for

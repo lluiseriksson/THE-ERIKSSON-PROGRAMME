@@ -449,6 +449,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.isFlatHarmonicOneCochain_constantPhysicalGaugeOneCochain
 #print axioms YangMills.RG.flatGaugeHodgeK0CLM_constantPhysicalGaugeOneCochain
 #print axioms YangMills.RG.flatConstant_jointKernel_eq_zero_iff
+#print axioms YangMills.RG.norm_sq_constantPhysicalGaugeOneCochain
+#print axioms YangMills.RG.flatBlockConstraintQCLM_constant_norm_sq
+#print axioms YangMills.RG.flatBlockConstraint_controls_constantSector
 -- full-periodic flat Hodge/block-Poincare interface; source estimate remains external
 #print axioms YangMills.RG.flatGaugeHodgePoincare
 -- finite physical gauge-operator interface and soft full-space precision shell

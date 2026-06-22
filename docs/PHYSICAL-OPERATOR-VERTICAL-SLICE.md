@@ -25,6 +25,11 @@ as a trivial joint-kernel theorem on the constant sector.  The same flat
 cochain layer now also names the flat harmonic condition and proves that the
 flat Hodge quadratic form, and the operator equation `K₀ A = 0` itself,
 vanish exactly on simultaneous flat-curl and gauge-divergence-zero fields.
+The companion module `YangMills/RG/PhysicalGaugeFlatPoincare.lean` now proves
+the exact constant-sector norm identities and the sharp block-control ratio
+`L^d / L^2` for the current `linAvg` normalization.  This is only the
+harmonic-sector normalization check; the reverse harmonic classification and
+volume-uniform full-periodic estimate remain frontier obligations.
 The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose

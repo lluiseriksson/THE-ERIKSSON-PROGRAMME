@@ -9588,3 +9588,62 @@ reverse classification that every flat harmonic one-cochain is direction-wise
 constant, does not prove the full-periodic Poincare theorem, and does not
 identify or perturb the Wilson Hessian.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 256 (2026-06-22, **constant-sector flat block norm control**
+`YangMills.RG.PhysicalGaugeFlatPoincare`; core 8339)
+
+This addendum records the first quantitative constant-sector normalization
+facts for the full-periodic P4 block map.  The new module
+
+```
+YangMills/RG/PhysicalGaugeFlatPoincare.lean
+```
+
+proves
+
+```
+norm_sq_constantPhysicalGaugeOneCochain
+flatBlockConstraintQCLM_constant_norm_sq
+flatBlockConstraint_controls_constantSector
+```
+
+The first theorem expands the `ℓ²` norm squared of a direction-wise constant
+physical one-cochain as
+
+```
+(N : ℝ)^d * ∑ i, ‖v i‖^2.
+```
+
+The second theorem computes the exact norm squared of the current unscaled
+line-integral block constraint on such constants:
+
+```
+(L : ℝ)^2 * (N' : ℝ)^d * ∑ i, ‖v i‖^2.
+```
+
+The third theorem packages the exact sharp ratio
+
+```
+‖const_{L*N'} v‖^2 =
+  ((L : ℝ)^d / (L : ℝ)^2) * ‖Q const_{L*N'} v‖^2.
+```
+
+This proves the constant/harmonic-sector normalization requested by the P4
+instruction packet for the current `linAvg` convention.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeFlatPoincare.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeFlatPoincare.lean
+```
+
+**Honest scope.** This is still only the constant-sector quantitative
+normalization.  It does not prove the reverse flat-harmonic classification,
+the coordinate Gaffney identity, the finite-volume compactness Poincare
+theorem, the volume-uniform Poincare theorem, or any Wilson-Hessian
+identification.  Clay distance **~0% (<0.1%), unchanged**.
