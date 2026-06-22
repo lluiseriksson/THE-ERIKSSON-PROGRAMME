@@ -1734,4 +1734,82 @@ theorem
         (fun X hX => hmeas t k X hX ψ))
     hdisj hnoedges hholes_ne hCq hhalf hprofile
 
+/-- Omega-rooted real-part UV decay from rooted raw-metric first-activity data,
+with measurability supplied by the CMP116 localized source package itself.
+
+Compared with
+`..._of_factor_stronglyMeasurable`, this theorem removes the separate `hmeas`
+premise: `BalabanCMP116LocalizedActivityFamily.activity_stronglyMeasurable`
+is now the source-facing contract for each raw localized activity.  The
+analytic/source inputs `hraw` and the physical identification `hR` remain
+explicit. -/
+theorem
+    singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_sourceMeasurable
+    {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (Rsc : ℕ → ℕ → ℝ)
+    (g : ℕ → ℝ)
+    (A₀ : ℕ → ℕ → ℝ)
+    {C Hbar c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C)
+    (hHbar : 0 ≤ Hbar)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hκ₀ : 0 < κ₀)
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+                HF (z t k) (Λ t k) (F t k) (ν t k) P.val.val))
+    (hν : ∀ t k, IsProbabilityMeasure (ν t k))
+    (hA₀ : ∀ t k, 0 ≤ A₀ t k)
+    (hA₀_one : ∀ t k, A₀ t k ≤ 1)
+    (hraw : ∀ t k ψ φ X, X ∈ Λ t k →
+      ‖((F t k).activity X).globalEval ψ φ‖ ≤
+        A₀ t k * appendixFHoleExpWeight HF κ X.val)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H ∈ HF.holes, H.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1)
+    (hhalf :
+      ∀ t k,
+        appendixFSecondUrsellLeafConstant d κ₀ *
+            (2 * A₀ t k * appendixFHoleRootSumConstant d κ₀) ≤ 1 / 2)
+    (hprofile :
+      ∀ t k,
+        4 * appendixFSecondUrsellMomentConstant d κ₀ *
+            A₀ t k * appendixFHoleRootSumConstant d κ₀ ≤
+          C * Hbar * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) :
+    SingleScaleUVDecay Rsc g
+      ((C * Hbar) *
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹)
+      c₀ κ₀ :=
+  singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_factor_stronglyMeasurable
+    (C := C) (Hbar := Hbar) (c₀ := c₀) (κ := κ) (κ₀ := κ₀)
+    HF zCarrier r z Λ F ν Rsc g A₀
+    hC hHbar hg hκ hκ₀ hR hν hA₀ hA₀_one hraw
+    (fun t k X _hX ψ =>
+      BalabanCMP116LocalizedActivityFamily.activity_globalEval_stronglyMeasurable
+        (F t k) X ψ)
+    hdisj hnoedges hholes_ne hCq hhalf hprofile
+
 end YangMills.RG
