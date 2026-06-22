@@ -9647,3 +9647,47 @@ normalization.  It does not prove the reverse flat-harmonic classification,
 the coordinate Gaffney identity, the finite-volume compactness Poincare
 theorem, the volume-uniform Poincare theorem, or any Wilson-Hessian
 identification.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 257 (2026-06-22, **explicit flat plaquette curl equation**
+`YangMills.RG.PhysicalGaugeCochains`; core 8339)
+
+This addendum records a narrow prerequisite for the reverse flat-harmonic
+classification ladder.  The full-periodic cochain layer now proves
+
+```
+covariantD1CLM_trivial_apply
+isFlatHarmonicOneCochain_curl_apply_eq_zero
+```
+
+The first theorem unfolds the trivial-background covariant one-to-two
+differential as the usual plaquette curl on positive-bond one-cochains:
+
+```
+D₁ A p =
+  A (p.site, p.dir1)
+  + A (p.site.shift p.dir1, p.dir2)
+  - A (p.site.shift p.dir2, p.dir1)
+  - A (p.site, p.dir2).
+```
+
+The second theorem specializes this formula to flat harmonic one-cochains,
+giving the pointwise curl equation needed by any later reverse-classification
+proof.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCochains.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
+```
+
+**Honest scope.** This does not prove the explicit divergence formula, the
+reverse flat-harmonic classification, the coordinate Gaffney identity, the
+finite-volume compactness Poincare theorem, the volume-uniform Poincare
+theorem, or any Wilson-Hessian identification.  It is only the first pointwise
+curl equation for the full-periodic P4 route.  Clay distance **~0%
+(<0.1%), unchanged**.

@@ -15,7 +15,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8338 jobs**.
+* `lake build YangMillsCore` is green at **8339 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -87,7 +87,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   vanishing of the flat Hodge energy exactly to simultaneous flat curl and
   gauge-divergence zero.  The operator-kernel form
   `flatGaugeHodgeK0CLM_eq_zero_iff_isFlatHarmonicOneCochain` now records the
-  same equivalence for `K₀ A = 0` itself.  The averaging layer now proves
+  same equivalence for `K₀ A = 0` itself.  The trivial-background curl is now
+  exposed pointwise as `covariantD1CLM_trivial_apply`, and flat harmonic
+  cochains satisfy the resulting plaquette curl equation via
+  `isFlatHarmonicOneCochain_curl_apply_eq_zero`.  This is a prerequisite for
+  reverse classification, not the classification.  The averaging layer now proves
   the exact direction-wise constant calculations `fineLineSum_constant` and
   `linAvg_constant`: a bond field constant in each direction averages to `L`
   times that directional value.  The flat physical block constraint now also

@@ -293,6 +293,23 @@ theorem covariantD1CLM_apply (ρ : SUNAdjointModel Nc)
           ρ.adCLM (plaquettePrefixHolonomy U p k)
             (orientedOneValue ρ U A (p.edges k)) := rfl
 
+/-- At the trivial background, the covariant one-to-two differential is the
+usual periodic plaquette curl on positive-bond cochains. -/
+theorem covariantD1CLM_trivial_apply (ρ : SUNAdjointModel Nc)
+    (A : PhysicalGaugeOneCochain d N Nc) (p : ConcretePlaquette d N) :
+    covariantD1CLM ρ (trivialPhysicalGaugeBackground d N Nc) A p =
+      A (p.site, p.dir1)
+        + A (FinBox.shift p.site p.dir1, p.dir2)
+        - A (FinBox.shift p.site p.dir2, p.dir1)
+        - A (p.site, p.dir2) := by
+  cases p with
+  | mk site dir1 dir2 hlt =>
+      rw [covariantD1CLM_apply]
+      rw [Fin.sum_univ_four]
+      simp [ConcretePlaquette.edges, plaquettePrefixHolonomy,
+        trivialPhysicalGaugeBackground, orientedOneValue]
+      abel
+
 /-- Full plaquette flatness for a background connection. -/
 def IsFlatPhysicalBackground (U : PhysicalGaugeBackground d N Nc) : Prop :=
   ∀ p : ConcretePlaquette d N, GaugeConfig.plaquetteHolonomy U p = 1
@@ -430,6 +447,21 @@ def IsFlatHarmonicOneCochain (ρ : SUNAdjointModel Nc)
     (A : PhysicalGaugeOneCochain d N Nc) : Prop :=
   covariantD1CLM ρ (trivialPhysicalGaugeBackground d N Nc) A = 0 ∧
     gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d N Nc) A = 0
+
+/-- Flat-harmonic one-cochains satisfy the pointwise plaquette curl equation. -/
+theorem isFlatHarmonicOneCochain_curl_apply_eq_zero
+    (ρ : SUNAdjointModel Nc) {A : PhysicalGaugeOneCochain d N Nc}
+    (hA : IsFlatHarmonicOneCochain ρ A) (p : ConcretePlaquette d N) :
+      A (p.site, p.dir1)
+        + A (FinBox.shift p.site p.dir1, p.dir2)
+        - A (FinBox.shift p.site p.dir2, p.dir1)
+        - A (p.site, p.dir2) = 0 := by
+  have hp := congrArg (fun B : PhysicalGaugeTwoCochain d N Nc => B p) hA.1
+  have hp' :
+      covariantD1CLM ρ (trivialPhysicalGaugeBackground d N Nc) A p = 0 := by
+    simpa using hp
+  rw [covariantD1CLM_trivial_apply] at hp'
+  exact hp'
 
 /-- At the trivial background, the flat Hodge quadratic form vanishes exactly
 on flat harmonic one-cochains. -/
