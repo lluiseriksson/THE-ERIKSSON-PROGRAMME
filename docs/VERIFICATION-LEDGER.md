@@ -9405,3 +9405,51 @@ direction-wise constant candidate harmonic modes at the finite algebraic
 level.  It does not classify the full flat harmonic kernel, prove the periodic
 curl-div identity, prove a volume-uniform block Poincare theorem, identify the
 Wilson Hessian, or produce `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 252 (2026-06-22, **flat harmonic kernel zero-form test**
+`YangMills.RG.PhysicalGaugeCochains`; core 8338)
+
+This addendum records the first internal flat harmonic-kernel predicate for the
+full-periodic physical cochain layer.  The new definition
+
+```
+IsFlatHarmonicOneCochain
+```
+
+means simultaneous flat curl and gauge-divergence zero at the trivial
+background:
+
+```
+D₁ A = 0 ∧ div A = 0.
+```
+
+The new theorems
+
+```
+isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero
+isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_eq_zero
+```
+
+prove that, for the already-defined flat Hodge operator
+`flatGaugeHodgeK0CLM`, vanishing of either inner-product orientation of the
+quadratic form is exactly equivalent to `IsFlatHarmonicOneCochain`.  The proof
+is finite-dimensional and uses the existing identity
+`flatGaugeHodgeK0_inner_right`: a sum of two squared norms is zero iff both
+terms vanish.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCochains.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
+```
+
+**Honest scope.** This is a kernel test, not a kernel classification.  It does
+not prove that every flat harmonic one-cochain is direction-wise constant,
+does not prove a periodic curl-div identity, does not prove a volume-uniform
+block Poincare estimate, and does not identify the Wilson Hessian.  Clay
+distance **~0% (<0.1%), unchanged**.

@@ -79,7 +79,13 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   The trivial-background flat specialization also exposes both orientations of
   the exact Hodge quadratic identity as named theorems, so a future
   `flatGaugeHodgePoincare` source theorem can target the flat operator directly
-  without unfolding the background definition.  The averaging layer now proves
+  without unfolding the background definition.  It also names the flat harmonic
+  kernel predicate `IsFlatHarmonicOneCochain` and proves both orientations of
+  the exact zero-quadratic-form test
+  `isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero` /
+  `isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_eq_zero`, reducing
+  vanishing of the flat Hodge energy exactly to simultaneous flat curl and
+  gauge-divergence zero.  The averaging layer now proves
   the exact direction-wise constant calculations `fineLineSum_constant` and
   `linAvg_constant`: a bond field constant in each direction averages to `L`
   times that directional value.  The flat physical block constraint now also

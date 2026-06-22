@@ -424,6 +424,54 @@ theorem flatGaugeHodgeK0_nonnegative_right (ρ : SUNAdjointModel Nc)
     backgroundGaugeHodgeK0_nonnegative_right ρ
       (trivialPhysicalGaugeBackground d N Nc) A
 
+/-- Flat harmonic one-cochains at the trivial background: simultaneous
+flat curl and gauge-divergence zero. -/
+def IsFlatHarmonicOneCochain (ρ : SUNAdjointModel Nc)
+    (A : PhysicalGaugeOneCochain d N Nc) : Prop :=
+  covariantD1CLM ρ (trivialPhysicalGaugeBackground d N Nc) A = 0 ∧
+    gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d N Nc) A = 0
+
+/-- At the trivial background, the flat Hodge quadratic form vanishes exactly
+on flat harmonic one-cochains. -/
+theorem isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero
+    (ρ : SUNAdjointModel Nc) (A : PhysicalGaugeOneCochain d N Nc) :
+    IsFlatHarmonicOneCochain ρ A ↔
+      inner ℝ A (flatGaugeHodgeK0CLM d N Nc ρ A) = 0 := by
+  constructor
+  · intro h
+    rw [flatGaugeHodgeK0_inner_right, h.1, h.2]
+    simp
+  · intro h
+    have hsum :
+        ‖covariantD1CLM ρ (trivialPhysicalGaugeBackground d N Nc) A‖ ^ 2
+          + ‖gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d N Nc) A‖ ^ 2
+            = 0 := by
+      simpa only [flatGaugeHodgeK0_inner_right] using h
+    have hDsq :
+        ‖covariantD1CLM ρ (trivialPhysicalGaugeBackground d N Nc) A‖ ^ 2 = 0 := by
+      nlinarith
+        [sq_nonneg
+          (‖covariantD1CLM ρ (trivialPhysicalGaugeBackground d N Nc) A‖),
+         sq_nonneg
+          (‖gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d N Nc) A‖)]
+    have hGsq :
+        ‖gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d N Nc) A‖ ^ 2 = 0 := by
+      nlinarith
+        [sq_nonneg
+          (‖covariantD1CLM ρ (trivialPhysicalGaugeBackground d N Nc) A‖),
+         sq_nonneg
+          (‖gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d N Nc) A‖)]
+    exact ⟨norm_eq_zero.mp (sq_eq_zero_iff.mp hDsq),
+      norm_eq_zero.mp (sq_eq_zero_iff.mp hGsq)⟩
+
+/-- The symmetric orientation of the same flat-harmonic kernel test. -/
+theorem isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_eq_zero
+    (ρ : SUNAdjointModel Nc) (A : PhysicalGaugeOneCochain d N Nc) :
+    IsFlatHarmonicOneCochain ρ A ↔
+      inner ℝ (flatGaugeHodgeK0CLM d N Nc ρ A) A = 0 := by
+  rw [real_inner_comm]
+  exact isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero ρ A
+
 end Differentials
 
 section FlatBlockConstraint

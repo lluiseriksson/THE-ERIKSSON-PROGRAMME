@@ -433,6 +433,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatGaugeHodgeK0_inner
 #print axioms YangMills.RG.flatGaugeHodgeK0_inner_right
 #print axioms YangMills.RG.flatGaugeHodgeK0_nonnegative_right
+#print axioms YangMills.RG.isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero
+#print axioms YangMills.RG.isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_eq_zero
 #print axioms YangMills.RG.flatBlockConstraintQCLM_apply
 #print axioms YangMills.RG.mem_flatBlockConstraintSupport_of_mem_linAvgSupport
 #print axioms YangMills.RG.flatBlockConstraintQCLM_congr_of_eqOn_support

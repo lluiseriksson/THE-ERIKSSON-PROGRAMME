@@ -16,7 +16,9 @@ later branch.
 The first finite-combinatorial kernel check is also in place: direction-wise
 constant physical one-cochains are sent by `flatBlockConstraintQCLM` to `L`
 times the corresponding coarse directional value, so the block constraint is
-injective on that constant sector.
+injective on that constant sector.  The same flat cochain layer now also names
+the flat harmonic condition and proves that the flat Hodge quadratic form
+vanishes exactly on simultaneous flat-curl and gauge-divergence-zero fields.
 The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose
@@ -182,6 +184,7 @@ finite operator slots they must fill.
 ```lean
 FlatGaugeHodgePoincare
 constantPhysicalGaugeOneCochain
+IsFlatHarmonicOneCochain
 ```
 
 ### New theorems
@@ -192,6 +195,8 @@ fineLineSum_constant
 linAvg_constant
 flatBlockConstraintQCLM_constant_apply
 flatBlockConstraintQCLM_injective_on_constants
+isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero
+isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_eq_zero
 ```
 
 ### Meaning
@@ -202,7 +207,10 @@ physical-cochain estimate for the unit flat Hodge operator
 `flatGaugeHodgeK0CLM` plus the separate line-integral block map
 `flatBlockConstraintQCLM`.  The theorem repackages a source-supplied
 curl/divergence/block inequality using the already proved
-`flatGaugeHodgeK0_inner_right` identity.
+`flatGaugeHodgeK0_inner_right` identity.  The harmonic-kernel test is internal:
+it uses the same quadratic identity to turn zero flat Hodge energy into exactly
+the two equations `D₁ A = 0` and `div A = 0`, with both inner-product
+orientations exposed for later coercivity code.
 
 ### Honest boundary
 
@@ -211,7 +219,9 @@ volume-uniformity of the supplied constant, and does not identify the unit flat
 Hodge operator with the Wilson Hessian.  It is the target shape that a later
 source theorem must fill.  The constant-sector calculation is only the finite
 kernel bookkeeping showing that the soft block term removes direction-wise
-constant harmonic candidates; it is not a uniform Poincare estimate.
+constant harmonic candidates; it is not a uniform Poincare estimate.  The
+zero-form harmonic test does not classify the full harmonic kernel and does
+not prove that all flat harmonics are direction-wise constants.
 
 ## 4. Brick P4.1 — physical tangent spaces and covariant cochains
 
