@@ -13,12 +13,14 @@ Balaban CMP116 (2.8)--(2.11) turns the post-`dmu0` integrand into localized
 activities `H(Z)`, states connected-component factorization, and introduces the
 hard-core compatibility function `zeta`.
 
-This module does not prove Balaban's generalized random-walk localization or the
-Lemma 3 decay constants.  Instead it records the exact Lean interface those
-source theorems must instantiate: each localized activity has spectator support
-inside its declared Balaban domain and fluctuation support inside the active
-part of that domain.  Once those support statements are supplied, the new CMP116
-product Gaussian `dmu0` gives the desired ultralocal component factorization.
+This module does not prove Balaban's generalized random-walk localization,
+measurability of the constructed local integrands, or the Lemma 3 decay
+constants.  Instead it records the exact Lean interface those source theorems
+must instantiate: each localized activity has spectator support inside its
+declared Balaban domain, fluctuation support inside the active part of that
+domain, and measurable dependence on the ultralocal fluctuation field.  Once
+those support statements are supplied, the new CMP116 product Gaussian `dmu0`
+gives the desired ultralocal component factorization.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/
@@ -91,6 +93,11 @@ structure BalabanCMP116LocalizedActivityFamily
   Omega : Finset Bond
   activeSupport : ι -> Finset Bond
   activity : ι -> LocalActivity Bond Psi (fun _ => Fin lieDim -> Real) Complex
+  activity_stronglyMeasurable :
+    ∀ i, ∀ psi : ∀ b, Psi b,
+      StronglyMeasurable
+        (fun X : (∀ _ : Bond, Fin lieDim -> Real) =>
+          (activity i).globalEval psi X)
   spectatorSupport_subset :
     ∀ i, (activity i).spectatorSupport ⊆ activeSupport i
   fluctuationSupport_subset :
@@ -118,6 +125,17 @@ theorem omegaGraph_adj_iff_zeta_eq_zero
     F.omegaGraph.Adj i j ↔ i ≠ j ∧ F.zeta i j = 0 := by
   exact omegaOverlapGraph_adj_iff_ne_and_balabanCMP116HardCoreZeta_eq_zero
     F.Omega F.activeSupport i j
+
+/-- The raw CMP116 localized activities are strongly measurable in the
+ultralocal fluctuation variable.  This is a source-facing field of the localized
+activity package, not a theorem about an arbitrary Lean function. -/
+theorem activity_globalEval_stronglyMeasurable
+    (F : BalabanCMP116LocalizedActivityFamily Bond lieDim Psi ι)
+    (i : ι) (psi : ∀ b, Psi b) :
+    StronglyMeasurable
+      (fun X : (∀ _ : Bond, Fin lieDim -> Real) =>
+        (F.activity i).globalEval psi X) :=
+  F.activity_stronglyMeasurable i psi
 
 /-- A Mayer product over a CMP116 family has spectator support contained in the
 union of the declared Balaban domains. -/
