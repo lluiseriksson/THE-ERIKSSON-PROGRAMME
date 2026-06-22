@@ -132,8 +132,15 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `flatGaugeHodgeKernel_eq_constantSector`, and combines the carried
   classification with the constant-sector block audit in
   `flatJointKernel_trivial_of_harmonicClassification`.  This is only a
-  reduction interface: the reverse classification and the uniform
-  full-periodic Poincare theorem remain unproved.  The
+  reduction interface.  It also proves the finite-dimensional compactness step
+  `exists_sq_norm_le_sum_three_sq_of_jointKernel_trivial`, derives the
+  fixed-volume theorem
+  `exists_flatGaugeHodgeBlockPoincare_of_jointKernel_trivial`, and packages the
+  classification-dependent consequences
+  `flatGaugeHodgeBlockPoincare_of_harmonicClassification` and
+  `flatCurlDivBlockPoincare_of_harmonicClassification`.  The resulting
+  Poincare constant may depend on the fixed volume; the reverse classification
+  and the uniform full-periodic Poincare theorem remain unproved.  The
   full-periodic flat Hodge/block-Poincare interface is now isolated in
   `YangMills/RG/PhysicalGaugeHodgePoincare.lean`: the predicate
   `FlatGaugeHodgePoincare` states the exact physical-cochain estimate for

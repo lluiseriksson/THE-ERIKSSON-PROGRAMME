@@ -9740,3 +9740,54 @@ joint-kernel consequence.  It does not prove the finite-dimensional
 anti-Lipschitz/Poincare theorem, the explicit divergence formula, the
 coordinate Gaffney identity, the volume-uniform theorem, or any Wilson-Hessian
 identification.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 259 (2026-06-22, **fixed-volume flat Hodge/block Poincare from
+joint kernel** `YangMills.RG.PhysicalGaugeFlatPoincare`; core 8339)
+
+This addendum records the non-uniform finite-volume Poincare step following
+the classification bridge.  The module
+
+```
+YangMills/RG/PhysicalGaugeFlatPoincare.lean
+```
+
+now proves the generic finite-dimensional theorem
+
+```
+exists_sq_norm_le_sum_three_sq_of_jointKernel_trivial
+```
+
+for three continuous linear maps.  It bundles the maps into a product map,
+uses trivial joint kernel to prove injectivity, invokes Mathlib's
+`LinearMap.exists_antilipschitzWith`, and converts the product max norm into
+the squared sum bound.
+
+Specialized to the flat physical cochain layer, it also proves
+
+```
+exists_flatGaugeHodgeBlockPoincare_of_jointKernel_trivial
+flatGaugeHodgeBlockPoincare_of_harmonicClassification
+flatCurlDivBlockPoincare_of_harmonicClassification
+```
+
+Thus a fixed finite volume with trivial joint kernel of `K₀` and the block map
+has some positive `FlatGaugeHodgePoincare` constant.  Combining this with
+`FlatHarmonicKernelClassified` gives both the operator-level and explicit
+curl/divergence/block forms.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeFlatPoincare.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeFlatPoincare.lean
+```
+
+**Honest scope.** This is fixed-volume and classification-dependent.  It does
+not prove the reverse flat-harmonic classification hypothesis, the explicit
+divergence formula, the coordinate Gaffney identity, any volume-uniform
+constant, any source-backed Balaban/Dimock estimate, or any Wilson-Hessian
+identification.  Clay distance **~0% (<0.1%), unchanged**.

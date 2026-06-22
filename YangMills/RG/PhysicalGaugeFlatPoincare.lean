@@ -96,6 +96,170 @@ theorem flatJointKernel_trivial_of_harmonicClassification
   · rintro rfl
     simp
 
+/-- A finite-dimensional three-map Poincare estimate from trivial joint kernel.
+
+This is the abstract fixed-volume compactness step.  The constant is allowed to
+depend on the finite-dimensional domain and on the three maps. -/
+theorem exists_sq_norm_le_sum_three_sq_of_jointKernel_trivial
+    {E F₁ F₂ F₃ : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℝ E]
+    [FiniteDimensional ℝ E]
+    [NormedAddCommGroup F₁] [NormedSpace ℝ F₁]
+    [NormedAddCommGroup F₂] [NormedSpace ℝ F₂]
+    [NormedAddCommGroup F₃] [NormedSpace ℝ F₃]
+    (T₁ : E →L[ℝ] F₁)
+    (T₂ : E →L[ℝ] F₂)
+    (T₃ : E →L[ℝ] F₃)
+    (hjoint :
+      ∀ x : E,
+        T₁ x = 0 →
+        T₂ x = 0 →
+        T₃ x = 0 →
+        x = 0) :
+    ∃ C : ℝ, 0 < C ∧
+      ∀ x : E,
+        ‖x‖ ^ 2 ≤
+          C *
+            (‖T₁ x‖ ^ 2 +
+              ‖T₂ x‖ ^ 2 +
+              ‖T₃ x‖ ^ 2) := by
+  let T : E →L[ℝ] (F₁ × F₂) × F₃ :=
+    (T₁.prod T₂).prod T₃
+  have hTinj : Function.Injective T := by
+    intro x y hxy
+    have hzero : T (x - y) = 0 := by
+      simp [map_sub, hxy]
+    have h₁ : T₁ (x - y) = 0 := by
+      simpa [T] using congrArg (fun z : (F₁ × F₂) × F₃ => z.1.1) hzero
+    have h₂ : T₂ (x - y) = 0 := by
+      simpa [T] using congrArg (fun z : (F₁ × F₂) × F₃ => z.1.2) hzero
+    have h₃ : T₃ (x - y) = 0 := by
+      simpa [T] using congrArg (fun z : (F₁ × F₂) × F₃ => z.2) hzero
+    have hsub : x - y = 0 := hjoint (x - y) h₁ h₂ h₃
+    exact sub_eq_zero.mp hsub
+  have hker : LinearMap.ker T.toLinearMap = ⊥ :=
+    LinearMap.ker_eq_bot.mpr hTinj
+  obtain ⟨K, _hK, hanti⟩ :=
+    T.toLinearMap.exists_antilipschitzWith hker
+  refine ⟨(K : ℝ) ^ 2, by positivity, ?_⟩
+  intro x
+  have hbound : ‖x‖ ≤ (K : ℝ) * ‖T x‖ := by
+    simpa using T.bound_of_antilipschitz hanti x
+  have hsq : ‖x‖ ^ 2 ≤ ((K : ℝ) * ‖T x‖) ^ 2 := by
+    exact
+      (sq_le_sq₀ (norm_nonneg _)
+        (mul_nonneg (by positivity) (norm_nonneg _))).mpr hbound
+  have hTnormsq :
+      ‖T x‖ ^ 2 ≤
+        ‖T₁ x‖ ^ 2 + ‖T₂ x‖ ^ 2 + ‖T₃ x‖ ^ 2 := by
+    simp only [T, ContinuousLinearMap.prod_apply, Prod.norm_def]
+    generalize ha : ‖T₁ x‖ = a
+    generalize hb : ‖T₂ x‖ = b
+    generalize hc : ‖T₃ x‖ = c
+    have hmax1 : max a b ^ 2 ≤ a ^ 2 + b ^ 2 := by
+      by_cases hab : a ≤ b
+      · rw [max_eq_right hab]
+        nlinarith [sq_nonneg a]
+      · have hba : b ≤ a := le_of_not_ge hab
+        rw [max_eq_left hba]
+        nlinarith [sq_nonneg b]
+    by_cases hmc : max a b ≤ c
+    · rw [max_eq_right hmc]
+      nlinarith [sq_nonneg a, sq_nonneg b]
+    · have hcm : c ≤ max a b := le_of_not_ge hmc
+      rw [max_eq_left hcm]
+      nlinarith [hmax1, sq_nonneg c]
+  calc
+    ‖x‖ ^ 2 ≤ ((K : ℝ) * ‖T x‖) ^ 2 := hsq
+    _ = (K : ℝ) ^ 2 * ‖T x‖ ^ 2 := by ring
+    _ ≤
+        (K : ℝ) ^ 2 *
+          (‖T₁ x‖ ^ 2 + ‖T₂ x‖ ^ 2 + ‖T₃ x‖ ^ 2) := by
+      exact mul_le_mul_of_nonneg_left hTnormsq (sq_nonneg (K : ℝ))
+
+/-- Fixed-volume flat Hodge/block Poincare from trivial joint kernel. -/
+theorem exists_flatGaugeHodgeBlockPoincare_of_jointKernel_trivial
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    (hjoint :
+      ∀ A : FinePhysicalOneCochain d L N' Nc,
+        flatGaugeHodgeK0CLM d (L * N') Nc ρ A = 0 →
+        flatBlockConstraintQCLM
+          (d := d) (Nc := Nc) L N' A = 0 →
+        A = 0) :
+    ∃ CP : ℝ,
+      FlatGaugeHodgePoincare d L N' Nc ρ CP := by
+  let D₁ :=
+    covariantD1CLM ρ
+      (trivialPhysicalGaugeBackground d (L * N') Nc)
+  let div :=
+    gaugeConstraintQCLM ρ
+      (trivialPhysicalGaugeBackground d (L * N') Nc)
+  let Q :=
+    flatBlockConstraintQCLM
+      (d := d) (Nc := Nc) L N'
+  have hkernel :
+      ∀ A : FinePhysicalOneCochain d L N' Nc,
+        D₁ A = 0 →
+        div A = 0 →
+        Q A = 0 →
+        A = 0 := by
+    intro A hD₁ hdiv hQ
+    apply hjoint A
+    · exact
+        (flatGaugeHodgeK0CLM_eq_zero_iff_isFlatHarmonicOneCochain
+          (d := d) (N := L * N') (Nc := Nc) ρ A).mpr
+          ⟨hD₁, hdiv⟩
+    · exact hQ
+  obtain ⟨CP, hCP, hineq⟩ :=
+    exists_sq_norm_le_sum_three_sq_of_jointKernel_trivial D₁ div Q hkernel
+  exact
+    ⟨CP, flatGaugeHodgePoincare ρ hCP (by
+      simpa only [D₁, div, Q] using hineq)⟩
+
+/-- Classification-dependent fixed-volume flat Hodge/block Poincare. -/
+theorem flatGaugeHodgeBlockPoincare_of_harmonicClassification
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    (hclass :
+      FlatHarmonicKernelClassified d (L * N') Nc ρ) :
+    ∃ CP : ℝ,
+      FlatGaugeHodgePoincare d L N' Nc ρ CP := by
+  apply exists_flatGaugeHodgeBlockPoincare_of_jointKernel_trivial ρ
+  intro A hK hQ
+  exact
+    (flatJointKernel_trivial_of_harmonicClassification
+      ρ hclass A).mp ⟨hK, hQ⟩
+
+/-- Explicit curl/divergence/block form of the classification-dependent
+fixed-volume flat Hodge/block Poincare theorem. -/
+theorem flatCurlDivBlockPoincare_of_harmonicClassification
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    (hclass :
+      FlatHarmonicKernelClassified d (L * N') Nc ρ) :
+    ∃ CP : ℝ, 0 < CP ∧
+      ∀ A : FinePhysicalOneCochain d L N' Nc,
+        ‖A‖ ^ 2 ≤
+          CP *
+            (‖covariantD1CLM ρ
+                (trivialPhysicalGaugeBackground
+                  d (L * N') Nc) A‖ ^ 2
+              + ‖gaugeConstraintQCLM ρ
+                  (trivialPhysicalGaugeBackground
+                    d (L * N') Nc) A‖ ^ 2
+              + ‖flatBlockConstraintQCLM
+                  (d := d) (Nc := Nc) L N' A‖ ^ 2) := by
+  obtain ⟨CP, hCP⟩ :=
+    flatGaugeHodgeBlockPoincare_of_harmonicClassification
+      ρ hclass
+  refine ⟨CP, hCP.1, ?_⟩
+  intro A
+  simpa only [flatGaugeHodgeK0_inner_right] using hCP.2 A
+
 /-- Norm squared of a direction-wise constant physical one-cochain. -/
 theorem norm_sq_constantPhysicalGaugeOneCochain {d N Nc : ℕ} [NeZero N]
     (v : Fin d → SUNLieCoord Nc) :

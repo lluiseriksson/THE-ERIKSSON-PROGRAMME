@@ -32,9 +32,11 @@ the exact constant-sector norm identities and the sharp block-control ratio
 `L^d / L^2` for the current `linAvg` normalization.  It also carries the
 conditional bridge `FlatHarmonicKernelClassified`, which reduces a future
 reverse flat-harmonic classification theorem to exact constant-sector kernel
-statements and triviality of the joint flat-Hodge/block kernel.  This is only
-a fixed-volume reduction interface; the reverse harmonic classification and
-volume-uniform full-periodic estimate remain frontier obligations.
+statements and triviality of the joint flat-Hodge/block kernel.  From trivial
+joint kernel, it now derives a non-uniform fixed-volume flat Hodge/block
+Poincare theorem using Mathlib's finite-dimensional anti-Lipschitz theorem.
+The reverse harmonic classification and volume-uniform full-periodic estimate
+remain frontier obligations.
 The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose
@@ -226,6 +228,10 @@ FlatHarmonicKernelClassified
 flatHarmonicKernel_eq_constantSector
 flatGaugeHodgeKernel_eq_constantSector
 flatJointKernel_trivial_of_harmonicClassification
+exists_sq_norm_le_sum_three_sq_of_jointKernel_trivial
+exists_flatGaugeHodgeBlockPoincare_of_jointKernel_trivial
+flatGaugeHodgeBlockPoincare_of_harmonicClassification
+flatCurlDivBlockPoincare_of_harmonicClassification
 ```
 
 ### Meaning
@@ -254,10 +260,12 @@ classification ladder.  The new constant-sector flat-harmonic theorem proves
 the forward inclusion from direction-wise constants to flat harmonics at the
 trivial background.  The new `FlatHarmonicKernelClassified` bridge carries the
 reverse inclusion as a named hypothesis and derives exact kernel consequences;
-it does not prove that hypothesis.  The operator-kernel and block-zero tests
-are constant-sector or classification-conditional consequences only.  The
-zero-form harmonic test and curl equation do not classify the full harmonic
-kernel and do not prove that all flat harmonics are direction-wise constants.
+it does not prove that hypothesis.  The fixed-volume Poincare theorem is
+non-uniform: its constant is produced by finite-dimensional compactness and may
+depend on the volume.  The operator-kernel and block-zero tests are
+constant-sector or classification-conditional consequences only.  The zero-form
+harmonic test and curl equation do not classify the full harmonic kernel and do
+not prove that all flat harmonics are direction-wise constants.
 
 ## 4. Brick P4.1 — physical tangent spaces and covariant cochains
 
