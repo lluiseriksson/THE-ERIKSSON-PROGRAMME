@@ -577,6 +577,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.discreteModifiedMetric_le_clusterModifiedMetric
 
 /-! ### Appendix-F exact finite-cover compiler, equations (639)--(640) -/
+#print axioms YangMills.RG.appendixFCoverUnion_card_le_sum
+#print axioms YangMills.RG.appendixFCoverUnion_card_real_le_sum
 #print axioms YangMills.RG.confinedComponents_injective
 #print axioms YangMills.RG.prod_confinedComponents_eq_prod
 #print axioms YangMills.RG.appendixFCanonicalComponents_omegaSupport_disjoint
@@ -660,6 +662,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.discreteModifiedMetric_add_one_le_card_of_spanning_set
 #print axioms YangMills.RG.appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum
 #print axioms YangMills.RG.appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum
+#print axioms YangMills.RG.appendixFHoleCoverUnion_card_le_metricSum_of_source_card_le_metric
+#print axioms YangMills.RG.appendixFHoleTargetFiber_card_le_metricSum_of_source_card_le_metric
 -- finite target-fiber entropy: forget connectedness/exact-union constraints,
 -- overcount by a nonempty powerset, and absorb into exp(sum)-1.
 #print axioms YangMills.RG.skeleton_mono_of_subset

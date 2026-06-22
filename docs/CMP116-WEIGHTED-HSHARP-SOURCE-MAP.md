@@ -106,6 +106,16 @@ feeds the resulting `A,q` profile into the integrated second-gas KP criterion.
 The full-cardinality budget is intentionally not inferred from the skeleton
 metric; it is the next explicit geometric/source obligation.
 
+The finite part now also exposes the weaker cover-sum form:
+`appendixFHoleTargetFiber_card_le_metricSum_of_source_card_le_metric` rewrites
+the exact target-fiber equation and proves
+`|Y| <= theta * Σ_{X in C} (d_M(X)+1)` whenever each source polymer in the
+selected cover obeys `|X| <= theta * (d_M(X)+1)`.  This does not close the
+KP profile above, because that profile needs `|Y| <= theta * (d_M(Y)+1)`;
+the missing source theorem is precisely the compression from a cover-sum
+budget to a direct target-metric budget, or an equivalent reformulation of the
+second-gas KP constants.
+
 Latest OCR/source-extraction verdict: CMP116 (2.5)--(2.11) supports the
 product-Gaussian change of variables and the existence of localized activities
 `H(Z)`, but the printed phrase "localized in the interior of Z with respect to

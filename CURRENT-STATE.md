@@ -216,7 +216,16 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   modified-metric stitching
   `appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum`:
   for every skeleton-connected target fiber cover,
-  `d_M(Y, mod holes)+1 ≤ Σ_X (d_M(X, mod holes)+1)`.  The right-hand side of
+  `d_M(Y, mod holes)+1 ≤ Σ_X (d_M(X, mod holes)+1)`.  It also now records the
+  overlap-safe full-cardinality cover budget
+  `appendixFHoleCoverUnion_card_le_metricSum_of_source_card_le_metric` and its
+  target-fiber form
+  `appendixFHoleTargetFiber_card_le_metricSum_of_source_card_le_metric`: if
+  every source polymer in the selected cover satisfies
+  `|X| <= theta * (d_M(X)+1)`, then the represented full target satisfies
+  `|Y| <= theta * Σ_X (d_M(X)+1)`.  This is intentionally a cover-sum bound,
+  not a replacement for the still-missing direct source/geometric compression
+  `|Y| <= theta * (d_M(Y)+1)`.  The right-hand side of
   the first-activity estimate is still a finite connected-cover sum, so no
   connected-cover entropy estimate, activity bound (642), ultralocal
   integration to `K#`, second Ursell expansion to `H#`, or Yang-Mills raw
@@ -305,8 +314,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   These reduce the profile to an explicit full-cardinality budget
   `|Y| <= theta * (d_M(Y)+1)` plus the choice
   `q = exp (-(appendixFKsharpRate kappa kappa0 - theta))`.  The full-cardinality
-  budget is not automatic from the skeleton metric and remains a source/geometric
-  obligation.
+  budget is not automatic from the skeleton metric; the newly verified finite
+  target-fiber budget only gives the weaker cover-sum form
+  `|Y| <= theta * Σ_X (d_M(X)+1)` from source polymer cardinality estimates.
+  Closing the direct target-metric budget remains a source/geometric obligation.
   This does not prove Dimock (642), the conversion from the exact nonlinear
   `K#` estimate to the KP-ready majorant, any concrete integrability/source
   estimate for the integrated scalar activity, the second Ursell `H#`

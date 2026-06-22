@@ -379,6 +379,74 @@ theorem appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum
   exact appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum
     HF z Λ hCdata.1
 
+/-- If every source hole-polymer in a finite cover has full cardinality
+bounded by a multiple of its shifted modified metric, then the full target
+cover union has cardinality bounded by the corresponding cover-metric sum.
+
+This is deliberately a cover-sum statement, not a claim that the full target
+cardinality is controlled by `d_M` of the target itself.  The latter needs an
+extra source geometric compression estimate. -/
+theorem appendixFHoleCoverUnion_card_le_metricSum_of_source_card_le_metric
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (C : Finset (OmegaPolymerType HF z)) {θ : ℝ}
+    (hsource : ∀ X, X ∈ C →
+      (X.val.card : ℝ) ≤
+        θ * ((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) :
+    ((appendixFCoverUnion (fun X : OmegaPolymerType HF z => X.val) C).card : ℝ) ≤
+      θ * ∑ X ∈ C,
+        ((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ) := by
+  classical
+  have hcard :
+      ((appendixFCoverUnion (fun X : OmegaPolymerType HF z => X.val) C).card : ℝ) ≤
+        ∑ X ∈ C, (X.val.card : ℝ) :=
+    appendixFCoverUnion_card_real_le_sum
+      (fun X : OmegaPolymerType HF z => X.val) C
+  have hsum :
+      (∑ X ∈ C, (X.val.card : ℝ)) ≤
+        ∑ X ∈ C,
+          θ * ((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ) :=
+    Finset.sum_le_sum hsource
+  have hfactor :
+      (∑ X ∈ C,
+          θ * ((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) =
+        θ * ∑ X ∈ C,
+          ((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ) := by
+    rw [Finset.mul_sum]
+  exact hcard.trans (hsum.trans_eq hfactor)
+
+/-- Fiber form of
+`appendixFHoleCoverUnion_card_le_metricSum_of_source_card_le_metric`: a target
+fiber equation rewrites the cover-union cardinality to the represented full
+target `Y`. -/
+theorem appendixFHoleTargetFiber_card_le_metricSum_of_source_card_le_metric
+    {d L : ℕ} [NeZero L] (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    {Y : Finset (Cube d L)} {C : Finset (OmegaPolymerType HF z)}
+    {θ : ℝ}
+    (hC : C ∈ appendixFTargetFiber
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ Y)
+    (hsource : ∀ X, X ∈ C →
+      (X.val.card : ℝ) ≤
+        θ * ((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) :
+    (Y.card : ℝ) ≤
+      θ * ∑ X ∈ C,
+        ((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ) := by
+  classical
+  have hCdata :=
+    (mem_appendixFTargetFiber_iff
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ Y C).mp hC
+  rw [← hCdata.2]
+  exact appendixFHoleCoverUnion_card_le_metricSum_of_source_card_le_metric
+    HF z C hsource
+
 /-- The finite target-fiber metric majorant for the first connected activity.
 This is the right-hand side of
 `norm_appendixFConnectedActivity_le_metricCoverSum`, packaged for reuse. -/

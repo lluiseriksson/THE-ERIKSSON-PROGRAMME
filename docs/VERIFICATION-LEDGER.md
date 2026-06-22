@@ -8580,3 +8580,61 @@ makes that missing geometric/source input more visible.  It also does not prove
 Dimock (642), CMP116 localization, raw activity decay, spectator-field law,
 `hR`, `hRpoly`, continuum construction, OS/Wightman reconstruction, or Clay.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 235 (2026-06-22, **finite full-target cardinality cover-sum budget**
+`YangMills.RG.appendixFCoverUnion_card_le_sum`,
+`YangMills.RG.appendixFCoverUnion_card_real_le_sum`,
+`YangMills.RG.appendixFHoleCoverUnion_card_le_metricSum_of_source_card_le_metric`,
+`YangMills.RG.appendixFHoleTargetFiber_card_le_metricSum_of_source_card_le_metric`;
+core 8328)
+
+This addendum records the finite cardinality part left exposed by Addendum
+234, without claiming the still-missing direct target-metric budget.
+
+`YangMills/RG/AppendixFFiniteCover.lean` now proves the generic overlap-safe
+union bound
+
+```
+|(appendixFCoverUnion support C)| <= sum_{i in C} |support i|,
+```
+
+together with a real-valued cast form for quantitative consumers.
+
+`YangMills/RG/AppendixFQuantitative.lean` specializes this to active
+with-holes Appendix-F covers.  If every source polymer in a selected finite
+cover obeys
+
+```
+|X| <= theta * (d_M(X)+1),
+```
+
+then the represented full target satisfies the cover-sum estimate
+
+```
+|Y| <= theta * sum_{X in C} (d_M(X)+1).
+```
+
+The target-fiber theorem uses only the exact equation
+`appendixFCoverUnion (fun X => X.val) C = Y`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFFiniteCover.lean
+lake build YangMills.RG.AppendixFFiniteCover
+lake env lean YangMills\RG\AppendixFQuantitative.lean
+lake build YangMills.RG.AppendixFQuantitative
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This does not prove the full KP-profile hypothesis
+`|Y| <= theta * (d_M(Y)+1)`.  The new theorem gives only the weaker and
+source-faithful cover-sum budget; closing the direct target-metric compression
+or reformulating the second-gas KP constants remains a source/geometric
+obligation.  It also does not prove Dimock (642), CMP116 localization, raw
+activity decay, spectator-field law, `hR`, `hRpoly`, continuum construction,
+OS/Wightman reconstruction, or Clay.  Clay distance **~0% (<0.1%),
+unchanged**.

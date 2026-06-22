@@ -66,6 +66,26 @@ noncomputable def appendixFCoverUnion {Site ι : Type*} [DecidableEq Site]
     (support : ι → Finset Site) (C : Finset ι) : Finset Site :=
   C.biUnion support
 
+/-- The cardinality of a finite cover union is bounded by the sum of the
+cardinalities of the declared supports.  This is the overlap-free upper
+budget; it intentionally does not assume disjointness. -/
+theorem appendixFCoverUnion_card_le_sum
+    {Site ι : Type*} [DecidableEq Site]
+    (support : ι → Finset Site) (C : Finset ι) :
+    (appendixFCoverUnion support C).card ≤
+      ∑ i ∈ C, (support i).card := by
+  classical
+  simpa [appendixFCoverUnion] using
+    (Finset.card_biUnion_le (s := C) (t := support))
+
+/-- Real-valued form of `appendixFCoverUnion_card_le_sum`. -/
+theorem appendixFCoverUnion_card_real_le_sum
+    {Site ι : Type*} [DecidableEq Site]
+    (support : ι → Finset Site) (C : Finset ι) :
+    ((appendixFCoverUnion support C).card : ℝ) ≤
+      ∑ i ∈ C, ((support i).card : ℝ) := by
+  exact_mod_cast appendixFCoverUnion_card_le_sum support C
+
 /-- The finite component decomposition is injective: the original finite set is
 recovered by taking the union of its confined components. -/
 theorem confinedComponents_injective {ι : Type*} [DecidableEq ι]
