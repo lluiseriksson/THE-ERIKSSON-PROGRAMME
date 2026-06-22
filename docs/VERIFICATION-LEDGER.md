@@ -9083,3 +9083,56 @@ Hessian formula, the physical Hodge/Poincare inequality, the perturbation
 budget from a small background, a Schur complement hard-constraint theorem,
 Green-function decay, a localized covariance square root, or the raw CMP116
 activity estimate `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 245 (2026-06-22, **triple-infinity influence closure**
+`YangMills.RG.tripleInfluence_le_of_geometric_leaf_scale_budget`; core 8336)
+
+This addendum records a source-independent summation organizer for the
+Appendix-F/RG frontier.  The new module
+`YangMills/RG/TripleInfinityClosure.lean` formalizes the closure of three
+separate infinities:
+
+```
+k : scale index
+n : cluster/leaf order
+Y : rooted target geometry
+```
+
+The main theorem consumes a pointwise marked estimate
+
+```
+|H k n Y| <= M * eps k * (Lleaf * eps k)^n * w Y
+```
+
+together with a uniform leaf budget `Lleaf * eps k <= q < 1`, a rooted target
+budget `sum_Y w Y <= Kroot`, and a scale budget
+`eps k <= A * exp (-(c0 * t)) * scaleWeight k`,
+`sum_k scaleWeight k <= G0`.  It proves the closed iterated influence bound
+
+```
+sum_k sum_n sum_Y |H k n Y|
+  <= M * A * Kroot * G0 * exp (-(c0 * t)) * (1 - q)^(-1).
+```
+
+The proof is split into a fixed-scale order/target theorem
+`orderTargetInfluence_le_of_geometric_leaf`, a scale theorem
+`scaleInfluence_le_of_scale_budget`, and the combined theorem above.  The
+summability hypotheses are explicit; no Tonelli/Fubini or source convergence
+is hidden.
+
+Verification:
+
+```
+lake env lean YangMills\RG\TripleInfinityClosure.lean
+lake build YangMills.RG.TripleInfinityClosure
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is deterministic real summation algebra.  It does not
+prove the source activity estimate, Dimock/Balaban leaf summation, rooted
+target geometry, scale-coupling summability, the physical Hessian/covariance
+construction, or the raw CMP116 activity estimate `hraw`.  Clay distance
+**~0% (<0.1%), unchanged**.

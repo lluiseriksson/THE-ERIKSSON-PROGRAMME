@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8335 jobs**.
+* `lake build YangMillsCore` is green at **8336 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -471,6 +471,19 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   it does not prove that the source second-Ursell/KP analysis supplies such
   an `A,q`, the source `H#` estimate (Dimock F.1/(636)), the preceding `K/K#`
   estimate (Dimock (642)), or any continuum/Clay theorem;
+* the triple-infinity closure module
+  `YangMills/RG/TripleInfinityClosure.lean`: it packages the marked-infinity
+  bookkeeping suggested by the current notes.  A pointwise estimate
+  `|H k n Y| <= M * eps k * (Lleaf * eps k)^n * w Y`, a uniform leaf budget
+  `Lleaf * eps k <= q < 1`, a rooted target summability bound
+  `sum w <= Kroot`, and a summable scale budget
+  `eps k <= A * exp(-(c0*t)) * scaleWeight k`, `sum scaleWeight <= G0`,
+  imply the iterated total influence bound
+  `sum_k sum_n sum_Y |H k n Y| <=
+   M*A*Kroot*G0*exp(-(c0*t))*(1-q)^(-1)`.  This is deterministic summation
+  algebra over order, target, and scale; it does not prove the source activity
+  estimate, the rooted geometry, the scale-coupling bound, or any physical
+  Yang--Mills covariance statement;
 * the source-facing absolute `H#` majorant bridge
   `YangMills/RG/AppendixFHsharpSourceMajorant.lean`: it defines the finite
   nonnegative fixed-union object `appendixFHoleHsharpAbsTerm`, proves the

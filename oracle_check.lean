@@ -816,6 +816,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_geometric_tail
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_geometric_term_majorant
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_geometric_term_majorant
+-- triple-infinity closure: order, rooted target, and scale budgets.
+#print axioms YangMills.RG.orderTargetInfluence_le_of_geometric_leaf
+#print axioms YangMills.RG.scaleInfluence_le_of_scale_budget
+#print axioms YangMills.RG.tripleInfluence_le_of_geometric_leaf_scale_budget
 -- source-facing absolute H# majorants: a finite nonnegative union-fiber term
 -- is the explicit source object feeding the geometric consumers.
 #print axioms YangMills.RG.norm_appendixFHoleHsharpTerm_le_absTerm

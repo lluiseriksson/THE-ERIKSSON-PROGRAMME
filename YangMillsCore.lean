@@ -398,6 +398,10 @@ import YangMills.RG.AppendixFHsharpMajorant
 -- Closed-form geometric H# majorants: term bounds of the form A·q^n discharge
 -- the summability, finite-partial, tail, and total residual bookkeeping.
 import YangMills.RG.AppendixFHsharpGeometricMajorant
+-- Triple-infinity closure: a root factor, geometric leaf budget, rooted
+-- target summability, and scale summability give a single total influence
+-- bound over expansion order, target geometry, and RG scales.
+import YangMills.RG.TripleInfinityClosure
 -- Source-facing absolute H# majorant bridge: finite absolute union-fiber
 -- terms feed packaged geometric source contracts and the existing consumers.
 import YangMills.RG.AppendixFHsharpSourceMajorant
