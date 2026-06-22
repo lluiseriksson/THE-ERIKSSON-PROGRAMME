@@ -14,6 +14,7 @@ Lean endpoints now in view:
 * `BalabanCMP116AppendixFSupportHypotheses.omegaGraph_adj_imp_skeletonOverlapGraph_adj_of_supportHypotheses`;
 * `BalabanCMP116AppendixFSupportHypotheses.not_omegaGraph_adj_of_disjoint_skeleton_of_supportHypotheses`;
 * `balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant`;
+* `BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source`;
 * `singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_sourceMeasurable`.
 
 This note maps the new weighted `H#` tree bridge onto the local primary-source
@@ -88,7 +89,11 @@ the evaluated second gas:
 `BalabanCMP116AppendixFIntegratedSecondGasKPMajorant` plus the with-holes
 geometry and smallness hypotheses.  This is still a consumer interface: it does
 not prove Dimock (642), the integrated scalar majorant, or the spectator-field
-measure identification.
+measure identification.  The source-package helper
+`BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source`
+now composes the already-formalized integrated `K#` norm estimate with that
+consumer, reducing the remaining Lean-side input to a single scalar profile
+inequality absorbing `exp t`, `exp |Y|`, and the chosen `A,q` metric constants.
 
 Latest OCR/source-extraction verdict: CMP116 (2.5)--(2.11) supports the
 product-Gaussian change of variables and the existence of localized activities

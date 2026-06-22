@@ -8485,3 +8485,45 @@ Dimock (642), the integrated scalar majorant, the spectator-field law, CMP116
 localization, raw activity decay, `hR`, `hRpoly`, continuum construction,
 OS/Wightman reconstruction, or Clay.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 233 (2026-06-22, **source-bound route to integrated scalar second-gas KP majorant**
+`YangMills.RG.appendixFHoleIntegratedSecondGasKPMajorant_of_norm_bound`,
+`YangMills.RG.BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source`;
+core 8328)
+
+This addendum separates the remaining integrated scalar KP-majorant obligation
+into a finite norm-bound transfer and a scalar profile inequality.
+
+`YangMills/RG/AppendixFSecondGas.lean` now proves
+`appendixFHoleIntegratedSecondGasKPMajorant_of_norm_bound`: any pointwise norm
+bound `B(Y)` for the spectator-integrated scalar second gas gives the KP-ready
+majorant as soon as `B` satisfies the already-tilted profile
+
+```
+exp t * B(Y) * exp |Y| <= A * q^(d_M(Y)+1).
+```
+
+`YangMills/RG/BalabanCMP116SecondGasAdapter.lean` then proves
+`BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source`.
+It uses the existing source-measurable rooted raw-metric `K#` estimate inside
+the first connected target region and the zero-extension theorem outside that
+region.  The theorem leaves exactly the final scalar profile comparison as an
+explicit hypothesis; no cardinality/constant conversion is hidden.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFSecondGas.lean
+lake build YangMills.RG.AppendixFSecondGas
+lake env lean YangMills\RG\BalabanCMP116SecondGasAdapter.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is a finite proof-assembly adapter for a future source
+estimate.  It does not prove the scalar profile inequality, Dimock (642), the
+spectator-field law, CMP116 localization, raw activity decay, `hR`, `hRpoly`,
+continuum construction, OS/Wightman reconstruction, or Clay.  Clay distance
+**~0% (<0.1%), unchanged**.

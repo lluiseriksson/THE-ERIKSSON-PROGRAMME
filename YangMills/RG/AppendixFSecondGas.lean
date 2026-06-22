@@ -385,6 +385,37 @@ def AppendixFHoleIntegratedSecondGasKPMajorant
         Real.exp (Y.val.card : ℝ)
       ≤ A * q ^ (discreteModifiedMetric HF Y.val + 1)
 
+/-- Convert any pointwise norm bound for the spectator-integrated scalar
+second gas into the KP-ready majorant, provided the proposed bound already has
+the tilted modified-metric profile consumed by the KP criterion. -/
+theorem appendixFHoleIntegratedSecondGasKPMajorant_of_norm_bound
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (Hraw :
+      OmegaPolymerType HF z →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : Measure γ)
+    (ν : Measure β)
+    (t q A : ℝ)
+    (B : (appendixFHoleIntegratedSecondGas HF z Λ Hraw μ ν).Polymer → ℝ)
+    (hnorm : ∀ Y,
+      ‖(appendixFHoleIntegratedSecondGas HF z Λ Hraw μ ν).activity Y‖ ≤ B Y)
+    (hprofile : ∀ Y,
+      Real.exp t * B Y * Real.exp (Y.val.card : ℝ)
+        ≤ A * q ^ (discreteModifiedMetric HF Y.val + 1)) :
+    AppendixFHoleIntegratedSecondGasKPMajorant HF z Λ Hraw μ ν t q A := by
+  intro Y
+  calc
+    Real.exp t *
+        ‖(appendixFHoleIntegratedSecondGas HF z Λ Hraw μ ν).activity Y‖ *
+        Real.exp (Y.val.card : ℝ)
+        ≤ Real.exp t * B Y * Real.exp (Y.val.card : ℝ) := by
+          exact mul_le_mul_of_nonneg_right
+            (mul_le_mul_of_nonneg_left (hnorm Y) (Real.exp_nonneg t))
+            (Real.exp_nonneg _)
+    _ ≤ A * q ^ (discreteModifiedMetric HF Y.val + 1) := hprofile Y
+
 /-- The spectator-integrated scalar second gas satisfies the same with-holes KP
 criterion once its activity is supplied with the KP-ready pointwise majorant. -/
 theorem appendixFHoleIntegratedSecondGas_KPCriterion_of_majorant

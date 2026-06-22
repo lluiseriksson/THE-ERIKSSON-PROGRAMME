@@ -435,6 +435,83 @@ theorem balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant
       HF z Λ F.activity (balabanCMP116BondGaussian lieDim) ν
       t q A hA0 hK hdisj hnoedges hholes_ne hq0 hCq hsmall)
 
+/-- Source-package route from rooted raw-metric decay to the KP-ready majorant
+for the spectator-integrated scalar CMP116 second gas.
+
+The only remaining quantitative input is the explicit scalar profile
+`hprofile`: it absorbs the KP tilt `exp t`, the full target-cardinality factor,
+and the conversion from the first-gas rate to the chosen `A,q` metric profile.
+-/
+theorem
+    BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF z))
+    (ν : Measure β) [IsProbabilityMeasure ν]
+    {H₀ K₀ κ κ₀ t q A : ℝ}
+    (hH₀ : 0 ≤ H₀)
+    (hH₀_one : H₀ ≤ 1)
+    (hK₀ : 0 ≤ K₀)
+    (hsmall : 2 * H₀ * K₀ ≤ 1)
+    (hκ₀ : 0 ≤ κ₀)
+    (hκ : κ₀ ≤ κ)
+    (hroot : ∀ r : Cube d L,
+      (∑ X ∈ Λ.filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀)
+    (hraw : ∀ ψ φ X, X ∈ Λ →
+      ‖(F.activity X).globalEval ψ φ‖ ≤
+        H₀ * appendixFHoleExpWeight HF κ X.val)
+    (hprofile :
+      ∀ Y : (balabanCMP116AppendixFIntegratedSecondGas HF z Λ F ν).Polymer,
+        Real.exp t *
+            ((2 * H₀ * K₀) *
+              appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Y.val) *
+            Real.exp (Y.val.card : ℝ)
+          ≤ A * q ^ (discreteModifiedMetric HF Y.val + 1)) :
+    BalabanCMP116AppendixFIntegratedSecondGasKPMajorant
+      HF z Λ F ν t q A := by
+  refine
+    appendixFHoleIntegratedSecondGasKPMajorant_of_norm_bound
+      HF z Λ F.activity (balabanCMP116BondGaussian lieDim) ν
+      t q A
+      (fun Y =>
+        (2 * H₀ * K₀) *
+          appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Y.val)
+      ?_ hprofile
+  intro Y
+  by_cases hY : Y.val ∈ appendixFTargetRegion
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ
+  · simpa [balabanCMP116AppendixFIntegratedSecondGas_activity] using
+      (norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_rawMetricDecay_rooted_of_source
+        HF z Λ F ν hY hH₀ hH₀_one hK₀ hsmall hκ₀ hκ hroot hraw)
+  · have hzero :=
+      balabanCMP116AppendixFIntegratedKsharpActivity_eq_zero_of_not_mem_targetRegion
+        HF z Λ F ν Y.val hY
+    have hactivity_zero :
+        (balabanCMP116AppendixFIntegratedSecondGas HF z Λ F ν).activity Y = 0 := by
+      simpa [balabanCMP116AppendixFIntegratedSecondGas_activity] using hzero
+    have hB_nonneg :
+        0 ≤ (2 * H₀ * K₀) *
+          appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Y.val := by
+      exact mul_nonneg
+        (mul_nonneg (mul_nonneg zero_le_two hH₀) hK₀)
+        (appendixFHoleExpWeight_nonneg HF (appendixFKsharpRate κ κ₀) Y.val)
+    change
+      ‖(balabanCMP116AppendixFIntegratedSecondGas HF z Λ F ν).activity Y‖ ≤
+        (2 * H₀ * K₀) *
+          appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Y.val
+    rw [hactivity_zero]
+    simpa using hB_nonneg
+
 /-- Finite target-family spectator integration, specialized to the CMP116
 `K#` adapter and rewritten in terms of the CMP116 scalar `z_K` activity. -/
 theorem integral_sum_balabanCMP116AppendixFKsharp_eq_sum_prod_integratedKsharpActivity
