@@ -8352,3 +8352,36 @@ prove the source support package, CMP116 localization, measurability, raw
 activity decay, `hR`, large-field-hole preservation, `hRpoly`, continuum
 construction, OS/Wightman reconstruction, or Clay.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 229 (2026-06-22, **CMP116 no-cross-edge adapter from support package**; core 8328)
+
+This addendum adds the factorization-facing no-cross-edge direction for the
+CMP116 support package in `YangMills/RG/BalabanCMP116KsharpAdapter.lean`.
+
+The theorem
+`BalabanCMP116AppendixFSupportHypotheses.zeta_eq_one_of_disjoint_skeleton_of_supportHypotheses`
+shows that if two Appendix-F active skeletons are disjoint and the source
+active supports are contained in those skeletons, then the CMP116 hard-core
+factor is inactive: `F.zeta X Y = 1`.  The companion theorem
+`BalabanCMP116AppendixFSupportHypotheses.not_omegaGraph_adj_of_disjoint_skeleton_of_supportHypotheses`
+packages this as absence of a CMP116 Ω-overlap graph edge.
+
+This is the no-cross-edge companion to Addendum 228: Addendum 228 maps CMP116
+edges into skeleton edges, while this addendum lets skeleton-disjointness rule
+out CMP116 edges.  Both remain conditional on the same source support package.
+
+Verification:
+
+```
+lake env lean YangMills\RG\BalabanCMP116KsharpAdapter.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is finite graph/support bookkeeping for future
+factorization use.  It does not prove the source support package, CMP116
+localization, measurability, raw activity decay, `hR`, large-field-hole
+preservation, `hRpoly`, continuum construction, OS/Wightman reconstruction, or
+Clay.  Clay distance **~0% (<0.1%), unchanged**.

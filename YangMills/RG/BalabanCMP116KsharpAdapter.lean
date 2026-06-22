@@ -211,6 +211,48 @@ theorem omegaGraph_adj_imp_skeletonOverlapGraph_adj_of_supportHypotheses
   rw [omegaOverlapGraph_adj_iff]
   exact ⟨hcmp.1, by simpa using hskel⟩
 
+/-- Support-package form of hard-core compatibility for disjoint skeletons.
+
+If two Appendix-F active skeletons are disjoint and the source active supports
+are contained in those skeletons, then the CMP116 hard-core factor is inactive:
+`zeta = 1`.  This is the no-cross-edge/factorization-facing direction paired
+with `zeta_eq_zero_imp_not_disjoint_skeleton_of_supportHypotheses`. -/
+theorem zeta_eq_one_of_disjoint_skeleton_of_supportHypotheses
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F)
+    {X Y : OmegaPolymerType HF z} (hX : X ∈ Λ) (hY : Y ∈ Λ)
+    (hdisj : Disjoint (skeleton HF X.val) (skeleton HF Y.val)) :
+    F.zeta X Y = 1 := by
+  have hactiveDisj :
+      Disjoint (F.Omega ∩ F.activeSupport X) (F.Omega ∩ F.activeSupport Y) := by
+    rw [Finset.disjoint_left] at hdisj ⊢
+    intro x hxX hxY
+    have hxXactive : x ∈ F.activeSupport X := (Finset.mem_inter.mp hxX).2
+    have hxYactive : x ∈ F.activeSupport Y := (Finset.mem_inter.mp hxY).2
+    exact hdisj
+      (h.activeSupport_subset_skeleton X hX hxXactive)
+      (h.activeSupport_subset_skeleton Y hY hxYactive)
+  simpa [BalabanCMP116LocalizedActivityFamily.zeta] using
+    (balabanCMP116HardCoreZeta_eq_one_iff F.Omega F.activeSupport X Y).mpr
+      hactiveDisj
+
+/-- Skeleton-disjoint source polymers have no CMP116 Ω-overlap edge once the
+source support package is available. -/
+theorem not_omegaGraph_adj_of_disjoint_skeleton_of_supportHypotheses
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F)
+    {X Y : OmegaPolymerType HF z} (hX : X ∈ Λ) (hY : Y ∈ Λ)
+    (hdisj : Disjoint (skeleton HF X.val) (skeleton HF Y.val)) :
+    ¬ F.omegaGraph.Adj X Y := by
+  intro hAdj
+  have hcmp := (BalabanCMP116LocalizedActivityFamily.omegaGraph_adj_iff_zeta_eq_zero
+    F X Y).mp hAdj
+  have hone : F.zeta X Y = 1 :=
+    zeta_eq_one_of_disjoint_skeleton_of_supportHypotheses h hX hY hdisj
+  have hzero : (1 : ℂ) = 0 := by
+    calc
+      (1 : ℂ) = F.zeta X Y := hone.symm
+      _ = 0 := hcmp.2
+  exact one_ne_zero hzero
+
 /-- Under the clipped-active-region identification, the CMP116 hard-core
 function `zeta` vanishes exactly when the two Appendix-F active skeletons
 overlap.

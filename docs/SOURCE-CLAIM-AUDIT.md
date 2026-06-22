@@ -465,6 +465,12 @@ maps CMP116 `F.omegaGraph` edges into the Appendix-F skeleton-overlap graph
 using only active-skeleton support.  This is finite graph bookkeeping, not a
 source proof of CMP116 localization.
 
+It also supplies the factorization-facing no-cross-edge form:
+`BalabanCMP116AppendixFSupportHypotheses.not_omegaGraph_adj_of_disjoint_skeleton_of_supportHypotheses`.
+If the Appendix-F active skeletons are disjoint, the contained CMP116 active
+supports cannot overlap inside `F.Omega`, so `F.zeta = 1` and no CMP116
+Ω-overlap edge is present.
+
 The current support adapter also accepts the source-facing clipped form
 `F.Omega = HF.omegaRegion` and
 `F.activeSupport X subset X.val inter F.Omega`, proving the required skeleton
