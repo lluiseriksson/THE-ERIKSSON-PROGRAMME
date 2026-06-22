@@ -371,14 +371,9 @@ theorem gaugeConstraintQCLM_trivial_apply
                 inner ℝ (A (x.shiftBack i, i)) (φ x) := by
               apply Finset.sum_congr rfl
               intro i _
-              have hbij : Function.Bijective
-                  (fun x : FinBox d N => x.shift i) :=
-                Function.bijective_iff_has_inverse.mpr
-                  ⟨fun x => x.shiftBack i, fun x => FinBox.shiftBack_shift x i,
-                    fun x => FinBox.shift_shiftBack x i⟩
               let f : FinBox d N → ℝ :=
                 fun y => inner ℝ (A (y.shiftBack i, i)) (φ y)
-              have hf := hbij.sum_comp f
+              have hf := FinBox.sum_shift f i
               simpa [f, FinBox.shiftBack_shift] using hf
         _ = ∑ x : FinBox d N, ∑ i : Fin d,
                 inner ℝ (A (x.shiftBack i, i)) (φ x) := by
@@ -555,6 +550,13 @@ theorem isFlatHarmonicOneCochain_divergence_apply_eq_zero
     simpa using hx
   rw [gaugeConstraintQCLM_trivial_apply] at hx'
   exact hx'
+
+/-- Short alias for the pointwise flat divergence equation. -/
+theorem isFlatHarmonicOneCochain_div_apply_eq_zero
+    (ρ : SUNAdjointModel Nc) {A : PhysicalGaugeOneCochain d N Nc}
+    (hA : IsFlatHarmonicOneCochain ρ A) (x : FinBox d N) :
+    (∑ i : Fin d, (A (x, i) - A (x.shiftBack i, i))) = 0 :=
+  isFlatHarmonicOneCochain_divergence_apply_eq_zero ρ hA x
 
 /-- At the trivial background, the flat Hodge quadratic form vanishes exactly
 on flat harmonic one-cochains. -/

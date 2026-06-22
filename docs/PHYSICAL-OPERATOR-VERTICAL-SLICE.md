@@ -27,13 +27,25 @@ flat Hodge quadratic form, and the operator equation `K₀ A = 0` itself,
 vanish exactly on simultaneous flat-curl and gauge-divergence-zero fields.  It
 also exposes the trivial-background curl and gauge constraint as explicit
 pointwise formulas, and turns flat harmonicity into pointwise vanishing of the
-corresponding plaquette curl and backward-divergence expressions.
+corresponding plaquette curl and backward-divergence expressions; the short
+alias `isFlatHarmonicOneCochain_div_apply_eq_zero` is available for later
+classification adapters.  The reusable periodic shift/reindexing calculus now
+also lives in the lattice layer, including `FinBox.sum_shift`,
+`FinBox.sum_shiftBack`, mixed shift/shiftBack commutation, iterated shift
+coordinate lemmas, and `FinBox.eq_default_of_shift_invariant`.
 The companion module `YangMills/RG/PhysicalGaugeFlatPoincare.lean` now proves
 the exact constant-sector norm identities and the sharp block-control ratio
 `L^d / L^2` for the current `linAvg` normalization.  It also carries the
 conditional bridge `FlatHarmonicKernelClassified`, which reduces a future
 reverse flat-harmonic classification theorem to exact constant-sector kernel
-statements and triviality of the joint flat-Hodge/block kernel.  From trivial
+statements and triviality of the joint flat-Hodge/block kernel.  The
+source-facing coordinate boundary
+`PeriodicCurlDivKernelClassified` is isolated in
+`YangMills/RG/FiniteTorusCurlDiv.lean`, with finite-difference primitives and
+the first forward/backward commutation lemma; the physical adapter
+`flatHarmonicKernelClassified_of_curl_div` and fixed-volume theorem
+`exists_flatGaugeHodgePoincare_of_periodicCurlDivClassification` consume that
+boundary without hiding it.  From trivial
 joint kernel, it now derives a non-uniform fixed-volume flat Hodge/block
 Poincare theorem using Mathlib's finite-dimensional anti-Lipschitz theorem.  In
 the one-dimensional base case it proves the reverse classification directly
@@ -224,6 +236,9 @@ covariantD1CLM_trivial_apply
 gaugeConstraintQCLM_trivial_apply
 isFlatHarmonicOneCochain_curl_apply_eq_zero
 isFlatHarmonicOneCochain_divergence_apply_eq_zero
+isFlatHarmonicOneCochain_div_apply_eq_zero
+PeriodicCurlDivKernelClassified
+torusForwardDiff_torusBackwardDiff_comm
 covariantD1CLM_trivial_constantPhysicalGaugeOneCochain
 inner_constantPhysicalGaugeOneCochain_covariantD0CLM_trivial
 gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain
@@ -232,6 +247,7 @@ flatGaugeHodgeK0CLM_constantPhysicalGaugeOneCochain
 isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero
 isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_eq_zero
 FlatHarmonicKernelClassified
+flatHarmonicKernelClassified_of_curl_div
 flatHarmonicKernel_eq_constantSector
 flatGaugeHodgeKernel_eq_constantSector
 flatJointKernel_trivial_of_harmonicClassification
@@ -239,6 +255,7 @@ exists_sq_norm_le_sum_three_sq_of_jointKernel_trivial
 exists_flatGaugeHodgeBlockPoincare_of_jointKernel_trivial
 flatGaugeHodgeBlockPoincare_of_harmonicClassification
 flatCurlDivBlockPoincare_of_harmonicClassification
+exists_flatGaugeHodgePoincare_of_periodicCurlDivClassification
 finBox_one_eq_iterShift
 constant_of_shift_invariant_finBox_one
 flatHarmonicKernelClassified_one

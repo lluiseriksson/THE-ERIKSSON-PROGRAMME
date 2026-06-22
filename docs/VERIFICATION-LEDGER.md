@@ -9879,3 +9879,87 @@ the higher-dimensional reverse flat-harmonic classification, a coordinate
 Gaffney identity, a volume-uniform full-periodic Poincare constant, any
 source-backed Balaban/Dimock estimate, or any Wilson-Hessian identification.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 262 (2026-06-22, **periodic curl/divergence boundary and adapter**
+`YangMills.RG.FiniteTorusCurlDiv`; core 8340)
+
+This addendum records the first source-facing layer of the higher-dimensional
+flat harmonic classification route.  The lattice module
+
+```
+YangMills/L0_Lattice/FiniteLatticeGeometryInstance.lean
+```
+
+now packages reusable periodic shift/reindexing infrastructure:
+
+```
+FinBox.shift_bijective
+FinBox.shiftBack_bijective
+FinBox.sum_shift
+FinBox.sum_shiftBack
+FinBox.shift_shiftBack_comm
+FinBox.iter_shift_apply_self
+FinBox.iter_shift_apply_ne
+FinBox.eq_default_of_shift_invariant
+```
+
+The physical cochain module now exposes the short alias
+
+```
+isFlatHarmonicOneCochain_div_apply_eq_zero
+```
+
+for the pointwise backward-divergence equation.  The new finite-torus module
+
+```
+YangMills/RG/FiniteTorusCurlDiv.lean
+```
+
+defines the exact coordinate theorem boundary
+
+```
+PeriodicCurlDivKernelClassified
+```
+
+and introduces finite-difference primitives, currently including the verified
+commutation lemma
+
+```
+torusForwardDiff_torusBackwardDiff_comm
+```
+
+The physical Poincare bridge now proves
+
+```
+flatHarmonicKernelClassified_of_curl_div
+exists_flatGaugeHodgePoincare_of_periodicCurlDivClassification
+```
+
+so a source/proved periodic curl-divergence classification immediately feeds
+the existing fixed-volume flat Hodge/block-Poincare compactness theorem.  The
+coordinate classification itself remains an explicit hypothesis; no axiom,
+opaque proof, Fourier theorem, or uniform-volume estimate was introduced.
+
+Verification:
+
+```
+lake env lean YangMills\L0_Lattice\FiniteLatticeGeometryInstance.lean
+lake build YangMills.L0_Lattice.FiniteLatticeGeometryInstance
+lake env lean YangMills\RG\PhysicalGaugeCochains.lean
+lake build YangMills.RG.PhysicalGaugeCochains
+lake env lean YangMills\RG\FiniteTorusCurlDiv.lean
+lake build YangMills.RG.FiniteTorusCurlDiv
+lake env lean YangMills\RG\PhysicalGaugeFlatPoincare.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\L0_Lattice\FiniteLatticeGeometryInstance.lean YangMills\RG\PhysicalGaugeCochains.lean YangMills\RG\FiniteTorusCurlDiv.lean YangMills\RG\PhysicalGaugeFlatPoincare.lean
+```
+
+**Honest scope.** This isolates and consumes the exact source-facing
+curl/divergence classification boundary, but does not prove
+`periodicCurlDivKernelClassified`, a quantitative Gaffney/Fourier estimate,
+a volume-uniform full-periodic Poincare constant, any Wilson-Hessian
+identification, propagator localization, covariance-root localization, or
+`hraw`.  Clay distance **~0% (<0.1%), unchanged**.

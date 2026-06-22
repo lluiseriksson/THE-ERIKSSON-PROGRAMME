@@ -1,8 +1,7 @@
 # Current State
 
 **Verified public baseline for this live-state snapshot:** 2026-06-22,
-the local verified checkpoint recorded by this commit (pending public
-fast-forward push to `origin/main`; see `git log` and
+the local verified checkpoint recorded by this commit (see `git log` and
 `docs/VERIFICATION-LEDGER.md` for the exact commit history).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
@@ -15,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8339 jobs**.
+* `lake build YangMillsCore` is green at **8340 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -92,8 +91,14 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   and `gaugeConstraintQCLM_trivial_apply`, and flat harmonic cochains satisfy
   the resulting plaquette curl and backward-divergence equations via
   `isFlatHarmonicOneCochain_curl_apply_eq_zero` and
-  `isFlatHarmonicOneCochain_divergence_apply_eq_zero`.  These are prerequisites
-  for reverse classification, not the classification.  The averaging layer now proves
+  `isFlatHarmonicOneCochain_divergence_apply_eq_zero`, with the short alias
+  `isFlatHarmonicOneCochain_div_apply_eq_zero` for downstream adapters.
+  The underlying periodic lattice layer now packages the reusable shift
+  calculus `FinBox.shift_bijective`, `FinBox.shiftBack_bijective`,
+  `FinBox.sum_shift`, `FinBox.sum_shiftBack`,
+  `FinBox.shift_shiftBack_comm`, the iterated-shift coordinate lemmas, and
+  `FinBox.eq_default_of_shift_invariant`.  These are prerequisites for
+  reverse classification, not the classification.  The averaging layer now proves
   the exact direction-wise constant calculations `fineLineSum_constant` and
   `linAvg_constant`: a bond field constant in each direction averages to `L`
   times that directional value.  The flat physical block constraint now also
@@ -128,7 +133,14 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   normalization
   `‖const_{L*N'} v‖² = ((L : ℝ)^d / (L : ℝ)^2) ‖Q const_{L*N'} v‖²`
   for the current unscaled line-integral block map.  The same module now
-  defines the conditional bridge `FlatHarmonicKernelClassified`, proves the
+  defines the conditional bridge `FlatHarmonicKernelClassified`, consumes the
+  explicit source-facing periodic curl/divergence boundary
+  `PeriodicCurlDivKernelClassified` from
+  `YangMills/RG/FiniteTorusCurlDiv.lean` through
+  `flatHarmonicKernelClassified_of_curl_div`, and proves
+  `exists_flatGaugeHodgePoincare_of_periodicCurlDivClassification`, where the
+  missing coordinate classification remains an explicit hypothesis.  It also
+  proves the
   exact classified-kernel characterizations
   `flatHarmonicKernel_eq_constantSector` and
   `flatGaugeHodgeKernel_eq_constantSector`, and combines the carried

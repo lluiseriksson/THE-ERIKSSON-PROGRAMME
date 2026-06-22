@@ -65,6 +65,127 @@ theorem FinBox.shift_comm {d N : ℕ} [NeZero N] (x : FinBox d N)
   funext k; simp only [FinBox.shift]
   by_cases hk1 : k = j <;> by_cases hk2 : k = i <;> simp_all
 
+theorem FinBox.shift_bijective {d N : ℕ} [NeZero N] (i : Fin d) :
+    Function.Bijective (fun x : FinBox d N => x.shift i) :=
+  Function.bijective_iff_has_inverse.mpr
+    ⟨fun x : FinBox d N => x.shiftBack i,
+      fun x => FinBox.shiftBack_shift x i,
+      fun x => FinBox.shift_shiftBack x i⟩
+
+theorem FinBox.shiftBack_bijective {d N : ℕ} [NeZero N] (i : Fin d) :
+    Function.Bijective (fun x : FinBox d N => x.shiftBack i) :=
+  Function.bijective_iff_has_inverse.mpr
+    ⟨fun x : FinBox d N => x.shift i,
+      fun x => FinBox.shift_shiftBack x i,
+      fun x => FinBox.shiftBack_shift x i⟩
+
+theorem FinBox.sum_shift {d N : ℕ} [NeZero N]
+    {M : Type*} [AddCommMonoid M]
+    (f : FinBox d N → M) (i : Fin d) :
+    (∑ x : FinBox d N, f (x.shift i)) = ∑ x, f x :=
+  (FinBox.shift_bijective i).sum_comp f
+
+theorem FinBox.sum_shiftBack {d N : ℕ} [NeZero N]
+    {M : Type*} [AddCommMonoid M]
+    (f : FinBox d N → M) (i : Fin d) :
+    (∑ x : FinBox d N, f (x.shiftBack i)) = ∑ x, f x :=
+  (FinBox.shiftBack_bijective i).sum_comp f
+
+theorem FinBox.shift_shiftBack_comm {d N : ℕ} [NeZero N]
+    (x : FinBox d N) (i j : Fin d) :
+    (x.shift i).shiftBack j = (x.shiftBack j).shift i := by
+  by_cases hij : i = j
+  · subst j
+    rw [FinBox.shiftBack_shift, FinBox.shift_shiftBack]
+  · funext k
+    simp only [FinBox.shift, FinBox.shiftBack]
+    by_cases hki : k = i <;>
+      by_cases hkj : k = j <;>
+      simp_all
+
+/-- Iterating a positive shift advances the shifted coordinate modulo the
+periodic side length. -/
+theorem FinBox.iter_shift_apply_self {d N : ℕ} [NeZero N]
+    (x : FinBox d N) (i : Fin d) (k : ℕ) :
+    (((fun y : FinBox d N => y.shift i)^[k] x) i).val =
+      ((x i).val + k) % N := by
+  induction k with
+  | zero =>
+      simp [Nat.mod_eq_of_lt (x i).isLt]
+  | succ k ih =>
+      rw [Function.iterate_succ_apply']
+      have hstep :
+          ((((fun y : FinBox d N => y.shift i)^[k] x).shift i) i).val =
+            (((((fun y : FinBox d N => y.shift i)^[k] x) i).val + 1) % N) := by
+        simp [FinBox.shift]
+      rw [hstep, ih, Nat.mod_add_mod, Nat.add_assoc]
+
+/-- Iterating a positive shift leaves all other coordinates fixed. -/
+theorem FinBox.iter_shift_apply_ne {d N : ℕ} [NeZero N]
+    (x : FinBox d N) (i : Fin d) (k : ℕ) {j : Fin d} (h : j ≠ i) :
+    ((fun y : FinBox d N => y.shift i)^[k] x) j = x j := by
+  induction k with
+  | zero =>
+      simp
+  | succ k ih =>
+      rw [Function.iterate_succ_apply']
+      show (((fun y : FinBox d N => y.shift i)^[k] x).shift i) j = _
+      rw [FinBox.shift, if_neg h, ih]
+
+/-- A function on a periodic box that is invariant under every positive
+coordinate shift is constant on the whole torus. -/
+theorem FinBox.eq_default_of_shift_invariant {d N : ℕ} [NeZero N]
+    {α : Type*} (f : FinBox d N → α)
+    (hshift : ∀ (x : FinBox d N) (i : Fin d), f (x.shift i) = f x) :
+    ∀ x : FinBox d N, f x = f (default : FinBox d N) := by
+  intro x
+  let setCoords : Finset (Fin d) → FinBox d N :=
+    fun S j => if j ∈ S then x j else (default : FinBox d N) j
+  have hstep : ∀ (S : Finset (Fin d)) (i : Fin d), i ∉ S →
+      f (setCoords (insert i S)) = f (setCoords S) := by
+    intro S i hiS
+    let y : FinBox d N := setCoords S
+    have hiter : ∀ k : ℕ,
+        f (((fun z : FinBox d N => z.shift i)^[k] y)) = f y := by
+      intro k
+      induction k with
+      | zero =>
+          simp
+      | succ k ih =>
+          rw [Function.iterate_succ_apply']
+          rw [hshift]
+          exact ih
+    have htarget :
+        ((fun z : FinBox d N => z.shift i)^[(x i).val] y) =
+          setCoords (insert i S) := by
+      funext j
+      by_cases hji : j = i
+      · subst j
+        rw [show setCoords (insert i S) i = x i by simp [setCoords]]
+        apply Fin.ext
+        change ((((fun z : FinBox d N => z.shift i)^[(x i).val] y) i).val =
+          (x i).val)
+        rw [FinBox.iter_shift_apply_self]
+        have hyi : (y i).val = 0 := by
+          simp only [y, setCoords, if_neg hiS]
+          rfl
+        rw [hyi, Nat.zero_add]
+        exact Nat.mod_eq_of_lt (x i).isLt
+      · rw [FinBox.iter_shift_apply_ne _ _ _ hji]
+        simp [y, setCoords, hji]
+    rw [← htarget]
+    exact hiter (x i).val
+  have hconst : ∀ S : Finset (Fin d), f (setCoords S) = f (default : FinBox d N) := by
+    intro S
+    induction S using Finset.induction_on with
+    | empty =>
+        simp [setCoords]
+    | insert i S hiS ih =>
+        calc
+          f (setCoords (insert i S)) = f (setCoords S) := hstep S i hiS
+          _ = f (default : FinBox d N) := ih
+  simpa [setCoords] using hconst Finset.univ
+
 structure ConcretePlaquette (d N : ℕ) where
   site : FinBox d N
   dir1 : Fin d

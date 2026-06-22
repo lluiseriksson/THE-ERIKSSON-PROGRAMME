@@ -216,6 +216,7 @@ import YangMills.RG.GaugeFixedCovariance
 -- their flat Hodge/block-Poincare predicate, and the separate active-region
 -- soft full-space precision shell `Kslice + a Q†Q`.
 import YangMills.RG.PhysicalGaugeCochains
+import YangMills.RG.FiniteTorusCurlDiv
 import YangMills.RG.PhysicalGaugeFlatPoincare
 import YangMills.RG.PhysicalGaugeHodgePoincare
 import YangMills.RG.PhysicalGaugeOperator

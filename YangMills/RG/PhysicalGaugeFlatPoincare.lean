@@ -1,4 +1,5 @@
 import YangMills.RG.BlockMaps
+import YangMills.RG.FiniteTorusCurlDiv
 import YangMills.RG.PhysicalGaugeHodgePoincare
 
 /-!
@@ -29,6 +30,31 @@ def FlatHarmonicKernelClassified
         A =
           constantPhysicalGaugeOneCochain
             (d := d) (N := N) (Nc := Nc) v
+
+/-- Adapter from the source-facing periodic curl/divergence classification to
+the physical flat-harmonic kernel predicate. -/
+theorem flatHarmonicKernelClassified_of_curl_div
+    {d N Nc : ℕ}
+    [NeZero d] [NeZero N] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    (hcd :
+      PeriodicCurlDivKernelClassified
+        d N (SUNLieCoord Nc)) :
+    FlatHarmonicKernelClassified d N Nc ρ := by
+  intro A hA
+  obtain ⟨v, hv⟩ :=
+    hcd
+      (fun x i => A (x, i))
+      (fun x i j hij =>
+        isFlatHarmonicOneCochain_curl_apply_eq_zero
+          ρ hA ⟨x, i, j, hij⟩)
+      (fun x =>
+        isFlatHarmonicOneCochain_div_apply_eq_zero
+          ρ hA x)
+  refine ⟨v, ?_⟩
+  apply PiLp.ext
+  rintro ⟨x, i⟩
+  simpa [constantPhysicalGaugeOneCochain_apply] using hv x i
 
 /-- Every site of the one-dimensional periodic box is reached from the default
 site by iterating the positive shift. -/
@@ -324,6 +350,23 @@ theorem flatCurlDivBlockPoincare_of_harmonicClassification
   refine ⟨CP, hCP.1, ?_⟩
   intro A
   simpa only [flatGaugeHodgeK0_inner_right] using hCP.2 A
+
+/-- Fixed-volume flat Hodge/block Poincare from an explicit source-facing
+periodic curl/divergence classification.  The theorem name keeps the remaining
+coordinate-classification obligation visible. -/
+theorem exists_flatGaugeHodgePoincare_of_periodicCurlDivClassification
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    (hcd :
+      PeriodicCurlDivKernelClassified
+        d (L * N') (SUNLieCoord Nc)) :
+    ∃ CP : ℝ,
+      FlatGaugeHodgePoincare d L N' Nc ρ CP := by
+  exact
+    flatGaugeHodgeBlockPoincare_of_harmonicClassification
+      ρ
+      (flatHarmonicKernelClassified_of_curl_div ρ hcd)
 
 /-- One-dimensional fixed-volume flat Hodge/block Poincare, obtained without
 carrying an external classification hypothesis.  The constant is still the
