@@ -75,6 +75,76 @@ noncomputable def appendixFHoleConnectedLocalActivity
       (fun X : OmegaPolymerType HF z =>
         Complex.exp ((H X).globalEval ψ φ) - 1))
 
+/-- Structural measurability of the connected first Appendix-F activity from
+factorwise measurability of the raw one-polymer activities.
+
+This is not an analytic source estimate: it only says the finite
+connected-cover compiler preserves ordinary strong measurability through
+finite sums, finite products, and the scalar map `z ↦ exp z - 1`.  The
+model-specific source proof still has to provide the factorwise measurability
+of each localized raw activity. -/
+theorem appendixFHoleConnectedLocalActivity_globalEval_stronglyMeasurable
+    {d L : ℕ} [NeZero L]
+    {β : Type*} [MeasurableSpace β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z →
+      LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (Y : Finset (Cube d L))
+    (ψ : ∀ x, Ψ x)
+    (hmeas : ∀ X, X ∈ Λ →
+      StronglyMeasurable
+        (fun φ : (∀ _ : Cube d L, β) =>
+          (H X).globalEval ψ φ)) :
+    StronglyMeasurable
+      (fun φ : (∀ _ : Cube d L, β) =>
+        (appendixFHoleConnectedLocalActivity HF z Λ H Y).globalEval ψ φ) := by
+  classical
+  let fiber := appendixFTargetFiber
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ Y
+  have hs : StronglyMeasurable
+      (fun φ : (∀ _ : Cube d L, β) =>
+        ∑ C ∈ fiber, (LocalActivity.mayerCoverActivity C H).globalEval ψ φ) := by
+    refine Finset.stronglyMeasurable_fun_sum fiber ?_
+    intro C hC
+    have hCdata :
+        C ∈ appendixFConnectedCoverRegion
+          (Finset.univ : Finset (Cube d L))
+          (fun X : OmegaPolymerType HF z => skeleton HF X.val) Λ ∧
+        appendixFCoverUnion
+          (fun X : OmegaPolymerType HF z => X.val) C = Y := by
+      simpa [fiber] using
+        (mem_appendixFTargetFiber_iff
+          (Finset.univ : Finset (Cube d L))
+          (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+          (fun X : OmegaPolymerType HF z => X.val)
+          Λ Y C).mp hC
+    have hCsubset : C ⊆ Λ :=
+      ((mem_appendixFConnectedCoverRegion_iff
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+        Λ C).mp hCdata.1).1
+    have hprod : StronglyMeasurable
+        (fun φ : (∀ _ : Cube d L, β) =>
+          ∏ X ∈ C, (Complex.exp ((H X).globalEval ψ φ) - 1)) := by
+      refine Finset.stronglyMeasurable_fun_prod
+        (s := C)
+        (f := fun X (φ : (∀ _ : Cube d L, β)) =>
+          Complex.exp ((H X).globalEval ψ φ) - 1) ?_
+      intro X hX
+      exact (Complex.continuous_exp.comp_stronglyMeasurable
+        (hmeas X (hCsubset hX))).sub stronglyMeasurable_const
+    convert hprod using 1
+    funext φ
+    rw [globalEval_mayerCoverActivity_eq_finsetProd]
+  simpa [appendixFHoleConnectedLocalActivity, LocalActivity.globalEval_finsetSum, fiber]
+    using hs
+
 /-- If every raw activity only depends on spectator fields inside its full
 source polymer, then the connected first activity over target union `Y` only
 depends on spectator fields inside `Y`. -/

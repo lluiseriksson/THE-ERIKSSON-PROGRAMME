@@ -640,6 +640,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.integral_prod_appendixFHoleKsharp_eq_prod_integral_of_admissibleTargetFamilies
 #print axioms YangMills.RG.integral_sum_appendixFHoleConnectedLocalActivity_eq_sum_prod_Ksharp_of_local_fluctuationSupport_subset_skeleton
 #print axioms YangMills.RG.integral_sum_appendixFHoleKsharp_eq_sum_prod_integral_of_admissibleTargetFamilies
+#print axioms YangMills.RG.appendixFHoleConnectedLocalActivity_globalEval_stronglyMeasurable
 -- finite quantitative first-activity majorant: raw exponential pointwise
 -- decay implies a connected-cover metric sum, still before (641)--(642).
 #print axioms YangMills.RG.norm_appendixFComponentWeight_expSubOne_le_metricProduct
@@ -673,9 +674,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay
 #print axioms YangMills.RG.integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay
 #print axioms YangMills.RG.integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_of_stronglyMeasurable
+#print axioms YangMills.RG.integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_of_factor_stronglyMeasurable
 #print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_rooted_of_stronglyMeasurable
+#print axioms YangMills.RG.integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_rooted_of_factor_stronglyMeasurable
 #print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted
 -- second Appendix-F hard-core gas from evaluated K#: structural only, with KP
 -- exposed as a pointwise majorant hypothesis rather than as Dimock (642).
@@ -897,9 +900,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_pointwise_expWeight_leafSummation
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_expWeight_leafSummation
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_pointwise_expWeight_leafSummation
+#print axioms YangMills.RG.balabanCMP116AppendixFConnectedLocalActivity_globalEval_stronglyMeasurable
 #print axioms YangMills.RG.norm_balabanCMP116AppendixFKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDecay_rooted_of_stronglyMeasurable
+#print axioms YangMills.RG.integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDecay_rooted_of_factor_stronglyMeasurable
 #print axioms YangMills.RG.norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_residual_mul_leaf_of_ksharpRate
