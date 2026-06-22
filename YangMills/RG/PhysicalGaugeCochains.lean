@@ -333,6 +333,86 @@ noncomputable def gaugeConstraintQCLM (ρ : SUNAdjointModel Nc)
     PhysicalGaugeOneCochain d N Nc →L[ℝ] PhysicalGaugeZeroCochain d N Nc :=
   covariantDivCLM ρ U
 
+/-- At the trivial background, the gauge constraint is the backward divergence
+of the positive-bond one-cochain. -/
+theorem gaugeConstraintQCLM_trivial_apply
+    (ρ : SUNAdjointModel Nc)
+    (A : PhysicalGaugeOneCochain d N Nc)
+    (x : FinBox d N) :
+    gaugeConstraintQCLM ρ
+        (trivialPhysicalGaugeBackground d N Nc) A x =
+      ∑ i : Fin d, (A (x, i) - A (x.shiftBack i, i)) := by
+  let B : PhysicalGaugeZeroCochain d N Nc :=
+    WithLp.toLp 2 fun x : FinBox d N =>
+      ∑ i : Fin d, (A (x, i) - A (x.shiftBack i, i))
+  have hB :
+      gaugeConstraintQCLM ρ
+          (trivialPhysicalGaugeBackground d N Nc) A = B := by
+    apply ext_inner_right ℝ
+    intro φ
+    rw [gaugeConstraintQCLM, covariantDivCLM,
+      ContinuousLinearMap.adjoint_inner_left]
+    rw [PiLp.inner_apply, PiLp.inner_apply]
+    rw [Fintype.sum_prod_type]
+    simp only [covariantD0CLM_apply, trivialPhysicalGaugeBackground,
+      SUNAdjointModel.ad_one_apply, inner_sub_right, B]
+    have hshift :
+        (∑ x : FinBox d N, ∑ i : Fin d,
+            inner ℝ (A (x, i)) (φ (x.shift i))) =
+          ∑ x : FinBox d N, ∑ i : Fin d,
+            inner ℝ (A (x.shiftBack i, i)) (φ x) := by
+      calc
+        (∑ x : FinBox d N, ∑ i : Fin d,
+            inner ℝ (A (x, i)) (φ (x.shift i)))
+            = ∑ i : Fin d, ∑ x : FinBox d N,
+                inner ℝ (A (x, i)) (φ (x.shift i)) := by
+              rw [Finset.sum_comm]
+        _ = ∑ i : Fin d, ∑ x : FinBox d N,
+                inner ℝ (A (x.shiftBack i, i)) (φ x) := by
+              apply Finset.sum_congr rfl
+              intro i _
+              have hbij : Function.Bijective
+                  (fun x : FinBox d N => x.shift i) :=
+                Function.bijective_iff_has_inverse.mpr
+                  ⟨fun x => x.shiftBack i, fun x => FinBox.shiftBack_shift x i,
+                    fun x => FinBox.shift_shiftBack x i⟩
+              let f : FinBox d N → ℝ :=
+                fun y => inner ℝ (A (y.shiftBack i, i)) (φ y)
+              have hf := hbij.sum_comp f
+              simpa [f, FinBox.shiftBack_shift] using hf
+        _ = ∑ x : FinBox d N, ∑ i : Fin d,
+                inner ℝ (A (x.shiftBack i, i)) (φ x) := by
+              rw [Finset.sum_comm]
+    calc
+      (∑ x : FinBox d N, ∑ i : Fin d,
+          (inner ℝ (A (x, i)) (φ x) -
+            inner ℝ (A (x, i)) (φ (x.shift i))))
+          = (∑ x : FinBox d N, ∑ i : Fin d,
+              inner ℝ (A (x, i)) (φ x)) -
+            ∑ x : FinBox d N, ∑ i : Fin d,
+              inner ℝ (A (x, i)) (φ (x.shift i)) := by
+            simp [Finset.sum_sub_distrib]
+      _ = (∑ x : FinBox d N, ∑ i : Fin d,
+              inner ℝ (A (x, i)) (φ x)) -
+            ∑ x : FinBox d N, ∑ i : Fin d,
+              inner ℝ (A (x.shiftBack i, i)) (φ x) := by
+            rw [hshift]
+      _ = ∑ x : FinBox d N, ∑ i : Fin d,
+              (inner ℝ (A (x, i)) (φ x) -
+                inner ℝ (A (x.shiftBack i, i)) (φ x)) := by
+            simp [Finset.sum_sub_distrib]
+      _ = ∑ x : FinBox d N, ∑ i : Fin d,
+              inner ℝ (A (x, i) - A (x.shiftBack i, i)) (φ x) := by
+            simp [inner_sub_left]
+      _ = ∑ x : FinBox d N,
+              inner ℝ
+                (∑ i : Fin d, (A (x, i) - A (x.shiftBack i, i))) (φ x) := by
+            apply Finset.sum_congr rfl
+            intro x _
+            rw [← sum_inner]
+  have hx := congrArg (fun B : PhysicalGaugeZeroCochain d N Nc => B x) hB
+  simpa [B] using hx
+
 /-- The positive gauge-fixing mass operator `Q†Q`. -/
 noncomputable def gaugeFixingMassCLM (ρ : SUNAdjointModel Nc)
     (U : PhysicalGaugeBackground d N Nc) :
@@ -462,6 +542,19 @@ theorem isFlatHarmonicOneCochain_curl_apply_eq_zero
     simpa using hp
   rw [covariantD1CLM_trivial_apply] at hp'
   exact hp'
+
+/-- Flat-harmonic one-cochains satisfy the pointwise backward-divergence
+equation. -/
+theorem isFlatHarmonicOneCochain_divergence_apply_eq_zero
+    (ρ : SUNAdjointModel Nc) {A : PhysicalGaugeOneCochain d N Nc}
+    (hA : IsFlatHarmonicOneCochain ρ A) (x : FinBox d N) :
+    (∑ i : Fin d, (A (x, i) - A (x.shiftBack i, i))) = 0 := by
+  have hx := congrArg (fun B : PhysicalGaugeZeroCochain d N Nc => B x) hA.2
+  have hx' :
+      gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d N Nc) A x = 0 := by
+    simpa using hx
+  rw [gaugeConstraintQCLM_trivial_apply] at hx'
+  exact hx'
 
 /-- At the trivial background, the flat Hodge quadratic form vanishes exactly
 on flat harmonic one-cochains. -/

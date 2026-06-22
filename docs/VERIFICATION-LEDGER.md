@@ -9791,3 +9791,45 @@ not prove the reverse flat-harmonic classification hypothesis, the explicit
 divergence formula, the coordinate Gaffney identity, any volume-uniform
 constant, any source-backed Balaban/Dimock estimate, or any Wilson-Hessian
 identification.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 260 (2026-06-22, **pointwise flat divergence equation**
+`YangMills.RG.PhysicalGaugeCochains`; core 8339)
+
+This addendum records the pointwise flat divergence adapter for the full
+periodic physical cochain layer.  The module
+
+```
+YangMills/RG/PhysicalGaugeCochains.lean
+```
+
+now proves
+
+```
+gaugeConstraintQCLM_trivial_apply
+isFlatHarmonicOneCochain_divergence_apply_eq_zero
+```
+
+The first theorem unfolds the adjoint-defined gauge constraint at the trivial
+background into the exact backward-divergence formula
+`sum_i (A(x,i) - A(x.shiftBack i,i))`.  The proof is a finite periodic
+summation-by-parts calculation.  The second theorem combines that formula with
+the flat-harmonic predicate to give the corresponding pointwise zero equation.
+Together with the already proved pointwise curl formula, flat harmonicity now
+has both explicit local equations available for the reverse-classification
+ladder.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCochains.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
+```
+
+**Honest scope.** This does not prove the reverse flat-harmonic classification
+hypothesis, a coordinate Gaffney identity, any volume-uniform constant, any
+source-backed Balaban/Dimock estimate, or any Wilson-Hessian identification.
+Clay distance **~0% (<0.1%), unchanged**.

@@ -25,8 +25,9 @@ as a trivial joint-kernel theorem on the constant sector.  The same flat
 cochain layer now also names the flat harmonic condition and proves that the
 flat Hodge quadratic form, and the operator equation `K₀ A = 0` itself,
 vanish exactly on simultaneous flat-curl and gauge-divergence-zero fields.  It
-also exposes the trivial-background curl as the explicit plaquette formula and
-turns flat harmonicity into pointwise vanishing of that formula.
+also exposes the trivial-background curl and gauge constraint as explicit
+pointwise formulas, and turns flat harmonicity into pointwise vanishing of the
+corresponding plaquette curl and backward-divergence expressions.
 The companion module `YangMills/RG/PhysicalGaugeFlatPoincare.lean` now proves
 the exact constant-sector norm identities and the sharp block-control ratio
 `L^d / L^2` for the current `linAvg` normalization.  It also carries the
@@ -216,7 +217,9 @@ flatBlockConstraintQCLM_constant
 flatBlockConstraintQCLM_constant_eq_zero_iff
 flatBlockConstraintQCLM_injective_on_constants
 covariantD1CLM_trivial_apply
+gaugeConstraintQCLM_trivial_apply
 isFlatHarmonicOneCochain_curl_apply_eq_zero
+isFlatHarmonicOneCochain_divergence_apply_eq_zero
 covariantD1CLM_trivial_constantPhysicalGaugeOneCochain
 inner_constantPhysicalGaugeOneCochain_covariantD0CLM_trivial
 gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain
@@ -255,17 +258,19 @@ Hodge operator with the Wilson Hessian.  It is the target shape that a later
 source theorem must fill.  The constant-sector calculation is only the finite
 kernel bookkeeping showing that the soft block term removes direction-wise
 constant harmonic candidates; it is not a uniform Poincare estimate.  The
-explicit curl formula gives the first pointwise equation needed by the reverse
-classification ladder.  The new constant-sector flat-harmonic theorem proves
+explicit curl and backward-divergence formulas give the pointwise equations
+needed by the reverse classification ladder.  The new constant-sector
+flat-harmonic theorem proves
 the forward inclusion from direction-wise constants to flat harmonics at the
 trivial background.  The new `FlatHarmonicKernelClassified` bridge carries the
 reverse inclusion as a named hypothesis and derives exact kernel consequences;
 it does not prove that hypothesis.  The fixed-volume Poincare theorem is
 non-uniform: its constant is produced by finite-dimensional compactness and may
 depend on the volume.  The operator-kernel and block-zero tests are
-constant-sector or classification-conditional consequences only.  The zero-form
-harmonic test and curl equation do not classify the full harmonic kernel and do
-not prove that all flat harmonics are direction-wise constants.
+constant-sector or classification-conditional consequences only.  The
+zero-form harmonic test and pointwise curl/divergence equations do not classify
+the full harmonic kernel and do not prove that all flat harmonics are
+direction-wise constants.
 
 ## 4. Brick P4.1 — physical tangent spaces and covariant cochains
 
