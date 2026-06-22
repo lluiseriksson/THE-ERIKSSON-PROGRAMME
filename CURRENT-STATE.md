@@ -1,8 +1,8 @@
 # Current State
 
-**Last certified checkpoint:** 2026-06-20, updated through the latest
-oracle-clean public `origin/main` commit (see `git log` and
-`docs/VERIFICATION-LEDGER.md`).
+**Last certified checkpoint:** 2026-06-22, updated through public
+`origin/main` commit `a9d1ebb2d649f9c96819474d1241f8da562e9b4a`
+(see `git log` and `docs/VERIFICATION-LEDGER.md`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8307 jobs**.
+* `lake build YangMillsCore` is green at **8328 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -660,11 +660,23 @@ weighted-tree entry points:
 They take the weighted leaf estimate, the first-activity bound, and the
 closed `(Croot * epsilon)/(1 - Cleaf * epsilon)` comparison as explicit
 hypotheses, then feed the existing profile/cluster3/UV consumer stack.
+The later source-facing endpoint
+`singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_sourceMeasurable`
+packages the current raw-metric-decay, canonical-root, spectator-probability,
+and source-measurability inputs in the shape now requested from the source
+side.
 The source audit in `docs/CMP116-WEIGHTED-HSHARP-SOURCE-MAP.md` records the
-current attribution boundary: CMP116 supports the first localized activity
-candidate, Dimock I Appendix B supplies the no-hole leaf-summation mechanism,
-and Dimock II Appendix F supplies the hole-aware final theorem, but the exact
-weighted order-wise `H#` tree estimate remains unproved in the repository.
+current attribution boundary: CMP116 supports the product-Gaussian change of
+variables, localized `H(Z)`, component factorization, hard-core `zeta`, and
+Lemma 3/(2.38) decay estimate.  It does not yet supply the exact Lean support
+theorem `F.activeSupport X subset X.val inter F.Omega` or
+`F.activeSupport X subset skeleton HF X.val`; the printed phrase that `H(Z)`
+is localized in the interior of `Z` still needs a source-to-Lean translation
+with the enlargement, holes/large-field compatibility, metric convention, and
+measurability/integrability hypotheses made explicit.  Dimock I Appendix B
+supplies the no-hole leaf-summation mechanism, and Dimock II Appendix F
+supplies the hole-aware final theorem, but the exact weighted order-wise `H#`
+tree estimate remains unproved in the repository.
 
 ## Live Frontier
 

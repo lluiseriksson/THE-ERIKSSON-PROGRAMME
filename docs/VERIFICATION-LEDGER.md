@@ -8289,3 +8289,30 @@ being overread as a formal support theorem.  It does not prove CMP116
 localization, measurability, raw activity decay, `hR`, large-field-hole
 preservation, `hRpoly`, continuum construction, OS/Wightman reconstruction, or
 Clay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 227 (2026-06-22, **current state checkpoint refresh**; docs only)
+
+This addendum updates `CURRENT-STATE.md` after the public checkpoint
+`a9d1ebb2d649f9c96819474d1241f8da562e9b4a`.
+
+The top-level certified checkpoint and core job count now match the latest
+verified public main: `lake build YangMillsCore` is green at 8328 jobs.  The
+RG substrate summary also records the current source-facing CMP116 endpoint
+`singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_sourceMeasurable`
+and repeats the precise source boundary: CMP116 (2.5)--(2.11) and Lemma
+3/(2.38) support the product-Gaussian change, localized `H(Z)`, hard-core
+`zeta`, and decay estimate, but not yet the exact Lean active-support theorem.
+
+Verification:
+
+```
+git diff --check
+python scripts\check_consistency.py
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+**Honest scope.** This is a live-state documentation refresh only.  It does not
+prove a new Lean theorem, instantiate the CMP116 support hypotheses, discharge
+`hraw`, `hR`, `hRpoly`, continuum construction, OS/Wightman reconstruction, or
+Clay.  Clay distance **~0% (<0.1%), unchanged**.
