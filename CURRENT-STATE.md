@@ -254,6 +254,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `YangMills/RG/AppendixFLocalSummability.lean`: it defines the shifted
   weight `appendixFHoleExpWeight HF κ X = exp(-κ(d_M(X)+1))` and the
   first-gas rate `appendixFKsharpRate κ κ₀ = κ - κ₀ - 2`.  It proves
+  `appendixFKsharpRate_sub_left`, the algebraic identity needed to preserve
+  the canonical rate definition while exposing a shifted source rate
+  `appendixFKsharpRate (κ - θ) κ₀ =
+  appendixFKsharpRate κ κ₀ - θ`, and
   `appendixFHole_rootedFiniteExpWeightSum_le`, restricting the concrete
   rooted omega modified-metric summability theorem to any finite raw family
   `Λ`, and
@@ -274,9 +278,15 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   integrability still explicit, and provides the rooted-summability consumer
   `norm_appendixFHoleKsharp_globalEval_le_expSubOne_of_rawMetricDecay_rooted`.
   The output is the exact nonlinear factor
-  `exp(2 H₀ K₀ (d_M(Y)+1)) - 1`; the linearized `κ - κ₀ - 2` corollary,
-  Dimock (643) factorization, second Ursell gas, final `H#` residual rate,
-  and concrete Yang-Mills raw activity estimate remain open;
+  `exp(2 H₀ K₀ (d_M(Y)+1)) - 1`.  It now also includes the finite cover-level
+  target-cardinality tilt
+  `appendixFHoleMetricCoverWeight_mul_exp_card_le_shifted_of_source_card_le_metric`:
+  from a source budget `|X| <= theta * (d_M(X)+1)` on `Λ`, every target-fiber
+  cover absorbs `exp |Y|` by shifting the cover rate from `κ` to `κ - θ`.
+  This is still a cover-sum statement, not a direct target-metric compression.
+  The linearized `κ - κ₀ - 2` corollary, Dimock (643) factorization, second
+  Ursell gas, final `H#` residual rate, and concrete Yang-Mills raw activity
+  estimate remain open;
 * the second Appendix-F hard-core gas layer
   `YangMills/RG/AppendixFSecondGas.lean`: it defines the evaluated scalar
   activity

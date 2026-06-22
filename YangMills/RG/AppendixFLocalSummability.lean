@@ -44,6 +44,12 @@ additional loss leading to the final residual `H#` rate. -/
 def appendixFKsharpRate (κ κ₀ : ℝ) : ℝ :=
   κ - κ₀ - 2
 
+theorem appendixFKsharpRate_sub_left (κ κ₀ θ : ℝ) :
+    appendixFKsharpRate (κ - θ) κ₀ =
+      appendixFKsharpRate κ κ₀ - θ := by
+  unfold appendixFKsharpRate
+  ring
+
 theorem appendixFHoleExpWeight_nonneg
     {d L : ℕ} (HF : HoleFamily d L) (κ : ℝ)
     (X : Finset (Cube d L)) :

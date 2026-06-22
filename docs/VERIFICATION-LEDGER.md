@@ -8846,3 +8846,47 @@ CMP116 raw activity estimate `hraw`, does not derive integrability/measurability
 from the concrete activity, does not identify the physical remainder `hR`, and
 does not construct the Yang--Mills gauge activity.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 240 (2026-06-22, **finite Appendix-F target-card tilt in cover weights**
+`YangMills.RG.appendixFHoleMetricCoverWeight_mul_exp_card_le_shifted_of_source_card_le_metric`;
+core 8331)
+
+This addendum records the first Route-B cover-level tilt checkpoint.  The new
+finite theorem proves that, for a connected target-fiber cover `C` of `Y`, a
+source-side full-cardinality budget
+
+```
+|X| <= theta * (d_M(X) + 1)   for every X in Lambda
+```
+
+absorbs the target factor `exp |Y|` into the cover metric weight by shifting
+the raw cover rate from `kappa` to `kappa - theta`:
+
+```
+appendixFMetricCoverWeight metric H0 kappa C * exp |Y|
+  <= appendixFMetricCoverWeight metric H0 (kappa - theta) C.
+```
+
+The proof uses the already verified target-fiber cover-sum cardinality bound,
+not a direct target-metric compression estimate.  A companion rate identity
+`appendixFKsharpRate_sub_left` records
+`appendixFKsharpRate (kappa - theta) kappa0 =
+ appendixFKsharpRate kappa kappa0 - theta`, preserving the canonical rate
+definition while making later tilted adapters algebraically explicit.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFLocalSummability.lean
+lake env lean YangMills\RG\AppendixFKsharpEstimate.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is finite decay bookkeeping only.  It does not prove the
+source full-cardinality budget, does not compare the full target cardinality
+directly with `d_M(Y)+1`, does not prove Dimock (642), does not construct
+`hraw`, and does not advance the physical Yang--Mills Hessian/covariance
+construction.  Clay distance **~0% (<0.1%), unchanged**.

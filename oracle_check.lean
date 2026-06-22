@@ -226,6 +226,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.singleScaleUVDecay_of_clusterWithHolesActivities
 -- Appendix-F first/final rate normalization and canonical exponential-weight split.
 #print axioms YangMills.RG.appendixFKsharpRate_eq_residual_add_leafRemainder
+#print axioms YangMills.RG.appendixFKsharpRate_sub_left
 #print axioms YangMills.RG.appendixFHoleExpWeight_add
 #print axioms YangMills.RG.appendixFHoleExpWeight_ksharpRate_factor
 #print axioms YangMills.RG.appendixFHoleExpWeight_antitone
@@ -681,6 +682,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum
 #print axioms YangMills.RG.appendixFHoleCoverUnion_card_le_metricSum_of_source_card_le_metric
 #print axioms YangMills.RG.appendixFHoleTargetFiber_card_le_metricSum_of_source_card_le_metric
+#print axioms YangMills.RG.appendixFHoleMetricCoverWeight_mul_exp_card_le_shifted_of_source_card_le_metric
 -- finite target-fiber entropy: forget connectedness/exact-union constraints,
 -- overcount by a nonempty powerset, and absorb into exp(sum)-1.
 #print axioms YangMills.RG.skeleton_mono_of_subset

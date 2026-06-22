@@ -158,6 +158,94 @@ private theorem appendixFHole_metricCoverWeight_le_targetEntropyProduct
           rw [hprod]
           simp [appendixFHoleExpWeight, mY]
 
+/-- Cover-level absorption of a full target-cardinality tilt.
+
+If every source polymer in the admissible finite family has full cardinality
+bounded by `θ` times its shifted modified metric, then any connected target
+fiber cover can absorb the factor `exp |Y|` by replacing the raw cover rate
+`κ` by `κ - θ`.  This is the finite cover-sum form of the target-cardinality
+budget; it does not assert a direct bound by the modified metric of `Y`. -/
+theorem appendixFHoleMetricCoverWeight_mul_exp_card_le_shifted_of_source_card_le_metric
+    {d L : ℕ} [NeZero L]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    {Y : Finset (Cube d L)}
+    {C : Finset (OmegaPolymerType HF z)}
+    {H₀ κ θ : ℝ}
+    (hH₀ : 0 ≤ H₀)
+    (hC : C ∈ appendixFTargetFiber
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ Y)
+    (hsourceCard : ∀ X, X ∈ Λ →
+      (X.val.card : ℝ) ≤
+        θ * ((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) :
+    appendixFMetricCoverWeight
+        (fun X : OmegaPolymerType HF z =>
+          discreteModifiedMetric HF X.val + 1)
+        H₀ κ C *
+        Real.exp (Y.card : ℝ)
+      ≤
+    appendixFMetricCoverWeight
+        (fun X : OmegaPolymerType HF z =>
+          discreteModifiedMetric HF X.val + 1)
+        H₀ (κ - θ) C := by
+  classical
+  let metric : OmegaPolymerType HF z → ℕ := fun X =>
+    discreteModifiedMetric HF X.val + 1
+  let S : ℝ := ∑ X ∈ C, (metric X : ℝ)
+  have hCregion :
+      C ∈ appendixFConnectedCoverRegion
+        (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+        Λ :=
+    ((mem_appendixFTargetFiber_iff
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ Y C).mp hC).1
+  have hCsubset : C ⊆ Λ :=
+    ((mem_appendixFConnectedCoverRegion_iff
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      Λ C).mp hCregion).1
+  have hsourceC : ∀ X, X ∈ C →
+      (X.val.card : ℝ) ≤
+        θ * ((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ) := by
+    intro X hX
+    exact hsourceCard X (hCsubset hX)
+  have hcard :
+      (Y.card : ℝ) ≤ θ * S := by
+    simpa [S, metric] using
+      (appendixFHoleTargetFiber_card_le_metricSum_of_source_card_le_metric
+        HF z Λ hC hsourceC)
+  have hexp :
+      Real.exp (-(κ * S)) * Real.exp (Y.card : ℝ)
+        ≤ Real.exp (-((κ - θ) * S)) := by
+    rw [← Real.exp_add]
+    apply Real.exp_le_exp.mpr
+    nlinarith
+  have hbase_nonneg : 0 ≤ (2 * H₀) ^ C.card :=
+    pow_nonneg (mul_nonneg zero_le_two hH₀) C.card
+  calc
+    appendixFMetricCoverWeight metric H₀ κ C *
+        Real.exp (Y.card : ℝ)
+        =
+      (2 * H₀) ^ C.card *
+        (Real.exp (-(κ * S)) * Real.exp (Y.card : ℝ)) := by
+          simp [appendixFMetricCoverWeight, metric, S]
+          ring
+    _ ≤
+      (2 * H₀) ^ C.card * Real.exp (-((κ - θ) * S)) := by
+        exact mul_le_mul_of_nonneg_left hexp hbase_nonneg
+    _ =
+      appendixFMetricCoverWeight metric H₀ (κ - θ) C := by
+        unfold appendixFMetricCoverWeight
+        dsimp [S]
+        ring_nf
+
 /-- Exact pointwise first-activity estimate before linearizing the
 `exp(...) - 1` term.  This is the finite meeting point of the raw metric
 bound, target-fiber entropy, metric stitching, and contained-support local
