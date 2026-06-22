@@ -1,8 +1,9 @@
 # Current State
 
 **Verified public baseline for this live-state snapshot:** 2026-06-22,
-`origin/main` commit `1e4add8fb450880c671590dcf265d0a72139f46b`
-(see `git log` and `docs/VERIFICATION-LEDGER.md` for later commits).
+the local verified checkpoint recorded by this commit (pending public
+fast-forward push to `origin/main`; see `git log` and
+`docs/VERIFICATION-LEDGER.md` for the exact commit history).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -66,17 +67,20 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   inverse quadratic form.  The assembly module
   `YangMills/RG/GaugeFixedCovariance.lean` composes those two layers, so the
   abstract precision `K0 + a Q†Q - Σ` now gets an exact inverse covariance from
-  the block-Poincare and norm-budget hypotheses alone.  The finite physical
-  interface `YangMills/RG/PhysicalGaugeOperator.lean` now separates independent
-  positive-bond one-cochains from oriented `ConcreteEdge`s, defines active
-  regions with Dirichlet zero-extension/restriction maps, flat `d0`/`d1`
-  operators with `d1 ∘ d0 = 0`, the flat gauge constraint, the PSD flat slice,
-  a positive-bond block derivative wrapper around the existing `linAvg`, and
-  the soft full-space precision shell `physicalKslice + a Q†Q`.  These layers
-  remain pre-physical operator infrastructure: they do not construct the
-  Yang--Mills Hessian, prove the physical decomposition equality, prove a
-  source Poincare theorem, establish propagator decay, or construct a localized
-  covariance root;
+  the block-Poincare and norm-budget hypotheses alone.  The full-periodic
+  cochain layer `YangMills/RG/PhysicalGaugeCochains.lean` now fixes the
+  physical positive-bond coordinate convention for `su(N)` coordinates,
+  carries an explicit adjoint-action model, defines background-covariant
+  `D0`/`D1`, the covariant divergence, `Q†Q` gauge-fixing mass, the background
+  Hodge operator, and the flat block constraint through the existing `linAvg`.
+  The finite physical interface `YangMills/RG/PhysicalGaugeOperator.lean`
+  separately defines active regions with Dirichlet zero-extension/restriction
+  maps, flat `d0`/`d1` operators with `d1 ∘ d0 = 0`, the flat gauge constraint,
+  the PSD flat slice, a positive-bond block derivative wrapper, and the soft
+  full-space precision shell `physicalKslice + a Q†Q`.  These layers remain
+  pre-physical operator infrastructure: they do not construct the Yang--Mills
+  Hessian, prove the physical decomposition equality, prove a source Poincare
+  theorem, establish propagator decay, or construct a localized covariance root;
 * gauge covariance of the averaged-contour interface;
 * near-identity logarithm, small-field stability lemmas, and the local
   two-sided cutoff dictionary `norm_nearLog_two_sided_of_norm_le_third`,

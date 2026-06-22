@@ -417,6 +417,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.precision_comp_covarianceOfGaugeFixedPrecisionCLM
 #print axioms YangMills.RG.norm_covarianceOfGaugeFixedPrecisionCLM_le
 #print axioms YangMills.RG.covarianceOfGaugeFixedPrecisionCLM_psd
+-- full-periodic physical gauge cochains with explicit background adjoint data
+#print axioms YangMills.RG.SUNAdjointModel.ad_inv_comp
+#print axioms YangMills.RG.orientedOneValue_reverse
+#print axioms YangMills.RG.covariantD0CLM_apply
+#print axioms YangMills.RG.covariantD1CLM_apply
+#print axioms YangMills.RG.gaugeFixingMass_nonnegative
+#print axioms YangMills.RG.backgroundGaugeHodgeK0_nonnegative
+#print axioms YangMills.RG.flatBlockConstraintQCLM_apply
 -- finite physical gauge-operator interface and soft full-space precision shell
 #print axioms YangMills.RG.flatD1FullCLM_comp_flatD0FullCLM
 #print axioms YangMills.RG.flatKslice_nonnegative

@@ -9136,3 +9136,48 @@ prove the source activity estimate, Dimock/Balaban leaf summation, rooted
 target geometry, scale-coupling summability, the physical Hessian/covariance
 construction, or the raw CMP116 activity estimate `hraw`.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 246 (2026-06-22, **full-periodic physical gauge cochains**
+`YangMills.RG.PhysicalGaugeCochains`; core 8337)
+
+This addendum records the first P4.1 full-periodic cochain layer above the
+finite lattice API.  The new module
+`YangMills/RG/PhysicalGaugeCochains.lean` fixes one independent coordinate per
+positive physical bond,
+
+```
+PhysicalBond d N = FinBox d N × Fin d,
+```
+
+keeps the Lie-algebra coordinate model as `SUNLieCoord Nc`, and introduces an
+explicit `SUNAdjointModel` carrying the background adjoint action and inner
+product invariance.  Reversed concrete edges are evaluated from positive-bond
+coordinates by background adjoint transport via `orientedOneValue`, with
+`orientedOneValue_reverse` proving the inverse-orientation convention.
+
+The module also defines the background-covariant full-periodic cochain maps
+`covariantD0CLM` and `covariantD1CLM`, background flatness,
+`covariantDivCLM`, the gauge constraint, the positive gauge-fixing mass
+`Q†Q`, the background Hodge operator, the trivial-background specialization,
+and a flat block constraint through the already verified `linAvg`.
+The new oracle targets include adjoint inverse composition, oriented reversal,
+the `D0`/`D1` application equations, nonnegativity of the gauge-fixing mass
+and Hodge form, and the block-constraint application equation.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCochains.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
+```
+
+**Honest scope.** This is full-periodic cochain/operator infrastructure with
+an explicit background adjoint interface.  It does not construct the physical
+Wilson Hessian, prove gauge-fixed coercivity from a source Hodge/Poincare
+theorem, construct the covariance/propagator for a physical precision, prove
+localization of `C^(1/2)`, or produce the raw CMP116 activity estimate `hraw`.
+Clay distance **~0% (<0.1%), unchanged**.
