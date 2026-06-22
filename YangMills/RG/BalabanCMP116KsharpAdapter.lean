@@ -30,14 +30,12 @@ namespace YangMills.RG
 open MeasureTheory
 open scoped BigOperators
 
-/-- The source-localization obligations needed to feed a CMP116 localized
+/-- The source-localization obligation needed to feed a CMP116 localized
 family into the source-facing Appendix-F hole compiler.
 
-`activeSupport_subset_full` is the full-support statement needed for target
-union bookkeeping.  `activeSupport_subset_skeleton` is the stronger active
-statement consumed by the hard-core/factorization layer.  Both are kept
-explicit because they are source theorems about Balaban's localized square-root
-covariance expansion, not finite combinatorics. -/
+The source theorem only has to prove active-skeleton localization.  The
+full-support statement used by target-union bookkeeping follows formally from
+`skeleton_subset`; it is not a separate Balaban/CMP116 obligation. -/
 structure BalabanCMP116AppendixFSupportHypotheses
     {d L : ℕ} [NeZero L] {lieDim : Nat} {Ψ : Cube d L → Type*}
     (HF : HoleFamily d L)
@@ -46,8 +44,6 @@ structure BalabanCMP116AppendixFSupportHypotheses
     (F :
       BalabanCMP116LocalizedActivityFamily
         (Cube d L) lieDim Ψ (OmegaPolymerType HF z)) : Prop where
-  activeSupport_subset_full :
-    ∀ X, X ∈ Λ → F.activeSupport X ⊆ X.val
   activeSupport_subset_skeleton :
     ∀ X, X ∈ Λ → F.activeSupport X ⊆ skeleton HF X.val
 
@@ -59,6 +55,34 @@ variable {Λ : Finset (OmegaPolymerType HF z)}
 variable {F :
   BalabanCMP116LocalizedActivityFamily
     (Cube d L) lieDim Ψ (OmegaPolymerType HF z)}
+
+/-- Full-target localization follows from active-skeleton localization and the
+finite set-theoretic fact `skeleton HF X ⊆ X`. -/
+theorem activeSupport_subset_full
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F) :
+    ∀ X, X ∈ Λ → F.activeSupport X ⊆ X.val := by
+  intro X hX x hx
+  exact skeleton_subset HF X.val (h.activeSupport_subset_skeleton X hX hx)
+
+/-- A source theorem that localizes every CMP116 active support inside the
+active skeleton automatically supplies both Appendix-F support hypotheses.
+
+This is the intended bridge for the CMP116 random-walk localization statement:
+once the printed construction proves `F.activeSupport X ⊆ skeleton HF X.val`,
+the full-target inclusion follows by `skeleton_subset`. -/
+theorem of_activeSupport_subset_skeleton
+    (hskel : ∀ X, X ∈ Λ → F.activeSupport X ⊆ skeleton HF X.val) :
+    BalabanCMP116AppendixFSupportHypotheses HF z Λ F where
+  activeSupport_subset_skeleton := hskel
+
+/-- Equality with the active skeleton is a convenient source-facing way to
+build the CMP116 Appendix-F support package. -/
+theorem of_activeSupport_eq_skeleton
+    (hskel : ∀ X, X ∈ Λ → F.activeSupport X = skeleton HF X.val) :
+    BalabanCMP116AppendixFSupportHypotheses HF z Λ F :=
+  of_activeSupport_subset_skeleton
+    (fun X hX => by
+      rw [hskel X hX])
 
 /-- CMP116 spectator locality, converted to the full Appendix-F target support. -/
 theorem spectatorSupport_subset_full
