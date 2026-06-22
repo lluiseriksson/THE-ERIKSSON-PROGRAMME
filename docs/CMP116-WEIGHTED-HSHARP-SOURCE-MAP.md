@@ -37,6 +37,12 @@ derived in Lean as
 active support, activity measurability, and the raw decay/integrability
 statement, rather than asking for an independent full-support theorem.
 
+After the next support adapter checkpoint, the source can also target the
+common clipped-active-region form directly: prove `F.Omega = HF.omegaRegion`
+and `F.activeSupport X ⊆ X.val ∩ F.Omega` (or equality).  Lean rewrites this
+through `skeleton HF X.val = X.val ∩ HF.omegaRegion` into the required
+`activeSupport_subset_skeleton` package.
+
 ## Source Anchors
 
 ### CMP116: first localized activity

@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Localization
+import YangMills.RG.AppendixFCluster3Geometry
 import YangMills.RG.AppendixFKsharpEstimate
 
 /-!
@@ -83,6 +84,37 @@ theorem of_activeSupport_eq_skeleton
   of_activeSupport_subset_skeleton
     (fun X hX => by
       rw [hskel X hX])
+
+/-- If the source describes each active support as lying in the full target
+polymer intersected with the active region `HF.omegaRegion`, it supplies the
+Lean skeleton-locality field.
+
+This is the common source form matching
+`skeleton HF X.val = X.val ∩ HF.omegaRegion`; it is still only finite set
+bookkeeping, not the missing CMP116 localization theorem. -/
+theorem of_activeSupport_subset_target_inter_omegaRegion
+    (hOmega : F.Omega = HF.omegaRegion)
+    (hactive : ∀ X, X ∈ Λ → F.activeSupport X ⊆ X.val ∩ F.Omega) :
+    BalabanCMP116AppendixFSupportHypotheses HF z Λ F :=
+  of_activeSupport_subset_skeleton
+    (fun X hX => by
+      have hsub : F.activeSupport X ⊆ X.val ∩ HF.omegaRegion := by
+        simpa [hOmega] using hactive X hX
+      simpa [skeleton_eq_inter_omegaRegion] using hsub)
+
+/-- Equality with `X ∩ HF.omegaRegion` is a convenient source-facing way to
+build the CMP116 Appendix-F support package.
+
+The source theorem may identify the localized active domain with the target
+polymer clipped to the active region; Lean then rewrites that region to the
+existing skeleton. -/
+theorem of_activeSupport_eq_target_inter_omegaRegion
+    (hOmega : F.Omega = HF.omegaRegion)
+    (hactive : ∀ X, X ∈ Λ → F.activeSupport X = X.val ∩ F.Omega) :
+    BalabanCMP116AppendixFSupportHypotheses HF z Λ F :=
+  of_activeSupport_subset_target_inter_omegaRegion hOmega
+    (fun X hX => by
+      rw [hactive X hX])
 
 /-- CMP116 spectator locality, converted to the full Appendix-F target support. -/
 theorem spectatorSupport_subset_full

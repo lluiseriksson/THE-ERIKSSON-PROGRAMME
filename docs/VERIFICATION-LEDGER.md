@@ -8151,3 +8151,37 @@ All completed green.  The new oracle entries report only
 prove the leaf-summation map, the weighted tree estimate, Dimock F.1/(636),
 Dimock (642), concrete Yang-Mills raw activity decay, continuum construction,
 OS reconstruction, or Clay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 223 (2026-06-22, **CMP116 clipped-active-region support constructors**; core 8328)
+
+This addendum adds two finite support constructors for the CMP116 Appendix-F
+source package in `YangMills/RG/BalabanCMP116KsharpAdapter.lean`.
+
+`BalabanCMP116AppendixFSupportHypotheses.of_activeSupport_subset_target_inter_omegaRegion`
+turns the source-facing inclusion
+`F.activeSupport X ⊆ X.val ∩ F.Omega`, together with
+`F.Omega = HF.omegaRegion`, into the existing skeleton-locality package.
+`BalabanCMP116AppendixFSupportHypotheses.of_activeSupport_eq_target_inter_omegaRegion`
+is the equality-form convenience constructor.
+
+Both use the already-proved finite identity
+`skeleton HF X.val = X.val ∩ HF.omegaRegion`; they introduce no new analytic
+or physical assumption.
+
+Verification:
+
+```
+lake env lean YangMills\RG\BalabanCMP116KsharpAdapter.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is finite support bookkeeping only.  It does not prove
+CMP116 localization, measurability, raw activity decay, `hR`, large-field-hole
+preservation, `hRpoly`, continuum construction, OS/Wightman reconstruction, or
+Clay.  Clay distance **~0% (<0.1%), unchanged**.
