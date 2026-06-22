@@ -8316,3 +8316,39 @@ lake env lean oracle_check.lean
 prove a new Lean theorem, instantiate the CMP116 support hypotheses, discharge
 `hraw`, `hR`, `hRpoly`, continuum construction, OS/Wightman reconstruction, or
 Clay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 228 (2026-06-22, **CMP116 graph adapter from support package**; core 8328)
+
+This addendum adds the support-package form of the CMP116 one-way hard-core
+graph adapter in `YangMills/RG/BalabanCMP116KsharpAdapter.lean`.
+
+The theorem
+`BalabanCMP116AppendixFSupportHypotheses.zeta_eq_zero_imp_not_disjoint_skeleton_of_supportHypotheses`
+shows that, once the source has supplied the single support package
+`F.activeSupport X subset skeleton HF X.val`, a CMP116 hard-core overlap
+`F.zeta X Y = 0` implies non-disjointness of the Appendix-F active skeletons.
+The companion theorem
+`BalabanCMP116AppendixFSupportHypotheses.omegaGraph_adj_imp_skeletonOverlapGraph_adj_of_supportHypotheses`
+maps CMP116 Ω-overlap graph edges into Appendix-F skeleton-overlap graph edges
+using only that support package.
+
+This sharpens the previous inclusion-form graph adapter: a source theorem may
+now target active-skeleton locality directly, without separately restating
+`F.Omega = HF.omegaRegion` and the clipped-region inclusion for the one-way
+graph step.
+
+Verification:
+
+```
+lake env lean YangMills\RG\BalabanCMP116KsharpAdapter.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is finite graph/support bookkeeping only.  It does not
+prove the source support package, CMP116 localization, measurability, raw
+activity decay, `hR`, large-field-hole preservation, `hRpoly`, continuum
+construction, OS/Wightman reconstruction, or Clay.  Clay distance **~0%
+(<0.1%), unchanged**.

@@ -165,6 +165,52 @@ theorem omegaGraph_adj_imp_skeletonOverlapGraph_adj_of_activeSupport_subset_targ
   rw [omegaOverlapGraph_adj_iff]
   exact ⟨hcmp.1, by simpa using hskel⟩
 
+/-- Support-package form of the one-way hard-core implication.
+
+Once the source supplies the single support package
+`BalabanCMP116AppendixFSupportHypotheses`, a CMP116 `zeta` overlap already
+implies overlap of the Appendix-F active skeletons.  No separate
+`F.Omega = HF.omegaRegion` rewrite is needed for this direction: the point in
+`F.Omega ∩ F.activeSupport` is in each active support, hence in each skeleton
+by the package field. -/
+theorem zeta_eq_zero_imp_not_disjoint_skeleton_of_supportHypotheses
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F)
+    {X Y : OmegaPolymerType HF z} (hX : X ∈ Λ) (hY : Y ∈ Λ) :
+    F.zeta X Y = 0 → ¬ Disjoint (skeleton HF X.val) (skeleton HF Y.val) := by
+  intro hzeta hdisj
+  have hactiveOverlap :
+      ¬ Disjoint (F.Omega ∩ F.activeSupport X) (F.Omega ∩ F.activeSupport Y) := by
+    simpa [BalabanCMP116LocalizedActivityFamily.zeta] using
+      (balabanCMP116HardCoreZeta_eq_zero_iff F.Omega F.activeSupport X Y).mp hzeta
+  apply hactiveOverlap
+  rw [Finset.disjoint_left] at hdisj ⊢
+  intro x hxX hxY
+  have hxXactive : x ∈ F.activeSupport X := (Finset.mem_inter.mp hxX).2
+  have hxYactive : x ∈ F.activeSupport Y := (Finset.mem_inter.mp hxY).2
+  exact hdisj
+    (h.activeSupport_subset_skeleton X hX hxXactive)
+    (h.activeSupport_subset_skeleton Y hY hxYactive)
+
+/-- Support-package form of the graph adapter.
+
+This is the minimal one-way graph dictionary needed by downstream finite
+Appendix-F consumers once the source has proved active-support localization
+inside the active skeleton. -/
+theorem omegaGraph_adj_imp_skeletonOverlapGraph_adj_of_supportHypotheses
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F)
+    {X Y : OmegaPolymerType HF z} (hX : X ∈ Λ) (hY : Y ∈ Λ) :
+    F.omegaGraph.Adj X Y →
+      (omegaOverlapGraph (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF z => skeleton HF X.val)).Adj X Y := by
+  intro hAdj
+  have hcmp := (BalabanCMP116LocalizedActivityFamily.omegaGraph_adj_iff_zeta_eq_zero
+    F X Y).mp hAdj
+  have hskel :
+      ¬ Disjoint (skeleton HF X.val) (skeleton HF Y.val) :=
+    zeta_eq_zero_imp_not_disjoint_skeleton_of_supportHypotheses h hX hY hcmp.2
+  rw [omegaOverlapGraph_adj_iff]
+  exact ⟨hcmp.1, by simpa using hskel⟩
+
 /-- Under the clipped-active-region identification, the CMP116 hard-core
 function `zeta` vanishes exactly when the two Appendix-F active skeletons
 overlap.

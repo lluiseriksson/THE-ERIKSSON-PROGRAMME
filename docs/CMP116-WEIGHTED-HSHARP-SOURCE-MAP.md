@@ -2,12 +2,13 @@
 
 Updated: 2026-06-22
 
-Public checkpoint inspected: `9a160b67`
+Public checkpoint inspected: `39083e4`
 
 Lean endpoints now in view:
 
 * `BalabanCMP116AppendixFSupportHypotheses.of_activeSupport_subset_target_inter_omegaRegion`;
 * `BalabanCMP116AppendixFSupportHypotheses.omegaGraph_adj_imp_skeletonOverlapGraph_adj_of_activeSupport_subset_target_inter_omegaRegion`;
+* `BalabanCMP116AppendixFSupportHypotheses.omegaGraph_adj_imp_skeletonOverlapGraph_adj_of_supportHypotheses`;
 * `singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_sourceMeasurable`.
 
 This note maps the new weighted `H#` tree bridge onto the local primary-source
@@ -58,6 +59,13 @@ If the source only gives the inclusion
 translation: every CMP116 Ω-overlap edge maps to an Appendix-F
 skeleton-overlap edge.  The reverse direction remains tied to the equality
 form above.
+
+The one-way graph translation is also available directly from the support
+package itself:
+`omegaGraph_adj_imp_skeletonOverlapGraph_adj_of_supportHypotheses` consumes
+only `F.activeSupport X ⊆ skeleton HF X.val`.  This is the narrowest graph
+dictionary for a future source theorem that proves active-skeleton locality
+directly, without separately restating the clipped-region form.
 
 Latest OCR/source-extraction verdict: CMP116 (2.5)--(2.11) supports the
 product-Gaussian change of variables and the existence of localized activities
