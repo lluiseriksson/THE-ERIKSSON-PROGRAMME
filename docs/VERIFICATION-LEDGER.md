@@ -9546,3 +9546,45 @@ reverse flat-harmonic classification, the uniform full-periodic
 curl/divergence/block Poincare theorem, Wilson-Hessian identification,
 propagator localization, covariance-root localization, or `hraw`.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 255 (2026-06-22, **flat Hodge operator kernel and constant joint-kernel**
+`YangMills.RG.PhysicalGaugeCochains`; core 8338)
+
+This addendum records two small kernel-audit closures for the full-periodic
+physical cochain layer.  The new theorem
+
+```
+flatGaugeHodgeK0CLM_eq_zero_iff_isFlatHarmonicOneCochain
+```
+
+upgrades the previous quadratic-form zero test to the operator equation
+itself: at the trivial background, `flatGaugeHodgeK0CLM A = 0` iff `A` has
+zero flat curl and zero flat gauge divergence.
+
+The new theorem
+
+```
+flatConstant_jointKernel_eq_zero_iff
+```
+
+packages the constant-sector audit in the exact shape used by the future
+Poincare proof: on direction-wise constant one-cochains, the joint kernel of
+the flat Hodge operator and the flat block constraint is trivial exactly when
+the underlying directional value is zero.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCochains.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
+```
+
+**Honest scope.** This is still kernel bookkeeping.  It does not prove the
+reverse classification that every flat harmonic one-cochain is direction-wise
+constant, does not prove the full-periodic Poincare theorem, and does not
+identify or perturb the Wilson Hessian.  Clay distance **~0% (<0.1%),
+unchanged**.

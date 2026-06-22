@@ -85,7 +85,9 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero` /
   `isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_eq_zero`, reducing
   vanishing of the flat Hodge energy exactly to simultaneous flat curl and
-  gauge-divergence zero.  The averaging layer now proves
+  gauge-divergence zero.  The operator-kernel form
+  `flatGaugeHodgeK0CLM_eq_zero_iff_isFlatHarmonicOneCochain` now records the
+  same equivalence for `K₀ A = 0` itself.  The averaging layer now proves
   the exact direction-wise constant calculations `fineLineSum_constant` and
   `linAvg_constant`: a bond field constant in each direction averages to `L`
   times that directional value.  The flat physical block constraint now also
@@ -109,8 +111,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `flatGaugeHodgeK0CLM_constantPhysicalGaugeOneCochain`, the corresponding
   operator-kernel statement for the flat Hodge operator, and
   `flatBlockConstraintQCLM_constant_eq_zero_iff`, the exact detection of
-  zero constants by the block map.  The reverse classification and the
-  uniform full-periodic Poincare theorem remain unproved.  The
+  zero constants by the block map.  The theorem
+  `flatConstant_jointKernel_eq_zero_iff` packages these facts as the exact
+  triviality of the joint flat-Hodge/block kernel on the direction-wise
+  constant sector.  The reverse classification and the uniform
+  full-periodic Poincare theorem remain unproved.  The
   full-periodic flat Hodge/block-Poincare interface is now isolated in
   `YangMills/RG/PhysicalGaugeHodgePoincare.lean`: the predicate
   `FlatGaugeHodgePoincare` states the exact physical-cochain estimate for

@@ -20,10 +20,11 @@ injective on that constant sector.  Those direction-wise constants are now
 also proved to be flat harmonic at the trivial background, by an explicit flat
 curl calculation and finite periodic summation by parts for the flat
 divergence; the layer also exposes the corresponding flat-Hodge
-operator-kernel statement and the exact block-zero test on constants.  The
-same flat cochain layer now also names the flat harmonic condition and proves
-that the flat Hodge quadratic form vanishes exactly on simultaneous flat-curl
-and gauge-divergence-zero fields.
+operator-kernel statement and the exact block-zero test on constants, packaged
+as a trivial joint-kernel theorem on the constant sector.  The same flat
+cochain layer now also names the flat harmonic condition and proves that the
+flat Hodge quadratic form, and the operator equation `K₀ A = 0` itself,
+vanish exactly on simultaneous flat-curl and gauge-divergence-zero fields.
 The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose

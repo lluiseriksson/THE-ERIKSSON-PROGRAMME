@@ -472,6 +472,21 @@ theorem isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_eq_zero
   rw [real_inner_comm]
   exact isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero ρ A
 
+/-- Operator-kernel form of the flat harmonic test.  At the trivial
+background, the flat Hodge operator kills exactly the simultaneous flat
+curl/divergence kernel. -/
+theorem flatGaugeHodgeK0CLM_eq_zero_iff_isFlatHarmonicOneCochain
+    (ρ : SUNAdjointModel Nc) (A : PhysicalGaugeOneCochain d N Nc) :
+    flatGaugeHodgeK0CLM d N Nc ρ A = 0 ↔
+      IsFlatHarmonicOneCochain ρ A := by
+  constructor
+  · intro hK
+    rw [isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero]
+    simp [hK]
+  · intro h
+    rw [flatGaugeHodgeK0CLM, backgroundGaugeHodgeK0CLM]
+    simp [gaugeFixingMassCLM, h.1, h.2]
+
 end Differentials
 
 section FlatBlockConstraint
@@ -717,5 +732,37 @@ theorem flatGaugeHodgeK0CLM_constantPhysicalGaugeOneCochain
     gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain]
 
 end FlatConstantHarmonic
+
+section FlatConstantJointKernel
+
+variable {d L N' Nc : ℕ} [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+
+/-- On direction-wise constant one-cochains, the joint kernel of the flat
+Hodge operator and the flat block constraint is trivial.  This is the exact
+constant-sector kernel audit needed before the full periodic Poincare theorem:
+the Hodge term sees constants as harmonic, and the block term removes precisely
+the zero constant. -/
+theorem flatConstant_jointKernel_eq_zero_iff
+    (ρ : SUNAdjointModel Nc) (v : Fin d → SUNLieCoord Nc) :
+    flatGaugeHodgeK0CLM d (L * N') Nc ρ
+        (constantPhysicalGaugeOneCochain (d := d) (N := L * N') (Nc := Nc) v) = 0 ∧
+      flatBlockConstraintQCLM
+        (d := d) (Nc := Nc) L N'
+        (constantPhysicalGaugeOneCochain (d := d) (N := L * N') (Nc := Nc) v) = 0
+        ↔ v = 0 := by
+  constructor
+  · intro h
+    exact
+      (flatBlockConstraintQCLM_constant_eq_zero_iff
+        (d := d) (L := L) (N' := N') (Nc := Nc) v).mp h.2
+  · intro hv
+    constructor
+    · exact flatGaugeHodgeK0CLM_constantPhysicalGaugeOneCochain
+        (d := d) (N := L * N') (Nc := Nc) ρ v
+    · exact
+        (flatBlockConstraintQCLM_constant_eq_zero_iff
+          (d := d) (L := L) (N' := N') (Nc := Nc) v).mpr hv
+
+end FlatConstantJointKernel
 
 end YangMills.RG
