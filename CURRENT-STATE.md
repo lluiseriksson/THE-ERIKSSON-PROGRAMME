@@ -778,6 +778,14 @@ still the source-backed construction/coercivity of the gauge-fixed precision
 operator, with the perturbation budget supplied from the actual small-field
 background formula.
 
+On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
+also has the intermediate half-budget wrapper
+`singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_leafSummation_of_halfBudget`.
+It keeps the explicit rooted first-cover budget `K₀` and `hroot`, while
+deriving `hsmall`, `hρ1`, and `hBclosed` from the already-verified
+second-Ursell half-budget closure.  The stronger canonical-root/source
+measurability endpoints remain the most reduced public consumers.
+
 Independently, the fundamental representation now has exact Schur
 orthogonality in Haar `L²`:
 `inner_fundamentalMatrixCoeffL2` proves the coefficient inner products

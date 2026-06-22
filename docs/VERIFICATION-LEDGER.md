@@ -8801,3 +8801,48 @@ Poincare/Hodge estimate, identify the covariance as an inverse, construct
 `BalabanCMP116LocalizedActivityFamily`, prove `hraw`, prove measurability, or
 establish the physical remainder identity `hR`.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 239 (2026-06-22, **rooted leaf-summation half-budget wrapper**
+`YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_leafSummation_of_halfBudget`;
+core 8331)
+
+This addendum records a small Appendix-F/H# endpoint simplification requested
+by the implementation memo.  The existing raw-metric rooted leaf-summation
+endpoint required three separate second-Ursell obligations:
+
+```
+hsmall
+hρ1
+hBclosed
+```
+
+The new wrapper keeps the explicit rooted first-cover budget family `K₀` and
+its proof `hroot`, but replaces those three obligations by the already-verified
+uniform half-budget/profile hypotheses:
+
+```
+appendixFSecondUrsellLeafConstant d κ₀ * (2 * A₀ t k * K₀ t k) <= 1 / 2
+4 * appendixFSecondUrsellMomentConstant d κ₀ * A₀ t k * K₀ t k <= profile
+```
+
+It then calls `appendixFSecondUrsell_sourceObligations_of_halfBudget` once and
+projects the resulting conjunction into the existing leaf-summation endpoint.
+The stronger canonical-root endpoints already on `main` continue to discharge
+`hroot` too; this theorem is the intermediate API for non-canonical rooted
+budgets.
+
+Verification:
+
+```
+lake env lean YangMills\RG\AppendixFHsharpLeafSource.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is endpoint bookkeeping only.  It does not prove the
+CMP116 raw activity estimate `hraw`, does not derive integrability/measurability
+from the concrete activity, does not identify the physical remainder `hR`, and
+does not construct the Yang--Mills gauge activity.  Clay distance **~0%
+(<0.1%), unchanged**.
