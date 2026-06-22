@@ -9691,3 +9691,52 @@ finite-volume compactness Poincare theorem, the volume-uniform Poincare
 theorem, or any Wilson-Hessian identification.  It is only the first pointwise
 curl equation for the full-periodic P4 route.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 258 (2026-06-22, **harmonic-kernel classification bridge**
+`YangMills.RG.PhysicalGaugeFlatPoincare`; core 8339)
+
+This addendum records the conditional bridge requested for the fixed-volume P4
+route.  The module
+
+```
+YangMills/RG/PhysicalGaugeFlatPoincare.lean
+```
+
+now imports the flat Hodge/block-Poincare interface and defines
+
+```
+FlatHarmonicKernelClassified
+```
+
+as the missing reverse statement: every full-periodic flat harmonic physical
+one-cochain is direction-wise constant.  From that named hypothesis, it proves
+
+```
+flatHarmonicKernel_eq_constantSector
+flatGaugeHodgeKernel_eq_constantSector
+flatJointKernel_trivial_of_harmonicClassification
+```
+
+The first two theorems identify the flat-harmonic and flat-Hodge kernels with
+the constant sector under the carried classification hypothesis.  The third
+combines that classification with the already verified constant-sector block
+audit `flatConstant_jointKernel_eq_zero_iff`, proving that the joint kernel of
+`K₀` and the flat block map is trivial at each fixed volume.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeFlatPoincare.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeFlatPoincare.lean
+```
+
+**Honest scope.** This does not prove the reverse classification hypothesis;
+it only packages it as an explicit interface and derives the fixed-volume
+joint-kernel consequence.  It does not prove the finite-dimensional
+anti-Lipschitz/Poincare theorem, the explicit divergence formula, the
+coordinate Gaffney identity, the volume-uniform theorem, or any Wilson-Hessian
+identification.  Clay distance **~0% (<0.1%), unchanged**.

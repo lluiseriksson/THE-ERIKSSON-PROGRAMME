@@ -125,9 +125,15 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `flatBlockConstraint_controls_constantSector`, including the exact
   normalization
   `‖const_{L*N'} v‖² = ((L : ℝ)^d / (L : ℝ)^2) ‖Q const_{L*N'} v‖²`
-  for the current unscaled line-integral block map.  The reverse
-  classification and the uniform full-periodic Poincare theorem remain
-  unproved.  The
+  for the current unscaled line-integral block map.  The same module now
+  defines the conditional bridge `FlatHarmonicKernelClassified`, proves the
+  exact classified-kernel characterizations
+  `flatHarmonicKernel_eq_constantSector` and
+  `flatGaugeHodgeKernel_eq_constantSector`, and combines the carried
+  classification with the constant-sector block audit in
+  `flatJointKernel_trivial_of_harmonicClassification`.  This is only a
+  reduction interface: the reverse classification and the uniform
+  full-periodic Poincare theorem remain unproved.  The
   full-periodic flat Hodge/block-Poincare interface is now isolated in
   `YangMills/RG/PhysicalGaugeHodgePoincare.lean`: the predicate
   `FlatGaugeHodgePoincare` states the exact physical-cochain estimate for

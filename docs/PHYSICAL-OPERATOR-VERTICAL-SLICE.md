@@ -29,8 +29,11 @@ also exposes the trivial-background curl as the explicit plaquette formula and
 turns flat harmonicity into pointwise vanishing of that formula.
 The companion module `YangMills/RG/PhysicalGaugeFlatPoincare.lean` now proves
 the exact constant-sector norm identities and the sharp block-control ratio
-`L^d / L^2` for the current `linAvg` normalization.  This is only the
-harmonic-sector normalization check; the reverse harmonic classification and
+`L^d / L^2` for the current `linAvg` normalization.  It also carries the
+conditional bridge `FlatHarmonicKernelClassified`, which reduces a future
+reverse flat-harmonic classification theorem to exact constant-sector kernel
+statements and triviality of the joint flat-Hodge/block kernel.  This is only
+a fixed-volume reduction interface; the reverse harmonic classification and
 volume-uniform full-periodic estimate remain frontier obligations.
 The source-identification bricks below remain frontier obligations.
 
@@ -219,6 +222,10 @@ isFlatHarmonicOneCochain_constantPhysicalGaugeOneCochain
 flatGaugeHodgeK0CLM_constantPhysicalGaugeOneCochain
 isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero
 isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_eq_zero
+FlatHarmonicKernelClassified
+flatHarmonicKernel_eq_constantSector
+flatGaugeHodgeKernel_eq_constantSector
+flatJointKernel_trivial_of_harmonicClassification
 ```
 
 ### Meaning
@@ -245,9 +252,11 @@ constant harmonic candidates; it is not a uniform Poincare estimate.  The
 explicit curl formula gives the first pointwise equation needed by the reverse
 classification ladder.  The new constant-sector flat-harmonic theorem proves
 the forward inclusion from direction-wise constants to flat harmonics at the
-trivial background, but the reverse classification is still open.  The
-operator-kernel and block-zero tests are constant-sector consequences only.
-The zero-form harmonic test and curl equation do not classify the full harmonic
+trivial background.  The new `FlatHarmonicKernelClassified` bridge carries the
+reverse inclusion as a named hypothesis and derives exact kernel consequences;
+it does not prove that hypothesis.  The operator-kernel and block-zero tests
+are constant-sector or classification-conditional consequences only.  The
+zero-form harmonic test and curl equation do not classify the full harmonic
 kernel and do not prove that all flat harmonics are direction-wise constants.
 
 ## 4. Brick P4.1 — physical tangent spaces and covariant cochains
