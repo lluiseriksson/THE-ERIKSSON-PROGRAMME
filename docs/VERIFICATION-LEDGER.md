@@ -9307,3 +9307,50 @@ rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
 block derivative `Q`.  It does not prove the Hodge/Poincare estimate, Wilson
 Hessian identification, small-background defect bound, covariance decay, or
 `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 250 (2026-06-22, **full-periodic flat Hodge/block-Poincare interface**
+`YangMills.RG.PhysicalGaugeHodgePoincare`; core 8338)
+
+This addendum records the first full-periodic P4 Hodge/Poincare target module.
+The new predicate
+
+```
+FlatGaugeHodgePoincare d L N' Nc ρ CP
+```
+
+states the trivial-background physical-cochain estimate on the fine side
+length `N = L * N'`:
+
+```
+‖A‖² ≤ CP * (inner A (flatGaugeHodgeK0CLM A) + ‖flatBlockConstraintQCLM A‖²).
+```
+
+The theorem
+
+```
+flatGaugeHodgePoincare
+```
+
+does not prove that estimate from scratch.  It repackages a supplied
+source-level curl/divergence/block inequality using the already verified flat
+quadratic identity `flatGaugeHodgeK0_inner_right`.  This keeps the active
+Dirichlet API, background-covariant block derivative, Wilson Hessian
+normalization, and small-background comparison out of the theorem statement.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeHodgePoincare.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeHodgePoincare.lean
+```
+
+**Honest scope.** This is a target proposition and exact operator-identity
+adapter.  The unproved source input remains the volume-uniform
+curl/divergence/block estimate for the repository's line-integral `Q`, with
+the expected dependence on the RG block size `L`.  It does not identify the
+Wilson Hessian, prove small-background stability, construct a covariance, or
+produce `hraw`.  Clay distance **~0% (<0.1%), unchanged**.

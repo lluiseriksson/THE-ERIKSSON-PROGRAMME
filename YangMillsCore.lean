@@ -212,10 +212,11 @@ import YangMills.RG.CoerciveCovariance
 -- Abstract gauge-fixed covariance assembly: block-Poincare plus perturbation
 -- budgets produce an exact inverse covariance for `K0 + a Q†Q - Σ`.
 import YangMills.RG.GaugeFixedCovariance
--- Finite physical gauge-operator interface: positive-bond cochains, active
--- regions, flat coboundaries/gauge constraint, positive-bond block `Q`, and
--- the soft full-space precision shell `Kslice + a Q†Q`.
+-- Finite physical gauge interfaces: full-periodic positive-bond cochains,
+-- their flat Hodge/block-Poincare predicate, and the separate active-region
+-- soft full-space precision shell `Kslice + a Q†Q`.
 import YangMills.RG.PhysicalGaugeCochains
+import YangMills.RG.PhysicalGaugeHodgePoincare
 import YangMills.RG.PhysicalGaugeOperator
 -- UV-S2 brick G3: the free RG step on a Gaussian field — the covariance
 -- transformation law `Cov(μ.map Q) = Q·Cov(μ)·Qᵀ` (on Mathlib's IsGaussian),

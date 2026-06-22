@@ -9,6 +9,10 @@ and the full-periodic physical Hodge form in
 identities matching the coercivity input shape, including named
 trivial-background flat specializations.  The flat physical block constraint
 also has a named positive-bond support stencil inherited from `linAvgSupport`.
+The full-periodic flat Hodge/block-Poincare predicate and source-input
+repackaging theorem are isolated in
+`YangMills/RG/PhysicalGaugeHodgePoincare.lean`; the active-region API remains a
+later branch.
 The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose
@@ -166,6 +170,37 @@ the Wilson Hessian, prove the Balaban/Dimock source formula, prove a physical
 Hodge/Poincare inequality, prove the perturbation estimate, or construct the
 full physical Green function.  It only gives later source theorems the exact
 finite operator slots they must fill.
+
+## 3b. Brick P4.0b — full-periodic flat Hodge/block-Poincare interface
+
+### New definitions
+
+```lean
+FlatGaugeHodgePoincare
+```
+
+### New theorems
+
+```lean
+flatGaugeHodgePoincare
+```
+
+### Meaning
+
+This brick keeps the first Poincare target full-periodic and at the trivial
+background, with fine side length `N = L * N'`.  The predicate states the
+physical-cochain estimate for the unit flat Hodge operator
+`flatGaugeHodgeK0CLM` plus the separate line-integral block map
+`flatBlockConstraintQCLM`.  The theorem repackages a source-supplied
+curl/divergence/block inequality using the already proved
+`flatGaugeHodgeK0_inner_right` identity.
+
+### Honest boundary
+
+The theorem does not prove the curl/divergence/block estimate, does not assert
+volume-uniformity of the supplied constant, and does not identify the unit flat
+Hodge operator with the Wilson Hessian.  It is the target shape that a later
+source theorem must fill.
 
 ## 4. Brick P4.1 — physical tangent spaces and covariant cochains
 

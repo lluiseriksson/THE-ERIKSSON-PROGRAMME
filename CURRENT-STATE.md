@@ -15,7 +15,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8336 jobs**.
+* `lake build YangMillsCore` is green at **8338 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -83,7 +83,14 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   constraint now also carries a named positive-bond stencil
   `flatBlockConstraintSupport`, together with
   `flatBlockConstraintQCLM_congr_of_eqOn_support`, lifting the existing
-  `linAvgSupport` locality theorem to the physical cochain API.
+  `linAvgSupport` locality theorem to the physical cochain API.  The
+  full-periodic flat Hodge/block-Poincare interface is now isolated in
+  `YangMills/RG/PhysicalGaugeHodgePoincare.lean`: the predicate
+  `FlatGaugeHodgePoincare` states the exact physical-cochain estimate for
+  `K₀ = D₁†D₁ + D₀D₀†` plus the separate block map
+  `flatBlockConstraintQCLM`, and `flatGaugeHodgePoincare` repackages a
+  source-supplied curl/divergence/block inequality into that operator form.
+  The source inequality itself is not proved there.
   The finite physical interface `YangMills/RG/PhysicalGaugeOperator.lean`
   separately defines active regions with Dirichlet zero-extension/restriction
   maps, flat `d0`/`d1` operators with `d1 ∘ d0 = 0`, the flat gauge constraint,
