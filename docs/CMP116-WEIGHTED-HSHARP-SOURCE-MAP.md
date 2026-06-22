@@ -43,6 +43,13 @@ and `F.activeSupport X ⊆ X.val ∩ F.Omega` (or equality).  Lean rewrites this
 through `skeleton HF X.val = X.val ∩ HF.omegaRegion` into the required
 `activeSupport_subset_skeleton` package.
 
+With the equality form, Lean also rewrites the CMP116 hard-core relation:
+`F.zeta X Y = 0` is exactly non-disjointness of `skeleton HF X.val` and
+`skeleton HF Y.val`, and `F.omegaGraph.Adj` matches the Appendix-F
+skeleton-overlap graph on the polymers in `Λ`.  Thus the source still only has
+to identify the localized active domain; the hard-core graph translation is
+finite set theory.
+
 ## Source Anchors
 
 ### CMP116: first localized activity

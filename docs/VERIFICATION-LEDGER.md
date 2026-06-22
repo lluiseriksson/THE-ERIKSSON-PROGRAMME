@@ -8185,3 +8185,36 @@ All completed green.  The new oracle entries report only
 CMP116 localization, measurability, raw activity decay, `hR`, large-field-hole
 preservation, `hRpoly`, continuum construction, OS/Wightman reconstruction, or
 Clay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 224 (2026-06-22, **CMP116 hard-core graph to Appendix-F skeleton graph**; core 8328)
+
+This addendum extends the CMP116 clipped-active-region adapter in
+`YangMills/RG/BalabanCMP116KsharpAdapter.lean`.
+
+Assuming the source-facing equalities `F.Omega = HF.omegaRegion` and
+`F.activeSupport X = X.val ∩ F.Omega` on the polymers in `Λ`,
+`BalabanCMP116AppendixFSupportHypotheses.zeta_eq_zero_iff_not_disjoint_skeleton_of_activeSupport_eq_target_inter_omegaRegion`
+rewrites the CMP116 hard-core condition `F.zeta X Y = 0` as non-disjointness
+of the two active skeletons.  The companion theorem
+`BalabanCMP116AppendixFSupportHypotheses.omegaGraph_adj_iff_skeletonOverlapGraph_adj_of_activeSupport_eq_target_inter_omegaRegion`
+identifies the CMP116 Ω-overlap graph with the Appendix-F skeleton-overlap
+graph on those polymers.
+
+Verification:
+
+```
+lake env lean YangMills\RG\BalabanCMP116KsharpAdapter.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+All completed green.  The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is finite hard-core graph bookkeeping only.  It does not
+prove the source equality for the localized CMP116 domain, CMP116 localization,
+measurability, raw activity decay, `hR`, large-field-hole preservation,
+`hRpoly`, continuum construction, OS/Wightman reconstruction, or Clay.  Clay
+distance **~0% (<0.1%), unchanged**.

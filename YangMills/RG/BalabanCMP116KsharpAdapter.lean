@@ -116,6 +116,46 @@ theorem of_activeSupport_eq_target_inter_omegaRegion
     (fun X hX => by
       rw [hactive X hX])
 
+/-- Under the clipped-active-region identification, the CMP116 hard-core
+function `zeta` vanishes exactly when the two Appendix-F active skeletons
+overlap.
+
+This is still finite support bookkeeping: it only rewrites
+`F.Omega ∩ F.activeSupport X` to `skeleton HF X.val`. -/
+theorem zeta_eq_zero_iff_not_disjoint_skeleton_of_activeSupport_eq_target_inter_omegaRegion
+    (hOmega : F.Omega = HF.omegaRegion)
+    (hactive : ∀ X, X ∈ Λ → F.activeSupport X = X.val ∩ F.Omega)
+    {X Y : OmegaPolymerType HF z} (hX : X ∈ Λ) (hY : Y ∈ Λ) :
+    F.zeta X Y = 0 ↔ ¬ Disjoint (skeleton HF X.val) (skeleton HF Y.val) := by
+  have hFX : F.Omega ∩ F.activeSupport X = skeleton HF X.val := by
+    rw [hactive X hX, hOmega]
+    simp [skeleton_eq_inter_omegaRegion, Finset.inter_left_comm]
+  have hFY : F.Omega ∩ F.activeSupport Y = skeleton HF Y.val := by
+    rw [hactive Y hY, hOmega]
+    simp [skeleton_eq_inter_omegaRegion, Finset.inter_left_comm]
+  simpa [BalabanCMP116LocalizedActivityFamily.zeta, hFX, hFY] using
+    (balabanCMP116HardCoreZeta_eq_zero_iff F.Omega F.activeSupport X Y)
+
+/-- Under the clipped-active-region identification, the CMP116 Ω-overlap graph
+is the same adjacency relation as the Appendix-F skeleton-overlap graph on the
+polymers present in `Λ`. -/
+theorem omegaGraph_adj_iff_skeletonOverlapGraph_adj_of_activeSupport_eq_target_inter_omegaRegion
+    (hOmega : F.Omega = HF.omegaRegion)
+    (hactive : ∀ X, X ∈ Λ → F.activeSupport X = X.val ∩ F.Omega)
+    {X Y : OmegaPolymerType HF z} (hX : X ∈ Λ) (hY : Y ∈ Λ) :
+    F.omegaGraph.Adj X Y ↔
+      (omegaOverlapGraph (Finset.univ : Finset (Cube d L))
+        (fun X : OmegaPolymerType HF z => skeleton HF X.val)).Adj X Y := by
+  have hFX : F.Omega ∩ F.activeSupport X = skeleton HF X.val := by
+    rw [hactive X hX, hOmega]
+    simp [skeleton_eq_inter_omegaRegion, Finset.inter_left_comm]
+  have hFY : F.Omega ∩ F.activeSupport Y = skeleton HF Y.val := by
+    rw [hactive Y hY, hOmega]
+    simp [skeleton_eq_inter_omegaRegion, Finset.inter_left_comm]
+  rw [BalabanCMP116LocalizedActivityFamily.omegaGraph,
+    omegaOverlapGraph_adj_iff, omegaOverlapGraph_adj_iff]
+  simp [hFX, hFY]
+
 /-- CMP116 spectator locality, converted to the full Appendix-F target support. -/
 theorem spectatorSupport_subset_full
     (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F) :
