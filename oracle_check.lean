@@ -417,6 +417,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.precision_comp_covarianceOfGaugeFixedPrecisionCLM
 #print axioms YangMills.RG.norm_covarianceOfGaugeFixedPrecisionCLM_le
 #print axioms YangMills.RG.covarianceOfGaugeFixedPrecisionCLM_psd
+-- finite physical gauge-operator interface and soft full-space precision shell
+#print axioms YangMills.RG.flatD1FullCLM_comp_flatD0FullCLM
+#print axioms YangMills.RG.flatKslice_nonnegative
+#print axioms YangMills.RG.positiveScaledLinAvgCLM_apply
+#print axioms YangMills.RG.physicalPrecision_eq_flat_sub_defect
 -- the free RG step's covariance transformation law (on Mathlib's IsGaussian)
 #print axioms YangMills.RG.covarianceBilinDual_map_clm
 -- finite Gaussian block collar: normalization of translated kernels and product block transforms

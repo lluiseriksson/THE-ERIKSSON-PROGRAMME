@@ -14,7 +14,7 @@ and the remaining Balaban extraction queue are tracked separately in
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8330 jobs**.
+* `lake build YangMillsCore` is green at **8335 jobs**.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -66,11 +66,17 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   inverse quadratic form.  The assembly module
   `YangMills/RG/GaugeFixedCovariance.lean` composes those two layers, so the
   abstract precision `K0 + a Q†Q - Σ` now gets an exact inverse covariance from
-  the block-Poincare and norm-budget hypotheses alone.  These layers remain
-  abstract Hilbert-space algebra: they do not construct the physical
+  the block-Poincare and norm-budget hypotheses alone.  The finite physical
+  interface `YangMills/RG/PhysicalGaugeOperator.lean` now separates independent
+  positive-bond one-cochains from oriented `ConcreteEdge`s, defines active
+  regions with Dirichlet zero-extension/restriction maps, flat `d0`/`d1`
+  operators with `d1 ∘ d0 = 0`, the flat gauge constraint, the PSD flat slice,
+  a positive-bond block derivative wrapper around the existing `linAvg`, and
+  the soft full-space precision shell `physicalKslice + a Q†Q`.  These layers
+  remain pre-physical operator infrastructure: they do not construct the
   Yang--Mills Hessian, prove the physical decomposition equality, prove a
-  source Poincare theorem, establish propagator decay, or construct a
-  localized covariance root;
+  source Poincare theorem, establish propagator decay, or construct a localized
+  covariance root;
 * gauge covariance of the averaged-contour interface;
 * near-identity logarithm, small-field stability lemmas, and the local
   two-sided cutoff dictionary `norm_nearLog_two_sided_of_norm_le_third`,

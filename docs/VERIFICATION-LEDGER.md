@@ -9020,3 +9020,66 @@ decay, or prove the CMP116 raw activity estimate `hraw`.  It only ensures that
 once the physical precision is proved to satisfy these explicit hypotheses, no
 separate covariance-shaped assumption is needed.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 244 (2026-06-22, **finite physical gauge-operator interface**
+`YangMills.RG.flatKslice_nonnegative`; core 8335)
+
+This addendum records the first finite physical-operator interface for the P4
+route.  The new module `YangMills/RG/PhysicalGaugeOperator.lean` introduces
+independent positive-bond one-cochains
+
+```
+PositiveBond d N = FinBox d N × Fin d
+```
+
+instead of treating the oriented `ConcreteEdge` type as the physical tangent
+space.  It also defines active regions, active site/bond/plaquette subtypes,
+Dirichlet zero-extension/restriction maps, full and active flat differential
+operators, the flat gauge constraint, and the nonnegative flat slice
+
+```
+flatKslice = wilsonQuadCoeff * d1†d1 + ξInv * gauge†gauge.
+```
+
+The positive-bond block derivative `blockConstraintCLM` wraps the existing
+verified `linAvg` through an explicit orientation adapter, preserving the
+distinction between the gauge condition and the RG block derivative `Q`.  The
+generic soft-precision shell allows the gauge constraint and block derivative
+to land in different Hilbert spaces, so the distinction is enforced in the
+type signature rather than only in prose.
+The soft full-space precision shell is named
+
+```
+gaugeFixedPhysicalPrecision =
+  physicalKslice physicalGaugeHessian gaugeConstraintCLM ξInv
+    + a Q†Q.
+```
+
+The exact defect identity
+
+```
+physicalPrecision =
+  gaugeFixedBasePrecisionCLM flatSlice Q a
+    - physicalPrecisionDefect flatSlice physicalPrecision Q a
+```
+
+keeps the small-background perturbation estimate as a source obligation rather
+than silently building it into the definition.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeOperator.lean
+lake build YangMills.RG.PhysicalGaugeOperator
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is flat finite operator infrastructure and soft
+full-space `a Q†Q` bookkeeping.  It does not prove the physical Wilson
+Hessian formula, the physical Hodge/Poincare inequality, the perturbation
+budget from a small background, a Schur complement hard-constraint theorem,
+Green-function decay, a localized covariance square root, or the raw CMP116
+activity estimate `hraw`.  Clay distance **~0% (<0.1%), unchanged**.

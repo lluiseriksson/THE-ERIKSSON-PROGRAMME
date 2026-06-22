@@ -1,8 +1,10 @@
 # P4 physical-operator vertical slice
 
-**Status:** design fixed; the first deterministic brick is implemented and
-verified in `YangMills/RG/CoerciveCovariance.lean`.  The remaining bricks below
-are still frontier/design obligations.
+**Status:** design fixed; the deterministic coercivity/covariance bricks are
+implemented in `YangMills/RG/CoerciveCovariance.lean` and
+`YangMills/RG/GaugeFixedCovariance.lean`.  The finite physical-operator
+interface is now implemented in `YangMills/RG/PhysicalGaugeOperator.lean`.
+The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose
 
@@ -104,6 +106,61 @@ source theorem proving the block-Poincare/Hodge and perturbation-budget
 hypotheses for `K0 + a Q†Q - Σ` immediately yields a named exact covariance
 for that precision form.  This is still not the physical theorem: the source
 must identify `K0`, `Q`, and `Σ`.
+
+## 3a. Brick P4.0a — finite physical gauge-operator interface
+
+### New definitions
+
+```lean
+PositiveBond
+GaugeZeroCochain
+GaugeOneCochain
+GaugeTwoCochain
+ActiveGaugeRegion
+flatD0FullCLM
+flatD1FullCLM
+flatGaugeConstraintCLM
+flatKslice
+positiveScaledLinAvgCLM
+blockConstraintCLM
+physicalKslice
+gaugeFixedPhysicalPrecision
+physicalPrecisionDefect
+SmallBackgroundPerturbation
+```
+
+### New theorems
+
+```lean
+flatD1FullCLM_comp_flatD0FullCLM
+flatKslice_nonnegative
+positiveScaledLinAvgCLM_apply
+physicalPrecision_eq_flat_sub_defect
+```
+
+### Meaning
+
+This brick follows the source-facing recommendation to implement the soft
+full-space term `a Q†Q` before any hard constrained covariance.  The gauge
+constraint and the RG block constraint are deliberately named separately:
+`flatGaugeConstraintCLM` is the gauge condition, while `blockConstraintCLM`
+is the positive-bond version of the block derivative `Q`.  The generic
+soft-precision shell also permits these two constraints to have different
+codomains, as they should: a gauge condition and an RG block average are not
+the same observable.
+
+The module avoids using `FineBondHilbert` as the physical tangent model,
+because `ConcreteEdge` includes both orientations.  Instead, independent
+one-cochains are indexed by positive bonds `FinBox d N × Fin d`, and a
+linearized orientation adapter feeds the already verified `linAvg`.
+
+### Honest boundary
+
+This is still a flat, finite, pre-physical interface.  It does not identify
+the Wilson Hessian, prove the Balaban/Dimock source formula, prove a physical
+Hodge/Poincare inequality, prove the perturbation estimate, or construct the
+full physical Green function.  It only gives later source theorems the exact
+finite operator slots they must fill.
 
 ## 4. Brick P4.1 — physical tangent spaces and covariant cochains
 
