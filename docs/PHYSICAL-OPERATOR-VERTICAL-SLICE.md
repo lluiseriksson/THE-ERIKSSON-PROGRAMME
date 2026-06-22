@@ -97,6 +97,14 @@ P4.0 does not say that `A` is the Yang--Mills Hessian.  It only ensures that,
 once the physical coercivity theorem lands, no additional inverse/covariance
 hypothesis is needed.
 
+The companion abstract assembly module
+`YangMills/RG/GaugeFixedCovariance.lean` already composes this inverse theorem
+with the verified `GaugeFixedPrecision` residual-coercivity theorem.  Thus a
+source theorem proving the block-Poincare/Hodge and perturbation-budget
+hypotheses for `K0 + a Q†Q - Σ` immediately yields a named exact covariance
+for that precision form.  This is still not the physical theorem: the source
+must identify `K0`, `Q`, and `Σ`.
+
 ## 4. Brick P4.1 — physical tangent spaces and covariant cochains
 
 Define the finite-dimensional Hilbert spaces used by the operator:

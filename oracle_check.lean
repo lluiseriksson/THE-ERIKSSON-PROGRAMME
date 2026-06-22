@@ -412,6 +412,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.precision_comp_covarianceOfIsCoerciveCLM
 #print axioms YangMills.RG.norm_covarianceOfIsCoerciveCLM_le
 #print axioms YangMills.RG.covarianceOfIsCoerciveCLM_psd
+-- exact covariance assembled for the abstract gauge-fixed precision form
+#print axioms YangMills.RG.covarianceOfGaugeFixedPrecisionCLM_comp_precision
+#print axioms YangMills.RG.precision_comp_covarianceOfGaugeFixedPrecisionCLM
+#print axioms YangMills.RG.norm_covarianceOfGaugeFixedPrecisionCLM_le
+#print axioms YangMills.RG.covarianceOfGaugeFixedPrecisionCLM_psd
 -- the free RG step's covariance transformation law (on Mathlib's IsGaussian)
 #print axioms YangMills.RG.covarianceBilinDual_map_clm
 -- finite Gaussian block collar: normalization of translated kernels and product block transforms

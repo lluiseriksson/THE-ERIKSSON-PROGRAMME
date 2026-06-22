@@ -8977,3 +8977,46 @@ only.  It does not define the physical Yang--Mills Hessian, prove
 `flatGaugeHodgePoincare`, construct Combes--Thomas decay, construct a
 localized covariance square root, or produce the raw CMP116 activity estimate
 `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 243 (2026-06-22, **abstract gauge-fixed precision covariance**
+`YangMills.RG.covarianceOfGaugeFixedPrecisionCLM_comp_precision`;
+core 8334)
+
+This addendum records the source-independent assembly of the P4 coercivity and
+covariance bricks.  The new module `YangMills/RG/GaugeFixedCovariance.lean`
+defines the residual constant
+
+```
+gaugeFixedResidualCoercivityConstant δ a CP
+  = min 1 a / CP - ∑' i, δ i
+```
+
+and constructs the exact inverse covariance for the abstract precision
+
+```
+gaugeFixedPrecisionCLM K0 Q a Sigma = K0 + a Q†Q - ∑' i, Sigma i
+```
+
+from the already verified block-Poincare/Hodge hypothesis, summable
+operator-norm budget, and strict budget inequality
+`∑' i, δ i < min 1 a / CP`.  The module proves both operator inverse
+identities, the reciprocal operator-norm bound, and PSD of the covariance
+quadratic form for this assembled precision.
+
+Verification:
+
+```
+lake build YangMills.RG.GaugeFixedCovariance
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is still abstract Hilbert-space algebra.  It does not
+define the physical Yang--Mills Hessian, prove the flat Hodge/Poincare
+inequality, identify the physical block derivative, construct propagator
+decay, or prove the CMP116 raw activity estimate `hraw`.  It only ensures that
+once the physical precision is proved to satisfy these explicit hypotheses, no
+separate covariance-shaped assumption is needed.  Clay distance **~0%
+(<0.1%), unchanged**.
