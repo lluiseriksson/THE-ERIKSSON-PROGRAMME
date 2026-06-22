@@ -9181,3 +9181,55 @@ Wilson Hessian, prove gauge-fixed coercivity from a source Hodge/Poincare
 theorem, construct the covariance/propagator for a physical precision, prove
 localization of `C^(1/2)`, or produce the raw CMP116 activity estimate `hraw`.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 247 (2026-06-22, **right-oriented physical Hodge quadratic forms**
+`YangMills.RG.PhysicalGaugeCochains`; core 8337)
+
+This addendum records a small P4.1 compatibility closure inside
+`YangMills/RG/PhysicalGaugeCochains.lean`.  The previously verified adjoint
+calculations produced the gauge-fixing and Hodge quadratic forms in the
+orientation
+
+```
+inner (K A) A.
+```
+
+The generic coercivity API in `GaugePrecision.lean` and
+`GaugeFixedPrecision.lean` consumes the source Hodge/Poincare hypothesis in the
+orientation
+
+```
+inner A (K A).
+```
+
+The module now exposes the matching right-oriented identities and
+nonnegativity facts:
+
+```
+gaugeFixingMass_inner_right
+gaugeFixingMass_nonnegative_right
+backgroundGaugeHodgeK0_inner_right
+backgroundGaugeHodgeK0_nonnegative_right
+flatGaugeHodgeK0_nonnegative_right
+```
+
+These are pure real-inner-product symmetry consequences of the already
+verified adjoint formulas.  They remove an integration nuisance for the next
+source theorem `flatGaugeHodgePoincare`, without adding a new physical
+assumption or coercivity wrapper.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCochains.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
+```
+
+**Honest scope.** This is orientation bookkeeping for the physical Hodge
+operator.  It does not prove the uniform Hodge/Poincare theorem, identify the
+Wilson Hessian, prove a small-background defect estimate, construct a
+propagator, or produce `hraw`.  Clay distance **~0% (<0.1%), unchanged**.

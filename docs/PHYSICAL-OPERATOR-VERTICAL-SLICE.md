@@ -3,7 +3,10 @@
 **Status:** design fixed; the deterministic coercivity/covariance bricks are
 implemented in `YangMills/RG/CoerciveCovariance.lean` and
 `YangMills/RG/GaugeFixedCovariance.lean`.  The finite physical-operator
-interface is now implemented in `YangMills/RG/PhysicalGaugeOperator.lean`.
+interface is now implemented in `YangMills/RG/PhysicalGaugeOperator.lean`,
+and the full-periodic physical Hodge form in
+`YangMills/RG/PhysicalGaugeCochains.lean` now has right-oriented quadratic
+identities matching the coercivity input shape.
 The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose

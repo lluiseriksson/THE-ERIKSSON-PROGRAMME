@@ -73,6 +73,9 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   carries an explicit adjoint-action model, defines background-covariant
   `D0`/`D1`, the covariant divergence, `Q†Q` gauge-fixing mass, the background
   Hodge operator, and the flat block constraint through the existing `linAvg`.
+  Its Hodge and gauge-fixing quadratic identities are now exposed in the
+  `inner A (K A)` orientation consumed by the generic coercivity API, while
+  the older symmetric orientation is retained for direct adjoint calculations.
   The finite physical interface `YangMills/RG/PhysicalGaugeOperator.lean`
   separately defines active regions with Dirichlet zero-extension/restriction
   maps, flat `d0`/`d1` operators with `d1 ∘ d0 = 0`, the flat gauge constraint,

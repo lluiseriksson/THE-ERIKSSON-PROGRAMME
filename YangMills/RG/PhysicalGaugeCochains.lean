@@ -329,11 +329,24 @@ theorem gaugeFixingMass_inner (ρ : SUNAdjointModel Nc)
   rw [gaugeFixingMassCLM, ContinuousLinearMap.comp_apply,
     ContinuousLinearMap.adjoint_inner_left, real_inner_self_eq_norm_sq]
 
+theorem gaugeFixingMass_inner_right (ρ : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : PhysicalGaugeOneCochain d N Nc) :
+    inner ℝ A (gaugeFixingMassCLM ρ U A) = ‖gaugeConstraintQCLM ρ U A‖ ^ 2 := by
+  rw [real_inner_comm, gaugeFixingMass_inner]
+
 theorem gaugeFixingMass_nonnegative (ρ : SUNAdjointModel Nc)
     (U : PhysicalGaugeBackground d N Nc)
     (A : PhysicalGaugeOneCochain d N Nc) :
     0 ≤ inner ℝ (gaugeFixingMassCLM ρ U A) A := by
   rw [gaugeFixingMass_inner]
+  exact sq_nonneg _
+
+theorem gaugeFixingMass_nonnegative_right (ρ : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : PhysicalGaugeOneCochain d N Nc) :
+    0 ≤ inner ℝ A (gaugeFixingMassCLM ρ U A) := by
+  rw [gaugeFixingMass_inner_right]
   exact sq_nonneg _
 
 /-- The background Hodge operator `D1†D1 + D0D0†` on physical one-cochains. -/
@@ -352,11 +365,25 @@ theorem backgroundGaugeHodgeK0_inner (ρ : SUNAdjointModel Nc)
     ContinuousLinearMap.comp_apply, ContinuousLinearMap.adjoint_inner_left,
     gaugeFixingMass_inner, real_inner_self_eq_norm_sq]
 
+theorem backgroundGaugeHodgeK0_inner_right (ρ : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : PhysicalGaugeOneCochain d N Nc) :
+    inner ℝ A (backgroundGaugeHodgeK0CLM ρ U A)
+      = ‖covariantD1CLM ρ U A‖ ^ 2 + ‖gaugeConstraintQCLM ρ U A‖ ^ 2 := by
+  rw [real_inner_comm, backgroundGaugeHodgeK0_inner]
+
 theorem backgroundGaugeHodgeK0_nonnegative (ρ : SUNAdjointModel Nc)
     (U : PhysicalGaugeBackground d N Nc)
     (A : PhysicalGaugeOneCochain d N Nc) :
     0 ≤ inner ℝ (backgroundGaugeHodgeK0CLM ρ U A) A := by
   rw [backgroundGaugeHodgeK0_inner]
+  exact add_nonneg (sq_nonneg _) (sq_nonneg _)
+
+theorem backgroundGaugeHodgeK0_nonnegative_right (ρ : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : PhysicalGaugeOneCochain d N Nc) :
+    0 ≤ inner ℝ A (backgroundGaugeHodgeK0CLM ρ U A) := by
+  rw [backgroundGaugeHodgeK0_inner_right]
   exact add_nonneg (sq_nonneg _) (sq_nonneg _)
 
 /-- The flat Hodge operator at the trivial background. -/
@@ -370,6 +397,13 @@ theorem flatGaugeHodgeK0_nonnegative (ρ : SUNAdjointModel Nc)
     0 ≤ inner ℝ (flatGaugeHodgeK0CLM d N Nc ρ A) A := by
   simpa [flatGaugeHodgeK0CLM] using
     backgroundGaugeHodgeK0_nonnegative ρ
+      (trivialPhysicalGaugeBackground d N Nc) A
+
+theorem flatGaugeHodgeK0_nonnegative_right (ρ : SUNAdjointModel Nc)
+    (A : PhysicalGaugeOneCochain d N Nc) :
+    0 ≤ inner ℝ A (flatGaugeHodgeK0CLM d N Nc ρ A) := by
+  simpa [flatGaugeHodgeK0CLM] using
+    backgroundGaugeHodgeK0_nonnegative_right ρ
       (trivialPhysicalGaugeBackground d N Nc) A
 
 end Differentials
