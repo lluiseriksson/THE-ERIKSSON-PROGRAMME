@@ -154,6 +154,54 @@ theorem
           (appendixFHoleExpWeight_nonneg HF
             (appendixFKsharpRate κ κ₀) Q.val)
 
+/-- Source-package form of
+`balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_rooted`.
+
+The bound has the same rooted raw-decay and smallness assumptions, but the
+fluctuation-integrability argument is generated from the localized CMP116
+measurability fields scale by scale. -/
+theorem
+    balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_rooted_of_source
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (H₀ K₀ : ℕ → ℕ → ℝ)
+    {κ κ₀ : ℝ}
+    (hν : ∀ t k, IsProbabilityMeasure (ν t k))
+    (hH₀ : ∀ t k, 0 ≤ H₀ t k)
+    (hH₀_one : ∀ t k, H₀ t k ≤ 1)
+    (hK₀ : ∀ t k, 0 ≤ K₀ t k)
+    (hsmall : ∀ t k, 2 * H₀ t k * K₀ t k ≤ 1)
+    (hκ₀ : 0 ≤ κ₀)
+    (hκ : κ₀ ≤ κ)
+    (hroot : ∀ t k r,
+      (∑ X ∈ (Λ t k).filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀ t k)
+    (hraw : ∀ t k ψ φ X, X ∈ Λ t k →
+      ‖((F t k).activity X).globalEval ψ φ‖ ≤
+        H₀ t k * appendixFHoleExpWeight HF κ X.val) :
+    ∀ t k (Q : OmegaPolymerType HF
+      (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+        HF z Λ F ν t k)),
+      ‖balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k Q.val‖ ≤
+        (2 * H₀ t k * K₀ t k) *
+          appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Q.val :=
+  balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_rooted
+    HF z Λ F ν H₀ K₀ hν hH₀ hH₀_one hK₀ hsmall hκ₀ hκ hroot hraw
+    (fun t k _Y hY ψ =>
+      integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDecay_rooted_of_source
+        HF (z t k) (Λ t k) (F t k) hY ψ
+        (hH₀ t k) (hH₀_one t k) (hK₀ t k) hκ₀ hκ (hroot t k)
+        (fun φ X hX => hraw t k ψ φ X hX))
+
 /-- The CMP116 integrated `H#` normal form: the second-Ursell `H#` applied to
 the spectator-integrated CMP116 first activity. -/
 noncomputable def balabanCMP116AppendixFHsharpOfIntegratedKsharp

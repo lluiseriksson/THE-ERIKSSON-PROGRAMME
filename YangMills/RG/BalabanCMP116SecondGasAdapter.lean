@@ -15,9 +15,10 @@ fluctuation measure remains the product Gaussian `dmu0`; spectator integration
 is left as an explicit product measure `nu`, because the Yang-Mills source
 still has to identify and bound the corresponding spectator-field law.
 
-No new analytic estimate is introduced here.  KP smallness, spectator
-integrability, and source decay remain hypotheses of the existing Appendix-F
-interfaces.
+No new analytic estimate is introduced here.  KP smallness and source decay
+remain hypotheses of the existing Appendix-F interfaces; source-package
+wrappers below discharge the fluctuation integrability side condition from the
+localized CMP116 measurability fields.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/
@@ -259,6 +260,55 @@ theorem norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_raw
           HF z Λ F hY ψ hH₀ hH₀_one hK₀ hsmall hκ₀ hκ hroot
           (fun φ X hX => hraw ψ φ X hX)
           (hint ψ)))
+
+/-- Source-package form of the spectator-integrated CMP116 `K#` scalar
+estimate.
+
+This removes the explicit fluctuation-integrability hypothesis from
+`norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_rawMetricDecay_rooted`:
+the needed integrability is compiled from the localized CMP116 source
+measurability fields together with the same rooted raw-metric decay estimate.
+-/
+theorem
+    norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_rawMetricDecay_rooted_of_source
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF z))
+    (ν : Measure β) [IsProbabilityMeasure ν]
+    {Y : Finset (Cube d L)}
+    (hY : Y ∈ appendixFTargetRegion
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ)
+    {H₀ K₀ κ κ₀ : ℝ}
+    (hH₀ : 0 ≤ H₀)
+    (hH₀_one : H₀ ≤ 1)
+    (hK₀ : 0 ≤ K₀)
+    (hsmall : 2 * H₀ * K₀ ≤ 1)
+    (hκ₀ : 0 ≤ κ₀)
+    (hκ : κ₀ ≤ κ)
+    (hroot : ∀ r : Cube d L,
+      (∑ X ∈ Λ.filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀)
+    (hraw : ∀ ψ φ X, X ∈ Λ →
+      ‖(F.activity X).globalEval ψ φ‖ ≤
+        H₀ * appendixFHoleExpWeight HF κ X.val) :
+    ‖balabanCMP116AppendixFIntegratedKsharpActivity HF z Λ F ν Y‖ ≤
+      (2 * H₀ * K₀) *
+        appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Y :=
+  norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_rawMetricDecay_rooted
+    HF z Λ F ν hY hH₀ hH₀_one hK₀ hsmall hκ₀ hκ hroot hraw
+    (fun ψ =>
+      integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDecay_rooted_of_source
+        HF z Λ F hY ψ hH₀ hH₀_one hK₀ hκ₀ hκ hroot
+        (fun φ X hX => hraw ψ φ X hX))
 
 /-- The spectator-integrated CMP116 activity vanishes away from the first
 connected-cover target region. -/
