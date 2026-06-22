@@ -8251,3 +8251,41 @@ prove the reverse graph implication, the equality form of the localized CMP116
 domain, CMP116 localization, measurability, raw activity decay, `hR`,
 large-field-hole preservation, `hRpoly`, continuum construction,
 OS/Wightman reconstruction, or Clay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 226 (2026-06-22, **CMP116 source-map audit for localized support**; docs only)
+
+This addendum updates `docs/CMP116-WEIGHTED-HSHARP-SOURCE-MAP.md` and
+`docs/SOURCE-CLAIM-AUDIT.md` after the support and hard-core graph adapters
+through commit `9a160b67`.
+
+The source map now records the latest Lean consumers:
+`BalabanCMP116AppendixFSupportHypotheses.of_activeSupport_subset_target_inter_omegaRegion`,
+`BalabanCMP116AppendixFSupportHypotheses.omegaGraph_adj_imp_skeletonOverlapGraph_adj_of_activeSupport_subset_target_inter_omegaRegion`,
+and
+`singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_sourceMeasurable`.
+
+The audit also records the local OCR verdict around CMP116 (2.5)--(2.11) and
+Lemma 3/(2.38): the paper supports the product-Gaussian change of variables,
+the localized activity `H(Z)`, component factorization, hard-core `zeta`, and
+the Lemma 3 decay estimate, but the printed statement that `H(Z)` is localized
+in the interior of `Z` is not yet the exact Lean support theorem
+`F.activeSupport X subset X.val inter F.Omega` or
+`F.activeSupport X subset skeleton HF X.val`.  The remaining source packet must
+identify the enlargement convention, hole/large-field compatibility, and the
+map from Balaban's localization domains to `OmegaPolymerType` support fields.
+
+Verification:
+
+```
+git diff --check
+python scripts\check_consistency.py
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+**Honest scope.** This is documentation/audit work only.  It corrects the live
+source map and prevents the CMP116 phrase "localized in the interior of Z" from
+being overread as a formal support theorem.  It does not prove CMP116
+localization, measurability, raw activity decay, `hR`, large-field-hole
+preservation, `hRpoly`, continuum construction, OS/Wightman reconstruction, or
+Clay.  Clay distance **~0% (<0.1%), unchanged**.

@@ -450,13 +450,24 @@ fluctuation support  = X cap Lambda
 Guardrail: never replace the full target `Y = union_i X_i` by the union of
 active skeletons.
 
-Current Lean interface note: at `47140047`,
+Current Lean interface note: at `9a160b67`,
 `BalabanCMP116AppendixFSupportHypotheses` asks the source side only for
 `F.activeSupport X subset skeleton HF X.val`.  The theorem
 `BalabanCMP116AppendixFSupportHypotheses.activeSupport_subset_full` derives
 `F.activeSupport X subset X.val` from that skeleton fact and `skeleton_subset`.
 Do not list full-target containment as an independent CMP116 source obligation
 unless a later consumer requires a stronger enlargement convention.
+
+The current support adapter also accepts the source-facing clipped form
+`F.Omega = HF.omegaRegion` and
+`F.activeSupport X subset X.val inter F.Omega`, proving the required skeleton
+support package by the finite identity
+`skeleton HF X.val = X.val inter HF.omegaRegion`.  Under equality, Lean also
+identifies the CMP116 hard-core graph with the Appendix-F skeleton-overlap
+graph; under inclusion alone, Lean proves only the safe direction from CMP116
+Omega-overlap edges to Appendix-F skeleton-overlap edges.  Therefore a source
+phrase such as "localized in the interior of Z" must still be translated into
+one of these exact support statements before it can discharge the hypothesis.
 
 ### `Omega`-Disjoint Versus Fully Disjoint
 
