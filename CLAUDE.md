@@ -30,7 +30,7 @@ never repeat that.
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
 7. **After adding a module to the core, confirm the build job count
-   incremented** (currently 8264).
+   incremented** (latest recorded checkpoint: 8340).
 
 ## The autonomous loop
 
@@ -68,10 +68,11 @@ are recorded **in the campaign plans** — primarily
 `README-FOR-NEXT-MODEL.md`. Read them before writing analysis-flavoured
 Lean; they save hours.
 
-## Current state (2026-06-14)
+## Current state (updated 2026-06-23; verified checkpoint 2026-06-22)
 
-* Core green: **8264 jobs**, zero sorry, zero axioms.  Mathlib **pinned**
-  to an exact commit (lakefile + manifest agree); see `REPRODUCIBILITY.md`.
+* Latest recorded core checkpoint: **8340 jobs**, zero sorry, zero axioms.
+  Mathlib **pinned** to an exact commit (lakefile + manifest agree); see
+  `REPRODUCIBILITY.md`.
 * Read `CURRENT-STATE.md` first.  It is the short live checkpoint; the long
   campaign docs are historical/auditable detail.
 * **`hRpoly` campaign OPEN** (`docs/HRPOLY-CAMPAIGN-PLAN.md`): the sole
@@ -84,7 +85,11 @@ Lean; they save hours.
   operator (`hRpoly`): gauge-covariant operator, background-field minimizer,
   propagator decay, localization, and raw activity bound.
 * **Gauge-RG continuum-facing track (`YangMills/RG/**`, ledger Addenda
-  23–83):** local averaging/Gaussian/kernel/combinatorial substrate is
+  23–263):** local averaging/Gaussian/kernel/combinatorial substrate,
+  marginal-coupling summability, Appendix-F/H# consumers, integrated
+  second-gas adapters, coercivity-budget bricks, gauge-fixed precision
+  and covariance composition, physical gauge cochains, flat Hodge/block
+  Poincare bridges, and the finite-torus curl/divergence classification are
   oracle-clean.  The branch remains lattice/M3-side and conditional on
   `hRpoly`; M4/M5/Clay are untouched.
 * Done: sharp KP, Mayer–Ursell `Ξ = exp(clusterSum)`, `Z = Ξ`, the IR
@@ -116,4 +121,5 @@ Lean; they save hours.
   with the single substitution `2δN_c → e^{2δN_c}−1` — the generic
   V0/V1 machinery is activity-agnostic, so only the per-pinned
   dichotomy (`norm_integral_exp_pinned_term_le`) changed.
-* Other frontiers: Peter–Weyl; the §6.3 UV bound.
+* Other frontiers: Peter–Weyl completeness; the concrete `hRpoly` source
+  theorem inside the §6.3 UV bound.

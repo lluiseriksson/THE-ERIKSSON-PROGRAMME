@@ -1,11 +1,14 @@
 # CMP116 Weighted Hsharp Source Map
 
-Updated: 2026-06-22
+Updated: 2026-06-23
 
-Public checkpoint inspected: `1e4add8`
+Public checkpoint inspected: `479b046`
 
-Latest theorem frontier referenced below: the `9c2f42c` support frontier plus
-the integrated scalar second-gas KP wrapper in the current snapshot.
+Latest theorem frontier referenced below: the `479b046` finite-torus curl/divergence
+checkpoint, including the support frontier, integrated scalar second-gas KP
+wrapper, rooted leaf half-budget endpoint, P4 coercivity-budget bricks,
+gauge-fixed precision/covariance composition, physical cochains, flat
+Hodge/block Poincare bridges, and the classified full-periodic curl/div kernel.
 
 Lean endpoints now in view:
 
@@ -18,7 +21,16 @@ Lean endpoints now in view:
 * `appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric`;
 * `BalabanCMP116AppendixFIntegratedSecondGasKPMajorant_of_rawMetricDecay_rooted_of_source_of_card_le_metric`;
 * `balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_rawMetricDecay_rooted_of_source_of_card_le_metric`;
-* `singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_sourceMeasurable`.
+* `singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_canonicalRoot_halfBudget_of_sourceMeasurable`;
+* `singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_rawMetricDecay_rooted_leafSummation_of_halfBudget`;
+* `appendixFHoleMetricCoverWeight_mul_exp_card_le_shifted_of_source_card_le_metric`;
+* `coercive_add_qMassCLM_of_blockPoincare`;
+* `isCoercive_sub_tsum_of_norm_budget`;
+* `gaugeFixedPrecision_coerciveWithPositiveConstant`;
+* `covarianceOfIsCoerciveCLM_comp_precision`;
+* `gaugeFixedCovarianceOfBlockPoincare`;
+* `flatGaugeHodgeBlockPoincare_one`;
+* `exists_flatGaugeHodgePoincare_of_periodicCurlDivClassification`.
 
 This note maps the new weighted `H#` tree bridge onto the local primary-source
 packet.  Its purpose is defensive: it records which hypotheses are source-backed
@@ -41,7 +53,7 @@ The current bridge in `YangMills/RG/BalabanCMP116HsharpSource.lean` consumes:
 The Lean side then supplies only the finite transfer from those assumptions to
 the existing geometric profile, cluster3 contract, and scalar UV consumer.
 
-Current-main support correction: after `9c2f42c`,
+Current-main support correction: since `9c2f42c`,
 `BalabanCMP116AppendixFSupportHypotheses` has only one source support field,
 `activeSupport_subset_skeleton`.  The former full-support inclusion is now
 derived in Lean as

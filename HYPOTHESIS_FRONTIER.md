@@ -1,6 +1,6 @@
 # Hypothesis Frontier — THE ERIKSSON PROGRAMME
 
-**Current as of 2026-06-14.**  This document states the honest assumption
+**Current as of 2026-06-23.**  This document states the honest assumption
 frontier of the **verified core** (`YangMillsCore`).  Read the current
 section first; the legacy section at the bottom is **archived, pre-cleanup
 material that describes the EXCLUDED vacuous chain and is NOT the current
@@ -41,6 +41,14 @@ the import closure of `YangMillsCore`.  Gaps are carried as explicit
   primitives.  The older geometric `hg` branch remains documented as the
   irrelevant-operator mechanism; the 4D *marginal* coupling side now uses the
   theorem-fed summable profile instead (see `docs/BALABAN-SOURCE-BOUNDS.md` §4).
+  As of 2026-06-22, the surrounding adapters include Appendix-F/H# source-facing
+  consumers, integrated second-gas KP wrappers, target-card tilt bookkeeping,
+  P4 coercivity budgets, gauge-fixed precision composition, and exact
+  finite-dimensional covariance from strict coercivity.  They now also include
+  physical gauge cochains, a fixed-volume flat Hodge/block Poincare bridge, a
+  one-dimensional harmonic classification base case, and a finite-torus curl/div
+  classification.  None of these proves the
+  concrete YM source estimate.
 * Even a full M3 discharge **does not** touch M4/M5.  The Clay distance
   stays ~0% (<0.1%) until the continuum limit and reconstruction exist.
 

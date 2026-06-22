@@ -1,8 +1,10 @@
 # Current State
 
-**Verified public baseline for this live-state snapshot:** 2026-06-22,
-the local verified checkpoint recorded by this commit (see `git log` and
-`docs/VERIFICATION-LEDGER.md` for the exact commit history).
+**Live-state snapshot updated:** 2026-06-23.  **Verified public baseline:**
+2026-06-23,
+`origin/main` commit `479b0464635ffbbdd9765d64b6fac79f35edb348`
+(latest recorded core build: **8340 jobs**, see
+[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), Addendum 263).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -12,9 +14,31 @@ Adversarial source-claim status, contradicted attributions, provenance fields,
 and the remaining Balaban extraction queue are tracked separately in
 [`docs/SOURCE-CLAIM-AUDIT.md`](docs/SOURCE-CLAIM-AUDIT.md).
 
+## Human Progress Dashboard
+
+These bars are reader-facing estimates, not theorem probabilities.  They are
+meant to make the state easy to scan; the authoritative record is still Lean,
+the axiom oracle, and the verification ledger.
+
+| Track | Bar | Current reading |
+|---|---:|---|
+| Verified core integrity | `100% [##########]` | zero `sorry`, zero project axioms, standard Lean axioms only |
+| Strong-coupling lattice package | `100% [##########]` | KP/Mayer, clustering, and Wilson-loop area laws are theorem-fed |
+| IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
+| Conditional M3 assembly | `90% [#########.]` | the assembly is verified; the UV producer remains explicit |
+| Appendix-F/H# bridge to UV consumer | `78% [########..]` | source-facing endpoints exist; source estimates remain to be proved |
+| P4 physical-operator vertical slice | `62% [######....]` | cochains, gauge-fixed covariance, and fixed-volume flat Hodge/Poincare closure are in Lean |
+| Concrete `hRpoly` discharge | `40% [####......]` | the live mathematical frontier |
+| Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
+
+The full human-readable progress board now lives directly in
+[`README.md`](README.md#progress-dashboard), so it is visible on the repository
+front page.
+
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8340 jobs**.
+* `lake build YangMillsCore` is green at **8340 jobs** in the latest recorded
+  verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
@@ -916,16 +940,19 @@ model-specific constructive-QFT proof: concrete gauge-covariant operator,
 background-field minimizer, propagator decay, localization, and the activity
 bound that feeds the existing KP-with-holes/summability shell.
 
-The P4 gauge-operator route now has a reusable coercivity-budget brick:
-`YangMills.RG.CoercivePerturbation` defines `IsCoerciveCLM` and proves
+The P4 physical-operator route now has a deterministic vertical slice in
+place.  `YangMills.RG.CoercivePerturbation` defines `IsCoerciveCLM` and proves
 stability of coercivity under additive/subtractive operator-norm perturbations,
-including a summable family theorem
-`isCoercive_sub_tsum_of_norm_budget`.  It is intentionally pre-physical: it
-does not define the gauge-fixed Hessian, covariance, covariance root,
-localization expansion, or CMP116 raw activity.  The next real P4 theorem is
-still the source-backed construction/coercivity of the gauge-fixed precision
-operator, with the perturbation budget supplied from the actual small-field
-background formula.
+including `isCoercive_sub_tsum_of_norm_budget`.
+`YangMills.RG.GaugeFixedPrecision` packages the intended
+`Kslice + a Q†Q - Σ` precision form and proves coercivity under a summable
+operator budget.  `YangMills.RG.CoerciveCovariance` then turns strict
+finite-dimensional coercivity into an exact continuous linear inverse
+`covarianceOfIsCoerciveCLM`, with both inverse identities and the norm bound
+`‖C‖ ≤ c⁻¹`.  This is still intentionally pre-physical: it does not define the
+actual Yang--Mills Hessian, prove the physical decomposition equality, prove
+Combes--Thomas/propagator decay, construct a localized covariance root, or
+produce the CMP116 raw activity.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper

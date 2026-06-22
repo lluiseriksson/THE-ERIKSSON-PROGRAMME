@@ -9,21 +9,28 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 
 ---
 
-## Live snapshot (2026-06-20)
+## Live snapshot (updated 2026-06-23; verified checkpoint 2026-06-22)
 
 Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
-handoff below.  The verified core is green at **8290 jobs**, with Mathlib
-pinned and every headline oracle-clean at
+handoff below.  The latest verification-ledger checkpoint records the verified
+core green at **8340 jobs**, with Mathlib pinned and every headline oracle-clean at
 `[propext, Classical.choice, Quot.sound]`.
 
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
 cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
 operator.  The surrounding scaffolding is largely theorem-fed: strong-coupling
 lattice clustering and area laws, the RG averaging/Gaussian/kernel substrate,
-marginal-coupling summability, animal counting, cube summability, and
-shell-growth summability.  Do not replace `hRpoly` by an axiom or a hollow
-interface; build it from source-grounded constructive-QFT bricks or leave it as
-an explicit theorem hypothesis.
+marginal-coupling summability, animal counting, cube summability,
+shell-growth summability, Appendix-F/H# consumer adapters, integrated
+second-gas KP routes, P4 coercivity-budget algebra, gauge-fixed precision
+and covariance composition, physical gauge cochains, a fixed-volume flat
+Hodge/block Poincare bridge, and the finite-torus curl/divergence
+classification.  Do not replace
+`hRpoly` by an axiom or a hollow interface; build it from source-grounded
+constructive-QFT bricks or leave it as an explicit theorem hypothesis.
+
+For a fast human-readable progress scan, read the progress dashboard near the
+top of [`README.md`](README.md#progress-dashboard).
 
 Clay distance remains **~0% (<0.1%)**: no continuum limit, no OS/Wightman
 reconstruction, no continuum mass gap.

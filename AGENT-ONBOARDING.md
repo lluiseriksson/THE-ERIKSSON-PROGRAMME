@@ -1,13 +1,14 @@
 # AGENT ONBOARDING — everything another AI needs to advance this project
 
-> **STATUS STAMP (2026-06-12).** This brief is current as of 2026-06-09; the
-> repository has advanced since. Completed after this file was written: the
-> finite-volume area law (linearized, ledger Addenda 12–15) and the
-> **exact-activity area law** `finite_volume_area_law_exp` (Addendum 16) —
-> core now green at **8235 jobs**. The live frontier is the volume-uniform
-> constant (`docs/AREA-LAW-VU-PLAN.md`, start at V0). For the always-current
-> picture read, in order: `CLAUDE.md` (hard rules) →
+> **STATUS STAMP (updated 2026-06-23; verified checkpoint 2026-06-22).** This brief is background.  The current
+> repository state is substantially later: strong-coupling area laws and IR
+> clustering are closed; the latest verification-ledger checkpoint records
+> `YangMillsCore` green at **8340 jobs**.  The live frontier is `hRpoly`, the
+> concrete Yang-Mills cluster-expansion-with-holes activity-decay estimate for
+> the actual gauge RG operator.  For the always-current picture read, in order:
+> `CLAUDE.md` (hard rules) →
 > `README-FOR-NEXT-MODEL.md` (live frontier) →
+> `README.md` progress dashboard (human progress board) →
 > `docs/VERIFICATION-LEDGER.md` (the record). Everything below remains valid
 > as background.
 
@@ -50,7 +51,7 @@ git clone https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
 cd THE-ERIKSSON-PROGRAMME
 elan toolchain install leanprover/lean4:v4.29.0-rc6   # if not present
 lake exe cache get        # fetch prebuilt Mathlib oleans (do this; building Mathlib from source takes hours)
-lake build YangMillsCore  # ~8200 jobs; fast if cache is warm
+lake build YangMillsCore  # 8340 jobs at the latest recorded checkpoint; fast if cache is warm
 ```
 
 ---

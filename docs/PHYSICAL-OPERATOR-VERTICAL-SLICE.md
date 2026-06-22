@@ -597,7 +597,7 @@ and every headline theorem must print only
 or a subset.  A green theorem that merely packages the hard analytic input as a
 field of a structure does not close a brick.
 
-## 14. Immediate next target after P4.0
+## 14. Immediate next target after the deterministic substrate
 
 The next implementation target is deliberately narrow:
 

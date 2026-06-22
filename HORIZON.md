@@ -18,16 +18,24 @@ does three things:
 Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 (what was kept/discarded and why) first. This file extends them outward.
 
-> **CURRENCY STAMP (2026-06-19).** The "Ground truth as of 2026-05" below is
+> **CURRENCY STAMP (updated 2026-06-23; verified checkpoint 2026-06-22).**
+> The "Ground truth as of 2026-05" below is
 > a historical snapshot.  Since then the core advanced substantially (now
-> **8273 jobs**, Mathlib pinned — `REPRODUCIBILITY.md`): the strong-coupling
+> **8340 jobs** in the latest verification-ledger checkpoint, Mathlib pinned —
+> `REPRODUCIBILITY.md`): the strong-coupling
 > **area law** (all four variants) and **IR exponential clustering** are
 > oracle-clean theorems; the **gauge-RG continuum-facing track**
-> (`YangMills/RG/**`, ledger Addenda 23–83) has a theorem-fed
-> averaging/Gaussian/kernel/animal-count substrate and a marginal-coupling
-> summability branch.  **The live frontier is `hRpoly`**: the concrete
+> (`YangMills/RG/**`, ledger Addenda 23–263) has a theorem-fed
+> averaging/Gaussian/kernel/animal-count substrate, a marginal-coupling
+> summability branch, Appendix-F/H# consumer adapters, integrated second-gas
+> KP routes, coercivity-budget bricks, gauge-fixed precision/covariance
+> composition, physical cochains, a fixed-volume flat Hodge/block Poincare
+> bridge, and the finite-torus curl/divergence classification.  **The
+> live frontier is `hRpoly`**:
+> the concrete
 > Yang-Mills cluster-expansion-with-holes activity-decay estimate for the
 > actual gauge RG operator.  See `CURRENT-STATE.md`,
+> the progress dashboard in `README.md`,
 > `docs/HRPOLY-CAMPAIGN-PLAN.md`, `docs/BALABAN-RG-PLAN.md`,
 > `docs/BALABAN-SOURCE-BOUNDS.md`, and `HYPOTHESIS_FRONTIER.md`.  The DAG,
 > triage, and goalpost discipline in this
