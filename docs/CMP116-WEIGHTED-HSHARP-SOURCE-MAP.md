@@ -2,7 +2,7 @@
 
 Updated: 2026-06-22
 
-Public checkpoint inspected: `39083e4`
+Public checkpoint inspected: `9c2f42c`
 
 Lean endpoints now in view:
 
@@ -33,7 +33,7 @@ The current bridge in `YangMills/RG/BalabanCMP116HsharpSource.lean` consumes:
 The Lean side then supplies only the finite transfer from those assumptions to
 the existing geometric profile, cluster3 contract, and scalar UV consumer.
 
-Current-main support correction: after `9a160b67`,
+Current-main support correction: after `9c2f42c`,
 `BalabanCMP116AppendixFSupportHypotheses` has only one source support field,
 `activeSupport_subset_skeleton`.  The former full-support inclusion is now
 derived in Lean as
@@ -72,6 +72,11 @@ The same support package also supplies the no-cross-edge direction:
 `not_omegaGraph_adj_of_disjoint_skeleton_of_supportHypotheses` proves that
 disjoint Appendix-F active skeletons have no CMP116 Ω-overlap edge.  This is
 the factorization-facing companion to the edge implication above.
+
+Together, these two graph directions are the finite hard-core dictionary
+available from the support package.  They do not discharge the package itself:
+the next source theorem must still prove `F.activeSupport X subset skeleton HF
+X.val` or supply the exact enlargement convention that replaces that target.
 
 Latest OCR/source-extraction verdict: CMP116 (2.5)--(2.11) supports the
 product-Gaussian change of variables and the existence of localized activities

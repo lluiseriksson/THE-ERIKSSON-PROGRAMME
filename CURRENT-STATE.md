@@ -1,7 +1,7 @@
 # Current State
 
 **Last certified checkpoint:** 2026-06-22, updated through public
-`origin/main` commit `a9d1ebb2d649f9c96819474d1241f8da562e9b4a`
+`origin/main` commit `9c2f42c0fc482d51223915b2eacda142dfef97c8`
 (see `git log` and `docs/VERIFICATION-LEDGER.md`).
 
 This file is the short, live entry point. Historical plans and ledgers are kept
@@ -665,6 +665,12 @@ The later source-facing endpoint
 packages the current raw-metric-decay, canonical-root, spectator-probability,
 and source-measurability inputs in the shape now requested from the source
 side.
+The current CMP116 support package also supplies both finite hard-core graph
+directions consumed by factorization bookkeeping: CMP116 Ω-overlap edges map to
+Appendix-F skeleton-overlap edges, and skeleton-disjoint source polymers have
+`F.zeta X Y = 1` and no CMP116 Ω-overlap edge.  These are consequences of the
+single support hypothesis `F.activeSupport X subset skeleton HF X.val`; they do
+not prove that CMP116 localization satisfies that hypothesis.
 The source audit in `docs/CMP116-WEIGHTED-HSHARP-SOURCE-MAP.md` records the
 current attribution boundary: CMP116 supports the product-Gaussian change of
 variables, localized `H(Z)`, component factorization, hard-core `zeta`, and

@@ -8385,3 +8385,37 @@ factorization use.  It does not prove the source support package, CMP116
 localization, measurability, raw activity decay, `hR`, large-field-hole
 preservation, `hRpoly`, continuum construction, OS/Wightman reconstruction, or
 Clay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 230 (2026-06-22, **current state source-frontier refresh**; docs only)
+
+This addendum updates the live source-frontier documentation after public
+checkpoint `9c2f42c0fc482d51223915b2eacda142dfef97c8`.
+
+`CURRENT-STATE.md` now names `9c2f42c0fc482d51223915b2eacda142dfef97c8` as
+the last certified public checkpoint and records the current finite CMP116
+hard-core dictionary: under the single source support package
+`F.activeSupport X subset skeleton HF X.val`, CMP116 Ω-overlap edges map to
+Appendix-F skeleton-overlap edges, and skeleton-disjoint source polymers have
+`F.zeta X Y = 1` with no CMP116 Ω-overlap edge.
+
+`docs/CMP116-WEIGHTED-HSHARP-SOURCE-MAP.md` and
+`docs/SOURCE-CLAIM-AUDIT.md` now point their live interface notes at
+`9c2f42c` rather than older checkpoints.  The refresh also keeps the boundary
+explicit: these graph facts are finite consequences of the support package and
+do not prove the CMP116 localization theorem that should instantiate the
+package.
+
+Verification:
+
+```
+git diff --check
+python scripts\check_consistency.py
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+**Honest scope.** This is documentation/audit work only.  It corrects stale
+live-state checkpoint references and keeps completed theorem work auditable.  It
+does not prove a new Lean theorem, instantiate the CMP116 support package,
+discharge `hraw`, `hR`, `hRpoly`, continuum construction, OS/Wightman
+reconstruction, or Clay.  Clay distance **~0% (<0.1%), unchanged**.

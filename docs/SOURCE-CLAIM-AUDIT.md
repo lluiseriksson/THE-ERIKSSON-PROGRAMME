@@ -450,7 +450,7 @@ fluctuation support  = X cap Lambda
 Guardrail: never replace the full target `Y = union_i X_i` by the union of
 active skeletons.
 
-Current Lean interface note: at `39083e4`,
+Current Lean interface note: at `9c2f42c`,
 `BalabanCMP116AppendixFSupportHypotheses` asks the source side only for
 `F.activeSupport X subset skeleton HF X.val`.  The theorem
 `BalabanCMP116AppendixFSupportHypotheses.activeSupport_subset_full` derives
