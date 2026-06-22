@@ -470,6 +470,37 @@ theorem flatBlockConstraintQCLM_apply
           (fun e : ConcreteEdge d (L * N') => A (physicalBondOfEdge e))
           (ConcreteEdge.mk b.1 b.2 true) := rfl
 
+/-- The physical positive-bond stencil used by the flat block constraint at a
+coarse positive bond. -/
+noncomputable def flatBlockConstraintSupport (L N' : ℕ) [NeZero L] [NeZero N']
+    (b : PhysicalBond d N') : Finset (PhysicalBond d (L * N')) :=
+  (linAvgSupport L N' (ConcreteEdge.mk b.1 b.2 true)).image
+    (physicalBondOfEdge (d := d) (N := L * N'))
+
+theorem mem_flatBlockConstraintSupport_of_mem_linAvgSupport
+    (b : PhysicalBond d N') {e : ConcreteEdge d (L * N')}
+    (he : e ∈ linAvgSupport L N' (ConcreteEdge.mk b.1 b.2 true)) :
+    physicalBondOfEdge e ∈ flatBlockConstraintSupport (d := d) L N' b := by
+  exact Finset.mem_image.mpr ⟨e, he, rfl⟩
+
+theorem flatBlockConstraintQCLM_congr_of_eqOn_support
+    (A A' : FinePhysicalOneCochain d L N' Nc) (b : PhysicalBond d N')
+    (h :
+      ∀ p ∈ flatBlockConstraintSupport (d := d) L N' b,
+        A p = A' p) :
+    flatBlockConstraintQCLM (d := d) (Nc := Nc) L N' A b =
+      flatBlockConstraintQCLM (d := d) (Nc := Nc) L N' A' b := by
+  rw [flatBlockConstraintQCLM_apply, flatBlockConstraintQCLM_apply]
+  exact
+    linAvg_congr_of_eqOn_support L N'
+      (fun e : ConcreteEdge d (L * N') => A (physicalBondOfEdge e))
+      (fun e : ConcreteEdge d (L * N') => A' (physicalBondOfEdge e))
+      (ConcreteEdge.mk b.1 b.2 true)
+      (fun e he =>
+        h (physicalBondOfEdge e)
+          (mem_flatBlockConstraintSupport_of_mem_linAvgSupport
+            (d := d) (L := L) (N' := N') (b := b) he))
+
 end FlatBlockConstraint
 
 end YangMills.RG

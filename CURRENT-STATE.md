@@ -79,7 +79,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   The trivial-background flat specialization also exposes both orientations of
   the exact Hodge quadratic identity as named theorems, so a future
   `flatGaugeHodgePoincare` source theorem can target the flat operator directly
-  without unfolding the background definition.
+  without unfolding the background definition.  The flat physical block
+  constraint now also carries a named positive-bond stencil
+  `flatBlockConstraintSupport`, together with
+  `flatBlockConstraintQCLM_congr_of_eqOn_support`, lifting the existing
+  `linAvgSupport` locality theorem to the physical cochain API.
   The finite physical interface `YangMills/RG/PhysicalGaugeOperator.lean`
   separately defines active regions with Dirichlet zero-extension/restriction
   maps, flat `d0`/`d1` operators with `d1 ∘ d0 = 0`, the flat gauge constraint,

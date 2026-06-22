@@ -9268,3 +9268,42 @@ rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
 not prove the uniform flat Hodge/Poincare inequality, identify the Wilson
 Hessian, supply the small-background operator-norm estimate, construct a
 propagator, or produce `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 249 (2026-06-22, **physical block-constraint support stencil**
+`YangMills.RG.PhysicalGaugeCochains`; core 8337)
+
+This addendum records the locality stencil for the full-periodic flat physical
+block constraint.  The new definition
+
+```
+flatBlockConstraintSupport L N' b
+```
+
+is the image of the existing concrete-edge `linAvgSupport` under
+`physicalBondOfEdge`, so it is a finite set of independent positive physical
+bonds on the fine lattice.  The theorem
+
+```
+flatBlockConstraintQCLM_congr_of_eqOn_support
+```
+
+states that the block constraint value at a coarse positive bond `b` depends
+only on the input one-cochain values on this physical support.  The proof is a
+direct lift of `linAvg_congr_of_eqOn_support`; it does not change the averaging
+formula or add a new analytic hypothesis.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCochains.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
+```
+
+**Honest scope.** This is finite-support/locality bookkeeping for the flat
+block derivative `Q`.  It does not prove the Hodge/Poincare estimate, Wilson
+Hessian identification, small-background defect bound, covariance decay, or
+`hraw`.  Clay distance **~0% (<0.1%), unchanged**.
