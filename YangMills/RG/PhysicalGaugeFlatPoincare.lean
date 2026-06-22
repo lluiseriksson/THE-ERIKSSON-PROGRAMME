@@ -1,3 +1,4 @@
+import YangMills.RG.BlockMaps
 import YangMills.RG.PhysicalGaugeHodgePoincare
 
 /-!
@@ -28,6 +29,70 @@ def FlatHarmonicKernelClassified
         A =
           constantPhysicalGaugeOneCochain
             (d := d) (N := N) (Nc := Nc) v
+
+/-- Every site of the one-dimensional periodic box is reached from the default
+site by iterating the positive shift. -/
+theorem finBox_one_eq_iterShift {N : ℕ} [NeZero N]
+    (x : FinBox 1 N) :
+    ((fun y : FinBox 1 N => FinBox.shift y 0)^[(x 0).val]
+      (default : FinBox 1 N)) = x := by
+  funext i
+  have hi : i = 0 := Subsingleton.elim i 0
+  subst hi
+  apply Fin.ext
+  rw [iterShift_apply_self]
+  change (0 + (x 0).val) % N = (x 0).val
+  simpa using Nat.mod_eq_of_lt (x 0).isLt
+
+/-- A function on the one-dimensional periodic box that is invariant under the
+positive shift is constant. -/
+theorem constant_of_shift_invariant_finBox_one
+    {N : ℕ} [NeZero N] {V : Type*} (f : FinBox 1 N → V)
+    (hshift : ∀ x : FinBox 1 N, f (x.shift 0) = f x) :
+    ∀ x : FinBox 1 N, f x = f (default : FinBox 1 N) := by
+  intro x
+  have hiter : ∀ k : ℕ,
+      f (((fun y : FinBox 1 N => FinBox.shift y 0)^[k]
+        (default : FinBox 1 N))) = f (default : FinBox 1 N) := by
+    intro k
+    induction k with
+    | zero => simp
+    | succ k ih =>
+        rw [Function.iterate_succ_apply']
+        rw [hshift]
+        exact ih
+  rw [← finBox_one_eq_iterShift x]
+  exact hiter (x 0).val
+
+/-- In one dimension, the pointwise flat divergence equation classifies the
+flat harmonic kernel: flat harmonic one-cochains are direction-wise constant.
+
+This is a base-case sanity check for the full reverse-classification target.
+It does not address the higher-dimensional curl/divergence classification. -/
+theorem flatHarmonicKernelClassified_one
+    {N Nc : ℕ} [NeZero N] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc) :
+    FlatHarmonicKernelClassified 1 N Nc ρ := by
+  intro A hA
+  let v : Fin 1 → SUNLieCoord Nc := fun _ => A ((default : FinBox 1 N), 0)
+  refine ⟨v, ?_⟩
+  apply PiLp.ext
+  intro b
+  rcases b with ⟨x, i⟩
+  have hi : i = 0 := Subsingleton.elim i 0
+  subst hi
+  have hstep : ∀ x : FinBox 1 N, A (x.shift 0, 0) = A (x, 0) := by
+    intro x
+    have hdiv := isFlatHarmonicOneCochain_divergence_apply_eq_zero
+      (d := 1) (N := N) (Nc := Nc) ρ hA (x.shift 0)
+    have hdiff : A (x.shift 0, 0) - A (((x.shift 0).shiftBack 0), 0) = 0 := by
+      simpa using hdiv
+    simp [FinBox.shiftBack_shift] at hdiff
+    exact sub_eq_zero.mp hdiff
+  have hxconst : A (x, 0) = A ((default : FinBox 1 N), 0) :=
+    constant_of_shift_invariant_finBox_one
+      (fun x : FinBox 1 N => A (x, 0)) hstep x
+  simp [v, constantPhysicalGaugeOneCochain_apply, hxconst]
 
 /-- Under the classification bridge, flat harmonic one-cochains are exactly the
 direction-wise constant sector. -/
@@ -259,6 +324,45 @@ theorem flatCurlDivBlockPoincare_of_harmonicClassification
   refine ⟨CP, hCP.1, ?_⟩
   intro A
   simpa only [flatGaugeHodgeK0_inner_right] using hCP.2 A
+
+/-- One-dimensional fixed-volume flat Hodge/block Poincare, obtained without
+carrying an external classification hypothesis.  The constant is still the
+finite-dimensional compactness constant and may depend on the fixed volume. -/
+theorem flatGaugeHodgeBlockPoincare_one
+    {L N' Nc : ℕ}
+    [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc) :
+    ∃ CP : ℝ,
+      FlatGaugeHodgePoincare 1 L N' Nc ρ CP := by
+  exact
+    flatGaugeHodgeBlockPoincare_of_harmonicClassification
+      (d := 1) (L := L) (N' := N') (Nc := Nc) ρ
+      (flatHarmonicKernelClassified_one
+        (N := L * N') (Nc := Nc) ρ)
+
+/-- Explicit one-dimensional curl/divergence/block form of the fixed-volume
+flat Hodge/block Poincare theorem. -/
+theorem flatCurlDivBlockPoincare_one
+    {L N' Nc : ℕ}
+    [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc) :
+    ∃ CP : ℝ, 0 < CP ∧
+      ∀ A : FinePhysicalOneCochain 1 L N' Nc,
+        ‖A‖ ^ 2 ≤
+          CP *
+            (‖covariantD1CLM ρ
+                (trivialPhysicalGaugeBackground
+                  1 (L * N') Nc) A‖ ^ 2
+              + ‖gaugeConstraintQCLM ρ
+                  (trivialPhysicalGaugeBackground
+                    1 (L * N') Nc) A‖ ^ 2
+              + ‖flatBlockConstraintQCLM
+                  (d := 1) (Nc := Nc) L N' A‖ ^ 2) := by
+  exact
+    flatCurlDivBlockPoincare_of_harmonicClassification
+      (d := 1) (L := L) (N' := N') (Nc := Nc) ρ
+      (flatHarmonicKernelClassified_one
+        (N := L * N') (Nc := Nc) ρ)
 
 /-- Norm squared of a direction-wise constant physical one-cochain. -/
 theorem norm_sq_constantPhysicalGaugeOneCochain {d N Nc : ℕ} [NeZero N]

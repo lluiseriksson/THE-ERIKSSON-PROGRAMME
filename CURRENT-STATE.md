@@ -140,9 +140,17 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `exists_flatGaugeHodgeBlockPoincare_of_jointKernel_trivial`, and packages the
   classification-dependent consequences
   `flatGaugeHodgeBlockPoincare_of_harmonicClassification` and
-  `flatCurlDivBlockPoincare_of_harmonicClassification`.  The resulting
-  Poincare constant may depend on the fixed volume; the reverse classification
-  and the uniform full-periodic Poincare theorem remain unproved.  The
+  `flatCurlDivBlockPoincare_of_harmonicClassification`.  As a verified base
+  case, it proves `finBox_one_eq_iterShift`,
+  `constant_of_shift_invariant_finBox_one`, and
+  `flatHarmonicKernelClassified_one`: in one dimension, the pointwise flat
+  divergence equation classifies flat harmonic one-cochains as direction-wise
+  constants.  Consequently `flatGaugeHodgeBlockPoincare_one` and
+  `flatCurlDivBlockPoincare_one` give fixed-volume one-dimensional
+  Hodge/block-Poincare statements without carrying an external classification
+  hypothesis.  The resulting Poincare constants may depend on the fixed volume;
+  the higher-dimensional reverse classification and the uniform full-periodic
+  Poincare theorem remain unproved.  The
   full-periodic flat Hodge/block-Poincare interface is now isolated in
   `YangMills/RG/PhysicalGaugeHodgePoincare.lean`: the predicate
   `FlatGaugeHodgePoincare` states the exact physical-cochain estimate for

@@ -460,6 +460,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.exists_flatGaugeHodgeBlockPoincare_of_jointKernel_trivial
 #print axioms YangMills.RG.flatGaugeHodgeBlockPoincare_of_harmonicClassification
 #print axioms YangMills.RG.flatCurlDivBlockPoincare_of_harmonicClassification
+#print axioms YangMills.RG.finBox_one_eq_iterShift
+#print axioms YangMills.RG.constant_of_shift_invariant_finBox_one
+#print axioms YangMills.RG.flatHarmonicKernelClassified_one
+#print axioms YangMills.RG.flatGaugeHodgeBlockPoincare_one
+#print axioms YangMills.RG.flatCurlDivBlockPoincare_one
 #print axioms YangMills.RG.norm_sq_constantPhysicalGaugeOneCochain
 #print axioms YangMills.RG.flatBlockConstraintQCLM_constant_norm_sq
 #print axioms YangMills.RG.flatBlockConstraint_controls_constantSector

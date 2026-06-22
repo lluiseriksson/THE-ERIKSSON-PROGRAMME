@@ -35,9 +35,13 @@ conditional bridge `FlatHarmonicKernelClassified`, which reduces a future
 reverse flat-harmonic classification theorem to exact constant-sector kernel
 statements and triviality of the joint flat-Hodge/block kernel.  From trivial
 joint kernel, it now derives a non-uniform fixed-volume flat Hodge/block
-Poincare theorem using Mathlib's finite-dimensional anti-Lipschitz theorem.
-The reverse harmonic classification and volume-uniform full-periodic estimate
-remain frontier obligations.
+Poincare theorem using Mathlib's finite-dimensional anti-Lipschitz theorem.  In
+the one-dimensional base case it proves the reverse classification directly
+from the pointwise flat divergence equation, and therefore obtains
+fixed-volume one-dimensional Hodge/block-Poincare statements without carrying
+an external classification hypothesis.  The higher-dimensional reverse
+harmonic classification and volume-uniform full-periodic estimate remain
+frontier obligations.
 The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose
@@ -235,6 +239,11 @@ exists_sq_norm_le_sum_three_sq_of_jointKernel_trivial
 exists_flatGaugeHodgeBlockPoincare_of_jointKernel_trivial
 flatGaugeHodgeBlockPoincare_of_harmonicClassification
 flatCurlDivBlockPoincare_of_harmonicClassification
+finBox_one_eq_iterShift
+constant_of_shift_invariant_finBox_one
+flatHarmonicKernelClassified_one
+flatGaugeHodgeBlockPoincare_one
+flatCurlDivBlockPoincare_one
 ```
 
 ### Meaning
@@ -270,7 +279,8 @@ depend on the volume.  The operator-kernel and block-zero tests are
 constant-sector or classification-conditional consequences only.  The
 zero-form harmonic test and pointwise curl/divergence equations do not classify
 the full harmonic kernel and do not prove that all flat harmonics are
-direction-wise constants.
+direction-wise constants.  The one-dimensional theorem is a genuine base case,
+but it does not prove the higher-dimensional reverse classification.
 
 ## 4. Brick P4.1 — physical tangent spaces and covariant cochains
 

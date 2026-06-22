@@ -9833,3 +9833,49 @@ rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
 hypothesis, a coordinate Gaffney identity, any volume-uniform constant, any
 source-backed Balaban/Dimock estimate, or any Wilson-Hessian identification.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 261 (2026-06-22, **one-dimensional flat harmonic classification**
+`YangMills.RG.PhysicalGaugeFlatPoincare`; core 8339)
+
+This addendum records a non-wrapper base case for the flat harmonic
+classification ladder.  The module
+
+```
+YangMills/RG/PhysicalGaugeFlatPoincare.lean
+```
+
+now proves
+
+```
+finBox_one_eq_iterShift
+constant_of_shift_invariant_finBox_one
+flatHarmonicKernelClassified_one
+flatGaugeHodgeBlockPoincare_one
+flatCurlDivBlockPoincare_one
+```
+
+The first two theorems are the one-dimensional periodic-shift reachability and
+constantness lemmas.  `flatHarmonicKernelClassified_one` uses the new
+pointwise flat divergence equation to prove that every one-dimensional flat
+harmonic physical one-cochain is direction-wise constant.  The last two
+theorems feed that classification into the existing fixed-volume compactness
+bridge, giving one-dimensional flat Hodge/block-Poincare statements without an
+external classification hypothesis.  The produced Poincare constant is still
+fixed-volume and may depend on `L`, `N'`, `Nc`, and the adjoint model.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeFlatPoincare.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeFlatPoincare.lean
+```
+
+**Honest scope.** This is a one-dimensional base case only.  It does not prove
+the higher-dimensional reverse flat-harmonic classification, a coordinate
+Gaffney identity, a volume-uniform full-periodic Poincare constant, any
+source-backed Balaban/Dimock estimate, or any Wilson-Hessian identification.
+Clay distance **~0% (<0.1%), unchanged**.
