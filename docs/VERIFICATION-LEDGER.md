@@ -8741,3 +8741,63 @@ physical gauge-fixed Hessian as `K`, does not prove propagator/covariance
 decay, does not construct the raw RG activity, and does not discharge `hRpoly`.
 It is designed to be consumed by a future source-backed Hessian/coercivity
 packet.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 238 (2026-06-22, **operator-norm coercive perturbation budgets**
+`YangMills.RG.IsCoerciveCLM`,
+`YangMills.RG.abs_inner_apply_le_opNorm_mul_norm_sq`,
+`YangMills.RG.isCoercive_add_of_opNorm_le`,
+`YangMills.RG.isCoercive_sub_of_opNorm_le`,
+`YangMills.RG.isCoercive_sub_tsum_of_norm_budget`,
+`YangMills.RG.isCoerciveCLM_qMassCLM_zero`,
+`YangMills.RG.isCoerciveCLM_add_qMassCLM_of_blockPoincare`;
+core 8331)
+
+This addendum records the next source-independent P4 coercivity brick from the
+gauge-raw-activity handoff.  Appendix F/H# already has the source-facing
+consumer from `hraw`/integrability/`hR` to `SingleScaleUVDecay`; this checkpoint
+therefore stays before Appendix F and formalizes only the operator-budget
+inequality needed by a future gauge-fixed precision proof.
+
+`YangMills/RG/CoercivePerturbation.lean` introduces the predicate
+
+```
+IsCoerciveCLM A c := forall x, c * ||x||^2 <= <x, A x>
+```
+
+for continuous linear maps on a real Hilbert space.  The key estimate
+`abs_inner_apply_le_opNorm_mul_norm_sq` proves
+
+```
+|<x, B x>| <= ||B|| * ||x||^2,
+```
+
+and the additive/subtractive perturbation theorems show that a perturbation
+with operator norm at most `delta` reduces the coercivity constant by at most
+`delta`.  The summable-family theorem
+`isCoercive_sub_tsum_of_norm_budget` proves the corresponding result for
+`A - sum' i, Sigma i` from a scalar summable budget
+`||Sigma i|| <= delta i`.
+
+The qMass sanity hooks repackage the existing adjoint block-average mass:
+`qMassCLM` is coercive with semidefinite constant `0`, and the previous
+block-Poincare plus `qMassCLM` coercivity theorem is exposed through the new
+`IsCoerciveCLM` predicate.
+
+Verification:
+
+```
+lake env lean YangMills\RG\CoercivePerturbation.lean
+lake build YangMills.RG.CoercivePerturbation
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+```
+
+**Honest scope.** This is still deterministic Hilbert-space algebra only.  It
+does not define the Yang--Mills gauge-fixed Hessian, prove the needed
+Poincare/Hodge estimate, identify the covariance as an inverse, construct
+`C^(1/2)`, localize the whitened fluctuation integrand, construct
+`BalabanCMP116LocalizedActivityFamily`, prove `hraw`, prove measurability, or
+establish the physical remainder identity `hR`.  Clay distance **~0%
+(<0.1%), unchanged**.

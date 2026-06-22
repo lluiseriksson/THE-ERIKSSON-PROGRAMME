@@ -767,6 +767,17 @@ model-specific constructive-QFT proof: concrete gauge-covariant operator,
 background-field minimizer, propagator decay, localization, and the activity
 bound that feeds the existing KP-with-holes/summability shell.
 
+The P4 gauge-operator route now has a reusable coercivity-budget brick:
+`YangMills.RG.CoercivePerturbation` defines `IsCoerciveCLM` and proves
+stability of coercivity under additive/subtractive operator-norm perturbations,
+including a summable family theorem
+`isCoercive_sub_tsum_of_norm_budget`.  It is intentionally pre-physical: it
+does not define the gauge-fixed Hessian, covariance, covariance root,
+localization expansion, or CMP116 raw activity.  The next real P4 theorem is
+still the source-backed construction/coercivity of the gauge-fixed precision
+operator, with the perturbation budget supplied from the actual small-field
+background formula.
+
 Independently, the fundamental representation now has exact Schur
 orthogonality in Haar `L²`:
 `inner_fundamentalMatrixCoeffL2` proves the coefficient inner products

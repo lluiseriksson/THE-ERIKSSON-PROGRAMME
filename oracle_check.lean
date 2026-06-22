@@ -387,6 +387,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.coercive_add_adjointMass_of_blockPoincare
 #print axioms YangMills.RG.coercive_add_qMassCLM_of_blockPoincare
 #print axioms YangMills.RG.coercive_add_perturbation
+-- operator-norm perturbation budgets for coercive continuous linear maps
+#print axioms YangMills.RG.abs_inner_apply_le_opNorm_mul_norm_sq
+#print axioms YangMills.RG.isCoercive_add_of_opNorm_le
+#print axioms YangMills.RG.isCoercive_sub_of_opNorm_le
+#print axioms YangMills.RG.isCoercive_sub_tsum_of_norm_budget
+#print axioms YangMills.RG.isCoerciveCLM_qMassCLM_zero
+#print axioms YangMills.RG.isCoerciveCLM_add_qMassCLM_of_blockPoincare
 -- the free RG step's covariance transformation law (on Mathlib's IsGaussian)
 #print axioms YangMills.RG.covarianceBilinDual_map_clm
 -- finite Gaussian block collar: normalization of translated kernels and product block transforms

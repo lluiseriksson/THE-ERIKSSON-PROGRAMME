@@ -198,6 +198,10 @@ import YangMills.RG.AveragingAdjoint
 -- Abstract gauge-precision coercivity bookkeeping: a block Poincare/Hodge
 -- estimate plus a positive `Q†Q` mass gives coercivity of `K + a Q†Q`.
 import YangMills.RG.GaugePrecision
+-- Operator-norm perturbation budgets for coercive continuous linear maps:
+-- subtracting a summable perturbation family lowers the coercivity constant by
+-- at most the summable norm budget.
+import YangMills.RG.CoercivePerturbation
 -- UV-S2 brick G3: the free RG step on a Gaussian field — the covariance
 -- transformation law `Cov(μ.map Q) = Q·Cov(μ)·Qᵀ` (on Mathlib's IsGaussian),
 -- the free fixed-point half of the small-field per-scale contraction.
