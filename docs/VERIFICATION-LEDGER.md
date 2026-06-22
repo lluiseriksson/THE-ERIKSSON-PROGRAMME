@@ -9453,3 +9453,53 @@ not prove that every flat harmonic one-cochain is direction-wise constant,
 does not prove a periodic curl-div identity, does not prove a volume-uniform
 block Poincare estimate, and does not identify the Wilson Hessian.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 253 (2026-06-22, **constant-sector flat harmonic inclusion**
+`YangMills.RG.PhysicalGaugeCochains`; core 8338)
+
+This addendum records the forward constant-sector half of the flat harmonic
+kernel audit requested by the full-periodic P4 instruction packet.  The new
+whole-map normalization theorem
+
+```
+flatBlockConstraintQCLM_constant
+```
+
+states that the current unscaled line-integral block map sends a
+direction-wise constant fine field to `L` times the corresponding coarse
+direction-wise constant field.
+
+The new flat-harmonic inclusion theorems are
+
+```
+covariantD1CLM_trivial_constantPhysicalGaugeOneCochain
+inner_constantPhysicalGaugeOneCochain_covariantD0CLM_trivial
+gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain
+isFlatHarmonicOneCochain_constantPhysicalGaugeOneCochain
+```
+
+They prove that every direction-wise constant physical one-cochain is flat
+harmonic at the trivial background.  The flat curl proof is a direct plaquette
+telescoping calculation.  The divergence proof is finite periodic
+summation-by-parts: a constant one-form pairs to zero with every flat
+zero-form gradient because `FinBox.shift` is a bijection with inverse
+`FinBox.shiftBack`.
+
+Verification:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCochains.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCochains.lean
+```
+
+**Honest scope.** This proves only the forward inclusion
+direction-wise constants `→` flat harmonics and the exact `Q` normalization on
+that sector.  It does not prove the reverse classification of flat harmonics,
+does not prove the uniform full-periodic curl/divergence/block Poincare
+theorem, does not establish independence of a Poincare constant from `N'`,
+`Nc`, or `ρ`, and does not identify the Wilson Hessian.  Clay distance
+**~0% (<0.1%), unchanged**.

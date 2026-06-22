@@ -597,6 +597,98 @@ theorem flatBlockConstraintQCLM_injective_on_constants
     exact_mod_cast NeZero.ne L
   exact (smul_eq_zero.mp hb).resolve_left hL
 
+/-- Whole-map form of `flatBlockConstraintQCLM_constant_apply`.
+
+The current unscaled line-integral block map sends a direction-wise constant
+fine field to `L` times the corresponding coarse direction-wise constant
+field. -/
+@[simp]
+theorem flatBlockConstraintQCLM_constant
+    [NeZero Nc] (v : Fin d → SUNLieCoord Nc) :
+    flatBlockConstraintQCLM
+        (d := d) (Nc := Nc) L N'
+        (constantPhysicalGaugeOneCochain (N := L * N') v) =
+      (L : ℝ) • constantPhysicalGaugeOneCochain (d := d) (N := N') (Nc := Nc) v := by
+  apply PiLp.ext
+  intro b
+  rw [flatBlockConstraintQCLM_constant_apply]
+  rfl
+
 end FlatBlockConstraint
+
+section FlatConstantHarmonic
+
+variable {d N Nc : ℕ} [NeZero d] [NeZero N] [NeZero Nc]
+
+/-- Direction-wise constant fields have zero flat curl at the trivial
+background. -/
+theorem covariantD1CLM_trivial_constantPhysicalGaugeOneCochain
+    (ρ : SUNAdjointModel Nc) (v : Fin d → SUNLieCoord Nc) :
+    covariantD1CLM ρ (trivialPhysicalGaugeBackground d N Nc)
+        (constantPhysicalGaugeOneCochain (d := d) (N := N) (Nc := Nc) v) = 0 := by
+  apply PiLp.ext
+  intro p
+  cases p with
+  | mk site dir1 dir2 hlt =>
+      rw [covariantD1CLM_apply]
+      rw [Fin.sum_univ_four]
+      simp [ConcretePlaquette.edges, plaquettePrefixHolonomy,
+        trivialPhysicalGaugeBackground, orientedOneValue]
+
+/-- Direction-wise constant fields pair to zero with flat gradients.  This is
+the finite periodic summation-by-parts identity behind vanishing flat
+divergence of constants. -/
+theorem inner_constantPhysicalGaugeOneCochain_covariantD0CLM_trivial
+    (ρ : SUNAdjointModel Nc) (v : Fin d → SUNLieCoord Nc)
+    (φ : PhysicalGaugeZeroCochain d N Nc) :
+    inner ℝ (constantPhysicalGaugeOneCochain (d := d) (N := N) (Nc := Nc) v)
+        (covariantD0CLM ρ (trivialPhysicalGaugeBackground d N Nc) φ) = 0 := by
+  rw [PiLp.inner_apply]
+  simp only [constantPhysicalGaugeOneCochain_apply]
+  rw [Fintype.sum_prod_type]
+  rw [Finset.sum_comm]
+  refine Finset.sum_eq_zero ?_
+  intro i _
+  change
+      (∑ x : FinBox d N,
+        inner ℝ (v i)
+          (covariantD0CLM ρ (trivialPhysicalGaugeBackground d N Nc) φ (x, i))) = 0
+  simp only [covariantD0CLM_apply, trivialPhysicalGaugeBackground,
+    SUNAdjointModel.ad_one_apply, inner_sub_right]
+  rw [Finset.sum_sub_distrib]
+  have hshift :
+      (∑ x : FinBox d N, inner ℝ (v i) (φ (x.shift i))) =
+        ∑ x : FinBox d N, inner ℝ (v i) (φ x) := by
+    have hbij : Function.Bijective (fun x : FinBox d N => x.shift i) :=
+      Function.bijective_iff_has_inverse.mpr
+        ⟨fun x => x.shiftBack i, fun x => FinBox.shiftBack_shift x i,
+          fun x => FinBox.shift_shiftBack x i⟩
+    exact hbij.sum_comp
+      (fun x : FinBox d N => inner ℝ (v i) (φ x))
+  rw [hshift]
+  simp
+
+/-- Direction-wise constant fields have zero flat gauge divergence at the
+trivial background. -/
+theorem gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain
+    (ρ : SUNAdjointModel Nc) (v : Fin d → SUNLieCoord Nc) :
+    gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d N Nc)
+        (constantPhysicalGaugeOneCochain (d := d) (N := N) (Nc := Nc) v) = 0 := by
+  apply ext_inner_right ℝ
+  intro φ
+  rw [inner_zero_left]
+  rw [gaugeConstraintQCLM, covariantDivCLM, ContinuousLinearMap.adjoint_inner_left]
+  exact inner_constantPhysicalGaugeOneCochain_covariantD0CLM_trivial ρ v φ
+
+/-- Direction-wise constant one-cochains are flat harmonic at the trivial
+background. -/
+theorem isFlatHarmonicOneCochain_constantPhysicalGaugeOneCochain
+    (ρ : SUNAdjointModel Nc) (v : Fin d → SUNLieCoord Nc) :
+    IsFlatHarmonicOneCochain ρ
+      (constantPhysicalGaugeOneCochain (d := d) (N := N) (Nc := Nc) v) := by
+  exact ⟨covariantD1CLM_trivial_constantPhysicalGaugeOneCochain ρ v,
+    gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain ρ v⟩
+
+end FlatConstantHarmonic
 
 end YangMills.RG

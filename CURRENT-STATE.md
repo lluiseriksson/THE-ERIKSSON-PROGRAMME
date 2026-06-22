@@ -96,7 +96,17 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   exact formula `flatBlockConstraintQCLM_constant_apply`, and
   `flatBlockConstraintQCLM_injective_on_constants`, certifying that the block
   term removes the direction-constant sector at the finite-combinatorial
-  level.  The
+  level.  The same constant-sector audit now also proves
+  `flatBlockConstraintQCLM_constant`, the zero flat-curl identity
+  `covariantD1CLM_trivial_constantPhysicalGaugeOneCochain`, the finite
+  periodic summation-by-parts identity
+  `inner_constantPhysicalGaugeOneCochain_covariantD0CLM_trivial`, the zero
+  flat gauge-divergence identity
+  `gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain`, and
+  `isFlatHarmonicOneCochain_constantPhysicalGaugeOneCochain`: every
+  direction-wise constant one-cochain is a flat harmonic at the trivial
+  background, while the reverse classification and the uniform full-periodic
+  Poincare theorem remain unproved.  The
   full-periodic flat Hodge/block-Poincare interface is now isolated in
   `YangMills/RG/PhysicalGaugeHodgePoincare.lean`: the predicate
   `FlatGaugeHodgePoincare` states the exact physical-cochain estimate for

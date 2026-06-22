@@ -16,9 +16,12 @@ later branch.
 The first finite-combinatorial kernel check is also in place: direction-wise
 constant physical one-cochains are sent by `flatBlockConstraintQCLM` to `L`
 times the corresponding coarse directional value, so the block constraint is
-injective on that constant sector.  The same flat cochain layer now also names
-the flat harmonic condition and proves that the flat Hodge quadratic form
-vanishes exactly on simultaneous flat-curl and gauge-divergence-zero fields.
+injective on that constant sector.  Those direction-wise constants are now
+also proved to be flat harmonic at the trivial background, by an explicit flat
+curl calculation and finite periodic summation by parts for the flat
+divergence.  The same flat cochain layer now also names the flat harmonic
+condition and proves that the flat Hodge quadratic form vanishes exactly on
+simultaneous flat-curl and gauge-divergence-zero fields.
 The source-identification bricks below remain frontier obligations.
 
 ## 1. Purpose
@@ -194,7 +197,12 @@ flatGaugeHodgePoincare
 fineLineSum_constant
 linAvg_constant
 flatBlockConstraintQCLM_constant_apply
+flatBlockConstraintQCLM_constant
 flatBlockConstraintQCLM_injective_on_constants
+covariantD1CLM_trivial_constantPhysicalGaugeOneCochain
+inner_constantPhysicalGaugeOneCochain_covariantD0CLM_trivial
+gaugeConstraintQCLM_trivial_constantPhysicalGaugeOneCochain
+isFlatHarmonicOneCochain_constantPhysicalGaugeOneCochain
 isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_right_eq_zero
 isFlatHarmonicOneCochain_iff_flatGaugeHodgeK0_inner_eq_zero
 ```
@@ -219,9 +227,12 @@ volume-uniformity of the supplied constant, and does not identify the unit flat
 Hodge operator with the Wilson Hessian.  It is the target shape that a later
 source theorem must fill.  The constant-sector calculation is only the finite
 kernel bookkeeping showing that the soft block term removes direction-wise
-constant harmonic candidates; it is not a uniform Poincare estimate.  The
-zero-form harmonic test does not classify the full harmonic kernel and does
-not prove that all flat harmonics are direction-wise constants.
+constant harmonic candidates; it is not a uniform Poincare estimate.  The new
+constant-sector flat-harmonic theorem proves the forward inclusion from
+direction-wise constants to flat harmonics at the trivial background, but the
+reverse classification is still open.  The zero-form harmonic test does not
+classify the full harmonic kernel and does not prove that all flat harmonics
+are direction-wise constants.
 
 ## 4. Brick P4.1 — physical tangent spaces and covariant cochains
 
