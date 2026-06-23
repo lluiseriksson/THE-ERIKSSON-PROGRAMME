@@ -11437,3 +11437,44 @@ activity construction, raw pointwise estimates, or `hRpoly`.  It only shows
 that once a scale-indexed raw-source package supplies those inputs, the
 existing H# theorem consumes the transported family without a separate `hraw`
 argument.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 296 (2026-06-23, **namespaced raw-source transport and support**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8349)
+
+This addendum gives the raw-source transport its canonical namespaced
+constructor and adds the missing direct Appendix-F support-package projection.
+The older global transport constructor remains as a compatibility alias of the
+namespaced constructor, and the existing raw-metric and `hraw` wrappers keep
+their public names.
+
+The new public declarations are:
+
+```
+PhysicalGaugeCMP116ActivityTransport.of_cmp116RawSource
+physicalGaugeCMP116SupportHypotheses_of_cmp116RawSource
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint adds no new analytic input and proves no new
+Balaban estimate.  It only centralizes the already-verified composition
+`raw-source package -> localized Gaussian certificate -> dictionary transport`
+under the namespaced constructor and exposes the support package as a named
+projection.  Source measurability, support localization, weight domination,
+raw pointwise decay, Gaussian pushforward, covariance-root localization,
+Wilson-Hessian identification, integrability, H#/K# smallness, `hRpoly`, and
+the continuum problem all remain open.  Clay distance
+**~0% (<0.1%), unchanged**.

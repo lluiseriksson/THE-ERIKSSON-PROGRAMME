@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 295.
+Addendum 296.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1112,14 +1112,17 @@ removes one adapter redundancy for future CMP116 transport calls without
 changing the analytic frontier: the raw estimate is still a source hypothesis,
 not a theorem proved from Balaban/CMP116 inputs.
 The raw-source package now also has direct CMP116 consumers:
+`PhysicalGaugeCMP116ActivityTransport.of_cmp116RawSource`,
 `physicalGaugeCMP116ActivityTransport_of_cmp116RawSource`,
+`physicalGaugeCMP116SupportHypotheses_of_cmp116RawSource`,
 `balabanCMP116RawMetricDecay_of_cmp116RawSource`, and
 `balabanCMP116_hraw_of_cmp116RawSource`.  These compose the existing
 dictionary transport, support localization, weight domination, and raw-source
 decay adapters, so a single raw-source package plus the still-explicit
-measurability/support/weight hypotheses yields the exact Appendix-F `hraw`
-shape.  This is still conditional plumbing; it does not prove the source
-activity estimate, integrability, or the analytic support/weight hypotheses.
+measurability/support/weight hypotheses yields the canonical transport,
+Appendix-F support package, and exact Appendix-F `hraw` shape.  This is still
+conditional plumbing; it does not prove the source activity estimate,
+integrability, or the analytic support/weight hypotheses.
 The follow-on module `YangMills/RG/PhysicalGaugeCMP116RawHsharp.lean` packages
 the same raw-source construction as a scale-indexed CMP116 family and feeds it
 directly to the existing source-measurable H# endpoint via

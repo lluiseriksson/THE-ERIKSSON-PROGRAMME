@@ -734,6 +734,94 @@ noncomputable def ofDictionary
 
 end PhysicalGaugeCMP116ActivityTransport
 
+namespace PhysicalGaugeCMP116ActivityTransport
+
+/-- Canonical physical/CMP116 activity transport record constructed directly
+from the raw-source compatibility package.
+
+This is the namespaced entry point for the raw-source route.  It is only the
+composition of the raw-source certificate constructor with the existing
+dictionary-backed transport constructor; all analytic raw-source, root,
+measurability, support, and weight-domination facts remain explicit
+hypotheses. -/
+noncomputable def of_cmp116RawSource
+    {dPhys N Nc d L : ℕ} [NeZero N] [NeZero L]
+    {lieDim : Nat} {Ψ : Cube d L → Type*}
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound H0 κ : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N)}
+    {weight : OmegaPolymerType HF z → ℝ}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (spectatorPull :
+      ∀ b : PhysicalBond dPhys N,
+        Ψ (D.siteMap.bondToCube b) → SUNLieCoord Nc)
+    (hroot :
+      PhysicalLocalizedCovarianceRootCertificate
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight)
+    (hsource :
+      PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        D root physicalGaussian physicalActivity weight H0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction)
+    (hspectator :
+      ∀ X, (physicalActivity X).spectatorSupport ⊆
+        physicalActiveSupport X)
+    (hfluctuation :
+      ∀ X, (physicalActivity X).fluctuationSupport ⊆
+        physicalActiveSupport X)
+    (hH0 : 0 ≤ H0)
+    (hweight : ∀ X, 0 ≤ weight X)
+    (activity_stronglyMeasurable :
+      ∀ X, ∀ ψ : ∀ c : Cube d L, Ψ c,
+        StronglyMeasurable
+          (fun ξ : CMP116FluctuationField d L lieDim =>
+            ((PhysicalGaugeCMP116ActivityAdapter.ofDictionary
+              D (fun X : OmegaPolymerType HF z => X) spectatorPull).activity
+                physicalActivity X).globalEval ψ ξ))
+    (activeSupport_subset_Omega :
+      ∀ X, physicalActiveSupport X ⊆
+        D.physicalBondsOfCells D.siteMap.Omega)
+    (activeSupport_subset_skeleton :
+      ∀ X, X ∈ Λ →
+        physicalActiveSupport X ⊆
+          D.physicalBondsOfCells (skeleton HF X.val))
+    (weight_domination :
+      ∀ X, X ∈ Λ → weight X ≤ appendixFHoleExpWeight HF κ X.val) :
+    PhysicalGaugeCMP116ActivityTransport (lieDim := lieDim) (Ψ := Ψ) HF z Λ
+      precision covariance root covNormBound rootNormBound covWeight
+      rootWeight physicalActivity physicalActiveSupport
+      (fun X => H0 * weight X) weight H0 κ
+      (PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        D root physicalGaussian physicalActivity weight H0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction) :=
+  ofDictionary (lieDim := lieDim) (Ψ := Ψ)
+    D spectatorPull
+    (physicalLocalizedGaussianActivityCertificate_of_cmp116RawSource
+      hroot hsource hspectator hfluctuation hH0 hweight)
+    activity_stronglyMeasurable
+    activeSupport_subset_Omega
+    activeSupport_subset_skeleton
+    weight_domination
+
+end PhysicalGaugeCMP116ActivityTransport
+
 /-- Construct the full physical/CMP116 activity transport record directly from
 the raw-source compatibility package.  This only composes existing adapters:
 the raw pointwise estimate is still the `hsource.raw_pointwise_decay` field. -/
@@ -804,14 +892,89 @@ noncomputable def physicalGaugeCMP116ActivityTransport_of_cmp116RawSource
         D root physicalGaussian physicalActivity weight H0
         rootLocalization wilsonHessianIdentification
         localActivityConstruction) :=
-  PhysicalGaugeCMP116ActivityTransport.ofDictionary
-    D spectatorPull
-    (physicalLocalizedGaussianActivityCertificate_of_cmp116RawSource
-      hroot hsource hspectator hfluctuation hH0 hweight)
+  PhysicalGaugeCMP116ActivityTransport.of_cmp116RawSource
+    (lieDim := lieDim) (Ψ := Ψ) D spectatorPull hroot hsource
+    hspectator hfluctuation hH0 hweight
     activity_stronglyMeasurable
     activeSupport_subset_Omega
     activeSupport_subset_skeleton
     weight_domination
+
+/-- A raw-source package plus dictionary/support transport hypotheses produces
+the Appendix-F support package for the canonically transported CMP116 family. -/
+theorem physicalGaugeCMP116SupportHypotheses_of_cmp116RawSource
+    {dPhys N Nc d L : ℕ} [NeZero N] [NeZero L]
+    {lieDim : Nat} {Ψ : Cube d L → Type*}
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound H0 κ : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N)}
+    {weight : OmegaPolymerType HF z → ℝ}
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (spectatorPull :
+      ∀ b : PhysicalBond dPhys N,
+        Ψ (D.siteMap.bondToCube b) → SUNLieCoord Nc)
+    (hroot :
+      PhysicalLocalizedCovarianceRootCertificate
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight)
+    (hsource :
+      PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        D root physicalGaussian physicalActivity weight H0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction)
+    (hspectator :
+      ∀ X, (physicalActivity X).spectatorSupport ⊆
+        physicalActiveSupport X)
+    (hfluctuation :
+      ∀ X, (physicalActivity X).fluctuationSupport ⊆
+        physicalActiveSupport X)
+    (hH0 : 0 ≤ H0)
+    (hweight : ∀ X, 0 ≤ weight X)
+    (activity_stronglyMeasurable :
+      ∀ X, ∀ ψ : ∀ c : Cube d L, Ψ c,
+        StronglyMeasurable
+          (fun ξ : CMP116FluctuationField d L lieDim =>
+            ((PhysicalGaugeCMP116ActivityAdapter.ofDictionary
+              D (fun X : OmegaPolymerType HF z => X) spectatorPull).activity
+                physicalActivity X).globalEval ψ ξ))
+    (activeSupport_subset_Omega :
+      ∀ X, physicalActiveSupport X ⊆
+        D.physicalBondsOfCells D.siteMap.Omega)
+    (activeSupport_subset_skeleton :
+      ∀ X, X ∈ Λ →
+        physicalActiveSupport X ⊆
+          D.physicalBondsOfCells (skeleton HF X.val))
+    (weight_domination :
+      ∀ X, X ∈ Λ → weight X ≤ appendixFHoleExpWeight HF κ X.val) :
+    BalabanCMP116AppendixFSupportHypotheses (lieDim := lieDim) (Ψ := Ψ)
+      HF z Λ
+      (physicalGaugeCMP116ActivityTransport_of_cmp116RawSource
+        (lieDim := lieDim) (Ψ := Ψ) spectatorPull hroot hsource
+        hspectator hfluctuation hH0 hweight activity_stronglyMeasurable
+        activeSupport_subset_Omega activeSupport_subset_skeleton
+        weight_domination).family := by
+  let T :=
+    physicalGaugeCMP116ActivityTransport_of_cmp116RawSource
+      (lieDim := lieDim) (Ψ := Ψ) spectatorPull hroot hsource
+      hspectator hfluctuation hH0 hweight activity_stronglyMeasurable
+      activeSupport_subset_Omega activeSupport_subset_skeleton
+      weight_domination
+  exact physicalGaugeCMP116SupportHypotheses_of_transport T
 
 /-- A raw-source package plus dictionary/support/weight transport hypotheses
 produces the CMP116 raw metric-decay predicate for the canonically transported
