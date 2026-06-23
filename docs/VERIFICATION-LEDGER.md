@@ -10386,3 +10386,41 @@ physical activity layer still carry the analytic Balaban/Dimock source
 estimates explicitly; they do not prove covariance/root localization, Wilson
 Hessian identification, `hraw`, or a continuum limit.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 271 (2026-06-23, **physical fluctuation-activity certificate
+projections** `YangMills.RG.PhysicalGaugeFluctuationActivity`; core 8343)
+
+This addendum keeps the P4 activity layer source-facing and only exposes fields
+that were already present in
+`PhysicalLocalizedGaussianActivityCertificate`.  The new projection theorems
+are:
+
+```
+physicalGaugeSpectatorSupport_subset_of_localizedGaussianActivityCertificate
+physicalGaugeFluctuationSupport_subset_of_localizedGaussianActivityCertificate
+physicalGaugeAmplitude_nonneg_of_localizedGaussianActivityCertificate
+physicalGaugeWeight_nonneg_of_localizedGaussianActivityCertificate
+physicalGaugeActivityDecay_of_localizedGaussianActivityCertificate
+```
+
+Together with the existing raw-bound and combined raw-decay extractions, these
+make the certificate usable by later Appendix-F adapter code without peeking
+through record fields or asserting any physical-to-CMP116 conversion theorem.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeFluctuationActivity.lean
+lake build YangMills.RG.PhysicalGaugeFluctuationActivity
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeFluctuationActivity.lean
+```
+
+**Honest scope.** This addendum does not construct the Wilson Hessian, prove
+the Gaussian change of variables, localize `C^{1/2}`, identify physical bonds
+with CMP116 cubes, convert `SUNLieCoord Nc` into `Fin lieDim -> Real`, or
+discharge `hraw`.  A separate source/pro request records those typing and
+normalization questions explicitly.  Clay distance **~0% (<0.1%), unchanged**.

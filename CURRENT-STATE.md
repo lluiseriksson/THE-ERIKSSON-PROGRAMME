@@ -107,7 +107,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   local two-field physical gauge activities over positive bonds, active-support
   containment, raw pointwise bounds, and decay majorants around a supplied
   covariance-root certificate; the Hessian expansion, change of variables, and
-  raw activity estimate remain source hypotheses.
+  raw activity estimate remain source hypotheses.  The certificate now exposes
+  named projection theorems for the raw bound, spectator/fluctuation supports,
+  amplitude/weight nonnegativity, the separate decay majorant, and the combined
+  raw-decay estimate, so future Appendix-F adapters can depend on stable field
+  names without asserting that the physical-to-CMP116 conversion has been
+  constructed.
   The full-periodic
   cochain layer `YangMills/RG/PhysicalGaugeCochains.lean` now fixes the
   physical positive-bond coordinate convention for `su(N)` coordinates,

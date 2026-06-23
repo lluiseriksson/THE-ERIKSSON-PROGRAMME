@@ -155,6 +155,115 @@ theorem physicalGaugeRawActivityBound_of_localizedGaussianActivityCertificate
     PhysicalGaugeRawActivityBound activity amplitude :=
   hcert.raw_bound
 
+/-- A localized Gaussian activity certificate exposes spectator-support
+containment. -/
+theorem physicalGaugeSpectatorSupport_subset_of_localizedGaussianActivityCertificate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {precision covariance root :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc}
+    {covNormBound rootNormBound H0 : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d N → PhysicalBond d N → ℝ}
+    {activity : ι → PhysicalGaugeLocalActivity d N Nc}
+    {activeSupport : ι → Finset (PhysicalBond d N)}
+    {amplitude weight : ι → ℝ}
+    {sourceConstruction : Prop}
+    (hcert :
+      PhysicalLocalizedGaussianActivityCertificate
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight activity activeSupport amplitude weight H0
+        sourceConstruction) :
+    ∀ X, (activity X).spectatorSupport ⊆ activeSupport X :=
+  hcert.spectator_support_subset
+
+/-- A localized Gaussian activity certificate exposes fluctuation-support
+containment. -/
+theorem physicalGaugeFluctuationSupport_subset_of_localizedGaussianActivityCertificate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {precision covariance root :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc}
+    {covNormBound rootNormBound H0 : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d N → PhysicalBond d N → ℝ}
+    {activity : ι → PhysicalGaugeLocalActivity d N Nc}
+    {activeSupport : ι → Finset (PhysicalBond d N)}
+    {amplitude weight : ι → ℝ}
+    {sourceConstruction : Prop}
+    (hcert :
+      PhysicalLocalizedGaussianActivityCertificate
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight activity activeSupport amplitude weight H0
+        sourceConstruction) :
+    ∀ X, (activity X).fluctuationSupport ⊆ activeSupport X :=
+  hcert.fluctuation_support_subset
+
+/-- A localized Gaussian activity certificate exposes amplitude
+nonnegativity. -/
+theorem physicalGaugeAmplitude_nonneg_of_localizedGaussianActivityCertificate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {precision covariance root :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc}
+    {covNormBound rootNormBound H0 : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d N → PhysicalBond d N → ℝ}
+    {activity : ι → PhysicalGaugeLocalActivity d N Nc}
+    {activeSupport : ι → Finset (PhysicalBond d N)}
+    {amplitude weight : ι → ℝ}
+    {sourceConstruction : Prop}
+    (hcert :
+      PhysicalLocalizedGaussianActivityCertificate
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight activity activeSupport amplitude weight H0
+        sourceConstruction) :
+    ∀ X, 0 ≤ amplitude X :=
+  hcert.amplitude_nonneg
+
+/-- A localized Gaussian activity certificate exposes weight nonnegativity. -/
+theorem physicalGaugeWeight_nonneg_of_localizedGaussianActivityCertificate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {precision covariance root :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc}
+    {covNormBound rootNormBound H0 : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d N → PhysicalBond d N → ℝ}
+    {activity : ι → PhysicalGaugeLocalActivity d N Nc}
+    {activeSupport : ι → Finset (PhysicalBond d N)}
+    {amplitude weight : ι → ℝ}
+    {sourceConstruction : Prop}
+    (hcert :
+      PhysicalLocalizedGaussianActivityCertificate
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight activity activeSupport amplitude weight H0
+        sourceConstruction) :
+    ∀ X, 0 ≤ weight X :=
+  hcert.weight_nonneg
+
+/-- A localized Gaussian activity certificate exposes the separate amplitude
+decay majorant. -/
+theorem physicalGaugeActivityDecay_of_localizedGaussianActivityCertificate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {precision covariance root :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc}
+    {covNormBound rootNormBound H0 : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d N → PhysicalBond d N → ℝ}
+    {activity : ι → PhysicalGaugeLocalActivity d N Nc}
+    {activeSupport : ι → Finset (PhysicalBond d N)}
+    {amplitude weight : ι → ℝ}
+    {sourceConstruction : Prop}
+    (hcert :
+      PhysicalLocalizedGaussianActivityCertificate
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight activity activeSupport amplitude weight H0
+        sourceConstruction) :
+    PhysicalGaugeActivityDecay amplitude weight H0 :=
+  hcert.decay_bound
+
 /-- A localized Gaussian activity certificate exposes the combined raw
 pointwise decay estimate. -/
 theorem physicalGaugeRawActivityDecay_of_localizedGaussianActivityCertificate
