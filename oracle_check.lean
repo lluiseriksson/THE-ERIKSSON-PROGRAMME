@@ -1255,6 +1255,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.PhysicalGaugeCMP116GaussianChange.integral_ofDictionaryRoot
 #print axioms YangMills.RG.PhysicalRootToCMP116OperatorTransport.ofDictionary
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+#print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussianChange
+#print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.integral_gaussianRootMap_eq
 #print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_cmp116Source
 #print axioms YangMills.RG.BalabanCMP116LocalizedActivityFamily.ofDictionary
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityTransport.ofDictionary

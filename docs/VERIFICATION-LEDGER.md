@@ -11239,3 +11239,39 @@ Hessian, construct physical local activities, prove raw decay, or discharge
 `hraw`/`hRpoly`.  It only turns a supplied source pushforward theorem into a
 stable integral rewrite consumed by later localized-activity estimates.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 291 (2026-06-23, **source-package Gaussian integral accessor**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8348)
+
+This addendum wires the separated localized-Gaussian source package to the
+canonical Gaussian integral consumer from Addendum 290.  The source package now
+has a named `gaussianChange` accessor and a direct source-package integral
+rewrite, both derived only from the explicit `gaussian_pushforward` field.
+
+The new public declarations are:
+
+```
+PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussianChange
+PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.integral_gaussianRootMap_eq
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean oracle_check.lean
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint still does not prove the source
+`gaussian_pushforward` theorem.  It does not localize the covariance root,
+identify the Wilson Hessian, construct physical local activities, prove raw
+decay, or discharge `hraw`/`hRpoly`.  It only makes the existing source package
+directly consumable by downstream estimates that need the Gaussian integral
+rewrite.  Clay distance **~0% (<0.1%), unchanged**.

@@ -253,6 +253,77 @@ structure PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
   wilson_hessian_identification : wilsonHessianIdentification
   local_activity_construction : localActivityConstruction
 
+namespace PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+
+variable {dPhys N Nc d L lieDim : ℕ} [NeZero N] [NeZero L]
+
+/-- The Gaussian-change record carried by the separated localized-Gaussian
+source package.  This is only a repackaging of the explicit pushforward field;
+the source package still has to prove that field. -/
+noncomputable def gaussianChange
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (hsource :
+      PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+        D root physicalGaussian rootLocalization
+        wilsonHessianIdentification localActivityConstruction) :
+    PhysicalGaugeCMP116Dictionary.PhysicalGaugeCMP116GaussianChange D :=
+  PhysicalGaugeCMP116Dictionary.PhysicalGaugeCMP116GaussianChange.ofDictionaryRoot
+    D root physicalGaussian hsource.gaussian_pushforward
+
+@[simp] theorem gaussianChange_map
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (hsource :
+      PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+        D root physicalGaussian rootLocalization
+        wilsonHessianIdentification localActivityConstruction) :
+    hsource.gaussianChange.gaussianCoordinateMap =
+      D.gaussianRootMap root :=
+  rfl
+
+/-- Source-package form of the canonical Gaussian pushforward integral
+rewrite.  This exposes the existing `gaussian_pushforward` field to downstream
+activity estimates without restating the pushforward identity at every call
+site. -/
+theorem integral_gaussianRootMap_eq
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (hsource :
+      PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+        D root physicalGaussian rootLocalization
+        wilsonHessianIdentification localActivityConstruction)
+    (f : PhysicalGaugeOneCochain dPhys N Nc → ℂ)
+    (hf : AEStronglyMeasurable f physicalGaussian) :
+    ∫ ξ, f (D.gaussianRootMap root ξ)
+        ∂(balabanCMP116Dmu0 (Cube d L) lieDim) =
+      ∫ A, f A ∂physicalGaussian :=
+  PhysicalGaugeCMP116Dictionary.PhysicalGaugeCMP116GaussianChange.integral_ofDictionaryRoot
+    D root physicalGaussian hsource.gaussian_pushforward f hf
+
+end PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+
 /-- Build the existing localized-Gaussian activity certificate from separated
 dictionary-backed source hypotheses, using the canonical amplitude
 `H0 * weight`. -/
