@@ -178,6 +178,28 @@ theorem fluctuationSupport_activity_subset_activeSupport
 
 end PhysicalGaugeCMP116ActivityAdapter
 
+/-- Universal CMP116 first-activity raw metric decay over an Appendix-F
+polymer family.
+
+This is the raw `H(X)` bound consumed by the first localized activity/K# layer.
+It is not the second-Ursell `H#` residual estimate. -/
+def BalabanCMP116RawMetricDecay
+    {d L : ℕ} [NeZero L]
+    {lieDim : Nat}
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    (H0 κ : ℝ) : Prop :=
+  ∀ (ψ : ∀ b : Cube d L, Ψ b)
+    (φ : ∀ _ : Cube d L, Fin lieDim → ℝ)
+    X, X ∈ Λ →
+      ‖(F.activity X).globalEval ψ φ‖ ≤
+        H0 * appendixFHoleExpWeight HF κ X.val
+
 /-- Source-facing transport package from a physical localized Gaussian activity
 certificate to a CMP116 localized activity family.
 
@@ -227,6 +249,44 @@ structure PhysicalGaugeCMP116ActivityTransport
   weight_domination :
     ∀ X, X ∈ Λ → weight X ≤ appendixFHoleExpWeight HF κ X.val
 
+namespace BalabanCMP116LocalizedActivityFamily
+
+/-- Extract the CMP116 localized family carried by a physical/CMP116 transport
+package.
+
+This is intentionally a projection from the full transport package.  It is not
+a derivation from the physical certificate or from covariance localization
+alone: the package already contains the CMP116 family, its measurability, and
+its support fields. -/
+def of_physicalLocalizedGaussianActivityCertificate
+    {dPhys N Nc d L : ℕ} [NeZero N] [NeZero L]
+    {lieDim : Nat} {Ψ : Cube d L → Type*}
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound H0 κ : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N)}
+    {amplitude weight : OmegaPolymerType HF z → ℝ}
+    {sourceConstruction : Prop}
+    (T :
+      PhysicalGaugeCMP116ActivityTransport (lieDim := lieDim) (Ψ := Ψ) HF z Λ
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight physicalActivity physicalActiveSupport amplitude weight
+        H0 κ sourceConstruction) :
+    BalabanCMP116LocalizedActivityFamily
+      (Cube d L) lieDim Ψ (OmegaPolymerType HF z) :=
+  T.family
+
+end BalabanCMP116LocalizedActivityFamily
+
 /-- The source transport package immediately supplies the CMP116 Appendix-F
 support hypotheses. -/
 theorem physicalGaugeCMP116SupportHypotheses_of_transport
@@ -258,6 +318,46 @@ theorem physicalGaugeCMP116SupportHypotheses_of_transport
     BalabanCMP116AppendixFSupportHypotheses.of_activeSupport_subset_skeleton
       T.activeSupport_subset_skeleton
 
+/-- Transport a physical raw-decay estimate through the exact physical/CMP116
+field dictionary to the named CMP116 raw metric-decay predicate. -/
+theorem balabanCMP116RawMetricDecay_of_physicalGaugeRawActivityDecay
+    {dPhys N Nc d L : ℕ} [NeZero N] [NeZero L]
+    {lieDim : Nat} {Ψ : Cube d L → Type*}
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound H0 κ : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N)}
+    {amplitude weight : OmegaPolymerType HF z → ℝ}
+    {sourceConstruction : Prop}
+    (T :
+      PhysicalGaugeCMP116ActivityTransport (lieDim := lieDim) (Ψ := Ψ) HF z Λ
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight physicalActivity physicalActiveSupport amplitude weight
+        H0 κ sourceConstruction)
+    (hphysical :
+      PhysicalGaugeRawActivityDecay physicalActivity weight H0)
+    (hH0 : 0 ≤ H0) :
+    BalabanCMP116RawMetricDecay HF z Λ T.family H0 κ := by
+  intro ψ φ X hX
+  calc
+    ‖(T.family.activity X).globalEval ψ φ‖ =
+        ‖(physicalActivity X).globalEval
+          (T.spectatorTransport ψ) (T.fluctuationTransport φ)‖ := by
+      rw [T.globalEval_eq X ψ φ]
+    _ ≤ H0 * weight X :=
+      hphysical X (T.spectatorTransport ψ) (T.fluctuationTransport φ)
+    _ ≤ H0 * appendixFHoleExpWeight HF κ X.val :=
+      mul_le_mul_of_nonneg_left (T.weight_domination X hX) hH0
+
 /-- The source transport package converts the physical localized-Gaussian
 raw-decay estimate into the CMP116 `hraw` shape consumed by Appendix F. -/
 theorem balabanCMP116_hraw_of_physicalGaugeCMP116ActivityTransport
@@ -288,16 +388,10 @@ theorem balabanCMP116_hraw_of_physicalGaugeCMP116ActivityTransport
       (φ : ∀ _ : Cube d L, Fin lieDim → Real) X, X ∈ Λ →
       ‖(T.family.activity X).globalEval ψ φ‖ ≤
         H0 * appendixFHoleExpWeight HF κ X.val := by
-  intro ψ φ X hX
-  calc
-    ‖(T.family.activity X).globalEval ψ φ‖ =
-        ‖(physicalActivity X).globalEval
-          (T.spectatorTransport ψ) (T.fluctuationTransport φ)‖ := by
-      rw [T.globalEval_eq X ψ φ]
-    _ ≤ H0 * weight X :=
-      physicalGaugeRawActivityDecay_of_localizedGaussianActivityCertificate
-        T.certificate X (T.spectatorTransport ψ) (T.fluctuationTransport φ)
-    _ ≤ H0 * appendixFHoleExpWeight HF κ X.val :=
-      mul_le_mul_of_nonneg_left (T.weight_domination X hX) hH0
+  exact
+    balabanCMP116RawMetricDecay_of_physicalGaugeRawActivityDecay T
+      (physicalGaugeRawActivityDecay_of_localizedGaussianActivityCertificate
+        T.certificate)
+      hH0
 
 end YangMills.RG

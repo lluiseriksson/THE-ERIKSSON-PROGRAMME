@@ -10117,7 +10117,7 @@ The second theorem uses the already-proved fixed-volume
 `exists_flatGaugeHodgePoincare` to choose some `CP`, while deliberately keeping
 the budget condition explicit for that selected constant.
 
-Verification targets:
+Verification:
 
 ```
 lake env lean YangMills\RG\PhysicalGaugeFixedPrecision.lean
@@ -10831,3 +10831,54 @@ does not construct `BalabanCMP116LocalizedActivityFamily` from the physical
 certificate, prove Ω-locality, prove strong measurability, identify the Wilson
 fluctuation activity, prove Gaussian pushforward, compare metrics/constants,
 or discharge physical `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 282 (2026-06-23, **named CMP116 raw metric decay bridge**
+`YangMills.RG.PhysicalGaugeCMP116ActivityAdapter`; core 8344)
+
+This addendum names and factors the first-activity raw metric-decay bridge.
+The new public declarations are:
+
+```
+BalabanCMP116RawMetricDecay
+BalabanCMP116LocalizedActivityFamily.of_physicalLocalizedGaussianActivityCertificate
+balabanCMP116RawMetricDecay_of_physicalGaugeRawActivityDecay
+```
+
+`BalabanCMP116RawMetricDecay` is the universal CMP116 `H(X)` pointwise bound
+over an Appendix-F polymer family:
+
+```
+∀ ψ φ X, X ∈ Λ →
+  ‖(F.activity X).globalEval ψ φ‖ ≤
+    H0 * appendixFHoleExpWeight HF κ X.val
+```
+
+It is explicitly the first localized activity bound, not the second-Ursell
+`H#` residual estimate.  The family constructor is deliberately only a
+projection from `PhysicalGaugeCMP116ActivityTransport`; it does not derive the
+CMP116 family from the physical certificate or covariance localization alone.
+The raw-decay theorem uses only exact `globalEval` preservation, a named
+`PhysicalGaugeRawActivityDecay`, the weight domination field, and `0 ≤ H0`.
+The existing `balabanCMP116_hraw_of_physicalGaugeCMP116ActivityTransport` is
+now a compatibility specialization of this named predicate.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityAdapter
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean
+```
+
+The broad `rg` scan only matches the file-level oracle-target comment in this
+module; a declaration-shaped scan has no `sorry`/`admit`/`axiom` hits.
+
+**Honest scope.** This commit names and factors an existing conditional bridge.
+It does not prove physical raw decay, construct the CMP116 localized family,
+prove Ω-locality, prove strong measurability, prove rooted summability, or
+prove the Appendix-F `H#` residual estimate.  Clay distance
+**~0% (<0.1%), unchanged**.

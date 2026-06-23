@@ -1179,3 +1179,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.inner_characterL2_sum_sum
 #print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.norm_sq_characterL2_sum
 #print axioms YangMills.ClayCore.ContinuousUnitaryMatrixRep.norm_sq_characterL2_sum_sub_sum
+
+#print axioms YangMills.RG.BalabanCMP116RawMetricDecay
+#print axioms YangMills.RG.BalabanCMP116LocalizedActivityFamily.of_physicalLocalizedGaussianActivityCertificate
+#print axioms YangMills.RG.balabanCMP116RawMetricDecay_of_physicalGaugeRawActivityDecay

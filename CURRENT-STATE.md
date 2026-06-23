@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 281.
+Addendum 282.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -129,6 +129,15 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   hypothesis shape.  Ω-locality, strong measurability, Gaussian preservation,
   metric normalization, and the actual physical construction of the transport
   package remain open.
+  The same bridge now names the universal first-activity CMP116 raw metric
+  decay predicate `BalabanCMP116RawMetricDecay`, exposes the carried CMP116
+  family as
+  `BalabanCMP116LocalizedActivityFamily.of_physicalLocalizedGaussianActivityCertificate`,
+  and factors the physical-to-CMP116 raw-decay transport through
+  `balabanCMP116RawMetricDecay_of_physicalGaugeRawActivityDecay`.  The older
+  `balabanCMP116_hraw_of_physicalGaugeCMP116ActivityTransport` theorem is now a
+  compatibility specialization of that named predicate; it still does not
+  construct the CMP116 family or prove the physical raw estimate.
   The full-periodic
   cochain layer `YangMills/RG/PhysicalGaugeCochains.lean` now fixes the
   physical positive-bond coordinate convention for `su(N)` coordinates,
