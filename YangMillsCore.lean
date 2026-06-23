@@ -469,6 +469,8 @@ import YangMills.RG.AppendixFHsharpLeafSource
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
 -- Raw-source CMP116/H# consumer for the marginal lattice M3 assembly.
 import YangMills.RG.PhysicalGaugeCMP116RawM3
+-- Executable dependency graph for the raw-source M3 frontier fields.
+import YangMills.RG.M3FrontierDependencies
 -- Named frontier for the raw-source CMP116/H# hypothesis surface.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier
 import YangMills.RG.Ubar

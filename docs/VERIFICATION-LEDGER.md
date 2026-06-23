@@ -11647,3 +11647,50 @@ Wilson-Hessian identification, local activity construction, raw pointwise
 decay, Appendix-F support and weight transport, rooted H# remainder identity,
 profile/half-budget estimates, marginal flow, IR decay, `hRpoly`, and the
 continuum problem all remain open.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 301 (2026-06-23, **executable M3 frontier dependency graph**
+`YangMills.RG.M3FrontierDependencies`; core 8352)
+
+This addendum adds an executable audit graph for `CMP116RawSourceM3Frontier`.
+`CMP116RawSourceM3FrontierField` has one constructor for each of the 30
+frontier fields, `M3FrontierHypothesisKind` classifies them as analytic,
+geometric, measure-theoretic, or RG-flow facts, and
+`M3FrontierDependencyGraph` records the current derived spine:
+
+```
+frontier fields -> rawSourceScaleFamily -> rawSourceHsharpUVDecay
+  -> marginalM3Assembly
+```
+
+The graph checks are theorem-backed:
+
+```
+M3FrontierDependencyGraph.isAcyclic_eq_true
+M3FrontierDependencyGraph.allFrontierFieldsCovered_eq_true
+M3FrontierDependencyGraph.derivedNodesHavePositiveRank_eq_true
+```
+
+The companion note is `docs/M3-FRONTIER-DEPENDENCIES.md`.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\M3FrontierDependencies.lean
+lake build YangMills.RG.M3FrontierDependencies
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\M3FrontierDependencies.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\M3-FRONTIER-DEPENDENCIES.md
+```
+
+The new oracle entries report no project axioms.
+
+**Honest scope.** This checkpoint is an audit layer only.  It proves no
+physical source theorem, adds no frontier field, and does not make `hraw`,
+H# decay, `SingleScaleUVDecay`, or the M3 conclusion into source assumptions.
+The concrete covariance/root certificate, Gaussian pushforward,
+Wilson-Hessian identification, local activity construction, raw pointwise
+decay, Appendix-F support and weight transport, rooted H# remainder identity,
+profile/half-budget estimates, marginal flow, IR decay, `hRpoly`, and the
+continuum problem all remain open.  Clay distance **~0% (<0.1%), unchanged**.

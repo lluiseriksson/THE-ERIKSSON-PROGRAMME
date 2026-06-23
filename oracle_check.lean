@@ -1274,6 +1274,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116RawHsharpUVAmplitude
 #print axioms YangMills.RG.lattice_mass_gap_of_cmp116RawSource_hsharp_marginal
 #print axioms YangMills.RG.lattice_mass_gap_of_cmp116RawSourceM3Frontier
+#print axioms YangMills.RG.M3FrontierDependencyGraph.isAcyclic_eq_true
+#print axioms YangMills.RG.M3FrontierDependencyGraph.allFrontierFieldsCovered_eq_true
+#print axioms YangMills.RG.M3FrontierDependencyGraph.derivedNodesHavePositiveRank_eq_true
 #print axioms YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier
 #print axioms YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier.singleScaleUVDecay
 #print axioms YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier.lattice_mass_gap_marginal

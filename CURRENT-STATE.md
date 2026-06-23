@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 300.
+Addendum 301.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8351 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8352 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -1158,6 +1158,12 @@ also exposes `CMP116RawSourceM3Frontier` and
 frontier together with the marginal-flow and IR consumer-side hypotheses.  The
 truncation schedule remains a theorem parameter rather than a frontier field,
 because no frontier hypothesis constrains it.
+The dependency graph for that frontier is now executable in
+`YangMills/RG/M3FrontierDependencies.lean`, with one graph node per frontier
+field, role classifications, derived nodes for the raw-source scale family,
+H# UV decay, and M3 assembly, and Boolean/theorem checks for acyclicity and
+field coverage.  The companion note is
+[`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md).
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper
