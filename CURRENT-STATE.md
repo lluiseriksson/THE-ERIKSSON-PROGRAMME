@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 298.
+Addendum 299.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8349 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8351 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -1144,6 +1144,14 @@ through it via `lattice_mass_gap_of_cmp116RawSource_hsharp_marginal`.  This
 removes the intermediate top-level `SingleScaleUVDecay` premise from that
 conditional M3 endpoint, while keeping the raw-source/H# hypotheses, marginal
 flow recursion, positivity/smallness of `g`, and IR bound explicit.
+The follow-on frontier module
+`YangMills/RG/PhysicalGaugeCMP116RawHsharpFrontier.lean` names that full
+raw-source/H# hypothesis boundary as
+`PhysicalGaugeCMP116RawHsharpFrontier` and projects it into both
+`singleScaleUVDecay` and the marginal M3 consumer.  This makes the remaining
+source obligations auditable as one bundle; it does not prove the Hessian,
+Gaussian pushforward, covariance-root localization, source activity, H#
+profile, marginal-flow, or IR estimates.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper
