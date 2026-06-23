@@ -231,6 +231,15 @@ def allFrontierFieldsCovered : Bool :=
   CMP116RawSourceM3FrontierField.all.all
     (fun f => M3FrontierDependencyNode.all.contains (.field f))
 
+/-- All frontier fields consumed as inputs by at least one derived node. -/
+def allInputFields : List CMP116RawSourceM3FrontierField :=
+  rawSourceScaleFamilyInputs ++ rawSourceHsharpUVInputs ++ marginalAssemblyInputs
+
+/-- Every frontier field is used by the current derived dependency spine. -/
+def allFrontierFieldsUsed : Bool :=
+  CMP116RawSourceM3FrontierField.all.all
+    (fun f => allInputFields.contains f)
+
 /-- Derived formal consumers are not frontier/source fields. -/
 def derivedNodesHavePositiveRank : Bool :=
   [.rawSourceScaleFamily, .rawSourceHsharpUVDecay, .marginalM3Assembly].all
@@ -243,6 +252,10 @@ theorem allFrontierFieldsCovered_eq_true :
     allFrontierFieldsCovered = true := by
   decide
 
+theorem allFrontierFieldsUsed_eq_true :
+    allFrontierFieldsUsed = true := by
+  decide
+
 theorem derivedNodesHavePositiveRank_eq_true :
     derivedNodesHavePositiveRank = true := by
   decide
@@ -252,6 +265,7 @@ end M3FrontierDependencyGraph
 #guard CMP116RawSourceM3FrontierField.all.length == 30
 #guard M3FrontierDependencyGraph.isAcyclic
 #guard M3FrontierDependencyGraph.allFrontierFieldsCovered
+#guard M3FrontierDependencyGraph.allFrontierFieldsUsed
 #guard M3FrontierDependencyGraph.derivedNodesHavePositiveRank
 
 end YangMills.RG

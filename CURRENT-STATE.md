@@ -1162,7 +1162,9 @@ The dependency graph for that frontier is now executable in
 `YangMills/RG/M3FrontierDependencies.lean`, with one graph node per frontier
 field, role classifications, derived nodes for the raw-source scale family,
 H# UV decay, and M3 assembly, and Boolean/theorem checks for acyclicity and
-field coverage.  The companion note is
+field coverage.  It now also checks that every frontier field is consumed by at
+least one derived-node input list, so the audit catches both missing nodes and
+currently unused frontier fields.  The companion note is
 [`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md).
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now

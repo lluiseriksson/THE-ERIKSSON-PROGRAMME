@@ -18,6 +18,7 @@ Executable checks in Lean verify:
 
 * the graph is acyclic by a declared topological rank;
 * all 30 frontier fields have graph nodes;
+* all 30 frontier fields are consumed by at least one derived-node input list;
 * derived formal consumers have positive rank and are not source-field nodes.
 
 This is an audit layer only.  It proves no physical source theorem and does not

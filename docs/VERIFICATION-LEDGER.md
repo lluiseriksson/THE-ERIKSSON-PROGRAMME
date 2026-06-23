@@ -11667,6 +11667,7 @@ The graph checks are theorem-backed:
 ```
 M3FrontierDependencyGraph.isAcyclic_eq_true
 M3FrontierDependencyGraph.allFrontierFieldsCovered_eq_true
+M3FrontierDependencyGraph.allFrontierFieldsUsed_eq_true
 M3FrontierDependencyGraph.derivedNodesHavePositiveRank_eq_true
 ```
 
@@ -11690,6 +11691,43 @@ The new oracle entries report no project axioms.
 physical source theorem, adds no frontier field, and does not make `hraw`,
 H# decay, `SingleScaleUVDecay`, or the M3 conclusion into source assumptions.
 The concrete covariance/root certificate, Gaussian pushforward,
+Wilson-Hessian identification, local activity construction, raw pointwise
+decay, Appendix-F support and weight transport, rooted H# remainder identity,
+profile/half-budget estimates, marginal flow, IR decay, `hRpoly`, and the
+continuum problem all remain open.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 302 (2026-06-23, **M3 frontier edge-use coverage**
+`YangMills.RG.M3FrontierDependencies`; core 8352)
+
+This addendum strengthens the executable audit graph for
+`CMP116RawSourceM3Frontier`.  In addition to checking that every frontier field
+has a graph node, the graph now checks that every frontier field is consumed by
+at least one derived-node input list:
+
+```
+M3FrontierDependencyGraph.allInputFields
+M3FrontierDependencyGraph.allFrontierFieldsUsed
+M3FrontierDependencyGraph.allFrontierFieldsUsed_eq_true
+```
+
+The companion note `docs/M3-FRONTIER-DEPENDENCIES.md` records the new invariant.
+The new oracle entry reports no axioms.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\M3FrontierDependencies.lean
+lake build YangMills.RG.M3FrontierDependencies
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\M3FrontierDependencies.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\M3-FRONTIER-DEPENDENCIES.md
+```
+
+**Honest scope.** This remains an audit-only checkpoint.  It does not prove any
+physical source theorem or construct a witness for the M3 frontier.  The
+concrete covariance/root certificate, Gaussian pushforward,
 Wilson-Hessian identification, local activity construction, raw pointwise
 decay, Appendix-F support and weight transport, rooted H# remainder identity,
 profile/half-budget estimates, marginal flow, IR decay, `hRpoly`, and the
