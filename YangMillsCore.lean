@@ -327,6 +327,10 @@ import YangMills.RG.GaussianPi
 -- CMP116 small-field bridge seed: after `B' = (C^(k))^(1/2) X`, the `X`
 -- fluctuation law `dmu0` is an ultralocal product Gaussian over bonds.
 import YangMills.RG.BalabanCMP116Dmu0
+-- Finite physical/CMP116 coordinate dictionary: exact scalar-coordinate
+-- packing between CMP116 cube fields and physical positive-bond cochains,
+-- with support-agreement transfer but no analytic raw-activity assertion.
+import YangMills.RG.PhysicalGaugeCMP116Dictionary
 -- CMP116 localization bridge: once Balaban's generalized random-walk support
 -- theorem supplies localized `H(Z)` supports, `dmu0` gives Ω-component
 -- factorization for the Appendix-F local-activity substrate.

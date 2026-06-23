@@ -1054,6 +1054,18 @@ last step: a future source theorem must supply a CMP116 localized family plus
 field transports preserving `globalEval`, skeleton support localization, and
 weight domination; Lean then derives the support hypotheses and `hraw` bound
 consumed by Appendix F.
+The corrected upstream route now also has an exact finite coordinate
+dictionary in `YangMills.RG.PhysicalGaugeCMP116Dictionary`.  It identifies
+flattened CMP116 scalar coordinates `Cube d L × Fin lieDim` with flattened
+physical scalar coordinates `PhysicalBond dPhys N × Fin (Nc^2 - 1)`, enforces
+that scalar coordinates map only inside their assigned cube, and derives the
+induced pull/push maps between CMP116 coordinate fields and physical
+one-cochains.  The pull/push maps are inverse and form a linear equivalence,
+and `pullFluctuationCochain_agreeOn_iff` gives the exact support-agreement
+translation for bonds assigned to a cube set.  This is product-coordinate
+bookkeeping only: it does not prove a physical Gaussian change of variables,
+root localization, Wilson-Hessian identification, or physical raw activity
+decay.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper

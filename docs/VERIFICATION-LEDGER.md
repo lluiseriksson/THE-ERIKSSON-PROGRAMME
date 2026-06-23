@@ -10928,3 +10928,56 @@ localize a physical covariance root, identify a Wilson Hessian, or prove any
 Appendix-F cluster estimate.  The Addendum 282 projection remains only a
 conditional compatibility bridge, not the constructive route.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 284 (2026-06-23, **physical/CMP116 coordinate dictionary**
+`YangMills.RG.PhysicalGaugeCMP116Dictionary`; core 8346)
+
+This addendum adds the first exact finite dictionary between physical
+positive-bond degrees of freedom and CMP116 cube coordinates.  The new public
+declarations include:
+
+```
+CMP116CoordIndex
+PhysicalGaugeCoordIndex
+PhysicalGaugeCMP116SiteMap
+PhysicalGaugeCMP116SiteMap.physicalBondsOver
+PhysicalGaugeCMP116Dictionary
+PhysicalGaugeCMP116Dictionary.coordEquiv_symm_cell
+PhysicalGaugeCMP116Dictionary.pullFluctuationCochain
+PhysicalGaugeCMP116Dictionary.pushFluctuation
+PhysicalGaugeCMP116Dictionary.pushFluctuation_pullFluctuationCochain
+PhysicalGaugeCMP116Dictionary.pullFluctuationCochain_pushFluctuation
+PhysicalGaugeCMP116Dictionary.fluctuationFieldLinearEquiv
+PhysicalGaugeCMP116Dictionary.pullFluctuationCochain_agreeOn_iff
+PhysicalGaugeCMP116Dictionary.PhysicalGaugeCMP116GaussianChange
+```
+
+The structure identifies scalar coordinates
+`Cube d L × Fin lieDim` with
+`PhysicalBond dPhys N × Fin (Nc^2 - 1)` and carries the cell-compatibility law
+that the associated physical bond maps back to the original CMP116 cube.  The
+induced pull/push maps between CMP116 coordinate fields and physical
+one-cochains are exact inverses, and the support-agreement theorem states that
+agreement on a cube set is equivalent to agreement after pulling back on all
+physical bonds assigned to that cube set.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116Dictionary.lean
+lake build YangMills.RG.PhysicalGaugeCMP116Dictionary
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116Dictionary.lean
+rg -n "PhysicalLocalizedGaussianActivityCertificate|weight_domination|raw_bound|decay_bound|H0|κ|root" YangMills\RG\PhysicalGaugeCMP116Dictionary.lean
+```
+
+The final grep is expected to return empty.
+
+**Honest scope.** This commit fixes only finite scalar-coordinate packing and
+support-agreement transfer.  It does not construct a polymer-local raw
+activity, prove a physical Gaussian change of variables, localize the physical
+square-root map, identify a Wilson Hessian, or prove any Appendix-F estimate.
+Clay distance **~0% (<0.1%), unchanged**.
