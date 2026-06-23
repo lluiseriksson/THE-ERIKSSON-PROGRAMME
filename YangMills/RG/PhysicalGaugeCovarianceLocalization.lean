@@ -195,4 +195,135 @@ theorem flatGaugeFixedLocalizedCovarianceCertificate_of_kernelBound
       flatGaugeFixedCovarianceCLM_psd
         ρ Sigma δ ha hP hδ hSigmaδ hbudget y
 
+/-- Source-facing covariance-root certificate.
+
+This is the next interface after a localized covariance certificate: a future
+source theorem may identify a concrete square root (or Gaussian-coordinate
+map) `root` and prove its own norm and kernel bounds.  The square-root
+semantics are deliberately fields, not consequences of the covariance
+certificate. -/
+structure PhysicalLocalizedCovarianceRootCertificate
+    {d N Nc : ℕ} [NeZero N]
+    (precision covariance root :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc)
+    (covNormBound rootNormBound : ℝ)
+    (covWeight rootWeight :
+      PhysicalBond d N → PhysicalBond d N → ℝ) : Prop where
+  covariance_certificate :
+    PhysicalLocalizedCovarianceCertificate
+      precision covariance covNormBound covWeight
+  root_square :
+    root.comp root = covariance
+  root_norm_bound :
+    ‖root‖ ≤ rootNormBound
+  root_selfAdjoint_form :
+    ∀ x y : PhysicalGaugeOneCochain d N Nc,
+      inner ℝ x (root y) = inner ℝ (root x) y
+  root_psd :
+    ∀ y : PhysicalGaugeOneCochain d N Nc,
+      0 ≤ inner ℝ y (root y)
+  root_kernel_bound :
+    PhysicalCovarianceKernelBound root rootWeight
+
+/-- Assemble a localized covariance-root certificate from explicit source
+inputs.
+
+This theorem performs no spectral construction; it only packages a localized
+covariance certificate together with source-supplied square-root data. -/
+theorem physicalLocalizedCovarianceRootCertificate_of_source
+    {d N Nc : ℕ} [NeZero N]
+    {precision covariance root :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d N → PhysicalBond d N → ℝ}
+    (hcov :
+      PhysicalLocalizedCovarianceCertificate
+        precision covariance covNormBound covWeight)
+    (hrootSquare : root.comp root = covariance)
+    (hrootNorm : ‖root‖ ≤ rootNormBound)
+    (hrootSelfAdjoint :
+      ∀ x y : PhysicalGaugeOneCochain d N Nc,
+        inner ℝ x (root y) = inner ℝ (root x) y)
+    (hrootPsd :
+      ∀ y : PhysicalGaugeOneCochain d N Nc,
+        0 ≤ inner ℝ y (root y))
+    (hrootKernel :
+      PhysicalCovarianceKernelBound root rootWeight) :
+    PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight
+      rootWeight := by
+  exact
+    { covariance_certificate := hcov
+      root_square := hrootSquare
+      root_norm_bound := hrootNorm
+      root_selfAdjoint_form := hrootSelfAdjoint
+      root_psd := hrootPsd
+      root_kernel_bound := hrootKernel }
+
+/-- The fixed-volume flat physical covariance admits a localized root
+certificate as soon as source theorems supply the root identity and root
+localization.
+
+The theorem intentionally does not construct `root`.  It keeps the missing
+analysis visible as `hrootSquare`, `hrootNorm`, `hrootSelfAdjoint`,
+`hrootPsd`, and `hrootKernel`. -/
+theorem flatGaugeFixedLocalizedCovarianceRootCertificate_of_source
+    {ι : Type*}
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    (Sigma :
+      ι →
+        FinePhysicalOneCochain d L N' Nc →L[ℝ]
+          FinePhysicalOneCochain d L N' Nc)
+    (δ : ι → ℝ)
+    {a CP rootNormBound : ℝ}
+    (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare d L N' Nc ρ CP)
+    (hδ : Summable δ)
+    (hSigmaδ :
+      ∀ i, ‖Sigma i‖ ≤ δ i)
+    (hbudget :
+      (∑' i, δ i) < min 1 a / CP)
+    (root :
+      FinePhysicalOneCochain d L N' Nc →L[ℝ]
+        FinePhysicalOneCochain d L N' Nc)
+    (covWeight rootWeight :
+      PhysicalBond d (L * N') → PhysicalBond d (L * N') → ℝ)
+    (hcovKernel :
+      PhysicalCovarianceKernelBound
+        (flatGaugeFixedCovarianceCLM
+          ρ Sigma δ ha hP hδ hSigmaδ hbudget)
+        covWeight)
+    (hrootSquare :
+      root.comp root =
+        flatGaugeFixedCovarianceCLM
+          ρ Sigma δ ha hP hδ hSigmaδ hbudget)
+    (hrootNorm : ‖root‖ ≤ rootNormBound)
+    (hrootSelfAdjoint :
+      ∀ x y : FinePhysicalOneCochain d L N' Nc,
+        inner ℝ x (root y) = inner ℝ (root x) y)
+    (hrootPsd :
+      ∀ y : FinePhysicalOneCochain d L N' Nc,
+        0 ≤ inner ℝ y (root y))
+    (hrootKernel :
+      PhysicalCovarianceKernelBound root rootWeight) :
+    PhysicalLocalizedCovarianceRootCertificate
+      (flatGaugeFixedPrecisionCLM d L N' Nc ρ a Sigma)
+      (flatGaugeFixedCovarianceCLM
+        ρ Sigma δ ha hP hδ hSigmaδ hbudget)
+      root
+      (gaugeFixedResidualCoercivityConstant δ a CP)⁻¹
+      rootNormBound
+      covWeight
+      rootWeight := by
+  exact
+    physicalLocalizedCovarianceRootCertificate_of_source
+      (flatGaugeFixedLocalizedCovarianceCertificate_of_kernelBound
+        ρ Sigma δ ha hP hδ hSigmaδ hbudget covWeight hcovKernel)
+      hrootSquare hrootNorm hrootSelfAdjoint hrootPsd hrootKernel
+
 end YangMills.RG

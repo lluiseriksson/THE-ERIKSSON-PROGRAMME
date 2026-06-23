@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 267.
+Addendum 268.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -25,7 +25,7 @@ the axiom oracle, and the verification ledger.
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
 | Conditional M3 assembly | `90% [#########.]` | the assembly is verified; the UV producer remains explicit |
 | Appendix-F/H# bridge to UV consumer | `78% [########..]` | source-facing endpoints exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `65% [######....]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, and the source-facing covariance localization API are in Lean |
+| P4 physical-operator vertical slice | `66% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, and source-facing covariance/root localization APIs are in Lean |
 | Concrete `hRpoly` discharge | `40% [####......]` | the live mathematical frontier |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
@@ -97,8 +97,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `YangMills/RG/PhysicalGaugeCovarianceLocalization.lean` adds single-bond
   source cochains, kernel/finite-range/exponential covariance-localization
   predicates, and a certificate bundling the exact flat covariance with a
-  supplied source-facing kernel bound.  The small perturbation budget, lack of
-  volume-uniform constants, and actual covariance decay proof remain exposed.
+  supplied source-facing kernel bound.  It also adds a covariance-root
+  certificate that consumes a localized covariance certificate while keeping
+  the square-root identity, self-adjoint/PSD root structure, root norm bound,
+  and root kernel localization as explicit source hypotheses.  The small
+  perturbation budget, lack of volume-uniform constants, and actual covariance
+  or covariance-root decay proof remain exposed.
   The full-periodic
   cochain layer `YangMills/RG/PhysicalGaugeCochains.lean` now fixes the
   physical positive-bond coordinate convention for `su(N)` coordinates,

@@ -10244,3 +10244,45 @@ volume-uniform constants, or `hraw`.  The actual analytic work remains the
 source theorem that supplies `PhysicalCovarianceKernelBound` for the physical
 covariance in a volume-uniform, gauge-fixed setting.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 268 (2026-06-23, **source-facing covariance-root localization
+API** `YangMills.RG.PhysicalGaugeCovarianceLocalization`; core 8342)
+
+This addendum extends the P4 source-facing covariance-localization interface
+with the next honest endpoint for the Gaussian-coordinate map
+`B' = C^{1/2} X`.
+
+The same module now adds:
+
+```
+PhysicalLocalizedCovarianceRootCertificate
+physicalLocalizedCovarianceRootCertificate_of_source
+flatGaugeFixedLocalizedCovarianceRootCertificate_of_source
+```
+
+The generic certificate consumes a localized covariance certificate and then
+records, as explicit source inputs, the root square identity
+`root.comp root = covariance`, an operator-norm bound for `root`, the
+self-adjoint quadratic-form orientation, PSD of the root, and a pointwise
+kernel bound for `root`.  The flat wrapper specializes this package to
+`flatGaugeFixedPrecisionCLM` and `flatGaugeFixedCovarianceCLM` while keeping
+all square-root analysis and localization in source hypotheses.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCovarianceLocalization.lean
+lake build YangMills.RG.PhysicalGaugeCovarianceLocalization
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCovarianceLocalization.lean
+```
+
+**Honest scope.** This addendum does not construct a spectral square root,
+prove square-root localization, identify the physical Wilson Hessian, produce
+volume-uniform constants, or construct raw Balaban activities.  It only fixes
+the Lean target that future source estimates must satisfy before a localized
+Gaussian fluctuation activity can be assembled.  Clay distance **~0%
+(<0.1%), unchanged**.

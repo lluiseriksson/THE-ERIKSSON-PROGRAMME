@@ -51,7 +51,7 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 | Exponential IR clustering | `100% [##########]` | theorem-fed lattice Gibbs clustering with a non-empty window |
 | Conditional M3 lattice mass-gap assembly | `90% [#########.]` | the assembly exists; the UV producer remains a named hypothesis |
 | Appendix-F / H# bridge to UV consumer | `78% [########..]` | source-facing wrappers, second-gas adapters, half-budget endpoints |
-| P4 physical-operator vertical slice | `65% [######....]` | physical cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat covariance adapters, and a source-facing localization API are in Lean |
+| P4 physical-operator vertical slice | `66% [#######...]` | physical cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat covariance adapters, and source-facing covariance/root localization APIs are in Lean |
 | Concrete YM activity decay `hRpoly` | `40% [####......]` | many adapters are verified; the real Balaban/Dimock estimate is open |
 | Peter-Weyl / character infrastructure | `58% [######....]` | generic Schur API and finite character algebra; compact Peter-Weyl completeness is still absent |
 | Continuum construction / Clay | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
@@ -85,9 +85,10 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 * The P4 material now includes deterministic gauge-fixed precision
   composition, exact covariance from strict coercivity, full-periodic physical
   cochains, a fixed-volume flat Hodge/block Poincare closure, flat physical
-  precision/covariance adapters, a source-facing covariance localization API,
-  and the finite-torus curl/divergence classification.  It still does not
-  construct the physical Yang-Mills Hessian or prove covariance decay.
+  precision/covariance adapters, source-facing covariance/root localization
+  APIs, and the finite-torus curl/divergence classification.  It still does
+  not construct the physical Yang-Mills Hessian or prove covariance/root
+  decay.
 * The Appendix-F/H# material is a verified consumer/adapter layer.  It does not
   by itself prove the Balaban/Dimock source theorem.
 * Peter-Weyl completeness for compact groups is still not supplied here.
@@ -344,7 +345,7 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 | Document | What it is |
 |---|---|
-| [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, 267 addenda. Start here to check any claim. |
+| [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, 268 addenda. Start here to check any claim. |
 | [`HYPOTHESIS_FRONTIER.md`](HYPOTHESIS_FRONTIER.md) | The carried hypotheses, audited. Currently exactly one (§6.3 UV), now sharpened to a per-scale RG contraction. |
 | [`FOUNDATIONS.md`](FOUNDATIONS.md) | What "proved" means here; the vacuity audit doctrine. |
 | [`CLEANUP_PLAN.md`](CLEANUP_PLAN.md) | How the sound core was carved out of the legacy sprawl. |
