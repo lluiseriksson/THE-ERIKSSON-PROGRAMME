@@ -3,20 +3,23 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.GaugeFixedPrecision
+import YangMills.RG.GaugeFixedCovariance
 import YangMills.RG.PhysicalGaugeFlatPoincare
 
 /-!
-# Fixed-volume flat physical gauge-fixed precision
+# Fixed-volume flat physical gauge-fixed precision and covariance
 
 This module is the first physical-cochain adapter after the full-periodic flat
 Hodge/block Poincare theorem.  It specializes the source-independent
 `K0 + a Q†Q - Σ` coercivity API to the flat physical Hodge operator and the
-flat block constraint on finite periodic positive-bond one-cochains.
+flat block constraint on finite periodic positive-bond one-cochains, and then
+specializes the exact finite-dimensional covariance construction to the same
+operator.
 
 The result is intentionally fixed-volume.  It does not assert a
 volume-uniform Poincare constant, identify the flat Hodge operator with a
-Wilson Hessian, localize the inverse covariance, or construct `hraw`.
+Wilson Hessian, localize the inverse covariance or its square root, or
+construct `hraw`.
 -/
 
 namespace YangMills.RG
@@ -118,5 +121,186 @@ theorem exists_flatGaugeFixedPrecision_coerciveWithPositiveConstant
     ⟨CP,
       flatGaugeFixedPrecision_coerciveWithPositiveConstant_of_flatPoincare
         ρ Sigma δ ha hP hδ hSigmaδ (hbudget CP hP)⟩
+
+/-- The exact finite-dimensional covariance of the fixed-volume flat physical
+gauge-fixed precision shell.
+
+This packages the inverse of `flatGaugeFixedPrecisionCLM` under the same
+fixed-volume Poincare and strict perturbation-budget hypotheses as the
+coercivity theorem.  It does not assert localization or identify the operator
+with a Wilson Hessian. -/
+noncomputable def flatGaugeFixedCovarianceCLM
+    {ι : Type*}
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    (Sigma :
+      ι →
+        FinePhysicalOneCochain d L N' Nc →L[ℝ]
+          FinePhysicalOneCochain d L N' Nc)
+    (δ : ι → ℝ)
+    {a CP : ℝ}
+    (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare d L N' Nc ρ CP)
+    (hδ : Summable δ)
+    (hSigmaδ :
+      ∀ i, ‖Sigma i‖ ≤ δ i)
+    (hbudget :
+      (∑' i, δ i) < min 1 a / CP) :
+    FinePhysicalOneCochain d L N' Nc →L[ℝ]
+      FinePhysicalOneCochain d L N' Nc :=
+  covarianceOfGaugeFixedPrecisionCLM
+    (flatGaugeHodgeK0CLM d (L * N') Nc ρ)
+    (flatBlockConstraintQCLM (d := d) (Nc := Nc) L N')
+    Sigma δ ha hP.1
+    (fun A =>
+      flatGaugeHodgeK0_nonnegative_right
+        (d := d) (N := L * N') (Nc := Nc) ρ A)
+    hP.2 hδ hSigmaδ hbudget
+
+/-- The flat physical covariance is a left inverse of the flat physical
+gauge-fixed precision. -/
+theorem flatGaugeFixedCovarianceCLM_comp_precision
+    {ι : Type*}
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    (Sigma :
+      ι →
+        FinePhysicalOneCochain d L N' Nc →L[ℝ]
+          FinePhysicalOneCochain d L N' Nc)
+    (δ : ι → ℝ)
+    {a CP : ℝ}
+    (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare d L N' Nc ρ CP)
+    (hδ : Summable δ)
+    (hSigmaδ :
+      ∀ i, ‖Sigma i‖ ≤ δ i)
+    (hbudget :
+      (∑' i, δ i) < min 1 a / CP) :
+    (flatGaugeFixedCovarianceCLM
+        ρ Sigma δ ha hP hδ hSigmaδ hbudget).comp
+      (flatGaugeFixedPrecisionCLM d L N' Nc ρ a Sigma) =
+        ContinuousLinearMap.id ℝ (FinePhysicalOneCochain d L N' Nc) := by
+  simpa [flatGaugeFixedCovarianceCLM, flatGaugeFixedPrecisionCLM] using
+    covarianceOfGaugeFixedPrecisionCLM_comp_precision
+      (flatGaugeHodgeK0CLM d (L * N') Nc ρ)
+      (flatBlockConstraintQCLM (d := d) (Nc := Nc) L N')
+      Sigma δ ha hP.1
+      (fun A =>
+        flatGaugeHodgeK0_nonnegative_right
+          (d := d) (N := L * N') (Nc := Nc) ρ A)
+      hP.2 hδ hSigmaδ hbudget
+
+/-- The flat physical covariance is a right inverse of the flat physical
+gauge-fixed precision. -/
+theorem precision_comp_flatGaugeFixedCovarianceCLM
+    {ι : Type*}
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    (Sigma :
+      ι →
+        FinePhysicalOneCochain d L N' Nc →L[ℝ]
+          FinePhysicalOneCochain d L N' Nc)
+    (δ : ι → ℝ)
+    {a CP : ℝ}
+    (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare d L N' Nc ρ CP)
+    (hδ : Summable δ)
+    (hSigmaδ :
+      ∀ i, ‖Sigma i‖ ≤ δ i)
+    (hbudget :
+      (∑' i, δ i) < min 1 a / CP) :
+    (flatGaugeFixedPrecisionCLM d L N' Nc ρ a Sigma).comp
+      (flatGaugeFixedCovarianceCLM
+        ρ Sigma δ ha hP hδ hSigmaδ hbudget) =
+        ContinuousLinearMap.id ℝ (FinePhysicalOneCochain d L N' Nc) := by
+  simpa [flatGaugeFixedCovarianceCLM, flatGaugeFixedPrecisionCLM] using
+    precision_comp_covarianceOfGaugeFixedPrecisionCLM
+      (flatGaugeHodgeK0CLM d (L * N') Nc ρ)
+      (flatBlockConstraintQCLM (d := d) (Nc := Nc) L N')
+      Sigma δ ha hP.1
+      (fun A =>
+        flatGaugeHodgeK0_nonnegative_right
+          (d := d) (N := L * N') (Nc := Nc) ρ A)
+      hP.2 hδ hSigmaδ hbudget
+
+/-- Operator-norm bound for the fixed-volume flat physical covariance. -/
+theorem norm_flatGaugeFixedCovarianceCLM_le
+    {ι : Type*}
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    (Sigma :
+      ι →
+        FinePhysicalOneCochain d L N' Nc →L[ℝ]
+          FinePhysicalOneCochain d L N' Nc)
+    (δ : ι → ℝ)
+    {a CP : ℝ}
+    (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare d L N' Nc ρ CP)
+    (hδ : Summable δ)
+    (hSigmaδ :
+      ∀ i, ‖Sigma i‖ ≤ δ i)
+    (hbudget :
+      (∑' i, δ i) < min 1 a / CP) :
+    ‖flatGaugeFixedCovarianceCLM
+        ρ Sigma δ ha hP hδ hSigmaδ hbudget‖ ≤
+      (gaugeFixedResidualCoercivityConstant δ a CP)⁻¹ := by
+  change
+    ‖covarianceOfGaugeFixedPrecisionCLM
+        (flatGaugeHodgeK0CLM d (L * N') Nc ρ)
+        (flatBlockConstraintQCLM (d := d) (Nc := Nc) L N')
+        Sigma δ ha hP.1
+        (fun A =>
+          flatGaugeHodgeK0_nonnegative_right
+            (d := d) (N := L * N') (Nc := Nc) ρ A)
+        hP.2 hδ hSigmaδ hbudget‖ ≤
+      (gaugeFixedResidualCoercivityConstant δ a CP)⁻¹
+  exact
+    norm_covarianceOfGaugeFixedPrecisionCLM_le
+      (flatGaugeHodgeK0CLM d (L * N') Nc ρ)
+      (flatBlockConstraintQCLM (d := d) (Nc := Nc) L N')
+      Sigma δ ha hP.1
+      (fun A =>
+        flatGaugeHodgeK0_nonnegative_right
+          (d := d) (N := L * N') (Nc := Nc) ρ A)
+      hP.2 hδ hSigmaδ hbudget
+
+/-- Positive-semidefinite quadratic form for the fixed-volume flat physical
+covariance. -/
+theorem flatGaugeFixedCovarianceCLM_psd
+    {ι : Type*}
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    (Sigma :
+      ι →
+        FinePhysicalOneCochain d L N' Nc →L[ℝ]
+          FinePhysicalOneCochain d L N' Nc)
+    (δ : ι → ℝ)
+    {a CP : ℝ}
+    (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare d L N' Nc ρ CP)
+    (hδ : Summable δ)
+    (hSigmaδ :
+      ∀ i, ‖Sigma i‖ ≤ δ i)
+    (hbudget :
+      (∑' i, δ i) < min 1 a / CP)
+    (y : FinePhysicalOneCochain d L N' Nc) :
+    0 ≤
+      inner ℝ y
+        (flatGaugeFixedCovarianceCLM
+          ρ Sigma δ ha hP hδ hSigmaδ hbudget y) := by
+  simpa [flatGaugeFixedCovarianceCLM] using
+    covarianceOfGaugeFixedPrecisionCLM_psd
+      (flatGaugeHodgeK0CLM d (L * N') Nc ρ)
+      (flatBlockConstraintQCLM (d := d) (Nc := Nc) L N')
+      Sigma δ ha hP.1
+      (fun A =>
+        flatGaugeHodgeK0_nonnegative_right
+          (d := d) (N := L * N') (Nc := Nc) ρ A)
+      hP.2 hδ hSigmaδ hbudget y
 
 end YangMills.RG

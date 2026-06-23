@@ -25,7 +25,7 @@ the axiom oracle, and the verification ledger.
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
 | Conditional M3 assembly | `90% [#########.]` | the assembly is verified; the UV producer remains explicit |
 | Appendix-F/H# bridge to UV consumer | `78% [########..]` | source-facing endpoints exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `63% [######....]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, and the flat physical gauge-fixed precision adapter are in Lean |
+| P4 physical-operator vertical slice | `64% [######....]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, and flat physical precision/covariance adapters are in Lean |
 | Concrete `hRpoly` discharge | `40% [####......]` | the live mathematical frontier |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
@@ -91,8 +91,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   the block-Poincare and norm-budget hypotheses alone.  The physical adapter
   `YangMills/RG/PhysicalGaugeFixedPrecision.lean` now specializes the same
   strict coercivity theorem to the fixed-volume flat Hodge operator and flat
-  block constraint, still with the small perturbation budget and lack of
-  volume-uniform constants exposed.  The full-periodic
+  block constraint, and also gives the exact finite-dimensional covariance,
+  inverse identities, operator-norm bound, and PSD quadratic form for that
+  fixed-volume shell.  The small perturbation budget and lack of
+  volume-uniform constants remain exposed.  The full-periodic
   cochain layer `YangMills/RG/PhysicalGaugeCochains.lean` now fixes the
   physical positive-bond coordinate convention for `su(N)` coordinates,
   carries an explicit adjoint-action model, defines background-covariant

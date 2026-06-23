@@ -10134,3 +10134,51 @@ Hodge/block Poincare endpoint into the generic perturbative precision API.  It
 does not prove volume-uniform Poincare/Gaffney constants, Wilson-Hessian
 identification, propagator localization, covariance-root localization, or
 `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 266 (2026-06-23, **fixed-volume flat physical covariance
+adapter** `YangMills.RG.PhysicalGaugeFixedPrecision`; core 8341)
+
+This addendum extends the fixed-volume flat physical precision adapter from
+Addendum 265 by specializing the exact finite-dimensional covariance API to
+the same operator
+
+```
+flatGaugeFixedPrecisionCLM = K0 + a Q†Q - Σ
+```
+
+where `K0` is the trivial-background flat Hodge operator and `Q` is the flat
+block constraint on finite periodic positive-bond physical one-cochains.
+
+The module now adds:
+
+```
+flatGaugeFixedCovarianceCLM
+flatGaugeFixedCovarianceCLM_comp_precision
+precision_comp_flatGaugeFixedCovarianceCLM
+norm_flatGaugeFixedCovarianceCLM_le
+flatGaugeFixedCovarianceCLM_psd
+```
+
+These theorems consume the same explicit fixed-volume
+`FlatGaugeHodgePoincare`, positive soft mass, summable perturbation budget, and
+strict residual-budget hypotheses as the coercivity theorem.  They prove both
+operator inverse identities, the operator bound by the inverse residual
+coercivity constant, and positivity of the covariance quadratic form.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeFixedPrecision.lean
+lake build YangMills.RG.PhysicalGaugeFixedPrecision
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeFixedPrecision.lean
+```
+
+**Honest scope.** This is still finite-dimensional fixed-volume inverse
+bookkeeping.  It does not prove decay/locality of the covariance, construct or
+localize a covariance square root, identify the precision with a Wilson
+Hessian, prove volume-uniform Poincare/Gaffney constants, or construct `hraw`.
+Clay distance **~0% (<0.1%), unchanged**.
