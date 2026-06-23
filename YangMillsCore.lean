@@ -219,6 +219,7 @@ import YangMills.RG.PhysicalGaugeCochains
 import YangMills.RG.FiniteTorusCurlDiv
 import YangMills.RG.PhysicalGaugeFlatPoincare
 import YangMills.RG.PhysicalGaugeFixedPrecision
+import YangMills.RG.PhysicalGaugeCovarianceLocalization
 import YangMills.RG.PhysicalGaugeHodgePoincare
 import YangMills.RG.PhysicalGaugeOperator
 -- UV-S2 brick G3: the free RG step on a Gaussian field — the covariance

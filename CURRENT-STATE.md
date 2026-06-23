@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 265.
+Addendum 267.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -25,7 +25,7 @@ the axiom oracle, and the verification ledger.
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
 | Conditional M3 assembly | `90% [#########.]` | the assembly is verified; the UV producer remains explicit |
 | Appendix-F/H# bridge to UV consumer | `78% [########..]` | source-facing endpoints exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `64% [######....]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, and flat physical precision/covariance adapters are in Lean |
+| P4 physical-operator vertical slice | `65% [######....]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, and the source-facing covariance localization API are in Lean |
 | Concrete `hRpoly` discharge | `40% [####......]` | the live mathematical frontier |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8340 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8342 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -93,8 +93,13 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   strict coercivity theorem to the fixed-volume flat Hodge operator and flat
   block constraint, and also gives the exact finite-dimensional covariance,
   inverse identities, operator-norm bound, and PSD quadratic form for that
-  fixed-volume shell.  The small perturbation budget and lack of
-  volume-uniform constants remain exposed.  The full-periodic
+  fixed-volume shell.  The companion localization interface
+  `YangMills/RG/PhysicalGaugeCovarianceLocalization.lean` adds single-bond
+  source cochains, kernel/finite-range/exponential covariance-localization
+  predicates, and a certificate bundling the exact flat covariance with a
+  supplied source-facing kernel bound.  The small perturbation budget, lack of
+  volume-uniform constants, and actual covariance decay proof remain exposed.
+  The full-periodic
   cochain layer `YangMills/RG/PhysicalGaugeCochains.lean` now fixes the
   physical positive-bond coordinate convention for `su(N)` coordinates,
   carries an explicit adjoint-action model, defines background-covariant

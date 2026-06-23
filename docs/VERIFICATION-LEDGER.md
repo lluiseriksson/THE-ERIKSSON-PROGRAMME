@@ -10182,3 +10182,65 @@ bookkeeping.  It does not prove decay/locality of the covariance, construct or
 localize a covariance square root, identify the precision with a Wilson
 Hessian, prove volume-uniform Poincare/Gaffney constants, or construct `hraw`.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 267 (2026-06-23, **source-facing physical covariance localization
+API** `YangMills.RG.PhysicalGaugeCovarianceLocalization`; core 8342)
+
+This addendum records a small P4 interface layer between the exact
+fixed-volume flat physical covariance and the future analytic localization
+theorem.  The new module
+
+```
+YangMills/RG/PhysicalGaugeCovarianceLocalization.lean
+```
+
+adds the coordinate source probe
+
+```
+singlePhysicalBondCochain
+```
+
+and source-facing predicates
+
+```
+PhysicalCovarianceKernelBound
+PhysicalCovarianceFiniteRange
+PhysicalCovarianceExponentialKernelBound
+```
+
+together with the conversion
+
+```
+physicalCovarianceKernelBound_of_exponential
+```
+
+and the certificate
+
+```
+PhysicalLocalizedCovarianceCertificate
+flatGaugeFixedLocalizedCovarianceCertificate_of_kernelBound
+```
+
+The final theorem instantiates the certificate with
+`flatGaugeFixedPrecisionCLM` and `flatGaugeFixedCovarianceCLM`, bundling the
+already-proved inverse identities, operator norm bound, and PSD quadratic form
+with a supplied kernel bound.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCovarianceLocalization.lean
+lake build YangMills.RG.PhysicalGaugeCovarianceLocalization
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCovarianceLocalization.lean
+```
+
+**Honest scope.** This addendum does not prove covariance decay, finite range,
+locality of a covariance square root, Wilson-Hessian identification,
+volume-uniform constants, or `hraw`.  The actual analytic work remains the
+source theorem that supplies `PhysicalCovarianceKernelBound` for the physical
+covariance in a volume-uniform, gauge-fixed setting.  Clay distance **~0%
+(<0.1%), unchanged**.
