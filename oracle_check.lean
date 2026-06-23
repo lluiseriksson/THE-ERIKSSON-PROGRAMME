@@ -1280,6 +1280,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.M3FrontierDependencyGraph.derivedNodesHavePositiveRank_eq_true
 #check YangMills.RG.BalabanCMP116SourceAssumptions
 #check YangMills.RG.BalabanCMP116SourceAssumptions.rawSource
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity_rawSource
 #check YangMills.RG.BalabanCMP116SourceTheorem
 #check YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components
 #print axioms YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier

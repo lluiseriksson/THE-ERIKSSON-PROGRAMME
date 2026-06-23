@@ -11819,3 +11819,39 @@ Only a `#check` entry is added to `oracle_check.lean` for this projection.
 **Honest scope.** This is projection plumbing only.  It proves no Balaban source
 fact, no frontier witness, no mass-gap endpoint, and no continuum theorem.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 305 (2026-06-23, **rooted H# identity raw-source projection bridge**
+`YangMills.RG.BalabanCMP116SourceTheorem`; core 8353)
+
+This addendum adds the projection-consistency theorem:
+
+```
+BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity_rawSource
+```
+
+It restates the `BalabanCMP116SourceAssumptions` field
+`rooted_hsharp_remainder_identity` using the canonical
+`BalabanCMP116SourceAssumptions.rawSource` projection, so later consumers can
+refer to one raw-source package instead of duplicating the local
+five-component construction.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMills.RG.BalabanCMP116SourceTheorem
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\BalabanCMP116SourceTheorem.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entry is a `#print axioms` for the projection theorem and
+reports `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This theorem proves only that the already-assumed rooted H#
+identity is definitionally compatible with the canonical raw-source projection.
+It does not prove the physical rooted remainder identity, any Balaban source
+fact, any frontier witness, or any continuum theorem.  Clay distance
+**~0% (<0.1%), unchanged**.

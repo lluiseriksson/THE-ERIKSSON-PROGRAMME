@@ -1176,7 +1176,11 @@ pointwise decay fields.  No Balaban source theorem or frontier witness is
 proved by this target declaration.  The helper
 `BalabanCMP116SourceAssumptions.rawSource` now provides the canonical
 scale-indexed projection from those five unfolded source fields back to the
-existing raw-source package, without constructing the full frontier.
+existing raw-source package, without constructing the full frontier.  The
+projection-consistency theorem
+`BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity_rawSource`
+restates the record's rooted H# identity using that canonical raw-source
+projection; it does not prove the physical remainder identity itself.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper

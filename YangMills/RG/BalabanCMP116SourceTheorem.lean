@@ -364,6 +364,90 @@ def rawSource
       (source.local_physical_activity_construction t k)
       (source.raw_pointwise_decay t k)
 
+/-- The rooted H# identity from the source-assumption record, restated with the
+canonical `source.rawSource` projection.
+
+This is a projection-consistency theorem only.  It does not prove the physical
+rooted remainder identity; that identity is still exactly the source field
+`rooted_hsharp_remainder_identity`. -/
+theorem rooted_hsharp_remainder_identity_rawSource
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    {zCarrier : Finset (Cube d L) → ℂ}
+    {r : Cube d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    {Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k))}
+    {D : ∀ _t _k : ℕ, PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {spectatorPull :
+      ∀ _t _k : ℕ, ∀ _ : PhysicalBond dPhys N,
+        β → SUNLieCoord Nc}
+    {precision covariance root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      ∀ _t _k : ℕ, Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {covNormBound rootNormBound : ∀ _t _k : ℕ, ℝ}
+    {covWeight rootWeight :
+      ∀ _t _k : ℕ, PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          Finset (PhysicalBond dPhys N)}
+    {weight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℝ}
+    {ν : ℕ → ℕ → Measure β}
+    {covIR : ℕ → ℝ}
+    {Rsc : ℕ → ℕ → ℝ}
+    {g : ℕ → ℝ}
+    {amplitude : ℕ → ℕ → ℝ}
+    {C1 C Hbar ε c0 betaFlow kappa kappa0 : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop}
+    (source :
+      BalabanCMP116SourceAssumptions
+        zCarrier r z Λ D spectatorPull
+        precision covariance root physicalGaussian
+        covNormBound rootNormBound covWeight rootWeight
+        physicalActivity physicalActiveSupport weight
+        ν covIR Rsc g amplitude
+        C1 C Hbar ε c0 betaFlow kappa kappa0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction) :
+    ∀ t k,
+      Rsc t k =
+        ∑' P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val },
+          Complex.re
+            (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+              HF (z t k) (Λ t k)
+              ((physicalGaugeCMP116RawSourceScaleFamily
+                Λ D spectatorPull precision covariance root
+                physicalGaussian
+                covNormBound rootNormBound covWeight rootWeight
+                physicalActivity physicalActiveSupport weight
+                amplitude kappa
+                rootLocalization
+                wilsonHessianIdentification
+                localActivityConstruction
+                source.covariance_root_certificate
+                source.rawSource
+                source.spectator_support_subset
+                source.fluctuation_support_subset
+                source.amplitude_nonneg
+                source.weight_nonneg
+                source.activity_stronglyMeasurable
+                source.active_support_subset_omega
+                source.active_support_subset_skeleton
+                source.weight_domination) t k)
+              (ν t k) P.val.val) := by
+  simpa [rawSource] using source.rooted_hsharp_remainder_identity
+
 end BalabanCMP116SourceAssumptions
 
 /-- Checked target statement for the future Balaban CMP116 source theorem.
