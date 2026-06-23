@@ -1265,5 +1265,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.physicalGaugeCMP116ActivityTransport_of_cmp116RawSource
 #print axioms YangMills.RG.balabanCMP116RawMetricDecay_of_cmp116RawSource
 #print axioms YangMills.RG.balabanCMP116_hraw_of_cmp116RawSource
+#print axioms YangMills.RG.physicalGaugeCMP116RawSourceScaleFamily
+#print axioms YangMills.RG.singleScaleUVDecay_of_cmp116RawSource_hsharp
 #print axioms YangMills.RG.BalabanCMP116LocalizedActivityFamily.ofDictionary
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityTransport.ofDictionary

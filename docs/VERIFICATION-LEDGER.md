@@ -11396,3 +11396,44 @@ once those source/geometric hypotheses are supplied, the existing transport
 stack reaches `BalabanCMP116RawMetricDecay` and the exact Appendix-F `hraw`
 premise without another separate raw-decay argument.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 295 (2026-06-23, **raw-source H# scale consumer**
+`YangMills.RG.PhysicalGaugeCMP116RawHsharp`; core 8349)
+
+This addendum adds the scale-indexed consumer for the raw-source CMP116 path.
+The new module packages the canonically transported raw-source localized
+families over RG scales and feeds them into the existing source-measurable H#
+UV endpoint.  The theorem discharges the endpoint's `hraw` premise from
+`balabanCMP116_hraw_of_cmp116RawSource`; it does not replace the H# remainder,
+probability, geometry, smallness, or profile hypotheses.
+
+The new public declarations are:
+
+```
+physicalGaugeCMP116RawSourceScaleFamily
+singleScaleUVDecay_of_cmp116RawSource_hsharp
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116RawHsharp.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116RawHsharp.lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint is source-independent plumbing.  It still
+does not prove source measurability, Appendix-F support localization, weight
+domination, integrability, the rooted physical remainder identity, the
+probability law, the H# smallness/profile inequalities, Gaussian pushforward,
+covariance-root localization, Wilson-Hessian identification, local physical
+activity construction, raw pointwise estimates, or `hRpoly`.  It only shows
+that once a scale-indexed raw-source package supplies those inputs, the
+existing H# theorem consumes the transported family without a separate `hraw`
+argument.  Clay distance **~0% (<0.1%), unchanged**.

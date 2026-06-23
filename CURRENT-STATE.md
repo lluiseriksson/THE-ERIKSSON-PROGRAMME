@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 291.
+Addendum 295.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8348 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8349 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -1120,6 +1120,13 @@ decay adapters, so a single raw-source package plus the still-explicit
 measurability/support/weight hypotheses yields the exact Appendix-F `hraw`
 shape.  This is still conditional plumbing; it does not prove the source
 activity estimate, integrability, or the analytic support/weight hypotheses.
+The follow-on module `YangMills/RG/PhysicalGaugeCMP116RawHsharp.lean` packages
+the same raw-source construction as a scale-indexed CMP116 family and feeds it
+directly to the existing source-measurable H# endpoint via
+`singleScaleUVDecay_of_cmp116RawSource_hsharp`.  This discharges only the H#
+`hraw` premise from the raw-source package; the rooted remainder identity,
+probability law, hole geometry, smallness/profile inequalities,
+integrability, and actual physical source estimates remain explicit.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper
