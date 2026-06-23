@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 277.
+Addendum 278.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -543,7 +543,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   when the second-gas scalar activity agrees on all component polymers contained
   in the declared target, with parallel active-skeleton variants; the evaluated
   `K#` specialization also inherits full-target and skeleton spectator-field
-  agreement wrappers.  This is finite bookkeeping
+  agreement wrappers.  The spectator-integrated `K#` specialization now also
+  exposes the corresponding full-target and skeleton wrappers as scalar
+  integrated-activity extensionality theorems; after both fields are integrated
+  there is no remaining external field-agreement parameter.  This is finite bookkeeping
   only: it does not justify exchanging the finite target sum with the outer
   `tsum`, prove convergence, identify a partition logarithm, prove the
   residual decay rate, or extract a real scalar remainder;

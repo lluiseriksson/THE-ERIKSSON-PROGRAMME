@@ -870,6 +870,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpOfKsharp_eq_of_agreeOn
 #print axioms YangMills.RG.appendixFHoleHsharpOfKsharp_eq_of_agreeOn_skeleton
 #print axioms YangMills.RG.appendixFHoleHsharpOfIntegratedKsharp_eq
+#print axioms YangMills.RG.appendixFHoleHsharpOfIntegratedKsharp_eq_of_agreeOn
+#print axioms YangMills.RG.appendixFHoleHsharpOfIntegratedKsharp_eq_of_agreeOn_skeleton
 -- residual H# adapter: source complex-norm estimates feed the real
 -- omega-rooted UV-decay producer without hiding Dimock's analytic bound.
 #print axioms YangMills.RG.complex_re_contracts_norm

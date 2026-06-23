@@ -10660,3 +10660,42 @@ already-defined Appendix-F `H#` object.  It does not prove convergence of the
 `H#` series, identify it with a logarithm, prove Dimock's residual estimate,
 construct the physical activity map, or discharge `hraw`.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 278 (2026-06-23, **integrated Hsharp finite locality**
+`YangMills.RG.AppendixFHsharp`; core 8343)
+
+This addendum completes the four public finite `H#` locality declarations
+requested by the Hsharp packet by adding the spectator-integrated scalar
+specializations:
+
+```
+appendixFHoleHsharpOfIntegratedKsharp_eq_of_agreeOn
+appendixFHoleHsharpOfIntegratedKsharp_eq_of_agreeOn_skeleton
+```
+
+Since `appendixFHoleHsharpOfIntegratedKsharp` has already integrated both the
+spectator and fluctuation fields, these are not new field-agreement theorems.
+They are scalar integrated-activity extensionality wrappers: target-level
+`H#` is unchanged when the two integrated `z_K` activities agree on every
+component polymer contained in the declared full target, respectively whose
+active skeleton is contained in the declared target skeleton.  The proof is a
+direct application of the existing generic `appendixFHoleHsharp` activity
+extensionality theorem; no integral is unfolded.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\AppendixFHsharp.lean
+lake build YangMills.RG.AppendixFHsharp
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\AppendixFHsharp.lean
+```
+
+**Honest scope.** This is finite support/local-dependence bookkeeping for the
+already-defined Appendix-F integrated `H#` object.  It does not prove
+measurability, integrability, convergence of the `H#` series, identify it with
+a logarithm, prove Dimock's residual estimate, construct the physical activity
+map, or discharge `hraw`.  Clay distance **~0% (<0.1%), unchanged**.

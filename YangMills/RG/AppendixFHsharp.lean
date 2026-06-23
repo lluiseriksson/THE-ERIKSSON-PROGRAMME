@@ -374,4 +374,61 @@ noncomputable def appendixFHoleHsharpOfIntegratedKsharp
       appendixFHoleHsharp HF
         (appendixFHoleIntegratedKsharpActivity HF z Λ Hraw μ ν) Y := rfl
 
+/-- The spectator-integrated `K#` specialization of `H#` only depends on the
+integrated second-gas scalar activity on component polymers contained in the
+declared target union.  Since both spectator and fluctuation fields have already
+been integrated out, this is an extensional scalar-activity wrapper rather than
+a new field-agreement theorem. -/
+theorem appendixFHoleHsharpOfIntegratedKsharp_eq_of_agreeOn
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (Hraw₁ Hraw₂ :
+      OmegaPolymerType HF z →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : MeasureTheory.Measure γ)
+    (ν : MeasureTheory.Measure β)
+    (Y : Finset (Cube d L))
+    (hz :
+      ∀ X : OmegaPolymerType HF
+          (appendixFHoleIntegratedKsharpActivity HF z Λ Hraw₁ μ ν),
+        X.val ⊆ Y →
+          appendixFHoleIntegratedKsharpActivity HF z Λ Hraw₁ μ ν X.val =
+            appendixFHoleIntegratedKsharpActivity HF z Λ Hraw₂ μ ν X.val) :
+    appendixFHoleHsharpOfIntegratedKsharp HF z Λ Hraw₁ μ ν Y =
+      appendixFHoleHsharpOfIntegratedKsharp HF z Λ Hraw₂ μ ν Y := by
+  exact appendixFHoleHsharp_eq_of_activity_eq_on_union
+    HF
+    (appendixFHoleIntegratedKsharpActivity HF z Λ Hraw₁ μ ν)
+    (appendixFHoleIntegratedKsharpActivity HF z Λ Hraw₂ μ ν)
+    Y hz
+
+/-- Active-skeleton variant of
+`appendixFHoleHsharpOfIntegratedKsharp_eq_of_agreeOn`. -/
+theorem appendixFHoleHsharpOfIntegratedKsharp_eq_of_agreeOn_skeleton
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (Hraw₁ Hraw₂ :
+      OmegaPolymerType HF z →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : MeasureTheory.Measure γ)
+    (ν : MeasureTheory.Measure β)
+    (Y : Finset (Cube d L))
+    (hz :
+      ∀ X : OmegaPolymerType HF
+          (appendixFHoleIntegratedKsharpActivity HF z Λ Hraw₁ μ ν),
+        skeleton HF X.val ⊆ skeleton HF Y →
+          appendixFHoleIntegratedKsharpActivity HF z Λ Hraw₁ μ ν X.val =
+            appendixFHoleIntegratedKsharpActivity HF z Λ Hraw₂ μ ν X.val) :
+    appendixFHoleHsharpOfIntegratedKsharp HF z Λ Hraw₁ μ ν Y =
+      appendixFHoleHsharpOfIntegratedKsharp HF z Λ Hraw₂ μ ν Y := by
+  exact appendixFHoleHsharp_eq_of_activity_eq_on_skeleton
+    HF
+    (appendixFHoleIntegratedKsharpActivity HF z Λ Hraw₁ μ ν)
+    (appendixFHoleIntegratedKsharpActivity HF z Λ Hraw₂ μ ν)
+    Y hz
+
 end YangMills.RG
