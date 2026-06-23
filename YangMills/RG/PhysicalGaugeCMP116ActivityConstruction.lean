@@ -322,6 +322,43 @@ theorem integral_gaussianRootMap_eq
   PhysicalGaugeCMP116Dictionary.PhysicalGaugeCMP116GaussianChange.integral_ofDictionaryRoot
     D root physicalGaussian hsource.gaussian_pushforward f hf
 
+/-- Source-package Gaussian integral rewrite specialized to a physical local
+activity.  This is the concrete consumer form needed by source-faithful
+activity estimates: the physical fluctuation field is first viewed as a
+one-cochain `A`, then pulled back to CMP116 product coordinates through
+`D.gaussianRootMap root`. -/
+theorem integral_physicalActivity_gaussianRootMap_eq
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (hsource :
+      PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+        D root physicalGaussian rootLocalization
+        wilsonHessianIdentification localActivityConstruction)
+    (activity : PhysicalGaugeLocalActivity dPhys N Nc)
+    (ψ : PhysicalGaugeField dPhys N Nc)
+    (hf :
+      AEStronglyMeasurable
+        (fun A : PhysicalGaugeOneCochain dPhys N Nc =>
+          activity.globalEval ψ (fun b => A b))
+        physicalGaussian) :
+    ∫ ξ, activity.globalEval ψ
+          (fun b => (D.gaussianRootMap root ξ) b)
+        ∂(balabanCMP116Dmu0 (Cube d L) lieDim) =
+      ∫ A, activity.globalEval ψ
+          (fun b => A b)
+        ∂physicalGaussian :=
+  hsource.integral_gaussianRootMap_eq
+    (fun A : PhysicalGaugeOneCochain dPhys N Nc =>
+      activity.globalEval ψ (fun b => A b))
+    hf
+
 end PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
 
 /-- Build the existing localized-Gaussian activity certificate from separated

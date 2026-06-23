@@ -1092,6 +1092,16 @@ finite-range root operators.  This is still not a producer of `hraw`: the
 physical covariance root, its localization/truncation theorem, concrete
 coordinate chart, local Wilson activities, and Appendix-F raw bounds remain
 separate source obligations.
+The Gaussian-change source package now has its first physical-activity
+consumer:
+`PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.integral_physicalActivity_gaussianRootMap_eq`
+specializes the canonical source-package integral rewrite to
+`PhysicalGaugeLocalActivity.globalEval`.  This is the direct form needed by
+source-faithful activity estimates after the physical fluctuation field is
+pulled back through `D.gaussianRootMap root`.  It still assumes the source
+`gaussian_pushforward` theorem and does not prove root localization,
+Wilson-Hessian identification, local activity construction, raw decay, or
+`hraw`.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper
