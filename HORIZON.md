@@ -25,7 +25,7 @@ Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 > `REPRODUCIBILITY.md`): the strong-coupling
 > **area law** (all four variants) and **IR exponential clustering** are
 > oracle-clean theorems; the **gauge-RG continuum-facing track**
-> (`YangMills/RG/**`, ledger Addenda 23–269) has a theorem-fed
+> (`YangMills/RG/**`, ledger Addenda 23–270) has a theorem-fed
 > averaging/Gaussian/kernel/animal-count substrate, a marginal-coupling
 > summability branch, Appendix-F/H# consumer adapters, integrated second-gas
 > KP routes, coercivity-budget bricks, gauge-fixed precision/covariance

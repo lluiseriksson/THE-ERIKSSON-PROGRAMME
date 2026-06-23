@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 269.
+Addendum 270.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -174,8 +174,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `flatBlockConstraint_controls_constantSector`, including the exact
   normalization
   `‖const_{L*N'} v‖² = ((L : ℝ)^d / (L : ℝ)^2) ‖Q const_{L*N'} v‖²`
-  for the current unscaled line-integral block map.  The same module now
-  defines the conditional bridge `FlatHarmonicKernelClassified`.  The finite
+  for the current unscaled line-integral block map.  It now also proves
+  `flatGaugeHodgePoincare_constantSector_lower_bound`, so any
+  `FlatGaugeHodgePoincare` constant must be at least this constant-sector
+  normalization on a nonzero direction-wise constant mode.  The same module
+  now defines the conditional bridge `FlatHarmonicKernelClassified`.  The finite
   torus module `YangMills/RG/FiniteTorusCurlDiv.lean` now proves the direct
   Laplacian classification theorem `periodicCurlDivKernelClassified` from the
   ordered plaquette curl and backward-divergence stencils, using
@@ -623,7 +626,7 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   bookkeeping suggested by the current notes.  A pointwise estimate
   `|H k n Y| <= M * eps k * (Lleaf * eps k)^n * w Y`, a uniform leaf budget
   `Lleaf * eps k <= q < 1`, a rooted target summability bound
-  `sum w <= Kroot`, and a summable scale budget
+  `sum w <= Kroot`, and a nonnegative summable scale budget
   `eps k <= A * exp(-(c0*t)) * scaleWeight k`, `sum scaleWeight <= G0`,
   imply the iterated total influence bound
   `sum_k sum_n sum_Y |H k n Y| <=

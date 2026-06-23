@@ -18,7 +18,7 @@ bound
 `|H k n Y| <= M * eps k * (Lleaf * eps k)^n * w Y`,
 
 with a uniform leaf budget `Lleaf * eps k <= q < 1`, a rooted target sum
-`sum w <= Kroot`, and a summable scale budget
+`sum w <= Kroot`, and a nonnegative summable scale budget
 `eps k <= A * exp (-(c0 * t)) * scaleWeight k`, then the iterated influence
 
 `sum_k sum_n sum_Y |H k n Y|`
@@ -31,7 +31,8 @@ Honest scope: the module proves only deterministic summation algebra.  It does
 not prove the source activity estimate, the rooted target geometry, the scale
 coupling bound, or any physical Yang--Mills covariance statement.
 
-Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
+Oracle target: `[propext, Classical.choice, Quot.sound]`. No project
+assumptions.
 -/
 
 namespace YangMills.RG
@@ -96,6 +97,7 @@ theorem scaleInfluence_le_of_scale_budget
     (perScale eps scaleWeight : ℕ → ℝ)
     {M A Kroot G0 c0 q t : ℝ}
     (hM : 0 ≤ M) (hA : 0 ≤ A) (hKroot : 0 ≤ Kroot)
+    (hscale_nonneg : ∀ k : ℕ, 0 ≤ scaleWeight k)
     (hscale_sum : Summable scaleWeight)
     (hscale_bound : ∑' k : ℕ, scaleWeight k ≤ G0)
     (hq1 : q < 1)
@@ -115,6 +117,11 @@ theorem scaleInfluence_le_of_scale_budget
     mul_nonneg hA (Real.exp_pos _).le
   have hbig_coeff_nonneg :
       0 ≤ M * A * Kroot * Real.exp (-(c0 * t)) * (1 - q)⁻¹ := by
+    positivity
+  have _hscale_target_nonneg :
+      0 ≤
+        M * A * Kroot * G0 * Real.exp (-(c0 * t)) * (1 - q)⁻¹ := by
+    have hG0 : 0 ≤ G0 := (tsum_nonneg hscale_nonneg).trans hscale_bound
     positivity
   have hterm :
       ∀ k : ℕ,
@@ -159,6 +166,7 @@ theorem tripleInfluence_le_of_geometric_leaf_scale_budget
     (hM : 0 ≤ M) (hLleaf : 0 ≤ Lleaf) (hA : 0 ≤ A)
     (hw_nonneg : ∀ Y : ι, 0 ≤ w Y)
     (hwsum : Summable w) (hwK : ∑' Y : ι, w Y ≤ Kroot)
+    (hscale_nonneg : ∀ k : ℕ, 0 ≤ scaleWeight k)
     (hscale_sum : Summable scaleWeight)
     (hscale_bound : ∑' k : ℕ, scaleWeight k ≤ G0)
     (heps_nonneg : ∀ k : ℕ, 0 ≤ eps k)
@@ -191,7 +199,7 @@ theorem tripleInfluence_le_of_geometric_leaf_scale_budget
   exact scaleInfluence_le_of_scale_budget
     (perScale := fun k : ℕ => ∑' n : ℕ, ∑' Y : ι, |H k n Y|)
     (eps := eps) (scaleWeight := scaleWeight)
-    hM hA hKroot hscale_sum hscale_bound hq1
+    hM hA hKroot hscale_nonneg hscale_sum hscale_bound hq1
     heps_le hk_summable hper
 
 end YangMills.RG

@@ -8,7 +8,7 @@
 > variants — finite-volume/volume-uniform × linearized/exact-activity,
 > ledger Addenda 12–18d); the IR clustering bound (theorem-fed, M3 IR side
 > done); and the **gauge-RG continuum-facing track** (`YangMills/RG/**`,
-> ledger Addenda 23–269).  The averaging/Gaussian/kernel/animal-count
+> ledger Addenda 23–270).  The averaging/Gaussian/kernel/animal-count
 > substrate, marginal-coupling summability branch, Appendix-F/H# consumers,
 > integrated second-gas adapters, coercivity-budget bricks, gauge-fixed
 > precision/covariance composition, full-periodic physical cochains,

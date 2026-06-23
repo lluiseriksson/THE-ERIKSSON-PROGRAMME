@@ -503,4 +503,59 @@ theorem flatBlockConstraint_controls_constantSector {d L N' Nc : ℕ}
   rw [Nat.cast_mul, mul_pow]
   ring
 
+/-- Any full-periodic flat Hodge/block-Poincare constant must control the
+direction-wise constant sector with the sharp normalization forced by the
+current unscaled line-integral block map.
+
+This is a necessary-condition audit theorem: it does not prove
+`FlatGaugeHodgePoincare`, but it prevents later source matching from claiming
+a constant smaller than the constant harmonic sector permits. -/
+theorem flatGaugeHodgePoincare_constantSector_lower_bound
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc]
+    (ρ : SUNAdjointModel Nc)
+    {CP : ℝ}
+    (hP : FlatGaugeHodgePoincare d L N' Nc ρ CP)
+    (v : Fin d → SUNLieCoord Nc)
+    (hv : 0 < ∑ i : Fin d, ‖v i‖ ^ 2) :
+    ((L : ℝ) ^ d / (L : ℝ) ^ 2) ≤ CP := by
+  let A : FinePhysicalOneCochain d L N' Nc :=
+    constantPhysicalGaugeOneCochain
+      (d := d) (N := L * N') (Nc := Nc) v
+  have hmain := hP.2 A
+  have hK :
+      flatGaugeHodgeK0CLM d (L * N') Nc ρ A = 0 := by
+    dsimp [A]
+    exact flatGaugeHodgeK0CLM_constantPhysicalGaugeOneCochain
+      (d := d) (N := L * N') (Nc := Nc) ρ v
+  have hinner : inner ℝ A (flatGaugeHodgeK0CLM d (L * N') Nc ρ A) = 0 := by
+    rw [hK, inner_zero_right]
+  have hQpos :
+      0 <
+        ‖flatBlockConstraintQCLM
+            (d := d) (Nc := Nc) L N' A‖ ^ 2 := by
+    dsimp [A]
+    rw [flatBlockConstraintQCLM_constant_norm_sq]
+    have hLpos : 0 < (L : ℝ) := by
+      exact_mod_cast Nat.pos_of_ne_zero (NeZero.ne L)
+    have hNpos : 0 < (N' : ℝ) := by
+      exact_mod_cast Nat.pos_of_ne_zero (NeZero.ne N')
+    positivity
+  have hineq :
+      ‖A‖ ^ 2 ≤
+        CP *
+          ‖flatBlockConstraintQCLM
+              (d := d) (Nc := Nc) L N' A‖ ^ 2 := by
+    simpa [hinner] using hmain
+  have hnorm :
+      ‖A‖ ^ 2 =
+        ((L : ℝ) ^ d / (L : ℝ) ^ 2) *
+          ‖flatBlockConstraintQCLM
+              (d := d) (Nc := Nc) L N' A‖ ^ 2 := by
+    dsimp [A]
+    exact flatBlockConstraint_controls_constantSector
+      (d := d) (L := L) (N' := N') (Nc := Nc) v
+  rw [hnorm] at hineq
+  exact (mul_le_mul_iff_of_pos_right hQpos).mp hineq
+
 end YangMills.RG

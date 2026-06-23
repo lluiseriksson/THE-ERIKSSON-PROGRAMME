@@ -10341,3 +10341,48 @@ raw Balaban/CMP activity estimate, or discharge `hraw`.  It only fixes the
 Lean shape of the source theorem needed before the existing Appendix-F/H#
 consumers can receive physical local activities.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 270 (2026-06-23, **Extra High audit: scale-budget sign guard and
+flat constant-sector lower bound** `YangMills.RG.TripleInfinityClosure`,
+`YangMills.RG.PhysicalGaugeFlatPoincare`; core 8343)
+
+Extra High re-audited the latest public physical RG stack and restored two
+semantic guards:
+
+```
+scaleInfluence_le_of_scale_budget
+tripleInfluence_le_of_geometric_leaf_scale_budget
+flatGaugeHodgePoincare_constantSector_lower_bound
+```
+
+The triple-infinity closure now requires the scale profile `scaleWeight` to be
+pointwise nonnegative, matching the source meaning of a summable scale budget.
+This prevents signed summable profiles from being presented as a legitimate
+RG budget.  The flat Poincare audit theorem proves that any
+`FlatGaugeHodgePoincare d L N' Nc rho CP` constant satisfies
+`(L : R)^d / (L : R)^2 <= CP` on a nonzero direction-wise constant sector for
+the current unscaled line-integral block map.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\TripleInfinityClosure.lean
+lake env lean YangMills\RG\PhysicalGaugeFlatPoincare.lean
+lake build YangMills.RG.TripleInfinityClosure
+lake build YangMills.RG.PhysicalGaugeFlatPoincare
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\TripleInfinityClosure.lean YangMills\RG\PhysicalGaugeFlatPoincare.lean
+```
+
+**Audit findings.** `Ubar` remains faithful and non-vacuous: the Mercator
+argument is `rep(D).val - 1`, not `rep(D).val`, and the old unitary
+`||D|| < 1` premise is explicitly marked impossible under norm-one physical
+realizations.  `sunHaarProb_trace_normSq_integral_eq_one` remains a finite
+SU(N) fundamental-character Haar statement only.  The concrete UV assembly and
+physical activity layer still carry the analytic Balaban/Dimock source
+estimates explicitly; they do not prove covariance/root localization, Wilson
+Hessian identification, `hraw`, or a continuum limit.  Clay distance **~0%
+(<0.1%), unchanged**.
