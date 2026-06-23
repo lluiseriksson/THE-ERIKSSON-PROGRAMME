@@ -1270,5 +1270,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.balabanCMP116_hraw_of_cmp116RawSource
 #print axioms YangMills.RG.physicalGaugeCMP116RawSourceScaleFamily
 #print axioms YangMills.RG.singleScaleUVDecay_of_cmp116RawSource_hsharp
+#print axioms YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal
+#print axioms YangMills.RG.cmp116RawHsharpUVAmplitude
+#print axioms YangMills.RG.lattice_mass_gap_of_cmp116RawSource_hsharp_marginal
 #print axioms YangMills.RG.BalabanCMP116LocalizedActivityFamily.ofDictionary
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityTransport.ofDictionary

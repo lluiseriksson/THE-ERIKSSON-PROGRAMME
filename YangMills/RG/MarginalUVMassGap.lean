@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.MarginalCoupling
 import YangMills.Paper.ClusteringToGap
 import YangMills.RG.UVMassGap
+import YangMills.RG.SingleScaleUVDecay
 
 /-!
 # The marginal-coupling UV mass-gap conditional (gauge-RG, honest YM coupling)
@@ -121,6 +122,26 @@ theorem lattice_mass_gap_of_cluster_and_marginal_coupling
   exact lattice_mass_gap_of_per_scale_uv_summable covIR Rsc nsc
     (fun k => g k ^ κ₀) C1 C2 ε c0 (∑' k, g k ^ κ₀)
     hε hc0 hC2 hw hsum le_rfl hIRbound hRpoly
+
+/-- Marginal-coupling mass-gap assembly expressed through the named
+`SingleScaleUVDecay` predicate. -/
+theorem lattice_mass_gap_of_singleScaleUVDecay_marginal
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ) (g : ℕ → ℝ)
+    {C1 C2 ε c0 β κ₀ : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hC2 : 0 ≤ C2) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hUV : SingleScaleUVDecay Rsc g C2 c0 κ₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + C2 * ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  apply lattice_mass_gap_of_cluster_and_marginal_coupling
+    covIR Rsc nsc g hε hc0 hC2 hκ hβ hpos hsmall hrec hIRbound
+  simpa [SingleScaleUVDecay] using hUV
 
 /-- **Marginal coupling with a summable exceptional scale profile.**  The
 mass-gap assembly does not require every scale to obey the rigid marginal

@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 297.
+Addendum 298.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1137,6 +1137,13 @@ directly to the existing source-measurable H# endpoint via
 `hraw` premise from the raw-source package; the rooted remainder identity,
 probability law, hole geometry, smallness/profile inequalities,
 integrability, and actual physical source estimates remain explicit.
+The marginal M3 branch now has the named predicate consumer
+`lattice_mass_gap_of_singleScaleUVDecay_marginal`, and
+`YangMills/RG/PhysicalGaugeCMP116RawM3.lean` routes the raw-source H# producer
+through it via `lattice_mass_gap_of_cmp116RawSource_hsharp_marginal`.  This
+removes the intermediate top-level `SingleScaleUVDecay` premise from that
+conditional M3 endpoint, while keeping the raw-source/H# hypotheses, marginal
+flow recursion, positivity/smallness of `g`, and IR bound explicit.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper

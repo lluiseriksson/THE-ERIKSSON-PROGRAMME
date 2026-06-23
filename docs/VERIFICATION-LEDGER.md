@@ -11519,3 +11519,47 @@ domination, raw pointwise decay, Gaussian pushforward, covariance-root
 localization, Wilson-Hessian identification, H#/K# endpoint smallness,
 `hRpoly`, and the continuum problem all remain open.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 298 (2026-06-23, **raw-source H# to marginal M3**
+`YangMills.RG.PhysicalGaugeCMP116RawM3`; core 8350)
+
+This addendum routes the raw-source CMP116/H# endpoint into the marginal
+lattice M3 assembly.  `YangMills.RG.MarginalUVMassGap` now exposes the named
+predicate consumer `lattice_mass_gap_of_singleScaleUVDecay_marginal`; the new
+module `YangMills.RG.PhysicalGaugeCMP116RawM3` defines the CMP116 H# UV
+amplitude and proves the direct raw-source theorem
+`lattice_mass_gap_of_cmp116RawSource_hsharp_marginal`.
+
+The new public declarations are:
+
+```
+cmp116RawHsharpUVAmplitude
+lattice_mass_gap_of_singleScaleUVDecay_marginal
+lattice_mass_gap_of_cmp116RawSource_hsharp_marginal
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\MarginalUVMassGap.lean
+lake build YangMills.RG.MarginalUVMassGap
+lake env lean YangMills\RG\PhysicalGaugeCMP116RawM3.lean
+lake build YangMills.RG.PhysicalGaugeCMP116RawM3
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\MarginalUVMassGap.lean YangMills\RG\PhysicalGaugeCMP116RawM3.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint adds no new physical/source estimate.  It
+only composes the existing raw-source H# `SingleScaleUVDecay` producer with the
+already verified marginal-coupling lattice assembly.  The rooted H# remainder
+identity, source package, covariance/root localization, Gaussian pushforward,
+Wilson-Hessian identification, local activity construction, support and weight
+domination, strong measurability/integrability, H# profile and half-budget
+inequalities, marginal-flow hypotheses, IR bound, `hRpoly`, and the continuum
+problem all remain open.  Clay distance **~0% (<0.1%), unchanged**.
