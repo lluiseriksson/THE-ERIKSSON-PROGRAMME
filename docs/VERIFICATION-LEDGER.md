@@ -11311,3 +11311,45 @@ identify the Wilson Hessian, construct physical local activities, prove raw
 decay, or discharge `hraw`/`hRpoly`.  It only makes the existing Gaussian
 source package directly consumable by physical local activity estimates.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 293 (2026-06-23, **raw-source compatibility adapter**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8348)
+
+This addendum adds the thin compatibility package requested for the current
+source path.  The new raw-source structure extends the separated
+localized-Gaussian source package with the unfolded physical pointwise raw
+estimate, and the two new adapter theorems derive the existing physical raw
+decay predicate and localized-Gaussian certificate from that one source
+package.
+
+The new public declarations are:
+
+```
+PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+physicalGaugeRawActivityDecay_of_cmp116RawSource
+physicalLocalizedGaussianActivityCertificate_of_cmp116RawSource
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries are expected to remain within
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint still does not prove the Gaussian
+pushforward, covariance-root localization, Wilson-Hessian identification,
+physical local activity construction, or the raw pointwise estimate.  It only
+packages that unfolded raw estimate as a source field and removes the separate
+`PhysicalGaugeRawActivityDecay` premise from the compatibility certificate
+constructor.  It does not discharge `hraw`, `hRpoly`, fluctuation
+integrability, or any continuum-facing obligation.  Clay distance
+**~0% (<0.1%), unchanged**.

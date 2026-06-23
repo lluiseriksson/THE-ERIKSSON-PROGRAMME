@@ -1102,6 +1102,15 @@ pulled back through `D.gaussianRootMap root`.  It still assumes the source
 `gaussian_pushforward` theorem and does not prove root localization,
 Wilson-Hessian identification, local activity construction, raw decay, or
 `hraw`.
+The same construction file now has a thin raw-source compatibility layer:
+`PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses` extends the
+separated Gaussian/root/Hessian/activity source package with the unfolded
+pointwise raw estimate, and Lean derives
+`physicalGaugeRawActivityDecay_of_cmp116RawSource` plus
+`physicalLocalizedGaussianActivityCertificate_of_cmp116RawSource`.  This
+removes one adapter redundancy for future CMP116 transport calls without
+changing the analytic frontier: the raw estimate is still a source hypothesis,
+not a theorem proved from Balaban/CMP116 inputs.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper

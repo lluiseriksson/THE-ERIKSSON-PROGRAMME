@@ -253,6 +253,35 @@ structure PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
   wilson_hessian_identification : wilsonHessianIdentification
   local_activity_construction : localActivityConstruction
 
+/-- Compatibility source package that adds the unfolded physical raw pointwise
+estimate to the separated localized-Gaussian source facts.
+
+This is intentionally still a source package: the new field is the analytic
+raw estimate itself, not a disguised theorem proving it.  The canonical source
+API should eventually replace this compatibility layer with structured source
+objects and source estimates. -/
+structure PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+    {ι : Type*} {dPhys N Nc d L lieDim : ℕ} [NeZero N] [NeZero L]
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc))
+    (physicalActivity : ι → PhysicalGaugeLocalActivity dPhys N Nc)
+    (weight : ι → ℝ)
+    (H0 : ℝ)
+    (rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop) : Prop
+    extends
+      PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+        D root physicalGaussian rootLocalization
+        wilsonHessianIdentification localActivityConstruction where
+  raw_pointwise_decay :
+    ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+      ‖(physicalActivity X).globalEval ψ φ‖ ≤ H0 * weight X
+
 namespace PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
 
 variable {dPhys N Nc d L lieDim : ℕ} [NeZero N] [NeZero L]
@@ -361,6 +390,31 @@ theorem integral_physicalActivity_gaussianRootMap_eq
 
 end PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
 
+/-- The raw-source compatibility package exposes the existing physical raw
+decay predicate by projection from its unfolded pointwise estimate. -/
+theorem physicalGaugeRawActivityDecay_of_cmp116RawSource
+    {ι : Type*} {dPhys N Nc d L lieDim : ℕ} [NeZero N] [NeZero L]
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {physicalActivity : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {weight : ι → ℝ}
+    {H0 : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (hsource :
+      PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        D root physicalGaussian physicalActivity weight H0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction) :
+    PhysicalGaugeRawActivityDecay physicalActivity weight H0 := by
+  intro X ψ φ
+  exact hsource.raw_pointwise_decay X ψ φ
+
 /-- Build the existing localized-Gaussian activity certificate from separated
 dictionary-backed source hypotheses, using the canonical amplitude
 `H0 * weight`. -/
@@ -416,6 +470,62 @@ theorem physicalLocalizedGaussianActivityCertificate_of_cmp116Source
     exact mul_nonneg hH0 (hweight X)
   · intro X ψ φ
     exact rawDecay X ψ φ
+  · intro X
+    rfl
+
+/-- Build the existing localized-Gaussian activity certificate from the
+raw-source compatibility package.  The source package supplies the unfolded
+pointwise raw estimate, so no separate `PhysicalGaugeRawActivityDecay` premise
+is needed. -/
+theorem physicalLocalizedGaussianActivityCertificate_of_cmp116RawSource
+    {ι : Type*} {dPhys N Nc d L lieDim : ℕ} [NeZero N] [NeZero L]
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound H0 : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport : ι → Finset (PhysicalBond dPhys N)}
+    {weight : ι → ℝ}
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (hroot :
+      PhysicalLocalizedCovarianceRootCertificate
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight)
+    (hsource :
+      PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        D root physicalGaussian physicalActivity weight H0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction)
+    (hspectator :
+      ∀ X, (physicalActivity X).spectatorSupport ⊆
+        physicalActiveSupport X)
+    (hfluctuation :
+      ∀ X, (physicalActivity X).fluctuationSupport ⊆
+        physicalActiveSupport X)
+    (hH0 : 0 ≤ H0)
+    (hweight : ∀ X, 0 ≤ weight X) :
+    PhysicalLocalizedGaussianActivityCertificate
+      precision covariance root covNormBound rootNormBound covWeight
+      rootWeight physicalActivity physicalActiveSupport
+      (fun X => H0 * weight X) weight H0
+      (PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        D root physicalGaussian physicalActivity weight H0
+        rootLocalization
+        wilsonHessianIdentification
+        localActivityConstruction) := by
+  refine physicalLocalizedGaussianActivityCertificate_of_source
+    hroot hsource hspectator hfluctuation ?_ hweight ?_ ?_
+  · intro X
+    exact mul_nonneg hH0 (hweight X)
+  · intro X ψ φ
+    exact hsource.raw_pointwise_decay X ψ φ
   · intro X
     rfl
 
