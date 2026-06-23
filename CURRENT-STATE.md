@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 278.
+Addendum 279.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -947,6 +947,12 @@ Appendix-F support hypotheses supply the corresponding support inclusion.
 The evaluated CMP116 second-gas activity now carries the same two dependency
 wrappers, so later scalar KP/factorization code can cite the second-gas layer
 directly instead of unfolding through integrated `K#`.
+The CMP116 `H#` adapter now also exposes the evaluated-`K#` normal form
+`balabanCMP116AppendixFHsharpOfKsharp` and its full-target/skeleton
+spectator-field dependency wrappers.  These are direct consumers of the
+existing `BalabanCMP116AppendixFSupportHypotheses` package and the generic
+Appendix-F `H#` locality theorems; they introduce no new localization or
+measurability assumptions.
 The scalar second-gas CMP116 layer also has the same KP-ready interface after
 spectator integration:
 `balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant` applies the

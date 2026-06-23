@@ -1044,6 +1044,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleHsharpOfIntegratedKsharp_le_residual_of_cluster3_contract
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_cluster3_contract
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_cluster3_contract
+-- CMP116 evaluated H# adapter: normal form plus full-target/skeleton support
+-- dependencies inherited from the existing Appendix-F support package.
+#print axioms YangMills.RG.balabanCMP116AppendixFHsharpOfKsharp_eq_hsharp
+#print axioms YangMills.RG.balabanCMP116AppendixFHsharpOfKsharp_eq_of_agreeOn
+#print axioms YangMills.RG.balabanCMP116AppendixFHsharpOfKsharp_eq_of_agreeOn_skeleton
 -- source-facing packaged geometric H# profiles: one record now supplies the
 -- summability, tail, residual, and UV consumers without duplicating fields.
 #print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.summable_terms

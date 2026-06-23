@@ -10699,3 +10699,42 @@ already-defined Appendix-F integrated `H#` object.  It does not prove
 measurability, integrability, convergence of the `H#` series, identify it with
 a logarithm, prove Dimock's residual estimate, construct the physical activity
 map, or discharge `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 279 (2026-06-23, **CMP116 evaluated Hsharp support dependencies**
+`YangMills.RG.BalabanCMP116HsharpAdapter`; core 8343)
+
+This addendum adds the CMP116-facing evaluated-`K#` normal form for the
+second-Ursell object:
+
+```
+balabanCMP116AppendixFHsharpOfKsharp
+balabanCMP116AppendixFHsharpOfKsharp_eq_hsharp
+balabanCMP116AppendixFHsharpOfKsharp_eq_of_agreeOn
+balabanCMP116AppendixFHsharpOfKsharp_eq_of_agreeOn_skeleton
+```
+
+The full-target and active-skeleton wrappers compose the existing
+`BalabanCMP116AppendixFSupportHypotheses` support package with the generic
+Appendix-F `appendixFHoleHsharpOfKsharp` dependency theorems.  No new support
+obligation is introduced: the same single source-side active-support inclusion
+`F.activeSupport X subset skeleton HF X.val` supplies both the full target and
+active-skeleton versions.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\BalabanCMP116HsharpAdapter.lean
+lake build YangMills.RG.BalabanCMP116HsharpAdapter
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\BalabanCMP116HsharpAdapter.lean
+```
+
+**Honest scope.** This is a finite support-dependency and naming bridge for
+the CMP116 evaluated `H#` layer.  It does not prove CMP116 random-walk
+localization, measurability of the physical integrand, Wilson-Hessian
+identification, covariance-root decay, convergence of the `H#` series,
+Dimock's residual estimate, the physical activity map, or `hraw`.  Clay
+distance **~0% (<0.1%), unchanged**.

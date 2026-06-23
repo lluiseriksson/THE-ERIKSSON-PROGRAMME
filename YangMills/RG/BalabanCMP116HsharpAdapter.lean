@@ -30,6 +30,84 @@ namespace YangMills.RG
 open MeasureTheory
 open scoped BigOperators
 
+/-! ## CMP116 evaluated `K#` as a second-Ursell `H#` input -/
+
+/-- The CMP116 evaluated `H#` normal form before spectator integration: the
+second-Ursell `H#` applied to the evaluated CMP116 `K#` activity at a spectator
+field. -/
+noncomputable def balabanCMP116AppendixFHsharpOfKsharp
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    (ψ : ∀ x, Ψ x)
+    (Y : Finset (Cube d L)) : ℂ :=
+  appendixFHoleHsharpOfKsharp HF z Λ F.activity
+    (balabanCMP116BondGaussian lieDim) ψ Y
+
+@[simp] theorem balabanCMP116AppendixFHsharpOfKsharp_eq_hsharp
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    (ψ : ∀ x, Ψ x)
+    (Y : Finset (Cube d L)) :
+    balabanCMP116AppendixFHsharpOfKsharp HF z Λ F ψ Y =
+      appendixFHoleHsharp HF
+        (balabanCMP116AppendixFSecondGasActivity HF z Λ F ψ) Y := by
+  rfl
+
+/-- Full-target spectator dependency for the CMP116 evaluated `H#` object.
+The only source support input is the existing CMP116 Appendix-F support
+package; it supplies the raw activity spectator support inclusion consumed by
+the generic Appendix-F `H#` wrapper. -/
+theorem balabanCMP116AppendixFHsharpOfKsharp_eq_of_agreeOn
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    (Y : Finset (Cube d L))
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F)
+    {ψ₁ ψ₂ : ∀ x, Ψ x}
+    (hψ : AgreeOn Y ψ₁ ψ₂) :
+    balabanCMP116AppendixFHsharpOfKsharp HF z Λ F ψ₁ Y =
+      balabanCMP116AppendixFHsharpOfKsharp HF z Λ F ψ₂ Y := by
+  exact appendixFHoleHsharpOfKsharp_eq_of_agreeOn
+    HF z Λ F.activity (balabanCMP116BondGaussian lieDim) Y
+    h.spectatorSupport_subset_full hψ
+
+/-- Active-skeleton spectator dependency for the CMP116 evaluated `H#` object. -/
+theorem balabanCMP116AppendixFHsharpOfKsharp_eq_of_agreeOn_skeleton
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    (Y : Finset (Cube d L))
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F)
+    {ψ₁ ψ₂ : ∀ x, Ψ x}
+    (hψ : AgreeOn (skeleton HF Y) ψ₁ ψ₂) :
+    balabanCMP116AppendixFHsharpOfKsharp HF z Λ F ψ₁ Y =
+      balabanCMP116AppendixFHsharpOfKsharp HF z Λ F ψ₂ Y := by
+  exact appendixFHoleHsharpOfKsharp_eq_of_agreeOn_skeleton
+    HF z Λ F.activity (balabanCMP116BondGaussian lieDim) Y
+    h.spectatorSupport_subset_skeleton hψ
+
 /-! ## Scale-indexed CMP116 integrated first activity -/
 
 /-- Scale-indexed spectator-integrated CMP116 first activity, with Balaban's
