@@ -50,6 +50,29 @@ theorem singlePhysicalBondCochain_of_ne
     singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) p v q = 0 := by
   simp [singlePhysicalBondCochain, hqp]
 
+/-- The coordinate probe is the usual `PiLp` singleton. -/
+theorem singlePhysicalBondCochain_eq_toLp_single
+    {d N Nc : ℕ} [NeZero N]
+    (source : PhysicalBond d N) (v : SUNLieCoord Nc) :
+    singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) source v =
+      WithLp.toLp 2 (Pi.single source v) := by
+  ext q
+  by_cases hqp : q = source
+  · subst hqp
+    simp [singlePhysicalBondCochain]
+  · simp [singlePhysicalBondCochain, hqp]
+
+/-- The single-bond physical source has exactly the norm of its Lie-algebra
+coordinate. -/
+@[simp]
+theorem norm_singlePhysicalBondCochain
+    {d N Nc : ℕ} [NeZero N]
+    (source : PhysicalBond d N) (v : SUNLieCoord Nc) :
+    ‖singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) source v‖ =
+      ‖v‖ := by
+  rw [singlePhysicalBondCochain_eq_toLp_single]
+  simp
+
 /-- Source-facing pointwise kernel bound for a physical covariance operator.
 
 The convention is `weight target source`: the covariance is probed at `source`
@@ -64,6 +87,27 @@ def PhysicalCovarianceKernelBound
     ‖C (singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) source v)
         target‖ ≤
       weight target source * ‖v‖
+
+/-- Any physical covariance operator has the constant pointwise kernel bound
+given by its operator norm.  This is not a localization theorem, but it is the
+baseline bridge from operator estimates to source/target kernel probes. -/
+theorem physicalCovarianceKernelBound_const_opNorm
+    {d N Nc : ℕ} [NeZero N]
+    (C :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc) :
+    PhysicalCovarianceKernelBound C (fun _target _source => ‖C‖) := by
+  intro source target v
+  calc
+    ‖C (singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) source v)
+        target‖ ≤
+        ‖C (singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) source v)‖ :=
+      PiLp.norm_apply_le _ target
+    _ ≤ ‖C‖ *
+        ‖singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) source v‖ :=
+      ContinuousLinearMap.le_opNorm C _
+    _ = ‖C‖ * ‖v‖ := by
+      rw [norm_singlePhysicalBondCochain]
 
 /-- Source-facing finite-range covariance localization.  The distance is kept
 as a parameter because the correct Balaban block/modified metric is a source

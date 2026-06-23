@@ -12087,3 +12087,49 @@ series, construct a continuous-linear-map inverse square root, prove
 covariance/root kernel bounds, prove the separate `root_localization` source
 field, construct a Gaussian pushforward, build a local physical activity, or
 prove raw activity decay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 310 (2026-06-24, **single-bond source norm bridge**
+`YangMills.RG.PhysicalGaugeCovarianceLocalization`; core 8355)
+
+This addendum exposes the exact norm bookkeeping for physical single-bond
+source probes.  New declarations:
+
+```
+singlePhysicalBondCochain_eq_toLp_single
+norm_singlePhysicalBondCochain
+physicalCovarianceKernelBound_const_opNorm
+```
+
+The first theorem identifies `singlePhysicalBondCochain source v` with the
+standard `PiLp` singleton.  The second gives the exact equality
+`‖singlePhysicalBondCochain source v‖ = ‖v‖`.  The third consumes both this
+identity and `ContinuousLinearMap.le_opNorm` to give every physical covariance
+operator the constant source/target kernel bound with weight `‖C‖`.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCovarianceLocalization.lean
+lake env lean YangMills\RG\PhysicalGaugeLocalSPDPrecisionRoot.lean
+lake build YangMills.RG.PhysicalGaugeCovarianceLocalization
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCovarianceLocalization.lean YangMills\RG\PhysicalGaugeLocalSPDPrecisionRoot.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`
+for:
+
+```
+singlePhysicalBondCochain_eq_toLp_single
+norm_singlePhysicalBondCochain
+physicalCovarianceKernelBound_const_opNorm
+```
+
+**Honest scope.** This proves only the norm bridge from a single physical bond
+source to operator-norm kernel estimates.  It does not prove finite range,
+exponential decay, covariance-root localization, Gaussian pushforward,
+physical raw activity decay, or any new source theorem.  Clay distance
+**~0% (<0.1%), unchanged**.

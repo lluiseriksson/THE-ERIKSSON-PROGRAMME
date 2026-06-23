@@ -97,7 +97,10 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `YangMills/RG/PhysicalGaugeCovarianceLocalization.lean` adds single-bond
   source cochains, kernel/finite-range/exponential covariance-localization
   predicates, and a certificate bundling the exact flat covariance with a
-  supplied source-facing kernel bound.  It also adds a covariance-root
+  supplied source-facing kernel bound.  The single-bond source is now identified
+  with the `PiLp` singleton, has exact norm `‖v‖`, and every physical covariance
+  operator gets the baseline constant kernel bound supplied by its operator
+  norm.  It also adds a covariance-root
   certificate that consumes a localized covariance certificate while keeping
   the square-root identity, self-adjoint/PSD root structure, root norm bound,
   and root kernel localization as explicit source hypotheses.  The small
