@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 268.
+Addendum 269.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -25,7 +25,7 @@ the axiom oracle, and the verification ledger.
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
 | Conditional M3 assembly | `90% [#########.]` | the assembly is verified; the UV producer remains explicit |
 | Appendix-F/H# bridge to UV consumer | `78% [########..]` | source-facing endpoints exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `66% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, and source-facing covariance/root localization APIs are in Lean |
+| P4 physical-operator vertical slice | `67% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, source-facing covariance/root localization APIs, and a local fluctuation-activity certificate are in Lean |
 | Concrete `hRpoly` discharge | `40% [####......]` | the live mathematical frontier |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8342 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8343 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -102,7 +102,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   the square-root identity, self-adjoint/PSD root structure, root norm bound,
   and root kernel localization as explicit source hypotheses.  The small
   perturbation budget, lack of volume-uniform constants, and actual covariance
-  or covariance-root decay proof remain exposed.
+  or covariance-root decay proof remain exposed.  The new source-facing
+  activity layer `YangMills/RG/PhysicalGaugeFluctuationActivity.lean` packages
+  local two-field physical gauge activities over positive bonds, active-support
+  containment, raw pointwise bounds, and decay majorants around a supplied
+  covariance-root certificate; the Hessian expansion, change of variables, and
+  raw activity estimate remain source hypotheses.
   The full-periodic
   cochain layer `YangMills/RG/PhysicalGaugeCochains.lean` now fixes the
   physical positive-bond coordinate convention for `su(N)` coordinates,

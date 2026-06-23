@@ -21,17 +21,18 @@ Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 > **CURRENCY STAMP (updated 2026-06-23; verified checkpoint 2026-06-23).**
 > The "Ground truth as of 2026-05" below is
 > a historical snapshot.  Since then the core advanced substantially (now
-> **8342 jobs** in the latest verification-ledger checkpoint, Mathlib pinned —
+> **8343 jobs** in the latest verification-ledger checkpoint, Mathlib pinned —
 > `REPRODUCIBILITY.md`): the strong-coupling
 > **area law** (all four variants) and **IR exponential clustering** are
 > oracle-clean theorems; the **gauge-RG continuum-facing track**
-> (`YangMills/RG/**`, ledger Addenda 23–268) has a theorem-fed
+> (`YangMills/RG/**`, ledger Addenda 23–269) has a theorem-fed
 > averaging/Gaussian/kernel/animal-count substrate, a marginal-coupling
 > summability branch, Appendix-F/H# consumer adapters, integrated second-gas
 > KP routes, coercivity-budget bricks, gauge-fixed precision/covariance
 > composition, physical cochains, a fixed-volume flat Hodge/block Poincare
 > bridge, the finite-torus curl/divergence classification, and source-facing
-> covariance/root localization APIs.  **The
+> covariance/root localization APIs, and a local fluctuation-activity
+> certificate.  **The
 > live frontier is `hRpoly`**:
 > the concrete
 > Yang-Mills cluster-expansion-with-holes activity-decay estimate for the

@@ -502,6 +502,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatGaugeFixedLocalizedCovarianceCertificate_of_kernelBound
 #print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_source
 #print axioms YangMills.RG.flatGaugeFixedLocalizedCovarianceRootCertificate_of_source
+#print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_source
+#print axioms YangMills.RG.physicalGaugeRawActivityDecay_of_localizedGaussianActivityCertificate
 #print axioms YangMills.RG.finBox_one_eq_iterShift
 #print axioms YangMills.RG.constant_of_shift_invariant_finBox_one
 #print axioms YangMills.RG.flatHarmonicKernelClassified_one

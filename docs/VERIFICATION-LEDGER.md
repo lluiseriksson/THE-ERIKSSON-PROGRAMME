@@ -10286,3 +10286,58 @@ volume-uniform constants, or construct raw Balaban activities.  It only fixes
 the Lean target that future source estimates must satisfy before a localized
 Gaussian fluctuation activity can be assembled.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 269 (2026-06-23, **source-facing physical gauge fluctuation
+activity certificate** `YangMills.RG.PhysicalGaugeFluctuationActivity`; core
+8343)
+
+This addendum records the next P4 interface after covariance-root
+localization.  The new module
+
+```
+YangMills/RG/PhysicalGaugeFluctuationActivity.lean
+```
+
+introduces physical gauge coordinate fields and local two-field activities on
+positive bonds:
+
+```
+PhysicalGaugeField
+PhysicalGaugeLocalActivity
+PhysicalGaugeRawActivityBound
+PhysicalGaugeActivityDecay
+PhysicalLocalizedGaussianActivityCertificate
+```
+
+and proves the source-packaging/extraction theorems:
+
+```
+physicalLocalizedGaussianActivityCertificate_of_source
+physicalGaugeRawActivityBound_of_localizedGaussianActivityCertificate
+physicalGaugeRawActivityDecay_of_localizedGaussianActivityCertificate
+```
+
+The certificate consumes a
+`PhysicalLocalizedCovarianceRootCertificate` and packages a local activity
+family, active-support containment, nonnegative amplitudes/weights, a raw
+pointwise bound, a decay majorant, and an explicit source-construction
+proposition tying the activity to the physical Hessian/fluctuation integral.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeFluctuationActivity.lean
+lake build YangMills.RG.PhysicalGaugeFluctuationActivity
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeFluctuationActivity.lean
+```
+
+**Honest scope.** This addendum does not construct the Wilson Hessian, prove
+the change of variables, build the Gaussian measure from `C^{1/2}`, prove the
+raw Balaban/CMP activity estimate, or discharge `hraw`.  It only fixes the
+Lean shape of the source theorem needed before the existing Appendix-F/H#
+consumers can receive physical local activities.  Clay distance **~0%
+(<0.1%), unchanged**.
