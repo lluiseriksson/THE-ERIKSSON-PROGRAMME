@@ -1072,6 +1072,10 @@ layer: finite-range small Neumann data are packaged as
 `LocalFiniteRangeResolventData` and imply exponential decay of
 `neumannResolventKernel`, while the inverse-square-root binomial coefficients
 `choose(2n,n)/4^n` are bounded by one and have geometric shifted-tail bounds.
+The same module now normalizes an abstract spectral sandwich `0 < m ≤ M` into
+`q = 1 - m/M`, proves `0 ≤ q < 1`, records `1 - q = m/M`, and gives the
+scaled `M^{-1/2}` tail bound `inverseSqrtNormTail` for later finite-range
+approximants to `P^{-1/2}`.
 This is still not a physical Hessian theorem and does not construct
 `P^{-1/2}` as a continuous linear map; it is reusable scalar/kernel
 infrastructure for that route.

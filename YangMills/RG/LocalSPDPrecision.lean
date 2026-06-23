@@ -220,4 +220,90 @@ theorem inverseSqrtBinomialCoeff_tail_le
   inverseSqrtCoefficientMajorant_tail_le
     inverseSqrtBinomialCoeff_majorant hq0 hq1 N
 
+/-- The scalar contraction ratio associated with a normalized spectral
+sandwich `m I <= P <= M I`: `q = 1 - m / M`.
+
+The operator statement is deliberately not encoded here.  This is only the
+scalar bookkeeping consumed by finite-range inverse-square-root truncations. -/
+noncomputable def normalizedPrecisionContraction (m M : ℝ) : ℝ :=
+  1 - m / M
+
+/-- Under `m <= M` and `0 < M`, the normalized contraction ratio is
+nonnegative. -/
+theorem normalizedPrecisionContraction_nonneg
+    {m M : ℝ} (hmM : m ≤ M) (hM : 0 < M) :
+    0 ≤ normalizedPrecisionContraction m M := by
+  unfold normalizedPrecisionContraction
+  have hdiv : m / M ≤ 1 := (div_le_one hM).mpr hmM
+  linarith
+
+/-- Under `0 < m` and `0 < M`, the normalized contraction ratio is strictly
+below one. -/
+theorem normalizedPrecisionContraction_lt_one
+    {m M : ℝ} (hm : 0 < m) (hM : 0 < M) :
+    normalizedPrecisionContraction m M < 1 := by
+  unfold normalizedPrecisionContraction
+  have hdivpos : 0 < m / M := div_pos hm hM
+  linarith
+
+/-- The denominator in the normalized inverse-square-root tail is the spectral
+ratio `m / M`. -/
+theorem one_sub_normalizedPrecisionContraction {m M : ℝ} :
+    1 - normalizedPrecisionContraction m M = m / M := by
+  unfold normalizedPrecisionContraction
+  ring
+
+/-- Closed form for the inverse normalized denominator. -/
+theorem inv_one_sub_normalizedPrecisionContraction
+    {m M : ℝ} (hm : m ≠ 0) (hM : M ≠ 0) :
+    (1 - normalizedPrecisionContraction m M)⁻¹ = M / m := by
+  rw [one_sub_normalizedPrecisionContraction]
+  field_simp [hm, hM]
+
+/-- In a normalized spectral sandwich `0 < m <= M`, the binomial
+inverse-square-root tail is controlled by the contraction
+`q = 1 - m / M`. -/
+theorem inverseSqrtBinomialCoeff_normalized_tail_le
+    {m M : ℝ} (hm : 0 < m) (hmM : m ≤ M) (hM : 0 < M) (N : ℕ) :
+    (∑' n,
+        inverseSqrtBinomialCoeff (n + N) *
+          normalizedPrecisionContraction m M ^ (n + N)) ≤
+      normalizedPrecisionContraction m M ^ N *
+        (1 - normalizedPrecisionContraction m M)⁻¹ :=
+  inverseSqrtBinomialCoeff_tail_le
+    (normalizedPrecisionContraction_nonneg hmM hM)
+    (normalizedPrecisionContraction_lt_one hm hM) N
+
+/-- The scalar operator-norm tail shape for the normalized inverse-square-root
+series, including the prefactor `M^{-1/2}`. -/
+noncomputable def inverseSqrtNormTail (m M : ℝ) (N : ℕ) : ℝ :=
+  (Real.sqrt M)⁻¹ * normalizedPrecisionContraction m M ^ N *
+    (1 - normalizedPrecisionContraction m M)⁻¹
+
+/-- Scaled normalized inverse-square-root tail bound with prefactor
+`M^{-1/2}`.  This is the scalar estimate future finite-range approximants to
+`P^{-1/2}` should consume once a physical precision supplies `0 < m <= M`. -/
+theorem inverseSqrtBinomialCoeff_normalized_scaled_tail_le
+    {m M : ℝ} (hm : 0 < m) (hmM : m ≤ M) (hM : 0 < M) (N : ℕ) :
+    (Real.sqrt M)⁻¹ *
+      (∑' n,
+        inverseSqrtBinomialCoeff (n + N) *
+          normalizedPrecisionContraction m M ^ (n + N)) ≤
+      inverseSqrtNormTail m M N := by
+  unfold inverseSqrtNormTail
+  have htail := inverseSqrtBinomialCoeff_normalized_tail_le hm hmM hM N
+  calc
+    (Real.sqrt M)⁻¹ *
+      (∑' n,
+        inverseSqrtBinomialCoeff (n + N) *
+          normalizedPrecisionContraction m M ^ (n + N))
+        ≤ (Real.sqrt M)⁻¹ *
+          (normalizedPrecisionContraction m M ^ N *
+            (1 - normalizedPrecisionContraction m M)⁻¹) :=
+          mul_le_mul_of_nonneg_left htail
+            (inv_nonneg.mpr (Real.sqrt_nonneg M))
+    _ = (Real.sqrt M)⁻¹ * normalizedPrecisionContraction m M ^ N *
+          (1 - normalizedPrecisionContraction m M)⁻¹ := by
+        ring
+
 end YangMills.RG

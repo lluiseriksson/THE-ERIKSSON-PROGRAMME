@@ -336,6 +336,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.inverseSqrtCoefficientMajorant_tail_le
 #print axioms YangMills.RG.inverseSqrtBinomialCoeff_majorant
 #print axioms YangMills.RG.inverseSqrtBinomialCoeff_tail_le
+#print axioms YangMills.RG.normalizedPrecisionContraction_nonneg
+#print axioms YangMills.RG.normalizedPrecisionContraction_lt_one
+#print axioms YangMills.RG.inv_one_sub_normalizedPrecisionContraction
+#print axioms YangMills.RG.inverseSqrtBinomialCoeff_normalized_tail_le
+#print axioms YangMills.RG.inverseSqrtBinomialCoeff_normalized_scaled_tail_le
 -- Schur boundedness: row-sum + quadratic-form (covariance) bound ≤ a·S
 #print axioms YangMills.RG.expDecay_finset_row_le
 -- collar-separated cross interaction: ExpDecay + separation ε pays exp(-κ ε)

@@ -11955,3 +11955,55 @@ not identify the Wilson Hessian, prove a spectral sandwich for the physical
 precision, prove a physical Combes--Thomas theorem, construct `P^{-1/2}` as a
 continuous linear map, produce a covariance-root certificate, or construct any
 CMP116 raw activity.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 308 (2026-06-24, **normalized precision inverse-root tail constants**
+`YangMills.RG.LocalSPDPrecision`; core 8354)
+
+This addendum extends the resolvent-first local SPD substrate with the scalar
+normalization used by a future spectral sandwich.  New declarations include:
+
+```
+normalizedPrecisionContraction
+normalizedPrecisionContraction_nonneg
+normalizedPrecisionContraction_lt_one
+one_sub_normalizedPrecisionContraction
+inv_one_sub_normalizedPrecisionContraction
+inverseSqrtBinomialCoeff_normalized_tail_le
+inverseSqrtNormTail
+inverseSqrtBinomialCoeff_normalized_scaled_tail_le
+```
+
+For abstract constants `0 < m <= M`, the module defines
+`q = 1 - m / M`, proves `0 <= q < 1`, records `1 - q = m / M`, and applies the
+already proved binomial tail estimate to the normalized inverse-square-root
+series.  The scaled theorem includes the prefactor `M^{-1/2}` via
+`(Real.sqrt M)⁻¹`, yielding the scalar tail shape expected for finite-range
+approximants to a future `P^{-1/2}`.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\LocalSPDPrecision.lean
+lake build YangMills.RG.LocalSPDPrecision
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\LocalSPDPrecision.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+New oracle entries report `[propext, Classical.choice, Quot.sound]` for:
+
+```
+normalizedPrecisionContraction_nonneg
+normalizedPrecisionContraction_lt_one
+inv_one_sub_normalizedPrecisionContraction
+inverseSqrtBinomialCoeff_normalized_tail_le
+inverseSqrtBinomialCoeff_normalized_scaled_tail_le
+```
+
+**Honest scope.** This proves only scalar normalization and tail bookkeeping.
+It does not prove that the physical Yang--Mills precision has constants `m`
+and `M`, does not prove finite propagation, does not construct
+`P^{-1/2}` as an operator, and does not produce any covariance-root or CMP116
+activity certificate.  Clay distance **~0% (<0.1%), unchanged**.
