@@ -11605,3 +11605,45 @@ covariance-root localization, Wilson-Hessian identification, local activity
 construction, rooted H# remainder identity, H# profile and half-budget
 estimates, marginal-flow hypotheses, IR bound, `hRpoly`, and the continuum
 problem all remain open.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 300 (2026-06-23, **raw-source M3 frontier wrapper**
+`YangMills.RG.PhysicalGaugeCMP116RawM3`; core 8351)
+
+This addendum adds the M3-specific frontier bundle
+`CMP116RawSourceM3Frontier` and the top-level wrapper
+`lattice_mass_gap_of_cmp116RawSourceM3Frontier`.  The wrapper calls the
+existing theorem `lattice_mass_gap_of_cmp116RawSource_hsharp_marginal`; it only
+replaces the separate raw-source/H# proof arguments, support/geometric facts,
+measure facts, Appendix-F profile facts, marginal-flow facts, and IR bound by
+one record.  The truncation schedule `nsc` remains a theorem parameter rather
+than a record field.
+
+The new public declarations are:
+
+```
+CMP116RawSourceM3Frontier
+lattice_mass_gap_of_cmp116RawSourceM3Frontier
+```
+
+Verification targets:
+
+```
+git diff --check
+lake env lean YangMills\RG\PhysicalGaugeCMP116RawM3.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116RawM3.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entry reports only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint proves no source theorem and does not
+construct a physical frontier witness.  It only provides the current marginal
+M3 endpoint with one named record argument instead of many independent proof
+arguments.  The concrete covariance/root certificate, Gaussian pushforward,
+Wilson-Hessian identification, local activity construction, raw pointwise
+decay, Appendix-F support and weight transport, rooted H# remainder identity,
+profile/half-budget estimates, marginal flow, IR decay, `hRpoly`, and the
+continuum problem all remain open.  Clay distance **~0% (<0.1%), unchanged**.

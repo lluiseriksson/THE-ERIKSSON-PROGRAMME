@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 299.
+Addendum 300.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1152,6 +1152,12 @@ raw-source/H# hypothesis boundary as
 source obligations auditable as one bundle; it does not prove the Hessian,
 Gaussian pushforward, covariance-root localization, source activity, H#
 profile, marginal-flow, or IR estimates.
+The M3-specific wrapper in `YangMills/RG/PhysicalGaugeCMP116RawM3.lean` now
+also exposes `CMP116RawSourceM3Frontier` and
+`lattice_mass_gap_of_cmp116RawSourceM3Frontier`, bundling the raw-source/H#
+frontier together with the marginal-flow and IR consumer-side hypotheses.  The
+truncation schedule remains a theorem parameter rather than a frontier field,
+because no frontier hypothesis constrains it.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper
