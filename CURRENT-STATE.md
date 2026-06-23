@@ -1166,6 +1166,14 @@ field coverage.  It now also checks that every frontier field is consumed by at
 least one derived-node input list, so the audit catches both missing nodes and
 currently unused frontier fields.  The companion note is
 [`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md).
+The source-facing theorem target for that frontier is now stated in
+`YangMills/RG/BalabanCMP116SourceTheorem.lean`.  It adds the pure constructor
+`PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components`
+and the checked proposition `BalabanCMP116SourceTheorem`, splitting the current
+opaque `raw_source` package into Gaussian pushforward, root localization,
+Wilson-Hessian identification, local physical activity construction, and raw
+pointwise decay fields.  No Balaban source theorem or frontier witness is
+proved by this target declaration.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper

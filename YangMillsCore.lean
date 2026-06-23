@@ -471,6 +471,9 @@ import YangMills.RG.PhysicalGaugeCMP116RawHsharp
 import YangMills.RG.PhysicalGaugeCMP116RawM3
 -- Executable dependency graph for the raw-source M3 frontier fields.
 import YangMills.RG.M3FrontierDependencies
+-- Source-facing Balaban CMP116 theorem target with the raw-source package
+-- unfolded into individually auditable source fields.
+import YangMills.RG.BalabanCMP116SourceTheorem
 -- Named frontier for the raw-source CMP116/H# hypothesis surface.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier
 import YangMills.RG.Ubar

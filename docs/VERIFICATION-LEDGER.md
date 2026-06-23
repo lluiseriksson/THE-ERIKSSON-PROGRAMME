@@ -11732,3 +11732,55 @@ Wilson-Hessian identification, local activity construction, raw pointwise
 decay, Appendix-F support and weight transport, rooted H# remainder identity,
 profile/half-budget estimates, marginal flow, IR decay, `hRpoly`, and the
 continuum problem all remain open.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 303 (2026-06-23, **Balaban CMP116 source theorem target**
+`YangMills.RG.BalabanCMP116SourceTheorem`; core 8353)
+
+This addendum states the source-facing target for the raw-source M3 frontier.
+The new module adds:
+
+```
+PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components
+BalabanCMP116SourceAssumptions
+BalabanCMP116SourceTheorem
+```
+
+`of_components` is pure record packaging.  It reassembles the existing
+raw-source compatibility package from its five explicit source components:
+Gaussian pushforward, root localization, Wilson-Hessian identification, local
+physical activity construction, and raw pointwise decay.
+
+`BalabanCMP116SourceAssumptions` mirrors the current
+`CMP116RawSourceM3Frontier` parameter spine while replacing the opaque
+`raw_source` field by individually auditable source fields.  The truncation
+schedule remains outside the record, matching the frontier.
+
+`BalabanCMP116SourceTheorem` is a proposition:
+
+```
+BalabanCMP116SourceAssumptions ... -> CMP116RawSourceM3Frontier ...
+```
+
+No theorem named `CMP116RawSourceM3Frontier.of_balabanSource` is introduced in
+this checkpoint; that name is reserved for the later proof after the source
+facts are actually established.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\BalabanCMP116SourceTheorem.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+Only `#check` entries are added to `oracle_check.lean` for this checkpoint.
+
+**Honest scope.** This states a checked target interface only.  It does not
+prove the covariance/root certificate, Gaussian pushforward, Wilson-Hessian
+identification, local activity construction, raw pointwise decay, Appendix-F
+support/weight transport, rooted H# remainder identity, profile/half-budget
+estimate, marginal flow, IR bound, or any continuum theorem.  Clay distance
+**~0% (<0.1%), unchanged**.
