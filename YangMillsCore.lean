@@ -332,6 +332,10 @@ import YangMills.RG.BalabanCMP116Dmu0
 -- packing between CMP116 cube fields and physical positive-bond cochains,
 -- with support-agreement transfer but no analytic raw-activity assertion.
 import YangMills.RG.PhysicalGaugeCMP116Dictionary
+-- Dictionary-backed construction layer: canonical continuous coordinate map,
+-- root transport, Gaussian-change record, localized family, and transport
+-- constructors without new analytic estimates.
+import YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
 -- CMP116 localization bridge: once Balaban's generalized random-walk support
 -- theorem supplies localized `H(Z)` supports, `dmu0` gives Ω-component
 -- factorization for the Appendix-F local-activity substrate.

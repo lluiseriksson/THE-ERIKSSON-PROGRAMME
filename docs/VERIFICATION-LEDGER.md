@@ -11157,3 +11157,47 @@ physical local activities, prove Gaussian change of variables, localize
 It only turns an explicit physical preimage-to-skeleton support obligation into
 the Appendix-F support package consumed by later CMP116 layers.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 289 (2026-06-23, **dictionary-backed localized Gaussian activity construction**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8348)
+
+This addendum adds a source-facing construction layer that assembles existing
+dictionary, covariance-root transport, Gaussian-change, localized-family, and
+physical transport records without adding analytic content.  The dictionary now
+provides the continuous coordinate equivalence, the projection compatibility
+used by CMP116 root transport, the canonical `root ∘ dictionary` Gaussian map,
+and constructors for the localized family and transport package.
+
+The new public declarations are:
+
+```
+PhysicalGaugeCMP116Dictionary.fluctuationFieldContinuousLinearEquiv
+PhysicalGaugeCMP116Dictionary.fluctuationFieldContinuousLinearEquiv_support_projection
+PhysicalGaugeCMP116Dictionary.gaussianRootMap
+PhysicalGaugeCMP116Dictionary.PhysicalGaugeCMP116GaussianChange.ofDictionaryRoot
+PhysicalRootToCMP116OperatorTransport.ofDictionary
+PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+physicalLocalizedGaussianActivityCertificate_of_cmp116Source
+BalabanCMP116LocalizedActivityFamily.ofDictionary
+PhysicalGaugeCMP116ActivityTransport.ofDictionary
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+```
+
+**Honest scope.** This checkpoint does not prove that the dictionary/root map
+preserves a Gaussian law, does not localize the exact covariance root, does not
+identify the Wilson Hessian, does not construct physical local activities, does
+not prove raw decay, and does not discharge `hraw` or `hRpoly`.  It only removes
+arbitrary coordinate/family plumbing by making the dictionary-backed choices
+canonical wherever the existing interfaces already support that assembly.
+Clay distance **~0% (<0.1%), unchanged**.
