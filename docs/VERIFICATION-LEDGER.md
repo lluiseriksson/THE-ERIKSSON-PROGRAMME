@@ -11784,3 +11784,38 @@ identification, local activity construction, raw pointwise decay, Appendix-F
 support/weight transport, rooted H# remainder identity, profile/half-budget
 estimate, marginal flow, IR bound, or any continuum theorem.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 304 (2026-06-23, **Balaban source raw-package projection**
+`YangMills.RG.BalabanCMP116SourceTheorem`; core 8353)
+
+This addendum adds the reusable source-assumption projection:
+
+```
+BalabanCMP116SourceAssumptions.rawSource
+```
+
+It takes a `BalabanCMP116SourceAssumptions` value and returns the canonical
+scale-indexed
+`PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses` package by
+calling `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components`
+on the five unfolded source fields.  This avoids reconstructing the raw-source
+package by hand in later consumers while still not constructing
+`CMP116RawSourceM3Frontier`.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMills.RG.BalabanCMP116SourceTheorem
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\BalabanCMP116SourceTheorem.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+Only a `#check` entry is added to `oracle_check.lean` for this projection.
+
+**Honest scope.** This is projection plumbing only.  It proves no Balaban source
+fact, no frontier witness, no mass-gap endpoint, and no continuum theorem.
+Clay distance **~0% (<0.1%), unchanged**.

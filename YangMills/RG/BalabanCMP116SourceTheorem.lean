@@ -293,6 +293,79 @@ structure BalabanCMP116SourceAssumptions
       |covIR k| ≤
         C1 * Real.exp (-(ε * (k : ℝ)))
 
+namespace BalabanCMP116SourceAssumptions
+
+/-- Canonical raw-source package extracted from the unfolded Balaban CMP116
+source assumptions.
+
+This is the reusable projection that later frontier constructors should use
+instead of rebuilding the five-component raw-source package by hand. -/
+def rawSource
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    {zCarrier : Finset (Cube d L) → ℂ}
+    {r : Cube d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    {Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k))}
+    {D : ∀ _t _k : ℕ, PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {spectatorPull :
+      ∀ _t _k : ℕ, ∀ _ : PhysicalBond dPhys N,
+        β → SUNLieCoord Nc}
+    {precision covariance root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      ∀ _t _k : ℕ, Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {covNormBound rootNormBound : ∀ _t _k : ℕ, ℝ}
+    {covWeight rootWeight :
+      ∀ _t _k : ℕ, PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          Finset (PhysicalBond dPhys N)}
+    {weight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℝ}
+    {ν : ℕ → ℕ → Measure β}
+    {covIR : ℕ → ℝ}
+    {Rsc : ℕ → ℕ → ℝ}
+    {g : ℕ → ℝ}
+    {amplitude : ℕ → ℕ → ℝ}
+    {C1 C Hbar ε c0 betaFlow kappa kappa0 : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop}
+    (source :
+      BalabanCMP116SourceAssumptions
+        zCarrier r z Λ D spectatorPull
+        precision covariance root physicalGaussian
+        covNormBound rootNormBound covWeight rootWeight
+        physicalActivity physicalActiveSupport weight
+        ν covIR Rsc g amplitude
+        C1 C Hbar ε c0 betaFlow kappa kappa0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction) :
+    ∀ t k,
+      PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        (D t k) (root t k) (physicalGaussian t k)
+        (physicalActivity t k) (weight t k) (amplitude t k)
+        (rootLocalization t k)
+        (wilsonHessianIdentification t k)
+        (localActivityConstruction t k) :=
+  fun t k =>
+    PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components
+      (source.gaussian_pushforward t k)
+      (source.root_localization t k)
+      (source.wilson_hessian_identification t k)
+      (source.local_physical_activity_construction t k)
+      (source.raw_pointwise_decay t k)
+
+end BalabanCMP116SourceAssumptions
+
 /-- Checked target statement for the future Balaban CMP116 source theorem.
 
 This is deliberately a proposition, not a theorem.  It records that the

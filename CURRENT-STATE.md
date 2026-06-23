@@ -1173,7 +1173,10 @@ and the checked proposition `BalabanCMP116SourceTheorem`, splitting the current
 opaque `raw_source` package into Gaussian pushforward, root localization,
 Wilson-Hessian identification, local physical activity construction, and raw
 pointwise decay fields.  No Balaban source theorem or frontier witness is
-proved by this target declaration.
+proved by this target declaration.  The helper
+`BalabanCMP116SourceAssumptions.rawSource` now provides the canonical
+scale-indexed projection from those five unfolded source fields back to the
+existing raw-source package, without constructing the full frontier.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper
