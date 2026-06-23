@@ -308,6 +308,10 @@ import YangMills.RG.MarginalUVMassGap
 -- calculus (decay preserved under sum/scalar/composition — the Combes-Thomas /
 -- Neumann-series engine), consuming the lattice exponential summability.
 import YangMills.RG.KernelDecay
+-- Resolvent-first local precision layer: finite-range/small Neumann data give
+-- resolvent decay, and inverse-square-root binomial tails obey geometric
+-- scalar bounds before any physical Hessian/root theorem is claimed.
+import YangMills.RG.LocalSPDPrecision
 -- Schur boundedness of exponentially-decaying kernels (finite lattice): the
 -- ℓ¹ row-sum bound and the quadratic-form (covariance) bound ≤ a·S.
 import YangMills.RG.KernelSchur

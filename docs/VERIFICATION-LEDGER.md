@@ -11898,3 +11898,60 @@ Wilson-Hessian identification, local activity construction, raw pointwise
 decay, support/weight transport, the physical rooted H# identity, profile or
 marginal estimates, IR decay, or any continuum theorem.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 307 (2026-06-23, **resolvent-first local SPD precision substrate**
+`YangMills.RG.LocalSPDPrecision`; core 8354)
+
+This addendum adds the first source-independent substrate for the
+resolvent-first precision route.  New declarations include:
+
+```
+neumannResolventKernel
+LocalFiniteRangeResolventData
+LocalFiniteRangeResolventData.resolventAmplitude
+LocalFiniteRangeResolventData.resolvent_expDecay
+InverseSqrtCoefficientMajorant
+inverseSqrtCoefficientMajorant_summable
+inverseSqrtCoefficientMajorant_tsum_le
+inverseSqrtCoefficientMajorant_tail_le
+inverseSqrtBinomialCoeff
+inverseSqrtBinomialCoeff_majorant
+inverseSqrtBinomialCoeff_tsum_le
+inverseSqrtBinomialCoeff_tail_le
+```
+
+`LocalFiniteRangeResolventData` carries the constants and hypotheses needed by
+the existing `finiteRange_resolvent_isExpDecay` theorem.  Its theorem
+`resolvent_expDecay` packages those fields into exponential decay of the
+Neumann resolvent kernel.  Separately, the scalar inverse-square-root
+coefficients `choose(2n,n)/4^n` are proved nonnegative and at most `1`, giving
+closed geometric series and shifted-tail bounds for later finite-range
+truncations of normalized inverse square roots.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\LocalSPDPrecision.lean
+lake build YangMills.RG.LocalSPDPrecision
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\LocalSPDPrecision.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report `[propext, Classical.choice, Quot.sound]` for:
+
+```
+LocalFiniteRangeResolventData.resolvent_expDecay
+inverseSqrtCoefficientMajorant_summable
+inverseSqrtCoefficientMajorant_tail_le
+inverseSqrtBinomialCoeff_majorant
+inverseSqrtBinomialCoeff_tail_le
+```
+
+**Honest scope.** This proves only abstract kernel/scalar estimates.  It does
+not identify the Wilson Hessian, prove a spectral sandwich for the physical
+precision, prove a physical Combes--Thomas theorem, construct `P^{-1/2}` as a
+continuous linear map, produce a covariance-root certificate, or construct any
+CMP116 raw activity.  Clay distance **~0% (<0.1%), unchanged**.

@@ -329,6 +329,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.lattice_exp_sum_le_of_shell
 -- explicit closed-form constant S = C·(1−r·e^{−σ})⁻¹ for a bounded-degree lattice
 #print axioms YangMills.RG.lattice_exp_sum_le_geometric
+-- resolvent-first local precision layer and inverse-square-root scalar tails
+#check YangMills.RG.LocalFiniteRangeResolventData
+#print axioms YangMills.RG.LocalFiniteRangeResolventData.resolvent_expDecay
+#print axioms YangMills.RG.inverseSqrtCoefficientMajorant_summable
+#print axioms YangMills.RG.inverseSqrtCoefficientMajorant_tail_le
+#print axioms YangMills.RG.inverseSqrtBinomialCoeff_majorant
+#print axioms YangMills.RG.inverseSqrtBinomialCoeff_tail_le
 -- Schur boundedness: row-sum + quadratic-form (covariance) bound ≤ a·S
 #print axioms YangMills.RG.expDecay_finset_row_le
 -- collar-separated cross interaction: ExpDecay + separation ε pays exp(-κ ε)

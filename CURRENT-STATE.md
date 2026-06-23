@@ -1067,6 +1067,14 @@ finite-dimensional coercivity into an exact continuous linear inverse
 actual Yang--Mills Hessian, prove the physical decomposition equality, prove
 Combes--Thomas/propagator decay, construct a localized covariance root, or
 produce the CMP116 raw activity.
+`YangMills.RG.LocalSPDPrecision` now adds the first resolvent-first abstract
+layer: finite-range small Neumann data are packaged as
+`LocalFiniteRangeResolventData` and imply exponential decay of
+`neumannResolventKernel`, while the inverse-square-root binomial coefficients
+`choose(2n,n)/4^n` are bounded by one and have geometric shifted-tail bounds.
+This is still not a physical Hessian theorem and does not construct
+`P^{-1/2}` as a continuous linear map; it is reusable scalar/kernel
+infrastructure for that route.
 The new CMP116 activity transport adapter narrows the final interface for that
 last step: a future source theorem must supply a CMP116 localized family plus
 field transports preserving `globalEval`, skeleton support localization, and
