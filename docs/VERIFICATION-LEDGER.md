@@ -11036,3 +11036,45 @@ CMP116 exact-support form and proves finite-range support consequences.  It
 does not construct the physical covariance root, prove root localization or
 truncation, build local Wilson activities, prove Gaussian change of variables,
 or prove raw activity decay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 286 (2026-06-23, **dictionary-instantiated CMP116 activity adapter**
+`YangMills.RG.PhysicalGaugeCMP116ActivityAdapter`; core 8347)
+
+This addendum closes a small finite bridge between the physical/CMP116 scalar
+coordinate dictionary and the activity adapter.  The new public declarations
+include:
+
+```
+PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells
+PhysicalGaugeCMP116Dictionary.pullFluctuationAtBond
+PhysicalGaugeCMP116Dictionary.pullFluctuationCochain_apply
+PhysicalGaugeCMP116ActivityAdapter.ofDictionary
+PhysicalGaugeCMP116ActivityAdapter.pullFluctuation_ofDictionary
+PhysicalGaugeCMP116ActivityAdapter.globalEval_activity_ofDictionary
+PhysicalGaugeCMP116ActivityAdapter.spectatorSupport_activity_ofDictionary_subset_iff
+PhysicalGaugeCMP116ActivityAdapter.fluctuationSupport_activity_ofDictionary_subset_iff
+PhysicalGaugeCMP116ActivityAdapter.activeSupport_ofDictionary_subset_iff
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116Dictionary.lean
+lake build YangMills.RG.PhysicalGaugeCMP116Dictionary
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityAdapter
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116Dictionary.lean YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean
+git diff --cached -U0 -- YangMills\RG\PhysicalGaugeCMP116Dictionary.lean YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean | rg -n "^\+.*(PhysicalGaugeRawActivityDecay|BalabanCMP116RawMetricDecay|PhysicalGaugeCMP116ActivityTransport|weight_domination|raw_bound|decay_bound|H0|κ|GaussianChange|gaussian)"
+```
+
+The final staged-source grep is expected to return empty.
+
+**Honest scope.** This checkpoint is finite support and field-transport
+bookkeeping.  It makes the adapter consume the existing dictionary directly but
+does not construct a localized activity family, prove a Gaussian pushforward,
+localize a covariance root, identify a Wilson Hessian, or prove `hraw`.  Clay
+distance **~0% (<0.1%), unchanged**.

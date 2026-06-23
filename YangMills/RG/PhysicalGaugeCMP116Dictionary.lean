@@ -131,6 +131,20 @@ noncomputable def physicalBondsOfCells
     b ∈ D.physicalBondsOfCells X ↔ D.siteMap.bondToCube b ∈ X := by
   simp [physicalBondsOfCells]
 
+/-- Image-subset form of the finite support dictionary. -/
+theorem image_bondToCube_subset_iff_physicalBondsOfCells
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (B : Finset (PhysicalBond dPhys N)) (X : Finset (Cube d L)) :
+    B.image D.siteMap.bondToCube ⊆ X ↔
+      B ⊆ D.physicalBondsOfCells X := by
+  constructor
+  · intro h b hb
+    exact (D.mem_physicalBondsOfCells X b).mpr
+      (h (Finset.mem_image.mpr ⟨b, hb, rfl⟩))
+  · intro h q hq
+    rcases Finset.mem_image.mp hq with ⟨b, hb, rfl⟩
+    exact (D.mem_physicalBondsOfCells X b).mp (h hb)
+
 /-- The inverse coordinate equivalence preserves the assigned CMP116 cube. -/
 theorem coordEquiv_symm_cell
     (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
@@ -178,6 +192,28 @@ noncomputable def pullFluctuationCochain
     sunLieCoordOfScalars fun a : Fin (Nc ^ 2 - 1) =>
       let qa : CMP116CoordIndex d L lieDim := D.coordEquiv.symm (b, a)
       ξ qa.1 qa.2
+
+/-- Pull one CMP116 coordinate fibre to the physical Lie coordinate carried by
+one physical bond. -/
+noncomputable def pullFluctuationAtBond
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (b : PhysicalBond dPhys N)
+    (x : Fin lieDim → ℝ) :
+    SUNLieCoord Nc :=
+  sunLieCoordOfScalars fun a =>
+    x (D.coordEquiv.symm (b, a)).2
+
+@[simp] theorem pullFluctuationCochain_apply
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (ξ : ∀ _ : Cube d L, Fin lieDim → ℝ)
+    (b : PhysicalBond dPhys N) :
+    D.pullFluctuationCochain ξ b =
+      D.pullFluctuationAtBond b
+        (ξ (D.siteMap.bondToCube b)) := by
+  apply (EuclideanSpace.equiv (Fin (Nc ^ 2 - 1)) ℝ).injective
+  funext a
+  simp [pullFluctuationCochain, pullFluctuationAtBond, sunLieCoordOfScalars,
+    D.coordEquiv_symm_cell b a]
 
 /-- Push a physical one-cochain to CMP116 cube-coordinate fluctuation fields
 using the scalar-coordinate dictionary. -/

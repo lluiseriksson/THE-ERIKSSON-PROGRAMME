@@ -514,6 +514,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.globalEval_activity
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.spectatorSupport_activity_subset_activeSupport
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.fluctuationSupport_activity_subset_activeSupport
+#print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.ofDictionary
+#print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.pullFluctuation_ofDictionary
+#print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.globalEval_activity_ofDictionary
+#print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.spectatorSupport_activity_ofDictionary_subset_iff
+#print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.fluctuationSupport_activity_ofDictionary_subset_iff
+#print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.activeSupport_ofDictionary_subset_iff
 #print axioms YangMills.RG.finBox_one_eq_iterShift
 #print axioms YangMills.RG.constant_of_shift_invariant_finBox_one
 #print axioms YangMills.RG.flatHarmonicKernelClassified_one
@@ -1223,10 +1229,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116SiteMap.physicalBondsOver_union
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.coordEquiv_symm_cell
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.sunLieCoordOfScalars
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.sunLieCoordScalar
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.pullFluctuationCochain
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.pullFluctuationAtBond
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.pullFluctuationCochain_apply
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.pushFluctuation
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.pushFluctuation_pullFluctuationCochain
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.pullFluctuationCochain_pushFluctuation

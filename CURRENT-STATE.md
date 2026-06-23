@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 283.
+Addendum 286.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -25,7 +25,7 @@ the axiom oracle, and the verification ledger.
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
 | Conditional M3 assembly | `90% [#########.]` | the assembly is verified; the UV producer remains explicit |
 | Appendix-F/H# bridge to UV consumer | `78% [########..]` | source-facing endpoints exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `67% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, source-facing covariance/root localization APIs, and a local fluctuation-activity certificate are in Lean |
+| P4 physical-operator vertical slice | `67% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, source-facing covariance/root localization APIs, a local fluctuation-activity certificate, and dictionary-instantiated CMP116 activity adapter rewrites are in Lean |
 | Concrete `hRpoly` discharge | `40% [####......]` | the live mathematical frontier |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
@@ -118,7 +118,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   the finite physical-to-cube adapter layer before the stronger transport
   package: a `bondToCube` map, spectator/fluctuation coordinate pulls,
   projected active support, and a reindexed cube-local activity with exact
-  `globalEval` and image-support theorems.  It also records the explicit
+  `globalEval` and image-support theorems.  The adapter can now be instantiated
+  directly from a `PhysicalGaugeCMP116Dictionary`; the dictionary supplies the
+  exact fluctuation pullback on each physical bond, and Lean rewrites
+  `globalEval`, spectator support, fluctuation support, and active support
+  back to the dictionary's physical-bond preimage.  It also records the explicit
   transport obligations from that physical certificate to a CMP116 localized
   activity family: source-faithful `globalEval` preservation, active-support
   containment in the Appendix-F skeleton, and domination of the physical weight
@@ -1062,10 +1066,13 @@ that scalar coordinates map only inside their assigned cube, and derives the
 induced pull/push maps between CMP116 coordinate fields and physical
 one-cochains.  The pull/push maps are inverse and form a linear equivalence,
 and `pullFluctuationCochain_agreeOn_iff` gives the exact support-agreement
-translation for bonds assigned to a cube set.  This is product-coordinate
-bookkeeping only: it does not prove a physical Gaussian change of variables,
-root localization, Wilson-Hessian identification, or physical raw activity
-decay.
+translation for bonds assigned to a cube set.  The same dictionary now exposes
+the pointwise bond pull `pullFluctuationAtBond`, the equality
+`pullFluctuationCochain_apply`, and the image/preimage support equivalence
+`image_bondToCube_subset_iff_physicalBondsOfCells`, which are consumed by the
+activity adapter.  This is product-coordinate bookkeeping only: it does not
+prove a physical Gaussian change of variables, root localization,
+Wilson-Hessian identification, or physical raw activity decay.
 The upstream route now also has a localized CMP116 operator-transport layer in
 `YangMills.RG.PhysicalGaugeCMP116OperatorTransport`.  It extends
 `YangMills.RG.LocalLinearOperator` with singleton cube fields, pointwise
