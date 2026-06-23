@@ -220,6 +220,7 @@ import YangMills.RG.FiniteTorusCurlDiv
 import YangMills.RG.PhysicalGaugeFlatPoincare
 import YangMills.RG.PhysicalGaugeFixedPrecision
 import YangMills.RG.PhysicalGaugeCovarianceLocalization
+import YangMills.RG.PhysicalGaugeCMP116OperatorTransport
 import YangMills.RG.PhysicalGaugeFluctuationActivity
 import YangMills.RG.PhysicalGaugeCMP116ActivityAdapter
 import YangMills.RG.PhysicalGaugeHodgePoincare

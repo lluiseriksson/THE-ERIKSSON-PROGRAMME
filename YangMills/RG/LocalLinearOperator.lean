@@ -130,6 +130,139 @@ theorem cmp116FieldProjection_eq_of_agreeOn
   · simp [cmp116FieldProjection, hq, hξη q hq]
   · simp [cmp116FieldProjection, hq]
 
+/-- A CMP116 field concentrated at one cube.  The vector `v` contains all local
+fluctuation coordinates at that cube. -/
+def singleCMP116CubeField
+    {d L lieDim : ℕ} [NeZero L]
+    (source : Cube d L) (v : Fin lieDim → ℝ) :
+    CMP116FluctuationField d L lieDim :=
+  fun target a => if target = source then v a else 0
+
+@[simp] theorem singleCMP116CubeField_self
+    {d L lieDim : ℕ} [NeZero L]
+    (source : Cube d L) (v : Fin lieDim → ℝ) :
+    singleCMP116CubeField source v source = v := by
+  funext a
+  simp [singleCMP116CubeField]
+
+@[simp] theorem singleCMP116CubeField_of_ne
+    {d L lieDim : ℕ} [NeZero L]
+    {source target : Cube d L} (h : target ≠ source)
+    (v : Fin lieDim → ℝ) :
+    singleCMP116CubeField source v target = 0 := by
+  funext a
+  simp [singleCMP116CubeField, h]
+
+@[simp] theorem singleCMP116CubeField_zero
+    {d L lieDim : ℕ} [NeZero L]
+    (source : Cube d L) :
+    singleCMP116CubeField source (0 : Fin lieDim → ℝ) = 0 := by
+  funext target a
+  simp [singleCMP116CubeField]
+
+/-- Every finite CMP116 field is the sum of its single-cube fields. -/
+theorem cmp116Field_eq_sum_singleCube
+    {d L lieDim : ℕ} [NeZero L]
+    (ξ : CMP116FluctuationField d L lieDim) :
+    ξ =
+      ∑ source : Cube d L,
+        singleCMP116CubeField source (ξ source) := by
+  classical
+  funext target a
+  simp [singleCMP116CubeField]
+
+/-- A continuous linear map is determined on a finite CMP116 field by the sum
+of its values on the single-cube pieces. -/
+theorem map_cmp116Field_eq_sum_singleCube
+    {d L lieDim : ℕ} [NeZero L]
+    (T :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        CMP116FluctuationField d L lieDim)
+    (ξ : CMP116FluctuationField d L lieDim) :
+    T ξ =
+      ∑ source : Cube d L,
+        T (singleCMP116CubeField source (ξ source)) := by
+  calc
+    T ξ =
+        T (∑ source : Cube d L,
+          singleCMP116CubeField source (ξ source)) := by
+      exact congrArg T (cmp116Field_eq_sum_singleCube ξ)
+    _ = ∑ source : Cube d L,
+          T (singleCMP116CubeField source (ξ source)) := by
+      simp
+
+/-- If a continuous linear map vanishes on every single-cube component of a
+field, then it vanishes on the field. -/
+theorem map_cmp116Field_eq_zero_of_singleCube_eq_zero
+    {d L lieDim : ℕ} [NeZero L]
+    (T :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        CMP116FluctuationField d L lieDim)
+    (ξ : CMP116FluctuationField d L lieDim)
+    (hzero :
+      ∀ source : Cube d L,
+        T (singleCMP116CubeField source (ξ source)) = 0) :
+    T ξ = 0 := by
+  classical
+  rw [map_cmp116Field_eq_sum_singleCube T ξ]
+  apply Finset.sum_eq_zero
+  intro source _hsource
+  exact hzero source
+
+@[simp] theorem cmp116FieldProjection_single_mem
+    {d L lieDim : ℕ} [NeZero L]
+    (X : Finset (Cube d L)) {source : Cube d L}
+    (hsource : source ∈ X) (v : Fin lieDim → ℝ) :
+    cmp116FieldProjection X (singleCMP116CubeField source v) =
+      singleCMP116CubeField source v := by
+  funext target a
+  by_cases htarget : target = source
+  · subst target
+    simp [cmp116FieldProjection, hsource]
+  · simp [cmp116FieldProjection, singleCMP116CubeField, htarget]
+
+@[simp] theorem cmp116FieldProjection_single_not_mem
+    {d L lieDim : ℕ} [NeZero L]
+    (X : Finset (Cube d L)) {source : Cube d L}
+    (hsource : source ∉ X) (v : Fin lieDim → ℝ) :
+    cmp116FieldProjection X (singleCMP116CubeField source v) = 0 := by
+  funext target a
+  by_cases htarget : target = source
+  · subst target
+    simp [cmp116FieldProjection, hsource]
+  · simp [cmp116FieldProjection, singleCMP116CubeField, htarget]
+
+/-- Pointwise kernel bound for a linear map on CMP116 cube fields. -/
+def CMP116LinearMapKernelBound
+    {d L lieDim : ℕ} [NeZero L]
+    (T :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        CMP116FluctuationField d L lieDim)
+    (weight : Cube d L → Cube d L → ℝ) : Prop :=
+  ∀ source target (v : Fin lieDim → ℝ),
+    ‖T (singleCMP116CubeField source v) target‖ ≤
+      weight target source * ‖v‖
+
+/-- Exact finite range of a CMP116 kernel weight. -/
+def CMP116KernelFiniteRange
+    {d L : ℕ} [NeZero L]
+    (weight : Cube d L → Cube d L → ℝ)
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ) : Prop :=
+  ∀ source target,
+    R < dist target source →
+      weight target source = 0
+
+/-- The `R`-range enlargement of an input cube set. -/
+noncomputable def cmp116FiniteRangeClosure
+    {d L : ℕ} [NeZero L]
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ) (X : Finset (Cube d L)) :
+    Finset (Cube d L) := by
+  classical
+  exact Finset.univ.filter fun target =>
+    ∃ source ∈ X, dist target source ≤ R
+
 /-- Exact input/output support for a linear operator on CMP116 fluctuation
 fields.  The first equality says the operator only reads `Xin`; the second says
 its output vanishes outside `Xout`. -/
@@ -261,6 +394,196 @@ theorem mono
         rw [cmp116FieldProjection_comp_of_subset_right hTout]
       _ = T := hT.2
 
+/-- It suffices to verify exact kernel zeros on single-cube fields. -/
+theorem of_singleBond_kernel_zero
+    {Xin Xout : Finset (Cube d L)}
+    {T :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        CMP116FluctuationField d L lieDim}
+    (hzero :
+      ∀ source target (v : Fin lieDim → ℝ),
+        source ∉ Xin ∨ target ∉ Xout →
+          T (singleCMP116CubeField source v) target = 0) :
+    OperatorSupportedBetween Xin Xout T := by
+  classical
+  constructor
+  · ext ξ target a
+    have hdiff :
+        T (ξ - cmp116FieldProjection Xin ξ) = 0 := by
+      apply map_cmp116Field_eq_zero_of_singleCube_eq_zero
+      intro source
+      by_cases hsourceXin : source ∈ Xin
+      · have hsourceZero :
+            (ξ - cmp116FieldProjection Xin ξ) source = 0 := by
+          funext b
+          simp [cmp116FieldProjection, hsourceXin]
+        simp [hsourceZero]
+      · funext target b
+        have hkernelZero :
+            T (singleCMP116CubeField source
+              ((ξ - cmp116FieldProjection Xin ξ) source)) target = 0 :=
+          hzero source target
+            ((ξ - cmp116FieldProjection Xin ξ) source) (Or.inl hsourceXin)
+        exact congrFun hkernelZero b
+    have hsub :
+        T ξ - T (cmp116FieldProjection Xin ξ) = 0 := by
+      simpa [map_sub] using hdiff
+    have heq :
+        T (cmp116FieldProjection Xin ξ) = T ξ :=
+      (sub_eq_zero.mp hsub).symm
+    exact congrFun (congrFun heq target) a
+  · ext ξ target a
+    by_cases htarget : target ∈ Xout
+    · simp [ContinuousLinearMap.comp_apply, cmp116FieldProjection, htarget]
+    · have hfull :
+          T ξ target a =
+            (∑ source : Cube d L,
+              T (singleCMP116CubeField source (ξ source)) target a) := by
+        simpa using
+          congrFun (congrFun
+            (map_cmp116Field_eq_sum_singleCube T ξ) target) a
+      have hzero_sum :
+          (∑ source : Cube d L,
+            T (singleCMP116CubeField source (ξ source)) target a) = 0 := by
+        apply Finset.sum_eq_zero
+        intro source _hsource
+        have hkernelZero :
+            T (singleCMP116CubeField source (ξ source)) target = 0 :=
+          hzero source target (ξ source) (Or.inr htarget)
+        exact congrFun hkernelZero a
+      have hTzero : T ξ target a = 0 := by
+        rw [hfull, hzero_sum]
+      rw [ContinuousLinearMap.comp_apply]
+      simp [cmp116FieldProjection, htarget, hTzero]
+
+/-- A kernel bound with exact finite range gives exact support after projecting
+the input to `Xin`. -/
+theorem of_kernel_bound_finiteRange
+    {Xin : Finset (Cube d L)}
+    {T :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        CMP116FluctuationField d L lieDim}
+    {weight : Cube d L → Cube d L → ℝ}
+    {dist : Cube d L → Cube d L → ℕ}
+    {R : ℕ}
+    (hkernel : CMP116LinearMapKernelBound T weight)
+    (hrange : CMP116KernelFiniteRange weight dist R) :
+    OperatorSupportedBetween
+      Xin
+      (cmp116FiniteRangeClosure dist R Xin)
+      (T.comp (cmp116FieldProjection Xin)) := by
+  classical
+  apply of_singleBond_kernel_zero
+  intro source target v houtside
+  rcases houtside with hsource | htarget
+  · simp [ContinuousLinearMap.comp_apply, hsource]
+  · by_cases hsourceXin : source ∈ Xin
+    · have hnotDistLe : ¬ dist target source ≤ R := by
+        intro hdistLe
+        have hmem : target ∈ cmp116FiniteRangeClosure dist R Xin := by
+          simp [cmp116FiniteRangeClosure]
+          exact ⟨source, hsourceXin, hdistLe⟩
+        exact htarget hmem
+      have hdist : R < dist target source := Nat.lt_of_not_ge hnotDistLe
+      have hweight : weight target source = 0 := hrange source target hdist
+      have hbound := hkernel source target v
+      have hnorm_le_zero :
+          ‖T (singleCMP116CubeField source v) target‖ ≤ 0 := by
+        simpa [hweight] using hbound
+      have hnorm_eq_zero :
+          ‖T (singleCMP116CubeField source v) target‖ = 0 :=
+        le_antisymm hnorm_le_zero (norm_nonneg _)
+      have hkernelZero :
+          T (singleCMP116CubeField source v) target = 0 :=
+        norm_eq_zero.mp hnorm_eq_zero
+      simp [ContinuousLinearMap.comp_apply, hsourceXin, hkernelZero]
+    · simp [ContinuousLinearMap.comp_apply, hsourceXin]
+
 end OperatorSupportedBetween
+
+/-- A continuous linear map carrying certified exact input/output support. -/
+structure CMP116LocalizedLinearMap
+    {d L lieDim : ℕ} [NeZero L]
+    (Xin Xout : Finset (Cube d L)) where
+  toContinuousLinearMap :
+    CMP116FluctuationField d L lieDim →L[ℝ]
+      CMP116FluctuationField d L lieDim
+  supportedBetween :
+    OperatorSupportedBetween Xin Xout toContinuousLinearMap
+
+namespace CMP116LocalizedLinearMap
+
+variable {d L lieDim : ℕ} [NeZero L]
+variable {Xin Xmid Xout : Finset (Cube d L)}
+
+theorem eq_of_agreeOn
+    (T : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xout)
+    {ξ η : CMP116FluctuationField d L lieDim}
+    (hξη : AgreeOn Xin ξ η) :
+    T.toContinuousLinearMap ξ =
+      T.toContinuousLinearMap η :=
+  OperatorSupportedBetween.eq_of_agreeOn
+    T.supportedBetween hξη
+
+theorem apply_eq_zero_outside
+    (T : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xout)
+    (ξ : CMP116FluctuationField d L lieDim)
+    {q : Cube d L} (hq : q ∉ Xout) (a : Fin lieDim) :
+    T.toContinuousLinearMap ξ q a = 0 :=
+  OperatorSupportedBetween.apply_eq_zero_outside
+    T.supportedBetween ξ hq a
+
+noncomputable def add
+    (T U : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xout) :
+    CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xout where
+  toContinuousLinearMap :=
+    T.toContinuousLinearMap + U.toContinuousLinearMap
+  supportedBetween :=
+    OperatorSupportedBetween.add
+      T.supportedBetween U.supportedBetween
+
+noncomputable def finsetSum
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (T : ι → CMP116LocalizedLinearMap
+      (lieDim := lieDim) Xin Xout) :
+    CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xout where
+  toContinuousLinearMap :=
+    I.sum fun i => (T i).toContinuousLinearMap
+  supportedBetween :=
+    OperatorSupportedBetween.finsetSum
+      I
+      (fun i => (T i).toContinuousLinearMap)
+      (fun i _hi => (T i).supportedBetween)
+
+noncomputable def comp
+    (U : CMP116LocalizedLinearMap (lieDim := lieDim) Xmid Xout)
+    (T : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xmid) :
+    CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xout where
+  toContinuousLinearMap :=
+    U.toContinuousLinearMap.comp T.toContinuousLinearMap
+  supportedBetween :=
+    OperatorSupportedBetween.comp
+      T.supportedBetween U.supportedBetween
+
+/-- Exact localization by input/output projection, with no decay claim. -/
+noncomputable def ofProjection
+    (Xin Xout : Finset (Cube d L))
+    (T :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        CMP116FluctuationField d L lieDim) :
+    CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xout where
+  toContinuousLinearMap :=
+    (cmp116FieldProjection Xout).comp
+      (T.comp (cmp116FieldProjection Xin))
+  supportedBetween := by
+    apply OperatorSupportedBetween.of_singleBond_kernel_zero
+    intro source target v houtside
+    rcases houtside with hsource | htarget
+    · simp [ContinuousLinearMap.comp_apply, hsource]
+    · funext a
+      simp [ContinuousLinearMap.comp_apply, cmp116FieldProjection, htarget]
+
+end CMP116LocalizedLinearMap
 
 end YangMills.RG

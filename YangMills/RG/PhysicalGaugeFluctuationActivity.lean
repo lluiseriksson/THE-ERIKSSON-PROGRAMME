@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.PhysicalGaugeCovarianceLocalization
+import YangMills.RG.PhysicalGaugeCMP116OperatorTransport
 import YangMills.RG.LocalFunctional
 
 /-!

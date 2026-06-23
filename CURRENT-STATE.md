@@ -1066,6 +1066,18 @@ translation for bonds assigned to a cube set.  This is product-coordinate
 bookkeeping only: it does not prove a physical Gaussian change of variables,
 root localization, Wilson-Hessian identification, or physical raw activity
 decay.
+The upstream route now also has a localized CMP116 operator-transport layer in
+`YangMills.RG.PhysicalGaugeCMP116OperatorTransport`.  It extends
+`YangMills.RG.LocalLinearOperator` with singleton cube fields, pointwise
+kernel bounds, exact finite-range closures, kernel-zero support constructors,
+and a bundled `CMP116LocalizedLinearMap`.  The transport file conjugates an
+already supplied physical positive-bond root into CMP116 coordinates, records
+the projection-compatibility and kernel-bound conversion as explicit fields,
+and derives exact support/agreement/zero-output consequences for projected
+finite-range root operators.  This is still not a producer of `hraw`: the
+physical covariance root, its localization/truncation theorem, concrete
+coordinate chart, local Wilson activities, and Appendix-F raw bounds remain
+separate source obligations.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper

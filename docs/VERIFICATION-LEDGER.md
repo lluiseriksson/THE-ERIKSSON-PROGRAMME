@@ -10981,3 +10981,58 @@ support-agreement transfer.  It does not construct a polymer-local raw
 activity, prove a physical Gaussian change of variables, localize the physical
 square-root map, identify a Wilson Hessian, or prove any Appendix-F estimate.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 285 (2026-06-23, **localized physical-root transport to CMP116 operators**
+`YangMills.RG.PhysicalGaugeCMP116OperatorTransport`; core 8347)
+
+This addendum adds the finite operator-support layer needed between a supplied
+physical covariance root and later CMP116 activity construction.  The new
+public declarations include:
+
+```
+singleCMP116CubeField
+cmp116Field_eq_sum_singleCube
+map_cmp116Field_eq_sum_singleCube
+CMP116LinearMapKernelBound
+CMP116KernelFiniteRange
+cmp116FiniteRangeClosure
+OperatorSupportedBetween.of_singleBond_kernel_zero
+OperatorSupportedBetween.of_kernel_bound_finiteRange
+CMP116LocalizedLinearMap
+CMP116LocalizedLinearMap.ofProjection
+physicalBondProjection
+physicalBondsOver
+cmp116OperatorOfPhysical
+PhysicalRootToCMP116OperatorTransport
+PhysicalRootToCMP116OperatorTransport.rootOperator
+PhysicalRootToCMP116OperatorTransport.localizedRootOperator
+PhysicalRootToCMP116OperatorTransport.rootOperator_kernelBound_of_certificate
+PhysicalRootToCMP116OperatorTransport.localizedRootOperator_supportedBetween
+PhysicalRootToCMP116OperatorTransport.localizedRootOperator_eq_of_agreeOn
+PhysicalRootToCMP116OperatorTransport.localizedRootOperator_apply_eq_zero_outside
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMap
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\LocalLinearOperator.lean
+lake build YangMills.RG.LocalLinearOperator
+lake env lean YangMills\RG\PhysicalGaugeCMP116OperatorTransport.lean
+lake build YangMills.RG.PhysicalGaugeCMP116OperatorTransport
+lake env lean YangMills\RG\PhysicalGaugeFluctuationActivity.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\LocalLinearOperator.lean YangMills\RG\PhysicalGaugeCMP116OperatorTransport.lean
+rg -n "PhysicalGaugeRawActivityDecay|BalabanCMP116RawMetricDecay|PhysicalGaugeCMP116ActivityTransport|weight_domination|raw_bound|decay_bound|H0|κ" YangMills\RG\PhysicalGaugeCMP116OperatorTransport.lean
+```
+
+The final grep is expected to return empty.
+
+**Honest scope.** This commit transports supplied root/operator data into a
+CMP116 exact-support form and proves finite-range support consequences.  It
+does not construct the physical covariance root, prove root localization or
+truncation, build local Wilson activities, prove Gaussian change of variables,
+or prove raw activity decay.  Clay distance **~0% (<0.1%), unchanged**.
