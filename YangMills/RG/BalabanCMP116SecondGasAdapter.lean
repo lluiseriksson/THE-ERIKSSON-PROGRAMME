@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116KsharpAdapter
 import YangMills.RG.AppendixFSecondGas
+import YangMills.RG.PhysicalGaugeCMP116ActivityAdapter
 
 /-!
 # Balaban CMP116 to the second Appendix-F gas
@@ -345,6 +346,63 @@ theorem
       integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDecay_rooted_of_source
         HF z Λ F hY ψ hH₀ hH₀_one hK₀ hκ₀ hκ hroot
         (fun φ X hX => hraw ψ φ X hX))
+
+/-- Transport-package form of the spectator-integrated CMP116 `K#` estimate.
+
+This removes the independent localized family and `hraw` arguments from the
+single-scale K# call site.  They are projected from the supplied
+`PhysicalGaugeCMP116ActivityTransport`; all probability, rooted leaf budget,
+smallness, and rate-margin hypotheses remain explicit. -/
+theorem norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_transport
+    {dPhys N Nc d L : ℕ} [NeZero N] [NeZero L]
+    {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound H0 κ : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N)}
+    {amplitude weight : OmegaPolymerType HF z → ℝ}
+    {sourceConstruction : Prop}
+    (T :
+      PhysicalGaugeCMP116ActivityTransport
+        (lieDim := lieDim) (Ψ := fun _ : Cube d L => β)
+        HF z Λ precision covariance root covNormBound rootNormBound
+        covWeight rootWeight physicalActivity physicalActiveSupport
+        amplitude weight H0 κ sourceConstruction)
+    (ν : Measure β) [IsProbabilityMeasure ν]
+    {Y : Finset (Cube d L)}
+    (hY : Y ∈ appendixFTargetRegion
+      (Finset.univ : Finset (Cube d L))
+      (fun X : OmegaPolymerType HF z => skeleton HF X.val)
+      (fun X : OmegaPolymerType HF z => X.val)
+      Λ)
+    {K0 κ0 : ℝ}
+    (hH0 : 0 ≤ H0)
+    (hH0_one : H0 ≤ 1)
+    (hK0 : 0 ≤ K0)
+    (hsmall : 2 * H0 * K0 ≤ 1)
+    (hκ0 : 0 ≤ κ0)
+    (hκ : κ0 ≤ κ)
+    (hroot : ∀ r : Cube d L,
+      (∑ X ∈ Λ.filter
+          (fun X => r ∈ skeleton HF X.val),
+        appendixFHoleExpWeight HF κ0 X.val) ≤ K0) :
+    ‖balabanCMP116AppendixFIntegratedKsharpActivity
+        HF z Λ T.family ν Y‖ ≤
+      (2 * H0 * K0) *
+        appendixFHoleExpWeight HF (appendixFKsharpRate κ κ0) Y :=
+  norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_rawMetricDecay_rooted_of_source
+    HF z Λ T.family ν hY hH0 hH0_one hK0 hsmall hκ0 hκ hroot
+    (balabanCMP116_hraw_of_physicalGaugeCMP116ActivityTransport T hH0)
 
 /-- The spectator-integrated CMP116 activity vanishes away from the first
 connected-cover target region. -/

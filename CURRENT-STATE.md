@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 296.
+Addendum 297.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -149,6 +149,13 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `balabanCMP116_hraw_of_physicalGaugeCMP116ActivityTransport` theorem is now a
   compatibility specialization of that named predicate; it still does not
   construct the CMP116 family or prove the physical raw estimate.
+  The single-scale K# layer now also has the transport-level consumer
+  `norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_transport`.
+  It projects both the localized family `T.family` and the Appendix-F `hraw`
+  premise from a supplied `PhysicalGaugeCMP116ActivityTransport`, so that K#
+  call site no longer needs independent `F` and `hraw` arguments.  Probability,
+  target-region membership, rooted leaf budget, smallness, and rate-margin
+  hypotheses remain explicit.
   The corrected constructive route now starts upstream of that conditional
   bridge: `YangMills/RG/LocalLinearOperator.lean` defines the exact finite
   support calculus for CMP116 fluctuation-field operators.  It provides the

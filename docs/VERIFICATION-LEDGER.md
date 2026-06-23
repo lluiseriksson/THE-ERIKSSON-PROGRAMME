@@ -11478,3 +11478,44 @@ raw pointwise decay, Gaussian pushforward, covariance-root localization,
 Wilson-Hessian identification, integrability, H#/K# smallness, `hRpoly`, and
 the continuum problem all remain open.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 297 (2026-06-23, **transport-backed K# consumer**
+`YangMills.RG.BalabanCMP116SecondGasAdapter`; core 8349)
+
+This addendum adds the transport-level single-scale K# consumer for the CMP116
+activity path.  The theorem takes a
+`PhysicalGaugeCMP116ActivityTransport`, projects its localized family
+`T.family`, derives the Appendix-F raw bound from
+`balabanCMP116_hraw_of_physicalGaugeCMP116ActivityTransport`, and feeds both
+into the existing spectator-integrated K# estimate.
+
+The new public declaration is:
+
+```
+norm_balabanCMP116AppendixFIntegratedKsharpActivity_le_ksharpRate_of_transport
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\BalabanCMP116SecondGasAdapter.lean
+lake build YangMills.RG.BalabanCMP116SecondGasAdapter
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\BalabanCMP116SecondGasAdapter.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entry reports only
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint adds no new analytic input and proves no new
+Balaban estimate beyond reusing the existing K# theorem.  It only removes
+independent `F` and `hraw` arguments from this transport-backed K# call site.
+Probability, target-region membership, rooted leaf budget, smallness,
+rate-margin hypotheses, source measurability, support localization, weight
+domination, raw pointwise decay, Gaussian pushforward, covariance-root
+localization, Wilson-Hessian identification, H#/K# endpoint smallness,
+`hRpoly`, and the continuum problem all remain open.  Clay distance
+**~0% (<0.1%), unchanged**.
