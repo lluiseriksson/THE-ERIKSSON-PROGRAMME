@@ -1111,6 +1111,15 @@ pointwise raw estimate, and Lean derives
 removes one adapter redundancy for future CMP116 transport calls without
 changing the analytic frontier: the raw estimate is still a source hypothesis,
 not a theorem proved from Balaban/CMP116 inputs.
+The raw-source package now also has direct CMP116 consumers:
+`physicalGaugeCMP116ActivityTransport_of_cmp116RawSource`,
+`balabanCMP116RawMetricDecay_of_cmp116RawSource`, and
+`balabanCMP116_hraw_of_cmp116RawSource`.  These compose the existing
+dictionary transport, support localization, weight domination, and raw-source
+decay adapters, so a single raw-source package plus the still-explicit
+measurability/support/weight hypotheses yields the exact Appendix-F `hraw`
+shape.  This is still conditional plumbing; it does not prove the source
+activity estimate, integrability, or the analytic support/weight hypotheses.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper

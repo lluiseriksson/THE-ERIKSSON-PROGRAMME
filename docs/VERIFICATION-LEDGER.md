@@ -11353,3 +11353,46 @@ packages that unfolded raw estimate as a source field and removes the separate
 constructor.  It does not discharge `hraw`, `hRpoly`, fluctuation
 integrability, or any continuum-facing obligation.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 294 (2026-06-23, **raw-source CMP116 transport consumers**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8348)
+
+This addendum composes the raw-source compatibility package with the existing
+dictionary transport and Appendix-F raw-decay adapters.  Given the raw-source
+package plus the still-explicit source measurability, support localization, and
+weight-domination hypotheses, Lean now constructs the full
+`PhysicalGaugeCMP116ActivityTransport`, derives `BalabanCMP116RawMetricDecay`
+for the transported family, and exposes the exact pointwise `hraw` shape
+consumed by the Appendix-F estimates.
+
+The new public declarations are:
+
+```
+physicalGaugeCMP116ActivityTransport_of_cmp116RawSource
+balabanCMP116RawMetricDecay_of_cmp116RawSource
+balabanCMP116_hraw_of_cmp116RawSource
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries are expected to remain within
+`[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint does not prove source measurability,
+Appendix-F support localization, weight domination, the raw activity estimate,
+Gaussian pushforward, covariance-root localization, Wilson-Hessian
+identification, fluctuation integrability, or `hRpoly`.  It only proves that,
+once those source/geometric hypotheses are supplied, the existing transport
+stack reaches `BalabanCMP116RawMetricDecay` and the exact Appendix-F `hraw`
+premise without another separate raw-decay argument.  Clay distance
+**~0% (<0.1%), unchanged**.
