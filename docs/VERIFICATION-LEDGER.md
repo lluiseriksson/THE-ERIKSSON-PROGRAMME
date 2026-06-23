@@ -11855,3 +11855,46 @@ identity is definitionally compatible with the canonical raw-source projection.
 It does not prove the physical rooted remainder identity, any Balaban source
 fact, any frontier witness, or any continuum theorem.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 306 (2026-06-23, **Balaban source assumptions package into M3 frontier**
+`YangMills.RG.BalabanCMP116SourceTheorem`; core 8353)
+
+This addendum closes the named source-theorem implication by pure record
+packaging.  The new declarations are:
+
+```
+CMP116RawSourceM3Frontier.of_balabanSourceAssumptions
+BalabanCMP116SourceAssumptions.to_m3Frontier
+balabanCMP116SourceTheorem_of_assumptions
+```
+
+The constructor maps the 29 non-raw source fields directly into the matching
+`CMP116RawSourceM3Frontier` fields and maps the five unfolded raw-source fields
+through the existing `BalabanCMP116SourceAssumptions.rawSource` projection.  The
+rooted H# field is supplied by
+`BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity_rawSource`, so
+the local raw-source package is definitionally the same one used by the
+frontier field.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMills.RG.BalabanCMP116SourceTheorem
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\BalabanCMP116SourceTheorem.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries are `#print axioms` checks for all three packaging
+declarations; each reports `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This proves only the structural implication from the source
+assumption record to the existing frontier record.  It does not prove the
+covariance/root certificate, Gaussian pushforward, root localization,
+Wilson-Hessian identification, local activity construction, raw pointwise
+decay, support/weight transport, the physical rooted H# identity, profile or
+marginal estimates, IR decay, or any continuum theorem.  Clay distance
+**~0% (<0.1%), unchanged**.

@@ -1181,6 +1181,12 @@ projection-consistency theorem
 `BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity_rawSource`
 restates the record's rooted H# identity using that canonical raw-source
 projection; it does not prove the physical remainder identity itself.
+The pure packaging constructor
+`CMP116RawSourceM3Frontier.of_balabanSourceAssumptions`, its method-style alias
+`BalabanCMP116SourceAssumptions.to_m3Frontier`, and
+`balabanCMP116SourceTheorem_of_assumptions` now close the named
+`BalabanCMP116SourceTheorem` implication.  This consumes every source field but
+does not prove any source field.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper

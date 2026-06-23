@@ -14,9 +14,11 @@ source facts it already contains: Gaussian pushforward, covariance-root
 localization, Wilson-Hessian identification, local physical activity
 construction, and raw pointwise decay.
 
-No Balaban source theorem is proved here.  The declaration
-`BalabanCMP116SourceTheorem` is only a checked implication target from the
-unfolded source-assumption record to the existing `CMP116RawSourceM3Frontier`.
+The named proposition `BalabanCMP116SourceTheorem` is discharged below by pure
+record packaging from the unfolded source-assumption record to the existing
+`CMP116RawSourceM3Frontier`.  No Gaussian pushforward, localization,
+Wilson-Hessian, local-activity, raw-decay, or rooted-remainder source fact is
+proved here.
 -/
 
 namespace YangMills.RG
@@ -450,11 +452,11 @@ theorem rooted_hsharp_remainder_identity_rawSource
 
 end BalabanCMP116SourceAssumptions
 
-/-- Checked target statement for the future Balaban CMP116 source theorem.
+/-- Checked target statement for the Balaban CMP116 source theorem package.
 
-This is deliberately a proposition, not a theorem.  It records that the
-unfolded source assumptions should imply the already existing raw-source M3
-frontier once the source mathematics is proved. -/
+This named proposition records the implication from unfolded source assumptions
+to the existing raw-source M3 frontier.  The implication is discharged below
+purely structurally; every mathematical source fact remains in the premise. -/
 def BalabanCMP116SourceTheorem
     {β : Type*} [MeasurableSpace β]
     {HF : HoleFamily d L}
@@ -512,5 +514,145 @@ def BalabanCMP116SourceTheorem
       C1 C Hbar ε c0 betaFlow kappa kappa0
       rootLocalization wilsonHessianIdentification
       localActivityConstruction
+
+section
+
+variable
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    {zCarrier : Finset (Cube d L) → ℂ}
+    {r : Cube d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    {Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k))}
+    {D : ∀ _t _k : ℕ, PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {spectatorPull :
+      ∀ _t _k : ℕ, ∀ _ : PhysicalBond dPhys N,
+        β → SUNLieCoord Nc}
+    {precision covariance root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      ∀ _t _k : ℕ, Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {covNormBound rootNormBound : ∀ _t _k : ℕ, ℝ}
+    {covWeight rootWeight :
+      ∀ _t _k : ℕ, PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          Finset (PhysicalBond dPhys N)}
+    {weight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℝ}
+    {ν : ℕ → ℕ → Measure β}
+    {covIR : ℕ → ℝ}
+    {Rsc : ℕ → ℕ → ℝ}
+    {g : ℕ → ℝ}
+    {amplitude : ℕ → ℕ → ℝ}
+    {C1 C Hbar ε c0 betaFlow kappa kappa0 : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop}
+
+/-- Package the unfolded Balaban source assumptions into the existing
+raw-source M3 frontier.
+
+This proves no source field.  It only reassembles records, combining the five
+unfolded source fields into `raw_source` through the canonical
+`BalabanCMP116SourceAssumptions.rawSource` projection. -/
+def CMP116RawSourceM3Frontier.of_balabanSourceAssumptions
+    (h :
+      BalabanCMP116SourceAssumptions
+        zCarrier r z Λ D spectatorPull
+        precision covariance root physicalGaussian
+        covNormBound rootNormBound covWeight rootWeight
+        physicalActivity physicalActiveSupport weight
+        ν covIR Rsc g amplitude
+        C1 C Hbar ε c0 betaFlow kappa kappa0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction) :
+    CMP116RawSourceM3Frontier
+      zCarrier r z Λ D spectatorPull
+      precision covariance root physicalGaussian
+      covNormBound rootNormBound covWeight rootWeight
+      physicalActivity physicalActiveSupport weight
+      ν covIR Rsc g amplitude
+      C1 C Hbar ε c0 betaFlow kappa kappa0
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction where
+  covariance_root_certificate := h.covariance_root_certificate
+  raw_source := h.rawSource
+  spectator_support_subset := h.spectator_support_subset
+  fluctuation_support_subset := h.fluctuation_support_subset
+  weight_nonneg := h.weight_nonneg
+  active_support_subset_omega := h.active_support_subset_omega
+  active_support_subset_skeleton := h.active_support_subset_skeleton
+  weight_domination := h.weight_domination
+  holes_pairwise_disjoint := h.holes_pairwise_disjoint
+  no_edges_between_holes := h.no_edges_between_holes
+  holes_nonempty := h.holes_nonempty
+  appendix_f_geometric_smallness := h.appendix_f_geometric_smallness
+  activity_stronglyMeasurable := h.activity_stronglyMeasurable
+  probability_law := h.probability_law
+  amplitude_nonneg := h.amplitude_nonneg
+  amplitude_le_one := h.amplitude_le_one
+  profile_constant_nonneg := h.profile_constant_nonneg
+  hbar_nonneg := h.hbar_nonneg
+  kappa_margin := h.kappa_margin
+  kappa0_gt_one := h.kappa0_gt_one
+  coupling_positive := h.coupling_positive
+  half_budget := h.half_budget
+  profile_bound := h.profile_bound
+  epsilon_positive := h.epsilon_positive
+  time_decay_positive := h.time_decay_positive
+  beta_flow_positive := h.beta_flow_positive
+  coupling_small := h.coupling_small
+  coupling_recursion := h.coupling_recursion
+  ir_bound := h.ir_bound
+  rooted_hsharp_remainder_identity :=
+    h.rooted_hsharp_remainder_identity_rawSource
+
+/-- Method-style alias for
+`CMP116RawSourceM3Frontier.of_balabanSourceAssumptions`. -/
+def BalabanCMP116SourceAssumptions.to_m3Frontier
+    (h :
+      BalabanCMP116SourceAssumptions
+        zCarrier r z Λ D spectatorPull
+        precision covariance root physicalGaussian
+        covNormBound rootNormBound covWeight rootWeight
+        physicalActivity physicalActiveSupport weight
+        ν covIR Rsc g amplitude
+        C1 C Hbar ε c0 betaFlow kappa kappa0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction) :
+    CMP116RawSourceM3Frontier
+      zCarrier r z Λ D spectatorPull
+      precision covariance root physicalGaussian
+      covNormBound rootNormBound covWeight rootWeight
+      physicalActivity physicalActiveSupport weight
+      ν covIR Rsc g amplitude
+      C1 C Hbar ε c0 betaFlow kappa kappa0
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction :=
+  CMP116RawSourceM3Frontier.of_balabanSourceAssumptions h
+
+/-- The checked source-theorem target is discharged by pure record packaging. -/
+theorem balabanCMP116SourceTheorem_of_assumptions :
+    BalabanCMP116SourceTheorem
+      zCarrier r z Λ D spectatorPull
+      precision covariance root physicalGaussian
+      covNormBound rootNormBound covWeight rootWeight
+      physicalActivity physicalActiveSupport weight
+      ν covIR Rsc g amplitude
+      C1 C Hbar ε c0 betaFlow kappa kappa0
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction := by
+  intro h
+  exact h.to_m3Frontier
+
+end
 
 end YangMills.RG
