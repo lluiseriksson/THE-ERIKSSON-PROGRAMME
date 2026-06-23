@@ -10778,3 +10778,56 @@ rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.
 the physical CMP116 localized activity, prove the Wilson Hessian identity,
 prove covariance-root localization, prove source measurability, or discharge
 the actual `hraw` theorem.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 281 (2026-06-23, **physical-to-CMP116 finite reindexing layer**
+`YangMills.RG.PhysicalGaugeCMP116ActivityAdapter`; core 8344)
+
+This addendum implements the lower finite bridge requested by the
+physical/CMP116 audit packet.  The new declarations are:
+
+```
+PhysicalGaugeRawActivityDecay
+LocalActivity.reindex
+LocalActivity.globalEval_reindex
+PhysicalGaugeCMP116ActivityAdapter
+PhysicalGaugeCMP116ActivityAdapter.pullSpectator
+PhysicalGaugeCMP116ActivityAdapter.pullFluctuation
+PhysicalGaugeCMP116ActivityAdapter.activity
+PhysicalGaugeCMP116ActivityAdapter.activeSupport
+PhysicalGaugeCMP116ActivityAdapter.globalEval_activity
+PhysicalGaugeCMP116ActivityAdapter.spectatorSupport_activity_subset_activeSupport
+PhysicalGaugeCMP116ActivityAdapter.fluctuationSupport_activity_subset_activeSupport
+```
+
+`LocalActivity.reindex` transports a source local activity along a finite site
+map.  Its spectator and fluctuation supports are the finite images of the
+source supports, and `globalEval_reindex` rewrites target evaluation exactly to
+source evaluation on pulled-back global fields.
+
+`PhysicalGaugeCMP116ActivityAdapter` is the finite physical positive-bond to
+cube-site shell: it stores the physical index map, `bondToCube`, spectator and
+fluctuation coordinate pulls, and `Omega`.  Its derived `activity` and
+`activeSupport` reindex physical local activities and project physical active
+supports.  The two support lemmas transport only the certificate's common
+physical support containment to the projected cube active support; the Ω half
+of CMP116 fluctuation support remains an explicit source obligation.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\LocalFunctional.lean
+lake env lean YangMills\RG\PhysicalGaugeFluctuationActivity.lean
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityAdapter
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\LocalFunctional.lean YangMills\RG\PhysicalGaugeFluctuationActivity.lean YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean
+```
+
+**Honest scope.** This is finite reindexing and support-image bookkeeping.  It
+does not construct `BalabanCMP116LocalizedActivityFamily` from the physical
+certificate, prove Ω-locality, prove strong measurability, identify the Wilson
+fluctuation activity, prove Gaussian pushforward, compare metrics/constants,
+or discharge physical `hraw`.  Clay distance **~0% (<0.1%), unchanged**.

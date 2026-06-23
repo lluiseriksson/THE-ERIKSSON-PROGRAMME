@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 280.
+Addendum 281.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -110,20 +110,25 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   raw activity estimate remain source hypotheses.  The certificate now exposes
   named projection theorems for the raw bound, spectator/fluctuation supports,
   amplitude/weight nonnegativity, the separate decay majorant, and the combined
-  raw-decay estimate, so future Appendix-F adapters can depend on stable field
-  names without asserting that the physical-to-CMP116 conversion has been
-  constructed.
+  raw-decay estimate.  The combined statement now also has the named predicate
+  `PhysicalGaugeRawActivityDecay`, so future Appendix-F adapters can depend on
+  stable field names without asserting that the physical-to-CMP116 conversion
+  has been constructed.
   The bridge `YangMills/RG/PhysicalGaugeCMP116ActivityAdapter.lean` now records
-  the explicit transport obligations from that physical certificate to a CMP116
-  localized activity family: spectator/fluctuation field transports,
-  source-faithful `globalEval` preservation, active-support containment in the
-  Appendix-F skeleton, and domination of the physical weight by the Appendix-F
-  exponential weight.  It proves the formal consequences
+  the finite physical-to-cube adapter layer before the stronger transport
+  package: a `bondToCube` map, spectator/fluctuation coordinate pulls,
+  projected active support, and a reindexed cube-local activity with exact
+  `globalEval` and image-support theorems.  It also records the explicit
+  transport obligations from that physical certificate to a CMP116 localized
+  activity family: source-faithful `globalEval` preservation, active-support
+  containment in the Appendix-F skeleton, and domination of the physical weight
+  by the Appendix-F exponential weight.  It proves the formal consequences
   `physicalGaugeCMP116SupportHypotheses_of_transport` and
   `balabanCMP116_hraw_of_physicalGaugeCMP116ActivityTransport`, converting such
   a transport package into the existing CMP116 support package and `hraw`
-  hypothesis shape.  The actual physical construction of the transport package
-  remains open.
+  hypothesis shape.  Ω-locality, strong measurability, Gaussian preservation,
+  metric normalization, and the actual physical construction of the transport
+  package remain open.
   The full-periodic
   cochain layer `YangMills/RG/PhysicalGaugeCochains.lean` now fixes the
   physical positive-bond coordinate convention for `su(N)` coordinates,
@@ -287,8 +292,9 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
 * the type-local functional/activity substrate
   `YangMills/RG/LocalFunctional.lean`: restricted fields indexed by finite
   supports, `LocalFunctional`, two-field `LocalActivity`, global adapters
-  invariant under off-support changes, and finite products supported on support
-  unions;
+  invariant under off-support changes, finite products supported on support
+  unions, and `LocalActivity.reindex`, which transports a source local activity
+  along a site map with supports definitionally given by finite images;
 * the ultralocal product-measure factorization substrate
   `YangMills/RG/UltralocalFactorization.lean`: disjoint `LocalFunctional`
   supports, and disjoint `LocalActivity` fluctuation supports for fixed

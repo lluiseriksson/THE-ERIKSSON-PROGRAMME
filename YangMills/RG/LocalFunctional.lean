@@ -185,6 +185,62 @@ def map (f : α → β) (F : LocalActivity Site Ψ Φ α) :
     (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x) :
     (F.map f).globalEval ψ φ = f (F.globalEval ψ φ) := rfl
 
+/-- Reindex a local activity along a site map.
+
+The target activity has supports equal to the images of the source supports.
+Its evaluation pulls target spectator/fluctuation fields back to the original
+source support before applying the source activity. -/
+def reindex {Source Target : Type*} [DecidableEq Target]
+    {ΨS ΦS : Source → Type*} {ΨT ΦT : Target → Type*}
+    (site : Source → Target)
+    (pullΨ : ∀ s, ΨT (site s) → ΨS s)
+    (pullΦ : ∀ s, ΦT (site s) → ΦS s)
+    (F : LocalActivity Source ΨS ΦS α) :
+    LocalActivity Target ΨT ΦT α where
+  spectatorSupport := F.spectatorSupport.image site
+  fluctuationSupport := F.fluctuationSupport.image site
+  eval ψ φ :=
+    F.eval
+      (fun s =>
+        pullΨ s.1
+          (ψ ⟨site s.1, Finset.mem_image.mpr ⟨s.1, s.2, rfl⟩⟩))
+      (fun s =>
+        pullΦ s.1
+          (φ ⟨site s.1, Finset.mem_image.mpr ⟨s.1, s.2, rfl⟩⟩))
+
+@[simp] theorem spectatorSupport_reindex
+    {Source Target : Type*} [DecidableEq Target]
+    {ΨS ΦS : Source → Type*} {ΨT ΦT : Target → Type*}
+    (site : Source → Target)
+    (pullΨ : ∀ s, ΨT (site s) → ΨS s)
+    (pullΦ : ∀ s, ΦT (site s) → ΦS s)
+    (F : LocalActivity Source ΨS ΦS α) :
+    (F.reindex site pullΨ pullΦ).spectatorSupport =
+      F.spectatorSupport.image site := rfl
+
+@[simp] theorem fluctuationSupport_reindex
+    {Source Target : Type*} [DecidableEq Target]
+    {ΨS ΦS : Source → Type*} {ΨT ΦT : Target → Type*}
+    (site : Source → Target)
+    (pullΨ : ∀ s, ΨT (site s) → ΨS s)
+    (pullΦ : ∀ s, ΦT (site s) → ΦS s)
+    (F : LocalActivity Source ΨS ΦS α) :
+    (F.reindex site pullΨ pullΦ).fluctuationSupport =
+      F.fluctuationSupport.image site := rfl
+
+@[simp] theorem globalEval_reindex
+    {Source Target : Type*} [DecidableEq Target]
+    {ΨS ΦS : Source → Type*} {ΨT ΦT : Target → Type*}
+    (site : Source → Target)
+    (pullΨ : ∀ s, ΨT (site s) → ΨS s)
+    (pullΦ : ∀ s, ΦT (site s) → ΦS s)
+    (F : LocalActivity Source ΨS ΦS α)
+    (ψ : ∀ t, ΨT t) (φ : ∀ t, ΦT t) :
+    (F.reindex site pullΨ pullΦ).globalEval ψ φ =
+      F.globalEval
+        (fun s => pullΨ s (ψ (site s)))
+        (fun s => pullΦ s (φ (site s))) := rfl
+
 /-- Product of two local activities, supported on the union in both field
 families. -/
 def mul [DecidableEq Site] [Mul α] (F G : LocalActivity Site Ψ Φ α) :

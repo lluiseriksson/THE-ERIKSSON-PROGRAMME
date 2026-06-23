@@ -34,6 +34,150 @@ namespace YangMills.RG
 
 open scoped RealInnerProductSpace
 
+/-- Finite source-facing adapter from physical positive bonds to the cube-site
+layout used by CMP116/Appendix F.
+
+The adapter records only typed coordinate and site transport.  It does not
+assert Ω-locality, strong measurability, Gaussian preservation, Wilson-Hessian
+identification, or any metric decay estimate. -/
+structure PhysicalGaugeCMP116ActivityAdapter
+    (I J : Type*) {d N L Nc lieDim : ℕ} [NeZero N] [NeZero L]
+    (Ψ : Cube d L → Type*) where
+  physicalIndex : J → I
+  bondToCube : PhysicalBond d N → Cube d L
+  spectatorPull :
+    ∀ b : PhysicalBond d N, Ψ (bondToCube b) → SUNLieCoord Nc
+  fluctuationPull :
+    ∀ _ : PhysicalBond d N, (Fin lieDim → ℝ) → SUNLieCoord Nc
+  Omega : Finset (Cube d L)
+
+namespace PhysicalGaugeCMP116ActivityAdapter
+
+variable {I J : Type*} {d N L Nc lieDim : ℕ} [NeZero N] [NeZero L]
+variable {Ψ : Cube d L → Type*}
+
+/-- Pull a CMP116 spectator field back to the physical positive-bond field
+expected by the physical activity. -/
+def pullSpectator
+    (A :
+      PhysicalGaugeCMP116ActivityAdapter I J (d := d) (N := N) (L := L)
+        (Nc := Nc) (lieDim := lieDim) Ψ)
+    (ψ : ∀ c : Cube d L, Ψ c) :
+    PhysicalGaugeField d N Nc :=
+  fun b => A.spectatorPull b (ψ (A.bondToCube b))
+
+/-- Pull a CMP116 fluctuation coordinate field back to the physical
+positive-bond field expected by the physical activity. -/
+def pullFluctuation
+    (A :
+      PhysicalGaugeCMP116ActivityAdapter I J (d := d) (N := N) (L := L)
+        (Nc := Nc) (lieDim := lieDim) Ψ)
+    (φ : ∀ _ : Cube d L, Fin lieDim → ℝ) :
+    PhysicalGaugeField d N Nc :=
+  fun b => A.fluctuationPull b (φ (A.bondToCube b))
+
+/-- Reindex a physical local activity to a cube-indexed CMP116 local activity
+using the finite adapter. -/
+def activity
+    (A :
+      PhysicalGaugeCMP116ActivityAdapter I J (d := d) (N := N) (L := L)
+        (Nc := Nc) (lieDim := lieDim) Ψ)
+    (physicalActivity : I → PhysicalGaugeLocalActivity d N Nc)
+    (X : J) :
+    LocalActivity (Cube d L) Ψ (fun _ => Fin lieDim → ℝ) ℂ :=
+  (physicalActivity (A.physicalIndex X)).reindex
+    A.bondToCube A.spectatorPull A.fluctuationPull
+
+/-- Project a physical active support to the cube support used by CMP116. -/
+def activeSupport
+    (A :
+      PhysicalGaugeCMP116ActivityAdapter I J (d := d) (N := N) (L := L)
+        (Nc := Nc) (lieDim := lieDim) Ψ)
+    (physicalActiveSupport : I → Finset (PhysicalBond d N))
+    (X : J) :
+    Finset (Cube d L) :=
+  (physicalActiveSupport (A.physicalIndex X)).image A.bondToCube
+
+@[simp] theorem globalEval_activity
+    (A :
+      PhysicalGaugeCMP116ActivityAdapter I J (d := d) (N := N) (L := L)
+        (Nc := Nc) (lieDim := lieDim) Ψ)
+    (physicalActivity : I → PhysicalGaugeLocalActivity d N Nc)
+    (X : J)
+    (ψ : ∀ c : Cube d L, Ψ c)
+    (φ : ∀ _ : Cube d L, Fin lieDim → ℝ) :
+    (A.activity physicalActivity X).globalEval ψ φ =
+      (physicalActivity (A.physicalIndex X)).globalEval
+        (A.pullSpectator ψ) (A.pullFluctuation φ) := rfl
+
+@[simp] theorem spectatorSupport_activity
+    (A :
+      PhysicalGaugeCMP116ActivityAdapter I J (d := d) (N := N) (L := L)
+        (Nc := Nc) (lieDim := lieDim) Ψ)
+    (physicalActivity : I → PhysicalGaugeLocalActivity d N Nc)
+    (X : J) :
+    (A.activity physicalActivity X).spectatorSupport =
+      (physicalActivity (A.physicalIndex X)).spectatorSupport.image
+        A.bondToCube := rfl
+
+@[simp] theorem fluctuationSupport_activity
+    (A :
+      PhysicalGaugeCMP116ActivityAdapter I J (d := d) (N := N) (L := L)
+        (Nc := Nc) (lieDim := lieDim) Ψ)
+    (physicalActivity : I → PhysicalGaugeLocalActivity d N Nc)
+    (X : J) :
+    (A.activity physicalActivity X).fluctuationSupport =
+      (physicalActivity (A.physicalIndex X)).fluctuationSupport.image
+        A.bondToCube := rfl
+
+@[simp] theorem activeSupport_apply
+    (A :
+      PhysicalGaugeCMP116ActivityAdapter I J (d := d) (N := N) (L := L)
+        (Nc := Nc) (lieDim := lieDim) Ψ)
+    (physicalActiveSupport : I → Finset (PhysicalBond d N))
+    (X : J) :
+    A.activeSupport physicalActiveSupport X =
+      (physicalActiveSupport (A.physicalIndex X)).image A.bondToCube := rfl
+
+/-- Physical spectator-support containment transports to the projected
+CMP116 active support. -/
+theorem spectatorSupport_activity_subset_activeSupport
+    (A :
+      PhysicalGaugeCMP116ActivityAdapter I J (d := d) (N := N) (L := L)
+        (Nc := Nc) (lieDim := lieDim) Ψ)
+    {physicalActivity : I → PhysicalGaugeLocalActivity d N Nc}
+    {physicalActiveSupport : I → Finset (PhysicalBond d N)}
+    {X : J}
+    (h :
+      (physicalActivity (A.physicalIndex X)).spectatorSupport ⊆
+        physicalActiveSupport (A.physicalIndex X)) :
+    (A.activity physicalActivity X).spectatorSupport ⊆
+      A.activeSupport physicalActiveSupport X := by
+  intro c hc
+  rcases Finset.mem_image.mp hc with ⟨b, hb, rfl⟩
+  exact Finset.mem_image.mpr ⟨b, h hb, rfl⟩
+
+/-- Physical fluctuation-support containment transports to the projected
+CMP116 active support.  The extra Ω-locality required by CMP116 remains a
+separate source obligation. -/
+theorem fluctuationSupport_activity_subset_activeSupport
+    (A :
+      PhysicalGaugeCMP116ActivityAdapter I J (d := d) (N := N) (L := L)
+        (Nc := Nc) (lieDim := lieDim) Ψ)
+    {physicalActivity : I → PhysicalGaugeLocalActivity d N Nc}
+    {physicalActiveSupport : I → Finset (PhysicalBond d N)}
+    {X : J}
+    (h :
+      (physicalActivity (A.physicalIndex X)).fluctuationSupport ⊆
+        physicalActiveSupport (A.physicalIndex X)) :
+    (A.activity physicalActivity X).fluctuationSupport ⊆
+      A.activeSupport physicalActiveSupport X := by
+  intro c hc
+  rcases Finset.mem_image.mp hc with ⟨b, hb, rfl⟩
+  exact Finset.mem_image.mpr ⟨b, h hb, rfl⟩
+
+end PhysicalGaugeCMP116ActivityAdapter
+
 /-- Source-facing transport package from a physical localized Gaussian activity
 certificate to a CMP116 localized activity family.
 

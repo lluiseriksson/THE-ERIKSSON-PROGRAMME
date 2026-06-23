@@ -45,6 +45,14 @@ def PhysicalGaugeRawActivityBound
   ∀ X (ψ φ : PhysicalGaugeField d N Nc),
     ‖(activity X).globalEval ψ φ‖ ≤ amplitude X
 
+/-- Source-facing combined raw decay for physical gauge local activities. -/
+def PhysicalGaugeRawActivityDecay
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    (activity : ι → PhysicalGaugeLocalActivity d N Nc)
+    (weight : ι → ℝ) (H0 : ℝ) : Prop :=
+  ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+    ‖(activity X).globalEval ψ φ‖ ≤ H0 * weight X
+
 /-- Source-facing decay majorant for the raw activity amplitudes. -/
 def PhysicalGaugeActivityDecay
     {ι : Type*}
@@ -283,8 +291,7 @@ theorem physicalGaugeRawActivityDecay_of_localizedGaussianActivityCertificate
         precision covariance root covNormBound rootNormBound covWeight
         rootWeight activity activeSupport amplitude weight H0
         sourceConstruction) :
-    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
-      ‖(activity X).globalEval ψ φ‖ ≤ H0 * weight X := by
+    PhysicalGaugeRawActivityDecay activity weight H0 := by
   intro X ψ φ
   exact (hcert.raw_bound X ψ φ).trans (hcert.decay_bound X)
 
