@@ -11119,3 +11119,41 @@ variables, localize `C^(1/2)`, identify a Wilson Hessian, prove raw decay, or
 discharge `hraw`.  It only packages already supplied physical support and
 measurability obligations into the concrete CMP116 localized-family interface.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 288 (2026-06-23, **Appendix-F support from dictionary localized family**
+`YangMills.RG.PhysicalGaugeCMP116ActivityAdapter`; core 8347)
+
+This addendum closes the finite support bridge from the dictionary-built
+CMP116 localized family into the Appendix-F support-hypothesis record.  If the
+source side proves that each physical active support, after the CMP116
+dictionary projection, lies over the active skeleton of the target polymer, the
+existing localized family now supplies `BalabanCMP116AppendixFSupportHypotheses`
+directly.
+
+The new public declaration is:
+
+```
+PhysicalGaugeCMP116ActivityAdapter.appendixFSupportHypotheses_of_localizedFamilyOfDictionary
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityAdapter
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean
+git diff --cached -U0 -- YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean | rg -n "^\+.*(PhysicalGaugeRawActivityDecay|BalabanCMP116RawMetricDecay|PhysicalGaugeCMP116ActivityTransport|weight_domination|raw_bound|decay_bound|H0|κ|GaussianChange|gaussian|hraw)"
+```
+
+The final staged-source grep is expected to return empty.
+
+**Honest scope.** This is a finite support theorem.  It does not construct the
+physical local activities, prove Gaussian change of variables, localize
+`C^(1/2)`, identify a Wilson Hessian, prove raw decay, or discharge `hraw`.
+It only turns an explicit physical preimage-to-skeleton support obligation into
+the Appendix-F support package consumed by later CMP116 layers.  Clay distance
+**~0% (<0.1%), unchanged**.

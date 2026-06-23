@@ -524,6 +524,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.localizedFamilyOfDictionary_Omega
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.localizedFamilyOfDictionary_activeSupport
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.localizedFamilyOfDictionary_activity
+#print axioms YangMills.RG.PhysicalGaugeCMP116ActivityAdapter.appendixFSupportHypotheses_of_localizedFamilyOfDictionary
 #print axioms YangMills.RG.finBox_one_eq_iterShift
 #print axioms YangMills.RG.constant_of_shift_invariant_finBox_one
 #print axioms YangMills.RG.flatHarmonicKernelClassified_one

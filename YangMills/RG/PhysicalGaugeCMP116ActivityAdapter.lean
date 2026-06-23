@@ -428,6 +428,55 @@ noncomputable def localizedFamilyOfDictionary
         (ofDictionary D physicalIndex spectatorPull).activity
           physicalActivity X := rfl
 
+/-- A dictionary-built CMP116 localized family satisfies the Appendix-F support
+hypotheses as soon as each physical active support pulls back into the active
+skeleton of its target polymer.
+
+This is only the finite localization bridge.  The construction of the physical
+activities and their analytic estimates remain external inputs. -/
+theorem appendixFSupportHypotheses_of_localizedFamilyOfDictionary
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (physicalIndex : OmegaPolymerType HF z → I)
+    (spectatorPull :
+      ∀ b : PhysicalBond dPhys N,
+        Ψ (D.siteMap.bondToCube b) → SUNLieCoord Nc)
+    (physicalActivity : I → PhysicalGaugeLocalActivity dPhys N Nc)
+    (physicalActiveSupport : I → Finset (PhysicalBond dPhys N))
+    (activity_stronglyMeasurable :
+      ∀ X, ∀ ψ : ∀ c : Cube d L, Ψ c,
+        StronglyMeasurable
+          (fun ξ : (∀ _ : Cube d L, Fin lieDim → ℝ) =>
+            ((ofDictionary D physicalIndex spectatorPull).activity
+              physicalActivity X).globalEval ψ ξ))
+    (spectatorSupport_subset :
+      ∀ X, (physicalActivity (physicalIndex X)).spectatorSupport ⊆
+        physicalActiveSupport (physicalIndex X))
+    (fluctuationSupport_subset :
+      ∀ X, (physicalActivity (physicalIndex X)).fluctuationSupport ⊆
+        physicalActiveSupport (physicalIndex X))
+    (activeSupport_subset_Omega :
+      ∀ X, physicalActiveSupport (physicalIndex X) ⊆
+        D.physicalBondsOfCells D.siteMap.Omega)
+    (activeSupport_subset_skeleton :
+      ∀ X, X ∈ Λ →
+        physicalActiveSupport (physicalIndex X) ⊆
+          D.physicalBondsOfCells (skeleton HF X.val)) :
+    BalabanCMP116AppendixFSupportHypotheses HF z Λ
+      (localizedFamilyOfDictionary D physicalIndex spectatorPull
+        physicalActivity physicalActiveSupport activity_stronglyMeasurable
+        spectatorSupport_subset fluctuationSupport_subset
+        activeSupport_subset_Omega) := by
+  refine BalabanCMP116AppendixFSupportHypotheses.of_activeSupport_subset_skeleton ?_
+  intro X hX
+  simpa using
+    ((activeSupport_ofDictionary_subset_iff
+      D physicalIndex spectatorPull physicalActiveSupport X
+      (skeleton HF X.val)).mpr
+        (activeSupport_subset_skeleton X hX))
+
 end PhysicalGaugeCMP116ActivityAdapter
 
 /-- Universal CMP116 first-activity raw metric decay over an Appendix-F
