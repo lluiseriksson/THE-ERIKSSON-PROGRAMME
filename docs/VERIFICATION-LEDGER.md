@@ -10617,3 +10617,46 @@ rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\ClusterDecay.lean
 local-dependence theorem for `H#`, convergence of the second Ursell series,
 Dimock's second-Ursell residual estimate, the physical activity map, or
 `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 277 (2026-06-23, **Hsharp finite local dependence**
+`YangMills.RG.AppendixFHsharp`; core 8343)
+
+This addendum records the first local-dependence consumer for the second
+Ursell object.  The new theorem names are:
+
+```
+omegaHolePolymerSystem_ursell_eq
+appendixFHoleHsharpTerm_eq_of_activity_eq_on_union
+appendixFHoleHsharpTerm_eq_of_activity_eq_on_skeleton
+appendixFHoleHsharp_eq_of_activity_eq_on_union
+appendixFHoleHsharp_eq_of_activity_eq_on_skeleton
+appendixFHoleHsharpOfKsharp_eq_of_agreeOn
+appendixFHoleHsharpOfKsharp_eq_of_agreeOn_skeleton
+```
+
+The fixed-size term theorems say that a target fiber contribution is unchanged
+when the two scalar second-gas activities agree on every tuple component
+polymer contained in the declared full target, respectively whose active
+skeleton is contained in the declared target skeleton.  The totalized `H#`
+theorems are termwise `tsum_congr` wrappers.  The evaluated `K#`
+specializations compose these abstract facts with the existing `K#` support
+wrappers, giving full-target and active-skeleton spectator-field agreement
+for `appendixFHoleHsharpOfKsharp`.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\AppendixFHsharp.lean
+lake build YangMills.RG.AppendixFHsharp
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\AppendixFHsharp.lean
+```
+
+**Honest scope.** This is finite support/local-dependence bookkeeping for the
+already-defined Appendix-F `H#` object.  It does not prove convergence of the
+`H#` series, identify it with a logarithm, prove Dimock's residual estimate,
+construct the physical activity map, or discharge `hraw`.  Clay distance
+**~0% (<0.1%), unchanged**.

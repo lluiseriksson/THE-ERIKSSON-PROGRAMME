@@ -860,8 +860,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- or residual estimate is hidden in the totalized `tsum` definition.
 #print axioms YangMills.RG.appendixFHoleHsharpTerm_eq_sum_filter
 #print axioms YangMills.RG.appendixFHoleHsharpTerm_eq_zero_of_no_union
+#print axioms YangMills.RG.omegaHolePolymerSystem_ursell_eq
+#print axioms YangMills.RG.appendixFHoleHsharpTerm_eq_of_activity_eq_on_union
+#print axioms YangMills.RG.appendixFHoleHsharpTerm_eq_of_activity_eq_on_skeleton
 #print axioms YangMills.RG.sum_appendixFHoleHsharpTerm_eq_clusterSum_term
+#print axioms YangMills.RG.appendixFHoleHsharp_eq_of_activity_eq_on_union
+#print axioms YangMills.RG.appendixFHoleHsharp_eq_of_activity_eq_on_skeleton
 #print axioms YangMills.RG.appendixFHoleHsharpOfKsharp_eq
+#print axioms YangMills.RG.appendixFHoleHsharpOfKsharp_eq_of_agreeOn
+#print axioms YangMills.RG.appendixFHoleHsharpOfKsharp_eq_of_agreeOn_skeleton
 #print axioms YangMills.RG.appendixFHoleHsharpOfIntegratedKsharp_eq
 -- residual H# adapter: source complex-norm estimates feed the real
 -- omega-rooted UV-decay producer without hiding Dimock's analytic bound.

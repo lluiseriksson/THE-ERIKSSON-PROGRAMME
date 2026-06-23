@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 270.
+Addendum 277.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -538,7 +538,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   hard-core `clusterUnion` and the source-facing `omegaClusterUnion`, including
   declared-union and skeleton variants.  These are the finite geometric facts
   needed before any later local-dependence theorem for `H#` can reduce
-  component activities to agreement on the target union.  This is finite bookkeeping
+  component activities to agreement on the target union.  The `H#` layer now
+  consumes that geometry: fixed-size terms and the totalized `H#` are unchanged
+  when the second-gas scalar activity agrees on all component polymers contained
+  in the declared target, with parallel active-skeleton variants; the evaluated
+  `K#` specialization also inherits full-target and skeleton spectator-field
+  agreement wrappers.  This is finite bookkeeping
   only: it does not justify exchanging the finite target sum with the outer
   `tsum`, prove convergence, identify a partition logarithm, prove the
   residual decay rate, or extract a real scalar remainder;
