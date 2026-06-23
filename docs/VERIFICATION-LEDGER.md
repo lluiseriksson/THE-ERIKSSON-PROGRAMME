@@ -10027,3 +10027,53 @@ non-uniform fixed-volume flat Hodge/block Poincare closure.  It does not prove
 a volume-uniform Poincare/Gaffney estimate, an explicit numerical constant,
 Wilson-Hessian identification, propagator localization, covariance-root
 localization, or `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 264 (2026-06-23, **public Dirichlet-route curl/divergence API**
+`YangMills.RG.FiniteTorusCurlDiv`; core 8340)
+
+This addendum stabilizes the public names around the finite-torus
+classification proved in Addendum 263.  The module
+
+```
+YangMills/RG/FiniteTorusCurlDiv.lean
+```
+
+now exposes the ordered curl and Dirichlet-route wrappers:
+
+```
+torusCurl_eq_plaquette
+torusCurl_self
+torusCurl_swap
+torusCurl_eq_zero_of_ordered_plaquettes
+torusForwardDiff_sum
+finiteTorusDirichletIdentity
+torusLaplacian_component_eq_zero_of_curl_div_zero
+torusForwardDiff_eq_zero_of_laplacian_eq_zero
+torusForwardDiff_eq_zero_of_curl_div_zero
+periodicCurlDivKernelClassified_of_dirichlet
+PeriodicCurlDivKernelClassified.proof
+```
+
+These names do not strengthen the physical theorem.  They package the already
+proved Laplacian/Dirichlet route in the form requested by the implementation
+packet, so later physical gauge-fixed precision work can cite a stable endpoint
+instead of depending on the internal proof body of
+`periodicCurlDivKernelClassified`.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\FiniteTorusCurlDiv.lean
+lake build YangMills.RG.FiniteTorusCurlDiv
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\FiniteTorusCurlDiv.lean
+```
+
+**Honest scope.** This is an API-stabilization checkpoint for the qualitative
+fixed-volume classification.  It still does not prove a volume-uniform
+Poincare/Gaffney estimate, an explicit numerical constant, Wilson-Hessian
+identification, propagator localization, covariance-root localization, or
+`hraw`.  Clay distance **~0% (<0.1%), unchanged**.

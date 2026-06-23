@@ -58,6 +58,82 @@ def torusLaplacian {d N : ℕ} [NeZero N]
     (f : FinBox d N → V) (x : FinBox d N) : V :=
   ∑ i : Fin d, torusBackwardDiff i (torusForwardDiff i f) x
 
+/-- Ordered discrete curl: `∂ᵢ Aⱼ - ∂ⱼ Aᵢ`. -/
+def torusCurl {d N : ℕ} [NeZero N]
+    {V : Type*} [AddCommGroup V]
+    (A : FinBox d N → Fin d → V)
+    (i j : Fin d) (x : FinBox d N) : V :=
+  torusForwardDiff i (fun y => A y j) x -
+    torusForwardDiff j (fun y => A y i) x
+
+/-- The ordered curl is exactly the plaquette stencil used by
+`PeriodicCurlDivKernelClassified`. -/
+theorem torusCurl_eq_plaquette {d N : ℕ} [NeZero N]
+    {V : Type*} [AddCommGroup V]
+    (A : FinBox d N → Fin d → V)
+    (i j : Fin d) (x : FinBox d N) :
+    torusCurl A i j x =
+      A x i
+        + A (x.shift i) j
+        - A (x.shift j) i
+        - A x j := by
+  simp [torusCurl, torusForwardDiff]
+  abel
+
+@[simp]
+theorem torusCurl_self {d N : ℕ} [NeZero N]
+    {V : Type*} [AddCommGroup V]
+    (A : FinBox d N → Fin d → V)
+    (i : Fin d) (x : FinBox d N) :
+    torusCurl A i i x = 0 := by
+  simp [torusCurl]
+
+/-- Ordered curl is antisymmetric. -/
+theorem torusCurl_swap {d N : ℕ} [NeZero N]
+    {V : Type*} [AddCommGroup V]
+    (A : FinBox d N → Fin d → V)
+    (i j : Fin d) (x : FinBox d N) :
+    torusCurl A j i x = -torusCurl A i j x := by
+  simp [torusCurl]
+
+/-- Convert the `i < j` plaquette hypothesis to all ordered curl pairs. -/
+theorem torusCurl_eq_zero_of_ordered_plaquettes
+    {d N : ℕ} [NeZero N]
+    {V : Type*} [AddCommGroup V]
+    (A : FinBox d N → Fin d → V)
+    (hcurl :
+      ∀ (x : FinBox d N) (i j : Fin d), i < j →
+        A x i
+          + A (x.shift i) j
+          - A (x.shift j) i
+          - A x j = 0) :
+    ∀ (x : FinBox d N) (i j : Fin d),
+      torusCurl A i j x = 0 := by
+  intro x i j
+  by_cases hijEq : i = j
+  · subst j
+    simp
+  · rcases lt_or_gt_of_ne hijEq with hij | hji
+    · rw [torusCurl_eq_plaquette]
+      exact hcurl x i j hij
+    · have hji0 : torusCurl A j i x = 0 := by
+        rw [torusCurl_eq_plaquette]
+        exact hcurl x j i hji
+      have hneg : -torusCurl A i j x = 0 := by
+        simpa [torusCurl_swap A i j x] using hji0
+      exact neg_eq_zero.mp hneg
+
+/-- Forward differences commute with finite sums. -/
+theorem torusForwardDiff_sum
+    {ι : Type*} [Fintype ι]
+    {d N : ℕ} [NeZero N]
+    {V : Type*} [AddCommGroup V]
+    (i : Fin d) (f : ι → FinBox d N → V)
+    (x : FinBox d N) :
+    torusForwardDiff i (fun y => ∑ k : ι, f k y) x =
+      ∑ k : ι, torusForwardDiff i (f k) x := by
+  simp [torusForwardDiff, Finset.sum_sub_distrib]
+
 /-- Forward and backward finite differences commute on the periodic torus. -/
 theorem torusForwardDiff_torusBackwardDiff_comm
     {d N : ℕ} [NeZero N]
@@ -134,6 +210,17 @@ theorem sum_inner_torusLaplacian_eq_neg_sum_norm_sq
             ‖torusForwardDiff i f x‖ ^ 2 := by
           rw [← Finset.sum_neg_distrib]
 
+/-- Dirichlet identity for the periodic scalar Laplacian.  This is the public
+name used by the curl/divergence classification route. -/
+theorem finiteTorusDirichletIdentity
+    {d N : ℕ} [NeZero N]
+    {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V]
+    (f : FinBox d N → V) :
+    (∑ x : FinBox d N, inner ℝ (f x) (torusLaplacian f x)) =
+      -∑ i : Fin d, ∑ x : FinBox d N,
+        ‖torusForwardDiff i f x‖ ^ 2 :=
+  sum_inner_torusLaplacian_eq_neg_sum_norm_sq f
+
 /-- Curl symmetry identifies the component Laplacian with the forward
 difference of the divergence. -/
 theorem torusLaplacian_component_eq_forwardDiff_divergence
@@ -169,6 +256,69 @@ theorem torusLaplacian_component_eq_forwardDiff_divergence
           rw [← torusForwardDiff_torusBackwardDiff_comm]
     _ = torusForwardDiff i (torusDivergence A) x := by
           simp [torusForwardDiff, torusDivergence, Finset.sum_sub_distrib]
+
+/-- Curl-zero and divergence-zero fields have componentwise zero periodic
+Laplacian. -/
+theorem torusLaplacian_component_eq_zero_of_curl_div_zero
+    {d N : ℕ} [NeZero N]
+    {V : Type*} [AddCommGroup V]
+    (A : FinBox d N → Fin d → V)
+    (hcurl :
+      ∀ x i j, torusCurl A i j x = 0)
+    (hdiv :
+      ∀ x, torusDivergence A x = 0)
+    (j : Fin d) (x : FinBox d N) :
+    torusLaplacian (fun y => A y j) x = 0 := by
+  have hcurlSym :
+      ∀ x i j,
+        torusForwardDiff i (fun y => A y j) x =
+          torusForwardDiff j (fun y => A y i) x := by
+    intro x i j
+    exact sub_eq_zero.mp (by simpa [torusCurl] using hcurl x i j)
+  rw [torusLaplacian_component_eq_forwardDiff_divergence A hcurlSym j x]
+  simp [torusForwardDiff, hdiv]
+
+/-- A periodic scalar field with zero Laplacian has zero forward differences. -/
+theorem torusForwardDiff_eq_zero_of_laplacian_eq_zero
+    {d N : ℕ} [NeZero N]
+    {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V]
+    (f : FinBox d N → V)
+    (hlap : ∀ x, torusLaplacian f x = 0) :
+    ∀ (x : FinBox d N) (i : Fin d),
+      torusForwardDiff i f x = 0 := by
+  let S : ℝ :=
+    ∑ i : Fin d, ∑ x : FinBox d N, ‖torusForwardDiff i f x‖ ^ 2
+  have hleft :
+      (∑ x : FinBox d N, inner ℝ (f x) (torusLaplacian f x)) = 0 := by
+    simp [hlap]
+  have hneg : -S = 0 := by
+    rw [← finiteTorusDirichletIdentity f, hleft]
+  have hS : S = 0 := neg_eq_zero.mp hneg
+  have hdir :
+      ∀ i : Fin d,
+        (∑ x : FinBox d N, ‖torusForwardDiff i f x‖ ^ 2) = 0 := by
+    intro i
+    have hnonneg :
+        ∀ j ∈ (Finset.univ : Finset (Fin d)),
+          0 ≤ (∑ x : FinBox d N, ‖torusForwardDiff j f x‖ ^ 2) := by
+      intro j _
+      exact Finset.sum_nonneg fun x _ => sq_nonneg _
+    exact
+      (Finset.sum_eq_zero_iff_of_nonneg hnonneg).mp hS
+        i (Finset.mem_univ i)
+  intro x i
+  have hnonneg :
+      ∀ y ∈ (Finset.univ : Finset (FinBox d N)),
+        0 ≤ ‖torusForwardDiff i f y‖ ^ 2 := by
+    intro y _
+    exact sq_nonneg _
+  have hxzero :
+      ‖torusForwardDiff i f x‖ ^ 2 = 0 :=
+    (Finset.sum_eq_zero_iff_of_nonneg hnonneg).mp (hdir i)
+      x (Finset.mem_univ x)
+  have hnorm : ‖torusForwardDiff i f x‖ = 0 :=
+    sq_eq_zero_iff.mp hxzero
+  exact norm_eq_zero.mp hnorm
 
 /-- A periodic field with zero torus Laplacian is constant. -/
 theorem eq_default_of_torusLaplacian_eq_zero
@@ -215,6 +365,41 @@ theorem eq_default_of_torusLaplacian_eq_zero
   refine FinBox.eq_default_of_shift_invariant f ?_
   intro x i
   exact sub_eq_zero.mp (by simpa [torusForwardDiff] using hdiff i x)
+
+/-- Curl-zero and divergence-zero fields have vanishing componentwise forward
+differences. -/
+theorem torusForwardDiff_eq_zero_of_curl_div_zero
+    {d N : ℕ} [NeZero N]
+    {V : Type*}
+    [NormedAddCommGroup V] [InnerProductSpace ℝ V]
+    (A : FinBox d N → Fin d → V)
+    (hcurl :
+      ∀ (x : FinBox d N) (i j : Fin d), i < j →
+        A x i
+          + A (x.shift i) j
+          - A (x.shift j) i
+          - A x j = 0)
+    (hdiv :
+      ∀ x : FinBox d N,
+        ∑ i : Fin d,
+          (A x i - A (x.shiftBack i) i) = 0) :
+    ∀ (x : FinBox d N) (i j : Fin d),
+      torusForwardDiff j (fun y => A y i) x = 0 := by
+  have hcurlAll :
+      ∀ (x : FinBox d N) (i j : Fin d),
+        torusCurl A i j x = 0 :=
+    torusCurl_eq_zero_of_ordered_plaquettes A hcurl
+  have hdiv' : ∀ x, torusDivergence A x = 0 := by
+    intro x
+    simpa [torusDivergence, torusBackwardDiff] using hdiv x
+  intro x i j
+  exact
+    torusForwardDiff_eq_zero_of_laplacian_eq_zero
+      (fun y => A y i)
+      (fun y =>
+        torusLaplacian_component_eq_zero_of_curl_div_zero
+          A hcurlAll hdiv' i y)
+      x j
 
 /-- Periodic curl-zero and backward-divergence-zero positive-bond fields are
 exactly direction-wise constants. -/
@@ -267,5 +452,26 @@ theorem periodicCurlDivKernelClassified
   refine ⟨fun i => A (default : FinBox d N) i, ?_⟩
   intro x i
   exact eq_default_of_torusLaplacian_eq_zero (fun y => A y i) (hlap i) x
+
+/-- Public Dirichlet-route endpoint for the periodic curl/divergence kernel. -/
+theorem periodicCurlDivKernelClassified_of_dirichlet
+    {d N : ℕ} [NeZero N]
+    {V : Type*}
+    [NormedAddCommGroup V] [InnerProductSpace ℝ V] :
+    PeriodicCurlDivKernelClassified d N V :=
+  periodicCurlDivKernelClassified
+
+namespace PeriodicCurlDivKernelClassified
+
+/-- Stable public proof endpoint for the source-facing periodic curl/divergence
+classification theorem. -/
+theorem proof
+    (d N : ℕ) [NeZero N]
+    (V : Type*)
+    [NormedAddCommGroup V] [InnerProductSpace ℝ V] :
+    PeriodicCurlDivKernelClassified d N V :=
+  periodicCurlDivKernelClassified_of_dirichlet
+
+end PeriodicCurlDivKernelClassified
 
 end YangMills.RG
