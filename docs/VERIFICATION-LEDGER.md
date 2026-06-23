@@ -12007,3 +12007,83 @@ It does not prove that the physical Yang--Mills precision has constants `m`
 and `M`, does not prove finite propagation, does not construct
 `P^{-1/2}` as an operator, and does not produce any covariance-root or CMP116
 activity certificate.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 309 (2026-06-24, **physical local-SPD covariance-root frontier**
+`YangMills.RG.PhysicalGaugeLocalSPDPrecisionRoot`; core 8355)
+
+This addendum extends the local-SPD route in two stages.
+
+First, `YangMills.RG.LocalSPDPrecision` now exposes the kernel bookkeeping
+needed after the indexing audit that `Kpow K 0 = K`.  New declarations include:
+
+```
+LocalFiniteRangeResolventData.baseAmplitude
+LocalFiniteRangeResolventData.spatialRatio
+LocalFiniteRangeResolventData.spatialRatio_nonneg
+LocalFiniteRangeResolventData.spatialRatio_lt_one
+inverseSqrtKernelRemainder
+LocalFiniteRangeResolventData.inverseSqrtKernelRemainder_expDecay
+```
+
+The new inverse-square-root kernel remainder is the non-identity tail.  This
+keeps diagonal identity contributions outside the tail, matching the current
+`Kpow` convention.
+
+Second, the new module
+`YangMills.RG.PhysicalGaugeLocalSPDPrecisionRoot` packages normalized
+finite-range physical precision data
+`precision = scale • (id - normalizedPerturbation)` and derives:
+
+```
+PhysicalLocalSPDInverseSqrtData.coercivityConstant
+PhysicalLocalSPDInverseSqrtData.spectralUpperConstant
+PhysicalLocalSPDInverseSqrtData.coercivityConstant_pos
+PhysicalLocalSPDInverseSqrtData.precision_coercive
+PhysicalLocalSPDInverseSqrtData.precision_spectral_upper
+PhysicalLocalSPDInverseSqrtData.precision_selfAdjoint_form
+PhysicalLocalSPDInverseSqrtData.normalizedPerturbation_finiteRange
+PhysicalLocalSPDInverseSqrtData.precision_finiteRange_offDiagonal
+PhysicalLocalSPDInverseSqrtData.resolvent_expDecay
+PhysicalLocalSPDInverseSqrtData.inverseSqrtCoefficient_tail_le
+PhysicalLocalSPDInverseSqrtData.inverseSqrtKernelRemainder_expDecay
+PhysicalLocalSPDInverseSqrtData.covariance
+PhysicalLocalSPDInverseSqrtData.covarianceWeightCandidate
+PhysicalLocalSPDInverseSqrtData.rootWeightCandidate
+PhysicalLocalSPDPrecisionRootCertificate
+PhysicalLocalSPDPrecisionRootCertificate.toLocalizedCovarianceRootCertificate
+```
+
+`covariance` is constructed canonically from strict coercivity using
+`covarianceOfIsCoerciveCLM`; inverse identities, norm bound, and PSD are then
+inherited from the coercive-covariance layer.  The candidate covariance/root
+weights explicitly include the missing identity term plus the exponential
+tail.
+
+Verification commands run in this checkpoint:
+
+```
+lake env lean YangMills\RG\LocalSPDPrecision.lean
+lake env lean YangMills\RG\PhysicalGaugeLocalSPDPrecisionRoot.lean
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMills.RG.LocalSPDPrecision
+lake build YangMills.RG.PhysicalGaugeLocalSPDPrecisionRoot
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+`lake build YangMillsCore` completed at **8355 jobs**.  The new oracle entries
+report only `[propext, Classical.choice, Quot.sound]` for:
+
+```
+LocalFiniteRangeResolventData.inverseSqrtKernelRemainder_expDecay
+PhysicalLocalSPDInverseSqrtData.precision_coercive
+PhysicalLocalSPDPrecisionRootCertificate.toLocalizedCovarianceRootCertificate
+```
+
+**Honest scope.** This is a frontier/package theorem, not a physical source
+theorem.  It does not identify the precision with the Wilson Hessian, prove
+operator-power domination, identify the canonical covariance with a Neumann
+series, construct a continuous-linear-map inverse square root, prove
+covariance/root kernel bounds, prove the separate `root_localization` source
+field, construct a Gaussian pushforward, build a local physical activity, or
+prove raw activity decay.  Clay distance **~0% (<0.1%), unchanged**.

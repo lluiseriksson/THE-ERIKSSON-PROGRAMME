@@ -1,8 +1,8 @@
 # Current State
 
-**Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
+**Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 301.
+Addendum 309.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -25,7 +25,7 @@ the axiom oracle, and the verification ledger.
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
 | Conditional M3 assembly | `90% [#########.]` | the assembly is verified; the UV producer remains explicit |
 | Appendix-F/H# bridge to UV consumer | `78% [########..]` | source-facing endpoints exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `67% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, source-facing covariance/root localization APIs, a local fluctuation-activity certificate, dictionary-instantiated CMP116 localized-family bridge, Appendix-F support packaging, dictionary-backed Gaussian/activity construction scaffolding, a canonical Gaussian pushforward integral consumer, and source-package accessors for that consumer are in Lean |
+| P4 physical-operator vertical slice | `68% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, source-facing covariance/root localization APIs, local-SPD precision/root frontier packaging, a local fluctuation-activity certificate, dictionary-instantiated CMP116 localized-family bridge, Appendix-F support packaging, dictionary-backed Gaussian/activity construction scaffolding, a canonical Gaussian pushforward integral consumer, and source-package accessors for that consumer are in Lean |
 | Concrete `hRpoly` discharge | `40% [####......]` | the live mathematical frontier |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8352 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8355 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -1075,10 +1075,27 @@ layer: finite-range small Neumann data are packaged as
 The same module now normalizes an abstract spectral sandwich `0 < m ≤ M` into
 `q = 1 - m/M`, proves `0 ≤ q < 1`, records `1 - q = m/M`, and gives the
 scaled `M^{-1/2}` tail bound `inverseSqrtNormTail` for later finite-range
-approximants to `P^{-1/2}`.
+approximants to `P^{-1/2}`.  It now also names the base kernel amplitude and
+spatial convolution ratio and proves exponential decay of the shifted
+non-identity inverse-square-root kernel remainder
+`inverseSqrtKernelRemainder`; this respects the convention `Kpow K 0 = K`, so
+identity contributions are kept outside the tail.
 This is still not a physical Hessian theorem and does not construct
 `P^{-1/2}` as a continuous linear map; it is reusable scalar/kernel
 infrastructure for that route.
+The physical frontier module
+`YangMills.RG.PhysicalGaugeLocalSPDPrecisionRoot` packages normalized
+finite-range physical precision data
+`precision = scale • (id - normalizedPerturbation)`.  Lean derives the
+coercivity constant `scale * (1 - operatorRatio)`, the upper spectral form
+bound, precision self-adjointness, exact off-diagonal finite range of the
+normalized perturbation and precision, the canonical exact covariance from
+`covarianceOfIsCoerciveCLM`, candidate identity-plus-tail covariance/root
+weights, and a constructor into the existing
+`PhysicalLocalizedCovarianceRootCertificate`.  The covariance/root kernel
+bounds, root square identity, root norm, root self-adjointness, root PSD, and
+the separate source `root_localization` field remain explicit source
+hypotheses; no Wilson-Hessian identification or root construction is claimed.
 The new CMP116 activity transport adapter narrows the final interface for that
 last step: a future source theorem must supply a CMP116 localized family plus
 field transports preserving `globalEval`, skeleton support localization, and

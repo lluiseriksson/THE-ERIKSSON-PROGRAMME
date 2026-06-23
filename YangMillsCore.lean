@@ -312,6 +312,10 @@ import YangMills.RG.KernelDecay
 -- resolvent decay, and inverse-square-root binomial tails obey geometric
 -- scalar bounds before any physical Hessian/root theorem is claimed.
 import YangMills.RG.LocalSPDPrecision
+-- Physical local-SPD covariance-root frontier: normalized finite-range
+-- physical precision data derive coercivity/exact covariance and package the
+-- remaining source-supplied root/kernel fields into the existing certificate.
+import YangMills.RG.PhysicalGaugeLocalSPDPrecisionRoot
 -- Schur boundedness of exponentially-decaying kernels (finite lattice): the
 -- ℓ¹ row-sum bound and the quadratic-form (covariance) bound ≤ a·S.
 import YangMills.RG.KernelSchur
