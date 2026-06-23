@@ -10738,3 +10738,43 @@ localization, measurability of the physical integrand, Wilson-Hessian
 identification, covariance-root decay, convergence of the `H#` series,
 Dimock's residual estimate, the physical activity map, or `hraw`.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 280 (2026-06-23, **physical CMP116 activity transport bridge**
+`YangMills.RG.PhysicalGaugeCMP116ActivityAdapter`; core 8344)
+
+This addendum adds the structural bridge from the source-facing physical
+localized-Gaussian activity certificate to the CMP116/Appendix-F raw activity
+interface:
+
+```
+PhysicalGaugeCMP116ActivityTransport
+physicalGaugeCMP116SupportHypotheses_of_transport
+balabanCMP116_hraw_of_physicalGaugeCMP116ActivityTransport
+```
+
+The transport record deliberately carries the source obligations as fields:
+the physical activity certificate, the CMP116 localized activity family,
+spectator/fluctuation transports into physical positive-bond fields, exact
+`globalEval` preservation under those transports, active-support containment
+inside `skeleton HF X.val`, and domination of the physical decay weight by
+`appendixFHoleExpWeight HF κ X.val`.  The support theorem extracts the existing
+`BalabanCMP116AppendixFSupportHypotheses`; the raw theorem chains the physical
+certificate's combined raw-decay estimate with the weight domination to produce
+the `hraw` shape consumed by Appendix F.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityAdapter
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean
+```
+
+**Honest scope.** This is a source-obligation adapter.  It does not construct
+the physical CMP116 localized activity, prove the Wilson Hessian identity,
+prove covariance-root localization, prove source measurability, or discharge
+the actual `hraw` theorem.  Clay distance **~0% (<0.1%), unchanged**.

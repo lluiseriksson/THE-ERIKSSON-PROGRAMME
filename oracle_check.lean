@@ -1097,6 +1097,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.BalabanCMP116AppendixFSupportHypotheses.activeSupport_subset_full
 #print axioms YangMills.RG.BalabanCMP116AppendixFSupportHypotheses.of_activeSupport_subset_skeleton
 #print axioms YangMills.RG.BalabanCMP116AppendixFSupportHypotheses.of_activeSupport_eq_skeleton
+#print axioms YangMills.RG.physicalGaugeCMP116SupportHypotheses_of_transport
+#print axioms YangMills.RG.balabanCMP116_hraw_of_physicalGaugeCMP116ActivityTransport
 #print axioms YangMills.RG.BalabanCMP116AppendixFSupportHypotheses.of_activeSupport_subset_target_inter_omegaRegion
 #print axioms YangMills.RG.BalabanCMP116AppendixFSupportHypotheses.of_activeSupport_eq_target_inter_omegaRegion
 #print axioms YangMills.RG.BalabanCMP116AppendixFSupportHypotheses.zeta_eq_zero_imp_not_disjoint_skeleton_of_activeSupport_subset_target_inter_omegaRegion

@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 279.
+Addendum 280.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8343 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8344 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -113,6 +113,17 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   raw-decay estimate, so future Appendix-F adapters can depend on stable field
   names without asserting that the physical-to-CMP116 conversion has been
   constructed.
+  The bridge `YangMills/RG/PhysicalGaugeCMP116ActivityAdapter.lean` now records
+  the explicit transport obligations from that physical certificate to a CMP116
+  localized activity family: spectator/fluctuation field transports,
+  source-faithful `globalEval` preservation, active-support containment in the
+  Appendix-F skeleton, and domination of the physical weight by the Appendix-F
+  exponential weight.  It proves the formal consequences
+  `physicalGaugeCMP116SupportHypotheses_of_transport` and
+  `balabanCMP116_hraw_of_physicalGaugeCMP116ActivityTransport`, converting such
+  a transport package into the existing CMP116 support package and `hraw`
+  hypothesis shape.  The actual physical construction of the transport package
+  remains open.
   The full-periodic
   cochain layer `YangMills/RG/PhysicalGaugeCochains.lean` now fixes the
   physical positive-bond coordinate convention for `su(N)` coordinates,
@@ -1015,6 +1026,11 @@ finite-dimensional coercivity into an exact continuous linear inverse
 actual Yang--Mills Hessian, prove the physical decomposition equality, prove
 Combes--Thomas/propagator decay, construct a localized covariance root, or
 produce the CMP116 raw activity.
+The new CMP116 activity transport adapter narrows the final interface for that
+last step: a future source theorem must supply a CMP116 localized family plus
+field transports preserving `globalEval`, skeleton support localization, and
+weight domination; Lean then derives the support hypotheses and `hraw` bound
+consumed by Appendix F.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper
