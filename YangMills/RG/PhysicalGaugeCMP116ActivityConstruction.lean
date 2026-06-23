@@ -128,6 +128,53 @@ noncomputable def PhysicalGaugeCMP116GaussianChange.ofDictionaryRoot
       D.gaussianRootMap root :=
   rfl
 
+/-- Consume a Gaussian change-of-variables record as an exact Bochner-integral
+rewrite.  This is only the measure-pushforward consequence of the record; it
+does not assert any covariance, localization, or physical Hessian semantics. -/
+theorem PhysicalGaugeCMP116GaussianChange.integral_gaussianCoordinateMap_eq
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (change : PhysicalGaugeCMP116GaussianChange D)
+    (f : PhysicalGaugeOneCochain dPhys N Nc → ℂ)
+    (hf : AEStronglyMeasurable f change.physicalGaussian) :
+    ∫ ξ, f (change.gaussianCoordinateMap ξ)
+        ∂(balabanCMP116Dmu0 (Cube d L) lieDim) =
+      ∫ A, f A ∂change.physicalGaussian := by
+  have hfm :
+      AEStronglyMeasurable f
+        ((balabanCMP116Dmu0 (Cube d L) lieDim).map
+          change.gaussianCoordinateMap) := by
+    simpa [change.map_gaussianChangeOfVariables] using hf
+  rw [← change.map_gaussianChangeOfVariables]
+  exact (integral_map
+    change.gaussianCoordinateMap_measurable.aemeasurable hfm).symm
+
+/-- Canonical dictionary/root specialization of the Gaussian pushforward
+integral rewrite.  The hypothesis `hpush` remains the full analytic Gaussian
+source statement; the theorem only rewrites consumers through the canonical
+coordinate map `D.gaussianRootMap root`. -/
+theorem PhysicalGaugeCMP116GaussianChange.integral_ofDictionaryRoot
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc))
+    (hpush :
+      (balabanCMP116Dmu0 (Cube d L) lieDim).map
+          (D.gaussianRootMap root) =
+        physicalGaussian)
+    (f : PhysicalGaugeOneCochain dPhys N Nc → ℂ)
+    (hf : AEStronglyMeasurable f physicalGaussian) :
+    ∫ ξ, f (D.gaussianRootMap root ξ)
+        ∂(balabanCMP116Dmu0 (Cube d L) lieDim) =
+      ∫ A, f A ∂physicalGaussian := by
+  simpa using
+    (PhysicalGaugeCMP116GaussianChange.integral_gaussianCoordinateMap_eq
+      D
+      (PhysicalGaugeCMP116GaussianChange.ofDictionaryRoot
+        D root physicalGaussian hpush)
+      f hf)
+
 end PhysicalGaugeCMP116Dictionary
 
 namespace PhysicalRootToCMP116OperatorTransport

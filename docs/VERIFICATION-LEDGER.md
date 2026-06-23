@@ -11201,3 +11201,41 @@ not prove raw decay, and does not discharge `hraw` or `hRpoly`.  It only removes
 arbitrary coordinate/family plumbing by making the dictionary-backed choices
 canonical wherever the existing interfaces already support that assembly.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 290 (2026-06-23, **canonical Gaussian pushforward integral consumer**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8348)
+
+This addendum adds the first consumer theorem for the dictionary-backed
+Gaussian change of variables.  Given an explicit pushforward identity in the
+existing `PhysicalGaugeCMP116GaussianChange` record, complex-valued Bochner
+integrals can now be rewritten from the physical Gaussian measure back to the
+CMP116 product-coordinate measure.  The canonical specialization applies this
+directly to `D.gaussianRootMap root`.
+
+The new public declarations are:
+
+```
+PhysicalGaugeCMP116Dictionary.PhysicalGaugeCMP116GaussianChange.integral_gaussianCoordinateMap_eq
+PhysicalGaugeCMP116Dictionary.PhysicalGaugeCMP116GaussianChange.integral_ofDictionaryRoot
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean oracle_check.lean
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint still does not prove the Gaussian
+pushforward identity, localize the covariance root, identify the Wilson
+Hessian, construct physical local activities, prove raw decay, or discharge
+`hraw`/`hRpoly`.  It only turns a supplied source pushforward theorem into a
+stable integral rewrite consumed by later localized-activity estimates.
+Clay distance **~0% (<0.1%), unchanged**.
