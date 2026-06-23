@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 286.
+Addendum 287.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -25,7 +25,7 @@ the axiom oracle, and the verification ledger.
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
 | Conditional M3 assembly | `90% [#########.]` | the assembly is verified; the UV producer remains explicit |
 | Appendix-F/H# bridge to UV consumer | `78% [########..]` | source-facing endpoints exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `67% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, source-facing covariance/root localization APIs, a local fluctuation-activity certificate, and dictionary-instantiated CMP116 activity adapter rewrites are in Lean |
+| P4 physical-operator vertical slice | `67% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, source-facing covariance/root localization APIs, a local fluctuation-activity certificate, and dictionary-instantiated CMP116 localized-family bridge are in Lean |
 | Concrete `hRpoly` discharge | `40% [####......]` | the live mathematical frontier |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8344 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8347 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -123,6 +123,13 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   exact fluctuation pullback on each physical bond, and Lean rewrites
   `globalEval`, spectator support, fluctuation support, and active support
   back to the dictionary's physical-bond preimage.  It also records the explicit
+  localized-family constructor
+  `PhysicalGaugeCMP116ActivityAdapter.localizedFamilyOfDictionary`, which turns
+  dictionary-instantiated physical local activities into a
+  `BalabanCMP116LocalizedActivityFamily` once measurability, physical
+  support-containment, and physical active-support Ω-locality are supplied.
+  This is still a finite support/measurability gate, not a construction of the
+  physical activity.  The same file records the explicit
   transport obligations from that physical certificate to a CMP116 localized
   activity family: source-faithful `globalEval` preservation, active-support
   containment in the Appendix-F skeleton, and domination of the physical weight

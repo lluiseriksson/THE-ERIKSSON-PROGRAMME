@@ -11078,3 +11078,44 @@ bookkeeping.  It makes the adapter consume the existing dictionary directly but
 does not construct a localized activity family, prove a Gaussian pushforward,
 localize a covariance root, identify a Wilson Hessian, or prove `hraw`.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 287 (2026-06-23, **dictionary-instantiated CMP116 localized family**
+`YangMills.RG.PhysicalGaugeCMP116ActivityAdapter`; core 8347)
+
+This addendum closes the next finite theorem gate after the dictionary adapter:
+it constructs the concrete `BalabanCMP116LocalizedActivityFamily` obtained from
+dictionary-instantiated physical local activities, provided the source side
+supplies exactly the remaining finite/local obligations: strong measurability,
+physical spectator/fluctuation support containment, and physical active-support
+Ω-locality.
+
+The new public declarations are:
+
+```
+PhysicalGaugeCMP116ActivityAdapter.localizedFamilyOfDictionary
+PhysicalGaugeCMP116ActivityAdapter.localizedFamilyOfDictionary_Omega
+PhysicalGaugeCMP116ActivityAdapter.localizedFamilyOfDictionary_activeSupport
+PhysicalGaugeCMP116ActivityAdapter.localizedFamilyOfDictionary_activity
+```
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityAdapter
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean
+git diff --cached -U0 -- YangMills\RG\PhysicalGaugeCMP116ActivityAdapter.lean | rg -n "^\+.*(PhysicalGaugeRawActivityDecay|BalabanCMP116RawMetricDecay|PhysicalGaugeCMP116ActivityTransport|weight_domination|raw_bound|decay_bound|H0|κ|GaussianChange|gaussian|hraw)"
+```
+
+The final staged-source grep is expected to return empty.
+
+**Honest scope.** This checkpoint is not a producer theorem for `H(Z)`: it
+does not construct the physical local activities, prove Gaussian change of
+variables, localize `C^(1/2)`, identify a Wilson Hessian, prove raw decay, or
+discharge `hraw`.  It only packages already supplied physical support and
+measurability obligations into the concrete CMP116 localized-family interface.
+Clay distance **~0% (<0.1%), unchanged**.

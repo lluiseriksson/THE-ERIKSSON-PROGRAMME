@@ -33,6 +33,7 @@ Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 
 namespace YangMills.RG
 
+open MeasureTheory
 open scoped RealInnerProductSpace
 
 /-- Finite source-facing adapter from physical positive bonds to the cube-site
@@ -272,6 +273,160 @@ theorem activeSupport_ofDictionary_subset_iff
   simpa [ofDictionary, activeSupport] using
     D.image_bondToCube_subset_iff_physicalBondsOfCells
       (physicalActiveSupport (physicalIndex X)) Y
+
+/-- Build the CMP116 localized activity family carried by a dictionary adapter.
+
+This is a finite support/measurability gate only.  The physical activities,
+their source construction, Gaussian semantics, and raw decay estimates remain
+external obligations; this constructor merely turns already supplied physical
+support data into the `BalabanCMP116LocalizedActivityFamily` shape consumed by
+the Appendix-F/CMP116 layers. -/
+noncomputable def localizedFamilyOfDictionary
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (physicalIndex : J → I)
+    (spectatorPull :
+      ∀ b : PhysicalBond dPhys N,
+        Ψ (D.siteMap.bondToCube b) → SUNLieCoord Nc)
+    (physicalActivity : I → PhysicalGaugeLocalActivity dPhys N Nc)
+    (physicalActiveSupport : I → Finset (PhysicalBond dPhys N))
+    (activity_stronglyMeasurable :
+      ∀ X, ∀ ψ : ∀ c : Cube d L, Ψ c,
+        StronglyMeasurable
+          (fun ξ : (∀ _ : Cube d L, Fin lieDim → ℝ) =>
+            ((ofDictionary D physicalIndex spectatorPull).activity
+              physicalActivity X).globalEval ψ ξ))
+    (spectatorSupport_subset :
+      ∀ X, (physicalActivity (physicalIndex X)).spectatorSupport ⊆
+        physicalActiveSupport (physicalIndex X))
+    (fluctuationSupport_subset :
+      ∀ X, (physicalActivity (physicalIndex X)).fluctuationSupport ⊆
+        physicalActiveSupport (physicalIndex X))
+    (activeSupport_subset_Omega :
+      ∀ X, physicalActiveSupport (physicalIndex X) ⊆
+        D.physicalBondsOfCells D.siteMap.Omega) :
+    BalabanCMP116LocalizedActivityFamily
+      (Cube d L) lieDim Ψ J where
+  Omega := D.siteMap.Omega
+  activeSupport :=
+    (ofDictionary D physicalIndex spectatorPull).activeSupport
+      physicalActiveSupport
+  activity :=
+    (ofDictionary D physicalIndex spectatorPull).activity physicalActivity
+  activity_stronglyMeasurable := activity_stronglyMeasurable
+  spectatorSupport_subset := by
+    intro X
+    exact
+      spectatorSupport_activity_subset_activeSupport
+        (A := ofDictionary D physicalIndex spectatorPull)
+        (physicalActivity := physicalActivity)
+        (physicalActiveSupport := physicalActiveSupport)
+        (X := X) (spectatorSupport_subset X)
+  fluctuationSupport_subset := by
+    intro X c hc
+    refine Finset.mem_inter.mpr ⟨?_, ?_⟩
+    · exact
+        ((fluctuationSupport_activity_ofDictionary_subset_iff
+          D physicalIndex spectatorPull physicalActivity X
+          D.siteMap.Omega).mpr
+            (fun b hb =>
+              activeSupport_subset_Omega X
+                (fluctuationSupport_subset X hb))) hc
+    · exact
+        fluctuationSupport_activity_subset_activeSupport
+          (A := ofDictionary D physicalIndex spectatorPull)
+          (physicalActivity := physicalActivity)
+          (physicalActiveSupport := physicalActiveSupport)
+          (X := X) (fluctuationSupport_subset X) hc
+
+@[simp] theorem localizedFamilyOfDictionary_Omega
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (physicalIndex : J → I)
+    (spectatorPull :
+      ∀ b : PhysicalBond dPhys N,
+        Ψ (D.siteMap.bondToCube b) → SUNLieCoord Nc)
+    (physicalActivity : I → PhysicalGaugeLocalActivity dPhys N Nc)
+    (physicalActiveSupport : I → Finset (PhysicalBond dPhys N))
+    (activity_stronglyMeasurable :
+      ∀ X, ∀ ψ : ∀ c : Cube d L, Ψ c,
+        StronglyMeasurable
+          (fun ξ : (∀ _ : Cube d L, Fin lieDim → ℝ) =>
+            ((ofDictionary D physicalIndex spectatorPull).activity
+              physicalActivity X).globalEval ψ ξ))
+    (spectatorSupport_subset :
+      ∀ X, (physicalActivity (physicalIndex X)).spectatorSupport ⊆
+        physicalActiveSupport (physicalIndex X))
+    (fluctuationSupport_subset :
+      ∀ X, (physicalActivity (physicalIndex X)).fluctuationSupport ⊆
+        physicalActiveSupport (physicalIndex X))
+    (activeSupport_subset_Omega :
+      ∀ X, physicalActiveSupport (physicalIndex X) ⊆
+        D.physicalBondsOfCells D.siteMap.Omega) :
+    (localizedFamilyOfDictionary D physicalIndex spectatorPull
+      physicalActivity physicalActiveSupport activity_stronglyMeasurable
+      spectatorSupport_subset fluctuationSupport_subset
+      activeSupport_subset_Omega).Omega = D.siteMap.Omega := rfl
+
+@[simp] theorem localizedFamilyOfDictionary_activeSupport
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (physicalIndex : J → I)
+    (spectatorPull :
+      ∀ b : PhysicalBond dPhys N,
+        Ψ (D.siteMap.bondToCube b) → SUNLieCoord Nc)
+    (physicalActivity : I → PhysicalGaugeLocalActivity dPhys N Nc)
+    (physicalActiveSupport : I → Finset (PhysicalBond dPhys N))
+    (activity_stronglyMeasurable :
+      ∀ X, ∀ ψ : ∀ c : Cube d L, Ψ c,
+        StronglyMeasurable
+          (fun ξ : (∀ _ : Cube d L, Fin lieDim → ℝ) =>
+            ((ofDictionary D physicalIndex spectatorPull).activity
+              physicalActivity X).globalEval ψ ξ))
+    (spectatorSupport_subset :
+      ∀ X, (physicalActivity (physicalIndex X)).spectatorSupport ⊆
+        physicalActiveSupport (physicalIndex X))
+    (fluctuationSupport_subset :
+      ∀ X, (physicalActivity (physicalIndex X)).fluctuationSupport ⊆
+        physicalActiveSupport (physicalIndex X))
+    (activeSupport_subset_Omega :
+      ∀ X, physicalActiveSupport (physicalIndex X) ⊆
+        D.physicalBondsOfCells D.siteMap.Omega)
+    (X : J) :
+    (localizedFamilyOfDictionary D physicalIndex spectatorPull
+      physicalActivity physicalActiveSupport activity_stronglyMeasurable
+      spectatorSupport_subset fluctuationSupport_subset
+      activeSupport_subset_Omega).activeSupport X =
+        (ofDictionary D physicalIndex spectatorPull).activeSupport
+          physicalActiveSupport X := rfl
+
+@[simp] theorem localizedFamilyOfDictionary_activity
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (physicalIndex : J → I)
+    (spectatorPull :
+      ∀ b : PhysicalBond dPhys N,
+        Ψ (D.siteMap.bondToCube b) → SUNLieCoord Nc)
+    (physicalActivity : I → PhysicalGaugeLocalActivity dPhys N Nc)
+    (physicalActiveSupport : I → Finset (PhysicalBond dPhys N))
+    (activity_stronglyMeasurable :
+      ∀ X, ∀ ψ : ∀ c : Cube d L, Ψ c,
+        StronglyMeasurable
+          (fun ξ : (∀ _ : Cube d L, Fin lieDim → ℝ) =>
+            ((ofDictionary D physicalIndex spectatorPull).activity
+              physicalActivity X).globalEval ψ ξ))
+    (spectatorSupport_subset :
+      ∀ X, (physicalActivity (physicalIndex X)).spectatorSupport ⊆
+        physicalActiveSupport (physicalIndex X))
+    (fluctuationSupport_subset :
+      ∀ X, (physicalActivity (physicalIndex X)).fluctuationSupport ⊆
+        physicalActiveSupport (physicalIndex X))
+    (activeSupport_subset_Omega :
+      ∀ X, physicalActiveSupport (physicalIndex X) ⊆
+        D.physicalBondsOfCells D.siteMap.Omega)
+    (X : J) :
+    (localizedFamilyOfDictionary D physicalIndex spectatorPull
+      physicalActivity physicalActiveSupport activity_stronglyMeasurable
+      spectatorSupport_subset fluctuationSupport_subset
+      activeSupport_subset_Omega).activity X =
+        (ofDictionary D physicalIndex spectatorPull).activity
+          physicalActivity X := rfl
 
 end PhysicalGaugeCMP116ActivityAdapter
 
