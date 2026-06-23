@@ -351,6 +351,9 @@ import YangMills.RG.CubeLattice
 
 -- hRpoly campaign brick P2b-i: polymer modified metric
 import YangMills.RG.ModifiedMetric
+-- Exact finite support calculus for CMP116 linear operators before raw
+-- activity construction.
+import YangMills.RG.LocalLinearOperator
 -- hRpoly P3 substrate: touching hard-core hole polymers plus the source-facing
 -- Appendix-F `Ω`-active polymer system, with local KP consumers for both.
 import YangMills.RG.HolePolymerSystem

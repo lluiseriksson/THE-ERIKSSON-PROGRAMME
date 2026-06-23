@@ -10882,3 +10882,49 @@ It does not prove physical raw decay, construct the CMP116 localized family,
 prove Ω-locality, prove strong measurability, prove rooted summability, or
 prove the Appendix-F `H#` residual estimate.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 283 (2026-06-23, **exact CMP116 local linear-operator support**
+`YangMills.RG.LocalLinearOperator`; core 8345)
+
+This addendum starts the corrected upstream route before any conditional raw
+decay bridge.  It adds exact finite support algebra for CMP116 fluctuation
+fields:
+
+```
+CMP116FluctuationField
+cmp116FieldProjection
+cmp116FieldProjection_comp
+OperatorSupportedBetween
+OperatorSupportedBetween.eq_of_agreeOn
+OperatorSupportedBetween.apply_eq_zero_outside
+OperatorSupportedBetween.add
+OperatorSupportedBetween.finsetSum
+OperatorSupportedBetween.comp
+OperatorSupportedBetween.mono
+```
+
+`OperatorSupportedBetween Xin Xout T` means exactly that `T` reads only the
+coordinates in `Xin` and has output supported in `Xout`, expressed by equality
+against finite coordinate projections.  This is the algebraic support notion
+needed before decomposing a nonlocal linear change of variables into local
+pieces.
+
+Verification:
+
+```
+lake env lean YangMills\RG\LocalLinearOperator.lean
+lake build YangMills.RG.LocalLinearOperator
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\LocalLinearOperator.lean
+```
+
+**Honest scope.** This commit fixes only exact projection/support algebra for
+finite CMP116 coordinate fields.  It does not construct a polymer-local raw
+activity, prove a Gaussian change of variables, prove physical raw decay,
+localize a physical covariance root, identify a Wilson Hessian, or prove any
+Appendix-F cluster estimate.  The Addendum 282 projection remains only a
+conditional compatibility bridge, not the constructive route.  Clay distance
+**~0% (<0.1%), unchanged**.

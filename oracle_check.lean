@@ -1183,3 +1183,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.BalabanCMP116RawMetricDecay
 #print axioms YangMills.RG.BalabanCMP116LocalizedActivityFamily.of_physicalLocalizedGaussianActivityCertificate
 #print axioms YangMills.RG.balabanCMP116RawMetricDecay_of_physicalGaugeRawActivityDecay
+#print axioms YangMills.RG.CMP116FluctuationField
+#print axioms YangMills.RG.cmp116FieldProjection
+#print axioms YangMills.RG.cmp116FieldProjection_comp
+#print axioms YangMills.RG.OperatorSupportedBetween
+#print axioms YangMills.RG.OperatorSupportedBetween.eq_of_agreeOn
+#print axioms YangMills.RG.OperatorSupportedBetween.apply_eq_zero_outside
+#print axioms YangMills.RG.OperatorSupportedBetween.add
+#print axioms YangMills.RG.OperatorSupportedBetween.finsetSum
+#print axioms YangMills.RG.OperatorSupportedBetween.comp
+#print axioms YangMills.RG.OperatorSupportedBetween.mono

@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 282.
+Addendum 283.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -138,6 +138,14 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `balabanCMP116_hraw_of_physicalGaugeCMP116ActivityTransport` theorem is now a
   compatibility specialization of that named predicate; it still does not
   construct the CMP116 family or prove the physical raw estimate.
+  The corrected constructive route now starts upstream of that conditional
+  bridge: `YangMills/RG/LocalLinearOperator.lean` defines the exact finite
+  support calculus for CMP116 fluctuation-field operators.  It provides the
+  projection `cmp116FieldProjection`, the predicate
+  `OperatorSupportedBetween`, and closure/evaluation lemmas for agreement,
+  output vanishing, addition, finite sums, composition, and monotone support
+  enlargement.  This is deliberately not a raw-decay theorem and does not
+  construct a physical CMP116 activity family.
   The full-periodic
   cochain layer `YangMills/RG/PhysicalGaugeCochains.lean` now fixes the
   physical positive-bond coordinate convention for `su(N)` coordinates,
