@@ -10576,3 +10576,44 @@ interfaces.  It does not prove Dimock's closed `K#` estimate, the second
 Ursell residual bound, the physical gauge-fixed Hessian, covariance
 localization, the physical-to-CMP116 activity map, or `hraw`.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 276 (2026-06-23, **cluster-union component containment**
+`YangMills.RG.ClusterDecay`; core 8343)
+
+This addendum records the finite geometric containment facts needed before
+future local-dependence wrappers for `H#` can reduce component activities to
+agreement on a declared target union.  The new theorem names are:
+
+```
+clusterUnion_component_subset
+clusterUnion_component_subset_of_eq
+clusterUnion_component_skeleton_subset
+clusterUnion_component_skeleton_subset_of_eq
+omegaClusterUnion_component_subset
+omegaClusterUnion_component_subset_of_eq
+omegaClusterUnion_component_skeleton_subset
+omegaClusterUnion_component_skeleton_subset_of_eq
+```
+
+The hard-core `clusterUnion` lemmas and the source-facing
+`omegaClusterUnion` lemmas both state that each tuple component is contained
+in the raw cluster union, and therefore in a declared target `Y` when the
+union is equal to `Y`.  The skeleton variants provide the same containment at
+the active-skeleton level.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\ClusterDecay.lean
+lake build YangMills.RG.ClusterDecay
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\ClusterDecay.lean
+```
+
+**Honest scope.** This is finite cluster geometry only.  It does not prove a
+local-dependence theorem for `H#`, convergence of the second Ursell series,
+Dimock's second-Ursell residual estimate, the physical activity map, or
+`hraw`.  Clay distance **~0% (<0.1%), unchanged**.

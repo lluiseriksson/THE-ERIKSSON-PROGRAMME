@@ -71,6 +71,27 @@ lemma clusterUnion_nonempty {d L : ℕ} [NeZero L] (H : HoleFamily d L)
   rw [mem_biUnion]
   exact ⟨0, mem_univ 0, hx⟩
 
+/-- Every component polymer of a hard-core cluster tuple is contained in the
+raw cluster union. -/
+lemma clusterUnion_component_subset {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin n → (holePolymerSystem H z).Polymer) (i : Fin n) :
+    (X i).val ⊆ clusterUnion H z X := by
+  intro x hx
+  dsimp [clusterUnion]
+  exact Finset.mem_biUnion.mpr ⟨i, Finset.mem_univ i, hx⟩
+
+/-- If a hard-core cluster tuple has declared union `Y`, then each component
+polymer is contained in `Y`. -/
+lemma clusterUnion_component_subset_of_eq {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin n → (holePolymerSystem H z).Polymer) (Y : Finset (Cube d L))
+    (i : Fin n) (hXY : clusterUnion H z X = Y) :
+    (X i).val ⊆ Y := by
+  intro x hx
+  rw [← hXY]
+  exact clusterUnion_component_subset H z X i hx
+
 /-- The modified metric of a cluster, defined as the modified metric of its union.
 
 This is the source-shaped cluster object `d_M(Y, mod Ωᶜ)`: the cluster is first
@@ -101,6 +122,27 @@ lemma clusterUnion_skeleton {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Fin
     skeleton H (clusterUnion H z X) = univ.biUnion (fun i => skeleton H (X i).val) := by
   dsimp [clusterUnion]
   exact skeleton_biUnion H univ (fun i => (X i).val)
+
+/-- Every component skeleton of a hard-core cluster tuple is contained in the
+skeleton of the raw cluster union. -/
+lemma clusterUnion_component_skeleton_subset {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin n → (holePolymerSystem H z).Polymer) (i : Fin n) :
+    skeleton H (X i).val ⊆ skeleton H (clusterUnion H z X) := by
+  intro x hx
+  rw [clusterUnion_skeleton]
+  exact Finset.mem_biUnion.mpr ⟨i, Finset.mem_univ i, hx⟩
+
+/-- If a hard-core cluster tuple has declared union `Y`, then each component
+skeleton is contained in `skeleton H Y`. -/
+lemma clusterUnion_component_skeleton_subset_of_eq {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin n → (holePolymerSystem H z).Polymer) (Y : Finset (Cube d L))
+    (i : Fin n) (hXY : clusterUnion H z X = Y) :
+    skeleton H (X i).val ⊆ skeleton H Y := by
+  intro x hx
+  rw [← hXY]
+  exact clusterUnion_component_skeleton_subset H z X i hx
 
 lemma clusterUnion_fin_one {d L : ℕ} [NeZero L] (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ)
     (X : Fin 1 → (holePolymerSystem H z).Polymer) :
@@ -1148,6 +1190,48 @@ lemma omegaClusterUnion_skeleton {d L : ℕ} [NeZero L] (H : HoleFamily d L)
       univ.biUnion (fun i => skeleton H (X i).val) := by
   dsimp [omegaClusterUnion]
   exact skeleton_biUnion H univ (fun i => (X i).val)
+
+/-- Every component polymer of an `Ω`-active cluster tuple is contained in the
+raw `Ω`-cluster union. -/
+lemma omegaClusterUnion_component_subset {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin n → OmegaPolymerType H z) (i : Fin n) :
+    (X i).val ⊆ omegaClusterUnion H z X := by
+  intro x hx
+  dsimp [omegaClusterUnion]
+  exact Finset.mem_biUnion.mpr ⟨i, Finset.mem_univ i, hx⟩
+
+/-- If an `Ω`-active cluster tuple has declared union `Y`, then each component
+polymer is contained in `Y`. -/
+lemma omegaClusterUnion_component_subset_of_eq {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin n → OmegaPolymerType H z) (Y : Finset (Cube d L))
+    (i : Fin n) (hXY : omegaClusterUnion H z X = Y) :
+    (X i).val ⊆ Y := by
+  intro x hx
+  rw [← hXY]
+  exact omegaClusterUnion_component_subset H z X i hx
+
+/-- Every component skeleton of an `Ω`-active cluster tuple is contained in the
+skeleton of the raw `Ω`-cluster union. -/
+lemma omegaClusterUnion_component_skeleton_subset {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin n → OmegaPolymerType H z) (i : Fin n) :
+    skeleton H (X i).val ⊆ skeleton H (omegaClusterUnion H z X) := by
+  intro x hx
+  rw [omegaClusterUnion_skeleton]
+  exact Finset.mem_biUnion.mpr ⟨i, Finset.mem_univ i, hx⟩
+
+/-- If an `Ω`-active cluster tuple has declared union `Y`, then each component
+skeleton is contained in `skeleton H Y`. -/
+lemma omegaClusterUnion_component_skeleton_subset_of_eq {d L : ℕ} [NeZero L]
+    (H : HoleFamily d L) (z : Finset (Cube d L) → ℂ) {n : ℕ}
+    (X : Fin n → OmegaPolymerType H z) (Y : Finset (Cube d L))
+    (i : Fin n) (hXY : omegaClusterUnion H z X = Y) :
+    skeleton H (X i).val ⊆ skeleton H Y := by
+  intro x hx
+  rw [← hXY]
+  exact omegaClusterUnion_component_skeleton_subset H z X i hx
 
 /-- Appendix-F-facing skeleton-pinned cluster remainder term for the literal
 `Ω`-connected polymer system.  The pin is imposed on the active skeleton of the

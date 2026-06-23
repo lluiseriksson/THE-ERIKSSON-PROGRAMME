@@ -533,7 +533,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `appendixFHoleHsharpTerm_eq_zero_of_no_union` records the zero-fiber case;
   and `sum_appendixFHoleHsharpTerm_eq_clusterSum_term` proves that summing
   fixed-size fiber terms over all targets recovers exactly the fixed-size
-  term of the KP `clusterSum` of the second gas.  This is finite bookkeeping
+  term of the KP `clusterSum` of the second gas.  The underlying cluster
+  geometry now also names component-containment lemmas for both the older
+  hard-core `clusterUnion` and the source-facing `omegaClusterUnion`, including
+  declared-union and skeleton variants.  These are the finite geometric facts
+  needed before any later local-dependence theorem for `H#` can reduce
+  component activities to agreement on the target union.  This is finite bookkeeping
   only: it does not justify exchanging the finite target sum with the outer
   `tsum`, prove convergence, identify a partition logarithm, prove the
   residual decay rate, or extract a real scalar remainder;

@@ -687,9 +687,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.polymerWithHoles_biUnion
 #print axioms YangMills.RG.clusterUnion_polymerWithHoles
 #print axioms YangMills.RG.clusterUnion_nonempty
+#print axioms YangMills.RG.clusterUnion_component_subset
+#print axioms YangMills.RG.clusterUnion_component_subset_of_eq
 #print axioms YangMills.RG.clusterUnionPolymer
 #print axioms YangMills.RG.clusterModifiedMetric
 #print axioms YangMills.RG.clusterUnion_skeleton
+#print axioms YangMills.RG.clusterUnion_component_skeleton_subset
+#print axioms YangMills.RG.clusterUnion_component_skeleton_subset_of_eq
 #print axioms YangMills.RG.clusterUnion_fin_one
 #print axioms YangMills.RG.clusterModifiedMetric_fin_one
 #print axioms YangMills.RG.clusterDecayWeight
@@ -986,6 +990,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootVertexSum
 -- finite second-Ursell geometry for the future weighted leaf summation:
 -- target metric stitching, rooted hard-core sums, and factorial moments.
+#print axioms YangMills.RG.omegaClusterUnion_component_subset
+#print axioms YangMills.RG.omegaClusterUnion_component_subset_of_eq
+#print axioms YangMills.RG.omegaClusterUnion_component_skeleton_subset
+#print axioms YangMills.RG.omegaClusterUnion_component_skeleton_subset_of_eq
 #print axioms YangMills.RG.omegaClusterUnion_discreteModifiedMetric_add_one_le_sum_of_spanningTree
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_targetExpWeight_mul
 #print axioms YangMills.RG.appendixFHole_incomp_expWeightSum_le_skeletonCard_mul
