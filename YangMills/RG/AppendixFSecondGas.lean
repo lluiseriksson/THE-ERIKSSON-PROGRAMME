@@ -159,6 +159,46 @@ theorem appendixFHoleSecondGasActivity_eq_zero_of_not_mem_targetRegion
   rw [hzero]
   simp
 
+/-- The evaluated Appendix-F second-gas activity only depends on spectator
+fields inside the full target `Y`, provided each input one-polymer activity has
+spectator support inside its own full source polymer. -/
+theorem appendixFHoleSecondGasActivity_eq_of_agreeOn
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (Hraw :
+      OmegaPolymerType HF z →
+        LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β)
+    (Y : Finset (Cube d L))
+    (hsub : ∀ X, X ∈ Λ → (Hraw X).spectatorSupport ⊆ X.val)
+    {ψ₁ ψ₂ : ∀ x, Ψ x}
+    (hψ : AgreeOn Y ψ₁ ψ₂) :
+    appendixFHoleSecondGasActivity HF z Λ Hraw μ ψ₁ Y =
+      appendixFHoleSecondGasActivity HF z Λ Hraw μ ψ₂ Y := by
+  exact appendixFHoleKsharp_globalEval_eq_of_agreeOn
+    HF z Λ Hraw μ Y hsub hψ
+
+/-- The evaluated Appendix-F second-gas activity only depends on spectator
+fields inside the active skeleton of `Y`, provided each input one-polymer
+activity has spectator support inside its own active skeleton. -/
+theorem appendixFHoleSecondGasActivity_eq_of_agreeOn_skeleton
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (Hraw :
+      OmegaPolymerType HF z →
+        LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β)
+    (Y : Finset (Cube d L))
+    (hHsub : ∀ X, X ∈ Λ → (Hraw X).spectatorSupport ⊆ skeleton HF X.val)
+    {ψ₁ ψ₂ : ∀ x, Ψ x}
+    (hψ : AgreeOn (skeleton HF Y) ψ₁ ψ₂) :
+    appendixFHoleSecondGasActivity HF z Λ Hraw μ ψ₁ Y =
+      appendixFHoleSecondGasActivity HF z Λ Hraw μ ψ₂ Y := by
+  exact appendixFHoleKsharp_globalEval_eq_of_agreeOn_skeleton
+    HF z Λ Hraw μ Y hHsub hψ
+
 /-- A KP-ready pointwise majorant for the evaluated second gas.  This is
 deliberately stronger than the source-shaped Dimock `(642)` estimate: it
 contains exactly the tilt and cardinality factors consumed by the current KP

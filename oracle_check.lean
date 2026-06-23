@@ -835,10 +835,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_rooted_of_stronglyMeasurable
 #print axioms YangMills.RG.integrable_appendixFHoleConnectedLocalActivity_globalEval_of_rawMetricDecay_rooted_of_factor_stronglyMeasurable
 #print axioms YangMills.RG.norm_appendixFHoleKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted
+#print axioms YangMills.RG.appendixFHoleKsharp_globalEval_eq_of_agreeOn
+#print axioms YangMills.RG.appendixFHoleKsharp_globalEval_eq_of_agreeOn_skeleton
 -- second Appendix-F hard-core gas from evaluated K#: structural only, with KP
 -- exposed as a pointwise majorant hypothesis rather than as Dimock (642).
 #print axioms YangMills.RG.appendixFHoleSecondGas_activity
 #print axioms YangMills.RG.appendixFHoleSecondGasActivity_eq_zero_of_not_mem_targetRegion
+#print axioms YangMills.RG.appendixFHoleSecondGasActivity_eq_of_agreeOn
+#print axioms YangMills.RG.appendixFHoleSecondGasActivity_eq_of_agreeOn_skeleton
 #print axioms YangMills.RG.appendixFHoleSecondGas_KPCriterion_of_majorant
 -- spectator-integrated scalar K# normalization: structural bridge from the
 -- finite K# target-family identity to the scalar zK family used by H#.

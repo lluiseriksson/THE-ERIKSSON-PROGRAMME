@@ -436,6 +436,51 @@ theorem appendixFHoleKsharp_support_subset_skeleton
   exact appendixFHoleConnectedLocalActivity_spectatorSupport_subset_skeleton
     HF z Λ H Y hHsub
 
+/-- The integrated first activity `K#(Y)` only depends on spectator fields in
+the full target `Y`, provided each input one-polymer activity has spectator
+support inside its own full source polymer. -/
+theorem appendixFHoleKsharp_globalEval_eq_of_agreeOn
+    {d L : ℕ} [NeZero L] {β : Type*} [MeasurableSpace β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β)
+    (Y : Finset (Cube d L))
+    (hsub : ∀ X, X ∈ Λ → (H X).spectatorSupport ⊆ X.val)
+    {ψ₁ ψ₂ : ∀ x, Ψ x}
+    (hψ : AgreeOn Y ψ₁ ψ₂) :
+    (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ₁ =
+      (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ₂ := by
+  refine LocalFunctional.globalEval_eq_of_agreeOn
+    (appendixFHoleKsharp HF z Λ H μ Y) ?_
+  intro x hx
+  exact hψ x (appendixFHoleKsharp_support_subset HF z Λ H μ Y hsub hx)
+
+/-- The integrated first activity `K#(Y)` only depends on spectator fields in
+the active skeleton of `Y`, provided each input one-polymer activity has
+spectator support inside its own active skeleton. -/
+theorem appendixFHoleKsharp_globalEval_eq_of_agreeOn_skeleton
+    {d L : ℕ} [NeZero L] {β : Type*} [MeasurableSpace β]
+    {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (H : OmegaPolymerType HF z → LocalActivity (Cube d L) Ψ (fun _ => β) ℂ)
+    (μ : Measure β)
+    (Y : Finset (Cube d L))
+    (hHsub : ∀ X, X ∈ Λ → (H X).spectatorSupport ⊆ skeleton HF X.val)
+    {ψ₁ ψ₂ : ∀ x, Ψ x}
+    (hψ : AgreeOn (skeleton HF Y) ψ₁ ψ₂) :
+    (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ₁ =
+      (appendixFHoleKsharp HF z Λ H μ Y).globalEval ψ₂ := by
+  refine LocalFunctional.globalEval_eq_of_agreeOn
+    (appendixFHoleKsharp HF z Λ H μ Y) ?_
+  intro x hx
+  exact hψ x
+    (appendixFHoleKsharp_support_subset_skeleton HF z Λ H μ Y hHsub hx)
+
 /-- In an admissible target family, the integrated first activities `K#(Y)`
 have pairwise-disjoint spectator supports as soon as each source one-polymer
 activity has spectator support inside its own active skeleton. -/

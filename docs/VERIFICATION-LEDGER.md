@@ -10535,3 +10535,44 @@ second-gas interface only.  It does not prove the physical gauge-fixed
 Hessian, covariance localization, the physical-to-CMP116 activity map,
 measurability of that physical source activity, or `hraw`.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 275 (2026-06-23, **generic Appendix-F `K#` and second-gas
+dependency wrappers** `YangMills.RG.AppendixFKsharp`,
+`YangMills.RG.AppendixFSecondGas`; core 8343)
+
+This addendum moves the support-dependency interface below the CMP116
+specialization.  The new generic theorem names are:
+
+```
+appendixFHoleKsharp_globalEval_eq_of_agreeOn
+appendixFHoleKsharp_globalEval_eq_of_agreeOn_skeleton
+appendixFHoleSecondGasActivity_eq_of_agreeOn
+appendixFHoleSecondGasActivity_eq_of_agreeOn_skeleton
+```
+
+The `K#` wrappers say that the integrated first activity is unchanged when
+spectator/source fields agree on the full target `Y`, respectively on
+`skeleton HF Y`, assuming the corresponding one-polymer spectator-support
+containment.  The second-gas wrappers propagate the same statements to the
+evaluated scalar activity
+`appendixFHoleSecondGasActivity HF z Lambda Hraw mu psi Y`.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\AppendixFKsharp.lean
+lake build YangMills.RG.AppendixFKsharp
+lake env lean YangMills\RG\AppendixFSecondGas.lean
+lake build YangMills.RG.AppendixFSecondGas
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\AppendixFKsharp.lean YangMills\RG\AppendixFSecondGas.lean
+```
+
+**Honest scope.** This is finite support bookkeeping in the generic Appendix-F
+interfaces.  It does not prove Dimock's closed `K#` estimate, the second
+Ursell residual bound, the physical gauge-fixed Hessian, covariance
+localization, the physical-to-CMP116 activity map, or `hraw`.  Clay distance
+**~0% (<0.1%), unchanged**.

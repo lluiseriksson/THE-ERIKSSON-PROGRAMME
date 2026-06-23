@@ -473,7 +473,13 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `appendixFHoleSecondGas_activity` identifies the gas activity with `K#`,
   while `appendixFHoleSecondGasActivity_eq_zero_of_not_mem_targetRegion`
   proves the zero extension outside representable first connected-cover
-  targets.  The KP interface is deliberately honest:
+  targets.  The generic Appendix-F `K#` and evaluated second-gas layers now
+  also expose full-target and active-skeleton agreement wrappers:
+  `appendixFHoleKsharp_globalEval_eq_of_agreeOn`,
+  `appendixFHoleKsharp_globalEval_eq_of_agreeOn_skeleton`,
+  `appendixFHoleSecondGasActivity_eq_of_agreeOn`, and
+  `appendixFHoleSecondGasActivity_eq_of_agreeOn_skeleton`.  The KP interface
+  is deliberately honest:
   `AppendixFHoleSecondGasKPMajorant` includes the exact tilt/cardinality
   factors required by the current KP theorem, and
   `appendixFHoleSecondGas_KPCriterion_of_majorant` applies the existing
