@@ -925,6 +925,9 @@ The CMP116 `K#` adapter now names the matching first-integration consequences:
 the connected first activity and the integrated `K#` depend only on either the
 full target `Y` or the active skeleton `skeleton HF Y`, whenever the existing
 Appendix-F support hypotheses supply the corresponding support inclusion.
+The evaluated CMP116 second-gas activity now carries the same two dependency
+wrappers, so later scalar KP/factorization code can cite the second-gas layer
+directly instead of unfolding through integrated `K#`.
 The scalar second-gas CMP116 layer also has the same KP-ready interface after
 spectator integration:
 `balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant` applies the

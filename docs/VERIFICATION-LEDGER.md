@@ -10498,3 +10498,40 @@ integration only.  It does not prove the physical gauge-fixed Hessian,
 covariance localization, the physical-to-CMP116 activity map, measurability of
 that physical source activity, or `hraw`.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 274 (2026-06-23, **CMP116 evaluated second-gas dependency wrappers**
+`YangMills.RG.BalabanCMP116SecondGasAdapter`; core 8343)
+
+This addendum propagates the CMP116 `K#` support dependency package to the
+evaluated scalar second-gas activity.  The new theorem names are:
+
+```
+balabanCMP116AppendixFSecondGasActivity_eq_of_agreeOn
+balabanCMP116AppendixFSecondGasActivity_eq_of_agreeOn_skeleton
+```
+
+They state that
+`balabanCMP116AppendixFSecondGasActivity HF z Lambda F psi Y` is unchanged when
+the spectator/source field agrees on either the full target `Y` or the active
+skeleton `skeleton HF Y`, assuming the existing
+`BalabanCMP116AppendixFSupportHypotheses`.  The proofs are direct applications
+of the previously verified `K#` dependency wrappers; no analytic estimate or
+new source theorem is introduced.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\BalabanCMP116SecondGasAdapter.lean
+lake build YangMills.RG.BalabanCMP116SecondGasAdapter
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\BalabanCMP116SecondGasAdapter.lean
+```
+
+**Honest scope.** This is finite support bookkeeping for the scalar
+second-gas interface only.  It does not prove the physical gauge-fixed
+Hessian, covariance localization, the physical-to-CMP116 activity map,
+measurability of that physical source activity, or `hraw`.  Clay distance
+**~0% (<0.1%), unchanged**.

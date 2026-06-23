@@ -114,6 +114,42 @@ theorem balabanCMP116AppendixFSecondGasActivity_eq_zero_of_not_mem_targetRegion
   exact appendixFHoleSecondGasActivity_eq_zero_of_not_mem_targetRegion
     HF z Λ F.activity (balabanCMP116BondGaussian lieDim) ψ Y hY
 
+/-- Full-target dependency for the evaluated CMP116 second-gas activity. -/
+theorem balabanCMP116AppendixFSecondGasActivity_eq_of_agreeOn
+    {d L : ℕ} [NeZero L] {lieDim : Nat} {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    (Y : Finset (Cube d L))
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F)
+    {ψ₁ ψ₂ : ∀ x, Ψ x}
+    (hψ : AgreeOn Y ψ₁ ψ₂) :
+    balabanCMP116AppendixFSecondGasActivity HF z Λ F ψ₁ Y =
+      balabanCMP116AppendixFSecondGasActivity HF z Λ F ψ₂ Y := by
+  exact balabanCMP116AppendixFKsharp_globalEval_eq_of_agreeOn
+    HF z Λ F Y h hψ
+
+/-- Active-skeleton dependency for the evaluated CMP116 second-gas activity. -/
+theorem balabanCMP116AppendixFSecondGasActivity_eq_of_agreeOn_skeleton
+    {d L : ℕ} [NeZero L] {lieDim : Nat} {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    (Y : Finset (Cube d L))
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F)
+    {ψ₁ ψ₂ : ∀ x, Ψ x}
+    (hψ : AgreeOn (skeleton HF Y) ψ₁ ψ₂) :
+    balabanCMP116AppendixFSecondGasActivity HF z Λ F ψ₁ Y =
+      balabanCMP116AppendixFSecondGasActivity HF z Λ F ψ₂ Y := by
+  exact balabanCMP116AppendixFKsharp_globalEval_eq_of_agreeOn_skeleton
+    HF z Λ F Y h hψ
+
 /-- KP-ready pointwise majorant for the evaluated CMP116 second gas. -/
 def BalabanCMP116AppendixFSecondGasKPMajorant
     {d L : ℕ} [NeZero L] {lieDim : Nat} {Ψ : Cube d L → Type*}

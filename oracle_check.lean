@@ -1081,6 +1081,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.balabanCMP116AppendixFConnectedLocalActivity_globalEval_eq_of_agreeOn_skeleton
 #print axioms YangMills.RG.balabanCMP116AppendixFKsharp_globalEval_eq_of_agreeOn
 #print axioms YangMills.RG.balabanCMP116AppendixFKsharp_globalEval_eq_of_agreeOn_skeleton
+#print axioms YangMills.RG.balabanCMP116AppendixFSecondGasActivity_eq_of_agreeOn
+#print axioms YangMills.RG.balabanCMP116AppendixFSecondGasActivity_eq_of_agreeOn_skeleton
 #print axioms YangMills.RG.balabanCMP116AppendixFConnectedLocalActivity_globalEval_stronglyMeasurable_of_source
 #print axioms YangMills.RG.norm_balabanCMP116AppendixFKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_rooted
 #print axioms YangMills.RG.integrable_balabanCMP116AppendixFConnectedLocalActivity_of_rawMetricDecay_rooted
