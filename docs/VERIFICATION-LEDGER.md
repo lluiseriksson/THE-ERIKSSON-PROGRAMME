@@ -10077,3 +10077,60 @@ fixed-volume classification.  It still does not prove a volume-uniform
 Poincare/Gaffney estimate, an explicit numerical constant, Wilson-Hessian
 identification, propagator localization, covariance-root localization, or
 `hraw`.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 265 (2026-06-23, **fixed-volume flat physical gauge-fixed
+precision adapter** `YangMills.RG.PhysicalGaugeFixedPrecision`; core 8341)
+
+This addendum specializes the generic gauge-fixed precision theorem
+
+```
+K0 + a Q†Q - Σ
+```
+
+to the finite full-periodic physical positive-bond cochain interface.  The new
+module
+
+```
+YangMills/RG/PhysicalGaugeFixedPrecision.lean
+```
+
+adds the shell
+
+```
+flatGaugeFixedPrecisionCLM
+```
+
+and proves:
+
+```
+flatGaugeFixedPrecision_coerciveWithPositiveConstant_of_flatPoincare
+exists_flatGaugeFixedPrecision_coerciveWithPositiveConstant
+```
+
+The first theorem consumes an explicit `FlatGaugeHodgePoincare` constant `CP`,
+a positive soft block mass `a`, summability of the operator correction family
+`Σ`, and the strict small-budget condition
+`∑' i, δ i < min 1 a / CP`.  It returns strict coercivity of the physical flat
+precision shell with residual constant `min 1 a / CP - ∑' i, δ i`.
+
+The second theorem uses the already-proved fixed-volume
+`exists_flatGaugeHodgePoincare` to choose some `CP`, while deliberately keeping
+the budget condition explicit for that selected constant.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeFixedPrecision.lean
+lake build YangMills.RG.PhysicalGaugeFixedPrecision
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeFixedPrecision.lean
+```
+
+**Honest scope.** This is a fixed-volume adapter from the proved flat
+Hodge/block Poincare endpoint into the generic perturbative precision API.  It
+does not prove volume-uniform Poincare/Gaffney constants, Wilson-Hessian
+identification, propagator localization, covariance-root localization, or
+`hraw`.  Clay distance **~0% (<0.1%), unchanged**.

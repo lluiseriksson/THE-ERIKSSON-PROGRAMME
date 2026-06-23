@@ -1,10 +1,8 @@
 # Current State
 
-**Live-state snapshot updated:** 2026-06-23.  **Verified public baseline:**
-2026-06-23,
-`origin/main` commit `479b0464635ffbbdd9765d64b6fac79f35edb348`
-(latest recorded core build: **8340 jobs**, see
-[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md), Addendum 263).
+**Live-state snapshot updated:** 2026-06-23.  **Latest recorded verification
+checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
+Addendum 265.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -27,7 +25,7 @@ the axiom oracle, and the verification ledger.
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
 | Conditional M3 assembly | `90% [#########.]` | the assembly is verified; the UV producer remains explicit |
 | Appendix-F/H# bridge to UV consumer | `78% [########..]` | source-facing endpoints exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `62% [######....]` | cochains, gauge-fixed covariance, and fixed-volume flat Hodge/Poincare closure are in Lean |
+| P4 physical-operator vertical slice | `63% [######....]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, and the flat physical gauge-fixed precision adapter are in Lean |
 | Concrete `hRpoly` discharge | `40% [####......]` | the live mathematical frontier |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
@@ -90,7 +88,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   inverse quadratic form.  The assembly module
   `YangMills/RG/GaugeFixedCovariance.lean` composes those two layers, so the
   abstract precision `K0 + a Q†Q - Σ` now gets an exact inverse covariance from
-  the block-Poincare and norm-budget hypotheses alone.  The full-periodic
+  the block-Poincare and norm-budget hypotheses alone.  The physical adapter
+  `YangMills/RG/PhysicalGaugeFixedPrecision.lean` now specializes the same
+  strict coercivity theorem to the fixed-volume flat Hodge operator and flat
+  block constraint, still with the small perturbation budget and lack of
+  volume-uniform constants exposed.  The full-periodic
   cochain layer `YangMills/RG/PhysicalGaugeCochains.lean` now fixes the
   physical positive-bond coordinate convention for `su(N)` coordinates,
   carries an explicit adjoint-action model, defines background-covariant
