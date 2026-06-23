@@ -916,7 +916,11 @@ directions consumed by factorization bookkeeping: CMP116 Ω-overlap edges map to
 Appendix-F skeleton-overlap edges, and skeleton-disjoint source polymers have
 `F.zeta X Y = 1` and no CMP116 Ω-overlap edge.  These are consequences of the
 single support hypothesis `F.activeSupport X subset skeleton HF X.val`; they do
-not prove that CMP116 localization satisfies that hypothesis.
+not prove that CMP116 localization satisfies that hypothesis.  The same
+CMP116 localized-activity package now also exposes support-only dependency
+wrappers: each raw activity and each finite Mayer product depend only on the
+declared active support union, while retaining the sharper fluctuation support
+inside `Omega` or `Omega ∩ activeUnion`.
 The scalar second-gas CMP116 layer also has the same KP-ready interface after
 spectator integration:
 `balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant` applies the

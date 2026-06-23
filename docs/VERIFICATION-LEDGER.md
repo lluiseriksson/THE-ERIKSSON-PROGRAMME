@@ -10424,3 +10424,40 @@ the Gaussian change of variables, localize `C^{1/2}`, identify physical bonds
 with CMP116 cubes, convert `SUNLieCoord Nc` into `Fin lieDim -> Real`, or
 discharge `hraw`.  A separate source/pro request records those typing and
 normalization questions explicitly.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 272 (2026-06-23, **CMP116 active-support dependency wrappers**
+`YangMills.RG.BalabanCMP116Localization`; core 8343)
+
+This addendum adds finite support consequences of the existing CMP116
+localized-activity fields.  The new theorem names are:
+
+```
+BalabanCMP116LocalizedActivityFamily.fluctuationSupport_subset_omega
+BalabanCMP116LocalizedActivityFamily.fluctuationSupport_subset_activeSupport
+BalabanCMP116LocalizedActivityFamily.activity_globalEval_eq_of_agreeOn_activeSupport
+BalabanCMP116LocalizedActivityFamily.mayerCoverActivity_fluctuationSupport_subset_omega
+BalabanCMP116LocalizedActivityFamily.mayerCoverActivity_fluctuationSupport_subset_activeUnion
+BalabanCMP116LocalizedActivityFamily.mayerCoverActivity_globalEval_eq_of_agreeOn_activeUnion_only
+```
+
+They expose that a single localized raw activity, and any finite Mayer product
+of such activities, depends only on the declared active support union when a
+source theorem states agreement at that coarser level.  The sharper existing
+dependency on `Omega ∩ activeSupport` / `Omega ∩ activeUnion` remains available.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Localization.lean
+lake build YangMills.RG.BalabanCMP116Localization
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\BalabanCMP116Localization.lean
+```
+
+**Honest scope.** This is finite support bookkeeping only.  It does not prove
+Balaban random-walk localization, construct the physical-to-CMP116 activity
+map, prove measurability of a physical source activity, or discharge `hraw`.
+Clay distance **~0% (<0.1%), unchanged**.

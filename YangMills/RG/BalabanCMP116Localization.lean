@@ -137,6 +137,42 @@ theorem activity_globalEval_stronglyMeasurable
         (F.activity i).globalEval psi X) :=
   F.activity_stronglyMeasurable i psi
 
+/-- The fluctuation support of a CMP116 localized activity is contained in
+the active region `Omega`. -/
+theorem fluctuationSupport_subset_omega
+    (F : BalabanCMP116LocalizedActivityFamily Bond lieDim Psi ι)
+    (i : ι) :
+    (F.activity i).fluctuationSupport ⊆ F.Omega := by
+  intro x hx
+  exact (Finset.mem_inter.mp (F.fluctuationSupport_subset i hx)).1
+
+/-- The fluctuation support of a CMP116 localized activity is contained in
+its declared active support. -/
+theorem fluctuationSupport_subset_activeSupport
+    (F : BalabanCMP116LocalizedActivityFamily Bond lieDim Psi ι)
+    (i : ι) :
+    (F.activity i).fluctuationSupport ⊆ F.activeSupport i := by
+  intro x hx
+  exact (Finset.mem_inter.mp (F.fluctuationSupport_subset i hx)).2
+
+/-- A CMP116 localized activity only depends on fields in its declared active
+support.  This is the support-only version of the source contract; the sharper
+fluctuation support is still `Omega ∩ activeSupport`. -/
+theorem activity_globalEval_eq_of_agreeOn_activeSupport
+    (F : BalabanCMP116LocalizedActivityFamily Bond lieDim Psi ι)
+    (i : ι)
+    {psi₁ psi₂ : ∀ b, Psi b}
+    {X₁ X₂ : ∀ _ : Bond, Fin lieDim -> Real}
+    (hpsi : AgreeOn (F.activeSupport i) psi₁ psi₂)
+    (hX : AgreeOn (F.activeSupport i) X₁ X₂) :
+    (F.activity i).globalEval psi₁ X₁ =
+      (F.activity i).globalEval psi₂ X₂ := by
+  refine LocalActivity.globalEval_eq_of_agreeOn (F.activity i) ?_ ?_
+  · intro x hx
+    exact hpsi x (F.spectatorSupport_subset i hx)
+  · intro x hx
+    exact hX x (fluctuationSupport_subset_activeSupport F i hx)
+
 /-- A Mayer product over a CMP116 family has spectator support contained in the
 union of the declared Balaban domains. -/
 theorem mayerCoverActivity_spectatorSupport_subset_activeUnion
@@ -161,6 +197,30 @@ theorem mayerCoverActivity_fluctuationSupport_subset_omega_activeUnion
   LocalActivity.mayerCoverActivity_fluctuationSupport_subset_omega_biUnion_activeSupport
     I F.activity F.Omega F.activeSupport (fun i _hi => F.fluctuationSupport_subset i)
 
+/-- A Mayer product over a CMP116 family has fluctuation support contained in
+the active region `Omega`. -/
+theorem mayerCoverActivity_fluctuationSupport_subset_omega
+    [DecidableEq ι]
+    (F : BalabanCMP116LocalizedActivityFamily Bond lieDim Psi ι)
+    (I : Finset ι) :
+    (LocalActivity.mayerCoverActivity I F.activity).fluctuationSupport ⊆
+      F.Omega := by
+  intro x hx
+  exact (Finset.mem_inter.mp
+    (mayerCoverActivity_fluctuationSupport_subset_omega_activeUnion F I hx)).1
+
+/-- A Mayer product over a CMP116 family has fluctuation support contained in
+the union of the declared active supports. -/
+theorem mayerCoverActivity_fluctuationSupport_subset_activeUnion
+    [DecidableEq ι]
+    (F : BalabanCMP116LocalizedActivityFamily Bond lieDim Psi ι)
+    (I : Finset ι) :
+    (LocalActivity.mayerCoverActivity I F.activity).fluctuationSupport ⊆
+      I.biUnion F.activeSupport := by
+  intro x hx
+  exact (Finset.mem_inter.mp
+    (mayerCoverActivity_fluctuationSupport_subset_omega_activeUnion F I hx)).2
+
 /-- The localized Mayer product only depends on spectator fields in the union
 of declared Balaban domains and on fluctuation fields in the active part of that
 union. -/
@@ -179,6 +239,24 @@ theorem mayerCoverActivity_globalEval_eq_of_agreeOn_activeUnion
     exact hpsi x (mayerCoverActivity_spectatorSupport_subset_activeUnion F I hx)
   · intro x hx
     exact hX x (mayerCoverActivity_fluctuationSupport_subset_omega_activeUnion F I hx)
+
+/-- Support-only dependency for a Mayer product over a CMP116 family.
+
+This wrapper is useful for source statements that control agreement on the
+whole declared active union; the sharper fluctuation dependency remains the
+`Omega ∩ activeUnion` theorem above. -/
+theorem mayerCoverActivity_globalEval_eq_of_agreeOn_activeUnion_only
+    [DecidableEq ι]
+    (F : BalabanCMP116LocalizedActivityFamily Bond lieDim Psi ι)
+    (I : Finset ι)
+    {psi₁ psi₂ : ∀ b, Psi b}
+    {X₁ X₂ : ∀ _ : Bond, Fin lieDim -> Real}
+    (hpsi : AgreeOn (I.biUnion F.activeSupport) psi₁ psi₂)
+    (hX : AgreeOn (I.biUnion F.activeSupport) X₁ X₂) :
+    (LocalActivity.mayerCoverActivity I F.activity).globalEval psi₁ X₁ =
+      (LocalActivity.mayerCoverActivity I F.activity).globalEval psi₂ X₂ :=
+  mayerCoverActivity_globalEval_eq_of_agreeOn_activeUnion F I hpsi
+    (fun x hx => hX x (Finset.mem_inter.mp hx).2)
 
 /-- CMP116 `dmu0` component factorization for a localized family.  This is the
 formal consumer of the source statement "the localized `H(Z)` only depends on
