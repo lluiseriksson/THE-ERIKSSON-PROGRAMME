@@ -518,6 +518,65 @@ theorem balabanCMP116AppendixFConnectedLocalActivity_fluctuationSupport_subset_s
   exact appendixFHoleConnectedLocalActivity_fluctuationSupport_subset_skeleton
     HF z Λ F.activity Y h.fluctuationSupport_subset_skeleton
 
+/-- Full-target dependency for the CMP116-specialized connected activity. -/
+theorem balabanCMP116AppendixFConnectedLocalActivity_globalEval_eq_of_agreeOn
+    {d L : ℕ} [NeZero L] {lieDim : Nat} {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    (Y : Finset (Cube d L))
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F)
+    {ψ₁ ψ₂ : ∀ x, Ψ x}
+    {φ₁ φ₂ : ∀ _ : Cube d L, Fin lieDim -> Real}
+    (hψ : AgreeOn Y ψ₁ ψ₂)
+    (hφ : AgreeOn Y φ₁ φ₂) :
+    (balabanCMP116AppendixFConnectedLocalActivity HF z Λ F Y).globalEval ψ₁ φ₁ =
+      (balabanCMP116AppendixFConnectedLocalActivity HF z Λ F Y).globalEval
+        ψ₂ φ₂ := by
+  refine LocalActivity.globalEval_eq_of_agreeOn
+    (balabanCMP116AppendixFConnectedLocalActivity HF z Λ F Y) ?_ ?_
+  · intro x hx
+    exact hψ x
+      (balabanCMP116AppendixFConnectedLocalActivity_spectatorSupport_subset
+        HF z Λ F Y h hx)
+  · intro x hx
+    exact hφ x
+      (balabanCMP116AppendixFConnectedLocalActivity_fluctuationSupport_subset
+        HF z Λ F Y h hx)
+
+/-- Active-skeleton dependency for the CMP116-specialized connected activity. -/
+theorem
+    balabanCMP116AppendixFConnectedLocalActivity_globalEval_eq_of_agreeOn_skeleton
+    {d L : ℕ} [NeZero L] {lieDim : Nat} {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    (Y : Finset (Cube d L))
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F)
+    {ψ₁ ψ₂ : ∀ x, Ψ x}
+    {φ₁ φ₂ : ∀ _ : Cube d L, Fin lieDim -> Real}
+    (hψ : AgreeOn (skeleton HF Y) ψ₁ ψ₂)
+    (hφ : AgreeOn (skeleton HF Y) φ₁ φ₂) :
+    (balabanCMP116AppendixFConnectedLocalActivity HF z Λ F Y).globalEval ψ₁ φ₁ =
+      (balabanCMP116AppendixFConnectedLocalActivity HF z Λ F Y).globalEval
+        ψ₂ φ₂ := by
+  refine LocalActivity.globalEval_eq_of_agreeOn
+    (balabanCMP116AppendixFConnectedLocalActivity HF z Λ F Y) ?_ ?_
+  · intro x hx
+    exact hψ x
+      (balabanCMP116AppendixFConnectedLocalActivity_spectatorSupport_subset_skeleton
+        HF z Λ F Y h hx)
+  · intro x hx
+    exact hφ x
+      (balabanCMP116AppendixFConnectedLocalActivity_fluctuationSupport_subset_skeleton
+        HF z Λ F Y h hx)
+
 /-- Full-target support for the CMP116-specialized `K#`. -/
 theorem balabanCMP116AppendixFKsharp_support_subset
     {d L : ℕ} [NeZero L] {lieDim : Nat} {Ψ : Cube d L → Type*}
@@ -549,6 +608,49 @@ theorem balabanCMP116AppendixFKsharp_support_subset_skeleton
   exact appendixFHoleKsharp_support_subset_skeleton
     HF z Λ F.activity (balabanCMP116BondGaussian lieDim) Y
     h.spectatorSupport_subset_skeleton
+
+/-- Full-target dependency for the CMP116-specialized integrated first
+activity `K#`. -/
+theorem balabanCMP116AppendixFKsharp_globalEval_eq_of_agreeOn
+    {d L : ℕ} [NeZero L] {lieDim : Nat} {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    (Y : Finset (Cube d L))
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F)
+    {ψ₁ ψ₂ : ∀ x, Ψ x}
+    (hψ : AgreeOn Y ψ₁ ψ₂) :
+    (balabanCMP116AppendixFKsharp HF z Λ F Y).globalEval ψ₁ =
+      (balabanCMP116AppendixFKsharp HF z Λ F Y).globalEval ψ₂ := by
+  refine LocalFunctional.globalEval_eq_of_agreeOn
+    (balabanCMP116AppendixFKsharp HF z Λ F Y) ?_
+  intro x hx
+  exact hψ x (balabanCMP116AppendixFKsharp_support_subset HF z Λ F Y h hx)
+
+/-- Active-skeleton dependency for the CMP116-specialized integrated first
+activity `K#`. -/
+theorem balabanCMP116AppendixFKsharp_globalEval_eq_of_agreeOn_skeleton
+    {d L : ℕ} [NeZero L] {lieDim : Nat} {Ψ : Cube d L → Type*}
+    (HF : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (F :
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim Ψ (OmegaPolymerType HF z))
+    (Y : Finset (Cube d L))
+    (h : BalabanCMP116AppendixFSupportHypotheses HF z Λ F)
+    {ψ₁ ψ₂ : ∀ x, Ψ x}
+    (hψ : AgreeOn (skeleton HF Y) ψ₁ ψ₂) :
+    (balabanCMP116AppendixFKsharp HF z Λ F Y).globalEval ψ₁ =
+      (balabanCMP116AppendixFKsharp HF z Λ F Y).globalEval ψ₂ := by
+  refine LocalFunctional.globalEval_eq_of_agreeOn
+    (balabanCMP116AppendixFKsharp HF z Λ F Y) ?_
+  intro x hx
+  exact hψ x
+    (balabanCMP116AppendixFKsharp_support_subset_skeleton HF z Λ F Y h hx)
 
 /-- The finite target-family first-integration identity, specialized to the
 CMP116 product Gaussian. -/

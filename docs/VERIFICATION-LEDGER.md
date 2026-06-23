@@ -10461,3 +10461,40 @@ rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\BalabanCMP116Localization.lean
 Balaban random-walk localization, construct the physical-to-CMP116 activity
 map, prove measurability of a physical source activity, or discharge `hraw`.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 273 (2026-06-23, **CMP116 `K#` support dependency wrappers**
+`YangMills.RG.BalabanCMP116KsharpAdapter`; core 8343)
+
+This addendum carries the finite support package through the first-integration
+adapter.  The new theorem names are:
+
+```
+balabanCMP116AppendixFConnectedLocalActivity_globalEval_eq_of_agreeOn
+balabanCMP116AppendixFConnectedLocalActivity_globalEval_eq_of_agreeOn_skeleton
+balabanCMP116AppendixFKsharp_globalEval_eq_of_agreeOn
+balabanCMP116AppendixFKsharp_globalEval_eq_of_agreeOn_skeleton
+```
+
+They say that the CMP116-specialized connected first activity, and the
+spectator-integrated `K#`, are unchanged when source fields agree on the full
+target `Y` or on the active skeleton `skeleton HF Y`.  The proofs are direct
+applications of the existing `LocalActivity` / `LocalFunctional` dependency
+lemmas plus the already-recorded CMP116 Appendix-F support inclusions.
+
+Verification targets:
+
+```
+lake env lean YangMills\RG\BalabanCMP116KsharpAdapter.lean
+lake build YangMills.RG.BalabanCMP116KsharpAdapter
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "\b(sorry|admit|axiom)\b" YangMills\RG\BalabanCMP116KsharpAdapter.lean
+```
+
+**Honest scope.** This is finite support bookkeeping after spectator
+integration only.  It does not prove the physical gauge-fixed Hessian,
+covariance localization, the physical-to-CMP116 activity map, measurability of
+that physical source activity, or `hraw`.  Clay distance **~0% (<0.1%),
+unchanged**.

@@ -921,6 +921,10 @@ CMP116 localized-activity package now also exposes support-only dependency
 wrappers: each raw activity and each finite Mayer product depend only on the
 declared active support union, while retaining the sharper fluctuation support
 inside `Omega` or `Omega ∩ activeUnion`.
+The CMP116 `K#` adapter now names the matching first-integration consequences:
+the connected first activity and the integrated `K#` depend only on either the
+full target `Y` or the active skeleton `skeleton HF Y`, whenever the existing
+Appendix-F support hypotheses supply the corresponding support inclusion.
 The scalar second-gas CMP116 layer also has the same KP-ready interface after
 spectator integration:
 `balabanCMP116AppendixFIntegratedSecondGas_KPCriterion_of_majorant` applies the
