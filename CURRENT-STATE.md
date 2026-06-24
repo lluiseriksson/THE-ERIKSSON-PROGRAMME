@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 311.
+Addendum 312.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1149,6 +1149,11 @@ pulled back through `D.gaussianRootMap root`.  It still assumes the source
 `gaussian_pushforward` theorem and does not prove root localization,
 Wilson-Hessian identification, local activity construction, raw decay, or
 `hraw`.
+The same dictionary/root map now has the exact operator-coordinate identity
+`PhysicalGaugeCMP116Dictionary.gaussianRootMap_eq_coordinates_comp_cmp116OperatorOfPhysical`:
+the physical map `D.gaussianRootMap root` is precisely the physical-coordinate
+realization of the root conjugated into CMP116 coordinates.  This is a
+definition-level algebra bridge, not a Gaussian-law or localization theorem.
 The same construction file now has a thin raw-source compatibility layer:
 `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses` extends the
 separated Gaussian/root/Hessian/activity source package with the unfolded

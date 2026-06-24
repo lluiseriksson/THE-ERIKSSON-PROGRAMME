@@ -92,6 +92,23 @@ noncomputable def gaussianRootMap
       root (D.pullFluctuationCochain ξ) :=
   rfl
 
+/-- The canonical physical Gaussian root map is the physical-coordinate
+realization of the same root conjugated into CMP116 coordinates.
+
+This is only exact dictionary algebra: it does not assert that the transported
+map preserves the CMP116 product Gaussian law. -/
+theorem gaussianRootMap_eq_coordinates_comp_cmp116OperatorOfPhysical
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc) :
+    D.gaussianRootMap root =
+      D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap.comp
+        (cmp116OperatorOfPhysical
+          D.fluctuationFieldContinuousLinearEquiv root) := by
+  ext ξ
+  simp [gaussianRootMap, cmp116OperatorOfPhysical]
+
 /-- Instantiate the Gaussian-change record with the canonical dictionary/root
 coordinate map.  The measure pushforward identity is still supplied explicitly. -/
 noncomputable def PhysicalGaugeCMP116GaussianChange.ofDictionaryRoot

@@ -12188,3 +12188,41 @@ the canonical covariance with a Neumann series, construct a continuous-linear
 map inverse square root, prove covariance/root kernel bounds, construct a
 Gaussian pushforward, build a local physical activity, or prove raw activity
 decay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 312 (2026-06-24, **dictionary/root operator-coordinate identity**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum adds one exact algebra bridge between the canonical physical
+Gaussian root map and the same physical root conjugated into CMP116
+coordinates:
+
+```
+PhysicalGaugeCMP116Dictionary.gaussianRootMap_eq_coordinates_comp_cmp116OperatorOfPhysical
+```
+
+The theorem states that `D.gaussianRootMap root` is exactly the
+physical-coordinate realization of
+`cmp116OperatorOfPhysical D.fluctuationFieldContinuousLinearEquiv root`.  This
+prevents future Gaussian-pushforward and activity-transport source theorems
+from unfolding both coordinate definitions by hand.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entry reports only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is definition-level coordinate algebra.  It does not
+prove the Gaussian pushforward theorem, does not establish an isometry or
+Jacobian convention for the product Gaussian, does not localize the physical
+covariance root, does not identify a Wilson Hessian, does not construct a
+local physical activity, and does not prove raw activity decay.  Clay distance
+**~0% (<0.1%), unchanged**.
