@@ -13509,3 +13509,40 @@ the admissible-domain transport, source metric comparison, or CMP116 Lemma 3.
 It only proves that the supplied residual post-D bound plus equation (2.29)
 gives the exact finite term-weight budget.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 340 (2026-06-24, **Eq. 2.29 post-D consumer for Lemma-3 activity estimate**
+`YangMills.RG.BalabanCMP116Eq229`; core 8360)
+
+This checkpoint adds the thin theorem-fed activity-estimate consumer
+
+```
+cmp116Lemma3ActivityEstimate_of_eq229_postD
+```
+
+on top of Addendum 339.  It combines the existing source identification of
+`balabanCMP116H`, the complex-valued termwise estimate, the equation-(2.29)
+summability predicate, and the explicit residual post-D `P/Z0/Z0'` bound, then
+feeds the derived finite budget into
+`cmp116Lemma3ActivityEstimate_of_resummation`.
+
+The theorem removes the need for callers on this route to pass a separate
+monolithic `hbudget`; the residual source work remains a named hypothesis
+`hpostD` with the full nested `P -> Z0 -> Z0'` sum visible.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq229.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-eq229-postD-consumer.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Eq229.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is a consumer theorem, not an analytic source proof.
+Equation (2.29), the termwise estimate, the activity-identification equality,
+and the residual post-D bound all remain explicit hypotheses.  It does not
+prove equations (2.27), (2.30), (2.32), (2.34), (2.36), or (2.37), the constant
+hierarchy, admissible-domain transport, source metric comparison, or CMP116
+Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.

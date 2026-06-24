@@ -270,4 +270,58 @@ theorem cmp116H_termWeightSum_le_of_eq229
           balabanCMP116Lemma3Weight
             hp.blockScale hp.delta hp.kappa sourceMetric Z := rfl
 
+/-- Eq. (2.29), plus an explicit post-D residual bound, feeds the theorem-fed
+CMP116 Lemma 3 activity estimate without a separate monolithic `hbudget`
+premise.
+
+This theorem still keeps the complex-valued termwise estimate and all residual
+`P/Z0/Z0'` resummation estimates as explicit hypotheses. -/
+theorem cmp116Lemma3ActivityEstimate_of_eq229_postD
+    {σ ιD ιP ιZ0 ιZ0' ιY : Type*}
+    [DecidableEq ιD] [DecidableEq ιP]
+    [DecidableEq ιZ0] [DecidableEq ιZ0']
+    {dPhys N Nc : ℕ} [NeZero N]
+    (hp : CMP116Lemma3Parameters)
+    (R :
+      CMP116HResummation σ ιD ιP ιZ0 ιZ0'
+        (PhysicalGaugeField dPhys N Nc)
+        (PhysicalGaugeField dPhys N Nc))
+    (sourceMetric : σ → ℕ)
+    (physicalActivity : σ → PhysicalGaugeLocalActivity dPhys N Nc)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 : ℝ)
+    (eq229Metric : σ → ιY → ℕ)
+    (hEq229 :
+      CMP116Eq229Summability
+        R.DIndex DParts alpha6 hp.delta hp.kappa eq229Metric)
+    (hglobal :
+      ∀ Z ψ φ,
+        (physicalActivity Z).globalEval ψ φ =
+          balabanCMP116H R Z ψ φ)
+    (hterm :
+      ∀ Z x, x ∈ cmp116HIndexFinset R Z →
+        ∀ ψ φ,
+          ‖R.summand Z x.1.1 x.1.2 x.2.1 x.2.2 ψ φ‖ ≤
+            R.termWeight Z x.1.1 x.1.2 x.2.1 x.2.2)
+    (hpostD :
+      ∀ Z D, D ∈ R.DIndex Z →
+        Finset.sum (R.PIndex Z D) (fun P =>
+          Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+            Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+              R.termWeight Z D P Z0 Z0'))) ≤
+          ((hp.C3 * hp.epsilon1) *
+            balabanCMP116Lemma3Weight
+              hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+            Finset.prod (DParts Z D)
+              (cmp116Eq229Weight
+                alpha6 hp.delta hp.kappa (eq229Metric Z))) :
+    CMP116Lemma3ActivityEstimate
+      physicalActivity sourceMetric hp.blockScale
+      hp.C3 hp.epsilon1 hp.delta hp.kappa :=
+  cmp116Lemma3ActivityEstimate_of_resummation
+    hp R sourceMetric physicalActivity
+    hglobal hterm
+    (cmp116H_termWeightSum_le_of_eq229
+      hp R sourceMetric DParts alpha6 eq229Metric hEq229 hpostD)
+
 end YangMills.RG
