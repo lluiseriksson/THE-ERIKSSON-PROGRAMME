@@ -655,6 +655,21 @@ the source constants or smallness conditions.  A future source extraction must
 still supply the normalized `P`, `Z0`, and `Z0'` residual estimates and the
 pointwise term-weight factorization from the primary text.
 
+The P stage now has the source-shaped predicate
+`CMP116PStageSourceBound` and adapter
+`cmp116PResidualSummability_of_pStageSourceBound`.  The predicate records the
+finite `P`-sum bound by
+`2 * (blockScale + 2)^4 * pEntropyConstant * epsilon2 * exp(5*kappa)`, and the
+adapter turns that source-shaped bound plus the displayed scalar smallness
+restriction into normalized `CMP116PResidualSummability`.  Local source check:
+`balaban-rg-II-cmp116-1104161193.pdf`, SHA256
+`EE39523A0F7B83AF958513C7BD6F9C7731934B40355EF5D6B0F7A68EE6D022FC`; OCR text
+SHA256 `1F783762D6EC6FFF9362BB993B2539201E0FE705A5E1C7E0545640CA9EAF2066`;
+OCR lines 671--793, especially printed page 20 around line 767, show the
+leading `2`, `(L+2)^4`, `O(1)`, `epsilon2`, and `exp 5*kappa` scalar
+restriction.  This is still not a proof of the source `P` estimate or of the
+construction of `pWeight`.
+
 The scale-family theorem
 `cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_residualStages` is the same
 composition pointwise in `(t, k)`.  Its named `postDBase` equality is
@@ -676,9 +691,9 @@ composed consumers
 `cmp116Lemma3ActivityEstimate_of_eq229_pStageResidualStages`.  These theorems
 split the previous opaque `hpostP` premise into normalized `Z0` and `Z0'`
 residual stages after a budget-valued P-stage, matching the order of the
-source discussion around CMP116 pages 18--20.  They still do not identify the
-P-stage budget, `Z0` stage, or `Z0'` stage with any source theorem or
-constant hierarchy.
+source discussion around CMP116 pages 18--20.  They still do not prove the
+source P-stage bound, identify the `Z0` stage or `Z0'` stage with any source
+theorem, or discharge the constant hierarchy.
 
 The scale-family wrapper
 `cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages`

@@ -16,11 +16,11 @@ main theorem proves that these three normalized residual stages, together with
 a pointwise factorization of the term weights, imply the post-`D` residual
 budget consumed by `cmp116H_termWeightSum_le_of_eq229`.
 
-Honest scope: this file does not assign the residual predicates to CMP116
-equations (2.27), (2.30), (2.32), (2.34), (2.36), or (2.37), does not prove
-the analytic constants, and does not identify `H(Z)` with a model-specific
-activity.  It only proves the finite residual resummation algebra needed before
-applying equation (2.29).
+Honest scope: the P-stage source budget is now named and mapped to the
+normalized P residual predicate; the `Z0` and `Z0'` stages, the analytic
+constant hierarchy, and the model-specific identification of `H(Z)` remain
+unassigned.  This module only proves the finite residual resummation algebra
+needed before applying equation (2.29).
 -/
 
 namespace YangMills.RG
@@ -36,6 +36,48 @@ def CMP116PResidualSummability
     (pWeight : σ → ιD → ιP → ℝ) : Prop :=
   ∀ Z D, D ∈ DIndex Z →
     Finset.sum (PIndex Z D) (fun P => pWeight Z D P) ≤ 1
+
+/-- The source-shaped `P`-stage estimate in the CMP116 Lemma-3 resummation,
+before applying the corresponding scalar smallness restriction.
+
+CMP116, Lemma-3 proof on printed pages 18--20: the P/residual resummation step
+uses the geometric inequality (2.30) as an input and later applies the displayed
+restriction `2 (L+2)^4 O(1) epsilon2 exp(5 kappa) <= 1`.  The constant
+`pEntropyConstant` names the source's stage-specific `O(1)` majorant.  This
+predicate records only the source-shaped finite bound; it does not construct
+the source `P` family, identify `pWeight`, or prove the scalar restriction. -/
+def CMP116PStageSourceBound
+    {σ ιD ιP : Type*}
+    (DIndex : σ → Finset ιD)
+    (PIndex : σ → ιD → Finset ιP)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (blockScale : ℕ)
+    (pEntropyConstant epsilon2 kappa : ℝ) : Prop :=
+  ∀ Z D, D ∈ DIndex Z →
+    Finset.sum (PIndex Z D) (fun P => pWeight Z D P) ≤
+      2 * (((blockScale : ℝ) + 2) ^ 4) *
+        pEntropyConstant * epsilon2 * Real.exp (5 * kappa)
+
+/-- The CMP116 P-stage source estimate, together with its explicit scalar
+smallness restriction, implies the source-neutral normalized P-stage predicate
+used by the finite residual resummation. -/
+theorem cmp116PResidualSummability_of_pStageSourceBound
+    {σ ιD ιP : Type*}
+    (DIndex : σ → Finset ιD)
+    (PIndex : σ → ιD → Finset ιP)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (blockScale : ℕ)
+    (pEntropyConstant epsilon2 kappa : ℝ)
+    (hsource :
+      CMP116PStageSourceBound
+        DIndex PIndex pWeight
+        blockScale pEntropyConstant epsilon2 kappa)
+    (hsmall :
+      2 * (((blockScale : ℝ) + 2) ^ 4) *
+          pEntropyConstant * epsilon2 * Real.exp (5 * kappa) ≤ 1) :
+    CMP116PResidualSummability DIndex PIndex pWeight := by
+  intro Z D hD
+  exact (hsource Z D hD).trans hsmall
 
 /-- Source-neutral normalized residual summability for the `Z0` stage after a
 fixed `D` and `P`. -/

@@ -13842,3 +13842,58 @@ does not source-identify Eq. (2.29), the P-stage budget, `Z0/Z0'` residual
 estimates, activity identification, termwise complex estimates, source metric
 comparison, Gaussian/root/Hessian/activity source facts, H#, or CMP116 Lemma
 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 349 (2026-06-24, **CMP116 P-stage source-budget adapter**
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages`; core 8361)
+
+This checkpoint names the source-shaped P-stage residual budget and maps it to
+the already normalized P residual predicate:
+
+```
+CMP116PStageSourceBound
+cmp116PResidualSummability_of_pStageSourceBound
+```
+
+`CMP116PStageSourceBound` records the fixed-`D` finite `P` sum with the
+explicit source scalar
+
+```
+2 * (((blockScale : Real) + 2) ^ 4) *
+  pEntropyConstant * epsilon2 * Real.exp (5 * kappa)
+```
+
+where `pEntropyConstant` is the stage-specific `O(1)` majorant.  The adapter
+then proves normalized `CMP116PResidualSummability` by transitivity from this
+source-shaped bound and the explicit smallness restriction that the same scalar
+is at most `1`.
+
+Local source check:
+
+```
+PDF: C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\sources\primary\balaban-rg-II-cmp116-1104161193.pdf
+PDF SHA256: EE39523A0F7B83AF958513C7BD6F9C7731934B40355EF5D6B0F7A68EE6D022FC
+OCR: C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\sources\primary\text\balaban-rg-II-cmp116-1104161193.txt
+OCR SHA256: 1F783762D6EC6FFF9362BB993B2539201E0FE705A5E1C7E0545640CA9EAF2066
+OCR range checked: lines 671--793; printed page 20 line 767 confirms the
+displayed scalar restriction with leading `2`, `(L+2)^4`, `O(1)`, `epsilon2`,
+and `exp 5*kappa`.
+```
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-pstage-source-budget.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This checkpoint only converts a supplied source-shaped
+P-stage finite-sum bound plus its explicit scalar smallness restriction into
+the normalized P residual predicate.  It does not construct `pWeight`, prove
+the P-stage source estimate, discharge `Z0/Z0'` residual stages, prove
+nonnegativity, prove termwise factorization, identify the physical activity,
+or prove CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.

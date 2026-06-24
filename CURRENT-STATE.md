@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 348.
+Addendum 349.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1109,6 +1109,14 @@ resummation algebra from those predicates plus a pointwise factorization, and
 `cmp116H_termWeightSum_le_of_eq229_of_residualStages` composes it with Eq.
 (2.29).  These predicates are not assigned to CMP116 equation numbers here;
 they remain explicit source obligations.
+The P stage now has the source-shaped budget predicate
+`CMP116PStageSourceBound` and the adapter
+`cmp116PResidualSummability_of_pStageSourceBound`, which maps that bound plus
+the explicit scalar restriction
+`2 * (blockScale + 2)^4 * pEntropyConstant * epsilon2 * exp(5*kappa) <= 1`
+to the normalized `CMP116PResidualSummability`.  This names the source-budget
+shape without proving the construction of `pWeight`, the source constant
+hierarchy, or the remaining `Z0/Z0'` stages.
 The same module now also exposes the source-order variant
 `cmp116H_postP_sum_le_of_residualStages`, which turns normalized fixed-`P`
 `Z0/Z0'` residual estimates into the post-`P` budget, plus
