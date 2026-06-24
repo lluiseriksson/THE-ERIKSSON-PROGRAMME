@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 353.
+Addendum 354.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1154,6 +1154,12 @@ applies the same route pointwise.  This is for source statements that control
 the nested `Z0/Z0'` remainder together or in a different summation order.  It
 does not identify a `Z0'` scalar, split the combined bound, prove source
 estimates, or reduce the remaining activity/factorization obligations.
+The compatibility theorem
+`cmp116PostPResidualBound_of_residualStages` now records that the older split
+normalized `Z0/Z0'` residual route is a special case of the combined
+post-`P` predicate.  It is an interface bridge only: the split residual
+estimates, product nonnegativity, and factorization remain explicit
+hypotheses.
 The raw-source compatibility bridge is downstream in
 `YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter`.  It contains the explicit
 metric-domination theorem to `appendixFHoleExpWeight` and

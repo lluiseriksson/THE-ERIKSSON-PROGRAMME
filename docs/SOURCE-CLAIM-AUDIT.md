@@ -739,14 +739,16 @@ resummations through a combined/order-sensitive estimate; it is not currently
 justified to label the existing normalized fixed-`(D,P,Z0)` `Z0'` predicate as
 the printed source theorem.  The new declarations
 `CMP116PostPResidualBound`,
+`cmp116PostPResidualBound_of_residualStages`,
 `cmp116H_postD_sum_le_of_pStagePostPResidualBound`,
 `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`,
 `cmp116Lemma3ActivityEstimate_of_eq229_pStagePostPResidualBound`, and
 `cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStagePostPResidualBound`
 therefore consume a direct combined post-`P` finite-sum bound.  This is still
-only a consumer route: the combined post-`P` bound, Eq. (2.29), the P-stage
-budget, activity identification, and termwise estimates remain source
-obligations.
+only a consumer route: `cmp116PostPResidualBound_of_residualStages` proves that
+the split normalized residual route packages into the combined predicate, but
+the split estimates, combined post-`P` bound, Eq. (2.29), P-stage budget,
+activity identification, and termwise estimates remain source obligations.
 
 `YangMills.RG.BalabanCMP116SourceTheorem` now also exposes
 `BalabanCMP116Lemma3ResummationSourceAssumptions`, a source-boundary record

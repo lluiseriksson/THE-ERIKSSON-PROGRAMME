@@ -14093,3 +14093,37 @@ does not prove the combined post-`P` estimate, Eq. (2.29), the P-stage budget,
 activity identification, termwise estimates, nonnegativity, the `Z0'` source
 estimate, any CMP116 constant hierarchy, or CMP116 Lemma 3.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 354 (2026-06-24, **CMP116 split residuals to combined post-P bridge**
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages`; core 8361)
+
+This checkpoint proves that the earlier split normalized residual-stage route
+packages into the newer combined post-`P` residual predicate:
+
+```
+cmp116PostPResidualBound_of_residualStages
+```
+
+The theorem consumes normalized `CMP116Z0ResidualSummability`,
+`CMP116Z0PrimeResidualSummability`, the pointwise residual factorization,
+nonnegativity of `C3 * epsilon1`, nonnegativity of `pWeight`, and
+nonnegativity of the `Z0` weight.  It produces
+`CMP116PostPResidualBound` with the same canonical CMP116 Lemma-3 base
+factor.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-postp-residual-bridge.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is an interface-unification theorem only.  It does not
+prove the split residual estimates, the combined post-`P` estimate, any source
+constant, Eq. (2.29), the P-stage budget, activity identification, termwise
+estimates, or CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.

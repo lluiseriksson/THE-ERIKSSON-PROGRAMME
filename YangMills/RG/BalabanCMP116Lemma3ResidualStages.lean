@@ -271,6 +271,68 @@ theorem cmp116H_postP_sum_le_of_residualStages
     _ = base Z D P := by
         ring
 
+/-- The split normalized `Z0/Z0'` residual-stage route packages into the direct
+combined post-`P` residual predicate.
+
+This is an interface bridge only: it proves that the older split route is a
+special case of `CMP116PostPResidualBound`.  It does not source-identify either
+residual estimate. -/
+theorem cmp116PostPResidualBound_of_residualStages
+    {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
+    (hp : CMP116Lemma3Parameters)
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (sourceMetric : σ → ℕ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (z0Weight : σ → ιD → ιP → ιZ0 → ℝ)
+    (z0PrimeWeight : σ → ιD → ιP → ιZ0 → ιZ0' → ℝ)
+    (hZ0sum :
+      CMP116Z0ResidualSummability
+        R.DIndex R.PIndex R.Z0Index z0Weight)
+    (hZ0PrimeSum :
+      CMP116Z0PrimeResidualSummability
+        R.DIndex R.PIndex R.Z0Index R.Z0PrimeIndex z0PrimeWeight)
+    (hC3epsilon1_nonneg : 0 ≤ hp.C3 * hp.epsilon1)
+    (hpWeight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D → 0 ≤ pWeight Z D P)
+    (hz0Weight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P → 0 ≤ z0Weight Z D P Z0)
+    (hfactor :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+            ∀ Z0', Z0' ∈ R.Z0PrimeIndex Z D P Z0 →
+              R.termWeight Z D P Z0 Z0' ≤
+                (((((hp.C3 * hp.epsilon1) *
+                    balabanCMP116Lemma3Weight
+                      hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+                    pWeight Z D P) *
+                  z0Weight Z D P Z0) *
+                  z0PrimeWeight Z D P Z0 Z0') ) :
+    CMP116PostPResidualBound hp R sourceMetric pWeight := by
+  intro Z D hD P hP
+  exact
+    cmp116H_postP_sum_le_of_residualStages
+      R
+      (fun Z D P =>
+        ((hp.C3 * hp.epsilon1) *
+          balabanCMP116Lemma3Weight
+            hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+          pWeight Z D P)
+      z0Weight z0PrimeWeight
+      hZ0sum hZ0PrimeSum
+      (fun Z D hD P hP =>
+        mul_nonneg
+          (mul_nonneg hC3epsilon1_nonneg
+            (balabanCMP116Lemma3Weight_nonneg
+              hp.blockScale hp.delta hp.kappa sourceMetric Z))
+          (hpWeight_nonneg Z D hD P hP))
+      hz0Weight_nonneg
+      hfactor
+      Z D hD P hP
+
 /-- Normalized residual `P/Z0/Z0'` summability, plus a pointwise factorization,
 implies the post-`D` residual budget required by the equation-(2.29) consumer.
 
