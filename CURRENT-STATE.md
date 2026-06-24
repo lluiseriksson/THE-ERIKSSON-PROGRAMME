@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 325.
+Addendum 326.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1179,6 +1179,13 @@ The same finite-piece input-dependence theorem now also propagates through
 `LocalActivity.mayerCoverActivity`, i.e. the Appendix-F raw Mayer product
 `exp(H)-1` over a finite cover.  This is still exact algebra over supplied
 finite root pieces, not a Gaussian pushforward or activity-decay theorem.
+The activity-local bridge
+`PhysicalRootToCMP116OperatorTransport.gaussianRootMap_activity_globalEval_eq_of_agreeOn_of_localizedRootLinearMapFinsetSum`
+now promotes that finite-piece input locality to the actual dictionary Gaussian
+root map `D.gaussianRootMap root`, but only under an explicit source-facing
+agreement hypothesis on the activity's `fluctuationSupport`.  It deliberately
+does not require or prove global finite-piece reconstruction of the covariance
+root operator.
 The dictionary-backed construction layer now has
 `PhysicalRootToCMP116OperatorTransport.localizedRootLinearMap_ofDictionary`,
 which turns an explicit physical root kernel bound, a dictionary kernel-bound

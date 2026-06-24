@@ -12735,3 +12735,41 @@ already verified single-activity dependence theorem.  It does not prove that
 the finite root pieces reconstruct the full covariance root, does not prove a
 Gaussian pushforward identity, does not construct local activities, and does
 not prove raw activity decay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 326 (2026-06-24, **activity-local bridge to the dictionary Gaussian root map**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum adds the activity-local bridge from a supplied finite root-piece
+sum to the full dictionary Gaussian-root map:
+
+```
+PhysicalRootToCMP116OperatorTransport.gaussianRootMap_activity_globalEval_eq_of_agreeOn_of_localizedRootLinearMapFinsetSum
+```
+
+The theorem says that if, for each CMP116 input `ζ`, the full physical
+dictionary root field `D.gaussianRootMap root ζ` agrees with the pulled
+finite-piece root-sum field on `activity.fluctuationSupport`, then
+`activity.globalEval` on the full root map is unchanged when CMP116 inputs
+agree on `I.biUnion Xin`.  The key premise is deliberately local to the
+activity support; the theorem does not require global equality between the
+finite sum and the full root operator.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entry reports only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint is an exact `LocalActivity` locality bridge.
+It does not prove that the finite root pieces reconstruct the full covariance
+root, does not prove a Gaussian pushforward identity, does not construct local
+activities, and does not prove raw activity decay.  Clay distance **~0%
+(<0.1%), unchanged**.
