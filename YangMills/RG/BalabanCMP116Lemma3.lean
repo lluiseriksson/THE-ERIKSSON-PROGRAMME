@@ -3,24 +3,118 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP116SourceTheorem
+import YangMills.RG.PhysicalGaugeFluctuationActivity
 
 /-!
-# CMP116 Lemma 3 resummed-activity interface
+# CMP116 Lemma 3 activity estimate interface
 
-This module starts the theorem-fed route from Balaban CMP116 pre-Lemma-3
-summands to the already exposed Lemma 3 activity estimate interface.
+This module names the source-facing conclusion of Balaban CMP116 Lemma 3 /
+equation (2.38), then starts the theorem-fed route from CMP116 pre-Lemma-3
+summands to that activity estimate interface.
 
-Honest scope: this file does not prove the analytic CMP116 resummation from
-the paper's constants.  It proves the final norm step from explicitly supplied
-termwise summand bounds and an explicitly supplied summed-weight budget.  The
-source extraction still has to derive those inputs from CMP116 equations
-(2.27), (2.29)--(2.32), (2.34), (2.36), and (2.37).
+Honest scope: this file does not prove the analytic CMP116 resummation from the
+paper's constants, construct the localized activities, prove support or
+measurability properties, identify a Wilson Hessian, construct a covariance or
+covariance root, prove a Gaussian pushforward, or reconstruct a covariance root
+from finite local pieces.  The finite resummation bridge below proves only the
+final norm step from explicitly supplied termwise summand bounds and an
+explicitly supplied summed-weight budget.
 -/
 
 namespace YangMills.RG
 
 open scoped BigOperators RealInnerProductSpace
+
+/-- The exponential weight appearing in CMP116 Lemma 3 / equation (2.38).
+
+`dNext` represents the source metric `d_{k+1}`.  No identification with the
+repository's shifted modified metric is made here. -/
+noncomputable def cmp116Lemma3Weight
+    {ι : Type*}
+    (dNext : ι → ℝ)
+    (δ blockScale κ : ℝ)
+    (Z : ι) : ℝ :=
+  Real.exp
+    (-((1 - 8 * δ) * (1 / 2 : ℝ) *
+      blockScale * κ * dNext Z))
+
+/-- The CMP116 Lemma 3 source weight is nonnegative. -/
+theorem cmp116Lemma3Weight_nonneg
+    {ι : Type*}
+    (dNext : ι → ℝ)
+    (δ blockScale κ : ℝ)
+    (Z : ι) :
+    0 ≤ cmp116Lemma3Weight dNext δ blockScale κ Z :=
+  Real.exp_nonneg _
+
+/-- Source-facing conclusion of CMP116 Lemma 3 / equation (2.38).
+
+The intended index type contains only the admissible source domains
+`Z ∈ D_{k+1}`.  If the eventual physical activity is indexed by a larger type,
+that admissibility restriction must be transported explicitly rather than
+silently strengthening Lemma 3. -/
+def CMP116Lemma3ActivityEstimate
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    (physicalActivity :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc)
+    (dNext : ι → ℝ)
+    (C3 epsilon1 delta blockScale kappa : ℝ) : Prop :=
+  ∀ Z (ψ φ : PhysicalGaugeField dPhys N Nc),
+    ‖(physicalActivity Z).globalEval ψ φ‖ ≤
+      (C3 * epsilon1) *
+        cmp116Lemma3Weight dNext delta blockScale kappa Z
+
+/-- Expose CMP116 Lemma 3 in the stable raw-activity predicate already
+consumed by the physical/CMP116 construction layer. -/
+theorem balabanLemma3_rawActivityDecay
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {physicalActivity :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {dNext : ι → ℝ}
+    {C3 epsilon1 delta blockScale kappa : ℝ}
+    (hLemma3 :
+      CMP116Lemma3ActivityEstimate
+        physicalActivity dNext C3 epsilon1 delta blockScale kappa) :
+    PhysicalGaugeRawActivityDecay physicalActivity
+      (cmp116Lemma3Weight dNext delta blockScale kappa)
+      (C3 * epsilon1) := by
+  simpa [PhysicalGaugeRawActivityDecay,
+    CMP116Lemma3ActivityEstimate] using hLemma3
+
+/-- The natural-metric rate used by earlier source-facing compatibility
+wrappers.  The real-valued `cmp116Lemma3Weight` above is the canonical Lemma 3
+interface. -/
+noncomputable def balabanCMP116Lemma3DecayRate
+    (blockScale : ℕ) (delta kappaSource : ℝ) : ℝ :=
+  (1 - 8 * delta) * ((1 : ℝ) / 2) *
+    (blockScale : ℝ) * kappaSource
+
+/-- Compatibility wrapper for the earlier natural-valued source metric. -/
+noncomputable def balabanCMP116Lemma3Weight
+    {ι : Type*}
+    (blockScale : ℕ)
+    (delta kappaSource : ℝ)
+    (sourceMetric : ι → ℕ)
+    (X : ι) : ℝ :=
+  cmp116Lemma3Weight
+    (fun Y => (sourceMetric Y : ℝ))
+    delta (blockScale : ℝ) kappaSource X
+
+/-- The natural-metric compatibility weight is nonnegative. -/
+theorem balabanCMP116Lemma3Weight_nonneg
+    {ι : Type*}
+    (blockScale : ℕ)
+    (delta kappaSource : ℝ)
+    (sourceMetric : ι → ℕ)
+    (X : ι) :
+    0 ≤
+      balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric X :=
+  cmp116Lemma3Weight_nonneg
+    (fun Y => (sourceMetric Y : ℝ))
+    delta (blockScale : ℝ) kappaSource X
 
 /-- Primitive CMP116 Lemma 3 parameters before the exact source hierarchy is
 formalized.
@@ -91,7 +185,7 @@ theorem norm_balabanCMP116H_le_lemma3
     [DecidableEq ιZ0] [DecidableEq ιZ0']
     (hp : CMP116Lemma3Parameters)
     (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
-    (sourceMetric : σ → ℕ)
+    (dNext : σ → ℝ)
     (hterm :
       ∀ Z x, x ∈ cmp116HIndexFinset R Z →
         ∀ ψ φ,
@@ -102,13 +196,13 @@ theorem norm_balabanCMP116H_le_lemma3
         Finset.sum (cmp116HIndexFinset R Z)
           (fun x => R.termWeight Z x.1.1 x.1.2 x.2.1 x.2.2) ≤
           (hp.C3 * hp.epsilon1) *
-            balabanCMP116Lemma3Weight
-              hp.blockScale hp.delta hp.kappa sourceMetric Z) :
+            cmp116Lemma3Weight
+              dNext hp.delta (hp.blockScale : ℝ) hp.kappa Z) :
     ∀ Z ψ φ,
       ‖balabanCMP116H R Z ψ φ‖ ≤
         (hp.C3 * hp.epsilon1) *
-          balabanCMP116Lemma3Weight
-            hp.blockScale hp.delta hp.kappa sourceMetric Z := by
+          cmp116Lemma3Weight
+            dNext hp.delta (hp.blockScale : ℝ) hp.kappa Z := by
   intro Z ψ φ
   unfold balabanCMP116H
   calc
@@ -123,8 +217,8 @@ theorem norm_balabanCMP116H_le_lemma3
       Finset.sum_le_sum (fun x hx => hterm Z x hx ψ φ)
     _ ≤
         (hp.C3 * hp.epsilon1) *
-          balabanCMP116Lemma3Weight
-            hp.blockScale hp.delta hp.kappa sourceMetric Z :=
+          cmp116Lemma3Weight
+            dNext hp.delta (hp.blockScale : ℝ) hp.kappa Z :=
       hbudget Z
 
 /-- A source identification of the resummed `H(Z)` with a physical local
@@ -140,7 +234,7 @@ theorem cmp116Lemma3ActivityEstimate_of_resummation
       CMP116HResummation σ ιD ιP ιZ0 ιZ0'
         (PhysicalGaugeField dPhys N Nc)
         (PhysicalGaugeField dPhys N Nc))
-    (sourceMetric : σ → ℕ)
+    (dNext : σ → ℝ)
     (physicalActivity : σ → PhysicalGaugeLocalActivity dPhys N Nc)
     (hglobal :
       ∀ Z ψ φ,
@@ -156,23 +250,21 @@ theorem cmp116Lemma3ActivityEstimate_of_resummation
         Finset.sum (cmp116HIndexFinset R Z)
           (fun x => R.termWeight Z x.1.1 x.1.2 x.2.1 x.2.2) ≤
           (hp.C3 * hp.epsilon1) *
-            balabanCMP116Lemma3Weight
-              hp.blockScale hp.delta hp.kappa sourceMetric Z) :
+            cmp116Lemma3Weight
+              dNext hp.delta (hp.blockScale : ℝ) hp.kappa Z) :
     CMP116Lemma3ActivityEstimate
-      physicalActivity sourceMetric hp.blockScale
-      hp.C3 hp.epsilon1 hp.delta hp.kappa where
-  amplitude_nonneg := hp.amplitude_nonneg
-  pointwise_decay := by
-    intro Z ψ φ
-    calc
-      ‖(physicalActivity Z).globalEval ψ φ‖ =
-          ‖balabanCMP116H R Z ψ φ‖ := by
-        rw [hglobal Z ψ φ]
-      _ ≤
-          (hp.C3 * hp.epsilon1) *
-            balabanCMP116Lemma3Weight
-              hp.blockScale hp.delta hp.kappa sourceMetric Z :=
-        norm_balabanCMP116H_le_lemma3 hp R sourceMetric
-          hterm hbudget Z ψ φ
+      physicalActivity dNext
+      hp.C3 hp.epsilon1 hp.delta (hp.blockScale : ℝ) hp.kappa := by
+  intro Z ψ φ
+  calc
+    ‖(physicalActivity Z).globalEval ψ φ‖ =
+        ‖balabanCMP116H R Z ψ φ‖ := by
+      rw [hglobal Z ψ φ]
+    _ ≤
+        (hp.C3 * hp.epsilon1) *
+          cmp116Lemma3Weight
+            dNext hp.delta (hp.blockScale : ℝ) hp.kappa Z :=
+      norm_balabanCMP116H_le_lemma3 hp R dNext
+        hterm hbudget Z ψ φ
 
 end YangMills.RG

@@ -1348,6 +1348,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #check YangMills.RG.BalabanCMP116SourceAssumptions.rawSource
 #print axioms YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity_rawSource
 #check YangMills.RG.BalabanCMP116SourceTheorem
+#print axioms YangMills.RG.cmp116Lemma3Weight
+#print axioms YangMills.RG.cmp116Lemma3Weight_nonneg
 #print axioms YangMills.RG.balabanCMP116Lemma3DecayRate
 #print axioms YangMills.RG.balabanCMP116Lemma3Weight
 #print axioms YangMills.RG.CMP116Lemma3ActivityEstimate

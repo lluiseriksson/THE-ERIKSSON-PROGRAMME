@@ -13082,3 +13082,60 @@ not freeze the exact source definition of `C3`, and does not identify
 Balaban's `H(Z)` with a constructed physical activity.  It is the finite
 resummation/norm bridge that the future exact source-constant extraction must
 feed.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 333 (2026-06-24, **CMP116 Lemma 3 real-distance conclusion interface**
+`YangMills.RG.BalabanCMP116Lemma3`; core 8355)
+
+This addendum normalizes the Lemma 3 conclusion interface onto the source
+metric shape requested for CMP116 equation (2.38):
+
+```
+cmp116Lemma3Weight
+cmp116Lemma3Weight_nonneg
+CMP116Lemma3ActivityEstimate
+balabanLemma3_rawActivityDecay
+```
+
+`CMP116Lemma3ActivityEstimate` is now the real-distance proposition
+
+```
+∀ Z ψ φ,
+  ‖(physicalActivity Z).globalEval ψ φ‖ ≤
+    (C3 * epsilon1) *
+      cmp116Lemma3Weight dNext delta blockScale kappa Z
+```
+
+where `dNext : ι → ℝ` represents Balaban's `d_{k+1}`.  The older
+natural-valued source metric interface remains as compatibility wrappers
+`balabanCMP116Lemma3DecayRate`, `balabanCMP116Lemma3Weight`, and
+`balabanCMP116Lemma3Weight_nonneg`, because
+`balabanCMP116Lemma3Weight_domination` still compares that native source metric
+against the repository's shifted Appendix-F modified metric.
+
+The resummation bridge now targets the real-distance interface directly:
+`norm_balabanCMP116H_le_lemma3` takes a real `dNext`, and
+`cmp116Lemma3ActivityEstimate_of_resummation` returns the real-distance
+`CMP116Lemma3ActivityEstimate`.  The raw-source helper
+`PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimate`
+also consumes the real-distance estimate and packages it through
+`balabanLemma3_rawActivityDecay`.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3.lean
+lake build YangMills.RG.BalabanCMP116Lemma3
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> runtime\oracle-cmp116-lemma3-real-interface.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3.lean YangMills\RG\BalabanCMP116SourceTheorem.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+**Honest scope.** This checkpoint still does not prove CMP116 Lemma 3 from
+Balaban's source constants, does not construct or identify `H(Z)`, does not
+prove the metric comparison from `d_{k+1}` to `discreteModifiedMetric + 1`, and
+does not prove Gaussian pushforward, Wilson-Hessian identification,
+covariance-root localization, or finite/infinite covariance-root
+reconstruction.  Clay distance **~0% (<0.1%), unchanged**.

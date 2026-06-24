@@ -1071,6 +1071,14 @@ pre-Lemma source summation families, `balabanCMP116H` is their finite sum, and
 summand estimates plus a pre-Lemma summed-weight budget.  The module still
 does not derive those termwise/summed-weight inputs from CMP116 constants;
 that extraction remains the active source task.
+The canonical Lemma 3 conclusion interface is now the real-distance version
+requested by the source audit: `cmp116Lemma3Weight dNext delta blockScale kappa`
+and `CMP116Lemma3ActivityEstimate physicalActivity dNext C3 epsilon1 delta
+blockScale kappa`.  The earlier natural-valued `sourceMetric : ι → ℕ` weight
+remains only as the compatibility wrapper `balabanCMP116Lemma3Weight`, used by
+the existing Appendix-F metric-domination theorem.  The raw-decay adapter
+`balabanLemma3_rawActivityDecay` now consumes the real-distance estimate
+directly.
 
 ## Live Frontier
 
