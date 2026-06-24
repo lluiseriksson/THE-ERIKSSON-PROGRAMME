@@ -14271,3 +14271,40 @@ admissibility theorem, no outside-domain vanishing theorem, no source metric
 comparison, no Eq. (2.29), no P-stage budget, no combined post-`P` residual
 bound, no activity identification, no termwise estimate, and no CMP116 Lemma
 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 359 (2026-06-24, **CMP116 post-P source majorization scale family**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8362)
+
+This checkpoint names the per-scale source-side majorization needed by the
+combined post-`P` residual adapter and lifts the already verified single-scale
+consumer over `(t, k)`:
+
+```
+CMP116PostPResidualSourceMajorizationScaleFamily
+cmp116PostPResidualBoundScaleFamily_of_sourceBound
+```
+
+The predicate compares the source amplitude/source weight product with the
+canonical CMP116 Lemma-3 base factor at each scale.  The adapter applies
+`cmp116PostPResidualBound_of_sourceBound` pointwise, using a supplied
+`CMP116PostPResidualSourceBound`, the scale-family majorization, and explicit
+nonnegativity of the `P` weight.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-postp-source-majorization-scale-family.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is scale-family bookkeeping only.  It proves no
+combined post-`P` source estimate, no majorization from CMP116 printed
+constants, no Eq. (2.29), no P-stage budget, no physical activity
+identification, no termwise estimate, no admissibility or outside-domain
+vanishing theorem, no source-to-Appendix-F metric comparison, and no CMP116
+Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.

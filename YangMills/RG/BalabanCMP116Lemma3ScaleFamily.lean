@@ -786,6 +786,88 @@ theorem cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStagePostPResidualBoun
       (hglobal t k)
       (hterm t k)
 
+/-- Pointwise scale-family majorization of the source-shaped post-`P`
+amplitude/weight by the canonical CMP116 Lemma-3 base factor.
+
+This predicate proves no source majorization.  It names the exact source-side
+obligation consumed by the post-`P` residual adapter at every scale. -/
+def CMP116PostPResidualSourceMajorizationScaleFamily
+    {σ : ℕ → ℕ → Type*}
+    (sourceMetric : ∀ t k, σ t k → ℕ)
+    (blockScale : ℕ → ℕ → ℕ)
+    (C3 epsilon1 delta kappaSource : ℕ → ℕ → ℝ)
+    (postPSourceWeight : ∀ t k, σ t k → ℝ)
+    (postPAmplitude : ℕ → ℕ → ℝ) : Prop :=
+  ∀ t k Z,
+    postPAmplitude t k * postPSourceWeight t k Z ≤
+      (C3 t k * epsilon1 t k) *
+        balabanCMP116Lemma3Weight
+          (blockScale t k)
+          (delta t k)
+          (kappaSource t k)
+          (sourceMetric t k)
+          Z
+
+/-- A scale family of source-shaped combined post-`P` estimates feeds the
+canonical post-`P` residual consumer once the source amplitude/weight is
+majorized pointwise and the `P` weight is nonnegative.
+
+This is only the scale-family lift of
+`cmp116PostPResidualBound_of_sourceBound`. -/
+theorem cmp116PostPResidualBoundScaleFamily_of_sourceBound
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    {Ψ Φ : Type*}
+    (hp : ∀ _ _, CMP116Lemma3Parameters)
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          Ψ Φ)
+    (sourceMetric : ∀ t k, σ t k → ℕ)
+    (postPSourceWeight : ∀ t k, σ t k → ℝ)
+    (postPAmplitude : ℕ → ℕ → ℝ)
+    (pWeight :
+      ∀ t k, σ t k → ιD t k → ιP t k → ℝ)
+    (hsource :
+      ∀ t k,
+        CMP116PostPResidualSourceBound
+          (R t k)
+          (postPSourceWeight t k)
+          (postPAmplitude t k)
+          (pWeight t k))
+    (hmajorization :
+      CMP116PostPResidualSourceMajorizationScaleFamily
+        sourceMetric
+        (fun t k => (hp t k).blockScale)
+        (fun t k => (hp t k).C3)
+        (fun t k => (hp t k).epsilon1)
+        (fun t k => (hp t k).delta)
+        (fun t k => (hp t k).kappa)
+        postPSourceWeight
+        postPAmplitude)
+    (hpWeight_nonneg :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          0 ≤ pWeight t k Z D P) :
+    ∀ t k,
+      CMP116PostPResidualBound
+        (hp t k)
+        (R t k)
+        (sourceMetric t k)
+        (pWeight t k) := by
+  intro t k
+  exact
+    cmp116PostPResidualBound_of_sourceBound
+      (hp t k)
+      (R t k)
+      (sourceMetric t k)
+      (postPSourceWeight t k)
+      (postPAmplitude t k)
+      (pWeight t k)
+      (hsource t k)
+      (hmajorization t k)
+      (hpWeight_nonneg t k)
+
 /-- Source-boundary package for the CMP116 Lemma-3 scale route that keeps the
 final `Z0/Z0'` resummation as one combined post-`P` residual estimate.
 

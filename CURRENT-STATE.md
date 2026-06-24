@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 356.
+Addendum 359.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1589,6 +1589,8 @@ The CMP116 Lemma-3 residual route now also has a combined post-`P` residual
 budget interface:
 `CMP116PostPResidualSourceBound`,
 `cmp116PostPResidualBound_of_sourceBound`,
+`CMP116PostPResidualSourceMajorizationScaleFamily`,
+`cmp116PostPResidualBoundScaleFamily_of_sourceBound`,
 `CMP116PostPResidualBound`,
 `cmp116H_postD_sum_le_of_pStagePostPResidualBound`,
 `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`,
@@ -1599,10 +1601,13 @@ controls the final `Z0/Z0'` resummations in a combined/order-sensitive way, so
 the repository must not pretend that the normalized `Z0'` predicate has been
 separately source-identified.  The source-bound adapter keeps the printed
 source amplitude/weight separate from the canonical Lemma-3 base factor and
-requires an explicit majorization theorem.  The new route is still conditional;
-it does not prove Eq. (2.29), the P-stage budget, activity identification,
-termwise estimates, the majorization, or the combined post-`P` source
-estimate.
+requires an explicit majorization theorem.  The scale-family majorization
+predicate now names this base-factor comparison at every `(t, k)`, and the
+scale-family adapter applies the existing single-scale post-`P` residual
+consumer pointwise when the source bound and `P`-weight nonnegativity are
+supplied.  The new route is still conditional; it does not prove Eq. (2.29),
+the P-stage budget, activity identification, termwise estimates, the
+majorization, or the combined post-`P` source estimate.
 
 ## What Is Not Claimed
 

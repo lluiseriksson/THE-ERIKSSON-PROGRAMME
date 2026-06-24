@@ -755,7 +755,13 @@ combined estimate with its own amplitude and source weight; the adapter to
 `CMP116PostPResidualBound` additionally requires an explicit majorization by
 the canonical CMP116 Lemma-3 base factor.  It does not claim that the printed
 equations literally contain that repository predicate or discharge the
-majorization.
+majorization.  The per-scale predicate
+`CMP116PostPResidualSourceMajorizationScaleFamily` now names this base-factor
+majorization across `(t, k)`, and
+`cmp116PostPResidualBoundScaleFamily_of_sourceBound` applies the already
+verified single-scale adapter pointwise.  This still proves no CMP116 pages
+19--20 constant hierarchy, no combined source estimate, and no majorization
+from printed `O(1)` constants.
 The scale source-boundary package
 `CMP116Lemma3PostPScaleSourceAssumptions` records the same route at the
 per-scale call site.  Its projection
