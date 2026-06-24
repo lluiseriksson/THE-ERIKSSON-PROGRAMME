@@ -13655,3 +13655,39 @@ source-identify the residual stage estimates, pointwise factorization, Eq.
 (2.29), termwise complex-valued estimates, activity identification, source
 metric comparison, Gaussian/root/Hessian/activity source facts, or CMP116 Lemma
 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 344 (2026-06-24, **CMP116 P-stage post-D budget helper**
+`YangMills.RG.BalabanCMP116Eq229`; core 8361)
+
+This checkpoint adds the smallest requested P-stage decomposition helper:
+
+```
+CMP116PStageSummability
+cmp116H_postDSum_le_of_pStage
+```
+
+`CMP116PStageSummability` is budget-valued, so callers can instantiate the
+fixed-`D` P-sum budget with the Eq. (2.29) product without introducing a
+nonnegativity premise for `alpha6` or for `pWeight`.  The theorem
+`cmp116H_postDSum_le_of_pStage` combines that explicit P-stage budget with a
+fixed-`P` nested `Z0/Z0'` residual estimate and recovers the old post-`D`
+`hpostD` shape consumed by `cmp116H_termWeightSum_le_of_eq229` and the existing
+activity consumers.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq229.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-p-stage-budget.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Eq229.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This proves only finite summation bookkeeping:
+`hPStage + hpostP => hpostD`.  It does not prove Eq. (2.30), identify the
+P-stage source family, prove the `Z0/Z0'` residual estimates, prove Eq. (2.29),
+termwise complex-valued estimates, activity identification, source metric
+comparison, Gaussian/root/Hessian/activity source facts, or CMP116 Lemma 3.
+Clay distance **~0% (<0.1%), unchanged**.

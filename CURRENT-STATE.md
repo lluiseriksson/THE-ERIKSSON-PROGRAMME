@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 342.
+Addendum 344.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1082,7 +1082,13 @@ summability shape
 nonnegative base factor times the (2.29) product, then the D-sum is bounded by
 that base factor.  This is only the first-stage finite resummation consumer; it
 does not prove the small-`α₆`/large-`K` source assertion or any final Lemma 3
-residual post-D budget.  The same file now also proves
+residual post-D budget.  It now also proves
+`CMP116PStageSummability`, a budget-valued fixed-`(Z,D)` P-stage predicate,
+and `cmp116H_postDSum_le_of_pStage`, which combines that P-stage budget with
+an explicit fixed-`P` nested `Z0/Z0'` residual estimate to recover the old
+post-D `hpostD` inequality.  This helper does not identify the P-stage budget
+with equation (2.30) or prove the remaining `Z0/Z0'` residual estimates.
+The same file also proves
 `cmp116H_termWeightSum_eq_nested`, the finite equality between the flattened
 `cmp116HIndexFinset` term-weight sum and the nested
 `D → P → Z0 → Z0'` sum, and `cmp116H_termWeightSum_le_of_eq229`, which uses

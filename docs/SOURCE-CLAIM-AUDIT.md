@@ -661,6 +661,13 @@ composition pointwise in `(t, k)`.  Its named `postDBase` equality is
 bookkeeping for the Eq. (2.29) product-weight base, not evidence for any
 residual source estimate.
 
+`YangMills.RG.BalabanCMP116Eq229` also exposes the smaller budget-valued
+predicate `CMP116PStageSummability` and the helper
+`cmp116H_postDSum_le_of_pStage`.  This only proves that an explicit P-stage
+budget plus a fixed-P nested `Z0/Z0'` residual estimate recovers the old
+post-D `hpostD` bound.  It is not named after Eq. (2.30), and this audit does
+not claim that Eq. (2.30) alone proves the predicate.
+
 ## Agent Checklist
 
 Before adding a source-facing Lean theorem:

@@ -112,6 +112,105 @@ theorem cmp116_DStage_sum_le_of_eq229
       exact mul_le_mul_of_nonneg_left (hEq229 Y0) (hbase_nonneg Y0 t)
     _ = base Y0 t := by ring
 
+/-- A finite post-D `P`-stage summability predicate.
+
+The budget is explicit.  In the CMP116 Lemma-3 route it will be instantiated
+with the fixed-D product appearing in equation (2.29).
+
+This declaration does not assert that a particular CMP116 equation proves the
+predicate. -/
+def CMP116PStageSummability
+    {σ ιD ιP : Type*}
+    (DIndex : σ → Finset ιD)
+    (PIndex : σ → ιD → Finset ιP)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (budget : σ → ιD → ℝ) : Prop :=
+  ∀ Z D, D ∈ DIndex Z →
+    Finset.sum (PIndex Z D) (fun P => pWeight Z D P) ≤
+      budget Z D
+
+/-- The `P`-stage summability budget converts fixed-P residual
+`Z0 -> Z0'` estimates into the complete post-D bound.
+
+This is finite summation bookkeeping only.  It does not prove the P-stage
+summability predicate or either residual localization estimate. -/
+theorem cmp116H_postDSum_le_of_pStage
+    {σ ιD ιP ιZ0 ιZ0' ιY Ψ Φ : Type*}
+    (hp : CMP116Lemma3Parameters)
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (sourceMetric : σ → ℕ)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 : ℝ)
+    (eq229Metric : σ → ιY → ℕ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (hPStage :
+      CMP116PStageSummability
+        R.DIndex R.PIndex pWeight
+        (fun Z D =>
+          Finset.prod (DParts Z D)
+            (cmp116Eq229Weight
+              alpha6 hp.delta hp.kappa (eq229Metric Z))))
+    (hpostP :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+            Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+              R.termWeight Z D P Z0 Z0')) ≤
+            ((hp.C3 * hp.epsilon1) *
+              balabanCMP116Lemma3Weight
+                hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+              pWeight Z D P) :
+    ∀ Z D, D ∈ R.DIndex Z →
+      Finset.sum (R.PIndex Z D) (fun P =>
+        Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+          Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+            R.termWeight Z D P Z0 Z0'))) ≤
+        ((hp.C3 * hp.epsilon1) *
+          balabanCMP116Lemma3Weight
+            hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+          Finset.prod (DParts Z D)
+            (cmp116Eq229Weight
+              alpha6 hp.delta hp.kappa (eq229Metric Z)) := by
+  intro Z D hD
+  let A : ℝ :=
+    (hp.C3 * hp.epsilon1) *
+      balabanCMP116Lemma3Weight
+        hp.blockScale hp.delta hp.kappa sourceMetric Z
+  have hA_nonneg : 0 ≤ A := by
+    exact
+      mul_nonneg hp.amplitude_nonneg
+        (balabanCMP116Lemma3Weight_nonneg
+          hp.blockScale hp.delta hp.kappa sourceMetric Z)
+  calc
+    Finset.sum (R.PIndex Z D) (fun P =>
+        Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+          Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+            R.termWeight Z D P Z0 Z0')))
+        ≤
+      Finset.sum (R.PIndex Z D)
+        (fun P => A * pWeight Z D P) := by
+          exact Finset.sum_le_sum (fun P hP => by
+            simpa [A] using hpostP Z D hD P hP)
+    _ =
+      A * Finset.sum (R.PIndex Z D)
+        (fun P => pWeight Z D P) := by
+          simp [Finset.mul_sum]
+    _ ≤
+      A * Finset.prod (DParts Z D)
+        (cmp116Eq229Weight
+          alpha6 hp.delta hp.kappa (eq229Metric Z)) := by
+          exact
+            mul_le_mul_of_nonneg_left
+              (hPStage Z D hD) hA_nonneg
+    _ =
+      ((hp.C3 * hp.epsilon1) *
+        balabanCMP116Lemma3Weight
+          hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+        Finset.prod (DParts Z D)
+          (cmp116Eq229Weight
+            alpha6 hp.delta hp.kappa (eq229Metric Z)) := by
+          rfl
+
 /-- The flattened CMP116 Lemma-3 index set has the same term-weight sum as the
 source-shaped nested `D -> P -> Z0 -> Z0'` sum. -/
 theorem cmp116H_termWeightSum_eq_nested
