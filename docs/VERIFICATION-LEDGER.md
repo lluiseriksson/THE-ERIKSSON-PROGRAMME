@@ -14081,7 +14081,7 @@ lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
 lake build YangMills.RG.BalabanCMP116Lemma3ScaleFamily
 lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
 lake build YangMillsCore
-lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-postp-combined-residual.log
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-postp-combined-residual-final.log
 git diff --check
 git diff --cached --check
 python scripts\check_consistency.py
