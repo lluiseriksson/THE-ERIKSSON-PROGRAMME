@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 318.
+Addendum 319.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1143,6 +1143,10 @@ The localized-map API now exposes exact underlying-map identities for
 `CMP116LocalizedLinearMap.add`, `.finsetSum`, `.comp`, and `.ofProjection`.
 These are mechanical simp bridges for later finite truncation assembly; they
 do not add any decay, finite-range, or source estimate.
+It also exposes named support consequences for those constructors:
+agreement on the declared input region and pointwise zero output outside the
+declared output region.  These are exact support-algebra consumers for finite
+localized-root assembly, not new localization or decay theorems.
 The dictionary-backed construction layer now has
 `PhysicalRootToCMP116OperatorTransport.localizedRootLinearMap_ofDictionary`,
 which turns an explicit physical root kernel bound, a dictionary kernel-bound

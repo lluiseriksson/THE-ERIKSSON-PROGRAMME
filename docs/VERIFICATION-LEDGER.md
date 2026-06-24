@@ -12458,3 +12458,45 @@ was built from any particular source theorem, construct the covariance root,
 prove Gaussian pushforward, prove root localization/truncation, identify a
 Wilson Hessian, construct local activities, or prove raw activity decay.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 319 (2026-06-24, **localized-map support consequences**
+`YangMills.RG.LocalLinearOperator`; core 8355)
+
+This addendum adds named support consequences for the localized CMP116
+linear-map constructors:
+
+```
+CMP116LocalizedLinearMap.add_eq_of_agreeOn
+CMP116LocalizedLinearMap.add_apply_eq_zero_outside
+CMP116LocalizedLinearMap.finsetSum_eq_of_agreeOn
+CMP116LocalizedLinearMap.finsetSum_apply_eq_zero_outside
+CMP116LocalizedLinearMap.comp_eq_of_agreeOn
+CMP116LocalizedLinearMap.comp_apply_eq_zero_outside
+CMP116LocalizedLinearMap.ofProjection_eq_of_agreeOn
+CMP116LocalizedLinearMap.ofProjection_apply_eq_zero_outside
+```
+
+These lemmas turn the already bundled `OperatorSupportedBetween` proof into the
+two consequences later finite localized-root assembly uses directly:
+agreement on the declared input region, and coordinatewise zero output outside
+the declared output region.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\LocalLinearOperator.lean
+lake build YangMills.RG.LocalLinearOperator
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\LocalLinearOperator.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is exact projection/support algebra for finite CMP116
+coordinate fields.  It does not construct a covariance root, prove finite-range
+or exponential-decay estimates, prove Gaussian pushforward, construct local
+activities, or prove raw activity decay.  Clay distance **~0% (<0.1%),
+unchanged**.

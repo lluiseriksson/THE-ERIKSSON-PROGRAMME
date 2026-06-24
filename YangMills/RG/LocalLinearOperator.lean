@@ -548,6 +548,23 @@ noncomputable def add
       T.toContinuousLinearMap + U.toContinuousLinearMap :=
   rfl
 
+/-- Addition preserves the declared input-agreement consequence. -/
+theorem add_eq_of_agreeOn
+    (T U : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xout)
+    {ξ η : CMP116FluctuationField d L lieDim}
+    (hξη : AgreeOn Xin ξ η) :
+    (T.add U).toContinuousLinearMap ξ =
+      (T.add U).toContinuousLinearMap η :=
+  (T.add U).eq_of_agreeOn hξη
+
+/-- Addition preserves the declared output-zero consequence. -/
+theorem add_apply_eq_zero_outside
+    (T U : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xout)
+    (ξ : CMP116FluctuationField d L lieDim)
+    {q : Cube d L} (hq : q ∉ Xout) (a : Fin lieDim) :
+    (T.add U).toContinuousLinearMap ξ q a = 0 :=
+  (T.add U).apply_eq_zero_outside ξ hq a
+
 noncomputable def finsetSum
     {ι : Type*} [DecidableEq ι]
     (I : Finset ι)
@@ -571,6 +588,29 @@ noncomputable def finsetSum
       I.sum fun i => (T i).toContinuousLinearMap :=
   rfl
 
+/-- Finite sums preserve the declared input-agreement consequence. -/
+theorem finsetSum_eq_of_agreeOn
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (T : ι → CMP116LocalizedLinearMap
+      (lieDim := lieDim) Xin Xout)
+    {ξ η : CMP116FluctuationField d L lieDim}
+    (hξη : AgreeOn Xin ξ η) :
+    (finsetSum I T).toContinuousLinearMap ξ =
+      (finsetSum I T).toContinuousLinearMap η :=
+  (finsetSum I T).eq_of_agreeOn hξη
+
+/-- Finite sums preserve the declared output-zero consequence. -/
+theorem finsetSum_apply_eq_zero_outside
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (T : ι → CMP116LocalizedLinearMap
+      (lieDim := lieDim) Xin Xout)
+    (ξ : CMP116FluctuationField d L lieDim)
+    {q : Cube d L} (hq : q ∉ Xout) (a : Fin lieDim) :
+    (finsetSum I T).toContinuousLinearMap ξ q a = 0 :=
+  (finsetSum I T).apply_eq_zero_outside ξ hq a
+
 noncomputable def comp
     (U : CMP116LocalizedLinearMap (lieDim := lieDim) Xmid Xout)
     (T : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xmid) :
@@ -587,6 +627,25 @@ noncomputable def comp
     (U.comp T).toContinuousLinearMap =
       U.toContinuousLinearMap.comp T.toContinuousLinearMap :=
   rfl
+
+/-- Composition preserves the declared input-agreement consequence. -/
+theorem comp_eq_of_agreeOn
+    (U : CMP116LocalizedLinearMap (lieDim := lieDim) Xmid Xout)
+    (T : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xmid)
+    {ξ η : CMP116FluctuationField d L lieDim}
+    (hξη : AgreeOn Xin ξ η) :
+    (U.comp T).toContinuousLinearMap ξ =
+      (U.comp T).toContinuousLinearMap η :=
+  (U.comp T).eq_of_agreeOn hξη
+
+/-- Composition preserves the declared output-zero consequence. -/
+theorem comp_apply_eq_zero_outside
+    (U : CMP116LocalizedLinearMap (lieDim := lieDim) Xmid Xout)
+    (T : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xmid)
+    (ξ : CMP116FluctuationField d L lieDim)
+    {q : Cube d L} (hq : q ∉ Xout) (a : Fin lieDim) :
+    (U.comp T).toContinuousLinearMap ξ q a = 0 :=
+  (U.comp T).apply_eq_zero_outside ξ hq a
 
 /-- Exact localization by input/output projection, with no decay claim. -/
 noncomputable def ofProjection
@@ -615,6 +674,30 @@ noncomputable def ofProjection
       (cmp116FieldProjection Xout).comp
         (T.comp (cmp116FieldProjection Xin)) :=
   rfl
+
+/-- Projected localization exposes the declared input-agreement consequence. -/
+theorem ofProjection_eq_of_agreeOn
+    (Xin Xout : Finset (Cube d L))
+    (T :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        CMP116FluctuationField d L lieDim)
+    {ξ η : CMP116FluctuationField d L lieDim}
+    (hξη : AgreeOn Xin ξ η) :
+    (ofProjection (lieDim := lieDim) Xin Xout T).toContinuousLinearMap ξ =
+      (ofProjection (lieDim := lieDim) Xin Xout T).toContinuousLinearMap η :=
+  (ofProjection (lieDim := lieDim) Xin Xout T).eq_of_agreeOn hξη
+
+/-- Projected localization exposes the declared output-zero consequence. -/
+theorem ofProjection_apply_eq_zero_outside
+    (Xin Xout : Finset (Cube d L))
+    (T :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        CMP116FluctuationField d L lieDim)
+    (ξ : CMP116FluctuationField d L lieDim)
+    {q : Cube d L} (hq : q ∉ Xout) (a : Fin lieDim) :
+    (ofProjection (lieDim := lieDim) Xin Xout T).toContinuousLinearMap ξ q a =
+      0 :=
+  (ofProjection (lieDim := lieDim) Xin Xout T).apply_eq_zero_outside ξ hq a
 
 end CMP116LocalizedLinearMap
 
