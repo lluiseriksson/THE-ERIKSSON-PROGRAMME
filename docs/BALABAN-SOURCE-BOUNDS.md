@@ -87,6 +87,15 @@ Visually confirmed source anchors already located:
   `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.
   This is an activity-decay anchor for the localized fluctuation-integral
   expansion, not yet the full Lean support theorem.
+* CMP 116 (1988), PDF page 21, eqs. (2.39)--(2.41): Lemma 3's `H(Z)` bound is
+  inserted into the exponentiated polymer series and converted into the
+  effective-action estimate
+  `|E^(k+1)(X)| <= O(1) C_3 eps_1 exp(-(1 - 10 delta)^(1/2) L kappa d_{k+1}(X))`.
+  The text then fixes `(1 - 10 delta)^(1/2) L = 1`, assumes
+  `O(1) C_3 eps_1 <= E_0/2`, and treats the extra `log Z` normalization term by
+  a separate generalized random-walk expansion.  This is the source anchor for
+  the post-Lemma-3 effective-action consumer; see `docs/SOURCE-CLAIM-AUDIT.md`
+  row B5d.
 * CMP 119 (1988), PDF page 18 / printed page 260, eq. (2.31): localized
   `R`-terms satisfy
   `|R^(j)(X,(U,J))| <= g_j^kappa_0 exp(-kappa d_j(X))`, with

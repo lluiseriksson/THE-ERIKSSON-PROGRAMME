@@ -12856,3 +12856,48 @@ not prove a Lean theorem, does not discharge `hrootPieces`, and does not prove
 activity decay in Lean.  It prevents a materially false implementation choice:
 treating CMP116 pages 15--20 as if they supplied exact finite root
 reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 329 (2026-06-24, **CMP116 post-Lemma-3 effective-action bridge**
+`docs/SOURCE-CLAIM-AUDIT.md`; core 8355)
+
+This documentation/source-audit checkpoint records CMP116 PDF/printed page 21,
+equations (2.39)--(2.41), as the bridge from Lemma 3's localized `H(Z)` bound
+to the effective-action estimate.
+
+New audit row:
+
+```
+B5d - CMP 116: Post-Lemma-3 Effective-Action Bound
+```
+
+The row records that (2.39) inserts products of Lemma 3 factors into the
+exponentiated polymer series, (2.40) invokes standard polymer-series bounds
+for large `kappa` and small `epsilon_1`, and (2.41) yields the effective-action
+estimate
+
+```
+|E^(k+1)(X)| <= O(1) C_3 epsilon_1
+  * exp (-(1 - 10 delta)^(1/2) L kappa d_{k+1}(X)).
+```
+
+The following paragraphs fix `(1 - 10 delta)^(1/2) L = 1`, assume
+`O(1) C_3 epsilon_1 <= E_0/2`, and handle the extra
+`[log Z^(k)(U_{k+1}) - log Z^(k)(1)]` normalization term by a separate
+generalized random-walk expansion with `kappa` replaced by `delta_0 M`.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\BALABAN-SOURCE-BOUNDS.md docs\VERIFICATION-LEDGER.md
+```
+
+**Honest scope.** This checkpoint is source-audit bookkeeping only.  It does
+not prove a Lean theorem, does not prove Lemma 3, and does not formalize the
+polymer-series summability referenced through [26].  It identifies the next
+consumer after a future `H(Z)` construction/decay theorem.  Clay distance
+**~0% (<0.1%), unchanged**.

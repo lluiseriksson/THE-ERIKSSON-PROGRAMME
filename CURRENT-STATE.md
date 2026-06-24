@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 328.
+Addendum 329.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1050,6 +1050,12 @@ exact finite root-piece reconstruction theorem for `(C^(k))^(1/2)`.  The next
 Lean-facing source interface should therefore treat finite root-piece sums as
 truncations or auxiliary approximations unless a separate exact
 activity-support equality theorem is located.
+Row B5d now records the next CMP116 step, PDF page 21 / equations
+(2.39)--(2.41): Lemma 3's localized `H(Z)` bound is inserted into the
+exponentiated polymer series to produce the effective-action bound (I.1.18)
+after fixing the final `delta,L` normalization and the `C_3 epsilon_1`
+smallness budget.  This is a consumer of the future `H(Z)` construction/decay
+theorem, not covariance-root reconstruction.
 
 ## Live Frontier
 

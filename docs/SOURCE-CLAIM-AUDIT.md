@@ -426,6 +426,26 @@ the current source evidence: pages 15--20 prove a localized activity estimate
 after resummation, not exact equality of a finite root-piece operator with the
 full covariance root on an activity support.
 
+### B5d - CMP 116: Post-Lemma-3 Effective-Action Bound
+
+| Field | Value |
+|---|---|
+| Extracted claim | Lemma 3's localized activity bound is converted into the effective-action bound by estimating the exponentiated polymer series and then fixing the final `delta,L` and `C_3 epsilon_1` smallness assumptions |
+| Replacement status | `source-extracted` |
+| Source scope | `exact theorem/equation range`, not a completed Lean theorem |
+| Primary source | T. Balaban, *Renormalization Group Approach to Lattice Gauge Field Theories II. Cluster Expansions*, Comm. Math. Phys. 116 (1988), 1--22 |
+| Local PDF | `runtime/sources/primary/balaban-rg-II-cmp116-1104161193.pdf` |
+| `local_pdf_sha256` | `EE39523A0F7B83AF958513C7BD6F9C7731934B40355EF5D6B0F7A68EE6D022FC` |
+| PDF / printed page | PDF page 21, printed page 21 |
+| Exact range | equations (2.39)--(2.41) and the following paragraphs through the discussion of the extra `[log Z^(k)(U_{k+1}) - log Z^(k)(1)]` term |
+| Estimate structure | Starting from products of Lemma 3 factors inside the polymer expansion, (2.39) extracts an exponential from each factor and uses connectedness of the union.  Equation (2.40) invokes the standard polymer-series bounds for large `kappa` and small `epsilon_1`.  Equation (2.41) gives the effective-action estimate `|E^(k+1)(X)| <= O(1) C_3 epsilon_1 exp (-(1 - 10 delta)^(1/2) L kappa d_{k+1}(X))` |
+| Final assumptions | The text then fixes `(1 - 10 delta)^(1/2) L = 1`, equivalently `delta = (1/10) * (1 - 2 * L^(-1))`, and assumes `O(1) C_3 epsilon_1 <= (1/2) E_0`; the added normalization term from `[log Z^(k)(U_{k+1}) - log Z^(k)(1)]` is handled by a separate generalized random-walk expansion with `kappa` replaced by `delta_0 M`, choosing `(1/2) E_0` to cover that absolute constant and `M` so that `delta_0 M >= kappa` |
+| Lean-facing verdict | This is the source bridge from Lemma 3's `H(Z)` bound to the inductive effective-action bound `(I.1.18)`.  A Lean interface should expose it as a polymer-series/effective-action consumer of the localized `H(Z)` estimate, not as part of the covariance-root reconstruction story |
+| Remaining unproved bridge | Formalize the exact polymer-series summability hypotheses behind the reference to [26], track the `O(1)` constants and the split of the `E_0` budget, and identify the added `log Z` normalization terms with the repository's effective-action/activity representation |
+
+This row isolates the post-Lemma-3 consumer needed after a future Lean theorem
+constructs the concrete `H(Z)` local activities and proves Lemma 3's bound.
+
 ### B6 - CMP 119: Localized `E/R/B` Decomposition
 
 | Field | Value |
