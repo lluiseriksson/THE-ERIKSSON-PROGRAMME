@@ -28,6 +28,117 @@ open scoped BigOperators RealInnerProductSpace
 
 variable {dPhys N Nc d L lieDim : ℕ} [NeZero N] [NeZero L]
 
+/-- The exponential rate appearing in Balaban CMP116 Lemma 3, equation
+(2.38).
+
+`blockScale` is deliberately separate from the finite lattice parameter `L`
+appearing in `Cube d L`; identifying those two parameters is a source theorem,
+not notation-level bookkeeping. -/
+noncomputable def balabanCMP116Lemma3DecayRate
+    (blockScale : ℕ) (delta kappaSource : ℝ) : ℝ :=
+  (1 - 8 * delta) * ((1 : ℝ) / 2) *
+    (blockScale : ℝ) * kappaSource
+
+/-- The source exponential weight from Balaban CMP116 Lemma 3. -/
+noncomputable def balabanCMP116Lemma3Weight
+    {ι : Type*}
+    (blockScale : ℕ)
+    (delta kappaSource : ℝ)
+    (sourceMetric : ι → ℕ)
+    (X : ι) : ℝ :=
+  Real.exp
+    (-(balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource *
+      (sourceMetric X : ℝ)))
+
+/-- Source-facing output interface for Balaban CMP116 Lemma 3.
+
+This records the final resummed estimate for the already-constructed localized
+activity `H(Z)`.  It does not assert a finite reconstruction of the covariance
+root and does not derive the estimate from the source smallness hierarchy. -/
+structure CMP116Lemma3ActivityEstimate
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    (physicalActivity :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc)
+    (sourceMetric : ι → ℕ)
+    (blockScale : ℕ)
+    (C3 epsilon1 delta kappaSource : ℝ) : Prop where
+
+  amplitude_nonneg :
+    0 ≤ C3 * epsilon1
+
+  pointwise_decay :
+    ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+      ‖(physicalActivity X).globalEval ψ φ‖ ≤
+        (C3 * epsilon1) *
+          balabanCMP116Lemma3Weight
+            blockScale delta kappaSource sourceMetric X
+
+omit [NeZero L] in
+/-- Balaban CMP116 Lemma 3 supplies the physical raw-activity decay predicate
+with its native source metric weight. -/
+theorem balabanLemma3_rawActivityDecay
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {physicalActivity :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {C3 epsilon1 delta kappaSource : ℝ}
+    (estimate :
+      CMP116Lemma3ActivityEstimate
+        physicalActivity sourceMetric blockScale
+        C3 epsilon1 delta kappaSource) :
+    PhysicalGaugeRawActivityDecay
+      physicalActivity
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (C3 * epsilon1) := by
+  intro X ψ φ
+  exact estimate.pointwise_decay X ψ φ
+
+/-- The native Lemma 3 source weight is nonnegative. -/
+theorem balabanCMP116Lemma3Weight_nonneg
+    {ι : Type*}
+    (blockScale : ℕ)
+    (delta kappaSource : ℝ)
+    (sourceMetric : ι → ℕ)
+    (X : ι) :
+    0 ≤
+      balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric X :=
+  Real.exp_nonneg _
+
+/-- Translate the CMP116 Lemma 3 source metric into the repository's shifted
+Appendix-F modified metric.
+
+The hypothesis compares the complete exponents, so any normalization,
+scale-transfer factor, or metric loss remains explicit. -/
+theorem balabanCMP116Lemma3Weight_domination
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    (Λ : Finset (OmegaPolymerType HF z))
+    {sourceMetric : OmegaPolymerType HF z → ℕ}
+    {blockScale : ℕ}
+    {delta kappaSource kappa : ℝ}
+    (metric_comparison :
+      ∀ X, X ∈ Λ →
+        kappa *
+            (((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) ≤
+          balabanCMP116Lemma3DecayRate
+              blockScale delta kappaSource *
+            (sourceMetric X : ℝ)) :
+    ∀ X, X ∈ Λ →
+      balabanCMP116Lemma3Weight
+          blockScale delta kappaSource sourceMetric X ≤
+        appendixFHoleExpWeight HF kappa X.val := by
+  intro X hX
+  unfold balabanCMP116Lemma3Weight appendixFHoleExpWeight
+  exact Real.exp_le_exp.mpr
+    (neg_le_neg (metric_comparison X hX))
+
 namespace PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
 
 /-- Reassemble the existing raw-source compatibility package from its five
@@ -69,6 +180,50 @@ def of_components
   wilson_hessian_identification := wilson_hessian_identification
   local_activity_construction := local_activity_construction
   raw_pointwise_decay := raw_pointwise_decay
+
+/-- Add the final CMP116 Lemma 3 estimate to the separated Gaussian,
+root-localization, Hessian-identification, and local-activity source package. -/
+def of_lemma3ActivityEstimate
+    {ι : Type*}
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {physicalActivity :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {C3 epsilon1 delta kappaSource : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (source :
+      PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+        D root physicalGaussian
+        rootLocalization
+        wilsonHessianIdentification
+        localActivityConstruction)
+    (estimate :
+      CMP116Lemma3ActivityEstimate
+        physicalActivity sourceMetric blockScale
+        C3 epsilon1 delta kappaSource) :
+    PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+      D root physicalGaussian physicalActivity
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (C3 * epsilon1)
+      rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction :=
+  of_components
+    source.gaussian_pushforward
+    source.root_localization
+    source.wilson_hessian_identification
+    source.local_activity_construction
+    (fun X ψ φ =>
+      estimate.pointwise_decay X ψ φ)
 
 end PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
 

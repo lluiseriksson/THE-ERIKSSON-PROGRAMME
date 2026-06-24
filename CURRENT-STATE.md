@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 330.
+Addendum 331.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1056,6 +1056,14 @@ exponentiated polymer series to produce the effective-action bound (I.1.18)
 after fixing the final `delta,L` normalization and the `C_3 epsilon_1`
 smallness budget.  This is a consumer of the future `H(Z)` construction/decay
 theorem, not covariance-root reconstruction.
+The source-facing Lemma 3 output is now represented directly by
+`CMP116Lemma3ActivityEstimate`, together with the native exponential weight
+`balabanCMP116Lemma3Weight`, a raw-decay adapter
+`balabanLemma3_rawActivityDecay`, and an explicit metric-domination theorem to
+`appendixFHoleExpWeight`.  This creates an activity-only route for the
+resummed `H(Z)` estimate while keeping Gaussian pushforward, Wilson-Hessian
+identification, root localization, support translation, and the proof of
+Lemma 3's smallness hierarchy as separate obligations.
 
 ## Live Frontier
 

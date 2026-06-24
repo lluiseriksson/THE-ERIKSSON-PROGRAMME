@@ -12956,3 +12956,62 @@ obligation.  It does not prove CMP116 domain/enlargement translation, any
 finite or infinite reconstruction of `(C^(k))^(1/2)`, a Gaussian pushforward
 identity, local activity construction, or raw activity decay.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 331 (2026-06-24, **CMP116 Lemma 3 activity estimate bridge**
+`YangMills.RG.BalabanCMP116SourceTheorem`; core 8355)
+
+This addendum adds an activity-only source lane for the output of CMP116
+Lemma 3 / equation (2.38), without mentioning or using `hrootPieces`.
+
+New declarations:
+
+```
+balabanCMP116Lemma3DecayRate
+balabanCMP116Lemma3Weight
+CMP116Lemma3ActivityEstimate
+balabanLemma3_rawActivityDecay
+balabanCMP116Lemma3Weight_nonneg
+balabanCMP116Lemma3Weight_domination
+PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimate
+```
+
+`CMP116Lemma3ActivityEstimate` records the final resummed pointwise estimate
+for already-constructed localized physical activities:
+
+```
+||(physicalActivity X).globalEval psi phi||
+  <= (C3 * epsilon1) *
+     balabanCMP116Lemma3Weight blockScale delta kappaSource sourceMetric X
+```
+
+The rate keeps `blockScale` separate from the finite lattice modulus `L` in
+`Cube d L`.  The metric-domination theorem compares complete exponents and
+therefore leaves any scale normalization, distance convention, or metric loss
+as an explicit hypothesis.
+
+The thin raw-source adapter
+`PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimate`
+reuses the already separated Gaussian pushforward, root-localization,
+Wilson-Hessian-identification, and local-activity source package, then fills
+only the raw pointwise decay field using the Lemma 3 estimate object.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116SourceTheorem.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`
+or no additional axioms for definitions.
+
+**Honest scope.** This checkpoint states and adapts the output interface for
+Lemma 3.  It does not prove Lemma 3 from CMP116's smallness hierarchy, does
+not identify Balaban's `H(Z)` with a constructed activity, does not prove the
+metric comparison, and does not prove Gaussian pushforward, Wilson-Hessian
+identification, covariance-root localization, or any finite/infinite
+root-piece reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
