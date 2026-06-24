@@ -479,10 +479,11 @@ import YangMills.RG.PhysicalGaugeCMP116RawHsharp
 import YangMills.RG.PhysicalGaugeCMP116RawM3
 -- Executable dependency graph for the raw-source M3 frontier fields.
 import YangMills.RG.M3FrontierDependencies
--- CMP116 Lemma 3 real-distance conclusion interface and resummed-activity
--- bridge: termwise source bounds plus a pre-Lemma summed-weight budget feed
--- the Lemma 3 activity estimate object.
+-- CMP116 Lemma 3 activity-only lane: isolated Nat-source-metric estimate
+-- interface, finite resummation bridge, and downstream raw-source adapters.
+import YangMills.RG.BalabanCMP116Lemma3Estimate
 import YangMills.RG.BalabanCMP116Lemma3
+import YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter
 -- Source-facing Balaban CMP116 theorem target with the raw-source package
 -- unfolded into individually auditable source fields.
 import YangMills.RG.BalabanCMP116SourceTheorem

@@ -13139,3 +13139,101 @@ prove the metric comparison from `d_{k+1}` to `discreteModifiedMetric + 1`, and
 does not prove Gaussian pushforward, Wilson-Hessian identification,
 covariance-root localization, or finite/infinite covariance-root
 reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 334 (2026-06-24, **CMP116 Lemma 3 activity lane isolated**
+`YangMills.RG.BalabanCMP116Lemma3Estimate`,
+`YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter`; core 8358)
+
+This checkpoint separates the CMP116 Lemma 3 activity-only interface from both
+the finite resummation bridge and the raw-source M3 source theorem.
+
+New low-level module:
+
+```
+YangMills.RG.BalabanCMP116Lemma3Estimate
+```
+
+It imports only `YangMills.RG.PhysicalGaugeFluctuationActivity` and contains
+the canonical Nat-source-metric Lemma 3 conclusion surface:
+
+```
+balabanCMP116Lemma3DecayRate
+balabanCMP116Lemma3Weight
+balabanCMP116Lemma3Weight_nonneg
+CMP116Lemma3ActivityEstimate
+balabanLemma3_rawActivityDecay
+```
+
+`CMP116Lemma3ActivityEstimate` now has the source-metric shape
+
+```
+∀ X ψ φ,
+  ‖(physicalActivity X).globalEval ψ φ‖ ≤
+    (C3 * epsilon1) *
+      balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric X
+```
+
+with `sourceMetric : ι → ℕ` and no embedded `amplitude_nonneg` field.  The
+older `cmp116Lemma3Weight`/`cmp116Lemma3Weight_nonneg` declarations remain in
+the estimate module only as compatibility real-metric aliases.
+
+`YangMills.RG.BalabanCMP116Lemma3` now imports the estimate module and contains
+only the finite resummation bridge: `CMP116Lemma3Parameters`,
+`CMP116HResummation`, `cmp116HIndexFinset`, `balabanCMP116H`,
+`norm_balabanCMP116H_le_lemma3`, and
+`cmp116Lemma3ActivityEstimate_of_resummation`.  The bridge now targets the
+Nat-source-metric `CMP116Lemma3ActivityEstimate`.
+
+New downstream adapter module:
+
+```
+YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter
+```
+
+It imports `YangMills.RG.BalabanCMP116Lemma3Estimate` and
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`, and contains:
+
+```
+balabanCMP116Lemma3Weight_domination
+PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimate
+```
+
+`BalabanCMP116SourceTheorem` no longer imports `BalabanCMP116Lemma3`; it keeps
+only the pure five-component source packaging and depends through
+`PhysicalGaugeCMP116RawM3`.  This matches the intended direction
+
+```
+PhysicalGaugeFluctuationActivity
+  -> BalabanCMP116Lemma3Estimate
+      -> BalabanCMP116Lemma3
+
+PhysicalGaugeCMP116ActivityConstruction
+  + BalabanCMP116Lemma3Estimate
+      -> BalabanCMP116Lemma3RawSourceAdapter
+
+PhysicalGaugeCMP116RawM3
+  -> BalabanCMP116SourceTheorem
+```
+
+Verification commands run for this checkpoint:
+
+```
+lake build YangMills.RG.BalabanCMP116Lemma3Estimate
+lake env lean YangMills\RG\BalabanCMP116Lemma3Estimate.lean
+lake env lean YangMills\RG\BalabanCMP116Lemma3.lean
+lake env lean YangMills\RG\BalabanCMP116Lemma3RawSourceAdapter.lean
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-lemma3-activity-lane-isolation.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3Estimate.lean YangMills\RG\BalabanCMP116Lemma3.lean YangMills\RG\BalabanCMP116Lemma3RawSourceAdapter.lean YangMills\RG\BalabanCMP116SourceTheorem.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+**Honest scope.** This is an architectural separation and interface correction.
+It does not prove CMP116 equations (2.27), (2.29)--(2.32), (2.34), (2.36), or
+(2.37), does not construct or identify Balaban's `H(Z)`, and does not prove
+the source metric comparison.  The next analytic step remains a source-faithful
+formalization of one named CMP116 summability equation, starting with a concrete
+candidate such as equation (2.29).  Clay distance **~0% (<0.1%), unchanged**.

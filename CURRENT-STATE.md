@@ -1056,29 +1056,29 @@ exponentiated polymer series to produce the effective-action bound (I.1.18)
 after fixing the final `delta,L` normalization and the `C_3 epsilon_1`
 smallness budget.  This is a consumer of the future `H(Z)` construction/decay
 theorem, not covariance-root reconstruction.
-The source-facing Lemma 3 output is now represented directly by
-`CMP116Lemma3ActivityEstimate`, together with the native exponential weight
-`balabanCMP116Lemma3Weight`, a raw-decay adapter
-`balabanLemma3_rawActivityDecay`, and an explicit metric-domination theorem to
-`appendixFHoleExpWeight`.  This creates an activity-only route for the
-resummed `H(Z)` estimate while keeping Gaussian pushforward, Wilson-Hessian
-identification, root localization, support translation, and the proof of
-Lemma 3's smallness hierarchy as separate obligations.
-The next layer is now a theorem-fed finite resummation interface in
+The source-facing Lemma 3 output is now isolated in the activity-only module
+`YangMills.RG.BalabanCMP116Lemma3Estimate`.  The canonical conclusion is the
+Nat-source-metric proposition
+`CMP116Lemma3ActivityEstimate physicalActivity sourceMetric blockScale C3
+epsilon1 delta kappaSource`, with native exponential weight
+`balabanCMP116Lemma3Weight`, raw-decay adapter
+`balabanLemma3_rawActivityDecay`, and no `amplitude_nonneg` field.  The prior
+real-distance helper `cmp116Lemma3Weight` remains only as a compatibility
+weight alias; it is not the current Lemma 3 conclusion object.
+The theorem-fed finite resummation interface remains in
 `YangMills.RG.BalabanCMP116Lemma3`: `CMP116HResummation` names the four
 pre-Lemma source summation families, `balabanCMP116H` is their finite sum, and
 `norm_balabanCMP116H_le_lemma3` proves the Lemma-3-shaped bound from termwise
-summand estimates plus a pre-Lemma summed-weight budget.  The module still
-does not derive those termwise/summed-weight inputs from CMP116 constants;
-that extraction remains the active source task.
-The canonical Lemma 3 conclusion interface is now the real-distance version
-requested by the source audit: `cmp116Lemma3Weight dNext delta blockScale kappa`
-and `CMP116Lemma3ActivityEstimate physicalActivity dNext C3 epsilon1 delta
-blockScale kappa`.  The earlier natural-valued `sourceMetric : ι → ℕ` weight
-remains only as the compatibility wrapper `balabanCMP116Lemma3Weight`, used by
-the existing Appendix-F metric-domination theorem.  The raw-decay adapter
-`balabanLemma3_rawActivityDecay` now consumes the real-distance estimate
-directly.
+summand estimates plus a pre-Lemma summed-weight budget.  The module now
+targets the isolated Nat-source-metric estimate and still does not derive
+those termwise/summed-weight inputs from CMP116 constants; that extraction
+remains the active source task.
+The raw-source compatibility bridge is downstream in
+`YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter`.  It contains the explicit
+metric-domination theorem to `appendixFHoleExpWeight` and
+`PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimate`.
+`BalabanCMP116SourceTheorem` again depends only on the raw-M3 source frontier
+and keeps Lemma 3 activity packaging out of the five-field source theorem.
 
 ## Live Frontier
 
