@@ -381,6 +381,30 @@ It is **not** enough to discharge Lean's `gaussian_pushforward` field by itself:
 that field still needs the coordinate/dictionary identification and the exact
 normalization convention for the finite-dimensional physical Gaussian.
 
+### B5b - CMP 116: Post-Gaussian Localization Of The Root Map
+
+| Field | Value |
+|---|---|
+| Extracted claim | After the product-Gaussian change of variables, the integrand still depends on whole-lattice external gauge fields through propagators and operators in `G`; Balaban then introduces localization parameters `s`, constructs generalized random-walk expansions with a special localization domain containing `Z0`, expands `(C^(k))^(1/2)` through a resolvent/series formula, and obtains localized activities `H(Z,Z0)` and `H(Z)` |
+| Replacement status | `source-extracted` |
+| Source scope | `exact theorem/equation range`, not a completed Lean theorem |
+| Primary source | T. Balaban, *Renormalization Group Approach to Lattice Gauge Field Theories II. Cluster Expansions*, Comm. Math. Phys. 116 (1988), 1--22 |
+| Local PDF | `runtime/sources/primary/balaban-rg-II-cmp116-1104161193.pdf` |
+| `local_pdf_sha256` | `EE39523A0F7B83AF958513C7BD6F9C7731934B40355EF5D6B0F7A68EE6D022FC` |
+| PDF / printed pages | PDF pages 13--14, printed pages 13--14 |
+| Exact range | paragraph after (2.6), equation (2.7), the paragraph following (2.7), and equations (2.8)--(2.10) |
+| Surrounding hypotheses | The domain `Z0` has already been selected by the Mayer/localization decomposition, and the product-Gaussian representation (2.6) has already moved covariance-root dependence into `G(Z0,X,C^(k)(Z0),(C^(k))^(1/2),Delta_k)` |
+| Root/localization convention | The expansion of `(C^(k))^(1/2)` is not asserted as finite-range equality.  Balaban uses a resolvent integral/series representation and generalized random-walk expansions; the domains are unions of connected `M1`-cubes, one chosen domain has enlarged support containing `Z0`, and other localization domains are separated from `Z0` before the random-walk expansion is applied |
+| Activity-locality convention | Equations (2.8)--(2.9) rewrite the product-Gaussian integral as a sum of localized quantities `H(Z,Z0)` and then `H(Z)`.  The text then states that `H(Z)` is localized in the interior of `Z` with respect to the external gauge fields and records the component factorization (2.10) |
+| Lean consumer | `PhysicalRootToCMP116OperatorTransport.gaussianRootMap_activity_globalEval_eq_of_agreeOn_of_localizedRootLinearMapFinsetSum` through its source-side `hrootPieces` hypothesis; later `local_physical_activity_construction`, `fluctuation_support_subset`, and Appendix-F support transport |
+| Remaining unproved bridge | Translate Balaban's enlarged domains, `M1`-cube random-walk supports, and "localized in the interior of Z" statement into explicit `LocalActivity.fluctuationSupport` and `activeSupport` subsets; identify the expanded `(C^(k))^(1/2)` root pieces with the repository's finite `localizedRootLinearMapFinsetSum_ofDictionary`; quantify the truncation/error or infinite-series summation needed before Lean can instantiate `hrootPieces` |
+
+This row is the source anchor for the new activity-local root bridge.  It
+supports the shape of the `hrootPieces` hypothesis, but it does **not** prove
+that hypothesis: the repository still needs an exact domain-translation theorem
+and a finite/infinite root-piece reconstruction statement compatible with the
+Lean support interfaces.
+
 ### B6 - CMP 119: Localized `E/R/B` Decomposition
 
 | Field | Value |

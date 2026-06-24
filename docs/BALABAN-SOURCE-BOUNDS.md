@@ -63,6 +63,16 @@ Visually confirmed source anchors already located:
   It still leaves the coordinate/dictionary identification,
   determinant/Jacobian normalization, and post-(2.6) localization proof as
   explicit obligations; see `docs/SOURCE-CLAIM-AUDIT.md` row B5a.
+* CMP 116 (1988), PDF pages 13--14 / printed pages 13--14, eqs.
+  (2.7)--(2.10): after (2.6), the expression is still global through the
+  propagators and operators in `G`.  Balaban localizes it again by introducing
+  parameters `s`, generalized random-walk expansions, and a resolvent/series
+  expansion of `(C^(k))^(1/2)`.  Equations (2.8)--(2.9) rewrite the
+  product-Gaussian integral as localized quantities `H(Z,Z0)` and `H(Z)`, and
+  (2.10) records component factorization.  This is the source anchor for the
+  Lean `hrootPieces` activity-local agreement shape, but it still leaves the
+  domain/enlargement translation and root-piece reconstruction theorem
+  explicit; see `docs/SOURCE-CLAIM-AUDIT.md` row B5b.
 * CMP 116 (1988), PDF page 20, Lemma 3 / eq. (2.38): the cluster-expansion
   activity `H(Z)` for `Z in D_{k+1}` satisfies
   `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.

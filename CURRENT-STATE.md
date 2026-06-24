@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 326.
+Addendum 327.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1035,6 +1035,14 @@ measurability/integrability hypotheses made explicit.  Dimock I Appendix B
 supplies the no-hole leaf-summation mechanism, and Dimock II Appendix F
 supplies the hole-aware final theorem, but the exact weighted order-wise `H#`
 tree estimate remains unproved in the repository.
+The source audit now also splits the post-product-Gaussian localization step as
+row B5b in `docs/SOURCE-CLAIM-AUDIT.md`: CMP116 pages 13--14, equations
+(2.7)--(2.10), expand `(C^(k))^(1/2)` using a resolvent/series route and
+generalized random-walk expansions, then rewrite the product-Gaussian integral
+as localized quantities `H(Z,Z0)` and `H(Z)`.  This is the primary source
+anchor for the current `hrootPieces` activity-local agreement shape, while the
+domain/enlargement translation and finite/infinite root-piece reconstruction
+remain explicit source obligations.
 
 ## Live Frontier
 

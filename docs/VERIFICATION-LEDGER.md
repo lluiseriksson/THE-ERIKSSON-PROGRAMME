@@ -12773,3 +12773,43 @@ It does not prove that the finite root pieces reconstruct the full covariance
 root, does not prove a Gaussian pushforward identity, does not construct local
 activities, and does not prove raw activity decay.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 327 (2026-06-24, **CMP116 post-Gaussian localization source anchor**
+`docs/SOURCE-CLAIM-AUDIT.md`; core 8355)
+
+This documentation/source-audit checkpoint records the primary-source anchor
+for the source-side `hrootPieces` obligation consumed by the activity-local
+Gaussian-root bridge from Addendum 326.
+
+New audit row:
+
+```
+B5b - CMP 116: Post-Gaussian Localization Of The Root Map
+```
+
+The row records CMP116 PDF/printed pages 13--14, equations (2.7)--(2.10).  In
+that range Balaban localizes the still-global post-(2.6) expression by
+introducing `s` parameters and generalized random-walk expansions, expands
+`(C^(k))^(1/2)` through a resolvent/series representation, and rewrites the
+product-Gaussian integral as localized quantities `H(Z,Z0)` and `H(Z)`.
+
+`docs/BALABAN-SOURCE-BOUNDS.md` now includes the same anchor in the visually
+confirmed source list.  The local page renders used for inspection were
+generated under `runtime/sources/primary/renders/`.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\BALABAN-SOURCE-BOUNDS.md docs\VERIFICATION-LEDGER.md
+```
+
+**Honest scope.** This checkpoint is source localization bookkeeping only.  It
+does not prove the `hrootPieces` hypothesis, does not identify Balaban's
+domains with Lean's `LocalActivity.fluctuationSupport`/`activeSupport`, and
+does not prove finite or infinite root-piece reconstruction.  Clay distance
+**~0% (<0.1%), unchanged**.
