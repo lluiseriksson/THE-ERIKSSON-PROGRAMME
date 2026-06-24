@@ -1399,6 +1399,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.BalabanCMP116Lemma3SourceAssumptions.rooted_hsharp_remainder_identity_rawSource
 #print axioms YangMills.RG.CMP116RawSourceM3Frontier.of_lemma3SourceAssumptions
 #print axioms YangMills.RG.BalabanCMP116Lemma3SourceAssumptions.to_m3Frontier
+#print axioms YangMills.RG.BalabanCMP116Lemma3ResummationSourceAssumptions
+#print axioms YangMills.RG.BalabanCMP116Lemma3ResummationSourceAssumptions.lemma3_activity_estimate
+#print axioms YangMills.RG.BalabanCMP116Lemma3ResummationSourceAssumptions.rawSource
+#print axioms YangMills.RG.BalabanCMP116Lemma3ResummationSourceAssumptions.to_lemma3SourceAssumptions
+#print axioms YangMills.RG.BalabanCMP116Lemma3ResummationSourceAssumptions.to_m3Frontier
 #check YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components
 #print axioms YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier
 #print axioms YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier.singleScaleUVDecay

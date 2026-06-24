@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 346.
+Addendum 347.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1159,6 +1159,17 @@ canonical `CMP116Lemma3ActivityEstimateScaleFamily`.  The direct constructor
 `CMP116RawSourceM3Frontier.of_lemma3SourceAssumptions` projects that record to
 the existing M3 frontier with canonical Lemma-3 weight/amplitude and derives
 weight nonnegativity from the exponential weight theorem.
+The same source-frontier file now also exposes
+`BalabanCMP116Lemma3ResummationSourceAssumptions`.  This is a narrower
+source-boundary record for the Lemma-3 lane: instead of assuming the whole
+`CMP116Lemma3ActivityEstimateScaleFamily`, it carries the explicit Eq. (2.29),
+`CMP116PStageSummability`, normalized fixed-`P` `Z0/Z0'` residual
+summability, activity-identification, termwise-estimate, nonnegativity, and
+pointwise factorization obligations already consumed by
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages`.
+Its constructors derive the existing Lemma-3 source-assumption record and the
+raw-source M3 frontier.  This is still only packaging of explicit obligations,
+not a proof of the P-stage/residual source estimates or Lemma 3.
 
 ## Live Frontier
 

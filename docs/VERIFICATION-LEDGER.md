@@ -13763,3 +13763,45 @@ source-identify the P-stage budget, `Z0` residual estimate, `Z0'` residual
 estimate, Eq. (2.29), termwise complex-valued estimates, activity
 identification, source metric comparison, Gaussian/root/Hessian/activity source
 facts, or CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 347 (2026-06-24, **CMP116 Lemma 3 resummation-source boundary**
+`YangMills.RG.BalabanCMP116SourceTheorem`; core 8361)
+
+This checkpoint adds a parallel source-boundary record for the CMP116 Lemma 3
+lane:
+
+```
+BalabanCMP116Lemma3ResummationSourceAssumptions
+BalabanCMP116Lemma3ResummationSourceAssumptions.lemma3_activity_estimate
+BalabanCMP116Lemma3ResummationSourceAssumptions.rawSource
+BalabanCMP116Lemma3ResummationSourceAssumptions.to_lemma3SourceAssumptions
+BalabanCMP116Lemma3ResummationSourceAssumptions.to_m3Frontier
+```
+
+The new record replaces the previous monolithic
+`CMP116Lemma3ActivityEstimateScaleFamily` source field with the explicit
+finite-resummation obligations already named in Lean: Eq. (2.29)
+summability, `CMP116PStageSummability`, fixed-`P` `Z0/Z0'` residual
+summability, the activity-identification equality, the complex termwise
+estimate, nonnegativity, and the pointwise factorization.  The constructors
+derive the existing Lemma-3 source-assumption record and the raw-source M3
+frontier via
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages`.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-lemma3-resummation-source-boundary.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116SourceTheorem.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is source-boundary packaging only.  It does not prove or
+source-identify Eq. (2.29), the P-stage budget, the `Z0` residual estimate, the
+`Z0'` residual estimate, activity identification, the termwise complex-valued
+estimate, source metric comparison, Gaussian/root/Hessian/activity source
+facts, the rooted H# identity, or CMP116 Lemma 3.  Clay distance **~0%
+(<0.1%), unchanged**.

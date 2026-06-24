@@ -840,6 +840,722 @@ theorem rooted_hsharp_remainder_identity_rawSource
 
 end BalabanCMP116Lemma3SourceAssumptions
 
+/-- Source-facing CMP116 assumptions where the Lemma 3 scale-family estimate is
+derived from the explicit finite resummation obligations now available in Lean.
+
+This is still a source-boundary record.  It does not prove equation (2.29), the
+P-stage budget, the `Z0/Z0'` residual estimates, the complex termwise estimate,
+or the activity identification.  It only replaces the monolithic
+`lemma3_activity_estimate` field by the smaller named obligations consumed by
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages`. -/
+structure BalabanCMP116Lemma3ResummationSourceAssumptions
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    (ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*)
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (D : ∀ _t _k : ℕ, PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (spectatorPull :
+      ∀ _t _k : ℕ, ∀ _ : PhysicalBond dPhys N,
+        β → SUNLieCoord Nc)
+    (precision covariance root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc)
+    (physicalGaussian :
+      ∀ _t _k : ℕ, Measure (PhysicalGaugeOneCochain dPhys N Nc))
+    (covNormBound rootNormBound : ∀ _t _k : ℕ, ℝ)
+    (covWeight rootWeight :
+      ∀ _t _k : ℕ, PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc)
+    (physicalActiveSupport :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          Finset (PhysicalBond dPhys N))
+    (sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ)
+    (hp : ∀ _t _k : ℕ, CMP116Lemma3Parameters)
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (OmegaPolymerType HF (z t k))
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (DParts :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k →
+        Finset (ιY t k))
+    (alpha6 : ℕ → ℕ → ℝ)
+    (eq229Metric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιY t k → ℕ)
+    (pWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ)
+    (z0Weight :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) → ιD t k → ιP t k →
+          ιZ0 t k → ℝ)
+    (z0PrimeWeight :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) → ιD t k → ιP t k →
+          ιZ0 t k → ιZ0' t k → ℝ)
+    (ν : ℕ → ℕ → Measure β)
+    (covIR : ℕ → ℝ)
+    (Rsc : ℕ → ℕ → ℝ)
+    (g : ℕ → ℝ)
+    (C1 C Hbar ε c0 betaFlow kappa kappa0 : ℝ)
+    (rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop) : Prop where
+
+  covariance_root_certificate :
+    ∀ t k,
+      PhysicalLocalizedCovarianceRootCertificate
+        (precision t k) (covariance t k) (root t k)
+        (covNormBound t k) (rootNormBound t k)
+        (covWeight t k) (rootWeight t k)
+
+  root_localization :
+    ∀ t k, rootLocalization t k
+
+  gaussian_pushforward :
+    ∀ t k,
+      (balabanCMP116Dmu0 (Cube d L) lieDim).map
+          ((D t k).gaussianRootMap (root t k)) =
+        physicalGaussian t k
+
+  wilson_hessian_identification :
+    ∀ t k, wilsonHessianIdentification t k
+
+  local_physical_activity_construction :
+    ∀ t k, localActivityConstruction t k
+
+  spectator_support_subset :
+    ∀ t k X,
+      (physicalActivity t k X).spectatorSupport ⊆
+        physicalActiveSupport t k X
+
+  fluctuation_support_subset :
+    ∀ t k X,
+      (physicalActivity t k X).fluctuationSupport ⊆
+        physicalActiveSupport t k X
+
+  activity_stronglyMeasurable :
+    ∀ t k X, ∀ ψ : ∀ _ : Cube d L, β,
+      StronglyMeasurable
+        (fun ξ : CMP116FluctuationField d L lieDim =>
+          ((PhysicalGaugeCMP116ActivityAdapter.ofDictionary
+            (Ψ := fun _ : Cube d L => β)
+            (D t k)
+            (fun X : OmegaPolymerType HF (z t k) => X)
+            (spectatorPull t k)).activity
+              (physicalActivity t k) X).globalEval ψ ξ)
+
+  eq229_summability :
+    ∀ t k,
+      CMP116Eq229Summability
+        (R t k).DIndex
+        (DParts t k)
+        (alpha6 t k)
+        (hp t k).delta
+        (hp t k).kappa
+        (eq229Metric t k)
+
+  p_stage_summability :
+    ∀ t k,
+      CMP116PStageSummability
+        (R t k).DIndex
+        (R t k).PIndex
+        (pWeight t k)
+        (fun Z D =>
+          Finset.prod (DParts t k Z D)
+            (cmp116Eq229Weight
+              (alpha6 t k)
+              (hp t k).delta
+              (hp t k).kappa
+              (eq229Metric t k Z)))
+
+  z0_residual_summability :
+    ∀ t k,
+      CMP116Z0ResidualSummability
+        (R t k).DIndex
+        (R t k).PIndex
+        (R t k).Z0Index
+        (z0Weight t k)
+
+  z0Prime_residual_summability :
+    ∀ t k,
+      CMP116Z0PrimeResidualSummability
+        (R t k).DIndex
+        (R t k).PIndex
+        (R t k).Z0Index
+        (R t k).Z0PrimeIndex
+        (z0PrimeWeight t k)
+
+  activity_identification :
+    ∀ t k Z ψ φ,
+      (physicalActivity t k Z).globalEval ψ φ =
+        balabanCMP116H (R t k) Z ψ φ
+
+  termwise_estimate :
+    ∀ t k Z x, x ∈ cmp116HIndexFinset (R t k) Z →
+      ∀ ψ φ,
+        ‖(R t k).summand
+            Z x.1.1 x.1.2 x.2.1 x.2.2 ψ φ‖ ≤
+          (R t k).termWeight
+            Z x.1.1 x.1.2 x.2.1 x.2.2
+
+  pWeight_nonneg :
+    ∀ t k Z D, D ∈ (R t k).DIndex Z →
+      ∀ P, P ∈ (R t k).PIndex Z D →
+        0 ≤ pWeight t k Z D P
+
+  z0Weight_nonneg :
+    ∀ t k Z D, D ∈ (R t k).DIndex Z →
+      ∀ P, P ∈ (R t k).PIndex Z D →
+        ∀ Z0, Z0 ∈ (R t k).Z0Index Z D P →
+          0 ≤ z0Weight t k Z D P Z0
+
+  residual_factorization :
+    ∀ t k Z D, D ∈ (R t k).DIndex Z →
+      ∀ P, P ∈ (R t k).PIndex Z D →
+        ∀ Z0, Z0 ∈ (R t k).Z0Index Z D P →
+          ∀ Z0', Z0' ∈ (R t k).Z0PrimeIndex Z D P Z0 →
+            (R t k).termWeight Z D P Z0 Z0' ≤
+              (((((hp t k).C3 * (hp t k).epsilon1) *
+                  balabanCMP116Lemma3Weight
+                    (hp t k).blockScale
+                    (hp t k).delta
+                    (hp t k).kappa
+                    (sourceMetric t k)
+                    Z) *
+                  pWeight t k Z D P) *
+                z0Weight t k Z D P Z0) *
+                z0PrimeWeight t k Z D P Z0 Z0'
+
+  amplitude_nonneg :
+    ∀ t k,
+      0 ≤
+        cmp116Lemma3ScaleAmplitude
+          (fun t k => (hp t k).C3)
+          (fun t k => (hp t k).epsilon1)
+          t k
+
+  active_support_subset_omega :
+    ∀ t k X,
+      physicalActiveSupport t k X ⊆
+        (D t k).physicalBondsOfCells (D t k).siteMap.Omega
+
+  active_support_subset_skeleton :
+    ∀ t k X, X ∈ Λ t k →
+      physicalActiveSupport t k X ⊆
+        (D t k).physicalBondsOfCells (skeleton HF X.val)
+
+  weight_domination :
+    ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3ScaleWeight
+          sourceMetric
+          (fun t k => (hp t k).blockScale)
+          (fun t k => (hp t k).delta)
+          (fun t k => (hp t k).kappa)
+          t k X ≤
+        appendixFHoleExpWeight HF kappa X.val
+
+  probability_law :
+    ∀ t k, IsProbabilityMeasure (ν t k)
+
+  holes_pairwise_disjoint :
+    ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+      H₁ ≠ H₂ → Disjoint H₁ H₂
+
+  no_edges_between_holes :
+    noEdgesBetweenHoles (cubeAdj d L) HF.holes
+
+  holes_nonempty :
+    ∀ H ∈ HF.holes, H.Nonempty
+
+  appendix_f_geometric_smallness :
+    ((3 ^ d : ℕ) : ℝ) ^ 2 *
+        (Real.exp (-kappa0) * 2 ^ (3 ^ d + 1)) < 1
+
+  rooted_hsharp_remainder_identity :
+    let lemma3_activity_estimate :=
+      cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages
+        hp R sourceMetric physicalActivity DParts alpha6 eq229Metric
+        pWeight z0Weight z0PrimeWeight
+        eq229_summability p_stage_summability
+        z0_residual_summability z0Prime_residual_summability
+        activity_identification termwise_estimate
+        pWeight_nonneg z0Weight_nonneg residual_factorization
+    let rawSource :=
+      rawSource_of_lemma3ActivityEstimate
+        gaussian_pushforward
+        root_localization
+        wilson_hessian_identification
+        local_physical_activity_construction
+        lemma3_activity_estimate
+    ∀ t k,
+      Rsc t k =
+        ∑' P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val },
+          Complex.re
+            (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+              HF (z t k) (Λ t k)
+              ((physicalGaugeCMP116RawSourceScaleFamily
+                Λ D spectatorPull precision covariance root
+                physicalGaussian
+                covNormBound rootNormBound covWeight rootWeight
+                physicalActivity physicalActiveSupport
+                (cmp116Lemma3ScaleWeight
+                  sourceMetric
+                  (fun t k => (hp t k).blockScale)
+                  (fun t k => (hp t k).delta)
+                  (fun t k => (hp t k).kappa))
+                (cmp116Lemma3ScaleAmplitude
+                  (fun t k => (hp t k).C3)
+                  (fun t k => (hp t k).epsilon1))
+                kappa
+                rootLocalization
+                wilsonHessianIdentification
+                localActivityConstruction
+                covariance_root_certificate
+                rawSource
+                spectator_support_subset
+                fluctuation_support_subset
+                amplitude_nonneg
+                (cmp116Lemma3ScaleWeight_nonneg
+                  sourceMetric
+                  (fun t k => (hp t k).blockScale)
+                  (fun t k => (hp t k).delta)
+                  (fun t k => (hp t k).kappa))
+                activity_stronglyMeasurable
+                active_support_subset_omega
+                active_support_subset_skeleton
+                weight_domination) t k)
+              (ν t k) P.val.val)
+
+  amplitude_le_one :
+    ∀ t k,
+      cmp116Lemma3ScaleAmplitude
+          (fun t k => (hp t k).C3)
+          (fun t k => (hp t k).epsilon1)
+          t k ≤ 1
+
+  profile_constant_nonneg :
+    0 ≤ C
+
+  hbar_nonneg :
+    0 ≤ Hbar
+
+  kappa_margin :
+    4 * kappa0 + 3 ≤ kappa
+
+  kappa0_gt_one :
+    1 < kappa0
+
+  time_decay_positive :
+    0 < c0
+
+  half_budget :
+    ∀ t k,
+      appendixFSecondUrsellLeafConstant d kappa0 *
+          (2 *
+            cmp116Lemma3ScaleAmplitude
+              (fun t k => (hp t k).C3)
+              (fun t k => (hp t k).epsilon1)
+              t k *
+            appendixFHoleRootSumConstant d kappa0) ≤ 1 / 2
+
+  profile_bound :
+    ∀ t k,
+      4 * appendixFSecondUrsellMomentConstant d kappa0 *
+          cmp116Lemma3ScaleAmplitude
+            (fun t k => (hp t k).C3)
+            (fun t k => (hp t k).epsilon1)
+            t k *
+          appendixFHoleRootSumConstant d kappa0 ≤
+        C * Hbar *
+          Real.exp (-(c0 * (t : ℝ))) *
+          g k ^ kappa0
+
+  epsilon_positive :
+    0 < ε
+
+  beta_flow_positive :
+    0 < betaFlow
+
+  coupling_positive :
+    ∀ k, 0 < g k
+
+  coupling_small :
+    ∀ k, betaFlow * g k < 1
+
+  coupling_recursion :
+    ∀ k,
+      g (k + 1) =
+        g k * (1 - betaFlow * g k)
+
+  ir_bound :
+    ∀ k : ℕ,
+      |covIR k| ≤
+        C1 * Real.exp (-(ε * (k : ℝ)))
+
+namespace BalabanCMP116Lemma3ResummationSourceAssumptions
+
+/-- The Lemma 3 scale-family estimate derived from the explicit resummation
+obligations in `BalabanCMP116Lemma3ResummationSourceAssumptions`. -/
+def lemma3_activity_estimate
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    {ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {zCarrier : Finset (Cube d L) → ℂ}
+    {r : Cube d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    {Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k))}
+    {D : ∀ _t _k : ℕ, PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {spectatorPull :
+      ∀ _t _k : ℕ, ∀ _ : PhysicalBond dPhys N,
+        β → SUNLieCoord Nc}
+    {precision covariance root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      ∀ _t _k : ℕ, Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {covNormBound rootNormBound : ∀ _t _k : ℕ, ℝ}
+    {covWeight rootWeight :
+      ∀ _t _k : ℕ, PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          Finset (PhysicalBond dPhys N)}
+    {sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {hp : ∀ _t _k : ℕ, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (OmegaPolymerType HF (z t k))
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {DParts :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k →
+        Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιY t k → ℕ}
+    {pWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
+    {z0Weight :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) → ιD t k → ιP t k →
+          ιZ0 t k → ℝ}
+    {z0PrimeWeight :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) → ιD t k → ιP t k →
+          ιZ0 t k → ιZ0' t k → ℝ}
+    {ν : ℕ → ℕ → Measure β}
+    {covIR : ℕ → ℝ}
+    {Rsc : ℕ → ℕ → ℝ}
+    {g : ℕ → ℝ}
+    {C1 C Hbar ε c0 betaFlow kappa kappa0 : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop}
+    (source :
+      BalabanCMP116Lemma3ResummationSourceAssumptions
+        ιD ιP ιZ0 ιZ0' ιY
+        zCarrier r z Λ D spectatorPull
+        precision covariance root physicalGaussian
+        covNormBound rootNormBound covWeight rootWeight
+        physicalActivity physicalActiveSupport sourceMetric
+        hp R DParts alpha6 eq229Metric
+        pWeight z0Weight z0PrimeWeight
+        ν covIR Rsc g
+        C1 C Hbar ε c0 betaFlow kappa kappa0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction) :
+    CMP116Lemma3ActivityEstimateScaleFamily
+      physicalActivity sourceMetric
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa) :=
+  cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages
+    hp R sourceMetric physicalActivity DParts alpha6 eq229Metric
+    pWeight z0Weight z0PrimeWeight
+    source.eq229_summability
+    source.p_stage_summability
+    source.z0_residual_summability
+    source.z0Prime_residual_summability
+    source.activity_identification
+    source.termwise_estimate
+    source.pWeight_nonneg
+    source.z0Weight_nonneg
+    source.residual_factorization
+
+/-- Canonical raw-source package extracted from the resummation-source
+assumption record. -/
+def rawSource
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    {ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {zCarrier : Finset (Cube d L) → ℂ}
+    {r : Cube d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    {Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k))}
+    {D : ∀ _t _k : ℕ, PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {spectatorPull :
+      ∀ _t _k : ℕ, ∀ _ : PhysicalBond dPhys N,
+        β → SUNLieCoord Nc}
+    {precision covariance root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      ∀ _t _k : ℕ, Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {covNormBound rootNormBound : ∀ _t _k : ℕ, ℝ}
+    {covWeight rootWeight :
+      ∀ _t _k : ℕ, PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          Finset (PhysicalBond dPhys N)}
+    {sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {hp : ∀ _t _k : ℕ, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (OmegaPolymerType HF (z t k))
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {DParts :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k →
+        Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιY t k → ℕ}
+    {pWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
+    {z0Weight :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) → ιD t k → ιP t k →
+          ιZ0 t k → ℝ}
+    {z0PrimeWeight :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) → ιD t k → ιP t k →
+          ιZ0 t k → ιZ0' t k → ℝ}
+    {ν : ℕ → ℕ → Measure β}
+    {covIR : ℕ → ℝ}
+    {Rsc : ℕ → ℕ → ℝ}
+    {g : ℕ → ℝ}
+    {C1 C Hbar ε c0 betaFlow kappa kappa0 : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop}
+    (source :
+      BalabanCMP116Lemma3ResummationSourceAssumptions
+        ιD ιP ιZ0 ιZ0' ιY
+        zCarrier r z Λ D spectatorPull
+        precision covariance root physicalGaussian
+        covNormBound rootNormBound covWeight rootWeight
+        physicalActivity physicalActiveSupport sourceMetric
+        hp R DParts alpha6 eq229Metric
+        pWeight z0Weight z0PrimeWeight
+        ν covIR Rsc g
+        C1 C Hbar ε c0 betaFlow kappa kappa0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction) :
+    ∀ t k,
+      PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        (D t k)
+        (root t k)
+        (physicalGaussian t k)
+        (physicalActivity t k)
+        (cmp116Lemma3ScaleWeight
+          sourceMetric
+          (fun t k => (hp t k).blockScale)
+          (fun t k => (hp t k).delta)
+          (fun t k => (hp t k).kappa)
+          t k)
+        (cmp116Lemma3ScaleAmplitude
+          (fun t k => (hp t k).C3)
+          (fun t k => (hp t k).epsilon1)
+          t k)
+        (rootLocalization t k)
+        (wilsonHessianIdentification t k)
+        (localActivityConstruction t k) :=
+  rawSource_of_lemma3ActivityEstimate
+    source.gaussian_pushforward
+    source.root_localization
+    source.wilson_hessian_identification
+    source.local_physical_activity_construction
+    (lemma3_activity_estimate source)
+
+/-- Package resummation-source assumptions into the existing Lemma-3 source
+assumption record. -/
+def to_lemma3SourceAssumptions
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    {ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {zCarrier : Finset (Cube d L) → ℂ}
+    {r : Cube d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    {Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k))}
+    {D : ∀ _t _k : ℕ, PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {spectatorPull :
+      ∀ _t _k : ℕ, ∀ _ : PhysicalBond dPhys N,
+        β → SUNLieCoord Nc}
+    {precision covariance root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      ∀ _t _k : ℕ, Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {covNormBound rootNormBound : ∀ _t _k : ℕ, ℝ}
+    {covWeight rootWeight :
+      ∀ _t _k : ℕ, PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          Finset (PhysicalBond dPhys N)}
+    {sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {hp : ∀ _t _k : ℕ, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (OmegaPolymerType HF (z t k))
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {DParts :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k →
+        Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιY t k → ℕ}
+    {pWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
+    {z0Weight :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) → ιD t k → ιP t k →
+          ιZ0 t k → ℝ}
+    {z0PrimeWeight :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) → ιD t k → ιP t k →
+          ιZ0 t k → ιZ0' t k → ℝ}
+    {ν : ℕ → ℕ → Measure β}
+    {covIR : ℕ → ℝ}
+    {Rsc : ℕ → ℕ → ℝ}
+    {g : ℕ → ℝ}
+    {C1 C Hbar ε c0 betaFlow kappa kappa0 : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop}
+    (source :
+      BalabanCMP116Lemma3ResummationSourceAssumptions
+        ιD ιP ιZ0 ιZ0' ιY
+        zCarrier r z Λ D spectatorPull
+        precision covariance root physicalGaussian
+        covNormBound rootNormBound covWeight rootWeight
+        physicalActivity physicalActiveSupport sourceMetric
+        hp R DParts alpha6 eq229Metric
+        pWeight z0Weight z0PrimeWeight
+        ν covIR Rsc g
+        C1 C Hbar ε c0 betaFlow kappa kappa0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction) :
+    BalabanCMP116Lemma3SourceAssumptions
+      zCarrier r z Λ D spectatorPull
+      precision covariance root physicalGaussian
+      covNormBound rootNormBound covWeight rootWeight
+      physicalActivity physicalActiveSupport
+      sourceMetric
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa)
+      ν covIR Rsc g
+      C1 C Hbar ε c0 betaFlow kappa kappa0
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction where
+  covariance_root_certificate := source.covariance_root_certificate
+  root_localization := source.root_localization
+  gaussian_pushforward := source.gaussian_pushforward
+  wilson_hessian_identification := source.wilson_hessian_identification
+  local_physical_activity_construction :=
+    source.local_physical_activity_construction
+  spectator_support_subset := source.spectator_support_subset
+  fluctuation_support_subset := source.fluctuation_support_subset
+  activity_stronglyMeasurable := source.activity_stronglyMeasurable
+  lemma3_activity_estimate := lemma3_activity_estimate source
+  amplitude_nonneg := source.amplitude_nonneg
+  active_support_subset_omega := source.active_support_subset_omega
+  active_support_subset_skeleton := source.active_support_subset_skeleton
+  weight_domination := source.weight_domination
+  probability_law := source.probability_law
+  holes_pairwise_disjoint := source.holes_pairwise_disjoint
+  no_edges_between_holes := source.no_edges_between_holes
+  holes_nonempty := source.holes_nonempty
+  appendix_f_geometric_smallness := source.appendix_f_geometric_smallness
+  rooted_hsharp_remainder_identity := by
+    simpa [lemma3_activity_estimate] using
+      source.rooted_hsharp_remainder_identity
+  amplitude_le_one := source.amplitude_le_one
+  profile_constant_nonneg := source.profile_constant_nonneg
+  hbar_nonneg := source.hbar_nonneg
+  kappa_margin := source.kappa_margin
+  kappa0_gt_one := source.kappa0_gt_one
+  time_decay_positive := source.time_decay_positive
+  half_budget := source.half_budget
+  profile_bound := source.profile_bound
+  epsilon_positive := source.epsilon_positive
+  beta_flow_positive := source.beta_flow_positive
+  coupling_positive := source.coupling_positive
+  coupling_small := source.coupling_small
+  coupling_recursion := source.coupling_recursion
+  ir_bound := source.ir_bound
+
+end BalabanCMP116Lemma3ResummationSourceAssumptions
+
 /-- Checked target statement for the Balaban CMP116 source theorem package.
 
 This named proposition records the implication from unfolded source assumptions
@@ -1126,6 +1842,73 @@ def BalabanCMP116Lemma3SourceAssumptions.to_m3Frontier
       rootLocalization wilsonHessianIdentification
       localActivityConstruction :=
   CMP116RawSourceM3Frontier.of_lemma3SourceAssumptions h
+
+/-- Method-style alias for the resummation-source route into the raw-source M3
+frontier. -/
+def BalabanCMP116Lemma3ResummationSourceAssumptions.to_m3Frontier
+    {ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {hp : ∀ _t _k : ℕ, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (OmegaPolymerType HF (z t k))
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {DParts :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k →
+        Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιY t k → ℕ}
+    {pWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
+    {z0Weight :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) → ιD t k → ιP t k →
+          ιZ0 t k → ℝ}
+    {z0PrimeWeight :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) → ιD t k → ιP t k →
+          ιZ0 t k → ιZ0' t k → ℝ}
+    (h :
+      BalabanCMP116Lemma3ResummationSourceAssumptions
+        ιD ιP ιZ0 ιZ0' ιY
+        zCarrier r z Λ D spectatorPull
+        precision covariance root physicalGaussian
+        covNormBound rootNormBound covWeight rootWeight
+        physicalActivity physicalActiveSupport sourceMetric
+        hp R DParts alpha6 eq229Metric
+        pWeight z0Weight z0PrimeWeight
+        ν covIR Rsc g
+        C1 C Hbar ε c0 betaFlow kappa kappa0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction) :
+    CMP116RawSourceM3Frontier
+      zCarrier r z Λ D spectatorPull
+      precision covariance root physicalGaussian
+      covNormBound rootNormBound covWeight rootWeight
+      physicalActivity physicalActiveSupport
+      (cmp116Lemma3ScaleWeight
+        sourceMetric
+        (fun t k => (hp t k).blockScale)
+        (fun t k => (hp t k).delta)
+        (fun t k => (hp t k).kappa))
+      ν covIR Rsc g
+      (cmp116Lemma3ScaleAmplitude
+        (fun t k => (hp t k).C3)
+        (fun t k => (hp t k).epsilon1))
+      C1 C Hbar ε c0 betaFlow kappa kappa0
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction :=
+  (BalabanCMP116Lemma3ResummationSourceAssumptions.to_lemma3SourceAssumptions
+    h).to_m3Frontier
 
 /-- The checked source-theorem target is discharged by pure record packaging. -/
 theorem balabanCMP116SourceTheorem_of_assumptions :

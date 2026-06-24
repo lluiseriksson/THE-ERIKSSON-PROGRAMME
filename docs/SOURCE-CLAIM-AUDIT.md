@@ -685,6 +685,16 @@ The scale-family wrapper
 applies this same pStage/residual-stage route pointwise in `(t, k)`.  It is a
 consumer of explicit per-scale source obligations, not a source extraction.
 
+`YangMills.RG.BalabanCMP116SourceTheorem` now also exposes
+`BalabanCMP116Lemma3ResummationSourceAssumptions`, a source-boundary record
+that carries those explicit per-scale obligations instead of a monolithic
+`CMP116Lemma3ActivityEstimateScaleFamily` field.  Its constructors derive the
+existing `BalabanCMP116Lemma3SourceAssumptions` and `CMP116RawSourceM3Frontier`
+records by applying the verified pStage/residual-stage scale-family theorem.
+This is an audit improvement only: the P-stage budget, the two residual-stage
+summability estimates, the activity identification, the termwise estimate, and
+the source metric comparison remain primary-source obligations.
+
 ## Agent Checklist
 
 Before adding a source-facing Lean theorem:
