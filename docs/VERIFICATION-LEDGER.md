@@ -12342,3 +12342,43 @@ prove the dictionary is isometric, does not identify a determinant/Jacobian
 convention, does not prove Gaussian pushforward, does not localize the
 covariance root, does not construct local activities, and does not prove raw
 activity decay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 316 (2026-06-24, **dictionary Gaussian-map norm budget**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum adds norm-budget lemmas for the canonical dictionary/root
+Gaussian coordinate map:
+
+```
+PhysicalGaugeCMP116Dictionary.norm_gaussianRootMap_le
+PhysicalGaugeCMP116Dictionary.norm_gaussianRootMap_apply_le
+PhysicalGaugeCMP116Dictionary.norm_gaussianRootMap_le_of_root_norm_le
+PhysicalGaugeCMP116Dictionary.norm_gaussianRootMap_apply_le_of_root_norm_le
+```
+
+The operator-norm statement is the standard composition estimate for
+`root.comp D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap`.
+The pointwise statement follows from the operator-norm bound, and the final two
+forms consume an explicit source-supplied root-norm bound.  These lemmas carry
+the dictionary constant visibly; they do not assert an isometry or a Gaussian
+law.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is a continuous-linear-map norm budget for an already
+defined coordinate map.  It does not prove Gaussian pushforward, covariance
+identity, root localization/truncation, Wilson-Hessian identification, local
+activity construction, or raw activity decay.  Clay distance **~0% (<0.1%),
+unchanged**.

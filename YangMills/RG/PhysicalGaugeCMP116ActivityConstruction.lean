@@ -139,6 +139,72 @@ noncomputable def gaussianRootMap
       root (D.pullFluctuationCochain ξ) :=
   rfl
 
+/-- Operator-norm budget for the canonical dictionary/root Gaussian map.  This
+is only the continuous-linear-map composition estimate; it does not identify a
+Gaussian pushforward or a covariance. -/
+theorem norm_gaussianRootMap_le
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc) :
+    ‖D.gaussianRootMap root‖ ≤
+      ‖root‖ *
+        ‖D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖ := by
+  change
+    ‖root.comp D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖ ≤
+      ‖root‖ *
+        ‖D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖
+  exact
+    ContinuousLinearMap.opNorm_comp_le
+      root
+      D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap
+
+/-- Pointwise norm budget for the dictionary/root Gaussian map. -/
+theorem norm_gaussianRootMap_apply_le
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (ξ : CMP116FluctuationField d L lieDim) :
+    ‖D.gaussianRootMap root ξ‖ ≤
+      (‖root‖ *
+        ‖D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖) *
+        ‖ξ‖ :=
+  (D.gaussianRootMap root).le_of_opNorm_le
+    (D.norm_gaussianRootMap_le root) ξ
+
+/-- Operator-norm budget when the physical source theorem supplies an explicit
+bound for the root. -/
+theorem norm_gaussianRootMap_le_of_root_norm_le
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {rootNormBound : ℝ}
+    (hroot : ‖root‖ ≤ rootNormBound) :
+    ‖D.gaussianRootMap root‖ ≤
+      rootNormBound *
+        ‖D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖ := by
+  exact (D.norm_gaussianRootMap_le root).trans
+    (mul_le_mul_of_nonneg_right hroot (norm_nonneg _))
+
+/-- Pointwise dictionary/root Gaussian-map budget with an explicit source
+root-norm bound. -/
+theorem norm_gaussianRootMap_apply_le_of_root_norm_le
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {rootNormBound : ℝ}
+    (hroot : ‖root‖ ≤ rootNormBound)
+    (ξ : CMP116FluctuationField d L lieDim) :
+    ‖D.gaussianRootMap root ξ‖ ≤
+      (rootNormBound *
+        ‖D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖) *
+        ‖ξ‖ :=
+  (D.gaussianRootMap root).le_of_opNorm_le
+    (D.norm_gaussianRootMap_le_of_root_norm_le hroot) ξ
+
 /-- The canonical physical Gaussian root map is the physical-coordinate
 realization of the same root conjugated into CMP116 coordinates.
 

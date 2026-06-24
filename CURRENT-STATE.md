@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 315.
+Addendum 316.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1173,6 +1173,14 @@ lemmas for the dictionary pull/push maps:
 `norm_le_opNorm_mul_norm_pushFluctuation`.  These record only generic operator
 norm bounds for the continuous dictionary equivalence and its inverse; they do
 not assert an isometry, a Jacobian convention, or any physical Gaussian law.
+The canonical Gaussian coordinate map now has the corresponding operator and
+pointwise norm budgets
+`PhysicalGaugeCMP116Dictionary.norm_gaussianRootMap_le`,
+`norm_gaussianRootMap_apply_le`,
+`norm_gaussianRootMap_le_of_root_norm_le`, and
+`norm_gaussianRootMap_apply_le_of_root_norm_le`.  These combine the root
+operator norm with the dictionary norm constant; they still do not prove the
+Gaussian pushforward identity or any covariance-root localization.
 The same construction file now has a thin raw-source compatibility layer:
 `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses` extends the
 separated Gaussian/root/Hessian/activity source package with the unfolded
