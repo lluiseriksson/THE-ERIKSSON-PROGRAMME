@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 331.
+Addendum 332.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1064,6 +1064,13 @@ The source-facing Lemma 3 output is now represented directly by
 resummed `H(Z)` estimate while keeping Gaussian pushforward, Wilson-Hessian
 identification, root localization, support translation, and the proof of
 Lemma 3's smallness hierarchy as separate obligations.
+The next layer is now a theorem-fed finite resummation interface in
+`YangMills.RG.BalabanCMP116Lemma3`: `CMP116HResummation` names the four
+pre-Lemma source summation families, `balabanCMP116H` is their finite sum, and
+`norm_balabanCMP116H_le_lemma3` proves the Lemma-3-shaped bound from termwise
+summand estimates plus a pre-Lemma summed-weight budget.  The module still
+does not derive those termwise/summed-weight inputs from CMP116 constants;
+that extraction remains the active source task.
 
 ## Live Frontier
 

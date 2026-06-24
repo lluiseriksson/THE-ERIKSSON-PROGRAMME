@@ -13015,3 +13015,70 @@ not identify Balaban's `H(Z)` with a constructed activity, does not prove the
 metric comparison, and does not prove Gaussian pushforward, Wilson-Hessian
 identification, covariance-root localization, or any finite/infinite
 root-piece reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 332 (2026-06-24, **CMP116 Lemma 3 finite resummation bridge**
+`YangMills.RG.BalabanCMP116Lemma3`; core 8355)
+
+This addendum adds a new module for the activity-only Lemma 3 route:
+
+```
+YangMills.RG.BalabanCMP116Lemma3
+```
+
+New declarations:
+
+```
+CMP116Lemma3Parameters
+CMP116HResummation
+cmp116HIndexFinset
+balabanCMP116H
+norm_balabanCMP116H_le_lemma3
+cmp116Lemma3ActivityEstimate_of_resummation
+```
+
+`CMP116HResummation` names the finite source summation families corresponding
+to the pre-Lemma sums over `D`, `P`, `Z0`, and `Z0'`.  It carries summands and
+term weights, but no field equivalent to `H_decay` or `raw_pointwise_decay`.
+
+The theorem
+
+```
+norm_balabanCMP116H_le_lemma3
+```
+
+proves the final norm step from:
+
+* termwise bounds for every source summand; and
+* a pre-Lemma summed-weight budget for the finite index set,
+
+to the Lemma-3-shaped bound using the source weight introduced in Addendum
+331.  The adapter
+
+```
+cmp116Lemma3ActivityEstimate_of_resummation
+```
+
+then turns an explicit evaluation identity between a physical local activity
+and `balabanCMP116H` into `CMP116Lemma3ActivityEstimate`.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`
+or no additional axioms for definitions.
+
+**Honest scope.** This checkpoint is not the full analytic extraction of
+CMP116 Lemma 3.  It does not derive the termwise bound or the summed-weight
+budget from equations (2.27), (2.29)--(2.32), (2.34), (2.36), or (2.37), does
+not freeze the exact source definition of `C3`, and does not identify
+Balaban's `H(Z)` with a constructed physical activity.  It is the finite
+resummation/norm bridge that the future exact source-constant extraction must
+feed.  Clay distance **~0% (<0.1%), unchanged**.

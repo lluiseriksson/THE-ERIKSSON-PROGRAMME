@@ -482,6 +482,9 @@ import YangMills.RG.M3FrontierDependencies
 -- Source-facing Balaban CMP116 theorem target with the raw-source package
 -- unfolded into individually auditable source fields.
 import YangMills.RG.BalabanCMP116SourceTheorem
+-- CMP116 Lemma 3 resummed-activity bridge: termwise source bounds plus a
+-- pre-Lemma summed-weight budget feed the Lemma 3 activity estimate object.
+import YangMills.RG.BalabanCMP116Lemma3
 -- Named frontier for the raw-source CMP116/H# hypothesis surface.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier
 import YangMills.RG.Ubar
