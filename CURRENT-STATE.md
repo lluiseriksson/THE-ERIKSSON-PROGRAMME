@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 324.
+Addendum 325.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1175,6 +1175,10 @@ finite sum of activity evaluations and through packaged
 `LocalActivity.finsetSum`, so downstream Appendix-F style finite activity
 packages can consume the root-piece input-dependence theorem without opening
 the single-activity proof.
+The same finite-piece input-dependence theorem now also propagates through
+`LocalActivity.mayerCoverActivity`, i.e. the Appendix-F raw Mayer product
+`exp(H)-1` over a finite cover.  This is still exact algebra over supplied
+finite root pieces, not a Gaussian pushforward or activity-decay theorem.
 The dictionary-backed construction layer now has
 `PhysicalRootToCMP116OperatorTransport.localizedRootLinearMap_ofDictionary`,
 which turns an explicit physical root kernel bound, a dictionary kernel-bound

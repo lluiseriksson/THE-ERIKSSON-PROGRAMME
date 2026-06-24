@@ -828,6 +828,54 @@ theorem localizedRootLinearMapFinsetSum_ofDictionary_activityFamily_finsetSum_gl
       I D root rootWeight cmpWeight hkernelTransport
       hkernel dist R Xin hfinite J activity ψ hξη
 
+/-- Appendix-F-style Mayer-cover product version of the finite-family
+consumer.  It propagates the finite-piece root-sum input-dependence through
+the raw Mayer factors `exp(H) - 1`. -/
+theorem localizedRootLinearMapFinsetSum_ofDictionary_mayerCoverActivity_globalEval_eq_of_agreeOn
+    {ι κ : Type*} [DecidableEq ι] [DecidableEq (PhysicalBond dPhys N)]
+    (I : Finset ι)
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (cmpWeight : Cube d L → Cube d L → ℝ)
+    (hkernelTransport :
+      PhysicalCovarianceKernelBound root rootWeight →
+        CMP116LinearMapKernelBound
+          (cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root)
+          cmpWeight)
+    (hkernel : PhysicalCovarianceKernelBound root rootWeight)
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ)
+    (Xin : ι → Finset (Cube d L))
+    (hfinite : CMP116KernelFiniteRange cmpWeight dist R)
+    (J : Finset κ)
+    (activity : κ → PhysicalGaugeLocalActivity dPhys N Nc)
+    (ψ : PhysicalGaugeField dPhys N Nc)
+    {ξ η : CMP116FluctuationField d L lieDim}
+    (hξη : AgreeOn (I.biUnion Xin) ξ η) :
+    (LocalActivity.mayerCoverActivity J activity).globalEval ψ
+        (D.pullFluctuationCochain
+          ((localizedRootLinearMapFinsetSum_ofDictionary
+            I D root rootWeight cmpWeight hkernelTransport
+            hkernel dist R Xin hfinite).toContinuousLinearMap ξ)) =
+      (LocalActivity.mayerCoverActivity J activity).globalEval ψ
+        (D.pullFluctuationCochain
+          ((localizedRootLinearMapFinsetSum_ofDictionary
+            I D root rootWeight cmpWeight hkernelTransport
+            hkernel dist R Xin hfinite).toContinuousLinearMap η)) := by
+  rw [LocalActivity.globalEval_mayerCoverActivity]
+  rw [LocalActivity.globalEval_mayerCoverActivity]
+  refine Finset.prod_congr rfl ?_
+  intro X _hX
+  exact congrArg (fun z : ℂ => Complex.exp z - 1)
+    (localizedRootLinearMapFinsetSum_ofDictionary_activity_globalEval_eq_of_agreeOn
+      I D root rootWeight cmpWeight hkernelTransport
+      hkernel dist R Xin hfinite (activity X.1) ψ hξη)
+
 end PhysicalRootToCMP116OperatorTransport
 
 /-- Source-identification package for dictionary-backed localized Gaussian

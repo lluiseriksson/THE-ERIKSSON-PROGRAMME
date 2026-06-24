@@ -12698,3 +12698,40 @@ verified single-activity dependence theorem.  It does not prove that the
 finite root pieces reconstruct the full covariance root, does not prove a
 Gaussian pushforward identity, does not construct local activities, and does
 not prove raw activity decay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 325 (2026-06-24, **Mayer-cover activity consumer for root-piece sums**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum propagates the finite-piece root-sum input-dependence result
+through the Appendix-F raw Mayer-cover product:
+
+```
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMapFinsetSum_ofDictionary_mayerCoverActivity_globalEval_eq_of_agreeOn
+```
+
+The theorem says that `LocalActivity.mayerCoverActivity J activity`, evaluated
+on the physical pullback of a supplied finite-piece CMP116 root-sum output, is
+unchanged when the CMP116 inputs agree on `I.biUnion Xin`.  The proof rewrites
+the Mayer-cover product to the finite product of raw Mayer factors
+`exp((activity X).globalEval ...) - 1` and applies the single-activity
+consumer to each factor.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entry reports only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint is an exact Mayer-cover consumer of the
+already verified single-activity dependence theorem.  It does not prove that
+the finite root pieces reconstruct the full covariance root, does not prove a
+Gaussian pushforward identity, does not construct local activities, and does
+not prove raw activity decay.  Clay distance **~0% (<0.1%), unchanged**.
