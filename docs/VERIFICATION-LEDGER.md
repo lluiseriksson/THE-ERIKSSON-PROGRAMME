@@ -13897,3 +13897,48 @@ the normalized P residual predicate.  It does not construct `pWeight`, prove
 the P-stage source estimate, discharge `Z0/Z0'` residual stages, prove
 nonnegativity, prove termwise factorization, identify the physical activity,
 or prove CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 350 (2026-06-24, **CMP116 P-source residual bridge consumers**
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages`; core 8361)
+
+This checkpoint routes the already named CMP116 P-stage source-bound interface
+into the residual-stage consumers:
+
+```
+cmp116H_postD_sum_le_of_pStageSourceBound_residualStages
+cmp116H_termWeightSum_le_of_eq229_of_pStageSourceBound_residualStages
+cmp116Lemma3ActivityEstimate_of_eq229_pStageSourceBound_residualStages
+```
+
+Each theorem replaces only the source-neutral
+`CMP116PResidualSummability` premise by
+`CMP116PStageSourceBound` plus the explicit scalar smallness restriction
+
+```
+2 * (((blockScale : Real) + 2) ^ 4) *
+  pEntropyConstant * epsilon2 * Real.exp (5 * pStageKappa) <= 1
+```
+
+The post-D wrapper keeps an arbitrary nonnegative base.  The term-weight and
+activity wrappers keep Eq. (2.29), the Eq.-(2.29) product-weight base,
+normalized `Z0/Z0'` residual summability, nonnegativity, and pointwise
+factorization as explicit hypotheses.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-pstage-source-residual-bridge.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is a consumer-route improvement only.  It does not
+construct `pWeight`, prove the P-stage source estimate, source-identify Eq.
+(2.29), discharge `Z0/Z0'` residual stages, prove nonnegativity, prove the
+pointwise source factorization, identify the physical activity, prove termwise
+complex estimates, or prove CMP116 Lemma 3.  Clay distance **~0% (<0.1%),
+unchanged**.

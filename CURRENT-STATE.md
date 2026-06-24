@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 349.
+Addendum 350.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1117,6 +1117,15 @@ the explicit scalar restriction
 to the normalized `CMP116PResidualSummability`.  This names the source-budget
 shape without proving the construction of `pWeight`, the source constant
 hierarchy, or the remaining `Z0/Z0'` stages.
+The same P-source package now feeds the normalized residual-stage consumers
+through
+`cmp116H_postD_sum_le_of_pStageSourceBound_residualStages`,
+`cmp116H_termWeightSum_le_of_eq229_of_pStageSourceBound_residualStages`, and
+`cmp116Lemma3ActivityEstimate_of_eq229_pStageSourceBound_residualStages`.
+These wrappers only replace the `CMP116PResidualSummability` premise by the
+source-shaped P bound plus its scalar smallness condition; Eq. (2.29),
+`Z0/Z0'` residual summability, nonnegativity, pointwise factorization,
+termwise estimates, and activity identification remain explicit hypotheses.
 The same module now also exposes the source-order variant
 `cmp116H_postP_sum_le_of_residualStages`, which turns normalized fixed-`P`
 `Z0/Z0'` residual estimates into the post-`P` budget, plus

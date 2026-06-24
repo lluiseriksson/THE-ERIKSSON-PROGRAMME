@@ -326,6 +326,69 @@ theorem cmp116H_postD_sum_le_of_residualStages
     _ = base Z D := by
         ring
 
+/-- A source-shaped CMP116 P-stage bound plus its explicit scalar smallness
+restriction feeds the normalized residual-stage post-`D` bridge.
+
+This theorem only replaces the source-neutral `CMP116PResidualSummability`
+hypothesis by the already named P-stage source-bound interface.  The `Z0` and
+`Z0'` residual stages, nonnegativity, and pointwise factorization remain
+explicit hypotheses. -/
+theorem cmp116H_postD_sum_le_of_pStageSourceBound_residualStages
+    {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (base : σ → ιD → ℝ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (z0Weight : σ → ιD → ιP → ιZ0 → ℝ)
+    (z0PrimeWeight : σ → ιD → ιP → ιZ0 → ιZ0' → ℝ)
+    (blockScale : ℕ)
+    (pEntropyConstant epsilon2 pStageKappa : ℝ)
+    (hPsource :
+      CMP116PStageSourceBound
+        R.DIndex R.PIndex pWeight
+        blockScale pEntropyConstant epsilon2 pStageKappa)
+    (hPsmall :
+      2 * (((blockScale : ℝ) + 2) ^ 4) *
+          pEntropyConstant * epsilon2 * Real.exp (5 * pStageKappa) ≤ 1)
+    (hZ0sum :
+      CMP116Z0ResidualSummability
+        R.DIndex R.PIndex R.Z0Index z0Weight)
+    (hZ0PrimeSum :
+      CMP116Z0PrimeResidualSummability
+        R.DIndex R.PIndex R.Z0Index R.Z0PrimeIndex z0PrimeWeight)
+    (hbase_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z → 0 ≤ base Z D)
+    (hpWeight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D → 0 ≤ pWeight Z D P)
+    (hz0Weight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P → 0 ≤ z0Weight Z D P Z0)
+    (hfactor :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+            ∀ Z0', Z0' ∈ R.Z0PrimeIndex Z D P Z0 →
+              R.termWeight Z D P Z0 Z0' ≤
+                ((base Z D * pWeight Z D P) *
+                    z0Weight Z D P Z0) *
+                  z0PrimeWeight Z D P Z0 Z0') :
+    ∀ Z D, D ∈ R.DIndex Z →
+      Finset.sum (R.PIndex Z D) (fun P =>
+        Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+          Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+            R.termWeight Z D P Z0 Z0'))) ≤
+        base Z D := by
+  exact
+    cmp116H_postD_sum_le_of_residualStages
+      R base pWeight z0Weight z0PrimeWeight
+      (cmp116PResidualSummability_of_pStageSourceBound
+        R.DIndex R.PIndex pWeight
+        blockScale pEntropyConstant epsilon2 pStageKappa
+        hPsource hPsmall)
+      hZ0sum hZ0PrimeSum
+      hbase_nonneg hpWeight_nonneg hz0Weight_nonneg hfactor
+
 /-- A P-stage budget plus normalized fixed-`P` residual stages implies the
 post-`D` residual budget required by the equation-(2.29) consumer.
 
@@ -525,6 +588,176 @@ theorem cmp116H_termWeightSum_le_of_eq229_of_residualStages
   simpa [postDBase] using
     cmp116H_termWeightSum_le_of_eq229
       hp R sourceMetric DParts alpha6 eq229Metric hEq229 hpostD
+
+/-- Equation (2.29), a source-shaped P-stage bound plus scalar smallness, and
+normalized `Z0/Z0'` residual stages give the finite CMP116 `H` term-weight
+budget.
+
+The P-stage is the only premise discharged by this wrapper.  The equation
+(2.29), later residual stages, nonnegativity, and pointwise source
+factorization are still carried explicitly. -/
+theorem cmp116H_termWeightSum_le_of_eq229_of_pStageSourceBound_residualStages
+    {σ ιD ιP ιZ0 ιZ0' ιY Ψ Φ : Type*}
+    [DecidableEq ιD] [DecidableEq ιP]
+    [DecidableEq ιZ0] [DecidableEq ιZ0']
+    (hp : CMP116Lemma3Parameters)
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (sourceMetric : σ → ℕ)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 : ℝ)
+    (eq229Metric : σ → ιY → ℕ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (z0Weight : σ → ιD → ιP → ιZ0 → ℝ)
+    (z0PrimeWeight : σ → ιD → ιP → ιZ0 → ιZ0' → ℝ)
+    (blockScale : ℕ)
+    (pEntropyConstant epsilon2 pStageKappa : ℝ)
+    (hEq229 :
+      CMP116Eq229Summability
+        R.DIndex DParts alpha6 hp.delta hp.kappa eq229Metric)
+    (hPsource :
+      CMP116PStageSourceBound
+        R.DIndex R.PIndex pWeight
+        blockScale pEntropyConstant epsilon2 pStageKappa)
+    (hPsmall :
+      2 * (((blockScale : ℝ) + 2) ^ 4) *
+          pEntropyConstant * epsilon2 * Real.exp (5 * pStageKappa) ≤ 1)
+    (hZ0sum :
+      CMP116Z0ResidualSummability
+        R.DIndex R.PIndex R.Z0Index z0Weight)
+    (hZ0PrimeSum :
+      CMP116Z0PrimeResidualSummability
+        R.DIndex R.PIndex R.Z0Index R.Z0PrimeIndex z0PrimeWeight)
+    (halpha6 : 0 ≤ alpha6)
+    (hpWeight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D → 0 ≤ pWeight Z D P)
+    (hz0Weight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P → 0 ≤ z0Weight Z D P Z0)
+    (hfactor :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+            ∀ Z0', Z0' ∈ R.Z0PrimeIndex Z D P Z0 →
+              R.termWeight Z D P Z0 Z0' ≤
+                (((((hp.C3 * hp.epsilon1) *
+                    balabanCMP116Lemma3Weight
+                      hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+                    Finset.prod (DParts Z D)
+                      (cmp116Eq229Weight
+                        alpha6 hp.delta hp.kappa (eq229Metric Z))) *
+                    pWeight Z D P) *
+                    z0Weight Z D P Z0) *
+                  z0PrimeWeight Z D P Z0 Z0') :
+    ∀ Z,
+      Finset.sum (cmp116HIndexFinset R Z)
+        (fun x =>
+          R.termWeight Z x.1.1 x.1.2 x.2.1 x.2.2) ≤
+        (hp.C3 * hp.epsilon1) *
+          balabanCMP116Lemma3Weight
+            hp.blockScale hp.delta hp.kappa sourceMetric Z := by
+  exact
+    cmp116H_termWeightSum_le_of_eq229_of_residualStages
+      hp R sourceMetric DParts alpha6 eq229Metric
+      pWeight z0Weight z0PrimeWeight
+      hEq229
+      (cmp116PResidualSummability_of_pStageSourceBound
+        R.DIndex R.PIndex pWeight
+        blockScale pEntropyConstant epsilon2 pStageKappa
+        hPsource hPsmall)
+      hZ0sum hZ0PrimeSum
+      halpha6 hpWeight_nonneg hz0Weight_nonneg hfactor
+
+/-- Equation (2.29), the source-shaped CMP116 P-stage bound, and normalized
+`Z0/Z0'` residual stages feed the theorem-backed CMP116 Lemma 3 activity
+estimate.
+
+This is the activity-level wrapper for
+`cmp116H_termWeightSum_le_of_eq229_of_pStageSourceBound_residualStages`; it
+does not identify the physical activity, termwise complex bound, or remaining
+residual estimates with source statements. -/
+theorem cmp116Lemma3ActivityEstimate_of_eq229_pStageSourceBound_residualStages
+    {σ ιD ιP ιZ0 ιZ0' ιY : Type*}
+    [DecidableEq ιD] [DecidableEq ιP]
+    [DecidableEq ιZ0] [DecidableEq ιZ0']
+    {dPhys N Nc : ℕ} [NeZero N]
+    (hp : CMP116Lemma3Parameters)
+    (R :
+      CMP116HResummation σ ιD ιP ιZ0 ιZ0'
+        (PhysicalGaugeField dPhys N Nc)
+        (PhysicalGaugeField dPhys N Nc))
+    (sourceMetric : σ → ℕ)
+    (physicalActivity : σ → PhysicalGaugeLocalActivity dPhys N Nc)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 : ℝ)
+    (eq229Metric : σ → ιY → ℕ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (z0Weight : σ → ιD → ιP → ιZ0 → ℝ)
+    (z0PrimeWeight : σ → ιD → ιP → ιZ0 → ιZ0' → ℝ)
+    (blockScale : ℕ)
+    (pEntropyConstant epsilon2 pStageKappa : ℝ)
+    (hEq229 :
+      CMP116Eq229Summability
+        R.DIndex DParts alpha6 hp.delta hp.kappa eq229Metric)
+    (hPsource :
+      CMP116PStageSourceBound
+        R.DIndex R.PIndex pWeight
+        blockScale pEntropyConstant epsilon2 pStageKappa)
+    (hPsmall :
+      2 * (((blockScale : ℝ) + 2) ^ 4) *
+          pEntropyConstant * epsilon2 * Real.exp (5 * pStageKappa) ≤ 1)
+    (hZ0sum :
+      CMP116Z0ResidualSummability
+        R.DIndex R.PIndex R.Z0Index z0Weight)
+    (hZ0PrimeSum :
+      CMP116Z0PrimeResidualSummability
+        R.DIndex R.PIndex R.Z0Index R.Z0PrimeIndex z0PrimeWeight)
+    (hglobal :
+      ∀ Z ψ φ,
+        (physicalActivity Z).globalEval ψ φ =
+          balabanCMP116H R Z ψ φ)
+    (hterm :
+      ∀ Z x, x ∈ cmp116HIndexFinset R Z →
+        ∀ ψ φ,
+          ‖R.summand Z x.1.1 x.1.2 x.2.1 x.2.2 ψ φ‖ ≤
+            R.termWeight Z x.1.1 x.1.2 x.2.1 x.2.2)
+    (halpha6 : 0 ≤ alpha6)
+    (hpWeight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D → 0 ≤ pWeight Z D P)
+    (hz0Weight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P → 0 ≤ z0Weight Z D P Z0)
+    (hfactor :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+            ∀ Z0', Z0' ∈ R.Z0PrimeIndex Z D P Z0 →
+              R.termWeight Z D P Z0 Z0' ≤
+                (((((hp.C3 * hp.epsilon1) *
+                    balabanCMP116Lemma3Weight
+                      hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+                    Finset.prod (DParts Z D)
+                      (cmp116Eq229Weight
+                        alpha6 hp.delta hp.kappa (eq229Metric Z))) *
+                    pWeight Z D P) *
+                    z0Weight Z D P Z0) *
+                  z0PrimeWeight Z D P Z0 Z0') :
+    CMP116Lemma3ActivityEstimate
+      physicalActivity sourceMetric hp.blockScale
+      hp.C3 hp.epsilon1 hp.delta hp.kappa := by
+  exact
+    cmp116Lemma3ActivityEstimate_of_resummation
+      hp R sourceMetric physicalActivity
+      hglobal hterm
+      (cmp116H_termWeightSum_le_of_eq229_of_pStageSourceBound_residualStages
+        hp R sourceMetric DParts alpha6 eq229Metric
+        pWeight z0Weight z0PrimeWeight
+        blockScale pEntropyConstant epsilon2 pStageKappa
+        hEq229 hPsource hPsmall hZ0sum hZ0PrimeSum
+        halpha6 hpWeight_nonneg hz0Weight_nonneg hfactor)
 
 /-- Equation (2.29), a P-stage budget, and normalized fixed-`P`
 `Z0/Z0'` residual stages give the finite CMP116 `H` term-weight budget.

@@ -670,6 +670,16 @@ leading `2`, `(L+2)^4`, `O(1)`, `epsilon2`, and `exp 5*kappa` scalar
 restriction.  This is still not a proof of the source `P` estimate or of the
 construction of `pWeight`.
 
+The P-source predicate is now also routed into the residual-stage consumers:
+`cmp116H_postD_sum_le_of_pStageSourceBound_residualStages`,
+`cmp116H_termWeightSum_le_of_eq229_of_pStageSourceBound_residualStages`, and
+`cmp116Lemma3ActivityEstimate_of_eq229_pStageSourceBound_residualStages`.
+These are composition theorems only.  They replace a normalized
+`CMP116PResidualSummability` assumption by the source-shaped P bound and its
+scalar smallness restriction; they do not assign source status to Eq. (2.29),
+the `Z0` stage, the `Z0'` stage, the pointwise factorization, the termwise
+complex estimate, or physical activity identification.
+
 The scale-family theorem
 `cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_residualStages` is the same
 composition pointwise in `(t, k)`.  Its named `postDBase` equality is
