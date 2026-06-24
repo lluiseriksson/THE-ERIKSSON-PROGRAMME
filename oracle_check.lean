@@ -1385,8 +1385,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate_admissible_zeroExtension
 #print axioms YangMills.RG.balabanCMP116Lemma3Weight_domination_of_admissible_metricComparison
 #print axioms YangMills.RG.cmp116Eq229Weight
+#print axioms YangMills.RG.cmp116Eq229Product
 #print axioms YangMills.RG.CMP116Eq229Summability
 #print axioms YangMills.RG.cmp116Eq229Weight_nonneg
+#print axioms YangMills.RG.cmp116Eq229Product_nonneg
 #print axioms YangMills.RG.cmp116_DStage_sum_le_of_eq229
 #print axioms YangMills.RG.CMP116PStageSummability
 #print axioms YangMills.RG.cmp116H_postDSum_le_of_pStage
@@ -1394,6 +1396,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116H_termWeightSum_le_of_eq229
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimate_of_eq229_postD
 #print axioms YangMills.RG.CMP116PResidualSummability
+#print axioms YangMills.RG.cmp116Eq229WeightedPWeight
+#print axioms YangMills.RG.cmp116Eq229WeightedPWeight_nonneg
+#print axioms YangMills.RG.cmp116PStageSummability_of_pResidualSummability_weighted
+#print axioms YangMills.RG.cmp116PStageSummabilityScaleFamily_of_pResidualSummability_weighted
 #print axioms YangMills.RG.CMP116PStageSourceBound
 #print axioms YangMills.RG.cmp116PResidualSummability_of_pStageSourceBound
 #print axioms YangMills.RG.CMP116Z0ResidualSummability

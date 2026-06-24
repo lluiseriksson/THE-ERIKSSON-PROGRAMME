@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 359.
+Addendum 360.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1083,6 +1083,16 @@ nonnegative base factor times the (2.29) product, then the D-sum is bounded by
 that base factor.  This is only the first-stage finite resummation consumer; it
 does not prove the small-`α₆`/large-`K` source assertion or any final Lemma 3
 residual post-D budget.  It now also proves
+`cmp116Eq229Product` and `cmp116Eq229Product_nonneg`, naming the fixed-`D`
+product from Eq. (2.29) and its nonnegativity under `0 <= alpha6`.
+The residual-stage layer then defines `cmp116Eq229WeightedPWeight` and proves
+`cmp116PStageSummability_of_pResidualSummability_weighted`: a normalized
+P-residual sum, multiplied by the Eq. (2.29) product, yields exactly the
+budget-valued P-stage predicate with that same product as budget.  The
+dependent lift
+`cmp116PStageSummabilityScaleFamily_of_pResidualSummability_weighted` makes
+this available over `(t, k)`.
+The Eq. (2.29) module also retains
 `CMP116PStageSummability`, a budget-valued fixed-`(Z,D)` P-stage predicate,
 and `cmp116H_postDSum_le_of_pStage`, which combines that P-stage budget with
 an explicit fixed-`P` nested `Z0/Z0'` residual estimate to recover the old

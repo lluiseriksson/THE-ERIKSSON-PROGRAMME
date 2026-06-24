@@ -786,6 +786,57 @@ theorem cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStagePostPResidualBoun
       (hglobal t k)
       (hterm t k)
 
+/-- Scale-family lift of the Eq. (2.29)-weighted P-stage adapter.
+
+It turns normalized per-scale P residual summability into the exact
+`CMP116PStageSummability` whose budget is the Eq. (2.29) fixed-`D` product. -/
+theorem cmp116PStageSummabilityScaleFamily_of_pResidualSummability_weighted
+    {σ ιD ιP ιY : ℕ → ℕ → Type*}
+    (DIndex : ∀ t k, σ t k → Finset (ιD t k))
+    (PIndex : ∀ t k, σ t k → ιD t k → Finset (ιP t k))
+    (DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k))
+    (alpha6 delta kappa : ℕ → ℕ → ℝ)
+    (metric : ∀ t k, σ t k → ιY t k → ℕ)
+    (pResidualWeight :
+      ∀ t k, σ t k → ιD t k → ιP t k → ℝ)
+    (hPResidual :
+      ∀ t k,
+        CMP116PResidualSummability
+          (DIndex t k)
+          (PIndex t k)
+          (pResidualWeight t k))
+    (halpha6 : ∀ t k, 0 ≤ alpha6 t k) :
+    ∀ t k,
+      CMP116PStageSummability
+        (DIndex t k)
+        (PIndex t k)
+        (cmp116Eq229WeightedPWeight
+          (DParts t k)
+          (alpha6 t k)
+          (delta t k)
+          (kappa t k)
+          (metric t k)
+          (pResidualWeight t k))
+        (cmp116Eq229Product
+          (DParts t k)
+          (alpha6 t k)
+          (delta t k)
+          (kappa t k)
+          (metric t k)) := by
+  intro t k
+  exact
+    cmp116PStageSummability_of_pResidualSummability_weighted
+      (DIndex t k)
+      (PIndex t k)
+      (DParts t k)
+      (alpha6 t k)
+      (delta t k)
+      (kappa t k)
+      (metric t k)
+      (pResidualWeight t k)
+      (hPResidual t k)
+      (halpha6 t k)
+
 /-- Pointwise scale-family majorization of the source-shaped post-`P`
 amplitude/weight by the canonical CMP116 Lemma-3 base factor.
 

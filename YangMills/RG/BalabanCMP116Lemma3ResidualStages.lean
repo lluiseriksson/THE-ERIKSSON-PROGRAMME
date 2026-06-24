@@ -40,6 +40,88 @@ def CMP116PResidualSummability
   ∀ Z D, D ∈ DIndex Z →
     Finset.sum (PIndex Z D) (fun P => pWeight Z D P) ≤ 1
 
+/-- Canonical P-stage weight obtained by multiplying a normalized residual
+P-weight by the fixed-`D` Eq. (2.29) product. -/
+noncomputable def cmp116Eq229WeightedPWeight
+    {σ ιD ιP ιY : Type*}
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 delta kappa : ℝ)
+    (metric : σ → ιY → ℕ)
+    (pResidualWeight : σ → ιD → ιP → ℝ) :
+    σ → ιD → ιP → ℝ :=
+  fun Z D P =>
+    cmp116Eq229Product DParts alpha6 delta kappa metric Z D *
+      pResidualWeight Z D P
+
+/-- The Eq. (2.29)-weighted P-weight is nonnegative when the Eq. (2.29)
+weight and the normalized P-weight are nonnegative. -/
+theorem cmp116Eq229WeightedPWeight_nonneg
+    {σ ιD ιP ιY : Type*}
+    {DParts : σ → ιD → Finset ιY}
+    {alpha6 delta kappa : ℝ}
+    {metric : σ → ιY → ℕ}
+    {pResidualWeight : σ → ιD → ιP → ℝ}
+    (halpha6 : 0 ≤ alpha6)
+    (hpResidual_nonneg :
+      ∀ Z D P, 0 ≤ pResidualWeight Z D P)
+    (Z : σ) (D : ιD) (P : ιP) :
+    0 ≤
+      cmp116Eq229WeightedPWeight
+        DParts alpha6 delta kappa metric pResidualWeight Z D P := by
+  exact
+    mul_nonneg
+      (cmp116Eq229Product_nonneg
+        (DParts := DParts) (metric := metric) halpha6 Z D)
+      (hpResidual_nonneg Z D P)
+
+/-- A normalized P-stage sum becomes the canonical CMP116 P-stage budget after
+weighting by the Eq. (2.29) product.
+
+This avoids replacing the product budget by an unrelated scalar smallness
+bound.  It proves only finite-sum algebra; the source estimate for the
+normalized P-weight remains an explicit hypothesis. -/
+theorem cmp116PStageSummability_of_pResidualSummability_weighted
+    {σ ιD ιP ιY : Type*}
+    (DIndex : σ → Finset ιD)
+    (PIndex : σ → ιD → Finset ιP)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 delta kappa : ℝ)
+    (metric : σ → ιY → ℕ)
+    (pResidualWeight : σ → ιD → ιP → ℝ)
+    (hPResidual :
+      CMP116PResidualSummability
+        DIndex PIndex pResidualWeight)
+    (halpha6 : 0 ≤ alpha6) :
+    CMP116PStageSummability
+      DIndex PIndex
+      (cmp116Eq229WeightedPWeight
+        DParts alpha6 delta kappa metric pResidualWeight)
+      (cmp116Eq229Product DParts alpha6 delta kappa metric) := by
+  intro Z D hD
+  let B : ℝ :=
+    cmp116Eq229Product DParts alpha6 delta kappa metric Z D
+  have hB_nonneg : 0 ≤ B := by
+    exact
+      cmp116Eq229Product_nonneg
+        (DParts := DParts) (metric := metric) halpha6 Z D
+  calc
+    Finset.sum (PIndex Z D)
+        (fun P =>
+          cmp116Eq229WeightedPWeight
+            DParts alpha6 delta kappa metric pResidualWeight Z D P)
+        =
+      B * Finset.sum (PIndex Z D)
+        (fun P => pResidualWeight Z D P) := by
+          simp [cmp116Eq229WeightedPWeight, B, Finset.mul_sum]
+    _ ≤ B * 1 := by
+          exact
+            mul_le_mul_of_nonneg_left
+              (hPResidual Z D hD)
+              hB_nonneg
+    _ =
+      cmp116Eq229Product DParts alpha6 delta kappa metric Z D := by
+          simp [B]
+
 /-- The source-shaped `P`-stage estimate in the CMP116 Lemma-3 resummation,
 before applying the corresponding scalar smallness restriction.
 

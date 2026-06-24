@@ -55,6 +55,16 @@ def CMP116Eq229Summability
             (cmp116Eq229Weight alpha6 delta kappa (metric Y0))) ≤
       1
 
+/-- The fixed-`D` product appearing in CMP116 equation (2.29). -/
+noncomputable def cmp116Eq229Product
+    {σ ιD ιY : Type*}
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 delta kappa : ℝ)
+    (metric : σ → ιY → ℕ)
+    (Z : σ) (D : ιD) : ℝ :=
+  Finset.prod (DParts Z D)
+    (cmp116Eq229Weight alpha6 delta kappa (metric Z))
+
 /-- The CMP116 (2.29) weight is nonnegative when `alpha_6` is nonnegative. -/
 theorem cmp116Eq229Weight_nonneg
     {ιY : Type*}
@@ -64,6 +74,22 @@ theorem cmp116Eq229Weight_nonneg
     (Y : ιY) :
     0 ≤ cmp116Eq229Weight alpha6 delta kappa metric Y := by
   exact mul_nonneg halpha6 (Real.exp_nonneg _)
+
+/-- The CMP116 (2.29) fixed-`D` product is nonnegative when `alpha_6` is
+nonnegative. -/
+theorem cmp116Eq229Product_nonneg
+    {σ ιD ιY : Type*}
+    {DParts : σ → ιD → Finset ιY}
+    {alpha6 delta kappa : ℝ}
+    {metric : σ → ιY → ℕ}
+    (halpha6 : 0 ≤ alpha6)
+    (Z : σ) (D : ιD) :
+    0 ≤ cmp116Eq229Product DParts alpha6 delta kappa metric Z D := by
+  exact
+    Finset.prod_nonneg
+      (fun Y _ =>
+        cmp116Eq229Weight_nonneg
+          (metric := metric Z) halpha6 Y)
 
 /-- First-stage D-sum consumer for CMP116 equation (2.29).
 

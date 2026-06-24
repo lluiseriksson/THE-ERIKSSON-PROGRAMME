@@ -706,6 +706,14 @@ predicate `CMP116PStageSummability` and the helper
 budget plus a fixed-P nested `Z0/Z0'` residual estimate recovers the old
 post-D `hpostD` bound.  It is not named after Eq. (2.30), and this audit does
 not claim that Eq. (2.30) alone proves the predicate.
+The exact Eq. (2.29) product now has the reusable name
+`cmp116Eq229Product`, and `cmp116Eq229WeightedPWeight` records the canonical
+choice `pWeight = cmp116Eq229Product * pResidualWeight`.  The theorem
+`cmp116PStageSummability_of_pResidualSummability_weighted`, with its
+scale-family lift, proves only that a normalized P-residual sum gives the
+budget-valued P-stage predicate with the Eq. (2.29) product itself as budget.
+This is an algebraic alignment of budgets, not a source proof of the P-stage
+estimate or any scalar smallness hierarchy.
 
 `YangMills.RG.BalabanCMP116Lemma3ResidualStages` now also exposes the matching
 fixed-P residual bridge `cmp116H_postP_sum_le_of_residualStages` and the

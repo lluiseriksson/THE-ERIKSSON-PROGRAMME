@@ -14308,3 +14308,48 @@ constants, no Eq. (2.29), no P-stage budget, no physical activity
 identification, no termwise estimate, no admissibility or outside-domain
 vanishing theorem, no source-to-Appendix-F metric comparison, and no CMP116
 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 360 (2026-06-25, **CMP116 Eq. (2.29)-weighted P-stage budget**
+`YangMills.RG.BalabanCMP116Eq229`,
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages`,
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8362)
+
+This checkpoint names the fixed-`D` Eq. (2.29) product and uses it as the
+canonical P-stage budget:
+
+```
+cmp116Eq229Product
+cmp116Eq229Product_nonneg
+cmp116Eq229WeightedPWeight
+cmp116Eq229WeightedPWeight_nonneg
+cmp116PStageSummability_of_pResidualSummability_weighted
+cmp116PStageSummabilityScaleFamily_of_pResidualSummability_weighted
+```
+
+The finite-sum theorem says that if the normalized P-residual weights sum to
+at most `1`, then the Eq. (2.29)-weighted P-weights sum to at most the Eq.
+(2.29) product itself.  This gives the exact budget expected by
+`CMP116PStageSummability` without replacing the product by an unrelated scalar
+smallness bound.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq229.lean
+lake build YangMills.RG.BalabanCMP116Eq229
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake build YangMills.RG.BalabanCMP116Lemma3ResidualStages
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-eq229-weighted-pstage-budget.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Eq229.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is finite-sum budget alignment only.  It proves no Eq.
+(2.29), no source construction of the normalized P-residual weight, no P-stage
+source estimate, no scalar smallness hierarchy, no combined post-`P` estimate,
+no activity identification, no termwise estimate, and no CMP116 Lemma 3.
+Clay distance **~0% (<0.1%), unchanged**.
