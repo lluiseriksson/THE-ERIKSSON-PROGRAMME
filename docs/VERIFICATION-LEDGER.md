@@ -13405,3 +13405,63 @@ Wilson-Hessian identification, local activity construction, or the rooted H#
 identity.  The full-index scale-family estimate remains a compatibility
 hypothesis until admissible source-domain transport or zero-extension is
 formalized.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 338 (2026-06-24, **Lemma-3 source assumptions to raw-source M3 frontier**
+`YangMills.RG.BalabanCMP116SourceTheorem`; core 8360)
+
+This checkpoint adds the parallel source-assumption record requested after the
+scale-family packaging.  The new record
+`BalabanCMP116Lemma3SourceAssumptions` has the same consumer-side frontier
+surface as `BalabanCMP116SourceAssumptions`, but it replaces the arbitrary
+`raw_pointwise_decay` field with the canonical scale-family conclusion
+
+```
+CMP116Lemma3ActivityEstimateScaleFamily
+  physicalActivity sourceMetric blockScale C3 epsilon1 delta kappaSource.
+```
+
+Its canonical weight and amplitude are
+
+```
+cmp116Lemma3ScaleWeight sourceMetric blockScale delta kappaSource
+cmp116Lemma3ScaleAmplitude C3 epsilon1
+```
+
+and `weight_nonneg` is no longer a source field: the projection constructor
+derives it from `cmp116Lemma3ScaleWeight_nonneg`.
+
+New public declarations include:
+
+```
+BalabanCMP116Lemma3SourceAssumptions
+BalabanCMP116Lemma3SourceAssumptions.rawSource
+BalabanCMP116Lemma3SourceAssumptions.rooted_hsharp_remainder_identity_rawSource
+CMP116RawSourceM3Frontier.of_lemma3SourceAssumptions
+BalabanCMP116Lemma3SourceAssumptions.to_m3Frontier
+```
+
+The constructor is pure packaging.  It builds `raw_source` through
+`rawSource_of_lemma3ActivityEstimate`, passes canonical Lemma-3 weight and
+amplitude to `CMP116RawSourceM3Frontier`, and carries forward the existing
+covariance-root, Gaussian pushforward, root localization, Wilson-Hessian,
+local-activity, support, measurability, Appendix-F geometry, H#, marginal-flow,
+and IR hypotheses unchanged.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-lemma3-source-record.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116SourceTheorem.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+**Honest scope.** This does not prove CMP116 Lemma 3, the source termwise
+estimates, the summed-weight budget, metric domination, Gaussian pushforward,
+covariance-root localization, Wilson-Hessian identification, local physical
+activity construction, rooted H# identity, marginal-flow estimates, or the IR
+bound.  It only exposes a smaller source frontier for callers that already
+have the Lemma-3 activity estimate scale family.  Clay distance **~0%
+(<0.1%), unchanged**.

@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 337.
+Addendum 338.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1101,6 +1101,14 @@ packaging only: it does not derive the termwise estimates, summed-weight
 budget, source metric comparison, Gaussian pushforward, covariance-root
 localization, Wilson-Hessian identification, local physical activity
 construction, or the rooted H# identity.
+The source-frontier file now also exposes the parallel record
+`BalabanCMP116Lemma3SourceAssumptions`.  It keeps all existing covariance,
+Gaussian, support, measurability, H#, marginal-flow, and IR assumptions
+explicit, but replaces the arbitrary `raw_pointwise_decay` field by the
+canonical `CMP116Lemma3ActivityEstimateScaleFamily`.  The direct constructor
+`CMP116RawSourceM3Frontier.of_lemma3SourceAssumptions` projects that record to
+the existing M3 frontier with canonical Lemma-3 weight/amplitude and derives
+weight nonnegativity from the exponential weight theorem.
 
 ## Live Frontier
 
