@@ -14200,3 +14200,39 @@ rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills
 admissibility theorem, no outside-domain vanishing theorem, no source metric
 comparison, no activity construction, no combined post-`P` estimate, no Eq.
 (2.29), and no CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 357 (2026-06-24, **CMP116 post-P source decomposition**
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages`; core 8362)
+
+This checkpoint separates the source-side combined post-`P` residual estimate
+from the canonical downstream consumer:
+
+```
+CMP116PostPResidualSourceBound
+cmp116PostPResidualBound_of_sourceBound
+```
+
+`CMP116PostPResidualSourceBound` records a supplied fixed-`(Z,D,P)` combined
+`Z0/Z0'` finite-sum estimate with a source amplitude and source weight.  The
+adapter theorem converts it into `CMP116PostPResidualBound` only when an
+explicit majorization by the CMP116 Lemma-3 base factor is supplied and the
+P-weight is nonnegative.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-postp-source-decomposition.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is a boundary adapter only.  It does not prove the
+combined post-`P` source estimate, identify the printed CMP116 constants,
+prove the majorization into the canonical Lemma-3 base factor, prove Eq.
+(2.29), prove the P-stage budget, identify the physical activity, prove
+termwise estimates, or prove CMP116 Lemma 3.  Clay distance **~0%
+(<0.1%), unchanged**.

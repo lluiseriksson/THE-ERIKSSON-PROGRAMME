@@ -1144,7 +1144,8 @@ residual stages before applying Eq. (2.29), but still do not prove the
 P-stage source budget, the `Z0/Z0'` residual estimates, or the source
 constant hierarchy.
 The module now also exposes the source-safe combined post-`P` route
-`CMP116PostPResidualBound`,
+`CMP116PostPResidualSourceBound`,
+`cmp116PostPResidualBound_of_sourceBound`, `CMP116PostPResidualBound`,
 `cmp116H_postD_sum_le_of_pStagePostPResidualBound`,
 `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`, and
 `cmp116Lemma3ActivityEstimate_of_eq229_pStagePostPResidualBound`; the
@@ -1159,7 +1160,9 @@ The compatibility theorem
 normalized `Z0/Z0'` residual route is a special case of the combined
 post-`P` predicate.  It is an interface bridge only: the split residual
 estimates, product nonnegativity, and factorization remain explicit
-hypotheses.
+hypotheses.  The source-bound adapter separately records that a supplied
+post-`P` source amplitude/weight estimate implies the canonical consumer
+bound only under an explicit majorization by the CMP116 Lemma-3 base factor.
 The scale-family layer now also names the post-`P` route as a source-boundary
 package:
 `CMP116Lemma3PostPScaleSourceAssumptions` and
@@ -1580,6 +1583,8 @@ two coefficient vectors and their character expansions.
 
 The CMP116 Lemma-3 residual route now also has a combined post-`P` residual
 budget interface:
+`CMP116PostPResidualSourceBound`,
+`cmp116PostPResidualBound_of_sourceBound`,
 `CMP116PostPResidualBound`,
 `cmp116H_postD_sum_le_of_pStagePostPResidualBound`,
 `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`,
@@ -1588,9 +1593,12 @@ budget interface:
 This was added after rechecking CMP116 printed pages 19--20: the source
 controls the final `Z0/Z0'` resummations in a combined/order-sensitive way, so
 the repository must not pretend that the normalized `Z0'` predicate has been
-separately source-identified.  The new route is still conditional; it does not
-prove Eq. (2.29), the P-stage budget, activity identification, termwise
-estimates, or the combined post-`P` residual estimate.
+separately source-identified.  The source-bound adapter keeps the printed
+source amplitude/weight separate from the canonical Lemma-3 base factor and
+requires an explicit majorization theorem.  The new route is still conditional;
+it does not prove Eq. (2.29), the P-stage budget, activity identification,
+termwise estimates, the majorization, or the combined post-`P` source
+estimate.
 
 ## What Is Not Claimed
 

@@ -738,7 +738,8 @@ CMP116 printed pages 19--20.  The source first controls the last `Z0/Z0'`
 resummations through a combined/order-sensitive estimate; it is not currently
 justified to label the existing normalized fixed-`(D,P,Z0)` `Z0'` predicate as
 the printed source theorem.  The new declarations
-`CMP116PostPResidualBound`,
+`CMP116PostPResidualSourceBound`,
+`cmp116PostPResidualBound_of_sourceBound`, `CMP116PostPResidualBound`,
 `cmp116PostPResidualBound_of_residualStages`,
 `cmp116H_postD_sum_le_of_pStagePostPResidualBound`,
 `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`,
@@ -749,6 +750,12 @@ only a consumer route: `cmp116PostPResidualBound_of_residualStages` proves that
 the split normalized residual route packages into the combined predicate, but
 the split estimates, combined post-`P` bound, Eq. (2.29), P-stage budget,
 activity identification, and termwise estimates remain source obligations.
+`CMP116PostPResidualSourceBound` is the source-side predecessor for a supplied
+combined estimate with its own amplitude and source weight; the adapter to
+`CMP116PostPResidualBound` additionally requires an explicit majorization by
+the canonical CMP116 Lemma-3 base factor.  It does not claim that the printed
+equations literally contain that repository predicate or discharge the
+majorization.
 The scale source-boundary package
 `CMP116Lemma3PostPScaleSourceAssumptions` records the same route at the
 per-scale call site.  Its projection

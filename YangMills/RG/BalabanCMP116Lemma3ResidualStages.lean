@@ -156,13 +156,34 @@ def CMP116Z0PrimeResidualSummability
         Finset.sum (Z0PrimeIndex Z D P Z0)
           (fun Z0' => z0PrimeWeight Z D P Z0 Z0') ≤ 1
 
-/-- A direct post-`P` residual budget for the combined `Z0/Z0'` finite sum.
+/-- A source-side post-`P` residual budget for the combined `Z0/Z0'` finite sum.
 
-This is the source-faithful fallback when the primary text supplies a combined
-estimate for the last two resummations, or supplies them in an order different
-from the repository's dependent `Z0 -> Z0'` indexing.  It avoids pretending that
-the normalized `Z0` and `Z0'` predicates have already been separately identified
-with source equations. -/
+This keeps the source-shaped amplitude and source weight separate from the
+canonical CMP116 Lemma-3 base factor.  The adapter below records the explicit
+majorization needed to feed such a source statement into the downstream
+consumer `CMP116PostPResidualBound`. -/
+def CMP116PostPResidualSourceBound
+    {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (postPSourceWeight : σ → ℝ)
+    (postPAmplitude : ℝ)
+    (pWeight : σ → ιD → ιP → ℝ) : Prop :=
+  ∀ Z D, D ∈ R.DIndex Z →
+    ∀ P, P ∈ R.PIndex Z D →
+      Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+        Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+          R.termWeight Z D P Z0 Z0')) ≤
+        (postPAmplitude * postPSourceWeight Z) *
+          pWeight Z D P
+
+/-- A direct post-`P` residual consumer budget for the combined `Z0/Z0'` finite
+sum.
+
+This is the source-safe final consumer boundary when the primary text supplies a
+combined estimate for the last two resummations, or supplies them in an order
+different from the repository's dependent `Z0 -> Z0'` indexing.  It avoids
+pretending that the normalized `Z0` and `Z0'` predicates have already been
+separately identified with source equations. -/
 def CMP116PostPResidualBound
     {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
     (hp : CMP116Lemma3Parameters)
@@ -178,6 +199,37 @@ def CMP116PostPResidualBound
           balabanCMP116Lemma3Weight
             hp.blockScale hp.delta hp.kappa sourceMetric Z) *
           pWeight Z D P
+
+/-- A source-shaped combined post-`P` residual estimate feeds the canonical
+post-`P` consumer bound once its amplitude/weight is majorized by the CMP116
+Lemma-3 base factor. -/
+theorem cmp116PostPResidualBound_of_sourceBound
+    {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
+    (hp : CMP116Lemma3Parameters)
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (sourceMetric : σ → ℕ)
+    (postPSourceWeight : σ → ℝ)
+    (postPAmplitude : ℝ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (hsource :
+      CMP116PostPResidualSourceBound
+        R postPSourceWeight postPAmplitude pWeight)
+    (hmajorant :
+      ∀ Z,
+        postPAmplitude * postPSourceWeight Z ≤
+          (hp.C3 * hp.epsilon1) *
+            balabanCMP116Lemma3Weight
+              hp.blockScale hp.delta hp.kappa sourceMetric Z)
+    (hpWeight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D → 0 ≤ pWeight Z D P) :
+    CMP116PostPResidualBound hp R sourceMetric pWeight := by
+  intro Z D hD P hP
+  exact
+    (hsource Z D hD P hP).trans
+      (mul_le_mul_of_nonneg_right
+        (hmajorant Z)
+        (hpWeight_nonneg Z D hD P hP))
 
 /-- Normalized residual `Z0/Z0'` summability, plus a pointwise
 factorization, implies a fixed-`P` post-residual budget.
