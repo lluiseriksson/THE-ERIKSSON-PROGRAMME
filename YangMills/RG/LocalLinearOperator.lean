@@ -542,6 +542,12 @@ noncomputable def add
     OperatorSupportedBetween.add
       T.supportedBetween U.supportedBetween
 
+@[simp] theorem add_toContinuousLinearMap
+    (T U : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xout) :
+    (T.add U).toContinuousLinearMap =
+      T.toContinuousLinearMap + U.toContinuousLinearMap :=
+  rfl
+
 noncomputable def finsetSum
     {ι : Type*} [DecidableEq ι]
     (I : Finset ι)
@@ -556,6 +562,15 @@ noncomputable def finsetSum
       (fun i => (T i).toContinuousLinearMap)
       (fun i _hi => (T i).supportedBetween)
 
+@[simp] theorem finsetSum_toContinuousLinearMap
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (T : ι → CMP116LocalizedLinearMap
+      (lieDim := lieDim) Xin Xout) :
+    (finsetSum I T).toContinuousLinearMap =
+      I.sum fun i => (T i).toContinuousLinearMap :=
+  rfl
+
 noncomputable def comp
     (U : CMP116LocalizedLinearMap (lieDim := lieDim) Xmid Xout)
     (T : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xmid) :
@@ -565,6 +580,13 @@ noncomputable def comp
   supportedBetween :=
     OperatorSupportedBetween.comp
       T.supportedBetween U.supportedBetween
+
+@[simp] theorem comp_toContinuousLinearMap
+    (U : CMP116LocalizedLinearMap (lieDim := lieDim) Xmid Xout)
+    (T : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xmid) :
+    (U.comp T).toContinuousLinearMap =
+      U.toContinuousLinearMap.comp T.toContinuousLinearMap :=
+  rfl
 
 /-- Exact localization by input/output projection, with no decay claim. -/
 noncomputable def ofProjection
@@ -583,6 +605,16 @@ noncomputable def ofProjection
     · simp [ContinuousLinearMap.comp_apply, hsource]
     · funext a
       simp [ContinuousLinearMap.comp_apply, cmp116FieldProjection, htarget]
+
+@[simp] theorem ofProjection_toContinuousLinearMap
+    (Xin Xout : Finset (Cube d L))
+    (T :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        CMP116FluctuationField d L lieDim) :
+    (ofProjection (lieDim := lieDim) Xin Xout T).toContinuousLinearMap =
+      (cmp116FieldProjection Xout).comp
+        (T.comp (cmp116FieldProjection Xin)) :=
+  rfl
 
 end CMP116LocalizedLinearMap
 

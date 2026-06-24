@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 313.
+Addendum 314.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1139,6 +1139,10 @@ finite-range root operators.  This is still not a producer of `hraw`: the
 physical covariance root, its localization/truncation theorem, concrete
 coordinate chart, local Wilson activities, and Appendix-F raw bounds remain
 separate source obligations.
+The localized-map API now exposes exact underlying-map identities for
+`CMP116LocalizedLinearMap.add`, `.finsetSum`, `.comp`, and `.ofProjection`.
+These are mechanical simp bridges for later finite truncation assembly; they
+do not add any decay, finite-range, or source estimate.
 The dictionary-backed construction layer now has
 `PhysicalRootToCMP116OperatorTransport.localizedRootLinearMap_ofDictionary`,
 which turns an explicit physical root kernel bound, a dictionary kernel-bound

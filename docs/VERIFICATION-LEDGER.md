@@ -12265,3 +12265,40 @@ the physical root kernel bound, does not prove finite range of the CMP116
 weight, does not construct or localize the covariance root, does not identify
 a Wilson Hessian, does not prove Gaussian pushforward, and does not construct
 or bound a raw activity.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 314 (2026-06-24, **localized-map underlying-map simp API**
+`YangMills.RG.LocalLinearOperator`; core 8355)
+
+This addendum adds exact underlying-map identities for the generic CMP116
+localized-map constructors:
+
+```
+CMP116LocalizedLinearMap.add_toContinuousLinearMap
+CMP116LocalizedLinearMap.finsetSum_toContinuousLinearMap
+CMP116LocalizedLinearMap.comp_toContinuousLinearMap
+CMP116LocalizedLinearMap.ofProjection_toContinuousLinearMap
+```
+
+These theorems expose the `toContinuousLinearMap` fields of localized-map
+addition, finite sums, composition, and input/output projection.  They are
+mechanical API lemmas intended to keep later finite truncation assembly from
+unfolding structure definitions manually.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\LocalLinearOperator.lean
+lake build YangMills.RG.LocalLinearOperator
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\LocalLinearOperator.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is localized-operator API bookkeeping.  It does not
+prove any finite-range estimate, source theorem, covariance-root
+construction/localization, Gaussian pushforward, local activity construction,
+or raw activity decay.  Clay distance **~0% (<0.1%), unchanged**.
