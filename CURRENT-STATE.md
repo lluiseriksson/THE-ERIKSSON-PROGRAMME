@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 314.
+Addendum 315.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1165,6 +1165,14 @@ The same dictionary/root map now has the exact operator-coordinate identity
 the physical map `D.gaussianRootMap root` is precisely the physical-coordinate
 realization of the root conjugated into CMP116 coordinates.  This is a
 definition-level algebra bridge, not a Gaussian-law or localization theorem.
+The dictionary/root construction layer also exposes two-sided norm-control
+lemmas for the dictionary pull/push maps:
+`PhysicalGaugeCMP116Dictionary.norm_pullFluctuationCochain_le`,
+`norm_pushFluctuation_le`,
+`norm_le_inverse_opNorm_mul_norm_pullFluctuationCochain`, and
+`norm_le_opNorm_mul_norm_pushFluctuation`.  These record only generic operator
+norm bounds for the continuous dictionary equivalence and its inverse; they do
+not assert an isometry, a Jacobian convention, or any physical Gaussian law.
 The same construction file now has a thin raw-source compatibility layer:
 `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses` extends the
 separated Gaussian/root/Hessian/activity source package with the unfolded

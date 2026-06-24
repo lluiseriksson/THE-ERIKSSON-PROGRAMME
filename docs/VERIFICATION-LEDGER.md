@@ -12302,3 +12302,43 @@ The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
 prove any finite-range estimate, source theorem, covariance-root
 construction/localization, Gaussian pushforward, local activity construction,
 or raw activity decay.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 315 (2026-06-24, **dictionary norm-control interface**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum adds generic two-sided norm-control lemmas for the finite
+physical/CMP116 dictionary:
+
+```
+PhysicalGaugeCMP116Dictionary.norm_pullFluctuationCochain_le
+PhysicalGaugeCMP116Dictionary.norm_pushFluctuation_le
+PhysicalGaugeCMP116Dictionary.norm_le_inverse_opNorm_mul_norm_pullFluctuationCochain
+PhysicalGaugeCMP116Dictionary.norm_le_opNorm_mul_norm_pushFluctuation
+```
+
+The forward lemmas bound the dictionary pull/push maps by the operator norm of
+the continuous dictionary equivalence and its inverse.  The reverse lemmas
+apply the opposite side of the continuous equivalence to give explicit
+two-sided norm control.  These are ordinary operator-norm inequalities; no
+isometry, Jacobian normalization, product-Gaussian law, or source estimate is
+asserted.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is dictionary norm-interface bookkeeping.  It does not
+prove the dictionary is isometric, does not identify a determinant/Jacobian
+convention, does not prove Gaussian pushforward, does not localize the
+covariance root, does not construct local activities, and does not prove raw
+activity decay.  Clay distance **~0% (<0.1%), unchanged**.

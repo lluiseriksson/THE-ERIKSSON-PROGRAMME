@@ -1273,6 +1273,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.pullFluctuationCochain_agreeOn_iff
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.PhysicalGaugeCMP116GaussianChange
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.fluctuationFieldContinuousLinearEquiv
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_pullFluctuationCochain_le
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_pushFluctuation_le
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_le_inverse_opNorm_mul_norm_pullFluctuationCochain
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_le_opNorm_mul_norm_pushFluctuation
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.fluctuationFieldContinuousLinearEquiv_support_projection
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.gaussianRootMap
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.gaussianRootMap_eq_coordinates_comp_cmp116OperatorOfPhysical

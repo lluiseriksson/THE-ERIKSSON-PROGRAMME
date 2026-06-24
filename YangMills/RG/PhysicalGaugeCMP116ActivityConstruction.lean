@@ -50,6 +50,53 @@ noncomputable def fluctuationFieldContinuousLinearEquiv
       D.pushFluctuation A :=
   rfl
 
+/-- The dictionary pull is bounded by the operator norm of the continuous
+coordinate equivalence.  This exposes the finite dictionary constant without
+claiming that the dictionary is an isometry. -/
+theorem norm_pullFluctuationCochain_le
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (ξ : CMP116FluctuationField d L lieDim) :
+    ‖D.pullFluctuationCochain ξ‖ ≤
+      ‖D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖ *
+        ‖ξ‖ := by
+  simpa [fluctuationFieldContinuousLinearEquiv_apply] using
+    D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap.le_opNorm ξ
+
+/-- The dictionary push is bounded by the operator norm of the inverse
+continuous coordinate equivalence. -/
+theorem norm_pushFluctuation_le
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (A : PhysicalGaugeOneCochain dPhys N Nc) :
+    ‖D.pushFluctuation A‖ ≤
+      ‖D.fluctuationFieldContinuousLinearEquiv.symm.toContinuousLinearMap‖ *
+        ‖A‖ := by
+  simpa [fluctuationFieldContinuousLinearEquiv_symm_apply] using
+    D.fluctuationFieldContinuousLinearEquiv.symm.toContinuousLinearMap.le_opNorm A
+
+/-- The inverse dictionary norm controls the original CMP116 coordinate norm
+through the pulled physical one-cochain. -/
+theorem norm_le_inverse_opNorm_mul_norm_pullFluctuationCochain
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (ξ : CMP116FluctuationField d L lieDim) :
+    ‖ξ‖ ≤
+      ‖D.fluctuationFieldContinuousLinearEquiv.symm.toContinuousLinearMap‖ *
+        ‖D.pullFluctuationCochain ξ‖ := by
+  simpa [fluctuationFieldContinuousLinearEquiv_symm_apply] using
+    D.fluctuationFieldContinuousLinearEquiv.symm.toContinuousLinearMap.le_opNorm
+      (D.pullFluctuationCochain ξ)
+
+/-- The forward dictionary norm controls the original physical one-cochain norm
+through its pushed CMP116 coordinates. -/
+theorem norm_le_opNorm_mul_norm_pushFluctuation
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (A : PhysicalGaugeOneCochain dPhys N Nc) :
+    ‖A‖ ≤
+      ‖D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖ *
+        ‖D.pushFluctuation A‖ := by
+  simpa [fluctuationFieldContinuousLinearEquiv_apply] using
+    D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap.le_opNorm
+      (D.pushFluctuation A)
+
 /-- The continuous dictionary commutes with CMP116 coordinate projection and
 physical projection onto the bonds assigned to the same cube set. -/
 theorem fluctuationFieldContinuousLinearEquiv_support_projection
