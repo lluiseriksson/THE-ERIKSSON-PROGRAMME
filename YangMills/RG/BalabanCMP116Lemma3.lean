@@ -46,21 +46,22 @@ structure CMP116Lemma3Parameters where
 label.
 
 The four finite index families model the successive source sums over the
-objects denoted around CMP116 Lemma 3 by `D`, `P`, `Z0`, and `Z0'`.  The
-summands and weights are not assumed to satisfy a final decay estimate in the
-record; that estimate is supplied to the theorem below as a separate
-pre-Lemma summed-weight budget. -/
+objects denoted around CMP116 Lemma 3 by `D`, `P`, `Z0`, and `Z0'`.  The later
+families depend on the earlier choices, matching the source-shaped summation
+order.  The summands and weights are not assumed to satisfy a final decay
+estimate in the record; that estimate is supplied to the theorem below as a
+separate pre-Lemma summed-weight budget. -/
 structure CMP116HResummation
     (σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*) where
   DIndex : σ → Finset ιD
-  PIndex : σ → Finset ιP
-  Z0Index : σ → Finset ιZ0
-  Z0PrimeIndex : σ → Finset ιZ0'
+  PIndex : σ → ιD → Finset ιP
+  Z0Index : σ → ιD → ιP → Finset ιZ0
+  Z0PrimeIndex : σ → ιD → ιP → ιZ0 → Finset ιZ0'
   summand : σ → ιD → ιP → ιZ0 → ιZ0' → Ψ → Φ → ℂ
   termWeight : σ → ιD → ιP → ιZ0 → ιZ0' → ℝ
 
-/-- The flattened finite index set for the four source summations entering the
-resummed activity `H(Z)`. -/
+/-- The flattened finite index set for the dependent source summations entering
+the resummed activity `H(Z)`. -/
 def cmp116HIndexFinset
     {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
     [DecidableEq ιD] [DecidableEq ιP]
@@ -68,8 +69,14 @@ def cmp116HIndexFinset
     (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
     (Z : σ) :
     Finset ((ιD × ιP) × (ιZ0 × ιZ0')) :=
-  ((R.DIndex Z).product (R.PIndex Z)).product
-    ((R.Z0Index Z).product (R.Z0PrimeIndex Z))
+  (R.DIndex Z).biUnion fun D =>
+    (R.PIndex Z D).biUnion fun P =>
+      (R.Z0Index Z D P).biUnion fun Z0 =>
+        (R.Z0PrimeIndex Z D P Z0).map
+          ⟨fun Z0' => ((D, P), (Z0, Z0')),
+            by
+              intro a b h
+              simpa using congrArg (fun y => y.2.2) h⟩
 
 /-- The resummed CMP116 activity `H(Z)` represented by the finite pre-Lemma
 summation data. -/
@@ -82,12 +89,13 @@ noncomputable def balabanCMP116H
   Finset.sum (cmp116HIndexFinset R Z)
     (fun x => R.summand Z x.1.1 x.1.2 x.2.1 x.2.2 ψ φ)
 
-/-- Final norm step for CMP116 Lemma 3.
+/-- Final finite-sum norm step for the source-shaped CMP116 Lemma 3
+resummation interface.
 
 This is the theorem-fed bridge from termwise source bounds plus a pre-Lemma
-summed-weight budget to the displayed Lemma 3 estimate.  The hypotheses are
-not a bound on `balabanCMP116H` itself. -/
-theorem norm_balabanCMP116H_le_lemma3
+summed-weight budget to a term-weight-sum bound with the Lemma 3 right-hand
+side.  The hypotheses are not an analytic proof of Lemma 3. -/
+theorem norm_balabanCMP116H_le_termWeightSum
     {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
     [DecidableEq ιD] [DecidableEq ιP]
     [DecidableEq ιZ0] [DecidableEq ιZ0']
@@ -172,7 +180,7 @@ theorem cmp116Lemma3ActivityEstimate_of_resummation
         (hp.C3 * hp.epsilon1) *
           balabanCMP116Lemma3Weight
             hp.blockScale hp.delta hp.kappa sourceMetric Z :=
-      norm_balabanCMP116H_le_lemma3 hp R sourceMetric
+      norm_balabanCMP116H_le_termWeightSum hp R sourceMetric
         hterm hbudget Z ψ φ
 
 end YangMills.RG

@@ -1361,7 +1361,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116HResummation
 #print axioms YangMills.RG.cmp116HIndexFinset
 #print axioms YangMills.RG.balabanCMP116H
-#print axioms YangMills.RG.norm_balabanCMP116H_le_lemma3
+#print axioms YangMills.RG.norm_balabanCMP116H_le_termWeightSum
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimate_of_resummation
 #print axioms YangMills.RG.CMP116RawSourceM3Frontier.of_balabanSourceAssumptions
 #print axioms YangMills.RG.BalabanCMP116SourceAssumptions.to_m3Frontier

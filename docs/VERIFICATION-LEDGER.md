@@ -13237,3 +13237,57 @@ It does not prove CMP116 equations (2.27), (2.29)--(2.32), (2.34), (2.36), or
 the source metric comparison.  The next analytic step remains a source-faithful
 formalization of one named CMP116 summability equation, starting with a concrete
 candidate such as equation (2.29).  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 335 (2026-06-24, **CMP116 Lemma 3 dependent resummation indices**
+`YangMills.RG.BalabanCMP116Lemma3`; core 8358)
+
+This checkpoint tightens the finite pre-Lemma resummation interface without
+adding any analytic source assumption.
+
+`CMP116HResummation` now records the source-shaped dependent index chain:
+
+```
+DIndex       : σ → Finset ιD
+PIndex       : σ → ιD → Finset ιP
+Z0Index      : σ → ιD → ιP → Finset ιZ0
+Z0PrimeIndex : σ → ιD → ιP → ιZ0 → Finset ιZ0'
+```
+
+The flattened index set `cmp116HIndexFinset` is rebuilt as the nested finite
+union over those dependent families.  `balabanCMP116H` and
+`cmp116Lemma3ActivityEstimate_of_resummation` consume the same flattened index
+type as before, but the allowed terms now follow the CMP116 summation order
+rather than a Cartesian product of independent finite sets.
+
+The theorem formerly named
+
+```
+norm_balabanCMP116H_le_lemma3
+```
+
+has been renamed to
+
+```
+norm_balabanCMP116H_le_termWeightSum
+```
+
+because it proves the finite triangle-inequality step from termwise summand
+bounds plus a supplied summed-weight budget.  It does not prove Lemma 3's
+analytic resummation or any source equation.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-lemma3-dependent-indices.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+**Honest scope.** This is a structural/source-shape refactor only.  It still
+does not derive the termwise bounds or summed-weight budget from CMP116
+equations (2.27), (2.29)--(2.32), (2.34), (2.36), or (2.37), does not construct
+or identify `H(Z)`, and does not prove the source metric comparison.  Clay
+distance **~0% (<0.1%), unchanged**.

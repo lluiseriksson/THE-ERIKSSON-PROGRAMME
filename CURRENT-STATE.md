@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 332.
+Addendum 335.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8355 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8358 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -1067,12 +1067,13 @@ real-distance helper `cmp116Lemma3Weight` remains only as a compatibility
 weight alias; it is not the current Lemma 3 conclusion object.
 The theorem-fed finite resummation interface remains in
 `YangMills.RG.BalabanCMP116Lemma3`: `CMP116HResummation` names the four
-pre-Lemma source summation families, `balabanCMP116H` is their finite sum, and
-`norm_balabanCMP116H_le_lemma3` proves the Lemma-3-shaped bound from termwise
-summand estimates plus a pre-Lemma summed-weight budget.  The module now
-targets the isolated Nat-source-metric estimate and still does not derive
-those termwise/summed-weight inputs from CMP116 constants; that extraction
-remains the active source task.
+pre-Lemma source summation families with dependent source-shaped indices
+`D → P(D) → Z0(D,P) → Z0'(D,P,Z0)`, `balabanCMP116H` is their finite sum, and
+`norm_balabanCMP116H_le_termWeightSum` proves the finite triangle-inequality
+step from termwise summand estimates plus a pre-Lemma summed-weight budget.
+The module targets the isolated Nat-source-metric estimate and still does not
+derive those termwise/summed-weight inputs from CMP116 constants; that
+extraction remains the active source task.
 The raw-source compatibility bridge is downstream in
 `YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter`.  It contains the explicit
 metric-domination theorem to `appendixFHoleExpWeight` and
