@@ -1177,11 +1177,15 @@ transport from CMP116's native admissible source domains to a larger repository
 index type.  It defines the zero-extended metric
 `cmp116AdmissibleMetricZeroExtension`, proves
 `cmp116Lemma3ActivityEstimate_of_admissible_zeroExtension` and its scale-family
-version from an explicit outside-domain zero theorem, and adds
+version from an explicit outside-domain zero theorem, composes the existing
+post-`P` scale source package via
+`CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate_admissible_zeroExtension`,
+and adds
 `balabanCMP116Lemma3Weight_domination_of_admissible_metricComparison`, which
 requires both target-family admissibility and the full exponent comparison.
 This proves no admissibility, no outside-zero construction, and no metric
-comparison.
+comparison; it also proves none of the five post-`P` source fields carried by
+`CMP116Lemma3PostPScaleSourceAssumptions`.
 The raw-source compatibility bridge is downstream in
 `YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter`.  It contains the explicit
 metric-domination theorem to `appendixFHoleExpWeight` and

@@ -1382,6 +1382,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Lemma3AdmissibleActivityEstimateScaleFamily
 #print axioms YangMills.RG.cmp116AdmissibleMetricScaleExtension
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_admissible_zeroExtension
+#print axioms YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate_admissible_zeroExtension
 #print axioms YangMills.RG.balabanCMP116Lemma3Weight_domination_of_admissible_metricComparison
 #print axioms YangMills.RG.cmp116Eq229Weight
 #print axioms YangMills.RG.CMP116Eq229Summability

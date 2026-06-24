@@ -14236,3 +14236,38 @@ prove the majorization into the canonical Lemma-3 base factor, prove Eq.
 (2.29), prove the P-stage budget, identify the physical activity, prove
 termwise estimates, or prove CMP116 Lemma 3.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 358 (2026-06-24, **CMP116 admissible post-P source composition**
+`YangMills.RG.BalabanCMP116Lemma3AdmissibleAdapter`; core 8362)
+
+This checkpoint composes the existing post-`P` source-boundary package with
+the admissible-domain zero-extension adapter:
+
+```
+CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate_admissible_zeroExtension
+```
+
+The theorem instantiates `CMP116Lemma3PostPScaleSourceAssumptions` on the
+native admissible subtype `{X // admissible t k X}`, uses
+`source.lemma3_activity_estimate` to obtain the subtype Lemma-3 activity
+estimate, then applies
+`cmp116Lemma3ActivityEstimateScaleFamily_of_admissible_zeroExtension` with the
+same outside-domain zero theorem and `(hp t k).amplitude_nonneg`.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3AdmissibleAdapter.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-admissible-postp-source-composition.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3AdmissibleAdapter.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is composition bookkeeping only.  It proves no
+admissibility theorem, no outside-domain vanishing theorem, no source metric
+comparison, no Eq. (2.29), no P-stage budget, no combined post-`P` residual
+bound, no activity identification, no termwise estimate, and no CMP116 Lemma
+3.  Clay distance **~0% (<0.1%), unchanged**.

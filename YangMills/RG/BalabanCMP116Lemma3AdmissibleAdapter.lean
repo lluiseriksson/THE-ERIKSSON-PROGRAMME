@@ -160,6 +160,81 @@ theorem cmp116Lemma3ActivityEstimateScaleFamily_of_admissible_zeroExtension
       (outside_zero t k)
       (hamplitude_nonneg t k)
 
+namespace CMP116Lemma3PostPScaleSourceAssumptions
+
+/-- Compose a native post-`P` CMP116 source package on admissible subtypes with
+the full-index zero-extension adapter.
+
+This theorem proves neither the post-`P` source assumptions nor outside-domain
+vanishing.  Amplitude nonnegativity is read from the supplied
+`CMP116Lemma3Parameters`. -/
+theorem lemma3_activity_estimate_admissible_zeroExtension
+    {ι ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    {admissible : ∀ t k, ι t k → Prop}
+    [∀ t k, DecidablePred (admissible t k)]
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          {X : ι t k // admissible t k X}
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {sourceMetric :
+      ∀ t k, {X : ι t k // admissible t k X} → ℕ}
+    {physicalActivity :
+      ∀ t k, ι t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {DParts :
+      ∀ t k,
+        {X : ι t k // admissible t k X} →
+          ιD t k → Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric :
+      ∀ t k,
+        {X : ι t k // admissible t k X} →
+          ιY t k → ℕ}
+    {pWeight :
+      ∀ t k,
+        {X : ι t k // admissible t k X} →
+          ιD t k → ιP t k → ℝ}
+    (source :
+      CMP116Lemma3PostPScaleSourceAssumptions
+        hp R sourceMetric
+        (fun t k X => physicalActivity t k X.1)
+        DParts alpha6 eq229Metric pWeight)
+    (outside_zero :
+      ∀ t k X, ¬ admissible t k X →
+        ∀ ψ φ,
+          (physicalActivity t k X).globalEval ψ φ = 0) :
+    CMP116Lemma3ActivityEstimateScaleFamily
+      physicalActivity
+      (cmp116AdmissibleMetricScaleExtension admissible sourceMetric)
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa) := by
+  exact
+    cmp116Lemma3ActivityEstimateScaleFamily_of_admissible_zeroExtension
+      (admissible := admissible)
+      (physicalActivity := physicalActivity)
+      (sourceMetric := sourceMetric)
+      (blockScale := fun t k => (hp t k).blockScale)
+      (C3 := fun t k => (hp t k).C3)
+      (epsilon1 := fun t k => (hp t k).epsilon1)
+      (delta := fun t k => (hp t k).delta)
+      (kappaSource := fun t k => (hp t k).kappa)
+      source.lemma3_activity_estimate
+      outside_zero
+      (fun t k => (hp t k).amplitude_nonneg)
+
+end CMP116Lemma3PostPScaleSourceAssumptions
+
 /-- Dominate the zero-extended CMP116 Lemma-3 admissible source weight by the
 Appendix-F shifted metric weight on a target finite family.
 

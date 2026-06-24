@@ -771,7 +771,13 @@ outside-domain vanishing theorem.  The metric-domination theorem additionally
 requires that every target-family polymer is admissible and that the complete
 Appendix-F/CMP116 exponent comparison holds.  This adapter deliberately proves
 none of those source facts and does not claim that all repository polymers are
-CMP116 admissible domains.
+CMP116 admissible domains.  The projection
+`CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate_admissible_zeroExtension`
+only composes the existing post-`P` source package on admissible subtypes with
+the zero-extension theorem; it adds no duplicate admissible post-`P` structure
+and does not discharge Eq. (2.29), the P-stage budget, the combined post-`P`
+bound, activity identification, termwise estimates, or outside-domain
+vanishing.
 
 `YangMills.RG.BalabanCMP116SourceTheorem` now also exposes
 `BalabanCMP116Lemma3ResummationSourceAssumptions`, a source-boundary record
