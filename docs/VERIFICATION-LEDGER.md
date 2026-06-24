@@ -13622,3 +13622,36 @@ predicates with CMP116 equations (2.27), (2.30), (2.32), (2.34), (2.36), or
 activity-identification equality, source metric comparison, Gaussian/root/
 Hessian/activity source facts, or CMP116 Lemma 3.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 343 (2026-06-24, **scale-family CMP116 residual-stage budget consumer**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8361)
+
+This checkpoint adds the pointwise scale-family consumer
+
+```
+cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_residualStages
+```
+
+The theorem applies the residual-stage constructor at each `(t, k)`, deriving
+the post-`D` budget from normalized `P`, `Z0`, and `Z0'` residual summability,
+a named `postDBase` equal to the Eq. (2.29) product-weight base, and a pointwise
+term-weight factorization.  It then feeds the resulting post-`D` budget into
+the existing Eq. (2.29) activity-estimate scale-family consumer.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-residual-stage-scale-family.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+**Honest scope.** This is only scale-family composition over the already
+verified residual-stage and Eq. (2.29) finite consumers.  It does not prove or
+source-identify the residual stage estimates, pointwise factorization, Eq.
+(2.29), termwise complex-valued estimates, activity identification, source
+metric comparison, Gaussian/root/Hessian/activity source facts, or CMP116 Lemma
+3.  Clay distance **~0% (<0.1%), unchanged**.

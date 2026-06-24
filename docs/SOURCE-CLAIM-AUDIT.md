@@ -655,6 +655,12 @@ the source constants or smallness conditions.  A future source extraction must
 still supply the normalized `P`, `Z0`, and `Z0'` residual estimates and the
 pointwise term-weight factorization from the primary text.
 
+The scale-family theorem
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_residualStages` is the same
+composition pointwise in `(t, k)`.  Its named `postDBase` equality is
+bookkeeping for the Eq. (2.29) product-weight base, not evidence for any
+residual source estimate.
+
 ## Agent Checklist
 
 Before adding a source-facing Lean theorem:

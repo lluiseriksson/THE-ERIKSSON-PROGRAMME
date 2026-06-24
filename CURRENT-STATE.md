@@ -1123,6 +1123,12 @@ packaging only: it does not derive the termwise estimates, residual post-D
 budget, source metric comparison, Gaussian pushforward, covariance-root
 localization, Wilson-Hessian identification, local physical activity
 construction, or the rooted H# identity.
+It now also exposes
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_residualStages`, which derives
+the per-scale post-D budget from source-neutral `P/Z0/Z0'` residual-stage
+predicates, a named `postDBase` equal to the Eq. (2.29) product-weight base,
+and a pointwise residual factorization before applying the same activity
+bridge.  The residual stage predicates remain unassigned source obligations.
 The source-frontier file now also exposes the parallel record
 `BalabanCMP116Lemma3SourceAssumptions`.  It keeps all existing covariance,
 Gaussian, support, measurability, H#, marginal-flow, and IR assumptions
