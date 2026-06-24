@@ -738,6 +738,96 @@ theorem localizedRootLinearMapFinsetSum_ofDictionary_activity_globalEval_eq_of_a
         hkernel dist R Xin hfinite hξη
     exact congrFun (congrArg (fun φ => φ.ofLp) hpull) b
 
+/-- A finite sum of physical local activities evaluated on the physical
+pullback of a finite dictionary-localized root-piece sum also depends only on
+the declared CMP116 input cube union. -/
+theorem localizedRootLinearMapFinsetSum_ofDictionary_activityFamily_sum_globalEval_eq_of_agreeOn
+    {ι κ : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (cmpWeight : Cube d L → Cube d L → ℝ)
+    (hkernelTransport :
+      PhysicalCovarianceKernelBound root rootWeight →
+        CMP116LinearMapKernelBound
+          (cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root)
+          cmpWeight)
+    (hkernel : PhysicalCovarianceKernelBound root rootWeight)
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ)
+    (Xin : ι → Finset (Cube d L))
+    (hfinite : CMP116KernelFiniteRange cmpWeight dist R)
+    (J : Finset κ)
+    (activity : κ → PhysicalGaugeLocalActivity dPhys N Nc)
+    (ψ : PhysicalGaugeField dPhys N Nc)
+    {ξ η : CMP116FluctuationField d L lieDim}
+    (hξη : AgreeOn (I.biUnion Xin) ξ η) :
+    (∑ X ∈ J,
+        (activity X).globalEval ψ
+          (D.pullFluctuationCochain
+            ((localizedRootLinearMapFinsetSum_ofDictionary
+              I D root rootWeight cmpWeight hkernelTransport
+              hkernel dist R Xin hfinite).toContinuousLinearMap ξ))) =
+      (∑ X ∈ J,
+        (activity X).globalEval ψ
+          (D.pullFluctuationCochain
+            ((localizedRootLinearMapFinsetSum_ofDictionary
+              I D root rootWeight cmpWeight hkernelTransport
+              hkernel dist R Xin hfinite).toContinuousLinearMap η))) := by
+  refine Finset.sum_congr rfl ?_
+  intro X _hX
+  exact
+    localizedRootLinearMapFinsetSum_ofDictionary_activity_globalEval_eq_of_agreeOn
+      I D root rootWeight cmpWeight hkernelTransport
+      hkernel dist R Xin hfinite (activity X) ψ hξη
+
+/-- Packaged `LocalActivity.finsetSum` version of the finite-family consumer. -/
+theorem localizedRootLinearMapFinsetSum_ofDictionary_activityFamily_finsetSum_globalEval_eq_of_agreeOn
+    {ι κ : Type*} [DecidableEq ι] [DecidableEq (PhysicalBond dPhys N)]
+    (I : Finset ι)
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (cmpWeight : Cube d L → Cube d L → ℝ)
+    (hkernelTransport :
+      PhysicalCovarianceKernelBound root rootWeight →
+        CMP116LinearMapKernelBound
+          (cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root)
+          cmpWeight)
+    (hkernel : PhysicalCovarianceKernelBound root rootWeight)
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ)
+    (Xin : ι → Finset (Cube d L))
+    (hfinite : CMP116KernelFiniteRange cmpWeight dist R)
+    (J : Finset κ)
+    (activity : κ → PhysicalGaugeLocalActivity dPhys N Nc)
+    (ψ : PhysicalGaugeField dPhys N Nc)
+    {ξ η : CMP116FluctuationField d L lieDim}
+    (hξη : AgreeOn (I.biUnion Xin) ξ η) :
+    (LocalActivity.finsetSum J activity).globalEval ψ
+        (D.pullFluctuationCochain
+          ((localizedRootLinearMapFinsetSum_ofDictionary
+            I D root rootWeight cmpWeight hkernelTransport
+            hkernel dist R Xin hfinite).toContinuousLinearMap ξ)) =
+      (LocalActivity.finsetSum J activity).globalEval ψ
+        (D.pullFluctuationCochain
+          ((localizedRootLinearMapFinsetSum_ofDictionary
+            I D root rootWeight cmpWeight hkernelTransport
+            hkernel dist R Xin hfinite).toContinuousLinearMap η)) := by
+  simpa [LocalActivity.globalEval_finsetSum] using
+    localizedRootLinearMapFinsetSum_ofDictionary_activityFamily_sum_globalEval_eq_of_agreeOn
+      I D root rootWeight cmpWeight hkernelTransport
+      hkernel dist R Xin hfinite J activity ψ hξη
+
 end PhysicalRootToCMP116OperatorTransport
 
 /-- Source-identification package for dictionary-backed localized Gaussian

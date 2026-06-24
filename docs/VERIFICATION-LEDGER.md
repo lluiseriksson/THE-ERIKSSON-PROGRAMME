@@ -12662,3 +12662,39 @@ finite pieces reconstruct the full covariance root, does not prove a Gaussian
 pushforward identity for the finite sum, does not construct local activities,
 and does not prove raw activity decay.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 324 (2026-06-24, **finite-family activity consumers for root-piece sums**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum lifts the single physical-activity consumer from Addendum 323 to
+finite families of physical local activities:
+
+```
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMapFinsetSum_ofDictionary_activityFamily_sum_globalEval_eq_of_agreeOn
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMapFinsetSum_ofDictionary_activityFamily_finsetSum_globalEval_eq_of_agreeOn
+```
+
+The first theorem proves equality for an explicit finite sum of activity
+evaluations when the CMP116 inputs agree on `I.biUnion Xin`.  The second
+packages the same fact through `LocalActivity.finsetSum`, exposing the form
+used by later finite local-activity assemblies.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint is a finite-family consumer of the already
+verified single-activity dependence theorem.  It does not prove that the
+finite root pieces reconstruct the full covariance root, does not prove a
+Gaussian pushforward identity, does not construct local activities, and does
+not prove raw activity decay.  Clay distance **~0% (<0.1%), unchanged**.
