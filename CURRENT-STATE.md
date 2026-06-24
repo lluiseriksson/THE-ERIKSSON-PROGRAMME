@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 312.
+Addendum 313.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1139,6 +1139,13 @@ finite-range root operators.  This is still not a producer of `hraw`: the
 physical covariance root, its localization/truncation theorem, concrete
 coordinate chart, local Wilson activities, and Appendix-F raw bounds remain
 separate source obligations.
+The dictionary-backed construction layer now has
+`PhysicalRootToCMP116OperatorTransport.localizedRootLinearMap_ofDictionary`,
+which turns an explicit physical root kernel bound, a dictionary kernel-bound
+transport, and a finite-range CMP116 weight into the exact
+`CMP116LocalizedLinearMap` support package consumed by later local activity
+construction.  This is still a transport/support constructor, not a source
+proof of the physical root kernel bound or the finite-range weight.
 The Gaussian-change source package now has its first physical-activity
 consumer:
 `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.integral_physicalActivity_gaussianRootMap_eq`

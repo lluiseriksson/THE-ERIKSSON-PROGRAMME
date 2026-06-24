@@ -12226,3 +12226,42 @@ Jacobian convention for the product Gaussian, does not localize the physical
 covariance root, does not identify a Wilson Hessian, does not construct a
 local physical activity, and does not prove raw activity decay.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 313 (2026-06-24, **dictionary localized-root support constructor**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum adds the dictionary-specialized localized CMP116 root-map
+constructor:
+
+```
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMap_ofDictionary
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMap_ofDictionary_toContinuousLinearMap
+```
+
+Given an explicit physical root kernel bound, the dictionary kernel-bound
+transport, and a finite-range CMP116 weight, the constructor produces the
+exact `CMP116LocalizedLinearMap` from an input cube set `Xin` to the finite
+range closure `cmp116FiniteRangeClosure dist R Xin`.  The simp theorem records
+that the underlying map is exactly
+`(cmp116OperatorOfPhysical D.fluctuationFieldContinuousLinearEquiv root).comp
+(cmp116FieldProjection Xin)`.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is a transport/support constructor.  It does not prove
+the physical root kernel bound, does not prove finite range of the CMP116
+weight, does not construct or localize the covariance root, does not identify
+a Wilson Hessian, does not prove Gaussian pushforward, and does not construct
+or bound a raw activity.  Clay distance **~0% (<0.1%), unchanged**.

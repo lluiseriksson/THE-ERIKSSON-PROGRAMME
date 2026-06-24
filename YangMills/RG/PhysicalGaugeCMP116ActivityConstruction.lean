@@ -242,6 +242,64 @@ noncomputable def ofDictionary
       D.fluctuationFieldContinuousLinearEquiv :=
   rfl
 
+/-- Dictionary-specialized localized CMP116 root map.  A physical kernel bound,
+together with the dictionary kernel-bound transport and a finite-range CMP116
+weight, gives the exact input/output support package consumed by later local
+activity constructors. -/
+noncomputable def localizedRootLinearMap_ofDictionary
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (cmpWeight : Cube d L → Cube d L → ℝ)
+    (hkernelTransport :
+      PhysicalCovarianceKernelBound root rootWeight →
+        CMP116LinearMapKernelBound
+          (cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root)
+          cmpWeight)
+    (hkernel : PhysicalCovarianceKernelBound root rootWeight)
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ)
+    (Xin : Finset (Cube d L))
+    (hfinite : CMP116KernelFiniteRange cmpWeight dist R) :
+    CMP116LocalizedLinearMap
+      (d := d) (L := L) (lieDim := lieDim)
+      Xin
+      (cmp116FiniteRangeClosure dist R Xin) :=
+  localizedRootLinearMap
+    (ofDictionary D root rootWeight cmpWeight hkernelTransport)
+    hkernel dist R Xin hfinite
+
+@[simp] theorem localizedRootLinearMap_ofDictionary_toContinuousLinearMap
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (cmpWeight : Cube d L → Cube d L → ℝ)
+    (hkernelTransport :
+      PhysicalCovarianceKernelBound root rootWeight →
+        CMP116LinearMapKernelBound
+          (cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root)
+          cmpWeight)
+    (hkernel : PhysicalCovarianceKernelBound root rootWeight)
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ)
+    (Xin : Finset (Cube d L))
+    (hfinite : CMP116KernelFiniteRange cmpWeight dist R) :
+    (localizedRootLinearMap_ofDictionary
+      D root rootWeight cmpWeight hkernelTransport
+      hkernel dist R Xin hfinite).toContinuousLinearMap =
+      (cmp116OperatorOfPhysical
+        D.fluctuationFieldContinuousLinearEquiv root).comp
+        (cmp116FieldProjection Xin) :=
+  rfl
+
 end PhysicalRootToCMP116OperatorTransport
 
 /-- Source-identification package for dictionary-backed localized Gaussian
