@@ -12382,3 +12382,41 @@ defined coordinate map.  It does not prove Gaussian pushforward, covariance
 identity, root localization/truncation, Wilson-Hessian identification, local
 activity construction, or raw activity decay.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 317 (2026-06-24, **certificate-fed Gaussian-map norm budget**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum adds certificate-fed versions of the dictionary/root Gaussian-map
+norm budget:
+
+```
+PhysicalGaugeCMP116Dictionary.norm_gaussianRootMap_le_of_covarianceRootCertificate
+PhysicalGaugeCMP116Dictionary.norm_gaussianRootMap_apply_le_of_covarianceRootCertificate
+```
+
+The lemmas consume the existing
+`PhysicalLocalizedCovarianceRootCertificate.root_norm_bound` field and route it
+through the previously verified dictionary Gaussian-map norm budget.  This lets
+downstream estimates use the localized covariance-root certificate directly
+without restating `‖root‖ ≤ rootNormBound`.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is a certificate-field projection into an operator-norm
+budget.  It does not construct the covariance root, prove a covariance identity
+beyond the carried certificate fields, establish Gaussian pushforward, prove
+root localization/truncation, identify a Wilson Hessian, construct local
+activities, or prove raw activity decay.  Clay distance **~0% (<0.1%),
+unchanged**.

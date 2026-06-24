@@ -205,6 +205,47 @@ theorem norm_gaussianRootMap_apply_le_of_root_norm_le
   (D.gaussianRootMap root).le_of_opNorm_le
     (D.norm_gaussianRootMap_le_of_root_norm_le hroot) ξ
 
+/-- Operator-norm budget for the dictionary/root Gaussian map, consuming the
+root-norm field of a localized covariance-root certificate. -/
+theorem norm_gaussianRootMap_le_of_covarianceRootCertificate
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    (hcert :
+      PhysicalLocalizedCovarianceRootCertificate
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight) :
+    ‖D.gaussianRootMap root‖ ≤
+      rootNormBound *
+        ‖D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖ :=
+  D.norm_gaussianRootMap_le_of_root_norm_le hcert.root_norm_bound
+
+/-- Pointwise dictionary/root Gaussian-map budget, consuming the root-norm field
+of a localized covariance-root certificate. -/
+theorem norm_gaussianRootMap_apply_le_of_covarianceRootCertificate
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    (hcert :
+      PhysicalLocalizedCovarianceRootCertificate
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight)
+    (ξ : CMP116FluctuationField d L lieDim) :
+    ‖D.gaussianRootMap root ξ‖ ≤
+      (rootNormBound *
+        ‖D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖) *
+        ‖ξ‖ :=
+  D.norm_gaussianRootMap_apply_le_of_root_norm_le
+    hcert.root_norm_bound ξ
+
 /-- The canonical physical Gaussian root map is the physical-coordinate
 realization of the same root conjugated into CMP116 coordinates.
 

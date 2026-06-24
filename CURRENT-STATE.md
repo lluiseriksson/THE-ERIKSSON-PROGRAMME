@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 316.
+Addendum 317.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1181,6 +1181,13 @@ pointwise norm budgets
 `norm_gaussianRootMap_apply_le_of_root_norm_le`.  These combine the root
 operator norm with the dictionary norm constant; they still do not prove the
 Gaussian pushforward identity or any covariance-root localization.
+The same budget can now be consumed directly from a localized covariance-root
+certificate via
+`PhysicalGaugeCMP116Dictionary.norm_gaussianRootMap_le_of_covarianceRootCertificate`
+and
+`PhysicalGaugeCMP116Dictionary.norm_gaussianRootMap_apply_le_of_covarianceRootCertificate`.
+These are projection lemmas for the existing `root_norm_bound` certificate
+field, not new root construction or localization estimates.
 The same construction file now has a thin raw-source compatibility layer:
 `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses` extends the
 separated Gaussian/root/Hessian/activity source package with the unfolded
