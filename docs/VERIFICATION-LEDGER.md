@@ -12585,3 +12585,43 @@ beyond the explicit finite-range hypothesis already supplied to each piece,
 does not prove Gaussian pushforward, does not construct local activities, and
 does not prove raw activity decay.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 322 (2026-06-24, **physical-coordinate consumers for finite-piece root sums**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum exposes the physical-coordinate consequences of the finite-piece
+dictionary localized-root sum:
+
+```
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMapFinsetSum_ofDictionary_pull_eq_of_agreeOn
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMapFinsetSum_ofDictionary_pull_apply_eq_zero_outside
+```
+
+The first theorem says that, after pulling the finite-piece CMP116 root-sum
+output back to a physical one-cochain through the dictionary, the output is
+unchanged when the CMP116 input fields agree on `I.biUnion Xin`.  The second
+theorem says that the pulled physical output is zero on every physical bond
+whose assigned CMP116 cube lies outside
+`I.biUnion fun i => cmp116FiniteRangeClosure dist R (Xin i)`.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint is physical-coordinate support bookkeeping
+for an already supplied finite sum of projected root maps.  It does not prove
+that the finite pieces reconstruct the full covariance root, does not prove a
+Gaussian pushforward identity for the finite sum, does not establish any
+isometry or Jacobian convention for the dictionary, does not construct local
+activities, and does not prove raw activity decay.  Clay distance **~0%
+(<0.1%), unchanged**.

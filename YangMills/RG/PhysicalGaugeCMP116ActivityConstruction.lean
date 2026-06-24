@@ -592,6 +592,92 @@ theorem localizedRootLinearMapFinsetSum_ofDictionary_apply_eq_zero_outside
     I D root rootWeight cmpWeight hkernelTransport
     hkernel dist R Xin hfinite).apply_eq_zero_outside ξ hq a
 
+/-- Pulling a finite sum of dictionary-localized root pieces to physical
+coordinates preserves the declared input-agreement consequence. -/
+theorem localizedRootLinearMapFinsetSum_ofDictionary_pull_eq_of_agreeOn
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (cmpWeight : Cube d L → Cube d L → ℝ)
+    (hkernelTransport :
+      PhysicalCovarianceKernelBound root rootWeight →
+        CMP116LinearMapKernelBound
+          (cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root)
+          cmpWeight)
+    (hkernel : PhysicalCovarianceKernelBound root rootWeight)
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ)
+    (Xin : ι → Finset (Cube d L))
+    (hfinite : CMP116KernelFiniteRange cmpWeight dist R)
+    {ξ η : CMP116FluctuationField d L lieDim}
+    (hξη : AgreeOn (I.biUnion Xin) ξ η) :
+    D.pullFluctuationCochain
+        ((localizedRootLinearMapFinsetSum_ofDictionary
+          I D root rootWeight cmpWeight hkernelTransport
+          hkernel dist R Xin hfinite).toContinuousLinearMap ξ) =
+      D.pullFluctuationCochain
+        ((localizedRootLinearMapFinsetSum_ofDictionary
+          I D root rootWeight cmpWeight hkernelTransport
+          hkernel dist R Xin hfinite).toContinuousLinearMap η) := by
+  rw [localizedRootLinearMapFinsetSum_ofDictionary_eq_of_agreeOn
+    I D root rootWeight cmpWeight hkernelTransport
+    hkernel dist R Xin hfinite hξη]
+
+/-- Pulling a finite sum of dictionary-localized root pieces to physical
+coordinates is zero on every physical bond assigned outside the union of the
+piece output closures. -/
+theorem localizedRootLinearMapFinsetSum_ofDictionary_pull_apply_eq_zero_outside
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (cmpWeight : Cube d L → Cube d L → ℝ)
+    (hkernelTransport :
+      PhysicalCovarianceKernelBound root rootWeight →
+        CMP116LinearMapKernelBound
+          (cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root)
+          cmpWeight)
+    (hkernel : PhysicalCovarianceKernelBound root rootWeight)
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ)
+    (Xin : ι → Finset (Cube d L))
+    (hfinite : CMP116KernelFiniteRange cmpWeight dist R)
+    (ξ : CMP116FluctuationField d L lieDim)
+    {b : PhysicalBond dPhys N}
+    (hb :
+      D.siteMap.bondToCube b ∉
+        I.biUnion fun i => cmp116FiniteRangeClosure dist R (Xin i)) :
+    D.pullFluctuationCochain
+        ((localizedRootLinearMapFinsetSum_ofDictionary
+          I D root rootWeight cmpWeight hkernelTransport
+          hkernel dist R Xin hfinite).toContinuousLinearMap ξ) b = 0 := by
+  apply (EuclideanSpace.equiv (Fin (Nc ^ 2 - 1)) ℝ).injective
+  funext a
+  let qa : CMP116CoordIndex d L lieDim := D.coordEquiv.symm (b, a)
+  have hq :
+      qa.1 ∉ I.biUnion fun i => cmp116FiniteRangeClosure dist R (Xin i) := by
+    simpa [qa, D.coordEquiv_symm_cell b a] using hb
+  have hzero :
+      (localizedRootLinearMapFinsetSum_ofDictionary
+        I D root rootWeight cmpWeight hkernelTransport
+        hkernel dist R Xin hfinite).toContinuousLinearMap ξ qa.1 qa.2 = 0 :=
+    localizedRootLinearMapFinsetSum_ofDictionary_apply_eq_zero_outside
+      I D root rootWeight cmpWeight hkernelTransport
+      hkernel dist R Xin hfinite ξ hq qa.2
+  simpa [PhysicalGaugeCMP116Dictionary.pullFluctuationCochain,
+    PhysicalGaugeCMP116Dictionary.sunLieCoordOfScalars, qa] using hzero
+
 end PhysicalRootToCMP116OperatorTransport
 
 /-- Source-identification package for dictionary-backed localized Gaussian

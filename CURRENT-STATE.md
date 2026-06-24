@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 321.
+Addendum 322.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1159,6 +1159,11 @@ dictionary root maps and certifies exact support from the union of those input
 sets to the union of their finite-range closures.  This is still only the
 support algebra of the supplied finite pieces; it does not assert that the
 pieces reconstruct the full covariance root.
+The same finite-piece package now exposes physical-coordinate consumers after
+the dictionary pull: equality under agreement on the input-support union, and
+zero output on every physical bond whose assigned cube is outside the union of
+finite-range output closures.  These are direct coordinate consequences for
+later local-activity support checks, not Gaussian pushforward or decay results.
 The dictionary-backed construction layer now has
 `PhysicalRootToCMP116OperatorTransport.localizedRootLinearMap_ofDictionary`,
 which turns an explicit physical root kernel bound, a dictionary kernel-bound
