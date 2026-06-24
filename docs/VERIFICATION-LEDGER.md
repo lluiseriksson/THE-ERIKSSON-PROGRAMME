@@ -13691,3 +13691,40 @@ P-stage source family, prove the `Z0/Z0'` residual estimates, prove Eq. (2.29),
 termwise complex-valued estimates, activity identification, source metric
 comparison, Gaussian/root/Hessian/activity source facts, or CMP116 Lemma 3.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 345 (2026-06-24, **CMP116 post-P residual-stage bridge**
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages`; core 8361)
+
+This checkpoint adds the source-order residual bridge after the budget-valued
+P-stage helper:
+
+```
+cmp116H_postP_sum_le_of_residualStages
+cmp116H_postD_sum_le_of_pStageResidualStages
+cmp116H_termWeightSum_le_of_eq229_of_pStageResidualStages
+cmp116Lemma3ActivityEstimate_of_eq229_pStageResidualStages
+```
+
+The first theorem proves that normalized fixed-`P` `Z0` and `Z0'` residual
+summability, plus a pointwise factorization, imply a post-`P` budget.  The
+remaining theorems compose that post-`P` bridge with
+`CMP116PStageSummability`, Eq. (2.29), and the existing finite Lemma-3
+activity-estimate bridge.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-postP-residual-stage-bridge.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is finite residual-summation algebra and composition.
+It does not prove or source-identify the P-stage budget, `Z0` residual
+estimate, `Z0'` residual estimate, Eq. (2.29), the termwise complex-valued
+estimate, activity identification, source metric comparison, Gaussian/root/
+Hessian/activity source facts, or CMP116 Lemma 3.  Clay distance **~0%
+(<0.1%), unchanged**.

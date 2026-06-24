@@ -1109,6 +1109,16 @@ resummation algebra from those predicates plus a pointwise factorization, and
 `cmp116H_termWeightSum_le_of_eq229_of_residualStages` composes it with Eq.
 (2.29).  These predicates are not assigned to CMP116 equation numbers here;
 they remain explicit source obligations.
+The same module now also exposes the source-order variant
+`cmp116H_postP_sum_le_of_residualStages`, which turns normalized fixed-`P`
+`Z0/Z0'` residual estimates into the post-`P` budget, plus
+`cmp116H_postD_sum_le_of_pStageResidualStages`,
+`cmp116H_termWeightSum_le_of_eq229_of_pStageResidualStages`, and
+`cmp116Lemma3ActivityEstimate_of_eq229_pStageResidualStages`.  These compose
+the newer budget-valued `CMP116PStageSummability` with the fixed-`P`
+residual stages before applying Eq. (2.29), but still do not prove the
+P-stage source budget, the `Z0/Z0'` residual estimates, or the source
+constant hierarchy.
 The raw-source compatibility bridge is downstream in
 `YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter`.  It contains the explicit
 metric-domination theorem to `appendixFHoleExpWeight` and

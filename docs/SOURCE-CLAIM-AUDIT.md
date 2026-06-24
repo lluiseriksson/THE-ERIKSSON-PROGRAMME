@@ -668,6 +668,18 @@ budget plus a fixed-P nested `Z0/Z0'` residual estimate recovers the old
 post-D `hpostD` bound.  It is not named after Eq. (2.30), and this audit does
 not claim that Eq. (2.30) alone proves the predicate.
 
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages` now also exposes the matching
+fixed-P residual bridge `cmp116H_postP_sum_le_of_residualStages` and the
+composed consumers
+`cmp116H_postD_sum_le_of_pStageResidualStages`,
+`cmp116H_termWeightSum_le_of_eq229_of_pStageResidualStages`, and
+`cmp116Lemma3ActivityEstimate_of_eq229_pStageResidualStages`.  These theorems
+split the previous opaque `hpostP` premise into normalized `Z0` and `Z0'`
+residual stages after a budget-valued P-stage, matching the order of the
+source discussion around CMP116 pages 18--20.  They still do not identify the
+P-stage budget, `Z0` stage, or `Z0'` stage with any source theorem or
+constant hierarchy.
+
 ## Agent Checklist
 
 Before adding a source-facing Lean theorem:

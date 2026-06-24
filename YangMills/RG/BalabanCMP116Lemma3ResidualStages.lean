@@ -64,6 +64,98 @@ def CMP116Z0PrimeResidualSummability
         Finset.sum (Z0PrimeIndex Z D P Z0)
           (fun Z0' => z0PrimeWeight Z D P Z0 Z0') ≤ 1
 
+/-- Normalized residual `Z0/Z0'` summability, plus a pointwise
+factorization, implies a fixed-`P` post-residual budget.
+
+This is the inner version of `cmp116H_postD_sum_le_of_residualStages`.  It
+keeps the `P`-stage budget separate, matching the source order after the
+equation-(2.29) `D` summation without asserting any analytic source estimate. -/
+theorem cmp116H_postP_sum_le_of_residualStages
+    {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (base : σ → ιD → ιP → ℝ)
+    (z0Weight : σ → ιD → ιP → ιZ0 → ℝ)
+    (z0PrimeWeight : σ → ιD → ιP → ιZ0 → ιZ0' → ℝ)
+    (hZ0sum :
+      CMP116Z0ResidualSummability
+        R.DIndex R.PIndex R.Z0Index z0Weight)
+    (hZ0PrimeSum :
+      CMP116Z0PrimeResidualSummability
+        R.DIndex R.PIndex R.Z0Index R.Z0PrimeIndex z0PrimeWeight)
+    (hbase_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D → 0 ≤ base Z D P)
+    (hz0Weight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+            0 ≤ z0Weight Z D P Z0)
+    (hfactor :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+            ∀ Z0', Z0' ∈ R.Z0PrimeIndex Z D P Z0 →
+              R.termWeight Z D P Z0 Z0' ≤
+                (base Z D P * z0Weight Z D P Z0) *
+                  z0PrimeWeight Z D P Z0 Z0') :
+    ∀ Z D, D ∈ R.DIndex Z →
+      ∀ P, P ∈ R.PIndex Z D →
+        Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+          Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+            R.termWeight Z D P Z0 Z0')) ≤
+          base Z D P := by
+  intro Z D hD P hP
+  have hZ0PrimeStage :
+      ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+        Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+          R.termWeight Z D P Z0 Z0') ≤
+          base Z D P * z0Weight Z D P Z0 := by
+    intro Z0 hZ0
+    have hprefix_nonneg :
+        0 ≤ base Z D P * z0Weight Z D P Z0 := by
+      exact
+        mul_nonneg
+          (hbase_nonneg Z D hD P hP)
+          (hz0Weight_nonneg Z D hD P hP Z0 hZ0)
+    calc
+      Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+          R.termWeight Z D P Z0 Z0')
+          ≤
+        Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+          (base Z D P * z0Weight Z D P Z0) *
+            z0PrimeWeight Z D P Z0 Z0') := by
+          exact Finset.sum_le_sum
+            (fun Z0' hZ0' => hfactor Z D hD P hP Z0 hZ0 Z0' hZ0')
+      _ =
+        (base Z D P * z0Weight Z D P Z0) *
+          Finset.sum (R.Z0PrimeIndex Z D P Z0)
+            (fun Z0' => z0PrimeWeight Z D P Z0 Z0') := by
+          simp [Finset.mul_sum]
+      _ ≤
+        (base Z D P * z0Weight Z D P Z0) * 1 := by
+          exact mul_le_mul_of_nonneg_left
+            (hZ0PrimeSum Z D hD P hP Z0 hZ0) hprefix_nonneg
+      _ = base Z D P * z0Weight Z D P Z0 := by
+          ring
+  calc
+    Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+        Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+          R.termWeight Z D P Z0 Z0'))
+        ≤
+      Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+        base Z D P * z0Weight Z D P Z0) := by
+        exact Finset.sum_le_sum (fun Z0 hZ0 => hZ0PrimeStage Z0 hZ0)
+    _ =
+      base Z D P *
+        Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+          z0Weight Z D P Z0) := by
+        simp [Finset.mul_sum]
+    _ ≤ base Z D P * 1 := by
+        exact mul_le_mul_of_nonneg_left
+          (hZ0sum Z D hD P hP) (hbase_nonneg Z D hD P hP)
+    _ = base Z D P := by
+        ring
+
 /-- Normalized residual `P/Z0/Z0'` summability, plus a pointwise factorization,
 implies the post-`D` residual budget required by the equation-(2.29) consumer.
 
@@ -192,6 +284,101 @@ theorem cmp116H_postD_sum_le_of_residualStages
     _ = base Z D := by
         ring
 
+/-- A P-stage budget plus normalized fixed-`P` residual stages implies the
+post-`D` residual budget required by the equation-(2.29) consumer.
+
+This is finite summation bookkeeping only.  It does not prove the P-stage
+budget, the `Z0/Z0'` residual estimates, or the CMP116 source constants. -/
+theorem cmp116H_postD_sum_le_of_pStageResidualStages
+    {σ ιD ιP ιZ0 ιZ0' ιY Ψ Φ : Type*}
+    (hp : CMP116Lemma3Parameters)
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (sourceMetric : σ → ℕ)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 : ℝ)
+    (eq229Metric : σ → ιY → ℕ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (z0Weight : σ → ιD → ιP → ιZ0 → ℝ)
+    (z0PrimeWeight : σ → ιD → ιP → ιZ0 → ιZ0' → ℝ)
+    (hPStage :
+      CMP116PStageSummability
+        R.DIndex R.PIndex pWeight
+        (fun Z D =>
+          Finset.prod (DParts Z D)
+            (cmp116Eq229Weight
+              alpha6 hp.delta hp.kappa (eq229Metric Z))))
+    (hZ0sum :
+      CMP116Z0ResidualSummability
+        R.DIndex R.PIndex R.Z0Index z0Weight)
+    (hZ0PrimeSum :
+      CMP116Z0PrimeResidualSummability
+        R.DIndex R.PIndex R.Z0Index R.Z0PrimeIndex z0PrimeWeight)
+    (hpWeight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D → 0 ≤ pWeight Z D P)
+    (hz0Weight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+            0 ≤ z0Weight Z D P Z0)
+    (hfactor :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+            ∀ Z0', Z0' ∈ R.Z0PrimeIndex Z D P Z0 →
+              R.termWeight Z D P Z0 Z0' ≤
+                ((((hp.C3 * hp.epsilon1) *
+                    balabanCMP116Lemma3Weight
+                      hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+                    pWeight Z D P) *
+                  z0Weight Z D P Z0) *
+                  z0PrimeWeight Z D P Z0 Z0') :
+    ∀ Z D, D ∈ R.DIndex Z →
+      Finset.sum (R.PIndex Z D) (fun P =>
+        Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+          Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+            R.termWeight Z D P Z0 Z0'))) ≤
+        ((hp.C3 * hp.epsilon1) *
+          balabanCMP116Lemma3Weight
+            hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+          Finset.prod (DParts Z D)
+            (cmp116Eq229Weight
+              alpha6 hp.delta hp.kappa (eq229Metric Z)) := by
+  let postPBase : σ → ιD → ιP → ℝ := fun Z D P =>
+    ((hp.C3 * hp.epsilon1) *
+      balabanCMP116Lemma3Weight
+        hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+      pWeight Z D P
+  have hpostPBase_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D → 0 ≤ postPBase Z D P := by
+    intro Z D hD P hP
+    exact
+      mul_nonneg
+        (mul_nonneg hp.amplitude_nonneg
+          (balabanCMP116Lemma3Weight_nonneg
+            hp.blockScale hp.delta hp.kappa sourceMetric Z))
+        (hpWeight_nonneg Z D hD P hP)
+  have hpostP :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+            Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+              R.termWeight Z D P Z0 Z0')) ≤
+            postPBase Z D P :=
+    cmp116H_postP_sum_le_of_residualStages
+      R postPBase z0Weight z0PrimeWeight
+      hZ0sum hZ0PrimeSum
+      hpostPBase_nonneg
+      hz0Weight_nonneg
+      (fun Z D hD P hP Z0 hZ0 Z0' hZ0' => by
+        simpa [postPBase, mul_assoc] using
+          hfactor Z D hD P hP Z0 hZ0 Z0' hZ0')
+  simpa [postPBase] using
+    cmp116H_postDSum_le_of_pStage
+      hp R sourceMetric DParts alpha6 eq229Metric
+      pWeight hPStage hpostP
+
 /-- Equation (2.29) plus source-neutral normalized residual stages gives the
 finite CMP116 `H` term-weight budget.
 
@@ -296,5 +483,156 @@ theorem cmp116H_termWeightSum_le_of_eq229_of_residualStages
   simpa [postDBase] using
     cmp116H_termWeightSum_le_of_eq229
       hp R sourceMetric DParts alpha6 eq229Metric hEq229 hpostD
+
+/-- Equation (2.29), a P-stage budget, and normalized fixed-`P`
+`Z0/Z0'` residual stages give the finite CMP116 `H` term-weight budget.
+
+This variant is useful when the P-stage has already been bounded by the
+equation-(2.29) product budget, while the later residual stages remain
+separately normalized. -/
+theorem cmp116H_termWeightSum_le_of_eq229_of_pStageResidualStages
+    {σ ιD ιP ιZ0 ιZ0' ιY Ψ Φ : Type*}
+    [DecidableEq ιD] [DecidableEq ιP]
+    [DecidableEq ιZ0] [DecidableEq ιZ0']
+    (hp : CMP116Lemma3Parameters)
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (sourceMetric : σ → ℕ)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 : ℝ)
+    (eq229Metric : σ → ιY → ℕ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (z0Weight : σ → ιD → ιP → ιZ0 → ℝ)
+    (z0PrimeWeight : σ → ιD → ιP → ιZ0 → ιZ0' → ℝ)
+    (hEq229 :
+      CMP116Eq229Summability
+        R.DIndex DParts alpha6 hp.delta hp.kappa eq229Metric)
+    (hPStage :
+      CMP116PStageSummability
+        R.DIndex R.PIndex pWeight
+        (fun Z D =>
+          Finset.prod (DParts Z D)
+            (cmp116Eq229Weight
+              alpha6 hp.delta hp.kappa (eq229Metric Z))))
+    (hZ0sum :
+      CMP116Z0ResidualSummability
+        R.DIndex R.PIndex R.Z0Index z0Weight)
+    (hZ0PrimeSum :
+      CMP116Z0PrimeResidualSummability
+        R.DIndex R.PIndex R.Z0Index R.Z0PrimeIndex z0PrimeWeight)
+    (hpWeight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D → 0 ≤ pWeight Z D P)
+    (hz0Weight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+            0 ≤ z0Weight Z D P Z0)
+    (hfactor :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+            ∀ Z0', Z0' ∈ R.Z0PrimeIndex Z D P Z0 →
+              R.termWeight Z D P Z0 Z0' ≤
+                ((((hp.C3 * hp.epsilon1) *
+                    balabanCMP116Lemma3Weight
+                      hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+                    pWeight Z D P) *
+                  z0Weight Z D P Z0) *
+                  z0PrimeWeight Z D P Z0 Z0') :
+    ∀ Z,
+      Finset.sum (cmp116HIndexFinset R Z)
+        (fun x =>
+          R.termWeight Z x.1.1 x.1.2 x.2.1 x.2.2) ≤
+        (hp.C3 * hp.epsilon1) *
+          balabanCMP116Lemma3Weight
+            hp.blockScale hp.delta hp.kappa sourceMetric Z := by
+  exact
+    cmp116H_termWeightSum_le_of_eq229
+      hp R sourceMetric DParts alpha6 eq229Metric hEq229
+      (cmp116H_postD_sum_le_of_pStageResidualStages
+        hp R sourceMetric DParts alpha6 eq229Metric
+        pWeight z0Weight z0PrimeWeight
+        hPStage hZ0sum hZ0PrimeSum
+        hpWeight_nonneg hz0Weight_nonneg hfactor)
+
+/-- Eq. (2.29), an explicit P-stage budget, and normalized fixed-`P`
+residual stages feed the theorem-backed CMP116 Lemma 3 activity estimate.
+
+The theorem keeps the activity identification, complex termwise estimate,
+P-stage budget, and `Z0/Z0'` residual estimates as explicit hypotheses. -/
+theorem cmp116Lemma3ActivityEstimate_of_eq229_pStageResidualStages
+    {σ ιD ιP ιZ0 ιZ0' ιY : Type*}
+    [DecidableEq ιD] [DecidableEq ιP]
+    [DecidableEq ιZ0] [DecidableEq ιZ0']
+    {dPhys N Nc : ℕ} [NeZero N]
+    (hp : CMP116Lemma3Parameters)
+    (R :
+      CMP116HResummation σ ιD ιP ιZ0 ιZ0'
+        (PhysicalGaugeField dPhys N Nc)
+        (PhysicalGaugeField dPhys N Nc))
+    (sourceMetric : σ → ℕ)
+    (physicalActivity : σ → PhysicalGaugeLocalActivity dPhys N Nc)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 : ℝ)
+    (eq229Metric : σ → ιY → ℕ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (z0Weight : σ → ιD → ιP → ιZ0 → ℝ)
+    (z0PrimeWeight : σ → ιD → ιP → ιZ0 → ιZ0' → ℝ)
+    (hEq229 :
+      CMP116Eq229Summability
+        R.DIndex DParts alpha6 hp.delta hp.kappa eq229Metric)
+    (hPStage :
+      CMP116PStageSummability
+        R.DIndex R.PIndex pWeight
+        (fun Z D =>
+          Finset.prod (DParts Z D)
+            (cmp116Eq229Weight
+              alpha6 hp.delta hp.kappa (eq229Metric Z))))
+    (hZ0sum :
+      CMP116Z0ResidualSummability
+        R.DIndex R.PIndex R.Z0Index z0Weight)
+    (hZ0PrimeSum :
+      CMP116Z0PrimeResidualSummability
+        R.DIndex R.PIndex R.Z0Index R.Z0PrimeIndex z0PrimeWeight)
+    (hglobal :
+      ∀ Z ψ φ,
+        (physicalActivity Z).globalEval ψ φ =
+          balabanCMP116H R Z ψ φ)
+    (hterm :
+      ∀ Z x, x ∈ cmp116HIndexFinset R Z →
+        ∀ ψ φ,
+          ‖R.summand Z x.1.1 x.1.2 x.2.1 x.2.2 ψ φ‖ ≤
+            R.termWeight Z x.1.1 x.1.2 x.2.1 x.2.2)
+    (hpWeight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D → 0 ≤ pWeight Z D P)
+    (hz0Weight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+            0 ≤ z0Weight Z D P Z0)
+    (hfactor :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0, Z0 ∈ R.Z0Index Z D P →
+            ∀ Z0', Z0' ∈ R.Z0PrimeIndex Z D P Z0 →
+              R.termWeight Z D P Z0 Z0' ≤
+                ((((hp.C3 * hp.epsilon1) *
+                    balabanCMP116Lemma3Weight
+                      hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+                    pWeight Z D P) *
+                  z0Weight Z D P Z0) *
+                  z0PrimeWeight Z D P Z0 Z0') :
+    CMP116Lemma3ActivityEstimate
+      physicalActivity sourceMetric hp.blockScale
+      hp.C3 hp.epsilon1 hp.delta hp.kappa :=
+  cmp116Lemma3ActivityEstimate_of_resummation
+    hp R sourceMetric physicalActivity
+    hglobal hterm
+    (cmp116H_termWeightSum_le_of_eq229_of_pStageResidualStages
+      hp R sourceMetric DParts alpha6 eq229Metric
+      pWeight z0Weight z0PrimeWeight
+      hEq229 hPStage hZ0sum hZ0PrimeSum
+      hpWeight_nonneg hz0Weight_nonneg hfactor)
 
 end YangMills.RG
