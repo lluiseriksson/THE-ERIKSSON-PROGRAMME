@@ -51,6 +51,18 @@ formalized, keep the activity/locality package as explicit hypotheses.
 
 Visually confirmed source anchors already located:
 
+* CMP 116 (1988), PDF pages 12--13 / printed pages 12--13, eqs.
+  (2.5)--(2.6): after localizing a cluster term to a domain `Z0` and
+  conditioning the correlated fluctuation Gaussian, Balaban makes the
+  linear change of variables `B' = (C^(k))^(1/2) X`.  The resulting
+  expression is written against the ultralocal product standard Gaussian
+  `dmu0(X)`, while the covariance/root-dependent factors are absorbed into
+  the function `G`.  This is the primary-source anchor for the Lean
+  product-Gaussian interface `balabanCMP116Dmu0` and the source field
+  `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`.
+  It still leaves the coordinate/dictionary identification,
+  determinant/Jacobian normalization, and post-(2.6) localization proof as
+  explicit obligations; see `docs/SOURCE-CLAIM-AUDIT.md` row B5a.
 * CMP 116 (1988), PDF page 20, Lemma 3 / eq. (2.38): the cluster-expansion
   activity `H(Z)` for `Z in D_{k+1}` satisfies
   `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.

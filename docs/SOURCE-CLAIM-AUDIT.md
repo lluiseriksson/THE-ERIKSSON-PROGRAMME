@@ -4,8 +4,8 @@
 **Document status:** adversarial documentation only; not a Lean theorem and
 not source evidence by itself  
 **Audit date:** 2026-06-20  
-**Last updated:** 2026-06-22
-**Live code reference:** `47140047e70cddcd1e30263c56cbd57ec7cb342c`
+**Last updated:** 2026-06-24
+**Live code reference:** `337025aadd8f80810cdf676f2612ca0944281c9a`
 **Primary frontier:** `hRpoly`, the concrete single-scale Yang-Mills
 activity-decay estimate for the actual gauge RG operator
 
@@ -356,6 +356,31 @@ Do not attribute the systematic cluster exponentiation to CMP 109 alone; CMP
 The current source-facing goal is the localized `H(Z)` bound, not merely a
 scale-distance inequality.
 
+### B5a - CMP 116: Product Gaussian Change Of Variables
+
+| Field | Value |
+|---|---|
+| Extracted claim | In the localized cluster-expansion integral for a fixed domain `Z0`, Balaban conditions the correlated fluctuation Gaussian, then makes the linear change of variables `B' = (C^(k))^(1/2) X`; the resulting integral is written against the ultralocal product standard Gaussian `dmu0(X)` and a new function `G` absorbing the covariance/root-dependent factors |
+| Replacement status | `source-extracted` |
+| Source scope | `exact theorem/equation range`, not a completed Lean theorem |
+| Primary source | T. Balaban, *Renormalization Group Approach to Lattice Gauge Field Theories II. Cluster Expansions*, Comm. Math. Phys. 116 (1988), 1--22 |
+| Local PDF | `runtime/sources/primary/balaban-rg-II-cmp116-1104161193.pdf` |
+| `local_pdf_sha256` | `EE39523A0F7B83AF958513C7BD6F9C7731934B40355EF5D6B0F7A68EE6D022FC` |
+| PDF / printed pages | PDF pages 12--13, printed pages 12--13 |
+| Exact range | equations (2.5)--(2.6), plus the paragraph beginning "In the integral with respect to B'..." and the paragraph after (2.6) |
+| Surrounding hypotheses | The term has first been localized by choosing a subfamily `D`, target union `Y0`, bond set `Y0^c*`, and smallest localization domain `Z0`; the integral is then represented by conditioning on `Z0^c` before the `B'`-change |
+| Measure convention | `dmu0` is the product standard Gaussian over the `X(b)` variables, displayed with density `dX(b) exp(-|X(b)|^2/2)/(2*pi)^(dim(g)/2)` in (2.6); the correlated covariance is not an independence statement but is moved into the integrand through `(C^(k))^(1/2)` and `G` |
+| Support/locality convention | The expression after (2.6) still depends on whole-lattice external gauge fields through propagators and operators in `G`; Balaban then re-localizes it by parameters `s`, generalized random-walk expansions, and an expansion of `(C^(k))^(1/2)` beginning with (2.7) |
+| Constant/uniformity data | This extraction records the exact measure conversion and localization target only; constants and smallness restrictions for the subsequent bound still come from the later estimates around Lemma 3, especially (2.27), (2.29), (2.30), (2.32), (2.36), and (2.38)--(2.41) |
+| Model scope | four-dimensional lattice gauge theory in Balaban's CMP 116 notation |
+| Lean consumer | `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `PhysicalGaugeCMP116Dictionary.PhysicalGaugeCMP116GaussianChange.ofDictionaryRoot`, and the `balabanCMP116Dmu0` product-Gaussian side |
+| Remaining unproved bridge | Identify Balaban's `B'`, `X`, `C^(k)`, and `(C^(k))^(1/2)` with the repository's physical cochain coordinates, `CMP116FluctuationField`, `PhysicalGaugeCMP116Dictionary.gaussianRootMap root`, and `physicalGaussian`; account for determinant/Jacobian normalization; and translate the post-(2.6) localization into the existing `LocalActivity.fluctuationSupport`/`activeSupport` interfaces |
+
+This row is enough to justify the source-targeted product-Gaussian interface.
+It is **not** enough to discharge Lean's `gaussian_pushforward` field by itself:
+that field still needs the coordinate/dictionary identification and the exact
+normalization convention for the finite-dimensional physical Gaussian.
+
 ### B6 - CMP 119: Localized `E/R/B` Decomposition
 
 | Field | Value |
@@ -494,6 +519,14 @@ Appendix F's factorization uses an ultralocal product measure.  Exponential
 covariance decay does not imply exact independence.  P4 must provide either an
 exact ultralocal representation with nonlocality moved into activities, or a
 different theorem with an explicit factorization defect.
+
+CMP 116 equations (2.5)--(2.6) provide the source-side route for the first
+option: after conditioning the correlated fluctuation Gaussian on a localized
+domain, Balaban changes variables by `B' = (C^(k))^(1/2) X`, defines the product
+standard Gaussian `dmu0(X)`, and moves the nonlocal covariance/root dependence
+into `G`.  Therefore the Lean route should keep `balabanCMP116Dmu0` product-like
+and treat the covariance root as part of the coordinate map/integrand, not infer
+independence from covariance decay.
 
 ### Source Metric Versus Repository Metric
 
