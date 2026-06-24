@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Lemma3
+import YangMills.RG.BalabanCMP116Eq229
 import YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter
 
 /-!
@@ -281,5 +282,93 @@ theorem cmp116Lemma3ActivityEstimateScaleFamily_of_resummation
       (hglobal t k)
       (hterm t k)
       (hbudget t k)
+
+/-- Build a CMP116 Lemma 3 scale family from Eq. (2.29) and explicit residual
+post-D estimates at every scale.
+
+This is the scale-family version of
+`cmp116Lemma3ActivityEstimate_of_eq229_postD`.  It removes the separate
+monolithic `hbudget` premise for this route, but still requires the source
+identification, complex termwise estimate, Eq. (2.29), and complete residual
+`P/Z0/Z0'` bound pointwise at each `(t, k)`. -/
+theorem cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_postD
+    {σ ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    (hp : ∀ _ _, CMP116Lemma3Parameters)
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (sourceMetric : ∀ t k, σ t k → ℕ)
+    (physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc)
+    (DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k))
+    (alpha6 : ℕ → ℕ → ℝ)
+    (eq229Metric : ∀ t k, σ t k → ιY t k → ℕ)
+    (hEq229 :
+      ∀ t k,
+        CMP116Eq229Summability
+          (R t k).DIndex
+          (DParts t k)
+          (alpha6 t k)
+          (hp t k).delta
+          (hp t k).kappa
+          (eq229Metric t k))
+    (hglobal :
+      ∀ t k Z ψ φ,
+        (physicalActivity t k Z).globalEval ψ φ =
+          balabanCMP116H (R t k) Z ψ φ)
+    (hterm :
+      ∀ t k Z x, x ∈ cmp116HIndexFinset (R t k) Z →
+        ∀ ψ φ,
+          ‖(R t k).summand
+              Z x.1.1 x.1.2 x.2.1 x.2.2 ψ φ‖ ≤
+            (R t k).termWeight
+              Z x.1.1 x.1.2 x.2.1 x.2.2)
+    (hpostD :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        Finset.sum ((R t k).PIndex Z D) (fun P =>
+          Finset.sum ((R t k).Z0Index Z D P) (fun Z0 =>
+            Finset.sum ((R t k).Z0PrimeIndex Z D P Z0) (fun Z0' =>
+              (R t k).termWeight Z D P Z0 Z0'))) ≤
+          (((hp t k).C3 * (hp t k).epsilon1) *
+            balabanCMP116Lemma3Weight
+              (hp t k).blockScale
+              (hp t k).delta
+              (hp t k).kappa
+              (sourceMetric t k)
+              Z) *
+            Finset.prod (DParts t k Z D)
+              (cmp116Eq229Weight
+                (alpha6 t k)
+                (hp t k).delta
+                (hp t k).kappa
+                (eq229Metric t k Z))) :
+    CMP116Lemma3ActivityEstimateScaleFamily
+      physicalActivity
+      sourceMetric
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa) := by
+  intro t k
+  exact
+    cmp116Lemma3ActivityEstimate_of_eq229_postD
+      (hp t k) (R t k) (sourceMetric t k)
+      (physicalActivity t k)
+      (DParts t k)
+      (alpha6 t k)
+      (eq229Metric t k)
+      (hEq229 t k)
+      (hglobal t k)
+      (hterm t k)
+      (hpostD t k)
 
 end YangMills.RG

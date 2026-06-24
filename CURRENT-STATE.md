@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 340.
+Addendum 341.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1106,8 +1106,10 @@ names the canonical per-scale Lemma 3 weight and amplitude, builds the
 corresponding raw-source records through
 `rawSource_of_lemma3ActivityEstimate`, and proves
 `cmp116Lemma3ActivityEstimateScaleFamily_of_resummation` by applying the
-single-scale finite resummation bridge at each `(t, k)`.  This is downstream
-packaging only: it does not derive the termwise estimates, summed-weight
+single-scale finite resummation bridge at each `(t, k)`.  It also exposes
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_postD`, the pointwise
+scale-family lift of the Eq. (2.29) post-D consumer.  This is downstream
+packaging only: it does not derive the termwise estimates, residual post-D
 budget, source metric comparison, Gaussian pushforward, covariance-root
 localization, Wilson-Hessian identification, local physical activity
 construction, or the rooted H# identity.

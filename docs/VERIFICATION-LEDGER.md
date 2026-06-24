@@ -13546,3 +13546,40 @@ and the residual post-D bound all remain explicit hypotheses.  It does not
 prove equations (2.27), (2.30), (2.32), (2.34), (2.36), or (2.37), the constant
 hierarchy, admissible-domain transport, source metric comparison, or CMP116
 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 341 (2026-06-24, **scale-family Eq. 2.29 post-D Lemma-3 consumer**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8360)
+
+This checkpoint lifts the Addendum 340 consumer pointwise over scale families:
+
+```
+cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_postD
+```
+
+The theorem applies `cmp116Lemma3ActivityEstimate_of_eq229_postD` at each
+`(t, k)`.  It constructs the canonical
+`CMP116Lemma3ActivityEstimateScaleFamily` from per-scale source identification,
+complex termwise estimates, equation-(2.29) summability predicates, and
+explicit residual post-D `P/Z0/Z0'` bounds.
+
+No stage-specific source inequality is introduced.  The residual source
+resummation remains the visible `hpostD` family, so this theorem is only a
+composition adapter for callers that already have the post-D bounds.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-eq229-scale-family-consumer.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This theorem does not prove Eq. (2.29), termwise estimates,
+residual post-D estimates, equations (2.27), (2.30), (2.32), (2.34), (2.36),
+or (2.37), the constant hierarchy, admissible-domain transport, source metric
+comparison, Gaussian/root/Hessian/activity source facts, or CMP116 Lemma 3.
+It only packages the already explicit per-scale assumptions into the existing
+scale-family estimate.  Clay distance **~0% (<0.1%), unchanged**.
