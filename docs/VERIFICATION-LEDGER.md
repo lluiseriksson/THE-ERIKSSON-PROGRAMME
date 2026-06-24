@@ -13805,3 +13805,40 @@ source-identify Eq. (2.29), the P-stage budget, the `Z0` residual estimate, the
 estimate, source metric comparison, Gaussian/root/Hessian/activity source
 facts, the rooted H# identity, or CMP116 Lemma 3.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 348 (2026-06-24, **CMP116 Lemma 3 resummation M3 constructor**
+`YangMills.RG.BalabanCMP116SourceTheorem`; core 8361)
+
+This checkpoint normalizes the M3-frontier constructor API for the
+resummation-source lane:
+
+```
+CMP116RawSourceM3Frontier.of_lemma3ResummationSourceAssumptions
+```
+
+The constructor is parallel to
+`CMP116RawSourceM3Frontier.of_balabanSourceAssumptions` and
+`CMP116RawSourceM3Frontier.of_lemma3SourceAssumptions`.  It packages a
+`BalabanCMP116Lemma3ResummationSourceAssumptions` record into the existing
+raw-source M3 frontier by first deriving the Lemma-3 source-assumption record.
+The method-style alias
+`BalabanCMP116Lemma3ResummationSourceAssumptions.to_m3Frontier` now routes
+through this constructor.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-lemma3-resummation-m3-constructor.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116SourceTheorem.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is API packaging only.  It proves no new estimate and
+does not source-identify Eq. (2.29), the P-stage budget, `Z0/Z0'` residual
+estimates, activity identification, termwise complex estimates, source metric
+comparison, Gaussian/root/Hessian/activity source facts, H#, or CMP116 Lemma
+3.  Clay distance **~0% (<0.1%), unchanged**.

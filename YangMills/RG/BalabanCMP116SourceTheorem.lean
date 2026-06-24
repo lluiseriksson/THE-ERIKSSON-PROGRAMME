@@ -1788,6 +1788,80 @@ def CMP116RawSourceM3Frontier.of_lemma3SourceAssumptions
   rooted_hsharp_remainder_identity :=
     BalabanCMP116Lemma3SourceAssumptions.rooted_hsharp_remainder_identity_rawSource h
 
+/-- Package resummation-source assumptions into the existing raw-source M3
+frontier.
+
+This is the constructor parallel to
+`CMP116RawSourceM3Frontier.of_lemma3SourceAssumptions`, with the monolithic
+Lemma 3 scale-family estimate replaced by the explicit Eq. (2.29), P-stage,
+and fixed-`P` residual-stage obligations carried by
+`BalabanCMP116Lemma3ResummationSourceAssumptions`. -/
+def CMP116RawSourceM3Frontier.of_lemma3ResummationSourceAssumptions
+    {ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {hp : ∀ _t _k : ℕ, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (OmegaPolymerType HF (z t k))
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {DParts :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k →
+        Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιY t k → ℕ}
+    {pWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
+    {z0Weight :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) → ιD t k → ιP t k →
+          ιZ0 t k → ℝ}
+    {z0PrimeWeight :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) → ιD t k → ιP t k →
+          ιZ0 t k → ιZ0' t k → ℝ}
+    (h :
+      BalabanCMP116Lemma3ResummationSourceAssumptions
+        ιD ιP ιZ0 ιZ0' ιY
+        zCarrier r z Λ D spectatorPull
+        precision covariance root physicalGaussian
+        covNormBound rootNormBound covWeight rootWeight
+        physicalActivity physicalActiveSupport sourceMetric
+        hp R DParts alpha6 eq229Metric
+        pWeight z0Weight z0PrimeWeight
+        ν covIR Rsc g
+        C1 C Hbar ε c0 betaFlow kappa kappa0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction) :
+    CMP116RawSourceM3Frontier
+      zCarrier r z Λ D spectatorPull
+      precision covariance root physicalGaussian
+      covNormBound rootNormBound covWeight rootWeight
+      physicalActivity physicalActiveSupport
+      (cmp116Lemma3ScaleWeight
+        sourceMetric
+        (fun t k => (hp t k).blockScale)
+        (fun t k => (hp t k).delta)
+        (fun t k => (hp t k).kappa))
+      ν covIR Rsc g
+      (cmp116Lemma3ScaleAmplitude
+        (fun t k => (hp t k).C3)
+        (fun t k => (hp t k).epsilon1))
+      C1 C Hbar ε c0 betaFlow kappa kappa0
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction :=
+  CMP116RawSourceM3Frontier.of_lemma3SourceAssumptions
+    (BalabanCMP116Lemma3ResummationSourceAssumptions.to_lemma3SourceAssumptions
+      h)
+
 /-- Method-style alias for
 `CMP116RawSourceM3Frontier.of_balabanSourceAssumptions`. -/
 def BalabanCMP116SourceAssumptions.to_m3Frontier
@@ -1907,8 +1981,7 @@ def BalabanCMP116Lemma3ResummationSourceAssumptions.to_m3Frontier
       C1 C Hbar ε c0 betaFlow kappa kappa0
       rootLocalization wilsonHessianIdentification
       localActivityConstruction :=
-  (BalabanCMP116Lemma3ResummationSourceAssumptions.to_lemma3SourceAssumptions
-    h).to_m3Frontier
+  CMP116RawSourceM3Frontier.of_lemma3ResummationSourceAssumptions h
 
 /-- The checked source-theorem target is discharged by pure record packaging. -/
 theorem balabanCMP116SourceTheorem_of_assumptions :

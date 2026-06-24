@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 347.
+Addendum 348.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1170,6 +1170,11 @@ pointwise factorization obligations already consumed by
 Its constructors derive the existing Lemma-3 source-assumption record and the
 raw-source M3 frontier.  This is still only packaging of explicit obligations,
 not a proof of the P-stage/residual source estimates or Lemma 3.
+The raw-source M3 frontier namespace now also has the parallel constructor
+`CMP116RawSourceM3Frontier.of_lemma3ResummationSourceAssumptions`, and
+`BalabanCMP116Lemma3ResummationSourceAssumptions.to_m3Frontier` routes through
+that constructor.  This is an API normalization only; the source obligations
+and Clay distance are unchanged.
 
 ## Live Frontier
 

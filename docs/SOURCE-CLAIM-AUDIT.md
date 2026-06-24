@@ -694,6 +694,9 @@ records by applying the verified pStage/residual-stage scale-family theorem.
 This is an audit improvement only: the P-stage budget, the two residual-stage
 summability estimates, the activity identification, the termwise estimate, and
 the source metric comparison remain primary-source obligations.
+The parallel constructor
+`CMP116RawSourceM3Frontier.of_lemma3ResummationSourceAssumptions` is the same
+record projection with a normalized API name; it adds no source content.
 
 ## Agent Checklist
 
