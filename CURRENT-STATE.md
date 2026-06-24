@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 336.
+Addendum 337.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8359 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8360 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -1089,6 +1089,18 @@ metric-domination theorem to `appendixFHoleExpWeight` and
 `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimate`.
 `BalabanCMP116SourceTheorem` again depends only on the raw-M3 source frontier
 and keeps Lemma 3 activity packaging out of the five-field source theorem.
+The module `YangMills.RG.BalabanCMP116Lemma3ScaleFamily` now adds the
+dependent scale-family layer requested by the source split.  It packages
+`∀ t k, CMP116Lemma3ActivityEstimate ...` over scale-dependent polymer types,
+names the canonical per-scale Lemma 3 weight and amplitude, builds the
+corresponding raw-source records through
+`rawSource_of_lemma3ActivityEstimate`, and proves
+`cmp116Lemma3ActivityEstimateScaleFamily_of_resummation` by applying the
+single-scale finite resummation bridge at each `(t, k)`.  This is downstream
+packaging only: it does not derive the termwise estimates, summed-weight
+budget, source metric comparison, Gaussian pushforward, covariance-root
+localization, Wilson-Hessian identification, local physical activity
+construction, or the rooted H# identity.
 
 ## Live Frontier
 

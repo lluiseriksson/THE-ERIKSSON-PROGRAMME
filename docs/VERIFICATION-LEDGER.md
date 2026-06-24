@@ -13342,3 +13342,66 @@ summations (2.34)/(2.36)/(2.37), the final Lemma 3 budget, or the
 identification of Balaban's `H(Z)` with a Lean physical local activity.  It
 only makes the first source summability equation consumable by subsequent
 verified finite resummation steps.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 337 (2026-06-24, **CMP116 Lemma 3 dependent scale-family packaging**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8360)
+
+This checkpoint adds the scale-family layer between the single-scale CMP116
+Lemma 3 estimate and the existing raw-source/H# frontier consumers.  The new
+module packages a dependent two-scale family of Lemma 3 estimates,
+
+```
+forall t k,
+  CMP116Lemma3ActivityEstimate
+    (physicalActivity t k)
+    (sourceMetric t k)
+    (blockScale t k)
+    (C3 t k)
+    (epsilon1 t k)
+    (delta t k)
+    (kappaSource t k),
+```
+
+where the index type may depend on `(t, k)`, for example
+`OmegaPolymerType HF (z t k)`.
+
+New public declarations include:
+
+```
+cmp116Lemma3ScaleWeight
+cmp116Lemma3ScaleAmplitude
+cmp116Lemma3ScaleWeight_nonneg
+CMP116Lemma3ActivityEstimateScaleFamily
+rawSource_of_lemma3ActivityEstimate
+PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily
+cmp116Lemma3ActivityEstimateScaleFamily_of_resummation
+```
+
+The raw-source constructor keeps Gaussian pushforward, root localization,
+Wilson-Hessian identification, and local physical activity construction as
+explicit per-scale inputs.  It only combines those source facts with the
+already supplied Lemma 3 estimate through the existing single-scale adapter.
+The resummation constructor applies
+`cmp116Lemma3ActivityEstimate_of_resummation` at each scale; it still assumes
+the termwise estimates and summed-weight budget at each scale.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMills.RG.BalabanCMP116Lemma3ScaleFamily
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-lemma3-scale-family.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+**Honest scope.** This is record/package plumbing.  It does not prove CMP116
+Lemma 3 constants, the termwise source estimates, the summed-weight budget,
+equations (2.27), (2.29)--(2.32), (2.34), (2.36), or (2.37), the source metric
+comparison, the Gaussian pushforward, covariance-root localization,
+Wilson-Hessian identification, local activity construction, or the rooted H#
+identity.  The full-index scale-family estimate remains a compatibility
+hypothesis until admissible source-domain transport or zero-extension is
+formalized.  Clay distance **~0% (<0.1%), unchanged**.
