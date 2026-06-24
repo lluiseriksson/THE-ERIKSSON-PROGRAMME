@@ -13942,3 +13942,45 @@ construct `pWeight`, prove the P-stage source estimate, source-identify Eq.
 pointwise source factorization, identify the physical activity, prove termwise
 complex estimates, or prove CMP116 Lemma 3.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 351 (2026-06-24, **CMP116 P-source scale-family bridge**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8361)
+
+This checkpoint lifts the P-source residual bridge to the dependent scale
+family:
+
+```
+cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageSourceBound_residualStages
+```
+
+The theorem applies
+`cmp116Lemma3ActivityEstimate_of_eq229_pStageSourceBound_residualStages`
+pointwise in `(t, k)`.  It consumes per-scale Eq. (2.29), per-scale
+`CMP116PStageSourceBound`, the per-scale scalar smallness condition
+
+```
+2 * (((pStageBlockScale t k : Real) + 2) ^ 4) *
+  pEntropyConstant t k * epsilon2 t k *
+    Real.exp (5 * pStageKappa t k) <= 1
+```
+
+and the existing per-scale `Z0/Z0'` residual-stage, nonnegativity,
+factorization, activity-identification, and termwise-estimate obligations.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-pstage-source-scale-family.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is pointwise packaging only.  It does not construct
+`pWeight`, prove the P-stage source estimate, source-identify Eq. (2.29),
+discharge `Z0/Z0'` residual stages, prove the pointwise source factorization,
+identify the physical activity, prove termwise complex estimates, or prove
+CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.

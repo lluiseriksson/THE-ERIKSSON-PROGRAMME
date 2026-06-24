@@ -709,6 +709,13 @@ The scale-family wrapper
 `cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages`
 applies this same pStage/residual-stage route pointwise in `(t, k)`.  It is a
 consumer of explicit per-scale source obligations, not a source extraction.
+The companion wrapper
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageSourceBound_residualStages`
+applies the P-source-bound route pointwise in `(t, k)`: it consumes per-scale
+`CMP116PStageSourceBound` and the per-scale scalar smallness restriction, but
+still leaves Eq. (2.29), `Z0/Z0'` residual summability, pointwise
+factorization, termwise estimates, and physical activity identification as
+explicit obligations.
 
 `YangMills.RG.BalabanCMP116SourceTheorem` now also exposes
 `BalabanCMP116Lemma3ResummationSourceAssumptions`, a source-boundary record

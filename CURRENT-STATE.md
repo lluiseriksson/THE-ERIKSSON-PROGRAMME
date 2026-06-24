@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 350.
+Addendum 351.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1168,6 +1168,13 @@ pointwise scale-family lift of the newer source-order route with explicit
 `CMP116PStageSummability` and fixed-`P` `Z0/Z0'` residual-stage predicates.
 This wrapper again proves no source inequality; it only applies the verified
 single-scale finite-summation theorem at every `(t, k)`.
+It now also exposes
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageSourceBound_residualStages`,
+which lifts the P-source-bound residual bridge pointwise in `(t, k)`.  This
+wrapper replaces the per-scale normalized P residual premise by
+`CMP116PStageSourceBound` plus the per-scale scalar smallness condition, while
+keeping Eq. (2.29), `Z0/Z0'` residual summability, nonnegativity, factorization,
+termwise estimates, and activity identification explicit.
 The source-frontier file now also exposes the parallel record
 `BalabanCMP116Lemma3SourceAssumptions`.  It keeps all existing covariance,
 Gaussian, support, measurability, H#, marginal-flow, and IR assumptions
