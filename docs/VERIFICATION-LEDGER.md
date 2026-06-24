@@ -14127,3 +14127,38 @@ rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills
 prove the split residual estimates, the combined post-`P` estimate, any source
 constant, Eq. (2.29), the P-stage budget, activity identification, termwise
 estimates, or CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 355 (2026-06-24, **CMP116 post-P scale source package**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8361)
+
+This checkpoint names the post-`P` scale-family source boundary:
+
+```
+CMP116Lemma3PostPScaleSourceAssumptions
+CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate
+```
+
+The record packages exactly the assumptions consumed by
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStagePostPResidualBound`:
+Eq. (2.29), the P-stage budget, the direct combined post-`P` residual bound,
+activity identification, and the complex termwise estimate.  It deliberately
+does not add a standalone `Z0'` source scalar, a fixed-`Z0` `Z0'` source
+summability theorem, or a source identification of
+`CMP116Z0PrimeResidualSummability`.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-postp-scale-source-package.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is source-boundary packaging only.  It proves no source
+estimate, no combined post-`P` bound, no Eq. (2.29), no P-stage budget, no
+activity identification, no termwise estimate, no metric comparison, and no
+CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.

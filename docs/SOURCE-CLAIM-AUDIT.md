@@ -749,6 +749,13 @@ only a consumer route: `cmp116PostPResidualBound_of_residualStages` proves that
 the split normalized residual route packages into the combined predicate, but
 the split estimates, combined post-`P` bound, Eq. (2.29), P-stage budget,
 activity identification, and termwise estimates remain source obligations.
+The scale source-boundary package
+`CMP116Lemma3PostPScaleSourceAssumptions` records the same route at the
+per-scale call site.  Its projection
+`CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate` applies the
+already verified scale-family theorem and deliberately carries a direct
+`CMP116PostPResidualBound` field instead of adding a standalone `Z0'` budget or
+identifying `CMP116Z0PrimeResidualSummability` with a printed equation.
 
 `YangMills.RG.BalabanCMP116SourceTheorem` now also exposes
 `BalabanCMP116Lemma3ResummationSourceAssumptions`, a source-boundary record

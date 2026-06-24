@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 354.
+Addendum 355.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1160,6 +1160,14 @@ normalized `Z0/Z0'` residual route is a special case of the combined
 post-`P` predicate.  It is an interface bridge only: the split residual
 estimates, product nonnegativity, and factorization remain explicit
 hypotheses.
+The scale-family layer now also names the post-`P` route as a source-boundary
+package:
+`CMP116Lemma3PostPScaleSourceAssumptions` and
+`CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate`.  This
+packages Eq. (2.29), the P-stage budget, the direct combined post-`P`
+residual bound, activity identification, and the complex termwise estimate
+without introducing a standalone `Z0'` source scalar or a fixed-`Z0`
+`Z0'` summability claim.
 The raw-source compatibility bridge is downstream in
 `YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter`.  It contains the explicit
 metric-domination theorem to `appendixFHoleExpWeight` and
