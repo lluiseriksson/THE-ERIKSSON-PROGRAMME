@@ -14162,3 +14162,41 @@ rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills
 estimate, no combined post-`P` bound, no Eq. (2.29), no P-stage budget, no
 activity identification, no termwise estimate, no metric comparison, and no
 CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 356 (2026-06-24, **CMP116 admissible-domain zero extension**
+`YangMills.RG.BalabanCMP116Lemma3AdmissibleAdapter`; core 8362)
+
+This checkpoint adds the source-neutral admissible-domain transport interface:
+
+```
+cmp116AdmissibleMetricZeroExtension
+cmp116Lemma3ActivityEstimate_of_admissible_zeroExtension
+CMP116Lemma3AdmissibleActivityEstimateScaleFamily
+cmp116AdmissibleMetricScaleExtension
+cmp116Lemma3ActivityEstimateScaleFamily_of_admissible_zeroExtension
+balabanCMP116Lemma3Weight_domination_of_admissible_metricComparison
+```
+
+The zero-extension theorem turns a native CMP116 Lemma-3 estimate on the
+admissible subtype `{X // admissible X}` into an estimate on the full index
+type only when an explicit outside-domain zero theorem and amplitude
+nonnegativity are supplied.  The metric-domination theorem requires both that
+every target-family polymer is admissible and that the complete exponent
+comparison to the Appendix-F shifted metric is supplied.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3AdmissibleAdapter.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-admissible-adapter.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3AdmissibleAdapter.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is transport bookkeeping only.  It proves no
+admissibility theorem, no outside-domain vanishing theorem, no source metric
+comparison, no activity construction, no combined post-`P` estimate, no Eq.
+(2.29), and no CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.

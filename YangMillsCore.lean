@@ -487,6 +487,7 @@ import YangMills.RG.BalabanCMP116Eq229
 import YangMills.RG.BalabanCMP116Lemma3ResidualStages
 import YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter
 import YangMills.RG.BalabanCMP116Lemma3ScaleFamily
+import YangMills.RG.BalabanCMP116Lemma3AdmissibleAdapter
 -- Source-facing Balaban CMP116 theorem target with the raw-source package
 -- unfolded into individually auditable source fields.
 import YangMills.RG.BalabanCMP116SourceTheorem

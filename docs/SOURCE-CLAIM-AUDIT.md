@@ -757,6 +757,15 @@ already verified scale-family theorem and deliberately carries a direct
 `CMP116PostPResidualBound` field instead of adding a standalone `Z0'` budget or
 identifying `CMP116Z0PrimeResidualSummability` with a printed equation.
 
+`YangMills.RG.BalabanCMP116Lemma3AdmissibleAdapter` now records the admissible
+domain transport as an explicit interface.  The zero-extension theorems consume
+a native Lemma-3 estimate on the subtype `{X // admissible X}` and an explicit
+outside-domain vanishing theorem.  The metric-domination theorem additionally
+requires that every target-family polymer is admissible and that the complete
+Appendix-F/CMP116 exponent comparison holds.  This adapter deliberately proves
+none of those source facts and does not claim that all repository polymers are
+CMP116 admissible domains.
+
 `YangMills.RG.BalabanCMP116SourceTheorem` now also exposes
 `BalabanCMP116Lemma3ResummationSourceAssumptions`, a source-boundary record
 that carries those explicit per-scale obligations instead of a monolithic

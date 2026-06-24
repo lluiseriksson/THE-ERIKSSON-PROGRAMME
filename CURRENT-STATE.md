@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 355.
+Addendum 356.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1168,6 +1168,17 @@ packages Eq. (2.29), the P-stage budget, the direct combined post-`P`
 residual bound, activity identification, and the complex termwise estimate
 without introducing a standalone `Z0'` source scalar or a fixed-`Z0`
 `Z0'` summability claim.
+The admissible-domain adapter
+`YangMills.RG.BalabanCMP116Lemma3AdmissibleAdapter` now records the honest
+transport from CMP116's native admissible source domains to a larger repository
+index type.  It defines the zero-extended metric
+`cmp116AdmissibleMetricZeroExtension`, proves
+`cmp116Lemma3ActivityEstimate_of_admissible_zeroExtension` and its scale-family
+version from an explicit outside-domain zero theorem, and adds
+`balabanCMP116Lemma3Weight_domination_of_admissible_metricComparison`, which
+requires both target-family admissibility and the full exponent comparison.
+This proves no admissibility, no outside-zero construction, and no metric
+comparison.
 The raw-source compatibility bridge is downstream in
 `YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter`.  It contains the explicit
 metric-domination theorem to `appendixFHoleExpWeight` and
