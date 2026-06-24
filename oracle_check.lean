@@ -1242,6 +1242,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116LocalizedLinearMap.finsetSum_toContinuousLinearMap
 #print axioms YangMills.RG.CMP116LocalizedLinearMap.finsetSum_eq_of_agreeOn
 #print axioms YangMills.RG.CMP116LocalizedLinearMap.finsetSum_apply_eq_zero_outside
+#print axioms YangMills.RG.CMP116LocalizedLinearMap.finsetSumVarying
+#print axioms YangMills.RG.CMP116LocalizedLinearMap.finsetSumVarying_toContinuousLinearMap
+#print axioms YangMills.RG.CMP116LocalizedLinearMap.finsetSumVarying_eq_of_agreeOn
+#print axioms YangMills.RG.CMP116LocalizedLinearMap.finsetSumVarying_apply_eq_zero_outside
 #print axioms YangMills.RG.CMP116LocalizedLinearMap.comp_toContinuousLinearMap
 #print axioms YangMills.RG.CMP116LocalizedLinearMap.comp_eq_of_agreeOn
 #print axioms YangMills.RG.CMP116LocalizedLinearMap.comp_apply_eq_zero_outside

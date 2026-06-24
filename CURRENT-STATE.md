@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 319.
+Addendum 320.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1147,6 +1147,10 @@ It also exposes named support consequences for those constructors:
 agreement on the declared input region and pointwise zero output outside the
 declared output region.  These are exact support-algebra consumers for finite
 localized-root assembly, not new localization or decay theorems.
+The same API now has `CMP116LocalizedLinearMap.finsetSumVarying`, which sums a
+finite family with piecewise input/output supports and certifies support on the
+finite unions of those supports.  This is the concrete finite-family assembly
+needed before localized root pieces can be combined.
 The dictionary-backed construction layer now has
 `PhysicalRootToCMP116OperatorTransport.localizedRootLinearMap_ofDictionary`,
 which turns an explicit physical root kernel bound, a dictionary kernel-bound

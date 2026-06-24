@@ -12500,3 +12500,42 @@ coordinate fields.  It does not construct a covariance root, prove finite-range
 or exponential-decay estimates, prove Gaussian pushforward, construct local
 activities, or prove raw activity decay.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 320 (2026-06-24, **varying-support localized finite sums**
+`YangMills.RG.LocalLinearOperator`; core 8355)
+
+This addendum adds the finite-family localized-map assembly constructor:
+
+```
+CMP116LocalizedLinearMap.finsetSumVarying
+CMP116LocalizedLinearMap.finsetSumVarying_toContinuousLinearMap
+CMP116LocalizedLinearMap.finsetSumVarying_eq_of_agreeOn
+CMP116LocalizedLinearMap.finsetSumVarying_apply_eq_zero_outside
+```
+
+Unlike the previous same-support `finsetSum`, `finsetSumVarying` accepts a
+finite family whose pieces have input/output supports `Xin i` and `Xout i`.
+The resulting map is certified over the finite unions `I.biUnion Xin` and
+`I.biUnion Xout`.  The two consumer lemmas expose the direct consequences:
+agreement on the union of declared input supports and coordinatewise zero
+outside the union of declared output supports.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\LocalLinearOperator.lean
+lake build YangMills.RG.LocalLinearOperator
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\LocalLinearOperator.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is exact finite-union support algebra.  It does not
+construct localized root pieces, prove that any analytic root decomposes into
+such pieces, prove finite-range or exponential-decay estimates, prove Gaussian
+pushforward, construct local activities, or prove raw activity decay.  Clay
+distance **~0% (<0.1%), unchanged**.

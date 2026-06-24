@@ -611,6 +611,71 @@ theorem finsetSum_apply_eq_zero_outside
     (finsetSum I T).toContinuousLinearMap ξ q a = 0 :=
   (finsetSum I T).apply_eq_zero_outside ξ hq a
 
+/-- Finite sum of localized maps with varying input/output supports, supported
+on the finite unions of the declared supports.  This is exact support algebra,
+not a finite-range or decay estimate. -/
+noncomputable def finsetSumVarying
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (Xin Xout : ι → Finset (Cube d L))
+    (T : ∀ i, CMP116LocalizedLinearMap
+      (lieDim := lieDim) (Xin i) (Xout i)) :
+    CMP116LocalizedLinearMap
+      (lieDim := lieDim) (I.biUnion Xin) (I.biUnion Xout) where
+  toContinuousLinearMap :=
+    I.sum fun i => (T i).toContinuousLinearMap
+  supportedBetween := by
+    classical
+    refine OperatorSupportedBetween.finsetSum I
+      (fun i => (T i).toContinuousLinearMap) ?_
+    intro i hi
+    exact
+      OperatorSupportedBetween.mono
+        (by
+          intro q hq
+          exact Finset.mem_biUnion.mpr ⟨i, hi, hq⟩)
+        (by
+          intro q hq
+          exact Finset.mem_biUnion.mpr ⟨i, hi, hq⟩)
+        (T i).supportedBetween
+
+@[simp] theorem finsetSumVarying_toContinuousLinearMap
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (Xin Xout : ι → Finset (Cube d L))
+    (T : ∀ i, CMP116LocalizedLinearMap
+      (lieDim := lieDim) (Xin i) (Xout i)) :
+    (finsetSumVarying I Xin Xout T).toContinuousLinearMap =
+      I.sum fun i => (T i).toContinuousLinearMap :=
+  rfl
+
+/-- A varying-support finite sum depends only on the union of its declared
+input supports. -/
+theorem finsetSumVarying_eq_of_agreeOn
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (Xin Xout : ι → Finset (Cube d L))
+    (T : ∀ i, CMP116LocalizedLinearMap
+      (lieDim := lieDim) (Xin i) (Xout i))
+    {ξ η : CMP116FluctuationField d L lieDim}
+    (hξη : AgreeOn (I.biUnion Xin) ξ η) :
+    (finsetSumVarying I Xin Xout T).toContinuousLinearMap ξ =
+      (finsetSumVarying I Xin Xout T).toContinuousLinearMap η :=
+  (finsetSumVarying I Xin Xout T).eq_of_agreeOn hξη
+
+/-- A varying-support finite sum is zero outside the union of its declared
+output supports. -/
+theorem finsetSumVarying_apply_eq_zero_outside
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (Xin Xout : ι → Finset (Cube d L))
+    (T : ∀ i, CMP116LocalizedLinearMap
+      (lieDim := lieDim) (Xin i) (Xout i))
+    (ξ : CMP116FluctuationField d L lieDim)
+    {q : Cube d L} (hq : q ∉ I.biUnion Xout) (a : Fin lieDim) :
+    (finsetSumVarying I Xin Xout T).toContinuousLinearMap ξ q a = 0 :=
+  (finsetSumVarying I Xin Xout T).apply_eq_zero_outside ξ hq a
+
 noncomputable def comp
     (U : CMP116LocalizedLinearMap (lieDim := lieDim) Xmid Xout)
     (T : CMP116LocalizedLinearMap (lieDim := lieDim) Xin Xmid) :
