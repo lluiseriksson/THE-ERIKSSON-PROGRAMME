@@ -12901,3 +12901,58 @@ not prove a Lean theorem, does not prove Lemma 3, and does not formalize the
 polymer-series summability referenced through [26].  It identifies the next
 consumer after a future `H(Z)` construction/decay theorem.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 330 (2026-06-24, **activity-local root-piece agreement obligation**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum names the source-facing agreement premise consumed by the
+dictionary Gaussian-root activity bridge:
+
+```
+PhysicalRootToCMP116OperatorTransport.ActivityLocalRootPieceAgreement
+```
+
+It also adds two constructor/transport lemmas:
+
+```
+PhysicalRootToCMP116OperatorTransport.activityLocalRootPieceAgreement_of_agreeOn_activeSupport
+PhysicalRootToCMP116OperatorTransport.gaussianRootMap_agreeOn_activity_fluctuationSupport_of_cmp116_agreeOn
+```
+
+The first restricts agreement on a declared physical active support to the
+activity's fluctuation support.  The second transports CMP116 agreement on a
+finite localization domain `Xloc` through the dictionary, using
+`D.pullFluctuationCochain_agreeOn` and
+`D.gaussianRootMap_eq_coordinates_comp_cmp116OperatorOfPhysical`, to produce
+the exact `ActivityLocalRootPieceAgreement` required by the existing full-root
+consumer.
+
+The existing theorem
+
+```
+PhysicalRootToCMP116OperatorTransport.gaussianRootMap_activity_globalEval_eq_of_agreeOn_of_localizedRootLinearMapFinsetSum
+```
+
+now takes this named proposition instead of an anonymous expanded binder.
+This keeps the finite localized-root sum as one sufficient constructor while
+leaving room for later finite, locally finite, or convergent root-piece
+interfaces.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint is Lean plumbing for a named local agreement
+obligation.  It does not prove CMP116 domain/enlargement translation, any
+finite or infinite reconstruction of `(C^(k))^(1/2)`, a Gaussian pushforward
+identity, local activity construction, or raw activity decay.  Clay distance
+**~0% (<0.1%), unchanged**.

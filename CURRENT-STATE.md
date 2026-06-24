@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 329.
+Addendum 330.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1207,6 +1207,13 @@ root map `D.gaussianRootMap root`, but only under an explicit source-facing
 agreement hypothesis on the activity's `fluctuationSupport`.  It deliberately
 does not require or prove global finite-piece reconstruction of the covariance
 root operator.
+That obligation is now named as
+`PhysicalRootToCMP116OperatorTransport.ActivityLocalRootPieceAgreement`, with
+constructors from agreement on a declared physical active support and from
+CMP116-domain agreement transported through the dictionary.  This makes the
+current `hrootPieces` premise reusable for finite, locally finite, or
+convergent root-piece routes without adding a source-hypothesis field or
+claiming Balaban has supplied the missing domain/reconstruction theorem.
 The dictionary-backed construction layer now has
 `PhysicalRootToCMP116OperatorTransport.localizedRootLinearMap_ofDictionary`,
 which turns an explicit physical root kernel bound, a dictionary kernel-bound

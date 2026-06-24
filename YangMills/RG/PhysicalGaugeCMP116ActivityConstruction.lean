@@ -738,6 +738,89 @@ theorem localizedRootLinearMapFinsetSum_ofDictionary_activity_globalEval_eq_of_a
         hkernel dist R Xin hfinite hξη
     exact congrFun (congrArg (fun φ => φ.ofLp) hpull) b
 
+/-- Exact activity-local agreement between the full physical Gaussian-root map
+and a localized root-piece realization.
+
+The equality is required only on the fluctuation support of the physical local
+activity.  In particular, this proposition does not assert equality of the two
+maps as global operators. -/
+def ActivityLocalRootPieceAgreement
+    (activity : PhysicalGaugeLocalActivity dPhys N Nc)
+    (fullRoot rootPieces :
+      CMP116FluctuationField d L lieDim →
+        PhysicalGaugeOneCochain dPhys N Nc) : Prop :=
+  ∀ ζ : CMP116FluctuationField d L lieDim,
+    AgreeOn activity.fluctuationSupport
+      (fun b => fullRoot ζ b)
+      (fun b => rootPieces ζ b)
+
+omit [NeZero L] in
+/-- Agreement on a declared physical active support restricts to the exact
+activity-local root-piece obligation whenever the fluctuation support is
+contained in that active support. -/
+theorem activityLocalRootPieceAgreement_of_agreeOn_activeSupport
+    (activity : PhysicalGaugeLocalActivity dPhys N Nc)
+    (fullRoot rootPieces :
+      CMP116FluctuationField d L lieDim →
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (activeSupport : Finset (PhysicalBond dPhys N))
+    (hfluctuation : activity.fluctuationSupport ⊆ activeSupport)
+    (hrootPieces :
+      ∀ ζ : CMP116FluctuationField d L lieDim,
+        AgreeOn activeSupport
+          (fun b => fullRoot ζ b)
+          (fun b => rootPieces ζ b)) :
+    ActivityLocalRootPieceAgreement activity fullRoot rootPieces := by
+  intro ζ b hb
+  exact hrootPieces ζ b (hfluctuation hb)
+
+/-- CMP116 agreement of a candidate root-piece map on a localization domain
+pulls back to the physical activity-local agreement required by the full
+dictionary Gaussian-root consumer.
+
+This is only dictionary and support transport.  It does not prove the CMP116
+agreement premise or any global equality of root operators. -/
+theorem gaussianRootMap_agreeOn_activity_fluctuationSupport_of_cmp116_agreeOn
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (rootPieces :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        CMP116FluctuationField d L lieDim)
+    (Xloc : Finset (Cube d L))
+    (activity : PhysicalGaugeLocalActivity dPhys N Nc)
+    (hfluctuation :
+      activity.fluctuationSupport ⊆ D.physicalBondsOfCells Xloc)
+    (hrootPiecesCMP :
+      ∀ ζ : CMP116FluctuationField d L lieDim,
+        AgreeOn Xloc
+          ((cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root) ζ)
+          (rootPieces ζ)) :
+    ActivityLocalRootPieceAgreement activity
+      (fun ζ => D.gaussianRootMap root ζ)
+      (fun ζ => D.pullFluctuationCochain (rootPieces ζ)) := by
+  intro ζ b hb
+  have hpull :
+      AgreeOn (D.physicalBondsOfCells Xloc)
+        (D.pullFluctuationCochain
+          ((cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root) ζ))
+        (D.pullFluctuationCochain (rootPieces ζ)) :=
+    D.pullFluctuationCochain_agreeOn (hrootPiecesCMP ζ)
+  have hmap :
+      D.gaussianRootMap root ζ =
+        D.pullFluctuationCochain
+          ((cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root) ζ) := by
+    simpa [ContinuousLinearMap.comp_apply] using
+      congrArg (fun T => T ζ)
+        (D.gaussianRootMap_eq_coordinates_comp_cmp116OperatorOfPhysical root)
+  exact
+    (congrArg (fun A : PhysicalGaugeOneCochain dPhys N Nc => A.ofLp b)
+      hmap).trans (hpull b (hfluctuation hb))
+
 /-- Promote the input-locality of a finite sum of dictionary-localized root
 pieces to the physical activity evaluated on the full dictionary Gaussian-root
 map, provided the finite sum agrees with that root map on the activity's
@@ -769,14 +852,13 @@ theorem gaussianRootMap_activity_globalEval_eq_of_agreeOn_of_localizedRootLinear
     (activity : PhysicalGaugeLocalActivity dPhys N Nc)
     (ψ : PhysicalGaugeField dPhys N Nc)
     (hrootPieces :
-      ∀ ζ : CMP116FluctuationField d L lieDim,
-        AgreeOn activity.fluctuationSupport
-          (fun b => (D.gaussianRootMap root ζ) b)
-          (fun b =>
-            D.pullFluctuationCochain
-              ((localizedRootLinearMapFinsetSum_ofDictionary
-                I D root rootWeight cmpWeight hkernelTransport
-                hkernel dist R Xin hfinite).toContinuousLinearMap ζ) b))
+      ActivityLocalRootPieceAgreement activity
+        (fun ζ => D.gaussianRootMap root ζ)
+        (fun ζ =>
+          D.pullFluctuationCochain
+            ((localizedRootLinearMapFinsetSum_ofDictionary
+              I D root rootWeight cmpWeight hkernelTransport
+              hkernel dist R Xin hfinite).toContinuousLinearMap ζ)))
     {ξ η : CMP116FluctuationField d L lieDim}
     (hξη : AgreeOn (I.biUnion Xin) ξ η) :
     activity.globalEval ψ
