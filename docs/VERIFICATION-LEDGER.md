@@ -12625,3 +12625,40 @@ Gaussian pushforward identity for the finite sum, does not establish any
 isometry or Jacobian convention for the dictionary, does not construct local
 activities, and does not prove raw activity decay.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 323 (2026-06-24, **activity consumer for finite-piece root sums**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum exposes the first direct physical-activity consumer of the
+finite-piece dictionary localized-root sum:
+
+```
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMapFinsetSum_ofDictionary_activity_globalEval_eq_of_agreeOn
+```
+
+It says that a `PhysicalGaugeLocalActivity` evaluated on the physical pullback
+of the finite-piece CMP116 root-sum output is unchanged when two CMP116 input
+fields agree on `I.biUnion Xin`.  The proof is the exact composition of
+`LocalActivity.globalEval_eq_of_agreeOn` with the previously verified pulled
+physical-output equality.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entry reports only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint proves a local-activity dependence consumer
+for a supplied finite sum of projected root maps.  It does not prove that the
+finite pieces reconstruct the full covariance root, does not prove a Gaussian
+pushforward identity for the finite sum, does not construct local activities,
+and does not prove raw activity decay.  Clay distance **~0% (<0.1%),
+unchanged**.
