@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 317.
+Addendum 318.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1188,6 +1188,11 @@ and
 `PhysicalGaugeCMP116Dictionary.norm_gaussianRootMap_apply_le_of_covarianceRootCertificate`.
 These are projection lemmas for the existing `root_norm_bound` certificate
 field, not new root construction or localization estimates.
+The downstream transport package now exposes the same budget through
+`PhysicalGaugeCMP116ActivityTransport.norm_gaussianRootMap_le` and
+`PhysicalGaugeCMP116ActivityTransport.norm_gaussianRootMap_apply_le`, so a
+constructed physical/CMP116 activity transport can feed later estimates with
+the explicit dictionary norm constant still visible.
 The same construction file now has a thin raw-source compatibility layer:
 `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses` extends the
 separated Gaussian/root/Hessian/activity source package with the unfolded

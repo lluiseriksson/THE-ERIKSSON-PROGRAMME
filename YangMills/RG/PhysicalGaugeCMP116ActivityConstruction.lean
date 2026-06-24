@@ -835,6 +835,69 @@ namespace PhysicalGaugeCMP116ActivityTransport
 variable {dPhys N Nc d L : ℕ} [NeZero N] [NeZero L]
 variable {lieDim : Nat} {Ψ : Cube d L → Type*}
 
+/-- A physical/CMP116 activity transport package carries enough root-certificate
+data to bound the dictionary Gaussian coordinate map.  The dictionary constant
+is explicit; no isometry or Gaussian-law claim is made. -/
+theorem norm_gaussianRootMap_le
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound H0 κ : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N)}
+    {amplitude weight : OmegaPolymerType HF z → ℝ}
+    {sourceConstruction : Prop}
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (T :
+      PhysicalGaugeCMP116ActivityTransport (lieDim := lieDim) (Ψ := Ψ) HF z Λ
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight physicalActivity physicalActiveSupport amplitude weight
+        H0 κ sourceConstruction) :
+    ‖D.gaussianRootMap root‖ ≤
+      rootNormBound *
+        ‖D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖ :=
+  D.norm_gaussianRootMap_le_of_covarianceRootCertificate
+    T.certificate.root_certificate
+
+/-- Pointwise version of the transport-level dictionary Gaussian-map norm
+budget. -/
+theorem norm_gaussianRootMap_apply_le
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound H0 κ : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N)}
+    {amplitude weight : OmegaPolymerType HF z → ℝ}
+    {sourceConstruction : Prop}
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (T :
+      PhysicalGaugeCMP116ActivityTransport (lieDim := lieDim) (Ψ := Ψ) HF z Λ
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight physicalActivity physicalActiveSupport amplitude weight
+        H0 κ sourceConstruction)
+    (ξ : CMP116FluctuationField d L lieDim) :
+    ‖D.gaussianRootMap root ξ‖ ≤
+      (rootNormBound *
+        ‖D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖) *
+        ‖ξ‖ :=
+  D.norm_gaussianRootMap_apply_le_of_covarianceRootCertificate
+    T.certificate.root_certificate ξ
+
 /-- Construct the full physical/CMP116 activity transport record from the
 dictionary-built localized family and a physical localized-Gaussian
 certificate. -/

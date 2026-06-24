@@ -12420,3 +12420,41 @@ beyond the carried certificate fields, establish Gaussian pushforward, prove
 root localization/truncation, identify a Wilson Hessian, construct local
 activities, or prove raw activity decay.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 318 (2026-06-24, **transport-fed Gaussian-map norm budget**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum routes the dictionary/root Gaussian-map norm budget through the
+downstream physical/CMP116 activity transport package:
+
+```
+PhysicalGaugeCMP116ActivityTransport.norm_gaussianRootMap_le
+PhysicalGaugeCMP116ActivityTransport.norm_gaussianRootMap_apply_le
+```
+
+The lemmas consume `T.certificate.root_certificate` from an already constructed
+`PhysicalGaugeCMP116ActivityTransport` and expose the same explicit dictionary
+constant
+`‖D.fluctuationFieldContinuousLinearEquiv.toContinuousLinearMap‖`.  This is the
+transport-package consumer of Addendum 317's certificate-fed root-norm budget.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This is a downstream transport-package consumer of an
+already carried covariance-root certificate.  It does not prove the transport
+was built from any particular source theorem, construct the covariance root,
+prove Gaussian pushforward, prove root localization/truncation, identify a
+Wilson Hessian, construct local activities, or prove raw activity decay.  Clay
+distance **~0% (<0.1%), unchanged**.
