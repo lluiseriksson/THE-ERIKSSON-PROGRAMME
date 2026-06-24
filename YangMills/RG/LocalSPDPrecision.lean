@@ -123,6 +123,16 @@ theorem LocalFiniteRangeResolventData.resolvent_expDecay
     H.dist_nonneg H.triangle H.finiteRange H.bound H.summable H.tsum_le
     H.small
 
+/-- The `n`th composition power of a local finite-range kernel is supported in
+range `(n + 1) * R`.  This follows only from the triangle inequality and the
+one-step finite-range field. -/
+theorem LocalFiniteRangeResolventData.Kpow_finiteRange
+    {dist : V → V → ℝ} {K : V → V → ℝ}
+    (H : LocalFiniteRangeResolventData dist K) (n : ℕ) :
+    ∀ x y, (((n + 1 : ℕ) : ℝ) * H.R) < dist x y →
+      Kpow K n x y = 0 :=
+  YangMills.RG.Kpow_finiteRange H.triangle H.finiteRange n
+
 /-- A coefficient sequence suitable for inverse-square-root Neumann estimates:
 every coefficient is nonnegative and bounded by `1`. -/
 def InverseSqrtCoefficientMajorant (coeff : ℕ → ℝ) : Prop :=
@@ -210,6 +220,15 @@ noncomputable def inverseSqrtKernelRemainder (K : V → V → ℝ) (N : ℕ) :
   fun x y => ∑' n, inverseSqrtBinomialCoeff (n + N + 1) *
     Kpow K (n + N) x y
 
+/-- Finite inverse-square-root kernel truncation for the non-identity
+composition series.  Because `Kpow K 0 = K`, the truncation with length `N`
+uses powers `0, ..., N - 1` and coefficients indexed by `n + 1`; the diagonal
+identity term is intentionally not included. -/
+noncomputable def inverseSqrtKernelTruncation (K : V → V → ℝ) (N : ℕ) :
+    V → V → ℝ :=
+  fun x y => ∑ n ∈ Finset.range N,
+    inverseSqrtBinomialCoeff (n + 1) * Kpow K n x y
+
 /-- The inverse-square-root binomial coefficients are bounded by `1`.  This
 keeps the first truncation estimates independent of the later Catalan/Prüfer
 optimizations. -/
@@ -240,6 +259,28 @@ theorem inverseSqrtBinomialCoeff_majorant :
       field_simp
     rw [hone] at hfrac
     exact hfrac
+
+/-- Finite inverse-square-root truncations have exact finite range.  The
+support radius is `N * R`, matching the longest included non-identity
+composition power. -/
+theorem LocalFiniteRangeResolventData.inverseSqrtKernelTruncation_finiteRange
+    {dist : V → V → ℝ} {K : V → V → ℝ}
+    (H : LocalFiniteRangeResolventData dist K) (hR : 0 ≤ H.R) (N : ℕ) :
+    ∀ x y, (((N : ℕ) : ℝ) * H.R) < dist x y →
+      inverseSqrtKernelTruncation K N x y = 0 := by
+  intro x y hfar
+  dsimp [inverseSqrtKernelTruncation]
+  apply Finset.sum_eq_zero
+  intro n hn
+  have hnlt : n < N := Finset.mem_range.mp hn
+  have hnle : n + 1 ≤ N := Nat.succ_le_iff.mpr hnlt
+  have hmul_le :
+      (((n + 1 : ℕ) : ℝ) * H.R) ≤ ((N : ℕ) : ℝ) * H.R :=
+    mul_le_mul_of_nonneg_right (Nat.cast_le.mpr hnle) hR
+  have hfar_n :
+      (((n + 1 : ℕ) : ℝ) * H.R) < dist x y :=
+    lt_of_le_of_lt hmul_le hfar
+  rw [H.Kpow_finiteRange n x y hfar_n, mul_zero]
 
 /-- The shifted inverse-square-root kernel remainder inherits exponential
 decay from the same finite-range Neumann data.

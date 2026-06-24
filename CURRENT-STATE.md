@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 309.
+Addendum 311.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1083,6 +1083,11 @@ spatial convolution ratio and proves exponential decay of the shifted
 non-identity inverse-square-root kernel remainder
 `inverseSqrtKernelRemainder`; this respects the convention `Kpow K 0 = K`, so
 identity contributions are kept outside the tail.
+It also proves exact finite-range propagation for composition powers
+(`Kpow_finiteRange`) and finite inverse-square-root truncation sums
+(`inverseSqrtKernelTruncation_finiteRange`): if the one-step kernel has range
+`R`, then `Kpow K n` has range `(n + 1)R`, and the length-`N` non-identity
+truncation has range `N R`.
 This is still not a physical Hessian theorem and does not construct
 `P^{-1/2}` as a continuous linear map; it is reusable scalar/kernel
 infrastructure for that route.
@@ -1098,7 +1103,10 @@ weights, and a constructor into the existing
 `PhysicalLocalizedCovarianceRootCertificate`.  The covariance/root kernel
 bounds, root square identity, root norm, root self-adjointness, root PSD, and
 the separate source `root_localization` field remain explicit source
-hypotheses; no Wilson-Hessian identification or root construction is claimed.
+hypotheses.  The same physical package now exposes the scalar support wrappers
+`kernelMajorant_Kpow_finiteRange` and
+`inverseSqrtKernelTruncation_finiteRange`; these are support facts about the
+majorant kernel, not a Wilson-Hessian identification or root construction.
 The new CMP116 activity transport adapter narrows the final interface for that
 last step: a future source theorem must supply a CMP116 localized family plus
 field transports preserving `globalEval`, skeleton support localization, and

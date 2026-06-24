@@ -12133,3 +12133,58 @@ source to operator-norm kernel estimates.  It does not prove finite range,
 exponential decay, covariance-root localization, Gaussian pushforward,
 physical raw activity decay, or any new source theorem.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 311 (2026-06-24, **finite-range support for local-SPD truncations**
+`YangMills.RG.KernelDecay` / `YangMills.RG.LocalSPDPrecision`; core 8355)
+
+This addendum adds exact support bookkeeping for finite-range composition
+powers and finite inverse-square-root truncations.  New declarations:
+
+```
+Kpow_finiteRange
+LocalFiniteRangeResolventData.Kpow_finiteRange
+inverseSqrtKernelTruncation
+LocalFiniteRangeResolventData.inverseSqrtKernelTruncation_finiteRange
+PhysicalLocalSPDInverseSqrtData.kernelMajorant_Kpow_finiteRange
+PhysicalLocalSPDInverseSqrtData.inverseSqrtKernelTruncation_finiteRange
+```
+
+The key convention is still `Kpow K 0 = K`: the `n`th composition power
+contains `n + 1` one-step kernels and is supported in range `(n + 1) * R`.
+Consequently, the length-`N` non-identity inverse-square-root truncation has
+range `N * R`.  The truncation omits the diagonal identity contribution, which
+must remain separate in covariance/root weights.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\KernelDecay.lean
+lake env lean YangMills\RG\LocalSPDPrecision.lean
+lake env lean YangMills\RG\PhysicalGaugeLocalSPDPrecisionRoot.lean
+lake build YangMills.RG.KernelDecay
+lake build YangMills.RG.LocalSPDPrecision
+lake build YangMills.RG.PhysicalGaugeLocalSPDPrecisionRoot
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\KernelDecay.lean YangMills\RG\LocalSPDPrecision.lean YangMills\RG\PhysicalGaugeLocalSPDPrecisionRoot.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`
+for:
+
+```
+Kpow_finiteRange
+LocalFiniteRangeResolventData.Kpow_finiteRange
+LocalFiniteRangeResolventData.inverseSqrtKernelTruncation_finiteRange
+PhysicalLocalSPDInverseSqrtData.kernelMajorant_Kpow_finiteRange
+PhysicalLocalSPDInverseSqrtData.inverseSqrtKernelTruncation_finiteRange
+```
+
+**Honest scope.** This is scalar/kernel support bookkeeping.  It does not
+identify a physical Wilson Hessian, prove operator-power domination, identify
+the canonical covariance with a Neumann series, construct a continuous-linear
+map inverse square root, prove covariance/root kernel bounds, construct a
+Gaussian pushforward, build a local physical activity, or prove raw activity
+decay.  Clay distance **~0% (<0.1%), unchanged**.

@@ -220,6 +220,44 @@ noncomputable def Kpow (K : V → V → ℝ) : ℕ → V → V → ℝ
   | 0 => K
   | (n + 1) => fun x y => ∑' z, K x z * Kpow K n z y
 
+/-- Exact finite-range propagation for kernel composition powers.
+
+The indexing matches the repository convention `Kpow K 0 = K`: the `n`th
+entry contains `n + 1` one-step kernels, so its range is `(n + 1) * R`. -/
+theorem Kpow_finiteRange {d : V → V → ℝ} {K : V → V → ℝ} {R : ℝ}
+    (htri : ∀ x y z, d x y ≤ d x z + d z y)
+    (hK : ∀ x y, R < d x y → K x y = 0) :
+    ∀ n x y, (((n + 1 : ℕ) : ℝ) * R) < d x y →
+      Kpow K n x y = 0 := by
+  intro n
+  induction n with
+  | zero =>
+      intro x y hfar
+      exact hK x y (by simpa using hfar)
+  | succ n ih =>
+      intro x y hfar
+      change (∑' z, K x z * Kpow K n z y) = 0
+      have hterm : ∀ z, K x z * Kpow K n z y = 0 := by
+        intro z
+        by_cases hxz : R < d x z
+        · simp [hK x z hxz]
+        · have hxz_le : d x z ≤ R := le_of_not_gt hxz
+          by_cases hzy : (((n + 1 : ℕ) : ℝ) * R) < d z y
+          · simp [ih z y hzy]
+          · have hzy_le : d z y ≤ ((n + 1 : ℕ) : ℝ) * R :=
+              le_of_not_gt hzy
+            have hdist_le :
+                d x y ≤ (((n + 1 + 1 : ℕ) : ℝ) * R) := by
+              calc
+                d x y ≤ d x z + d z y := htri x y z
+                _ ≤ R + ((n + 1 : ℕ) : ℝ) * R :=
+                  add_le_add hxz_le hzy_le
+                _ = (((n + 1 + 1 : ℕ) : ℝ) * R) := by
+                  norm_num
+                  ring
+            exact False.elim ((not_lt_of_ge hdist_le) hfar)
+      simp [hterm]
+
 /-- **Fixed-rate iterated composition** (the Neumann-series engine).  A kernel
 `K` decaying at rate `κ` (amplitude `a`) has all its compositional powers
 decaying at the **fixed** rate `κ − σ` with geometric amplitude `a·(a·S)ⁿ` —

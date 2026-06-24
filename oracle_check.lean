@@ -324,6 +324,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- concrete Combes-Thomas: the resolvent of a small finite-range operator decays
 -- exponentially (the literal mechanism of the Balaban propagator bound)
 #print axioms YangMills.RG.finiteRange_resolvent_isExpDecay
+#print axioms YangMills.RG.Kpow_finiteRange
 -- volume-uniform lattice exponential summability from a shell-growth bound
 -- (discharges the recurring geometric hypothesis of the whole decay stack)
 #print axioms YangMills.RG.lattice_exp_sum_le_of_shell
@@ -332,10 +333,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- resolvent-first local precision layer and inverse-square-root scalar tails
 #check YangMills.RG.LocalFiniteRangeResolventData
 #print axioms YangMills.RG.LocalFiniteRangeResolventData.resolvent_expDecay
+#print axioms YangMills.RG.LocalFiniteRangeResolventData.Kpow_finiteRange
 #print axioms YangMills.RG.inverseSqrtCoefficientMajorant_summable
 #print axioms YangMills.RG.inverseSqrtCoefficientMajorant_tail_le
 #print axioms YangMills.RG.inverseSqrtBinomialCoeff_majorant
 #print axioms YangMills.RG.inverseSqrtBinomialCoeff_tail_le
+#print axioms YangMills.RG.LocalFiniteRangeResolventData.inverseSqrtKernelTruncation_finiteRange
 #print axioms YangMills.RG.LocalFiniteRangeResolventData.inverseSqrtKernelRemainder_expDecay
 #print axioms YangMills.RG.normalizedPrecisionContraction_nonneg
 #print axioms YangMills.RG.normalizedPrecisionContraction_lt_one
@@ -343,6 +346,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.inverseSqrtBinomialCoeff_normalized_tail_le
 #print axioms YangMills.RG.inverseSqrtBinomialCoeff_normalized_scaled_tail_le
 #print axioms YangMills.RG.PhysicalLocalSPDInverseSqrtData.precision_coercive
+#print axioms YangMills.RG.PhysicalLocalSPDInverseSqrtData.kernelMajorant_Kpow_finiteRange
+#print axioms YangMills.RG.PhysicalLocalSPDInverseSqrtData.inverseSqrtKernelTruncation_finiteRange
 #print axioms YangMills.RG.PhysicalLocalSPDPrecisionRootCertificate.toLocalizedCovarianceRootCertificate
 -- Schur boundedness: row-sum + quadratic-form (covariance) bound ≤ a·S
 #print axioms YangMills.RG.expDecay_finset_row_le

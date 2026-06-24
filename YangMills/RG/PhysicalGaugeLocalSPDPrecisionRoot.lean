@@ -340,6 +340,40 @@ theorem PhysicalLocalSPDInverseSqrtData.inverseSqrtKernelRemainder_expDecay
       (inverseSqrtKernelRemainder H.kernelMajorant Ntail) :=
   H.resolventData.inverseSqrtKernelRemainder_expDecay Ntail
 
+/-- Scalar finite-range support for the majorant composition powers carried by
+physical local-SPD data.  With the convention `Kpow K 0 = K`, the `n`th power
+has radius `(n + 1) * R`. -/
+theorem PhysicalLocalSPDInverseSqrtData.kernelMajorant_Kpow_finiteRange
+    {d N Nc : ℕ} [NeZero N]
+    {precision :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc}
+    {dist : PhysicalBond d N → PhysicalBond d N → ℝ}
+    (H : PhysicalLocalSPDInverseSqrtData precision dist) (n : ℕ) :
+    ∀ source target,
+      (((n + 1 : ℕ) : ℝ) * H.resolventData.R) < dist target source →
+        Kpow H.kernelMajorant n target source = 0 := by
+  intro source target hfar
+  exact H.resolventData.Kpow_finiteRange n target source hfar
+
+/-- The finite inverse-square-root truncation of the scalar majorant has exact
+range `Ntrunc * R`.  This is a scalar support statement only; it does not
+construct or identify the physical covariance root. -/
+theorem PhysicalLocalSPDInverseSqrtData.inverseSqrtKernelTruncation_finiteRange
+    {d N Nc : ℕ} [NeZero N]
+    {precision :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc}
+    {dist : PhysicalBond d N → PhysicalBond d N → ℝ}
+    (H : PhysicalLocalSPDInverseSqrtData precision dist) (Ntrunc : ℕ) :
+    ∀ source target,
+      (((Ntrunc : ℕ) : ℝ) * H.resolventData.R) < dist target source →
+        inverseSqrtKernelTruncation H.kernelMajorant Ntrunc target source = 0 := by
+  intro source target hfar
+  exact
+    H.resolventData.inverseSqrtKernelTruncation_finiteRange
+      H.range_nonneg Ntrunc target source hfar
+
 /-- The canonical covariance obtained from strict coercivity of the physical
 local-SPD precision. -/
 noncomputable def PhysicalLocalSPDInverseSqrtData.covariance
