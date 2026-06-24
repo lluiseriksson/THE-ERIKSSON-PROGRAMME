@@ -73,6 +73,15 @@ Visually confirmed source anchors already located:
   Lean `hrootPieces` activity-local agreement shape, but it still leaves the
   domain/enlargement translation and root-piece reconstruction theorem
   explicit; see `docs/SOURCE-CLAIM-AUDIT.md` row B5b.
+* CMP 116 (1988), PDF pages 15--20 / printed pages 15--20, eqs.
+  (2.14)--(2.38): the subsequent estimates bound terms of the resummed
+  localized activity `H(Z)`.  They culminate in Lemma 3 / (2.38), not in an
+  exact finite reconstruction theorem for `(C^(k))^(1/2)`.  This points the
+  Lean interface toward a source-side `local_physical_activity_construction`
+  and `raw_pointwise_decay` theorem, while finite root-piece sums should remain
+  truncations or auxiliary approximations unless a separate exact
+  activity-support equality theorem is found; see `docs/SOURCE-CLAIM-AUDIT.md`
+  row B5c.
 * CMP 116 (1988), PDF page 20, Lemma 3 / eq. (2.38): the cluster-expansion
   activity `H(Z)` for `Z in D_{k+1}` satisfies
   `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.

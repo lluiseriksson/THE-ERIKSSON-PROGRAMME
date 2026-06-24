@@ -405,6 +405,27 @@ that hypothesis: the repository still needs an exact domain-translation theorem
 and a finite/infinite root-piece reconstruction statement compatible with the
 Lean support interfaces.
 
+### B5c - CMP 116: Resummed Activity Estimate Versus Root-Piece Reconstruction
+
+| Field | Value |
+|---|---|
+| Extracted claim | The estimates after (2.14) bound the resummed localized activity `H(Z)` obtained from the generalized random-walk/localization expansion; they do not state an exact finite root-piece reconstruction of `(C^(k))^(1/2)` |
+| Replacement status | `source-extracted` |
+| Source scope | `exact theorem/equation range`, not a completed Lean theorem |
+| Primary source | T. Balaban, *Renormalization Group Approach to Lattice Gauge Field Theories II. Cluster Expansions*, Comm. Math. Phys. 116 (1988), 1--22 |
+| Local PDF | `runtime/sources/primary/balaban-rg-II-cmp116-1104161193.pdf` |
+| `local_pdf_sha256` | `EE39523A0F7B83AF958513C7BD6F9C7731934B40355EF5D6B0F7A68EE6D022FC` |
+| PDF / printed pages | PDF pages 15--20, printed pages 15--20 |
+| Exact range | equations (2.14)--(2.38), especially the resummations using (2.27), (2.29)--(2.32), (2.34), (2.36), (2.37), and Lemma 3 / (2.38) |
+| Estimate structure | A typical term is written in (2.14), bounded in (2.26), then resummed over `D`, `P`, `Z0`, and `Z0'`.  The proof extracts small factors such as `alpha_6 exp(-delta kappa d_k(Y))`, uses the summability input (2.29), geometric inequalities (2.27), (2.30), (2.32), and the scale-transfer inequality (2.36), and ends with Lemma 3's bound for `H(Z)` |
+| Lean-facing verdict | This source range supports the `raw_pointwise_decay` / `local_physical_activity_construction` side of the CMP116 source package more directly than it supports an exact finite `localizedRootLinearMapFinsetSum` reconstruction theorem.  A finite Lean root-piece sum should therefore be treated as a truncation or auxiliary approximation unless an additional source theorem proves exact activity-support equality |
+| Remaining unproved bridge | Extract the exact constant hierarchy (`epsilon_2`, `C_3`, smallness of `(L+2)^4 O(1) epsilon_2`, `2 (L+2)^4 O(1) epsilon_2 exp(5 kappa) <= 1`, `(kappa_1 - 1)/2 >= 2 L kappa`, and boundedness assumptions for `(LM)^4 alpha_i`/`gamma_i`) and map Lemma 3's `H(Z)` to the repository's `PhysicalGaugeLocalActivity.globalEval` plus support fields |
+
+This row resolves the immediate reconstruction-design question negatively for
+the current source evidence: pages 15--20 prove a localized activity estimate
+after resummation, not exact equality of a finite root-piece operator with the
+full covariance root on an activity support.
+
 ### B6 - CMP 119: Localized `E/R/B` Decomposition
 
 | Field | Value |

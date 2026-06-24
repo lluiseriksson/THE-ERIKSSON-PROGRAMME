@@ -12813,3 +12813,46 @@ does not prove the `hrootPieces` hypothesis, does not identify Balaban's
 domains with Lean's `LocalActivity.fluctuationSupport`/`activeSupport`, and
 does not prove finite or infinite root-piece reconstruction.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 328 (2026-06-24, **CMP116 activity-estimate design constraint**
+`docs/SOURCE-CLAIM-AUDIT.md`; core 8355)
+
+This documentation/source-audit checkpoint records the result of inspecting
+CMP116 PDF/printed pages 15--20, equations (2.14)--(2.38), to decide whether
+the post-(2.6) root expansion should be treated as an exact finite root-piece
+reconstruction theorem.
+
+New audit row:
+
+```
+B5c - CMP 116: Resummed Activity Estimate Versus Root-Piece Reconstruction
+```
+
+The row records that Balaban writes a typical term in (2.14), bounds it in
+(2.26), then resums over `D`, `P`, `Z0`, and `Z0'` using the geometric and
+summability inputs (2.27), (2.29)--(2.32), (2.34), and (2.36).  The result is
+Lemma 3 / (2.38), a localized activity estimate for `H(Z)`.
+
+The practical Lean-facing conclusion is negative for exact finite
+reconstruction: this source range supports `local_physical_activity_construction`
+and `raw_pointwise_decay` more directly than it supports an exact finite
+`localizedRootLinearMapFinsetSum` equality with `(C^(k))^(1/2)`.  Finite
+root-piece sums should remain truncations or auxiliary approximations unless a
+separate exact activity-support equality theorem is found.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\BALABAN-SOURCE-BOUNDS.md docs\VERIFICATION-LEDGER.md
+```
+
+**Honest scope.** This checkpoint is source-audit bookkeeping only.  It does
+not prove a Lean theorem, does not discharge `hrootPieces`, and does not prove
+activity decay in Lean.  It prevents a materially false implementation choice:
+treating CMP116 pages 15--20 as if they supplied exact finite root
+reconstruction.  Clay distance **~0% (<0.1%), unchanged**.
