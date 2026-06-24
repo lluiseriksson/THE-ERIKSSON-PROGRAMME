@@ -91,6 +91,53 @@ def CMP116Z0ResidualSummability
     ∀ P, P ∈ PIndex Z D →
       Finset.sum (Z0Index Z D P) (fun Z0 => z0Weight Z D P Z0) ≤ 1
 
+/-- The source-shaped `Z0`-stage estimate in the CMP116 Lemma-3 resummation,
+before applying the corresponding scalar smallness restriction.
+
+CMP116, printed page 19 around equation (2.32): the `Z0` resummation produces
+the stage scalar `(L+2)^4 O(1) epsilon2`.  The constant
+`z0EntropyConstant` names the stage-specific `O(1)` majorant.
+
+This predicate does not construct the source `Z0` family, identify `z0Weight`,
+or prove the scalar restriction. -/
+def CMP116Z0StageSourceBound
+    {σ ιD ιP ιZ0 : Type*}
+    (DIndex : σ → Finset ιD)
+    (PIndex : σ → ιD → Finset ιP)
+    (Z0Index : σ → ιD → ιP → Finset ιZ0)
+    (z0Weight : σ → ιD → ιP → ιZ0 → ℝ)
+    (blockScale : ℕ)
+    (z0EntropyConstant epsilon2 : ℝ) : Prop :=
+  ∀ Z D, D ∈ DIndex Z →
+    ∀ P, P ∈ PIndex Z D →
+      Finset.sum (Z0Index Z D P)
+          (fun Z0 => z0Weight Z D P Z0) ≤
+        (((blockScale : ℝ) + 2) ^ 4) *
+          z0EntropyConstant * epsilon2
+
+/-- The CMP116 `Z0`-stage source estimate, together with its explicit scalar
+smallness restriction, implies the source-neutral normalized `Z0` residual
+predicate. -/
+theorem cmp116Z0ResidualSummability_of_z0StageSourceBound
+    {σ ιD ιP ιZ0 : Type*}
+    (DIndex : σ → Finset ιD)
+    (PIndex : σ → ιD → Finset ιP)
+    (Z0Index : σ → ιD → ιP → Finset ιZ0)
+    (z0Weight : σ → ιD → ιP → ιZ0 → ℝ)
+    (blockScale : ℕ)
+    (z0EntropyConstant epsilon2 : ℝ)
+    (hsource :
+      CMP116Z0StageSourceBound
+        DIndex PIndex Z0Index z0Weight
+        blockScale z0EntropyConstant epsilon2)
+    (hsmall :
+      (((blockScale : ℝ) + 2) ^ 4) *
+          z0EntropyConstant * epsilon2 ≤ 1) :
+    CMP116Z0ResidualSummability
+      DIndex PIndex Z0Index z0Weight := by
+  intro Z D hD P hP
+  exact (hsource Z D hD P hP).trans hsmall
+
 /-- Source-neutral normalized residual summability for the `Z0'` stage after a
 fixed `D`, `P`, and `Z0`. -/
 def CMP116Z0PrimeResidualSummability

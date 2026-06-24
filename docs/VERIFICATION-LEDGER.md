@@ -13984,3 +13984,55 @@ rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills
 discharge `Z0/Z0'` residual stages, prove the pointwise source factorization,
 identify the physical activity, prove termwise complex estimates, or prove
 CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 352 (2026-06-24, **CMP116 Z0-stage source-budget adapter**
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages`; core 8361)
+
+This checkpoint names the source-shaped `Z0`-stage residual budget and maps it
+to the already normalized `Z0` residual predicate:
+
+```
+CMP116Z0StageSourceBound
+cmp116Z0ResidualSummability_of_z0StageSourceBound
+```
+
+`CMP116Z0StageSourceBound` records the fixed-`(Z,D,P)` finite `Z0` sum with
+the explicit source scalar
+
+```
+(((blockScale : Real) + 2) ^ 4) * z0EntropyConstant * epsilon2
+```
+
+The adapter proves normalized `CMP116Z0ResidualSummability` by transitivity
+from this source-shaped bound and the explicit smallness restriction that the
+same scalar is at most `1`.
+
+This scalar intentionally has neither the P-stage leading `2` nor the P-stage
+`Real.exp (5 * kappa)` factor.  The constant `z0EntropyConstant` is separate
+from `pEntropyConstant`, because the source's different `O(1)` occurrences are
+not definitionally identified.
+
+Source anchor: CMP116 printed page 19, the `Z0` resummation around geometric
+estimate (2.32), together with the collected printed page 20 smallness
+restrictions.  Equation (2.32) is treated as the geometric input controlling
+the `Z0` resummation, not as a literal statement of this Lean finite-sum
+predicate.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-z0-stage-source-budget.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This checkpoint only converts a supplied source-shaped
+`Z0` finite-sum bound plus its explicit scalar smallness restriction into the
+normalized `Z0` residual predicate.  It does not construct `Z0Index`, identify
+`z0Weight`, prove the `Z0` source estimate, discharge `Z0'`, prove
+nonnegativity, prove termwise factorization, identify the physical activity,
+or prove CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.

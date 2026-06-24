@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 351.
+Addendum 352.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1117,6 +1117,13 @@ the explicit scalar restriction
 to the normalized `CMP116PResidualSummability`.  This names the source-budget
 shape without proving the construction of `pWeight`, the source constant
 hierarchy, or the remaining `Z0/Z0'` stages.
+The `Z0` stage now similarly has the source-shaped budget predicate
+`CMP116Z0StageSourceBound` and adapter
+`cmp116Z0ResidualSummability_of_z0StageSourceBound`, using the separate scalar
+`(blockScale + 2)^4 * z0EntropyConstant * epsilon2 <= 1`.  This deliberately
+omits the P-stage leading `2` and `exp(5*kappa)` factors, and uses a distinct
+`z0EntropyConstant`; it still does not construct `Z0Index`, identify
+`z0Weight`, prove the Z0 source estimate, or discharge the `Z0'` stage.
 The same P-source package now feeds the normalized residual-stage consumers
 through
 `cmp116H_postD_sum_le_of_pStageSourceBound_residualStages`,

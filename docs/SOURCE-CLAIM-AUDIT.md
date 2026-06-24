@@ -680,6 +680,20 @@ scalar smallness restriction; they do not assign source status to Eq. (2.29),
 the `Z0` stage, the `Z0'` stage, the pointwise factorization, the termwise
 complex estimate, or physical activity identification.
 
+The `Z0` stage now also has the source-shaped predicate
+`CMP116Z0StageSourceBound` and adapter
+`cmp116Z0ResidualSummability_of_z0StageSourceBound`.  The predicate records a
+fixed-`(Z,D,P)` finite `Z0` sum bounded by
+`((blockScale + 2)^4) * z0EntropyConstant * epsilon2`, and the adapter turns
+that bound plus the separate scalar smallness restriction into normalized
+`CMP116Z0ResidualSummability`.  This is anchored to the CMP116 printed page 19
+Z0 resummation around the geometric estimate (2.32), together with the printed
+page 20 smallness restrictions.  Equation (2.32) is treated as the geometric
+input controlling the source resummation, not as a literal statement of the
+Lean predicate.  This remains only a source-budget-shape interface: it does not
+construct `Z0Index`, identify `z0Weight`, prove the source estimate, or assign
+source status to `Z0'`.
+
 The scale-family theorem
 `cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_residualStages` is the same
 composition pointwise in `(t, k)`.  Its named `postDBase` equality is
