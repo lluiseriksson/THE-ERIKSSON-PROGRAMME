@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 344.
+Addendum 346.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1145,6 +1145,12 @@ the per-scale post-D budget from source-neutral `P/Z0/Z0'` residual-stage
 predicates, a named `postDBase` equal to the Eq. (2.29) product-weight base,
 and a pointwise residual factorization before applying the same activity
 bridge.  The residual stage predicates remain unassigned source obligations.
+It now also exposes
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages`, the
+pointwise scale-family lift of the newer source-order route with explicit
+`CMP116PStageSummability` and fixed-`P` `Z0/Z0'` residual-stage predicates.
+This wrapper again proves no source inequality; it only applies the verified
+single-scale finite-summation theorem at every `(t, k)`.
 The source-frontier file now also exposes the parallel record
 `BalabanCMP116Lemma3SourceAssumptions`.  It keeps all existing covariance,
 Gaussian, support, measurability, H#, marginal-flow, and IR assumptions

@@ -13728,3 +13728,38 @@ estimate, `Z0'` residual estimate, Eq. (2.29), the termwise complex-valued
 estimate, activity identification, source metric comparison, Gaussian/root/
 Hessian/activity source facts, or CMP116 Lemma 3.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 346 (2026-06-24, **scale-family CMP116 post-P residual bridge**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8361)
+
+This checkpoint adds the pointwise scale-family wrapper for the source-order
+pStage/residual-stage route:
+
+```
+cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages
+```
+
+The theorem applies
+`cmp116Lemma3ActivityEstimate_of_eq229_pStageResidualStages` at each `(t, k)`.
+It consumes per-scale Eq. (2.29), `CMP116PStageSummability`, normalized
+fixed-`P` `Z0` and `Z0'` residual summability, the complex termwise estimate,
+activity identification, and pointwise term-weight factorization, then returns
+the canonical `CMP116Lemma3ActivityEstimateScaleFamily`.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-postP-residual-stage-scale-family.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is only scale-family composition over the verified
+single-scale pStage/residual-stage finite consumer.  It does not prove or
+source-identify the P-stage budget, `Z0` residual estimate, `Z0'` residual
+estimate, Eq. (2.29), termwise complex-valued estimates, activity
+identification, source metric comparison, Gaussian/root/Hessian/activity source
+facts, or CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.

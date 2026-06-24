@@ -680,6 +680,11 @@ source discussion around CMP116 pages 18--20.  They still do not identify the
 P-stage budget, `Z0` stage, or `Z0'` stage with any source theorem or
 constant hierarchy.
 
+The scale-family wrapper
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages`
+applies this same pStage/residual-stage route pointwise in `(t, k)`.  It is a
+consumer of explicit per-scale source obligations, not a source extraction.
+
 ## Agent Checklist
 
 Before adding a source-facing Lean theorem:
