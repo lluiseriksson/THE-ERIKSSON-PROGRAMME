@@ -13291,3 +13291,54 @@ does not derive the termwise bounds or summed-weight budget from CMP116
 equations (2.27), (2.29)--(2.32), (2.34), (2.36), or (2.37), does not construct
 or identify `H(Z)`, and does not prove the source metric comparison.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 336 (2026-06-24, **CMP116 equation (2.29) D-stage summability consumer**
+`YangMills.RG.BalabanCMP116Eq229`; core 8359)
+
+This checkpoint begins the equation-level CMP116 Lemma 3 source extraction with
+the first displayed summability input on Balaban CMP116 page 18, equation
+(2.29).  The local primary source is
+`runtime/sources/primary/balaban-rg-II-cmp116-1104161193.pdf`, SHA256
+`EE39523A0F7B83AF958513C7BD6F9C7731934B40355EF5D6B0F7A68EE6D022FC`; the
+rendered page used for audit is
+`runtime/sources/primary/renders/cmp116-source-18.png`.
+
+The new module records the source weight
+
+```
+cmp116Eq229Weight alpha6 delta kappa metric Y
+  = alpha6 * exp (-(delta * kappa * metric Y))
+```
+
+and the exact equation (2.29) summability shape
+
+```
+sum_D prod_{Y in D} alpha6 * exp(-delta * kappa * d_k(Y)) <= 1.
+```
+
+The theorem `cmp116_DStage_sum_le_of_eq229` proves the immediate finite
+resummation consumer: if every term in the `D`-sum is bounded by a
+nonnegative base factor times the (2.29) product, then the entire `D`-sum is
+bounded by the base factor.  This gives a typed local source-equation
+interface for the first stage of the Lemma 3 resummation, without asserting
+the complete `hbudget`.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq229.lean
+lake build YangMills.RG.BalabanCMP116Eq229
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-eq229.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Eq229.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This does not prove Balaban's "for `K` sufficiently large
+and `alpha_6` sufficiently small" assertion in (2.29), does not prove the
+geometric inequality (2.27), the metric comparisons (2.30)/(2.32), the later
+summations (2.34)/(2.36)/(2.37), the final Lemma 3 budget, or the
+identification of Balaban's `H(Z)` with a Lean physical local activity.  It
+only makes the first source summability equation consumable by subsequent
+verified finite resummation steps.  Clay distance **~0% (<0.1%), unchanged**.

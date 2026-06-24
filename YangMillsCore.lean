@@ -483,6 +483,7 @@ import YangMills.RG.M3FrontierDependencies
 -- interface, finite resummation bridge, and downstream raw-source adapters.
 import YangMills.RG.BalabanCMP116Lemma3Estimate
 import YangMills.RG.BalabanCMP116Lemma3
+import YangMills.RG.BalabanCMP116Eq229
 import YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter
 -- Source-facing Balaban CMP116 theorem target with the raw-source package
 -- unfolded into individually auditable source fields.

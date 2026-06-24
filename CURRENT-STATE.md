@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 335.
+Addendum 336.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8358 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8359 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -1074,6 +1074,15 @@ step from termwise summand estimates plus a pre-Lemma summed-weight budget.
 The module targets the isolated Nat-source-metric estimate and still does not
 derive those termwise/summed-weight inputs from CMP116 constants; that
 extraction remains the active source task.
+The first equation-level source interface for that extraction is now
+`YangMills.RG.BalabanCMP116Eq229`.  It records the exact CMP116 (2.29) product
+summability shape
+`Σ_D Π_{Y∈D} α₆ exp(-δκ d_k(Y)) ≤ 1` and proves
+`cmp116_DStage_sum_le_of_eq229`: if D-indexed terms are bounded by a
+nonnegative base factor times the (2.29) product, then the D-sum is bounded by
+that base factor.  This is only the first-stage finite resummation consumer; it
+does not prove the small-`α₆`/large-`K` source assertion or any final Lemma 3
+budget.
 The raw-source compatibility bridge is downstream in
 `YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter`.  It contains the explicit
 metric-domination theorem to `appendixFHoleExpWeight` and
