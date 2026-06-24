@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 341.
+Addendum 342.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8360 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8361 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -1093,6 +1093,16 @@ the existing finite-resummation bridge, so callers can obtain the isolated
 `CMP116Lemma3ActivityEstimate` from Eq. (2.29), the complex termwise estimate,
 the activity-identification equality, and the explicit residual post-D bound,
 without separately passing a monolithic `hbudget`.
+The companion module `YangMills.RG.BalabanCMP116Lemma3ResidualStages` now
+derives that residual post-D bound from three source-neutral normalized stage
+predicates:
+`CMP116PResidualSummability`, `CMP116Z0ResidualSummability`, and
+`CMP116Z0PrimeResidualSummability`.  The theorem
+`cmp116H_postD_sum_le_of_residualStages` proves the finite `P/Z0/Z0'`
+resummation algebra from those predicates plus a pointwise factorization, and
+`cmp116H_termWeightSum_le_of_eq229_of_residualStages` composes it with Eq.
+(2.29).  These predicates are not assigned to CMP116 equation numbers here;
+they remain explicit source obligations.
 The raw-source compatibility bridge is downstream in
 `YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter`.  It contains the explicit
 metric-domination theorem to `appendixFHoleExpWeight` and

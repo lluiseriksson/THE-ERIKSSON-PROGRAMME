@@ -13583,3 +13583,42 @@ or (2.37), the constant hierarchy, admissible-domain transport, source metric
 comparison, Gaussian/root/Hessian/activity source facts, or CMP116 Lemma 3.
 It only packages the already explicit per-scale assumptions into the existing
 scale-family estimate.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 342 (2026-06-24, **CMP116 residual-stage post-D budget constructor**
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages`; core 8361)
+
+This checkpoint adds the source-neutral residual-stage interface requested for
+the CMP116 Lemma-3 resummation route:
+
+```
+CMP116PResidualSummability
+CMP116Z0ResidualSummability
+CMP116Z0PrimeResidualSummability
+cmp116H_postD_sum_le_of_residualStages
+cmp116H_termWeightSum_le_of_eq229_of_residualStages
+```
+
+The first theorem proves that normalized `P`, `Z0`, and `Z0'` residual
+summability, together with a pointwise factorization of `R.termWeight`, gives
+the complete post-`D` residual budget previously passed as `hpostD`.  The
+second theorem specializes the base factor to the Eq. (2.29) product-weight
+shape and composes the result with `cmp116H_termWeightSum_le_of_eq229`.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-residual-stages.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is finite residual-summation algebra plus composition
+with the existing Eq. (2.29) consumer.  It does not identify the residual stage
+predicates with CMP116 equations (2.27), (2.30), (2.32), (2.34), (2.36), or
+(2.37), prove the source constants, termwise complex-valued estimate,
+activity-identification equality, source metric comparison, Gaussian/root/
+Hessian/activity source facts, or CMP116 Lemma 3.  Clay distance **~0%
+(<0.1%), unchanged**.

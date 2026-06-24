@@ -638,6 +638,23 @@ only after all of the following are supplied:
 A source extraction is not a Lean proof.  The corresponding analytic result
 remains open until implemented and oracle-checked.
 
+## CMP116 Residual-Stage Interface
+
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages` is an algebraic interface for
+the residual CMP116 Lemma-3 resummation after the equation-(2.29) D-stage has
+been isolated.  It names the source-neutral predicates
+`CMP116PResidualSummability`, `CMP116Z0ResidualSummability`, and
+`CMP116Z0PrimeResidualSummability`, proves
+`cmp116H_postD_sum_le_of_residualStages`, and then composes with the existing
+Eq. (2.29) consumer through
+`cmp116H_termWeightSum_le_of_eq229_of_residualStages`.
+
+This interface does **not** identify those predicates with CMP116 equations
+(2.27), (2.30), (2.32), (2.34), (2.36), or (2.37), and it does **not** prove
+the source constants or smallness conditions.  A future source extraction must
+still supply the normalized `P`, `Z0`, and `Z0'` residual estimates and the
+pointwise term-weight factorization from the primary text.
+
 ## Agent Checklist
 
 Before adding a source-facing Lean theorem:
