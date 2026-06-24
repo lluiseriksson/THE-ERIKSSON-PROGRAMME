@@ -713,6 +713,8 @@ composed consumers
 `cmp116H_postD_sum_le_of_pStageResidualStages`,
 `cmp116H_termWeightSum_le_of_eq229_of_pStageResidualStages`, and
 `cmp116Lemma3ActivityEstimate_of_eq229_pStageResidualStages`.  These theorems
+consume an already supplied P-stage budget and normalized fixed-`P` residual
+stages; they do not prove or source-identify those hypotheses.  They still
 split the previous opaque `hpostP` premise into normalized `Z0` and `Z0'`
 residual stages after a budget-valued P-stage, matching the order of the
 source discussion around CMP116 pages 18--20.  They still do not prove the
@@ -730,6 +732,21 @@ applies the P-source-bound route pointwise in `(t, k)`: it consumes per-scale
 still leaves Eq. (2.29), `Z0/Z0'` residual summability, pointwise
 factorization, termwise estimates, and physical activity identification as
 explicit obligations.
+
+A separate combined residual lane now exists for the source order visible on
+CMP116 printed pages 19--20.  The source first controls the last `Z0/Z0'`
+resummations through a combined/order-sensitive estimate; it is not currently
+justified to label the existing normalized fixed-`(D,P,Z0)` `Z0'` predicate as
+the printed source theorem.  The new declarations
+`CMP116PostPResidualBound`,
+`cmp116H_postD_sum_le_of_pStagePostPResidualBound`,
+`cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`,
+`cmp116Lemma3ActivityEstimate_of_eq229_pStagePostPResidualBound`, and
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStagePostPResidualBound`
+therefore consume a direct combined post-`P` finite-sum bound.  This is still
+only a consumer route: the combined post-`P` bound, Eq. (2.29), the P-stage
+budget, activity identification, and termwise estimates remain source
+obligations.
 
 `YangMills.RG.BalabanCMP116SourceTheorem` now also exposes
 `BalabanCMP116Lemma3ResummationSourceAssumptions`, a source-boundary record

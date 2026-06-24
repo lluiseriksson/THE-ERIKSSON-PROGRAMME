@@ -1373,6 +1373,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_postD
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_residualStages
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages
+#print axioms YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStagePostPResidualBound
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageSourceBound_residualStages
 #print axioms YangMills.RG.cmp116Eq229Weight
 #print axioms YangMills.RG.CMP116Eq229Summability
@@ -1390,6 +1391,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Z0StageSourceBound
 #print axioms YangMills.RG.cmp116Z0ResidualSummability_of_z0StageSourceBound
 #print axioms YangMills.RG.CMP116Z0PrimeResidualSummability
+#print axioms YangMills.RG.CMP116PostPResidualBound
 #print axioms YangMills.RG.cmp116H_postP_sum_le_of_residualStages
 #print axioms YangMills.RG.cmp116H_postD_sum_le_of_residualStages
 #print axioms YangMills.RG.cmp116H_postD_sum_le_of_pStageSourceBound_residualStages
@@ -1399,6 +1401,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116H_postD_sum_le_of_pStageResidualStages
 #print axioms YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStageResidualStages
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimate_of_eq229_pStageResidualStages
+#print axioms YangMills.RG.cmp116H_postD_sum_le_of_pStagePostPResidualBound
+#print axioms YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound
+#print axioms YangMills.RG.cmp116Lemma3ActivityEstimate_of_eq229_pStagePostPResidualBound
 #print axioms YangMills.RG.CMP116RawSourceM3Frontier.of_balabanSourceAssumptions
 #print axioms YangMills.RG.BalabanCMP116SourceAssumptions.to_m3Frontier
 #print axioms YangMills.RG.balabanCMP116SourceTheorem_of_assumptions

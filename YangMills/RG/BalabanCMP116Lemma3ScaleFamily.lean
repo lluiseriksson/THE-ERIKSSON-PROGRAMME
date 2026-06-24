@@ -697,6 +697,95 @@ theorem cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages
       (hz0Weight_nonneg t k)
       (hfactor t k)
 
+/-- Build a CMP116 Lemma 3 scale family from Eq. (2.29), a P-stage budget,
+and a direct combined post-`P` residual budget at every scale.
+
+This route is for source statements that control the last `Z0/Z0'`
+resummations together, or in an order not faithfully represented by the
+normalized `Z0` then `Z0'` predicates.  It still carries activity
+identification, termwise estimates, Eq. (2.29), the P-stage budget, and the
+combined post-`P` residual estimate as explicit per-scale obligations. -/
+theorem cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStagePostPResidualBound
+    {σ ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    (hp : ∀ _ _, CMP116Lemma3Parameters)
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (sourceMetric : ∀ t k, σ t k → ℕ)
+    (physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc)
+    (DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k))
+    (alpha6 : ℕ → ℕ → ℝ)
+    (eq229Metric : ∀ t k, σ t k → ιY t k → ℕ)
+    (pWeight : ∀ t k, σ t k → ιD t k → ιP t k → ℝ)
+    (hEq229 :
+      ∀ t k,
+        CMP116Eq229Summability
+          (R t k).DIndex
+          (DParts t k)
+          (alpha6 t k)
+          (hp t k).delta
+          (hp t k).kappa
+          (eq229Metric t k))
+    (hPStage :
+      ∀ t k,
+        CMP116PStageSummability
+          (R t k).DIndex
+          (R t k).PIndex
+          (pWeight t k)
+          (fun Z D =>
+            Finset.prod (DParts t k Z D)
+              (cmp116Eq229Weight
+                (alpha6 t k)
+                (hp t k).delta
+                (hp t k).kappa
+                (eq229Metric t k Z))))
+    (hpostP :
+      ∀ t k,
+        CMP116PostPResidualBound
+          (hp t k) (R t k) (sourceMetric t k) (pWeight t k))
+    (hglobal :
+      ∀ t k Z ψ φ,
+        (physicalActivity t k Z).globalEval ψ φ =
+          balabanCMP116H (R t k) Z ψ φ)
+    (hterm :
+      ∀ t k Z x, x ∈ cmp116HIndexFinset (R t k) Z →
+        ∀ ψ φ,
+          ‖(R t k).summand
+              Z x.1.1 x.1.2 x.2.1 x.2.2 ψ φ‖ ≤
+            (R t k).termWeight
+              Z x.1.1 x.1.2 x.2.1 x.2.2) :
+    CMP116Lemma3ActivityEstimateScaleFamily
+      physicalActivity
+      sourceMetric
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa) := by
+  intro t k
+  exact
+    cmp116Lemma3ActivityEstimate_of_eq229_pStagePostPResidualBound
+      (hp t k) (R t k) (sourceMetric t k)
+      (physicalActivity t k)
+      (DParts t k)
+      (alpha6 t k)
+      (eq229Metric t k)
+      (pWeight t k)
+      (hEq229 t k)
+      (hPStage t k)
+      (hpostP t k)
+      (hglobal t k)
+      (hterm t k)
+
 /-- Build a CMP116 Lemma 3 scale family from Eq. (2.29), a source-shaped
 P-stage bound plus scalar smallness, and fixed-`P` residual-stage summability
 at every scale.

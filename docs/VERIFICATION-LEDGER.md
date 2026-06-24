@@ -14036,3 +14036,60 @@ normalized `Z0` residual predicate.  It does not construct `Z0Index`, identify
 `z0Weight`, prove the `Z0` source estimate, discharge `Z0'`, prove
 nonnegativity, prove termwise factorization, identify the physical activity,
 or prove CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 353 (2026-06-24, **CMP116 combined post-P residual route**
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages`,
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8361)
+
+This checkpoint adds a source-safe route for CMP116 Lemma 3 consumers that do
+not split the final residual resummations into separate normalized `Z0` and
+`Z0'` predicates:
+
+```
+CMP116PostPResidualBound
+cmp116H_postD_sum_le_of_pStagePostPResidualBound
+cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound
+cmp116Lemma3ActivityEstimate_of_eq229_pStagePostPResidualBound
+cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStagePostPResidualBound
+```
+
+`CMP116PostPResidualBound` records the direct fixed-`(Z,D,P)` nested
+`Z0/Z0'` finite-sum estimate:
+
+```
+sum_Z0 sum_Z0' termWeight <=
+  ((C3 * epsilon1) *
+    balabanCMP116Lemma3Weight blockScale delta kappa sourceMetric Z) *
+  pWeight Z D P
+```
+
+The downstream theorems compose this combined post-`P` bound with an explicit
+P-stage budget and Eq. (2.29), then feed the existing resummation theorem for
+the activity estimate.  The scale-family wrapper applies the same route
+pointwise in `(t, k)`.
+
+This deliberately avoids inventing a separate `Z0'` source scalar.  It is a
+consumer interface for a supplied combined post-`P` estimate, useful when the
+primary source bounds the last two resummations together or in a summation
+order not faithfully represented by the repository's normalized `Z0` then
+`Z0'` predicates.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake build YangMills.RG.BalabanCMP116Lemma3ScaleFamily
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-postp-combined-residual.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This checkpoint proves finite-sum algebraic routing only.  It
+does not prove the combined post-`P` estimate, Eq. (2.29), the P-stage budget,
+activity identification, termwise estimates, nonnegativity, the `Z0'` source
+estimate, any CMP116 constant hierarchy, or CMP116 Lemma 3.  Clay distance
+**~0% (<0.1%), unchanged**.

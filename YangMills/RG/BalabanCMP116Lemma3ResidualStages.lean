@@ -14,10 +14,13 @@ the equation-(2.29) `D`-summability consumer.
 The predicates below are source-neutral normalized summability statements.  The
 main theorem proves that these three normalized residual stages, together with
 a pointwise factorization of the term weights, imply the post-`D` residual
-budget consumed by `cmp116H_termWeightSum_le_of_eq229`.
+budget consumed by `cmp116H_termWeightSum_le_of_eq229`.  The module also exposes
+a direct combined post-`P` residual budget for source statements that do not
+faithfully split into separate normalized `Z0` and `Z0'` estimates.
 
 Honest scope: the P-stage source budget is now named and mapped to the
-normalized P residual predicate; the `Z0` and `Z0'` stages, the analytic
+normalized P residual predicate; the `Z0` source-shaped budget is named and
+mapped to its normalized residual predicate; the `Z0'` stage, the analytic
 constant hierarchy, and the model-specific identification of `H(Z)` remain
 unassigned.  This module only proves the finite residual resummation algebra
 needed before applying equation (2.29).
@@ -152,6 +155,29 @@ def CMP116Z0PrimeResidualSummability
       ∀ Z0, Z0 ∈ Z0Index Z D P →
         Finset.sum (Z0PrimeIndex Z D P Z0)
           (fun Z0' => z0PrimeWeight Z D P Z0 Z0') ≤ 1
+
+/-- A direct post-`P` residual budget for the combined `Z0/Z0'` finite sum.
+
+This is the source-faithful fallback when the primary text supplies a combined
+estimate for the last two resummations, or supplies them in an order different
+from the repository's dependent `Z0 -> Z0'` indexing.  It avoids pretending that
+the normalized `Z0` and `Z0'` predicates have already been separately identified
+with source equations. -/
+def CMP116PostPResidualBound
+    {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
+    (hp : CMP116Lemma3Parameters)
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (sourceMetric : σ → ℕ)
+    (pWeight : σ → ιD → ιP → ℝ) : Prop :=
+  ∀ Z D, D ∈ R.DIndex Z →
+    ∀ P, P ∈ R.PIndex Z D →
+      Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+        Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+          R.termWeight Z D P Z0 Z0')) ≤
+        ((hp.C3 * hp.epsilon1) *
+          balabanCMP116Lemma3Weight
+            hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+          pWeight Z D P
 
 /-- Normalized residual `Z0/Z0'` summability, plus a pointwise
 factorization, implies a fixed-`P` post-residual budget.
@@ -527,6 +553,48 @@ theorem cmp116H_postD_sum_le_of_pStageResidualStages
         simpa [postPBase, mul_assoc] using
           hfactor Z D hD P hP Z0 hZ0 Z0' hZ0')
   simpa [postPBase] using
+    cmp116H_postDSum_le_of_pStage
+      hp R sourceMetric DParts alpha6 eq229Metric
+      pWeight hPStage hpostP
+
+/-- A P-stage budget plus a direct combined post-`P` residual budget implies
+the post-`D` residual budget required by the equation-(2.29) consumer.
+
+Unlike `cmp116H_postD_sum_le_of_pStageResidualStages`, this route does not
+split the last two residual estimates into normalized `Z0` and `Z0'` stages.
+It is intended for source statements, such as CMP116 pages 19--20, where the
+last residual resummations are controlled as a combined finite estimate or in a
+different summation order. -/
+theorem cmp116H_postD_sum_le_of_pStagePostPResidualBound
+    {σ ιD ιP ιZ0 ιZ0' ιY Ψ Φ : Type*}
+    (hp : CMP116Lemma3Parameters)
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (sourceMetric : σ → ℕ)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 : ℝ)
+    (eq229Metric : σ → ιY → ℕ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (hPStage :
+      CMP116PStageSummability
+        R.DIndex R.PIndex pWeight
+        (fun Z D =>
+          Finset.prod (DParts Z D)
+            (cmp116Eq229Weight
+              alpha6 hp.delta hp.kappa (eq229Metric Z))))
+    (hpostP :
+      CMP116PostPResidualBound hp R sourceMetric pWeight) :
+    ∀ Z D, D ∈ R.DIndex Z →
+      Finset.sum (R.PIndex Z D) (fun P =>
+        Finset.sum (R.Z0Index Z D P) (fun Z0 =>
+          Finset.sum (R.Z0PrimeIndex Z D P Z0) (fun Z0' =>
+            R.termWeight Z D P Z0 Z0'))) ≤
+        ((hp.C3 * hp.epsilon1) *
+          balabanCMP116Lemma3Weight
+            hp.blockScale hp.delta hp.kappa sourceMetric Z) *
+          Finset.prod (DParts Z D)
+            (cmp116Eq229Weight
+              alpha6 hp.delta hp.kappa (eq229Metric Z)) := by
+  exact
     cmp116H_postDSum_le_of_pStage
       hp R sourceMetric DParts alpha6 eq229Metric
       pWeight hPStage hpostP
@@ -956,5 +1024,100 @@ theorem cmp116Lemma3ActivityEstimate_of_eq229_pStageResidualStages
       pWeight z0Weight z0PrimeWeight
       hEq229 hPStage hZ0sum hZ0PrimeSum
       hpWeight_nonneg hz0Weight_nonneg hfactor)
+
+/-- Equation (2.29), a P-stage budget, and a direct combined post-`P`
+residual budget give the finite CMP116 `H` term-weight budget.
+
+This route deliberately avoids naming separate source equations for the `Z0`
+and `Z0'` normalized residual predicates. -/
+theorem cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound
+    {σ ιD ιP ιZ0 ιZ0' ιY Ψ Φ : Type*}
+    [DecidableEq ιD] [DecidableEq ιP]
+    [DecidableEq ιZ0] [DecidableEq ιZ0']
+    (hp : CMP116Lemma3Parameters)
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (sourceMetric : σ → ℕ)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 : ℝ)
+    (eq229Metric : σ → ιY → ℕ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (hEq229 :
+      CMP116Eq229Summability
+        R.DIndex DParts alpha6 hp.delta hp.kappa eq229Metric)
+    (hPStage :
+      CMP116PStageSummability
+        R.DIndex R.PIndex pWeight
+        (fun Z D =>
+          Finset.prod (DParts Z D)
+            (cmp116Eq229Weight
+              alpha6 hp.delta hp.kappa (eq229Metric Z))))
+    (hpostP :
+      CMP116PostPResidualBound hp R sourceMetric pWeight) :
+    ∀ Z,
+      Finset.sum (cmp116HIndexFinset R Z)
+        (fun x =>
+          R.termWeight Z x.1.1 x.1.2 x.2.1 x.2.2) ≤
+        (hp.C3 * hp.epsilon1) *
+          balabanCMP116Lemma3Weight
+            hp.blockScale hp.delta hp.kappa sourceMetric Z := by
+  exact
+    cmp116H_termWeightSum_le_of_eq229
+      hp R sourceMetric DParts alpha6 eq229Metric hEq229
+      (cmp116H_postD_sum_le_of_pStagePostPResidualBound
+        hp R sourceMetric DParts alpha6 eq229Metric
+        pWeight hPStage hpostP)
+
+/-- Eq. (2.29), an explicit P-stage budget, and a direct combined post-`P`
+residual budget feed the theorem-backed CMP116 Lemma 3 activity estimate.
+
+The theorem keeps the activity identification, complex termwise estimate,
+P-stage budget, and combined post-`P` residual estimate as explicit
+hypotheses. -/
+theorem cmp116Lemma3ActivityEstimate_of_eq229_pStagePostPResidualBound
+    {σ ιD ιP ιZ0 ιZ0' ιY : Type*}
+    [DecidableEq ιD] [DecidableEq ιP]
+    [DecidableEq ιZ0] [DecidableEq ιZ0']
+    {dPhys N Nc : ℕ} [NeZero N]
+    (hp : CMP116Lemma3Parameters)
+    (R :
+      CMP116HResummation σ ιD ιP ιZ0 ιZ0'
+        (PhysicalGaugeField dPhys N Nc)
+        (PhysicalGaugeField dPhys N Nc))
+    (sourceMetric : σ → ℕ)
+    (physicalActivity : σ → PhysicalGaugeLocalActivity dPhys N Nc)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 : ℝ)
+    (eq229Metric : σ → ιY → ℕ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (hEq229 :
+      CMP116Eq229Summability
+        R.DIndex DParts alpha6 hp.delta hp.kappa eq229Metric)
+    (hPStage :
+      CMP116PStageSummability
+        R.DIndex R.PIndex pWeight
+        (fun Z D =>
+          Finset.prod (DParts Z D)
+            (cmp116Eq229Weight
+              alpha6 hp.delta hp.kappa (eq229Metric Z))))
+    (hpostP :
+      CMP116PostPResidualBound hp R sourceMetric pWeight)
+    (hglobal :
+      ∀ Z ψ φ,
+        (physicalActivity Z).globalEval ψ φ =
+          balabanCMP116H R Z ψ φ)
+    (hterm :
+      ∀ Z x, x ∈ cmp116HIndexFinset R Z →
+        ∀ ψ φ,
+          ‖R.summand Z x.1.1 x.1.2 x.2.1 x.2.2 ψ φ‖ ≤
+            R.termWeight Z x.1.1 x.1.2 x.2.1 x.2.2) :
+    CMP116Lemma3ActivityEstimate
+      physicalActivity sourceMetric hp.blockScale
+      hp.C3 hp.epsilon1 hp.delta hp.kappa :=
+  cmp116Lemma3ActivityEstimate_of_resummation
+    hp R sourceMetric physicalActivity
+    hglobal hterm
+    (cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound
+      hp R sourceMetric DParts alpha6 eq229Metric
+      pWeight hEq229 hPStage hpostP)
 
 end YangMills.RG

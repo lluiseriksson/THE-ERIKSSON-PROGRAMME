@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 352.
+Addendum 353.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1143,6 +1143,17 @@ the newer budget-valued `CMP116PStageSummability` with the fixed-`P`
 residual stages before applying Eq. (2.29), but still do not prove the
 P-stage source budget, the `Z0/Z0'` residual estimates, or the source
 constant hierarchy.
+The module now also exposes the source-safe combined post-`P` route
+`CMP116PostPResidualBound`,
+`cmp116H_postD_sum_le_of_pStagePostPResidualBound`,
+`cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`, and
+`cmp116Lemma3ActivityEstimate_of_eq229_pStagePostPResidualBound`; the
+scale-family wrapper
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStagePostPResidualBound`
+applies the same route pointwise.  This is for source statements that control
+the nested `Z0/Z0'` remainder together or in a different summation order.  It
+does not identify a `Z0'` scalar, split the combined bound, prove source
+estimates, or reduce the remaining activity/factorization obligations.
 The raw-source compatibility bridge is downstream in
 `YangMills.RG.BalabanCMP116Lemma3RawSourceAdapter`.  It contains the explicit
 metric-domination theorem to `appendixFHoleExpWeight` and
@@ -1541,6 +1552,20 @@ identity for two such expansions. The norm-square corollary
 `norm_sq_characterL2_sum` gives the corresponding finite Parseval identity,
 and `norm_sq_characterL2_sum_sub_sum` gives the finite distance formula between
 two coefficient vectors and their character expansions.
+
+The CMP116 Lemma-3 residual route now also has a combined post-`P` residual
+budget interface:
+`CMP116PostPResidualBound`,
+`cmp116H_postD_sum_le_of_pStagePostPResidualBound`,
+`cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`,
+`cmp116Lemma3ActivityEstimate_of_eq229_pStagePostPResidualBound`, and
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStagePostPResidualBound`.
+This was added after rechecking CMP116 printed pages 19--20: the source
+controls the final `Z0/Z0'` resummations in a combined/order-sensitive way, so
+the repository must not pretend that the normalized `Z0'` predicate has been
+separately source-identified.  The new route is still conditional; it does not
+prove Eq. (2.29), the P-stage budget, activity identification, termwise
+estimates, or the combined post-`P` residual estimate.
 
 ## What Is Not Claimed
 
