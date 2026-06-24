@@ -449,10 +449,148 @@ noncomputable def localizedRootLinearMap_ofDictionary
     (localizedRootLinearMap_ofDictionary
       D root rootWeight cmpWeight hkernelTransport
       hkernel dist R Xin hfinite).toContinuousLinearMap =
-      (cmp116OperatorOfPhysical
-        D.fluctuationFieldContinuousLinearEquiv root).comp
+        (cmp116OperatorOfPhysical
+          D.fluctuationFieldContinuousLinearEquiv root).comp
         (cmp116FieldProjection Xin) :=
   rfl
+
+/-- Finite sum of dictionary-specialized localized root pieces over a supplied
+finite family of input cube sets.  This is only support algebra for the sum of
+projected root maps; it does not assert that these pieces reconstruct the full
+root operator. -/
+noncomputable def localizedRootLinearMapFinsetSum_ofDictionary
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (cmpWeight : Cube d L → Cube d L → ℝ)
+    (hkernelTransport :
+      PhysicalCovarianceKernelBound root rootWeight →
+        CMP116LinearMapKernelBound
+          (cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root)
+          cmpWeight)
+    (hkernel : PhysicalCovarianceKernelBound root rootWeight)
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ)
+    (Xin : ι → Finset (Cube d L))
+    (hfinite : CMP116KernelFiniteRange cmpWeight dist R) :
+    CMP116LocalizedLinearMap
+      (d := d) (L := L) (lieDim := lieDim)
+      (I.biUnion Xin)
+      (I.biUnion fun i => cmp116FiniteRangeClosure dist R (Xin i)) :=
+  CMP116LocalizedLinearMap.finsetSumVarying
+    I
+    Xin
+    (fun i => cmp116FiniteRangeClosure dist R (Xin i))
+    (fun i =>
+      localizedRootLinearMap_ofDictionary
+        D root rootWeight cmpWeight hkernelTransport
+        hkernel dist R (Xin i) hfinite)
+
+@[simp] theorem localizedRootLinearMapFinsetSum_ofDictionary_toContinuousLinearMap
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (cmpWeight : Cube d L → Cube d L → ℝ)
+    (hkernelTransport :
+      PhysicalCovarianceKernelBound root rootWeight →
+        CMP116LinearMapKernelBound
+          (cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root)
+          cmpWeight)
+    (hkernel : PhysicalCovarianceKernelBound root rootWeight)
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ)
+    (Xin : ι → Finset (Cube d L))
+    (hfinite : CMP116KernelFiniteRange cmpWeight dist R) :
+    (localizedRootLinearMapFinsetSum_ofDictionary
+      I D root rootWeight cmpWeight hkernelTransport
+      hkernel dist R Xin hfinite).toContinuousLinearMap =
+      I.sum fun i =>
+        (cmp116OperatorOfPhysical
+          D.fluctuationFieldContinuousLinearEquiv root).comp
+          (cmp116FieldProjection (Xin i)) := by
+  simp [localizedRootLinearMapFinsetSum_ofDictionary]
+
+/-- A finite sum of dictionary-localized root pieces depends only on the union
+of its declared input cube sets. -/
+theorem localizedRootLinearMapFinsetSum_ofDictionary_eq_of_agreeOn
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (cmpWeight : Cube d L → Cube d L → ℝ)
+    (hkernelTransport :
+      PhysicalCovarianceKernelBound root rootWeight →
+        CMP116LinearMapKernelBound
+          (cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root)
+          cmpWeight)
+    (hkernel : PhysicalCovarianceKernelBound root rootWeight)
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ)
+    (Xin : ι → Finset (Cube d L))
+    (hfinite : CMP116KernelFiniteRange cmpWeight dist R)
+    {ξ η : CMP116FluctuationField d L lieDim}
+    (hξη : AgreeOn (I.biUnion Xin) ξ η) :
+    (localizedRootLinearMapFinsetSum_ofDictionary
+      I D root rootWeight cmpWeight hkernelTransport
+      hkernel dist R Xin hfinite).toContinuousLinearMap ξ =
+      (localizedRootLinearMapFinsetSum_ofDictionary
+        I D root rootWeight cmpWeight hkernelTransport
+        hkernel dist R Xin hfinite).toContinuousLinearMap η :=
+  (localizedRootLinearMapFinsetSum_ofDictionary
+    I D root rootWeight cmpWeight hkernelTransport
+    hkernel dist R Xin hfinite).eq_of_agreeOn hξη
+
+/-- A finite sum of dictionary-localized root pieces is zero outside the union
+of the corresponding finite-range closures. -/
+theorem localizedRootLinearMapFinsetSum_ofDictionary_apply_eq_zero_outside
+    {ι : Type*} [DecidableEq ι]
+    (I : Finset ι)
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (cmpWeight : Cube d L → Cube d L → ℝ)
+    (hkernelTransport :
+      PhysicalCovarianceKernelBound root rootWeight →
+        CMP116LinearMapKernelBound
+          (cmp116OperatorOfPhysical
+            D.fluctuationFieldContinuousLinearEquiv root)
+          cmpWeight)
+    (hkernel : PhysicalCovarianceKernelBound root rootWeight)
+    (dist : Cube d L → Cube d L → ℕ)
+    (R : ℕ)
+    (Xin : ι → Finset (Cube d L))
+    (hfinite : CMP116KernelFiniteRange cmpWeight dist R)
+    (ξ : CMP116FluctuationField d L lieDim)
+    {q : Cube d L}
+    (hq :
+      q ∉ I.biUnion fun i => cmp116FiniteRangeClosure dist R (Xin i))
+    (a : Fin lieDim) :
+    (localizedRootLinearMapFinsetSum_ofDictionary
+      I D root rootWeight cmpWeight hkernelTransport
+      hkernel dist R Xin hfinite).toContinuousLinearMap ξ q a = 0 :=
+  (localizedRootLinearMapFinsetSum_ofDictionary
+    I D root rootWeight cmpWeight hkernelTransport
+    hkernel dist R Xin hfinite).apply_eq_zero_outside ξ hq a
 
 end PhysicalRootToCMP116OperatorTransport
 

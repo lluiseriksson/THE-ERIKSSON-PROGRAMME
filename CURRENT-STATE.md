@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 320.
+Addendum 321.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1151,6 +1151,14 @@ The same API now has `CMP116LocalizedLinearMap.finsetSumVarying`, which sums a
 finite family with piecewise input/output supports and certifies support on the
 finite unions of those supports.  This is the concrete finite-family assembly
 needed before localized root pieces can be combined.
+The dictionary-backed root-transport layer now consumes that varying-support
+sum API through
+`PhysicalRootToCMP116OperatorTransport.localizedRootLinearMapFinsetSum_ofDictionary`.
+Given a finite family of input cube sets, it sums the corresponding projected
+dictionary root maps and certifies exact support from the union of those input
+sets to the union of their finite-range closures.  This is still only the
+support algebra of the supplied finite pieces; it does not assert that the
+pieces reconstruct the full covariance root.
 The dictionary-backed construction layer now has
 `PhysicalRootToCMP116OperatorTransport.localizedRootLinearMap_ofDictionary`,
 which turns an explicit physical root kernel bound, a dictionary kernel-bound

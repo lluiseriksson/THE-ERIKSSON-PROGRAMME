@@ -12539,3 +12539,49 @@ construct localized root pieces, prove that any analytic root decomposes into
 such pieces, prove finite-range or exponential-decay estimates, prove Gaussian
 pushforward, construct local activities, or prove raw activity decay.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 321 (2026-06-24, **finite-piece dictionary localized-root sums**
+`YangMills.RG.PhysicalGaugeCMP116ActivityConstruction`; core 8355)
+
+This addendum routes the varying-support localized-map finite-sum API through
+the dictionary-backed CMP116 root transport layer:
+
+```
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMapFinsetSum_ofDictionary
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMapFinsetSum_ofDictionary_toContinuousLinearMap
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMapFinsetSum_ofDictionary_eq_of_agreeOn
+PhysicalRootToCMP116OperatorTransport.localizedRootLinearMapFinsetSum_ofDictionary_apply_eq_zero_outside
+```
+
+Given a finite family of input cube sets `Xin i`, the constructor sums the
+already localized projected dictionary root maps
+`localizedRootLinearMap_ofDictionary ... (Xin i) ...`.  The resulting
+`CMP116LocalizedLinearMap` is certified from `I.biUnion Xin` to the union of
+the corresponding finite-range closures
+`I.biUnion fun i => cmp116FiniteRangeClosure dist R (Xin i)`.  The two
+consumer lemmas expose the direct consequences: agreement on the union of the
+piece input supports and coordinatewise zero outside the union of the
+piece output closures.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMills.RG.PhysicalGaugeCMP116ActivityConstruction
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new oracle entries report only `[propext, Classical.choice, Quot.sound]`.
+
+**Honest scope.** This checkpoint proves exact finite-piece support algebra
+for a sum of supplied projected root maps.  It does not prove that such pieces
+reconstruct the full covariance root, does not construct an analytic root
+decomposition, does not prove finite-range or exponential-decay estimates
+beyond the explicit finite-range hypothesis already supplied to each piece,
+does not prove Gaussian pushforward, does not construct local activities, and
+does not prove raw activity decay.  Clay distance **~0% (<0.1%),
+unchanged**.
