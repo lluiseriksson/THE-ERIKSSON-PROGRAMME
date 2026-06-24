@@ -13465,3 +13465,47 @@ activity construction, rooted H# identity, marginal-flow estimates, or the IR
 bound.  It only exposes a smaller source frontier for callers that already
 have the Lemma-3 activity estimate scale family.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 339 (2026-06-24, **CMP116 equation 2.29 D-stage budget constructor**
+`YangMills.RG.BalabanCMP116Eq229`; core 8360)
+
+This checkpoint adds the first budget-constructor theorem on top of the
+existing equation-(2.29) source predicate.  The new finite equality
+
+```
+cmp116H_termWeightSum_eq_nested
+```
+
+identifies the flattened `cmp116HIndexFinset` term-weight sum with the nested
+source-shaped `D -> P -> Z0 -> Z0'` sum.  The new budget constructor
+
+```
+cmp116H_termWeightSum_le_of_eq229
+```
+
+then applies `cmp116_DStage_sum_le_of_eq229` to discharge only the outer
+`D`-sum.  Its residual hypothesis is exactly the complete post-D resummation
+over `P`, `Z0`, and `Z0'`, bounded by the final Lemma-3 base factor times the
+equation-(2.29) product for the chosen `D`.  Thus the conclusion has the
+`hbudget` shape consumed by `cmp116Lemma3ActivityEstimate_of_resummation`,
+without introducing a premise named `hbudget`.
+
+Verification commands run for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq229.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-eq229-dstage-budget.log
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Eq229.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** Equation (2.29) itself remains a source hypothesis via
+`CMP116Eq229Summability`.  This checkpoint does not prove the residual
+`P/Z0/Z0'` resummations, equations (2.27), (2.30), (2.32), (2.34), (2.36), or
+(2.37), the termwise complex-valued estimate, the analytic constant hierarchy,
+the admissible-domain transport, source metric comparison, or CMP116 Lemma 3.
+It only proves that the supplied residual post-D bound plus equation (2.29)
+gives the exact finite term-weight budget.  Clay distance **~0% (<0.1%),
+unchanged**.
