@@ -1634,6 +1634,10 @@ The source-boundary version is now packaged as
 explicit P-stage source bound plus scalar smallness, and derives the post-`P`
 consumer only from the combined source estimate plus majorization and weighted
 P-weight nonnegativity.
+The common activity/termwise boundary is now named separately as
+`CMP116Lemma3ActivityTermwiseScaleBoundary`; both post-`P` source packages
+project to it via `activityTermwiseBoundary`.  This is only factoring of the
+shared activity identification and termwise norm estimate obligations.
 
 ## What Is Not Claimed
 

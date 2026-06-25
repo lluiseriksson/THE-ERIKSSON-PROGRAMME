@@ -86,6 +86,41 @@ def CMP116Lemma3ActivityEstimateScaleFamily
       (delta t k)
       (kappaSource t k)
 
+/-- Source-neutral boundary identifying a CMP116 resummation with the physical
+activity and giving the pointwise termwise norm estimate consumed by Lemma 3.
+
+This record proves neither field.  It only names the two activity/termwise
+obligations that are shared by the CMP116 Lemma-3 source packages. -/
+structure CMP116Lemma3ActivityTermwiseScaleBoundary
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc) :
+    Prop where
+
+  activity_identification :
+    ∀ t k Z ψ φ,
+      (physicalActivity t k Z).globalEval ψ φ =
+        balabanCMP116H (R t k) Z ψ φ
+
+  termwise_estimate :
+    ∀ t k Z x, x ∈ cmp116HIndexFinset (R t k) Z →
+      ∀ ψ φ,
+        ‖(R t k).summand
+            Z x.1.1 x.1.2 x.2.1 x.2.2 ψ φ‖ ≤
+          (R t k).termWeight
+            Z x.1.1 x.1.2 x.2.1 x.2.2
+
 /-- Package separated per-scale source facts and a Lemma 3 scale-family
 estimate into canonical raw-source records.
 
@@ -1119,6 +1154,37 @@ structure CMP116Lemma3PostPScaleSourceAssumptions
 
 namespace CMP116Lemma3PostPScaleSourceAssumptions
 
+/-- The post-`P` scale-source package exposes the shared
+activity-identification/termwise-estimate boundary. -/
+def activityTermwiseBoundary
+    {σ ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {sourceMetric : ∀ t k, σ t k → ℕ}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric : ∀ t k, σ t k → ιY t k → ℕ}
+    {pWeight : ∀ t k, σ t k → ιD t k → ιP t k → ℝ}
+    (source :
+      CMP116Lemma3PostPScaleSourceAssumptions
+        hp R sourceMetric physicalActivity DParts alpha6 eq229Metric
+        pWeight) :
+    CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity where
+  activity_identification := source.activity_identification
+  termwise_estimate := source.termwise_estimate
+
 /-- Projection from the post-`P` scale-source package to the existing CMP116
 Lemma-3 activity scale-family estimate. -/
 def lemma3_activity_estimate
@@ -1273,6 +1339,42 @@ structure CMP116Lemma3WeightedPostPScaleSourceAssumptions
             Z x.1.1 x.1.2 x.2.1 x.2.2
 
 namespace CMP116Lemma3WeightedPostPScaleSourceAssumptions
+
+/-- The weighted post-`P` source package exposes the shared
+activity-identification/termwise-estimate boundary. -/
+def activityTermwiseBoundary
+    {σ ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {sourceMetric : ∀ t k, σ t k → ℕ}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric : ∀ t k, σ t k → ιY t k → ℕ}
+    {pResidualWeight : ∀ t k, σ t k → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ}
+    {postPSourceWeight : ∀ t k, σ t k → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    (source :
+      CMP116Lemma3WeightedPostPScaleSourceAssumptions
+        hp R sourceMetric physicalActivity DParts alpha6 eq229Metric
+        pResidualWeight pStageBlockScale pEntropyConstant epsilon2
+        pStageKappa postPSourceWeight postPAmplitude) :
+    CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity where
+  activity_identification := source.activity_identification
+  termwise_estimate := source.termwise_estimate
 
 /-- The weighted post-`P` source package exposes normalized P-residual
 summability only after applying the explicit source scalar smallness field. -/

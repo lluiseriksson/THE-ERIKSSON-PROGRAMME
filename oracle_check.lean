@@ -1367,6 +1367,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3ScaleAmplitude
 #print axioms YangMills.RG.cmp116Lemma3ScaleWeight_nonneg
 #print axioms YangMills.RG.CMP116Lemma3ActivityEstimateScaleFamily
+#print axioms YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary
 #print axioms YangMills.RG.rawSource_of_lemma3ActivityEstimate
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation
@@ -1375,6 +1376,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageResidualStages
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStagePostPResidualBound
 #print axioms YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions
+#print axioms YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary
 #print axioms YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStageSourceBound_residualStages
 #print axioms YangMills.RG.cmp116AdmissibleMetricZeroExtension
@@ -1415,6 +1417,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116H_postP_sum_le_of_residualStages
 #print axioms YangMills.RG.cmp116PostPResidualBound_of_residualStages
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions
+#print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.activityTermwiseBoundary
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.p_residual_summability
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.postP_residual_bound
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate

@@ -14423,3 +14423,35 @@ rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills
 post-`P` source estimate, no post-`P` majorization theorem, no activity
 identification, no termwise estimate, and no unconditional CMP116 Lemma 3.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 363 (2026-06-25, **CMP116 activity-termwise boundary package**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8362)
+
+This checkpoint factors the shared activity-identification and termwise-estimate
+obligations out of the CMP116 Lemma-3 source packages:
+
+```
+CMP116Lemma3ActivityTermwiseScaleBoundary
+CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.activityTermwiseBoundary
+```
+
+The boundary record contains only the equality between physical activity
+evaluation and `balabanCMP116H`, plus the termwise norm bound used by the finite
+resummation route.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-activity-termwise-boundary.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is boundary factoring only.  It proves no activity
+identification, no termwise estimate, no Eq. (2.29), no source resummation
+bound, and no CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.

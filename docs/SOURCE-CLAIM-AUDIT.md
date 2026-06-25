@@ -901,3 +901,8 @@ source-boundary package.  Its fields keep the P-stage source bound, the scalar
 smallness condition, pointwise P-residual nonnegativity, the combined post-`P`
 source bound, and the post-`P` majorization separate.  Its projections are
 packaging only; they do not prove any of those source obligations.
+
+`CMP116Lemma3ActivityTermwiseScaleBoundary` only factors two common fields:
+physical activity identification with `balabanCMP116H`, and the termwise norm
+estimate.  Its `activityTermwiseBoundary` projections from the post-`P` packages
+are audit handles, not proofs of those fields.
