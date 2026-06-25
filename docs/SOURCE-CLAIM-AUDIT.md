@@ -1094,6 +1094,23 @@ Lemma-3 estimate.  They still require Eq. (2.29), a P-stage source boundary,
 the combined `CMP116PostPResidualSourceBound`, and the activity/termwise
 boundary explicitly.
 
+`cmp116Eq237_nested_sum_eq_fiber_sum` proves only the finite reindexing from
+the repository's dependent `Z0 -> Z0'` order to fixed-`Z0'` fibers.
+`cmp116Eq237FixedZ0PrimeWeight` names the explicit Eq. (2.37) fixed-`Z0'`
+majorant with separate `C237`, `Calpha5`, source-cardinality, gap-cardinality,
+component, and component-metric dictionaries.  The theorem
+`cmp116PostPResidualSourceBound_of_eq237` combines that fixed-`Z0'` estimate,
+the inclusion into a canonical source `Z0'` family, and the post-(2.37) final
+summation to derive `CMP116PostPResidualSourceBound`.  The package constructors
+`CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237`,
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237`, and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
+use this theorem to remove the caller-supplied combined post-`P` source-bound
+field on the Eq. (2.37) route.  They do not prove the fixed-`Z0'` Eq. (2.37)
+estimate, the final source summation, the source-to-Lean `Z0/Z0'` dictionary,
+Eq. (2.29), the P-stage source boundary, activity identification, termwise
+estimates, or any source `O(1)` constant hierarchy.
+
 ### CMP116 reference [26] behind Eq. (2.29)
 
 CMP116 printed page 18 says that inequalities of the Eq. (2.29) type can be

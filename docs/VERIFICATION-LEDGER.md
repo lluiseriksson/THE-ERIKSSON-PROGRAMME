@@ -16114,3 +16114,66 @@ the Eq. (2.37) boundary is supplied.  It does not prove the combined post-`P`
 source bound, Eq. (2.29), the P-stage source boundary, the source-to-Lean
 `Z0/Z0'` dictionary, activity/termwise estimates, or any continuum/Clay result.
 Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 401 (2026-06-25, **Eq. (2.37) combined post-P source bound consumer**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Eq237.lean`, `oracle_check.lean`,
+`docs/source-citations/cmp116-lemma3.json`, `docs/SOURCE-CITATIONS.md`,
+`docs/SOURCE-CLAIM-AUDIT.md`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint theorem-generates the combined post-`P` source-bound consumer
+from fixed-`Z0'` Eq. (2.37)-shaped premises:
+
+- `cmp116Eq237Z0PrimeIndex` and `cmp116Eq237Z0Fiber` name the finite
+  fixed-`Z0'` reindexing of the repository's dependent `Z0 -> Z0'` stage.
+- `cmp116Eq237_nested_sum_eq_fiber_sum` proves the finite transposition.
+- `cmp116Eq237Amplitude` and `cmp116Eq237FixedZ0PrimeWeight` name the
+  source-shaped Eq. (2.37) amplitude and fixed-`Z0'` majorant while keeping
+  `C237`, `Calpha5`, source cardinality, gap cardinality, components, and
+  component metric explicit.
+- `cmp116PostPResidualSourceBound_of_eq237` derives
+  `CMP116PostPResidualSourceBound` from the fixed-`Z0'` estimate, inclusion
+  into the canonical source `Z0'` family, and the post-(2.37) final summation.
+- `CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237`,
+  `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237`, and
+  `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
+  remove the caller-supplied combined post-`P` source-bound field on the
+  Eq. (2.37) route.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq237.lean
+lake build +YangMills.RG.BalabanCMP116Eq237:olean
+python scripts\source_citations.py validate
+python scripts\source_citations.py lean cmp116PostPResidualSourceBound_of_eq237
+python scripts\source_citations.py lean CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237
+python scripts\source_citations.py lean CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237
+python scripts\source_citations.py check-local
+python scripts\source_citations.py blockers
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq237-source-bound.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json YangMills\RG\BalabanCMP116Eq237.lean
+```
+
+Results: focused Lean and module builds passed; `lake build YangMillsCore`
+passed 8364 jobs; `oracle_check.lean` completed and wrote
+`runtime\oracle-eq237-source-bound.log`, where the new Eq. (2.37) reindexing,
+source-bound theorem, and constructors print only the usual
+`[propext, Classical.choice, Quot.sound]` envelope.  Citation validation,
+target lookup, local artifact checks, `git diff --check`,
+`check_consistency.py`, and the no-sorry/no-admit/no-axiom scan passed.  The
+blocker report still lists the pre-existing CMP116 termwise-window OCR issue,
+Cammarota CMP85 extraction, and Eq. (2.31) P-family carrier dictionary.
+Build warnings were pre-existing lints outside this checkpoint.
+
+Honest scope: this is finite algebra plus a quantitative-constant consumer for
+already factored fixed-`Z0'` Eq. (2.37) premises.  It does not prove the
+fixed-`Z0'` source estimate, the post-(2.37) final source summation, the
+source-to-Lean `D/P/Z0/Z0'` dictionaries, Eq. (2.29), the P-stage source
+boundary, activity/termwise estimates, any source `O(1)` constant hierarchy, or
+any continuum/Clay result.  Clay distance **~0% (<0.1%)**, unchanged.

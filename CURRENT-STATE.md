@@ -1870,12 +1870,30 @@ These constructors keep Eq. (2.29), the P-stage source boundary, the combined
 post-`P` source sum, and activity/termwise boundary explicit while generating
 the canonical post-`P` majorization from `CMP116Eq237MajorizationBoundary`.
 
-This is not full post-`P` source closure.  The combined source estimate
-`CMP116PostPResidualSourceBound`, the exact `Z0/Z0'` source-to-Lean index
-dictionary, finite-family reindexing, and numerical/O(1) constant majorants
-remain explicit obligations.  The citation keys
-`cmp116.eq237.post-p-resummation` and `cmp116.constants.c3-alpha5` are the
-source anchors for those future reductions.
+The Eq. (2.37) route now also has a theorem-generated combined source-bound
+consumer.  `cmp116Eq237Z0PrimeIndex` and `cmp116Eq237Z0Fiber` define the
+finite fixed-`Z0'` reindexing of the repository's dependent `Z0 -> Z0'` sums,
+and `cmp116Eq237_nested_sum_eq_fiber_sum` proves the finite transposition.
+`cmp116Eq237Amplitude` and `cmp116Eq237FixedZ0PrimeWeight` name the explicit
+fixed-`Z0'` Eq. (2.37) amplitude and source majorant while keeping `C237`,
+`Calpha5`, source-cardinality, gap-cardinality, component, and metric
+dictionaries separate.
+
+`cmp116PostPResidualSourceBound_of_eq237` derives the existing
+`CMP116PostPResidualSourceBound` from a fixed-`Z0'` Eq. (2.37) estimate, the
+inclusion into a canonical source `Z0'` family, and the post-(2.37) final
+summation.  The new constructors
+`CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237`,
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237`, and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
+therefore remove the caller-supplied combined post-`P` source-bound field on
+this Eq. (2.37) route.
+
+This is not full post-`P` source closure.  The fixed-`Z0'` Eq. (2.37) estimate,
+the post-(2.37) final source summation, the exact `Z0/Z0'` source-to-Lean index
+dictionary, and numerical/O(1) constant majorants remain explicit obligations.
+The citation keys `cmp116.eq237.post-p-resummation` and
+`cmp116.constants.c3-alpha5` are the source anchors for those future reductions.
 
 ## What Is Not Claimed
 

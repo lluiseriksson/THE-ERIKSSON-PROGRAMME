@@ -1440,6 +1440,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116PostPResidualBound
 #print axioms YangMills.RG.cmp116PostPResidualBound_of_sourceBound
 #print axioms YangMills.RG.CMP116PostPResidualSourceMajorizationScaleFamily
+#print axioms YangMills.RG.cmp116Eq237Z0PrimeIndex
+#print axioms YangMills.RG.cmp116Eq237Z0Fiber
+#print axioms YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum
+#print axioms YangMills.RG.cmp116Eq237Amplitude
+#print axioms YangMills.RG.cmp116Eq237Amplitude_nonneg
+#print axioms YangMills.RG.cmp116Eq237FixedZ0PrimeWeight
+#print axioms YangMills.RG.cmp116Eq237FixedZ0PrimeWeight_nonneg
+#print axioms YangMills.RG.cmp116PostPResidualSourceBound_of_eq237
 #print axioms YangMills.RG.CMP116Eq237MajorizationBoundary
 #print axioms YangMills.RG.cmp116Eq237_residualExponent_absorbed
 #print axioms YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237
@@ -1453,6 +1461,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.p_residual_summability
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_sourceBound_eq237Majorization
+#print axioms YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_residual_bound
 #print axioms YangMills.RG.cmp116H_postP_sum_le_of_residualStages
 #print axioms YangMills.RG.cmp116PostPResidualBound_of_residualStages
@@ -1460,12 +1469,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.activityTermwiseBoundary
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_boundaries
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization
+#print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.p_residual_summability
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.postP_residual_bound
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization
+#print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_boundaries
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_filteredBondSets
 #print axioms YangMills.RG.cmp116H_postD_sum_le_of_residualStages
