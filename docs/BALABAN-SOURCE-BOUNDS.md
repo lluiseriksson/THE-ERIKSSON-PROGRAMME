@@ -10,6 +10,11 @@ contradicted claims, source-pending statements, local-PDF provenance, and the
 requirements for promoting an extraction to a source-verified input.  This file
 remains the positive quantitative transcription ledger.
 
+Structured lookup: [`SOURCE-CITATIONS.md`](SOURCE-CITATIONS.md) and
+`docs/source-citations/*.json` define stable citation keys for the primary-source
+anchors below.  Use `python scripts/source_citations.py show <key>` before
+opening OCR or rendered pages.
+
 **Source-targeting audit (2026-06-20, corrected).**  For the remaining
 `hRpoly` Yang-Mills activity/locality package, do not cite mirror metadata
 without checking the Springer/DOI record and the paper text.  Web downloads

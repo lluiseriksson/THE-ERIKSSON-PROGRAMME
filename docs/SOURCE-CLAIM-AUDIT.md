@@ -34,6 +34,7 @@ This audit complements, rather than replaces:
 | [`CURRENT-STATE.md`](../CURRENT-STATE.md) | What Lean currently proves |
 | [`HYPOTHESIS_FRONTIER.md`](../HYPOTHESIS_FRONTIER.md) | What remains a theorem hypothesis |
 | [`docs/BALABAN-SOURCE-BOUNDS.md`](BALABAN-SOURCE-BOUNDS.md) | Positive source transcriptions and quantitative anchors |
+| [`docs/SOURCE-CITATIONS.md`](SOURCE-CITATIONS.md) | Structured citation keys, local artifact hints, and Lean consumers |
 | `docs/SOURCE-CLAIM-AUDIT.md` | Contradicted claims, pending claims, provenance, and extraction requirements |
 | [`docs/VERIFICATION-LEDGER.md`](VERIFICATION-LEDGER.md) | Build/oracle-certified theorem additions |
 

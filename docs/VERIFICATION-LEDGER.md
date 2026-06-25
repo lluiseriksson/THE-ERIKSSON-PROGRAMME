@@ -15278,3 +15278,47 @@ majorization, no activity identification, no termwise estimate, no Gaussian
 pushforward, no covariance-root localization, no Wilson-Hessian identification,
 no local activity construction, no H# identity, no RG-flow bound, no IR bound,
 and no Clay mass gap.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 385 (2026-06-25, **structured primary-source citation lookup**
+`docs/source-citations` and `scripts/source_citations.py`; core 8363)
+
+This checkpoint adds a repository-native citation catalog for the source
+regions that have been repeatedly revisited during the CMP116 Lemma 3 campaign:
+
+```
+docs/SOURCE-CITATIONS.md
+docs/source-citations/cmp116-lemma3.json
+scripts/source_citations.py
+```
+
+The catalog records stable keys such as `cmp116.eq231.p-bond-sum`, local
+artifact paths under the runtime source cache, status labels
+(`visual_confirmed`, `ocr_corrupted`, etc.), Lean-facing targets, permitted
+uses, prohibited overclaims, and open extraction questions.  It is intended to
+make future source work start from a compact locator rather than broad OCR
+searches or repeated rendered-page rediscovery.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_citations.py list
+python scripts\source_citations.py show cmp116.eq231.p-bond-sum
+python scripts\source_citations.py find Eq231
+python scripts\source_citations.py lean CMP116Eq231PBondBoundary
+python scripts\source_citations.py check-local
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-source-citations.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md README.md docs\SOURCE-CITATIONS.md docs\BALABAN-SOURCE-BOUNDS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md scripts\source_citations.py
+```
+
+Honest scope: this is navigation and provenance infrastructure only.  It does
+not prove any CMP116 estimate, does not improve OCR fidelity, does not add a
+new source theorem, and does not discharge Eq. (2.29), Eq. (2.31), post-`P`
+resummation, scalar hierarchy, activity identification, Gaussian pushforward,
+covariance-root localization, Wilson-Hessian identification, H# identity,
+RG-flow bound, IR bound, or Clay mass gap.  Clay distance **~0% (<0.1%),
+unchanged**.

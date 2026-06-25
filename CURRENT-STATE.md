@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 384.
+Addendum 385.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -11,6 +11,11 @@ before deciding what is actually proved and what remains open.
 Adversarial source-claim status, contradicted attributions, provenance fields,
 and the remaining Balaban extraction queue are tracked separately in
 [`docs/SOURCE-CLAIM-AUDIT.md`](docs/SOURCE-CLAIM-AUDIT.md).
+The compact primary-source lookup system now lives in
+[`docs/SOURCE-CITATIONS.md`](docs/SOURCE-CITATIONS.md) and
+[`docs/source-citations/`](docs/source-citations/); use
+`python scripts/source_citations.py show <key>` before re-running OCR or
+opening broad source windows.
 
 ## Human Progress Dashboard
 

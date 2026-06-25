@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "catalog": "cmp116-lemma3",
+  "updated": "2026-06-25",
+  "sources": {
+    "cmp116": {
+      "short": "Balaban CMP116",
+      "title": "Renormalization Group Approach to Lattice Gauge Field Theories II. Cluster Expansions",
+      "author": "T. Balaban",
+      "journal": "Communications in Mathematical Physics 116 (1988), 1-22",
+      "doi": "10.1007/BF01239022",
+      "local_artifacts": {
+        "pdf": "balaban-rg-II-cmp116-1104161193.pdf",
+        "text_full": "text/balaban-rg-II-cmp116-1104161193.txt",
+        "text_pages_15_20": "text/cmp116-pages-15-20.txt",
+        "text_page_21": "text/cmp116-page-21-post-lemma3.txt",
+        "render_source_12": "renders/cmp116-source-12-eq25-28.png",
+        "render_source_13": "renders/cmp116-source-13-eq25-28.png",
+        "render_source_14": "renders/cmp116-source-14-eq25-28.png",
+        "render_source_18": "renders/cmp116-source-18.png",
+        "render_source_19": "renders/cmp116-source-19.png",
+        "render_source_20": "renders/cmp116-source-20.png",
+        "render_source_21": "renders/cmp116-source-21.png"
+      }
+    },
+    "cmp119": {
+      "short": "Balaban CMP119",
+      "title": "Convergent Renormalization Expansions for Lattice Gauge Theories",
+      "author": "T. Balaban",
+      "journal": "Communications in Mathematical Physics 119 (1988), 243-285",
+      "doi": "10.1007/BF01217741",
+      "local_artifacts": {
+        "pdf": "balaban-convergent-cmp119-from-fusion.pdf",
+        "text_full": "text/balaban-convergent-cmp119-from-fusion.txt",
+        "render_source_18": "renders/cmp119-source-18.png",
+        "render_source_19": "renders/cmp119-source-19.png"
+      }
+    }
+  },
+  "citations": [
+    {
+      "key": "cmp116.gaussian-pushforward.2.5-2.6",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "12-13",
+        "pdf_pages": "12-13",
+        "equations": ["2.5", "2.6"],
+        "local_text": "balaban-rg-II-cmp116-1104161193.txt lines 453-493",
+        "renders": ["render_source_12", "render_source_13"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Linear covariance-root change of variables moves the localized fluctuation integral to the product standard Gaussian interface.",
+      "lean_targets": [
+        "balabanCMP116Dmu0",
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "BalabanCMP116Lemma3WeightedPostPSourceAssumptions.gaussian_pushforward"
+      ],
+      "use_for": [
+        "Source anchor for Gaussian pushforward after the covariance-root change of variables."
+      ],
+      "do_not_use_for": [
+        "Do not treat this as the dictionary coordinate identification, determinant normalization, or root-localization theorem."
+      ],
+      "open_questions": [
+        "Exact coordinate/dictionary statement for the repository's physical fluctuation field.",
+        "Normalization/Jacobian assumptions needed by the Lean Gaussian pushforward field."
+      ]
+    },
+    {
+      "key": "cmp116.localized-activity.2.7-2.10",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "13-14",
+        "pdf_pages": "13-14",
+        "equations": ["2.7", "2.8", "2.9", "2.10"],
+        "local_text": "balaban-rg-II-cmp116-1104161193.txt lines 494-553",
+        "renders": ["render_source_13", "render_source_14"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Balaban localizes the product-Gaussian expression into quantities H(Z,Z0) and H(Z), with component factorization.",
+      "lean_targets": [
+        "local_physical_activity_construction",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "PhysicalGaugeLocalActivity.globalEval"
+      ],
+      "use_for": [
+        "Source anchor for existence of localized activity H(Z) before Lemma 3 estimates."
+      ],
+      "do_not_use_for": [
+        "Do not claim exact finite covariance-root reconstruction from this citation.",
+        "Do not claim the repository's active support inclusion without the enlargement convention."
+      ],
+      "open_questions": [
+        "Exact map from Balaban localization domains to OmegaPolymerType supports.",
+        "Exact active-support and external-field locality theorem needed by Appendix-F support hypotheses."
+      ]
+    },
+    {
+      "key": "cmp116.lemma3.window.2.14-2.38",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "15-20",
+        "pdf_pages": "15-20",
+        "equations": ["2.14", "2.26", "2.27", "2.29", "2.31", "2.32", "2.37", "2.38"],
+        "local_text": "cmp116-pages-15-20.txt lines 1-334",
+        "renders": ["render_source_18", "render_source_19", "render_source_20"]
+      },
+      "status": "ocr_corrupted",
+      "summary": "Main resummation window for the activity H(Z), ending in Lemma 3 and the final exponential activity estimate.",
+      "lean_targets": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq231PBondBoundary",
+        "CMP116Lemma3WeightedPostPSourceScaleBoundary",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
+      ],
+      "use_for": [
+        "Navigation to the exact source region for the remaining Lemma 3 boundary discharges."
+      ],
+      "do_not_use_for": [
+        "Do not cite the OCR text as exact formula data.",
+        "Do not use this broad window as a single monolithic Lean hypothesis."
+      ],
+      "open_questions": [
+        "Exact Eq. (2.29) display.",
+        "Exact Eq. (2.31) finite P-summation display.",
+        "Exact Eq. (2.37) post-P bound.",
+        "Exact C3 definition and constant restrictions."
+      ]
+    },
+    {
+      "key": "cmp116.eq229.d-stage-summability",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "18",
+        "pdf_pages": "18",
+        "equations": ["2.29"],
+        "local_text": "cmp116-pages-15-20.txt lines 181-191",
+        "renders": ["render_source_18"]
+      },
+      "status": "ocr_corrupted",
+      "summary": "D-stage summability after the product estimate following (2.28); source says it holds for large K and small alpha6.",
+      "lean_targets": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "cmp116H_postD_sum_le_of_eq229",
+        "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
+      ],
+      "use_for": [
+        "Locate the source statement for the D-stage boundary."
+      ],
+      "do_not_use_for": [
+        "Do not infer the quantifiers or alpha6 dependence from OCR."
+      ],
+      "open_questions": [
+        "Full display and quantifiers over Y0, D, and Y in D.",
+        "Precise roles of alpha6, delta, kappa, K, and d_k."
+      ]
+    },
+    {
+      "key": "cmp116.eq231.p-bond-sum",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "18-19",
+        "pdf_pages": "18-19",
+        "equations": ["2.31"],
+        "local_text": "cmp116-pages-15-20.txt lines 194-214",
+        "renders": ["render_source_18", "render_source_19"]
+      },
+      "status": "ocr_corrupted",
+      "summary": "P-summation with fixed Z0 and Y0, controlled by the exponential factor involving the finite bond set P.",
+      "lean_targets": [
+        "CMP116Eq231PBondBoundary",
+        "cmp116Eq231PWeight",
+        "cmp116PGeometricFamilySummation_of_eq231",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise"
+      ],
+      "use_for": [
+        "Source target for replacing the carried Eq. (2.31) P-family boundary."
+      ],
+      "do_not_use_for": [
+        "Do not assert pBonds_injective, pBonds_subset, or bondCarrier_card_le until the exact displayed sum and set map are extracted."
+      ],
+      "open_questions": [
+        "Exact objects corresponding to P, pBonds, bondCarrier, and gapMass.",
+        "Whether eq231LocalizationScale is M, L, L/M, or another source scale.",
+        "Exact rate parameter and smallness condition."
+      ]
+    },
+    {
+      "key": "cmp116.eq237.post-p-resummation",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "19-20",
+        "pdf_pages": "19-20",
+        "equations": ["2.37"],
+        "local_text": "cmp116-pages-15-20.txt lines 281-311",
+        "renders": ["render_source_19", "render_source_20"]
+      },
+      "status": "ocr_corrupted",
+      "summary": "Post-P resummation over D, P, and Z0 families leading to the fixed Z0' bound before the final Z0' summation.",
+      "lean_targets": [
+        "CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_source_bound",
+        "CMP116PostPResidualSourceBound",
+        "CMP116PostPResidualSourceMajorizationScaleFamily"
+      ],
+      "use_for": [
+        "Source target for the combined post-P source boundary."
+      ],
+      "do_not_use_for": [
+        "Do not split this into standalone Z0 and Z0' residual theorems unless the source text explicitly supports that split."
+      ],
+      "open_questions": [
+        "Whether the Lean post-P source boundary is sourced from (2.37) plus the following paragraph or only from Lemma 3/(2.38).",
+        "Exact majorization into the canonical Lemma-3 base factor."
+      ]
+    },
+    {
+      "key": "cmp116.constants.c3-alpha5",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "20",
+        "pdf_pages": "20",
+        "equations": ["2.37", "2.38"],
+        "local_text": "cmp116-pages-15-20.txt lines 313-327",
+        "renders": ["render_source_20"]
+      },
+      "status": "ocr_corrupted",
+      "summary": "Definition region for alpha5 restrictions and the final C3 constant used in Lemma 3.",
+      "lean_targets": [
+        "CMP116Lemma3Parameters",
+        "CMP116Lemma3WeightedPostPSourceScaleBoundary",
+        "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
+      ],
+      "use_for": [
+        "Source target for the constant hierarchy request."
+      ],
+      "do_not_use_for": [
+        "Do not collapse repeated O(1) constants into one Lean constant without a source majorant theorem."
+      ],
+      "open_questions": [
+        "Exact definitions of epsilon1, epsilon2, gamma2, alpha0, alpha1, alpha4, alpha5, alpha6, and C3.",
+        "Whether distinct O(1) constants need distinct Lean fields or a common majorant."
+      ]
+    },
+    {
+      "key": "cmp116.lemma3.final-2.38",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "20",
+        "pdf_pages": "20",
+        "equations": ["2.38"],
+        "local_text": "cmp116-pages-15-20.txt lines 328-334",
+        "renders": ["render_source_20"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Final Lemma 3 activity estimate for H(Z), after all restrictions and resummations.",
+      "lean_targets": [
+        "CMP116Lemma3ActivityEstimateScaleFamily",
+        "BalabanCMP116Lemma3SourceAssumptions",
+        "CMP116RawSourceM3Frontier"
+      ],
+      "use_for": [
+        "Final target shape of the Lemma 3 activity estimate."
+      ],
+      "do_not_use_for": [
+        "Do not use (2.38) to pretend the upstream Eq. (2.31) or post-P source boundaries have been proved separately."
+      ],
+      "open_questions": [
+        "Exact exponent convention: OCR and existing notes differ on visible half-power/one-half formatting.",
+        "Full restriction list preceding Lemma 3."
+      ]
+    },
+    {
+      "key": "cmp116.effective-action.2.39-2.41",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "21",
+        "pdf_pages": "21",
+        "equations": ["2.39", "2.40", "2.41"],
+        "local_text": "cmp116-page-21-post-lemma3.txt",
+        "renders": ["render_source_21"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Post-Lemma-3 insertion of the H(Z) bound into the effective-action estimate.",
+      "lean_targets": [
+        "post_lemma3_effective_action_consumer",
+        "docs/BALABAN-SOURCE-BOUNDS.md B5d"
+      ],
+      "use_for": [
+        "Downstream effective-action source anchor after Lemma 3 is available."
+      ],
+      "do_not_use_for": [
+        "Do not use this as a proof of the Lemma 3 resummation itself."
+      ],
+      "open_questions": [
+        "Exact Lean theorem target for the post-Lemma-3 effective-action consumer."
+      ]
+    },
+    {
+      "key": "cmp119.r-term-bound.2.31",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "260",
+        "pdf_pages": "18",
+        "equations": ["2.31"],
+        "local_text": "balaban-convergent-cmp119-from-fusion.txt around line 701",
+        "renders": ["render_source_18"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Localized R-term decay in the convergent expansion paper.",
+      "lean_targets": [
+        "future_R_operation_bound",
+        "RawYMActivityDecay"
+      ],
+      "use_for": [
+        "Later R-operation/localized remainder source targeting."
+      ],
+      "do_not_use_for": [
+        "Do not substitute this CMP119 R-term bound for CMP116 Lemma 3's H(Z) estimate."
+      ],
+      "open_questions": [
+        "Exact bridge from CMP119 localized R terms to the current raw Yang-Mills activity predicate."
+      ]
+    }
+  ]
+}
