@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 381.
+Addendum 384.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8362 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8363 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -1736,6 +1736,13 @@ then copies the physical/M3 obligations unchanged.  This removes only an
 intermediate package-assembly step; every Eq. (2.31), pointwise, scalar,
 post-`P`, activity, termwise, Gaussian/root/Hessian/local-activity, H#, flow,
 and IR obligation remains an explicit input.
+The same Eq. (2.31) route is now exposed directly at the M3-frontier level as
+`CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries`.  This
+definition only composes the source-theorem package constructor with
+`CMP116RawSourceM3Frontier.of_lemma3WeightedPostPSourceAssumptions`; it removes
+one downstream packaging step but leaves the full Eq. (2.29), Eq. (2.31),
+weighted post-`P`, activity/termwise, physical-source, Appendix-F H#, flow, and
+IR assumptions unchanged.
 
 ## What Is Not Claimed
 

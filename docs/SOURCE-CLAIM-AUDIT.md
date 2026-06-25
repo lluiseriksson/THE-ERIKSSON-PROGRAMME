@@ -4,7 +4,7 @@
 **Document status:** adversarial documentation only; not a Lean theorem and
 not source evidence by itself  
 **Audit date:** 2026-06-20  
-**Last updated:** 2026-06-24
+**Last updated:** 2026-06-25
 **Live code reference:** `337025aadd8f80810cdf676f2612ca0944281c9a`
 **Primary frontier:** `hRpoly`, the concrete single-scale Yang-Mills
 activity-decay estimate for the actual gauge RG operator
@@ -1002,3 +1002,13 @@ arguments.  It proves no Eq. (2.31) source construction, no pointwise
 P-residual estimate, no scalar hierarchy, no post-`P` source estimate or
 majorization, no activity identification, no termwise estimate, and no
 Gaussian/root/Hessian/local-activity source fact.
+
+`CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries` is the direct
+M3-frontier consumer for the same Eq. (2.31)-specialized boundary data.  It
+only composes
+`BalabanCMP116Lemma3WeightedPostPSourceAssumptions.of_eq231_boundaries` with
+`CMP116RawSourceM3Frontier.of_lemma3WeightedPostPSourceAssumptions`.  It does
+not prove Eq. (2.29), construct Eq. (2.31) P-bond data, identify the pointwise
+P-residual or post-`P` source weights, prove activity/termwise estimates,
+construct Gaussian pushforwards or covariance roots, prove the H# identity, or
+discharge any RG-flow or IR input.

@@ -2637,6 +2637,329 @@ def CMP116RawSourceM3Frontier.of_lemma3WeightedPostPSourceAssumptions
     (BalabanCMP116Lemma3WeightedPostPSourceAssumptions.to_lemma3SourceAssumptions
       h)
 
+/-- Direct M3-frontier constructor from Eq. (2.31) weighted post-`P`
+source-boundary data.
+
+This is only the composition of
+`BalabanCMP116Lemma3WeightedPostPSourceAssumptions.of_eq231_boundaries` with
+`CMP116RawSourceM3Frontier.of_lemma3WeightedPostPSourceAssumptions`.  It keeps
+the Eq. (2.29), Eq. (2.31), post-`P`, activity, physical-source, and Appendix-F
+inputs explicit and proves no new source estimate. -/
+def CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries
+    {ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {ιB : ℕ → ℕ → Type*}
+    {sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {hp : ∀ _t _k : ℕ, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (OmegaPolymerType HF (z t k))
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {DParts :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k →
+        Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιY t k → ℕ}
+    {pResidualWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ}
+    {postPSourceWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    {pGeometryWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
+    {eq231LocalizationScale : ℕ → ℕ → ℕ}
+    {eq231Rate : ℕ → ℕ → ℝ}
+    (covariance_root_certificate :
+      ∀ t k,
+        PhysicalLocalizedCovarianceRootCertificate
+          (precision t k) (covariance t k) (root t k)
+          (covNormBound t k) (rootNormBound t k)
+          (covWeight t k) (rootWeight t k))
+    (root_localization :
+      ∀ t k, rootLocalization t k)
+    (gaussian_pushforward :
+      ∀ t k,
+        (balabanCMP116Dmu0 (Cube d L) lieDim).map
+            ((D t k).gaussianRootMap (root t k)) =
+          physicalGaussian t k)
+    (wilson_hessian_identification :
+      ∀ t k, wilsonHessianIdentification t k)
+    (local_physical_activity_construction :
+      ∀ t k, localActivityConstruction t k)
+    (spectator_support_subset :
+      ∀ t k X,
+        (physicalActivity t k X).spectatorSupport ⊆
+          physicalActiveSupport t k X)
+    (fluctuation_support_subset :
+      ∀ t k X,
+        (physicalActivity t k X).fluctuationSupport ⊆
+          physicalActiveSupport t k X)
+    (activity_stronglyMeasurable :
+      ∀ t k X, ∀ ψ : ∀ _ : Cube d L, β,
+        StronglyMeasurable
+          (fun ξ : CMP116FluctuationField d L lieDim =>
+            ((PhysicalGaugeCMP116ActivityAdapter.ofDictionary
+              (Ψ := fun _ : Cube d L => β)
+              (D t k)
+              (fun X : OmegaPolymerType HF (z t k) => X)
+              (spectatorPull t k)).activity
+                (physicalActivity t k) X).globalEval ψ ξ))
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary
+        hp R DParts alpha6 eq229Metric)
+    (B :
+      ∀ t k,
+        CMP116Eq231PBondBoundary
+          (β := ιB t k)
+          (R t k).DIndex
+          (R t k).PIndex
+          (eq231LocalizationScale t k))
+    (hepsilon2_nonneg : ∀ t k, 0 ≤ epsilon2 t k)
+    (hpointwise :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pResidualWeight t k Z D P ≤
+            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+                epsilon2 t k) *
+              pGeometryWeight t k Z D P)
+    (hrate :
+      ∀ t k,
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp (-(2 * eq231Rate t k)) ≤ eq231Rate t k)
+    (hgeometry :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pGeometryWeight t k Z D P ≤
+            cmp116Eq231PWeight
+              (eq231Rate t k) (B t k).gapMass (B t k).pBonds Z D P)
+    (htarget :
+      ∀ t k,
+        1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
+    (hsmall :
+      ∀ t k,
+        2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+            pEntropyConstant t k * epsilon2 t k *
+              Real.exp (5 * pStageKappa t k) ≤ 1)
+    (hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary
+        hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude)
+    (activity :
+      CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity)
+    (amplitude_nonneg :
+      ∀ t k,
+        0 ≤
+          cmp116Lemma3ScaleAmplitude
+            (fun t k => (hp t k).C3)
+            (fun t k => (hp t k).epsilon1)
+            t k)
+    (active_support_subset_omega :
+      ∀ t k X,
+        physicalActiveSupport t k X ⊆
+          (D t k).physicalBondsOfCells (D t k).siteMap.Omega)
+    (active_support_subset_skeleton :
+      ∀ t k X, X ∈ Λ t k →
+        physicalActiveSupport t k X ⊆
+          (D t k).physicalBondsOfCells (skeleton HF X.val))
+    (weight_domination :
+      ∀ t k X, X ∈ Λ t k →
+        cmp116Lemma3ScaleWeight
+            sourceMetric
+            (fun t k => (hp t k).blockScale)
+            (fun t k => (hp t k).delta)
+            (fun t k => (hp t k).kappa)
+            t k X ≤
+          appendixFHoleExpWeight HF kappa X.val)
+    (probability_law :
+      ∀ t k, IsProbabilityMeasure (ν t k))
+    (holes_pairwise_disjoint :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (no_edges_between_holes :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (holes_nonempty :
+      ∀ H ∈ HF.holes, H.Nonempty)
+    (appendix_f_geometric_smallness :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-kappa0) * 2 ^ (3 ^ d + 1)) < 1)
+    (rooted_hsharp_remainder_identity :
+      let weighted_postP_source :=
+        CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries
+          eq229 B hepsilon2_nonneg hpointwise hrate hgeometry htarget
+          hsmall hpResidual_nonneg postP activity
+      let rawSource :=
+        CMP116Lemma3WeightedPostPScaleSourceAssumptions.rawSource
+          gaussian_pushforward
+          root_localization
+          wilson_hessian_identification
+          local_physical_activity_construction
+          weighted_postP_source
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+                HF (z t k) (Λ t k)
+                ((physicalGaugeCMP116RawSourceScaleFamily
+                  Λ D spectatorPull precision covariance root
+                  physicalGaussian
+                  covNormBound rootNormBound covWeight rootWeight
+                  physicalActivity physicalActiveSupport
+                  (cmp116Lemma3ScaleWeight
+                    sourceMetric
+                    (fun t k => (hp t k).blockScale)
+                    (fun t k => (hp t k).delta)
+                    (fun t k => (hp t k).kappa))
+                  (cmp116Lemma3ScaleAmplitude
+                    (fun t k => (hp t k).C3)
+                    (fun t k => (hp t k).epsilon1))
+                  kappa
+                  rootLocalization
+                  wilsonHessianIdentification
+                  localActivityConstruction
+                  covariance_root_certificate
+                  rawSource
+                  spectator_support_subset
+                  fluctuation_support_subset
+                  amplitude_nonneg
+                  (cmp116Lemma3ScaleWeight_nonneg
+                    sourceMetric
+                    (fun t k => (hp t k).blockScale)
+                    (fun t k => (hp t k).delta)
+                    (fun t k => (hp t k).kappa))
+                  activity_stronglyMeasurable
+                  active_support_subset_omega
+                  active_support_subset_skeleton
+                  weight_domination) t k)
+                (ν t k) P.val.val))
+    (amplitude_le_one :
+      ∀ t k,
+        cmp116Lemma3ScaleAmplitude
+            (fun t k => (hp t k).C3)
+            (fun t k => (hp t k).epsilon1)
+            t k ≤ 1)
+    (profile_constant_nonneg :
+      0 ≤ C)
+    (hbar_nonneg :
+      0 ≤ Hbar)
+    (kappa_margin :
+      4 * kappa0 + 3 ≤ kappa)
+    (kappa0_gt_one :
+      1 < kappa0)
+    (time_decay_positive :
+      0 < c0)
+    (half_budget :
+      ∀ t k,
+        appendixFSecondUrsellLeafConstant d kappa0 *
+            (2 *
+              cmp116Lemma3ScaleAmplitude
+                (fun t k => (hp t k).C3)
+                (fun t k => (hp t k).epsilon1)
+                t k *
+              appendixFHoleRootSumConstant d kappa0) ≤ 1 / 2)
+    (profile_bound :
+      ∀ t k,
+        4 * appendixFSecondUrsellMomentConstant d kappa0 *
+            cmp116Lemma3ScaleAmplitude
+              (fun t k => (hp t k).C3)
+              (fun t k => (hp t k).epsilon1)
+              t k *
+            appendixFHoleRootSumConstant d kappa0 ≤
+          C * Hbar *
+            Real.exp (-(c0 * (t : ℝ))) *
+            g k ^ kappa0)
+    (epsilon_positive :
+      0 < ε)
+    (beta_flow_positive :
+      0 < betaFlow)
+    (coupling_positive :
+      ∀ k, 0 < g k)
+    (coupling_small :
+      ∀ k, betaFlow * g k < 1)
+    (coupling_recursion :
+      ∀ k,
+        g (k + 1) =
+          g k * (1 - betaFlow * g k))
+    (ir_bound :
+      ∀ k : ℕ,
+        |covIR k| ≤
+          C1 * Real.exp (-(ε * (k : ℝ)))) :
+    CMP116RawSourceM3Frontier
+      zCarrier r z Λ D spectatorPull
+      precision covariance root physicalGaussian
+      covNormBound rootNormBound covWeight rootWeight
+      physicalActivity physicalActiveSupport
+      (cmp116Lemma3ScaleWeight
+        sourceMetric
+        (fun t k => (hp t k).blockScale)
+        (fun t k => (hp t k).delta)
+        (fun t k => (hp t k).kappa))
+      ν covIR Rsc g
+      (cmp116Lemma3ScaleAmplitude
+        (fun t k => (hp t k).C3)
+        (fun t k => (hp t k).epsilon1))
+      C1 C Hbar ε c0 betaFlow kappa kappa0
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction :=
+  CMP116RawSourceM3Frontier.of_lemma3WeightedPostPSourceAssumptions
+    (BalabanCMP116Lemma3WeightedPostPSourceAssumptions.of_eq231_boundaries
+      covariance_root_certificate
+      root_localization
+      gaussian_pushforward
+      wilson_hessian_identification
+      local_physical_activity_construction
+      spectator_support_subset
+      fluctuation_support_subset
+      activity_stronglyMeasurable
+      eq229
+      B
+      hepsilon2_nonneg
+      hpointwise
+      hrate
+      hgeometry
+      htarget
+      hsmall
+      hpResidual_nonneg
+      postP
+      activity
+      amplitude_nonneg
+      active_support_subset_omega
+      active_support_subset_skeleton
+      weight_domination
+      probability_law
+      holes_pairwise_disjoint
+      no_edges_between_holes
+      holes_nonempty
+      appendix_f_geometric_smallness
+      rooted_hsharp_remainder_identity
+      amplitude_le_one
+      profile_constant_nonneg
+      hbar_nonneg
+      kappa_margin
+      kappa0_gt_one
+      time_decay_positive
+      half_budget
+      profile_bound
+      epsilon_positive
+      beta_flow_positive
+      coupling_positive
+      coupling_small
+      coupling_recursion
+      ir_bound)
+
 /-- Package resummation-source assumptions into the existing raw-source M3
 frontier.
 
