@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 376.
+Addendum 379.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1690,6 +1690,15 @@ Its direct consumer
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries`
 composes those same boundary records into the existing Lemma-3 scale-family
 estimate without introducing a monolithic source premise.
+The Eq. (2.31)-specialized consumer
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_boundaries`
+removes the intermediate P-stage boundary argument when explicit Eq. (2.31)
+bond-boundary data are supplied.  It first builds the P-stage boundary via
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise` and then applies
+the same weighted post-`P` boundary route; it still proves none of the
+Eq. (2.31) source construction, pointwise residual majorization, scalar
+smallness, weighted post-`P` source estimate, activity identification, or
+termwise estimate obligations.
 The same route now feeds the existing physical raw-source record through
 `rawSource_of_weightedPostPBoundaries`, which additionally requires the
 separated Gaussian pushforward, root-localization, Wilson-Hessian, and local

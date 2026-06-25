@@ -947,6 +947,15 @@ the checked weighted post-`P` package and then applies the existing
 `lemma3_activity_estimate` projection.  It adds no source theorem and discharges
 none of the four boundary packages.
 
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_boundaries`
+is the Eq. (2.31)-specialized version of that consumer.  It constructs the
+P-stage boundary internally from `CMP116Eq231PBondBoundary` plus the explicit
+pointwise, rate, target, smallness, and nonnegativity hypotheses, then applies
+the existing weighted post-`P` route.  It removes only an intermediate record
+assembly premise; it does not prove the CMP116 source construction of the
+P-family, Eq. (2.31) constants, pointwise P-residual bound, post-`P`
+majorization, activity identification, or termwise estimate.
+
 `rawSource_of_weightedPostPBoundaries` composes that direct consumer with the
 pre-existing `rawSource_of_lemma3ActivityEstimate` adapter.  It still requires
 the Gaussian pushforward, covariance-root localization, Wilson-Hessian

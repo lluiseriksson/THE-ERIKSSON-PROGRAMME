@@ -2059,6 +2059,105 @@ def lemma3_activity_estimate_of_boundaries
   lemma3_activity_estimate
     (of_boundaries eq229 pStage postP activity)
 
+/-- Direct CMP116 Lemma-3 scale-family consumer from Eq. (2.29), the explicit
+Eq. (2.31) P-bond entropy boundary, the weighted post-`P` boundary, and the
+activity/termwise boundary.
+
+This only composes `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise`
+with `lemma3_activity_estimate_of_boundaries`.  It removes the need for callers
+to preassemble a P-stage source boundary when Eq. (2.31) bond data are already
+available; all source construction, pointwise, smallness, post-`P`,
+majorization, activity-identification, and termwise obligations remain explicit
+inputs. -/
+def lemma3_activity_estimate_of_eq231_boundaries
+    {σ ιD ιP ιZ0 ιZ0' ιY β : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {sourceMetric : ∀ t k, σ t k → ℕ}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric : ∀ t k, σ t k → ιY t k → ℕ}
+    {pResidualWeight pGeometryWeight :
+      ∀ t k, σ t k → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale eq231LocalizationScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa eq231Rate : ℕ → ℕ → ℝ}
+    {postPSourceWeight : ∀ t k, σ t k → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary
+        hp R DParts alpha6 eq229Metric)
+    (B :
+      ∀ t k,
+        CMP116Eq231PBondBoundary
+          (β := β t k)
+          (R t k).DIndex
+          (R t k).PIndex
+          (eq231LocalizationScale t k))
+    (hepsilon2_nonneg : ∀ t k, 0 ≤ epsilon2 t k)
+    (hpointwise :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pResidualWeight t k Z D P ≤
+            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+                epsilon2 t k) *
+              pGeometryWeight t k Z D P)
+    (hrate :
+      ∀ t k,
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp (-(2 * eq231Rate t k)) ≤ eq231Rate t k)
+    (hgeometry :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pGeometryWeight t k Z D P ≤
+            cmp116Eq231PWeight
+              (eq231Rate t k) (B t k).gapMass (B t k).pBonds Z D P)
+    (htarget :
+      ∀ t k,
+        1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
+    (hsmall :
+      ∀ t k,
+        2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+            pEntropyConstant t k * epsilon2 t k *
+              Real.exp (5 * pStageKappa t k) ≤ 1)
+    (hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary
+        hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude)
+    (activity :
+      CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity) :
+    CMP116Lemma3ActivityEstimateScaleFamily
+      physicalActivity
+      sourceMetric
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa) :=
+  lemma3_activity_estimate_of_boundaries
+    eq229
+    (CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise
+      R pResidualWeight pGeometryWeight
+      pStageBlockScale eq231LocalizationScale
+      pEntropyConstant epsilon2 pStageKappa eq231Rate
+      B hepsilon2_nonneg hpointwise hrate hgeometry htarget
+      hsmall hpResidual_nonneg)
+    postP
+    activity
+
 end CMP116Lemma3WeightedPostPScaleSourceAssumptions
 
 /-- Build raw-source records directly from the named weighted post-`P` boundary

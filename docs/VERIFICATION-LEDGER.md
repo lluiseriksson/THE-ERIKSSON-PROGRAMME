@@ -15058,3 +15058,39 @@ identification of `pWeight` or `pGeometryWeight`, no Eq. (2.29), no scalar
 hierarchy, no post-`P` estimate, no activity identification, no termwise
 complex estimate, and no Clay mass gap.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 379 (2026-06-25, **Eq. (2.31)-specialized weighted post-P
+Lemma-3 consumer** `YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8363)
+
+This checkpoint exposes the direct scale-family consumer
+
+```
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_boundaries
+```
+
+It composes the Eq. (2.31) P-bond boundary constructor
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise` with the existing
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries`.
+The result removes the intermediate `CMP116Lemma3PStageSourceScaleBoundary`
+premise when explicit Eq. (2.31) bond data are already available, while keeping
+Eq. (2.29), pointwise P residual majorization, Eq. (2.31) rate/target data,
+scalar smallness, weighted post-`P` source/majorization, activity
+identification, and termwise estimates as explicit inputs.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-weighted-postp-lemma3.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+Honest scope: this is source-neutral composition only.  It proves no source
+construction of `PIndex`, no source identification of `pResidualWeight` or
+`pGeometryWeight`, no Eq. (2.29), no scalar hierarchy, no weighted post-`P`
+source estimate, no activity identification, no termwise complex estimate, and
+no Clay mass gap.  Clay distance **~0% (<0.1%), unchanged**.
