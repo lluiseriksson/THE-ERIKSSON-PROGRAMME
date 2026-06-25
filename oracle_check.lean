@@ -1425,6 +1425,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.p_residual_summability
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.postP_residual_bound
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate
+#print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries
 #print axioms YangMills.RG.cmp116H_postD_sum_le_of_residualStages
 #print axioms YangMills.RG.cmp116H_postD_sum_le_of_pStageSourceBound_residualStages
 #print axioms YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_residualStages

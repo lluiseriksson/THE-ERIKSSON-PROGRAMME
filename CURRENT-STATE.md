@@ -1644,6 +1644,10 @@ subpackages by
 P-stage source/smallness, weighted post-`P` source/majorization, and the common
 activity/termwise boundary remain separate explicit inputs.  The constructor is
 record assembly only and proves none of those source obligations.
+Its direct consumer
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries`
+composes those same boundary records into the existing Lemma-3 scale-family
+estimate without introducing a monolithic source premise.
 
 ## What Is Not Claimed
 

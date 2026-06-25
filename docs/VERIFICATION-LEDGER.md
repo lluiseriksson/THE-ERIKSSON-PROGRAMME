@@ -14491,3 +14491,36 @@ source construction of normalized P-residual weights, no scalar smallness
 theorem, no post-`P` source estimate, no post-`P` majorization theorem, no
 activity identification, no termwise estimate, and no unconditional CMP116
 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 365 (2026-06-25, **CMP116 weighted boundary direct consumer**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8362)
+
+This checkpoint adds the direct consumer from the named weighted post-`P`
+boundary subpackages to the existing CMP116 Lemma-3 scale-family estimate:
+
+```
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries
+```
+
+It composes `of_boundaries` with `lemma3_activity_estimate`, so downstream code
+can depend on Eq. (2.29), P-stage, weighted post-`P`, and activity/termwise
+boundaries directly instead of taking the monolithic weighted source package as
+one premise.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-weighted-boundary-direct-consumer.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is composition only.  It proves no Eq. (2.29), no
+P-stage source estimate, no scalar smallness theorem, no post-`P` source
+estimate, no post-`P` majorization theorem, no activity identification, no
+termwise estimate, and no unconditional CMP116 Lemma 3.  Clay distance
+**~0% (<0.1%), unchanged**.

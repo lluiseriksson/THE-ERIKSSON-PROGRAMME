@@ -915,3 +915,9 @@ package into source-neutral boundary records.  The constructor
 fields from those records plus `CMP116Lemma3ActivityTermwiseScaleBoundary`; it
 does not prove Eq. (2.29), P-stage smallness, post-`P` source majorization, or
 activity identification.
+
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries`
+is the direct downstream consumer of those boundary records.  It first assembles
+the checked weighted post-`P` package and then applies the existing
+`lemma3_activity_estimate` projection.  It adds no source theorem and discharges
+none of the four boundary packages.

@@ -1734,6 +1734,61 @@ def lemma3_activity_estimate
     source.activity_identification
     source.termwise_estimate
 
+/-- Direct CMP116 Lemma-3 scale-family consumer from the named weighted
+post-`P` boundary subpackages.
+
+This only composes `of_boundaries` with `lemma3_activity_estimate`; all source,
+smallness, majorization, activity-identification, and termwise-estimate
+obligations remain explicit inputs. -/
+def lemma3_activity_estimate_of_boundaries
+    {σ ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {sourceMetric : ∀ t k, σ t k → ℕ}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric : ∀ t k, σ t k → ιY t k → ℕ}
+    {pResidualWeight : ∀ t k, σ t k → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ}
+    {postPSourceWeight : ∀ t k, σ t k → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary
+        hp R DParts alpha6 eq229Metric)
+    (pStage :
+      CMP116Lemma3PStageSourceScaleBoundary
+        R pResidualWeight pStageBlockScale pEntropyConstant
+        epsilon2 pStageKappa)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary
+        hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude)
+    (activity :
+      CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity) :
+    CMP116Lemma3ActivityEstimateScaleFamily
+      physicalActivity
+      sourceMetric
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa) :=
+  lemma3_activity_estimate
+    (of_boundaries eq229 pStage postP activity)
+
 end CMP116Lemma3WeightedPostPScaleSourceAssumptions
 
 /-- Build a CMP116 Lemma 3 scale family from Eq. (2.29), a source-shaped
