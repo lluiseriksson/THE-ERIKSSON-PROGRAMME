@@ -15966,3 +15966,61 @@ hypothesis when the Eq. (2.37) majorization boundary is supplied.  It is not a
 proof of Eq. (2.29), a construction of Eq. (2.31) source families, a proof of
 the combined post-`P` source estimate, or a continuum/Clay result.  Clay
 distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 398 (2026-06-25, **Eq. (2.31) filtered P-family scale boundary**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Lemma3ScaleFamily.lean`, `oracle_check.lean`,
+`docs/source-citations/cmp116-lemma3.json`, `docs/SOURCE-CITATIONS.md`,
+`docs/SOURCE-CLAIM-AUDIT.md`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint exposes the filtered-powerset Eq. (2.31) route at the
+scale-family boundary:
+
+- `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets` builds the
+  P-stage source boundary when the resummation record's `PIndex` is explicitly
+  equal to `cmp116Eq231SourcePIndex gapCubes admissible`.
+- In that presentation, the per-`P` carrier-containment premise is removed:
+  containment follows from powerset membership via the already checked
+  `cmp116PStageSourceBound_of_eq231_filteredBondSets`.
+- The route still requires pointwise P-weight control, the source bracket,
+  geometry comparison, target comparison, scalar smallness, and nonnegativity
+  explicitly.
+
+The citation catalog now records this scale-level consumer under
+`cmp116.eq231.p-family-carrier-source-target`.  The source claim audit keeps the
+remaining dictionary obligation explicit: this does not prove Balaban's source
+`P` family is the filtered Lean family; it only removes `hPcarrier` once that
+`PIndex` equality is supplied.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build +YangMills.RG.BalabanCMP116Lemma3ScaleFamily:olean
+python scripts\source_citations.py validate
+python scripts\source_citations.py lean CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets
+python scripts\source_citations.py check-local
+python scripts\source_citations.py blockers
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-filtered-bondsets.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+```
+
+Results: focused Lean and module builds passed; `lake build YangMillsCore`
+passed 8364 jobs; `oracle_check.lean` completed and wrote
+`runtime\oracle-eq231-filtered-bondsets.log`, including both the
+`of_eq231_sourceBondSets` and `of_eq231_filteredBondSets` scale constructors.
+Citation validation/local checks, `git diff --check`,
+`git diff --cached --check`, `check_consistency.py`, and the
+no-sorry/no-admit/no-axiom scan passed.  The builds reported pre-existing lint
+warnings in unrelated modules.
+
+Honest scope: this removes a live carrier-containment premise only for callers
+that already present `PIndex` as the filtered powerset carrier.  It is not a
+source proof of that presentation, not Eq. (2.29), not the pointwise P residual
+estimate, not post-`P`, and not a continuum/Clay result.  Clay distance
+**~0% (<0.1%)**, unchanged.

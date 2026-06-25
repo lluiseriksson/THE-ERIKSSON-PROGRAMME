@@ -100,7 +100,10 @@ the Eq. (2.31) P-family: it records the exact missing carrier/orientation and
 counting facts needed before eliminating the remaining source-specific
 carrier-containment hypothesis in the concrete finite-bond-set route.  The
 generic `CMP116Eq231PBondBoundary` remains available as an internal
-combinatorial abstraction.
+combinatorial abstraction.  The filtered-powerset route
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets` eliminates
+that carrier-containment premise once a caller supplies the exact source
+dictionary `PIndex = cmp116Eq231SourcePIndex gapCubes admissible`.
 The keys `cmp116.eq237.post-p-resummation` and
 `cmp116.constants.c3-alpha5` record the visually confirmed page-20 source
 data for the combined post-`P` boundary, the alpha5/C3 region, and Lemma 3's

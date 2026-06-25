@@ -1001,6 +1001,14 @@ first downstream source route whose P-index is literally a finite bond set
 from that route, but it still carries the source-specific `hPcarrier`
 containment premise.
 
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets` is the
+filtered-powerset variant of the same route.  It removes the per-`P`
+`hPcarrier` premise when the resummation record's `PIndex` is explicitly equal
+to `cmp116Eq231SourcePIndex gapCubes admissible`, since containment is then
+just powerset membership.  It does not prove that Balaban's source `P` family is
+that filtered Lean family; the `PIndex` equality is still the source dictionary
+to be supplied by a later theorem.
+
 `rawSource_of_weightedPostPBoundaries` composes that direct consumer with the
 pre-existing `rawSource_of_lemma3ActivityEstimate` adapter.  It still requires
 the Gaussian pushforward, covariance-root localization, Wilson-Hessian

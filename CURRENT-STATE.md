@@ -1827,6 +1827,14 @@ than asking for arbitrary `CMP116Eq231PBondBoundary` data.  This is still not
 full Eq. (2.31) source closure; the citation key
 `cmp116.eq231.p-family-carrier-source-target` remains `source_pending` until
 the exact CMP116 eligible-bond carrier/orientation sentence is checked.
+The filtered-powerset scale route
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets` now removes
+the live `hPcarrier` premise when the resummation record's `PIndex` is
+explicitly equal to `cmp116Eq231SourcePIndex gapCubes admissible`.  In that
+presentation, carrier containment follows from powerset membership.  This
+still does not identify Balaban's source `P` family with that filtered Lean
+presentation; the equality of `PIndex` with the filtered powerset remains the
+source-facing dictionary obligation.
 
 ### Eq. (2.37) Post-P Majorization Route (2026-06-25)
 
