@@ -1824,6 +1824,101 @@ def of_boundaries
   activity_identification := activity.activity_identification
   termwise_estimate := activity.termwise_estimate
 
+/-- Constructor for the weighted post-`P` source package from Eq. (2.29), an
+explicit Eq. (2.31) P-bond boundary, the weighted post-`P` boundary, and the
+activity/termwise boundary.
+
+This packages the same source-neutral composition as
+`lemma3_activity_estimate_of_eq231_boundaries`, but keeps the resulting
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions` record available for
+downstream projections.  It proves no source construction of the P family,
+pointwise P-residual estimate, scalar hierarchy, post-`P` estimate, activity
+identification, or termwise bound. -/
+def of_eq231_boundaries
+    {σ ιD ιP ιZ0 ιZ0' ιY β : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {sourceMetric : ∀ t k, σ t k → ℕ}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric : ∀ t k, σ t k → ιY t k → ℕ}
+    {pResidualWeight pGeometryWeight :
+      ∀ t k, σ t k → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale eq231LocalizationScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa eq231Rate : ℕ → ℕ → ℝ}
+    {postPSourceWeight : ∀ t k, σ t k → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary
+        hp R DParts alpha6 eq229Metric)
+    (B :
+      ∀ t k,
+        CMP116Eq231PBondBoundary
+          (β := β t k)
+          (R t k).DIndex
+          (R t k).PIndex
+          (eq231LocalizationScale t k))
+    (hepsilon2_nonneg : ∀ t k, 0 ≤ epsilon2 t k)
+    (hpointwise :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pResidualWeight t k Z D P ≤
+            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+                epsilon2 t k) *
+              pGeometryWeight t k Z D P)
+    (hrate :
+      ∀ t k,
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp (-(2 * eq231Rate t k)) ≤ eq231Rate t k)
+    (hgeometry :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pGeometryWeight t k Z D P ≤
+            cmp116Eq231PWeight
+              (eq231Rate t k) (B t k).gapMass (B t k).pBonds Z D P)
+    (htarget :
+      ∀ t k,
+        1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
+    (hsmall :
+      ∀ t k,
+        2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+            pEntropyConstant t k * epsilon2 t k *
+              Real.exp (5 * pStageKappa t k) ≤ 1)
+    (hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary
+        hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude)
+    (activity :
+      CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity) :
+    CMP116Lemma3WeightedPostPScaleSourceAssumptions
+      hp R sourceMetric physicalActivity DParts alpha6 eq229Metric
+      pResidualWeight pStageBlockScale pEntropyConstant epsilon2
+      pStageKappa postPSourceWeight postPAmplitude :=
+  of_boundaries
+    eq229
+    (CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise
+      R pResidualWeight pGeometryWeight
+      pStageBlockScale eq231LocalizationScale
+      pEntropyConstant epsilon2 pStageKappa eq231Rate
+      B hepsilon2_nonneg hpointwise hrate hgeometry htarget
+      hsmall hpResidual_nonneg)
+    postP
+    activity
+
 /-- The weighted post-`P` source package exposes normalized P-residual
 summability only after applying the explicit source scalar smallness field. -/
 def p_residual_summability
@@ -2003,6 +2098,101 @@ def lemma3_activity_estimate
     source.postP_residual_bound
     source.activity_identification
     source.termwise_estimate
+
+/-- Project a weighted post-`P` scale-source package to the raw-source records
+consumed by the physical CMP116/Appendix-F path.
+
+The package supplies the Lemma-3 activity estimate; the separated
+Gaussian/root/Hessian/activity facts remain explicit. -/
+def rawSource
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    {ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {D :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      ∀ _t _k : ℕ,
+        Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (OmegaPolymerType HF (z t k))
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {DParts :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k →
+        Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιY t k → ℕ}
+    {pResidualWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ}
+    {postPSourceWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop}
+    (gaussian_pushforward :
+      ∀ t k,
+        (balabanCMP116Dmu0 (Cube d L) lieDim).map
+            ((D t k).gaussianRootMap (root t k)) =
+          physicalGaussian t k)
+    (root_localization :
+      ∀ t k, rootLocalization t k)
+    (wilson_hessian_identification :
+      ∀ t k, wilsonHessianIdentification t k)
+    (local_physical_activity_construction :
+      ∀ t k, localActivityConstruction t k)
+    (source :
+      CMP116Lemma3WeightedPostPScaleSourceAssumptions
+        hp R sourceMetric physicalActivity DParts alpha6 eq229Metric
+        pResidualWeight pStageBlockScale pEntropyConstant epsilon2
+        pStageKappa postPSourceWeight postPAmplitude) :
+    ∀ t k,
+      PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        (D t k)
+        (root t k)
+        (physicalGaussian t k)
+        (physicalActivity t k)
+        (cmp116Lemma3ScaleWeight
+          sourceMetric
+          (fun t k => (hp t k).blockScale)
+          (fun t k => (hp t k).delta)
+          (fun t k => (hp t k).kappa)
+          t k)
+        (cmp116Lemma3ScaleAmplitude
+          (fun t k => (hp t k).C3)
+          (fun t k => (hp t k).epsilon1)
+          t k)
+        (rootLocalization t k)
+        (wilsonHessianIdentification t k)
+        (localActivityConstruction t k) :=
+  rawSource_of_lemma3ActivityEstimate
+    gaussian_pushforward
+    root_localization
+    wilson_hessian_identification
+    local_physical_activity_construction
+    source.lemma3_activity_estimate
 
 /-- Direct CMP116 Lemma-3 scale-family consumer from the named weighted
 post-`P` boundary subpackages.

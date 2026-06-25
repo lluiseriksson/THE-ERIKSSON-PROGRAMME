@@ -971,3 +971,13 @@ available.  It proves no Gaussian pushforward, covariance-root localization,
 Wilson-Hessian identification, local activity construction, P-family source
 construction, post-`P` majorization, activity identification, or termwise
 estimate.
+
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries` is the
+record-level version of the same Eq. (2.31) packaging: it constructs the
+weighted post-`P` source package from Eq. (2.29), Eq. (2.31) P-bond data,
+explicit pointwise/rate/target/smallness/nonnegativity hypotheses, the
+weighted post-`P` boundary, and the activity/termwise boundary.  The companion
+projection `CMP116Lemma3WeightedPostPScaleSourceAssumptions.rawSource` applies
+the package's Lemma-3 estimate to the existing raw-source adapter.  Both are
+source-neutral plumbing; neither proves any physical source fact, analytic
+source bound, scalar hierarchy, or CMP116 identification.

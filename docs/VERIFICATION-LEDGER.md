@@ -15128,3 +15128,39 @@ identification, local activity construction, Eq. (2.31) source construction,
 Eq. (2.29), scalar hierarchy, weighted post-`P` source estimate, activity
 identification, termwise estimate, or Clay mass gap.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 381 (2026-06-25, **Eq. (2.31) weighted package raw-source
+projection** `YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8363)
+
+This checkpoint exposes two source-neutral package adapters:
+
+```
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.rawSource
+```
+
+The first constructs the full weighted post-`P` scale-source package directly
+from Eq. (2.29), explicit Eq. (2.31) P-bond data, pointwise/rate/target/
+smallness/nonnegativity hypotheses, the weighted post-`P` boundary, and the
+activity/termwise boundary.  The second projects any such package to the
+physical raw-source records using the existing separated Gaussian/root/Hessian/
+activity hypotheses.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-weighted-package-rawsource.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+Honest scope: this is package plumbing only.  It proves no construction of the
+CMP116 P family, no pointwise residual estimate, no Eq. (2.29), no scalar
+hierarchy, no weighted post-`P` source estimate or majorization, no activity
+identification, no termwise estimate, no Gaussian pushforward, no covariance-
+root localization, no Wilson-Hessian identification, no local activity
+construction, and no Clay mass gap.  Clay distance **~0% (<0.1%), unchanged**.

@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 380.
+Addendum 381.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1710,6 +1710,14 @@ call sites with explicit Eq. (2.31) bond-boundary data no longer need to first
 construct the intermediate P-stage boundary.  It still carries all physical
 source facts, Eq. (2.31) data, scalar restrictions, post-`P` majorization,
 activity identification, and termwise estimates as explicit inputs.
+The weighted post-`P` source package now also exposes the record-level
+constructor
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries` and the
+projection `CMP116Lemma3WeightedPostPScaleSourceAssumptions.rawSource`.  These
+let downstream callers keep the full weighted package available while using
+the Eq. (2.31) P-boundary route and the existing separated physical
+Gaussian/root/Hessian/activity hypotheses.  They are packaging/projection
+adapters only; they add no source theorem.
 
 ## What Is Not Claimed
 
