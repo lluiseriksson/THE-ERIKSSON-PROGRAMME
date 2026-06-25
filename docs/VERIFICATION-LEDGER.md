@@ -14929,3 +14929,39 @@ finite P-stage resummation algebra.  It proves no source construction of
 no scalar-smallness hierarchy, no Eq. (2.29), no post-`P` estimate, no activity
 identification, no termwise complex estimate, and no Clay mass gap.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 376 (2026-06-25, **P-stage boundary residual-summability consumer**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8362)
+
+This checkpoint exposes the normalized P-residual summability consequence
+directly from the P-stage source boundary:
+
+```
+CMP116Lemma3PStageSourceScaleBoundary.p_residual_summability
+```
+
+The accessor applies `cmp116PResidualSummability_of_pStageSourceBound` at each
+scale using only the boundary's `p_stage_source_bound` and
+`p_stage_smallness` fields.  This lets downstream finite-sum consumers use the
+P-stage boundary without first assembling the larger weighted post-`P` source
+package.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-pstage-boundary-residual-summability.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+The new accessor oracle line is `[propext, Classical.choice, Quot.sound]`.
+Honest scope: this is a source-neutral consumer of an already supplied P-stage
+source boundary and scalar smallness.  It proves no source construction of
+`PIndex`, no source identification of `pResidualWeight` or `pGeometryWeight`,
+no scalar-smallness hierarchy, no Eq. (2.29), no post-`P` estimate, no activity
+identification, no termwise complex estimate, and no Clay mass gap.  Clay
+distance **~0% (<0.1%), unchanged**.

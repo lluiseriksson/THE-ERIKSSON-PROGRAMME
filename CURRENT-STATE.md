@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 375.
+Addendum 376.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1135,12 +1135,13 @@ they remain explicit source obligations.
 The P stage now has the source-shaped budget predicate
 `CMP116PStageSourceBound`, the pointwise/geometric constructor
 `cmp116PStageSourceBound_of_pointwise_geometric`, the scale-boundary constructor
-`CMP116Lemma3PStageSourceScaleBoundary.of_pointwise_geometric`, and the
-adapter `cmp116PResidualSummability_of_pStageSourceBound`.  The constructors
-turn a pointwise P-term majorization plus a finite geometric P-family sum into
-the exact source-shaped P-stage bound, and package it with P-stage smallness
-and nonnegativity over `(t,k)`; the adapter maps that bound plus the explicit
-scalar restriction
+`CMP116Lemma3PStageSourceScaleBoundary.of_pointwise_geometric`, the boundary
+consumer `CMP116Lemma3PStageSourceScaleBoundary.p_residual_summability`, and
+the adapter `cmp116PResidualSummability_of_pStageSourceBound`.  The
+constructors turn a pointwise P-term majorization plus a finite geometric
+P-family sum into the exact source-shaped P-stage bound, and package it with
+P-stage smallness and nonnegativity over `(t,k)`; the boundary consumer and
+adapter map that bound plus the explicit scalar restriction
 `2 * (blockScale + 2)^4 * pEntropyConstant * epsilon2 * exp(5*kappa) <= 1`
 to the normalized `CMP116PResidualSummability`.  This names the source-budget
 shape without proving the construction of `PIndex`, `pWeight`, the geometric

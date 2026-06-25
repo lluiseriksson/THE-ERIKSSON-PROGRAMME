@@ -1214,6 +1214,46 @@ def CMP116Lemma3PStageSourceScaleBoundary.of_pointwise_geometric
 
   p_residual_weight_nonneg := hpResidual_nonneg
 
+/-- The P-stage source boundary exposes normalized P-residual summability after
+applying its explicit scalar smallness field.
+
+This lets downstream finite-sum consumers use the P-stage boundary without
+requiring the larger weighted post-`P` source package. -/
+def CMP116Lemma3PStageSourceScaleBoundary.p_residual_summability
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {pResidualWeight :
+      ∀ t k, σ t k → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ}
+    (source :
+      CMP116Lemma3PStageSourceScaleBoundary
+        R pResidualWeight pStageBlockScale pEntropyConstant
+        epsilon2 pStageKappa) :
+    ∀ t k,
+      CMP116PResidualSummability
+        (R t k).DIndex
+        (R t k).PIndex
+        (pResidualWeight t k) := by
+  intro t k
+  exact
+    cmp116PResidualSummability_of_pStageSourceBound
+      (R t k).DIndex
+      (R t k).PIndex
+      (pResidualWeight t k)
+      (pStageBlockScale t k)
+      (pEntropyConstant t k)
+      (epsilon2 t k)
+      (pStageKappa t k)
+      (source.p_stage_source_bound t k)
+      (source.p_stage_smallness t k)
+
 /-- Weighted post-`P` source boundary for the CMP116 Lemma-3 scale route.
 
 This names the combined post-`P` source estimate for the Eq. (2.29)-weighted
