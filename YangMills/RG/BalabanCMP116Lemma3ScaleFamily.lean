@@ -1080,6 +1080,126 @@ theorem cmp116PostPResidualBoundScaleFamily_of_sourceBound
       (hmajorization t k)
       (hpWeight_nonneg t k)
 
+/-- Eq. (2.29) boundary for the weighted CMP116 post-`P` source package.
+
+This names the Eq. (2.29) summability field and the nonnegativity of `alpha6`
+needed to weight normalized P-residual sums. -/
+structure CMP116Lemma3Eq229ScaleBoundary
+    {σ ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    (hp : ∀ _ _, CMP116Lemma3Parameters)
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k))
+    (alpha6 : ℕ → ℕ → ℝ)
+    (eq229Metric : ∀ t k, σ t k → ιY t k → ℕ) :
+    Prop where
+
+  eq229_summability :
+    ∀ t k,
+      CMP116Eq229Summability
+        (R t k).DIndex
+        (DParts t k)
+        (alpha6 t k)
+        (hp t k).delta
+        (hp t k).kappa
+        (eq229Metric t k)
+
+  alpha6_nonneg :
+    ∀ t k, 0 ≤ alpha6 t k
+
+/-- P-stage source boundary for the weighted CMP116 post-`P` source package.
+
+This records the source-shaped P-stage estimate, its scalar smallness
+restriction, and pointwise nonnegativity of the normalized P-residual weight. -/
+structure CMP116Lemma3PStageSourceScaleBoundary
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (pResidualWeight :
+      ∀ t k, σ t k → ιD t k → ιP t k → ℝ)
+    (pStageBlockScale : ℕ → ℕ → ℕ)
+    (pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ) :
+    Prop where
+
+  p_stage_source_bound :
+    ∀ t k,
+      CMP116PStageSourceBound
+        (R t k).DIndex
+        (R t k).PIndex
+        (pResidualWeight t k)
+        (pStageBlockScale t k)
+        (pEntropyConstant t k)
+        (epsilon2 t k)
+        (pStageKappa t k)
+
+  p_stage_smallness :
+    ∀ t k,
+      2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+          pEntropyConstant t k * epsilon2 t k *
+            Real.exp (5 * pStageKappa t k) ≤ 1
+
+  p_residual_weight_nonneg :
+    ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P
+
+/-- Weighted post-`P` source boundary for the CMP116 Lemma-3 scale route.
+
+This names the combined post-`P` source estimate for the Eq. (2.29)-weighted
+P weights and the majorization by the canonical Lemma-3 base factor. -/
+structure CMP116Lemma3WeightedPostPSourceScaleBoundary
+    {σ ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    (hp : ∀ _ _, CMP116Lemma3Parameters)
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (sourceMetric : ∀ t k, σ t k → ℕ)
+    (DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k))
+    (alpha6 : ℕ → ℕ → ℝ)
+    (eq229Metric : ∀ t k, σ t k → ιY t k → ℕ)
+    (pResidualWeight :
+      ∀ t k, σ t k → ιD t k → ιP t k → ℝ)
+    (postPSourceWeight : ∀ t k, σ t k → ℝ)
+    (postPAmplitude : ℕ → ℕ → ℝ) :
+    Prop where
+
+  postP_source_bound :
+    ∀ t k,
+      CMP116PostPResidualSourceBound
+        (R t k)
+        (postPSourceWeight t k)
+        (postPAmplitude t k)
+        (cmp116Eq229WeightedPWeight
+          (DParts t k)
+          (alpha6 t k)
+          (hp t k).delta
+          (hp t k).kappa
+          (eq229Metric t k)
+          (pResidualWeight t k))
+
+  postP_majorization :
+    CMP116PostPResidualSourceMajorizationScaleFamily
+      sourceMetric
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa)
+      postPSourceWeight
+      postPAmplitude
+
 /-- Source-boundary package for the CMP116 Lemma-3 scale route that keeps the
 final `Z0/Z0'` resummation as one combined post-`P` residual estimate.
 
@@ -1375,6 +1495,64 @@ def activityTermwiseBoundary
     CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity where
   activity_identification := source.activity_identification
   termwise_estimate := source.termwise_estimate
+
+/-- Constructor for the weighted post-`P` source package from named
+source-boundary subpackages.
+
+This is only record assembly: Eq. (2.29), the P-stage source/smallness data,
+the weighted post-`P` source/majorization data, and the activity-termwise
+boundary are all supplied explicitly. -/
+def of_boundaries
+    {σ ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {sourceMetric : ∀ t k, σ t k → ℕ}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric : ∀ t k, σ t k → ιY t k → ℕ}
+    {pResidualWeight : ∀ t k, σ t k → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ}
+    {postPSourceWeight : ∀ t k, σ t k → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary
+        hp R DParts alpha6 eq229Metric)
+    (pStage :
+      CMP116Lemma3PStageSourceScaleBoundary
+        R pResidualWeight pStageBlockScale pEntropyConstant
+        epsilon2 pStageKappa)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary
+        hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude)
+    (activity :
+      CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity) :
+    CMP116Lemma3WeightedPostPScaleSourceAssumptions
+      hp R sourceMetric physicalActivity DParts alpha6 eq229Metric
+      pResidualWeight pStageBlockScale pEntropyConstant epsilon2
+      pStageKappa postPSourceWeight postPAmplitude where
+  eq229_summability := eq229.eq229_summability
+  p_stage_source_bound := pStage.p_stage_source_bound
+  p_stage_smallness := pStage.p_stage_smallness
+  alpha6_nonneg := eq229.alpha6_nonneg
+  p_residual_weight_nonneg := pStage.p_residual_weight_nonneg
+  postP_source_bound := postP.postP_source_bound
+  postP_majorization := postP.postP_majorization
+  activity_identification := activity.activity_identification
+  termwise_estimate := activity.termwise_estimate
 
 /-- The weighted post-`P` source package exposes normalized P-residual
 summability only after applying the explicit source scalar smallness field. -/

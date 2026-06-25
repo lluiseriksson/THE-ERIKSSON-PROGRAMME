@@ -1638,6 +1638,12 @@ The common activity/termwise boundary is now named separately as
 `CMP116Lemma3ActivityTermwiseScaleBoundary`; both post-`P` source packages
 project to it via `activityTermwiseBoundary`.  This is only factoring of the
 shared activity identification and termwise norm estimate obligations.
+The weighted post-`P` source package is also assembled from named boundary
+subpackages by
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_boundaries`: Eq. (2.29),
+P-stage source/smallness, weighted post-`P` source/majorization, and the common
+activity/termwise boundary remain separate explicit inputs.  The constructor is
+record assembly only and proves none of those source obligations.
 
 ## What Is Not Claimed
 

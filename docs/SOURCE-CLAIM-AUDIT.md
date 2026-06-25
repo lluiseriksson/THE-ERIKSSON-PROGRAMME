@@ -906,3 +906,12 @@ packaging only; they do not prove any of those source obligations.
 physical activity identification with `balabanCMP116H`, and the termwise norm
 estimate.  Its `activityTermwiseBoundary` projections from the post-`P` packages
 are audit handles, not proofs of those fields.
+
+`CMP116Lemma3Eq229ScaleBoundary`,
+`CMP116Lemma3PStageSourceScaleBoundary`, and
+`CMP116Lemma3WeightedPostPSourceScaleBoundary` split the weighted post-`P`
+package into source-neutral boundary records.  The constructor
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_boundaries` only copies
+fields from those records plus `CMP116Lemma3ActivityTermwiseScaleBoundary`; it
+does not prove Eq. (2.29), P-stage smallness, post-`P` source majorization, or
+activity identification.

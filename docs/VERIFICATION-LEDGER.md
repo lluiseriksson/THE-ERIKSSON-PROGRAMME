@@ -14455,3 +14455,39 @@ rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills
 **Honest scope.** This is boundary factoring only.  It proves no activity
 identification, no termwise estimate, no Eq. (2.29), no source resummation
 bound, and no CMP116 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 364 (2026-06-25, **CMP116 weighted source boundary assembly**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8362)
+
+This checkpoint names the boundary subpackages feeding the weighted post-`P`
+CMP116 Lemma-3 source route and adds the record constructor that assembles the
+existing package from them:
+
+```
+CMP116Lemma3Eq229ScaleBoundary
+CMP116Lemma3PStageSourceScaleBoundary
+CMP116Lemma3WeightedPostPSourceScaleBoundary
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_boundaries
+```
+
+The split keeps Eq. (2.29), P-stage source/smallness data, weighted post-`P`
+source/majorization data, and activity/termwise data as distinct obligations.
+The constructor copies fields into `CMP116Lemma3WeightedPostPScaleSourceAssumptions`.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-weighted-postp-source-boundaries.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is boundary packaging only.  It proves no Eq. (2.29), no
+source construction of normalized P-residual weights, no scalar smallness
+theorem, no post-`P` source estimate, no post-`P` majorization theorem, no
+activity identification, no termwise estimate, and no unconditional CMP116
+Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
