@@ -15658,3 +15658,44 @@ Honest scope: this is an access ledger and source request, not a proof of Eq.
 large-`K`/small-`alpha6` thresholds, and does not identify Cammarota polymers,
 Balaban `D` families, or repository `DIndex/DParts`.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 392 (2026-06-25, **citation CLI web-target display**
+`scripts/source_citations.py`, `docs/SOURCE-CITATIONS.md`, and
+`CURRENT-STATE.md`)
+
+This checkpoint makes the citation lookup system more directly usable for
+source-pending entries.  `python scripts\source_citations.py show <key>` now
+prints direct web targets from both source metadata and citation locators,
+deduplicated by URL.  For example:
+
+```
+python scripts\source_citations.py show cammarota.cmp85.polymer-mayer-source-target
+```
+
+now displays the Springer, Project Euclid, and author-uploaded OCR targets
+without requiring a worker to open the JSON catalog or repeat web search.
+
+No Lean theorem was added.  This is repository infrastructure for source
+access and auditability, designed to reduce repeated OCR/search work while
+keeping `source_pending` entries clearly non-theorem-fed.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_citations.py show cammarota.cmp85.polymer-mayer-source-target
+python scripts\source_citations.py find Cammarota -v
+python -m py_compile scripts\source_citations.py
+python scripts\source_citations.py check-local
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-citation-cli-weburls.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\VERIFICATION-LEDGER.md scripts\source_citations.py
+```
+
+Honest scope: this changes only citation CLI output and docs.  It does not
+retrieve the Cammarota PDF, extract Cammarota's theorem, prove Eq. (2.29), or
+alter any Lean theorem/hypothesis boundary.  Clay distance **~0% (<0.1%),
+unchanged**.

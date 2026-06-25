@@ -28,6 +28,9 @@ python scripts\source_citations.py show cammarota.cmp85.polymer-mayer-source-tar
 When a citation has already been visually extracted, `show` also prints compact
 `extracted claims` so future workers can start from the checked formula shape
 instead of re-reading the OCR window.
+When a citation or its source metadata contains `web_urls`, `show` prints those
+direct targets as well; this is intended for source-pending entries where the
+next step is access, not formula transcription.
 
 Search by text or Lean declaration:
 
@@ -98,6 +101,7 @@ and immediately see:
 
 * the printed/PDF page range;
 * rendered-page artifact hints;
+* direct web targets, when the catalog has them;
 * the relevant local OCR line range;
 * the Lean declarations that consume the source statement;
 * what remains unsafe to claim.

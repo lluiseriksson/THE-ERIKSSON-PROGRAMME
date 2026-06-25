@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 391.
+Addendum 392.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -15,7 +15,8 @@ The compact primary-source lookup system now lives in
 [`docs/SOURCE-CITATIONS.md`](docs/SOURCE-CITATIONS.md) and
 [`docs/source-citations/`](docs/source-citations/); use
 `python scripts/source_citations.py show <key>` before re-running OCR or
-opening broad source windows.
+opening broad source windows.  The `show` command also prints direct web
+targets for source-pending entries that carry them.
 
 ## Human Progress Dashboard
 

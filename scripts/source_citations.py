@@ -122,6 +122,16 @@ def render_artifacts(
     return result
 
 
+def url_items(value: Any) -> list[tuple[str, str]]:
+    if isinstance(value, str):
+        return [("", value)]
+    if isinstance(value, list):
+        return [("", str(item)) for item in value]
+    if isinstance(value, dict):
+        return [(str(name), str(url)) for name, url in value.items()]
+    return []
+
+
 def print_compact(citation: dict[str, Any], sources: dict[str, dict[str, Any]]) -> None:
     source = sources.get(citation["source_id"], {})
     locator = citation.get("locator", {})
@@ -133,6 +143,20 @@ def print_compact(citation: dict[str, Any], sources: dict[str, dict[str, Any]]) 
     print(f"  pdf pages: {locator.get('pdf_pages', '-')}")
     print(f"  local text: {locator.get('local_text', '-')}")
     print(f"  summary: {citation.get('summary', '-')}")
+    web_urls: list[tuple[str, str, str]] = []
+    for name, url in url_items(source.get("web_urls")):
+        web_urls.append(("source", name, url))
+    for name, url in url_items(locator.get("web_urls")):
+        web_urls.append(("locator", name, url))
+    if web_urls:
+        print("  web URLs:")
+        seen_urls: set[str] = set()
+        for scope, name, url in web_urls:
+            if url in seen_urls:
+                continue
+            seen_urls.add(url)
+            label = f"{scope}.{name}" if name else scope
+            print(f"    - {label}: {url}")
     extracted_claims = citation.get("extracted_claims", [])
     if extracted_claims:
         print("  extracted claims:")
