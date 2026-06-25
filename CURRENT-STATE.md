@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 379.
+Addendum 380.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1704,6 +1704,12 @@ The same route now feeds the existing physical raw-source record through
 separated Gaussian pushforward, root-localization, Wilson-Hessian, and local
 activity-construction hypotheses already used by the earlier raw-source
 adapter.
+The specialized adapter `rawSource_of_eq231_weightedPostPBoundaries` composes
+the Eq. (2.31)-specialized Lemma-3 consumer with that same raw-source route, so
+call sites with explicit Eq. (2.31) bond-boundary data no longer need to first
+construct the intermediate P-stage boundary.  It still carries all physical
+source facts, Eq. (2.31) data, scalar restrictions, post-`P` majorization,
+activity identification, and termwise estimates as explicit inputs.
 
 ## What Is Not Claimed
 

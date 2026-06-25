@@ -961,3 +961,13 @@ pre-existing `rawSource_of_lemma3ActivityEstimate` adapter.  It still requires
 the Gaussian pushforward, covariance-root localization, Wilson-Hessian
 identification, and local physical activity construction hypotheses explicitly.
 It is not evidence for any of those physical/source facts.
+
+`rawSource_of_eq231_weightedPostPBoundaries` is the matching raw-source adapter
+for the Eq. (2.31)-specialized route.  It composes
+`lemma3_activity_estimate_of_eq231_boundaries` with
+`rawSource_of_lemma3ActivityEstimate`, so the intermediate P-stage boundary
+record is no longer a call-site premise when Eq. (2.31) bond-boundary data are
+available.  It proves no Gaussian pushforward, covariance-root localization,
+Wilson-Hessian identification, local activity construction, P-family source
+construction, post-`P` majorization, activity identification, or termwise
+estimate.

@@ -15094,3 +15094,37 @@ construction of `PIndex`, no source identification of `pResidualWeight` or
 `pGeometryWeight`, no Eq. (2.29), no scalar hierarchy, no weighted post-`P`
 source estimate, no activity identification, no termwise complex estimate, and
 no Clay mass gap.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 380 (2026-06-25, **Eq. (2.31)-specialized weighted post-P raw
+source adapter** `YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8363)
+
+This checkpoint exposes the direct raw-source adapter
+
+```
+rawSource_of_eq231_weightedPostPBoundaries
+```
+
+It composes
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_boundaries`
+with `rawSource_of_lemma3ActivityEstimate`.  This removes the intermediate
+`CMP116Lemma3PStageSourceScaleBoundary` premise from raw-source construction
+when explicit Eq. (2.31) bond-boundary data are already available.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-rawsource-weighted-postp.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+Honest scope: this is a source-neutral adapter composition only.  It proves no
+Gaussian pushforward, covariance-root localization, Wilson-Hessian
+identification, local activity construction, Eq. (2.31) source construction,
+Eq. (2.29), scalar hierarchy, weighted post-`P` source estimate, activity
+identification, termwise estimate, or Clay mass gap.  Clay distance
+**~0% (<0.1%), unchanged**.
