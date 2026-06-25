@@ -14848,3 +14848,47 @@ It proves no Yang-Mills Hamiltonian construction, no model-specific excitation
 spectrum, no continuum measure, no OS/Wightman reconstruction, no CMP116
 activity estimate, and no Clay mass gap.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 374 (2026-06-25, **CMP116 P-stage pointwise/geometric constructor**
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages`; core 8362)
+
+This checkpoint adds the source-neutral constructor for the P-stage source
+bound:
+
+```
+cmp116PStageSourceBound_of_pointwise_geometric
+```
+
+For each fixed `(Z,D)`, a pointwise majorization of the P-residual weight by
+the extracted P-smallness factor times a geometric P-weight, together with the
+finite geometric P-family summation consequence, proves the existing predicate
+
+```
+CMP116PStageSourceBound
+```
+
+The theorem is intentionally not a restatement of `CMP116PStageSourceBound`:
+its premises split the P argument into a pointwise source-term bound and a
+separate finite geometric sum.  It also deliberately does not call the
+geometric summation premise equation (2.30) itself; it is the finite-sum
+consequence one obtains after extracting the source P-family geometry.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-pstage-pointwise-geometric-full.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+The new theorem oracle line is `[propext, Classical.choice, Quot.sound]`.
+Honest scope: this is finite P-stage resummation algebra inside the existing
+CMP116 source interface.  It proves no construction of `PIndex`, no source
+identification of `pResidualWeight` or `pGeometryWeight`, no scalar smallness
+hierarchy, no Eq. (2.29) source summability, no post-`P` estimate, no activity
+identification, no termwise complex estimate, and no Clay mass gap.  Clay
+distance **~0% (<0.1%), unchanged**.

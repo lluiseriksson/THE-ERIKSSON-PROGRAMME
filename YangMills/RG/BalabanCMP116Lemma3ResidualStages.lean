@@ -18,12 +18,13 @@ budget consumed by `cmp116H_termWeightSum_le_of_eq229`.  The module also exposes
 a direct combined post-`P` residual budget for source statements that do not
 faithfully split into separate normalized `Z0` and `Z0'` estimates.
 
-Honest scope: the P-stage source budget is now named and mapped to the
-normalized P residual predicate; the `Z0` source-shaped budget is named and
-mapped to its normalized residual predicate; the `Z0'` stage, the analytic
-constant hierarchy, and the model-specific identification of `H(Z)` remain
-unassigned.  This module only proves the finite residual resummation algebra
-needed before applying equation (2.29).
+Honest scope: the P-stage source budget is now named, has a
+pointwise/geometric finite-sum constructor, and is mapped to the normalized P
+residual predicate; the `Z0` source-shaped budget is named and mapped to its
+normalized residual predicate; the `Z0'` stage, the analytic constant
+hierarchy, and the model-specific identification of `H(Z)` remain unassigned.
+This module only proves the finite residual resummation algebra needed before
+applying equation (2.29).
 -/
 
 namespace YangMills.RG
@@ -142,6 +143,62 @@ def CMP116PStageSourceBound
     Finset.sum (PIndex Z D) (fun P => pWeight Z D P) ≤
       2 * (((blockScale : ℝ) + 2) ^ 4) *
         pEntropyConstant * epsilon2 * Real.exp (5 * kappa)
+
+/-- A pointwise P-term estimate plus the finite geometric P-family summation
+consequence of CMP116 equation (2.30) produces the exact source-shaped
+P-stage bound.
+
+The hypothesis `hgeometric` is deliberately stated as the finite-sum
+consequence used in the P-stage argument, not as equation (2.30) itself.  The
+source-specific construction of `PIndex`, `pWeight`, `pGeometryWeight`, and the
+scalar smallness restriction remain separate obligations. -/
+theorem cmp116PStageSourceBound_of_pointwise_geometric
+    {σ ιD ιP : Type*}
+    (DIndex : σ → Finset ιD)
+    (PIndex : σ → ιD → Finset ιP)
+    (pWeight pGeometryWeight : σ → ιD → ιP → ℝ)
+    (blockScale : ℕ)
+    (pEntropyConstant epsilon2 kappa : ℝ)
+    (hepsilon2_nonneg : 0 ≤ epsilon2)
+    (hpointwise :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ PIndex Z D →
+          pWeight Z D P ≤
+            (2 * (((blockScale : ℝ) + 2) ^ 4) * epsilon2) *
+              pGeometryWeight Z D P)
+    (hgeometric :
+      ∀ Z D, D ∈ DIndex Z →
+        Finset.sum (PIndex Z D)
+            (fun P => pGeometryWeight Z D P) ≤
+          pEntropyConstant * Real.exp (5 * kappa)) :
+    CMP116PStageSourceBound
+      DIndex PIndex pWeight
+      blockScale pEntropyConstant epsilon2 kappa := by
+  intro Z D hD
+  let A : ℝ :=
+    2 * (((blockScale : ℝ) + 2) ^ 4) * epsilon2
+  have hA_nonneg : 0 ≤ A := by
+    dsimp [A]
+    positivity
+  calc
+    Finset.sum (PIndex Z D) (fun P => pWeight Z D P)
+        ≤
+      Finset.sum (PIndex Z D) (fun P => A * pGeometryWeight Z D P) := by
+        exact
+          Finset.sum_le_sum fun P hP => by
+            simpa [A] using hpointwise Z D hD P hP
+    _ =
+      A * Finset.sum (PIndex Z D)
+        (fun P => pGeometryWeight Z D P) := by
+          simp [Finset.mul_sum]
+    _ ≤
+      A * (pEntropyConstant * Real.exp (5 * kappa)) := by
+        exact mul_le_mul_of_nonneg_left (hgeometric Z D hD) hA_nonneg
+    _ =
+      2 * (((blockScale : ℝ) + 2) ^ 4) *
+        pEntropyConstant * epsilon2 * Real.exp (5 * kappa) := by
+          dsimp [A]
+          ring
 
 /-- The CMP116 P-stage source estimate, together with its explicit scalar
 smallness restriction, implies the source-neutral normalized P-stage predicate

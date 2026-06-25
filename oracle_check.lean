@@ -1421,6 +1421,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116PStageSummabilityScaleFamily_of_pResidualSummability_weighted
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_weightedPResidualPostPResidualBound
 #print axioms YangMills.RG.CMP116PStageSourceBound
+#print axioms YangMills.RG.cmp116PStageSourceBound_of_pointwise_geometric
 #print axioms YangMills.RG.cmp116PResidualSummability_of_pStageSourceBound
 #print axioms YangMills.RG.CMP116Z0ResidualSummability
 #print axioms YangMills.RG.CMP116Z0StageSourceBound
