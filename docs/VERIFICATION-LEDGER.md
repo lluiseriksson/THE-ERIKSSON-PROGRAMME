@@ -14965,3 +14965,42 @@ source boundary and scalar smallness.  It proves no source construction of
 no scalar-smallness hierarchy, no Eq. (2.29), no post-`P` estimate, no activity
 identification, no termwise complex estimate, and no Clay mass gap.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 377 (2026-06-25, **post-P boundary residual consumer**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8362)
+
+This checkpoint exposes the canonical post-`P` residual bound directly from
+the weighted post-`P` source boundary plus the two nonnegativity-carrying
+boundaries:
+
+```
+CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_residual_bound
+```
+
+The accessor applies `cmp116PostPResidualBoundScaleFamily_of_sourceBound` to
+the boundary's `postP_source_bound` and `postP_majorization` fields.  The
+nonnegativity of the Eq. (2.29)-weighted P weight is derived explicitly from
+`CMP116Lemma3Eq229ScaleBoundary.alpha6_nonneg` and
+`CMP116Lemma3PStageSourceScaleBoundary.p_residual_weight_nonneg`.  This lets
+downstream consumers use the post-`P` boundary without first assembling the
+larger weighted post-`P` scale-source package.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-postp-boundary-residual-consumer.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+The new accessor oracle line is `[propext, Classical.choice, Quot.sound]`.
+Honest scope: this is a source-neutral consumer of already supplied Eq. (2.29),
+P-stage, and post-`P` source boundaries.  It proves no source construction of
+the `D/P/Z0/Z0'` families, no scalar-smallness hierarchy, no Eq. (2.29), no
+combined post-`P` source estimate, no activity identification, no termwise
+complex estimate, and no Clay mass gap.  Clay distance
+**~0% (<0.1%), unchanged**.

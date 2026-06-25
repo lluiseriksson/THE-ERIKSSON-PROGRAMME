@@ -1303,6 +1303,91 @@ structure CMP116Lemma3WeightedPostPSourceScaleBoundary
       postPSourceWeight
       postPAmplitude
 
+/-- The weighted post-`P` source boundary exposes the canonical post-`P`
+residual bound once the Eq. (2.29) and P-stage boundaries supply weighted
+P-weight nonnegativity.
+
+This avoids assembling the larger weighted post-`P` source package when a
+downstream proof only needs the post-`P` residual consumer. -/
+def CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_residual_bound
+    {σ ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {sourceMetric : ∀ t k, σ t k → ℕ}
+    {DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric : ∀ t k, σ t k → ιY t k → ℕ}
+    {pResidualWeight :
+      ∀ t k, σ t k → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ}
+    {postPSourceWeight : ∀ t k, σ t k → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary
+        hp R DParts alpha6 eq229Metric)
+    (pStage :
+      CMP116Lemma3PStageSourceScaleBoundary
+        R pResidualWeight pStageBlockScale pEntropyConstant
+        epsilon2 pStageKappa)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary
+        hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude) :
+    ∀ t k,
+      CMP116PostPResidualBound
+        (hp t k)
+        (R t k)
+        (sourceMetric t k)
+        (cmp116Eq229WeightedPWeight
+          (DParts t k)
+          (alpha6 t k)
+          (hp t k).delta
+          (hp t k).kappa
+          (eq229Metric t k)
+          (pResidualWeight t k)) := by
+  have hweighted_nonneg :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          0 ≤
+            cmp116Eq229WeightedPWeight
+              (DParts t k)
+              (alpha6 t k)
+              (hp t k).delta
+              (hp t k).kappa
+              (eq229Metric t k)
+              (pResidualWeight t k)
+              Z D P := by
+    intro t k Z D _ P _
+    exact
+      cmp116Eq229WeightedPWeight_nonneg
+        (DParts := DParts t k)
+        (metric := eq229Metric t k)
+        (pResidualWeight := pResidualWeight t k)
+        (eq229.alpha6_nonneg t k)
+        (pStage.p_residual_weight_nonneg t k)
+        Z D P
+  exact
+    cmp116PostPResidualBoundScaleFamily_of_sourceBound
+      hp R sourceMetric postPSourceWeight postPAmplitude
+      (fun t k =>
+        cmp116Eq229WeightedPWeight
+          (DParts t k)
+          (alpha6 t k)
+          (hp t k).delta
+          (hp t k).kappa
+          (eq229Metric t k)
+          (pResidualWeight t k))
+      postP.postP_source_bound
+      postP.postP_majorization
+      hweighted_nonneg
+
 /-- Source-boundary package for the CMP116 Lemma-3 scale route that keeps the
 final `Z0/Z0'` resummation as one combined post-`P` residual estimate.
 

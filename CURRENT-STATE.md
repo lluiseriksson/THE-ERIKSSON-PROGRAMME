@@ -1654,6 +1654,11 @@ The source-boundary version is now packaged as
 explicit P-stage source bound plus scalar smallness, and derives the post-`P`
 consumer only from the combined source estimate plus majorization and weighted
 P-weight nonnegativity.
+The weighted post-`P` boundary itself now exposes the smaller consumer
+`CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_residual_bound` when paired
+with the Eq. (2.29) and P-stage boundaries; this derives the canonical
+post-`P` residual bound without first assembling the larger weighted source
+package.
 The common activity/termwise boundary is now named separately as
 `CMP116Lemma3ActivityTermwiseScaleBoundary`; both post-`P` source packages
 project to it via `activityTermwiseBoundary`.  This is only factoring of the
