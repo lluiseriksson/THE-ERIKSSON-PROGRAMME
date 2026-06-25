@@ -2161,6 +2161,114 @@ def of_eq231_boundaries
     postP
     activity
 
+/-- Constructor for the weighted post-`P` source package from Eq. (2.29), the
+filtered-powerset Eq. (2.31) P-family route, the weighted post-`P` boundary,
+and the activity/termwise boundary.
+
+Compared with `of_eq231_boundaries`, this route removes the abstract
+`CMP116Eq231PBondBoundary` input and the per-`P` carrier-containment premise.
+It still requires the source dictionary stating that `R.PIndex` is the filtered
+source family `cmp116Eq231SourcePIndex gapCubes admissible`. -/
+def of_eq231_filteredBondSets
+    {σ ιD ιZ0 ιZ0' ιY Cube : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (Finset (Cube t k × Fin 4))]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    [∀ t k, DecidableEq (Cube t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (Finset (Cube t k × Fin 4))
+          (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {sourceMetric : ∀ t k, σ t k → ℕ}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric : ∀ t k, σ t k → ιY t k → ℕ}
+    {pResidualWeight pGeometryWeight :
+      ∀ t k, σ t k → ιD t k → Finset (Cube t k × Fin 4) → ℝ}
+    {gapCubes : ∀ t k, σ t k → ιD t k → Finset (Cube t k)}
+    {admissible :
+      ∀ t k, σ t k → ιD t k → Finset (Cube t k × Fin 4) → Bool}
+    {pStageBlockScale eq231LocalizationScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa gamma2 gk : ℕ → ℕ → ℝ}
+    {postPSourceWeight : ∀ t k, σ t k → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary
+        hp R DParts alpha6 eq229Metric)
+    (hlocalizationScale :
+      ∀ t k, 0 < eq231LocalizationScale t k)
+    (hepsilon2_nonneg : ∀ t k, 0 ≤ epsilon2 t k)
+    (hPIndex :
+      ∀ t k Z D,
+        (R t k).PIndex Z D =
+          cmp116Eq231SourcePIndex
+            (gapCubes t k) (admissible t k) Z D)
+    (hpointwise :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pResidualWeight t k Z D P ≤
+            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+                epsilon2 t k) *
+              pGeometryWeight t k Z D P)
+    (hsourceBracket :
+      ∀ t k,
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp
+              (-(gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                  (10 * (gk t k) ^ 2))) ≤
+          gamma2 t k * (hp t k).epsilon1 ^ 2 /
+            (20 * (gk t k) ^ 2))
+    (hgeometry :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pGeometryWeight t k Z D P ≤
+            cmp116Eq231PWeight
+              (gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                (20 * (gk t k) ^ 2))
+              (fun Z D =>
+                ((gapCubes t k Z D).card : ℝ) /
+                  ((eq231LocalizationScale t k : ℝ) ^ 4))
+              (fun _ _ P => P) Z D P)
+    (htarget :
+      ∀ t k,
+        1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
+    (hsmall :
+      ∀ t k,
+        2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+            pEntropyConstant t k * epsilon2 t k *
+              Real.exp (5 * pStageKappa t k) ≤ 1)
+    (hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary
+        hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude)
+    (activity :
+      CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity) :
+    CMP116Lemma3WeightedPostPScaleSourceAssumptions
+      hp R sourceMetric physicalActivity DParts alpha6 eq229Metric
+      pResidualWeight pStageBlockScale pEntropyConstant epsilon2
+      pStageKappa postPSourceWeight postPAmplitude :=
+  of_boundaries
+    eq229
+    (CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets
+      R pResidualWeight pGeometryWeight gapCubes admissible
+      pStageBlockScale eq231LocalizationScale
+      pEntropyConstant epsilon2 pStageKappa
+      gamma2 (fun t k => (hp t k).epsilon1) gk
+      hlocalizationScale hepsilon2_nonneg hPIndex hpointwise
+      hsourceBracket hgeometry htarget hsmall hpResidual_nonneg)
+    postP
+    activity
+
 /-- The weighted post-`P` source package exposes normalized P-residual
 summability only after applying the explicit source scalar smallness field. -/
 def p_residual_summability
@@ -2596,6 +2704,112 @@ def lemma3_activity_estimate_of_eq231_boundaries
       hsmall hpResidual_nonneg)
     postP
     activity
+
+/-- Direct CMP116 Lemma-3 scale-family consumer from Eq. (2.29), the
+filtered-powerset Eq. (2.31) P-family route, the weighted post-`P` boundary,
+and the activity/termwise boundary.
+
+This is the filtered-P counterpart of
+`lemma3_activity_estimate_of_eq231_boundaries`: it removes the abstract
+Eq. (2.31) bond-boundary input once `R.PIndex` is explicitly identified with
+`cmp116Eq231SourcePIndex gapCubes admissible`. -/
+def lemma3_activity_estimate_of_eq231_filteredBondSets
+    {σ ιD ιZ0 ιZ0' ιY Cube : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (Finset (Cube t k × Fin 4))]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    [∀ t k, DecidableEq (Cube t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (Finset (Cube t k × Fin 4))
+          (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {sourceMetric : ∀ t k, σ t k → ℕ}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric : ∀ t k, σ t k → ιY t k → ℕ}
+    {pResidualWeight pGeometryWeight :
+      ∀ t k, σ t k → ιD t k → Finset (Cube t k × Fin 4) → ℝ}
+    {gapCubes : ∀ t k, σ t k → ιD t k → Finset (Cube t k)}
+    {admissible :
+      ∀ t k, σ t k → ιD t k → Finset (Cube t k × Fin 4) → Bool}
+    {pStageBlockScale eq231LocalizationScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa gamma2 gk : ℕ → ℕ → ℝ}
+    {postPSourceWeight : ∀ t k, σ t k → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary
+        hp R DParts alpha6 eq229Metric)
+    (hlocalizationScale :
+      ∀ t k, 0 < eq231LocalizationScale t k)
+    (hepsilon2_nonneg : ∀ t k, 0 ≤ epsilon2 t k)
+    (hPIndex :
+      ∀ t k Z D,
+        (R t k).PIndex Z D =
+          cmp116Eq231SourcePIndex
+            (gapCubes t k) (admissible t k) Z D)
+    (hpointwise :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pResidualWeight t k Z D P ≤
+            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+                epsilon2 t k) *
+              pGeometryWeight t k Z D P)
+    (hsourceBracket :
+      ∀ t k,
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp
+              (-(gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                  (10 * (gk t k) ^ 2))) ≤
+          gamma2 t k * (hp t k).epsilon1 ^ 2 /
+            (20 * (gk t k) ^ 2))
+    (hgeometry :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pGeometryWeight t k Z D P ≤
+            cmp116Eq231PWeight
+              (gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                (20 * (gk t k) ^ 2))
+              (fun Z D =>
+                ((gapCubes t k Z D).card : ℝ) /
+                  ((eq231LocalizationScale t k : ℝ) ^ 4))
+              (fun _ _ P => P) Z D P)
+    (htarget :
+      ∀ t k,
+        1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
+    (hsmall :
+      ∀ t k,
+        2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+            pEntropyConstant t k * epsilon2 t k *
+              Real.exp (5 * pStageKappa t k) ≤ 1)
+    (hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary
+        hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude)
+    (activity :
+      CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity) :
+    CMP116Lemma3ActivityEstimateScaleFamily
+      physicalActivity
+      sourceMetric
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa) :=
+  lemma3_activity_estimate
+    (of_eq231_filteredBondSets
+      eq229 hlocalizationScale hepsilon2_nonneg hPIndex hpointwise
+      hsourceBracket hgeometry htarget hsmall hpResidual_nonneg
+      postP activity)
 
 end CMP116Lemma3WeightedPostPScaleSourceAssumptions
 

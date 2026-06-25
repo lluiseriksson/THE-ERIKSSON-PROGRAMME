@@ -16024,3 +16024,51 @@ that already present `PIndex` as the filtered powerset carrier.  It is not a
 source proof of that presentation, not Eq. (2.29), not the pointwise P residual
 estimate, not post-`P`, and not a continuum/Clay result.  Clay distance
 **~0% (<0.1%)**, unchanged.
+
+## Addendum 399 (2026-06-25, **Eq. (2.31) filtered P-family downstream consumers**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Lemma3ScaleFamily.lean`, `oracle_check.lean`,
+`docs/source-citations/cmp116-lemma3.json`, `docs/SOURCE-CITATIONS.md`,
+`docs/SOURCE-CLAIM-AUDIT.md`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint propagates the already verified filtered-powerset Eq. (2.31)
+route from the P-stage scale boundary into the weighted post-`P` source package
+and direct Lemma-3 estimate consumers:
+
+- `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets`
+  composes Eq. (2.29), the filtered Eq. (2.31) P-stage route, the weighted
+  post-`P` boundary, and the activity/termwise boundary.
+- `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_filteredBondSets`
+  is the direct Lemma-3 scale-family estimate consumer for the same route.
+- Both constructors remove the abstract `CMP116Eq231PBondBoundary` input from
+  this downstream package when `R.PIndex` is identified with
+  `cmp116Eq231SourcePIndex gapCubes admissible`.
+
+Source audit during this checkpoint re-read CMP116 printed pages 18-19.  The
+visible material confirms that `P` is a finite bond set and records the lower
+bound `|P| >= (1/2)*M^-4*|Z0 \ Y0|`, but it does not yet provide the precise
+eligible oriented-bond carrier theorem, orientation convention, or carrier
+upper bound needed to prove the full roadmap item A source dictionary.  A
+runtime source request records that gap.
+
+Verification commands for this checkpoint:
+
+```
+lake build +YangMills.RG.BalabanCMP116Lemma3ScaleFamily:olean
+python scripts\source_citations.py validate
+python scripts\source_citations.py lean CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets
+python scripts\source_citations.py lean CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_filteredBondSets
+python scripts\source_citations.py blockers
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-filtered-package.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+```
+
+Honest scope: this is a downstream formal-composition improvement.  It does
+not prove the source-native filtered `PIndex` dictionary, the pointwise
+P-residual estimate, Eq. (2.29), Eq. (2.37), or any continuum/Clay result.
+Clay distance **~0% (<0.1%)**, unchanged.

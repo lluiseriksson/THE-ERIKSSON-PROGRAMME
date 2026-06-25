@@ -344,6 +344,8 @@
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourceBondSets",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_filteredBondSets",
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],
       "use_for": [

@@ -1836,6 +1836,14 @@ still does not identify Balaban's source `P` family with that filtered Lean
 presentation; the equality of `PIndex` with the filtered powerset remains the
 source-facing dictionary obligation.
 
+The same filtered route is now exposed at the weighted post-`P` source package
+and direct Lemma-3 estimate consumers through
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets` and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_filteredBondSets`.
+These constructors remove the abstract Eq. (2.31) bond-boundary input from
+that downstream package once the filtered `PIndex` dictionary is supplied; they
+do not discharge the dictionary itself.
+
 ### Eq. (2.37) Post-P Majorization Route (2026-06-25)
 
 The post-`P` majorization lane now has a source-shaped Eq. (2.37) boundary:

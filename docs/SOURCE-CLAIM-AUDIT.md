@@ -1009,6 +1009,13 @@ just powerset membership.  It does not prove that Balaban's source `P` family is
 that filtered Lean family; the `PIndex` equality is still the source dictionary
 to be supplied by a later theorem.
 
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets` and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_filteredBondSets`
+propagate the same filtered route to the weighted post-`P` source package and
+direct Lemma-3 estimate consumers.  They remove the abstract Eq. (2.31)
+bond-boundary input at that downstream level, but only after the filtered
+`PIndex` dictionary has already been supplied.
+
 `rawSource_of_weightedPostPBoundaries` composes that direct consumer with the
 pre-existing `rawSource_of_lemma3ActivityEstimate` adapter.  It still requires
 the Gaussian pushforward, covariance-root localization, Wilson-Hessian
