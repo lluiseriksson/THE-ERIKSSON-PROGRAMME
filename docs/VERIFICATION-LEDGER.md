@@ -15511,3 +15511,55 @@ estimate, activity identification, termwise estimate, Gaussian pushforward,
 covariance-root localization, Wilson-Hessian identification, H# identity,
 RG-flow bound, IR bound, or Clay mass gap.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 389 (2026-06-25, **CMP116 Eq. (2.29) visual extraction**
+`docs/source-citations`, `docs/BALABAN-SOURCE-BOUNDS.md`,
+`docs/SOURCE-CLAIM-AUDIT.md`, and `CURRENT-STATE.md`)
+
+This checkpoint records a visual inspection of CMP116 printed/PDF page 18 for
+the D-stage summability region.  The citation key
+`cmp116.eq229.d-stage-summability` is now `visual_confirmed` and records:
+
+```
+Eq. (2.27):
+  sum_{Y in D} (d_k(Y) + 5) >= d_k(Y0) + 5
+
+Eq. (2.29):
+  sum_D prod_{Y in D} alpha6 * exp(-delta*kappa*d_k(Y)) <= 1
+
+Eq. (2.30):
+  (3*2^3)^-1 * M^-4 * |Y| <= d_k(Y) <= M^-4 * |Y| - 1
+```
+
+The page also records the extraction of
+`alpha6 * exp(-delta*kappa*d_k(Y))` from each factor in the product over
+`Y in D`, the product reduction (2.28), and the qualitative source condition:
+for `K` sufficiently large and `alpha6` sufficiently small, Eq. (2.29) holds.
+
+No Lean theorem was added in this checkpoint.  The purpose is source
+auditability: the exact display is now available through
+
+```
+python scripts\source_citations.py show cmp116.eq229.d-stage-summability
+```
+
+without reopening the OCR window.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_citations.py show cmp116.eq229.d-stage-summability
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md README.md docs\BALABAN-SOURCE-BOUNDS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json
+```
+
+Honest scope: this extraction does not prove Eq. (2.29) in Lean, does not
+formalize the cited combinatorial proof from [26], does not determine uniform
+threshold dependencies for `K` and `alpha6`, and does not identify the
+repository's `DIndex`, `DParts`, or `eq229Metric` with Balaban's source
+families.  It only removes OCR ambiguity around the displayed D-stage product
+summability statement and adjacent metric inequalities.  Clay distance **~0%
+(<0.1%), unchanged**.

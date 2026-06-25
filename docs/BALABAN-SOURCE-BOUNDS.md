@@ -150,6 +150,16 @@ Support/locality extraction pass (2026-06-20):
   `(LM)^4 alpha_0`, `(LM)^4 alpha_1`, `(LM)^4 alpha_4`, `(LM)^4 gamma_2`.
   These are source restrictions for the activity-decay constant, not yet a
   formal Lean parameter hierarchy.
+* CMP 116 (1988), PDF/printed page 18, eqs. (2.27)--(2.30), is now visually
+  extracted in the citation catalog under `cmp116.eq229.d-stage-summability`.
+  The exact Eq. (2.29) display is
+  `sum_D prod_{Y in D} alpha_6 exp(-delta kappa d_k(Y)) <= 1`, stated for
+  `K` sufficiently large and `alpha_6` sufficiently small.  The surrounding
+  page also records `sum_{Y in D}(d_k(Y)+5) >= d_k(Y0)+5`, the product
+  reduction (2.28), and
+  `(3*2^3)^-1 M^-4 |Y| <= d_k(Y) <= M^-4 |Y| - 1` for localization domains
+  `Y in D_k`.  The source-to-Lean dictionary for the `D` families and the
+  uniform threshold proof for "sufficiently small" remain open.
 * CMP 119 (1988), split PDF pages 15-17 / printed pages 257-259, gives the
   localized density decomposition.  Large-field operations factor over
   connected large-field regions, the effective action is decomposed into

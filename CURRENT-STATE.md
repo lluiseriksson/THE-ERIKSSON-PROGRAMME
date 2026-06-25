@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 388.
+Addendum 389.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1103,6 +1103,14 @@ does not prove the small-`α₆`/large-`K` source assertion or any final Lemma 3
 residual post-D budget.  It now also proves
 `cmp116Eq229Product` and `cmp116Eq229Product_nonneg`, naming the fixed-`D`
 product from Eq. (2.29) and its nonnegativity under `0 <= alpha6`.
+The citation key `cmp116.eq229.d-stage-summability` is now visually confirmed
+from CMP116 printed page 18.  The extracted page records the surrounding
+Eq. (2.27) metric inequality, the Eq. (2.28) product reduction, the exact
+Eq. (2.29) product-sum display, and the Eq. (2.30) localization-domain metric
+comparison.  The proof of the qualitative "K sufficiently large and alpha6
+sufficiently small" summability assertion, including uniform threshold
+dependencies and the source-to-Lean dictionary for `DIndex/DParts`, remains
+open.
 The residual-stage layer then defines `cmp116Eq229WeightedPWeight` and proves
 `cmp116PStageSummability_of_pResidualSummability_weighted`: a normalized
 P-residual sum, multiplied by the Eq. (2.29) product, yields exactly the

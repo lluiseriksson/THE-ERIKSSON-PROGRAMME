@@ -138,22 +138,33 @@
         "local_text": "cmp116-pages-15-20.txt lines 181-191",
         "renders": ["render_source_18"]
       },
-      "status": "ocr_corrupted",
-      "summary": "D-stage summability after the product estimate following (2.28); source says it holds for large K and small alpha6.",
+      "status": "visual_confirmed",
+      "summary": "Visually confirmed D-stage summability after the product estimate following (2.28): for K sufficiently large and alpha6 sufficiently small, the D-family product sum is at most one.",
+      "extracted_claims": [
+        "Before Eq. (2.27), Balaban fixes one connected component Y0 and considers the product over Y in D in Eq. (2.26), extracting alpha6 * exp(-delta * kappa * d_k(Y)) from each factor.",
+        "Eq. (2.27) states sum_{Y in D} (d_k(Y) + 5) >= d_k(Y0) + 5, using that union_{Y in D} Y = Y0 and Y0 is connected.",
+        "Under the displayed smallness condition 2*E0*epsilon1*C1*alpha4^-1*alpha6^-1*M^q*exp(C2*kappa1)*exp(5*kappa) <= 1, Eq. (2.28) bounds the product from Eq. (2.26) by the Eq. (2.29) product times the remaining Y0 exponential prefactor.",
+        "Eq. (2.29) states sum_D product_{Y in D} alpha6 * exp(-delta * kappa * d_k(Y)) <= 1 for K sufficiently large and alpha6 sufficiently small.",
+        "Eq. (2.30) records the domain metric comparison (3*2^3)^-1 * M^-4 * |Y| <= d_k(Y) <= M^-4 * |Y| - 1 for localization domains Y in D_k."
+      ],
       "lean_targets": [
         "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability",
+        "cmp116Eq229Product",
         "cmp116H_postD_sum_le_of_eq229",
         "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
       ],
       "use_for": [
-        "Locate the source statement for the D-stage boundary."
+        "Source anchor for the Eq. (2.29) D-family product, the product-sum bound, and the adjacent Eq. (2.27)/(2.30) metric comparisons."
       ],
       "do_not_use_for": [
-        "Do not infer the quantifiers or alpha6 dependence from OCR."
+        "Do not treat the qualitative phrase 'K sufficiently large and alpha6 sufficiently small' as a formal uniform threshold without extracting or proving the cited combinatorial argument.",
+        "Do not identify the repository's DIndex/DParts with Balaban's D-families until the source-to-Lean dictionary is supplied."
       ],
       "open_questions": [
-        "Full display and quantifiers over Y0, D, and Y in D.",
-        "Precise roles of alpha6, delta, kappa, K, and d_k."
+        "Exact source-to-Lean dictionary for DIndex, DParts, and the localization-domain metric d_k.",
+        "Formal proof or source theorem for the large-K/small-alpha6 summability assertion, including threshold dependencies and uniformity over scale, volume, and background.",
+        "Exact role of the cited argument in [26] used to prove inequalities of this type."
       ]
     },
     {

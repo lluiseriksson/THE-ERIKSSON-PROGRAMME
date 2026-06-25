@@ -130,6 +130,8 @@ source-boundary routes:
   optional sufficient reducer.
 * visual extraction of the CMP116 Eq. (2.31) P-summation display into the
   repository citation catalog.
+* visual extraction of the CMP116 Eq. (2.29) D-family product-summability
+  display and adjacent metric inequalities into the citation catalog.
 
 The practical effect is cleaner wiring from future source theorems into the
 existing UV consumer.  The remaining work is still the real source-grounded

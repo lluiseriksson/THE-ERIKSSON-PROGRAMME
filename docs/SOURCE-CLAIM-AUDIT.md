@@ -419,7 +419,7 @@ Lean support interfaces.
 | PDF / printed pages | PDF pages 15--20, printed pages 15--20 |
 | Exact range | equations (2.14)--(2.38), especially the resummations using (2.27), (2.29)--(2.32), (2.34), (2.36), (2.37), and Lemma 3 / (2.38) |
 | Estimate structure | A typical term is written in (2.14), bounded in (2.26), then resummed over `D`, `P`, `Z0`, and `Z0'`.  The proof extracts small factors such as `alpha_6 exp(-delta kappa d_k(Y))`, uses the summability input (2.29), geometric inequalities (2.27), (2.30), (2.32), and the scale-transfer inequality (2.36), and ends with Lemma 3's bound for `H(Z)` |
-| Equation (2.29) Lean status | `YangMills.RG.BalabanCMP116Eq229` records the product-summability shape `sum_D prod_{Y in D} alpha_6 exp(-delta*kappa*d_k(Y)) <= 1` from PDF/printed page 18, proves the local D-stage consumer `cmp116_DStage_sum_le_of_eq229`, proves `cmp116H_termWeightSum_le_of_eq229`, which converts a residual post-D `P/Z0/Z0'` bound plus (2.29) into the finite Lemma-3 `hbudget` shape, exposes `cmp116Lemma3ActivityEstimate_of_eq229_postD` as the corresponding theorem-fed activity-estimate consumer, and has a pointwise scale-family lift `cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_postD`; it does not prove Balaban's large-`K`, small-`alpha_6` assertion or the residual post-D estimates |
+| Equation (2.29) Lean status | `YangMills.RG.BalabanCMP116Eq229` records the product-summability shape `sum_D prod_{Y in D} alpha_6 exp(-delta*kappa*d_k(Y)) <= 1` from visually confirmed PDF/printed page 18, proves the local D-stage consumer `cmp116_DStage_sum_le_of_eq229`, proves `cmp116H_termWeightSum_le_of_eq229`, which converts a residual post-D `P/Z0/Z0'` bound plus (2.29) into the finite Lemma-3 `hbudget` shape, exposes `cmp116Lemma3ActivityEstimate_of_eq229_postD` as the corresponding theorem-fed activity-estimate consumer, and has a pointwise scale-family lift `cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_postD`; it does not prove Balaban's large-`K`, small-`alpha_6` assertion, threshold uniformity, the source-to-Lean `DIndex/DParts` dictionary, or the residual post-D estimates |
 | Lean-facing verdict | This source range supports the `raw_pointwise_decay` / `local_physical_activity_construction` side of the CMP116 source package more directly than it supports an exact finite `localizedRootLinearMapFinsetSum` reconstruction theorem.  A finite Lean root-piece sum should therefore be treated as a truncation or auxiliary approximation unless an additional source theorem proves exact activity-support equality |
 | Remaining unproved bridge | Extract the exact constant hierarchy (`epsilon_2`, `C_3`, smallness of `(L+2)^4 O(1) epsilon_2`, `2 (L+2)^4 O(1) epsilon_2 exp(5 kappa) <= 1`, `(kappa_1 - 1)/2 >= 2 L kappa`, and boundedness assumptions for `(LM)^4 alpha_i`/`gamma_i`) and map Lemma 3's `H(Z)` to the repository's `PhysicalGaugeLocalActivity.globalEval` plus support fields |
 
@@ -657,6 +657,15 @@ comparison around the P-stage argument; the literal P-family summation is
 equation (2.31).  A future source extraction must still supply the normalized
 `P`, `Z0`, and `Z0'` residual estimates and the pointwise term-weight
 factorization from the primary text.
+
+The local citation key `cmp116.eq229.d-stage-summability` is now visually
+confirmed from CMP116 printed page 18.  It records the exact Eq. (2.29)
+product-sum display, the adjacent extraction of
+`alpha6 * exp(-delta*kappa*d_k(Y))` from the product over `Y in D`, the Eq.
+(2.27) and Eq. (2.30) metric comparisons, and the Eq. (2.28) product reduction
+under its displayed smallness condition.  This improves source auditability but
+does not by itself prove the large-`K`/small-`alpha6` summability assertion
+cited in the text.
 
 The P stage now has the source-shaped predicate
 `CMP116PStageSourceBound` and adapter
