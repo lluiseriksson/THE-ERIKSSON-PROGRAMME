@@ -1851,6 +1851,13 @@ smallest localization domain containing `Y0` and `P`, and bonds of `P` must lie
 in the interior of `Z0`, but it still does not supply the source-to-Lean
 positive-orientation encoding, pointwise membership iff, or carrier-count
 theorem.
+The companion citation key `cmp109.bond-convention.positive-oriented` records
+CMP109 local text windows for the general bond convention: subsets determine
+nearest-neighbor bonds, bonds have endpoints `(b_-, b_+)`, and later formulas
+state that the displayed bonds are positively oriented.  This is only a
+source-navigation aid for the Eq. (2.31) carrier task; it still does not prove
+that Balaban's `P` family is the filtered Lean family
+`cmp116Eq231SourcePIndex gapCubes admissible`.
 
 The same filtered route is now exposed at the weighted post-`P` source package
 and direct Lemma-3 estimate consumers through

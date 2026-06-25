@@ -29,6 +29,7 @@ Show one citation:
 ```powershell
 python scripts\source_citations.py show cmp116.eq231.p-bond-sum
 python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_citations.py show cmp109.bond-convention.positive-oriented
 python scripts\source_citations.py show cmp109.ref26.cammarota-infinite-range-cluster
 python scripts\source_citations.py show cammarota.cmp85.polymer-mayer-source-target
 python scripts\source_citations.py show cmp116.eq237.post-p-resummation
@@ -47,6 +48,7 @@ Print the exact local OCR/text lines referenced by a citation:
 ```powershell
 python scripts\source_citations.py excerpt cmp116.eq231.p-family-carrier-source-target
 python scripts\source_citations.py excerpt cmp116.eq231.p-family-carrier-source-target -C 3
+python scripts\source_citations.py excerpt cmp109.bond-convention.positive-oriented -C 1
 ```
 
 The `excerpt` command reads only catalog-registered local artifacts and the
@@ -122,6 +124,10 @@ The helper `cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff` narrows the
 remaining dictionary task to a pointwise membership iff, but that iff must
 still come from a primary source passage defining the eligible bonds and
 admissibility of Balaban's `P` family.
+The companion key `cmp109.bond-convention.positive-oriented` records the
+nearest-neighbor bond/endpoints/positive-orientation windows in CMP109.  Use it
+as a source-navigation aid for the Eq. (2.31) carrier task, not as a proof that
+CMP116's `P` family is the filtered `Cube x Fin 4` Lean family.
 The keys `cmp116.eq237.post-p-resummation` and
 `cmp116.constants.c3-alpha5` record the visually confirmed page-20 source
 data for the combined post-`P` boundary, the alpha5/C3 region, and Lemma 3's

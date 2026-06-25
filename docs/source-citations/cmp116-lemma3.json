@@ -376,6 +376,51 @@
       ]
     },
     {
+      "key": "cmp109.bond-convention.positive-oriented",
+      "source_id": "cmp109",
+      "locator": {
+        "printed_pages": "251, 262, 269",
+        "pdf_pages": "3, 14, 21",
+        "equations": ["lattice-domain convention", "1.10", "2.17"],
+        "local_text": [
+          "balaban-rg-I-cmp109-1104116842.txt lines 131-136",
+          "balaban-rg-I-cmp109-1104116842.txt lines 572-579",
+          "balaban-rg-I-cmp109-1104116842.txt lines 868-878"
+        ]
+      },
+      "status": "source_pending",
+      "summary": "Candidate CMP109 bond-convention source windows: subsets determine bonds as nearest-neighbor intervals, bonds have endpoints b_- and b_+, and later CMP109 formulas restrict b to positively oriented bonds.",
+      "extracted_claims": [
+        "CMP109 printed page 251 says a continuous-space subset determines lattice points, bonds, and plaquettes, and describes bonds as intervals connecting nearest-neighbor points that intersect the subset.",
+        "CMP109 printed page 262 writes a bond as b = (b_-, b_+) when defining endpoint-dependent gauge transformations.",
+        "CMP109 printed page 269 says that in the displayed transformation formulas the bonds b are positively oriented, and recalls that the relevant representation formula holds for such bonds only.",
+        "These windows support the search for a four-positive-direction carrier convention, but they do not by themselves identify the CMP116 Eq. (2.31) P-family carrier or prove the filtered PIndex membership iff."
+      ],
+      "lean_targets": [
+        "CMP116Eq231PBondBoundary",
+        "cmp116Eq231SourcePIndex_mem_iff",
+        "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "CMP116Eq231PBondBoundary.of_sourceBondSets",
+        "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets"
+      ],
+      "use_for": [
+        "Companion source target for the oriented-bond convention needed by the CMP116 Eq. (2.31) filtered P-family dictionary.",
+        "Input for a precise source/pro-advisor request asking for the missing bridge from CMP109's general bond convention to CMP116's fixed-(Z0,Y0) eligible P carrier."
+      ],
+      "do_not_use_for": [
+        "Do not cite this entry as proving that Balaban's Eq. (2.31) P-family equals cmp116Eq231SourcePIndex.",
+        "Do not infer the carrier bound |Carrier(Z0,Y0)| <= 4*|Z0 \\ Y0| from these windows alone.",
+        "Do not treat positive orientation here as the complete source-to-Lean dictionary for Cube x Fin 4."
+      ],
+      "open_questions": [
+        "Exact CMP116 or surrounding-source statement that the P-family near Eq. (2.31) uses the same positively oriented bond convention.",
+        "Exact eligible carrier for fixed (Z0,Y0) and proof that every source P is a subset of it.",
+        "Exact carrier cardinality theorem and the source-to-Lean conversion to gapCubes Z D x Finset.univ."
+      ]
+    },
+    {
       "key": "cmp116.eq237.post-p-resummation",
       "source_id": "cmp116",
       "locator": {

@@ -183,6 +183,12 @@ Support/locality extraction pass (2026-06-20):
   source-to-Lean representation of `P`, and proof of the `4*|Z0 \ Y0|`
   carrier upper bound.  The visible lower bound on `|P|` must not be used as
   that carrier upper bound.
+  The companion key `cmp109.bond-convention.positive-oriented` now records
+  CMP109 OCR windows where lattice subsets determine nearest-neighbor bonds,
+  a bond is written with endpoints `(b_-, b_+)`, and later formulas restrict
+  bonds to positive orientation.  This narrows the orientation source target,
+  but it still does not prove that the CMP116 Eq. (2.31) `P` carrier is
+  exactly the repository carrier `gapCubes Z D x Finset.univ`.
 * CMP 119 (1988), split PDF pages 15-17 / printed pages 257-259, gives the
   localized density decomposition.  Large-field operations factor over
   connected large-field regions, the effective action is decomposed into

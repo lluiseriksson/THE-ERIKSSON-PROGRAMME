@@ -738,6 +738,13 @@ decomposition and `Z0` is described as the smallest localization domain
 containing `Y0` and `P`, with bonds of `P` in the interior of `Z0`.  This is a
 useful source target, not yet a theorem-feeding membership iff or
 four-direction carrier count.
+The companion key `cmp109.bond-convention.positive-oriented` records the
+general CMP109 bond convention windows: subsets determine nearest-neighbor
+bonds, bonds are written with endpoints `(b_-, b_+)`, and later formulas
+explicitly restrict to positively oriented bonds.  This narrows the source
+request for the Eq. (2.31) carrier/orientation convention, but it is not a
+substitute for the missing CMP116 statement that every source `P` lies in the
+eligible fixed-`(Z0,Y0)` carrier or for the `4*|Z0 \ Y0|` carrier count.
 The filtered source-family representation now has
 `cmp116Eq231SourcePIndex_mem_iff` and
 `cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff`, so the remaining Lean

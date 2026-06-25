@@ -16288,3 +16288,50 @@ Honest scope: this is source-work tooling and a sharper citation target.  It
 does not close the Eq. (2.31) source theorem, Eq. (2.29), post-`P`,
 activity/termwise estimates, continuum construction, or Clay mass gap.  Clay
 distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 404 (2026-06-26, **CMP109 oriented-bond citation target for Eq. (2.31)**)
+
+Files touched:
+`docs/source-citations/cmp116-lemma3.json`, `docs/SOURCE-CITATIONS.md`,
+`docs/BALABAN-SOURCE-BOUNDS.md`, `docs/SOURCE-CLAIM-AUDIT.md`,
+`CURRENT-STATE.md`, and this ledger.
+
+This checkpoint records the reusable CMP109 source windows needed by the
+CMP116 Eq. (2.31) P-family carrier task:
+
+- `cmp109.bond-convention.positive-oriented` points to CMP109 local text around
+  printed pages 251, 262, and 269.
+- The extracted windows say that a continuous-space subset determines
+  nearest-neighbor bonds, that a bond is written with endpoints `(b_-, b_+)`,
+  and that later formulas restrict the displayed bonds to positive
+  orientation.
+- The Eq. (2.31) source request is now narrower: prove the bridge from those
+  general CMP109 bond conventions to CMP116's fixed-`(Z0,Y0)` eligible
+  P-carrier, carrier count, and pointwise membership iff.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_citations.py show cmp109.bond-convention.positive-oriented
+python scripts\source_citations.py excerpt cmp109.bond-convention.positive-oriented -C 1
+python scripts\source_citations.py lean cmp116Eq231SourcePIndex_mem_iff
+python scripts\source_citations.py check-local
+python scripts\source_citations.py blockers --status source_pending
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp109-bond-convention-citation.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\BALABAN-SOURCE-BOUNDS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json
+```
+
+Results: citation validation, target lookup, excerpt printing, local artifact
+checks, blocker reporting, full Lean build, oracle check, diff checks,
+consistency check, and no-forbidden-token scan passed.
+
+Honest scope: this is a source-navigation checkpoint.  It does not prove the
+CMP116 Eq. (2.31) source dictionary, does not prove the carrier bound
+`|Carrier(Z0,Y0)| <= 4*|Z0 \ Y0|`, and does not discharge Eq. (2.29),
+post-`P`, activity/termwise, continuum, or Clay obligations.  Clay distance
+**~0% (<0.1%)**, unchanged.
