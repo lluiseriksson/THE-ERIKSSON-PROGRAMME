@@ -1479,6 +1479,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.BalabanCMP116Lemma3WeightedPostPSourceAssumptions.lemma3_activity_estimate
 #print axioms YangMills.RG.BalabanCMP116Lemma3WeightedPostPSourceAssumptions.rawSource
 #print axioms YangMills.RG.BalabanCMP116Lemma3WeightedPostPSourceAssumptions.to_lemma3SourceAssumptions
+#print axioms YangMills.RG.BalabanCMP116Lemma3WeightedPostPSourceAssumptions.of_eq231_boundaries
 #print axioms YangMills.RG.CMP116RawSourceM3Frontier.of_lemma3WeightedPostPSourceAssumptions
 #print axioms YangMills.RG.BalabanCMP116Lemma3WeightedPostPSourceAssumptions.to_m3Frontier
 #print axioms YangMills.RG.CMP116RawSourceM3Frontier.of_lemma3ResummationSourceAssumptions

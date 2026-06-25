@@ -15207,3 +15207,38 @@ weighted post-`P` source estimate or majorization, no activity identification,
 no termwise estimate, no Gaussian pushforward, no covariance-root localization,
 no Wilson-Hessian identification, no local activity construction, and no Clay
 mass gap.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 383 (2026-06-25, **Eq. (2.31) weighted post-P source-frontier constructor**
+`YangMills.RG.BalabanCMP116SourceTheorem`; core 8363)
+
+This checkpoint exposes the source-theorem-layer constructor
+
+```
+BalabanCMP116Lemma3WeightedPostPSourceAssumptions.of_eq231_boundaries
+```
+
+It builds the `weighted_postP_source` field with the already checked
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries`, then
+copies the physical/M3 source fields into
+`BalabanCMP116Lemma3WeightedPostPSourceAssumptions`.  This removes only a
+manual intermediate package-assembly step for callers that already have
+Eq. (2.31) P-bond data.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-weighted-postp-source-frontier.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116SourceTheorem.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+Honest scope: this is record assembly only.  It proves no Eq. (2.29), no
+Eq. (2.31) source construction, no pointwise P-residual estimate, no scalar
+hierarchy, no weighted post-`P` source estimate or majorization, no activity
+identification, no termwise estimate, no Gaussian pushforward, no covariance-
+root localization, no Wilson-Hessian identification, no local activity
+construction, and no Clay mass gap.  Clay distance **~0% (<0.1%), unchanged**.

@@ -993,3 +993,12 @@ Eq. (2.31), P-stage source construction, weighted post-`P` source estimates,
 post-`P` majorization, activity identification, termwise estimates, Gaussian
 pushforward, covariance-root localization, Wilson-Hessian identification, or
 local physical activity construction.
+
+`BalabanCMP116Lemma3WeightedPostPSourceAssumptions.of_eq231_boundaries` is the
+Eq. (2.31)-specialized constructor into that source-theorem package.  It reuses
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries` for the
+weighted post-`P` field and copies all physical/M3 fields from explicit
+arguments.  It proves no Eq. (2.31) source construction, no pointwise
+P-residual estimate, no scalar hierarchy, no post-`P` source estimate or
+majorization, no activity identification, no termwise estimate, and no
+Gaussian/root/Hessian/local-activity source fact.

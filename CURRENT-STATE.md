@@ -1727,6 +1727,15 @@ with `CMP116Lemma3WeightedPostPScaleSourceAssumptions`.  Its projections
 `to_m3Frontier` are record plumbing into the already checked raw-source M3
 frontier; they prove no Eq. (2.29), Eq. (2.31), post-`P`, activity, termwise,
 Gaussian, root-localization, Wilson-Hessian, or local-activity source fact.
+The same source-theorem package now has the Eq. (2.31)-specialized constructor
+`BalabanCMP116Lemma3WeightedPostPSourceAssumptions.of_eq231_boundaries`.  It
+uses the lower-level
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries` to build
+the weighted post-`P` package directly from Eq. (2.31) bond-boundary data and
+then copies the physical/M3 obligations unchanged.  This removes only an
+intermediate package-assembly step; every Eq. (2.31), pointwise, scalar,
+post-`P`, activity, termwise, Gaussian/root/Hessian/local-activity, H#, flow,
+and IR obligation remains an explicit input.
 
 ## What Is Not Claimed
 
