@@ -1828,6 +1828,31 @@ full Eq. (2.31) source closure; the citation key
 `cmp116.eq231.p-family-carrier-source-target` remains `source_pending` until
 the exact CMP116 eligible-bond carrier/orientation sentence is checked.
 
+### Eq. (2.37) Post-P Majorization Route (2026-06-25)
+
+The post-`P` majorization lane now has a source-shaped Eq. (2.37) boundary:
+`CMP116Eq237MajorizationBoundary` records the page-20 seven-delta source decay,
+the residual exponent budget, and the displayed `C3*epsilon1` amplitude
+comparison.  The theorem `cmp116Eq237_residualExponent_absorbed` proves the
+pure exponent step from `(1 - 7*delta)/2` decay plus a `delta/2` residual
+budget into the canonical Lemma-3 `(1 - 8*delta)/2` weight.
+
+`cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237` turns that boundary
+into the existing `CMP116PostPResidualSourceMajorizationScaleFamily` consumer.
+The constructor
+`CMP116Lemma3WeightedPostPSourceScaleBoundary.of_sourceBound_eq237Majorization`
+therefore removes the independent caller-supplied `postP_majorization` field on
+the Eq. (2.37) route: callers still provide the combined post-`P` source sum,
+but the separate Lemma-3 weight majorization is theorem-generated from the new
+Eq. (2.37) boundary.
+
+This is not full post-`P` source closure.  The combined source estimate
+`CMP116PostPResidualSourceBound`, the exact `Z0/Z0'` source-to-Lean index
+dictionary, finite-family reindexing, and numerical/O(1) constant majorants
+remain explicit obligations.  The citation keys
+`cmp116.eq237.post-p-resummation` and `cmp116.constants.c3-alpha5` are the
+source anchors for those future reductions.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman

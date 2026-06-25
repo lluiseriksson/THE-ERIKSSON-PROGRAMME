@@ -104,7 +104,11 @@ combinatorial abstraction.
 The keys `cmp116.eq237.post-p-resummation` and
 `cmp116.constants.c3-alpha5` record the visually confirmed page-20 source
 data for the combined post-`P` boundary, the alpha5/C3 region, and Lemma 3's
-final amplitude shape.
+final amplitude shape.  The Lean Eq. (2.37) consumer
+`CMP116Eq237MajorizationBoundary` now turns the seven-delta decay plus residual
+budget into the canonical Lemma-3 post-`P` majorization, while the combined
+post-`P` source estimate and `Z0/Z0'` source-to-Lean dictionary remain separate
+open obligations.
 Use `python scripts\source_citations.py blockers` at the start of a source
 wake to see all `source_pending` and `ocr_corrupted` entries with their Lean
 targets and first open question.

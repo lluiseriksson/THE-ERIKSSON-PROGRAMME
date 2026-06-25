@@ -1060,6 +1060,18 @@ P-residual or post-`P` source weights, prove activity/termwise estimates,
 construct Gaussian pushforwards or covariance roots, prove the H# identity, or
 discharge any RG-flow or IR input.
 
+`CMP116Eq237MajorizationBoundary` is the source-shaped Eq. (2.37) boundary for
+the post-`P` majorization step only.  It records the seven-delta decay,
+residual-exponent absorption budget, and the `C3*epsilon1` amplitude comparison.
+The theorems `cmp116Eq237_residualExponent_absorbed` and
+`cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237` discharge the
+canonical Lemma-3 post-`P` majorization from that boundary.  The constructor
+`CMP116Lemma3WeightedPostPSourceScaleBoundary.of_sourceBound_eq237Majorization`
+therefore removes the independent `postP_majorization` input on this route,
+but still requires the combined `CMP116PostPResidualSourceBound`.  It does not
+identify CMP116's `Z0/Z0'` source indices with repository indices, prove the
+post-`P` finite source sum, or evaluate/identify any source `O(1)` constants.
+
 ### CMP116 reference [26] behind Eq. (2.29)
 
 CMP116 printed page 18 says that inequalities of the Eq. (2.29) type can be

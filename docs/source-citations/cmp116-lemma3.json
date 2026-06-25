@@ -381,12 +381,17 @@
         "This supports the Lean design in which Eq. (2.37) plus the following paragraph feed a combined post-P source boundary and a separate majorization into the canonical Lemma-3 base factor; it does not justify separate normalized Z0 and Z0' source theorems by itself."
       ],
       "lean_targets": [
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237_residualExponent_absorbed",
+        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_sourceBound_eq237Majorization",
         "CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_source_bound",
         "CMP116PostPResidualSourceBound",
         "CMP116PostPResidualSourceMajorizationScaleFamily"
       ],
       "use_for": [
         "Source anchor for the combined post-P source boundary supplied to CMP116PostPResidualSourceBound.",
+        "Source anchor for the exponent-reserve step that turns the page-20 post-P weight into the canonical Lemma-3 decay weight once the residual exponent is explicitly bounded.",
         "Source anchor for treating the post-P stage as order-sensitive and combined rather than as separately normalized Z0 and Z0' source estimates."
       ],
       "do_not_use_for": [
@@ -396,7 +401,7 @@
       ],
       "open_questions": [
         "Exact source-to-Lean dictionary for the D, P, Z0, and Z0' indices in Eq. (2.37).",
-        "Exact formal majorization theorem turning the visual Eq. (2.37) expression and the following Z0' sum into the repository postPSourceWeight/postPAmplitude fields.",
+        "Exact formal theorem deriving CMP116Eq237MajorizationBoundary from the visual Eq. (2.37), alpha5, C3, and metric-comparison constants.",
         "Exact identities or common majorants for the O(1) constants in the Eq. (2.37) and post-Eq. (2.37) paragraphs."
       ]
     },
@@ -421,6 +426,8 @@
       ],
       "lean_targets": [
         "CMP116Lemma3Parameters",
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
         "CMP116Lemma3WeightedPostPSourceScaleBoundary",
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],

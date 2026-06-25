@@ -1440,6 +1440,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116PostPResidualBound
 #print axioms YangMills.RG.cmp116PostPResidualBound_of_sourceBound
 #print axioms YangMills.RG.CMP116PostPResidualSourceMajorizationScaleFamily
+#print axioms YangMills.RG.CMP116Eq237MajorizationBoundary
+#print axioms YangMills.RG.cmp116Eq237_residualExponent_absorbed
+#print axioms YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237
 #print axioms YangMills.RG.cmp116PostPResidualBoundScaleFamily_of_sourceBound
 #print axioms YangMills.RG.CMP116Lemma3Eq229ScaleBoundary
 #print axioms YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary
@@ -1447,6 +1450,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise
 #print axioms YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.p_residual_summability
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary
+#print axioms YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_sourceBound_eq237Majorization
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_residual_bound
 #print axioms YangMills.RG.cmp116H_postP_sum_le_of_residualStages
 #print axioms YangMills.RG.cmp116PostPResidualBound_of_residualStages

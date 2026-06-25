@@ -15904,3 +15904,65 @@ pre-existing lint warnings in unrelated modules.
 Honest scope: this is a genuine narrowing of one Eq. (2.31) source-facing
 interface, not an analytic-source proof.  Clay distance **~0% (<0.1%)**,
 unchanged.
+
+## Addendum 397 (2026-06-25, **CMP116 Eq. (2.37) post-P majorization consumer**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Eq237.lean`, `YangMillsCore.lean`,
+`oracle_check.lean`, `docs/source-citations/cmp116-lemma3.json`,
+`docs/SOURCE-CITATIONS.md`, `docs/SOURCE-CLAIM-AUDIT.md`,
+`CURRENT-STATE.md`, and this ledger.
+
+This checkpoint adds the source-shaped Eq. (2.37) majorization boundary for the
+post-`P` stage:
+
+- `CMP116Eq237MajorizationBoundary` records the seven-delta source decay, a
+  residual-exponent absorption budget, nonnegativity of the post-`P`
+  amplitude, and the displayed `C3*epsilon1` amplitude comparison.
+- `cmp116Eq237_residualExponent_absorbed` proves that the residual budget
+  absorbs the page-20 weight into the canonical Lemma-3
+  `(1 - 8*delta)/2` decay.
+- `cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237` derives the
+  existing `CMP116PostPResidualSourceMajorizationScaleFamily` consumer.
+- `CMP116Lemma3WeightedPostPSourceScaleBoundary.of_sourceBound_eq237Majorization`
+  builds the weighted post-`P` boundary from the combined post-`P` source
+  bound plus the Eq. (2.37) majorization boundary, removing the independent
+  caller-supplied `postP_majorization` field on this route.
+
+The citation catalog now links the visually confirmed Eq. (2.37) and C3/alpha5
+source entries to these Lean declarations.  The source-boundary audit notes
+that this does not prove the combined post-`P` source sum, the `Z0/Z0'`
+source-to-Lean dictionary, finite-family reindexing, or numerical/O(1)
+constant majorants.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq237.lean
+lake build +YangMills.RG.BalabanCMP116Eq237:olean
+python scripts\source_citations.py validate
+python scripts\source_citations.py lean CMP116Eq237MajorizationBoundary
+python scripts\source_citations.py show cmp116.eq237.post-p-resummation
+python scripts\source_citations.py blockers
+python scripts\source_citations.py check-local
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq237-majorization.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json YangMills\RG\BalabanCMP116Eq237.lean
+```
+
+Results: the focused Lean check and module build passed; `lake build
+YangMillsCore` passed 8364 jobs; `oracle_check.lean` completed and wrote
+`runtime\oracle-eq237-majorization.log`, including the new Eq. (2.37)
+declarations.  Citation validation, citation local-artifact checks,
+`git diff --check`, `git diff --cached --check`, `check_consistency.py`, and
+the no-sorry/no-admit/no-axiom scan passed.  The builds reported pre-existing
+lint warnings in unrelated modules.
+
+Honest scope: this is a real removal of one downstream post-`P` majorization
+hypothesis when the Eq. (2.37) majorization boundary is supplied.  It is not a
+proof of Eq. (2.29), a construction of Eq. (2.31) source families, a proof of
+the combined post-`P` source estimate, or a continuum/Clay result.  Clay
+distance **~0% (<0.1%)**, unchanged.
