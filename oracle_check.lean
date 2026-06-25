@@ -108,6 +108,9 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.sun_two_plaquette_correlator_bound
 -- interacting centre-charge selection for the connected two-loop expression:
 #print axioms YangMills.connected_wilsonLoopSU_gibbs_eq_zero
+-- mixed charge selection for `W · conj W'` and its connected expression:
+#print axioms YangMills.integral_wilsonLoopSU_mul_star_gibbs_eq_zero
+#print axioms YangMills.connected_wilsonLoopSU_star_gibbs_eq_zero
 -- UNCONDITIONAL fixed-lattice exponential clustering (no carried hypothesis):
 #print axioms YangMills.sun_lattice_exponential_clustering
 

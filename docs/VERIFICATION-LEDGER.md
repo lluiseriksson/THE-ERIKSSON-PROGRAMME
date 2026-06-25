@@ -14597,3 +14597,42 @@ finite-volume lattice symmetry consequence for the interacting Gibbs measure.
 It proves no continuum construction, no OS/Wightman reconstruction, no
 spectral-gap statement, and no CMP116 source estimate.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 368 (2026-06-25, **mixed Wilson-loop charge selection**
+`YangMills.L1_GibbsMeasure.GibbsSelectionRule`; core 8362)
+
+This checkpoint adds the mixed charge selection rule for the interacting Gibbs
+measure:
+
+```
+integral_wilsonLoopSU_mul_star_gibbs_eq_zero
+connected_wilsonLoopSU_star_gibbs_eq_zero
+```
+
+For positively oriented Wilson loops `es` and `es'`, if
+`(n : ℤ) ∤ (es.length : ℤ) - (es'.length : ℤ)`, then
+`∫ W_es * conj(W_es') dμ_Gibbs = 0`, and the corresponding connected
+covariance
+`∫ W_es conj(W_es') dμ_Gibbs - (∫ W_es dμ_Gibbs) * conj(∫ W_es' dμ_Gibbs)`
+also vanishes.  The proof composes exact Gibbs centre invariance with
+`wilsonLoopSU_centerAct` and the existing mixed root-of-unity primitivity lemma
+`rootOfUnity_pow_mul_star_pow_ne_one`.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-mixed-wilsonloop-selection.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+Both new theorem oracle lines are
+`[propext, Classical.choice, Quot.sound]`.  Honest scope: this is an exact
+finite-volume lattice symmetry consequence for the interacting Gibbs measure.
+It proves no continuum construction, no OS/Wightman reconstruction, no
+spectral-gap statement, and no CMP116 source estimate.  Clay distance
+**~0% (<0.1%), unchanged**.

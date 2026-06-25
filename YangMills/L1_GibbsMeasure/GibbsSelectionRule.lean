@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import Mathlib
 import YangMills.L1_GibbsMeasure.SUNSelectionRule
+import YangMills.ClayCore.SchurMixedMomentVanishing
 
 /-!
 # Centre symmetry of the Wilson action and the interacting selection rule
@@ -243,6 +244,94 @@ theorem connected_wilsonLoopSU_gibbs_eq_zero {n : ℕ} [NeZero n]
       have hright := integral_wilsonLoopSU_gibbs_eq_zero
         (d := d) (N := N) pe β es' hpos' hdiv'
       rw [hright, mul_zero]
+    · have hleft := integral_wilsonLoopSU_gibbs_eq_zero
+        (d := d) (N := N) pe β es hpos hdiv
+      rw [hleft, zero_mul]
+  rw [hprod, hmeans, sub_zero]
+
+/-- **Mixed Wilson-loop selection rule:** the Gibbs expectation of
+`W_es * conj(W_es')` vanishes unless the two loops have the same centre charge
+modulo `n`.
+
+This is the two-loop analogue of the mixed Haar rule
+`ω^a * conj(ω)^b ≠ 1` when `n ∤ a - b`, now lifted to the interacting Gibbs
+measure through exact centre symmetry of the Wilson action. -/
+theorem integral_wilsonLoopSU_mul_star_gibbs_eq_zero {n : ℕ} [NeZero n]
+    (pe : ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) → ℝ) (β : ℝ)
+    (es es' : List (ConcreteEdge d N))
+    (hpos : ∀ e ∈ es, e.sign = true) (hpos' : ∀ e ∈ es', e.sign = true)
+    (hL : ¬ (n : ℤ) ∣ ((es.length : ℤ) - (es'.length : ℤ))) :
+    ∫ A, wilsonLoopSU A es * star (wilsonLoopSU A es')
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) = 0 := by
+  let phase : ℂ := rootOfUnity n ^ es.length * star (rootOfUnity n) ^ es'.length
+  have hpt : ∀ A, wilsonLoopSU (centerAct (scalarCenterElement n) A) es *
+        star (wilsonLoopSU (centerAct (scalarCenterElement n) A) es')
+      = phase * (wilsonLoopSU A es * star (wilsonLoopSU A es')) := by
+    intro A
+    rw [wilsonLoopSU_centerAct A es hpos, wilsonLoopSU_centerAct A es' hpos',
+      star_mul', star_pow]
+    simp only [phase]
+    ring
+  have hinv : ∫ A, wilsonLoopSU A es * star (wilsonLoopSU A es')
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)
+      = ∫ A, wilsonLoopSU (centerAct (scalarCenterElement n) A) es *
+          star (wilsonLoopSU (centerAct (scalarCenterElement n) A) es')
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) :=
+    (integral_centerAct_gibbs (sunHaarProb n) pe β (scalarCenterElement n)
+      (scalarCenterElement_commute n)
+      (fun A => wilsonLoopSU A es * star (wilsonLoopSU A es'))).symm
+  have hmul : ∫ A, wilsonLoopSU (centerAct (scalarCenterElement n) A) es *
+        star (wilsonLoopSU (centerAct (scalarCenterElement n) A) es')
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)
+      = phase * ∫ A, wilsonLoopSU A es * star (wilsonLoopSU A es')
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) := by
+    rw [show (fun A => wilsonLoopSU (centerAct (scalarCenterElement n) A) es *
+        star (wilsonLoopSU (centerAct (scalarCenterElement n) A) es'))
+        = fun A => phase * (wilsonLoopSU A es * star (wilsonLoopSU A es')) from
+      funext hpt]
+    exact MeasureTheory.integral_const_mul _ _
+  rw [hmul] at hinv
+  have hfactor : (1 - phase) *
+      ∫ A, wilsonLoopSU A es * star (wilsonLoopSU A es')
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) = 0 := by
+    linear_combination hinv
+  have hphase : phase ≠ 1 := by
+    exact rootOfUnity_pow_mul_star_pow_ne_one n es.length es'.length hL
+  rcases mul_eq_zero.mp hfactor with h1 | h2
+  · exact absurd (sub_eq_zero.mp h1).symm hphase
+  · exact h2
+
+/-- **Mixed connected correlator selection rule:** the charged covariance
+`⟨W_es conj(W_es')⟩ - ⟨W_es⟩ conj(⟨W_es'⟩)` vanishes whenever the two loops have
+different centre charge modulo `n`. -/
+theorem connected_wilsonLoopSU_star_gibbs_eq_zero {n : ℕ} [NeZero n]
+    (pe : ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) → ℝ) (β : ℝ)
+    (es es' : List (ConcreteEdge d N))
+    (hpos : ∀ e ∈ es, e.sign = true) (hpos' : ∀ e ∈ es', e.sign = true)
+    (hL : ¬ (n : ℤ) ∣ ((es.length : ℤ) - (es'.length : ℤ))) :
+    (∫ A, wilsonLoopSU A es * star (wilsonLoopSU A es')
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β))
+      - (∫ A, wilsonLoopSU A es
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) *
+        star (∫ A, wilsonLoopSU A es'
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) = 0 := by
+  have hprod := integral_wilsonLoopSU_mul_star_gibbs_eq_zero
+    (d := d) (N := N) pe β es es' hpos hpos' hL
+  have hmeans :
+      (∫ A, wilsonLoopSU A es
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) *
+        star (∫ A, wilsonLoopSU A es'
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) = 0 := by
+    by_cases hdiv : n ∣ es.length
+    · have hdiv' : ¬ n ∣ es'.length := by
+        intro hdiv'
+        have hZ_left : (n : ℤ) ∣ (es.length : ℤ) := by exact_mod_cast hdiv
+        have hZ_right : (n : ℤ) ∣ (es'.length : ℤ) := by exact_mod_cast hdiv'
+        exact hL (dvd_sub hZ_left hZ_right)
+      have hright := integral_wilsonLoopSU_gibbs_eq_zero
+        (d := d) (N := N) pe β es' hpos' hdiv'
+      rw [hright]
+      simp
     · have hleft := integral_wilsonLoopSU_gibbs_eq_zero
         (d := d) (N := N) pe β es hpos hdiv
       rw [hleft, zero_mul]

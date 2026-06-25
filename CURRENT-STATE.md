@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 367.
+Addendum 368.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -53,8 +53,9 @@ The strong-coupling lattice side is now extensive and oracle-clean:
 * polymer reconstruction `Z = Xi = exp(K)`;
 * volume-uniform exponential clustering for local Gibbs observables;
 * finite-volume, exact-activity, and volume-uniform Wilson-loop area laws;
-* interacting centre-charge selection now includes a connected two-Wilson-loop
-  expression vanishing theorem for non-trivial total centre charge;
+* interacting centre-charge selection now includes connected two-Wilson-loop
+  vanishing for non-trivial total charge, plus the mixed
+  `W · conj W'` covariance selection rule for unequal centre charge;
 * the lattice mass-gap assembly with the IR side theorem-fed;
 * the gauge-RG conditional scaffold from Balaban/Dimock-style inputs to the
   lattice UV hypothesis.
