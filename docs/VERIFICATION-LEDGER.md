@@ -15322,3 +15322,69 @@ resummation, scalar hierarchy, activity identification, Gaussian pushforward,
 covariance-root localization, Wilson-Hessian identification, H# identity,
 RG-flow bound, IR bound, or Clay mass gap.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 386 (2026-06-25, **CMP116 Eq. (2.31) source-shaped rate reducer**
+`YangMills.RG.BalabanCMP116Eq231`,
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages`,
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`, and
+`YangMills.RG.BalabanCMP116SourceTheorem`)
+
+This checkpoint removes the opaque source-facing Eq. (2.31) rate premise from
+the weighted post-`P` route.  The new theorem
+
+```
+cmp116Eq231_rate_condition_of_source_smallness
+```
+
+proves the elementary implication
+
+```
+0 < gk
+80*M^4*gk^2 <= gamma2*epsilon1^2
+------------------------------------------------------------
+4*M^4*exp(-2*(gamma2*epsilon1^2/(20*gk^2)))
+  <= gamma2*epsilon1^2/(20*gk^2)
+```
+
+The fixed-index constructor
+`cmp116PStageSourceBound_of_eq231_pointwise`, the scale-family constructor
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise`, the weighted
+post-`P` constructors
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries` and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_boundaries`,
+and the source-theorem/M3-frontier constructors now consume the source-shaped
+rate
+
+```
+gamma2 * epsilon1^2 / (20*gk^2)
+```
+
+through explicit `hgk` and `hsourceRateSmall` hypotheses instead of accepting
+an arbitrary `eq231Rate` plus `hrate`.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+python scripts\source_citations.py validate
+python scripts\source_citations.py lean cmp116Eq231_rate_condition_of_source_smallness
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-source-rate-smallness.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Eq231.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean YangMills\RG\BalabanCMP116SourceTheorem.lean CURRENT-STATE.md README.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json
+```
+
+Honest scope: this does not prove that CMP116 states the displayed `80`
+smallness condition, does not extract the full source constant hierarchy, and
+does not construct the P family, pointwise P-residual estimate, Eq. (2.29),
+post-`P` source estimate, activity identification, termwise estimate,
+Gaussian pushforward, covariance-root localization, Wilson-Hessian
+identification, H# identity, RG-flow bound, IR bound, or Clay mass gap.  It
+only discharges the formal exponential-rate condition once the source-shaped
+positivity and sufficient smallness condition are available.  Clay distance
+**~0% (<0.1%), unchanged**.

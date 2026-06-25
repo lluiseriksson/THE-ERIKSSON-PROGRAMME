@@ -1419,6 +1419,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimate_of_eq229_postD
 #print axioms YangMills.RG.CMP116Eq231PBondBoundary
 #print axioms YangMills.RG.cmp116Eq231PWeight
+#print axioms YangMills.RG.cmp116Eq231_rate_condition_of_source_smallness
 #print axioms YangMills.RG.cmp116PGeometricFamilySummation_of_eq231
 #print axioms YangMills.RG.cmp116PStageSourceBound_of_eq231_pointwise
 #print axioms YangMills.RG.CMP116PResidualSummability

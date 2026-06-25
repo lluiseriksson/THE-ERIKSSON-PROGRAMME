@@ -77,6 +77,59 @@ noncomputable def cmp116Eq231PWeight
       Real.exp (-(2 * rate *
         ((pBonds Z D P).card : ℝ)))
 
+/-- A source-shaped sufficient scalar condition for the CMP116 (2.31)
+geometric rate premise.
+
+CMP116 records the rate in this lane as
+`gamma2 * epsilon1^2 / (20 * gk^2)`.  The small-coupling inequality here is a
+formal sufficient condition for the geometric summation hypothesis used below;
+it is not claimed to be a verbatim source theorem until the full parameter
+hierarchy has been extracted. -/
+theorem cmp116Eq231_rate_condition_of_source_smallness
+    (localizationScale : ℕ)
+    (gamma2 epsilon1 gk : ℝ)
+    (hgk : 0 < gk)
+    (hsmall :
+      80 * ((localizationScale : ℝ) ^ 4) * gk ^ 2 ≤
+        gamma2 * epsilon1 ^ 2) :
+    4 * ((localizationScale : ℝ) ^ 4) *
+        Real.exp
+          (-(2 *
+            (gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2)))) ≤
+      gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2) := by
+  let rho : ℝ := gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2)
+  have hgk_sq_pos : 0 < gk ^ 2 := sq_pos_of_pos hgk
+  have hden_pos : 0 < 20 * gk ^ 2 := by positivity
+  have hfour_le_rho :
+      4 * ((localizationScale : ℝ) ^ 4) ≤ rho := by
+    dsimp [rho]
+    rw [le_div_iff₀ hden_pos]
+    calc
+      4 * ((localizationScale : ℝ) ^ 4) * (20 * gk ^ 2)
+          = 80 * ((localizationScale : ℝ) ^ 4) * gk ^ 2 := by
+            ring
+      _ ≤ gamma2 * epsilon1 ^ 2 := hsmall
+  have hrho_nonneg : 0 ≤ rho := by
+    exact
+      (mul_nonneg (by positivity : 0 ≤ (4 : ℝ))
+          (by positivity : 0 ≤ ((localizationScale : ℝ) ^ 4))).trans
+        hfour_le_rho
+  have hexp_le_one : Real.exp (-(2 * rho)) ≤ 1 := by
+    calc
+      Real.exp (-(2 * rho)) ≤ Real.exp 0 := by
+        apply Real.exp_le_exp.mpr
+        nlinarith
+      _ = 1 := by rw [Real.exp_zero]
+  have hscale_nonneg :
+      0 ≤ 4 * ((localizationScale : ℝ) ^ 4) := by positivity
+  calc
+    4 * ((localizationScale : ℝ) ^ 4) *
+        Real.exp (-(2 * rho)) ≤
+      4 * ((localizationScale : ℝ) ^ 4) * 1 := by
+        exact mul_le_mul_of_nonneg_left hexp_le_one hscale_nonneg
+    _ = 4 * ((localizationScale : ℝ) ^ 4) := by ring
+    _ ≤ rho := hfour_le_rho
+
 /-- CMP116 (2.31) supplies the finite geometric premise used by
 `cmp116PStageSourceBound_of_pointwise_geometric`.
 

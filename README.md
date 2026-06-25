@@ -125,6 +125,8 @@ source-boundary routes:
 * finite target-card tilt in Appendix-F cover weights.
 * weighted post-`P` source packages and a direct Eq. (2.31) weighted post-`P`
   route into the raw-source M3 frontier.
+* a source-shaped Eq. (2.31) rate-condition reducer replacing the opaque
+  `hrate` input with `0 < gk` and `80*M^4*gk^2 <= gamma2*epsilon1^2`.
 
 The practical effect is cleaner wiring from future source theorems into the
 existing UV consumer.  The remaining work is still the real source-grounded

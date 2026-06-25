@@ -695,16 +695,21 @@ calculation
 hypothesis.  This corrects earlier loose language: the `hgeometric` premise is
 fed by Eq. (2.31), not by Eq. (2.30) alone.  The theorem still does not
 construct `PIndex`, identify `pGeometryWeight`, prove the small-coupling
-inequality `4*M^4*exp(-2*rate) <= rate`, or prove the pointwise P-residual
-majorization.
+hierarchy needed to instantiate `80*M^4*gk^2 <= gamma2*epsilon1^2`, or prove
+the pointwise P-residual majorization.  The separate theorem
+`cmp116Eq231_rate_condition_of_source_smallness` only proves the elementary
+implication from `0 < gk` and that explicit sufficient inequality to the
+transcendental rate condition
+`4*M^4*exp(-2*(gamma2*epsilon1^2/(20*gk^2))) <=
+gamma2*epsilon1^2/(20*gk^2)`.
 The fixed-index bridge `cmp116PStageSourceBound_of_eq231_pointwise` and the
 scale-family constructor
 `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise` compose this
 Eq. (2.31) finite subset-entropy theorem with the existing pointwise P-term
 estimate.  They remove only the intermediate abstract `hgeometric` premise:
 the source construction of `PIndex`, identification of `pResidualWeight` and
-`pGeometryWeight`, scalar smallness, target comparison, and post-`P` source
-estimates remain separate obligations.
+`pGeometryWeight`, source-rate smallness sufficient condition, target
+comparison, and post-`P` source estimates remain separate obligations.
 
 The `Z0` stage now also has the source-shaped predicate
 `CMP116Z0StageSourceBound` and adapter
@@ -951,11 +956,13 @@ none of the four boundary packages.
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_boundaries`
 is the Eq. (2.31)-specialized version of that consumer.  It constructs the
 P-stage boundary internally from `CMP116Eq231PBondBoundary` plus the explicit
-pointwise, rate, target, smallness, and nonnegativity hypotheses, then applies
-the existing weighted post-`P` route.  It removes only an intermediate record
-assembly premise; it does not prove the CMP116 source construction of the
+pointwise, source-rate positivity/smallness, target, residual smallness, and
+nonnegativity hypotheses, then applies the existing weighted post-`P` route.
+It removes only an intermediate record assembly premise and the opaque `hrate`
+input on this route; it does not prove the CMP116 source construction of the
 P-family, Eq. (2.31) constants, pointwise P-residual bound, post-`P`
-majorization, activity identification, or termwise estimate.
+majorization, activity identification, termwise estimate, or the full scalar
+hierarchy.
 
 `rawSource_of_weightedPostPBoundaries` composes that direct consumer with the
 pre-existing `rawSource_of_lemma3ActivityEstimate` adapter.  It still requires
@@ -976,12 +983,12 @@ estimate.
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries` is the
 record-level version of the same Eq. (2.31) packaging: it constructs the
 weighted post-`P` source package from Eq. (2.29), Eq. (2.31) P-bond data,
-explicit pointwise/rate/target/smallness/nonnegativity hypotheses, the
+explicit pointwise/source-rate/target/smallness/nonnegativity hypotheses, the
 weighted post-`P` boundary, and the activity/termwise boundary.  The companion
 projection `CMP116Lemma3WeightedPostPScaleSourceAssumptions.rawSource` applies
 the package's Lemma-3 estimate to the existing raw-source adapter.  Both are
 source-neutral plumbing; neither proves any physical source fact, analytic
-source bound, scalar hierarchy, or CMP116 identification.
+source bound, full scalar hierarchy, or CMP116 identification.
 
 `BalabanCMP116Lemma3WeightedPostPSourceAssumptions` is the source-theorem-layer
 counterpart of that weighted post-`P` package.  It keeps all physical/M3
@@ -1000,9 +1007,11 @@ Eq. (2.31)-specialized constructor into that source-theorem package.  It reuses
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries` for the
 weighted post-`P` field and copies all physical/M3 fields from explicit
 arguments.  It proves no Eq. (2.31) source construction, no pointwise
-P-residual estimate, no scalar hierarchy, no post-`P` source estimate or
+P-residual estimate, no full scalar hierarchy, no post-`P` source estimate or
 majorization, no activity identification, no termwise estimate, and no
-Gaussian/root/Hessian/local-activity source fact.
+Gaussian/root/Hessian/local-activity source fact.  It only derives the narrow
+Eq. (2.31) exponential rate premise from the explicit source-shaped sufficient
+condition already passed by the caller.
 
 `CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries` is the direct
 M3-frontier consumer for the same Eq. (2.31)-specialized boundary data.  It

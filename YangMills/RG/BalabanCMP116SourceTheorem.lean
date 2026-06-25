@@ -1343,7 +1343,7 @@ def of_eq231_boundaries
     {pGeometryWeight :
       ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
     {eq231LocalizationScale : ℕ → ℕ → ℕ}
-    {eq231Rate : ℕ → ℕ → ℝ}
+    {gamma2 gk : ℕ → ℕ → ℝ}
     (covariance_root_certificate :
       ∀ t k,
         PhysicalLocalizedCovarianceRootCertificate
@@ -1397,16 +1397,20 @@ def of_eq231_boundaries
             (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
                 epsilon2 t k) *
               pGeometryWeight t k Z D P)
-    (hrate :
+    (hgk : ∀ t k, 0 < gk t k)
+    (hsourceRateSmall :
       ∀ t k,
-        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
-            Real.exp (-(2 * eq231Rate t k)) ≤ eq231Rate t k)
+        80 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            (gk t k) ^ 2 ≤
+          gamma2 t k * (hp t k).epsilon1 ^ 2)
     (hgeometry :
       ∀ t k Z D, D ∈ (R t k).DIndex Z →
         ∀ P, P ∈ (R t k).PIndex Z D →
           pGeometryWeight t k Z D P ≤
             cmp116Eq231PWeight
-              (eq231Rate t k) (B t k).gapMass (B t k).pBonds Z D P)
+              (gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                (20 * (gk t k) ^ 2))
+              (B t k).gapMass (B t k).pBonds Z D P)
     (htarget :
       ∀ t k,
         1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
@@ -1462,8 +1466,8 @@ def of_eq231_boundaries
     (rooted_hsharp_remainder_identity :
       let weighted_postP_source :=
         CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries
-          eq229 B hepsilon2_nonneg hpointwise hrate hgeometry htarget
-          hsmall hpResidual_nonneg postP activity
+          eq229 B hepsilon2_nonneg hpointwise hgk hsourceRateSmall
+          hgeometry htarget hsmall hpResidual_nonneg postP activity
       let rawSource :=
         CMP116Lemma3WeightedPostPScaleSourceAssumptions.rawSource
           gaussian_pushforward
@@ -1586,8 +1590,8 @@ def of_eq231_boundaries
   activity_stronglyMeasurable := activity_stronglyMeasurable
   weighted_postP_source :=
     CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries
-      eq229 B hepsilon2_nonneg hpointwise hrate hgeometry htarget
-      hsmall hpResidual_nonneg postP activity
+      eq229 B hepsilon2_nonneg hpointwise hgk hsourceRateSmall
+      hgeometry htarget hsmall hpResidual_nonneg postP activity
   amplitude_nonneg := amplitude_nonneg
   active_support_subset_omega := active_support_subset_omega
   active_support_subset_skeleton := active_support_subset_skeleton
@@ -2678,7 +2682,7 @@ def CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries
     {pGeometryWeight :
       ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
     {eq231LocalizationScale : ℕ → ℕ → ℕ}
-    {eq231Rate : ℕ → ℕ → ℝ}
+    {gamma2 gk : ℕ → ℕ → ℝ}
     (covariance_root_certificate :
       ∀ t k,
         PhysicalLocalizedCovarianceRootCertificate
@@ -2732,16 +2736,20 @@ def CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries
             (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
                 epsilon2 t k) *
               pGeometryWeight t k Z D P)
-    (hrate :
+    (hgk : ∀ t k, 0 < gk t k)
+    (hsourceRateSmall :
       ∀ t k,
-        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
-            Real.exp (-(2 * eq231Rate t k)) ≤ eq231Rate t k)
+        80 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            (gk t k) ^ 2 ≤
+          gamma2 t k * (hp t k).epsilon1 ^ 2)
     (hgeometry :
       ∀ t k Z D, D ∈ (R t k).DIndex Z →
         ∀ P, P ∈ (R t k).PIndex Z D →
           pGeometryWeight t k Z D P ≤
             cmp116Eq231PWeight
-              (eq231Rate t k) (B t k).gapMass (B t k).pBonds Z D P)
+              (gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                (20 * (gk t k) ^ 2))
+              (B t k).gapMass (B t k).pBonds Z D P)
     (htarget :
       ∀ t k,
         1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
@@ -2797,8 +2805,8 @@ def CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries
     (rooted_hsharp_remainder_identity :
       let weighted_postP_source :=
         CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries
-          eq229 B hepsilon2_nonneg hpointwise hrate hgeometry htarget
-          hsmall hpResidual_nonneg postP activity
+          eq229 B hepsilon2_nonneg hpointwise hgk hsourceRateSmall
+          hgeometry htarget hsmall hpResidual_nonneg postP activity
       let rawSource :=
         CMP116Lemma3WeightedPostPScaleSourceAssumptions.rawSource
           gaussian_pushforward
@@ -2928,7 +2936,8 @@ def CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries
       B
       hepsilon2_nonneg
       hpointwise
-      hrate
+      hgk
+      hsourceRateSmall
       hgeometry
       htarget
       hsmall

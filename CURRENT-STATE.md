@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 385.
+Addendum 386.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1157,9 +1157,11 @@ The finite geometric P-family sum now has its own Eq. (2.31) boundary module:
 `cmp116PGeometricFamilySummation_of_eq231`.  This proves the bond-subset
 entropy calculation behind Eq. (2.31), yielding the existing `hgeometric`
 premise from an explicit injective encoding of P-indices as bond subsets,
-`4*M^4` carrier counting, the small-coupling inequality
-`4*M^4*exp(-2*rate) <= rate`, and a separate target comparison
-`1 <= pEntropyConstant * exp(5*kappa)`.  It deliberately does not construct
+`4*M^4` carrier counting, the derived source-rate condition
+`4*M^4*exp(-2*(gamma2*epsilon1^2/(20*gk^2))) <=
+gamma2*epsilon1^2/(20*gk^2)` from the explicit sufficient hypotheses
+`0 < gk` and `80*M^4*gk^2 <= gamma2*epsilon1^2`, and a separate target
+comparison `1 <= pEntropyConstant * exp(5*kappa)`.  It deliberately does not construct
 `PIndex` or identify `pWeight`; Eq. (2.30) is only the metric/cardinality
 comparison, not the P-family summation itself.
 The direct constructors `cmp116PStageSourceBound_of_eq231_pointwise` and
@@ -1167,8 +1169,8 @@ The direct constructors `cmp116PStageSourceBound_of_eq231_pointwise` and
 Eq. (2.31) boundary into the P-stage source-bound route without an intermediate
 generic `hgeometric` premise.  This removes only finite subset-entropy
 bookkeeping; the pointwise residual majorization, source `P` construction,
-small-coupling inequality, target comparison, scalar hierarchy, and later
-post-`P` stages remain explicit hypotheses.
+source-rate smallness sufficient condition, target comparison, remaining
+scalar hierarchy, and later post-`P` stages remain explicit hypotheses.
 The `Z0` stage now similarly has the source-shaped budget predicate
 `CMP116Z0StageSourceBound` and adapter
 `cmp116Z0ResidualSummability_of_z0StageSourceBound`, using the separate scalar
@@ -1702,8 +1704,11 @@ bond-boundary data are supplied.  It first builds the P-stage boundary via
 `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise` and then applies
 the same weighted post-`P` boundary route; it still proves none of the
 Eq. (2.31) source construction, pointwise residual majorization, scalar
-smallness, weighted post-`P` source estimate, activity identification, or
-termwise estimate obligations.
+smallness hierarchy, weighted post-`P` source estimate, activity identification,
+or termwise estimate obligations.  The old opaque `hrate` premise on this route
+has been replaced by the source-shaped rate
+`gamma2*(hp t k).epsilon1^2/(20*gk^2)`, positivity `0 < gk`, and the explicit
+sufficient condition `80*M^4*gk^2 <= gamma2*(hp t k).epsilon1^2`.
 The same route now feeds the existing physical raw-source record through
 `rawSource_of_weightedPostPBoundaries`, which additionally requires the
 separated Gaussian pushforward, root-localization, Wilson-Hessian, and local
@@ -1713,8 +1718,9 @@ The specialized adapter `rawSource_of_eq231_weightedPostPBoundaries` composes
 the Eq. (2.31)-specialized Lemma-3 consumer with that same raw-source route, so
 call sites with explicit Eq. (2.31) bond-boundary data no longer need to first
 construct the intermediate P-stage boundary.  It still carries all physical
-source facts, Eq. (2.31) data, scalar restrictions, post-`P` majorization,
-activity identification, and termwise estimates as explicit inputs.
+source facts, Eq. (2.31) data, the explicit source-rate smallness condition,
+the remaining scalar restrictions, post-`P` majorization, activity
+identification, and termwise estimates as explicit inputs.
 The weighted post-`P` source package now also exposes the record-level
 constructor
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries` and the
