@@ -35,6 +35,19 @@
         "render_reference_26_page_51": "renders/cmp109-reference-26-page-51.png"
       }
     },
+    "cammarota_cmp85": {
+      "short": "Cammarota CMP85",
+      "title": "Decay of correlations for infinite range interactions in unbounded spin systems",
+      "author": "C. Cammarota",
+      "journal": "Communications in Mathematical Physics 85 (1982), 517-528",
+      "doi": "10.1007/BF01403502",
+      "web_urls": {
+        "springer": "https://link.springer.com/article/10.1007/BF01403502",
+        "project_euclid_html": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Decay-of-correlations-for-infinite-range-interactions-in-unbounded-spin/cmp/1103921545.full",
+        "project_euclid_pdf": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Decay-of-correlations-for-infinite-range-interactions-in-unbounded-spin/cmp/1103921545.pdf",
+        "researchgate_author_upload": "https://www.researchgate.net/publication/256305844_Decay_of_correlations_for_infinite_range_interactions_in_unbounded_spin_systems"
+      }
+    },
     "cmp119": {
       "short": "Balaban CMP119",
       "title": "Convergent Renormalization Expansions for Lattice Gauge Theories",
@@ -213,6 +226,49 @@
         "Exact theorem, lemma, proposition, or equation in Cammarota CMP85 proving the polymer-family summability argument needed by Balaban.",
         "Constants and threshold dependencies needed to convert Cammarota's argument into the qualitative CMP116 condition K sufficiently large and alpha6 sufficiently small.",
         "Precise dictionary from Cammarota's interaction/polymer objects to Balaban's D-families and then to the repository's DIndex/DParts fields."
+      ]
+    },
+    {
+      "key": "cammarota.cmp85.polymer-mayer-source-target",
+      "source_id": "cammarota_cmp85",
+      "locator": {
+        "printed_pages": "517-528",
+        "pdf_pages": "-",
+        "equations": ["Section 1", "Theorem 1", "general polymer Mayer series theorem"],
+        "local_text": "-",
+        "web_urls": [
+          "https://link.springer.com/article/10.1007/BF01403502",
+          "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Decay-of-correlations-for-infinite-range-interactions-in-unbounded-spin/cmp/1103921545.full",
+          "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Decay-of-correlations-for-infinite-range-interactions-in-unbounded-spin/cmp/1103921545.pdf",
+          "https://www.researchgate.net/publication/256305844_Decay_of_correlations_for_infinite_range_interactions_in_unbounded_spin_systems"
+        ]
+      },
+      "status": "source_pending",
+      "summary": "Primary bibliographic page located for Cammarota CMP85, the external argument CMP116 cites for Eq. (2.29)-type summability; the exact theorem, constants, hypotheses, and Balaban D-family dictionary are still not extracted.",
+      "extracted_claims": [
+        "Springer confirms the article metadata: C. Cammarota, Communications in Mathematical Physics 85, 517-528 (1982), DOI 10.1007/BF01403502.",
+        "The Springer abstract says the paper uses an associated polymer model and gives a proof of convergence of the Mayer series for the general polymer model.",
+        "Project Euclid advertises a PDF endpoint for this article, but the automation environment received an anti-bot HTML page rather than a PDF.",
+        "ResearchGate exposes an author-uploaded OCR/full-text view, but it is not yet a local primary PDF artifact and its OCR is too corrupted to theorem-feed Eq. (2.29)."
+      ],
+      "lean_targets": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability",
+        "cmp116_DStage_sum_le_of_eq229"
+      ],
+      "use_for": [
+        "Precise source request and access ledger for the Cammarota theorem behind CMP116 Eq. (2.29)-type D-family summability."
+      ],
+      "do_not_use_for": [
+        "Do not cite this entry as a theorem proving Eq. (2.29).",
+        "Do not use ResearchGate OCR to set Lean constants or thresholds.",
+        "Do not identify Cammarota polymers with Balaban D-families or repository DIndex/DParts until the exact theorem and dictionary are extracted."
+      ],
+      "open_questions": [
+        "Exact printed theorem/lemma/proposition/equation in Cammarota CMP85 that proves the polymer-family summability used by Balaban.",
+        "Exact smallness hypothesis, constants, metric/diameter convention, dimension dependence, and uniformity in volume.",
+        "Exact route from Cammarota's polymer-model theorem to Balaban's qualitative large-K/small-alpha6 Eq. (2.29) assertion.",
+        "Exact source-to-Lean dictionary from Cammarota polymers to Balaban D-families and then to DIndex/DParts."
       ]
     },
     {

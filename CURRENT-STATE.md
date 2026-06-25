@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 390.
+Addendum 391.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1118,6 +1118,12 @@ infinite range interactions in unbounded spin systems", CMP 85, 517-528
 (1982).  This is only a bibliographic/source-target identification; the actual
 Cammarota theorem, constants, hypotheses, and D-family dictionary remain to be
 extracted before Eq. (2.29) can become theorem-fed.
+The follow-up access key `cammarota.cmp85.polymer-mayer-source-target` records
+the Springer DOI page, Project Euclid HTML/PDF targets, and author-uploaded OCR
+mirror.  It is intentionally `source_pending`: the automation environment
+confirmed the paper-level polymer/Mayer-series relevance but did not obtain a
+clean primary theorem/PDF extract, so no Eq. (2.29) threshold or dictionary was
+promoted to Lean.
 The residual-stage layer then defines `cmp116Eq229WeightedPWeight` and proves
 `cmp116PStageSummability_of_pResidualSummability_weighted`: a normalized
 P-residual sum, multiplied by the Eq. (2.29) product, yields exactly the
@@ -1794,8 +1800,9 @@ continuum-facing scaffolding. Distance to the Clay Millennium problem remains
 1. Build the concrete YM activity-decay campaign for `hRpoly` from primary
    Balaban/Dimock sources.
 2. Extract the exact Cammarota CMP85 theorem behind CMP116's Eq. (2.29)-type
-   product summability, using the catalog key
-   `cmp109.ref26.cammarota-infinite-range-cluster` as the source target.
+   product summability, using the catalog keys
+   `cmp109.ref26.cammarota-infinite-range-cluster` and
+   `cammarota.cmp85.polymer-mayer-source-target` as the source targets.
 3. Keep the RG operator/propagator work source-grounded and oracle-clean.
 4. Do not introduce axioms or placeholder interfaces for the missing analytic
    theorem; carry gaps only as explicit theorem hypotheses.

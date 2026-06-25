@@ -1053,3 +1053,12 @@ Audit boundary: this only identifies the paper to inspect next.  It does not
 extract Cammarota's theorem, prove the large-`K`/small-`alpha6` threshold,
 identify Cammarota's objects with Balaban's `D` families, or identify those
 families with the repository's `DIndex/DParts`.
+
+The citation catalog now also records the direct Cammarota access target under
+`cammarota.cmp85.polymer-mayer-source-target`.  Springer confirms the DOI,
+pages, and paper-level polymer/Mayer-series relevance, while Project Euclid's
+PDF endpoint returned an anti-bot HTML page to the automation environment and
+the visible ResearchGate text remains an author-uploaded OCR/mirror, not a
+local primary source artifact.  This status is deliberately `source_pending`:
+it is an access ledger and source request, not a theorem or threshold
+extraction.

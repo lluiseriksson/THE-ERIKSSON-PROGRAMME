@@ -135,6 +135,9 @@ source-boundary routes:
 * visual identification of CMP116's reference `[26]`, via CMP109 printed page
   299, as the Cammarota CMP85 paper needed for the Eq. (2.29)-type summability
   argument.
+* a direct Cammarota CMP85 source-access key recording DOI, Project Euclid, and
+  author-uploaded OCR targets, with the current theorem/PDF extraction blocker
+  kept explicit instead of hidden in repeated OCR work.
 
 The practical effect is cleaner wiring from future source theorems into the
 existing UV consumer.  The remaining work is still the real source-grounded

@@ -165,6 +165,12 @@ Support/locality extraction pass (2026-06-20):
   lists C. Cammarota, "Decay of correlations for infinite range interactions in
   unbounded spin systems", CMP 85, 517-528 (1982).  This locates the next
   primary source but does not yet extract a theorem usable for Eq. (2.29).
+  The follow-up key `cammarota.cmp85.polymer-mayer-source-target` records the
+  DOI/Project Euclid/author-uploaded access targets and the current blocker:
+  the automation environment can confirm bibliographic metadata and the
+  paper-level Mayer-series/polymer-model relevance, but it has not obtained a
+  primary PDF or clean theorem text sufficient to set Lean constants,
+  thresholds, or a `D`-family dictionary.
 * CMP 119 (1988), split PDF pages 15-17 / printed pages 257-259, gives the
   localized density decomposition.  Large-field operations factor over
   connected large-field regions, the effective action is decomposed into

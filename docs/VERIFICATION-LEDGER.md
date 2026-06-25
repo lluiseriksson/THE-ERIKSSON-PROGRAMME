@@ -15610,3 +15610,51 @@ Eq. (2.29), does not formalize Cammarota's cluster/decay theorem, does not
 determine threshold dependencies for `K` or `alpha6`, and does not identify
 Cammarota's or Balaban's source families with the repository's `DIndex/DParts`.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 391 (2026-06-25, **Cammarota CMP85 source-access ledger**
+`docs/source-citations`, `docs/BALABAN-SOURCE-BOUNDS.md`,
+`docs/SOURCE-CITATIONS.md`, `docs/SOURCE-CLAIM-AUDIT.md`, `README.md`, and
+`CURRENT-STATE.md`)
+
+This checkpoint adds a direct citation/access key for the Cammarota paper
+identified in Addendum 390:
+
+```
+cammarota.cmp85.polymer-mayer-source-target
+```
+
+The entry records DOI `10.1007/BF01403502`, Springer metadata, Project Euclid
+HTML/PDF targets, and the author-uploaded ResearchGate OCR mirror.  The
+important status is negative and explicit: the automation environment confirmed
+the paper-level polymer-model/Mayer-series relevance, but did not obtain a
+clean primary PDF or theorem text that can discharge CMP116 Eq. (2.29).  Project
+Euclid returned anti-bot HTML to the automation environment; Springer exposes
+metadata and a subscription PDF path; ResearchGate exposes author-uploaded OCR
+that is too corrupted to set Lean constants or threshold hypotheses.
+
+No Lean theorem was added in this checkpoint.  The purpose is to stop repeated
+broad OCR/source searches and make the next source request exact: obtain the
+Cammarota theorem/lemma/equation, its constants and smallness hypotheses, and
+the dictionary to Balaban's `D` families before trying to theorem-feed
+`CMP116Eq229Summability`.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_citations.py show cammarota.cmp85.polymer-mayer-source-target
+python scripts\source_citations.py find Cammarota
+python scripts\source_citations.py check-local
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cammarota-source-access.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md README.md docs\BALABAN-SOURCE-BOUNDS.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json
+```
+
+Honest scope: this is an access ledger and source request, not a proof of Eq.
+(2.29).  It does not formalize Cammarota's theorem, does not determine
+large-`K`/small-`alpha6` thresholds, and does not identify Cammarota polymers,
+Balaban `D` families, or repository `DIndex/DParts`.  Clay distance **~0%
+(<0.1%), unchanged**.

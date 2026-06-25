@@ -22,6 +22,7 @@ Show one citation:
 ```powershell
 python scripts\source_citations.py show cmp116.eq231.p-bond-sum
 python scripts\source_citations.py show cmp109.ref26.cammarota-infinite-range-cluster
+python scripts\source_citations.py show cammarota.cmp85.polymer-mayer-source-target
 ```
 
 When a citation has already been visually extracted, `show` also prints compact
@@ -76,6 +77,11 @@ Use the status field defensively:
 
 No entry is a proof.  A citation becomes theorem input only after the
 corresponding Lean theorem is implemented and oracle-checked.
+
+`source_pending` entries may also record failed access attempts.  For example,
+`cammarota.cmp85.polymer-mayer-source-target` records the DOI/Project Euclid
+targets and the reason the currently visible OCR cannot theorem-feed CMP116
+Eq. (2.29).  Check that key before re-running broad Cammarota searches.
 
 ## Why This Exists
 
