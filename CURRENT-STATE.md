@@ -1843,6 +1843,14 @@ family; Lean can then turn that iff into the required filtered `PIndex`
 equality.  This removes no physical/source obligation by itself: the exact
 bond orientation, eligible carrier, and admissibility characterization remain
 the open source task.
+The citation CLI now has `python scripts\source_citations.py excerpt <key>`,
+and `cmp116.eq231.p-family-carrier-source-target` points to both the earlier
+CMP116 page-12 OCR candidate for the `P` decomposition and the page-18/19
+Eq. (2.31) window.  The candidate text says `P` is a set of bonds, `Z0` is the
+smallest localization domain containing `Y0` and `P`, and bonds of `P` must lie
+in the interior of `Z0`, but it still does not supply the source-to-Lean
+positive-orientation encoding, pointwise membership iff, or carrier-count
+theorem.
 
 The same filtered route is now exposed at the weighted post-`P` source package
 and direct Lemma-3 estimate consumers through

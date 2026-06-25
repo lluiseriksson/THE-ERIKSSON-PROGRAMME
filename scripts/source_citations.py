@@ -5,6 +5,7 @@ Query the repository's structured primary-source citation catalog.
 Examples:
   python scripts/source_citations.py list
   python scripts/source_citations.py show cmp116.eq231.p-bond-sum
+  python scripts/source_citations.py excerpt cmp116.eq231.p-bond-sum
   python scripts/source_citations.py find Eq231
   python scripts/source_citations.py lean CMP116Eq231PBondBoundary
   python scripts/source_citations.py blockers
@@ -16,6 +17,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -39,6 +41,20 @@ def source_root() -> Path:
     if env:
         return Path(env)
     return DEFAULT_SOURCE_ROOT
+
+
+def local_text_hints(locator: dict[str, Any]) -> list[str]:
+    value = locator.get("local_text")
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, list):
+        return [str(item) for item in value]
+    return []
+
+
+def format_local_text(locator: dict[str, Any]) -> str:
+    hints = local_text_hints(locator)
+    return "; ".join(hints) if hints else "-"
 
 
 def load_catalogs() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
@@ -101,8 +117,7 @@ def render_artifacts(
     for name in citation.get("locator", {}).get("renders", []):
         if name in artifacts:
             artifact_names.append(name)
-    text_hint = citation.get("locator", {}).get("local_text")
-    if isinstance(text_hint, str):
+    for text_hint in local_text_hints(citation.get("locator", {})):
         text_name = text_hint.split()[0].replace("\\", "/")
         for name, rel in artifacts.items():
             rel_name = str(rel).replace("\\", "/")
@@ -121,6 +136,73 @@ def render_artifacts(
         path = root / rel
         result.append((name, path, path.exists() if check else None))
     return result
+
+
+def local_text_excerpt_target_from_hint(
+    citation: dict[str, Any], sources: dict[str, dict[str, Any]], text_hint: str
+) -> tuple[Path, int | None, int | None]:
+    file_hint = text_hint.split()[0].replace("\\", "/")
+    line_match = re.search(r"\blines?\s+(\d+)(?:\s*[-–]\s*(\d+))?\b", text_hint)
+    start = int(line_match.group(1)) if line_match else None
+    end = int(line_match.group(2) or line_match.group(1)) if line_match else None
+    if start is not None and end is not None and end < start:
+        raise SystemExit(f"{citation['key']}: invalid line range in local_text: {text_hint}")
+
+    source = sources.get(citation["source_id"], {})
+    artifacts = source.get("local_artifacts", {})
+    root = source_root()
+    candidates: list[Path] = []
+    for rel in artifacts.values():
+        rel_name = str(rel).replace("\\", "/")
+        if rel_name == file_hint or rel_name.endswith("/" + file_hint):
+            candidates.append(root / rel)
+    if not candidates:
+        candidates.append(root / file_hint)
+
+    existing = [path for path in candidates if path.exists()]
+    if not existing:
+        formatted = ", ".join(str(path) for path in candidates)
+        raise SystemExit(f"{citation['key']}: local_text artifact not found: {formatted}")
+    return existing[0], start, end
+
+
+def local_text_excerpt_targets(
+    citation: dict[str, Any], sources: dict[str, dict[str, Any]]
+) -> list[tuple[Path, int | None, int | None]]:
+    hints = local_text_hints(citation.get("locator", {}))
+    if not hints:
+        raise SystemExit(f"{citation['key']}: locator.local_text is missing")
+    return [local_text_excerpt_target_from_hint(citation, sources, hint) for hint in hints]
+
+
+def command_excerpt(args: argparse.Namespace) -> int:
+    if args.context < 0:
+        raise SystemExit("context must be nonnegative")
+    sources, citations = load_catalogs()
+    citation = find_by_key(citations, args.key)
+    print(f"{citation['key']}")
+    for index, (path, start, end) in enumerate(local_text_excerpt_targets(citation, sources)):
+        if index:
+            print()
+        lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+
+        if start is None or end is None:
+            start = 1
+            end = len(lines)
+        start = max(1, start - args.context)
+        end = min(len(lines), end + args.context)
+        if start > len(lines):
+            raise SystemExit(f"{citation['key']}: start line is past end of file: {path}")
+
+        print(f"  source text: {path}")
+        print(f"  lines: {start}-{end}")
+        for line_no in range(start, end + 1):
+            line = lines[line_no - 1]
+            if args.no_line_numbers:
+                print(line)
+            else:
+                print(f"{line_no:>5}: {line}")
+    return 0
 
 
 def url_items(value: Any) -> list[tuple[str, str]]:
@@ -142,7 +224,7 @@ def print_compact(citation: dict[str, Any], sources: dict[str, dict[str, Any]]) 
     print(f"  equations: {', '.join(locator.get('equations', [])) or '-'}")
     print(f"  printed pages: {locator.get('printed_pages', '-')}")
     print(f"  pdf pages: {locator.get('pdf_pages', '-')}")
-    print(f"  local text: {locator.get('local_text', '-')}")
+    print(f"  local text: {format_local_text(locator)}")
     print(f"  summary: {citation.get('summary', '-')}")
     web_urls: list[tuple[str, str, str]] = []
     for name, url in url_items(source.get("web_urls")):
@@ -304,6 +386,18 @@ def build_parser() -> argparse.ArgumentParser:
     p_show.add_argument("--format", choices=["compact", "json"], default="compact")
     p_show.set_defaults(func=command_show)
 
+    p_excerpt = sub.add_parser("excerpt", help="print the local text excerpt for one citation")
+    p_excerpt.add_argument("key")
+    p_excerpt.add_argument(
+        "-C",
+        "--context",
+        type=int,
+        default=0,
+        help="number of context lines to include before and after the cited range",
+    )
+    p_excerpt.add_argument("--no-line-numbers", action="store_true")
+    p_excerpt.set_defaults(func=command_excerpt)
+
     p_find = sub.add_parser("find", help="search citation text")
     p_find.add_argument("term")
     p_find.add_argument("-v", "--verbose", action="store_true")
@@ -337,6 +431,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     parser = build_parser()
     args = parser.parse_args(argv)
     return int(args.func(args))

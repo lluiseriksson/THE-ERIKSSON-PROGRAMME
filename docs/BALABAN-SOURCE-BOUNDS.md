@@ -13,7 +13,9 @@ remains the positive quantitative transcription ledger.
 Structured lookup: [`SOURCE-CITATIONS.md`](SOURCE-CITATIONS.md) and
 `docs/source-citations/*.json` define stable citation keys for the primary-source
 anchors below.  Use `python scripts/source_citations.py show <key>` before
-opening OCR or rendered pages.
+opening OCR or rendered pages, and
+`python scripts/source_citations.py excerpt <key>` when the catalog records a
+`locator.local_text` line range.
 
 **Source-targeting audit (2026-06-20, corrected).**  For the remaining
 `hRpoly` Yang-Mills activity/locality package, do not cite mirror metadata

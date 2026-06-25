@@ -42,6 +42,16 @@ When a citation or its source metadata contains `web_urls`, `show` prints those
 direct targets as well; this is intended for source-pending entries where the
 next step is access, not formula transcription.
 
+Print the exact local OCR/text lines referenced by a citation:
+
+```powershell
+python scripts\source_citations.py excerpt cmp116.eq231.p-family-carrier-source-target
+python scripts\source_citations.py excerpt cmp116.eq231.p-family-carrier-source-target -C 3
+```
+
+The `excerpt` command reads only catalog-registered local artifacts and the
+`locator.local_text` range, so use it before reopening PDFs or running new OCR.
+
 Search by text or Lean declaration:
 
 ```powershell
@@ -146,6 +156,7 @@ ask:
 ```powershell
 python scripts\source_citations.py show cmp116.eq231.p-bond-sum
 python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_citations.py excerpt cmp116.eq231.p-family-carrier-source-target
 ```
 
 and immediately see:
@@ -153,7 +164,7 @@ and immediately see:
 * the printed/PDF page range;
 * rendered-page artifact hints;
 * direct web targets, when the catalog has them;
-* the relevant local OCR line range;
+* the relevant local OCR line range and, via `excerpt`, the line-numbered text;
 * the Lean declarations that consume the source statement;
 * what remains unsafe to claim.
 

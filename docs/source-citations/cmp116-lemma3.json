@@ -320,16 +320,20 @@
       "key": "cmp116.eq231.p-family-carrier-source-target",
       "source_id": "cmp116",
       "locator": {
-        "printed_pages": "18-19",
-        "pdf_pages": "18-19",
-        "equations": ["paragraph before 2.31", "2.31"],
-        "local_text": "cmp116-pages-15-20.txt lines 194-214",
-        "renders": ["render_source_18", "render_source_19"]
+        "printed_pages": "12, 18-19",
+        "pdf_pages": "12, 18-19",
+        "equations": ["2.3", "paragraph before 2.31", "2.31"],
+        "local_text": [
+          "balaban-rg-II-cmp116-1104161193.txt lines 467-475",
+          "cmp116-pages-15-20.txt lines 194-214"
+        ],
+        "renders": ["render_source_12", "render_source_18", "render_source_19"]
       },
       "status": "source_pending",
       "summary": "Source-targeting entry for the exact Balaban P-family membership theorem and eligible bond carrier theorem needed before identifying source PIndex with the filtered Lean family.",
       "extracted_claims": [
         "The visually confirmed Eq. (2.31) display fixes the rate rho, the gap factor M^-4*|Z0 \\ Y0|, and the powerset/cardinality bracket used by the current finite-sum theorem.",
+        "The earlier OCR candidate at CMP116 full-text lines 467-475 says that for fixed Y0 one defines a set of bonds Y0, decomposes chi_k into a sum over P subsets of Y0, takes Z0 as the smallest localization domain containing Y0 and P, and requires bonds of P to be in the interior of Z0 and not intersect dZ0.",
         "The visually confirmed paragraph describes P as a finite bond set and gives the lower bound |P| >= (1/2)*M^-4*|Z0 \\ Y0|.",
         "The inspected citation material does not yet give a formal source-to-Lean map from Balaban's P to repository PIndex/pBonds, nor does it prove the carrier upper bound recorded by CMP116Eq231PBondBoundary.",
         "Lean now has a source-neutral extensional bridge: a pointwise membership iff for PIndex yields equality with cmp116Eq231SourcePIndex, but the source membership iff remains pending."

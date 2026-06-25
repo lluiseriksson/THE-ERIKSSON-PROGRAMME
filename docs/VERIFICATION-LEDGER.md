@@ -16234,3 +16234,57 @@ filtered Lean family, does not prove the eligible-bond carrier/orientation
 dictionary, does not prove Eq. (2.29), pointwise P residual majorization,
 post-`P`, activity/termwise estimates, or any continuum/Clay result.  Clay
 distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 403 (2026-06-25, **citation local-excerpt CLI and Eq. (2.31) P source window**)
+
+Files touched:
+`scripts/source_citations.py`, `README.md`, `docs/SOURCE-CITATIONS.md`,
+`docs/BALABAN-SOURCE-BOUNDS.md`, `docs/source-citations/cmp116-lemma3.json`,
+`docs/SOURCE-CLAIM-AUDIT.md`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint reduces repeated OCR/context churn in the source workflow:
+
+- `python scripts\source_citations.py excerpt <key>` prints the line-numbered
+  local source text referenced by `locator.local_text`.
+- `excerpt` supports multiple local text ranges for one citation key, so one
+  source target can show both a definition window and a later estimate window.
+- stdout is configured as UTF-8 with replacement, preventing Windows console
+  failures on OCR characters outside the active code page.
+- `cmp116.eq231.p-family-carrier-source-target` now points to two local windows:
+  CMP116 full-text lines 467-475 for the initial `P` decomposition around Eq.
+  (2.3), and `cmp116-pages-15-20.txt` lines 194-214 for the Eq. (2.31) use.
+
+The newly recorded OCR candidate says that for fixed `Y0` the source defines a
+set of bonds, decomposes `chi_k` by a sum over `P`, takes `Z0` as the smallest
+localization domain containing `Y0` and `P`, and requires bonds of `P` to lie in
+the interior of `Z0`.  It still does not theorem-feed the exact Lean
+membership iff, positive-direction encoding, or four-direction carrier count.
+
+Verification commands for this checkpoint:
+
+```
+python -m py_compile scripts\source_citations.py
+python scripts\source_citations.py --help
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_citations.py excerpt cmp116.eq231.p-family-carrier-source-target -C 1
+python scripts\source_citations.py validate
+python scripts\source_citations.py check-local
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-citation-excerpt.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md README.md docs\SOURCE-CITATIONS.md docs\BALABAN-SOURCE-BOUNDS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json scripts\source_citations.py
+```
+
+Results: Python compilation and citation CLI checks passed; `show` and
+`excerpt` resolved the updated multi-window Eq. (2.31) source target; citation
+validation and local artifact checks passed; `lake build YangMillsCore` passed
+at 8364 jobs; `oracle_check.lean` completed and wrote
+`runtime\oracle-citation-excerpt.log`; diff, consistency, and no-forbidden-token
+checks passed.
+
+Honest scope: this is source-work tooling and a sharper citation target.  It
+does not close the Eq. (2.31) source theorem, Eq. (2.29), post-`P`,
+activity/termwise estimates, continuum construction, or Clay mass gap.  Clay
+distance **~0% (<0.1%)**, unchanged.

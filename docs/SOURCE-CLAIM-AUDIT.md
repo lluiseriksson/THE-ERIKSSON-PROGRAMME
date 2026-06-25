@@ -732,6 +732,12 @@ carrier upper bound `|Carrier(Z0,Y0)| <= 4*|Z0 \ Y0|`.  The lower bound on
 `|P|` visible before Eq. (2.31) is not that carrier upper bound.  Do not remove
 the `hPcarrier` premise from the concrete source-bond-set route until these
 facts are extracted from a primary source passage.
+The citation key now also records the earlier CMP116 full-text OCR candidate
+around lines 467-475, where `P` enters the characteristic-function
+decomposition and `Z0` is described as the smallest localization domain
+containing `Y0` and `P`, with bonds of `P` in the interior of `Z0`.  This is a
+useful source target, not yet a theorem-feeding membership iff or
+four-direction carrier count.
 The filtered source-family representation now has
 `cmp116Eq231SourcePIndex_mem_iff` and
 `cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff`, so the remaining Lean

@@ -351,6 +351,7 @@ Green: unconditional flagship. Amber: conditional on the named UV hypothesis.
 | Axiom oracle | `lake env lean oracle_check.lean` | every line ends `[propext, Classical.choice, Quot.sound]` |
 | Sorry scan | `python scripts/check_consistency.py` | `0` forbidden tokens |
 | Source citation lookup | `python scripts/source_citations.py show cmp116.eq231.p-bond-sum` | compact primary-source locator |
+| Source excerpt lookup | `python scripts/source_citations.py excerpt cmp116.eq231.p-family-carrier-source-target` | line-numbered local source text |
 
 The default `lake build` target (`YangMills.lean`) is just an alias for the core.
 **Mathlib is pinned to an exact commit** (lakefile + manifest agree), so the
