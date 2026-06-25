@@ -14560,3 +14560,40 @@ covariance-root localization, no Wilson-Hessian identification, no local
 physical activity construction, no activity identification, no termwise
 estimate, and no unconditional CMP116 Lemma 3.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 367 (2026-06-25, **charged Wilson-loop connected selection rule**
+`YangMills.L1_GibbsMeasure.GibbsSelectionRule`; core 8362)
+
+This checkpoint adds the interacting centre-charge selection theorem for the
+connected two-loop expression:
+
+```
+connected_wilsonLoopSU_gibbs_eq_zero
+```
+
+For positively oriented Wilson loops `es` and `es'`, if
+`n ∤ es.length + es'.length`, then
+`∫ W_es W_es' dμ_Gibbs - (∫ W_es dμ_Gibbs) * (∫ W_es' dμ_Gibbs) = 0`.
+The proof composes the existing total-charge product selection rule with the
+single-loop selection rule: non-divisibility of the total charge prevents both
+individual lengths from being divisible by `n`, so at least one one-point
+expectation vanishes.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-connected-wilsonloop-selection.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+The new theorem's oracle line is
+`[propext, Classical.choice, Quot.sound]`.  Honest scope: this is an exact
+finite-volume lattice symmetry consequence for the interacting Gibbs measure.
+It proves no continuum construction, no OS/Wightman reconstruction, no
+spectral-gap statement, and no CMP116 source estimate.  Clay distance
+**~0% (<0.1%), unchanged**.

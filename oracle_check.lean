@@ -106,6 +106,8 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.truncated_correlation_bound
 #print axioms YangMills.gibbs_truncated_correlation_bound
 #print axioms YangMills.sun_two_plaquette_correlator_bound
+-- interacting centre-charge selection for the connected two-loop expression:
+#print axioms YangMills.connected_wilsonLoopSU_gibbs_eq_zero
 -- UNCONDITIONAL fixed-lattice exponential clustering (no carried hypothesis):
 #print axioms YangMills.sun_lattice_exponential_clustering
 

@@ -1,8 +1,8 @@
 # Current State
 
-**Live-state snapshot updated:** 2026-06-24.  **Latest recorded verification
+**Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 360.
+Addendum 367.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -35,7 +35,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8361 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8362 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
@@ -53,6 +53,8 @@ The strong-coupling lattice side is now extensive and oracle-clean:
 * polymer reconstruction `Z = Xi = exp(K)`;
 * volume-uniform exponential clustering for local Gibbs observables;
 * finite-volume, exact-activity, and volume-uniform Wilson-loop area laws;
+* interacting centre-charge selection now includes a connected two-Wilson-loop
+  expression vanishing theorem for non-trivial total centre charge;
 * the lattice mass-gap assembly with the IR side theorem-fed;
 * the gauge-RG conditional scaffold from Balaban/Dimock-style inputs to the
   lattice UV hypothesis.

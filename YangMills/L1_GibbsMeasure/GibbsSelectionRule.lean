@@ -210,4 +210,42 @@ theorem integral_wilsonLoopSU_mul_gibbs_eq_zero {n : ℕ} [NeZero n]
       (rootOfUnity_pow_ne_one_of_not_dvd n _ hL)
   · exact h2
 
+/-- **Connected correlator selection rule:** the charged two-loop connected
+expression vanishes under the interacting Gibbs measure whenever the total
+centre charge is non-trivial.
+
+This packages the two existing symmetry consequences: the product expectation
+vanishes by the total-charge selection rule, while at least one of the two
+single-loop expectations vanishes because `n ∤ (L + L')` forbids both `L` and
+`L'` from being divisible by `n`. -/
+theorem connected_wilsonLoopSU_gibbs_eq_zero {n : ℕ} [NeZero n]
+    (pe : ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) → ℝ) (β : ℝ)
+    (es es' : List (ConcreteEdge d N))
+    (hpos : ∀ e ∈ es, e.sign = true) (hpos' : ∀ e ∈ es', e.sign = true)
+    (hL : ¬ n ∣ (es.length + es'.length)) :
+    (∫ A, wilsonLoopSU A es * wilsonLoopSU A es'
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β))
+      - (∫ A, wilsonLoopSU A es
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) *
+        (∫ A, wilsonLoopSU A es'
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) = 0 := by
+  have hprod := integral_wilsonLoopSU_mul_gibbs_eq_zero
+    (d := d) (N := N) pe β es es' hpos hpos' hL
+  have hmeans :
+      (∫ A, wilsonLoopSU A es
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) *
+        (∫ A, wilsonLoopSU A es'
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) = 0 := by
+    by_cases hdiv : n ∣ es.length
+    · have hdiv' : ¬ n ∣ es'.length := by
+        intro hdiv'
+        exact hL (Nat.dvd_add hdiv hdiv')
+      have hright := integral_wilsonLoopSU_gibbs_eq_zero
+        (d := d) (N := N) pe β es' hpos' hdiv'
+      rw [hright, mul_zero]
+    · have hleft := integral_wilsonLoopSU_gibbs_eq_zero
+        (d := d) (N := N) pe β es hpos hdiv
+      rw [hleft, zero_mul]
+  rw [hprod, hmeans, sub_zero]
+
 end YangMills
