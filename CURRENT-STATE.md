@@ -1619,6 +1619,15 @@ supplied.  The new route is still conditional; it does not prove Eq. (2.29),
 the P-stage budget, activity identification, termwise estimates, the
 majorization, or the combined post-`P` source estimate.
 
+The same lane now also has a source-neutral weighted-P-residual consumer:
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_weightedPResidualPostPResidualBound`.
+It composes the Eq. (2.29)-weighted P-stage adapter with the existing
+post-`P` residual Lemma-3 scale-family route.  This removes the explicit
+`CMP116PStageSummability` premise from that route when normalized P residual
+summability and `alpha6 >= 0` are available, while still leaving Eq. (2.29),
+the normalized P residual estimate, the combined post-`P` residual bound,
+activity identification, and termwise estimates as explicit hypotheses.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman

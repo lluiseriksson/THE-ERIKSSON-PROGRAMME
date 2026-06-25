@@ -837,6 +837,132 @@ theorem cmp116PStageSummabilityScaleFamily_of_pResidualSummability_weighted
       (hPResidual t k)
       (halpha6 t k)
 
+/-- Build a CMP116 Lemma 3 scale family from Eq. (2.29), normalized
+P-residual summability weighted by the Eq. (2.29) product, and a direct
+combined post-`P` residual budget at every scale.
+
+This removes the explicit `CMP116PStageSummability` premise on this route by
+constructing it from the normalized P-residual estimate and `alpha6 >= 0`.
+It proves no source estimate or source identification; Eq. (2.29), the
+normalized P residual, the combined post-`P` residual estimate, activity
+identification, and termwise bound remain explicit obligations. -/
+theorem cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_weightedPResidualPostPResidualBound
+    {σ ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    (hp : ∀ _ _, CMP116Lemma3Parameters)
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (sourceMetric : ∀ t k, σ t k → ℕ)
+    (physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc)
+    (DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k))
+    (alpha6 : ℕ → ℕ → ℝ)
+    (eq229Metric : ∀ t k, σ t k → ιY t k → ℕ)
+    (pResidualWeight :
+      ∀ t k, σ t k → ιD t k → ιP t k → ℝ)
+    (hEq229 :
+      ∀ t k,
+        CMP116Eq229Summability
+          (R t k).DIndex
+          (DParts t k)
+          (alpha6 t k)
+          (hp t k).delta
+          (hp t k).kappa
+          (eq229Metric t k))
+    (hPResidual :
+      ∀ t k,
+        CMP116PResidualSummability
+          (R t k).DIndex
+          (R t k).PIndex
+          (pResidualWeight t k))
+    (halpha6 : ∀ t k, 0 ≤ alpha6 t k)
+    (hpostP :
+      ∀ t k,
+        CMP116PostPResidualBound
+          (hp t k) (R t k) (sourceMetric t k)
+          (cmp116Eq229WeightedPWeight
+            (DParts t k)
+            (alpha6 t k)
+            (hp t k).delta
+            (hp t k).kappa
+            (eq229Metric t k)
+            (pResidualWeight t k)))
+    (hglobal :
+      ∀ t k Z ψ φ,
+        (physicalActivity t k Z).globalEval ψ φ =
+          balabanCMP116H (R t k) Z ψ φ)
+    (hterm :
+      ∀ t k Z x, x ∈ cmp116HIndexFinset (R t k) Z →
+        ∀ ψ φ,
+          ‖(R t k).summand
+              Z x.1.1 x.1.2 x.2.1 x.2.2 ψ φ‖ ≤
+            (R t k).termWeight
+              Z x.1.1 x.1.2 x.2.1 x.2.2) :
+    CMP116Lemma3ActivityEstimateScaleFamily
+      physicalActivity
+      sourceMetric
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa) := by
+  have hPStage :
+      ∀ t k,
+        CMP116PStageSummability
+          (R t k).DIndex
+          (R t k).PIndex
+          (cmp116Eq229WeightedPWeight
+            (DParts t k)
+            (alpha6 t k)
+            (hp t k).delta
+            (hp t k).kappa
+            (eq229Metric t k)
+            (pResidualWeight t k))
+          (fun Z D =>
+            Finset.prod (DParts t k Z D)
+              (cmp116Eq229Weight
+                (alpha6 t k)
+                (hp t k).delta
+                (hp t k).kappa
+                (eq229Metric t k Z))) := by
+    intro t k
+    simpa [cmp116Eq229Product] using
+      cmp116PStageSummability_of_pResidualSummability_weighted
+        (R t k).DIndex
+        (R t k).PIndex
+        (DParts t k)
+        (alpha6 t k)
+        (hp t k).delta
+        (hp t k).kappa
+        (eq229Metric t k)
+        (pResidualWeight t k)
+        (hPResidual t k)
+        (halpha6 t k)
+  exact
+    cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_pStagePostPResidualBound
+      hp R sourceMetric physicalActivity DParts alpha6 eq229Metric
+      (fun t k =>
+        cmp116Eq229WeightedPWeight
+          (DParts t k)
+          (alpha6 t k)
+          (hp t k).delta
+          (hp t k).kappa
+          (eq229Metric t k)
+          (pResidualWeight t k))
+      hEq229
+      hPStage
+      hpostP
+      hglobal
+      hterm
+
 /-- Pointwise scale-family majorization of the source-shaped post-`P`
 amplitude/weight by the canonical CMP116 Lemma-3 base factor.
 

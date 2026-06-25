@@ -885,3 +885,13 @@ API.
 
 The model-specific P4 frontier remains the true Balaban fluctuation activity.
 It must not be hidden behind a renamed hypothesis.
+
+## Recent CMP116 Route Note
+
+`cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_weightedPResidualPostPResidualBound`
+is source-neutral composition only.  It consumes Eq. (2.29), normalized
+P-residual summability, `alpha6 >= 0`, a direct combined post-`P` residual
+bound for the Eq. (2.29)-weighted P weights, activity identification, and
+termwise estimates.  It does not assert a source construction of the normalized
+P weights, a standalone `Z0'` source bound, or any scalar replacement for the
+Eq. (2.29) product.

@@ -14353,3 +14353,36 @@ rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills
 source estimate, no scalar smallness hierarchy, no combined post-`P` estimate,
 no activity identification, no termwise estimate, and no CMP116 Lemma 3.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 361 (2026-06-25, **CMP116 weighted P residual to Lemma-3 scale route**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8362)
+
+This checkpoint composes the Eq. (2.29)-weighted normalized P-residual adapter
+with the existing direct post-`P` residual Lemma-3 scale-family route:
+
+```
+cmp116Lemma3ActivityEstimateScaleFamily_of_eq229_weightedPResidualPostPResidualBound
+```
+
+The theorem removes the explicit `CMP116PStageSummability` premise from this
+route when normalized P-residual summability and `alpha6 >= 0` are available.
+The post-`P` residual bound is still required for the Eq. (2.29)-weighted
+P-weights, so the theorem does not hide the combined post-`P` source work.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-weighted-presidual-postp-route.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is a source-neutral composition theorem.  It proves no
+Eq. (2.29), no source construction of normalized P-residual weights, no
+standalone `Z0'` source estimate, no combined post-`P` source estimate, no
+activity identification, no termwise estimate, and no unconditional CMP116
+Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
