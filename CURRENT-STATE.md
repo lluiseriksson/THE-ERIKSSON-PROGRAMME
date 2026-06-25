@@ -1835,6 +1835,14 @@ presentation, carrier containment follows from powerset membership.  This
 still does not identify Balaban's source `P` family with that filtered Lean
 presentation; the equality of `PIndex` with the filtered powerset remains the
 source-facing dictionary obligation.
+The filtered family now also exposes the source-neutral membership theorem
+`cmp116Eq231SourcePIndex_mem_iff` and the extensional bridge
+`cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff`.  Thus a future source
+theorem only has to provide the pointwise membership iff for Balaban's `P`
+family; Lean can then turn that iff into the required filtered `PIndex`
+equality.  This removes no physical/source obligation by itself: the exact
+bond orientation, eligible carrier, and admissibility characterization remain
+the open source task.
 
 The same filtered route is now exposed at the weighted post-`P` source package
 and direct Lemma-3 estimate consumers through

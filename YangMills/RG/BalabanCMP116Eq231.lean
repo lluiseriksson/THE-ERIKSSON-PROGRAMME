@@ -76,6 +76,52 @@ def cmp116Eq231SourcePIndex
     ((gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))).powerset).filter
       (fun P => admissible Z D P = true)
 
+/-- Membership in the filtered source `P` family is exactly carrier
+containment plus the declared admissibility predicate.
+
+This is a source-neutral extensional fact about the Lean filtered family; it
+does not identify Balaban's source `P` family with this representation. -/
+theorem cmp116Eq231SourcePIndex_mem_iff
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (Z : σ) (D : ιD) (P : Finset (Cube × Fin 4)) :
+    P ∈ cmp116Eq231SourcePIndex gapCubes admissible Z D ↔
+      P ⊆ gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4)) ∧
+        admissible Z D P = true := by
+  simp [cmp116Eq231SourcePIndex, Finset.mem_powerset]
+
+/-- A pointwise membership characterization of a `PIndex` family yields the
+filtered source-family equality by finite extensionality.
+
+The theorem is deliberately conditional.  The actual source theorem still has
+to prove the `hmem` premise from Balaban's definition of the `P` family and the
+chosen bond-orientation encoding. -/
+theorem cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (hmem :
+      ∀ Z D P,
+        P ∈ PIndex Z D ↔
+          P ⊆ gapCubes Z D ×ˢ
+              (Finset.univ : Finset (Fin 4)) ∧
+            admissible Z D P = true) :
+    PIndex =
+      cmp116Eq231SourcePIndex gapCubes admissible := by
+  funext Z D
+  ext P
+  exact
+    (hmem Z D P).trans
+      (cmp116Eq231SourcePIndex_mem_iff
+        gapCubes admissible Z D P).symm
+
 /-- Membership in the filtered source `P` family automatically gives
 containment in the four-direction carrier. -/
 theorem cmp116Eq231SourcePIndex_subset_carrier

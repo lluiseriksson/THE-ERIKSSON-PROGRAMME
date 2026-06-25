@@ -292,6 +292,7 @@
       "lean_targets": [
         "CMP116Eq231PBondBoundary",
         "cmp116Eq231SourcePIndex",
+        "cmp116Eq231SourcePIndex_mem_iff",
         "CMP116Eq231PBondBoundary.of_sourceBondSets",
         "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
         "cmp116Eq231PWeight",
@@ -326,14 +327,17 @@
         "renders": ["render_source_18", "render_source_19"]
       },
       "status": "source_pending",
-      "summary": "Source-targeting entry for the exact Balaban P-family and eligible bond carrier theorem needed before eliminating the remaining carrier-containment hypothesis from the concrete source-bond-set Eq. (2.31) route.",
+      "summary": "Source-targeting entry for the exact Balaban P-family membership theorem and eligible bond carrier theorem needed before identifying source PIndex with the filtered Lean family.",
       "extracted_claims": [
         "The visually confirmed Eq. (2.31) display fixes the rate rho, the gap factor M^-4*|Z0 \\ Y0|, and the powerset/cardinality bracket used by the current finite-sum theorem.",
         "The visually confirmed paragraph describes P as a finite bond set and gives the lower bound |P| >= (1/2)*M^-4*|Z0 \\ Y0|.",
-        "The inspected citation material does not yet give a formal source-to-Lean map from Balaban's P to repository PIndex/pBonds, nor does it prove the carrier upper bound recorded by CMP116Eq231PBondBoundary."
+        "The inspected citation material does not yet give a formal source-to-Lean map from Balaban's P to repository PIndex/pBonds, nor does it prove the carrier upper bound recorded by CMP116Eq231PBondBoundary.",
+        "Lean now has a source-neutral extensional bridge: a pointwise membership iff for PIndex yields equality with cmp116Eq231SourcePIndex, but the source membership iff remains pending."
       ],
       "lean_targets": [
         "CMP116Eq231PBondBoundary",
+        "cmp116Eq231SourcePIndex_mem_iff",
+        "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
         "CMP116Eq231PBondBoundary.of_sourceBondSets",
         "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
         "cmp116PGeometricFamilySummation_of_eq231",
@@ -349,6 +353,7 @@
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],
       "use_for": [
+        "Target for proving the pointwise membership iff that identifies Balaban's source P-family with the filtered Lean PIndex family.",
         "Precise source request for removing the live carrier-containment hypothesis from concrete source-facing P-stage and M3 routes.",
         "Checklist for the source facts required to justify the four-positive-direction carrier used by the concrete finite-bond-set PIndex route."
       ],
@@ -358,6 +363,7 @@
         "Do not replace CMP116Eq231PBondBoundary with a record that merely repackages the same arbitrary data under a source name."
       ],
       "open_questions": [
+        "Exact pointwise membership characterization: P is in Balaban's source P-family iff P is contained in the eligible carrier and satisfies the admissibility condition used by cmp116Eq231SourcePIndex.",
         "Exact definition of the eligible bond universe for fixed Z0 and Y0, including orientation and adjacency conventions.",
         "Whether Balaban's P is literally a subset of that eligible carrier or an encoded object requiring a quotient/dictionary.",
         "Proof that the source P-family has an injective representation as finite bond subsets in the repository convention.",

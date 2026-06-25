@@ -16177,3 +16177,60 @@ fixed-`Z0'` source estimate, the post-(2.37) final source summation, the
 source-to-Lean `D/P/Z0/Z0'` dictionaries, Eq. (2.29), the P-stage source
 boundary, activity/termwise estimates, any source `O(1)` constant hierarchy, or
 any continuum/Clay result.  Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 402 (2026-06-25, **Eq. (2.31) filtered P-index membership bridge**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Eq231.lean`, `oracle_check.lean`,
+`docs/source-citations/cmp116-lemma3.json`, `docs/SOURCE-CITATIONS.md`,
+`docs/SOURCE-CLAIM-AUDIT.md`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint adds the finite extensionality bridge requested by the Eq.
+(2.31) P-family source audit:
+
+- `cmp116Eq231SourcePIndex_mem_iff` states membership in the Lean filtered
+  source family exactly as carrier containment plus the declared admissibility
+  predicate.
+- `cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff` proves that a
+  pointwise membership iff for an arbitrary `PIndex` is enough to identify it
+  with `cmp116Eq231SourcePIndex gapCubes admissible`.
+- The source-pending citation `cmp116.eq231.p-family-carrier-source-target` is
+  retargeted from a generic carrier request to the exact missing membership
+  theorem: a primary-source iff for Balaban's `(P)` family, including bond
+  orientation, eligible carrier, and admissibility.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+python scripts\source_citations.py validate
+python scripts\source_citations.py lean cmp116Eq231SourcePIndex_mem_iff
+python scripts\source_citations.py lean cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff
+python scripts\source_citations.py check-local
+python scripts\source_citations.py blockers
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-pindex-membership.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json YangMills\RG\BalabanCMP116Eq231.lean
+```
+
+Results: focused Lean and module builds passed; `lake build YangMillsCore`
+passed 8364 jobs; `oracle_check.lean` completed and wrote
+`runtime\oracle-eq231-pindex-membership.log`, where the new filtered-family
+membership and extensionality theorems print only the usual
+`[propext, Classical.choice, Quot.sound]` envelope.  Citation validation,
+target lookup, local artifact checks, blocker reporting, `git diff --check`,
+`check_consistency.py`, and the no-sorry/no-admit/no-axiom scan passed.  The
+blocker report now lists the Eq. (2.31) P-family membership/carrier dictionary
+as the exact source-pending target.  Build warnings were pre-existing lints
+outside this checkpoint.
+
+Honest scope: this removes only a finite extensionality burden once a source
+membership iff is supplied.  It does not prove Balaban's `(P)` family is the
+filtered Lean family, does not prove the eligible-bond carrier/orientation
+dictionary, does not prove Eq. (2.29), pointwise P residual majorization,
+post-`P`, activity/termwise estimates, or any continuum/Clay result.  Clay
+distance **~0% (<0.1%)**, unchanged.

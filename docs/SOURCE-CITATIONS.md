@@ -108,6 +108,10 @@ filtered route is also exposed for the weighted post-`P` package and direct
 Lemma-3 estimate via
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets` and
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_filteredBondSets`.
+The helper `cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff` narrows the
+remaining dictionary task to a pointwise membership iff, but that iff must
+still come from a primary source passage defining the eligible bonds and
+admissibility of Balaban's `P` family.
 The keys `cmp116.eq237.post-p-resummation` and
 `cmp116.constants.c3-alpha5` record the visually confirmed page-20 source
 data for the combined post-`P` boundary, the alpha5/C3 region, and Lemma 3's

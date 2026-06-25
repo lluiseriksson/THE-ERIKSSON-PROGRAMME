@@ -732,6 +732,12 @@ carrier upper bound `|Carrier(Z0,Y0)| <= 4*|Z0 \ Y0|`.  The lower bound on
 `|P|` visible before Eq. (2.31) is not that carrier upper bound.  Do not remove
 the `hPcarrier` premise from the concrete source-bond-set route until these
 facts are extracted from a primary source passage.
+The filtered source-family representation now has
+`cmp116Eq231SourcePIndex_mem_iff` and
+`cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff`, so the remaining Lean
+dictionary obligation can be discharged from a pointwise source membership iff.
+This is only finite extensionality over the Lean filtered family; it does not
+by itself prove that Balaban's `P` family is the filtered powerset carrier.
 The fixed-index bridge `cmp116PStageSourceBound_of_eq231_pointwise` and the
 scale-family constructor
 `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise` compose this
