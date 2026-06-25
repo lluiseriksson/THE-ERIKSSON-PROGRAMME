@@ -1087,6 +1087,13 @@ but still requires the combined `CMP116PostPResidualSourceBound`.  It does not
 identify CMP116's `Z0/Z0'` source indices with repository indices, prove the
 post-`P` finite source sum, or evaluate/identify any source `O(1)` constants.
 
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization` and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization`
+propagate that removal into the weighted post-`P` source package and direct
+Lemma-3 estimate.  They still require Eq. (2.29), a P-stage source boundary,
+the combined `CMP116PostPResidualSourceBound`, and the activity/termwise
+boundary explicitly.
+
 ### CMP116 reference [26] behind Eq. (2.29)
 
 CMP116 printed page 18 says that inequalities of the Eq. (2.29) type can be

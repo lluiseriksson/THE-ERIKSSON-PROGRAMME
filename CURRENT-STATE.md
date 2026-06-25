@@ -1862,6 +1862,14 @@ the Eq. (2.37) route: callers still provide the combined post-`P` source sum,
 but the separate Lemma-3 weight majorization is theorem-generated from the new
 Eq. (2.37) boundary.
 
+The same Eq. (2.37) route now feeds the weighted post-`P` package and direct
+Lemma-3 estimate through
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization` and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization`.
+These constructors keep Eq. (2.29), the P-stage source boundary, the combined
+post-`P` source sum, and activity/termwise boundary explicit while generating
+the canonical post-`P` majorization from `CMP116Eq237MajorizationBoundary`.
+
 This is not full post-`P` source closure.  The combined source estimate
 `CMP116PostPResidualSourceBound`, the exact `Z0/Z0'` source-to-Lean index
 dictionary, finite-family reindexing, and numerical/O(1) constant majorants

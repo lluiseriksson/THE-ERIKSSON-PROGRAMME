@@ -115,7 +115,11 @@ final amplitude shape.  The Lean Eq. (2.37) consumer
 `CMP116Eq237MajorizationBoundary` now turns the seven-delta decay plus residual
 budget into the canonical Lemma-3 post-`P` majorization, while the combined
 post-`P` source estimate and `Z0/Z0'` source-to-Lean dictionary remain separate
-open obligations.
+open obligations.  The package-level constructors
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization` and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization`
+propagate that source-shaped majorization into the weighted post-`P` Lemma-3
+route.
 Use `python scripts\source_citations.py blockers` at the start of a source
 wake to see all `source_pending` and `ocr_corrupted` entries with their Lean
 targets and first open question.

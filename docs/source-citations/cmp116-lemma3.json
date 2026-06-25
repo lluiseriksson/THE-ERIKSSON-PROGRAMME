@@ -388,6 +388,8 @@
         "cmp116Eq237_residualExponent_absorbed",
         "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
         "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_sourceBound_eq237Majorization",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization",
         "CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_source_bound",
         "CMP116PostPResidualSourceBound",
         "CMP116PostPResidualSourceMajorizationScaleFamily"
@@ -431,6 +433,8 @@
         "CMP116Lemma3Parameters",
         "CMP116Eq237MajorizationBoundary",
         "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization",
         "CMP116Lemma3WeightedPostPSourceScaleBoundary",
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],
