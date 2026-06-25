@@ -14524,3 +14524,39 @@ P-stage source estimate, no scalar smallness theorem, no post-`P` source
 estimate, no post-`P` majorization theorem, no activity identification, no
 termwise estimate, and no unconditional CMP116 Lemma 3.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 366 (2026-06-25, **CMP116 weighted boundary raw-source adapter**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8362)
+
+This checkpoint adds the thin raw-source adapter from the named weighted
+post-`P` boundary subpackages plus separated physical source facts:
+
+```
+rawSource_of_weightedPostPBoundaries
+```
+
+The adapter composes
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries`
+with `rawSource_of_lemma3ActivityEstimate`, so the output is the existing
+`PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses` family with
+the canonical CMP116 Lemma-3 weight and amplitude.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-weighted-boundary-raw-source.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is adapter composition only.  It proves no Eq. (2.29),
+no P-stage source estimate, no scalar smallness theorem, no post-`P` source
+estimate, no post-`P` majorization theorem, no Gaussian pushforward, no
+covariance-root localization, no Wilson-Hessian identification, no local
+physical activity construction, no activity identification, no termwise
+estimate, and no unconditional CMP116 Lemma 3.  Clay distance **~0% (<0.1%),
+unchanged**.

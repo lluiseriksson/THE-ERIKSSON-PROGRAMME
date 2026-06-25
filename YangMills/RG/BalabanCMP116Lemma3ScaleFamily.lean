@@ -1791,6 +1791,111 @@ def lemma3_activity_estimate_of_boundaries
 
 end CMP116Lemma3WeightedPostPScaleSourceAssumptions
 
+/-- Build raw-source records directly from the named weighted post-`P` boundary
+subpackages and the separated Gaussian/root/Hessian/activity source facts.
+
+This is a thin composition of
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries`
+with `rawSource_of_lemma3ActivityEstimate`; it proves none of the analytic or
+physical source obligations supplied as inputs. -/
+def rawSource_of_weightedPostPBoundaries
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    {ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {D :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      ∀ _t _k : ℕ,
+        Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (OmegaPolymerType HF (z t k))
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {DParts :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιY t k → ℕ}
+    {pResidualWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ}
+    {postPSourceWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop}
+    (gaussian_pushforward :
+      ∀ t k,
+        (balabanCMP116Dmu0 (Cube d L) lieDim).map
+            ((D t k).gaussianRootMap (root t k)) =
+          physicalGaussian t k)
+    (root_localization :
+      ∀ t k, rootLocalization t k)
+    (wilson_hessian_identification :
+      ∀ t k, wilsonHessianIdentification t k)
+    (local_physical_activity_construction :
+      ∀ t k, localActivityConstruction t k)
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary
+        hp R DParts alpha6 eq229Metric)
+    (pStage :
+      CMP116Lemma3PStageSourceScaleBoundary
+        R pResidualWeight pStageBlockScale pEntropyConstant
+        epsilon2 pStageKappa)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary
+        hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude)
+    (activity :
+      CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity) :
+    ∀ t k,
+      PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        (D t k)
+        (root t k)
+        (physicalGaussian t k)
+        (physicalActivity t k)
+        (cmp116Lemma3ScaleWeight
+          sourceMetric
+          (fun t k => (hp t k).blockScale)
+          (fun t k => (hp t k).delta)
+          (fun t k => (hp t k).kappa)
+          t k)
+        (cmp116Lemma3ScaleAmplitude
+          (fun t k => (hp t k).C3)
+          (fun t k => (hp t k).epsilon1)
+          t k)
+        (rootLocalization t k)
+        (wilsonHessianIdentification t k)
+        (localActivityConstruction t k) :=
+  rawSource_of_lemma3ActivityEstimate
+    gaussian_pushforward
+    root_localization
+    wilson_hessian_identification
+    local_physical_activity_construction
+    (CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries
+      eq229 pStage postP activity)
+
 /-- Build a CMP116 Lemma 3 scale family from Eq. (2.29), a source-shaped
 P-stage bound plus scalar smallness, and fixed-`P` residual-stage summability
 at every scale.

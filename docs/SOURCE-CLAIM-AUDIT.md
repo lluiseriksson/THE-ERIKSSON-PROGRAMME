@@ -921,3 +921,9 @@ is the direct downstream consumer of those boundary records.  It first assembles
 the checked weighted post-`P` package and then applies the existing
 `lemma3_activity_estimate` projection.  It adds no source theorem and discharges
 none of the four boundary packages.
+
+`rawSource_of_weightedPostPBoundaries` composes that direct consumer with the
+pre-existing `rawSource_of_lemma3ActivityEstimate` adapter.  It still requires
+the Gaussian pushforward, covariance-root localization, Wilson-Hessian
+identification, and local physical activity construction hypotheses explicitly.
+It is not evidence for any of those physical/source facts.

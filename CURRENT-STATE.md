@@ -1648,6 +1648,11 @@ Its direct consumer
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries`
 composes those same boundary records into the existing Lemma-3 scale-family
 estimate without introducing a monolithic source premise.
+The same route now feeds the existing physical raw-source record through
+`rawSource_of_weightedPostPBoundaries`, which additionally requires the
+separated Gaussian pushforward, root-localization, Wilson-Hessian, and local
+activity-construction hypotheses already used by the earlier raw-source
+adapter.
 
 ## What Is Not Claimed
 
