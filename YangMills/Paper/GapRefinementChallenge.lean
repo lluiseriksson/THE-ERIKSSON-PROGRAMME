@@ -146,6 +146,39 @@ theorem
   obtain ⟨r, E, hE, _hEpos, hlt⟩ := hsmall Δ hΔ
   exact (not_lt_of_ge (hgap r E hE)) hlt
 
+/-- If every declared regulator-dependent excitation has positive energy, then
+failure of a regulator-uniform positive gap produces arbitrarily small positive
+excitations along the refinement family. -/
+theorem
+    refinementsProduceArbitrarilySmallPositiveExcitations_of_not_hasUniformPositiveEnergyGap
+    {Regulator : Type*} {excitation : Regulator → ℝ → Prop}
+    (hpositive : ∀ (r : Regulator) (E : ℝ), excitation r E → 0 < E)
+    (hnogap : ¬ HasUniformPositiveEnergyGap excitation) :
+    RefinementsProduceArbitrarilySmallPositiveExcitations excitation := by
+  intro Δ hΔ
+  by_contra hnone
+  apply hnogap
+  refine ⟨Δ, hΔ, ?_⟩
+  intro r E hE
+  exact le_of_not_gt fun hlt =>
+    hnone ⟨r, E, hE, hpositive r E hE, hlt⟩
+
+/-- Under positivity of all declared regulator-dependent excitations, failure
+of a regulator-uniform positive gap is equivalent to the existence of
+arbitrarily small positive excitation energies along the refinement family. -/
+theorem
+    not_hasUniformPositiveEnergyGap_iff_refinementsProduceArbitrarilySmallPositiveExcitations
+    {Regulator : Type*} {excitation : Regulator → ℝ → Prop}
+    (hpositive : ∀ (r : Regulator) (E : ℝ), excitation r E → 0 < E) :
+    ¬ HasUniformPositiveEnergyGap excitation ↔
+      RefinementsProduceArbitrarilySmallPositiveExcitations excitation := by
+  constructor
+  · exact
+      refinementsProduceArbitrarilySmallPositiveExcitations_of_not_hasUniformPositiveEnergyGap
+        hpositive
+  · exact
+      not_hasUniformPositiveEnergyGap_of_refinementsProduceArbitrarilySmallPositiveExcitations
+
 /-- If refinements produce arbitrarily small positive excitation energies, then
 no choice of stagewise positive lower bounds can itself be bounded below by one
 positive regulator-independent constant. -/

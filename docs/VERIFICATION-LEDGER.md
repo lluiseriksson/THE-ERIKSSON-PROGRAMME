@@ -14735,41 +14735,6 @@ the interacting Gibbs measure.  It proves no continuum construction, no
 OS/Wightman reconstruction, no spectral-gap statement, and no CMP116 source
 estimate.  Clay distance **~0% (<0.1%), unchanged**.
 
-## Addendum 372 (2026-06-25, **stagewise lower-bound obstruction**
-`YangMills.Paper.GapRefinementChallenge`; core 8362)
-
-This checkpoint adds the generic bounded-stagewise obstruction:
-
-```
-not_exists_stagewise_gaps_boundedBelow_of_refinementsProduceArbitrarilySmallPositiveExcitations
-```
-
-If a regulator family produces arbitrarily small positive excitation energies,
-then no chosen family of stagewise positive lower bounds can itself be bounded
-below by one positive regulator-independent constant.  The proof composes the
-previously verified arbitrarily-small-refinement obstruction to a uniform gap
-with the exact criterion
-`hasUniformPositiveEnergyGap_iff_exists_stagewise_gaps_boundedBelow`.
-
-Verification commands for this checkpoint:
-
-```
-lake env lean YangMills\Paper\GapRefinementChallenge.lean
-lake build YangMillsCore
-lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-stagewise-bound-obstruction.log
-git diff --check
-git diff --cached --check
-python scripts\check_consistency.py
-rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\Paper\GapRefinementChallenge.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
-```
-
-The new theorem oracle line is `[propext, Classical.choice, Quot.sound]`.
-Honest scope: this is logical continuum-limit quantifier infrastructure only.
-It proves no Yang-Mills Hamiltonian construction, no model-specific excitation
-spectrum, no continuum measure, no OS/Wightman reconstruction, no CMP116
-activity estimate, and no Clay mass gap.  Clay distance
-**~0% (<0.1%), unchanged**.
-
 ## Addendum 371 (2026-06-25, **connected holomorphic finite-product selection**
 `YangMills.L1_GibbsMeasure.GibbsSelectionRule`; core 8362)
 
@@ -14811,3 +14776,75 @@ Honest scope: this is an exact finite-volume lattice symmetry consequence for
 the interacting Gibbs measure.  It proves no continuum construction, no
 OS/Wightman reconstruction, no spectral-gap statement, and no CMP116 source
 estimate.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 372 (2026-06-25, **stagewise lower-bound obstruction**
+`YangMills.Paper.GapRefinementChallenge`; core 8362)
+
+This checkpoint adds the generic bounded-stagewise obstruction:
+
+```
+not_exists_stagewise_gaps_boundedBelow_of_refinementsProduceArbitrarilySmallPositiveExcitations
+```
+
+If a regulator family produces arbitrarily small positive excitation energies,
+then no chosen family of stagewise positive lower bounds can itself be bounded
+below by one positive regulator-independent constant.  The proof composes the
+previously verified arbitrarily-small-refinement obstruction to a uniform gap
+with the exact criterion
+`hasUniformPositiveEnergyGap_iff_exists_stagewise_gaps_boundedBelow`.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\Paper\GapRefinementChallenge.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-stagewise-bound-obstruction.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\Paper\GapRefinementChallenge.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new theorem oracle line is `[propext, Classical.choice, Quot.sound]`.
+Honest scope: this is logical continuum-limit quantifier infrastructure only.
+It proves no Yang-Mills Hamiltonian construction, no model-specific excitation
+spectrum, no continuum measure, no OS/Wightman reconstruction, no CMP116
+activity estimate, and no Clay mass gap.  Clay distance
+**~0% (<0.1%), unchanged**.
+
+## Addendum 373 (2026-06-25, **uniform-gap failure equivalence**
+`YangMills.Paper.GapRefinementChallenge`; core 8362)
+
+This checkpoint closes the logical converse for the regulator-gap quantifier
+infrastructure:
+
+```
+refinementsProduceArbitrarilySmallPositiveExcitations_of_not_hasUniformPositiveEnergyGap
+not_hasUniformPositiveEnergyGap_iff_refinementsProduceArbitrarilySmallPositiveExcitations
+```
+
+Under the explicit hypothesis that every declared excitation energy is
+positive, failure of a regulator-uniform positive gap is equivalent to the
+existence of arbitrarily small positive excitation energies along the
+refinement family.  The forward direction unwraps the negation of the uniform
+lower-bound existential and uses positivity to build the refinement witness.
+The reverse direction is the previously verified obstruction theorem.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\Paper\GapRefinementChallenge.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-uniform-gap-refinement-iff.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\Paper\GapRefinementChallenge.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+Both new theorem oracle lines are `[propext, Classical.choice, Quot.sound]`.
+Honest scope: this is logical continuum-limit quantifier infrastructure only.
+It proves no Yang-Mills Hamiltonian construction, no model-specific excitation
+spectrum, no continuum measure, no OS/Wightman reconstruction, no CMP116
+activity estimate, and no Clay mass gap.  Clay distance
+**~0% (<0.1%), unchanged**.
