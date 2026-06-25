@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP116Eq229
+import YangMills.RG.BalabanCMP116Eq231
 
 /-!
 # CMP116 residual-stage resummation interface
@@ -127,8 +127,10 @@ theorem cmp116PStageSummability_of_pResidualSummability_weighted
 before applying the corresponding scalar smallness restriction.
 
 CMP116, Lemma-3 proof on printed pages 18--20: the P/residual resummation step
-uses the geometric inequality (2.30) as an input and later applies the displayed
-restriction `2 (L+2)^4 O(1) epsilon2 exp(5 kappa) <= 1`.  The constant
+uses the finite P-bond summation in equation (2.31), while equation (2.30) is
+only the surrounding metric/cardinality comparison used later in the argument.
+The proof then applies the displayed restriction
+`2 (L+2)^4 O(1) epsilon2 exp(5 kappa) <= 1`.  The constant
 `pEntropyConstant` names the source's stage-specific `O(1)` majorant.  This
 predicate records only the source-shaped finite bound; it does not construct
 the source `P` family, identify `pWeight`, or prove the scalar restriction. -/
@@ -145,11 +147,11 @@ def CMP116PStageSourceBound
         pEntropyConstant * epsilon2 * Real.exp (5 * kappa)
 
 /-- A pointwise P-term estimate plus the finite geometric P-family summation
-consequence of CMP116 equation (2.30) produces the exact source-shaped
-P-stage bound.
+consequence of CMP116 equation (2.31) produces the exact source-shaped P-stage
+bound.
 
 The hypothesis `hgeometric` is deliberately stated as the finite-sum
-consequence used in the P-stage argument, not as equation (2.30) itself.  The
+consequence used in the P-stage argument, not as equation (2.31) itself.  The
 source-specific construction of `PIndex`, `pWeight`, `pGeometryWeight`, and the
 scalar smallness restriction remain separate obligations. -/
 theorem cmp116PStageSourceBound_of_pointwise_geometric
@@ -199,6 +201,55 @@ theorem cmp116PStageSourceBound_of_pointwise_geometric
         pEntropyConstant * epsilon2 * Real.exp (5 * kappa) := by
           dsimp [A]
           ring
+
+/-- CMP116 equation (2.31) bond-subset entropy, combined with the pointwise
+P-term estimate, produces the P-stage source bound.
+
+This removes the intermediate finite geometric-sum hypothesis from
+`cmp116PStageSourceBound_of_pointwise_geometric`.  It still does not construct
+the source `P` family, identify the residual/geometry weights, or prove the
+small-coupling and target-comparison inequalities. -/
+theorem cmp116PStageSourceBound_of_eq231_pointwise
+    {σ ιD ιP β : Type*}
+    (DIndex : σ → Finset ιD)
+    (PIndex : σ → ιD → Finset ιP)
+    (pWeight pGeometryWeight : σ → ιD → ιP → ℝ)
+    (blockScale localizationScale : ℕ)
+    (pEntropyConstant epsilon2 kappa rate : ℝ)
+    (B :
+      CMP116Eq231PBondBoundary
+        (β := β) DIndex PIndex localizationScale)
+    (hepsilon2_nonneg : 0 ≤ epsilon2)
+    (hpointwise :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ PIndex Z D →
+          pWeight Z D P ≤
+            (2 * (((blockScale : ℝ) + 2) ^ 4) * epsilon2) *
+              pGeometryWeight Z D P)
+    (hrate :
+      4 * ((localizationScale : ℝ) ^ 4) *
+          Real.exp (-(2 * rate)) ≤ rate)
+    (hgeometry :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ PIndex Z D →
+          pGeometryWeight Z D P ≤
+            cmp116Eq231PWeight
+              rate B.gapMass B.pBonds Z D P)
+    (htarget :
+      1 ≤ pEntropyConstant * Real.exp (5 * kappa)) :
+    CMP116PStageSourceBound
+      DIndex PIndex pWeight
+      blockScale pEntropyConstant epsilon2 kappa := by
+  exact
+    cmp116PStageSourceBound_of_pointwise_geometric
+      DIndex PIndex pWeight pGeometryWeight
+      blockScale pEntropyConstant epsilon2 kappa
+      hepsilon2_nonneg
+      hpointwise
+      (cmp116PGeometricFamilySummation_of_eq231
+        DIndex PIndex pGeometryWeight
+        localizationScale rate pEntropyConstant kappa
+        B hrate hgeometry htarget)
 
 /-- The CMP116 P-stage source estimate, together with its explicit scalar
 smallness restriction, implies the source-neutral normalized P-stage predicate

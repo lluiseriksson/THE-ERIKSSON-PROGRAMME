@@ -1147,6 +1147,23 @@ to the normalized `CMP116PResidualSummability`.  This names the source-budget
 shape without proving the construction of `PIndex`, `pWeight`, the geometric
 summation consequence, the source constant hierarchy, or the remaining
 `Z0/Z0'` stages.
+The finite geometric P-family sum now has its own Eq. (2.31) boundary module:
+`CMP116Eq231PBondBoundary`, `cmp116Eq231PWeight`, and
+`cmp116PGeometricFamilySummation_of_eq231`.  This proves the bond-subset
+entropy calculation behind Eq. (2.31), yielding the existing `hgeometric`
+premise from an explicit injective encoding of P-indices as bond subsets,
+`4*M^4` carrier counting, the small-coupling inequality
+`4*M^4*exp(-2*rate) <= rate`, and a separate target comparison
+`1 <= pEntropyConstant * exp(5*kappa)`.  It deliberately does not construct
+`PIndex` or identify `pWeight`; Eq. (2.30) is only the metric/cardinality
+comparison, not the P-family summation itself.
+The direct constructors `cmp116PStageSourceBound_of_eq231_pointwise` and
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise` now feed that
+Eq. (2.31) boundary into the P-stage source-bound route without an intermediate
+generic `hgeometric` premise.  This removes only finite subset-entropy
+bookkeeping; the pointwise residual majorization, source `P` construction,
+small-coupling inequality, target comparison, scalar hierarchy, and later
+post-`P` stages remain explicit hypotheses.
 The `Z0` stage now similarly has the source-shaped budget predicate
 `CMP116Z0StageSourceBound` and adapter
 `cmp116Z0ResidualSummability_of_z0StageSourceBound`, using the separate scalar

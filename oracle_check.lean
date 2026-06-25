@@ -1414,6 +1414,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116H_termWeightSum_eq_nested
 #print axioms YangMills.RG.cmp116H_termWeightSum_le_of_eq229
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimate_of_eq229_postD
+#print axioms YangMills.RG.CMP116Eq231PBondBoundary
+#print axioms YangMills.RG.cmp116Eq231PWeight
+#print axioms YangMills.RG.cmp116PGeometricFamilySummation_of_eq231
+#print axioms YangMills.RG.cmp116PStageSourceBound_of_eq231_pointwise
 #print axioms YangMills.RG.CMP116PResidualSummability
 #print axioms YangMills.RG.cmp116Eq229WeightedPWeight
 #print axioms YangMills.RG.cmp116Eq229WeightedPWeight_nonneg
@@ -1435,6 +1439,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Lemma3Eq229ScaleBoundary
 #print axioms YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary
 #print axioms YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.of_pointwise_geometric
+#print axioms YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise
 #print axioms YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.p_residual_summability
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_residual_bound

@@ -1214,6 +1214,88 @@ def CMP116Lemma3PStageSourceScaleBoundary.of_pointwise_geometric
 
   p_residual_weight_nonneg := hpResidual_nonneg
 
+/-- Scale-family constructor for the P-stage source boundary from the explicit
+CMP116 Eq. (2.31) bond-subset entropy boundary.
+
+This is the theorem-fed variant of `of_pointwise_geometric`: it derives the
+finite geometric P-family summation from `CMP116Eq231PBondBoundary` at each
+scale.  The source construction of the `P` families, pointwise residual
+majorization, scalar smallness, and constant hierarchy remain explicit inputs. -/
+def CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise
+    {σ ιD ιP ιZ0 ιZ0' β : ℕ → ℕ → Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (pResidualWeight pGeometryWeight :
+      ∀ t k, σ t k → ιD t k → ιP t k → ℝ)
+    (pStageBlockScale eq231LocalizationScale : ℕ → ℕ → ℕ)
+    (pEntropyConstant epsilon2 pStageKappa eq231Rate : ℕ → ℕ → ℝ)
+    (B :
+      ∀ t k,
+        CMP116Eq231PBondBoundary
+          (β := β t k)
+          (R t k).DIndex
+          (R t k).PIndex
+          (eq231LocalizationScale t k))
+    (hepsilon2_nonneg : ∀ t k, 0 ≤ epsilon2 t k)
+    (hpointwise :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pResidualWeight t k Z D P ≤
+            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+                epsilon2 t k) *
+              pGeometryWeight t k Z D P)
+    (hrate :
+      ∀ t k,
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp (-(2 * eq231Rate t k)) ≤ eq231Rate t k)
+    (hgeometry :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pGeometryWeight t k Z D P ≤
+            cmp116Eq231PWeight
+              (eq231Rate t k) (B t k).gapMass (B t k).pBonds Z D P)
+    (htarget :
+      ∀ t k,
+        1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
+    (hsmall :
+      ∀ t k,
+        2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+            pEntropyConstant t k * epsilon2 t k *
+              Real.exp (5 * pStageKappa t k) ≤ 1)
+    (hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P) :
+    CMP116Lemma3PStageSourceScaleBoundary
+      R pResidualWeight pStageBlockScale pEntropyConstant
+      epsilon2 pStageKappa where
+
+  p_stage_source_bound := fun t k =>
+    cmp116PStageSourceBound_of_eq231_pointwise
+      (R t k).DIndex
+      (R t k).PIndex
+      (pResidualWeight t k)
+      (pGeometryWeight t k)
+      (pStageBlockScale t k)
+      (eq231LocalizationScale t k)
+      (pEntropyConstant t k)
+      (epsilon2 t k)
+      (pStageKappa t k)
+      (eq231Rate t k)
+      (B t k)
+      (hepsilon2_nonneg t k)
+      (hpointwise t k)
+      (hrate t k)
+      (hgeometry t k)
+      (htarget t k)
+
+  p_stage_smallness := hsmall
+
+  p_residual_weight_nonneg := hpResidual_nonneg
+
 /-- The P-stage source boundary exposes normalized P-residual summability after
 applying its explicit scalar smallness field.
 

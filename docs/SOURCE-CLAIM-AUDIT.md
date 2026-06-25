@@ -650,10 +650,12 @@ Eq. (2.29) consumer through
 `cmp116H_termWeightSum_le_of_eq229_of_residualStages`.
 
 This interface does **not** identify those predicates with CMP116 equations
-(2.27), (2.30), (2.32), (2.34), (2.36), or (2.37), and it does **not** prove
-the source constants or smallness conditions.  A future source extraction must
-still supply the normalized `P`, `Z0`, and `Z0'` residual estimates and the
-pointwise term-weight factorization from the primary text.
+(2.27), (2.32), (2.34), (2.36), or (2.37), and it does **not** prove the source
+constants or smallness conditions.  Equation (2.30) is only the metric/cardinality
+comparison around the P-stage argument; the literal P-family summation is
+equation (2.31).  A future source extraction must still supply the normalized
+`P`, `Z0`, and `Z0'` residual estimates and the pointwise term-weight
+factorization from the primary text.
 
 The P stage now has the source-shaped predicate
 `CMP116PStageSourceBound` and adapter
@@ -679,6 +681,29 @@ These are composition theorems only.  They replace a normalized
 scalar smallness restriction; they do not assign source status to Eq. (2.29),
 the `Z0` stage, the `Z0'` stage, the pointwise factorization, the termwise
 complex estimate, or physical activity identification.
+
+The finite P-family entropy step now has a separate Eq. (2.31) boundary in
+`YangMills.RG.BalabanCMP116Eq231`: `CMP116Eq231PBondBoundary` records an
+injective encoding of current `PIndex` entries as finite bond sets, containment
+inside an eligible bond carrier, nonnegativity of the gap mass, and the
+`4*M^4` carrier-count bound.  The theorem
+`cmp116PGeometricFamilySummation_of_eq231` proves the finite powerset
+calculation
+`sum_P pGeometryWeight <= 1`, then weakens it to the existing constructor's
+`pEntropyConstant * exp (5*kappa)` target through an explicit `htarget`
+hypothesis.  This corrects earlier loose language: the `hgeometric` premise is
+fed by Eq. (2.31), not by Eq. (2.30) alone.  The theorem still does not
+construct `PIndex`, identify `pGeometryWeight`, prove the small-coupling
+inequality `4*M^4*exp(-2*rate) <= rate`, or prove the pointwise P-residual
+majorization.
+The fixed-index bridge `cmp116PStageSourceBound_of_eq231_pointwise` and the
+scale-family constructor
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise` compose this
+Eq. (2.31) finite subset-entropy theorem with the existing pointwise P-term
+estimate.  They remove only the intermediate abstract `hgeometric` premise:
+the source construction of `PIndex`, identification of `pResidualWeight` and
+`pGeometryWeight`, scalar smallness, target comparison, and post-`P` source
+estimates remain separate obligations.
 
 The `Z0` stage now also has the source-shaped predicate
 `CMP116Z0StageSourceBound` and adapter

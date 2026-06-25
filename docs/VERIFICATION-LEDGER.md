@@ -14870,8 +14870,9 @@ CMP116PStageSourceBound
 The theorem is intentionally not a restatement of `CMP116PStageSourceBound`:
 its premises split the P argument into a pointwise source-term bound and a
 separate finite geometric sum.  It also deliberately does not call the
-geometric summation premise equation (2.30) itself; it is the finite-sum
+geometric summation premise equation (2.31) itself; it is the finite-sum
 consequence one obtains after extracting the source P-family geometry.
+Equation (2.30) is only the surrounding metric/cardinality comparison.
 
 Verification commands for this checkpoint:
 
@@ -15002,5 +15003,58 @@ Honest scope: this is a source-neutral consumer of already supplied Eq. (2.29),
 P-stage, and post-`P` source boundaries.  It proves no source construction of
 the `D/P/Z0/Z0'` families, no scalar-smallness hierarchy, no Eq. (2.29), no
 combined post-`P` source estimate, no activity identification, no termwise
+complex estimate, and no Clay mass gap.  Clay distance
+**~0% (<0.1%), unchanged**.
+
+## Addendum 378 (2026-06-25, **CMP116 Eq. (2.31) P-bond entropy boundary**
+`YangMills.RG.BalabanCMP116Eq231`; direct P-stage bridge; core 8363)
+
+This checkpoint adds the narrow Eq. (2.31) P-bond boundary and finite subset
+entropy theorem, then connects it directly to the existing P-stage
+source-bound route:
+
+```
+CMP116Eq231PBondBoundary
+cmp116Eq231PWeight
+cmp116PGeometricFamilySummation_of_eq231
+cmp116PStageSourceBound_of_eq231_pointwise
+CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise
+```
+
+The boundary records only the data needed to overcount current `PIndex`
+entries by finite bond subsets: an injective bond-set encoding, containment in
+an eligible bond carrier, nonnegative gap mass, and the carrier count
+`#carrier <= 4*M^4*gapMass`.  The theorem proves the finite powerset estimate
+behind Eq. (2.31), using
+`4*M^4*exp(-2*rate) <= rate`, and then weakens the resulting `<= 1` bound to
+the existing P-stage constructor target through the explicit hypothesis
+`1 <= pEntropyConstant * exp(5*kappa)`.
+
+This also corrects the local attribution in
+`BalabanCMP116Lemma3ResidualStages.lean`: Eq. (2.30) is the metric/cardinality
+comparison, not the P-family summation.  The direct constructors remove the
+intermediate abstract `hgeometric` premise when the Eq. (2.31) bond boundary is
+available.  The existing public P-stage API names are unchanged.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-pstage-direct.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Eq231.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+The new theorem oracle lines are `[propext, Classical.choice, Quot.sound]`.
+Honest scope: this proves only the finite Eq. (2.31) bond-subset entropy
+estimate under an explicit boundary and its finite composition into the
+P-stage source-bound route.  It proves no construction of `PIndex`, no source
+identification of `pWeight` or `pGeometryWeight`, no Eq. (2.29), no scalar
+hierarchy, no post-`P` estimate, no activity identification, no termwise
 complex estimate, and no Clay mass gap.  Clay distance
 **~0% (<0.1%), unchanged**.
