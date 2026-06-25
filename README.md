@@ -127,6 +127,8 @@ source-boundary routes:
   route into the raw-source M3 frontier.
 * a source-shaped Eq. (2.31) rate-condition reducer replacing the opaque
   `hrate` input with `0 < gk` and `80*M^4*gk^2 <= gamma2*epsilon1^2`.
+* visual extraction of the CMP116 Eq. (2.31) P-summation display into the
+  repository citation catalog.
 
 The practical effect is cleaner wiring from future source theorems into the
 existing UV consumer.  The remaining work is still the real source-grounded

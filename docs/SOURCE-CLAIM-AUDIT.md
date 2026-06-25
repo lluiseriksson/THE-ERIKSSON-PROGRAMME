@@ -702,6 +702,14 @@ implication from `0 < gk` and that explicit sufficient inequality to the
 transcendental rate condition
 `4*M^4*exp(-2*(gamma2*epsilon1^2/(20*gk^2))) <=
 gamma2*epsilon1^2/(20*gk^2)`.
+The local citation key `cmp116.eq231.p-bond-sum` now records a visual
+extraction of the actual source display: `rho = gamma2*epsilon1^2/(20*gk^2)`,
+the source gap factor is `M^-4*|Z0 \ Y0|`, the P-summand has the two factors
+`exp(-rho*M^-4*|Z0 \ Y0|)` and `exp(-2*rho*|P|)`, and the displayed
+powerset/cardinality bracket is `rho - 4*M^4*exp(-2*rho)`.  That confirms the
+rate and scale conventions for the generic Lean theorem, but it still does not
+identify the repository's `PIndex` and `pBonds` with Balaban's finite bond set
+`P`.
 The fixed-index bridge `cmp116PStageSourceBound_of_eq231_pointwise` and the
 scale-family constructor
 `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise` compose this

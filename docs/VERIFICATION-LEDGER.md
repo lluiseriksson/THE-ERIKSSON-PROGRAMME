@@ -15388,3 +15388,54 @@ identification, H# identity, RG-flow bound, IR bound, or Clay mass gap.  It
 only discharges the formal exponential-rate condition once the source-shaped
 positivity and sufficient smallness condition are available.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 387 (2026-06-25, **CMP116 Eq. (2.31) visual extraction**
+`docs/source-citations`, `scripts/source_citations.py`, and
+`YangMills.RG.BalabanCMP116Eq231`)
+
+This checkpoint records the visually inspected CMP116 Eq. (2.31) display in
+the repository citation catalog.  The key
+`cmp116.eq231.p-bond-sum` is now `visual_confirmed` and records the exact
+source-facing shape:
+
+```
+rho = gamma2*epsilon1^2/(20*gk^2)
+gapMass = M^-4*|Z0 \ Y0|
+summand = exp(-rho*gapMass) * exp(-2*rho*|P|)
+bracket = rho - 4*M^4*exp(-2*rho)
+```
+
+The citation CLI now prints `extracted claims` for entries that have them, so
+future workers can use
+
+```
+python scripts\source_citations.py show cmp116.eq231.p-bond-sum
+```
+
+without reopening broad OCR windows.  The Lean docstring in
+`BalabanCMP116Eq231.lean` was updated to distinguish the visually confirmed
+source bracket from the stronger sufficient condition proved by
+`cmp116Eq231_rate_condition_of_source_smallness`.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_citations.py show cmp116.eq231.p-bond-sum
+python scripts\source_citations.py find "rho - 4"
+python scripts\source_citations.py check-local
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-visual-extraction.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Eq231.lean CURRENT-STATE.md README.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json scripts\source_citations.py
+```
+
+Honest scope: this is source extraction and auditability infrastructure.  It
+does not construct the source-to-Lean dictionary for `PIndex`, `pBonds`, or
+`bondCarrier`, does not instantiate `CMP116Eq231PBondBoundary`, does not prove
+the full scalar hierarchy after Eq. (2.31), and does not discharge Eq. (2.29),
+post-`P`, activity, Gaussian/root/Hessian, H#, RG-flow, IR, or Clay mass-gap
+inputs.  Clay distance **~0% (<0.1%), unchanged**.

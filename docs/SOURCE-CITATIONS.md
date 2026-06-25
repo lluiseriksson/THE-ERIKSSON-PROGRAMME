@@ -23,6 +23,10 @@ Show one citation:
 python scripts\source_citations.py show cmp116.eq231.p-bond-sum
 ```
 
+When a citation has already been visually extracted, `show` also prints compact
+`extracted claims` so future workers can start from the checked formula shape
+instead of re-reading the OCR window.
+
 Search by text or Lean declaration:
 
 ```powershell

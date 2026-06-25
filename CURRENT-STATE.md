@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 386.
+Addendum 387.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1164,6 +1164,13 @@ gamma2*epsilon1^2/(20*gk^2)` from the explicit sufficient hypotheses
 comparison `1 <= pEntropyConstant * exp(5*kappa)`.  It deliberately does not construct
 `PIndex` or identify `pWeight`; Eq. (2.30) is only the metric/cardinality
 comparison, not the P-family summation itself.
+The citation catalog now records a visual extraction of the Eq. (2.31)
+display: the source rate is `rho = gamma2*epsilon1^2/(20*gk^2)`, the gap
+factor is `M^-4*|Z0 \ Y0|`, the summand has
+`exp(-rho*M^-4*|Z0 \ Y0|) * exp(-2*rho*|P|)`, and the displayed bracket is
+`rho - 4*M^4*exp(-2*rho)`.  This closes the rate/localization-scale citation
+question, but not the concrete source-to-Lean dictionary for `PIndex`,
+`pBonds`, or `bondCarrier_card_le`.
 The direct constructors `cmp116PStageSourceBound_of_eq231_pointwise` and
 `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise` now feed that
 Eq. (2.31) boundary into the P-stage source-bound route without an intermediate

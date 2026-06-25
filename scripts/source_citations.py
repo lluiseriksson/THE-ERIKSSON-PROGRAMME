@@ -133,6 +133,11 @@ def print_compact(citation: dict[str, Any], sources: dict[str, dict[str, Any]]) 
     print(f"  pdf pages: {locator.get('pdf_pages', '-')}")
     print(f"  local text: {locator.get('local_text', '-')}")
     print(f"  summary: {citation.get('summary', '-')}")
+    extracted_claims = citation.get("extracted_claims", [])
+    if extracted_claims:
+        print("  extracted claims:")
+        for claim in extracted_claims:
+            print(f"    - {claim}")
     targets = citation.get("lean_targets", [])
     if targets:
         print("  Lean targets:")

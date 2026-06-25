@@ -64,8 +64,9 @@ structure CMP116Eq231PBondBoundary
 
 /-- The exact exponential shape summed in CMP116 equation (2.31).
 
-For the source parameters,
-`rate = (1 / 20) * gamma2 * epsilon1^2 / gk^2`. -/
+For the source parameters in CMP116 (2.31),
+`rate = (1 / 20) * gamma2 * epsilon1^2 / gk^2` and `gapMass`
+abstracts `M^-4 * |Z0 \ Y0|`. -/
 noncomputable def cmp116Eq231PWeight
     {σ ιD ιP β : Type*}
     (rate : ℝ)
@@ -80,11 +81,15 @@ noncomputable def cmp116Eq231PWeight
 /-- A source-shaped sufficient scalar condition for the CMP116 (2.31)
 geometric rate premise.
 
-CMP116 records the rate in this lane as
-`gamma2 * epsilon1^2 / (20 * gk^2)`.  The small-coupling inequality here is a
-formal sufficient condition for the geometric summation hypothesis used below;
-it is not claimed to be a verbatim source theorem until the full parameter
-hierarchy has been extracted. -/
+CMP116 (2.31) records the rate in this lane as
+`gamma2 * epsilon1^2 / (20 * gk^2)`.  The displayed second inequality there is
+the bracket condition
+`4 * M^4 * exp (-(gamma2 * epsilon1^2 / (10 * gk^2)))
+  <= gamma2 * epsilon1^2 / (20 * gk^2)`.
+
+The small-coupling inequality below is a stronger formal sufficient condition
+for that bracket condition; it is not claimed to be Balaban's verbatim
+parameter-hierarchy hypothesis. -/
 theorem cmp116Eq231_rate_condition_of_source_smallness
     (localizationScale : ℕ)
     (gamma2 epsilon1 gk : ℝ)

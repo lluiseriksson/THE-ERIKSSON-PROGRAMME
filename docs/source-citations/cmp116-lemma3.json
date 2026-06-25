@@ -166,8 +166,14 @@
         "local_text": "cmp116-pages-15-20.txt lines 194-214",
         "renders": ["render_source_18", "render_source_19"]
       },
-      "status": "ocr_corrupted",
-      "summary": "P-summation with fixed Z0 and Y0, controlled by the exponential factor involving the finite bond set P.",
+      "status": "visual_confirmed",
+      "summary": "Visually confirmed Eq. (2.31) P-summation with fixed Z0 and Y0, controlled by the exponential factor involving the finite bond set P.",
+      "extracted_claims": [
+        "For fixed Z0 and Y0, the displayed P-sum has factors exp(-rho * M^-4 * |Z0 \\ Y0|) and exp(-2 * rho * |P|), where rho = (1/20) * gamma2 * epsilon1^2 / gk^2.",
+        "The displayed powerset/cardinality bound is exp(-M^-4 * |Z0 \\ Y0| * (rho - 4 * M^4 * exp(-2 * rho))) <= 1.",
+        "The localization/counting scale visible in Eq. (2.31) is M, and the Lean gapMass abstraction corresponds to M^-4 * |Z0 \\ Y0|.",
+        "The source text immediately before Eq. (2.31) describes P as a set of bonds and says |P| >= (1/2) * M^-4 * |Z0 \\ Y0| because one bond in P may connect two cubes in Z0 \\ Y0."
+      ],
       "lean_targets": [
         "CMP116Eq231PBondBoundary",
         "cmp116Eq231PWeight",
@@ -176,15 +182,16 @@
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise"
       ],
       "use_for": [
-        "Source target for replacing the carried Eq. (2.31) P-family boundary."
+        "Source anchor for the Eq. (2.31) rate rho, gapMass shape, and finite bond-subset entropy bound."
       ],
       "do_not_use_for": [
-        "Do not assert pBonds_injective, pBonds_subset, or bondCarrier_card_le until the exact displayed sum and set map are extracted."
+        "Do not assert the repository's pBonds_injective, pBonds_subset, or PIndex dictionary until the exact source-to-Lean set map is supplied.",
+        "Do not cite the stronger Lean sufficient condition 80*M^4*gk^2 <= gamma2*epsilon1^2 as a verbatim source hypothesis."
       ],
       "open_questions": [
-        "Exact objects corresponding to P, pBonds, bondCarrier, and gapMass.",
-        "Whether eq231LocalizationScale is M, L, L/M, or another source scale.",
-        "Exact rate parameter and smallness condition."
+        "Exact dictionary from Balaban's finite bond set P to the repository's PIndex/pBonds fields.",
+        "Formal source proof of the carrier/cardinality bound used as bondCarrier_card_le in Lean.",
+        "Exact parameter-hierarchy statement relating gk, gamma, gamma2, epsilon1, M, and kappa after Eq. (2.31)."
       ]
     },
     {
