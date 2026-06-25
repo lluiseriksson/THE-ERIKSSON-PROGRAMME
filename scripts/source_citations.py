@@ -7,6 +7,7 @@ Examples:
   python scripts/source_citations.py show cmp116.eq231.p-bond-sum
   python scripts/source_citations.py find Eq231
   python scripts/source_citations.py lean CMP116Eq231PBondBoundary
+  python scripts/source_citations.py blockers
   python scripts/source_citations.py check-local
 """
 
@@ -231,6 +232,34 @@ def command_lean(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_blockers(args: argparse.Namespace) -> int:
+    sources, citations = load_catalogs()
+    statuses = set(args.status or ["source_pending", "ocr_corrupted"])
+    hits = [citation for citation in citations if citation.get("status") in statuses]
+    if not hits:
+        return 1
+    for index, citation in enumerate(hits):
+        if index:
+            print()
+        if args.verbose:
+            print_compact(citation, sources)
+            continue
+        source = sources.get(citation["source_id"], {})
+        print(
+            f"{citation['key']}\t{citation.get('status', 'unknown')}\t"
+            f"{source.get('short', citation['source_id'])}\t{citation.get('summary', '')}"
+        )
+        targets = citation.get("lean_targets", [])
+        if targets:
+            shown = ", ".join(str(target) for target in targets[:4])
+            suffix = "" if len(targets) <= 4 else f", ... (+{len(targets) - 4})"
+            print(f"  Lean targets: {shown}{suffix}")
+        open_questions = citation.get("open_questions", [])
+        if open_questions:
+            print(f"  first open question: {open_questions[0]}")
+    return 0
+
+
 def command_check_local(args: argparse.Namespace) -> int:
     sources, citations = load_catalogs()
     missing = 0
@@ -284,6 +313,19 @@ def build_parser() -> argparse.ArgumentParser:
     p_lean.add_argument("name")
     p_lean.add_argument("-v", "--verbose", action="store_true")
     p_lean.set_defaults(func=command_lean)
+
+    p_blockers = sub.add_parser(
+        "blockers",
+        help="list citation entries that are not theorem-feedable yet",
+    )
+    p_blockers.add_argument(
+        "--status",
+        action="append",
+        choices=["source_pending", "ocr_corrupted", "visual_confirmed", "source_extracted"],
+        help="status to include; repeat for multiple statuses",
+    )
+    p_blockers.add_argument("-v", "--verbose", action="store_true")
+    p_blockers.set_defaults(func=command_blockers)
 
     p_check = sub.add_parser("check-local", help="check local source artifact paths")
     p_check.set_defaults(func=command_check_local)

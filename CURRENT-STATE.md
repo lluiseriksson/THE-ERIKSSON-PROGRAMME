@@ -16,7 +16,10 @@ The compact primary-source lookup system now lives in
 [`docs/source-citations/`](docs/source-citations/); use
 `python scripts/source_citations.py show <key>` before re-running OCR or
 opening broad source windows.  The `show` command also prints direct web
-targets for source-pending entries that carry them.
+targets for source-pending entries that carry them.  Use
+`python scripts/source_citations.py blockers` to list all currently
+non-theorem-feedable source entries with their Lean consumers and first open
+question.
 
 ## Human Progress Dashboard
 

@@ -17,6 +17,13 @@ List all citation keys:
 python scripts\source_citations.py list
 ```
 
+List entries that are not theorem-feedable yet:
+
+```powershell
+python scripts\source_citations.py blockers
+python scripts\source_citations.py blockers --status source_pending
+```
+
 Show one citation:
 
 ```powershell
@@ -89,6 +96,9 @@ Eq. (2.29).  Check that key before re-running broad Cammarota searches.
 The key `cmp116.eq231.p-family-carrier-source-target` plays the same role for
 the Eq. (2.31) P-family: it records the exact missing carrier, injection, and
 counting facts needed before replacing `CMP116Eq231PBondBoundary` in Lean.
+Use `python scripts\source_citations.py blockers` at the start of a source
+wake to see all `source_pending` and `ocr_corrupted` entries with their Lean
+targets and first open question.
 
 ## Why This Exists
 

@@ -15744,3 +15744,42 @@ not construct `PIndex`, `pBonds`, `bondCarrier`, prove
 `pBonds_injective`, prove the pointwise P-residual estimate, discharge Eq.
 (2.29), prove any post-`P` source estimate, or alter the Clay-distance status.
 Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 394 (2026-06-25, **citation blocker view**
+`scripts/source_citations.py`, `docs/SOURCE-CITATIONS.md`, and
+`CURRENT-STATE.md`)
+
+This checkpoint adds a compact blocker view to the primary-source citation CLI:
+
+```
+python scripts\source_citations.py blockers
+python scripts\source_citations.py blockers --status source_pending
+```
+
+By default, `blockers` lists all `source_pending` and `ocr_corrupted` entries,
+including the source, summary, first Lean consumers, and first open question.
+The verbose form reuses the full `show` renderer.  This is meant to make the
+next source wake start from the existing citation catalog rather than from
+broad OCR or web search.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_citations.py blockers
+python scripts\source_citations.py blockers --status source_pending
+python scripts\source_citations.py blockers -v
+python -m py_compile scripts\source_citations.py
+python scripts\source_citations.py check-local
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-citation-blockers.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\VERIFICATION-LEDGER.md scripts\source_citations.py
+```
+
+Honest scope: this is source-work infrastructure only.  It does not extract new
+primary-source mathematics, prove Eq. (2.29), construct the Eq. (2.31)
+P-family, or change any Lean theorem boundary.  Clay distance **~0% (<0.1%),
+unchanged**.
