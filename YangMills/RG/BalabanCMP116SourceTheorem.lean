@@ -1397,12 +1397,14 @@ def of_eq231_boundaries
             (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
                 epsilon2 t k) *
               pGeometryWeight t k Z D P)
-    (hgk : ∀ t k, 0 < gk t k)
-    (hsourceRateSmall :
+    (hsourceBracket :
       ∀ t k,
-        80 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
-            (gk t k) ^ 2 ≤
-          gamma2 t k * (hp t k).epsilon1 ^ 2)
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp
+              (-(gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                  (10 * (gk t k) ^ 2))) ≤
+          gamma2 t k * (hp t k).epsilon1 ^ 2 /
+            (20 * (gk t k) ^ 2))
     (hgeometry :
       ∀ t k Z D, D ∈ (R t k).DIndex Z →
         ∀ P, P ∈ (R t k).PIndex Z D →
@@ -1466,7 +1468,7 @@ def of_eq231_boundaries
     (rooted_hsharp_remainder_identity :
       let weighted_postP_source :=
         CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries
-          eq229 B hepsilon2_nonneg hpointwise hgk hsourceRateSmall
+          eq229 B hepsilon2_nonneg hpointwise hsourceBracket
           hgeometry htarget hsmall hpResidual_nonneg postP activity
       let rawSource :=
         CMP116Lemma3WeightedPostPScaleSourceAssumptions.rawSource
@@ -1590,7 +1592,7 @@ def of_eq231_boundaries
   activity_stronglyMeasurable := activity_stronglyMeasurable
   weighted_postP_source :=
     CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries
-      eq229 B hepsilon2_nonneg hpointwise hgk hsourceRateSmall
+      eq229 B hepsilon2_nonneg hpointwise hsourceBracket
       hgeometry htarget hsmall hpResidual_nonneg postP activity
   amplitude_nonneg := amplitude_nonneg
   active_support_subset_omega := active_support_subset_omega
@@ -2736,12 +2738,14 @@ def CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries
             (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
                 epsilon2 t k) *
               pGeometryWeight t k Z D P)
-    (hgk : ∀ t k, 0 < gk t k)
-    (hsourceRateSmall :
+    (hsourceBracket :
       ∀ t k,
-        80 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
-            (gk t k) ^ 2 ≤
-          gamma2 t k * (hp t k).epsilon1 ^ 2)
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp
+              (-(gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                  (10 * (gk t k) ^ 2))) ≤
+          gamma2 t k * (hp t k).epsilon1 ^ 2 /
+            (20 * (gk t k) ^ 2))
     (hgeometry :
       ∀ t k Z D, D ∈ (R t k).DIndex Z →
         ∀ P, P ∈ (R t k).PIndex Z D →
@@ -2805,7 +2809,7 @@ def CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries
     (rooted_hsharp_remainder_identity :
       let weighted_postP_source :=
         CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries
-          eq229 B hepsilon2_nonneg hpointwise hgk hsourceRateSmall
+          eq229 B hepsilon2_nonneg hpointwise hsourceBracket
           hgeometry htarget hsmall hpResidual_nonneg postP activity
       let rawSource :=
         CMP116Lemma3WeightedPostPScaleSourceAssumptions.rawSource
@@ -2936,8 +2940,7 @@ def CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries
       B
       hepsilon2_nonneg
       hpointwise
-      hgk
-      hsourceRateSmall
+      hsourceBracket
       hgeometry
       htarget
       hsmall

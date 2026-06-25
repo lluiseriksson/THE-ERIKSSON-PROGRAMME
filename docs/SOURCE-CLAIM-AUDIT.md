@@ -695,13 +695,12 @@ calculation
 hypothesis.  This corrects earlier loose language: the `hgeometric` premise is
 fed by Eq. (2.31), not by Eq. (2.30) alone.  The theorem still does not
 construct `PIndex`, identify `pGeometryWeight`, prove the small-coupling
-hierarchy needed to instantiate `80*M^4*gk^2 <= gamma2*epsilon1^2`, or prove
-the pointwise P-residual majorization.  The separate theorem
-`cmp116Eq231_rate_condition_of_source_smallness` only proves the elementary
-implication from `0 < gk` and that explicit sufficient inequality to the
-transcendental rate condition
-`4*M^4*exp(-2*(gamma2*epsilon1^2/(20*gk^2))) <=
-gamma2*epsilon1^2/(20*gk^2)`.
+hierarchy or prove the pointwise P-residual majorization.  The exact source
+bracket is now consumed directly through
+`cmp116Eq231_rate_condition_of_source_bracket`; the separate theorem
+`cmp116Eq231_rate_condition_of_source_smallness` remains only an elementary
+sufficient reducer from `0 < gk` and
+`80*M^4*gk^2 <= gamma2*epsilon1^2` to that bracket.
 The local citation key `cmp116.eq231.p-bond-sum` now records a visual
 extraction of the actual source display: `rho = gamma2*epsilon1^2/(20*gk^2)`,
 the source gap factor is `M^-4*|Z0 \ Y0|`, the P-summand has the two factors
@@ -716,7 +715,7 @@ scale-family constructor
 Eq. (2.31) finite subset-entropy theorem with the existing pointwise P-term
 estimate.  They remove only the intermediate abstract `hgeometric` premise:
 the source construction of `PIndex`, identification of `pResidualWeight` and
-`pGeometryWeight`, source-rate smallness sufficient condition, target
+`pGeometryWeight`, source bracket condition, target
 comparison, and post-`P` source estimates remain separate obligations.
 
 The `Z0` stage now also has the source-shaped predicate
@@ -1017,9 +1016,9 @@ weighted post-`P` field and copies all physical/M3 fields from explicit
 arguments.  It proves no Eq. (2.31) source construction, no pointwise
 P-residual estimate, no full scalar hierarchy, no post-`P` source estimate or
 majorization, no activity identification, no termwise estimate, and no
-Gaussian/root/Hessian/local-activity source fact.  It only derives the narrow
-Eq. (2.31) exponential rate premise from the explicit source-shaped sufficient
-condition already passed by the caller.
+Gaussian/root/Hessian/local-activity source fact.  It only rewrites the exact
+Eq. (2.31) source bracket condition into the generic exponential-rate premise
+needed by the finite P-family summation theorem.
 
 `CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries` is the direct
 M3-frontier consumer for the same Eq. (2.31)-specialized boundary data.  It

@@ -15439,3 +15439,75 @@ does not construct the source-to-Lean dictionary for `PIndex`, `pBonds`, or
 the full scalar hierarchy after Eq. (2.31), and does not discharge Eq. (2.29),
 post-`P`, activity, Gaussian/root/Hessian, H#, RG-flow, IR, or Clay mass-gap
 inputs.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 388 (2026-06-25, **CMP116 Eq. (2.31) exact source-bracket interface**
+`YangMills.RG.BalabanCMP116Eq231`,
+`YangMills.RG.BalabanCMP116Lemma3ResidualStages`,
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`, and
+`YangMills.RG.BalabanCMP116SourceTheorem`)
+
+This checkpoint removes the artificial source-facing use of the sufficient
+condition
+
+```
+0 < gk
+80*M^4*gk^2 <= gamma2*epsilon1^2
+```
+
+from the Eq. (2.31)-specialized P-stage and weighted post-`P` routes.  The new
+theorem
+
+```
+cmp116Eq231_rate_condition_of_source_bracket
+```
+
+rewrites the exact source bracket condition recorded for Eq. (2.31),
+
+```
+4*M^4*exp(-(gamma2*epsilon1^2/(10*gk^2)))
+  <= gamma2*epsilon1^2/(20*gk^2),
+```
+
+into the generic finite P-family rate premise
+
+```
+4*M^4*exp(-2*(gamma2*epsilon1^2/(20*gk^2)))
+  <= gamma2*epsilon1^2/(20*gk^2).
+```
+
+The fixed-index constructor
+`cmp116PStageSourceBound_of_eq231_pointwise`, the scale-family constructor
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise`, the weighted
+post-`P` constructors
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries` and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_boundaries`,
+and the source-theorem/M3-frontier constructors now consume that exact bracket
+premise directly.  The older
+`cmp116Eq231_rate_condition_of_source_smallness` theorem remains available as
+a formal sufficient reducer, but is no longer the active source-facing contract.
+
+Verification commands for this checkpoint:
+
+```
+lake build YangMills.RG.BalabanCMP116Eq231
+lake build YangMills.RG.BalabanCMP116Lemma3ResidualStages
+lake build YangMills.RG.BalabanCMP116Lemma3ScaleFamily
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+python scripts\source_citations.py validate
+python scripts\source_citations.py lean cmp116Eq231_rate_condition_of_source_bracket
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-source-bracket.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Eq231.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean YangMills\RG\BalabanCMP116SourceTheorem.lean CURRENT-STATE.md README.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json
+```
+
+Honest scope: this is a weakening and source-alignment of an existing Eq.
+(2.31) interface, not a construction of Balaban's finite bond set inside the
+repository model.  It does not construct `PIndex`, `pBonds`, or `bondCarrier`,
+does not prove the pointwise P-residual estimate, Eq. (2.29), post-`P` source
+estimate, activity identification, termwise estimate, Gaussian pushforward,
+covariance-root localization, Wilson-Hessian identification, H# identity,
+RG-flow bound, IR bound, or Clay mass gap.  Clay distance **~0% (<0.1%),
+unchanged**.

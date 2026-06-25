@@ -135,6 +135,23 @@ theorem cmp116Eq231_rate_condition_of_source_smallness
     _ = 4 * ((localizationScale : ℝ) ^ 4) := by ring
     _ ≤ rho := hfour_le_rho
 
+/-- The exact bracket condition displayed in CMP116 (2.31), rewritten into the
+generic geometric-rate premise used by the finite P-family theorem. -/
+theorem cmp116Eq231_rate_condition_of_source_bracket
+    (localizationScale : ℕ)
+    (gamma2 epsilon1 gk : ℝ)
+    (hbracket :
+      4 * ((localizationScale : ℝ) ^ 4) *
+          Real.exp (-(gamma2 * epsilon1 ^ 2 / (10 * gk ^ 2))) ≤
+        gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2)) :
+    4 * ((localizationScale : ℝ) ^ 4) *
+        Real.exp
+          (-(2 *
+            (gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2)))) ≤
+      gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2) := by
+  convert hbracket using 2
+  ring_nf
+
 /-- CMP116 (2.31) supplies the finite geometric premise used by
 `cmp116PStageSourceBound_of_pointwise_geometric`.
 

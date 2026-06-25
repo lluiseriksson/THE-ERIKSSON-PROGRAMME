@@ -177,12 +177,13 @@
       "lean_targets": [
         "CMP116Eq231PBondBoundary",
         "cmp116Eq231PWeight",
+        "cmp116Eq231_rate_condition_of_source_bracket",
         "cmp116Eq231_rate_condition_of_source_smallness",
         "cmp116PGeometricFamilySummation_of_eq231",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise"
       ],
       "use_for": [
-        "Source anchor for the Eq. (2.31) rate rho, gapMass shape, and finite bond-subset entropy bound."
+        "Source anchor for the Eq. (2.31) rate rho, gapMass shape, exact bracket condition rho - 4*M^4*exp(-2*rho), and finite bond-subset entropy bound."
       ],
       "do_not_use_for": [
         "Do not assert the repository's pBonds_injective, pBonds_subset, or PIndex dictionary until the exact source-to-Lean set map is supplied.",

@@ -226,10 +226,10 @@ theorem cmp116PStageSourceBound_of_eq231_pointwise
           pWeight Z D P ≤
             (2 * (((blockScale : ℝ) + 2) ^ 4) * epsilon2) *
               pGeometryWeight Z D P)
-    (hgk : 0 < gk)
-    (hsourceRateSmall :
-      80 * ((localizationScale : ℝ) ^ 4) * gk ^ 2 ≤
-        gamma2 * epsilon1 ^ 2)
+    (hsourceBracket :
+      4 * ((localizationScale : ℝ) ^ 4) *
+          Real.exp (-(gamma2 * epsilon1 ^ 2 / (10 * gk ^ 2))) ≤
+        gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2))
     (hgeometry :
       ∀ Z D, D ∈ DIndex Z →
         ∀ P, P ∈ PIndex Z D →
@@ -254,8 +254,8 @@ theorem cmp116PStageSourceBound_of_eq231_pointwise
         (gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2))
         pEntropyConstant kappa
         B
-        (cmp116Eq231_rate_condition_of_source_smallness
-          localizationScale gamma2 epsilon1 gk hgk hsourceRateSmall)
+        (cmp116Eq231_rate_condition_of_source_bracket
+          localizationScale gamma2 epsilon1 gk hsourceBracket)
         hgeometry
         htarget)
 

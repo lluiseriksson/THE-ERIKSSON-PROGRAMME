@@ -1252,12 +1252,14 @@ def CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise
             (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
                 epsilon2 t k) *
               pGeometryWeight t k Z D P)
-    (hgk : ∀ t k, 0 < gk t k)
-    (hsourceRateSmall :
+    (hsourceBracket :
       ∀ t k,
-        80 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
-            (gk t k) ^ 2 ≤
-          gamma2 t k * (eq231Epsilon1 t k) ^ 2)
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp
+              (-(gamma2 t k * (eq231Epsilon1 t k) ^ 2 /
+                  (10 * (gk t k) ^ 2))) ≤
+          gamma2 t k * (eq231Epsilon1 t k) ^ 2 /
+            (20 * (gk t k) ^ 2))
     (hgeometry :
       ∀ t k Z D, D ∈ (R t k).DIndex Z →
         ∀ P, P ∈ (R t k).PIndex Z D →
@@ -1297,8 +1299,7 @@ def CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise
       (B t k)
       (hepsilon2_nonneg t k)
       (hpointwise t k)
-      (hgk t k)
-      (hsourceRateSmall t k)
+      (hsourceBracket t k)
       (hgeometry t k)
       (htarget t k)
 
@@ -1888,12 +1889,14 @@ def of_eq231_boundaries
             (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
                 epsilon2 t k) *
               pGeometryWeight t k Z D P)
-    (hgk : ∀ t k, 0 < gk t k)
-    (hsourceRateSmall :
+    (hsourceBracket :
       ∀ t k,
-        80 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
-            (gk t k) ^ 2 ≤
-          gamma2 t k * (hp t k).epsilon1 ^ 2)
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp
+              (-(gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                  (10 * (gk t k) ^ 2))) ≤
+          gamma2 t k * (hp t k).epsilon1 ^ 2 /
+            (20 * (gk t k) ^ 2))
     (hgeometry :
       ∀ t k Z D, D ∈ (R t k).DIndex Z →
         ∀ P, P ∈ (R t k).PIndex Z D →
@@ -1929,7 +1932,7 @@ def of_eq231_boundaries
       pStageBlockScale eq231LocalizationScale
       pEntropyConstant epsilon2 pStageKappa
       gamma2 (fun t k => (hp t k).epsilon1) gk
-      B hepsilon2_nonneg hpointwise hgk hsourceRateSmall hgeometry htarget
+      B hepsilon2_nonneg hpointwise hsourceBracket hgeometry htarget
       hsmall hpResidual_nonneg)
     postP
     activity
@@ -2318,12 +2321,14 @@ def lemma3_activity_estimate_of_eq231_boundaries
             (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
                 epsilon2 t k) *
               pGeometryWeight t k Z D P)
-    (hgk : ∀ t k, 0 < gk t k)
-    (hsourceRateSmall :
+    (hsourceBracket :
       ∀ t k,
-        80 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
-            (gk t k) ^ 2 ≤
-          gamma2 t k * (hp t k).epsilon1 ^ 2)
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp
+              (-(gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                  (10 * (gk t k) ^ 2))) ≤
+          gamma2 t k * (hp t k).epsilon1 ^ 2 /
+            (20 * (gk t k) ^ 2))
     (hgeometry :
       ∀ t k Z D, D ∈ (R t k).DIndex Z →
         ∀ P, P ∈ (R t k).PIndex Z D →
@@ -2363,7 +2368,7 @@ def lemma3_activity_estimate_of_eq231_boundaries
       pStageBlockScale eq231LocalizationScale
       pEntropyConstant epsilon2 pStageKappa
       gamma2 (fun t k => (hp t k).epsilon1) gk
-      B hepsilon2_nonneg hpointwise hgk hsourceRateSmall hgeometry htarget
+      B hepsilon2_nonneg hpointwise hsourceBracket hgeometry htarget
       hsmall hpResidual_nonneg)
     postP
     activity
@@ -2560,12 +2565,14 @@ def rawSource_of_eq231_weightedPostPBoundaries
             (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
                 epsilon2 t k) *
               pGeometryWeight t k Z D P)
-    (hgk : ∀ t k, 0 < gk t k)
-    (hsourceRateSmall :
+    (hsourceBracket :
       ∀ t k,
-        80 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
-            (gk t k) ^ 2 ≤
-          gamma2 t k * (hp t k).epsilon1 ^ 2)
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp
+              (-(gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                  (10 * (gk t k) ^ 2))) ≤
+          gamma2 t k * (hp t k).epsilon1 ^ 2 /
+            (20 * (gk t k) ^ 2))
     (hgeometry :
       ∀ t k Z D, D ∈ (R t k).DIndex Z →
         ∀ P, P ∈ (R t k).PIndex Z D →
@@ -2615,7 +2622,7 @@ def rawSource_of_eq231_weightedPostPBoundaries
     wilson_hessian_identification
     local_physical_activity_construction
     (CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_boundaries
-      eq229 B hepsilon2_nonneg hpointwise hgk hsourceRateSmall
+      eq229 B hepsilon2_nonneg hpointwise hsourceBracket
       hgeometry htarget hsmall
       hpResidual_nonneg postP activity)
 
