@@ -1151,6 +1151,69 @@ structure CMP116Lemma3PStageSourceScaleBoundary
   p_residual_weight_nonneg :
     ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P
 
+/-- Scale-family constructor for the P-stage source boundary from the
+pointwise/geometric P-stage split.
+
+This is still source-neutral: it packages the pointwise P-term estimate, the
+finite geometric P-family summation consequence, the scalar smallness
+restriction, and nonnegativity into the existing P-stage boundary record.  It
+does not construct the source `P` families or prove any CMP116 scalar hierarchy.
+-/
+def CMP116Lemma3PStageSourceScaleBoundary.of_pointwise_geometric
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (pResidualWeight pGeometryWeight :
+      ∀ t k, σ t k → ιD t k → ιP t k → ℝ)
+    (pStageBlockScale : ℕ → ℕ → ℕ)
+    (pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ)
+    (hepsilon2_nonneg : ∀ t k, 0 ≤ epsilon2 t k)
+    (hpointwise :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pResidualWeight t k Z D P ≤
+            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+                epsilon2 t k) *
+              pGeometryWeight t k Z D P)
+    (hgeometric :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        Finset.sum ((R t k).PIndex Z D)
+            (fun P => pGeometryWeight t k Z D P) ≤
+          pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
+    (hsmall :
+      ∀ t k,
+        2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+            pEntropyConstant t k * epsilon2 t k *
+              Real.exp (5 * pStageKappa t k) ≤ 1)
+    (hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P) :
+    CMP116Lemma3PStageSourceScaleBoundary
+      R pResidualWeight pStageBlockScale pEntropyConstant
+      epsilon2 pStageKappa where
+
+  p_stage_source_bound := fun t k =>
+    cmp116PStageSourceBound_of_pointwise_geometric
+      (R t k).DIndex
+      (R t k).PIndex
+      (pResidualWeight t k)
+      (pGeometryWeight t k)
+      (pStageBlockScale t k)
+      (pEntropyConstant t k)
+      (epsilon2 t k)
+      (pStageKappa t k)
+      (hepsilon2_nonneg t k)
+      (hpointwise t k)
+      (hgeometric t k)
+
+  p_stage_smallness := hsmall
+
+  p_residual_weight_nonneg := hpResidual_nonneg
+
 /-- Weighted post-`P` source boundary for the CMP116 Lemma-3 scale route.
 
 This names the combined post-`P` source estimate for the Eq. (2.29)-weighted

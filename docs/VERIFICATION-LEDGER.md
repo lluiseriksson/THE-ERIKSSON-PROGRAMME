@@ -14892,3 +14892,40 @@ identification of `pResidualWeight` or `pGeometryWeight`, no scalar smallness
 hierarchy, no Eq. (2.29) source summability, no post-`P` estimate, no activity
 identification, no termwise complex estimate, and no Clay mass gap.  Clay
 distance **~0% (<0.1%), unchanged**.
+
+## Addendum 375 (2026-06-25, **CMP116 P-stage scale-boundary constructor**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8362)
+
+This checkpoint lifts the P-stage pointwise/geometric constructor to the
+existing scale-family boundary record:
+
+```
+CMP116Lemma3PStageSourceScaleBoundary.of_pointwise_geometric
+```
+
+The constructor fills the `p_stage_source_bound` field using
+`cmp116PStageSourceBound_of_pointwise_geometric`, while keeping the scalar
+smallness field and pointwise nonnegativity field explicit.  Its hypotheses are
+the per-scale P-term majorization, the per-scale finite geometric P-family
+summation consequence, `epsilon2 >= 0`, the displayed P-stage smallness
+restriction, and nonnegativity of `pResidualWeight`.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-pstage-scale-boundary-geometric.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+The new constructor oracle line is `[propext, Classical.choice, Quot.sound]`.
+Honest scope: this is scale-family record assembly plus the previously proved
+finite P-stage resummation algebra.  It proves no source construction of
+`PIndex`, no source identification of `pResidualWeight` or `pGeometryWeight`,
+no scalar-smallness hierarchy, no Eq. (2.29), no post-`P` estimate, no activity
+identification, no termwise complex estimate, and no Clay mass gap.  Clay
+distance **~0% (<0.1%), unchanged**.
