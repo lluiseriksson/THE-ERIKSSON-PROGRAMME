@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 371.
+Addendum 372.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -63,7 +63,8 @@ The strong-coupling lattice side is now extensive and oracle-clean:
 * the regulator-gap quantifier infrastructure now gives the exact criterion
   for promoting stagewise positive gaps to one regulator-uniform positive gap:
   the chosen stagewise lower bounds must have a positive regulator-independent
-  lower bound;
+  lower bound, and arbitrarily small positive refinements rule out such a
+  bounded-below stagewise choice;
 * the gauge-RG conditional scaffold from Balaban/Dimock-style inputs to the
   lattice UV hypothesis.
 

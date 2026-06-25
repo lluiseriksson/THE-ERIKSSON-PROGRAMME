@@ -130,6 +130,7 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.not_hasUniformPositiveEnergyGap_of_refinementsProduceArbitrarilySmallPositiveExcitations
 #print axioms YangMills.hasUniformPositiveEnergyGap_hasStagewisePositiveEnergyGap
 #print axioms YangMills.hasUniformPositiveEnergyGap_iff_exists_stagewise_gaps_boundedBelow
+#print axioms YangMills.not_exists_stagewise_gaps_boundedBelow_of_refinementsProduceArbitrarilySmallPositiveExcitations
 #print axioms YangMills.halfScaleExcitation_stagewise_but_not_uniform
 #print axioms YangMills.halfScaleExcitation_no_stagewise_gaps_boundedBelow
 

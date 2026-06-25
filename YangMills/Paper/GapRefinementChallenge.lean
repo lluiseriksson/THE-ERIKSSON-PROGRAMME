@@ -146,6 +146,22 @@ theorem
   obtain ⟨r, E, hE, _hEpos, hlt⟩ := hsmall Δ hΔ
   exact (not_lt_of_ge (hgap r E hE)) hlt
 
+/-- If refinements produce arbitrarily small positive excitation energies, then
+no choice of stagewise positive lower bounds can itself be bounded below by one
+positive regulator-independent constant. -/
+theorem
+    not_exists_stagewise_gaps_boundedBelow_of_refinementsProduceArbitrarilySmallPositiveExcitations
+    {Regulator : Type*} {excitation : Regulator → ℝ → Prop}
+    (hsmall :
+      RefinementsProduceArbitrarilySmallPositiveExcitations excitation) :
+    ¬ ∃ gap : Regulator → ℝ,
+      (∀ r, 0 < gap r ∧ ∀ E : ℝ, excitation r E → gap r ≤ E) ∧
+      ∃ Δ : ℝ, 0 < Δ ∧ ∀ r, Δ ≤ gap r := by
+  intro hbounded
+  exact not_hasUniformPositiveEnergyGap_of_refinementsProduceArbitrarilySmallPositiveExcitations
+    hsmall ((hasUniformPositiveEnergyGap_iff_exists_stagewise_gaps_boundedBelow
+      (excitation := excitation)).2 hbounded)
+
 /-- Positive real scales used by the explicit quantifier counterexample. -/
 abbrev PositiveGapScale := {δ : ℝ // 0 < δ}
 
