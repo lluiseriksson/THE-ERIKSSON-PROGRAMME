@@ -111,6 +111,9 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 -- mixed charge selection for `W · conj W'` and its connected expression:
 #print axioms YangMills.integral_wilsonLoopSU_mul_star_gibbs_eq_zero
 #print axioms YangMills.connected_wilsonLoopSU_star_gibbs_eq_zero
+-- finite-product centre-charge selection, including mixed holomorphic/conjugate products:
+#print axioms YangMills.integral_wilsonLoopSU_listProd_gibbs_eq_zero
+#print axioms YangMills.integral_wilsonLoopSU_listProd_star_gibbs_eq_zero
 -- UNCONDITIONAL fixed-lattice exponential clustering (no carried hypothesis):
 #print axioms YangMills.sun_lattice_exponential_clustering
 
@@ -123,7 +126,10 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 -- positive gap, and stagewise regulator gaps need not give a uniform gap.
 #print axioms YangMills.not_hasPositiveEnergyGap_of_arbitrarilySmallPositiveExcitations
 #print axioms YangMills.not_hasUniformPositiveEnergyGap_of_refinementsProduceArbitrarilySmallPositiveExcitations
+#print axioms YangMills.hasUniformPositiveEnergyGap_hasStagewisePositiveEnergyGap
+#print axioms YangMills.hasUniformPositiveEnergyGap_iff_exists_stagewise_gaps_boundedBelow
 #print axioms YangMills.halfScaleExcitation_stagewise_but_not_uniform
+#print axioms YangMills.halfScaleExcitation_no_stagewise_gaps_boundedBelow
 
 /-! ## The Wilson-loop area laws — finite volume -/
 #print axioms YangMills.finite_volume_area_law          -- linearized activities

@@ -14636,3 +14636,60 @@ finite-volume lattice symmetry consequence for the interacting Gibbs measure.
 It proves no continuum construction, no OS/Wightman reconstruction, no
 spectral-gap statement, and no CMP116 source estimate.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 369 (2026-06-25, **finite-product selection and uniform gap criterion**
+`YangMills.L1_GibbsMeasure.GibbsSelectionRule`,
+`YangMills.Paper.GapRefinementChallenge`; core 8362)
+
+This checkpoint adds two source-faithful infrastructure pieces.
+
+First, it extends the interacting Gibbs centre-charge selection rule from one
+or two Wilson loops to finite products:
+
+```
+wilsonLoopSU_listProd_centerAct
+integral_wilsonLoopSU_listProd_gibbs_eq_zero
+integral_wilsonLoopSU_listProd_star_gibbs_eq_zero
+```
+
+The holomorphic product vanishes when the total positive-loop centre charge is
+non-trivial, and the mixed holomorphic/conjugate product vanishes when the two
+finite loop families have unequal total centre charge modulo `n`.
+
+Second, it sharpens the continuum-limit quantifier infrastructure around
+regulator-dependent mass gaps:
+
+```
+hasUniformPositiveEnergyGap_hasStagewisePositiveEnergyGap
+hasUniformPositiveEnergyGap_iff_exists_stagewise_gaps_boundedBelow
+halfScaleExcitation_no_stagewise_gaps_boundedBelow
+```
+
+The exact criterion says that stagewise positive gaps promote to a
+regulator-uniform positive gap iff one can choose stagewise lower bounds that
+are themselves bounded below by a single positive constant independent of the
+regulator.  The existing `delta / 2` counterexample is strengthened to show
+that no such bounded-below choice exists there.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+lake env lean YangMills\Paper\GapRefinementChallenge.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-listprod-wilsonloop-selection.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean YangMills\Paper\GapRefinementChallenge.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+All five new theorem oracle lines are `[propext, Classical.choice,
+Quot.sound]`.
+
+Honest scope: the selection rules are exact finite-volume lattice symmetry
+consequences; the gap criterion is logical continuum-limit infrastructure.
+This proves no Yang-Mills Hamiltonian construction, no model-specific
+excitation spectrum, no continuum measure, no OS/Wightman reconstruction, no
+CMP116 activity estimate, and no Clay mass gap.  Clay distance
+**~0% (<0.1%), unchanged**.

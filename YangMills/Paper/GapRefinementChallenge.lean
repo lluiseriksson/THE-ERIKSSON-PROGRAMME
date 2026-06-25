@@ -96,6 +96,38 @@ def HasUniformPositiveEnergyGap {Regulator : Type*}
   ∃ Δ : ℝ, 0 < Δ ∧
     ∀ r E, excitation r E → Δ ≤ E
 
+/-- A regulator-uniform positive gap immediately gives a positive gap at each
+fixed regulator, using the same lower bound at every stage. -/
+theorem hasUniformPositiveEnergyGap_hasStagewisePositiveEnergyGap
+    {Regulator : Type*} {excitation : Regulator → ℝ → Prop}
+    (huniform : HasUniformPositiveEnergyGap excitation) :
+    HasStagewisePositiveEnergyGap excitation := by
+  rcases huniform with ⟨Δ, hΔ, hgap⟩
+  intro r
+  exact ⟨Δ, hΔ, fun E hE => hgap r E hE⟩
+
+/-- **Exact uniform-gap criterion.**  Stagewise gaps promote to a regulator-
+uniform gap exactly when their chosen lower bounds are themselves bounded below
+by one positive constant independent of the regulator.
+
+This is the continuum-limit quantifier that cannot be replaced by merely
+knowing `∀ r, ∃ Δ_r > 0`. -/
+theorem hasUniformPositiveEnergyGap_iff_exists_stagewise_gaps_boundedBelow
+    {Regulator : Type*} {excitation : Regulator → ℝ → Prop} :
+    HasUniformPositiveEnergyGap excitation ↔
+      ∃ gap : Regulator → ℝ,
+        (∀ r, 0 < gap r ∧ ∀ E : ℝ, excitation r E → gap r ≤ E) ∧
+        ∃ Δ : ℝ, 0 < Δ ∧ ∀ r, Δ ≤ gap r := by
+  constructor
+  · rintro ⟨Δ, hΔ, hgap⟩
+    refine ⟨fun _ => Δ, ?_, ⟨Δ, hΔ, fun _ => le_rfl⟩⟩
+    intro r
+    exact ⟨hΔ, fun E hE => hgap r E hE⟩
+  · rintro ⟨gap, hstage, Δ, hΔ, hlower⟩
+    refine ⟨Δ, hΔ, ?_⟩
+    intro r E hE
+    exact le_trans (hlower r) ((hstage r).2 E hE)
+
 /-- Refinement can challenge every proposed regulator-uniform lower bound. -/
 def RefinementsProduceArbitrarilySmallPositiveExcitations
     {Regulator : Type*} (excitation : Regulator → ℝ → Prop) : Prop :=
@@ -152,5 +184,16 @@ theorem halfScaleExcitation_stagewise_but_not_uniform :
       ¬ HasUniformPositiveEnergyGap halfScaleExcitation :=
   ⟨halfScaleExcitation_hasStagewisePositiveEnergyGap,
     halfScaleExcitation_not_hasUniformPositiveEnergyGap⟩
+
+/-- In the explicit `δ / 2` family, no choice of stagewise lower bounds has a
+positive regulator-independent lower bound. -/
+theorem halfScaleExcitation_no_stagewise_gaps_boundedBelow :
+    ¬ ∃ gap : PositiveGapScale → ℝ,
+      (∀ δ, 0 < gap δ ∧ ∀ E : ℝ, halfScaleExcitation δ E → gap δ ≤ E) ∧
+      ∃ Δ : ℝ, 0 < Δ ∧ ∀ δ, Δ ≤ gap δ := by
+  intro h
+  exact halfScaleExcitation_not_hasUniformPositiveEnergyGap
+    ((hasUniformPositiveEnergyGap_iff_exists_stagewise_gaps_boundedBelow
+      (excitation := halfScaleExcitation)).2 h)
 
 end YangMills

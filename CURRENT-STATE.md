@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 368.
+Addendum 369.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -55,8 +55,14 @@ The strong-coupling lattice side is now extensive and oracle-clean:
 * finite-volume, exact-activity, and volume-uniform Wilson-loop area laws;
 * interacting centre-charge selection now includes connected two-Wilson-loop
   vanishing for non-trivial total charge, plus the mixed
-  `W · conj W'` covariance selection rule for unequal centre charge;
+  `W · conj W'` covariance selection rule for unequal centre charge, and
+  holomorphic and mixed finite products of positively oriented Wilson loops
+  with non-trivial total centre charge;
 * the lattice mass-gap assembly with the IR side theorem-fed;
+* the regulator-gap quantifier infrastructure now gives the exact criterion
+  for promoting stagewise positive gaps to one regulator-uniform positive gap:
+  the chosen stagewise lower bounds must have a positive regulator-independent
+  lower bound;
 * the gauge-RG conditional scaffold from Balaban/Dimock-style inputs to the
   lattice UV hypothesis.
 
