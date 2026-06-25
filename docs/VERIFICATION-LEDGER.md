@@ -15783,3 +15783,58 @@ Honest scope: this is source-work infrastructure only.  It does not extract new
 primary-source mathematics, prove Eq. (2.29), construct the Eq. (2.31)
 P-family, or change any Lean theorem boundary.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 395 (2026-06-25, **CMP116 Eq. (2.37) and C3 visual extraction**)
+
+Files touched:
+`docs/source-citations/cmp116-lemma3.json`, `docs/SOURCE-CITATIONS.md`,
+`CURRENT-STATE.md`, and `docs/VERIFICATION-LEDGER.md`.
+
+This checkpoint upgrades two CMP116 Lemma-3 citation entries from
+`ocr_corrupted` to `visual_confirmed` using the rendered page-20 source image:
+
+- `cmp116.eq237.post-p-resummation` now records the visual Eq. (2.37) bound:
+  for fixed `Z0'`, the post-`P` resummation is controlled by the
+  `exp(-(kappa1-1)*(LM)^-4*|Z \ Z0'|)` factor, a product over connected
+  components `Z_i'` with factors
+  `2*(L+2)^4*O(1)*epsilon2*exp(-((1-7*delta)/2)*L*kappa*d_{k+1}(Z_i'))`,
+  and the residual `exp(O(1)*alpha5*|Z|)` factor.
+- `cmp116.constants.c3-alpha5` now records the visual alpha5 region,
+  the boundedness assumptions on `(LM)^4*alpha0`, `(LM)^4*alpha1`,
+  `(LM)^4*alpha4`, `(LM)^4*gamma2`, the resulting absolute-constant
+  majorization, and the displayed final
+  `C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^-1*alpha6^-1*M^q*exp(C2*kappa1)`
+  shape feeding Lemma 3 / Eq. (2.38).
+
+The extraction also records the source-design conclusion already reflected in
+Lean: Eq. (2.37) plus the following paragraph supports a combined post-`P`
+source boundary and a separate majorization into the canonical Lemma-3 base
+factor.  It does not by itself justify splitting the post-`P` source statement
+into standalone normalized `Z0` and `Z0'` theorems.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_citations.py show cmp116.eq237.post-p-resummation
+python scripts\source_citations.py show cmp116.constants.c3-alpha5
+python scripts\source_citations.py blockers
+python scripts\source_citations.py check-local
+lake build YangMillsCore
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json
+```
+
+Oracle note: `lake env lean oracle_check.lean` was attempted with 120s, 300s,
+and 600s timeouts and did not complete in this wake; timed-out `lake`/`lean`
+processes were stopped.  The partial log
+`runtime\oracle-eq237-c3-source.log` contained only standard Lean axiom
+sets through the entries reached.  No Lean source file was touched by this
+checkpoint.
+
+Honest scope: this is source extraction and auditability work.  No Lean theorem
+boundary changed, no Eq. (2.29) theorem was proved, no Eq. (2.31) P-family
+carrier was constructed, and no post-`P` source dictionary was supplied.
+Clay distance **~0% (<0.1%)**, unchanged.

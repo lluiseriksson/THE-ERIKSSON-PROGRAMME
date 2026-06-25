@@ -147,10 +147,10 @@
         "Do not use this broad window as a single monolithic Lean hypothesis."
       ],
       "open_questions": [
-        "Exact Eq. (2.29) display.",
-        "Exact Eq. (2.31) finite P-summation display.",
-        "Exact Eq. (2.37) post-P bound.",
-        "Exact C3 definition and constant restrictions."
+        "Exact source-to-Lean dictionary for the H(Z) termwise summation (2.14) and the D/P/Z0/Z0' dependent indices.",
+        "External Cammarota theorem and threshold dependencies needed to theorem-feed the visually confirmed Eq. (2.29) D-stage display.",
+        "Exact Eq. (2.31) P-family carrier, injection, and carrier-count theorem.",
+        "Formal constant-hierarchy theorem turning the visually confirmed Eq. (2.37), alpha5/C3 region, and smallness assumptions into repository postPSourceWeight/postPAmplitude fields."
       ]
     },
     {
@@ -362,22 +362,32 @@
         "local_text": "cmp116-pages-15-20.txt lines 281-311",
         "renders": ["render_source_19", "render_source_20"]
       },
-      "status": "ocr_corrupted",
+      "status": "visual_confirmed",
       "summary": "Post-P resummation over D, P, and Z0 families leading to the fixed Z0' bound before the final Z0' summation.",
+      "extracted_claims": [
+        "The paragraph before Eq. (2.37) estimates sums over connected components Z_i' of a fixed Z0' by using (1.28), then Eq. (2.29), with the smallness assumptions (L+2)^4*O(1)*epsilon2 <= 1/2 and 2*(L+2)^4*O(1)*epsilon2*exp(5*kappa) <= 1.",
+        "Eq. (2.37) bounds the partially resummed absolute value for fixed Z0' by exp(-(kappa1 - 1)*(LM)^-4*|Z \\ Z0'|) times a product over connected components Z_i' of Z0' of 2*(L+2)^4*O(1)*epsilon2*exp(-((1 - 7*delta)/2)*L*kappa*d_{k+1}(Z_i')), multiplied by exp(O(1)*alpha5*|Z|).",
+        "The paragraph following Eq. (2.37) performs the last sum over Z0' or Z \\ Z0'. It uses the adapted Eq. (2.32), half of the first exponential factor, the assumption (1/2)*(kappa1 - 1) >= 2*L*kappa, and an Eq. (2.34)-type estimate.",
+        "This supports the Lean design in which Eq. (2.37) plus the following paragraph feed a combined post-P source boundary and a separate majorization into the canonical Lemma-3 base factor; it does not justify separate normalized Z0 and Z0' source theorems by itself."
+      ],
       "lean_targets": [
         "CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_source_bound",
         "CMP116PostPResidualSourceBound",
         "CMP116PostPResidualSourceMajorizationScaleFamily"
       ],
       "use_for": [
-        "Source target for the combined post-P source boundary."
+        "Source anchor for the combined post-P source boundary supplied to CMP116PostPResidualSourceBound.",
+        "Source anchor for treating the post-P stage as order-sensitive and combined rather than as separately normalized Z0 and Z0' source estimates."
       ],
       "do_not_use_for": [
-        "Do not split this into standalone Z0 and Z0' residual theorems unless the source text explicitly supports that split."
+        "Do not split this into standalone Z0 and Z0' residual theorems unless the source text explicitly supports that split.",
+        "Do not claim this entry alone proves the repository source-to-Lean dictionaries for D, P, Z0, or Z0'.",
+        "Do not collapse the following final Z0' summation/majorization into Eq. (2.37) without recording it as a separate source step."
       ],
       "open_questions": [
-        "Whether the Lean post-P source boundary is sourced from (2.37) plus the following paragraph or only from Lemma 3/(2.38).",
-        "Exact majorization into the canonical Lemma-3 base factor."
+        "Exact source-to-Lean dictionary for the D, P, Z0, and Z0' indices in Eq. (2.37).",
+        "Exact formal majorization theorem turning the visual Eq. (2.37) expression and the following Z0' sum into the repository postPSourceWeight/postPAmplitude fields.",
+        "Exact identities or common majorants for the O(1) constants in the Eq. (2.37) and post-Eq. (2.37) paragraphs."
       ]
     },
     {
@@ -390,22 +400,33 @@
         "local_text": "cmp116-pages-15-20.txt lines 313-327",
         "renders": ["render_source_20"]
       },
-      "status": "ocr_corrupted",
+      "status": "visual_confirmed",
       "summary": "Definition region for alpha5 restrictions and the final C3 constant used in Lemma 3.",
+      "extracted_claims": [
+        "After Eq. (2.37), Balaban recalls alpha5 as alpha5 = O(1)*exp(-(1/3)*delta0*M) + O(alpha0 + alpha1) + O(1)*alpha4 + gamma2.",
+        "The source assumes (LM)^4*alpha0, (LM)^4*alpha1, (LM)^4*alpha4, and (LM)^4*gamma2 are bounded by an M-independent constant, for example by 1.",
+        "Under those bounds, O(1)*(LM)^4*alpha5 + exp(-(1/2)*(kappa1 - 1)) is bounded by an absolute constant.",
+        "Balaban then uses the factor exp(-(delta/2)*L*kappa*d_{k+1}(Z)) and Eq. (2.30) to bound the remaining exponentials by 1, leaves one factor 2*(L+2)^4*O(1)*epsilon2, and estimates the remaining factors by 1.",
+        "The visual definition of the final Lemma-3 constant is C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^-1*alpha6^-1*M^q*exp(C2*kappa1), followed by Lemma 3's |H(Z)| <= C3*epsilon1*exp(-((1 - 8*delta)/2)*L*kappa*d_{k+1}(Z))."
+      ],
       "lean_targets": [
         "CMP116Lemma3Parameters",
         "CMP116Lemma3WeightedPostPSourceScaleBoundary",
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],
       "use_for": [
-        "Source target for the constant hierarchy request."
+        "Source anchor for the alpha5 definition region, the boundedness assumptions on (LM)^4 times alpha0/alpha1/alpha4/gamma2, and the visual C3 formula.",
+        "Source anchor for the final Lemma-3 amplitude shape C3*epsilon1 in Eq. (2.38)."
       ],
       "do_not_use_for": [
-        "Do not collapse repeated O(1) constants into one Lean constant without a source majorant theorem."
+        "Do not collapse repeated O(1) constants into one Lean constant without a source majorant theorem.",
+        "Do not infer exact numeric values for the O(1), E0, C1, C2, or q constants from this visual entry alone.",
+        "Do not use the final Lemma 3 bound to backfill the upstream Eq. (2.31) P-family carrier or Eq. (2.29) D-family dictionary."
       ],
       "open_questions": [
-        "Exact definitions of epsilon1, epsilon2, gamma2, alpha0, alpha1, alpha4, alpha5, alpha6, and C3.",
-        "Whether distinct O(1) constants need distinct Lean fields or a common majorant."
+        "Exact earlier definitions of epsilon1, epsilon2, gamma2, alpha0, alpha1, alpha4, alpha6, E0, C1, C2, and q.",
+        "Whether distinct O(1) constants need distinct Lean fields or a common majorant.",
+        "Exact source theorem or constant-hierarchy package proving the displayed boundedness and smallness assumptions uniformly in scale."
       ]
     },
     {

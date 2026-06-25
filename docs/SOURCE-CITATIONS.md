@@ -31,6 +31,8 @@ python scripts\source_citations.py show cmp116.eq231.p-bond-sum
 python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
 python scripts\source_citations.py show cmp109.ref26.cammarota-infinite-range-cluster
 python scripts\source_citations.py show cammarota.cmp85.polymer-mayer-source-target
+python scripts\source_citations.py show cmp116.eq237.post-p-resummation
+python scripts\source_citations.py show cmp116.constants.c3-alpha5
 ```
 
 When a citation has already been visually extracted, `show` also prints compact
@@ -96,6 +98,10 @@ Eq. (2.29).  Check that key before re-running broad Cammarota searches.
 The key `cmp116.eq231.p-family-carrier-source-target` plays the same role for
 the Eq. (2.31) P-family: it records the exact missing carrier, injection, and
 counting facts needed before replacing `CMP116Eq231PBondBoundary` in Lean.
+The keys `cmp116.eq237.post-p-resummation` and
+`cmp116.constants.c3-alpha5` record the visually confirmed page-20 source
+data for the combined post-`P` boundary, the alpha5/C3 region, and Lemma 3's
+final amplitude shape.
 Use `python scripts\source_citations.py blockers` at the start of a source
 wake to see all `source_pending` and `ocr_corrupted` entries with their Lean
 targets and first open question.
