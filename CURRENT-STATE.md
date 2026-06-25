@@ -1719,6 +1719,15 @@ the Eq. (2.31) P-boundary route and the existing separated physical
 Gaussian/root/Hessian/activity hypotheses.  They are packaging/projection
 adapters only; they add no source theorem.
 
+The source-theorem layer now has the matching high-level frontier package
+`BalabanCMP116Lemma3WeightedPostPSourceAssumptions`.  It keeps the existing
+physical/M3 fields explicit and replaces the monolithic Lemma-3 estimate field
+with `CMP116Lemma3WeightedPostPScaleSourceAssumptions`.  Its projections
+`lemma3_activity_estimate`, `rawSource`, `to_lemma3SourceAssumptions`, and
+`to_m3Frontier` are record plumbing into the already checked raw-source M3
+frontier; they prove no Eq. (2.29), Eq. (2.31), post-`P`, activity, termwise,
+Gaussian, root-localization, Wilson-Hessian, or local-activity source fact.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman

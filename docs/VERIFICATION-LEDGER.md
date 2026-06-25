@@ -15164,3 +15164,46 @@ hierarchy, no weighted post-`P` source estimate or majorization, no activity
 identification, no termwise estimate, no Gaussian pushforward, no covariance-
 root localization, no Wilson-Hessian identification, no local activity
 construction, and no Clay mass gap.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 382 (2026-06-25, **weighted post-P source frontier package**
+`YangMills.RG.BalabanCMP116SourceTheorem`; core 8363)
+
+This checkpoint exposes the source-theorem-layer package
+
+```
+BalabanCMP116Lemma3WeightedPostPSourceAssumptions
+```
+
+plus the projections/constructors
+
+```
+BalabanCMP116Lemma3WeightedPostPSourceAssumptions.lemma3_activity_estimate
+BalabanCMP116Lemma3WeightedPostPSourceAssumptions.rawSource
+BalabanCMP116Lemma3WeightedPostPSourceAssumptions.to_lemma3SourceAssumptions
+CMP116RawSourceM3Frontier.of_lemma3WeightedPostPSourceAssumptions
+BalabanCMP116Lemma3WeightedPostPSourceAssumptions.to_m3Frontier
+```
+
+The package keeps the physical/M3 source obligations explicit while replacing
+the monolithic Lemma-3 estimate field with a supplied
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions` package.  The constructors
+then reuse the already checked Lemma-3 source and M3-frontier routes.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-weighted-postp-source-frontier.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116SourceTheorem.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+Honest scope: this is source-frontier record plumbing only.  It proves no
+Eq. (2.29), no Eq. (2.31) source construction, no P-stage source estimate, no
+weighted post-`P` source estimate or majorization, no activity identification,
+no termwise estimate, no Gaussian pushforward, no covariance-root localization,
+no Wilson-Hessian identification, no local activity construction, and no Clay
+mass gap.  Clay distance **~0% (<0.1%), unchanged**.

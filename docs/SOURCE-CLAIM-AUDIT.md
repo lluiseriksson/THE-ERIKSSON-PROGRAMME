@@ -981,3 +981,15 @@ projection `CMP116Lemma3WeightedPostPScaleSourceAssumptions.rawSource` applies
 the package's Lemma-3 estimate to the existing raw-source adapter.  Both are
 source-neutral plumbing; neither proves any physical source fact, analytic
 source bound, scalar hierarchy, or CMP116 identification.
+
+`BalabanCMP116Lemma3WeightedPostPSourceAssumptions` is the source-theorem-layer
+counterpart of that weighted post-`P` package.  It keeps all physical/M3
+obligations visible and consumes a supplied
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions` package to produce the
+existing Lemma-3 source record and M3 frontier.  Its projections
+`lemma3_activity_estimate`, `rawSource`, `to_lemma3SourceAssumptions`, and
+`to_m3Frontier` are record assembly only.  They do not prove Eq. (2.29),
+Eq. (2.31), P-stage source construction, weighted post-`P` source estimates,
+post-`P` majorization, activity identification, termwise estimates, Gaussian
+pushforward, covariance-root localization, Wilson-Hessian identification, or
+local physical activity construction.
