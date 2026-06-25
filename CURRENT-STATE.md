@@ -1627,6 +1627,13 @@ post-`P` residual Lemma-3 scale-family route.  This removes the explicit
 summability and `alpha6 >= 0` are available, while still leaving Eq. (2.29),
 the normalized P residual estimate, the combined post-`P` residual bound,
 activity identification, and termwise estimates as explicit hypotheses.
+The source-boundary version is now packaged as
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions`, with projections
+`p_residual_summability`, `postP_residual_bound`, and
+`lemma3_activity_estimate`.  It derives the normalized P residual only from the
+explicit P-stage source bound plus scalar smallness, and derives the post-`P`
+consumer only from the combined source estimate plus majorization and weighted
+P-weight nonnegativity.
 
 ## What Is Not Claimed
 

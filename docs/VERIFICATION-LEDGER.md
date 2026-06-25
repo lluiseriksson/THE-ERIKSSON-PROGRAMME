@@ -14386,3 +14386,40 @@ Eq. (2.29), no source construction of normalized P-residual weights, no
 standalone `Z0'` source estimate, no combined post-`P` source estimate, no
 activity identification, no termwise estimate, and no unconditional CMP116
 Lemma 3.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 362 (2026-06-25, **CMP116 weighted post-P source package**
+`YangMills.RG.BalabanCMP116Lemma3ScaleFamily`; core 8362)
+
+This checkpoint packages the source-boundary route feeding the Eq.
+(2.29)-weighted P-residual/post-`P` Lemma-3 scale-family theorem:
+
+```
+CMP116Lemma3WeightedPostPScaleSourceAssumptions
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.p_residual_summability
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.postP_residual_bound
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate
+```
+
+The record exposes the exact obligations that remain: Eq. (2.29), the
+source-shaped P-stage bound, its scalar smallness condition, `alpha6 >= 0`,
+pointwise P-residual nonnegativity, the combined post-`P` source estimate,
+post-`P` majorization by the Lemma-3 base factor, activity identification, and
+termwise estimates.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-weighted-postp-source-package.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md
+```
+
+**Honest scope.** This is source-boundary packaging only.  It proves no Eq.
+(2.29), no source construction of the P family, no scalar smallness theorem, no
+post-`P` source estimate, no post-`P` majorization theorem, no activity
+identification, no termwise estimate, and no unconditional CMP116 Lemma 3.
+Clay distance **~0% (<0.1%), unchanged**.

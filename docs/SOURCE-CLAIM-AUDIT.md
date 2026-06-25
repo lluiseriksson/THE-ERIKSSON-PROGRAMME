@@ -895,3 +895,9 @@ bound for the Eq. (2.29)-weighted P weights, activity identification, and
 termwise estimates.  It does not assert a source construction of the normalized
 P weights, a standalone `Z0'` source bound, or any scalar replacement for the
 Eq. (2.29) product.
+
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions` is the corresponding
+source-boundary package.  Its fields keep the P-stage source bound, the scalar
+smallness condition, pointwise P-residual nonnegativity, the combined post-`P`
+source bound, and the post-`P` majorization separate.  Its projections are
+packaging only; they do not prove any of those source obligations.
