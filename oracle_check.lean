@@ -114,6 +114,7 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 -- finite-product centre-charge selection, including mixed holomorphic/conjugate products:
 #print axioms YangMills.integral_wilsonLoopSU_listProd_gibbs_eq_zero
 #print axioms YangMills.integral_wilsonLoopSU_listProd_star_gibbs_eq_zero
+#print axioms YangMills.connected_wilsonLoopSU_listProd_star_gibbs_eq_zero
 -- UNCONDITIONAL fixed-lattice exponential clustering (no carried hypothesis):
 #print axioms YangMills.sun_lattice_exponential_clustering
 

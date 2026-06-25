@@ -14693,3 +14693,44 @@ This proves no Yang-Mills Hamiltonian construction, no model-specific
 excitation spectrum, no continuum measure, no OS/Wightman reconstruction, no
 CMP116 activity estimate, and no Clay mass gap.  Clay distance
 **~0% (<0.1%), unchanged**.
+
+## Addendum 370 (2026-06-25, **connected finite-product charge selection**
+`YangMills.L1_GibbsMeasure.GibbsSelectionRule`; core 8362)
+
+This checkpoint adds the connected covariance consumer for the mixed
+finite-product Wilson-loop selection rule:
+
+```
+connected_wilsonLoopSU_listProd_star_gibbs_eq_zero
+```
+
+For finite families of positively oriented Wilson loops `Ls` and `Rs`, if the
+total centre charges differ modulo `n`, then
+
+```
+∫ (∏ W_L) * conj(∏ W_R) dμ_Gibbs
+  - (∫ ∏ W_L dμ_Gibbs) * conj(∫ ∏ W_R dμ_Gibbs) = 0.
+```
+
+The proof reuses the already verified mixed finite-product integral selection
+rule and the one-sided finite-product vanishing theorem for the two mean terms:
+if both total charges were individually divisible by `n`, their integer
+difference would be divisible by `n`, contradicting the hypothesis.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-connected-listprod-wilsonloop-selection.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new theorem oracle line is `[propext, Classical.choice, Quot.sound]`.
+Honest scope: this is an exact finite-volume lattice symmetry consequence for
+the interacting Gibbs measure.  It proves no continuum construction, no
+OS/Wightman reconstruction, no spectral-gap statement, and no CMP116 source
+estimate.  Clay distance **~0% (<0.1%), unchanged**.

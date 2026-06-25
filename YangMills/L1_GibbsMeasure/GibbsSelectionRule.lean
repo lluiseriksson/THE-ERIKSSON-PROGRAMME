@@ -476,4 +476,45 @@ theorem integral_wilsonLoopSU_listProd_star_gibbs_eq_zero {n : ℕ} [NeZero n]
   · exact absurd (sub_eq_zero.mp h1).symm hphase
   · exact h2
 
+/-- **Connected mixed finite-product Wilson-loop selection rule:** the charged
+covariance of two finite Wilson-loop products vanishes unless their total centre
+charges agree modulo `n`. -/
+theorem connected_wilsonLoopSU_listProd_star_gibbs_eq_zero {n : ℕ} [NeZero n]
+    (pe : ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) → ℝ) (β : ℝ)
+    (Ls Rs : List (List (ConcreteEdge d N)))
+    (hposL : ∀ es ∈ Ls, ∀ e ∈ es, e.sign = true)
+    (hposR : ∀ es ∈ Rs, ∀ e ∈ es, e.sign = true)
+    (hL : ¬ (n : ℤ) ∣
+      (((Ls.map List.length).sum : ℤ) - ((Rs.map List.length).sum : ℤ))) :
+    (∫ A, (Ls.map (fun es => wilsonLoopSU A es)).prod *
+        star ((Rs.map (fun es => wilsonLoopSU A es)).prod)
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β))
+      - (∫ A, (Ls.map (fun es => wilsonLoopSU A es)).prod
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) *
+        star (∫ A, (Rs.map (fun es => wilsonLoopSU A es)).prod
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) = 0 := by
+  have hprod := integral_wilsonLoopSU_listProd_star_gibbs_eq_zero
+    (d := d) (N := N) pe β Ls Rs hposL hposR hL
+  have hmeans :
+      (∫ A, (Ls.map (fun es => wilsonLoopSU A es)).prod
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) *
+        star (∫ A, (Rs.map (fun es => wilsonLoopSU A es)).prod
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) = 0 := by
+    by_cases hdiv : n ∣ (Ls.map List.length).sum
+    · have hdiv' : ¬ n ∣ (Rs.map List.length).sum := by
+        intro hdiv'
+        have hZ_left : (n : ℤ) ∣ ((Ls.map List.length).sum : ℤ) := by
+          exact_mod_cast hdiv
+        have hZ_right : (n : ℤ) ∣ ((Rs.map List.length).sum : ℤ) := by
+          exact_mod_cast hdiv'
+        exact hL (dvd_sub hZ_left hZ_right)
+      have hright := integral_wilsonLoopSU_listProd_gibbs_eq_zero
+        (d := d) (N := N) pe β Rs hposR hdiv'
+      rw [hright]
+      simp
+    · have hleft := integral_wilsonLoopSU_listProd_gibbs_eq_zero
+        (d := d) (N := N) pe β Ls hposL hdiv
+      rw [hleft, zero_mul]
+  rw [hprod, hmeans, sub_zero]
+
 end YangMills
