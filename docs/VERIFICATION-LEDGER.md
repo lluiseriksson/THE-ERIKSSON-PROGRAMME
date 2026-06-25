@@ -14734,3 +14734,45 @@ Honest scope: this is an exact finite-volume lattice symmetry consequence for
 the interacting Gibbs measure.  It proves no continuum construction, no
 OS/Wightman reconstruction, no spectral-gap statement, and no CMP116 source
 estimate.  Clay distance **~0% (<0.1%), unchanged**.
+
+## Addendum 371 (2026-06-25, **connected holomorphic finite-product selection**
+`YangMills.L1_GibbsMeasure.GibbsSelectionRule`; core 8362)
+
+This checkpoint adds the holomorphic connected covariance consumer for finite
+Wilson-loop products:
+
+```
+connected_wilsonLoopSU_listProd_gibbs_eq_zero
+```
+
+For finite families of positively oriented Wilson loops `Ls` and `Rs`, if the
+combined total centre charge is non-trivial modulo `n`, then
+
+```
+∫ (∏ W_L) * (∏ W_R) dμ_Gibbs
+  - (∫ ∏ W_L dμ_Gibbs) * (∫ ∏ W_R dμ_Gibbs) = 0.
+```
+
+The proof applies the finite-product integral selection theorem to the
+concatenated list `Ls ++ Rs`, then uses the one-sided finite-product vanishing
+theorem to kill one mean factor: if both individual total charges were
+divisible by `n`, their sum would be divisible by `n`, contradicting the
+hypothesis.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-connected-holomorphic-listprod-selection.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md
+```
+
+The new theorem oracle line is `[propext, Classical.choice, Quot.sound]`.
+Honest scope: this is an exact finite-volume lattice symmetry consequence for
+the interacting Gibbs measure.  It proves no continuum construction, no
+OS/Wightman reconstruction, no spectral-gap statement, and no CMP116 source
+estimate.  Clay distance **~0% (<0.1%), unchanged**.

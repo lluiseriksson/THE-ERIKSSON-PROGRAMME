@@ -517,4 +517,52 @@ theorem connected_wilsonLoopSU_listProd_star_gibbs_eq_zero {n : ℕ} [NeZero n]
       rw [hleft, zero_mul]
   rw [hprod, hmeans, sub_zero]
 
+/-- **Connected holomorphic finite-product Wilson-loop selection rule:** the
+covariance of two finite Wilson-loop products vanishes whenever their combined
+total centre charge is non-trivial. -/
+theorem connected_wilsonLoopSU_listProd_gibbs_eq_zero {n : ℕ} [NeZero n]
+    (pe : ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) → ℝ) (β : ℝ)
+    (Ls Rs : List (List (ConcreteEdge d N)))
+    (hposL : ∀ es ∈ Ls, ∀ e ∈ es, e.sign = true)
+    (hposR : ∀ es ∈ Rs, ∀ e ∈ es, e.sign = true)
+    (hL : ¬ n ∣ (Ls.map List.length).sum + (Rs.map List.length).sum) :
+    (∫ A, (Ls.map (fun es => wilsonLoopSU A es)).prod *
+        (Rs.map (fun es => wilsonLoopSU A es)).prod
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β))
+      - (∫ A, (Ls.map (fun es => wilsonLoopSU A es)).prod
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) *
+        (∫ A, (Rs.map (fun es => wilsonLoopSU A es)).prod
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) = 0 := by
+  have hpos : ∀ es ∈ Ls ++ Rs, ∀ e ∈ es, e.sign = true := by
+    intro es hes
+    rcases List.mem_append.mp hes with hesL | hesR
+    · exact hposL es hesL
+    · exact hposR es hesR
+  have hcharge : ¬ n ∣ ((Ls ++ Rs).map List.length).sum := by
+    intro hdiv
+    exact hL (by simpa [List.map_append] using hdiv)
+  have hprodAppend := integral_wilsonLoopSU_listProd_gibbs_eq_zero
+    (d := d) (N := N) pe β (Ls ++ Rs) hpos hcharge
+  have hprod :
+      ∫ A, (Ls.map (fun es => wilsonLoopSU A es)).prod *
+        (Rs.map (fun es => wilsonLoopSU A es)).prod
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) = 0 := by
+    simpa [List.map_append] using hprodAppend
+  have hmeans :
+      (∫ A, (Ls.map (fun es => wilsonLoopSU A es)).prod
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) *
+        (∫ A, (Rs.map (fun es => wilsonLoopSU A es)).prod
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) = 0 := by
+    by_cases hdiv : n ∣ (Ls.map List.length).sum
+    · have hdiv' : ¬ n ∣ (Rs.map List.length).sum := by
+        intro hdiv'
+        exact hL (Nat.dvd_add hdiv hdiv')
+      have hright := integral_wilsonLoopSU_listProd_gibbs_eq_zero
+        (d := d) (N := N) pe β Rs hposR hdiv'
+      rw [hright, mul_zero]
+    · have hleft := integral_wilsonLoopSU_listProd_gibbs_eq_zero
+        (d := d) (N := N) pe β Ls hposL hdiv
+      rw [hleft, zero_mul]
+  rw [hprod, hmeans, sub_zero]
+
 end YangMills

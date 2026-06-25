@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 370.
+Addendum 371.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -58,7 +58,7 @@ The strong-coupling lattice side is now extensive and oracle-clean:
   `W · conj W'` covariance selection rule for unequal centre charge, and
   holomorphic and mixed finite products of positively oriented Wilson loops
   with non-trivial total centre charge, including the corresponding connected
-  mixed finite-product covariance;
+  holomorphic and mixed finite-product covariances;
 * the lattice mass-gap assembly with the IR side theorem-fed;
 * the regulator-gap quantifier infrastructure now gives the exact criterion
   for promoting stagewise positive gaps to one regulator-uniform positive gap:
