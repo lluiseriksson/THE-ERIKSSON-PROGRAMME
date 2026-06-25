@@ -1194,6 +1194,13 @@ factor is `M^-4*|Z0 \ Y0|`, the summand has
 `rho - 4*M^4*exp(-2*rho)`.  This closes the rate/localization-scale citation
 question, but not the concrete source-to-Lean dictionary for `PIndex`,
 `pBonds`, or `bondCarrier_card_le`.
+The companion source-pending key
+`cmp116.eq231.p-family-carrier-source-target` now records the exact missing
+facts for removing the live `CMP116Eq231PBondBoundary` argument from the
+source-facing route: source carrier, orientation/adjacency convention,
+injection into repository bond sets, and the `4*|Z0 \ Y0|` carrier upper
+bound.  The current source extraction gives a lower bound on `|P|`; that is
+not the carrier upper bound required by Lean.
 The direct constructors `cmp116PStageSourceBound_of_eq231_pointwise` and
 `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise` now feed that
 Eq. (2.31) boundary into the P-stage source-bound route without an intermediate
@@ -1800,10 +1807,13 @@ continuum-facing scaffolding. Distance to the Clay Millennium problem remains
 
 1. Build the concrete YM activity-decay campaign for `hRpoly` from primary
    Balaban/Dimock sources.
-2. Extract the exact Cammarota CMP85 theorem behind CMP116's Eq. (2.29)-type
+2. Extract the exact CMP116 Eq. (2.31) P-family carrier/dictionary facts using
+   `cmp116.eq231.p-family-carrier-source-target` before replacing arbitrary
+   `CMP116Eq231PBondBoundary` hypotheses.
+3. Extract the exact Cammarota CMP85 theorem behind CMP116's Eq. (2.29)-type
    product summability, using the catalog keys
    `cmp109.ref26.cammarota-infinite-range-cluster` and
    `cammarota.cmp85.polymer-mayer-source-target` as the source targets.
-3. Keep the RG operator/propagator work source-grounded and oracle-clean.
-4. Do not introduce axioms or placeholder interfaces for the missing analytic
+4. Keep the RG operator/propagator work source-grounded and oracle-clean.
+5. Do not introduce axioms or placeholder interfaces for the missing analytic
    theorem; carry gaps only as explicit theorem hypotheses.

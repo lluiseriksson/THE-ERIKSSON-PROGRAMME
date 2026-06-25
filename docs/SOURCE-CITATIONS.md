@@ -21,6 +21,7 @@ Show one citation:
 
 ```powershell
 python scripts\source_citations.py show cmp116.eq231.p-bond-sum
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
 python scripts\source_citations.py show cmp109.ref26.cammarota-infinite-range-cluster
 python scripts\source_citations.py show cammarota.cmp85.polymer-mayer-source-target
 ```
@@ -85,6 +86,9 @@ corresponding Lean theorem is implemented and oracle-checked.
 `cammarota.cmp85.polymer-mayer-source-target` records the DOI/Project Euclid
 targets and the reason the currently visible OCR cannot theorem-feed CMP116
 Eq. (2.29).  Check that key before re-running broad Cammarota searches.
+The key `cmp116.eq231.p-family-carrier-source-target` plays the same role for
+the Eq. (2.31) P-family: it records the exact missing carrier, injection, and
+counting facts needed before replacing `CMP116Eq231PBondBoundary` in Lean.
 
 ## Why This Exists
 
@@ -95,6 +99,7 @@ ask:
 
 ```powershell
 python scripts\source_citations.py show cmp116.eq231.p-bond-sum
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
 ```
 
 and immediately see:

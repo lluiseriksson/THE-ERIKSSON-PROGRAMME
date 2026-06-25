@@ -718,6 +718,16 @@ powerset/cardinality bracket is `rho - 4*M^4*exp(-2*rho)`.  That confirms the
 rate and scale conventions for the generic Lean theorem, but it still does not
 identify the repository's `PIndex` and `pBonds` with Balaban's finite bond set
 `P`.
+The follow-up citation key
+`cmp116.eq231.p-family-carrier-source-target` is deliberately
+`source_pending`.  It names the exact missing source data for removing the live
+arbitrary `CMP116Eq231PBondBoundary` premise: the eligible bond carrier for
+fixed `(Z0,Y0)`, the orientation/adjacency convention, an injective
+source-to-repository representation of `P`, and the carrier upper bound
+`|Carrier(Z0,Y0)| <= 4*|Z0 \ Y0|`.  The lower bound on `|P|` visible before
+Eq. (2.31) is not that carrier upper bound.  Do not add a Lean theorem that
+constructs `PIndex`, `pBonds_injective`, or `bondCarrier_card_le` until these
+facts are extracted from a primary source passage.
 The fixed-index bridge `cmp116PStageSourceBound_of_eq231_pointwise` and the
 scale-family constructor
 `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise` compose this

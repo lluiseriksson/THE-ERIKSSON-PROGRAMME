@@ -15699,3 +15699,48 @@ Honest scope: this changes only citation CLI output and docs.  It does not
 retrieve the Cammarota PDF, extract Cammarota's theorem, prove Eq. (2.29), or
 alter any Lean theorem/hypothesis boundary.  Clay distance **~0% (<0.1%),
 unchanged**.
+
+## Addendum 393 (2026-06-25, **CMP116 Eq. (2.31) P-family source target**
+`docs/source-citations`, `docs/SOURCE-CITATIONS.md`,
+`docs/BALABAN-SOURCE-BOUNDS.md`, `docs/SOURCE-CLAIM-AUDIT.md`, and
+`CURRENT-STATE.md`)
+
+This checkpoint records the next non-cosmetic source target for the Eq. (2.31)
+P-stage route:
+
+```
+cmp116.eq231.p-family-carrier-source-target
+```
+
+The current Lean path still accepts arbitrary `CMP116Eq231PBondBoundary` data.
+The visually confirmed Eq. (2.31) display supplies the rate, gap factor, and
+finite-subset bracket, but it does not yet identify Balaban's finite bond set
+`P` with the repository's `PIndex/pBonds`, nor prove the carrier bound
+`|Carrier(Z0,Y0)| <= 4*|Z0 \ Y0|`.  This entry makes that blocker explicit and
+names the exact source facts needed before a Lean theorem may replace the
+arbitrary boundary argument.
+
+No Lean theorem was added in this checkpoint.  This avoids the false-progress
+route of adding a source-looking record that merely repackages the same
+arbitrary `P` data.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_citations.py find P-family -v
+python scripts\source_citations.py check-local
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-pfamily-source-target.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\BALABAN-SOURCE-BOUNDS.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json
+```
+
+Honest scope: this is a source-request and citation-audit commit only.  It does
+not construct `PIndex`, `pBonds`, `bondCarrier`, prove
+`pBonds_injective`, prove the pointwise P-residual estimate, discharge Eq.
+(2.29), prove any post-`P` source estimate, or alter the Clay-distance status.
+Clay distance **~0% (<0.1%), unchanged**.

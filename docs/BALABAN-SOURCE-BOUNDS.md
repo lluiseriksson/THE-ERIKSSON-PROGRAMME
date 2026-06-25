@@ -171,6 +171,16 @@ Support/locality extraction pass (2026-06-20):
   paper-level Mayer-series/polymer-model relevance, but it has not obtained a
   primary PDF or clean theorem text sufficient to set Lean constants,
   thresholds, or a `D`-family dictionary.
+* CMP 116 (1988), PDF/printed pages 18--19, Eq. (2.31), is visually extracted
+  under `cmp116.eq231.p-bond-sum`: the source rate is
+  `rho = gamma2*epsilon1^2/(20*gk^2)`, the gap factor is
+  `M^-4*|Z0 \ Y0|`, and the displayed finite-subset bracket is
+  `rho - 4*M^4*exp(-2*rho)`.  The companion source-pending key
+  `cmp116.eq231.p-family-carrier-source-target` records the remaining
+  non-cosmetic blocker: the exact eligible bond carrier, injective
+  source-to-Lean representation of `P`, and proof of the `4*|Z0 \ Y0|`
+  carrier upper bound.  The visible lower bound on `|P|` must not be used as
+  that carrier upper bound.
 * CMP 119 (1988), split PDF pages 15-17 / printed pages 257-259, gives the
   localized density decomposition.  Large-field operations factor over
   connected large-field regions, the effective action is decomposed into
