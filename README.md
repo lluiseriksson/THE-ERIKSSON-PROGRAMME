@@ -132,6 +132,9 @@ source-boundary routes:
   repository citation catalog.
 * visual extraction of the CMP116 Eq. (2.29) D-family product-summability
   display and adjacent metric inequalities into the citation catalog.
+* visual identification of CMP116's reference `[26]`, via CMP109 printed page
+  299, as the Cammarota CMP85 paper needed for the Eq. (2.29)-type summability
+  argument.
 
 The practical effect is cleaner wiring from future source theorems into the
 existing UV consumer.  The remaining work is still the real source-grounded

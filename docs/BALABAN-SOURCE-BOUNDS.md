@@ -160,6 +160,11 @@ Support/locality extraction pass (2026-06-20):
   `(3*2^3)^-1 M^-4 |Y| <= d_k(Y) <= M^-4 |Y| - 1` for localization domains
   `Y in D_k`.  The source-to-Lean dictionary for the `D` families and the
   uniform threshold proof for "sufficiently small" remain open.
+  The cited external argument `[26]` is now identified in the citation catalog
+  as `cmp109.ref26.cammarota-infinite-range-cluster`: CMP109 printed page 299
+  lists C. Cammarota, "Decay of correlations for infinite range interactions in
+  unbounded spin systems", CMP 85, 517-528 (1982).  This locates the next
+  primary source but does not yet extract a theorem usable for Eq. (2.29).
 * CMP 119 (1988), split PDF pages 15-17 / printed pages 257-259, gives the
   localized density decomposition.  Large-field operations factor over
   connected large-field regions, the effective action is decomposed into

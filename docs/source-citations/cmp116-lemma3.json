@@ -23,6 +23,18 @@
         "render_source_21": "renders/cmp116-source-21.png"
       }
     },
+    "cmp109": {
+      "short": "Balaban CMP109",
+      "title": "Renormalization Group Approach to Lattice Gauge Field Theories I. Generation of Effective Actions in a Small Field Approximation and a Coupling Constant Renormalization in Four Dimensions",
+      "author": "T. Balaban",
+      "journal": "Communications in Mathematical Physics 109 (1987), 249-301",
+      "doi": "10.1007/BF01215223",
+      "local_artifacts": {
+        "pdf": "balaban-rg-I-cmp109-1104116842.pdf",
+        "text_full": "text/balaban-rg-I-cmp109-1104116842.txt",
+        "render_reference_26_page_51": "renders/cmp109-reference-26-page-51.png"
+      }
+    },
     "cmp119": {
       "short": "Balaban CMP119",
       "title": "Convergent Renormalization Expansions for Lattice Gauge Theories",
@@ -165,6 +177,42 @@
         "Exact source-to-Lean dictionary for DIndex, DParts, and the localization-domain metric d_k.",
         "Formal proof or source theorem for the large-K/small-alpha6 summability assertion, including threshold dependencies and uniformity over scale, volume, and background.",
         "Exact role of the cited argument in [26] used to prove inequalities of this type."
+      ]
+    },
+    {
+      "key": "cmp109.ref26.cammarota-infinite-range-cluster",
+      "source_id": "cmp109",
+      "locator": {
+        "printed_pages": "299",
+        "pdf_pages": "51",
+        "equations": ["Reference 26"],
+        "local_text": "balaban-rg-I-cmp109-1104116842.txt lines 2020-2023",
+        "renders": ["render_reference_26_page_51"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Visual identification of the reference [26] cited by CMP116 Eq. (2.29)-type summability as C. Cammarota, Decay of correlations for infinite range interactions in unbounded spin systems, CMP 85, 517-528 (1982).",
+      "extracted_claims": [
+        "CMP109 printed page 299, reference 26, lists C. Cammarota: Decay of correlations for infinite range interactions in unbounded spin systems, Communications in Mathematical Physics 85, 517-528 (1982).",
+        "CMP116 printed page 18 says inequalities of the Eq. (2.29) type can be proved by a simple modification of the argument in [26].",
+        "This citation identifies the external source to inspect next; it does not extract Cammarota's theorem, constants, hypotheses, or its translation to Balaban D-families."
+      ],
+      "lean_targets": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability",
+        "cmp116_DStage_sum_le_of_eq229"
+      ],
+      "use_for": [
+        "Bibliographic source lookup for the external combinatorial/cluster-expansion argument behind CMP116 Eq. (2.29)-type product summability."
+      ],
+      "do_not_use_for": [
+        "Do not cite this entry as a theorem proving Eq. (2.29).",
+        "Do not infer threshold dependencies for K or alpha6 from this bibliographic identification alone.",
+        "Do not identify Cammarota's polymer/spin-system hypotheses with the repository's DIndex/DParts without extracting the actual theorem."
+      ],
+      "open_questions": [
+        "Exact theorem, lemma, proposition, or equation in Cammarota CMP85 proving the polymer-family summability argument needed by Balaban.",
+        "Constants and threshold dependencies needed to convert Cammarota's argument into the qualitative CMP116 condition K sufficiently large and alpha6 sufficiently small.",
+        "Precise dictionary from Cammarota's interaction/polymer objects to Balaban's D-families and then to the repository's DIndex/DParts fields."
       ]
     },
     {

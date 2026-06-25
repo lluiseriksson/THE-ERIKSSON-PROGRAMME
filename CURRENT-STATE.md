@@ -2,7 +2,7 @@
 
 **Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 389.
+Addendum 390.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -1111,6 +1111,13 @@ comparison.  The proof of the qualitative "K sufficiently large and alpha6
 sufficiently small" summability assertion, including uniform threshold
 dependencies and the source-to-Lean dictionary for `DIndex/DParts`, remains
 open.
+The external source reference cited there has also been pinned:
+`cmp109.ref26.cammarota-infinite-range-cluster` identifies CMP116's `[26]`
+through CMP109 printed page 299 as C. Cammarota, "Decay of correlations for
+infinite range interactions in unbounded spin systems", CMP 85, 517-528
+(1982).  This is only a bibliographic/source-target identification; the actual
+Cammarota theorem, constants, hypotheses, and D-family dictionary remain to be
+extracted before Eq. (2.29) can become theorem-fed.
 The residual-stage layer then defines `cmp116Eq229WeightedPWeight` and proves
 `cmp116PStageSummability_of_pResidualSummability_weighted`: a normalized
 P-residual sum, multiplied by the Eq. (2.29) product, yields exactly the
@@ -1786,6 +1793,9 @@ continuum-facing scaffolding. Distance to the Clay Millennium problem remains
 
 1. Build the concrete YM activity-decay campaign for `hRpoly` from primary
    Balaban/Dimock sources.
-2. Keep the RG operator/propagator work source-grounded and oracle-clean.
-3. Do not introduce axioms or placeholder interfaces for the missing analytic
+2. Extract the exact Cammarota CMP85 theorem behind CMP116's Eq. (2.29)-type
+   product summability, using the catalog key
+   `cmp109.ref26.cammarota-infinite-range-cluster` as the source target.
+3. Keep the RG operator/propagator work source-grounded and oracle-clean.
+4. Do not introduce axioms or placeholder interfaces for the missing analytic
    theorem; carry gaps only as explicit theorem hypotheses.

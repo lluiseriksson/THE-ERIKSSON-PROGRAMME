@@ -15563,3 +15563,50 @@ repository's `DIndex`, `DParts`, or `eq229Metric` with Balaban's source
 families.  It only removes OCR ambiguity around the displayed D-stage product
 summability statement and adjacent metric inequalities.  Clay distance **~0%
 (<0.1%), unchanged**.
+
+## Addendum 390 (2026-06-25, **CMP116 reference [26] source target**
+`docs/source-citations`, `docs/BALABAN-SOURCE-BOUNDS.md`,
+`docs/SOURCE-CITATIONS.md`, `docs/SOURCE-CLAIM-AUDIT.md`, and
+`CURRENT-STATE.md`)
+
+This checkpoint identifies the bibliographic target behind CMP116's statement
+that Eq. (2.29)-type inequalities can be proved by a modification of the
+argument in `[26]`.  CMP116 uses Part I for its full reference list; CMP109
+printed page 299, reference 26, visually identifies the source as:
+
+```
+C. Cammarota, Decay of correlations for infinite range interactions in
+unbounded spin systems, Commun. Math. Phys. 85, 517-528 (1982).
+```
+
+The new citation key is:
+
+```
+cmp109.ref26.cammarota-infinite-range-cluster
+```
+
+It resolves to the local CMP109 PDF/text artifacts and the rendered page
+`renders/cmp109-reference-26-page-51.png` in the persistent source cache.
+
+No Lean theorem was added in this checkpoint.  The purpose is to remove the
+repeated OCR/bibliography search and make the next source request precise:
+extract the actual Cammarota theorem, constants, hypotheses, and dictionary
+needed to theorem-feed `CMP116Lemma3Eq229ScaleBoundary`.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_citations.py show cmp109.ref26.cammarota-infinite-range-cluster
+python scripts\source_citations.py check-local
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md README.md docs\BALABAN-SOURCE-BOUNDS.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json
+```
+
+Honest scope: this is bibliographic source-targeting only.  It does not prove
+Eq. (2.29), does not formalize Cammarota's cluster/decay theorem, does not
+determine threshold dependencies for `K` or `alpha6`, and does not identify
+Cammarota's or Balaban's source families with the repository's `DIndex/DParts`.
+Clay distance **~0% (<0.1%), unchanged**.

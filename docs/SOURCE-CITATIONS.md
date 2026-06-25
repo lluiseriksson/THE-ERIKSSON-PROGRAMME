@@ -21,6 +21,7 @@ Show one citation:
 
 ```powershell
 python scripts\source_citations.py show cmp116.eq231.p-bond-sum
+python scripts\source_citations.py show cmp109.ref26.cammarota-infinite-range-cluster
 ```
 
 When a citation has already been visually extracted, `show` also prints compact

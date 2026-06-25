@@ -1038,3 +1038,18 @@ not prove Eq. (2.29), construct Eq. (2.31) P-bond data, identify the pointwise
 P-residual or post-`P` source weights, prove activity/termwise estimates,
 construct Gaussian pushforwards or covariance roots, prove the H# identity, or
 discharge any RG-flow or IR input.
+
+### CMP116 reference [26] behind Eq. (2.29)
+
+CMP116 printed page 18 says that inequalities of the Eq. (2.29) type can be
+proved by a simple modification of the argument in `[26]`.  The local CMP116
+reference list delegates references to Part I, so the relevant bibliographic
+anchor is CMP109 printed page 299.  The citation catalog now records the visual
+identification under `cmp109.ref26.cammarota-infinite-range-cluster`: reference
+26 is C. Cammarota, "Decay of correlations for infinite range interactions in
+unbounded spin systems", CMP 85, 517-528 (1982).
+
+Audit boundary: this only identifies the paper to inspect next.  It does not
+extract Cammarota's theorem, prove the large-`K`/small-`alpha6` threshold,
+identify Cammarota's objects with Balaban's `D` families, or identify those
+families with the repository's `DIndex/DParts`.
