@@ -5,7 +5,7 @@
 not source evidence by itself  
 **Audit date:** 2026-06-20  
 **Last updated:** 2026-06-25
-**Live code reference:** `337025aadd8f80810cdf676f2612ca0944281c9a`
+**Live code reference:** `96a18f13c3d9c6d49bc00a11ecc8e50f07771c2e`
 **Primary frontier:** `hRpoly`, the concrete single-scale Yang-Mills
 activity-decay estimate for the actual gauge RG operator
 

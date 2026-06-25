@@ -1,7 +1,7 @@
 # ROADMAP — pushing the boundary toward an unconditional Yang–Mills mass gap
 
-> **STATUS STAMP (updated 2026-06-23; verified checkpoint 2026-06-23).**
-> Core green at **8343 jobs**
+> **STATUS STAMP (updated 2026-06-25; verified checkpoint 2026-06-25).**
+> Core green at **8363 jobs**
 > in the latest verification-ledger checkpoint, Mathlib pinned (see
 > `REPRODUCIBILITY.md`).  Since this roadmap was first
 > written (2026-06-09) several tracks closed: the area-law track (all four
@@ -14,7 +14,10 @@
 > precision/covariance composition, full-periodic physical cochains,
 > fixed-volume flat Hodge/block Poincare, finite-torus curl/divergence
 > classification, source-facing covariance/root localization APIs, and a
-> local fluctuation-activity certificate are theorem-fed.
+> local fluctuation-activity certificate are theorem-fed.  The CMP116 Lemma-3
+> source-boundary lane now reaches a direct Eq. (2.31) weighted post-`P`
+> raw-source M3-frontier constructor, with source estimates still carried
+> explicitly.
 > **The current frontier is still `hRpoly`**: the concrete Yang-Mills
 > cluster-expansion-with-holes activity-decay bound for the actual gauge RG
 > operator.  See `README.md`'s progress dashboard, `CURRENT-STATE.md`,
@@ -44,7 +47,7 @@ orientation, not a replacement for the proof ledger.
 | Infrastructure useful toward M3/Clay | `84% [########..]` | much of the lattice/RG scaffolding exists; Clay's continuum core does not |
 | Unconditional M3 lattice mass gap | `72% [#######...]` | IR and assembly are theorem-fed; `hRpoly` remains open |
 | Appendix-F/H# source-to-UV interface | `78% [########..]` | strong consumers and adapters; missing source theorem |
-| P4 physical-operator vertical slice | `67% [#######...]` | physical cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat covariance adapters, source-facing covariance/root localization APIs, and a local fluctuation-activity certificate; physical Hessian/covariance/activity decay not constructed |
+| P4 physical-operator vertical slice | `68% [#######...]` | physical cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat covariance adapters, source-facing covariance/root localization APIs, dictionary-backed Gaussian/activity scaffolding, and source-package accessors; physical Hessian/covariance/activity decay not constructed |
 | Formal roadmap toward full Clay | `60% [######....]` | dependency map is explicit; continuum nodes remain unsolved mathematics |
 | Strict unconditional Clay theorem | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
 

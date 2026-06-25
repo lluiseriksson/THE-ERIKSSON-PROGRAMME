@@ -4,7 +4,7 @@
 
 ![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-blue)
 ![Mathlib](https://img.shields.io/badge/Mathlib-pinned_commit-blue)
-![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8343_jobs)-success)
+![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8363_jobs)-success)
 ![sorry](https://img.shields.io/badge/sorry-0-success)
 ![project axioms](https://img.shields.io/badge/project_axioms-0-success)
 ![Clay distance](https://img.shields.io/badge/distance_to_Clay-~0%25_(%3C0.1%25)-lightgrey)
@@ -19,7 +19,7 @@ proved. The defining principle is **honesty over progress**: a smaller true
 claim always beats a larger hollow one.
 
 ```bash
-lake build YangMillsCore          # the verified core — green, 8343 jobs
+lake build YangMillsCore          # the verified core — green, 8363 jobs
 lake env lean oracle_check.lean   # prints the axiom oracle for every headline
 ```
 
@@ -31,10 +31,10 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 
 ## Progress Dashboard
 
-**Documentation snapshot updated:** 2026-06-23.  **Latest public checkpoint:**
+**Documentation snapshot updated:** 2026-06-25.  **Latest public checkpoint:**
 see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).  The latest
 recorded core build in the verification ledger is `lake build YangMillsCore`
-green at **8343 jobs**.
+green at **8363 jobs**.
 
 The bars below are communication estimates for humans, not theorem
 probabilities.  The formal record remains the compiler, `oracle_check.lean`,
@@ -51,7 +51,7 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 | Exponential IR clustering | `100% [##########]` | theorem-fed lattice Gibbs clustering with a non-empty window |
 | Conditional M3 lattice mass-gap assembly | `90% [#########.]` | the assembly exists; the UV producer remains a named hypothesis |
 | Appendix-F / H# bridge to UV consumer | `78% [########..]` | source-facing wrappers, second-gas adapters, half-budget endpoints |
-| P4 physical-operator vertical slice | `67% [#######...]` | physical cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat covariance adapters, source-facing covariance/root localization APIs, and a local fluctuation-activity certificate are in Lean |
+| P4 physical-operator vertical slice | `68% [#######...]` | physical cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat covariance adapters, source-facing covariance/root localization APIs, dictionary-backed Gaussian/activity scaffolding, and source-package accessors are in Lean |
 | Concrete YM activity decay `hRpoly` | `40% [####......]` | many adapters are verified; the real Balaban/Dimock estimate is open |
 | Peter-Weyl / character infrastructure | `58% [######....]` | generic Schur API and finite character algebra; compact Peter-Weyl completeness is still absent |
 | Continuum construction / Clay | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
@@ -108,8 +108,9 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 
 ### Latest movement
 
-The latest 2026-06-23 checkpoint did not change the Clay boundary.  It improved
-the RG/P4/Appendix-F interface:
+The latest 2026-06-25 checkpoints did not change the Clay boundary.  They
+improved the RG/P4/Appendix-F interface and exposed CMP116 Eq. (2.31)-specialized
+source-boundary routes:
 
 * scalar Schur-Catalan and operator-norm coercivity budgets;
 * gauge-precision coercivity from a block Poincare/Hodge hypothesis;
@@ -122,6 +123,8 @@ the RG/P4/Appendix-F interface:
 * integrated second-gas KP adapters and source-bound routes;
 * a rooted leaf-summation half-budget endpoint;
 * finite target-card tilt in Appendix-F cover weights.
+* weighted post-`P` source packages and a direct Eq. (2.31) weighted post-`P`
+  route into the raw-source M3 frontier.
 
 The practical effect is cleaner wiring from future source theorems into the
 existing UV consumer.  The remaining work is still the real source-grounded
@@ -302,7 +305,7 @@ part of any claim this README makes.
 
 ```mermaid
 graph TD
-    subgraph core["YangMillsCore  (8343 jobs, oracle-clean)"]
+    subgraph core["YangMillsCore  (8363 jobs, oracle-clean)"]
         L0["L0_Lattice<br/>geometry, gauge fields, Wilson action,<br/>chain complex + N-ality area"]
         L1["L1_GibbsMeasure<br/>Gibbs measure, polymer representation,<br/>weighted gas, exp-activity expansion"]
         KP["KP layer<br/>Ursell, Penrose-BFS, sharp KP bound,<br/>Mayer inversion Ξ = exp(clusterSum),<br/>pinned clusters"]
@@ -331,7 +334,7 @@ Green: unconditional flagship. Amber: conditional on the named UV hypothesis.
 |---|---|---|
 | Toolchain | `elan` picks up [`lean-toolchain`](lean-toolchain) | `leanprover/lean4:v4.29.0-rc6` |
 | Mathlib cache | `lake exe cache get` | downloads the pinned-commit `.olean` cache |
-| Build the core | `lake build YangMillsCore` | `Build completed successfully (8343 jobs)` |
+| Build the core | `lake build YangMillsCore` | `Build completed successfully (8363 jobs)` |
 | Axiom oracle | `lake env lean oracle_check.lean` | every line ends `[propext, Classical.choice, Quot.sound]` |
 | Sorry scan | `python scripts/check_consistency.py` | `0` forbidden tokens |
 
