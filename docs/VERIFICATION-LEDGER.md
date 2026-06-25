@@ -15838,3 +15838,69 @@ Honest scope: this is source extraction and auditability work.  No Lean theorem
 boundary changed, no Eq. (2.29) theorem was proved, no Eq. (2.31) P-family
 carrier was constructed, and no post-`P` source dictionary was supplied.
 Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 396 (2026-06-25, **CMP116 Eq. (2.31) concrete source bond-set route**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Eq231.lean`,
+`YangMills/RG/BalabanCMP116Lemma3ResidualStages.lean`,
+`YangMills/RG/BalabanCMP116Lemma3ScaleFamily.lean`,
+`docs/source-citations/cmp116-lemma3.json`, `docs/SOURCE-CITATIONS.md`,
+`docs/SOURCE-CLAIM-AUDIT.md`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint narrows one Eq. (2.31) source-facing lane by specializing the
+`P` index to the finite bond set itself:
+
+- `cmp116Eq231SourcePIndex` presents source `P` families as filtered powersets
+  of the four-direction carrier `gapCubes Z D ×ˢ Finset.univ`.
+- `CMP116Eq231PBondBoundary.of_sourceBondSets` constructs the generic
+  Eq. (2.31) boundary with `pBonds Z D P := P`, so injectivity is definitional;
+  the gap mass is `gapCubes.card / localizationScale^4`, and the carrier count
+  is the elementary `4 * gapCubes.card` product count.
+- `CMP116Eq231PBondBoundary.of_sourceFilteredBondSets` removes even the
+  containment argument when the family is supplied as that filtered powerset.
+- `cmp116PStageSourceBound_of_eq231_sourceBondSets` and
+  `cmp116PStageSourceBound_of_eq231_filteredBondSets` expose the P-stage source
+  bound without asking callers for arbitrary `CMP116Eq231PBondBoundary` data.
+- `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourceBondSets` is the first
+  downstream scale route switched to the concrete finite-bond-set `PIndex`.
+
+The source-pending citation `cmp116.eq231.p-family-carrier-source-target` was
+kept open and retargeted to the remaining honest obligation: the exact CMP116
+eligible-bond carrier/orientation statement needed to eliminate the live
+`hPcarrier` containment hypothesis.  This commit does not claim full Eq.
+(2.31) source closure and does not discharge Eq. (2.29), pointwise P residual
+majorization, target constant comparison, post-`P`, activity, termwise,
+Gaussian/root/Hessian/local-activity, H#, flow, or IR obligations.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+lake build +YangMills.RG.BalabanCMP116Lemma3ResidualStages:olean
+lake build +YangMills.RG.BalabanCMP116Lemma3ScaleFamily:olean
+python scripts\source_citations.py validate
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_citations.py lean CMP116Eq231PBondBoundary.of_sourceBondSets
+python scripts\source_citations.py check-local
+python scripts\source_citations.py blockers
+python scripts\source_citations.py lean CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourceBondSets
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-source-bondsets.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json YangMills\RG\BalabanCMP116Eq231.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+```
+
+Results: focused Lean/module builds passed; `lake build YangMillsCore` passed
+8363 jobs; `oracle_check.lean` completed and wrote
+`runtime\oracle-source-bondsets.log`; `git diff --check`,
+`git diff --cached --check`, `check_consistency.py`, citation validation/local
+checks, and the no-sorry/no-admit/no-axiom scan passed.  The builds reported
+pre-existing lint warnings in unrelated modules.
+
+Honest scope: this is a genuine narrowing of one Eq. (2.31) source-facing
+interface, not an analytic-source proof.  Clay distance **~0% (<0.1%)**,
+unchanged.

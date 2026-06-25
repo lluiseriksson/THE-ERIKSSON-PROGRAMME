@@ -1798,6 +1798,36 @@ one downstream packaging step but leaves the full Eq. (2.29), Eq. (2.31),
 weighted post-`P`, activity/termwise, physical-source, Appendix-F H#, flow, and
 IR assumptions unchanged.
 
+### Eq. (2.31) Concrete Bond-Set Route (2026-06-25)
+
+The Eq. (2.31) P-family lane now has a concrete finite-bond-set specialization:
+`cmp116Eq231SourcePIndex`, `CMP116Eq231PBondBoundary.of_sourceBondSets`, and
+`CMP116Eq231PBondBoundary.of_sourceFilteredBondSets` instantiate the generic
+bond-boundary abstraction with `P : Finset (Cube × Fin 4)`, the carrier
+`gapCubes Z D ×ˢ Finset.univ`, and
+`gapMass = gapCubes.card / localizationScale^4`.  In this route,
+`pBonds Z D P := P`, so the injectivity field is definitional rather than a
+source hypothesis, and the carrier cardinality bound is the elementary
+four-direction product count plus the positive localization scale.
+
+The residual consumer
+`cmp116PStageSourceBound_of_eq231_sourceBondSets` removes the caller-supplied
+abstract `CMP116Eq231PBondBoundary` from one source-facing P-stage theorem.  It
+still requires the genuinely source-specific fact
+`P ⊆ gapCubes Z D ×ˢ Finset.univ` for every source `P`; the filtered-powerset
+variant `cmp116PStageSourceBound_of_eq231_filteredBondSets` makes that
+containment automatic when the source family is already presented as a filtered
+powerset of the carrier.
+
+At scale level,
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourceBondSets` is the matching
+one-route downstream switch: its `PIndex` is literally
+`Finset (Cube t k × Fin 4)`, and it calls the concrete P-stage theorem rather
+than asking for arbitrary `CMP116Eq231PBondBoundary` data.  This is still not
+full Eq. (2.31) source closure; the citation key
+`cmp116.eq231.p-family-carrier-source-target` remains `source_pending` until
+the exact CMP116 eligible-bond carrier/orientation sentence is checked.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman
@@ -1810,9 +1840,9 @@ continuum-facing scaffolding. Distance to the Clay Millennium problem remains
 
 1. Build the concrete YM activity-decay campaign for `hRpoly` from primary
    Balaban/Dimock sources.
-2. Extract the exact CMP116 Eq. (2.31) P-family carrier/dictionary facts using
-   `cmp116.eq231.p-family-carrier-source-target` before replacing arbitrary
-   `CMP116Eq231PBondBoundary` hypotheses.
+2. Extract the exact CMP116 Eq. (2.31) eligible-bond carrier/orientation facts
+   using `cmp116.eq231.p-family-carrier-source-target`, then eliminate the live
+   `hPcarrier` hypothesis from the concrete finite-bond-set route.
 3. Extract the exact Cammarota CMP85 theorem behind CMP116's Eq. (2.29)-type
    product summability, using the catalog keys
    `cmp109.ref26.cammarota-infinite-range-cluster` and

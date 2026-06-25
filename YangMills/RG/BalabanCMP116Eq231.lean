@@ -62,6 +62,113 @@ structure CMP116Eq231PBondBoundary
       ((bondCarrier Z D).card : ℝ) ≤
         4 * ((localizationScale : ℝ) ^ 4) * gapMass Z D
 
+/-- Source-shaped finite `P` family for CMP116 (2.31), when `P` is represented
+as the bond set itself and admissibility is a filter on the four-direction
+carrier over the source gap. -/
+def cmp116Eq231SourcePIndex
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool) :
+    σ → ιD → Finset (Finset (Cube × Fin 4)) :=
+  fun Z D =>
+    ((gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))).powerset).filter
+      (fun P => admissible Z D P = true)
+
+/-- Membership in the filtered source `P` family automatically gives
+containment in the four-direction carrier. -/
+theorem cmp116Eq231SourcePIndex_subset_carrier
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (Z : σ) (D : ιD) :
+    ∀ P, P ∈ cmp116Eq231SourcePIndex gapCubes admissible Z D →
+      P ⊆ gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4)) := by
+  intro P hP
+  rw [cmp116Eq231SourcePIndex, Finset.mem_filter, Finset.mem_powerset] at hP
+  exact hP.1
+
+/-- Concrete CMP116 (2.31) boundary when the `P` index is the finite bond set
+itself and the carrier is the four positive coordinate directions over the
+microscopic gap.  The only source-specific input left here is containment of
+each source `P` in that carrier. -/
+noncomputable def CMP116Eq231PBondBoundary.of_sourceBondSets
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (DIndex : σ → Finset ιD)
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (hPcarrier :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ PIndex Z D →
+          P ⊆ gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))) :
+    CMP116Eq231PBondBoundary
+      (β := Cube × Fin 4) DIndex PIndex localizationScale := by
+  refine
+    { pBonds := fun _ _ P => P
+      bondCarrier := fun Z D =>
+        gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))
+      gapMass := fun Z D =>
+        ((gapCubes Z D).card : ℝ) / ((localizationScale : ℝ) ^ 4)
+      pBonds_injective := ?_
+      pBonds_subset := hPcarrier
+      gapMass_nonneg := ?_
+      bondCarrier_card_le := ?_ }
+  · intro Z D hD P₁ hP₁ P₂ hP₂ hEq
+    exact hEq
+  · intro Z D hD
+    exact div_nonneg (Nat.cast_nonneg _) (by positivity)
+  · intro Z D hD
+    have hscale_ne : ((localizationScale : ℝ) ^ 4) ≠ 0 := by
+      have hscale_real : (localizationScale : ℝ) ≠ 0 := by
+        exact_mod_cast (Nat.ne_of_gt hlocalizationScale)
+      exact pow_ne_zero 4 hscale_real
+    have hcard :
+        (((gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))).card : ℝ) =
+          4 * ((gapCubes Z D).card : ℝ)) := by
+      simp [Finset.card_product, mul_comm]
+    exact le_of_eq <| by
+      calc
+        (((gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))).card : ℝ) =
+          4 * ((gapCubes Z D).card : ℝ)) := hcard
+        _ =
+          4 * ((localizationScale : ℝ) ^ 4) *
+            (((gapCubes Z D).card : ℝ) /
+              ((localizationScale : ℝ) ^ 4)) := by
+              field_simp [hscale_ne]
+
+/-- Concrete CMP116 (2.31) boundary for the filtered-powerset source family.
+Here carrier containment is definitional from powerset membership. -/
+noncomputable def CMP116Eq231PBondBoundary.of_sourceFilteredBondSets
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (DIndex : σ → Finset ιD)
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale) :
+    CMP116Eq231PBondBoundary
+      (β := Cube × Fin 4)
+      DIndex
+      (cmp116Eq231SourcePIndex gapCubes admissible)
+      localizationScale := by
+  exact
+    CMP116Eq231PBondBoundary.of_sourceBondSets
+      DIndex
+      (cmp116Eq231SourcePIndex gapCubes admissible)
+      gapCubes
+      localizationScale
+      hlocalizationScale
+      (fun Z D hD =>
+        cmp116Eq231SourcePIndex_subset_carrier gapCubes admissible Z D)
+
 /-- The exact exponential shape summed in CMP116 equation (2.31).
 
 For the source parameters in CMP116 (2.31),

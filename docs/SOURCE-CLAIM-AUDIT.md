@@ -710,6 +710,11 @@ bracket is now consumed directly through
 `cmp116Eq231_rate_condition_of_source_smallness` remains only an elementary
 sufficient reducer from `0 < gk` and
 `80*M^4*gk^2 <= gamma2*epsilon1^2` to that bracket.
+The source-facing specialization
+`cmp116PStageSourceBound_of_eq231_sourceBondSets` now sets
+`P : Finset (Cube × Fin 4)` and `pBonds Z D P := P`, so injectivity is no
+longer a source hypothesis on that route; the only non-elementary source fact
+left there is containment of every source `P` in the four-direction carrier.
 The local citation key `cmp116.eq231.p-bond-sum` now records a visual
 extraction of the actual source display: `rho = gamma2*epsilon1^2/(20*gk^2)`,
 the source gap factor is `M^-4*|Z0 \ Y0|`, the P-summand has the two factors
@@ -721,12 +726,11 @@ identify the repository's `PIndex` and `pBonds` with Balaban's finite bond set
 The follow-up citation key
 `cmp116.eq231.p-family-carrier-source-target` is deliberately
 `source_pending`.  It names the exact missing source data for removing the live
-arbitrary `CMP116Eq231PBondBoundary` premise: the eligible bond carrier for
-fixed `(Z0,Y0)`, the orientation/adjacency convention, an injective
-source-to-repository representation of `P`, and the carrier upper bound
-`|Carrier(Z0,Y0)| <= 4*|Z0 \ Y0|`.  The lower bound on `|P|` visible before
-Eq. (2.31) is not that carrier upper bound.  Do not add a Lean theorem that
-constructs `PIndex`, `pBonds_injective`, or `bondCarrier_card_le` until these
+carrier-containment hypothesis from the concrete route: the eligible bond
+carrier for fixed `(Z0,Y0)`, the orientation/adjacency convention, and the
+carrier upper bound `|Carrier(Z0,Y0)| <= 4*|Z0 \ Y0|`.  The lower bound on
+`|P|` visible before Eq. (2.31) is not that carrier upper bound.  Do not remove
+the `hPcarrier` premise from the concrete source-bond-set route until these
 facts are extracted from a primary source passage.
 The fixed-index bridge `cmp116PStageSourceBound_of_eq231_pointwise` and the
 scale-family constructor
@@ -989,6 +993,13 @@ input on this route; it does not prove the CMP116 source construction of the
 P-family, Eq. (2.31) constants, pointwise P-residual bound, post-`P`
 majorization, activity identification, termwise estimate, or the full scalar
 hierarchy.
+
+The narrower scale constructor
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourceBondSets` is now the
+first downstream source route whose P-index is literally a finite bond set
+`Finset (Cube × Fin 4)`.  It removes arbitrary `CMP116Eq231PBondBoundary` data
+from that route, but it still carries the source-specific `hPcarrier`
+containment premise.
 
 `rawSource_of_weightedPostPBoundaries` composes that direct consumer with the
 pre-existing `rawSource_of_lemma3ActivityEstimate` adapter.  It still requires

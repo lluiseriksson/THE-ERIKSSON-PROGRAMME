@@ -96,8 +96,11 @@ corresponding Lean theorem is implemented and oracle-checked.
 targets and the reason the currently visible OCR cannot theorem-feed CMP116
 Eq. (2.29).  Check that key before re-running broad Cammarota searches.
 The key `cmp116.eq231.p-family-carrier-source-target` plays the same role for
-the Eq. (2.31) P-family: it records the exact missing carrier, injection, and
-counting facts needed before replacing `CMP116Eq231PBondBoundary` in Lean.
+the Eq. (2.31) P-family: it records the exact missing carrier/orientation and
+counting facts needed before eliminating the remaining source-specific
+carrier-containment hypothesis in the concrete finite-bond-set route.  The
+generic `CMP116Eq231PBondBoundary` remains available as an internal
+combinatorial abstraction.
 The keys `cmp116.eq237.post-p-resummation` and
 `cmp116.constants.c3-alpha5` record the visually confirmed page-20 source
 data for the combined post-`P` boundary, the alpha5/C3 region, and Lemma 3's

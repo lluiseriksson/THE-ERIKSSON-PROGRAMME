@@ -259,6 +259,123 @@ theorem cmp116PStageSourceBound_of_eq231_pointwise
         hgeometry
         htarget)
 
+/-- CMP116 equation (2.31) P-stage source bound when the source `P` index is
+the finite bond set itself.  This removes the caller-supplied abstract
+`CMP116Eq231PBondBoundary`; the only source-specific combinatorial input that
+remains is containment of every source `P` in the four-direction carrier over
+the microscopic gap. -/
+theorem cmp116PStageSourceBound_of_eq231_sourceBondSets
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (DIndex : σ → Finset ιD)
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (pWeight pGeometryWeight :
+      σ → ιD → Finset (Cube × Fin 4) → ℝ)
+    (gapCubes : σ → ιD → Finset Cube)
+    (blockScale localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (pEntropyConstant epsilon2 kappa gamma2 epsilon1 gk : ℝ)
+    (hepsilon2_nonneg : 0 ≤ epsilon2)
+    (hPcarrier :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ PIndex Z D →
+          P ⊆ gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4)))
+    (hpointwise :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ PIndex Z D →
+          pWeight Z D P ≤
+            (2 * (((blockScale : ℝ) + 2) ^ 4) * epsilon2) *
+              pGeometryWeight Z D P)
+    (hsourceBracket :
+      4 * ((localizationScale : ℝ) ^ 4) *
+          Real.exp (-(gamma2 * epsilon1 ^ 2 / (10 * gk ^ 2))) ≤
+        gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2))
+    (hgeometry :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ PIndex Z D →
+          pGeometryWeight Z D P ≤
+            cmp116Eq231PWeight
+              (gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2))
+              (fun Z D =>
+                ((gapCubes Z D).card : ℝ) /
+                  ((localizationScale : ℝ) ^ 4))
+              (fun _ _ P => P) Z D P)
+    (htarget :
+      1 ≤ pEntropyConstant * Real.exp (5 * kappa)) :
+    CMP116PStageSourceBound
+      DIndex PIndex pWeight
+      blockScale pEntropyConstant epsilon2 kappa := by
+  let B :=
+    CMP116Eq231PBondBoundary.of_sourceBondSets
+      DIndex PIndex gapCubes localizationScale hlocalizationScale
+      hPcarrier
+  exact
+    cmp116PStageSourceBound_of_eq231_pointwise
+      DIndex PIndex pWeight pGeometryWeight
+      blockScale localizationScale
+      pEntropyConstant epsilon2 kappa gamma2 epsilon1 gk
+      B hepsilon2_nonneg hpointwise hsourceBracket
+      (by
+        intro Z D hD P hP
+        simpa [B] using hgeometry Z D hD P hP)
+      htarget
+
+/-- Filtered-powerset variant of
+`cmp116PStageSourceBound_of_eq231_sourceBondSets`.  Carrier containment is
+automatic because membership in `cmp116Eq231SourcePIndex` is powerset
+membership in the four-direction carrier. -/
+theorem cmp116PStageSourceBound_of_eq231_filteredBondSets
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (DIndex : σ → Finset ιD)
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (pWeight pGeometryWeight :
+      σ → ιD → Finset (Cube × Fin 4) → ℝ)
+    (blockScale localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (pEntropyConstant epsilon2 kappa gamma2 epsilon1 gk : ℝ)
+    (hepsilon2_nonneg : 0 ≤ epsilon2)
+    (hpointwise :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ cmp116Eq231SourcePIndex gapCubes admissible Z D →
+          pWeight Z D P ≤
+            (2 * (((blockScale : ℝ) + 2) ^ 4) * epsilon2) *
+              pGeometryWeight Z D P)
+    (hsourceBracket :
+      4 * ((localizationScale : ℝ) ^ 4) *
+          Real.exp (-(gamma2 * epsilon1 ^ 2 / (10 * gk ^ 2))) ≤
+        gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2))
+    (hgeometry :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ cmp116Eq231SourcePIndex gapCubes admissible Z D →
+          pGeometryWeight Z D P ≤
+            cmp116Eq231PWeight
+              (gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2))
+              (fun Z D =>
+                ((gapCubes Z D).card : ℝ) /
+                  ((localizationScale : ℝ) ^ 4))
+              (fun _ _ P => P) Z D P)
+    (htarget :
+      1 ≤ pEntropyConstant * Real.exp (5 * kappa)) :
+    CMP116PStageSourceBound
+      DIndex
+      (cmp116Eq231SourcePIndex gapCubes admissible)
+      pWeight blockScale pEntropyConstant epsilon2 kappa := by
+  exact
+    cmp116PStageSourceBound_of_eq231_sourceBondSets
+      DIndex
+      (cmp116Eq231SourcePIndex gapCubes admissible)
+      pWeight pGeometryWeight gapCubes
+      blockScale localizationScale hlocalizationScale
+      pEntropyConstant epsilon2 kappa gamma2 epsilon1 gk
+      hepsilon2_nonneg
+      (fun Z D hD =>
+        cmp116Eq231SourcePIndex_subset_carrier gapCubes admissible Z D)
+      hpointwise hsourceBracket hgeometry htarget
+
 /-- The CMP116 P-stage source estimate, together with its explicit scalar
 smallness restriction, implies the source-neutral normalized P-stage predicate
 used by the finite residual resummation. -/

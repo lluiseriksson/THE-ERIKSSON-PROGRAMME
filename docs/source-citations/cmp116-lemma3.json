@@ -291,10 +291,15 @@
       ],
       "lean_targets": [
         "CMP116Eq231PBondBoundary",
+        "cmp116Eq231SourcePIndex",
+        "CMP116Eq231PBondBoundary.of_sourceBondSets",
+        "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
         "cmp116Eq231PWeight",
         "cmp116Eq231_rate_condition_of_source_bracket",
         "cmp116Eq231_rate_condition_of_source_smallness",
         "cmp116PGeometricFamilySummation_of_eq231",
+        "cmp116PStageSourceBound_of_eq231_sourceBondSets",
+        "cmp116PStageSourceBound_of_eq231_filteredBondSets",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise"
       ],
       "use_for": [
@@ -321,7 +326,7 @@
         "renders": ["render_source_18", "render_source_19"]
       },
       "status": "source_pending",
-      "summary": "Source-targeting entry for the exact Balaban P-family, eligible bond carrier, injective encoding, and carrier-count theorem needed before replacing arbitrary CMP116Eq231PBondBoundary hypotheses.",
+      "summary": "Source-targeting entry for the exact Balaban P-family and eligible bond carrier theorem needed before eliminating the remaining carrier-containment hypothesis from the concrete source-bond-set Eq. (2.31) route.",
       "extracted_claims": [
         "The visually confirmed Eq. (2.31) display fixes the rate rho, the gap factor M^-4*|Z0 \\ Y0|, and the powerset/cardinality bracket used by the current finite-sum theorem.",
         "The visually confirmed paragraph describes P as a finite bond set and gives the lower bound |P| >= (1/2)*M^-4*|Z0 \\ Y0|.",
@@ -329,15 +334,20 @@
       ],
       "lean_targets": [
         "CMP116Eq231PBondBoundary",
+        "CMP116Eq231PBondBoundary.of_sourceBondSets",
+        "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
         "cmp116PGeometricFamilySummation_of_eq231",
         "cmp116PStageSourceBound_of_eq231_pointwise",
+        "cmp116PStageSourceBound_of_eq231_sourceBondSets",
+        "cmp116PStageSourceBound_of_eq231_filteredBondSets",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourceBondSets",
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries",
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],
       "use_for": [
-        "Precise source request for removing the live arbitrary Eq. (2.31) bond-boundary hypothesis from source-facing P-stage and M3 routes.",
-        "Checklist for the source facts required to construct repository PIndex/pBonds from Balaban's finite bond sets."
+        "Precise source request for removing the live carrier-containment hypothesis from concrete source-facing P-stage and M3 routes.",
+        "Checklist for the source facts required to justify the four-positive-direction carrier used by the concrete finite-bond-set PIndex route."
       ],
       "do_not_use_for": [
         "Do not construct a source-native PIndex, pBonds_injective, pBonds_subset, gapMass, or bondCarrier_card_le theorem from this entry alone.",
