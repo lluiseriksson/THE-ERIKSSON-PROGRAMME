@@ -20,6 +20,7 @@ python scripts\source_db.py show cmp116.eq231.p-bond-sum
 python scripts\source_db.py lean CMP116Eq231PBondBoundary
 python scripts\source_db.py blockers
 python scripts\source_db.py coverage
+python scripts\source_db.py artifacts cammarota_cmp85
 ```
 
 Para crear un paquete privado con los artefactos que ya existen en `YM_SOURCE_ROOT`:

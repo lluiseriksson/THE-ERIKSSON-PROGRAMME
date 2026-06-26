@@ -17490,3 +17490,66 @@ Gaussian/root/Hessian/locality, continuum, or Clay theorem was promoted.  The
 Cammarota CMP85 theorem text, exact thresholds, and Balaban D-family dictionary
 remain source-pending; v4 is an agent-control artifact only.  Clay distance
 **~0% (<0.1%)**, unchanged.
+
+## Addendum 422 (2026-06-26, **source DB artifact acquisition lookup**)
+
+Files touched:
+`CURRENT-STATE.md`, `docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/QUERY_EXAMPLES.md`, `docs/source-db/README.md`,
+`docs/source-db/source_index.sqlite`, `scripts/source_db.py`,
+`tests/test_source_db.py`, and this ledger.
+
+This checkpoint adds a direct citation-system route for finding private source
+artifacts before redoing OCR or web lookup.  The new command
+`python scripts\source_db.py artifacts [source_id]` prints the configured
+`YM_SOURCE_ROOT`, registered acquisition URLs, expected private artifact paths,
+media types, hashes, byte sizes, and present/missing state.  It is intentionally
+metadata-only: raw PDFs, text extractions, and renders remain out of public Git.
+
+The public Cammarota CMP85 source record now names the expected private
+acquisition targets for `cammarota_cmp85`: the PDF, a full text extraction, and
+candidate rendered pages 517--519.  The command reports those targets as
+missing until a valid primary artifact is available under the private source
+root.  This does not assert that the needed theorem is on those pages, nor does
+it promote any theorem text or threshold constants.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py artifacts cammarota_cmp85
+python scripts\source_db.py artifacts
+python -m pytest tests\test_source_db.py
+lake build +YangMills.RG.BalabanCMP116Eq229:olean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: source-citation validation passed with 18 citations from 4 sources.
+Source-db validation/build/stats passed with 7 catalog files and rebuilt SQLite
+hash `5e3b7da45f3c231f75fd7d2688cddf92c7de659bc7a6052fea5bfa0d77d657b9`.
+The rebuilt source database reports 14 sources, 79 citation/crosswalk/
+proof-card records, 296 claim/formula/proof-obligation records, 322 Lean target
+links, 187 open questions, 44 artifact records, and 9 coverage records.
+`source_db.py artifacts cammarota_cmp85` prints the Project Euclid, Springer,
+and ResearchGate acquisition URLs plus missing private paths for the PDF, text,
+and candidate page renders.  The full artifact listing prints the same
+Cammarota gap and existing Balaban local artifacts with hashes.  The source-db
+pytest suite passed with 6 tests.  Focused Eq. (2.29) olean build, diff
+checks, consistency check, forbidden-token scan, full `YangMillsCore` build,
+and oracle check passed.  The oracle output contains 1274 axiom reports and no
+dependencies outside `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is source-acquisition infrastructure only.  The attempted
+public Project Euclid PDF retrieval remains blocked by anti-bot HTML, so no
+Cammarota artifact was added and no exact theorem statement, threshold,
+Eq. (2.29), Eq. (2.31), Eq. (2.37), activity/termwise estimate,
+Gaussian/root/Hessian/locality, continuum, or Clay obligation was promoted.
+Clay distance **~0% (<0.1%)**, unchanged.

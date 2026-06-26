@@ -47,6 +47,13 @@
         "project_euclid_html": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Decay-of-correlations-for-infinite-range-interactions-in-unbounded-spin/cmp/1103921545.full",
         "project_euclid_pdf": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Decay-of-correlations-for-infinite-range-interactions-in-unbounded-spin/cmp/1103921545.pdf",
         "researchgate_author_upload": "https://www.researchgate.net/publication/256305844_Decay_of_correlations_for_infinite_range_interactions_in_unbounded_spin_systems"
+      },
+      "local_artifacts": {
+        "pdf": "cammarota_cmp85/cammarota-cmp85.pdf",
+        "text_full": "cammarota_cmp85/text/cammarota-cmp85.txt",
+        "render_candidate_page_517": "cammarota_cmp85/renders/cammarota-page-517.png",
+        "render_candidate_page_518": "cammarota_cmp85/renders/cammarota-page-518.png",
+        "render_candidate_page_519": "cammarota_cmp85/renders/cammarota-page-519.png"
       }
     },
     "cmp119": {

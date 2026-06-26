@@ -52,6 +52,17 @@ def test_show_prints_dictionary_links(tmp_path: Path, capsys) -> None:
     assert "CMP116Eq231BalabanPFamilySourcePackage" in captured.out
 
 
+def test_artifacts_prints_cammarota_acquisition_paths(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_artifacts("cammarota_cmp85", path=output)
+    captured = capsys.readouterr()
+    assert "project_euclid_pdf" in captured.out
+    assert "cammarota_cmp85/cammarota-cmp85.pdf" in captured.out
+    assert "cammarota_cmp85/text/cammarota-cmp85.txt" in captured.out
+    assert "[missing]" in captured.out
+
+
 def test_metadata_packet(tmp_path: Path) -> None:
     output = tmp_path / "packet.zip"
     source_db.build_packet(output=output, include_raw=False, root=ROOT)

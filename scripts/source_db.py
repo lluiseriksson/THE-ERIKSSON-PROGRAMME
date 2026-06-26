@@ -577,6 +577,58 @@ def print_coverage(path: Path | None = None) -> None:
             print(f"  {row['next_action']}")
 
 
+def print_artifacts(source_id: str | None = None, path: Path | None = None) -> None:
+    with connect_existing(path) as conn:
+        params: tuple[str, ...] = ()
+        where = ""
+        if source_id:
+            where = "WHERE s.source_id=?"
+            params = (source_id,)
+        sources = conn.execute(
+            f"""SELECT s.source_id,s.short,s.metadata_json
+                FROM sources s
+                {where}
+                ORDER BY s.source_id""",
+            params,
+        ).fetchall()
+        if not sources:
+            raise SystemExit(f"unknown source_id: {source_id}")
+        print(f"source root: {source_root()}")
+        for source in sources:
+            artifacts = conn.execute(
+                """SELECT artifact_name,relative_path,sha256,byte_size,media_type,exists_local
+                   FROM artifacts
+                   WHERE source_id=?
+                   ORDER BY exists_local,artifact_name""",
+                (source["source_id"],),
+            ).fetchall()
+            metadata = json.loads(source["metadata_json"])
+            web_urls = metadata.get("web_urls", {})
+            if not artifacts and not web_urls:
+                continue
+            print(f"{source['source_id']} - {source['short']}")
+            if web_urls:
+                print("  web URLs:")
+                for name, url in sorted(web_urls.items()):
+                    print(f"    - {name}: {url}")
+            if artifacts:
+                print("  local artifacts:")
+                for artifact in artifacts:
+                    state = "present" if artifact["exists_local"] else "missing"
+                    print(
+                        f"    - {artifact['artifact_name']} [{state}] "
+                        f"{artifact['relative_path']}"
+                    )
+                    full = source_root() / artifact["relative_path"]
+                    print(f"      path: {full}")
+                    if artifact["media_type"]:
+                        print(f"      media: {artifact['media_type']}")
+                    if artifact["sha256"]:
+                        print(f"      sha256: {artifact['sha256']}")
+                    if artifact["byte_size"] is not None:
+                        print(f"      bytes: {artifact['byte_size']}")
+
+
 def verify(root: Path | None = None, check_local: bool = False) -> int:
     root = root or repo_root()
     records = load_catalogs(root)
@@ -708,6 +760,8 @@ def parser() -> argparse.ArgumentParser:
     lean.add_argument("term")
     sub.add_parser("blockers", help="list non-theorem-feedable entries")
     sub.add_parser("coverage", help="show source-spine coverage and priorities")
+    artifacts = sub.add_parser("artifacts", help="show required local artifacts and acquisition URLs")
+    artifacts.add_argument("source_id", nargs="?", help="optional source id to filter")
     sub.add_parser("stats", help="show database statistics")
     packet = sub.add_parser("packet", help="create a reproducible source packet ZIP")
     packet.add_argument("--output", type=Path, default=repo_root() / "source-packets" / "out" / "source-packet.zip")
@@ -738,6 +792,9 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.command == "coverage":
         print_coverage()
+        return 0
+    if args.command == "artifacts":
+        print_artifacts(args.source_id)
         return 0
     if args.command == "stats":
         command_stats()

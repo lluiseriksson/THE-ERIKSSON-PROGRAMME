@@ -26,13 +26,14 @@ The cumulative source database layer now lives in
 index `docs/source-db/source_index.sqlite` from both the legacy
 `docs/source-citations/*.json` catalogs and the broader
 `docs/source-db/catalogs/*.json` source-spine backlog.  Use
-`python scripts/source_db.py search/show/lean/blockers/coverage` before
-opening PDFs; `source-packets/out/*.zip` and raw private artifacts remain out
-of public Git, while `source-packets/manifests/source-artifact-manifest.json`
+`python scripts/source_db.py search/show/lean/blockers/coverage/artifacts`
+before opening PDFs; `source-packets/out/*.zip` and raw private artifacts
+remain out of public Git, while `source-packets/manifests/source-artifact-manifest.json`
 records local artifact hashes and availability.  The `show` command now also
-prints each citation's source-to-Lean dictionary links and blockers, and the
-source-db tests check that every public JSON citation key is queryable from the
-generated SQLite index.
+prints each citation's source-to-Lean dictionary links and blockers, and
+`artifacts <source_id>` prints the expected private PDF/text/render paths plus
+registered acquisition URLs.  The source-db tests check that every public JSON
+citation key is queryable from the generated SQLite index.
 Batch 001 of this source database has now ingested the Dimock I-III citation
 metadata/formula packet as public source metadata only.  The repository counts
 are cumulative, not ZIP-local: the current rebuilt index includes the earlier

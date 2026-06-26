@@ -9,6 +9,8 @@ python scripts\source_db.py show cmp116.eq231.p-family-carrier-source-target
 python scripts\source_db.py lean cmp116Eq231SourcePIndex_mem_iff
 python scripts\source_db.py blockers
 python scripts\source_db.py coverage
+python scripts\source_db.py artifacts
+python scripts\source_db.py artifacts cammarota_cmp85
 python scripts\source_db.py stats
 ```
 
