@@ -17344,3 +17344,59 @@ Balaban's carrier with the repository carrier, prove the pointwise residual
 estimate, Eq. (2.29), Eq. (2.37), activity/termwise estimates,
 Gaussian/root/Hessian/locality, continuum, or Clay obligations.  Clay distance
 **~0% (<0.1%)**, unchanged.
+
+## Addendum 420 (2026-06-26, **source DB dictionary-link lookup guard**)
+
+Files touched:
+`scripts/source_db.py`, `tests/test_source_db.py`, `CURRENT-STATE.md`, and this
+ledger.
+
+This checkpoint improves the public citation lookup workflow.  The command
+`python scripts\source_db.py show <key>` now prints the citation's
+`dictionary_links`, including source symbol, Lean symbol, relation, status,
+statement, and blocker.  This makes operational keys such as
+`proof.eq231.source-package.live-fields.v2` self-contained for agents and
+external advisors without opening the raw JSON catalog.
+
+The source-db tests now also build a temporary SQLite index and check that every
+public JSON citation key is present in the `citations` table.  The specific
+Batch 004 key `proof.eq231.source-package.live-fields.v2` is covered, and a
+separate smoke test verifies that its dictionary links appear in `show` output.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py show proof.eq231.source-package.live-fields.v2
+python -m pytest tests\test_source_db.py
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db scripts tests
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: source-citation validation passed with 18 citations from 4 sources;
+source-db validation/build/stats passed with 6 catalog files and rebuilt SQLite
+hash `a9c5a8faa39751b8eeab90eb23f0ff8e2f8cdc7044e9b3002af6e307e9c93d10`.
+The rebuilt source database reports 14 sources, 70 citation/crosswalk/
+proof-card records, 257 claim/formula/proof-obligation records, 295 Lean target
+links, 164 open questions, 39 artifact records, and 9 coverage records.
+`source_db.py show proof.eq231.source-package.live-fields.v2` prints the
+Batch 004 dictionary links.  The source-db pytest suite passed with 5 tests.
+Focused Eq. (2.31) olean build, diff checks, consistency check, forbidden-token
+scan, full `YangMillsCore` build, and oracle check passed.  The oracle output
+contains only the permitted `[propext, Classical.choice, Quot.sound]`
+dependency reports, with a few declarations reporting no axioms.
+
+Honest scope: this is source-lookup infrastructure only.  It does not promote
+`bond_fst_mem_gapCubes`, `source_subset_gapCarrier`, `mem_iff_source`,
+`admissible_iff_source`, the Eq. (2.31) pointwise P-residual estimate,
+Eq. (2.29), Eq. (2.37), activity/termwise estimates,
+Gaussian/root/Hessian/locality, continuum, or Clay obligations.  Clay distance
+**~0% (<0.1%)**, unchanged.

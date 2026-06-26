@@ -481,6 +481,24 @@ def print_show(key: str, path: Path | None = None) -> None:
             print("  Lean targets:")
             for target in targets:
                 print(f"    - {target}")
+        links = conn.execute(
+            """SELECT source_symbol,lean_symbol,relation,status,statement,blocker
+               FROM dictionary_links
+               WHERE citation_key=?
+               ORDER BY link_id""",
+            (key,),
+        ).fetchall()
+        if links:
+            print("  dictionary links:")
+            for link in links:
+                print(
+                    f"    - {link['source_symbol']} -> {link['lean_symbol']} "
+                    f"[{link['relation']}/{link['status']}]"
+                )
+                if link["statement"]:
+                    print(f"      statement: {link['statement']}")
+                if link["blocker"]:
+                    print(f"      blocker: {link['blocker']}")
         questions = [r[0] for r in conn.execute("SELECT question FROM open_questions WHERE citation_key=? ORDER BY ordinal", (key,))]
         if questions:
             print("  open questions:")

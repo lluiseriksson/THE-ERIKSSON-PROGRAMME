@@ -32,6 +32,26 @@ def test_database_builds(tmp_path: Path) -> None:
         assert row == ("source_pending",)
 
 
+def test_database_indexes_every_catalog_key(tmp_path: Path) -> None:
+    output = tmp_path / "index.sqlite"
+    records = source_db.load_catalogs(ROOT)
+    expected = {citation["key"] for _, citation in source_db.iter_citations(records, ROOT)}
+    source_db.build_database(output=output, root=ROOT)
+    with sqlite3.connect(output) as conn:
+        actual = {row[0] for row in conn.execute("select citation_key from citations")}
+    assert actual == expected
+    assert "proof.eq231.source-package.live-fields.v2" in actual
+
+
+def test_show_prints_dictionary_links(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.eq231.source-package.live-fields.v2", path=output)
+    captured = capsys.readouterr()
+    assert "dictionary links:" in captured.out
+    assert "CMP116Eq231BalabanPFamilySourcePackage" in captured.out
+
+
 def test_metadata_packet(tmp_path: Path) -> None:
     output = tmp_path / "packet.zip"
     source_db.build_packet(output=output, include_raw=False, root=ROOT)

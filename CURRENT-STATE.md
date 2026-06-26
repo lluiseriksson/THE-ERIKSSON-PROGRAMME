@@ -29,7 +29,10 @@ index `docs/source-db/source_index.sqlite` from both the legacy
 `python scripts/source_db.py search/show/lean/blockers/coverage` before
 opening PDFs; `source-packets/out/*.zip` and raw private artifacts remain out
 of public Git, while `source-packets/manifests/source-artifact-manifest.json`
-records local artifact hashes and availability.
+records local artifact hashes and availability.  The `show` command now also
+prints each citation's source-to-Lean dictionary links and blockers, and the
+source-db tests check that every public JSON citation key is queryable from the
+generated SQLite index.
 Batch 001 of this source database has now ingested the Dimock I-III citation
 metadata/formula packet as public source metadata only.  The repository counts
 are cumulative, not ZIP-local: the current rebuilt index includes the earlier
