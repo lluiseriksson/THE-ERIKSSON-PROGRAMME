@@ -12,6 +12,27 @@ Purpose: align the source database with the post-`8b98c43` route.  The repositor
 | `admissible_iff_source` | `admissible Z D P = true ↔ source clauses` | CMP116 page-12/page-18/19 P-family text | anti-vacuity for admissible | open |
 | pointwise P residual | `pResidualWeight ≤ constant * pGeometryWeight` | CMP116 Eq. (2.31) analytic window | P-stage analytic bound | separate analytic blocker |
 
+Lean also has the honest fallback record:
+
+```lean
+CMP116Eq231PositiveTailOwnershipSource
+```
+
+This narrows the carrier branch to one source theorem:
+
+```lean
+∀ Z D P,
+  sourceAdmissible Z D P →
+    ∀ b : Cube × Fin 4,
+      b ∈ P → b.1 ∈ gapCubes Z D
+```
+
+`CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership` then supplies
+the eligible-bond carrier record with
+`sourceEligibleBond Z D b := b.1 ∈ gapCubes Z D`.  This avoids claiming a full
+source-side eligible-bond iff until CMP116/CMP109 explicitly identify the
+endpoint/base convention.
+
 ## Immediate rule
 
 A commit is useful only if it removes one of the live fields above or proves a source-shaped premise that feeds an existing remover.  Another theorem forwarding `hPIndex`, `hPcarrier` or `CMP116Eq231PBondBoundary` without shrinking assumptions is cosmetic.

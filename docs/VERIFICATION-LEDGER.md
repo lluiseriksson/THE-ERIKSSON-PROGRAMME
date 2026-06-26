@@ -17972,3 +17972,80 @@ reported dependency lines, all within `[propext, Classical.choice, Quot.sound]`.
 Honest scope: this is source/idea metadata hygiene and a regression guard.  It
 does not promote any source claim, prove an Eq. (2.31)/Eq. (2.37)/Eq. (2.29)
 field, or change Clay distance.
+
+## Addendum 429 (2026-06-26, **Eq. (2.31) positive-tail ownership target**)
+
+Files touched: `YangMills/RG/BalabanCMP116Eq231.lean`, `oracle_check.lean`,
+`CURRENT-STATE.md`, `docs/source-db/catalogs/eq231-source-package-live-fields.json`,
+`docs/source-db/indices/EQ231-CITATION-EXTRACTION-REQUESTS.md`,
+`docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md`,
+`docs/source-db/source_index.sqlite`, and this ledger.
+
+The new record `CMP116Eq231PositiveTailOwnershipSource` names the one-field
+fallback target for the CMP116/CMP109 Eq. (2.31) carrier blocker:
+
+```
+sourceAdmissible Z D P -> b in P -> b.1 in gapCubes Z D
+```
+
+This is weaker than a full independently transcribed eligible-bond iff.  It is
+the honest target when the source pages support base/tail ownership but do not
+yet justify a separate source-side predicate
+`sourceEligibleBond Z D b <-> b.1 in gapCubes Z D`.
+
+The theorem `cmp116Eq231_bond_fst_mem_gapCubes_of_positiveTailOwnership`
+projects the one-field record to the older bond-first-coordinate premise.
+`CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership` recovers the
+eligible-bond carrier record by choosing
+`sourceEligibleBond Z D b := b.1 in gapCubes Z D`, and
+`CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership` feeds the
+existing source-package route.  The source-db Eq. (2.31) live-field metadata and
+extraction-request page now name this endpoint/base theorem explicitly.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_citations.py show cmp109.bond-convention.positive-oriented
+python scripts\source_citations.py show cmp109.b0-corridor-bond
+python scripts\source_db.py show proof.eq231.field.bond-fst-mem-gapCubes
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_db.py
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+python scripts\source_db.py build
+python scripts\source_db.py lean CMP116Eq231PositiveTailOwnershipSource
+python scripts\source_db.py lean CMP116Eq231EligibleBondCarrierSource
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116Eq231.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: the source lookups still mark the full CMP116/CMP109 carrier theorem
+as source-pending.  The inspected text supports the current extraction request
+but not a theorem promotion: CMP116 page 12 gives the `Y0^{c,*}`/`P` setup,
+interior/boundary restrictions, and minimal `Z0`; CMP116 pages 18--19 give the
+Eq. (2.31) `P`-sum and lower bound; CMP109 gives endpoint and positive
+orientation windows.  The missing source sentence remains the base/tail
+ownership assertion for every bond in a source-admissible `P`.  Source-db
+validation passed with 9 catalog files; citation validation passed with 18
+citations from 4 sources; pytest passed with 9 tests.  The focused Eq. (2.31)
+file elaboration and focused `BalabanCMP116Eq231` build passed.  Diff checks
+passed with only line-ending warnings; consistency checks and forbidden-token
+scan found no new `sorry`, `admit`, or `axiom`.  Full `lake build
+YangMillsCore` passed at 8364 jobs with only pre-existing linter warnings.
+`lake env lean oracle_check.lean` exited 0 with empty stderr and 1284 reported
+dependency lines, all within `[propext, Classical.choice, Quot.sound]`.  The
+rebuilt SQLite source DB hash is
+`b372d4705952097523f0ca7d709c186ba1ca075f0c4f61f3ed5621413a6d1a98`.
+
+Honest scope: this removes no source-pending status.  It narrows the Eq. (2.31)
+carrier branch from two eligible-bond fields to one endpoint/base theorem in the
+fallback route.  It does not prove the CMP116 carrier theorem, `mem_iff_source`,
+`admissible_iff_source`, pointwise P-residual majorization, Eq. (2.29), Eq.
+(2.37), Gaussian/root/Hessian fields, H#, continuum, or Clay.  Clay distance
+**~0% (<0.1%)**, unchanged.

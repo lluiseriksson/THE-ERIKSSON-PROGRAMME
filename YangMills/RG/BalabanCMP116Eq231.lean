@@ -126,6 +126,73 @@ structure CMP116Eq231EligibleBondCarrierSource
       sourceAdmissible Z D P →
         ∀ b : Cube × Fin 4, b ∈ P → sourceEligibleBond Z D b
 
+/-- One-field source target for the CMP116/CMP109 Eq. (2.31) positive-tail
+ownership blocker.
+
+The currently inspected source windows do not yet justify the full
+`sourceEligibleBond ↔ b.1 ∈ gapCubes` iff for an independently transcribed
+eligible-bond predicate.  This record names the strictly weaker theorem that is
+still enough for the repository carrier projection: every encoded bond in a
+source-admissible `P` has its positive tail/base cube in the gap represented by
+`gapCubes`.
+
+Source target: CMP116 page 12 / Eq. (2.3), CMP116 pages 18--19 around
+Eq. (2.31), and CMP109 positive-oriented bond windows.  The missing sentence is
+the endpoint/base ownership assertion, not the Eq. (2.31) lower bound on `|P|`. -/
+structure CMP116Eq231PositiveTailOwnershipSource
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop) : Prop where
+  positive_tail_in_gap :
+    ∀ Z D P,
+      sourceAdmissible Z D P →
+        ∀ b : Cube × Fin 4,
+          b ∈ P → b.1 ∈ gapCubes Z D
+
+/-- The one-field positive-tail source target is exactly the projected-bond
+ownership premise consumed by the older carrier theorem. -/
+theorem cmp116Eq231_bond_fst_mem_gapCubes_of_positiveTailOwnership
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (S :
+      CMP116Eq231PositiveTailOwnershipSource
+        gapCubes sourceAdmissible) :
+    ∀ Z D P,
+      sourceAdmissible Z D P →
+        ∀ b : Cube × Fin 4,
+          b ∈ P → b.1 ∈ gapCubes Z D :=
+  S.positive_tail_in_gap
+
+/-- If the source transcription chooses the eligible-bond predicate to be the
+repository positive-tail gap carrier itself, the remaining Eq. (2.31) carrier
+interface collapses to the one-field positive-tail ownership theorem.
+
+This is intentionally weaker than identifying an independently defined
+CMP116/CMP109 `sourceEligibleBond` predicate.  It is the honest route when the
+source pages support tail/base ownership but not a full source-side iff. -/
+theorem CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (S :
+      CMP116Eq231PositiveTailOwnershipSource
+        gapCubes sourceAdmissible) :
+    CMP116Eq231EligibleBondCarrierSource
+      gapCubes
+      (fun Z D b => b.1 ∈ gapCubes Z D)
+      sourceAdmissible := by
+  refine
+    { eligible_iff_gapCarrier := ?_
+      sourceAdmissible_bonds_eligible := ?_ }
+  · intro Z D b
+    rfl
+  · intro Z D P hsource b hb
+    exact S.positive_tail_in_gap Z D P hsource b hb
+
 /-- The narrow eligible-bond source dictionary gives the projected-bond
 ownership premise used by
 `cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes`.
@@ -397,6 +464,42 @@ theorem CMP116Eq231BalabanPFamilySourcePackage.of_sourceEligibleBondCarrier
     hmem_iff_source
     (cmp116Eq231_bond_fst_mem_gapCubes_of_sourceEligible
       gapCubes sourceEligibleBond sourceAdmissible S)
+    hadmissible_iff_source
+
+/-- Build the CMP116 Eq. (2.31) source package from the one-field positive-tail
+ownership theorem.
+
+This route is for the current source situation: the primary pages have not yet
+been extracted strongly enough to identify a separate `sourceEligibleBond`
+predicate by iff, but the exact theorem needed downstream is just that every
+source-admissible encoded bond has first coordinate in `gapCubes`. -/
+theorem CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (hmem_iff_source :
+      ∀ Z D P,
+        P ∈ PIndex Z D ↔ sourceAdmissible Z D P)
+    (S :
+      CMP116Eq231PositiveTailOwnershipSource
+        gapCubes sourceAdmissible)
+    (hadmissible_iff_source :
+      ∀ Z D P,
+        admissible Z D P = true ↔ sourceAdmissible Z D P) :
+    CMP116Eq231BalabanPFamilySourcePackage
+      PIndex gapCubes admissible sourceAdmissible :=
+  CMP116Eq231BalabanPFamilySourcePackage.of_sourceEligibleBondCarrier
+    PIndex gapCubes admissible
+    (fun Z D b => b.1 ∈ gapCubes Z D)
+    sourceAdmissible hmem_iff_source
+    (CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership
+      gapCubes sourceAdmissible S)
     hadmissible_iff_source
 
 /-- The source dictionary gives the one-way carrier inclusion currently

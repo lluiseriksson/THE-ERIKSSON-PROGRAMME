@@ -2061,6 +2061,14 @@ bonds.  `cmp116Eq231_bond_fst_mem_gapCubes_of_sourceEligible` and
 derive the existing carrier field.  The source facts themselves remain pending;
 this does not close `mem_iff_source`, `admissible_iff_source`, or the full
 Eq. (2.31) P-family dictionary.
+`CMP116Eq231PositiveTailOwnershipSource` is now the fallback target when the
+primary pages do not justify a separate source-side eligible-bond iff: it asks
+only that every bond in a source-admissible `P` have first coordinate in
+`gapCubes`.  `CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership`
+and `CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership` then
+recover the current carrier route by taking `sourceEligibleBond Z D b` to mean
+`b.1 ∈ gapCubes Z D`.  The missing source sentence is still the CMP116/CMP109
+endpoint/base assertion, not the Eq. (2.31) lower bound on `|P|`.
 
 The v2 creative expansion pack is installed under
 `docs/idea-db/ym-creative-expansion`.  It is intentionally outside

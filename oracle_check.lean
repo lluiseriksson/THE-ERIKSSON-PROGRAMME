@@ -1419,11 +1419,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimate_of_eq229_postD
 #print axioms YangMills.RG.CMP116Eq231PBondBoundary
 #print axioms YangMills.RG.CMP116Eq231EligibleBondCarrierSource
+#print axioms YangMills.RG.CMP116Eq231PositiveTailOwnershipSource
 #print axioms YangMills.RG.cmp116Eq231_bond_fst_mem_gapCubes_of_sourceEligible
+#print axioms YangMills.RG.cmp116Eq231_bond_fst_mem_gapCubes_of_positiveTailOwnership
+#print axioms YangMills.RG.CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership
 #print axioms YangMills.RG.cmp116Eq231SourcePIndex
 #print axioms YangMills.RG.cmp116Eq231SourcePIndex_mem_iff
 #print axioms YangMills.RG.cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff
 #print axioms YangMills.RG.CMP116Eq231BalabanPFamilySourcePackage.of_sourceEligibleBondCarrier
+#print axioms YangMills.RG.CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership
 #print axioms YangMills.RG.cmp116Eq231SourcePIndex_subset_carrier
 #print axioms YangMills.RG.cmp116Eq231PWeight
 #print axioms YangMills.RG.cmp116Eq231_rate_condition_of_source_smallness
