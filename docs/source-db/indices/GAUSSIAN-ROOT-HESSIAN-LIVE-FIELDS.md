@@ -27,7 +27,8 @@ with the consumer Gaussian law, and the normalized pushforward identity.
 The scale-family raw-source constructors
 `rawSource_of_lemma3ActivityEstimate_gaussianNormalization`,
 `rawSource_of_weightedPostPBoundaries_gaussianNormalization`, and
-`rawSource_of_eq231_weightedPostPBoundaries_gaussianNormalization` consume that
+`rawSource_of_eq231_weightedPostPBoundaries_gaussianNormalization`, and
+`rawSource_of_eq231_sourcePIndexMemIff_gaussianNormalization` consume that
 structured record instead of a raw per-scale `gaussian_pushforward` equality.
 
 This is still a source-pending analytic field.  The determinant/Jacobian

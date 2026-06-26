@@ -18118,3 +18118,53 @@ normalization proof.  The CMP116 Eq. (2.5)--(2.6) determinant/Jacobian
 normalization, source coordinate-map dictionary, covariance-root certificate,
 root localization, Wilson Hessian, local activity construction, raw decay, H#,
 continuum, and Clay obligations remain open.
+
+## Addendum 431 (2026-06-26, **Eq. (2.31) source-index Gaussian route**)
+
+Files touched: `YangMills/RG/BalabanCMP116Lemma3ScaleFamily.lean`,
+`oracle_check.lean`, `CURRENT-STATE.md`,
+`docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md`, and this ledger.
+
+This checkpoint adds
+`rawSource_of_eq231_sourcePIndexMemIff_gaussianNormalization`, the
+theorem-facing Eq. (2.31) source-membership raw-source route whose Gaussian
+field is supplied by
+`PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization` instead
+of a raw per-scale `gaussian_pushforward` equality.  The constructor derives the
+old equality through
+`CMP116GaussianPushforwardNormalization.gaussian_pushforward` and feeds the
+existing `rawSource_of_eq231_sourcePIndexMemIff`.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build +YangMills.RG.BalabanCMP116Lemma3ScaleFamily:olean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_db.py
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: focused Lean exited 0; the focused
+`BalabanCMP116Lemma3ScaleFamily` build passed at 8256 jobs with only
+pre-existing warnings.  Source DB verification passed with 9 catalog files;
+source-citation validation passed with 18 citations from 4 sources; pytest
+passed 9 tests.  `git diff --check` exited 0 with only line-ending warnings.
+`scripts/check_consistency.py` reported zero `sorry` and zero verified-core
+axioms; the forbidden-token scan found no matches.  Full `lake build
+YangMillsCore` passed at 8364 jobs with only pre-existing warnings.  A first
+oracle wrapper run timed out without stderr or a reliable exit code, so it was
+discarded; a clean rerun of `lake env lean oracle_check.lean` exited 0 with
+empty stderr and 2726 stdout lines.  The new symbol printed with dependencies
+inside Lean's standard `[propext, Classical.choice, Quot.sound]` set.
+
+Honest scope: this removes one live raw Gaussian-pushforward caller field from
+the Eq. (2.31) source-index route, but it does not prove CMP116 Eq.
+(2.5)--(2.6), the determinant/Jacobian normalization, the source coordinate-map
+dictionary, the covariance-root certificate, root localization, Wilson Hessian,
+local activity construction, raw decay, H#, continuum, or Clay.

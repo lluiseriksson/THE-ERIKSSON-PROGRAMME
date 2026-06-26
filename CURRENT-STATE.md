@@ -2110,7 +2110,8 @@ The Gaussian pushforward route now has scale-family constructors that consume
 of a raw per-scale `gaussian_pushforward` equality:
 `rawSource_of_lemma3ActivityEstimate_gaussianNormalization`,
 `rawSource_of_weightedPostPBoundaries_gaussianNormalization`, and
-`rawSource_of_eq231_weightedPostPBoundaries_gaussianNormalization`.  These
+`rawSource_of_eq231_weightedPostPBoundaries_gaussianNormalization`, and
+`rawSource_of_eq231_sourcePIndexMemIff_gaussianNormalization`.  These
 constructors derive the old equality from the structured normalization record
 and then feed the existing raw-source records.  They do not prove the CMP116
 Eq. (2.5)--(2.6) determinant/Jacobian normalization, covariance-root
