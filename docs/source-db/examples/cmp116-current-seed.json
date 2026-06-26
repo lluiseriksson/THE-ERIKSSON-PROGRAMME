@@ -146,6 +146,7 @@
         "cmp116Eq231_balabanPFamily_sourcePIndexMemIff",
         "cmp116Eq231_balabanPFamily_eq_sourceFilteredBondSets",
         "CMP116Eq231PBondBoundary.of_sourcePIndexMemIff",
+        "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
         "cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff",
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff",

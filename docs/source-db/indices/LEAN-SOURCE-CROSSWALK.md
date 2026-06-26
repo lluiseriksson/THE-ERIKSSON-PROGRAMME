@@ -1,6 +1,6 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **57**. Links: **102**.
+Unique Lean targets: **58**. Links: **104**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
@@ -19,6 +19,8 @@ Unique Lean targets: **57**. Links: **102**.
 | `CMP116Eq229Summability` | `cammarota.cmp85.polymer-mayer-source-target` | Cammarota CMP85 | `source_pending` | Exact general-polymer Mayer theorem behind Eq. (2.29) still needs clean extraction. |
 | `CMP116Eq229Summability` | `cmp116.eq229.d-stage-summability` | Balaban CMP116 | `visual_confirmed` | D-stage product summability for sufficiently large K and sufficiently small alpha6. |
 | `CMP116Eq231PBondBoundary` | `cmp116.eq231.p-bond-sum` | Balaban CMP116 | `visual_confirmed` | Finite P-bond summation and entropy bracket. |
+| `CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
+| `CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage` | `cmp116.eq231.p-family-carrier-source-target` | Balaban CMP116 | `source_pending` | Source-targeting entry for the exact Balaban P-family membership theorem and eligible bond carrier theorem needed before identifying source... |
 | `CMP116Eq237MajorizationBoundary` | `crosswalk.eq237.combined-postp-route` | Repo operational crosswalk | `lean_linked` | Operational route for the combined post-P source bound after Eq. (2.37). |
 | `CMP116Eq237MajorizationBoundary` | `cmp116.eq237.post-p-resummation` | Balaban CMP116 | `visual_confirmed` | Combined post-P resummation for fixed Z0' and the following final summation. |
 | `CMP116Lemma3ActivityEstimateScaleFamily` | `dimocki.small-field-cluster.235-237` | Dimock I | `source_extracted` | Lemma 21 turns the localized small-field fluctuation integral into an exponential of local activi... |

@@ -439,6 +439,36 @@ noncomputable def CMP116Eq231PBondBoundary.of_sourcePIndexMemIff
       DIndex PIndex gapCubes localizationScale hlocalizationScale
       (fun Z D _hD P hP => ((hmem Z D P).mp hP).1)
 
+/-- Concrete CMP116 (2.31) boundary from the explicit Balaban source package.
+
+This is only proof assembly: the package `S` still contains the source theorem
+identifying Balaban's `P` family, its carrier containment, and the source
+admissibility predicate.  No source fact is inferred from the filtered Lean
+definition. -/
+noncomputable def CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (DIndex : σ → Finset ιD)
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (S :
+      CMP116Eq231BalabanPFamilySourcePackage
+        PIndex gapCubes admissible sourceAdmissible) :
+    CMP116Eq231PBondBoundary
+      (β := Cube × Fin 4) DIndex PIndex localizationScale := by
+  exact
+    CMP116Eq231PBondBoundary.of_sourcePIndexMemIff
+      DIndex PIndex gapCubes admissible localizationScale hlocalizationScale
+      (cmp116Eq231_balabanPFamily_sourcePIndexMemIff
+        PIndex gapCubes admissible sourceAdmissible S)
+
 /-- The exact exponential shape summed in CMP116 equation (2.31).
 
 For the source parameters in CMP116 (2.31),

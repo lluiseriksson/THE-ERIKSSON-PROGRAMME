@@ -8,8 +8,8 @@ Lean consumers and open hypotheses.
 
 - Sources indexed: 14
 - Citation/crosswalk records: 50
-- Claim/formula records: 154
-- Lean target links: 231
+- Claim/formula records: 155
+- Lean target links: 233
 - Blocking citations: 10
 
 ## Highest-value source-removal targets

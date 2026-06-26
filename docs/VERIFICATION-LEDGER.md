@@ -17042,3 +17042,70 @@ membership iff, identify Balaban's eligible carrier with the repository
 carrier, prove Eq. (2.29), Eq. (2.37), activity/termwise estimates,
 Gaussian/root/Hessian/locality, continuum, or Clay obligations.  Clay distance
 **~0% (<0.1%)**, unchanged.
+
+## Addendum 416 (2026-06-26, **Eq. (2.31) source-package boundary assembly**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Eq231.lean`, `CURRENT-STATE.md`,
+`docs/SOURCE-CLAIM-AUDIT.md`, `docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/examples/cmp116-current-seed.json`,
+`docs/source-db/catalogs/llm-operational-crosswalk.json`,
+`docs/source-db/indices/LEAN-SOURCE-CROSSWALK.md`,
+`docs/source-db/indices/LLM-FAST-CONTEXT.md`,
+`docs/source-db/indices/lean-source-crosswalk.json`,
+`docs/source-db/reports/BATCH-002-LLM-CONTEXT-INDICES.md`,
+`docs/source-db/source_index.sqlite`, and this ledger.
+
+This checkpoint adds
+`CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage`, a direct
+proof-assembly constructor from the existing non-hollow
+`CMP116Eq231BalabanPFamilySourcePackage` to the immediate Eq. (2.31)
+`CMP116Eq231PBondBoundary`.  It composes the already verified
+`cmp116Eq231_balabanPFamily_sourcePIndexMemIff` route with
+`CMP116Eq231PBondBoundary.of_sourcePIndexMemIff`, so callers that have the
+explicit source package no longer need to manually pass the pointwise
+membership iff to the boundary constructor.
+
+The source catalogs and Batch 002 crosswalk were updated to expose the new Lean
+target.  The target is still tied to the `source_pending`
+`cmp116.eq231.p-family-carrier-source-target` citation and the operational
+`crosswalk.eq231.p-family-source-dictionary-route`; it is not marked as source
+verified.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py lean CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage
+python scripts\source_citations.py lean CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json docs\source-db YangMills\RG\BalabanCMP116Eq231.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-source-package-boundary.log
+```
+
+Results: focused Lean, focused olean build, citation validation, source-db
+validation/rebuild/stats/target lookup, diff check, consistency check,
+forbidden-token scan, full `YangMillsCore` build, and oracle check passed.
+The rebuilt source database reports 14 sources, 50 citation/crosswalk records,
+155 claim/formula records, 233 Lean target links, 104 open questions,
+39 artifact records, and 9 coverage records; its SHA-256 is
+`945117566c5fc0a83883afdb6ee469eb2d3936770d93e54b1657206fa18b8fa2`.
+Lean builds reported only pre-existing linter warnings.  The oracle check
+passed and wrote `runtime\oracle-eq231-source-package-boundary.log`,
+containing only permitted `[propext, Classical.choice, Quot.sound]`
+dependency reports.
+
+Honest scope: this removes a manual boundary-assembly step once the explicit
+source package is available. It does **not** prove the CMP116/CMP109 source
+membership iff, does not identify Balaban's eligible carrier with the
+repository carrier, does not prove the pointwise P-residual estimate, Eq.
+(2.29), Eq. (2.37), activity/termwise estimates, Gaussian/root/Hessian/locality,
+continuum, or Clay obligations.  Clay distance **~0% (<0.1%)**, unchanged.

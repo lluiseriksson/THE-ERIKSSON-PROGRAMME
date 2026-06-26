@@ -56,6 +56,7 @@
         "cmp116Eq231GapCarrier_card_le_four_scale4_gapMass",
         "cmp116Eq231SourcePIndex_mem_iff",
         "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets"
       ],

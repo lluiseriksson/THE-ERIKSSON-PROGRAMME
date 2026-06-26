@@ -153,6 +153,26 @@
         "pdf_pages": "18-19"
       }
     ],
+    "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "cmp116.eq231.p-family-carrier-source-target",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "source_pending",
+        "summary": "Source-targeting entry for the exact Balaban P-family membership theorem and eligible bond carrier theorem needed before identifying source PIndex with the filtered Lean family.",
+        "printed_pages": "12, 18-19",
+        "pdf_pages": "12, 18-19"
+      }
+    ],
     "CMP116Eq237MajorizationBoundary": [
       {
         "citation_key": "crosswalk.eq237.combined-postp-route",

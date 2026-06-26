@@ -340,6 +340,7 @@
         "The inspected citation material does not yet give a formal source-to-Lean map from Balaban's P to repository PIndex/pBonds, nor does it prove the carrier upper bound recorded by CMP116Eq231PBondBoundary.",
         "Lean now has a source-neutral extensional bridge: a pointwise membership iff for PIndex yields equality with cmp116Eq231SourcePIndex, but the source membership iff remains pending.",
         "Lean now also has a non-hollow source package CMP116Eq231BalabanPFamilySourcePackage: it keeps a sourceAdmissible predicate explicit, records membership in Balaban's P family, carrier inclusion in gapCubes x Fin 4, and equivalence between sourceAdmissible and the Lean admissible boolean.",
+        "Lean now has a direct proof-assembly constructor CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage from that explicit source package to the immediate Eq. (2.31) boundary; the source package itself remains source_pending.",
         "Lean now names the repository four-direction carrier and gap mass separately and proves its internal count: |gapCubes x Fin 4| = 4*|gapCubes| = 4*M^4*gapMass. This does not identify Balaban's eligible carrier with the repository carrier."
       ],
       "lean_targets": [
@@ -359,6 +360,7 @@
         "CMP116Eq231PBondBoundary.of_sourceBondSets",
         "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
         "CMP116Eq231PBondBoundary.of_sourcePIndexMemIff",
+        "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
         "cmp116PGeometricFamilySummation_of_eq231",
         "cmp116PStageSourceBound_of_eq231_pointwise",
         "cmp116PStageSourceBound_of_eq231_sourceBondSets",

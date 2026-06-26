@@ -1883,6 +1883,7 @@ predicate, inclusion in `gapCubes × Fin 4`, and equivalence with the Lean
 `cmp116Eq231_balabanPFamily_eq_sourceFilteredBondSets`.
 That same pointwise-iff input now feeds the Eq. (2.31) route directly through
 `CMP116Eq231PBondBoundary.of_sourcePIndexMemIff`,
+`CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage`,
 `cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff`,
 `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff`, and the
 weighted post-`P` consumers
@@ -1894,7 +1895,8 @@ The same iff now feeds the raw-source adapter
 longer asks callers to prepackage an Eq. (2.31) bond boundary when the exact
 source membership theorem is available.
 This removes the auxiliary equality/containment packaging from that path once
-the source iff is supplied, but it still does not prove the iff itself.
+the source iff is supplied, but it still does not prove the iff itself or
+identify Balaban's carrier.
 The citation CLI now has `python scripts\source_citations.py excerpt <key>`,
 and `cmp116.eq231.p-family-carrier-source-target` points to the visually
 checked CMP116 page-12 `P` decomposition and the page-18/19 Eq. (2.31) window.

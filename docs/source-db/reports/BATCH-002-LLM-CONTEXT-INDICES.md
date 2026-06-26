@@ -33,10 +33,10 @@ with the pre-existing catalogs plus the updated operational crosswalk:
 
 - Sources: 14
 - Citation/crosswalk records: 50
-- Claim/formula records: 154
-- Lean target links: 231
+- Claim/formula records: 155
+- Lean target links: 233
 - Open questions: 104
-- SQLite SHA256: `a91355c59aa3f068392261627a0534b7e2308ca549dc496fff4ccc339a52b5dd`
+- SQLite SHA256: `945117566c5fc0a83883afdb6ee469eb2d3936770d93e54b1657206fa18b8fa2`
 
 ## Citation status distribution
 

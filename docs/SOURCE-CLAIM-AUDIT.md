@@ -1059,6 +1059,7 @@ The pointwise-membership route now exposes
 `cmp116Eq231_balabanPFamily_sourcePIndexMemIff`,
 `cmp116Eq231_balabanPFamily_eq_sourceFilteredBondSets`,
 `CMP116Eq231PBondBoundary.of_sourcePIndexMemIff`,
+`CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage`,
 `cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff`,
 `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff`,
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff`,
@@ -1067,6 +1068,10 @@ and
 The raw-source adapter `rawSource_of_eq231_sourcePIndexMemIff` now consumes the
 same pointwise iff directly, after the weighted post-`P` source package and
 before the physical Gaussian/root/Hessian/activity source facts are supplied.
+The immediate boundary constructor
+`CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage` composes the explicit
+source package into the Eq. (2.31) boundary, but it does not supply the package
+or identify Balaban's carrier.
 The source package is not a proof that the source predicate has been extracted:
 it keeps `sourceAdmissible` explicit and requires the CMP116/CMP109 facts
 linking page-12 `Y0^{c,*}`/`b0(c)`, positive orientation, the fixed gap
