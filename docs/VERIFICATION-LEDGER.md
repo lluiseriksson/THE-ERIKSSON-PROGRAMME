@@ -18242,3 +18242,70 @@ Gaussian normalization proof.  The source-coordinate dictionary, equality with
 the consumer physical Gaussian, determinant/Jacobian-normalized pushforward,
 covariance-root certificate, root localization, Wilson Hessian, local activity
 construction, raw decay, H#, continuum, and Clay obligations remain open.
+
+## Addendum 433 (2026-06-27, **CMP116 Gaussian source-record split**)
+
+Files touched: `YangMills/RG/PhysicalGaugeCMP116ActivityConstruction.lean`,
+`oracle_check.lean`, `CURRENT-STATE.md`,
+`docs/source-db/catalogs/gaussian-root-hessian-live-fields.json`,
+`docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md`,
+`docs/source-db/source_index.sqlite`, and this ledger.
+
+This checkpoint splits the CMP116 Eq. (2.5)--(2.6) Gaussian-normalization
+endpoint into three independent source records:
+
+```
+CMP116GaussianCoordinateMapSource
+CMP116GaussianPhysicalLawSource
+CMP116GaussianNormalizedPushforwardSource
+```
+
+The new constructor
+`CMP116GaussianPushforwardNormalization.of_sourceRecords` assembles
+`CMP116GaussianPushforwardNormalization` from those three records.  This keeps
+the coordinate-map dictionary, physical-law dictionary, and
+determinant/Jacobian-normalized pushforward independently auditable.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py lean CMP116GaussianCoordinateMapSource
+python scripts\source_db.py lean of_sourceRecords
+python scripts\source_db.py lean CMP116GaussianNormalizedPushforwardSource
+lake build +YangMills.RG.PhysicalGaugeCMP116ActivityConstruction:olean
+lake build +YangMills.RG.BalabanCMP116Lemma3ScaleFamily:olean
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_db.py
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: the focused Lean file exited 0.  Source DB verification passed with 9
+catalog files and rebuilt `source_index.sqlite` with hash
+`5566d6a528995fcab637921fafabb1916e9832d12d095a713c06fc452664bd55`.
+Source DB target queries resolve `CMP116GaussianCoordinateMapSource`,
+`CMP116GaussianNormalizedPushforwardSource`, and
+`CMP116GaussianPushforwardNormalization.of_sourceRecords`.  Focused builds
+passed: `PhysicalGaugeCMP116ActivityConstruction` at 8249 jobs and
+`BalabanCMP116Lemma3ScaleFamily` at 8256 jobs, both with only pre-existing
+warnings.  Citation validation passed with 18 citations from 4 sources.
+`python -m pytest tests\test_source_db.py` passed 9 tests.  `git diff --check`
+passed with only line-ending warnings.  `scripts/check_consistency.py`
+reported zero `sorry` and zero verified-core axioms; the forbidden-token scan
+found no matches.  Full `lake build YangMillsCore` passed at 8364 jobs with
+only pre-existing warnings.  `lake env lean oracle_check.lean` exited 0 with
+empty stderr and 2741 stdout lines; the three new source records and
+`of_sourceRecords` printed with dependencies inside Lean's standard
+`[propext, Classical.choice, Quot.sound]` set.
+
+Honest scope: this is source-request factoring, not an analytic proof.  The
+three new records remain to be populated from CMP116 Eq. (2.5)--(2.6) and the
+repository coordinate dictionary.  It does not prove the determinant/Jacobian
+normalization, covariance-root certificate, root localization, Wilson Hessian,
+local activity construction, raw decay, H#, continuum, or Clay.

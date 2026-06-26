@@ -373,6 +373,41 @@ structure CMP116GaussianPushforwardNormalization
     (balabanCMP116Dmu0 (Cube d L) lieDim).map sourceCoordinateMap =
       sourcePhysicalGaussian
 
+/-- Source/dictionary record identifying Balaban's Eq. (2.5)--(2.6) source
+coordinate map with the repository dictionary/root Gaussian map. -/
+structure CMP116GaussianCoordinateMapSource
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc) : Prop where
+  coordinate_map_eq :
+    sourceCoordinateMap = D.gaussianRootMap root
+
+/-- Source/dictionary record identifying the source correlated fluctuation law
+with the downstream physical Gaussian law consumed by raw-source records. -/
+structure CMP116GaussianPhysicalLawSource
+    (sourcePhysicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc))
+    (physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)) : Prop where
+  physicalGaussian_eq :
+    sourcePhysicalGaussian = physicalGaussian
+
+/-- Source analytic record for the determinant/Jacobian-normalized
+pushforward identity in CMP116 Eq. (2.5)--(2.6). -/
+structure CMP116GaussianNormalizedPushforwardSource
+    (sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (sourcePhysicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)) : Prop where
+  normalized_pushforward :
+    (balabanCMP116Dmu0 (Cube d L) lieDim).map sourceCoordinateMap =
+      sourcePhysicalGaussian
+
 namespace CMP116GaussianPushforwardNormalization
 
 /-- Build the structured Gaussian-normalization record from the exact
@@ -408,6 +443,37 @@ def of_sourceNormalizedChange
     coordinate_map_eq := hcoordinate
     physicalGaussian_eq := hphysical
     normalized_pushforward := hnormalized }
+
+/-- Build the structured Gaussian-normalization record from the three
+independent source records for coordinate-map identification, physical-law
+identification, and normalized pushforward. -/
+def of_sourceRecords
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    (sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (sourcePhysicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc))
+    (coordinateSource :
+      CMP116GaussianCoordinateMapSource D root sourceCoordinateMap)
+    (physicalLawSource :
+      CMP116GaussianPhysicalLawSource
+        sourcePhysicalGaussian physicalGaussian)
+    (pushforwardSource :
+      CMP116GaussianNormalizedPushforwardSource
+        sourceCoordinateMap sourcePhysicalGaussian) :
+    CMP116GaussianPushforwardNormalization D root physicalGaussian :=
+  of_sourceNormalizedChange
+    sourceCoordinateMap
+    sourcePhysicalGaussian
+    coordinateSource.coordinate_map_eq
+    physicalLawSource.physicalGaussian_eq
+    pushforwardSource.normalized_pushforward
 
 /-- Recover the dictionary/root Gaussian pushforward consumed by existing
 localized-activity source packages from the structured normalization record. -/

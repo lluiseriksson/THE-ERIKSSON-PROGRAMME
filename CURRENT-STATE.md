@@ -2127,6 +2127,13 @@ identification of the source correlated `B'` law with the consumer
 `physicalGaussian`, and the determinant/Jacobian-normalized pushforward
 identity from `balabanCMP116Dmu0`.  This is not an analytic proof of CMP116
 Eq. (2.5)--(2.6); it narrows the source request to those named fields.
+Those fields are also split into independent source records:
+`CMP116GaussianCoordinateMapSource`, `CMP116GaussianPhysicalLawSource`, and
+`CMP116GaussianNormalizedPushforwardSource`, with
+`CMP116GaussianPushforwardNormalization.of_sourceRecords` assembling the
+structured normalization record from the three.  This keeps the coordinate
+dictionary, physical-law dictionary, and determinant/Jacobian pushforward
+obligations independently auditable.
 
 ## What Is Not Claimed
 

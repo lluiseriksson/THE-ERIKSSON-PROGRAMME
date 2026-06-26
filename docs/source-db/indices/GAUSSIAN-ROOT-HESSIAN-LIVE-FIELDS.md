@@ -38,6 +38,11 @@ source/dictionary facts into the structured record: Balaban's source map
 correlated `B'` law equals the downstream `physicalGaussian`, and the
 determinant/Jacobian-normalized pushforward of `balabanCMP116Dmu0` by the
 source map is exactly the source Gaussian law.
+Those facts now have independent Lean source records:
+`CMP116GaussianCoordinateMapSource`, `CMP116GaussianPhysicalLawSource`, and
+`CMP116GaussianNormalizedPushforwardSource`.  The constructor
+`CMP116GaussianPushforwardNormalization.of_sourceRecords` assembles the
+structured normalization record from those three records.
 
 This is still a source-pending analytic field.  The determinant/Jacobian
 normalization and source-to-Lean coordinate dictionary for CMP116 (2.5)--(2.6)
